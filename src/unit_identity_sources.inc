@@ -20,6 +20,22 @@ static std::atomic<uint64_t> g_native_unit_identity_revision{0};
 // same complete set of semantic bindings gets the same fingerprint on later
 // frames; an ambiguous source is distinct from a resolved authored target.
 static std::atomic<uint64_t> g_native_unit_identity_context{0};
+// Saved announcement fields own their semantic snapshot beyond a draw epoch.
+// Their keys include the complete native report, rather than a name spelling.
+static std::atomic<uint64_t> g_native_announcement_unit_context{0};
+static void remember_native_announcement_unit_reference(std::string_view source,
+    const NativeUnitIdentity *identity);
+static void remember_native_announcement_pet_name(std::string_view source,
+    const NativeUnitIdentity *identity);
+static void prepare_native_announcement_unit_identities(std::string_view source);
+static std::optional<std::string> native_announcement_unit_identity_target(
+    std::string_view report_source, std::string_view field_source);
+static uint64_t native_announcement_unit_body_context();
+struct NativeAnnouncementUnitBodyScope {
+    std::pair<std::string, std::string> previous;
+    NativeAnnouncementUnitBodyScope(std::string_view report, std::string_view body);
+    ~NativeAnnouncementUnitBodyScope();
+};
 static uint64_t native_identity_source_fingerprint(std::string_view source,
         const std::optional<std::string> &target) {
     uint64_t hash = 14695981039346656037ULL;
@@ -44,6 +60,8 @@ static uint64_t native_mission_return_context();
 static uint64_t native_identity_translation_context() {
     constexpr uint64_t formatter_scope = 0x9e3779b97f4a7c15ULL;
     return g_native_unit_identity_context.load(std::memory_order_acquire) ^
+        g_native_announcement_unit_context.load(std::memory_order_acquire) ^
+        native_announcement_unit_body_context() ^
         native_mission_return_context() ^
         (native_unit_identity_rendering() ? formatter_scope : 0);
 }

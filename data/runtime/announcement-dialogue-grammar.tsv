@@ -180,3 +180,4 @@ sentence	{s}, is it really you?	{s1}，真的是你吗？	dialogue-recognition	0
 dialogue-recognition	{s}	{s1}	dialogue-family	0x1404cd130..0x1404cd37d;native relative enum vocabulary
 dialogue-recognition	{s}	{s1}	$person	0x1404cd456..0x1404cd492;given name or complete name
 dialogue-recognition	Dear	亲爱的		0x1404cd512;replaces name
+sentence	{s}. How do you like the sound of that?	{s1}。你觉得这个名字怎么样？	$person	reference 0x1401fe5c0:0x1401ff0ea name formatter 0x140a946e0 -> 0x1401ff186 suffix -> 0x1401ff1dd speech wrapper 0x140684a10; classic 0x1401fe550:0x1401ff07a -> 0x1401ff116 -> 0x1401ff16d; name_creator context +4=7 ADVENTURER_PET and non-null conversation +0x228/named_unit +0x240

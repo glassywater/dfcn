@@ -1,0 +1,7 @@
+# Native naming conversation, reconstructed from the complete configured PE owners.
+# The direct item-name announcement and the later spoken response have independent bodies.
+edition	function_rva	condition	production	field_supplier	submission
+reference	0x1fe5c0	item-name construction reaches 0x1fee8c	You have bestowed the name {artifact_name} upon {item_description}.	artifact_name=0xa94030 at 0x1fef0b; item_description=0xc65450 at 0x1fef54	0x1feff9 -> 0xe3c20, type 87
+reference	0x1fe5c0	context [rsi+4]=7 ADVENTURER_PET and conversation [rsi+0x228]!=0 and named_unit [rsi+0x240]!=0	{pet_name}.  How do you like the sound of that?	pet_name=language_name [rsi+0x10] via 0xa946e0 at 0x1ff0ea; suffix=0x1615518 at 0x1ff186	0x1ff1dd -> 0x684a10 -> 0x68588b -> 0xe3c20; speech selector 245 at 0x1ff196 falls outside 64..72 and selects announcement type 163 REGULAR_CONVERSATION at 0x685796
+classic	0x1fe550	item-name construction reaches 0x1fee1c	You have bestowed the name {artifact_name} upon {item_description}.	artifact_name=0xa910b0 at 0x1fee9b; item_description=0xc62490 at 0x1feee4	0x1fef89 -> 0xe3bb0, type 87
+classic	0x1fe550	context [rsi+4]=7 ADVENTURER_PET and conversation [rsi+0x228]!=0 and named_unit [rsi+0x240]!=0	{pet_name}.  How do you like the sound of that?	pet_name=language_name [rsi+0x10] via 0xa91760 at 0x1ff07a; suffix=0x1610270 at 0x1ff116	0x1ff16d -> 0x682430 -> 0x6832ab -> 0xe3bb0; speech selector 245 at 0x1ff126 falls outside 64..72 and selects announcement type 163 REGULAR_CONVERSATION at 0x6831b6

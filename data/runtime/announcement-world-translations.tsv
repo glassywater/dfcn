@@ -13,7 +13,10 @@ It is not convincing.	这番话不够有说服力。
 You have become enraged!	你暴怒了！
 {n} has become enraged!	{n}暴怒了！
 {n} stops and pays attention to you.	{n}停了下来，把注意力转向你。
-{n} has revealed the presence of {n} to {n}.	{n1}向{n3}透露了{n2}的存在。
+{n} has revealed the presence of {b} to {n}.	{n1}向{n2}透露了{b}的存在。
+Has revealed the presence of {b} to {n}.	向{n}透露了{b}的存在。
+{n} has revealed the presence of {b} to .	{n}透露了{b}的存在。
+Has revealed the presence of {b} to .	透露了{b}的存在。
 {n} has assumed the position of {s} of {e}.	{n}就任了{e}的{s}。
 {n} has assumed the position of {s}.	{n}就任了{s}。
 After a polite discussion with local rivals, {n} has claimed the position of {s} of {e}.	与当地的几位竞争者客气地商谈后，{n}取得了{e}的{s}之位。

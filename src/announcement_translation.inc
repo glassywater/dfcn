@@ -29,6 +29,9 @@ std::optional<std::string> Overlay::translate_complete_announcement(
         std::string_view source, const std::vector<int> &source_colors,
         std::vector<int> &target_colors) const {
     refresh_native_display_translation_context();
+    // A stored reveal report no longer owns this frame's temporary formatter
+    // strings. Recover its two proven unit fields before choosing a cache key.
+    prepare_native_announcement_unit_identities(source);
     // Resolve native relationship fields before consulting the text cache.
     // Two people called "cousin" can have different proven family paths.
     // Re-enter with their private typed keys so both cache identity and
@@ -66,11 +69,11 @@ std::optional<std::string> Overlay::translate_complete_announcement(
         // those before the general catalogue can consume the opening while
         // leaving the subsequent native report outside its field grammar.
         for (const std::string_view scope : {
-                "fortress-attack", "fortress-arrival", "fortress-announcement", "historical-event-paragraph"}) {
+                "fortress-attack", "fortress-arrival", "fortress-announcement", "fortress-embark", "historical-event-paragraph"}) {
             // The attack producer joins commander, warning and reinforcement
             // paragraphs with native [B] controls. Match their visible whole
             // record, using the same control normalization as report capture.
-            const std::string attack_source = scope == "fortress-attack"
+            const std::string attack_source = scope == "fortress-attack" || scope == "fortress-embark"
                 ? native_announcement_display_source(block) : std::string{};
             if (const auto native = translate_announcement_combat(
                     scope == "fortress-attack" ? std::string_view(attack_source) : block, scope)) {

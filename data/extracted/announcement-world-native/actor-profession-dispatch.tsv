@@ -1,0 +1,271 @@
+edition	function_start	table_address	profession	destination	source	production
+reference	0x141331500	0x141333508	0	0x141331e12	Miner	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	1	0x141331e36	Woodworker	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	2	0x141331e5f	Carpenter	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	3	0x141331e87	Bowyer	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	4	0x141331eac	Woodcutter	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	5	0x141331ed5	Stoneworker	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	6	0x141331f27	Stonecutter	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	7	0x141331f3c	Stone Carver	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	8	0x141331f08	Engraver	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	9	0x141331f51	Mason	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	10	0x141331f66	Ranger	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	11	0x141331f7b	Animal Caretaker	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	12	0x141331f90	Animal Trainer	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	13	0x141331fa5	Hunter	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	14	0x141331fba	Trapper	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	15	0x141331fcf	Animal Dissector	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	16	0x141331fe4	Metalsmith	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	17	0x141331ff9	Furnace Operator	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	18	0x14133200e	Weaponsmith	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	19	0x141332023	Armorer	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	20	0x141332038	Blacksmith	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	21	0x141332061	Metalcrafter	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	22	0x141332088	Jeweler	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	23	0x14133209d	Gem Cutter	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	24	0x1413320b2	Gem Setter	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	25	0x1413320c7	Craftsman	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	26	0x1413320dc	Woodcrafter	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	27	0x14133215a	Stonecrafter	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	28	0x14133216f	Leatherworker	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	29	0x141332184	Bone Carver	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	30	0x141332199	Weaver	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	31	0x1413321ae	Clothier	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	32	0x1413321c3	Glassmaker	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	33	0x14133211b	Potter	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	34	0x141332130	Glazer	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	35	0x141332145	Wax Worker	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	36	0x1413321d8	Strand Extractor	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	37	0x1413321ed	Fishery Worker	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	38	0x141332202	Fisherman	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	39	0x141332217	Fish Dissector	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	40	0x14133222c	Fish Cleaner	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	41	0x141332241	Farmer	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	42	0x141332256	Cheesemaker	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	43	0x14133226b	Milker	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	44	0x1413322bf	Cook	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	45	0x1413322d4	Thresher	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	46	0x1413322e9	Miller	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	47	0x1413322fe	Butcher	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	48	0x141332313	Tanner	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	49	0x141332328	Dyer	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	50	0x141332367	Planter	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	51	0x14133237c	Herbalist	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	52	0x141332391	Brewer	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	53	0x1413323a6	Soap Maker	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	54	0x1413323bb	Potash Maker	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	55	0x1413323d0	Lye Maker	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	56	0x1413323e5	Wood Burner	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	57	0x141332295	Shearer	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	58	0x1413322aa	Spinner	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	59	0x14133233d	Presser	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	60	0x141332352	Beekeeper	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	61	0x1413323fa	Engineer	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	62	0x14133240f	Mechanic	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	63	0x141332424	Siege Engineer	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	64	0x141332439	Siege Operator	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	65	0x14133244e	Pump Operator	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	66	0x141332463	Clerk	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	67	0x141332478	Administrator	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	68	0x14133248d	Trader	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	69	0x1413325dd	Doctor	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	70	0x1413325f2	Diagnostician	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	71	0x141332607	Bone Doctor	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	72	0x14133261c	Suturer	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	73	0x141332631	Surgeon	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	74	0x141332646	Merchant	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	75	0x1413326d9	Hammerman	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	76	0x1413326ee	Hammer Lord	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	77	0x141332703	Spearman	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	78	0x141332718	Spearmaster	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	79	0x14133272d	Crossbowman	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	80	0x141332742	Elite Crossbowman	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	81	0x141332757	Wrestler	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	82	0x14133276c	Elite Wrestler	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	83	0x141332781	Axeman	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	84	0x141332796	Axe Lord	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	85	0x1413327ab	Swordsman	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	86	0x1413327c0	Swordmaster	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	87	0x1413327d5	Maceman	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	88	0x1413327ea	Mace Lord	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	89	0x1413327ff	Pikeman	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	90	0x141332814	Pikemaster	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	91	0x141332829	Bowman	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	92	0x14133283e	Elite Bowman	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	93	0x141332853	Blowgunner	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	94	0x141332868	Master Blowgunner	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	95	0x14133287d	Lasher	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	96	0x141332892	Master Lasher	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	97	0x1413328a7	Recruit	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	98	0x1413328bc	Hunting	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	99	0x1413328d1	War	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	100	0x1413328e6	Master Thief	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	101	0x1413328fb	Thief	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	102	0x141332a92	Peasant	Peasant only for viewpoint race; otherwise empty role
+reference	0x141331500	0x141333508	103	0x14133298e	Child	RAW CHILD/BABY caste/race names where available; otherwise literal; marks species already included
+reference	0x141331500	0x141333508	104	0x141332a2c	Baby	RAW CHILD/BABY caste/race names where available; otherwise literal; marks species already included
+reference	0x141331500	0x141333508	105	0x14133265b	Drunk	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	106	0x141332670	Monster Slayer	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	107	0x141332685	Scout	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	108	0x14133269a	Beast Hunter	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	109	0x1413326af	Snatcher	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	110	0x1413326c4	Mercenary	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	111	0x141332280	Gelder	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	112	0x1413324e1	Performer	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	113	0x1413324a2	Poet	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	114	0x1413324b7	Bard	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	115	0x1413324cc	Dancer	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	116	0x141332520	Sage	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	117	0x141332535	Scholar	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	118	0x14133254a	Philosopher	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	119	0x14133255f	Mathematician	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	120	0x141332574	Historian	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	121	0x141332589	Astronomer	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	122	0x14133259e	Naturalist	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	123	0x1413325b3	Chemist	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	124	0x1413325c8	Geographer	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	125	0x1413324f6	Scribe	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	126	0x1413320f1	Papermaker	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	127	0x141332106	Bookbinder	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	128	0x14133250b	Tavern Keeper	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	129	0x141332910	Criminal	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	130	0x141332925	Peddler	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	131	0x14133293a	Prophet	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	132	0x14133294f	Pilgrim	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	133	0x141332964	Monk	ordinary enum occupation; captured after native choice at 0x13331cc
+reference	0x141331500	0x141333508	134	0x141332979	Messenger	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	0	0x14132cd82	Miner	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	1	0x14132cda6	Woodworker	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	2	0x14132cdcf	Carpenter	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	3	0x14132cdf7	Bowyer	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	4	0x14132ce1c	Woodcutter	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	5	0x14132ce45	Stoneworker	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	6	0x14132ce97	Stonecutter	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	7	0x14132ceac	Stone Carver	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	8	0x14132ce78	Engraver	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	9	0x14132cec1	Mason	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	10	0x14132ced6	Ranger	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	11	0x14132ceeb	Animal Caretaker	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	12	0x14132cf00	Animal Trainer	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	13	0x14132cf15	Hunter	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	14	0x14132cf2a	Trapper	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	15	0x14132cf3f	Animal Dissector	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	16	0x14132cf54	Metalsmith	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	17	0x14132cf69	Furnace Operator	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	18	0x14132cf7e	Weaponsmith	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	19	0x14132cf93	Armorer	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	20	0x14132cfa8	Blacksmith	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	21	0x14132cfd1	Metalcrafter	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	22	0x14132cff8	Jeweler	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	23	0x14132d00d	Gem Cutter	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	24	0x14132d022	Gem Setter	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	25	0x14132d037	Craftsman	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	26	0x14132d04c	Woodcrafter	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	27	0x14132d0ca	Stonecrafter	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	28	0x14132d0df	Leatherworker	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	29	0x14132d0f4	Bone Carver	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	30	0x14132d109	Weaver	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	31	0x14132d11e	Clothier	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	32	0x14132d133	Glassmaker	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	33	0x14132d08b	Potter	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	34	0x14132d0a0	Glazer	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	35	0x14132d0b5	Wax Worker	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	36	0x14132d148	Strand Extractor	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	37	0x14132d15d	Fishery Worker	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	38	0x14132d172	Fisherman	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	39	0x14132d187	Fish Dissector	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	40	0x14132d19c	Fish Cleaner	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	41	0x14132d1b1	Farmer	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	42	0x14132d1c6	Cheesemaker	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	43	0x14132d1db	Milker	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	44	0x14132d22f	Cook	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	45	0x14132d244	Thresher	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	46	0x14132d259	Miller	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	47	0x14132d26e	Butcher	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	48	0x14132d283	Tanner	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	49	0x14132d298	Dyer	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	50	0x14132d2d7	Planter	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	51	0x14132d2ec	Herbalist	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	52	0x14132d301	Brewer	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	53	0x14132d316	Soap Maker	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	54	0x14132d32b	Potash Maker	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	55	0x14132d340	Lye Maker	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	56	0x14132d355	Wood Burner	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	57	0x14132d205	Shearer	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	58	0x14132d21a	Spinner	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	59	0x14132d2ad	Presser	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	60	0x14132d2c2	Beekeeper	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	61	0x14132d36a	Engineer	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	62	0x14132d37f	Mechanic	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	63	0x14132d394	Siege Engineer	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	64	0x14132d3a9	Siege Operator	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	65	0x14132d3be	Pump Operator	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	66	0x14132d3d3	Clerk	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	67	0x14132d3e8	Administrator	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	68	0x14132d3fd	Trader	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	69	0x14132d54d	Doctor	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	70	0x14132d562	Diagnostician	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	71	0x14132d577	Bone Doctor	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	72	0x14132d58c	Suturer	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	73	0x14132d5a1	Surgeon	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	74	0x14132d5b6	Merchant	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	75	0x14132d649	Hammerman	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	76	0x14132d65e	Hammer Lord	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	77	0x14132d673	Spearman	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	78	0x14132d688	Spearmaster	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	79	0x14132d69d	Crossbowman	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	80	0x14132d6b2	Elite Crossbowman	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	81	0x14132d6c7	Wrestler	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	82	0x14132d6dc	Elite Wrestler	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	83	0x14132d6f1	Axeman	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	84	0x14132d706	Axe Lord	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	85	0x14132d71b	Swordsman	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	86	0x14132d730	Swordmaster	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	87	0x14132d745	Maceman	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	88	0x14132d75a	Mace Lord	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	89	0x14132d76f	Pikeman	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	90	0x14132d784	Pikemaster	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	91	0x14132d799	Bowman	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	92	0x14132d7ae	Elite Bowman	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	93	0x14132d7c3	Blowgunner	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	94	0x14132d7d8	Master Blowgunner	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	95	0x14132d7ed	Lasher	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	96	0x14132d802	Master Lasher	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	97	0x14132d817	Recruit	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	98	0x14132d82c	Hunting	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	99	0x14132d841	War	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	100	0x14132d856	Master Thief	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	101	0x14132d86b	Thief	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	102	0x14132da02	Peasant	Peasant only for viewpoint race; otherwise empty role
+classic	0x14132c470	0x14132e478	103	0x14132d8fe	Child	RAW CHILD/BABY caste/race names where available; otherwise literal; marks species already included
+classic	0x14132c470	0x14132e478	104	0x14132d99c	Baby	RAW CHILD/BABY caste/race names where available; otherwise literal; marks species already included
+classic	0x14132c470	0x14132e478	105	0x14132d5cb	Drunk	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	106	0x14132d5e0	Monster Slayer	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	107	0x14132d5f5	Scout	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	108	0x14132d60a	Beast Hunter	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	109	0x14132d61f	Snatcher	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	110	0x14132d634	Mercenary	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	111	0x14132d1f0	Gelder	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	112	0x14132d451	Performer	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	113	0x14132d412	Poet	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	114	0x14132d427	Bard	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	115	0x14132d43c	Dancer	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	116	0x14132d490	Sage	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	117	0x14132d4a5	Scholar	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	118	0x14132d4ba	Philosopher	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	119	0x14132d4cf	Mathematician	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	120	0x14132d4e4	Historian	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	121	0x14132d4f9	Astronomer	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	122	0x14132d50e	Naturalist	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	123	0x14132d523	Chemist	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	124	0x14132d538	Geographer	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	125	0x14132d466	Scribe	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	126	0x14132d061	Papermaker	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	127	0x14132d076	Bookbinder	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	128	0x14132d47b	Tavern Keeper	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	129	0x14132d880	Criminal	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	130	0x14132d895	Peddler	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	131	0x14132d8aa	Prophet	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	132	0x14132d8bf	Pilgrim	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	133	0x14132d8d4	Monk	ordinary enum occupation; captured after native choice at 0x13331cc
+classic	0x14132c470	0x14132e478	134	0x14132d8e9	Messenger	ordinary enum occupation; captured after native choice at 0x13331cc

@@ -123,12 +123,19 @@
             const auto source = native_announcement_display_source(paragraph.source);
             std::vector<int> colors;
             std::optional<std::string> target;
-            if (paragraph.fortress_alert && !paragraph.name_source.empty()) {
+            constexpr std::array<std::string_view, 3> empty_summaries = {
+                "is fighting!", "is sparring.", "is hunting."};
+            const bool valid_category = paragraph.category >= 0 && paragraph.category < 3;
+            const bool empty_summary = paragraph.fortress_alert && paragraph.unit &&
+                paragraph.name_source.empty() &&
+                (valid_category ? source == empty_summaries[paragraph.category] : source == "is");
+            if (paragraph.fortress_alert && (!paragraph.name_source.empty() || empty_summary)) {
                 // The popup's parallel unit/category fields select the
                 // complete summary. Keep its identity on the native typed
                 // formatter, then fill the existing finite status rule.
                 std::optional<std::string> identity;
-                if (paragraph.unit)
+                if (empty_summary) identity = std::string{};
+                else if (paragraph.unit)
                     identity = translate_native_unit_identity_reference(
                         paragraph.unit, 0, paragraph.name_source, true);
                 else if (paragraph.name_source == "Somebody")
@@ -144,6 +151,12 @@
                             nullptr, &resolved);
                         break;
                     }
+                // 40e48d..40e50e has a real default branch: the unit
+                // caption is followed by " is " with no status appended.
+                // Chinese has no corresponding empty copula; retain the
+                // proven identity without inventing a fourth activity.
+                if (identity && (paragraph.category < 0 || paragraph.category >= 3))
+                    target = identity;
                 if (target)
                     for (unsigned char ch : *target)
                         if ((ch & 0xc0) != 0x80) colors.push_back(foreground);
@@ -159,6 +172,21 @@
                     for (unsigned char ch : suffix)
                         if ((ch & 0xc0) != 0x80) colors.push_back(foreground);
                 }
+            }
+            if (empty_summary && target && target->empty()) {
+                // A proven empty native caption plus the invalid-category
+                // copula has no translated ink. Erase only this owner's
+                // existing source spans; it adds no activity or layout rows.
+                for (auto &span : spans) {
+                    std::fill_n(screen_rows[span.y].begin() + span.x, span.length, ' ');
+                    span.target.clear();
+                    span.graphical_clear_x = span.x;
+                    span.graphical_clear_y = span.y;
+                    span.graphical_clear_width = span.length;
+                    span.graphical_clear_height = 1;
+                    result.push_back(std::move(span));
+                }
+                continue;
             }
             std::optional<NativeParagraphViewport> viewport;
             if (first_line || last_line + 1 != paragraph.rows.size())

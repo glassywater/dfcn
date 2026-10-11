@@ -1,0 +1,9 @@
+edition	image_identity	image_path	role	function_start	function_end	assembly_source
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	artifact-reference	0x140b94400	0x140b94710	reference-artifact-reference.asm
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	actor-reference	0x141331500	0x141333724	../announcement-status/state-reference-actor-profession.asm
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	artifact-reference	0x140b91440	0x140b91750	classic-artifact-reference.asm
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	actor-reference	0x14132c470	0x14132e694	../announcement-status/state-classic-actor-profession.asm
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	report-capitalization	0x14052d650	0x14052d904	reference-report-capitalization.asm
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	report-capitalization	0x14052b070	0x14052b324	classic-report-capitalization.asm
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	item-body-description	0x140ca1aa0	0x140ca26ad	reference-item-body-description.asm
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	item-body-description	0x140c9eae0	0x140c9f6ed	classic-item-body-description.asm

@@ -4,6 +4,9 @@
 // consequence; no successful branch can leave an untranslated remainder.
 // Native construction evidence is beside each rule in
 // data/runtime/announcement-combat-grammar.tsv, imported by tools/announcement_grammar.py.
+static std::shared_ptr<const std::unordered_map<std::string, std::string>>
+native_dfhack_raw_creature_adjectives();
+
 void Overlay::rebuild_announcement_combat_rules() {
     announcement_combat_rules_.clear();
     announcement_combat_syntax_.clear();
@@ -259,7 +262,8 @@ std::optional<std::string> Overlay::translate_announcement_combat(
                 ? std::move(result) : std::nullopt);
         }
         if (scope == "$unit") {
-            auto result = translate_ui_message_capture(input, true);
+            auto result = native_announcement_unit_identity_target(raw_source, input);
+            if (!result) result = translate_ui_message_capture(input, true);
             if (!result && (initial_scope == "fortress-announcement" ||
                     initial_scope == "fortress-job" || initial_scope == "fortress-arrival" ||
                     initial_scope == "fortress-attack"))
@@ -420,8 +424,25 @@ std::optional<std::string> Overlay::translate_announcement_combat(
         if (scope == "$item") return finish(translate_legends_item(input));
         if (scope == "$body") return finish(translate_legends_anatomy(input));
         if (scope == "$creature") return finish(translate_creature_reference(input));
+        if (scope == "$embark-race-adjective") {
+            // 8b288f/8b2a67 copy creature_raw.name[2], then capitalize it.
+            // Reuse the owned RAW adjective -> singular-name publication so
+            // this field also resolves species whose adjective differs from
+            // their name. Only the explicit embark grammar admits this leaf.
+            if (const auto adjectives = native_dfhack_raw_creature_adjectives()) {
+                const auto found = adjectives->find(lower(native_text_to_utf8(input)));
+                if (found != adjectives->end())
+                    if (auto species = translate_creature_reference(found->second))
+                        return finish(std::move(species));
+            }
+            return finish(translate_creature_descriptor(input, true));
+        }
         if (scope == "$term") return finish(translate_ui_message_capture(input, false));
-        if (scope == "$person") return finish(translate_legends_name(input, true));
+        if (scope == "$person") {
+            auto result = native_announcement_unit_identity_target(raw_source, input);
+            if (!result) result = translate_legends_name(input, true);
+            return finish(std::move(result));
+        }
         if (scope == "$name") return finish(translate_legends_name(input, false));
         if (scope == "$event") return finish(translate_legends_event(input, 0));
         if (scope == "$number") return finish(translate_announcement_number(input));
@@ -494,6 +515,7 @@ std::optional<std::string> Overlay::translate_announcement_combat(
         if (scope == "$announcement") {
             const std::vector<int> source_colors(input.size(), 0xffffff);
             std::vector<int> target_colors;
+            NativeAnnouncementUnitBodyScope semantic_body(raw_source, input);
             translate_complete_announcement(input, source_colors, target_colors);
             const auto cached = announcement_result_metadata(input);
             return finish(cached ? cached->strict_target() : std::nullopt);

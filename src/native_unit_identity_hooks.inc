@@ -18,6 +18,7 @@ struct NativeUnitIdentityCall {
     bool native_name_words_valid = false;
     bool name_seen = false, name_failed = false, role_seen = false, name_quoted = false;
     bool publish = true;
+    bool announcement_reference = false;
     NativeString *reference_output = nullptr;
     std::vector<NativeUnitReferencePart> reference_parts;
 #ifndef _WIN32
@@ -106,6 +107,32 @@ static void capture_native_unit_identity_english_name(const void *name,
         g_native_unit_identity_hooks.english_name(name, output, first, second);
     });
     capture_native_unit_identity_name_fields(name, output);
+}
+
+// Only the verified pet naming response calls this wrapper. Its English
+// formatter still supplies a typed language_name, including authored names.
+static void capture_native_announcement_pet_english_name(const void *name,
+        NativeString *output, bool first, bool second) {
+    NativeInputCallbackScope callback;
+    callback.call_native([&] {
+        g_native_unit_identity_hooks.english_name(name, output, first, second);
+    });
+    try {
+        std::string_view source;
+        NativeUnitIdentity identity;
+        if (!native_string_view(output, &source, 262144) || source.empty()) return;
+        identity.form = NativeUnitIdentityForm::NameOnly;
+        identity.native_name.assign(source);
+        identity.english_name = true;
+        const auto address = reinterpret_cast<uintptr_t>(name);
+        if (!capture_native_history_name(g_native_unit_identity_hooks.base, address, identity.name)) {
+            remember_native_announcement_pet_name(source, nullptr);
+            return;
+        }
+        identity.native_name_words_valid = capture_native_unit_identity_name_words(
+            address, identity.name, identity.native_name_words);
+        remember_native_announcement_pet_name(source, &identity);
+    } catch (...) {}
 }
 
 static void capture_native_unit_header_english_name(const void *name,
@@ -274,11 +301,20 @@ static void capture_native_unit_reference_entity_name(const void *name,
 }
 
 static std::optional<std::string> finish_native_unit_reference_call(
-        NativeUnitIdentityCall &call, NativeString *output) noexcept {
+        NativeUnitIdentityCall &call, NativeString *output,
+        std::optional<NativeUnitIdentity> *captured = nullptr) noexcept {
     try {
         std::string_view source;
-        if (!native_string_view(output, &source, 262144) || source.empty() ||
+        if (!native_string_view(output, &source, 262144) ||
                 !g_overlay.translation_enabled()) return std::nullopt;
+        if (source.empty()) {
+            // Modes 4/5 copy first_name even when it is empty. Its return is
+            // still one of producer 321's two calls, but has no visible field
+            // or semantic name to publish.
+            if (call.publish && call.announcement_reference)
+                remember_native_announcement_unit_reference(source, nullptr);
+            return std::nullopt;
+        }
         const std::string original(source);
 #ifndef _WIN32
         int32_t mode = -1;
@@ -356,13 +392,19 @@ static std::optional<std::string> finish_native_unit_reference_call(
         if (snapshot.reference_parts.size() == 1 &&
                 snapshot.reference_parts.front().kind == NativeUnitReferencePartKind::Authored)
             snapshot.reference_parts.front().source = original;
-        if (!call.reference_failed && !snapshot.reference_parts.empty() &&
-                capture_native_unit_identity(call.unit, snapshot))
+        const bool typed = !call.reference_failed && !snapshot.reference_parts.empty() &&
+            capture_native_unit_identity(call.unit, snapshot);
+        if (typed) {
+            if (captured) *captured = snapshot;
             translated = g_overlay.translate_native_unit_identity(snapshot);
+        }
         if (translated && translated->empty()) translated.reset();
-        if (call.publish)
+        if (call.publish) {
             remember_native_unit_identity(reinterpret_cast<uintptr_t>(output), original,
                 translated ? *translated : native_text_to_utf8(original), call.unit, false);
+            if (call.announcement_reference)
+                remember_native_announcement_unit_reference(original, typed ? &snapshot : nullptr);
+        }
         return translated;
     } catch (...) {
         // The overlay never changes DF's reference strings or visibility.
@@ -370,10 +412,41 @@ static std::optional<std::string> finish_native_unit_reference_call(
     return std::nullopt;
 }
 
+// Replay the already installed reference formatter into its own temporary.
+// This reads the game's selected identity, RAW role, office and WORD fields;
+// the returned caption is only an equality witness for a saved report field.
+static bool capture_native_announcement_unit_reference(uintptr_t unit,
+        std::string &source, NativeUnitIdentity &identity) {
+    const auto &hooks = g_native_unit_identity_hooks;
+    if (!unit || !hooks.entries[5].installed || !hooks.entries[5].original || !hooks.destroy)
+        return false;
+    NativeInputCallbackScope callback;
+    NativeSearchString output(hooks.destroy);
+    NativeUnitIdentityCall call;
+    call.unit = unit;
+    call.publish = false;
+    call.reference_output = &output.value;
+    {
+        NativeUnitIdentityActiveScope scope(call);
+        const auto original = reinterpret_cast<NativeUnitIdentityNameOnlyFn>(hooks.entries[5].original);
+        callback.call_native([&] { original(reinterpret_cast<void *>(unit), &output.value); });
+    }
+    std::string_view native;
+    if (!native_string_view(&output.value, &native, 262144)) return false;
+    source.assign(native);
+    if (native.empty()) return true;
+    std::optional<NativeUnitIdentity> captured;
+    finish_native_unit_reference_call(call, &output.value, &captured);
+    if (!captured) return false;
+    identity = std::move(*captured);
+    return true;
+}
+
 static void capture_native_unit_reference(void *unit, NativeString *output) {
     NativeInputCallbackScope callback;
     NativeUnitIdentityCall call;
     call.unit = reinterpret_cast<uintptr_t>(unit);
+    call.announcement_reference = true;
     call.reference_output = output;
     {
         NativeUnitIdentityActiveScope scope(call);
@@ -552,7 +625,7 @@ static std::optional<std::string> native_fortress_alert_unit_name(uintptr_t unit
         callback.call_native([&] { hooks.capitalize(&output.value); });
     }
     std::string_view source;
-    if (!native_string_view(&output.value, &source, 65536) || source.empty())
+    if (!native_string_view(&output.value, &source, 65536))
         return std::nullopt;
     return std::string(source);
 }
@@ -776,6 +849,10 @@ static bool install_native_unit_identity_hooks() {
     // and sheet header. Call sites leave other consumers' entry signatures
     // intact and preserve disguised/linked identity selection by the game.
     std::vector<NativeCall> names{
+        // Pet naming response: the producer formats the actual language_name
+        // before appending its fixed conversation suffix (Classic 0x1ff07a).
+        {0x1ff0ea, 0xa946e0,
+            reinterpret_cast<const void *>(&capture_native_announcement_pet_english_name)},
         // Conversation portrait: capitalize the same captured reference.
         // Classic CALL 0x866512 is mapped with this real supplier site.
         {0x868c92, 0x52d650,

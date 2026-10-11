@@ -200,6 +200,7 @@ DFHack help: You may be tempted to automatically prioritize "ConstructBuilding" 
 DFHack help: 1. Tools that are enabled right now. These are DFHack tools that run in the background, like autofarm, or tools that DFHack can run on a repeating schedule, like the "autoMilk" functionality of workorder. Most tools that can be enabled are saved with your fort, so you can have different tools enabled for different forts. If a tool is marked "global", however, like hide-tutorials, then enabling it will make it take effect for all games.	1. 现在启用的工具。这些是在后台运行的 DFHack 工具，例如 autofarm，或者 DFHack 可以按重复计划运行的工具，例如 workorder 的"autoMilk"功能。大多数可以启用的工具都保存在您的要塞中，因此您可以为不同的堡垒启用不同的工具。但是，如果某个工具标记为 "global"，例如 hide-tutorials，则启用它将使该工具对所有游戏生效。	l
 DFHack help: If the "--all" target option is specified, this option will ignore the first "<num>" levels before the specified action starts taking effect. For the "add" action, it keeps the first "<num>" levels starting from the topmost surface elevation unchanged before adding aquifers. For the "drain" and "convert" actions, it keeps the top "<num>" levels starting from the topmost existing aquifer unchanged before removing or converting aquifers.	如果指定了 "--all" 目标选项，则该选项将忽略指定操作开始生效之前的前"<num>"级别。对于 "add" 操作，在添加含水层之前，它会保持从最顶层表面高程开始的前"<num>"层不变。对于 "drain" 和 "convert" 操作，在删除或转换含水层之前，它会保持从最顶层现有含水层开始的顶部"<num>"级别不变。	l
 DFHack help: When agitated wildlife enters the map on the surface, the surface irritation counter is set to the value of "Wilderness irritation minimum", ensuring that the *next* group of wildlife that enters the map will *not* be agitated. This means that the incursions act more like a warning shot than an open floodgate. You will not be attacked again unless you continue your activities on the surface that raise the chance of a subsequent attack.	当激动的野生动物进入地表地图时，地表刺激计数器将设置为"荒野刺激最小值"的值，确保*下一个*进入地图的野生动物不会*被激动。这意味着入侵更像是一次警告，而不是闸门打开。除非您继续在地面上进行活动以增加后续攻击的机会，否则您不会再次受到攻击。	l
+Announcement combat fortress-embark [embark-revisit-heading]: {s} How have your sturdy charges fared in your absence? Have they gone on adventures or moved on to richer delving at new frontier settlements? Perhaps they are all still here, unwilling to leave the magnificent fortress you prepared for them. Deep underground, the promise of treasure and the thrill of overcoming danger have lured you back to this place. Will you strike the earth again?	{s1}你不在的这段日子里，那些坚韧的子民过得如何？他们是否踏上冒险之旅，或已迁往新的边疆聚落，去开掘更丰饶的矿藏？也许他们全都还在这里，不愿离开你为他们建造的宏伟要塞。对地底深处宝藏的憧憬，以及战胜险境的刺激，让你再次回到此地。你愿意再次开山掘地吗？	l
 DFHack help: For the surface wilderness in savage biomes (non-savage biomes will never see agitated wildlife), DF maintains a counter. Your dwarves increase the counter when they chop down trees or catch fish. Once it crosses a threshold, wildlife that enters the map has a chance of becoming agitated and aggressively attacking your units. This chance increases the higher the counter rises. Once a year, the counter is decremented by a fixed amount.	对于野蛮生物群落中的地表荒野（非野蛮生物群落永远不会看到激动的野生动物），DF 维护了一个计数器。当他们砍树或捕鱼时，你的矮人会增加计数器。一旦跨过门槛，进入地图的野生动物就有可能变得焦躁并攻击你的单位。计数器升得越高，这个机会就越大。每年一次，计数器会减少固定数量。	l
 DFHack help: Once you are satisfied with your choices, click on the large green button or hit "C" to continue building. Note that you don't have to select all the items that the building needs. Any remaining items will be automatically chosen from other available items (or from items produced in the future if not all items are available yet). If there are multiple item types to choose for the current building, one dialog will appear per item type.	一旦您对自己的选择感到满意，请单击绿色大按钮或按"C"继续构建。请注意，您不必选择建筑物所需的所有项目。任何剩余的项目将自动从其他可用项目中选择（如果不是所有项目都可用，则从将来生产的项目中选择）。如果当前建筑物有多种项目类型可供选择，则每种项目类型都会出现一个对话框。	l
 DFHack help: If you open the Kitchen screen, you can select individual item types and choose to ban them from cooking. To prevent all your booze from being cooked, for example, you'd filter by "Drinks" and then click each of the visible types of booze to prevent them from being cooked. Only types that you have in stock are shown, so if you acquire a different type of booze in the future, you have to come back to this screen and ban the new types.	如果您打开厨房屏幕，您可以选择单个项目类型并选择禁止它们烹饪。例如，为了防止所有酒类被煮熟，您可以按"饮料"进行过滤，然后单击每种可见的酒类类型以防止它们被煮熟。仅显示您库存的类型，因此如果您将来购买了不同类型的酒，则必须返回此屏幕并禁止新类型。	l
@@ -433,6 +434,7 @@ DFHack help: "revflood" Hide everything, then reveal tiles with a path to the ke
 DFHack help: This overlay shows an "Ethics warning" badge next to the "Trade" button when you have any items selected for sale that would offend the merchants that you are trading with. Clicking on the badge will show a list of problematic items, and you can click the button on the dialog to deselect all the problematic items in your trade list.	当您选择出售的任何商品可能冒犯与您交易的商家时，此叠加层会在"交易"按钮旁边显示"道德警告"徽章。单击徽章将显示有问题的项目列表，您可以单击对话框上的按钮取消选择交易列表中的所有有问题的项目。	l
 DFHack help: Depending on the cursor location, this tool rewrites all 'individual choice weapon' entries in the selected squad or position to use a specific weapon type matching the unit's top skill. If the cursor is in the rightmost list over a weapon entry, this tool rewrites only that entry, and does it even if it is not 'individual choice'.	根据光标位置，此工具会重写所选小队或位置中的所有"个人选择武器"条目，以使用与单位顶级技能相匹配的特定武器类型。如果光标位于武器条目上方的最右侧列表中，则该工具仅重写该条目，即使它不是"个人选择"，也会执行此操作。	l
 DFHack help: This collection adds smelting jobs for all ores. It includes handling the ores already managed by "library/military", but has lower limits. This ensures all ores will be covered if a player imports "library/smelting" but not "library/military", but the higher-volume "library/military" orders will take priority if both are imported.	该合集为所有矿石添加了冶炼工作。它包括处理已经由"图书馆/军事"管理的矿石，但限制较低。这确保了如果玩家导入"图书馆/冶炼"而不是"图书馆/军事"，则所有矿石都将被覆盖，但如果两者都导入，则较高数量的"图书馆/军事"订单将优先。	l
+Announcement combat embark-supplies [embark-charges,embark-threat]: There are almost no supplies left, but with stout labor comes sustenance. Whether by bolt, plow or hook, provide for your {s}. You are expecting a supply caravan just before winter entombs you, but it is Spring now. Enough time to delve secure lodgings, ere the {s} get hungry.	补给所剩无几，但只要勤勉劳作，便能获得温饱。无论使用弩矢、犁铧还是鱼钩，务必保障{s1}的生计。你们预计在寒冬将你们封困之前，会有一支补给商队抵达，而如今正值春季——尚有充足时间挖掘出安全的居所，赶在{s2}饥肠辘辘之前。	l
 DFHack help: This is the configuration interface for the autochop plugin. You can configure which burrows will be used for tree chopping, your target stock quantities, and other options. You can also see how many logs you have, the number of logs that the trees on the map are estimated to yield, and how many of each are currently inaccessible.	这是autochop插件的配置界面。您可以配置用于砍伐树木的活动区、目标库存数量和其他选项。您还可以查看您拥有多少原木、地图上的树木预计可产出的原木数量以及当前无法访问的原木数量。	l
 DFHack help: This tool has two modes. When enabled, it monitors burrows with names that end in "+". If a wall at the edge of such a burrow is dug out, the burrow will be automatically extended to include the newly-revealed adjacent walls. If a miner digs into an open space, such as a cavern, the open space will *not* be included in the burrow.	该工具有两种模式。启用后，它会监视名称以"+"结尾的活动区。如果挖出此类活动区边缘的墙，活动区将自动扩展以包含新发现的相邻墙。如果矿工挖掘到一个开放空间，例如地下洞穴，则该开放空间将"不"包含在活动区中。	l
 DFHack help: Don't attempt to provide helpful string representations of potentially unsafe fields like language_name when browsing the data structures. Specify this option when you know you will be browsing garbage data that could lead to crashes if accessed for stringification. Note that fields in union data structures are never stringified.	在浏览数据结构时，不要尝试提供潜在不安全字段（例如 language_name）的有用字符串表示形式。当您知道您将浏览垃圾数据时，请指定此选项，如果访问这些垃圾数据进行字符串化，可能会导致崩溃。请注意，联合数据结构中的字段永远不会被字符串化。	l
@@ -489,6 +491,8 @@ DFHack help: "probe [<options>]" Displays properties of the tile highlighted wit
 DFHack help: This tool uses a cache used by DF, which currently does *not* account for climbing or flying. If an area of the map is only accessible by climbing or flying, this tool may report it as inaccessible. For example, this tool will not highlight where flying cavern creatures can fly up through holes in cavern ceilings.	该工具使用 DF 使用的缓存，目前 *不* 考虑攀爬或飞行。如果地图上的某个区域只能通过攀爬或飞行来访问，则此工具可能会将其报告为无法访问。例如，此工具不会突出显示飞行的地下洞穴生物可以通过地下洞穴天花板上的洞飞起来的位置。	l
 DFHack help: Unlike brewing and other kinds of processing, cooking plants does not produce a usable seed. By default, all plants are allowed to be cooked. This often leads to the situation where dwarves have no seeds left to plant crops with because they cooked all the relevant plants. Seedwatch protects you from this problem.	与酿造和其他类型的加工不同，烹饪植物不会产生可用的种子。默认情况下，所有植物都可以被烹饪。这通常会导致矮人没有剩余种子来种植农作物，因为他们煮熟了所有相关植物。 Seedwatch 可以保护您免受此问题的困扰。	l
 DFHack help: modtools/anonymous-script ========================= This allows running a short simple Lua script passed as an argument instead of running a script from a file. This is useful when you want to do something too complicated to make with the existing modtools, but too simple to be worth its own script file. Example::	modtools/anonymous-script ========================= 这允许运行作为参数传递的简短 Lua 脚本，而不是从文件运行脚本。当您想做的事情太复杂而无法使用现有的 modtools 完成，但又太简单而不值得使用自己的脚本文件时，这非常有用。示例::	l
+Announcement combat embark-supplies [embark-charges]: There are almost no supplies left, but with stout labor comes sustenance. Whether by bolt, plow or hook, provide for your {s}. You are expecting a supply caravan just before winter entombs you, but it is Spring now. Enough time to delve secure lodgings, ere the get hungry.	补给所剩无几，但只要勤勉劳作，便能获得温饱。无论使用弩矢、犁铧还是鱼钩，务必保障{s1}的生计。你们预计在寒冬将你们封困之前，会有一支补给商队抵达，而如今正值春季——尚有充足时间挖掘出安全的居所，赶在野兽饥肠辘辘之前。	l
+Announcement combat embark-supplies [embark-threat]: There are almost no supplies left, but with stout labor comes sustenance. Whether by bolt, plow or hook, provide for your . You are expecting a supply caravan just before winter entombs you, but it is Spring now. Enough time to delve secure lodgings, ere the {s} get hungry.	补给所剩无几，但只要勤勉劳作，便能获得温饱。无论使用弩矢、犁铧还是鱼钩，务必保障子民的生计。你们预计在寒冬将你们封困之前，会有一支补给商队抵达，而如今正值春季——尚有充足时间挖掘出安全的居所，赶在{s1}饥肠辘辘之前。	l
 DFHack help: "types" These are a sort of archetype system for applying to dwarves. It primarily includes physical and mental attributes, but can include skills as well. If it has skills listed, each skill will have a minimum and maximum value. The chosen values will be evenly distributed between these two numbers (inclusive).	"types" 这是一种应用于矮人的原型系统。它主要包括身体和精神属性，但也可以包括技能。如果列出了技能，则每个技能都会有最小值和最大值。所选值将均匀分布在这两个数字（含）之间。	l
 DFHack help: :-skill skillName: set the skill that we're talking about :-mode (add/set): are we adding experience/levels or setting them? :-granularity (experience/level): direct experience, or experience levels? :-unit id: id of the target unit :-value amount: how much to set/add :-loud: if present, prints changes to console	:-skill skillName: set the skill that we're talking about :-mode (add/set): are we adding experience/levels or setting them? :-granularity (experience/level): direct experience, or experience levels? :-unit id: id of the target unit :-value amount: how much to set/add :-loud: if present, prints changes to console	l
 DFHack help: For the "instant" method, this tool kills by setting a unit's "blood_count" to 0, which means immediate death at the next game tick. For creatures where this is not enough, such as vampires, it also sets "animal.vanish_countdown", allowing the unit to vanish in a puff of smoke if the blood loss doesn't kill them.	对于"instant"方法，该工具通过将单位的"blood_count"设置为0来杀死，这意味着在下一个游戏周期立即死亡。对于这还不够的生物，例如吸血鬼，它还会设置 "animal.vanish_countdown"，如果失血没有杀死它们，则允许该单位消失在一阵烟雾中。	l
@@ -587,6 +591,7 @@ DFHack help: Quickfort reads stored blueprint files and applies them to the game
 DFHack help: The text will be encoded in CP437, which is likely to be incompatible with the system default. This causes incorrect display of special characters (e.g. \x82 ? \x87 = "\x82 ? \x87"). You can fix this by opening the file in an editor such as Notepad++ and selecting the correct encoding before copying the text.	文本将以 CP437 编码，这可能与系统默认值不兼容。这会导致特殊字符的错误显示（例如 é õ ç = "é õ ç"）。您可以通过在编辑器（例如 Notepad++）中打开文件并在复制文本之前选择正确的编码来解决此问题。	l
 DFHack help: This tool will magically complete non-marker dig designations, modifying tile shapes and creating boulders, ores, and gems as if a miner were doing the mining or engraving. By default, the entire map is processed and boulder generation follows standard game rules, but the behavior is configurable.	该工具将神奇地完成无标记挖掘规划标记，修改瓷砖形状并创建巨石、矿石和宝石，就像矿工正在采矿或雕刻一样。默认情况下，整个地图都会被处理，巨石的生成遵循标准游戏规则，但行为是可配置的。	l
 DFHack help: ``-goals [ <GOAL> <REALIZED_FLAG> <GOAL> <REALIZED_FLAG> <...> ]``: the goals to modify/add and whether they have been realized or not. The valid goal tokens can be found in the wiki page linked above. The flag must be a true/false value. There must be a space before and after each square bracket.	``-goals [ <GOAL> <REALIZED_FLAG> <GOAL> <REALIZED_FLAG> <...> ]``：modify/add 的目标以及是否已实现。有效的目标标记可以在上面链接的 wiki 页面中找到。该标志必须是 true/false 值。每个方括号前后必须有一个空格。	l
+Announcement combat embark-supplies []: There are almost no supplies left, but with stout labor comes sustenance. Whether by bolt, plow or hook, provide for your . You are expecting a supply caravan just before winter entombs you, but it is Spring now. Enough time to delve secure lodgings, ere the get hungry.	补给所剩无几，但只要勤勉劳作，便能获得温饱。无论使用弩矢、犁铧还是鱼钩，务必保障子民的生计。你们预计在寒冬将你们封困之前，会有一支补给商队抵达，而如今正值春季——尚有充足时间挖掘出安全的居所，赶在野兽饥肠辘辘之前。	l
 DFHack help: "--beliefs [ <belief> <level> [<belief> <level> ...] ]" The list of the beliefs to modify and their levels. The valid belief tokens can be found in the Personality_trait (substitute any space with underscores). Levels range from -3 to 3. There must be a space before and after each square bracket.	"--beliefs [ <belief> <level> [<belief> <level> ...] ]" 要修改的信念及其级别的列表。有效的信念标记可以在 Personality_trait 中找到（用下划线替换任何空格）。级别范围从 -3 到 3。每个方括号前后必须有一个空格。	l
 DFHack help: Autolabor frequently checks how many jobs of each type are available and sets labors proportionally in order to get them all done quickly. Labors with equipment -- mining, hunting, and woodcutting -- which are abandoned if labors change mid-job, are handled slightly differently to minimize churn.	Autolabor 会经常统计各类待办工作，按需求比例分配劳动，以尽快完成任务。采矿、狩猎和伐木需要装备；执行期间改变劳动分配会使任务中断，因此会采用稍有不同的分配方式，减少反复切换。	l
 DFHack help: If a unit is selected, that unit will be designated the creator of the summoned items. Any item with a "sized for" property, like armor, will be created for that unit's race, and the items will appear at that unit's feet. If no unit is selected, the first citizen unit will be used as the creator.	如果选择了一个单位，该单位将被指定为召唤物品的创建者。任何具有"尺寸"属性的物品（例如盔甲）都将为该单位的种族创建，并且这些物品将出现在该单位的脚上。如果没有选择任何单位，则第一个居民单位将被用作创建者。	l
@@ -823,6 +828,7 @@ DFHack help: When the plugin is enabled, it checks stockpiles marked with autome
 DFHack help: ``-beliefs [ <BELIEF> <LEVEL> <BELIEF> <LEVEL> <...> ]``: the beliefs to modify and their levels. The valid belief tokens can be found in the wiki page linked above; level values range from -3 to 3. There must be a space before and after each square bracket.	``-beliefs [ <BELIEF> <LEVEL> <BELIEF> <LEVEL> <...> ]``：要修改的信念及其级别。有效的信念标记可以在上面链接的维基页面中找到； level 值的范围是 -3 到 3。每个方括号前后必须有一个空格。	l
 DFHack help: s built-in EditField with our own self.subviews.materials_mats.list.frame.t = 0 self.subviews.materials_mats.edit.visible = false self.subviews.materials_mats.edit = self.subviews.search self.subviews.search.on_change = self.subviews.materials_mats:callback(	的内置 EditField 具有我们自己的 self.subviews.materials_mats.list.frame.t = 0 self.subviews.materials_mats.edit.visible = false self.subviews.materials_mats.edit = self.subviews.search self.subviews.search.on_change = self.subviews.materials_mats:callback(	l
 {n} is satisfied with their position here. Everything is properly royal, properly furnished. And yet? A true Mountainhome must have a true throne! And a true ruler requires seven symbols, symbols not of this world. Mere steel will not suffice. Deeper. We must dig deeper.	{n1}对自己在这里的地位感到满意。一切都尽显皇家气派，陈设齐备。但这就够了吗？真正的山国都城必须有一座真正的王座！真正的统治者还需要七件象征，来自尘世之外的象征。寻常钢铁远远不够。更深。我们必须挖得更深。	hPt
+Announcement combat embark-heading [embark-outpost-label,$name]: {s} You have arrived. After a journey from the Mountainhomes into the forbidding wilderness beyond, your harsh trek has finally ended. Your party of seven is to make an outpost for the glory of all of {s}.	{s1}你们终于抵达了。历经从群山家园出发、穿越险恶荒野的漫长旅程，艰苦的跋涉至此告一段落。你们这支七人队伍，将在此建立一座前哨，为{s2}全体子民赢得荣光。	l
 DFHack help: "--timeUnits <units>" A unit of time for the value passed with the "--time" option. Units can be "frames" (raw FPS), "ticks" (unpaused game frames), or the in-world time measurements of "days", "months", or "years". If not specified, "ticks" is the default.	"--timeUnits <units>" 使用 "--time" 选项传递的值的时间单位。单位可以是 "frames"（原始 FPS）、"ticks"（未暂停的游戏帧）或 "days"、"months" 或 "years" 的世界时间测量值。如果不指定，则默认为 "ticks"。	l
 DFHack help: Events are mutually-exclusive - register a list of scripts along with relative weights, then tell the script to select and run one with the specified probabilities. The weights must be positive integers, but they do NOT have to sum to any particular number.	事件是互斥的 - 注册脚本列表以及相对权重，然后告诉脚本以指定的概率选择并运行一个。权重必须是正整数，但它们 NOT 必须总和为任何特定数字。	l
 DFHack help: If you instead select a stockpile or building, running empty-bin will empty *all* containers in the stockpile or building. Likewise, if you select a tile that has many items and the UI is showing the list of items, all containers on the tile will be dumped.	如果您选择储物堆或建筑物，则运行empty-bin 将清空储物堆或建筑物中的*所有*容器。同样，如果您选择包含许多项目的图块并且 UI 显示项目列表，则该图块上的所有容器都将被转储。	l
@@ -897,6 +903,7 @@ DFHack help: There are many ready-to-use blueprints in the blueprint library tha
 DFHack help: ``LoadPalette(path)``: Load a color palette from the text file at "path". This file must be in the same format as "/data/init/colors.txt". If there is an error any changes will be reverted and this function will return false (returns true normally).	``LoadPalette(path)``：从 "path" 的文本文件加载调色板。该文件的格式必须与"/data/init/colors.txt"相同。如果出现错误，任何更改都将被恢复，并且此函数将返回 false（通常返回 true）。	l
 DFHack help: self.shared = { unit_ids={}, filtered_unit_ids={}, sort_stack={}, sort_order={}, -- list of indices into filtered_unit_ids (or cache.filtered_units) cache={}, -- cached pointers; reset at end of frame cursor_col=nil, set_cursor_col_fn=self:callback(	self.shared = {unit_ids={},filtered_unit_ids={},sort_stack={},sort_order={},--filtered_unit_ids（或cache.filtered_units）的索引列表cache={},--缓存的指针；在帧末尾重置cursor_col = nil，set_cursor_col_fn = self：callback（	l
 The world generator is having trouble placing tundra regions. Make sure your parameters and presets can support mid-elevation, low-to-mid drainage, freezing areas. Alternatively, you can reduce the number of tundra squares and regions required by the parameters.	世界生成器无法放置苔原区域。请确保参数和预设支持中等海拔、中低排水且会冻结的区域。也可以减少参数要求的苔原方格和区域数量。	hP
+Announcement combat embark-heading [embark-outpost-label]: {s} You have arrived. After a journey from the Mountainhomes into the forbidding wilderness beyond, your harsh trek has finally ended. Your party of seven is to make an outpost for the glory of all of .	{s1}你们终于抵达了。历经从群山家园出发、穿越险恶荒野的漫长旅程，艰苦的跋涉至此告一段落。你们这支七人队伍，将在此建立一座前哨，为全体子民赢得荣光。	l
 Announcement combat fortress-announcement []: Your fortress is out of food! Are your farmplots working? Make sure you are planting edible plants. Try building a butcher's shop and slaughtering some livestock. Perhaps you can gather plants, fruit, or go fishing.	你的要塞没有食物了！农田是否正常运作？务必种植可食用的植物。试着建造屠宰坊，宰杀一些牲畜。也许可以采集植物、水果，或者去捕鱼。	l
 DFHack help: "--hatecreature [ <token> [<token> ...] ]" As in "--likecreature" above, you can just list the species in the token. The creature should be a type of "HATEABLE" vermin which isn't already explicitly liked, but no check is performed to enforce this.	"--hatecreature [ <token> [<token> ...] ]" 与上面的 "--likecreature" 一样，您可以只在代币中列出物种。该生物应该是一种尚未明确喜欢的 "HATEABLE" 害虫，但没有执行任何检查来强制执行此操作。	l
 DFHack help: When choosing the type of guildhall or temple to dedicate, you can search for the relevant profession, religion, or deity by name. For temples, you can also search for the "spheres" associated with the deity or religion, such as "wealth" or "lies".	选择供奉的会馆或寺庙类型时，可以通过名称搜索相关职业、宗教或神祇。对于寺庙，您还可以搜索与神灵或宗教相关的 "spheres"，例如 "wealth" 或 "lies"。	l
@@ -2050,6 +2057,7 @@ the bestowal of the title of {s} in {p} after attaining sufficient skill with {s
 the bestowal of the title of {s} in {p} after attaining sufficient skill with {s}, participating in {d} battles, slaying {d} enemies, and {d} years of membership in the wilds	在荒野中，在{s2}方面达到足够的技艺水平、参加{d1}场战斗、杀死{d2}名敌人及拥有{d3}年会龄后授予{p1}的{s1}头衔	htEi
 {a} received the title of {s} in {p} after attaining sufficient skill with {s}, participating in {d} battles, slaying {d} enemies, and being a member for a year in the wilds.	{a1}在荒野中在{s2}方面达到足够的技艺水平、参加{d1}场战斗、杀死{d2}名敌人及入会满一年后，获得了{p1}的{s1}头衔。	ht
 A small omnivorous animal with a bright mask of fur. It is nocturnal and found in temperate forests. It is a curious animal and has been known to steal from civilized areas.	一种小的杂食性动物，长着明亮的皮毛。它在夜间活动，常被发现于温带森林中。它是一种奇特的动物，会在文明聚落中偷窃。	lP
+Announcement combat fortress-embark [embark-heading,embark-supplies,$travel-site]: {s} {s} A new chapter of dwarven history begins here at this place, {s}. Strike the earth!	{s1}{s2}矮人历史的新篇章在这里{s3}开始书写。开山掘地！	l
 DFHack help: "dwarf-op --select jobs,Stoneworker --applytypes fast3,strong5" Boost the speed and strength of your masons so they can carry boulders to their workshop faster.	"dwarf-op --select jobs,Stoneworker --applytypes fast3,strong5" 提高石匠的速度和力量，以便他们能够更快地将巨石运送到车间。	l
 DFHack help: "gui/gm-editor reqscript('gui/quickfort').view" Opens the editor on a running instance of gui/quickfort. Useful for debugging GUI tool state during development.	"gui/gm-editor reqscript('gui/quickfort').view" 在 gui/quickfort. 的运行实例上打开编辑器对于开发期间调试 GUI 工具状态很有用。	l
 DFHack help: "regrass -l" Print all valid grass raw IDs for use with "--plant". Both numerical and string IDs are provided. This ignores all other options and skips regrass.	"regrass -l" 打印所有有效的草原始 ID 以与 "--plant" 一起使用。提供了数字 ID 和字符串 ID。这会忽略所有其他选项并跳过重草。	l
@@ -7513,6 +7521,7 @@ Announcement combat agreement-core [agreement-party-list]: {s} made an agreement
 Announcement combat agreement-title-core [agreement-party-list,$historical-actor]: the plot of {s} to abduct {s}	{s1}绑架{s2}的阴谋	l
 Announcement combat agreement-title-core [agreement-party-list,$office,$name]: the bribery of{s} as a {s} of {s}	{s1}以{s3}的{s2}身份进行的受贿	l
 Announcement combat dialogue-battle-death [dialogue-battle-person,$creature,$name]: {s} was slainby a {s} of {s}	{s1}被{s3}的一只{s2}杀死了	l
+Announcement combat embark-revisit-heading [$embark-race-adjective]: A {s} Outpost Revisited: You have returned.	重访{s1}前哨：你回来了。	l
 Announcement combat fortress-arrival []: Others were too nervous to make the journey to this miserable fortress.	其他人因太过害怕，未敢踏上前往这座悲惨要塞的旅途。	l
 Announcement combat fortress-arrival []: Some migrants have arrived at this miserable place, despite the danger.	一些移民不顾危险，来到了这个悲惨的地方。	l
 Announcement combat justice-interrogation-sentence []: Made intimidating remarks in order to elicit information.	以言语恐吓受审者，试图获取情报。	l
@@ -12512,6 +12521,7 @@ Announcement combat agreement-title-core []: the agreement by to establish a tem
 Announcement combat agreement-title-core []: the joining of with to entertain the world	与同行，为世人表演	l
 Announcement combat agreement-title-core [agreement-party-list]: the embezzlement of{s}	{s1}进行的挪用资金	l
 Announcement combat diplomacy-cause []: the adversary's abuse of the aggressor's fallen	对方虐待进攻方的阵亡者	l
+Announcement combat embark-revisit-heading []: An Outpost Revisited: You have returned.	重访前哨：你回来了。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Clay vanished.	{s1}取消了{s2}：黏土不见了。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Getting water.	{s1}取消了{s2}：正在取水。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: No ammunition.	{s1}取消了{s2}：没有弹药。	l
@@ -12767,6 +12777,7 @@ Announcement combat agreement-title-core [$name]: the joining of with to oust {s
 Announcement combat agreement-title-core []: the plot of to sabotage the activities of	破坏活动的阴谋	l
 Announcement combat agreement-title-core [agreement-party-list,$name]: {s} as a of {s}	{s1}（在{s2}任职）	l
 Announcement combat diplomatic-event-core [$name,$name]: {s} rejected contact with {s}	{s1}拒绝与{s2}建立联系	l
+Announcement combat embark-revisit-heading []: A Outpost Revisited: You have returned.	重访前哨：你回来了。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Getting food.	{s1}取消了{s2}：正在取食物。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Going to bed.	{s1}取消了{s2}：正在就寝。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Path blocked.	{s1}取消了{s2}：路径受阻。	l
@@ -14277,6 +14288,7 @@ Announcement combat agreement-title-core [agreement-party-list]: concocted by {s
 Announcement combat body-result [layer-phrase]: {s} collapses into a lump of gore	{s1}塌成了一团血肉	l
 Announcement combat dialogue-battle-death [dialogue-battle-person]: {s} was slain	{s1}被杀死了	l
 Announcement combat dialogue-stock [dialogue-stock-item,dialogue-stock]: {s}, {s}	{s1}、{s2}	l
+Announcement combat embark-outpost-label [$embark-race-adjective]: A {s} Outpost:	一座{s1}前哨：	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: No item.	{s1}取消了{s2}：没有物品。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Too sad.	{s1}取消了{s2}：过于悲伤。	l
 Announcement combat head [unit,owned-object,owned-object]: {s} bends {s} with {s}	{s1}用{s3}弯折{s2}	l
@@ -14938,6 +14950,7 @@ Announcement combat negotiation-opening []: negotiate amidst light conversation	
 Announcement combat negotiation-opening []: negotiate, keeping a sense of humor	以幽默的方式谈判	l
 Announcement combat rumor-event [rumor-person,$book]: {s} does not possess {s}.	{s2}不在{s1}手里。	l
 Announcement combat sentence [$item,merchant-address]: Splendid {s} there, {s}.	{s2}，那里的出色的{s1}。	l
+Announcement combat sentence [$person]: {s}. How do you like the sound of that?	{s1}。你觉得这个名字怎么样？	l
 Announcement combat sentence []: Ha! Such enthusiasm from one such as yourself.	哈！就凭你，也这么热心？	l
 Announcement combat sentence []: I've always dreamed of seeing far-away places.	我一直梦想着去看看遥远的地方。	l
 Announcement combat sentence [head,equipment]: {s}, but it is deflected by {s}!	{s1}，却被{s2}挡开了！	l
@@ -26737,6 +26750,7 @@ Announcement combat dialogue-family []: sixth eldest son	第六个儿子	l
 Announcement combat dialogue-family []: tenth eldest son	第十个儿子	l
 Announcement combat dialogue-family []: third eldest son	第三个儿子	l
 Announcement combat dialogue-trouble []: skulking vermin	潜伏的害兽	l
+Announcement combat embark-outpost-label []: An Outpost:	一座前哨：	l
 Announcement combat guard-building []: an abandoned shop	废弃商店	l
 Announcement combat guard-building []: the cheese market	奶酪市场	l
 Announcement combat justice-intrigue-place []: the wilds	荒野	l
@@ -27749,6 +27763,7 @@ Announcement combat dialogue-recognition [$person]: {s}	{s1}	l
 Announcement combat dialogue-trouble []: the occupation	那次占领	l
 Announcement combat diplomacy-cause []: a previous duel	此前的一场决斗	l
 Announcement combat diplomacy-cause []: an act of theft	一次盗窃	l
+Announcement combat embark-outpost-label []: A Outpost:	一座前哨：	l
 Announcement combat justice-intrigue-actor [$unit]: {s}	{s1}	l
 Announcement combat justice-intrigue-place [$name]: {s}	{s1}	l
 Announcement combat memorial-clause [$digits]: Born {s}	生于{s1}年	l
@@ -32172,6 +32187,7 @@ Announcement combat dialogue-family []: grandmother	祖母或外祖母	l
 Announcement combat dialogue-family []: grandparent	祖辈	l
 Announcement combat dialogue-trouble []: abductions	多起绑架	l
 Announcement combat diplomacy-cause []: persecution	迫害	l
+Announcement combat embark-charges [$creature]: {s}	{s1}	l
 Announcement combat guard-building []: a cloth shop	布料店	l
 Announcement combat inscription [$inscription]: {s}	{s1}	l
 Announcement combat justice-plot-core []: Start War	挑起战争	l
@@ -33401,6 +33417,7 @@ Announcement combat dialogue-trouble []: criminals	罪犯	l
 Announcement combat dialogue-trouble []: the beast	那头凶兽	l
 Announcement combat dialogue-trouble []: the death	那起死亡	l
 Announcement combat diplomacy-cause []: a ceremony	一次仪式	l
+Announcement combat embark-threat [$creature]: {s}	{s1}	l
 Announcement combat evasion [unit]: {s} jumps away	{s1}跳开了	l
 Announcement combat evasion [unit]: {s} rolls away	{s1}翻滚躲开了	l
 Announcement combat injury-subject []: many nerves	多条神经	l
@@ -39015,6 +39032,7 @@ Announcement combat dialogue-family []: parent	父母一方	l
 Announcement combat dialogue-family []: spouse	配偶	l
 Announcement combat diplomacy-cause []: a coup	一次政变	l
 Announcement combat diplomacy-cause []: a raid	一次突袭	l
+Announcement combat embark-charges []: charges	子民	l
 Announcement combat guard-building []: a house	房子	l
 Announcement combat impact-part []: body parts	多个身体部位	l
 Announcement combat memorial-death []: Drowned	溺亡	l
@@ -42061,6 +42079,7 @@ Announcement combat damage-verb []: bruising	挫伤	l
 Announcement combat damage-verb []: chipping	崩裂	l
 Announcement combat dialogue-family []: aunt	姑姨	l
 Announcement combat dialogue-family []: wife	妻子	l
+Announcement combat embark-threat []: beasts	野兽	l
 Announcement combat fraction []: the rest of	剩余部分	l
 Announcement combat impact-part [$body]: {s}	{s1}	l
 Announcement combat memorial-family []: wife	妻子	l
@@ -43582,7 +43601,7 @@ wrongfully convicted {n} of {s} in the wilds	在荒野中错误地判定{n1}犯�
 {n} cancels {s}: Job item lost or destroyed.	{n1}取消了{s1}：工作物品丢失或损毁。	hPt
 {n} engaged to induce a war of {e} upon {e}.	{n1}参与挑起{e1}对{e2}的战争。	hPt
 {n} has been elected to the position of {s}.	{n1}被选举为{s1}。	hPt
-{n} has revealed the presence of {n} to {n}.	{n1}向{n3}透露了{n2}的存在。	hPt
+{n} has revealed the presence of {b} to {n}.	{n1}向{n2}透露了{b1}的存在。	hPt
 {n} is throwing a tantrum, possessed by {n}!	{n1}被{n2}附身，正在大发脾气！	hPt
 {n} is throwing objects around the fortress!	{n1}正在要塞各处乱扔物品！	hPt
 {n} picks up the {s} and puts it in her {s}.	{n1}拾起了{s1}，并将其放入她的{s2}中。	hPt
@@ -48851,6 +48870,7 @@ you will need to reclaim the fort to play	但你需要先收复这座要塞，	w
 {n} has brought back a rumor from abroad.	{n1}带回了一则来自外地的传闻。	hPt
 {n} has imposed a ban on certain exports.	{n1}禁止出口某些物品。	hPt
 {n} has partially overcome the paralysis.	{n1}的麻痹消退了一些。	hPt
+{n} has revealed the presence of {b} to .	{n1}透露了{b1}的存在。	hPt
 {n} is a {s}, animated by unknown forces.	{n}是被未知力量复活的{s}。	ht
 {n} is an {s} born in a time before time.	{n}是{s}，诞生于时间开始之前。	ht
 {n} is in the middle of the story of {v}.	{n1}正在讲述这个故事：{v1}。	hPt
@@ -49390,6 +49410,7 @@ Fortress activity: suffix (not in squad)	（不在小队中）	li
 Game frames-per-second cap (default 100)	游戏FPS上限（默认100）	w
 Game frames-per-second cap (default {d})	游戏每秒帧数上限(默认{d})	wt
 Give a sermon inveighing against a value	发表反对某种价值观的布道	hP
+Has revealed the presence of {b} to {n}.	向{n1}透露了{b1}的存在。	hPt
 Have faith and all shall be rejuvenated.	心怀信念，一切都将重获生机。	hP
 He was one of the only ones of his kind.	他是同类中仅有的少数个体之一。	h
 Histories of Avarice and Resourcefulness	贪婪与智谋的编年史	w
@@ -55052,6 +55073,7 @@ Fortress activity: suffix (no burrow)	（没有活动区）	li
 Fortress activity: suffix (no temple)	（没有神殿）	li
 Greatly feared for violent oppositoin	非常害怕暴力的反抗	w
 Hang from {s} ({s} from {s}/Air/Lava)	悬挂于{s1}（{s2}，从{s3}／空气／熔岩）	hPt
+Has revealed the presence of {b} to .	透露了{b1}的存在。	hPt
 Her raw umber eyes have slightly thin	她深棕色眼睛的虹膜略显	l
 Hidden, cannot build at this location	不可见，无法在此处建造	wli
 His raw umber eyes have slightly thin	他深棕色眼睛的虹膜略显	l

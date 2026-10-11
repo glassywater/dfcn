@@ -19,6 +19,7 @@ using NativeAnnouncementLogRenderFn = void (*)(uint64_t, uint64_t, uint64_t, uin
 static NativeEntryHook g_native_announcement_log_entry;
 static NativeAnnouncementLogRenderFn g_real_native_announcement_log = nullptr;
 static std::atomic_uint g_active_native_announcement_callbacks{0};
+#include "native_announcement_identity.inc"
 #include "native_announcement_kinship.inc"
 
 static void capture_native_announcement_log(uint64_t owner, uint64_t second,
@@ -77,6 +78,7 @@ static void capture_native_announcement(void *manager, const NativeString *sourc
                 if (type == 301)
                     remember_native_mission_return_submission(
                         reinterpret_cast<uintptr_t>(source), text);
+                remember_native_announcement_unit_submission(type, text);
                 remember_native_announcement(type, text);
             }
         }
@@ -110,7 +112,10 @@ static void uninstall_native_announcement_hook() {
         g_real_native_announcement_log = nullptr;
         remember_native_announcement_log_owner(0);
     }
-    if (speech && announcement && log && kinship) clear_native_announcement_sources();
+    if (speech && announcement && log && kinship) {
+        clear_native_announcement_sources();
+        clear_native_announcement_unit_identities();
+    }
 }
 static bool install_native_announcement_hook() {
     if (g_native_announcement_entry.installed && g_native_speech_transform_entry.installed
