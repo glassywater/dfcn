@@ -170,6 +170,8 @@ void Overlay::render_native_fortress_layer(SDL_Renderer *renderer, bool stocks) 
     if (!captured_native_unit_chooser_records().empty())
         layout_fortress_unit_chooser(renderer);
     if (g_native_info_page == NativeInfoPage::Places)
+        layout_fortress_workshop_activities(renderer);
+    if (g_native_info_page == NativeInfoPage::Places)
         layout_fortress_location_list(renderer);
     if (g_native_info_page == NativeInfoPage::Labor &&
             (g_native_info_labor_page == NativeInfoLaborPage::StandingOrders ||

@@ -356,9 +356,55 @@ TranslationResult Overlay::translate_fortress_activity_display(
                 return true;
             };
             bool composed = false;
+            // A complete typed activity can retain mod annotation tags even
+            // when its namespace does not include that mod's tag grammar.
+            // Only strip a trailing sequence of single ASCII-word tags; the
+            // remaining complete action must translate before we own it.
+            const std::string_view source_view(source);
+            std::vector<std::pair<size_t, size_t>> tags;
+            size_t base_end = source.size();
+            while (base_end > 0 && source[base_end - 1] == ']') {
+                const size_t at = source.rfind('[', base_end - 1);
+                if (at == std::string::npos || at == 0 || at + 1 == base_end - 1 ||
+                    source[at - 1] != ' ') break;
+                bool valid = true, has_letter = false;
+                for (size_t byte = at + 1; byte + 1 < base_end; ++byte) {
+                    const unsigned char ch = static_cast<unsigned char>(source[byte]);
+                    const bool letter = (ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z');
+                    has_letter = has_letter || letter;
+                    if (!letter && !(ch >= '0' && ch <= '9') && ch != '_' && ch != '-') {
+                        valid = false;
+                        break;
+                    }
+                }
+                if (!valid || !has_letter) break;
+                size_t before = at;
+                while (before > 0 && source[before - 1] == ' ') --before;
+                tags.emplace_back(at, base_end);
+                base_end = before;
+            }
+            if (!tags.empty() && base_end > 0) {
+                auto base = translate_fortress_activity_display(source_view.substr(0, base_end), true);
+                if (base.usable() && base.changed() && !base.has_untranslated()) {
+                    result = std::move(base);
+                    size_t previous_end = base_end;
+                    for (auto tag = tags.rbegin(); tag != tags.rend(); ++tag) {
+                        const auto spacing = source_view.substr(previous_end, tag->first - previous_end);
+                        result.append(TranslationResult::translated(spacing, std::string(spacing),
+                            "activity-tag-spacing"), previous_end);
+                        const auto token = source_view.substr(tag->first, tag->second - tag->first);
+                        const auto target = exact_literal_translation(std::string(token));
+                        result.append(target ? TranslationResult::translated(token, *target, "activity-tag")
+                            : preserved_item_field(token, "activity-tag"), tag->first);
+                        previous_end = tag->second;
+                    }
+                    finish_item_display_result(result, source, "activity");
+                    composed = true;
+                }
+            }
             // Only the native activity graph's scoped statuses license a
             // wrapper; arbitrary parentheses and slashes remain one field.
-            if (source.ends_with(')')) {
+            if (!composed && source.ends_with(')')) {
                 const size_t at = source.rfind(" (");
                 if (at != std::string::npos && at > 0)
                     composed = suffix(at, std::string_view(source).substr(at),
@@ -1566,6 +1612,7 @@ void Overlay::layout_fortress_task_rows(SDL_Renderer *renderer) {
     // Restore all three owned columns after generic panel/prose layout.
     for (auto &match : prepared_matches_) {
         if (!is_fortress_task_field(match) ||
+            match.rule == kFortressWorkshopActivityRule ||
             match.target.empty() || match.native_split_duplicate) continue;
         layout_fortress_text_rows(renderer, {{&match}}, match.layout_x, match.layout_clip_right);
     }

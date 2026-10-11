@@ -35,6 +35,7 @@ std::vector<Match> Overlay::find_native_info_matches() const {
     }
     append_fortress_squad_alias_rows(screen_rows, result, only_y, nullptr);
     if (g_native_info_page == NativeInfoPage::Places) {
+        append_fortress_workshop_activities(screen_rows, result, only_y, false);
         append_fortress_farm_rows(screen_rows, result, only_y, false);
         append_fortress_place_names(screen_rows, result, only_y, false);
     }
