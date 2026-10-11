@@ -113,6 +113,9 @@ void Overlay::render_native_fortress_layer(SDL_Renderer *renderer, bool stocks) 
         if ((match.rule == kFortressItemCaptionRule || match.rule == kFortressItemUseRule) &&
                 match.layout_x >= 0 && match.layout_clip_right > match.layout_x)
             continue;
+        if (match.rule == kFortressFarmFieldRule ||
+                (match.rule == kFortressPlaceNameRule && match.layout_x >= 0 &&
+                 match.layout_clip_right > match.layout_x)) continue;
         if (const auto button = native_button_text_span(*gps_, match.x, match.x + match.length, y)) {
             match.layout_x = button->first;
             match.layout_length = button->second - button->first;
@@ -127,7 +130,13 @@ void Overlay::render_native_fortress_layer(SDL_Renderer *renderer, bool stocks) 
     layout_fortress_sort_captions();
     switch (g_native_info_page) {
     case NativeInfoPage::Creatures: break;
-    case NativeInfoPage::Places: layout_fortress_location(renderer); break;
+    case NativeInfoPage::Places:
+        // Places picture rows have independent name/activity columns. Apply
+        // their native field bounds after the generic whole-button sizing.
+        layout_fortress_build_menu(renderer);
+        layout_fortress_farm_rows(renderer);
+        layout_fortress_location(renderer);
+        break;
     case NativeInfoPage::Labor:
         layout_fortress_labor(renderer);
         if (g_native_info_labor_page == NativeInfoLaborPage::Kitchen ||

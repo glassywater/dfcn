@@ -88,6 +88,7 @@ struct NativeInfoTitleBinding {
     // Places' farm caption has its own caller frame, with the same native
     // building.name field but no information-sheet editing state.
     uintptr_t farm_name_return_address = 0;
+    uintptr_t farm_crop_return_address = 0;
     ptrdiff_t farm_building_slot = 0;
 };
 using NativeAnnouncementRowsFn = size_t (*)(const void *);
@@ -407,6 +408,14 @@ static void capture_native_tooltip_container(void *widget, uint32_t tick) {
     } catch (...) {}
 }
 static NativeInfoTitleBinding g_native_info_title_binding;
+static bool native_farm_name_caller(uintptr_t caller) {
+    return g_native_info_title_binding.farm_name_return_address &&
+        caller == g_native_info_title_binding.farm_name_return_address;
+}
+static bool native_farm_crop_caller(uintptr_t caller) {
+    return g_native_info_title_binding.farm_crop_return_address &&
+        caller == g_native_info_title_binding.farm_crop_return_address;
+}
 static std::vector<NativeCivilizationCaptionSite> g_native_civilization_caption_sites;
 static std::vector<NativeLocationPickerSite> g_native_location_picker_sites;
 static std::vector<NativeTravelBuildingSite> g_native_travel_building_sites;

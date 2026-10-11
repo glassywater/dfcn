@@ -185,6 +185,9 @@ static bool resolve_native_caption_profile(NativeCaptionProfile &profile) {
     // Its native formatter copies building.name whenever that field is
     // nonempty, even when the authored spelling is exactly "Farm Plot".
     profile.info_titles.farm_name_return_address = native_pe_address(profile.base, 0x39e048);
+    // The crop draw copies the selected plant's complete RAW name (+0x70)
+    // at record top+2, including Item Tagger's suffixes, without resizing.
+    profile.info_titles.farm_crop_return_address = native_pe_address(profile.base, 0x39e1f3);
     profile.info_titles.farm_building_slot = -0x170;
     // The spoor constructor alone shortens record+0x28 to 50 bytes here;
     // 0x407efd..0x40849d append its direction and optional party ownership.
@@ -671,6 +674,7 @@ static bool resolve_native_caption_profile(NativeCaptionProfile &profile) {
         profile.signatures.push_back({site.call,
             std::vector<unsigned char>(site.bytes.begin(), site.bytes.end())});
     }
+    profile.signatures.push_back({0x39e1ee, {0xe8,0x6d,0xb7,0x73,0x00}});
     // Guild and faith subpage callers use the same normal profile signature
     // gate as the new detail fields, for both supported native PE editions.
     profile.signatures.push_back({0x3b985e, {0xe8,0xfd,0x00,0x72,0x00}});

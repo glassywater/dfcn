@@ -843,6 +843,7 @@ void Overlay::layout_fortress_build_menu(SDL_Renderer *renderer) {
     for (Match &match : prepared_matches_) {
         if (match.target.empty() || match.native_split_duplicate ||
             match.rule == kFortressItemCaptionRule || match.rule == kFortressLaborWorkerRule ||
+            match.rule == kFortressFarmFieldRule ||
             match.rule == kFortressStandingOrderRule ||
             match.rule == kFortressAmmunitionChoiceRule ||
             match.rule == kFortressKitchenCaptionRule || match.rule == kFortressKitchenFoodRule ||

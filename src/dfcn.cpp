@@ -888,6 +888,7 @@ static constexpr int kFortressSiteNameRule = -157;
 static constexpr int kConversationPortraitRule = -158;
 static constexpr int kWorkOrderShopFieldRule = -162;
 static constexpr int kFortressJusticePlotRule = -160;
+static constexpr int kFortressFarmFieldRule = -161;
 
 static bool is_fortress_justice_field(const Match &match) {
     return match.rule == kFortressJusticeCaseRule || match.rule == kFortressJusticeDetailRule ||
@@ -2094,6 +2095,8 @@ struct NativeWorkOrderShopCaption {
 };
 static std::optional<NativeWorkOrderShopCaption> capture_native_work_order_shop_caption(
     uintptr_t caller, uintptr_t source);
+static bool native_farm_name_caller(uintptr_t caller);
+static bool native_farm_crop_caller(uintptr_t caller);
 
 struct NativeDrawnTextRow {
     int x = 0, y = 0;
@@ -4593,6 +4596,11 @@ private:
         std::vector<Match> &matches, int only_y) const;
     std::optional<SDL_Rect> capture_fortress_places_panel(
         const std::vector<std::string> &rows, int &tabs_y) const;
+    bool fortress_farm_plots_selected(const std::vector<std::string> &context,
+        const SDL_Rect &panel, int tabs_y) const;
+    void append_fortress_farm_rows(std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y, bool raw_layer) const;
+    void layout_fortress_farm_rows(SDL_Renderer *renderer);
     void append_fortress_place_names(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y, bool raw_layer) const;
     bool capture_current_fortress_site_name(NativeHistoryName &name,
@@ -16188,6 +16196,7 @@ static NativeKeybindingScope capture_native_keybinding_scope(const graphicst &gp
 #include "fortress_uniform_geometry.inc"
 #include "fortress_uniforms.inc"
 #include "fortress_zones.inc"
+#include "fortress_farm_rows.inc"
 #include "fortress_stockpiles.inc"
 #include "fortress_locations.inc"
 #include "fortress_location_list.inc"
@@ -17301,6 +17310,8 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     append_fortress_site_name(screen_rows, result, only_y,
         screen_override != nullptr);
     append_fortress_petition_site_names(screen_rows, result, only_y,
+        screen_override != nullptr);
+    append_fortress_farm_rows(screen_rows, result, only_y,
         screen_override != nullptr);
     append_fortress_place_names(screen_rows, result, only_y,
         screen_override != nullptr);
@@ -26171,7 +26182,8 @@ void Overlay::normalize_native_split_text() {
         if (match.rule == kToolbarTooltipBodyRule || match.rule == kToolbarTooltipKeyRule) continue;
         // Typed guild hover rows use ordinary addst once per line. Their
         // fixed native baselines must not inherit covered map font halves.
-        if ((match.rule == kFortressLocationListRule || match.rule == kWorkOrderShopFieldRule) &&
+        if ((match.rule == kFortressLocationListRule || match.rule == kFortressFarmFieldRule ||
+                match.rule == kFortressPlaceNameRule || match.rule == kWorkOrderShopFieldRule) &&
                 match.layout_fixed_baseline &&
                 !match.native_split_text) continue;
         // The overview document has already folded native text halves while
@@ -39847,6 +39859,7 @@ void Overlay::layout_multiline_matches() {
             continue;
         }
         if (match.layout_ellipsize || is_fortress_justice_field(match) ||
+            match.rule == kFortressFarmFieldRule ||
             match.rule == kWorkshopTaskRowRule ||
             match.rule == kWorkshopMaterialFieldRule ||
             match.rule == kAdventurePersonalityFieldRule ||
@@ -42861,6 +42874,7 @@ void Overlay::render(SDL_Renderer *renderer) {
         layout_fortress_header(renderer);
         layout_fortress_date(renderer);
         layout_fortress_build_menu(renderer);
+        layout_fortress_farm_rows(renderer);
         layout_fortress_zone_menu(renderer);
         layout_fortress_zone_details(renderer);
         layout_fortress_location(renderer);

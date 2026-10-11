@@ -33,6 +33,31 @@ std::optional<SDL_Rect> Overlay::capture_fortress_places_panel(
     return panel;
 }
 
+bool Overlay::fortress_farm_plots_selected(const std::vector<std::string> &context,
+        const SDL_Rect &panel, int tabs_y) const {
+    if (!gps_ || tabs_y < 0 || tabs_y >= gps_->dimy ||
+            context.size() != static_cast<size_t>(gps_->dimy)) return false;
+    // Every Places page shows this band. Only the selected native tab, not
+    // a crop word or an optional count, establishes the farm list.
+    int selected = -1, inactive = -1;
+    size_t cursor = static_cast<size_t>(panel.x);
+    for (const std::string_view caption : {
+            "Zones", "Locations", "Stockpiles", "Workshops", "Farm plots", "Siege engines"}) {
+        const auto at = context[tabs_y].find(caption, cursor);
+        if (at == std::string::npos ||
+                at + caption.size() > static_cast<size_t>(panel.x + panel.w)) return false;
+        bool top = false;
+        const auto *cell = cell_at(static_cast<int>(at), tabs_y, &top);
+        if (!cell) return false;
+        const int color = (cell[1] << 16) | (cell[2] << 8) | cell[3];
+        if (caption == "Farm plots") selected = color;
+        else if (inactive < 0) inactive = color;
+        else if (inactive != color) return false;
+        cursor = at + caption.size();
+    }
+    return selected >= 0 && inactive >= 0 && selected != inactive;
+}
+
 // Places' picture rows contain user-authored names, not text-entry widgets.
 // Claim complete names and siege job fields before generic matching separates
 // Chinese from ASCII suffixes or consumes another column as a name.
@@ -41,13 +66,14 @@ void Overlay::append_fortress_place_names(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y, bool raw_layer) const {
     if (!gps_ || rows.size() != static_cast<size_t>(gps_->dimy)) return;
     auto context = rows;
-    if (raw_layer) {
-        for (int y = 0; y < gps_->dimy; ++y)
-            for (int x = 0; x < gps_->dimx; ++x) {
-                const auto ch = visible_char_at(x, y);
-                context[y][x] = ch ? static_cast<char>(ch) : ' ';
-            }
-    }
+    // A name claimed by the farm reader still establishes this record's
+    // first column. Discover roles from the native row, so a remaining
+    // status cannot become an authored name after that column is blanked.
+    for (int y = 0; y < gps_->dimy; ++y)
+        for (int x = 0; x < gps_->dimx; ++x) {
+            const auto ch = visible_char_at(x, y);
+            context[y][x] = ch ? static_cast<char>(ch) : ' ';
+        }
     int tabs_y = -1;
     const auto panel = capture_fortress_places_panel(context, tabs_y);
     if (!panel || (only_y >= 0 && (only_y <= tabs_y ||
@@ -57,25 +83,7 @@ void Overlay::append_fortress_place_names(std::vector<std::string> &rows,
         const auto *cell = cell_at(x, y, &top);
         return cell ? (cell[1] << 16) | (cell[2] << 8) | cell[3] : -1;
     };
-    const bool farm_plots = [&] {
-        // Every Places page shows this band. The selected caption, not a
-        // crop word or an optional planted count, establishes the farm page.
-        int selected = -1, inactive = -1;
-        size_t cursor = static_cast<size_t>(panel->x);
-        for (const std::string_view caption : {
-                "Zones", "Locations", "Stockpiles", "Workshops", "Farm plots", "Siege engines"}) {
-            const auto at = context[tabs_y].find(caption, cursor);
-            if (at == std::string::npos ||
-                at + caption.size() > static_cast<size_t>(panel->x + panel->w)) return false;
-            const int color = color_at(static_cast<int>(at), tabs_y);
-            if (color < 0) return false;
-            if (caption == "Farm plots") selected = color;
-            else if (inactive < 0) inactive = color;
-            else if (inactive != color) return false;
-            cursor = at + caption.size();
-        }
-        return selected >= 0 && inactive >= 0 && selected != inactive;
-    }();
+    const bool farm_plots = fortress_farm_plots_selected(context, *panel, tabs_y);
     int siege_heading_y = -1;
     for (int y = tabs_y + 1; y < panel->y + panel->h; ++y) {
         for (const auto &field : split_text_fields(context[y])) {
