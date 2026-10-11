@@ -12,7 +12,7 @@ static bool capture_native_history_negotiation(uintptr_t record,
         {"siege_site", 0x20, 's', false}, {"outcome", 0x24, 0, false},
         {"speaker_negotiation", 0x28, 0, false}, {"speaker_persuasion", 0x2c, 0, false},
         {"speaker_other", 0x30, 0, false}, {"speaker_rating", 0x34, 0, false},
-        {"recipient_negotiation", 0x38, 0, false}, {"recipient_persuasion", 0x3c, 0, false},
+        {"recipient_negotiation", 0x38, 0, false}, {"recipient_judgment", 0x3c, 0, false},
         {"recipient_other", 0x40, 0, false}, {"recipient_rating", 0x44, 0, false},
     };
     for (const auto &entry : schema) {
@@ -42,15 +42,18 @@ static bool capture_native_history_negotiation(uintptr_t record,
         fields.emplace(prefix + key, std::move(copy));
     }
     std::string title;
+    bool position_present = false;
     if (fields.at(prefix + "recipient_entity").front() != -1 &&
         fields.at(prefix + "position").front() != -1) {
         const uintptr_t base = native_history_profile_base();
         const int32_t entity = fields.at(prefix + "position_entity").front();
         // Missing position/entity is the native ordinary affiliation branch.
         if (native_history_find_subject(base, NativeHistoryObjectKind::Entity, entity) &&
-            !native_history_position_name(base, entity, fields.at(prefix + "position").front(), 0, title))
+            !native_history_position_name(base, entity, fields.at(prefix + "position").front(), 0, title,
+                &position_present))
             return false;
     }
+    fields.emplace(prefix + "position_present", std::vector<int32_t>{position_present ? 1 : 0});
     result.texts.emplace(prefix + "position_title", std::move(title));
     return true;
 }

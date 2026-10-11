@@ -40,9 +40,11 @@ static uint64_t native_identity_source_fingerprint(std::string_view source,
 static bool &native_unit_identity_rendering() {
     return reloadable_thread_state<bool, struct NativeUnitIdentityRenderingTag>();
 }
+static uint64_t native_mission_return_context();
 static uint64_t native_identity_translation_context() {
     constexpr uint64_t formatter_scope = 0x9e3779b97f4a7c15ULL;
     return g_native_unit_identity_context.load(std::memory_order_acquire) ^
+        native_mission_return_context() ^
         (native_unit_identity_rendering() ? formatter_scope : 0);
 }
 

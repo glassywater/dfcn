@@ -1,0 +1,31 @@
+edition	formatter	instruction_va	literal_va	file_offset	literal
+reference	meeting-topic	140b95043	0x1416e0088	0x16df288	a peace agreement
+reference	meeting-topic	140b95058	0x1416e0070	0x16df270	a lumber agreement
+reference	meeting-topic	140b9506d	0x1416dffe8	0x16df1e8	the establishment of landed nobility
+reference	meeting-topic	140b95082	0x1416dffc0	0x16df1c0	the elevation of the landed nobility
+reference	meeting-topic	140b95097	0x1416e0028	0x16df228	a trade agreement
+reference	meeting-topic	140b950ac	0x1416e0010	0x16df210	a tribute agreement
+reference	meeting-topic	140b950c1	0x1416dff68	0x16df168	a demand of unconditional surrender
+reference	meeting-topic	140b950d6	0x1416dff50	0x16df150	a declaration of war
+reference	meeting-topic	140b950eb	0x1416dffb0	0x16df1b0	an alliance
+reference	meeting-topic	140b95100	0x1416dff90	0x16df190	a strengthening of trade ties
+reference	meeting-topic	140b95115	0x1416dfed0	0x16df0d0	a vague agreement
+reference	agreement-party	1400e2c03	0x1415e90d8	0x15e82d8	, 
+reference	agreement-party	1400e2c23	0x1415e9110	0x15e8310	 and 
+reference	agreement-party	1400e2c60	0x1415e90d8	0x15e82d8	, 
+reference	agreement-party	1400e2c80	0x1415e9110	0x15e8310	 and 
+classic	meeting-topic	140b92083	0x1416dae50	0x16d9c50	a peace agreement
+classic	meeting-topic	140b92098	0x1416dae38	0x16d9c38	a lumber agreement
+classic	meeting-topic	140b920ad	0x1416dae90	0x16d9c90	the establishment of landed nobility
+classic	meeting-topic	140b920c2	0x1416dae68	0x16d9c68	the elevation of the landed nobility
+classic	meeting-topic	140b920d7	0x1416dade0	0x16d9be0	a trade agreement
+classic	meeting-topic	140b920ec	0x1416dadc8	0x16d9bc8	a tribute agreement
+classic	meeting-topic	140b92101	0x1416dae10	0x16d9c10	a demand of unconditional surrender
+classic	meeting-topic	140b92116	0x1416dadf8	0x16d9bf8	a declaration of war
+classic	meeting-topic	140b9212b	0x1416dad18	0x16d9b18	an alliance
+classic	meeting-topic	140b92140	0x1416dacf8	0x16d9af8	a strengthening of trade ties
+classic	meeting-topic	140b92155	0x1416dadb0	0x16d9bb0	a vague agreement
+classic	agreement-party	1400e2b93	0x1415e40c4	0x15e2ec4	, 
+classic	agreement-party	1400e2bb3	0x1415e40bc	0x15e2ebc	 and 
+classic	agreement-party	1400e2bf0	0x1415e40c4	0x15e2ec4	, 
+classic	agreement-party	1400e2c10	0x1415e40bc	0x15e2ebc	 and 

@@ -33,18 +33,18 @@ const auto agreement_party = [&](int32_t id) -> std::optional<Pieces> {
 const auto agreement_title = [&]() -> std::optional<Pieces> {
     if (!number("agreement_present")) return term("an agreement");
     const int32_t type = number("agreement_type");
-    // The native conclusion formatter has no specific noun for demonic
-    // binding or a subjectless agreement. Preserve the known object kind.
-    if (type == -1 || type == 1) return term("an agreement");
+    // b820ba/b820ca and conclusion jump-table slot 1 keep the noun empty,
+    // then still append the other party and the conclusion reason.
+    if (type == -1 || type == 1) return Pieces{};
     static constexpr const char *titles[] = {
         "", "", "a residency agreement", "a citizenship agreement", "a parley",
         "corrupt dealing", "a theft deal", "a promise of position", "an assassination plot",
         "an abduction plot", "a sabotage plot", "", "", "an infiltration plot",
         "a framing plot", "a war starting plot", "a request to offer service", "",
     };
-    if (type < 0 || type >= static_cast<int32_t>(std::size(titles))) return std::nullopt;
+    if (type < 0 || type >= static_cast<int32_t>(std::size(titles))) return Pieces{};
     if (type == 0) {
-        const char *title = "an agreement";
+        const char *title = nullptr;
         switch (agreement_data(0)) {
         case 0: title = "an insurrection mission"; break;
         case 1: title = "an adventure"; break;
@@ -55,16 +55,16 @@ const auto agreement_title = [&]() -> std::optional<Pieces> {
         case 42: title = "a performance tour"; break;
         default: break;
         }
-        return term(title);
+        return title ? term(title) : std::optional<Pieces>{Pieces{}};
     }
     if (type == 11) {
         const int32_t corruption = number("agreement_corruption");
         return corruption == 0 ? term("a foiled bribery conspiracy") : corruption == 2 ?
             term("a foiled corruption conspiracy") : corruption == 3 ?
-            term("a foiled embezzlement conspiracy") : std::nullopt;
+            term("a foiled embezzlement conspiracy") : std::optional<Pieces>{Pieces{}};
     }
     if (type == 12) return agreement_data(3) == 2 ? term("an agreement to establish a temple") :
-        agreement_data(3) == 11 ? term("an agreement to establish a guildhall") : std::nullopt;
+        agreement_data(3) == 11 ? term("an agreement to establish a guildhall") : std::optional<Pieces>{Pieces{}};
     if (type == 17) {
         const auto artifact = subject(NativeHistoryObjectKind::Artifact, agreement_data(2));
         if (!artifact) return std::nullopt;
@@ -88,7 +88,8 @@ const auto agreement_formation = [&]() -> std::optional<Pieces> {
     const auto render = [&](std::string_view key, const std::vector<Pieces> &values = {}) {
         return scoped_apply("agreement-core", key, values);
     };
-    if (!number("agreement_present")) return render("a corrupt agreement was formed");
+    if (!number("agreement_present") || numbers("agreement_parties").empty())
+        return render("a corrupt agreement was formed");
     const int32_t type = number("agreement_type");
     if (type < 0 || type > 17) return render("a corrupt agreement was formed");
     bool valid = true;
@@ -126,25 +127,32 @@ const auto agreement_formation = [&]() -> std::optional<Pieces> {
         std::string key = "{s} joined with {s}";
         const int32_t reason = agreement_data(0);
         if (reason == 0) {
-            key += " to oust {s} from {s}";
-            values.push_back(object(NativeHistoryObjectKind::Entity, 4));
-            values.push_back(object(NativeHistoryObjectKind::Site, 3));
+            key += " to oust";
+            if (agreement_data(4) >= 0) {
+                key += " {s}";
+                values.push_back(object(NativeHistoryObjectKind::Entity, 4));
+            }
+            key += " from";
+            if (agreement_data(3) >= 0) {
+                key += " {s}";
+                values.push_back(object(NativeHistoryObjectKind::Site, 3));
+            }
         } else if (reason == 1) key += " to live a life of adventure";
         else if (reason == 23) key += " in order to be brought to safety";
         else if (reason == 39) key += " after being compelled to serve";
         else if (reason == 42) key += " to entertain the world";
         else if (reason == 2 || reason == 24) {
             if (reason == 2) key += " as a guide";
-            else key += " to help rescue {s}";
+            else key += " to help rescue";
             if (agreement_data(5) >= 0 || agreement_data(4) >= 0) {
-                if (reason == 2) key += " to find {s}";
+                key += reason == 2 ? " to find {s}" : " {s}";
                 values.push_back(agreement_data(5) >= 0 ?
                     object(NativeHistoryObjectKind::Figure, 5) :
                     require(identity(agreement_data(4), "agreement_identity")));
             } else if (reason == 2 && agreement_data(3) >= 0) {
                 key += " to {s}";
                 values.push_back(object(NativeHistoryObjectKind::Site, 3));
-            } else if (reason == 24) return std::nullopt;
+            }
         }
         body = render(key, values);
         break;
@@ -155,10 +163,10 @@ const auto agreement_formation = [&]() -> std::optional<Pieces> {
         const int32_t reason_id = agreement_data(0);
         const int32_t reason_data = reason_id == 4 ? agreement_data(5) : -1;
         auto reason = history_event_reason_clause(reason_id);
-        if (!reason) return std::nullopt;
         if (reason_id == 4 && reason_data == -1)
             reason = HistoryEventClause{4, "due to their cosmic similarity", 0};
-        const auto motive = clause(*reason, reason_data);
+        // b5a6c0 leaves unknown and explicit empty reason selectors blank.
+        const auto motive = reason ? clause(*reason, reason_data) : std::optional<Pieces>{Pieces{}};
         if (!motive) return std::nullopt;
         if (!motive->empty()) body = render(
             "{s} aided {s} in becoming a permanent part of the living world {s}",
@@ -200,20 +208,27 @@ const auto agreement_formation = [&]() -> std::optional<Pieces> {
         break;
     case 5: {
         const int32_t action = agreement_data(0);
-        if (action < 247 || action > 249) return std::nullopt;
         std::string key = action == 247 ? "{s} began accepting bribes in exchange for leniency" :
             action == 248 ? "{s} began embezzling funds" :
-            "{s} began passing a portion of corruptly-obtained funds";
+            action == 249 ? "{s} began passing a portion of corruptly-obtained funds" : "{s} began";
         std::vector<Pieces> values{party(1)};
         if (number("agreement_position_present")) {
-            auto title = office(text("agreement_position"));
-            if (!title) {
+            const auto position = text("agreement_position");
+            auto title = position.empty() ? std::optional<Pieces>{Pieces{}} : office(position);
+            if (!title && !position.empty()) {
                 const auto translated = exact_literal_translation(text("agreement_position"));
                 if (translated) title = Pieces{piece(*translated, neutral)};
             }
-            values.push_back(require(title));
-            values.push_back(object(NativeHistoryObjectKind::Entity, 4));
-            key += number("agreement_position_unique") ? " as the {s} of {s}" : " as a {s} of {s}";
+            if (position.empty()) {
+                const auto action_body = render(key, values);
+                if (!action_body) return std::nullopt;
+                values = {*action_body, object(NativeHistoryObjectKind::Entity, 4)};
+                key = number("agreement_position_unique") ? "{s} as the of {s}" : "{s} as a of {s}";
+            } else {
+                values.push_back(require(title));
+                values.push_back(object(NativeHistoryObjectKind::Entity, 4));
+                key += number("agreement_position_unique") ? " as the {s} of {s}" : " as a {s} of {s}";
+            }
         }
         if (action == 249 && party_exists(agreement_data(2))) {
             key += " to {s}";
@@ -232,13 +247,19 @@ const auto agreement_formation = [&]() -> std::optional<Pieces> {
             key = "{s} plotted to steal {s}";
             values.push_back(require(subject(NativeHistoryObjectKind::Artifact, agreement_data(3))));
         } else if (type == 8 || type == 9) {
-            key = type == 8 ? "{s} plotted to assassinate {s}" : "{s} plotted to abduct {s}";
-            values.push_back(object(NativeHistoryObjectKind::Figure, 3));
+            key = type == 8 ? "{s} plotted to assassinate" : "{s} plotted to abduct";
+            if (agreement_data(3) >= 0) {
+                key += " {s}";
+                values.push_back(object(NativeHistoryObjectKind::Figure, 3));
+            }
         } else {
-            key = "{s} plotted to sabotage the activities of {s}";
-            if (agreement_data(3) >= 0) values.push_back(object(NativeHistoryObjectKind::Figure, 3));
-            else if (agreement_data(4) >= 0) values.push_back(object(NativeHistoryObjectKind::Entity, 4));
-            else values.push_back(object(NativeHistoryObjectKind::Site, 5));
+            key = "{s} plotted to sabotage the activities of";
+            if (agreement_data(3) >= 0 || agreement_data(4) >= 0 || agreement_data(5) >= 0) {
+                key += " {s}";
+                if (agreement_data(3) >= 0) values.push_back(object(NativeHistoryObjectKind::Figure, 3));
+                else if (agreement_data(4) >= 0) values.push_back(object(NativeHistoryObjectKind::Entity, 4));
+                else values.push_back(object(NativeHistoryObjectKind::Site, 5));
+            }
             if (agreement_data(5) >= 0 && (agreement_data(3) >= 0 || agreement_data(4) >= 0)) {
                 key += " at {s}";
                 values.push_back(object(NativeHistoryObjectKind::Site, 5));
@@ -274,24 +295,29 @@ const auto agreement_formation = [&]() -> std::optional<Pieces> {
         const int32_t corruption = number("agreement_corruption");
         const char *key = corruption == 0 ? "{s} concocted a bribery conspiracy" :
             corruption == 2 ? "{s} concocted a corruption conspiracy" :
-            corruption == 3 ? "{s} concocted a embezzlement conspiracy" : nullptr;
-        if (!key) return std::nullopt;
+            corruption == 3 ? "{s} concocted a embezzlement conspiracy" : "{s} concocted";
         body = render(key, {require(party_list(numbers("agreement_criminals")))});
         break;
     }
     case 12: {
         const int32_t building = agreement_data(3), tier = number("agreement_location_tier");
-        if ((building != 2 && building != 11) || (tier != 1 && tier != 2)) return std::nullopt;
-        std::string key = "{s} agreed to establish ";
-        key += building == 2 ? (tier == 2 ? "a temple complex" : "a temple") :
-            (tier == 2 ? "a grand guildhall" : "a guildhall");
+        std::string key = "{s} agreed to establish";
+        if ((building == 2 || building == 11) && (tier == 1 || tier == 2)) {
+            key += " ";
+            key += building == 2 ? (tier == 2 ? "a temple complex" : "a temple") :
+                (tier == 2 ? "a grand guildhall" : "a guildhall");
+        }
         key += " for {s}";
         body = render(key, {party(1), party(0)});
         break;
     }
     case 13: {
-        std::vector<Pieces> values{party(0), object(NativeHistoryObjectKind::Entity, 2)};
-        std::string key = "{s} plotted to infiltrate {s}";
+        std::vector<Pieces> values{party(0)};
+        std::string key = "{s} plotted to infiltrate";
+        if (agreement_data(2) >= 0) {
+            key += " {s}";
+            values.push_back(object(NativeHistoryObjectKind::Entity, 2));
+        }
         const uint32_t flags = static_cast<uint32_t>(agreement_data(3));
         // 2ab40d..2ab4e1 inserts 1,2,4,8; the caption dispatcher emits
         // treasures, sabotage, terror, coup in that same native order.
@@ -321,18 +347,42 @@ const auto agreement_formation = [&]() -> std::optional<Pieces> {
             "kidnapping", "attempted kidnapping", "attempted theft", "treason", "espionage", "bribery",
         };
         const int32_t crime = agreement_data(4);
-        if (crime < 0 || crime >= static_cast<int32_t>(std::size(crimes))) return std::nullopt;
-        body = render("{s} plotted to frame {s} for {s} by fooling {s}",
-            {party(0), object(NativeHistoryObjectKind::Figure, 2),
-             require(scoped_apply("agreement-crime", crimes[crime], {})), object(NativeHistoryObjectKind::Figure, 3)});
+        std::vector<Pieces> values{party(0)};
+        std::string key = "{s} plotted to frame";
+        if (agreement_data(2) >= 0) {
+            key += " {s}";
+            values.push_back(object(NativeHistoryObjectKind::Figure, 2));
+        }
+        key += " for";
+        if (crime >= 0 && crime < static_cast<int32_t>(std::size(crimes))) {
+            key += " {s}";
+            values.push_back(require(scoped_apply("agreement-crime", crimes[crime], {})));
+        }
+        key += " by fooling";
+        if (agreement_data(3) >= 0) {
+            key += " {s}";
+            values.push_back(object(NativeHistoryObjectKind::Figure, 3));
+        }
+        body = render(key, values);
         if (agreement_data(1) != agreement_data(0)) influence = agreement_data(1);
         break;
     }
-    case 15:
-        body = render("{s} plotted to induce a war of {s} upon {s}",
-            {party(0), object(NativeHistoryObjectKind::Entity, 2), object(NativeHistoryObjectKind::Entity, 3)});
+    case 15: {
+        std::vector<Pieces> values{party(0)};
+        std::string key = "{s} plotted to induce a war of";
+        if (agreement_data(2) >= 0) {
+            key += " {s}";
+            values.push_back(object(NativeHistoryObjectKind::Entity, 2));
+        }
+        key += " upon";
+        if (agreement_data(3) >= 0) {
+            key += " {s}";
+            values.push_back(object(NativeHistoryObjectKind::Entity, 3));
+        }
+        body = render(key, values);
         influence = agreement_data(1);
         break;
+    }
     case 16: {
         std::string key = "{s} requested that {s} make an offer of service";
         std::vector<Pieces> values{party(0), party(1)};

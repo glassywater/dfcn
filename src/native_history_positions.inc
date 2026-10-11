@@ -1,7 +1,8 @@
 // Native entity-position title lookup shared by event adapters.
 static bool native_history_position_name(uintptr_t image, int32_t entity_id,
-        int32_t position_id, int variant, std::string &title) {
+        int32_t position_id, int variant, std::string &title, bool *found = nullptr) {
     title.clear();
+    if (found) *found = false;
     if (entity_id < 0 || position_id < 0) return true;
     // getSentence at RVA b79490 uses site_civ, not the creator's civ.
     // historical_entity.positions.own is +0x10c0; entity_position.id is +0x20.
@@ -31,6 +32,7 @@ static bool native_history_position_name(uintptr_t image, int32_t entity_id,
         int32_t id = -1;
         if (!position_at(index, position, id)) return false;
         if (id != position_id) continue;
+        if (found) *found = true;
         // 0 = neutral, 1 = female, 2 = male, 3 = RAW squad category.
         // The last field is entity_position.squad[0], never squad.alias. Native
         // gender-specific empty labels fall back to the neutral singular.

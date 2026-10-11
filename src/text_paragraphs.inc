@@ -47,18 +47,20 @@ static std::optional<std::string> native_source_for_rows(
 // Shared measured reflow for bounded native paragraphs. Source rows retain
 // independent suppression ownership even when Chinese uses fewer lines.
 // Translation and layout are shared by setup, help, chronicles and site news.
-bool Overlay::append_bounded_paragraph(std::vector<Match> rows,
-        std::string_view target, std::vector<std::string> &screen_rows,
-        std::vector<Match> &matches, int only_y, int clip_right, int box_right,
-        const std::vector<int> &foregrounds, bool clipped_start, int box_left,
-        std::optional<NativeParagraphViewport> viewport,
+// Pure glyph measurement shared by native allocation and bounded drawing.
+// The full layout depends on text, colors, semantic words, width and font;
+// source rows, scroll offsets and suppression ownership do not enter its cache.
+bool Overlay::measure_paragraph_layout(std::string_view target, int width,
+        const std::vector<int> &foregrounds,
         const std::vector<std::pair<size_t, size_t>> &word_ranges,
-        int complete_layout_rows) const {
-    if (NativeDfhackForegroundScope::active)
-        for (auto &row : rows) row.native_dfhack_foreground = true;
+        std::vector<std::string> &lines,
+        std::vector<std::vector<int>> &line_foregrounds, int &font_pixels) const {
+    lines.clear();
+    line_foregrounds.clear();
+    font_pixels = 0;
     std::vector<uint32_t> codepoints;
     if (!face_ || !gps_ || gps_->tile_pixel_x <= 0 || gps_->tile_pixel_y <= 0 ||
-        rows.empty() || !decode_utf8(target, codepoints) || codepoints.empty())
+        width <= 0 || !decode_utf8(target, codepoints) || codepoints.empty())
         return false;
     if (!foregrounds.empty() && foregrounds.size() != codepoints.size()) return false;
     // Structured owners can retain semantic word units while ordinary prose
@@ -69,16 +71,6 @@ bool Overlay::append_bounded_paragraph(std::vector<Match> rows,
         if (begin > end || end > codepoints.size()) return false;
         for (size_t at = begin + 1; at < end; ++at) break_allowed[at] = false;
     }
-    const bool scrollable = viewport && viewport->first_line >= 0 &&
-        viewport->total_lines > static_cast<int>(rows.size()) &&
-        viewport->first_line + static_cast<int>(rows.size()) <= viewport->total_lines;
-    // An announcement retains every native row even when only its tail is
-    // visible. The complete allocation identifies its scrolling range, not
-    // a limit on the number of Chinese rows or on their fixed font size.
-    if (complete_layout_rows > 0 &&
-        (static_cast<size_t>(complete_layout_rows) < rows.size() ||
-         (viewport && complete_layout_rows != viewport->total_lines))) return false;
-    const int first_y = rows.front().y;
     auto nonstarter = [](uint32_t cp) {
         switch (cp) {
         case '.': case ',': case '!': case '?': case ':': case ';':
@@ -96,46 +88,10 @@ bool Overlay::append_bounded_paragraph(std::vector<Match> rows,
             cp == 0x300a || cp == 0x300c || cp == 0x300e ||
             cp == 0x3010 || cp == 0x2018 || cp == 0x201c;
     };
-    const int tile_w = gps_->tile_pixel_x, tile_h = gps_->tile_pixel_y;
-    const int origin_x = (gps_->screen_pixel_x - gps_->dimx * tile_w) / 2;
-    const int origin_y = (gps_->screen_pixel_y - gps_->dimy * tile_h) / 2;
-    SDL_Rect native_region = native_paragraph_draw_region(rows);
-    int left = gps_->dimx;
-    for (const Match &row : rows) {
-        left = std::min(left, row.x);
-    }
-    // Without an explicit text-box edge, use the native containing region.
-    // The longest English line is only a source span, never a wrap budget.
-    int right = (native_region.x + native_region.w - origin_x) / tile_w;
-    // A centered native paragraph's ink origin is not its widget margin.
-    // Let the owner supply both edges without changing suppression spans.
-    if (box_left >= 0) left = box_left;
-    if (box_right >= 0) right = box_right;
-    else if (clip_right >= 0) right = clip_right;
-    if (clip_right >= 0) right = std::min(right, clip_right);
-    left = std::max(left, (native_region.x - origin_x + tile_w - 1) / tile_w);
-    right = std::min(right, (native_region.x + native_region.w - origin_x) / tile_w);
-    int native_top = native_region.y;
-    int native_bottom = native_region.y + native_region.h;
-    if (scrollable) {
-        // These rows are the visible native scroll allocation, not extra
-        // space that the translation may grow into below the viewport.
-        native_top = std::max(native_top, origin_y + first_y * tile_h);
-        native_bottom = std::min(native_bottom, origin_y + (rows.back().y + 1) * tile_h);
-    }
-    const SDL_Rect paragraph_region{origin_x + left * tile_w, native_top,
-        (right - left) * tile_w, std::max(0, native_bottom - native_top)};
-    SDL_Rect visible_region{};
-    if (!SDL_IntersectRect(&native_region, &paragraph_region, &visible_region)) return false;
-    native_region = visible_region;
-    const int width = right - left;
     const int span_pixels = width * gps_->tile_pixel_x -
         2 * config_.horizontal_padding - 2;
     if (span_pixels <= 0) return false;
-    const int font_pixels = unified_font_pixels();
-    // Native row spacing belongs to the widget. A taller font bitmap can
-    // extend around its baseline without creating additional layout rows.
-    const int line_height = native_text_row_height(gps_);
+    font_pixels = unified_font_pixels();
     // A stable paragraph repeats the same fixed-size kerning and wrapping
     // during early suppression and final drawing. Cache only that
     // pure result; none of its source rows, ownership or coordinates survive.
@@ -160,16 +116,9 @@ bool Overlay::append_bounded_paragraph(std::vector<Match> rows,
     key_value(config_.font_scale);
     key_value(config_.min_font_pixels);
     key_value(font_pixels);
-    key_value(rows.size());
-    key_value(viewport.has_value());
-    key_value(scrollable);
-    if (viewport) key_value(viewport->total_lines);
-    key_value(clipped_start);
-    key_value(complete_layout_rows);
+    key_value(config_.font_pixel_grid);
     const auto cached_layout = paragraph_layout_cache_.find(layout_key);
     const bool layout_cached = cached_layout != paragraph_layout_cache_.end();
-    std::vector<std::string> lines;
-    std::vector<std::vector<int>> line_foregrounds;
     if (layout_cached) {
         lines = cached_layout->second.lines;
         line_foregrounds = cached_layout->second.foregrounds;
@@ -311,6 +260,72 @@ bool Overlay::append_bounded_paragraph(std::vector<Match> rows,
             }
         }
     }
+
+    return !lines.empty();
+}
+
+bool Overlay::append_bounded_paragraph(std::vector<Match> rows,
+        std::string_view target, std::vector<std::string> &screen_rows,
+        std::vector<Match> &matches, int only_y, int clip_right, int box_right,
+        const std::vector<int> &foregrounds, bool clipped_start, int box_left,
+        std::optional<NativeParagraphViewport> viewport,
+        const std::vector<std::pair<size_t, size_t>> &word_ranges,
+        int complete_layout_rows) const {
+    if (NativeDfhackForegroundScope::active)
+        for (auto &row : rows) row.native_dfhack_foreground = true;
+    if (!face_ || !gps_ || gps_->tile_pixel_x <= 0 || gps_->tile_pixel_y <= 0 ||
+        rows.empty()) return false;
+    const bool scrollable = viewport && viewport->first_line >= 0 &&
+        viewport->total_lines > static_cast<int>(rows.size()) &&
+        viewport->first_line + static_cast<int>(rows.size()) <= viewport->total_lines;
+    // An announcement retains every native row even when only its tail is
+    // visible. The complete allocation identifies its scrolling range, not
+    // a limit on the number of Chinese rows or on their fixed font size.
+    if (complete_layout_rows > 0 &&
+        (static_cast<size_t>(complete_layout_rows) < rows.size() ||
+         (viewport && complete_layout_rows != viewport->total_lines))) return false;
+    const int first_y = rows.front().y;
+    const int tile_w = gps_->tile_pixel_x, tile_h = gps_->tile_pixel_y;
+    const int origin_x = (gps_->screen_pixel_x - gps_->dimx * tile_w) / 2;
+    const int origin_y = (gps_->screen_pixel_y - gps_->dimy * tile_h) / 2;
+    SDL_Rect native_region = native_paragraph_draw_region(rows);
+    int left = gps_->dimx;
+    for (const Match &row : rows) {
+        left = std::min(left, row.x);
+    }
+    // Without an explicit text-box edge, use the native containing region.
+    // The longest English line is only a source span, never a wrap budget.
+    int right = (native_region.x + native_region.w - origin_x) / tile_w;
+    // A centered native paragraph's ink origin is not its widget margin.
+    // Let the owner supply both edges without changing suppression spans.
+    if (box_left >= 0) left = box_left;
+    if (box_right >= 0) right = box_right;
+    else if (clip_right >= 0) right = clip_right;
+    if (clip_right >= 0) right = std::min(right, clip_right);
+    left = std::max(left, (native_region.x - origin_x + tile_w - 1) / tile_w);
+    right = std::min(right, (native_region.x + native_region.w - origin_x) / tile_w);
+    int native_top = native_region.y;
+    int native_bottom = native_region.y + native_region.h;
+    if (scrollable) {
+        // These rows are the visible native scroll allocation, not extra
+        // space that the translation may grow into below the viewport.
+        native_top = std::max(native_top, origin_y + first_y * tile_h);
+        native_bottom = std::min(native_bottom, origin_y + (rows.back().y + 1) * tile_h);
+    }
+    const SDL_Rect paragraph_region{origin_x + left * tile_w, native_top,
+        (right - left) * tile_w, std::max(0, native_bottom - native_top)};
+    SDL_Rect visible_region{};
+    if (!SDL_IntersectRect(&native_region, &paragraph_region, &visible_region)) return false;
+    native_region = visible_region;
+    const int width = right - left;
+    std::vector<std::string> lines;
+    std::vector<std::vector<int>> line_foregrounds;
+    int font_pixels = 0;
+    if (!measure_paragraph_layout(target, width, foregrounds, word_ranges,
+            lines, line_foregrounds, font_pixels)) return false;
+    // Native row spacing belongs to the widget. A taller font bitmap can
+    // extend around its baseline without creating additional layout rows.
+    const int line_height = native_text_row_height(gps_);
 
     if (scrollable) {
         // Map the native scroll positions to the translated layout while

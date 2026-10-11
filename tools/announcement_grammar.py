@@ -9,9 +9,46 @@ from pathlib import Path
 import re
 
 
+def native_empty_party_variants(scope, source, target, kinds):
+    """Lower only e2b80's proven empty agreement-party output.
+
+    An existing party with empty figure/entity vectors emits no text. Each
+    typed party field can independently take that branch, including parties
+    in comma/and lists. Materialize its finite literal forms at the ordinary
+    build import, retaining connectors and every other field's strict type.
+    """
+    yield scope, source, target, kinds
+    optional = [index for index, kind in enumerate(kinds)
+                if kind in {"agreement-party", "agreement-party-list"}]
+    literals = source.split("{s}")
+    for mask in range(1, 1 << len(optional)):
+        removed = {index for bit, index in enumerate(optional) if mask & (1 << bit)}
+        parts = [literals[0]]
+        retained = []
+        numbers = {}
+        for index, kind in enumerate(kinds):
+            if index not in removed:
+                parts.append("{s}")
+                retained.append(kind)
+                numbers[index + 1] = len(retained)
+            parts.append(literals[index + 1])
+        # Native whitespace normalization also collapses the two spaces left
+        # when a party disappears between literal connectors.
+        variant_source = " ".join("".join(parts).split())
+        variant_target = re.sub(
+            r"\{s([1-9][0-9]*)\}",
+            lambda match: ("{s" + str(numbers[int(match[1])]) + "}")
+            if int(match[1]) in numbers else "", target)
+        # A wholly empty party itself has no visible production. Its parent
+        # receives the corresponding concrete empty-field form above.
+        if variant_source and variant_target:
+            yield scope, variant_source, variant_target, retained
+
+
 def combat_entries(path: Path, entry_type):
     entries = []
     seen = {}
+    rows = []
     for line_no, raw in enumerate(path.read_text(encoding="utf-8-sig").splitlines(), 1):
         if not raw.strip() or raw.lstrip().startswith("#"):
             continue
@@ -39,7 +76,23 @@ def combat_entries(path: Path, entry_type):
                 raise ValueError(f"{path}:{line_no}: conflicting combat grammar target")
             continue
         seen[key] = target
+        rows.append((scope, source, target, kinds))
         # Parsing is scoped and performed by announcement_combat.inc. Ordinary
         # lt only knows its own capture semantics and must not compile this key.
         entries.append(entry_type(key, target, "l", "DFCN announcement combat", 410))
+    # A native no-recipient branch can emit exactly the same prose as a
+    # recipient branch whose party formatter returns empty. Prefer the
+    # explicitly authored concrete production over a dropped-field wording.
+    # Distinct empty subsets can likewise converge on the same complete text;
+    # their typed event snapshots retain the original semantic distinction.
+    for scope, source, target, kinds in rows:
+        variants = native_empty_party_variants(scope, source, target, kinds)
+        next(variants)
+        for variant_scope, variant_source, variant_target, variant_kinds in variants:
+            variant_signature = ",".join(variant_kinds)
+            key = f"Announcement combat {variant_scope} [{variant_signature}]: {variant_source}"
+            if key in seen:
+                continue
+            seen[key] = variant_target
+            entries.append(entry_type(key, variant_target, "l", "DFCN announcement combat", 410))
     return entries

@@ -1,0 +1,155 @@
+edition	image_identity	owner	function_rva	instruction_rva	operand_kind	literal_rva	operand_role	literal
+classic	PE:6a70b91c:0270a000	migrant-producer	0xe41b90	0x00e41e13	rip-relative	0x1728ac8	finite-text-operand-or-substring	Your ruler has arrived, dressed as a peasant!
+classic	PE:6a70b91c:0270a000	migrant-producer	0xe41b90	0x00e44b60	rip-relative	0x1728b00	finite-text-operand-or-substring	Some migrants have decided to brave this terrifying place, knowing it may be their miserable tomb.
+classic	PE:6a70b91c:0270a000	migrant-producer	0xe41b90	0x00e44b72	rip-relative	0x1728b70	finite-text-operand-or-substring	Some migrants have arrived at this miserable place, despite the danger.
+classic	PE:6a70b91c:0270a000	migrant-producer	0xe41b90	0x00e44b7b	rip-relative	0x1728960	finite-text-operand-or-substring	Some migrants have arrived at this miserable place.
+classic	PE:6a70b91c:0270a000	migrant-producer	0xe41b90	0x00e44b94	rip-relative	0x17289a0	finite-text-operand-or-substring	Some migrants have decided to brave this terrifying unhappy place, knowing it may be their tomb.
+classic	PE:6a70b91c:0270a000	migrant-producer	0xe41b90	0x00e44ba6	rip-relative	0x1728a10	finite-text-operand-or-substring	Some migrants have arrived at this unhappy place, despite the danger.
+classic	PE:6a70b91c:0270a000	migrant-producer	0xe41b90	0x00e44baf	rip-relative	0x1728a58	finite-text-operand-or-substring	Some migrants have arrived at this unhappy place.
+classic	PE:6a70b91c:0270a000	migrant-producer	0xe41b90	0x00e44bbd	rip-relative	0x1728cd0	finite-text-operand-or-substring	Some migrants have decided to brave this terrifying place, knowing it may be their tomb.
+classic	PE:6a70b91c:0270a000	migrant-producer	0xe41b90	0x00e44bc9	rip-relative	0x1728d30	finite-text-operand-or-substring	Some migrants have arrived, despite the danger.
+classic	PE:6a70b91c:0270a000	migrant-producer	0xe41b90	0x00e44bd2	rip-relative	0x1728d60	finite-text-operand-or-substring	Some migrants have arrived.
+classic	PE:6a70b91c:0270a000	migrant-producer	0xe41b90	0x00e44c69	rip-relative	0x1728d80	finite-text-operand-or-substring	A migrant has decided to brave this terrifying miserable place.
+classic	PE:6a70b91c:0270a000	migrant-producer	0xe41b90	0x00e44c7b	rip-relative	0x1728bc0	finite-text-operand-or-substring	A migrant has arrived at this miserable place, despite the danger.
+classic	PE:6a70b91c:0270a000	migrant-producer	0xe41b90	0x00e44c84	rip-relative	0x1728c08	finite-text-operand-or-substring	A migrant has arrived at this miserable place.
+classic	PE:6a70b91c:0270a000	migrant-producer	0xe41b90	0x00e44c9d	rip-relative	0x1728c38	finite-text-operand-or-substring	A migrant has decided to brave this terrifying unhappy place.
+classic	PE:6a70b91c:0270a000	migrant-producer	0xe41b90	0x00e44caf	rip-relative	0x1728c80	finite-text-operand-or-substring	A migrant has arrived at this unhappy place, despite the danger.
+classic	PE:6a70b91c:0270a000	migrant-producer	0xe41b90	0x00e44cb8	rip-relative	0x1728f18	finite-text-operand-or-substring	A migrant has arrived at this unhappy place.
+classic	PE:6a70b91c:0270a000	migrant-producer	0xe41b90	0x00e44cc6	rip-relative	0x1728f48	finite-text-operand-or-substring	A migrant has decided to brave this terrifying place.
+classic	PE:6a70b91c:0270a000	migrant-producer	0xe41b90	0x00e44cd2	rip-relative	0x1728f80	finite-text-operand-or-substring	A migrant has arrived, despite the danger.
+classic	PE:6a70b91c:0270a000	migrant-producer	0xe41b90	0x00e44cdb	rip-relative	0x1728fb0	finite-text-operand-or-substring	A migrant has arrived.
+classic	PE:6a70b91c:0270a000	migrant-producer	0xe41b90	0x00e44da8	rip-relative	0x1728dc0	finite-text-operand-or-substring	No one else even considered making the journey to this cursed miserable death-trap.
+classic	PE:6a70b91c:0270a000	migrant-producer	0xe41b90	0x00e44dbd	rip-relative	0x1728e20	finite-text-operand-or-substring	Others refused to journey to this dangerous and miserable fortress.
+classic	PE:6a70b91c:0270a000	migrant-producer	0xe41b90	0x00e44dc9	rip-relative	0x1728e70	finite-text-operand-or-substring	Others were too nervous to make the journey to this miserable fortress.
+classic	PE:6a70b91c:0270a000	migrant-producer	0xe41b90	0x00e44de5	rip-relative	0x1728ec0	finite-text-operand-or-substring	No one else even considered making the journey to this cursed unhappy death-trap.
+classic	PE:6a70b91c:0270a000	migrant-producer	0xe41b90	0x00e44dfa	rip-relative	0x1729120	finite-text-operand-or-substring	Others refused to journey to this dangerous and unhappy fortress.
+classic	PE:6a70b91c:0270a000	migrant-producer	0xe41b90	0x00e44e06	rip-relative	0x1729170	finite-text-operand-or-substring	Others were too nervous to make the journey to this unhappy fortress.
+classic	PE:6a70b91c:0270a000	migrant-producer	0xe41b90	0x00e44e17	rip-relative	0x17291c0	finite-text-operand-or-substring	No one else even considered making the journey to this cursed death-trap.
+classic	PE:6a70b91c:0270a000	migrant-producer	0xe41b90	0x00e44e2c	rip-relative	0x1729210	finite-text-operand-or-substring	Others refused to journey to this dangerous fortress.
+classic	PE:6a70b91c:0270a000	migrant-producer	0xe41b90	0x00e44e38	rip-relative	0x1728fc8	finite-text-operand-or-substring	Others were too nervous to make the journey.
+classic	PE:6a70b91c:0270a000	migrant-producer	0xe41b90	0x00e44e54	rip-relative	0x1729000	finite-text-operand-or-substring	No one even considered making the journey to such a cursed miserable death-trap this season.
+classic	PE:6a70b91c:0270a000	migrant-producer	0xe41b90	0x00e44e66	rip-relative	0x1729060	finite-text-operand-or-substring	Migrants refused to journey to such a dangerous and miserable fortress this season.
+classic	PE:6a70b91c:0270a000	migrant-producer	0xe41b90	0x00e44e6f	rip-relative	0x17290c0	finite-text-operand-or-substring	Migrants were too nervous to make the journey this season to this miserable fortress.
+classic	PE:6a70b91c:0270a000	migrant-producer	0xe41b90	0x00e44e88	rip-relative	0x1729370	finite-text-operand-or-substring	No one even considered making the journey to such a cursed unhappy death-trap this season.
+classic	PE:6a70b91c:0270a000	migrant-producer	0xe41b90	0x00e44e9a	rip-relative	0x17293d0	finite-text-operand-or-substring	Migrants refused to journey to such a dangerous and unhappy fortress this season.
+classic	PE:6a70b91c:0270a000	migrant-producer	0xe41b90	0x00e44ea3	rip-relative	0x1729430	finite-text-operand-or-substring	Migrants were too nervous to make the journey this season to this unhappy fortress.
+classic	PE:6a70b91c:0270a000	migrant-producer	0xe41b90	0x00e44eb1	rip-relative	0x1729490	finite-text-operand-or-substring	No one even considered making the journey to such a cursed death-trap this season.
+classic	PE:6a70b91c:0270a000	migrant-producer	0xe41b90	0x00e44ebd	rip-relative	0x1729250	finite-text-operand-or-substring	Migrants refused to journey to such a dangerous fortress this season.
+classic	PE:6a70b91c:0270a000	migrant-producer	0xe41b90	0x00e44ec6	rip-relative	0x1729298	finite-text-operand-or-substring	Migrants were too nervous to make the journey this season.
+classic	PE:6a70b91c:0270a000	migrant-producer	0xe41b90	0x00e44f36	rip-relative	0x17292e0	finite-text-operand-or-substring	No one else even considered making the journey to this miserable hellhole.
+classic	PE:6a70b91c:0270a000	migrant-producer	0xe41b90	0x00e44f48	rip-relative	0x1729330	finite-text-operand-or-substring	Others refused to journey to this unhappy fortress.
+classic	PE:6a70b91c:0270a000	migrant-producer	0xe41b90	0x00e44f51	rip-relative	0x17295f0	finite-text-operand-or-substring	Others were too wary to make the journey.
+classic	PE:6a70b91c:0270a000	migrant-producer	0xe41b90	0x00e44f5f	rip-relative	0x1729620	finite-text-operand-or-substring	No one even considered making the journey to such a miserable hellhole this season.
+classic	PE:6a70b91c:0270a000	migrant-producer	0xe41b90	0x00e44f6b	rip-relative	0x1729680	finite-text-operand-or-substring	Migrants refused to journey to this unhappy fortress this season.
+classic	PE:6a70b91c:0270a000	migrant-producer	0xe41b90	0x00e44f74	rip-relative	0x17296c8	finite-text-operand-or-substring	Migrants were too wary to make the journey this season.
+classic	PE:6a70b91c:0270a000	migrant-producer	0xe41b90	0x00e44fdf	rip-relative	0x17291c0	finite-text-operand-or-substring	No one else even considered making the journey to this cursed death-trap.
+classic	PE:6a70b91c:0270a000	migrant-producer	0xe41b90	0x00e44ff1	rip-relative	0x1729210	finite-text-operand-or-substring	Others refused to journey to this dangerous fortress.
+classic	PE:6a70b91c:0270a000	migrant-producer	0xe41b90	0x00e44ffa	rip-relative	0x1728fc8	finite-text-operand-or-substring	Others were too nervous to make the journey.
+classic	PE:6a70b91c:0270a000	migrant-producer	0xe41b90	0x00e45008	rip-relative	0x1729490	finite-text-operand-or-substring	No one even considered making the journey to such a cursed death-trap this season.
+classic	PE:6a70b91c:0270a000	migrant-producer	0xe41b90	0x00e45014	rip-relative	0x1729250	finite-text-operand-or-substring	Migrants refused to journey to such a dangerous fortress this season.
+classic	PE:6a70b91c:0270a000	migrant-producer	0xe41b90	0x00e4501d	rip-relative	0x1729298	finite-text-operand-or-substring	Migrants were too nervous to make the journey this season.
+classic	PE:6a70b91c:0270a000	migrant-producer	0xe41b90	0x00e4508c	rip-relative	0x17294e8	finite-text-operand-or-substring	The fortress attracted no migrants this season.
+classic	PE:6a70b91c:0270a000	travellers-producer	0x10b0e0	0x0010db0e	rip-relative	0x15f7fd8	finite-text-operand-or-substring	 have returned.
+classic	PE:6a70b91c:0270a000	travellers-producer	0x10b0e0	0x0010db95	rip-relative	0x15f7ff8	finite-text-operand-or-substring	  
+classic	PE:6a70b91c:0270a000	travellers-producer	0x10b0e0	0x0010dcb5	rip-relative	0x15f7fb8	finite-text-operand-or-substring	 and others have returned.
+classic	PE:6a70b91c:0270a000	travellers-producer	0x10b0e0	0x0010dd3c	rip-relative	0x15f7ff8	finite-text-operand-or-substring	  
+classic	PE:6a70b91c:0270a000	travellers-producer	0x10b0e0	0x0010de42	rip-relative	0x15f7fb8	finite-text-operand-or-substring	 and others have returned.
+classic	PE:6a70b91c:0270a000	travellers-producer	0x10b0e0	0x0010de60	rip-relative	0x15e40bc	finite-text-operand-or-substring	 and 
+classic	PE:6a70b91c:0270a000	travellers-producer	0x10b0e0	0x0010deb6	rip-relative	0x15f7fd8	finite-text-operand-or-substring	 have returned.
+classic	PE:6a70b91c:0270a000	travellers-producer	0x10b0e0	0x0010ded8	rip-relative	0x15f7fe8	finite-text-operand-or-substring	 has returned.
+classic	PE:6a70b91c:0270a000	travellers-producer	0x10b0e0	0x0010df5f	rip-relative	0x15f7ff8	finite-text-operand-or-substring	  
+classic	PE:6a70b91c:0270a000	travellers-producer	0x10b0e0	0x0010e44d	rip-relative	0x15f80e8	finite-text-operand-or-substring	 has brought back many tales from beyond 
+classic	PE:6a70b91c:0270a000	travellers-producer	0x10b0e0	0x0010e47d	rip-relative	0x15e3574	finite-text-operand-or-substring	.
+classic	PE:6a70b91c:0270a000	travellers-producer	0x10b0e0	0x0010e48a	rip-relative	0x15f8118	finite-text-operand-or-substring	 has brought back a few rumors.
+classic	PE:6a70b91c:0270a000	travellers-producer	0x10b0e0	0x0010e493	rip-relative	0x15f8138	finite-text-operand-or-substring	 has brought back a rumor from abroad.
+classic	PE:6a70b91c:0270a000	travellers-producer	0x10b0e0	0x0010e844	rip-relative	0x15f8160	finite-text-operand-or-substring	 has arrived.
+classic	PE:6a70b91c:0270a000	travellers-producer	0x10b0e0	0x0010e84d	rip-relative	0x15f8170	finite-text-operand-or-substring	 is visiting.
+classic	PE:6a70b91c:0270a000	travellers-producer	0x10b0e0	0x0010e95e	rip-relative	0x15f8180	finite-text-operand-or-substring	, the performance troupe, has arrived.
+classic	PE:6a70b91c:0270a000	travellers-producer	0x10b0e0	0x0010e967	rip-relative	0x15f81a8	finite-text-operand-or-substring	, a performance troupe, is visiting.
+classic	PE:6a70b91c:0270a000	travellers-producer	0x10b0e0	0x0010eac9	rip-relative	0x15f8160	finite-text-operand-or-substring	 has arrived.
+classic	PE:6a70b91c:0270a000	travellers-producer	0x10b0e0	0x0010ead2	rip-relative	0x15f8170	finite-text-operand-or-substring	 is visiting.
+classic	PE:6a70b91c:0270a000	travellers-producer	0x10b0e0	0x0010f944	rip-relative	0x15f81d0	finite-text-operand-or-substring	Spoils Report: 
+classic	PE:6a70b91c:0270a000	travellers-producer	0x10b0e0	0x0010f9bf	rip-relative	0x15f8000	finite-text-operand-or-substring	 and others
+classic	PE:6a70b91c:0270a000	travellers-producer	0x10b0e0	0x0010f9d0	rip-relative	0x15e40c4	finite-text-operand-or-substring	, 
+classic	PE:6a70b91c:0270a000	travellers-producer	0x10b0e0	0x0010fa08	rip-relative	0x15f8024	finite-text-operand-or-substring	Winter
+classic	PE:6a70b91c:0270a000	travellers-producer	0x10b0e0	0x0010fa11	rip-relative	0x15f801c	finite-text-operand-or-substring	Autumn
+classic	PE:6a70b91c:0270a000	travellers-producer	0x10b0e0	0x0010fa1a	rip-relative	0x15f8014	finite-text-operand-or-substring	Summer
+classic	PE:6a70b91c:0270a000	travellers-producer	0x10b0e0	0x0010fa23	rip-relative	0x15f800c	finite-text-operand-or-substring	Spring
+classic	PE:6a70b91c:0270a000	travellers-producer	0x10b0e0	0x0010fa34	rip-relative	0x15e3720	finite-text-operand-or-substring	 
+reference	PE:6a70a6d9:02711000	migrant-producer	0xe46c20	0x00e46ea3	rip-relative	0x172e738	finite-text-operand-or-substring	Your ruler has arrived, dressed as a peasant!
+reference	PE:6a70a6d9:02711000	migrant-producer	0xe46c20	0x00e49bf0	rip-relative	0x172e770	finite-text-operand-or-substring	Some migrants have decided to brave this terrifying place, knowing it may be their miserable tomb.
+reference	PE:6a70a6d9:02711000	migrant-producer	0xe46c20	0x00e49c02	rip-relative	0x172e7e0	finite-text-operand-or-substring	Some migrants have arrived at this miserable place, despite the danger.
+reference	PE:6a70a6d9:02711000	migrant-producer	0xe46c20	0x00e49c0b	rip-relative	0x172e5d0	finite-text-operand-or-substring	Some migrants have arrived at this miserable place.
+reference	PE:6a70a6d9:02711000	migrant-producer	0xe46c20	0x00e49c24	rip-relative	0x172e610	finite-text-operand-or-substring	Some migrants have decided to brave this terrifying unhappy place, knowing it may be their tomb.
+reference	PE:6a70a6d9:02711000	migrant-producer	0xe46c20	0x00e49c36	rip-relative	0x172e680	finite-text-operand-or-substring	Some migrants have arrived at this unhappy place, despite the danger.
+reference	PE:6a70a6d9:02711000	migrant-producer	0xe46c20	0x00e49c3f	rip-relative	0x172e6c8	finite-text-operand-or-substring	Some migrants have arrived at this unhappy place.
+reference	PE:6a70a6d9:02711000	migrant-producer	0xe46c20	0x00e49c4d	rip-relative	0x172e940	finite-text-operand-or-substring	Some migrants have decided to brave this terrifying place, knowing it may be their tomb.
+reference	PE:6a70a6d9:02711000	migrant-producer	0xe46c20	0x00e49c59	rip-relative	0x172e9a0	finite-text-operand-or-substring	Some migrants have arrived, despite the danger.
+reference	PE:6a70a6d9:02711000	migrant-producer	0xe46c20	0x00e49c62	rip-relative	0x172e9d0	finite-text-operand-or-substring	Some migrants have arrived.
+reference	PE:6a70a6d9:02711000	migrant-producer	0xe46c20	0x00e49cf9	rip-relative	0x172e9f0	finite-text-operand-or-substring	A migrant has decided to brave this terrifying miserable place.
+reference	PE:6a70a6d9:02711000	migrant-producer	0xe46c20	0x00e49d0b	rip-relative	0x172e830	finite-text-operand-or-substring	A migrant has arrived at this miserable place, despite the danger.
+reference	PE:6a70a6d9:02711000	migrant-producer	0xe46c20	0x00e49d14	rip-relative	0x172e878	finite-text-operand-or-substring	A migrant has arrived at this miserable place.
+reference	PE:6a70a6d9:02711000	migrant-producer	0xe46c20	0x00e49d2d	rip-relative	0x172e8a8	finite-text-operand-or-substring	A migrant has decided to brave this terrifying unhappy place.
+reference	PE:6a70a6d9:02711000	migrant-producer	0xe46c20	0x00e49d3f	rip-relative	0x172e8f0	finite-text-operand-or-substring	A migrant has arrived at this unhappy place, despite the danger.
+reference	PE:6a70a6d9:02711000	migrant-producer	0xe46c20	0x00e49d48	rip-relative	0x172eb88	finite-text-operand-or-substring	A migrant has arrived at this unhappy place.
+reference	PE:6a70a6d9:02711000	migrant-producer	0xe46c20	0x00e49d56	rip-relative	0x172ebb8	finite-text-operand-or-substring	A migrant has decided to brave this terrifying place.
+reference	PE:6a70a6d9:02711000	migrant-producer	0xe46c20	0x00e49d62	rip-relative	0x172ebf0	finite-text-operand-or-substring	A migrant has arrived, despite the danger.
+reference	PE:6a70a6d9:02711000	migrant-producer	0xe46c20	0x00e49d6b	rip-relative	0x172ec20	finite-text-operand-or-substring	A migrant has arrived.
+reference	PE:6a70a6d9:02711000	migrant-producer	0xe46c20	0x00e49e38	rip-relative	0x172ea30	finite-text-operand-or-substring	No one else even considered making the journey to this cursed miserable death-trap.
+reference	PE:6a70a6d9:02711000	migrant-producer	0xe46c20	0x00e49e4d	rip-relative	0x172ea90	finite-text-operand-or-substring	Others refused to journey to this dangerous and miserable fortress.
+reference	PE:6a70a6d9:02711000	migrant-producer	0xe46c20	0x00e49e59	rip-relative	0x172eae0	finite-text-operand-or-substring	Others were too nervous to make the journey to this miserable fortress.
+reference	PE:6a70a6d9:02711000	migrant-producer	0xe46c20	0x00e49e75	rip-relative	0x172eb30	finite-text-operand-or-substring	No one else even considered making the journey to this cursed unhappy death-trap.
+reference	PE:6a70a6d9:02711000	migrant-producer	0xe46c20	0x00e49e8a	rip-relative	0x172ed90	finite-text-operand-or-substring	Others refused to journey to this dangerous and unhappy fortress.
+reference	PE:6a70a6d9:02711000	migrant-producer	0xe46c20	0x00e49e96	rip-relative	0x172ede0	finite-text-operand-or-substring	Others were too nervous to make the journey to this unhappy fortress.
+reference	PE:6a70a6d9:02711000	migrant-producer	0xe46c20	0x00e49ea7	rip-relative	0x172ee30	finite-text-operand-or-substring	No one else even considered making the journey to this cursed death-trap.
+reference	PE:6a70a6d9:02711000	migrant-producer	0xe46c20	0x00e49ebc	rip-relative	0x172ee80	finite-text-operand-or-substring	Others refused to journey to this dangerous fortress.
+reference	PE:6a70a6d9:02711000	migrant-producer	0xe46c20	0x00e49ec8	rip-relative	0x172ec38	finite-text-operand-or-substring	Others were too nervous to make the journey.
+reference	PE:6a70a6d9:02711000	migrant-producer	0xe46c20	0x00e49ee4	rip-relative	0x172ec70	finite-text-operand-or-substring	No one even considered making the journey to such a cursed miserable death-trap this season.
+reference	PE:6a70a6d9:02711000	migrant-producer	0xe46c20	0x00e49ef6	rip-relative	0x172ecd0	finite-text-operand-or-substring	Migrants refused to journey to such a dangerous and miserable fortress this season.
+reference	PE:6a70a6d9:02711000	migrant-producer	0xe46c20	0x00e49eff	rip-relative	0x172ed30	finite-text-operand-or-substring	Migrants were too nervous to make the journey this season to this miserable fortress.
+reference	PE:6a70a6d9:02711000	migrant-producer	0xe46c20	0x00e49f18	rip-relative	0x172f420	finite-text-operand-or-substring	No one even considered making the journey to such a cursed unhappy death-trap this season.
+reference	PE:6a70a6d9:02711000	migrant-producer	0xe46c20	0x00e49f2a	rip-relative	0x172f480	finite-text-operand-or-substring	Migrants refused to journey to such a dangerous and unhappy fortress this season.
+reference	PE:6a70a6d9:02711000	migrant-producer	0xe46c20	0x00e49f33	rip-relative	0x172f4e0	finite-text-operand-or-substring	Migrants were too nervous to make the journey this season to this unhappy fortress.
+reference	PE:6a70a6d9:02711000	migrant-producer	0xe46c20	0x00e49f41	rip-relative	0x172f540	finite-text-operand-or-substring	No one even considered making the journey to such a cursed death-trap this season.
+reference	PE:6a70a6d9:02711000	migrant-producer	0xe46c20	0x00e49f4d	rip-relative	0x172f300	finite-text-operand-or-substring	Migrants refused to journey to such a dangerous fortress this season.
+reference	PE:6a70a6d9:02711000	migrant-producer	0xe46c20	0x00e49f56	rip-relative	0x172f348	finite-text-operand-or-substring	Migrants were too nervous to make the journey this season.
+reference	PE:6a70a6d9:02711000	migrant-producer	0xe46c20	0x00e49fc6	rip-relative	0x172f390	finite-text-operand-or-substring	No one else even considered making the journey to this miserable hellhole.
+reference	PE:6a70a6d9:02711000	migrant-producer	0xe46c20	0x00e49fd8	rip-relative	0x172f3e0	finite-text-operand-or-substring	Others refused to journey to this unhappy fortress.
+reference	PE:6a70a6d9:02711000	migrant-producer	0xe46c20	0x00e49fe1	rip-relative	0x172f6a0	finite-text-operand-or-substring	Others were too wary to make the journey.
+reference	PE:6a70a6d9:02711000	migrant-producer	0xe46c20	0x00e49fef	rip-relative	0x172f6d0	finite-text-operand-or-substring	No one even considered making the journey to such a miserable hellhole this season.
+reference	PE:6a70a6d9:02711000	migrant-producer	0xe46c20	0x00e49ffb	rip-relative	0x172f730	finite-text-operand-or-substring	Migrants refused to journey to this unhappy fortress this season.
+reference	PE:6a70a6d9:02711000	migrant-producer	0xe46c20	0x00e4a004	rip-relative	0x172f778	finite-text-operand-or-substring	Migrants were too wary to make the journey this season.
+reference	PE:6a70a6d9:02711000	migrant-producer	0xe46c20	0x00e4a06f	rip-relative	0x172ee30	finite-text-operand-or-substring	No one else even considered making the journey to this cursed death-trap.
+reference	PE:6a70a6d9:02711000	migrant-producer	0xe46c20	0x00e4a081	rip-relative	0x172ee80	finite-text-operand-or-substring	Others refused to journey to this dangerous fortress.
+reference	PE:6a70a6d9:02711000	migrant-producer	0xe46c20	0x00e4a08a	rip-relative	0x172ec38	finite-text-operand-or-substring	Others were too nervous to make the journey.
+reference	PE:6a70a6d9:02711000	migrant-producer	0xe46c20	0x00e4a098	rip-relative	0x172f540	finite-text-operand-or-substring	No one even considered making the journey to such a cursed death-trap this season.
+reference	PE:6a70a6d9:02711000	migrant-producer	0xe46c20	0x00e4a0a4	rip-relative	0x172f300	finite-text-operand-or-substring	Migrants refused to journey to such a dangerous fortress this season.
+reference	PE:6a70a6d9:02711000	migrant-producer	0xe46c20	0x00e4a0ad	rip-relative	0x172f348	finite-text-operand-or-substring	Migrants were too nervous to make the journey this season.
+reference	PE:6a70a6d9:02711000	migrant-producer	0xe46c20	0x00e4a11c	rip-relative	0x172f598	finite-text-operand-or-substring	The fortress attracted no migrants this season.
+reference	PE:6a70a6d9:02711000	travellers-producer	0x10b150	0x0010db7e	rip-relative	0x15fd0f8	finite-text-operand-or-substring	 have returned.
+reference	PE:6a70a6d9:02711000	travellers-producer	0x10b150	0x0010dc05	rip-relative	0x15fcfe8	finite-text-operand-or-substring	  
+reference	PE:6a70a6d9:02711000	travellers-producer	0x10b150	0x0010dd25	rip-relative	0x15fd0d8	finite-text-operand-or-substring	 and others have returned.
+reference	PE:6a70a6d9:02711000	travellers-producer	0x10b150	0x0010ddac	rip-relative	0x15fcfe8	finite-text-operand-or-substring	  
+reference	PE:6a70a6d9:02711000	travellers-producer	0x10b150	0x0010deb2	rip-relative	0x15fd0d8	finite-text-operand-or-substring	 and others have returned.
+reference	PE:6a70a6d9:02711000	travellers-producer	0x10b150	0x0010ded0	rip-relative	0x15e9110	finite-text-operand-or-substring	 and 
+reference	PE:6a70a6d9:02711000	travellers-producer	0x10b150	0x0010df26	rip-relative	0x15fd0f8	finite-text-operand-or-substring	 have returned.
+reference	PE:6a70a6d9:02711000	travellers-producer	0x10b150	0x0010df48	rip-relative	0x15fd108	finite-text-operand-or-substring	 has returned.
+reference	PE:6a70a6d9:02711000	travellers-producer	0x10b150	0x0010dfcf	rip-relative	0x15fcfe8	finite-text-operand-or-substring	  
+reference	PE:6a70a6d9:02711000	travellers-producer	0x10b150	0x0010e4bd	rip-relative	0x15fcff0	finite-text-operand-or-substring	 has brought back many tales from beyond 
+reference	PE:6a70a6d9:02711000	travellers-producer	0x10b150	0x0010e4ed	rip-relative	0x15e85b4	finite-text-operand-or-substring	.
+reference	PE:6a70a6d9:02711000	travellers-producer	0x10b150	0x0010e4fa	rip-relative	0x15fd020	finite-text-operand-or-substring	 has brought back a few rumors.
+reference	PE:6a70a6d9:02711000	travellers-producer	0x10b150	0x0010e503	rip-relative	0x15fd040	finite-text-operand-or-substring	 has brought back a rumor from abroad.
+reference	PE:6a70a6d9:02711000	travellers-producer	0x10b150	0x0010e8b4	rip-relative	0x15fd068	finite-text-operand-or-substring	 has arrived.
+reference	PE:6a70a6d9:02711000	travellers-producer	0x10b150	0x0010e8bd	rip-relative	0x15fd078	finite-text-operand-or-substring	 is visiting.
+reference	PE:6a70a6d9:02711000	travellers-producer	0x10b150	0x0010e9ce	rip-relative	0x15fd088	finite-text-operand-or-substring	, the performance troupe, has arrived.
+reference	PE:6a70a6d9:02711000	travellers-producer	0x10b150	0x0010e9d7	rip-relative	0x15fd0b0	finite-text-operand-or-substring	, a performance troupe, is visiting.
+reference	PE:6a70a6d9:02711000	travellers-producer	0x10b150	0x0010eb39	rip-relative	0x15fd068	finite-text-operand-or-substring	 has arrived.
+reference	PE:6a70a6d9:02711000	travellers-producer	0x10b150	0x0010eb42	rip-relative	0x15fd078	finite-text-operand-or-substring	 is visiting.
+reference	PE:6a70a6d9:02711000	travellers-producer	0x10b150	0x0010f9b4	rip-relative	0x15fd280	finite-text-operand-or-substring	Spoils Report: 
+reference	PE:6a70a6d9:02711000	travellers-producer	0x10b150	0x0010fa2f	rip-relative	0x15fd290	finite-text-operand-or-substring	 and others
+reference	PE:6a70a6d9:02711000	travellers-producer	0x10b150	0x0010fa40	rip-relative	0x15e90d8	finite-text-operand-or-substring	, 
+reference	PE:6a70a6d9:02711000	travellers-producer	0x10b150	0x0010fa78	rip-relative	0x15fd2b4	finite-text-operand-or-substring	Winter
+reference	PE:6a70a6d9:02711000	travellers-producer	0x10b150	0x0010fa81	rip-relative	0x15fd2ac	finite-text-operand-or-substring	Autumn
+reference	PE:6a70a6d9:02711000	travellers-producer	0x10b150	0x0010fa8a	rip-relative	0x15fd2a4	finite-text-operand-or-substring	Summer
+reference	PE:6a70a6d9:02711000	travellers-producer	0x10b150	0x0010fa93	rip-relative	0x15fd29c	finite-text-operand-or-substring	Spring
+reference	PE:6a70a6d9:02711000	travellers-producer	0x10b150	0x0010faa4	rip-relative	0x15e873c	finite-text-operand-or-substring	 

@@ -1,0 +1,95 @@
+edition	image_identity	owner	function_rva	instruction_rva	operand_kind	literal_rva	operand_role	literal
+classic	PE:6a70b91c:0270a000	multiline-wrapper	0x52b910	0x0052bb7a	rip-relative	0x164c5d4	finite-text-operand-or-substring	- 
+classic	PE:6a70b91c:0270a000	report-date-owner	0xede00	0x000edec5	rip-relative	0x15f2148	finite-text-operand-or-substring	Widgets
+classic	PE:6a70b91c:0270a000	report-date-owner	0xede00	0x000edecf	rip-relative	0x15f214c	finite-text-operand-or-substring	ets
+classic	PE:6a70b91c:0270a000	report-date-owner	0xede00	0x000ededa	rip-relative	0x15f214e	finite-text-operand-or-substring	s
+classic	PE:6a70b91c:0270a000	report-date-owner	0xede00	0x000edf4b	rip-relative	0x15f2134	finite-text-operand-or-substring	Tabs
+classic	PE:6a70b91c:0270a000	report-date-owner	0xede00	0x000edfca	rip-relative	0x15f20d8	finite-text-operand-or-substring	Combat
+classic	PE:6a70b91c:0270a000	report-date-owner	0xede00	0x000edff0	rip-relative	0x15f2150	finite-text-operand-or-substring	Sparring
+classic	PE:6a70b91c:0270a000	report-date-owner	0xede00	0x000ee02f	rip-relative	0x15f2160	finite-text-operand-or-substring	Hunting
+classic	PE:6a70b91c:0270a000	report-date-owner	0xede00	0x000ee086	rip-relative	0x15f2144	finite-text-operand-or-substring	All
+classic	PE:6a70b91c:0270a000	report-date-owner	0xede00	0x000ee090	rip-relative	0x15f2146	finite-text-operand-or-substring	l
+classic	PE:6a70b91c:0270a000	report-date-owner	0xede00	0x000ee437	rip-relative	0x15f213c	finite-text-operand-or-substring	Date: 
+classic	PE:6a70b91c:0270a000	report-date-owner	0xede00	0x000ee440	rip-relative	0x15f2140	finite-text-operand-or-substring	: 
+classic	PE:6a70b91c:0270a000	report-date-owner	0xede00	0x000ee476	rip-relative	0x15e7614	finite-text-operand-or-substring	st
+classic	PE:6a70b91c:0270a000	report-date-owner	0xede00	0x000ee47f	rip-relative	0x15e7618	finite-text-operand-or-substring	nd
+classic	PE:6a70b91c:0270a000	report-date-owner	0xede00	0x000ee488	rip-relative	0x15e767c	finite-text-operand-or-substring	rd
+classic	PE:6a70b91c:0270a000	report-date-owner	0xede00	0x000ee491	rip-relative	0x15e7680	finite-text-operand-or-substring	th
+classic	PE:6a70b91c:0270a000	report-date-owner	0xede00	0x000ee4ad	rip-relative	0x15e3720	finite-text-operand-or-substring	 
+classic	PE:6a70b91c:0270a000	report-date-owner	0xede00	0x000ee501	rip-relative	0x15e40c4	finite-text-operand-or-substring	, 
+classic	PE:6a70b91c:0270a000	report-list-owner	0xeda00	0x000eda84	rip-relative	0x15f2148	finite-text-operand-or-substring	Widgets
+classic	PE:6a70b91c:0270a000	report-list-owner	0xeda00	0x000eda8e	rip-relative	0x15f214c	finite-text-operand-or-substring	ets
+classic	PE:6a70b91c:0270a000	report-list-owner	0xeda00	0x000eda99	rip-relative	0x15f214e	finite-text-operand-or-substring	s
+classic	PE:6a70b91c:0270a000	report-list-owner	0xeda00	0x000edb54	rip-relative	0x15f2134	finite-text-operand-or-substring	Tabs
+classic	PE:6a70b91c:0270a000	report-list-owner	0xeda00	0x000edbf1	rip-relative	0x18965a8	finite-text-operand-or-substring	Portrait
+classic	PE:6a70b91c:0270a000	report-tab-label-complete-switch	0xed750	0x000ed774	rip-relative	0x15f2050	finite-text-operand-or-substring	World
+classic	PE:6a70b91c:0270a000	report-tab-label-complete-switch	0xed750	0x000ed789	rip-relative	0x15f2028	finite-text-operand-or-substring	Environment
+classic	PE:6a70b91c:0270a000	report-tab-label-complete-switch	0xed750	0x000ed79e	rip-relative	0x15f2038	finite-text-operand-or-substring	Arrivals
+classic	PE:6a70b91c:0270a000	report-tab-label-complete-switch	0xed750	0x000ed7b3	rip-relative	0x15f2018	finite-text-operand-or-substring	Attacks
+classic	PE:6a70b91c:0270a000	report-tab-label-complete-switch	0xed750	0x000ed7c8	rip-relative	0x15f2020	finite-text-operand-or-substring	Trade
+classic	PE:6a70b91c:0270a000	report-tab-label-complete-switch	0xed750	0x000ed7dd	rip-relative	0x15f20c0	finite-text-operand-or-substring	Nobles
+classic	PE:6a70b91c:0270a000	report-tab-label-complete-switch	0xed750	0x000ed7f2	rip-relative	0x15f20c8	finite-text-operand-or-substring	Animal
+classic	PE:6a70b91c:0270a000	report-tab-label-complete-switch	0xed750	0x000ed807	rip-relative	0x15f20a0	finite-text-operand-or-substring	Life changes
+classic	PE:6a70b91c:0270a000	report-tab-label-complete-switch	0xed750	0x000ed81c	rip-relative	0x15f20b0	finite-text-operand-or-substring	Strange moods
+classic	PE:6a70b91c:0270a000	report-tab-label-complete-switch	0xed750	0x000ed831	rip-relative	0x15f2078	finite-text-operand-or-substring	Profession changes
+classic	PE:6a70b91c:0270a000	report-tab-label-complete-switch	0xed750	0x000ed846	rip-relative	0x15f2090	finite-text-operand-or-substring	Military
+classic	PE:6a70b91c:0270a000	report-tab-label-complete-switch	0xed750	0x000ed85b	rip-relative	0x15f2058	finite-text-operand-or-substring	Mental state
+classic	PE:6a70b91c:0270a000	report-tab-label-complete-switch	0xed750	0x000ed870	rip-relative	0x15f2068	finite-text-operand-or-substring	Masterpieces
+classic	PE:6a70b91c:0270a000	report-tab-label-complete-switch	0xed750	0x000ed885	rip-relative	0x15f2108	finite-text-operand-or-substring	Job failures
+classic	PE:6a70b91c:0270a000	report-tab-label-complete-switch	0xed750	0x000ed89a	rip-relative	0x15f2118	finite-text-operand-or-substring	Death
+classic	PE:6a70b91c:0270a000	report-tab-label-complete-switch	0xed750	0x000ed8af	rip-relative	0x15f20f0	finite-text-operand-or-substring	Ghosts
+classic	PE:6a70b91c:0270a000	report-tab-label-complete-switch	0xed750	0x000ed8c4	rip-relative	0x15f20f8	finite-text-operand-or-substring	Wildlife
+classic	PE:6a70b91c:0270a000	report-tab-label-complete-switch	0xed750	0x000ed8d9	rip-relative	0x15f20e0	finite-text-operand-or-substring	Labor
+classic	PE:6a70b91c:0270a000	report-tab-label-complete-switch	0xed750	0x000ed8ee	rip-relative	0x15f20e8	finite-text-operand-or-substring	Crime
+classic	PE:6a70b91c:0270a000	report-tab-label-complete-switch	0xed750	0x000ed903	rip-relative	0x15f20d0	finite-text-operand-or-substring	Curses
+classic	PE:6a70b91c:0270a000	report-tab-label-complete-switch	0xed750	0x000ed918	rip-relative	0x15f20d8	finite-text-operand-or-substring	Combat
+classic	PE:6a70b91c:0270a000	report-tab-label-complete-switch	0xed750	0x000ed92d	rip-relative	0x15f2150	finite-text-operand-or-substring	Sparring
+classic	PE:6a70b91c:0270a000	report-tab-label-complete-switch	0xed750	0x000ed942	rip-relative	0x15f2160	finite-text-operand-or-substring	Hunting
+classic	PE:6a70b91c:0270a000	report-tab-label-complete-switch	0xed750	0x000ed957	rip-relative	0x15f2048	finite-text-operand-or-substring	General
+reference	PE:6a70a6d9:02711000	multiline-wrapper	0x52def0	0x0052e15a	rip-relative	0x16516d0	finite-text-operand-or-substring	- 
+reference	PE:6a70a6d9:02711000	report-date-owner	0xede70	0x000edf35	rip-relative	0x15f7138	finite-text-operand-or-substring	Widgets
+reference	PE:6a70a6d9:02711000	report-date-owner	0xede70	0x000edf3f	rip-relative	0x15f713c	finite-text-operand-or-substring	ets
+reference	PE:6a70a6d9:02711000	report-date-owner	0xede70	0x000edf4a	rip-relative	0x15f713e	finite-text-operand-or-substring	s
+reference	PE:6a70a6d9:02711000	report-date-owner	0xede70	0x000edfbb	rip-relative	0x15f7140	finite-text-operand-or-substring	Tabs
+reference	PE:6a70a6d9:02711000	report-date-owner	0xede70	0x000ee03a	rip-relative	0x15f7154	finite-text-operand-or-substring	Combat
+reference	PE:6a70a6d9:02711000	report-date-owner	0xede70	0x000ee060	rip-relative	0x15f7160	finite-text-operand-or-substring	Sparring
+reference	PE:6a70a6d9:02711000	report-date-owner	0xede70	0x000ee09f	rip-relative	0x15f7148	finite-text-operand-or-substring	Hunting
+reference	PE:6a70a6d9:02711000	report-date-owner	0xede70	0x000ee0f6	rip-relative	0x15f7150	finite-text-operand-or-substring	All
+reference	PE:6a70a6d9:02711000	report-date-owner	0xede70	0x000ee100	rip-relative	0x15f7152	finite-text-operand-or-substring	l
+reference	PE:6a70a6d9:02711000	report-date-owner	0xede70	0x000ee4a7	rip-relative	0x15f71dc	finite-text-operand-or-substring	Date: 
+reference	PE:6a70a6d9:02711000	report-date-owner	0xede70	0x000ee4b0	rip-relative	0x15f71e0	finite-text-operand-or-substring	: 
+reference	PE:6a70a6d9:02711000	report-date-owner	0xede70	0x000ee4e6	rip-relative	0x15ec698	finite-text-operand-or-substring	st
+reference	PE:6a70a6d9:02711000	report-date-owner	0xede70	0x000ee4ef	rip-relative	0x15ec69c	finite-text-operand-or-substring	nd
+reference	PE:6a70a6d9:02711000	report-date-owner	0xede70	0x000ee4f8	rip-relative	0x15ec690	finite-text-operand-or-substring	rd
+reference	PE:6a70a6d9:02711000	report-date-owner	0xede70	0x000ee501	rip-relative	0x15ec694	finite-text-operand-or-substring	th
+reference	PE:6a70a6d9:02711000	report-date-owner	0xede70	0x000ee51d	rip-relative	0x15e873c	finite-text-operand-or-substring	 
+reference	PE:6a70a6d9:02711000	report-date-owner	0xede70	0x000ee571	rip-relative	0x15e90d8	finite-text-operand-or-substring	, 
+reference	PE:6a70a6d9:02711000	report-list-owner	0xeda70	0x000edaf4	rip-relative	0x15f7138	finite-text-operand-or-substring	Widgets
+reference	PE:6a70a6d9:02711000	report-list-owner	0xeda70	0x000edafe	rip-relative	0x15f713c	finite-text-operand-or-substring	ets
+reference	PE:6a70a6d9:02711000	report-list-owner	0xeda70	0x000edb09	rip-relative	0x15f713e	finite-text-operand-or-substring	s
+reference	PE:6a70a6d9:02711000	report-list-owner	0xeda70	0x000edbc4	rip-relative	0x15f7140	finite-text-operand-or-substring	Tabs
+reference	PE:6a70a6d9:02711000	report-list-owner	0xeda70	0x000edc61	rip-relative	0x189c5d8	finite-text-operand-or-substring	Portrait
+reference	PE:6a70a6d9:02711000	report-tab-label-complete-switch	0xed7c0	0x000ed7e4	rip-relative	0x15f7048	finite-text-operand-or-substring	World
+reference	PE:6a70a6d9:02711000	report-tab-label-complete-switch	0xed7c0	0x000ed7f9	rip-relative	0x15f7050	finite-text-operand-or-substring	Environment
+reference	PE:6a70a6d9:02711000	report-tab-label-complete-switch	0xed7c0	0x000ed80e	rip-relative	0x15f70b8	finite-text-operand-or-substring	Arrivals
+reference	PE:6a70a6d9:02711000	report-tab-label-complete-switch	0xed7c0	0x000ed823	rip-relative	0x15f70c8	finite-text-operand-or-substring	Attacks
+reference	PE:6a70a6d9:02711000	report-tab-label-complete-switch	0xed7c0	0x000ed838	rip-relative	0x15f70a8	finite-text-operand-or-substring	Trade
+reference	PE:6a70a6d9:02711000	report-tab-label-complete-switch	0xed7c0	0x000ed84d	rip-relative	0x15f70b0	finite-text-operand-or-substring	Nobles
+reference	PE:6a70a6d9:02711000	report-tab-label-complete-switch	0xed7c0	0x000ed862	rip-relative	0x15f708c	finite-text-operand-or-substring	Animal
+reference	PE:6a70a6d9:02711000	report-tab-label-complete-switch	0xed7c0	0x000ed877	rip-relative	0x15f7098	finite-text-operand-or-substring	Life changes
+reference	PE:6a70a6d9:02711000	report-tab-label-complete-switch	0xed7c0	0x000ed88c	rip-relative	0x15f7068	finite-text-operand-or-substring	Strange moods
+reference	PE:6a70a6d9:02711000	report-tab-label-complete-switch	0xed7c0	0x000ed8a1	rip-relative	0x15f7078	finite-text-operand-or-substring	Profession changes
+reference	PE:6a70a6d9:02711000	report-tab-label-complete-switch	0xed7c0	0x000ed8b6	rip-relative	0x15f7118	finite-text-operand-or-substring	Military
+reference	PE:6a70a6d9:02711000	report-tab-label-complete-switch	0xed7c0	0x000ed8cb	rip-relative	0x15f7128	finite-text-operand-or-substring	Mental state
+reference	PE:6a70a6d9:02711000	report-tab-label-complete-switch	0xed7c0	0x000ed8e0	rip-relative	0x15f70f8	finite-text-operand-or-substring	Masterpieces
+reference	PE:6a70a6d9:02711000	report-tab-label-complete-switch	0xed7c0	0x000ed8f5	rip-relative	0x15f7108	finite-text-operand-or-substring	Job failures
+reference	PE:6a70a6d9:02711000	report-tab-label-complete-switch	0xed7c0	0x000ed90a	rip-relative	0x15f70e4	finite-text-operand-or-substring	Death
+reference	PE:6a70a6d9:02711000	report-tab-label-complete-switch	0xed7c0	0x000ed91f	rip-relative	0x15f70ec	finite-text-operand-or-substring	Ghosts
+reference	PE:6a70a6d9:02711000	report-tab-label-complete-switch	0xed7c0	0x000ed934	rip-relative	0x15f70d0	finite-text-operand-or-substring	Wildlife
+reference	PE:6a70a6d9:02711000	report-tab-label-complete-switch	0xed7c0	0x000ed949	rip-relative	0x15f70dc	finite-text-operand-or-substring	Labor
+reference	PE:6a70a6d9:02711000	report-tab-label-complete-switch	0xed7c0	0x000ed95e	rip-relative	0x15f716c	finite-text-operand-or-substring	Crime
+reference	PE:6a70a6d9:02711000	report-tab-label-complete-switch	0xed7c0	0x000ed973	rip-relative	0x15f7174	finite-text-operand-or-substring	Curses
+reference	PE:6a70a6d9:02711000	report-tab-label-complete-switch	0xed7c0	0x000ed988	rip-relative	0x15f7154	finite-text-operand-or-substring	Combat
+reference	PE:6a70a6d9:02711000	report-tab-label-complete-switch	0xed7c0	0x000ed99d	rip-relative	0x15f7160	finite-text-operand-or-substring	Sparring
+reference	PE:6a70a6d9:02711000	report-tab-label-complete-switch	0xed7c0	0x000ed9b2	rip-relative	0x15f7148	finite-text-operand-or-substring	Hunting
+reference	PE:6a70a6d9:02711000	report-tab-label-complete-switch	0xed7c0	0x000ed9c7	rip-relative	0x15f7060	finite-text-operand-or-substring	General

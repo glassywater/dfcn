@@ -3473,6 +3473,8 @@ public:
     bool translation_enabled() const {
         return translation_enabled_snapshot_.load(std::memory_order_acquire);
     }
+    int native_report_layout_rows(std::string_view source, int width,
+        bool date = false) const;
     void set_translation_enabled(bool enabled);
     void toggle_translation();
     void toggle_translation_extensions();
@@ -4555,6 +4557,11 @@ private:
     void layout_character_work_animal_rows(SDL_Renderer *renderer);
     void append_character_overview_identities(const std::vector<NativeTextCard> &cards,
         std::vector<std::string> &rows, std::vector<Match> &matches, int only_y) const;
+    bool measure_paragraph_layout(std::string_view target, int width,
+        const std::vector<int> &foregrounds,
+        const std::vector<std::pair<size_t, size_t>> &word_ranges,
+        std::vector<std::string> &lines,
+        std::vector<std::vector<int>> &line_foregrounds, int &font_pixels) const;
     bool append_bounded_paragraph(std::vector<Match> rows, std::string_view target,
         std::vector<std::string> &screen_rows, std::vector<Match> &matches, int only_y,
         int clip_right = -1, int box_right = -1,

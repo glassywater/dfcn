@@ -8,6 +8,9 @@ using NativeCaptionBuildFn = void (*)(void *);
 using NativeCaptionFlagDrawFn = void (*)(graphicst *, const NativeString *, NativeJustification, int, uint32_t);
 using NativeCaptionWidgetRenderFn = void (*)(void *, uint32_t);
 using NativeCaptionWidgetArrangeFn = void (*)(void *);
+#ifdef _WIN32
+using NativeCaptionMultilineWrapFn = void (*)(const NativeString *, void *, int);
+#endif
 static void capture_native_roster_shorten(NativeString *,int);
 static void capture_native_map_track_shorten(NativeString *,int);
 static void capture_native_adventure_look_track_shorten(NativeString *,int);
@@ -163,6 +166,9 @@ static NativeCaptionWidgetBinding g_native_caption_widget_binding;
 static NativeImportHook g_native_multiline_widget_hook;
 static NativeImportHook g_native_multiline_arrange_hook;
 static NativeMultilineWidgetBinding g_native_multiline_widget_binding;
+#ifdef _WIN32
+static NativeCaptionMultilineWrapFn g_native_multiline_wrap = nullptr;
+#endif
 static NativeImportHook g_native_textbox_widget_hook;
 static NativeTextboxWidgetBinding g_native_textbox_widget_binding;
 static NativeImportHook g_native_tooltip_container_hook;
@@ -808,6 +814,151 @@ static bool native_info_title_authored(NativeInfoTitleKind kind,
     return !name.empty();
 }
 
+static bool native_multiline_announcement_source(std::string_view source) {
+    return native_announcement_sources()->originals.contains(
+        native_announcement_display_source(source));
+}
+
+static std::string native_multiline_single_wrap_source(std::string_view source) {
+    std::string result(source);
+    for (char &ch : result)
+        if (ch == '\r' || ch == '\n') ch = ' ';
+    return result;
+}
+
+static int32_t native_multiline_wrap_rows(std::string_view source, size_t width) {
+    if (!width || source.size() <= width) return 1;
+    size_t cursor = 0;
+    int32_t rows = 0;
+    while (cursor < source.size()) {
+        size_t length = std::min(width, source.size() - cursor);
+        if (length == width) {
+            const size_t separator = source.substr(cursor, length).find_last_of("- ");
+            if (separator != std::string_view::npos) length = separator + 1;
+        }
+        cursor += length;
+        ++rows;
+    }
+    return std::max<int32_t>(1, rows);
+}
+
+#ifdef _WIN32
+// ede70 creates a generic container with precisely controls/body/Date.
+// Read those actual owners and complete strings; a matching visible fragment
+// cannot identify a report or grant ownership of neighbouring widgets.
+static bool arrange_native_report_multiline(void *widget,
+        NativeInputCallbackScope &callback) {
+    const auto &binding = g_native_multiline_widget_binding;
+    const uintptr_t base = native_history_profile_base();
+    const uintptr_t current = reinterpret_cast<uintptr_t>(widget);
+    if (!base) return false;
+    struct ReportTables { uintptr_t base, parent, controls, text; };
+    static const ReportTables tables{base,
+        native_pe_address(base, 0x15eb4a8), native_pe_address(base, 0x15f6fc0),
+        native_pe_address(base, 0x15f6ee8)};
+    if (base != tables.base) return false;
+    // The original arrange has just used this live widget and its parent.
+    // Their owning shared_ptr vector keeps all three children alive during
+    // this callback. Copy these owned fields directly; report construction
+    // repeatedly arranges earlier records and must not issue OS memory-read
+    // calls or VirtualQuery for every field of every earlier record.
+    const auto read = []<typename T>(uintptr_t address, T &value) {
+        std::memcpy(&value, reinterpret_cast<const void *>(address), sizeof(value));
+    };
+    uintptr_t parent = 0, parent_table = 0;
+    read(current + 8, parent);
+    if (!parent) return false;
+    read(parent, parent_table);
+    if (parent_table != tables.parent) return false;
+    std::array<uintptr_t, 3> vector{};
+    read(parent + 0x160, vector);
+    if (!vector[0] ||
+            vector[1] < vector[0] || vector[1] - vector[0] != 3 * 16 ||
+            vector[2] < vector[1]) return false;
+    uintptr_t controls = 0, body = 0, date = 0, table = 0, owner = 0;
+    read(vector[0], controls);
+    read(vector[0] + 16, body);
+    read(vector[0] + 32, date);
+    if (!controls || !body || !date || (current != body && current != date)) return false;
+    read(controls, table);
+    read(controls + 8, owner);
+    if (table != tables.controls || owner != parent) return false;
+    for (const uintptr_t child : {body, date}) {
+        read(child, table);
+        read(child + 8, owner);
+        if (table != tables.text || owner != parent) return false;
+    }
+    std::string_view body_source, date_source;
+    if (!native_string_view(reinterpret_cast<const NativeString *>(body + binding.text),
+                &body_source, 262144) || !native_multiline_announcement_source(body_source) ||
+            !native_string_view(reinterpret_cast<const NativeString *>(date + binding.text),
+                &date_source, 4096) || !date_source.starts_with("Date: ") ||
+            !parse_native_calendar_date(date_source.substr(5))) return false;
+    std::array<int32_t, 4> parent_rect{}, controls_rect{};
+    int32_t controls_width = 0;
+    read(parent + binding.rect, parent_rect);
+    read(controls + binding.rect, controls_rect);
+    read(controls + binding.minimum_width, controls_width);
+    const bool enabled = g_overlay.translation_enabled();
+    int32_t right_offset = 0;
+    if (enabled && controls_width > 0) {
+        if (controls_rect[0] <= parent_rect[0] || controls_rect[0] > parent_rect[2] ||
+                controls_rect[2] < controls_rect[0]) return false;
+        // The native buttons remain visible. Reserve their real sibling
+        // rectangle so source margins contain only this report's own text.
+        right_offset = controls_rect[0] - 1 - parent_rect[2];
+    }
+    const auto write = [](uintptr_t address, int32_t value) {
+        std::memcpy(reinterpret_cast<void *>(address), &value, sizeof(value));
+    };
+    // ViewBase.xml and native base-arrange agree: +ac is offset_right,
+    // +bc is FLOAT anchor_left. Both preset9 text widgets anchor at left=0.
+    // Reset that exact native anchor too, recovering widgets polluted by
+    // the previous integer store into +bc before calculating their width.
+    write(body + 0xbc, 0);
+    write(date + 0xbc, 0);
+    write(body + 0xac, right_offset);
+    write(date + 0xac, right_offset);
+    callback.call_native([&] { binding.base_arrange(reinterpret_cast<void *>(body)); });
+    callback.call_native([&] { binding.base_arrange(reinterpret_cast<void *>(date)); });
+    if (!enabled) {
+        // Both native constructors set these fields unconditionally. Restore
+        // their exact values when translation is disabled, without retaining
+        // pointers to widgets after their destruction.
+        write(date + 0xb0, 1);
+        write(parent + binding.minimum_height, 3);
+        callback.call_native([&] { binding.base_arrange(reinterpret_cast<void *>(parent)); });
+        callback.call_native([&] { binding.base_arrange(reinterpret_cast<void *>(date)); });
+        return true;
+    }
+    std::array<int32_t, 4> body_rect{}, date_rect{};
+    read(body + binding.rect, body_rect);
+    read(date + binding.rect, date_rect);
+    const int64_t body_width = int64_t(body_rect[2]) - body_rect[0] + 1;
+    const int64_t date_width = int64_t(date_rect[2]) - date_rect[0] + 1;
+    if (body_width <= 0 || body_width > 262144 || date_width <= 0 ||
+            date_width > 262144) return true;
+    const std::string normalized = native_multiline_single_wrap_source(body_source);
+    const int32_t body_rows = std::max(
+        native_multiline_wrap_rows(normalized, static_cast<size_t>(body_width)),
+        g_overlay.native_report_layout_rows(body_source, static_cast<int>(body_width)));
+    const int32_t date_rows = native_multiline_wrap_rows(
+        date_source, static_cast<size_t>(date_width));
+    write(body + binding.minimum_height, body_rows);
+    write(date + binding.minimum_height, date_rows);
+    write(date + 0xb0, body_rows);
+    write(parent + binding.minimum_height, std::max<int32_t>(3, body_rows + date_rows + 1));
+    // Generic container::arrange does not aggregate children. Its caller
+    // scroll_rows consumes this parent height immediately in the first pass.
+    // Only base arrange is safe here; invoking the container would recurse
+    // through the hooked body and restore the rough native height estimate.
+    callback.call_native([&] { binding.base_arrange(reinterpret_cast<void *>(parent)); });
+    callback.call_native([&] { binding.base_arrange(reinterpret_cast<void *>(body)); });
+    callback.call_native([&] { binding.base_arrange(reinterpret_cast<void *>(date)); });
+    return true;
+}
+#endif
+
 static void arrange_native_multiline_widget(void *widget) {
     NativeInputCallbackScope callback;
     const auto original = reinterpret_cast<NativeCaptionWidgetArrangeFn>(
@@ -816,8 +967,11 @@ static void arrange_native_multiline_widget(void *widget) {
     callback.call_native([&] { original(widget); });
     try {
         const auto &binding = g_native_multiline_widget_binding;
-        if (!widget || !binding.base_arrange || !binding.minimum_height ||
-            !g_overlay.translation_enabled()) return;
+        if (!widget || !binding.base_arrange || !binding.minimum_height) return;
+#ifdef _WIN32
+        if (arrange_native_report_multiline(widget, callback)) return;
+#endif
+        if (!g_overlay.translation_enabled()) return;
         auto *bytes = static_cast<unsigned char *>(widget);
         std::array<int32_t, 4> rect{};
         int32_t minimum_width = 0, minimum_height = 0;
@@ -829,24 +983,27 @@ static void arrange_native_multiline_widget(void *widget) {
         std::string_view source;
         if (width <= 0 || width > 262144 ||
             !native_string_view(reinterpret_cast<const NativeString *>(bytes + binding.text),
-                &source, 262144) || source.size() <= static_cast<size_t>(width) ||
-            source.find_first_of("\r\n") != std::string_view::npos) return;
+                &source, 262144)) return;
+        std::string normalized;
+        if (source.find_first_of("\r\n") != std::string_view::npos) {
+#ifdef _WIN32
+            // Both PE wrappers append newline prefixes, then wrap the entire
+            // original string again from offset zero. The report render call
+            // below instead supplies one copied paragraph to that same wrapper.
+            if (!native_multiline_announcement_source(source)) return;
+            normalized = native_multiline_single_wrap_source(source);
+            source = normalized;
+#else
+            return;
+#endif
+        }
+        if (source.size() <= static_cast<size_t>(width)) return;
 
         // The native arrange divides bytes by width, but render wraps at
         // the last hyphen/space, retaining that separator in the row. Count
         // that exact no-newline path without touching its shared wrap vector.
         // Only full-width slices are shortened, including a full last slice.
-        size_t cursor = 0;
-        int32_t rows = 0;
-        while (cursor < source.size()) {
-            size_t length = std::min(static_cast<size_t>(width), source.size() - cursor);
-            if (length == static_cast<size_t>(width)) {
-                const size_t separator = source.substr(cursor, length).find_last_of("- ");
-                if (separator != std::string_view::npos) length = separator + 1;
-            }
-            cursor += length;
-            ++rows;
-        }
+        const int32_t rows = native_multiline_wrap_rows(source, static_cast<size_t>(width));
         // Read min_h after the original arrange, so shorter/new text resets
         // its old height normally. Parent rows containers immediately use
         // max(rect.height, min_h) to place the following Date/record widget.
@@ -864,12 +1021,45 @@ struct NativeMultilineCapture {
     int x = 0, y = 0, width = 0;
     size_t source_cursor = 0;
     std::string source;
+    std::string wrap_source;
+    bool single_wrap = false;
     std::vector<std::string> rows;
     std::vector<uintptr_t> addresses;
 };
 // This trivial TLS pointer borrows only the current render's stack scope.
 // NativeImportHook/NativeInputCallbackScope protect the callback lifetime.
 static thread_local NativeMultilineCapture *g_native_multiline_capture = nullptr;
+
+#ifdef _WIN32
+static void wrap_native_multiline_announcement(const NativeString *source, void *unused, int width) {
+    NativeInputCallbackScope callback;
+    if (!g_native_multiline_wrap) return;
+    std::string normalized;
+    NativeString borrowed = native_empty_string();
+    try {
+        std::string_view text;
+        if (g_native_multiline_capture && g_overlay.translation_enabled() &&
+                native_string_view(source, &text, 262144) &&
+                text.find_first_of("\r\n") != std::string_view::npos &&
+                native_multiline_announcement_source(text)) {
+            normalized = native_multiline_single_wrap_source(text);
+            borrowed.size = normalized.size();
+            if (normalized.size() <= 15) {
+                std::memcpy(borrowed.storage.small, normalized.c_str(), normalized.size() + 1);
+            } else {
+                borrowed.storage.heap = normalized.data();
+                borrowed.capacity = normalized.size();
+            }
+            g_native_multiline_capture->single_wrap = true;
+            // The native wrapper only reads this string and copies its rows.
+            // Its input borrows our buffer; no game-owned string is changed,
+            // and no allocation crosses the two C++ runtimes.
+            source = &borrowed;
+        }
+    } catch (...) {}
+    callback.call_native([&] { g_native_multiline_wrap(source, unused, width); });
+}
+#endif
 
 static void capture_native_multiline_row(graphicst *graphics, const NativeString *source) {
     auto *capture = g_native_multiline_capture;
@@ -899,6 +1089,8 @@ static void capture_native_multiline_row(graphicst *graphics, const NativeString
             capture->y = rect[1];
             capture->width = static_cast<int>(width);
             capture->source.assign(complete);
+            capture->wrap_source = capture->single_wrap
+                ? native_multiline_single_wrap_source(complete) : capture->source;
             if (g_native_tooltip_write && rect[0] > g_native_tooltip_write->bounds.x &&
                 rect[1] > g_native_tooltip_write->bounds.y &&
                 rect[0] < g_native_tooltip_write->bounds.x + g_native_tooltip_write->bounds.w &&
@@ -914,14 +1106,14 @@ static void capture_native_multiline_row(graphicst *graphics, const NativeString
             capture->invalid = true;
             return;
         }
-        // The native wrapper retains word-break spaces in its row strings;
-        // explicit newlines alone are removed. Prove every original byte in
-        // order, including rows drawn outside clipy. Never join a visible
-        // subset and call it the complete paragraph.
-        while (capture->source_cursor < capture->source.size() &&
-            (capture->source[capture->source_cursor] == '\r' ||
-             capture->source[capture->source_cursor] == '\n')) ++capture->source_cursor;
-        if (capture->source.compare(capture->source_cursor, row.size(), row) != 0) {
+        // Match every byte of the actual wrap input in order, including rows
+        // drawn outside clipy. Announcement newline normalization owns only
+        // that borrowed input; source still retains the complete original.
+        // Never join a visible subset and call it the complete paragraph.
+        while (capture->source_cursor < capture->wrap_source.size() &&
+            (capture->wrap_source[capture->source_cursor] == '\r' ||
+             capture->wrap_source[capture->source_cursor] == '\n')) ++capture->source_cursor;
+        if (capture->wrap_source.compare(capture->source_cursor, row.size(), row) != 0) {
             capture->invalid = true;
             return;
         }
@@ -952,10 +1144,10 @@ static void capture_native_multiline_widget_render(void *widget, uint32_t tick) 
     }
     try {
         if (!capture.initialized || capture.invalid || capture.rows.empty()) return;
-        while (capture.source_cursor < capture.source.size() &&
-            (capture.source[capture.source_cursor] == '\r' ||
-             capture.source[capture.source_cursor] == '\n')) ++capture.source_cursor;
-        if (capture.source_cursor != capture.source.size()) return;
+        while (capture.source_cursor < capture.wrap_source.size() &&
+            (capture.wrap_source[capture.source_cursor] == '\r' ||
+             capture.wrap_source[capture.source_cursor] == '\n')) ++capture.source_cursor;
+        if (capture.source_cursor != capture.wrap_source.size()) return;
         // The shared native wrap vector is reused by the next widget. Only
         // copied bytes and opaque row addresses survive this render; later
         // consumers still require current draw source/position identity.
@@ -2671,6 +2863,15 @@ static bool install_native_caption_hooks() {
         calls.push_back({site, profile.announcement_page.rows_target,
             reinterpret_cast<const void *>(&capture_native_announcement_page_rows)});
 #ifdef _WIN32
+    // The report constructor preserves newlines in its complete string.
+    // Bind only text_multiline::render's wrap call; other native wrappers
+    // keep their own input policy. Both configured PE editions were extracted.
+    g_native_multiline_wrap = reinterpret_cast<NativeCaptionMultilineWrapFn>(
+        native_pe_address(profile.base, 0x52def0));
+    std::vector<NativeCall> multiline_wrap_calls{{0x14198f1, 0x52def0,
+        reinterpret_cast<const void *>(&wrap_native_multiline_announcement)}};
+    if (!g_native_multiline_wrap || !native_reference_calls(multiline_wrap_calls, 0)) return false;
+    calls.insert(calls.end(), multiline_wrap_calls.begin(), multiline_wrap_calls.end());
     if (profile.announcement_popup_call)
         calls.push_back({profile.announcement_popup_call, profile.announcement_popup_target,
             reinterpret_cast<const void *>(&capture_native_announcement_popup_draw)});
@@ -2951,6 +3152,7 @@ static bool uninstall_native_caption_hooks() {
     if (!g_native_caption_hooks.code.uninstall("Complete native caption restore")) return false;
     g_native_announcement_popup_draw = nullptr;
 #ifdef _WIN32
+    g_native_multiline_wrap = nullptr;
     clear_native_announcement_popup_background();
 #endif
     g_native_announcement_page_rows = nullptr;

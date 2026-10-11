@@ -21,8 +21,9 @@ const auto negotiation = [&](const std::string &prefix) -> std::optional<Pieces>
     if (value("recipient_entity") != -1) {
         auto affiliation = subject(NativeHistoryObjectKind::Entity, value("recipient_entity"));
         if (!affiliation) return std::nullopt;
-        if (!text(prefix + "position_title").empty()) {
-            auto title = office(text(prefix + "position_title"));
+        if (value("position_present")) {
+            auto title = text(prefix + "position_title").empty() ?
+                std::optional<Pieces>{Pieces{}} : office(text(prefix + "position_title"));
             auto owner = subject(NativeHistoryObjectKind::Entity, value("position_entity"));
             if (!title || !owner) return std::nullopt;
             recipient = value("position_entity") == value("recipient_entity") ?
@@ -60,6 +61,9 @@ const auto negotiation = [&](const std::string &prefix) -> std::optional<Pieces>
         auto site = subject(NativeHistoryObjectKind::Site, value("siege_site"));
         if (!site || !sentence("The negotiation was doomed to failure while the morale of the invaders sieging {s} held firm.", {*site}))
             return std::nullopt;
+        // The native constructor jumps directly to its common append/return.
+        // A besieging army with firm morale never reaches the skill paragraphs.
+        return paragraph;
     }
     const auto &kinds = numbers(prefix + "condition_kind");
     const auto &values = numbers(prefix + "condition_value");
@@ -84,21 +88,27 @@ const auto negotiation = [&](const std::string &prefix) -> std::optional<Pieces>
     }
     // Win64's signed comparisons follow the 32-bit rating arithmetic.
     const auto twice = [](int32_t rating) { return static_cast<int32_t>(static_cast<uint32_t>(rating) * 2u); };
-    struct Strategy { int32_t primary, auxiliary; };
-    const auto strategy = [&](const char *side) {
+    struct Strategy { int32_t primary, auxiliary, raw_skill; bool negotiating, persuasion; };
+    const auto strategy = [&](const char *side, bool answering) {
         const std::string stem = prefix + side;
-        const int32_t n = number(stem + "_negotiation"), p = number(stem + "_persuasion"),
+        const int32_t n = number(stem + "_negotiation"),
+            p = number(stem + (answering ? "_judgment" : "_persuasion")),
             skill = number(stem + "_other"), rating = number(stem + "_rating");
         if (n >= p && n >= rating) {
-            int32_t auxiliary = twice(p) >= n ? 70 : -1;
-            if (twice(rating) >= n && rating > p) auxiliary = skill;
-            return Strategy{71, auxiliary};
+            // The target's judgment roll selects DISCERNMENT (72), whereas
+            // the initiator's persuasion selects PERSUASION (70), in both PEs.
+            int32_t auxiliary = twice(p) >= n ? (answering ? 72 : 70) : -1;
+            if (twice(rating) >= n && rating > p) auxiliary = static_cast<int16_t>(skill);
+            return Strategy{71, auxiliary, skill, true, false};
         }
-        return Strategy{p >= rating ? 70 : skill, -1};
+        if (p >= rating) return Strategy{answering ? 72 : 70, -1, skill, false, true};
+        // The full 32-bit skill drives the switch, but its signed low word is
+        // retained by the native same-style comparisons.
+        return Strategy{static_cast<int16_t>(skill), -1, skill, false, false};
     };
-    const Strategy opening = strategy("speaker"), response = strategy("recipient");
+    const Strategy opening = strategy("speaker", false), response = strategy("recipient", true);
     std::string key;
-    if (opening.primary == 71) {
+    if (opening.negotiating) {
         switch (opening.auxiliary) {
         case 70: key = "negotiate persuasively"; break;
         case 72: key = "negotiate with discernment"; break;
@@ -113,8 +123,8 @@ const auto negotiation = [&](const std::string &prefix) -> std::optional<Pieces>
         default: key = "negotiate"; break;
         }
     } else {
-        switch (opening.primary) {
-        case 70: key = "argue persuasively"; break;
+        switch (opening.persuasion ? 70 : opening.raw_skill) {
+        case 70: if (opening.persuasion) key = "argue persuasively"; break;
         case 72: key = outcome == 0 ? "feel out intentions and argue with subtlety" : "feel out intentions and argue carefully"; break;
         case 76: key = "brazenly lie"; break;
         case 77: key = "intimidate their adversary"; break;
@@ -131,10 +141,11 @@ const auto negotiation = [&](const std::string &prefix) -> std::optional<Pieces>
         auto action = render("negotiation-opening", key);
         if (!action || !sentence(outcome == 1 ? "{s} attempted to {s}." : "{s} began to {s}.", {speaker_name, *action}))
             return std::nullopt;
-    }
+    } else if (!sentence(outcome == 1 ? "{s} attempted to ." : "{s} began to .", {speaker_name}))
+        return std::nullopt;
     key.clear();
     const bool matched = opening.primary == response.primary, success = outcome == 0;
-    if (response.primary == 71) {
+    if (response.negotiating) {
         switch (response.auxiliary) {
         case 70: key = "negotiated persuasively"; break;
         case 72: key = "negotiated with discernment"; break;
@@ -151,13 +162,14 @@ const auto negotiation = [&](const std::string &prefix) -> std::optional<Pieces>
         if (matched) key += " in turn";
         key += success ? " but was outmaneuvered" : " and had the mastery";
     } else {
-        switch (response.primary) {
+        switch (response.persuasion ? 72 : response.raw_skill) {
         case 70:
             key = "made a persuasive argument";
             if (matched) key += " of their own";
             if (success) key += " but was ultimately swayed";
             break;
         case 72:
+            if (!response.persuasion) break;
             key = success ? "attempted to read their opposite's underlying motivations" : "read their opposite's underlying motivations";
             if (matched) key += " as well";
             if (success) key += " but was swept along";
@@ -204,7 +216,7 @@ const auto negotiation = [&](const std::string &prefix) -> std::optional<Pieces>
     if (!key.empty()) {
         auto action = render("negotiation-response", key);
         if (!action || !sentence("{s} {s}.", {recipient_name, *action})) return std::nullopt;
-    }
+    } else if (!sentence("{s} .", {recipient_name})) return std::nullopt;
     key.clear();
     const int32_t level = value("outcome");
     if (outcome == 1) key = level == -5 ? "The proposal was a spectacular failure." :
@@ -215,8 +227,8 @@ const auto negotiation = [&](const std::string &prefix) -> std::optional<Pieces>
         level == 4 ? "The proposal was a truly grand success." :
         level == 3 ? "The proposal was a great success." :
         level == 2 ? "The proposal was highly successful." : "The proposal succeeded.";
-    // Result 2 already supplies the doomed-negotiation sentence above; the
-    // native final "The proposal ." has no additional semantic predicate.
+    // Values other than 0/1/2 still reach the native empty-predicate default.
+    else key = "The proposal .";
     if (!key.empty() && !sentence(key)) return std::nullopt;
     return paragraph;
 };

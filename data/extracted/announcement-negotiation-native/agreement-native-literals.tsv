@@ -1,0 +1,637 @@
+edition	formatter	function_rva	function_end_rva	instruction_rva	file_offset	literal
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2aafef	0x15fd278	In 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2aaff6	0x1627758	Subject revealed that in 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ab01f	0x15e82d8	, 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ab0c0	0x1627cd8	a corrupt agreement was formed
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ab210	0x1627778	an unknown party
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ab22b	0x15e82d8	, 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ab255	0x162773c	, and 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ab273	0x15e8310	 and 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ab298	0x1627748	 concocted 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ab2c6	0x1627ac8	a embezzlement conspiracy
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ab2e0	0x1627b18	a corruption conspiracy
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ab2fa	0x1627b00	a bribery conspiracy
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ab3bb	0x1627778	an unknown party
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ab3d2	0x1627ae8	 plotted to infiltrate 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ab506	0x1627aa8	 in order to 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ab555	0x1627bd8	prepare a coup
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ab564	0x1627a98	instill terror
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ab573	0x1627a80	initiate sabotage
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ab582	0x1627ab8	steal treasures
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ab5a0	0x15e82d8	, 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ab5c9	0x162773c	, and 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ab5e7	0x15e8310	 and 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ab627	0x1627be8	 approached by 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ab680	0x1627b80	 to handle the matter directly or through another party
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ab6da	0x1627bb8	 under the influence of 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ab7f7	0x1627778	an unknown party
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ab80f	0x1627b60	 plotted to frame 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ab854	0x1627b74	 for 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ab887	0x15ec880	production order violation
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ab893	0x15ec848	export prohibition violation
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ab89f	0x15ec868	job order violation
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ab8ab	0x1627b30	a conspiracy to slow labor
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ab8b7	0x15ed054	murder
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ab8c0	0x15ec8a0	disorderly conduct
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ab8c9	0x15ec8b8	building destruction
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ab8d2	0x15ec920	bribery
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ab8db	0x15ec928	embezzlement
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ab8e4	0x15ec900	vandalism
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ab8ed	0x15ed0fc	theft
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ab8f6	0x15ed0e8	robbery
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ab8ff	0x15ed128	espionage
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ab908	0x15ed110	treason
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ab911	0x1627b50	blood-drinking
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ab91a	0x16279a0	attempted theft
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ab923	0x16279b0	attempted murder
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ab92c	0x15ed140	kidnapping
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ab935	0x1627978	attempted kidnapping
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ab94a	0x1627990	 by fooling 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ab9a3	0x1627be8	 approached by 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ab9d7	0x1627b80	 to handle the matter directly or through another party
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ab9f5	0x1627bb8	 under the influence of 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2aba92	0x1627778	an unknown party
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2abaa7	0x1627930	 plotted to induce a war of 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2abad5	0x16146e0	 upon 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2abb13	0x1627be8	 approached by 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2abb4a	0x1627b80	 to handle the matter directly or through another party
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2abb71	0x15e77b4	.
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2abbdf	0x15fc1e8	  
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2abc4e	0x1627bb8	 under the influence of 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2abcf5	0x1627778	an unknown party
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2abd0a	0x1627950	 plotted to sabotage the activities of 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2abd76	0x160125c	 at 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2abdae	0x1627be8	 approached by 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2abde8	0x1627b80	 to handle the matter directly or through another party
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2abe03	0x1627bb8	 under the influence of 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2abe58	0x162790c	 via 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2abeff	0x1627778	an unknown party
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2abf14	0x1627918	 plotted to abduct 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2abf6c	0x1627be8	 approached by 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2abfa0	0x1627b80	 to handle the matter directly or through another party
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2abfb2	0x1627bb8	 under the influence of 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2abff9	0x162790c	 via 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ac0a0	0x1627778	an unknown party
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ac0b5	0x1627a48	 plotted to assassinate 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ac10d	0x1627be8	 approached by 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ac141	0x1627b80	 to handle the matter directly or through another party
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ac153	0x1627bb8	 under the influence of 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ac19a	0x162790c	 via 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ac241	0x1627778	an unknown party
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ac256	0x1627a68	 plotted to steal 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ac294	0x1627be8	 approached by 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ac2ce	0x1627b80	 to handle the matter directly or through another party
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ac2e9	0x1627bb8	 under the influence of 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ac33e	0x162790c	 via 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ac3e5	0x1627778	an unknown party
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ac3fa	0x1627a28	 promised 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ac44b	0x1627778	an unknown party
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ac45a	0x1627a38	 to give 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ac4db	0x1627778	an unknown party
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ac4f0	0x1627a10	 a position
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ac509	0x15ec1b4	 in 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ac553	0x1627be8	 approached by 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ac58a	0x1627b80	 to handle the matter directly or through another party
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ac59c	0x1627bb8	 under the influence of 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ac5f6	0x162790c	 via 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ac6bf	0x1627778	an unknown party
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ac6da	0x15e82d8	, 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ac6ff	0x162773c	, and 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ac708	0x15e8310	 and 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ac78f	0x1627778	an unknown party
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ac7a4	0x1627a20	 began 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ac7cb	0x1627e48	passing a portion of corruptly-obtained funds
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ac7d4	0x16279f8	embezzling funds
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ac7dd	0x16279c8	accepting bribes in exchange for leniency
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ac852	0x1626df8	 as 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ac86c	0x15ec820	a 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ac875	0x15e8048	the 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ac89c	0x15ea718	 of 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ac8d0	0x15ec7b4	 to 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ac8d9	0x1627bb8	 under the influence of 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ac92e	0x162790c	 via 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ac9b7	0x1627778	an unknown party
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ac9cc	0x1627e78	 aided 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2aca2a	0x1627778	an unknown party
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2aca3f	0x1627df0	 in becoming a permanent part of the living world
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2aca88	0x1627e28	.  The ritual took place in 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2acab8	0x1614a40	 using 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2acae9	0x1627db8	.  The ritual involved 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2acb3e	0x1627778	an unknown party
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2acb53	0x1627dd0	 agreed to a parley with 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2acbab	0x1627778	an unknown party
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2acc0b	0x1627778	an unknown party
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2acc20	0x1627d78	 made an agreement with 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2acc7e	0x1627778	an unknown party
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2acc97	0x1627d98	, becoming a resident of 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2accd7	0x1627ef0	 to study
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2acceb	0x1627ed8	 to work as a mercenary
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2accff	0x1627f18	 to entertain the citizenry
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2acd13	0x1627f00	 to eradicate monsters
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2acd72	0x1627778	an unknown party
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2acd87	0x1627d78	 made an agreement with 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2acde5	0x1627778	an unknown party
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ace02	0x1627ea8	, becoming a citizen of 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ace75	0x1627778	an unknown party
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ace8a	0x1627ec8	 joined with 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2aceeb	0x1627778	an unknown party
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2acf24	0x1627e80	 to help rescue 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2acf8f	0x1627e98	 to oust 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2acfb1	0x15ecb7c	 from 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2acfd8	0x1627c90	 to entertain the world
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2acfec	0x1627ca8	 to live a life of adventure
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ad000	0x1627c60	 after being compelled to serve
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ad014	0x1627c80	 as a guide
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ad02d	0x1627c28	 to find 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ad070	0x1627c28	 to find 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ad0bc	0x15ec7b4	 to 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ad0c8	0x1627c38	 in order to be brought to safety
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ad136	0x1627778	an unknown party
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ad14b	0x1627bf8	 agreed to establish 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ad16a	0x1627c10	a grand guildhall
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ad183	0x1627d50	a guildhall
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ad1a2	0x1627d60	a temple complex
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ad1bb	0x1627d28	a temple
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ad1d0	0x1627b74	 for 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ad336	0x1627778	an unknown party
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ad34e	0x1627d38	 requested that 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ad3ed	0x1627778	an unknown party
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ad402	0x1627cf8	 make an offer of service
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ad425	0x15ec7b4	 to 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ad4fa	0x1627778	an unknown party
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ad512	0x1627d18	 asked that 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ad5b1	0x1627778	an unknown party
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ad5c6	0x1627cc8	 retrieve 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ad5f8	0x15ecb7c	 from 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ad628	0x1627b74	 for 
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ad655	0x1627cd8	a corrupt agreement was formed
+reference	agreement-sentence	0x2aaf70	0x2ad7eb	0x2ad6b8	0x15fc1e8	  
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2ad8aa	0x1628048	the formation of a corrupt agreement
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2ad8c5	0x15ec1b4	 in 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2ad9a1	0x1628108	the embezzlement conspiracy
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2ad9aa	0x1628150	the corruption conspiracy
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2ad9b3	0x1628138	the bribery conspiracy
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2ad9c8	0x1628128	 concocted by 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2ada65	0x1627778	an unknown party
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2ada80	0x15e82d8	, 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2adaaa	0x162773c	, and 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2adac8	0x15e8310	 and 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2adae6	0x16280e8	the plot of 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2adb4f	0x1627778	an unknown party
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2adb64	0x16280f8	 to infiltrate 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2adb9b	0x1627bb8	 under the influence of 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2adc3f	0x16280e8	the plot of 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2adcff	0x1627778	an unknown party
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2add17	0x16280c0	 to frame 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2add5c	0x1627b74	 for 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2add8f	0x15ec880	production order violation
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2add9b	0x15ec848	export prohibition violation
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2adda7	0x15ec868	job order violation
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2addb3	0x1627b30	a conspiracy to slow labor
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2addbf	0x15ed054	murder
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2addc8	0x15ec8a0	disorderly conduct
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2addd1	0x15ec8b8	building destruction
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2addda	0x15ec920	bribery
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2adde3	0x15ec928	embezzlement
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2addec	0x15ec900	vandalism
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2addf5	0x15ed0fc	theft
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2addfe	0x15ed0e8	robbery
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2ade07	0x15ed128	espionage
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2ade10	0x15ed110	treason
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2ade19	0x1627b50	blood-drinking
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2ade22	0x16279a0	attempted theft
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2ade2b	0x16279b0	attempted murder
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2ade34	0x15ed140	kidnapping
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2ade3d	0x1627978	attempted kidnapping
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2ade52	0x1627990	 by fooling 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2ade9e	0x1627bb8	 under the influence of 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2adeea	0x16280e8	the plot of 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2adfa5	0x1627778	an unknown party
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2adfbc	0x16280d0	 to induce a war of 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2adfea	0x16146e0	 upon 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2ae021	0x1627bb8	 under the influence of 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2ae0c2	0x16280e8	the plot of 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2ae18d	0x1627778	an unknown party
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2ae1a4	0x16281d8	 to sabotage the activities of 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2ae216	0x160125c	 at 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2ae247	0x1627bb8	 under the influence of 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2ae2e7	0x162790c	 via 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2ae385	0x16280e8	the plot of 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2ae450	0x1627778	an unknown party
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2ae467	0x16281f8	 to abduct 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2ae4b4	0x1627bb8	 under the influence of 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2ae554	0x162790c	 via 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2ae5f2	0x16280e8	the plot of 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2ae6bd	0x1627778	an unknown party
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2ae6d4	0x16281b0	 to assassinate 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2ae721	0x1627bb8	 under the influence of 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2ae7c1	0x162790c	 via 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2ae85f	0x16280e8	the plot of 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2ae92a	0x1627778	an unknown party
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2ae941	0x16281c8	 to steal 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2ae978	0x1627bb8	 under the influence of 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2aea24	0x162790c	 via 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2aeac2	0x1628198	the promise by 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2aeb90	0x1627778	an unknown party
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2aeb9f	0x15ec7b4	 to 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2aebf6	0x1627778	an unknown party
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2aec0b	0x1627a38	 to give 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2aec95	0x1627778	an unknown party
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2aeca4	0x16281a8	 of
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2aecb9	0x1627a10	 a position
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2aecd8	0x15ec1b4	 in 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2aed1b	0x1627bb8	 under the influence of 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2aedcf	0x162790c	 via 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2aee68	0x1627778	an unknown party
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2aee83	0x15e82d8	, 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2aeea8	0x162773c	, and 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2aeeb1	0x15e8310	 and 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2aeedc	0x1627fd0	the passing of corruptly-obtained funds by 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2aeee5	0x1628180	the embezzlement of
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2aeeee	0x1628170	the bribery of
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2aefba	0x1627778	an unknown party
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2af033	0x1626df8	 as 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2af042	0x15e8048	the 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2af049	0x15ec820	a 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2af07f	0x15ea718	 of 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2af0ae	0x1627bb8	 under the influence of 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2af0b5	0x15ec7b4	 to 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2af16e	0x162790c	 via 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2af20c	0x1628000	the permanent joining by 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2af2b9	0x1627778	an unknown party
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2af2d0	0x15ea718	 of 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2af380	0x1627fa0	 to the living world
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2af38c	0x1627778	an unknown party
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2af3a1	0x1627fa0	 to the living world
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2af3b3	0x1627fb8	the parley between 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2af460	0x1627778	an unknown party
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2af475	0x15e8310	 and 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2af4de	0x1627778	an unknown party
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2af4f8	0x1627f68	the agreement between 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2af553	0x1627778	an unknown party
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2af568	0x15e8310	 and 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2af5c3	0x1627778	an unknown party
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2af5ec	0x1627ef0	 to study
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2af5f5	0x1627ed8	 to work as a mercenary
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2af5fe	0x1627f18	 to entertain the citizenry
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2af607	0x1627f00	 to eradicate monsters
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2af624	0x1627f80	 and become a resident of 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2af636	0x1627f68	the agreement between 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2af690	0x1627778	an unknown party
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2af6a5	0x15e8310	 and 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2af700	0x1627778	an unknown party
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2af71d	0x1627f38	 and become a citizen of 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2af74a	0x1627f58	the joining of 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2af7a5	0x1627778	an unknown party
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2af7ba	0x15ed7e0	 with 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2af815	0x1627778	an unknown party
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2af84a	0x1627e80	 to help rescue 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2af8b2	0x1627e98	 to oust 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2af8d4	0x15ecb7c	 from 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2af8e0	0x1627c90	 to entertain the world
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2af8f4	0x1627ca8	 to live a life of adventure
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2af908	0x1628090	 in bound service
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2af91c	0x1627c80	 as a guide
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2af935	0x1627c28	 to find 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2af975	0x1627c28	 to find 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2af9be	0x15ec7b4	 to 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2af9e5	0x1627c38	 in order to be brought to safety
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2af9ff	0x16280a8	the agreement by 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2afa5a	0x1627778	an unknown party
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2afa6f	0x1628070	 to establish 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2afa8e	0x1627c10	a grand guildhall
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2afaa7	0x1627d50	a guildhall
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2afac6	0x1627d60	a temple complex
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2afadf	0x1627d28	a temple
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2afaf4	0x1627b74	 for 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2afb5b	0x1628080	the request by 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2afbc4	0x1627778	an unknown party
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2afbd9	0x1628040	 that 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2afc24	0x1627778	an unknown party
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2afc39	0x1627cf8	 make an offer of service
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2afc56	0x15ec7b4	 to 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2afc83	0x1628080	the request by 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2afcec	0x1627778	an unknown party
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2afd01	0x1628040	 that 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2afd4c	0x1627778	an unknown party
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2afd61	0x1627cc8	 retrieve 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2afd8d	0x15ecb7c	 from 
+reference	agreement-subject	0x2ad7f0	0x2afec3	0x2afdbd	0x1627b74	 for 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a8baf	0x15f7ec0	In 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a8bb6	0x1622438	Subject revealed that in 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a8bdf	0x15e2ec4	, 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a8c80	0x16228a0	a corrupt agreement was formed
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a8dd0	0x1622240	an unknown party
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a8deb	0x15e2ec4	, 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a8e15	0x1622254	, and 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a8e33	0x15e2ebc	 and 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a8e58	0x1622218	 concocted 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a8e86	0x16221f8	a embezzlement conspiracy
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a8ea0	0x16221e0	a corruption conspiracy
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a8eba	0x1622228	a bribery conspiracy
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a8f7b	0x1622240	an unknown party
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a8f92	0x16221b8	 plotted to infiltrate 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a90c6	0x16221d0	 in order to 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a9115	0x16222f0	prepare a coup
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a9124	0x16222e0	instill terror
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a9133	0x1622310	initiate sabotage
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a9142	0x1622300	steal treasures
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a9160	0x15e2ec4	, 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a9189	0x1622254	, and 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a91a7	0x15e2ebc	 and 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a91e7	0x1622298	 approached by 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a9240	0x16222a8	 to handle the matter directly or through another party
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a929a	0x1622260	 under the influence of 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a93b7	0x1622240	an unknown party
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a93cf	0x1622280	 plotted to frame 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a9414	0x1622768	 for 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a9447	0x15e73e8	production order violation
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a9453	0x15e7450	export prohibition violation
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a945f	0x15e7470	job order violation
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a946b	0x1622770	a conspiracy to slow labor
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a9477	0x15e7c38	murder
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a9480	0x15e74a0	disorderly conduct
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a9489	0x15e74b8	building destruction
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a9492	0x15e7488	bribery
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a949b	0x15e7490	embezzlement
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a94a4	0x15e7500	vandalism
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a94ad	0x15e7c84	theft
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a94b6	0x15e7cc8	robbery
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a94bf	0x15e7cb0	espionage
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a94c8	0x15e7cf8	treason
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a94d1	0x1622748	blood-drinking
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a94da	0x1622758	attempted theft
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a94e3	0x1622718	attempted murder
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a94ec	0x15e7d30	kidnapping
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a94f5	0x1622730	attempted kidnapping
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a950a	0x16226e8	 by fooling 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a9563	0x1622298	 approached by 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a9597	0x16222a8	 to handle the matter directly or through another party
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a95b5	0x1622260	 under the influence of 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a9652	0x1622240	an unknown party
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a9667	0x16226f8	 plotted to induce a war of 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a9695	0x160f038	 upon 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a96d3	0x1622298	 approached by 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a970a	0x16222a8	 to handle the matter directly or through another party
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a9731	0x15e2374	.
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a979f	0x15f6df8	  
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a980e	0x1622260	 under the influence of 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a98b5	0x1622240	an unknown party
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a98ca	0x1622810	 plotted to sabotage the activities of 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a9936	0x15fbf2c	 at 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a996e	0x1622298	 approached by 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a99a8	0x16222a8	 to handle the matter directly or through another party
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a99c3	0x1622260	 under the influence of 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a9a18	0x1622838	 via 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a9abf	0x1622240	an unknown party
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a9ad4	0x16227d8	 plotted to abduct 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a9b2c	0x1622298	 approached by 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a9b60	0x16222a8	 to handle the matter directly or through another party
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a9b72	0x1622260	 under the influence of 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a9bb9	0x1622838	 via 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a9c60	0x1622240	an unknown party
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a9c75	0x16227f0	 plotted to assassinate 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a9ccd	0x1622298	 approached by 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a9d01	0x16222a8	 to handle the matter directly or through another party
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a9d13	0x1622260	 under the influence of 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a9d5a	0x1622838	 via 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a9e01	0x1622240	an unknown party
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a9e16	0x16227b0	 plotted to steal 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a9e54	0x1622298	 approached by 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a9e8e	0x16222a8	 to handle the matter directly or through another party
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a9ea9	0x1622260	 under the influence of 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a9efe	0x1622838	 via 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a9fa5	0x1622240	an unknown party
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2a9fba	0x16227c8	 promised 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aa00b	0x1622240	an unknown party
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aa01a	0x1622790	 to give 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aa09b	0x1622240	an unknown party
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aa0b0	0x16227a0	 a position
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aa0c9	0x15e6d2c	 in 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aa113	0x1622298	 approached by 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aa14a	0x16222a8	 to handle the matter directly or through another party
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aa15c	0x1622260	 under the influence of 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aa1b6	0x1622838	 via 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aa27f	0x1622240	an unknown party
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aa29a	0x15e2ec4	, 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aa2bf	0x1622254	, and 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aa2c8	0x15e2ebc	 and 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aa34f	0x1622240	an unknown party
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aa364	0x16225d0	 began 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aa38b	0x16225a0	passing a portion of corruptly-obtained funds
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aa394	0x1622588	embezzling funds
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aa39d	0x16225d8	accepting bribes in exchange for leniency
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aa412	0x162141c	 as 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aa42c	0x15e7418	a 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aa435	0x15e2c34	the 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aa45c	0x15e52d0	 of 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aa490	0x15e7324	 to 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aa499	0x1622260	 under the influence of 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aa4ee	0x1622838	 via 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aa577	0x1622240	an unknown party
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aa58c	0x1622548	 aided 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aa5ea	0x1622240	an unknown party
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aa5ff	0x1622550	 in becoming a permanent part of the living world
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aa648	0x1622510	.  The ritual took place in 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aa678	0x160f758	 using 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aa6a9	0x1622530	.  The ritual involved 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aa6fe	0x1622240	an unknown party
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aa713	0x16226a8	 agreed to a parley with 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aa76b	0x1622240	an unknown party
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aa7cb	0x1622240	an unknown party
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aa7e0	0x16226c8	 made an agreement with 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aa83e	0x1622240	an unknown party
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aa857	0x1622670	, becoming a resident of 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aa897	0x1622608	 to study
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aa8ab	0x1622658	 to work as a mercenary
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aa8bf	0x1622638	 to entertain the citizenry
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aa8d3	0x1622690	 to eradicate monsters
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aa932	0x1622240	an unknown party
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aa947	0x16226c8	 made an agreement with 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aa9a5	0x1622240	an unknown party
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aa9c2	0x1622618	, becoming a citizen of 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aaa35	0x1622240	an unknown party
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aaa4a	0x1622a20	 joined with 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aaaab	0x1622240	an unknown party
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aaae4	0x1622a30	 to help rescue 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aab4f	0x16229f8	 to oust 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aab71	0x15e7784	 from 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aab98	0x1622a08	 to entertain the world
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aabac	0x16229b8	 to live a life of adventure
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aabc0	0x16229d8	 after being compelled to serve
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aabd4	0x1622998	 as a guide
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aabed	0x16229a8	 to find 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aac30	0x16229a8	 to find 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aac7c	0x15e7324	 to 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aac88	0x1622ad0	 in order to be brought to safety
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aacf6	0x1622240	an unknown party
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aad0b	0x1622af8	 agreed to establish 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aad2a	0x1622aa8	a grand guildhall
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aad43	0x1622ac0	a guildhall
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aad62	0x1622a80	a temple complex
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aad7b	0x1622a98	a temple
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aad90	0x1622768	 for 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aaef6	0x1622240	an unknown party
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aaf0e	0x1622a48	 requested that 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aafad	0x1622240	an unknown party
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aafc2	0x1622a60	 make an offer of service
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2aafe5	0x15e7324	 to 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2ab0ba	0x1622240	an unknown party
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2ab0d2	0x16228d8	 asked that 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2ab171	0x1622240	an unknown party
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2ab186	0x16228e8	 retrieve 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2ab1b8	0x15e7784	 from 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2ab1e8	0x1622768	 for 
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2ab215	0x16228a0	a corrupt agreement was formed
+classic	agreement-sentence	0x2a8b30	0x2ab3ab	0x2ab278	0x15f6df8	  
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ab46a	0x1622b10	the formation of a corrupt agreement
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ab485	0x15e6d2c	 in 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ab561	0x1622880	the embezzlement conspiracy
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ab56a	0x1622860	the corruption conspiracy
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ab573	0x16228c0	the bribery conspiracy
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ab588	0x1622840	 concocted by 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ab625	0x1622240	an unknown party
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ab640	0x15e2ec4	, 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ab66a	0x1622254	, and 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ab688	0x15e2ebc	 and 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ab6a6	0x1622850	the plot of 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ab70f	0x1622240	an unknown party
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ab724	0x1622978	 to infiltrate 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ab75b	0x1622260	 under the influence of 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ab7ff	0x1622850	the plot of 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ab8bf	0x1622240	an unknown party
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ab8d7	0x1622988	 to frame 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ab91c	0x1622768	 for 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ab94f	0x15e73e8	production order violation
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ab95b	0x15e7450	export prohibition violation
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ab967	0x15e7470	job order violation
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ab973	0x1622770	a conspiracy to slow labor
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ab97f	0x15e7c38	murder
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ab988	0x15e74a0	disorderly conduct
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ab991	0x15e74b8	building destruction
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ab99a	0x15e7488	bribery
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ab9a3	0x15e7490	embezzlement
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ab9ac	0x15e7500	vandalism
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ab9b5	0x15e7c84	theft
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ab9be	0x15e7cc8	robbery
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ab9c7	0x15e7cb0	espionage
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ab9d0	0x15e7cf8	treason
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ab9d9	0x1622748	blood-drinking
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ab9e2	0x1622758	attempted theft
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ab9eb	0x1622718	attempted murder
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ab9f4	0x15e7d30	kidnapping
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ab9fd	0x1622730	attempted kidnapping
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2aba12	0x16226e8	 by fooling 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2aba5e	0x1622260	 under the influence of 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2abaaa	0x1622850	the plot of 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2abb65	0x1622240	an unknown party
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2abb7c	0x1622940	 to induce a war of 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2abbaa	0x160f038	 upon 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2abbe1	0x1622260	 under the influence of 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2abc82	0x1622850	the plot of 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2abd4d	0x1622240	an unknown party
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2abd64	0x1622958	 to sabotage the activities of 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2abdd6	0x15fbf2c	 at 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2abe07	0x1622260	 under the influence of 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2abea7	0x1622838	 via 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2abf45	0x1622850	the plot of 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ac010	0x1622240	an unknown party
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ac027	0x1622918	 to abduct 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ac074	0x1622260	 under the influence of 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ac114	0x1622838	 via 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ac1b2	0x1622850	the plot of 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ac27d	0x1622240	an unknown party
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ac294	0x1622928	 to assassinate 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ac2e1	0x1622260	 under the influence of 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ac381	0x1622838	 via 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ac41f	0x1622850	the plot of 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ac4ea	0x1622240	an unknown party
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ac501	0x16228f8	 to steal 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ac538	0x1622260	 under the influence of 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ac5e4	0x1622838	 via 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ac682	0x1622908	the promise by 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ac750	0x1622240	an unknown party
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ac75f	0x15e7324	 to 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ac7b6	0x1622240	an unknown party
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ac7cb	0x1622790	 to give 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ac855	0x1622240	an unknown party
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ac864	0x1622c04	 of
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ac879	0x16227a0	 a position
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ac898	0x15e6d2c	 in 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ac8db	0x1622260	 under the influence of 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ac98f	0x1622838	 via 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2aca28	0x1622240	an unknown party
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2aca43	0x15e2ec4	, 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2aca68	0x1622254	, and 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2aca71	0x15e2ebc	 and 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2aca9c	0x1622bd8	the passing of corruptly-obtained funds by 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2acaa5	0x1622bc0	the embezzlement of
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2acaae	0x1622c08	the bribery of
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2acb7a	0x1622240	an unknown party
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2acbf3	0x162141c	 as 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2acc02	0x15e2c34	the 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2acc09	0x15e7418	a 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2acc3f	0x15e52d0	 of 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2acc6e	0x1622260	 under the influence of 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2acc75	0x15e7324	 to 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2acd2e	0x1622838	 via 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2acdcc	0x1622b88	the permanent joining by 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ace79	0x1622240	an unknown party
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ace90	0x15e52d0	 of 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2acf40	0x1622ba8	 to the living world
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2acf4c	0x1622240	an unknown party
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2acf61	0x1622ba8	 to the living world
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2acf73	0x1622b58	the parley between 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ad020	0x1622240	an unknown party
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ad035	0x15e2ebc	 and 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ad09e	0x1622240	an unknown party
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ad0b8	0x1622b70	the agreement between 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ad113	0x1622240	an unknown party
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ad128	0x15e2ebc	 and 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ad183	0x1622240	an unknown party
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ad1ac	0x1622608	 to study
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ad1b5	0x1622658	 to work as a mercenary
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ad1be	0x1622638	 to entertain the citizenry
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ad1c7	0x1622690	 to eradicate monsters
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ad1e4	0x1622c80	 and become a resident of 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ad1f6	0x1622b70	the agreement between 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ad250	0x1622240	an unknown party
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ad265	0x15e2ebc	 and 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ad2c0	0x1622240	an unknown party
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ad2dd	0x1622ca0	 and become a citizen of 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ad30a	0x1622c58	the joining of 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ad365	0x1622240	an unknown party
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ad37a	0x15e8390	 with 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ad3d5	0x1622240	an unknown party
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ad40a	0x1622a30	 to help rescue 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ad472	0x16229f8	 to oust 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ad494	0x15e7784	 from 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ad4a0	0x1622a08	 to entertain the world
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ad4b4	0x16229b8	 to live a life of adventure
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ad4c8	0x1622c68	 in bound service
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ad4dc	0x1622998	 as a guide
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ad4f5	0x16229a8	 to find 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ad535	0x16229a8	 to find 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ad57e	0x15e7324	 to 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ad5a5	0x1622ad0	 in order to be brought to safety
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ad5bf	0x1622c30	the agreement by 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ad61a	0x1622240	an unknown party
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ad62f	0x1622c48	 to establish 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ad64e	0x1622aa8	a grand guildhall
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ad667	0x1622ac0	a guildhall
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ad686	0x1622a80	a temple complex
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ad69f	0x1622a98	a temple
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ad6b4	0x1622768	 for 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ad71b	0x1622c18	the request by 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ad784	0x1622240	an unknown party
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ad799	0x1622c28	 that 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ad7e4	0x1622240	an unknown party
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ad7f9	0x1622a60	 make an offer of service
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ad816	0x15e7324	 to 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ad843	0x1622c18	the request by 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ad8ac	0x1622240	an unknown party
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ad8c1	0x1622c28	 that 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ad90c	0x1622240	an unknown party
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ad921	0x16228e8	 retrieve 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ad94d	0x15e7784	 from 
+classic	agreement-subject	0x2ab3b0	0x2ada83	0x2ad97d	0x1622768	 for 

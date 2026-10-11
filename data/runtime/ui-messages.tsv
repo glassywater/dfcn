@@ -315,6 +315,55 @@ Agreement date: {d}st Obsidian, {d}	协议日期：第{d2}年黑曜石月{d1}日
 Agreement date: {d}nd Obsidian, {d}	协议日期：第{d2}年黑曜石月{d1}日
 Agreement date: {d}rd Obsidian, {d}	协议日期：第{d2}年黑曜石月{d1}日
 Agreement date: {d}th Obsidian, {d}	协议日期：第{d2}年黑曜石月{d1}日
+# Report Date constructor: all native month and ordinal branches.
+Date: {d}st Granite, {d}	日期：第{d2}年花岗岩月{d1}日
+Date: {d}nd Granite, {d}	日期：第{d2}年花岗岩月{d1}日
+Date: {d}rd Granite, {d}	日期：第{d2}年花岗岩月{d1}日
+Date: {d}th Granite, {d}	日期：第{d2}年花岗岩月{d1}日
+Date: {d}st Slate, {d}	日期：第{d2}年板岩月{d1}日
+Date: {d}nd Slate, {d}	日期：第{d2}年板岩月{d1}日
+Date: {d}rd Slate, {d}	日期：第{d2}年板岩月{d1}日
+Date: {d}th Slate, {d}	日期：第{d2}年板岩月{d1}日
+Date: {d}st Felsite, {d}	日期：第{d2}年霏细岩月{d1}日
+Date: {d}nd Felsite, {d}	日期：第{d2}年霏细岩月{d1}日
+Date: {d}rd Felsite, {d}	日期：第{d2}年霏细岩月{d1}日
+Date: {d}th Felsite, {d}	日期：第{d2}年霏细岩月{d1}日
+Date: {d}st Hematite, {d}	日期：第{d2}年赤铁矿月{d1}日
+Date: {d}nd Hematite, {d}	日期：第{d2}年赤铁矿月{d1}日
+Date: {d}rd Hematite, {d}	日期：第{d2}年赤铁矿月{d1}日
+Date: {d}th Hematite, {d}	日期：第{d2}年赤铁矿月{d1}日
+Date: {d}st Malachite, {d}	日期：第{d2}年孔雀石月{d1}日
+Date: {d}nd Malachite, {d}	日期：第{d2}年孔雀石月{d1}日
+Date: {d}rd Malachite, {d}	日期：第{d2}年孔雀石月{d1}日
+Date: {d}th Malachite, {d}	日期：第{d2}年孔雀石月{d1}日
+Date: {d}st Galena, {d}	日期：第{d2}年方铅矿月{d1}日
+Date: {d}nd Galena, {d}	日期：第{d2}年方铅矿月{d1}日
+Date: {d}rd Galena, {d}	日期：第{d2}年方铅矿月{d1}日
+Date: {d}th Galena, {d}	日期：第{d2}年方铅矿月{d1}日
+Date: {d}st Limestone, {d}	日期：第{d2}年石灰岩月{d1}日
+Date: {d}nd Limestone, {d}	日期：第{d2}年石灰岩月{d1}日
+Date: {d}rd Limestone, {d}	日期：第{d2}年石灰岩月{d1}日
+Date: {d}th Limestone, {d}	日期：第{d2}年石灰岩月{d1}日
+Date: {d}st Sandstone, {d}	日期：第{d2}年砂岩月{d1}日
+Date: {d}nd Sandstone, {d}	日期：第{d2}年砂岩月{d1}日
+Date: {d}rd Sandstone, {d}	日期：第{d2}年砂岩月{d1}日
+Date: {d}th Sandstone, {d}	日期：第{d2}年砂岩月{d1}日
+Date: {d}st Timber, {d}	日期：第{d2}年林木月{d1}日
+Date: {d}nd Timber, {d}	日期：第{d2}年林木月{d1}日
+Date: {d}rd Timber, {d}	日期：第{d2}年林木月{d1}日
+Date: {d}th Timber, {d}	日期：第{d2}年林木月{d1}日
+Date: {d}st Moonstone, {d}	日期：第{d2}年月光石月{d1}日
+Date: {d}nd Moonstone, {d}	日期：第{d2}年月光石月{d1}日
+Date: {d}rd Moonstone, {d}	日期：第{d2}年月光石月{d1}日
+Date: {d}th Moonstone, {d}	日期：第{d2}年月光石月{d1}日
+Date: {d}st Opal, {d}	日期：第{d2}年蛋白石月{d1}日
+Date: {d}nd Opal, {d}	日期：第{d2}年蛋白石月{d1}日
+Date: {d}rd Opal, {d}	日期：第{d2}年蛋白石月{d1}日
+Date: {d}th Opal, {d}	日期：第{d2}年蛋白石月{d1}日
+Date: {d}st Obsidian, {d}	日期：第{d2}年黑曜石月{d1}日
+Date: {d}nd Obsidian, {d}	日期：第{d2}年黑曜石月{d1}日
+Date: {d}rd Obsidian, {d}	日期：第{d2}年黑曜石月{d1}日
+Date: {d}th Obsidian, {d}	日期：第{d2}年黑曜石月{d1}日
 # Petitions renderer: all branches from the native Windows 53.16 function,
 # including its separate addst records, not only the visitor-residency page.
 # Names stay in their existing typed grammar; guild occupations use the full
