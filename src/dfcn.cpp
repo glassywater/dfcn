@@ -61,6 +61,7 @@
 #include "native_adventure_crafting.h"
 #include "native_adventure_belief_source.h"
 #include "native_unit_identity.h"
+#include "native_justice_plots.h"
 #include "native_adventure_charge.h"
 #include "native_trade_item_caption.h"
 #include "core_api.h"
@@ -881,11 +882,12 @@ static constexpr int kFortressSquadCreationRule = -155;
 static constexpr int kFortressUniformChoiceRule = -156;
 static constexpr int kFortressSiteNameRule = -157;
 static constexpr int kConversationPortraitRule = -158;
+static constexpr int kFortressJusticePlotRule = -160;
 
 static bool is_fortress_justice_field(const Match &match) {
     return match.rule == kFortressJusticeCaseRule || match.rule == kFortressJusticeDetailRule ||
         match.rule == kFortressJusticeActionRule || match.rule == kFortressJusticeTabRule ||
-        match.rule == kFortressJusticeActorRule;
+        match.rule == kFortressJusticeActorRule || match.rule == kFortressJusticePlotRule;
 }
 
 static bool is_credits_row(const Match &match) {
@@ -2137,6 +2139,7 @@ struct NativeDrawnTextRow {
     std::shared_ptr<NativeHistoryName> site_name{};
     // The actual addst return address identifies document-specific row writers.
     uintptr_t native_caller = 0;
+    std::optional<NativeJusticePlotCaption> justice_plot{};
     NativeAdventureCraftingRole adventure_crafting_role = NativeAdventureCraftingRole::None;
     // Freeze the actual option formatter while its renderer frame is live.
     // Pictured ingestion actions and ordinary items share the same addst.
@@ -2681,6 +2684,9 @@ static void remember_native_drawn_text_row(int x, int y, std::string_view source
         if (g_native_site_name_fact)
             row.site_name = std::make_shared<NativeHistoryName>(*g_native_site_name_fact);
         row.native_caller = native_caller;
+        if (native_caller)
+            row.justice_plot = native_justice_plot_caption(native_caller, address, source);
+        if (row.justice_plot) row.caption_source = true;
         row.adventure_crafting_role = native_adventure_crafting_role(native_caller, address);
         row.adventure_inventory_role = native_adventure_inventory_role(native_caller, address);
         if (row.adventure_crafting_role != NativeAdventureCraftingRole::None ||
@@ -3382,6 +3388,9 @@ public:
                                         std::string_view query, bool activity) const;
     std::optional<std::string> translate_native_unit_identity(
         const NativeUnitIdentity &identity) const;
+    std::optional<std::string> translate_native_justice_organization_initials(
+        const NativeUnitIdentity &identity,
+        const std::array<int32_t, 7> &native_indices) const;
     std::optional<std::string> translate_native_adventure_charge(
         std::string_view source, const std::vector<NativeAdventureChargePart> &parts) const;
     bool translated_legends_search_matches(std::string_view source,
@@ -3392,7 +3401,8 @@ public:
     bool translated_adventure_action_matches(std::string_view source,
         std::string_view query, const NativePerformanceChoice *native_choice = nullptr) const;
     bool translated_journal_search_matches(std::string_view source,
-        std::string_view query, JournalSearchKind kind) const;
+        std::string_view query, JournalSearchKind kind,
+        const NativeJusticePlotCaption *native_plot = nullptr) const;
     bool name_editor_visible() const;
     uint64_t name_editor_search_revision() const { return name_editor_search_revision_; }
     bool translated_name_editor_search_matches(std::string_view word_id,
@@ -4659,6 +4669,8 @@ private:
     void layout_fortress_nobles(SDL_Renderer *renderer);
     void layout_fortress_sort_captions();
     std::optional<std::string> translate_justice_case_text(std::string_view source) const;
+    std::optional<std::string> translate_justice_plot_text(std::string_view source,
+        std::optional<bool> sabotage_person = std::nullopt) const;
     void append_fortress_justice_tabs(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y) const;
     void append_fortress_justice_rows(std::vector<std::string> &rows,
@@ -16154,6 +16166,7 @@ static NativeKeybindingScope capture_native_keybinding_scope(const graphicst &gp
 #include "fortress_livestock.inc"
 #include "native_calendar_date.inc"
 #include "justice_case_translation.inc"
+#include "justice_plot_translation.inc"
 #include "fortress_stocks.inc"
 #include "visitor_overview.inc"
 #include "fortress_help.inc"

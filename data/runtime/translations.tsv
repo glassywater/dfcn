@@ -13952,6 +13952,7 @@ Announcement combat justice-intrigue-actor [justice-intrigue-actor]: companion {
 Announcement combat justice-intrigue-actor [justice-intrigue-actor]: ex-spouse {s}	前配偶{s1}	l
 Announcement combat justice-intrigue-actor [justice-intrigue-actor]: guildmate {s}	行会同伴{s1}	l
 Announcement combat justice-intrigue-recruitment [justice-intrigue-predicate]: {s}	{s1}	l
+Announcement combat justice-plot-core [$name,$name]: Start War between {s} and {s}	挑起{s1}与{s2}之间的战争	l
 Announcement combat memorial-clauses [memorial-clause,memorial-clauses]: {s} / {s}	{s1}／{s2}	l
 Announcement combat memory-performance [memory-performance-core,$name]: {s} at {s}	在{s2}，{s1}	l
 Announcement combat memory-sentence [$name]: There was a scholarly lecture in {s}.	{s1}办了场学术讲座。	l
@@ -14640,6 +14641,7 @@ Announcement combat justice-interrogation-crime []: the conspiracy to slow labor
 Announcement combat justice-interrogation-sentence []: Subject naively complied.	受审者毫无戒心地配合了审讯。	l
 Announcement combat justice-interrogation-unit [historical-event-paragraph]: {s}	{s1}	l
 Announcement combat justice-interrogation-unit [justice-intrigue-paragraph]: {s}	{s1}	l
+Announcement combat justice-plot [justice-plot-core,$digits]: {s}, agreed in {s}	{s1}（第{s2}年商定）	l
 Announcement combat merchant-origin [merchant-nation]: {s}, out to the northeast	东北方的{s1}	l
 Announcement combat merchant-origin [merchant-nation]: {s}, out to the northwest	西北方的{s1}	l
 Announcement combat merchant-origin [merchant-nation]: {s}, out to the southeast	东南方的{s1}	l
@@ -15561,6 +15563,7 @@ Announcement combat head [unit,unit,object]: {s} shakes {s} around by the {s}	{s
 Announcement combat historical-clash-outcome [$number]: slaying {s} and dying	击杀对方{s1}，自身阵亡	l
 Announcement combat historical-squad-clash [historical-squad-clash-core]: {s}	{s1}	l
 Announcement combat justice-interrogation-factor []: being trusting by nature	天性轻信	l
+Announcement combat justice-plot [justice-plot-attempted,$digits]: {s} in {s}	{s1}（第{s2}年）	l
 Announcement combat memorial-death [$creature]: Burned to death by a {s} fire	被一只{s1}的火焰烧死	l
 Announcement combat memory-sentence [memory-person]: I am separated from {s}.	我跟{s1}分开了。	l
 Announcement combat memory-sentence [memory-person]: I was reunited with {s}.	我跟{s1}重逢了。	l
@@ -16614,6 +16617,7 @@ Announcement combat historical-military-creature [$creature]: animated {s}	复�
 Announcement combat justice-interrogation-factor []: an acquiescing nature	天性顺从	l
 Announcement combat justice-interrogation-factor []: being a natural loner	天性孤僻	l
 Announcement combat justice-interrogation-response []: succumbed to vanity	受虚荣心驱使而屈服	l
+Announcement combat justice-plot-core [$historical-actor]: Assassinate {s}	刺杀{s1}	l
 Announcement combat memorial-clause [$memorial-preference]: Admirer of {s}	钟爱{s1}	l
 Announcement combat memorial-inscription [memorial-name]: In memory of {s}	谨以此纪念{s1}	l
 Announcement combat memory-performance-core [memory-poem]: {s} was recited	有人朗诵了{s1}	l
@@ -16985,6 +16989,7 @@ Announcement combat description-institution [$person]: a tomb housing {s}	安葬
 Announcement combat diplomacy-cause []: prior aggression by the adversary	对方此前的侵略	l
 Announcement combat injury-subject [injury-subject,$body]: {s} in the {s}	{s2}内的{s1}	l
 Announcement combat justice-interrogation-factor []: a distrustful nature	天性多疑	l
+Announcement combat justice-plot-core [$office,$name]: Corrupt {s} of {s}	拉拢{s2}的{s1}	l
 Announcement combat memorial-clause [$memorial-material]: At one with {s}	与{s1}合而为一	l
 Announcement combat memorial-clause [$memorial-material]: United with {s}	与{s1}融为一体	l
 Announcement combat memorial-death []: Crushed under a collapsing ceiling	被坍塌的天花板压死	l
@@ -17356,6 +17361,8 @@ Announcement combat historical-battle-location [$name,$name]: {s} in {s}	{s2}的
 Announcement combat justice-interrogation-crime []: attempted kidnapping	绑架未遂	l
 Announcement combat justice-interrogation-crime []: building destruction	破坏建筑	l
 Announcement combat justice-interrogation-sentence []: Met with subject.	与受审者会面。	l
+Announcement combat justice-plot-core [$name]: Start War between and {s}	挑起涉及{s1}的战争	l
+Announcement combat justice-plot-core [$name]: Start War between {s} and	挑起涉及{s1}的战争	l
 Announcement combat memorial-clause [$memorial-artifact]: Creator of {s}	{s1}的创作者	l
 Announcement combat memorial-clause [memorial-liked-value]: Lover of {s}	喜爱{s1}	l
 Announcement combat memory-performance-core [memory-poem]: I recited {s}	我朗诵了{s1}	l
@@ -17722,6 +17729,7 @@ Announcement combat justice-interrogation-factor []: feeling no avarice	毫无�
 Announcement combat justice-interrogation-factor []: feelings of vanity	怀有虚荣心	l
 Announcement combat justice-interrogation-factor []: spurning the truth	轻视真相	l
 Announcement combat justice-intrigue-method []: made flattering remarks	说了些奉承的话	l
+Announcement combat justice-plot-core [$historical-actor]: Sabotage {s}	破坏{s1}的活动	l
 Announcement combat memorial-clause [memorial-death,$event]: {s} in {s}	在{s2}中{s1}	l
 Announcement combat memory-ghost [memory-relation]: the ghost of my {s}	我的{s1}的鬼魂	l
 Announcement combat memory-person [memory-relation,$person]: my {s} {s}	我的{s1}{s2}	l
@@ -18156,6 +18164,7 @@ Announcement combat journal-person [dialogue-family]: This is your {s}	这是你
 Announcement combat justice-interrogation-crime []: disorderly conduct	扰乱秩序	l
 Announcement combat justice-interrogation-factor []: feelings of greed	怀有贪欲	l
 Announcement combat justice-interrogation-factor []: valuing the truth	重视真相	l
+Announcement combat justice-plot-core [$name]: Provide Position in {s}	提供{s1}的职位	l
 Announcement combat memory-sentence [memory-knowledge]: I learned {s}.	学会了{s1}。	l
 Announcement combat memory-sentence [memory-person]: Oh, where is {s}?	唉，{s1}在哪里啊？	l
 Announcement combat merchant-origin [$name]: {s}, out to the northeast	东北方的{s1}	l
@@ -18610,6 +18619,8 @@ Announcement combat justice-interrogation-factor []: spurning the law	轻视法�
 Announcement combat justice-interrogation-response []: valued harmony	重视和谐	l
 Announcement combat justice-interrogation-response []: valued honesty	重视诚实	l
 Announcement combat justice-intrigue-factor []: loathing the powerful	厌恶权贵	l
+Announcement combat justice-plot-attempted []: Attempted Embezzlement	挪用资金未遂	l
+Announcement combat justice-plot-core [$historical-actor]: Abduct {s}	绑架{s1}	l
 Announcement combat layer-list [layer-phrase,layer-list]: {s} and {s}	{s1}和{s2}	l
 Announcement combat memorial-killer-death [memorial-killer-verb]: {s}	被{s1}	l
 Announcement combat memorial-weapon-death [memorial-weapon-verb]: {s}	被{s1}	l
@@ -19044,6 +19055,7 @@ Announcement combat justice-interrogation-crime []: attempted murder	谋杀未�
 Announcement combat justice-interrogation-factor []: valuing harmony	重视和谐	l
 Announcement combat justice-interrogation-factor []: valuing the law	重视法律	l
 Announcement combat justice-interrogation-response []: value the law	重视法律	l
+Announcement combat justice-plot-core [$historical-actor]: Frame {s}	栽赃{s1}	l
 Announcement combat memorial-clause [memorial-victim]: Slayer of {s}	斩杀{s1}者	l
 Announcement combat memorial-liked-value [$memorial-preference]: {s}	{s1}	l
 Announcement combat memorial-weapon-death []: Collapsed, struck down	遭击杀后倒地身亡	l
@@ -19986,6 +19998,7 @@ Announcement combat justice-interrogation-unit [$description]: {s}	{s1}	l
 Announcement combat justice-intrigue-factor []: disdaining the law	蔑视法律	l
 Announcement combat justice-intrigue-sentence []: The plan failed.	计划失败了。	l
 Announcement combat justice-intrigue-sentence []: The plan worked.	计划成功了。	l
+Announcement combat justice-plot-attempted []: Attempted Espionage	间谍活动未遂	l
 Announcement combat memorial-clause [$creature]: Slayer of the {s}	斩杀{s1}者	l
 Announcement combat memorial-clause [$digits,$digits]: b.{s} d.{s}	{s1}年生，{s2}年卒	l
 Announcement combat memorial-clause [memorial-family]: Devoted {s}	尽心尽责的{s1}	l
@@ -20470,6 +20483,7 @@ Announcement combat injury [injury-subject]: {s} has been severed	{s1}被切断�
 Announcement combat injury-list [injury,injury-list]: {s} and {s}	{s1}，{s2}	l
 Announcement combat inscription []: the secrets of life and death	生死秘密	l
 Announcement combat justice-interrogation-factor []: being afraid	感到害怕	l
+Announcement combat justice-plot-core [agreement-item]: Steal {s}	窃取{s1}	l
 Announcement combat memorial-clause [memorial-family]: Loving {s}	慈爱的{s1}	l
 Announcement combat memory-crime []: a production order violation	违抗生产命令的罪	l
 Announcement combat memory-ghost []: the ghost of an acquaintance	一个熟人的鬼魂	l
@@ -20904,6 +20918,7 @@ Announcement combat guard-building []: the imported goods market	进口商品市
 Announcement combat historical-battle-location []: unknown lands	未知之地	l
 Announcement combat historical-clash-outcome []: losing everyone	己方全军覆没	l
 Announcement combat justice-interrogation-crime []: embezzlement	侵吞公款	l
+Announcement combat justice-plot-attempted []: Attempted Bribery	贿赂未遂	l
 Announcement combat memorial-clause [$digits,$digits]: {s} - {s}	{s1}年生，{s2}年卒	l
 Announcement combat memorial-death []: Burned up in a magma mist	在岩浆雾中焚毁	l
 Announcement combat memorial-death []: Killed by a flying object	被飞来之物击杀	l
@@ -21447,6 +21462,8 @@ Announcement combat guard-building []: the imported food market	进口食品市�
 Announcement combat head [unit,owned-object]: {s} strangles {s}	{s1}扼住{s2}	l
 Announcement combat justice-interrogation-crime []: the robbery	抢劫	l
 Announcement combat justice-intrigue-method []: offered a bribe	提出行贿	l
+Announcement combat justice-plot-core [$office]: Corrupt {s} of	拉拢{s1}	l
+Announcement combat justice-plot-core []: Start War between and	挑起战争	l
 Announcement combat memorial-clause [$office,$name]: {s} of {s}	{s2}的{s1}	l
 Announcement combat memorial-death []: Burned up in dragon fire	被龙焰焚毁	l
 Announcement combat memorial-death []: Encased in cooling magma	被封入冷却的岩浆	l
@@ -22721,6 +22738,9 @@ Announcement combat justice-interrogation-crime []: the crime	该罪行	l
 Announcement combat justice-interrogation-crime []: the theft	盗窃	l
 Announcement combat justice-interrogation-crime []: vandalism	蓄意破坏	l
 Announcement combat justice-intrigue-method []: made a threat	出言威胁	l
+Announcement combat justice-plot-core [$name]: Corrupt of {s}	拉拢{s1}的任职者	l
+Announcement combat justice-plot-core [$name]: Infiltrate {s}	渗透{s1}	l
+Announcement combat justice-plot-core []: Provide Position in	提供职位	l
 Announcement combat memorial-death []: Fell into a deep chasm	坠入深渊而死	l
 Announcement combat memorial-death []: Succumbed to infection	死于感染	l
 Announcement combat memorial-killer-verb []: Drained of blood	吸干血液	l
@@ -24077,6 +24097,7 @@ Announcement combat historical-battle-location [$name]: {s}	{s1}	l
 Announcement combat justice-interrogation-crime []: bribery	贿赂	l
 Announcement combat justice-interrogation-crime []: treason	叛国	l
 Announcement combat justice-intrigue-method []: pulled rank	以权势压人	l
+Announcement combat justice-plot-core [$name]: Sabotage {s}	破坏{s1}的活动	l
 Announcement combat memorial-clauses [memorial-clause]: {s}	{s1}	l
 Announcement combat memory-knowledge []: powerful knowledge	强大的知识	l
 Announcement combat memory-person [memory-relation]: my {s}	我的{s1}	l
@@ -24914,6 +24935,8 @@ Announcement combat guard-building []: a armorsmith's shop	护甲锻造店	l
 Announcement combat guard-building []: a blacksmith's shop	铁匠铺	l
 Announcement combat guard-building []: a gem cutter's shop	宝石切割店	l
 Announcement combat head [$body]: The force twists the {s}	冲击力扭转了{s1}	l
+Announcement combat justice-plot-core [$name]: Corrupt {s}	拉拢{s1}	l
+Announcement combat justice-plot-core []: Provide Position	提供职位	l
 Announcement combat memorial-death []: Killed by a vehicle	被车辆撞死	l
 Announcement combat memorial-family []: father and husband	父亲与丈夫	l
 Announcement combat memorial-killer-verb []: Fed to beasts	喂给野兽	l
@@ -29773,6 +29796,8 @@ Announcement combat evasion [unit]: {s} scramble away	{s1}连滚带爬地躲开�
 Announcement combat fortress-job [$unit]: Unchain {s}	解开{s1}的锁链	l
 Announcement combat guard-building []: a leather shop	皮革店	l
 Announcement combat injury-subject []: a major artery	一条主要动脉	l
+Announcement combat justice-plot-attempted []: A plot	一项阴谋	l
+Announcement combat justice-plot-core []: Assassinate	刺杀	l
 Announcement combat memorial-death []: Died in a cage	死于笼中	l
 Announcement combat memorial-death []: Died of thirst	渴死	l
 Announcement combat memorial-death []: Encased in ice	被封入冰中	l
@@ -30910,6 +30935,8 @@ Announcement combat equipment [owner,$item]: {s} {s}	{s1}{s2}	l
 Announcement combat guard-building []: the mead hall	蜜酒厅	l
 Announcement combat historical-artifact [$item]: {s}	{s1}	l
 Announcement combat injury-subject []: a motor nerve	一条运动神经	l
+Announcement combat justice-plot-core []: Corrupt of	拉拢任职者	l
+Announcement combat justice-plot-core []: Infiltrate	渗透	l
 Announcement combat memorial-clause [$digits]: d.{s}	卒于{s1}年	l
 Announcement combat memorial-clause []: Went missing	失踪	l
 Announcement combat memorial-death []: Bled to death	失血而死	l
@@ -32147,6 +32174,7 @@ Announcement combat dialogue-trouble []: abductions	多起绑架	l
 Announcement combat diplomacy-cause []: persecution	迫害	l
 Announcement combat guard-building []: a cloth shop	布料店	l
 Announcement combat inscription [$inscription]: {s}	{s1}	l
+Announcement combat justice-plot-core []: Start War	挑起战争	l
 Announcement combat memory-crime []: blood-drinking	吸血的罪	l
 Announcement combat memory-death []: died in a cage	死在笼子里	l
 Announcement combat memory-death []: died in a trap	死在陷阱中	l
@@ -33377,6 +33405,7 @@ Announcement combat evasion [unit]: {s} jumps away	{s1}跳开了	l
 Announcement combat evasion [unit]: {s} rolls away	{s1}翻滚躲开了	l
 Announcement combat injury-subject []: many nerves	多条神经	l
 Announcement combat journal-person [$message]: {s}	{s1}	l
+Announcement combat justice-plot-core []: Sabotage	破坏活动	l
 Announcement combat layer [layer,$term]: {s}'s {s}	{s1}的{s2}	l
 Announcement combat layer-list [layer-phrase]: {s}	{s1}	l
 Announcement combat memorial-death []: Put to rest	得以安息	l
@@ -34687,6 +34716,7 @@ Announcement combat injury-condition []: strained	拉伤	l
 Announcement combat injury-subject []: a ligament	一条韧带	l
 Announcement combat journal-event [$message]: {s}	{s1}	l
 Announcement combat journal-person-kind []: Force	自然之灵	l
+Announcement combat justice-plot-core []: Corrupt	拉拢	l
 Announcement combat layer-phrase [layer]: the {s}	{s1}	l
 Announcement combat material []: unknown material	未知材料	l
 Announcement combat memorial-clause []: Slayer of	斩杀者	l
@@ -36080,6 +36110,7 @@ Announcement combat guard-building []: a hillock	土丘住宅	l
 Announcement combat head [actor,attack]: {s} {s}	{s1}{s2}	l
 Announcement combat injury-condition []: bruised	挫伤	l
 Announcement combat injury-subject []: an artery	一条动脉	l
+Announcement combat justice-plot-core []: Abduct	绑架	l
 Announcement combat memorial-death []: Collapsed	倒地身亡	l
 Announcement combat memorial-death []: Condensed	凝结而亡	l
 Announcement combat memory-death []: was crushed	被压死了	l
@@ -37558,6 +37589,8 @@ Announcement combat dialogue-trouble []: deaths	多起死亡	l
 Announcement combat diplomacy-cause []: a purge	一次清洗	l
 Announcement combat guard-building []: the keep	城堡主楼	l
 Announcement combat injury-subject []: a tendon	一条肌腱	l
+Announcement combat justice-plot-core []: Frame	栽赃	l
+Announcement combat justice-plot-core []: Steal	窃取	l
 Announcement combat memorial-death []: Scuttled	被凿沉	l
 Announcement combat memorial-death []: Vanished	消失无踪	l
 Announcement combat memorial-family []: husband	丈夫	l
@@ -40901,6 +40934,7 @@ It started at {p} and ended at {p} during {e}	在{e1}期间，从{p1}出发，�
 It started at {p} and ended at {p} within {p}	在{p3}，从{p1}出发，在{p2}结束	ht
 It whirls, skips and jumps whenever it moves.	它一动起来便旋转、蹦跳。	h
 Justice case: Violation of export prohibition	违反出口禁令	l
+Justice plot: Start War between {e1} and {e2}	挑起{e1}与{e2}之间的战争	l
 Leave menu and recenter the view on the time.	离开菜单，并将视图重新居中到此物品。	hj
 Leave this menu and view this object's sheet.	离开此菜单，并查看此物品的详情页。	hj
 Leave this menu and view this object's sheet.	离开该菜单并查看这个物品的列表.	w
@@ -43647,6 +43681,7 @@ Announcement combat damage-verb []: denting	砸凹	l
 Announcement combat damage-verb []: tearing	撕裂	l
 Announcement combat dialogue-family []: son	儿子	l
 Announcement combat fraction []: a piece of	一块	l
+Announcement combat justice-plot []: A plot	一项阴谋	l
 Announcement combat memory-object []: a toy	一个玩具	l
 Announcement combat memory-relation []: pet	宠物	l
 Announcement combat memory-value []: family	亲情	l
@@ -44060,6 +44095,8 @@ It might be very difficult to survive here.	在这里生存可能会非常困难
 It mutters to itself as it moves aimlessly.	它漫无目的地游荡，喃喃自语。	h
 Its movement is the sound of wind and rain.	它行动时发出风雨之声。	h
 Justice case: Violation of production order	违反生产命令	l
+Justice organization initials: Unidentified	不明	l
+Justice plot: Attempted Embezzlement in {d}	挪用资金未遂（第{d}年）	l
 Justice witness: Saw {n} admire the object.	看到{n}在欣赏该物品。	l
 Leave this menu and recenter on this place.	离开此菜单，并将视图重新居中到此地点。	hj
 Leave this menu and recenter on this place.	离开该菜单并重定位至该地区.	w
@@ -49380,6 +49417,7 @@ It looks constantly to the sky for rain.	它不停地望向天空，盼着下雨
 It might be difficult to find resources.	在这里可能很难找到资源。	l
 It was one of the only ones of its kind.	它是同类中仅有的少数个体之一。	h
 Justice intelligence tab: Interrogations	审讯记录	l
+Justice plot: Attempted Espionage in {d}	间谍活动未遂（第{d}年）	l
 Loading world and continuing active game	加载世界并继续可用游戏	w
 Minimum Number of High-Elevation Squares	高海拔方格最少数量
 Minimum Number of High-Volcanism Squares	高火山活动度方格最少数量
@@ -51154,6 +51192,10 @@ It's too much! You feel even more sick.	太多了！你感到更加恶心了。	
 Its limbs jut out at asymmetric angles.	它的四肢以不对称的角度伸出。	h
 Its {q} scales are oval-shaped and {s}.	它的{q1}鳞片呈椭圆形，{s1}。	ht
 Justice intelligence tab: Organizations	组织	l
+Justice organization initials: Nameless	无名	l
+Justice plot organization: Unidentified	尚未查明	l
+Justice plot: Start War between and {e}	挑起涉及{e}的战争	l
+Justice plot: Start War between {e} and	挑起涉及{e}的战争	l
 Let there be peace between {e} and {e}.	愿{e1}与{e2}之间恢复和平。	hPt
 Loading data needed to create new world	加载创建新世界所需的数据	w
 Milliseconds between macro instructions	宏指令间隔毫秒数	w
@@ -53102,6 +53144,7 @@ It seems to glow brightly from within.	它似乎从体内放射出耀眼的光�
 It spins wildly, lurching and howling.	它疯狂地旋转、踉跄并嚎叫。	h
 Join me and we'll bring {p} back home!	加入我，我们一起把{p1}带回家！	hPt
 Justice case: Conspiracy to alow labor	合谋怠工	l
+Justice plot: Attempted Bribery in {d}	贿赂未遂（第{d}年）	l
 Labor -> Standing orders -> Petitions.	劳动 → 劳动规则 → 申请。	hP
 Labor caption: Feed Patients/Prisoners	喂食病患和囚犯	wi
 Labor caption: Small Animal Dissection	小动物解剖	wi
@@ -55036,6 +55079,7 @@ It has {s} and it moves very stiffly.	它长有{s1}，它的动作十分僵硬�
 It moves with uneven jerking motions.	它行动时不规则地抽动。	h
 It's great to have a friend like you!	有你这样的朋友真好！	hP
 Justice detail: Implicates: somebody.	牵涉对象：某人。	l
+Justice plot: Provide Position in {t}	在{t}中提供职位	l
 Leave menu and open the item's sheet.	离开菜单，并打开此物品的详情页。	hj
 Militia Commanders are assigned here.	[C:5:0:0]军事指挥官[C:7:0:0]在这里任命。	hq
 Monster Rampage in in {p} during {e}.	在{e1}期间，{p1}的怪物肆虐事件。	htEi
@@ -59054,6 +59098,8 @@ Job removed from unpowered building	无动力建筑的工作被移除	w
 Justice detail: Already interviewed	已审讯	l
 Justice detail: Interview Scheduled	已安排审讯	l
 Justice person value: none assigned	未指派	l
+Justice plot organization: Nameless	无名者	l
+Justice plot: Start War between and	挑起战争	l
 Key hold milliseconds before repeat	按键保持毫秒数前重复	w
 Let's entertain the world together!	让我们一起为世界带来欢乐！	hP
 Loading local animal populations...	加载当地动物种群......	w
@@ -63581,6 +63627,7 @@ It spouts gibberish periodically.	它不时口吐胡言。	h
 Its {q} scales are large and {s}.	它的{q1}鳞片很大，{s1}。	ht
 Its {q} scales are round and {s}.	它的{q1}鳞片呈圆形，{s1}。	ht
 Its {q} scales are small and {s}.	它的{q1}鳞片很小，{s1}。	ht
+Justice plot: Provide Position in	提供职位	l
 Justice sentence: days in prison.	监禁{d}日。	l
 Labor caption: Push/Haul Vehicles	推拉车辆	wi
 Labor caption: Recovering Wounded	救助伤员	wi
@@ -65796,6 +65843,8 @@ Jobs removed from unpowered {s}.	已取消无动力的{s1}中的工作。	hPt
 Justice case: Disorderly conduct	扰乱秩序	l
 Justice detail: Unknown convict.	罪犯不明。	l
 Justice intelligence tab: Actors	人物	l
+Justice plot: Corrupt {s} of {e}	拉拢{e}的{s}	l
+Justice plot: Figure {n} the {s}	{n}（{s}）	l
 Justice sentence: day in prison.	监禁{d}日。	l
 Justice sentence: hammerstrikes.	锤刑{d}次。	l
 Labor caption: Furnace Operating	操作熔炉	wi
@@ -70493,6 +70542,7 @@ It was the {s} of {n} and {n}.	它是{n1}与{n2}的{s}。	ht
 Justice alias title head: ward	守护者	l
 Justice case: Attempted murder	谋杀未遂	l
 Justice person value: somebody	某人	l
+Justice plot: Provide Position	提供职位	l
 Labor caption: Animal Training	驯兽	wi
 Labor caption: Crossbow-making	制弩	wi
 Labor caption: Dressing Wounds	包扎伤口	wi
@@ -72886,6 +72936,8 @@ Just facts - Flights of fancy	实事求是 - 爱好幻想	wl
 Justice case: Attempted theft	盗窃未遂	l
 Justice detail: No witnesses.	无证人。	l
 Justice person: Injured party	受害方	l
+Justice plot: , agreed in {d}	（第{d}年商定）	l
+Justice plot: Assassinate {t}	暗杀{t}	l
 Keep building after placement	放置后继续建造	wli
 Labor caption: Animal Hauling	搬运动物	wi
 Labor caption: Leatherworking	皮革加工	wi
@@ -75210,6 +75262,9 @@ It was of unknown parentage.	它的父母身份不明。	h
 Journey of {a} in the wilds.	在荒野中，{a1}的旅程。	htEi
 Justice case: Blood-drinking	吸血	l
 Justice detail: No witnesses	无证人	l
+Justice plot: Corrupt of {e}	拉拢{e}的任职者	l
+Justice plot: Corrupt {s} of	拉拢{s}	l
+Justice plot: Infiltrate {t}	渗透{t}	l
 Keep your own counsel today.	今天不要轻易透露自己的想法。	hP
 Labor caption: Blacksmithing	锻造杂物	wi
 Labor caption: Cheese Making	制酪	wi
@@ -77424,6 +77479,7 @@ Its {q} exoskeleton is {s}.	它的{q1}外骨骼{s1}。	ht
 Journey of {a} in the wilds	在荒野中，{a1}的旅程	htEi
 Justice action: Interrogate	审讯	l
 Justice actor: Unidentified	身份不明	l
+Justice plot: A plot in {d}	一项阴谋（第{d}年）	l
 Justice report: Prepared by	撰写者	l
 Justice tab: Fortress guard	监牢配置	w
 Labor caption: Bone Carving	骨雕	wi
@@ -79753,6 +79809,7 @@ Journey of {a} during {e}.	在{e1}期间，{a1}的旅程。	htEi
 Journey of {a} within {p}.	在{p1}，{a1}的旅程。	htEi
 Justice case: Embezzlement	挪用资金	l
 Justice person: Implicates	牵涉对象	l
+Justice plot: Sabotage {t}	破坏{t}	l
 Labor caption: Animal Care	动物护理	wi
 Labor caption: Bee Keeping	养蜂	wi
 Labor caption: Bookbinding	书籍装订	wi
@@ -81778,6 +81835,8 @@ Journey of {a} during {e}	在{e1}期间，{a1}的旅程	htEi
 Journey of {a} within {p}	在{p1}，{a1}的旅程	htEi
 Justice detail: Unsolved.	未破案。	l
 Justice person: Convicted	已定罪	l
+Justice plot: Assassinate	暗杀	l
+Justice plot: Corrupt {e}	拉拢{e}	l
 Justice tab: Intelligence	情报	w
 Kinesthetic Sense (minor)	运动感知（次要）	wi
 Labor caption: Healthcare	医疗	wi
@@ -83677,6 +83736,9 @@ It started at {p} in {p}	在{p2}，从{p1}出发	ht
 Its joints are backward.	它的关节反向弯曲。	h
 Justice case: Kidnapping	绑架	l
 Justice detail: Beating.	殴打惩罚。	l
+Justice plot: Abduct {t}	绑架{t}	l
+Justice plot: Corrupt of	拉拢任职者	l
+Justice plot: Infiltrate	渗透	l
 Kick listener out of {e}	将对方逐出{e1}	hPt
 Labor caption: Carpentry	木工	wi
 Labor caption: Diagnosis	诊断	wi
@@ -85679,12 +85741,16 @@ It seems very pleasant.	它显得十分和善。	h
 It shambles sluggishly.	它拖着步子缓慢蹒跚前行。	h
 It squirms and fidgets.	它扭动着，躁动不安。	h
 Justice action: Convict	定罪	l
+Justice actor: Nameless	无名者	l
 Justice case: Espionage	间谍活动	l
 Justice case: Murder of	谋杀：	l
 Justice case: Vandalism	破坏公物	l
 Justice person: Accuses	指控对象	l
 Justice person: Officer	执法人员	l
 Justice person: Witness	证人	l
+Justice plot: Frame {t}	诬陷{t}	l
+Justice plot: Start War	挑起战争	l
+Justice plot: Steal {t}	窃取{t}	l
 Keyboard cursor enabled	启用键盘光标	w
 LACK OF LOW-LYING CAVES	缺少低地洞穴
 LACK OF LOW-LYING CAVES	缺少低地洞穴	hP
@@ -87729,6 +87795,7 @@ Journey of {a} in {p}.	在{p1}，{a1}的旅程。	htEi
 Joy is on the horizon.	喜悦即将到来。	hP
 Justice case: Theft of	盗窃：	l
 Justice date: Reported	报案日期	l
+Justice plot: Sabotage	破坏	l
 LACK OF MOUNTAIN CAVES	缺少山地洞穴	hP
 Labor caption: Brewing	酿造	wi
 Labor caption: Cooking	烹饪	wi
@@ -89803,6 +89870,7 @@ Justice case: Bribery	贿赂	l
 Justice case: Robbery	抢劫	l
 Justice case: Treason	叛国	l
 Justice person: Alias	别名	l
+Justice plot: Corrupt	拉拢	l
 Keywords: bypass skip	关键词：[C:2:0:1]略过 跳过	hP
 Keywords: greet hello	关键词：[C:2:0:1]问候 你好	hP
 Labor caption: Burial	埋葬	wi
@@ -92071,6 +92139,8 @@ Its {q} hair is {s}.	它的{q1}毛发{s1}。	ht
 Its {q} skin is {s}.	它的{q1}皮肤{s1}。	ht
 Just think about it.	好好想想吧。	hP
 Justice case: Murder	谋杀	l
+Justice plot: A plot	一项阴谋	l
+Justice plot: Abduct	绑架	l
 Light combat (heard)	轻微战斗声（听到）	wl
 Loading adventure...	加载冒险......	w
 Loading art forms...	载入美术形式...	w
@@ -94929,6 +94999,8 @@ It is deathly cold.	这里的严寒足以致命。	hP
 It is deathly cold.	这里的严寒足以致命。	hj
 Jump-dodge (strike)	跳跃闪避(打击)	w
 Justice case: Theft	盗窃	l
+Justice plot: Frame	诬陷	l
+Justice plot: Steal	窃取	l
 Keyboard Instrument	键盘演奏	wi
 Keywords: nevermind	关键词：[C:2:0:1]算了	hP
 LACK OF EDGE OCEANS	缺少边缘海洋	hP
@@ -102180,6 +102252,7 @@ It started at {p}	从{p1}出发	ht
 It was fantastic.	那真是妙极了。	hP
 It was legendary.	简直堪称传奇。	hP
 Jump-dodge (proj)	跳跃闪避(投射)	w
+Justice plot: Org	组织	l
 Keep a colony of 	在蜂箱饲养蜂巢。蜂箱放置后必	w
 Kinesthetic Sense	运动感知	wi
 Legendary brawler	传奇斗士	w
