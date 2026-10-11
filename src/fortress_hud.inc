@@ -819,9 +819,9 @@ void Overlay::layout_fortress_build_menu(SDL_Renderer *renderer) {
                 const auto ch = visible_char_at(x, y);
                 native[x - button.left] = ch ? static_cast<char>(ch) : ' ';
             }
-            // A captured authored name may contain multiple spaces. Its
-            // complete native draw is stronger field-boundary evidence than
-            // padding heuristics, and includes digits/Latin text in the name.
+            // A captured Places field establishes its own native boundary:
+            // authored names can contain multiple spaces, while siege ammo
+            // and job columns may have only one space between them.
             for (const Match &match : prepared_matches_) {
                 if (match.rule != kFortressPlaceNameRule || match.y != y ||
                     match.x < button.left || match.length <= 0 ||

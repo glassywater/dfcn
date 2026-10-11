@@ -34,8 +34,8 @@ std::optional<SDL_Rect> Overlay::capture_fortress_places_panel(
 }
 
 // Places' picture rows contain user-authored names, not text-entry widgets.
-// Claim a complete name before generic matching separates Chinese from ASCII
-// suffixes, translates fragments or treats a stockpile noun as a person name.
+// Claim complete names and siege job fields before generic matching separates
+// Chinese from ASCII suffixes or consumes another column as a name.
 // The ordinary picture-button layout remains the sole owner of placement.
 void Overlay::append_fortress_place_names(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y, bool raw_layer) const {
@@ -92,6 +92,76 @@ void Overlay::append_fortress_place_names(std::vector<std::string> &rows,
     const int last_y = only_y >= 0 ? only_y + 1 : panel->y + panel->h;
     for (int y = first_y; y < last_y; ++y) {
         const auto fields = split_text_fields(context[y]);
+        if (siege_heading_y >= 0 && y > siege_heading_y) {
+            // Ammunition and job status share the picture's lower row. With
+            // only one padding space, "100 bolts Operator assigned" otherwise
+            // matches the squad-name template "{e} assigned" as one field.
+            // Own the job separately, retaining its native column and the
+            // existing ammunition word/count rendering.
+            for (const auto &field : fields) {
+                if (field.start < panel->x || field.end > panel->x + panel->w) continue;
+                const auto button = native_picture_caption_rect(
+                    *gps_, field.start, y - 1, false, nullptr, true, nullptr, true);
+                if (!button || y != button->y + button->h - 1 ||
+                    button->x < panel->x || button->y <= siege_heading_y ||
+                    button->x + button->w > panel->x + panel->w ||
+                    button->y + button->h > panel->y + panel->h ||
+                    field.start < button->x ||
+                    std::string_view(context[y]).substr(button->x,
+                        field.start - button->x).find_first_not_of(' ') !=
+                        std::string_view::npos) continue;
+                int right = button->x + button->w;
+                for (int x = field.end; x < right; ++x)
+                    for (int row = button->y; row < button->y + button->h; ++row)
+                        if (native_foreground_picture_at(*gps_, x, row)) {
+                            right = x;
+                            break;
+                        }
+                if (field.start >= right) continue;
+                const auto status = std::string_view(context[y]).substr(
+                    field.start, right - field.start);
+                size_t ammo_end = 0;
+                if (status.starts_with("Unloaded")) ammo_end = 8;
+                else if (status.starts_with("Loaded")) ammo_end = 6;
+                else {
+                    while (ammo_end < status.size() && status[ammo_end] >= '0' &&
+                            status[ammo_end] <= '9') ++ammo_end;
+                    if (!ammo_end || !status.substr(ammo_end).starts_with(" bolts")) continue;
+                    ammo_end += std::string_view(" bolts").size();
+                }
+                if (ammo_end >= status.size() || status[ammo_end] != ' ') continue;
+                const auto job = trim_view(status.substr(ammo_end));
+                if (job != "Operator assigned" && job != "Operator present" &&
+                    job != "No operator" && job != "Inactive load task" &&
+                    job != "Loading") continue;
+                const auto target = exact_literal_translation(job);
+                if (!target) continue;
+                const int x = field.start + static_cast<int>(job.data() - status.data());
+                const int length = static_cast<int>(job.size());
+                const std::string source(job);
+                if (rows[y].compare(x, length, source) == 0) {
+                    // This rule also gives the picture layout an explicit
+                    // field boundary, even when native columns touch.
+                    Match match{x, y, length, kFortressPlaceNameRule, *target, source};
+                    match.layout_x = x;
+                    match.layout_length = right - x;
+                    match.layout_clip_right = right;
+                    match.layout_left = true;
+                    matches.push_back(std::move(match));
+                    std::fill_n(rows[y].begin() + x, length, ' ');
+                } else if (raw_layer) {
+                    for (int offset = 0; offset < length;) {
+                        while (offset < length && rows[y][x + offset] != source[offset]) ++offset;
+                        const int start = offset;
+                        while (offset < length && rows[y][x + offset] == source[offset]) ++offset;
+                        if (offset == start) continue;
+                        matches.push_back({x + start, y, offset - start,
+                            kFortressPlaceNameRule, {}, source.substr(start, offset - start)});
+                        std::fill_n(rows[y].begin() + x + start, offset - start, ' ');
+                    }
+                }
+            }
+        }
         for (const auto &field : fields) {
             if (field.start < panel->x || field.end > panel->x + panel->w) continue;
             // The joined picture strip has no separate rectangle left cap.
