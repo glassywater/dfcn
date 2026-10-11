@@ -22,6 +22,7 @@ static bool native_reports_background_cell_hidden(const graphicst *graphics,
         graphics != g_native_stocks_write_graphics &&
         graphics != g_native_help_write_graphics &&
         !native_notification_write_active(graphics) &&
+        graphics != g_native_pause_write_graphics &&
         x >= g_native_reports_panel.x && y >= g_native_reports_panel.y &&
         x < g_native_reports_panel.x + g_native_reports_panel.w &&
         y < g_native_reports_panel.y + g_native_reports_panel.h;

@@ -193,27 +193,18 @@ static void reset_native_announcement_notification_capture() {
 }
 
 #ifdef _WIN32
-static std::shared_ptr<NativeTooltipPage> capture_native_announcement_popup_background();
-static void publish_native_announcement_popup_background(
-    std::shared_ptr<NativeTooltipPage> page, int32_t margin);
-static void clear_native_announcement_popup_background();
-
 // This four-register call owns every expanded unit/all/selected-alert branch.
-// Redirect its fixed rectangle before the first native clear and restore the
-// page when the renderer returns. A renderer without private output retains
-// the original background capture path.
+// Redirect its fixed rectangle before the first native clear. Restore only
+// the output binding on return; never capture or replay the background page.
 static void capture_native_announcement_popup_draw(
         uint64_t owner, uint64_t second, uint64_t margin, uint64_t fourth) {
     NativeInputCallbackScope callback;
-    std::shared_ptr<NativeTooltipPage> page;
     bool isolated = false;
     try {
         const int64_t left = int64_t(static_cast<int32_t>(margin)) + 4;
         if (const auto *gps = native_graphics())
             if (const auto bounds = native_notification_visible_bounds(*gps, left, 4, left + 93, 38))
                 isolated = native_notification_begin_draw(*bounds);
-        if (isolated) clear_native_announcement_popup_background();
-        else page = capture_native_announcement_popup_background();
     } catch (...) {}
     struct Restore {
         bool isolated;
@@ -221,13 +212,6 @@ static void capture_native_announcement_popup_draw(
     } restore{isolated};
     const auto original = g_native_announcement_popup_draw;
     if (original) callback.call_native([&] { original(owner, second, margin, fourth); });
-    if (isolated) return;
-    try {
-        publish_native_announcement_popup_background(std::move(page),
-            static_cast<int32_t>(margin));
-    } catch (...) {
-        try { clear_native_announcement_popup_background(); } catch (...) {}
-    }
 }
 
 template<bool BodyRow>
@@ -249,20 +233,16 @@ static void capture_native_announcement_hover_text(graphicst *gps,
 #endif
 
 // These two call sites count the report rows immediately before the native
-// renderer clears its floating rectangle. Redirect every border/background
-// and text write to the notification layer, retaining page capture only when
-// this renderer cannot supply an isolated output grid.
+// renderer clears its floating rectangle. Redirect every border, fill and
+// text write to the notification layer without retaining background cells.
 static size_t capture_native_announcement_page_rows(const void *paragraph) {
     NativeInputCallbackScope callback;
     reset_native_announcement_notification_capture();
     const auto original = g_native_announcement_page_rows;
     const size_t rows = original ? callback.call_native([&] { return original(paragraph); }) : 0;
     try {
-        std::shared_ptr<NativeTooltipPage> page;
         auto *gps = native_graphics();
         const auto &binding = g_native_announcement_page_binding;
-        const auto epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
-        int dimx = 0, dimy = 0;
         if (paragraph && gps && gps->screen && binding.left && binding.bottom &&
                 gps->dimx > 0 && gps->dimx <= 1000 &&
                 gps->dimy > 0 && gps->dimy <= 1000 && rows <= static_cast<size_t>(INT32_MAX)) {
@@ -282,31 +262,12 @@ static size_t capture_native_announcement_page_rows(const void *paragraph) {
                         // keeps the output redirected until the final body row.
                         g_native_announcement_hover_rows = rows;
                         g_native_announcement_hover_isolated = true;
-                    } else {
-                        page = std::make_shared<NativeTooltipPage>(*gps);
-                        page->bounds = *bounds;
-                        std::fill(page->cells.begin(), page->cells.end(), 0);
-                        for (int x = bounds->x; x < bounds->x + bounds->w; ++x)
-                            std::fill_n(page->cells.begin() +
-                                static_cast<size_t>(x) * gps->dimy + bounds->y,
-                                bounds->h, 1);
-                        dimx = gps->dimx;
-                        dimy = gps->dimy;
                     }
                 }
             }
         }
-        std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
-        g_native_announcement_page = std::move(page);
-        g_native_announcement_page_epoch = epoch;
-        g_native_announcement_page_dimx = dimx;
-        g_native_announcement_page_dimy = dimy;
     } catch (...) {
         reset_native_announcement_notification_capture();
-        try {
-            std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
-            g_native_announcement_page.reset();
-        } catch (...) {}
     }
     return rows;
 }
@@ -316,6 +277,7 @@ static void capture_native_help_cell(graphicst *gps) {
         if (!gps || gps->dimx <= 0 || gps->dimx > 1000 || gps->dimy <= 0 || gps->dimy > 1000 ||
                 native_private_ui_write_active(gps) || gps == g_native_info_write_graphics ||
                 gps == g_native_stocks_write_graphics || native_notification_write_active(gps) ||
+                gps == g_native_pause_write_graphics ||
             !gps->screen ||
             gps->screenx < 0 || gps->screenx >= gps->dimx ||
             gps->screeny < 0 || gps->screeny >= gps->dimy ||
@@ -1681,6 +1643,11 @@ static NativeClippedPending &native_clipped_pending() {
     return reloadable_thread_state<NativeClippedPending, struct ClippedCaptionTag>();
 }
 
+static bool native_caption_separate_output(const graphicst *graphics) noexcept {
+    return graphics && (native_notification_write_active(graphics) ||
+        graphics == g_native_pause_write_graphics);
+}
+
 static void capture_native_roster_shorten(NativeString *source, int width) {
     auto &state = native_clipped_pending();
     const auto shorten = g_native_clipped_caption_hooks.roster_shorten;
@@ -1736,7 +1703,8 @@ static void capture_native_roster_shorten(NativeString *source, int width) {
 
 static void remember_native_clipped_resize(NativeString *source, size_t width, char fill,
         bool zero_pad_one = false, bool plain_shrink = false) {
-    if (native_private_ui_write_active(native_graphics())) return;
+    if (native_private_ui_write_active(native_graphics()) ||
+            native_caption_separate_output(native_graphics())) return;
     auto &state = native_clipped_pending();
     if (!state.busy) {
         state.busy = true;
@@ -1839,6 +1807,7 @@ static NativeMapHoverContext native_map_hover_context_for_draw(
 }
 
 static void discard_native_clipped_draw_source(const NativeString *source) {
+    if (native_caption_separate_output(native_graphics())) return;
     auto &state = native_clipped_pending();
     if (state.busy) return;
     const auto epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
@@ -1864,6 +1833,26 @@ static PendingNativeField remember_native_clipped_draw(graphicst *graphics, cons
         uintptr_t native_caller = 0,
         std::optional<std::array<long, 4>> capture_clip = std::nullopt) {
     PendingNativeField captured;
+    // These renderers own complete notification/menu strings. Their native
+    // temporary addresses must never consume a background resize record or
+    // inherit a map caption. Keep only their own visible caption evidence.
+    if (native_caption_separate_output(graphics)) {
+        try {
+            std::string_view visible;
+            if (width == 0 && graphics->screenx >= 0 && graphics->screenx < graphics->dimx &&
+                    graphics->screeny >= 0 && graphics->screeny < graphics->dimy &&
+                    native_string_view(source, &visible, 4096)) {
+                const auto epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
+                remember_native_drawn_text_row(graphics->screenx, graphics->screeny, visible,
+                    reinterpret_cast<uintptr_t>(source), graphics, top_layer, {},
+                    info_title_kind, info_title_authored, info_title_right,
+                    civilization_field, mission_title, mission_title_right, capture_clip, epoch,
+                    map_hover, location_picker_field, location_picker_box, fortress_labor_caption,
+                    travel_building_field, native_caller);
+            }
+        } catch (...) {}
+        return captured;
+    }
     auto &state = native_clipped_pending();
     // Both supported addst implementations draw at the current cursor and
     // ignore justification (PE 0xad9960, ELF libg_src_lib 0xa5170/0xa4ea0;
@@ -3150,19 +3139,12 @@ static bool uninstall_native_caption_hooks() {
     g_native_caption_widget_hook = {};
     g_native_caption_widget_binding = {};
     if (!g_native_caption_hooks.code.uninstall("Complete native caption restore")) return false;
-    g_native_announcement_popup_draw = nullptr;
 #ifdef _WIN32
     g_native_multiline_wrap = nullptr;
-    clear_native_announcement_popup_background();
 #endif
+    g_native_announcement_popup_draw = nullptr;
     g_native_announcement_page_rows = nullptr;
     g_native_announcement_page_binding = {};
-    {
-        std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
-        g_native_announcement_page.reset();
-        g_native_announcement_page_epoch = 0;
-        g_native_announcement_page_dimx = g_native_announcement_page_dimy = 0;
-    }
     g_native_clipped_caption_hooks.roster_shorten = nullptr;
     if (!g_native_map_track_caption_hooks.build_entry.uninstall(
             "Native map caption source lifecycle restore")) return false;

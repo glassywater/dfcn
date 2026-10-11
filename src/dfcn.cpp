@@ -2217,6 +2217,7 @@ static thread_local const graphicst *g_native_info_write_graphics = nullptr;
 static thread_local const graphicst *g_native_stocks_write_graphics = nullptr;
 static thread_local const graphicst *g_native_reports_write_graphics = nullptr;
 static thread_local const graphicst *g_native_notification_write_graphics = nullptr;
+static thread_local const graphicst *g_native_pause_write_graphics = nullptr;
 static bool native_notification_write_active(const graphicst *gps) noexcept {
     return gps && (gps == g_native_notification_write_graphics ||
         gps == g_native_reports_write_graphics);
@@ -2229,9 +2230,6 @@ static bool native_stocks_background_copy_hidden(SDL_Renderer *, const SDL_Rect 
 static bool native_reports_background_view(const graphicst *) noexcept;
 static bool native_reports_background_cell_hidden(const graphicst *, int, int) noexcept;
 static bool native_reports_background_copy_hidden(SDL_Renderer *, const SDL_Rect *) noexcept;
-static bool native_notification_background_view(const graphicst *) noexcept;
-static bool native_notification_background_cell_hidden(const graphicst *, int, int) noexcept;
-static bool native_notification_background_copy_hidden(SDL_Renderer *, const SDL_Rect *) noexcept;
 static bool native_private_ui_write_active(const graphicst *gps) noexcept {
     return gps && (gps == g_native_help_write_graphics || native_dfhack_layer_write_active(gps));
 }
@@ -2390,126 +2388,6 @@ static std::shared_ptr<NativeTooltipPage> g_native_help_page;
 static uint64_t g_native_drawn_text_epoch = 0;
 static uint64_t g_native_help_page_epoch = 0;
 static int g_native_help_page_dimx = 0, g_native_help_page_dimy = 0;
-// Alert flyouts erase the base grid in place. Preserve only the current
-// native draw's background, before the flyout starts writing its rectangle.
-static std::shared_ptr<NativeTooltipPage> g_native_announcement_page;
-static uint64_t g_native_announcement_page_epoch = 0;
-static int g_native_announcement_page_dimx = 0, g_native_announcement_page_dimy = 0;
-// The modal report renderer has its own native owner and call site. Its open
-// flag suppresses both hover renderers, so a hover snapshot cannot stand in
-// for this page. Keep the pre-modal base for all three report-view branches.
-static std::shared_ptr<NativeTooltipPage> g_native_announcement_popup_page;
-static uint64_t g_native_announcement_popup_page_epoch = 0;
-static int g_native_announcement_popup_page_dimx = 0,
-    g_native_announcement_popup_page_dimy = 0;
-struct NativeAnnouncementPopupCapture {
-    const NativeTooltipPage *page = nullptr;
-    const unsigned char *grid = nullptr;
-    uint64_t epoch = 0;
-    std::array<long, 4> clip{};
-};
-static thread_local NativeAnnouncementPopupCapture g_native_announcement_popup_capture;
-static std::shared_ptr<NativeTooltipPage> capture_native_announcement_popup_background() {
-    g_native_announcement_popup_capture = {};
-    auto *gps = native_graphics();
-    if (!gps || !gps->screen || gps->dimx <= 0 || gps->dimx > 1000 ||
-            gps->dimy <= 0 || gps->dimy > 1000) return nullptr;
-    auto page = std::make_shared<NativeTooltipPage>(*gps);
-    page->bounds = {0, 0, gps->dimx, gps->dimy};
-    g_native_announcement_popup_capture = {page.get(), gps->screen,
-        g_embark_item_capture_epoch.load(std::memory_order_acquire),
-        {gps->clipx[0], gps->clipx[1], gps->clipy[0], gps->clipy[1]}};
-    return page;
-}
-static void publish_native_announcement_popup_background(
-        std::shared_ptr<NativeTooltipPage> page, int32_t margin) {
-    const auto capture = g_native_announcement_popup_capture;
-    g_native_announcement_popup_capture = {};
-    auto *gps = native_graphics();
-    const auto epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
-    int dimx = 0, dimy = 0;
-    // Both verified PE renderers clear x=(r8d+4)..(r8d+97), y=4..38.
-    // These are the native inclusive loop edges, independent of text, skin,
-    // report category and whether the tutorial made the report directly.
-    const int64_t left = int64_t(margin) + 4;
-    if (page && capture.page == page.get() && capture.epoch == epoch && gps &&
-            capture.grid == gps->screen && page->bounds.w == gps->dimx &&
-            page->bounds.h == gps->dimy && left >= 0 && left + 94 <= gps->dimx &&
-            gps->dimy >= 39 && left >= capture.clip[0] &&
-            left + 93 <= capture.clip[1] && capture.clip[2] <= 4 &&
-            capture.clip[3] >= 38) {
-        dimx = gps->dimx;
-        dimy = gps->dimy;
-        page->bounds = {static_cast<int>(left), 4, 94, 35};
-        std::fill(page->cells.begin(), page->cells.end(), 0);
-        for (int x = page->bounds.x; x < page->bounds.x + page->bounds.w; ++x)
-            std::fill_n(page->cells.begin() + static_cast<size_t>(x) * dimy + 4, 35, 1);
-    } else page.reset();
-    std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
-    g_native_announcement_popup_page = std::move(page);
-    g_native_announcement_popup_page_epoch = epoch;
-    g_native_announcement_popup_page_dimx = dimx;
-    g_native_announcement_popup_page_dimy = dimy;
-}
-static void clear_native_announcement_popup_background() {
-    g_native_announcement_popup_capture = {};
-    std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
-    g_native_announcement_popup_page.reset();
-    g_native_announcement_popup_page_epoch = 0;
-    g_native_announcement_popup_page_dimx = g_native_announcement_popup_page_dimy = 0;
-}
-static std::array<std::shared_ptr<NativeTooltipPage>, 2> native_announcement_backgrounds(
-        const graphicst &gps) {
-    return {
-        g_native_announcement_page && g_native_announcement_page_epoch == g_native_drawn_text_epoch &&
-                g_native_announcement_page_dimx == gps.dimx &&
-                g_native_announcement_page_dimy == gps.dimy
-            ? g_native_announcement_page : nullptr,
-        g_native_announcement_popup_page &&
-                g_native_announcement_popup_page_epoch == g_native_drawn_text_epoch &&
-                g_native_announcement_popup_page_dimx == gps.dimx &&
-                g_native_announcement_popup_page_dimy == gps.dimy
-            ? g_native_announcement_popup_page : nullptr};
-}
-static bool native_announcement_background_matches(const graphicst &gps, const SDL_Rect &frame) {
-    for (const auto &saved : native_announcement_backgrounds(gps)) {
-        if (!saved) continue;
-        const auto &bounds = saved->bounds;
-        if (frame.x == bounds.x && frame.y == bounds.y &&
-                frame.w == bounds.w && frame.h == bounds.h) return true;
-    }
-    return false;
-}
-static std::shared_ptr<NativeTooltipPage> native_announcement_foreground_page(
-        const graphicst &gps, const std::vector<SDL_Rect> &frames) {
-    if (std::none_of(frames.begin(), frames.end(), [&](const SDL_Rect &frame) {
-                return native_announcement_background_matches(gps, frame);
-            })) return nullptr;
-    auto page = std::make_shared<NativeTooltipPage>(gps);
-    page->compose_outside(gps);
-    // addchar/add_lower_tile leave these bits from the erased base page.
-    // Clear them only in the read view, including when the compositor moved
-    // these ordinary addst rows to screen_top. Later help/tooltip/chooser
-    // owners keep their own font inside their independent foreground frames.
-    if (!page->flags.empty())
-        for (const auto &frame : frames) {
-            if (!native_announcement_background_matches(gps, frame)) continue;
-            for (int x = frame.x; x < frame.x + frame.w; ++x)
-                for (int y = frame.y; y < frame.y + frame.h; ++y) {
-                    const size_t at = static_cast<size_t>(x) * gps.dimy + y;
-                    const bool covered = std::any_of(frames.begin(), frames.end(),
-                        [&](const SDL_Rect &other) {
-                            return !native_announcement_background_matches(gps, other) &&
-                                x >= other.x && x < other.x + other.w &&
-                                y >= other.y && y < other.y + other.h;
-                        });
-                    if (!covered)
-                        page->flags[at] &= ~((1u << 3) | (1u << 4));
-                }
-        }
-    page->bounds = {0, 0, gps.dimx, gps.dimy};
-    return page;
-}
 static std::shared_ptr<NativeTooltipPage> native_help_background_page(const graphicst &gps,
         const std::vector<SDL_Rect> &frames = {},
         const std::shared_ptr<NativeTooltipPage> &tooltip_page = nullptr) {
@@ -2541,31 +2419,6 @@ static std::shared_ptr<NativeTooltipPage> native_help_background_page(const grap
                     };
                     copy(page->texture, saved.texture);
                 }
-    }
-    for (const auto &background : native_announcement_backgrounds(gps)) {
-        if (!background) continue;
-        const auto &saved = *background;
-        const auto &frame = saved.bounds;
-        if (std::none_of(frames.begin(), frames.end(), [&](const SDL_Rect &candidate) {
-                return candidate.x == frame.x && candidate.y == frame.y &&
-                    candidate.w == frame.w && candidate.h == frame.h;
-            })) continue;
-        for (int x = frame.x; x < frame.x + frame.w; ++x)
-            for (int y = frame.y; y < frame.y + frame.h; ++y) {
-                const size_t at = static_cast<size_t>(x) * gps.dimy + y;
-                if (widget_background(x, y) || !saved.cells[at]) continue;
-                std::memcpy(page->screen.data() + at * 8, saved.screen.data() + at * 8, 8);
-                page->origins[at] = saved.origins[at];
-                const auto copy = [at](auto &out, const auto &in) {
-                    if (!out.empty()) out[at] = in.empty() ? 0 : in[at];
-                };
-                copy(page->texture, saved.texture);
-                copy(page->lower, saved.lower);
-                copy(page->anchored, saved.anchored);
-                copy(page->anchor_x, saved.anchor_x);
-                copy(page->anchor_y, saved.anchor_y);
-                copy(page->flags, saved.flags);
-            }
     }
     page->bounds = {0, 0, gps.dimx, gps.dimy};
     return page;
@@ -3454,6 +3307,7 @@ public:
     void render_native_help_layer(SDL_Renderer *renderer);
     void render_native_tooltip_layer(SDL_Renderer *renderer);
     void render_native_notification_layer(SDL_Renderer *renderer);
+    void render_native_pause_layer(SDL_Renderer *renderer);
     void render_native_reports_layer(SDL_Renderer *renderer);
     void render_native_announcement_layer(SDL_Renderer *renderer, bool reports);
     void render_native_info_layer(SDL_Renderer *renderer);
@@ -3543,6 +3397,7 @@ public:
 private:
     std::vector<Match> find_native_info_matches() const;
     std::vector<Match> find_native_notification_matches() const;
+    std::vector<Match> find_native_pause_matches() const;
     std::vector<Match> find_native_stocks_matches() const;
     std::vector<Match> find_native_info_background_matches(int only_y,
         const unsigned char *screen_override) const;
@@ -16088,6 +15943,7 @@ std::vector<Match> Overlay::resolve_native_knowledge_matches(
 #include "native_tooltip_layers.inc"
 #include "native_notification_layers.inc"
 #include "native_reports_layers.inc"
+#include "native_pause_layers.inc"
 
 struct NativeKeybindingScope {
     SDL_Rect table{};
@@ -16595,10 +16451,12 @@ static void native_ui_paint_grid(NativeUiLayerStorage &layer, SDL_Renderer *rend
 #include "native_help_layer_translation.inc"
 #include "native_info_layer_matching.inc"
 #include "native_notification_layer_matching.inc"
+#include "native_pause_layer_matching.inc"
 #include "native_stocks_layer_translation.inc"
 #include "native_info_layer_translation.inc"
 #include "native_tooltip_layer_translation.inc"
 #include "native_notification_layer_translation.inc"
+#include "native_pause_layer_translation.inc"
 
 static void native_dfhack_redraw_background(SDL_Renderer *renderer,
     const SDL_Rect &cells);
@@ -16689,19 +16547,13 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
             // cards can coexist with it; their captions must retain the same
             // foreground ownership used by the help-only path below.
             auto help_frames = native_help_overlay_frames(*gps_);
-            const auto announcement_frames = native_announcement_overlay_frames(*gps_);
-            help_frames.insert(help_frames.end(), announcement_frames.begin(), announcement_frames.end());
             auto overlay_frames = help_frames;
             overlay_frames.push_back(box);
             auto frames = std::make_shared<const std::vector<SDL_Rect>>(
                 std::move(overlay_frames));
             auto foreground = [&] {
-                const auto page = native_announcement_foreground_page(*gps_, *frames);
-                NativeTooltipPageScope document(gps_, page, nullptr, false);
                 NativeUiReadScope composed(gps_, nullptr);
-                // Preserve raw suppression's source read, using the copied
-                // page's buffer instead of an address in the live graphics.
-                return find_matches(only_y, page && screen_override ? gps_->screen : screen_override);
+                return find_matches(only_y, screen_override);
             }();
             std::erase_if(foreground, [&](const Match &match) {
                 if (match.native_help_current_page) return false;
@@ -16762,9 +16614,6 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
         // Only a separate foreground layer leaves a complete base page to
         // read. Same-layer cards continue to use captured native source rows.
         std::erase_if(overlay_frames, [&](const SDL_Rect &frame) {
-            // The alert flyout writes screen directly. Its current native
-            // draw snapshot, not screen_top, preserves the complete page.
-            if (native_announcement_background_matches(*gps_, frame)) return false;
             if (settings->classic)
                 return !g_native_help_page || g_native_help_page_epoch !=
                     g_native_drawn_text_epoch ||
@@ -16784,12 +16633,10 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
         if (!frames->empty()) {
             const auto base_page = native_help_background_page(*gps_, *frames);
             auto foreground = [&] {
-                const auto page = native_announcement_foreground_page(*gps_, *frames);
-                NativeTooltipPageScope document(gps_, page, nullptr, false);
                 NativeUiReadScope composed(gps_, nullptr);
                 // Early glyph suppression must not read last Present's
                 // graphical occlusion state as this document's source.
-                return find_matches(only_y, page && screen_override ? gps_->screen : nullptr);
+                return find_matches(only_y, nullptr);
             }();
             std::vector<Match> recovered;
             for (const auto &match : foreground)
@@ -26195,10 +26042,6 @@ static int embark_preparation_tab_index(std::string_view source) {
 
 void Overlay::normalize_native_split_text() {
     if (!gps_ || gps_->dimx <= 0 || gps_->dimy <= 0) return;
-    const auto announcement_frames = native_announcement_overlay_frames(*gps_);
-    const auto overlay_frames = announcement_frames.empty()
-        ? std::vector<SDL_Rect>{} : native_text_overlay_frames(*gps_);
-
     // g_src/ViewBase.cpp tabs::render writes the caption twice with these
     // flags. g_src/enabler.cpp selects the corresponding half-font atlas.
     // Read that rendering contract, not a list of tab names, a minimum label
@@ -26238,30 +26081,6 @@ void Overlay::normalize_native_split_text() {
         // have independent measured baselines and must not become captions
         // whose lower half is discarded here.
         if (match.rule == kCharacterOverviewQuoteRule) continue;
-        // The alert flyout draws ordinary one-row addst text after clearing
-        // the base cells. The compositor can subsequently move them to top;
-        // their inherited flags still do not make a pair of text halves.
-        // A later overlay or a recovered background caption owns its own font.
-        if (match.x >= 0 && match.x < gps_->dimx && match.y >= 0 && match.y < gps_->dimy &&
-            !match.native_hover_background && !match.native_help_current_page &&
-            !match.native_help_occluder &&
-            std::any_of(announcement_frames.begin(), announcement_frames.end(),
-                [&](const SDL_Rect &frame) {
-                    return match.x >= frame.x && match.y >= frame.y &&
-                        match.x + std::max(1, match.length) <= frame.x + frame.w &&
-                        match.y < frame.y + frame.h;
-                }) &&
-            std::none_of(overlay_frames.begin(), overlay_frames.end(),
-                [&](const SDL_Rect &frame) {
-                    const bool announcement = std::any_of(announcement_frames.begin(),
-                        announcement_frames.end(), [&](const SDL_Rect &owner) {
-                            return frame.x == owner.x && frame.y == owner.y &&
-                                frame.w == owner.w && frame.h == owner.h;
-                        });
-                    return !announcement && match.y >= frame.y && match.y < frame.y + frame.h &&
-                        match.x < frame.x + frame.w &&
-                        match.x + std::max(1, match.length) > frame.x;
-                })) continue;
         // Retain the native source spans of duplicates for suppression, but
         // never let a later page-specific layout resurrect their translations
         // or erase pixels after the surviving caption has been drawn.
@@ -43474,6 +43293,8 @@ static void native_tooltip_present_layer(SDL_Renderer *renderer,
     void (*draw_tooltips)(SDL_Renderer *));
 static void native_notification_present_layer(SDL_Renderer *renderer,
     void (*draw_notifications)(SDL_Renderer *));
+static void native_pause_present_layer(SDL_Renderer *renderer,
+    void (*draw_pause)(SDL_Renderer *));
 
 extern "C" void dfcn_render_present(SDL_Renderer *renderer) {
     // A producer can reset or publish private UI output between individual
@@ -43497,6 +43318,11 @@ extern "C" void dfcn_render_present(SDL_Renderer *renderer) {
     });
     native_notification_present_layer(renderer, [](SDL_Renderer *notification_renderer) {
         g_overlay.render_native_notification_layer(notification_renderer);
+    });
+    // The Fortress renderer submits Escape after its notification hovers.
+    // Preserve that modal ownership when compositing the private outputs.
+    native_pause_present_layer(renderer, [](SDL_Renderer *pause_renderer) {
+        g_overlay.render_native_pause_layer(pause_renderer);
     });
     native_help_present_layers(renderer, [](SDL_Renderer *help_renderer) {
         g_overlay.render_native_help_layer(help_renderer);

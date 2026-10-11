@@ -27,7 +27,6 @@ public:
     std::optional<MainButtonSpans> main_button_spans;
     std::optional<std::vector<NativeCollapsedHelpPanel>> collapsed_help_panels;
     std::optional<std::vector<SDL_Rect>> help_frames;
-    std::optional<std::vector<SDL_Rect>> announcement_frames;
     std::optional<std::vector<SDL_Rect>> overlay_frames;
     inline static thread_local NativePanelReadScope *active = nullptr;
 
@@ -2204,14 +2203,11 @@ static std::vector<SDL_Rect> native_help_overlay_frames(const graphicst &gps) {
 // Occlusion is a property of the native frame, not of its translated words.
 // In particular, short picture-button tips need the same layer separation as
 // multi-line help, even when their text has no tooltip-catalog entry.
-static std::vector<SDL_Rect> native_announcement_overlay_frames(const graphicst &gps);
 static std::vector<SDL_Rect> native_unit_chooser_overlay_frames(const graphicst &gps);
 static std::vector<SDL_Rect> native_text_overlay_frames(const graphicst &gps) {
     auto *cache = NativePanelReadScope::active;
     if (cache && cache->gps == &gps && cache->overlay_frames) return *cache->overlay_frames;
     auto frames = native_help_overlay_frames(gps);
-    const auto announcements = native_announcement_overlay_frames(gps);
-    frames.insert(frames.end(), announcements.begin(), announcements.end());
     const auto choosers = native_unit_chooser_overlay_frames(gps);
     frames.insert(frames.end(), choosers.begin(), choosers.end());
     if (const auto widget = captured_native_tooltip_widget(gps)) frames.push_back(widget->bounds);
@@ -2488,60 +2484,6 @@ static constexpr std::array<std::string_view, 6> native_announcement_instruction
     "You can recenter on certain announcements. Right click to close.",
     "Select a report to view the full text.  Right click to close.",
     "Select a report to view the full text. Right click to close."};
-
-// The alert flyout shares its border artwork with ordinary panels. Its
-// native callsite rectangle, or its complete interaction instruction and
-// closed current frame, establish the foreground owner independently of
-// translated report words.
-static std::vector<SDL_Rect> native_announcement_overlay_frames(const graphicst &gps) {
-    auto *cache = NativePanelReadScope::active;
-    if (cache && cache->gps == &gps && cache->announcement_frames)
-        return *cache->announcement_frames;
-    std::vector<SDL_Rect> frames;
-    if (!gps.screen || gps.dimx <= 0 || gps.dimx > 1000 ||
-            gps.dimy <= 0 || gps.dimy > 1000) return frames;
-    // The popup callsite and both hover row-count callsites already retained
-    // their exact current native rectangles before the clear. Those draw
-    // owners remain valid when a clipped/covered edge prevents a closed
-    // artwork frame from being found. Background page views omit them.
-    if (!NativeTooltipPageScope::active)
-        for (const auto &saved : native_announcement_backgrounds(gps)) {
-            if (!saved) continue;
-            const auto &bounds = saved->bounds;
-            if (bounds.x < 0 || bounds.y < 0 || bounds.w <= 0 || bounds.h <= 0 ||
-                    bounds.x > gps.dimx - bounds.w || bounds.y > gps.dimy - bounds.h)
-                continue;
-            frames.push_back(bounds);
-        }
-    const NativePanelBorders borders(gps);
-    std::string row(static_cast<size_t>(gps.dimx), ' ');
-    for (int y = 1; y < gps.dimy - 1; ++y) {
-        for (int x = 0; x < gps.dimx; ++x) {
-            const size_t at = static_cast<size_t>(x) * gps.dimy + y;
-            const auto *screen = native_ui_top_layer_at(gps, at) ? gps.screen_top : gps.screen;
-            row[x] = screen && screen[at * 8] ? static_cast<char>(screen[at * 8]) : ' ';
-        }
-        size_t x = std::string::npos;
-        std::string_view instruction;
-        for (const auto candidate : native_announcement_instructions) {
-            x = row.find(candidate);
-            if (x != std::string::npos) { instruction = candidate; break; }
-        }
-        if (instruction.empty()) continue;
-        // Use the closed-frame primitive: the public panel reader can itself
-        // borrow these occluders when proving a partially covered page.
-        const auto panel = native_panel_interior_with_occluder(borders, gps,
-            SDL_Rect{static_cast<int>(x), y, static_cast<int>(instruction.size()), 1});
-        if (!panel) continue;
-        const SDL_Rect frame{panel->x - 1, panel->y - 1, panel->w + 2, panel->h + 2};
-        if (std::none_of(frames.begin(), frames.end(), [&](const SDL_Rect &other) {
-                return other.x == frame.x && other.y == frame.y &&
-                    other.w == frame.w && other.h == frame.h;
-            })) frames.push_back(frame);
-    }
-    if (cache && cache->gps == &gps) cache->announcement_frames = frames;
-    return frames;
-}
 
 static std::optional<SDL_Rect> native_panel_interior(
         const NativePanelBorders &borders, const graphicst &gps,
