@@ -34,6 +34,10 @@ std::vector<Match> Overlay::find_native_info_matches() const {
     append_native_map_hover_phrases(screen_rows, result, only_y,
         NativeMapHoverKind::Terrain);
     append_toolbar_tooltip_matches(screen_rows, result, only_y, false);
+    if (g_native_info_page == NativeInfoPage::Objects) {
+        append_fortress_written_content_rows(screen_rows, result, only_y, nullptr);
+        append_fortress_object_rows(screen_rows, result, only_y, nullptr);
+    }
     append_native_info_panel_titles(screen_rows, result, only_y);
     if (!captured_native_unit_chooser_records().empty())
         append_fortress_unit_chooser_rows(screen_rows, result, only_y, false);

@@ -4581,6 +4581,10 @@ private:
         std::vector<Match> &matches, int only_y) const;
     void append_fortress_item_captions(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y) const;
+    void append_fortress_written_content_rows(std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y, const unsigned char *screen_override) const;
+    void append_fortress_object_rows(std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y, const unsigned char *screen_override) const;
     void layout_fortress_item_captions(SDL_Renderer *renderer);
     void append_fortress_ammunition_choices(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y) const;
@@ -16089,6 +16093,8 @@ static NativeKeybindingScope capture_native_keybinding_scope(const graphicst &gp
 #include "announcement_combat.inc"
 #include "announcement_translation.inc"
 #include "fortress_item_captions.inc"
+#include "fortress_written_content.inc"
+#include "fortress_object_rows.inc"
 #include "fortress_trade_item_semantics.inc"
 #include "fortress_ammunition.inc"
 #include "fortress_schedule_editor.inc"
@@ -17105,31 +17111,8 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     // Written-content titles must own both rows before clipped unit-name
     // recovery or generic item/name matching can consume their words.
     if (!announcement_panel_only) {
-        auto background_rows = screen_rows;
-        if (screen_override) {
-            for (int y = 0; y < gps_->dimy; ++y)
-                for (int x = 0; x < gps_->dimx; ++x) {
-                    bool top = false;
-                    const auto *cell = cell_at(x, y, &top);
-                    background_rows[y][x] = cell && cell[0]
-                        ? static_cast<char>(cell[0]) : ' ';
-                }
-        }
-        int fortress_items_tabs_y = -1;
-        std::optional<SDL_Rect> fortress_items_panel;
-        const NativePanelBorders borders(*gps_);
-        for (int y = 0; y < gps_->dimy && !fortress_items_panel; ++y) {
-            const auto &row = background_rows[y];
-            const auto artifacts = row.find("Artifacts"), symbols = row.find("Symbols");
-            const auto named = row.find("Named objects"), written = row.find("Written content");
-            if (!(artifacts < symbols && symbols < named && named < written) ||
-                    written == std::string::npos) continue;
-            fortress_items_panel = native_panel_interior(borders, *gps_,
-                static_cast<int>(artifacts),
-                static_cast<int>(written + std::string_view("Written content").size()), y);
-            if (fortress_items_panel) fortress_items_tabs_y = y;
-        }
-#include "fortress_written_content.inc"
+        append_fortress_written_content_rows(screen_rows, result, only_y, screen_override);
+        append_fortress_object_rows(screen_rows, result, only_y, screen_override);
     }
     // Assignment records own name/profession and relevant skills together.
     // Location details own their complete header, tier and fact fields before

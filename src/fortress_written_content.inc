@@ -1,6 +1,32 @@
 // The selected Written content list owns two complete book-title fields.
 // Its quoted translation is not a generated person's name or an artifact gloss.
-if (config_.compositional_rules && fortress_items_panel) {
+void Overlay::append_fortress_written_content_rows(
+        std::vector<std::string> &screen_rows, std::vector<Match> &result,
+        int only_y, const unsigned char *screen_override) const {
+    if (!config_.compositional_rules || !gps_ || !gps_->screen) return;
+    std::vector<std::string> background_rows(gps_->dimy, std::string(gps_->dimx, ' '));
+    for (int y = 0; y < gps_->dimy; ++y)
+        for (int x = 0; x < gps_->dimx; ++x) {
+            bool top = false;
+            const auto *cell = cell_at(x, y, &top);
+            if (cell && cell[0]) background_rows[y][x] = static_cast<char>(cell[0]);
+        }
+    int fortress_items_tabs_y = -1;
+    std::optional<SDL_Rect> fortress_items_panel;
+    const NativePanelBorders borders(*gps_);
+    for (int y = 0; y < gps_->dimy && !fortress_items_panel; ++y) {
+        const auto &row = background_rows[y];
+        const auto artifacts = row.find("Artifacts"), symbols = row.find("Symbols");
+        const auto named = row.find("Named objects"), written = row.find("Written content");
+        if (!(artifacts < symbols && symbols < named && named < written) ||
+                written == std::string::npos) continue;
+        fortress_items_panel = native_panel_interior(borders, *gps_,
+            static_cast<int>(artifacts),
+            static_cast<int>(written + std::string_view("Written content").size()), y);
+        if (fortress_items_panel) fortress_items_tabs_y = y;
+    }
+    if (!fortress_items_panel) return;
+    const auto clipped_template_captions = captured_clipped_captions();
     const auto &panel = *fortress_items_panel;
     const auto &tabs = background_rows[fortress_items_tabs_y];
     const std::array<std::string_view, 4> labels = {
@@ -33,8 +59,23 @@ if (config_.compositional_rules && fortress_items_panel) {
         const auto physical_field = [&](int x, int y, int right) -> std::optional<BookField> {
             if (x < panel.x || x >= right || y <= fortress_items_tabs_y || y >= bottom ||
                 background_rows[y][x] == ' ') return std::nullopt;
+            bool first_top = false;
+            const auto *first = cell_at(x, y, &first_top);
+            if (!first) return std::nullopt;
+            const int color = (first[1] << 16) | (first[2] << 8) | first[3];
             int end = x;
-            while (end < right && !is_cp437_box_separator(background_rows[y], end)) ++end;
+            while (end < right && !is_cp437_box_separator(background_rows[y], end)) {
+                if (native_item_action_at(*gps_, end, y) ||
+                        native_item_action_at(*gps_, end + 1, y)) break;
+                if (background_rows[y][end] != ' ') {
+                    bool cell_top = false;
+                    const auto *cell = cell_at(end, y, &cell_top);
+                    if (!cell || ((cell[1] << 16) | (cell[2] << 8) | cell[3]) != color) break;
+                }
+                ++end;
+                if (background_rows[y][x] == '"' && end > x + 1 &&
+                        background_rows[y][end - 1] == '"') break;
+            }
             while (end > x && background_rows[y][end - 1] == ' ') --end;
             uint32_t half = UINT32_MAX;
             bool layer = false;

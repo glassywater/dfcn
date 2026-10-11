@@ -57034,6 +57034,8 @@ Fortress activity: Store item in bag	将物品存入袋子	li
 Fortress activity: Store item in bin	将物品存入储物箱	li
 Fortress activity: Weave metal cloth	织金属布	li
 Fortress guild detail: Meeting place	集会所	l
+Fortress item claim: Heirloom of {n}'s	{n}的传家宝	ht
+Fortress item claim: Treasure of {n}'s	{n}的珍宝	ht
 Fortress item claim: Heirloom of {a}	{a}的传家宝	ht
 Fortress item claim: Treasure of {a}	{a}的珍宝	ht
 Gathering fruit and leaves blueprint	采集果实与叶片蓝图	wo

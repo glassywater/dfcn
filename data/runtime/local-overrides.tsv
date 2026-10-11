@@ -1492,6 +1492,9 @@ World artifact claim: Claimed by local	当地有人宣称拥有	h
 # compound surnames and epithets, before the heirloom relationship is rendered.
 Fortress item claim: {n}'s family heirloom	{n}的家族传家宝	ht
 Fortress item claim: {n}'s family treasure	{n}的家族珍宝	ht
+# The personal treasure owner is printed with an outer possessive suffix.
+Fortress item claim: Treasure of {n}'s	{n}的珍宝	ht
+Fortress item claim: Heirloom of {n}'s	{n}的传家宝	ht
 Fortress item claim: Treasure of {a}	{a}的珍宝	ht
 Fortress item claim: Heirloom of {a}	{a}的传家宝	ht
 Fortress item claim: Sacred to {p}	{p}的圣物	ht

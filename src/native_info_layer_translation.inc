@@ -107,6 +107,11 @@ void Overlay::render_native_fortress_layer(SDL_Renderer *renderer, bool stocks) 
         const int y = match.native_split_text ? match.native_split_top_y : match.y;
         if (match.target.empty() || match.native_split_duplicate || match.layout_font_pixels > 0)
             continue;
+        // Object rows contain separate name and ownership fields inside one
+        // clickable row. Keep their assigned columns when sizing the text.
+        if ((match.rule == kFortressItemCaptionRule || match.rule == kFortressItemUseRule) &&
+                match.layout_x >= 0 && match.layout_clip_right > match.layout_x)
+            continue;
         if (const auto button = native_button_text_span(*gps_, match.x, match.x + match.length, y)) {
             match.layout_x = button->first;
             match.layout_length = button->second - button->first;
