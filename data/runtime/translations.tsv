@@ -31492,6 +31492,7 @@ It is difficult to see clearly even in bright light.	即使在明亮的光线下
 It knows and intones the names of all it encounters.	它知晓并吟诵着遇到的所有生灵的名字。	h
 It recites verses in a strange language on occasion.	它偶尔会用陌生的语言吟诵诗句。	h
 It would amaze me if somebody actually thought that.	如果真有人这么想，我可真要大吃一惊了。	hP
+Justice actor: Associated Organization: Unidentified	关联组织：尚未查明	l
 Leave this menu and recenter on the task's building.	离开此菜单，并将视图重新居中到此任务所在的建筑。	hj
 Leave this menu and recenter on the task's building.	离开这个菜单,重新定位到任务的建筑上.	w
 Leave this menu and view this place's sheet or menu.	离开此菜单，并查看此地点的详情页或菜单。	hj
@@ -42687,6 +42688,8 @@ It has {s} and joy marks its every movement.	它长有{s1}，它的一举一动�
 It inspects the ground intently as it moves.	它边走边专注地察看地面。	h
 It is never the slightest bit cheerful about	它从来没有一丝快乐，	wl
 It is the symbol of {p}, a {s} civilization.	它是{s1}政权「{p1}」的象征。	hHt
+Justice actor field: Associated Organization	关联组织	l
+Justice actor: Highest known in organization	组织中已知的最高层成员	l
 Later you can consider making a Meeting Area	[C:7:0:0]之后你可以考虑设置一个[C:3:0:0]集会区[C:7:0:0]，	hq
 Leave this menu and recenter on this object.	离开此菜单，并将视图重新居中到此物品。	hj
 Leave this menu and recenter on this object.	离开该菜单并重定位至该物体.	w
@@ -57265,6 +57268,7 @@ It makes those around it feel brave.	它使周围的生灵感到勇敢。	h
 It speaks rapidly when it's excited.	它激动时语速很快。	wl
 It stares longingly at those nearby.	它深情地凝望着身旁的生灵。	h
 It was one of the first of its kind.	它是同类中最早的个体之一。	h
+Justice actor field: Associated Plot	关联阴谋	l
 Justice case: Violation of job order	违反工作命令	l
 Justice detail: No sentence pending.	无待执行的判决。	l
 Justice organization: Selected actor	选中人物	l

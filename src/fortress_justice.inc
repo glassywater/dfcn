@@ -274,9 +274,31 @@ void Overlay::append_fortress_justice_rows(std::vector<std::string> &rows,
         return flags ? flags[static_cast<size_t>(x) * gps_->dimy + y] &
             ((1u << 3) | (1u << 4)) : 0u;
     };
+    // Disabled subtabs can have different caption colors. A current title or
+    // body draw from the Actors renderer proves this mode independently of
+    // those colors, including when scrolling hides every record's title.
+    for (const auto &draw : draws) {
+        if (draw.source.empty() || draw.x < band->panel.x || draw.x >= right ||
+                draw.y <= band->tabs_y || draw.y >= bottom ||
+                draw.draw_dimx != gps_->dimx || draw.draw_dimy != gps_->dimy ||
+                draw.draw_grid != (draw.top_layer ? gps_->screen_top : gps_->screen)) continue;
+        const size_t length = std::min(static_cast<size_t>(right - draw.x), draw.source.size());
+        if (context[draw.y].compare(draw.x, length, draw.source, 0, length) != 0 ||
+                !native_justice_actor_source(draw.address, draw.source, draw.native_caller)) continue;
+        actors_body_y = actors_body_y < 0 ? draw.y : std::min(actors_body_y, draw.y);
+    }
     const auto complete_source = [&](int x, int y, const std::string &visible,
-                                     int clip_right) {
+                                     int clip_right,
+                                     std::optional<bool> *sabotage_person = nullptr) {
         const int draw_y = half_at(x, y) == (1u << 4) ? y - 1 : y;
+        for (const auto &draw : draws) {
+            if (draw.x != x || draw.y != draw_y || clip_right <= x ||
+                trim_view(std::string_view(draw.source).substr(
+                    0, static_cast<size_t>(clip_right - x))) != visible) continue;
+            if (const auto complete = native_justice_actor_source(
+                    draw.address, draw.source, draw.native_caller, sabotage_person))
+                return *complete;
+        }
         for (const auto &capture : captures)
             if (capture.x == x && capture.y == draw_y && capture.visible == visible)
                 return capture.complete;
@@ -547,12 +569,15 @@ void Overlay::append_fortress_justice_rows(std::vector<std::string> &rows,
     if (actors_body_y >= 0) {
         // Actors are numbered records, not case buttons or report prose.
         // The counter owns its separate native field. Claim the complete
-        // identity before generic name/word matches centre it in an English
-        // span; use the native text starts to retain the list's shared inset.
+        // identity and every typed body row before generic name/word matches
+        // centre fragments in English spans. Supplier records retain full
+        // sources even when its stored display row was cut to 58 bytes.
         struct ActorField {
             NativeTextCardRow row;
             int right;
-            bool alias;
+            bool identity;
+            std::string complete;
+            std::optional<bool> sabotage_person;
         };
         std::vector<ActorField> fields;
         int list_right = right, list_left = right;
@@ -567,7 +592,6 @@ void Overlay::append_fortress_justice_rows(std::vector<std::string> &rows,
             };
             return digits(text.substr(0, slash)) && digits(text.substr(slash + 1));
         };
-        bool numbered = false;
         for (int y = actors_body_y; y < bottom; ++y) {
             std::vector<LogicalTextField> parts;
             for (const auto &field : split_text_fields(context[y]))
@@ -579,27 +603,31 @@ void Overlay::append_fortress_justice_rows(std::vector<std::string> &rows,
             if (title) {
                 edge = parts.back().start;
                 parts.pop_back();
-                numbered = true;
             }
-            const bool alias = !title && parts.front().text.starts_with("Alias:");
-            if (!title && !alias) continue;
             const int first = parts.front().start, end = parts.back().end;
             const auto card = capture_panel_text_card({first, y, end - first, 1}, true);
             if (!card || card->rows.size() != 1) continue;
+            const auto &part = card->rows.front();
+            std::optional<bool> sabotage_person;
+            const std::string complete = complete_source(part.x, part.y,
+                part.source, edge, &sabotage_person);
+            if (!title && !complete.starts_with("Alias:") &&
+                    !complete.starts_with("Associated Organization:") &&
+                    !complete.starts_with("Associated Plot:") &&
+                    complete != "Highest known in organization") continue;
             list_left = std::min(list_left, first);
-            fields.push_back({card->rows.front(), edge, alias});
+            fields.push_back({part, edge, title, complete, sabotage_person});
         }
-        if (numbered && list_left < list_right) {
+        if (list_left < list_right) {
             for (const auto &field : fields) {
                 const auto &part = field.row;
-                const std::string source = complete_source(part.x, part.y,
-                    part.source, field.right);
+                const std::string &source = field.complete;
                 // An unidentified actor is a native status caption, not an
                 // authored personal name. Resolve Justice's complete status
                 // before the identity grammar preserves unknown name text.
-                auto target = field.alias ? translate_justice_case_text(source)
-                    : exact_literal_translation("Justice actor: " + source);
-                if (!target && !field.alias) target = translate_unit_identity(source, true);
+                auto target = field.identity ? exact_literal_translation("Justice actor: " + source)
+                    : translate_justice_actor_text(source, field.sabotage_person);
+                if (!target && field.identity) target = translate_unit_identity(source, true);
                 const SDL_Rect box{list_left, part.y, field.right - list_left,
                     half_at(part.x, part.y) == (1u << 3) ? 2 : 1};
                 append(part, kFortressJusticeActorRule,
@@ -937,7 +965,7 @@ void Overlay::layout_fortress_justice(SDL_Renderer *renderer) {
         match.layout_right = false;
         if (match.rule == kFortressJusticeActorRule || match.rule == kFortressJusticePlotRule) {
             // Preserve each native row/baseline and the independently drawn
-            // counter. The complete name or alias shares one left edge.
+            // counter. Names, aliases, associations and statuses share one inset.
             match.layout_left = true;
             layout_fortress_text_rows(renderer, {{&match}}, box.x, box.x + box.w, true, true);
             continue;

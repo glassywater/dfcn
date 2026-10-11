@@ -350,7 +350,7 @@ static uint64_t refresh_native_history_documents(
 // The unique chronicle addst call supplies a live NativeString address and
 // cursor. Native word-local px/py are not screen coordinates after scrolling.
 static void remember_native_history_draw(uintptr_t identity, std::string_view source,
-        int x, int y, int clip_left, int clip_right) {
+        int x, int y, int clip_left, int clip_right, int foreground) {
     std::lock_guard<std::mutex> lock(g_native_history_mutex);
     const uint64_t epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
     if (!g_native_history_legends_rendering && g_native_history_draw_epoch != epoch) {
@@ -385,6 +385,9 @@ static void remember_native_history_draw(uintptr_t identity, std::string_view so
     const auto &owner = found->second;
     if (owner.index >= owner.document->tokens.size() ||
         owner.document->tokens[owner.index].source != source) return;
+    if (std::max<int64_t>(x, clip_left) <
+            std::min<int64_t>(int64_t(x) + int64_t(source.size()), clip_right))
+        remember_worldgen_event_color(*owner.document, owner.index, foreground);
     if (g_native_history_draws.size() < kNativeHistoryCaptureTokens)
         g_native_history_draws.push_back({owner.document, owner.index, x, y, epoch,
             clip_left, clip_right});

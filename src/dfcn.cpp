@@ -886,8 +886,8 @@ static constexpr int kFortressSquadCreationRule = -155;
 static constexpr int kFortressUniformChoiceRule = -156;
 static constexpr int kFortressSiteNameRule = -157;
 static constexpr int kConversationPortraitRule = -158;
-static constexpr int kWorkOrderShopFieldRule = -162;
 static constexpr int kFortressJusticePlotRule = -160;
+static constexpr int kWorkOrderShopFieldRule = -162;
 static constexpr int kFortressFarmFieldRule = -161;
 static constexpr int kFortressWorkshopActivityRule = -163;
 static constexpr int kFortressNobleSymbolNameRule = -164;
@@ -903,7 +903,8 @@ static bool is_fortress_noble_symbol_field(const Match &match) {
 static bool is_fortress_justice_field(const Match &match) {
     return match.rule == kFortressJusticeCaseRule || match.rule == kFortressJusticeDetailRule ||
         match.rule == kFortressJusticeActionRule || match.rule == kFortressJusticeTabRule ||
-        match.rule == kFortressJusticeActorRule || match.rule == kFortressJusticePlotRule;
+        match.rule == kFortressJusticeActorRule ||
+        match.rule == kFortressJusticePlotRule;
 }
 
 static bool is_credits_row(const Match &match) {
@@ -2805,6 +2806,10 @@ static void remember_native_drawn_text_row(int x, int y, std::string_view source
         }
     }
 }
+
+static std::optional<std::string> native_justice_actor_source(
+    uintptr_t string_address, std::string_view native_displayed, uintptr_t native_caller,
+    std::optional<bool> *sabotage_person = nullptr);
 
 static std::vector<NativeDrawnTextRow> captured_native_drawn_text_rows(bool top_layer = false) {
     std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
@@ -4762,6 +4767,8 @@ private:
     void layout_fortress_sort_captions();
     std::optional<std::string> translate_justice_case_text(std::string_view source) const;
     std::optional<std::string> translate_justice_plot_text(std::string_view source,
+        std::optional<bool> sabotage_person = std::nullopt) const;
+    std::optional<std::string> translate_justice_actor_text(std::string_view source,
         std::optional<bool> sabotage_person = std::nullopt) const;
     void append_fortress_justice_tabs(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y) const;
@@ -8172,6 +8179,40 @@ static std::optional<std::string> translate_corpsepiece_item_name(
         "::items::corpsepiece::caption", origins);
 }
 
+static bool is_manufacturing_activity_caption(std::string_view source) {
+    source = trim_view(source);
+    for (const std::string_view verb : {"make", "forge", "assemble"}) {
+        if (source.size() < verb.size() ||
+                lower(std::string(source.substr(0, verb.size()))) != verb) continue;
+        if (source.size() == verb.size() || source[verb.size()] == ' ') return true;
+    }
+    return false;
+}
+
+static size_t find_manufacturing_activity_separator(
+        std::string_view source, size_t begin = 0) {
+    bool quoted = false;
+    bool nickname = false;
+    for (size_t at = begin; at < source.size(); ++at) {
+        const char ch = source[at];
+        if (nickname) {
+            if (ch == '\'') nickname = false;
+            continue;
+        }
+        if (ch == '"' || ch == '\x10' || ch == '\x11') {
+            quoted = !quoted;
+            continue;
+        }
+        if (!quoted && ch == '`') {
+            nickname = true;
+            continue;
+        }
+        if (!quoted && ch == ',' &&
+                is_manufacturing_activity_caption(source.substr(at + 1))) return at;
+    }
+    return std::string_view::npos;
+}
+
 std::optional<std::string> Overlay::translate_compositional(const std::string &screen_text) const {
     const uint64_t source_context = native_identity_translation_context();
     const std::string cache_key = std::to_string(source_context) +
@@ -8185,19 +8226,32 @@ std::optional<std::string> Overlay::translate_compositional(const std::string &s
     try {
     TranslationWorkFrame work_frame("compositional phrase", screen_text);
     if (!utf8.empty()) {
-        // Prose is owned by the sentence/document grammars. This generic
-        // caption fallback must not search every material and item substring
-        // inside an unknown artifact paragraph. Exact reviewed prose remains
-        // available here, including literal rules exported from TOML.
-        if (item_term_contains_sentence_punctuation(screen_text)) {
+        if (is_manufacturing_activity_caption(screen_text)) {
+            // Stone-use captions can concatenate many complete manufacturing
+            // actions. Each following action owns its comma boundary; commas
+            // inside an object name remain part of that same action.
+            // An unknown action stays literal and cannot enter the noun,
+            // equipment or root grammar with the rest of this task list.
+            std::string output;
+            size_t begin = 0;
+            for (;;) {
+                const size_t end = find_manufacturing_activity_separator(screen_text, begin);
+                const auto action = trim_view(std::string_view(screen_text).substr(
+                    begin, end == std::string::npos ? end : end - begin));
+                const auto target = translate_fortress_activity(std::string(action), true);
+                output += target ? *target : native_text_to_utf8(action);
+                if (end == std::string::npos) break;
+                output += "，";
+                begin = end + 1;
+            }
+            translated = std::move(output);
+        } else if (item_term_contains_sentence_punctuation(screen_text)) {
+            // Prose is owned by the sentence/document grammars. This generic
+            // caption fallback must not search every material and item substring
+            // inside an unknown artifact paragraph. Exact reviewed prose remains
+            // available here, including literal rules exported from TOML.
             translated = exact_literal_translation(screen_text);
         } else {
-            // Manufacturing captions are complete actions. Resolve them before
-            // equipment parsing can lift a material out of the middle of a job.
-            const std::string folded = lower(utf8);
-            if (folded.starts_with("make ") || folded.starts_with("forge ") ||
-                    folded.starts_with("assemble "))
-                translated = RULESETS.translate_activity(utf8);
             // Arena equipment names have a grammatical order of their own. Run
             // the complete-phrase parser before the general compositional rules;
             // otherwise a valid generic token-by-token result wins first (for
@@ -16299,6 +16353,7 @@ static NativeKeybindingScope capture_native_keybinding_scope(const graphicst &gp
 #include "native_calendar_date.inc"
 #include "justice_case_translation.inc"
 #include "justice_plot_translation.inc"
+#include "justice_actor_translation.inc"
 #include "fortress_stocks.inc"
 #include "visitor_overview.inc"
 #include "fortress_help.inc"
@@ -28166,6 +28221,10 @@ static std::optional<std::string> translate_embark_item_material_qualifier(
         std::string material_source, bool require_material = false) {
     material_source = trim(std::move(material_source));
     if (material_source.empty()) return std::nullopt;
+    // A substring of an economic-use task list is never one material field.
+    // Reject it before typed prefix callbacks explore every word boundary.
+    if (find_manufacturing_activity_separator(material_source) != std::string_view::npos)
+        return std::nullopt;
 
     // The renderer can ask for the same visible row through several layout
     // paths in one frame. Keep this cache thread-local so those hot lookups do
@@ -29046,7 +29105,9 @@ static std::optional<std::string> translate_arena_equipment_source_phrase(
     // through every equipment/material split on the SDL thread. Equipment
     // captions have no unquoted sentence punctuation; quoted designations
     // retain their existing grammar. Keep prose with its document reader.
-    if (source.empty() || item_term_contains_sentence_punctuation(source))
+    if (source.empty() || is_manufacturing_activity_caption(source) ||
+            find_manufacturing_activity_separator(source) != std::string_view::npos ||
+            item_term_contains_sentence_punctuation(source))
         return std::nullopt;
     const std::string memo_key = "arena item:" +
         std::to_string(native_identity_translation_context()) + ":" + std::string(source);
@@ -43673,6 +43734,7 @@ DFCN_EXPORT void dfhooks_init() {
         return;
     }
     dfcn::reset_native_dfhack_render_lifecycle();
+    dfcn::reset_native_dfhack_console_lifecycle();
     dfcn::g_native_hook_thread = std::this_thread::get_id();
     dfcn::log_line("INFO", "========== DFCN loaded ==========");
     const SDL_bool native_ui = SDL_SetHintWithPriority(

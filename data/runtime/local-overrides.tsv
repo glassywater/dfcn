@@ -5365,7 +5365,12 @@ Justice intelligence tab: Actors	人物	l
 Justice intelligence tab: Organizations	组织	l
 Justice intelligence tab: Plots	阴谋	l
 Justice actor: Unidentified	身份不明	l
+# Actors card supplier: data/extracted/justice-actors-producers/decompiled-source.txt.
 Justice actor: Nameless	无名者	l
+Justice actor: Highest known in organization	组织中已知的最高层成员	l
+Justice actor: Associated Organization: Unidentified	关联组织：尚未查明	l
+Justice actor field: Associated Organization	关联组织	l
+Justice actor field: Associated Plot	关联阴谋	l
 Justice plot: Org	组织	l
 Justice plot organization: Unidentified	尚未查明	l
 Justice plot organization: Nameless	无名者	l
@@ -11659,6 +11664,11 @@ Embark site ecology: Surroundings: Haunted	周围环境：闹鬼
 Embark site ecology: Surroundings: Joyous Wilds	周围环境：欢悦荒野
 Embark site ecology: Surroundings: Untamed Wilds	周围环境：未驯服的荒野
 Embark site ecology: Surroundings: Terrifying	周围环境：恐怖
+
+# Counterintelligence plot list_name switch: Steam 0x2b6b69..0x2b6fb9,
+# Classic 0x2b4729..0x2b4b79. Resolve only complete typed Justice plot fields.
+# Details absent/Location/unknown retain A plot with no date; conviction
+# action 0/2/3 and unknown actions use the separate direct-year productions.
 Justice plot: A plot	一项阴谋	l
 Justice plot: Sabotage	破坏	l
 Justice plot: Abduct	绑架	l
