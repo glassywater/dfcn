@@ -203,8 +203,9 @@ static void capture_native_announcement_popup_draw(
     bool isolated = false;
     try {
         const int64_t left = int64_t(static_cast<int32_t>(margin)) + 4;
-        if (left >= 0 && left <= 1000)
-            isolated = native_notification_begin_draw({static_cast<int>(left), 4, 94, 35});
+        if (const auto *gps = native_graphics())
+            if (const auto bounds = native_notification_visible_bounds(*gps, left, 4, left + 93, 38))
+                isolated = native_notification_begin_draw(*bounds);
         if (isolated) clear_native_announcement_popup_background();
         else page = capture_native_announcement_popup_background();
     } catch (...) {}
@@ -258,31 +259,34 @@ static size_t capture_native_announcement_page_rows(const void *paragraph) {
         int dimx = 0, dimy = 0;
         if (paragraph && gps && gps->screen && binding.left && binding.bottom &&
                 gps->dimx > 0 && gps->dimx <= 1000 &&
-                gps->dimy > 0 && gps->dimy <= 1000 && rows <= static_cast<size_t>(gps->dimy)) {
+                gps->dimy > 0 && gps->dimy <= 1000 && rows <= static_cast<size_t>(INT32_MAX)) {
             int32_t width = 0;
             std::memcpy(&width, static_cast<const unsigned char *>(paragraph) +
                 binding.width_offset, sizeof(width));
-            const int left = *binding.left, bottom = *binding.bottom;
-            const int top = bottom - static_cast<int>(rows) - 3;
-            // This is the native loop's exact inclusive geometry. A clipped
-            // or malformed rectangle cannot supply saved cells to a later UI.
-            if (width >= 0 && width <= gps->dimx - 5 && left >= 0 && top >= 0 &&
-                    left <= gps->dimx - width - 5 && bottom < gps->dimy &&
-                    left >= gps->clipx[0] && left + width + 4 <= gps->clipx[1] &&
-                    top >= gps->clipy[0] && bottom <= gps->clipy[1]) {
-                const SDL_Rect bounds{left, top, width + 5, static_cast<int>(rows) + 4};
-                if (native_notification_begin_draw(bounds)) {
-                    g_native_announcement_hover_rows = rows;
-                    g_native_announcement_hover_isolated = true;
-                } else {
-                    page = std::make_shared<NativeTooltipPage>(*gps);
-                    page->bounds = bounds;
-                    std::fill(page->cells.begin(), page->cells.end(), 0);
-                    for (int x = left; x <= left + width + 4; ++x)
-                        std::fill_n(page->cells.begin() + static_cast<size_t>(x) * gps->dimy + top,
-                            static_cast<size_t>(rows) + 4, 1);
-                    dimx = gps->dimx;
-                    dimy = gps->dimy;
+            const int64_t left = *binding.left, bottom = *binding.bottom;
+            const int64_t top = bottom - static_cast<int64_t>(rows) - 3;
+            // Long notification lists can begin above the screen. Keep the
+            // native coordinates and complete row loop, isolating only their
+            // visible intersection instead of falling back to the page grid.
+            if (width >= 0 && width <= 1000) {
+                if (const auto bounds = native_notification_visible_bounds(
+                        *gps, left, top, left + width + 4, bottom)) {
+                    if (native_notification_begin_draw(*bounds)) {
+                        // Offscreen rows still call addst. The original count
+                        // keeps the output redirected until the final body row.
+                        g_native_announcement_hover_rows = rows;
+                        g_native_announcement_hover_isolated = true;
+                    } else {
+                        page = std::make_shared<NativeTooltipPage>(*gps);
+                        page->bounds = *bounds;
+                        std::fill(page->cells.begin(), page->cells.end(), 0);
+                        for (int x = bounds->x; x < bounds->x + bounds->w; ++x)
+                            std::fill_n(page->cells.begin() +
+                                static_cast<size_t>(x) * gps->dimy + bounds->y,
+                                bounds->h, 1);
+                        dimx = gps->dimx;
+                        dimy = gps->dimy;
+                    }
                 }
             }
         }

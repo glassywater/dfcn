@@ -68,7 +68,7 @@ void Overlay::render_native_announcement_layer(SDL_Renderer *renderer, bool repo
     NativeUiReadScope component(gps_, nullptr);
     NativePanelReadScope panels(gps_);
     CellReadCacheScope cells(*this);
-    prepared_matches_ = find_matches();
+    prepared_matches_ = reports ? find_matches() : find_native_notification_matches();
     const auto owned = [&](const Match &match) {
         return std::any_of(layer.frames.begin(), layer.frames.end(), [&](const SDL_Rect &box) {
             return match.x >= box.x && match.y >= box.y &&

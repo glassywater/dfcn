@@ -2226,6 +2226,9 @@ static bool native_stocks_background_copy_hidden(SDL_Renderer *, const SDL_Rect 
 static bool native_reports_background_view(const graphicst *) noexcept;
 static bool native_reports_background_cell_hidden(const graphicst *, int, int) noexcept;
 static bool native_reports_background_copy_hidden(SDL_Renderer *, const SDL_Rect *) noexcept;
+static bool native_notification_background_view(const graphicst *) noexcept;
+static bool native_notification_background_cell_hidden(const graphicst *, int, int) noexcept;
+static bool native_notification_background_copy_hidden(SDL_Renderer *, const SDL_Rect *) noexcept;
 static bool native_private_ui_write_active(const graphicst *gps) noexcept {
     return gps && (gps == g_native_help_write_graphics || native_dfhack_layer_write_active(gps));
 }
@@ -3534,6 +3537,7 @@ public:
 
 private:
     std::vector<Match> find_native_info_matches() const;
+    std::vector<Match> find_native_notification_matches() const;
     std::vector<Match> find_native_stocks_matches() const;
     std::vector<Match> find_native_info_background_matches(int only_y,
         const unsigned char *screen_override) const;
@@ -16578,6 +16582,7 @@ static void native_ui_paint_grid(NativeUiLayerStorage &layer, SDL_Renderer *rend
     const std::vector<Match> &matches);
 #include "native_help_layer_translation.inc"
 #include "native_info_layer_matching.inc"
+#include "native_notification_layer_matching.inc"
 #include "native_stocks_layer_translation.inc"
 #include "native_info_layer_translation.inc"
 #include "native_tooltip_layer_translation.inc"

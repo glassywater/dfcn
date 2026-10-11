@@ -91,6 +91,21 @@ std::optional<std::string> Overlay::translate_complete_announcement(
         auto translated = translate_help_paragraph(block, colors, translated_colors,
             true, -1, true);
         if (translated) return translated;
+        // ad0710 submits the crafted masterpiece as this complete native
+        // actor/item production. Resolve its existing UI rule before the
+        // unrelated help-document suffix DP; the shared matcher still owns
+        // both typed fields, full-record consumption and their colors.
+        const auto compact = compact_ui_message_literal(block);
+        if (compact.find("hascreatedamasterpiece") != std::string::npos) {
+            for (int probe : ui_message_anchors_.candidates(compact)) {
+                const int index = ui_message_template_probes_[probe].index;
+                if (rules_[static_cast<size_t>(index)].source !=
+                        "{n} has created a masterpiece {i}!") continue;
+                translated = translate_help_paragraph(block, colors,
+                    translated_colors, true, index);
+                if (translated) return translated;
+            }
+        }
         // 7eb225/7eb273 submits the complete adventure introduction and its
         // optional vault paragraph to the same announcement queue as ordinary
         // reports. e9f40 draws that live queue through markup words; it never

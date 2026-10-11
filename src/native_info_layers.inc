@@ -14,6 +14,7 @@ enum class NativeInfoLaborPage : int32_t {
 static NativeInfoLaborPage g_native_info_labor_page = NativeInfoLaborPage::None;
 
 static bool native_info_background_view(const graphicst *graphics) noexcept {
+    if (native_notification_background_view(graphics)) return true;
     if (native_reports_background_view(graphics)) return true;
     if (native_stocks_background_view(graphics)) return true;
     return graphics && g_native_info_layer.ready && !g_native_info_foreground &&
@@ -23,6 +24,7 @@ static bool native_info_background_view(const graphicst *graphics) noexcept {
 
 static bool native_info_background_cell_hidden(const graphicst *graphics,
         int x, int y) noexcept {
+    if (native_notification_background_cell_hidden(graphics, x, y)) return true;
     if (native_reports_background_cell_hidden(graphics, x, y)) return true;
     if (native_stocks_background_cell_hidden(graphics, x, y)) return true;
     return graphics && g_native_info_layer.ready &&
@@ -31,6 +33,7 @@ static bool native_info_background_cell_hidden(const graphicst *graphics,
         graphics != g_native_info_write_graphics &&
         graphics != g_native_stocks_write_graphics &&
         graphics != g_native_reports_write_graphics &&
+        !native_notification_write_active(graphics) &&
         x >= g_native_info_panel.x && y >= g_native_info_panel.y &&
         x < g_native_info_panel.x + g_native_info_panel.w &&
         y < g_native_info_panel.y + g_native_info_panel.h;
@@ -38,6 +41,7 @@ static bool native_info_background_cell_hidden(const graphicst *graphics,
 
 static bool native_info_background_copy_hidden(SDL_Renderer *renderer,
         const SDL_Rect *destination) noexcept {
+    if (native_notification_background_copy_hidden(renderer, destination)) return true;
     if (native_reports_background_copy_hidden(renderer, destination)) return true;
     if (native_stocks_background_copy_hidden(renderer, destination)) return true;
     if (!destination || destination->w <= 0 || destination->h <= 0 ||
