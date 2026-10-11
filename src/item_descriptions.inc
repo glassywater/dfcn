@@ -28,6 +28,21 @@ static std::string normalize_art_utterance(std::string_view source) {
         ? normalize_utterance(source) : std::string(trim_view(source));
 }
 
+static bool item_slab_native_name_capture(const Rule &rule,
+        std::string_view source, std::string_view name) {
+    // The true-name inscription's first name is original-language spelling;
+    // its optional English alias and deity remain ordinary actor captures.
+    // Both item parsers pass views into their original sentence, including
+    // any spacing normalized by the strict parser's origin map.
+    if (!rule.source.starts_with("I am {n},") ||
+        rule.source.find(", once of the Underworld.") == std::string::npos ||
+        normalize_utterance(source.substr(0, name.data() - source.data())) != "I am")
+        return false;
+    // The no-alias production must not swallow a comma and the alias into
+    // one phonetic field before the complete two-name production can match.
+    return !name.ends_with("...") && generated_title_shape(name);
+}
+
 static bool item_term_contains_sentence_punctuation(std::string_view source) {
     bool quoted = false;
     for (char ch : source) {
@@ -735,7 +750,11 @@ std::optional<std::string> Overlay::translate_item_description_source(
                     case 'm': return translate_embark_item_material_qualifier(std::string(part), true);
                     case 'e': return translate_item_description_term(part, true);
                     case 'a': return translate_symbol_elements(part);
-                    case 'n': return translate_legends_actor(part);
+                    case 'n':
+                        if (item_slab_native_name_capture(rule, value, part))
+                            return translate_procedural_fragment(std::string(part), true,
+                                false, {}, ProceduralFragmentContext::generated_name);
+                        return translate_legends_actor(part);
                     case 'u':
                         // Holder/owner captions keep the profession with the name.
                         if (auto unit = translate_unit_identity(part, true)) return unit;
@@ -1049,7 +1068,12 @@ TranslationResult Overlay::translate_item_description_source_display(
                             case 'o': translated = translate_item_craftsmanship(part); break;
                             case 'm': translated = translate_embark_item_material_qualifier(std::string(part), true); break;
                             case 'a': translated = translate_symbol_elements(part); break;
-                            case 'n': translated = translate_legends_actor(part); break;
+                            case 'n':
+                                translated = item_slab_native_name_capture(rule, value, part)
+                                    ? translate_procedural_fragment(std::string(part), true,
+                                        false, {}, ProceduralFragmentContext::generated_name)
+                                    : translate_legends_actor(part);
+                                break;
                             case 'u': translated = translate_unit_identity(part, true); break;
                             case 'p':
                                 if (rule.source == "This engraving appears on a floor in {p}." ||
