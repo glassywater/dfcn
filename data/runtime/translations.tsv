@@ -29147,6 +29147,7 @@ Toggle whether the task will be repeated indefinitely.	切换此任务是否无�
 We checked that stone for heat! What devilry is this?!	我们明明检查过那块石头的温度！这是什么邪术？！	hP
 What will you say about the refusal to accept tribute?	关于拒收贡品，你想说些什么？	hP
 When unpaused, a worker should now build the Workshop.	[C:7:0:0]解除暂停后，工人应该就会开始建造[C:6:0:0]工坊[C:7:0:0]。	hq
+World artifact claim: Claimed by your local government	你所在地区的政府宣称拥有	h
 You are considered an integral part of the opposition.	你被视为反对者中不可或缺的一员。	hP
 You are in the middle of a sermon on the value of {s}.	你正在布道，宣讲{s1}的价值。	hPt
 You are in the middle of an improvised recital of {e}.	你正在以{e1}的形式即兴朗诵。	hPt
@@ -41010,6 +41011,7 @@ Workshop mood sketch: pictures of rough gems.	画着粗糙宝石。	l
 Workshop recipe: kind tameable small creature	小型生物	l
 Workshop recipe: state folded sheet protector	用于保护折叠纸张	l
 Workshop recipe: state small object container	用于盛装小件物品	l
+World artifact claim: Claimed by local family	当地家族宣称拥有	h
 World mission departure: (Set out Autumn {d})	（{d}年秋季出发）	ht
 World mission departure: (Set out Spring {d})	（{d}年春季出发）	ht
 World mission departure: (Set out Summer {d})	（{d}年夏季出发）	ht
@@ -45893,6 +45895,7 @@ Workshop recipe: kind extract-bearing fish	鱼	l
 Workshop recipe: state heavy object hauler	用于搬运重物	l
 Workshop recipe: state meat-carving holder	用于切肉时承托	l
 Workshop recipe: state parchment-producing	可制作兽皮纸	l
+World artifact claim: Claimed by local {n}	当地的{n}宣称拥有	ht
 World artifact: Last known to be traveling	最后得知正在旅行中	h
 World civilization trade status: Vengeance	复仇	l
 Written on the item is a {s} entitled {b}.	物品上写有{s1}《{b1}》。	ht
@@ -53269,6 +53272,7 @@ Workshop recipe: state bag-processable	可加工并装袋	l
 Workshop recipe: state games of chance	用于博戏	l
 Workshop recipe: state melt-designated	已指定熔化	l
 Workshop recipe: state powder grinding	用于研磨粉末	l
+World artifact claim: Claimed by local	当地有人宣称拥有	h
 World civilization trade status: Death	死亡	l
 World mission departure: (Set out {d})	（{d}年出发）	ht
 World mission: Demand surrender at {p}	在{p}要求对方投降	ht
@@ -75480,6 +75484,7 @@ Workshop recipe: state woven	编织	l
 Workshop recipe: unit sheets	张	l
 Workshop recipe: unit thread	卷	l
 Workshop recipe: yarn thread	纱线	l
+World artifact: Last held by	最后持有者：	h
 World mission: Take over {p}	占领：{p}	ht
 Wrestling Competition at {p}	在{p1}，摔跤比赛	htEi
 Wrestling Competition in {d}	{d1}年的摔跤比赛	htEi
@@ -85955,6 +85960,7 @@ Workshop recipe: coffin	灵柩	l
 Workshop recipe: crafts	工艺品	l
 Workshop recipe: gypsum	石膏	l
 Workshop recipe: pearls	珍珠	l
+World artifact: Last in	最后所在地点：	h
 World mission: Raid {p}	突袭：{p}	ht
 World mission: Raze {p}	夷平：{p}	ht
 World site type: castle	Castle	hi

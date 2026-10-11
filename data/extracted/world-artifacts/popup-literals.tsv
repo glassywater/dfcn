@@ -1,0 +1,662 @@
+# Static PE disassembly source evidence. Shared suppliers include unreachable branches; apply popup-decompiled-grammar.txt. No game execution.
+image	role	instruction-rva	literal-rva	source	scope
+reference	claim-person	0xb92f8a	0x16df900	interrogator	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	claim-person	0xb92fa1	0x1674d08	subject	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	claim-person	0xb93073	0x16290f0	Nameless	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	claim-person	0xb9310e	0x16df8e0	an unidentified creature	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	claim-person	0xb93133	0x15fdb08	[LPAGE:HF:	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	claim-person	0xb93153	0x15fd690	]	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	claim-person	0xb9325d	0x1662ef8	myself	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	claim-person	0xb93266	0x1662efc	lf	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	claim-person	0xb9331b	0x15e8e48	the 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	claim-person	0xb9333f	0x167db90	zombie 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	claim-person	0xb93377	0x15fdbb8	ghostly 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	claim-person	0xb93499	0x15e873c	 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	claim-person	0xb934c8	0x15e873c	 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	claim-person	0xb93551	0x15e956c	 the 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	claim-person	0xb93575	0x167db90	zombie 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	claim-person	0xb935ad	0x15fdbb8	ghostly 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	claim-person	0xb936cd	0x15e873c	 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	claim-person	0xb9374e	0x15ed620	a 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	claim-person	0xb93755	0x15e8e48	the 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	claim-person	0xb9377d	0x167db90	zombie 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	claim-person	0xb937b5	0x15fdbb8	ghostly 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	claim-person	0xb9381c	0x15e873c	 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	claim-person	0xb93867	0x15e9260	's	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	claim-person	0xb93886	0x15fda88	[/LPAGE]	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	claim-person	0xb938dc	0x1663cd8	an unknown creature	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	claim-person	0xb938f2	0x15e9260	's	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc75053	0x1684e58	[P]	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc752f6	0x16ee300	This is	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc752fd	0x16ee308	These are	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc75318	0x16492ac	 a	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc7534d	0x1649304	n	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc75359	0x16ee2e8	This is a stack of	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc75377	0x15e873c	 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc753b1	0x16157c0	These are 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc753d7	0x16ee2d8	 bundles of	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc753e0	0x16ee2c0	This is a bundle of	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc7545a	0x16ee250	 masterfully prepared	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc75463	0x16ee268	 exceptional prepared	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc7546c	0x16ee280	 superiorly prepared	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc75475	0x16ee298	 finely-prepared	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc7547e	0x16ee2b0	 well-prepared	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc754a5	0x16ee218	 masterful	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc754ae	0x16ee228	 exceptional	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc754b7	0x16ee238	 superior quality	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc754c0	0x166d810	 finely-crafted	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc754c9	0x166d800	 well-crafted	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc754d8	0x15e873c	 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc75543	0x16d8e28	 created by 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc7555e	0x15fdb08	[LPAGE:HF:	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc7557b	0x15fd690	]	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc755b9	0x15fda88	[/LPAGE]	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc755cd	0x15fd968	.  	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc755f0	0x16ee1ec	All 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc7565e	0x16ee1f8	 created by an unknown artisan	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc75676	0x162a8a8	craftsman	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc75692	0x16ee1c8	ship is of the highest quality.  	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc756f9	0x16ee1b0	It is sized for 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc75730	0x15fd968	.  	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc75822	0x163fca4	[R]	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc7583d	0x163fca4	[R]	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc75879	0x16ee198	The ingredients are 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc758a5	0x16ee150	minced 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc758de	0x16ee158	masterfully 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc758e7	0x16ee168	exceptionally 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc758f0	0x16ee178	superiorly 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc758f9	0x16ee188	finely 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc75902	0x16ee190	well-	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc7591f	0x16ee148	cooked 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc759da	0x15e90d8	, 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc759e9	0x15e9110	 and 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc75a00	0x15fd968	.  	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc75a13	0x16ee150	minced 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc75ab8	0x163fca4	[R]	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc75ac4	0x15e9730	The pages are blank.	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc75cf4	0x16ee140	It is 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc75d1f	0x16ee100	glazed with	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc75d28	0x16ee110	decorated with	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc75d31	0x16ee120	studded with	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc75d3a	0x16ee130	encrusted with	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc75d49	0x15e873c	 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc76020	0x16ee090	masterfully prepared 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc76029	0x16ee0a8	exceptionally prepared 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc76032	0x16ee0c0	superior quality 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc7603b	0x16ee0d8	finely-prepared 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc76044	0x16ee0f0	well-prepared 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc76066	0x16ee040	masterfully worked 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc7606f	0x16ee058	exceptionally worked 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc76078	0x16ee070	finely-crafted 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc76081	0x16ee080	well-crafted 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc761a1	0x15eda08	 by 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc761b8	0x15fdb08	[LPAGE:HF:	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc761d5	0x15fd690	]	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc76213	0x15fda88	[/LPAGE]	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc7621f	0x16ee028	 by an unknown artist	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc76243	0x15e90d8	, 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc76251	0x15e9110	 and 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc7629c	0x15e90d8	, 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc762a7	0x15e9110	 and 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc762b0	0x15fd968	.  	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc762ef	0x16ee140	It is 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc762fe	0x16ee008	encircled with bands of 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc76390	0x16ee040	masterfully worked 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc76399	0x16ee058	exceptionally worked 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc763a2	0x16ee0c0	superior quality 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc763ab	0x16ee070	finely-crafted 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc763b4	0x16ee080	well-crafted 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc764cb	0x15eda08	 by 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc764e5	0x15fdb08	[LPAGE:HF:	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc76502	0x15fd690	]	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc76540	0x15fda88	[/LPAGE]	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc7655f	0x15e90d8	, 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc7656e	0x15e9110	 and 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc765a8	0x15e90d8	, 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc765b3	0x15e9110	 and 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc765bc	0x15fd968	.  	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc768fd	0x15ed9bc	The 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc769c7	0x16edff8	 are made from 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc769d0	0x16edfe8	 is made from 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc76a36	0x16ee040	masterfully worked 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc76a3f	0x16ee058	exceptionally worked 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc76a48	0x16ee0c0	superior quality 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc76a51	0x16ee070	finely-crafted 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc76a5a	0x16ee080	well-crafted 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc76b0a	0x15eda08	 by 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc76b24	0x15fdb08	[LPAGE:HF:	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc76b41	0x15fd690	]	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc76b7f	0x15fda88	[/LPAGE]	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc76b90	0x15fd968	.  	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc76c26	0x16edf88	The chain is 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc76c2f	0x16edf98	The rope is 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc76c38	0x16edfa8	The rollers are made from 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc76c41	0x16edfc8	The handle is made from 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc76c85	0x16ee040	masterfully worked 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc76c8e	0x16ee058	exceptionally worked 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc76c97	0x16ee0c0	superior quality 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc76ca0	0x16ee070	finely-crafted 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc76ca9	0x16ee080	well-crafted 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc76d5b	0x15eda08	 by 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc76d75	0x15fdb08	[LPAGE:HF:	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc76d92	0x15fd690	]	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc76dd0	0x15fda88	[/LPAGE]	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc76ddf	0x15fd968	.  	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc76e50	0x16ee850	This object 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc76e65	0x16ee828	is adorned with hanging rings of 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc76ef2	0x16ee040	masterfully worked 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc76efb	0x16ee058	exceptionally worked 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc76f04	0x16ee0c0	superior quality 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc76f0d	0x16ee070	finely-crafted 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc76f16	0x16ee080	well-crafted 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc76fc7	0x15eda08	 by 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc76fe1	0x15fdb08	[LPAGE:HF:	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc76ffe	0x15fd690	]	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc7703c	0x15fda88	[/LPAGE]	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc77056	0x15e90d8	, 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc77065	0x15e9110	 and 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc770a9	0x15e90d8	, 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc770b5	0x15e9110	 and 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc770be	0x15fd968	.  	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc770db	0x16ee850	This object 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc770ea	0x16ee810	menaces with spikes of 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc77173	0x16ee040	masterfully worked 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc7717c	0x16ee058	exceptionally worked 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc77185	0x16ee0c0	superior quality 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc7718e	0x16ee070	finely-crafted 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc77197	0x16ee080	well-crafted 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc7724c	0x15eda08	 by 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc77263	0x15fdb08	[LPAGE:HF:	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc77280	0x15fd690	]	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc772be	0x15fda88	[/LPAGE]	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc772dd	0x15e90d8	, 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc772ec	0x15e9110	 and 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc7731f	0x15e90d8	, 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc7732b	0x15e9110	 and 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc77334	0x15fd968	.  	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc77455	0x16ee7f8	It is made from 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc774b8	0x15fd968	.  	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc774dc	0x163fca4	[R]	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc774f7	0x163fca4	[R]	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc776d7	0x16ee7f8	It is made from 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc7771d	0x15fd968	.  	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc7780a	0x163fca4	[R]	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc77825	0x163fca4	[R]	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc77a48	0x16ee7d8	On the faces of the object are 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc77a96	0x16ee758	numbers	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc77ab9	0x16ee760	, ranging from 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc77aec	0x15ed5b4	 to 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc77b38	0x16ee770	dots	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc77b5b	0x16ee760	, ranging from 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc77b8e	0x15ed5b4	 to 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc77bda	0x16ee7c8	a series of 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc77bf7	0x16ee778	 symbols	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc77c03	0x16ee7c8	a series of 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc77c20	0x16ee7a0	 words	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc77c34	0x16ee788	 which you cannot read	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc77c3d	0x16ee7c8	a series of 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc77c5a	0x16ee7a8	 images	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc77c63	0x16ee7c8	a series of 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc77c80	0x16ee7b0	 images and symbols	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc77c90	0x15e85b4	.	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc77cf1	0x15fcfe8	  	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc77d00	0x16ee740	The upward face is 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc77d3d	0x15e85b4	.	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc77eab	0x163fca4	[R]	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc77ec5	0x163fca4	[R]	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc77edb	0x163fca4	[R]	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc77ee7	0x16ee708	There is writing on this item which you have not read.	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc77ef6	0x163fca4	[R]	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc77f02	0x15fcfe8	  	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc77f0e	0x16ee708	There is writing on this item which you have not read.	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc77f29	0x163fca4	[R]	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc77f35	0x16ee6d0	There is writing on this item, but you cannot read.	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc77f44	0x163fca4	[R]	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc77f4d	0x15fcfe8	  	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc77f59	0x16ee6d0	There is writing on this item, but you cannot read.	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc77f6a	0x15fcfe8	  	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc77f84	0x15fcfe8	  	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc77ffa	0x16ee6b8	The material is 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc78027	0x15e85b4	.	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc78043	0x163fca4	[R]	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc78054	0x15fcfe8	  	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc7806f	0x15fcfe8	  	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc7807b	0x15e9730	The pages are blank.	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc7808a	0x15fcfe8	  	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc7814c	0x163fca4	[R]	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc78171	0x163fca4	[R]	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc7818a	0x163fca4	[R]	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc78196	0x16ee698	You have not read this book.	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc7819f	0x15fcfe8	  	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc781ab	0x16ee698	You have not read this book.	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc781c4	0x163fca4	[R]	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc781d0	0x16ee660	There is writing in the book, but you cannot read.	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc781df	0x163fca4	[R]	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc781f0	0x15fcfe8	  	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc781fc	0x16ee660	There is writing in the book, but you cannot read.	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc78208	0x15fcfe8	  	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc7822d	0x15fcfe8	  	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc782d0	0x16ee6b8	The material is 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc782fd	0x15e85b4	.	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc78314	0x163fca4	[R]	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc78325	0x15fcfe8	  	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc78336	0x16ee650	The thread is 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc78398	0x16ee644	gray	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc783b3	0x15e90d8	, 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc783e4	0x16ee158	masterfully 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc783ed	0x16ee168	exceptionally 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc783f6	0x16ee638	superbly 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc783ff	0x16ee188	finely 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc78408	0x16ee190	well-	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc78417	0x16ee630	colored	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc784a1	0x15ee5e0	 with 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc784c8	0x16ee620	a mixture of 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc7856a	0x15e90d8	, 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc7858e	0x15e873c	 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc785a3	0x16ee614	and 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc785f6	0x15ee5e0	 with 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc78679	0x15eda08	 by 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc78699	0x15fdb08	[LPAGE:HF:	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc786df	0x15fd690	]	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc7873d	0x15fda88	[/LPAGE]	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc7874f	0x15fd968	.  	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc787bc	0x16ee6b8	The material is 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc787e9	0x15e85b4	.	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc78802	0x163fca4	[R]	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc78813	0x15fcfe8	  	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc7882a	0x16ee6b8	The material is 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc7888e	0x16ee644	gray	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc788b3	0x15e90d8	, 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc788e4	0x16ee158	masterfully 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc788ed	0x16ee168	exceptionally 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc788f6	0x16ee638	superbly 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc788ff	0x16ee188	finely 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc78908	0x16ee190	well-	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc7891d	0x16ee630	colored	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc789b1	0x15ee5e0	 with 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc789de	0x16ee620	a mixture of 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc78a88	0x15e90d8	, 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc78aac	0x15e873c	 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc78ac1	0x16ee614	and 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc78b14	0x15ee5e0	 with 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc78b97	0x15eda08	 by 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc78bb7	0x15fdb08	[LPAGE:HF:	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc78bfd	0x15fd690	]	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc78c5b	0x15fda88	[/LPAGE]	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc78c6d	0x15fd968	.  	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc78d08	0x163fca4	[R]	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc78d23	0x163fca4	[R]	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc78d32	0x15fcfe8	  	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc78d50	0x15fcfe8	  	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc78dbc	0x16ee5f0	When used as a dye, it produces 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc78de8	0x15e85b4	.	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc78e02	0x163fca4	[R]	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc78e11	0x15fcfe8	  	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc78e8e	0x163fca4	[R]	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc78ea0	0x16ee5a0	There is writing on the slab, but you cannot read.	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc78eb2	0x163fca4	[R]	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc78ecc	0x15fcfe8	  	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc78ede	0x16ee5a0	There is writing on the slab, but you cannot read.	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc78ef3	0x15fcfe8	  	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc78f12	0x163fca4	[R]	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc78f21	0x15fcfe8	  	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc78f33	0x16ee5d8	"The slab reads """	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc78f58	0x16ee5d4	"""."	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc78f72	0x163fca4	[R]	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc78f81	0x15fcfe8	  	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc79264	0x16ee538	This object is in tatters.  	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc79273	0x16ee558	This object is threadbare.  	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc79293	0x16ee4f8	This object is mangled.  	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc792a2	0x16ee518	This object is heavily worn.  	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc792ab	0x16ee578	This object is showing some wear.  	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc79336	0x16ee140	It is 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc79363	0x16ee4ec	coated	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc79372	0x16ee4e0	spattered	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc79384	0x15ee5e0	 with 	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc793f6	0x15fd968	.  	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc794d6	0x15fcfe8	  	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc79529	0x15fd258	[B]	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc7954f	0x15fd258	[B]	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc7955e	0x15fcfe8	  	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc79587	0x15fcfe8	  	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc795c6	0x15fd258	[B]	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc795ec	0x15fd258	[B]	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc795fb	0x15fcfe8	  	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	item-description	0xc79624	0x15fcfe8	  	shared-function; popup constraints in popup-decompiled-grammar.txt
+reference	renderer	0x1d2583	0x16043e0	Claimed by your local government	popup-path
+reference	renderer	0x1d25f3	0x1604408	Claimed by local 	popup-path
+reference	renderer	0x1d26d2	0x1604420	Claimed by local family	popup-path
+reference	renderer	0x1d2748	0x1603b00	Cannot order mission without leader	popup-path
+reference	renderer	0x1d27d2	0x1604438	Click to recover (creates new mission)	popup-path
+reference	renderer	0x1d282c	0x1603ae0	Inaccessible mission location	popup-path
+reference	supplier	0x1d9f17	0x15e873c	 	popup-path
+classic	claim-person	0xb8ffca	0x16da770	interrogator	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	claim-person	0xb8ffe1	0x166fb90	subject	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	claim-person	0xb900b3	0x1623ec0	Nameless	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	claim-person	0xb9014e	0x16da750	an unidentified creature	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	claim-person	0xb90173	0x15f8b40	[LPAGE:HF:	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	claim-person	0xb90193	0x15f8664	]	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	claim-person	0xb9029d	0x165df6c	myself	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	claim-person	0xb902a6	0x165df70	lf	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	claim-person	0xb9035b	0x15e3e34	the 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	claim-person	0xb9037f	0x16789f8	zombie 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	claim-person	0xb903b7	0x15f8b70	ghostly 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	claim-person	0xb904d9	0x15e3720	 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	claim-person	0xb90508	0x15e3720	 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	claim-person	0xb90591	0x15e4548	 the 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	claim-person	0xb905b5	0x16789f8	zombie 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	claim-person	0xb905ed	0x15f8b70	ghostly 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	claim-person	0xb9070d	0x15e3720	 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	claim-person	0xb9078e	0x15e8618	a 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	claim-person	0xb90795	0x15e3e34	the 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	claim-person	0xb907bd	0x16789f8	zombie 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	claim-person	0xb907f5	0x15f8b70	ghostly 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	claim-person	0xb9085c	0x15e3720	 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	claim-person	0xb908a7	0x15e4214	's	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	claim-person	0xb908c6	0x15f8b50	[/LPAGE]	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	claim-person	0xb9091c	0x165ed98	an unknown creature	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	claim-person	0xb90932	0x15e4214	's	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc72093	0x167fd98	[P]	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc72336	0x16e8e20	This is	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc7233d	0x16e8e28	These are	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc72358	0x16443ac	 a	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc7238d	0x164412c	n	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc72399	0x16e8e08	This is a stack of	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc723b7	0x15e3720	 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc723f1	0x1610720	These are 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc72417	0x16e9390	 bundles of	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc72420	0x16e9378	This is a bundle of	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc7249a	0x16e9308	 masterfully prepared	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc724a3	0x16e9320	 exceptional prepared	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc724ac	0x16e9338	 superiorly prepared	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc724b5	0x16e9350	 finely-prepared	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc724be	0x16e9368	 well-prepared	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc724e5	0x16e92d0	 masterful	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc724ee	0x16e92e0	 exceptional	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc724f7	0x16e92f0	 superior quality	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc72500	0x1668610	 finely-crafted	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc72509	0x1668640	 well-crafted	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc72518	0x15e3720	 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc72583	0x16d3be8	 created by 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc7259e	0x15f8b40	[LPAGE:HF:	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc725bb	0x15f8664	]	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc725f9	0x15f8b50	[/LPAGE]	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc7260d	0x15f8850	.  	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc72630	0x16e92a4	All 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc7269e	0x16e92b0	 created by an unknown artisan	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc726b6	0x1625fe8	craftsman	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc726d2	0x16e9280	ship is of the highest quality.  	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc72739	0x16e9268	It is sized for 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc72770	0x15f8850	.  	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc72862	0x163ae74	[R]	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc7287d	0x163ae74	[R]	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc728b9	0x16e9250	The ingredients are 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc728e5	0x16e9208	minced 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc7291e	0x16e9210	masterfully 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc72927	0x16e9220	exceptionally 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc72930	0x16e9230	superiorly 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc72939	0x16e9240	finely 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc72942	0x16e9248	well-	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc7295f	0x16e9200	cooked 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc72a1a	0x15e40c4	, 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc72a29	0x15e40bc	 and 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc72a40	0x15f8850	.  	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc72a53	0x16e9208	minced 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc72af8	0x163ae74	[R]	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc72b04	0x15e4718	The pages are blank.	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc72d34	0x16e91f8	It is 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc72d5f	0x16e91b8	glazed with	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc72d68	0x16e91c8	decorated with	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc72d71	0x16e91d8	studded with	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc72d7a	0x16e91e8	encrusted with	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc72d89	0x15e3720	 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc73060	0x16e9148	masterfully prepared 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc73069	0x16e9160	exceptionally prepared 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc73072	0x16e9178	superior quality 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc7307b	0x16e9190	finely-prepared 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc73084	0x16e91a8	well-prepared 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc730a6	0x16e90f8	masterfully worked 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc730af	0x16e9110	exceptionally worked 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc730b8	0x16e9128	finely-crafted 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc730c1	0x16e9138	well-crafted 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc731e1	0x15e8a08	 by 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc731f8	0x15f8b40	[LPAGE:HF:	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc73215	0x15f8664	]	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc73253	0x15f8b50	[/LPAGE]	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc7325f	0x16e90e0	 by an unknown artist	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc73283	0x15e40c4	, 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc73291	0x15e40bc	 and 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc732dc	0x15e40c4	, 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc732e7	0x15e40bc	 and 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc732f0	0x15f8850	.  	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc7332f	0x16e91f8	It is 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc7333e	0x16e90c0	encircled with bands of 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc733d0	0x16e90f8	masterfully worked 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc733d9	0x16e9110	exceptionally worked 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc733e2	0x16e9178	superior quality 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc733eb	0x16e9128	finely-crafted 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc733f4	0x16e9138	well-crafted 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc7350b	0x15e8a08	 by 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc73525	0x15f8b40	[LPAGE:HF:	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc73542	0x15f8664	]	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc73580	0x15f8b50	[/LPAGE]	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc7359f	0x15e40c4	, 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc735ae	0x15e40bc	 and 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc735e8	0x15e40c4	, 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc735f3	0x15e40bc	 and 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc735fc	0x15f8850	.  	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc7393d	0x15e89c4	The 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc73a07	0x16e90b0	 are made from 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc73a10	0x16e90a0	 is made from 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc73a76	0x16e90f8	masterfully worked 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc73a7f	0x16e9110	exceptionally worked 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc73a88	0x16e9178	superior quality 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc73a91	0x16e9128	finely-crafted 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc73a9a	0x16e9138	well-crafted 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc73b4a	0x15e8a08	 by 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc73b64	0x15f8b40	[LPAGE:HF:	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc73b81	0x15f8664	]	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc73bbf	0x15f8b50	[/LPAGE]	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc73bd0	0x15f8850	.  	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc73c66	0x16e9040	The chain is 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc73c6f	0x16e9050	The rope is 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc73c78	0x16e9060	The rollers are made from 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc73c81	0x16e9080	The handle is made from 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc73cc5	0x16e90f8	masterfully worked 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc73cce	0x16e9110	exceptionally worked 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc73cd7	0x16e9178	superior quality 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc73ce0	0x16e9128	finely-crafted 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc73ce9	0x16e9138	well-crafted 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc73d9b	0x15e8a08	 by 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc73db5	0x15f8b40	[LPAGE:HF:	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc73dd2	0x15f8664	]	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc73e10	0x15f8b50	[/LPAGE]	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc73e1f	0x15f8850	.  	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc73e90	0x16e9030	This object 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc73ea5	0x16e9008	is adorned with hanging rings of 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc73f32	0x16e90f8	masterfully worked 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc73f3b	0x16e9110	exceptionally worked 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc73f44	0x16e9178	superior quality 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc73f4d	0x16e9128	finely-crafted 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc73f56	0x16e9138	well-crafted 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc74007	0x15e8a08	 by 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc74021	0x15f8b40	[LPAGE:HF:	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc7403e	0x15f8664	]	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc7407c	0x15f8b50	[/LPAGE]	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc74096	0x15e40c4	, 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc740a5	0x15e40bc	 and 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc740e9	0x15e40c4	, 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc740f5	0x15e40bc	 and 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc740fe	0x15f8850	.  	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc7411b	0x16e9030	This object 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc7412a	0x16e8ff0	menaces with spikes of 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc741b3	0x16e90f8	masterfully worked 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc741bc	0x16e9110	exceptionally worked 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc741c5	0x16e9178	superior quality 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc741ce	0x16e9128	finely-crafted 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc741d7	0x16e9138	well-crafted 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc7428c	0x15e8a08	 by 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc742a3	0x15f8b40	[LPAGE:HF:	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc742c0	0x15f8664	]	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc742fe	0x15f8b50	[/LPAGE]	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc7431d	0x15e40c4	, 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc7432c	0x15e40bc	 and 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc7435f	0x15e40c4	, 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc7436b	0x15e40bc	 and 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc74374	0x15f8850	.  	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc74495	0x16e8fd8	It is made from 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc744f8	0x15f8850	.  	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc7451c	0x163ae74	[R]	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc74537	0x163ae74	[R]	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc74717	0x16e8fd8	It is made from 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc7475d	0x15f8850	.  	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc7484a	0x163ae74	[R]	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc74865	0x163ae74	[R]	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc74a88	0x16e8fb8	On the faces of the object are 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc74ad6	0x16e8f38	numbers	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc74af9	0x16e8f40	, ranging from 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc74b2c	0x15e8524	 to 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc74b78	0x16e8f50	dots	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc74b9b	0x16e8f40	, ranging from 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc74bce	0x15e8524	 to 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc74c1a	0x16e8fa8	a series of 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc74c37	0x16e8f58	 symbols	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc74c43	0x16e8fa8	a series of 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc74c60	0x16e8f80	 words	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc74c74	0x16e8f68	 which you cannot read	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc74c7d	0x16e8fa8	a series of 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc74c9a	0x16e8f88	 images	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc74ca3	0x16e8fa8	a series of 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc74cc0	0x16e8f90	 images and symbols	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc74cd0	0x15e3574	.	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc74d31	0x15f7ff8	  	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc74d40	0x16e8f20	The upward face is 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc74d7d	0x15e3574	.	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc74eeb	0x163ae74	[R]	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc74f05	0x163ae74	[R]	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc74f1b	0x163ae74	[R]	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc74f27	0x16e8ee8	There is writing on this item which you have not read.	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc74f36	0x163ae74	[R]	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc74f42	0x15f7ff8	  	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc74f4e	0x16e8ee8	There is writing on this item which you have not read.	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc74f69	0x163ae74	[R]	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc74f75	0x16e8eb0	There is writing on this item, but you cannot read.	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc74f84	0x163ae74	[R]	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc74f8d	0x15f7ff8	  	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc74f99	0x16e8eb0	There is writing on this item, but you cannot read.	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc74faa	0x15f7ff8	  	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc74fc4	0x15f7ff8	  	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc7503a	0x16e8e98	The material is 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc75067	0x15e3574	.	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc75083	0x163ae74	[R]	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc75094	0x15f7ff8	  	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc750af	0x15f7ff8	  	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc750bb	0x15e4718	The pages are blank.	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc750ca	0x15f7ff8	  	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc7518c	0x163ae74	[R]	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc751b1	0x163ae74	[R]	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc751ca	0x163ae74	[R]	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc751d6	0x16e8e78	You have not read this book.	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc751df	0x15f7ff8	  	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc751eb	0x16e8e78	You have not read this book.	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc75204	0x163ae74	[R]	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc75210	0x16e8e40	There is writing in the book, but you cannot read.	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc7521f	0x163ae74	[R]	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc75230	0x15f7ff8	  	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc7523c	0x16e8e40	There is writing in the book, but you cannot read.	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc75248	0x15f7ff8	  	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc7526d	0x15f7ff8	  	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc75310	0x16e8e98	The material is 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc7533d	0x15e3574	.	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc75354	0x163ae74	[R]	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc75365	0x15f7ff8	  	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc75376	0x16e98c8	The thread is 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc753d8	0x16e98bc	gray	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc753f3	0x15e40c4	, 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc75424	0x16e9210	masterfully 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc7542d	0x16e9220	exceptionally 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc75436	0x16e98b0	superbly 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc7543f	0x16e9240	finely 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc75448	0x16e9248	well-	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc75457	0x16e98a8	colored	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc754e1	0x15e9590	 with 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc75508	0x16e9898	a mixture of 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc755aa	0x15e40c4	, 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc755ce	0x15e3720	 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc755e3	0x16e988c	and 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc75636	0x15e9590	 with 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc756b9	0x15e8a08	 by 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc756d9	0x15f8b40	[LPAGE:HF:	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc7571f	0x15f8664	]	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc7577d	0x15f8b50	[/LPAGE]	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc7578f	0x15f8850	.  	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc757fc	0x16e8e98	The material is 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc75829	0x15e3574	.	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc75842	0x163ae74	[R]	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc75853	0x15f7ff8	  	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc7586a	0x16e8e98	The material is 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc758ce	0x16e98bc	gray	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc758f3	0x15e40c4	, 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc75924	0x16e9210	masterfully 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc7592d	0x16e9220	exceptionally 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc75936	0x16e98b0	superbly 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc7593f	0x16e9240	finely 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc75948	0x16e9248	well-	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc7595d	0x16e98a8	colored	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc759f1	0x15e9590	 with 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc75a1e	0x16e9898	a mixture of 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc75ac8	0x15e40c4	, 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc75aec	0x15e3720	 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc75b01	0x16e988c	and 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc75b54	0x15e9590	 with 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc75bd7	0x15e8a08	 by 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc75bf7	0x15f8b40	[LPAGE:HF:	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc75c3d	0x15f8664	]	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc75c9b	0x15f8b50	[/LPAGE]	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc75cad	0x15f8850	.  	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc75d48	0x163ae74	[R]	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc75d63	0x163ae74	[R]	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc75d72	0x15f7ff8	  	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc75d90	0x15f7ff8	  	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc75dfc	0x16e9868	When used as a dye, it produces 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc75e28	0x15e3574	.	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc75e42	0x163ae74	[R]	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc75e51	0x15f7ff8	  	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc75ece	0x163ae74	[R]	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc75ee0	0x16e9818	There is writing on the slab, but you cannot read.	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc75ef2	0x163ae74	[R]	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc75f0c	0x15f7ff8	  	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc75f1e	0x16e9818	There is writing on the slab, but you cannot read.	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc75f33	0x15f7ff8	  	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc75f52	0x163ae74	[R]	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc75f61	0x15f7ff8	  	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc75f73	0x16e9850	"The slab reads """	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc75f98	0x16e984c	"""."	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc75fb2	0x163ae74	[R]	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc75fc1	0x15f7ff8	  	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc762a4	0x16e97b0	This object is in tatters.  	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc762b3	0x16e97d0	This object is threadbare.  	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc762d3	0x16e9770	This object is mangled.  	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc762e2	0x16e9790	This object is heavily worn.  	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc762eb	0x16e97f0	This object is showing some wear.  	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc76376	0x16e91f8	It is 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc763a3	0x16e9764	coated	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc763b2	0x16e9758	spattered	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc763c4	0x15e9590	 with 	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc76436	0x15f8850	.  	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc76516	0x15f7ff8	  	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc76569	0x15f8388	[B]	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc7658f	0x15f8388	[B]	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc7659e	0x15f7ff8	  	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc765c7	0x15f7ff8	  	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc76606	0x15f8388	[B]	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc7662c	0x15f8388	[B]	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc7663b	0x15f7ff8	  	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	item-description	0xc76664	0x15f7ff8	  	shared-function; popup constraints in popup-decompiled-grammar.txt
+classic	renderer	0x1d2513	0x15ff3b0	Claimed by your local government	popup-path
+classic	renderer	0x1d2583	0x15ff3d8	Claimed by local 	popup-path
+classic	renderer	0x1d2662	0x15ff3f0	Claimed by local family	popup-path
+classic	renderer	0x1d26d8	0x15fead0	Cannot order mission without leader	popup-path
+classic	renderer	0x1d2762	0x15ff408	Click to recover (creates new mission)	popup-path
+classic	renderer	0x1d27bc	0x15feab0	Inaccessible mission location	popup-path
+classic	supplier	0x1d9ea7	0x15e3720	 	popup-path

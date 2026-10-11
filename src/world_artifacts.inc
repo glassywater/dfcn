@@ -4,7 +4,11 @@
 // and owns the hitbox. Physical source spans stay separate from the output.
 static bool world_artifact_status(std::string_view source) {
     source = trim_view(source);
+    // Native names can be empty, and a named underground layer skips its
+    // generic label. The complete status then consists only of the prefix;
+    // trimming removes its trailing space, but the same skin owns the record.
     return source.starts_with("Last held by ") || source.starts_with("Last in ") ||
+        source == "Last held by" || source == "Last in" ||
         source == "Last known to be traveling" || source == "Location unknown";
 }
 
@@ -262,6 +266,7 @@ std::optional<NativeTextCard> Overlay::capture_world_artifact_description_card(
         return std::nullopt;
     const auto settings = native_ui_settings();
     if (!settings) return std::nullopt;
+    const auto claim_draws = captured_native_drawn_text_rows();
     const auto &skin = native_texture_hover_rectangle(*gps_);
     const auto edge = [&](int x, int y, int column, int row) {
         return native_ui_skin_at(*gps_, x, y, skin[column][row], settings->classic);
@@ -328,14 +333,41 @@ std::optional<NativeTextCard> Overlay::capture_world_artifact_description_card(
                 row.foregrounds = std::move(colors);
             }
             if (!frame) continue;
+            for (size_t at = count; at < card->rows.size(); ++at) {
+                auto &row = card->rows[at];
+                const auto claim = world_artifact_claim_source(row, right, claim_draws);
+                if (!claim) continue;
+                row.complete_source = *claim;
+                const size_t length = std::min(claim->size(),
+                    static_cast<size_t>(gps_->dimx - row.x));
+                std::vector<int> colors;
+                bool drawn = true;
+                for (size_t i = 0; i < length; ++i) {
+                    bool top_layer = false;
+                    const auto *cell = cell_at(row.x + static_cast<int>(i), row.y, &top_layer);
+                    const int rgb = cell ? (cell[1] << 16) | (cell[2] << 8) | cell[3] : -1;
+                    if (!cell || cell[0] != static_cast<unsigned char>((*claim)[i]) ||
+                            ((*claim)[i] != ' ' && rgb != row.foregrounds.front()) ||
+                            !std::equal(cell + 4, cell + 7, gps_->uccolor[0])) {
+                        drawn = false;
+                        break;
+                    }
+                    colors.push_back(rgb);
+                }
+                if (!drawn) continue;
+                // Only these byte-proven glyphs may replace the right edge.
+                // The complete name remains separate from suppression bounds.
+                row.source = claim->substr(0, length);
+                row.foregrounds = std::move(colors);
+            }
             for (int y = top + 1; y < bottom && frame; ++y) {
                 if (edge(right, y, 2, 1)) continue;
                 const auto row = std::find_if(card->rows.begin(),
-                    card->rows.begin() + count, [&](const auto &text) {
+                    card->rows.end(), [&](const auto &text) {
                         return text.y == y && text.x <= right &&
                             text.x + static_cast<int>(text.source.size()) > right;
                     });
-                frame = row != card->rows.begin() + count;
+                frame = row != card->rows.end();
             }
             if (!frame) continue;
             // The native wrapper retains each separating space at the end

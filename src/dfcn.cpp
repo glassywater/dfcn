@@ -3613,6 +3613,7 @@ private:
     std::optional<std::string> translate_saved_site_name(const NativeSaveNameSource &source) const;
     std::optional<std::string> translate_legends_place(
         std::string_view source, bool english_field = false) const;
+    std::optional<std::string> translate_world_artifact_location(std::string_view source) const;
     std::vector<std::string> site_reference_search_aliases(std::string_view source) const;
     std::optional<std::string> translate_english_character_name(
         std::string_view source, std::string_view native_given = {},

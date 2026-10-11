@@ -1475,9 +1475,19 @@ World civilization office: {s} of {p}	{p}的{s}	hti
 # World-map artifact records: captions are complete typed fields. The prefix
 # is internal, not a global replacement of prose or generated names.
 World artifact: Last held by {n}	最后持有者：{n}	ht
+# The native figure formatter can supply no identity at all.
+World artifact: Last held by	最后持有者：	h
 World artifact: Last in {p}	最后所在地点：{p}	ht
+# The native site/region/layer formatter can supply no name at all.
+World artifact: Last in	最后所在地点：	h
 World artifact: Last known to be traveling	最后得知正在旅行中	h
 World artifact: Location unknown	下落不明	h
+# Native artifact hover ownership: government, historical figure, family.
+# The person branch draws its prefix and complete contextual HF on one row.
+World artifact claim: Claimed by your local government	你所在地区的政府宣称拥有	h
+World artifact claim: Claimed by local family	当地家族宣称拥有	h
+World artifact claim: Claimed by local {n}	当地的{n}宣称拥有	ht
+World artifact claim: Claimed by local	当地有人宣称拥有	h
 # Fortress Items ownership captions use a typed person, including nicknames,
 # compound surnames and epithets, before the heirloom relationship is rendered.
 Fortress item claim: {n}'s family heirloom	{n}的家族传家宝	ht

@@ -3,6 +3,32 @@
 // have only region names and an optional travel status; ocean records can be a single
 // heading, without any population/government/accessibility fields.
 // The live frame owns every row; no screenshot coordinates or saved names.
+static std::optional<std::string> world_artifact_claim_source(
+        const NativeTextCardRow &row, int right,
+        const std::vector<NativeDrawnTextRow> &draws) {
+    constexpr std::string_view prefix = "Claimed by local ";
+    if (right <= row.x + static_cast<int>(prefix.size()) ||
+            !row.source.starts_with(prefix)) return std::nullopt;
+    // PE 1d261b/1d2691 draw the prefix and contextual HF separately at the
+    // same cursor. The panel edge can cut their combined line without any
+    // native resize. Require the real adjacent draws and the whole viewport.
+    const bool prefix_drawn = std::any_of(draws.begin(), draws.end(), [&](const auto &draw) {
+        return draw.x == row.x && draw.y == row.y && draw.source == prefix;
+    });
+    if (!prefix_drawn) return std::nullopt;
+    const size_t width = static_cast<size_t>(right - row.x);
+    for (const auto &draw : draws) {
+        if (draw.x != row.x + static_cast<int>(prefix.size()) || draw.y != row.y)
+            continue;
+        const std::string displayed = std::string(prefix) + draw.source;
+        if (trim_view(std::string_view(displayed).substr(0, width)) !=
+                trim_view(std::string_view(row.source).substr(0, width))) continue;
+        return std::string(prefix) +
+            (draw.complete_source.empty() ? draw.source : draw.complete_source);
+    }
+    return std::nullopt;
+}
+
 static bool world_site_typed_heading(std::string_view source) {
     const std::string folded = lower(std::string(source));
     const size_t begin = folded.starts_with("the ") ? 4 : 0;
@@ -775,6 +801,8 @@ void Overlay::append_world_site_phrases(const NativeTextCard &card,
     // is ONE item document, not independently translatable location facts.
     const size_t description_end = action_control ? 0
         : append_world_artifact_description(card, rows, matches, only_y);
+    const auto claim_draws = description_end ? captured_native_drawn_text_rows()
+        : std::vector<NativeDrawnTextRow>{};
     bool facts = action_control || description_end != 0;
     for (size_t index = description_end; index < card.rows.size(); ++index) {
         const auto &row = card.rows[index];
@@ -877,6 +905,9 @@ void Overlay::append_world_site_phrases(const NativeTextCard &card,
                 complete = capture.complete;
                 break;
             }
+        if (description_end)
+            if (auto claim = world_artifact_claim_source(row,
+                    card.interior.x + card.interior.w, claim_draws)) complete = std::move(*claim);
         const std::string source = normalize_utterance(complete);
         // Own the whole native-language name, quoted English meaning and
         // optional species BEFORE prose/item/word matching. Clipping can
@@ -953,7 +984,13 @@ void Overlay::append_world_site_phrases(const NativeTextCard &card,
         // prose/item/name parsing can reinterpret the complete title as an
         // ownership phrase. Only the name capture reaches the name parser;
         // the type reuses the existing complete-term vocabulary.
-        if (action_control) {
+        if (description_end && source.starts_with("Claimed by ")) {
+            // This hover frame owns the artifact claim. Its personal branch
+            // appends a complete contextual historical figure after the
+            // prefix, including nickname, species and status. Keep it out of
+            // site/entity identity heuristics even when it has a quoted gloss.
+            target = translate_legends_text("World artifact claim: " + source, false, false);
+        } else if (action_control) {
             // An action/restriction is never a place, artifact or person.
             // Reviewed button-only terms use their own TSV namespace;
             // existing captions and full mission messages keep their terms.

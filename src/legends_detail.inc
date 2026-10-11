@@ -1579,12 +1579,25 @@ std::optional<std::string> Overlay::translate_legends_text(
                     continue;
                 }
                 std::vector<std::optional<std::string>> translated(captures.size());
+                const auto translate_place = [&](std::string_view value) {
+                    return rule.source == "World artifact: Last in {p}"
+                        ? translate_world_artifact_location(value)
+                        : translate_legends_place(value);
+                };
                 bool intact = true;
                 for (size_t i = 0; i < captures.size(); ++i) {
                     switch (rule.template_kinds[i]) {
                     case 'a': translated[i] = translate_legends_participant(captures[i],
                         link ? std::optional<bool>(person) : std::nullopt); break;
-                    case 'n': translated[i] = translate_legends_actor(captures[i]); break;
+                    case 'n':
+                        // Both native artifact producers own a complete HF
+                        // caption, including an empty caste and curse/status.
+                        // Reuse the shared typed actor and empty-caste grammar.
+                        translated[i] = rule.source == "World artifact: Last held by {n}" ||
+                                rule.source == "World artifact claim: Claimed by local {n}"
+                            ? translate_announcement_combat(captures[i], "$travel-actor")
+                            : translate_legends_actor(captures[i]);
+                        break;
                     case 'p':
                         if (journal_habitat_rule(rule)) {
                             translated[i] = translate_journal_habitat_places(captures[i]);
@@ -1604,7 +1617,7 @@ std::optional<std::string> Overlay::translate_legends_text(
                                 captures[i].resize(stop);
                             }
                         }
-                        translated[i] = translate_legends_place(captures[i]);
+                        translated[i] = translate_place(captures[i]);
                         // A final name capture can share gray with the next
                         // connective or punctuation. Stop at the longest
                         // complete name, then let the scoped grammar handle
@@ -1615,7 +1628,7 @@ std::optional<std::string> Overlay::translate_legends_text(
                             for (size_t stop = value.size(); stop-- > 1;) {
                                 if (value[stop] != ' ' && value[stop] != '.' &&
                                     value[stop] != ',' && value[stop] != ';') continue;
-                                const auto name = translate_legends_place(
+                                const auto name = translate_place(
                                     std::string_view(value).substr(0, stop));
                                 if (!name) continue;
                                 end -= value.size() - stop;

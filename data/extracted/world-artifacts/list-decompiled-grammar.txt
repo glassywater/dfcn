@@ -1,0 +1,198 @@
+World-map artifact list: native source grammar, Windows 53.16
+
+Source images are data/runtime/native-pe-images.json reference and classic.
+This document reconstructs the text-producing control flow from the two local
+PE images. list-native-*.asm contains complete source spans; list-branches.tsv,
+list-calls.tsv and list-switches.tsv retain instruction addresses, arguments,
+conditions, and decoded tables. Jump-table data is excluded from disassembly.
+
+ARTIFACT LIST OWNER
+Steam world renderer: 0x1401c17e0..0x1401d3abc.
+Steam artifact tab: 0x1401d1a1b..0x1401d22b5.
+Classic world renderer: 0x1401c1770..0x1401d3a4c.
+Classic artifact tab: 0x1401d19ab..0x1401d2245.
+The screen holds artifact pointers at +0x8410, parallel location-cache pointers
+at +0x8428, scroll at +0x8440, and hovered artifact at +0x8448. It renders each
+artifact as a three-row skin with two textual rows. Cache construction occurs
+only when the parallel pointer is null; hover construction is a different call
+(Steam 0x1401d9c30, Classic 0x1401d9bc0).
+
+TITLE ROW
+Steam 0x1401d1de2 calls 0x140b94400 with artifact.id and flags=0.
+Classic 0x1401d1d72 calls 0x140b91440 with the same arguments.
+The shared formatter resolves the artifact id, then formats artifact.name at
+record+0x8 through the English language-name formatter. If the resulting name
+is nonempty, use it. If empty, inspect item through vtable+0x0 (type), and
+vtable+0xe0 with flag 0x14 (written item). Type 0x59, type 0x57, or flag 0x14
+produces the inline literal "Untitled". Other empty names call the item identity
+formatter (Steam 0x140c65450) with include_quality=true. An unresolved artifact
+id produces "an unknown artifact". LPAGE:ARTIFACT/BOOK wrappers in the shared
+formatter are unreachable here because its caller passes flags=0.
+The ordinary item subgrammar is separately sourced in
+data/extracted/item-description-sources.tsv; it is not a list-specific literal.
+
+STATUS ROW: STRICT PRIORITY
+The following conditions are tested in order, not combined as independent text.
+
+1. cache+0x10 holder_hf != -1
+   Steam condition 0x1401d1e95, text 0x1401d1ea0, call 0x1401d1ee7.
+   "Last held by " + historical_figure_name(holder_hf).
+   Shared Steam formatter 0x140b92f10; Classic 0x140b8ff50.
+   A freshly initialized context is passed, fifth argument=1, sixth argument=0.
+   Named holder: when the descriptor is enabled, print "the " + optional
+   "zombie " + optional "ghostly " + caste/creature singular + optional raw
+   transformed-form label + " " before the English name. When the descriptor
+   is disabled, print only the English name. The sixth argument is 0, so the
+   sixth=2 suffix " the {creature}" is not enabled for artifact holders.
+   Unnamed holder: print "a " + optional zombie/ghostly + creature/caste
+   descriptor + optional transformed-form label. Unresolved figure id yields
+   "an unknown creature". A named holder can produce an empty suffix if the
+   descriptor is disabled and the English name is empty. For example race=-1
+   disables descriptor at 0x140b931fa..0x140b93207; name.has_name=true reaches
+   0x140b934ec..0x140b93504; sixth=0 omits the optional suffix after that call.
+   Thus the native list can emit bare "Last held by ".
+   The fresh context constructor (Steam 0x140072080, Classic 0x140072010)
+   installs current_hf=-1. Therefore the unnamed actor's alternate "the "
+   branch is unreachable for a resolved nonnegative figure id in this list.
+   Unnamed creature formatter (Steam 0x140aa3bd0..0x140aa3d93; Classic
+   0x140aa0c50..0x140aa0e13) receives plural=false. Invalid/out-of-range caste
+   falls back to valid creature.name[0]; invalid/out-of-range race contributes
+   no creature text, with no unknown placeholder. The named descriptor uses
+   the same singular raw selection inline at 0x140b933a6..0x140b93472.
+   If creature text is empty, the unnamed suffix can be "a", "a zombie",
+   "a ghostly", or "a zombie ghostly" after trimming. If a named holder's
+   descriptor remains enabled (e.g. nonnegative out-of-range race), and name
+   is also empty, its suffix can be "the", "the zombie", "the ghostly", or
+   "the zombie ghostly". The zombie/ghostly branches are independent, with
+   no native mutual-exclusion branch. Each can also contain the raw transformed
+   creature label at unit+0x90 when unit+0x88 is set; this flag suppresses
+   ghostly, so transformed suffixes have no ghostly component. If that raw
+   label is empty, the same closed suffixes above remain possible.
+   Conversation-only interrogator/subject and LPAGE
+   paths visible in the shared function are not enabled by this caller.
+
+2. cache+0x8 storage_site != -1
+   Steam condition 0x1401d1f91, text 0x1401d1f9c, call 0x1401d1fc5.
+   "Last in " + site_name(storage_site), flags=0.
+   Shared Steam formatter 0x140b93930; Classic 0x140b90970.
+   Resolve world_site, format its name at +0x0 via English language-name
+   formatter; unresolved id yields "an unknown site". An existing site whose
+   name.has_name=false yields empty name, as does a named site whose first
+   name, nickname and all valid word forms contribute no text. The shared
+   site helper appends that empty result without a fallback, so both produce
+   bare "Last in ".
+   storage_structure_local (cache+0xc) is not printed in this list status.
+
+3. cache+0x14 loss_region != -1
+   Steam condition 0x1401d2075, text 0x1401d2080, call 0x1401d20a9.
+   "Last in " + surface_region_name(loss_region), flags=0.
+   Shared Steam formatter 0x140b94a40; Classic 0x140b91a80.
+   Resolve world_region, format its name at +0x0 via English language-name
+   formatter; unresolved id yields "an unknown region". Existing region with
+   name.has_name=false or no text-producing name fields yields an empty name
+   without fallback, so these also produce bare "Last in ".
+
+4. cache+0x18 last_layer != -1
+   Steam condition 0x1401d2159, text 0x1401d2164, call 0x1401d218d.
+   "Last in " + underground_region_name(last_layer), flags=0.
+   Shared Steam formatter 0x140b94940; Classic 0x140b91980.
+   Missing region pointer: "an unknown underground region".
+   Existing region with name.has_name at region+0x7a != 0: empty suffix, because
+   this native helper skips its generic label and contains no named formatter.
+   Unnamed region: type at region+0x0 == 0 -> "the depths of the world";
+   type == 1 -> "the magma sea"; type == 2 -> "the Underworld"; other -> empty.
+   The native empty result is therefore also a real branch: bare "Last in ".
+
+5. all above fields == -1
+   Steam text 0x1401d223a: "Location unknown".
+   Classic equivalent text 0x1401d21ca.
+
+Title clipping and each status clipping happen only after the complete field is
+constructed. Titles resize to available width minus 3; status fields resize to
+width minus 4; sufficiently wide clipped fields have their last three bytes
+replaced by '.'. This is a display branch, not a distinct source name.
+The source field passed to the native draw call remains a single title/status;
+do not identify partial English words as separately owned list columns.
+
+LOCATION CACHE DATAFLOW
+Steam seed 0x1409de8e0; Classic seed 0x1409dc110.
+artifact+0x108 storage_site -> cache+0x8.
+artifact+0x10c storage_structure_local -> cache+0xc.
+artifact+0x110 loss_region -> cache+0x14.
+artifact+0x114 last_layer -> cache+0x18.
+artifact+0x118 holder_hf -> cache+0x10.
+artifact+0x11c year -> cache+0x1c.
+artifact+0x120 season_tick -> cache+0x20.
+cache+0x28 is invalidated to zero by every accepted change.
+
+Steam rumor update 0x1409de930..0x1409dedc9 (code), jump data to 0x1409dee30.
+Classic rumor update 0x1409dc160..0x1409dc5f9 (code), jump data to 0x1409dc660.
+The seed is followed by local entity rumors at global ui+0x1250.
+Rumors flagged at +0x20 bit 0 are skipped; future rumor year/tick is skipped;
+older observation year/tick than cache year/tick is skipped. Artifact id must
+match. The dispatch range is rumor.type 2..33; other values are skipped.
+
+Type 2 incident: resolve incident by id; require incident.type=7 and matching
+artifact id. Its location state 0 Held, 2 Gained, 4 Denied installs hf.hfid as
+holder and clears site/region/layer. State 3 Given installs second_hf.hfid as
+holder and clears site/region/layer. State 1 Dropped installs site_id/site_bld,
+subregion/layer, then clears holder. State 5 Destroyed clears site/region/layer
+and holder. Out-of-range incident states update only observation timestamp.
+Type 25 artifact_in_site: sets site and structure, clears region/layer/holder.
+Type 26 artifact_in_subregion: sets region, clears site/structure/layer/holder.
+Type 27 artifact_in_feature_layer: sets layer, clears site/structure/region/holder.
+Type 28 artifact_in_inventory: sets holder, clears site/structure/region/layer.
+Type 29 artifact_not_in_site: only accepts matching current site, and matching
+structure when rumor structure != -1; clears site/structure only.
+Type 30 artifact_not_in_subregion: only accepts matching region; clears it only.
+Type 31 artifact_not_in_feature_layer: only accepts matching layer; clears it only.
+Type 32 artifact_not_in_inventory: only accepts matching holder; clears it only.
+Type 33 artifact_was_destroyed: clears site/structure/region/layer/holder.
+Types 3..24 and types outside 2..33: no cache update or output.
+All accepted cases save observation year/tick and invalidate cache+0x28.
+None of these cases directly prints extra list text; they feed the five-way
+priority grammar above.
+
+GENERATED NAMES AND WORD FORMS
+Steam English formatter 0x140a946e0..0x140a94ea2.
+Classic English formatter 0x140a91760..0x140a91f22.
+Site and surface-region calls pass capitalize=true, short=false.
+The language_name contains first_name+0x0, nickname+0x20, words+0x40 (7 ids),
+parts_of_speech+0x5c (7 int16), and has_name+0x72. has_name=false produces no
+name. Nickname output depends on the native nickname setting; quotes are '`'
+and '\''. The complete grammar then considers these slots in native order:
+words[0]+words[1] front/rear compound; words[2] first adjective;
+words[3] second adjective; words[4] hyphen compound, followed by '-';
+words[5] noun; words[6] Of phrase. Slots whose id is -1 are absent. Optional
+first name/nickname and prior components are separated by spaces. A The/the
+prefix is inserted before the first present adjective/hyphen/noun component;
+Of/of is inserted for the final Of phrase. Each slot uses its own POS value;
+the noun is not constrained to singular or inferred from its English spelling.
+
+Steam word-form leaf 0x140d2cb50..0x140d2cc1c (no unwind entry).
+Classic word-form leaf 0x140d29b90..0x140d29c5c (no unwind entry).
+Invalid word id or POS outside 0..8 contributes no text. The dispatch table
+selects word.forms; appended text is the entire form, which can contain spaces.
+POS 0 Noun -> word+0x20; 1 NounPlural -> +0x40; 2 Adjective -> +0x60;
+3 Prefix -> +0x80; 4 Verb -> +0xa0; 5 Verb3rdPerson -> +0xc0;
+6 VerbPast -> +0xe0; 7 VerbPassive -> +0x100; 8 VerbGerund -> +0x120.
+The exact state/POS targets for both PEs are in list-switches.tsv.
+
+"The Amazing Fingers" is a generated name in the native site/region role of
+the Last in field. The title-shaped The + adjective + plural noun grammar is
+native; it is not a squad.alias field. Static PE text cannot reveal the saved
+world's particular site-vs-region selector or word ids. Runtime name lexicons
+already contain amazing and finger/fingers; translate this generated family
+through its typed name grammar rather than add the screenshot's whole name.
+Dynamic word strings and custom/modded first names are world raw/save data,
+not a finite set of PE literals. Unsupported dynamic strings remain bounded
+to the same native field; they do not change the ownership or source type.
+
+SIBLING MISSING-CITIZENS LIST
+Steam 0x1401d1062..0x1401d1702; Classic 0x1401d0ff2..0x1401d1692.
+This sibling reuses the two-line skin, but the title is historical_figure_name
+with fifth=1/sixth=2. No info object or whereabouts pointer yields title only.
+Otherwise test whereabouts site(+0x4), surface region(+0x8), underground
+layer(+0xc), then army_id(+0x10). The first three produce the same "Last in "
+location union. If all absent and army_id!=-1, print "Last known to be traveling";
+otherwise print "Location unknown". Traveling is not an artifact-list branch.

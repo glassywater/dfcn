@@ -1,0 +1,166 @@
+World map ARTIFACTS information popup — native source grammar
+
+Scope
+  This is offline source extraction from the two configured Windows PE images.
+  It is not a test, generated translation, or observation of the running game.
+  popup-native-images.json records the actual files and image identities.
+  Addresses below are Steam RVAs; Classic view code is Steam-0x70 and the
+  shared item/HF suppliers are Steam-0x2fc0. ASM files retain native VAs.
+  popup-branches/calls/literals.tsv are instruction evidence, not a claim that
+  every branch of a shared supplier is reachable in this popup.
+
+Entry and source ownership
+  viewscreen_worldst::render: 1c17e0..1d3abc.
+  The ARTIFACTS list hover path 1d1bd0..1d1cce fetches an artifact record and
+  its parallel cached rumor at worldscreen+8428. When last_hover_artifact+8448
+  changes, 1d1cad calls 1d9c30(worldscreen, artifact, artifact_rumor).
+  The click/feed path 1d7b17..1d7dd4 invokes the same supplier at 1d7c3a;
+  1d7c63 then checks location reachability and the same two leader pointers.
+  This input path is not a second text renderer and contains no alternate
+  ownership/footer captions. On success it creates a recover-artifact mission.
+  The render path gates the popup on a real hovered artifact at 1d2336.
+
+Producer 1d9c30..1da27a
+  artifact_description.text+8450 is cleared.
+  artifact_eac+8468, artifact_rpa_holder+8470 and artifact_fac_holder+8478
+  are reset, then set from actual local claim/holder records matching
+  artifact.id, with the relevant claim's remote/site owner field == -1.
+  +8468 is found through local entity claims; +8470 through local HF remote
+  property holdings; +8478 through their associated local family holdings.
+  All three can be present in the source; the renderer decides precedence.
+
+  1d9dad..1d9dc9:
+    complete_item_description(artifact.item /* +90 */, dst,
+                              true /* R8B */, true /* R9B */,
+                              false /* stack arg5 */, 0 /* stack arg6 */);
+  The called root is c75000..c796aa (Classic c72040..c766ea).
+  This call performs no item-type filter. Its input is the persisted item
+  referenced by this artifact; it does not claim that every concrete item
+  class is an artifact type created by ordinary vanilla world generation.
+  The producer wraps the complete document at 53 source bytes, preserving
+  splitting spaces, into worldscreen.artifact_description.text. It retains
+  every wrapped row, including rows beyond the first eight shown by render.
+  The remaining producer resolves artifact rumor site/subregion/HF location
+  into worldscreen+198/+19c for mission reachability. It generates no further
+  visible description, ownership, or action text.
+
+Body — complete document, not a screenshot sentence
+  Root c75000 supplies the opening selected by item type/material/quantity:
+    This is ... / These are ... / This is a stack of ... /
+    This is a bundle of ... / These are N bundles of ...
+  c7540b -> c65450 formats the item identity/name, materials, quantity and
+  designation. The item artifact flag itself controls artifact craftsmanship
+  versus ordinary quality/maker prose; the popup call does not rewrite it.
+  c755f0..c7569c creates:
+    All {race RAW CRAFTSMAN singular}ship is of the highest quality.
+  The occupation comes from item maker race via +590, with craftsman fallback;
+  it is not limited to the single English word craftsmanship.
+
+  Reuse the complete native item-description source graph in
+  ../item-description-sources.tsv and ../item-description-sources.md.
+  popup-text-productions.tsv binds every recorded shared body production to
+  this concrete caller, then applies its boolean/flag/mode constraints.
+  The graph contains type/material/RAW-title dispatch, all improvement kinds,
+  dye state and color/quality/list combinations, instrument parts, chain/rope/
+  rollers/handle, hanging rings, spikes, images and historical art subjects,
+  sewn images, dice face/series/range/upward-face content, writing and pages,
+  cloth/thread/leather base coloration, coins and rulers/years/faces, dye
+  output, stored slab inscriptions, wear, every contaminant and material
+  state, source kind10 item powers, tool DESCRIPTION and stored instrument
+  DESCRIPTION. Their dynamic names, histories, materials, raw definitions and
+  future authored mod text cannot be enumerated as finite complete sentences.
+
+  Keep the existing external graphs linked by that catalog: statue-art,
+  statue-history, memorial-inscription, item-info-title/map-hover/corpse-title,
+  item RAW names, and native stored instrument/power RAW/Lua writers.
+  Those sources remain the producer boundary for artistic/history/writing
+  tails; nearby strings or a list of example saves is not that grammar.
+
+  Call-specific exclusions:
+    R9B=true chooses plain source spaces rather than [R]/[B] paragraph markup.
+    flags=0 disables item/HF LPAGE and numeric-ID markup sent through helpers.
+    The fifth argument is supplied as false; the root body does not consume
+    that stack parameter as a separate text selector in this image.
+    R8B=true is propagated to the existing art formatter; it does not disable
+    art or restrict the document to the opening and improvement sentence.
+    c77dfd, c7809e and c78e3f gate unread/literacy messages on game mode1 and
+    the active adventurer. The fortress world-map context takes the other
+    edge. Shared literals about writing one has not read, being unable to
+    read, and adventure read side effects are therefore not popup productions.
+    Writing content, written pages, blank pages and slab inscriptions remain
+    real body productions. The root's embedded c79660..c796aa selector data
+    is represented as bytes in ASM and decoded by the existing catalog; it
+    is not disassembled as additional instructions or visible text.
+
+Renderer 1d2336..1d286b
+  It draws a closed HOVER_RECTANGLE, then copies artifact_description.text
+  and emits at most the first eight rows at 1d24e0..1d2547. The remaining
+  full document is still present in its source vector. Current translation
+  reads that full cache through native_world_artifact_description_lines().
+
+  Ownership has one strict mutually exclusive chain:
+    if artifact_eac(+8468):
+      Claimed by your local government
+    else if artifact_rpa_holder(+8470):
+      Claimed by local {historical_figure_display}
+    else if artifact_fac_holder(+8478):
+      Claimed by local family
+    else:
+      no ownership line
+
+  Person branch 1d25f3..1d2696:
+    draw("Claimed by local ", justification=3, width=0); // return 1d2620
+    context = default_HF_context(); // 72080, flags=0, +8/+10=null,
+                                   // speaker/observer IDs=-1
+    historical_figure_display(holder.HF_id /* holder+e0 */, context, 1, 1);
+    draw(full_HF_display, justification=0, width=0);      // return 1d2696
+  The supplier b92f10..b93927 resolves the HF ID and uses the generated name
+  at HF+38 through a946e0. The second word mode1 suppresses the ordinary
+  race/caste postfix for a named HF (b931f6..b93207). An unnamed HF follows
+  its real a/the creature description with zombie/ghostly and transformation
+  modifiers when the source state calls for them. Null HF lookup produces
+  "an unknown creature" at b938d6, yielding the complete ownership sentence
+  "Claimed by local an unknown creature".
+  The default context excludes the shared supplier's interrogator, subject,
+  Nameless, unidentified-creature, speaker pronoun and LPAGE branches. They
+  are preserved in supplier ASM as source evidence, not advertised as popup
+  text. Names, creature/caste RAW and transformations are dynamic leaves.
+
+  The prefix/HF draws have no resize and no explicit width clipping.
+  R8=3 is justify_cont, not a width. They advance the same native cursor on
+  the same row, so capture_panel_text_card reads a combined row despite
+  separately issued addst calls. A long name can extend beyond the popup's
+  right frame while still inside native clipx. That case has no resize-based
+  clipped caption. The implemented popup reader now recovers only from the
+  two actual NativeDrawnTextRow sources: exact prefix x/y/source, HF at the
+  same y and x=prefix.x+17, and all visible HF bytes agreeing with the full
+  drawn source clipped to the proven card edge. The whole name then passes
+  through the scoped World artifact claim grammar. This does not infer a
+  source from a single word or borrow another panel's caption.
+  When the same native name overwrites the popup's right edge, its visible
+  physical glyphs are admitted only after every byte, foreground and background
+  agrees with that complete draw. They own suppression independently of the
+  full name; surviving corners, footer sides and all other edges stay required.
+
+  Mission footer has exactly three outcomes:
+    if !leader(+1c0) && !leader(+1b8):
+      Cannot order mission without leader
+    else if mission_location(+198,+19c) >= 0:
+      Click to recover (creates new mission)
+    else:
+      Inaccessible mission location
+  Ownership selection does not choose or suppress a footer branch.
+  Each footer exits to 1c6068, so adjacent request-workers/rescue/alter-mission
+  strings in the large world render function are not alternative captions of
+  this artifact popup. There is no synthetic Unknown/none ownership caption.
+
+Translation responsibility
+  Body stays one complete item-description document and reuses the existing
+  item description, art/history/writing, material and instrument translators.
+  Ownership/mission footer belongs to scoped World artifact grammar.
+  The newly identified dynamic local-person branch and its long-name source
+  boundary are handled there; stock government/family/footer strings already
+  have translations. Unknown HF fallback is a real native supplier branch.
+  Runtime custom squad.alias is not a leaf of this popup source graph.
+  No desktop interaction, new tests, simulated output, or game display
+  observation was performed by this extraction task.

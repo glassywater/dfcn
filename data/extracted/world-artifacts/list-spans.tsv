@@ -1,0 +1,27 @@
+edition	function	begin_va	end_exclusive_va	owner_va	image
+steam	artifact_list	0x1401d1a1b	0x1401d22b5	0x1401c17e0	D:/program/steam/steamapps/common/Dwarf Fortress/Dwarf Fortress.exe
+steam	missing_citizens_list	0x1401d1062	0x1401d1702	0x1401c17e0	D:/program/steam/steamapps/common/Dwarf Fortress/Dwarf Fortress.exe
+steam	artifact_location_seed	0x1409de8e0	0x1409de930	0x1409de8e0	D:/program/steam/steamapps/common/Dwarf Fortress/Dwarf Fortress.exe
+steam	artifact_location_rumors	0x1409de930	0x1409dedc9	0x1409de930	D:/program/steam/steamapps/common/Dwarf Fortress/Dwarf Fortress.exe
+steam	artifact_title	0x140b94400	0x140b94710	0x140b94400	D:/program/steam/steamapps/common/Dwarf Fortress/Dwarf Fortress.exe
+steam	historical_figure_name	0x140b92f10	0x140b93927	0x140b92f10	D:/program/steam/steamapps/common/Dwarf Fortress/Dwarf Fortress.exe
+steam	site_name	0x140b93930	0x140b93a8a	0x140b93930	D:/program/steam/steamapps/common/Dwarf Fortress/Dwarf Fortress.exe
+steam	surface_region_name	0x140b94a40	0x140b94b97	0x140b94a40	D:/program/steam/steamapps/common/Dwarf Fortress/Dwarf Fortress.exe
+steam	underground_region_name	0x140b94940	0x140b94a36	0x140b94940	D:/program/steam/steamapps/common/Dwarf Fortress/Dwarf Fortress.exe
+steam	english_generated_name	0x140a946e0	0x140a94ea2	0x140a946e0	D:/program/steam/steamapps/common/Dwarf Fortress/Dwarf Fortress.exe
+classic	artifact_list	0x1401d19ab	0x1401d2245	0x1401c1770	C:/Users/WIN11/Downloads/df_53_16_win/Dwarf Fortress.exe
+classic	missing_citizens_list	0x1401d0ff2	0x1401d1692	0x1401c1770	C:/Users/WIN11/Downloads/df_53_16_win/Dwarf Fortress.exe
+classic	artifact_location_seed	0x1409dc110	0x1409dc160	0x1409dc110	C:/Users/WIN11/Downloads/df_53_16_win/Dwarf Fortress.exe
+classic	artifact_location_rumors	0x1409dc160	0x1409dc5f9	0x1409dc160	C:/Users/WIN11/Downloads/df_53_16_win/Dwarf Fortress.exe
+classic	artifact_title	0x140b91440	0x140b91750	0x140b91440	C:/Users/WIN11/Downloads/df_53_16_win/Dwarf Fortress.exe
+classic	historical_figure_name	0x140b8ff50	0x140b90967	0x140b8ff50	C:/Users/WIN11/Downloads/df_53_16_win/Dwarf Fortress.exe
+classic	site_name	0x140b90970	0x140b90aca	0x140b90970	C:/Users/WIN11/Downloads/df_53_16_win/Dwarf Fortress.exe
+classic	surface_region_name	0x140b91a80	0x140b91bd7	0x140b91a80	C:/Users/WIN11/Downloads/df_53_16_win/Dwarf Fortress.exe
+classic	underground_region_name	0x140b91980	0x140b91a76	0x140b91980	C:/Users/WIN11/Downloads/df_53_16_win/Dwarf Fortress.exe
+classic	english_generated_name	0x140a91760	0x140a91f22	0x140a91760	C:/Users/WIN11/Downloads/df_53_16_win/Dwarf Fortress.exe
+steam	word_inflection	0x140d2cb50	0x140d2cc1c	0x140d2cb50	D:/program/steam/steamapps/common/Dwarf Fortress/Dwarf Fortress.exe
+classic	word_inflection	0x140d29b90	0x140d29c5c	0x140d29b90	C:/Users/WIN11/Downloads/df_53_16_win/Dwarf Fortress.exe
+steam	holder_default_context	0x140072080	0x14007216d	0x140072080	D:/program/steam/steamapps/common/Dwarf Fortress/Dwarf Fortress.exe
+steam	holder_unnamed_creature	0x140aa3bd0	0x140aa3d93	0x140aa3bd0	D:/program/steam/steamapps/common/Dwarf Fortress/Dwarf Fortress.exe
+classic	holder_default_context	0x140072010	0x1400720fd	0x140072010	C:/Users/WIN11/Downloads/df_53_16_win/Dwarf Fortress.exe
+classic	holder_unnamed_creature	0x140aa0c50	0x140aa0e13	0x140aa0c50	C:/Users/WIN11/Downloads/df_53_16_win/Dwarf Fortress.exe
