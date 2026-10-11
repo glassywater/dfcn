@@ -89,6 +89,7 @@ static bool native_history_war_selection(uintptr_t collection, int32_t &category
 #include "native_stocks_layer_render.inc"
 #include "native_reports_layer_render.inc"
 #include "native_pause_layer_render.inc"
+#include "native_worldgen_layer_render.inc"
 #include "native_map_layer_render.inc"
 #include "native_dfhack_render_layers.inc"
 #include "native_dfhack_capture_hooks.inc"
@@ -155,6 +156,7 @@ static bool install_sdl_hooks() {
         {"Native Stocks layer", install_native_stocks_layer_hook},
         {"Native announcements and report tabs layer", install_native_reports_layer_hook},
         {"Native Escape menu layer", install_native_pause_layer_hook},
+        {"Native world generation layer", install_native_worldgen_layer_hook},
         {"Native map layer", install_native_map_layer_hook},
     };
     for (const auto &[label, install] : stages) {
@@ -185,6 +187,7 @@ static bool install_sdl_hooks() {
 static void uninstall_sdl_hooks() {
     [[maybe_unused]] NativePatchMappingScope mapping_scope;
     uninstall_native_map_layer_hook();
+    uninstall_native_worldgen_layer_hook();
     uninstall_native_pause_layer_hook();
     uninstall_native_reports_layer_hook();
     uninstall_native_stocks_layer_hook();
@@ -256,6 +259,7 @@ static bool native_hooks_detached() {
         !native_stocks_layer_hook_active() &&
         !native_reports_layer_hook_active() &&
         !native_pause_layer_hook_active() &&
+        !native_worldgen_layer_hook_active() &&
         !native_dfhack_console_hook_active() &&
         !native_dfhack_lua_output_hook_active() &&
         !native_dfhack_sitemap_hook_active() &&

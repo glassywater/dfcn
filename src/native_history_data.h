@@ -276,6 +276,8 @@ struct NativeHistoryToken {
 
 #include "native_history_page_data.h"
 
+struct WorldgenHistoryEventMemory;
+
 struct NativeHistoryDocument {
     uintptr_t owner = 0;
     uint64_t sequence = 0;
@@ -283,6 +285,10 @@ struct NativeHistoryDocument {
     std::optional<NativeHistoryPageData> page;
     std::string native_source;
     std::vector<NativeHistoryToken> tokens;
+    // Rendering data belongs to this immutable captured event. Layout-only
+    // clones share it; a new producer record receives its own memory entry.
+    // The definition lives in the overlay, outside the native capture ABI.
+    mutable std::shared_ptr<WorldgenHistoryEventMemory> worldgen_memory;
 };
 
 struct NativeHistoryDraw {

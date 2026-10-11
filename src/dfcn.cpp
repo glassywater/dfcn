@@ -2273,6 +2273,11 @@ static thread_local const graphicst *g_native_stocks_write_graphics = nullptr;
 static thread_local const graphicst *g_native_reports_write_graphics = nullptr;
 static thread_local const graphicst *g_native_notification_write_graphics = nullptr;
 static thread_local const graphicst *g_native_pause_write_graphics = nullptr;
+static thread_local const graphicst *g_native_worldgen_write_graphics = nullptr;
+static SDL_Rect g_native_worldgen_panel{};
+static bool native_worldgen_main_view(const graphicst *) noexcept;
+static bool native_worldgen_output_active(const graphicst *) noexcept;
+static bool native_worldgen_consume_frame_submission() noexcept;
 static bool native_notification_write_active(const graphicst *gps) noexcept {
     return gps && (gps == g_native_notification_write_graphics ||
         gps == g_native_reports_write_graphics);
@@ -2286,7 +2291,8 @@ static bool native_reports_background_view(const graphicst *) noexcept;
 static bool native_reports_background_cell_hidden(const graphicst *, int, int) noexcept;
 static bool native_reports_background_copy_hidden(SDL_Renderer *, const SDL_Rect *) noexcept;
 static bool native_private_ui_write_active(const graphicst *gps) noexcept {
-    return gps && (gps == g_native_help_write_graphics || native_dfhack_layer_write_active(gps));
+    return gps && (gps == g_native_help_write_graphics ||
+        gps == g_native_worldgen_write_graphics || native_dfhack_layer_write_active(gps));
 }
 #include "native_capture_mask.inc"
 
@@ -3389,6 +3395,7 @@ public:
     void render_native_tooltip_layer(SDL_Renderer *renderer);
     void render_native_notification_layer(SDL_Renderer *renderer);
     void render_native_pause_layer(SDL_Renderer *renderer);
+    void render_native_worldgen_layer(SDL_Renderer *renderer);
     void render_native_reports_layer(SDL_Renderer *renderer);
     void render_native_announcement_layer(SDL_Renderer *renderer, bool reports);
     void render_native_info_layer(SDL_Renderer *renderer);
@@ -3706,6 +3713,8 @@ private:
         std::string_view source, std::string_view native_given = {},
         std::string_view native_given_target = {}) const;
     std::optional<std::vector<LegendsTextPiece>> translate_history_event(
+        const NativeHistoryDocument &document, bool use_translation_cache = true) const;
+    const WorldgenHistoryEventMemory *worldgen_cached_history_event(
         const NativeHistoryDocument &document) const;
     NativeHistoryViewport capture_history_viewport(
         const std::vector<std::string> &context, int left, int right,
@@ -4895,6 +4904,7 @@ private:
     void load_untranslated_index();
     void destroy_textures();
     void reset_render_state();
+    void reset_worldgen_event_cache();
     bool apply_requested_reload();
     void prepare_frame();
     bool prepare_immediate_row(bool top_layer, int y);
@@ -4993,6 +5003,7 @@ private:
                                     const unsigned char *screen_override = nullptr) const;
     std::vector<Match> find_native_matches(int only_y,
         const unsigned char *screen_override) const;
+    std::vector<Match> find_native_worldgen_matches() const;
     std::vector<Match> find_dfhack_matches(int only_y) const;
     void normalize_dfhack_layer_matches(std::vector<Match> &matches) const;
     void start_dfhack_translation_worker();
@@ -5089,6 +5100,8 @@ private:
         bool character_name_gloss = false,
         ProceduralNameHead name_head = {},
         ProceduralFragmentContext context = ProceduralFragmentContext::general_text) const;
+    std::optional<std::string> translate_worldgen_creation(
+        const std::string &source) const;
     std::optional<std::string> translate_adventure_origin_source(
         std::string_view source) const;
     std::optional<std::string> translate_adventure_background_source(
@@ -7140,6 +7153,7 @@ void Overlay::destroy_textures() {
 }
 
 void Overlay::reset_render_state() {
+    reset_worldgen_event_cache();
     destroy_textures();
     frame_prepared_ = false;
     prepared_matches_.clear();
@@ -7344,6 +7358,7 @@ void Overlay::shutdown() {
 
 bool Overlay::apply_requested_reload() {
     if (!reload_requested_.exchange(false)) return true;
+    reset_worldgen_event_cache();
     log_line("INFO", "Reloading configuration and translations");
     load_config();
     load_untranslated_index();
@@ -9318,6 +9333,19 @@ void Overlay::append_limited_skill_matches(std::vector<std::string> &rows,
 #include "native_unit_identity_translation.inc"
 #include "native_adventure_charge_translation.inc"
 
+std::optional<std::string> Overlay::translate_worldgen_creation(
+        const std::string &source) const {
+    if (!source.starts_with("Creating ")) return std::nullopt;
+    if (source == "Creating the world") return exact_literal_translation(source);
+    // This complete native field owns a world identity, including its optional
+    // rejection suffix. Enter the shared name renderer in that typed mode:
+    // the suffix must not make the title an equipment/profession candidate.
+    return memoize_identity_translation('W', source, [&]() {
+        return translate_procedural_fragment(source, false, false, {},
+            ProceduralFragmentContext::non_entity_name);
+    });
+}
+
 std::optional<std::string> Overlay::translate_procedural_fragment(
     const std::string &screen_text, bool phonetic_only,
     bool character_name_gloss, ProceduralNameHead name_head,
@@ -9329,6 +9357,10 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
     // graphical logo. It is not a native-language name: the single-token
     // phonetic fallback below would turn it into a fictitious Chinese name.
     if (trim_view(screen_text) == "DFHack") return std::nullopt;
+
+    if (!phonetic_only && context == ProceduralFragmentContext::general_text &&
+            screen_text.starts_with("Creating "))
+        return translate_worldgen_creation(screen_text);
 
     // Typed identities and native-name fields already establish the grammar.
     // In particular, a newly visible figure must not first enumerate every
@@ -15121,6 +15153,7 @@ static std::string normalize_art_utterance(std::string_view source);
 #include "world_ages.inc"
 #include "legends_detail.inc"
 #include "history_events.inc"
+#include "worldgen_event_cache.inc"
 #include "legends_books.inc"
 #include "legends_search.inc"
 #include "symbol_description.inc"
@@ -16127,6 +16160,7 @@ std::vector<Match> Overlay::resolve_native_knowledge_matches(
 #include "native_notification_layers.inc"
 #include "native_reports_layers.inc"
 #include "native_pause_layers.inc"
+#include "native_worldgen_layers.inc"
 
 struct NativeKeybindingScope {
     SDL_Rect table{};
@@ -16647,6 +16681,7 @@ static void native_ui_paint_grid(NativeUiLayerStorage &layer, SDL_Renderer *rend
 #include "native_tooltip_layer_translation.inc"
 #include "native_notification_layer_translation.inc"
 #include "native_pause_layer_translation.inc"
+#include "worldgen_layer_matching.inc"
 
 static void native_dfhack_redraw_background(SDL_Renderer *renderer,
     const SDL_Rect &cells);
@@ -16722,6 +16757,11 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
         only_y >= gps_->dimy) {
         return result;
     }
+    // This native view owns its captions and event viewport from the first
+    // frame; its private renderer never enters the shared screen matcher.
+#ifdef _WIN32
+    if (native_history_worldgen_page()) return result;
+#endif
     // This native component already owns the management pages. The main
     // grid contains only the remaining HUD/background; do not rediscover
     // those pages through the full-screen semantic pipeline a second time.
@@ -17896,7 +17936,9 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
 
     // The chronicle shares Legends grammar and the bounded paragraph fitter,
     // but has no clickable links and stays inside its own worldgen panel.
+#ifndef _WIN32
 #include "worldgen_chronicle.inc"
+#endif
 
     // Journal cards share complete event grammar and measured paragraph layout.
 #include "adventure_journal.inc"
@@ -33172,6 +33214,17 @@ void Overlay::prepare_frame() {
     suppress_base_.clear();
     suppress_top_.clear();
     captured_embark_item_suppress_.clear();
+    // The native world-generation producer owns its private output. Its
+    // captions and event records are prepared by that layer, never by the
+    // main page's grid discovery or recovery passes.
+    if (native_worldgen_main_view(gps_)
+#ifdef _WIN32
+            || native_history_worldgen_page()
+#endif
+            ) {
+        frame_prepared_ = true;
+        return;
+    }
     if (config_.enabled && face_ && !rules_.empty() && gps_ && gps_->screen &&
         gps_->dimx > 0 && gps_->dimx <= 1000 && gps_->dimy > 0 && gps_->dimy <= 1000) {
         prepared_matches_ = find_matches();
@@ -40442,6 +40495,12 @@ int Overlay::intercept_glyph_copy(SDL_Renderer *renderer, SDL_Texture *texture,
     TranslationStateScope translation_scope;
     RenderTimingScope glyph_timing(render_timings_, config_.trace_render_timing, RenderTimingStage::Glyph);
     if (!real_copy || !dest) return real_copy ? real_copy(renderer, texture, source, dest) : -1;
+    if (native_worldgen_main_view(gps_)
+#ifdef _WIN32
+            || native_history_worldgen_page()
+#endif
+            )
+        return real_copy(renderer, texture, source, dest);
     if (!config_.enabled || !gps_ || gps_->tile_pixel_x <= 0 || gps_->tile_pixel_y <= 0 ||
         dest->w != gps_->tile_pixel_x || dest->h != gps_->tile_pixel_y) {
         return real_copy(renderer, texture, source, dest);
@@ -42678,6 +42737,23 @@ SDL_Rect Overlay::native_paragraph_draw_region(const std::vector<Match> &rows) c
 }
 void Overlay::render(SDL_Renderer *renderer) {
     TranslationStateScope translation_scope;
+    if (native_worldgen_main_view(gps_)
+#ifdef _WIN32
+            || native_history_worldgen_page()
+#endif
+            ) {
+        apply_requested_reload();
+        prepared_matches_.clear();
+        suppress_base_.clear();
+        suppress_top_.clear();
+        native_knowledge_frame_matches_.reset();
+        native_knowledge_frame_transition_ = false;
+        native_frame_submitted_ = native_worldgen_consume_frame_submission() || native_frame_drawn_;
+        native_frame_drawn_ = false;
+        if (native_frame_submitted_ && ++draw_epoch_ == 0) draw_epoch_ = 1;
+        frame_prepared_ = false;
+        return;
+    }
     (void)install_native_dfhack_render_layers();
     (void)install_native_dfhack_capture_hook();
     (void)install_native_dfhack_console_hook();
@@ -43485,6 +43561,8 @@ static void native_notification_present_layer(SDL_Renderer *renderer,
     void (*draw_notifications)(SDL_Renderer *));
 static void native_pause_present_layer(SDL_Renderer *renderer,
     void (*draw_pause)(SDL_Renderer *));
+static void native_worldgen_present_layer(SDL_Renderer *renderer,
+    void (*draw_worldgen)(SDL_Renderer *));
 
 extern "C" void dfcn_render_present(SDL_Renderer *renderer) {
     // A producer can reset or publish private UI output between individual
@@ -43497,29 +43575,35 @@ extern "C" void dfcn_render_present(SDL_Renderer *renderer) {
     g_overlay.replay_deferred_resolution_glyphs(renderer, g_real_copy);
     boundary.checkpoint("replay_glyphs");
     g_overlay.render(renderer);
-    native_info_present_layer(renderer, [](SDL_Renderer *info_renderer) {
-        g_overlay.render_native_info_layer(info_renderer);
-    });
-    native_stocks_present_layer(renderer, [](SDL_Renderer *stocks_renderer) {
-        g_overlay.render_native_stocks_layer(stocks_renderer);
-    });
-    native_reports_present_layer(renderer, [](SDL_Renderer *reports_renderer) {
-        g_overlay.render_native_reports_layer(reports_renderer);
-    });
-    native_notification_present_layer(renderer, [](SDL_Renderer *notification_renderer) {
-        g_overlay.render_native_notification_layer(notification_renderer);
-    });
-    // The Fortress renderer submits Escape after its notification hovers.
-    // Preserve that modal ownership when compositing the private outputs.
-    native_pause_present_layer(renderer, [](SDL_Renderer *pause_renderer) {
-        g_overlay.render_native_pause_layer(pause_renderer);
-    });
-    native_help_present_layers(renderer, [](SDL_Renderer *help_renderer) {
-        g_overlay.render_native_help_layer(help_renderer);
-    });
-    native_tooltip_present_layer(renderer, [](SDL_Renderer *tooltip_renderer) {
-        g_overlay.render_native_tooltip_layer(tooltip_renderer);
-    });
+    if (native_worldgen_main_view(native_graphics())) {
+        native_worldgen_present_layer(renderer, [](SDL_Renderer *worldgen_renderer) {
+            g_overlay.render_native_worldgen_layer(worldgen_renderer);
+        });
+    } else {
+        native_info_present_layer(renderer, [](SDL_Renderer *info_renderer) {
+            g_overlay.render_native_info_layer(info_renderer);
+        });
+        native_stocks_present_layer(renderer, [](SDL_Renderer *stocks_renderer) {
+            g_overlay.render_native_stocks_layer(stocks_renderer);
+        });
+        native_reports_present_layer(renderer, [](SDL_Renderer *reports_renderer) {
+            g_overlay.render_native_reports_layer(reports_renderer);
+        });
+        native_notification_present_layer(renderer, [](SDL_Renderer *notification_renderer) {
+            g_overlay.render_native_notification_layer(notification_renderer);
+        });
+        // The Fortress renderer submits Escape after its notification hovers.
+        // Preserve that modal ownership when compositing the private outputs.
+        native_pause_present_layer(renderer, [](SDL_Renderer *pause_renderer) {
+            g_overlay.render_native_pause_layer(pause_renderer);
+        });
+        native_help_present_layers(renderer, [](SDL_Renderer *help_renderer) {
+            g_overlay.render_native_help_layer(help_renderer);
+        });
+        native_tooltip_present_layer(renderer, [](SDL_Renderer *tooltip_renderer) {
+            g_overlay.render_native_tooltip_layer(tooltip_renderer);
+        });
+    }
     boundary.checkpoint("overlay_render");
     native_dfhack_present_layer(renderer, [](SDL_Renderer *layer_renderer) {
         g_overlay.render_dfhack_layer(layer_renderer);
@@ -43544,6 +43628,8 @@ extern "C" int dfcn_render_copy(SDL_Renderer *renderer, SDL_Texture *texture,
     }
     {
         TranslationStateScope translation;
+        if (native_worldgen_main_view(native_graphics()))
+            return g_real_copy ? g_real_copy(renderer, texture, source, dest) : -1;
         // The opaque management component is submitted on its own target.
         // Covered background copies have no visible pixels and must not
         // feed the main sweep's glyph/occlusion/suppression registries.

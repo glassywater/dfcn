@@ -57,6 +57,7 @@ static void native_help_draw(void *help) {
     auto *gps = native_graphics();
     bool isolate = help && gps && layer.native_renderer && layer.renderer &&
         !g_native_help_write_graphics && !native_dfhack_layer_write_active(gps) &&
+        !native_worldgen_output_active(gps) &&
         gps->screen && gps->screen_top && gps->dimx > 0 && gps->dimx <= 1000 &&
         gps->dimy > 0 && gps->dimy <= 1000;
     if (isolate) {
@@ -92,6 +93,7 @@ static void native_help_reset_frame(void *renderer) {
     native_stocks_begin_frame();
     native_reports_begin_frame();
     native_pause_begin_frame();
+    native_worldgen_begin_frame();
     layer.frames.clear();
     layer.collapsed_titles.clear();
     layer.native_renderer = nullptr;

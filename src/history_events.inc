@@ -1,7 +1,7 @@
 // Event semantics select reviewed templates; English output is used only by
 // the native capture layer to verify which glyphs belong to this event.
 std::optional<std::vector<LegendsTextPiece>> Overlay::translate_history_event(
-        const NativeHistoryDocument &document) const {
+        const NativeHistoryDocument &document, bool use_translation_cache) const {
     using Pieces = std::vector<LegendsTextPiece>;
     const auto &name_context = document.page ? document.page->data : document.event;
     // Entity WORD snapshots are owned by the document. Their complete naming
@@ -20,7 +20,7 @@ std::optional<std::vector<LegendsTextPiece>> Overlay::translate_history_event(
     };
     const bool refresh_name_context = has_entity_names(has_entity_names, name_context, 0);
     const uint64_t parent_revision = RULESETS.resource_revision();
-    if (document.sequence && !refresh_name_context) {
+    if (use_translation_cache && document.sequence && !refresh_name_context) {
         const auto found = history_event_translation_cache_.find(document.sequence);
         if (found != history_event_translation_cache_.end() && found->second.parent_revision == parent_revision) {
             history_event_translation_order_.splice(history_event_translation_order_.end(),
@@ -677,7 +677,7 @@ std::optional<std::vector<LegendsTextPiece>> Overlay::translate_history_event(
         nested.event = *found->second;
         nested.event.fields["native_title"] = {1};
         nested.tokens = document.tokens;
-        return translate_history_event(nested);
+        return translate_history_event(nested, use_translation_cache);
     };
     (void)story;
 #include "history_semantics_collections.inc"
@@ -1070,7 +1070,7 @@ std::optional<std::vector<LegendsTextPiece>> Overlay::translate_history_event(
             std::to_string(document.event.circumstance) + "; goal=" +
             std::to_string(document.event.goal) +
             (failure_detail.empty() ? "" : "; detail=" + failure_detail));
-    if (document.sequence && !refresh_name_context) {
+    if (use_translation_cache && document.sequence && !refresh_name_context) {
         const auto found = history_event_translation_cache_.find(document.sequence);
         if (found != history_event_translation_cache_.end()) {
             found->second.pieces = result;
