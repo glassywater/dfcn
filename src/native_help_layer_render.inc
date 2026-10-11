@@ -83,6 +83,7 @@ static void native_help_draw(void *help) {
 }
 
 static void native_help_reset_frame(void *renderer) {
+    native_map_begin_frame();
     native_tooltip_begin_frame();
     native_notification_begin_frame();
     auto &layer = g_native_help_layer;

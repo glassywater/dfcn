@@ -16071,6 +16071,7 @@ std::vector<Match> Overlay::resolve_native_knowledge_matches(
 #include "native_panel_layout.inc"
 #include "adventure_crafting.inc"
 #include "native_help_layers.inc"
+#include "native_map_layers.inc"
 #include "native_info_layers.inc"
 #include "native_stocks_layers.inc"
 #include "native_tooltip_layers.inc"
