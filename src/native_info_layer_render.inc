@@ -1,4 +1,3 @@
-#ifndef _WIN32
 // The info object inherits tabs but its visible panel is drawn by a direct
 // four-argument native call. Its inherited widget rect is never arranged.
 // Redirect this entry, including the frame, tab strip and selected page.
@@ -48,8 +47,15 @@ static void native_info_draw(void *widget, uint32_t tick, int32_t screen_left,
     const int left = static_cast<int>(std::clamp<int64_t>(int64_t(screen_left) + 4, 0, gps->dimx));
     const int top = 4;
     const int right = static_cast<int>(std::clamp<int64_t>(int64_t(screen_right) - 28, -1, gps->dimx - 1));
-    const int bottom = std::min(gps->dimy - 1,
-        (settings ? settings->display.grid_y : gps->dimy) - 4);
+#ifdef _WIN32
+    int grid_y = gps->dimy;
+    // Both PE editions keep init.display.grid_y at +0x18.
+    if (settings) std::memcpy(&grid_y,
+        reinterpret_cast<const unsigned char *>(settings) + 0x18, sizeof(grid_y));
+#else
+    const int grid_y = settings ? settings->display.grid_y : gps->dimy;
+#endif
+    const int bottom = std::min(gps->dimy - 1, grid_y - 4);
     if (left > right || top > bottom) {
         callback.call_native([&] { original(widget, tick, screen_left, screen_right); }); return;
     }
@@ -58,16 +64,28 @@ static void native_info_draw(void *widget, uint32_t tick, int32_t screen_left,
     g_native_info_panel = {left, top, right - left + 1, bottom - top + 1};
     // The direct renderer switches on info_interfacest::current_mode here.
     // Carry this frame's producer ownership into matching and layout.
-    std::memcpy(&g_native_info_page, static_cast<const unsigned char *>(widget) + 0x1d8,
+    constexpr size_t mode_offset =
+#ifdef _WIN32
+        0x1bc;
+#else
+        0x1d8;
+#endif
+    std::memcpy(&g_native_info_page, static_cast<const unsigned char *>(widget) + mode_offset,
         sizeof(g_native_info_page));
     g_native_info_labor_page = NativeInfoLaborPage::None;
     if (g_native_info_page == NativeInfoPage::Labor) {
-        // The native Labor renderer receives info + 0x498. Its container
-        // ends at +0x198, followed by four shared_ptr page owners in enum
-        // order. Read the current visible child once for this draw; page
-        // strings must not probe another subpage's widget ancestry.
+        // The Labor container is followed by four shared_ptr page owners
+        // in enum order. Its PE and ELF layouts have different base sizes.
+        // Read the current visible child once for this draw; page strings
+        // must not probe another subpage's widget ancestry.
+        constexpr size_t labor_children_offset =
+#ifdef _WIN32
+            0x5d0; // info +0x458, then widget_container +0x178.
+#else
+            0x630; // info +0x498, then widget_container +0x198.
+#endif
         std::array<uintptr_t, 8> children{};
-        if (native_history_copy_bytes(reinterpret_cast<uintptr_t>(widget) + 0x630,
+        if (native_history_copy_bytes(reinterpret_cast<uintptr_t>(widget) + labor_children_offset,
                 children.data(), sizeof(children))) {
             for (size_t i = 0; i < 4; ++i) {
                 uint8_t flags = 0;
@@ -101,11 +119,21 @@ static bool install_native_info_layer_hook() {
     if (g_native_info_draw_hook.installed) return true;
     constexpr const char *label = "Native fortress management component draw entry";
     const auto base = native_history_profile_base();
+#ifdef _WIN32
+    const auto table = native_reference_address(base, 0x16cfe60);
+    auto *draw = reinterpret_cast<unsigned char *>(native_reference_address(base, 0x396010));
+    // Complete position-independent pushes preserve the four incoming
+    // register arguments in both PE editions; the relay needs no fixups.
+    std::vector<unsigned char> prefix{0x40,0x55,0x53,0x56,0x57,0x41,0x54,
+        0x41,0x55,0x41,0x56,0x41,0x57};
+    if (!native_reference_bytes(0x396010, prefix)) return false;
+#else
     const auto table = native_reference_address(base, 0x207ff08);
     auto *draw = reinterpret_cast<unsigned char *>(native_reference_address(base, 0x9a0cf0));
     std::vector<unsigned char> prefix{0xf3,0x0f,0x1e,0xfa,0x41,0x57,0x41,0x56};
-    if (!table || !draw || !native_reference_bytes(0xda0cf0, prefix) ||
-            !g_native_info_draw_hook.prepare(draw, prefix,
+    if (!native_reference_bytes(0xda0cf0, prefix)) return false;
+#endif
+    if (!table || !draw || !g_native_info_draw_hook.prepare(draw, prefix,
             reinterpret_cast<const void *>(&native_info_draw), {}, label)) return false;
     g_native_info_vtable = table;
     if (!g_native_info_draw_hook.install(label)) return false;
@@ -133,9 +161,3 @@ static void uninstall_native_info_layer_hook() {
     }
 }
 static bool native_info_layer_hook_active() { return g_native_info_draw_hook.active(); }
-#else
-static bool install_native_info_layer_hook() { return true; }
-static void uninstall_native_info_layer_hook() {}
-static bool native_info_layer_hook_active() { return false; }
-static void native_info_present_layer(SDL_Renderer *, void (*)(SDL_Renderer *)) {}
-#endif

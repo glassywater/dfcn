@@ -29,6 +29,7 @@ static bool native_info_background_cell_hidden(const graphicst *graphics,
         (graphics == g_native_info_background_graphics ||
             graphics->screen == g_native_info_background_grid) &&
         graphics != g_native_info_write_graphics &&
+        graphics != g_native_help_write_graphics &&
         graphics != g_native_stocks_write_graphics &&
         graphics != g_native_reports_write_graphics &&
         !native_notification_write_active(graphics) &&
