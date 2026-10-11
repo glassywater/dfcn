@@ -173,7 +173,8 @@ void Overlay::render_native_fortress_layer(SDL_Renderer *renderer, bool stocks) 
     if (g_native_info_page == NativeInfoPage::Tasks ||
             g_native_info_page == NativeInfoPage::WorkOrders)
         layout_fortress_task_rows(renderer);
-    if (!captured_native_unit_chooser_records().empty())
+    if (g_native_info_page == NativeInfoPage::Nobles ||
+            !captured_native_unit_chooser_records().empty())
         layout_fortress_unit_chooser(renderer);
     if (g_native_info_page == NativeInfoPage::Places)
         layout_fortress_workshop_activities(renderer);
