@@ -96,6 +96,153 @@ void Overlay::append_fortress_place_names(std::vector<std::string> &rows,
     const auto top_drawn = captured_native_drawn_text_rows(true);
     drawn.insert(drawn.end(), top_drawn.begin(), top_drawn.end());
     const auto clipped = captured_clipped_captions();
+    // Render an already resolved owned field through its existing UI rule.
+    // Its name has native provenance and must not be reinterpreted as text.
+    const auto format_owned_caption = [&](std::string_view key, const std::string &value)
+            -> std::optional<std::string> {
+        const auto found = history_semantic_templates_.find(std::string(key));
+        if (found == history_semantic_templates_.end()) return std::nullopt;
+        const auto &rule = rules_[static_cast<size_t>(found->second)];
+        if (rule.template_kinds.size() != 1) return std::nullopt;
+        const std::vector<std::optional<std::string>> resolved{value};
+        bool intact = false;
+        auto target = fill_template(rule, {value}, nullptr, &intact, &resolved);
+        return intact && !target.empty() ? std::optional<std::string>(std::move(target))
+            : std::nullopt;
+    };
+    // Zones emits type, associated object and occupancy as independent addst
+    // fields. Keep each native object/name intact before generic matching.
+    for (const auto &draw : drawn) {
+        if (!draw.fortress_zone_caption || draw.source.empty() ||
+                draw.draw_grid != (draw.top_layer ? gps_->screen_top : gps_->screen) ||
+                draw.draw_dimx != gps_->dimx || draw.draw_dimy != gps_->dimy ||
+                draw.x < panel->x || draw.x >= panel->x + panel->w ||
+                draw.y <= tabs_y || draw.y >= panel->y + panel->h ||
+                (only_y >= 0 && only_y != draw.y) ||
+                draw.source.size() > static_cast<size_t>(panel->x + panel->w - draw.x) ||
+                context[draw.y].compare(draw.x, draw.source.size(), draw.source) != 0)
+            continue;
+        bool visible = true;
+        for (int offset = 0; offset < static_cast<int>(draw.source.size()); ++offset) {
+            if (draw.source[offset] == ' ') continue;
+            bool top = false;
+            cell_at(draw.x + offset, draw.y, &top);
+            if (top != draw.top_layer) { visible = false; break; }
+        }
+        if (!visible) continue;
+        const auto &caption = *draw.fortress_zone_caption;
+        using Kind = NativeFortressZoneCaption::Kind;
+        const bool lower_line = caption.kind == Kind::Location || caption.kind == Kind::Unit ||
+            caption.kind == Kind::Squad || caption.kind == Kind::SquadCount ||
+            caption.kind == Kind::Present;
+        const auto button = native_picture_caption_rect(
+            *gps_, draw.x, draw.y - (lower_line ? 1 : 0), false,
+            nullptr, true, nullptr, true);
+        if (!button || button->x < panel->x || button->y <= tabs_y ||
+                button->x + button->w > panel->x + panel->w ||
+                button->y + button->h > panel->y + panel->h) continue;
+        int right = button->x + button->w;
+        if (draw.draw_clip) right = std::min(right, draw.draw_clip->x + draw.draw_clip->w);
+        for (int x = draw.x + static_cast<int>(draw.source.size()); x < right; ++x)
+            for (int row = button->y; row < button->y + button->h; ++row)
+                if (native_foreground_picture_at(*gps_, x, row)) { right = x; break; }
+        for (const auto &other : drawn)
+            if (other.fortress_zone_caption && other.top_layer == draw.top_layer &&
+                    other.y == draw.y && other.x > draw.x && other.x < right &&
+                    !other.source.empty() && other.source.size() <=
+                        static_cast<size_t>(gps_->dimx - other.x) &&
+                    context[other.y].compare(other.x, other.source.size(), other.source) == 0)
+                right = other.x;
+        const int length = static_cast<int>(draw.source.size());
+        if (right < draw.x + length) continue;
+        const std::string complete = draw.complete_source.empty()
+            ? draw.source : draw.complete_source;
+        if (complete.empty() || complete.find_first_of("\r\n") != std::string::npos) continue;
+        std::optional<std::string> translated;
+        switch (caption.kind) {
+        case Kind::Type:
+            if (!caption.authored) {
+                for (const std::string_view canonical : {
+                        "Meeting Area", "Bedroom", "Dining Hall", "Pen/Pasture", "Pit/Pond",
+                        "Water Source", "Dungeon", "Fishing", "Sand", "Office", "Dormitory",
+                        "Barracks", "Archery Range", "Garbage Dump", "Animal Training", "Tomb",
+                        "Gather Fruit", "Clay"}) {
+                    if (complete.size() == canonical.size() &&
+                            template_literal_at(complete, 0, canonical, true)) {
+                        translated = exact_literal_translation("Zone type: " + std::string(canonical));
+                        break;
+                    }
+                }
+            }
+            break;
+        case Kind::Location:
+            if (caption.location_name) translated = translate_history_name(*caption.location_name);
+            if (!translated) translated = contains_cjk_utf8(complete)
+                ? std::optional<std::string>(native_text_to_utf8(complete))
+                : translate_procedural_fragment(complete, false, false, {},
+                    ProceduralFragmentContext::generated_name);
+            if (!translated) translated = exact_literal_translation(complete);
+            break;
+        case Kind::Unit:
+            if (draw.unit_identity_target) translated = draw.unit_identity_target;
+            else if (caption.unit_identity)
+                translated = translate_native_unit_identity(*caption.unit_identity);
+            else translated = translate_unit_identity(complete, true);
+            break;
+        case Kind::Squad: {
+            std::optional<std::string> name;
+            if (caption.squad_alias) name = native_text_to_utf8(*caption.squad_alias);
+            else if (caption.squad_name) name = translate_history_name(*caption.squad_name);
+            if (name) translated = format_owned_caption("{e} assigned", *name);
+            break;
+        }
+        case Kind::Assigned:
+        case Kind::Present:
+        case Kind::Imprisoned:
+        case Kind::SquadCount: {
+            const std::string suffix = caption.kind == Kind::Assigned ? " assigned"
+                : caption.kind == Kind::Imprisoned ? " imprisoned"
+                : caption.kind == Kind::SquadCount ? " squads assigned"
+                : complete.ends_with(" available") ? " available" : " present";
+            if (!complete.ends_with(suffix)) break;
+            const std::string digits = complete.substr(0, complete.size() - suffix.size());
+            if (digits.empty() || !std::all_of(digits.begin(), digits.end(),
+                    [](unsigned char ch) { return ch >= '0' && ch <= '9'; })) break;
+            const auto found = history_semantic_templates_.find("{d}" + suffix);
+            if (found == history_semantic_templates_.end()) break;
+            bool intact = false;
+            auto value = translate_template_captures(rules_[static_cast<size_t>(found->second)],
+                {digits}, &intact);
+            if (intact && !value.empty()) translated = std::move(value);
+            break;
+        }
+        }
+        const std::string target = translated ? *translated : native_text_to_utf8(complete);
+        if (target.empty() || target.find("[C:") != std::string::npos ||
+                target.find_first_of("\r\n") != std::string::npos) continue;
+        if (rows[draw.y].compare(draw.x, length, draw.source) == 0) {
+            Match match{draw.x, draw.y, length, kFortressLocationListRule, target, draw.source};
+            match.native_picture_caption_box = SDL_Rect{draw.x, draw.y, right - draw.x, 1};
+            match.native_picture_caption_source = complete;
+            match.layout_x = draw.x;
+            match.layout_y = draw.y;
+            match.layout_length = right - draw.x;
+            match.layout_clip_right = right;
+            match.layout_left = true;
+            matches.push_back(std::move(match));
+            std::fill_n(rows[draw.y].begin() + draw.x, length, ' ');
+        } else if (raw_layer) {
+            for (int offset = 0; offset < length;) {
+                while (offset < length && rows[draw.y][draw.x + offset] != draw.source[offset]) ++offset;
+                const int start = offset;
+                while (offset < length && rows[draw.y][draw.x + offset] == draw.source[offset]) ++offset;
+                if (offset == start) continue;
+                matches.push_back({draw.x + start, draw.y, offset - start,
+                    kFortressLocationListRule, {}, draw.source.substr(start, offset - start)});
+                std::fill_n(rows[draw.y].begin() + draw.x + start, offset - start, ' ');
+            }
+        }
+    }
     const int first_y = only_y >= 0 ? only_y : tabs_y + 1;
     const int last_y = only_y >= 0 ? only_y + 1 : panel->y + panel->h;
     for (int y = first_y; y < last_y; ++y) {

@@ -2097,6 +2097,17 @@ struct NativeWorkOrderShopCaption {
 };
 static std::optional<NativeWorkOrderShopCaption> capture_native_work_order_shop_caption(
     uintptr_t caller, uintptr_t source);
+struct NativeFortressZoneCaption {
+    enum class Kind { Type, Location, Unit, Squad, SquadCount, Assigned, Present, Imprisoned };
+    Kind kind = Kind::Type;
+    bool authored = true;
+    std::shared_ptr<const NativeHistoryName> location_name;
+    std::shared_ptr<const NativeUnitIdentity> unit_identity;
+    std::shared_ptr<const NativeHistoryName> squad_name;
+    std::optional<std::string> squad_alias;
+};
+static std::optional<NativeFortressZoneCaption> capture_native_fortress_zone_caption(
+    uintptr_t caller, uintptr_t source);
 static bool native_farm_name_caller(uintptr_t caller);
 static bool native_farm_crop_caller(uintptr_t caller);
 
@@ -2167,6 +2178,7 @@ struct NativeDrawnTextRow {
     NativeAdventureInventoryRole adventure_inventory_role = NativeAdventureInventoryRole::None;
     // The work-order producer owns this complete workshop restriction/name.
     std::optional<NativeWorkOrderShopCaption> work_order_shop_caption{};
+    std::optional<NativeFortressZoneCaption> fortress_zone_caption{};
 };
 static std::mutex g_native_drawn_text_mutex;
 static std::vector<NativeDrawnTextRow> g_native_drawn_text_rows;
@@ -2601,6 +2613,7 @@ static void remember_native_drawn_text_row(int x, int y, std::string_view source
     // Copy the producer's frame and unshortened building name while the
     // actual addst caller is live, before acquiring the draw registry lock.
     auto work_order_shop_caption = capture_native_work_order_shop_caption(native_caller, address);
+    auto fortress_zone_caption = capture_native_fortress_zone_caption(native_caller, address);
     // Identity translation acquires TranslationStateScope before any native
     // registry mutex. Freeze organization evidence in that same lock order.
     auto justice_organization = top_layer ? std::nullopt :
@@ -2662,6 +2675,7 @@ static void remember_native_drawn_text_row(int x, int y, std::string_view source
         NativeDrawnTextRow row{x, y, std::string(source), address,
             is_native_prose_source(source) || short_caption};
         row.work_order_shop_caption = std::move(work_order_shop_caption);
+        row.fortress_zone_caption = std::move(fortress_zone_caption);
         row.sequence = ++g_native_drawn_text_sequence;
         row.editable_text = NativeEditableTextScope::active;
         row.top_layer = top_layer;

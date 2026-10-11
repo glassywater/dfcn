@@ -50,6 +50,7 @@ static bool native_history_war_selection(uintptr_t collection, int32_t &category
 #include "native_stocks_search_hooks.inc"
 #include "native_unit_search_hooks.inc"
 #include "native_unit_identity_hooks.inc"
+#include "native_fortress_zone_capture.inc"
 #include "native_justice_organizations.inc"
 #include "native_justice_plots.inc"
 #include "native_squad_name_hooks.inc"
