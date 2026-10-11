@@ -5,6 +5,60 @@ struct FortressKitchenTable {
     std::vector<int> columns;
 };
 
+std::optional<std::string> Overlay::translate_kitchen_food_name(
+        std::string_view source) const {
+    source = trim_view(source);
+    if (auto exact = exact_literal_translation(source)) return exact;
+
+    // Item Tagger appends RAW-use tags to the food name. Resolve the complete
+    // food noun first so a tag cannot become part of its creature descriptor.
+    // Earlier script runs can leave multiple spaces between the same fields.
+    const size_t suffix = source.find(" [");
+    const auto food = trim_view(source.substr(0, suffix));
+    if (food.empty()) return std::nullopt;
+    auto target = exact_literal_translation(food);
+    if (!target && config_.compositional_rules)
+        target = translate_embark_food_item({std::string(food)});
+    if (!target && config_.compositional_rules &&
+            (food.find('\x0b') != std::string_view::npos ||
+             food.find('\x0c') != std::string_view::npos))
+        target = translate_creature_label(food);
+    if (!target && config_.compositional_rules)
+        target = translate_compositional(normalize_utterance(food));
+    if (!target || suffix == std::string_view::npos) return target;
+
+    for (auto tail = source.substr(suffix); !tail.empty();) {
+        if (tail.front() != ' ') return std::nullopt;
+        tail = trim_view(tail);
+        if (tail.empty()) break;
+        if (tail.front() != '[') return std::nullopt;
+        const size_t end = tail.find(']');
+        if (end == std::string_view::npos) return std::nullopt;
+        const auto tag = tail.substr(0, end + 1);
+        std::optional<std::string> translated;
+        if (config_.compositional_rules) {
+            std::vector<size_t> origins;
+            translated = RULESETS.translate_with_origins(native_text_to_utf8(tag),
+                "::item_tagger::tags::tag", origins);
+        }
+        if (!translated) translated = exact_literal_translation(tag);
+        *target += " " + (translated ? *translated : native_text_to_utf8(tag));
+        tail.remove_prefix(end + 1);
+    }
+    return target;
+}
+
+bool Overlay::translated_kitchen_search_matches(std::string_view source,
+        std::string_view query) const {
+    TranslationStateScope translation_scope;
+    if (source.empty() || translated_search_query(query).literal.empty()) return false;
+    if (translated_search_text_matches(native_text_to_utf8(source), query)) return true;
+    const auto target = memoize_search_translation('k', source, [&] {
+        return translate_kitchen_food_name(source);
+    }, true);
+    return target && translated_search_text_matches(*target, query);
+}
+
 static std::optional<FortressKitchenTable> fortress_kitchen_table(
         const graphicst &gps, const std::vector<std::string> &rows,
         const NativeUiSettings &settings) {
@@ -121,14 +175,7 @@ void Overlay::append_fortress_kitchen_rows(std::vector<std::string> &rows,
                 complete = capture.complete;
                 break;
             }
-        auto target = exact_literal_translation(complete);
-        // Sex glyphs are printable CP437 inside this food field. Keep the
-        // creature and its suffix together instead of centring two fragments.
-        if (!target && config_.compositional_rules &&
-                (complete.find('\x0b') != std::string::npos ||
-                 complete.find('\x0c') != std::string::npos))
-            target = translate_creature_label(complete);
-        if (!target && config_.compositional_rules) target = translate_compositional(complete);
+        auto target = translate_kitchen_food_name(complete);
         // Unknown food names stay a single item field, not fabricated names.
         // Existing plant/material/drink terminology stays dictionary-owned.
         if (!target) target = cp437_to_utf8(complete);

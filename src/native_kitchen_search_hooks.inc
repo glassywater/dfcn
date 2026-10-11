@@ -47,7 +47,7 @@ static NativeString *capture_native_kitchen_search_simplified(NativeString *outp
                     native_string_view(query, &needle, 4096) && !needle.empty() &&
                     native_string_view(output, &folded, 65536) &&
                     folded.find(needle) == std::string_view::npos &&
-                    g_overlay.translated_search_matches(spelling, needle))
+                    g_overlay.translated_kitchen_search_matches(spelling, needle))
                 output->assign(needle);
         }
     } catch (...) {}
@@ -70,10 +70,9 @@ static size_t capture_native_kitchen_search_find(const char *text, size_t length
         std::string_view source;
         if (!native_string_view(caption, &source, 65536) || source.empty() ||
             source.find('\0') != std::string_view::npos) return result;
-        // fortress_kitchen.inc renders this same food field through exact
-        // dictionary, creature/sex and compositional translation. The common
-        // matcher uses those productions with literal, pinyin and initials.
-        if (g_overlay.translated_search_matches(source,
+        // Use the same food noun and RAW-use tag boundaries as the displayed
+        // Kitchen field, including literal, pinyin and initials matching.
+        if (g_overlay.translated_kitchen_search_matches(source,
                 std::string_view(query_text, query_length))) return 0;
     } catch (...) {
         // Allocation/translation failures retain the original native result.

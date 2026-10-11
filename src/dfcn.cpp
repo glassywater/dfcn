@@ -3396,6 +3396,8 @@ public:
         std::string_view source) const;
     bool translated_search_matches(std::string_view source,
                                    std::string_view query) const;
+    bool translated_kitchen_search_matches(std::string_view source,
+                                           std::string_view query) const;
     bool translated_plant_search_matches(std::string_view source,
                                         std::string_view query) const;
     bool translated_color_search_matches(std::string_view source,
@@ -4695,6 +4697,7 @@ private:
         std::vector<Match> &matches, int only_y, bool raw_layer) const;
     void append_fortress_kitchen_rows(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y) const;
+    std::optional<std::string> translate_kitchen_food_name(std::string_view source) const;
     void layout_fortress_kitchen(SDL_Renderer *renderer);
     void append_fortress_stone_rows(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y) const;
