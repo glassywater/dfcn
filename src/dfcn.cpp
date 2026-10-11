@@ -27724,6 +27724,22 @@ std::optional<std::string> Overlay::translate_wood_item_caption(
         break;
     }
     if (!explicit_log && !allow_bare) return std::nullopt;
+    // Extensions can annotate a wood material before the native log noun.
+    // Translate each complete bracketed label with the existing vocabulary;
+    // its presence must not split the species from its wood material.
+    std::string annotations;
+    while (material.ends_with(']')) {
+        const size_t opening = material.rfind(" [");
+        if (opening == std::string::npos) break;
+        const auto label = std::string_view(material).substr(opening + 2,
+            material.size() - opening - 3);
+        if (label.empty() || label.find_first_of("[]") != std::string_view::npos)
+            return std::nullopt;
+        const auto translated = exact_literal_translation(label);
+        if (!item_description_translation_complete(translated)) return std::nullopt;
+        annotations.insert(0, " [" + *translated + "]");
+        material = trim(material.substr(0, opening));
+    }
     // Outside a proved Logs category, a bare ash noun is the furnace product.
     // Explicit log names and the unambiguous ashen material keep the wood sense.
     if (!explicit_log && !allow_bare_ash && (material == "ash" || material == "ashes"))
@@ -27731,6 +27747,13 @@ std::optional<std::string> Overlay::translate_wood_item_caption(
     const ArenaWoodMaterialMatch wood = find_arena_wood_material(material);
     if (wood.source.empty() || wood.at != 0 || wood.length != material.size())
         return std::nullopt;
+
+    if (!annotations.empty()) {
+        const auto name = translate_material_name(material);
+        if (!name) return std::nullopt;
+        return prefix + *name + annotations +
+            (group || !explicit_log ? "" : "原木") + suffix;
+    }
 
     // Keep the existing plant/log vocabulary: the material adjective can
     // use another species synonym (walnut wood is 胡桃木, logs are 核桃树原木).

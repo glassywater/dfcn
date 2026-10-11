@@ -186,6 +186,18 @@ static bool native_square_button_at(const graphicst &gps, int x, int y,
     return false;
 }
 
+static bool native_material_amount_button_at(const graphicst &gps, int x, int y) {
+    const int32_t (*skins[])[3] = {
+        native_texture_button_subtract(gps),
+        native_texture_button_subtract_hover(gps),
+        native_texture_button_subtract_pressed(gps),
+        native_texture_button_subtract_invalid(gps),
+    };
+    return std::any_of(std::begin(skins), std::end(skins), [&](const auto *skin) {
+        return native_square_button_at(gps, x, y, skin);
+    });
+}
+
 // These controls can overwrite a previously drawn caption's suffix. Share
 // their complete skin proof between field bounds and classic text ownership.
 static bool native_caption_action_button_at(const graphicst &gps, int x, int y) {
@@ -932,15 +944,7 @@ static std::optional<SDL_Rect> native_picture_caption_rect(
         // then overlays its decrement control on the strip (53.16 Windows:
         // 0x140382990..0x140382b2b). That complete control replaces the right
         // cap of the name/distance area. Only its typed caller accepts it.
-        const int32_t (*skins[])[3] = {
-            native_texture_button_subtract(gps),
-            native_texture_button_subtract_hover(gps),
-            native_texture_button_subtract_pressed(gps),
-            native_texture_button_subtract_invalid(gps),
-        };
-        return std::any_of(std::begin(skins), std::end(skins), [&](const auto *skin) {
-            return native_square_button_at(gps, left, y, skin);
-        });
+        return native_material_amount_button_at(gps, left, y);
     };
     const auto action_edge = [&](int left, int *width = nullptr) {
         if (native_draw || left < 0) return false;

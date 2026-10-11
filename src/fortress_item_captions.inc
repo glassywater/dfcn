@@ -686,6 +686,66 @@ void Overlay::append_fortress_item_captions(std::vector<std::string> &rows,
                 }
                 const int picture_right = native_picture_box_right(*gps_, picture, y, row_clip);
                 if (picture_right < 0) continue;
+                // Construction choices own a name column even after selection
+                // replaces distance with an untranslated amount (28/108).
+                // Prove this row from its picture strip, decrement control and
+                // adjoining All/None fields before generic words can split a
+                // shortened material name. append_caption restores the original
+                // native draw and keeps the amount/distance outside its mask.
+                if (pass == 0 && (only_y < 0 || y == only_y)) {
+                    std::optional<SDL_Rect> material_box;
+                    for (int x = picture_right; x <= picture_right + 1 && !material_box; ++x)
+                        material_box = native_picture_caption_rect(*gps_, x, y,
+                            false, nullptr, false, nullptr, false, true);
+                    if (material_box && material_box->x >= picture_right &&
+                            material_box->x <= picture_right + 1) {
+                        const int controls = material_box->x + material_box->w;
+                        // The native row draws subtract at R-12, All at R-8
+                        // and None at R-4 (53.16 PE 3824d3/382b4d/382bf7).
+                        // These actions overlay the same continuous fill;
+                        // there is no separate rectangle enclosing All/None.
+                        constexpr std::string_view actions = "All None";
+                        const int actions_left = controls + 4;
+                        const int actions_end = actions_left + static_cast<int>(actions.size());
+                        bool current_actions = actions_end <= gps_->dimx;
+                        for (size_t i = 0; current_actions && i < actions.size(); ++i)
+                            current_actions = visible_char_at(actions_left + static_cast<int>(i), y)
+                                == actions[i];
+                        if (current_actions && native_material_amount_button_at(*gps_, controls, y)) {
+                            const auto columns = split_text_fields(rows[y].substr(
+                                material_box->x, material_box->w));
+                            const auto digits = [](std::string_view text) {
+                                return !text.empty() && std::all_of(text.begin(), text.end(),
+                                    [](char ch) { return ch >= '0' && ch <= '9'; });
+                            };
+                            bool material_columns = columns.size() >= 2 && columns.size() <= 3;
+                            for (size_t i = 1; material_columns && i < columns.size(); ++i) {
+                                const std::string_view value = columns[i].text;
+                                const size_t slash = value.find('/');
+                                material_columns = value.starts_with("Dist: ")
+                                    ? digits(trim_view(value.substr(6)))
+                                    : slash != std::string_view::npos &&
+                                        digits(value.substr(0, slash)) && digits(value.substr(slash + 1));
+                            }
+                            bool same_layer = true;
+                            const bool top = native_ui_top_layer_at(*gps_,
+                                static_cast<size_t>(picture) * gps_->dimy + y);
+                            for (int x = picture; same_layer && x < actions_end; ++x)
+                                for (int row = y - 1; row <= y + 1; ++row)
+                                    if (native_ui_top_layer_at(*gps_,
+                                            static_cast<size_t>(x) * gps_->dimy + row) != top)
+                                        same_layer = false;
+                            if (material_columns && same_layer) {
+                                const int left = material_box->x + columns.front().start;
+                                const int end = material_box->x + columns.front().end;
+                                const int right = material_box->x + columns[1].start - 1;
+                                append_caption(left, end, right, y, true, true, false, material_box);
+                                picture = actions_end;
+                                continue;
+                            }
+                        }
+                    }
+                }
                 if (pass == 0 && uniform_panel && picture >= uniform_panel->x &&
                     picture_right == picture + 5 && y - 1 >= uniform_top &&
                     y + 1 < uniform_bottom) {
