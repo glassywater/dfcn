@@ -9870,21 +9870,28 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
                 return compound->translated;
             if (const auto word = resolve_native_given_word(groups[0]))
                 return word->translated;
-            if (context == ProceduralFragmentContext::native_item_name)
-                if (const auto title = resolve_native_name_group(groups[0], 0xff, 4))
-                    return title->translated;
+            // The native formatter's optional groups apply to personal
+            // names as well as equipment. With no first_name or WORD0/1,
+            // its title slots 2..5 are one complete visible name group.
+            if (const auto title = resolve_native_name_group(groups[0], 0xff, 4))
+                return title->translated;
             return std::nullopt;
         }
         for (unsigned language = 0; language < 8; ++language) {
             const uint8_t mask = static_cast<uint8_t>(1u << language);
             auto head = resolve_native_compound_word(groups[0], mask);
             if (!head) head = resolve_native_given_word(groups[0]);
-            if (!head || !(head->language_mask & mask)) continue;
+            if (head && !(head->language_mask & mask)) head.reset();
+            // An absent WORD0/1 group leaves the title slots 2..5 at the
+            // front. Its only following native group is the single WORD6.
+            const bool title_head = !head && count == 2;
+            if (title_head) head = resolve_native_name_group(groups[0], mask, 4);
+            if (!head) continue;
             std::string translated = head->translated;
             bool complete = true;
             for (size_t i = 1; i < count; ++i) {
                 const auto group = resolve_native_name_group(groups[i], mask,
-                    i == 1 ? 4 : 1);
+                    i == 1 && !title_head ? 4 : 1);
                 if (!group) {
                     complete = false;
                     break;
@@ -9900,50 +9907,102 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
         std::istringstream input{std::string(raw)};
         std::string given_source;
         std::string surname_source;
-        if (!(input >> given_source >> surname_source)) return std::nullopt;
-        if (!native_name_word_shape(given_source) ||
-            !native_name_word_shape(surname_source)) {
+        if (!(input >> given_source) || !native_name_word_shape(given_source))
+            return std::nullopt;
+        if (!(input >> surname_source)) {
+            // Every optional group in a94030 may be absent. A lone WORD0/1
+            // compound, title (up to four roots), or WORD6 is consequently
+            // a complete name too, even in the strict personal-name entry.
+            if (!name_only) return std::nullopt;
+            if (const auto compound = resolve_native_compound_word(given_source))
+                return compound->translated;
+            if (const auto given = resolve_native_given_word(given_source))
+                return given->translated;
+            if (const auto title = resolve_native_name_group(given_source, 0xff, 4))
+                return title->translated;
             return std::nullopt;
         }
+        if (!native_name_word_shape(surname_source)) return std::nullopt;
 
-        const auto given = resolve_native_given_word(given_source);
-        if (!given) return std::nullopt;
-        auto surname = resolve_native_compound_word(surname_source, given->language_mask);
-        if (!surname) {
-            // Deities and other figures can have a single-root surname. Both
-            // words must be real T_WORD forms from the same native language;
-            // neither a short spelling nor title case alone proves a name.
-            surname = resolve_native_given_word(surname_source);
-            if (!surname || (given->language_mask & surname->language_mask) == 0)
+        const auto with_given_name = [&]() -> std::optional<std::string> {
+            const auto given = resolve_native_given_word(given_source);
+            if (!given) return std::nullopt;
+            auto surname = resolve_native_compound_word(surname_source, given->language_mask);
+            if (!surname) {
+                // Deities and other figures can have a single-root surname. Both
+                // words must be real T_WORD forms from the same native language;
+                // neither a short spelling nor title case alone proves a name.
+                surname = resolve_native_given_word(surname_source);
+                if (!surname || (given->language_mask & surname->language_mask) == 0)
+                    return std::nullopt;
+                // In untyped screen text, complete UI/prose rules take precedence
+                // over an accidental pair of native/English homonyms. Explicit
+                // phonetic identity fields retain their native-name meaning.
+                if (!name_only && (exact_literal_translation(raw) ||
+                        RULESETS.translate(cp437_to_utf8(raw)))) return std::nullopt;
+            }
+            if (!surname ||
+                (given->language_mask & surname->language_mask) == 0) {
                 return std::nullopt;
-            // In untyped screen text, complete UI/prose rules take precedence
-            // over an accidental pair of native/English homonyms. Explicit
-            // phonetic identity fields retain their native-name meaning.
-            if (!name_only && (exact_literal_translation(raw) ||
-                    RULESETS.translate(cp437_to_utf8(raw)))) return std::nullopt;
-        }
-        if (!surname ||
-            (given->language_mask & surname->language_mask) == 0) {
-            return std::nullopt;
-        }
-        std::string translated = given->translated + "·" + surname->translated;
-        uint8_t language_mask = given->language_mask & surname->language_mask;
-        // Native language_name display joins four groups: first name,
-        // compound surname, title (up to four roots), and OfX (one root).
-        // A title can itself be a compound; requiring one dictionary root
-        // rejected complete long names even after their display was recovered.
-        size_t groups = 2;
-        for (std::string suffix_source; input >> suffix_source;) {
-            if (++groups > 4 || !native_name_word_shape(suffix_source))
+            }
+            std::string translated = given->translated + "·" + surname->translated;
+            uint8_t language_mask = given->language_mask & surname->language_mask;
+            // Native language_name display joins four groups: first name,
+            // compound surname, title (up to four roots), and OfX (one root).
+            // A title can itself be a compound; requiring one dictionary root
+            // rejected complete long names even after their display was recovered.
+            size_t groups = 2;
+            for (std::string suffix_source; input >> suffix_source;) {
+                if (++groups > 4 || !native_name_word_shape(suffix_source))
+                    return std::nullopt;
+                const auto suffix = resolve_native_name_group(
+                    suffix_source, language_mask, groups == 3 ? 4 : 1);
+                if (!suffix) return std::nullopt;
+                language_mask &= suffix->language_mask;
+                if (!language_mask) return std::nullopt;
+                translated += "·" + suffix->translated;
+            }
+            return translated;
+        };
+        if (const auto person = with_given_name()) return person;
+
+        // a94030/a910b0 do not require a literal first_name. When it is
+        // empty, WORD slots 0..1 become the first visible group, followed by
+        // the title (slots 2..5) and/or OfX (slot 6). A compound head is not
+        // a missing given name, nor is a three/four-root title a surname.
+        // Keep this production inside a name field, prove its RAW roots,
+        // and retain one language over every subsequent group.
+        if (!name_only) return std::nullopt;
+        std::istringstream word_input{std::string(raw)};
+        word_input >> given_source;
+        std::array<std::string, 2> suffixes;
+        size_t suffix_count = 0;
+        for (std::string suffix; word_input >> suffix;) {
+            if (suffix_count == suffixes.size() || !native_name_word_shape(suffix))
                 return std::nullopt;
-            const auto suffix = resolve_native_name_group(
-                suffix_source, language_mask, groups == 3 ? 4 : 1);
-            if (!suffix) return std::nullopt;
-            language_mask &= suffix->language_mask;
-            if (!language_mask) return std::nullopt;
-            translated += "·" + suffix->translated;
+            suffixes[suffix_count++] = std::move(suffix);
         }
-        return translated;
+        for (unsigned language = 0; language < 8; ++language) {
+            const uint8_t mask = static_cast<uint8_t>(1u << language);
+            auto head = resolve_native_compound_word(given_source, mask);
+            if (!head) head = resolve_native_given_word(given_source);
+            if (head && !(head->language_mask & mask)) head.reset();
+            // With slots 0/1 absent, the title itself becomes the first
+            // group. Its only following group is the single WORD6 root.
+            const bool title_head = !head && suffix_count == 1;
+            if (title_head) head = resolve_native_name_group(given_source, mask, 4);
+            if (!head) continue;
+            std::string translated = head->translated;
+            bool complete = true;
+            for (size_t group = 0; group < suffix_count; ++group) {
+                const auto suffix = resolve_native_name_group(suffixes[group], mask,
+                    group == 0 && !title_head ? 4 : 1);
+                if (!suffix) { complete = false; break; }
+                translated += "·" + suffix->translated;
+            }
+            if (complete) return translated;
+        }
+        return std::nullopt;
     };
 
     auto terminal_name_gloss = [&](const std::string &folded, std::string gloss) {

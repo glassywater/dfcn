@@ -1,0 +1,180 @@
+Native Attacks report source reconstruction from the configured Windows PEs.
+Steam PE:6a70a6d9:02711000; classic PE:6a70b91c:0270a000.
+These are offline source instructions and productions, not a game observation.
+Reproduce with tools/extract_fortress_attack_sources.py using the fixed Python.
+The script reads both actual configured executable files through CaptionImage
+and the fixed native objdump. It neither builds dictionaries nor executes DF.
+
+Report category boundary
+------------------------
+Steam category function 0xeaa20..0xeab14; classic 0xea9b0..0xeaaa4.
+The input is report.type, a signed int16; an unsigned >353 default returns0.
+The two-level switch consists of a native354-byte remap and35-entry RVA table.
+The independently decoded tab-label function maps category4,5,23 to Attacks.
+All356 valid announcement enum types are retained in report-category-switch.tsv.
+Attacks admits exactly22 types:
+  53 AMBUSH_DEFENDER
+  54 AMBUSH_RESIDENT
+  56 AMBUSH_THIEF_SUPPORT_SKULKING
+  57 AMBUSH_THIEF_SUPPORT_NATURE
+  58 AMBUSH_THIEF_SUPPORT
+  59 AMBUSH_MISCHIEVOUS
+  61 AMBUSH_SNATCHER_SUPPORT
+  62 AMBUSH_AMBUSHER_NATURE
+  63 AMBUSH_AMBUSHER
+  64 AMBUSH_INJURED
+  65 AMBUSH_OTHER
+  66 AMBUSH_INCAPACITATED
+  90 TRIGGER_WEB
+  93 MEGABEAST_ARRIVAL
+  94 WEREBEAST_ARRIVAL
+  95 BEAST_AMBUSH
+  108 ENDGAME_EVENT_1
+  109 ENDGAME_EVENT_1B
+  110 ENDGAME_EVENT_2
+  147 BODY_TRANSFORMATION
+  150 UNDEAD_ATTACK
+  277 NAMED_RESIDENT_CREATURE
+Types55/60/322 are Crime despite sharing the same ambush producer owner.
+Other categories within saved full owner bodies are explicitly outside this tab.
+
+Producer boundary
+-----------------
+The existing complete native submission inventory nominates source owners from
+the current PE identities. All nominated owners and their source helpers were
+disassembled again from current image bytes. Every actual instruction is saved.
+There are11 producer owners and31 Attacks submission sites in each image:
+  Steam 110460 / classic1103f0: type150, four submissions
+  Steam a5d230 / classica5a360: type108, one submission
+  Steam a5f2d0 / classica5c400: type109, one submission
+  Steam a60e50 / classica5df80: type109, two submissions
+  Steam a618d0 / classica5ea00: type110, one submission
+  Steam da8080 / classicda2ff0: type90, one submission
+  Steam e506a0 / classice4b610: type93, one submission
+  Steam e51490 / classice4c400: type94, one submission
+  Steam 1353940 / classic134e8b0: type147, one submission
+  Steam 13547e0 / classic134f750: type93/94/95 and277, two submissions
+  Steam 13625b0 / classic135d520: remaining attack/ambush branches, seventeen submissions
+The exact type alternatives at shared submissions remain in native-submission-types.tsv.
+Do not infer event type from the most recent lexical MOV before a shared tail.
+
+Arrival and beast-description fields
+-----------------------------------
+All four owners use the full native name/creature/profession supplier1331500.
+They append " has come!", capitalize the full identity+suffix, and optionally
+append two spaces plus the entire nonempty caste RAW description at+0x220.
+The description's first ASCII a..z is capitalized; its internal text is retained.
+The status owner13547e0 accesses that same field through144ea0(...,index0x11,true),
+whose body computes caste+(index<<5), copies the whole string, and capitalizes it.
+No separate generated-description grammar is introduced by this helper.
+The others copy the same field inline. Empty descriptions omit the entire suffix.
+Each relevant branch and every invalid-index/empty-string fallback remains saved.
+There is no finite enumeration of possible world-generated identity spellings or
+custom RAW descriptions; native typed fields define those complete open branches.
+
+Finite notices and unit/creature fields
+--------------------------------------
+decompiled-productions.tsv records exact static sentences from native operands,
+including packed SIMD loads, plus each complete native dynamic source production.
+Ambush type59 has both "Intruders!  Drive them away!" and the complete caste
+singular+"!  Drive it away!" (caste singular+20, then256880 fallback when empty).
+Types64/65 use aa3bd0 singular creature fields after injury predicate1324490.
+Type66 is "There is a {creature} hidden away here."; it is not Drive them out.
+The Drive them out branch belongs to type54.
+Type90 uses1330c30 full actor plus hidden-web suffix. Its "caught up in the web!"
+sibling has a different enum27 and does not enter Attacks.
+Type147 constructs "You have transformed into a {creature}!" for the adventure
+viewpoint actor, otherwise1330c30 actor+" has transformed into a {creature}!".
+The target singular is caste+20 then race+20; there is no other "have" actor branch.
+Terminal endgame sources108/109/110 include every barrier/treasure/apocalypse/
+ancient-horror/new-pocket/divine-retribution/underworld-scream alternative.
+
+Resident naming, native type277
+------------------------------
+Steam 135c22a..135c387:
+  append "The "; aa3bd0(viewpoint race global239367c,plural=true)
+  append " have given a resident "; 132f980(unit,true) full creature/role field
+  append " the name "; getter13e5a90(unit) -> selected language_name
+  if getter nonnull and name.has_name at+72:
+    a94030(language_name) -> full displayed name, assign temporary string
+  append temporary; append "."; submit277
+The temporary already holds the resident creature/role before the optional name
+assignment. When the getter is null or has_name=false, the code leaves that prior
+temporary unchanged and appends it again as the name field. The observed machine
+code therefore retains a second creature/role rather than an empty name in that
+fallback. Both full native branches are part of this source boundary.
+
+Army/undead source, native type150
+--------------------------------
+110460 has two standalone notices for walking dead or twisted night-legion forms.
+A missing invading entity produces the standalone "An army is invading!".
+Otherwise its complete native string rbp+400 starts with one of six fixed base
+sentences selected by parley flag and entity RAW flags. It then appends these
+independently optional components, in this fixed order:
+  [B]commander identity/qualities [two spaces plus commander history]
+  [B]troop warning
+  [B]reinforcements [optional origin site]
+The [B] controls belong to this same stored report; they are not separate events.
+The source grammar uses optional components rather than enumerating arbitrary
+proper names and historical reports as fixed sentences.
+
+Commander source1150dc..1153ab:
+  "The army is commanded by " + b92f10 full historical-figure field
+  RAW flag0x85 true: append ancient/horrible demon suffix and jump directly to'.'
+  otherwise commander skill95 >=9/6/3 selects talented/seasoned/competent suffix
+  warrior skill97 >0 introduces ", a " or " and " depending on commander suffix
+  warrior skill >=9/6/3 selects true/skilled/middling warrior;1..2 append no noun
+  append'.'
+Thus native low warrior-skill1..2 can leave ", a ." or a commander+" and .".
+The demon path skips both commander/warrior skill suffixes entirely.
+All21 exact commander combinations, including four empty quality alternatives,
+are retained in decompiled-productions.tsv rather than invented demon combinations.
+The optional history supplier is actual event.virtual+d0 at115371, r9=true and
+trailing bool=false, with context historical figure id at rbp+350. The producer
+selects events involving that figure by virtual+88, then maximum f0*100+e8,
+random among ties. It does not filter the selected event's type. The complete
+history virtual formatter field therefore retains the existing133-subtype
+native event dispatch in announcement-negotiation-native/returned-history-dispatch.tsv;
+there is no finite expansion of every possible historical event's dynamic fields.
+
+Troop warning1153d4..1154dd:
+  "Beware their " + armor + skill + mounted + full military-creature-role + '!'
+  armor >=3: heavily-armored; ==2: armored; otherwise absent
+  skill >=11: elite;6..10: skilled; otherwise absent
+  mounted bool independently adds mounted
+  full role supplier132e0c0 invokes132cc10 RAW/enum profession and aa3bd0 creature
+  with plural=true; a foreign creature can appear before the complete profession
+The eighteen finite modifier combinations remain separate from their open role.
+
+Reinforcements1154f6..115762:
+  "With them "
+  monster-count>0 -> "come monstrous siege engineers"
+  else creature-count==1 -> "comes a "; otherwise -> "come "
+  selected creature id==-1 -> append'!' and skip all origin processing
+  otherwise monster-count>0 -> " and ", with "a " when creature-count==1
+  append132e0c0(profession99,race) or aa3bd0(race), plural by creature-count>=2
+  nonnull origin site -> " from the "+site-description+" of "+site-name
+  append'!'
+Consequently monster-only cannot have an origin suffix. Four reinforcement
+patterns can have that suffix; five patterns can omit it.
+Site-description uses10cbe10 dark/empty prefix, optional aa3770 RAW adjective,
+and complete10cbe50 native site-kind; site-name is b93930 full site field.
+The adjective is omitted for site kind10, absent controller, or controller0x400.
+The site-kind helper includes exactly these24 distinct text operands:
+  fortress; mountain halls; hillocks; pits; cave; forest retreat; hamlet; town;
+  shrine; labyrinth; lair; castle; fort; monastery; tower; mysterious palace;
+  mysterious dungeon; mysterious lair; vault; tomb; monument; camp;
+  important location; site (unsigned/default branch).
+Full helper bodies include each native site subtype/flag/count branch and table.
+
+Saved evidence
+--------------
+native-owners.tsv and the per-owner .asm files retain complete producer/helper bodies.
+native-literals.tsv includes full containing strings and explicit packed-load width.
+native-calls.tsv retains direct and indirect call operands without guessed callees.
+native-branches.tsv retains branch operations and the preceding flags instruction.
+native-switches.tsv reads every decoded bounded native switch table from PE bytes.
+native-submission-types.tsv retains actual submission sites and CFG type alternatives.
+decompiled-productions.tsv preserves finite authored source productions and open fields.
+Separate name-native-* files in this directory document the personal/name-word
+suppliers. Authored/user names remain distinct from generated language WORD data.

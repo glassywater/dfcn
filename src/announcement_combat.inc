@@ -261,7 +261,8 @@ std::optional<std::string> Overlay::translate_announcement_combat(
         if (scope == "$unit") {
             auto result = translate_ui_message_capture(input, true);
             if (!result && (initial_scope == "fortress-announcement" ||
-                    initial_scope == "fortress-job" || initial_scope == "fortress-arrival"))
+                    initial_scope == "fortress-job" || initial_scope == "fortress-arrival" ||
+                    initial_scope == "fortress-attack"))
                 result = translate_unit_identity(input, true);
             return finish(std::move(result));
         }
@@ -386,6 +387,33 @@ std::optional<std::string> Overlay::translate_announcement_combat(
             auto result = translate_legends_place(input, true);
             if (!translation_complete_with_native_nicknames(result, input))
                 result = exact_literal_translation(input);
+            return finish(translation_complete_with_native_nicknames(result, input)
+                ? std::move(result) : std::nullopt);
+        }
+        if (scope == "$resident-assigned-name") {
+            // 135c28c..135c2e6 reuses the resident role's NativeString. A
+            // null getter or has_name=false leaves that complete role in the
+            // final field; a94030 overwrites it only for an actual name.
+            constexpr std::string_view resident = " have given a resident ";
+            constexpr std::string_view assigned = " the name ";
+            const size_t role_at = source.find(resident);
+            const size_t name_at = source.rfind(assigned);
+            if (role_at != std::string::npos && name_at != std::string::npos &&
+                    name_at > role_at + resident.size() &&
+                    normalize_utterance(input) == std::string_view(source).substr(
+                        role_at + resident.size(), name_at - role_at - resident.size())) {
+                if (auto role = translate_announcement_combat(input, "$attack-creature-role"))
+                    return finish(std::move(role));
+            }
+            return finish(translate_legends_name(input, true));
+        }
+        if (scope == "$attack-creature-role") {
+            // 132e0c0 and 132f980 supply RAW caste/species, profession and
+            // creature-status fields, without a personal or authored name.
+            // Resolve the complete role before the generic UI noun parser.
+            auto result = translate_creature_descriptor(input, true);
+            if (!result) result = translate_unit_profession(input, false);
+            if (!result) result = translate_legends_term(input, false);
             return finish(translation_complete_with_native_nicknames(result, input)
                 ? std::move(result) : std::nullopt);
         }

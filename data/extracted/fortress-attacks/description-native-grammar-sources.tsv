@@ -1,0 +1,451 @@
+translation_file	translation_line	scope	source	target
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	12	clause	A {s}.	一种{s}。
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	13	clause	An {s}.	一种{s}。
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	14	clause	It has {s}.	它长有{s}。
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	15	clause	Its eyes glow {q}.	它的双眼闪着{q}的光。
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	16	clause	Its eye glows {q}.	它的眼睛闪着{q}的光。
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	17	clause	Its {q} hair is {s}.	它的{q}毛发{s}。
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	18	clause	Its {q} feathers are {s}.	它的{q}羽毛{s}。
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	19	clause	Its {q} scales are small and {s}.	它的{q}鳞片很小，{s}。
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	20	clause	Its {q} scales are large and {s}.	它的{q}鳞片很大，{s}。
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	21	clause	Its {q} scales are round and {s}.	它的{q}鳞片呈圆形，{s}。
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	22	clause	Its {q} scales are blocky and {s}.	它的{q}鳞片呈块状，{s}。
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	23	clause	Its {q} scales are jagged and {s}.	它的{q}鳞片参差不齐，{s}。
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	24	clause	Its {q} scales are oval-shaped and {s}.	它的{q}鳞片呈椭圆形，{s}。
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	25	clause	Its {q} skin is {s}.	它的{q}皮肤{s}。
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	26	clause	Its {q} exoskeleton is {s}.	它的{q}外骨骼{s}。
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	29	description	{s} composed of {s}	由{s2}构成的{s1}
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	30	description	{s} twisted into humanoid form	扭曲成人形的{s}
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	31	description	{s} in humanoid form	呈人形的{s}
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	32	description	{s} with lidless eyes	长着无睑眼睛的{s}
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	33	description	{s} with external ribs	肋骨外露的{s}
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	34	description	great {s}	巨大的{s}
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	35	description	gigantic {s}	硕大无比的{s}
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	36	description	towering {s}	高耸如塔的{s}
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	37	description	enormous {s}	庞大的{s}
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	38	description	huge {s}	巨型{s}
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	39	description	very large {s}	体型很大的{s}
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	40	description	large {s}	大型{s}
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	41	description	very small {s}	体型很小的{s}
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	42	description	small {s}	小型{s}
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	43	description	eyeless {s}	无眼的{s}
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	44	description	one-eyed {s}	独眼{s}
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	45	description	three-eyed {s}	三眼{s}
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	46	description	beakless {s}	无喙的{s}
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	47	description	noseless {s}	无鼻的{s}
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	48	description	skinless {s}	无皮的{s}
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	49	description	hairy {s}	多毛的{s}
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	50	description	feathered {s}	覆有羽毛的{s}
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	51	description	scaly {s}	覆有鳞片的{s}
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	52	description	fleshy {s}	肉质的{s}
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	53	description	armored {s}	披甲的{s}
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	62	creature-status	zombie {s}	僵尸{s}
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	63	creature-status	skeletal {s}	骷髅形态的{s}
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	64	creature-status	rotting {s}	腐烂的{s}
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	65	creature-status	ghostly {s}	幽灵形态的{s}
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	66	description	six-legged {s}	六足{s}
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	67	description	eight-legged {s}	八足{s}
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	68	description	grime and filth	污垢和秽物
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	69	description	solid salt	固态盐
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	72	description	a {s} tail	一条{s}尾巴
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	73	description	{c} {s} tails	{c}条{s}尾巴
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	74	description	a {s} horn	一根{s}角
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	75	description	{c} {s} horns	{c}根{s}角
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	76	description	a {s} trunk	一条{s}象鼻
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	77	description	a {s} shell	一个{s}壳
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	78	description	an {s} shell	一个{s}壳
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	79	description	a pair of {s} antennae	一对{s}触角
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	80	description	a proboscis	一根长鼻
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	81	description	large mandibles	巨大的颚
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	82	description	wings	翅膀
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	83	description	feathered wings	羽翼
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	84	description	thin wings of stretched skin	由绷紧皮肤构成的薄翼
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	85	description	lacy wings	蕾丝般的翅膀
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	86	description	long, hanging	修长下垂的
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	87	description	long, straight	修长笔直的
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	88	description	long, curly	修长卷曲的
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	89	description	long, spiral	修长螺旋状的
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	90	description	long, curving	修长弯曲的
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	91	description	long, swinging	修长摇摆的
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	92	description	fat, bulging	肥厚鼓胀的
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	93	description	twisting, jointed	扭曲分节的
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	94	description	short	短小的
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	95	description	stubby	粗短的
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	96	description	narrow	狭窄的
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	97	description	long	修长的
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	98	description	broad	宽阔的
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	99	description	curling	卷曲的
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	100	description	knobby	多瘤节的
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	101	description	round	圆形的
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	102	description	spiral	螺旋状的
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	103	description	square	方形的
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	104	description	enormous	庞大的
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	105	description	fan-like	扇状的
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	106	description	spindly	细长的
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	107	description	squat	粗矮的
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	108	description	branching	分枝状的
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	112	behavior	it has a regal bearing	它仪态威严
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	113	behavior	it has an austere look about it	它神情肃穆
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	114	behavior	it moves deliberately	它行动从容
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	115	behavior	it moves about carelessly	它行动漫不经心
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	116	behavior	it bears a look of unbelievable peace	它显得无比安详
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	117	behavior	it emanates an aura of giving and kindness	它散发着慷慨仁慈的气息
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	118	behavior	joy marks its every movement	它的一举一动都洋溢着喜悦
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	119	behavior	it moves its will in accordance with the truth of things	它的意志遵循万物的真理
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	120	behavior	it is ravening	它贪婪地吞噬一切
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	121	behavior	it is slavering	它垂涎欲滴
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	122	behavior	it belches and croaks	它不断打嗝并发出嘶哑叫声
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	123	behavior	it undulates rhythmically	它有节奏地起伏扭动
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	124	behavior	it squirms and fidgets	它扭动着，躁动不安
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	125	behavior	it has a bloated body	它身躯臃肿
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	126	behavior	it has a gaunt appearance	它形容枯槁
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	127	behavior	it appears to be emaciated	它看上去瘦骨嶙峋
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	128	behavior	it chants ceaselessly	它不停地吟唱
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	129	behavior	it murmurs horrible curses	它低声念诵可怕的诅咒
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	130	behavior	it spouts gibberish periodically	它不时口吐胡言
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	131	behavior	it knows and intones the names of all it encounters	它知晓并吟诵着遇到的所有生灵的名字
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	132	behavior	it repeatedly makes threats of torture and death	它不断以折磨和死亡相威胁
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	133	behavior	it hurls vicious insults constantly	它不停地恶毒咒骂
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	134	behavior	with singular purpose it seeks to destroy the living	它一心要毁灭生者
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	135	behavior	it is crazed for blood and flesh	它对血肉的渴望近乎疯狂
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	140	behavior	it mutters to itself as it moves aimlessly	它漫无目的地游荡，喃喃自语
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	141	behavior	it groans from time to time	它不时发出呻吟
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	142	behavior	it howls into high winds	它迎着狂风嚎叫
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	143	behavior	it shambles sluggishly	它拖着步子缓慢蹒跚前行
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	144	behavior	it stamps the ground and snorts	它跺着地面，喷着鼻息
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	145	behavior	it lumbers along steadily from place to place	它迈着笨重的步子，不停地四处走动
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	146	behavior	its joints are backward	它的关节反向弯曲
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	147	behavior	it moves with uneven jerking motions	它行动时不规则地抽动
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	148	behavior	its limbs jut out at asymmetric angles	它的四肢以不对称的角度伸出
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	149	behavior	it lopes quickly along the ground	它沿着地面大步快跑
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	150	behavior	it strides in silence with purpose	它目标明确地默默大步前行
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	155	behavior	it looks constantly to the sky for rain	它不停地望向天空，盼着下雨
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	156	behavior	it growls, buzzes, clicks and generally makes a varied racket	它发出咆哮、嗡鸣、咔嗒等各种嘈杂声响
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	157	behavior	it is decorated with intricate patterns	它身上装饰着繁复的图案
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	158	behavior	it is perfectly symmetric	它的身体完全对称
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	159	behavior	it is strikingly beautiful	它美得令人惊叹
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	160	behavior	it is covered with a filmy sac	它全身裹着一层薄膜囊
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	161	behavior	nearby vegetation seem to shrink away from it	附近的草木似乎都在退缩，躲避它
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	162	behavior	the pieces of its body are carefully separated by markings	它身体的各个部分由纹路清晰地分隔开来
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	163	behavior	its moans seem to echo no matter where it resides	无论身处何地，它的呻吟似乎总有回声
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	164	behavior	it spins wildly, lurching and howling	它疯狂地旋转、踉跄并嚎叫
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	165	behavior	it seems very pleasant	它显得十分和善
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	166	behavior	it never misses an opportunity to jump in puddles	它从不放过跳进水洼的机会
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	167	behavior	it appears to be covered with rocky crags	它身上仿佛布满嶙峋的岩石
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	168	behavior	it radiates a sad kindness	它散发着悲悯的气息
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	169	behavior	it makes those around it feel brave	它使周围的生灵感到勇敢
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	170	behavior	it appears constructed	它看上去像是被制造出来的
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	171	behavior	small objects seem to pop into existence around it	它周围似乎总有小物件凭空出现
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	172	behavior	it whirls, skips and jumps whenever it moves	它一动起来便旋转、蹦跳
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	173	behavior	it is difficult to see clearly even in bright light	即使在明亮的光线下，也很难看清它
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	174	behavior	it always turns to welcome the rise of the sun	它总是转身迎接旭日升起
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	175	behavior	it hums pleasantly when the sun is high in the sky	烈日当空时，它会愉快地哼唱
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	176	behavior	it has a rattling exhale	它呼气时发出格格声
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	177	behavior	its body is bent and misshapen	它的身体扭曲畸形
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	178	behavior	it slavers uncontrollably	它止不住地流涎
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	179	behavior	it moves with great focus	它行动时极为专注
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	180	behavior	it bears malodorous pustules	它身上长着恶臭的脓疱
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	181	behavior	the details of its form are easily forgotten without deliberate concentration	若不刻意集中注意力，它的外形细节很容易被遗忘
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	182	behavior	it never looks toward the sun	它从不望向太阳
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	183	behavior	it is utterly still when not taking deliberate action	它不主动行动时便一动不动
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	184	behavior	it looks very solid and stocky	它看上去十分结实敦壮
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	185	behavior	it appears to be closely related to every other of its kind	它似乎与每一个同类都有亲缘关系
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	186	behavior	fanfare follows it wherever it goes	它所到之处都有嘹亮的号角声相随
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	187	behavior	it never appears to be perturbed or surprised by any happening	无论发生何事，它似乎都不会感到困扰或惊讶
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	188	behavior	it appears to be very healthy	它看上去非常健康
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	189	behavior	it skips and twirls as it moves	它一边移动，一边蹦跳旋转
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	190	behavior	a sheen around it always seems to rise upward	它周围的光辉似乎总在向上升腾
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	191	behavior	it only looks comfortable when it is in the water	它似乎只有待在水中才感到自在
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	192	behavior	it always moves carefully around water	它在水边总是小心翼翼地行动
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	193	behavior	it has the delicious smell of freshly-baked goods	它散发着刚出炉的烘焙食品的诱人香气
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	194	behavior	it is impossible to hold a grudge near it	在它身边，任何怨恨都无法留存
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	195	behavior	it is very sturdy-looking	它看上去十分坚固
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	196	behavior	it eagerly moves from place to place	它兴致勃勃地四处走动
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	197	behavior	it changes between two colors intermittently	它不时在两种颜色之间变换
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	198	behavior	it giggles at random	它不时无缘无故地咯咯笑
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	199	behavior	it makes those around it want to give up their possessions	它使周围的生灵想要舍弃自己的财物
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	200	behavior	it seems to smile constantly	它似乎始终面带微笑
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	201	behavior	it is surrounded by a gentle atmosphere	它周围洋溢着柔和的气息
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	202	behavior	it radiates an aura of welcoming	它散发着热情好客的气息
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	203	behavior	it inspects the ground intently as it moves	它边走边专注地察看地面
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	204	behavior	flashes of energy pulse across its surface intermittently	它的体表不时闪过能量的脉动
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	205	behavior	it appears to be a very bitter creature	它看上去满怀怨恨
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	206	behavior	its whole body appears to be faceted in a symmetric fashion	它全身仿佛布满对称的切面
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	207	behavior	it seems eager to pronounce judgment on others	它似乎急于审判他者
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	208	behavior	it appears very deliberate in its actions	它的一举一动都显得深思熟虑
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	209	behavior	it moves ponderously	它行动沉重缓慢
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	210	behavior	it has a very stark look about it	它的外表显得十分严峻
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	211	behavior	it seems unerringly honest if one does not concentrate	若不仔细留意，它看上去无比诚实
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	212	behavior	it returns surrounding light with a new vibrance and intensity	它将周围的光反射得更加鲜亮强烈
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	213	behavior	it crackles with energy	它身上的能量噼啪作响
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	214	behavior	it always seems to be looking far into the distance	它似乎总在眺望远方
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	215	behavior	it stares longingly at those nearby	它深情地凝望着身旁的生灵
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	216	behavior	it never abandons its companions	它从不抛弃同伴
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	217	behavior	it changes direction suddenly at times	它有时会突然改变方向
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	218	behavior	it has an unnerving stare	它的凝视令人不安
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	219	behavior	it heckles those it meets that are not married	它会嘲弄遇到的未婚者
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	220	behavior	it always seems like it is on the verge of crying	它似乎总是泫然欲泣
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	221	behavior	it appears to have sharp shimmering edges on many parts of its body	它身体多处似乎都有闪亮的锋利棱缘
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	222	behavior	it has an angular appearance	它的外形棱角分明
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	223	behavior	it has a distinctly depressing moan	它的呻吟格外令人消沉
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	224	behavior	it is difficult to see clearly	它的身形难以看清
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	225	behavior	it changes color with the phases of the moon	它的颜色随月相变化
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	226	behavior	it is very solidly built	它的体格十分壮实
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	227	behavior	there is a foul reek about it	它周围弥漫着恶臭
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	228	behavior	it cannot abide anything that lives	它无法容忍任何活物
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	229	behavior	it sounds clear tones as its body moves in time	它的身体随节拍律动，发出清亮的音调
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	230	behavior	it seems most at ease when it is outdoors	它在户外似乎最为自在
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	231	behavior	it eerily reflects the light of the stars and moon	它诡异地反射着星月的光芒
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	232	behavior	it reminds those that look upon it of their most unpleasant memories	看见它的生灵会想起自己最痛苦的回忆
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	233	behavior	it cannot look directly at somebody that has broken an oath	它无法直视违背誓言者
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	234	behavior	it always raises a part of its body toward the moon	它总会抬起身体的一部分，朝向月亮
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	235	behavior	it moves very stiffly	它的动作十分僵硬
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	236	behavior	its surface is always enlivened with a refreshing play of color	它的体表总有清新的色彩流转，显得生机勃勃
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	237	behavior	it has an incredibly calm demeanor	它的举止平静得不可思议
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	238	behavior	it rocks back and forth whenever somebody changes their mind in its presence	每当有谁在它面前改变主意，它便前后摇晃
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	239	behavior	it always seems to point toward the sun when it is in the sky	只要太阳还在天上，它似乎就一直朝向太阳
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	240	behavior	it recites verses in a strange language on occasion	它偶尔会用陌生的语言吟诵诗句
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	241	behavior	it appears to be expecting	它看上去怀有身孕
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	242	behavior	it leaves water wherever it goes	它所到之处都会留下水迹
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	243	behavior	it is strikingly colored	它的颜色格外醒目
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	244	behavior	it alternates from instant to instant between sluggishness and extreme vibrancy	它时而迟缓，时而活力四射，瞬息变化
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	245	behavior	it moves with a bouncing rhythm	它的动作带着轻快跳跃的节奏
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	246	behavior	it has a fixed and unblinking gaze when interacting	它与他者互动时目光紧盯，眨也不眨
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	247	behavior	its outer surface seems to flow about its body	它的外表似乎在绕着身体流动
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	248	behavior	it is hard to disobey	它令人难以违抗
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	249	behavior	it always nods eagerly when somebody is speaking	有谁说话时，它总是热切地点头
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	250	behavior	it inspires those around it to acts of great sacrifice	它激励周围的生灵作出巨大的牺牲
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	251	behavior	it makes nearby water undrinkable	它使附近的水变得无法饮用
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	252	behavior	it always seems to be deep in thought	它似乎总在沉思
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	253	behavior	its form is ever-changing	它的形态不断变化
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	254	behavior	it makes absolutely no sound	它完全不发出任何声音
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	255	behavior	it has a slowly shifting pattern on its surface	它的体表有缓缓变化的图案
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	256	behavior	it sings beautiful songs endlessly	它不停地唱着优美的歌
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	257	behavior	it pays attention carefully to anybody that is speaking	它会仔细聆听每一个说话者
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	258	behavior	it appears to sparkle after night falls	夜幕降临后，它似乎会闪闪发光
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	259	behavior	its movement is the sound of wind and rain	它行动时发出风雨之声
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	260	behavior	it looks solidly built	它看上去体格结实
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	261	behavior	it mutters to itself about death	它喃喃自语地谈论死亡
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	262	behavior	it is difficult to look at directly	它令人难以直视
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	263	behavior	it always seems to have its attention on the most valuable object in the area	它似乎总在留意周围最值钱的物件
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	264	behavior	its movements sound like the rattling of chains	它行动时发出锁链碰撞般的声响
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	265	behavior	it is incredibly noisy	它吵闹得不可思议
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	266	behavior	it appears to be covered with sharp hooks and barbs	它身上似乎布满锋利的钩刺和倒刺
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	267	behavior	it seems most content when a fair wind is blowing	顺风吹拂时，它似乎最为满足
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	268	behavior	it never stops moving completely	它从未完全停止移动
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	269	behavior	it is unsettling to be around	待在它身边令人不安
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	270	behavior	it is top-heavy	它的身体上重下轻
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	271	behavior	it has a tendency to laugh quietly to itself every so often	它不时会独自轻声发笑
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	272	behavior	it tenses up throughout its entire body whenever somebody tells a falsehood in its presence	每当有谁在它面前说谎，它便全身紧绷
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	273	behavior	it chitters briefly before sunrise and just after nightfall	日出前和夜幕刚降临时，它会短促地吱喳叫
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	274	behavior	it always tries to embolden any fighting in its presence with exhortations of bravery, even its foes	它总会呼喊着鼓舞眼前所有交战者的勇气，连敌人也不例外
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	275	behavior	it looks very proud of itself	它看上去十分自豪
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	276	behavior	it seems to glow brightly from within	它似乎从体内放射出耀眼的光芒
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	277	behavior	it bellows and cheers without pause	它不停地吼叫欢呼
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	278	behavior	it seems to flow as it moves	它行动时仿佛在流淌
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	279	behavior	it always seems to be counting something	它似乎总在数着什么
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	280	behavior	it changes appearance based on the clouds and precipitation above	它的外貌随上方的云层和降水而变化
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	281	behavior	it is surrounded by an everpresent rush of wind	它周围始终有疾风环绕
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	282	behavior	it acts with unwavering calm	它始终沉着地行动
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	283	behavior	it is covered with divine writing	它身上写满神圣的文字
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	284	behavior	it appears spry and vigorous	它看上去灵活而充满活力
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	285	behavior	it is a divine being	它是神圣的生灵
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	290	clause	It was created by {n} and is of a part with {r}.	它由{n}创造，与{r}相连。
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	291	clause	It was created by {n}.	它由{n}创造。
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	292	clause	It was created by an unknown deity and is of a part with {r}.	它由一位不知名的神祇创造，与{r}相连。
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	293	clause	It was created by an unknown deity.	它由一位不知名的神祇创造。
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	300	experiment-origin	This night creature was first created by {n} {s} in the year {d}.	第{d}年，{n}{s}，首次创造出了这种夜行生物。
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	301	experiment-origin	This night creature was first created by {n} of {p} {s} in the year {d}.	第{d}年，来自{p}的{n}{s}，首次创造出了这种夜行生物。
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	302	failed-experiment-origin	This night creature was first created accidentally by {n} {s} in the year {d}.	第{d}年，{n}{s}，首次意外创造出了这种夜行生物。
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	303	failed-experiment-origin	This night creature was first created accidentally by {n} of {p} {s} in the year {d}.	第{d}年，来自{p}的{n}{s}，首次意外创造出了这种夜行生物。
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	304	experiment-method	after horrible experiments{a}	{a}进行了可怕的实验后
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	305	failed-experiment-method	after horrible experiments gone wrong{a}	{a}进行的可怕实验失控后
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	306	experiment-power	through the fiend's terrifying power{a}	{a}释放邪魔的可怕力量后
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	307	experiment-power	through the fiend's twisted power{a}	{a}释放邪魔的扭曲力量后
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	308	experiment-power	through the fiend's chaotic power{a}	{a}释放邪魔的混沌力量后
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	309	experiment-subject	{s}	对{s}
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	313	experiment-subject	the {n}	对{n}
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	314	experiment-subject	multitudes	对大批生物
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	317	description	long and shaggy	修长蓬乱
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	318	description	very curly	非常卷曲
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	319	description	short and even	短而整齐
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	320	description	patchy	斑驳稀疏
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	321	description	unkempt	凌乱不整
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	322	description	long and straight	修长笔直
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	323	description	long and wavy	修长呈波浪状
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	324	description	fluffed-out	蓬松舒展
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	325	description	downy	柔软蓬松
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	326	description	long and broad	修长宽阔
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	327	description	long and sparse	修长稀疏
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	328	description	long and narrow	修长狭窄
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	329	description	blocky	呈块状
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	330	description	jagged	参差不齐
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	331	description	oval-shaped	呈椭圆形
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	332	description	overlapping	相互重叠
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	333	description	set far apart	间距很大
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	334	description	close-set	排列紧密
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	335	description	waxy	如蜡般光滑
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	336	description	leathery	坚韧如皮革
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	337	description	warty	布满疣粒
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	338	description	sleek and smooth	光洁平滑
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	339	description	rough and cracked	粗糙龟裂
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	340	description	wrinkled	布满褶皱
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	343	clause	Beware its fire!	小心它的火焰！
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	344	clause	Beware its webs!	小心它的蛛网！
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	345	clause	Beware its poisonous vapors!	小心它的有毒蒸气！
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	346	clause	Beware its poisonous gas!	小心它的毒气！
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	347	clause	Beware its deadly dust!	小心它的致命粉尘！
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	348	clause	Beware its deadly spittle!	小心它的致命唾液！
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	349	clause	Beware its noxious secretions!	小心它的有害分泌物！
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	350	clause	Beware its deadly blood!	小心它的致命血液！
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	351	clause	Beware its poisonous bite!	小心它的毒咬！
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	352	clause	Beware its poisonous sting!	小心它的毒刺！
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	353	clause	Beware its hunger for warm blood!	小心它对温热鲜血的渴望！
+D:\workspace\dfcn\data\runtime\legends-creature-descriptions.tsv	354	clause	Now you will know why you fear the night.	现在你会明白自己为何畏惧黑夜。
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	542	profile-noun	ankylosaurid	甲龙
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	543	profile-noun	anteater	食蚁兽
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	544	profile-noun	antelope	羚羊
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	545	profile-noun	armless biped	无臂双足生物
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	546	profile-noun	antlion larva	蚁蛉幼虫
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	547	profile-noun	ape	猿
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	548	profile-noun	aphid	蚜虫
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	549	profile-noun	assassin bug	猎蝽
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	550	profile-noun	bear	熊
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	551	profile-noun	bee	蜜蜂
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	552	profile-noun	bison	野牛
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	553	profile-noun	blob	滴团
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	554	profile-noun	bristleworm	多毛虫
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	555	profile-noun	buffalo	水牛
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	556	profile-noun	bunting	鹀
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	557	profile-noun	butterfly	蝴蝶
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	558	profile-noun	caddisfly	石蛾
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	559	profile-noun	camel	骆驼
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	560	profile-noun	caterpillar	毛虫
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	561	profile-noun	ceratopsid	角龙
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	562	profile-noun	chickadee	黑顶山雀
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	563	profile-noun	cicada	蝉
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	564	profile-noun	civet	灵猫
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	565	profile-noun	click beetle	叩甲
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	566	profile-noun	cobra	眼镜蛇
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	567	profile-noun	cockatoo	凤头鹦鹉
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	568	profile-noun	cockroach	蟑螂
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	569	profile-noun	condor	兀鹫
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	570	profile-noun	crane	鹤
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	571	profile-noun	cricket	蟋蟀
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	572	profile-noun	crocodile	鳄鱼
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	573	profile-noun	cuckoo	杜鹃
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	574	profile-noun	decapod	十足生物
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	575	profile-noun	darkling beetle	拟步甲
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	576	profile-noun	dove	鸽
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	577	profile-noun	dung beetle	蜣螂
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	578	profile-noun	earthworm	蚯蚓
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	579	profile-noun	earwig	蠼螋
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	580	profile-noun	falcon	隼
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	581	profile-noun	fantail	扇尾鹟
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	582	profile-noun	finch	雀
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	583	profile-noun	flamingo	火烈鸟
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	584	profile-noun	flat worm	扁形虫
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	585	profile-noun	flea	跳蚤
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	586	profile-noun	flycatcher	鹟
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	587	profile-noun	frog	青蛙
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	588	profile-noun	fruit bat	果蝠
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	589	profile-noun	gecko	壁虎
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	590	profile-noun	gopher	囊地鼠
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	591	profile-noun	grebe	鸊鷉
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	592	profile-noun	grouse	松鸡
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	593	profile-noun	gull	海鸥
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	594	profile-noun	hadrosaurid	鸭嘴龙
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	595	profile-noun	harrier	鹞
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	596	profile-noun	hawk	鹰
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	597	profile-noun	hexapod	六足生物
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	598	profile-noun	hippopotamus	河马
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	599	profile-noun	honeyeater	吸蜜鸟
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	600	profile-noun	hornet	胡蜂
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	601	profile-noun	humanoid	人形生物
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	602	profile-noun	hummingbird	蜂鸟
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	603	profile-noun	iguanodont	禽龙
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	604	profile-noun	jay	松鸦
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	605	profile-noun	kingfisher	翠鸟
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	606	profile-noun	kinglet	戴菊
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	607	profile-noun	kite	鸢
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	608	profile-noun	lacewing	草蛉
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	609	profile-noun	ladybug	瓢虫
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	610	profile-noun	lark	云雀
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	611	profile-noun	lemur	狐猴
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	612	profile-noun	lobster	龙虾
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	613	profile-noun	loris	懒猴
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	614	profile-noun	lyrebird	琴鸟
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	615	profile-noun	maggot	蛆
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	616	profile-noun	mammoth	猛犸象
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	617	profile-noun	marmot	旱獭
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	618	profile-noun	martin	毛脚燕
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	619	profile-noun	mayfly	蜉蝣
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	620	profile-noun	mite	螨虫
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	621	profile-noun	mockingbird	嘲鸫
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	622	profile-noun	mole	鼹鼠
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	623	profile-noun	monitor	巨蜥
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	624	profile-noun	monkey	猴
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	625	profile-noun	mouse	鼠
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	626	profile-noun	nematode	线虫
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	627	profile-noun	newt	水螈
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	628	profile-noun	nightjar	夜鹰
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	629	profile-noun	nuthatch	鳾
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	630	profile-noun	octopod	八足生物
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	631	profile-noun	otter	水獭
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	632	profile-noun	owl	猫头鹰
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	633	profile-noun	oxpecker	牛椋鸟
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	634	profile-noun	panther	黑豹
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	635	profile-noun	parrot	鹦鹉
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	636	profile-noun	pelican	鹈鹕
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	637	profile-noun	petrel	海燕
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	638	profile-noun	pheasant	雉鸡
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	639	profile-noun	pigeon	鸽子
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	640	profile-noun	primate	灵长类生物
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	641	profile-noun	pterosaur	翼龙
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	642	profile-noun	quadruped	四足兽
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	643	profile-noun	quail	鹌鹑
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	644	profile-noun	quetzal	凤尾绿咬鹃
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	645	profile-noun	rhinoceros beetle	独角仙
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	646	profile-noun	ribbon worm	纽形虫
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	647	profile-noun	rove beetle	隐翅虫
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	648	profile-noun	salamander	蝾螈
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	649	profile-noun	sauropod	蜥脚龙
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	650	profile-noun	scarab beetle	金龟子
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	651	profile-noun	scorpion	蝎子
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	652	profile-noun	scorpionfly	蝎蛉
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	653	profile-noun	serpent	蛇
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	654	profile-noun	shrew	鼩鼱
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	655	profile-noun	shrike	伯劳
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	656	profile-noun	shrimp	虾
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	657	profile-noun	silverfish	衣鱼
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	658	profile-noun	snake	蛇
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	659	profile-noun	snakefly	蛇蛉
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	660	profile-noun	spider	蜘蛛
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	661	profile-noun	squirrel	松鼠
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	662	profile-noun	stag beetle	锹甲
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	663	profile-noun	starling	椋鸟
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	664	profile-noun	stegosaurid	剑龙
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	665	profile-noun	stick insect	竹节虫
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	666	profile-noun	stonefly	石蝇
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	667	profile-noun	stork	鹳
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	668	profile-noun	swallow	燕子
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	669	profile-noun	swift	雨燕
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	670	profile-noun	tanager	唐纳雀
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	671	profile-noun	tarantula	捕鸟蛛
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	672	profile-noun	theropod	兽脚龙
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	673	profile-noun	thornbill	刺嘴莺
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	674	profile-noun	thrush	鸫
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	675	profile-noun	tiger beetle	虎甲
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	676	profile-noun	titmouse	山雀
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	677	profile-noun	tortoise	陆龟
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	678	profile-noun	toucan	巨嘴鸟
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	679	profile-noun	turtle	龟
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	680	profile-noun	viper	蝰蛇
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	681	profile-noun	warbler	莺
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	682	profile-noun	wasp	黄蜂
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	683	profile-noun	waxwing	太平鸟
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	684	profile-noun	weevil	象甲
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	685	profile-noun	woodpecker	啄木鸟
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	686	profile-noun	worm	蠕虫
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	687	profile-noun	wyrm	蠕龙
+D:\workspace\dfcn\data\runtime\creature-name-vocabulary.tsv	688	profile-noun	zebra	斑马

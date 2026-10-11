@@ -66,8 +66,14 @@ std::optional<std::string> Overlay::translate_complete_announcement(
         // those before the general catalogue can consume the opening while
         // leaving the subsequent native report outside its field grammar.
         for (const std::string_view scope : {
-                "fortress-arrival", "fortress-announcement", "historical-event-paragraph"}) {
-            if (const auto native = translate_announcement_combat(block, scope)) {
+                "fortress-attack", "fortress-arrival", "fortress-announcement", "historical-event-paragraph"}) {
+            // The attack producer joins commander, warning and reinforcement
+            // paragraphs with native [B] controls. Match their visible whole
+            // record, using the same control normalization as report capture.
+            const std::string attack_source = scope == "fortress-attack"
+                ? native_announcement_display_source(block) : std::string{};
+            if (const auto native = translate_announcement_combat(
+                    scope == "fortress-attack" ? std::string_view(attack_source) : block, scope)) {
                 for (unsigned char ch : *native)
                     if ((ch & 0xc0) != 0x80) translated_colors.push_back(colors.front());
                 return native;

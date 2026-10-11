@@ -1,0 +1,50 @@
+Native DESCRIPTION field reconstruction
+
+Reference ambush arrival: 0x1413625b0; selected source 0x1413627a9..0x141362913.
+Classic ambush arrival: 0x14135d520; selected source 0x14135d719..0x14135d883.
+Both read unit.race (+0xa4), unit.caste (+0x12c), world.raws.creatures vector,
+creature.caste (+0x178/+0x180), then copy caste.description (+0x220).
+A negative or out-of-range race/caste skips DESCRIPTION. An empty string also
+skips it. Otherwise its first ASCII a..z byte is capitalized and the exact
+whole string is appended after two spaces. It is not formatted from combat
+body-part or attack vocabulary at announcement time.
+
+General arrival (reference 0x1413547e0, classic 0x14134f750) requests caste
+property index 0x11 through reference 0x140144ea0/classic 0x140144e30. The
+helper selects caste + index*0x20, hence 0x11*0x20=0x220 DESCRIPTION; option
+true applies the same initial-letter capitalization. The caller appends the
+whole nonempty result after two spaces. Supplier assembly retains all index,
+length, small-string-storage and uppercase control flow.
+
+The body/source constructor is Lua build_procgen_creature -> build_description.
+DESCRIPTION = A/An + size + optional btc2 adjective + optional btc adjective
++ physical profile noun + optional humanoid form + optional with-description
++ optional composed-of material + period. Optional appendages (wings, tail(s),
+proboscis, trunk, shell, antennae or horn(s), mandibles) then precede a selected
+behavior, or the behavior is capitalized when no appendage is present.
+Body size >=6000000 picks great/gigantic/towering/an enormous/huge; >=400000
+very large; >=80000 large; <=30000 very small; <=60000 small; 60001..79999
+has no size adjective. The supplied Lua ranges retain every actual condition.
+
+Optional glowing eye(s) use the world descriptor color name. Surface descriptions
+use hair (7 texture alternatives), feathers (6), scales (6 shapes x 3 arrangements),
+skin and exoskeleton (6 texture alternatives). Material providers retain named
+inorganic states and all fixed substance branches in the source extraction.
+An end_phrase overrides an attack warning. Night creatures use Now you will
+know why you fear the night.; experiment and angel origins have typed person,
+site, creature and year/sphere fields. Otherwise attack_tweak supplies one of
+poisonous sting, fire, webs, poisonous vapors, poisonous gas, deadly dust,
+deadly spittle, noxious secretions, deadly blood, poisonous bite, or hunger for
+warm blood. Script sources include all default/good/evil/night-troll/custom
+bogeyman/nightmare/werebeast/angel-sphere alternatives and origins.
+
+Existing announcement-combat-grammar.tsv routes has come! + description
+through unit,$description. announcement_combat.inc resolves the entire
+$description with translate_legends_text; physical description clauses,
+recursive noun phrases, standalone/joined behaviors, colors, warning literals,
+and experiment/angel origins are already authored in legends-creature-
+descriptions.tsv. description-native-grammar-sources.tsv preserves those
+existing mappings and shared physical-profile mappings as source evidence.
+Materials, colors, anatomy, native names and dynamic sites reuse their current
+scoped vocabularies; no world-specific text or replacement dictionary is added.
+This extraction is source analysis, not a game display observation.
