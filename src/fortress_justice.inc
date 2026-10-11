@@ -198,6 +198,7 @@ void Overlay::append_fortress_justice_rows(std::vector<std::string> &rows,
         "Interrogations", "Actors", "Organizations", "Plots"
     }};
     int actors_body_y = -1;
+    int organizations_body_y = -1;
     int plots_body_y = -1;
     bool interrogations_selected = false;
     for (int y = band->tabs_y + 1; y < std::min(bottom, band->tabs_y + 6); ++y) {
@@ -227,6 +228,11 @@ void Overlay::append_fortress_justice_rows(std::vector<std::string> &rows,
         const int actor_color = color_at(starts[1]);
         const int report_color = color_at(starts[0]);
         const int plot_color = color_at(starts[3]);
+        const int organization_color = color_at(starts[2]);
+        if (organization_color >= 0 && actor_color >= 0 && report_color >= 0 &&
+                organization_color != actor_color && actor_color == report_color &&
+                actor_color == plot_color)
+            organizations_body_y = y + 1;
         if (plot_color >= 0 && actor_color >= 0 && report_color >= 0 &&
                 plot_color != actor_color && actor_color == report_color)
             plots_body_y = y + 1;
@@ -378,6 +384,166 @@ void Overlay::append_fortress_justice_rows(std::vector<std::string> &rows,
         std::fill_n(rows[part.y].begin() + part.x, length, ' ');
     };
 #include "fortress_justice_plots.inc"
+    // The organization renderer supplies typed draws even when a disabled
+    // neighbouring tab has a different palette. Their exact caller and live
+    // bytes also identify a scrolled chart whose heading is above the viewport.
+    const auto organization_draw_current = [&](const NativeDrawnTextRow &draw) {
+        if (!draw.justice_organization || draw.source.empty() ||
+                draw.x < band->panel.x || draw.x >= right ||
+                draw.y <= band->tabs_y || draw.y >= bottom ||
+                draw.draw_dimx != gps_->dimx || draw.draw_dimy != gps_->dimy ||
+                draw.draw_grid != (draw.top_layer ? gps_->screen_top : gps_->screen)) return false;
+        const int length = std::min(right - draw.x, static_cast<int>(draw.source.size()));
+        return length > 0 && context[draw.y].compare(draw.x, length, draw.source, 0, length) == 0;
+    };
+    for (const auto &draw : draws)
+        if (organization_draw_current(draw)) {
+            organizations_body_y = organizations_body_y < 0
+                ? draw.y : std::min(organizations_body_y, draw.y);
+            break;
+        }
+    if (organizations_body_y >= 0) {
+        int list_right = right;
+        for (const auto &bar : native_vertical_scrollbar_spans(*gps_, band->panel))
+            list_right = std::min(list_right, bar.x);
+        const auto person_target = [&](const NativeJusticeOrganizationCaption &caption,
+                                        std::string_view source) {
+            if (caption.person_target) return caption.person_target;
+            const auto person = caption.person_source.empty() ? source : std::string_view(caption.person_source);
+            auto target = exact_literal_translation("Justice actor: " + std::string(person));
+            if (!target) target = translate_unit_identity(person, true);
+            return target;
+        };
+        const auto append_draw = [&](const NativeDrawnTextRow &draw, int rule,
+                                     const std::string &target, const SDL_Rect &box,
+                                     const std::string &whole) {
+            SDL_Rect caption_box{};
+            if (!SDL_IntersectRect(&box, &band->panel, &caption_box)) return;
+            if (draw.draw_clip) {
+                SDL_Rect clipped{};
+                if (!SDL_IntersectRect(&caption_box, &*draw.draw_clip, &clipped)) return;
+                caption_box = clipped;
+            }
+            const auto source = std::string_view(draw.source).substr(0,
+                static_cast<size_t>(std::max(0, std::min(right - draw.x,
+                    static_cast<int>(draw.source.size())))));
+            const auto visible = trim_view(source);
+            if (visible.empty()) return;
+            const int x = draw.x + static_cast<int>(visible.data() - source.data());
+            const NativeTextCardRow part{x, draw.y, std::string(visible),
+                {draw.foreground_rgb >= 0 ? draw.foreground_rgb : 0xffffff}};
+            append(part, rule, target, false, caption_box, whole);
+            // addst's classic half-font writes the same caption again below
+            // the logical baseline. Both physical spans belong to this field.
+            if (half_at(x, draw.y) == (1u << 3) && draw.y + 1 < bottom &&
+                    half_at(x, draw.y + 1) == (1u << 4) &&
+                    context[draw.y + 1].compare(x, visible.size(), visible) == 0) {
+                auto lower = part;
+                ++lower.y;
+                append(lower, rule, target, false, caption_box, whole);
+            }
+        };
+        for (const auto &draw : draws) {
+            if (!organization_draw_current(draw)) continue;
+            const auto &caption = *draw.justice_organization;
+            const std::string whole = draw.complete_source.empty() ? draw.source : draw.complete_source;
+            const SDL_Rect row_box{draw.x, draw.y, std::max(1, list_right - draw.x),
+                half_at(draw.x, draw.y) == (1u << 3) ? 2 : 1};
+            switch (caption.field) {
+            case NativeJusticeOrganizationField::Title: {
+                int edge = list_right;
+                // The counter has its own draw and color. Its actual start
+                // bounds the complete title; never include it in a name.
+                for (const auto &field : split_text_fields(context[draw.y])) {
+                    if (field.start <= draw.x) continue;
+                    const auto slash = field.text.find('/');
+                    if (slash == std::string::npos || slash == 0 || slash + 1 == field.text.size()) continue;
+                    if (field.text.substr(0, slash).find_first_not_of("0123456789") == std::string::npos &&
+                            field.text.substr(slash + 1).find_first_not_of("0123456789") == std::string::npos)
+                        edge = std::min(edge, field.start);
+                }
+                const auto target = person_target(caption, trim_view(whole));
+                append_draw(draw, kFortressJusticeActorRule,
+                    target.value_or(native_text_to_utf8(whole)),
+                    {draw.x, draw.y, std::max(1, edge - draw.x), row_box.h}, whole);
+                break;
+            }
+            case NativeJusticeOrganizationField::Members: {
+                const auto target = translate_justice_case_text(whole);
+                if (target) append_draw(draw, kFortressJusticeActorRule, *target, row_box, whole);
+                break;
+            }
+            case NativeJusticeOrganizationField::SelectedLabel: {
+                const NativeDrawnTextRow *name = nullptr;
+                for (const auto &candidate : draws)
+                    if (organization_draw_current(candidate) && candidate.y == draw.y &&
+                            candidate.x == draw.x + static_cast<int>(draw.source.size()) &&
+                            candidate.justice_organization->field == NativeJusticeOrganizationField::SelectedName) {
+                        name = &candidate;
+                        break;
+                    }
+                const auto label = exact_literal_translation("Justice organization: Selected actor");
+                if (!label) break;
+                if (!name) {
+                    append_draw(draw, kFortressJusticeActorRule, *label + "：", row_box, whole);
+                    break;
+                }
+                const std::string full_name = name->complete_source.empty() ? name->source : name->complete_source;
+                const auto target = person_target(*name->justice_organization, trim_view(full_name));
+                const std::string full = whole + full_name;
+                append_draw(draw, kFortressJusticeActorRule,
+                    *label + "：" + target.value_or(native_text_to_utf8(full_name)), row_box, full);
+                append_draw(*name, kFortressJusticeActorRule, {}, row_box, full);
+                break;
+            }
+            case NativeJusticeOrganizationField::SelectedName: {
+                const bool joined = std::any_of(draws.begin(), draws.end(), [&](const auto &label) {
+                    return organization_draw_current(label) && label.y == draw.y &&
+                        label.x + static_cast<int>(label.source.size()) == draw.x &&
+                        label.justice_organization->field == NativeJusticeOrganizationField::SelectedLabel;
+                });
+                if (!joined) {
+                    const auto target = person_target(caption, trim_view(whole));
+                    append_draw(draw, kFortressJusticeActorRule,
+                        target.value_or(native_text_to_utf8(whole)), row_box, whole);
+                }
+                break;
+            }
+            case NativeJusticeOrganizationField::NodeRole: {
+                if (!caption.node_box) break;
+                const auto target = exact_literal_translation("Justice organization role: " + std::string(trim_view(whole)));
+                const auto &box = *caption.node_box;
+                if (target) append_draw(draw, kFortressJusticeActorRule, *target,
+                    {box.x, draw.y, box.w, row_box.h}, whole);
+                break;
+            }
+            case NativeJusticeOrganizationField::NodeName: {
+                if (!caption.node_box) break;
+                const auto &node = *caption.node_box;
+                // Keep the native two-initial representation. Its Chinese
+                // initials come from the actual given-name and surname
+                // fields; the complete name remains in the selected label.
+                append_draw(draw, kFortressJusticeActorRule,
+                    caption.initials_target.value_or(native_text_to_utf8(whole)),
+                    {draw.x, draw.y, std::max(1, node.x + node.w - draw.x), row_box.h},
+                    caption.person_source.empty() ? whole : caption.person_source);
+                break;
+            }
+            case NativeJusticeOrganizationField::NodeTail: {
+                if (!caption.node_box) break;
+                const auto &node = *caption.node_box;
+                const auto target = exact_literal_translation("Justice organization status: " + std::string(trim_view(whole)));
+                append_draw(draw, kFortressJusticeActorRule,
+                    target.value_or(native_text_to_utf8(whole)),
+                    {draw.x, draw.y, std::max(1, node.x + node.w - draw.x), row_box.h}, whole);
+                break;
+            }
+            default:
+                break;
+            }
+        }
+        return;
+    }
     if (actors_body_y >= 0) {
         // Actors are numbered records, not case buttons or report prose.
         // The counter owns its separate native field. Claim the complete

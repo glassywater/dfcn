@@ -57120,6 +57120,7 @@ It stares longingly at those nearby.	它深情地凝望着身旁的生灵。	h
 It was one of the first of its kind.	它是同类中最早的个体之一。	h
 Justice case: Violation of job order	违反工作命令	l
 Justice detail: No sentence pending.	无待执行的判决。	l
+Justice organization: Selected actor	选中人物	l
 Justice report: Interrogation Report	审讯报告	l
 Land holder trade trigger {d} (mods)	封地贵族出口财富阈值 {d}（模组）	wt
 Legendary preserver of the knowledge	传奇博学大师	w
@@ -65843,6 +65844,16 @@ Jobs removed from unpowered {s}.	已取消无动力的{s1}中的工作。	hPt
 Justice case: Disorderly conduct	扰乱秩序	l
 Justice detail: Unknown convict.	罪犯不明。	l
 Justice intelligence tab: Actors	人物	l
+Justice organization role: Assas	刺客	l
+Justice organization role: Asset	内应	l
+Justice organization role: Crrpt	腐败者	l
+Justice organization role: Framr	构陷者	l
+Justice organization role: Membr	成员	l
+Justice organization role: Sabtr	破坏者	l
+Justice organization role: Snatc	绑匪	l
+Justice organization role: Thief	窃贼	l
+Justice organization status: RIP	已故	l
+Justice organization: One member	1名成员	l
 Justice plot: Corrupt {s} of {e}	拉拢{e}的{s}	l
 Justice plot: Figure {n} the {s}	{n}（{s}）	l
 Justice sentence: day in prison.	监禁{d}日。	l
@@ -68036,6 +68047,7 @@ Its body is bent and misshapen.	它的身体扭曲畸形。	h
 Justice case: Espionage against	刺探情报，目标：	l
 Justice detail: Found the body.	发现了尸体。	l
 Justice intelligence tab: Plots	阴谋	l
+Justice organization role: Boss	首领	l
 Justice sentence: hammerstrike.	锤刑{d}次。	l
 Labor caption: Farming (Fields)	耕种	wi
 Labor caption: Plant Processing	植物加工	wi
@@ -72935,6 +72947,7 @@ Joy marks its every movement.	它的一举一动都洋溢着喜悦。	h
 Just facts - Flights of fancy	实事求是 - 爱好幻想	wl
 Justice case: Attempted theft	盗窃未遂	l
 Justice detail: No witnesses.	无证人。	l
+Justice organization: members	{d}名成员	l
 Justice person: Injured party	受害方	l
 Justice plot: , agreed in {d}	（第{d}年商定）	l
 Justice plot: Assassinate {t}	暗杀{t}	l

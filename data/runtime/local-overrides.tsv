@@ -5369,6 +5369,21 @@ Justice actor: Nameless	无名者	l
 Justice plot: Org	组织	l
 Justice plot organization: Unidentified	尚未查明	l
 Justice plot organization: Nameless	无名者	l
+# Native Justice organization summaries and chart roles; these abbreviations
+# are finite producer captions, not names or ordinary dictionary words.
+Justice organization: Selected actor	选中人物	l
+Justice organization: One member	1名成员	l
+Justice organization: members	{d}名成员	l
+Justice organization role: Boss	首领	l
+Justice organization role: Membr	成员	l
+Justice organization role: Thief	窃贼	l
+Justice organization role: Crrpt	腐败者	l
+Justice organization role: Assas	刺客	l
+Justice organization role: Snatc	绑匪	l
+Justice organization role: Sabtr	破坏者	l
+Justice organization role: Framr	构陷者	l
+Justice organization role: Asset	内应	l
+Justice organization status: RIP	已故	l
 Justice organization initials: Nameless	无名	l
 Justice organization initials: Unidentified	不明	l
 Associated Plot:	关联阴谋：	wl
