@@ -885,10 +885,11 @@ std::optional<std::string> Overlay::translate_map_hover_phrase(std::string_view 
     case NativeMapHoverKind::BuildingItem:
         return item();
     case NativeMapHoverKind::Terrain:
+        if (auto target = exact_literal_translation(source)) return target;
         if (config_.compositional_rules)
             if (auto target = RULESETS.translate_tile_description(native_text_to_utf8(source)))
                 return target;
-        return exact_literal_translation(source);
+        return std::nullopt;
     case NativeMapHoverKind::Unit: {
         std::string prefix;
         const size_t conflict_identity_at = map_hover_conflict_identity_offset(source);

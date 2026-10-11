@@ -2821,9 +2821,12 @@ static std::optional<SDL_Rect> native_captured_text_clip(const graphicst &gps, c
         bool current = true;
         for (size_t byte = 0; byte < match.source.size(); ++byte) {
             const size_t at = (static_cast<size_t>(match.x) + byte) * gps.dimy + match.y;
-            const unsigned char ch = grid[at * 8];
-            if (native_ui_top_layer_at(gps, at) != top_layer ||
-                    (ch ? ch : ' ') != static_cast<unsigned char>(match.source[byte])) {
+            const bool read_top = native_ui_top_layer_at(gps, at);
+            const auto *visible_grid = read_top ? gps.screen_top : gps.screen;
+            const unsigned char expected = static_cast<unsigned char>(match.source[byte]);
+            const unsigned char ch = visible_grid ? visible_grid[at * 8] : 0;
+            if (!visible_grid || (ch ? ch : ' ') != expected ||
+                    (expected != ' ' && read_top != top_layer)) {
                 current = false;
                 break;
             }
@@ -2878,12 +2881,19 @@ static std::optional<NativeDrawnTextRow> native_map_hover_draw_for_row(
         bool current = true;
         for (size_t byte = 0; byte < row.source.size(); ++byte) {
             const size_t at = (static_cast<size_t>(row.x) + byte) * gps.dimy + row.y;
-            const unsigned char ch = grid[at * 8];
             const bool read_top = native_ui_top_layer_at(gps, at);
+            const auto *visible_grid = read_top ? gps.screen_top : gps.screen;
+            const unsigned char expected = static_cast<unsigned char>(row.source[byte]);
+            const unsigned char ch = visible_grid ? visible_grid[at * 8] : 0;
             const auto byte_origin = native_text_grid_origin(gps, at, read_top);
-            if (read_top != read_top_layer || byte_origin.grid != origin.grid ||
-                    byte_origin.top_layer != top_layer ||
-                    (ch ? ch : ' ') != static_cast<unsigned char>(row.source[byte])) {
+            // Black-background top spaces are transparent and can come from
+            // the base grid, including in a composed page's saved origins.
+            // They must still be visibly blank; every ink byte must retain
+            // this exact native draw's grid and layer ownership.
+            if (!visible_grid || (ch ? ch : ' ') != expected ||
+                    (expected != ' ' && (read_top != read_top_layer ||
+                        byte_origin.grid != origin.grid ||
+                        byte_origin.top_layer != top_layer))) {
                 current = false;
                 break;
             }
