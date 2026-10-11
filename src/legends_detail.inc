@@ -184,7 +184,8 @@ std::optional<std::string> Overlay::translate_legends_name(
     TranslationWorkFrame work_frame("historical name", raw);
     // Normalization is for generated names, never the bytes inside an
     // explicitly authored nickname (including repeated spaces).
-    std::string name = person && raw.find('`') != std::string_view::npos
+    std::string name = raw.find('`') != std::string_view::npos ||
+            (!person && contains_cjk_utf8(raw))
         ? std::string(trim_view(raw)) : normalize_utterance(raw);
     if (name.empty() || name.ends_with("...")) return std::nullopt;
     const std::string memo_key = "legends name:" +
@@ -201,6 +202,44 @@ std::optional<std::string> Overlay::translate_legends_name(
     if (!person && entity_reference)
         if (const auto civilization = translate_civilization_reference(name))
             return civilization;
+    if (!person) {
+        const size_t open = name.find('`');
+        if (open != std::string::npos) {
+            TranslationWorkFrame nickname_frame("native generated-name nickname", name);
+            size_t close = name.rfind('\'');
+            // Apostrophes inside a following generated word are not the
+            // nickname delimiter. EnglishName ends that field at a boundary.
+            while (close != std::string::npos && close > open &&
+                    close + 1 < name.size() && name[close + 1] != ' ')
+                close = name.rfind('\'', close - 1);
+            if ((open > 0 && name[open - 1] != ' ') ||
+                    close == std::string::npos || close <= open + 1 ||
+                    (close + 1 < name.size() && name[close + 1] != ' '))
+                return std::nullopt;
+            // EnglishName uses the same nickname display preferences for
+            // squads, sites and entities. The whole entity identity was tried
+            // above; its shorter name groups must not resolve other entities.
+            // Extra backticks and spaces inside this authored span are data.
+            const auto before = trim_view(std::string_view(name).substr(0, open));
+            const auto after = trim_view(std::string_view(name).substr(close + 1));
+            const auto generated = [&](std::string_view group) {
+                return group.empty() ? std::string{} :
+                    translate_legends_name(group, false, false).value_or(
+                        native_text_to_utf8(group));
+            };
+            std::string target = generated(before) + "“" + native_text_to_utf8(
+                std::string_view(name).substr(open + 1, close - open - 1)) + "”";
+            // With no surname/title group, the remaining OfX group follows
+            // the nickname directly. It still owns the complete preceding
+            // name, as in the shared personal/native name compositor.
+            if (after.starts_with("of ") || after.starts_with("Of "))
+                return generated(after.substr(3)) + "之" + target;
+            const auto rest = generated(after);
+            if (!rest.empty()) target += "·" + rest;
+            return target;
+        }
+        if (contains_cjk_utf8(name)) return native_text_to_utf8(trim_view(raw));
+    }
     // Native unit names enclose a nickname in `...'. It may replace the
     // given name or follow it, while the surname/title/OfX groups remain
     // outside the quotes. Resolve those name fields separately; rejecting

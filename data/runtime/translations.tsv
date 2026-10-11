@@ -53270,6 +53270,7 @@ Workshop recipe: state games of chance	用于博戏	l
 Workshop recipe: state melt-designated	已指定熔化	l
 Workshop recipe: state powder grinding	用于研磨粉末	l
 World civilization trade status: Death	死亡	l
+World mission departure: (Set out {d})	（{d}年出发）	ht
 World mission: Demand surrender at {p}	在{p}要求对方投降	ht
 World mission: Demand tribute from {p}	向{p}索取贡品	ht
 Wrestling Competition of in the wilds.	在荒野中，摔跤比赛。	hEi
@@ -87987,6 +87988,7 @@ Workshop recipe: glaze	釉料	l
 Workshop recipe: items	物品	l
 Workshop recipe: pearl	珍珠	l
 Workshop recipe: rocks	石子	l
+World report date: {d}	（{d}年）	ht
 World site type: tower	Tower	hi
 World site type: vault	Vault	hi
 World site: {s} of {p}	{p}（{s}）	hti

@@ -1208,6 +1208,9 @@ static std::optional<std::string> world_mission_title_source(std::string_view ra
         "Rescue ", "Recover ",
     }};
     for (const std::string_view prefix : prefixes) {
+        // EnglishName emits nothing when language_name.has_name is false.
+        // The producer still emits its action, including diplomacy's "at".
+        if (folded == lower(std::string(trim_view(prefix)))) return std::string(prefix);
         if (!folded.starts_with(lower(std::string(prefix)))) continue;
         const std::string_view destination = std::string_view(source).substr(prefix.size());
         // Every caller owns a native mission/order field. SiteName also
@@ -1241,9 +1244,10 @@ std::optional<std::string> Overlay::translate_world_mission_title(
                 !scoped.starts_with(rule.template_literals.front())) continue;
         const std::string destination(trim_view(std::string_view(scoped).substr(
             rule.template_literals.front().size())));
-        if (destination.empty()) continue;
         std::optional<std::string> target;
-        if (title->starts_with("Recover ")) {
+        if (destination.empty()) {
+            target = "";
+        } else if (title->starts_with("Recover ")) {
             target = translate_legends_artifact_identity(destination);
             if (!target) target = translate_legends_book(destination);
             if (!target) target = translate_legends_item(destination);
@@ -1502,52 +1506,63 @@ void Overlay::append_world_mission_reports(std::vector<std::string> &rows,
         const auto heading = translate_legends_text(prefix, false, false);
         std::optional<std::string> target;
         if (prefix == prefixes.front()) {
-            const std::string normalized = normalize_utterance(complete);
-            const size_t departure = normalized.rfind(" (Set out ");
-            if (heading && normalized.starts_with(prefix) && departure != std::string::npos &&
-                    departure >= prefix.size() && normalized.ends_with(')')) {
-                const auto action = trim_view(std::string_view(normalized).substr(
+            const auto owned = trim_view(std::string_view(complete));
+            const size_t departure = owned.rfind(" (Set out ");
+            if (heading && owned.starts_with(prefix) && departure != std::string::npos &&
+                    departure >= prefix.size() && owned.ends_with(')')) {
+                const auto action = trim_view(owned.substr(
                     prefix.size(), departure - prefix.size()));
                 // The native default goal emits no action before the date.
                 const auto mission = action.empty() ? std::optional<std::string>("")
                     : translate_world_mission_title(action);
                 const auto date = translate_legends_text("World mission departure: " +
-                    normalized.substr(departure + 1), false, false);
+                    normalize_utterance(owned.substr(departure + 1)), false, false);
                 if (mission && date) target = *heading + *mission + *date;
             }
         } else if (heading && std::string_view(complete).starts_with(prefix)) {
             // PE 10f9b4/a0973e append the current season and year after the
             // party, separated by the final comma. Spoils without a squad
             // starts directly with that date. Parse from the right so name
-            // punctuation and authored spacing remain part of the name.
+            // punctuation remains part of the complete name field.
             const auto body = trim_view(std::string_view(complete).substr(prefix.size()));
             const size_t comma = body.rfind(", ");
             auto party = comma == std::string_view::npos ? std::string_view{}
                 : body.substr(0, comma);
-            const auto raw_date = comma == std::string_view::npos ? body
-                : body.substr(comma + 2);
-            bool dated = false;
+            const auto raw_date = trim_view(comma == std::string_view::npos ? body
+                : body.substr(comma + 2));
+            auto year = raw_date;
             for (const std::string_view season : {"Spring ", "Summer ", "Autumn ", "Winter "}) {
                 if (!raw_date.starts_with(season)) continue;
-                const auto year = raw_date.substr(season.size());
-                dated = !year.empty() && std::all_of(year.begin(), year.end(), [](char ch) {
-                    return ch >= '0' && ch <= '9';
-                });
+                year = raw_date.substr(season.size());
                 break;
             }
+            // The native default season emits only a space and the signed
+            // year (52c130). Keep that explicit branch alongside all seasons.
+            if (year.starts_with('-')) year.remove_prefix(1);
+            const bool dated = !year.empty() &&
+                std::all_of(year.begin(), year.end(), [](char ch) {
+                    return ch >= '0' && ch <= '9';
+                });
             if (dated) {
                 const auto date = translate_legends_text("World report date: " +
                     std::string(raw_date), false, false);
                 constexpr std::string_view others = " and others";
-                const bool multiple = prefix == prefixes[1] && party.ends_with(others);
-                if (multiple) party.remove_suffix(others.size());
+                const bool multiple = prefix == prefixes[1] &&
+                    (party.ends_with(others) || party == trim_view(others));
+                if (multiple) party = party == trim_view(others) ? std::string_view{}
+                    : party.substr(0, party.size() - others.size());
                 const auto suffix = multiple
-                    ? exact_literal_translation("World report participants: and others")
+                    ? translate_legends_text("World report participants: and others", false, false)
                     : std::optional<std::string>("");
-                // A retained report title carries no live squad alias owner.
-                // Keep its name bytes instead of guessing authorship from
-                // spelling or allowing the prose/name fallback to rewrite it.
-                if (date && suffix) target = *heading + native_text_to_utf8(party) + *suffix + *date;
+                // Both PE editions' spoils producer formats squads[0].name
+                // (+8) with EnglishName; it never reads squad.alias (+80).
+                // Tribute instead uses EntityName. Those native sources prove
+                // the respective generated-name and organization contexts;
+                // an unresolved name retains its bytes without losing the UI.
+                const auto name = party.empty() ? std::optional<std::string>("")
+                    : translate_legends_name(party, false, prefix == prefixes[2]);
+                if (date && suffix) target = *heading +
+                    (name ? *name : native_text_to_utf8(party)) + *suffix + *date;
             }
         }
         Match report{x, y, static_cast<int>(source.size()), kWorldSiteRowRule,
