@@ -54,6 +54,7 @@ struct NativeCaptionInlineResize {
 struct NativeInfoTitleSite {
     uintptr_t return_address = 0;
     NativeInfoTitleKind kind = NativeInfoTitleKind::None;
+    int caption_width = 0;
 };
 struct NativeCivilizationCaptionSite {
     uintptr_t return_address = 0;
@@ -1981,10 +1982,23 @@ static void capture_native_limited_caption_draw(graphicst *graphics, const Nativ
             int64_t(graphics->clipx[1]) + 1, 0, graphics->dimx));
         if (width > 0) right = static_cast<int>(std::min<int64_t>(
             right, int64_t(graphics->screenx) + width));
-        if (info_title_kind == NativeInfoTitleKind::ItemList) {
-            // This caller clips the string manually without changing clipx.
-            // Keep its actual title column, not the enclosing screen width.
-            const auto &binding = g_native_info_title_binding;
+        const auto &binding = g_native_info_title_binding;
+        int caption_width = 0;
+        for (const auto &site : binding.sites)
+            if (site.return_address == native_caller) {
+                caption_width = site.caption_width;
+                break;
+            }
+        if (caption_width > 0) {
+            // Explicit caller-owned columns apply to every field kind.
+            // Nobles' item, assignment and value label share this renderer
+            // but have different widths from the ViewSheets item list.
+            right = std::min(right, static_cast<int>(std::clamp<int64_t>(
+                int64_t(graphics->screenx) + caption_width,
+                graphics->screenx, graphics->dimx)));
+        } else if (info_title_kind == NativeInfoTitleKind::ItemList) {
+            // ViewSheets clips this string manually without changing clipx.
+            // Its stack slot belongs only to the original ItemList caller.
             int32_t list_right = 0;
             const auto *slot = source && binding.item_list_right_slot
                 ? reinterpret_cast<const unsigned char *>(source) + binding.item_list_right_slot

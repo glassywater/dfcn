@@ -47,6 +47,7 @@ std::vector<Match> Overlay::find_native_info_matches() const {
         append_fortress_written_content_rows(screen_rows, result, only_y, nullptr);
         append_fortress_object_rows(screen_rows, result, only_y, nullptr);
     }
+    append_fortress_noble_symbol_rows(screen_rows, result, only_y);
     append_native_info_panel_titles(screen_rows, result, only_y);
     if (!captured_native_unit_chooser_records().empty())
         append_fortress_unit_chooser_rows(screen_rows, result, only_y, false);

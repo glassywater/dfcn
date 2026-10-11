@@ -890,6 +890,15 @@ static constexpr int kWorkOrderShopFieldRule = -162;
 static constexpr int kFortressJusticePlotRule = -160;
 static constexpr int kFortressFarmFieldRule = -161;
 static constexpr int kFortressWorkshopActivityRule = -163;
+static constexpr int kFortressNobleSymbolNameRule = -164;
+static constexpr int kFortressNobleSymbolValueRule = -165;
+static constexpr int kFortressNobleSymbolPositionRule = -166;
+
+static bool is_fortress_noble_symbol_field(const Match &match) {
+    return match.rule == kFortressNobleSymbolNameRule ||
+        match.rule == kFortressNobleSymbolValueRule ||
+        match.rule == kFortressNobleSymbolPositionRule;
+}
 
 static bool is_fortress_justice_field(const Match &match) {
     return match.rule == kFortressJusticeCaseRule || match.rule == kFortressJusticeDetailRule ||
@@ -1951,8 +1960,16 @@ static std::optional<NativePictureCaptionFrame> capture_native_picture_caption_f
     const graphicst &gps, int x, int y);
 
 enum class NativeInfoTitleKind {
-    None, Item, Building, Engraving, Terrain, PlannedEngraving, DisplayStatus, ItemList
+    None, Item, Building, Engraving, Terrain, PlannedEngraving, DisplayStatus, ItemList,
+    NobleSymbolItem, NobleSymbolPosition, NobleSymbolValue, NobleSymbolAmount
 };
+
+static bool is_native_noble_symbol_field(NativeInfoTitleKind kind) {
+    return kind == NativeInfoTitleKind::NobleSymbolItem ||
+        kind == NativeInfoTitleKind::NobleSymbolPosition ||
+        kind == NativeInfoTitleKind::NobleSymbolValue ||
+        kind == NativeInfoTitleKind::NobleSymbolAmount;
+}
 
 enum class NativeCivilizationField {
     None, TradePrefix, TradeEntity, TradeValue, OfficialName, OfficialPosition,
@@ -4730,6 +4747,9 @@ private:
     void append_fortress_noble_rows(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y) const;
     void layout_fortress_nobles(SDL_Renderer *renderer);
+    void append_fortress_noble_symbol_rows(std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y) const;
+    void layout_fortress_noble_symbols(SDL_Renderer *renderer);
     void layout_fortress_sort_captions();
     std::optional<std::string> translate_justice_case_text(std::string_view source) const;
     std::optional<std::string> translate_justice_plot_text(std::string_view source,
@@ -16273,6 +16293,7 @@ static NativeKeybindingScope capture_native_keybinding_scope(const graphicst &gp
 #include "fortress_monthly_schedule.inc"
 #include "fortress_hauling.inc"
 #include "fortress_nobles.inc"
+#include "fortress_noble_symbols.inc"
 #include "fortress_build_placement.inc"
 #include "text_paragraphs.inc"
 #include "dfhack_help_translation.inc"
@@ -17299,6 +17320,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     if (!announcement_panel_only) {
     // Native display records own their title and status before the prose
     // reader can interpret "On display" as an item's "On {container}" row.
+    append_fortress_noble_symbol_rows(screen_rows, result, only_y);
     append_native_info_panel_titles(screen_rows, result, only_y);
 
 #include "fortress_item_descriptions.inc"
@@ -39902,6 +39924,7 @@ void Overlay::layout_multiline_matches() {
             continue;
         }
         if (match.layout_ellipsize || is_fortress_justice_field(match) ||
+            is_fortress_noble_symbol_field(match) ||
             match.rule == kFortressFarmFieldRule ||
             match.rule == kWorkshopTaskRowRule ||
             match.rule == kWorkshopMaterialFieldRule ||
@@ -42946,6 +42969,7 @@ void Overlay::render(SDL_Renderer *renderer) {
         layout_fortress_kitchen(renderer);
         layout_fortress_stone(renderer);
         layout_fortress_nobles(renderer);
+        layout_fortress_noble_symbols(renderer);
         layout_fortress_help(renderer);
         layout_fortress_squads(renderer);
         layout_adventure_background_cards(renderer);

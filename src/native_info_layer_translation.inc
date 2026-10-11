@@ -92,6 +92,7 @@ void Overlay::render_native_fortress_layer(SDL_Renderer *renderer, bool stocks) 
     // following the existing management-page layout order.
     const auto independent = [](const Match &match) {
         return match.native_fortress_creature_field ||
+            is_fortress_noble_symbol_field(match) ||
             match.rule == kToolbarTooltipBodyRule || match.rule == kToolbarTooltipKeyRule ||
             match.rule == kFortressUnitChooserRule || match.rule == kFortressLocationListRule ||
             match.rule == kWorkshopTaskRowRule || match.rule == kWorkshopMaterialFieldRule ||
@@ -146,7 +147,10 @@ void Overlay::render_native_fortress_layer(SDL_Renderer *renderer, bool stocks) 
                 g_native_info_labor_page == NativeInfoLaborPage::None)
             layout_fortress_stone(renderer);
         break;
-    case NativeInfoPage::Nobles: layout_fortress_nobles(renderer); break;
+    case NativeInfoPage::Nobles:
+        layout_fortress_nobles(renderer);
+        layout_fortress_item_captions(renderer);
+        break;
     case NativeInfoPage::Objects:
         layout_fortress_stocks(renderer);
         layout_fortress_item_captions(renderer);
@@ -157,6 +161,8 @@ void Overlay::render_native_fortress_layer(SDL_Renderer *renderer, bool stocks) 
     layout_multiline_matches();
     prepared_matches_.insert(prepared_matches_.end(),
         std::make_move_iterator(fields.begin()), std::make_move_iterator(fields.end()));
+    if (g_native_info_page == NativeInfoPage::Nobles)
+        layout_fortress_noble_symbols(renderer);
     if (g_native_info_page == NativeInfoPage::Tasks ||
             g_native_info_page == NativeInfoPage::Places ||
             g_native_info_page == NativeInfoPage::WorkOrders) {
