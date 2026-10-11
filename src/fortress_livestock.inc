@@ -399,7 +399,8 @@ void Overlay::append_fortress_creature_activities(std::vector<std::string> &rows
         for (int x = left; x < end; ++x) {
             const auto ch = visible_char_at(x, y);
             if ((ch ? ch : ' ') != static_cast<unsigned char>(rows[y][x]) ||
-                (ch && ch < ' ' && ch != 0x0b && ch != 0x0c) ||
+                (ch && ch < ' ' && ch != 0x0b && ch != 0x0c &&
+                    !is_native_item_designation_byte(ch)) ||
                 is_cp437_box_separator(rows[y], x)) {
                 current = false;
                 break;
