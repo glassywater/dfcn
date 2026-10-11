@@ -125,16 +125,7 @@ static bool capture_native_history_extra_fields(const void *event,
     scalar("reason_data", result.reason_data);
     scalar("circumstance", result.circumstance);
     scalar("circumstance_data", result.circumstance_data);
-    if (result.native_type == 53 && result.fields.at("artifact").front() < 0) {
-        // Both b8b20b (sentence) and b8b566 (title) describe this stored
-        // tuple with count=1, quality=0, shape=-1 and the historical item
-        // ID. Capture the same isolated object for restored page records.
-        // Do this after committing fields so component fields survive.
-        const auto value = [&](const char *key) { return result.fields.at(key).front(); };
-        const std::vector<int32_t> tuple{value("item_type"), value("item_subtype"),
-            value("item_material"), value("item_material_index")};
-        if (!capture_native_history_page_item(tuple, result, "item", 1, value("item_id")))
-            return false;
-    }
+    // The real b8b20b/b8b566 item calls fill item.item while formatting this
+    // event. A field snapshot must not replay the native item formatter.
     return true;
 }

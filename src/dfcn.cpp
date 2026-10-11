@@ -3365,6 +3365,7 @@ class Overlay {
 public:
     bool initialize();
     void shutdown();
+    void invalidate_render_resources();
     void render(SDL_Renderer *renderer);
     void render_dfhack_layer(SDL_Renderer *renderer);
     void render_native_help_layer(SDL_Renderer *renderer);
@@ -3932,6 +3933,8 @@ private:
     std::unordered_map<std::string, std::string>
         native_name_reviewed_transliterations_;
     std::unordered_map<std::string, GlyphTexture> texture_cache_;
+    SDL_Renderer *texture_retry_renderer_ = nullptr;
+    std::chrono::steady_clock::time_point texture_retry_after_{};
     mutable std::unordered_map<std::string, TranslationResult> compositional_cache_;
     mutable std::deque<std::string> compositional_cache_order_;
     // Character headers and figure/site lists repeat complete identities
@@ -7070,6 +7073,8 @@ bool Overlay::initialize() {
 }
 
 void Overlay::destroy_textures() {
+    texture_retry_renderer_ = nullptr;
+    texture_retry_after_ = {};
     for (auto &[key, value] : texture_cache_) {
         (void)key;
         value.destroy();
@@ -7212,6 +7217,18 @@ void Overlay::reset_render_state() {
     native_knowledge_frame_matches_.reset();
     // Keep the captured native documents and dictionary/font data. Existing
     // text boxes need not be constructed again when Chinese is re-enabled.
+}
+
+void Overlay::invalidate_render_resources() {
+    TranslationStateScope translation_scope;
+    // SDL reset events arrive on the paused SDL event thread. Retire cached
+    // GPU contents and borrowed native textures before the next draw, while
+    // retaining the font, translations and captured native documents.
+    reset_render_state();
+    legends_hit_rows_.clear();
+    legends_renderer_ = nullptr;
+    if (gps_) gps_->force_full_display_count = std::max<int16_t>(
+        gps_->force_full_display_count, 2);
 }
 
 void Overlay::toggle_translation() {
@@ -40766,7 +40783,7 @@ GlyphTexture *Overlay::get_glyph_texture(SDL_Renderer *renderer, const std::stri
         std::to_string(wrap_width);
     auto it = texture_cache_.find(key);
     if (it != texture_cache_.end()) {
-        if (it->second.renderer == renderer) {
+        if (it->second.renderer == renderer && it->second.texture) {
             if (config_.trace_render_timing) ++render_timings_.current.texture_hits;
             it->second.last_used = ++texture_use_clock_;
             return &it->second;
@@ -40775,6 +40792,8 @@ GlyphTexture *Overlay::get_glyph_texture(SDL_Renderer *renderer, const std::stri
         texture_cache_.erase(it);
     }
     if (config_.trace_render_timing) ++render_timings_.current.texture_misses;
+    if (texture_retry_renderer_ == renderer &&
+            std::chrono::steady_clock::now() < texture_retry_after_) return nullptr;
     if (texture_cache_.size() >= static_cast<size_t>(config_.max_cached_textures)) {
         auto oldest = std::min_element(texture_cache_.begin(), texture_cache_.end(),
             [](const auto &left, const auto &right) {
@@ -40787,6 +40806,9 @@ GlyphTexture *Overlay::get_glyph_texture(SDL_Renderer *renderer, const std::stri
     }
     GlyphTexture made = rasterize(renderer, text, max_width, tile_height, forced_pixel_size,
                                   target_visual_height, lock_pixel_size, foregrounds, wrap_width);
+    // Device loss can make allocation fail temporarily. Do not cache that
+    // failure: the same text must retry after recovery.
+    if (!made.texture) return nullptr;
     made.last_used = ++texture_use_clock_;
     auto [inserted, ok] = texture_cache_.emplace(key, made);
     (void)ok;
@@ -41082,6 +41104,10 @@ GlyphTexture Overlay::rasterize(SDL_Renderer *renderer, const std::string &text,
     SDL_FreeSurface(surface);
     if (!texture) {
         log_line("ERROR", std::string("SDL_CreateTextureFromSurface failed: ") + SDL_GetError());
+        // A lost Direct3D device can reject every label in the same frame.
+        // Keep existing cache hits usable and retry allocation shortly later.
+        texture_retry_renderer_ = renderer;
+        texture_retry_after_ = std::chrono::steady_clock::now() + std::chrono::milliseconds(250);
         result.destroy();
         return result;
     }
@@ -43571,6 +43597,11 @@ DFCN_EXPORT bool dfhooks_sdl_event(void *raw_event) {
     if (!raw_event || !dfcn::g_plugin_active.load()) return false;
     const SDL_Event *event = static_cast<const SDL_Event *>(raw_event);
     dfcn::InputDeliveryTiming input_timing(*event);
+    if (event->type == SDL_RENDER_DEVICE_RESET || event->type == SDL_RENDER_TARGETS_RESET) {
+        dfcn::native_reset_render_resources();
+        // Keep the event visible to the game's own renderer recovery.
+        return false;
+    }
     static bool f6_consumed = false;
     if (event->type == SDL_WINDOWEVENT &&
         event->window.event == SDL_WINDOWEVENT_FOCUS_LOST) f6_consumed = false;

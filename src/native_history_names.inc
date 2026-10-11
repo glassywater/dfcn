@@ -314,29 +314,133 @@ static NativeHistoryEntityUmbrella native_history_resolve_current_entity_umbrell
     return result; // A longer chain remains unknown rather than being truncated.
 }
 
+// OriginalName capitalizes words, not only the first byte (PE 52d3c0).
+// Preserve its CP437 mappings and bracket/quote handling on owned bytes.
+static void capitalize_native_history_original_name(std::string &value) {
+    int brackets = 0;
+    bool first = true;
+    for (size_t i = 0; i < value.size(); ++i) {
+        const auto ch = static_cast<unsigned char>(value[i]);
+        if (ch == '[') { ++brackets; continue; }
+        if (ch == ']') { --brackets; continue; }
+        if (brackets > 0) continue;
+        const bool word_start = first || (i && (value[i - 1] == ' ' ||
+            value[i - 1] == '"' || (value[i - 1] == '\'' && i >= 2 &&
+                (value[i - 2] == ' ' || value[i - 2] == ','))));
+        if (word_start) {
+            if (ch >= 'a' && ch <= 'z') value[i] = static_cast<char>(ch - 'a' + 'A');
+            else switch (ch) {
+            case 0x81: value[i] = static_cast<char>(0x9a); break;
+            case 0x82: value[i] = static_cast<char>(0x90); break;
+            case 0x84: value[i] = static_cast<char>(0x8e); break;
+            case 0x86: value[i] = static_cast<char>(0x8f); break;
+            case 0x87: value[i] = static_cast<char>(0x80); break;
+            case 0x91: value[i] = static_cast<char>(0x92); break;
+            case 0x94: value[i] = static_cast<char>(0x99); break;
+            case 0xa4: value[i] = static_cast<char>(0xa5); break;
+            default: break;
+            }
+        }
+        first = false;
+    }
+}
+
 static bool capture_native_history_original_name(uintptr_t base, uintptr_t address,
         std::string &result) {
     if (!base || !address) return false;
-#ifdef _WIN32
-    const uintptr_t formatter = native_reference_address(base, 0xa94030);
-    const uintptr_t destroy = native_reference_address(base, 0x6f850);
-    if (!formatter || !destroy) return false;
-    struct Temporary {
-        NativeString value = native_empty_string();
-        uintptr_t destroy;
-        ~Temporary() { reinterpret_cast<void (*)(NativeString *)>(destroy)(&value); }
-    } output{native_empty_string(), destroy};
-#else
-    const uintptr_t formatter = native_reference_address(base, 0x12bfe90 - 0x400000);
-    if (!formatter) return false;
-    struct Temporary { NativeString value = native_empty_string(); } output;
-#endif
-    reinterpret_cast<void (*)(const void *, NativeString *)>(formatter)(
-        reinterpret_cast<const void *>(address), &output.value);
-    std::string_view rendered;
-    if (!native_string_view(&output.value, &rendered, kNativeHistoryStringLimit) ||
-            rendered.find('\0') != std::string_view::npos) return false;
-    result.assign(rendered);
+    constexpr auto &fields = native_history_layout::f_language_name_fields;
+    constexpr size_t snapshot_size = [] {
+        size_t result = 0;
+        for (const auto &field : native_history_layout::f_language_name_fields)
+            result = std::max(result, field.native + field.size);
+        return result;
+    }();
+    std::array<unsigned char, snapshot_size> snapshot{};
+    if (!native_history_copy_bytes(address, snapshot.data(), snapshot.size())) return false;
+    uint8_t has_name = 0;
+    std::memcpy(&has_name, snapshot.data() + fields[6].native, sizeof(has_name));
+    if (has_name > 1) return false;
+    if (!has_name) { result.clear(); return true; }
+    std::string first_name, nickname;
+    if (!native_history_copy_string_snapshot(address + fields[0].native,
+            snapshot.data() + fields[0].native, first_name) ||
+            !native_history_copy_string_snapshot(address + fields[1].native,
+                snapshot.data() + fields[1].native, nickname)) return false;
+    int32_t nickname_mode = 0;
+    if (!nickname.empty()) {
+        int32_t game_mode = -1;
+        const uintptr_t mode = native_reference_address(base, native_history_layout::gametype_rva);
+        const uintptr_t policy = native_reference_address(base, native_history_layout::d_init_rva);
+        if (!native_history_copy(mode, game_mode) || !policy || policy > UINTPTR_MAX - 0x38)
+            return false;
+        if (game_mode >= 0 && game_mode <= 10 &&
+                !native_history_copy(policy + 0x10 + size_t(game_mode) * 4, nickname_mode))
+            return false;
+        if (nickname_mode < 0 || nickname_mode > 2) return false;
+    }
+    std::string rendered;
+    if (!nickname.empty() && (nickname_mode == 0 || nickname_mode == 2))
+        rendered = "`" + nickname + "'";
+    else {
+        rendered = std::move(first_name);
+        capitalize_native_history_original_name(rendered);
+        if (!nickname.empty()) {
+            if (!rendered.empty()) rendered += ' ';
+            rendered += "`" + nickname + "'";
+        }
+    }
+    if (rendered.size() > kNativeHistoryStringLimit) return false;
+    if (!nickname.empty() && nickname_mode == 2) {
+        result = std::move(rendered);
+        return true;
+    }
+    int32_t language = -1;
+    std::array<int32_t, 7> indices{};
+    std::memcpy(&language, snapshot.data() + fields[4].native, sizeof(language));
+    std::memcpy(indices.data(), snapshot.data() + fields[2].native, sizeof(indices));
+    // Language-less names retain only their first name/nickname. Slot 4 is
+    // hidden unless one of the title slots 2, 3 or 5 actually owns that group.
+    const bool title = indices[2] != -1 || indices[3] != -1 || indices[5] != -1;
+    if (!title) indices[4] = -1;
+    if (language < 0 || std::all_of(indices.begin(), indices.end(),
+            [](int32_t index) { return index == -1; })) {
+        result = std::move(rendered);
+        return true;
+    }
+    NativeBorrowedVector<uintptr_t> english, translations, words;
+    if (!native_history_read_vector(native_history_global(0x24ed770), english) ||
+            !native_history_read_vector(native_history_global(0x24ed7a0), translations) ||
+            static_cast<size_t>(language) >= translations.size()) return false;
+    const uintptr_t translation = native_history_vector_at(translations, static_cast<size_t>(language));
+    if (!translation || !native_history_read_vector(native_history_object_field(
+            translation, "language_translation", 0x50, sizeof(words)), words)) return false;
+    std::array<std::string, 7> spellings;
+    for (size_t slot = 0; slot < indices.size(); ++slot) {
+        const int32_t index = indices[slot];
+        if (index == -1) continue;
+        // OriginalName's native table check admits index == size. Copy each
+        // slot through the guarded reader with the strict vector boundary,
+        // never replaying a formatter against finalizing/released objects.
+        if (index < 0 || static_cast<size_t>(index) >= english.size() ||
+                static_cast<size_t>(index) >= words.size()) return false;
+        const uintptr_t word = native_history_vector_at(words, static_cast<size_t>(index));
+        if (!word || !native_history_copy_string(word, spellings[slot])) return false;
+    }
+    for (const auto [begin, end] : {std::pair<size_t, size_t>{0, 2}, {2, 6}, {6, 7}}) {
+        std::string group;
+        for (size_t slot = begin; slot < end; ++slot) {
+            if (spellings[slot].size() > kNativeHistoryStringLimit - group.size()) return false;
+            group += spellings[slot];
+        }
+        if (group.empty()) continue;
+        capitalize_native_history_original_name(group);
+        const size_t separator = rendered.empty() ? 0 : 1;
+        if (separator > kNativeHistoryStringLimit - rendered.size() ||
+                group.size() > kNativeHistoryStringLimit - rendered.size() - separator) return false;
+        if (separator) rendered += ' ';
+        rendered += group;
+    }
+    result = std::move(rendered);
     return true;
 }
 
@@ -438,9 +542,9 @@ static bool capture_native_history_site_name_context(uintptr_t base, uintptr_t s
 
     std::string original;
     if (name.has_name) {
-        // Use the same OriginalName routine as native page/list producers.
-        // Its complete language-specific output is the fallback identity;
-        // English WORD forms cannot supply the site's native pronunciation.
+        // Copy the same OriginalName spelling as native page/list producers
+        // through guarded fields. English WORD forms cannot supply the site's
+        // native pronunciation, and a live formatter cannot own this read.
         const uintptr_t name_address = native_history_object_field(site, "world_site", 0);
         if (!capture_native_history_original_name(base, name_address, original)) return false;
     }

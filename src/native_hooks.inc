@@ -100,6 +100,7 @@ static bool native_history_war_selection(uintptr_t collection, int32_t &category
 #include "native_dfhack_messagebox_hooks.inc"
 #include "native_dfhack_prompt_hooks.inc"
 #include "native_dfhack_stonesense_hooks.inc"
+#include "native_render_resources.inc"
 
 static NativeProcessGuard g_process_instance_guard{NativeGuardRole::Core};
 static bool acquire_process_instance_guard() { return g_process_instance_guard.acquire(log_line); }

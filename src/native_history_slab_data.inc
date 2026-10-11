@@ -113,16 +113,15 @@ static bool capture_native_history_slab_data(uintptr_t item, NativeHistoryEventD
     identity.kind = NativeHistoryObjectKind::Identity;
     identity.id = true_identity_id;
     if (!capture_native_history_name(base, true_identity + 8, identity.name)) return false;
-    // Only isolated names use the original language formatter. The prose,
+    // Only isolated names use the original language spelling. The prose,
     // identity choice and optional-alias branch come from the source fields.
-    NativeHistoryPageString original, translated;
-    reinterpret_cast<void (*)(void *, NativeString *)>(native_history_page_address(NativeHistoryPageSymbol::OriginalName))(
-        reinterpret_cast<void *>(true_identity + 8), &original.value);
+    std::string native_name;
+    if (!capture_native_history_original_name(base, true_identity + 8, native_name)) return false;
+    NativeHistoryPageString translated;
     reinterpret_cast<void (*)(void *, NativeString *, bool, int32_t)>(native_history_page_address(NativeHistoryPageSymbol::Name))(
         reinterpret_cast<void *>(true_identity + 8), &translated.value, true, 0);
-    std::string_view native_name, translated_name;
-    if (!native_string_view(&original.value, &native_name, kNativeHistoryStringLimit) ||
-        !native_string_view(&translated.value, &translated_name, kNativeHistoryStringLimit) ||
+    std::string_view translated_name;
+    if (!native_string_view(&translated.value, &translated_name, kNativeHistoryStringLimit) ||
         native_name.empty() || translated_name.empty()) return false;
     identity.name.native_name.assign(native_name);
 

@@ -395,7 +395,6 @@ static void capture_native_history_append(NativeHistoryRichBox *box, const Nativ
 }
 
 static void recover_native_history_legends(NativeHistoryRichBox *box);
-#include "native_history_recovery.inc"
 
 static void capture_native_history_layout(NativeHistoryRichBox *box, int width) {
     NativeHistoryCallbackScope scope;
@@ -475,11 +474,14 @@ static void capture_native_history_draw(graphicst *graphics, const NativeString 
         NativeJustification justification, int width) {
     NativeHistoryCallbackScope scope;
     try {
-        recover_native_history_chronicle();
         std::string_view text;
         if (graphics && graphics->screenx >= 0 && graphics->screenx < graphics->dimx &&
             graphics->screeny >= 0 && graphics->screeny < graphics->dimy &&
             native_string_view(source, &text, 262144)) {
+            // Draw only the owned records captured from DF's real formatter
+            // calls (or transferred by core reload). A missing record must
+            // retain native text, never replay history formatters while world
+            // generation is finalizing or releasing their referenced objects.
             // The native parser can place the end of a word beyond addst's
             // live clipping rectangle. Capture that rectangle before the
             // renderer restores it; blank suffix cells are not missing text.
