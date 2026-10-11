@@ -34,6 +34,18 @@ inline constexpr ItemDesignationMarker item_designation_markers[] = {
     {"◄", "►", "◄", "►"}, {"\x11", "\x10", "◄", "►"},
 };
 
+// CP437 quality/designation glyphs can have values below ASCII space.
+// Native field readers must keep these visible bytes with the whole item.
+inline bool is_native_item_designation_byte(unsigned char ch) {
+    for (const auto &marker : item_designation_markers) {
+        if ((marker.left.size() == 1 &&
+                static_cast<unsigned char>(marker.left.front()) == ch) ||
+            (marker.right.size() == 1 &&
+                static_cast<unsigned char>(marker.right.front()) == ch)) return true;
+    }
+    return false;
+}
+
 // Convert only a proved wrapper span, never the translated noun it surrounds.
 // Expanded UTF-8 glyph bytes all inherit their one native source byte; an
 // already-UTF-8 wrapper retains its original byte origins and nesting order.

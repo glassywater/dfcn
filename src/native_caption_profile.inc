@@ -52,15 +52,16 @@ static bool resolve_native_caption_profile(NativeCaptionProfile &profile) {
     profile.draw_target = 0xad9960;
     // The two fortress report hover renderers count their native row vector, then
     // clear screen and draw HOVER_RECTANGLE at gps+0x1924 before any text.
-    // They are same-layer overlays, separate from the Tooltip widget and
-    // top_addst paths. Both use paragraph+0x48 for width and the same anchor.
+    // The row-count hook redirects both inline producers into the private
+    // notification output until their last body addst. Both use paragraph
+    // +0x48 for width and the same anchor.
     // Native bounds are [left, bottom-rows-3] through [left+width+4, bottom].
     profile.announcement_page = {0x6ee50, {0x3fa9eb, 0x3facde},
         reinterpret_cast<const int32_t *>(native_pe_address(profile.base, 0x18a93bc)),
         reinterpret_cast<const int32_t *>(native_pe_address(profile.base, 0x18a93c0)), 0x48};
     // The expanded alert/all-report/unit-report window clears a different
     // fixed rectangle before assembling its rows. Its single four-register
-    // caller owns the pre-draw page for every branch of that renderer.
+    // caller owns the complete private output scope for every branch.
     // Reference 40d64b..40d728: left=int32(R8)+4, top=4, 94 by 35 cells.
     profile.announcement_popup_call = 0x3fa6f8;
     profile.announcement_popup_target = 0x40d5f0;
@@ -191,6 +192,10 @@ static bool resolve_native_caption_profile(NativeCaptionProfile &profile) {
     // Rebuilding the record invalidates captures before any new text is set.
     profile.map_track_shorten_call = 0x407ef8;
     profile.map_track_shorten_target = 0x52d910;
+    // The LOOK stack string has a separate pre-draw shortening call. Its
+    // actual target retains the native <=50-byte fast path before 0x52d910.
+    profile.adventure_look_track_shorten_call = 0x7f4e21;
+    profile.adventure_look_track_shorten_target = 0x52dee0;
     // unit-name render (0x14237a0) rebuilds its captions on every draw.
     // 0x1330c30 supplies name/profession together; the narrow two-line path
     // instead uses 0x1330500 for the name and 0x1330880 for the profession.
@@ -213,6 +218,7 @@ static bool resolve_native_caption_profile(NativeCaptionProfile &profile) {
     profile.map_hover_returns = {
         native_pe_address(profile.base, 0x3f9558), native_pe_address(profile.base, 0x3f977a),
         native_pe_address(profile.base, 0xb02ff9), native_pe_address(profile.base, 0xb03231)};
+#include "native_adventure_look_caption_profile.inc"
     // Three complete stores to the incoming shadow space; no relative
     // address or branch is displaced by the shared entry-hook trampoline.
     profile.map_caption_build_prefix = {
@@ -319,6 +325,42 @@ static bool resolve_native_caption_profile(NativeCaptionProfile &profile) {
         // total width, then use the equivalent shared resize operation with
         // the one-byte dot-padding capture enabled only for this binding.
         {0x8855d6, {0xe8,0xd5,0xbc,0x85,0xff},
+         {0x48,0x03,0x51,0x10}, true},
+        // The shared inventory/selection renderer shortens the name in two
+        // width branches (inventory and item/action chooser), and the body
+        // location in a third. All three inline the length/terminator stores
+        // rather than reaching the shared resize entry. Preserve their full
+        // NativeStrings before the final dots and addst at 88378b/8838c0.
+        // Each replaced block has no interior branch target. The following
+        // cmp edi,3 replaces flags; the dot stores reload rax/rcx/rdx and the
+        // draw resets rcx/rdx/r9 and ignores r8. Remaining live values are
+        // nonvolatile registers. Eight pushes and sub rsp,0x108 retain aligned
+        // calls and the caller's shadow space, as on its append branches.
+        {0x8836aa,
+         {0x48,0x89,0x55,0x98,0x48,0x8d,0x45,0x88,
+          0x48,0x83,0x7d,0xa0,0x0f,0x48,0x0f,0x47,0x45,0x88,
+          0xc6,0x04,0x02,0x00},
+         // rdx already holds total width; rcx = &name (rbp-0x78).
+         {0x48,0x8d,0x4d,0x88,0x45,0x31,0xc0}},
+        {0x883711,
+         {0x48,0x89,0x55,0x98,0x48,0x8d,0x45,0x88,
+          0x48,0x83,0x7d,0xa0,0x0f,0x48,0x0f,0x47,0x45,0x88,
+          0xc6,0x04,0x10,0x00},
+         {0x48,0x8d,0x4d,0x88,0x45,0x31,0xc0}},
+        {0x883846,
+         {0x48,0x89,0x55,0xe0,0x48,0x8d,0x45,0xd0,
+          0x48,0x83,0x7d,0xe8,0x0f,0x48,0x0f,0x47,0x45,0xd0,
+          0xc6,0x04,0x10,0x00},
+         // rdx already holds total width; rcx = &location (rbp-0x30).
+         {0x48,0x8d,0x4d,0xd0,0x45,0x31,0xc0}},
+        // At length == width-1, each branch instead appends one zero byte.
+        // Convert its append count to total width before the equivalent
+        // resize, admitting that one-byte padding for exact dot matching.
+        {0x8836cc, {0xe8,0xdf,0xdb,0x85,0xff},
+         {0x48,0x03,0x51,0x10}, true},
+        {0x883733, {0xe8,0x78,0xdb,0x85,0xff},
+         {0x48,0x03,0x51,0x10}, true},
+        {0x883868, {0xe8,0x43,0xda,0x85,0xff},
          {0x48,0x03,0x51,0x10}, true},
         // The adventure Companions list builds its complete identity through
         // 0x86e668/0x86e6fa, then shortens the rbp-0x30 string to 33 cells
@@ -656,6 +698,32 @@ static bool resolve_native_caption_profile(NativeCaptionProfile &profile) {
     profile.inline_resizes.push_back({0x3b8488, {0xe8,0xa3,0x8d,0xd2,0xff}, {}, true});
     profile.signatures.push_back({0x3b1832, {0xe8,0xf9,0xf9,0xd2,0xff}});
     profile.signatures.push_back({0x3b8488, {0xe8,0xa3,0x8d,0xd2,0xff}});
+#include "native_adventure_crafting_profile.inc"
+    // Construction material rows inline both name-width branches before
+    // addst at 38270a. The generic resize hook never sees these stores.
+    // Replace their complete length/terminator blocks with the same resize
+    // capture, preserving the original caption before the native dots.
+    // The following jumps lead to cmp rdi/r14,3, which replaces flags;
+    // dot stores reload RAX and the draw resets RCX/RDX/R9 and ignores R8.
+    // All remaining live values are nonvolatile. Eight pushes and sub
+    // rsp,0x178 provide aligned calls and the native shadow space.
+    profile.inline_resizes.push_back({0x3825a5,
+        {0x48,0x89,0x7d,0xd8,0x48,0x8d,0x45,0xc8,
+         0x48,0x83,0x7d,0xe0,0x0f,0x48,0x0f,0x47,0x45,0xc8,
+         0xc6,0x04,0x38,0x00},
+        // rcx = &name (rbp-0x38), rdx = selected width (rdi).
+        {0x48,0x8d,0x4d,0xc8,0x48,0x8b,0xd7,0x45,0x33,0xc0}});
+    profile.inline_resizes.push_back({0x38268c,
+        {0x4c,0x89,0x75,0xd8,0x48,0x8d,0x45,0xc8,
+         0x48,0x83,0x7d,0xe0,0x0f,0x48,0x0f,0x47,0x45,0xc8,
+         0x42,0xc6,0x04,0x30,0x00},
+        // rcx = &name (rbp-0x38), rdx = unselected width (r14).
+        {0x48,0x8d,0x4d,0xc8,0x49,0x8b,0xd6,0x45,0x33,0xc0}});
+    profile.signatures.push_back({0x381630,
+        {0x40,0x55,0x53,0x56,0x57,0x41,0x54,0x41,0x55,
+         0x41,0x56,0x41,0x57,0x48,0x8d,0x6c,0x24,0x88,
+         0x48,0x81,0xec,0x78,0x01,0x00,0x00}});
+    profile.signatures.push_back({0x38270a, {0xe8,0x51,0x72,0x75,0x00}});
     // Resolve the reference PE coordinates once. Shared hook installation
     // consumes only the selected executable's addresses and original bytes.
     for (auto &signature : profile.signatures) {
@@ -685,6 +753,8 @@ static bool resolve_native_caption_profile(NativeCaptionProfile &profile) {
         !bind_rva(profile.resize_target) || !bind_rva(profile.draw_target) ||
         !bind_rva(profile.map_track_shorten_call) ||
         !bind_rva(profile.map_track_shorten_target) ||
+        !bind_rva(profile.adventure_look_track_shorten_call) ||
+        !bind_rva(profile.adventure_look_track_shorten_target) ||
         !bind_rva(profile.roster_shorten_target) ||
         !bind_rva(profile.announcement_page.rows_target) ||
         !bind_rva(profile.announcement_popup_call) ||

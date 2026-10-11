@@ -1,0 +1,478 @@
+Unit Personality -> Preferences: static decompilation of both configured PE images
+
+Reference image PE:6a70a6d9:02711000
+  producer RVA 47f680..481e13 (code), 481e14..481efe (embedded tables)
+Classic image PE:6a70b91c:0270a000
+  producer RVA 47d240..47f9d3 (code), 47f9d4..47fabe (embedded tables)
+  Every producer instruction/table RVA below uses the reference coordinate;
+  classic coordinate = reference coordinate - 2440.
+
+PAGE DISPATCH, 47f721..47f745
+  switch (sheet.int32_at_1a8c) {
+    0: ->481630: traits/general personality, alcohol/outdoors/tragedy prose;
+    1: ->481583: values via e248a0;
+    2: ->4800b2: Preferences, decompiled in full below;
+    3: ->47f74b: needs summary and 30 need types;
+    default: return with cleared source/box vectors.
+  }
+  Traits, values, and needs text in this shared function are not reachable from
+  Preferences selector 2. Native-literal-scopes.tsv explicitly distinguishes them.
+
+PAGE STORAGE, 47f6b6..47f721
+  sheet+1a90 = vector<string*> personality_raw_str;
+  sheet+1aa8 = vector<textbox*> personality_text_boxes;
+  sheet+1ac0 = cached wrapping width, cleared to zero.
+  Existing raw strings and boxes are discarded before any page is rebuilt.
+
+PREFERENCE RECORD, as read by native producer
+  +00 int16 type
+  +04 int32 subject (item kind / creature / plant / color / shape / art form ID)
+  +08 int32 item_subtype (item calls consume its low int16)
+  +0c int32 material_type (material calls consume its low int16)
+  +10 int32 material_index
+  +14 int16 matter_state
+  +16 uint8 flags; bit 0 is visible
+  +18 int32 prefstring_seed
+  unit+12e uint8 sex: 0 female, 1 male, other neuter
+  unit+a98 = soul; soul+230..238 = vector<unit_preference*>.
+
+COMPLETE PREFERENCES PRODUCTION, 4800b2..48157e
+  if (!unit.soul || unit.soul.preferences.empty()) return;  // 4800d7..480102
+  out = "[C:7:0:1]";                                     // 480151
+
+  likes = preferences whose visible bit is set and type != 2 and type != 3;
+  if (!likes.empty()) {
+    name = "";
+    pointer = current_unit_identity_name(unit);             // 13e5a90 at 4801f1
+    if (pointer && pointer.byte_at_72 != 0)
+      name = unit_name(pointer);                            // a94030 at 48020b
+    out += name + " likes ";                              // 480223
+    for (preference p : likes, preserving native vector order) {
+      switch (p.type) {                                    // table 481e8c, 12 entries
+        0:  // LikeMaterial; 480271
+          out += material_name(p.material_type, p.material_index,
+                               generic_flags=0, adjective=false,
+                               matter_state=p.matter_state);
+          if (p.matter_state == 0 && 419 <= p.material_type &&
+              p.material_type <= 618) {
+            if (material_has_flag(23,p.material_type,p.material_index))
+              out += " wood";                            // 48031e
+            else if (material_has_flag(24,p.material_type,p.material_index))
+              out += " fabric";                          // 480357
+          }
+          break;
+        1:  // LikeCreature; 480596
+          out += creature_plural(int16(p.subject),caste=-1);
+          out += " for their ";                          // 4805e1
+          out += creature_prefstring(int16(p.subject),p.prefstring_seed);
+          break;
+        2: case 3: break; // filtered out before switch, targets 48086a
+        4:  // LikeItem; 480370
+          out += item_name(int16(p.subject),int16(p.item_subtype),
+                           material_type=-1,material_index=-1,
+                           flags=0,plural=true);
+          break;
+        5:  // LikePlant; 480402
+        6:  // LikeTree; 4804cc; deliberately identical to LikePlant
+          out += plant_name(p.subject,capitalize=false,plural=true);
+          out += " for their ";                          // 480452 or 48051c
+          out += plant_prefstring(p.subject,p.prefstring_seed);
+          break;
+        7:  // LikeColor; 48065c
+          out += "the color " + color_name(int16(p.subject));
+          break;
+        8:  // LikeShape; 4806bf, no "the shape" prefix in native producer
+          out += shape_name(int16(p.subject),plural=true);
+          break;
+        9:  // LikePoeticForm; 480712
+        10: // LikeMusicalForm; 480786
+        11: // LikeDanceForm; 4807f7
+          form = lookup_by_id(selected_form_collection,p.subject);
+          if (form && form.byte_at_7a != 0) {
+            out += type==9 ? "the words of " : type==10 ? "the sound of "
+                                                            : "the sight of ";
+            out += generated_english_name(form+8,capitalize=true,shorten=false);
+          }
+          // Missing/unnamed forms emit no body, but still consume the counted
+          // item and append the same list separator.
+          break;
+        default: break; // out-of-range types emit no body, still counted
+      }
+      append_list_separator(out, --remaining_likes);       // 48086a..480893
+    }
+  }
+
+  foods = visible preferences with type==2;                 // 4808d6..480935
+  if (!foods.empty()) {
+    // Native uses lowercase here: it does not call a capitalizing pronoun
+    // helper. The "e" operands in native-literals.tsv are suffix-copy
+    // instructions belonging to "she", never independent pronouns.
+    pronoun = unit.sex==1 ? "he" : unit.sex==0 ? "she" : "it";
+    out += "When possible, " + pronoun + " prefers to consume ";
+    for (preference p : foods, preserving native vector order) {
+      switch (p.subject) { // remap byte table 481ee4 -> RVA table 481ebc
+        48: // MEAT; 480af2
+          food = creature_name_singular(int16(p.material_index));
+          if (food.empty()) food="unknown meat";
+          break;
+        49: // FISH; 480b7b
+          food = creature_name_singular(int16(p.material_type));
+          if (food.empty()) food="unknown fish";
+          break;
+        54: // PLANT; 480c04
+          food = plant_name_plural(p.material_index);
+          if (food.empty()) food="unknown plants";
+          break;
+        69: // DRINK; 480c7d
+          food = item_name(69,-1,p.material_type,p.material_index,plural=true);
+          if (food.empty()) food="unknown drink";
+          break;
+        73: // LIQUID_MISC; 480cef
+          food = item_name(73,-1,p.material_type,p.material_index,plural=true);
+          if (food.empty()) food="unknown liquid";
+          break;
+        53: // SEEDS; 480d61
+          food = item_name(53,-1,p.material_type,p.material_index,plural=true);
+          if (food.empty()) food="unknown seeds";
+          break;
+        56: // PLANT_GROWTH; 480dd3
+          food = item_name(56,p.item_subtype,p.material_type,p.material_index,plural=true);
+          if (food.empty()) food="unknown leaves";
+          break;
+        70: // POWDER_MISC; 480e46
+          food = item_name(70,-1,p.material_type,p.material_index,plural=true);
+          if (food.empty()) food="unknown powder";
+          break;
+        71: // CHEESE; 480eb8
+          food = item_name(71,-1,p.material_type,p.material_index,plural=true);
+          if (food.empty()) food="unknown cheese";
+          break;
+        default: // All other values, including 50..52,55,57..68,72; 480f2a
+          food = item_name(int16(p.subject),p.item_subtype,
+                           p.material_type,p.material_index,plural=true);
+          if (food.empty()) food="unknown item";
+          break;
+      }
+      out += food;
+      append_list_separator(out,--remaining_foods);         // 48109f..4810df
+    }
+  }
+
+  hated = visible preferences with type==3;                 // 48117a..4811d4
+  if (!hated.empty()) {
+    pronoun = unit.sex==1 ? "He" : unit.sex==0 ? "She" : "It";
+    out += pronoun + " absolutely detests ";               // 4812d6
+    for (preference p : hated, preserving native vector order) {
+      out += creature_name_plural(int16(p.subject));        // RAW+40 at 48138f
+      // Invalid/negative creature ID -> empty; no "unknown creature" fallback.
+      append_list_separator(out,--remaining_hated);         // 4813e9..481426
+    }
+  }
+
+  // All three groups are independent. The seven nonempty subsets appear in
+  // the order likes, foods, hated. No sentence is required as a leading group.
+  // Nonempty preferences containing only invisible records still yield a
+  // color-tag-only source string; there is no textual "no preferences" branch.
+  if (!out.empty()) {
+    sheet.personality_raw_str.push_back(copy(out));         // 481500..48152b
+    sheet.personality_text_boxes.push_back(new_box(76));     // 481539..48156c
+  }
+
+APPEND_LIST_SEPARATOR(out, remaining), ALL THREE GROUPS
+  if (remaining > 1) out += ", ";
+  else if (remaining == 1) out += " and ";
+  else out += ".  "; // Period plus two spaces. No Oxford comma is added.
+  A single object NAME, PREFSTRING or generated form title may itself contain
+  commas, conjunctions, apostrophes or punctuation. They remain one semantic
+  field. Native list construction does not tokenize their contents.
+
+DYNAMIC RAW FIELD HELPERS
+  plant-name: reference 144d90, classic 144d20
+    negative/out-of-range ID -> no body; plural=true selects RAW+70 NAME:PLURAL.
+  creature-plural: reference aa3bd0, classic aa0c50
+    caste=-1 and plural=true selects CREATURE_RAW+40 NAME:PLURAL;
+    negative/out-of-range ID -> empty.
+  color-name: reference 420fc0, classic 41eb80
+    descriptor_color+50 NAME; low signed int16 ID; invalid -> empty.
+  shape-plural: reference 1437f0, classic 143780
+    descriptor_shape+70 NAME:PLURAL; low signed int16 ID; invalid -> empty.
+  plant-prefstring: reference e35d60, classic e30cd0
+    plant RAW vector+288..290; invalid index or empty vector -> empty.
+  creature-prefstring: reference e35c70, classic e30be0
+    creature RAW vector+148..150; invalid index or empty vector -> empty.
+  Both prefstring helpers use this exact seed selection (64-bit wrap arithmetic):
+    x = uint32(prefstring_seed) + 0x9e3779b97f4a7c15;
+    x = (x ^ (x >> 30)) * 0xbf58476d1ce4e5b9;
+    x = (x ^ (x >> 27)) * 0x94d049bb133111eb;
+    selected_index = (uint32(x >> 63) ^ uint32(x >> 32)) % vector.size();
+    result = *vector[selected_index];
+  No finite reason list is hardcoded in either helper: every RAW PREFSTRING is
+  eligible, including modded entries; source-field translations must preserve
+  the whole selected phrase.
+  material-state-name: reference 14d1920, classic 14cc890
+    Preferences passes generic_flags=0 and adjective=false, bypassing generic
+    plant/yarn/cloth/etc flags. Result is optional historical-owner possessive,
+    optional material prefix+520 and space, then STATE_NAME[state] at +b8+0x20*state.
+    Invalid material -> "unknown material". All matter states flow through.
+  item-name: reference a82c10..a880de, classic a7fc90..a8515e
+    Complete code and all 93 main selector entries retained; flags/arguments
+    are those shown at the Preferences calls. Subtyped RAW item NAME:PLURAL,
+    adjective+plural, instrument names, plant-growth names and default nouns
+    are all eligible. Shared source catalog is tools/extract_item_description_catalog.py
+    and data/extracted/item-description-sources.tsv; its broader option branches should not
+    be described as independent Preferences sentence families.
+  unit-name: reference a94030, classic a910b0
+  generated-art-form-name: reference a946e0, classic a91760
+    Unit, civilization/form language words and authored names are dynamic data;
+    static native extraction describes construction but cannot enumerate every
+    generated or user-authored string.
+
+COMPLETE GENERATED ART-FORM NAME FIELD GRAMMAR
+  English formatter a946e0..a94ea2; classic a91760..a91f22.
+  English-formatter instruction classic RVA = reference RVA - 2f80.
+  Preferences sets capitalize=true, shorten=false at 48075b..480768,
+  4807cf..4807dc and 480838..480845 (classic subtract 2440).
+  This formatter always reads English WORD forms. Its two boolean arguments
+  control capitalization and abbreviation, not English/local-language choice.
+
+  language_name layout used by the formatter:
+    +00 string first_name; +20 string authored nickname; +30 nickname length
+    +40 int32 FrontCompound WORD; +44 int32 RearCompound WORD
+    +48 int32 FirstAdjective WORD; +4c int32 SecondAdjective WORD
+    +50 int32 HyphenCompound WORD; +54 int32 TheX WORD; +58 int32 OfX WORD
+    +5c..68 int16 part_of_speech[7], corresponding to WORD fields above
+    +6c int32 language ID; +72 bool has_name
+  if (!name.has_name) return without changing the supplied output; a94723.
+  Otherwise clear output; a94747.
+  mode = 0;
+  if (0 <= current_game_type && current_game_type <= 10)
+    mode = nickname_display[current_game_type]; a94730..a94743.
+  Native d_init modes are 0 REPLACE_FIRST, 1 CENTRALIZE, 2 REPLACE_ALL.
+
+  quoted_nickname = char(0x60) + authored_nickname_bytes + char(0x27);
+  // These are a backtick and an apostrophe, not matching apostrophe quotes.
+  // The nickname's contents are copied verbatim; capitalization is not applied.
+  if (!nickname.empty() && (mode==0 || mode==2)) {
+    out = quoted_nickname; a94770..a947a9;
+  } else {
+    out = capitalize ? titlecase(first_name) : first_name; a947ae..a94879;
+  }
+  if (!nickname.empty() && mode==1) {
+    if (!out.empty()) out += " "; a94899..a948ad;
+    out += quoted_nickname; a948b2..a948e0;
+  }
+  if (!nickname.empty() && mode==2) return; a948e2..a948ed.
+  // With no nickname all three modes use first_name and continue to generated
+  // components. A mode other than 0/1/2 ignores nickname and uses first_name.
+
+  W(component) = English WORD form(name.words[component],
+                                   name.parts_of_speech[component]);
+  C(text) = capitalize ? titlecase(text) : text;
+  add_spaced(text): if !out.empty() out+=" "; out+=text;
+
+  // Front/rear compound is joined without an internal separator.
+  if ((FrontCompound!=-1 || RearCompound!=-1) &&
+      !(shorten && !out.empty())) { a948f3..a9490b;
+    compound = W(FrontCompound) + W(RearCompound); a94934/a94948;
+    if (!compound.empty()) add_spaced(C(compound)); a9494d..a94995;
+  }
+
+  // The exact native gate checks TheX/FirstAdjective/SecondAdjective. A lone
+  // HyphenCompound with those three fields all -1 does not enter this group.
+  if ((TheX!=-1 || FirstAdjective!=-1 || SecondAdjective!=-1) &&
+      !(shorten && !out.empty())) { a949d5..a949f2;
+    article_added = false;
+    previous_component_needs_space = !out.empty();
+    for (component in [FirstAdjective, SecondAdjective, HyphenCompound, TheX]) {
+      part = W(component); a94a21/a94ad8/a94b80/a94d05;
+      if (part.empty()) continue; // Invalid WORD/POS or empty RAW form.
+      if (previous_component_needs_space) out += " ";
+      if (!article_added) {
+        out += (out.empty() && capitalize) ? "The " : "the ";
+        article_added = true; a94a4a..a94a87 (repeated for later first part).
+      }
+      out += C(part);
+      if (component==HyphenCompound) {
+        out += "-"; a94c79;
+        previous_component_needs_space=false; // TheX follows directly.
+      } else previous_component_needs_space=true;
+    }
+  }
+  if (OfX!=-1 && !(shorten && !out.empty())) { a94db2..a94dc6;
+    part=W(OfX); a94df3;
+    if (!part.empty()) {
+      if (!out.empty()) out += " ";
+      out += out.empty() ? "Of " : "of "; a94e18..a94e38;
+      out += C(part); a94e3d..a94e60;
+    }
+  }
+
+  Examples of the productive construction, with all fields independently absent:
+    {first_name} {front}{rear} the {adjective1} {adjective2} {hyphen}-{noun} of {of_word}
+    `{nickname}' {front}{rear} the {adjective1} {noun} of {of_word}  [mode 0]
+    {first_name} `{nickname}' {front}{rear} the {noun} of {of_word} [mode 1]
+    `{nickname}'                                               [mode 2]
+  Without a prior head the initial article is "The "; an OfX-only name begins
+  "Of ". With capitalize=false the definite article is always "the ".
+  Missing or empty individual fields emit nothing. There is no unknown-name
+  fallback, and a named record can yield an empty final string.
+
+ENGLISH WORD/PART-OF-SPEECH FIELD
+  reference d2cb50..d2cc1c; classic d29b90..d29c5c; delta -2fc0.
+  negative WORD ID, WORD ID >= language.words.size(), or unsigned POS > 8
+  returns without appending (d2cb53/d2cb76/d2cb84).
+  The 9-entry table d2cc1c selects these language_word offsets:
+    0 Noun           +20   d2cb9e
+    1 NounPlural     +40   d2cba8
+    2 Adjective      +60   d2cbbc
+    3 Prefix         +80   d2cbb2
+    4 Verb           +a0   d2cbc6
+    5 Verb3rdPerson  +c0   d2cbd3
+    6 VerbPast       +e0   d2cbe0
+    7 VerbPassive    +100  d2cbed
+    8 VerbGerund     +120  d2cbfa
+  The whole RAW form is appended as one component (d2cc05..d2cc16), so spaces,
+  conjunctions and punctuation within it are not independent list boundaries.
+
+NATIVE TITLECASE FIELD
+  reference 52d3c0..52d5fe; classic 52ade0..52b01e; delta -25e0.
+  This logical body spans several contiguous MSVC unwind records; extraction
+  retains it through the sole return and decodes the following tables separately.
+  It capitalizes lowercase ASCII at the first ordinary character and at word
+  boundaries (52d439..52d509), with these boundaries:
+    previous byte is space or double quote;
+    previous byte is apostrophe at index 1, or is preceded by a space/comma.
+  A '[' increments bracket depth, ']' decrements it; positive depth skips the
+  entire enclosed token (52d403..52d430). The first ordinary byte ends the
+  initial-boundary state. A backtick is an ordinary byte; the authored nickname
+  is not passed through this helper by either name formatter.
+  CP437 special mappings use 52d624 remap -> 52d600 RVA table:
+    81->9a (ue), a4->a5 (enye), 84->8e (ae umlaut), 86->8f (a ring),
+    82->90 (e acute), 94->99 (oe umlaut), 87->80 (c cedilla), 91->92 (ae ligature).
+  All other non-ASCII bytes remain unchanged.
+
+UNIT-NAME NICKNAME VARIANTS USED BY THE LIKES SUBJECT
+  Unit formatter a94030..a946d1; classic a910b0..a91751; delta -2f80.
+  It uses the same has_name, game-type-selected display mode, authored nickname
+  punctuation and byte-preserving nickname copy (a9405d..a94187).
+  Mode 0 substitutes quoted nickname for first_name and retains generated groups;
+  mode 1 places quoted nickname after titlecased first_name and retains groups;
+  mode 2 emits quoted nickname alone; absent nickname always retains first_name.
+  Its generated groups use the name's local language translation words, rather
+  than the English WORD/POS forms: concatenate words[0..1], then words[2..5],
+  then words[6], omitting absent entries and separating nonempty groups by spaces.
+  Those groups are titlecased; no English "the/of" articles are added here.
+  Invalid language/WORD indices contribute no body. This is separate from the
+  art-form English grammar above and does not modify user squad.alias values.
+
+WRAPPING/DRAW OWNERSHIP, reference coordinates
+  Producer call sites: 1a53ae initial page setup; 1b7c12 selected-tab update.
+  Renderer: 17ef01/17ef2c source vector sheet+1a90, 17ef57 boxes sheet+1aa8;
+            17f070 calls 858550(box,complete_raw_source), iterating the pair.
+  Mouse:    1b791f source+1a90, 1b793e boxes+1aa8 -> 1b79c7 same wrapper.
+  Input:    8db31b source.end+1a98, 8db326 source.begin+1a90,
+            8db331 boxes+1aa8 -> 8db366 same wrapper.
+  Draw:     17f4ad calls ad9790 after reading native text row and its +301 colors.
+  These exactly match native_rich_profile.inc's existing Personality ownership;
+  Preferences does not require a new capture route or a different native source.
+  The full source exists before native word wrapping or justification; any loss
+  caused by reconstruction from rendered rows is downstream of this producer.
+
+ITEM/MATERIAL SUPPLIERS RE-EXTRACTED FROM BOTH CONFIGURED IMAGES
+  native-field-suppliers.tsv links every retained supplier to the actual CALL
+  operand in each edition. The suppliers are not assigned an edition delta by
+  spelling or by a different function's position: their individual call targets
+  come from the native item-name instruction stream.
+
+  plant-seed-name: reference a64cb0..a64cf5; classic a61de0..a61e25.
+    item-name SEEDS type 53 enters this helper for plant material types 419..618.
+    plant index < 0 or index >= plants.size() -> leave output unchanged;
+    valid plant -> copy its +d0 seed_plural string as one complete field.
+    Other material types use material STATE_NAME:SOLID, then a space and the
+    generic seed noun/suffix. No split of a multiword RAW seed name occurs.
+
+  plant-growth-name: reference a64d00..a64d79; classic a61e30..a61ea9.
+    item-name PLANT_GROWTH type 56 enters for plant material types 419..618.
+    plant index < 0/outside vector or growth subtype < 0/outside plant+658..660
+    growth vector -> leave output unchanged.
+    count!=1 (Preferences passes a plural count) -> copy growth+40 NAME:PLURAL;
+    count==1 -> copy growth+20 NAME:SINGULAR.
+    The fallback generic plural is "leaves and fruit", one native item body.
+    Its internal "and" is not the producer's final-list conjunction.
+
+  material-record-lookup: reference 14add70..14ade9f;
+                          classic 14a8ce0..14a8e0f.
+    type 419..618 -> indexed plant+2a0 material vector;
+    type 19..218 or 219..418 -> creature/historical-figure material resolver;
+    type 0 -> inorganic material at inorganic_raw+1a8;
+    remaining type in 0..658 -> builtin-material array indexed by signed type;
+    type outside supported range -> null.
+    Invalid plant/inorganic/creature entries can return the native unknown
+    builtin material rather than null. The caller supplies the noun/fallback.
+    STATE_NAME and PREFIX therefore include all loaded RAW materials and
+    procedural materials; literal strings in the executable are not a finite
+    catalog of food names.
+  creature-material-record-lookup: reference 701e70..70207e;
+                                   classic 6ff890..6ffa9e.
+    material type 19..218 -> creature RAW index=material_index; material slot
+    index=material_type-19 in creature+1f0..1f8 material vector.
+    material type 219..418 -> material_index is a historical-figure ID; resolve
+    its stored race (historical_figure+2) using the world's ID/race cache or
+    sorted figure vector; use material slot index=material_type-219 in that
+    creature RAW's material vector. Invalid figure/race/material slot -> null.
+    The cache operation is a source lookup, not a text-production branch.
+  material-race-field: reference 701db0..701e6a;
+                       classic 6ff7d0..6ff88a.
+    type 19..218 -> return supplied material_index as creature RAW race index;
+    type 219..418 -> find historical figure by material_index, return figure+2
+    signed race; unsupported type/missing figure -> -1. This one logical body
+    has multiple contiguous unwind entries; extraction retains all its returns.
+
+  material-gem-name: reference 14d1790..14d1911;
+                     classic 14cc700..14cc881.
+    valid material can supply gem_name+20, gem_plural+40, or stone_name+60;
+    absent gem name falls back to material-state-name SOLID. The plural gem
+    marker rules include a native appended 's', retained in the complete body.
+  material-stone-name: reference 14d16f0..14d1781;
+                       classic 14cc660..14cc6f1.
+    use material+60 stone name when nonempty; otherwise SOLID state formatter.
+  shaped-gem-name: reference 14e1ec0..14e2a28;
+                  classic 14dce30..14dd998.
+    every descriptor_shape flag/count/material path is retained, including
+    native glass prefixes and dynamic descriptor shape+50/+70 names and
+    shape+90 adjective vector. Preferences item calls have no concrete item
+    object from which to obtain a physical item's shape; these are shared item
+    supplier options, not additional Preferences paragraph families.
+  creature-body-name: reference 144ea0..144f7b;
+                      classic 144e30..144f0b.
+    complete creature/caste validity branches and 35 caste-field selectors;
+    selects a complete 0x20-byte string field before optional first-byte ASCII
+    capitalization. This is eligible in the fallback item-name path.
+
+  Food DRINK type 69 supplies material STATE_NAME:LIQUID (state=1).
+  Food CHEESE type 71 supplies material STATE_NAME:SOLID (state=0).
+  Food POWDER_MISC type 70 supplies material STATE_NAME:POWDER (state=3).
+  LIQUID_MISC type 73 supplies LIQUID with optional native reagent descriptors,
+  or creature paste under the shared item's qualifying material branch.
+  These state names are complete source fields. The screenshot's "millet beer",
+  "hempseed oil", "rice flour", and "one-humped camel cheese" do not establish
+  a finite suffix grammar; translation must also accept other whole RAW names.
+  MEAT/FISH directly select creature RAW NAME:SINGULAR, which can be generated
+  or supplied by mods. "fortresses Catastrophe" cannot be classified from its
+  spelling alone: no producer literal identifies the screenshot's stored RAW
+  record. Source-aware translation must preserve this as one supplied field.
+
+PERSONALITY DRAW SOURCE RELAY, CURRENT WINDOWS IMAGE EVIDENCE
+  reference-personality-draw.asm: 17f2a0 loads sheet from [caller RSP+b260],
+    then 17f2a8 adds 1aa8 to select this page's own text-box vector;
+    17f496/17f49e load native row colors/text; 17f4ad calls ad9790.
+  classic-personality-draw.asm: 17f230 loads the same caller stack slot,
+    17f238 selects the same sheet field; 17f43d calls ad67d0.
+  The complete instruction bytes at those sheet/field reads in both images are
+    48 8b 84 24 60 b2 00 00 48 05 a8 1a 00 00.
+  The existing edition range 14d5f0..19e16c maps to classic 14d580, including
+  these sites. CALL pushes its return address: a relay at the draw callee entry
+  reads the owning sheet at [RSP+b268] without changing graphics/text/colors.
+  This evidence applies to the two configured Windows PE images. No current
+  ELF executable is configured in this Windows workspace, so it does not
+  establish a Linux draw call's sheet register or frame slot.

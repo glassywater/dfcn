@@ -1,6 +1,16 @@
 base = "plants::seed"
 
 [[rulesets]]
+[rulesets.rules]
+"{singular}" = "{singular}"
+"{plural}" = "{plural}"
+
+[[rulesets]]
+name = "singular"
+[rulesets.rules]
+"pig tail seed" = "猪尾草种子"
+
+[[rulesets]]
 name = "plural"
 [rulesets.rules]
 "abaca seeds" = "蕉麻种子"

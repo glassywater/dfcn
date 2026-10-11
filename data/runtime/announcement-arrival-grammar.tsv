@@ -1,0 +1,58 @@
+# Whole native Arrivals report grammar. Tabs allow types 49/50/69/70/71/72/301.
+# Active whole-string constructors are proven for 69..72 and 301; 49/50 retain existing catalogue handling.
+# Returned party ownership is captured at actual native append sites; aliases remain verbatim.
+# Source: data/extracted/fortress-arrivals and announcement-negotiation-native/returned-history-dispatch.tsv
+# scope	source	target	semantic fields	native provenance
+fortress-arrival	Some migrants have decided to brave this terrifying place, knowing it may be their miserable tomb.	一些移民决定勇闯这片恐怖之地，明知这里可能成为他们悲惨的坟墓。		69 D_MIGRANTS_ARRIVAL; native literal 0x00e49bf0; classic counterpart in extracted/fortress-arrivals
+fortress-arrival	Some migrants have arrived at this miserable place, despite the danger.	一些移民不顾危险，来到了这个悲惨的地方。		69 D_MIGRANTS_ARRIVAL; native literal 0x00e49c02; classic counterpart in extracted/fortress-arrivals
+fortress-arrival	Some migrants have arrived at this miserable place.	一些移民来到了这个悲惨的地方。		69 D_MIGRANTS_ARRIVAL; native literal 0x00e49c0b; classic counterpart in extracted/fortress-arrivals
+fortress-arrival	Some migrants have decided to brave this terrifying unhappy place, knowing it may be their tomb.	一些移民决定勇闯这片恐怖而不幸的地方，明知这里可能成为他们的坟墓。		69 D_MIGRANTS_ARRIVAL; native literal 0x00e49c24; classic counterpart in extracted/fortress-arrivals
+fortress-arrival	Some migrants have arrived at this unhappy place, despite the danger.	一些移民不顾危险，来到了这个不幸的地方。		69 D_MIGRANTS_ARRIVAL; native literal 0x00e49c36; classic counterpart in extracted/fortress-arrivals
+fortress-arrival	Some migrants have arrived at this unhappy place.	一些移民来到了这个不幸的地方。		69 D_MIGRANTS_ARRIVAL; native literal 0x00e49c3f; classic counterpart in extracted/fortress-arrivals
+fortress-arrival	Some migrants have decided to brave this terrifying place, knowing it may be their tomb.	一些移民决定勇闯这片恐怖之地，明知这里可能成为他们的坟墓。		69 D_MIGRANTS_ARRIVAL; native literal 0x00e49c4d; classic counterpart in extracted/fortress-arrivals
+fortress-arrival	Some migrants have arrived, despite the danger.	一些移民不顾危险，抵达了这里。		69 D_MIGRANTS_ARRIVAL; native literal 0x00e49c59; classic counterpart in extracted/fortress-arrivals
+fortress-arrival	Some migrants have arrived.	一些移民抵达了。		69 D_MIGRANTS_ARRIVAL; native literal 0x00e49c62; classic counterpart in extracted/fortress-arrivals
+fortress-arrival	A migrant has decided to brave this terrifying miserable place.	一名移民决定勇闯这个恐怖而悲惨的地方。		70 D_MIGRANT_ARRIVAL; native literal 0x00e49cf9; classic counterpart in extracted/fortress-arrivals
+fortress-arrival	A migrant has arrived at this miserable place, despite the danger.	一名移民不顾危险，来到了这个悲惨的地方。		70 D_MIGRANT_ARRIVAL; native literal 0x00e49d0b; classic counterpart in extracted/fortress-arrivals
+fortress-arrival	A migrant has arrived at this miserable place.	一名移民来到了这个悲惨的地方。		70 D_MIGRANT_ARRIVAL; native literal 0x00e49d14; classic counterpart in extracted/fortress-arrivals
+fortress-arrival	A migrant has decided to brave this terrifying unhappy place.	一名移民决定勇闯这个恐怖而不幸的地方。		70 D_MIGRANT_ARRIVAL; native literal 0x00e49d2d; classic counterpart in extracted/fortress-arrivals
+fortress-arrival	A migrant has arrived at this unhappy place, despite the danger.	一名移民不顾危险，来到了这个不幸的地方。		70 D_MIGRANT_ARRIVAL; native literal 0x00e49d3f; classic counterpart in extracted/fortress-arrivals
+fortress-arrival	A migrant has arrived at this unhappy place.	一名移民来到了这个不幸的地方。		70 D_MIGRANT_ARRIVAL; native literal 0x00e49d48; classic counterpart in extracted/fortress-arrivals
+fortress-arrival	A migrant has decided to brave this terrifying place.	一名移民决定勇闯这片恐怖之地。		70 D_MIGRANT_ARRIVAL; native literal 0x00e49d56; classic counterpart in extracted/fortress-arrivals
+fortress-arrival	A migrant has arrived, despite the danger.	一名移民不顾危险，抵达了这里。		70 D_MIGRANT_ARRIVAL; native literal 0x00e49d62; classic counterpart in extracted/fortress-arrivals
+fortress-arrival	A migrant has arrived.	一名移民抵达了。		70 D_MIGRANT_ARRIVAL; native literal 0x00e49d6b; classic counterpart in extracted/fortress-arrivals
+fortress-arrival	No one else even considered making the journey to this cursed miserable death-trap.	其他人连前往这个受诅咒、悲惨的死亡陷阱的念头都没有。		71 D_MIGRANT_ARRIVAL_DISCOURAGED; native literal 0x00e49e38; classic counterpart in extracted/fortress-arrivals
+fortress-arrival	Others refused to journey to this dangerous and miserable fortress.	其他人拒绝前往这座危险而悲惨的要塞。		71 D_MIGRANT_ARRIVAL_DISCOURAGED; native literal 0x00e49e4d; classic counterpart in extracted/fortress-arrivals
+fortress-arrival	Others were too nervous to make the journey to this miserable fortress.	其他人因太过害怕，未敢踏上前往这座悲惨要塞的旅途。		71 D_MIGRANT_ARRIVAL_DISCOURAGED; native literal 0x00e49e59; classic counterpart in extracted/fortress-arrivals
+fortress-arrival	No one else even considered making the journey to this cursed unhappy death-trap.	其他人连前往这个受诅咒、不幸的死亡陷阱的念头都没有。		71 D_MIGRANT_ARRIVAL_DISCOURAGED; native literal 0x00e49e75; classic counterpart in extracted/fortress-arrivals
+fortress-arrival	Others refused to journey to this dangerous and unhappy fortress.	其他人拒绝前往这座危险而不幸的要塞。		71 D_MIGRANT_ARRIVAL_DISCOURAGED; native literal 0x00e49e8a; classic counterpart in extracted/fortress-arrivals
+fortress-arrival	Others were too nervous to make the journey to this unhappy fortress.	其他人因太过害怕，未敢踏上前往这座不幸要塞的旅途。		71 D_MIGRANT_ARRIVAL_DISCOURAGED; native literal 0x00e49e96; classic counterpart in extracted/fortress-arrivals
+fortress-arrival	No one else even considered making the journey to this cursed death-trap.	其他人连前往这个受诅咒的死亡陷阱的念头都没有。		71 D_MIGRANT_ARRIVAL_DISCOURAGED; native literal 0x00e49ea7; classic counterpart in extracted/fortress-arrivals
+fortress-arrival	Others refused to journey to this dangerous fortress.	其他人拒绝前往这座危险的要塞。		71 D_MIGRANT_ARRIVAL_DISCOURAGED; native literal 0x00e49ebc; classic counterpart in extracted/fortress-arrivals
+fortress-arrival	Others were too nervous to make the journey.	其他人因太过害怕，未敢踏上旅途。		71 D_MIGRANT_ARRIVAL_DISCOURAGED; native literal 0x00e49ec8; classic counterpart in extracted/fortress-arrivals
+fortress-arrival	No one even considered making the journey to such a cursed miserable death-trap this season.	本季无人有意前往这样一个受诅咒、悲惨的死亡陷阱。		71 D_MIGRANT_ARRIVAL_DISCOURAGED; native literal 0x00e49ee4; classic counterpart in extracted/fortress-arrivals
+fortress-arrival	Migrants refused to journey to such a dangerous and miserable fortress this season.	本季移民拒绝前往这样一座危险而悲惨的要塞。		71 D_MIGRANT_ARRIVAL_DISCOURAGED; native literal 0x00e49ef6; classic counterpart in extracted/fortress-arrivals
+fortress-arrival	Migrants were too nervous to make the journey this season to this miserable fortress.	本季移民因太过害怕，未敢踏上前往这座悲惨要塞的旅途。		71 D_MIGRANT_ARRIVAL_DISCOURAGED; native literal 0x00e49eff; classic counterpart in extracted/fortress-arrivals
+fortress-arrival	No one even considered making the journey to such a cursed unhappy death-trap this season.	本季无人有意前往这样一个受诅咒、不幸的死亡陷阱。		71 D_MIGRANT_ARRIVAL_DISCOURAGED; native literal 0x00e49f18; classic counterpart in extracted/fortress-arrivals
+fortress-arrival	Migrants refused to journey to such a dangerous and unhappy fortress this season.	本季移民拒绝前往这样一座危险而不幸的要塞。		71 D_MIGRANT_ARRIVAL_DISCOURAGED; native literal 0x00e49f2a; classic counterpart in extracted/fortress-arrivals
+fortress-arrival	Migrants were too nervous to make the journey this season to this unhappy fortress.	本季移民因太过害怕，未敢踏上前往这座不幸要塞的旅途。		71 D_MIGRANT_ARRIVAL_DISCOURAGED; native literal 0x00e49f33; classic counterpart in extracted/fortress-arrivals
+fortress-arrival	No one even considered making the journey to such a cursed death-trap this season.	本季无人有意前往这样一个受诅咒的死亡陷阱。		71 D_MIGRANT_ARRIVAL_DISCOURAGED; native literal 0x00e49f41; classic counterpart in extracted/fortress-arrivals
+fortress-arrival	Migrants refused to journey to such a dangerous fortress this season.	本季移民拒绝前往这样一座危险的要塞。		71 D_MIGRANT_ARRIVAL_DISCOURAGED; native literal 0x00e49f4d; classic counterpart in extracted/fortress-arrivals
+fortress-arrival	Migrants were too nervous to make the journey this season.	本季移民因太过害怕，未敢踏上旅途。		71 D_MIGRANT_ARRIVAL_DISCOURAGED; native literal 0x00e49f56; classic counterpart in extracted/fortress-arrivals
+fortress-arrival	No one else even considered making the journey to this miserable hellhole.	其他人连前往这个悲惨的鬼地方的念头都没有。		71 D_MIGRANT_ARRIVAL_DISCOURAGED; native literal 0x00e49fc6; classic counterpart in extracted/fortress-arrivals
+fortress-arrival	Others refused to journey to this unhappy fortress.	其他人拒绝前往这座不幸的要塞。		71 D_MIGRANT_ARRIVAL_DISCOURAGED; native literal 0x00e49fd8; classic counterpart in extracted/fortress-arrivals
+fortress-arrival	Others were too wary to make the journey.	其他人因太过警惕，未敢踏上旅途。		71 D_MIGRANT_ARRIVAL_DISCOURAGED; native literal 0x00e49fe1; classic counterpart in extracted/fortress-arrivals
+fortress-arrival	No one even considered making the journey to such a miserable hellhole this season.	本季无人有意前往这样一个悲惨的鬼地方。		71 D_MIGRANT_ARRIVAL_DISCOURAGED; native literal 0x00e49fef; classic counterpart in extracted/fortress-arrivals
+fortress-arrival	Migrants refused to journey to this unhappy fortress this season.	本季移民拒绝前往这座不幸的要塞。		71 D_MIGRANT_ARRIVAL_DISCOURAGED; native literal 0x00e49ffb; classic counterpart in extracted/fortress-arrivals
+fortress-arrival	Migrants were too wary to make the journey this season.	本季移民因太过警惕，未敢踏上旅途。		71 D_MIGRANT_ARRIVAL_DISCOURAGED; native literal 0x00e4a004; classic counterpart in extracted/fortress-arrivals
+fortress-arrival	The fortress attracted no migrants this season.	本季要塞没有吸引到移民。		72 D_NO_MIGRANT_ARRIVAL; native literal 0x00e4a11c; classic counterpart in extracted/fortress-arrivals
+fortress-arrival	{s} has returned.	{s1}回来了。	$mission-return-party	301 GUEST_ARRIVAL; traveller return branches; party ownership from actual native append
+fortress-arrival	{s} has returned. {s}	{s1}回来了。{s2}	$mission-return-party,$history-report	301 GUEST_ARRIVAL; nonempty history_event+0xd0 appended after two spaces; complete body
+fortress-arrival	{s} have returned.	{s1}回来了。	$mission-return-party	301 GUEST_ARRIVAL; traveller return branches; party ownership from actual native append
+fortress-arrival	{s} have returned. {s}	{s1}回来了。{s2}	$mission-return-party,$history-report	301 GUEST_ARRIVAL; nonempty history_event+0xd0 appended after two spaces; complete body
+fortress-arrival	{s} and others have returned.	{s1}等人回来了。	$mission-return-party	301 GUEST_ARRIVAL; traveller return branches; party ownership from actual native append
+fortress-arrival	{s} and others have returned. {s}	{s1}等人回来了。{s2}	$mission-return-party,$history-report	301 GUEST_ARRIVAL; nonempty history_event+0xd0 appended after two spaces; complete body
+fortress-arrival	{s} has arrived.	{s1}已经到达。	$unit	301; unit formatter 1330c30; historical figure information type 1
+fortress-arrival	{s} is visiting.	{s1}来访了。	$unit	301; unit formatter 1330c30; other historical figure information type
+fortress-arrival	{s}, the performance troupe, has arrived.	演出团{s1}已经到达。	$name	301; entity formatter b92900; information type 1
+fortress-arrival	{s}, a performance troupe, is visiting.	演出团{s1}来访了。	$name	301; entity formatter b92900; other information type

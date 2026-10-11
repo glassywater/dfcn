@@ -59,6 +59,19 @@ void Overlay::rebuild_announcement_combat_rules() {
     }
 }
 
+static bool announcement_combat_field_edges_fit(
+        std::string_view scope, std::string_view value) {
+    if (value.empty() || value.front() == ' ') return false;
+    if (value.back() != ' ') return true;
+    // Null item/tissue branches retain the trailing space of "in the ",
+    // "through a hole in the " or a damage-list separator. The complete
+    // native composite owns that space; its recursive entry trims it before
+    // matching the explicit empty-object productions. Dynamic name/item/body
+    // leaves still require their original nonempty field boundaries.
+    return scope == "head" || scope == "attack" || scope == "damage" ||
+        scope == "damage-list" || scope == "layer";
+}
+
 std::optional<std::string> Overlay::translate_announcement_combat(
         std::string_view raw_source, std::string_view initial_scope) const {
     TranslationWorkScope budget;
@@ -69,11 +82,10 @@ std::optional<std::string> Overlay::translate_announcement_combat(
     // original bytes. Memorial death clauses can contain doubled spaces while
     // an authored nickname in the same inscription owns its exact whitespace.
     // The mapping also preserves nicknames inside READ_ITEM inscriptions and
-    // historical collection titles reached through the shared grammar.
+    // historical collection titles reached through the shared grammar. Squad
+    // aliases need the same original-byte ownership even without backticks.
     std::vector<size_t> origins;
-    const bool preserve_fields = raw_source.find('`') != std::string_view::npos;
-    const std::string source = normalize_utterance(raw_source,
-        preserve_fields ? &origins : nullptr);
+    const std::string source = normalize_utterance(raw_source, &origins);
     if (source.empty()) return std::nullopt;
     // Shared historical/item fields can enter this grammar through another
     // parser. Track the semantic span across calls as well as within resolve,
@@ -82,8 +94,7 @@ std::optional<std::string> Overlay::translate_announcement_combat(
     // exits. Keep the set module-owned so ordinary hot reload can release it.
     auto &active_calls = reloadable_thread_state<
         std::unordered_set<std::string>, struct CombatActiveCallsTag>();
-    const std::string call_key = std::string(initial_scope) + '\x1f' +
-        std::string(preserve_fields ? raw_source : std::string_view(source));
+    const std::string call_key = std::string(initial_scope) + '\x1f' + std::string(raw_source);
     if (!active_calls.insert(call_key).second) return std::nullopt;
     struct ActiveCall {
         std::unordered_set<std::string> &calls;
@@ -147,7 +158,7 @@ std::optional<std::string> Overlay::translate_announcement_combat(
                     end <= last; ++end) {
                 if (!template_literal_at(input, end, following, true)) continue;
                 const auto value = input.substr(at, end - at);
-                if (value.front() == ' ' || value.back() == ' ') continue;
+                if (!announcement_combat_field_edges_fit(fields[field], value)) continue;
                 // Prove the suffix before entering an open name/item field.
                 if (suffix_fits(rule, fields, input, field + 1, end + following.size()) &&
                         scope_fits(fields[field], value)) {
@@ -197,12 +208,10 @@ std::optional<std::string> Overlay::translate_announcement_combat(
         TranslationWorkFrame field_work("announcement grammar field", input);
         input = trim_view(input);
         if (input.empty()) return std::nullopt;
-        std::string_view original = input;
-        if (preserve_fields) {
-            const size_t begin = static_cast<size_t>(input.data() - source.data());
-            const size_t end = begin + input.size();
-            original = raw_source.substr(origins[begin], origins[end - 1] + 1 - origins[begin]);
-        }
+        const size_t begin = static_cast<size_t>(input.data() - source.data());
+        const size_t end = begin + input.size();
+        const std::string_view original = raw_source.substr(
+            origins[begin], origins[end - 1] + 1 - origins[begin]);
         std::string key(scope);
         key.push_back('\x1f');
         key.append(original);
@@ -252,9 +261,76 @@ std::optional<std::string> Overlay::translate_announcement_combat(
         if (scope == "$unit") {
             auto result = translate_ui_message_capture(input, true);
             if (!result && (initial_scope == "fortress-announcement" ||
-                    initial_scope == "fortress-job"))
+                    initial_scope == "fortress-job" || initial_scope == "fortress-arrival" ||
+                    initial_scope == "fortress-attack"))
                 result = translate_unit_identity(input, true);
             return finish(std::move(result));
+        }
+        if (scope == "$historical-actor") {
+            // b92f10 supplies the complete historical-figure caption to
+            // agreement and negotiation reports. Its caste, claimed identity,
+            // curse/status and name belong to one actor field, rather than a
+            // live unit's profession caption or a bare generated name.
+            if (const auto identity = native_unit_identity_source_target(input))
+                return finish(identity);
+            auto result = translate_legends_actor(input, 0, true);
+            if (translation_complete_with_native_nicknames(result, input))
+                return finish(std::move(result));
+            // Authored CJK/foreign names remain supported by the existing
+            // RAW-backed caste/name parser. It admits a complete typed actor
+            // without the unrestricted authored-unit fallback.
+            return finish(translate_ui_message_capture(input, true));
+        }
+        if (scope == "$squad") {
+            // The return builder selects squad.alias or squad.name before
+            // appending this field. Use the existing source-aware squad path;
+            // without that ownership evidence its exact spelling stays opaque.
+            return finish(translate_fortress_squad_name(input));
+        }
+        if (scope == "$mission-return-party") {
+            const auto party = native_mission_return_party(raw_source);
+            if (!party) {
+                // The native singular suffix exists only in the one-unit
+                // branch; squad.alias always receives "have returned".
+                // This finite producer shape proves a unit without making
+                // any assumption about the personal spelling itself.
+                if (std::string_view(source).substr(end).starts_with(" has returned.")) {
+                    auto translated = translate_ui_message_capture(input, true);
+                    if (!translated) translated = translate_unit_identity(input, true);
+                    return finish(std::move(translated));
+                }
+                // Without producer provenance, "and others" can belong to
+                // an authored alias. Let the plain "have returned" rule own
+                // that whole opaque subject instead of translating its tail.
+                if (std::string_view(source).substr(end).starts_with(" and others have returned."))
+                    return finish(std::nullopt);
+                return finish(native_text_to_utf8(input));
+            }
+            // Reject a competing literal split inside an authored name or a
+            // unit's nickname. Only the captured party's full span may own it.
+            if (normalize_utterance(party->prefix) != normalize_utterance(input))
+                return finish(std::nullopt);
+            if (party->kind == NativeMissionReturnKind::Alias)
+                return finish(native_text_to_utf8(party->prefix));
+            if (party->kind == NativeMissionReturnKind::Generated && party->generated_name) {
+                auto translated = translate_history_name(*party->generated_name);
+                if (!translated) translated = translate_legends_name(party->prefix, false);
+                return finish(std::move(translated));
+            }
+            if (party->kind == NativeMissionReturnKind::Units) {
+                std::string target;
+                for (const auto &member : party->units) {
+                    // The exact formatter call establishes a live unit field;
+                    // a squad alias never enters this authored-unit fallback.
+                    auto translated = translate_ui_message_capture(member, true);
+                    if (!translated) translated = translate_unit_identity(member, true);
+                    if (!translated) return finish(std::nullopt);
+                    if (!target.empty()) target += "和";
+                    target += *translated;
+                }
+                return finish(std::move(target));
+            }
+            return finish(native_text_to_utf8(input));
         }
         if (scope == "$job") {
             // Subject-bearing jobs retain native nicknames/authored names
@@ -314,6 +390,33 @@ std::optional<std::string> Overlay::translate_announcement_combat(
             return finish(translation_complete_with_native_nicknames(result, input)
                 ? std::move(result) : std::nullopt);
         }
+        if (scope == "$resident-assigned-name") {
+            // 135c28c..135c2e6 reuses the resident role's NativeString. A
+            // null getter or has_name=false leaves that complete role in the
+            // final field; a94030 overwrites it only for an actual name.
+            constexpr std::string_view resident = " have given a resident ";
+            constexpr std::string_view assigned = " the name ";
+            const size_t role_at = source.find(resident);
+            const size_t name_at = source.rfind(assigned);
+            if (role_at != std::string::npos && name_at != std::string::npos &&
+                    name_at > role_at + resident.size() &&
+                    normalize_utterance(input) == std::string_view(source).substr(
+                        role_at + resident.size(), name_at - role_at - resident.size())) {
+                if (auto role = translate_announcement_combat(input, "$attack-creature-role"))
+                    return finish(std::move(role));
+            }
+            return finish(translate_legends_name(input, true));
+        }
+        if (scope == "$attack-creature-role") {
+            // 132e0c0 and 132f980 supply RAW caste/species, profession and
+            // creature-status fields, without a personal or authored name.
+            // Resolve the complete role before the generic UI noun parser.
+            auto result = translate_creature_descriptor(input, true);
+            if (!result) result = translate_unit_profession(input, false);
+            if (!result) result = translate_legends_term(input, false);
+            return finish(translation_complete_with_native_nicknames(result, input)
+                ? std::move(result) : std::nullopt);
+        }
         if (scope == "$item") return finish(translate_legends_item(input));
         if (scope == "$body") return finish(translate_legends_anatomy(input));
         if (scope == "$creature") return finish(translate_creature_reference(input));
@@ -339,11 +442,35 @@ std::optional<std::string> Overlay::translate_announcement_combat(
             // reviewed knowledge, a work title, historical event, place or
             // figure. These shared parsers validate the whole field; ordinary
             // lowercase prose never enters an unrestricted name fallback.
-            auto result = translate_legends_term(input);
+            // Native event references can contain entire biographies, dates
+            // and motives. Prove their event production before trying the
+            // same span as an item or BOOK_ART subject. This entry must not
+            // let an untyped name fallback claim a non-event reference.
+            auto result = translate_legends_event(input, 0, false);
+            if (!result) result = translate_legends_term(input);
             if (!result) result = translate_legends_artifact_identity(input);
-            if (!result) result = translate_legends_event(input, 0);
             if (!result) result = translate_legends_participant(input, std::nullopt, 0);
             return finish(std::move(result));
+        }
+        if (scope == "$history-report") {
+            // Actual d0 -> body-string append -> type301 submission proves
+            // both this entire field and its complete parent record. Reuse
+            // all native event semantics, including empty participant lists,
+            // rather than reconstructing event IDs or branches from prose.
+            if (const auto document = native_mission_return_history(raw_source, input)) {
+                if (const auto pieces = translate_history_event(*document)) {
+                    std::string target;
+                    for (const auto &part : *pieces) target += part.target;
+                    if (!target.empty()) return finish(std::move(target));
+                }
+            }
+            // Travellers append history_event::getSentence (+d0), flags=0,
+            // translated=true and glyphs_only=false, without a type filter.
+            // Its 133 native event families share the existing complete
+            // Legends prose catalogue and its typed participant/item/date
+            // fields. This resolver must consume the whole authored report;
+            // no English sentence or clipped-history fallback is admitted.
+            return finish(translate_legends_text(input, false, false));
         }
         if (scope == "$description") return finish(translate_legends_text(input, false, false));
         if (scope == "$inscription") {
@@ -370,6 +497,18 @@ std::optional<std::string> Overlay::translate_announcement_combat(
             translate_complete_announcement(input, source_colors, target_colors);
             const auto cached = announcement_result_metadata(input);
             return finish(cached ? cached->strict_target() : std::nullopt);
+        }
+        if (scope == "work-reference") {
+            // general_ref's event display field owns its whole native title,
+            // including the place/date. Resolve it before table alternatives
+            // such as the {item} {book} can split "the authoring of ..." or
+            // "the new obsession of ..." into speculative item/book fields.
+            // The $reference alias is sorted after those alternatives; doing
+            // this only inside that leaf is too late. No name fallback may
+            // establish an event here, and the complete title must translate.
+            const auto event = translate_legends_event(original, 0, false);
+            if (translation_complete_with_native_nicknames(event, original))
+                return finish(event);
         }
         if (scope == "work-reference-list") {
             // `and` and commas can belong to one known knowledge subject or
@@ -424,7 +563,7 @@ std::optional<std::string> Overlay::translate_announcement_combat(
                     translation_work_step();
                     if (end <= at || !template_literal_at(input, end, following, true)) continue;
                     const auto value = input.substr(at, end - at);
-                    if (value.front() == ' ' || value.back() == ' ') continue;
+                    if (!announcement_combat_field_edges_fit(scopes[field], value)) continue;
                     if (!legends_template_suffix_literals_fit(rule, input, field + 1,
                             end + following.size(), input.size(), true)) continue;
                     if (!suffix_fits(rule, scopes, input, field + 1,
@@ -557,7 +696,8 @@ dfcn::TranslationResult Overlay::translate_announcement_combat_result(
                         end <= final && bindings < 2; ++end) {
                     translation_work_step();
                     if (!template_literal_at(source, end, following, true) ||
-                            source[at] == ' ' || source[end - 1] == ' ' ||
+                            !announcement_combat_field_edges_fit(candidate.scopes[field],
+                                std::string_view(source).substr(at, end - at)) ||
                             !legends_template_suffix_literals_fit(rule, source, field + 1,
                                 end + following.size(), source.size(), true)) continue;
                     ranges[field] = {at, end};

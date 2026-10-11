@@ -373,20 +373,48 @@ Adventure action: Pet animal	抚摸动物	l
 Adventure action: Spit	吐唾沫	l
 
 # Adventure movement modal: lookup-only meanings for complete gait/stealth
-# fields. Gaits follow STANDARD_BIPED_GAITS / STANDARD_CRAWLING_GAITS in
-# data/upstream/objects.zh-Hans.po; Walk also follows the existing UI entry. Do not
-# override name, colour or light senses.
+# fields. All vanilla GAIT names and native modal branches are extracted in
+# data/extracted/adventure-movement. Keep RAW labels out of personal-name
+# inference; do not override name, colour or light senses.
 Adventure movement: Sprint	冲刺	l
 Adventure movement: Run	奔跑	l
 Adventure movement: Jog	慢跑	l
 Adventure movement: Walk	行走	l
 Adventure movement: Stroll	散步	l
-Adventure movement: Creep	爬行	l
-Adventure movement: Scramble	突进	l
+Adventure movement: Creep	缓缓移动	l
+Adventure movement: Scramble	快速挪动	l
 Adventure movement: Faster Crawl	更快爬行	l
 Adventure movement: Fast Crawl	快速爬行	l
 Adventure movement: Crawl	爬行	l
 Adventure movement: Slow Crawl	慢爬	l
+Adventure movement: Gallop	疾驰	l
+Adventure movement: Canter	慢跑	l
+Adventure movement: Trot	小跑	l
+Adventure movement: Fastest Walk	最快行走	l
+Adventure movement: Faster Walk	更快行走	l
+Adventure movement: Fast Walk	快走	l
+Adventure movement: Slow Walk	慢走	l
+Adventure movement: Slowest Walk	最慢行走	l
+Adventure movement: Faster Climb	更快攀爬	l
+Adventure movement: Fast Climb	快速攀爬	l
+Adventure movement: Climb	攀爬	l
+Adventure movement: Slow Climb	缓慢攀爬	l
+Adventure movement: Maximum Swim Speed	全速游泳	l
+Adventure movement: Faster Swim	更快游泳	l
+Adventure movement: Fast Swim	快速游泳	l
+Adventure movement: Swim	游泳	l
+Adventure movement: Slow Swim	缓慢游泳	l
+Adventure movement: Creeping Swim	缓缓游泳	l
+Adventure movement: Maximum Flight Speed	全速飞行	l
+Adventure movement: Faster Flight	更快飞行	l
+Adventure movement: Fast Flight	快速飞行	l
+Adventure movement: Fly	飞行	l
+Adventure movement: Slow Flight	缓慢飞行	l
+Adventure movement: Hover	悬停	l
+Adventure movement: Stumble Bumble	跌跌撞撞	l
+Adventure movement: Wamble	摇摇晃晃	l
+Adventure movement: Move	移动	l
+Adventure movement: Climb speed	攀爬速度	l
 Adventure movement: Light	光线明亮	l
 Adventure movement: Low Light	光线昏暗	l
 Adventure movement: Darkness	黑暗	l
@@ -400,6 +428,7 @@ Adventure movement: Average	一般	l
 Adventure movement: Good	良好	l
 Adventure movement: Great	很好	l
 Adventure movement: Excellent	极好	l
+Adventure movement: Fantastic	极好	l
 Adventure movement: Best Possible	最佳	l
 
 # Appointment states are UI text, never phonetic personal names. NEW is
@@ -894,6 +923,14 @@ Burden:	负重：	wl
 # Complete inventory locations wrap the shared body names in scoped prefixes.
 Inventory location: Strapped to	系在	l
 Inventory location: Sewn into	缝合于	l
+Inventory location: Wrapped around	缠绕在	l
+Inventory location: Stuck in	插在	l
+Inventory location: Hidden	隐藏	l
+Inventory location: Hauled	搬运中	l
+Inventory location: Multigrasp	多肢握持	l
+Inventory location: On head	戴在头上	l
+Inventory location: Nocked	已搭箭	l
+Inventory location: Nocked in {s}	搭在{s}上	l
 # Piercing locations wrap the shared body names in a scoped position format.
 Inventory location: In {s}	在{s}	l
 
@@ -1206,6 +1243,17 @@ World mission departure: (Set out Spring {d})	（{d}年春季出发）	ht
 World mission departure: (Set out Summer {d})	（{d}年夏季出发）	ht
 World mission departure: (Set out Autumn {d})	（{d}年秋季出发）	ht
 World mission departure: (Set out Winter {d})	（{d}年冬季出发）	ht
+World mission departure: (Set out {d})	（{d}年出发）	ht
+# Both native PE producers are decompiled in data/extracted/mission-report-list:
+# spoils uses generated squad.name (never squad.alias), tribute uses EntityName.
+Spoils Report:	战利品报告：	h
+Tribute Report:	贡品报告：	h
+World report participants: and others	等	h
+World report date: Spring {d}	（{d}年春季）	ht
+World report date: Summer {d}	（{d}年夏季）	ht
+World report date: Autumn {d}	（{d}年秋季）	ht
+World report date: Winter {d}	（{d}年冬季）	ht
+World report date: {d}	（{d}年）	ht
 # Fortress squad creation button: translate the complete caption.
 Create new squad	创建新小队	w
 # Squad footer buttons: use UI meanings before the proper-name fallback.
@@ -1427,13 +1475,26 @@ World civilization office: {s} of {p}	{p}的{s}	hti
 # World-map artifact records: captions are complete typed fields. The prefix
 # is internal, not a global replacement of prose or generated names.
 World artifact: Last held by {n}	最后持有者：{n}	ht
+# The native figure formatter can supply no identity at all.
+World artifact: Last held by	最后持有者：	h
 World artifact: Last in {p}	最后所在地点：{p}	ht
+# The native site/region/layer formatter can supply no name at all.
+World artifact: Last in	最后所在地点：	h
 World artifact: Last known to be traveling	最后得知正在旅行中	h
 World artifact: Location unknown	下落不明	h
+# Native artifact hover ownership: government, historical figure, family.
+# The person branch draws its prefix and complete contextual HF on one row.
+World artifact claim: Claimed by your local government	你所在地区的政府宣称拥有	h
+World artifact claim: Claimed by local family	当地家族宣称拥有	h
+World artifact claim: Claimed by local {n}	当地的{n}宣称拥有	ht
+World artifact claim: Claimed by local	当地有人宣称拥有	h
 # Fortress Items ownership captions use a typed person, including nicknames,
 # compound surnames and epithets, before the heirloom relationship is rendered.
 Fortress item claim: {n}'s family heirloom	{n}的家族传家宝	ht
 Fortress item claim: {n}'s family treasure	{n}的家族珍宝	ht
+# The personal treasure owner is printed with an outer possessive suffix.
+Fortress item claim: Treasure of {n}'s	{n}的珍宝	ht
+Fortress item claim: Heirloom of {n}'s	{n}的传家宝	ht
 Fortress item claim: Treasure of {a}	{a}的珍宝	ht
 Fortress item claim: Heirloom of {a}	{a}的传家宝	ht
 Fortress item claim: Sacred to {p}	{p}的圣物	ht
@@ -1752,27 +1813,35 @@ You are a {s} of {p}	你是一名{s}，信奉{p}	atl
 {p} of the great {n}	{p}，隶属于伟大的{n}	atl
 {n}, the god of {r}	{n}——掌管{r}的神祇	atl
 {n}, the goddess of {r}	{n}——掌管{r}的女神	atl
+{n}, the deity of {r}	{n}——掌管{r}的神祇	atl
 # Animal-form deities keep their species as a term, separate from names/spheres.
 # Adventure templates require the same capture order in source and target.
 {n}, the {s} god of {r}	{n}——{s}神祇，掌管{r}	atl
 {n}, the {s} goddess of {r}	{n}——{s}女神，掌管{r}	atl
+{n}, the {s} deity of {r}	{n}——{s}神祇，掌管{r}	atl
 {n}, the force of {r}	{n}——象征{r}的自然之灵	atl
 {n}, the force which permeates {r}	{n}——遍及{r}的自然之灵	atl
 {n} is the god of {r}	{n}是掌管{r}的神祇	atl
 {n} is the goddess of {r}	{n}是掌管{r}的女神	atl
+{n} is the deity of {r}	{n}是掌管{r}的神祇	atl
 {n} is the {s} god of {r}	{n}是{s}神祇，掌管{r}	atl
 {n} is the {s} goddess of {r}	{n}是{s}女神，掌管{r}	atl
+{n} is the {s} deity of {r}	{n}是{s}神祇，掌管{r}	atl
 {n} is the force of {r}	{n}是象征{r}的自然之灵	atl
 {n} is the force which permeates {r}	{n}是遍及{r}的自然之灵	atl
 {n}, the god	{n}——神祇	atl
 {n}, the goddess	{n}——女神	atl
+{n}, the deity	{n}——神祇	atl
 {n}, the {s} god	{n}——{s}神祇	atl
 {n}, the {s} goddess	{n}——{s}女神	atl
+{n}, the {s} deity	{n}——{s}神祇	atl
 {n}, the force	{n}——自然之灵	atl
 {n} is the god	{n}是神祇	atl
 {n} is the goddess	{n}是女神	atl
+{n} is the deity	{n}是神祇	atl
 {n} is the {s} god	{n}是{s}神祇	atl
 {n} is the {s} goddess	{n}是{s}女神	atl
+{n} is the {s} deity	{n}是{s}神祇	atl
 {n} is the force	{n}是自然之灵	atl
 {n} is a religion	{n}是一个宗教	atl
 {n} is a religion whose adherents worship {p}	{n}是一个宗教，其信徒崇拜{p}	atl
@@ -2926,6 +2995,9 @@ Continue action	继续行动	wl
 Continue waiting	继续等待	wl
 Stop action	停止行动	wl
 Finish action	完成行动	wl
+In conflict! Finish anyway	处于冲突！仍然完成	wl
+In conflict!	处于冲突！	wl
+Finish anyway	仍然完成	wl
 Finishing up...	正在完成行动……	wl
 Track playing: {s}	正在播放：{s}	wt
 
@@ -3955,6 +4027,34 @@ Drainage	排水性	wi
 Volcanism	火山活动度	wi
 Savagery	野性	wi
 
+# Embark resources are native geological fields. Their lookup-only scope
+# preserves these meanings when extensions reuse the words for other items.
+Embark site resource: Shallow Clay	浅黏土
+Embark site resource: Shallow Sand	浅沙
+Embark site resource: Clay	黏土
+Embark site resource: Sand	沙
+Embark site resource: Iron	铁
+Embark site resource: Gold	金
+Embark site resource: Silver	银
+Embark site resource: Copper	铜
+Embark site resource: Nickel	镍
+Embark site resource: Zinc	锌
+Embark site resource: Platinum	铂
+Embark site resource: Tin	锡
+Embark site resource: Lead	铅
+Embark site resource: Extremely deep soil	极深土层
+Embark site resource: Very deep soil	非常深的土壤
+Embark site resource: Deep soil	深厚土层
+Embark site resource: Some soil	一些土壤
+Embark site resource: Little soil	少量土壤
+Embark site resource: Varied aquifer	混合含水层
+Embark site resource: Heavy aquifer	重含水层
+Embark site resource: Light aquifer	轻度含水层
+Embark site resource: Aquifer	含水层
+Embark site resource: Ice	冰
+Embark site resource: Flux stone layers	助熔石层
+Embark site resource: Flux stone layer	助熔石层
+
 # Embark site finder: fixed field labels and compact filter values.  These
 # must be whole-label rules; word/procedural fallback produced partial strings
 # such as "Flux 石材 Layer" and treated the biome-alignment field literally.
@@ -4853,6 +4953,12 @@ Crime	犯罪	w
 Children's Quarter	儿童居所	wl
 # Character information -> Rooms: these are room-value labels, not actions
 # or communal dormitories. Keep the complete grade names as single fields.
+No assigned rooms	未分配房间	wl
+# Native grade helper 0xab4f20 has a plain 250-value grade for types 0..2.
+# Keep these meanings lookup-scoped instead of introducing generic UI words.
+Character room grade: Study	书房	l
+Character room grade: Quarters	卧室	l
+Character room grade: Dining Room	餐厅	l
 No Study	无书房	w
 Meager Study	简陋书房	w
 Modest Study	普通书房	w
@@ -4886,6 +4992,9 @@ Mausoleum	陵寝	w
 Grand Mausoleum	宏伟陵寝	w
 Royal Mausoleum	皇家陵寝	w
 # Keep the complete room requirement ahead of generated personal-name matching.
+Needs Study	需要书房	wl
+Needs Quarters	需要卧室	wl
+Needs Dining Room	需要餐厅	wl
 Needs Meager Study	需要简陋书房	wl
 Needs Modest Study	需要普通书房	wl
 Needs Decent Study	需要像样书房	wl
@@ -5256,6 +5365,12 @@ Justice intelligence tab: Actors	人物	l
 Justice intelligence tab: Organizations	组织	l
 Justice intelligence tab: Plots	阴谋	l
 Justice actor: Unidentified	身份不明	l
+Justice actor: Nameless	无名者	l
+Justice plot: Org	组织	l
+Justice plot organization: Unidentified	尚未查明	l
+Justice plot organization: Nameless	无名者	l
+Justice organization initials: Nameless	无名	l
+Justice organization initials: Unidentified	不明	l
 Associated Plot:	关联阴谋：	wl
 Desired metal cages and chains in dungeons: {d} of {d}	监牢中的金属笼子和锁链：现有 {d1}，需要 {d2}	wtl
 Untitled/unnamed	无标题／未命名	w
@@ -9281,6 +9396,9 @@ Can use any shop	可使用任意工坊	wl
 {d} shops max	最多{d}座工坊	wtl
 # The editable count keeps its native digits and blinking cursor before this suffix.
 shop(s) max	座工坊（上限）	wl
+# The native work-order workshop column also warns when a dyed job's
+# material/art-specification color selectors are still incomplete.
+Must set colors	必须指定颜色	wl
 # Complete task material chooser headings, not global Setting replacements.
 Setting material	设置材料	wli
 Setting plant	设置植物	wli
@@ -9307,6 +9425,7 @@ Requires:	需要：	wl
 # Articles belong to the native item description except in Name the.
 # Every capture must survive exactly once, including counts and quality marks.
 Adventure item action: What will you do with {s}?	你想如何处理{s}？	h
+Adventure item action: Where do you put {s}?	你想把{s}放在哪里？	h
 Adventure item action: View {s}	查看{s}	h
 Adventure item action: Drop {s}	丢下{s}	h
 Adventure item action: Throw {s}	投掷{s}	h
@@ -11497,3 +11616,65 @@ DFHack GUI Item type selector: boulder	大圆石	l
 DFHack GUI Item type selector: instrument	乐器	l
 Wiltwonders	枯萎奇观	w
 Wiltwonders	枯萎奇观	h
+# Adventure look-list renderer: inline text after the native page keys.
+to view other pages	查看其他页	wl
+
+# Native ecological label/value fields, independent of mod vocabulary.
+Embark site ecology: Temperature: Freezing	温度：严寒
+Embark site ecology: Temperature: Cold	温度：寒冷
+Embark site ecology: Temperature: Temperate	温度：温和
+Embark site ecology: Temperature: Warm	温度：温暖
+Embark site ecology: Temperature: Hot	温度：炎热
+Embark site ecology: Temperature: Scorching	温度：酷热
+Embark site ecology: Trees: None	树木：无
+Embark site ecology: Trees: Scarce	树木：极少
+Embark site ecology: Trees: Sparse	树木：稀疏
+Embark site ecology: Trees: Woodland	树木：林地
+Embark site ecology: Trees: Heavily Forested	树木：茂密森林
+Embark site ecology: Other Vegetation: None	其他植被：无
+Embark site ecology: Other Vegetation: Scarce	其他植被：极少
+Embark site ecology: Other Vegetation: Moderate	其他植被：适中
+Embark site ecology: Other Vegetation: Thick	其他植被：茂密
+Embark site ecology: Surroundings: Serene	周围环境：祥和
+Embark site ecology: Surroundings: Calm	周围环境：宁静
+Embark site ecology: Surroundings: Sinister	周围环境：阴森
+Embark site ecology: Surroundings: Mirthful	周围环境：欢乐
+Embark site ecology: Surroundings: Wilderness	周围环境：荒野
+Embark site ecology: Surroundings: Haunted	周围环境：闹鬼
+Embark site ecology: Surroundings: Joyous Wilds	周围环境：欢悦荒野
+Embark site ecology: Surroundings: Untamed Wilds	周围环境：未驯服的荒野
+Embark site ecology: Surroundings: Terrifying	周围环境：恐怖
+Justice plot: A plot	一项阴谋	l
+Justice plot: Sabotage	破坏	l
+Justice plot: Abduct	绑架	l
+Justice plot: Assassinate	暗杀	l
+Justice plot: Steal	窃取	l
+Justice plot: Corrupt	拉拢	l
+Justice plot: Provide Position	提供职位	l
+Justice plot: Infiltrate	渗透	l
+Justice plot: Frame	诬陷	l
+Justice plot: Start War	挑起战争	l
+Justice plot: , agreed in {d}	（第{d}年商定）	l
+Justice plot: Attempted Bribery in {d}	贿赂未遂（第{d}年）	l
+Justice plot: Attempted Espionage in {d}	间谍活动未遂（第{d}年）	l
+Justice plot: Attempted Embezzlement in {d}	挪用资金未遂（第{d}年）	l
+Justice plot: A plot in {d}	一项阴谋（第{d}年）	l
+Justice plot: Sabotage {t}	破坏{t}	l
+Justice plot: Abduct {t}	绑架{t}	l
+Justice plot: Assassinate {t}	暗杀{t}	l
+Justice plot: Steal {t}	窃取{t}	l
+Justice plot: Corrupt {e}	拉拢{e}	l
+Justice plot: Corrupt {s} of {e}	拉拢{e}的{s}	l
+Justice plot: Provide Position in {t}	在{t}中提供职位	l
+Justice plot: Infiltrate {t}	渗透{t}	l
+Justice plot: Frame {t}	诬陷{t}	l
+Justice plot: Start War between {e1} and {e2}	挑起{e1}与{e2}之间的战争	l
+Justice plot: Figure {n} the {s}	{n}（{s}）	l
+Justice plot: Corrupt of	拉拢任职者	l
+Justice plot: Corrupt of {e}	拉拢{e}的任职者	l
+Justice plot: Corrupt {s} of	拉拢{s}	l
+Justice plot: Provide Position in	提供职位	l
+Justice plot: Start War between and	挑起战争	l
+Justice plot: Start War between {e} and	挑起涉及{e}的战争	l
+Justice plot: Start War between and {e}	挑起涉及{e}的战争	l
+sandy loam Cavern Floor	砂质壤土洞窟地板	l

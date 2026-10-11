@@ -915,6 +915,8 @@ staggering	令人踉跄
 shadowy	暗影
 veil	幕
 ingestion	摄入
+# Body-part sense only (BODYGLOSS/TLCM_NOUN); keep in health::bodypart rules,
+# never export as a global TSV entry that overrides ammunition bolts.
 bolts	电流
 ink	墨汁
 thread	丝线

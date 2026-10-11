@@ -1,0 +1,181 @@
+edition	image_identity	owner	function_rva	instruction_rva	operation	target_rva	fallthrough_rva
+reference	PE:6a70a6d9:02711000	rooms:complete-rooms-render-arm	0x1703f6	0x170496	jle	0x1704a9	0x170498
+reference	PE:6a70a6d9:02711000	rooms:complete-rooms-render-arm	0x1703f6	0x1704c2	jne	0x17053d	0x1704c4
+reference	PE:6a70a6d9:02711000	rooms:complete-rooms-render-arm	0x1703f6	0x17057b	jle	0x170596	0x17057d
+reference	PE:6a70a6d9:02711000	rooms:complete-rooms-render-arm	0x1703f6	0x17059e	jge	0x1705ab	0x1705a0
+reference	PE:6a70a6d9:02711000	rooms:complete-rooms-render-arm	0x1703f6	0x1705e4	jge	0x17146d	0x1705ea
+reference	PE:6a70a6d9:02711000	rooms:complete-rooms-render-arm	0x1703f6	0x1705f8	jge	0x17146d	0x1705fe
+reference	PE:6a70a6d9:02711000	rooms:complete-rooms-render-arm	0x1703f6	0x170645	jg	0x1707b9	0x17064b
+reference	PE:6a70a6d9:02711000	rooms:complete-rooms-render-arm	0x1703f6	0x17067c	jge	0x1707b4	0x170682
+reference	PE:6a70a6d9:02711000	rooms:complete-rooms-render-arm	0x1703f6	0x1706ac	jne	0x1706f4	0x1706ae
+reference	PE:6a70a6d9:02711000	rooms:complete-rooms-render-arm	0x1703f6	0x170702	jne	0x170747	0x170704
+reference	PE:6a70a6d9:02711000	rooms:complete-rooms-render-arm	0x1703f6	0x17079b	je	0x1707af	0x17079d
+reference	PE:6a70a6d9:02711000	rooms:complete-rooms-render-arm	0x1703f6	0x17081c	je	0x170846	0x17081e
+reference	PE:6a70a6d9:02711000	rooms:complete-rooms-render-arm	0x1703f6	0x170877	jne	0x170884	0x170879
+reference	PE:6a70a6d9:02711000	rooms:complete-rooms-render-arm	0x1703f6	0x1708b5	jne	0x1708c2	0x1708b7
+reference	PE:6a70a6d9:02711000	rooms:complete-rooms-render-arm	0x1703f6	0x1708f3	jne	0x170900	0x1708f5
+reference	PE:6a70a6d9:02711000	rooms:complete-rooms-render-arm	0x1703f6	0x170931	jne	0x17093e	0x170933
+reference	PE:6a70a6d9:02711000	rooms:complete-rooms-render-arm	0x1703f6	0x170960	je	0x170992	0x170962
+reference	PE:6a70a6d9:02711000	rooms:complete-rooms-render-arm	0x1703f6	0x170967	je	0x170985	0x170969
+reference	PE:6a70a6d9:02711000	rooms:complete-rooms-render-arm	0x1703f6	0x17096d	je	0x170978	0x17096f
+reference	PE:6a70a6d9:02711000	rooms:complete-rooms-render-arm	0x1703f6	0x170974	je	0x17099f	0x170976
+reference	PE:6a70a6d9:02711000	rooms:complete-rooms-render-arm	0x1703f6	0x1709bd	je	0x1710c0	0x1709c3
+reference	PE:6a70a6d9:02711000	rooms:complete-rooms-render-arm	0x1703f6	0x1709e3	jle	0x170a98	0x1709e9
+reference	PE:6a70a6d9:02711000	rooms:complete-rooms-render-arm	0x1703f6	0x170a3c	jle	0x170a8b	0x170a3e
+reference	PE:6a70a6d9:02711000	rooms:complete-rooms-render-arm	0x1703f6	0x170a6f	jle	0x170a7e	0x170a71
+reference	PE:6a70a6d9:02711000	rooms:complete-rooms-render-arm	0x1703f6	0x170ac8	jge	0x1710c0	0x170ace
+reference	PE:6a70a6d9:02711000	rooms:complete-rooms-render-arm	0x1703f6	0x170af3	jge	0x1710bb	0x170af9
+reference	PE:6a70a6d9:02711000	rooms:complete-rooms-render-arm	0x1703f6	0x170b51	je	0x170e06	0x170b57
+reference	PE:6a70a6d9:02711000	rooms:complete-rooms-render-arm	0x1703f6	0x170b5c	je	0x170cbf	0x170b62
+reference	PE:6a70a6d9:02711000	rooms:complete-rooms-render-arm	0x1703f6	0x170b66	je	0x170b78	0x170b68
+reference	PE:6a70a6d9:02711000	rooms:complete-rooms-render-arm	0x1703f6	0x170b6d	je	0x170f4d	0x170b73
+reference	PE:6a70a6d9:02711000	rooms:complete-rooms-render-arm	0x1703f6	0x170b80	jne	0x170bcd	0x170b82
+reference	PE:6a70a6d9:02711000	rooms:complete-rooms-render-arm	0x1703f6	0x170bd5	jne	0x170c22	0x170bd7
+reference	PE:6a70a6d9:02711000	rooms:complete-rooms-render-arm	0x1703f6	0x170c2a	jne	0x170c74	0x170c2c
+reference	PE:6a70a6d9:02711000	rooms:complete-rooms-render-arm	0x1703f6	0x170cc7	jne	0x170d14	0x170cc9
+reference	PE:6a70a6d9:02711000	rooms:complete-rooms-render-arm	0x1703f6	0x170d1c	jne	0x170d69	0x170d1e
+reference	PE:6a70a6d9:02711000	rooms:complete-rooms-render-arm	0x1703f6	0x170d71	jne	0x170dbb	0x170d73
+reference	PE:6a70a6d9:02711000	rooms:complete-rooms-render-arm	0x1703f6	0x170e0e	jne	0x170e5b	0x170e10
+reference	PE:6a70a6d9:02711000	rooms:complete-rooms-render-arm	0x1703f6	0x170e63	jne	0x170eb0	0x170e65
+reference	PE:6a70a6d9:02711000	rooms:complete-rooms-render-arm	0x1703f6	0x170eb8	jne	0x170f02	0x170eba
+reference	PE:6a70a6d9:02711000	rooms:complete-rooms-render-arm	0x1703f6	0x170f55	jne	0x170fa2	0x170f57
+reference	PE:6a70a6d9:02711000	rooms:complete-rooms-render-arm	0x1703f6	0x170faa	jne	0x170ff7	0x170fac
+reference	PE:6a70a6d9:02711000	rooms:complete-rooms-render-arm	0x1703f6	0x170fff	jne	0x171049	0x171001
+reference	PE:6a70a6d9:02711000	rooms:complete-rooms-render-arm	0x1703f6	0x1710a2	je	0x1710b6	0x1710a4
+reference	PE:6a70a6d9:02711000	rooms:complete-rooms-render-arm	0x1703f6	0x1710c9	je	0x1710f6	0x1710cb
+reference	PE:6a70a6d9:02711000	rooms:complete-rooms-render-arm	0x1703f6	0x171109	je	0x171165	0x17110b
+reference	PE:6a70a6d9:02711000	rooms:complete-rooms-render-arm	0x1703f6	0x171216	je	0x17136f	0x17121c
+reference	PE:6a70a6d9:02711000	rooms:complete-rooms-render-arm	0x1703f6	0x17123c	jle	0x17136f	0x171242
+reference	PE:6a70a6d9:02711000	rooms:complete-rooms-render-arm	0x1703f6	0x17124a	jne	0x171265	0x17124c
+reference	PE:6a70a6d9:02711000	rooms:complete-rooms-render-arm	0x1703f6	0x17126d	jne	0x171288	0x17126f
+reference	PE:6a70a6d9:02711000	rooms:complete-rooms-render-arm	0x1703f6	0x171378	je	0x171449	0x17137e
+reference	PE:6a70a6d9:02711000	rooms:complete-rooms-render-arm	0x1703f6	0x1713a3	jge	0x171449	0x1713a9
+reference	PE:6a70a6d9:02711000	rooms:complete-rooms-render-arm	0x1703f6	0x1713ce	jge	0x171444	0x1713d0
+reference	PE:6a70a6d9:02711000	rooms:complete-rooms-render-arm	0x1703f6	0x17147b	jle	0x17154f	0x171481
+reference	PE:6a70a6d9:02711000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab4f20	0xab4f30	jbe	0xab4f35	0xab4f32
+reference	PE:6a70a6d9:02711000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab4f20	0xab4f3f	je	0xab51f4	0xab4f45
+reference	PE:6a70a6d9:02711000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab4f20	0xab4f49	je	0xab5119	0xab4f4f
+reference	PE:6a70a6d9:02711000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab4f20	0xab4f53	je	0xab503e	0xab4f59
+reference	PE:6a70a6d9:02711000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab4f20	0xab4f5d	jne	0xab52cf	0xab4f63
+reference	PE:6a70a6d9:02711000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab4f20	0xab4f69	jl	0xab4f7d	0xab4f6b
+reference	PE:6a70a6d9:02711000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab4f20	0xab4f83	jl	0xab4f97	0xab4f85
+reference	PE:6a70a6d9:02711000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab4f20	0xab4f9d	jl	0xab4fb1	0xab4f9f
+reference	PE:6a70a6d9:02711000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab4f20	0xab4fb7	jl	0xab4fcb	0xab4fb9
+reference	PE:6a70a6d9:02711000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab4f20	0xab4fd1	jl	0xab4fe5	0xab4fd3
+reference	PE:6a70a6d9:02711000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab4f20	0xab4feb	jl	0xab4fff	0xab4fed
+reference	PE:6a70a6d9:02711000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab4f20	0xab5002	jl	0xab5016	0xab5004
+reference	PE:6a70a6d9:02711000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab4f20	0xab5018	jle	0xab502c	0xab501a
+reference	PE:6a70a6d9:02711000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab4f20	0xab5044	jl	0xab5058	0xab5046
+reference	PE:6a70a6d9:02711000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab4f20	0xab505e	jl	0xab5072	0xab5060
+reference	PE:6a70a6d9:02711000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab4f20	0xab5078	jl	0xab508c	0xab507a
+reference	PE:6a70a6d9:02711000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab4f20	0xab5092	jl	0xab50a6	0xab5094
+reference	PE:6a70a6d9:02711000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab4f20	0xab50ac	jl	0xab50c0	0xab50ae
+reference	PE:6a70a6d9:02711000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab4f20	0xab50c6	jl	0xab50da	0xab50c8
+reference	PE:6a70a6d9:02711000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab4f20	0xab50dd	jl	0xab50f1	0xab50df
+reference	PE:6a70a6d9:02711000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab4f20	0xab50f3	jle	0xab5107	0xab50f5
+reference	PE:6a70a6d9:02711000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab4f20	0xab511f	jl	0xab5133	0xab5121
+reference	PE:6a70a6d9:02711000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab4f20	0xab5139	jl	0xab514d	0xab513b
+reference	PE:6a70a6d9:02711000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab4f20	0xab5153	jl	0xab5167	0xab5155
+reference	PE:6a70a6d9:02711000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab4f20	0xab516d	jl	0xab5181	0xab516f
+reference	PE:6a70a6d9:02711000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab4f20	0xab5187	jl	0xab519b	0xab5189
+reference	PE:6a70a6d9:02711000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab4f20	0xab51a1	jl	0xab51b5	0xab51a3
+reference	PE:6a70a6d9:02711000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab4f20	0xab51b8	jl	0xab51cc	0xab51ba
+reference	PE:6a70a6d9:02711000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab4f20	0xab51ce	jle	0xab51e2	0xab51d0
+reference	PE:6a70a6d9:02711000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab4f20	0xab51fa	jl	0xab520e	0xab51fc
+reference	PE:6a70a6d9:02711000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab4f20	0xab5214	jl	0xab5228	0xab5216
+reference	PE:6a70a6d9:02711000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab4f20	0xab522e	jl	0xab5242	0xab5230
+reference	PE:6a70a6d9:02711000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab4f20	0xab5248	jl	0xab525c	0xab524a
+reference	PE:6a70a6d9:02711000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab4f20	0xab5262	jl	0xab5276	0xab5264
+reference	PE:6a70a6d9:02711000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab4f20	0xab527c	jl	0xab5290	0xab527e
+reference	PE:6a70a6d9:02711000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab4f20	0xab5293	jl	0xab52a7	0xab5295
+reference	PE:6a70a6d9:02711000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab4f20	0xab52a9	jle	0xab52bd	0xab52ab
+classic	PE:6a70b91c:0270a000	rooms:complete-rooms-render-arm	0x170386	0x170426	jle	0x170439	0x170428
+classic	PE:6a70b91c:0270a000	rooms:complete-rooms-render-arm	0x170386	0x170452	jne	0x1704cd	0x170454
+classic	PE:6a70b91c:0270a000	rooms:complete-rooms-render-arm	0x170386	0x17050b	jle	0x170526	0x17050d
+classic	PE:6a70b91c:0270a000	rooms:complete-rooms-render-arm	0x170386	0x17052e	jge	0x17053b	0x170530
+classic	PE:6a70b91c:0270a000	rooms:complete-rooms-render-arm	0x170386	0x170574	jge	0x1713fd	0x17057a
+classic	PE:6a70b91c:0270a000	rooms:complete-rooms-render-arm	0x170386	0x170588	jge	0x1713fd	0x17058e
+classic	PE:6a70b91c:0270a000	rooms:complete-rooms-render-arm	0x170386	0x1705d5	jg	0x170749	0x1705db
+classic	PE:6a70b91c:0270a000	rooms:complete-rooms-render-arm	0x170386	0x17060c	jge	0x170744	0x170612
+classic	PE:6a70b91c:0270a000	rooms:complete-rooms-render-arm	0x170386	0x17063c	jne	0x170684	0x17063e
+classic	PE:6a70b91c:0270a000	rooms:complete-rooms-render-arm	0x170386	0x170692	jne	0x1706d7	0x170694
+classic	PE:6a70b91c:0270a000	rooms:complete-rooms-render-arm	0x170386	0x17072b	je	0x17073f	0x17072d
+classic	PE:6a70b91c:0270a000	rooms:complete-rooms-render-arm	0x170386	0x1707ac	je	0x1707d6	0x1707ae
+classic	PE:6a70b91c:0270a000	rooms:complete-rooms-render-arm	0x170386	0x170807	jne	0x170814	0x170809
+classic	PE:6a70b91c:0270a000	rooms:complete-rooms-render-arm	0x170386	0x170845	jne	0x170852	0x170847
+classic	PE:6a70b91c:0270a000	rooms:complete-rooms-render-arm	0x170386	0x170883	jne	0x170890	0x170885
+classic	PE:6a70b91c:0270a000	rooms:complete-rooms-render-arm	0x170386	0x1708c1	jne	0x1708ce	0x1708c3
+classic	PE:6a70b91c:0270a000	rooms:complete-rooms-render-arm	0x170386	0x1708f0	je	0x170922	0x1708f2
+classic	PE:6a70b91c:0270a000	rooms:complete-rooms-render-arm	0x170386	0x1708f7	je	0x170915	0x1708f9
+classic	PE:6a70b91c:0270a000	rooms:complete-rooms-render-arm	0x170386	0x1708fd	je	0x170908	0x1708ff
+classic	PE:6a70b91c:0270a000	rooms:complete-rooms-render-arm	0x170386	0x170904	je	0x17092f	0x170906
+classic	PE:6a70b91c:0270a000	rooms:complete-rooms-render-arm	0x170386	0x17094d	je	0x171050	0x170953
+classic	PE:6a70b91c:0270a000	rooms:complete-rooms-render-arm	0x170386	0x170973	jle	0x170a28	0x170979
+classic	PE:6a70b91c:0270a000	rooms:complete-rooms-render-arm	0x170386	0x1709cc	jle	0x170a1b	0x1709ce
+classic	PE:6a70b91c:0270a000	rooms:complete-rooms-render-arm	0x170386	0x1709ff	jle	0x170a0e	0x170a01
+classic	PE:6a70b91c:0270a000	rooms:complete-rooms-render-arm	0x170386	0x170a58	jge	0x171050	0x170a5e
+classic	PE:6a70b91c:0270a000	rooms:complete-rooms-render-arm	0x170386	0x170a83	jge	0x17104b	0x170a89
+classic	PE:6a70b91c:0270a000	rooms:complete-rooms-render-arm	0x170386	0x170ae1	je	0x170d96	0x170ae7
+classic	PE:6a70b91c:0270a000	rooms:complete-rooms-render-arm	0x170386	0x170aec	je	0x170c4f	0x170af2
+classic	PE:6a70b91c:0270a000	rooms:complete-rooms-render-arm	0x170386	0x170af6	je	0x170b08	0x170af8
+classic	PE:6a70b91c:0270a000	rooms:complete-rooms-render-arm	0x170386	0x170afd	je	0x170edd	0x170b03
+classic	PE:6a70b91c:0270a000	rooms:complete-rooms-render-arm	0x170386	0x170b10	jne	0x170b5d	0x170b12
+classic	PE:6a70b91c:0270a000	rooms:complete-rooms-render-arm	0x170386	0x170b65	jne	0x170bb2	0x170b67
+classic	PE:6a70b91c:0270a000	rooms:complete-rooms-render-arm	0x170386	0x170bba	jne	0x170c04	0x170bbc
+classic	PE:6a70b91c:0270a000	rooms:complete-rooms-render-arm	0x170386	0x170c57	jne	0x170ca4	0x170c59
+classic	PE:6a70b91c:0270a000	rooms:complete-rooms-render-arm	0x170386	0x170cac	jne	0x170cf9	0x170cae
+classic	PE:6a70b91c:0270a000	rooms:complete-rooms-render-arm	0x170386	0x170d01	jne	0x170d4b	0x170d03
+classic	PE:6a70b91c:0270a000	rooms:complete-rooms-render-arm	0x170386	0x170d9e	jne	0x170deb	0x170da0
+classic	PE:6a70b91c:0270a000	rooms:complete-rooms-render-arm	0x170386	0x170df3	jne	0x170e40	0x170df5
+classic	PE:6a70b91c:0270a000	rooms:complete-rooms-render-arm	0x170386	0x170e48	jne	0x170e92	0x170e4a
+classic	PE:6a70b91c:0270a000	rooms:complete-rooms-render-arm	0x170386	0x170ee5	jne	0x170f32	0x170ee7
+classic	PE:6a70b91c:0270a000	rooms:complete-rooms-render-arm	0x170386	0x170f3a	jne	0x170f87	0x170f3c
+classic	PE:6a70b91c:0270a000	rooms:complete-rooms-render-arm	0x170386	0x170f8f	jne	0x170fd9	0x170f91
+classic	PE:6a70b91c:0270a000	rooms:complete-rooms-render-arm	0x170386	0x171032	je	0x171046	0x171034
+classic	PE:6a70b91c:0270a000	rooms:complete-rooms-render-arm	0x170386	0x171059	je	0x171086	0x17105b
+classic	PE:6a70b91c:0270a000	rooms:complete-rooms-render-arm	0x170386	0x171099	je	0x1710f5	0x17109b
+classic	PE:6a70b91c:0270a000	rooms:complete-rooms-render-arm	0x170386	0x1711a6	je	0x1712ff	0x1711ac
+classic	PE:6a70b91c:0270a000	rooms:complete-rooms-render-arm	0x170386	0x1711cc	jle	0x1712ff	0x1711d2
+classic	PE:6a70b91c:0270a000	rooms:complete-rooms-render-arm	0x170386	0x1711da	jne	0x1711f5	0x1711dc
+classic	PE:6a70b91c:0270a000	rooms:complete-rooms-render-arm	0x170386	0x1711fd	jne	0x171218	0x1711ff
+classic	PE:6a70b91c:0270a000	rooms:complete-rooms-render-arm	0x170386	0x171308	je	0x1713d9	0x17130e
+classic	PE:6a70b91c:0270a000	rooms:complete-rooms-render-arm	0x170386	0x171333	jge	0x1713d9	0x171339
+classic	PE:6a70b91c:0270a000	rooms:complete-rooms-render-arm	0x170386	0x17135e	jge	0x1713d4	0x171360
+classic	PE:6a70b91c:0270a000	rooms:complete-rooms-render-arm	0x170386	0x17140b	jle	0x1714df	0x171411
+classic	PE:6a70b91c:0270a000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab1fa0	0xab1fb0	jbe	0xab1fb5	0xab1fb2
+classic	PE:6a70b91c:0270a000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab1fa0	0xab1fbf	je	0xab2274	0xab1fc5
+classic	PE:6a70b91c:0270a000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab1fa0	0xab1fc9	je	0xab2199	0xab1fcf
+classic	PE:6a70b91c:0270a000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab1fa0	0xab1fd3	je	0xab20be	0xab1fd9
+classic	PE:6a70b91c:0270a000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab1fa0	0xab1fdd	jne	0xab234f	0xab1fe3
+classic	PE:6a70b91c:0270a000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab1fa0	0xab1fe9	jl	0xab1ffd	0xab1feb
+classic	PE:6a70b91c:0270a000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab1fa0	0xab2003	jl	0xab2017	0xab2005
+classic	PE:6a70b91c:0270a000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab1fa0	0xab201d	jl	0xab2031	0xab201f
+classic	PE:6a70b91c:0270a000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab1fa0	0xab2037	jl	0xab204b	0xab2039
+classic	PE:6a70b91c:0270a000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab1fa0	0xab2051	jl	0xab2065	0xab2053
+classic	PE:6a70b91c:0270a000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab1fa0	0xab206b	jl	0xab207f	0xab206d
+classic	PE:6a70b91c:0270a000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab1fa0	0xab2082	jl	0xab2096	0xab2084
+classic	PE:6a70b91c:0270a000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab1fa0	0xab2098	jle	0xab20ac	0xab209a
+classic	PE:6a70b91c:0270a000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab1fa0	0xab20c4	jl	0xab20d8	0xab20c6
+classic	PE:6a70b91c:0270a000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab1fa0	0xab20de	jl	0xab20f2	0xab20e0
+classic	PE:6a70b91c:0270a000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab1fa0	0xab20f8	jl	0xab210c	0xab20fa
+classic	PE:6a70b91c:0270a000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab1fa0	0xab2112	jl	0xab2126	0xab2114
+classic	PE:6a70b91c:0270a000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab1fa0	0xab212c	jl	0xab2140	0xab212e
+classic	PE:6a70b91c:0270a000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab1fa0	0xab2146	jl	0xab215a	0xab2148
+classic	PE:6a70b91c:0270a000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab1fa0	0xab215d	jl	0xab2171	0xab215f
+classic	PE:6a70b91c:0270a000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab1fa0	0xab2173	jle	0xab2187	0xab2175
+classic	PE:6a70b91c:0270a000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab1fa0	0xab219f	jl	0xab21b3	0xab21a1
+classic	PE:6a70b91c:0270a000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab1fa0	0xab21b9	jl	0xab21cd	0xab21bb
+classic	PE:6a70b91c:0270a000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab1fa0	0xab21d3	jl	0xab21e7	0xab21d5
+classic	PE:6a70b91c:0270a000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab1fa0	0xab21ed	jl	0xab2201	0xab21ef
+classic	PE:6a70b91c:0270a000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab1fa0	0xab2207	jl	0xab221b	0xab2209
+classic	PE:6a70b91c:0270a000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab1fa0	0xab2221	jl	0xab2235	0xab2223
+classic	PE:6a70b91c:0270a000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab1fa0	0xab2238	jl	0xab224c	0xab223a
+classic	PE:6a70b91c:0270a000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab1fa0	0xab224e	jle	0xab2262	0xab2250
+classic	PE:6a70b91c:0270a000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab1fa0	0xab227a	jl	0xab228e	0xab227c
+classic	PE:6a70b91c:0270a000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab1fa0	0xab2294	jl	0xab22a8	0xab2296
+classic	PE:6a70b91c:0270a000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab1fa0	0xab22ae	jl	0xab22c2	0xab22b0
+classic	PE:6a70b91c:0270a000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab1fa0	0xab22c8	jl	0xab22dc	0xab22ca
+classic	PE:6a70b91c:0270a000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab1fa0	0xab22e2	jl	0xab22f6	0xab22e4
+classic	PE:6a70b91c:0270a000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab1fa0	0xab22fc	jl	0xab2310	0xab22fe
+classic	PE:6a70b91c:0270a000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab1fa0	0xab2313	jl	0xab2327	0xab2315
+classic	PE:6a70b91c:0270a000	rooms:Meager Study;No Dining Room;No Quarters;No Study;Royal Bedroom;Royal Dining Room;Royal Mausoleum;Splendid Study	0xab1fa0	0xab2329	jle	0xab233d	0xab232b

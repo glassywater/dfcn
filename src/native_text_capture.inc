@@ -326,6 +326,59 @@ static void prepare_native_overview_thoughts_cache(const void *sheet,
         &invalid_width, sizeof(invalid_width));
 }
 
+// A draw can reuse already-wrapped native boxes without another wrap callback.
+// Reuse our aggregate only while its complete live sources, geometry and the
+// current native row identity still belong to this sheet's source vector.
+// Caller holds g_native_knowledge_mutex.
+static bool native_character_page_binding_current(
+        const void *sheet, bool health, const char *current_row) {
+    if (!sheet || !current_row) return false;
+    const auto *bytes = static_cast<const unsigned char *>(sheet);
+    const auto &layout = native_character_layout;
+    const size_t source_offset = health ? layout.health_sources : layout.personality_sources;
+    const size_t box_offset = health ? layout.health_boxes : layout.personality_boxes;
+    const uintptr_t owner = reinterpret_cast<uintptr_t>(bytes + source_offset);
+    const auto row = g_native_knowledge_row_owners.find(reinterpret_cast<uintptr_t>(current_row));
+    if (row == g_native_knowledge_row_owners.end() || row->second.first != owner ||
+        row->second.second < 0) return false;
+    const auto found = g_native_knowledge_documents.find(owner);
+    if (found == g_native_knowledge_documents.end()) return false;
+    const auto &page = *found->second;
+    const size_t line = static_cast<size_t>(row->second.second);
+    if (page.personality != !health || page.health != health || page.thoughts ||
+        page.overview_footer || line >= page.rows.size() ||
+        page.row_addresses.size() != page.rows.size() ||
+        page.row_addresses[line] != reinterpret_cast<uintptr_t>(current_row) ||
+        page.rows[line] != current_row) return false;
+    const auto sources = NativeBorrowedVector<const NativeString *>::read(bytes + source_offset);
+    const auto boxes = NativeBorrowedVector<NativeKnowledgeTextBox *>::read(bytes + box_offset);
+    if (!sources.valid(256) || !boxes.valid(256) || sources.size() == 0 ||
+        sources.size() != boxes.size() || sources.size() != page.box_boundaries.size()) return false;
+    size_t source_end = 0, row_end = 0;
+    bool owns_row = false;
+    for (size_t i = 0; i < sources.size(); ++i) {
+        std::string_view source;
+        const auto *box = boxes.begin[i];
+        if (!box || box->width != page.width ||
+            !native_string_view(sources.begin[i], &source)) return false;
+        const size_t rows = native_reading_row_count(box);
+        if (rows > 16384 - row_end) return false;
+        const auto &boundary = page.box_boundaries[i];
+        const size_t prefix = 9 + (i ? 3 : 0); // aggregate [B] and [C:x:0:x]
+        if (boundary.source_end > page.source.size() || boundary.source_end < source_end ||
+            boundary.source_end - source_end != prefix + source.size() ||
+            std::string_view(page.source).substr(source_end + prefix, source.size()) != source ||
+            boundary.native_row_end != row_end + rows) return false;
+        if (line >= row_end && line < row_end + rows) {
+            const auto *native_row = native_reading_row_at(box, line - row_end);
+            owns_row = native_row && native_row->text == current_row;
+        }
+        source_end = boundary.source_end;
+        row_end = boundary.native_row_end;
+    }
+    return owns_row && source_end == page.source.size() && row_end == page.rows.size();
+}
+
 static void capture_native_character_document(
         NativeKnowledgeTextBox *box, const NativeString *source, const void *sheet,
         bool health, bool thoughts, NativeWrapTiming &timing,
@@ -339,7 +392,9 @@ static void capture_native_character_document(
         capture_wait.stop();
         auto aggregate_timing = timing.phase(NativeWrapTiming::Stage::Aggregate);
         const bool personality = !health && !thoughts;
-        if (current_row && sheet) {
+        if (current_row && !thoughts &&
+            native_character_page_binding_current(sheet, health, current_row)) return;
+        if (current_row && sheet && thoughts) {
             const auto row = g_native_knowledge_row_owners.find(
                 reinterpret_cast<uintptr_t>(current_row));
             if (row != g_native_knowledge_row_owners.end()) {
@@ -360,7 +415,8 @@ static void capture_native_character_document(
         // its vectors may not yet contain every box. Unclassified call sites
         // must prove ownership before invalidating a different page's owner.
         if ((!box && !current_row) || !native_character_description_active(sheet, health)) return;
-        if (!thoughts) capture_native_reading_box(box, source, personality, health, false, timing);
+        if (!thoughts && !current_row)
+            capture_native_reading_box(box, source, personality, health, false, timing);
         std::vector<const NativeString *> sources;
         std::vector<NativeKnowledgeTextBox *> boxes;
         uintptr_t owner = 0;
@@ -400,9 +456,9 @@ static void capture_native_character_document(
             if (!native_string_view(part_source, &part_text)) return;
             if (!part_source || !part_box) return;
             std::shared_ptr<const NativeKnowledgeDocument> part_document;
-            if (thoughts) {
+            if (thoughts || current_row) {
                 part_document = read_native_reading_box(
-                    part_box, part_source, false, false, true);
+                    part_box, part_source, personality, health, thoughts);
             } else {
                 const auto found = g_native_knowledge_documents.find(
                     reinterpret_cast<uintptr_t>(part_box));
@@ -613,6 +669,20 @@ static void dfcn_capture_native_thoughts_draw(graphicst *graphics,
     dfcn_capture_native_knowledge_draw(graphics, text, colors);
 }
 
+static void dfcn_capture_native_personality_draw(graphicst *graphics,
+        const char *text, const char *colors, const void *sheet) {
+    // The native Traits/Values/Preferences/Needs renderer retains the complete
+    // source vector even when its cached width skips wrapping. Bind that live
+    // page before the generic row writer publishes this draw. The draw loop
+    // already owns native vector iterators, so recovery must never grow rows.
+    if (graphics && text && sheet) {
+        NativeWrapTiming timing("personality-draw", nullptr, nullptr, true, false, false);
+        capture_native_character_document(nullptr, nullptr, sheet, false, false,
+            timing, text, false);
+    }
+    dfcn_capture_native_knowledge_draw(graphics, text, colors);
+}
+
 static void dfcn_capture_native_overview_thoughts_draw(graphicst *graphics,
         const char *text, const char *colors, const void *sheet) {
     if (graphics && text && sheet) {
@@ -641,7 +711,7 @@ static PendingNativeField &pending_native_embark() {
 }
 static void capture_native_field_resize(PendingNativeField &pending,
         const NativeString *source, size_t width, bool origin = false,
-        bool dots_at_three = false, bool zero_pad_one = false) {
+        bool dots_at_three = false, bool zero_pad_one = false, bool plain_shrink = false) {
     pending = {};
     try {
         std::string_view text;
@@ -658,7 +728,7 @@ static void capture_native_field_resize(PendingNativeField &pending,
         // Only the explicitly bound one-byte growth case reaches here. The
         // following three dots completely replace its trailing zero byte.
         if (padded) pending.visible.push_back('\0');
-        if (width > 3 || (dots_at_three && width == 3))
+        if (!plain_shrink && (width > 3 || (dots_at_three && width == 3)))
             pending.visible.replace(width - 3, 3, "...");
     } catch (...) { pending = {}; }
 }

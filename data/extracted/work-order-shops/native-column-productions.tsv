@@ -1,0 +1,19 @@
+edition	kind	branch_rva	draw_call_rva	draw_return_rva	x	row_offset	predicate	source_production
+reference	unlimited	0x393c77	0x393d13	0x393d18	column_x	1	workshop_id == -1 && max_workshops <= 0 && !(screen[0x220] && screen[0x248] == order)	Can use any shop
+reference	stored-singular	0x393e43	0x393f42	0x393f47	column_x	1	workshop_id == -1 && max_workshops == 1 && !editing_this_order	decimal(max_workshops) + ' shop' + ' max'
+reference	stored-plural	0x393ef8	0x393f42	0x393f47	column_x	1	workshop_id == -1 && max_workshops >= 2 && !editing_this_order	decimal(max_workshops) + ' shop' + 's' + ' max'
+reference	edit-cursor-underscore	0x393da2	0x393f42	0x393f47	column_x	1	workshop_id == -1 && editing_this_order && tick_count % 1000 < 500	screen.string[0x228] + '_' + ' shop(s)' + ' max'
+reference	edit-cursor-space	0x393da2	0x393f42	0x393f47	column_x	1	workshop_id == -1 && editing_this_order && tick_count % 1000 >= 500	screen.string[0x228] + ' ' + ' shop(s)' + ' max'
+reference	edit-zero-explanation	0x393f47	0x393fd3	0x393fd8	column_x	2	workshop_id == -1 && editing_this_order	0 = Can use any shop
+reference	forced-building-name	0x3945e0	0x394766	0x39476b	column_x	1	workshop_id != -1 && binary_search(buildings_all, workshop_id) != null	building.getName(vtable + 0x188); native_optional_truncate_and_ellipsis
+reference	forced-building-missing	0x39464a			column_x	1	workshop_id != -1 && binary_search(buildings_all, workshop_id) == null	<no draw; empty cell>
+reference	missing-mix-dye-colors	0x394477	0x394528	0x39452d	column_x	2	job_type == 0xf3 && (order.int32[0x34] == -1 || order.int32[0x48] == -1 || order.int32[0x4c] == -1)	Must set colors (drawn after, and can overwrite, edit-zero-explanation)
+classic	unlimited	0x391837	0x3918d3	0x3918d8	column_x	1	workshop_id == -1 && max_workshops <= 0 && !(screen[0x220] && screen[0x248] == order)	Can use any shop
+classic	stored-singular	0x391a03	0x391b02	0x391b07	column_x	1	workshop_id == -1 && max_workshops == 1 && !editing_this_order	decimal(max_workshops) + ' shop' + ' max'
+classic	stored-plural	0x391ab8	0x391b02	0x391b07	column_x	1	workshop_id == -1 && max_workshops >= 2 && !editing_this_order	decimal(max_workshops) + ' shop' + 's' + ' max'
+classic	edit-cursor-underscore	0x391962	0x391b02	0x391b07	column_x	1	workshop_id == -1 && editing_this_order && tick_count % 1000 < 500	screen.string[0x228] + '_' + ' shop(s)' + ' max'
+classic	edit-cursor-space	0x391962	0x391b02	0x391b07	column_x	1	workshop_id == -1 && editing_this_order && tick_count % 1000 >= 500	screen.string[0x228] + ' ' + ' shop(s)' + ' max'
+classic	edit-zero-explanation	0x391b07	0x391b93	0x391b98	column_x	2	workshop_id == -1 && editing_this_order	0 = Can use any shop
+classic	forced-building-name	0x3921a0	0x392326	0x39232b	column_x	1	workshop_id != -1 && binary_search(buildings_all, workshop_id) != null	building.getName(vtable + 0x188); native_optional_truncate_and_ellipsis
+classic	forced-building-missing	0x39220a			column_x	1	workshop_id != -1 && binary_search(buildings_all, workshop_id) == null	<no draw; empty cell>
+classic	missing-mix-dye-colors	0x392037	0x3920e8	0x3920ed	column_x	2	job_type == 0xf3 && (order.int32[0x34] == -1 || order.int32[0x48] == -1 || order.int32[0x4c] == -1)	Must set colors (drawn after, and can overwrite, edit-zero-explanation)

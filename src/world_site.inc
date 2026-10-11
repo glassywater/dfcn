@@ -3,6 +3,32 @@
 // have only region names and an optional travel status; ocean records can be a single
 // heading, without any population/government/accessibility fields.
 // The live frame owns every row; no screenshot coordinates or saved names.
+static std::optional<std::string> world_artifact_claim_source(
+        const NativeTextCardRow &row, int right,
+        const std::vector<NativeDrawnTextRow> &draws) {
+    constexpr std::string_view prefix = "Claimed by local ";
+    if (right <= row.x + static_cast<int>(prefix.size()) ||
+            !row.source.starts_with(prefix)) return std::nullopt;
+    // PE 1d261b/1d2691 draw the prefix and contextual HF separately at the
+    // same cursor. The panel edge can cut their combined line without any
+    // native resize. Require the real adjacent draws and the whole viewport.
+    const bool prefix_drawn = std::any_of(draws.begin(), draws.end(), [&](const auto &draw) {
+        return draw.x == row.x && draw.y == row.y && draw.source == prefix;
+    });
+    if (!prefix_drawn) return std::nullopt;
+    const size_t width = static_cast<size_t>(right - row.x);
+    for (const auto &draw : draws) {
+        if (draw.x != row.x + static_cast<int>(prefix.size()) || draw.y != row.y)
+            continue;
+        const std::string displayed = std::string(prefix) + draw.source;
+        if (trim_view(std::string_view(displayed).substr(0, width)) !=
+                trim_view(std::string_view(row.source).substr(0, width))) continue;
+        return std::string(prefix) +
+            (draw.complete_source.empty() ? draw.source : draw.complete_source);
+    }
+    return std::nullopt;
+}
+
 static bool world_site_typed_heading(std::string_view source) {
     const std::string folded = lower(std::string(source));
     const size_t begin = folded.starts_with("the ") ? 4 : 0;
@@ -775,6 +801,8 @@ void Overlay::append_world_site_phrases(const NativeTextCard &card,
     // is ONE item document, not independently translatable location facts.
     const size_t description_end = action_control ? 0
         : append_world_artifact_description(card, rows, matches, only_y);
+    const auto claim_draws = description_end ? captured_native_drawn_text_rows()
+        : std::vector<NativeDrawnTextRow>{};
     bool facts = action_control || description_end != 0;
     for (size_t index = description_end; index < card.rows.size(); ++index) {
         const auto &row = card.rows[index];
@@ -877,6 +905,9 @@ void Overlay::append_world_site_phrases(const NativeTextCard &card,
                 complete = capture.complete;
                 break;
             }
+        if (description_end)
+            if (auto claim = world_artifact_claim_source(row,
+                    card.interior.x + card.interior.w, claim_draws)) complete = std::move(*claim);
         const std::string source = normalize_utterance(complete);
         // Own the whole native-language name, quoted English meaning and
         // optional species BEFORE prose/item/word matching. Clipping can
@@ -886,7 +917,21 @@ void Overlay::append_world_site_phrases(const NativeTextCard &card,
         const bool identity = !action_control && !artifacts && source.find(", \"") != std::string::npos;
         const bool compact_site_heading = !action_control && index == 0 && !artifacts && !identity &&
             source.find(", ") != std::string::npos;
-        const bool site_heading = !action_control && !artifacts &&
+        const auto site_draw = !action_control && !artifacts
+            ? world_site_owned_draw_for_row(*gps_, row,
+                card.interior.x + card.interior.w, false, true) : std::nullopt;
+        // Initial geography fields own complete generated titles. A peak's
+        // Tower can also match a site-kind noun, so resolve geography before
+        // that spelling can enter the facts block and discard its name head.
+        // Captured sites retain their identity; the world-map site formatter
+        // capitalizes its Of connector, unlike generated geographic names.
+        std::optional<std::string> geographic_target;
+        if (!action_control && !facts && !artifacts && !identity &&
+                !compact_site_heading && !site_draw && source.find(" Of ") == std::string::npos) {
+            if (index == 0) geographic_target = translate_world_landform_heading(source);
+            if (!geographic_target) geographic_target = translate_world_region_heading(source);
+        }
+        const bool site_heading = !geographic_target && !action_control && !artifacts &&
             (world_site_typed_heading(source) || (source.starts_with("The ") &&
                 (source.find(" Of ") != std::string::npos ||
                     (facts && source.find(" of ") != std::string::npos))));
@@ -905,9 +950,10 @@ void Overlay::append_world_site_phrases(const NativeTextCard &card,
                 (source.starts_with("Site government:") || source.starts_with("Civilization:"))
             ? world_site_owned_draw_for_row(*gps_, row,
                 card.interior.x + card.interior.w, true) : std::nullopt;
-        std::optional<std::string> target = !action_control && !artifacts
-            ? translate_world_site_entity_fact(source, entity_draw
-                ? &*entity_draw->world_site_entity_fact : nullptr) : std::nullopt;
+        std::optional<std::string> target = std::move(geographic_target);
+        if (!target && !action_control && !artifacts)
+            target = translate_world_site_entity_fact(source, entity_draw
+                ? &*entity_draw->world_site_entity_fact : nullptr);
         if (!action_control && artifacts &&
                 source != "Artifacts (Rumored)" && source != "Artifacts") {
             // Rumored treasures include written works. Resolve the complete
@@ -918,41 +964,33 @@ void Overlay::append_world_site_phrases(const NativeTextCard &card,
             if (!target) target = translate_legends_book(source);
             if (!target) target = translate_legends_item(source);
         }
-        if (!target && !action_control && !artifacts) {
-            const auto site_draw = world_site_owned_draw_for_row(*gps_, row,
-                card.interior.x + card.interior.w, false, true);
-            if (site_draw) {
-                std::string_view name_source = source;
-                if (site_heading || compact_site_heading) {
-                    const size_t type_begin = compact_site_heading ? source.rfind(", ") + 2
-                        : source.starts_with("The ") ? 4 : 0;
-                    const size_t type_end = compact_site_heading ? source.size()
-                        : lower(source).find(" of ", type_begin);
-                    if (type_end != std::string::npos && type_end > type_begin)
-                        name_source = compact_site_heading
-                            ? std::string_view(source).substr(0, type_begin - 2)
-                            : std::string_view(source).substr(type_end + 4);
-                }
-                target = translate_site_display(*site_draw->site_name, name_source);
+        if (!target && site_draw) {
+            std::string_view name_source = source;
+            if (site_heading || compact_site_heading) {
+                const size_t type_begin = compact_site_heading ? source.rfind(", ") + 2
+                    : source.starts_with("The ") ? 4 : 0;
+                const size_t type_end = compact_site_heading ? source.size()
+                    : lower(source).find(" of ", type_begin);
+                if (type_end != std::string::npos && type_end > type_begin)
+                    name_source = compact_site_heading
+                        ? std::string_view(source).substr(0, type_begin - 2)
+                        : std::string_view(source).substr(type_end + 4);
             }
+            target = translate_site_display(*site_draw->site_name, name_source);
         }
-        // The first heading names the selected landform; subsequent headings
-        // name its biome/region or site. Keep its LAND sense scoped to this
-        // field, before exact world-name translations can override it. This
-        // uses the live card order, never a saved name or screenshot position.
-        if (!target && index == 0 && !facts && !artifacts)
-            target = translate_world_landform_heading(source);
-        // Before facts/site identities, the remaining headings are natural
-        // regions (including a mountain region below its containing land).
-        if (!target && !action_control && !facts && !artifacts)
-            target = translate_world_region_heading(source);
         // Native headings use `The <type> Of <site name>` or `<name>, <type>`.
         // Resolve the
         // article and connector in the scoped TSV grammar BEFORE ordinary
         // prose/item/name parsing can reinterpret the complete title as an
         // ownership phrase. Only the name capture reaches the name parser;
         // the type reuses the existing complete-term vocabulary.
-        if (action_control) {
+        if (description_end && source.starts_with("Claimed by ")) {
+            // This hover frame owns the artifact claim. Its personal branch
+            // appends a complete contextual historical figure after the
+            // prefix, including nickname, species and status. Keep it out of
+            // site/entity identity heuristics even when it has a quoted gloss.
+            target = translate_legends_text("World artifact claim: " + source, false, false);
+        } else if (action_control) {
             // An action/restriction is never a place, artifact or person.
             // Reviewed button-only terms use their own TSV namespace;
             // existing captions and full mission messages keep their terms.
@@ -1001,8 +1039,9 @@ void Overlay::append_world_site_phrases(const NativeTextCard &card,
                     ? std::string_view(source).substr(0, type_begin - 2)
                     : std::string_view(source).substr(type_end + 4);
                 target = translate_site_reference(name);
-                if (!target) target = native_text_to_utf8(name);
             }
+            // Without a resolved site, keep the complete heading rather than
+            // silently deleting its type or a geographic naming word.
             if (!target) target = native_text_to_utf8(source);
         } else if (!target) {
             target = translate_help_paragraph(complete, foregrounds, target_colors, true);
@@ -1206,6 +1245,9 @@ static std::optional<std::string> world_mission_title_source(std::string_view ra
         "Rescue ", "Recover ",
     }};
     for (const std::string_view prefix : prefixes) {
+        // EnglishName emits nothing when language_name.has_name is false.
+        // The producer still emits its action, including diplomacy's "at".
+        if (folded == lower(std::string(trim_view(prefix)))) return std::string(prefix);
         if (!folded.starts_with(lower(std::string(prefix)))) continue;
         const std::string_view destination = std::string_view(source).substr(prefix.size());
         // Every caller owns a native mission/order field. SiteName also
@@ -1239,9 +1281,10 @@ std::optional<std::string> Overlay::translate_world_mission_title(
                 !scoped.starts_with(rule.template_literals.front())) continue;
         const std::string destination(trim_view(std::string_view(scoped).substr(
             rule.template_literals.front().size())));
-        if (destination.empty()) continue;
         std::optional<std::string> target;
-        if (title->starts_with("Recover ")) {
+        if (destination.empty()) {
+            target = "";
+        } else if (title->starts_with("Recover ")) {
             target = translate_legends_artifact_identity(destination);
             if (!target) target = translate_legends_book(destination);
             if (!target) target = translate_legends_item(destination);
@@ -1414,14 +1457,17 @@ void Overlay::append_world_mission_titles(std::vector<std::string> &rows,
     }
 }
 
-// Report rows carry the same mission title, followed by the departure date.
-// The list has no Remove control. Recover the native caption before parsing
-// either field: the scrollbar can cover part of a name, season or year.
+// Reports contain mission/departure titles or a spoils/tribute party and date.
+// Recover the native caption before parsing either field: the scrollbar can
+// cover part of a name, season or year, and the detail heading uses ellipses.
 void Overlay::append_world_mission_reports(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y) const {
-    constexpr std::string_view prefix = "Mission Report:";
+    constexpr std::array<std::string_view, 3> prefixes = {
+        "Mission Report:", "Spoils Report:", "Tribute Report:"};
     if (!gps_ || std::none_of(rows.begin(), rows.end(), [&](const auto &row) {
-            return row.find(prefix) != std::string::npos;
+            return std::any_of(prefixes.begin(), prefixes.end(), [&](const auto prefix) {
+                return row.find(prefix) != std::string::npos;
+            });
         })) return;
     std::vector<std::string> context(gps_->dimy, std::string(gps_->dimx, ' '));
     for (int y = 0; y < gps_->dimy; ++y)
@@ -1434,12 +1480,18 @@ void Overlay::append_world_mission_reports(std::vector<std::string> &rows,
     const auto captures = captured_clipped_captions();
     const std::array<std::vector<NativeDrawnTextRow>, 2> draws = {
         captured_native_drawn_text_rows(), captured_native_drawn_text_rows(true)};
-    const auto heading = translate_legends_text(prefix, false, false);
     for (int y = 0; y < gps_->dimy; ++y) {
         if (only_y >= 0 && only_y != y) continue;
-        const size_t at = context[y].find(prefix);
-        if (at == std::string::npos ||
-            !has_word_boundaries(context[y], at, at + prefix.size())) continue;
+        size_t at = std::string::npos;
+        std::string_view prefix;
+        for (const auto candidate : prefixes) {
+            const size_t found = context[y].find(candidate);
+            if (found < at && has_word_boundaries(context[y], found, found + candidate.size())) {
+                at = found;
+                prefix = candidate;
+            }
+        }
+        if (at == std::string::npos) continue;
         const int x = static_cast<int>(at);
         const auto panel = native_panel_interior(borders, *gps_,
             x, x + static_cast<int>(prefix.size()), y);
@@ -1488,19 +1540,67 @@ void Overlay::append_world_mission_reports(std::vector<std::string> &rows,
                 else if (complete == source) complete = draw.source;
                 break;
             }
-        const std::string normalized = normalize_utterance(complete);
+        const auto heading = translate_legends_text(prefix, false, false);
         std::optional<std::string> target;
-        const size_t departure = normalized.rfind(" (Set out ");
-        if (heading && normalized.starts_with(prefix) && departure != std::string::npos &&
-                departure >= prefix.size() && normalized.ends_with(')')) {
-            const auto action = trim_view(std::string_view(normalized).substr(
-                prefix.size(), departure - prefix.size()));
-            // The native default goal emits no action before the date.
-            const auto mission = action.empty() ? std::optional<std::string>("")
-                : translate_world_mission_title(action);
-            const auto date = translate_legends_text("World mission departure: " +
-                normalized.substr(departure + 1), false, false);
-            if (mission && date) target = *heading + *mission + *date;
+        if (prefix == prefixes.front()) {
+            const auto owned = trim_view(std::string_view(complete));
+            const size_t departure = owned.rfind(" (Set out ");
+            if (heading && owned.starts_with(prefix) && departure != std::string::npos &&
+                    departure >= prefix.size() && owned.ends_with(')')) {
+                const auto action = trim_view(owned.substr(
+                    prefix.size(), departure - prefix.size()));
+                // The native default goal emits no action before the date.
+                const auto mission = action.empty() ? std::optional<std::string>("")
+                    : translate_world_mission_title(action);
+                const auto date = translate_legends_text("World mission departure: " +
+                    normalize_utterance(owned.substr(departure + 1)), false, false);
+                if (mission && date) target = *heading + *mission + *date;
+            }
+        } else if (heading && std::string_view(complete).starts_with(prefix)) {
+            // PE 10f9b4/a0973e append the current season and year after the
+            // party, separated by the final comma. Spoils without a squad
+            // starts directly with that date. Parse from the right so name
+            // punctuation remains part of the complete name field.
+            const auto body = trim_view(std::string_view(complete).substr(prefix.size()));
+            const size_t comma = body.rfind(", ");
+            auto party = comma == std::string_view::npos ? std::string_view{}
+                : body.substr(0, comma);
+            const auto raw_date = trim_view(comma == std::string_view::npos ? body
+                : body.substr(comma + 2));
+            auto year = raw_date;
+            for (const std::string_view season : {"Spring ", "Summer ", "Autumn ", "Winter "}) {
+                if (!raw_date.starts_with(season)) continue;
+                year = raw_date.substr(season.size());
+                break;
+            }
+            // The native default season emits only a space and the signed
+            // year (52c130). Keep that explicit branch alongside all seasons.
+            if (year.starts_with('-')) year.remove_prefix(1);
+            const bool dated = !year.empty() &&
+                std::all_of(year.begin(), year.end(), [](char ch) {
+                    return ch >= '0' && ch <= '9';
+                });
+            if (dated) {
+                const auto date = translate_legends_text("World report date: " +
+                    std::string(raw_date), false, false);
+                constexpr std::string_view others = " and others";
+                const bool multiple = prefix == prefixes[1] &&
+                    (party.ends_with(others) || party == trim_view(others));
+                if (multiple) party = party == trim_view(others) ? std::string_view{}
+                    : party.substr(0, party.size() - others.size());
+                const auto suffix = multiple
+                    ? translate_legends_text("World report participants: and others", false, false)
+                    : std::optional<std::string>("");
+                // Both PE editions' spoils producer formats squads[0].name
+                // (+8) with EnglishName; it never reads squad.alias (+80).
+                // Tribute instead uses EntityName. Those native sources prove
+                // the respective generated-name and organization contexts;
+                // an unresolved name retains its bytes without losing the UI.
+                const auto name = party.empty() ? std::optional<std::string>("")
+                    : translate_legends_name(party, false, prefix == prefixes[2]);
+                if (date && suffix) target = *heading +
+                    (name ? *name : native_text_to_utf8(party)) + *suffix + *date;
+            }
         }
         Match report{x, y, static_cast<int>(source.size()), kWorldSiteRowRule,
             target ? *target : native_text_to_utf8(complete), source};

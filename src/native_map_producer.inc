@@ -1,0 +1,117 @@
+// The complete native map producer precedes fortress HUD/menu writers. Its
+// graphical branch writes the existing viewport arrays; its classic branch
+// writes byte glyphs into gps. Only those byte-grid writes need redirection.
+static void native_map_begin_frame() {
+    ++g_native_map_frame_serial;
+    g_native_map_layer.ready = false;
+    g_native_map_layer.frames.clear();
+    g_native_map_layer.native_renderer = nullptr;
+    g_native_map_layer.renderer = nullptr;
+    g_native_map_background_grid = nullptr;
+    g_native_map_write_graphics = nullptr;
+    NativeUiReadScope::invalidate_reads();
+}
+
+#ifdef _WIN32
+static NativeEntryHook g_native_map_producer_hook;
+using NativeMapProducerFn = void (*)(void *, int32_t, void *);
+
+static void native_map_clear_empty_ui_cells(graphicst &gps) {
+    const size_t count = static_cast<size_t>(gps.dimx) * gps.dimy;
+    const auto clear = [&](unsigned char *screen, const NativeDfhackLayerTexture *texture,
+            const NativeDfhackLayerTexture *lower, const NativeDfhackLayerTexture *anchored,
+            const uint32_t *flags) {
+        if (!screen) return;
+        for (size_t at = 0; at < count; ++at) {
+            uint64_t cell = 0;
+            std::memcpy(&cell, screen + at * 8, sizeof(cell));
+            // clear_screen writes a space onto an otherwise zero cell.
+            // Its black glyph background would cover the composed map.
+            // Preserve every colored cell and any existing UI artwork.
+            if (cell == static_cast<uint64_t>(' ') &&
+                    (!texture || !texture[at]) && (!lower || !lower[at]) &&
+                    (!anchored || !anchored[at]) && (!flags || !flags[at]))
+                screen[at * 8] = 0;
+        }
+    };
+    clear(gps.screen, gps.screentexpos, gps.screentexpos_lower,
+        gps.screentexpos_anchored, gps.screentexpos_flag);
+    if (gps.top_in_use)
+        clear(gps.screen_top, gps.screentexpos_top, gps.screentexpos_top_lower,
+            gps.screentexpos_top_anchored, gps.screentexpos_top_flag);
+}
+
+static void native_map_producer(void *map, int32_t tick, void *context) {
+    NativeInputCallbackScope callback;
+    const auto original = reinterpret_cast<NativeMapProducerFn>(
+        g_native_map_producer_hook.original);
+    if (!original) return;
+    TranslationStateScope translation;
+    auto *gps = native_graphics();
+    auto &layer = g_native_map_layer;
+    bool isolate = gps && gps->main_viewport && gps->screen && gps->screen_top &&
+        !g_native_map_write_graphics && !native_dfhack_layer_write_active(gps) &&
+        gps->dimx > 0 && gps->dimx <= 1000 && gps->dimy > 0 && gps->dimy <= 1000;
+    if (isolate) {
+        try {
+            layer.foreground.prepare(*gps);
+            layer.foreground.clear();
+            layer.frames = {{0, 0, gps->dimx, gps->dimy}};
+        } catch (...) { isolate = false; }
+    }
+    if (!isolate) {
+        callback.call_native([&] { original(map, tick, context); });
+        return;
+    }
+    const auto *background = gps->screen;
+    native_map_clear_empty_ui_cells(*gps);
+    // Neither branch owns prose. Keep any native glyph/caption callbacks
+    // produced for map symbols out of the independent HUD text registries.
+    NativeInfoCapturedText map_text;
+    {
+        // prepare() borrows the source viewport/map-port objects unchanged.
+        // Their native output remains independent of the HUD character grid.
+        NativeUiGridBinding output(gps, *layer.foreground.graphics());
+        NativeInfoCapturedTextScope captions(map_text);
+        struct WriteScope {
+            const graphicst *previous = g_native_map_write_graphics;
+            explicit WriteScope(const graphicst *graphics) { g_native_map_write_graphics = graphics; }
+            ~WriteScope() { g_native_map_write_graphics = previous; }
+        } writing(gps);
+        callback.call_native([&] { original(map, tick, context); });
+        layer.foreground.graphics()->top_in_use = gps->top_in_use;
+    }
+    g_native_map_background_grid = background;
+    g_native_map_classic = native_ui_classic().value_or(false);
+    layer.ready = true;
+    NativeUiReadScope::invalidate_reads();
+}
+
+static bool install_native_map_producer_hook() {
+    if (g_native_map_producer_hook.installed) return true;
+    constexpr const char *label = "Native map producer private output";
+    const auto base = reinterpret_cast<uintptr_t>(GetModuleHandleW(nullptr));
+    if (!base || !native_pe_supported()) return false;
+    // Reference RVA e9afe0 (classic e95f50) calls both the terrain pass and
+    // its map-symbol tail: e9b0c0/e85600 in graphics, e8fa60/e8d2a0 in ASCII.
+    // Fortress's caller at 3d6aea resumes HUD generation immediately after it.
+    auto *entry = reinterpret_cast<unsigned char *>(native_pe_address(base, 0xe9afe0));
+    std::vector<unsigned char> prefix{0x40,0x53,0x48,0x83,0xec,0x20};
+    if (!entry || !native_pe_bytes(0xe9afe0, prefix) ||
+            !g_native_map_producer_hook.prepare(entry, prefix,
+            reinterpret_cast<const void *>(&native_map_producer), {}, label) ||
+            !g_native_map_producer_hook.install(label)) return false;
+    log_line("INFO", "Redirected native map glyph generation to its independent output layer");
+    return true;
+}
+
+static void uninstall_native_map_producer_hook() {
+    g_native_map_producer_hook.uninstall("Native map producer restore");
+    if (!g_native_map_producer_hook.active()) native_map_begin_frame();
+}
+static bool native_map_producer_hook_active() { return g_native_map_producer_hook.active(); }
+#else
+static bool install_native_map_producer_hook() { return true; }
+static void uninstall_native_map_producer_hook() {}
+static bool native_map_producer_hook_active() { return false; }
+#endif

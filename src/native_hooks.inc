@@ -24,6 +24,7 @@ static bool native_history_war_selection(uintptr_t collection, int32_t &category
 #include "native_workshop_names.inc"
 #include "native_world_artifact_cache.inc"
 #include "native_announcement_history.inc"
+#include "native_fortress_alert_sources.inc"
 #include "native_history_page_adapter.inc"
 #include "native_character_kinship.inc"
 #include "native_history_event.inc"
@@ -34,6 +35,8 @@ static bool native_history_war_selection(uintptr_t collection, int32_t &category
 #include "native_history_capture.inc"
 #include "native_dfhack_raw_creatures.inc"
 #include "native_history_hooks.inc"
+#include "native_work_order_shops.inc"
+#include "native_adventure_belief_source.inc"
 #include "native_announcement_popup.inc"
 #include "native_adventure_quest_source.inc"
 #include "native_mod_details.inc"
@@ -47,6 +50,8 @@ static bool native_history_war_selection(uintptr_t collection, int32_t &category
 #include "native_stocks_search_hooks.inc"
 #include "native_unit_search_hooks.inc"
 #include "native_unit_identity_hooks.inc"
+#include "native_justice_organizations.inc"
+#include "native_justice_plots.inc"
 #include "native_squad_name_hooks.inc"
 #include "native_adventure_charge_hooks.inc"
 #include "native_adventure_introduction.inc"
@@ -77,9 +82,16 @@ static bool native_history_war_selection(uintptr_t collection, int32_t &category
 #include "native_announcement_hooks.inc"
 #include "native_dfhack_layer_present.inc"
 #include "native_help_layer_render.inc"
+#include "native_tooltip_layer_render.inc"
+#include "native_notification_layer_render.inc"
 #include "native_info_layer_render.inc"
+#include "native_stocks_layer_render.inc"
+#include "native_reports_layer_render.inc"
+#include "native_pause_layer_render.inc"
+#include "native_map_layer_render.inc"
 #include "native_dfhack_render_layers.inc"
 #include "native_dfhack_capture_hooks.inc"
+#include "native_dfhack_graphics_ownership.inc"
 #include "native_dfhack_item_print_ticket.h"
 #include "native_dfhack_console_hooks.inc"
 #include "native_dfhack_lua_output_hooks.inc"
@@ -99,6 +111,7 @@ static bool install_sdl_hooks() {
     [[maybe_unused]] NativePatchMappingScope mapping_scope;
     const std::pair<const char *, bool (*)()> stages[] = {
         {"SDL binding discovery", native_prepare_render_bindings},
+        {"Native graphics buffer ownership", install_native_dfhack_graphics_ownership},
         {"Stone economic-use bounds guard", install_native_stone_use_guard},
         {"Native left-click delivery", install_native_mouse_click_hook},
         {"Unicode input and search", install_native_input_hooks},
@@ -137,6 +150,10 @@ static bool install_sdl_hooks() {
         {"Native history event capture", install_native_history_hooks},
         {"Native tutorials and help layer", install_native_help_layer_hook},
         {"Native fortress management layer", install_native_info_layer_hook},
+        {"Native Stocks layer", install_native_stocks_layer_hook},
+        {"Native announcements and report tabs layer", install_native_reports_layer_hook},
+        {"Native Escape menu layer", install_native_pause_layer_hook},
+        {"Native map layer", install_native_map_layer_hook},
     };
     for (const auto &[label, install] : stages) {
         if (!install()) {
@@ -165,6 +182,10 @@ static bool install_sdl_hooks() {
 
 static void uninstall_sdl_hooks() {
     [[maybe_unused]] NativePatchMappingScope mapping_scope;
+    uninstall_native_map_layer_hook();
+    uninstall_native_pause_layer_hook();
+    uninstall_native_reports_layer_hook();
+    uninstall_native_stocks_layer_hook();
     uninstall_native_info_layer_hook();
     uninstall_native_help_layer_hook();
     uninstall_native_dfhack_sitemap_hook();
@@ -176,6 +197,7 @@ static void uninstall_sdl_hooks() {
     uninstall_native_dfhack_render_layers();
     uninstall_native_dfhack_capture_hook();
     release_native_dfhack_layer_target();
+    uninstall_native_dfhack_graphics_ownership();
     g_legends_mouse_hook_active = false;
     for (auto it = g_render_hooks.rbegin(); it != g_render_hooks.rend(); ++it)
         it->uninstall("SDL render/mouse binding");
@@ -191,6 +213,7 @@ static void uninstall_sdl_hooks() {
     uninstall_native_overview_quote_hooks();
     uninstall_native_character_relations_hook();
     uninstall_native_caption_hooks();
+    if (!native_caption_hooks_active()) native_notification_release_layer();
     uninstall_native_construction_search_hook();
     uninstall_native_adventure_barter_search_hook();
     uninstall_native_job_details_search_hook();
@@ -224,8 +247,13 @@ static bool native_hooks_detached() {
                        [](const auto &hook) { return hook.active(); }) &&
         !native_dfhack_capture_hook_active() &&
         !native_dfhack_render_layers_active() &&
+        !native_dfhack_graphics_ownership_active() &&
         !native_help_layer_hook_active() &&
+        !native_map_layer_hook_active() &&
         !native_info_layer_hook_active() &&
+        !native_stocks_layer_hook_active() &&
+        !native_reports_layer_hook_active() &&
+        !native_pause_layer_hook_active() &&
         !native_dfhack_console_hook_active() &&
         !native_dfhack_lua_output_hook_active() &&
         !native_dfhack_sitemap_hook_active() &&

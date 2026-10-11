@@ -4,4 +4,10 @@ base = "items::seeds"
 [rulesets.rules]
 "seeds" = "种子"
 "{::materials::adjective}" = "{::materials::adjective}"
+"{::plants::seed::singular}" = "{::plants::seed::singular}"
 "{::plants::seed::plural}" = "{::plants::seed::plural}"
+
+[[rulesets]]
+name = "seed_with_number"
+[rulesets.rules]
+"{::plants::seed}{::items::$number}" = "{::plants::seed}{::items::$number}"

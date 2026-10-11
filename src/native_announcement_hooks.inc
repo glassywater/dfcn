@@ -72,6 +72,11 @@ static void capture_native_announcement(void *manager, const NativeString *sourc
             if (type >= 0 && type < 356) {
                 submitted_source.assign(text);
                 submitted_type = type;
+                // Freeze the exact party and optional historical body after
+                // the verified traveller constructor has appended both.
+                if (type == 301)
+                    remember_native_mission_return_submission(
+                        reinterpret_cast<uintptr_t>(source), text);
                 remember_native_announcement(type, text);
             }
         }

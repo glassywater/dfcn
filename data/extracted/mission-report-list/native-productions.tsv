@@ -1,0 +1,85 @@
+# Finite caption grammar reconstructed from both actual PE editions. Addresses are reference RVAs; paired source bodies are archived.
+family	selector_or_condition	native_production	field_source	instruction_or_table_rva
+mission	goal=2; raid.type=0	Mission Report: Raze {site} (Set out {season} {year})	site id mission+8	0x9e36cc
+mission	goal=2; raid.type=1	Mission Report: Take over {site} (Set out {season} {year})	site id mission+8	0x9e36d0
+mission	goal=2; raid.type=2	Mission Report: Seize {site} (Set out {season} {year})	site id mission+8	0x9e36d4
+mission	goal=2; raid.type=3	Mission Report: Demand tribute from {site} (Set out {season} {year})	site id mission+8	0x9e36d8
+mission	goal=2; raid.type=4	Mission Report: Raid {site} (Set out {season} {year})	site id mission+8	0x9e36dc
+mission	goal=2; raid.type=5	Mission Report: Explore {site} (Set out {season} {year})	site id mission+8	0x9e36e0
+mission	goal=2; raid.type=6	Mission Report: Pillage {site} (Set out {season} {year})	site id mission+8	0x9e36e4
+mission	goal=2; raid.type outside 0..6	Mission Report: Raid {site} (Set out {season} {year})	site id mission+8	0x9dfae4
+mission	goal=17	Mission Report: Recover {artifact} (Set out {season} {year})	int32 at mission.subtype_data	0x9dfa47
+mission	goal=18	Mission Report: Rescue {figure} (Set out {season} {year})	int32 at mission.subtype_data; default event context	0x9df9f0
+mission	goal=19	Mission Report: Request workers from {site} (Set out {season} {year})	site id mission+8	0x9df9e4
+mission	goal=25	Mission Report: {proposal} at {site} (Set out {season} {year})	proposal vector mission+130; site id mission+8	0x9df955
+mission	other goal	Mission Report:  (Set out {season} {year})	no action field emitted	0x9df94f
+proposal	contains clause10	Demand surrender	int16 clause vector; highest priority	0x1bb42e
+proposal	no clause10; contains1	Make peace	int16 clause vector; second priority	0x1bb462
+proposal	no earlier match; contains13	Declare war	int16 clause vector	0x1bb49c
+proposal	no earlier match; contains14	Seek alliance	int16 clause vector	0x1bb4d0
+proposal	no earlier match; contains15	Make contact	int16 clause vector	0x1bb504
+proposal	no earlier match; contains16	Improve trade	int16 clause vector	0x1bb53e
+proposal	no recognized clause	Diplomacy	int16 clause vector	0x1bb553
+spoils	participating squads=0	Spoils Report: {season} {year}	no squad field, comma or suffix	0x10f9d2
+spoils	participating squads=1	Spoils Report: {squad_generated_name}, {season} {year}	first sorted squad.language_name+8; EnglishName a946e0	0x10fa07
+spoils	participating squads>=2	Spoils Report: {squad_generated_name} and others, {season} {year}	first sorted squad.language_name+8; suffix owned by producer	0x10fa2f
+tribute	entity present	Tribute Report: {entity_generated_name}, {season} {year}	entity id tribute_record+0c -> entity.language_name+20	0xa09757
+tribute	entity missing	Tribute Report: an unknown civilization, {season} {year}	b92900 fallback	0xb92a4c
+season	0	Spring	signed byte global18d6f0e	0x10fa93
+season	1	Summer	signed byte global18d6f0e	0x10fa8a
+season	2	Autumn	signed byte global18d6f0e	0x10fa81
+season	3	Winter	signed byte global18d6f0e	0x10fa78
+season	outside0..3	{empty}	following space and year still emitted	0x10fa76
+year	int32 value	signed decimal	global23746f4; helper52c130	0x10fac0
+site	missing	an unknown site	site lookup7db20	0xb93a5e
+figure	missing	an unknown creature	HF lookup67dc0	0xb938dc
+artifact	missing	an unknown artifact	artifact vector binary lookup	0xb946de
+artifact	language name nonempty	{generated_artifact_name}	artifact.language_name+8	0xb94530
+artifact	empty name; type89/use20/type87	Untitled	actual item type/use; inline immediate	0xb945b0,0xb9460b
+artifact	empty name; other item	{item_description}	actual item pointer artifact+90; native c65450	0xb94583
+name	has_name=0	{empty}	language_name.has_name+72; no alias substitution	0xa94727
+name	has_name!=0	clear output and compose fields	literal first_name/nickname and WORD/POS snapshot	0xa94747
+name	game_type in0..10	nickname mode from nickname_display[game_type]	global89c2c4 -> policy array2390ae0	0xa94730,0xa94743
+name	game_type outside0..10	use nickname mode0	initialized native fallback; not inferred from name	0xa9472d,0xa9473a
+name	nickname nonempty; mode0	`{authored_nickname}' + {generated_groups}	REPLACE_FIRST; omit first_name; nickname bytes unchanged	0xa94770,0xa9477e,0xa947a2
+name	nickname nonempty; mode1	{titlecased_first_name} `{authored_nickname}' + {generated_groups}	CENTRALIZE; omit separating space when first_name empty	0xa94893,0xa948a3,0xa948b7,0xa948db
+name	nickname nonempty; mode2	`{authored_nickname}'	REPLACE_ALL; immediately return; no first_name or generated WORDs	0xa948ed
+name	nickname nonempty; other mode	{titlecased_first_name} + {generated_groups}	ignore nickname; retain first_name and generated groups	0xa94777,0xa94897,0xa948ed
+name	nickname empty; any mode	{titlecased_first_name} + {generated_groups}	no quotation or nickname branch	0xa9476e,0xa94891
+name	first_name empty and no replacement nickname	{empty prefix}	no unknown fallback; generated groups can still follow	0xa94879,0xa9487c
+name	first_name nonempty and no replacement nickname	{NativeTitlecase(first_name)}	capitalize=true; native helper52d3c0	0xa94844
+name	FrontCompound or RearCompound id!=-1; nonempty forms	{C(W0+W1)}	join forms without internal separator; prior prefix adds space	0xa94934,0xa94948,0xa9495e
+name	FrontCompound and RearCompound both absent or resolved empty	{no compound}	ID gate and resulting length branch	0xa948fe,0xa94952
+name	TheX/FirstAdjective/SecondAdjective all ids=-1	{no title group}	lone HyphenCompound remains hidden	0xa949d5,0xa949db,0xa949e5
+name	any TheX/FirstAdjective/SecondAdjective id!=-1	compose W2,W3,W4,W5 in order	actual whole RAW English forms; no substring-derived boundaries	0xa94a21,0xa94ad8,0xa94b80,0xa94d05
+name	first nonempty title form and empty prior output	The {C(part)}	capitalize=true; one article for entire group	0xa94a4a,0xa94a5d,0xa94b11,0xa94bb9,0xa94d4b
+name	first nonempty title form and nonempty prior output	 the {C(part)}	space then lowercase article; one article for entire group	0xa94a3b,0xa94a78,0xa94b1a,0xa94bc2,0xa94d62
+name	later nonempty ordinary title form	 {C(part)}	space delimiter; no second article	0xa94af2,0xa94b9a,0xa94d1f
+name	visible HyphenCompound form	{C(W4)}-	inline byte0x2d; next TheX follows with no space	0xa94c79
+name	visible HyphenCompound; empty or missing TheX	{C(W4)}-	trailing hyphen remains; not removed by formatter	0xa94c79,0xa94d0f
+name	empty intermediate title form	{no bytes for that component}	no delimiter, capitalization, or article for empty form	0xa94a2b,0xa94ae2,0xa94b8a,0xa94d0f
+name	OfX present/nonempty; no earlier output	Of {C(W6)}	capital O selected by current output length	0xa94e1f,0xa94e2b
+name	OfX present/nonempty; earlier output	 of {C(W6)}	space plus lowercase of selected by current output length	0xa94e09,0xa94e18,0xa94e2b
+name	OfX id=-1 or resolved empty	{no Of phrase}	no trailing connector	0xa94db8,0xa94dfd
+name	has_name!=0; every reachable field empty	{empty final name}	no unknown-name fallback added by EnglishName	0xa94e6f
+name-word	WORD ID<0 or ID>=words.size()	{empty}	native WORD lookup boundary	0xd2cb55,0xd2cb76
+name-word	POS outside0..8	{empty}	unsigned selector bound	0xd2cb84
+name-word	POS0	{whole Noun form}	language_word+20	0xd2cc1c,0xd2cb9e
+name-word	POS1	{whole NounPlural form}	language_word+40	0xd2cc20,0xd2cba8
+name-word	POS2	{whole Adjective form}	language_word+60	0xd2cc24,0xd2cbbc
+name-word	POS3	{whole Prefix form}	language_word+80	0xd2cc28,0xd2cbb2
+name-word	POS4	{whole Verb form}	language_word+a0	0xd2cc2c,0xd2cbc6
+name-word	POS5	{whole Verb3rdPerson form}	language_word+c0	0xd2cc30,0xd2cbd3
+name-word	POS6	{whole VerbPast form}	language_word+e0	0xd2cc34,0xd2cbe0
+name-word	POS7	{whole VerbPassive form}	language_word+100	0xd2cc38,0xd2cbed
+name-word	POS8	{whole VerbGerund form}	language_word+120	0xd2cc3c,0xd2cbfa
+name-delimiter	nickname opening	`	inline byte0x60	0xa94779,0xa948b2
+name-delimiter	nickname closing	'	inline byte0x27	0xa9479d,0xa948d6
+name-delimiter	hyphen compound	-	inline byte0x2d	0xa94c79
+name-policy	mode2 standalone authored nickname	preserve nickname inner bytes; translate report structure	actual nickname provenance; no generated WORD or squad.alias inference	0xa948ed
+list	mission record present	stored mission_report+28 title	flags+48 bit1 selects brightness	0x1d0db2
+list	loot record present	stored loot_report+0 title	flags+20 bit1 selects brightness	0x1d0db2
+list	nonempty index lists but invalid slot	{no caption}	null mission and loot slots	0x1d0d76
+list	both index lists empty	No reports available	fixed empty state	0x1d0f0d
+detail	selected loot caption fits	{complete stored title}	screen+83d8 selected loot record	0x1d0776
+detail	selected loot caption exceeds width	{truncated stored title with optional ellipsis}	complete source exists before resize	0x1d06fb

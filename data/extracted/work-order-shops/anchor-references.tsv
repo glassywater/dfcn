@@ -1,0 +1,7 @@
+edition	instruction_rva	literal_rva	producer_rva	source
+reference	0x3fff7f	0x1632e60	0x3fd610	Set the maximum number of workshops that can be used by the work order.
+reference	0x393cf4	0x162b620	0x392f00	Can use any shop
+reference	0x393fab	0x162b5f0	0x392f00	0 = Can use any shop
+classic	0x3fdb3f	0x162e350	0x3fb1d0	Set the maximum number of workshops that can be used by the work order.
+classic	0x3918b4	0x16267c8	0x390ac0	Can use any shop
+classic	0x391b6b	0x16267e0	0x390ac0	0 = Can use any shop

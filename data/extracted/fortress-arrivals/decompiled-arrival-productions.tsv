@@ -1,0 +1,121 @@
+edition	announcement_type	production_kind	source_rva	text	semantic_fields	native_provenance
+classic	69 D_MIGRANTS_ARRIVAL	native exact literal	0x00e44b60	Some migrants have decided to brave this terrifying place, knowing it may be their miserable tomb.		descriptor at stack+0; whole string to showAnnouncement
+classic	69 D_MIGRANTS_ARRIVAL	native exact literal	0x00e44b72	Some migrants have arrived at this miserable place, despite the danger.		descriptor at stack+0; whole string to showAnnouncement
+classic	69 D_MIGRANTS_ARRIVAL	native exact literal	0x00e44b7b	Some migrants have arrived at this miserable place.		descriptor at stack+0; whole string to showAnnouncement
+classic	69 D_MIGRANTS_ARRIVAL	native exact literal	0x00e44b94	Some migrants have decided to brave this terrifying unhappy place, knowing it may be their tomb.		descriptor at stack+0; whole string to showAnnouncement
+classic	69 D_MIGRANTS_ARRIVAL	native exact literal	0x00e44ba6	Some migrants have arrived at this unhappy place, despite the danger.		descriptor at stack+0; whole string to showAnnouncement
+classic	69 D_MIGRANTS_ARRIVAL	native exact literal	0x00e44baf	Some migrants have arrived at this unhappy place.		descriptor at stack+0; whole string to showAnnouncement
+classic	69 D_MIGRANTS_ARRIVAL	native exact literal	0x00e44bbd	Some migrants have decided to brave this terrifying place, knowing it may be their tomb.		descriptor at stack+0; whole string to showAnnouncement
+classic	69 D_MIGRANTS_ARRIVAL	native exact literal	0x00e44bc9	Some migrants have arrived, despite the danger.		descriptor at stack+0; whole string to showAnnouncement
+classic	69 D_MIGRANTS_ARRIVAL	native exact literal	0x00e44bd2	Some migrants have arrived.		descriptor at stack+0; whole string to showAnnouncement
+classic	70 D_MIGRANT_ARRIVAL	native exact literal	0x00e44c69	A migrant has decided to brave this terrifying miserable place.		descriptor at stack+0; whole string to showAnnouncement
+classic	70 D_MIGRANT_ARRIVAL	native exact literal	0x00e44c7b	A migrant has arrived at this miserable place, despite the danger.		descriptor at stack+0; whole string to showAnnouncement
+classic	70 D_MIGRANT_ARRIVAL	native exact literal	0x00e44c84	A migrant has arrived at this miserable place.		descriptor at stack+0; whole string to showAnnouncement
+classic	70 D_MIGRANT_ARRIVAL	native exact literal	0x00e44c9d	A migrant has decided to brave this terrifying unhappy place.		descriptor at stack+0; whole string to showAnnouncement
+classic	70 D_MIGRANT_ARRIVAL	native exact literal	0x00e44caf	A migrant has arrived at this unhappy place, despite the danger.		descriptor at stack+0; whole string to showAnnouncement
+classic	70 D_MIGRANT_ARRIVAL	native exact literal	0x00e44cb8	A migrant has arrived at this unhappy place.		descriptor at stack+0; whole string to showAnnouncement
+classic	70 D_MIGRANT_ARRIVAL	native exact literal	0x00e44cc6	A migrant has decided to brave this terrifying place.		descriptor at stack+0; whole string to showAnnouncement
+classic	70 D_MIGRANT_ARRIVAL	native exact literal	0x00e44cd2	A migrant has arrived, despite the danger.		descriptor at stack+0; whole string to showAnnouncement
+classic	70 D_MIGRANT_ARRIVAL	native exact literal	0x00e44cdb	A migrant has arrived.		descriptor at stack+0; whole string to showAnnouncement
+classic	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e44da8	No one else even considered making the journey to this cursed miserable death-trap.		descriptor at stack+0; whole string to showAnnouncement
+classic	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e44dbd	Others refused to journey to this dangerous and miserable fortress.		descriptor at stack+0; whole string to showAnnouncement
+classic	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e44dc9	Others were too nervous to make the journey to this miserable fortress.		descriptor at stack+0; whole string to showAnnouncement
+classic	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e44de5	No one else even considered making the journey to this cursed unhappy death-trap.		descriptor at stack+0; whole string to showAnnouncement
+classic	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e44dfa	Others refused to journey to this dangerous and unhappy fortress.		descriptor at stack+0; whole string to showAnnouncement
+classic	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e44e06	Others were too nervous to make the journey to this unhappy fortress.		descriptor at stack+0; whole string to showAnnouncement
+classic	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e44e17	No one else even considered making the journey to this cursed death-trap.		descriptor at stack+0; whole string to showAnnouncement
+classic	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e44e2c	Others refused to journey to this dangerous fortress.		descriptor at stack+0; whole string to showAnnouncement
+classic	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e44e38	Others were too nervous to make the journey.		descriptor at stack+0; whole string to showAnnouncement
+classic	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e44e54	No one even considered making the journey to such a cursed miserable death-trap this season.		descriptor at stack+0; whole string to showAnnouncement
+classic	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e44e66	Migrants refused to journey to such a dangerous and miserable fortress this season.		descriptor at stack+0; whole string to showAnnouncement
+classic	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e44e6f	Migrants were too nervous to make the journey this season to this miserable fortress.		descriptor at stack+0; whole string to showAnnouncement
+classic	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e44e88	No one even considered making the journey to such a cursed unhappy death-trap this season.		descriptor at stack+0; whole string to showAnnouncement
+classic	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e44e9a	Migrants refused to journey to such a dangerous and unhappy fortress this season.		descriptor at stack+0; whole string to showAnnouncement
+classic	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e44ea3	Migrants were too nervous to make the journey this season to this unhappy fortress.		descriptor at stack+0; whole string to showAnnouncement
+classic	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e44eb1	No one even considered making the journey to such a cursed death-trap this season.		descriptor at stack+0; whole string to showAnnouncement
+classic	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e44ebd	Migrants refused to journey to such a dangerous fortress this season.		descriptor at stack+0; whole string to showAnnouncement
+classic	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e44ec6	Migrants were too nervous to make the journey this season.		descriptor at stack+0; whole string to showAnnouncement
+classic	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e44f36	No one else even considered making the journey to this miserable hellhole.		descriptor at stack+0; whole string to showAnnouncement
+classic	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e44f48	Others refused to journey to this unhappy fortress.		descriptor at stack+0; whole string to showAnnouncement
+classic	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e44f51	Others were too wary to make the journey.		descriptor at stack+0; whole string to showAnnouncement
+classic	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e44f5f	No one even considered making the journey to such a miserable hellhole this season.		descriptor at stack+0; whole string to showAnnouncement
+classic	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e44f6b	Migrants refused to journey to this unhappy fortress this season.		descriptor at stack+0; whole string to showAnnouncement
+classic	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e44f74	Migrants were too wary to make the journey this season.		descriptor at stack+0; whole string to showAnnouncement
+classic	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e44fdf	No one else even considered making the journey to this cursed death-trap.		descriptor at stack+0; whole string to showAnnouncement
+classic	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e44ff1	Others refused to journey to this dangerous fortress.		descriptor at stack+0; whole string to showAnnouncement
+classic	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e44ffa	Others were too nervous to make the journey.		descriptor at stack+0; whole string to showAnnouncement
+classic	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e45008	No one even considered making the journey to such a cursed death-trap this season.		descriptor at stack+0; whole string to showAnnouncement
+classic	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e45014	Migrants refused to journey to such a dangerous fortress this season.		descriptor at stack+0; whole string to showAnnouncement
+classic	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e4501d	Migrants were too nervous to make the journey this season.		descriptor at stack+0; whole string to showAnnouncement
+classic	72 D_NO_MIGRANT_ARRIVAL	native exact literal	0x00e4508c	The fortress attracted no migrants this season.		descriptor at stack+0; whole string to showAnnouncement
+reference	69 D_MIGRANTS_ARRIVAL	native exact literal	0x00e49bf0	Some migrants have decided to brave this terrifying place, knowing it may be their miserable tomb.		descriptor at stack+0; whole string to showAnnouncement
+reference	69 D_MIGRANTS_ARRIVAL	native exact literal	0x00e49c02	Some migrants have arrived at this miserable place, despite the danger.		descriptor at stack+0; whole string to showAnnouncement
+reference	69 D_MIGRANTS_ARRIVAL	native exact literal	0x00e49c0b	Some migrants have arrived at this miserable place.		descriptor at stack+0; whole string to showAnnouncement
+reference	69 D_MIGRANTS_ARRIVAL	native exact literal	0x00e49c24	Some migrants have decided to brave this terrifying unhappy place, knowing it may be their tomb.		descriptor at stack+0; whole string to showAnnouncement
+reference	69 D_MIGRANTS_ARRIVAL	native exact literal	0x00e49c36	Some migrants have arrived at this unhappy place, despite the danger.		descriptor at stack+0; whole string to showAnnouncement
+reference	69 D_MIGRANTS_ARRIVAL	native exact literal	0x00e49c3f	Some migrants have arrived at this unhappy place.		descriptor at stack+0; whole string to showAnnouncement
+reference	69 D_MIGRANTS_ARRIVAL	native exact literal	0x00e49c4d	Some migrants have decided to brave this terrifying place, knowing it may be their tomb.		descriptor at stack+0; whole string to showAnnouncement
+reference	69 D_MIGRANTS_ARRIVAL	native exact literal	0x00e49c59	Some migrants have arrived, despite the danger.		descriptor at stack+0; whole string to showAnnouncement
+reference	69 D_MIGRANTS_ARRIVAL	native exact literal	0x00e49c62	Some migrants have arrived.		descriptor at stack+0; whole string to showAnnouncement
+reference	70 D_MIGRANT_ARRIVAL	native exact literal	0x00e49cf9	A migrant has decided to brave this terrifying miserable place.		descriptor at stack+0; whole string to showAnnouncement
+reference	70 D_MIGRANT_ARRIVAL	native exact literal	0x00e49d0b	A migrant has arrived at this miserable place, despite the danger.		descriptor at stack+0; whole string to showAnnouncement
+reference	70 D_MIGRANT_ARRIVAL	native exact literal	0x00e49d14	A migrant has arrived at this miserable place.		descriptor at stack+0; whole string to showAnnouncement
+reference	70 D_MIGRANT_ARRIVAL	native exact literal	0x00e49d2d	A migrant has decided to brave this terrifying unhappy place.		descriptor at stack+0; whole string to showAnnouncement
+reference	70 D_MIGRANT_ARRIVAL	native exact literal	0x00e49d3f	A migrant has arrived at this unhappy place, despite the danger.		descriptor at stack+0; whole string to showAnnouncement
+reference	70 D_MIGRANT_ARRIVAL	native exact literal	0x00e49d48	A migrant has arrived at this unhappy place.		descriptor at stack+0; whole string to showAnnouncement
+reference	70 D_MIGRANT_ARRIVAL	native exact literal	0x00e49d56	A migrant has decided to brave this terrifying place.		descriptor at stack+0; whole string to showAnnouncement
+reference	70 D_MIGRANT_ARRIVAL	native exact literal	0x00e49d62	A migrant has arrived, despite the danger.		descriptor at stack+0; whole string to showAnnouncement
+reference	70 D_MIGRANT_ARRIVAL	native exact literal	0x00e49d6b	A migrant has arrived.		descriptor at stack+0; whole string to showAnnouncement
+reference	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e49e38	No one else even considered making the journey to this cursed miserable death-trap.		descriptor at stack+0; whole string to showAnnouncement
+reference	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e49e4d	Others refused to journey to this dangerous and miserable fortress.		descriptor at stack+0; whole string to showAnnouncement
+reference	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e49e59	Others were too nervous to make the journey to this miserable fortress.		descriptor at stack+0; whole string to showAnnouncement
+reference	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e49e75	No one else even considered making the journey to this cursed unhappy death-trap.		descriptor at stack+0; whole string to showAnnouncement
+reference	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e49e8a	Others refused to journey to this dangerous and unhappy fortress.		descriptor at stack+0; whole string to showAnnouncement
+reference	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e49e96	Others were too nervous to make the journey to this unhappy fortress.		descriptor at stack+0; whole string to showAnnouncement
+reference	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e49ea7	No one else even considered making the journey to this cursed death-trap.		descriptor at stack+0; whole string to showAnnouncement
+reference	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e49ebc	Others refused to journey to this dangerous fortress.		descriptor at stack+0; whole string to showAnnouncement
+reference	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e49ec8	Others were too nervous to make the journey.		descriptor at stack+0; whole string to showAnnouncement
+reference	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e49ee4	No one even considered making the journey to such a cursed miserable death-trap this season.		descriptor at stack+0; whole string to showAnnouncement
+reference	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e49ef6	Migrants refused to journey to such a dangerous and miserable fortress this season.		descriptor at stack+0; whole string to showAnnouncement
+reference	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e49eff	Migrants were too nervous to make the journey this season to this miserable fortress.		descriptor at stack+0; whole string to showAnnouncement
+reference	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e49f18	No one even considered making the journey to such a cursed unhappy death-trap this season.		descriptor at stack+0; whole string to showAnnouncement
+reference	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e49f2a	Migrants refused to journey to such a dangerous and unhappy fortress this season.		descriptor at stack+0; whole string to showAnnouncement
+reference	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e49f33	Migrants were too nervous to make the journey this season to this unhappy fortress.		descriptor at stack+0; whole string to showAnnouncement
+reference	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e49f41	No one even considered making the journey to such a cursed death-trap this season.		descriptor at stack+0; whole string to showAnnouncement
+reference	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e49f4d	Migrants refused to journey to such a dangerous fortress this season.		descriptor at stack+0; whole string to showAnnouncement
+reference	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e49f56	Migrants were too nervous to make the journey this season.		descriptor at stack+0; whole string to showAnnouncement
+reference	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e49fc6	No one else even considered making the journey to this miserable hellhole.		descriptor at stack+0; whole string to showAnnouncement
+reference	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e49fd8	Others refused to journey to this unhappy fortress.		descriptor at stack+0; whole string to showAnnouncement
+reference	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e49fe1	Others were too wary to make the journey.		descriptor at stack+0; whole string to showAnnouncement
+reference	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e49fef	No one even considered making the journey to such a miserable hellhole this season.		descriptor at stack+0; whole string to showAnnouncement
+reference	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e49ffb	Migrants refused to journey to this unhappy fortress this season.		descriptor at stack+0; whole string to showAnnouncement
+reference	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e4a004	Migrants were too wary to make the journey this season.		descriptor at stack+0; whole string to showAnnouncement
+reference	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e4a06f	No one else even considered making the journey to this cursed death-trap.		descriptor at stack+0; whole string to showAnnouncement
+reference	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e4a081	Others refused to journey to this dangerous fortress.		descriptor at stack+0; whole string to showAnnouncement
+reference	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e4a08a	Others were too nervous to make the journey.		descriptor at stack+0; whole string to showAnnouncement
+reference	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e4a098	No one even considered making the journey to such a cursed death-trap this season.		descriptor at stack+0; whole string to showAnnouncement
+reference	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e4a0a4	Migrants refused to journey to such a dangerous fortress this season.		descriptor at stack+0; whole string to showAnnouncement
+reference	71 D_MIGRANT_ARRIVAL_DISCOURAGED	native exact literal	0x00e4a0ad	Migrants were too nervous to make the journey this season.		descriptor at stack+0; whole string to showAnnouncement
+reference	72 D_NO_MIGRANT_ARRIVAL	native exact literal	0x00e4a11c	The fortress attracted no migrants this season.		descriptor at stack+0; whole string to showAnnouncement
+reference	301 GUEST_ARRIVAL	one returning squad	0x10db7e	{squad} have returned.	squad.name+8 or nonempty squad.alias+80	alias empty test 6f520; native EnglishName a946e0 only for empty alias; common append b9d10 at 10db79
+reference	301 GUEST_ARRIVAL	multiple returning squads	0x10dd25	{squad} and others have returned.	first squad.name+8 or squad.alias+80	nonempty alias copied; otherwise EnglishName a946e0; common append b9d10 at 10dd20
+reference	301 GUEST_ARRIVAL	one returning unit	0x10df48	{unit} has returned.	unit formatter 1330c30	output rbp+790; native unit formatter supplies first field
+reference	301 GUEST_ARRIVAL	two returning units	0x10df26	{unit1} and {unit2} have returned.	two unit formatter 1330c30 fields	conjunction and; same output owner as submit
+reference	301 GUEST_ARRIVAL	three or more returning units	0x10deb2	{unit} and others have returned.	first unit formatter 1330c30	remaining unit names elided by native branch
+reference	301 GUEST_ARRIVAL	optional return report	0x10dbf2	{return sentence}  {history report}	history_event+0xd0; flags0,1,0	r14d event ID; append only if formatter output nonempty; no event type filter at ID selection
+reference	301 GUEST_ARRIVAL	one visitor	0x10e8b4	{unit} has arrived.	unit formatter 1330c30	historical figure info chain +130/+28; native info.word type 1
+reference	301 GUEST_ARRIVAL	one visitor	0x10e8bd	{unit} is visiting.	unit formatter 1330c30	absent info or info.word type != 1
+reference	301 GUEST_ARRIVAL	performance troupe	0x10e9ce	{entity}, the performance troupe, has arrived.	entity formatter b92900	info type 1; actual descriptor 301
+reference	301 GUEST_ARRIVAL	performance troupe	0x10e9d7	{entity}, a performance troupe, is visiting.	entity formatter b92900	other info type; actual descriptor 301
+reference	301 GUEST_ARRIVAL	individuals in visitor group	0x10eaf1	{unit} has arrived. / {unit} is visiting.	each unit formatter 1330c30	no performance entity -> submit one 301 record per unit
+classic	301 GUEST_ARRIVAL	one returning squad	0x10db0e	{squad} have returned.	squad.name+8 or nonempty squad.alias+80	alias empty test 6f520; native EnglishName a946e0 only for empty alias; common append b9d10 at 10db79
+classic	301 GUEST_ARRIVAL	multiple returning squads	0x10dcb5	{squad} and others have returned.	first squad.name+8 or squad.alias+80	nonempty alias copied; otherwise EnglishName a946e0; common append b9d10 at 10dd20
+classic	301 GUEST_ARRIVAL	one returning unit	0x10ded8	{unit} has returned.	unit formatter 1330c30	output rbp+790; native unit formatter supplies first field
+classic	301 GUEST_ARRIVAL	two returning units	0x10deb6	{unit1} and {unit2} have returned.	two unit formatter 1330c30 fields	conjunction and; same output owner as submit
+classic	301 GUEST_ARRIVAL	three or more returning units	0x10de42	{unit} and others have returned.	first unit formatter 1330c30	remaining unit names elided by native branch
+classic	301 GUEST_ARRIVAL	optional return report	0x10db82	{return sentence}  {history report}	history_event+0xd0; flags0,1,0	r14d event ID; append only if formatter output nonempty; no event type filter at ID selection
+classic	301 GUEST_ARRIVAL	one visitor	0x10e844	{unit} has arrived.	unit formatter 1330c30	historical figure info chain +130/+28; native info.word type 1
+classic	301 GUEST_ARRIVAL	one visitor	0x10e84d	{unit} is visiting.	unit formatter 1330c30	absent info or info.word type != 1
+classic	301 GUEST_ARRIVAL	performance troupe	0x10e95e	{entity}, the performance troupe, has arrived.	entity formatter b92900	info type 1; actual descriptor 301
+classic	301 GUEST_ARRIVAL	performance troupe	0x10e967	{entity}, a performance troupe, is visiting.	entity formatter b92900	other info type; actual descriptor 301
+classic	301 GUEST_ARRIVAL	individuals in visitor group	0x10ea81	{unit} has arrived. / {unit} is visiting.	each unit formatter 1330c30	no performance entity -> submit one 301 record per unit

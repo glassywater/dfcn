@@ -1,0 +1,36 @@
+role	condition	production	steam_source	classic_source	dynamic_source
+title	artifact resolved and generated name nonempty	{artifact English name}	0x140b94521..0x140b9453b	0x140b91561..0x140b9157b	artifact_record.name; language_name first_name/nickname/7 word ids and POS
+title	generated name empty; item type 0x59 or 0x57 or flag 0x14	Untitled	0x140b9458d..0x140b9465d	0x140b915cd..0x140b9169d	inline 64-bit literal 0x64656c7469746e55
+title	generated name empty; other item	{item identity including quality}	0x140b94583	0x140b915c3	shared item formatter; data/extracted/item-description-sources.tsv
+title	artifact unresolved	an unknown artifact	0x140b946de	0x140b9171e	fixed fallback
+status	cache.holder_hf != -1	Last held by {historical figure identity}	0x1401d1ea0+0x1401d1ee7	0x1401d1e30+0x1401d1e77	cache+0x10; artifact_record.holder_hf; rumor updates
+status	no holder; cache.storage_site != -1	Last in {site English name}	0x1401d1f9c+0x1401d1fc5	0x1401d1f2c+0x1401d1f55	cache+0x8; world_site.name
+status	no holder/site; cache.loss_region != -1	Last in {region English name}	0x1401d2080+0x1401d20a9	0x1401d2010+0x1401d2039	cache+0x14; world_region.name
+status	no holder/site/region; last_layer != -1 and layer unresolved	Last in an unknown underground region	0x1401d2164+0x140b94a17	0x1401d20f4+0x140b91a57	cache+0x18; unresolved world_underground_region id
+status	underground selected; existing layer unnamed, type=0	Last in the depths of the world	0x140b949ef	0x140b91a2f	world_underground_region.type
+status	underground selected; existing layer unnamed, type=1	Last in the magma sea	0x140b949e0	0x140b91a20	world_underground_region.type
+status	underground selected; existing layer unnamed, type=2	Last in the Underworld	0x140b949d1	0x140b91a11	world_underground_region.type
+status	underground selected; name.has_name=true or unrecognized type	Last in 	0x140b949b4..0x140b949fe	0x140b919f4..0x140b91a3e	shared native formatter contributes empty suffix
+status	no holder/site/region/layer	Location unknown	0x1401d223a	0x1401d21ca	fixed status
+site_name	site id unresolved	an unknown site	0x140b93a5e	0x140b90a9e	fixed fallback inside Last in
+region_name	region id unresolved	an unknown region	0x140b94b6b	0x140b91bab	fixed fallback inside Last in
+holder_name	figure id unresolved	an unknown creature	0x140b938dc	0x140b9091c	fixed fallback inside Last held by
+holder_name	figure resolved, named, descriptor enabled	{the }[zombie ][ghostly ]{race/caste}[ {transformed label}] {English name}	0x140b93315..0x140b9351e	0x140b90355..0x140b9055e	fresh formatter context; native figure status, language name, raw creature/caste and transformed label
+holder_name	figure resolved, named, descriptor disabled	{English name}	0x140b934ec..0x140b9351e	0x140b9052c..0x140b9055e	name.has_name=true; sixth=0 excludes species suffix
+holder_name	figure resolved, unnamed	a [zombie ][ghostly ]{race/caste}[ {transformed label}]	0x140b93741..0x140b93849	0x140b90781..0x140b90889	native generated creature/caste descriptor; no English name
+status	site/region selected, existing object but name.has_name=false or empty name fields	Last in 	0x140b939d9;0x140b94ae6;0x140a94723..0x140a94e6f	0x140b90a19;0x140b91b26;0x140a917a3..0x140a91eef	English language-name helper returns empty; no shared site/region fallback
+status	holder selected, named holder has empty English name and descriptor disabled	Last held by 	0x140b931fa..0x140b93207;0x140b934ec..0x140b9351e	0x140b9023a..0x140b90247;0x140b9052c..0x140b9055e	for example race=-1 disables descriptor; name.has_name=true and empty text fields produce empty name
+status	holder unnamed; empty singular species; no modifiers	Last held by a	0x140b93741..0x140b93849;0x140aa3bd0..0x140aa3d93	0x140b90781..0x140b90889;0x140aa0c50..0x140aa0e13	trimmed native field; current_hf=-1 makes alternate the unreachable
+status	holder unnamed; empty singular species; zombie only	Last held by a zombie	0x140b9376d..0x140b93787;0x140aa3bd0..0x140aa3d93	0x140b907ad..0x140b907c7;0x140aa0c50..0x140aa0e13	unit zombie object pointer at +0x160 nonzero
+status	holder unnamed; empty singular species; ghostly only	Last held by a ghostly	0x140b9378c..0x140b937bf;0x140aa3bd0..0x140aa3d93	0x140b907cc..0x140b907ff;0x140aa0c50..0x140aa0e13	figure undead history and absent transformed flag
+status	holder unnamed; empty singular species; both modifiers	Last held by a zombie ghostly	0x140b9376d..0x140b937bf;0x140aa3bd0..0x140aa3d93	0x140b907ad..0x140b907ff;0x140aa0c50..0x140aa0e13	zombie and ghostly predicates independent
+status	holder named; empty singular species and English name; descriptor enabled; no modifiers	Last held by the	0x140b93315..0x140b9351e	0x140b90355..0x140b9055e	descriptor enabled for nonnegative out-of-range race; sixth=0
+status	holder named; empty singular species and English name; descriptor enabled; zombie only	Last held by the zombie	0x140b93315..0x140b93349;0x140b934ec..0x140b9351e	0x140b90355..0x140b90389;0x140b9052c..0x140b9055e	unit zombie object pointer at +0x160 nonzero
+status	holder named; empty singular species and English name; descriptor enabled; ghostly only	Last held by the ghostly	0x140b93315..0x140b93381;0x140b934ec..0x140b9351e	0x140b90355..0x140b903c1;0x140b9052c..0x140b9055e	figure undead history and absent transformed flag
+status	holder named; empty singular species and English name; descriptor enabled; both modifiers	Last held by the zombie ghostly	0x140b93315..0x140b93381;0x140b934ec..0x140b9351e	0x140b90355..0x140b903c1;0x140b9052c..0x140b9055e	zombie and ghostly predicates independent
+clipping	title/status exceeds native byte width	{shortened source}...	0x1401d1e02..0x1401d1e63;0x1401d1efe..0x1401d1f68	0x1401d1d92..0x1401d1df3;0x1401d1e8e..0x1401d1ef8	complete native field exists before resize and ellipsis
+name_component	present nickname and applicable nickname setting	`{nickname}'	0x140a94779..0x140a947a2;0x140a948b2..0x140a948db	0x140a917f9..0x140a91822;0x140a91932..0x140a9195b	language_name.nickname; nickname setting
+name_component	first present adjective/hyphen/noun component	The {component} or the {component}	0x140a94a4a..0x140a94a82	0x140a91aca..0x140a91b02	language_name.words[2..5], individual POS forms
+name_component	present hyphen compound	{component}-	0x140a94c79	0x140a91cf9	language_name.words[4]
+name_component	present Of phrase	Of {component} or of {component}	0x140a94e18..0x140a94e38	0x140a91e98..0x140a91eb8	language_name.words[6], individual POS form
+sibling_missing_status	whereabouts army_id!=-1 after site/region/layer absent	Last known to be traveling	0x1401d164f..0x1401d1655	0x1401d15df..0x1401d15e5	state_profilest.army_id; this branch belongs to Missing citizens, not Artifacts

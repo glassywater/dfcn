@@ -92,13 +92,24 @@ struct NativeDfhackLayerSdlState {
             SDL_RenderSetScale(renderer, 1.0f, 1.0f) == 0 &&
             SDL_RenderSetClipRect(renderer, nullptr) == 0;
     }
+    bool bind_composite(int width, int height) noexcept {
+        if (width <= 0 || height <= 0) return false;
+        restored = false;
+        // Rebuild the full logical-screen transform for the entry target.
+        // SDL handles window letterboxing and texture target dimensions;
+        // a native widget's retained viewport/clip cannot trim this layer.
+        return SDL_SetRenderTarget(renderer, target) == 0 &&
+            SDL_RenderSetIntegerScale(renderer, integer_scale) == 0 &&
+            SDL_RenderSetLogicalSize(renderer, width, height) == 0 &&
+            SDL_RenderSetClipRect(renderer, nullptr) == 0;
+    }
     void restore() noexcept {
         if (restored) return;
-        SDL_SetRenderTarget(renderer, target);
+        if (SDL_SetRenderTarget(renderer, target) != 0) return;
         SDL_RenderSetLogicalSize(renderer, logical_width, logical_height);
         SDL_RenderSetIntegerScale(renderer, integer_scale);
-        SDL_RenderSetViewport(renderer, &viewport);
         SDL_RenderSetScale(renderer, scale_x, scale_y);
+        SDL_RenderSetViewport(renderer, &viewport);
         SDL_RenderSetClipRect(renderer, clipped ? &clip : nullptr);
         SDL_SetRenderDrawBlendMode(renderer, blend);
         SDL_SetRenderDrawColor(renderer, r, g, b, a);
@@ -110,19 +121,23 @@ struct NativeDfhackLayerSdlState {
 struct NativeDfhackLayerRendererGrid {
     void *renderer;
     graphicst *game_graphics = nullptr;
+    graphicst *private_graphics = nullptr;
     NativeDfhackOutputBinding previous_graphics;
+    std::array<unsigned char, sizeof(graphicst::texblits)> previous_texblits{};
     std::array<void *, 14> previous{};
     unsigned char previous_viewport_zoom = 0;
 
     NativeDfhackLayerRendererGrid(void *current, graphicst &gps) noexcept
-        : renderer(current), game_graphics(native_graphics()) {
+        : renderer(current), game_graphics(native_graphics()), private_graphics(&gps) {
         // The private SDL target is already bound and PresentScope owns the
         // same mutex as native root rendering. Native tile/map helpers also
         // read the EXE's static graphicst, including its refresh output; bind
         // that output to the committed private arrays only for these passes.
         if (game_graphics) {
             previous_graphics = NativeDfhackOutputBinding::capture(*game_graphics);
+            std::memcpy(previous_texblits.data(), &game_graphics->texblits, previous_texblits.size());
             NativeDfhackOutputBinding::capture(gps).apply(*game_graphics);
+            std::memcpy(&game_graphics->texblits, &gps.texblits, sizeof(gps.texblits));
         }
         // renderer has the same seven fields in each plane, but its top
         // texture field order differs from graphicst's field order.
@@ -145,7 +160,12 @@ struct NativeDfhackLayerRendererGrid {
         std::memcpy(static_cast<unsigned char *>(renderer) + sizeof(void *),
             previous.data(), sizeof(previous));
         *(static_cast<unsigned char *>(renderer) + 0x180) = previous_viewport_zoom;
-        if (game_graphics) previous_graphics.apply(*game_graphics);
+        if (game_graphics) {
+            std::memcpy(&private_graphics->texblits, &game_graphics->texblits,
+                sizeof(private_graphics->texblits));
+            previous_graphics.apply(*game_graphics);
+            std::memcpy(&game_graphics->texblits, previous_texblits.data(), previous_texblits.size());
+        }
     }
 };
 
@@ -659,6 +679,7 @@ static bool native_dfhack_layer_has_content(SDL_Renderer *renderer,
 static void native_dfhack_present_layer(SDL_Renderer *renderer,
         void (*translate)(SDL_Renderer *)) {
     if (!renderer || !native_pe_supported()) return;
+    if (!g_native_dfhack_graphics_ownership_ready.load(std::memory_order_acquire)) return;
     const bool disabled = native_dfhack_switch_disabled();
     static bool hidden = false;
     if (disabled != hidden) {
@@ -738,7 +759,7 @@ static void native_dfhack_present_layer(SDL_Renderer *renderer,
         native_dfhack_compose_gpu_layer(renderer, paint.bound_target, width, height);
         if (translate) translate(renderer);
     }
-    state.restore();
+    if (!state.bind_composite(width, height)) return;
     // This is the ordinary final composition of the private target. It never
     // copies game pixels into DFHack's layer or feeds it to native scanners.
     const SDL_Rect destination{0, 0, width, height};

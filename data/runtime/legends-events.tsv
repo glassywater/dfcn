@@ -518,6 +518,11 @@ Written on the item is a {s} entitled {b}.	物品上写有{s}《{b}》。	clause
 Written on the item is an {s} entitled {b}.	物品上写有{s}《{b}》。	clause
 Written on the item is an untitled {s}, authored by {n}.	物品上写有{n}撰写的无题{s}。	clause
 Written on the item is an untitled {s}.	物品上写有无题{s}。	clause
+# The scroll writer can print the work genre without an indefinite article.
+Written on the item is {s} entitled {b}, authored by {n}.	物品上写有{n}撰写的{s}《{b}》。	clause
+Written on the item is {s} entitled {b}.	物品上写有{s}《{b}》。	clause
+Written on the item is untitled {s}, authored by {n}.	物品上写有{n}撰写的无题{s}。	clause
+Written on the item is untitled {s}.	物品上写有无题{s}。	clause
 # Work forms live only in the description namespace: a play is 戏剧 here,
 # not the global Play button's 游玩; essay/poem retain the reviewed senses.
 guide	指南	description
@@ -1736,6 +1741,13 @@ ably led by {a}	由{a}干练地率领	clause
 poorly led by {a}	由{a}拙劣地率领	clause
 inspiringly led by {a}	由{a}鼓舞士气地率领	clause
 brilliantly led by {a}	由{a}出色地率领	clause
+# Native history_event_squad_vs_squad (109), b6ced8..b6cf87 and b6d097..b6d269.
+# The group uses its historical language_name, independently of active squad.alias.
+{a}, led by {a},	由{a2}率领的{a1}	participant
+{a}, ably led by {a},	由{a2}干练地率领的{a1}	participant
+{a}, poorly led by {a},	由{a2}拙劣地率领的{a1}	participant
+{a}, inspiringly led by {a},	由{a2}鼓舞士气地率领的{a1}	participant
+{a}, brilliantly led by {a},	由{a2}出色地率领的{a1}	participant
 a tactical situation	一次战术态势	title
 the tactics of {a}	{a}的战术	title
 the tactical contest between {a} and {a}	{a1}与{a2}的战术较量	title
@@ -3033,6 +3045,12 @@ the discovery of {p}	发现{p}	title
 the acquisition of a copy of {b}	获得《{b}》的抄本	title
 the naming of {p}	为{p}命名	title
 the authoring of {b}	《{b}》的撰写	title
+# Creative-work references retain the complete book/form title, optional
+# site, and creator in this order. The shared event parser owns the date tail.
+the creation of {b}	《{b}》的创作	title
+the creation of {b} in {p}	在{p}创作《{b}》	title
+the creation of {b} by {a}	{a}创作《{b}》	title
+the creation of {b} in {p} by {a}	{a}在{p}创作《{b}》	title
 {p} was looted	{p}被劫走了	event
 {p} was confiscated	{p}被没收了	event
 {p} was confiscated by {a}	{a}没收了{p}	event

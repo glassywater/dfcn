@@ -1,0 +1,55 @@
+edition	image_identity	image_path	role	function_rva	end_rva	range_source
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	report-category	0xeaa20	0xeab14	complete leaf function; native jump-table data follows
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	report-tab-label	0xed7c0	0xed9dc	complete leaf function; native jump-table data follows
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	attack-producer-110460	0x110460	0x116768	complete PE unwind owner
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	arrival-generated-description	0x144ea0	0x144f7b	complete PE unwind owner
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	ambush-creature-fallback	0x256880	0x256927	complete PE unwind owner
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	attack-producer-a5d230	0xa5d230	0xa5e3c8	complete PE unwind owner
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	attack-producer-a5f2d0	0xa5f2d0	0xa60e46	complete PE unwind owner
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	attack-producer-a60e50	0xa60e50	0xa618c8	complete PE unwind owner
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	attack-producer-a618d0	0xa618d0	0xa6258c	complete PE unwind owner
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	language-name-reference	0xa94030	0xa946d1	complete PE unwind owner
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	creature-adjective	0xaa3770	0xaa3868	complete PE unwind owner
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	creature-reference	0xaa3bd0	0xaa3d93	complete PE unwind owner
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	historical-figure-reference	0xb92f10	0xb93927	complete PE unwind owner
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	site-reference	0xb93930	0xb93a8a	complete PE unwind owner
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	attack-producer-da8080	0xda8080	0xda9c62	complete PE unwind owner
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	attack-producer-e506a0	0xe506a0	0xe5148c	complete PE unwind owner
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	attack-producer-e51490	0xe51490	0xe5228e	complete PE unwind owner
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	site-prefix	0x10cbe10	0x10cbe4b	complete leaf function; native control-flow extent
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	site-kind	0x10cbe50	0x10cc160	complete leaf function; native control-flow extent
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	profession-reference	0x132cc10	0x132cc41	complete PE unwind owner
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	military-role-creature-reference	0x132e0c0	0x132e428	complete PE unwind owner
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	resident-creature-reference	0x132f980	0x133025e	complete PE unwind owner
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	unit-reference	0x1330c30	0x13312b8	complete PE unwind owner
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	unit-profession-reference	0x1331500	0x1333724	complete PE unwind owner
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	attack-producer-1353940	0x1353940	0x13547bf	complete PE unwind owner
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	attack-producer-13547e0	0x13547e0	0x135e678	complete PE unwind owner
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	attack-producer-13625b0	0x13625b0	0x13640b1	complete PE unwind owner
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	report-category	0xea9b0	0xeaaa4	complete leaf function; native jump-table data follows
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	report-tab-label	0xed750	0xed96c	complete leaf function; native jump-table data follows
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	attack-producer-1103f0	0x1103f0	0x1166f8	complete PE unwind owner
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	arrival-generated-description	0x144e30	0x144f0b	complete PE unwind owner
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	ambush-creature-fallback	0x256720	0x2567c7	complete PE unwind owner
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	attack-producer-a5a360	0xa5a360	0xa5b4f8	complete PE unwind owner
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	attack-producer-a5c400	0xa5c400	0xa5df76	complete PE unwind owner
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	attack-producer-a5df80	0xa5df80	0xa5e9f8	complete PE unwind owner
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	attack-producer-a5ea00	0xa5ea00	0xa5f6bc	complete PE unwind owner
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	language-name-reference	0xa910b0	0xa91751	complete PE unwind owner
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	creature-adjective	0xaa07f0	0xaa08e8	complete PE unwind owner
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	creature-reference	0xaa0c50	0xaa0e13	complete PE unwind owner
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	historical-figure-reference	0xb8ff50	0xb90967	complete PE unwind owner
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	site-reference	0xb90970	0xb90aca	complete PE unwind owner
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	attack-producer-da2ff0	0xda2ff0	0xda4bd2	complete PE unwind owner
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	attack-producer-e4b610	0xe4b610	0xe4c3fc	complete PE unwind owner
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	attack-producer-e4c400	0xe4c400	0xe4d1fe	complete PE unwind owner
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	site-prefix	0x10c6d80	0x10c6dbb	complete leaf function; native control-flow extent
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	site-kind	0x10c6dc0	0x10c70d0	complete leaf function; native control-flow extent
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	profession-reference	0x1327b80	0x1327bb1	complete PE unwind owner
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	military-role-creature-reference	0x1329030	0x1329398	complete PE unwind owner
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	resident-creature-reference	0x132a8f0	0x132b1ce	complete PE unwind owner
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	unit-reference	0x132bba0	0x132c228	complete PE unwind owner
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	unit-profession-reference	0x132c470	0x132e694	complete PE unwind owner
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	attack-producer-134e8b0	0x134e8b0	0x134f72f	complete PE unwind owner
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	attack-producer-134f750	0x134f750	0x13595e8	complete PE unwind owner
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	attack-producer-135d520	0x135d520	0x135f021	complete PE unwind owner

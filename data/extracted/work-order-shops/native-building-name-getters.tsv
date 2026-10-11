@@ -1,0 +1,7 @@
+edition	image_identity	native_class	vtable_rva	slot	getter_rva	code_end_rva	first_unwind_end_rva
+reference	PE:6a70a6d9:02711000	building_workshopst	0x165b070	0x188	0x54fa20	0x5501c4	0x550228
+reference	PE:6a70a6d9:02711000	building_furnacest	0x16534c8	0x188	0x54f390	0x54f590	0x54f4c0
+reference	PE:6a70a6d9:02711000	building_siegeenginest	0x165d7d0	0x188	0x54f980	0x54fa20	0x54fa20
+classic	PE:6a70b91c:0270a000	building_workshopst	0x1655f90	0x188	0x54d440	0x54dbe4	0x54dc48
+classic	PE:6a70b91c:0270a000	building_furnacest	0x164e3e8	0x188	0x54cdb0	0x54cfb0	0x54cee0
+classic	PE:6a70b91c:0270a000	building_siegeenginest	0x16586f0	0x188	0x54d3a0	0x54d440	0x54d440

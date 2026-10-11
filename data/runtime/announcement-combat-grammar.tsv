@@ -78,6 +78,8 @@ attack-verb	push	推		active vanilla ATTACK_VERB / item_weapon.txt ATTACK; nativ
 attack-verb	pushes	推		active vanilla ATTACK_VERB / item_weapon.txt ATTACK; native 0x14064a9e6+0x14064af07+0x14064b97a; existing data/runtime/rulesets/zh-Hans/adv/attack.toml terminology
 attack	{s} {s} in the {s}	{s1}{s2}的{s3}	attack-verb,unit,object	0x1400e5a74+0x1400e5a91+0x1400e5aaf+0x1400e5b24
 attack	{s} {s} by the {s}	{s1}{s2}的{s3}	attack-verb,unit,object	0x1400e5aa8; attack flag 0x4 selects by-the branch
+attack	{s} {s} in the	{s1}{s2}	attack-verb,unit	Steam 0x1400e5ad4..0x1400e5b1c / classic 0x1400e5a64..0x1400e5aac; flag0x8 item lookup can fail after relation is appended; complete nonempty head span trims only terminal native space
+attack	{s} {s} by the	{s1}{s2}	attack-verb,unit	Steam 0x1400e5aa8+0x1400e5ae8 / classic 0x1400e5a38+0x1400e5a78; flag0x4 relation retained when flag0x8 target-item lookup fails; no invented target object
 attack	{s} from behind	从背后{s1}	attack	0x1400e5b33 repeated on each damage outcome
 attack	{s} from the side	从侧面{s1}	attack	0x1400e5b40 repeated on each damage outcome
 attack	{s} with {s}	用{s2}{s1}	attack,equipment	0x1400e5b5d+0x1400e5b75; independently optional full weapon phrase
@@ -104,6 +106,9 @@ damage	{s} {s}	{s1}了{s2}	damage-verb,layer-list	0x1400e7718..0x1400e77cf
 damage	tearing it apart	将它撕碎		0x1400e779b+0x1400e77bf
 damage	{s} through a hole in the {s}	{s1}，穿过{s2}上的孔洞	damage,layer	0x1400e7a9c..0x1400e7af7
 damage	passing through a hole in the {s}	穿过{s1}上的孔洞	layer	0x1400e7c0f..0x1400e7d40
+damage	{s} through a hole in the	{s1}，穿过孔洞	damage	Steam 0x1400e7a9c+0x1400e81f3..0x1400e8294 / classic 0x1400e7a2c+0x1400e8183..0x1400e8224; single-layer other body or null tissue can leave the already-appended hole target empty
+damage	passing through a hole in the	穿过孔洞		Steam 0x1400e7c0f+0x1400e7cb4+0x1400e7d2e / classic 0x1400e7b9f+0x1400e7c44+0x1400e7cbe; single-layer different body or null material skips target text before and-jamming continuation
+layer	{s}'s	{s1}	$body	Steam 0x1400e7cc8..0x1400e7d31+0x1400e8206..0x1400e8285 / classic 0x1400e7c58..0x1400e7cc1+0x1400e8196..0x1400e8215; complete body possessive can precede a skipped null tissue name; preserve the known body without inventing a tissue
 damage	jamming the {s} through the {s}	将{s1}挤压穿过{s2}	layer,layer	0x1400e7d50..0x1400e7fcd
 damage	jamming the {s} out of the wound	将{s1}从伤口挤出	layer	0x1400e7d50+0x1400e7fd2
 damage	breaking away the {s}	使{s1}断落	layer	0x1400e8088+0x1400e80ee
@@ -115,7 +120,13 @@ damage	breaking away {s} the {s}	使{s2}的{s1}断落	fraction,layer	0x1400e8088
 damage-list	{s}	{s1}	damage	0x1400e746c+0x1400e7475; ordered native damage-record loop
 damage-list	{s} and {s}	{s1}，并{s2}	damage,damage-list	0x1400e746c+0x1400e7d40+0x1400e7ff8
 damage-list	{s}, {s}	{s1}，{s2}	damage,damage-list	0x1400e7475+0x1400e8001
+# A failed kind4 tissue lookup ends the damage-record loop after its native
+# separator has already been appended. Only a last empty element is reachable;
+# the known earlier damage fields remain complete and no injury is invented.
+damage-list	{s},	{s1}	damage-list	Steam 0x1400e8001+0x1400e807f..0x1400e82d5 / classic 0x1400e7f91+0x1400e800f..0x1400e8265; empty last kind4 element after complete earlier damage
+damage-list	{s} and	{s1}	damage-list	Steam 0x1400e7ff8+0x1400e807f..0x1400e82d5 / classic 0x1400e7f88+0x1400e800f..0x1400e8265; empty last kind4 element retains no invented consequence
 damage-list	{s} through the {s}	{s1}，穿过{s2}	damage-list,equipment	0x1400e82ff+0x1400e833f
+damage-list	through the {s}	穿过{s1}	equipment	Steam 0x1400e8082->0x1400e82d5..0x1400e833f / classic 0x1400e8012->0x1400e8265..0x1400e82cf; first kind4 tissue is null but independent equipment suffix still appends its complete item
 decay	rancid	腐臭的		0x1400e8418..0x1400e84a2; bodily-fluid rot status
 decay	decomposing	正在腐烂的		0x1400e8418..0x1400e84a2; bodily-fluid rot status
 decay	rotten	腐烂的		0x1400e8418..0x1400e84a2; bodily-fluid rot status
@@ -128,8 +139,11 @@ fluid	{s} {s}	{s1}{s2}	owner,$term	0x1400e83a6+0x1400e83d3+0x1400e84f8
 fluid	{s} {s} {s}	{s1}{s2}{s3}	owner,decay,$term	0x1400e83d3+0x1400e84ad+0x1400e84f8
 fluid	{s}	{s1}	$term	0x1400e9a39+0x1400e9bdc+0x1400e9d49
 damage-list	{s} and spilling {s}	{s1}，使{s2}洒出	damage-list,fluid	0x1400e837a..0x1400e8527; may repeat for several fluids
+damage-list	and spilling {s}	使{s1}洒出	fluid	Steam 0x1400e8082->0x1400e82d5+0x1400e837a..0x1400e8527 / classic 0x1400e8012->0x1400e8265+0x1400e830a..0x1400e84b7; first kind4 tissue is null but independent fluid records still append complete spill material and owner
 sentence	{s}, but it is deflected by {s}!	{s1}，却被{s2}挡开了！	head,equipment	0x1400e5a43+0x1400e5df6
 sentence	{s}, but the attack is deflected by {s}!	{s1}，但攻击被{s2}挡开了！	head,equipment	0x1400e5b7a+0x1400e5df6
+sentence	{s}, but it is deflected by !	{s1}，却被挡开了！	head	Steam 0x1400e5a43+0x1400e5bba..0x1400e5c34 / classic 0x1400e59d3+0x1400e5b4a..0x1400e5bc4; failed separate deflection-item lookup appends only terminal ! after by-space
+sentence	{s}, but the attack is deflected by !	{s1}，但攻击被挡开了！	head	Steam 0x1400e5b7a+0x1400e5bba..0x1400e5c34 / classic 0x1400e5b0a+0x1400e5b4a..0x1400e5bc4; failed deflection-item lookup preserves the finite result without inventing equipment
 sentence	{s}, lightly tapping the target!	{s1}，只是轻轻碰到了目标！	head	0x1400e5fcb
 sentence	{s}, but there is no force!	{s1}，却没有造成任何冲击！	head	0x1400e5fd2
 sentence	{s}, but it passes right through!	{s1}，却直接穿了过去！	head	0x1400e6019
@@ -150,6 +164,8 @@ sentence	{s} and {s}!	{s1}，{s2}！	head,body-result	0x1400e689b..0x1400e6ccb
 sentence	{s} and it is mostly cut away from the rest of the torso!	{s1}，它与躯干其余部分的连接大多被切断了！	head	0x1400e6b6f
 sentence	{s}, {s}!	{s1}，{s2}！	head,damage-list	0x1400e7276..0x1400e8538
 sentence	{s} and {s}!	{s1}，并{s2}！	head,damage-list	0x1400e746c+0x1400e8538
+sentence	{s}, !	{s1}！	head	Steam 0x1400e8001+0x1400e8082+0x1400e852d / classic 0x1400e7f91+0x1400e8012+0x1400e84bd; first kind4 tissue lookup fails after comma separator; no damage text is emitted
+sentence	{s} and !	{s1}！	head	Steam 0x1400e7ff8+0x1400e8082+0x1400e852d / classic 0x1400e7f88+0x1400e8012+0x1400e84bd; first kind4 tissue lookup fails after and separator; no damage text is emitted
 sentence	{s}!	{s1}！	head	0x1400e6e84+0x1400e71d4; completed strike without additional tissue clause
 injury-subject	a major artery	一条主要动脉		0x1400e89ab..0x1400e8c75
 injury-subject	an artery	一条动脉		0x1400e89ab..0x1400e8c75
@@ -205,6 +221,7 @@ sentence	{s} pours over the {s}!	{s1}倾泻在{s2}上！	fluid,$body	0x1400e9bdc
 sentence	{s} flows over the {s}!	{s1}流淌在{s2}上！	fluid,$body	0x1400e9be5+0x1400e9cc3
 sentence	{s} splatters over the {s}!	{s1}飞溅在{s2}上！	fluid,$body	0x1400e9bee+0x1400e9cc3
 sentence	{s} crumbles over the {s}!	{s1}碎落在{s2}上！	fluid,$body	0x1400e9bf7+0x1400e9cc3
+sentence	{s}{s}!	{s1}{s2}！	fluid,$body	Steam 0x1400e9bda jne0x1400e9c07..0x1400e9c39 / classic 0x1400e9b6a jne0x1400e9b97..0x1400e9bc9; kind16 material state outside0..3 appends complete fluid and body with no flow verb or separator
 sentence	{s} is sucked out of the wound!	{s1}从伤口中被吸了出来！	fluid	0x1400e9d49+0x1400e9dd3
 sentence	{s}	{s1}	$message	existing complete ui-message catalog; no per-word fallback
 sentence	{s} release the grip of {s} from {s}.	{s1}解除了{s2}对{s3}的抓握。	unit,owned-object,owned-object	0x141361ed8..0x141361fb1+0x141362281
@@ -529,6 +546,135 @@ work-reference	the mountain halls {s}	山地大厅{s1}	$name	0x140cc5e32..0x140c
 work-reference	the dark fortress {s}	黑暗要塞{s1}	$name	0x140cc5e32..0x140cc6908; site general_ref, shared Legends dark-fortress subject term
 work-reference	the important location {s}	重要地点{s1}	$name	0x140cc5e32..0x140cc6908; site general_ref, shared Legends important-location subject term
 work-reference	the {s} {s}	{s1}{s2}	reference-kind,$name	0x140cc5e32..0x140cc6908; bounded native named site/building/figure kind, complete name field
+
+# Complete Attacks tab productions. The native category switch admits exactly
+# 53,54,56..59,61..66,90,93..95,108..110,147,150,277 (22 types).
+# Source: data/extracted/fortress-attacks, both configured PE images.
+fortress-attack	{s}	{s1}	attack-notice	PE category 0xeaa20; complete type-owned attack notice
+fortress-attack	{s}	{s1}	attack-army-entry	PE 0x110460; standalone army arrival
+fortress-attack	{s} {s}	{s1}{s2}	attack-army-entry,attack-army-details	PE 0x115050..0x11578a; native [B] becomes a visible paragraph separator
+attack-notice	{s} has come!	{s1}来了！	$unit	PE 0x135493b..0x1354a98/0x13627bb..0x1362a43/0xe51135/0xe51f05; whole native unit field
+attack-notice	{s} has come! {s}	{s1}来了！{s2}	$unit,$description	PE 0x1354997..0x13549cd/0x13628e6..0x136290a/0xe51253/0xe52023; entire nonempty RAW caste.description
+attack-notice	Horrors! Demons in the deep!	太可怕了！深处有恶魔！		PE 0x1362b8e; native type53
+attack-notice	The wilds are turning on us! Curse these lands!	荒野生物反过来攻击我们了！诅咒这片土地！		PE 0x1362cd2; native type54
+attack-notice	Intruders! Drive them away!	有入侵者！赶走他们！		PE 0x136305f; native type59
+attack-notice	Cavern dwellers! Send them back to the darkness!	洞穴居民！把他们赶回黑暗中去！		PE 0x13631aa; native type63
+attack-notice	An ambush! Skulking vermin!	有埋伏！鬼鬼祟祟的害虫！		PE 0x13633b3; native type56
+attack-notice	An ambush! Curse all friends of nature!	有埋伏！诅咒所有自然之友！		PE 0x13634cf/0x1363b8a; native types57/62
+attack-notice	An ambush! Curse them!	有埋伏！诅咒他们！		PE 0x1363549/0x13639a3/0x1363c04; native types58/61/63
+attack-notice	{s}! Drive it away!	{s1}！赶走它！	$creature	PE 0x13637de..0x1363837; full RAW creature/caste name, type59
+attack-notice	An injured {s} has sprung from ambush!	一只受伤的{s1}从埋伏中跳了出来！	$creature	PE 0x1363c56..0x1363cfa; native type64
+attack-notice	A {s} has sprung from ambush!	一只{s1}从埋伏中跳了出来！	$creature	PE 0x1363d18..0x1363dbc; native type65
+attack-notice	An ambush! Drive them out!	有埋伏！把他们赶出去！		PE 0x1363e88; native type54
+attack-notice	There is a {s} hidden away here.	这里藏着一只{s1}。	$creature	PE 0x1363f27+0x1363f7c..0x136403c; native type66, complete RAW creature name
+attack-notice	{s} has become entangled in a hidden web!	{s1}被隐藏的蛛网缠住了！	$unit	PE 0xda940c..0xda9494; native type90
+attack-notice	You have transformed into a {s}!	你变成了{s1}！	$creature	PE 0x1353940..0x135471a; native type147 player branch
+attack-notice	{s} has transformed into a {s}!	{s1}变成了{s2}！	$unit,$creature	PE 0x1353940..0x135471a; native type147
+attack-notice	The {s} have given a resident {s} the name {s}.	{s1}给一只常住的{s2}起名为{s3}。	$creature,$attack-creature-role,$resident-assigned-name	PE 0x135c279..0x135c387; native type277; actual language_name or repeated role left by null/has_name=false getter
+attack-notice	The glowing barrier has disappeared, replaced by terrible shrieks from the underworld!	发光的屏障消失了，地下世界随即传来可怕的尖叫声！		PE 0xa5e28c..0xa5e385; native type108
+attack-notice	The glowing barrier has disappeared!	发光的屏障消失了！		PE 0xa5e2f9..0xa5e385; native type108
+attack-notice	Deep within this strange place, we've uncovered what must be a treasure of the gods!	我们在这片奇异之地的深处发现了宝藏——这一定是诸神的宝藏！		PE 0xa60b9a..0xa60c57; native type109
+attack-notice	We checked that stone for heat! What devilry is this?!	我们明明检查过那块石头的温度！这是什么邪术？！		PE 0xa60fba..0xa61079; native type109
+attack-notice	Some ancient horror was encased here, until now!	这里原来封着某种远古的恐怖之物，如今封印破了！		PE 0xa61663..0xa61864; native type109
+attack-notice	Apocalypse! We are being judged by the gods!	末日降临了！诸神正在审判我们！		PE 0xa616ad..0xa61864; native type109
+attack-notice	Something evil is emerging from this newly exposed pocket!	有什么邪恶之物正从这片新露出的空腔中涌出！		PE 0xa61749..0xa61864; native type109
+attack-notice	We have unleashed the echo of a forgotten divine retribution!	那场早已被遗忘的神罚，余威竟被我们释放出来了！		PE 0xa617a4..0xa61864; native type109
+attack-notice	Horrifying screams come from the darkness below!	下方的黑暗中传来了骇人的尖叫！		PE 0xa622cf..0xa62372; native type110
+attack-notice	The dead walk. Hide while you still can!	死者又走动起来了。趁还来得及，快躲起来！		PE 0x114f77..0x114fa0; native type150, standalone branch
+attack-notice	Forms twisted from their nature, legion of the night. What hope remains?	万物扭曲变形，化作暗夜大军。我们还能指望什么？		PE 0x114fca..0x114ff3; native type150, standalone branch
+attack-army-entry	A vile force of darkness has arrived, seeking a parley!	一支邪恶的黑暗势力已经到来，要求谈判！		PE 0x115050
+attack-army-entry	The enemy have come and are preparing to lay siege. They seek a parley!	敌军已到达，正在准备围城。他们要求谈判！		PE 0x115077
+attack-army-entry	An army has come to your lands seeking a parley.	一支军队来到了你的领地，要求谈判。		PE 0x115080
+attack-army-entry	A vile force of darkness has arrived!	一支邪恶的黑暗势力已经到来！		PE 0x115092
+attack-army-entry	The enemy have come and are laying siege to the fortress.	敌军已经到达，正在围攻要塞。		PE 0x1150b0
+attack-army-entry	An army is invading!	一支军队正在入侵！		PE 0x1150b9/0x1157b3
+attack-army-details	{s}	{s1}	attack-commander	PE 0x1150dc..0x115388; optional first paragraph
+attack-army-details	{s}	{s1}	attack-army-support	PE 0x1153d4..0x115762; commander absent
+attack-army-details	{s} {s}	{s1}{s2}	attack-commander,attack-army-support	PE 0x1150dc..0x115762; actual optional paragraph order
+attack-commander	{s}	{s1}	attack-leader	PE 0x1150ef..0x11523e; empty historical-event branch
+attack-commander	{s} {s}	{s1}{s2}	attack-leader,$history-report	PE 0x115371; optional complete history_event virtual+d0 output
+attack-leader	The army is commanded by {s}.	这支军队由{s1}指挥。	$historical-actor	PE 0x115136..0x11523e; full contextual HF supplier b92f10
+attack-leader	The army is commanded by {s}, {s}.	这支军队的统领是{s1}，{s2}。	$historical-actor,attack-leader-quality	PE 0x115160..0x11523e; finite skill and demon branches
+attack-leader	The army is commanded by {s}, a .	这支军队由{s1}指挥。	$historical-actor	PE 0x1151fc..0x11523e; combat skill1..2 appends an empty quality
+attack-leader	The army is commanded by {s}, {s} and .	这支军队的统领是{s1}，{s2}。	$historical-actor,attack-leader-quality	PE 0x1151f3..0x11523e; commander plus empty combat quality
+attack-leader-quality	an ancient and horrible demon escaped from the underworld before the dawn of time	是一只恐怖的远古恶魔，早在时间诞生之前就逃出了地下世界		PE 0x115160..0x115173; direct jump bypasses all warrior qualifiers
+attack-leader-quality	a talented commander	是一位才华出众的统帅		PE 0x11518a; command skill>=9
+attack-leader-quality	a seasoned commander	是一位久经沙场的统帅		PE 0x1151a5; command skill6..8
+attack-leader-quality	a competent commander	是一位称职的统帅		PE 0x1151c0; command skill3..5
+attack-leader-quality	a true warrior	是一位真正的勇士		PE 0x1151fc+0x11520d; combat skill>=9
+attack-leader-quality	a skilled warrior	是一位武艺高强的战士		PE 0x1151fc+0x11521b; combat skill6..8
+attack-leader-quality	a middling warrior	是一位武艺平平的战士		PE 0x1151fc+0x115229; combat skill3..5
+attack-leader-quality	a talented commander and true warrior	是一位才华出众的统帅，也是真正的勇士		PE 0x11518a+0x1151f3+0x11520d
+attack-leader-quality	a talented commander and skilled warrior	是一位才华出众的统帅，也是武艺高强的战士		PE 0x11518a+0x1151f3+0x11521b
+attack-leader-quality	a talented commander and middling warrior	是一位才华出众的统帅，也是武艺平平的战士		PE 0x11518a+0x1151f3+0x115229
+attack-leader-quality	a seasoned commander and true warrior	是一位久经沙场的统帅，也是真正的勇士		PE 0x1151a5+0x1151f3+0x11520d
+attack-leader-quality	a seasoned commander and skilled warrior	是一位久经沙场的统帅，也是武艺高强的战士		PE 0x1151a5+0x1151f3+0x11521b
+attack-leader-quality	a seasoned commander and middling warrior	是一位久经沙场的统帅，也是武艺平平的战士		PE 0x1151a5+0x1151f3+0x115229
+attack-leader-quality	a competent commander and true warrior	是一位称职的统帅，也是真正的勇士		PE 0x1151c0+0x1151f3+0x11520d
+attack-leader-quality	a competent commander and skilled warrior	是一位称职的统帅，也是武艺高强的战士		PE 0x1151c0+0x1151f3+0x11521b
+attack-leader-quality	a competent commander and middling warrior	是一位称职的统帅，也是武艺平平的战士		PE 0x1151c0+0x1151f3+0x115229
+attack-army-support	{s}	{s1}	attack-warning	PE 0x1153d4..0x1154bd; no reinforcements
+attack-army-support	{s}	{s1}	attack-reinforcements	PE 0x1154f6..0x115762; no warning
+attack-army-support	{s} {s}	{s1}{s2}	attack-warning,attack-reinforcements	PE 0x1153d4..0x115762; native warning before reinforcements
+attack-warning	Beware their {s}!	小心他们的{s1}！	$attack-creature-role	PE 0x1153e7..0x1154bd; role supplier 1332e0c0
+attack-warning	Beware their mounted {s}!	小心他们的{s1}骑兵！	$attack-creature-role	PE 0x115456+0x1154a5
+attack-warning	Beware their elite {s}!	小心他们那些精锐{s1}！	$attack-creature-role	PE 0x11542e+0x1154a5
+attack-warning	Beware their elite mounted {s}!	小心他们那些精锐{s1}骑兵！	$attack-creature-role	PE 0x11542e+0x115456+0x1154a5
+attack-warning	Beware their skilled {s}!	小心他们那些训练有素的{s1}！	$attack-creature-role	PE 0x11543c+0x1154a5
+attack-warning	Beware their skilled mounted {s}!	小心他们那些训练有素的{s1}骑兵！	$attack-creature-role	PE 0x11543c+0x115456+0x1154a5
+attack-warning	Beware their heavily-armored {s}!	小心他们那些身披重甲的{s1}！	$attack-creature-role	PE 0x115405+0x1154a5
+attack-warning	Beware their heavily-armored mounted {s}!	小心他们那些身披重甲的{s1}骑兵！	$attack-creature-role	PE 0x115405+0x115456+0x1154a5
+attack-warning	Beware their heavily-armored elite {s}!	小心他们那些身披重甲的精锐{s1}！	$attack-creature-role	PE 0x115405+0x11542e+0x1154a5
+attack-warning	Beware their heavily-armored elite mounted {s}!	小心他们那些身披重甲的精锐{s1}骑兵！	$attack-creature-role	PE 0x115405+0x11542e+0x115456+0x1154a5
+attack-warning	Beware their heavily-armored skilled {s}!	小心他们那些身披重甲、训练有素的{s1}！	$attack-creature-role	PE 0x115405+0x11543c+0x1154a5
+attack-warning	Beware their heavily-armored skilled mounted {s}!	小心他们那些身披重甲、训练有素的{s1}骑兵！	$attack-creature-role	PE 0x115405+0x11543c+0x115456+0x1154a5
+attack-warning	Beware their armored {s}!	小心他们那些身穿盔甲的{s1}！	$attack-creature-role	PE 0x115413+0x1154a5
+attack-warning	Beware their armored mounted {s}!	小心他们那些身穿盔甲的{s1}骑兵！	$attack-creature-role	PE 0x115413+0x115456+0x1154a5
+attack-warning	Beware their armored elite {s}!	小心他们那些身穿盔甲的精锐{s1}！	$attack-creature-role	PE 0x115413+0x11542e+0x1154a5
+attack-warning	Beware their armored elite mounted {s}!	小心他们那些身穿盔甲的精锐{s1}骑兵！	$attack-creature-role	PE 0x115413+0x11542e+0x115456+0x1154a5
+attack-warning	Beware their armored skilled {s}!	小心他们那些身穿盔甲、训练有素的{s1}！	$attack-creature-role	PE 0x115413+0x11543c+0x1154a5
+attack-warning	Beware their armored skilled mounted {s}!	小心他们那些身穿盔甲、训练有素的{s1}骑兵！	$attack-creature-role	PE 0x115413+0x11543c+0x115456+0x1154a5
+attack-reinforcements	With them {s}!	{s1}也随军而来！	attack-reinforcement-group	PE 0x115509..0x115762; absent source site
+attack-reinforcements	With them {s} from the {s} of {s}!	随军而来的还有{s1}，来自{s3}的{s2}！	attack-origin-group,attack-site-type,$travel-site	PE 0x115623..0x115750; complete site descriptor/adjective/kind and site-name fields
+attack-reinforcement-group	comes a {s}	一只{s1}	attack-reinforcement-kind	PE 0x11552d+0x1155c1/0x1155f1; one reinforcement
+attack-reinforcement-group	come {s}	{s1}	attack-reinforcement-kind	PE 0x115536+0x1155c1/0x1155f1; plural reinforcements
+attack-reinforcement-group	come monstrous siege engineers	可怕的攻城巨兽		PE 0x115520; no secondary reinforcement kind, skips source-site branch
+attack-reinforcement-group	come monstrous siege engineers and a {s}	可怕的攻城巨兽和一只{s1}	attack-reinforcement-kind	PE 0x115520+0x11555a+0x115573
+attack-reinforcement-group	come monstrous siege engineers and {s}	可怕的攻城巨兽和{s1}	attack-reinforcement-kind	PE 0x115520+0x11555a; plural secondary kind
+attack-reinforcement-kind	{s}	{s1}	$creature	PE 0x1155f1; complete singular/plural RAW species
+attack-reinforcement-kind	{s}	{s1}	$attack-creature-role	PE 0x1155c1; complete singular/plural military profession
+attack-origin-group	comes a {s}	一只{s1}	attack-reinforcement-kind	PE 0x11552d+0x1155c1/0x1155f1; one reinforcement with origin
+attack-origin-group	come {s}	{s1}	attack-reinforcement-kind	PE 0x115536+0x1155c1/0x1155f1; plural reinforcements with origin
+attack-origin-group	come monstrous siege engineers and a {s}	可怕的攻城巨兽和一只{s1}	attack-reinforcement-kind	PE 0x115520+0x11555a+0x115573; source race must exist for origin
+attack-origin-group	come monstrous siege engineers and {s}	可怕的攻城巨兽和{s1}	attack-reinforcement-kind	PE 0x115520+0x11555a; monster-only branch skips origin
+attack-site-type	{s}	{s1}	attack-site-kind	PE 0x11564d..0x115750; no prefix or race adjective
+attack-site-type	dark {s}	黑暗{s1}	attack-site-kind	PE 0x10cbe10; site type1 dark prefix
+attack-site-type	{s} {s}	{s1}{s2}	$term,attack-site-kind	PE 0x1156d0+0x11570d; optional whole RAW race adjective
+attack-site-type	dark {s} {s}	黑暗{s1}{s2}	$term,attack-site-kind	PE 0x11564d+0x1156d0+0x11570d; both optional native modifiers
+attack-site-kind	fortress	要塞		PE 0x10cbe50..0x10cc160; complete native site type/subtype branch; see reference-site-kind.asm and classic-site-kind.asm
+attack-site-kind	mountain halls	山地大厅		PE 0x10cbe50..0x10cc160; complete native site type/subtype branch; see reference-site-kind.asm and classic-site-kind.asm
+attack-site-kind	hillocks	丘堡		PE 0x10cbe50..0x10cc160; complete native site type/subtype branch; see reference-site-kind.asm and classic-site-kind.asm
+attack-site-kind	pits	深坑		PE 0x10cbe50..0x10cc160; complete native site type/subtype branch; see reference-site-kind.asm and classic-site-kind.asm
+attack-site-kind	cave	洞穴		PE 0x10cbe50..0x10cc160; complete native site type/subtype branch; see reference-site-kind.asm and classic-site-kind.asm
+attack-site-kind	forest retreat	森林聚落		PE 0x10cbe50..0x10cc160; complete native site type/subtype branch; see reference-site-kind.asm and classic-site-kind.asm
+attack-site-kind	hamlet	村庄		PE 0x10cbe50..0x10cc160; complete native site type/subtype branch; see reference-site-kind.asm and classic-site-kind.asm
+attack-site-kind	town	城镇		PE 0x10cbe50..0x10cc160; complete native site type/subtype branch; see reference-site-kind.asm and classic-site-kind.asm
+attack-site-kind	shrine	圣地		PE 0x10cbe50..0x10cc160; complete native site type/subtype branch; see reference-site-kind.asm and classic-site-kind.asm
+attack-site-kind	labyrinth	迷宫		PE 0x10cbe50..0x10cc160; complete native site type/subtype branch; see reference-site-kind.asm and classic-site-kind.asm
+attack-site-kind	lair	巢穴		PE 0x10cbe50..0x10cc160; complete native site type/subtype branch; see reference-site-kind.asm and classic-site-kind.asm
+attack-site-kind	castle	城堡		PE 0x10cbe50..0x10cc160; complete native site type/subtype branch; see reference-site-kind.asm and classic-site-kind.asm
+attack-site-kind	fort	堡垒		PE 0x10cbe50..0x10cc160; complete native site type/subtype branch; see reference-site-kind.asm and classic-site-kind.asm
+attack-site-kind	monastery	修道院		PE 0x10cbe50..0x10cc160; complete native site type/subtype branch; see reference-site-kind.asm and classic-site-kind.asm
+attack-site-kind	tower	高塔		PE 0x10cbe50..0x10cc160; complete native site type/subtype branch; see reference-site-kind.asm and classic-site-kind.asm
+attack-site-kind	mysterious palace	神秘宫殿		PE 0x10cbe50..0x10cc160; complete native site type/subtype branch; see reference-site-kind.asm and classic-site-kind.asm
+attack-site-kind	mysterious dungeon	神秘地牢		PE 0x10cbe50..0x10cc160; complete native site type/subtype branch; see reference-site-kind.asm and classic-site-kind.asm
+attack-site-kind	mysterious lair	神秘巢穴		PE 0x10cbe50..0x10cc160; complete native site type/subtype branch; see reference-site-kind.asm and classic-site-kind.asm
+attack-site-kind	vault	秘库		PE 0x10cbe50..0x10cc160; complete native site type/subtype branch; see reference-site-kind.asm and classic-site-kind.asm
+attack-site-kind	tomb	陵墓		PE 0x10cbe50..0x10cc160; complete native site type/subtype branch; see reference-site-kind.asm and classic-site-kind.asm
+attack-site-kind	monument	纪念碑		PE 0x10cbe50..0x10cc160; complete native site type/subtype branch; see reference-site-kind.asm and classic-site-kind.asm
+attack-site-kind	camp	营地		PE 0x10cbe50..0x10cc160; complete native site type/subtype branch; see reference-site-kind.asm and classic-site-kind.asm
+attack-site-kind	important location	重要地点		PE 0x10cbe50..0x10cc160; complete native site type/subtype branch; see reference-site-kind.asm and classic-site-kind.asm
+attack-site-kind	site	地点		PE 0x10cbe50..0x10cc160; complete native site type/subtype branch; see reference-site-kind.asm and classic-site-kind.asm
 work-reference-list	{s}, {s}	{s1}、{s2}	work-reference,work-reference-list	0x140cc5fba; native repeated subject separator
 work-reference-list	{s} and {s}	{s1}和{s2}	work-reference,work-reference-list	0x140cc5fcf; native final subject separator
 work-sentence	It asks the question, "What if {s} had unfolded differently?"	作品提出了这样的问题：“如果{s1}的发展有所不同，会怎样？”	work-reference	0x140cc5e0d+0x140cc5e32+0x140cc5e66

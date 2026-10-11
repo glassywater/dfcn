@@ -1,6 +1,30 @@
 // A submitted record is the translation unit. Dictionary reload invalidates
 // this cache; layout and colors remain shared with all bounded paragraphs.
 static std::optional<std::string> translate_dfhack_siren_announcement(std::string_view source);
+// Arrange may run repeatedly before a report is rendered. Only measure a
+// complete translation already published by rendering; a cache miss keeps
+// the native wrapped height and must not enter the translator or refresh
+// its semantic context. Dates retain their native wrapped height.
+int Overlay::native_report_layout_rows(std::string_view source, int width,
+        bool date) const {
+    TranslationStateScope translation_scope;
+    if (!config_.enabled || date || source.empty() || width <= 0 ||
+            announcement_translation_cache_.empty()) return 0;
+    const std::string display_source = native_announcement_display_source(source);
+    const std::string key = std::to_string(native_identity_translation_context()) +
+        '\x1f' + display_source;
+    const auto found = announcement_translation_cache_.find(key);
+    if (found == announcement_translation_cache_.end() ||
+            found->second.result.resource_revision != RULESETS.resource_revision() ||
+            !found->second.target || found->second.target->empty()) return 0;
+    std::vector<std::string> lines;
+    std::vector<std::vector<int>> line_colors;
+    int font_pixels = 0;
+    if (!measure_paragraph_layout(*found->second.target, width, {}, {}, lines,
+            line_colors, font_pixels) || lines.size() > INT32_MAX) return 0;
+    return static_cast<int>(lines.size());
+}
+
 std::optional<std::string> Overlay::translate_complete_announcement(
         std::string_view source, const std::vector<int> &source_colors,
         std::vector<int> &target_colors) const {
@@ -36,13 +60,24 @@ std::optional<std::string> Overlay::translate_complete_announcement(
     const auto translate_block = [&](std::string_view block, const std::vector<int> &colors,
             std::vector<int> &translated_colors) -> std::optional<std::string> {
         translated_colors.clear();
-        // Native fortress constructors have typed actor/job/item fields.
-        // Resolve their entire production before the general catalogue can
-        // consume a pronoun or a later clause as a generic string field.
-        if (const auto native = translate_announcement_combat(block, "fortress-announcement")) {
-            for (unsigned char ch : *native)
-                if ((ch & 0xc0) != 0x80) translated_colors.push_back(colors.front());
-            return native;
+        // Native fortress constructors and returned historical reports own
+        // complete typed productions. The latter include an agreement's
+        // independently appended negotiation/intrigue narratives. Resolve
+        // those before the general catalogue can consume the opening while
+        // leaving the subsequent native report outside its field grammar.
+        for (const std::string_view scope : {
+                "fortress-attack", "fortress-arrival", "fortress-announcement", "historical-event-paragraph"}) {
+            // The attack producer joins commander, warning and reinforcement
+            // paragraphs with native [B] controls. Match their visible whole
+            // record, using the same control normalization as report capture.
+            const std::string attack_source = scope == "fortress-attack"
+                ? native_announcement_display_source(block) : std::string{};
+            if (const auto native = translate_announcement_combat(
+                    scope == "fortress-attack" ? std::string_view(attack_source) : block, scope)) {
+                for (unsigned char ch : *native)
+                    if ((ch & 0xc0) != 0x80) translated_colors.push_back(colors.front());
+                return native;
+            }
         }
         if (!colors.empty() && std::all_of(colors.begin(), colors.end(),
                 [&](int color) { return color == colors.front(); })) {
@@ -91,6 +126,21 @@ std::optional<std::string> Overlay::translate_complete_announcement(
         auto translated = translate_help_paragraph(block, colors, translated_colors,
             true, -1, true);
         if (translated) return translated;
+        // ad0710 submits the crafted masterpiece as this complete native
+        // actor/item production. Resolve its existing UI rule before the
+        // unrelated help-document suffix DP; the shared matcher still owns
+        // both typed fields, full-record consumption and their colors.
+        const auto compact = compact_ui_message_literal(block);
+        if (compact.find("hascreatedamasterpiece") != std::string::npos) {
+            for (int probe : ui_message_anchors_.candidates(compact)) {
+                const int index = ui_message_template_probes_[probe].index;
+                if (rules_[static_cast<size_t>(index)].source !=
+                        "{n} has created a masterpiece {i}!") continue;
+                translated = translate_help_paragraph(block, colors,
+                    translated_colors, true, index);
+                if (translated) return translated;
+            }
+        }
         // 7eb225/7eb273 submits the complete adventure introduction and its
         // optional vault paragraph to the same announcement queue as ordinary
         // reports. e9f40 draws that live queue through markup words; it never
@@ -212,7 +262,8 @@ std::optional<std::string> Overlay::translate_complete_announcement(
         try {
         auto best = translate_help_paragraph_result(source, source_colors, target_colors, true);
         work_limited = best.status == dfcn::TranslationStatus::WorkLimited;
-        for (const std::string_view scope : {"fortress-announcement", "sentence"}) {
+        for (const std::string_view scope : {
+                "fortress-arrival", "fortress-announcement", "historical-event-paragraph", "sentence"}) {
             if (work_limited) break;
             const auto candidate = translate_announcement_combat_result(source, scope);
             if (!candidate.usable()) continue;

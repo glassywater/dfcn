@@ -3,6 +3,10 @@
 // Keep ordinary matching/layout for the HUD, dates and category controls.
 const bool announcement_panel_only = [&]() {
     if (only_y >= 0) return false;
+    // The complete native announcements stack establishes ownership even
+    // for empty categories, resized tab strips and nested report pages.
+    if (g_native_reports_layer.ready &&
+            gps_->screen == g_native_reports_layer.foreground.graphics()->screen) return true;
     constexpr std::array<std::string_view, 4> upper = {
         "Curses", "Combat", "Sparring", "Hunting"};
     constexpr std::array<std::string_view, 10> middle = {

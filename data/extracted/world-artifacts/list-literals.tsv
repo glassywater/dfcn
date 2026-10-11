@@ -1,0 +1,147 @@
+edition	function	instruction_va	source_va_or_imm	source_kind	text
+steam	artifact_list	0x1401d1ea0	0x1416043d0	cstring	Last held by 
+steam	artifact_list	0x1401d1f9c	0x141604040	cstring	Last in 
+steam	artifact_list	0x1401d2080	0x141604040	cstring	Last in 
+steam	artifact_list	0x1401d2164	0x141604040	cstring	Last in 
+steam	artifact_list	0x1401d223a	0x141604390	cstring	Location unknown
+steam	missing_citizens_list	0x1401d1392	0x141604040	cstring	Last in 
+steam	missing_citizens_list	0x1401d1480	0x141604040	cstring	Last in 
+steam	missing_citizens_list	0x1401d156e	0x141604040	cstring	Last in 
+steam	missing_citizens_list	0x1401d1655	0x141604050	cstring	Last known to be traveling
+steam	missing_citizens_list	0x1401d168c	0x141604390	cstring	Location unknown
+steam	artifact_title	0x140b944bf	0x1415fdaa8	cstring	[LPAGE:ARTIFACT:
+steam	artifact_title	0x140b944ce	0x1416df718	cstring	[LPAGE:BOOK:
+steam	artifact_title	0x140b944f3	0x1415fd690	cstring	]
+steam	artifact_title	0x140b945b0	64656c7469746e55	printable_imm64	Untitled
+steam	artifact_title	0x140b9460b	64656c7469746e55	printable_imm64	Untitled
+steam	artifact_title	0x140b94686	0x1415fda88	cstring	[/LPAGE]
+steam	artifact_title	0x140b946de	0x1416df700	cstring	an unknown artifact
+steam	historical_figure_name	0x140b92f8a	0x1416df900	cstring	interrogator
+steam	historical_figure_name	0x140b92fa1	0x141674d08	cstring	subject
+steam	historical_figure_name	0x140b93073	0x1416290f0	cstring	Nameless
+steam	historical_figure_name	0x140b9310e	0x1416df8e0	cstring	an unidentified creature
+steam	historical_figure_name	0x140b93133	0x1415fdb08	cstring	[LPAGE:HF:
+steam	historical_figure_name	0x140b93153	0x1415fd690	cstring	]
+steam	historical_figure_name	0x140b9331b	0x1415e8e48	cstring	the 
+steam	historical_figure_name	0x140b9333f	0x14167db90	cstring	zombie 
+steam	historical_figure_name	0x140b93377	0x1415fdbb8	cstring	ghostly 
+steam	historical_figure_name	0x140b93499	0x1415e873c	cstring	 
+steam	historical_figure_name	0x140b934c8	0x1415e873c	cstring	 
+steam	historical_figure_name	0x140b93551	0x1415e956c	cstring	 the 
+steam	historical_figure_name	0x140b93575	0x14167db90	cstring	zombie 
+steam	historical_figure_name	0x140b935ad	0x1415fdbb8	cstring	ghostly 
+steam	historical_figure_name	0x140b936cd	0x1415e873c	cstring	 
+steam	historical_figure_name	0x140b9374e	0x1415ed620	cstring	a 
+steam	historical_figure_name	0x140b93755	0x1415e8e48	cstring	the 
+steam	historical_figure_name	0x140b9377d	0x14167db90	cstring	zombie 
+steam	historical_figure_name	0x140b937b5	0x1415fdbb8	cstring	ghostly 
+steam	historical_figure_name	0x140b9381c	0x1415e873c	cstring	 
+steam	historical_figure_name	0x140b93867	0x1415e9260	cstring	's
+steam	historical_figure_name	0x140b93886	0x1415fda88	cstring	[/LPAGE]
+steam	historical_figure_name	0x140b938dc	0x141663cd8	cstring	an unknown creature
+steam	historical_figure_name	0x140b938f2	0x1415e9260	cstring	's
+steam	site_name	0x140b9397a	0x1416df920	cstring	[LPAGE:SITE:
+steam	site_name	0x140b9399d	0x1415fd690	cstring	]
+steam	site_name	0x140b93a06	0x1415fda88	cstring	[/LPAGE]
+steam	site_name	0x140b93a5e	0x1416df910	cstring	an unknown site
+steam	surface_region_name	0x140b94a8a	0x1416df638	cstring	[LPAGE:SR:
+steam	surface_region_name	0x140b94aaa	0x1415fd690	cstring	]
+steam	surface_region_name	0x140b94b13	0x1415fda88	cstring	[/LPAGE]
+steam	surface_region_name	0x140b94b6b	0x1416df678	cstring	an unknown region
+steam	underground_region_name	0x140b94982	0x1416df6a8	cstring	[LPAGE:FL:
+steam	underground_region_name	0x140b949a5	0x1415fd690	cstring	]
+steam	underground_region_name	0x140b949d1	0x1416df6b8	cstring	the Underworld
+steam	underground_region_name	0x140b949e0	0x1416df6c8	cstring	the magma sea
+steam	underground_region_name	0x140b949ef	0x1416df690	cstring	the depths of the world
+steam	underground_region_name	0x140b94a08	0x1415fda88	cstring	[/LPAGE]
+steam	underground_region_name	0x140b94a17	0x1416df648	cstring	an unknown underground region
+steam	english_generated_name	0x140a948a3	0x1415e873c	cstring	 
+steam	english_generated_name	0x140a9495e	0x1415e873c	cstring	 
+steam	english_generated_name	0x140a94a3b	0x1415e873c	cstring	 
+steam	english_generated_name	0x140a94a5d	0x1415ed9bc	cstring	The 
+steam	english_generated_name	0x140a94a78	0x1415e8e48	cstring	the 
+steam	english_generated_name	0x140a94af2	0x1415e873c	cstring	 
+steam	english_generated_name	0x140a94b11	0x1415ed9bc	cstring	The 
+steam	english_generated_name	0x140a94b1a	0x1415e8e48	cstring	the 
+steam	english_generated_name	0x140a94b9a	0x1415e873c	cstring	 
+steam	english_generated_name	0x140a94bb9	0x1415ed9bc	cstring	The 
+steam	english_generated_name	0x140a94bc2	0x1415e8e48	cstring	the 
+steam	english_generated_name	0x140a94d1f	0x1415e873c	cstring	 
+steam	english_generated_name	0x140a94d4b	0x1415ed9bc	cstring	The 
+steam	english_generated_name	0x140a94d62	0x1415e8e48	cstring	the 
+steam	english_generated_name	0x140a94e09	0x1415e873c	cstring	 
+steam	english_generated_name	0x140a94e18	0x1416ced90	cstring	of 
+steam	english_generated_name	0x140a94e1f	0x1416cee1c	cstring	Of 
+classic	artifact_list	0x1401d1e30	0x1415ff3a0	cstring	Last held by 
+classic	artifact_list	0x1401d1f2c	0x1415ff000	cstring	Last in 
+classic	artifact_list	0x1401d2010	0x1415ff000	cstring	Last in 
+classic	artifact_list	0x1401d20f4	0x1415ff000	cstring	Last in 
+classic	artifact_list	0x1401d21ca	0x1415ff030	cstring	Location unknown
+classic	missing_citizens_list	0x1401d1322	0x1415ff000	cstring	Last in 
+classic	missing_citizens_list	0x1401d1410	0x1415ff000	cstring	Last in 
+classic	missing_citizens_list	0x1401d14fe	0x1415ff000	cstring	Last in 
+classic	missing_citizens_list	0x1401d15e5	0x1415ff010	cstring	Last known to be traveling
+classic	missing_citizens_list	0x1401d161c	0x1415ff030	cstring	Location unknown
+classic	artifact_title	0x140b914ff	0x1415f8a20	cstring	[LPAGE:ARTIFACT:
+classic	artifact_title	0x140b9150e	0x1416da4e8	cstring	[LPAGE:BOOK:
+classic	artifact_title	0x140b91533	0x1415f8664	cstring	]
+classic	artifact_title	0x140b915f0	64656c7469746e55	printable_imm64	Untitled
+classic	artifact_title	0x140b9164b	64656c7469746e55	printable_imm64	Untitled
+classic	artifact_title	0x140b916c6	0x1415f8b50	cstring	[/LPAGE]
+classic	artifact_title	0x140b9171e	0x1416da4d0	cstring	an unknown artifact
+classic	historical_figure_name	0x140b8ffca	0x1416da770	cstring	interrogator
+classic	historical_figure_name	0x140b8ffe1	0x14166fb90	cstring	subject
+classic	historical_figure_name	0x140b900b3	0x141623ec0	cstring	Nameless
+classic	historical_figure_name	0x140b9014e	0x1416da750	cstring	an unidentified creature
+classic	historical_figure_name	0x140b90173	0x1415f8b40	cstring	[LPAGE:HF:
+classic	historical_figure_name	0x140b90193	0x1415f8664	cstring	]
+classic	historical_figure_name	0x140b9035b	0x1415e3e34	cstring	the 
+classic	historical_figure_name	0x140b9037f	0x1416789f8	cstring	zombie 
+classic	historical_figure_name	0x140b903b7	0x1415f8b70	cstring	ghostly 
+classic	historical_figure_name	0x140b904d9	0x1415e3720	cstring	 
+classic	historical_figure_name	0x140b90508	0x1415e3720	cstring	 
+classic	historical_figure_name	0x140b90591	0x1415e4548	cstring	 the 
+classic	historical_figure_name	0x140b905b5	0x1416789f8	cstring	zombie 
+classic	historical_figure_name	0x140b905ed	0x1415f8b70	cstring	ghostly 
+classic	historical_figure_name	0x140b9070d	0x1415e3720	cstring	 
+classic	historical_figure_name	0x140b9078e	0x1415e8618	cstring	a 
+classic	historical_figure_name	0x140b90795	0x1415e3e34	cstring	the 
+classic	historical_figure_name	0x140b907bd	0x1416789f8	cstring	zombie 
+classic	historical_figure_name	0x140b907f5	0x1415f8b70	cstring	ghostly 
+classic	historical_figure_name	0x140b9085c	0x1415e3720	cstring	 
+classic	historical_figure_name	0x140b908a7	0x1415e4214	cstring	's
+classic	historical_figure_name	0x140b908c6	0x1415f8b50	cstring	[/LPAGE]
+classic	historical_figure_name	0x140b9091c	0x14165ed98	cstring	an unknown creature
+classic	historical_figure_name	0x140b90932	0x1415e4214	cstring	's
+classic	site_name	0x140b909ba	0x1416da6f8	cstring	[LPAGE:SITE:
+classic	site_name	0x140b909dd	0x1415f8664	cstring	]
+classic	site_name	0x140b90a46	0x1415f8b50	cstring	[/LPAGE]
+classic	site_name	0x140b90a9e	0x1416da6e8	cstring	an unknown site
+classic	surface_region_name	0x140b91aca	0x1416da4a0	cstring	[LPAGE:SR:
+classic	surface_region_name	0x140b91aea	0x1415f8664	cstring	]
+classic	surface_region_name	0x140b91b53	0x1415f8b50	cstring	[/LPAGE]
+classic	surface_region_name	0x140b91bab	0x1416daec8	cstring	an unknown region
+classic	underground_region_name	0x140b919c2	0x1416da510	cstring	[LPAGE:FL:
+classic	underground_region_name	0x140b919e5	0x1415f8664	cstring	]
+classic	underground_region_name	0x140b91a11	0x1416da480	cstring	the Underworld
+classic	underground_region_name	0x140b91a20	0x1416da490	cstring	the magma sea
+classic	underground_region_name	0x140b91a2f	0x1416da4f8	cstring	the depths of the world
+classic	underground_region_name	0x140b91a48	0x1415f8b50	cstring	[/LPAGE]
+classic	underground_region_name	0x140b91a57	0x1416da4b0	cstring	an unknown underground region
+classic	english_generated_name	0x140a91923	0x1415e3720	cstring	 
+classic	english_generated_name	0x140a919de	0x1415e3720	cstring	 
+classic	english_generated_name	0x140a91abb	0x1415e3720	cstring	 
+classic	english_generated_name	0x140a91add	0x1415e89c4	cstring	The 
+classic	english_generated_name	0x140a91af8	0x1415e3e34	cstring	the 
+classic	english_generated_name	0x140a91b72	0x1415e3720	cstring	 
+classic	english_generated_name	0x140a91b91	0x1415e89c4	cstring	The 
+classic	english_generated_name	0x140a91b9a	0x1415e3e34	cstring	the 
+classic	english_generated_name	0x140a91c1a	0x1415e3720	cstring	 
+classic	english_generated_name	0x140a91c39	0x1415e89c4	cstring	The 
+classic	english_generated_name	0x140a91c42	0x1415e3e34	cstring	the 
+classic	english_generated_name	0x140a91d9f	0x1415e3720	cstring	 
+classic	english_generated_name	0x140a91dcb	0x1415e89c4	cstring	The 
+classic	english_generated_name	0x140a91de2	0x1415e3e34	cstring	the 
+classic	english_generated_name	0x140a91e89	0x1415e3720	cstring	 
+classic	english_generated_name	0x140a91e98	0x1416cb220	cstring	of 
+classic	english_generated_name	0x140a91e9f	0x1416cb2ac	cstring	Of 

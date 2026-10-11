@@ -1,0 +1,318 @@
+OFFLINE NATIVE SOURCES: RETURNED HISTORY, EARLY DIPLOMACY, MODERN AGREEMENTS
+
+Source images are data/runtime/native-pe-images.json's configured files:
+reference D:/program/steam/steamapps/common/Dwarf Fortress/Dwarf Fortress.exe
+SHA256 205770918fd54c96cbbcf89223ebd449e2e113c7c873ed81177c4511a3450db7
+classic C:/Users/WIN11/Downloads/df_53_16_win/Dwarf Fortress.exe
+SHA256 f35bbaf37aa96f93f95f8a35a9341e6649da46bc29a8650316bfdc2dfc57f3e4
+
+This file reconstructs the assembly and PE operands retained alongside it.
+It is extraction source data. It does not describe observed game output.
+Function ends from .pdata may include jump tables after the executable RET.
+
+1. STATIC BOUNDARY OF A RETURNED TRAVELLER'S HISTORY PARAGRAPH
+
+The three traveller return arms call history_event virtual slot +0xd0.
+Reference call sites: 10dbcf, 10dd76..10dd99, 10df99..10dfbc.
+Classic call sites have the corresponding -0x70 displacement.
+They pass the existing native context, r9b=1, fifth argument=0 and append a
+nonempty result after a double-space separator, then publish announcement 301.
+
+Reference 10d807 selects pending returning army records. Each record's +0x58
+squad_mission ID is looked up by 72570. mission+0x128 is a vector of units.
+Reference 10d8f9 examines each unit's +0x404 array of 64 signed int32 event IDs.
+IDs below 1 are ignored. Different positive IDs set the common value to -2,
+which suppresses the event body. A common positive ID is retained at 10d941.
+Reference 10db91 rejects the absent -1 value. 7da30 looks up that event in
+global 24f9cb8; the caller does not ask its type before calling vtable+0xd0.
+
+Therefore the static formatter boundary is all 133 concrete native history
+event classes numbered 0..132, not only diplomatic classes. This does not
+assert every class is generated into those unit slots by simulation logic.
+The positive-ID, common-ID, lookup and nonempty-text conditions still apply.
+
+returned-history-dispatch.tsv records 133 actual d0 pointer reads per image,
+their RTTI class, vtable RVA, function owner and .pdata end (266 total roots).
+reference/classic-returned-event-sentences.asm retain all those root bodies.
+returned-history-literals.tsv records their actual PE string references.
+returned-history-call-edges.tsv records direct/import call operands from the
+retained disassembly; instructions rendered from trailing table data are not
+additional executable branches. The existing full helper closure remains in
+data/extracted/mission-report-sources.tsv: 133 sentence roots, 133 subjects,
+18 collection roots and recursively discovered shared formatter functions,
+470 unique owners. See mission-report-source-notes.md for its typed boundary.
+
+2. EARLY DIPLOMACY IS DISTINCT FROM MODERN AGREEMENT_FORMED
+
+Reference / classic d0 entries:
+6  first_contact            b81170 / b7e1b0
+7  first_contact_failed     b814d0 / b7e510
+8  topicagreement_concluded b81830 / b7e870
+9  topicagreement_rejected  b81b60 / b7eba0
+10 topicagreement_made      b82720 / b7f760
+11 war_peace_accepted       b83650 / b80690
+12 war_peace_rejected       b839b0 / b809f0
+
+All start with "In " + date(b92640/b8f680) + ", ". Entity names use
+b92900/b8f940. Optional event site names use b93930/b90970. Their bodies:
+6  ENTITY(source) + " made contact with " + ENTITY(destination)
+7  ENTITY(destination) + " rejected contact with " + ENTITY(source)
+9  TOPIC + " proposed by " + ENTITY(source) + " was rejected by " + ENTITY(destination)
+10 if topic==13:
+       TOPIC + " was made to " + ENTITY(destination) + " by " + ENTITY(source)
+   else:
+       TOPIC + " proposed by " + ENTITY(source) + " was accepted by " + ENTITY(destination)
+11 ENTITY(destination) + " accepted an offer of peace from " + ENTITY(source)
+12 ENTITY(destination) + " rejected an offer of peace from " + ENTITY(source)
+For these six types, an optional " at " + SITE precedes the terminal ".".
+If event detail is available through the native flag-4 path, detail+0x08 is
+negotiation and detail+0x10 is intrigue. Each formatter's nonempty capitalized
+paragraph is appended after two spaces, negotiation first, intrigue second.
+
+8 TOPIC + " between " + ENTITY(source) + " and " + ENTITY(destination)
+  + optional(" at " + SITE) + " concluded" + OUTCOME + "."
+  It has no negotiation or intrigue tail.
+  magnitude -3: " with miserable outcome"
+            -2: " in failure"
+            -1: " in an unsatisfactory fashion"
+             0: " fairly"
+             1: " with a positive outcome"
+             2: ", cementing bonds of mutual trust"
+       default: ""
+
+TOPIC helper is leaf b95020..b95170 / b92060..b921b0. The signed int16 topic
+selects a 17-entry table at b9512c / b9216c; the executable leaf ends in tail
+jumps, not a .pdata owner. meeting-topic assembly and helper literal files
+retain its actual RIP-relative literal operands rather than omitting it.
+1 "a peace agreement"; 2 "a lumber agreement";
+3 "the establishment of landed nobility";
+4 "the elevation of the landed nobility";
+5/6 "a trade agreement"; 9 "a tribute agreement";
+10 "a demand of unconditional surrender"; 13 "a declaration of war";
+14 "an alliance"; 15/16 "a strengthening of trade ties";
+0/7/8/11/12 and every out-of-range value: "a vague agreement".
+The screenshot's strengthening-of-trade-ties sentence belongs to this path.
+
+3. MODERN AGREEMENT_FORMED: COMPLETE EIGHTEEN-WAY DISPATCH
+
+Sentence d0 reference 2aaf70..2ad7eb, classic 2a8b30..2ab3ab.
+Subject d8 reference 2ad7f0..2afec3, classic 2ab3b0..2ada83.
+Paired assembly, agreement-native-literals.tsv and agreement-native-switches.tsv
+retain both functions and all finite selector/remap operands independently.
+Reference tables: d0 main 2ad70c, crime 2ad754, joining remap 2ad7c0/table 2ad7a0;
+                  d8 main 2afde4, crime 2afe2c, joining remap 2afe98/table 2afe78.
+Joining raw selector table has 43 entries 0..42 and eight normalized targets.
+
+agreement *a = lookup(global 24e7e98, event.agreement_id);
+if (!a || a.parties.empty() || a.elements.empty() || first.type outside 0..17) {
+    d0_body = "a corrupt agreement was formed";
+    d8_body = "the formation of a corrupt agreement";
+} else dispatch a.elements[0]; // first element only
+
+Native lookup narrows a sorted vector until at most 64 entries, then scans.
+P(i) below is a party ID in this agreement, not a historical figure ID.
+Required P(i) lookup failure emits "an unknown party". Existing party pointers
+use e2b80/e2b10: all HF vector members first (b92f10), then all entity members
+(b92900), in native list order. A present party with both vectors empty emits
+an empty string. It must not be replaced with "an unknown party".
+HF(i), E(i), SITE(i) and ART(i) denote distinct native typed formatter calls.
+The d0 and d8 grammars retain independent literal word order; d8 ends with
+" in " + DATE, while d0 has the date in its opening and a final period.
+Native d0 flag context.flags&1 chooses "Subject revealed that in " vs "In ".
+
+case 0 (join; d0 2ace29, d8 2af744):
+    d0 P(data[1]) + " joined with " + P(data[2]);
+    d8 "the joining of " + P(data[1]) + " with " + P(data[2]);
+    purpose data[0]:
+      0  " to oust " + optional E(data[4]) + " from " + optional SITE(data[3]);
+      1  " to live a life of adventure";
+      2  " as a guide"; choose one target in this precedence:
+           data[5]!=-1: " to find " + HF(data[5]);
+           else data[4]!=-1: " to find " + IDENTITY(data[4], c3a590);
+           else data[3]!=-1: " to " + SITE(data[3]);
+           else no target suffix;
+      23 " in order to be brought to safety";
+      24 " to help rescue " + HF(data[5]) if present,
+           otherwise IDENTITY(data[4]) if present, otherwise empty target;
+      39 d0 " after being compelled to serve", d8 " in bound service";
+      42 " to entertain the world";
+      default no purpose suffix. Each purpose returns; it does not chain goals.
+
+case 1 (permanent join; d0 2ac96b, d8 2af206):
+    d0 P(data[2]) + " aided " + P(data[1])
+       + " in becoming a permanent part of the living world";
+    shared b5a6c0 reason=data[0], value=data[5] only for cosmic reason 4,
+       otherwise -1. Unknown/blank reasons leave the clause blank.
+    Independent optional ritual site=data[3], artifact=data[4]:
+       site: ". The ritual took place in " + SITE;
+       site and artifact: previous + " using " + ART;
+       artifact only: ". The ritual involved " + ART;
+    d8 "the permanent joining by " + P(data[2]) + " of " + P(data[1])
+       + " to the living world";
+
+case 2 (residence; d0 2acbbf, d8 2af4f2):
+    d0 P(data[1]) + " made an agreement with " + P(data[2]);
+    optional ", becoming a resident of " + SITE(data[3]);
+    purpose 41 " to eradicate monsters", 42 " to entertain the citizenry",
+       43 " to work as a mercenary", 44 " to study", default empty;
+    d8 "the agreement between " + P(data[1]) + " and " + P(data[2])
+       + purpose first + optional(" and become a resident of " + SITE(data[3]));
+case 3 (citizenship; d0 2acd27, d8 2af630):
+    d0 P(data[0]) + " made an agreement with " + P(data[1])
+       + optional(", becoming a citizen of " + SITE(data[2]));
+    d8 "the agreement between " + P(data[0]) + " and " + P(data[1])
+       + optional(" and become a citizen of " + SITE(data[2]));
+case 4 (parley; d0 2acaf2, d8 2af3ad):
+    d0 P(data[1]) + " agreed to a parley with " + P(data[2]);
+    d8 "the parley between " + P(data[1]) + " and " + P(data[2]);
+
+case 5 (corruption; d0 2ac724, d8 2aeec6):
+    d0 P(data[1]) + " began "; action data[0]:
+       247 "accepting bribes in exchange for leniency";
+       248 "embezzling funds";
+       249 "passing a portion of corruptly-obtained funds";
+       default empty action, retaining party, began and every following arm;
+    d8 action 247 "the bribery of", 248 "the embezzlement of",
+       249 "the passing of corruptly-obtained funds by ", default empty;
+       + P(data[1]); the first two native prefixes have no trailing space.
+    action!=249 and a resolved position: " as a " / " as the " + OFFICE
+       + " of " + E(data[4]); unique flag int16==1 chooses "the".
+       A resolved position with an empty title keeps the office/owner arm.
+    action==249 and recipient P(data[2]) exists: " to " + recipient;
+    action!=249 and influence P(data[2]) exists: " under the influence of "+party;
+    optional messenger P(data[3]): " via " + party;
+    This type always uses under-influence, not the approach form.
+
+case 6 (theft; d0 2ac1d7, d8 2ae859):
+    d0 P(data[0]) + " plotted to steal " + ART(data[3]);
+    d8 "the plot of " + P(data[0]) + " to steal " + ART(data[3]);
+    influence=data[1], messenger=data[2];
+case 7 (promise; d0 2ac37b, d8 2aeabc):
+    beneficiary=P(data[0]), promiser=P(data[1]), recipient=P(data[2]);
+    d0 promiser + " promised " + required recipient;
+    d8 "the promise by " + promiser + " to " + required recipient;
+    if beneficiary==recipient (including both missing), d0 has no give phrase,
+       d8 appends " of";
+    else append " to give "; append beneficiary only if its pointer exists;
+    append " a position" + optional(" in " + E(union+0x28));
+    influence=data[3]; via is complete party-ID vector at union+0x10.
+case 8 (assassination; d0 2ac036, d8 2ae5ec):
+    d0 P(data[0]) + " plotted to assassinate " + optional HF(data[3]);
+    d8 "the plot of " + P(data[0]) + " to assassinate " + optional HF(data[3]);
+    influence=data[1], messenger=data[2];
+case 9 (abduction; d0 2abe95, d8 2ae37f):
+    same party/target/tails as case 8, with "abduct" instead of "assassinate";
+case 10 (sabotage; d0 2abc8b, d8 2ae0bc):
+    d0 P(data[0]) + " plotted to sabotage the activities of ";
+    d8 "the plot of " + P(data[0]) + " to sabotage the activities of ";
+    target precedence HF(data[3]), E(data[4]), SITE(data[5]), otherwise empty;
+    if HF or E is present, independently append optional(" at " + SITE(data[5]));
+    influence=data[1], messenger=data[2];
+case 11 (foiled conspiracy; d0 2ab149, d8 2ad98d):
+    d0 PARTY_LIST(union+0) + " concocted "; corruption int32 at union+0x18:
+       0 "a bribery conspiracy", 2 "a corruption conspiracy",
+       3 "a embezzlement conspiracy", default empty noun;
+    d8 corresponding "the ... conspiracy", then " concocted by " + PARTY_LIST;
+       default keeps the concocted-by connector and complete list.
+case 12 (building; d0 2ad0dc, d8 2af9f9):
+    d0 P(data[1]) + " agreed to establish ";
+    d8 "the agreement by " + P(data[1]) + " to establish ";
+    building=data[3], tier=int32 at union+0x1c:
+       building2/tier1 "a temple"; building2/tier2 "a temple complex";
+       building11/tier1 "a guildhall"; building11/tier2 "a grand guildhall";
+       any other combination empty noun;
+    then always " for " + P(data[0]);
+case 13 (infiltration; d0 2ab30e, d8 2adae0):
+    d0 P(data[0]) + " plotted to infiltrate " + optional E(data[2]);
+    goals data[3] bits 1/2/4/8 append, in that order:
+       "steal treasures", "initiate sabotage", "instill terror", "prepare a coup";
+       if any, " in order to " + complete native goal list;
+    d8 "the plot of " + P(data[0]) + " to infiltrate " + optional E(data[2]);
+    influence=data[1]; d8 has no goals list.
+case 14 (frame; d0 2ab746, d8 2adc39):
+    d0 P(data[0]) + " plotted to frame " + optional HF(data[2]);
+    d8 "the plot of " + P(data[0]) + " to frame " + optional HF(data[2]);
+    both + " for " + CRIME(data[4]) + " by fooling " + optional HF(data[3]);
+    CRIME selectors 0..18, exact jump-table order:
+       production order violation; export prohibition violation; job order violation;
+       a conspiracy to slow labor; murder; disorderly conduct; building destruction;
+       vandalism; theft; robbery; blood-drinking; embezzlement; attempted murder;
+       kidnapping; attempted kidnapping; attempted theft; treason; espionage; bribery.
+    out-of-range crime is empty. All three connectors still remain, independent
+       of missing figures. Influence=data[1] only when data[1]!=data[0].
+case 15 (war; d0 2aba38, d8 2adee4):
+    d0 P(data[0]) + " plotted to induce a war of ";
+    d8 "the plot of " + P(data[0]) + " to induce a war of ";
+    both + optional E(data[2]) + " upon " + optional E(data[3]);
+    influence=data[1];
+case 16 (service; d0 2ad288, d8 2afb55):
+    d0 P(data[0]) + " requested that " + P(data[1]) + " make an offer of service";
+    d8 "the request by " + P(data[0]) + " that " + P(data[1]) + same predicate;
+    optional " to " + E(data[2]);
+case 17 (retrieval; d0 2ad44c, d8 2afc7d):
+    d0 P(data[1]) + " asked that " + P(data[0]) + " retrieve " + ART(data[2]);
+    d8 "the request by " + P(data[1]) + " that " + P(data[0]) + same predicate;
+    optional " from " + E(data[3]); independently optional " for " + E(data[4]);
+    Both operands call ENTITY formatter b92900, not a site or party formatter.
+
+Plot influence pointer present:
+    d0 uses agreement_flags&1 to choose
+       " approached by " + PARTY + " to handle the matter directly or through another party"
+       vs " under the influence of " + PARTY;
+    d8 retains " under the influence of " + PARTY.
+Optional messenger tails use " via " + PARTY or the entire promise messenger list.
+d0's optional event support appends negotiation and intrigue independently after
+the completed main sentence, in native order, using the same two-space separator.
+
+4. AGREEMENT_CONCLUDED TYPE 77: EMPTY NOUN IS A REAL BRANCH
+
+Reference b81f00..b82714, classic b7ef40..b7f754. Roots are retained in the
+returned-event assembly. conclusion-native-switches.tsv independently reads
+each image's 18-entry noun switch, 43-entry joining-purpose remap and 40-entry
+conclusion-reason remap. d0 short nouns differ from type 75's full d8 subjects.
+
+out = "In " + DATE + ", " + HF(concluder) + " concluded ";
+if agreement lookup missing:
+    out += "an agreement."; return; // no other party or conclusion reason
+if elements nonempty and first.type in 0..17:
+    0 goal0 "an insurrection mission", 1 "an adventure", 2 "a guide agreement",
+      23 "a journey to safety", 24 "a rescue mission", 39 "bound service",
+      42 "a performance tour"; default EMPTY;
+    1 EMPTY;
+    2 "a residency agreement"; 3 "a citizenship agreement"; 4 "a parley";
+    5 "corrupt dealing"; 6 "a theft deal"; 7 "a promise of position";
+    8 "an assassination plot"; 9 "an abduction plot"; 10 "a sabotage plot";
+    11 corruption0 "a foiled bribery conspiracy",
+       2 "a foiled corruption conspiracy", 3 "a foiled embezzlement conspiracy",
+       default EMPTY;
+    12 building2 "an agreement to establish a temple",
+       building11 "an agreement to establish a guildhall", default EMPTY;
+       location tier is not consulted by this short noun;
+    13 "an infiltration plot"; 14 "a framing plot"; 15 "a war starting plot";
+    16 "a request to offer service" + optional(" to " + E(data[2]));
+    17 "an agreement to retrieve " + ART(data[2])
+       + optional(" for " + E(data[4])); // from entity is omitted here
+else retain EMPTY noun;
+
+for party in agreement.parties in native order:
+    if concluder not in party.figures:
+        out += " with " + PARTY(party); break;
+// This still executes for every empty/default noun branch.
+conclusion_reason:
+    13 "on a whim";
+    30/31 "because the group travelled too slowly";
+    32/35 "because the group went too far away";
+    33/40 "after arriving at the destination";
+    34 "because of a leadership change at the site";
+    36 "after a joyous reunion";
+    37 "after a violent disagreement";
+    38 "after an adoption";
+    52 "due to a lack of performances";
+    every other value EMPTY;
+out += ".";
+
+Runtime grammar sources: data/runtime/announcement-event-grammar.tsv and
+announcement-negotiation-grammar.tsv. Direct composition mirrors the typed
+arguments in src/history_semantics_agreements.inc and history_semantics_diplomacy.inc.
+Unknown native selector branches with empty predicates retain their main
+sentence, office, participant, influence, messenger and support text.

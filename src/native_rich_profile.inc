@@ -37,6 +37,12 @@ static bool resolve_native_rich_profile(NativeRichProfile &profile) {
     static constexpr std::array<unsigned char, 7> personality_sources{{
         0x49, 0x8d, 0x8d, 0x90, 0x1a, 0x00, 0x00,
     }};
+    // Both supported PE renderers load their personality box vector from the
+    // sheet saved at caller RSP+0xb260 before iterating the colored rows.
+    static constexpr std::array<unsigned char, 14> personality_draw_boxes{{
+        0x48, 0x8b, 0x84, 0x24, 0x60, 0xb2, 0x00, 0x00,
+        0x48, 0x05, 0xa8, 0x1a, 0x00, 0x00,
+    }};
     // The input handler saves its sheet at entry RSP+8. Six pushes and
     // LEA RBP,[RSP-0x2f] put that saved argument at RBP+0x67.
     static constexpr std::array<unsigned char, 19> thought_input_frame{{
@@ -69,6 +75,7 @@ static bool resolve_native_rich_profile(NativeRichProfile &profile) {
         {0x1b2b77, {health_tab.begin(), health_tab.end()}},
         {0x1b2ba9, {health_sources.begin(), health_sources.end()}},
         {0x1b791f, {personality_sources.begin(), personality_sources.end()}},
+        {0x17f2a0, {personality_draw_boxes.begin(), personality_draw_boxes.end()}},
         {0x8d97b0, {thought_input_frame.begin(), thought_input_frame.end()}},
         {0x8dafc7, {thought_input_iterator.begin(), thought_input_iterator.end()}},
         {0x8db00f, {thought_input_restore.begin(), thought_input_restore.end()}}};
@@ -113,12 +120,14 @@ static bool resolve_native_rich_profile(NativeRichProfile &profile) {
     }
     for (uintptr_t address : draw_calls) {
         profile.call_signatures.push_back({address,draw_rva});
-        if (address == 0x1692ee || address == 0x17de1f || address == 0x17e548) {
+        if (address == 0x1692ee || address == 0x17de1f || address == 0x17e548 ||
+            address == 0x17f4ad) {
             // The render frame retains the sheet at caller RSP+0xb260.
             // Preserve graphics/text/colors; CALL adds eight bytes before
             // this relay loads the fourth argument into R9.
             profile.calls.push_back({address,draw_rva,
-                address == 0x1692ee ? NativeRichCallKind::OverviewThoughtsDraw : NativeRichCallKind::ThoughtsDraw,
+                address == 0x1692ee ? NativeRichCallKind::OverviewThoughtsDraw :
+                address == 0x17f4ad ? NativeRichCallKind::PersonalityDraw : NativeRichCallKind::ThoughtsDraw,
                 {0x4c,0x8b,0x8c,0x24,0x68,0xb2,0x00,0x00}});
         }
     }

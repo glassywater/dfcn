@@ -296,6 +296,26 @@ std::optional<std::string> Overlay::translate_legends_place(
     return native_text_to_utf8(source);
 }
 
+std::optional<std::string> Overlay::translate_world_artifact_location(
+        std::string_view source) const {
+    source = trim_view(source);
+    if (source.empty() || source.size() > 4096 || source.ends_with("...") ||
+            source.find_first_of("\r\n") != std::string_view::npos) return std::nullopt;
+    // These are complete native fallback/type labels, rather than generated
+    // names. Keep their existing scoped wording before any name compositor.
+    for (const std::string_view label : {"an unknown site", "an unknown region",
+            "an unknown underground region", "the depths of the world",
+            "the magma sea", "the Underworld"})
+        if (source == label) return translate_legends_term(source);
+    // The native Last in producer selects EnglishName for both sites and
+    // surface regions. A unique real site owns its WORD/POS and site suffix;
+    // otherwise the geographic head keeps its region sense (e.g. fingers).
+    // Do not transfer that provenance to arbitrary Legends place fields.
+    if (auto site = translate_site_reference(source, true)) return site;
+    if (auto region = translate_world_region_heading(source)) return region;
+    return translate_legends_place(source, true);
+}
+
 std::vector<std::string> Overlay::site_reference_search_aliases(std::string_view source) const {
     const auto identity = resolve_site_reference_identity(source, draw_epoch_,
         [&](const NativeHistoryName &name) { return site_name_search_aliases(name); });

@@ -1,0 +1,67 @@
+Native name supplier used by fortress attack arrivals
+
+Configured Steam image: PE:6a70a6d9:02711000
+Configured classic image: PE:6a70b91c:0270a000
+Full supplier bodies are in name-native-reference.asm and name-native-classic.asm.
+These files were disassembled from the configured local PE images, without a
+running-game capture. They are source evidence, not display observations.
+
+Arrival producer:
+  Steam 0x141354931..0x141354940 calls 0x141331500(unit, output), then appends
+  " has come!". 0x141354997 calls the caste description supplier 0x140144ea0;
+  a nonempty description is appended after two spaces at 0x1413549ac..49cd.
+  RAW flags 0x4e or 0x5a select announcement type 0x5d; otherwise unit flags
+  select 0x5e or 0x5f. All three use the same typed unit/name supplier.
+  The complete producer is retained in announcement-status/
+  state-reference-status-update.asm and state-classic-status-update.asm.
+
+language_name layout consumed by the native phonetic formatter:
+  +0x00 first_name native string
+  +0x20 nickname native string
+  +0x40..0x58 seven WORD indices, missing = -1
+  +0x6c language translation table index
+  +0x72 has_name
+
+Recovered formatter branches (Steam addresses; classic counterpart -0x2f80):
+  0x140a9405d: if has_name is false, emit nothing.
+  0x140a94098..4121: select nickname-only prefix in native nickname modes 0/2;
+    otherwise append capitalized first_name, which may be empty.
+  0x140a94125..4187: mode 1 appends quoted nickname after first_name;
+    mode 2 returns before every WORD group.
+  0x140a9418d..42ec: if slot 0 or 1 exists, concatenate their actual language
+    table spellings, capitalize the group and append it. A space is inserted
+    only when a preceding visible first_name/nickname group exists.
+  0x140a942f1..4585: title exists when slot 2, 3 or 5 exists. Concatenate slots
+    2..5 in order using the same language table; slot 4 alone is invisible.
+    Capitalize and append one group, with a separator when prior text exists.
+  0x140a9458a..4668: slot 6 contributes one final native-language group, with
+    a separator when prior text exists. The phonetic formatter emits no
+    English "the" or "of" connectors around these native groups.
+
+Consequent visible group productions, excluding literal nickname delimiters:
+  [first_name] [WORD0+WORD1] [WORD2+WORD3+WORD4+WORD5] [WORD6]
+  Any bracketed group may be absent subject to the native title condition.
+  In particular, an empty first_name legitimately exposes a two-root WORD0/1
+  group followed by a one-root title or WORD6. This is not the ordinary
+  single-root given-name plus compound-surname production.
+
+Screenshot name source, from the installed HUMAN RAW language table:
+  language_HUMAN.txt:529  [T_WORD:MIDNIGHT:unzo]
+  language_HUMAN.txt:575  [T_WORD:NIGHT:kulur]
+  language_HUMAN.txt:933  [T_WORD:UNGODLY:marcest]
+  Marcestkulur Unzo therefore consists entirely of same-language native WORD
+  roots. The previous text-name fallback rejected the initial compound
+  because it required the first visible group to be one T_WORD root.
+
+Translation ownership:
+  The existing native unit identity renderer already captures exact WORD
+  indices and reads their native language spellings. Historical announcement
+  text may outlive those per-formatter bindings, so the shared text-name
+  resolver must also recognize the recovered WORD-only production. A
+  one-root head followed by a three/four-root title is another legal shape
+  previously rejected as an unsupported surname.
+  The new fallback is restricted to established name fields, requires a
+  native T_WORD head, a two-root native compound, or a title of at most four
+  roots followed only by WORD6. It resolves every suffix in one common
+  language. It does not infer authored squad aliases from spelling and does
+  not add a screenshot-specific name entry.

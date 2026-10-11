@@ -219,7 +219,8 @@ void Overlay::append_fortress_noble_rows(std::vector<std::string> &rows,
         for (size_t i = 0; i < fields.size(); ++i) {
             const auto &field = fields[i];
             if (!is_character_room_status(field.text) || !current(field.start, field.end, y)) continue;
-            const auto target = exact_literal_translation(field.text);
+            auto target = exact_literal_translation("Character room grade: " + field.text);
+            if (!target) target = exact_literal_translation(field.text);
             if (!target) continue;
             const int right = i + 1 < fields.size() ? fields[i + 1].start : panel_right;
             append(field.start, field.end, y, kFortressNobleRoomRule,

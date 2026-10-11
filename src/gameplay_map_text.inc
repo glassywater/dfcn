@@ -49,7 +49,40 @@ std::vector<uint8_t> Overlay::capture_map_text_cells() const {
 
     std::vector<uint8_t> cells;
     const size_t count = static_cast<size_t>(gps_->dimx) * gps_->dimy;
-    if (native_gameplay_map_screen(true)) {
+    const bool gameplay = native_gameplay_map_screen(true);
+    const auto recover_video_caption = [&](const NativeDrawnTextRow &draw,
+            const std::vector<std::string> *context)
+            -> std::optional<NativeClippedCaption> {
+        if (!draw.caption_source || !is_video_setting_source(draw.source) || draw.x < 0 ||
+                draw.x >= gps_->dimx || draw.y < 0 || draw.y >= gps_->dimy)
+            return std::nullopt;
+        const auto read_character = [&](int x) {
+            if (context) return (*context)[draw.y][x];
+            bool top = false;
+            const auto *cell = cell_at(x, draw.y, &top);
+            return static_cast<char>(cell && cell[0] ? cell[0] : ' ');
+        };
+        size_t visible_length = 0;
+        while (visible_length < draw.source.size() &&
+                visible_length < static_cast<size_t>(gps_->dimx - draw.x) &&
+                read_character(draw.x + static_cast<int>(visible_length)) ==
+                    draw.source[visible_length])
+            ++visible_length;
+        if (visible_length == draw.source.size()) return std::nullopt;
+        const int edge = draw.x + static_cast<int>(visible_length);
+        const std::string_view visible(draw.source.data(), visible_length);
+        if (!is_video_setting_source(visible) || edge + 2 > gps_->dimx ||
+                read_character(edge + 1) != '+') return std::nullopt;
+        // Video labels precede their numeric editors. The complete three-row
+        // + button proves the later overwrite independently of map ownership.
+        const auto button = native_button_text_rect(*gps_, edge + 1, edge + 2, draw.y);
+        if (!button || button->x != edge + 1 || button->w != 1 ||
+                button->h != 3 || button->y + 1 != draw.y) return std::nullopt;
+        return NativeClippedCaption{draw.x, draw.y, std::string(visible), draw.source};
+    };
+    // Isolated gameplay output contains only UI: skip the terrain ownership
+    // reconstruction, while retaining the icon-button skin exclusion below.
+    if (gameplay && !native_map_background_view(gps_)) {
         cells.assign(count, 0);
         std::vector<std::string> context(gps_->dimy, std::string(gps_->dimx, ' '));
         for (int x = 0; x < gps_->dimx; ++x)
@@ -104,47 +137,10 @@ std::vector<uint8_t> Overlay::capture_map_text_cells() const {
                     retain_native_map_text_span(cells, context, draw.x, draw.y, draw.source,
                         draw.caption_source ? gps_ : nullptr,
                         draw.info_title_kind != NativeInfoTitleKind::None);
-                    if (!draw.caption_source || !is_video_setting_source(draw.source) || draw.x < 0 ||
-                        draw.x >= gps_->dimx || draw.y < 0 || draw.y >= gps_->dimy)
-                        continue;
-                    const auto &row = context[draw.y];
-                    size_t visible_length = 0;
-                    while (visible_length < draw.source.size() &&
-                        visible_length < static_cast<size_t>(gps_->dimx - draw.x) &&
-                        row[draw.x + visible_length] == draw.source[visible_length])
-                        ++visible_length;
-                    if (visible_length == draw.source.size()) continue;
-                    const int edge = draw.x + static_cast<int>(visible_length);
-                    const std::string_view visible(draw.source.data(), visible_length);
-                    if (!is_video_setting_source(visible) || edge + 2 > gps_->dimx ||
-                        row[edge + 1] != '+') continue;
-                    // Video labels are drawn BEFORE their numeric editors.
-                    // The editor's complete three-row + button proves where
-                    // it overwrote the suffix; clipx alone cannot see this.
-                    // Its left cap, never the surrounding settings row's
-                    // far-right edge, bounds the surviving caption.
-                    const auto button = native_button_text_rect(
-                        *gps_, edge + 1, edge + 2, draw.y);
-                    if (!button || button->x != edge + 1 || button->w != 1 ||
-                        button->h != 3 || button->y + 1 != draw.y) continue;
-                    retain_native_map_text_span(cells, context, draw.x, draw.y, visible);
-                    covered_video_captions.push_back(
-                        {draw.x, draw.y, std::string(visible), draw.source});
-                }
-            // The alert's addst can replace a background draw at the same
-            // origin. Restoring its saved cells must also retain that native
-            // text ownership in classic mode. Only exact current bytes of a
-            // draw intersecting this frame's saved rectangle may re-enter.
-            if (NativeUiReadScope::background_view(gps_))
-                for (const auto &saved : native_announcement_backgrounds(*gps_)) {
-                    if (!saved) continue;
-                    const auto &box = saved->bounds;
-                    for (const auto &draw : g_native_overwritten_text_rows) {
-                        if (draw.y < box.y || draw.y >= box.y + box.h ||
-                                draw.x >= box.x + box.w ||
-                                int64_t(draw.x) + static_cast<int64_t>(draw.source.size()) <= box.x)
-                            continue;
-                        retain_native_map_text_span(cells, context, draw.x, draw.y, draw.source);
+                    if (auto caption = recover_video_caption(draw, &context)) {
+                        retain_native_map_text_span(cells, context,
+                            caption->x, caption->y, caption->visible);
+                        covered_video_captions.push_back(std::move(*caption));
                     }
                 }
         }
@@ -161,6 +157,20 @@ std::vector<uint8_t> Overlay::capture_map_text_cells() const {
             retain_native_map_text_span(cells, context, draw.x, draw.y,
                 draw.document->rows[static_cast<size_t>(draw.line)]);
         }
+    } else if (gameplay) {
+        // Map isolation removes terrain scanning, but the settings UI still
+        // needs complete captions after a numeric button covers their suffix.
+        // Read only each captured label's prefix and adjacent button.
+        std::vector<NativeClippedCaption> covered_video_captions;
+        {
+            std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
+            for (const auto *draws : {&g_native_drawn_text_rows, &g_native_drawn_top_text_rows})
+                for (const auto &draw : *draws)
+                    if (auto caption = recover_video_caption(draw, nullptr))
+                        covered_video_captions.push_back(std::move(*caption));
+        }
+        for (const auto &caption : covered_video_captions)
+            remember_clipped_caption(caption.x, caption.y, caption.visible, caption.complete);
     } else {
         cells = capture_embark_map_text_cells();
     }

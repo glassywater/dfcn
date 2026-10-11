@@ -1,0 +1,937 @@
+edition	image_identity	role	function_rva	instruction_rva	encoding	literal_rva	operand_role	source
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47f7fb	rip-relative	0x16023c0	finite-text-operand-or-substring	[C:2:0:1]
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47f809	rip-relative	0x1640590	finite-text-operand-or-substring	[C:2:0:0]
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47f816	rip-relative	0x1602430	finite-text-operand-or-substring	[C:7:0:1]
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47f824	rip-relative	0x1602568	finite-text-operand-or-substring	[C:4:0:1]
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47f839	rip-relative	0x1602558	finite-text-operand-or-substring	[C:6:0:1]
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47f842	rip-relative	0x16023d0	finite-text-operand-or-substring	[C:6:0:0]
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47f84b	rip-relative	0x1602440	finite-text-operand-or-substring	[C:7:0:0]
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47f85e	rip-relative	0x1640580	finite-text-operand-or-substring	Overall, 
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47f8a7	rip-relative	0x15f71e4	finite-text-operand-or-substring	 is 
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47f8c2	rip-relative	0x16404a8	finite-text-operand-or-substring	very focused with satisfied needs
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47f8d0	rip-relative	0x1640480	finite-text-operand-or-substring	quite focused with satisfied needs
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47f8f0	rip-relative	0x1640458	finite-text-operand-or-substring	somewhat focused with satisfied needs
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47f8fe	rip-relative	0x1640438	finite-text-operand-or-substring	badly distracted by unmet needs
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47f90c	rip-relative	0x1640520	finite-text-operand-or-substring	distracted by unmet needs
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47f91b	rip-relative	0x1640500	finite-text-operand-or-substring	unfocused by unmet needs
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47f924	rip-relative	0x16404e0	finite-text-operand-or-substring	untroubled by unmet needs
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47f937	rip-relative	0x15e85b4	finite-text-operand-or-substring	.
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47fa99	rip-relative	0x16023c0	finite-text-operand-or-substring	[C:2:0:1]
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47faa7	rip-relative	0x1640590	finite-text-operand-or-substring	[C:2:0:0]
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47fab5	rip-relative	0x1602430	finite-text-operand-or-substring	[C:7:0:1]
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47fac2	rip-relative	0x1602440	finite-text-operand-or-substring	[C:7:0:0]
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47fad0	rip-relative	0x16023d0	finite-text-operand-or-substring	[C:6:0:0]
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47fade	rip-relative	0x1602558	finite-text-operand-or-substring	[C:6:0:1]
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47faec	rip-relative	0x1602568	finite-text-operand-or-substring	[C:4:0:1]
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47fb2f	rip-relative	0x15f71e4	finite-text-operand-or-substring	 is 
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47fb44	rip-relative	0x16404d0	finite-text-operand-or-substring	unfettered
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47fb52	rip-relative	0x16403c0	finite-text-operand-or-substring	level-headed
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47fb60	rip-relative	0x16403b0	finite-text-operand-or-substring	untroubled
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47fb6d	rip-relative	0x16403a0	finite-text-operand-or-substring	not distracted
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47fb7b	rip-relative	0x1640390	finite-text-operand-or-substring	unfocused
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47fb89	rip-relative	0x1640428	finite-text-operand-or-substring	distracted
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47fb97	rip-relative	0x1640410	finite-text-operand-or-substring	badly distracted
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47fba7	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47fbd8	rip-relative	0x16403f0	finite-text-operand-or-substring	after spending time with people
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47fbe4	rip-relative	0x16403d0	finite-text-operand-or-substring	after being away from people
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47fbf8	rip-relative	0x16409d0	finite-text-operand-or-substring	after drinking
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47fc04	rip-relative	0x16409b0	finite-text-operand-or-substring	after being kept from alcohol
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47fc1f	rip-relative	0x1640998	finite-text-operand-or-substring	after communing with 
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47fc5d	rip-relative	0x1640980	finite-text-operand-or-substring	after meditation
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47fc69	rip-relative	0x1640a28	finite-text-operand-or-substring	after being unable to pray
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47fc80	rip-relative	0x15ed5b4	finite-text-operand-or-substring	 to 
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47fcca	rip-relative	0x1640a10	finite-text-operand-or-substring	after staying occupied
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47fcd6	rip-relative	0x16409f8	finite-text-operand-or-substring	after being unoccupied
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47fcea	rip-relative	0x16409e0	finite-text-operand-or-substring	after admiring art
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47fcf6	rip-relative	0x16408d8	finite-text-operand-or-substring	after being unable to admire art
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47fd0a	rip-relative	0x16408b8	finite-text-operand-or-substring	after doing something creative
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47fd16	rip-relative	0x1640898	finite-text-operand-or-substring	after doing nothing creative
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47fd2a	rip-relative	0x1640878	finite-text-operand-or-substring	after doing something exciting
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47fd36	rip-relative	0x1640958	finite-text-operand-or-substring	after leading an unexciting life
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47fd4a	rip-relative	0x1640938	finite-text-operand-or-substring	after learning something
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47fd56	rip-relative	0x1640918	finite-text-operand-or-substring	after not learning anything
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47fd6a	rip-relative	0x1640900	finite-text-operand-or-substring	after being with family
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47fd76	rip-relative	0x16407c8	finite-text-operand-or-substring	after being away from family
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47fd8a	rip-relative	0x16407a8	finite-text-operand-or-substring	after being with friends
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47fd96	rip-relative	0x1640788	finite-text-operand-or-substring	after being away from friends
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47fdaa	rip-relative	0x1640768	finite-text-operand-or-substring	after hearing eloquent speech
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47fdb6	rip-relative	0x1640848	finite-text-operand-or-substring	after being unable to hear eloquent speech
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47fdca	rip-relative	0x1640828	finite-text-operand-or-substring	after upholding tradition
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47fdd6	rip-relative	0x1640800	finite-text-operand-or-substring	after being away from traditions
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47fdea	rip-relative	0x16407e8	finite-text-operand-or-substring	after self-examination
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47fdf6	rip-relative	0x16406b0	finite-text-operand-or-substring	after a lack of introspection
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47fe0a	rip-relative	0x1640698	finite-text-operand-or-substring	after making merry
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47fe16	rip-relative	0x1640670	finite-text-operand-or-substring	after being unable to make merry
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47fe2a	rip-relative	0x1640650	finite-text-operand-or-substring	after practicing a craft
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47fe36	rip-relative	0x1640740	finite-text-operand-or-substring	after being unable to practice a craft
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47fe4a	rip-relative	0x1640720	finite-text-operand-or-substring	after practicing a martial art
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47fe56	rip-relative	0x16406f0	finite-text-operand-or-substring	after being unable to practice a martial art
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47fe6a	rip-relative	0x16406d0	finite-text-operand-or-substring	after practicing a skill
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47fe76	rip-relative	0x1640d40	finite-text-operand-or-substring	after being unable to practice a skill
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47fe8a	rip-relative	0x1640d28	finite-text-operand-or-substring	after taking it easy
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47fe96	rip-relative	0x1640d00	finite-text-operand-or-substring	after being unable to take it easy
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47feaa	rip-relative	0x1640ce8	finite-text-operand-or-substring	after making romance
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47feb6	rip-relative	0x1640dc0	finite-text-operand-or-substring	after being unable to make romance
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47feca	rip-relative	0x1640da8	finite-text-operand-or-substring	after seeing animals
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47fed6	rip-relative	0x1640d88	finite-text-operand-or-substring	after being away from animals
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47feea	rip-relative	0x1640d68	finite-text-operand-or-substring	after seeing a great beast
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47fef6	rip-relative	0x1640c58	finite-text-operand-or-substring	after being away from great beasts
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47ff0a	rip-relative	0x1640c38	finite-text-operand-or-substring	after acquiring something
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47ff16	rip-relative	0x1640c10	finite-text-operand-or-substring	after being unable to acquire something
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47ff2a	rip-relative	0x1640bf0	finite-text-operand-or-substring	after eating a good meal
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47ff36	rip-relative	0x1640cc8	finite-text-operand-or-substring	after a lack of decent meals
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47ff4a	rip-relative	0x1640cb8	finite-text-operand-or-substring	after fighting
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47ff56	rip-relative	0x1640c98	finite-text-operand-or-substring	after being unable to fight
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47ff6a	rip-relative	0x1640c80	finite-text-operand-or-substring	after causing trouble
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47ff76	rip-relative	0x1640b60	finite-text-operand-or-substring	after a lack of trouble-making
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47ff87	rip-relative	0x1640b50	finite-text-operand-or-substring	after arguing
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47ff90	rip-relative	0x1640b30	finite-text-operand-or-substring	after being unable to argue
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47ffa1	rip-relative	0x1640b18	finite-text-operand-or-substring	after being extravagant
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47ffaa	rip-relative	0x1640bc8	finite-text-operand-or-substring	after being unable to be extravagant
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47ffbb	rip-relative	0x1640bb8	finite-text-operand-or-substring	after wandering
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47ffc4	rip-relative	0x1640b98	finite-text-operand-or-substring	after being unable to wander
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47ffd5	rip-relative	0x1640b80	finite-text-operand-or-substring	after helping somebody
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47ffde	rip-relative	0x1640ab0	finite-text-operand-or-substring	after being unable to help anybody
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47ffed	rip-relative	0x1640a90	finite-text-operand-or-substring	after thinking abstractly
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x47fff6	rip-relative	0x1640a68	finite-text-operand-or-substring	after a lack of abstract thinking
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x480002	rip-relative	0x15e85b4	finite-text-operand-or-substring	.
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x480151	rip-relative	0x1602430	finite-text-operand-or-substring	[C:7:0:1]
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x480223	rip-relative	0x163fff8	finite-text-operand-or-substring	 likes 
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x48031e	rip-relative	0x163fff0	finite-text-operand-or-substring	 wood
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x480357	rip-relative	0x163ffe8	finite-text-operand-or-substring	 fabric
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x480452	rip-relative	0x1640050	finite-text-operand-or-substring	 for their 
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x48051c	rip-relative	0x1640050	finite-text-operand-or-substring	 for their 
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x4805e1	rip-relative	0x1640050	finite-text-operand-or-substring	 for their 
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x48065c	rip-relative	0x1640040	finite-text-operand-or-substring	the color 
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x480737	rip-relative	0x1640030	finite-text-operand-or-substring	the words of 
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x4807ab	rip-relative	0x1640020	finite-text-operand-or-substring	the sound of 
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x480814	rip-relative	0x1640600	finite-text-operand-or-substring	the sight of 
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x480871	rip-relative	0x15e90d8	separator	, 
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x48087c	rip-relative	0x15e9110	separator	 and 
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x480885	rip-relative	0x15fd968	finite-text-operand-or-substring	.  
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x480984	rip-relative	0x16405f0	finite-text-operand-or-substring	When possible, 
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x4809ba	rip-relative	0x16ceccc	finite-text-operand-or-substring	he
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x4809cd	rip-relative	0x16cecc8	finite-text-operand-or-substring	she
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x4809da	rip-relative	0x16cecca	finite-text-operand-or-substring	e
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x4809f0	rip-relative	0x15ee4d4	finite-text-operand-or-substring	it
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x480a37	rip-relative	0x16405d8	finite-text-operand-or-substring	 prefers to consume 
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x480b63	rip-relative	0x16405c8	finite-text-operand-or-substring	unknown meat
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x480bec	rip-relative	0x1640640	finite-text-operand-or-substring	unknown fish
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x480c65	rip-relative	0x1640630	finite-text-operand-or-substring	unknown plants
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x480cd7	rip-relative	0x1640620	finite-text-operand-or-substring	unknown drink
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x480d49	rip-relative	0x1640610	finite-text-operand-or-substring	unknown liquid
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x480dbb	rip-relative	0x1640570	finite-text-operand-or-substring	unknown seeds
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x480e2e	rip-relative	0x1640560	finite-text-operand-or-substring	unknown leaves
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x480ea0	rip-relative	0x1640550	finite-text-operand-or-substring	unknown powder
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x480f12	rip-relative	0x1640540	finite-text-operand-or-substring	unknown cheese
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x480fb2	rip-relative	0x16405b8	finite-text-operand-or-substring	unknown item
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x481017	rip-relative	0x16405b8	finite-text-operand-or-substring	unknown item
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x481023	rip-relative	0x16405c0	finite-text-operand-or-substring	item
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x4810ae	rip-relative	0x15e90d8	separator	, 
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x4810c2	rip-relative	0x15e9110	separator	 and 
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x4810d1	rip-relative	0x15fd968	finite-text-operand-or-substring	.  
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x48123c	rip-relative	0x16ceccc	finite-text-operand-or-substring	he
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x481254	rip-relative	0x16cecc8	finite-text-operand-or-substring	she
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x48125e	rip-relative	0x16cecca	finite-text-operand-or-substring	e
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x48126e	rip-relative	0x15ee4d4	finite-text-operand-or-substring	it
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x4812d6	rip-relative	0x16405a0	finite-text-operand-or-substring	 absolutely detests 
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x4813f6	rip-relative	0x15e90d8	separator	, 
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x481409	rip-relative	0x15e9110	separator	 and 
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x481418	rip-relative	0x15fd968	finite-text-operand-or-substring	.  
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x481946	rip-relative	0x1602430	finite-text-operand-or-substring	[C:7:0:1]
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x48198f	rip-relative	0x1640270	finite-text-operand-or-substring	 needs alcohol to get through the working day
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x4819ab	rip-relative	0x1640248	finite-text-operand-or-substring	 and can't even remember the last time 
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x4819f4	rip-relative	0x16400f0	finite-text-operand-or-substring	 had some
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x481a1d	rip-relative	0x16400b8	finite-text-operand-or-substring	 and has gone without a drink for far, far too long
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x481a2d	rip-relative	0x1640098	finite-text-operand-or-substring	 and really wants a drink
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x481a3d	rip-relative	0x1640060	finite-text-operand-or-substring	 and is starting to work slowly due to its scarcity
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x481a56	rip-relative	0x15fd968	finite-text-operand-or-substring	.  
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x481a90	rip-relative	0x1602430	finite-text-operand-or-substring	[C:7:0:1]
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x481b03	rip-relative	0x1640150	finite-text-operand-or-substring	 likes working outdoors and grumbles only mildly at inclement weather.  
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x481b35	rip-relative	0x16401a0	finite-text-operand-or-substring	 does not mind being outdoors, at least for a time.  
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x481b6f	rip-relative	0x1602430	finite-text-operand-or-substring	[C:7:0:1]
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x481bdc	rip-relative	0x1640120	finite-text-operand-or-substring	 doesn't really care about anything anymore.  
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x481c13	rip-relative	0x1640100	finite-text-operand-or-substring	 is a hardened individual.  
+reference	PE:6a70a6d9:02711000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47f680	0x481c4a	rip-relative	0x1640000	finite-text-operand-or-substring	 is getting used to tragedy.  
+reference	PE:6a70a6d9:02711000	unit-name	0xa94030	0xa9413d	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	unit-name	0xa94030	0xa942b3	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	unit-name	0xa94030	0xa9450f	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	unit-name	0xa94030	0xa9463b	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	material-state-name	0x14d1920	0x14d1987	rip-relative	0x1614d54	finite-text-operand-or-substring	plant
+reference	PE:6a70a6d9:02711000	material-state-name	0x14d1920	0x14d19a9	rip-relative	0x16158b4	finite-text-operand-or-substring	yarn
+reference	PE:6a70a6d9:02711000	material-state-name	0x14d1920	0x14d19d1	rip-relative	0x16158a4	finite-text-operand-or-substring	cloth
+reference	PE:6a70a6d9:02711000	material-state-name	0x14d1920	0x14d19f1	rip-relative	0x16158ac	finite-text-operand-or-substring	silk
+reference	PE:6a70a6d9:02711000	material-state-name	0x14d1920	0x14d1a11	rip-relative	0x16158c4	finite-text-operand-or-substring	bone
+reference	PE:6a70a6d9:02711000	material-state-name	0x14d1920	0x14d1a31	rip-relative	0x16156d0	finite-text-operand-or-substring	leather
+reference	PE:6a70a6d9:02711000	material-state-name	0x14d1920	0x14d1a51	rip-relative	0x16158bc	finite-text-operand-or-substring	shell
+reference	PE:6a70a6d9:02711000	material-state-name	0x14d1920	0x14d1a73	rip-relative	0x16158d4	finite-text-operand-or-substring	soap
+reference	PE:6a70a6d9:02711000	material-state-name	0x14d1920	0x14d1a95	rip-relative	0x1789150	finite-text-operand-or-substring	ivory/tooth
+reference	PE:6a70a6d9:02711000	material-state-name	0x14d1920	0x14d1ab7	rip-relative	0x16158e4	finite-text-operand-or-substring	horn
+reference	PE:6a70a6d9:02711000	material-state-name	0x14d1920	0x14d1ad9	rip-relative	0x16158dc	finite-text-operand-or-substring	pearl
+reference	PE:6a70a6d9:02711000	material-state-name	0x14d1920	0x14d1b08	rip-relative	0x16156d8	finite-text-operand-or-substring	wood
+reference	PE:6a70a6d9:02711000	material-state-name	0x14d1920	0x14d1b0f	rip-relative	0x16a12ec	finite-text-operand-or-substring	wooden
+reference	PE:6a70a6d9:02711000	material-state-name	0x14d1920	0x14d1c65	rip-relative	0x15edb24	separator	's 
+reference	PE:6a70a6d9:02711000	material-state-name	0x14d1920	0x14d1cf9	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	material-state-name	0x14d1920	0x14d1d4a	rip-relative	0x1789108	finite-text-operand-or-substring	unknown material
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa82d27	rip-relative	0x1649d9c	finite-text-operand-or-substring	large
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa82d30	rip-relative	0x1649da0	finite-text-operand-or-substring	e
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa82d39	rip-relative	0x1686358	finite-text-operand-or-substring	small
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa82d42	rip-relative	0x168635c	finite-text-operand-or-substring	l
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa82d8c	rip-relative	0x16cbf50	finite-text-operand-or-substring	grown 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa82e66	rip-relative	0x167ccf0	finite-text-operand-or-substring	logs
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa82ed8	rip-relative	0x16ce7e0	finite-text-operand-or-substring	branch
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa82efd	rip-relative	0x16ce880	finite-text-operand-or-substring	es
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa82f1d	rip-relative	0x1601038	finite-text-operand-or-substring	rough gems
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa82f36	rip-relative	0x16ce870	finite-text-operand-or-substring	raw green glass
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa82f4f	rip-relative	0x16ce860	finite-text-operand-or-substring	raw clear glass
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa82f68	rip-relative	0x16ce848	finite-text-operand-or-substring	raw crystal glass
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa82f8a	rip-relative	0x1601038	finite-text-operand-or-substring	rough gems
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa82fa8	rip-relative	0x16cc1b0	finite-text-operand-or-substring	rough 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa83047	rip-relative	0x16862ac	finite-text-operand-or-substring	small 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa8305e	rip-relative	0x16862ac	finite-text-operand-or-substring	small 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa8313e	rip-relative	0x16ce7ac	finite-text-operand-or-substring	rock
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa8315e	rip-relative	0x16ce7a0	finite-text-operand-or-substring	small rock
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa831b7	rip-relative	0x16ce790	finite-text-operand-or-substring	stone boulders
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa831dd	rip-relative	0x16ce780	finite-text-operand-or-substring	boulders
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa832ba	rip-relative	0x16ce738	finite-text-operand-or-substring	bars
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa832d3	rip-relative	0x16ce7c0	finite-text-operand-or-substring	charcoal
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa832e9	rip-relative	0x16ce7b4	finite-text-operand-or-substring	coke
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa832f2	rip-relative	0x16ce740	finite-text-operand-or-substring	refined coal
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa8330b	rip-relative	0x163e59c	finite-text-operand-or-substring	metal
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa8331a	rip-relative	0x16ce7cc	finite-text-operand-or-substring	 bars
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa833ca	rip-relative	0x16ce7d8	finite-text-operand-or-substring	 wafers
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa834b8	rip-relative	0x16011f0	finite-text-operand-or-substring	cut gems
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa834d1	rip-relative	0x16ce720	finite-text-operand-or-substring	cut green glass gems
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa834ea	rip-relative	0x16ce708	finite-text-operand-or-substring	cut clear glass gems
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa83500	rip-relative	0x16ce768	finite-text-operand-or-substring	cut crystal glass gems
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa8351b	rip-relative	0x16ce760	finite-text-operand-or-substring	gems
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa83658	rip-relative	0x16ce758	finite-text-operand-or-substring	blocks
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa8366f	rip-relative	0x16ce758	finite-text-operand-or-substring	blocks
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa8371d	rip-relative	0x16ce6ec	finite-text-operand-or-substring	door
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa83724	rip-relative	0x16ce750	finite-text-operand-or-substring	portal
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa8379a	rip-relative	0x16ce6e0	finite-text-operand-or-substring	floodgate
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa8380a	rip-relative	0x16ce6d0	finite-text-operand-or-substring	hatch cover
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa8387a	rip-relative	0x16ce6c8	finite-text-operand-or-substring	grate
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa838ea	rip-relative	0x162fdb4	finite-text-operand-or-substring	table
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa8395a	rip-relative	0x163cea0	finite-text-operand-or-substring	cabinet
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa839ca	rip-relative	0x163ce90	finite-text-operand-or-substring	weapon rack
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa83a3a	rip-relative	0x163ce08	finite-text-operand-or-substring	armor stand
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa83aaa	rip-relative	0x16ce704	finite-text-operand-or-substring	bin
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa83b51	rip-relative	0x16ce700	finite-text-operand-or-substring	box
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa83b6a	rip-relative	0x16ce6fc	finite-text-operand-or-substring	e
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa83b93	rip-relative	0x16ce6f4	finite-text-operand-or-substring	coffer
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa83ba2	rip-relative	0x163cea8	finite-text-operand-or-substring	chest
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa83bc3	rip-relative	0x16ce6a0	finite-text-operand-or-substring	boxe
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa83bd8	rip-relative	0x15e9298	finite-text-operand-or-substring	s
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa83bec	rip-relative	0x16ce700	finite-text-operand-or-substring	box
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa83c64	rip-relative	0x16ce69c	finite-text-operand-or-substring	bag
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa83cff	rip-relative	0x16ce690	finite-text-operand-or-substring	backpack
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa83dbc	rip-relative	0x16ce6c0	finite-text-operand-or-substring	cast
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa83dc8	rip-relative	0x16ce680	finite-text-operand-or-substring	limb/body 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa83dd7	rip-relative	0x16ce6c0	finite-text-operand-or-substring	cast
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa83e37	rip-relative	0x16ce680	finite-text-operand-or-substring	limb/body 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa83e46	rip-relative	0x16ce6c0	finite-text-operand-or-substring	cast
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa83eb6	rip-relative	0x16ce6b8	finite-text-operand-or-substring	splint
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa83f20	rip-relative	0x16ce6b0	finite-text-operand-or-substring	crutch
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa83fbb	rip-relative	0x16ce6a8	finite-text-operand-or-substring	quiver
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa8403a	rip-relative	0x16ce63c	finite-text-operand-or-substring	casket
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa84085	rip-relative	0x16ce630	finite-text-operand-or-substring	sarcophag
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa84094	rip-relative	0x1642184	finite-text-operand-or-substring	us
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa8409b	rip-relative	0x16c0828	finite-text-operand-or-substring	i
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa840b7	rip-relative	0x162fe0c	finite-text-operand-or-substring	coffin
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa841d4	rip-relative	0x16ce61c	finite-text-operand-or-substring	chain
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa841e8	rip-relative	0x16ce624	finite-text-operand-or-substring	rope
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa84328	rip-relative	0x16ce664	finite-text-operand-or-substring	vial
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa84339	rip-relative	0x16ce65c	finite-text-operand-or-substring	flask
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa84350	rip-relative	0x16ce670	finite-text-operand-or-substring	waterskin
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa843f9	rip-relative	0x16ce648	finite-text-operand-or-substring	musical instrument
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa844db	rip-relative	0x16ce5e8	finite-text-operand-or-substring	unglazed 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa84643	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa8465d	rip-relative	0x16c1e44	finite-text-operand-or-substring	tool
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa846fd	rip-relative	0x16c1d64	finite-text-operand-or-substring	toy
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa847ad	rip-relative	0x16ce5e0	finite-text-operand-or-substring	cup
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa847e1	rip-relative	0x16ce5dc	finite-text-operand-or-substring	mug
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa847fb	rip-relative	0x16ce5d4	finite-text-operand-or-substring	goblet
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa8486b	rip-relative	0x16ce614	finite-text-operand-or-substring	window
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa8491a	rip-relative	0x16ce5fc	finite-text-operand-or-substring	cage
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa84921	rip-relative	0x16ce608	finite-text-operand-or-substring	terrarium
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa84995	rip-relative	0x16ce5f4	finite-text-operand-or-substring	barrel
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa84a05	rip-relative	0x16cec8c	finite-text-operand-or-substring	bucket
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa84a75	rip-relative	0x16cec80	finite-text-operand-or-substring	animal trap
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa84af1	rip-relative	0x162fe04	finite-text-operand-or-substring	chair
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa84b0b	rip-relative	0x16cec74	finite-text-operand-or-substring	throne
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa84bc1	rip-relative	0x16cec70	finite-text-operand-or-substring	web
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa84c0c	rip-relative	0x16cecb8	finite-text-operand-or-substring	strands
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa84c3f	rip-relative	0x16158b4	finite-text-operand-or-substring	yarn
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa84c50	rip-relative	0x161589c	finite-text-operand-or-substring	thread
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa84cc5	rip-relative	0x16158a4	finite-text-operand-or-substring	cloth
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa84dcf	rip-relative	0x16cecac	finite-text-operand-or-substring	sheet
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa84df2	rip-relative	0x16ceca0	finite-text-operand-or-substring	tanned hide
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa84e55	rip-relative	0x16cec94	finite-text-operand-or-substring	totem
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa84ebe	rip-relative	0x16cec40	finite-text-operand-or-substring	-bound 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa84eda	rip-relative	0x16cec2c	finite-text-operand-or-substring	codex
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa84ee1	rip-relative	0x16cec38	finite-text-operand-or-substring	codices
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa84f60	rip-relative	0x16cec20	finite-text-operand-or-substring	figurine
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa84f7e	rip-relative	0x16cec68	finite-text-operand-or-substring	rotten 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa84fa3	rip-relative	0x164fc00	finite-text-operand-or-substring	drink
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa84fe6	rip-relative	0x16cec68	finite-text-operand-or-substring	rotten 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa851cb	rip-relative	0x16cec60	finite-text-operand-or-substring	filthy 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa851e4	rip-relative	0x16cec58	finite-text-operand-or-substring	sticky 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa85203	rip-relative	0x16cec48	finite-text-operand-or-substring	vomitous 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa8521f	rip-relative	0x16cebec	finite-text-operand-or-substring	slimy 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa85238	rip-relative	0x16b1070	finite-text-operand-or-substring	stagnant 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa85254	rip-relative	0x16cebe4	finite-text-operand-or-substring	dirty 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa85270	rip-relative	0x16cebdc	finite-text-operand-or-substring	gooey 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa85289	rip-relative	0x16cebd0	finite-text-operand-or-substring	purulent 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa852a2	rip-relative	0x16cec10	finite-text-operand-or-substring	ichorous 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa852bb	rip-relative	0x16cec08	finite-text-operand-or-substring	bloody 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa852fa	rip-relative	0x16a6358	finite-text-operand-or-substring	liquid
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa8543c	rip-relative	0x16cebfc	finite-text-operand-or-substring	 paste
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa85491	rip-relative	0x16cebf4	finite-text-operand-or-substring	glob
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa85692	rip-relative	0x16ceb80	finite-text-operand-or-substring	 laced with 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa85706	rip-relative	0x15e90d8	separator	, 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa85716	rip-relative	0x15e9110	separator	 and 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa8577b	rip-relative	0x16cec68	finite-text-operand-or-substring	rotten 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa85818	rip-relative	0x16ceb70	finite-text-operand-or-substring	 dye mix
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa8583c	rip-relative	0x16ceb64	finite-text-operand-or-substring	powder
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa85896	rip-relative	0x16cec68	finite-text-operand-or-substring	rotten 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa858b8	rip-relative	0x16ceb5c	finite-text-operand-or-substring	cheese
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa85940	rip-relative	0x16cebc0	finite-text-operand-or-substring	catapult parts
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa859b8	rip-relative	0x16ceba8	finite-text-operand-or-substring	bolt thrower parts
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa85a30	rip-relative	0x16ceb98	finite-text-operand-or-substring	mechanisms
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa85adf	rip-relative	0x16ceb90	finite-text-operand-or-substring	tube
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa85af9	rip-relative	0x16ceb10	finite-text-operand-or-substring	pipe section
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa85b97	rip-relative	0x16ceb00	finite-text-operand-or-substring	trap component
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa85bc8	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa85caa	rip-relative	0x16ceaf0	finite-text-operand-or-substring	ballista parts
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa85d22	rip-relative	0x16ceae8	finite-text-operand-or-substring	anvil
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa85d92	rip-relative	0x16ceb54	finite-text-operand-or-substring	amulet
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa85e02	rip-relative	0x16ceb40	finite-text-operand-or-substring	ballista arrow head
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa85ea9	rip-relative	0x16ceb30	finite-text-operand-or-substring	siege ammo
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa85ff3	rip-relative	0x16ceb20	finite-text-operand-or-substring	ammunition
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa8606b	rip-relative	0x16ceaa8	finite-text-operand-or-substring	scepter
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa860db	rip-relative	0x16cea9c	finite-text-operand-or-substring	crown
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa86145	rip-relative	0x16cea94	finite-text-operand-or-substring	coin
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa86164	rip-relative	0x16cea88	finite-text-operand-or-substring	perfect 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa86173	rip-relative	0x164a2c8	finite-text-operand-or-substring	large 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa8625b	rip-relative	0x16cead8	finite-text-operand-or-substring	green glass 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa86271	rip-relative	0x16ceac8	finite-text-operand-or-substring	clear glass 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa86287	rip-relative	0x16ceab8	finite-text-operand-or-substring	crystal glass 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa862a3	rip-relative	0x16158fc	finite-text-operand-or-substring	gem
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa8635b	rip-relative	0x16ceab0	finite-text-operand-or-substring	 gem
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa86436	rip-relative	0x16cea50	finite-text-operand-or-substring	ring
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa864a6	rip-relative	0x16cea48	finite-text-operand-or-substring	earring
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa86516	rip-relative	0x16cea38	finite-text-operand-or-substring	bracelet
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa86586	rip-relative	0x162fdb0	finite-text-operand-or-substring	bed
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa865f6	rip-relative	0x16cea28	finite-text-operand-or-substring	traction bench
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa86666	rip-relative	0x16cea7c	finite-text-operand-or-substring	quern
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa866d6	rip-relative	0x16cea70	finite-text-operand-or-substring	millstone
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa86746	rip-relative	0x16cea64	finite-text-operand-or-substring	statue
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa86852	rip-relative	0x16cea58	finite-text-operand-or-substring	memorial
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa86866	rip-relative	0x16ce9a0	finite-text-operand-or-substring	food imports sign
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa8687a	rip-relative	0x16ce988	finite-text-operand-or-substring	clothing imports sign
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa8688e	rip-relative	0x16ce970	finite-text-operand-or-substring	general imports sign
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa868a2	rip-relative	0x16ce960	finite-text-operand-or-substring	cloth shop sign
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa868b6	rip-relative	0x16cea10	finite-text-operand-or-substring	leather shop sign
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa868ca	rip-relative	0x16ce9f0	finite-text-operand-or-substring	woven clothing shop sign
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa868de	rip-relative	0x16ce9d0	finite-text-operand-or-substring	leather clothing shop sign
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa868f2	rip-relative	0x16ce9b8	finite-text-operand-or-substring	bone carver's shop sign
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa86906	rip-relative	0x16cf090	finite-text-operand-or-substring	gem cutter's shop sign
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa8691a	rip-relative	0x16cf078	finite-text-operand-or-substring	weaponsmith's shop sign
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa8692e	rip-relative	0x16cf060	finite-text-operand-or-substring	bowyer's shop sign
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa86942	rip-relative	0x16cf048	finite-text-operand-or-substring	blacksmith's shop sign
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa86956	rip-relative	0x16cf0f0	finite-text-operand-or-substring	armorsmith's shop sign
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa8696a	rip-relative	0x16cf0d8	finite-text-operand-or-substring	metal craft shop sign
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa8697e	rip-relative	0x16cf0c0	finite-text-operand-or-substring	leather goods shop sign
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa86992	rip-relative	0x16cf0a8	finite-text-operand-or-substring	carpenter's shop sign
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa869a6	rip-relative	0x16ceff8	finite-text-operand-or-substring	stone furniture shop sign
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa869ba	rip-relative	0x16cefd8	finite-text-operand-or-substring	metal furniture shop sign
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa869ce	rip-relative	0x16cefc8	finite-text-operand-or-substring	tavern sign
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa869e2	rip-relative	0x16cefbc	finite-text-operand-or-substring	slab
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa869f6	rip-relative	0x16cefbc	finite-text-operand-or-substring	slab
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa86a14	rip-relative	0x16cec68	finite-text-operand-or-substring	rotten 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa86a29	rip-relative	0x16cf03c	finite-text-operand-or-substring	corpse
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa86a47	rip-relative	0x16cec68	finite-text-operand-or-substring	rotten 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa86a6b	rip-relative	0x16158cc	finite-text-operand-or-substring	tooth
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa86a7c	rip-relative	0x16cf034	finite-text-operand-or-substring	teeth
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa86a91	rip-relative	0x16158c4	finite-text-operand-or-substring	bone
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa86aa9	rip-relative	0x16158bc	finite-text-operand-or-substring	shell
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa86ac1	rip-relative	0x16cf028	finite-text-operand-or-substring	plant part
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa86ad9	rip-relative	0x16cf018	finite-text-operand-or-substring	silk body part
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa86af1	rip-relative	0x16cef70	finite-text-operand-or-substring	leather body part
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa86b09	rip-relative	0x16cef58	finite-text-operand-or-substring	wooden body part
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa86b23	rip-relative	0x16cef48	finite-text-operand-or-substring	soap body part
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa86b3d	rip-relative	0x16158e4	finite-text-operand-or-substring	horn
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa86b57	rip-relative	0x16158dc	finite-text-operand-or-substring	pearl
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa86b71	rip-relative	0x16cef38	finite-text-operand-or-substring	yarn body part
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa86b89	rip-relative	0x16cefa8	finite-text-operand-or-substring	strand body part
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa86b92	rip-relative	0x1681050	finite-text-operand-or-substring	body part
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa86bbb	rip-relative	0x16cefa0	finite-text-operand-or-substring	Rotten 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa86d22	rip-relative	0x167f0c0	finite-text-operand-or-substring	remains
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa86d81	rip-relative	0x16cef94	finite-text-operand-or-substring	seeds
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa86df2	rip-relative	0x16cef88	finite-text-operand-or-substring	withered 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa86e66	rip-relative	0x16ceee0	finite-text-operand-or-substring	leaves and fruit
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa86e77	rip-relative	0x16ceed0	finite-text-operand-or-substring	leaf or fruit
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa86eaa	rip-relative	0x16cef88	finite-text-operand-or-substring	withered 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa86efd	rip-relative	0x1614d54	finite-text-operand-or-substring	plant
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa86f16	rip-relative	0x15e9298	finite-text-operand-or-substring	s
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa86f3c	rip-relative	0x16cec68	finite-text-operand-or-substring	rotten 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa86f54	rip-relative	0x16ceec8	finite-text-operand-or-substring	raw 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa870d5	rip-relative	0x15e90d8	separator	, 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa870eb	rip-relative	0x15e90d8	separator	, 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa87104	rip-relative	0x16a11f0	finite-text-operand-or-substring	fish
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa8712a	rip-relative	0x16cec68	finite-text-operand-or-substring	rotten 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa87251	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa87266	rip-relative	0x16ceec4	finite-text-operand-or-substring	egg
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa8728c	rip-relative	0x16cec68	finite-text-operand-or-substring	rotten 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa8738b	rip-relative	0x16a11f0	finite-text-operand-or-substring	fish
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa873a8	rip-relative	0x16cef2c	finite-text-operand-or-substring	live 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa873e1	rip-relative	0x16cef18	finite-text-operand-or-substring	small live animal
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa873fb	rip-relative	0x16cef0c	finite-text-operand-or-substring	tame 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa87404	rip-relative	0x16ceef8	finite-text-operand-or-substring	small tame animal
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa8741b	rip-relative	0x16cee88	finite-text-operand-or-substring	prepared meal
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa87435	rip-relative	0x16cec68	finite-text-operand-or-substring	rotten 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa8744a	rip-relative	0x16cee78	finite-text-operand-or-substring	preserved 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa8750c	rip-relative	0x16cee70	finite-text-operand-or-substring	 chops
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa8751d	rip-relative	0x16cee68	finite-text-operand-or-substring	 chop
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa87556	rip-relative	0x16ceebc	finite-text-operand-or-substring	meat
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa87570	rip-relative	0x16ceebc	finite-text-operand-or-substring	meat
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa87602	rip-relative	0x16c1ecc	finite-text-operand-or-substring	weapon
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa8763b	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa87767	rip-relative	0x16ceea8	finite-text-operand-or-substring	suits of 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa87776	rip-relative	0x16c1ec4	finite-text-operand-or-substring	armor
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa877dc	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa87886	rip-relative	0x16ceeb4	finite-text-operand-or-substring	chain 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa87995	rip-relative	0x163a34c	finite-text-operand-or-substring	right 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa879b5	rip-relative	0x163a324	finite-text-operand-or-substring	left 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa879fe	rip-relative	0x16ceeb4	finite-text-operand-or-substring	chain 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa87a5f	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa87a73	rip-relative	0x16cee98	finite-text-operand-or-substring	handwear
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa87b17	rip-relative	0x16c1d74	finite-text-operand-or-substring	shield
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa87b36	rip-relative	0x16cee10	finite-text-operand-or-substring	/buckler
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa87b4a	rip-relative	0x16cee10	finite-text-operand-or-substring	/buckler
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa87c87	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa87cb7	rip-relative	0x16cee00	finite-text-operand-or-substring	footwear
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa87da8	rip-relative	0x16cedf0	finite-text-operand-or-substring	headwear
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa87dec	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa87ea8	rip-relative	0x16cede8	finite-text-operand-or-substring	legwear
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa87f2c	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa88046	rip-relative	0x15fcfe0	finite-text-operand-or-substring	item
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa88077	rip-relative	0x161bdcc	finite-text-operand-or-substring	 [
+reference	PE:6a70a6d9:02711000	item-name	0xa82c10	0xa88097	rip-relative	0x15fd690	finite-text-operand-or-substring	]
+reference	PE:6a70a6d9:02711000	material-gem-name	0x14d1790	0x14d1808	rip-relative	0x167c5d0	finite-text-operand-or-substring	NP
+reference	PE:6a70a6d9:02711000	material-gem-name	0x14d1790	0x14d1852	rip-relative	0x167c5cc	finite-text-operand-or-substring	STP
+reference	PE:6a70a6d9:02711000	shaped-gem-name	0x14e1ec0	0x14e1f64	rip-relative	0x16cead8	finite-text-operand-or-substring	green glass 
+reference	PE:6a70a6d9:02711000	shaped-gem-name	0x14e1ec0	0x14e1f84	rip-relative	0x16ceac8	finite-text-operand-or-substring	clear glass 
+reference	PE:6a70a6d9:02711000	shaped-gem-name	0x14e1ec0	0x14e1fa4	rip-relative	0x16ceab8	finite-text-operand-or-substring	crystal glass 
+reference	PE:6a70a6d9:02711000	shaped-gem-name	0x14e1ec0	0x14e206d	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	shaped-gem-name	0x14e1ec0	0x14e211d	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	shaped-gem-name	0x14e1ec0	0x14e2138	rip-relative	0x16cead8	finite-text-operand-or-substring	green glass 
+reference	PE:6a70a6d9:02711000	shaped-gem-name	0x14e1ec0	0x14e2158	rip-relative	0x16ceac8	finite-text-operand-or-substring	clear glass 
+reference	PE:6a70a6d9:02711000	shaped-gem-name	0x14e1ec0	0x14e2178	rip-relative	0x16ceab8	finite-text-operand-or-substring	crystal glass 
+reference	PE:6a70a6d9:02711000	shaped-gem-name	0x14e1ec0	0x14e2241	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	shaped-gem-name	0x14e1ec0	0x14e22bc	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	shaped-gem-name	0x14e1ec0	0x14e22d7	rip-relative	0x1789478	finite-text-operand-or-substring	green glass gems
+reference	PE:6a70a6d9:02711000	shaped-gem-name	0x14e1ec0	0x14e22f9	rip-relative	0x1789490	finite-text-operand-or-substring	clear glass gems
+reference	PE:6a70a6d9:02711000	shaped-gem-name	0x14e1ec0	0x14e231b	rip-relative	0x1789440	finite-text-operand-or-substring	crystal glass gems
+reference	PE:6a70a6d9:02711000	shaped-gem-name	0x14e1ec0	0x14e23e8	rip-relative	0x16ce760	finite-text-operand-or-substring	gems
+reference	PE:6a70a6d9:02711000	shaped-gem-name	0x14e1ec0	0x14e2412	rip-relative	0x16cead8	finite-text-operand-or-substring	green glass 
+reference	PE:6a70a6d9:02711000	shaped-gem-name	0x14e1ec0	0x14e2432	rip-relative	0x16ceac8	finite-text-operand-or-substring	clear glass 
+reference	PE:6a70a6d9:02711000	shaped-gem-name	0x14e1ec0	0x14e2452	rip-relative	0x16ceab8	finite-text-operand-or-substring	crystal glass 
+reference	PE:6a70a6d9:02711000	shaped-gem-name	0x14e1ec0	0x14e251b	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	shaped-gem-name	0x14e1ec0	0x14e25d5	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	shaped-gem-name	0x14e1ec0	0x14e25f0	rip-relative	0x16cead8	finite-text-operand-or-substring	green glass 
+reference	PE:6a70a6d9:02711000	shaped-gem-name	0x14e1ec0	0x14e2610	rip-relative	0x16ceac8	finite-text-operand-or-substring	clear glass 
+reference	PE:6a70a6d9:02711000	shaped-gem-name	0x14e1ec0	0x14e2630	rip-relative	0x16ceab8	finite-text-operand-or-substring	crystal glass 
+reference	PE:6a70a6d9:02711000	shaped-gem-name	0x14e1ec0	0x14e26f9	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	shaped-gem-name	0x14e1ec0	0x14e27b3	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	shaped-gem-name	0x14e1ec0	0x14e27ce	rip-relative	0x16cead8	finite-text-operand-or-substring	green glass 
+reference	PE:6a70a6d9:02711000	shaped-gem-name	0x14e1ec0	0x14e27eb	rip-relative	0x16ceac8	finite-text-operand-or-substring	clear glass 
+reference	PE:6a70a6d9:02711000	shaped-gem-name	0x14e1ec0	0x14e2808	rip-relative	0x16ceab8	finite-text-operand-or-substring	crystal glass 
+reference	PE:6a70a6d9:02711000	shaped-gem-name	0x14e1ec0	0x14e2833	rip-relative	0x16158fc	finite-text-operand-or-substring	gem
+reference	PE:6a70a6d9:02711000	shaped-gem-name	0x14e1ec0	0x14e29da	rip-relative	0x16ceab0	finite-text-operand-or-substring	 gem
+reference	PE:6a70a6d9:02711000	generated-art-form-name	0xa946e0	0xa948a3	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	generated-art-form-name	0xa946e0	0xa9495e	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	generated-art-form-name	0xa946e0	0xa94a3b	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	generated-art-form-name	0xa946e0	0xa94a5d	rip-relative	0x15ed9bc	finite-text-operand-or-substring	The 
+reference	PE:6a70a6d9:02711000	generated-art-form-name	0xa946e0	0xa94a78	rip-relative	0x15e8e48	finite-text-operand-or-substring	the 
+reference	PE:6a70a6d9:02711000	generated-art-form-name	0xa946e0	0xa94af2	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	generated-art-form-name	0xa946e0	0xa94b11	rip-relative	0x15ed9bc	finite-text-operand-or-substring	The 
+reference	PE:6a70a6d9:02711000	generated-art-form-name	0xa946e0	0xa94b1a	rip-relative	0x15e8e48	finite-text-operand-or-substring	the 
+reference	PE:6a70a6d9:02711000	generated-art-form-name	0xa946e0	0xa94b9a	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	generated-art-form-name	0xa946e0	0xa94bb9	rip-relative	0x15ed9bc	finite-text-operand-or-substring	The 
+reference	PE:6a70a6d9:02711000	generated-art-form-name	0xa946e0	0xa94bc2	rip-relative	0x15e8e48	finite-text-operand-or-substring	the 
+reference	PE:6a70a6d9:02711000	generated-art-form-name	0xa946e0	0xa94d1f	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	generated-art-form-name	0xa946e0	0xa94d4b	rip-relative	0x15ed9bc	finite-text-operand-or-substring	The 
+reference	PE:6a70a6d9:02711000	generated-art-form-name	0xa946e0	0xa94d62	rip-relative	0x15e8e48	finite-text-operand-or-substring	the 
+reference	PE:6a70a6d9:02711000	generated-art-form-name	0xa946e0	0xa94e09	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	generated-art-form-name	0xa946e0	0xa94e18	rip-relative	0x16ced90	finite-text-operand-or-substring	of 
+reference	PE:6a70a6d9:02711000	generated-art-form-name	0xa946e0	0xa94e1f	rip-relative	0x16cee1c	finite-text-operand-or-substring	Of 
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d3bb	rip-relative	0x15fd470	finite-text-operand-or-substring	[C:2:0:1]
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d3c9	rip-relative	0x163b600	finite-text-operand-or-substring	[C:2:0:0]
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d3d6	rip-relative	0x15fd1f8	finite-text-operand-or-substring	[C:7:0:1]
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d3e4	rip-relative	0x15fd440	finite-text-operand-or-substring	[C:4:0:1]
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d3f9	rip-relative	0x15fd430	finite-text-operand-or-substring	[C:6:0:1]
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d402	rip-relative	0x15fd480	finite-text-operand-or-substring	[C:6:0:0]
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d40b	rip-relative	0x15fd208	finite-text-operand-or-substring	[C:7:0:0]
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d41e	rip-relative	0x163b5f0	finite-text-operand-or-substring	Overall, 
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d467	rip-relative	0x15f2120	finite-text-operand-or-substring	 is 
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d482	rip-relative	0x163b5c8	finite-text-operand-or-substring	very focused with satisfied needs
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d490	rip-relative	0x163b690	finite-text-operand-or-substring	quite focused with satisfied needs
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d4b0	rip-relative	0x163b668	finite-text-operand-or-substring	somewhat focused with satisfied needs
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d4be	rip-relative	0x163b648	finite-text-operand-or-substring	badly distracted by unmet needs
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d4cc	rip-relative	0x163b628	finite-text-operand-or-substring	distracted by unmet needs
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d4db	rip-relative	0x163b568	finite-text-operand-or-substring	unfocused by unmet needs
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d4e4	rip-relative	0x163b548	finite-text-operand-or-substring	untroubled by unmet needs
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d4f7	rip-relative	0x15e3574	finite-text-operand-or-substring	.
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d659	rip-relative	0x15fd470	finite-text-operand-or-substring	[C:2:0:1]
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d667	rip-relative	0x163b600	finite-text-operand-or-substring	[C:2:0:0]
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d675	rip-relative	0x15fd1f8	finite-text-operand-or-substring	[C:7:0:1]
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d682	rip-relative	0x15fd208	finite-text-operand-or-substring	[C:7:0:0]
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d690	rip-relative	0x15fd480	finite-text-operand-or-substring	[C:6:0:0]
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d69e	rip-relative	0x15fd430	finite-text-operand-or-substring	[C:6:0:1]
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d6ac	rip-relative	0x15fd440	finite-text-operand-or-substring	[C:4:0:1]
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d6ef	rip-relative	0x15f2120	finite-text-operand-or-substring	 is 
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d704	rip-relative	0x163b538	finite-text-operand-or-substring	unfettered
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d712	rip-relative	0x163b528	finite-text-operand-or-substring	level-headed
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d720	rip-relative	0x163b5b8	finite-text-operand-or-substring	untroubled
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d72d	rip-relative	0x163b5a8	finite-text-operand-or-substring	not distracted
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d73b	rip-relative	0x163b598	finite-text-operand-or-substring	unfocused
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d749	rip-relative	0x163b588	finite-text-operand-or-substring	distracted
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d757	rip-relative	0x163b4a0	finite-text-operand-or-substring	badly distracted
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d767	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d798	rip-relative	0x163b480	finite-text-operand-or-substring	after spending time with people
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d7a4	rip-relative	0x163b460	finite-text-operand-or-substring	after being away from people
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d7b8	rip-relative	0x163b450	finite-text-operand-or-substring	after drinking
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d7c4	rip-relative	0x163b508	finite-text-operand-or-substring	after being kept from alcohol
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d7df	rip-relative	0x163b4f0	finite-text-operand-or-substring	after communing with 
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d81d	rip-relative	0x163b4d8	finite-text-operand-or-substring	after meditation
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d829	rip-relative	0x163b4b8	finite-text-operand-or-substring	after being unable to pray
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d840	rip-relative	0x15e8524	finite-text-operand-or-substring	 to 
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d88a	rip-relative	0x163b3b0	finite-text-operand-or-substring	after staying occupied
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d896	rip-relative	0x163b398	finite-text-operand-or-substring	after being unoccupied
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d8aa	rip-relative	0x163b380	finite-text-operand-or-substring	after admiring art
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d8b6	rip-relative	0x163b358	finite-text-operand-or-substring	after being unable to admire art
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d8ca	rip-relative	0x163b430	finite-text-operand-or-substring	after doing something creative
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d8d6	rip-relative	0x163b410	finite-text-operand-or-substring	after doing nothing creative
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d8ea	rip-relative	0x163b3f0	finite-text-operand-or-substring	after doing something exciting
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d8f6	rip-relative	0x163b3c8	finite-text-operand-or-substring	after leading an unexciting life
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d90a	rip-relative	0x163ba38	finite-text-operand-or-substring	after learning something
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d916	rip-relative	0x163ba18	finite-text-operand-or-substring	after not learning anything
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d92a	rip-relative	0x163ba00	finite-text-operand-or-substring	after being with family
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d936	rip-relative	0x163b9e0	finite-text-operand-or-substring	after being away from family
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d94a	rip-relative	0x163bac8	finite-text-operand-or-substring	after being with friends
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d956	rip-relative	0x163baa8	finite-text-operand-or-substring	after being away from friends
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d96a	rip-relative	0x163ba88	finite-text-operand-or-substring	after hearing eloquent speech
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d976	rip-relative	0x163ba58	finite-text-operand-or-substring	after being unable to hear eloquent speech
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d98a	rip-relative	0x163b938	finite-text-operand-or-substring	after upholding tradition
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d996	rip-relative	0x163b910	finite-text-operand-or-substring	after being away from traditions
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d9aa	rip-relative	0x163b8f8	finite-text-operand-or-substring	after self-examination
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d9b6	rip-relative	0x163b8d8	finite-text-operand-or-substring	after a lack of introspection
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d9ca	rip-relative	0x163b9c8	finite-text-operand-or-substring	after making merry
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d9d6	rip-relative	0x163b9a0	finite-text-operand-or-substring	after being unable to make merry
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d9ea	rip-relative	0x163b980	finite-text-operand-or-substring	after practicing a craft
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d9f6	rip-relative	0x163b958	finite-text-operand-or-substring	after being unable to practice a craft
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47da0a	rip-relative	0x163b838	finite-text-operand-or-substring	after practicing a martial art
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47da16	rip-relative	0x163b808	finite-text-operand-or-substring	after being unable to practice a martial art
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47da2a	rip-relative	0x163b7e8	finite-text-operand-or-substring	after practicing a skill
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47da36	rip-relative	0x163b7c0	finite-text-operand-or-substring	after being unable to practice a skill
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47da4a	rip-relative	0x163b8c0	finite-text-operand-or-substring	after taking it easy
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47da56	rip-relative	0x163b898	finite-text-operand-or-substring	after being unable to take it easy
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47da6a	rip-relative	0x163b880	finite-text-operand-or-substring	after making romance
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47da76	rip-relative	0x163b858	finite-text-operand-or-substring	after being unable to make romance
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47da8a	rip-relative	0x163b720	finite-text-operand-or-substring	after seeing animals
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47da96	rip-relative	0x163b700	finite-text-operand-or-substring	after being away from animals
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47daaa	rip-relative	0x163b6e0	finite-text-operand-or-substring	after seeing a great beast
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47dab6	rip-relative	0x163b6b8	finite-text-operand-or-substring	after being away from great beasts
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47daca	rip-relative	0x163b7a0	finite-text-operand-or-substring	after acquiring something
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47dad6	rip-relative	0x163b778	finite-text-operand-or-substring	after being unable to acquire something
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47daea	rip-relative	0x163b758	finite-text-operand-or-substring	after eating a good meal
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47daf6	rip-relative	0x163b738	finite-text-operand-or-substring	after a lack of decent meals
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47db0a	rip-relative	0x163bd20	finite-text-operand-or-substring	after fighting
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47db16	rip-relative	0x163bd00	finite-text-operand-or-substring	after being unable to fight
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47db2a	rip-relative	0x163bce8	finite-text-operand-or-substring	after causing trouble
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47db36	rip-relative	0x163bcc8	finite-text-operand-or-substring	after a lack of trouble-making
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47db47	rip-relative	0x163bd90	finite-text-operand-or-substring	after arguing
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47db50	rip-relative	0x163bd70	finite-text-operand-or-substring	after being unable to argue
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47db61	rip-relative	0x163bd58	finite-text-operand-or-substring	after being extravagant
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47db6a	rip-relative	0x163bd30	finite-text-operand-or-substring	after being unable to be extravagant
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47db7b	rip-relative	0x163bc40	finite-text-operand-or-substring	after wandering
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47db84	rip-relative	0x163bc20	finite-text-operand-or-substring	after being unable to wander
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47db95	rip-relative	0x163bc08	finite-text-operand-or-substring	after helping somebody
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47db9e	rip-relative	0x163bbe0	finite-text-operand-or-substring	after being unable to help anybody
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47dbad	rip-relative	0x163bca8	finite-text-operand-or-substring	after thinking abstractly
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47dbb6	rip-relative	0x163bc80	finite-text-operand-or-substring	after a lack of abstract thinking
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47dbc2	rip-relative	0x15e3574	finite-text-operand-or-substring	.
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47dd11	rip-relative	0x15fd1f8	finite-text-operand-or-substring	[C:7:0:1]
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47dde3	rip-relative	0x163b200	finite-text-operand-or-substring	 likes 
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47dede	rip-relative	0x163b1f8	finite-text-operand-or-substring	 wood
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47df17	rip-relative	0x163b1f0	finite-text-operand-or-substring	 fabric
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47e012	rip-relative	0x163b1e0	finite-text-operand-or-substring	 for their 
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47e0dc	rip-relative	0x163b1e0	finite-text-operand-or-substring	 for their 
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47e1a1	rip-relative	0x163b1e0	finite-text-operand-or-substring	 for their 
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47e21c	rip-relative	0x163b0c0	finite-text-operand-or-substring	the color 
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47e2f7	rip-relative	0x163b0b0	finite-text-operand-or-substring	the words of 
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47e36b	rip-relative	0x163b0a0	finite-text-operand-or-substring	the sound of 
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47e3d4	rip-relative	0x163b090	finite-text-operand-or-substring	the sight of 
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47e431	rip-relative	0x15e40c4	separator	, 
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47e43c	rip-relative	0x15e40bc	separator	 and 
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47e445	rip-relative	0x15f8850	finite-text-operand-or-substring	.  
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47e544	rip-relative	0x163b108	finite-text-operand-or-substring	When possible, 
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47e57a	rip-relative	0x16cb15c	finite-text-operand-or-substring	he
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47e58d	rip-relative	0x16cb158	finite-text-operand-or-substring	she
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47e59a	rip-relative	0x16cb15a	finite-text-operand-or-substring	e
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47e5b0	rip-relative	0x15e9484	finite-text-operand-or-substring	it
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47e5f7	rip-relative	0x163b0f0	finite-text-operand-or-substring	 prefers to consume 
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47e723	rip-relative	0x163b0e0	finite-text-operand-or-substring	unknown meat
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47e7ac	rip-relative	0x163b0d0	finite-text-operand-or-substring	unknown fish
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47e825	rip-relative	0x163b040	finite-text-operand-or-substring	unknown plants
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47e897	rip-relative	0x163b030	finite-text-operand-or-substring	unknown drink
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47e909	rip-relative	0x163b020	finite-text-operand-or-substring	unknown liquid
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47e97b	rip-relative	0x163b010	finite-text-operand-or-substring	unknown seeds
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47e9ee	rip-relative	0x163b080	finite-text-operand-or-substring	unknown leaves
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47ea60	rip-relative	0x163b070	finite-text-operand-or-substring	unknown powder
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47ead2	rip-relative	0x163b060	finite-text-operand-or-substring	unknown cheese
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47eb72	rip-relative	0x163b050	finite-text-operand-or-substring	unknown item
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47ebd7	rip-relative	0x163b050	finite-text-operand-or-substring	unknown item
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47ebe3	rip-relative	0x163b058	finite-text-operand-or-substring	item
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47ec6e	rip-relative	0x15e40c4	separator	, 
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47ec82	rip-relative	0x15e40bc	separator	 and 
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47ec91	rip-relative	0x15f8850	finite-text-operand-or-substring	.  
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47edfc	rip-relative	0x16cb15c	finite-text-operand-or-substring	he
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47ee14	rip-relative	0x16cb158	finite-text-operand-or-substring	she
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47ee1e	rip-relative	0x16cb15a	finite-text-operand-or-substring	e
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47ee2e	rip-relative	0x15e9484	finite-text-operand-or-substring	it
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47ee96	rip-relative	0x163b610	finite-text-operand-or-substring	 absolutely detests 
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47efb6	rip-relative	0x15e40c4	separator	, 
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47efc9	rip-relative	0x15e40bc	separator	 and 
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47efd8	rip-relative	0x15f8850	finite-text-operand-or-substring	.  
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47f506	rip-relative	0x15fd1f8	finite-text-operand-or-substring	[C:7:0:1]
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47f54f	rip-relative	0x163b240	finite-text-operand-or-substring	 needs alcohol to get through the working day
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47f56b	rip-relative	0x163b218	finite-text-operand-or-substring	 and can't even remember the last time 
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47f5b4	rip-relative	0x163b208	finite-text-operand-or-substring	 had some
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47f5dd	rip-relative	0x163b320	finite-text-operand-or-substring	 and has gone without a drink for far, far too long
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47f5ed	rip-relative	0x163b300	finite-text-operand-or-substring	 and really wants a drink
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47f5fd	rip-relative	0x163b2c8	finite-text-operand-or-substring	 and is starting to work slowly due to its scarcity
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47f616	rip-relative	0x15f8850	finite-text-operand-or-substring	.  
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47f650	rip-relative	0x15fd1f8	finite-text-operand-or-substring	[C:7:0:1]
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47f6c3	rip-relative	0x163b190	finite-text-operand-or-substring	 likes working outdoors and grumbles only mildly at inclement weather.  
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47f6f5	rip-relative	0x163b290	finite-text-operand-or-substring	 does not mind being outdoors, at least for a time.  
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47f72f	rip-relative	0x15fd1f8	finite-text-operand-or-substring	[C:7:0:1]
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47f79c	rip-relative	0x163b158	finite-text-operand-or-substring	 doesn't really care about anything anymore.  
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47f7d3	rip-relative	0x163b138	finite-text-operand-or-substring	 is a hardened individual.  
+classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47f80a	rip-relative	0x163b118	finite-text-operand-or-substring	 is getting used to tragedy.  
+classic	PE:6a70b91c:0270a000	unit-name	0xa910b0	0xa911bd	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	unit-name	0xa910b0	0xa91333	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	unit-name	0xa910b0	0xa9158f	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	unit-name	0xa910b0	0xa916bb	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	material-state-name	0x14cc890	0x14cc8f7	rip-relative	0x160fd14	finite-text-operand-or-substring	plant
+classic	PE:6a70b91c:0270a000	material-state-name	0x14cc890	0x14cc919	rip-relative	0x16106b8	finite-text-operand-or-substring	yarn
+classic	PE:6a70b91c:0270a000	material-state-name	0x14cc890	0x14cc941	rip-relative	0x16106a8	finite-text-operand-or-substring	cloth
+classic	PE:6a70b91c:0270a000	material-state-name	0x14cc890	0x14cc961	rip-relative	0x16106b0	finite-text-operand-or-substring	silk
+classic	PE:6a70b91c:0270a000	material-state-name	0x14cc890	0x14cc981	rip-relative	0x16106c8	finite-text-operand-or-substring	bone
+classic	PE:6a70b91c:0270a000	material-state-name	0x14cc890	0x14cc9a1	rip-relative	0x1610690	finite-text-operand-or-substring	leather
+classic	PE:6a70b91c:0270a000	material-state-name	0x14cc890	0x14cc9c1	rip-relative	0x16106c0	finite-text-operand-or-substring	shell
+classic	PE:6a70b91c:0270a000	material-state-name	0x14cc890	0x14cc9e3	rip-relative	0x16106d8	finite-text-operand-or-substring	soap
+classic	PE:6a70b91c:0270a000	material-state-name	0x14cc890	0x14cca05	rip-relative	0x1782aa0	finite-text-operand-or-substring	ivory/tooth
+classic	PE:6a70b91c:0270a000	material-state-name	0x14cc890	0x14cca27	rip-relative	0x16106e8	finite-text-operand-or-substring	horn
+classic	PE:6a70b91c:0270a000	material-state-name	0x14cc890	0x14cca49	rip-relative	0x16106e0	finite-text-operand-or-substring	pearl
+classic	PE:6a70b91c:0270a000	material-state-name	0x14cc890	0x14cca78	rip-relative	0x1610698	finite-text-operand-or-substring	wood
+classic	PE:6a70b91c:0270a000	material-state-name	0x14cc890	0x14cca7f	rip-relative	0x169c26c	finite-text-operand-or-substring	wooden
+classic	PE:6a70b91c:0270a000	material-state-name	0x14cc890	0x14ccbd5	rip-relative	0x15e8b58	separator	's 
+classic	PE:6a70b91c:0270a000	material-state-name	0x14cc890	0x14ccc69	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	material-state-name	0x14cc890	0x14cccba	rip-relative	0x1782ab0	finite-text-operand-or-substring	unknown material
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa7fda7	rip-relative	0x164517c	finite-text-operand-or-substring	large
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa7fdb0	rip-relative	0x1645180	finite-text-operand-or-substring	e
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa7fdb9	rip-relative	0x1681108	finite-text-operand-or-substring	small
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa7fdc2	rip-relative	0x168110c	finite-text-operand-or-substring	l
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa7fe0c	rip-relative	0x16c6848	finite-text-operand-or-substring	grown 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa7fee6	rip-relative	0x1677d30	finite-text-operand-or-substring	logs
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa7ff58	rip-relative	0x16ca230	finite-text-operand-or-substring	branch
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa7ff7d	rip-relative	0x16ca2d0	finite-text-operand-or-substring	es
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa7ff9d	rip-relative	0x15fc0c8	finite-text-operand-or-substring	rough gems
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa7ffb6	rip-relative	0x16ca2c0	finite-text-operand-or-substring	raw green glass
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa7ffcf	rip-relative	0x16ca2b0	finite-text-operand-or-substring	raw clear glass
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa7ffe8	rip-relative	0x16ca298	finite-text-operand-or-substring	raw crystal glass
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa8000a	rip-relative	0x15fc0c8	finite-text-operand-or-substring	rough gems
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa80028	rip-relative	0x16c70a4	finite-text-operand-or-substring	rough 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa800c7	rip-relative	0x1680d5c	finite-text-operand-or-substring	small 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa800de	rip-relative	0x1680d5c	finite-text-operand-or-substring	small 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa801be	rip-relative	0x16ca1fc	finite-text-operand-or-substring	rock
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa801de	rip-relative	0x16ca1f0	finite-text-operand-or-substring	small rock
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa80237	rip-relative	0x16ca1e0	finite-text-operand-or-substring	stone boulders
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa8025d	rip-relative	0x16ca1d0	finite-text-operand-or-substring	boulders
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa8033a	rip-relative	0x16ca188	finite-text-operand-or-substring	bars
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa80353	rip-relative	0x16ca210	finite-text-operand-or-substring	charcoal
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa80369	rip-relative	0x16ca204	finite-text-operand-or-substring	coke
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa80372	rip-relative	0x16ca190	finite-text-operand-or-substring	refined coal
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa8038b	rip-relative	0x16396f8	finite-text-operand-or-substring	metal
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa8039a	rip-relative	0x16ca21c	finite-text-operand-or-substring	 bars
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa8044a	rip-relative	0x16ca228	finite-text-operand-or-substring	 wafers
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa80538	rip-relative	0x15fc088	finite-text-operand-or-substring	cut gems
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa80551	rip-relative	0x16ca170	finite-text-operand-or-substring	cut green glass gems
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa8056a	rip-relative	0x16ca158	finite-text-operand-or-substring	cut clear glass gems
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa80580	rip-relative	0x16ca1b8	finite-text-operand-or-substring	cut crystal glass gems
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa8059b	rip-relative	0x16ca1b0	finite-text-operand-or-substring	gems
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa806d8	rip-relative	0x16ca1a8	finite-text-operand-or-substring	blocks
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa806ef	rip-relative	0x16ca1a8	finite-text-operand-or-substring	blocks
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa8079d	rip-relative	0x16ca13c	finite-text-operand-or-substring	door
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa807a4	rip-relative	0x16ca1a0	finite-text-operand-or-substring	portal
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa8081a	rip-relative	0x16ca130	finite-text-operand-or-substring	floodgate
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa8088a	rip-relative	0x16ca120	finite-text-operand-or-substring	hatch cover
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa808fa	rip-relative	0x16ca118	finite-text-operand-or-substring	grate
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa8096a	rip-relative	0x162aa9c	finite-text-operand-or-substring	table
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa809da	rip-relative	0x1637a60	finite-text-operand-or-substring	cabinet
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa80a4a	rip-relative	0x1637a50	finite-text-operand-or-substring	weapon rack
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa80aba	rip-relative	0x1637a40	finite-text-operand-or-substring	armor stand
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa80b2a	rip-relative	0x16ca154	finite-text-operand-or-substring	bin
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa80bd1	rip-relative	0x16ca150	finite-text-operand-or-substring	box
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa80bea	rip-relative	0x16ca14c	finite-text-operand-or-substring	e
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa80c13	rip-relative	0x16ca144	finite-text-operand-or-substring	coffer
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa80c22	rip-relative	0x1637a68	finite-text-operand-or-substring	chest
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa80c43	rip-relative	0x16caa88	finite-text-operand-or-substring	boxe
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa80c58	rip-relative	0x15e4220	finite-text-operand-or-substring	s
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa80c6c	rip-relative	0x16ca150	finite-text-operand-or-substring	box
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa80ce4	rip-relative	0x16caa84	finite-text-operand-or-substring	bag
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa80d7f	rip-relative	0x16caa78	finite-text-operand-or-substring	backpack
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa80e3c	rip-relative	0x16caaa8	finite-text-operand-or-substring	cast
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa80e48	rip-relative	0x16caa68	finite-text-operand-or-substring	limb/body 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa80e57	rip-relative	0x16caaa8	finite-text-operand-or-substring	cast
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa80eb7	rip-relative	0x16caa68	finite-text-operand-or-substring	limb/body 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa80ec6	rip-relative	0x16caaa8	finite-text-operand-or-substring	cast
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa80f36	rip-relative	0x16caaa0	finite-text-operand-or-substring	splint
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa80fa0	rip-relative	0x16caa98	finite-text-operand-or-substring	crutch
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa8103b	rip-relative	0x16caa90	finite-text-operand-or-substring	quiver
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa810ba	rip-relative	0x16caa24	finite-text-operand-or-substring	casket
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa81105	rip-relative	0x16caa18	finite-text-operand-or-substring	sarcophag
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa81114	rip-relative	0x163d170	finite-text-operand-or-substring	us
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa8111b	rip-relative	0x16bafec	finite-text-operand-or-substring	i
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa81137	rip-relative	0x162a9ec	finite-text-operand-or-substring	coffin
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa81254	rip-relative	0x16caa04	finite-text-operand-or-substring	chain
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa81268	rip-relative	0x16caa0c	finite-text-operand-or-substring	rope
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa813a8	rip-relative	0x16caa4c	finite-text-operand-or-substring	vial
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa813b9	rip-relative	0x16caa44	finite-text-operand-or-substring	flask
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa813d0	rip-relative	0x16caa58	finite-text-operand-or-substring	waterskin
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa81479	rip-relative	0x16caa30	finite-text-operand-or-substring	musical instrument
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa8155b	rip-relative	0x16ca9d0	finite-text-operand-or-substring	unglazed 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa816c3	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa816dd	rip-relative	0x16bcee4	finite-text-operand-or-substring	tool
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa8177d	rip-relative	0x16bcefc	finite-text-operand-or-substring	toy
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa8182d	rip-relative	0x16ca9cc	finite-text-operand-or-substring	cup
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa81861	rip-relative	0x16ca9c8	finite-text-operand-or-substring	mug
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa8187b	rip-relative	0x16ca9c0	finite-text-operand-or-substring	goblet
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa818eb	rip-relative	0x16ca9fc	finite-text-operand-or-substring	window
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa8199a	rip-relative	0x16ca9e4	finite-text-operand-or-substring	cage
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa819a1	rip-relative	0x16ca9f0	finite-text-operand-or-substring	terrarium
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa81a15	rip-relative	0x16ca9dc	finite-text-operand-or-substring	barrel
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa81a85	rip-relative	0x16ca98c	finite-text-operand-or-substring	bucket
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa81af5	rip-relative	0x16ca980	finite-text-operand-or-substring	animal trap
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa81b71	rip-relative	0x162aaa4	finite-text-operand-or-substring	chair
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa81b8b	rip-relative	0x16ca974	finite-text-operand-or-substring	throne
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa81c41	rip-relative	0x16ca970	finite-text-operand-or-substring	web
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa81c8c	rip-relative	0x16ca9b8	finite-text-operand-or-substring	strands
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa81cbf	rip-relative	0x16106b8	finite-text-operand-or-substring	yarn
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa81cd0	rip-relative	0x16106a0	finite-text-operand-or-substring	thread
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa81d45	rip-relative	0x16106a8	finite-text-operand-or-substring	cloth
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa81e4f	rip-relative	0x16ca9ac	finite-text-operand-or-substring	sheet
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa81e72	rip-relative	0x16ca9a0	finite-text-operand-or-substring	tanned hide
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa81ed5	rip-relative	0x16ca994	finite-text-operand-or-substring	totem
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa81f3e	rip-relative	0x16ca940	finite-text-operand-or-substring	-bound 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa81f5a	rip-relative	0x16ca92c	finite-text-operand-or-substring	codex
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa81f61	rip-relative	0x16ca938	finite-text-operand-or-substring	codices
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa81fe0	rip-relative	0x16ca920	finite-text-operand-or-substring	figurine
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa81ffe	rip-relative	0x16ca968	finite-text-operand-or-substring	rotten 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa82023	rip-relative	0x164aac0	finite-text-operand-or-substring	drink
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa82066	rip-relative	0x16ca968	finite-text-operand-or-substring	rotten 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa8224b	rip-relative	0x16ca960	finite-text-operand-or-substring	filthy 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa82264	rip-relative	0x16ca958	finite-text-operand-or-substring	sticky 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa82283	rip-relative	0x16ca948	finite-text-operand-or-substring	vomitous 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa8229f	rip-relative	0x16ca8ec	finite-text-operand-or-substring	slimy 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa822b8	rip-relative	0x16ab578	finite-text-operand-or-substring	stagnant 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa822d4	rip-relative	0x16ca8e4	finite-text-operand-or-substring	dirty 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa822f0	rip-relative	0x16ca8dc	finite-text-operand-or-substring	gooey 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa82309	rip-relative	0x16ca8d0	finite-text-operand-or-substring	purulent 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa82322	rip-relative	0x16ca910	finite-text-operand-or-substring	ichorous 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa8233b	rip-relative	0x16ca908	finite-text-operand-or-substring	bloody 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa8237a	rip-relative	0x16a1240	finite-text-operand-or-substring	liquid
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa824bc	rip-relative	0x16ca8fc	finite-text-operand-or-substring	 paste
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa82511	rip-relative	0x16ca8f4	finite-text-operand-or-substring	glob
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa82712	rip-relative	0x16ca880	finite-text-operand-or-substring	 laced with 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa82786	rip-relative	0x15e40c4	separator	, 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa82796	rip-relative	0x15e40bc	separator	 and 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa827fb	rip-relative	0x16ca968	finite-text-operand-or-substring	rotten 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa82898	rip-relative	0x16ca870	finite-text-operand-or-substring	 dye mix
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa828bc	rip-relative	0x16ca864	finite-text-operand-or-substring	powder
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa82916	rip-relative	0x16ca968	finite-text-operand-or-substring	rotten 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa82938	rip-relative	0x16ca85c	finite-text-operand-or-substring	cheese
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa829c0	rip-relative	0x16ca8c0	finite-text-operand-or-substring	catapult parts
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa82a38	rip-relative	0x16ca8a8	finite-text-operand-or-substring	bolt thrower parts
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa82ab0	rip-relative	0x16ca898	finite-text-operand-or-substring	mechanisms
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa82b5f	rip-relative	0x16ca890	finite-text-operand-or-substring	tube
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa82b79	rip-relative	0x16ca810	finite-text-operand-or-substring	pipe section
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa82c17	rip-relative	0x16ca800	finite-text-operand-or-substring	trap component
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa82c48	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa82d2a	rip-relative	0x16ca7f0	finite-text-operand-or-substring	ballista parts
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa82da2	rip-relative	0x16ca7e4	finite-text-operand-or-substring	anvil
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa82e12	rip-relative	0x16ca854	finite-text-operand-or-substring	amulet
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa82e82	rip-relative	0x16ca840	finite-text-operand-or-substring	ballista arrow head
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa82f29	rip-relative	0x16ca830	finite-text-operand-or-substring	siege ammo
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa83073	rip-relative	0x16ca820	finite-text-operand-or-substring	ammunition
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa830eb	rip-relative	0x16cae98	finite-text-operand-or-substring	scepter
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa8315b	rip-relative	0x16cae8c	finite-text-operand-or-substring	crown
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa831c5	rip-relative	0x16cae84	finite-text-operand-or-substring	coin
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa831e4	rip-relative	0x16cae78	finite-text-operand-or-substring	perfect 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa831f3	rip-relative	0x16455a8	finite-text-operand-or-substring	large 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa832db	rip-relative	0x16caec8	finite-text-operand-or-substring	green glass 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa832f1	rip-relative	0x16caeb8	finite-text-operand-or-substring	clear glass 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa83307	rip-relative	0x16caea8	finite-text-operand-or-substring	crystal glass 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa83323	rip-relative	0x16106fc	finite-text-operand-or-substring	gem
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa833db	rip-relative	0x16caea0	finite-text-operand-or-substring	 gem
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa834b6	rip-relative	0x16cae40	finite-text-operand-or-substring	ring
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa83526	rip-relative	0x16cae38	finite-text-operand-or-substring	earring
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa83596	rip-relative	0x16cae28	finite-text-operand-or-substring	bracelet
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa83606	rip-relative	0x162aab0	finite-text-operand-or-substring	bed
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa83676	rip-relative	0x16cae18	finite-text-operand-or-substring	traction bench
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa836e6	rip-relative	0x16cae6c	finite-text-operand-or-substring	quern
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa83756	rip-relative	0x16cae60	finite-text-operand-or-substring	millstone
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa837c6	rip-relative	0x16cae54	finite-text-operand-or-substring	statue
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa838d2	rip-relative	0x16cae48	finite-text-operand-or-substring	memorial
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa838e6	rip-relative	0x16cad90	finite-text-operand-or-substring	food imports sign
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa838fa	rip-relative	0x16cad78	finite-text-operand-or-substring	clothing imports sign
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa8390e	rip-relative	0x16cad60	finite-text-operand-or-substring	general imports sign
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa83922	rip-relative	0x16cad50	finite-text-operand-or-substring	cloth shop sign
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa83936	rip-relative	0x16cae00	finite-text-operand-or-substring	leather shop sign
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa8394a	rip-relative	0x16cade0	finite-text-operand-or-substring	woven clothing shop sign
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa8395e	rip-relative	0x16cadc0	finite-text-operand-or-substring	leather clothing shop sign
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa83972	rip-relative	0x16cada8	finite-text-operand-or-substring	bone carver's shop sign
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa83986	rip-relative	0x16cacd8	finite-text-operand-or-substring	gem cutter's shop sign
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa8399a	rip-relative	0x16cacc0	finite-text-operand-or-substring	weaponsmith's shop sign
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa839ae	rip-relative	0x16caca8	finite-text-operand-or-substring	bowyer's shop sign
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa839c2	rip-relative	0x16cac90	finite-text-operand-or-substring	blacksmith's shop sign
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa839d6	rip-relative	0x16cad38	finite-text-operand-or-substring	armorsmith's shop sign
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa839ea	rip-relative	0x16cad20	finite-text-operand-or-substring	metal craft shop sign
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa839fe	rip-relative	0x16cad08	finite-text-operand-or-substring	leather goods shop sign
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa83a12	rip-relative	0x16cacf0	finite-text-operand-or-substring	carpenter's shop sign
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa83a26	rip-relative	0x16cac40	finite-text-operand-or-substring	stone furniture shop sign
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa83a3a	rip-relative	0x16cac20	finite-text-operand-or-substring	metal furniture shop sign
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa83a4e	rip-relative	0x16cac10	finite-text-operand-or-substring	tavern sign
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa83a62	rip-relative	0x16cac04	finite-text-operand-or-substring	slab
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa83a76	rip-relative	0x16cac04	finite-text-operand-or-substring	slab
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa83a94	rip-relative	0x16ca968	finite-text-operand-or-substring	rotten 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa83aa9	rip-relative	0x16cac84	finite-text-operand-or-substring	corpse
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa83ac7	rip-relative	0x16ca968	finite-text-operand-or-substring	rotten 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa83aeb	rip-relative	0x16106d0	finite-text-operand-or-substring	tooth
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa83afc	rip-relative	0x16cac7c	finite-text-operand-or-substring	teeth
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa83b11	rip-relative	0x16106c8	finite-text-operand-or-substring	bone
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa83b29	rip-relative	0x16106c0	finite-text-operand-or-substring	shell
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa83b41	rip-relative	0x16cac70	finite-text-operand-or-substring	plant part
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa83b59	rip-relative	0x16cac60	finite-text-operand-or-substring	silk body part
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa83b71	rip-relative	0x16cabb8	finite-text-operand-or-substring	leather body part
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa83b89	rip-relative	0x16caba0	finite-text-operand-or-substring	wooden body part
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa83ba3	rip-relative	0x16cab90	finite-text-operand-or-substring	soap body part
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa83bbd	rip-relative	0x16106e8	finite-text-operand-or-substring	horn
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa83bd7	rip-relative	0x16106e0	finite-text-operand-or-substring	pearl
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa83bf1	rip-relative	0x16cab80	finite-text-operand-or-substring	yarn body part
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa83c09	rip-relative	0x16cabf0	finite-text-operand-or-substring	strand body part
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa83c12	rip-relative	0x167bdf0	finite-text-operand-or-substring	body part
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa83c3b	rip-relative	0x16cabe8	finite-text-operand-or-substring	Rotten 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa83da2	rip-relative	0x1679ef8	finite-text-operand-or-substring	remains
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa83e01	rip-relative	0x16cabdc	finite-text-operand-or-substring	seeds
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa83e72	rip-relative	0x16cabd0	finite-text-operand-or-substring	withered 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa83ee6	rip-relative	0x16cab28	finite-text-operand-or-substring	leaves and fruit
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa83ef7	rip-relative	0x16cab18	finite-text-operand-or-substring	leaf or fruit
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa83f2a	rip-relative	0x16cabd0	finite-text-operand-or-substring	withered 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa83f7d	rip-relative	0x160fd14	finite-text-operand-or-substring	plant
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa83f96	rip-relative	0x15e4220	finite-text-operand-or-substring	s
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa83fbc	rip-relative	0x16ca968	finite-text-operand-or-substring	rotten 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa83fd4	rip-relative	0x16cab10	finite-text-operand-or-substring	raw 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa84155	rip-relative	0x15e40c4	separator	, 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa8416b	rip-relative	0x15e40c4	separator	, 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa84184	rip-relative	0x169c0e8	finite-text-operand-or-substring	fish
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa841aa	rip-relative	0x16ca968	finite-text-operand-or-substring	rotten 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa842d1	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa842e6	rip-relative	0x16cab0c	finite-text-operand-or-substring	egg
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa8430c	rip-relative	0x16ca968	finite-text-operand-or-substring	rotten 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa8440b	rip-relative	0x169c0e8	finite-text-operand-or-substring	fish
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa84428	rip-relative	0x16cab74	finite-text-operand-or-substring	live 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa84461	rip-relative	0x16cab60	finite-text-operand-or-substring	small live animal
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa8447b	rip-relative	0x16cab54	finite-text-operand-or-substring	tame 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa84484	rip-relative	0x16cab40	finite-text-operand-or-substring	small tame animal
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa8449b	rip-relative	0x16caad0	finite-text-operand-or-substring	prepared meal
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa844b5	rip-relative	0x16ca968	finite-text-operand-or-substring	rotten 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa844ca	rip-relative	0x16caac0	finite-text-operand-or-substring	preserved 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa8458c	rip-relative	0x16caab8	finite-text-operand-or-substring	 chops
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa8459d	rip-relative	0x16caab0	finite-text-operand-or-substring	 chop
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa845d6	rip-relative	0x16cab04	finite-text-operand-or-substring	meat
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa845f0	rip-relative	0x16cab04	finite-text-operand-or-substring	meat
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa84682	rip-relative	0x16bce90	finite-text-operand-or-substring	weapon
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa846bb	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa847e7	rip-relative	0x16caaf0	finite-text-operand-or-substring	suits of 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa847f6	rip-relative	0x16bce88	finite-text-operand-or-substring	armor
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa8485c	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa84906	rip-relative	0x16caafc	finite-text-operand-or-substring	chain 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa84a15	rip-relative	0x1635604	finite-text-operand-or-substring	right 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa84a35	rip-relative	0x163560c	finite-text-operand-or-substring	left 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa84a7e	rip-relative	0x16caafc	finite-text-operand-or-substring	chain 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa84adf	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa84af3	rip-relative	0x16caae0	finite-text-operand-or-substring	handwear
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa84b97	rip-relative	0x16bce58	finite-text-operand-or-substring	shield
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa84bb6	rip-relative	0x16cb2a0	finite-text-operand-or-substring	/buckler
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa84bca	rip-relative	0x16cb2a0	finite-text-operand-or-substring	/buckler
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa84d07	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa84d37	rip-relative	0x16cb290	finite-text-operand-or-substring	footwear
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa84e28	rip-relative	0x16cb280	finite-text-operand-or-substring	headwear
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa84e6c	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa84f28	rip-relative	0x16cb278	finite-text-operand-or-substring	legwear
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa84fac	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa850c6	rip-relative	0x15f7fb0	finite-text-operand-or-substring	item
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa850f7	rip-relative	0x1616f6c	finite-text-operand-or-substring	 [
+classic	PE:6a70b91c:0270a000	item-name	0xa7fc90	0xa85117	rip-relative	0x15f8664	finite-text-operand-or-substring	]
+classic	PE:6a70b91c:0270a000	material-gem-name	0x14cc700	0x14cc778	rip-relative	0x1677310	finite-text-operand-or-substring	NP
+classic	PE:6a70b91c:0270a000	material-gem-name	0x14cc700	0x14cc7c2	rip-relative	0x167730c	finite-text-operand-or-substring	STP
+classic	PE:6a70b91c:0270a000	shaped-gem-name	0x14dce30	0x14dced4	rip-relative	0x16caec8	finite-text-operand-or-substring	green glass 
+classic	PE:6a70b91c:0270a000	shaped-gem-name	0x14dce30	0x14dcef4	rip-relative	0x16caeb8	finite-text-operand-or-substring	clear glass 
+classic	PE:6a70b91c:0270a000	shaped-gem-name	0x14dce30	0x14dcf14	rip-relative	0x16caea8	finite-text-operand-or-substring	crystal glass 
+classic	PE:6a70b91c:0270a000	shaped-gem-name	0x14dce30	0x14dcfdd	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	shaped-gem-name	0x14dce30	0x14dd08d	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	shaped-gem-name	0x14dce30	0x14dd0a8	rip-relative	0x16caec8	finite-text-operand-or-substring	green glass 
+classic	PE:6a70b91c:0270a000	shaped-gem-name	0x14dce30	0x14dd0c8	rip-relative	0x16caeb8	finite-text-operand-or-substring	clear glass 
+classic	PE:6a70b91c:0270a000	shaped-gem-name	0x14dce30	0x14dd0e8	rip-relative	0x16caea8	finite-text-operand-or-substring	crystal glass 
+classic	PE:6a70b91c:0270a000	shaped-gem-name	0x14dce30	0x14dd1b1	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	shaped-gem-name	0x14dce30	0x14dd22c	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	shaped-gem-name	0x14dce30	0x14dd247	rip-relative	0x1784830	finite-text-operand-or-substring	green glass gems
+classic	PE:6a70b91c:0270a000	shaped-gem-name	0x14dce30	0x14dd269	rip-relative	0x1784700	finite-text-operand-or-substring	clear glass gems
+classic	PE:6a70b91c:0270a000	shaped-gem-name	0x14dce30	0x14dd28b	rip-relative	0x1784718	finite-text-operand-or-substring	crystal glass gems
+classic	PE:6a70b91c:0270a000	shaped-gem-name	0x14dce30	0x14dd358	rip-relative	0x16ca1b0	finite-text-operand-or-substring	gems
+classic	PE:6a70b91c:0270a000	shaped-gem-name	0x14dce30	0x14dd382	rip-relative	0x16caec8	finite-text-operand-or-substring	green glass 
+classic	PE:6a70b91c:0270a000	shaped-gem-name	0x14dce30	0x14dd3a2	rip-relative	0x16caeb8	finite-text-operand-or-substring	clear glass 
+classic	PE:6a70b91c:0270a000	shaped-gem-name	0x14dce30	0x14dd3c2	rip-relative	0x16caea8	finite-text-operand-or-substring	crystal glass 
+classic	PE:6a70b91c:0270a000	shaped-gem-name	0x14dce30	0x14dd48b	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	shaped-gem-name	0x14dce30	0x14dd545	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	shaped-gem-name	0x14dce30	0x14dd560	rip-relative	0x16caec8	finite-text-operand-or-substring	green glass 
+classic	PE:6a70b91c:0270a000	shaped-gem-name	0x14dce30	0x14dd580	rip-relative	0x16caeb8	finite-text-operand-or-substring	clear glass 
+classic	PE:6a70b91c:0270a000	shaped-gem-name	0x14dce30	0x14dd5a0	rip-relative	0x16caea8	finite-text-operand-or-substring	crystal glass 
+classic	PE:6a70b91c:0270a000	shaped-gem-name	0x14dce30	0x14dd669	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	shaped-gem-name	0x14dce30	0x14dd723	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	shaped-gem-name	0x14dce30	0x14dd73e	rip-relative	0x16caec8	finite-text-operand-or-substring	green glass 
+classic	PE:6a70b91c:0270a000	shaped-gem-name	0x14dce30	0x14dd75b	rip-relative	0x16caeb8	finite-text-operand-or-substring	clear glass 
+classic	PE:6a70b91c:0270a000	shaped-gem-name	0x14dce30	0x14dd778	rip-relative	0x16caea8	finite-text-operand-or-substring	crystal glass 
+classic	PE:6a70b91c:0270a000	shaped-gem-name	0x14dce30	0x14dd7a3	rip-relative	0x16106fc	finite-text-operand-or-substring	gem
+classic	PE:6a70b91c:0270a000	shaped-gem-name	0x14dce30	0x14dd94a	rip-relative	0x16caea0	finite-text-operand-or-substring	 gem
+classic	PE:6a70b91c:0270a000	generated-art-form-name	0xa91760	0xa91923	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	generated-art-form-name	0xa91760	0xa919de	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	generated-art-form-name	0xa91760	0xa91abb	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	generated-art-form-name	0xa91760	0xa91add	rip-relative	0x15e89c4	finite-text-operand-or-substring	The 
+classic	PE:6a70b91c:0270a000	generated-art-form-name	0xa91760	0xa91af8	rip-relative	0x15e3e34	finite-text-operand-or-substring	the 
+classic	PE:6a70b91c:0270a000	generated-art-form-name	0xa91760	0xa91b72	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	generated-art-form-name	0xa91760	0xa91b91	rip-relative	0x15e89c4	finite-text-operand-or-substring	The 
+classic	PE:6a70b91c:0270a000	generated-art-form-name	0xa91760	0xa91b9a	rip-relative	0x15e3e34	finite-text-operand-or-substring	the 
+classic	PE:6a70b91c:0270a000	generated-art-form-name	0xa91760	0xa91c1a	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	generated-art-form-name	0xa91760	0xa91c39	rip-relative	0x15e89c4	finite-text-operand-or-substring	The 
+classic	PE:6a70b91c:0270a000	generated-art-form-name	0xa91760	0xa91c42	rip-relative	0x15e3e34	finite-text-operand-or-substring	the 
+classic	PE:6a70b91c:0270a000	generated-art-form-name	0xa91760	0xa91d9f	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	generated-art-form-name	0xa91760	0xa91dcb	rip-relative	0x15e89c4	finite-text-operand-or-substring	The 
+classic	PE:6a70b91c:0270a000	generated-art-form-name	0xa91760	0xa91de2	rip-relative	0x15e3e34	finite-text-operand-or-substring	the 
+classic	PE:6a70b91c:0270a000	generated-art-form-name	0xa91760	0xa91e89	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	generated-art-form-name	0xa91760	0xa91e98	rip-relative	0x16cb220	finite-text-operand-or-substring	of 
+classic	PE:6a70b91c:0270a000	generated-art-form-name	0xa91760	0xa91e9f	rip-relative	0x16cb2ac	finite-text-operand-or-substring	Of 

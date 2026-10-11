@@ -198,6 +198,7 @@ void Overlay::append_fortress_justice_rows(std::vector<std::string> &rows,
         "Interrogations", "Actors", "Organizations", "Plots"
     }};
     int actors_body_y = -1;
+    int plots_body_y = -1;
     bool interrogations_selected = false;
     for (int y = band->tabs_y + 1; y < std::min(bottom, band->tabs_y + 6); ++y) {
         std::array<int, intelligence_tabs.size()> starts{};
@@ -226,6 +227,9 @@ void Overlay::append_fortress_justice_rows(std::vector<std::string> &rows,
         const int actor_color = color_at(starts[1]);
         const int report_color = color_at(starts[0]);
         const int plot_color = color_at(starts[3]);
+        if (plot_color >= 0 && actor_color >= 0 && report_color >= 0 &&
+                plot_color != actor_color && actor_color == report_color)
+            plots_body_y = y + 1;
         if (actor_color >= 0 && report_color >= 0 &&
             actor_color != report_color && report_color == plot_color)
             actors_body_y = y + 1;
@@ -373,6 +377,7 @@ void Overlay::append_fortress_justice_rows(std::vector<std::string> &rows,
         }
         std::fill_n(rows[part.y].begin() + part.x, length, ' ');
     };
+#include "fortress_justice_plots.inc"
     if (actors_body_y >= 0) {
         // Actors are numbered records, not case buttons or report prose.
         // The counter owns its separate native field. Claim the complete
@@ -764,7 +769,7 @@ void Overlay::layout_fortress_justice(SDL_Renderer *renderer) {
         match.layout_box_pixel_x = -1;
         match.layout_box_pixel_width = 0;
         match.layout_right = false;
-        if (match.rule == kFortressJusticeActorRule) {
+        if (match.rule == kFortressJusticeActorRule || match.rule == kFortressJusticePlotRule) {
             // Preserve each native row/baseline and the independently drawn
             // counter. The complete name or alias shares one left edge.
             match.layout_left = true;

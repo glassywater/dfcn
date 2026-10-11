@@ -1,6 +1,99 @@
 # Complete history_event agreement paragraph and subject constructions.
 # Sources: tools/announcement-event-literal-inventory.tsv; branch inspection includes all chained PE function portions.
 # scope	source	target	semantic fields	native provenance
+# Returned travellers call every history_event getSentence at vtable+0xd0.
+# These are the complete early diplomacy roots (types 6..12), independently
+# of modern agreement_formed type 75. The two optional support paragraphs are
+# appended only when their own native pointers produce nonempty text.
+historical-event-paragraph	In {s}, {s}.	{s1}，{s2}。	$date,diplomatic-event-core	Steam type 6..12 +0xd0; data/extracted/announcement-negotiation-native/returned-history-dispatch.tsv
+historical-event-paragraph	In {s}, {s}. {s}	{s1}，{s2}。{s3}	$date,diplomatic-event-core,agreement-followup	Steam b81170/b814d0/b81b60/b82720/b83650/b839b0; negotiation then intrigue, nonempty paragraphs only
+# Type 77 chooses a short conclusion noun, not type 75's formed subject.
+# An existing agreement with no recognized first subject contributes no noun;
+# the other party and any recognized conclusion reason still follow.
+historical-event-paragraph	In {s}, {s}.	{s1}，{s2}。	$date,agreement-conclusion-core	Steam b81f00 / classic b7ef40; type 77 +0xd0
+agreement-conclusion-core	{s} concluded	{s1}结束了协议	$historical-actor	Steam b820ba/b820ca/b82437; subject missing, type 1, or unrecognized noun selector
+agreement-conclusion-core	{s} concluded {s}	{s1}结束了{s2}	$historical-actor,agreement-conclusion-title	Steam b81f94..b82437; short conclusion noun
+agreement-conclusion-core	{s} with {s}	{s1}，协议另一方为{s2}	agreement-conclusion-core,agreement-party-list	Steam b82450..b82503; first party not containing concluder
+agreement-conclusion-core	{s} {s}	{s1}，{s2}	agreement-conclusion-core,agreement-conclusion-reason	Steam b82549..b82622; native nonempty reason selectors
+agreement-conclusion-title	an agreement	一项协议		Steam b82032..b82042; agreement lookup missing only
+agreement-conclusion-title	an insurrection mission	一项起义任务		Steam b82207; joining purpose 0
+agreement-conclusion-title	an adventure	一场冒险		Steam b82221; joining purpose 1
+agreement-conclusion-title	a guide agreement	一项向导协议		Steam b8223b; joining purpose 2
+agreement-conclusion-title	a journey to safety	一段前往安全地点的旅程		Steam b82255; joining purpose 23
+agreement-conclusion-title	a rescue mission	一项营救任务		Steam b821ed; joining purpose 24
+agreement-conclusion-title	bound service	被迫效力的关系		Steam b8226f; joining purpose 39
+agreement-conclusion-title	a performance tour	一次巡回演出		Steam b82289; joining purpose 42
+agreement-conclusion-title	a residency agreement	一项居留协议		Steam b82193; agreement subject 2
+agreement-conclusion-title	a citizenship agreement	一项入籍协议		Steam b8215f; agreement subject 3
+agreement-conclusion-title	a parley	一场谈判		Steam b82179; agreement subject 4
+agreement-conclusion-title	corrupt dealing	一笔腐败交易		Steam b82145; agreement subject 5
+agreement-conclusion-title	a theft deal	一笔盗窃交易		Steam b8212b; agreement subject 6
+agreement-conclusion-title	a promise of position	一项职位承诺		Steam b821ad; agreement subject 7
+agreement-conclusion-title	an assassination plot	一场刺杀阴谋		Steam b82111; agreement subject 8
+agreement-conclusion-title	an abduction plot	一场绑架阴谋		Steam b820f7; agreement subject 9
+agreement-conclusion-title	a sabotage plot	一场破坏阴谋		Steam b820dd; agreement subject 10
+agreement-conclusion-title	a foiled bribery conspiracy	一场遭挫败的贿赂阴谋		Steam b822f0; corruption selector 0
+agreement-conclusion-title	a foiled corruption conspiracy	一场遭挫败的腐败阴谋		Steam b822d6; corruption selector 2
+agreement-conclusion-title	a foiled embezzlement conspiracy	一场遭挫败的挪用资金阴谋		Steam b822bc; corruption selector 3
+agreement-conclusion-title	an agreement to establish a temple	一项建立神殿的协议		Steam b8230a; building selector 2, tier does not affect conclusion noun
+agreement-conclusion-title	an agreement to establish a guildhall	一项建立行会大厅的协议		Steam b82329; building selector 11, tier does not affect conclusion noun
+agreement-conclusion-title	an infiltration plot	一场潜入阴谋		Steam b82351; agreement subject 13
+agreement-conclusion-title	a framing plot	一场栽赃阴谋		Steam b8236b; agreement subject 14
+agreement-conclusion-title	a war starting plot	一场挑起战争的阴谋		Steam b82385; agreement subject 15
+agreement-conclusion-title	a request to offer service	一项效力请求		Steam b8239f; agreement subject 16, entity absent
+agreement-conclusion-title	a request to offer service to {s}	一项向{s1}效力的请求	$name	Steam b823b4..b82432; agreement subject 16, entity present
+agreement-conclusion-title	an agreement to retrieve {s}	一项取回{s1}的协议	agreement-item	Steam b823dd..b82400; agreement subject 17, recipient entity absent
+agreement-conclusion-title	an agreement to retrieve {s} for {s}	一项为{s2}取回{s1}的协议	agreement-item,$name	Steam b82405..b82432; agreement subject 17, recipient entity present
+agreement-conclusion-reason	on a whim	出于一时兴起		Steam b825e6; selector 13
+agreement-conclusion-reason	after a violent disagreement	在激烈争执之后		Steam b8260a; selector 37
+agreement-conclusion-reason	after arriving at the destination	在抵达目的地之后		Steam b8259e; selectors 33/40
+agreement-conclusion-reason	because the group travelled too slowly	因为队伍行进得太慢		Steam b8258c; selectors 30/31
+agreement-conclusion-reason	because the group went too far away	因为队伍走得太远		Steam b825d4; selectors 32/35
+agreement-conclusion-reason	after a joyous reunion	在欢欣重逢之后		Steam b825f8; selector 36
+agreement-conclusion-reason	due to a lack of performances	因为演出不足		Steam b825c2; selector 52
+agreement-conclusion-reason	because of a leadership change at the site	因为当地领导者发生更替		Steam b825b0; selector 34
+agreement-conclusion-reason	after an adoption	在收养之后		Steam b8261c; selector 38
+diplomatic-event-core	{s} at {s}	{s1}，地点为{s2}	diplomatic-event-core,$travel-site	Early diplomacy event site != -1; b93930 site identity before terminal period
+diplomatic-event-core	{s} made contact with {s}	{s1}与{s2}建立了联系	$name,$name	Steam b81170 / classic b7e1b0; type 6 source then destination entities
+diplomatic-event-core	{s} rejected contact with {s}	{s1}拒绝与{s2}建立联系	$name,$name	Steam b814d0 / classic b7e510; type 7 destination then source entities
+diplomatic-event-core	{s} proposed by {s} was rejected by {s}	{s3}拒绝了{s2}提出的{s1}	diplomatic-meeting-topic,$name,$name	Steam b81b60 / classic b7eba0; type 9, every topic
+diplomatic-event-core	{s} proposed by {s} was accepted by {s}	{s3}接受了{s2}提出的{s1}	diplomatic-meeting-topic,$name,$name	Steam b82720 / classic b7f760; type 10, topic != 13
+diplomatic-event-core	{s} was made to {s} by {s}	{s3}向{s2}作出了{s1}	diplomatic-meeting-topic,$name,$name	Steam b827bd / classic b7f7fd; type 10 topic 13 declaration of war
+diplomatic-event-core	{s} accepted an offer of peace from {s}	{s1}接受了{s2}的议和提议	$name,$name	Steam b83650 / classic b80690; type 11 destination then source entities
+diplomatic-event-core	{s} rejected an offer of peace from {s}	{s1}拒绝了{s2}的议和提议	$name,$name	Steam b839b0 / classic b809f0; type 12 destination then source entities
+diplomatic-meeting-topic	a vague agreement	一项未明确内容的协议		Steam b95020 / classic b92060; selectors 0/7/8/11/12 and every out-of-range signed int16
+diplomatic-meeting-topic	a peace agreement	和平协议		Steam b95020; topic 1
+diplomatic-meeting-topic	a lumber agreement	伐木协议		Steam b95020; topic 2
+diplomatic-meeting-topic	the establishment of landed nobility	册立领地贵族		Steam b95020; topic 3
+diplomatic-meeting-topic	the elevation of the landed nobility	晋升领地贵族		Steam b95020; topic 4
+diplomatic-meeting-topic	a trade agreement	贸易协议		Steam b95020; topic 5/6
+diplomatic-meeting-topic	a tribute agreement	贡赋协议		Steam b95020; topic 9
+diplomatic-meeting-topic	a demand of unconditional surrender	无条件投降的要求		Steam b95020; topic 10
+diplomatic-meeting-topic	a declaration of war	宣战		Steam b95020; topic 13
+diplomatic-meeting-topic	an alliance	结盟		Steam b95020; topic 14
+diplomatic-meeting-topic	a strengthening of trade ties	加强贸易关系		Steam b95020; topic 15/16
+# Type 8 has six magnitude suffixes and a genuine empty default, with site
+# independently present before "concluded"; it has no negotiation/intrigue tail.
+diplomatic-event-core	{s} between {s} and {s} concluded	{s2}与{s3}之间的{s1}结束了	diplomatic-meeting-topic,$name,$name	Steam b81830 / classic b7e870; outcome outside -3..2, no site
+diplomatic-event-core	{s} between {s} and {s} concluded with miserable outcome	{s2}与{s3}之间的{s1}结束了，结果惨淡	diplomatic-meeting-topic,$name,$name	Steam b819bc outcome selector -3
+diplomatic-event-core	{s} between {s} and {s} concluded in failure	{s2}与{s3}之间的{s1}以失败告终	diplomatic-meeting-topic,$name,$name	Steam b819bc outcome selector -2
+diplomatic-event-core	{s} between {s} and {s} concluded in an unsatisfactory fashion	{s2}与{s3}之间的{s1}结束了，结果不尽如人意	diplomatic-meeting-topic,$name,$name	Steam b819bc outcome selector -1
+diplomatic-event-core	{s} between {s} and {s} concluded fairly	{s2}与{s3}之间的{s1}顺利结束了	diplomatic-meeting-topic,$name,$name	Steam b819bc outcome selector 0
+diplomatic-event-core	{s} between {s} and {s} concluded with a positive outcome	{s2}与{s3}之间的{s1}结束了，结果良好	diplomatic-meeting-topic,$name,$name	Steam b819bc outcome selector 1
+diplomatic-event-core	{s} between {s} and {s} concluded, cementing bonds of mutual trust	{s2}与{s3}之间的{s1}结束了，并巩固了相互信任的纽带	diplomatic-meeting-topic,$name,$name	Steam b819bc outcome selector 2; comma belongs to suffix
+diplomatic-event-core	{s} between {s} and {s} at {s} concluded	{s2}与{s3}在{s4}达成的{s1}结束了	diplomatic-meeting-topic,$name,$name,$travel-site	Steam b81830 / classic b7e870; outcome outside -3..2, site present
+diplomatic-event-core	{s} between {s} and {s} at {s} concluded with miserable outcome	{s2}与{s3}在{s4}达成的{s1}结束了，结果惨淡	diplomatic-meeting-topic,$name,$name,$travel-site	Steam b819bc outcome selector -3, site present
+diplomatic-event-core	{s} between {s} and {s} at {s} concluded in failure	{s2}与{s3}在{s4}达成的{s1}以失败告终	diplomatic-meeting-topic,$name,$name,$travel-site	Steam b819bc outcome selector -2, site present
+diplomatic-event-core	{s} between {s} and {s} at {s} concluded in an unsatisfactory fashion	{s2}与{s3}在{s4}达成的{s1}结束了，结果不尽如人意	diplomatic-meeting-topic,$name,$name,$travel-site	Steam b819bc outcome selector -1, site present
+diplomatic-event-core	{s} between {s} and {s} at {s} concluded fairly	{s2}与{s3}在{s4}达成的{s1}顺利结束了	diplomatic-meeting-topic,$name,$name,$travel-site	Steam b819bc outcome selector 0, site present
+diplomatic-event-core	{s} between {s} and {s} at {s} concluded with a positive outcome	{s2}与{s3}在{s4}达成的{s1}结束了，结果良好	diplomatic-meeting-topic,$name,$name,$travel-site	Steam b819bc outcome selector 1, site present
+diplomatic-event-core	{s} between {s} and {s} at {s} concluded, cementing bonds of mutual trust	{s2}与{s3}在{s4}达成的{s1}结束了，并巩固了相互信任的纽带	diplomatic-meeting-topic,$name,$name,$travel-site	Steam b819bc outcome selector 2, site present
+# Complete hf_confronted suspicion subjects keep the figure, site and reason in separate fields.
+# The shared event parser removes the seasonal/year date before entering this production.
+historical-event-title	the general suspicion of {s} in {s} after appearing not to age	因看起来不会衰老，{s1}在{s2}受到普遍怀疑	$memorial-actor,$travel-site	0x140b76ba0; native suspicion summary; figure + site + fixed reason, before shared date tail
+historical-event-title	the general suspicion of {s} in {s} after a murder	因发生一起谋杀，{s1}在{s2}受到普遍怀疑	$memorial-actor,$travel-site	0x140b76ba0; native suspicion summary; figure + site + fixed reason, before shared date tail
+historical-event-title	the general suspicion of {s} in {s} after a murder and appearing not to age	因发生一起谋杀且看起来不会衰老，{s1}在{s2}受到普遍怀疑	$memorial-actor,$travel-site	0x140b76ba0; native suspicion summary; figure + site + fixed reason, before shared date tail
+historical-event-title	the general suspicion of {s} in {s} after appearing not to age and a murder	因看起来不会衰老且发生一起谋杀，{s1}在{s2}受到普遍怀疑	$memorial-actor,$travel-site	0x140b76ba0; native suspicion summary; figure + site + fixed reason, before shared date tail
 # Artwork event 87: artifact identity, independent HF/civilization destroyers,
 # optional site, then an unconditional date. The undated forms are the subject
 # left by the shared event-date parser, not additional native output branches.
@@ -35,7 +128,7 @@ historical-event-title	{s}	{s1}	agreement-title	0x1402aaf70..0x1402ad7eb / 0x140
 historical-event-title	{s} in {s}	{s2}的{s1}	agreement-title,$date	0x1402ad8c5..0x1402ad8e3 common date tail
 agreement-party	an unknown party	身份不明的一方		0x1402ab210 and analogous absent participant branches
 agreement-party-list	an unknown party	身份不明的一方		0x1402ab210 and analogous absent participant branches
-agreement-party	{s}	{s1}	$unit	0x1400e2b80..0x1400e2cb1; first HF vector -> 0x140b92f10
+agreement-party	{s}	{s1}	$historical-actor	0x1400e2b80..0x1400e2cb1; first HF vector -> 0x140b92f10
 agreement-party	{s}	{s1}	$name	0x1400e2b80..0x1400e2cb1; second entity vector -> 0x140b92900
 agreement-party-list	{s}	{s1}	agreement-party	0x1402aaf70..0x1402ad7eb / 0x1402ad7f0..0x1402afec3
 agreement-party-list	{s}, {s}	{s1}、{s2}	agreement-party,agreement-party-list	0x1400e2b80..0x1400e2cb1 and 0x1402ab1ad..0x1402ab27d
@@ -44,7 +137,7 @@ agreement-party-list	{s} and {s}	{s1}和{s2}	agreement-party,agreement-party-lis
 agreement-item	{s}	{s1}	$book	0x140b94400; named artifact or written work
 agreement-item	{s}	{s1}	$item	0x140b94400 -> 0x140c65450; unnamed non-book artifact
 agreement-item	an unknown artifact	一件来历不明的造物		0x140b94400 fallback
-agreement-target	{s}	{s1}	$unit	0x1402abd44/0x1402ae1df; historical figure target
+agreement-target	{s}	{s1}	$historical-actor	0x1402abd44/0x1402ae1df; historical figure target
 agreement-target	{s}	{s1}	$name	0x1402abd5b/0x1402ae1f6; entity target
 agreement-record	{s}	{s1}	agreement-core	0x1402aaf70..0x1402ad7eb / 0x1402ad7f0..0x1402afec3
 agreement-record	{s} under the influence of {s}	在{s2}的影响下，{s1}	agreement-core,agreement-party-list	0x1402aaf70..0x1402ad7eb / 0x1402ad7f0..0x1402afec3
@@ -54,12 +147,67 @@ agreement-title	{s}	{s1}	agreement-title-core	0x1402aaf70..0x1402ad7eb / 0x1402a
 agreement-title	{s} under the influence of {s}	{s2}影响下的{s1}	agreement-title-core,agreement-party-list	0x1402aaf70..0x1402ad7eb / 0x1402ad7f0..0x1402afec3
 agreement-title	{s} via {s}	经{s2}居中联络的{s1}	agreement-title,agreement-party-list	0x1402aaf70..0x1402ad7eb / 0x1402ad7f0..0x1402afec3
 agreement-core	a corrupt agreement was formed	达成了一项腐败交易		0x1402aaf70..0x1402ad7eb / 0x1402ad7f0..0x1402afec3
+# Native empty/default predicates keep all independent influence and via tails.
+agreement-core	{s} joined with {s} to help rescue	{s1}与{s2}同行，前去营救……	agreement-party-list,agreement-party-list	Steam 2ad086..2ad0b2 / classic 2aac46..2aac72; purpose 24, figure and identity absent
+agreement-core	{s} began	{s1}开始了……	agreement-party-list	Steam 2ac7ac..2ac7ec; action outside 247..249
+agreement-core	{s} began as a {s} of {s}	{s1}作为{s3}的一位{s2}开始了……	agreement-party-list,$office,$name	Steam 2ac7f0..2ac8e5; action outside 247..249, office unique != 1
+agreement-core	{s} began as the {s} of {s}	{s1}作为{s3}的{s2}开始了……	agreement-party-list,$office,$name	Steam 2ac7f0..2ac8e5; action outside 247..249, office unique == 1
+agreement-core	{s} as a of {s}	{s1}（在{s2}任职）	agreement-core,$name	Steam 2ac878..2ac8e5; position found, empty title, unique != 1
+agreement-core	{s} as the of {s}	{s1}（在{s2}任职）	agreement-core,$name	Steam 2ac878..2ac8e5; position found, empty title, unique == 1
+agreement-core	{s} concocted	{s1}策划了……	agreement-party-list	Steam 2ab2ae..2ab2f0; corruption outside 0/2/3
+agreement-core	{s} agreed to establish for {s}	{s1}同意为{s2}建造……	agreement-party-list,agreement-party-list	Steam 2ad155..2ad226; building outside 2/11 or tier outside 1/2
+agreement-core	{s} plotted to frame {s} for by fooling {s}	{s1}密谋欺骗{s3}，栽赃{s2}	agreement-party-list,$historical-actor,$historical-actor	Steam 2ab684..2ab93f; crime outside 0..18
+# Required connectors remain when optional native object IDs are -1.
+# Figure targets and entity/site targets follow different native helpers.
+agreement-core	{s} joined with {s} to oust from {s}	{s1}与{s2}同行，协助驱逐{s3}的势力	agreement-party-list,agreement-party-list,$travel-site	Steam 2acf20..2acfbb; absent ousted entity, site present
+agreement-core	{s} joined with {s} to oust {s} from	{s1}与{s2}同行，协助驱逐{s3}	agreement-party-list,agreement-party-list,$name	Steam 2acf20..2acfbb; entity present, absent site
+agreement-core	{s} joined with {s} to oust from	{s1}与{s2}同行，协助驱逐……	agreement-party-list,agreement-party-list	Steam 2acf20..2acfbb; entity and site absent
+agreement-title-core	the joining of {s} with {s} to oust from {s}	{s1}与{s2}同行，协助驱逐{s3}的势力	agreement-party-list,agreement-party-list,$travel-site	Steam 2af744..2af96a; absent ousted entity
+agreement-title-core	the joining of {s} with {s} to oust {s} from	{s1}与{s2}同行，协助驱逐{s3}	agreement-party-list,agreement-party-list,$name	Steam 2af744..2af96a; absent site
+agreement-title-core	the joining of {s} with {s} to oust from	{s1}与{s2}同行，协助驱逐……	agreement-party-list,agreement-party-list	Steam 2af744..2af96a; entity and site absent
+agreement-core	{s} plotted to assassinate	{s1}密谋行刺……	agreement-party-list	Steam 2abe88..2abef3; absent figure
+agreement-title-core	the plot of {s} to assassinate	{s1}的行刺阴谋	agreement-party-list	Steam 2ae5ec..2ae6e0; absent figure
+agreement-core	{s} plotted to abduct	{s1}密谋绑架……	agreement-party-list	Steam 2abc11..2abc8c; absent figure
+agreement-title-core	the plot of {s} to abduct	{s1}的绑架阴谋	agreement-party-list	Steam 2ae37f..2ae45a; absent figure
+agreement-core	{s} plotted to sabotage the activities of	{s1}密谋破坏活动……	agreement-party-list	Steam 2abba0..2abe78; figure/entity/site all absent
+agreement-title-core	the plot of {s} to sabotage the activities of	{s1}破坏活动的阴谋	agreement-party-list	Steam 2ae0bc..2ae36f; figure/entity/site all absent
+agreement-target	{s}	{s1}	$travel-site	Steam 2abd63..2abd91 / classic 2a9923..2a9951; figure/entity absent, site present
+agreement-core	{s} plotted to infiltrate	{s1}密谋潜入……	agreement-party-list	Steam 2ab310..2ab625; absent entity, no goals
+agreement-core	{s} plotted to infiltrate in order to {s}	{s1}密谋潜入，以便{s2}	agreement-party-list,agreement-goals	Steam 2ab310..2ab625; absent entity, nonempty goal flags
+agreement-title-core	the plot of {s} to infiltrate	{s1}的潜入阴谋	agreement-party-list	Steam 2adae0..2adc27; absent entity
+agreement-core	{s} plotted to frame for {s} by fooling {s}	{s1}密谋欺骗{s3}，制造{s2}的栽赃阴谋	agreement-party-list,agreement-crime,$historical-actor	Steam 2ab625..2abba0; target figure absent
+agreement-core	{s} plotted to frame {s} for {s} by fooling	{s1}密谋用{s3}的罪名栽赃{s2}	agreement-party-list,$historical-actor,agreement-crime	Steam 2ab625..2abba0; fooled figure absent
+agreement-core	{s} plotted to frame for {s} by fooling	{s1}密谋用{s2}的罪名栽赃他人	agreement-party-list,agreement-crime	Steam 2ab625..2abba0; both figures absent
+agreement-core	{s} plotted to frame for by fooling {s}	{s1}密谋欺骗{s2}，栽赃他人	agreement-party-list,$historical-actor	Steam 2ab625..2abba0; target and crime absent
+agreement-core	{s} plotted to frame {s} for by fooling	{s1}密谋栽赃{s2}	agreement-party-list,$historical-actor	Steam 2ab625..2abba0; crime and fooled figure absent
+agreement-core	{s} plotted to frame for by fooling	{s1}密谋栽赃他人	agreement-party-list	Steam 2ab625..2abba0; both figures and crime absent
+agreement-title-core	the plot of {s} to frame for {s} by fooling {s}	{s1}欺骗{s3}、用{s2}的罪名栽赃他人的阴谋	agreement-party-list,agreement-crime,$historical-actor	Steam 2adc39..2adec9; target figure absent
+agreement-title-core	the plot of {s} to frame {s} for {s} by fooling	{s1}用{s3}的罪名栽赃{s2}的阴谋	agreement-party-list,$historical-actor,agreement-crime	Steam 2adc39..2adec9; fooled figure absent
+agreement-title-core	the plot of {s} to frame for {s} by fooling	{s1}用{s2}的罪名栽赃他人的阴谋	agreement-party-list,agreement-crime	Steam 2adc39..2adec9; both figures absent
+agreement-title-core	the plot of {s} to frame for by fooling {s}	{s1}欺骗{s2}、栽赃他人的阴谋	agreement-party-list,$historical-actor	Steam 2adc39..2adec9; target and crime absent
+agreement-title-core	the plot of {s} to frame {s} for by fooling	{s1}栽赃{s2}的阴谋	agreement-party-list,$historical-actor	Steam 2adc39..2adec9; crime and fooled figure absent
+agreement-title-core	the plot of {s} to frame for by fooling	{s1}栽赃他人的阴谋	agreement-party-list	Steam 2adc39..2adec9; both figures and crime absent
+agreement-core	{s} plotted to induce a war of upon {s}	{s1}密谋挑起对{s2}的战争	agreement-party-list,$name	Steam 2ab967..2abba0; attacker entity absent
+agreement-core	{s} plotted to induce a war of {s} upon	{s1}密谋让{s2}发动战争	agreement-party-list,$name	Steam 2ab967..2abba0; defender entity absent
+agreement-core	{s} plotted to induce a war of upon	{s1}密谋挑起战争	agreement-party-list	Steam 2ab967..2abba0; attacker and defender absent
+agreement-title-core	the plot of {s} to induce a war of upon {s}	{s1}挑起对{s2}战争的阴谋	agreement-party-list,$name	Steam 2adee4..2ae0a7; attacker entity absent
+agreement-title-core	the plot of {s} to induce a war of {s} upon	{s1}让{s2}发动战争的阴谋	agreement-party-list,$name	Steam 2adee4..2ae0a7; defender entity absent
+agreement-title-core	the plot of {s} to induce a war of upon	{s1}挑起战争的阴谋	agreement-party-list	Steam 2adee4..2ae0a7; both entities absent
+agreement-title-core	the joining of {s} with {s} to help rescue	{s1}与{s2}同行，前去营救……	agreement-party-list,agreement-party-list	Steam 2af966; purpose 24, figure and identity absent
+agreement-title-core	concocted by {s}	{s1}策划的阴谋	agreement-party-list	Steam 2ad998..2ad9c2; corruption outside 0/2/3 leaves noun empty
+agreement-title-core	{s}	{s1}	agreement-party-list	Steam 2aeec6..2aef0e; corruption action outside 247..249 leaves noun empty, party remains
+agreement-title-core	{s} as a {s} of {s}	{s1}作为{s3}的一位{s2}参与的交易	agreement-party-list,$office,$name	Steam 2aef12..2af016; corruption action outside 247..249, office found, unique != 1
+agreement-title-core	{s} as the {s} of {s}	{s1}作为{s3}的{s2}参与的交易	agreement-party-list,$office,$name	Steam 2aef12..2af016; corruption action outside 247..249, office found, unique == 1
+agreement-title-core	{s} as a of {s}	{s1}（在{s2}任职）	agreement-party-list,$name	Steam 2aef12..2af016; corruption action outside 247..249, empty title, unique != 1
+agreement-title-core	{s} as the of {s}	{s1}（在{s2}任职）	agreement-party-list,$name	Steam 2aef12..2af016; corruption action outside 247..249, empty title, unique == 1
+agreement-title-core	the agreement by {s} to establish for {s}	{s1}同意为{s2}建造的协议	agreement-party-list,agreement-party-list	Steam 2af9f9..2afb43; building outside 2/11 or tier outside 1/2
+agreement-title-core	the plot of {s} to frame {s} for by fooling {s}	{s1}欺骗{s3}、栽赃{s2}的阴谋	agreement-party-list,$historical-actor,$historical-actor	Steam 2adcfa..2adce5; crime outside 0..18
 agreement-core	{s} made an agreement with {s}	{s1}与{s2}达成协议	agreement-party-list,agreement-party-list	0x1402aaf70..0x1402ad7eb; native optional site
 agreement-core	{s} made an agreement with {s} to study	{s1}与{s2}达成协议，以便求学	agreement-party-list,agreement-party-list	0x1402aaf70..0x1402ad7eb; native optional site
 agreement-core	{s} made an agreement with {s} to work as a mercenary	{s1}与{s2}达成协议，以便从事雇佣兵工作	agreement-party-list,agreement-party-list	0x1402aaf70..0x1402ad7eb; native optional site
 agreement-core	{s} made an agreement with {s} to entertain the citizenry	{s1}与{s2}达成协议，以便为居民表演	agreement-party-list,agreement-party-list	0x1402aaf70..0x1402ad7eb; native optional site
 agreement-core	{s} made an agreement with {s} to eradicate monsters	{s1}与{s2}达成协议，以便消灭怪物	agreement-party-list,agreement-party-list	0x1402aaf70..0x1402ad7eb; native optional site
-agreement-core	{s} joined with {s} as a guide to find {s}	{s1}与{s2}同行，担任向导寻找{s3}	agreement-party-list,agreement-party-list,$unit	0x1402ad014..0x1402ad0a8; guide target uses historical figure 0x140b92f10 or identity 0x140c3a590
+agreement-core	{s} joined with {s} as a guide to find {s}	{s1}与{s2}同行，担任向导寻找{s3}	agreement-party-list,agreement-party-list,$historical-actor	0x1402ad014..0x1402ad0a8; guide target uses historical figure 0x140b92f10 or identity 0x140c3a590
 agreement-core	{s} joined with {s} as a guide to {s}	{s1}与{s2}同行，担任向导前往{s3}	agreement-party-list,agreement-party-list,$name	0x1402aaf70..0x1402ad7eb; guide flag and destination
 agreement-core	{s} began passing a portion of corruptly-obtained funds	{s1}开始转交部分非法所得	agreement-party-list	0x1402ac7cb..0x1402ac970; native absent recipient
 agreement-title-core	the formation of a corrupt agreement	腐败交易的达成		0x1402aaf70..0x1402ad7eb / 0x1402ad7f0..0x1402afec3
@@ -91,8 +239,8 @@ agreement-goals	prepare a coup, instill terror, and steal treasures	筹备政变
 agreement-goals	prepare a coup, initiate sabotage, and steal treasures	筹备政变、展开破坏行动、盗取财宝		0x1402ab3f5..0x1402ab5f1; four ordered independent goal bits
 agreement-goals	instill terror, initiate sabotage, and steal treasures	制造恐慌、展开破坏行动、盗取财宝		0x1402ab3f5..0x1402ab5f1; four ordered independent goal bits
 agreement-goals	prepare a coup, instill terror, initiate sabotage, and steal treasures	筹备政变、制造恐慌、展开破坏行动、盗取财宝		0x1402ab3f5..0x1402ab5f1; four ordered independent goal bits
-agreement-core	{s} plotted to frame {s} for {s} by fooling {s}	{s1}密谋欺骗{s4}，将{s3}的罪名栽赃给{s2}	agreement-party-list,$unit,agreement-crime,$unit	0x1402aaf70..0x1402ad7eb / 0x1402ad7f0..0x1402afec3
-agreement-title-core	the plot of {s} to frame {s} for {s} by fooling {s}	{s1}欺骗{s4}、将{s3}的罪名栽赃给{s2}的阴谋	agreement-party-list,$unit,agreement-crime,$unit	0x1402aaf70..0x1402ad7eb / 0x1402ad7f0..0x1402afec3
+agreement-core	{s} plotted to frame {s} for {s} by fooling {s}	{s1}密谋欺骗{s4}，将{s3}的罪名栽赃给{s2}	agreement-party-list,$historical-actor,agreement-crime,$historical-actor	0x1402aaf70..0x1402ad7eb / 0x1402ad7f0..0x1402afec3
+agreement-title-core	the plot of {s} to frame {s} for {s} by fooling {s}	{s1}欺骗{s4}、将{s3}的罪名栽赃给{s2}的阴谋	agreement-party-list,$historical-actor,agreement-crime,$historical-actor	0x1402aaf70..0x1402ad7eb / 0x1402ad7f0..0x1402afec3
 agreement-crime	production order violation	违反生产命令		0x1402ab887..0x1402ab93f / 0x1402add8f..0x1402ade3d; nineteen native crimes
 agreement-crime	export prohibition violation	违反出口禁令		0x1402ab887..0x1402ab93f / 0x1402add8f..0x1402ade3d; nineteen native crimes
 agreement-crime	job order violation	违反工作命令		0x1402ab887..0x1402ab93f / 0x1402add8f..0x1402ade3d; nineteen native crimes
@@ -118,10 +266,10 @@ agreement-core	{s} plotted to sabotage the activities of {s}	{s1}密谋破坏{s2
 agreement-title-core	the plot of {s} to sabotage the activities of {s}	{s1}破坏{s2}活动的阴谋	agreement-party-list,agreement-target	0x1402aaf70..0x1402ad7eb / 0x1402ad7f0..0x1402afec3
 agreement-core	{s} plotted to sabotage the activities of {s} at {s}	{s1}密谋破坏{s2}在{s3}的活动	agreement-party-list,agreement-target,$name	0x1402aaf70..0x1402ad7eb / 0x1402ad7f0..0x1402afec3
 agreement-title-core	the plot of {s} to sabotage the activities of {s} at {s}	{s1}破坏{s2}在{s3}活动的阴谋	agreement-party-list,agreement-target,$name	0x1402aaf70..0x1402ad7eb / 0x1402ad7f0..0x1402afec3
-agreement-core	{s} plotted to abduct {s}	{s1}密谋绑架{s2}	agreement-party-list,$unit	0x1402aaf70..0x1402ad7eb / 0x1402ad7f0..0x1402afec3
-agreement-title-core	the plot of {s} to abduct {s}	{s1}绑架{s2}的阴谋	agreement-party-list,$unit	0x1402aaf70..0x1402ad7eb / 0x1402ad7f0..0x1402afec3
-agreement-core	{s} plotted to assassinate {s}	{s1}密谋刺杀{s2}	agreement-party-list,$unit	0x1402aaf70..0x1402ad7eb / 0x1402ad7f0..0x1402afec3
-agreement-title-core	the plot of {s} to assassinate {s}	{s1}刺杀{s2}的阴谋	agreement-party-list,$unit	0x1402aaf70..0x1402ad7eb / 0x1402ad7f0..0x1402afec3
+agreement-core	{s} plotted to abduct {s}	{s1}密谋绑架{s2}	agreement-party-list,$historical-actor	0x1402aaf70..0x1402ad7eb / 0x1402ad7f0..0x1402afec3
+agreement-title-core	the plot of {s} to abduct {s}	{s1}绑架{s2}的阴谋	agreement-party-list,$historical-actor	0x1402aaf70..0x1402ad7eb / 0x1402ad7f0..0x1402afec3
+agreement-core	{s} plotted to assassinate {s}	{s1}密谋刺杀{s2}	agreement-party-list,$historical-actor	0x1402aaf70..0x1402ad7eb / 0x1402ad7f0..0x1402afec3
+agreement-title-core	the plot of {s} to assassinate {s}	{s1}刺杀{s2}的阴谋	agreement-party-list,$historical-actor	0x1402aaf70..0x1402ad7eb / 0x1402ad7f0..0x1402afec3
 agreement-core	{s} plotted to steal {s}	{s1}密谋盗取{s2}	agreement-party-list,agreement-item	0x1402aaf70..0x1402ad7eb / 0x1402ad7f0..0x1402afec3
 agreement-title-core	the plot of {s} to steal {s}	{s1}盗取{s2}的阴谋	agreement-party-list,agreement-item	0x1402aaf70..0x1402ad7eb / 0x1402ad7f0..0x1402afec3
 agreement-core	{s} promised {s} a position	{s1}答应给{s2}安排一个职位	agreement-party-list,agreement-party-list	0x1402ac37b..0x1402ac52b; same/different promisee-recipient branches
@@ -176,8 +324,8 @@ agreement-core	{s} made an agreement with {s}, becoming a citizen of {s}	{s1}与
 agreement-title-core	the agreement between {s} and {s} and become a citizen of {s}	{s1}与{s2}达成的入籍协议：成为{s3}的公民	agreement-party-list,agreement-party-list,$name	0x1402aaf70..0x1402ad7eb / 0x1402ad7f0..0x1402afec3
 agreement-core	{s} joined with {s}	{s1}与{s2}同行	agreement-party-list,agreement-party-list	0x1402aaf70..0x1402ad7eb / 0x1402ad7f0..0x1402afec3
 agreement-title-core	the joining of {s} with {s}	{s1}与{s2}同行	agreement-party-list,agreement-party-list	0x1402aaf70..0x1402ad7eb / 0x1402ad7f0..0x1402afec3
-agreement-core	{s} joined with {s} to help rescue {s}	{s1}与{s2}同行，协助营救{s3}	agreement-party-list,agreement-party-list,$unit	0x1402aaf70..0x1402ad7eb / 0x1402ad7f0..0x1402afec3
-agreement-title-core	the joining of {s} with {s} to help rescue {s}	{s1}与{s2}同行，协助营救{s3}	agreement-party-list,agreement-party-list,$unit	0x1402aaf70..0x1402ad7eb / 0x1402ad7f0..0x1402afec3
+agreement-core	{s} joined with {s} to help rescue {s}	{s1}与{s2}同行，协助营救{s3}	agreement-party-list,agreement-party-list,$historical-actor	0x1402aaf70..0x1402ad7eb / 0x1402ad7f0..0x1402afec3
+agreement-title-core	the joining of {s} with {s} to help rescue {s}	{s1}与{s2}同行，协助营救{s3}	agreement-party-list,agreement-party-list,$historical-actor	0x1402aaf70..0x1402ad7eb / 0x1402ad7f0..0x1402afec3
 agreement-core	{s} joined with {s} to oust {s} from {s}	{s1}与{s2}同行，将{s3}逐出{s4}	agreement-party-list,agreement-party-list,$name,$name	0x1402aaf70..0x1402ad7eb / 0x1402ad7f0..0x1402afec3
 agreement-title-core	the joining of {s} with {s} to oust {s} from {s}	{s1}与{s2}同行，将{s3}逐出{s4}	agreement-party-list,agreement-party-list,$name,$name	0x1402aaf70..0x1402ad7eb / 0x1402ad7f0..0x1402afec3
 agreement-core	{s} joined with {s} to entertain the world	{s1}与{s2}同行，为世人表演	agreement-party-list,agreement-party-list	0x1402aaf70..0x1402ad7eb / 0x1402ad7f0..0x1402afec3
@@ -188,8 +336,8 @@ agreement-core	{s} joined with {s} after being compelled to serve	{s1}与{s2}同
 agreement-title-core	the joining of {s} with {s} in bound service	{s1}与{s2}同行，被迫为其效力	agreement-party-list,agreement-party-list	0x1402aaf70..0x1402ad7eb / 0x1402ad7f0..0x1402afec3
 agreement-core	{s} joined with {s} as a guide	{s1}与{s2}同行，担任向导	agreement-party-list,agreement-party-list	0x1402aaf70..0x1402ad7eb / 0x1402ad7f0..0x1402afec3
 agreement-title-core	the joining of {s} with {s} as a guide	{s1}与{s2}同行，担任向导	agreement-party-list,agreement-party-list	0x1402aaf70..0x1402ad7eb / 0x1402ad7f0..0x1402afec3
-agreement-core	{s} joined with {s} to find {s}	{s1}与{s2}同行，寻找{s3}	agreement-party-list,agreement-party-list,$unit	0x1402aaf70..0x1402ad7eb / 0x1402ad7f0..0x1402afec3
-agreement-title-core	the joining of {s} with {s} to find {s}	{s1}与{s2}同行，寻找{s3}	agreement-party-list,agreement-party-list,$unit	0x1402aaf70..0x1402ad7eb / 0x1402ad7f0..0x1402afec3
+agreement-core	{s} joined with {s} to find {s}	{s1}与{s2}同行，寻找{s3}	agreement-party-list,agreement-party-list,$historical-actor	0x1402aaf70..0x1402ad7eb / 0x1402ad7f0..0x1402afec3
+agreement-title-core	the joining of {s} with {s} to find {s}	{s1}与{s2}同行，寻找{s3}	agreement-party-list,agreement-party-list,$historical-actor	0x1402aaf70..0x1402ad7eb / 0x1402ad7f0..0x1402afec3
 agreement-core	{s} joined with {s} to find {s}	{s1}与{s2}同行，寻找{s3}	agreement-party-list,agreement-party-list,$name	0x1402aaf70..0x1402ad7eb / 0x1402ad7f0..0x1402afec3
 agreement-title-core	the joining of {s} with {s} to find {s}	{s1}与{s2}同行，寻找{s3}	agreement-party-list,agreement-party-list,$name	0x1402aaf70..0x1402ad7eb / 0x1402ad7f0..0x1402afec3
 agreement-core	{s} joined with {s} to {s}	{s1}与{s2}同行，前往{s3}	agreement-party-list,agreement-party-list,$name	0x1402aaf70..0x1402ad7eb / 0x1402ad7f0..0x1402afec3
@@ -225,12 +373,12 @@ historical-squad-clash	{s}	{s1}	historical-squad-clash-core	0x140b6cd90..0x140b6
 historical-squad-clash	{s}, {s}	{s1}，{s2}	historical-squad-clash-core,historical-clash-outcome	0x140b6cd90..0x140b6d6f8 / 0x140b6d700..0x140b6dcac
 historical-squad-clash-core	{s} clashed with {s} in {s}	{s1}与{s2}在{s3}交战	historical-commanded-squad,historical-commanded-squad,historical-battle-location	0x140b6cd90..0x140b6d6f8 / 0x140b6d700..0x140b6dcac
 historical-commanded-squad	{s}	{s1}	historical-squad	0x140b6cd90..0x140b6d6f8 / 0x140b6d700..0x140b6dcac
-historical-commanded-squad	{s}, brilliantly led by {s},	{s1}（由{s2}率领，指挥出色）	historical-squad,$unit	0x140b6ced8..0x140b6cf91 / 0x140b6d1e2..0x140b6d269
-historical-commanded-squad	{s}, inspiringly led by {s},	{s1}（由{s2}率领，鼓舞了士气）	historical-squad,$unit	0x140b6ced8..0x140b6cf91 / 0x140b6d1e2..0x140b6d269
-historical-commanded-squad	{s}, ably led by {s},	{s1}（由{s2}率领，指挥得当）	historical-squad,$unit	0x140b6ced8..0x140b6cf91 / 0x140b6d1e2..0x140b6d269
-historical-commanded-squad	{s}, led by {s},	{s1}（由{s2}率领）	historical-squad,$unit	0x140b6ced8..0x140b6cf91 / 0x140b6d1e2..0x140b6d269
-historical-commanded-squad	{s}, poorly led by {s},	{s1}（由{s2}率领，指挥不当）	historical-squad,$unit	0x140b6ced8..0x140b6cf91 / 0x140b6d1e2..0x140b6d269
-historical-squad	{s}	{s1}	$unit	0x140b6cd90..0x140b6d6f8 / 0x140b6d700..0x140b6dcac
+historical-commanded-squad	{s}, brilliantly led by {s},	{s1}（由{s2}率领，指挥出色）	historical-squad,$historical-actor	0x140b6ced8..0x140b6cf91 / 0x140b6d1e2..0x140b6d269
+historical-commanded-squad	{s}, inspiringly led by {s},	{s1}（由{s2}率领，鼓舞了士气）	historical-squad,$historical-actor	0x140b6ced8..0x140b6cf91 / 0x140b6d1e2..0x140b6d269
+historical-commanded-squad	{s}, ably led by {s},	{s1}（由{s2}率领，指挥得当）	historical-squad,$historical-actor	0x140b6ced8..0x140b6cf91 / 0x140b6d1e2..0x140b6d269
+historical-commanded-squad	{s}, led by {s},	{s1}（由{s2}率领）	historical-squad,$historical-actor	0x140b6ced8..0x140b6cf91 / 0x140b6d1e2..0x140b6d269
+historical-commanded-squad	{s}, poorly led by {s},	{s1}（由{s2}率领，指挥不当）	historical-squad,$historical-actor	0x140b6ced8..0x140b6cf91 / 0x140b6d1e2..0x140b6d269
+historical-squad	{s}	{s1}	$historical-actor	0x140b6cd90..0x140b6d6f8 / 0x140b6d700..0x140b6dcac
 historical-squad	{s}	{s1}	$name	0x140b6cea9; named squad language_name
 historical-squad	a lone {s}	一只独行的{s1}	historical-military-creature	0x140b6d108; unnamed single combatant
 historical-squad	a single {s}	一只{s1}	historical-military-creature	0x140b6d30a; unnamed single combatant

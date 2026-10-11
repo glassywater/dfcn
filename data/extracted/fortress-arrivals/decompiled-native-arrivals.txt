@@ -1,0 +1,76 @@
+Native Arrivals source decomposition (requested PE source extraction)
+Images: data/runtime/native-pe-images.json reference and classic.
+All addresses below are RVAs of the reference image unless classic is named.
+
+Tab boundary
+report-category-switch.tsv records every native announcement enum 0..353.
+report category switch eaa20 / classic ea9b0; tab label ed7c0 / classic ed750.
+Native categories 3 and 28 select Arrivals. They admit exactly 49,50,69,70,71,72,301.
+49 MIGRANT_ARRIVAL_NAMED and 50 MIGRANT_ARRIVAL remain admitted enum types.
+No active descriptor writer has been established for 49 or 50 in these PE images.
+Their existing whole-message catalogue entries remain available; an active constructor is not inferred from numeric constants.
+
+Migrant constructors
+Producer e46c20..e4a31c / classic e41b90..e4528c.
+Actual whole-string submit e3c20 receives rdx=&rbp+78 and r8=&rbp+0.
+Descriptor +0 word=type, +2 word=color, +4 byte=bright, +6/+8/+a=position, +1c word=2000 display timer.
+Count rsp+54 >1 -> 69 (descriptor e49c7b, submit e49cb9), count ==1 -> 70 (e49d84, e49dc2).
+Each uses score rbp+2d8 <50, 50..74, >=75 and rbp+2d0 >=50, 10..49, <10: 9 exact sentences per count branch.
+Zero migrants: native time 239143c >=40320 required, otherwise no report.
+Native scalars rbp+2d4>0 and rbp+2dc>0 -> three score x three danger x rsp+4c boolean =18 refusal sentence operands, all type71 via e49f6f / submit e49f92.
+rbp+2d4<=0 and rbp+2dc>0 -> three score x rsp+4c boolean =6 refusal operands, all type71 e4a01d / submit e4a040.
+rbp+2dc<=0 and rbp+2d4>0 -> danger x rsp+4c boolean =6 reused refusal operands, all type71 e4a0c6 / submit e4a0e9.
+Remaining zero-migrant branch emits type72 only if rsp+4c and rsp+40 are both zero: The fortress attracted no migrants this season.; descriptor e4a108, submit e4a13c.
+The 49 literal-load occurrences comprise 43 unique sentences: 9 plural,9 singular,24 refusal,1 no migrants.
+The producer also contains monarch arrival text, whose native type does not enter Arrivals; that text is outside this grammar.
+
+Traveller / visitor constructors
+Producer 10b150..1103b0 / classic 10b0e0..110340.
+Every listed return/visitor submit below sets descriptor DWORD 0x2012d (type301,color2), bright1, displaytimer2000.
+Returns: one squad -> squad alias+80 if nonempty, otherwise squad name+8 EnglishName a946e0; have returned.
+Multiple squads -> same first-squad source; and others have returned.
+One live unit -> unit formatter1330c30; has returned.
+Two live units -> both unit formatter fields joined by and; have returned.
+Three or more live units -> first unit formatter only; and others have returned.
+Squad alias ownership is proved by the actual native empty-test branch, and does not follow from its spelling.
+Native return output owner rbp+790 persists through optional report append, actual submit, then destruction.
+Return submits: 10dc94,10de3b,10e05e. Native records themselves have no squad ID field.
+
+Optional returned history report
+10d807 walks army record vector rbp+218. Record+58 -> squad_mission lookup72570 in global24e7e08.
+Mission+128 points to live unit vector. Each unit+404 has 64 int32 event ID slots.
+10d8f9 accepts positive event IDs; conflicting IDs set -2 and omit the report; consistent nonnegative ID becomes r14d at 10d941.
+No history-event type filtering occurs at this selection. The ID resolves through7da30(global24f9cb8).
+10dbf2 / 10dd99 / 10dfbc call actual event virtual slot+d0 with r9b=1 and trailing bool0.
+The complete nonempty formatter output is appended after two spaces to the same rbp+790 return string.
+Thus the complete statically extracted history-event+d0 dispatch is the reachable field boundary; see announcement-negotiation-native/returned-history-dispatch.tsv.
+The three d0 adapters reuse capture_native_history_sentence_range with the actual event and context, including all 133 subtype snapshots, nested d8/item fields and post-format subjects. The exact native body string owner is copied only when its full formatter output agrees.
+Body appends 10dc26/10ddcd/10dff0 verify that same source owner and complete body bytes, then bind the document to the output owner rbp+790. Type 301 submission freezes it only when the complete record equals the captured native return prefix plus that entire body.
+301 grammar delegates it to $history-report. A matching complete record and complete body first consume the owned NativeHistoryDocument through the existing structural history semantics, including empty party fields; unavailable, ambiguous or incomplete snapshots fall back to the strict complete Legends catalogue and extracted diplomacy grammar. No event ID is inferred from English text.
+
+New visitors
+Unit field:1330c30. Historical figure info chain +130 then +28 gives native info.word type.
+Info type1 -> has arrived.; absent or other info -> is visiting.
+Performance entity present for a visitor group -> b92900 entity field and the performance troupe, has arrived. / a performance troupe, is visiting.
+Otherwise each unit receives its own unit arrival/visit record.
+Visitor submits:10e932,10ea4c,10eba5.
+Rumour sentences in this same producer submit type324 GUEST_RUMOR, so do not enter Arrivals.
+
+Native report and Date ownership
+Report builder ede70 / classic ede00 reads announcement type flags global2390ca0[type], requires fortress0x10 and excludes0x60. This is the native type table, not the individual report's flags field.
+Report type word+0 -> native category and tab label.
+Report text+8 -> multiline allocator f0a20 at ee42d. Color+28 and bright+2a -> widget+170/+174.
+Date is also a multiline widget, created ee636 and placed after report. It formats tick+58 and year+54, Date: prefix, ordinal day, native month helper773390, year helper52c130.
+Date widget+170=7,+174=1; Date widget+b0=1 is offset_top, not a margin. The report generic container arranges its controls, body and Date children in order; the outer scroll_rows uses the report container's own min_h and rect height.
+Allocator f0a20 / classic f09b0 allocates0x190 shared object, widget=block+10; ctor14195c0; vtable15f6ee8 (classic15f1eb8); parent+8 and shared child vector+160/+168/+170.
+Native widget fields (both PE editions): a0 uint8 flags; a4 int32 offset_bottom; a8 int32 offset_left; ac int32 offset_right; b0 int32 offset_top; b4 float anchor_top; b8 float anchor_bottom; bc float anchor_left; c0 float anchor_right; c4 int32 min_w; c8 int32 min_h. ViewBase schema and base_arrange14101a0 agree. An integer right offset must never be written to float anchor_left.
+Every visible Reports frame arranges before rendering: Steam3fa915 tests active flags through30c4a0, 3fa933 calls slot20 arrange, then3fa94a calls slot18 render; classic3f84d5/30a060, 3f84f3,3f850a. There is no layout-dirty gate. Translated layout cached by a rendered frame is available to the next frame's native arrange, without translating unseen records during construction.
+
+Multiline native layout
+arrange1419860 / classic14147d0 computes width=max(rect.x2-rect.x1+1,widget+c4); native minimum height widget+c8=str.byte_length/width+1 when positive width<length, otherwise1. It ignores newline semantics.
+render14198c0 / classic1414830 calls wrapper52def0 / classic52b910 and emits32byte string-vector rows from global18b00f8/+100/+108.
+Wrapper first splits nonempty portions before each LF into the vector.
+If original string length>positive width, it then starts wrap offset0 and wraps the entire original string again, including newline bytes; this duplicates already-pushed LF segments.
+If original length<=width and earlier LF portions were pushed, native code omits the final tail. If there were no LF portions, it pushes the original string.
+The exact-width word-wrap branch backs up to a hyphen or space delimiter and includes that delimiter in the cut.
+This is why source capture must retain canonical whole report ownership separately from physical emitted rows, and the report/Date layout must use the same normalized borrowed source as native wrapping.

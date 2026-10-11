@@ -304,6 +304,8 @@ bool Overlay::load_rules() {
         log_line("ERROR", "Cannot read usable mapping; retaining previous translations: " + config_.mapping_path);
         return false;
     }
+    if (!read_mapping(fs::u8path(config_.mapping_path).parent_path() /
+            "adventure-crafting-translations.tsv", loaded)) return false;
     for (const auto& package : extension_snapshot.packages) {
         if (package.translations.empty()) continue;
         std::vector<Rule> extension_rules;
@@ -911,6 +913,8 @@ void Overlay::build_trie(std::function<void()>* catalog_publication) {
         if (rules_[rule_index].source.starts_with("Preference reason: ") ||
             rules_[rule_index].source.starts_with("Build menu: ") ||
             rules_[rule_index].source.starts_with("Embark finder: ") ||
+            rules_[rule_index].source.starts_with("Embark site resource: ") ||
+            rules_[rule_index].source.starts_with("Embark site ecology: ") ||
             rules_[rule_index].source.starts_with("Zone type: ") ||
             rules_[rule_index].source.starts_with("Fortress activity: ") ||
             rules_[rule_index].source.starts_with("Fortress schedule editor: ") ||
@@ -920,6 +924,7 @@ void Overlay::build_trie(std::function<void()>* catalog_publication) {
             rules_[rule_index].source.starts_with("Adventure compass: ") ||
             rules_[rule_index].source.starts_with("Adventure movement: ") ||
             rules_[rule_index].source.starts_with("Adventure action: ") ||
+            rules_[rule_index].source.starts_with("Adventure crafting ") ||
             rules_[rule_index].source.starts_with("Inventory location: ") ||
             rules_[rule_index].source.starts_with("Skill name: ") ||
             rules_[rule_index].source.starts_with("Skill rating: ") ||

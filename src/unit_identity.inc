@@ -80,6 +80,26 @@ std::optional<std::string> Overlay::translate_unit_profession(
             return std::string(status->second) + *role;
     }
 
+    // The shared adventure unit formatter prepends its distinguishing
+    // appearance field (717d30 -> unit+13e8) after training/ghost status and
+    // before the whole species/occupation/office descriptor. Old report
+    // records outlive the formatter's per-draw identity bindings, so resolve
+    // this native field here too. Its existing scope covers every body-size,
+    // voice, fixed facial form and RAW modifier/body-part production; neither
+    // an appearance word nor its adjacent role is a personal-name field.
+    for (size_t at = source.rfind(' '); at != std::string::npos;
+         at = at == 0 ? std::string::npos : source.rfind(' ', at - 1)) {
+        std::vector<size_t> appearance_origins;
+        const auto appearance = RULESETS.translate_with_origins(
+            native_text_to_utf8(std::string_view(folded).substr(0, at)),
+            "::map_hover::unit::appearance", appearance_origins);
+        if (!appearance || appearance->empty()) continue;
+        const auto remainder = std::string_view(source).substr(at + 1);
+        const auto role = translate_unit_profession(remainder, false);
+        if (translation_complete_with_native_nicknames(role, remainder))
+            return *appearance + "的" + *role;
+    }
+
     // Native identities append necromancer to the current occupation/office.
     // Keep both meanings, including a custom role resolved in its typed slot,
     // rather than transliterating the combined title as a generated name.
@@ -93,12 +113,18 @@ std::optional<std::string> Overlay::translate_unit_profession(
 
     // Preserve the name's case and accents when an office appends a territory.
     // The title may itself contain "of", e.g. captain of the guard.
+    // A territory can also contain "of". An unresolved shorter place such as
+    // The Cavern must not make Baron of The Cavern a complete office prefix
+    // and preempt the full territory The Cavern of Sundering.
     for (size_t at = folded.rfind(" of "); at != std::string::npos;
          at = at == 0 ? std::string::npos : folded.rfind(" of ", at - 1)) {
-        const auto role = translate_unit_profession(source.substr(0, at));
-        if (!role) continue;
-        const auto place = translate_legends_place(source.substr(at + 4));
-        if (place) return *place + "的" + *role;
+        const auto role_source = std::string_view(source).substr(0, at);
+        const auto role = translate_unit_profession(role_source);
+        if (!translation_complete_with_native_nicknames(role, role_source)) continue;
+        const auto place_source = std::string_view(source).substr(at + 4);
+        const auto place = translate_legends_place(place_source);
+        if (translation_complete_with_native_nicknames(place, place_source))
+            return *place + "的" + *role;
     }
     constexpr std::string_view resident = "resident ";
     if (folded.starts_with(resident)) {

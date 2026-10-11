@@ -1,0 +1,229 @@
+Negotiation paragraphs used by agreement announcements, DF 53.16 native PE
+
+This is an offline reconstruction of the configured executable instructions.
+It records source operands and control flow, not a game-display observation.
+No game was launched, attached, or controlled; no translator was executed.
+
+Images and function extents
+  reference: data/runtime/native-pe-images.json.reference
+    SHA-256 205770918fd54c96cbbcf89223ebd449e2e113c7c873ed81177c4511a3450db7
+    entry RVA 0x2a71e0; executable RET RVA 0x2a8080
+    PE unwind extent ends at 0x2a81ec and includes four switch tables.
+  classic: data/runtime/native-pe-images.json.classic
+    SHA-256 f35bbaf37aa96f93f95f8a35a9341e6649da46bc29a8650316bfdc2dfc57f3e4
+    entry RVA 0x2a4da0; executable RET RVA 0x2a5c40
+    PE unwind extent ends at 0x2a5dac and includes the same four tables.
+  The classic constructor coordinates are reference coordinates minus 0x2440.
+  Both full disassemblies are saved beside this file. Bytes after the RET are
+  table data, not additional executed instruction branches.
+
+Extraction
+  PE .pdata boundaries and RIP-relative literal operands were read through the
+  existing tools/extract_legends_catalog.py NativeImage implementation.
+  The fixed native w64devkit-2.9.1/bin/objdump.exe produced Intel x86-64 listings.
+  native-literals.tsv retains all 123 literal reference sites in each function,
+  including repeated spaces, separators, and suffixes; literals are not scanned
+  from nearby unrelated pools. native-switches.tsv decodes all 90 entries per
+  image from four 32-bit image-relative target tables, including default aliases.
+
+Record fields (all offsets below are from RCX, the negotiation_resultst)
+  +0x00 int32 initiator historical figure; +0x04 initiator entity
+  +0x08 int32 target historical figure; +0x0c target entity
+  +0x10 int32 target position ID; +0x14 target position entity
+  +0x18 int16 meeting topic; +0x1c int32 result
+  +0x20 int32 result site ID; +0x24 int32 result magnitude
+  +0x28 int32 initiator negotiation roll; +0x2c initiator persuasion roll
+  +0x30 int32 initiator extra skill; +0x34 initiator extra-skill roll
+  +0x38 int32 target negotiation roll; +0x3c target JUDGMENT roll
+  +0x40 int32 target extra skill; +0x44 int32 target extra-skill roll
+  +0x48 vector<int32> difficulty modifier kinds
+  +0x60 vector<int32> difficulty modifier values, indexed with the kinds
+  The structural names also appear in data/upstream/df-structures/df.history.xml.
+  +0x3c is judgment, not a second persuasion roll. The two sides are asymmetric.
+
+Identity and affiliation (0x2a7231..0x2a73ff)
+  The initiator and target are formatted by historical figure helper 0xb92f10.
+  The initiator is capitalized by 0x52d650; the initial target is not capitalized.
+  The strategy sentences format both figures again, capitalizing each.
+  These are complete generated historical-figure identities, not arbitrary
+  single-name tokens. No current-save names are enumerated in the catalogue.
+  Entity names are produced by 0xb92900; site by 0xb93930.
+
+  initiator_entity == -1: FIGURE
+  otherwise: FIGURE + " of " + ENTITY
+
+  target_entity == -1: FIGURE
+  target position ID == -1, or position entity/vector/position lookup missing:
+    FIGURE + " of " + TARGET_ENTITY
+  successful position lookup (entity positions +0x10c0, ID +0x20):
+    FIGURE + ", " + neutral singular POSITION_TITLE(+0x98)
+      + " of " + POSITION_ENTITY
+    if position_entity != target_entity:
+      append ", representing " + TARGET_ENTITY
+    append ","
+  A found position with an empty neutral title stays on this branch. It must
+  not be inferred to be a missing position from title.empty().
+
+Meeting purpose (0x2a73ff..0x2a747e)
+  Always: INITIATOR + " met with " + TARGET
+  Topic 1: append " to make peace"
+  Topic 10: append " to demand unconditional surrender"
+  Topic 14: append " to seek an alliance"
+  Topic 15: append " to make contact and open trade"
+  Topic 16: append " to improve trade relations"
+  Every other topic: append no purpose
+  Always append "."
+
+Firm siege morale (0x2a7483..0x2a74ba)
+  result == 2:
+    append "  The negotiation was doomed to failure while the morale of the invaders sieging "
+      + SITE(+0x20) + " held firm."
+    jump to the common append at 0x2a8048, then return.
+  This branch does not reach difficulty, strategy, response, or proposal text.
+
+Difficulty sequence (0x2a74bf..0x2a7679), for every kind/value pair in order
+  kind 0 and value < 0:
+    append "  The "
+    value <= -150: "sheer number of lost invaders"
+    value <= -75: "great number of lost invaders"
+    value <= -25: "high number of lost invaders"
+    otherwise: "enemy losses during invasions"
+    append " made the task seem more possible."
+  kind 1 and value > 0:
+    append "  The task was made "
+    value >= 75: "much more difficult"
+    value >= 50: "more difficult"
+    otherwise: "somewhat more difficult"
+    append " by the relative populations of the civilizations."
+  kind 2 and value < 0:
+    append "  The task was made "
+    value <= -100: "much easier"
+    value <= -80: "easier"
+    otherwise: "somewhat easier"
+    append " by the relative populations of the civilizations."
+  All other kind/sign combinations append no text.
+
+Opening strategy (0x2a768c..0x2a799e)
+  Append "  " + capitalized INITIATOR + " ".
+  result == 1: "attempted to"; all other results: "began to".
+  Append " ". Set remembered opening style to signed int16 as noted below.
+  N=+0x28, P=+0x2c, S=+0x30, R=+0x34.
+  Comparisons are signed int32; 2*P and 2*R use native wrapping int32 arithmetic.
+
+  N >= P and N >= R:
+    remembered style=71; auxiliary=-1
+    if 2*P >= N: auxiliary=70
+    if 2*R >= N and R > P: auxiliary=signed int16(S)
+    auxiliary switch at table 0x2a8084, range 70..92:
+      70 "negotiate persuasively"
+      72 "negotiate with discernment"
+      76 "negotiate deceptively"
+      77 "negotiate forcefully"
+      78 "negotiate amidst light conversation"
+      79 "negotiate, keeping a sense of humor"
+      80 "negotiate, mixing in a dose of flattery"
+      81 "negotiate with empathy for their counterpart"
+      82 "negotiate calmly"
+      92 "negotiate eloquently"
+      all others "negotiate"
+  Otherwise if P >= R:
+    remembered style=70; append "argue persuasively"
+  Otherwise:
+    remembered style=signed int16(S); full int32 S controls table 0x2a80e0:
+      72 "feel out intentions and argue" +
+           (result==0 ? " with subtlety" : " carefully")
+      76 "brazenly lie"
+      77 "intimidate their adversary"
+      78 "make conversation to set a mood"
+      79 "use humor to disarm their opponent"
+      80 "flatter their counterpart"
+      81 "appeal to shared history and show empathy"
+      82 "calm any misgivings about the proposal"
+      92 "make a rousing speech"
+      all others append no strategy (the sentence retains "began to ." or
+        "attempted to ."). S=70/71 are also on this default branch.
+  Append ".  ".
+
+Response strategy (0x2a79a3..0x2a7f76)
+  Append capitalized TARGET + " ".
+  N=+0x38, J=+0x3c, S=+0x40, R=+0x44; success=(result==0).
+  N >= J and N >= R:
+    auxiliary=-1
+    if 2*J >= N: auxiliary=72 (judgment, not initiator's 70)
+    if 2*R >= N and R > J: auxiliary=signed int16(S)
+    switch table 0x2a8134, range 70..92:
+      70 "negotiated persuasively"
+      72 "negotiated with discernment"
+      76 "negotiated deceptively"
+      77 "negotiated forcefully"
+      78 "negotiated lightly"
+      79 "negotiated with humor"
+      80 "negotiated with flattery"
+      81 "negotiated with empathy"
+      82 "negotiated calmly"
+      92 "negotiated eloquently"
+      all others "negotiated"
+    if remembered opening style==71: append " in turn"
+    success: " but was outmaneuvered"; otherwise: " and had the mastery"
+  Otherwise if J >= R:
+    success: "attempted to read"; otherwise: "read"
+    append " their opposite's underlying motivations"
+    if remembered opening style==72: append " as well"
+    if success: append " but was swept along"
+  Otherwise, full int32 S controls table 0x2a8190, range 70..92:
+    matched=(remembered opening style==signed int16(S))
+    70 "made a persuasive argument"
+       if matched: " of their own"
+       if success: " but was ultimately swayed"
+    76 "spun a web of deceit"
+       if matched: " of their own"
+       if success: " but became tied in their own knots"
+    77 "intimidated their opposite"
+       if matched: " with matching fury"
+       if success: " but grew meeker throughout the proceedings"
+    78 matched ? "joined the conversation" : "made light conversation"
+       success ? " and over time came around on the matter"
+               : " and skillfully shut down the proceedings"
+    79 "made several jokes"
+       if matched: " of their own"
+       success ? " but came to see the seriousness of the issue at hand"
+               : " and dismissed the matter"
+    80 matched ? "flattered their opposite in turn" : "made a great show of flattery"
+       success ? " and ultimately agreed" : " but left the matter unaddressed"
+    81 matched ? "joined in the discussion of history and past griefs"
+               : "showed empathy with their opposite"
+       success ? " and agreed on the issue" : " but did not agree"
+    82 "attempted to put their opposite at ease"
+       if matched: " as well"
+       success ? " and ultimately agreed" : " but did not ultimately agree"
+    92 matched ? "replied with a grand oration of their own" : "replied with a fiery speech"
+       if success: " but ultimately the matter was agreed"
+    all others append no response; specifically S=72 also takes this default.
+  The common continuation appends ".  The proposal ".
+
+Proposal result (0x2a7c4a..0x2a804b)
+  result==1, magnitude +0x24:
+    -5 "was a spectacular failure"
+    -4 "was a resounding failure"
+    -3 "was an embarrassing failure"
+    -2 "was a failure"
+    all other magnitudes "was not successful"
+  result==0, magnitude +0x24:
+     5 "was wildly successful beyond any expectations"
+     4 "was a truly grand success"
+     3 "was a great success"
+     2 "was highly successful"
+     all other magnitudes "succeeded"
+  Other results (2 already returned before this block): append no predicate.
+    The native default is exactly "The proposal .".
+  Append ".", destroy temporary strings, and return.
+
+Translation consumers
+  data/runtime/announcement-negotiation-grammar.tsv holds complete Chinese
+  templates for every finite wording, optional echo, success/failure combination,
+  and empty-predicate default. Historical figure captures use $historical-actor;
+  entities/sites reuse generated name semantics; position titles use $office.
+  src/native_history_diplomacy.inc captures typed fields and true position presence.
+  src/history_semantics_diplomacy.inc selects the same branches from typed fields,
+  including the asymmetric target judgment, siege early return, 32-bit skill
+  dispatch vs 16-bit style memory, and all native empty predicates.

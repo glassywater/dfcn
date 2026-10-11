@@ -184,7 +184,8 @@ std::optional<std::string> Overlay::translate_legends_name(
     TranslationWorkFrame work_frame("historical name", raw);
     // Normalization is for generated names, never the bytes inside an
     // explicitly authored nickname (including repeated spaces).
-    std::string name = person && raw.find('`') != std::string_view::npos
+    std::string name = raw.find('`') != std::string_view::npos ||
+            (!person && contains_cjk_utf8(raw))
         ? std::string(trim_view(raw)) : normalize_utterance(raw);
     if (name.empty() || name.ends_with("...")) return std::nullopt;
     const std::string memo_key = "legends name:" +
@@ -201,6 +202,44 @@ std::optional<std::string> Overlay::translate_legends_name(
     if (!person && entity_reference)
         if (const auto civilization = translate_civilization_reference(name))
             return civilization;
+    if (!person) {
+        const size_t open = name.find('`');
+        if (open != std::string::npos) {
+            TranslationWorkFrame nickname_frame("native generated-name nickname", name);
+            size_t close = name.rfind('\'');
+            // Apostrophes inside a following generated word are not the
+            // nickname delimiter. EnglishName ends that field at a boundary.
+            while (close != std::string::npos && close > open &&
+                    close + 1 < name.size() && name[close + 1] != ' ')
+                close = name.rfind('\'', close - 1);
+            if ((open > 0 && name[open - 1] != ' ') ||
+                    close == std::string::npos || close <= open + 1 ||
+                    (close + 1 < name.size() && name[close + 1] != ' '))
+                return std::nullopt;
+            // EnglishName uses the same nickname display preferences for
+            // squads, sites and entities. The whole entity identity was tried
+            // above; its shorter name groups must not resolve other entities.
+            // Extra backticks and spaces inside this authored span are data.
+            const auto before = trim_view(std::string_view(name).substr(0, open));
+            const auto after = trim_view(std::string_view(name).substr(close + 1));
+            const auto generated = [&](std::string_view group) {
+                return group.empty() ? std::string{} :
+                    translate_legends_name(group, false, false).value_or(
+                        native_text_to_utf8(group));
+            };
+            std::string target = generated(before) + "“" + native_text_to_utf8(
+                std::string_view(name).substr(open + 1, close - open - 1)) + "”";
+            // With no surname/title group, the remaining OfX group follows
+            // the nickname directly. It still owns the complete preceding
+            // name, as in the shared personal/native name compositor.
+            if (after.starts_with("of ") || after.starts_with("Of "))
+                return generated(after.substr(3)) + "之" + target;
+            const auto rest = generated(after);
+            if (!rest.empty()) target += "·" + rest;
+            return target;
+        }
+        if (contains_cjk_utf8(name)) return native_text_to_utf8(trim_view(raw));
+    }
     // Native unit names enclose a nickname in `...'. It may replace the
     // given name or follow it, while the surname/title/OfX groups remain
     // outside the quotes. Resolve those name fields separately; rejecting
@@ -1066,7 +1105,7 @@ std::optional<std::string> Overlay::translate_legends_nested(
 }
 
 std::optional<std::string> Overlay::translate_legends_event(
-        std::string_view value, unsigned depth) const {
+        std::string_view value, unsigned depth, bool named_fallback) const {
     return legends_translation_work([&]() -> std::optional<std::string> {
     TranslationWorkFrame work_frame("historical event", value);
     value = trim_view(value);
@@ -1074,7 +1113,8 @@ std::optional<std::string> Overlay::translate_legends_event(
     // Do not let an unresolved native era fall through to an ordinary
     // person/name template: Dragon can be both a species and a name word.
     if (world_age_source_shape(value)) return translate_world_age(value, depth);
-    const std::string key = "E:" + std::to_string(depth) + ":" + std::string(value);
+    const std::string key = std::string(named_fallback ? "E:" : "E:typed:") +
+        std::to_string(depth) + ":" + std::string(value);
     if (const auto it = legends_nested_cache_.find(key); it != legends_nested_cache_.end())
         return it->second;
     const auto cycle_revision = active_translation_work->cycle_revision;
@@ -1143,7 +1183,8 @@ std::optional<std::string> Overlay::translate_legends_event(
                     translated_date = fill_template(rule, captures, &capture_translations_);
             }
             if (!item_description_translation_complete(translated_date)) continue;
-            const auto event = translate_legends_event(value.substr(0, at), depth + 1);
+            const auto event = translate_legends_event(value.substr(0, at), depth + 1,
+                named_fallback);
             if (event) result = *translated_date + *event;
             break;
         }
@@ -1166,7 +1207,7 @@ std::optional<std::string> Overlay::translate_legends_event(
     // rejects commas and must not consume this as a fragment of prose.
     if (!result && split_generated_name_identity(value))
         result = translate_procedural_fragment(std::string(value));
-    if (!result) result = translate_legends_name(value, false);
+    if (!result && named_fallback) result = translate_legends_name(value, false);
     if (!translation_work_exhausted() &&
             cycle_revision == active_translation_work->cycle_revision) {
         if (legends_nested_cache_.size() >= 8192) legends_nested_cache_.clear();
@@ -1538,12 +1579,25 @@ std::optional<std::string> Overlay::translate_legends_text(
                     continue;
                 }
                 std::vector<std::optional<std::string>> translated(captures.size());
+                const auto translate_place = [&](std::string_view value) {
+                    return rule.source == "World artifact: Last in {p}"
+                        ? translate_world_artifact_location(value)
+                        : translate_legends_place(value);
+                };
                 bool intact = true;
                 for (size_t i = 0; i < captures.size(); ++i) {
                     switch (rule.template_kinds[i]) {
                     case 'a': translated[i] = translate_legends_participant(captures[i],
                         link ? std::optional<bool>(person) : std::nullopt); break;
-                    case 'n': translated[i] = translate_legends_actor(captures[i]); break;
+                    case 'n':
+                        // Both native artifact producers own a complete HF
+                        // caption, including an empty caste and curse/status.
+                        // Reuse the shared typed actor and empty-caste grammar.
+                        translated[i] = rule.source == "World artifact: Last held by {n}" ||
+                                rule.source == "World artifact claim: Claimed by local {n}"
+                            ? translate_announcement_combat(captures[i], "$travel-actor")
+                            : translate_legends_actor(captures[i]);
+                        break;
                     case 'p':
                         if (journal_habitat_rule(rule)) {
                             translated[i] = translate_journal_habitat_places(captures[i]);
@@ -1563,7 +1617,7 @@ std::optional<std::string> Overlay::translate_legends_text(
                                 captures[i].resize(stop);
                             }
                         }
-                        translated[i] = translate_legends_place(captures[i]);
+                        translated[i] = translate_place(captures[i]);
                         // A final name capture can share gray with the next
                         // connective or punctuation. Stop at the longest
                         // complete name, then let the scoped grammar handle
@@ -1574,7 +1628,7 @@ std::optional<std::string> Overlay::translate_legends_text(
                             for (size_t stop = value.size(); stop-- > 1;) {
                                 if (value[stop] != ' ' && value[stop] != '.' &&
                                     value[stop] != ',' && value[stop] != ';') continue;
-                                const auto name = translate_legends_place(
+                                const auto name = translate_place(
                                     std::string_view(value).substr(0, stop));
                                 if (!name) continue;
                                 end -= value.size() - stop;

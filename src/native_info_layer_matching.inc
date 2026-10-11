@@ -20,6 +20,10 @@ std::vector<Match> Overlay::find_native_info_matches() const {
     screen_rows.reserve(gps_->dimy);
     for (int y = 0; y < gps_->dimy; ++y) screen_rows.push_back(read_row(y));
 
+    // The workquota producer owns the complete workshop assignment/limit
+    // column, including an editor whose native bytes remain untouched.
+    append_work_order_shop_fields(screen_rows, result, only_y);
+
     // Editable text, authored squad aliases and formatter-owned identities
     // reserve their exact spans before dictionary/template matching.
     for (const auto &region : native_text_input_regions(*gps_, screen_rows, nullptr)) {
@@ -31,7 +35,13 @@ std::vector<Match> Overlay::find_native_info_matches() const {
     }
     append_fortress_squad_alias_rows(screen_rows, result, only_y, nullptr);
     const auto clipped_template_captions = captured_clipped_captions();
+    append_native_map_hover_phrases(screen_rows, result, only_y,
+        NativeMapHoverKind::Terrain);
     append_toolbar_tooltip_matches(screen_rows, result, only_y, false);
+    if (g_native_info_page == NativeInfoPage::Objects) {
+        append_fortress_written_content_rows(screen_rows, result, only_y, nullptr);
+        append_fortress_object_rows(screen_rows, result, only_y, nullptr);
+    }
     append_native_info_panel_titles(screen_rows, result, only_y);
     if (!captured_native_unit_chooser_records().empty())
         append_fortress_unit_chooser_rows(screen_rows, result, only_y, false);
@@ -112,6 +122,8 @@ std::vector<Match> Overlay::find_native_info_matches() const {
     };
 #include "ui_messages.inc"
 #include "native_unit_identity_rows.inc"
+
+    append_limited_skill_matches(screen_rows, result, only_y, clipped_template_captions);
 
     // Recovery uses this component's complete native caption, never a
     // same-position caption captured by the world or another private layer.
@@ -278,6 +290,9 @@ std::vector<Match> Overlay::find_native_info_background_matches(int only_y,
             if (ch) rows[y][x] = static_cast<char>(ch);
         }
     NativePanelReadScope panels(gps_);
+    // The map remains behind management components. A real terrain draw
+    // keeps its own field grammar in this reduced background reader too.
+    append_native_map_hover_phrases(rows, result, only_y, NativeMapHoverKind::Terrain);
     append_toolbar_tooltip_matches(rows, result, only_y, screen_override != nullptr);
     append_fortress_site_name(rows, result, only_y, screen_override != nullptr);
     append_fortress_elevation_rows(rows, result, only_y, screen_override != nullptr);

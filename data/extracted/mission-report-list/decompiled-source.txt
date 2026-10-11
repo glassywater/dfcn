@@ -1,0 +1,356 @@
+Native fortress world Reports list: source-level reconstruction
+==============================================================
+
+Source: installed native Windows 53.16 Steam and official/classic PE images
+selected by data/runtime/native-pe-images.json. native-images.json records the
+actual image identities. All coordinates below are reference-image RVAs; every
+paired classic body is archived alongside it. The source blocks were decoded
+from those PE files with the fixed native objdump. This file describes original
+code and text production, not a test or an observed translated game result.
+
+List boundary and record identity
+--------------------------------
+The world-screen report-list path is 1d0b2d..1d0f47, classic 1d0abd..1d0ed7.
+It concatenates two index collections, screen+8330 and screen+8348. The former
+indexes mission reports in global24e3908; the latter indexes spoils/tribute
+records in global24e3920. The three caption families are produced elsewhere and
+retained in record storage. The consumer does not translate or regenerate them.
+
+if index < mission_indices.size():
+    mission_record = mission_reports[mission_indices[index]]
+else:
+    loot_record = loot_reports[loot_indices[index - mission_indices.size()]]
+
+if mission_record:
+    bright = !(mission_record.flags_at_48 & 1)
+    source = mission_record.string_at_28
+else if loot_record:
+    bright = !(loot_record.flags_at_20 & 1)
+    source = loot_record.string_at_0
+else:
+    no caption submitted for this row
+
+set_color(6, 0, bright)
+addst(source, width=screen_width-3)  // 1d0db2; classic1d0d42
+
+If both index collections are empty: create "No reports available", set
+color(6,0,true), draw it at 1d0f35 (classic1d0ec5). There is no fourth title
+family or native special caption for the unread/read flag. This branch is
+separate from an invalid/null record slot in a nonempty collection.
+
+The three dots written at 1d0dee/1d0e02/1d0e16 target a local temporary string;
+the stored source above is the actual preceding title draw's argument. The
+temporary is also drawn at 1d0e2d. These bytes do not introduce another title
+grammar. Drawing and viewport/scrollbar branches are retained in the asm.
+
+The complete native Report: prefix reference set in each PE also contains
+"Interrogation Report: ". Its separate producer2bc250 (classic2b9e10) stores
+records via global24e3938 at2bc3ee, whereas this list consumes only globals
+24e3908 and24e3920. The producer's storage boundary is archived separately to
+record why that fourth native prefix does not appear in this list. The full
+Report: reference set is retained as report-prefix-source rows in the catalogue.
+
+Mission Report title
+--------------------
+Owner9df530; title block9df8bd..9dfbba; classic owner9dcd60 and block9dd0ed..
+9dd3ea. army+60 is the mission object, goal is its DWORD+138 (leaf75110 reads
+it directly), target site ID is mission+8, subtype data pointer is mission+130.
+Existing mission+128 report storage suppresses re-creation of this title. Other
+movement/eligibility gates preceding the block are not text producers.
+
+title = "Mission Report: "
+switch mission.goal:
+    case 2:
+        switch *(int32*)mission.subtype_data:
+            case 0: title += "Raze "; break
+            case 1: title += "Take over "; break
+            case 2: title += "Seize "; break
+            case 3: title += "Demand tribute from "; break
+            case 4: title += "Raid "; break
+            case 5: title += "Explore "; break
+            case 6: title += "Pillage "; break
+            default: title += "Raid "; break
+        title += SiteName(mission.site_id, flags=0) // b93930
+        break
+    case 17:
+        title += "Recover "
+        title += ArtifactName(*(int32*)mission.subtype_data, flags=0) // b94400
+        break
+    case 18:
+        title += "Rescue "
+        context = native_default_event_context() // 72080, flags0
+        title += HistoricalFigureName(*(int32*)mission.subtype_data,
+                                      context, 1, 1) // b92f10
+        break
+    case 19:
+        title += "Request workers from "
+        title += SiteName(mission.site_id, flags=0)
+        break
+    case 25:
+        title += DiplomaticProposalTitle(mission.subtype_data) // 1bb400
+        title += " at "
+        title += SiteName(mission.site_id, flags=0)
+        break
+    default:
+        // Original native code emits no action or target.
+        break
+title += " (Set out "
+title += CurrentSeasonOrEmpty()
+title += " " + signed_decimal(current_year) + ")"
+mission_report.string_at_28 = title
+mission_report.year_at_4c = current_year
+mission_report.tick_at_50 = current_year_tick
+mission.report_at_128 = mission_report
+
+Raid table9e36cc (classic9e0efc) was read as all seven uint32 RVAs. The source
+table and every branch destination are recorded in native-source-edges.tsv.
+
+DiplomaticProposalTitle (full stackless helper1bb400..1bb568; classic1bb390..
+1bb4f8) repeatedly searches a vector of int16 clauses. These tests have
+priority, so a proposal containing multiple recognized clauses chooses the
+first matching line below, regardless of their position in the vector:
+
+if clauses.contains(10): return "Demand surrender"
+if clauses.contains(1):  return "Make peace"
+if clauses.contains(13): return "Declare war"
+if clauses.contains(14): return "Seek alliance"
+if clauses.contains(15): return "Make contact"
+if clauses.contains(16): return "Improve trade"
+return "Diplomacy"
+
+Spoils Report title and the squad-name source
+--------------------------------------------
+Owner10b150; title block10f966..10fb02; classic owner10b0e0 and block10f8f6..
+10fa92. A native loot/return predicate (r13b) controls creation; raw conditions
+are preserved. The caption-producing branch itself is fully included here.
+
+title = "Spoils Report: "
+if participating_squads.size() != 0:
+    // Direct source pointer: first squad +8, not the alias string at +80.
+    name = EnglishName(&participating_squads[0].language_name_at_8,
+                       capitalize=true, shorten=false) // call10fa07 -> a946e0
+    title += name
+    if participating_squads.size() >= 2:
+        title += " and others"
+    title += ", "
+title += CurrentSeasonOrEmpty()
+title += " " + signed_decimal(current_year)
+loot_report.string_at_0 = title
+loot_report.year_at_24 = current_year
+loot_report.tick_at_28 = current_year_tick
+loot_report.flags_at_20 |= 2
+loot_reports.push_back(loot_report)
+
+The vector is filled after the actual lookup75500 of army.squad_id(+1f0)
+in global24e37c0, followed by squad+1c4 ownership comparison and call13cac0.
+The helper13cac0 keeps squad pointers sorted by squad.id(+0), suppresses
+duplicate IDs, and inserts the actual squad pointer. The first displayed
+language name therefore belongs to the first participating squad in that
+sorted vector. It is not a name inferred from screenshot spelling.
+
+No read of squad.alias(+80) exists in this title path. In contrast, the separate
+return announcement in the same producer explicitly tests the alias and uses
+it when nonempty (existing fortress-arrivals source extraction). Sharing an
+owner function does not make that announcement's alias branch a title branch.
+The full language-name helpera946e0..a94ea2 (classic a91760..a91f22) is included.
+It reads has_name(+72), first_name(+0), nickname(+20), words(+40), parts of
+speech(+5c), and native name-display preferences. The containing name structure
+also carries language(+6c) and name type(+70), but this English-form producer
+does not use them to select a different spelling. Its two bool arguments control
+capitalization and shortening; English WORD-form lookup is inherent to the
+function, rather than selected by either bool.
+Thus authored components inside language_name also retain their existing native
+name rules. The squad alias remains unchanged wherever its own producer uses
+it. A title retained in an old record must not be reclassified using the current
+alias, a substring heuristic, or an English-versus-Chinese spelling heuristic.
+
+Complete reachable EnglishName field grammar for these title calls
+------------------------------------------------------------------
+All title call sites pass capitalize=true, shorten=false, directly or through
+their typed name supplier. The full general helper is archived, but the
+shorten=true suppression branches are not taken by these title calls. It uses
+the following native state, with all fields independently empty or absent:
+
+if name.has_name_at_72 == 0:
+    return without changing the supplied output // a94723..a94727
+    // These title suppliers initialize their temporary output to empty.
+clear output // a94747
+mode = 0
+if unsigned(current_game_type) <= 10:
+    mode = nickname_display[current_game_type] // a94730..a94743
+// Native modes:0 REPLACE_FIRST,1 CENTRALIZE,2 REPLACE_ALL.
+// Any game_type outside0..10 retains mode0. Any other stored mode ignores
+// nickname and uses first_name, then continues to generated components.
+
+quote(nickname) = byte0x60 + nickname + byte0x27
+// These inline bytes are backtick and apostrophe, not two apostrophes.
+// Nickname bytes themselves are appended unchanged, without titlecase.
+if nickname is nonempty and mode in {0,2}:
+    output = quote(nickname) // a94770..a947a9
+else:
+    output = NativeTitlecase(first_name) // a947ae..a94879
+if nickname is nonempty and mode == 1:
+    if output is nonempty: output += " "
+    output += quote(nickname) // a94893..a948e0
+if nickname is nonempty and mode == 2:
+    return // a948e2..a948ed
+// Empty nickname:0/1/2/other all use the first_name branch and continue.
+// Empty first_name emits nothing; no unknown-name literal is substituted.
+
+W(slot) = EnglishWordForm(name.words[slot], name.parts_of_speech[slot])
+C(text) = NativeTitlecase(text) // 52d3c0, rather than only first-byte uppercase
+add_spaced(text):
+    if output is nonempty: output += " "
+    output += text
+
+FrontCompound = words[0](+40), RearCompound = words[1](+44)
+FirstAdjective = words[2](+48), SecondAdjective = words[3](+4c)
+HyphenCompound = words[4](+50), TheX = words[5](+54), OfX = words[6](+58)
+The seven corresponding int16 POS fields start at+5c and end at+68.
+
+if FrontCompound != -1 or RearCompound != -1: // a948f3..a9490b
+    compound = W(0) + W(1) // a94934,a94948; no internal delimiter
+    if compound is nonempty: add_spaced(C(compound)) // a9494d..a94995
+
+if TheX != -1 or FirstAdjective != -1 or SecondAdjective != -1:
+    // Exact gate a949d5..a949e5: lone HyphenCompound is hidden if all three
+    // gate IDs are -1. The gate tests IDs, not whether their forms are empty.
+    article_added = false
+    previous_component_needs_space = output is nonempty
+    for slot in {2,3,4,5}: // a94a21,a94ad8,a94b80,a94d05
+        part = W(slot)
+        if part is empty: continue
+        if previous_component_needs_space: output += " "
+        if not article_added:
+            output += "The " if output is empty else "the "
+            article_added = true
+        output += C(part)
+        if slot == 4:
+            output += byte0x2d // a94c79: '-'
+            previous_component_needs_space = false
+        else:
+            previous_component_needs_space = true
+    // A visible HyphenCompound and empty/missing TheX leave a trailing '-'.
+    // An empty intermediate form neither inserts a delimiter nor a second
+    // article; the first nonempty title form owns the article.
+
+if OfX != -1: // a94db2..a94dc6
+    part = W(6)
+    if part is nonempty:
+        if output is nonempty: output += " "
+        output += "Of " if output is empty else "of " // a94e18..a94e38
+        output += C(part)
+// A has_name=true record can still produce an empty string when the literal
+// first_name/nickname and all reachable generated forms contribute nothing.
+
+EnglishWordForm is the stackless native leafd2cb50..d2cc1c (classicd29b90..
+d29c5c), already completely extracted with its selector table in
+data/extracted/unit-preferences/native-decompiled.txt. Negative WORD ID,
+WORD ID >= language.words.size(), or unsigned POS >8 contributes no bytes.
+The nine selectors use these language_word field offsets:
+0 Noun+20;1 NounPlural+40;2 Adjective+60;3 Prefix+80;4 Verb+a0;
+5 Verb3rdPerson+c0;6 VerbPast+e0;7 VerbPassive+100;8 VerbGerund+120.
+The whole string at that field is appended, including any spaces or punctuation
+within the RAW/modded form. Empty valid form also contributes no bytes.
+
+Finite name delimiters are therefore exactly structural spaces, opening
+backtick0x60, closing apostrophe0x27, hyphen0x2d, "The ", "the ", "Of " and
+"of ". Their bytes/addresses are separately catalogued in native-productions.
+RAW form contents, first_name and authored nickname are dynamic field text.
+In mode2 the quoted standalone nickname is wholly authored: preserve its inner
+bytes; translate the surrounding report heading, participant suffix and date.
+In modes0/1 only the generated WORD groups use generated-name translation;
+an authored nickname must not be classified as squad.alias or translated from
+its English spelling. No mode licenses changing squad.alias(+80).
+
+Tribute Report title
+--------------------
+Ownera092c0; blocka09633..a09822; classic ownera06af0 and blocka06e63..a07052.
+
+title = "Tribute Report: "
+title += EntityName(tribute_record.entity_id_at_0c, flags=0) // a09757 -> b92900
+title += ", "
+title += CurrentSeasonOrEmpty()
+title += " " + signed_decimal(current_year)
+loot_report.string_at_0 = title
+loot_report.year_at_24 = current_year
+loot_report.tick_at_28 = current_year_tick
+loot_reports.push_back(loot_report)
+
+There is no squad-count or "and others" branch for tribute. Its name resolves
+an actual historical entity, whose language_name is entity+20. Missing entity
+is the native text "an unknown civilization" (b92a4c). Flag0 excludes the
+LPAGE wrappers present in this general-purpose helper.
+
+Shared season/year finite branches
+----------------------------------
+CurrentSeasonOrEmpty reads the signed byte at global18d6f0e (classic18d0dfd).
+The direct predicates are identical in each title producer:
+    0 -> "Spring"
+    1 -> "Summer"
+    2 -> "Autumn"
+    3 -> "Winter"
+    every other value -> empty string
+All three always append the following space and signed decimal year. They
+therefore have a native default branch containing the year without a season.
+Year is global23746f4, classic236e604; decimal helper52c130, classic529cf0.
+52c130 delegates to52c2b0, which constructs a native string stream, inserts the
+original ECX int32 through MSVCP140.dll basic_ostream::operator<<(int), then
+returns/joins its stream string. The actual signed-int imported symbol is
+??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@H@Z, IAT15e5460,
+call52c2e6. The entire year-decimal-core is retained for both editions.
+It is a runtime int32 field, not a finite literal to enumerate per savegame.
+
+Typed object-name boundaries and fallbacks
+-----------------------------------------
+The complete field-supplier bodies are archived for both editions. Their
+general-purpose flags/context branches are preserved in native-source-edges;
+the following list records the title call site's actual arguments.
+
+SiteName b93930, flags0: site lookup7db20; site.language_name at site+0;
+EnglishName(capitalize=true, shorten=false). Missing site -> "an unknown site".
+
+EntityName b92900, flags0: entity lookupba0a0 in global23d17f8; entity.name+20;
+EnglishName(capitalize=true, shorten=false). Missing -> "an unknown civilization".
+
+ArtifactName b94400, flags0: binary search global23e6180..23e6188 by artifact.id;
+artifact.language_name+8 and item pointer+90. Nonempty native name wins. Empty
+name uses actual item type and tool-use virtuals: type89, use20, or type87 ->
+"Untitled"; otherwise native item-name helperc65450. Untitled is encoded as the
+little-endian immediate64656c7469746e55 in instructionsb945b0 andb9460b, not a
+RIP-referenced literal. Missing artifact -> "an unknown artifact". General
+LPAGE:ARTIFACT/BOOK clauses do not execute for flags0. Item-name vocabulary and
+virtual field boundaries are already maintained in mission-report-sources.tsv,
+item-info-title-sources.tsv, item-raw-title-sources.tsv, src/legends_books.inc and
+src/native_history_items.inc; generated names use the shared name translation.
+
+HistoricalFigureName b92f10, default context72080, trailing int16 1 and1:
+HF lookup67dc0. Missing HF -> "an unknown creature". A named HF uses its typed
+language_name(+38), species/caste IDs(+2/+4), ghost/zombie flags and native
+identity/nickname fields as required by the general formatter. Unnamed figures
+use the native race/caste name and a/the forms. Caller-default context has no
+interrogation/person perspective and flags0; the helper's generic interrogator,
+subject, first-person and LPAGE literal branches in the asm are not asserted to
+execute for this title call. Species/caste strings come from RAW fields and
+remain the shared typed translation boundary, not a hardcoded list of world
+names. Existing full helper source and semantic capture are preserved in
+mission-report-sources.tsv and src/history_names.inc.
+
+Detail-header continuation
+--------------------------
+Spoils/tribute detail at1d06ce..1d077b copies the selected record through
+screen+83d8. It truncates a temporary string when length >= interior_width-2;
+for room >3 it replaces the last three characters with '.'. Header addst is
+1d0776, classic1d0706. Translation must retain the complete stored caption
+before this resize/ellipsis stage. Neither the ellipsis nor a clipped visible
+prefix supplies name provenance. Mission detail similarly uses stored+28.
+
+Dynamic text scope
+------------------
+These finite producer branches exhaust the title families and fixed wording in
+this report list. Save-dependent squad names, entities, sites, figures,
+artifacts, book titles, item descriptions and years are typed runtime fields;
+enumerating only screenshot values would omit their actual source domains.
+The associated complete existing structured name/item/history paths handle
+those domains. No game process, UI operation, hot reload or additional test was
+performed by this source extraction.

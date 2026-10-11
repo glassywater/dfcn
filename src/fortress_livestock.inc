@@ -195,6 +195,26 @@ void Overlay::append_fortress_creature_activities(std::vector<std::string> &rows
         }
         return visible;
     };
+    // Source capture already owns the current record and its complete native
+    // text. Keep those bounds with the match: the producer can refresh the
+    // logical grid before Present lays out this same captured field.
+    const auto bind_field = [&](Match &match, const SDL_Rect &box, int field_left,
+                                int field_right) {
+        match.native_fortress_creature_field = std::pair{field_left, field_right};
+        match.native_picture_caption_box = box;
+        match.layout_x = field_left;
+        match.layout_y = match.y;
+        match.layout_length = field_right - field_left;
+        match.layout_clip_right = field_right;
+        match.layout_left = true;
+        match.layout_font_pixels = unified_font_pixels();
+        match.layout_lock_font_pixels = true;
+        match.layout_line_height_pixels = gps_->tile_pixel_y;
+        bool top = false;
+        const auto *cell = cell_at(match.x, match.y, &top);
+        if (cell)
+            match.layout_foreground_rgb = (cell[1] << 16) | (cell[2] << 8) | cell[3];
+    };
     // The native unit widget uses either one name/profession caption or a
     // name followed by a separate profession line. Own those same complete
     // slots before literals can replace just a given name or title word.
@@ -271,8 +291,70 @@ void Overlay::append_fortress_creature_activities(std::vector<std::string> &rows
                 }
             }
             if (!current) continue;
-            matches.push_back({first, y, end - first, -2, std::move(*target), visible});
+            Match match{first, y, end - first, -2, std::move(*target), visible};
+            bind_field(match, {name_left, middle - 1, name_right - name_left, 3},
+                status ? first : name_left, name_right);
+            matches.push_back(std::move(match));
             std::fill(rows[y].begin() + first, rows[y].begin() + end, ' ');
+        }
+        if (sorts.size() == 5) {
+            const int owner_left = sorts[4];
+            int owner_right = -1;
+            // The full picture-backed record owns its right cap. A pet
+            // action may overwrite that cap; only this record's complete
+            // three-row action can replace it as the ownership boundary.
+            const auto record = caption ? caption : native_fortress_creature_record_caption(
+                *gps_, name_left, left, middle);
+            if (record && record->x + record->w > owner_left)
+                owner_right = record->x + record->w;
+            const int action_limit = owner_right > owner_left ? owner_right : gps_->dimx;
+            for (int x = owner_left; x < action_limit && x + 3 <= gps_->dimx; ++x) {
+                bool action = false;
+                for (const auto &skin : native_texture_button_pets_livestock(*gps_))
+                    action = action || native_square_button_at(*gps_, x, middle, skin);
+                if (action) { owner_right = x; break; }
+            }
+            if (owner_right <= owner_left) continue;
+            for (int y = middle - 1; y <= middle; ++y) {
+                if (only_y >= 0 && y != only_y) continue;
+                int first = owner_left, end = owner_right;
+                while (first < end && (native_rows[y][first] == ' ' ||
+                        (settings->classic && is_cp437_box_separator(native_rows[y], first))))
+                    ++first;
+                if (settings->classic)
+                    for (int x = first; x < end; ++x)
+                        if (is_cp437_box_separator(native_rows[y], x)) { end = x; break; }
+                while (end > first && native_rows[y][end - 1] == ' ') --end;
+                if (first == end) continue;
+                const std::string visible = native_rows[y].substr(first, end - first);
+                if (rows[y].compare(first, end - first, visible) != 0) continue;
+                bool current = true;
+                for (int x = first; x < end; ++x) {
+                    const auto ch = visible_char_at(x, y);
+                    if ((ch ? ch : ' ') != static_cast<unsigned char>(visible[x - first]) ||
+                            (ch && ch < ' ' && ch != 0x0b && ch != 0x0c)) {
+                        current = false;
+                        break;
+                    }
+                }
+                if (!current) continue;
+                const std::string source = complete_caption(first, y, owner_right, visible);
+                auto target = exact_literal_translation(source);
+                if (!target && y == middle - 1)
+                    target = translate_unit_identity(source, true);
+                if (!target && y == middle) {
+                    // Preserve the complete-word glossary fallback used by
+                    // ordinary matching (for example, Owned).
+                    const auto term = procedural_terms_.find(lower(source));
+                    if (term != procedural_terms_.end()) target = term->second;
+                }
+                if (!target) continue;
+                Match match{first, y, end - first, -2, std::move(*target), visible};
+                bind_field(match, {owner_left, middle - 1, owner_right - owner_left, 3},
+                    owner_left, owner_right);
+                matches.push_back(std::move(match));
+                std::fill(rows[y].begin() + first, rows[y].begin() + end, ' ');
+            }
         }
     }
     for (int y = header_y + 1; y < gps_->dimy; ++y) {
@@ -317,7 +399,8 @@ void Overlay::append_fortress_creature_activities(std::vector<std::string> &rows
         for (int x = left; x < end; ++x) {
             const auto ch = visible_char_at(x, y);
             if ((ch ? ch : ' ') != static_cast<unsigned char>(rows[y][x]) ||
-                (ch && ch < ' ' && ch != 0x0b && ch != 0x0c) ||
+                (ch && ch < ' ' && ch != 0x0b && ch != 0x0c &&
+                    !is_native_item_designation_byte(ch)) ||
                 is_cp437_box_separator(rows[y], x)) {
                 current = false;
                 break;
@@ -338,17 +421,52 @@ void Overlay::append_fortress_creature_activities(std::vector<std::string> &rows
             translation.usable() ? translation.target : native_text_to_utf8(source), visible};
         match.native_hover_untranslated = translation.has_untranslated();
         match.translation_result = std::make_shared<const TranslationResult>(std::move(translation));
-        match.layout_x = left;
-        match.layout_y = y;
-        match.layout_length = right - left;
-        match.layout_clip_right = right;
-        match.layout_left = true;
-        match.layout_font_pixels = std::clamp(
-            static_cast<int>(gps_->tile_pixel_y * config_.font_scale), 1, gps_->tile_pixel_y);
-        match.layout_lock_font_pixels = true;
-        match.layout_line_height_pixels = gps_->tile_pixel_y;
+        bind_field(match, {left, record_middles[y] - 1, right - left, 3}, left, right);
         matches.push_back(std::move(match));
         std::fill(rows[y].begin() + left, rows[y].begin() + end, ' ');
+    }
+}
+
+// Captured creature fields retain their source-proved margins even if the
+// native producer has cleared or begun refreshing the logical grid. This
+// pass fits only those saved fields; it never rediscovers their page or skin.
+void Overlay::layout_fortress_creature_fields(SDL_Renderer *renderer) {
+    if (!gps_ || !face_ || !renderer ||
+            gps_->tile_pixel_x <= 0 || gps_->tile_pixel_y <= 0) return;
+    std::map<std::array<int, 4>, std::vector<Match *>> records;
+    for (Match &match : prepared_matches_) {
+        if (!match.native_fortress_creature_field || match.target.empty() ||
+                match.native_split_duplicate || !match.native_picture_caption_box ||
+                match.layout_x < 0 || match.layout_clip_right <= match.layout_x) continue;
+        const auto &box = *match.native_picture_caption_box;
+        records[{box.x, box.y, box.w, box.h}].push_back(&match);
+    }
+    const bool classic = native_ui_classic().value_or(false);
+    for (auto &[box, fields] : records) {
+        if (classic && std::none_of(fields.begin(), fields.end(),
+                [](const Match *field) { return field->native_split_text; })) {
+            int first_y = gps_->dimy, last_y = -1;
+            for (const Match *field : fields) {
+                first_y = std::min(first_y, field->y);
+                last_y = std::max(last_y, field->y);
+            }
+            if (last_y == first_y + 1) {
+                for (Match *field : fields) {
+                    field->layout_y = box[1] + field->y - first_y;
+                    field->layout_pixel_y = gps_->tile_pixel_y / 2;
+                    field->layout_fixed_baseline = true;
+                }
+            }
+        }
+        for (Match *field : fields) {
+            // Other record fitters may share a narrower column. Restore this
+            // field's own captured allocation before measuring its text.
+            const auto [left, right] = *field->native_fortress_creature_field;
+            field->layout_x = left;
+            field->layout_clip_right = right;
+            layout_fortress_text_rows(renderer, {{field}},
+                left, right);
+        }
     }
 }
 

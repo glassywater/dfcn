@@ -1,0 +1,7 @@
+edition	image_identity	image_path	role	owner_start	owner_end	block_start	block_end
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	ambush-arrival-description	0x1413625b0	0x1413640b1	0x1413627a9	0x141362913
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	general-arrival-description	0x1413547e0	0x14135e678	0x141354924	0x1413549d2
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	caste-property-17-description	0x140144ea0	0x140144f7b	0x140144ea0	0x140144f7b
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	ambush-arrival-description	0x14135d520	0x14135f021	0x14135d719	0x14135d883
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	general-arrival-description	0x14134f750	0x1413595e8	0x14134f8a1	0x14134f942
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	caste-property-17-description	0x140144e30	0x140144f0b	0x140144e30	0x140144f0b
