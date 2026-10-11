@@ -1,0 +1,111 @@
+edition	native_class	enum	predicate	source_production	branch_rva	source_kind
+reference	building_workshopst	all	building.string[0xd0].length != 0	building.string[0xd0] (verbatim authored name)		
+reference	building_workshopst	0	type == 0	Carpenter's Workshop	0x54fd77	native literal
+reference	building_workshopst	1	type == 1	Farmer's Workshop	0x54fe35	native literal
+reference	building_workshopst	2	type == 2; valid building.race int16[0x4c]; creature_raw.string[0x2c0].length > 0	"capitalize_first_ascii(creature_raw.string[0x2c0]) + ""'s Workshop"""	0x54fd89	profession RAW name
+reference	building_workshopst	2	type == 2; invalid race or empty profession RAW name	Stoneworker's Workshop	0x54fd89	native literal
+reference	building_workshopst	3	type == 3; valid building.race int16[0x4c]; creature_raw.string[0x540].length > 0	"capitalize_first_ascii(creature_raw.string[0x540]) + ""'s Workshop"""	0x54fbee	profession RAW name
+reference	building_workshopst	3	type == 3; invalid race or empty profession RAW name	Craftsman's Workshop	0x54fbee	native literal
+reference	building_workshopst	4	type == 4; valid building.race int16[0x4c]; creature_raw.string[0x4e0].length > 0	"capitalize_first_ascii(creature_raw.string[0x4e0]) + ""'s Workshop"""	0x54fc40	profession RAW name
+reference	building_workshopst	4	type == 4; invalid race or empty profession RAW name	Jeweler's Workshop	0x54fc40	native literal
+reference	building_workshopst	5	type == 5; valid building.race int16[0x4c]; creature_raw.string[0x420].length > 0	"capitalize_first_ascii(creature_raw.string[0x420]) + ""'s Forge"""	0x54fc92	profession RAW name
+reference	building_workshopst	5	type == 5; invalid race or empty profession RAW name	Metalsmith's Forge	0x54fc92	native literal
+reference	building_workshopst	6	type == 6	Magma Forge	0x54fd65	native literal
+reference	building_workshopst	7	type == 7; valid building.race int16[0x4c]; creature_raw.string[0x280].length > 0	"capitalize_first_ascii(creature_raw.string[0x280]) + ""'s Workshop"""	0x54ff2c	profession RAW name
+reference	building_workshopst	7	type == 7; invalid race or empty profession RAW name	Bowyer's Workshop	0x54ff2c	native literal
+reference	building_workshopst	8	type == 8; valid building.race int16[0x4c]; creature_raw.string[0x9e0].length > 0	"capitalize_first_ascii(creature_raw.string[0x9e0]) + ""'s Workshop"""	0x54ff7b	profession RAW name
+reference	building_workshopst	8	type == 8; invalid race or empty profession RAW name	Mechanic's Workshop	0x54ff7b	native literal
+reference	building_workshopst	9	type == 9	Siege Workshop	0x54fac2	native literal
+reference	building_workshopst	10	type == 10; valid building.race int16[0x4c]; creature_raw.string[0x800].length > 0	"capitalize_first_ascii(creature_raw.string[0x800]) + ""'s Shop"""	0x54fad4	profession RAW name
+reference	building_workshopst	10	type == 10; invalid race or empty profession RAW name	Butcher's Shop	0x54fad4	native literal
+reference	building_workshopst	11	type == 11	Leather Works	0x54fb38	native literal
+reference	building_workshopst	12	type == 12; valid building.race int16[0x4c]; creature_raw.string[0x820].length > 0	"capitalize_first_ascii(creature_raw.string[0x820]) + ""'s Shop"""	0x54fb4a	profession RAW name
+reference	building_workshopst	12	type == 12; invalid race or empty profession RAW name	Tanner's Shop	0x54fb4a	native literal
+reference	building_workshopst	13	type == 13; valid building.race int16[0x4c]; creature_raw.string[0x600].length > 0	"capitalize_first_ascii(creature_raw.string[0x600]) + ""'s Shop"""	0x54fe59	profession RAW name
+reference	building_workshopst	13	type == 13; invalid race or empty profession RAW name	Clothier's Shop	0x54fe59	native literal
+reference	building_workshopst	14	type == 14	Fishery	0x54fb26	native literal
+reference	building_workshopst	15	type == 15	Still	0x54fded	native literal
+reference	building_workshopst	16	type == 16	Loom	0x54fddb	native literal
+reference	building_workshopst	17	type == 17	Quern	0x54fdff	native literal
+reference	building_workshopst	18	type == 18	Vermin Catcher's Shop	0x54fab0	native literal
+reference	building_workshopst	19	type == 19	Kitchen	0x54fe23	native literal
+reference	building_workshopst	20	type == 20	Ashery	0x54fe47	native literal
+reference	building_workshopst	21	type == 21; valid building.race int16[0x4c]; creature_raw.string[0x840].length > 0	"capitalize_first_ascii(creature_raw.string[0x840]) + ""'s Shop"""	0x54fb9c	profession RAW name
+reference	building_workshopst	21	type == 21; invalid race or empty profession RAW name	Dyer's Shop	0x54fb9c	native literal
+reference	building_workshopst	22	type == 22	Millstone	0x54fe11	native literal
+reference	building_workshopst	23	type == 23; building.int32[0x240] finds building_def.id[0x28]	building_def.string[0x30]	0x5500f3	BUILDING_WORKSHOP NAME
+reference	building_workshopst	23	type == 23; custom definition missing	Custom Workshop	0x5500f3	native literal
+reference	building_workshopst	24	type == 24; contained building item has int16 use_mode[0x8] == 2	complete item caption via 0xc65450(reference)/0xc62490(classic)	0x55004e	native item noun/caption grammar
+reference	building_workshopst	24	type == 24; no contained use_mode == 2 item	Tool	0x55004e	native literal
+reference	building_workshopst	invalid	no authored name; unsigned enum outside native bounds	<empty string>		no fallback caption
+reference	building_furnacest	all	building.string[0xd0].length != 0	building.string[0xd0] (verbatim authored name)		
+reference	building_furnacest	0	type == 0	Wood Furnace	0x54f455	native literal
+reference	building_furnacest	1	type == 1	Smelter	0x54f40a	native literal
+reference	building_furnacest	2	type == 2	Glass Furnace	0x54f423	native literal
+reference	building_furnacest	3	type == 3	Kiln	0x54f43c	native literal
+reference	building_furnacest	4	type == 4	Magma Smelter	0x54f46e	native literal
+reference	building_furnacest	5	type == 5	Magma Glass Furnace	0x54f487	native literal
+reference	building_furnacest	6	type == 6	Magma Kiln	0x54f4a0	native literal
+reference	building_furnacest	7	type == 7; building.int32[0x250] finds building_def.id[0x28]	building_def.string[0x30]	0x54f4b9	BUILDING_FURNACE NAME
+reference	building_furnacest	7	type == 7; custom definition missing	Furnace	0x54f4b9	native literal
+reference	building_furnacest	invalid	no authored name; unsigned enum outside native bounds	<empty string>		no fallback caption
+reference	building_siegeenginest	all	building.string[0xd0].length != 0	building.string[0xd0] (verbatim authored name)		
+reference	building_siegeenginest	0	int16 type[0x148] == 0	Catapult		native literal
+reference	building_siegeenginest	1	int16 type[0x148] == 1	Ballista		native literal
+reference	building_siegeenginest	2	int16 type[0x148] == 2	Bolt Thrower		native literal
+reference	building_siegeenginest	invalid	no authored name; unsigned enum outside native bounds	<empty string>		no fallback caption
+classic	building_workshopst	all	building.string[0xd0].length != 0	building.string[0xd0] (verbatim authored name)		
+classic	building_workshopst	0	type == 0	Carpenter's Workshop	0x54d797	native literal
+classic	building_workshopst	1	type == 1	Farmer's Workshop	0x54d855	native literal
+classic	building_workshopst	2	type == 2; valid building.race int16[0x4c]; creature_raw.string[0x2c0].length > 0	"capitalize_first_ascii(creature_raw.string[0x2c0]) + ""'s Workshop"""	0x54d7a9	profession RAW name
+classic	building_workshopst	2	type == 2; invalid race or empty profession RAW name	Stoneworker's Workshop	0x54d7a9	native literal
+classic	building_workshopst	3	type == 3; valid building.race int16[0x4c]; creature_raw.string[0x540].length > 0	"capitalize_first_ascii(creature_raw.string[0x540]) + ""'s Workshop"""	0x54d60e	profession RAW name
+classic	building_workshopst	3	type == 3; invalid race or empty profession RAW name	Craftsman's Workshop	0x54d60e	native literal
+classic	building_workshopst	4	type == 4; valid building.race int16[0x4c]; creature_raw.string[0x4e0].length > 0	"capitalize_first_ascii(creature_raw.string[0x4e0]) + ""'s Workshop"""	0x54d660	profession RAW name
+classic	building_workshopst	4	type == 4; invalid race or empty profession RAW name	Jeweler's Workshop	0x54d660	native literal
+classic	building_workshopst	5	type == 5; valid building.race int16[0x4c]; creature_raw.string[0x420].length > 0	"capitalize_first_ascii(creature_raw.string[0x420]) + ""'s Forge"""	0x54d6b2	profession RAW name
+classic	building_workshopst	5	type == 5; invalid race or empty profession RAW name	Metalsmith's Forge	0x54d6b2	native literal
+classic	building_workshopst	6	type == 6	Magma Forge	0x54d785	native literal
+classic	building_workshopst	7	type == 7; valid building.race int16[0x4c]; creature_raw.string[0x280].length > 0	"capitalize_first_ascii(creature_raw.string[0x280]) + ""'s Workshop"""	0x54d94c	profession RAW name
+classic	building_workshopst	7	type == 7; invalid race or empty profession RAW name	Bowyer's Workshop	0x54d94c	native literal
+classic	building_workshopst	8	type == 8; valid building.race int16[0x4c]; creature_raw.string[0x9e0].length > 0	"capitalize_first_ascii(creature_raw.string[0x9e0]) + ""'s Workshop"""	0x54d99b	profession RAW name
+classic	building_workshopst	8	type == 8; invalid race or empty profession RAW name	Mechanic's Workshop	0x54d99b	native literal
+classic	building_workshopst	9	type == 9	Siege Workshop	0x54d4e2	native literal
+classic	building_workshopst	10	type == 10; valid building.race int16[0x4c]; creature_raw.string[0x800].length > 0	"capitalize_first_ascii(creature_raw.string[0x800]) + ""'s Shop"""	0x54d4f4	profession RAW name
+classic	building_workshopst	10	type == 10; invalid race or empty profession RAW name	Butcher's Shop	0x54d4f4	native literal
+classic	building_workshopst	11	type == 11	Leather Works	0x54d558	native literal
+classic	building_workshopst	12	type == 12; valid building.race int16[0x4c]; creature_raw.string[0x820].length > 0	"capitalize_first_ascii(creature_raw.string[0x820]) + ""'s Shop"""	0x54d56a	profession RAW name
+classic	building_workshopst	12	type == 12; invalid race or empty profession RAW name	Tanner's Shop	0x54d56a	native literal
+classic	building_workshopst	13	type == 13; valid building.race int16[0x4c]; creature_raw.string[0x600].length > 0	"capitalize_first_ascii(creature_raw.string[0x600]) + ""'s Shop"""	0x54d879	profession RAW name
+classic	building_workshopst	13	type == 13; invalid race or empty profession RAW name	Clothier's Shop	0x54d879	native literal
+classic	building_workshopst	14	type == 14	Fishery	0x54d546	native literal
+classic	building_workshopst	15	type == 15	Still	0x54d80d	native literal
+classic	building_workshopst	16	type == 16	Loom	0x54d7fb	native literal
+classic	building_workshopst	17	type == 17	Quern	0x54d81f	native literal
+classic	building_workshopst	18	type == 18	Vermin Catcher's Shop	0x54d4d0	native literal
+classic	building_workshopst	19	type == 19	Kitchen	0x54d843	native literal
+classic	building_workshopst	20	type == 20	Ashery	0x54d867	native literal
+classic	building_workshopst	21	type == 21; valid building.race int16[0x4c]; creature_raw.string[0x840].length > 0	"capitalize_first_ascii(creature_raw.string[0x840]) + ""'s Shop"""	0x54d5bc	profession RAW name
+classic	building_workshopst	21	type == 21; invalid race or empty profession RAW name	Dyer's Shop	0x54d5bc	native literal
+classic	building_workshopst	22	type == 22	Millstone	0x54d831	native literal
+classic	building_workshopst	23	type == 23; building.int32[0x240] finds building_def.id[0x28]	building_def.string[0x30]	0x54db13	BUILDING_WORKSHOP NAME
+classic	building_workshopst	23	type == 23; custom definition missing	Custom Workshop	0x54db13	native literal
+classic	building_workshopst	24	type == 24; contained building item has int16 use_mode[0x8] == 2	complete item caption via 0xc65450(reference)/0xc62490(classic)	0x54da6e	native item noun/caption grammar
+classic	building_workshopst	24	type == 24; no contained use_mode == 2 item	Tool	0x54da6e	native literal
+classic	building_workshopst	invalid	no authored name; unsigned enum outside native bounds	<empty string>		no fallback caption
+classic	building_furnacest	all	building.string[0xd0].length != 0	building.string[0xd0] (verbatim authored name)		
+classic	building_furnacest	0	type == 0	Wood Furnace	0x54ce75	native literal
+classic	building_furnacest	1	type == 1	Smelter	0x54ce2a	native literal
+classic	building_furnacest	2	type == 2	Glass Furnace	0x54ce43	native literal
+classic	building_furnacest	3	type == 3	Kiln	0x54ce5c	native literal
+classic	building_furnacest	4	type == 4	Magma Smelter	0x54ce8e	native literal
+classic	building_furnacest	5	type == 5	Magma Glass Furnace	0x54cea7	native literal
+classic	building_furnacest	6	type == 6	Magma Kiln	0x54cec0	native literal
+classic	building_furnacest	7	type == 7; building.int32[0x250] finds building_def.id[0x28]	building_def.string[0x30]	0x54ced9	BUILDING_FURNACE NAME
+classic	building_furnacest	7	type == 7; custom definition missing	Furnace	0x54ced9	native literal
+classic	building_furnacest	invalid	no authored name; unsigned enum outside native bounds	<empty string>		no fallback caption
+classic	building_siegeenginest	all	building.string[0xd0].length != 0	building.string[0xd0] (verbatim authored name)		
+classic	building_siegeenginest	0	int16 type[0x148] == 0	Catapult		native literal
+classic	building_siegeenginest	1	int16 type[0x148] == 1	Ballista		native literal
+classic	building_siegeenginest	2	int16 type[0x148] == 2	Bolt Thrower		native literal
+classic	building_siegeenginest	invalid	no authored name; unsigned enum outside native bounds	<empty string>		no fallback caption

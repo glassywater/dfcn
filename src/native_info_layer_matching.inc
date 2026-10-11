@@ -20,6 +20,10 @@ std::vector<Match> Overlay::find_native_info_matches() const {
     screen_rows.reserve(gps_->dimy);
     for (int y = 0; y < gps_->dimy; ++y) screen_rows.push_back(read_row(y));
 
+    // The workquota producer owns the complete workshop assignment/limit
+    // column, including an editor whose native bytes remain untouched.
+    append_work_order_shop_fields(screen_rows, result, only_y);
+
     // Editable text, authored squad aliases and formatter-owned identities
     // reserve their exact spans before dictionary/template matching.
     for (const auto &region : native_text_input_regions(*gps_, screen_rows, nullptr)) {

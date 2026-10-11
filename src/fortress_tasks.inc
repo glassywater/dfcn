@@ -161,6 +161,17 @@ void Overlay::layout_work_order_fields(SDL_Renderer *renderer) {
             match.layout_line_height_pixels = gps_->tile_pixel_y;
         }
     }
+    for (Match &match : prepared_matches_) {
+        if (match.rule != kWorkOrderShopFieldRule || match.target.empty() ||
+                match.native_split_duplicate || match.layout_x < 0 ||
+                match.layout_clip_right <= match.layout_x) continue;
+        // All six native branches use the same column edge and fixed UI font.
+        // Numbers and assigned-building names cannot change that field's size.
+        const bool fixed_baseline = match.layout_fixed_baseline;
+        layout_fortress_text_rows(renderer, {{&match}}, match.layout_x,
+            match.layout_clip_right);
+        match.layout_fixed_baseline = fixed_baseline;
+    }
 }
 
 // Activity columns use verbs, not inventory noun meanings. Keep this lookup

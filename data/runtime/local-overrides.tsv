@@ -9396,6 +9396,9 @@ Can use any shop	可使用任意工坊	wl
 {d} shops max	最多{d}座工坊	wtl
 # The editable count keeps its native digits and blinking cursor before this suffix.
 shop(s) max	座工坊（上限）	wl
+# The native work-order workshop column also warns when a dyed job's
+# material/art-specification color selectors are still incomplete.
+Must set colors	必须指定颜色	wl
 # Complete task material chooser headings, not global Setting replacements.
 Setting material	设置材料	wli
 Setting plant	设置植物	wli

@@ -95,6 +95,7 @@ void Overlay::render_native_fortress_layer(SDL_Renderer *renderer, bool stocks) 
             match.rule == kToolbarTooltipBodyRule || match.rule == kToolbarTooltipKeyRule ||
             match.rule == kFortressUnitChooserRule || match.rule == kFortressLocationListRule ||
             match.rule == kWorkshopTaskRowRule || match.rule == kWorkshopMaterialFieldRule ||
+            match.rule == kWorkOrderShopFieldRule ||
             is_fortress_task_field(match) || match.rule == kUiMessageRule ||
             match.rule == kHelpDocumentRule;
     };
@@ -165,7 +166,10 @@ void Overlay::render_native_fortress_layer(SDL_Renderer *renderer, bool stocks) 
             (g_native_info_labor_page == NativeInfoLaborPage::StandingOrders ||
                 g_native_info_labor_page == NativeInfoLaborPage::None))
         layout_fortress_hauling(renderer);
-    if (g_native_info_page == NativeInfoPage::WorkOrders)
+    if (g_native_info_page == NativeInfoPage::WorkOrders ||
+            std::any_of(prepared_matches_.begin(), prepared_matches_.end(), [](const Match &match) {
+                return match.rule == kWorkOrderShopFieldRule;
+            }))
         layout_work_order_fields(renderer);
     layout_toolbar_tooltip(renderer);
     normalize_native_split_text();

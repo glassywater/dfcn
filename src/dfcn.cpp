@@ -882,6 +882,7 @@ static constexpr int kFortressSquadCreationRule = -155;
 static constexpr int kFortressUniformChoiceRule = -156;
 static constexpr int kFortressSiteNameRule = -157;
 static constexpr int kConversationPortraitRule = -158;
+static constexpr int kWorkOrderShopFieldRule = -162;
 static constexpr int kFortressJusticePlotRule = -160;
 
 static bool is_fortress_justice_field(const Match &match) {
@@ -2080,6 +2081,16 @@ enum class NativeAdventureInventoryRole {
 static NativeAdventureInventoryRole native_adventure_inventory_role(
     uintptr_t caller, uintptr_t source);
 
+struct NativeWorkOrderShopCaption {
+    enum class Kind { Unlimited, Limit, Editing, Explanation, ColorWarning, Building };
+    Kind kind = Kind::Unlimited;
+    int right = -1;
+    bool authored = false;
+    std::string complete_source;
+};
+static std::optional<NativeWorkOrderShopCaption> capture_native_work_order_shop_caption(
+    uintptr_t caller, uintptr_t source);
+
 struct NativeDrawnTextRow {
     int x = 0, y = 0;
     std::string source;
@@ -2144,6 +2155,8 @@ struct NativeDrawnTextRow {
     // Freeze the actual option formatter while its renderer frame is live.
     // Pictured ingestion actions and ordinary items share the same addst.
     NativeAdventureInventoryRole adventure_inventory_role = NativeAdventureInventoryRole::None;
+    // The work-order producer owns this complete workshop restriction/name.
+    std::optional<NativeWorkOrderShopCaption> work_order_shop_caption{};
 };
 static std::mutex g_native_drawn_text_mutex;
 static std::vector<NativeDrawnTextRow> g_native_drawn_text_rows;
@@ -2575,6 +2588,9 @@ static void remember_native_drawn_text_row(int x, int y, std::string_view source
         std::optional<std::string> squad_alias_target = std::nullopt,
         std::optional<NativeTradeItemCaption> trade_item_caption = std::nullopt) {
     if (native_private_ui_write_active(graphics)) return;
+    // Copy the producer's frame and unshortened building name while the
+    // actual addst caller is live, before acquiring the draw registry lock.
+    auto work_order_shop_caption = capture_native_work_order_shop_caption(native_caller, address);
     std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
     const auto epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
     if (original_epoch && original_epoch != epoch) return;
@@ -2631,6 +2647,7 @@ static void remember_native_drawn_text_row(int x, int y, std::string_view source
         draws.size() < 4096) {
         NativeDrawnTextRow row{x, y, std::string(source), address,
             is_native_prose_source(source) || short_caption};
+        row.work_order_shop_caption = std::move(work_order_shop_caption);
         row.sequence = ++g_native_drawn_text_sequence;
         row.editable_text = NativeEditableTextScope::active;
         row.top_layer = top_layer;
@@ -4622,6 +4639,8 @@ private:
     TranslationResult translate_fortress_activity_display(
         std::string_view source, bool typed_only = false) const;
     std::optional<std::string> translate_fortress_material_use(const std::string &source) const;
+    void append_work_order_shop_fields(std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y) const;
     void append_fortress_task_rows(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y) const;
     void append_fortress_creature_activities(std::vector<std::string> &rows,
@@ -16182,6 +16201,7 @@ static NativeKeybindingScope capture_native_keybinding_scope(const graphicst &gp
 #include "fortress_schedule_editor.inc"
 #include "color_picker.inc"
 #include "fortress_tasks.inc"
+#include "work_order_shop_fields.inc"
 #include "fortress_depot.inc"
 #include "work_order_buttons.inc"
 #include "workshop_tooltip_rows.inc"
@@ -26140,7 +26160,8 @@ void Overlay::normalize_native_split_text() {
         if (match.rule == kToolbarTooltipBodyRule || match.rule == kToolbarTooltipKeyRule) continue;
         // Typed guild hover rows use ordinary addst once per line. Their
         // fixed native baselines must not inherit covered map font halves.
-        if (match.rule == kFortressLocationListRule && match.layout_fixed_baseline &&
+        if ((match.rule == kFortressLocationListRule || match.rule == kWorkOrderShopFieldRule) &&
+                match.layout_fixed_baseline &&
                 !match.native_split_text) continue;
         // The overview document has already folded native text halves while
         // retaining both physical suppression spans. Its translated rows
@@ -26199,6 +26220,7 @@ void Overlay::normalize_native_split_text() {
              rules_[static_cast<size_t>(match.rule)].source == "Total Power Needed: {d}");
         const bool structured_span = match.native_adventure_target_row ||
             match.native_animal_picker_row ||
+            match.rule == kWorkOrderShopFieldRule ||
             match.rule == kWorldgenParameterLabelRule ||
             match.rule == kAdventureAttributeFieldRule ||
             match.rule == kAdventureSkillFieldRule ||
