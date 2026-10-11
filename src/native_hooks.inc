@@ -88,6 +88,7 @@ static bool native_history_war_selection(uintptr_t collection, int32_t &category
 #include "native_notification_layer_render.inc"
 #include "native_info_layer_render.inc"
 #include "native_stocks_layer_render.inc"
+#include "native_squads_layer_render.inc"
 #include "native_reports_layer_render.inc"
 #include "native_pause_layer_render.inc"
 #include "native_worldgen_layer_render.inc"
@@ -156,6 +157,7 @@ static bool install_sdl_hooks() {
         {"Native tutorials and help layer", install_native_help_layer_hook},
         {"Native fortress management layer", install_native_info_layer_hook},
         {"Native Stocks layer", install_native_stocks_layer_hook},
+        {"Native fortress Squads layer", install_native_squads_layer_hook},
         {"Native announcements and report tabs layer", install_native_reports_layer_hook},
         {"Native Escape menu layer", install_native_pause_layer_hook},
         {"Native world generation layer", install_native_worldgen_layer_hook},
@@ -192,6 +194,7 @@ static void uninstall_sdl_hooks() {
     uninstall_native_worldgen_layer_hook();
     uninstall_native_pause_layer_hook();
     uninstall_native_reports_layer_hook();
+    uninstall_native_squads_layer_hook();
     uninstall_native_stocks_layer_hook();
     uninstall_native_info_layer_hook();
     uninstall_native_help_layer_hook();
@@ -260,6 +263,7 @@ static bool native_hooks_detached() {
         !native_map_layer_hook_active() &&
         !native_info_layer_hook_active() &&
         !native_stocks_layer_hook_active() &&
+        !native_squads_layer_hook_active() &&
         !native_reports_layer_hook_active() &&
         !native_pause_layer_hook_active() &&
         !native_worldgen_layer_hook_active() &&
@@ -321,6 +325,7 @@ static bool stop_reloadable_core() {
         return false;
     }
     if (g_plugin_active.load()) {
+        g_native_squads_overlay.release_native_squads_resources();
         g_overlay.shutdown();
         g_plugin_active.store(false);
     }

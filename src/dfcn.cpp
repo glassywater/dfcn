@@ -600,6 +600,9 @@ struct Match {
     // page cells can retain half-font flags, but cannot change this native
     // paragraph's baselines or its complete body ownership.
     bool native_announcement_popup = false;
+    // Squad text arrives with explicit producer bounds on its private grid.
+    // It must never borrow another component's caption geometry.
+    bool native_squads_foreground = false;
     // A complete multiline control owns the relocated caption's vertical
     // viewport. Its original writer still bounds the horizontal column.
     bool layout_reflowed_control = false;
@@ -2150,6 +2153,9 @@ struct NativeDrawnTextRow {
     // The native squad alias branch owns this exact string, independently
     // of identically spelled generated names and ordinary UI labels.
     std::optional<std::string> squad_alias_target{};
+    // Freeze the actual generated language_name branch before the native
+    // temporary is destroyed; standalone confirmation names have no Routine row.
+    std::shared_ptr<const NativeHistoryName> squad_generated_name{};
     NativeInfoTitleKind info_title_kind = NativeInfoTitleKind::None;
     bool info_title_authored = false;
     int info_title_right = -1; // exclusive native draw clip boundary
@@ -2271,6 +2277,7 @@ static NativeTextGridOrigin native_text_grid_origin(
 static thread_local const graphicst *g_native_help_write_graphics = nullptr;
 static thread_local const graphicst *g_native_info_write_graphics = nullptr;
 static thread_local const graphicst *g_native_stocks_write_graphics = nullptr;
+static thread_local const graphicst *g_native_squads_write_graphics = nullptr;
 static thread_local const graphicst *g_native_reports_write_graphics = nullptr;
 static thread_local const graphicst *g_native_notification_write_graphics = nullptr;
 static thread_local const graphicst *g_native_pause_write_graphics = nullptr;
@@ -2288,6 +2295,10 @@ static bool native_info_background_cell_hidden(const graphicst *, int, int) noex
 static bool native_stocks_background_view(const graphicst *) noexcept;
 static bool native_stocks_background_cell_hidden(const graphicst *, int, int) noexcept;
 static bool native_stocks_background_copy_hidden(SDL_Renderer *, const SDL_Rect *) noexcept;
+static bool native_squads_background_cell_hidden(const graphicst *, int, int) noexcept;
+static bool native_squads_layer_hook_active();
+static void native_squads_prepare_text();
+enum class NativeFortressLayerKind { Info, Stocks };
 static bool native_reports_background_view(const graphicst *) noexcept;
 static bool native_reports_background_cell_hidden(const graphicst *, int, int) noexcept;
 static bool native_reports_background_copy_hidden(SDL_Renderer *, const SDL_Rect *) noexcept;
@@ -3405,7 +3416,10 @@ public:
     void render_native_announcement_layer(SDL_Renderer *renderer, bool reports);
     void render_native_info_layer(SDL_Renderer *renderer);
     void render_native_stocks_layer(SDL_Renderer *renderer);
-    void render_native_fortress_layer(SDL_Renderer *renderer, bool stocks);
+    void prepare_native_squads_text();
+    void render_native_squads_layer(SDL_Renderer *renderer, const Overlay &source);
+    void release_native_squads_resources();
+    void render_native_fortress_layer(SDL_Renderer *renderer, NativeFortressLayerKind kind);
     void queue_dfhack_layer_translation();
     bool native_frame_submitted() const noexcept { return native_frame_submitted_; }
     void render_ime_popup(SDL_Renderer *renderer);
@@ -3498,6 +3512,7 @@ private:
     std::vector<Match> find_native_notification_matches() const;
     std::vector<Match> find_native_pause_matches() const;
     std::vector<Match> find_native_stocks_matches() const;
+    std::vector<Match> find_native_squads_matches() const;
     std::vector<Match> find_native_info_background_matches(int only_y,
         const unsigned char *screen_override) const;
     void append_native_info_grid_matches(const std::vector<std::string> &rows,
@@ -16213,6 +16228,7 @@ std::vector<Match> Overlay::resolve_native_knowledge_matches(
 #include "native_tooltip_layers.inc"
 #include "native_notification_layers.inc"
 #include "native_reports_layers.inc"
+#include "native_squads_layers.inc"
 #include "native_pause_layers.inc"
 #include "native_worldgen_layers.inc"
 
@@ -16732,7 +16748,9 @@ static void native_ui_paint_grid(NativeUiLayerStorage &layer, SDL_Renderer *rend
 #include "native_notification_layer_matching.inc"
 #include "native_pause_layer_matching.inc"
 #include "native_stocks_layer_translation.inc"
+#include "native_squads_layer_matching.inc"
 #include "native_info_layer_translation.inc"
+#include "native_squads_layer_translation.inc"
 #include "native_tooltip_layer_translation.inc"
 #include "native_notification_layer_translation.inc"
 #include "native_pause_layer_translation.inc"
@@ -17583,9 +17601,11 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
         append_world_site_phrases(action, screen_rows, result, only_y, true);
     const auto world_mission_summary = capture_world_mission_summary_card();
     append_fortress_squad_creation(screen_rows, result, only_y, screen_override != nullptr);
-    append_fortress_squad_rows(screen_rows, result, only_y, screen_override != nullptr);
+    if (!native_squads_layer_hook_active())
+        append_fortress_squad_rows(screen_rows, result, only_y, screen_override != nullptr);
     append_fortress_squad_alias_rows(screen_rows, result, only_y, screen_override);
-    append_fortress_uniform_choices(screen_rows, result, only_y, screen_override != nullptr);
+    if (!native_squads_layer_hook_active())
+        append_fortress_uniform_choices(screen_rows, result, only_y, screen_override != nullptr);
     append_world_mission_titles(screen_rows, result, only_y);
     append_world_mission_reports(screen_rows, result, only_y);
     append_world_mission_members(screen_rows, result, only_y);
@@ -17611,7 +17631,8 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     context_detail.checkpoint(RenderTimingStage::Ammunition);
     if (!announcement_panel_only) {
         append_fortress_ammunition_choices(screen_rows, result, only_y);
-        append_fortress_schedule_captions(screen_rows, result, only_y, screen_override != nullptr);
+        if (!native_squads_layer_hook_active())
+            append_fortress_schedule_captions(screen_rows, result, only_y, screen_override != nullptr);
     }
 
     context_detail.checkpoint(RenderTimingStage::Captions);
@@ -23584,6 +23605,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
             if (!raw) return rows;
             for (int y = 0; y < gps_->dimy; ++y) {
                 for (int x = 0; x < gps_->dimx; ++x) {
+                    if (native_squads_background_cell_hidden(gps_, x, y)) continue;
                     const size_t tile = static_cast<size_t>(x) * gps_->dimy + y;
                     const unsigned char ch = raw[tile * 8];
                     rows[static_cast<size_t>(y)][static_cast<size_t>(x)] =
@@ -23613,6 +23635,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                 gps_->dimx - match.x,
             });
             for (int index = 0; index < writable; ++index) {
+                if (native_squads_background_cell_hidden(gps_, match.x + index, match.y)) continue;
                 restored_rows[static_cast<size_t>(match.y)]
                              [static_cast<size_t>(match.x + index)] =
                     match.source[static_cast<size_t>(index)];
@@ -23630,6 +23653,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
             bool observed_any = false;
             for (int y = first_candidate_row; y < gps_->dimy; ++y) {
                 for (int x = 0; x < gps_->dimx; ++x) {
+                    if (native_squads_background_cell_hidden(gps_, x, y)) continue;
                     const size_t tile =
                         static_cast<size_t>(x) * gps_->dimy + y;
                     if (observed_glyph_epoch_[tile] != composite_read_epoch_)
@@ -23653,6 +23677,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
             std::vector<std::string> merged = screen_rows;
             for (int y = first_candidate_row; y < gps_->dimy; ++y) {
                 for (int x = 0; x < gps_->dimx; ++x) {
+                    if (native_squads_background_cell_hidden(gps_, x, y)) continue;
                     char &cell = merged[static_cast<size_t>(y)]
                                        [static_cast<size_t>(x)];
                     if (cell != ' ') continue;
@@ -24190,6 +24215,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
             gps_->dimx - match.x,
         });
         for (int index = 0; index < writable; ++index) {
+            if (native_squads_background_cell_hidden(gps_, match.x + index, match.y)) continue;
             restored_musical_rows[static_cast<size_t>(match.y)]
                                   [static_cast<size_t>(match.x + index)] =
                 match.source[static_cast<size_t>(index)];
@@ -24207,6 +24233,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
         bool any = false;
         for (int y = 0; y < gps_->dimy; ++y) {
             for (int x = 0; x < gps_->dimx; ++x) {
+                if (native_squads_background_cell_hidden(gps_, x, y)) continue;
                 const size_t tile = static_cast<size_t>(x) * gps_->dimy + y;
                 if (observed_glyph_epoch_[tile] != composite_read_epoch_)
                     continue;
@@ -24231,6 +24258,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
         if (!raw) return rows;
         for (int y = 0; y < gps_->dimy; ++y) {
             for (int x = 0; x < gps_->dimx; ++x) {
+                if (native_squads_background_cell_hidden(gps_, x, y)) continue;
                 const size_t tile = static_cast<size_t>(x) * gps_->dimy + y;
                 const unsigned char ch = raw[tile * 8];
                 rows[static_cast<size_t>(y)][static_cast<size_t>(x)] =
@@ -40579,6 +40607,10 @@ int Overlay::intercept_glyph_copy(SDL_Renderer *renderer, SDL_Texture *texture,
     if (x < 0 || x >= gps_->dimx || y < 0 || y >= gps_->dimy) {
         return real_copy(renderer, texture, source, dest);
     }
+    // The sidebar producer owns its private text. Background glyphs beneath
+    // it must not trigger the main overlay's immediate-row matching path.
+    if (native_squads_background_cell_hidden(gps_, x, y))
+        return real_copy(renderer, texture, source, dest);
     native_frame_drawn_ = true;
     // Detect transient native widgets before source suppression.
     refresh_resolution_dropdown_geometry_for_copy();
@@ -42700,7 +42732,8 @@ SDL_Rect Overlay::native_text_draw_region(const Match &match, bool *owner_bounds
     // The paragraph fitter combines the current clips before assigning its
     // shared viewport. Complete multiline controls also move their captions
     // off the source rows, while retaining the writer's horizontal limits.
-    if (!match.native_dfhack_foreground && !match.layout_reflowed_paragraph) {
+    if (!match.native_dfhack_foreground && !match.native_squads_foreground &&
+            !match.layout_reflowed_paragraph) {
         if (const auto draw_clip = native_captured_text_clip(*gps_, match)) {
             SDL_Rect writer_clip = pixels(*draw_clip);
             // A one-row addst clip limits source-cell writes. The complete
@@ -43076,7 +43109,7 @@ void Overlay::render(SDL_Renderer *renderer) {
             !layout_adventure_setup_selection(renderer) &&
             !layout_adventure_skills(renderer) &&
             !layout_adventure_identity_professions(renderer) &&
-            !layout_fortress_schedule_editor(renderer))
+            (native_squads_layer_hook_active() || !layout_fortress_schedule_editor(renderer)))
             layout_structured_panels(renderer);
         layout_adventure_occupation_list(renderer);
         layout_calendar_headers(renderer);
@@ -43108,7 +43141,7 @@ void Overlay::render(SDL_Renderer *renderer) {
         layout_fortress_nobles(renderer);
         layout_fortress_noble_symbols(renderer);
         layout_fortress_help(renderer);
-        layout_fortress_squads(renderer);
+        if (!native_squads_layer_hook_active()) layout_fortress_squads(renderer);
         layout_adventure_background_cards(renderer);
         layout_adventure_personality_needs(renderer);
         layout_adventure_personality_actions(renderer);
@@ -43120,7 +43153,7 @@ void Overlay::render(SDL_Renderer *renderer) {
         std::make_move_iterator(tooltip_foreground.end()));
     if (!isolated_management_background) {
         layout_fortress_squad_creation(renderer);
-        layout_fortress_uniform_choices(renderer);
+        if (!native_squads_layer_hook_active()) layout_fortress_uniform_choices(renderer);
         for (Match &match : prepared_matches_) {
             if (match.rule != kHoverPictureCaptionRule || !match.native_picture_caption_box ||
                 match.target.empty()) continue;
@@ -43452,6 +43485,19 @@ void Overlay::render(SDL_Renderer *renderer) {
 }
 
 static Overlay g_overlay;
+// The squad component borrows immutable catalog/font resources only. Its
+// graphics, matches, font caches and GPU text resources belong to this object.
+static Overlay g_native_squads_overlay;
+static void native_squads_prepare_text() {
+    try { g_overlay.prepare_native_squads_text(); }
+    catch (...) {
+        // A translation allocation failure retains this component's native
+        // output; it must never unwind through the game's draw entry.
+        g_native_squads_matches.clear();
+        g_native_squads_footer_rows.clear();
+        g_native_squads_footer_target.clear();
+    }
+}
 
 static void native_dfhack_layer_committed() noexcept {
     try {
@@ -43614,6 +43660,8 @@ static void native_info_present_layer(SDL_Renderer *renderer,
     void (*draw_info)(SDL_Renderer *));
 static void native_stocks_present_layer(SDL_Renderer *renderer,
     void (*draw_stocks)(SDL_Renderer *));
+static void native_squads_present_layer(SDL_Renderer *renderer,
+    void (*draw_squads)(SDL_Renderer *));
 static void native_reports_present_layer(SDL_Renderer *renderer,
     void (*draw_reports)(SDL_Renderer *));
 static void native_tooltip_present_layer(SDL_Renderer *renderer,
@@ -43649,6 +43697,9 @@ extern "C" void dfcn_render_present(SDL_Renderer *renderer) {
         });
         native_stocks_present_layer(renderer, [](SDL_Renderer *stocks_renderer) {
             g_overlay.render_native_stocks_layer(stocks_renderer);
+        });
+        native_squads_present_layer(renderer, [](SDL_Renderer *squads_renderer) {
+            g_native_squads_overlay.render_native_squads_layer(squads_renderer, g_overlay);
         });
         native_reports_present_layer(renderer, [](SDL_Renderer *reports_renderer) {
             g_overlay.render_native_reports_layer(reports_renderer);

@@ -58,6 +58,28 @@ struct NativeUiLayerGrid {
             std::fill(plane.flags.begin(), plane.flags.end(), 0);
         }
     }
+    void clear(const SDL_Rect &frame) {
+        const int left = static_cast<int>(std::clamp<int64_t>(frame.x, 0, dimx));
+        const int right = static_cast<int>(std::clamp<int64_t>(
+            int64_t(frame.x) + frame.w, left, dimx));
+        const int top = static_cast<int>(std::clamp<int64_t>(frame.y, 0, dimy));
+        const int bottom = static_cast<int>(std::clamp<int64_t>(
+            int64_t(frame.y) + frame.h, top, dimy));
+        // Native stores use column-major absolute coordinates. Retain that
+        // stride while clearing only the component's owned rows in each
+        // column; no background or unused private-grid cell is traversed.
+        for (int x = left; x < right; ++x) {
+            const size_t first = static_cast<size_t>(x) * dimy + top;
+            const size_t count = static_cast<size_t>(bottom - top);
+            std::fill_n(refresh.data() + first, count, 0);
+            for (auto &plane : planes) {
+                std::fill_n(plane.screen.data() + first * 8, count * 8, 0);
+                for (auto &texture : plane.textures)
+                    std::fill_n(texture.data() + first, count, 0);
+                std::fill_n(plane.flags.data() + first, count, 0);
+            }
+        }
+    }
 };
 
 struct NativeHelpCollapsedTitle {

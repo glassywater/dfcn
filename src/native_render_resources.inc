@@ -5,6 +5,7 @@ static void native_reset_render_resources() {
     TranslationStateScope translation;
     std::lock_guard<std::recursive_mutex> layer_lock(g_native_dfhack_layer_mutex);
     g_overlay.invalidate_render_resources();
+    g_native_squads_overlay.release_native_squads_resources();
 
     const auto reset_layer = [](NativeUiLayerTarget &target,
             NativeUiLayerStorage &layer) {
@@ -18,6 +19,7 @@ static void native_reset_render_resources() {
     reset_layer(g_native_help_target, g_native_help_layer);
     reset_layer(g_native_info_target, g_native_info_layer);
     reset_layer(g_native_stocks_target, g_native_stocks_layer);
+    reset_layer(g_native_squads_target, g_native_squads_layer);
     reset_layer(g_native_reports_target, g_native_reports_layer);
     reset_layer(g_native_pause_target, g_native_pause_layer);
     reset_layer(g_native_worldgen_target, g_native_worldgen_layer);

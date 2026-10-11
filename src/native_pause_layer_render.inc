@@ -21,6 +21,7 @@ static void native_pause_draw(void *menu, uint32_t tick, int32_t screen_left,
     bool isolate = gps && g_native_help_layer.native_renderer && g_native_help_layer.renderer &&
         !g_native_pause_write_graphics && !g_native_info_write_graphics &&
         !g_native_stocks_write_graphics && !native_notification_write_active(gps) &&
+        !g_native_squads_write_graphics &&
         !g_native_tooltip_output && !native_private_ui_write_active(gps) &&
         gps->screen && gps->screen_top && gps->dimx > 0 && gps->dimx <= 1000 &&
         gps->dimy > 0 && gps->dimy <= 1000;

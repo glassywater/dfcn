@@ -93,6 +93,7 @@ static void native_help_reset_frame(void *renderer) {
     layer.ready = false;
     native_info_begin_frame();
     native_stocks_begin_frame();
+    native_squads_begin_frame();
     native_reports_begin_frame();
     native_pause_begin_frame();
     native_worldgen_begin_frame();

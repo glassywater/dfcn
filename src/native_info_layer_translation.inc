@@ -1,13 +1,14 @@
 void Overlay::render_native_info_layer(SDL_Renderer *renderer) {
-    render_native_fortress_layer(renderer, false);
+    render_native_fortress_layer(renderer, NativeFortressLayerKind::Info);
 }
 
 void Overlay::render_native_stocks_layer(SDL_Renderer *renderer) {
-    render_native_fortress_layer(renderer, true);
+    render_native_fortress_layer(renderer, NativeFortressLayerKind::Stocks);
 }
 
-void Overlay::render_native_fortress_layer(SDL_Renderer *renderer, bool stocks) {
+void Overlay::render_native_fortress_layer(SDL_Renderer *renderer, NativeFortressLayerKind kind) {
     TranslationStateScope translation;
+    const bool stocks = kind == NativeFortressLayerKind::Stocks;
     auto &layer = stocks ? g_native_stocks_layer : g_native_info_layer;
     if (!renderer || !layer.ready || layer.renderer != renderer) return;
     if (!config_.enabled || !face_ || rules_.empty()) {
