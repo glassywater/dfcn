@@ -613,6 +613,9 @@ struct Match {
     // Animal picker records retain their complete name/count/sex field and
     // shared columns through native half-font and generic page layout.
     bool native_animal_picker_row = false;
+    // A roster field retains the column proved when its source was claimed.
+    // Later page layout must not rediscover it from a changing native grid.
+    std::optional<std::pair<int, int>> native_fortress_creature_field{};
     // Embark resources are drawn over the site's final records by native DF.
     // Keep their display section separate from their original source rows.
     bool native_embark_resource = false;
@@ -4786,6 +4789,7 @@ private:
     void layout_fortress_justice(SDL_Renderer *renderer);
     int fortress_creature_tabs_y() const;
     void layout_fortress_creatures(SDL_Renderer *renderer);
+    void layout_fortress_creature_fields(SDL_Renderer *renderer);
     void layout_fortress_training_knowledge(SDL_Renderer *renderer, int tabs_y);
     void layout_fortress_creature_table(SDL_Renderer *renderer,
         const Match &name_header, const Match &category_header,
@@ -25868,7 +25872,8 @@ bool Overlay::prepare_immediate_row(bool top_layer, int y) {
                     static_cast<size_t>(x) * gps_->dimy + match_y;
                 if (help_background_covered(match, x, match_y)) continue;
                 const unsigned char ch = raw[tile * 8];
-                if ((is_credits_row(match) || is_help_text(match) || match.rule == kCharacterRoomStatusRule ||
+                if ((match.native_fortress_creature_field || is_credits_row(match) ||
+                     is_help_text(match) || match.rule == kCharacterRoomStatusRule ||
                      match.rule == kSettingsAnnouncementNameRule ||
                      match.rule == kFortressLaborCaptionRule ||
                      match.rule == kFortressSiteNameRule ||
@@ -25947,7 +25952,8 @@ bool Overlay::prepare_immediate_row(bool top_layer, int y) {
                 const size_t tile = static_cast<size_t>(x) * gps_->dimy + y;
                 const unsigned char top_ch = raw[tile * 8];
                 const unsigned char base_ch = gps_->screen[tile * 8];
-                if ((is_credits_row(match) || is_help_text(match) || match.rule == kCharacterRoomStatusRule ||
+                if ((match.native_fortress_creature_field || is_credits_row(match) ||
+                     is_help_text(match) || match.rule == kCharacterRoomStatusRule ||
                      match.rule == kEmbarkFinderFieldRule ||
                      match.rule == kSettingsAnnouncementNameRule ||
                      match.rule == kFortressLaborCaptionRule ||
@@ -33750,7 +33756,8 @@ void Overlay::prepare_frame() {
                 // layer cannot be inspected; byte validation prevents a UI
                 // transition from suppressing unrelated text at the same cell.
                 if (cell && cell[0] != 0 && cell[0] != ' ') {
-                    if ((match.native_hover_background || is_help_text(match) ||
+                    if ((match.native_fortress_creature_field ||
+                         match.native_hover_background || is_help_text(match) ||
                          match.rule == kSettingsAnnouncementNameRule ||
                          match.rule == kFortressLaborCaptionRule ||
                          match.rule == kFortressSiteNameRule ||
@@ -42859,7 +42866,7 @@ void Overlay::render(SDL_Renderer *renderer) {
     // picture geometry is fitted after the page owners have run.
     std::vector<Match> tooltip_foreground;
     const auto is_toolbar_tooltip = [](const Match &match) {
-        return match.native_adventure_target_row ||
+        return match.native_fortress_creature_field || match.native_adventure_target_row ||
             match.rule == kEmbarkFinderFieldRule ||
             is_credits_row(match) || match.rule == kToolbarTooltipBodyRule ||
             match.rule == kFortressUnitChooserRule ||
@@ -42944,7 +42951,6 @@ void Overlay::render(SDL_Renderer *renderer) {
         layout_adventure_compass(renderer);
         layout_fortress_sort_captions();
         layout_fortress_justice(renderer);
-        layout_fortress_creatures(renderer);
         layout_fortress_labor(renderer);
         layout_fortress_kitchen(renderer);
         layout_fortress_stone(renderer);
@@ -43015,6 +43021,12 @@ void Overlay::render(SDL_Renderer *renderer) {
         // The resting-place introduction and room label return with UI messages
         // above. They establish ownership for the adjoining independent captions.
         layout_resting_place_details(renderer);
+        // Restore complete roster fields before fitting their shared columns.
+        // Source-time geometry remains authoritative if native page discovery
+        // no longer sees the same rows at this point in the frame.
+        normalize_native_split_text();
+        layout_fortress_creatures(renderer);
+        layout_fortress_creature_fields(renderer);
     }
     if (background_help_frames)
         for (auto &match : prepared_matches_)

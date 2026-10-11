@@ -91,7 +91,8 @@ void Overlay::render_native_fortress_layer(SDL_Renderer *renderer, bool stocks) 
     // Keep independent native fields out of the generic column/prose pass,
     // following the existing management-page layout order.
     const auto independent = [](const Match &match) {
-        return match.rule == kToolbarTooltipBodyRule || match.rule == kToolbarTooltipKeyRule ||
+        return match.native_fortress_creature_field ||
+            match.rule == kToolbarTooltipBodyRule || match.rule == kToolbarTooltipKeyRule ||
             match.rule == kFortressUnitChooserRule || match.rule == kFortressLocationListRule ||
             match.rule == kWorkshopTaskRowRule || match.rule == kWorkshopMaterialFieldRule ||
             is_fortress_task_field(match) || match.rule == kUiMessageRule ||
@@ -119,7 +120,7 @@ void Overlay::render_native_fortress_layer(SDL_Renderer *renderer, bool stocks) 
     }
     layout_fortress_sort_captions();
     switch (g_native_info_page) {
-    case NativeInfoPage::Creatures: layout_fortress_creatures(renderer); break;
+    case NativeInfoPage::Creatures: break;
     case NativeInfoPage::Places: layout_fortress_location(renderer); break;
     case NativeInfoPage::Labor:
         layout_fortress_labor(renderer);
@@ -163,6 +164,10 @@ void Overlay::render_native_fortress_layer(SDL_Renderer *renderer, bool stocks) 
         layout_work_order_fields(renderer);
     layout_toolbar_tooltip(renderer);
     normalize_native_split_text();
+    if (g_native_info_page == NativeInfoPage::Creatures) {
+        layout_fortress_creatures(renderer);
+        layout_fortress_creature_fields(renderer);
+    }
 
     // Hide only owned source bytes in this grid, then use the same native
     // base/top tile and anchored-artwork painters as the tutorial layer.
