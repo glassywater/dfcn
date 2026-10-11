@@ -11,6 +11,26 @@ using NativeWorldgenViewportFn = void (*)(const void *, int32_t *, int32_t *);
 using NativeWorldgenHistoryClearFn = void (*)(NativeHistoryRichBox *);
 static NativeWorldgenViewportFn g_native_worldgen_viewport = nullptr;
 
+static void native_worldgen_clear_shared_ui(graphicst &gps) {
+    const size_t count = static_cast<size_t>(gps.dimx) * gps.dimy;
+    // The native viewscreen's clear now belongs to its private grid. Retire
+    // the previous page's main UI output too: swap_arrays reuses two buffers
+    // and update_all would otherwise draw their old glyphs over the map.
+    // These are known UI output blocks, not discovered cells. Map-port and
+    // viewport objects, private layers and later native widgets stay live.
+    if (gps.screen) std::memset(gps.screen, 0, count * 8);
+    if (gps.screen_top) std::memset(gps.screen_top, 0, count * 8);
+    const auto clear = [count](auto *output) {
+        if (output) std::memset(output, 0, count * sizeof(*output));
+    };
+    clear(gps.screentexpos); clear(gps.screentexpos_lower);
+    clear(gps.screentexpos_anchored); clear(gps.screentexpos_anchored_x);
+    clear(gps.screentexpos_anchored_y); clear(gps.screentexpos_flag);
+    clear(gps.screentexpos_top); clear(gps.screentexpos_top_lower);
+    clear(gps.screentexpos_top_anchored); clear(gps.screentexpos_top_anchored_x);
+    clear(gps.screentexpos_top_anchored_y); clear(gps.screentexpos_top_flag);
+}
+
 static void native_worldgen_history_clear(NativeHistoryRichBox *box) {
     NativeInputCallbackScope callback;
     const auto original = reinterpret_cast<NativeWorldgenHistoryClearFn>(
@@ -97,6 +117,8 @@ static void native_worldgen_draw(void *screen, uint32_t tick) {
     layer.renderer = g_native_help_layer.renderer;
     const int16_t previous_redraw = gps->force_full_display_count;
     int16_t requested_redraw = previous_redraw;
+    bool requested_title = gps->display_title;
+    int32_t requested_background = gps->display_background;
     {
         NativeUiGridBinding output(gps, *layer.foreground.graphics(), layer.native_renderer);
         NativeInfoCapturedTextScope captions(g_native_worldgen_text);
@@ -111,10 +133,16 @@ static void native_worldgen_draw(void *screen, uint32_t tick) {
         callback.call_native([&] { original(screen, tick); });
         layer.foreground.graphics()->top_in_use = gps->top_in_use;
         requested_redraw = gps->force_full_display_count;
+        requested_title = gps->display_title;
+        requested_background = gps->display_background;
     }
-    // Redraw requests schedule the host map/frame, not this output buffer.
-    // Keep a request raised by the native render after restoring its arrays.
+    native_worldgen_clear_shared_ui(*gps);
+    // These select the host scene rendered by update_all (8e1cbf/8e1d69),
+    // not the private UI grid. Do not restore an old menu background/title
+    // or lose a map redraw request when restoring the output arrays.
     gps->force_full_display_count = std::max(previous_redraw, requested_redraw);
+    gps->display_title = requested_title;
+    gps->display_background = requested_background;
     layer.ready = true;
     ++g_native_worldgen_published_revision;
     NativeUiReadScope::invalidate_reads();
