@@ -57,7 +57,6 @@ static void native_help_draw(void *help) {
     auto *gps = native_graphics();
     bool isolate = help && gps && layer.native_renderer && layer.renderer &&
         !g_native_help_write_graphics && !native_dfhack_layer_write_active(gps) &&
-        !native_worldgen_output_active(gps) &&
         gps->screen && gps->screen_top && gps->dimx > 0 && gps->dimx <= 1000 &&
         gps->dimy > 0 && gps->dimy <= 1000;
     if (isolate) {
@@ -71,6 +70,9 @@ static void native_help_draw(void *help) {
         } catch (...) { isolate = false; }
     }
     if (!isolate) { callback.call_native([&] { original(help); }); return; }
+    // The world-creation welcome card is drawn inside its parent's private
+    // page. Keep the help component's own paragraph/layout owner there too;
+    // this binding restores the parent's arrays and cursor after the card.
     NativeUiGridBinding output(gps, *layer.foreground.graphics());
     struct WriteScope {
         const graphicst *previous = g_native_help_write_graphics;

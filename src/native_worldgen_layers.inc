@@ -11,7 +11,10 @@ static uint64_t g_native_worldgen_published_revision = 0;
 static uint64_t g_native_worldgen_consumed_revision = 0;
 
 static bool native_worldgen_output_active(const graphicst *graphics) noexcept {
-    return graphics && (graphics == g_native_worldgen_write_graphics ||
+    // A nested help component temporarily redirects the same native gps.
+    // Its captions belong to the help grid, not the parent's field catalog.
+    return graphics && graphics != g_native_help_write_graphics &&
+        (graphics == g_native_worldgen_write_graphics ||
         (g_native_worldgen_layer.ready &&
             graphics == g_native_worldgen_layer.foreground.graphics()));
 }

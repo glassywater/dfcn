@@ -153,10 +153,31 @@ std::vector<Match> Overlay::find_native_worldgen_matches() const {
         if (!button) continue;
         prose_bottom = std::min(prose_bottom, button->y);
         reserved_fields.emplace(y, row.x);
-        const auto target = exact_literal_translation(normalize_utterance(row.source));
+        const auto source = normalize_utterance(row.source);
+        auto target = exact_literal_translation(source);
+        std::shared_ptr<const dfcn::TranslationResult> translation;
+        // History-length buttons use the same numeric rules as ordinary
+        // fields. Reserved widgets do not reach the field template matcher,
+        // so resolve their complete numeric captions here as well.
+        if (!target) for (int index : candidate_template_rules(source)) {
+            const auto &rule = rules_[index];
+            if (!rule.numeric_template || rule.template_kinds.empty() ||
+                    !std::all_of(rule.template_kinds.begin(), rule.template_kinds.end(),
+                        [](char kind) { return kind == 'd'; })) continue;
+            size_t end = 0;
+            std::vector<std::string> captures;
+            if (!match_template(rule, source, 0, &end, &captures) ||
+                    end != source.size()) continue;
+            auto resolved = translate_template_captures_display(rule, captures, source);
+            if (!resolved.usable()) continue;
+            target = resolved.target;
+            translation = std::make_shared<const dfcn::TranslationResult>(std::move(resolved));
+            break;
+        }
         if (!target) { retain_source(row, kWorldgenControlRule); continue; }
         Match match{row.x, y, static_cast<int>(row.source.size()), kWorldgenControlRule,
             *target, row.source};
+        match.translation_result = std::move(translation);
         match.layout_x = button->x;
         match.layout_y = button->y + 1;
         match.layout_length = button->w;

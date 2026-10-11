@@ -43579,6 +43579,9 @@ extern "C" void dfcn_render_present(SDL_Renderer *renderer) {
         native_worldgen_present_layer(renderer, [](SDL_Renderer *worldgen_renderer) {
             g_overlay.render_native_worldgen_layer(worldgen_renderer);
         });
+        native_help_present_layers(renderer, [](SDL_Renderer *help_renderer) {
+            g_overlay.render_native_help_layer(help_renderer);
+        });
     } else {
         native_info_present_layer(renderer, [](SDL_Renderer *info_renderer) {
             g_overlay.render_native_info_layer(info_renderer);
