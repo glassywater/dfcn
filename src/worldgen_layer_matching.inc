@@ -17,7 +17,18 @@ std::vector<Match> Overlay::find_native_worldgen_matches() const {
         return SDL_Rect{origin_x + cells.x * tile_w, origin_y + cells.y * tile_h,
             cells.w * tile_w, cells.h * tile_h};
     };
-    const SDL_Rect panel_clip = pixels({left, 0, right - left, gps_->dimy});
+    const int panel_bottom = std::clamp(g_native_worldgen_panel.y +
+        g_native_worldgen_panel.h, 0, gps_->dimy);
+    const SDL_Rect panel_clip = pixels({left, 0, right - left, panel_bottom});
+    const auto inside_panel = [&](const NativeTextCardRow &row) {
+        return row.x >= left && row.x < right && row.y >= 0 && row.y < panel_bottom;
+    };
+    const auto field_clip = [&](const NativeTextCardRow &row) {
+        // Footer/hover writers have their own captured spans. Their text
+        // must not borrow the progress panel's rectangle over the map.
+        return inside_panel(row) ? panel_clip : pixels({row.x, row.y,
+            std::min(gps_->dimx - row.x, static_cast<int>(row.source.size())), 1});
+    };
     struct Field {
         NativeTextCardRow row;
         bool editable = false;
@@ -114,7 +125,7 @@ std::vector<Match> Overlay::find_native_worldgen_matches() const {
     const auto native_rows = native_history_chronicle_row_bounds();
     const int prose_top = heading_y < 0 ? gps_->dimy : std::max(heading_y + 1,
         native_rows ? native_rows->first : heading_y + 1);
-    int prose_bottom = native_rows ? std::min(gps_->dimy, native_rows->second) : gps_->dimy;
+    int prose_bottom = native_rows ? std::min(panel_bottom, native_rows->second) : panel_bottom;
     const auto settings = native_ui_settings();
     std::set<std::tuple<int, int, int, std::string>> control_drawn;
     std::set<std::pair<int, int>> reserved_fields;
@@ -122,7 +133,7 @@ std::vector<Match> Overlay::find_native_worldgen_matches() const {
         Match match{row.x, row.y, static_cast<int>(row.source.size()), rule, {}, row.source};
         match.native_help_source_only = true;
         match.native_help_review_source = row.source;
-        match.layout_native_clip = panel_clip;
+        match.layout_native_clip = field_clip(row);
         result.push_back(std::move(match));
     };
     for (const auto &[y, rows] : fields) for (const auto &field : rows) {
@@ -132,7 +143,7 @@ std::vector<Match> Overlay::find_native_worldgen_matches() const {
             append_direct_utf8_matches(row.source, y, result);
             for (size_t i = begin; i < result.size(); ++i) {
                 result[i].x += row.x;
-                result[i].layout_native_clip = panel_clip;
+                result[i].layout_native_clip = field_clip(row);
             }
             reserved_fields.emplace(y, row.x);
             continue;
@@ -343,18 +354,19 @@ std::vector<Match> Overlay::find_native_worldgen_matches() const {
                     std::any_of(occupied.begin() + offset, occupied.begin() + offset + match.length,
                         [](bool value) { return value; })) continue;
             std::fill_n(occupied.begin() + offset, match.length, true);
-            match.layout_native_clip = panel_clip;
+            match.layout_native_clip = field_clip(row);
             result.push_back(std::move(match));
         }
     };
     NativeTextCard summary;
-    summary.interior = {left, 0, right - left, heading_y < 0 ? gps_->dimy : heading_y + 1};
+    summary.interior = {left, 0, right - left,
+        heading_y < 0 ? panel_bottom : std::min(panel_bottom, heading_y + 1)};
     for (const auto &[y, rows] : fields) for (const auto &field : rows) {
         const auto &row = field.row;
         if (reserved_fields.contains({y, row.x}) || (heading_y >= 0 && y >= prose_top && y < prose_bottom))
             continue;
         const auto source = normalize_utterance(row.source);
-        const bool summary_row = row.x == left && (heading_y < 0 || y <= heading_y);
+        const bool summary_row = inside_panel(row) && row.x == left && (heading_y < 0 || y <= heading_y);
         const bool identity = summary_row && (source.starts_with("Creating ") ||
             source.find(", year ") != std::string::npos);
         if (identity) {
@@ -373,7 +385,9 @@ std::vector<Match> Overlay::find_native_worldgen_matches() const {
         }
         if (summary_row) summary.rows.push_back(row);
         else {
-            NativeTextCard field_card{{row.x, y, std::min(right, row.x + static_cast<int>(row.source.size())) - row.x, 1}, {row}};
+            const int field_right = inside_panel(row) ? right : gps_->dimx;
+            NativeTextCard field_card{{row.x, y,
+                std::min(field_right, row.x + static_cast<int>(row.source.size())) - row.x, 1}, {row}};
             if (field_card.interior.w > 0)
                 compose_native_text_rows(field_card, result, -1, kWorldgenSummaryRule);
         }
@@ -553,13 +567,10 @@ void Overlay::render_native_worldgen_layer(SDL_Renderer *renderer) {
     TranslationStateScope translation;
     auto &layer = g_native_worldgen_layer;
     if (!renderer || !layer.ready || layer.renderer != renderer) return;
-    // The component owns the complete viewscreen. Its blank native cells
-    // must also replace retained glyphs from the old shared page grid.
-    SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_NONE);
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-    SDL_RenderFillRect(renderer, nullptr);
+    // The target starts transparent. Only native panel artwork, controls
+    // and text cover the game's independently rendered world map.
     if (!config_.enabled || !face_ || rules_.empty()) {
-        native_ui_paint_grid(layer, renderer, {});
+        native_ui_paint_grid(layer, renderer, {}, &g_native_worldgen_panel);
         return;
     }
     struct ViewScope {
@@ -604,7 +615,7 @@ void Overlay::render_native_worldgen_layer(SDL_Renderer *renderer) {
     CellReadCacheScope cells(*this);
     prepared_matches_ = find_native_worldgen_matches();
     normalize_native_split_text();
-    native_ui_paint_grid(layer, renderer, prepared_matches_);
+    native_ui_paint_grid(layer, renderer, prepared_matches_, &g_native_worldgen_panel);
     for (const auto &match : prepared_matches_) {
         if (match.target.empty() || match.native_help_source_only || match.native_split_duplicate) continue;
         Match text = match;

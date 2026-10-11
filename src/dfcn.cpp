@@ -16671,7 +16671,7 @@ uint64_t Overlay::dfhack_layer_translation_key() const {
 #include "dfhack_layer_translation.inc"
 static void native_help_paint_grid(SDL_Renderer *renderer, const std::vector<Match> &matches);
 static void native_ui_paint_grid(NativeUiLayerStorage &layer, SDL_Renderer *renderer,
-    const std::vector<Match> &matches);
+    const std::vector<Match> &matches, const SDL_Rect *opaque_frame = nullptr);
 #include "native_help_layer_translation.inc"
 #include "native_info_layer_matching.inc"
 #include "native_notification_layer_matching.inc"

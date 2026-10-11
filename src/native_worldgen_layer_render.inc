@@ -1,5 +1,6 @@
-// Redirect the complete native world-generation viewscreen, including its
-// settings, warnings, editors, controls and chronicle, before its first store.
+// Redirect native world-generation UI writes, including settings, warnings,
+// editors, controls and chronicle, before the viewscreen's first store. The
+// graphical map keeps its native map-port output beneath this UI layer.
 static NativeUiLayerTarget g_native_worldgen_target;
 #ifdef _WIN32
 static NativeEntryHook g_native_worldgen_draw_hook;
@@ -52,8 +53,9 @@ static void native_worldgen_draw(void *screen, uint32_t tick) {
         try {
             layer.foreground.prepare(*gps);
             layer.foreground.clear();
-            // This is a viewscreen render, not a discovered modal rectangle.
-            // Its native viewport owns the complete frame on every branch.
+            // Keep the complete UI canvas for native controls outside the
+            // progress panel and for classic map glyphs. Its cleared cells
+            // do not claim the graphical map's pixels beneath this layer.
             layer.frames = {{0, 0, gps->dimx, gps->dimy}};
             g_native_worldgen_text.clear();
         } catch (...) { isolate = false; }
@@ -68,10 +70,24 @@ static void native_worldgen_draw(void *screen, uint32_t tick) {
     g_native_worldgen_viewport(native_ui_settings_source(), &left, &right);
     left = std::clamp(left, 0, gps->dimx - 1);
     right = std::clamp(right, left, gps->dimx - 1);
-    g_native_worldgen_panel = {left, 0, right - left + 1, gps->dimy};
     g_native_worldgen_background_graphics = gps;
     g_native_worldgen_background_grid = gps->screen;
     g_native_worldgen_owner = reinterpret_cast<uintptr_t>(screen);
+    bool ordinary_progress = true;
+    for (const auto *field : {"raw_load", "doing_mods", "doing_simple_params", "doing_params"}) {
+        uint8_t active = 0;
+        if (!native_history_copy(native_history_object_member(g_native_worldgen_owner,
+                "viewscreen_new_regionst", field, sizeof(active)), active) || active != 0) {
+            ordinary_progress = false;
+            break;
+        }
+    }
+    // df96e0..df9967 draws the ordinary 80x25 panel. Raw loading, mods and
+    // parameter branches instead draw the native getter's full-height frame.
+    // Missing typed metadata keeps that wider frame rather than clipping UI.
+    g_native_worldgen_panel = ordinary_progress ?
+        SDL_Rect{left, 0, std::min(80, gps->dimx - left), std::min(25, gps->dimy)} :
+        SDL_Rect{left, 0, right - left + 1, gps->dimy};
     uint8_t editing = 0;
     g_native_worldgen_parameter_name_editing = native_history_copy(
         native_history_object_member(g_native_worldgen_owner,
@@ -79,18 +95,26 @@ static void native_worldgen_draw(void *screen, uint32_t tick) {
         editing) && editing != 0;
     layer.native_renderer = g_native_help_layer.native_renderer;
     layer.renderer = g_native_help_layer.renderer;
-    NativeUiGridBinding output(gps, *layer.foreground.graphics(), layer.native_renderer);
-    NativeInfoCapturedTextScope captions(g_native_worldgen_text);
-    struct WriteScope {
-        const graphicst *previous = g_native_worldgen_write_graphics;
-        explicit WriteScope(const graphicst *graphics) {
-            g_native_worldgen_write_graphics = graphics;
-        }
-        ~WriteScope() { g_native_worldgen_write_graphics = previous; }
-    } writing(gps);
-    begin_native_history_draw_pass();
-    callback.call_native([&] { original(screen, tick); });
-    layer.foreground.graphics()->top_in_use = gps->top_in_use;
+    const int16_t previous_redraw = gps->force_full_display_count;
+    int16_t requested_redraw = previous_redraw;
+    {
+        NativeUiGridBinding output(gps, *layer.foreground.graphics(), layer.native_renderer);
+        NativeInfoCapturedTextScope captions(g_native_worldgen_text);
+        struct WriteScope {
+            const graphicst *previous = g_native_worldgen_write_graphics;
+            explicit WriteScope(const graphicst *graphics) {
+                g_native_worldgen_write_graphics = graphics;
+            }
+            ~WriteScope() { g_native_worldgen_write_graphics = previous; }
+        } writing(gps);
+        begin_native_history_draw_pass();
+        callback.call_native([&] { original(screen, tick); });
+        layer.foreground.graphics()->top_in_use = gps->top_in_use;
+        requested_redraw = gps->force_full_display_count;
+    }
+    // Redraw requests schedule the host map/frame, not this output buffer.
+    // Keep a request raised by the native render after restoring its arrays.
+    gps->force_full_display_count = std::max(previous_redraw, requested_redraw);
     layer.ready = true;
     ++g_native_worldgen_published_revision;
     NativeUiReadScope::invalidate_reads();
