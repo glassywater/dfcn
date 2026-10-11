@@ -569,6 +569,18 @@ void Overlay::append_fortress_unit_chooser_rows(std::vector<std::string> &rows,
         }
         std::optional<std::string> squad_name;
         std::optional<std::string> identity;
+        const auto owns_native_caption = [&](int x, int y,
+                std::initializer_list<std::string_view> sources) {
+            return std::any_of(record.fields.begin(), record.fields.end(),
+                [&](const Field &field) {
+                    if (field.skill || field.x >= skill_left || field.x != x ||
+                            field.y != y || field.source.empty()) return false;
+                    return std::any_of(sources.begin(), sources.end(),
+                        [&](std::string_view source) {
+                            return !source.empty() && source.starts_with(field.source);
+                        });
+                });
+        };
         for (const auto &native : native_records) {
             // The native row spans the unit list, while graphical portrait
             // records stop before their tool/policy controls. Those records
@@ -577,22 +589,18 @@ void Overlay::append_fortress_unit_chooser_rows(std::vector<std::string> &rows,
             if (native.box.x != record.box.x || native.box.y != record.box.y ||
                     native.box.w < record.box.w || native.box.h != record.box.h ||
                     native.squad_position < 0 || native.squad_name_source.empty() ||
-                    native.unit_identity_source.empty() || identities.size() < 2) continue;
-            const auto &heading = *identities.front();
-            if (heading.x != native.squad_caption_x || heading.y != native.squad_caption_y ||
-                    (normalize_utterance(heading.complete) !=
-                        normalize_utterance(native.squad_caption_source) &&
-                     normalize_utterance(heading.complete) !=
-                        normalize_utterance(native.squad_caption_complete_source))) continue;
-            std::string person;
-            for (size_t index = 1; index < identities.size(); ++index) {
-                if (!person.empty()) person += ' ';
-                person += normalize_utterance(identities[index]->complete);
-            }
-            if (person != normalize_utterance(native.unit_identity_source) &&
-                    person != normalize_utterance(native.unit_identity_complete_source) &&
-                    (native.unit_identity_split_source.empty() ||
-                     person != normalize_utterance(native.unit_identity_split_source))) continue;
+                    native.unit_identity_source.empty()) continue;
+            // Name and profession can be shortened independently. Captured
+            // fields may mix complete text with visible abbreviations, so
+            // joining their complete metadata need not reproduce either
+            // native identity string. Bind the actual surviving bytes at
+            // both native cursors; the row's unit already owns the full
+            // semantic target, including any profession continuation.
+            if (!owns_native_caption(native.squad_caption_x, native.squad_caption_y,
+                    {native.squad_caption_source, native.squad_caption_complete_source}) ||
+                    !owns_native_caption(native.unit_identity_x, native.unit_identity_y,
+                        {native.unit_identity_source, native.unit_identity_complete_source,
+                         native.unit_identity_split_source})) continue;
             // The native squad callback and the NAME widget own separate
             // fields. A squad heading must never enter the person parser.
             // Only the captured squad object establishes alias versus name.

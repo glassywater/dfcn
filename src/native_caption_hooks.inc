@@ -1266,8 +1266,15 @@ static void capture_native_unit_chooser_record(void *widget) {
         result.address = address;
         std::memcpy(&result.parent, bytes + 0x08, sizeof(result.parent));
         std::memcpy(result.rect.data(), bytes + 0x10, sizeof(result.rect));
+        // unit_name can reserve zero rows (y2 == y1 - 1), while render()
+        // draws its squad heading at y1 - 2 and identity at y1 - 1/y1.
+        // Its real caption belongs to the surrounding three-row unit record;
+        // requiring a nonempty widget rectangle discards every such owner.
+        const bool zero_height_name = reference == 0x162eaf8 &&
+            result.rect[3] == result.rect[1] - 1;
         return result.rect[0] >= 0 && result.rect[1] >= 0 &&
-            result.rect[2] >= result.rect[0] && result.rect[3] >= result.rect[1];
+            result.rect[2] >= result.rect[0] &&
+            (result.rect[3] >= result.rect[1] || zero_height_name);
     };
     const auto children = [&](const Widget &parent,
             std::array<uintptr_t, 3> &vector) {
