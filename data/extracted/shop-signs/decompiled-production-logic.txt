@@ -1,0 +1,93 @@
+Source: Linux dwarfort, ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c.
+This directory contains offline native source extraction, not game execution
+or a translation test. Addresses belong to this ELF, not the historical PE.
+
+Native sign creation
+  Owner: 0xfa3400..0xfcd78b (site construction).
+  The complete owner instructions, literal operands, conditional edges and
+  compiler switch entries are retained in elf-*.asm and elf-*.tsv.
+  Relevant region: entry 0xfc9297, continuation 0xfbdd56.
+  sign-fragment-ranges.tsv and sign-fragment-edges.tsv preserve its entire
+  reachable control flow, including the 18-target switch at 0xfc9404.
+  sign-fragment-decompiled.c is Ghidra's decompilation of this region.
+  The region boundaries are only an offline analysis device; they are not
+  original function boundaries and do not modify the game's machine code.
+  The continuation is replaced by RET only in the disposable Ghidra memory
+  database so the decompiler cannot absorb unrelated construction code.
+
+  The new item_slabst stores the original inscription at +0xe0 and its
+  engraving subtype at +0x104 in this Linux ABI. No new random name is chosen
+  by the display writer or by the translator.
+
+  Shop branch (building type other than the abstract tavern case):
+    info = site_realization_building.info (+0x58)
+    if info.name.has_name (+0x82):
+      stored_writing = EnglishName(info.name +0x10, English=true,
+                                   first_person=false) + " / "
+    switch info.type (+0x08), values 0..17:
+      append the corresponding literal from sign-text-branches.tsv
+      set the corresponding slab subtype (7..24)
+    default:
+      append no category and keep the default slab subtype (-1)
+      an existing named prefix still translates through the {p} / production
+      (market-only shop selectors 18..24 do not acquire invented sign text)
+
+  Tavern branch (building type 0x16):
+    resolve the abstract building via its stored ID (+0x4c)
+    call virtual getName at +0x10 if the lookup supplies an object
+    if name exists and name.has_name (+0x72):
+      stored_writing = EnglishName(name, true, false) + " / "
+    append "Tavern"; set subtype 25
+    missing object, null name and has_name=false all use bare "Tavern"
+
+  All 18 shop literals and the tavern literal have both bare and named
+  inscription productions. Their native selectors, subtype, title, source
+  strings and category translations are recorded in sign-text-branches.tsv.
+
+Stored name production
+  0x12c58d0..0x12c6e5c formats the complete language_name, respecting its
+  first_name/nickname visibility policy and seven WORD/POS component slots.
+  It supplies front/rear compounds, up to two adjectives, a hyphenated
+  compound, TheX and OfX groups. "The ", "the ", "Of ", "of ", spaces,
+  nickname delimiters and the hyphen belong to this formatter.
+  Shop and tavern sign calls pass English=true, first_person=false.
+  0x1cc3980..0x1cc3ac7 selects all nine English POS forms (0..8); an invalid
+  word index or POS emits no word. English fields come from the installed
+  language_words.txt, retained in name/raw-WORD-forms.tsv.
+  Capitalization is the imported capitalize_string_words at PLT 0x424200;
+  0x69f9b0 is std::string mutation, with no separate name vocabulary.
+  name/elf-decompiled.c retains Ghidra's formatter and selector pseudocode;
+  name/elf-*.tsv retain all native conditions, branch edges and POS targets.
+  Existing procedural/name vocabulary and the complete generated-name
+  compositor handle these dynamic names; whole randomized names are not
+  reduced to a finite list of screenshot-specific replacements.
+
+Item detail consumer
+  0xe76ce0..0xe7c9a8 is the shared item description writer.
+  For a slab with an empty saved inscription it appends no writing sentence.
+  Its readable branch copies the saved string between 'The slab reads "'
+  (0xe777fe) and '".' (0xe7782a).
+  Adventure literacy selects the existing 'There is writing on the slab,
+  but you cannot read.' production. Color/reading markup is a separate
+  display concern and does not become part of the inscription grammar.
+  Slab title owner: 0xe6d5b0..0xe6d7d3. Shared noun: 0x12b6a70..0x12bdd2f.
+  elf-item-decompiled.c contains these three complete item/text functions.
+  The site-construction owner is retained as full original instructions,
+  with its relevant sign region decompiled separately to avoid absorbing
+  unrelated world-generation and map-placement logic.
+  Subtype 0 uses memorial; 7..24 use the 18 shop titles; 25 uses tavern sign;
+  all other values use slab. The shared noun supplies the plural 's'.
+  Memorial identification, secrets (6), true-name slabs (26), quality,
+  improvements, contamination, wear and item location retain their existing
+  typed item/slab and memorial handlers.
+
+Translation data
+  data/runtime/item-description-translations.tsv owns 38 category sentence
+  productions: one complete {p} name followed by each exact native suffix,
+  and the bare category form, plus the named default branch. The {p} field uses the existing generated-name
+  compositor; the outer quoted {q} field uses the existing item prose parser.
+  Matching scoped hH/hHt rows are written directly to translations.tsv so
+  a data-only change needs neither a generator nor a core build.
+  These are item-description rules, not global substring replacements.
+  The slab TOML and flat noun entries also correct cloth shop sign(s) from
+  clothing to cloth. Existing user changes and squad.alias rules are kept.

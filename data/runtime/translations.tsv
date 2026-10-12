@@ -108539,7 +108539,7 @@ clear blue cloth	澄蓝的丝绸	wim
 clear blue metal	湛蓝金属	hMi
 clear blue metal	湛蓝金属	wim
 clear tourmaline	透明碧玺	wi
-cloth shop signs	衣服商店招牌	wi
+cloth shop signs	布料商店招牌	wi
 coconut palm log	椰棕榈原木	wi
 coffee wood logs	咖啡树原木	wi
 collapsed at {p}	在{p1}倒下了	ht
@@ -113172,7 +113172,7 @@ chief justiciar	首席司法官	hi
 chief treasurer	首席司库	hi
 chinchilla kits	毛丝鼠幼崽	wi
 citron wood log	香橼树原木	wi
-cloth shop sign	衣服商店招牌	wi
+cloth shop sign	布料商店招牌	wi
 cloudberry buds	云莓花苞	wi
 coated with {s}	覆有{s1}	hJt
 cockatiel woman	玄凤鹦鹉人	wi
@@ -145041,3 +145041,47 @@ of	所属	h
 .	。	hq
 :	：	h
 ;	；	h
+
+# Native shop/tavern slab inscriptions: ELF 0xfa3400, switch 0xfc9404.
+# Both named and unnamed branches; {p} owns the complete generated name.
+# Stored inscription bytes are translated without regenerating random names.
+{p} / Imported Goods	{p1} / 进口商品	hHt
+Imported Goods	进口商品	hH
+{p} / Imported Food	{p1} / 进口食物	hHt
+Imported Food	进口食物	hH
+{p} / Imported Clothing	{p1} / 进口服装	hHt
+Imported Clothing	进口服装	hH
+{p} / Cloth	{p1} / 布料	hHt
+Cloth	布料	hH
+{p} / Leather	{p1} / 皮革	hHt
+Leather	皮革	hH
+{p} / Woven Clothing	{p1} / 织物服装	hHt
+Woven Clothing	织物服装	hH
+{p} / Leather Clothing	{p1} / 皮革服装	hHt
+Leather Clothing	皮革服装	hH
+{p} / Bone Carver	{p1} / 骨雕师	hHt
+Bone Carver	骨雕师	hH
+{p} / Gem Cutter	{p1} / 宝石切割师	hHt
+Gem Cutter	宝石切割师	hH
+{p} / Weaponsmith	{p1} / 武器匠	hHt
+Weaponsmith	武器匠	hH
+{p} / Bowyer	{p1} / 弩匠	hHt
+Bowyer	弩匠	hH
+{p} / Blacksmith	{p1} / 锻造师	hHt
+Blacksmith	锻造师	hH
+{p} / Armorsmith	{p1} / 盔甲匠	hHt
+Armorsmith	盔甲匠	hH
+{p} / Metal Crafts	{p1} / 金属工艺品	hHt
+Metal Crafts	金属工艺品	hH
+{p} / Leather Goods	{p1} / 皮革制品	hHt
+Leather Goods	皮革制品	hH
+{p} / Wooden Furniture	{p1} / 木制家具	hHt
+Wooden Furniture	木制家具	hH
+{p} / Stone Furniture	{p1} / 石制家具	hHt
+Stone Furniture	石制家具	hH
+{p} / Metal Furniture	{p1} / 金属家具	hHt
+Metal Furniture	金属家具	hH
+{p} / Tavern	{p1} / 酒馆	hHt
+Tavern	酒馆	hH
+# Out-of-range shop selector with a stored name, no category literal.
+{p} /	{p1} /	hHt
