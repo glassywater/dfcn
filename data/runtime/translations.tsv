@@ -31552,7 +31552,7 @@ Leave this menu and recenter on the task's building.	离开此菜单，并将视
 Leave this menu and recenter on the task's building.	离开这个菜单,重新定位到任务的建筑上.	w
 Leave this menu and view this place's sheet or menu.	离开此菜单，并查看此地点的详情页或菜单。	hj
 Leave this menu and view this place's sheet or menu.	离开该菜单并查看该地区的列表或菜单.	w
-Native history collection title of {p} in the wilds.	在荒野中，{p1}。	htEi
+Native history collection title of {p} in the wilds.	在荒野中，{p1}争夺事件。	htEi
 Native history intrigue concession {a} response {a}.	虽然{a1}，但{a2}。	ht
 Needs: Helve [consumed], Edged small rock [consumed]	需求：斧柄［消耗］、有刃小石块［消耗］	hP
 Overview sentence: I can't believe how great I feel!	我竟然能这么快活，简直难以置信！	l
@@ -32747,7 +32747,7 @@ Make crafts from bone using a sharp weapon or tool.	用锋利的武器或工具�
 Make crafts from bone using a sharp weapon or tool.	使用锋利的武器或工具，将骨头制成工艺品。	hj
 Master yourself today; discipline will be required.	今天要约束自己；你将需要自律。	hP
 Most of it will just generate foul smelling Miasma.	[C:7:0:0]但大多数垃圾只会产生恶臭的[C:0:0:1]瘴气[C:7:0:0]。	hq
-Native history collection title of {p} in the wilds	在荒野中，{p1}	htEi
+Native history collection title of {p} in the wilds	在荒野中，{p1}争夺事件	htEi
 Native history intrigue concession {a} response {a}	虽然{a1}，但{a2}	ht
 No guildhall location currently assigned to a zone.	目前没有区域被指定为行会大厅地点。	hP
 Others refused to journey to this unhappy fortress.	其他人拒绝前往这座不幸的要塞。	hP
@@ -34020,8 +34020,8 @@ Justice detail: Saw that the object was disturbed.	看到物品被动过。	l
 Make terrified outburst regarding fleeing conflict	惊恐地喊着要逃离冲突	hP
 Move the cursor to view and press {k} to interact.	移动光标查看，按 {k1} 进行互动。	hPt
 Native Legends fantastic creatures few and doubted	奇幻生物已寥寥无几，有些人甚至怀疑它们是否存在	h
-Native history collection title of {p} during {e}.	在{e1}期间，{p1}。	htEi
-Native history collection title of {p} within {p}.	在{p2}，{p1}。	htEi
+Native history collection title of {p} during {e}.	在{e1}期间，{p1}争夺事件。	htEi
+Native history collection title of {p} within {p}.	在{p2}，{p1}争夺事件。	htEi
 Native history collection {s} of {p} in the wilds.	在荒野中，{p1}的{s1}。	htEi
 No charge attack: target is in uncontrolled flight	无法冲锋攻击：目标正不受控制地在空中飞行。	hP
 Overview sentence: I am not feeling sad right now.	我现在并不觉得悲伤。	l
@@ -35326,8 +35326,8 @@ It is one of the great untold tales of our times.	这是我们时代尚未讲述
 It repeatedly makes threats of torture and death.	它不断以折磨和死亡相威胁。	h
 Join me and we'll bring this poor soul back home!	加入我，我们一起把这个可怜人带回家！	hP
 Last track: Dwarf Fortress - Dabu & Simon Swerwer	上一首曲目：矮人要塞 — 达布与西蒙·斯沃沃
-Native history collection title of {p} during {e}	在{e1}期间，{p1}	htEi
-Native history collection title of {p} within {p}	在{p2}，{p1}	htEi
+Native history collection title of {p} during {e}	在{e1}期间，{p1}争夺事件	htEi
+Native history collection title of {p} within {p}	在{p2}，{p1}争夺事件	htEi
 Native history collection {s} of {p} in the wilds	在荒野中，{p1}的{s1}	htEi
 Only one master may be assigned to each workshop.	每个工坊只能指定一名大师。	hP
 Overall, the information is compiled masterfully.	总体而言，资料编纂堪称杰作。	h
@@ -39608,9 +39608,9 @@ Mod details label: Earliest compatible version	最早兼容版本：	l
 Monster Rampage of {n} in in {p} in the wilds.	在荒野中，{n1}在{p1}的怪物肆虐事件。	htEi
 Native Legends final battles of ancient powers	最后的古老权能强者展开了最后的战斗	h
 Native Legends war natural association {n} {s}	{n1}天生厌恶敌方与{s1}的内在联系	ht
-Native history collection title of {p} at {p}.	在{p2}，{p1}。	htEi
-Native history collection title of {p} in {d}.	{d1}年的{p1}。	htEi
-Native history collection title of {p} in {p}.	在{p2}，{p1}。	htEi
+Native history collection title of {p} at {p}.	在{p2}，{p1}争夺事件。	htEi
+Native history collection title of {p} in {d}.	{d1}年的{p1}争夺事件。	htEi
+Native history collection title of {p} in {p}.	在{p2}，{p1}争夺事件。	htEi
 Native history collection {s} Race during {e}.	在{e1}期间，{s1}赛跑。	htEi
 Native history collection {s} Race within {p}.	在{p1}，{s1}赛跑。	htEi
 Native history occasion {a} {s} as part of {e}	{a1}在{e1}中{s1}	ht
@@ -41139,9 +41139,9 @@ Leave this menu and view this object's sheet.	离开此菜单，并查看此物�
 Leave this menu and view this object's sheet.	离开该菜单并查看这个物品的列表.	w
 Mock the repeated failure of the interrogator	嘲笑审问者屡次失败	hP
 Monster Rampage of {n} in in {p} in the wilds	在荒野中，{n1}在{p1}的怪物肆虐事件	htEi
-Native history collection title of {p} at {p}	在{p2}，{p1}	htEi
-Native history collection title of {p} in {d}	{d1}年的{p1}	htEi
-Native history collection title of {p} in {p}	在{p2}，{p1}	htEi
+Native history collection title of {p} at {p}	在{p2}，{p1}争夺事件	htEi
+Native history collection title of {p} in {d}	{d1}年的{p1}争夺事件	htEi
+Native history collection title of {p} in {p}	在{p2}，{p1}争夺事件	htEi
 Native history collection {s} Race during {e}	在{e1}期间，{s1}赛跑	htEi
 Native history collection {s} Race within {p}	在{p1}，{s1}赛跑	htEi
 No charge attack: target shares your location	无法冲锋攻击：目标与你位于同一位置。	hP
@@ -51420,7 +51420,7 @@ Native Legends attacker forces {s}: {s}	进攻方：{s1}，{s2}。	ht
 Native Legends defender forces {s}: {s}	防守方：{s1}，{s2}。	ht
 Native Legends great powers were fading	世上的权能强者正逐渐消亡	h
 Native Legends war failed first contact	一场结果极糟的首次接触	h
-Native history collection title of {p}.	{p1}。	htEi
+Native history collection title of {p}.	{p1}争夺事件。	htEi
 Nearest site: {d}/{d} day's travel east	最近地点：向东，约{d}/{d}天路程	wt
 Nearest site: {d}/{d} day's travel west	最近地点：向西，约{d}/{d}天路程	wt
 Nearest site: {d}/{d} days' travel east	最近地点：向东，约{d}/{d}天路程	wt
@@ -53375,7 +53375,7 @@ Native Legends collection occurred {s}	发生了{s1}。	ht
 Native Legends final battles of powers	最后的权能强者展开了最后的战斗	h
 Native Legends war livestock ownership	牲畜归属	h
 Native Legends war treaty disagreement	对先前条约的分歧	h
-Native history collection title of {p}	{p1}	htEi
+Native history collection title of {p}	{p1}争夺事件	htEi
 Native history office: representatives	代表	h
 Native history relation: former member	前成员	h
 Native ransom: released {n} for ransom	收取赎金后释放了{n1}	ht
