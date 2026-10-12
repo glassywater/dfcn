@@ -18094,6 +18094,7 @@ Announcement combat dialogue-battle-target [dialogue-battle-person]: {s}	{s1}	l
 Announcement combat fortress-announcement [$unit]: {s} has a new demand.	{s1}提出了一项新要求。	l
 Announcement combat historical-battle-location [$name,$name]: {s} in {s}	{s2}的{s1}	l
 Announcement combat journal-event-title [journal-person-event]: Your {s}	你{s1}	l
+Announcement combat journal-incident-event []: demand of submission from	要求某人臣服	l
 Announcement combat justice-interrogation-crime []: attempted kidnapping	绑架未遂	l
 Announcement combat justice-interrogation-crime []: building destruction	破坏建筑	l
 Announcement combat justice-interrogation-sentence []: Met with subject.	与受审者会面。	l
@@ -18477,11 +18478,6 @@ Announcement combat dialogue-battle-slain [dialogue-battle-person]: {s}	{s1}	l
 Announcement combat diplomacy-groups [$name,diplomacy-groups]: {s}, {s}	{s1}、{s2}	l
 Announcement combat historical-clash-outcome []: slaying them and dying	全歼对方，自身阵亡	l
 Announcement combat journal-performance [journal-performance-core]: {s}	{s1}	l
-Announcement combat journal-performance [journal-event-place]: at {s}	在{s1}的一场表演	l
-Announcement combat journal-event-title [journal-entity-event]: 's {s}	某个组织{s1}	l
-Announcement combat journal-incident-event []: attack on	对某人的攻击	l
-Announcement combat journal-incident-event []: escalated attack on	对某人加剧的攻击	l
-Announcement combat journal-incident-event []: demand of submission from	要求某人臣服	l
 Announcement combat journal-person [dialogue-family]: This is your {s}.	这是你的{s1}。	l
 Announcement combat journal-transfer-event [journal-transfer-core]: {s}	{s1}	l
 Announcement combat justice-interrogation-factor []: feeling no avarice	毫无贪欲	l
@@ -18944,6 +18940,7 @@ Announcement combat damage [fraction,layer]: breaking away {s} the {s}	使{s2}�
 Announcement combat description-institution [$person]: a temple to {s}	供奉{s1}的神殿	l
 Announcement combat dialogue-battle-slain [dialogue-battle-group]: {s}	{s1}	l
 Announcement combat historical-commanded-squad [historical-squad]: {s}	{s1}	l
+Announcement combat journal-event-title [journal-entity-event]: 's {s}	某个组织{s1}	l
 Announcement combat journal-event-title [journal-person-event]: 's {s}	某人{s1}	l
 Announcement combat journal-person [dialogue-family]: This is your {s}	这是你的{s1}。	l
 Announcement combat journal-person-event [journal-incident-event]: {s}	{s1}	l
@@ -19425,6 +19422,7 @@ Announcement combat diplomacy-cause []: a dispute over grazing rights	放牧权�
 Announcement combat diplomatic-meeting-topic []: a declaration of war	宣战	l
 Announcement combat equipment [weapon-part,equipment]: the {s} of {s}	{s2}的{s1}	l
 Announcement combat guard-building []: the fruit and vegetable market	果蔬市场	l
+Announcement combat journal-performance [journal-event-place]: at {s}	在{s1}的一场表演	l
 Announcement combat justice-interrogation-factor []: fearing of death	惧怕死亡	l
 Announcement combat justice-interrogation-factor []: spurning the law	轻视法律	l
 Announcement combat justice-interrogation-response []: valued harmony	重视和谐	l
@@ -20871,6 +20869,7 @@ Announcement combat historical-clash-outcome [$number]: losing {s}	己方阵亡{
 Announcement combat injury [injury-subject]: {s} have been severed	{s1}被切断了	l
 Announcement combat journal-crime []: export prohibition violation	违反出口禁令	l
 Announcement combat journal-event-title [journal-performance]: {s}	{s1}	l
+Announcement combat journal-incident-event []: escalated attack on	对某人加剧的攻击	l
 Announcement combat journal-person [$digits]: Died in the year {s}	卒于第{s1}年	l
 Announcement combat justice-interrogation-crime []: blood-drinking	吸血	l
 Announcement combat justice-interrogation-crime []: the kidnapping	绑架	l
@@ -27799,6 +27798,7 @@ Announcement combat journal-entity-event []: reclamation	的收复行动	l
 Announcement combat journal-event-title [$person]: {s}'s	{s1}的事件	l
 Announcement combat journal-event-title []: A creature's	不明生物的事件	l
 Announcement combat journal-event-title []: The death of	某个生物的死亡	l
+Announcement combat journal-incident-event []: attack on	对某人的攻击	l
 Announcement combat journal-performance-role []: dancing	跳	l
 Announcement combat journal-performance-role []: playing	演奏	l
 Announcement combat journal-performance-role []: singing	歌唱	l
@@ -88542,6 +88542,7 @@ wounded {a} within {p}.	在{p1}击伤了{a1}。	ht
 {n} wounded {p} in {p}.	在{p2}，{n}击伤了{p1}。	ht
 {n}, the goddess of {r}	{n}——掌管{r}的女神	atl
 {n}, the {s} god of {r}	{n}——{s}神祇，掌管{r}	atl
+{p} / Imported Clothing	{p1} / 进口服装	hHt
 {p} founded {p} in {p}.	在{p3}，{p1}建立了{p2}。	ht
 {p} of {p} founded {p}.	{p2}的{p1}建立了{p3}。	ht
 {p} was acquired at {p}	在{p2}，{p1}被获得了	ht
@@ -90641,6 +90642,8 @@ wounded {a} within {p}	在{p1}击伤了{a1}	ht
 {n} sings beautifully.	{n1}唱得优美动听。	hPt
 {n} was killed by {n}.	{n1}被{n2}杀害了。	ht
 {n}'s presence in {p}.	{n1}在{p1}出现。	htEi
+{p} / Leather Clothing	{p1} / 皮革服装	hHt
+{p} / Wooden Furniture	{p1} / 木制家具	hHt
 {p} received its name.	{p1}获得了自己的名字。	ht
 {p} was claimed at {p}	在{p2}，有人宣称拥有{p1}	ht
 {p} was claimed by {a}	{a1}宣称拥有{p1}	ht
@@ -93000,6 +93003,8 @@ woolly rhinoceros men	披毛犀人	wi
 {n}'s presence in {p}	{n1}在{p1}出现	htEi
 {n}, the deity of {r}	{n}——掌管{r}的神祇	atl
 {n}, the force of {r}	{n}——象征{r}的自然之灵	atl
+{p} / Metal Furniture	{p1} / 金属家具	hHt
+{p} / Stone Furniture	{p1} / 石制家具	hHt
 {p} has become a {s}.	{p1}成为了{s1}。	hPt
 {p} received its name	{p1}获得了自己的名字	ht
 {p} was found at {p}.	在{p2}，{p1}被找到了。	ht
@@ -95836,6 +95841,8 @@ yours or companion's	你或同伴留下的	h
 {n} was born in {p}.	在{p}，{n}出生了。	ht
 {n} works furiously!	{n1}正在疯狂地工作！	hPt
 {n}, the {s} goddess	{n}——{s}女神	atl
+{p} / Imported Goods	{p1} / 进口商品	hHt
+{p} / Woven Clothing	{p1} / 织物服装	hHt
 {p} constructed {p}.	{p1}建造了{p2}。	ht
 {p} of the great {n}	{p}，隶属于伟大的{n}	atl
 {p} was confiscated.	{p1}被没收了。	ht
@@ -99217,6 +99224,8 @@ younger half-sister	同父异母或同母异父的妹妹	wi
 {n} was the victor.	{n1}获得了胜利。	ht
 {n}, the god of {r}	{n}——掌管{r}的神祇	atl
 {p} (former member)	{p}（前成员）	ht
+{p} / Imported Food	{p1} / 进口食物	hHt
+{p} / Leather Goods	{p1} / 皮革制品	hHt
 {p} was confiscated	{p1}被没收了	ht
 {p} was desecrated.	{p1}遭到了亵渎。	ht
 {p} was given away.	{p1}被赠送了出去。	ht
@@ -103149,6 +103158,7 @@ yellow spessartine	橙榴石	wi
 {n}'s {t} was {s}.	{n1}的{t1}被{s1}。	ht
 {n}, the {s} deity	{n}——{s}神祇	atl
 {p} ({s}, {d}-{d})	{p}（{s}，{d}—{d}年）	ht
+{p} / Metal Crafts	{p1} / 金属工艺品	hHt
 {p} was desecrated	{p1}遭到了亵渎	ht
 {p} was destroyed.	{p1}被摧毁了。	ht
 {p} was given away	{p1}被赠送了出去	ht
@@ -103411,6 +103421,7 @@ I yield! I yield!	我投降！我投降！	hP
 I'd like the {s}.	我要{s1}。	hPt
 I'm going to {e}.	我正前往{e1}。	hPt
 I'm proud of you.	我为你感到骄傲。	hP
+Imported Clothing	进口服装	hH
 Imports from {e}:	从{e1}进口：	hPt
 In Pursuit of {b}	追寻{b}	hbti
 In memory of {n}.	谨以此纪念{n1}。	hHt
@@ -107542,6 +107553,8 @@ youngest daughter	最小的女儿	h
 {n} picks up {s}.	{n1}拾起了{s1}。	hPt
 {n} tusks itself.	{n1}用獠牙轻碰自己。	hPt
 {n}'s {t} was {s}	{n1}的{t1}被{s1}	ht
+{p} / Bone Carver	{p1} / 骨雕师	hHt
+{p} / Weaponsmith	{p1} / 武器匠	hHt
 {p} was acquired.	{p1}被获得了。	ht
 {p} was destroyed	{p1}被摧毁了	ht
 {p} was inherited	{p1}被继承了	ht
@@ -107766,6 +107779,7 @@ It is top-heavy.	它的身体上重下轻。	h
 Job cancellation	工作取消	w
 LACK OF VOLCANOS	缺少火山	hP
 Learned art form	学会艺术形式	w
+Leather Clothing	皮革服装	hH
 Legendary hunter	传奇猎人	w
 Legendary killer	传奇杀手	w
 Liaison's Office	联络官办公室	wli
@@ -108000,6 +108014,7 @@ Very low empathy	同理心很低	wil
 View all alerts.	查看全部警报。	hj
 View all alerts.	查看全部警报。	w
 When flying, use	飞行时，使用	hq
+Wooden Furniture	木制家具	hH
 Written-on quire	被书写的手稿	wi
 X is devouring Y	X正在吞食Y	wl
 X is embracing Y	X正在拥抱Y	wl
@@ -112093,6 +112108,9 @@ yellow grossular	缃榴石	wi
 {n} wounded {p}.	{n1}击伤了{p}。	ht
 {n}, the goddess	{n}——女神	atl
 {n}, the {s} god	{n}——{s}神祇	atl
+{p} / Armorsmith	{p1} / 盔甲匠	hHt
+{p} / Blacksmith	{p1} / 锻造师	hHt
+{p} / Gem Cutter	{p1} / 宝石切割师	hHt
 {p} founded {p}.	{p1}建立了{p2}。	ht
 {p} was acquired	{p1}被获得了	ht
 {p} was claimed.	有人宣称拥有{p1}。	ht
@@ -112333,6 +112351,7 @@ Mayoral Bedroom	市长卧室	wli
 Meager Quarters	简陋卧室	w
 Meat/Fish/Other	肉/鱼/其他	wi
 Mechanic's Shop	机械师工坊	wi
+Metal Furniture	金属家具	hH
 Migrating group	迁徙势力	wi
 Minecart routes	矿车路线	hq
 Mission Report:	任务报告：	h
@@ -112446,6 +112465,7 @@ Specify leather	指定皮革	wli
 Standing orders	劳动规则	wi
 Steal livestock	偷走牲畜	wli
 Stone Engraving	石刻	wi
+Stone Furniture	石制家具	hH
 Stone-Fall Trap	落石陷阱	wi
 Storytelling of	故事讲述	hEi
 Strongest Odor:	最强气味：	wl
@@ -117096,6 +117116,7 @@ I am confused.	我有些困惑。	hP
 I don't agree.	我不同意。	hP
 I must insist.	这点我坚持。	hP
 Ignore them at	忽视它们会非常危险.	w
+Imported Goods	进口商品	hH
 In site finder	在地点查找器中	w
 Infamous bully	臭名昭著的恶霸	w
 Infamous thief	名声显赫的盗贼	w
@@ -117320,6 +117341,7 @@ Wind Direction	风向	hi
 World map size	世界地图大小	w
 Wound Dressers	裹伤师	wi
 Wound Dressing	裹伤	wi
+Woven Clothing	织物服装	hH
 X is burning Y	X正在焚烧Y	wl
 X is cooking Y	X正在烹饪Y	wl
 X is engraving	X正在雕刻	wl
@@ -122001,6 +122023,7 @@ I am a guard.	我是一名卫兵。	hP
 I wander {e}.	我在{e1}游历。	hPt
 I'm appalled.	我感到震惊。	hP
 I'm not sure.	我不确定。	hP
+Imported Food	进口食物	hH
 Improve trade	改善贸易关系	wli
 In Vegetation	身处植被中	hP
 Insufferable!	简直忍无可忍！	hP
@@ -122008,6 +122031,7 @@ It was great.	那很棒。	hP
 Knowledgeable	相当熟悉	w
 LACK OF PEAKS	缺少山峰	hP
 Large Profile	身形较大	hP
+Leather Goods	皮革制品	hH
 Leather Works	皮革工坊	wi
 Leatherworker	皮匠	wi
 Left shoulder	左肩	w
@@ -126466,6 +126490,7 @@ yellow zircon	黄锆石	wi
 {n} vanishes!	{n1}消失了！	hPt
 {n} vanishes.	{n1}消失了。	hPt
 {n} whistles.	{n1}发出哨声。	hPt
+{p} / Leather	{p1} / 皮革	hHt
 {p} is a {s}.	{p}是一个{s}。	ht
 {p} was found	{p1}被找到了	ht
 {p} was lost.	{p1}遗失了。	ht
@@ -126629,6 +126654,7 @@ Meeting area	集会区	wi
 Memorialized	已铭记	wi
 Mental state	精神状态	w
 Menu Confirm	菜单确认	w
+Metal Crafts	金属工艺品	hH
 Metalcrafter	金属工匠	wi
 Milled plant	磨碎的植物	wi
 Minewandered	矿行者
@@ -130705,6 +130731,8 @@ youngest son	最小的儿子	h
 {n} unrolls.	{n1}舒展开身体。	hPt
 {n}, the god	{n}——神祇	atl
 {p} (member)	{p}（成员）	ht
+{p} / Bowyer	{p1} / 弩匠	hHt
+{p} / Tavern	{p1} / 酒馆	hHt
 {p} was lost	{p1}遗失了	ht
 {s} Race of.	{s1}赛跑。	htEi
 {s} Rampage.	{s1}肆虐事件。	htEi
@@ -130762,6 +130790,7 @@ Be patient.	耐心一些。	hP
 Blacksmiths	锻造师	wi
 Blank slate	空白角色	w
 Blowgunners	吹箭手	wi
+Bone Carver	骨雕师	hH
 Bone Carver	骨雕师	wi
 Bone Doctor	骨科医师	wi
 Bone doctor	正骨医生	w
@@ -131042,6 +131071,7 @@ Wax Workers	蜡工	wi
 Wax Working	蜡工	wi
 Weapon Trap	武器陷阱	wi
 Weapon rack	兵器架	w
+Weaponsmith	武器匠	hH
 Weaponsmith	武器匠	wi
 Where am I?	我在哪里？	hP
 Wild Animal	野生动物	wi
@@ -134584,6 +134614,7 @@ zesty green	鲜柠檬绿	wi
 {n} the {s}	{n}（{s}）	ht
 {n} vomits.	{n1}呕吐了。	hPt
 {p} (enemy)	{p}（敌人）	ht
+{p} / Cloth	{p1} / 布料	hHt
 {p} and {p}	{p1}与{p2}	htu
 {s} Race of	{s1}赛跑	htEi
 {s} Rampage	{s1}肆虐事件	htEi
@@ -134641,6 +134672,7 @@ Apply cast	打石膏	wi
 Apprentice	学徒	w
 Archetypes	角色原型
 Armor User	盔甲使用者	wi
+Armorsmith	盔甲匠	hH
 Armorsmith	盔甲匠	wi
 Astonished	惊讶	w
 Astronomer	天文学家	wi
@@ -134654,6 +134686,7 @@ Before {b}	{b}之前	hbti
 Better {b}	更好的{b}	hbti
 Beyond {b}	超越{b}	hbti
 Bitterness	苦涩	w
+Blacksmith	锻造师	hH
 Blacksmith	锻造师	wi
 Block fire	挡住火焰	w
 Blowgunner	吹箭手	wi
@@ -134724,6 +134757,7 @@ Frustrated	挫败	w
 Fullscreen	全屏	w
 Furniture:	家具：	w
 Galena {d}	第{d}年 方铅矿月	wt
+Gem Cutter	宝石切割师	hH
 Gem Cutter	宝石切割师	wi
 Gem Setter	宝石镶嵌师	wi
 Gem Window	宝石窗	wi
@@ -141111,6 +141145,7 @@ Lanczos	Lanczos插值	w
 Langgud	兰古德	wi
 Lashers	鞭手	wi
 Lashing	鞭术	wi
+Leather	皮革	hH
 Legends	传说
 Lensham	伦夏姆	wi
 Liaison	联络官到来	w
@@ -141842,6 +141877,7 @@ Boshut	博舒特	wi
 Bothon	博松	wi
 Bowman	弓手	wi
 Bowmen	弓手	wi
+Bowyer	弩匠	hH
 Bowyer	弓弩匠	wi
 Brewer	酿造师	wi
 Bridge	桥	w
@@ -142322,6 +142358,7 @@ Tanner	制革工	wi
 Tarmid	塔米德	wi
 Tashem	塔舍姆	wi
 Tathur	塔舒尔	wi
+Tavern	酒馆	hH
 Tavern	酒馆	wi
 Tekkud	特库德	wi
 Tekmok	特科莫克	wi
@@ -143009,6 +143046,7 @@ Clean	清洁	wi
 Clear	清除	w
 Clerk	文员	wi
 Climb	攀爬	hP
+Cloth	布料	hH
 Cloth	布匹	wi
 Cooks	厨师	wi
 Crime	犯罪	w
@@ -144182,6 +144220,7 @@ yetis	雪怪	wi
 your 	你的	wi
 youth	青春	r
 {n}'s	{n1}的	ht
+{p} /	{p1} /	hHt
 \x8Egash	阿盖石	wi
 \x8Fmmeb	奥梅布	wi
 \x90thes	埃塞斯	wi
@@ -145206,47 +145245,3 @@ of	所属	h
 .	。	hq
 :	：	h
 ;	；	h
-
-# Native shop/tavern slab inscriptions: ELF 0xfa3400, switch 0xfc9404.
-# Both named and unnamed branches; {p} owns the complete generated name.
-# Stored inscription bytes are translated without regenerating random names.
-{p} / Imported Goods	{p1} / 进口商品	hHt
-Imported Goods	进口商品	hH
-{p} / Imported Food	{p1} / 进口食物	hHt
-Imported Food	进口食物	hH
-{p} / Imported Clothing	{p1} / 进口服装	hHt
-Imported Clothing	进口服装	hH
-{p} / Cloth	{p1} / 布料	hHt
-Cloth	布料	hH
-{p} / Leather	{p1} / 皮革	hHt
-Leather	皮革	hH
-{p} / Woven Clothing	{p1} / 织物服装	hHt
-Woven Clothing	织物服装	hH
-{p} / Leather Clothing	{p1} / 皮革服装	hHt
-Leather Clothing	皮革服装	hH
-{p} / Bone Carver	{p1} / 骨雕师	hHt
-Bone Carver	骨雕师	hH
-{p} / Gem Cutter	{p1} / 宝石切割师	hHt
-Gem Cutter	宝石切割师	hH
-{p} / Weaponsmith	{p1} / 武器匠	hHt
-Weaponsmith	武器匠	hH
-{p} / Bowyer	{p1} / 弩匠	hHt
-Bowyer	弩匠	hH
-{p} / Blacksmith	{p1} / 锻造师	hHt
-Blacksmith	锻造师	hH
-{p} / Armorsmith	{p1} / 盔甲匠	hHt
-Armorsmith	盔甲匠	hH
-{p} / Metal Crafts	{p1} / 金属工艺品	hHt
-Metal Crafts	金属工艺品	hH
-{p} / Leather Goods	{p1} / 皮革制品	hHt
-Leather Goods	皮革制品	hH
-{p} / Wooden Furniture	{p1} / 木制家具	hHt
-Wooden Furniture	木制家具	hH
-{p} / Stone Furniture	{p1} / 石制家具	hHt
-Stone Furniture	石制家具	hH
-{p} / Metal Furniture	{p1} / 金属家具	hHt
-Metal Furniture	金属家具	hH
-{p} / Tavern	{p1} / 酒馆	hHt
-Tavern	酒馆	hH
-# Out-of-range shop selector with a stored name, no category literal.
-{p} /	{p1} /	hHt
