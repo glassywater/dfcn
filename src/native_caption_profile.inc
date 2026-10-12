@@ -1105,6 +1105,17 @@ static bool resolve_native_caption_profile(NativeCaptionProfile &profile) {
     // ViewBase's container named Tooltip. Calls are validated on installation.
     profile.legacy_toolbar_tooltip = elf_runtime::state().edition != 2;
     profile.inline_resizes.push_back(std::move(action_resize));
+    // Inventory mode, other selection modes and their location line use the
+    // same default-fill clone. Capture each complete string before dots are
+    // written; the ensuing draw binds the original item/body-part grammar.
+    for (const uintptr_t call : {native_reference_va(0x119ab1d),
+            native_reference_va(0x119ac55), native_reference_va(0x119ac05)}) {
+        if (!image.contains(call, 5) ||
+                image.relative(call, 1, 5) != native_reference_va(0x11612a0)) return false;
+        const auto *bytes = reinterpret_cast<const unsigned char *>(call);
+        profile.inline_resizes.push_back({call - image.base,
+            std::vector<unsigned char>(bytes, bytes + 5), {0x31,0xd2}, true});
+    }
     const auto widget_table = reinterpret_cast<uintptr_t>(
         dlsym(RTLD_DEFAULT, "_ZTVN7widgets14text_truncatedE"));
     if (!widget_table) return false;

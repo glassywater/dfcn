@@ -391,14 +391,18 @@ std::vector<Match> Overlay::capture_adventure_item_modal(
     std::vector<std::vector<int>> record_keys(static_cast<size_t>(gps_->dimy));
     std::vector<std::unordered_map<int, NativeAdventureInventoryRole>> record_roles(
         static_cast<size_t>(gps_->dimy));
-#ifdef _WIN32
     // Every mode writes its complete caption through this same native call.
     // The renderer fixes the key origin two columns before that draw, even
     // for custom multi-character bindings or its unbound `?` fallback.
     // Source roles come from the actual caller, never key spelling/colour.
+#ifdef _WIN32
     const auto base = native_history_profile_base();
     const uintptr_t name_writer = base ? native_reference_address(base, 0x883790) : 0;
     const uintptr_t key_writer = base ? native_reference_address(base, 0xc3954f) : 0;
+#else
+    const uintptr_t name_writer = native_reference_va(0x119a2ef);
+    constexpr uintptr_t key_writer = 0;
+#endif
     if (name_writer || key_writer) for (const auto &batch : drawn_batches) for (const auto &draw : batch) {
         const bool key_draw = key_writer && draw.native_caller == key_writer;
         if ((!key_draw && (!name_writer || draw.native_caller != name_writer)) || draw.source.empty() ||
@@ -420,11 +424,12 @@ std::vector<Match> Overlay::capture_adventure_item_modal(
             record_roles[static_cast<size_t>(draw.y)].insert_or_assign(
                 key, draw.adventure_inventory_role);
     }
-#else
+#ifndef _WIN32
     // The shared complete selector rectangle owns the first non-rail ink in
     // this row on ELF. That is the independently drawn key field, whatever
     // its display string; its following caption still begins two cells later.
     for (int y = title_y + 1; y + 1 < frame->bottom; ++y) {
+        if (!record_keys[static_cast<size_t>(y)].empty()) continue;
         for (int x = frame->left + 1; x + 2 < frame->right; ++x) {
             auto box = native_picture_caption_rect(*gps_, x, y, false, nullptr, true);
             if (!box) box = native_button_text_rect(*gps_, x, x + 1, y, true);
@@ -653,7 +658,7 @@ std::vector<Match> Overlay::capture_adventure_item_modal(
                         // The original option's actual vtable provider owns
                         // the source role before its complete caption is drawn.
                         // Pictures and wording never turn a named item into
-                        // an ingestion or placement action on the PE path.
+                        // an ingestion or placement action.
                         const bool action_role = role == NativeAdventureInventoryRole::Action;
                         const bool deposit_role = role == NativeAdventureInventoryRole::Deposit;
                         const bool untyped = role == NativeAdventureInventoryRole::None;

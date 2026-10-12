@@ -660,8 +660,36 @@ static NativeAdventureInventoryRole native_adventure_inventory_role(
     if (mode == 5 || mode == 7 || mode == 8 || mode == 9)
         return NativeAdventureInventoryRole::Action;
 #else
-    (void)caller;
-    (void)source;
+    // The ELF renderer passes its complete name at rsp+0xf0. The live list
+    // and visible index are rsp+0x40 and rsp+0x48; resolve the actual virtual
+    // owner before the item, contaminant and action grammars see the field.
+    if (caller != native_reference_va(0x119a2ef) || source < 0xb0)
+        return NativeAdventureInventoryRole::None;
+    uintptr_t list = 0, index = 0, option = 0, table = 0, provider = 0;
+    int32_t mode = -1;
+    NativeBorrowedVector<void *> options;
+    if (!native_history_copy(source - 0xb0, list) || !list || list > UINTPTR_MAX - 0x30 ||
+            !native_history_copy(source - 0xa8, index) ||
+            !native_history_copy(list + 4, mode) || mode < 0 || mode > 10 ||
+            !native_history_copy(list + 0x18, options) || !options.valid() ||
+            index >= options.size()) return NativeAdventureInventoryRole::None;
+    if (!native_history_copy(reinterpret_cast<uintptr_t>(options.begin) +
+                index * sizeof(void *), option) || !option ||
+            !native_history_copy(option, table) || !table || table > UINTPTR_MAX - 0x18 ||
+            !native_history_copy(table + (mode == 8 || mode == 9 ? 0x10 : 8), provider))
+        return NativeAdventureInventoryRole::None;
+    static const std::array item_providers{
+        native_reference_va(0x11614d0), native_reference_va(0x11615e0),
+        native_reference_va(0x11616f0), native_reference_va(0x1161800),
+        native_reference_va(0x1161910), native_reference_va(0x1161a20),
+        native_reference_va(0x1161b30), native_reference_va(0x1161c40),
+        native_reference_va(0x1161d50)};
+    if (provider && std::find(item_providers.begin(), item_providers.end(), provider) !=
+            item_providers.end()) return NativeAdventureInventoryRole::Item;
+    if (provider == native_reference_va(0x1162b40))
+        return NativeAdventureInventoryRole::Deposit;
+    if (mode == 5 || mode == 7 || mode == 8 || mode == 9)
+        return NativeAdventureInventoryRole::Action;
 #endif
     return NativeAdventureInventoryRole::None;
 }
