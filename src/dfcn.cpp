@@ -4159,12 +4159,22 @@ private:
         bool top_in_use = false;
         std::vector<Cell> cells;
 
+        void begin_pass() noexcept {
+            // Reuse storage only. The first read starts a fresh generation,
+            // even when a raw and composed pass borrow the same native grid.
+            revision_slot = &NativeUiReadScope::read_revision;
+            graphics = nullptr;
+        }
+
         Cell &at(const graphicst *gps, uint64_t read_epoch, size_t tile) {
             const uint64_t current_revision = *revision_slot;
             if (graphics != gps || revision != current_revision ||
                     composite_epoch != read_epoch || dimx != gps->dimx ||
                     dimy != gps->dimy || screen != gps->screen ||
                     screen_top != gps->screen_top || top_in_use != gps->top_in_use) {
+                // Allocate before publishing this view: a failed resize must
+                // leave the reusable scratch invalid for a later retry.
+                cells.resize(static_cast<size_t>(gps->dimx) * gps->dimy);
                 graphics = gps;
                 revision = current_revision;
                 composite_epoch = read_epoch;
@@ -4173,8 +4183,10 @@ private:
                 screen = gps->screen;
                 screen_top = gps->screen_top;
                 top_in_use = gps->top_in_use;
-                ++epoch;
-                cells.resize(static_cast<size_t>(dimx) * dimy);
+                if (++epoch == 0) {
+                    std::fill(cells.begin(), cells.end(), Cell{});
+                    epoch = 1;
+                }
             }
             auto &cell = cells[tile];
             if (cell.epoch != epoch) {
@@ -4185,16 +4197,28 @@ private:
         }
     };
     mutable CellReadCache *cell_read_cache_ = nullptr;
+    mutable std::vector<std::unique_ptr<CellReadCache>> cell_read_cache_scratch_;
+    mutable size_t cell_read_cache_depth_ = 0;
     class CellReadCacheScope {
         const Overlay &owner_;
-        CellReadCache cache_;
         CellReadCache *previous_;
     public:
         explicit CellReadCacheScope(const Overlay &owner)
             : owner_(owner), previous_(owner.cell_read_cache_) {
-            owner_.cell_read_cache_ = &cache_;
+            // A nested background or raw-layer traversal owns another slot.
+            // Pointees stay stable if nesting grows the scratch vector.
+            const size_t depth = owner_.cell_read_cache_depth_;
+            if (depth == owner_.cell_read_cache_scratch_.size())
+                owner_.cell_read_cache_scratch_.push_back(std::make_unique<CellReadCache>());
+            auto *cache = owner_.cell_read_cache_scratch_[depth].get();
+            cache->begin_pass();
+            ++owner_.cell_read_cache_depth_;
+            owner_.cell_read_cache_ = cache;
         }
-        ~CellReadCacheScope() { owner_.cell_read_cache_ = previous_; }
+        ~CellReadCacheScope() {
+            owner_.cell_read_cache_ = previous_;
+            --owner_.cell_read_cache_depth_;
+        }
         CellReadCacheScope(const CellReadCacheScope &) = delete;
         CellReadCacheScope &operator=(const CellReadCacheScope &) = delete;
     };
@@ -4208,6 +4232,7 @@ private:
     bool untranslated_limit_reported_ = false;
     bool frame_prepared_ = false;
     bool fortress_map_frame_ = false;
+    bool main_menu_frame_ = false;
     std::vector<Match> prepared_matches_;
     std::vector<unsigned char> adventure_before_hover_grid_;
     std::vector<uint32_t> adventure_before_hover_flags_;
@@ -4984,6 +5009,8 @@ private:
     void append_main_menu_credits_rows(const std::vector<std::string> &context,
         std::vector<std::string> &rows, std::vector<Match> &matches, int only_y) const;
     void layout_main_menu_credits_rows();
+    bool find_main_menu_matches(int only_y, const unsigned char *screen_override,
+        std::vector<Match> &matches) const;
     void note_main_menu_developer_copy(SDL_Renderer *renderer, SDL_Texture *texture,
         const SDL_Rect &dest);
     void draw_main_menu_branding(SDL_Renderer *renderer);
@@ -7201,6 +7228,7 @@ void Overlay::reset_render_state() {
     destroy_textures();
     frame_prepared_ = false;
     fortress_map_frame_ = false;
+    main_menu_frame_ = false;
     prepared_matches_.clear();
     suppress_base_.clear();
     suppress_top_.clear();
@@ -7380,6 +7408,9 @@ void Overlay::shutdown() {
     g_embark_capture_screen_dimx.store(0, std::memory_order_release);
     g_embark_capture_screen_dimy.store(0, std::memory_order_release);
     reset_render_state();
+    cell_read_cache_ = nullptr;
+    cell_read_cache_scratch_.clear();
+    cell_read_cache_depth_ = 0;
     legends_hit_rows_.clear();
     legends_renderer_ = nullptr;
     RULESETS.shutdown();
@@ -16430,6 +16461,7 @@ static NativeKeybindingScope capture_native_keybinding_scope(const graphicst &gp
 #include "native_text_rows.inc"
 #include "fortress_justice.inc"
 #include "credits.inc"
+#include "main_menu.inc"
 #include "fortress_trade_requests.inc"
 #include "fortress_trade_fields.inc"
 #include "operation_titles.inc"
@@ -16854,6 +16886,9 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
         only_y >= gps_->dimy) {
         return result;
     }
+    // Title captions have no item, character or history semantics. Establish
+    // the complete current menu before entering the shared page pipeline.
+    if (find_main_menu_matches(only_y, screen_override, result)) return result;
     // This native view owns its captions and event viewport from the first
     // frame; its private renderer never enters the shared screen matcher.
 #ifdef _WIN32
@@ -25860,14 +25895,21 @@ bool Overlay::prepare_immediate_row(bool top_layer, int y) {
         refresh_character_overview_context();
         immediate_mod_list_.reset();
         if (!isolated_management_background && !fortress_map_hud) {
-            if (!native_knowledge_frame_matches_)
-                (void)native_knowledge_matches(-1, embark_pause_menu_matches());
-            const auto layout = native_mod_list_layout(*gps_, [&](int x, int row) {
-                bool top = false;
-                const auto *cell = cell_at(x, row, &top);
-                return cell && cell[0] ? cell[0] : static_cast<unsigned char>(' ');
-            });
-            if (layout) immediate_mod_list_ = std::make_shared<NativeModListLayout>(*layout);
+            std::vector<Match> menu;
+            if (find_main_menu_matches(-1, raw, menu)) {
+                native_knowledge_frame_ = {};
+                native_knowledge_frame_matches_ = std::vector<Match>{};
+                native_knowledge_frame_transition_ = false;
+            } else {
+                if (!native_knowledge_frame_matches_)
+                    (void)native_knowledge_matches(-1, embark_pause_menu_matches());
+                const auto layout = native_mod_list_layout(*gps_, [&](int x, int row) {
+                    bool top = false;
+                    const auto *cell = cell_at(x, row, &top);
+                    return cell && cell[0] ? cell[0] : static_cast<unsigned char>(' ');
+                });
+                if (layout) immediate_mod_list_ = std::make_shared<NativeModListLayout>(*layout);
+            }
         }
         immediate_context_screen_ = gps_->screen;
         immediate_context_epoch_ = draw_epoch_;
@@ -33357,6 +33399,7 @@ void Overlay::prepare_frame() {
     RenderTimingScope prepare_timing(render_timings_, config_.trace_render_timing, RenderTimingStage::Prepare);
     apply_requested_reload();
     fortress_map_frame_ = false;
+    main_menu_frame_ = false;
     prepared_matches_.clear();
     suppress_base_.clear();
     suppress_top_.clear();
@@ -33374,13 +33417,16 @@ void Overlay::prepare_frame() {
     }
     if (config_.enabled && face_ && !rules_.empty() && gps_ && gps_->screen &&
         gps_->dimx > 0 && gps_->dimx <= 1000 && gps_->dimy > 0 && gps_->dimy <= 1000) {
-        fortress_map_frame_ = find_fortress_map_matches(-1, nullptr, prepared_matches_);
-        if (!fortress_map_frame_) prepared_matches_ = find_matches();
+        main_menu_frame_ = find_main_menu_matches(-1, nullptr, prepared_matches_);
+        if (!main_menu_frame_) {
+            fortress_map_frame_ = find_fortress_map_matches(-1, nullptr, prepared_matches_);
+            if (!fortress_map_frame_) prepared_matches_ = find_matches();
+        }
         const size_t cells = static_cast<size_t>(gps_->dimx) * gps_->dimy;
         // An isolated management panel owns its page recovery. The main
         // layer contains only the exposed HUD and must not recover covered
         // documents or scan both raw planes for unrelated page signatures.
-        if (!native_info_background_view(gps_) && !fortress_map_frame_) {
+        if (!main_menu_frame_ && !native_info_background_view(gps_) && !fortress_map_frame_) {
             recover_adventure_skill_rows();
 
             // Keep the economy panel drawable when its complete native fields
@@ -42964,8 +43010,12 @@ void Overlay::render(SDL_Renderer *renderer) {
     }
     // Re-scan at present time so the overlay is based on the final logical
     // grid, rather than any early-frame snapshot prepared by a glyph copy.
-    const bool retry_native_knowledge = native_knowledge_frame_matches_ &&
+    bool retry_native_knowledge = native_knowledge_frame_matches_ &&
         native_knowledge_frame_matches_->empty();
+    if (retry_native_knowledge) {
+        std::vector<Match> menu;
+        if (find_main_menu_matches(-1, nullptr, menu)) retry_native_knowledge = false;
+    }
     if (retry_native_knowledge) {
         native_knowledge_frame_matches_.reset();
         // Earlier glyphs may already be visible. A late replacement must
@@ -42978,7 +43028,8 @@ void Overlay::render(SDL_Renderer *renderer) {
     const bool isolated_management_background = native_info_background_view(gps_);
     NativePanelReadScope panel_reads(gps_);
     publish_dfhack_stonesense_announcements();
-    const auto rendered_help_frames = !isolated_management_background && !fortress_map_frame_ &&
+    const auto rendered_help_frames = !main_menu_frame_ &&
+        !isolated_management_background && !fortress_map_frame_ &&
         gps_ && gps_->dimx > 0 && gps_->dimx <= 1000 &&
         gps_->dimy > 0 && gps_->dimy <= 1000
         ? native_text_overlay_frames(*gps_) : std::vector<SDL_Rect>{};
@@ -42995,6 +43046,14 @@ void Overlay::render(SDL_Renderer *renderer) {
         return;
     }
     RenderTimingScope layout_timing(render_timings_, config_.trace_render_timing, RenderTimingStage::Layout);
+    std::shared_ptr<NativeTooltipPage> layout_page;
+    if (main_menu_frame_) {
+        normalize_native_split_text();
+        // Returning from embark must retire its cached modal/background even
+        // though the title page bypasses the general gameplay layout chain.
+        stabilize_embark_pause_menu();
+        layout_main_menu_credits_rows();
+    } else {
     std::shared_ptr<const std::vector<SDL_Rect>> background_help_frames;
     for (const auto &match : prepared_matches_)
         if (!match.native_help_current_page && match.native_help_background_frames) {
@@ -43026,7 +43085,7 @@ void Overlay::render(SDL_Renderer *renderer) {
     auto foreground_tooltip = g_native_toolbar_tooltip;
     if (background_help_frames) g_native_toolbar_tooltip.reset();
     const auto layout_widget = captured_native_tooltip_widget(*gps_);
-    const auto layout_page = !background_help_frames ? nullptr
+    layout_page = !background_help_frames ? nullptr
         : native_help_background_page(*gps_, *background_help_frames,
             layout_widget ? layout_widget->page : nullptr);
     NativeTooltipPageScope tooltip_page_layout(gps_, layout_page, background_help_frames.get());
@@ -43301,6 +43360,7 @@ void Overlay::render(SDL_Renderer *renderer) {
     // Foreground rows were deliberately absent during page layout. Lay out
     // their complete card only after restoring its actual layer and rows.
     layout_toolbar_tooltip(renderer);
+    }
     {
         RenderTimingScope collect_timing(render_timings_, config_.trace_render_timing, RenderTimingStage::Collect);
         collect_untranslated_fragments();
@@ -43412,7 +43472,7 @@ void Overlay::render(SDL_Renderer *renderer) {
     } else {
         RenderTimingScope part_timing(render_timings_, config_.trace_render_timing,
             RenderTimingStage::DrawWorkOrder);
-        if (!isolated_management_background)
+        if (!main_menu_frame_ && !isolated_management_background)
             draw_with_help_clips(renderer, *gps_, rendered_help_frames, nullptr,
                 [&] { draw_work_order_buttons(renderer); });
         part_timing.checkpoint(RenderTimingStage::DrawBorderRepairs);
