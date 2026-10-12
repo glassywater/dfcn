@@ -573,6 +573,33 @@ static std::atomic<uint64_t> g_native_dfhack_layer_retirement{0};
 static constexpr int64_t kNativeDfhackNoRenderRefresh = std::numeric_limits<int64_t>::min();
 static std::atomic<int64_t> g_native_dfhack_render_refresh{kNativeDfhackNoRenderRefresh};
 static std::atomic<int16_t> g_native_dfhack_render_force{0};
+// The update thread can hold the private writer across an entire DFHack tick.
+// Publish the restored native header before entering that writer so display
+// never falls back to the preceding frame's swapped screen/viewport pointers.
+// This short handoff is independent of the private writer and translation locks.
+#ifdef _WIN32
+static std::mutex g_native_dfhack_display_source_mutex;
+static graphicst g_native_dfhack_display_source{};
+static bool g_native_dfhack_display_source_ready = false;
+
+static void native_dfhack_publish_display_source(const graphicst &graphics) noexcept {
+    std::lock_guard<std::mutex> lock(g_native_dfhack_display_source_mutex);
+    std::memcpy(&g_native_dfhack_display_source, &graphics, sizeof(graphicst));
+    g_native_dfhack_display_source_ready = true;
+}
+static bool native_dfhack_copy_display_source(graphicst &graphics) noexcept {
+    std::lock_guard<std::mutex> lock(g_native_dfhack_display_source_mutex);
+    if (!g_native_dfhack_display_source_ready) return false;
+    std::memcpy(&graphics, &g_native_dfhack_display_source, sizeof(graphicst));
+    return true;
+}
+static void native_dfhack_invalidate_display_source() noexcept {
+    std::lock_guard<std::mutex> lock(g_native_dfhack_display_source_mutex);
+    g_native_dfhack_display_source_ready = false;
+}
+#else
+static void native_dfhack_publish_display_source(const graphicst &) noexcept {}
+#endif
 static uint64_t g_native_dfhack_layer_retired = 0;
 static bool g_native_dfhack_layer_staging_pending = false;
 static bool g_native_dfhack_layer_commit_pending = false;
@@ -841,6 +868,7 @@ class NativeDfhackLayerWriteScope {
     void abort() noexcept {
         restore_native();
         native_dfhack_apply_render_schedule(*native_);
+        native_dfhack_publish_display_source(*native_);
         *slot_ = saved_;
         installed_ = false;
         active_ = previous_;
@@ -881,6 +909,7 @@ public:
             native_dfhack_apply_render_schedule(*native_);
             native_output_ = NativeDfhackOutputBinding::capture(*native_);
             std::memcpy(native_texblits_.data(), &native_->texblits, native_texblits_.size());
+            native_dfhack_publish_display_source(*native_);
             saved_ = *slot_;
             previous_ = active_; active_ = this; installed_ = true;
             bind_private();
@@ -892,6 +921,7 @@ public:
         save_private();
         restore_native();
         native_dfhack_apply_render_schedule(*native_);
+        native_dfhack_publish_display_source(*native_);
         *slot_ = saved_; active_ = previous_;
         // An actual render may be called from inside doUpdate. Its storage
         // cannot become committed while that outer write still selects it.
@@ -1042,6 +1072,8 @@ public:
                 scope_->native_output_ = NativeDfhackOutputBinding::capture(*scope_->native_);
                 std::memcpy(scope_->native_texblits_.data(), &scope_->native_->texblits,
                     scope_->native_texblits_.size());
+                if (scope_->native_layout_dirty_)
+                    native_dfhack_publish_display_source(*scope_->native_);
                 if (scope_->native_layout_dirty_ && !native_dfhack_prepare_staging())
                     throw std::bad_alloc();
                 scope_->bind_private();

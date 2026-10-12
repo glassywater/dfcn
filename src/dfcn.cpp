@@ -12946,6 +12946,21 @@ static std::optional<std::pair<size_t, size_t>> native_fps_counter_span(
     return std::nullopt;
 }
 
+static bool native_fps_counter_cell(const graphicst &gps, int x, int y,
+        bool top_layer) {
+    if (x < 0 || x >= gps.dimx || y < 0 || y >= gps.dimy || y < gps.dimy - 2)
+        return false;
+    const auto *screen = top_layer ? gps.screen_top : gps.screen;
+    if (!screen) return false;
+    std::string row(static_cast<size_t>(gps.dimx), ' ');
+    for (int column = 0; column < gps.dimx; ++column)
+        row[static_cast<size_t>(column)] = static_cast<char>(
+            screen[(static_cast<size_t>(column) * gps.dimy + y) * 8]);
+    const auto span = native_fps_counter_span(row);
+    return span && static_cast<size_t>(x) >= span->first &&
+        static_cast<size_t>(x) < span->second;
+}
+
 static std::optional<std::pair<int, int>> find_resolution_span(
     std::string_view row);
 static bool is_standalone_resolution_value(std::string_view text);
@@ -34081,6 +34096,16 @@ void Overlay::note_graphic_copy(SDL_Renderer *renderer, SDL_Texture *texture,
         dest->x >= grid_right || dest->y >= grid_bottom) {
         return;
     }
+    const int relative_x = dest->x - origin_x;
+    const int relative_y = dest->y - origin_y;
+    if (dest->w == tile_w && dest->h == tile_h && relative_x >= 0 && relative_y >= 0 &&
+            relative_x % tile_w == 0 && relative_y % tile_h == 0 &&
+            copy_right <= grid_right && copy_bottom <= grid_bottom) {
+        const int x = relative_x / tile_w, y = relative_y / tile_h;
+        const size_t tile = static_cast<size_t>(x) * gps_->dimy + y;
+        if (native_fps_counter_cell(*gps_, x, y, native_ui_top_layer_at(*gps_, tile)))
+            return;
+    }
     native_frame_drawn_ = true;
     const int clipped_left = std::max(dest->x, origin_x);
     const int clipped_top = std::max(dest->y, origin_y);
@@ -34096,8 +34121,6 @@ void Overlay::note_graphic_copy(SDL_Renderer *renderer, SDL_Texture *texture,
     // so a text-covered divider can reuse the same native skin at Present.
     // Lower panel backgrounds alone never establish a border sample. The
     // primary copy follows that background; the last matching copy owns it.
-    const int relative_x = dest->x - origin_x;
-    const int relative_y = dest->y - origin_y;
     if (renderer && texture && dest->w == tile_w && dest->h == tile_h &&
         relative_x >= 0 && relative_y >= 0 &&
         relative_x % tile_w == 0 && relative_y % tile_h == 0 &&
@@ -39261,6 +39284,10 @@ int Overlay::intercept_glyph_copy(SDL_Renderer *renderer, SDL_Texture *texture,
     // The sidebar producer owns its private text. Background glyphs beneath
     // it must not trigger the main overlay's immediate-row matching path.
     if (native_squads_background_cell_hidden(gps_, x, y))
+        return real_copy(renderer, texture, source, dest);
+    // The native footer updates independently of the page. Its copies do
+    // not retire the retained composite/occlusion evidence for other cells.
+    if (native_fps_counter_cell(*gps_, x, y, top_layer))
         return real_copy(renderer, texture, source, dest);
     native_frame_drawn_ = true;
     const size_t observed_cells =

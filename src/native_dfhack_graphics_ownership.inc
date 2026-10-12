@@ -31,6 +31,12 @@ public:
         if (!native_dfhack_display_inputs_active()) return;
         inputs_ = previous_ ? &nested_inputs_ : native_dfhack_display_inputs_snapshot();
         if (!inputs_) return;
+        const auto *preceding = previous_ ? previous_->inputs_ :
+            g_native_dfhack_render_read_ready ? inputs_ : nullptr;
+        const auto *refresh_buffer = preceding ? preceding->screentexpos_refresh_buffer : nullptr;
+        const int32_t refresh = preceding ? preceding->refresh_buffer_val : 0;
+        const int32_t dimx = preceding ? preceding->dimx : 0;
+        const int32_t dimy = preceding ? preceding->dimy : 0;
         {
             std::unique_lock<std::recursive_mutex> writer(
                 g_native_dfhack_layer_mutex, std::try_to_lock);
@@ -40,13 +46,20 @@ public:
                 if (!owner) { inputs_ = nullptr; return; }
                 native_dfhack_apply_render_schedule(*owner);
                 std::memcpy(inputs_, owner, sizeof(graphicst));
+                native_dfhack_publish_display_source(*owner);
             } else if (previous_ && previous_->inputs_) {
                 std::memcpy(inputs_, previous_->inputs_, sizeof(graphicst));
-            } else if (!g_native_dfhack_render_read_ready) {
+            } else if (!native_dfhack_copy_display_source(*inputs_)) {
                 inputs_ = nullptr;
                 return;
             }
         }
+        // Native display stamps its refresh buffer on the SDL thread. A
+        // producer publication may precede its delayed scalar feedback; keep
+        // the current stamp with the same buffer instead of replaying it.
+        if (preceding && inputs_->screentexpos_refresh_buffer == refresh_buffer &&
+                inputs_->dimx == dimx && inputs_->dimy == dimy)
+            inputs_->refresh_buffer_val = refresh;
         previous_selector_ = native_dfhack_display_inputs_select(inputs_);
         g_native_graphics_read_view = inputs_;
         renderer_grid_.emplace(renderer, *inputs_, false);
@@ -55,6 +68,9 @@ public:
     }
     void resume() {
         if (!inputs_ || committed_) return;
+        if (previous_ && previous_->inputs_ &&
+                previous_->inputs_->screentexpos_refresh_buffer == inputs_->screentexpos_refresh_buffer)
+            previous_->inputs_->refresh_buffer_val = inputs_->refresh_buffer_val;
         // A busy update never makes SDL wait for scheduling feedback. Its
         // next writer transaction drains these scalar requests itself.
         native_dfhack_queue_render_schedule(
@@ -118,6 +134,7 @@ struct NativeDfhackGraphicsOwnershipScope {
         g_native_dfhack_layer_commit_pending = false;
         g_native_dfhack_layer_page_revision.fetch_add(1, std::memory_order_release);
         g_native_dfhack_render_read_ready = false;
+        native_dfhack_invalidate_display_source();
         // The preceding view may contain pointers released by this native
         // resize. Leave the SDL reader unbound until display pins new arrays.
         (void)previous_read;
