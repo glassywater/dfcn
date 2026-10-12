@@ -407,12 +407,19 @@ std::optional<NativeTextCard> Overlay::capture_world_site_card(
             const auto panel = native_panel_interior(borders, *gps_,
                 x, x + 1, y);
             if (!panel) continue;
-            auto card = capture_panel_text_card(*panel, true);
+            // Both native branches draw shop glyphs one column before the
+            // caption. Use the actual text caller's x for the text interior;
+            // a graphical '[' or '/' is never part of the building name.
+            SDL_Rect text_panel = *panel;
+            text_panel.w -= x - text_panel.x;
+            text_panel.x = x;
+            if (text_panel.w <= 0) continue;
+            auto card = capture_panel_text_card(text_panel, true);
             if (!card) continue;
             bool owned = true;
             for (auto &row : card->rows) {
                 const auto source = world_site_owned_draw_for_row(*gps_, row,
-                    panel->x + panel->w);
+                    text_panel.x + text_panel.w);
                 if (!source) { owned = false; break; }
                 row.complete_source = source->complete_source.empty()
                     ? source->source : source->complete_source;

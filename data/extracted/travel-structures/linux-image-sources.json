@@ -1,0 +1,38 @@
+{
+  "path": "/home/lulika/.local/share/Steam/steamapps/common/Dwarf Fortress/dwarfort",
+  "identity": "ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c",
+  "functions": [
+    {
+      "role": "renderer",
+      "start_va": "0x12566e0",
+      "end_va": "0x1264bcd"
+    },
+    {
+      "role": "figure-reference",
+      "start_va": "0xa10320",
+      "end_va": "0xa10e58"
+    },
+    {
+      "role": "entity-name",
+      "start_va": "0xa278f0",
+      "end_va": "0xa27adb"
+    },
+    {
+      "role": "english-name",
+      "start_va": "0x12c58d0",
+      "end_va": "0x12c6e5c"
+    },
+    {
+      "role": "species-name",
+      "start_va": "0x12ae800",
+      "end_va": "0x12ae995"
+    },
+    {
+      "role": "figure-context",
+      "start_va": "0xada1a0",
+      "end_va": "0xada241"
+    }
+  ],
+  "draw_va": "0x425170",
+  "coordinate_base": "reference_rva = VA - 0x400000"
+}

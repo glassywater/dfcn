@@ -1,5 +1,11 @@
 Native source: Adventure travel map significant-structures panel
 
+Current Linux native reconstruction and full source inventories are in
+linux-decompiled-panel.txt and linux-*.{asm,tsv,json} beside this file.
+They include the complete ELF renderer, both structure branches, remote shop
+tails, all jump tables and dynamic figure/entity/name helper procedures.
+The PE source retained below describes the same caption grammar.
+
 Images read directly:
   reference PE:6a70a6d9:02711000
     D:/program/steam/steamapps/common/Dwarf Fortress/Dwarf Fortress.exe

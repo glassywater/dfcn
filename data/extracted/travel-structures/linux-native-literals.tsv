@@ -1,0 +1,362 @@
+role	instruction_va	operand_va	storage	source
+renderer	0x12570ba	inline	immediate	..
+renderer	0x1257fc3	0x213185a	rip-relative	Strongest Odor: 
+renderer	0x125936f	0x2131874	rip-relative	Hotkey: 
+renderer	0x1259a82	0x2130cbf	rip-relative	", """
+renderer	0x1259aea	0x2130cb8	rip-relative	""""
+renderer	0x125a5dc	0x21317eb	rip-relative	Abandoned house
+renderer	0x125a682	0x213180b	rip-relative	Ruined houses
+renderer	0x125accd	0x213185a	rip-relative	Strongest Odor: 
+renderer	0x125b90d	0x21317a6	rip-relative	Houses
+renderer	0x125b9b6	0x21317c8	rip-relative	Abandoned houses
+renderer	0x125ba5f	0x213180b	rip-relative	Ruined houses
+renderer	0x125bbad	0x213178b	rip-relative	Underground Stair
+renderer	0x125bc22	0x2131764	rip-relative	Underground Fortress
+renderer	0x125bc6a	0x2131779	rip-relative	Underground Farms
+renderer	0x125bd75	0x2131955	rip-relative	NW
+renderer	0x125bdbe	0x2131951	rip-relative	NE
+renderer	0x125bde2	0x213195d	rip-relative	SW
+renderer	0x125be0a	0x2131959	rip-relative	SE
+renderer	0x125c065	0x2131828	rip-relative	Ruined house
+renderer	0x125c61f	0x2131955	rip-relative	NW
+renderer	0x125c678	0x2131951	rip-relative	NE
+renderer	0x125c6a4	0x213195d	rip-relative	SW
+renderer	0x125c6d7	0x2131959	rip-relative	SE
+renderer	0x125c8af	0x2131828	rip-relative	Ruined house
+renderer	0x125c953	0x213168d	rip-relative	Barrow
+renderer	0x125ca42	0x20fc21f	rip-relative	Dormitory
+renderer	0x125cb25	0x20e17f7	rip-relative	 shrine
+renderer	0x125cb70	0x2131694	rip-relative	Dining Hall
+renderer	0x125ccdd	0x2212a37	rip-relative	Trenches
+renderer	0x125cd2c	0x2175554	rip-relative	Well
+renderer	0x125cea6	0x21316a0	rip-relative	Warehouse
+renderer	0x125d388	0x213151d	rip-relative	Civic Mound
+renderer	0x125d3c7	0x21316aa	rip-relative	Fortress Entrance
+renderer	0x125d407	0x21314f9	rip-relative	Counting Tree
+renderer	0x125d42a	0x2131507	rip-relative	Guild Tree
+renderer	0x125d44d	0x21314e0	rip-relative	Tavern Tree
+renderer	0x125d470	0x21314ec	rip-relative	Library Tree
+renderer	0x125d493	0x21314d4	rip-relative	Market Tree
+renderer	0x125d4b6	0x21314c7	rip-relative	Shaping Tree
+renderer	0x125d4d9	0x213173f	rip-relative	Cheese market
+renderer	0x125d4fc	0x21314ae	rip-relative	Tree House
+renderer	0x125d51f	0x21316ea	rip-relative	Imported food market
+renderer	0x125d542	0x21314b9	rip-relative	The Home Tree
+renderer	0x125d565	0x2131718	rip-relative	Meat market
+renderer	0x125d588	0x2131512	rip-relative	Tower Tree
+renderer	0x125d5ab	0x213174d	rip-relative	Processed goods market
+renderer	0x125d5ce	0x2131724	rip-relative	Fruit and vegetable market
+renderer	0x125d5f1	0x21316d4	rip-relative	Imported goods market
+renderer	0x125d614	0x21316ff	rip-relative	Imported clothing market
+renderer	0x125d6eb	0x21314b3	rip-relative	House
+renderer	0x125d792	0x21314a1	rip-relative	Sewer Access
+renderer	0x125dab4	0x21317a6	rip-relative	Houses
+renderer	0x125db5c	0x21317c8	rip-relative	Abandoned houses
+renderer	0x125dba4	0x213168d	rip-relative	Barrow
+renderer	0x125dc0d	0x20fc205	rip-relative	Dining hall
+renderer	0x125dd29	0x20fc21f	rip-relative	Dormitory
+renderer	0x125ddeb	0x213184f	rip-relative	Shrine of 
+renderer	0x125de87	0x2212a37	rip-relative	Trenches
+renderer	0x125ded6	0x2175554	rip-relative	Well
+renderer	0x125dff5	0x21316a0	rip-relative	Warehouse
+renderer	0x125e392	0x213151d	rip-relative	Civic Mound
+renderer	0x125e3cf	0x21316aa	rip-relative	Fortress Entrance
+renderer	0x125e4df	0x21314f9	rip-relative	Counting Tree
+renderer	0x125e502	0x21314ec	rip-relative	Library Tree
+renderer	0x125e525	0x21314e0	rip-relative	Tavern Tree
+renderer	0x125e548	0x213173f	rip-relative	Cheese market
+renderer	0x125e56b	0x21314ae	rip-relative	Tree House
+renderer	0x125e58e	0x21316ea	rip-relative	Imported food market
+renderer	0x125e5b1	0x2131507	rip-relative	Guild Tree
+renderer	0x125e5d4	0x2131718	rip-relative	Meat market
+renderer	0x125e5f7	0x2131512	rip-relative	Tower Tree
+renderer	0x125e61a	0x213174d	rip-relative	Processed goods market
+renderer	0x125e63d	0x21314c7	rip-relative	Shaping Tree
+renderer	0x125e660	0x2131724	rip-relative	Fruit and vegetable market
+renderer	0x125e683	0x21314d4	rip-relative	Market Tree
+renderer	0x125e6a6	0x21316d4	rip-relative	Imported goods market
+renderer	0x125e6c9	0x21314b9	rip-relative	The Home Tree
+renderer	0x125e6ec	0x21316ff	rip-relative	Imported clothing market
+renderer	0x125e882	0x21317eb	rip-relative	Abandoned house
+renderer	0x125e99c	0x2131835	rip-relative	No significant structures
+renderer	0x125ebf0	0x2130cbf	rip-relative	", """
+renderer	0x125ec29	0x20f3ae9	rip-relative	""", "
+renderer	0x125ecb7	0x20f7379	rip-relative	 
+renderer	0x125ed64	0x2130cbf	rip-relative	", """
+renderer	0x125edc9	0x2130cb8	rip-relative	""""
+renderer	0x125ee36	0x213186b	rip-relative	Unnamed 
+renderer	0x125efd8	0x21314a1	rip-relative	Sewer Access
+renderer	0x125f0fa	0x2212c1c	rip-relative	Tavern
+renderer	0x125f125	0x2212bd6	rip-relative	Counting House
+renderer	0x125f150	0x2212b3a	rip-relative	Tower
+renderer	0x125f173	0x21734d7	rip-relative	Death
+renderer	0x125f18f	0x2212c10	rip-relative	Library
+renderer	0x125f1ba	0x2212c05	rip-relative	Temple
+renderer	0x125f1e5	0x2212bf7	rip-relative	Mead Hall
+renderer	0x125f281	0x21734d7	rip-relative	Death
+renderer	0x125f29d	0x2212be9	rip-relative	Guildhall
+renderer	0x125f3f0	0x21317b5	rip-relative	Abandoned hillocks
+renderer	0x125f413	0x213179d	rip-relative	Hillocks
+renderer	0x125f436	0x21317fb	rip-relative	Ruined hillocks
+renderer	0x125f471	0x2131835	rip-relative	No significant structures
+renderer	0x125f52d	0x21314b3	rip-relative	House
+renderer	0x125f550	0x20fbe51	rip-relative	None
+renderer	0x125f564	0x20fbe51	rip-relative	None
+renderer	0x125f614	0x2212c1c	rip-relative	Tavern
+renderer	0x125f63f	0x2212bf7	rip-relative	Mead Hall
+renderer	0x125f66a	0x2212bd6	rip-relative	Counting House
+renderer	0x125f695	0x2212c10	rip-relative	Library
+renderer	0x125f705	0x2212be9	rip-relative	Guildhall
+renderer	0x125f728	0x21317b5	rip-relative	Abandoned hillocks
+renderer	0x125f753	0x2212b3a	rip-relative	Tower
+renderer	0x125f7bb	0x213179d	rip-relative	Hillocks
+renderer	0x125f7de	0x21317fb	rip-relative	Ruined hillocks
+renderer	0x125f809	0x2131545	rip-relative	Abandoned shop
+renderer	0x125f885	0x213132a	rip-relative	Temperature: 
+renderer	0x125f918	0x2131355	rip-relative	Hot
+renderer	0x125f962	0x2131363	rip-relative	Trees: 
+renderer	0x125f9fc	0x2131379	rip-relative	Woodland
+renderer	0x125fa46	0x2131393	rip-relative	Other Vegetation: 
+renderer	0x125fab8	0x20fbe51	rip-relative	None
+renderer	0x125fb02	0x21313b5	rip-relative	Surroundings: 
+renderer	0x125fb7e	0x21313cb	rip-relative	Calm
+renderer	0x125fcfb	0x213141b	rip-relative	Multiple Constructions
+renderer	0x125fe75	0x213144e	rip-relative	Stream: 
+renderer	0x125ffb5	0x2131457	rip-relative	Volcano: 
+renderer	0x12600fe	0x21313e2	rip-relative	Wilderness
+renderer	0x126012e	0x2131461	rip-relative	Mountain: 
+renderer	0x12601ed	0x21313a6	rip-relative	Moderate
+renderer	0x126032b	0x2130cb8	rip-relative	""""
+renderer	0x12603a0	0x2130cb8	rip-relative	""""
+renderer	0x1260539	0x20fbe51	rip-relative	None
+renderer	0x1260566	0x213136b	rip-relative	Scarce
+renderer	0x12605a7	0x2131402	rip-relative	Untamed Wilds
+renderer	0x12605d4	0x2131341	rip-relative	Cold
+renderer	0x1260601	0x2131338	rip-relative	Freezing
+renderer	0x12606ea	0x20e54f3	rip-relative	[C:4:0:1]
+renderer	0x126087f	0x213148b	rip-relative	 is rumored to be in 
+renderer	0x12608a9	0x2107edc	rip-relative	.
+renderer	0x1260914	0x21f67b2	rip-relative	[B]
+renderer	0x12609c3	0x2134b18	rip-relative	  [C:2:0:1]You have been ordered to kill this creature.
+renderer	0x12609f1	0x2134a80	rip-relative	  You should report the task as complete.
+renderer	0x1260a02	0x2134ab0	rip-relative	  [C:7:0:0]This is common knowledge where you are from.
+renderer	0x1260a16	0x2134ae8	rip-relative	  [C:5:0:1]This creature is known to be dead.
+renderer	0x1260c10	0x21316c7	rip-relative	Empty market
+renderer	0x1260c7b	0x21316bc	rip-relative	Shrine to 
+renderer	0x1260d1f	0x2212c05	rip-relative	Temple
+renderer	0x1260dad	0x2212c05	rip-relative	Temple
+renderer	0x1260dd8	0x2212c1c	rip-relative	Tavern
+renderer	0x1260e03	0x2212c10	rip-relative	Library
+renderer	0x1260e26	0x21317d9	rip-relative	Abandoned hillock
+renderer	0x1260e51	0x2212be9	rip-relative	Guildhall
+renderer	0x1260e74	0x2212b1b	rip-relative	Shrine
+renderer	0x1260e9f	0x2131545	rip-relative	Abandoned shop
+renderer	0x1260ecc	0x21317ad	rip-relative	Hillock
+renderer	0x1260ef7	0x2212b3a	rip-relative	Tower
+renderer	0x1260f36	0x21316c7	rip-relative	Empty market
+renderer	0x1260fae	0x2212bd6	rip-relative	Counting House
+renderer	0x1260fd9	0x2212bf7	rip-relative	Mead Hall
+renderer	0x1260ffc	0x21313d0	rip-relative	Sinister
+renderer	0x1261029	0x2131819	rip-relative	Ruined hillock
+renderer	0x1261060	0x21316bc	rip-relative	Shrine to 
+renderer	0x1261200	0x2131382	rip-relative	Heavily Forested
+renderer	0x126122d	0x2131372	rip-relative	Sparse
+renderer	0x1261272	0x20f7379	rip-relative	 
+renderer	0x12612f8	0x21313af	rip-relative	Thick
+renderer	0x1261325	0x213136b	rip-relative	Scarce
+renderer	0x1261352	0x21313c4	rip-relative	Serene
+renderer	0x126137f	0x2131346	rip-relative	Temperate
+renderer	0x12614b8	0x2212c05	rip-relative	Temple
+renderer	0x12614db	0x2212b3a	rip-relative	Tower
+renderer	0x12615ee	0x213146c	rip-relative	[C:3:0:1]You are a 
+renderer	0x1261634	0x2131480	rip-relative	 based in 
+renderer	0x1261658	0x20ca6e9	rip-relative	.[B]
+renderer	0x1261760	0x2212be9	rip-relative	Guildhall
+renderer	0x1261783	0x2131819	rip-relative	Ruined hillock
+renderer	0x12617c5	0x2212bd6	rip-relative	Counting House
+renderer	0x12617e8	0x2212c1c	rip-relative	Tavern
+renderer	0x1261813	0x2131536	rip-relative	Drinking Mound
+renderer	0x1261840	0x2212bf7	rip-relative	Mead Hall
+renderer	0x126186b	0x2131529	rip-relative	Castle Mound
+renderer	0x1261898	0x21317d9	rip-relative	Abandoned hillock
+renderer	0x126193f	0x2131359	rip-relative	Scorching
+renderer	0x126196c	0x2212bd6	rip-relative	Counting House
+renderer	0x126198f	0x2212b1b	rip-relative	Shrine
+renderer	0x12619b2	0x2212c10	rip-relative	Library
+renderer	0x12619d5	0x2131350	rip-relative	Warm
+renderer	0x1261a0a	0x2131536	rip-relative	Drinking Mound
+renderer	0x1261a3f	0x2212be9	rip-relative	Guildhall
+renderer	0x1261aa4	0x2212c05	rip-relative	Temple
+renderer	0x1261ac7	0x21317ad	rip-relative	Hillock
+renderer	0x1261aea	0x2212b3a	rip-relative	Tower
+renderer	0x1261b0d	0x2212c10	rip-relative	Library
+renderer	0x1261b38	0x2212c05	rip-relative	Temple
+renderer	0x1261b5b	0x2212be9	rip-relative	Guildhall
+renderer	0x1261b86	0x2212bd6	rip-relative	Counting House
+renderer	0x1261ba9	0x21313ed	rip-relative	Haunted
+renderer	0x1261bde	0x2212c1c	rip-relative	Tavern
+renderer	0x1261c59	0x2212b3a	rip-relative	Tower
+renderer	0x1261c84	0x2131529	rip-relative	Castle Mound
+renderer	0x1261cd7	0x2212bf7	rip-relative	Mead Hall
+renderer	0x1261d02	0x2212bf7	rip-relative	Mead Hall
+renderer	0x1261d25	0x2131410	rip-relative	Terrifying
+renderer	0x1261d52	0x2212c1c	rip-relative	Tavern
+renderer	0x1261d75	0x21313d9	rip-relative	Mirthful
+renderer	0x1261daa	0x2212c10	rip-relative	Library
+renderer	0x1261dcd	0x2131432	rip-relative	Major River: 
+renderer	0x1261e14	0x21313f5	rip-relative	Joyous Wilds
+renderer	0x1261eee	0x213162e	rip-relative	Metal craft shop
+renderer	0x1261f11	0x213161c	rip-relative	Armorsmith's shop
+renderer	0x1261f34	0x213160a	rip-relative	Blacksmith's shop
+renderer	0x1261f57	0x213159a	rip-relative	Woven clothing shop
+renderer	0x1261f7a	0x21315e9	rip-relative	Weaponsmith's shop
+renderer	0x1261f9d	0x2131554	rip-relative	Food imports
+renderer	0x1261fc0	0x21315fc	rip-relative	Bowyer's shop
+renderer	0x1261fe3	0x2131582	rip-relative	Cloth shop
+renderer	0x1262006	0x21315c4	rip-relative	Bone carver's shop
+renderer	0x1262029	0x2131678	rip-relative	Metal furniture shop
+renderer	0x126204c	0x21315d7	rip-relative	Gem cutter's shop
+renderer	0x126206f	0x213158d	rip-relative	Leather shop
+renderer	0x1262092	0x21315ae	rip-relative	Leather clothing shop
+renderer	0x12620b5	0x2131572	rip-relative	General imports
+renderer	0x12620d8	0x2131561	rip-relative	Clothing imports
+renderer	0x1262119	0x213162e	rip-relative	Metal craft shop
+renderer	0x126213c	0x213161c	rip-relative	Armorsmith's shop
+renderer	0x126217d	0x2131652	rip-relative	Carpenter's shop
+renderer	0x12621a0	0x213163f	rip-relative	Leather goods shop
+renderer	0x12621c3	0x2131663	rip-relative	Stone furniture shop
+renderer	0x12623a8	0x213159a	rip-relative	Woven clothing shop
+renderer	0x12623cb	0x213158d	rip-relative	Leather shop
+renderer	0x12623ee	0x2131582	rip-relative	Cloth shop
+renderer	0x1262411	0x2131561	rip-relative	Clothing imports
+renderer	0x1262434	0x2131554	rip-relative	Food imports
+renderer	0x1262485	0x2134a50	rip-relative	[C:2:0:1]You have been ordered to drive 
+renderer	0x12624b9	0x20e2431	rip-relative	 from 
+renderer	0x12624dd	0x2107edc	rip-relative	.
+renderer	0x1262552	0x2134a80	rip-relative	  You should report the task as complete.
+renderer	0x1262561	0x21f67b2	rip-relative	[B]
+renderer	0x12625ff	0x21315e9	rip-relative	Weaponsmith's shop
+renderer	0x1262622	0x21315d7	rip-relative	Gem cutter's shop
+renderer	0x1262645	0x21315c4	rip-relative	Bone carver's shop
+renderer	0x1262668	0x21315ae	rip-relative	Leather clothing shop
+renderer	0x126268b	0x213160a	rip-relative	Blacksmith's shop
+renderer	0x12626ae	0x2131678	rip-relative	Metal furniture shop
+renderer	0x12626d1	0x21315fc	rip-relative	Bowyer's shop
+renderer	0x12626f4	0x2131572	rip-relative	General imports
+renderer	0x126275d	0x2131663	rip-relative	Stone furniture shop
+renderer	0x1262887	0x213187d	rip-relative	Brook: 
+renderer	0x126296a	0x2131440	rip-relative	Minor River: 
+renderer	0x126298d	0x2131438	rip-relative	River: 
+renderer	0x12629b0	0x21312a6	rip-relative	Tropical Freshwater River
+renderer	0x1262a00	0x2131125	rip-relative	Arctic Ocean
+renderer	0x1262a46	0x2131115	rip-relative	Temperate Ocean
+renderer	0x1262a93	0x2131106	rip-relative	Tropical Ocean
+renderer	0x1262ae0	0x21310fa	rip-relative	Sand Desert
+renderer	0x1262b2d	0x21310ea	rip-relative	Rocky Wasteland
+renderer	0x1262b7a	0x2131652	rip-relative	Carpenter's shop
+renderer	0x1262bc0	0x2131304	rip-relative	Subterranean Chasm
+renderer	0x1262c0d	0x21312f1	rip-relative	Subterranean Water
+renderer	0x1262c5a	0x21312d8	rip-relative	Tropical Saltwater River
+renderer	0x1262ca7	0x2130fec	rip-relative	Temperate Conifer Forest
+renderer	0x1262d5c	0x2134a50	rip-relative	[C:2:0:1]You have been ordered to drive 
+renderer	0x1262d90	0x20e2431	rip-relative	 from 
+renderer	0x1262db4	0x2107edc	rip-relative	.
+renderer	0x1262dff	0x2134a80	rip-relative	  You should report the task as complete.
+renderer	0x1262e0e	0x21f67b2	rip-relative	[B]
+renderer	0x1263109	0x21310aa	rip-relative	Tropical Grassland
+renderer	0x1263156	0x2131096	rip-relative	Temperate Shrubland
+renderer	0x12631a3	0x2130f3c	rip-relative	Temperate Freshwater Marsh
+renderer	0x12631f0	0x21310ce	rip-relative	Tropical Shrubland
+renderer	0x126323d	0x2130fa4	rip-relative	Mangrove Swamp
+renderer	0x126328a	0x2131055	rip-relative	Tropical Moist Brdlf Forst
+renderer	0x12632d7	0x2212d60	rip-relative	Glacier
+renderer	0x1263324	0x21310e1	rip-relative	Badlands
+renderer	0x1263371	0x2130fcd	rip-relative	Tropical Saltwater Marsh
+renderer	0x12633be	0x2131084	rip-relative	Temperate Savanna
+renderer	0x126340b	0x2130f07	rip-relative	Temperate Freshwater Swamp
+renderer	0x1263458	0x21310bd	rip-relative	Tropical Savanna
+renderer	0x12634a5	0x2130f71	rip-relative	Tropical Freshwater Swamp
+renderer	0x12634f2	0x2131020	rip-relative	Tropical Coniferous Forest
+renderer	0x126353f	0x2131317	rip-relative	Subterranean Magma
+renderer	0x126358c	0x2131070	rip-relative	Temperate Grassland
+renderer	0x12635d9	0x2130fe6	rip-relative	Taiga
+renderer	0x1263626	0x213103b	rip-relative	Tropical Dry Brdlf Forest
+renderer	0x1263673	0x2130f22	rip-relative	Temperate Saltwater Swamp
+renderer	0x12636c0	0x2131005	rip-relative	Temperate Broadleaf Forest
+renderer	0x126370d	0x2130f8b	rip-relative	Tropical Saltwater Swamp
+renderer	0x126375a	0x2212d1a	rip-relative	Mountain
+renderer	0x12637a7	0x2130fb3	rip-relative	Tropical Freshwater Marsh
+renderer	0x12637f4	0x2212d74	rip-relative	Tundra
+renderer	0x1263841	0x2130f57	rip-relative	Temperate Saltwater Marsh
+renderer	0x126388e	0x21311df	rip-relative	Temperate Brackish Lake
+renderer	0x12638db	0x213163f	rip-relative	Leather goods shop
+renderer	0x12638fe	0x21312c0	rip-relative	Tropical Brackish River
+renderer	0x126394b	0x2131240	rip-relative	Tropical Saltwater Lake
+renderer	0x1263998	0x213117d	rip-relative	Tropical Freshwater Pool
+renderer	0x12639e5	0x2131273	rip-relative	Temperate Brackish River
+renderer	0x1263a32	0x21311ad	rip-relative	Tropical Saltwater Pool
+renderer	0x1263a7f	0x2131210	rip-relative	Tropical Freshwater Lake
+renderer	0x1263acc	0x213114c	rip-relative	Temperate Brackish Pool
+renderer	0x1263b19	0x213128c	rip-relative	Temperate Saltwater River
+renderer	0x1263b66	0x21311c5	rip-relative	Temperate Freshwater Lake
+renderer	0x1263bb3	0x2131229	rip-relative	Tropical Brackish Lake
+renderer	0x1263c00	0x2131164	rip-relative	Temperate Saltwater Pool
+renderer	0x1263c4d	0x2131258	rip-relative	Temperate Freshwater River
+renderer	0x1263c9a	0x2131196	rip-relative	Tropical Brackish Pool
+renderer	0x1263ce7	0x21311f7	rip-relative	Temperate Saltwater Lake
+renderer	0x1263d34	0x2131132	rip-relative	Temperate Freshwater Pool
+figure-reference	0xa103bb	0x20df37d	rip-relative	an unknown creature
+figure-reference	0xa103ec	0x2131973	rip-relative	's
+figure-reference	0xa104f8	0x20df34c	rip-relative	an unidentified creature
+figure-reference	0xa106e6	0x21ba050	rip-relative	the 
+figure-reference	0xa10731	0x20df374	rip-relative	ghostly 
+figure-reference	0xa10789	0x20f7379	rip-relative	 
+figure-reference	0xa10898	0x20ca83d	rip-relative	[LPAGE:HF:
+figure-reference	0xa108b5	0x21432dc	rip-relative	]
+figure-reference	0xa10908	0x20df343	rip-relative	Nameless
+figure-reference	0xa10997	0x2131973	rip-relative	's
+figure-reference	0xa10a26	0x216072a	rip-relative	I
+figure-reference	0xa10a70	0x20ca6cc	rip-relative	[/LPAGE]
+figure-reference	0xa10a92	0x22182d4	rip-relative	a 
+figure-reference	0xa10add	0x20df374	rip-relative	ghostly 
+figure-reference	0xa10b96	0x20f7379	rip-relative	 
+figure-reference	0xa10bbf	0x20df36c	rip-relative	zombie 
+figure-reference	0xa10bd3	0x21ba04f	rip-relative	 the 
+figure-reference	0xa10c1e	0x20df374	rip-relative	ghostly 
+figure-reference	0xa10cc7	0x219d577	rip-relative	interrogator
+figure-reference	0xa10cea	0x2204ec0	rip-relative	subject
+figure-reference	0xa10cf6	0x21ba050	rip-relative	the 
+figure-reference	0xa10d37	0x214db24	rip-relative	my
+figure-reference	0xa10d4d	0x21baa4d	rip-relative	me
+figure-reference	0xa10d63	0x20df365	rip-relative	myself
+figure-reference	0xa10daa	0x20df36c	rip-relative	zombie 
+figure-reference	0xa10dbe	0x20f7379	rip-relative	 
+figure-reference	0xa10dea	0x20df36c	rip-relative	zombie 
+entity-name	0xa27a28	0x20ca6cc	rip-relative	[/LPAGE]
+entity-name	0xa27a53	0x20ca91e	rip-relative	[LPAGE:ENT:
+entity-name	0xa27a6c	0x21432dc	rip-relative	]
+entity-name	0xa27a97	0x20e1008	rip-relative	an unknown civilization
+english-name	0x12c5cc7	inline	immediate	the 
+english-name	0x12c5dc9	inline	immediate	the 
+english-name	0x12c5ee0	inline	immediate	the 
+english-name	0x12c6071	inline	immediate	the 
+english-name	0x12c61c6	inline	immediate	of
+english-name	0x12c6406	inline	immediate	Of
+english-name	0x12c64e8	0x20fc8f7	rip-relative	The 
+english-name	0x12c6878	0x21d54c2	rip-relative	-
+english-name	0x12c69a8	0x21ba050	rip-relative	the 
+english-name	0x12c6a9e	0x21ba050	rip-relative	the 
+english-name	0x12c6abe	0x21ba050	rip-relative	the 
+english-name	0x12c6aee	0x20f7379	rip-relative	 
+english-name	0x12c6b5e	0x20f7379	rip-relative	 
+english-name	0x12c6b80	0x20f7379	rip-relative	 
+english-name	0x12c6ba6	0x20f7379	rip-relative	 
+english-name	0x12c6bce	0x21ba050	rip-relative	the 
+english-name	0x12c6bef	0x21138f3	rip-relative	of 
+english-name	0x12c6c0d	0x213bd94	rip-relative	Of 
+english-name	0x12c6c50	0x20f7379	rip-relative	 
+english-name	0x12c6c79	0x20fc8f7	rip-relative	The 
+english-name	0x12c6c8d	0x20fc8f7	rip-relative	The 
+english-name	0x12c6ce3	0x20f7379	rip-relative	 
+english-name	0x12c6d02	0x20f7379	rip-relative	 
+english-name	0x12c6d35	0x20fc8f7	rip-relative	The 
