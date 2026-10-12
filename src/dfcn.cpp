@@ -561,6 +561,7 @@ struct LegendsTextFlow {
     // Display fragments may split one long inscription or link across rows.
     std::vector<LegendsTextPiece> display_pieces;
     std::vector<std::pair<int, std::string>> source_rows;
+    SDL_Rect native_clip{};
     // The complete native paragraph owns layout height. Scrolling selects
     // a window of that stable layout without fitting the whole event into
     // only its currently visible rows.
@@ -17429,6 +17430,11 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
 #include "world_mission_body.inc"
     append_world_spoils_items(screen_rows, result, untranslated_help_rows,
         only_y, screen_override);
+    // Native Legends records own complete dated paragraphs and colored
+    // collection links before any message or character reader claims words.
+    const bool native_legends_body = native_history_legends_page();
+    if (native_legends_body)
+        append_legends_detail_matches(screen_rows, result, only_y, screen_override);
     append_native_message_paragraphs(screen_rows, result, untranslated_help_rows,
         only_y, screen_override, true);
     retain_native_text_cells(screen_rows, map_text_cells);
@@ -19170,7 +19176,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     // native history records before screen-inferred UI messages. A catalog
     // action such as "Dance" inside an entity title must not erase part of
     // that record and break its translation, color flow or native link span.
-    if (!announcement_panel_only)
+    if (!announcement_panel_only && !native_legends_body)
         append_legends_detail_matches(screen_rows, result, only_y, screen_override);
 
     context_detail.checkpoint(RenderTimingStage::Saves);
@@ -38611,6 +38617,9 @@ void Overlay::layout_multiline_matches() {
     if (!gps_ || !face_ || prepared_matches_.empty() ||
         gps_->dimx <= 0 || gps_->dimy <= 0 ||
         gps_->tile_pixel_x <= 0 || gps_->tile_pixel_y <= 0) return;
+    // Richbox control words separate Legends events. The generic proximity
+    // grouper cannot join same-colored dates across those native boundaries.
+    if (native_history_legends_page()) return;
 
     // Buttons and work-order control fields own their native text rows.
     // Exclude them from BOTH same-row coalescing and vertical prose grouping,
@@ -40168,6 +40177,10 @@ void Overlay::draw_match(SDL_Renderer *renderer, const Match &match) {
         part.native_split_duplicate = false;
         part.layout_fixed_baseline = true;
         part.layout_pixel_y = 0;
+        part.layout_reflowed_paragraph = true;
+        part.layout_native_clip = flow.native_clip;
+        part.layout_left = true;
+        part.layout_glyph_foreground_rgb.clear();
         part.source.clear();
         part.length = 1;
         part.layout_font_pixels = flow.font_pixels;
