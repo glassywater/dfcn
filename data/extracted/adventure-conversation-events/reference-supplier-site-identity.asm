@@ -1,4 +1,5 @@
 ; reference PE:6a70a6d9:02711000; site-identity 0x140b93930..0x140b93a8a
+; native unwind regions: 0x140b93930..0x140b93a8a
 0x140b93930: mov    QWORD PTR [rsp+0x8],rbx
 0x140b93935: mov    QWORD PTR [rsp+0x20],rsi
 0x140b9393a: push   rdi

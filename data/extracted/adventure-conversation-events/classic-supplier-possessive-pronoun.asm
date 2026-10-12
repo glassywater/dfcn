@@ -1,4 +1,5 @@
 ; classic PE:6a70b91c:0270a000; possessive-pronoun 0x140aa18d0..0x140aa193e
+; native unwind regions: 0x140aa18d0..0x140aa193e
 0x140aa18d0: mov    QWORD PTR [rsp+0x8],rbx
 0x140aa18d5: push   rdi
 0x140aa18d6: sub    rsp,0x20

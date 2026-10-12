@@ -19212,6 +19212,7 @@ felt no avarice and refused, despite being unaffected by the comments.	虽然没
 felt no loyalty to {a} and agreed, despite lack of loyalty toward {a}.	虽然不忠于{a2}，但不忠于{a1}，答应了。	ht
 had no respect for {a} and agreed, despite lack of loyalty toward {a}.	虽然不忠于{a2}，但不尊重{a1}，答应了。	ht
 hated {a} and refused, despite being unswayed by the emotional appeal.	虽然不为动情的劝说所动，但憎恨{a1}，拒绝了对方。	ht
+incompletely performing the rites of in an improperly dedicated temple	在供奉对象不当的神庙中未能完整举行仪式	wi
 lacked a desire for vengeance and refused, despite disdaining the law.	虽然不把法律放在眼里，但无意复仇，拒绝了对方。	h
 lacked a desire for vengeance and refused, despite feeling no avarice.	虽然没有贪念，但无意复仇，拒绝了对方。	h
 lacked a desire for vengeance and refused, despite feelings of vanity.	虽然有虚荣心，但无意复仇，拒绝了对方。	h
@@ -24063,6 +24064,7 @@ had no respect for {a} and agreed, despite feelings of greed.	虽然有贪念，
 had no respect for {a} and refused, despite fearing of death.	虽然惧怕死亡，但不尊重{a1}，拒绝了对方。	ht
 hated {a} and agreed, despite a lack of desire for vengeance.	虽然无意复仇，但憎恨{a1}，答应了。	ht
 hated {a} and refused, despite being willing to accept death.	虽然愿意接受死亡，但憎恨{a1}，拒绝了对方。	ht
+incompletely performing the rites of in an undedicated temple	在未指定供奉对象的神庙中未能完整举行仪式	wi
 infected {a} with a contagious ghoulish condition during {e}.	在{e1}期间使{a1}染上了具有传染性的食尸鬼病症。	ht
 infected {a} with a contagious ghoulish condition within {p}.	在{p1}使{a1}染上了具有传染性的食尸鬼病症。	ht
 loathed abuses of power and refused, despite distrust of {a}.	虽然不信任{a1}，但厌恶滥用权力，拒绝了对方。	ht
@@ -27227,6 +27229,7 @@ a work was authored by {n} in {p} in order to glorify {a}	在{p1}，{n1}为了�
 accepted in admiration of power, despite distrust of {a}.	虽然不信任{a1}，但崇拜权力，因此答应了。	ht
 accepted in admiration of power, despite valuing the law.	虽然尊重法律，但崇拜权力，因此答应了。	h
 accepted out of loyalty to {a}, despite fearing of death.	虽然惧怕死亡，但忠于{a1}，因此答应了。	ht
+an agreement to construct a guildhall for being abandoned	建立行会大厅的协议被放弃	wi
 an untitled work was authored by {n} in {p} in the wilds.	在荒野中，{n1}在{p1}撰写了一部无题作品。	ht
 and attached a masterful instrument piece to a {i} at {p}	并在{p1}为{i1}安装了杰作级的乐器部件	ht
 and attached a masterful instrument piece to a {i} in {p}	并在{p1}为{i1}安装了杰作级的乐器部件	ht
@@ -29231,6 +29234,7 @@ accepted out of loyalty to {a}, despite respect of {a}.	虽然尊重{a2}，但�
 after performing the rites of {n} in a dedicated temple	在专门供奉的神殿内为{n1}举行仪式后	ht
 agreed for love of {a}, despite a desire for vengeance.	虽然渴望复仇，但爱着{a1}，因此答应了。	ht
 agreed for love of {a}, despite lack of respect of {a}.	虽然不尊重{a2}，但爱着{a1}，因此答应了。	ht
+an agreement to construct a guildhall for was abandoned	建立行会大厅的协议被放弃	wi
 an untitled work was authored by {n} in {p} during {e}.	在{e1}期间，{n1}在{p1}撰写了一部无题作品。	ht
 an untitled work was authored by {n} in {p} within {p}.	在{p2}，{n1}在{p1}撰写了一部无题作品。	ht
 and attached a masterful instrument piece in the wilds.	并在荒野中安装了杰作级的乐器部件。	h
@@ -30266,6 +30270,7 @@ accepted in admiration of power, despite trust of {a}.	虽然信任{a1}，但崇
 accepted out of loyalty to {a}, despite hatred of {a}.	虽然憎恨{a2}，但忠于{a1}，因此答应了。	ht
 addition of a masterful instrument piece in the wilds.	在荒野中，安装杰作级的乐器部件。	hEi
 agreed for love of {a}, despite loathing the powerful.	虽然厌恶权贵，但爱着{a1}，因此答应了。	ht
+an agreement to construct a temple for being abandoned	建立神庙的协议被放弃	wi
 an insurrection against {p} began in {p} in the wilds.	在荒野中，{p2}爆发了反抗{p1}的起义。	ht
 an untitled work was authored by {n} in {p} during {e}	在{e1}期间，{n1}在{p1}撰写了一部无题作品	ht
 an untitled work was authored by {n} in {p} within {p}	在{p2}，{n1}在{p1}撰写了一部无题作品	ht
@@ -32584,6 +32589,7 @@ accepted out of loyalty to {a}, despite love of {a}.	虽然爱着{a2}，但忠�
 addition of a masterful instrument piece during {e}.	在{e1}期间，安装杰作级的乐器部件。	htEi
 addition of a masterful instrument piece within {p}.	在{p1}，安装杰作级的乐器部件。	htEi
 agreed for love of {a}, despite admiration of power.	虽然崇拜权力，但爱着{a1}，因此答应了。	ht
+an agreement to construct a temple for was abandoned	建立神庙的协议被放弃	wi
 an insurrection against {p} began in {p} during {e}.	在{e1}期间，{p2}爆发了反抗{p1}的起义。	ht
 an insurrection against {p} began in {p} within {p}.	在{p3}，{p2}爆发了反抗{p1}的起义。	ht
 and accepted an offer of peace from {p} in the wilds	并在荒野中接受了{p1}的和平提议	ht
@@ -38141,6 +38147,7 @@ surveying by triangulation for military purposes	用于军事目的的三角测�
 terrible visit of merchants from {p} during {e}.	在{e1}期间，来自{p1}的商人来访，结果糟糕。	htEi
 terrible visit of merchants from {p} within {p}.	在{p2}，来自{p1}的商人来访，结果糟糕。	htEi
 the abandonment of {a} and {a} settlement of {p}	{a1}及{a2}的{p1}聚落的废弃	htEi
+the acceptance of a petition for a guildhall for	建立行会大厅的请愿获准	wi
 the acceptance of {a} as a member of {p} at {p}.	在{p2}，{p1}接纳{a1}成为成员。	htEi
 the acceptance of {a} as a member of {p} in {d}.	{d1}年的{p1}接纳{a1}成为成员。	htEi
 the acceptance of {a} as a member of {p} in {p}.	在{p2}，{p1}接纳{a1}成为成员。	htEi
@@ -39666,6 +39673,7 @@ the promise by {a} to {a} of a position in {p}.	{a1}向{a2}许诺{p1}的职位�
 the purchase of {s} equipment by {a} during {e}	在{e1}期间，{a1}对{s1}装备的购置	htEi
 the purchase of {s} equipment by {a} within {p}	在{p1}，{a1}对{s1}装备的购置	htEi
 the purchased of equipment by {a} in the wilds.	在荒野中，{a1}购买装备。	htEi
+the rejection of a petition for a guildhall for	建立行会大厅的请愿被拒绝	wi
 the relationship between the moon and the tides	月亮与潮汐的关系	h
 the removal of the seat of power of {a} at {p}.	在{p1}，{a1}不再以此为统治中心。	htEi
 the removal of the seat of power of {a} in {d}.	{d1}年的{a1}不再以此为统治中心。	htEi
@@ -42538,6 +42546,7 @@ methods of empirical observation in astronomy	天文学中的实证观测方法	
 money between currency types in this fashion.	兑换不同种类的货币。	hq
 outmatched {a} with a cunning plan during {e}	在{e1}期间以巧妙的计划胜过了{a1}	ht
 outmatched {a} with a cunning plan within {p}	在{p1}以巧妙的计划胜过了{a1}	ht
+performing the rites of in a dedicated temple	在专用神庙中举行仪式	wi
 profitable visit of merchants from {p} at {p}	在{p2}，来自{p1}的商人来访，获利丰厚	htEi
 profitable visit of merchants from {p} in {d}	{d1}年的来自{p1}的商人来访，获利丰厚	htEi
 profitable visit of merchants from {p} in {p}	在{p2}，来自{p1}的商人来访，获利丰厚	htEi
@@ -42558,6 +42567,7 @@ stopped being the mother of {n} in the wilds.	在荒野中不再是{n1}的母亲
 stopped being the parent of {n} in the wilds.	在荒野中不再是{n1}的父母。	ht
 succumbed to vanity, despite distrust of {a}.	虽然不信任{a1}，但被虚荣心左右了。	ht
 succumbed to vanity, despite valuing the law.	虽然尊重法律，但被虚荣心左右了。	h
+the acceptance of a petition for a temple for	建立神庙的请愿获准	wi
 the acceptance of an offer of peace from {p}.	接受{p1}的和平提议。	htEi
 the acquisition of a copy of the original {b}	获得原本《{b1}》的抄本	htEi
 the acquisition of a copy of the original {p}	获得原本{p1}的抄本	htEi
@@ -43834,6 +43844,7 @@ You have selected the largest possible area.	你已选中允许的最大区域�
 You receive {i} to conclude the transaction.	你收到了{i1}，完成了交易。	hPt
 You will best serve by finishing your quest.	完成你的任务，就是你能尽的最大一份力。	hP
 Your selected civilization is dead or dying.	你选择的政权已经灭亡或濒临灭亡。	l
+a petition for a guildhall for being ignored	建立行会大厅的请愿被忽视	wi
 a work was authored by {n} in {p} during {e}	在{e1}期间，{n1}在{p1}撰写了一部作品	ht
 a work was authored by {n} in {p} within {p}	在{p2}，{n1}在{p1}撰写了一部作品	ht
 abandoned the settlement of {p} in the wilds	在荒野中放弃了{p1}聚落	ht
@@ -44331,6 +44342,7 @@ the questionable judgment of {a} during {e}.	在{e1}期间，{a1}的判断失常
 the questionable judgment of {a} within {p}.	在{p1}，{a1}的判断失常。	htEi
 the rampage of the forces of {p} during {e}.	在{e1}期间，{p1}部队的肆虐。	htEi
 the rampage of the forces of {p} within {p}.	在{p2}，{p1}部队的肆虐。	htEi
+the rejection of a petition for a temple for	建立神庙的请愿被拒绝	wi
 the rejection of an offer of peace from {p}.	拒绝{p1}的和平提议。	htEi
 the rejection of contact by {a} in the wilds	在荒野中，{a1}拒绝接触	htEi
 the replacement of {p} with {p} in the wilds	在荒野中，以{p2}取代{p1}	htEi
@@ -47108,6 +47120,7 @@ You've located a {s} above and to the {s}!	你发现上方的{s2}有一处{s1}�
 You've located a {s} below and to the {s}!	你发现下方的{s2}有一处{s1}！	hPt
 Your wanderings have led you to {n}, a {s}	漫游使你来到{n}（{s}）	atl
 a formula which solves quadratic equations	二次方程的求根公式	h
+a petition for a guildhall for was ignored	建立行会大厅的请愿被忽视	wi
 a scuffle between {a} and {a} in the wilds	在荒野中，{a1}与{a2}的扭打	htEi
 abandoned the settlement of {p} during {e}	在{e1}期间放弃了{p1}聚落	ht
 abandoned the settlement of {p} within {p}	在{p2}放弃了{p1}聚落	ht
@@ -48932,6 +48945,7 @@ You must think you're really frightening.	你肯定觉得自己很吓人。	hP
 You prepare to shoot {n} with {s} in {s}.	你准备朝{n1}发射装在{s2}里的{s1}。	hPt
 You will sleep as necessary for {u} hour.	你将在接下来的{u1}小时内按需睡觉。	hPt
 a competition involving {b} in the wilds.	在荒野中，以《{b1}》为内容的比赛。	htEi
+a petition for a temple for being ignored	建立神庙的请愿被忽视	wi
 a scuffle between {a} and {a} during {e}.	在{e1}期间，{a1}与{a2}的扭打。	htEi
 a scuffle between {a} and {a} within {p}.	在{p1}，{a1}与{a2}的扭打。	htEi
 a table of chord lengths indexed by angle	按角度编排的弦长表	h
@@ -52512,6 +52526,7 @@ You will sleep as necessary until dawn.	你将在黎明到来前按需睡觉。	
 a competition involving {b} during {e}.	在{e1}期间，以《{b1}》为内容的比赛。	htEi
 a competition involving {b} within {p}.	在{p1}，以《{b1}》为内容的比赛。	htEi
 a hundred or more people were expelled.	至少一百人遭到驱逐。	h
+a petition for a temple for was ignored	建立神庙的请愿被忽视	wi
 a thousand or more people were expelled	至少一千人遭到驱逐	h
 a work was authored by {n} in the wilds	在荒野中，{n1}撰写了一部作品	ht
 a {i} throwing competition in the wilds	在荒野中，{i1}投掷比赛	htEi
@@ -54955,6 +54970,7 @@ had the fortifications improved of {p}	改善了{p1}的防御工事	ht
 hanging from a {s} of the skins of {a}	将{a1}的皮挂在{s1}上	htEi
 hatched a stunning strategy during {e}	在{e1}期间想出了惊人的战略	ht
 hatched a stunning strategy within {p}	在{p1}想出了惊人的战略	ht
+having tomb after gaining another year	又长了一岁，拥有陵墓	wi
 held a dance competition in the wilds.	在荒野中举行了舞蹈比赛。	h
 held a deep hatred of {n} in the wilds	在荒野中深深仇恨着{n1}	ht
 held a music competition in the wilds.	在荒野中举行了音乐比赛。	h
@@ -58892,6 +58908,8 @@ being forced to drink ichorous water	被迫喝脓水	wi
 being forced to drink purulent water	被迫喝混有脓液的水	wi
 being kept from alcohol for too long	太久没有喝酒	wi
 being swayed by the emotional appeal	被动情的劝说打动	h
+being unable to advance the study of	未能推进研究	wi
+being unable to pray to for too long	太久未能祷告	wi
 bonds between members of a community	社群成员之间的纽带	h
 burned up in a magma mist during {e}	在{e1}期间在岩浆雾中烧死了	ht
 burned up in a magma mist within {p}	在{p1}在岩浆雾中烧死了	ht
@@ -58916,6 +58934,7 @@ changed from a {s} into a {s} in {p}	在{p1}从{s1}变成了{s2}	ht
 changed {a} from an {s} into an {s}.	将{a1}从{s1}变成了{s2}。	ht
 changed {a} into a {s} in the wilds.	在荒野中将{a1}变成了{s1}。	ht
 changed {a} into an {s} in the wilds	在荒野中将{a1}变成了{s1}	ht
+communing with in a dedicated temple	在专用神庙中与神祇交流	wi
 competition as reasonably important.	竞争相当重要。	l
 costly tribute delivery in the wilds	在荒野中，代价高昂的贡品运送	hEi
 costly visit of merchants during {e}	在{e1}期间，代价高昂的商人来访	htEi
@@ -59141,6 +59160,7 @@ the enslavement of {a} by {a} at {p}	在{p1}，{a2}对{a1}的奴役	htEi
 the enslavement of {a} by {a} in {d}	{d1}年的{a2}对{a1}的奴役	htEi
 the enslavement of {a} by {a} in {p}	在{p1}，{a2}对{a1}的奴役	htEi
 the enslavement of {a} in the wilds.	在荒野中，{a1}遭受奴役。	htEi
+the establishment of a guildhall for	建立行会大厅	wi
 the establishment of landed nobility	领地贵族的设立	h
 the false friendship of {a} and {a}.	{a1}与{a2}的虚假友谊。	htEi
 the fatal illness of {a} during {e}.	在{e1}期间，{a1}的致命疾病。	htEi
@@ -65716,6 +65736,7 @@ the enslavement of {a} within {p}	在{p1}，{a1}遭受奴役	htEi
 the entombment of {a} during {e}.	在{e1}期间，{a1}的安葬。	htEi
 the entombment of {a} within {p}.	在{p1}，{a1}的安葬。	htEi
 the escape from {p} in the wilds.	在荒野中，逃出{p1}。	htEi
+the establishment of a temple for	建立神庙	wi
 the execution of {a} in the wilds	在荒野中，{a1}被处决	htEi
 the expulsion of {a} in the wilds	在荒野中，对{a1}的驱逐	htEi
 the fair conclusion of {s} at {p}	在{p1}，{s1}的尚可结果	htEi
@@ -67739,6 +67760,7 @@ made a journey to {p} within {p}	在{p2}前往了{p1}	ht
 made contact with {p} during {e}	在{e1}期间与{p1}建立了联系	ht
 made contact with {p} within {p}	在{p2}与{p1}建立了联系	ht
 made peace with {p} in the wilds	在荒野中与{p1}讲和了	ht
+making a breakthrough concerning	取得研究突破	wi
 masterful gambling of {a} at {p}	在{p1}，{a1}精湛的赌博	htEi
 masterful gambling of {a} in {d}	{d1}年的{a1}精湛的赌博	htEi
 masterful gambling of {a} in {p}	在{p1}，{a1}精湛的赌博	htEi
@@ -72526,6 +72548,7 @@ rampaged throughout {p} at {p}	在{p2}在{p1}肆虐	ht
 rampaged throughout {p} in {p}	在{p2}在{p1}肆虐	ht
 ransomed {n} to {a} during {e}	在{e1}期间收取赎金后将{n1}交还给了{a1}	ht
 ransomed {n} to {a} within {p}	在{p1}收取赎金后将{n1}交还给了{a1}	ht
+realizing the worthlessness of	认识到毫无价值	wi
 recruited from {p} during {e}.	在{e1}期间从{p1}进行了招募。	ht
 recruited from {p} within {p}.	在{p2}从{p1}进行了招募。	ht
 red-winged blackbird hatchling	红翅黑鹂幼崽	wi
@@ -72693,6 +72716,7 @@ the fey mood of {a} within {p}	在{p1}，{a1}的古怪心境	htEi
 the fleeing of {a} during {e}.	在{e1}期间，{a1}的逃离。	htEi
 the fleeing of {a} within {p}.	在{p1}，{a1}的逃离。	htEi
 the flight of {a} in the wilds	在荒野中，{a1}的逃亡	htEi
+the forces of were defeated at	军队被击败	wi
 the freeing of {a} during {e}.	在{e1}期间，{a1}获释。	htEi
 the freeing of {a} within {p}.	在{p1}，{a1}获释。	htEi
 the freezing of {a} during {e}	在{e1}期间，{a1}的冻结	htEi
@@ -77529,6 +77553,7 @@ used good tactics during {e}	在{e1}期间采用了良好的战术	ht
 used good tactics within {p}	在{p1}采用了良好的战术	ht
 used poor tactics during {e}	在{e1}期间采用了糟糕的战术	ht
 used poor tactics within {p}	在{p1}采用了糟糕的战术	ht
+viewing in a personal museum	在私人博物馆中观赏展品	wi
 viewing of {p} in the wilds.	在荒野中，观赏{p1}。	htEi
 visit of merchants from {p}.	来自{p1}的商人来访。	htEi
 was a group from {p} at {p}.	在{p2}曾是来自{p1}的势力。	ht
@@ -83554,6 +83579,7 @@ began wandering the wilds	开始在荒野中游荡	h
 beheaded {a} in the wilds	在荒野中将{a1}斩首了	ht
 being a member for a year	入会满一年	h
 being granted citizenship	获准成为公民	wi
+being near to a in a cage	靠近笼中的生物	wi
 being near to a waterfall	靠近瀑布后	wi
 being unnaturally ageless	由于以超自然方式长生不老	h
 being unnaturally ageless	以超自然方式永葆青春	wi
@@ -87562,6 +87588,7 @@ collapsed in the wilds.	在荒野中倒下了。	h
 common snapping turtles	鹰嘴龟	wi
 concluded in the wilds.	在荒野中结束了。	h
 condensed in the wilds.	在荒野中凝结而死。	h
+conducting a meeting in	会面	wi
 constructed {p} at {p}.	在{p2}建造了{p1}。	ht
 constructed {p} in {p}.	在{p2}建造了{p1}。	ht
 cornered {a} during {e}	在{e1}期间将{a1}逼入绝境	ht
@@ -88081,6 +88108,7 @@ searched {p} during {e}	在{e1}期间搜寻了{p1}	ht
 searched {p} within {p}	在{p2}搜寻了{p1}	ht
 second lower left molar	左下第二臼齿	h
 second upper left molar	左上第二臼齿	h
+seeing the 's dead body	看到某人的尸体	wi
 selected, and automine 	并自动开采新露出的同类型矿石	w
 sentenced to {c} months	被判处{c1}个月监禁	ht
 sentenced to {d} months	被判处{d1}个月监禁	ht
@@ -89292,6 +89320,7 @@ a desire for vengeance	渴望复仇	h
 a foot race during {e}	在{e1}期间，赛跑	htEi
 a foot race within {p}	在{p1}，赛跑	htEi
 a pair of {s} antennae	一对{s1}触角	htv
+a scholarly lecture in	聆听学术讲座	wi
 a story recital at {p}	在{p1}，故事讲述	htEi
 a story recital in {d}	{d1}年的故事讲述	htEi
 a story recital in {p}	在{p1}，故事讲述	htEi
@@ -90274,6 +90303,7 @@ raiding of {p} at {p}.	在{p2}，对{p1}的袭击。	htEi
 raiding of {p} in {d}.	{d1}年的对{p1}的袭击。	htEi
 raiding of {p} in {p}.	在{p2}，对{p1}的袭击。	htEi
 razed {p} in the wilds	在荒野中夷平了{p1}	ht
+realizing the value of	认识到价值所在	wi
 rebuilt {p} during {e}	在{e1}期间重建了{p1}	ht
 rebuilt {p} within {p}	在{p2}重建了{p1}	ht
 replaced {p} with {p}.	以{p2}取代了{p1}。	ht
@@ -92689,6 +92719,7 @@ second left lower arm	第二左前臂	h
 second left upper arm	第二左上臂	h
 second right rear toe	右后脚食趾	h
 secretive poltergeist	隐秘的骚灵	wi
+seeing a 's dead body	看到某个生物的尸体	wi
 sentenced to one year	被判处一年监禁	h
 settled in {p} at {p}	在{p2}定居在{p1}	ht
 settled in {p} in {p}	在{p2}定居在{p1}	ht
@@ -95443,6 +95474,7 @@ ransomed {n} to {a}.	收取赎金后将{n1}交还给了{a1}。	ht
 razed {p} during {e}	在{e1}期间夷平了{p1}	ht
 razed {p} within {p}	在{p2}夷平了{p1}	ht
 reach it.  Assign a 	行此项工作。	w
+realizing nuances of	领悟细微差别	wi
 recruited {a} at {p}	在{p1}招募了{a1}	ht
 recruited {a} in {p}	在{p1}招募了{a1}	ht
 red-winged blackbird	红翅黑鹂	wi
@@ -96443,6 +96475,7 @@ Toggle/edit setting	切换/编辑设置	w
 Underground regions	地下区域
 Unnamed dining hall	未命名餐厅	wi
 Unnamed pen/pasture	未命名畜栏／牧场	wi
+Upright Spear/Spike	直立长矛或尖刺	wi
 Use only dyed cloth	仅使用已染色的布匹	wi
 VOLCANISM REJECTION	火山活动度不符合要求	hP
 Values independence	崇尚独立	w
@@ -98913,6 +98946,7 @@ searched {p} at {p}	在{p2}搜寻了{p1}	ht
 searched {p} in {p}	在{p2}搜寻了{p1}	ht
 second eldest child	第二个孩子	h
 second right finger	右手食指	h
+seeing 's dead body	看到某人的尸体	wi
 seeing somebody die	看到某人死亡	wi
 sewer administrator	下水道管理员	hi
 sewer commissioners	下水道专员	hi
@@ -102993,6 +103027,7 @@ velociraptor woman	伶盗龙人	wi
 velociraptor women	伶盗龙人	wi
 viewed {p} at {p}.	在{p2}观赏了{p1}。	ht
 viewed {p} in {p}.	在{p2}观赏了{p1}。	ht
+viewing on display	观赏展品	wi
 violet spessartine	紫榴石	wi
 visit of merchants	商人来访	hEi
 visited {p} at {p}	在{p2}造访了{p1}	ht
@@ -104134,6 +104169,8 @@ bayberry wood log	杨梅树原木	wi
 became {s} of {p}	成为了{p1}的{s1}	ht
 becoming a parent	成为父母	wi
 beet flower spike	甜菜穗状花序	wi
+being accosted by	遭到冒犯	wi
+being pestered by	受到骚扰	wi
 birch seed catkin	桦树种子葇荑花序	wi
 bitter melon leaf	苦瓜叶	wi
 bitter melon vine	苦瓜藤	wi
@@ -108066,6 +108103,7 @@ a counting house	账房	h
 a howling spirit	嚎叫的幽魂	h
 a mixture of {j}	{j1}混合物	hIit
 a moaning spirit	呻吟的幽魂	h
+a performance in	观看表演	wi
 a poetry recital	诗歌朗诵	hEi
 a recital of {b}	《{b1}》的朗诵	htEi
 a rescue mission	营救任务	h
@@ -112306,6 +112344,7 @@ Hawk your wares	叫卖你的货物	hP
 High creativity	创造力高	wil
 High musicality	乐感高	wil
 Historical f...	历史人物……
+Horizontal Axle	横向传动轴	wi
 Horizontal axle	传动横轴	w
 Hunting/Related	狩猎及相关劳动	wi
 Hyphen Compound	连字符复合词	w
@@ -118262,6 +118301,7 @@ coelacanth fry	腔棘鱼幼崽	wi
 colepiocephale	结头龙	wi
 colorful beaks	彩色尖喙	wi
 colorful faces	彩色面孔	wi
+communing with	与神祇交流	wi
 concluded {e}.	结束了{e1}。	ht
 concluded {s}.	结束了{s1}。	ht
 confrontation.	冲突，即使最必要的战斗他也会逃离。	l
@@ -119899,6 +119939,7 @@ ladies consort	领主夫人	wi
 large rat pups	硕鼠幼崽	wi
 lavender blush	薰衣草粉	wi
 lavender jades	紫翡翠	wi
+learning about	学习	wi
 led the attack	率领进攻	h
 left eye teeth	左犬齿	h
 left eye tooth	左犬齿	h
@@ -121026,6 +121067,7 @@ pineapple wine	菠萝果酒	wi
 platypus venom	鸭嘴兽毒素	wi
 platypus woman	鸭嘴兽人	wi
 platypus women	鸭嘴兽人	wi
+playing with a	玩玩具	wi
 plum wood logs	李树原木	wi
 polar bear cub	北极熊幼崽	wi
 polar bear man	北极熊人	wi
@@ -121613,6 +121655,7 @@ sand pear tree	沙梨树	wi
 sand pear wood	沙梨木	wi
 scroll rollers	卷筒	wi
 sea otter pups	海獭幼崽	wi
+seeing the die	看到某人死亡	wi
 selections to 	蓝图模式。	w
 self-awareness	自我意识	wi
 sense of smell	有气味	wi
@@ -121758,6 +121801,7 @@ warthog piglet	疣猪幼崽	wi
 was called {p}	名为{p1}	htC
 was convicted.	被定罪了。	h
 was crucified.	被钉死在十字架上。	h
+was given away	造物被赠出	wi
 was possessed.	被附身了。	h
 water buffalos	水牛	wi
 weird solution	怪异溶液制	hMi
@@ -122232,6 +122276,8 @@ Values nature	热爱自然	w
 Vanilla Items	原版物品	w
 Vanilla Music	原版音乐	w
 Various seeds	各种种子
+Vertical Axle	垂直传动轴	wi
+Vertical Bars	垂直栅栏	wi
 Vertical axle	传动竖轴	w
 Vertical bars	墙壁栅条	w
 View the map.	查看地图。	hj
@@ -126735,6 +126781,7 @@ She has {s}.	她有{s}。	wtlx
 She is tall.	她身材高挑。	l
 She tends to	她往往会
 Shear animal	为动物剪毛	wi
+Siege Engine	攻城器械	wi
 Site located	找到地点	w
 Skills ({d})	技能（{d}）	wt
 Slight fever	轻微发热	w
@@ -130532,6 +130579,7 @@ sea lampreys	海七鳃鳗	wi
 sea monsters	海怪	wi
 sea serpents	海蛇	wi
 searched {p}	搜寻了{p1}	ht
+seeing a die	看到某个生物死亡	wi
 self-control	自制	wi
 seventh head	第七头	h
 seventh neck	第七颈	h
@@ -134411,6 +134459,7 @@ skunk women	臭鼬人	wi
 slashed off	砍断了	h
 slashed out	割除了	h
 slaying {c}	杀死了{c1}个敌人	ht
+sleeping in	入睡	wi
 slick metal	光滑金属	hMi
 slick metal	光滑金属	wim
 sliver barb	裂钩草	wi
@@ -135030,6 +135079,7 @@ beet plant	甜菜植株	wi
 beet seeds	甜菜种子	wi
 beetle man	甲虫人	wi
 beetle men	甲虫人	wi
+being near	身处附近	wi
 bilberries	越橘	wi
 billy goat	山羊	wi
 birch leaf	桦树叶	wi
@@ -135151,6 +135201,7 @@ dimple dye	窝杯染料	wi
 dingo pups	野狗幼崽	wi
 diplodocus	梁龙	wi
 discipline	自律	r
+discussing	讨论	wi
 dissolved.	解散了。	h
 distressed	痛苦	w
 dodo cocks	渡渡鸟	wi
@@ -137623,6 +137674,7 @@ second arm	第二手臂	h
 second eye	第二只眼	h
 second toe	第二脚趾	h
 second toe	第二趾	w
+seeing die	看到某人死亡	wi
 septuplets	七胞胎	wi
 serpentine	蛇纹石	wi
 settled in	定居在	h
@@ -138090,6 +138142,7 @@ Snatchers	绑架者	wi
 Socialize	社交	w
 Some soil	一些土壤	w
 Status of	状态：	wi
+Stockpile	堆料区	wi
 Stone use	分配石材	wi
 Straight 	平滑	wi
 Stran sbu	斯特兰·斯布	w
@@ -138153,6 +138206,7 @@ a {s} {s}	{s1}{s2}	htN
 aardvarks	土豚	wi
 accepting	接纳	w
 acorn fly	橡子蝇	wi
+acquiring	获得造物	wi
 acrid goo	辛辣的黏稠物制	hMi
 acrid goo	辛辣的黏稠物	wim
 adder man	蝰蛇人	wi
@@ -138283,6 +138337,7 @@ diadectes	阔齿龙	wi
 dingo man	野狗人	wi
 dingo men	野狗人	wi
 dingo pup	野狗幼崽	wi
+dining in	就餐	wi
 diplomats	外交官	wi
 disgusted	厌恶	w
 dissolved	解散了	h
@@ -139469,6 +139524,7 @@ hyena men	鬣狗人	wi
 ibex kids	羱羊幼崽	wi
 ichorous 	脓液状的	wi
 iguanodon	禽龙	wi
+improving	有所进步	wi
 indignant	愤慨	w
 intricate	精巧	wi
 irritated	恼火	w
@@ -139556,6 +139612,7 @@ manta ray	蝠鲼	wi
 many arms	许多触手	wi
 maple log	枫树原木	wi
 marcasite	白铁矿	wi
+mastering	达到精通水平	wi
 megalania	古巨蜥	wi
 megalodon	巨齿鲨	wi
 meganeura	巨脉蜻蜓	wi
@@ -139660,6 +139717,7 @@ plum tree	李树	wi
 plum wine	李子果酒	wi
 plum wood	李子木	wi
 point cut	尖切工	wi
+pondering	思考	wi
 porcelain	瓷器	wi
 porcupine	豪猪	wi
 possessed	附身	wi
@@ -140177,7 +140235,6 @@ Suturing	缝合	wi
 Swimming	游泳	wi
 Sympathy	同情	w
 Talented	聪颖的	wi
-Teaching	教学	wi
 Thastith	萨斯提斯	wi
 Thatthil	萨锡尔	wi
 Themthir	塞姆锡尔	wi
@@ -140702,6 +140759,7 @@ kiwi men	鹬鸵人	wi
 kumquats	金橘	wi
 kunzites	紫锂辉石	wi
 lavender	薰衣草色	wi
+learning	学习	wi
 leathery	坚韧如皮革	hv
 left arm	左手臂	h
 left ear	左耳	h
@@ -140876,6 +140934,7 @@ sympathy	同情	w
 tea leaf	茶叶	wi
 tea tree	茶树	wi
 tea wood	茶木	wi
+teaching	教学	wi
 tenacity	坚韧	wi
 termites	白蚁	wi
 the mace	钉头锤	h
@@ -142608,9 +142667,12 @@ dreams	梦境	r
 drinks	饮料	wi
 drowsy	昏昏欲睡	wi
 druids	德鲁伊	wi
+due to	受某种症状影响	wi
 durian	榴梿	wi
+during	某事件期间	wi
 eagles	鹰	wi
 eaglet	鹰幼崽	wi
+eating	进食	wi
 elated	兴高采烈	w
 eldest	最大的	wi
 equine	马	wi
@@ -142660,6 +142722,7 @@ guavas	番石榴	wi
 guilty	内疚	w
 gypsum	软石膏	wi
 hamlet	村庄	hv
+having	享用饮品	wi
 height	身高	wi
 helves	斧柄	wi
 hidden	隐藏的	wi
@@ -144575,6 +144638,7 @@ Shed	谢德	wi
 Shem	舍姆	wi
 Shin	辛	wi
 Shis	希斯	wi
+Shop	商店	wi
 Shos	肖斯	wi
 Shuk	舒克	wi
 Sing	歌唱	hP
@@ -144673,6 +144737,7 @@ Wife	妻子	wi
 Zany	爱开玩笑	w
 Zeal	热忱	w
 Zinc	锌	wi
+Zone	活动区	wi
 Zust	祖斯特	wi
 ants	蚂蚁	wi
 aqua	水色	wi

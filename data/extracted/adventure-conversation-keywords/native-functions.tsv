@@ -1,8 +1,8 @@
 edition	image_identity	role	function_rva	body_end_rva	unwind_end_rva
 steam	PE:6a70a6d9:02711000	unique-keyword-append	0xbb810	0xbb8d2	0xbb8d2
 steam	PE:6a70a6d9:02711000	search-fold	0x52cee0	0x52d033	0x52d0e0
-steam	PE:6a70a6d9:02711000	keyword-value	0x6793b0	0x679e10	0x679e10
-steam	PE:6a70a6d9:02711000	keyword-emotion	0x679e10	0x67b6bc	0x67b6bc
+steam	PE:6a70a6d9:02711000	keyword-value	0x6793b0	0x679d8c	0x679e10
+steam	PE:6a70a6d9:02711000	keyword-emotion	0x679e10	0x67b418	0x67b6bc
 steam	PE:6a70a6d9:02711000	keyword-main	0x697740	0x6acbb6	0x6ad394
 steam	PE:6a70a6d9:02711000	keyword-lifecycle	0x6ad3d0	0x6ad8f2	0x6ad8f2
 steam	PE:6a70a6d9:02711000	keyword-lifecycle	0x6ad900	0x6adf28	0x6adf28
@@ -21,8 +21,8 @@ steam	PE:6a70a6d9:02711000	keyword-main-caller	0x8a2e20	0x8a40d8	0x8a40d8
 steam	PE:6a70a6d9:02711000	native-name-keyword-tokenizer	0xd3ba10	0xd3bbdd	0xd3bbdd
 classic	PE:6a70b91c:0270a000	unique-keyword-append	0xbb7a0	0xbb862	0xbb862
 classic	PE:6a70b91c:0270a000	search-fold	0x52a900	0x52aa53	0x52ab00
-classic	PE:6a70b91c:0270a000	keyword-value	0x676dd0	0x677830	0x677830
-classic	PE:6a70b91c:0270a000	keyword-emotion	0x677830	0x6790dc	0x6790dc
+classic	PE:6a70b91c:0270a000	keyword-value	0x676dd0	0x6777ac	0x677830
+classic	PE:6a70b91c:0270a000	keyword-emotion	0x677830	0x678e38	0x6790dc
 classic	PE:6a70b91c:0270a000	keyword-main	0x695160	0x6aa5d6	0x6aadb4
 classic	PE:6a70b91c:0270a000	keyword-lifecycle	0x6aadf0	0x6ab312	0x6ab312
 classic	PE:6a70b91c:0270a000	keyword-lifecycle	0x6ab320	0x6ab948	0x6ab948

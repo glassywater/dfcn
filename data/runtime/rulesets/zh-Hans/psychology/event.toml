@@ -136,6 +136,51 @@ name = "things::core"
 "having to conduct an official meeting in a bedroom" = "不得不在卧室进行官方会议"
 "having to conduct an official meeting in a dining room" = "不得不在餐厅进行官方会议"
 "improving {things::skill}" = "提高{things::skill}"
+# The native skill supplier clears its output and returns immediately for an
+# out-of-range selector. These four callers still emit their verb and optional
+# preposition, so an absent skill is a complete native branch, not a caption
+# fragment whose following noun can be discarded.
+"improving" = "有所进步"
+"mastering" = "达到精通水平"
+"learning about" = "学习"
+"teaching" = "教学"
+# Room/food quality switches return after their fixed verb when the value
+# has no named quality branch (including the zero room-quality leaf).
+"eating" = "进食"
+"having" = "享用饮品"
+"dining in" = "就餐"
+"sleeping in" = "入睡"
+"conducting a meeting in" = "会面"
+# Empty knowledge suppliers keep the enclosing operation. Value references
+# still retain their value/worthlessness/nuance wording when the value ID is
+# outside 0..32; no unknown object is inferred from the missing field.
+"making a breakthrough concerning" = "取得研究突破"
+"being unable to advance the study of" = "未能推进研究"
+"pondering" = "思考"
+"discussing" = "讨论"
+"learning" = "学习"
+"realizing the value of" = "认识到价值所在"
+"realizing the worthlessness of" = "认识到毫无价值"
+"realizing nuances of" = "领悟细微差别"
+# A missing historical-event collection leaves only its complete preposition.
+"during" = "某事件期间"
+# These creature suppliers clear their output when the RAW race/caste has no
+# usable name. The formatter still owns the complete surrounding experience.
+"seeing a die" = "看到某个生物死亡"
+"seeing a 's dead body" = "看到某个生物的尸体"
+# Existing historical figures can also have has_name set with every name
+# component empty. Their case-2 label still appends the possessive suffix.
+"seeing die" = "看到某人死亡"
+"seeing the die" = "看到某人死亡"
+"seeing 's dead body" = "看到某人的尸体"
+"seeing the 's dead body" = "看到某人的尸体"
+"being accosted by" = "遭到冒犯"
+"being near" = "身处附近"
+"being pestered by" = "受到骚扰"
+"being near to a in a cage" = "靠近笼中的生物"
+# A valid RAW syndrome can have an empty SYN_NAME. Invalid IDs return before
+# this preposition and therefore do not produce this event at all.
+"due to" = "受某种症状影响"
 "in conflict" = "处于冲突"
 "interacting with a animal training partner" = "与动物训练伙伴互动"
 "interacting with a pet" = "与宠物互动"
@@ -356,6 +401,9 @@ name = "things::core"
 "{things::possessive}spouse's miscarriage" = "{things::possessive}配偶流产"
 "not having a tomb after gaining another year" = "又长了一岁却仍没有陵墓"
 "having {things::article}{things::poorroom} tomb after gaining another year" = "又长了一岁，拥有{things::poorroom}陵墓"
+# TombQuality's default skips its quality phrase but still appends the tomb
+# and birthday suffix. It is distinct from GoodDrink's bare "having" leaf.
+"having tomb after gaining another year" = "又长了一岁，拥有陵墓"
 "having {things::article}{things::poorroom} drink" = "享用{things::poorroom}饮品"
 "eating {things::article}{things::poorroom}" = "享用{things::poorroom}"
 "dining in {things::article}{things::poorroom} dining room" = "在{things::poorroom}餐厅就餐"
@@ -390,6 +438,23 @@ name = "things::core"
 "a petition for a guildhall for {::text::name} being ignored" = "为{::text::name}建立行会大厅的请愿被忽视"
 "an agreement to construct a guildhall for {::text::name} was abandoned" = "为{::text::name}建立行会大厅的协议被放弃"
 "an agreement to construct a guildhall for {::text::name} being abandoned" = "为{::text::name}建立行会大厅的协议被放弃"
+# Existing records with wholly empty language_name fields return no identity
+# text. Missing records instead return the existing unknown-name noun. Keep
+# the former branch's complete fixed operation, including its status suffix.
+"the establishment of a temple for" = "建立神庙"
+"the acceptance of a petition for a temple for" = "建立神庙的请愿获准"
+"the rejection of a petition for a temple for" = "建立神庙的请愿被拒绝"
+"a petition for a temple for was ignored" = "建立神庙的请愿被忽视"
+"a petition for a temple for being ignored" = "建立神庙的请愿被忽视"
+"an agreement to construct a temple for was abandoned" = "建立神庙的协议被放弃"
+"an agreement to construct a temple for being abandoned" = "建立神庙的协议被放弃"
+"the establishment of a guildhall for" = "建立行会大厅"
+"the acceptance of a petition for a guildhall for" = "建立行会大厅的请愿获准"
+"the rejection of a petition for a guildhall for" = "建立行会大厅的请愿被拒绝"
+"a petition for a guildhall for was ignored" = "建立行会大厅的请愿被忽视"
+"a petition for a guildhall for being ignored" = "建立行会大厅的请愿被忽视"
+"an agreement to construct a guildhall for was abandoned" = "建立行会大厅的协议被放弃"
+"an agreement to construct a guildhall for being abandoned" = "建立行会大厅的协议被放弃"
 "writing {::text::book}" = "撰写{::text::book}"
 "reading {::text::book}" = "阅读{::text::book}"
 "learning about {::text::topic}" = "学习{::text::topic}"
@@ -403,8 +468,12 @@ name = "things::core"
 "discussing {::text::topic}" = "讨论{::text::topic}"
 "making a breakthrough concerning {::text::topic}" = "在{::text::topic}方面取得突破"
 "being unable to advance the study of {::text::topic}" = "未能推进对{::text::topic}的研究"
-"a scholarly lecture in {::text::topic}" = "聆听有关{::text::topic}的学术讲座"
-"a performance in {::text::form}" = "观看{::text::form}表演"
+# SiteLecture 245 and SitePerformance 246 call the site-identity supplier,
+# not the topic/form suppliers. The location keeps its site namespace.
+"a scholarly lecture in {things::site}" = "在{things::site}聆听学术讲座"
+"a performance in {things::site}" = "在{things::site}观看表演"
+"a scholarly lecture in" = "聆听学术讲座"
+"a performance in" = "观看表演"
 "performing the rites of {::text::deity}" = "举行{::text::deity}的仪式"
 "incompletely performing the rites of {::text::deity}" = "未能完整举行{::text::deity}的仪式"
 "communing with {::text::deity}" = "与{::text::deity}交流"
@@ -413,9 +482,18 @@ name = "things::core"
 "incompletely performing the rites of {::text::deity} in an improperly dedicated temple" = "在供奉对象不当的神庙中未能完整举行{::text::deity}的仪式"
 "incompletely performing the rites of {::text::deity} in an undedicated temple" = "在未指定供奉对象的神庙中未能完整举行{::text::deity}的仪式"
 "communing with {::text::deity} in a dedicated temple" = "在专门供奉{::text::deity}的神庙中与其交流"
+"communing with" = "与神祇交流"
+"being unable to pray to for too long" = "太久未能祷告"
+"performing the rites of in a dedicated temple" = "在专用神庙中举行仪式"
+"incompletely performing the rites of in an improperly dedicated temple" = "在供奉对象不当的神庙中未能完整举行仪式"
+"incompletely performing the rites of in an undedicated temple" = "在未指定供奉对象的神庙中未能完整举行仪式"
+"communing with in a dedicated temple" = "在专用神庙中与神祇交流"
 # Native event formatter 0x140E2C4DA..0x140E32069 uses different predicates
 # for a current thought and a recollection. Keep both in this shared grammar.
 "the forces of {things::entity} were defeated at {things::site}" = "{things::entity}的军队在{things::site}被击败"
+"the forces of were defeated at {things::site}" = "军队在{things::site}被击败"
+"the forces of {things::entity} were defeated at" = "{things::entity}的军队被击败"
+"the forces of were defeated at" = "军队被击败"
 "wearing old clothing" = "穿着破旧的衣服"
 "wearing tattered clothing" = "穿着破烂的衣服"
 "clothes rot off of {things::possessive}body" = "{things::possessive}衣服在身上烂掉"
@@ -446,6 +524,13 @@ name = "things::core"
 "viewing {things::item} on display" = "观赏展出的{things::item}"
 "viewing a piece on display" = "观赏展品"
 "viewing a piece in a personal museum" = "在私人博物馆中观赏展品"
+# A present artifact with has_name set may still contain no name components.
+# The item and artifact suppliers return that empty name without the missing
+# lookup's "a piece"/"an unknown artifact" fallback.
+"viewing on display" = "观赏展品"
+"viewing in a personal museum" = "在私人博物馆中观赏展品"
+"acquiring" = "获得造物"
+"was given away" = "造物被赠出"
 "viewing {::text::artifact} on display" = "观赏展出的{::text::artifact}"
 "viewing {::text::artifact} in a personal museum" = "在私人博物馆中观赏{::text::artifact}"
 "acquiring {::text::artifact}" = "获得{::text::artifact}"
@@ -453,6 +538,9 @@ name = "things::core"
 "acquiring an unknown artifact" = "获得一件不明造物"
 "an unknown artifact was given away" = "一件不明造物被赠出"
 "playing with a toy" = "玩玩具"
+# A valid toy RAW appends NAME directly after "a "; an empty NAME does not
+# take the missing/invalid toy ID's "a toy" fallback.
+"playing with a" = "玩玩具"
 "writing an untitled composition" = "撰写无题作品"
 "reading an untitled composition" = "阅读无题作品"
 "learning an untitled composition" = "学习无题作品"
@@ -751,9 +839,15 @@ name = "building"
 # and arrangement in one noun phrase, with the same semantic source origins.
 [rulesets.rules]
 "{^things::num}{building_own}{building_quility}{building_put} {building_name}" = "{building_own}{building_quility}{building_put}{building_name}"
+# An invalid building type clears only the type name. The caller has already
+# supplied its article/ownership, quality and arrangement; consume that whole
+# native result without substituting for a prefix of a named building.
+"a{building_quility}{building_put}" = "{building_quility}{building_put}建筑"
+"{things::possessive}own{building_quility}{building_put}" = "{things::possessive}{building_quility}{building_put}建筑"
 
 [[rulesets]]
 name = "building_quility"
+optional = true
 [rulesets.rules]
 " very fine" = "非常精美的"
 " splendid" = "极佳的"
@@ -780,7 +874,24 @@ optional = true
 [[rulesets]]
 name = "building_name"
 [rulesets.rules]
+# The experience formatter calls the complete native building-type supplier
+# (0x14054d320..0x14054e9d4), whose 55 type branches continue across chained
+# unwind regions. Share its finished-building names, including workshop,
+# construction and track names, instead of only the shorter build-menu labels.
+"{::map_hover::building::fixed}" = "{::map_hover::building::fixed}"
+"{::map_hover::building::furniture}" = "{::map_hover::building::furniture}"
+"{::map_hover::building::rough_furniture}" = "{::map_hover::building::rough_furniture}"
+"{::map_hover::building::construction}" = "{::map_hover::building::construction}"
+"{::map_hover::building::workshop}" = "{::map_hover::building::workshop}"
 "{::items::main}" = "{::items::main}"
+"Shop" = "商店"
+"Zone" = "活动区"
+"Stockpile" = "堆料区"
+"Siege Engine" = "攻城器械"
+"Vertical Bars" = "垂直栅栏"
+"Horizontal Axle" = "横向传动轴"
+"Vertical Axle" = "垂直传动轴"
+"Upright Spear/Spike" = "直立长矛或尖刺"
 "seat" = "座位"
 # Thoughts use the generic building name instead of a chest/box item name.
 "Container" = "容器"
@@ -933,12 +1044,13 @@ name = "things::deadperson"
 [[rulesets]]
 name = "things::creature"
 [rulesets.rules]
+"{things::article}unknown creature" = "未知生物"
 "{things::article}{::creatures::caste::singular}" = "{::creatures::caste::singular}"
 # Named witnesses/victims can appear with or without a caste prefix.
 # Resolve bare names and names after a caste through the shared actor parser,
 # including translated compound surnames.
 "{things::article}{::creatures::caste::singular} {::text::person}" = "{::creatures::caste::singular}·{::text::person}"
-"{::text::person}" = "{::text::person}"
+"{things::article}{::text::person}" = "{::text::person}"
 
 [[rulesets]]
 name = "things::item"

@@ -1,4 +1,5 @@
 ; reference PE:6a70a6d9:02711000; deity-name 0x140b92f10..0x140b93927
+; native unwind regions: 0x140b92f10..0x140b93927
 0x140b92f10: rex push rbp
 0x140b92f12: push   rbx
 0x140b92f13: push   rsi

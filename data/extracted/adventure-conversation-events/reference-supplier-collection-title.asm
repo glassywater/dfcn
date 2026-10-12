@@ -1,4 +1,5 @@
 ; reference PE:6a70a6d9:02711000; collection-title 0x14013cc50..0x14013ccf8
+; native unwind regions: 0x14013cc50..0x14013ccf8
 0x14013cc50: mov    QWORD PTR [rsp+0x8],rbx
 0x14013cc55: mov    QWORD PTR [rsp+0x10],rdi
 0x14013cc5a: mov    rdi,QWORD PTR [rdx]

@@ -1,4 +1,5 @@
 ; reference PE:6a70a6d9:02711000; offspring 0x1406dd860..0x1406ddecb
+; native unwind regions: 0x1406dd860..0x1406ddecb
 0x1406dd860: rex push rbp
 0x1406dd862: push   rbx
 0x1406dd863: push   rsi

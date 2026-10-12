@@ -1,4 +1,5 @@
 ; classic PE:6a70b91c:0270a000; person-label 0x140b8fb30..0x140b8ff4c
+; native unwind regions: 0x140b8fb30..0x140b8ff4c
 0x140b8fb30: rex push rbp
 0x140b8fb32: push   rbx
 0x140b8fb33: push   rsi

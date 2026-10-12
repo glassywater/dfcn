@@ -5160,7 +5160,7 @@ private:
     TranslationResult translate_ui_message_capture_display(
         std::string_view source, bool unit_label = false) const;
     std::optional<std::string> translate_conversation_keywords(
-        std::string_view source) const;
+        std::string_view source, std::string_view bound_caption = {}) const;
     std::optional<std::string> translate_conversation_choice(
         std::string_view source) const;
     std::optional<std::string> translate_adventure_action_choice(
@@ -18263,6 +18263,26 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                 return edge;
             };
             if (conversation) {
+                // The renderer paints each choice's button skin before its
+                // retained caption vector (0x86d480..0x86d717 in the reference
+                // PE). Graphical-copy bookkeeping can therefore hide only
+                // parts of that caption from visible_char_at(). Read the
+                // current logical layer inside this proven chooser frame;
+                // the complete native caption/keyword record below still
+                // decides ownership, including clipping and other popups.
+                for (int row_y = panel->y; row_y < panel->y + panel->h; ++row_y) {
+                    for (int x = panel->x; x < caption_right(row_y); ++x) {
+                        if (occluding_frame && row_y >= occluding_frame->y &&
+                                row_y < occluding_frame->y + occluding_frame->h &&
+                                x >= occluding_frame->x &&
+                                x < occluding_frame->x + occluding_frame->w) continue;
+                        bool top = false;
+                        const auto *cell = cell_at(x, row_y, &top);
+                        if (cell && (!screen_override || screen_override ==
+                                (top ? gps_->screen_top : gps_->screen)))
+                            context[row_y][x] = cell[0] ? static_cast<char>(cell[0]) : ' ';
+                    }
+                }
                 struct NativeChoiceText {
                     std::string caption, keywords;
                     std::vector<std::string> lines;
@@ -18467,7 +18487,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                     return found;
                 };
                 const auto erase_prior = [&](const std::vector<ChoiceInk> &ink) {
-                    std::erase_if(result, [&](const Match &match) {
+                    const auto overlaps_ink = [&](const Match &match) {
                         return std::any_of(ink.begin(), ink.end(), [&](const ChoiceInk &part) {
                             const auto overlaps = [&](const Match &row) {
                                 return match.y == row.y && match.x < row.x + row.length &&
@@ -18475,7 +18495,14 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                             };
                             return overlaps(part.row) || (part.partner && overlaps(*part.partner));
                         });
-                    });
+                    };
+                    std::erase_if(result, overlaps_ink);
+                    // Earlier paragraph readers can reserve this same text
+                    // before the chooser resolves its complete retained row.
+                    // Retire that reservation with the shorter translations,
+                    // or the final source-preservation pass would discard the
+                    // complete caption and keywords placed here.
+                    std::erase_if(untranslated_help_rows, overlaps_ink);
                 };
                 const auto protect = [&](const std::vector<ChoiceInk> &ink, const std::string &complete) {
                     for (const auto &part : ink) {
@@ -18658,9 +18685,9 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                             std::vector<int> native_colors(caption_source.size(), captions.front().first_color), unused;
                             const bool conflict = std::string_view(caption_source).starts_with(
                                 "Summarize the conflict in which ");
-                            auto target = conflict ? translate_conversation_choice(caption_source)
-                                : translate_help_paragraph(caption_source, native_colors, unused, true);
-                            if (!target && !conflict) target = translate_conversation_choice(caption_source);
+                            auto target = translate_conversation_choice(caption_source);
+                            if (!target && !conflict)
+                                target = translate_help_paragraph(caption_source, native_colors, unused, true);
                             if (cache.targets.size() >= 8192) cache.targets.clear();
                             found = cache.targets.emplace(caption_source, std::move(target)).first;
                         }
@@ -18668,7 +18695,8 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                     }
                     const auto keyword_label = exact_literal_translation("Conversation keyword label");
                     if (!keyword_ink.empty() && complete_keywords && keyword_label) {
-                        if (const auto translated = translate_conversation_keywords(keywords))
+                        if (const auto translated = translate_conversation_keywords(keywords,
+                                bound ? std::string_view(caption_source) : std::string_view{}))
                             keyword_target = *keyword_label + *translated;
                     }
                     const auto colors_for = [&](std::string_view text, int color) {

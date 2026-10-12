@@ -299,6 +299,278 @@ reference	possessive-pronoun	0x140aa4850	0x140aa4878	cstring	0x1415ee528	its
 classic	possessive-pronoun	0x140aa18d0	0x140aa18e6	cstring	0x1416cb1a8	his
 classic	possessive-pronoun	0x140aa18d0	0x140aa18f1	cstring	0x1416cb150	her
 classic	possessive-pronoun	0x140aa18d0	0x140aa18f8	cstring	0x1415e94d8	its
+reference	building-type	0x14054d320	0x14054d36b	cstring	0x141651c2c	Shop
+reference	building-type	0x14054d320	0x14054d387	cstring	0x141651c20	Trade Depot
+reference	building-type	0x14054d320	0x14054d3a3	cstring	0x141651cac	Nest
+reference	building-type	0x14054d320	0x14054d3bf	cstring	0x141651ca0	Nest Box
+reference	building-type	0x14054d320	0x14054d3db	cstring	0x14162cad0	Bookcase
+reference	building-type	0x14054d320	0x14054d3f7	cstring	0x141651c90	Offering Place
+reference	building-type	0x14054d320	0x14054d413	cstring	0x14162cb1c	Hive
+reference	building-type	0x14054d320	0x14054d42f	cstring	0x141651c88	Wagon
+reference	building-type	0x14054d320	0x14054d464	cstring	0x141651c70	Carpenter's Workshop
+reference	building-type	0x14054d320	0x14054d47d	cstring	0x141651c58	Farmer's Workshop
+reference	building-type	0x14054d320	0x14054d492	cstring	0x14162c9d0	Ashery
+reference	building-type	0x14054d320	0x14054d4ee	cstring	0x14162c958	Stoneworker
+reference	building-type	0x14054d320	0x14054d53d	cstring	0x141651c38	Craftsman
+reference	building-type	0x14054d320	0x14054d58c	cstring	0x14162c930	Jeweler
+reference	building-type	0x14054d320	0x14054d633	cstring	0x14162c938	Metalsmith
+reference	building-type	0x14054d320	0x14054d648	cstring	0x141651d18	's Forge
+reference	building-type	0x14054d320	0x14054d667	cstring	0x141651d08	Magma Forge
+reference	building-type	0x14054d320	0x14054d6c0	cstring	0x14162c9c8	Bowyer
+reference	building-type	0x14054d320	0x14054d767	cstring	0x14162c948	Mechanic
+reference	building-type	0x14054d320	0x14054d77c	cstring	0x141651c48	's Workshop
+reference	building-type	0x14054d320	0x14054d79b	cstring	0x141651cf8	Siege Workshop
+reference	building-type	0x14054d320	0x14054d7f7	cstring	0x14161be28	Butcher
+reference	building-type	0x14054d320	0x14054d809	cstring	0x141651ce0	Leather Works
+reference	building-type	0x14054d320	0x14054d865	cstring	0x14162cb80	Tanner
+reference	building-type	0x14054d320	0x14054d8b1	cstring	0x14162c910	Dyer
+reference	building-type	0x14054d320	0x14054d958	cstring	0x141651cd0	Clothier
+reference	building-type	0x14054d320	0x14054d96d	cstring	0x141651cf0	's Shop
+reference	building-type	0x14054d320	0x14054d98c	cstring	0x14162cb78	Fishery
+reference	building-type	0x14054d320	0x14054d9ab	cstring	0x14162cb60	Still
+reference	building-type	0x14054d320	0x14054d9ca	cstring	0x14162c8f8	Loom
+reference	building-type	0x14054d320	0x14054d9e9	cstring	0x14162cbb0	Quern
+reference	building-type	0x14054d320	0x14054da08	cstring	0x14162cc80	Millstone
+reference	building-type	0x14054d320	0x14054da27	cstring	0x14162cb98	Vermin Catcher's Shop
+reference	building-type	0x14054d320	0x14054da46	cstring	0x14162cb90	Kitchen
+reference	building-type	0x14054d320	0x14054da65	cstring	0x141651cc4	Tool
+reference	building-type	0x14054d320	0x14054dafa	cstring	0x141651cb8	Workshop
+reference	building-type	0x14054d320	0x14054db52	cstring	0x141651f94	Zone
+reference	building-type	0x14054d320	0x14054db6e	cstring	0x141651f88	Farm Plot
+reference	building-type	0x14054d320	0x14054dba3	cstring	0x14162c8e0	Smelter
+reference	building-type	0x14054d320	0x14054dbc2	cstring	0x141651f78	Glass Furnace
+reference	building-type	0x14054d320	0x14054dbe1	cstring	0x141651f68	Wood Furnace
+reference	building-type	0x14054d320	0x14054dc00	cstring	0x14162c96c	Kiln
+reference	building-type	0x14054d320	0x14054dc1f	cstring	0x141651f58	Magma Smelter
+reference	building-type	0x14054d320	0x14054dc3e	cstring	0x141651f40	Magma Glass Furnace
+reference	building-type	0x14054d320	0x14054dc5d	cstring	0x141651f30	Magma Kiln
+reference	building-type	0x14054d320	0x14054dd0c	cstring	0x141651f28	Furnace
+reference	building-type	0x14054d320	0x14054dd3e	cstring	0x14162ccb8	Lever
+reference	building-type	0x14054d320	0x14054dd5d	cstring	0x141652008	Pressure Plate
+reference	building-type	0x14054d320	0x14054dd7c	cstring	0x141651ff8	Cage Trap
+reference	building-type	0x14054d320	0x14054dd9b	cstring	0x141651fe8	Stone-Fall Trap
+reference	building-type	0x14054d320	0x14054ddba	cstring	0x141651fd8	Weapon Trap
+reference	building-type	0x14054d320	0x14054ddd9	cstring	0x141651fc8	Track Stop
+reference	building-type	0x14054d320	0x14054ddf8	cstring	0x141651fc0	Trap
+reference	building-type	0x14054d320	0x14054de2f	cstring	0x141651fa0	Siege Engine
+reference	building-type	0x14054d320	0x14054de48	cstring	0x141651fb0	Bolt Thrower
+reference	building-type	0x14054d320	0x14054de61	cstring	0x14162cf80	Ballista
+reference	building-type	0x14054d320	0x14054de80	cstring	0x14162cf70	Catapult
+reference	building-type	0x14054d320	0x14054dea5	cstring	0x14162cb08	Door
+reference	building-type	0x14054d320	0x14054dec1	cstring	0x141652088	Floor Hatch
+reference	building-type	0x14054d320	0x14054dedd	cstring	0x141652078	Wall Grate
+reference	building-type	0x14054d320	0x14054def9	cstring	0x141652068	Floor Grate
+reference	building-type	0x14054d320	0x14054df15	cstring	0x141652058	Vertical Bars
+reference	building-type	0x14054d320	0x14054df31	cstring	0x141652048	Floor Bars
+reference	building-type	0x14054d320	0x14054df4d	cstring	0x14162ccd0	Floodgate
+reference	building-type	0x14054d320	0x14054df69	cstring	0x141652038	Restraint
+reference	building-type	0x14054d320	0x14054df85	cstring	0x14162cc8c	Cage
+reference	building-type	0x14054d320	0x14054dfa1	cstring	0x14162ccb0	Support
+reference	building-type	0x14054d320	0x14054dfbd	cstring	0x141652028	Gear Assembly
+reference	building-type	0x14054d320	0x14054dfd9	cstring	0x14162cc78	Rollers
+reference	building-type	0x14054d320	0x14054dff5	cstring	0x141652018	Horizontal Axle
+reference	building-type	0x14054d320	0x14054e011	cstring	0x141652110	Vertical Axle
+reference	building-type	0x14054d320	0x14054e02d	cstring	0x1416520f8	Upright Spear/Spike
+reference	building-type	0x14054d320	0x14054e049	cstring	0x14162cb10	Instrument
+reference	building-type	0x14054d320	0x14054e065	cstring	0x1416520e8	Archery Target
+reference	building-type	0x14054d320	0x14054e081	cstring	0x1416520d8	Screw Pump
+reference	building-type	0x14054d320	0x14054e09d	cstring	0x1416520c8	Water Wheel
+reference	building-type	0x14054d320	0x14054e0b9	cstring	0x14162cc48	Windmill
+reference	building-type	0x14054d320	0x14054e0cf	cstring	0x1416520b0	Burial Receptacle
+reference	building-type	0x14054d320	0x14054e0e1	cstring	0x1416520a4	Seat
+reference	building-type	0x14054d320	0x14054e0fd	cstring	0x141652098	Animal Trap
+reference	building-type	0x14054d320	0x14054e119	cstring	0x14162cb48	Table
+reference	building-type	0x14054d320	0x14054e135	cstring	0x14162cb58	Cabinet
+reference	building-type	0x14054d320	0x14054e151	cstring	0x141651d98	Weapon Rack
+reference	building-type	0x14054d320	0x14054e16d	cstring	0x141651d88	Armor Stand
+reference	building-type	0x14054d320	0x14054e189	cstring	0x141651d78	Container
+reference	building-type	0x14054d320	0x14054e1a5	cstring	0x14162cb3c	Bed
+reference	building-type	0x14054d320	0x14054e1c1	cstring	0x141651d68	Traction Bench
+reference	building-type	0x14054d320	0x14054e1dd	cstring	0x141651d58	Dirt Road
+reference	building-type	0x14054d320	0x14054e1f9	cstring	0x141651d48	Paved Road
+reference	building-type	0x14054d320	0x14054e215	cstring	0x14162cab4	Bridge
+reference	building-type	0x14054d320	0x14054e231	cstring	0x14162ccdc	Well
+reference	building-type	0x14054d320	0x14054e24d	cstring	0x14162cabc	Statue
+reference	building-type	0x14054d320	0x14054e269	cstring	0x14162cac4	Slab
+reference	building-type	0x14054d320	0x14054e285	cstring	0x141651d38	Glass Window
+reference	building-type	0x14054d320	0x14054e2a1	cstring	0x141651d28	Gem Window
+reference	building-type	0x14054d320	0x14054e2bd	cstring	0x141651e18	Stockpile
+reference	building-type	0x14054d320	0x14054e2ec	cstring	0x14162ca6c	Wall
+reference	building-type	0x14054d320	0x14054e30b	cstring	0x14162ca88	Reinforced Wall
+reference	building-type	0x14054d320	0x14054e32a	cstring	0x14162ca7c	Floor
+reference	building-type	0x14054d320	0x14054e349	cstring	0x141651e08	Up Stair
+reference	building-type	0x14054d320	0x14054e368	cstring	0x141651df8	Down Stair
+reference	building-type	0x14054d320	0x14054e387	cstring	0x141651de8	Up/Down Stair
+reference	building-type	0x14054d320	0x14054e3a6	cstring	0x14162caa0	Ramp
+reference	building-type	0x14054d320	0x14054e3c5	cstring	0x14162cd08	Fortification
+reference	building-type	0x14054d320	0x14054e3e4	cstring	0x141651dd8	Track (N)
+reference	building-type	0x14054d320	0x14054e403	cstring	0x141651dc8	Track (S)
+reference	building-type	0x14054d320	0x14054e422	cstring	0x141651db8	Track (E)
+reference	building-type	0x14054d320	0x14054e441	cstring	0x141651da8	Track (W)
+reference	building-type	0x14054d320	0x14054e460	cstring	0x141651e98	Track (NS)
+reference	building-type	0x14054d320	0x14054e47f	cstring	0x141651e88	Track (NE)
+reference	building-type	0x14054d320	0x14054e49e	cstring	0x141651e78	Track (NW)
+reference	building-type	0x14054d320	0x14054e4bd	cstring	0x141651e68	Track (SE)
+reference	building-type	0x14054d320	0x14054e4dc	cstring	0x141651e58	Track (SW)
+reference	building-type	0x14054d320	0x14054e4fb	cstring	0x141651e48	Track (EW)
+reference	building-type	0x14054d320	0x14054e51a	cstring	0x141651e38	Track (NSE)
+reference	building-type	0x14054d320	0x14054e539	cstring	0x141651e28	Track (NSW)
+reference	building-type	0x14054d320	0x14054e558	cstring	0x141651f18	Track (NEW)
+reference	building-type	0x14054d320	0x14054e577	cstring	0x141651f08	Track (SEW)
+reference	building-type	0x14054d320	0x14054e596	cstring	0x141651ef8	Track (NSEW)
+reference	building-type	0x14054d320	0x14054e5b5	cstring	0x141651ee8	Track/Ramp (N)
+reference	building-type	0x14054d320	0x14054e5d4	cstring	0x141651ed8	Track/Ramp (S)
+reference	building-type	0x14054d320	0x14054e5f3	cstring	0x141651ec8	Track/Ramp (E)
+reference	building-type	0x14054d320	0x14054e612	cstring	0x141651eb8	Track/Ramp (W)
+reference	building-type	0x14054d320	0x14054e631	cstring	0x141651ea8	Track/Ramp (NS)
+reference	building-type	0x14054d320	0x14054e650	cstring	0x141652310	Track/Ramp (NE)
+reference	building-type	0x14054d320	0x14054e66f	cstring	0x141652300	Track/Ramp (NW)
+reference	building-type	0x14054d320	0x14054e68e	cstring	0x1416522f0	Track/Ramp (SE)
+reference	building-type	0x14054d320	0x14054e6ad	cstring	0x1416522e0	Track/Ramp (SW)
+reference	building-type	0x14054d320	0x14054e6cc	cstring	0x1416522d0	Track/Ramp (EW)
+reference	building-type	0x14054d320	0x14054e6eb	cstring	0x1416522b8	Track/Ramp (NSE)
+reference	building-type	0x14054d320	0x14054e70a	cstring	0x1416522a0	Track/Ramp (NSW)
+reference	building-type	0x14054d320	0x14054e729	cstring	0x141652288	Track/Ramp (NEW)
+reference	building-type	0x14054d320	0x14054e748	cstring	0x1416523a0	Track/Ramp (SEW)
+reference	building-type	0x14054d320	0x14054e767	cstring	0x141652388	Track/Ramp (NSEW)
+reference	building-type	0x14054d320	0x14054e786	cstring	0x141652378	Construction
+reference	building-type	0x14054d320	0x14054e7a5	cstring	0x141652360	Display Furniture
+classic	building-type	0x14054ad40	0x14054ad8b	cstring	0x14164cb94	Shop
+classic	building-type	0x14054ad40	0x14054ada7	cstring	0x14164cb88	Trade Depot
+classic	building-type	0x14054ad40	0x14054adc3	cstring	0x14164cb7c	Nest
+classic	building-type	0x14054ad40	0x14054addf	cstring	0x14164cb70	Nest Box
+classic	building-type	0x14054ad40	0x14054adfb	cstring	0x1416281c8	Bookcase
+classic	building-type	0x14054ad40	0x14054ae17	cstring	0x14164cb60	Offering Place
+classic	building-type	0x14054ad40	0x14054ae33	cstring	0x141627f24	Hive
+classic	building-type	0x14054ad40	0x14054ae4f	cstring	0x14164cb58	Wagon
+classic	building-type	0x14054ad40	0x14054ae84	cstring	0x14164cb40	Carpenter's Workshop
+classic	building-type	0x14054ad40	0x14054ae9d	cstring	0x14164cc08	Farmer's Workshop
+classic	building-type	0x14054ad40	0x14054aeb2	cstring	0x141627cb8	Ashery
+classic	building-type	0x14054ad40	0x14054af0e	cstring	0x141627f98	Stoneworker
+classic	building-type	0x14054ad40	0x14054af5d	cstring	0x14164cbe8	Craftsman
+classic	building-type	0x14054ad40	0x14054afac	cstring	0x141628018	Jeweler
+classic	building-type	0x14054ad40	0x14054b053	cstring	0x141628050	Metalsmith
+classic	building-type	0x14054ad40	0x14054b068	cstring	0x14164cbd8	's Forge
+classic	building-type	0x14054ad40	0x14054b087	cstring	0x14164cbc8	Magma Forge
+classic	building-type	0x14054ad40	0x14054b0e0	cstring	0x14162800c	Bowyer
+classic	building-type	0x14054ad40	0x14054b187	cstring	0x141628028	Mechanic
+classic	building-type	0x14054ad40	0x14054b19c	cstring	0x14164cbf8	's Workshop
+classic	building-type	0x14054ad40	0x14054b1bb	cstring	0x14164cbb8	Siege Workshop
+classic	building-type	0x14054ad40	0x14054b217	cstring	0x141616fc8	Butcher
+classic	building-type	0x14054ad40	0x14054b229	cstring	0x14164cba0	Leather Works
+classic	building-type	0x14054ad40	0x14054b285	cstring	0x141627f64	Tanner
+classic	building-type	0x14054ad40	0x14054b2d1	cstring	0x141627f5c	Dyer
+classic	building-type	0x14054ad40	0x14054b378	cstring	0x14164cc80	Clothier
+classic	building-type	0x14054ad40	0x14054b38d	cstring	0x14164cbb0	's Shop
+classic	building-type	0x14054ad40	0x14054b3ac	cstring	0x141627f80	Fishery
+classic	building-type	0x14054ad40	0x14054b3cb	cstring	0x141627f6c	Still
+classic	building-type	0x14054ad40	0x14054b3ea	cstring	0x141627f48	Loom
+classic	building-type	0x14054ad40	0x14054b409	cstring	0x141627ee8	Quern
+classic	building-type	0x14054ad40	0x14054b428	cstring	0x141628410	Millstone
+classic	building-type	0x14054ad40	0x14054b447	cstring	0x141627f08	Vermin Catcher's Shop
+classic	building-type	0x14054ad40	0x14054b466	cstring	0x141627f78	Kitchen
+classic	building-type	0x14054ad40	0x14054b485	cstring	0x14164cc74	Tool
+classic	building-type	0x14054ad40	0x14054b51a	cstring	0x14164cc68	Workshop
+classic	building-type	0x14054ad40	0x14054b572	cstring	0x14164cc5c	Zone
+classic	building-type	0x14054ad40	0x14054b58e	cstring	0x14164cc50	Farm Plot
+classic	building-type	0x14054ad40	0x14054b5c3	cstring	0x141627ff8	Smelter
+classic	building-type	0x14054ad40	0x14054b5e2	cstring	0x14164cc40	Glass Furnace
+classic	building-type	0x14054ad40	0x14054b601	cstring	0x14164cc30	Wood Furnace
+classic	building-type	0x14054ad40	0x14054b620	cstring	0x141627fbc	Kiln
+classic	building-type	0x14054ad40	0x14054b63f	cstring	0x14164cc20	Magma Smelter
+classic	building-type	0x14054ad40	0x14054b65e	cstring	0x14164ccf8	Magma Glass Furnace
+classic	building-type	0x14054ad40	0x14054b67d	cstring	0x14164cce8	Magma Kiln
+classic	building-type	0x14054ad40	0x14054b72c	cstring	0x14164cce0	Furnace
+classic	building-type	0x14054ad40	0x14054b75e	cstring	0x1416280b4	Lever
+classic	building-type	0x14054ad40	0x14054b77d	cstring	0x14164ccd0	Pressure Plate
+classic	building-type	0x14054ad40	0x14054b79c	cstring	0x14164ccc0	Cage Trap
+classic	building-type	0x14054ad40	0x14054b7bb	cstring	0x14164ccb0	Stone-Fall Trap
+classic	building-type	0x14054ad40	0x14054b7da	cstring	0x14164cca0	Weapon Trap
+classic	building-type	0x14054ad40	0x14054b7f9	cstring	0x14164cc90	Track Stop
+classic	building-type	0x14054ad40	0x14054b818	cstring	0x14164cfb0	Trap
+classic	building-type	0x14054ad40	0x14054b84f	cstring	0x14164cf90	Siege Engine
+classic	building-type	0x14054ad40	0x14054b868	cstring	0x14164cfa0	Bolt Thrower
+classic	building-type	0x14054ad40	0x14054b881	cstring	0x1416282d8	Ballista
+classic	building-type	0x14054ad40	0x14054b8a0	cstring	0x141628308	Catapult
+classic	building-type	0x14054ad40	0x14054b8c5	cstring	0x141628158	Door
+classic	building-type	0x14054ad40	0x14054b8e1	cstring	0x14164cf80	Floor Hatch
+classic	building-type	0x14054ad40	0x14054b8fd	cstring	0x14164cf70	Wall Grate
+classic	building-type	0x14054ad40	0x14054b919	cstring	0x14164cf60	Floor Grate
+classic	building-type	0x14054ad40	0x14054b935	cstring	0x14164cf50	Vertical Bars
+classic	building-type	0x14054ad40	0x14054b951	cstring	0x14164cf40	Floor Bars
+classic	building-type	0x14054ad40	0x14054b96d	cstring	0x1416283c0	Floodgate
+classic	building-type	0x14054ad40	0x14054b989	cstring	0x14164d030	Restraint
+classic	building-type	0x14054ad40	0x14054b9a5	cstring	0x141628364	Cage
+classic	building-type	0x14054ad40	0x14054b9c1	cstring	0x141628080	Support
+classic	building-type	0x14054ad40	0x14054b9dd	cstring	0x14164d020	Gear Assembly
+classic	building-type	0x14054ad40	0x14054b9f9	cstring	0x141628350	Rollers
+classic	building-type	0x14054ad40	0x14054ba15	cstring	0x14164d010	Horizontal Axle
+classic	building-type	0x14054ad40	0x14054ba31	cstring	0x14164d000	Vertical Axle
+classic	building-type	0x14054ad40	0x14054ba4d	cstring	0x14164cfe8	Upright Spear/Spike
+classic	building-type	0x14054ad40	0x14054ba69	cstring	0x141628130	Instrument
+classic	building-type	0x14054ad40	0x14054ba85	cstring	0x14164cfd8	Archery Target
+classic	building-type	0x14054ad40	0x14054baa1	cstring	0x14164cfc8	Screw Pump
+classic	building-type	0x14054ad40	0x14054babd	cstring	0x14164cfb8	Water Wheel
+classic	building-type	0x14054ad40	0x14054bad9	cstring	0x1416283d0	Windmill
+classic	building-type	0x14054ad40	0x14054baef	cstring	0x14164d0a8	Burial Receptacle
+classic	building-type	0x14054ad40	0x14054bb01	cstring	0x14164d09c	Seat
+classic	building-type	0x14054ad40	0x14054bb1d	cstring	0x14164d090	Animal Trap
+classic	building-type	0x14054ad40	0x14054bb39	cstring	0x141627f2c	Table
+classic	building-type	0x14054ad40	0x14054bb55	cstring	0x141628188	Cabinet
+classic	building-type	0x14054ad40	0x14054bb71	cstring	0x14164d080	Weapon Rack
+classic	building-type	0x14054ad40	0x14054bb8d	cstring	0x14164d070	Armor Stand
+classic	building-type	0x14054ad40	0x14054bba9	cstring	0x14164d060	Container
+classic	building-type	0x14054ad40	0x14054bbc5	cstring	0x141627f20	Bed
+classic	building-type	0x14054ad40	0x14054bbe1	cstring	0x14164d050	Traction Bench
+classic	building-type	0x14054ad40	0x14054bbfd	cstring	0x14164d040	Dirt Road
+classic	building-type	0x14054ad40	0x14054bc19	cstring	0x14164d130	Paved Road
+classic	building-type	0x14054ad40	0x14054bc35	cstring	0x1416280bc	Bridge
+classic	building-type	0x14054ad40	0x14054bc51	cstring	0x1416280ac	Well
+classic	building-type	0x14054ad40	0x14054bc6d	cstring	0x1416281b8	Statue
+classic	building-type	0x14054ad40	0x14054bc89	cstring	0x141628198	Slab
+classic	building-type	0x14054ad40	0x14054bca5	cstring	0x14164d120	Glass Window
+classic	building-type	0x14054ad40	0x14054bcc1	cstring	0x14164d110	Gem Window
+classic	building-type	0x14054ad40	0x14054bcdd	cstring	0x14164d100	Stockpile
+classic	building-type	0x14054ad40	0x14054bd0c	cstring	0x141628170	Wall
+classic	building-type	0x14054ad40	0x14054bd2b	cstring	0x141628160	Reinforced Wall
+classic	building-type	0x14054ad40	0x14054bd4a	cstring	0x141628180	Floor
+classic	building-type	0x14054ad40	0x14054bd69	cstring	0x14164d0f0	Up Stair
+classic	building-type	0x14054ad40	0x14054bd88	cstring	0x14164d0e0	Down Stair
+classic	building-type	0x14054ad40	0x14054bda7	cstring	0x14164d0d0	Up/Down Stair
+classic	building-type	0x14054ad40	0x14054bdc6	cstring	0x141628178	Ramp
+classic	building-type	0x14054ad40	0x14054bde5	cstring	0x141628100	Fortification
+classic	building-type	0x14054ad40	0x14054be04	cstring	0x14164d0c0	Track (N)
+classic	building-type	0x14054ad40	0x14054be23	cstring	0x14164cd80	Track (S)
+classic	building-type	0x14054ad40	0x14054be42	cstring	0x14164cd70	Track (E)
+classic	building-type	0x14054ad40	0x14054be61	cstring	0x14164cd60	Track (W)
+classic	building-type	0x14054ad40	0x14054be80	cstring	0x14164cd50	Track (NS)
+classic	building-type	0x14054ad40	0x14054be9f	cstring	0x14164cd40	Track (NE)
+classic	building-type	0x14054ad40	0x14054bebe	cstring	0x14164cd30	Track (NW)
+classic	building-type	0x14054ad40	0x14054bedd	cstring	0x14164cd20	Track (SE)
+classic	building-type	0x14054ad40	0x14054befc	cstring	0x14164cd10	Track (SW)
+classic	building-type	0x14054ad40	0x14054bf1b	cstring	0x14164ce00	Track (EW)
+classic	building-type	0x14054ad40	0x14054bf3a	cstring	0x14164cdf0	Track (NSE)
+classic	building-type	0x14054ad40	0x14054bf59	cstring	0x14164cde0	Track (NSW)
+classic	building-type	0x14054ad40	0x14054bf78	cstring	0x14164cdd0	Track (NEW)
+classic	building-type	0x14054ad40	0x14054bf97	cstring	0x14164cdc0	Track (SEW)
+classic	building-type	0x14054ad40	0x14054bfb6	cstring	0x14164cdb0	Track (NSEW)
+classic	building-type	0x14054ad40	0x14054bfd5	cstring	0x14164cda0	Track/Ramp (N)
+classic	building-type	0x14054ad40	0x14054bff4	cstring	0x14164cd90	Track/Ramp (S)
+classic	building-type	0x14054ad40	0x14054c013	cstring	0x14164ce80	Track/Ramp (E)
+classic	building-type	0x14054ad40	0x14054c032	cstring	0x14164ce70	Track/Ramp (W)
+classic	building-type	0x14054ad40	0x14054c051	cstring	0x14164ce60	Track/Ramp (NS)
+classic	building-type	0x14054ad40	0x14054c070	cstring	0x14164ce50	Track/Ramp (NE)
+classic	building-type	0x14054ad40	0x14054c08f	cstring	0x14164ce40	Track/Ramp (NW)
+classic	building-type	0x14054ad40	0x14054c0ae	cstring	0x14164ce30	Track/Ramp (SE)
+classic	building-type	0x14054ad40	0x14054c0cd	cstring	0x14164ce20	Track/Ramp (SW)
+classic	building-type	0x14054ad40	0x14054c0ec	cstring	0x14164ce10	Track/Ramp (EW)
+classic	building-type	0x14054ad40	0x14054c10b	cstring	0x14164cf28	Track/Ramp (NSE)
+classic	building-type	0x14054ad40	0x14054c12a	cstring	0x14164cf10	Track/Ramp (NSW)
+classic	building-type	0x14054ad40	0x14054c149	cstring	0x14164cef8	Track/Ramp (NEW)
+classic	building-type	0x14054ad40	0x14054c168	cstring	0x14164cee0	Track/Ramp (SEW)
+classic	building-type	0x14054ad40	0x14054c187	cstring	0x14164cec8	Track/Ramp (NSEW)
+classic	building-type	0x14054ad40	0x14054c1a6	cstring	0x14164ceb8	Construction
+classic	building-type	0x14054ad40	0x14054c1c5	cstring	0x14164cea0	Display Furniture
 reference	historical-figure-lookup	0x14075a580	0x14075a5e7	cstring	0x1416a1dac	an 
 reference	historical-figure-lookup	0x14075a580	0x14075a5f6	cstring	0x1415ed620	a 
 reference	historical-figure-lookup	0x14075a580	0x14075a61a	cstring	0x141646634	mother

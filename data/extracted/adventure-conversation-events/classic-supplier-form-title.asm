@@ -1,4 +1,5 @@
 ; classic PE:6a70b91c:0270a000; form-title 0x140a91760..0x140a91f22
+; native unwind regions: 0x140a91760..0x140a91f22
 0x140a91760: mov    QWORD PTR [rsp+0x18],rbx
 0x140a91765: push   rbp
 0x140a91766: push   rsi

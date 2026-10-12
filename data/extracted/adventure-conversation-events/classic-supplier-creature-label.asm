@@ -1,4 +1,5 @@
 ; classic PE:6a70b91c:0270a000; creature-label 0x140aa0c50..0x140aa0e13
+; native unwind regions: 0x140aa0c50..0x140aa0e13
 0x140aa0c50: mov    QWORD PTR [rsp+0x10],rsi
 0x140aa0c55: push   rdi
 0x140aa0c56: sub    rsp,0x20

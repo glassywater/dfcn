@@ -1,4 +1,5 @@
 ; classic PE:6a70b91c:0270a000; site-identity 0x140b90970..0x140b90aca
+; native unwind regions: 0x140b90970..0x140b90aca
 0x140b90970: mov    QWORD PTR [rsp+0x8],rbx
 0x140b90975: mov    QWORD PTR [rsp+0x20],rsi
 0x140b9097a: push   rdi
