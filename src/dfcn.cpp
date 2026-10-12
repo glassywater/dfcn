@@ -92,6 +92,25 @@ static bool capture_native_history_age_title(std::string_view base_title,
 static uint64_t native_history_entity_parent_revision(uint64_t draw_epoch);
 static uint64_t native_identity_translation_context();
 static bool native_history_worldgen_page();
+#ifdef _WIN32
+// renderer::display consumes one completed native page. Resolve its screen
+// chain once for that draw, instead of repeating guarded reads per glyph.
+// Calls outside the verified display boundary retain the live lookup.
+static thread_local const bool *g_native_display_worldgen_page = nullptr;
+class NativeWorldgenDisplayScope {
+    const bool *previous_ = g_native_display_worldgen_page;
+    bool worldgen_page_ = native_history_worldgen_page();
+public:
+    NativeWorldgenDisplayScope() { g_native_display_worldgen_page = &worldgen_page_; }
+    ~NativeWorldgenDisplayScope() { g_native_display_worldgen_page = previous_; }
+    NativeWorldgenDisplayScope(const NativeWorldgenDisplayScope &) = delete;
+    NativeWorldgenDisplayScope &operator=(const NativeWorldgenDisplayScope &) = delete;
+};
+static bool native_display_worldgen_page() {
+    return g_native_display_worldgen_page
+        ? *g_native_display_worldgen_page : native_history_worldgen_page();
+}
+#endif
 static NativeModDetails native_mod_details(bool background_owner = false);
 static std::optional<std::string> native_main_menu_copyright();
 static bool native_gameplay_map_screen(bool include_world = false);
@@ -4188,6 +4207,7 @@ private:
     size_t newly_collected_untranslated_ = 0;
     bool untranslated_limit_reported_ = false;
     bool frame_prepared_ = false;
+    bool fortress_map_frame_ = false;
     std::vector<Match> prepared_matches_;
     std::vector<unsigned char> adventure_before_hover_grid_;
     std::vector<uint32_t> adventure_before_hover_flags_;
@@ -5025,6 +5045,8 @@ private:
                                     const unsigned char *screen_override = nullptr) const;
     std::vector<Match> find_native_matches(int only_y,
         const unsigned char *screen_override) const;
+    bool find_fortress_map_matches(int only_y, const unsigned char *screen_override,
+        std::vector<Match> &result) const;
     std::vector<Match> find_native_worldgen_matches() const;
     std::vector<Match> find_dfhack_matches(int only_y) const;
     void normalize_dfhack_layer_matches(std::vector<Match> &matches) const;
@@ -7178,6 +7200,7 @@ void Overlay::reset_render_state() {
     reset_worldgen_event_cache();
     destroy_textures();
     frame_prepared_ = false;
+    fortress_map_frame_ = false;
     prepared_matches_.clear();
     suppress_base_.clear();
     suppress_top_.clear();
@@ -16745,6 +16768,7 @@ static void native_ui_paint_grid(NativeUiLayerStorage &layer, SDL_Renderer *rend
     const std::vector<Match> &matches, const SDL_Rect *opaque_frame = nullptr);
 #include "native_help_layer_translation.inc"
 #include "native_info_layer_matching.inc"
+#include "fortress_map_matching.inc"
 #include "native_notification_layer_matching.inc"
 #include "native_pause_layer_matching.inc"
 #include "native_stocks_layer_translation.inc"
@@ -16840,6 +16864,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     // those pages through the full-screen semantic pipeline a second time.
     if (native_info_background_view(gps_))
         return find_native_info_background_matches(only_y, screen_override);
+    if (find_fortress_map_matches(only_y, screen_override, result)) return result;
     NativePanelReadScope panel_reads(gps_);
     refresh_dfhack_raw_creature_labels();
     if (!NativeUiReadScope::active) {
@@ -25827,13 +25852,14 @@ bool Overlay::prepare_immediate_row(bool top_layer, int y) {
     // Cross-page ownership and mod-list geometry are shared by all glyph
     // rows in this native SDL draw.
     const bool isolated_management_background = native_info_background_view(gps_);
+    const bool fortress_map_hud = native_fortress_map_hud_view(gps_);
     if (immediate_context_epoch_ != draw_epoch_ ||
             immediate_context_screen_ != gps_->screen ||
             !character_overview_context_current() ||
-            (!isolated_management_background && !native_knowledge_frame_matches_)) {
+            (!isolated_management_background && !fortress_map_hud && !native_knowledge_frame_matches_)) {
         refresh_character_overview_context();
         immediate_mod_list_.reset();
-        if (!isolated_management_background) {
+        if (!isolated_management_background && !fortress_map_hud) {
             if (!native_knowledge_frame_matches_)
                 (void)native_knowledge_matches(-1, embark_pause_menu_matches());
             const auto layout = native_mod_list_layout(*gps_, [&](int x, int row) {
@@ -25856,22 +25882,53 @@ bool Overlay::prepare_immediate_row(bool top_layer, int y) {
     // otherwise an unchanged continuation such as `Fortification.` could
     // retain a stale suppression mask after the preceding event row changed.
     const auto &mod_list = immediate_mod_list_;
+    // The matcher excludes the native FPS counter. Its continually changing
+    // digits must not invalidate nearby translation masks and trigger another
+    // complete layer scan. Keep separate proofs for the raw and composed rows.
+    std::array<std::optional<std::pair<size_t, size_t>>, 2> raw_fps{}, base_fps{}, composed_fps{};
+    std::array<bool, 2> fps_read{};
     const auto grid_row_digest = [&](int context_y) {
+        if (context_y >= gps_->dimy - 2) {
+            const size_t slot = static_cast<size_t>(gps_->dimy - 1 - context_y);
+            if (!fps_read[slot]) {
+                std::string raw_row(gps_->dimx, ' '), base_row(gps_->dimx, ' ');
+                std::string composed_row(gps_->dimx, ' ');
+                for (int x = 0; x < gps_->dimx; ++x) {
+                    const size_t tile = static_cast<size_t>(x) * gps_->dimy + context_y;
+                    raw_row[x] = static_cast<char>(raw[tile * 8]);
+                    if (top_layer && gps_->screen) base_row[x] = static_cast<char>(gps_->screen[tile * 8]);
+                    bool composed_top = false;
+                    if (const auto *cell = cell_at(x, context_y, &composed_top))
+                        composed_row[x] = static_cast<char>(cell[0]);
+                }
+                raw_fps[slot] = native_fps_counter_span(raw_row);
+                base_fps[slot] = top_layer ? native_fps_counter_span(base_row) : raw_fps[slot];
+                composed_fps[slot] = native_fps_counter_span(composed_row);
+                fps_read[slot] = true;
+            }
+        }
         uint64_t digest = 1469598103934665603ULL;
         const auto append = [&](unsigned char value) {
             digest ^= value;
             digest *= 1099511628211ULL;
         };
+        const auto counter_cell = [&](const auto &spans, int x) {
+            if (context_y < gps_->dimy - 2) return false;
+            const auto &span = spans[static_cast<size_t>(gps_->dimy - 1 - context_y)];
+            return span && static_cast<size_t>(x) >= span->first &&
+                static_cast<size_t>(x) < span->second;
+        };
         for (int x = 0; x < gps_->dimx; ++x) {
             const size_t tile = static_cast<size_t>(x) * gps_->dimy + context_y;
             for (int channel = 0; channel <= 3; ++channel)
-                append(raw[tile * 8 + channel]);
+                append(counter_cell(raw_fps, x) ? 0 : raw[tile * 8 + channel]);
             // A mirrored top row also depends on its current base byte.
-            if (top_layer && gps_->screen) append(gps_->screen[tile * 8]);
+            if (top_layer && gps_->screen)
+                append(counter_cell(base_fps, x) ? 0 : gps_->screen[tile * 8]);
             bool composed_top = false;
             const unsigned char *composed = cell_at(x, context_y, &composed_top);
             for (int channel = 0; channel <= 3; ++channel)
-                append(composed ? composed[channel] : 0);
+                append(counter_cell(composed_fps, x) ? 0 : (composed ? composed[channel] : 0));
         }
         return digest;
     };
@@ -33299,6 +33356,7 @@ void Overlay::prepare_frame() {
     if (frame_prepared_) return;
     RenderTimingScope prepare_timing(render_timings_, config_.trace_render_timing, RenderTimingStage::Prepare);
     apply_requested_reload();
+    fortress_map_frame_ = false;
     prepared_matches_.clear();
     suppress_base_.clear();
     suppress_top_.clear();
@@ -33316,12 +33374,13 @@ void Overlay::prepare_frame() {
     }
     if (config_.enabled && face_ && !rules_.empty() && gps_ && gps_->screen &&
         gps_->dimx > 0 && gps_->dimx <= 1000 && gps_->dimy > 0 && gps_->dimy <= 1000) {
-        prepared_matches_ = find_matches();
+        fortress_map_frame_ = find_fortress_map_matches(-1, nullptr, prepared_matches_);
+        if (!fortress_map_frame_) prepared_matches_ = find_matches();
         const size_t cells = static_cast<size_t>(gps_->dimx) * gps_->dimy;
         // An isolated management panel owns its page recovery. The main
         // layer contains only the exposed HUD and must not recover covered
         // documents or scan both raw planes for unrelated page signatures.
-        if (!native_info_background_view(gps_)) {
+        if (!native_info_background_view(gps_) && !fortress_map_frame_) {
             recover_adventure_skill_rows();
 
             // Keep the economy panel drawable when its complete native fields
@@ -40586,7 +40645,7 @@ int Overlay::intercept_glyph_copy(SDL_Renderer *renderer, SDL_Texture *texture,
     if (!real_copy || !dest) return real_copy ? real_copy(renderer, texture, source, dest) : -1;
     if (native_worldgen_main_view(gps_)
 #ifdef _WIN32
-            || native_history_worldgen_page()
+            || native_display_worldgen_page()
 #endif
             )
         return real_copy(renderer, texture, source, dest);
@@ -42919,7 +42978,7 @@ void Overlay::render(SDL_Renderer *renderer) {
     const bool isolated_management_background = native_info_background_view(gps_);
     NativePanelReadScope panel_reads(gps_);
     publish_dfhack_stonesense_announcements();
-    const auto rendered_help_frames = !isolated_management_background &&
+    const auto rendered_help_frames = !isolated_management_background && !fortress_map_frame_ &&
         gps_ && gps_->dimx > 0 && gps_->dimx <= 1000 &&
         gps_->dimy > 0 && gps_->dimy <= 1000
         ? native_text_overlay_frames(*gps_) : std::vector<SDL_Rect>{};
@@ -42991,8 +43050,10 @@ void Overlay::render(SDL_Renderer *renderer) {
     }
     // Tall attack-target records retain their complete text column before
     // generic page layout can center names and statuses independently.
-    layout_adventure_target_rows(renderer);
-    layout_adventure_combat_fields(renderer);
+    if (!fortress_map_frame_) {
+        layout_adventure_target_rows(renderer);
+        layout_adventure_combat_fields(renderer);
+    }
     // Resolve native half-font rows before detaching a whole information card.
     // Empty duplicate spans still own suppression, but cannot become new rows.
     if (std::any_of(prepared_matches_.begin(), prepared_matches_.end(),
@@ -43019,7 +43080,8 @@ void Overlay::render(SDL_Renderer *renderer) {
         normalize_native_split_text();
     // A confirmation owns its title, colored warnings and all actions together.
     // Resolve it before UI messages are detached from ordinary captions.
-    auto save_confirmation = layout_save_confirmation(renderer);
+    auto save_confirmation = fortress_map_frame_ ? std::vector<Match>{}
+        : layout_save_confirmation(renderer);
     // Animal columns belong to the complete picker frame. Resolve them
     // before independent controls are detached or another page composer
     // short-circuits the generic structured-panel pass.
@@ -43093,7 +43155,7 @@ void Overlay::render(SDL_Renderer *renderer) {
     // Save records reuse button skins from other pages. Once their native
     // sort group or complete save-card signature owns this page, no build-menu
     // or prose pass may repack them.
-    if (isolated_management_background) {
+    if (isolated_management_background || fortress_map_frame_) {
         layout_calendar_headers(renderer);
         layout_fortress_header(renderer);
         layout_fortress_date(renderer);
@@ -43151,7 +43213,9 @@ void Overlay::render(SDL_Renderer *renderer) {
     prepared_matches_.insert(prepared_matches_.end(),
         std::make_move_iterator(tooltip_foreground.begin()),
         std::make_move_iterator(tooltip_foreground.end()));
-    if (!isolated_management_background) {
+    if (fortress_map_frame_) {
+        layout_map_hover(renderer);
+    } else if (!isolated_management_background) {
         layout_fortress_squad_creation(renderer);
         if (!native_squads_layer_hook_active()) layout_fortress_uniform_choices(renderer);
         for (Match &match : prepared_matches_) {
@@ -43676,62 +43740,65 @@ static void native_worldgen_present_layer(SDL_Renderer *renderer,
 extern "C" void dfcn_render_present(SDL_Renderer *renderer) {
     // A producer can reset or publish private UI output between individual
     // layer calls. Keep the page and every foreground layer in one snapshot
-    // until the completed composite has been presented.
-    TranslationStateScope translation;
+    // until the completed composite has been submitted to SDL. Native
+    // Present does not access translation state and may wait for the GPU.
     SlowBoundaryTiming boundary("present boundary");
-    apply_pending_arena_translated_search();
-    boundary.checkpoint("arena_search");
-    g_overlay.replay_deferred_resolution_glyphs(renderer, g_real_copy);
-    boundary.checkpoint("replay_glyphs");
-    g_overlay.render(renderer);
-    if (native_worldgen_main_view(native_graphics())) {
-        native_worldgen_present_layer(renderer, [](SDL_Renderer *worldgen_renderer) {
-            g_overlay.render_native_worldgen_layer(worldgen_renderer);
+    {
+        TranslationStateScope translation;
+        apply_pending_arena_translated_search();
+        boundary.checkpoint("arena_search");
+        g_overlay.replay_deferred_resolution_glyphs(renderer, g_real_copy);
+        boundary.checkpoint("replay_glyphs");
+        g_overlay.render(renderer);
+        if (native_worldgen_main_view(native_graphics())) {
+            native_worldgen_present_layer(renderer, [](SDL_Renderer *worldgen_renderer) {
+                g_overlay.render_native_worldgen_layer(worldgen_renderer);
+            });
+            native_help_present_layers(renderer, [](SDL_Renderer *help_renderer) {
+                g_overlay.render_native_help_layer(help_renderer);
+            });
+        } else {
+            native_info_present_layer(renderer, [](SDL_Renderer *info_renderer) {
+                g_overlay.render_native_info_layer(info_renderer);
+            });
+            native_stocks_present_layer(renderer, [](SDL_Renderer *stocks_renderer) {
+                g_overlay.render_native_stocks_layer(stocks_renderer);
+            });
+            native_squads_present_layer(renderer, [](SDL_Renderer *squads_renderer) {
+                g_native_squads_overlay.render_native_squads_layer(squads_renderer, g_overlay);
+            });
+            native_reports_present_layer(renderer, [](SDL_Renderer *reports_renderer) {
+                g_overlay.render_native_reports_layer(reports_renderer);
+            });
+            native_notification_present_layer(renderer, [](SDL_Renderer *notification_renderer) {
+                g_overlay.render_native_notification_layer(notification_renderer);
+            });
+            // The Fortress renderer submits Escape after its notification hovers.
+            // Preserve that modal ownership when compositing the private outputs.
+            native_pause_present_layer(renderer, [](SDL_Renderer *pause_renderer) {
+                g_overlay.render_native_pause_layer(pause_renderer);
+            });
+            native_help_present_layers(renderer, [](SDL_Renderer *help_renderer) {
+                g_overlay.render_native_help_layer(help_renderer);
+            });
+            native_tooltip_present_layer(renderer, [](SDL_Renderer *tooltip_renderer) {
+                g_overlay.render_native_tooltip_layer(tooltip_renderer);
+            });
+        }
+        boundary.checkpoint("overlay_render");
+        native_dfhack_present_layer(renderer, [](SDL_Renderer *layer_renderer) {
+            g_overlay.render_dfhack_layer(layer_renderer);
         });
-        native_help_present_layers(renderer, [](SDL_Renderer *help_renderer) {
-            g_overlay.render_native_help_layer(help_renderer);
-        });
-    } else {
-        native_info_present_layer(renderer, [](SDL_Renderer *info_renderer) {
-            g_overlay.render_native_info_layer(info_renderer);
-        });
-        native_stocks_present_layer(renderer, [](SDL_Renderer *stocks_renderer) {
-            g_overlay.render_native_stocks_layer(stocks_renderer);
-        });
-        native_squads_present_layer(renderer, [](SDL_Renderer *squads_renderer) {
-            g_native_squads_overlay.render_native_squads_layer(squads_renderer, g_overlay);
-        });
-        native_reports_present_layer(renderer, [](SDL_Renderer *reports_renderer) {
-            g_overlay.render_native_reports_layer(reports_renderer);
-        });
-        native_notification_present_layer(renderer, [](SDL_Renderer *notification_renderer) {
-            g_overlay.render_native_notification_layer(notification_renderer);
-        });
-        // The Fortress renderer submits Escape after its notification hovers.
-        // Preserve that modal ownership when compositing the private outputs.
-        native_pause_present_layer(renderer, [](SDL_Renderer *pause_renderer) {
-            g_overlay.render_native_pause_layer(pause_renderer);
-        });
-        native_help_present_layers(renderer, [](SDL_Renderer *help_renderer) {
-            g_overlay.render_native_help_layer(help_renderer);
-        });
-        native_tooltip_present_layer(renderer, [](SDL_Renderer *tooltip_renderer) {
-            g_overlay.render_native_tooltip_layer(tooltip_renderer);
-        });
+        boundary.checkpoint("dfhack_layer");
+        apply_pending_name_editor_search();
+        boundary.checkpoint("name_search");
+        g_overlay.render_ime_popup(renderer);
+        boundary.checkpoint("ime_popup");
+        // Only a newly drawn native frame consumes the caption generation.
+        // Repeated Present calls retain the last actual native writer evidence.
+        if (g_overlay.native_frame_submitted()) advance_embark_item_capture_epoch();
+        boundary.checkpoint("capture_epoch");
     }
-    boundary.checkpoint("overlay_render");
-    native_dfhack_present_layer(renderer, [](SDL_Renderer *layer_renderer) {
-        g_overlay.render_dfhack_layer(layer_renderer);
-    });
-    boundary.checkpoint("dfhack_layer");
-    apply_pending_name_editor_search();
-    boundary.checkpoint("name_search");
-    g_overlay.render_ime_popup(renderer);
-    boundary.checkpoint("ime_popup");
-    // Only a newly drawn native frame consumes the caption generation.
-    // Repeated Present calls retain the last actual native writer evidence.
-    if (g_overlay.native_frame_submitted()) advance_embark_item_capture_epoch();
-    boundary.checkpoint("capture_epoch");
     if (g_real_present) g_real_present(renderer);
     boundary.checkpoint("native_present");
 }

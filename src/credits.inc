@@ -417,15 +417,36 @@ void Overlay::draw_main_menu_branding(SDL_Renderer *renderer) {
         const int left = logo.x + logo.w + std::max(1, label_height / 2);
         const int top = logo.y + art_height - byayoi_sprite::height * cell_size;
         const int sprite_x = left + (logo.w - width) / 2;
-        for (int y = 0; y < byayoi_sprite::height; ++y) {
-            for (int x = 0; x < byayoi_sprite::width; ++x) {
-                const auto &color = byayoi_sprite::palette[byayoi_sprite::pixels[y][x]];
-                if (!color.a) continue;
-                SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
-                const SDL_Rect cell{sprite_x + x * cell_size, top + y * cell_size,
-                    cell_size, cell_size};
-                SDL_RenderFillRect(renderer, &cell);
+        // The opaque sprite runs are disjoint. Build their unscaled geometry
+        // once, then submit one batch per palette colour at the native cell
+        // scale instead of changing draw colour and queuing every pixel.
+        static const auto sprite_runs = [] {
+            std::array<std::vector<SDL_Rect>, std::size(byayoi_sprite::palette)> runs;
+            for (int y = 0; y < byayoi_sprite::height; ++y) {
+                for (int x = 0; x < byayoi_sprite::width;) {
+                    const auto index = byayoi_sprite::pixels[y][x];
+                    const int start = x++;
+                    while (x < byayoi_sprite::width &&
+                        byayoi_sprite::pixels[y][x] == index) ++x;
+                    if (byayoi_sprite::palette[index].a)
+                        runs[index].push_back({start, y, x - start, 1});
+                }
             }
+            return runs;
+        }();
+        std::array<SDL_Rect, byayoi_sprite::width * byayoi_sprite::height> placed_runs;
+        for (size_t index = 0; index < sprite_runs.size(); ++index) {
+            const auto &runs = sprite_runs[index];
+            if (runs.empty()) continue;
+            for (size_t run = 0; run < runs.size(); ++run) {
+                const auto &source = runs[run];
+                placed_runs[run] = {sprite_x + source.x * cell_size,
+                    top + source.y * cell_size, source.w * cell_size,
+                    source.h * cell_size};
+            }
+            const auto &color = byayoi_sprite::palette[index];
+            SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
+            SDL_RenderFillRects(renderer, placed_runs.data(), static_cast<int>(runs.size()));
         }
         const SDL_Rect label{left, logo.y + art_height, logo.w, label_height};
         SDL_SetRenderDrawColor(renderer, 0, 174, 220, 255);

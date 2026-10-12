@@ -83,8 +83,8 @@ static void remember_native_unit_identity(uintptr_t owner, std::string_view sour
     // fields were not captured. An empty translation must never claim and
     // suppress that native name. Replace any old binding for this owner with
     // its current native spelling instead.
-    const std::string resolved_target = target.empty()
-        ? native_text_to_utf8(source) : std::string(target);
+    const std::string native_target = target.empty() ? native_text_to_utf8(source) : std::string{};
+    const std::string_view resolved_target = target.empty() ? std::string_view(native_target) : target;
     std::lock_guard<std::mutex> lock(g_native_unit_identity_mutex);
     const auto epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
     if (g_native_unit_identity_epoch != epoch) {
@@ -94,10 +94,17 @@ static void remember_native_unit_identity(uintptr_t owner, std::string_view sour
         g_native_unit_identity_epoch = epoch;
         g_native_unit_identity_revision.fetch_add(1, std::memory_order_release);
     }
+    const auto previous = g_native_unit_identity_owners.find(owner);
+    if (previous != g_native_unit_identity_owners.end() &&
+            previous->second.source == source && previous->second.target == resolved_target &&
+            previous->second.unit_owner == unit_owner &&
+            previous->second.english_name == english_name &&
+            previous->second.character_header == character_header)
+        return;
     if (g_native_unit_identity_owners.size() >= 8192 &&
         !g_native_unit_identity_owners.contains(owner)) return;
     g_native_unit_identity_owners[owner] = {
-        std::string(source), resolved_target, unit_owner, english_name, character_header};
+        std::string(source), std::string(resolved_target), unit_owner, english_name, character_header};
     g_native_unit_identity_revision.fetch_add(1, std::memory_order_release);
     uint64_t context = g_native_unit_identity_context.load(std::memory_order_relaxed);
     const auto remember_source = [&](const std::string &key) {
