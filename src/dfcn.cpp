@@ -12295,6 +12295,11 @@ std::optional<std::string> Overlay::translate_ui_message_capture(
             const auto creature = translate_creature_label(label);
             if (translation_complete_with_native_nicknames(creature, label))
                 return *creature + status;
+            // b6ca30 emits appearance + caste + occupation without a name
+            // or article for unidentified conversation participants. The
+            // whole role must resolve before probing its final word as a name.
+            const auto role = translate_unit_profession(label, false);
+            if (complete(role)) return *role + status;
             // Native nickname punctuation belongs to one name, including
             // commas and "and". Only separators outside it divide identities.
             bool nickname = false, has_comma = false, has_conjunction = false;
@@ -12986,7 +12991,7 @@ static std::string_view item_number_suffix(std::string_view source) {
     // complete item designation, never to its creature or material noun.
     for (const auto &[left, right] : {
             std::pair<std::string_view, std::string_view>{" [", "]"},
-            {" (%", ")"}, {" <#", ">"}, {" x", ""}}) {
+            {" (%", ")"}, {" (", "%)"}, {" <#", ">"}, {" x", ""}}) {
         if (!source.ends_with(right)) continue;
         const size_t at = source.rfind(left);
         if (at == std::string_view::npos) continue;
@@ -29022,15 +29027,16 @@ static std::optional<std::string> translate_embark_toy_item_name(
 
 static std::optional<std::string> translate_storage_container_item_name(
         std::string_view source) {
-    // Filled barrels, bags, bins and pots put contents first and vessel material
+    // Filled vessels put contents first and vessel material
     // in parentheses. Bind these roles before the generic equipment parser can
     // mistake a plant/metal word inside the contents for the vessel material.
     // All nouns still come from the reviewed dictionary and material grammar.
     const std::string folded_source = lower(std::string(source));
-    if (folded_source.find("barrel") == std::string::npos &&
-        folded_source.find("bag") == std::string::npos &&
-        folded_source.find("bin") == std::string::npos &&
-        folded_source.find("pot") == std::string::npos)
+    constexpr std::string_view vessel_nouns[] = {
+        "barrel", "bag", "bin", "pot", "waterskin", "flask", "vial",
+        "bucket", "goblet", "cup", "mug", "jug", "pouch"};
+    if (std::none_of(std::begin(vessel_nouns), std::end(vessel_nouns),
+            [&](std::string_view noun) { return folded_source.find(noun) != std::string::npos; }))
         return std::nullopt;
     source = trim_view(source);
 
@@ -29053,12 +29059,14 @@ static std::optional<std::string> translate_storage_container_item_name(
     size_t at = std::string::npos;
     size_t end = 0;
     std::string_view container_type;
-    for (const std::string_view noun : {"barrel", "bag", "bin", "pot"}) {
+    for (const std::string_view noun : vessel_nouns) {
         const size_t candidate = folded.rfind(noun);
         if (candidate == std::string::npos ||
             (candidate > 0 && folded[candidate - 1] != ' ')) continue;
         size_t candidate_end = candidate + noun.size();
-        if (candidate_end < folded.size() && folded[candidate_end] == 's')
+        if (noun == "pouch" && folded.substr(candidate_end, 2) == "es")
+            candidate_end += 2;
+        else if (candidate_end < folded.size() && folded[candidate_end] == 's')
             ++candidate_end;
         if (candidate_end < folded.size() && folded[candidate_end] != ' ')
             continue;
@@ -29071,18 +29079,37 @@ static std::optional<std::string> translate_storage_container_item_name(
     if (at == std::string::npos) return std::nullopt;
 
     const bool is_bag = container_type == "bag";
+    const bool portable_vessel = container_type == "waterskin" ||
+        container_type == "flask" || container_type == "vial" ||
+        container_type == "bucket" || container_type == "goblet" ||
+        container_type == "cup" || container_type == "mug" ||
+        container_type == "jug" || container_type == "pouch";
+    const std::string_view noun_scope =
+        container_type == "waterskin" || container_type == "vial" ? "flask" :
+        container_type == "cup" || container_type == "mug" ? "goblet" :
+        container_type == "pouch" ? "tool" : container_type;
     // Fold only the vessel keyword. Owner names and authored nicknames in
     // material/content fields must retain the original bytes and spacing.
     const std::string before(trim_view(designation.item.substr(0, at)));
     const std::string after(trim_view(designation.item.substr(end)));
     // A bare bag retains its existing textile grammar; content-only group
     // headings still use the same filled-container composition below.
-    if (is_bag && after.empty() && before.empty()) return std::nullopt;
+    if ((is_bag || portable_vessel) && after.empty() && before.empty()) return std::nullopt;
     std::string material_source;
     std::string contents_source;
     std::string size_target;
     std::optional<std::string> material_target;
     std::optional<std::string> contents_target;
+    const auto translate_contents = [](std::string_view value) -> std::optional<std::string> {
+        // Native item getters capitalize category headings such as Mixed.
+        // Fold only an exact scoped literal; material owners and names retain
+        // their original bytes in the full contents grammar.
+        if (const auto heading = RULESETS.compose_bound_rule(
+                "::items::storage_contents", lower(std::string(value)))) return heading;
+        std::vector<size_t> origins;
+        return RULESETS.translate_with_origins(
+            native_text_to_utf8(value), "::items::storage_contents", origins);
+    };
     if (!after.empty()) {
         // Require the whole trailing field. In particular, barrel drums and
         // unrelated prose must never be treated as storage vessels.
@@ -29117,14 +29144,12 @@ static std::optional<std::string> translate_storage_container_item_name(
         if (material_target) {
             // Empty bags must keep the same textile/animal-material grammar
             // used when the filled bag below rebuilds its own vessel name.
-            if (is_bag) return std::nullopt;
+            if (is_bag || portable_vessel) return std::nullopt;
             material_source = before;
         } else {
             // Preserve material-less content headings previously accepted by
             // TOML, but never treat an arbitrary adjective as stored goods.
-            std::vector<size_t> origins;
-            contents_target = RULESETS.translate_with_origins(
-                native_text_to_utf8(before), "::items::storage_contents", origins);
+            contents_target = translate_contents(before);
             if (!contents_target) return std::nullopt;
             contents_source = before;
         }
@@ -29162,7 +29187,7 @@ static std::optional<std::string> translate_storage_container_item_name(
         // The vessel role is already established. Its bare noun must bypass
         // the complete container callback, which would receive the same input.
         const auto noun = translate_term(noun_source,
-            "::items::" + std::string(container_type) + "::main");
+            "::items::" + std::string(noun_scope) + "::main");
         if (!noun) return std::nullopt;
         if (!material_source.empty()) {
             if (!material_target) material_target =
@@ -29178,11 +29203,7 @@ static std::optional<std::string> translate_storage_container_item_name(
         // food preparation, not the editor command. Use the same complete
         // contents grammar with and without the material parenthesis, before
         // an ordinary dictionary homonym can claim the field.
-        if (!contents_target) {
-            std::vector<size_t> origins;
-            contents_target = RULESETS.translate_with_origins(
-                native_text_to_utf8(contents_source), "::items::storage_contents", origins);
-        }
+        if (!contents_target) contents_target = translate_contents(contents_source);
         if (!contents_target) contents_target =
             translate_term(contents_source, "::items::storage_contents");
         if (!contents_target) return std::nullopt;

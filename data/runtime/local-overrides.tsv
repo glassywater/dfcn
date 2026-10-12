@@ -2947,6 +2947,15 @@ Storage container packing: barrel	桶装	wi
 Storage container packing: bag	袋装	wi
 Storage container packing: bin	箱装	wi
 Storage container packing: pot	罐装	wi
+Storage container packing: waterskin	袋装	wi
+Storage container packing: flask	瓶装	wi
+Storage container packing: vial	瓶装	wi
+Storage container packing: bucket	桶装	wi
+Storage container packing: goblet	杯装	wi
+Storage container packing: cup	杯装	wi
+Storage container packing: mug	杯装	wi
+Storage container packing: jug	壶装	wi
+Storage container packing: pouch	袋装	wi
 # Item sheet navigation: translate the complete button, not just View.
 View stockpile	查看储物堆	wi
 Stockpile #{d}	储物堆#{d}	wt

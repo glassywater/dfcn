@@ -421,6 +421,15 @@ std::optional<std::string> Overlay::translate_announcement_combat(
             return finish(translation_complete_with_native_nicknames(result, input)
                 ? std::move(result) : std::nullopt);
         }
+        if (scope == "$announcement-item") {
+            // e68020 supplies the complete live item caption: coin issuer,
+            // stack count, contents, vessel material and designation marks.
+            auto result = translate_item_description_term(input);
+            if (!translation_complete_with_native_nicknames(result, input))
+                result = translate_legends_item(input);
+            return finish(translation_complete_with_native_nicknames(result, input)
+                ? std::move(result) : std::nullopt);
+        }
         if (scope == "$item") return finish(translate_legends_item(input));
         if (scope == "$body") return finish(translate_legends_anatomy(input));
         if (scope == "$creature") return finish(translate_creature_reference(input));

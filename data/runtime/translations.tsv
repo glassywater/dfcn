@@ -1708,6 +1708,7 @@ DFHack help: This overlay provides a button you can click to bring up the DFHack
 DFHack help: This script provides 2 overlays that are managed by the overlay framework. The script does nothing when executed. Pressure plates and gear assemblies are handled by machine-toggle.	该脚本提供了 2 个由覆盖框架管理的覆盖。该脚本执行时不执行任何操作。压力板和齿轮组件由机器肘节操纵。	l
 DFHack help: This will reset all attributes to a neutral value and will then set the following values (the ranges will differ based on race; this example assumes a dwarf is selected in the UI):	这会将所有属性重置为中性值，然后设置以下值（范围将根据种族而有所不同；此示例假设在 UI 中选择了矮人）：	l
 A caravan from {e} has arrived. The presence of your ruler has attracted great riches. Trade relations remain strengthened by recent negotiations. Overall trade sentiments are tenuous at best.	来自{e1}的商队已抵达。你的统治者在此坐镇，吸引来了巨额财富。近期谈判对贸易关系的促进作用仍在持续。总体贸易意愿至多只能算勉强。	hPt
+Announcement combat adventure-announcement []: Deep underground, the promise of treasure and the thrill of overcoming danger have lured you back to this place. Will you strike the earth again?	对地底深处宝藏的憧憬，以及战胜险境的刺激，让你再次回到此地。你愿意再次开山掘地吗？	l
 DFHack help: "(no)chop <burrow>[,<burrow>...]" Instead of choosing trees across the whole game map, restrict tree cutting to the given burrows. Burrows can be specified by name or internal ID.	"(no)chop <活动区>[,<活动区>...]" 不要在整个游戏地图上选择树木，而是将树木切割限制在给定的活动区范围内。活动区可以通过名称或内部 ID 指定。	l
 DFHack help: "--type <type>" Force the mood to be of a particular type instead of choosing randomly based on happiness. Valid values are "fey", "secretive", "possessed", "fell", and "macabre".	"--type <type>" 指定奇异心境类型，代替根据幸福程度随机选择。有效值为 "fey"（古怪心境）、"secretive"（诡秘心境）、"possessed"（附身心境）、"fell"（残暴心境）和 "macabre"（阴森心境）。	l
 DFHack help: "Forgotten beast irritation minimum" While a cavern's effective irritation (see "Forgotten beast wealth divisor") is below this value, no forgotten beasts will invade that cavern.	"遗忘兽刺激最小" 当地下洞穴的有效刺激（参见"遗忘兽财富除数"）低于该值时，没有遗忘兽会入侵该地下洞穴。	l
@@ -2174,6 +2175,7 @@ the bestowal of the title of {s} in {p} after attaining sufficient skill with {s
 {a} received the title of {s} in {p} after attaining sufficient skill with {s}, participating in {d} battles, slaying {d} enemies, and {d} years of membership during {e}.	{a1}在{e1}期间在{s2}方面达到足够的技艺水平、参加{d1}场战斗、杀死{d2}名敌人及拥有{d3}年会龄后，获得了{p1}的{s1}头衔。	ht
 {a} received the title of {s} in {p} after attaining sufficient skill with {s}, participating in {d} battles, slaying {d} enemies, and {d} years of membership within {p}.	{a1}在{p2}在{s2}方面达到足够的技艺水平、参加{d1}场战斗、杀死{d2}名敌人及拥有{d3}年会龄后，获得了{p1}的{s1}头衔。	ht
 {b} is sought by {s}, and I aim to return it home. My epic journey began {s}. I've boldly searched {e} and {e}. I can only rest when I've brought the prize safely to {e}.	{s1}正在寻找{b1}，而我打算将它送回故乡。我的史诗之旅始于{s2}。我勇敢地搜寻了{e1}和{e2}。只有将宝物安全带回{e3}，我才能安心。	hPt
+Announcement combat adventure-announcement []: What these merchants offer might very well be the difference between a prosperous future and a slow and meaningless death.	这些商人带来的货物，很可能决定你们是走向繁荣，还是缓慢而无谓地灭亡。	l
 Announcement combat agreement-title-core [agreement-party-list,$office,$name,agreement-party-list]: the passing of corruptly-obtained funds by {s} as a {s} of {s} to {s}	{s1}以{s3}的{s2}身份进行的非法所得的转交（交给{s4}）	l
 Cages, ropes, and animal traps are found here. Cages can be used in cage traps or to transport large animals. Metal cages and chains are also used by the justice system.	这里包含笼子、绳索和动物陷阱。笼子可用于笼陷阱或运输大型动物，金属笼和锁链也用于司法系统。	hj
 Chairs are required for offices to function, and a chair next to a table is the preferred dining arrangement. A chair/throne object must be made before it can be placed.	办公室需要椅子才能运作，用餐时最好将椅子放在餐桌旁。须先制作椅子，才能放置。	hj
@@ -2652,6 +2654,7 @@ the bestowal of the title of {s} in {p} after attaining sufficient skill with {s
 {a} received the title of {s} in {p} after attaining sufficient skill with {s}, serving in combat, slaying {d} enemies, and being a member for a year during {e}	{a1}在{e1}期间在{s2}方面达到足够的技艺水平、在战斗中效力、杀死{d1}名敌人及入会满一年后，获得了{p1}的{s1}头衔	ht
 {a} received the title of {s} in {p} after attaining sufficient skill with {s}, serving in combat, slaying {d} enemies, and being a member for a year within {p}	{a1}在{p2}在{s2}方面达到足够的技艺水平、在战斗中效力、杀死{d1}名敌人及入会满一年后，获得了{p1}的{s1}头衔	ht
 {a} received the title of {s} in {p} after attaining sufficient skill with {s}, serving in combat, slaying {d} enemies, and {d} years of membership in the wilds	{a1}在荒野中在{s2}方面达到足够的技艺水平、在战斗中效力、杀死{d1}名敌人及拥有{d2}年会龄后，获得了{p1}的{s1}头衔	ht
+Announcement combat adventure-announcement []: Congratulations! This fortress is now a Mountainhome, proof that any suggestion of hubris was childish nonsense.	祝贺你！这座要塞如今已成为山国都城，证明那些狂妄自大的指责不过是幼稚的胡言乱语。	l
 Announcement combat agreement-core [agreement-party-list,agreement-party-list,$description]: {s} aided {s} in becoming a permanent part of the living world {s}	{s1}帮助{s2}永远留在生者的世界，{s3}	l
 Announcement combat artwork-artifact-destruction-subject [historical-artifact,$memorial-actor,$name,$travel-site]: the destruction of {s} by {s} and {s} in {s}	{s2}与{s3}在{s4}毁灭了{s1}	l
 Announcement combat diplomatic-event-core [diplomatic-meeting-topic,$name,$name,$travel-site]: {s} between {s} and {s} at {s} concluded with a positive outcome	{s2}与{s3}在{s4}达成的{s1}结束了，结果良好	l
@@ -3139,6 +3142,7 @@ A {s} caravan from {e} has arrived. Your status as a major land has attracted mu
 A {s} caravan from {e} has arrived. Your status as a middling land has attracted more trade than usual. However, overall trade sentiments are cautious.	来自{e1}的{s1}商队已抵达。你作为中等领地的地位吸引来了比平时更多的贸易。不过，总体贸易意愿偏于谨慎。	hPt
 A {s} caravan from {e} has arrived. Your status as a middling land has attracted more trade than usual. However, overall trade sentiments are lukewarm.	来自{e1}的{s1}商队已抵达。你作为中等领地的地位吸引来了比平时更多的贸易。不过，总体贸易意愿不冷不热。	hPt
 A {s} caravan from {e} has arrived. Your status as a middling land has attracted more trade than usual. However, overall trade sentiments are terrible.	来自{e1}的{s1}商队已抵达。你作为中等领地的地位吸引来了比平时更多的贸易。不过，总体贸易意愿极差。	hPt
+Announcement combat adventure-announcement []: You must move away from surrounding obstacles such as the site's walls and rivers before you can travel.	必须先远离周围的障碍物，例如聚落的围墙和河流，才能开始旅行。	l
 Announcement combat agreement-title-core [agreement-party-list,$name]: the agreement between and {s} to eradicate monsters and become a resident of {s}	与{s1}达成的居留协议：成为{s2}的居民，以便消灭怪物	l
 Announcement combat agreement-title-core [agreement-party-list,$name]: the agreement between {s} and to eradicate monsters and become a resident of {s}	{s1}与达成的居留协议：成为{s2}的居民，以便消灭怪物	l
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list,$name]: the request by {s} that {s} make an offer of service to {s}	{s1}要求{s2}向{s3}表示愿意效力的请求	l
@@ -3510,6 +3514,7 @@ the relationship between the half chords of a triangle's angles, the opposite si
 A caravan from {e} has arrived. Trade relations remain strengthened by recent negotiations. However, overall trade sentiments are tenuous at best.	来自{e1}的商队已抵达。近期谈判对贸易关系的促进作用仍在持续。不过，总体贸易意愿至多只能算勉强。	hPt
 A {s} caravan from {e} has arrived. Your status as a minor land has attracted a bit more trade than usual. Overall trade sentiments are fantastic.	来自{e1}的{s1}商队已抵达。你作为小领地的地位吸引来了比平时略多的贸易。总体贸易意愿极其高涨。	hPt
 A {s} caravan from {e} has arrived. Your status as a minor land has attracted a bit more trade than usual. Overall trade sentiments are very good.	来自{e1}的{s1}商队已抵达。你作为小领地的地位吸引来了比平时略多的贸易。总体贸易意愿非常良好。	hPt
+Announcement combat adventure-announcement []: Perhaps they are all still here, unwilling to leave the magnificent fortress you prepared for them.	也许他们仍全都在这里，不愿离开你为他们建造的宏伟要塞。	l
 Announcement combat agreement-core [agreement-party-list,$name]: made an agreement with {s}, becoming a resident of {s} to entertain the citizenry	与{s1}达成协议，成为{s2}的居民，以便为居民表演	l
 Announcement combat agreement-title-core [$office,$name,agreement-party-list]: the passing of corruptly-obtained funds by as the {s} of {s} to {s}	以{s2}的{s1}身份进行的非法所得的转交（交给{s3}）	l
 Announcement combat agreement-title-core [agreement-party-list,$historical-actor,agreement-crime]: the plot of {s} to frame {s} for {s} by fooling	{s1}用{s3}的罪名栽赃{s2}的阴谋	l
@@ -3580,6 +3585,8 @@ A {s} caravan from {e} has arrived. Your status as a major land has attracted mu
 A {s} caravan from {e} has arrived. Your status as a minor land has attracted a bit more trade than usual. Overall trade sentiments are cautious.	来自{e1}的{s1}商队已抵达。你作为小领地的地位吸引来了比平时略多的贸易。总体贸易意愿偏于谨慎。	hPt
 A {s} caravan from {e} has arrived. Your status as a minor land has attracted a bit more trade than usual. Overall trade sentiments are lukewarm.	来自{e1}的{s1}商队已抵达。你作为小领地的地位吸引来了比平时略多的贸易。总体贸易意愿不冷不热。	hPt
 A {s} caravan from {e} has arrived. Your status as a minor land has attracted a bit more trade than usual. Overall trade sentiments are terrible.	来自{e1}的{s1}商队已抵达。你作为小领地的地位吸引来了比平时略多的贸易。总体贸易意愿极差。	hPt
+Announcement combat adventure-announcement []: Some migrants have decided to brave this terrifying place, knowing it may be their miserable tomb.	一些移民决定勇闯这片恐怖之地，明知这里可能成为他们悲惨的坟墓。	l
+Announcement combat adventure-announcement []: You've finally got your equipment together, such as it is. Now it's time for action and adventure!	你终于把装备凑齐了，虽然算不上多好。现在正是行动与冒险之时！	l
 Announcement combat agreement-title-core [agreement-party-list,agreement-item,$name,$name]: the request by that {s} retrieve {s} from {s} for {s}	请{s1}为{s4}从{s3}处取回{s2}的请求	l
 Announcement combat agreement-title-core [agreement-party-list,agreement-item,$name,$name]: the request by {s} that retrieve {s} from {s} for {s}	{s1}请为{s4}从{s3}处取回{s2}的请求	l
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list]: the agreement by {s} to establish a grand guildhall for {s}	{s1}为{s2}建造大行会大厅的协议	l
@@ -3655,6 +3662,7 @@ A large cavern-dwelling humanoid monster. It has a gaping mouth with many sharp 
 A {s} caravan from {e} has arrived. Your status as a major land has attracted much more trade than usual. Overall trade sentiments are cautious.	来自{e1}的{s1}商队已抵达。你作为大领地的地位吸引来了比平时多得多的贸易。总体贸易意愿偏于谨慎。	hPt
 A {s} caravan from {e} has arrived. Your status as a major land has attracted much more trade than usual. Overall trade sentiments are lukewarm.	来自{e1}的{s1}商队已抵达。你作为大领地的地位吸引来了比平时多得多的贸易。总体贸易意愿不冷不热。	hPt
 A {s} caravan from {e} has arrived. Your status as a major land has attracted much more trade than usual. Overall trade sentiments are terrible.	来自{e1}的{s1}商队已抵达。你作为大领地的地位吸引来了比平时多得多的贸易。总体贸易意愿极差。	hPt
+Announcement combat adventure-announcement []: I wish I could tell you where to begin your search. Until then, you are free to do as you please.	我也希望能告诉你从哪里开始寻找。在那之前，你可以自由行动。	l
 Announcement combat agreement-core [agreement-party-list,agreement-party-list,$name]: {s} made an agreement with {s}, becoming a resident of {s}	{s1}与{s2}达成协议，成为{s3}的居民	l
 Announcement combat agreement-title-core [$office,$name,agreement-party-list]: the passing of corruptly-obtained funds by as a {s} of {s} to {s}	以{s2}的{s1}身份进行的非法所得的转交（交给{s3}）	l
 Announcement combat agreement-title-core [agreement-party-list,$office,$name]: the passing of corruptly-obtained funds by {s} as a {s} of {s} to	{s1}以{s3}的{s2}身份进行的非法所得的转交（交给）	l
@@ -3745,6 +3753,8 @@ A {s} caravan from {e} has arrived. Trade relations remain strengthened by recen
 A {s} caravan from {e} has arrived. Trade relations remain strengthened by recent negotiations. However, overall trade sentiments are terrible.	来自{e1}的{s1}商队已抵达。近期谈判对贸易关系的促进作用仍在持续。不过，总体贸易意愿极差。	hPt
 A {s} caravan from {e} has arrived. Your status as a middling land has attracted more trade than usual. Overall trade sentiments are fantastic.	来自{e1}的{s1}商队已抵达。你作为中等领地的地位吸引来了比平时更多的贸易。总体贸易意愿极其高涨。	hPt
 A {s} caravan from {e} has arrived. Your status as a middling land has attracted more trade than usual. Overall trade sentiments are very good.	来自{e1}的{s1}商队已抵达。你作为中等领地的地位吸引来了比平时更多的贸易。总体贸易意愿非常良好。	hPt
+Announcement combat adventure-announcement []: And a true ruler requires seven symbols, symbols not of this world. Mere steel will not suffice.	真正的统治者还需要七件象征物，它们必须来自这个世界之外。普通的钢铁远远不够。	l
+Announcement combat adventure-announcement []: Some migrants have decided to brave this terrifying unhappy place, knowing it may be their tomb.	一些移民决定勇闯这片恐怖而不幸的地方，明知这里可能成为他们的坟墓。	l
 Announcement combat agreement-core [agreement-party-list,$name]: {s} made an agreement with , becoming a resident of {s} to work as a mercenary	{s1}与达成协议，成为{s2}的居民，以便从事雇佣兵工作	l
 Announcement combat agreement-core [agreement-party-list,agreement-party-list,$name]: {s} made an agreement with {s}, becoming a citizen of {s}	{s1}与{s2}达成协议，成为{s3}的公民	l
 Announcement combat agreement-title-core [$historical-actor,agreement-crime,$historical-actor]: the plot of to frame {s} for {s} by fooling {s}	欺骗{s3}、将{s2}的罪名栽赃给{s1}的阴谋	l
@@ -3834,6 +3844,7 @@ Announcement combat agreement-core [agreement-party-list,agreement-party-list]: 
 Announcement combat agreement-core [agreement-party-list,agreement-party-list]: {s} began passing a portion of corruptly-obtained funds to {s}	{s1}开始将部分非法所得转交给{s2}	l
 Announcement combat conversation-conflict-death [conversation-conflict-person,conversation-conflict-entity]: {s} was slainby the forces of {s}	{s1}被{s2}的部队杀死了	l
 Announcement combat diplomatic-event-core [diplomatic-meeting-topic,$name,$name,$travel-site]: {s} between {s} and {s} at {s} concluded fairly	{s2}与{s3}在{s4}达成的{s1}顺利结束了	l
+Announcement combat quest-sentence [$name,quest-object]: {s} believes that primordial remnants such as {s} belong back in their rightful home.	{s1}认为，像{s2}这样的远古遗存应当回到它们原本的归属之地。	l
 Announcement combat sentence []: Maybe after you've improved. Prove you have what it takes. The life of the traveling performer is a hard one.	等你的本领长进些再说吧。先证明你能胜任，巡回艺人的日子可不好过。	l
 DFHack help: "--applyjobs <job>[,<job>...]" Applies the listed jobs to the selected dwarves. Run "dwarf-op --list jobs" to see available jobs.	"--applyjobs <job>[,<job>...]" 将列出的作业应用于选定的矮人。运行 "dwarf-op --list jobs" 查看可用作业。	l
 DFHack help: "--severity <severity>" If the thought is the name of a syndrome, then the severity will be used as the severity of the syndrome.	"--severity <severity>" 如果思想是综合症的名称，那么严重程度将被用作综合症的严重程度。	l
@@ -4135,6 +4146,7 @@ A caravan from {e} has arrived. Your status as a middling land has attracted mor
 A caravan from {e} has arrived. Your status as a middling land has attracted more trade than usual. Overall trade sentiments are very good.	来自{e1}的商队已抵达。你作为中等领地的地位吸引来了比平时更多的贸易。总体贸易意愿非常良好。	hPt
 A medium-sized, aggressive, territorial fish. It can be found in shallow oceanic waters, and has also been known to travel up large rivers.	一种中等尺寸、极具攻击性的、领地意识很强的鱼类。通常可以在浅海水域发现它们，有时也会沿大型河流逆流而上。	lP
 A {s} caravan from {e} has arrived. Your status as a middling land has attracted more trade than usual. Overall trade sentiments are great.	来自{e1}的{s1}商队已抵达。你作为中等领地的地位吸引来了比平时更多的贸易。总体贸易意愿很高。	hPt
+Announcement combat adventure-announcement []: No one even considered making the journey to such a cursed miserable death-trap this season.	本季无人有意前往这样一个受诅咒、悲惨的死亡陷阱。	l
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list]: the agreement by {s} to establish a guildhall for {s}	{s1}为{s2}建造行会大厅的协议	l
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list]: the passing of corruptly-obtained funds by {s} to {s}	{s1}进行的非法所得的转交（交给{s2}）	l
 Announcement combat artwork-artifact-destruction-subject [historical-artifact,$memorial-actor,$name]: the destruction of {s} by {s} and {s}	{s2}与{s3}毁灭了{s1}	l
@@ -4332,6 +4344,7 @@ the bestowal of the title of {s} in {p} after participating in {d} battles, slay
 A caravan from {e} has arrived. Trade relations remain strengthened by recent negotiations. Overall trade sentiments are tenuous at best.	来自{e1}的商队已抵达。近期谈判对贸易关系的促进作用仍在持续。总体贸易意愿至多只能算勉强。	hPt
 A caravan from {e} has arrived. Your status as a major land has attracted much more trade than usual. Overall trade sentiments are great.	来自{e1}的商队已抵达。你作为大领地的地位吸引来了比平时多得多的贸易。总体贸易意愿很高。	hPt
 A caravan from {e} has arrived. Your status as a minor land has attracted a bit more trade than usual. Overall trade sentiments are good.	来自{e1}的商队已抵达。你作为小领地的地位吸引来了比平时略多的贸易。总体贸易意愿良好。	hPt
+Announcement combat adventure-announcement []: No one even considered making the journey to such a cursed unhappy death-trap this season.	本季无人有意前往这样一个受诅咒、不幸的死亡陷阱。	l
 Announcement combat agreement-core [agreement-party-list,agreement-party-list]: {s} made an agreement with {s} to entertain the citizenry	{s1}与{s2}达成协议，以便为居民表演	l
 Announcement combat fortress-arrival []: Some migrants have decided to brave this terrifying unhappy place, knowing it may be their tomb.	一些移民决定勇闯这片恐怖而不幸的地方，明知这里可能成为他们的坟墓。	l
 Announcement combat historical-event-title [$memorial-actor,$travel-site]: the general suspicion of {s} in {s} after appearing not to age	因看起来不会衰老，{s1}在{s2}受到普遍怀疑	l
@@ -4443,6 +4456,8 @@ the bestowal of the title of {s} in {p} after participating in {d} battles, slay
 A caravan from {e} has arrived. Your status as a major land has attracted much more trade than usual. Overall trade sentiments are good.	来自{e1}的商队已抵达。你作为大领地的地位吸引来了比平时多得多的贸易。总体贸易意愿良好。	hPt
 A huge ape found in the forest. It lives in small groups eating plants. The groups are lead by a large dominant male with a silver back.	一种体型庞大的猩猩.它们被发现生活在树林里.它们维持着小型的群体并且以吃植物为生.这种群体被一头体型巨大的有着银色背部的公猩猩所统治.	lP
 A {s} caravan from {e} has arrived. The presence of your ruler has attracted great riches. Overall trade sentiments are tenuous at best.	来自{e1}的{s1}商队已抵达。你的统治者在此坐镇，吸引来了巨额财富。总体贸易意愿至多只能算勉强。	hPt
+Announcement combat adventure-announcement []: Perhaps some of the people here will be worth talking to before you continue on your way.	继续上路之前，或许值得和这里的一些人谈谈。	l
+Announcement combat adventure-announcement []: We were going to entertain the world! It's a shame, but I'll have to make my own way now.	我们原本要为全世界带来欢乐！真遗憾，但现在我得独自闯荡了。	l
 Announcement combat agreement-core [agreement-party-list,$historical-actor,agreement-crime]: {s} plotted to frame {s} for {s} by fooling	{s1}密谋用{s3}的罪名栽赃{s2}	l
 Announcement combat agreement-core [agreement-party-list,agreement-crime,$historical-actor]: {s} plotted to frame for {s} by fooling {s}	{s1}密谋欺骗{s3}，制造{s2}的栽赃阴谋	l
 Announcement combat agreement-core [agreement-party-list,agreement-party-list,$historical-actor]: {s} joined with {s} to help rescue {s}	{s1}与{s2}同行，协助营救{s3}	l
@@ -4550,6 +4565,9 @@ the bestowal of the title of {s} in {p} after participating in {d} battles, slay
 A caravan from {e} has arrived. Your status as a middling land has attracted more trade than usual. Overall trade sentiments are great.	来自{e1}的商队已抵达。你作为中等领地的地位吸引来了比平时更多的贸易。总体贸易意愿很高。	hPt
 A {s} caravan from {e} has arrived. Trade relations remain strengthened by recent negotiations. Overall trade sentiments are fantastic.	来自{e1}的{s1}商队已抵达。近期谈判对贸易关系的促进作用仍在持续。总体贸易意愿极其高涨。	hPt
 A {s} caravan from {e} has arrived. Trade relations remain strengthened by recent negotiations. Overall trade sentiments are very good.	来自{e1}的{s1}商队已抵达。近期谈判对贸易关系的促进作用仍在持续。总体贸易意愿非常良好。	hPt
+Announcement combat adventure-announcement []: I am so nearly swayed by your greatness alone that we can simply assign you the victory!	单凭你这非凡的气度，我就快服了，不如干脆算你赢吧！	l
+Announcement combat adventure-announcement []: Some migrants have decided to brave this terrifying place, knowing it may be their tomb.	一些移民决定勇闯这片恐怖之地，明知这里可能成为他们的坟墓。	l
+Announcement combat adventure-announcement []: There are mounds of clouds above you, smooth on the bottom with prominent upward bulges.	你头顶有成堆的云团，底部平坦，顶部明显隆起。	l
 Announcement combat artwork-artifact-destruction-subject [historical-artifact,$name,$travel-site]: the destruction of {s} by {s} in {s}	{s2}在{s3}毁灭了{s1}	l
 Announcement combat diplomatic-event-core [diplomatic-meeting-topic,$name,$name,$travel-site]: {s} between {s} and {s} at {s} concluded	{s2}与{s3}在{s4}达成的{s1}结束了	l
 Announcement combat justice-interrogation-sentence []: Attempted to misrepresent facts surrounding case in order to elicit information.	试图歪曲案件相关事实，以获取情报。	l
@@ -4657,6 +4675,8 @@ A large reptile with a thick ridged shell. It has been known to consume snakes a
 A {s} caravan from {e} has arrived. Trade relations remain strengthened by recent negotiations. Overall trade sentiments are cautious.	来自{e1}的{s1}商队已抵达。近期谈判对贸易关系的促进作用仍在持续。总体贸易意愿偏于谨慎。	hPt
 A {s} caravan from {e} has arrived. Trade relations remain strengthened by recent negotiations. Overall trade sentiments are lukewarm.	来自{e1}的{s1}商队已抵达。近期谈判对贸易关系的促进作用仍在持续。总体贸易意愿不冷不热。	hPt
 A {s} caravan from {e} has arrived. Trade relations remain strengthened by recent negotiations. Overall trade sentiments are terrible.	来自{e1}的{s1}商队已抵达。近期谈判对贸易关系的促进作用仍在持续。总体贸易意愿极差。	hPt
+Announcement combat adventure-announcement []: Have they gone on adventures or moved on to richer delving at new frontier settlements?	他们是去冒险了，还是迁往新的边疆定居点，追寻更丰厚的矿藏？	l
+Announcement combat adventure-announcement []: I know you've seen your share of adventure, but be careful or the bogeyman may get you.	我知道你历经过不少冒险，但还是小心些，否则夜魔可能会抓走你。	l
 Announcement combat agreement-core [agreement-party-list,$description]: aided {s} in becoming a permanent part of the living world {s}	帮助{s1}永远留在生者的世界，{s2}	l
 Announcement combat agreement-core [agreement-party-list,$description]: {s} aided in becoming a permanent part of the living world {s}	{s1}帮助永远留在生者的世界，{s2}	l
 Announcement combat agreement-core [agreement-party-list,agreement-target,$name]: {s} plotted to sabotage the activities of {s} at {s}	{s1}密谋破坏{s2}在{s3}的活动	l
@@ -4786,6 +4806,7 @@ to butcher a carcass or to engage in crafting activities. Hunting is an importan
 A huge brown creature found in temperate woodland. It is known for its ferocious attack, usually when it or its young are threatened.	在温带林地中发现的一种巨大的棕色生物。 在它或它的幼崽受到威胁时常常会回以凶猛的攻击。	lP
 A huge quadrupedal dinosaur with a prominent row of plates along its back and a spiked tail. It is a herbivore but can defend itself.	一种巨大的四足恐龙，背上排列着一列醒目的骨板，尾部生有尖刺。它虽然以植物为食，却很有自卫能力。	lP
 A huge, round, hairless river creature. It is a plant-eating animal but has long tusks and can be aggressive and deadly if disturbed.	.这只庞大的河栖生物身躯圆润、光滑无毛，虽然以食用植物为生，却有着狰狞的獠牙，如果惊扰它的话，就能看到它富有攻击性且致命危险的一面。	lP
+Announcement combat adventure-announcement []: This legend does not end until we've chipped out the last treasures of the underworld!	直到我们凿出冥界最后的宝藏，这段传奇才会结束！	l
 Announcement combat agreement-core [$historical-actor,agreement-crime,$historical-actor]: plotted to frame {s} for {s} by fooling {s}	密谋欺骗{s3}，将{s2}的罪名栽赃给{s1}	l
 Announcement combat agreement-core [agreement-party-list,agreement-party-list]: {s} made an agreement with {s} to work as a mercenary	{s1}与{s2}达成协议，以便从事雇佣兵工作	l
 Announcement combat artwork-artifact-destruction-title [historical-artifact,$travel-site,$date]: the destruction of {s} in {s} in {s}	{s3}，在{s2}发生的{s1}毁灭事件	l
@@ -4909,6 +4930,8 @@ the bestowal of the title of {s} in {p} after participating in {d} battles, slay
 {a} received the title of {s} in {p} after participating in {d} battles, slaying {d} enemies, and {d} years of membership within {p}.	{a1}在{p2}参加{d1}场战斗、杀死{d2}名敌人及拥有{d3}年会龄后，获得了{p1}的{s1}头衔。	ht
 A caravan from {e} has arrived. The presence of your ruler has attracted great riches. Overall trade sentiments are tenuous at best.	来自{e1}的商队已抵达。你的统治者在此坐镇，吸引来了巨额财富。总体贸易意愿至多只能算勉强。	hPt
 A large, pale rodent with loose, hanging, hairless skin. It has long teeth and an incredibly powerful bite. It is found underground.	一种大型、苍白的啮齿动物，皮肤松弛、下垂、无毛。它有很长的牙齿，咬起来非常有力。它是在地底发现的。	lP
+Announcement combat adventure-announcement []: Certainly. It would be terrible to leave someone to fend for themselves after sunset.	当然。日落之后，让人独自在外面自生自灭就太糟了。	l
+Announcement combat adventure-announcement []: Migrants were too nervous to make the journey this season to this miserable fortress.	本季移民因太过害怕，未敢踏上前往这座悲惨要塞的旅途。	l
 Announcement combat agreement-core [agreement-party-list,agreement-party-list,$name,$name]: {s} joined with {s} to oust {s} from {s}	{s1}与{s2}同行，将{s3}逐出{s4}	l
 Announcement combat agreement-core [agreement-party-list,agreement-party-list]: {s} joined with {s} in order to be brought to safety	{s1}与{s2}同行，以便被带到安全的地方	l
 Announcement combat agreement-core [agreement-party-list,agreement-party-list]: {s} made an agreement with {s} to eradicate monsters	{s1}与{s2}达成协议，以便消灭怪物	l
@@ -5031,6 +5054,7 @@ Announcement combat agreement-title-core [agreement-party-list,agreement-item,$n
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list,$name]: the joining of {s} with {s} to find {s}	{s1}与{s2}同行，寻找{s3}	l
 Announcement combat agreement-title-core [agreement-party-list,agreement-target]: the plot of {s} to sabotage the activities of {s}	{s1}破坏{s2}活动的阴谋	l
 Announcement combat fortress-arrival []: No one even considered making the journey to such a cursed unhappy death-trap this season.	本季无人有意前往这样一个受诅咒、不幸的死亡陷阱。	l
+Announcement combat quest-sentence [$name,quest-object]: Speaking as a representative of {s}, it is important that {s} be returned.	我代表{s1}郑重说明，必须归还{s2}。	l
 Announcement combat site-rumor-event [site-rumor-person,site-rumor-position,site-rumor-predecessor]: {s} became {s}, replacing {s}.	{s1}取代{s3}，成为了{s2}。	l
 DFHack help: "-m", "--min-milk" Set the minimum number of milk items in a barrel for the barrel to be considered for cheese making.	"-m"、"--min-milk" 设置桶中考虑用于奶酪制作的桶中牛奶项目的最小数量。	l
 DFHack help: "autofarm threshold 150 MUSHROOM_HELMET_PLUMP GRASS_TAIL_PIG" Set the threshold for Plump Helmets and Pig Tails to 150	"autofarm threshold 150 MUSHROOM_HELMET_PLUMP GRASS_TAIL_PIG" 将丰满头盔和猪尾巴的阈值设置为150	l
@@ -5154,6 +5178,11 @@ A medium-sized reptile with a thick shell, which it can retreat into when threat
 A {s} caravan from {e} has arrived. The presence of your ruler has attracted great riches. Overall trade sentiments are fantastic.	来自{e1}的{s1}商队已抵达。你的统治者在此坐镇，吸引来了巨额财富。总体贸易意愿极其高涨。	hPt
 A {s} caravan from {e} has arrived. The presence of your ruler has attracted great riches. Overall trade sentiments are very good.	来自{e1}的{s1}商队已抵达。你的统治者在此坐镇，吸引来了巨额财富。总体贸易意愿非常良好。	hPt
 A {s} caravan from {e} has arrived. Trade relations remain strengthened by recent negotiations. Overall trade sentiments are good.	来自{e1}的{s1}商队已抵达。近期谈判对贸易关系的促进作用仍在持续。总体贸易意愿良好。	hPt
+Announcement combat adventure-announcement []: Migrants refused to journey to such a dangerous and miserable fortress this season.	本季移民拒绝前往这样一座危险而悲惨的要塞。	l
+Announcement combat adventure-announcement []: Migrants were too nervous to make the journey this season to this unhappy fortress.	本季移民因太过害怕，未敢踏上前往这座不幸要塞的旅途。	l
+Announcement combat adventure-announcement []: No one else even considered making the journey to this cursed miserable death-trap.	其他人连前往这个受诅咒、悲惨的死亡陷阱的念头都没有。	l
+Announcement combat adventure-announcement []: No one even considered making the journey to such a miserable hellhole this season.	本季无人有意前往这样一个悲惨的鬼地方。	l
+Announcement combat adventure-announcement []: Only a fool would travel alone at night! Take shelter or the bogeyman will get you.	只有傻瓜才会在夜间独自旅行！找个地方躲起来，否则夜魔会抓走你。	l
 Announcement combat agreement-core [agreement-party-list,agreement-item,$name,$name]: asked that {s} retrieve {s} from {s} for {s}	请{s1}为{s4}从{s3}处取回{s2}	l
 Announcement combat agreement-core [agreement-party-list,agreement-item,$name,$name]: {s} asked that retrieve {s} from {s} for {s}	{s1}请为{s4}从{s3}处取回{s2}	l
 Announcement combat agreement-core [agreement-party-list,agreement-party-list]: {s} joined with {s} after being compelled to serve	{s1}与{s2}同行，被迫为其效力	l
@@ -5287,6 +5316,8 @@ A small, shark-like creature that lives in the ocean's muddy shallows. Its skin 
 A {s} caravan from {e} has arrived. The presence of your ruler has attracted great riches. Overall trade sentiments are cautious.	来自{e1}的{s1}商队已抵达。你的统治者在此坐镇，吸引来了巨额财富。总体贸易意愿偏于谨慎。	hPt
 A {s} caravan from {e} has arrived. The presence of your ruler has attracted great riches. Overall trade sentiments are lukewarm.	来自{e1}的{s1}商队已抵达。你的统治者在此坐镇，吸引来了巨额财富。总体贸易意愿不冷不热。	hPt
 A {s} caravan from {e} has arrived. The presence of your ruler has attracted great riches. Overall trade sentiments are terrible.	来自{e1}的{s1}商队已抵达。你的统治者在此坐镇，吸引来了巨额财富。总体贸易意愿极差。	hPt
+Announcement combat adventure-announcement []: No one even considered making the journey to such a cursed death-trap this season.	本季无人有意前往这样一个受诅咒的死亡陷阱。	l
+Announcement combat adventure-announcement []: The sky above you is completely gray, with dark cloud pillars pressing through it.	你头顶的天空一片灰暗，深色的云柱挤入其中。	l
 Announcement combat agreement-core [agreement-party-list,$name]: {s} made an agreement with , becoming a resident of {s} to study	{s1}与达成协议，成为{s2}的居民，以便求学	l
 Announcement combat agreement-core [agreement-party-list,agreement-party-list,$historical-actor]: {s} joined with {s} to find {s}	{s1}与{s2}同行，寻找{s3}	l
 Announcement combat agreement-core [agreement-party-list,agreement-party-list,$travel-site]: {s} joined with {s} to oust from {s}	{s1}与{s2}同行，协助驱逐{s3}的势力	l
@@ -5408,6 +5439,9 @@ will be happy that you've slain a dragon, for instance, whether you've received 
 {a} received the title of {s} in {p} after participating in {d} battles, slaying {d} enemies, and {d} years of membership at {p}.	{a1}在{p2}参加{d1}场战斗、杀死{d2}名敌人及拥有{d3}年会龄后，获得了{p1}的{s1}头衔。	ht
 {a} received the title of {s} in {p} after participating in {d} battles, slaying {d} enemies, and {d} years of membership in {p}.	{a1}在{p2}参加{d1}场战斗、杀死{d2}名敌人及拥有{d3}年会龄后，获得了{p1}的{s1}头衔。	ht
 A small flying insect that lives in large colonies. It has a powerful stinger on its tail. Its hives are prized for their honey.	一种生活在大型群落中小型飞虫。 它的尾巴上有一个强大的刺。 它的巢穴因其产出的蜜糖而受人重视。	lP
+Announcement combat adventure-announcement []: I don't understand how somebody can become so obsessed by what somebody else has.	我不明白，一个人怎么会如此执着于别人拥有的东西。	l
+Announcement combat adventure-announcement []: Migrants refused to journey to such a dangerous and unhappy fortress this season.	本季移民拒绝前往这样一座危险而不幸的要塞。	l
+Announcement combat adventure-announcement []: No one else even considered making the journey to this cursed unhappy death-trap.	其他人连前往这个受诅咒、不幸的死亡陷阱的念头都没有。	l
 Announcement combat agreement-core [agreement-party-list,$name]: made an agreement with {s}, becoming a resident of {s} to study	与{s1}达成协议，成为{s2}的居民，以便求学	l
 Announcement combat agreement-core [agreement-party-list,agreement-party-list,$name]: promised {s} to give {s} a position in {s}	答应{s1}，给{s2}在{s3}安排一个职位	l
 Announcement combat agreement-core [agreement-party-list,agreement-party-list,$name]: {s} promised to give {s} a position in {s}	{s1}答应，给{s2}在{s3}安排一个职位	l
@@ -5514,6 +5548,7 @@ the bestowal of the title of {s} in {p} after serving in combat, slaying {d} ene
 A caravan from {e} has arrived. Trade relations remain strengthened by recent negotiations. Overall trade sentiments are great.	来自{e1}的商队已抵达。近期谈判对贸易关系的促进作用仍在持续。总体贸易意愿很高。	hPt
 A tiny grey rodent that is only active at night. It can sail between trees on wings stretching between its front and hind legs.	一种仅在夜晚活动的小型灰色啮齿动物.它能通过展开在前腿和后腿间的翅膀在树丛间快速移动.	lP
 A tiny underground monster with large claws and horns. It walks on two legs and is dangerous when encountered in large numbers.	长着大爪子和角的地底小怪物。它用两条腿走路，当遭遇很多的时候是非常危险的。	lP
+Announcement combat adventure-announcement []: Just reunited after a long journey, you are together with your companions again.	漫长的旅途结束后，你刚与同伴们重逢，大家又聚到了一起。	l
 Announcement combat agreement-core [agreement-party-list,agreement-party-list]: {s} joined with {s} to live a life of adventure	{s1}与{s2}同行，过冒险生活	l
 Announcement combat agreement-core [agreement-party-list,agreement-party-list]: {s} requested that {s} make an offer of service	{s1}要求{s2}表示愿意效力	l
 Announcement combat agreement-record [agreement-core]: {s} approached by to handle the matter directly or through another party	{s1}；曾出面接洽，要求亲自处理此事或交由他人处理	l
@@ -5629,6 +5664,7 @@ A caravan from {e} has arrived. Trade relations remain strengthened by recent ne
 A huge aquatic mammal with giant tusks and dense whiskers. They are thick and blubbery and live almost exclusively on mussels.	一种巨大的水生哺乳动物，长着巨大的象牙和浓密的胡须。 它们厚实而肥大，几乎完全以贻贝为生。	lP
 A {s} caravan from {e} has arrived. The presence of your ruler has attracted great riches. Overall trade sentiments are great.	来自{e1}的{s1}商队已抵达。你的统治者在此坐镇，吸引来了巨额财富。总体贸易意愿很高。	hPt
 An aquatic arthropod with a pronounced head structure and frontal appendages for filter feeding. It is large for an arthropod.	一种水生节肢动物，头部结构醒目，前方附肢用于滤食；以节肢动物而言，它的体型相当庞大。	lP
+Announcement combat adventure-announcement []: This place is insulated from the rest of the world, at least in terms of trade.	这里与外界隔绝，至少贸易方面是如此。	l
 Announcement combat agreement-core [agreement-party-list,$name,agreement-goals]: {s} plotted to infiltrate {s} in order to {s}	{s1}密谋潜入{s2}，以便{s3}	l
 Announcement combat agreement-core [agreement-party-list,agreement-party-list,agreement-item]: {s} asked that {s} retrieve {s}	{s1}请{s2}取回{s3}	l
 Announcement combat agreement-title-core [$name]: the agreement between and to eradicate monsters and become a resident of {s}	与达成的居留协议：成为{s1}的居民，以便消灭怪物	l
@@ -6019,6 +6055,7 @@ the method of compiling several biographies to compare and contrast the subjects
 {a} received the title of {s} in {p} after serving in combat, slaying {d} enemies, and {d} years of membership in the wilds.	{a1}在荒野中在战斗中效力、杀死{d1}名敌人及拥有{d2}年会龄后，获得了{p1}的{s1}头衔。	ht
 A small, nocturnal bird of prey found in woodland regions. Its hunger for rodents drives it to take residence in buildings.	一种在林地发现的小型夜间活动的猛禽，它对啮齿动物的饥渴驱使它在建筑物中栖息。	lP
 A strange shapeless life form with an orange leathery skin containing a liquid interior. It can secrete its internal fluid.	一种奇怪的不成形的生命形式，有橙色坚韧的皮肤，里面有液体。它可以分泌体内液体。	lP
+Announcement combat adventure-announcement []: Only a hero such as yourself can travel at night. The bogeyman would get me.	只有像你这样的英雄才能在夜间出行。换成我，就会被夜魔抓走。	l
 Announcement combat agreement-core [agreement-party-list,agreement-party-list,$name]: {s} joined with {s} as a guide to {s}	{s1}与{s2}同行，担任向导前往{s3}	l
 Announcement combat agreement-core [agreement-party-list,agreement-party-list]: {s} agreed to establish a guildhall for {s}	{s1}同意为{s2}建造行会大厅	l
 Announcement combat agreement-title-core [$historical-actor,$historical-actor]: the plot of to frame {s} for by fooling {s}	欺骗{s2}、栽赃{s1}的阴谋	l
@@ -6292,6 +6329,9 @@ the bestowal of the title of {s} in {p} after serving in combat, slaying {d} ene
 A caravan from {e} has arrived. The presence of your ruler has attracted great riches. Overall trade sentiments are good.	来自{e1}的商队已抵达。你的统治者在此坐镇，吸引来了巨额财富。总体贸易意愿良好。	hPt
 A giant humanoid monster found stomping about in the evil plains. Their low howls can be heard long before they are seen.	一个巨大的人形怪物被发现在邪恶的平原上践踏。早在人们看到它们之前就可以听到它们低沉的叫声。	lP
 Affects physical size, attack power, charging, armor ungainliness, throwing power, carrying capacity, and movement speed.	影响体型、攻击力、冲锋、穿甲时的笨拙程度、投掷力量、负重能力和移动速度。	w
+Announcement combat adventure-announcement []: Night is falling. You'd better stay indoors, or the bogeyman will get you.	天快黑了。你最好待在屋里，否则夜魔会抓走你。	l
+Announcement combat adventure-announcement []: No one else even considered making the journey to this miserable hellhole.	其他人连前往这个悲惨的鬼地方的念头都没有。	l
+Announcement combat adventure-announcement []: Your most trusted companions have made the journey to meet you here today.	你最信任的同伴们远道而来，今天将在这里与你会合。	l
 Announcement combat agreement-core [agreement-party-list,agreement-target]: {s} plotted to sabotage the activities of {s}	{s1}密谋破坏{s2}的活动	l
 Announcement combat agreement-title-core [$historical-actor,agreement-crime]: the plot of to frame {s} for {s} by fooling	用{s2}的罪名栽赃{s1}的阴谋	l
 Announcement combat agreement-title-core [$office,$name]: the passing of corruptly-obtained funds by as the {s} of {s} to	以{s2}的{s1}身份进行的非法所得的转交（交给）	l
@@ -6424,6 +6464,9 @@ A gigantic version of the feline predator. Its giant prides can be found in the 
 A small, round humanoid found wandering the caves deep underground. Most of its body is taken up by a huge tusked mouth.	一个小而圆的类人生物，在地底深处的洞穴中游荡。它身体的大部分都被长牙着獠牙的大嘴占据了。	lP
 A tiny aquatic worm-like creature with ten pairs slender legs and seven pairs of protruding rigid spines along its body.	一种微小的水生蠕虫状生物，长有十对纤细的足，身体两侧伸出七对坚硬的棘刺。	lP
 After you embark, help is available by pressing the help button in the top right corner, including all of the tutorials.	启程后，可点击右上角的帮助按钮，查阅包括全部教程在内的帮助内容。	hq
+Announcement combat adventure-announcement []: Indoors, outdoors. It's all the same to me as long as the weather's fine.	室内也好，室外也好。只要天气不错，对我来说都一样。	l
+Announcement combat adventure-announcement []: No one else even considered making the journey to this cursed death-trap.	其他人连前往这个受诅咒的死亡陷阱的念头都没有。	l
+Announcement combat adventure-announcement []: You'll have the room for another day. I'm glad you're enjoying your stay.	这间房会再为你留一天。很高兴你在这里住得愉快。	l
 Announcement combat agreement-core [agreement-party-list,$name]: {s} made an agreement with , becoming a resident of {s}	{s1}与达成协议，成为{s2}的居民	l
 Announcement combat agreement-core [agreement-party-list,agreement-party-list,$name]: {s} promised {s} a position in {s}	{s1}答应给{s2}在{s3}安排一个职位	l
 Announcement combat agreement-core [agreement-party-list,agreement-party-list]: {s} agreed to establish a temple for {s}	{s1}同意为{s2}建造神殿	l
@@ -6551,6 +6594,8 @@ the bestowal of the title of {s} in {p} after serving in combat, slaying {d} ene
 A medium-sized domestic animal. It has a distinctive snout and corkscrew tail. It is thought by some to be intelligent.	一种体型中等的家畜。它有一个独特的鼻子和开瓶器一样的尾巴。有些人认为它很聪明。	lP
 A medium-sized fish which shelters in caves on the shallow sea floor. It hunts for food in packs but is not aggressive.	一种生活在浅海海底洞穴中的中等尺寸鱼类，它们成群结队的觅食，没有太大的攻击性。	lP
 A medium-sized predatory fish found in lakes and streams. It is known for its ferocious attacks and interlocking teeth.	一种在湖泊和溪流中发现的中型掠食性鱼类。它以其凶猛的攻击和互锁的牙齿而闻名。	lP
+Announcement combat adventure-announcement []: Consider placing a farmplot on some underground soil and planting seeds.	考虑在地下土壤上开辟农田，播种作物。	l
+Announcement combat adventure-announcement []: Your most trusted companion has made the journey to meet you here today.	你最信任的同伴远道而来，今天将在这里与你会合。	l
 Announcement combat agreement-core [agreement-party-list,$name]: made an agreement with {s}, becoming a resident of {s}	与{s1}达成协议，成为{s2}的居民	l
 Announcement combat agreement-core [agreement-party-list,$name]: {s} made an agreement with , becoming a citizen of {s}	{s1}与达成协议，成为{s2}的公民	l
 Announcement combat agreement-core [agreement-party-list,agreement-party-list]: {s} made an agreement with {s} to study	{s1}与{s2}达成协议，以便求学	l
@@ -6678,6 +6723,13 @@ A hideous monster that has the body of a giant mole-rat and the torso of a mole-
 A large ape which lives in the tropical forests. It is quite intelligent and lives in large and complex social groups.	一种体型巨大的猩猩.它们生活在热带丛林里.它们非常聪明而且有着庞大且复杂的社会性群体.	lP
 A large bird with a featherless red head found in the sky of tropical deserts, scanning the ground for dead carcasses.	在热带沙漠的天空中可以发现的一种红色头部没有长着羽毛的大鸟，正在搜寻地面上的尸体。	lP
 A snake-like creature living deep underground. Its head is covered in armor so that is resembles the head of a dragon.	一种生活在地底深处的蛇形生物。 它的头部被盔甲覆盖，就像龙头一样	lP
+Announcement combat adventure-announcement []: After a long journey, you are here to meet your most trusted companion.	经过漫长的旅途，你来到这里与最信任的同伴会合。	l
+Announcement combat adventure-announcement []: In the rush of excitement, you've forgotten where you were going to go.	在兴奋之中，你忘记了原本打算前往何处。	l
+Announcement combat adventure-announcement []: It's good to see you have companions to travel with on your adventures.	很高兴看到你有伙伴一同冒险。	l
+Announcement combat adventure-announcement []: Others were too nervous to make the journey to this miserable fortress.	其他人因太过害怕，未敢踏上前往这座悲惨要塞的旅途。	l
+Announcement combat adventure-announcement []: Some migrants have arrived at this miserable place, despite the danger.	一些移民不顾危险，来到了这个悲惨的地方。	l
+Announcement combat adventure-announcement []: The enemy have come and are preparing to lay siege. They seek a parley!	敌军已到达，正在准备围城。他们要求谈判！	l
+Announcement combat adventure-announcement []: The sky above you is nearly black, ripped through with towering clouds.	你头顶的天空近乎漆黑，高耸的云层从中穿过。	l
 Announcement combat agreement-core [$name]: made an agreement with , becoming a resident of {s} to work as a mercenary	与达成协议，成为{s1}的居民，以便从事雇佣兵工作	l
 Announcement combat agreement-core [agreement-party-list,$name]: made an agreement with {s}, becoming a citizen of {s}	与{s1}达成协议，成为{s2}的公民	l
 Announcement combat agreement-title-core [agreement-party-list,$historical-actor]: the joining of with {s} to find {s}	与{s1}同行，寻找{s2}	l
@@ -6689,6 +6741,7 @@ Announcement combat agreement-title-core [agreement-party-list,$travel-site]: th
 Announcement combat agreement-title-core [agreement-party-list,$travel-site]: the joining of {s} with to oust from {s}	{s1}与同行，协助驱逐{s2}的势力	l
 Announcement combat conversation-conflict-group [conversation-conflict-caste,conversation-conflict-entity]: {s} of {s}	{s2}的{s1}	l
 Announcement combat inscription [$person,$person]: I am {s}, {s}, once of the Underworld. I bind myself to this place.	我是{s1}，又名{s2}，曾来自地下世界。我将自身束缚于此地。	l
+Announcement combat quest-sentence [quest-object,$name]: It would be wonderful if {s} found a lasting home within {s}.	若能让{s1}长久地留在{s2}，那就再好不过了。	l
 Announcement combat sentence [$name,dialogue-family,$unit]: I'm going to {s} to move into my new home with my {s} {s}.	我正前往{s1}，与我的{s2}{s3}搬入我们的新家。	l
 Announcement combat sentence [$travel-site]: The village {s} is the only other settlement to utilize the market there.	只有{s1}这座村庄也去那里赶集。	l
 Announcement combat sentence [diplomacy-group]: {s} is paying us tribute, and there is friendship between our peoples.	{s1}正在向我们进贡，双方百姓也相处和睦。	l
@@ -6807,6 +6860,7 @@ the bestowal of the title of {s} in {p} after serving in combat, slaying an enem
 A small mammal known to defend itself ferociously in combat, often fighting off multiple animals many times its size.	一种小型哺乳动物，以在战斗中凶猛地自卫而闻名，经常击退数倍于其体型的动物。	lP
 A tiny amphibian with a long prehensile tail. It lives in underground swamps and tower-cap forests on which it feeds.	一种微型两栖动物，尾巴长且可以抓握。 它生活在地底沼泽和塔菇林中，以其为食。	lP
 Administrators handle various aspects of your fortress and can be reassigned. Many administrators also require rooms.	管理员负责要塞的各项事务，可以重新指派。许多管理员也需要配备房间。	hP
+Announcement combat adventure-announcement []: Your status as a minor land has attracted a bit more trade than usual.	作为小型领地，你们吸引了比平时略多的贸易。	l
 Announcement combat agreement-core [$name]: made an agreement with , becoming a resident of {s} to eradicate monsters	与达成协议，成为{s1}的居民，以便消灭怪物	l
 Announcement combat agreement-core [$office,$name]: began accepting bribes in exchange for leniency as the {s} of {s}	以{s2}的{s1}身份开始收受贿赂以换取宽大处理	l
 Announcement combat agreement-core [agreement-core,$name,agreement-item]: {s}. The ritual took place in {s} using {s}	{s1}。仪式在{s2}举行，使用了{s3}	l
@@ -6930,6 +6984,12 @@ thrust a spire of slade up from the underworld, naming it {p}, and established a
 {a} received the title of {s} in {p} after serving in combat, slaying {d} enemies, and {d} years of membership in {p}	{a1}在{p2}在战斗中效力、杀死{d1}名敌人及拥有{d2}年会龄后，获得了{p1}的{s1}头衔	ht
 "Life isn't fair, and sometimes you have to do what you have to do, but working toward a balance isn't a bad thing."	“生活并不公平，有时也不得不如此，但尽力求个公道总不是坏事。”	l
 "You should think carefully before embarking on a joint enterprise, though there is some value in working together."	“合作虽有益处，但与人共事之前，还是应当仔细考虑。”	l
+Announcement combat adventure-announcement []: Are your farmplots working? Make sure you are planting edible plants.	你们的农田在正常耕作吗？务必种植可以食用的作物。	l
+Announcement combat adventure-announcement []: Migrants refused to journey to such a dangerous fortress this season.	本季移民拒绝前往这样一座危险的要塞。	l
+Announcement combat adventure-announcement []: Others were too nervous to make the journey to this unhappy fortress.	其他人因太过害怕，未敢踏上前往这座不幸要塞的旅途。	l
+Announcement combat adventure-announcement []: Some migrants have arrived at this unhappy place, despite the danger.	一些移民不顾危险，来到了这个不幸的地方。	l
+Announcement combat adventure-announcement []: You can't travel until you emerge from underground or enter a tunnel.	必须先离开地下或进入隧道，才能开始旅行。	l
+Announcement combat adventure-announcement []: Your status as a major land has attracted much more trade than usual.	作为重要领地，你们吸引了比平时多得多的贸易。	l
 Announcement combat agreement-core [agreement-party-list,$historical-actor]: {s} plotted to frame for by fooling {s}	{s1}密谋欺骗{s2}，栽赃他人	l
 Announcement combat agreement-core [agreement-party-list,$historical-actor]: {s} plotted to frame {s} for by fooling	{s1}密谋栽赃{s2}	l
 Announcement combat agreement-core [agreement-party-list,agreement-goals]: {s} plotted to infiltrate in order to {s}	{s1}密谋潜入，以便{s2}	l
@@ -7074,6 +7134,9 @@ A huge herbivore with thick plated skin and powerful build. It is known for the 
 A medium-sized highly social mammalian carnivore. It has a keen sense of smell. It can be trained to obey commands.	一种高度群居的中体型食肉哺乳动物。它有敏锐的嗅觉。可以训练它服从命令。	lP
 A small forest bird. The male's tail creates an extravagant display for females. At night, they roost in the trees.	一种小型森林鸟。 雄鸟的尾巴为雌鸟创造一个奢侈的展示。 晚上，它们在树上栖息。	lP
 A very large quadrupedal predator, well-suited to the hunt. It has a tail and powerful jaws, and it is terrestrial.	一种体型很大的四足捕食者，十分擅长狩猎。它长有尾巴和强有力的颌部，在陆地上生活。	lP
+Announcement combat adventure-announcement []: The bond is broken! Return to the Underworld and trouble us no more!	束缚已被打破！回到地下世界去，别再纠缠我们！	l
+Announcement combat adventure-announcement []: The sun will set soon. Be careful that the bogeyman doesn't get you.	太阳就快落山了。小心别被夜魔抓走。	l
+Announcement combat adventure-announcement []: Your wanderings have brought you to this place after a long journey.	经过漫长的旅途，你一路漫游来到此地。	l
 Announcement combat agreement-core [$office,$name]: began accepting bribes in exchange for leniency as a {s} of {s}	以{s2}的{s1}身份开始收受贿赂以换取宽大处理	l
 Announcement combat agreement-core [agreement-party-list,$historical-actor]: joined with {s} as a guide to find {s}	与{s1}同行，担任向导寻找{s2}	l
 Announcement combat agreement-core [agreement-party-list,$historical-actor]: {s} joined with as a guide to find {s}	{s1}与同行，担任向导寻找{s2}	l
@@ -7227,6 +7290,9 @@ thrust a spire of slade up from the underworld, naming it {p}, and established a
 A gigantic reptilian creature. It is magical and can breathe fire. These monsters can live for thousands of years.	一种巨大的爬行生物。它很神奇，可以喷火。这些怪物可以活几千年。	lP
 A large, long-necked creature with two fleshy humps on its back. It is domesticated to carry passengers and cargo.	一种大型长颈生物，背上有两个多肉的驼峰。它被驯化来运载乘客和货物。	lP
 A small hooved creature found in large groups in the grasslands. It has short horns and moves by leaps and bounds.	一大群小型有蹄生物在草地中被发现。它长有短的角，并蹦跳着快速移动。	lP
+Announcement combat adventure-announcement []: I just don't understand these flames of passion people go on about.	人们总说欲火难耐，我实在无法理解。	l
+Announcement combat adventure-announcement []: Others refused to journey to this dangerous and miserable fortress.	其他人拒绝前往这座危险而悲惨的要塞。	l
+Announcement combat adventure-announcement []: Your status as a middling land has attracted more trade than usual.	作为中等领地，你们吸引了比平时更多的贸易。	l
 Announcement combat agreement-core [agreement-party-list,$name,$name]: {s} plotted to induce a war of {s} upon {s}	{s1}密谋挑起{s2}对{s3}的战争	l
 Announcement combat agreement-core [agreement-party-list,agreement-crime]: {s} plotted to frame for {s} by fooling	{s1}密谋用{s2}的罪名栽赃他人	l
 Announcement combat agreement-core [agreement-party-list,agreement-party-list]: {s} joined with {s} to help rescue	{s1}与{s2}同行，前去营救……	l
@@ -7380,6 +7446,8 @@ A bolt thrower fires a regular bolts rapidly. The operator swivels the machine f
 A small, brightly-colored snake. It is known for eating other snakes and being mistaken for its venomous cousins.	一种颜色鲜艳的小蛇。它以吃其他蛇而闻名，并被误认为是其有毒的表亲。	lP
 A small, foreboding black bird that feeds on carrion. It is social, very intelligent, and knows how to use tools.	一种小型的不详的食腐黑鸟。它善于社交，非常聪明，知道如何使用工具。	lP
 A very small feathered bipedal dinosaur with an opposable fifth finger. It is a herbivore and has a beaked mouth.	一种很小的带羽毛双足恐龙，第五指可以与其他手指对握。它以植物为食，嘴呈喙状。	lP
+Announcement combat adventure-announcement [$announcement-item,$announcement-item]: You put the {s} into the {s}.	你将{s1}放进{s2}。	l
+Announcement combat adventure-announcement []: A migrant has arrived at this miserable place, despite the danger.	一名移民不顾危险，来到了这个悲惨的地方。	l
 Announcement combat agreement-core [$historical-actor,$historical-actor]: plotted to frame {s} for by fooling {s}	密谋欺骗{s2}，栽赃{s1}	l
 Announcement combat agreement-title-core [$name]: the agreement between and to study and become a resident of {s}	与达成的居留协议：成为{s1}的居民，以便求学	l
 Announcement combat agreement-title-core [agreement-party-list,$name]: the promise by to {s} of a position in {s}	答应给{s1}在{s2}安排职位的承诺	l
@@ -7537,6 +7605,9 @@ A small humanoid resembling a walking mushroom with arms and legs. It lives far 
 A small lizard with adhesive feet for climbing. It can change color from brown to green to fit its surroundings.	一种小型蜥蜴，拥有带粘性的用于攀爬的脚。可以将自身颜色从棕色变为绿色，以适应周围环境。	lP
 A small rodent with no tail. It can be found roaming the grassland in herds. It has three toes on its hind feet.	一种没有尾巴的小型啮齿动物。 它可以成群结队地在草原上漫游。 它的后脚有三个脚趾。	lP
 Animal traps can be placed in the wild and baited with meat, plants, or gems, in order to catch small creatures.	可在野外放置动物陷阱，用肉、植物或宝石作诱饵，捕捉小型生物。	hj
+Announcement combat adventure-announcement []: Migrants refused to journey to this unhappy fortress this season.	本季移民拒绝前往这座不幸的要塞。	l
+Announcement combat adventure-announcement []: Others refused to journey to this dangerous and unhappy fortress.	其他人拒绝前往这座危险而不幸的要塞。	l
+Announcement combat adventure-announcement []: The rest of the vomit splatters into the shallow puddle of water.	其余呕吐物溅进了浅水洼。	l
 Announcement combat agreement-core [agreement-party-list,agreement-party-list,$name]: {s} joined with {s} to {s}	{s1}与{s2}同行，前往{s3}	l
 Announcement combat agreement-core [agreement-party-list,agreement-party-list]: {s} joined with {s} to oust from	{s1}与{s2}同行，协助驱逐……	l
 Announcement combat agreement-core [agreement-party-list]: made an agreement with {s} to entertain the citizenry	与{s1}达成协议，以便为居民表演	l
@@ -7552,6 +7623,7 @@ Announcement combat justice-interrogation-sentence []: Unfortunately, no new per
 Announcement combat negotiation-sentence []: The enemy losses during invasions made the task seem more possible.	敌军在入侵中蒙受的损失让这项任务显得更有希望完成。	l
 Announcement combat negotiation-sentence []: The great number of lost invaders made the task seem more possible.	侵略军的大量伤亡让这项任务显得更有希望完成。	l
 Announcement combat negotiation-sentence []: The sheer number of lost invaders made the task seem more possible.	侵略军死伤之惨重让这项任务显得更有希望完成。	l
+Announcement combat quest-sentence [quest-holder,quest-object,quest-destination]: {s} wants {s} returned to {s}.	{s1}希望能把{s2}归还至{s3}。	l
 Announcement combat rumor-event [$travel-site,$name]: We founded {s} after a long journey from the lands of {s}.	我们从{s2}的领地长途跋涉而来，建立了{s1}。	l
 Announcement combat rumor-event []: Body corrupted beyond reckoning, she assumes a beastly form to terrorize us.	她的身体已经彻底腐化，还会变成野兽来吓唬我们。	l
 Announcement combat sentence []: This place is insulated from the rest of the world, at least in terms of trade.	这里与外界没有往来，至少做买卖是如此。	l
@@ -7693,6 +7765,11 @@ the bestowal of the title of {s} in {p} after serving in combat, slaying an enem
 A bird of prey so large and ferocious it dwarfs many dragons. All beneath its mighty wings should fear the sky.	一种庞大凶猛的猛禽，令许多龙相形见绌，在它强大的翅膀下的一切都应该敬畏天空。	lP
 A medium-sized herbivore that lives in the high mountains, able to navigate the slopes despite its hooved feet.	一种生活在高山上的中型食草动物，尽管它的脚是蹄子，但仍能驾驭斜坡。	lP
 A medium-sized sea mammal with a long thin horn on its nose. It uses this horn to communicate and break up ice.	中型海洋哺乳动物，它的吻部探出细长且尖锐的长角，常被用于破开冰面以及与同伴交流。	lP
+Announcement combat adventure-announcement [$announcement-item,$announcement-item]: You put the {s} on the {s}.	你将{s1}放在{s2}上。	l
+Announcement combat adventure-announcement []: A migrant has arrived at this unhappy place, despite the danger.	一名移民不顾危险，来到了这个不幸的地方。	l
+Announcement combat adventure-announcement []: One must always carefully consider the correct course of action.	做事之前，总应慎重考虑怎样才妥当。	l
+Announcement combat adventure-announcement []: Their strength has been challenged, and their hold has loosened.	他们遭到挑战，对这里的控制已经松动了。	l
+Announcement combat adventure-announcement []: They consider you an infamous villain among those opposing them.	他们把你视为反对者中臭名昭著的恶人。	l
 Announcement combat agreement-conclusion-core [$historical-actor,agreement-conclusion-title]: {s} concluded {s}	{s1}结束了{s2}	l
 Announcement combat agreement-core [$historical-actor,agreement-crime]: plotted to frame {s} for {s} by fooling	密谋用{s2}的罪名栽赃{s1}	l
 Announcement combat agreement-core [agreement-crime,$historical-actor]: plotted to frame for {s} by fooling {s}	密谋欺骗{s2}，制造{s1}的栽赃阴谋	l
@@ -7843,6 +7920,7 @@ was too envious of others to face death and agreed, despite the efforts of surro
 {b} is sought by {s}, and I aim to return it home. My epic journey began {s}. I've boldly searched {e} and {e}.	{s1}正在寻找{b1}，而我打算将它送回故乡。我的史诗之旅始于{s2}。我勇敢地搜寻了{e1}和{e2}。	hPt
 A tiny flying insect found around rotting meat and garbage. These bugs are widely considered to be a nuisance.	一种在腐肉和垃圾旁边多见的微小飞虫。这些虫子被广泛的讨厌着。	lP
 Absent alcohol and in warmer weather, you can designate a Water Source from the Zones menu at a river or pond,	[C:7:0:0]没有酒而天气又较暖时，可以在“[C:5:0:1]区域[C:7:0:0]”菜单中选择[C:3:0:0]取水区[C:7:0:0]，在河流或池塘边划定，	hq
+Announcement combat adventure-announcement []: A migrant has decided to brave this terrifying miserable place.	一名移民决定勇闯这个恐怖而悲惨的地方。	l
 Announcement combat agreement-conclusion-core [agreement-conclusion-core,agreement-conclusion-reason]: {s} {s}	{s1}，{s2}	l
 Announcement combat agreement-core [agreement-party-list,agreement-party-list]: {s} joined with {s} as a guide	{s1}与{s2}同行，担任向导	l
 Announcement combat agreement-core [agreement-party-list,agreement-party-list]: {s} made an agreement with {s}	{s1}与{s2}达成协议	l
@@ -7988,6 +8066,11 @@ A large, muscular, spotted feline found in tropical jungles. It is solitary and 
 A small creature found in both salt and fresh water that lives in an asymmetrical shell rooted to the bottom.	一种在盐水和淡水中都能找到的小生物，生活在一个不对称的外壳中，外壳底部有根。	lP
 A small forest bird known for the distinctive flaps of skin hanging from its face. It is prized for its meat.	一种小型森林鸟类，以其脸上垂下的独特皮瓣二闻名。它的肉享誉于世。	lP
 A small ground-dwelling bird. It has a featherless head and eats seeds and insects. It moves about in groups.	一种住在地上的小鸟。它有一个没有羽毛的头，吃种子和昆虫。它成群结队地活动.	lP
+Announcement combat adventure-announcement []: Hopefully your friends can dissuade you from this foolishness.	希望你的朋友能劝你别再做这种傻事。	l
+Announcement combat adventure-announcement []: Probably on the move or deep underground, but I can't be sure.	可能正在途中，也可能在地下深处，但我不能确定。	l
+Announcement combat adventure-announcement []: Reveal what you have been scheming or suffer the consequences.	交代你的阴谋，否则后果自负。	l
+Announcement combat adventure-announcement []: Try building a butcher's shop and slaughtering some livestock.	试着建造屠宰场，宰杀一些牲畜。	l
+Announcement combat adventure-announcement []: Your most trusted local companions are meeting you here today.	你最信任的本地同伴今天将在这里与你会合。	l
 Announcement combat agreement-core [$description]: aided in becoming a permanent part of the living world {s}	帮助永远留在生者的世界，{s1}	l
 Announcement combat agreement-core [agreement-target,$name]: plotted to sabotage the activities of {s} at {s}	密谋破坏{s1}在{s2}的活动	l
 Announcement combat agreement-title-core [agreement-party-list]: the embezzlement conspiracy concocted by {s}	{s1}策划的挪用资金阴谋	l
@@ -8152,6 +8235,10 @@ A gigantic version of its tiny cousin, this long, slimy creature tunnels through
 A huge, predatory reptile with pale, colorless scales and red eyes. It lives in caves and ambushes its prey.	一种巨大的食肉爬行动物，有苍白无色的鳞片和红色的眼睛。它生活在洞穴里，伏击猎物。	lP
 Affects all spoken performances, from poetry recitals to preaching to storytelling to certain musical forms.	影响所有口头表演，包括诗歌朗诵、布道、讲故事和某些音乐形式。	w
 An evil monster from the swamp. It resembles a knot of waterlogged weeds but will strike the unaware victim.	一个来自沼泽地的邪恶怪物。它就像一结积水的杂草，会袭击不知情的受害者。	lP
+Announcement combat adventure-announcement []: A dark, menacing cloud towers above you, crowned by an anvil.	一团阴暗而险恶的云高耸在你头顶，顶部呈铁砧状。	l
+Announcement combat adventure-announcement []: A migrant has decided to brave this terrifying unhappy place.	一名移民决定勇闯这个恐怖而不幸的地方。	l
+Announcement combat adventure-announcement []: I'd just as soon not have anything too exciting happen today.	我倒希望今天别发生什么太刺激的事。	l
+Announcement combat adventure-announcement []: Your name precedes you. Thank you for all that you have done.	久仰大名。感谢你所做的一切。	l
 Announcement combat agreement-conclusion-core [agreement-conclusion-core,agreement-party-list]: {s} with {s}	{s1}，协议另一方为{s2}	l
 Announcement combat agreement-core [agreement-party-list]: made an agreement with {s} to work as a mercenary	与{s1}达成协议，以便从事雇佣兵工作	l
 Announcement combat agreement-core [agreement-party-list]: {s} made an agreement with to work as a mercenary	{s1}与达成协议，以便从事雇佣兵工作	l
@@ -8165,6 +8252,7 @@ Announcement combat journal-event [journal-calendar-date,$person]: You first hea
 Announcement combat justice-interrogation-sentence []: Attempted to appeal to subject's belief in the truth.	试图以受审者对真相的重视为由进行劝说。	l
 Announcement combat negotiation-response []: joined the conversation and over time came around on the matter	加入了闲谈，并渐渐改变了对此事的看法	l
 Announcement combat negotiation-response []: made light conversation and over time came around on the matter	轻松地闲谈，并渐渐改变了对此事的看法	l
+Announcement combat quest-sentence [quest-destination]: Any should be brought to {s}, or given to one of us.	发现任何这类遗存，都应将其送至{s1}，或交给我们中的一员。	l
 Announcement combat rumor-event []: A small but organized military order have been causing us much hardship.	一个军事修会人数不多，却组织严密，害得我们吃尽苦头。	l
 Announcement combat rumor-event [rumor-person,$travel-site]: I hear that {s} crushed an insurrection in {s}.	听说{s1}镇压了{s2}的叛乱。	l
 Announcement combat rumor-event [rumor-person,$travel-site]: I hear that {s} lost {s} after an insurrection.	听说{s1}在一场叛乱后失去了{s2}。	l
@@ -8288,6 +8376,8 @@ the bestowal of the title of {s} in {p} after slaying {d} enemies and being a me
 {a} thrust a spire of slade up from the underworld, naming it {p}, and established a gateway between worlds.	{a1}从地下世界升起一座基岩尖塔，将其命名为{p1}，并建立了世界之间的通道。	ht
 {n} told me to tell {n} to tell {n} to ask {n} to grant an important position to me when one came available.	{n1}让我转告{n2}，让其再转告{n3}，要求{n4}在职位出现空缺时，将一个重要职位授予我。	hPt
 A small sea bird with great wings. It soars through the sky and dives for food on the surface of the water.	一种长着巨大翅膀的小海鸟。它在天空中翱翔并在水面上潜水觅食。	lP
+Announcement combat adventure-announcement []: A towering gray cloud descends from the white sky above you.	一团高耸的灰云从你头顶的白色天空中向下延伸。	l
+Announcement combat adventure-announcement []: You've assumed tactical control as nobody else is available.	由于没有其他人可用，你已接管战术控制。	l
 Announcement combat agreement-conclusion-title [agreement-item,$name]: an agreement to retrieve {s} for {s}	一项为{s2}取回{s1}的协议	l
 Announcement combat agreement-core [agreement-party-list,$historical-actor]: {s} plotted to assassinate {s}	{s1}密谋刺杀{s2}	l
 Announcement combat agreement-core [agreement-party-list,$name,$name]: joined with {s} to oust {s} from {s}	与{s1}同行，将{s2}逐出{s3}	l
@@ -8450,6 +8540,10 @@ the bestowal of the title of {s} in {p} after slaying {d} enemies and {d} years 
 A huge emaciated-looking bear with great drooping ears and many sharp teeth. It is found deep underground.	一种长着大垂耳和许多尖牙的，体形消瘦的巨熊。被发现于深层地底。	lP
 A small carnivorous animal found in temperate climates. It has orange fur and is known for its cleverness.	一种生活在温带的小型食肉动物。它有橙色的皮毛，以聪明著称。	lP
 Although my own insignificant beliefs lie elsewhere, we can both agree you are by far the most persuasive!	虽说我有点不值一提的不同看法，但我们都承认，你的说服力远胜众人！	hP
+Announcement combat adventure-announcement []: I'll need to see something impressive before I consider it.	你得先拿出点真本事，我才会考虑。	l
+Announcement combat adventure-announcement []: Sometimes I think I need a drink, but I can control myself.	有时我觉得该喝一杯，但我能克制自己。	l
+Announcement combat adventure-announcement []: Trade relations remain strengthened by recent negotiations.	近期谈判仍在促进贸易往来。	l
+Announcement combat adventure-announcement []: What stories you tell! It's such an honor to have you here.	你讲的故事真精彩！你能来这里，真是荣幸。	l
 Announcement combat agreement-record [agreement-core,agreement-party-list]: {s} under the influence of {s}	在{s2}的影响下，{s1}	l
 Announcement combat agreement-title-core [agreement-item,$name]: the request by that retrieve {s} from {s}	请从{s2}处取回{s1}的请求	l
 Announcement combat agreement-title-core [agreement-party-list,$name]: the joining of with {s} to find {s}	与{s1}同行，寻找{s2}	l
@@ -8601,6 +8695,12 @@ the method of writing a biography of oneself, particularly as it concerns a mili
 "There is no value in telling the truth thoughtlessly.  Consider the circumstances and say what is best."	“不假思索地说实话没有意义。要看清情形，说最合适的话。”	l
 A great slug with the torso of a man. It pulls itself across the ground with its hands for greater speed.	一种有着巨大蛞蝓身躯的人形生物。它用手拉自己以更快地穿梭于地面。	lP
 A small feathered bipedal dinosaur with a sharp scything claw on its second toe. It can run very quickly.	一种带羽毛的小型双足恐龙，第二趾上长有锋利的镰刀状爪，奔跑速度极快。	lP
+Announcement combat adventure-announcement []: Don't travel alone at night, or the bogeyman will get you.	别在夜间独自旅行，否则夜魔会抓走你。	l
+Announcement combat adventure-announcement []: Everything is properly royal, properly furnished. And yet?	一切都符合王家规格，陈设也恰如其分。但似乎还少了什么？	l
+Announcement combat adventure-announcement []: I am escaping from danger which threatened my former home.	我原来的家遭遇了危险，我是出来避难的。	l
+Announcement combat adventure-announcement []: It's not perfect, but it's good enough. Why fret about it?	虽然不完美，但已经够好了，何必为此烦恼？	l
+Announcement combat adventure-announcement []: Migrants were too nervous to make the journey this season.	本季移民因太过害怕，未敢踏上旅途。	l
+Announcement combat adventure-announcement []: You have a room here, and you can stay longer if you like.	你在这里有一间房，愿意的话可以多住些日子。	l
 Announcement combat agreement-core [agreement-item,$name,$name]: asked that retrieve {s} from {s} for {s}	请为{s3}从{s2}处取回{s1}	l
 Announcement combat agreement-core [agreement-party-list]: joined with {s} after being compelled to serve	与{s1}同行，被迫为其效力	l
 Announcement combat agreement-core [agreement-party-list]: {s} joined with after being compelled to serve	{s1}与同行，被迫为其效力	l
@@ -8761,6 +8861,10 @@ A gigantic bipedal dinosaur with a ferocious biting jaw and short arms. It is am
 A huge fish covered with growths and spots it uses to hide on the sea bed. It is not usually aggressive.	一条巨大的鱼 ，身上长满了能够使其隐藏在海床上的疙瘩和斑点。一般不具有攻击性。	lP
 A huge rodent that walks on tall legs. Its bark can be heard at large distances. It is fond of swimming.	一种用两腿走路的巨型啮齿动物。它尖叫时很远也可以听到。酷爱游泳。	lP
 A large white snake with the arms and torso of a man. These creatures are evil and live far underground.	一种形似大白蛇的人形生物，长有手臂和直立的躯干。它们生性邪恶，住在很深的地下。	lP
+Announcement combat adventure-announcement []: I know you can handle yourself, but be careful out there.	我知道你能照顾好自己，但在外面还是要小心。	l
+Announcement combat adventure-announcement []: The enemy have come and are laying siege to the fortress.	敌军已经到达，正在围攻要塞。	l
+Announcement combat adventure-announcement []: Traveling alone in the wilds?! You know better than that.	独自在荒野旅行？！你应该知道这有多危险。	l
+Announcement combat adventure-announcement [rumor-time,dialogue-battle,$conflict-place]: {s} {s} in {s}.	{s1}，在{s3}，{s2}。	l
 Announcement combat agreement-core [$name]: made an agreement with , becoming a resident of {s} to study	与达成协议，成为{s1}的居民，以便求学	l
 Announcement combat agreement-core [agreement-party-list,$historical-actor]: joined with {s} to find {s}	与{s1}同行，寻找{s2}	l
 Announcement combat agreement-core [agreement-party-list,$historical-actor]: {s} joined with to find {s}	{s1}与同行，寻找{s2}	l
@@ -8913,6 +9017,8 @@ to yield in combat. If the conflict has not reached a No Quarter state, your opp
 A large flightless bird. Females are more than twice as large as males. They are primarily herbivorous.	一种不会飞的大型鸟。雌鸟体型是雄鸟的两倍以上，主要以植物为食。	lP
 A tiny soft-bodied aquatic creature with a grasping forward appendage, two eyestalks and a finned tail.	一种微小的软体水生生物，身前有一条用于抓取的附肢，另有两根眼柄和一条带鳍的尾巴。	lP
 Although my own insignificant beliefs lie elsewhere, I must say that is a truly insightful observation!	虽说我有点不值一提的不同看法，但不得不说，你这番见解真是深刻！	hP
+Announcement combat adventure-announcement []: They still hold this area, but they do not feel certain.	他们仍控制着这片地区，但并没有把握。	l
+Announcement combat adventure-announcement []: You must move away from the river before you can travel.	必须先远离河流，才能开始旅行。	l
 Announcement combat agreement-core [agreement-party-list,$name]: promised to give {s} a position in {s}	答应，给{s1}在{s2}安排一个职位	l
 Announcement combat agreement-core [agreement-party-list,$name]: promised {s} to give a position in {s}	答应{s1}，给在{s2}安排一个职位	l
 Announcement combat agreement-core [agreement-party-list,$name]: {s} promised to give a position in {s}	{s1}答应，给在{s2}安排一个职位	l
@@ -9087,6 +9193,13 @@ was unaffected by the comments and refused, despite the efforts of surrounding a
 A catapult fires a boulder in a fixed direction. The operator can adjust the aim freely within a cone.	投石机沿固定方向发射巨石，操作员可在锥形范围内自由调整瞄准方向。	hj
 A gigantic armored quadrupedal dinosaur with a mighty tail club. It is a herbivore and has four horns.	一种体型极其庞大的披甲四足恐龙，尾端有一枚威力惊人的骨槌。它以植物为食，另长有四根角。	lP
 A medium-sized mammalian predator. It is known by the tell-tale tufts of hair on the tips of its ears.	一种中型哺乳动物捕食者。众所周知，它的耳朵尖上有一簇簇毛发。	lP
+Announcement combat adventure-announcement []: A vile force of darkness has arrived, seeking a parley!	一支邪恶的黑暗势力已经到来，要求谈判！	l
+Announcement combat adventure-announcement []: An important decision awaits your careful deliberation.	一项重要决定等待你仔细斟酌。	l
+Announcement combat adventure-announcement []: If you accept the gift, one will be expected in return.	收下礼物，就应当有所回报。	l
+Announcement combat adventure-announcement []: Migrants were too wary to make the journey this season.	本季移民因太过警惕，未敢踏上旅途。	l
+Announcement combat adventure-announcement []: People can be so angry, and I just don't understand it.	人怎么会有那么大的怒气，我实在不理解。	l
+Announcement combat adventure-announcement []: Remember that ice and snow can be heated by a campfire.	记住，可以用营火加热冰雪。	l
+Announcement combat adventure-announcement []: You do not have a free grasp and your quivers are full.	你没有空闲的抓握部位，而且所有箭筒都已装满。	l
 Announcement combat agreement-core [agreement-party-list,$historical-actor]: {s} plotted to abduct {s}	{s1}密谋绑架{s2}	l
 Announcement combat agreement-core [agreement-party-list]: joined with {s} to live a life of adventure	与{s1}同行，过冒险生活	l
 Announcement combat agreement-core [agreement-party-list]: requested that {s} make an offer of service	要求{s1}表示愿意效力	l
@@ -9271,6 +9384,10 @@ A medium-sized fish found in lakes and streams. They are bottom-feeders and tend
 A ramp is a special square that can be traversed to the level above. There must be space above a ramp	斜坡是一种可通往上一层的特殊地块。要使斜坡可用，其上方必须有空间，	hq
 A relatively large lizard. It can be found in most climates, foraging for bugs during daylight hours.	一种相对较大的蜥蜴。能在大部分天气下找到，在白天寻找虫子。	lP
 A small arthropod person with pronounced eyes and two grasping appendages protruding from their face.	一种小型节肢类人形生物，眼睛突出，面部长有两条用于抓取的附肢。	lP
+Announcement combat adventure-announcement []: My talented bard! It's such an honor to have you here.	才华横溢的吟游诗人，你能来这里，真是我的荣幸！	l
+Announcement combat adventure-announcement []: The presence of your ruler has attracted great riches.	统治者的到来吸引了大量财富。	l
+Announcement combat adventure-announcement []: There is a heavy blanket of fog enveloping everything.	浓雾如厚毯般笼罩着一切。	l
+Announcement combat adventure-announcement []: You are considered an integral part of the opposition.	你被视为反对者中不可或缺的一员。	l
 Announcement combat agreement-core [$name,agreement-goals]: plotted to infiltrate {s} in order to {s}	密谋潜入{s1}，以便{s2}	l
 Announcement combat agreement-core [agreement-party-list,agreement-item]: asked that {s} retrieve {s}	请{s1}取回{s2}	l
 Announcement combat agreement-core [agreement-party-list,agreement-item]: {s} asked that retrieve {s}	{s1}请取回{s2}	l
@@ -9446,6 +9563,13 @@ A tiny furry rodent dwelling in the hollow cracks of rocks. They can be found hi
 Alternatively, you can increase the number of subregions permitted by the parameters, up to the cap.	也可以在上限范围内提高允许的子区域数量。	l
 Alternatively, you can reduce the number of mountain squares and regions required by the parameters.	也可以减少参数要求的山地方格和区域数量。	l
 Although my own insignificant beliefs lie elsewhere, I confess your stunning argument overwhelms me!	虽说我有点不值一提的不同看法，但我承认，你这番精彩的论辩让我心服口服！	hP
+Announcement combat adventure-announcement []: A migrant has decided to brave this terrifying place.	一名移民决定勇闯这片恐怖之地。	l
+Announcement combat adventure-announcement []: Mounds of clouds are clustered through a striped sky.	成堆的云团聚集在布满条纹的天空中。	l
+Announcement combat adventure-announcement []: Others refused to journey to this dangerous fortress.	其他人拒绝前往这座危险的要塞。	l
+Announcement combat adventure-announcement []: The rest of the vomit falls away into the underworld.	其余呕吐物掉进了地下世界。	l
+Announcement combat adventure-announcement []: The vomit splatters into the shallow puddle of water.	呕吐物溅进了浅水洼。	l
+Announcement combat adventure-announcement []: You do not have a free grasp and your quiver is full.	你没有空闲的抓握部位，而且箭筒已装满。	l
+Announcement combat adventure-announcement []: You ought to be rewarded for returning our treasures.	你归还了我们的宝藏，应当得到奖赏。	l
 Announcement combat agreement-core [agreement-party-list,$office,$name]: {s} began as the {s} of {s}	{s1}作为{s3}的{s2}开始了……	l
 Announcement combat agreement-core [agreement-party-list]: {s} plotted to sabotage the activities of	{s1}密谋破坏活动……	l
 Announcement combat agreement-title-core [$historical-actor]: the joining of with to help rescue {s}	与同行，协助营救{s1}	l
@@ -9619,6 +9743,9 @@ A small wolf-like scavenger. Normally found in pairs, jackals can form packs whe
 A small, nocturnal, tree-dwelling mammal. It uses its long fingers to fish out grubs from the wood.	树栖哺乳动物一种夜间活动的小型树栖哺乳动物。它用长长的手指从木头里捞出食物。	lP
 A tiny winged humanoid with shifting colors which performs intricate aerial dances in large groups.	一种微小的有翅膀的人形生物，随着色彩的变化，在大群人中表演复杂的空中舞蹈。	lP
 Alternatively, you can reduce the number of glacial squares and regions required by the parameters.	也可以减少参数要求的冰川方格和区域数量。	l
+Announcement combat adventure-announcement []: I'd like to stay here another day if you don't mind.	如果你不介意，我想在这里再住一天。	l
+Announcement combat adventure-announcement []: Perhaps you can gather plants, fruit, or go fishing.	也许可以采集植物、摘取果实，或去捕鱼。	l
+Announcement combat adventure-announcement []: There are scattered clouds underneath a striped sky.	布满条纹的天空下散布着云朵。	l
 Announcement combat agreement-core [agreement-party-list,agreement-party-list]: {s} joined with {s}	{s1}与{s2}同行	l
 Announcement combat agreement-title-core [$name,$name]: the plot of to induce a war of {s} upon {s}	挑起{s1}对{s2}战争的阴谋	l
 Announcement combat agreement-title-core [agreement-crime]: the plot of to frame for {s} by fooling	用{s1}的罪名栽赃他人的阴谋	l
@@ -9833,6 +9960,14 @@ Alternatively, you can reduce the number of desert squares and regions required 
 Alternatively, you can reduce the number of forest squares and regions required by the parameters.	也可以减少参数要求的森林方格和区域数量。	l
 Alternatively, you can reduce the number of tundra squares and regions required by the parameters.	也可以减少参数要求的苔原方格和区域数量。	l
 An evil humanoid with a long tail, black spiky fur and a twitching nose. It lives far underground.	一个邪恶的人形生物，有着长长的尾巴、黑色尖刺的皮毛和抽搐的鼻子。它生活在遥远的地底。	lP
+Announcement combat adventure-announcement []: How have your sturdy charges fared in your absence?	在你离开的这段时间里，这些坚韧的子民过得如何？	l
+Announcement combat adventure-announcement []: I don't always do things in the most efficient way.	我做事并不总是那么有效率。	l
+Announcement combat adventure-announcement []: I wouldn't feel comfortable getting all dressed up.	打扮得太讲究，会让我不自在。	l
+Announcement combat adventure-announcement []: Master yourself today; discipline will be required.	今天要约束自己；你将需要自律。	l
+Announcement combat adventure-announcement []: Others refused to journey to this unhappy fortress.	其他人拒绝前往这座不幸的要塞。	l
+Announcement combat adventure-announcement []: People do get so carried away sometimes, but not I.	人有时会忘乎所以，但我不会。	l
+Announcement combat adventure-announcement []: Some migrants have arrived at this miserable place.	一些移民来到了这个悲惨的地方。	l
+Announcement combat adventure-announcement []: What a dancer! It's such an honor to have you here.	多么出色的舞者！你能来这里，真是荣幸。	l
 Announcement combat agreement-core [agreement-party-list,$name]: joined with {s} as a guide to {s}	与{s1}同行，担任向导前往{s2}	l
 Announcement combat agreement-core [agreement-party-list,$name]: {s} joined with as a guide to {s}	{s1}与同行，担任向导前往{s2}	l
 Announcement combat agreement-core [agreement-party-list,$office,$name]: {s} began as a {s} of {s}	{s1}作为{s3}的一位{s2}开始了……	l
@@ -10039,6 +10174,11 @@ A small flightless green parrot. It is nocturnal and counts itself among the lon
 A small woolly insect that lives in hive colonies. It has an annoying sting which it rarely uses.	一种生活在蜂巢群落中的小毛虫。 它有一个烦人的刺，但它很少使用。	lP
 Alternatively, you can reduce the number of ocean squares and regions required by the parameters.	也可以减少参数要求的海洋方格和区域数量。	l
 Alternatively, you can reduce the number of swamp squares and regions required by the parameters.	也可以减少参数要求的沼泽方格和区域数量。	l
+Announcement combat adventure-announcement []: A coming disaster can be delayed, but not avoided.	即将到来的灾难可以推迟，却无法避免。	l
+Announcement combat adventure-announcement []: I must say that is a truly insightful observation!	不得不说，你这番见解真是深刻！	l
+Announcement combat adventure-announcement []: It's not a gift if you expect something in return.	若是指望回报，那就不算馈赠。	l
+Announcement combat adventure-announcement []: They must be stopped by any means at our disposal.	我们必须用尽一切手段阻止他们。	l
+Announcement combat adventure-announcement []: You will learn something you did not want to know.	你将得知某件你不愿知道的事。	l
 Announcement combat agreement-core [agreement-party-list,$name]: joined with {s} to oust {s} from	与{s1}同行，协助驱逐{s2}	l
 Announcement combat agreement-core [agreement-party-list,$name]: {s} joined with to oust {s} from	{s1}与同行，协助驱逐{s2}	l
 Announcement combat agreement-core [agreement-party-list]: joined with {s} to entertain the world	与{s1}同行，为世人表演	l
@@ -10252,6 +10392,10 @@ A large hooved animal with curved horns and a thick brown coat. It is known for 
 A large, flat, camouflaged fish found on the sea floor in temperate waters. It is quite passive.	一种大型、扁平、善于伪装的鱼类，生活在温带水域海底。 不具有主动进攻性。	lP
 A small spiny mammal with a long snout. It eats ants and termites and reproduces by laying eggs.	长鼻子的多刺哺乳动物。它以蚂蚁和白蚁为食，并通过产卵繁殖。	lP
 A tiny sea animal that lives in the sand just offshore. It has a flat body with legs underneath.	一种生活在岸边的沙滩上的小型海洋生物.它具有平坦的身躯并且两条腿藏在地底下.	lP
+Announcement combat adventure-announcement []: Perhaps some of your friends here can remind you.	也许这里的朋友能提醒你。	l
+Announcement combat adventure-announcement []: Some migrants have arrived at this unhappy place.	一些移民来到了这个不幸的地方。	l
+Announcement combat adventure-announcement []: They consider you a key figure in the opposition.	他们把你视为反对者中的关键人物。	l
+Announcement combat adventure-announcement []: Try to focus on the practical side of the matter.	尽量多考虑事情实际的一面。	l
 Announcement combat agreement-core [agreement-core,agreement-item]: {s}. The ritual involved {s}	{s1}。仪式使用了{s2}	l
 Announcement combat agreement-core [agreement-party-list]: {s} concocted a corruption conspiracy	{s1}策划了腐败的阴谋	l
 Announcement combat agreement-core [agreement-target]: plotted to sabotage the activities of {s}	密谋破坏{s1}的活动	l
@@ -10481,6 +10625,16 @@ A floating pod with eye-stalks. It can spray poison and it gives off poison gas 
 A large mammalian herbivore living in cold climates. It has large antlers and sought-after fur.	一种生活在寒冷气候中的大型哺乳类食草动物，具有巨大的鹿角和抢手的皮毛。	lP
 A small oceanic eel-like creature that latches onto the side of its victim and tears into them.	一种小型海洋鳗鱼类生物，会紧紧抓住并撕咬受害者。	lP
 A tiny shelled ocean creature with many long legs. It has two large pincers on its front limbs.	一种有许多条长腿的小型带壳海洋生物.它的前肢上有两个大的螯.	lP
+Announcement combat adventure-announcement []: A dark, towering cloud rises into a striped sky.	一团深色的高耸云层伸入布满条纹的天空。	l
+Announcement combat adventure-announcement []: An army has come to your lands seeking a parley.	一支军队来到了你的领地，要求谈判。	l
+Announcement combat adventure-announcement []: Cavern dwellers! Send them back to the darkness!	洞穴居民！把他们赶回黑暗中去！	l
+Announcement combat adventure-announcement []: I am sorry. I do not think there is room for me.	抱歉，我觉得这里容不下我。	l
+Announcement combat adventure-announcement []: I don't understand why they have to be that way.	我不理解，他们为什么非要那样。	l
+Announcement combat adventure-announcement []: It is amazing how far you've come. Welcome home.	你的成就真令人惊叹。欢迎回家。	l
+Announcement combat adventure-announcement []: It really is a pleasure to speak with you again.	能再次与你交谈，真令人高兴。	l
+Announcement combat adventure-announcement []: It's a great day to fall in love all over again.	今天真是重新坠入爱河的好日子。	l
+Announcement combat adventure-announcement []: The rest of the vomit disappears into the water.	其余呕吐物消失在了水中。	l
+Announcement combat adventure-announcement []: The rest of the vomit falls away into the chasm.	其余呕吐物掉进了深渊。	l
 Announcement combat agreement-core [$name]: made an agreement with , becoming a resident of {s}	与达成协议，成为{s1}的居民	l
 Announcement combat agreement-core [agreement-party-list,$name]: promised {s} a position in {s}	答应给{s1}在{s2}安排一个职位	l
 Announcement combat agreement-core [agreement-party-list,$name]: {s} promised a position in {s}	{s1}答应给在{s2}安排一个职位	l
@@ -10738,6 +10892,9 @@ was willing to accept eventual death and refused, despite being swayed by the em
 {n} has created {b}, a {s}! It claims it as an heirloom in the name of the family ancestor {p}.	{n1}创造了{b1}，一件{s1}！它以家族先祖{p1}之名，宣布将其作为传家宝。	hPt
 "It is best not to complicate your life with lies, sure, but the truth also has its problems."	“最好别让谎言把生活弄复杂，但实话也有实话的麻烦。”	l
 "You wish to make an offering to our leader? This would please us greatly. What do you offer?"	“你想向我们的领袖献礼？我们会非常高兴。你要献上什么？”	hP
+Announcement combat adventure-announcement []: I confess your stunning argument overwhelms me!	我承认，你这番精彩的论辩让我心服口服！	l
+Announcement combat adventure-announcement []: I encountered a fascinating conundrum recently.	我最近遇到了一个引人入胜的难题。	l
+Announcement combat adventure-announcement []: Some migrants have arrived, despite the danger.	一些移民不顾危险，抵达了这里。	l
 Announcement combat agreement-conclusion-reason []: because of a leadership change at the site	因为当地领导者发生更替	l
 Announcement combat agreement-core [$name]: made an agreement with , becoming a citizen of {s}	与达成协议，成为{s1}的公民	l
 Announcement combat agreement-core [agreement-party-list,$name]: {s} plotted to infiltrate {s}	{s1}密谋潜入{s2}	l
@@ -10765,6 +10922,7 @@ Announcement combat negotiation-response []: negotiated eloquently in turn and h
 Announcement combat negotiation-response []: negotiated forcefully in turn and had the mastery	也强硬地谈判，并占据了上风	l
 Announcement combat negotiation-response []: negotiated with discernment but was outmaneuvered	审时度势地谈判，却被对方胜过一筹	l
 Announcement combat negotiation-response []: negotiated with humor in turn and had the mastery	也以幽默的方式谈判，并占据了上风	l
+Announcement combat quest-sentence [quest-object]: I desire that {s} be returned to my family.	我希望能把{s1}归还给我的家族。	l
 Announcement combat rumor-event [rumor-identity]: Seek this place if you wish to confront {s}.	想对付{s1}，就去找这个地方。	l
 Announcement combat sentence [$creature]: ... and the {s} saw the sun and vomited on the spot!	……然后那个{s1}看见太阳，当场吐了！	l
 Announcement combat sentence [boast-victim,boast-slain-clause]: I am the murderer of {s}, {s}!	谋杀{s1}的正是我，{s2}！	l
@@ -10936,6 +11094,13 @@ A moaning spirit returned from the dead. It will generally trouble one unfortuna
 A small rodent covered with sharp quills. They eat grass and leaves and can even climb trees.	长满尖刺的小啮齿动物。它们吃草、落叶，甚至可以爬树。	lP
 A small snake found in the trees. It kills its prey by using its long body to constrict them.	树上发现了一条小蛇。它用长长的身体来收缩猎物，从而杀死猎物。	lP
 Although my own insignificant beliefs lie elsewhere, you needn't indulge my trivial thoughts!	虽说我有点不值一提的不同看法，但我那点无足轻重的想法，你不必迁就！	hP
+Announcement combat adventure-announcement []: A migrant has arrived at this miserable place.	一名移民来到了这个悲惨的地方。	l
+Announcement combat adventure-announcement []: It has always been my dream to start a family.	组建家庭一直是我的梦想。	l
+Announcement combat adventure-announcement []: Thank you for preserving our legacy of wisdom.	感谢你保护我们传承的智慧。	l
+Announcement combat adventure-announcement []: The poet! It's such an honor to have you here.	诗人！你能来这里，真是荣幸。	l
+Announcement combat adventure-announcement []: The rest of the vomit burns away in the magma.	其余呕吐物在岩浆中烧尽了。	l
+Announcement combat adventure-announcement []: Well, there must be something else to discuss.	好吧，总还有别的事情可谈。	l
+Announcement combat adventure-announcement []: You'll get nothing from me with your flattery.	再怎么奉承，你也休想从我这里捞到好处。	l
 Announcement combat agreement-conclusion-title [agreement-item]: an agreement to retrieve {s}	一项取回{s1}的协议	l
 Announcement combat agreement-core []: aided in becoming a permanent part of the living world	帮助永远留在生者的世界	l
 Announcement combat agreement-core []: began passing a portion of corruptly-obtained funds to	开始将部分非法所得转交给	l
@@ -11181,6 +11346,18 @@ A gigantic herbivorous quadrupedal dinosaur. It has a broad bony head frill and 
 A large aquatic arthropod with two pincers attached to its front and a sleek segmented body.	一种大型水生节肢动物，身前长有两只螯，光滑的躯体分成多节。	lP
 A medium-sized, winged fish found in the muddy coasts of both temperate and tropical waters.	一种中等大小的有翼鱼，见于温带和热带水域的泥泞海岸。	lP
 A small marine mammal with a long body. They enjoy eating shellfish and other small animals.	一种体型较长的小型海洋哺乳动物。它们喜欢吃贝类和其他小动物。	lP
+Announcement combat adventure-announcement [$announcement-item]: You put the {s} on display.	你将{s1}摆出来展示。	l
+Announcement combat adventure-announcement []: It's so great when everybody just gets along.	大家和睦相处，真是美好。	l
+Announcement combat adventure-announcement []: Perhaps some of your friends here have ideas.	也许这里的朋友有些主意。	l
+Announcement combat adventure-announcement []: The gods surely want you to dig deeper still!	众神一定希望你们继续向更深处挖掘！	l
+Announcement combat adventure-announcement []: The object of your ambition will be realized.	你的宏愿将会实现。	l
+Announcement combat adventure-announcement []: The rest of the vomit burns away in the lava.	其余呕吐物在熔岩中烧尽了。	l
+Announcement combat adventure-announcement []: The sky above you is a uniform and dark gray.	你头顶的天空是一片均匀的深灰色。	l
+Announcement combat adventure-announcement []: They consider you a leader of the opposition.	他们把你视为反对者的领袖。	l
+Announcement combat adventure-announcement []: Thief! Protect the hoard from skulking filth!	小偷！保护财宝，别让鬼祟的败类得手！	l
+Announcement combat adventure-announcement []: You can't stand up -- somebody is in the way.	你无法站起——有人挡住了位置。	l
+Announcement combat adventure-announcement []: Your ruler has arrived, dressed as a peasant!	你的统治者乔装成农民抵达了！	l
+Announcement combat adventure-announcement []: Your selfless dedication is appreciated here.	这里的人都感激你的无私奉献。	l
 Announcement combat agreement-core [$office,$name]: began embezzling funds as the {s} of {s}	以{s2}的{s1}身份开始挪用资金	l
 Announcement combat agreement-core [agreement-core,$name]: {s}. The ritual took place in {s}	{s1}。仪式在{s2}举行	l
 Announcement combat agreement-core [agreement-party-list,$name]: joined with {s} to find {s}	与{s1}同行，寻找{s2}	l
@@ -11229,6 +11406,7 @@ Announcement combat memorial-weapon-death [memorial-weapon-verb,$memorial-actor]
 Announcement combat memory-sentence [memory-person]: The body of {s} decayed without burial.	{s1}的尸体没人埋，都烂了。	l
 Announcement combat negotiation-response []: negotiated calmly in turn but was outmaneuvered	也冷静地谈判，却被对方胜过一筹	l
 Announcement combat negotiation-response []: negotiated with discernment and had the mastery	审时度势地谈判，并占据了上风	l
+Announcement combat quest-sentence [quest-holder,$term]: {s} requires it to be a proper {s}.	{s1}需要它，才能成为名副其实的{s2}。	l
 Announcement combat rumor-event [$person]: Seek this place if you wish to confront {s} the .	想对付{s1}，就去找这个地方。	l
 Announcement combat rumor-event []: A creature of the night has our people cowering in fear.	一只夜行生物把我们的族人吓得瑟瑟发抖。	l
 Announcement combat rumor-event []: At times, creeping things slither out from below ground.	时不时会有爬行的东西从地下钻出来。	l
@@ -11481,6 +11659,11 @@ A tiny sea vermin with eight arms and two tentacles. It can spray ink to confuse
 A tiny striped rodent found scurrying through the bushes and trees of the temperate forest.	一只带条纹的小啮齿动物在温带森林的灌木丛和树木中奔跑。	lP
 After harvesting plants like the Pigtail, first process them at the Farmer's Workshop, then	[C:7:0:0]收获[C:6:0:1]猪尾草[C:7:0:0]等植物后，先在[C:6:0:0]农夫工坊[C:7:0:0]加工，接着	hq
 Alternatively, you can reduce the number of high, medium or low volcanism squares required.	也可以减少所需的高、中或低火山活动度方格数量。	l
+Announcement combat adventure-announcement []: A migrant has arrived at this unhappy place.	一名移民来到了这个不幸的地方。	l
+Announcement combat adventure-announcement []: A true Mountainhome must have a true throne!	真正的山国都城，必须拥有真正的王座！	l
+Announcement combat adventure-announcement []: An honor as always. How can I be of service?	每次见到你都深感荣幸。有什么需要我效劳的？	l
+Announcement combat adventure-announcement []: Others were too nervous to make the journey.	其他人因太过害怕，未敢踏上旅途。	l
+Announcement combat adventure-announcement []: Some people are so wrapped up in themselves.	有些人眼里实在只有自己。	l
 Announcement combat agreement-core [$historical-actor]: plotted to frame for by fooling {s}	密谋欺骗{s1}，栽赃他人	l
 Announcement combat agreement-core [$historical-actor]: plotted to frame {s} for by fooling	密谋栽赃{s1}	l
 Announcement combat agreement-core [agreement-goals]: plotted to infiltrate in order to {s}	密谋潜入，以便{s1}	l
@@ -11764,6 +11947,15 @@ Alternatively, you can reduce the number of high, medium or low drainage squares
 Alternatively, you can reduce the number of high, medium or low rainfall squares required.	也可以减少所需的高、中或低降雨量方格数量。	l
 Alternatively, you can reduce the number of high, medium or low savagery squares required.	也可以减少所需的高、中或低野性方格数量。	l
 Alternatively, you can reduce the number of non-mountain caves required by the parameters.	也可以减少参数要求的非山地洞穴数量。	l
+Announcement combat adventure-announcement []: Are you looking forward to the performance?	你期待这场表演吗？	l
+Announcement combat adventure-announcement []: Don't bother trying to play on my emotions.	别费心利用我的感情。	l
+Announcement combat adventure-announcement []: Get me going and I won't stop for anything.	只要我行动起来，就没有什么能让我停下。	l
+Announcement combat adventure-announcement []: I don't feel like I need to chase anything.	我不觉得我需要追逐任何东西.	l
+Announcement combat adventure-announcement []: I don't remember what I was going to say...	我不记得要说什么了……	l
+Announcement combat adventure-announcement []: People should listen to what I have to say.	人们应该听听我要说的话。	l
+Announcement combat adventure-announcement []: There are scattered puffy clouds above you.	你头顶散布着蓬松的云朵。	l
+Announcement combat adventure-announcement []: Think on what came before and what follows.	想想过去，也想想未来。	l
+Announcement combat adventure-announcement []: You've already searched this area recently.	你最近已经搜寻过此区域。	l
 Announcement combat agreement-conclusion-reason []: because the group travelled too slowly	因为队伍行进得太慢	l
 Announcement combat agreement-core [$historical-actor]: joined with as a guide to find {s}	与同行，担任向导寻找{s1}	l
 Announcement combat agreement-core [$name]: requested that make an offer of service to {s}	要求向{s1}表示愿意效力	l
@@ -12019,6 +12211,20 @@ A small reptile person with a gliding membrance between their legs. They also ha
 A small reptile person with a prehensile tail and giant claws on their second foredigits.	一种小型爬行类人形生物，长有可以卷握的尾巴，第二根前趾上生着巨大的爪。	lP
 A tiny parrot found in flocks of many hundreds. Exceptional birds can be taught to speak.	一种常常成群结队的小型鹦鹉,其中有部分罕见的类型能够被教会说话。	lP
 After a polite discussion with a local rival, {n} has claimed the position of {s} of {e}.	与当地的一位竞争者客气地商谈后，{n1}取得了{e1}的{s1}之位。	hPt
+Announcement combat adventure-announcement []: A great piece of art is one that moves me.	能打动我的，才是好艺术。	l
+Announcement combat adventure-announcement []: A legend? Here? I can scarcely believe it.	传说中的人物？在这里？我简直不敢相信。	l
+Announcement combat adventure-announcement []: A migrant has arrived, despite the danger.	一名移民不顾危险，抵达了这里。	l
+Announcement combat adventure-announcement []: I am sorry. There is no room for you here.	抱歉，这里没有你的容身之处。	l
+Announcement combat adventure-announcement []: I hope you find what you are seeking here.	希望你能在这里找到你所追寻的东西。	l
+Announcement combat adventure-announcement []: If you insist so strongly, we can move on.	既然你如此坚持，我们可以换个话题。	l
+Announcement combat adventure-announcement []: In any case, peace is no longer an option.	无论如何，都已经没法讲和了。	l
+Announcement combat adventure-announcement []: It is invigorating to be out in the wilds!	置身荒野真让人精神振奋！	l
+Announcement combat adventure-announcement []: Look at the sky! Are we in the Underworld?	看看天空！我们是在地下世界吗？	l
+Announcement combat adventure-announcement []: The need for my task seems to have passed.	看来我的任务已经没有必要了。	l
+Announcement combat adventure-announcement []: Whatever happens, it will be for the best.	无论发生什么，都会是最好的安排。	l
+Announcement combat adventure-announcement []: You are considered part of the opposition.	你被视为反对者的一员。	l
+Announcement combat adventure-announcement []: You have nothing left to draw or put away.	你已经没有可以取出或收起的物品了。	l
+Announcement combat adventure-announcement []: You no longer assume a submissive posture.	你不再摆出投降姿态。	l
 Announcement combat agreement-conclusion-title [$name]: a request to offer service to {s}	一项向{s1}效力的请求	l
 Announcement combat agreement-core [$name,$name]: plotted to induce a war of {s} upon {s}	密谋挑起{s1}对{s2}的战争	l
 Announcement combat agreement-core [agreement-crime]: plotted to frame for {s} by fooling	密谋用{s1}的罪名栽赃他人	l
@@ -12062,6 +12268,7 @@ Announcement combat memory-sentence [memory-relation]: I was attacked by my own 
 Announcement combat negotiation-response []: negotiated deceptively but was outmaneuvered	用欺骗手段谈判，却被对方胜过一筹	l
 Announcement combat negotiation-response []: negotiated with flattery and had the mastery	用奉承话谈判，并占据了上风	l
 Announcement combat negotiation-response []: read their opposite's underlying motivations	看透了对方的深层动机	l
+Announcement combat quest-sentence [rumor-position]: I require it as a symbol of the {s}.	我需要它作为{s1}的象征。	l
 Announcement combat rumor-event [$book,$name,$name]: I hear that {s} is not in {s}'s {s}.	听说{s1}不在{s2}的{s3}里。	l
 Announcement combat rumor-event [$name,$travel-site]: The army of {s} is marching on {s}!	{s1}的军队正向{s2}进军！	l
 Announcement combat rumor-event []: A beast from the wilds has been harassing our people.	有头野兽从荒野而来，一直侵扰我们的族人。	l
@@ -12292,6 +12499,20 @@ A small striped mammal predator that hunts a night. It can open its jaws unusual
 A tiny black and white bird. It is one of the most intelligent of the natural creatures.	一种黑白相间的小型鸟类。它是自然生物中最聪明的生物之一。	lP
 After a polite discussion with local rivals, {n} has claimed the position of {s} of {e}.	与当地的几位竞争者客气地商谈后，{n1}取得了{e1}的{s1}之位。	hPt
 Although my own insignificant beliefs lie elsewhere, I am overmastered by your presence!	虽说我有点不值一提的不同看法，但你的气势真让我服气！	hP
+Announcement combat adventure-announcement []: Be sure to keep to a high standard today.	今天务必严格要求自己。	l
+Announcement combat adventure-announcement []: I'd just as soon you went someplace else.	我更希望你去别的地方。	l
+Announcement combat adventure-announcement []: I'll be back with your drink in a moment.	我马上就把你的饮品送来。	l
+Announcement combat adventure-announcement []: Now we will have to build our own future.	现在我们得创造自己的未来。	l
+Announcement combat adventure-announcement []: Others were too wary to make the journey.	其他人因太过警惕，未敢踏上旅途。	l
+Announcement combat adventure-announcement []: Please let me shelter here for the night.	请让我在这里借宿一晚。	l
+Announcement combat adventure-announcement []: The alliance has outlived its usefulness.	这个联盟已经失去作用了。	l
+Announcement combat adventure-announcement []: The vomit falls away into the underworld.	呕吐物掉进了地下世界。	l
+Announcement combat adventure-announcement []: There is not enough room to perform here.	这里没有足够的表演空间。	l
+Announcement combat adventure-announcement []: Today you will have a moment of weakness.	今天你将有片刻的软弱。	l
+Announcement combat adventure-announcement []: Why are they so fixated on these baubles?	他们为什么如此痴迷这些小玩意？	l
+Announcement combat adventure-announcement []: You are surrounded by incessant cackling.	你被持续不断的怪笑声包围了。	l
+Announcement combat adventure-announcement []: You have disturbed the sleep of the dead!	你惊扰了死者的长眠！	l
+Announcement combat adventure-announcement []: You shouldn't waste your life on revenge.	不该把一生浪费在复仇上。	l
 Announcement combat agreement-conclusion-title []: an agreement to establish a guildhall	一项建立行会大厅的协议	l
 Announcement combat agreement-core []: made an agreement with to entertain the citizenry	与达成协议，以便为居民表演	l
 Announcement combat agreement-title-core [$name]: the promise by to of a position in {s}	答应给在{s1}安排职位的承诺	l
@@ -12565,6 +12786,18 @@ A large, flat, oceanic fish. It dwells on the sea floor, both its eyes on the to
 A small water bird. It has a long neck and powerful legs meant for swimming and diving.	一种小型水鸟，具有适合游泳和潜水的长脖颈和强壮的腿。	lP
 A tiny green insect. It has long, distinctive forelimbs that it uses to catch its prey.	一种绿色的小型昆虫。它有着长而独特的前肢，用来捕捉猎物。	lP
 A very large carnivorous bipedal dinosaur with two parallel head crests and short arms.	一种体型很大的肉食性双足恐龙，头顶有两道平行冠饰，前肢短小。	lP
+Announcement combat adventure-announcement []: And why shouldn't you dig deeper still?!	为什么不继续往更深处挖呢？！	l
+Announcement combat adventure-announcement []: Can you tell me where I can find myself?	能告诉我到哪里能找到我自己吗？	l
+Announcement combat adventure-announcement []: Do not avoid a necessary conflict today.	今天不要回避必要的冲突。	l
+Announcement combat adventure-announcement []: Have faith and all shall be rejuvenated.	心怀信念，一切都将重获生机。	l
+Announcement combat adventure-announcement []: I don't like being obligated to anybody.	我不喜欢欠任何人的情。	l
+Announcement combat adventure-announcement []: I'm feeling optimistic about the future.	我对未来充满希望。	l
+Announcement combat adventure-announcement []: I'm having trouble taking you seriously.	我实在难以把你的话当真。	l
+Announcement combat adventure-announcement []: There must be something else to discuss.	总还有别的事情可谈。	l
+Announcement combat adventure-announcement []: There's no room for mercy in this world.	这世界容不下仁慈。	l
+Announcement combat adventure-announcement []: They tangle together and tumble forward!	双方纠缠在一起，向前翻滚！	l
+Announcement combat adventure-announcement []: Yes! It'll be great to perform with you.	好啊！能与你一起表演一定很棒。	l
+Announcement combat adventure-announcement []: You have been such a good trade partner.	你一直是个很好的贸易伙伴。	l
 Announcement combat agreement-conclusion-reason []: because the group went too far away	因为队伍走得太远	l
 Announcement combat agreement-core [agreement-party-list,$name]: joined with {s} to {s}	与{s1}同行，前往{s2}	l
 Announcement combat agreement-core [agreement-party-list,$name]: {s} joined with to {s}	{s1}与同行，前往{s2}	l
@@ -12612,6 +12845,8 @@ Announcement combat memorial-clause [$memorial-preference]: The color {s} made i
 Announcement combat memory-sentence [memory-person]: I am forming a grudge against {s}.	我开始记恨{s1}了。	l
 Announcement combat negotiation-opening []: feel out intentions and argue with subtlety	试探对方的意图，委婉地展开争辩	l
 Announcement combat negotiation-response []: negotiated deceptively and had the mastery	用欺骗手段谈判，并占据了上风	l
+Announcement combat quest-sentence [quest-holder,quest-object]: {s} wants {s} returned.	{s1}希望能归还{s2}。	l
+Announcement combat quest-sentence [quest-object]: I desire that {s} be returned to me.	我希望能把{s1}归还给我。	l
 Announcement combat rumor-event []: Our people have been pestered by skulking villains.	一伙鬼鬼祟祟的恶徒一直在骚扰我们的族人。	l
 Announcement combat sentence []: I've always wanted to travel the world. Let us be off!	我一直想周游世界。我们出发吧！	l
 Announcement combat sentence []: It is rumored that the dead rise and stalk the living!	据说死人会在那里复活，暗中追踪活人！	l
@@ -12830,6 +13065,15 @@ A tiny orange marine fish that lives inside the tentacles of a poisonous inverte
 Alternatively, you can reduce the number of mountain caves required by the parameters.	也可以减少参数要求的山地洞穴数量。	l
 Although my own insignificant beliefs lie elsewhere, you are so clever I must concede!	虽说我有点不值一提的不同看法，但你实在太聪明，我只能认输了！	hP
 An animal person with the head of the amphibious olm. It lives underground near water.	长着两栖洞螈头的人形生物。它生活在靠近水的地底。	lP
+Announcement combat adventure-announcement []: An ambush! Curse all friends of nature!	有埋伏！诅咒所有自然之友！	l
+Announcement combat adventure-announcement []: Do you have any livestock to slaughter?	你们有可以宰杀的牲畜吗？	l
+Announcement combat adventure-announcement []: Everything just so in its proper place!	一切都井井有条，各归其位！	l
+Announcement combat adventure-announcement []: How can someone be so consumed by hate?	一个人怎么会被仇恨吞噬到这种地步？	l
+Announcement combat adventure-announcement []: I don't feel like telling you about it.	我不想和你谈这件事。	l
+Announcement combat adventure-announcement []: I need some more excitement in my life.	我的生活需要多一点刺激。	l
+Announcement combat adventure-announcement []: I'm giving up on this hopeless venture.	我要放弃这场毫无希望的冒险。	l
+Announcement combat adventure-announcement []: Persevere though it may be for nothing.	即使可能徒劳，也要坚持。	l
+Announcement combat adventure-announcement []: You tangle together and tumble forward!	你们纠缠在一起，向前翻滚！	l
 Announcement combat agreement-core [$historical-actor]: joined with to help rescue {s}	与同行，协助营救{s1}	l
 Announcement combat agreement-core []: began accepting bribes in exchange for leniency	开始收受贿赂以换取宽大处理	l
 Announcement combat agreement-core [agreement-party-list]: agreed to a parley with {s}	同意与{s1}谈判	l
@@ -13113,6 +13357,15 @@ A very large feathered bipedal dinosaur with a sharp scything claw on its second
 A very small feathered bipedal dinosaur with a sharp scything claw on its second toe.	一种很小的带羽毛双足恐龙，第二趾上长有锋利的镰刀状爪。	lP
 A very small reptile with a prehensile tail and giant claws on its second foredigits.	一种很小的爬行动物，长有可以卷握的尾巴，第二根前趾上生着巨大的爪。	lP
 Alternatively, you can reduce the number of civilizations required by the parameters.	也可以减少参数要求的政权数量。	l
+Announcement combat adventure-announcement []: Do you have wisdom to share, preacher?	布道者，你有什么智慧要分享吗？	l
+Announcement combat adventure-announcement []: Don't try to throw your weight around.	别想在这里仗势欺人。	l
+Announcement combat adventure-announcement []: I cannot stand the world any longer...	我再也受不了这个世界了……	l
+Announcement combat adventure-announcement []: I don't know anything else about them.	关于他们，我不知道更多了。	l
+Announcement combat adventure-announcement []: I don't really get attached to people.	我不太会对别人产生依恋。	l
+Announcement combat adventure-announcement []: Make the sacrifice regardless of fear.	即使恐惧，也要做出牺牲。	l
+Announcement combat adventure-announcement []: Take careful stock of your own stores.	仔细盘点你们自己的储备。	l
+Announcement combat adventure-announcement []: What are a few pesky demons after all?	区区几只烦人的恶魔，又算得了什么？	l
+Announcement combat adventure-announcement []: You are thinking about this all wrong.	你对这件事的想法完全错了。	l
 Announcement combat agreement-conclusion-reason []: after arriving at the destination	在抵达目的地之后	l
 Announcement combat agreement-conclusion-title []: an agreement to establish a temple	一项建立神殿的协议	l
 Announcement combat agreement-core [agreement-party-list]: joined with {s} as a guide	与{s1}同行，担任向导	l
@@ -13431,6 +13684,24 @@ A tiny feathered bipedal dinosaur with a single claw on each side of its upper b
 A very large dinosaur person with a mighty jaw and very short arms with two fingers.	一种体型很大的恐龙类人形生物，颌部强而有力，手臂极短，每只手只有两根手指。	lP
 Alcohol is also sufficient but may not be as easy to come by as it is in a fortress.	酒也能解渴，但可能不像在要塞里那样容易获得。	hq
 Although my own insignificant beliefs lie elsewhere, I admire how brilliant you are!	虽说我有点不值一提的不同看法，但我佩服你的聪明才智！	hP
+Announcement combat adventure-announcement []: A few separate groups were organized.	几个各自独立的组织成立了。	l
+Announcement combat adventure-announcement []: A vile force of darkness has arrived!	一支邪恶的黑暗势力已经到来！	l
+Announcement combat adventure-announcement []: Can you tell me where I can find you?	能告诉我到哪里能找到你吗？	l
+Announcement combat adventure-announcement []: I have been so foolish. Yes, I agree.	我以前太愚蠢了。是的，我同意。	l
+Announcement combat adventure-announcement []: I have trouble controlling my temper.	我很难控制自己的脾气。	l
+Announcement combat adventure-announcement []: I tire of this pointless skirmishing.	我厌倦了这种毫无意义的小规模冲突。	l
+Announcement combat adventure-announcement []: I've forgotten what trouble it was...	我忘记是什么麻烦了……	l
+Announcement combat adventure-announcement []: Ignoring that I don't quite concur...	暂且不提我还不完全赞同……	l
+Announcement combat adventure-announcement []: Is there something to be happy about?	有什么值得高兴的事吗？	l
+Announcement combat adventure-announcement []: It's great to have a friend like you!	有你这样的朋友真好！	l
+Announcement combat adventure-announcement []: Rely on willpower to see you through.	依靠意志力度过难关。	l
+Announcement combat adventure-announcement []: Sometimes I just don't like somebody.	有时我就是不喜欢某个人。	l
+Announcement combat adventure-announcement []: The sky is otherwise clear above you.	除此之外，你头顶的天空一片晴朗。	l
+Announcement combat adventure-announcement []: The webs make it impossible to stand.	蛛网使你无法站起。	l
+Announcement combat adventure-announcement []: You must choose between two extremes.	你必须在两个极端之间做出选择。	l
+Announcement combat adventure-announcement []: You will awaken to a new possibility.	你将发现一种新的可能。	l
+Announcement combat adventure-announcement []: You will have a great accomplishment.	你将取得伟大的成就。	l
+Announcement combat adventure-announcement []: Your intense search turns up nothing.	你仔细搜寻了一番，却一无所获。	l
 Announcement combat agreement-core []: made an agreement with to work as a mercenary	与达成协议，以便从事雇佣兵工作	l
 Announcement combat agreement-core [agreement-party-list]: {s} plotted to infiltrate	{s1}密谋潜入……	l
 Announcement combat attack-leader [$historical-actor]: The army is commanded by {s}.	这支军队由{s1}指挥。	l
@@ -13468,6 +13739,9 @@ Announcement combat negotiation-response []: made a persuasive argument of their
 Announcement combat negotiation-response []: negotiated calmly but was outmaneuvered	冷静地谈判，却被对方胜过一筹	l
 Announcement combat negotiation-sentence []: The proposal was a spectacular failure.	这项提案以惨败告终。	l
 Announcement combat negotiation-sentence []: The proposal was a truly grand success.	这项提案取得了辉煌的成功。	l
+Announcement combat quest-sentence [quest-destination]: It should be brought to {s}.	应当将它送至{s1}。	l
+Announcement combat quest-sentence [quest-destination]: Last I heard, it was in {s}.	我最后听说，它在{s1}。	l
+Announcement combat quest-sentence [quest-holder]: Last I heard, it was held by {s}.	我最后听说，它由{s1}保管。	l
 Announcement combat rumor-event [$book,$travel-site]: I hear that {s} is not in {s}.	听说{s1}不在{s2}。	l
 Announcement combat rumor-event []: A lurking pest has come up from the underground.	一只潜伏在地下的害兽钻出来了。	l
 Announcement combat sentence [$item,merchant-town]: {s} were made right here in {s}.	{s1}就是在{s2}制作的。	l
@@ -13733,6 +14007,28 @@ A very small mammal with short legs and a long tail. It hunts small animals to e
 A {s} caravan from {e} has arrived. However, overall trade sentiments are cautious.	来自{e1}的{s1}商队已抵达。不过，总体贸易意愿偏于谨慎。	hPt
 A {s} caravan from {e} has arrived. However, overall trade sentiments are lukewarm.	来自{e1}的{s1}商队已抵达。不过，总体贸易意愿不冷不热。	hPt
 A {s} caravan from {e} has arrived. However, overall trade sentiments are terrible.	来自{e1}的{s1}商队已抵达。不过，总体贸易意愿极差。	hPt
+Announcement combat adventure-announcement []: Consider the consequences carefully.	仔细考虑后果。	l
+Announcement combat adventure-announcement []: Do I look like I need to calm down?!	我看起来像是需要冷静吗？！	l
+Announcement combat adventure-announcement []: Do not keep everything for yourself.	不要把一切都留给自己。	l
+Announcement combat adventure-announcement []: Do you have dreams? Tell me a story!	你有梦境吗？给我讲个故事！	l
+Announcement combat adventure-announcement []: Everybody has their own way of life.	人人都有自己的活法。	l
+Announcement combat adventure-announcement []: Everything is all piling up at once!	所有事情一下子全压过来了！	l
+Announcement combat adventure-announcement []: I am honored to be in your presence.	能见到你，我倍感荣幸。	l
+Announcement combat adventure-announcement []: I guess I just don't appreciate art.	看来我就是不懂欣赏艺术。	l
+Announcement combat adventure-announcement []: Maybe I give up too early sometimes.	也许有时我放弃得太早了。	l
+Announcement combat adventure-announcement []: My trust is earned, and not by many.	想得到我的信任，得有真凭实据，而做到的人不多。	l
+Announcement combat adventure-announcement []: Thank you for protecting our wisdom.	感谢你守护我们的智慧。	l
+Announcement combat adventure-announcement []: The effort will reach a culmination.	这番努力将迎来顶点。	l
+Announcement combat adventure-announcement []: The sky above you is hazy and white.	你头顶的天空朦胧泛白。	l
+Announcement combat adventure-announcement []: The sky is striped with thin clouds.	薄云在天空中形成条纹。	l
+Announcement combat adventure-announcement []: The vomit disappears into the water.	呕吐物消失在了水中。	l
+Announcement combat adventure-announcement []: The vomit falls away into the chasm.	呕吐物掉进了深渊。	l
+Announcement combat adventure-announcement []: There will be no rest for the enemy.	敌人将永无宁日。	l
+Announcement combat adventure-announcement []: Think of others today, not yourself.	今天为他人着想，别只顾自己。	l
+Announcement combat adventure-announcement []: Were you trying to make an argument?	你刚才那也叫讲道理？	l
+Announcement combat adventure-announcement []: What can you tell me about yourself?	能说说你自己吗？	l
+Announcement combat adventure-announcement []: You aren't wielding a ranged weapon.	你没有持用远程武器。	l
+Announcement combat adventure-announcement []: You will travel far from this place.	你将远行，离开此地。	l
 Announcement combat agreement-conclusion-core [agreement-conclusion-core]: {s} with	{s1}，协议另一方为	l
 Announcement combat agreement-conclusion-title []: a foiled embezzlement conspiracy	一场遭挫败的挪用资金阴谋	l
 Announcement combat agreement-core []: joined with in order to be brought to safety	与同行，以便被带到安全的地方	l
@@ -14025,6 +14321,23 @@ A small mammal with a striped face. It lives in groups and is ferocious in comba
 A tiny aquatic arthropod with pronounced eyes and two frontal grasping appendages.	一种微小的水生节肢动物，眼睛突出，头部前方有两条用于抓取的附肢。	lP
 A tiny insect capable of destroying large wooden structures when in large numbers.	一种当其数量庞大时可破环木质结构的昆虫。	lP
 A very large dinosaur person with a tail club, an armored carapace and four horns.	一种体型很大的恐龙类人形生物，身披坚甲，长有尾槌和四根角。	lP
+Announcement combat adventure-announcement []: A clever strategy will be required.	你将需要一个巧妙的策略。	l
+Announcement combat adventure-announcement []: Are you stalking a dangerous beast?	你在追踪危险的野兽吗？	l
+Announcement combat adventure-announcement []: At least it doesn't rain down here.	至少这下面不会下雨。	l
+Announcement combat adventure-announcement []: Hold to hope when all else is lost.	即使失去一切，也要坚守希望。	l
+Announcement combat adventure-announcement []: How are you enjoying the adventure?	这趟冒险还过得愉快吗？	l
+Announcement combat adventure-announcement []: I am a very, very important person.	我是个非常、非常重要的人物。	l
+Announcement combat adventure-announcement []: I am overmastered by your presence!	你的气势让我折服！	l
+Announcement combat adventure-announcement []: I don't think I'm cut out for this.	我觉得自己不适合做这件事。	l
+Announcement combat adventure-announcement []: I haven't heard anything like that.	我没听说过这样的事。	l
+Announcement combat adventure-announcement []: I heard that there was an incident.	听说出事了。	l
+Announcement combat adventure-announcement []: If you have a task, do it properly.	有事要做，就把它做好。	l
+Announcement combat adventure-announcement []: There are two sides to every story.	每件事都有两面。	l
+Announcement combat adventure-announcement []: They do not feel challenged at all.	他们觉得没人能撼动自己的地位。	l
+Announcement combat adventure-announcement []: They tangle together and fall over!	双方纠缠在一起，摔倒了！	l
+Announcement combat adventure-announcement []: This war must end with our victory.	这场战争必须以我们的胜利告终。	l
+Announcement combat adventure-announcement []: We are in the right in all matters.	不管什么事，道理都在我们这边。	l
+Announcement combat adventure-announcement []: You are riding and cannot lie down.	你正处于骑乘状态，无法趴下。	l
 Announcement combat agreement-core [$historical-actor]: plotted to assassinate {s}	密谋刺杀{s1}	l
 Announcement combat agreement-core [$name,$name]: joined with to oust {s} from {s}	与同行，将{s1}逐出{s2}	l
 Announcement combat agreement-core [agreement-party-list]: promised {s} a position	答应给{s1}安排一个职位	l
@@ -14064,6 +14377,8 @@ Announcement combat memory-sentence [$name]: There was a scholarly lecture in {s
 Announcement combat memory-sentence [memory-person,memory-person]: {s} killed {s}.	{s1}杀死了{s2}。	l
 Announcement combat negotiation-opening []: calm any misgivings about the proposal	打消对方对提案的疑虑	l
 Announcement combat negotiation-response []: negotiated calmly and had the mastery	冷静地谈判，并占据了上风	l
+Announcement combat quest-sentence [quest-destination]: Last I saw, it was in {s}.	我最后见到它时，它在{s1}。	l
+Announcement combat quest-sentence [quest-holder]: Last I saw, it was held by {s}.	我最后见到它时，它由{s1}保管。	l
 Announcement combat rumor-event []: A marauding warband is threatening our people.	一支四处劫掠的战帮正威胁着我们的人民。	l
 Announcement combat rumor-event []: The forces of darkness have descended upon us.	黑暗势力已经杀到我们这里了。	l
 Announcement combat rumor-event [rumor-identity]: Seek this place if you hunt {s}.	想猎杀{s1}，就去找这个地方。	l
@@ -14370,6 +14685,25 @@ A wide variety of food-and-drink-related workshops can be found in this category
 A {s} caravan from {e} has arrived. Overall trade sentiments are tenuous at best.	来自{e1}的{s1}商队已抵达。总体贸易意愿至多只能算勉强。	hPt
 Alternatively, you can reduce the number of mid-level elevation squares required.	也可以减少所需的中等海拔方格数量。	l
 Although my own insignificant beliefs lie elsewhere, no one can deny your genius!	虽说我有点不值一提的不同看法，但谁也不能否认你是个天才！	hP
+Announcement combat adventure-announcement []: Am I supposed to engage with that?	难道还要我回应那番话？	l
+Announcement combat adventure-announcement []: Bravery is not a strength of mine.	勇敢不是我的长处。	l
+Announcement combat adventure-announcement []: Despite some minor reservations...	尽管还有一些小小的保留意见……	l
+Announcement combat adventure-announcement []: I don't remember what I believe...	我不记得自己相信什么了……	l
+Announcement combat adventure-announcement []: I try to live and behave properly.	我尽量让生活和言行合乎规矩。	l
+Announcement combat adventure-announcement []: It makes them look even more sick.	这使其看起来更加恶心了。	l
+Announcement combat adventure-announcement []: It's such a joy to be with people.	与人相伴，真是快乐。	l
+Announcement combat adventure-announcement []: It's such a pleasure to serve you.	能为你服务真是荣幸。	l
+Announcement combat adventure-announcement []: Look to another for what you need.	向他人寻求你需要的东西。	l
+Announcement combat adventure-announcement []: Tell me who you work for, or else.	说出你为谁效力，否则后果自负。	l
+Announcement combat adventure-announcement []: The geldables have been torn away!	生殖器被撕掉了！	l
+Announcement combat adventure-announcement []: The vomit burns away in the magma.	呕吐物在岩浆中烧尽了。	l
+Announcement combat adventure-announcement []: There's nothing like a good brawl.	没有什么比得上痛快打上一架。	l
+Announcement combat adventure-announcement []: There's nothing to be upset about.	没有什么值得烦心的。	l
+Announcement combat adventure-announcement []: Well, I believe... something else.	嗯，我相信……别的东西。	l
+Announcement combat adventure-announcement []: You must face the challenge today.	今天你必须面对挑战。	l
+Announcement combat adventure-announcement []: You tangle together and fall over!	你们纠缠在一起，摔倒了！	l
+Announcement combat adventure-announcement []: You've found some small creatures.	你发现了一些小型生物。	l
+Announcement combat adventure-announcement [rumor-time,dialogue-battle]: {s} {s}.	{s1}，{s2}。	l
 Announcement combat agreement-conclusion-reason []: due to a lack of performances	因为演出不足	l
 Announcement combat agreement-conclusion-title []: a foiled corruption conspiracy	一场遭挫败的腐败阴谋	l
 Announcement combat agreement-core []: joined with after being compelled to serve	与同行，被迫为其效力	l
@@ -14410,6 +14744,7 @@ Announcement combat memory-sentence [memory-relation]: I am reunited with my {s}
 Announcement combat memory-sentence [memory-relation]: I am together with my {s}.	跟我的{s1}在一起了。	l
 Announcement combat memory-value-insight [memory-value]: the worthlessness of {s}	{s1}毫无价值	l
 Announcement combat merchant-hawk-item [merchant-genuine-item]: your very own {s}	专属于你的{s1}	l
+Announcement combat quest-sentence [rumor-position]: It is the symbol of the {s}.	它是{s1}的象征。	l
 Announcement combat rumor-event []: Seek this place if you wish to confront the .	想对付这个身份不明的恶徒，就去找这个地方。	l
 Announcement combat rumor-event [rumor-person]: The army of {s} is marching here!	{s1}的军队正向这里进军！	l
 Announcement combat rumor-flight []: just before an army descended upon the place	了那里，随后一支军队便袭击了那里	l
@@ -14729,6 +15064,25 @@ A tiny sea creature which dwells on the ocean floor, devoid of senses or motion.
 A very large hairless mammal person with a trunk and two backward-curving tusks.	一种体型很大、没有毛发的哺乳类人形生物，长有象鼻和两根向后弯曲的獠牙。	lP
 A very small bipedal dinosaur with a long tail and short arms. It is omnivorous.	一种很小的双足恐龙，尾巴修长，前肢短小，以动植物为食。	lP
 Alternatively, you can reduce the number of volcanos required by the parameters.	也可以减少参数要求的火山数量。	l
+Announcement combat adventure-announcement []: Eat not the fruits of your labor.	不要享用自己劳动的成果。	l
+Announcement combat adventure-announcement []: I was never one to follow advice.	我从来不是听得进劝的人。	l
+Announcement combat adventure-announcement []: I'm not much of a decision maker.	我不太擅长拿主意。	l
+Announcement combat adventure-announcement []: It is not as simple as you think.	事情没有你想的那么简单。	l
+Announcement combat adventure-announcement []: It really gets me down sometimes.	有时我真为此感到沮丧。	l
+Announcement combat adventure-announcement []: It's all starting to get me down.	这一切开始让我消沉了。	l
+Announcement combat adventure-announcement []: One should always return a favor.	受人恩惠，就应当回报。	l
+Announcement combat adventure-announcement []: People are basically trustworthy.	人总的来说是值得信任的。	l
+Announcement combat adventure-announcement []: Some performers finish their act.	一些表演者结束了他们的节目。	l
+Announcement combat adventure-announcement []: Soon the world will be set right.	世界很快就会恢复正轨。	l
+Announcement combat adventure-announcement []: The enterprise will be a failure.	这项事业将会失败。	l
+Announcement combat adventure-announcement []: The vomit burns away in the lava.	呕吐物在熔岩中烧尽了。	l
+Announcement combat adventure-announcement []: There's no need for trouble here.	别在这里惹事。	l
+Announcement combat adventure-announcement []: We can no longer pay them homage.	我们不能再向他们称臣了。	l
+Announcement combat adventure-announcement []: We can no longer travel together.	我们不能再一起旅行了。	l
+Announcement combat adventure-announcement []: Yes, I want more. Is that so bad?	是，我想要更多。这有那么糟吗？	l
+Announcement combat adventure-announcement []: You are free to do as you choose.	你可以自由地作出选择。	l
+Announcement combat adventure-announcement []: You cannot jump while in the air.	身处空中时无法跳跃。	l
+Announcement combat adventure-announcement []: You must reflect on your actions.	你必须反思自己的行为。	l
 Announcement combat agreement-conclusion-core [$historical-actor]: {s} concluded	{s1}结束了协议	l
 Announcement combat agreement-conclusion-reason []: after a violent disagreement	在激烈争执之后	l
 Announcement combat agreement-core []: agreed to establish a grand guildhall for	同意为建造大行会大厅	l
@@ -15019,6 +15373,26 @@ A caravan from {e} has arrived. However, overall trade sentiments are terrible.	
 A large dinosaur person with a beaked mouth and a hollow crest atop their head.	一种大型恐龙类人形生物，嘴呈喙状，头顶长有中空的冠饰。	lP
 A tiny insect with a pulsating, lumpy body. It is an evil bug that seeks blood.	一种微小的有着脉动、块状身体的小型昆虫。它是一种寻求血液的邪恶虫子。	lP
 An insect many times the size of its peers. It is known for its deafening buzz.	一种是其他同类许多倍的昆虫。它因其喧闹的嗡嗡声而闻名。	lP
+Announcement combat adventure-announcement []: An obstacle will present itself.	一个障碍即将出现。	l
+Announcement combat adventure-announcement []: Be mindful of others around you.	留意你身边的人。	l
+Announcement combat adventure-announcement []: Follow your desire to reconcile.	遵从内心和解的愿望。	l
+Announcement combat adventure-announcement []: Freedom is allowed even in this.	即便在这件事上，你也享有自由。	l
+Announcement combat adventure-announcement []: I couldn't follow your rambling.	你东拉西扯的，我听不明白。	l
+Announcement combat adventure-announcement []: I don't care one way or another.	怎样我都不在乎。	l
+Announcement combat adventure-announcement []: I don't mind stirring things up.	我不介意挑起点事端。	l
+Announcement combat adventure-announcement []: I'm curious. Tell me everything!	我很好奇. 告诉我一切!	l
+Announcement combat adventure-announcement []: I'm feel like I'm about to snap.	我觉得自己就要崩溃了。	l
+Announcement combat adventure-announcement []: I'm not going to change my mind.	我不会改变主意。	l
+Announcement combat adventure-announcement []: Look out for a chance encounter.	留意一次偶然的相遇。	l
+Announcement combat adventure-announcement []: Make a change or forever remain.	做出改变，否则将永远停滞不前。	l
+Announcement combat adventure-announcement []: W... worried? Do I look worried?	担……担心？我看起来很担心吗？	l
+Announcement combat adventure-announcement []: We must be careful not to waste.	我们必须留心，不能浪费。	l
+Announcement combat adventure-announcement []: What's this about proper living?	所谓合乎规矩的生活，究竟是什么？	l
+Announcement combat adventure-announcement []: You assume a submissive posture.	你摆出了投降姿态。	l
+Announcement combat adventure-announcement []: You cannot jump while wrestling.	摔跤时无法跳跃。	l
+Announcement combat adventure-announcement []: You reorganize your possessions.	你重新整理了随身物品。	l
+Announcement combat adventure-announcement []: Your happiness is still desired.	仍有人希望你幸福。	l
+Announcement combat adventure-announcement []: Your sleep has been interrupted!	你的睡眠被打断了！	l
 Announcement combat agreement-core [$historical-actor]: joined with to find {s}	与同行，寻找{s1}	l
 Announcement combat agreement-core [$name]: plotted to induce a war of upon {s}	密谋挑起对{s1}的战争	l
 Announcement combat agreement-core [$name]: plotted to induce a war of {s} upon	密谋让{s1}发动战争	l
@@ -15338,6 +15712,27 @@ A large mammalian herbivore. It is powerfully built and has long curved horns.	�
 A medium-sized red fish that lives in the ocean and swims up a river to breed.	一种中等大小的红鱼，生活在海洋中，向上游游动繁殖。	lP
 A small amphibian person with the wedge-shaped head and tail of a diplocaulus.	一种小型两栖人形生物，长着笠头螈般的楔形头部和尾巴。	lP
 Alternatively, you can reduce the number of rivers required by the parameters.	也可以减少参数要求的河流数量。	l
+Announcement combat adventure-announcement []: All drinks are free, of course!	当然，所有饮品都是免费的！	l
+Announcement combat adventure-announcement []: Beware those that lack passion.	提防缺乏热情之人。	l
+Announcement combat adventure-announcement []: Bring comfort to someone today.	今天给某人带去慰藉。	l
+Announcement combat adventure-announcement []: I admire how brilliant you are!	你的才智让我钦佩！	l
+Announcement combat adventure-announcement []: I can't take much more of this!	这样下去，我就要撑不住了！	l
+Announcement combat adventure-announcement []: I was out visiting the library.	我刚才去图书馆了。	l
+Announcement combat adventure-announcement []: I'm concentrating on something.	我正专心想一件事。	l
+Announcement combat adventure-announcement []: I'm going to visit the library.	我正要去图书馆。	l
+Announcement combat adventure-announcement []: It is good to finally meet you!	终于见到你了，真高兴！	l
+Announcement combat adventure-announcement []: Oh, I don't usually think much.	我平时不怎么多想。	l
+Announcement combat adventure-announcement []: Snatcher! Protect the children!	拐子！保护孩子们！	l
+Announcement combat adventure-announcement []: Take care you are not deceived.	小心受骗。	l
+Announcement combat adventure-announcement []: The burden will be lifted soon.	重担很快就会卸下。	l
+Announcement combat adventure-announcement []: The situation cannot get worse.	情况不会更糟了。	l
+Announcement combat adventure-announcement []: The task will not be completed.	任务无法完成。	l
+Announcement combat adventure-announcement []: Their strength has been broken.	他们的力量已被摧毁。	l
+Announcement combat adventure-announcement []: There's nothing organized here.	这里没有什么成形的组织。	l
+Announcement combat adventure-announcement []: You know, I think you're right.	你知道，我觉得你说得对。	l
+Announcement combat adventure-announcement []: You need a free grasp to climb.	需要一个空闲的抓握部位才能攀爬。	l
+Announcement combat adventure-announcement []: You will make your final stand.	你将进行最后的抗争。	l
+Announcement combat adventure-announcement [greeting-state]: Everything's {s}.	一切都{s1}。	l
 Announcement combat agreement-conclusion-title []: a foiled bribery conspiracy	一场遭挫败的贿赂阴谋	l
 Announcement combat agreement-core [$name]: promised to give a position in {s}	答应，给在{s1}安排一个职位	l
 Announcement combat agreement-core []: joined with to live a life of adventure	与同行，过冒险生活	l
@@ -15665,6 +16060,29 @@ A tiny reptile with a shell on its back. It can be found in rivers and ponds.	�
 A tiny winged creature that hunts at night and rests in caves during the day.	一种有翅膀的小动物，晚上捕食，白天在洞穴里休息。	lP
 Adventure item action: Go below hatch (no climbing/jumping) ({d} levels down)	到舱盖下方（不攀爬或跳跃，下方{d}层）	h
 Alternatively, you can reduce the number of peaks required by the parameters.	也可以减少参数要求的山峰数量。	l
+Announcement combat adventure-announcement []: A sudden upheaval is in store.	一场突如其来的剧变正在等待着你。	l
+Announcement combat adventure-announcement []: Been in any good scraps today?	今天痛快地打过架吗？	l
+Announcement combat adventure-announcement []: Beware of ill-conceived plans.	提防考虑不周的计划。	l
+Announcement combat adventure-announcement []: Fine. Let's drop the argument.	好吧。我们别争了。	l
+Announcement combat adventure-announcement []: How I long for civilization...	我多么怀念文明世界……	l
+Announcement combat adventure-announcement []: I could tell you all about it!	我可以把来龙去脉都告诉你！	l
+Announcement combat adventure-announcement []: I feel so tired of everything.	我对一切都感到厌倦。	l
+Announcement combat adventure-announcement []: I require a substantive reply.	我需要你拿出点实实在在的答复。	l
+Announcement combat adventure-announcement []: I was just out for some water.	我刚才出去取水了。	l
+Announcement combat adventure-announcement []: I was out visiting the shrine.	我刚才去圣地了。	l
+Announcement combat adventure-announcement []: I was out visiting the temple.	我刚才去神殿了。	l
+Announcement combat adventure-announcement []: I would prefer to be outdoors.	我更愿意待在户外。	l
+Announcement combat adventure-announcement []: I'm at my best under pressure.	有压力时，我反而发挥得最好。	l
+Announcement combat adventure-announcement []: I'm going to visit the shrine.	我正要去圣地。	l
+Announcement combat adventure-announcement []: I'm going to visit the temple.	我正要去神殿。	l
+Announcement combat adventure-announcement []: I've been under some pressure.	我最近有些压力。	l
+Announcement combat adventure-announcement []: It is time to leave it behind.	是时候放下过去了。	l
+Announcement combat adventure-announcement []: Show some mercy now and again.	偶尔也发发慈悲。	l
+Announcement combat adventure-announcement []: Thank you for keeping us safe.	感谢你保护我们的安全。	l
+Announcement combat adventure-announcement []: Today, somebody will be cruel.	今天会有人做出残酷之举。	l
+Announcement combat adventure-announcement []: Yes, I can see it clearly now.	是的，我现在看清楚了。	l
+Announcement combat adventure-announcement []: You conclude your performance.	你结束了表演。	l
+Announcement combat adventure-announcement []: You've found a small creature.	你发现了一只小型生物。	l
 Announcement combat agreement-conclusion-title []: a request to offer service	一项效力请求	l
 Announcement combat agreement-core [$historical-actor]: plotted to abduct {s}	密谋绑架{s1}	l
 Announcement combat agreement-goals []: initiate sabotage and steal treasures	展开破坏行动、盗取财宝	l
@@ -16020,6 +16438,34 @@ A tiny sea mollusk. It can change color and skin patterns for communication.	一
 A tiny yellow bug. It has pincers and a stinging tail which can prove fatal.	一种小型的黄色昆虫。它有着钳子和致命的毒刺尾巴。	lP
 Adventure item action: Go below hatch (no climbing/jumping) ({d} level down)	到舱盖下方（不攀爬或跳跃，下方{d}层）	h
 Affects charging, your combat opportunities, and enemy combat opportunities.	影响冲锋，以及你与敌人的战斗机会。	w
+Announcement combat adventure-announcement []: And what exactly do you want?	你到底想要什么？	l
+Announcement combat adventure-announcement []: Any success will be fleeting.	任何成功都将转瞬即逝。	l
+Announcement combat adventure-announcement []: Are you hunting for treasure?	你在寻找宝藏吗？	l
+Announcement combat adventure-announcement []: Be cautious of fatigue today.	今天要当心疲劳。	l
+Announcement combat adventure-announcement []: Be diligent and undistracted.	勤勉专注。	l
+Announcement combat adventure-announcement []: Cling not to material things.	不要执着于身外之物。	l
+Announcement combat adventure-announcement []: Don't walk off with anything.	别顺手拿走东西。	l
+Announcement combat adventure-announcement []: I don't handle pressure well.	我难以承受压力。	l
+Announcement combat adventure-announcement []: I go with the flow sometimes.	我有时也会随大流。	l
+Announcement combat adventure-announcement []: I was just out at the tavern.	我刚才在酒馆。	l
+Announcement combat adventure-announcement []: I would prefer to be indoors.	我更愿意待在室内。	l
+Announcement combat adventure-announcement []: I'm feeling really worn down.	我真的很疲惫。	l
+Announcement combat adventure-announcement []: I'm going out for some water.	我正要出去取水。	l
+Announcement combat adventure-announcement []: I'm returning from my patrol.	我正巡逻归来。	l
+Announcement combat adventure-announcement []: My goals are important to me.	我很看重自己的目标。	l
+Announcement combat adventure-announcement []: See to your responsibilities.	履行你的责任。	l
+Announcement combat adventure-announcement []: Such care for your happiness!	如此关心你的幸福！	l
+Announcement combat adventure-announcement []: The enemy will be driven off.	敌人会被赶走的。	l
+Announcement combat adventure-announcement []: The partnership is one-sided.	这段合作只有一方在付出。	l
+Announcement combat adventure-announcement []: There are not enough dancers.	舞者人数不足。	l
+Announcement combat adventure-announcement []: There is a thin mist outside.	外面有一层薄雾。	l
+Announcement combat adventure-announcement []: You are too injured to climb.	你的伤势太重，无法攀爬。	l
+Announcement combat adventure-announcement []: You awaken from your slumber.	你从睡梦中醒来。	l
+Announcement combat adventure-announcement []: You could not find a partner.	你没能找到舞伴。	l
+Announcement combat adventure-announcement []: You do not have a free grasp.	你没有空闲的抓握部位。	l
+Announcement combat adventure-announcement []: You don't care, so don't ask.	既不关心，就不必过问。	l
+Announcement combat adventure-announcement []: You will know suffering soon.	你很快就会体会到苦难。	l
+Announcement combat adventure-announcement []: You will received bad advice.	你将得到不好的建议。	l
 Announcement combat agreement-core []: plotted to sabotage the activities of	密谋破坏活动……	l
 Announcement combat agreement-core [agreement-core,$name]: {s} as the of {s}	{s1}（在{s2}任职）	l
 Announcement combat agreement-core [agreement-item]: asked that retrieve {s}	请取回{s1}	l
@@ -16360,6 +16806,28 @@ Adventure item action: Go below hatch (no climbing/jumping) ({d} levels up)	到�
 Adventure item action: Path to here (no climbing/jumping) ({d} levels down)	前往此处（不攀爬或跳跃，下方{d}层）	h
 Affects stamina recover, ability to remain standing when tired, and breath.	影响体力恢复、疲劳时保持站立的能力以及憋气能力。	w
 All work orders must be validated by the manager before they become active.	所有工单必须经经理人批准后才能开始执行。	hP
+Announcement combat adventure-announcement []: Accept the loss and move on.	接受损失，继续前行。	l
+Announcement combat adventure-announcement []: Do not hold on for too long.	不要执着太久。	l
+Announcement combat adventure-announcement []: Do you have a story to tell?	你有什么故事要讲吗？	l
+Announcement combat adventure-announcement []: Have you written a new poem?	你写新诗了吗？	l
+Announcement combat adventure-announcement []: I don't really want to know.	我其实并不想知道。	l
+Announcement combat adventure-announcement []: I just don't care anymore...	我已经什么都不在乎了……	l
+Announcement combat adventure-announcement []: I'm going out to the tavern.	我正要去酒馆。	l
+Announcement combat adventure-announcement []: I'm on an important mission.	我正在执行一项重要任务。	l
+Announcement combat adventure-announcement []: Keep your own counsel today.	今天不要轻易透露自己的想法。	l
+Announcement combat adventure-announcement []: Let the party venture forth!	让队伍踏上冒险之旅吧！	l
+Announcement combat adventure-announcement []: Make no needless sacrifices.	不要做无谓的牺牲。	l
+Announcement combat adventure-announcement []: Some changes are inevitable.	有些变化不可避免。	l
+Announcement combat adventure-announcement []: The performers are finished.	表演者们结束了表演。	l
+Announcement combat adventure-announcement []: The task will be successful.	任务将会成功。	l
+Announcement combat adventure-announcement []: Their tribute is not enough.	他们的贡品还不够。	l
+Announcement combat adventure-announcement []: What have you been scheming?	你在谋划什么？	l
+Announcement combat adventure-announcement []: Why must they be so violent?	他们为何非要诉诸暴力？	l
+Announcement combat adventure-announcement []: You are too injured to jump.	你的伤势太重，无法跳跃。	l
+Announcement combat adventure-announcement []: You have been granted mercy.	你得到了宽恕。	l
+Announcement combat adventure-announcement []: You have missed your chance.	你已错失良机。	l
+Announcement combat adventure-announcement [greeting-state]: I'm doing {s}.	我过得{s1}。	l
+Announcement combat adventure-announcement [greeting-state]: I've been {s}.	我最近过得{s1}。	l
 Announcement combat agreement-core [$office,$name]: began as the {s} of {s}	作为{s2}的{s1}开始了……	l
 Announcement combat agreement-title-core [$office,$name]: as the {s} of {s}	作为{s2}的{s1}参与的交易	l
 Announcement combat agreement-title-core []: the joining of with as a guide	与同行，担任向导	l
@@ -16389,6 +16857,7 @@ Announcement combat merchant-origin [merchant-nation]: {s}, out to the east	东�
 Announcement combat merchant-origin [merchant-nation]: {s}, out to the west	西方的{s1}	l
 Announcement combat negotiation-opening []: make conversation to set a mood	通过闲谈调节气氛	l
 Announcement combat negotiation-response []: negotiated and had the mastery	展开谈判，并占据了上风	l
+Announcement combat quest-destination [quest-place,quest-place]: {s} in {s}	{s2}的{s1}	l
 Announcement combat rumor-event [$person]: This insidious evil is {s} the .	这个阴险的恶徒就是{s1}。	l
 Announcement combat sentence [$item,merchant-address]: Good {s} there, {s}.	{s2}，那里的优质的{s1}。	l
 Announcement combat sentence [$name]: I rule {s} from this capital as well.	我也在这座首都统治着{s1}。	l
@@ -16719,6 +17188,30 @@ A {s} caravan from {e} has arrived. Overall trade sentiments are lukewarm.	来�
 A {s} caravan from {e} has arrived. Overall trade sentiments are terrible.	来自{e1}的{s1}商队已抵达。总体贸易意愿极差。	hPt
 Adventure item action: Go below hatch (no climbing/jumping) ({d} level up)	到舱盖下方（不攀爬或跳跃，上方{d}层）	h
 Adventure item action: Path to here (no climbing/jumping) ({d} level down)	前往此处（不攀爬或跳跃，下方{d}层）	h
+Announcement combat adventure-announcement []: A new friendship will form.	一段新的友谊将会萌生。	l
+Announcement combat adventure-announcement []: An ambush! Skulking vermin!	有埋伏！鬼鬼祟祟的害虫！	l
+Announcement combat adventure-announcement []: An end and a new beginning.	一个终点，一个新的开始。	l
+Announcement combat adventure-announcement []: Deeper. We must dig deeper.	更深。我们必须挖得更深。	l
+Announcement combat adventure-announcement []: Focus on living in harmony.	专注于和谐共处。	l
+Announcement combat adventure-announcement []: Give up the hopeless cause.	放弃毫无希望的事业。	l
+Announcement combat adventure-announcement []: I am not governed by urges.	我不会任由冲动左右自己。	l
+Announcement combat adventure-announcement []: I could really use a drink.	我真想喝一杯。	l
+Announcement combat adventure-announcement []: I get so jealous sometimes.	有时我真是嫉妒得厉害。	l
+Announcement combat adventure-announcement []: I'm not planning a journey.	我没有出行计划。	l
+Announcement combat adventure-announcement []: It is good to see you here.	很高兴在这里见到你。	l
+Announcement combat adventure-announcement []: Loyalty should be rewarded.	忠诚应当得到奖赏。	l
+Announcement combat adventure-announcement []: Make any good deals lately?	最近做成什么好买卖了吗？	l
+Announcement combat adventure-announcement []: One group organized itself.	一个组织成立了。	l
+Announcement combat adventure-announcement []: Prepare for disappointment.	做好失望的准备。	l
+Announcement combat adventure-announcement []: See to the simple comforts.	照顾好日常起居。	l
+Announcement combat adventure-announcement []: So I overindulge sometimes.	我偶尔也会放纵自己。	l
+Announcement combat adventure-announcement []: Some migrants have arrived.	一些移民抵达了。	l
+Announcement combat adventure-announcement []: The sky is clear above you.	你头顶的天空一片晴朗。	l
+Announcement combat adventure-announcement []: There is thick fog outside.	外面有浓雾。	l
+Announcement combat adventure-announcement []: There's so much to be done!	还有许多事要做！	l
+Announcement combat adventure-announcement []: You are too tired to stand.	你太累了，无法站起。	l
+Announcement combat adventure-announcement []: Your ambition is misguided.	你的抱负走错了方向。	l
+Announcement combat adventure-announcement []: Your dreams will come true.	你的梦想将会成真。	l
 Announcement combat agreement-conclusion-reason []: after a joyous reunion	在欢欣重逢之后	l
 Announcement combat agreement-conclusion-title []: a citizenship agreement	一项入籍协议	l
 Announcement combat agreement-conclusion-title []: an insurrection mission	一项起义任务	l
@@ -17101,6 +17594,26 @@ A small humanoid surrounded by fire which they can hurl at their enemies.	一个
 A small myriapod, though very large for a myriapod. It feeds on detritus.	一种小型多足动物，但在同类中体型异常庞大。它以腐屑为食。	lP
 A tiny diving bird found living on seaside cliffs in the colder climates.	一种在气候寒冷的海边悬崖上发现的小型潜鸟。	lP
 Adventure item action: Path to here (no climbing/jumping) ({d} levels up)	前往此处（不攀爬或跳跃，上方{d}层）	h
+Announcement combat adventure-announcement []: A great sadness is coming.	巨大的悲伤即将降临。	l
+Announcement combat adventure-announcement []: Do not be stopped by fear.	不要让恐惧阻止你。	l
+Announcement combat adventure-announcement []: Do not give them too much.	不要给他们太多。	l
+Announcement combat adventure-announcement []: Fulfillment will be yours.	你将获得满足。	l
+Announcement combat adventure-announcement []: How can people be so glum?	人为什么会这么不快乐？	l
+Announcement combat adventure-announcement []: I feel angry all the time.	我心里总有一股怒气。	l
+Announcement combat adventure-announcement []: I will settle this my way.	我要用我的方式解决此事。	l
+Announcement combat adventure-announcement []: I'm just out for a stroll.	我只是出来散步。	l
+Announcement combat adventure-announcement []: I've been feeling anxious.	我最近一直心神不宁。	l
+Announcement combat adventure-announcement []: It is good to be outdoors.	在户外真好。	l
+Announcement combat adventure-announcement []: It is too soon to forgive.	现在宽恕还为时过早。	l
+Announcement combat adventure-announcement []: It sure is dark down here.	这下面可真黑。	l
+Announcement combat adventure-announcement []: Make the decision quickly.	迅速做出决定。	l
+Announcement combat adventure-announcement []: Our hopes travel with you.	我们的希望就寄托在你身上了。	l
+Announcement combat adventure-announcement []: Please guide me to myself.	请带我去找我自己。	l
+Announcement combat adventure-announcement []: The sky above you is gray.	你头顶的天空灰蒙蒙的。	l
+Announcement combat adventure-announcement []: There is a thin mist here.	这里有一层薄雾。	l
+Announcement combat adventure-announcement []: This conversation is over.	谈话到此结束。	l
+Announcement combat adventure-announcement []: Who cares what they think?	何必在意他们怎么想？	l
+Announcement combat adventure-announcement []: You must reveal the truth.	你必须揭露真相。	l
 Announcement combat agreement-core [$name]: joined with as a guide to {s}	与同行，担任向导前往{s1}	l
 Announcement combat agreement-core [$office,$name]: began as a {s} of {s}	作为{s2}的一位{s1}开始了……	l
 Announcement combat agreement-core []: joined with to entertain the world	与同行，为世人表演	l
@@ -17469,6 +17982,23 @@ A small, stocky mammal. It is found from the mountains to the woodlands.	矮胖�
 A very large aquatic reptile with fish-like fins and an elongated snout.	一种体型很大的水生爬行动物，长有鱼鳍般的鳍状肢和细长的吻部。	lP
 Adventure item action: Path to here (no climbing/jumping) ({d} level up)	前往此处（不攀爬或跳跃，上方{d}层）	h
 An invertebrate found off the coast. It has a sting which can be severe.	在海岸边发现的一种无脊椎动物。它有一种可能很严重的刺痛感。	lP
+Announcement combat adventure-announcement []: Best keep your head down.	最好还是低调些。	l
+Announcement combat adventure-announcement []: Beware a lack of balance.	当心失衡。	l
+Announcement combat adventure-announcement []: Don't get on my bad side.	别惹我。	l
+Announcement combat adventure-announcement []: Don't let the enemy rest.	别让敌人喘息。	l
+Announcement combat adventure-announcement []: I don't know what to say.	我不知道该说什么。	l
+Announcement combat adventure-announcement []: I prefer to be by myself.	我更喜欢独处。	l
+Announcement combat adventure-announcement []: I wonder what they think.	不知道他们会怎么想。	l
+Announcement combat adventure-announcement []: Is it time to make music?	该奏乐了吗？	l
+Announcement combat adventure-announcement []: It is good to be indoors.	在室内真好。	l
+Announcement combat adventure-announcement []: Look ahead to the future.	着眼未来。	l
+Announcement combat adventure-announcement []: Thank you for all you do.	感谢你所做的一切。	l
+Announcement combat adventure-announcement []: The task is accomplished.	任务已经完成。	l
+Announcement combat adventure-announcement []: There is no right choice.	没有正确的选择。	l
+Announcement combat adventure-announcement []: There is nowhere to jump.	没有可以跳到的位置。	l
+Announcement combat adventure-announcement []: Try to keep an open mind.	不妨多听听不同的见解。	l
+Announcement combat adventure-announcement []: You are bound to obey me.	你受我约束，必须服从我。	l
+Announcement combat adventure-announcement [greeting-state]: I feel {s}.	我感觉{s1}。	l
 Announcement combat agreement-conclusion-title []: a promise of position	一项职位承诺	l
 Announcement combat agreement-conclusion-title []: a residency agreement	一项居留协议	l
 Announcement combat agreement-conclusion-title []: an assassination plot	一场刺杀阴谋	l
@@ -17839,6 +18369,22 @@ A {s} caravan from {e} has arrived. Overall trade sentiments are great.	来自{e
 Adventure action: Give a sermon concerning a deity or object of worship	发表关于神祇或崇拜对象的布道	l
 After a long journey, you are here to meet your most trusted companion.	经过漫长的旅途，你来到这里与最信任的同伴会合。	hq
 Allies surrounding {a} raised their suspicions and the plan was foiled.	{a1}身边的盟友提出了怀疑，使计划落空。	ht
+Announcement combat adventure-announcement []: Do not take any chances.	不要冒险。	l
+Announcement combat adventure-announcement []: How sinister the glow...	这光芒多么阴森……	l
+Announcement combat adventure-announcement []: I sense you're wavering.	我感觉你在动摇。	l
+Announcement combat adventure-announcement []: I'm feeling randy today!	我今天很想与人亲热！	l
+Announcement combat adventure-announcement []: I'm returning on my own.	我要独自回去了。	l
+Announcement combat adventure-announcement []: Let's drop the argument.	我们别争了。	l
+Announcement combat adventure-announcement []: Oh, I'm nothing special.	我没什么过人之处。	l
+Announcement combat adventure-announcement []: Rethink your priorities.	重新考虑事情的轻重缓急。	l
+Announcement combat adventure-announcement []: There will be no reward.	你将得不到回报。	l
+Announcement combat adventure-announcement []: They look sick suddenly.	其突然显得很恶心。	l
+Announcement combat adventure-announcement []: This is the life for me.	这正是我想要的生活。	l
+Announcement combat adventure-announcement []: What do you think of me?	你觉得我怎么样？	l
+Announcement combat adventure-announcement []: Where should I take you?	我该带你去哪里？	l
+Announcement combat adventure-announcement []: You cannot perform here.	你无法在这里表演。	l
+Announcement combat adventure-announcement []: You continue the sermon.	你继续布道。	l
+Announcement combat adventure-announcement []: You dare to flatter me?!	你竟敢奉承我？！	l
 Announcement combat agreement-conclusion-title []: an infiltration plot	一场潜入阴谋	l
 Announcement combat agreement-core []: agreed to establish a temple for	同意为建造神殿	l
 Announcement combat agreement-title-core []: the plot of to assassinate	的行刺阴谋	l
@@ -17871,6 +18417,7 @@ Announcement combat merchant-origin []: the settlements out to the west	西方�
 Announcement combat negotiation-purpose []: make contact and open trade	建立联系并开展贸易	l
 Announcement combat negotiation-response []: intimidated their opposite	威吓了对方	l
 Announcement combat negotiation-response []: made a persuasive argument	提出了有说服力的论点	l
+Announcement combat quest-sentence []: It is a valuable treasure to us.	它是我们珍贵的宝物。	l
 Announcement combat reference-building [reference-building-type]: a {s}	{s1}	l
 Announcement combat rumor-event [$book]: I hear that {s} was destroyed.	听说{s1}被毁掉了。	l
 Announcement combat rumor-event []: I heard that there was an incident.	听说出事了。	l
@@ -18272,6 +18819,26 @@ A {s} caravan from {e} has arrived. Overall trade sentiments are good.	来自{e1
 Add a condition to the work order that checks the amount of some item.	为工单添加检查某种物品数量的条件。	hj
 After enduring an interrogation by {a}, {a} was released in the wilds.	在荒野中，忍受{a1}的审讯后，{a2}被释放了。	ht
 An arthropod person with the pronounced head shape of an aegirocassis.	一种节肢类人形生物，头部轮廓格外醒目。	lP
+Announcement combat adventure-announcement []: All is not as it seems.	事情并非表面看起来那样。	l
+Announcement combat adventure-announcement []: Are you ready to learn?	准备好学习了吗？	l
+Announcement combat adventure-announcement []: Fog enshrouds the area.	雾气笼罩着这片区域。	l
+Announcement combat adventure-announcement []: I am a little confused.	我有点困惑。	l
+Announcement combat adventure-announcement []: I believe... something.	我相信……某些东西。	l
+Announcement combat adventure-announcement []: I get fed up sometimes.	有时我也觉得受够了。	l
+Announcement combat adventure-announcement []: I have nothing for you.	我没什么能给你的。	l
+Announcement combat adventure-announcement []: I must obey the master!	我必须服从主人！	l
+Announcement combat adventure-announcement []: I try not to interrupt.	我尽量不打断别人说话。	l
+Announcement combat adventure-announcement []: I'd watch out for them.	我会提防他们。	l
+Announcement combat adventure-announcement []: It is a gelding strike!	这一击造成了阉割！	l
+Announcement combat adventure-announcement []: It won't turn out well.	这事不会有好结果。	l
+Announcement combat adventure-announcement []: Let's not hurt anybody.	我们别伤害任何人。	l
+Announcement combat adventure-announcement []: Now is a time for calm.	现在应当保持冷静。	l
+Announcement combat adventure-announcement []: Of course. My pleasure.	当然，我很乐意。	l
+Announcement combat adventure-announcement []: Please guide me to you.	请带我去找你。	l
+Announcement combat adventure-announcement []: Welcome home, my child.	欢迎回家，我的孩子。	l
+Announcement combat adventure-announcement []: You continue the dance.	你继续舞蹈。	l
+Announcement combat adventure-announcement []: You continue the music.	你继续演奏。	l
+Announcement combat adventure-announcement []: You continue the story.	你继续讲故事。	l
 Announcement combat agreement-conclusion-title []: a journey to safety	一段前往安全地点的旅程	l
 Announcement combat agreement-conclusion-title []: a war starting plot	一场挑起战争的阴谋	l
 Announcement combat agreement-core [$name]: promised a position in {s}	答应给在{s1}安排一个职位	l
@@ -18302,6 +18869,7 @@ Announcement combat merchant-origin [$name]: {s}, out to the southeast	东南方
 Announcement combat merchant-origin [$name]: {s}, out to the southwest	西南方的{s1}	l
 Announcement combat negotiation-opening []: intimidate their adversary	威吓对手	l
 Announcement combat negotiation-opening []: negotiate with discernment	审时度势地谈判	l
+Announcement combat quest-holder [$historical-actor,$name]: {s} of {s}	{s2}的{s1}	l
 Announcement combat rumor-army [$name,rumor-person]: of {s} led by {s}	（隶属{s1}，由{s2}率领）	l
 Announcement combat rumor-event [rumor-identity]: The creature is {s}.	这只生物就是{s1}。	l
 Announcement combat sentence [$item,merchant-address]: Great {s}, {s}.	{s2}，很棒的{s1}。	l
@@ -18729,6 +19297,28 @@ Affects argument dismissal and intimidation tactics in interrogation.	影响驳�
 Affects attempts to calm people or to respond passively in arguments.	影响安抚他人以及在争论中消极回应的效果。	w
 After enduring an interrogation by {a}, {a} was released in the wilds	在荒野中，忍受{a1}的审讯后，{a2}被释放了	ht
 An insidious form of vermin. It lives only to steal food from others.	一种阴险的害虫。它活着只是为了偷别人的食物。	lP
+Announcement combat adventure-announcement []: A migrant has arrived.	一名移民抵达了。	l
+Announcement combat adventure-announcement []: An ambush! Curse them!	有埋伏！诅咒他们！	l
+Announcement combat adventure-announcement []: Are you being serious?	你是认真的吗？	l
+Announcement combat adventure-announcement []: Are you still dancing?	你还在跳舞吗？	l
+Announcement combat adventure-announcement []: Codices, scrolls, etc.	典籍、卷轴等	l
+Announcement combat adventure-announcement []: Follow your intuition.	跟随你的直觉。	l
+Announcement combat adventure-announcement []: Friendship is forever.	友谊长存。	l
+Announcement combat adventure-announcement []: I am sort of confused.	我有些困惑。	l
+Announcement combat adventure-announcement []: I don't want to argue.	我不想争论。	l
+Announcement combat adventure-announcement []: I look splendid today.	我今天真是光彩照人。	l
+Announcement combat adventure-announcement []: I'm walking my patrol.	我正在巡逻。	l
+Announcement combat adventure-announcement []: I've heard it all now!	我现在真是什么荒唐话都听过了！	l
+Announcement combat adventure-announcement []: It is a false success.	这只是虚假的成功。	l
+Announcement combat adventure-announcement []: Joy is on the horizon.	喜悦即将到来。	l
+Announcement combat adventure-announcement []: Rethink your approach.	重新考虑你的方法。	l
+Announcement combat adventure-announcement []: We will be successful.	我们一定会成功。	l
+Announcement combat adventure-announcement []: We will fight no more.	我们不会再战斗了。	l
+Announcement combat adventure-announcement []: What did you just say?	你刚才说什么？	l
+Announcement combat adventure-announcement []: You continue the poem.	你继续朗诵诗歌。	l
+Announcement combat adventure-announcement []: You lie on the ground.	你趴在了地上。	l
+Announcement combat adventure-announcement []: You must be convinced.	我非得让你心服口服。	l
+Announcement combat adventure-announcement [greeting-state]: I'm {s}.	我{s1}。	l
 Announcement combat agreement-conclusion-reason []: after an adoption	在收养之后	l
 Announcement combat agreement-conclusion-title []: a performance tour	一次巡回演出	l
 Announcement combat agreement-core [$name]: plotted to infiltrate {s}	密谋潜入{s1}	l
@@ -19166,6 +19756,25 @@ A tiny, colorful bird. It can be trained to be a pleasant companion.	一只色�
 Affects response to attempts at flattery in arguments and generally.	影响在争论和日常交往中对奉承的反应。	w
 After enduring an interrogation by {a}, {a} was released during {e}.	在{e1}期间，忍受{a1}的审讯后，{a2}被释放了。	ht
 After enduring an interrogation by {a}, {a} was released within {p}.	在{p1}，忍受{a1}的审讯后，{a2}被释放了。	ht
+Announcement combat adventure-announcement []: An item has returned!	一件物品回来了！	l
+Announcement combat adventure-announcement []: Avoid conflict today.	今天要避免冲突。	l
+Announcement combat adventure-announcement []: Believe no one today.	今天不要相信任何人。	l
+Announcement combat adventure-announcement []: Beware a hidden plan.	提防暗中的谋划。	l
+Announcement combat adventure-announcement []: How have things been?	最近怎么样？	l
+Announcement combat adventure-announcement []: I guess I'm not sure.	我想我还不确定。	l
+Announcement combat adventure-announcement []: I like to dress well.	我喜欢衣着得体。	l
+Announcement combat adventure-announcement []: I must take my leave.	我得告辞了。	l
+Announcement combat adventure-announcement []: I value your loyalty.	我珍视你的忠诚。	l
+Announcement combat adventure-announcement []: I will fight no more.	我不会再战斗了。	l
+Announcement combat adventure-announcement []: It is a gelding blow!	这一击造成了阉割！	l
+Announcement combat adventure-announcement []: It is not convincing.	这番话不够有说服力。	l
+Announcement combat adventure-announcement []: No such place exists.	没有这样的地方。	l
+Announcement combat adventure-announcement []: Take the middle path.	选择折中之道。	l
+Announcement combat adventure-announcement []: The sermon continues.	布道还在继续。	l
+Announcement combat adventure-announcement []: There is fog outside.	外面有雾。	l
+Announcement combat adventure-announcement []: What a strange place!	多么奇怪的地方！	l
+Announcement combat adventure-announcement []: You will be rewarded.	你将获得回报。	l
+Announcement combat adventure-announcement []: You're so perceptive!	你看得真透彻！	l
 Announcement combat agreement-conclusion-title []: a guide agreement	一项向导协议	l
 Announcement combat agreement-conclusion-title []: an abduction plot	一场绑架阴谋	l
 Announcement combat agreement-core [agreement-party-list]: {s} began	{s1}开始了……	l
@@ -19200,6 +19809,7 @@ Announcement combat memory-sentence [memory-person]: I murdered {s}.	我杀害�
 Announcement combat memory-sentence [memory-person]: {s} has killed.	{s1}杀人了。	l
 Announcement combat negotiation-recipient [negotiation-speaker]: {s}	{s1}	l
 Announcement combat negotiation-sentence []: The proposal succeeded.	这项提案成功了。	l
+Announcement combat quest-object [$book,$announcement-item]: {s} {s}	{s1}{s2}	l
 Announcement combat rumor-event [$person]: The creature is {s} the .	这只生物就是{s1}。	l
 Announcement combat sentence [$book,$item]: I have obtained {s} {s}.	我已取得{s1}{s2}。	l
 Announcement combat sentence [$creature]: {s} roam freely out there.	{s1}在那里自由游荡。	l
@@ -19608,6 +20218,23 @@ A tiny flying insect that can be seen at night by its glowing tail.	一种在夜
 Adventure action: Tell a story about a civilization or organization	讲述一个政权或组织的故事	l
 After enduring an interrogation by {a}, {a} was released during {e}	在{e1}期间，忍受{a1}的审讯后，{a2}被释放了	ht
 After enduring an interrogation by {a}, {a} was released within {p}	在{p1}，忍受{a1}的审讯后，{a2}被释放了	ht
+Announcement combat adventure-announcement []: A mandate has ended.	一项法令已结束。	l
+Announcement combat adventure-announcement []: An army is invading!	一支军队正在入侵！	l
+Announcement combat adventure-announcement []: How may I serve you?	我能为你做些什么？	l
+Announcement combat adventure-announcement []: I am afraid of them.	我害怕他们。	l
+Announcement combat adventure-announcement []: It will not be fair.	此事不会公平。	l
+Announcement combat adventure-announcement []: It's not my problem.	这不关我的事。	l
+Announcement combat adventure-announcement []: Just think about it.	好好想想吧。	l
+Announcement combat adventure-announcement []: Long live the cause!	我们的事业万岁！	l
+Announcement combat adventure-announcement []: Long live the cause.	我们的事业万岁。	l
+Announcement combat adventure-announcement []: That was compelling!	这番话很有说服力！	l
+Announcement combat adventure-announcement []: The dance continues.	舞蹈还在继续。	l
+Announcement combat adventure-announcement []: The music continues.	乐曲还在演奏。	l
+Announcement combat adventure-announcement []: The pages are blank.	书页是空白的。	l
+Announcement combat adventure-announcement []: The story continues.	故事还在讲述中。	l
+Announcement combat adventure-announcement []: Who do you work for?	你为谁效力？	l
+Announcement combat adventure-announcement []: You are bound to me!	你已受我约束！	l
+Announcement combat adventure-announcement []: You are unperturbed.	你不为所动。	l
 Announcement combat agreement-conclusion-title []: a rescue mission	一项营救任务	l
 Announcement combat agreement-core [$name]: joined with to find {s}	与同行，寻找{s1}	l
 Announcement combat agreement-followup [negotiation-paragraph]: {s}	{s1}	l
@@ -20107,6 +20734,21 @@ A tiny insect which uses its powerful legs to leap and make noise.	一种利用�
 A very large dinosaur person with thumb spikes and a beaked mouth.	一种体型很大的恐龙类人形生物，嘴呈喙状，拇指上长有尖刺。	lP
 A very large herbivorous bipedal dinosaur with a thick domed head.	一种体型很大的双足食草恐龙，头骨厚重而隆起。	lP
 A very small bipedal herbivorous dinosaur with a thick domed head.	一种很小的双足食草恐龙，头骨厚重而隆起。	lP
+Announcement combat adventure-announcement []: A reckoning awaits.	清算终将到来。	l
+Announcement combat adventure-announcement []: Are in a foul mood?	心情不好吗？	l
+Announcement combat adventure-announcement []: Begin an adventure.	开始一场冒险。	l
+Announcement combat adventure-announcement []: Do not be reckless.	不要鲁莽行事。	l
+Announcement combat adventure-announcement []: Follow your desire.	追随你的愿望。	l
+Announcement combat adventure-announcement []: Huh? What was that?	嗯？刚才说什么？	l
+Announcement combat adventure-announcement []: I am very confused.	我非常困惑。	l
+Announcement combat adventure-announcement []: I'll show you calm!	我让你见识一下什么叫冷静！	l
+Announcement combat adventure-announcement []: Maybe you're right.	也许你是对的。	l
+Announcement combat adventure-announcement []: Peace is cherished.	和平受到珍视。	l
+Announcement combat adventure-announcement []: See to your legacy.	考虑自己留给后世的东西。	l
+Announcement combat adventure-announcement []: The poem continues.	诗歌朗诵还在继续。	l
+Announcement combat adventure-announcement []: We yield! We yield!	我们投降！我们投降！	l
+Announcement combat adventure-announcement []: Yes, let's move on.	好，我们换个话题吧。	l
+Announcement combat adventure-announcement []: You must be joking.	你一定是在开玩笑。	l
 Announcement combat agreement-conclusion-title []: a sabotage plot	一场破坏阴谋	l
 Announcement combat agreement-conclusion-title []: corrupt dealing	一笔腐败交易	l
 Announcement combat agreement-core []: promised to give a position	答应，给安排一个职位	l
@@ -20155,6 +20797,8 @@ Announcement combat merchant-hawk-origin [merchant-hawk-item]: {s}	{s1}	l
 Announcement combat merchant-origin [$name]: {s}, out to the north	北方的{s1}	l
 Announcement combat merchant-origin [$name]: {s}, out to the south	南方的{s1}	l
 Announcement combat negotiation-opening []: negotiate persuasively	凭说服力开展谈判	l
+Announcement combat quest-place [conversation-conflict-place]: {s}	{s1}	l
+Announcement combat quest-sentence []: I have no idea where it is.	我不知道它在哪里。	l
 Announcement combat rumor-event []: There are foul goings-on here.	这里有人在干见不得人的勾当。	l
 Announcement combat rumor-event []: This place has been conquered.	这个地方已经被征服了。	l
 Announcement combat rumor-event [rumor-person,$book]: {s} has {s}.	{s2}在{s1}手里。	l
@@ -20610,6 +21254,20 @@ A tiny winged insect, though exceptionally large for a dragonfly.	一种微小�
 A very small bipedal herbivorous dinosaur with a bony head crest.	一种很小的双足食草恐龙，长有骨质头冠。	lP
 After being interrogated by {a}, {a} implicated {a} in the wilds.	在荒野中，经过{a1}审讯后，{a2}供出了{a3}。	ht
 Alternatively, you can reduce the number of edge oceans required.	也可以减少所需的边缘海洋数量。	l
+Announcement combat adventure-announcement []: Act quickly today.	今天要迅速行动。	l
+Announcement combat adventure-announcement []: Be generous today.	今天要慷慨待人。	l
+Announcement combat adventure-announcement []: I just don't know.	我实在不知道。	l
+Announcement combat adventure-announcement []: I'm happy to help.	我很乐意帮忙。	l
+Announcement combat adventure-announcement []: It has no writing.	上面没有文字。	l
+Announcement combat adventure-announcement []: It was inevitable.	这是不可避免的。	l
+Announcement combat adventure-announcement []: It's for the best.	这样最好。	l
+Announcement combat adventure-announcement []: Nobody I remember.	我不记得有谁。	l
+Announcement combat adventure-announcement []: Pause to consider.	停下来想一想。	l
+Announcement combat adventure-announcement []: The stars are out.	繁星已现。	l
+Announcement combat adventure-announcement []: They are terrific.	他们很了不起。	l
+Announcement combat adventure-announcement []: Well, let's see...	嗯，让我看看……	l
+Announcement combat adventure-announcement []: Why should I help?	我为什么要帮忙？	l
+Announcement combat adventure-announcement []: You will released.	你将获得解脱。	l
 Announcement combat agreement-conclusion-title []: a framing plot	一场栽赃阴谋	l
 Announcement combat agreement-core []: joined with to help rescue	与同行，前去营救……	l
 Announcement combat attack-notice []: An ambush! Skulking vermin!	有埋伏！鬼鬼祟祟的害虫！	l
@@ -20644,6 +21302,8 @@ Announcement combat merchant-origin [$name]: {s}, out to the west	西方的{s1}	
 Announcement combat negotiation-opening []: make a rousing speech	发表慷慨激昂的演说	l
 Announcement combat negotiation-opening []: negotiate deceptively	用欺骗手段谈判	l
 Announcement combat negotiation-response []: spun a web of deceit	编织了一张谎言之网	l
+Announcement combat quest-sentence []: Last I heard, you held it.	我最后听说，它由你保管。	l
+Announcement combat quest-sentence []: Last I remember, I had it.	我记得最后是由我保管的。	l
 Announcement combat reference-kind [reference-building-type]: {s}	{s1}	l
 Announcement combat rumor-event []: Seek this place if you hunt .	想猎杀这只身份不明的生物，就去找这个地方。	l
 Announcement combat sentence [$name,$name]: {s} has occupied {s}.	{s1}占领了{s2}。	l
@@ -21053,6 +21713,24 @@ Affects ability to block melee and ranged attacks with a shield.	影响用盾牌
 After being interrogated by {a}, {a} implicated {a} in the wilds	在荒野中，经过{a1}审讯后，{a2}供出了{a3}	ht
 After enduring an interrogation by {a}, {a} was released at {p}.	在{p1}，忍受{a1}的审讯后，{a2}被释放了。	ht
 After enduring an interrogation by {a}, {a} was released in {p}.	在{p1}，忍受{a1}的审讯后，{a2}被释放了。	ht
+Announcement combat adventure-announcement []: Be compassionate.	心怀怜悯。	l
+Announcement combat adventure-announcement []: Be playful today.	今天不妨玩乐一番。	l
+Announcement combat adventure-announcement []: Do not fear loss.	不要害怕失去。	l
+Announcement combat adventure-announcement []: Don't talk to me.	别跟我说话。	l
+Announcement combat adventure-announcement []: Get away from me!	离我远点！	l
+Announcement combat adventure-announcement []: How unreasonable!	真不讲道理！	l
+Announcement combat adventure-announcement []: I yield! I yield!	我投降！我投降！	l
+Announcement combat adventure-announcement []: Indulge heartily.	尽情享受。	l
+Announcement combat adventure-announcement []: Is it really you?	真的是你吗？	l
+Announcement combat adventure-announcement []: Stop and reflect.	停下来反思一下。	l
+Announcement combat adventure-announcement []: That isn't funny.	这并不好笑。	l
+Announcement combat adventure-announcement []: That's not right.	那不对。	l
+Announcement combat adventure-announcement []: They are outlaws.	他们是不法之徒。	l
+Announcement combat adventure-announcement []: Uhh... nevermind.	呃……算了。	l
+Announcement combat adventure-announcement []: What an odd glow!	多么奇怪的光芒！	l
+Announcement combat adventure-announcement []: You are forgiven.	你得到了原谅。	l
+Announcement combat adventure-announcement []: You make nothing.	你什么也没做出来。	l
+Announcement combat adventure-announcement [quest-sentence]: {s}	{s1}	l
 Announcement combat agreement-conclusion-title []: bound service	被迫效力的关系	l
 Announcement combat agreement-party-list [agreement-party]: {s},	{s1}、	l
 Announcement combat agreement-record [agreement-record]: {s} via	{s1}，由居中联络	l
@@ -21591,6 +22269,19 @@ After being interrogated by {a}, {a} implicated {a} within {p}.	在{p1}，经过
 After enduring an interrogation by {a}, {a} was released at {p}	在{p1}，忍受{a1}的审讯后，{a2}被释放了	ht
 After enduring an interrogation by {a}, {a} was released in {p}	在{p1}，忍受{a1}的审讯后，{a2}被释放了	ht
 After enduring an interrogation, {a} was released in the wilds.	在荒野中，忍受审讯后，{a1}被释放了。	ht
+Announcement combat adventure-announcement []: Accept a defeat.	接受失败。	l
+Announcement combat adventure-announcement []: Expect a change.	变化即将到来。	l
+Announcement combat adventure-announcement []: Give me a break.	饶了我吧。	l
+Announcement combat adventure-announcement []: How's life here?	在这里过得怎么样？	l
+Announcement combat adventure-announcement []: I beg to differ.	恕我不能苟同。	l
+Announcement combat adventure-announcement []: I do not scheme.	我没有谋划阴谋。	l
+Announcement combat adventure-announcement []: It has no pages.	它没有书页。	l
+Announcement combat adventure-announcement []: Night creatures!	夜行生物！	l
+Announcement combat adventure-announcement []: Stay the course.	坚持既定的道路。	l
+Announcement combat adventure-announcement []: What's the rush?	何必着急？	l
+Announcement combat adventure-announcement []: You are amazing.	你真了不起。	l
+Announcement combat adventure-announcement []: You are melting!	你正在熔化！	l
+Announcement combat adventure-announcement []: You feel uneasy.	你感到不安。	l
 Announcement combat agreement-conclusion-title []: a theft deal	一笔盗窃交易	l
 Announcement combat agreement-conclusion-title []: an adventure	一场冒险	l
 Announcement combat agreement-conclusion-title []: an agreement	一项协议	l
@@ -22213,6 +22904,14 @@ ALLOW ALL REJECTS, even if I end up with a legends-only world!	允许所有拒�
 After being interrogated by {a}, {a} implicated {a} during {e}	在{e1}期间，经过{a1}审讯后，{a2}供出了{a3}	ht
 After being interrogated by {a}, {a} implicated {a} within {p}	在{p1}，经过{a1}审讯后，{a2}供出了{a3}	ht
 After enduring an interrogation, {a} was released in the wilds	在荒野中，忍受审讯后，{a1}被释放了	ht
+Announcement combat adventure-announcement []: Ask a question.	提出一个问题。	l
+Announcement combat adventure-announcement []: Beware a rival.	提防对手。	l
+Announcement combat adventure-announcement []: Enjoy the hunt!	祝你狩猎愉快！	l
+Announcement combat adventure-announcement []: I cannot agree.	我无法赞同。	l
+Announcement combat adventure-announcement []: I have no idea.	我完全不知道。	l
+Announcement combat adventure-announcement []: I serve no one.	我不为任何人效力。	l
+Announcement combat adventure-announcement []: It is an honor.	不胜荣幸。	l
+Announcement combat adventure-announcement []: My good friend.	我的好朋友。	l
 Announcement combat agreement-core [$name]: joined with to {s}	与同行，前往{s1}	l
 Announcement combat agreement-core []: agreed to a parley with	同意与谈判	l
 Announcement combat agreement-core []: agreed to establish for	同意为建造……	l
@@ -22250,6 +22949,7 @@ Announcement combat memory-sentence [memory-made]: I made {s}.	交到了{s1}。	
 Announcement combat memory-sentence [memory-performance]: {s}.	{s1}。	l
 Announcement combat memory-sentence [memory-work]: I read {s}.	读了{s1}。	l
 Announcement combat negotiation-opening []: argue persuasively	据理说服对方	l
+Announcement combat quest-sentence []: Last I heard, I had it.	我最后听说，它由我保管。	l
 Announcement combat reference-building-type []: counting house	账房	l
 Announcement combat rumor-identity-descriptor [$creature]: {s}	{s1}	l
 Announcement combat sentence [$announcement,$digits]: {s} x{s}	{s1} ×{s2}	l
@@ -22860,6 +23560,19 @@ Affects ability to spot and interpret tracks and other spoor.	影响发现和辨
 After enduring an interrogation, {a} was released during {e}.	在{e1}期间，忍受审讯后，{a1}被释放了。	ht
 After enduring an interrogation, {a} was released within {p}.	在{p1}，忍受审讯后，{a1}被释放了。	ht
 All available witness information is presented for each case.	每个案件都会列出所有已知的目击证词。	hq
+Announcement combat adventure-announcement []: Base flattery!	少来这套下作的奉承！	l
+Announcement combat adventure-announcement []: Explore today.	今天去探索一番。	l
+Announcement combat adventure-announcement []: How dare you?!	你怎么敢？！	l
+Announcement combat adventure-announcement []: I am confused.	我有些困惑。	l
+Announcement combat adventure-announcement []: I don't agree.	我不同意。	l
+Announcement combat adventure-announcement []: I must insist.	这点我坚持。	l
+Announcement combat adventure-announcement []: Is it raining?	在下雨吗？	l
+Announcement combat adventure-announcement []: Let's move on.	我们换个话题吧。	l
+Announcement combat adventure-announcement []: No, I mean it.	不，我是认真的。	l
+Announcement combat adventure-announcement []: That's absurd!	太荒谬了！	l
+Announcement combat adventure-announcement []: Vile creature!	卑劣的生物！	l
+Announcement combat adventure-announcement []: You are loved.	有人爱着你。	l
+Announcement combat adventure-announcement []: You are right.	你说得对。	l
 Announcement combat agreement-conclusion-reason []: on a whim	出于一时兴起	l
 Announcement combat agreement-core []: began embezzling funds	开始挪用资金	l
 Announcement combat agreement-core []: joined with as a guide	与同行，担任向导	l
@@ -23498,6 +24211,23 @@ A very large person with a spiky head frill and three horns.	一种体型很大�
 Adventurer log reputation: greatly respected for heroic acts	因英雄之举而备受尊敬	h
 After enduring an interrogation, {a} was released during {e}	在{e1}期间，忍受审讯后，{a1}被释放了	ht
 After enduring an interrogation, {a} was released within {p}	在{p1}，忍受审讯后，{a1}被释放了	ht
+Announcement combat adventure-announcement []: Are we close?	我们快到了吗？	l
+Announcement combat adventure-announcement []: Be practical.	务实一些。	l
+Announcement combat adventure-announcement []: Beware doubt.	提防疑虑。	l
+Announcement combat adventure-announcement []: Do not stall.	不要拖延。	l
+Announcement combat adventure-announcement []: Do your duty.	尽好自己的本分。	l
+Announcement combat adventure-announcement []: Have no fear.	不必畏惧。	l
+Announcement combat adventure-announcement []: How gracious!	真是宽宏大量！	l
+Announcement combat adventure-announcement []: I'm appalled.	我感到震惊。	l
+Announcement combat adventure-announcement []: I'm not sure.	我不确定。	l
+Announcement combat adventure-announcement []: Insufferable!	简直忍无可忍！	l
+Announcement combat adventure-announcement []: It's my mess.	是我自己弄乱的。	l
+Announcement combat adventure-announcement []: My companion.	我的伙伴。	l
+Announcement combat adventure-announcement []: That's wrong.	那是错的。	l
+Announcement combat adventure-announcement []: Unbelievable.	难以置信。	l
+Announcement combat adventure-announcement []: You mock me?!	你在嘲弄我？！	l
+Announcement combat adventure-announcement []: You stand up.	你起身了。	l
+Announcement combat adventure-announcement []: You're wrong.	你错了。	l
 Announcement combat agreement-core []: plotted to infiltrate	密谋潜入……	l
 Announcement combat agreement-crime []: attempted kidnapping	绑架未遂	l
 Announcement combat agreement-crime []: building destruction	毁坏建筑	l
@@ -24243,6 +24973,9 @@ Adventure item action: Heat {s} near burning branches ({p})	在燃烧的树枝�
 Adventurer log reputation: legendary preserver of knowledge	传奇博学大师	h
 After being interrogated by {a}, {a} implicated {a} at {p}.	在{p1}，经过{a1}审讯后，{a2}供出了{a3}。	ht
 After being interrogated by {a}, {a} implicated {a} in {p}.	在{p1}，经过{a1}审讯后，{a2}供出了{a3}。	ht
+Announcement combat adventure-announcement []: Focus today.	今天要专心。	l
+Announcement combat adventure-announcement []: I hate them.	我恨他们。	l
+Announcement combat adventure-announcement []: Instability.	动荡不安。	l
 Announcement combat agreement-conclusion-title []: a parley	一场谈判	l
 Announcement combat agreement-crime []: job order violation	违反工作命令	l
 Announcement combat agreement-title-core []: the bribery of	进行的受贿	l
@@ -25081,6 +25814,13 @@ After being interrogated by {a}, {a} implicated {a} in {p}	在{p1}，经过{a1}�
 After being interrogated, {a} implicated {a} in the wilds.	在荒野中，经过审讯后，{a1}供出了{a2}。	ht
 Allows insight into emotional states during conversations.	使你能在交谈时洞察对方的情绪状态。	w
 An orange person with the head and tail of a lion tamarin.	一种橙色的人形生物，有着美洲狮的头和尾巴。	lP
+Announcement combat adventure-announcement []: Be patient.	耐心一些。	l
+Announcement combat adventure-announcement []: Distracted!	注意力分散！	l
+Announcement combat adventure-announcement []: I disagree.	我不同意。	l
+Announcement combat adventure-announcement []: I hate you.	我恨你。	l
+Announcement combat adventure-announcement []: It's wrong.	这是错的。	l
+Announcement combat adventure-announcement []: Wait, what?	等等，什么？	l
+Announcement combat adventure-announcement []: Where am I?	我在哪里？	l
 Announcement combat agreement-core []: promised a position	答应给安排一个职位	l
 Announcement combat agreement-crime []: disorderly conduct	扰乱秩序	l
 Announcement combat agreement-item []: an unknown artifact	一件来历不明的造物	l
@@ -25117,6 +25857,7 @@ Announcement combat memory-sentence [memory-reunion]: {s}.	{s1}。	l
 Announcement combat memory-setting []: a fantastic setting	好极了	l
 Announcement combat memory-setting []: a very good setting	相当好	l
 Announcement combat memory-setting []: a very poor setting	很差	l
+Announcement combat quest-object [$announcement-item]: {s}	{s1}	l
 Announcement combat sentence [$item]: Excellent {s} there.	那里的上等的{s1}。	l
 Announcement combat sentence [$item]: Fantastic {s} there.	那里的绝妙的{s1}。	l
 Announcement combat sentence [$name,$name]: {s} is in {s}.	{s1}位于{s2}。	l
@@ -25945,6 +26686,9 @@ After being interrogated, {a} implicated {a} in the wilds	在荒野中，经过�
 After enduring an interrogation by {a}, {a} was released.	忍受{a1}的审讯后，{a2}被释放了。	ht
 After enduring an interrogation, {a} was released at {p}.	在{p1}，忍受审讯后，{a1}被释放了。	ht
 After enduring an interrogation, {a} was released in {p}.	在{p1}，忍受审讯后，{a1}被释放了。	ht
+Announcement combat adventure-announcement []: Greetings.	你好。	l
+Announcement combat adventure-announcement []: Of course.	当然。	l
+Announcement combat adventure-announcement []: The enemy!	敌人！	l
 Announcement combat agreement-goals []: initiate sabotage	展开破坏行动	l
 Announcement combat agreement-title-core []: concocted by	策划的阴谋	l
 Announcement combat assault [actor,unit]: {s} attacks {s}	{s1}攻击{s2}	l
@@ -25981,6 +26725,7 @@ Announcement combat memory-person []: an unknown creature	不明生物	l
 Announcement combat memory-sentence [$event]: It was {s}.	那是{s1}。	l
 Announcement combat memory-setting []: a horrible setting	差极了	l
 Announcement combat merchant-origin []: just outside town	镇外不远处	l
+Announcement combat quest-holder [$historical-actor]: {s}	{s1}	l
 Announcement combat reference-building-type []: catacombs	地下墓穴	l
 Announcement combat reference-building-type []: guildhall	行会大厅	l
 Announcement combat reference-building-type []: mead hall	蜂蜜酒厅	l
@@ -26891,6 +27636,11 @@ After enduring an interrogation by {a}, {a} was released	忍受{a1}的审讯后�
 After enduring an interrogation, {a} was released at {p}	在{p1}，忍受审讯后，{a1}被释放了	ht
 After enduring an interrogation, {a} was released in {p}	在{p1}，忍受审讯后，{a1}被释放了	ht
 An aquatic arthropod with a wide head and tapering body.	一种水生节肢动物，头部宽阔，躯体向尾端逐渐变细。	lP
+Announcement combat adventure-announcement []: Be happy!	开心一点！	l
+Announcement combat adventure-announcement []: Intruder!	入侵者！	l
+Announcement combat adventure-announcement []: Murderer!	凶手！	l
+Announcement combat adventure-announcement []: Shameful.	可耻。	l
+Announcement combat adventure-announcement []: The dead!	亡者！	l
 Announcement combat agreement-core []: plotted to abduct	密谋绑架……	l
 Announcement combat agreement-crime []: attempted murder	谋杀未遂	l
 Announcement combat agreement-party []: an unknown party	身份不明的一方	l
@@ -26926,6 +27676,8 @@ Announcement combat merchant-origin []: a village nearby	附近的村庄	l
 Announcement combat merchant-people []: some of our kind	我们的一些同族	l
 Announcement combat negotiation-opening []: brazenly lie	肆无忌惮地撒谎	l
 Announcement combat owned-object [owner,object]: {s} {s}	{s1}{s2}	l
+Announcement combat quest-destination [quest-place]: {s}	{s1}	l
+Announcement combat quest-object []: an unknown artifact	一件未知神器	l
 Announcement combat reference-building-type []: hospital	医院	l
 Announcement combat reference-kind []: mysterious palace	神秘宫殿	l
 Announcement combat rumor-identity-role [$creature]: {s}	{s1}	l
@@ -27910,6 +28662,8 @@ Adventurer log reputation: noted preserver of knowledge	著名的博学大师	h
 After being interrogated, {a} implicated {a} during {e}	在{e1}期间，经过审讯后，{a1}供出了{a2}	ht
 After being interrogated, {a} implicated {a} within {p}	在{p1}，经过审讯后，{a1}供出了{a2}	ht
 An important decision awaits your careful deliberation.	一项重要决定等待你仔细斟酌。	hP
+Announcement combat adventure-announcement []: Focused!	全神贯注！	l
+Announcement combat adventure-announcement []: Thirsty!	口渴！	l
 Announcement combat agreement-crime []: attempted theft	盗窃未遂	l
 Announcement combat agreement-goals []: steal treasures	盗取财宝	l
 Announcement combat attack-site-kind []: forest retreat	森林聚落	l
@@ -28912,6 +29666,9 @@ Adventurer log reputation: noted protector of the weak	著名的庇护者	h
 All of your progress since the last save will be lost.	自上次保存以来的所有进度都将丢失。	P
 All of your progress since the last save will be lost.	你上次之后的所有进展存档将会丢失.	w
 An obvious material to use to make the crafts is rock.	石头自然是制作工艺品的好材料。	hq
+Announcement combat adventure-announcement []: Ahhh...	啊……	l
+Announcement combat adventure-announcement []: Gwargh!	嘎哇啊！	l
+Announcement combat adventure-announcement []: Really.	真是的。	l
 Announcement combat agreement-crime []: blood-drinking	吸血	l
 Announcement combat agreement-goals []: instill terror	制造恐慌	l
 Announcement combat agreement-goals []: prepare a coup	筹备政变	l
@@ -29961,6 +30718,9 @@ Adventurer log reputation: rumored information source	传闻中的情报来源	h
 Alcohol, good food, and personal rooms go a long way.	酒、美食和私人房间都能起到很大作用。	hq
 Although accounts vary, it is universally agreed that	虽然记载各不相同，但人们普遍认为，	h
 An elusive medium-sized fish found in coastal waters.	一种罕见的中等尺寸鱼类，生活在沿海水域。	lP
+Announcement combat adventure-announcement []: Sleep!	睡觉！	l
+Announcement combat adventure-announcement []: Uhh...	呃……	l
+Announcement combat adventure-announcement []: Where?	哪里？	l
 Announcement combat dialogue-family []: older brother	哥哥	l
 Announcement combat dialogue-family []: older sibling	兄姐	l
 Announcement combat dialogue-family []: only daughter	唯一的女儿	l
@@ -31097,6 +31857,8 @@ After being interrogated by {a}, {a} implicated {a}.	经过{a1}审讯后，{a2}�
 After being interrogated, {a} implicated {a} at {p}.	在{p1}，经过审讯后，{a1}供出了{a2}。	ht
 After being interrogated, {a} implicated {a} in {p}.	在{p1}，经过审讯后，{a1}供出了{a2}。	ht
 An aquatic person in the shape of an orca with arms.	虎鲸外型的水生人形生物，长有手臂。	lP
+Announcement combat adventure-announcement []: Uh...	呃……	l
+Announcement combat adventure-announcement []: What?	什么？	l
 Announcement combat agreement-crime []: embezzlement	挪用资金	l
 Announcement combat attack [attack]: {s} from behind	从背后{s1}	l
 Announcement combat dialogue-family []: eldest child	最年长的孩子	l
@@ -32342,6 +33104,9 @@ After being interrogated, {a} implicated {a} at {p}	在{p1}，经过审讯后，
 After being interrogated, {a} implicated {a} in {p}	在{p1}，经过审讯后，{a1}供出了{a2}	ht
 And remember: Losing is fun, and now it's personal!	记住：[C:2:0:1]输了才好玩，而这次轮到你亲身体验！[C:7:0:0]	hq
 Announcement combat actor [$item]: the spinning {s}	旋转着的{s1}	l
+Announcement combat adventure-announcement []: Ack!	啊！	l
+Announcement combat adventure-announcement []: Huh?	嗯？	l
+Announcement combat adventure-announcement []: Who?	谁？	l
 Announcement combat artifact-recipient [$name]: {s}	{s1}	l
 Announcement combat damage-list [damage-list]: {s},	{s1}	l
 Announcement combat defense-adverb []: effortlessly	毫不费力地	l
@@ -33566,6 +34331,10 @@ After enduring an interrogation, {a} was released.	忍受审讯后，{a1}被释�
 All active/manual/autosaves there will be deleted!	该世界中的所有当前存档、手动存档和自动存档都会被删除！	hP
 An orange striped person with the head of a tiger.	一种身有橘色斑纹长着狮子头的人形生物	lP
 Announcement combat ability [$creature]: Raise {s}	复生{s1}	l
+Announcement combat adventure-announcement []: Eh?	诶？	l
+Announcement combat adventure-announcement []: Ha!	哈！	l
+Announcement combat adventure-announcement []: No!	不！	l
+Announcement combat adventure-announcement []: No.	不。	l
 Announcement combat agreement-core []: joined with	与同行	l
 Announcement combat agreement-crime []: kidnapping	绑架	l
 Announcement combat agreement-party-list []: , and	和	l
@@ -34921,6 +35690,7 @@ Announcement combat memory-value []: independence	独立	l
 Announcement combat memory-value []: leisure time	闲暇	l
 Announcement combat memory-value []: perseverance	坚韧	l
 Announcement combat memory-value []: self-control	自律	l
+Announcement combat quest-place [$reference]: {s}	{s1}	l
 Announcement combat reference-value []: eloquence	口才	l
 Announcement combat reference-value []: hard work	勤劳	l
 Announcement combat reference-value []: knowledge	知识	l
@@ -36290,6 +37060,7 @@ Announcement combat dialogue-object [$item]: {s}	{s1}	l
 Announcement combat dialogue-trouble []: bandits	强盗	l
 Announcement combat diplomacy-group [$name]: {s}	{s1}	l
 Announcement combat fluid [owner,$term]: {s} {s}	{s1}{s2}	l
+Announcement combat greeting-state []: just fine	挺好的	l
 Announcement combat guard-building []: a cottage	小屋	l
 Announcement combat guard-building []: a hillock	土丘住宅	l
 Announcement combat head [actor,attack]: {s} {s}	{s1}{s2}	l
@@ -39206,6 +39977,7 @@ Announcement combat dialogue-family []: spouse	配偶	l
 Announcement combat diplomacy-cause []: a coup	一次政变	l
 Announcement combat diplomacy-cause []: a raid	一次突袭	l
 Announcement combat embark-charges []: charges	子民	l
+Announcement combat greeting-state []: alright	还好	l
 Announcement combat guard-building []: a house	房子	l
 Announcement combat impact-part []: body parts	多个身体部位	l
 Announcement combat memorial-death []: Drowned	溺亡	l
@@ -40772,6 +41544,9 @@ Announcement combat memory-relation []: lover	恋人	l
 Announcement combat memory-value []: commerce	商业	l
 Announcement combat memory-value []: fairness	公平	l
 Announcement combat memory-value []: stoicism	克制	l
+Announcement combat quest-holder [$name]: {s}	{s1}	l
+Announcement combat quest-object [$book]: {s}	{s1}	l
+Announcement combat quest-object []: Untitled	无题	l
 Announcement combat reference-kind []: castle	城堡	l
 Announcement combat reference-kind []: hamlet	村庄	l
 Announcement combat reference-kind []: palace	宫殿	l
@@ -43883,6 +44658,9 @@ Announcement combat damage-verb []: denting	砸凹	l
 Announcement combat damage-verb []: tearing	撕裂	l
 Announcement combat dialogue-family []: son	儿子	l
 Announcement combat fraction []: a piece of	一块	l
+Announcement combat greeting-state []: fine	挺好	l
+Announcement combat greeting-state []: good	很好	l
+Announcement combat greeting-state []: well	不错	l
 Announcement combat justice-plot []: A plot	一项阴谋	l
 Announcement combat memory-object []: a toy	一个玩具	l
 Announcement combat memory-relation []: pet	宠物	l
@@ -57446,6 +58224,7 @@ State the worthlessness of sacrifice	阐述牺牲毫无价值	hP
 State the worthlessness of tradition	阐述传统毫无价值	hP
 Stockpile name: clothworks pile mats	纺织原料储物堆	l
 Stockpile name: clothworks pile proc	纺织加工储物堆	l
+Storage container packing: waterskin	袋装	wi
 Stream: Bridgesnuggles the Wooden...	溪流：桥拥者·木之……	l
 Stream: Confusedcloset the Scanda...	溪流:困惑衣橱丑闻...	w
 Stream: Flightbodies the Failed P...	溪流：败者飞躯 P...	l
@@ -63992,6 +64771,8 @@ State the worthlessness of family	阐述家庭毫无价值	hP
 State the worthlessness of nature	阐述自然毫无价值	hP
 Stockpile name: cages and animals	笼子与动物	l
 Storage container packing: barrel	桶装	wi
+Storage container packing: bucket	桶装	wi
+Storage container packing: goblet	杯装	wi
 Symbol picker site in region: X Y	这是一处位于Y的X。	hi
 Tell listener to try a shopkeeper	让对方去问问店主	hP
 Tell listener you don't work here	告诉对方你不在这里工作	hP
@@ -66204,6 +66985,8 @@ State the worthlessness of power	阐述权力毫无价值	hP
 State the worthlessness of skill	阐述技艺毫无价值	hP
 State the worthlessness of truth	阐述诚实毫无价值	hP
 Stockpile name: superior to keep	保留上等品质物品	l
+Storage container packing: flask	瓶装	wi
+Storage container packing: pouch	袋装	wi
 Stream: The Garnishes of Adoring	溪流: 崇拜的装饰物	w
 Table rejected (already in use.)	桌子未被选用（已被占用）	hP
 That sounds almost like the {s}!	听起来几乎和{s1}一样！	hPt
@@ -68382,6 +69165,7 @@ State the value of self-control	阐述自制的价值	hP
 Stockpile name: block stockpile	砌块储物堆	l
 Stone material: native aluminum	天然铝原矿	wi
 Stone material: native platinum	铂原矿	wi
+Storage container packing: vial	瓶装	wi
 Take care you are not deceived.	小心受骗。	hP
 Tell me about the law-breaking.	跟我说说违法活动。	hP
 That is a good turn of affairs.	事情有了好的转机。	hP
@@ -70889,6 +71673,9 @@ State the value of tranquility	阐述宁静的价值	hP
 State the worthlessness of law	阐述法律毫无价值	hP
 Storage container packing: bag	袋装	wi
 Storage container packing: bin	箱装	wi
+Storage container packing: cup	杯装	wi
+Storage container packing: jug	壶装	wi
+Storage container packing: mug	杯装	wi
 Storage container packing: pot	罐装	wi
 Stream: The Garnish of Dumping	溪流:倾倒的装饰	w
 Surrender of {p} in the wilds.	在荒野中，{p1}的投降。	htEi
@@ -124538,7 +125325,6 @@ porcupine pup	豪猪幼崽	wi
 potato flower	马铃薯花	wi
 potato leaves	马铃薯叶	wi
 potato plants	马铃薯植株	wi
-prepared food	熟食	wi
 prepared meal	预备的餐点	wi
 pretty decent	相当不错的	wi
 prickle berry	刺莓	wi
@@ -143044,6 +143830,7 @@ mercy	仁慈	r
 metal	金属	wi
 milky	奶	wi
 minks	水貂	wi
+mixed	混合物	wi
 moons	月亮	wi
 moose	驼鹿	wi
 moths	飞蛾	wi
