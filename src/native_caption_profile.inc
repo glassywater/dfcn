@@ -81,6 +81,13 @@ static bool resolve_native_caption_profile(NativeCaptionProfile &profile) {
         // its caption. Books can supply just their work title, with no item
         // actions, count or quality marks to identify the row by its skin.
         {native_pe_address(profile.base, 0x15a261), NativeInfoTitleKind::ItemList},
+        // Nobles' office-symbol chooser owns separate item, assignment and
+        // value fields. Item/assignment ink is shortened to 22 cells, while
+        // their columns extend 24 cells up to the optional Value label.
+        {native_pe_address(profile.base, 0x425ddd), NativeInfoTitleKind::NobleSymbolItem, 24},
+        {native_pe_address(profile.base, 0x425f5e), NativeInfoTitleKind::NobleSymbolPosition, 24},
+        {native_pe_address(profile.base, 0x426057), NativeInfoTitleKind::NobleSymbolValue, 7},
+        {native_pe_address(profile.base, 0x4260af), NativeInfoTitleKind::NobleSymbolAmount},
         {native_pe_address(profile.base, 0x18057a), NativeInfoTitleKind::Building},
         {native_pe_address(profile.base, 0x158a79), NativeInfoTitleKind::Engraving},
         {native_pe_address(profile.base, 0x158af4), NativeInfoTitleKind::Terrain},
@@ -185,6 +192,9 @@ static bool resolve_native_caption_profile(NativeCaptionProfile &profile) {
     // Its native formatter copies building.name whenever that field is
     // nonempty, even when the authored spelling is exactly "Farm Plot".
     profile.info_titles.farm_name_return_address = native_pe_address(profile.base, 0x39e048);
+    // The crop draw copies the selected plant's complete RAW name (+0x70)
+    // at record top+2, including Item Tagger's suffixes, without resizing.
+    profile.info_titles.farm_crop_return_address = native_pe_address(profile.base, 0x39e1f3);
     profile.info_titles.farm_building_slot = -0x170;
     // The spoor constructor alone shortens record+0x28 to 50 bytes here;
     // 0x407efd..0x40849d append its direction and optional party ownership.
@@ -377,6 +387,35 @@ static bool resolve_native_caption_profile(NativeCaptionProfile &profile) {
           0x48,0x0f,0x47,0x45,0xd0,0xc6,0x40,0x21,0x00},
          // rcx = &identity (rbp-0x30), edx = 33, r8b = zero fill.
          {0x48,0x8d,0x4d,0xd0,0xba,0x21,0x00,0x00,0x00,0x45,0x31,0xc0}},
+        // Nobles' office-symbol chooser formats the complete item at
+        // 0x425d10, then shrinks rbp+0x80 inline to 22 cells. Capture before
+        // its length/terminator stores and dots, so addst at 0x425dd8 owns
+        // the full material, name and item noun rather than clipped words.
+        // No branch enters this block. cmp rbx,3 replaces flags; RAX and
+        // RCX/RDX/R9 are reset before use and addst ignores R8. The other
+        // volatile registers are dead. Eight pushes and sub rsp,0x278
+        // retain aligned calls and the caller's existing shadow space.
+        {0x425d34,
+         {0x48,0x89,0x9d,0x90,0x00,0x00,0x00,
+          0x48,0x8d,0x85,0x80,0x00,0x00,0x00,
+          0x48,0x83,0xbd,0x98,0x00,0x00,0x00,0x0f,
+          0x48,0x0f,0x47,0x85,0x80,0x00,0x00,0x00,
+          0xc6,0x04,0x03,0x00},
+         // rcx = &caption (rbp+0x80), rdx = width (rbx), r8b = zero fill.
+         {0x48,0x8d,0x8d,0x80,0x00,0x00,0x00,0x48,0x89,0xda,0x45,0x31,0xc0}},
+        // The symbol's optional assigned position is copied and capitalized
+        // in rbp+0x120, then shortened to the same 22-cell ink width. Preserve
+        // that separate complete source for its lower-row addst at 0x425f59.
+        // This equivalent shrink has the same frame and volatile-register
+        // lifetime as the item block above; cmp rbx,3 resets its flags.
+        {0x425eb5,
+         {0x48,0x89,0x9d,0x30,0x01,0x00,0x00,
+          0x48,0x8d,0x85,0x20,0x01,0x00,0x00,
+          0x48,0x83,0xbd,0x38,0x01,0x00,0x00,0x0f,
+          0x48,0x0f,0x47,0x85,0x20,0x01,0x00,0x00,
+          0xc6,0x04,0x03,0x00},
+         // rcx = &position (rbp+0x120), rdx = width (rbx), r8b = zero fill.
+         {0x48,0x8d,0x8d,0x20,0x01,0x00,0x00,0x48,0x89,0xda,0x45,0x31,0xc0}},
         // Both Nobles holder loops obtain the full name/office from
         // 0x1330c30, then inline resize before writing the final three dots.
         // Read that complete live NativeString through the shared capture
@@ -671,6 +710,7 @@ static bool resolve_native_caption_profile(NativeCaptionProfile &profile) {
         profile.signatures.push_back({site.call,
             std::vector<unsigned char>(site.bytes.begin(), site.bytes.end())});
     }
+    profile.signatures.push_back({0x39e1ee, {0xe8,0x6d,0xb7,0x73,0x00}});
     // Guild and faith subpage callers use the same normal profile signature
     // gate as the new detail fields, for both supported native PE editions.
     profile.signatures.push_back({0x3b985e, {0xe8,0xfd,0x00,0x72,0x00}});
@@ -1065,6 +1105,17 @@ static bool resolve_native_caption_profile(NativeCaptionProfile &profile) {
     // ViewBase's container named Tooltip. Calls are validated on installation.
     profile.legacy_toolbar_tooltip = elf_runtime::state().edition != 2;
     profile.inline_resizes.push_back(std::move(action_resize));
+    // Inventory mode, other selection modes and their location line use the
+    // same default-fill clone. Capture each complete string before dots are
+    // written; the ensuing draw binds the original item/body-part grammar.
+    for (const uintptr_t call : {native_reference_va(0x119ab1d),
+            native_reference_va(0x119ac55), native_reference_va(0x119ac05)}) {
+        if (!image.contains(call, 5) ||
+                image.relative(call, 1, 5) != native_reference_va(0x11612a0)) return false;
+        const auto *bytes = reinterpret_cast<const unsigned char *>(call);
+        profile.inline_resizes.push_back({call - image.base,
+            std::vector<unsigned char>(bytes, bytes + 5), {0x31,0xd2}, true});
+    }
     const auto widget_table = reinterpret_cast<uintptr_t>(
         dlsym(RTLD_DEFAULT, "_ZTVN7widgets14text_truncatedE"));
     if (!widget_table) return false;

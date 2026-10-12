@@ -1,0 +1,783 @@
+# Complete Linux native adventure records, before generic personal-name templates.
+# scope / source / target / typed fields / native construction
+adventure-announcement	You put the {s} into the {s}.	你将{s1}放进{s2}。	$announcement-item,$announcement-item	ELF 11a7600/11e2320 ->e68020, destination virtual item writer, 17ea070
+adventure-announcement	You put the {s} on the {s}.	你将{s1}放在{s2}上。	$announcement-item,$announcement-item	ELF 11e25aa..11e27f3; destination +0x188 virtual item writer
+adventure-announcement	You put the {s} on display.	你将{s1}摆出来展示。	$announcement-item	ELF 11e2acb..11e2af4/11e2cb7..11e2cc3 ->11e2bf5 ->11e2a4d ->17ea070
+adventure-announcement	{s} {s}.	{s1}，{s2}。	rumor-time,dialogue-battle	ELF 1044d60; elapsed-time 10448d0; complete battle account
+adventure-announcement	{s} {s} in {s}.	{s1}，在{s3}，{s2}。	rumor-time,dialogue-battle,$conflict-place	ELF 1044d60; site/subregion/underground suppliers
+adventure-announcement	{s}	{s1}	quest-sentence	ELF 10108c0..10140f1; complete artifact request/location branches
+quest-object	{s} {s}	{s1}{s2}	$book,$announcement-item	ELF 10124cd ->a0d8c0; optional item description 1012513..101252a ->e68020
+quest-object	{s}	{s1}	$announcement-item	ELF 10108c0; physical item field when artifact name is omitted
+quest-object	{s}	{s1}	$book	ELF 1011144/10124cd ->a0d8c0; written work/abstract artifact without physical caption
+quest-object	an unknown artifact	一件未知神器		ELF a0d944; invalid artifact ID
+quest-object	Untitled	无题		ELF a0d9fb; written work without a title
+quest-holder	{s} of {s}	{s2}的{s1}	$historical-actor,$name	ELF 1013398/1013997; historical person plus owning entity
+quest-holder	{s}	{s1}	$historical-actor	ELF 10108c0; complete historical person caption
+quest-holder	{s}	{s1}	$name	ELF 10128ad/1012a51; entity/position owner branch
+quest-place	{s}	{s1}	conversation-conflict-place	ELF a27cd0/a0ffc0/a10160; site/subregion/underground location suppliers
+quest-place	{s}	{s1}	$reference	ELF a10320; building/location reference supplier
+quest-destination	{s} in {s}	{s2}的{s1}	quest-place,quest-place	ELF 10115d8/1011d82/10122b1/10135a8/1013895; building plus site
+quest-destination	{s}	{s1}	quest-place	ELF 10108c0; destination without a separate site
+quest-sentence	I desire that {s} be returned to me.	我希望能把{s1}归还给我。	quest-object	ELF 1011122..10111a1/1012b13; self ownership
+quest-sentence	I desire that {s} be returned to my family.	我希望能把{s1}归还给我的家族。	quest-object	ELF 1011122..10111a1; family ownership
+quest-sentence	{s} wants {s} returned.	{s1}希望能归还{s2}。	quest-holder,quest-object	ELF 10124a0..101257e; requester +artifact title +optional physical item +returned
+quest-sentence	{s} wants {s} returned to {s}.	{s1}希望能把{s2}归还至{s3}。	quest-holder,quest-object,quest-destination	ELF 101343d..1013635/101384e; destination and optional site
+quest-sentence	Speaking as a representative of {s}, it is important that {s} be returned.	我代表{s1}郑重说明，必须归还{s2}。	$name,quest-object	ELF 1011eaf..10120f3/1012f9f..1012fdd
+quest-sentence	{s} believes that primordial remnants such as {s} belong back in their rightful home.	{s1}认为，像{s2}这样的远古遗存应当回到它们原本的归属之地。	$name,quest-object	ELF 1011b74..1011c82/1012a75/10139e8
+quest-sentence	Any should be brought to {s}, or given to one of us.	发现任何这类遗存，都应将其送至{s1}，或交给我们中的一员。	quest-destination	ELF 1011d2c..1011e06/1013bab..1013bca
+quest-sentence	It should be brought to {s}.	应当将它送至{s1}。	quest-destination	ELF 1012224..101231f/10138e0
+quest-sentence	It would be wonderful if {s} found a lasting home within {s}.	若能让{s1}长久地留在{s2}，那就再好不过了。	quest-object,$name	ELF 1011922..1011a81/1013b25/1013b8c
+quest-sentence	I require it as a symbol of the {s}.	我需要它作为{s1}的象征。	rumor-position	ELF 1013c37; symbol-owner position
+quest-sentence	It is the symbol of the {s}.	它是{s1}的象征。	rumor-position	ELF 1013a4b; symbol-owner position
+quest-sentence	{s} requires it to be a proper {s}.	{s1}需要它，才能成为名副其实的{s2}。	quest-holder,$term	ELF 1012d45..1012d96/1013ca6; ruler/office qualification
+quest-sentence	It is a valuable treasure to us.	它是我们珍贵的宝物。		ELF 10130fa..101311d/1013c51
+quest-sentence	Last I remember, I had it.	我记得最后是由我保管的。		ELF 1012617
+quest-sentence	Last I heard, I had it.	我最后听说，它由我保管。		ELF 1013c84
+quest-sentence	Last I heard, you held it.	我最后听说，它由你保管。		ELF 1013be5
+quest-sentence	Last I heard, it was held by {s}.	我最后听说，它由{s1}保管。	quest-holder	ELF 101280a..101283c/1013b06
+quest-sentence	Last I saw, it was held by {s}.	我最后见到它时，它由{s1}保管。	quest-holder	ELF 1010d03..1010d37/101313e
+quest-sentence	Last I heard, it was in {s}.	我最后听说，它在{s1}。	quest-destination	ELF 1012b27/1013f30/1013fdc; all three location branches
+quest-sentence	Last I saw, it was in {s}.	我最后见到它时，它在{s1}。	quest-destination	ELF 1011586..1011655/1013922/1013c26/1013d80
+quest-sentence	I have no idea where it is.	我不知道它在哪里。		ELF 1013ff0; unknown location
+adventure-announcement	I'm doing {s}.	我过得{s1}。	greeting-state	ELF 102f751 ->102e11f..102e17d; random suffix selection
+adventure-announcement	I've been {s}.	我最近过得{s1}。	greeting-state	ELF 102e118 ->102e11f..102e17d
+adventure-announcement	I'm {s}.	我{s1}。	greeting-state	ELF 102f628..102f689
+adventure-announcement	I feel {s}.	我感觉{s1}。	greeting-state	ELF 102ec54..102ecb8
+adventure-announcement	Everything's {s}.	一切都{s1}。	greeting-state	ELF 102f6f0..102f74c
+greeting-state	fine	挺好		ELF 102f67a
+greeting-state	well	不错		ELF 102eca9
+greeting-state	alright	还好		ELF 102e16e
+greeting-state	good	很好		ELF 102f73d
+greeting-state	just fine	挺好的		ELF 102fd3c
+adventure-announcement	Uhh...	呃……		ELF 102ea7b/102ecc3; existing quoted overview wording
+adventure-announcement	Uh...	呃……		ELF 18983f9
+adventure-announcement	Focused!	全神贯注！		ELF 11715a2
+adventure-announcement	Sleep!	睡觉！		ELF 11716cf
+adventure-announcement	Thirsty!	口渴！		ELF 1172103
+adventure-announcement	Who?	谁？		ELF 18ab23b
+adventure-announcement	Ahhh...	啊……		ELF 18abc21
+adventure-announcement	Gwargh!	嘎哇啊！		ELF 18abc35
+adventure-announcement	Ack!	啊！		ELF 18ad3f1
+adventure-announcement	Huh?	嗯？		ELF 18ad405
+adventure-announcement	Eh?	诶？		ELF 18ad419
+adventure-announcement	Where?	哪里？		ELF 18af6ad
+adventure-announcement	Ha!	哈！		ELF 18af9bc
+adventure-announcement	No!	不！		ELF 18af9d0
+adventure-announcement	No.	不。		ELF 18b0e14
+adventure-announcement	Really.	真是的。		ELF 18b1d5e
+adventure-announcement	What?	什么？		ELF 18b9454
+
+# Whole literal productions from the current native submission owners.
+# Quoted overview wording is reused without quote marks for speech.
+adventure-announcement	A clever strategy will be required.	你将需要一个巧妙的策略。		ELF 0x11e152e
+adventure-announcement	A coming disaster can be delayed, but not avoided.	即将到来的灾难可以推迟，却无法避免。		ELF 0x11e1a7e
+adventure-announcement	A dark, menacing cloud towers above you, crowned by an anvil.	一团阴暗而险恶的云高耸在你头顶，顶部呈铁砧状。		ELF 0xc86204
+adventure-announcement	A dark, towering cloud rises into a striped sky.	一团深色的高耸云层伸入布满条纹的天空。		ELF 0xc85b17
+adventure-announcement	A few separate groups were organized.	几个各自独立的组织成立了。		ELF 0x188b129
+adventure-announcement	A great piece of art is one that moves me.	能打动我的，才是好艺术。		ELF 0x102edb5
+adventure-announcement	A great sadness is coming.	巨大的悲伤即将降临。		ELF 0x11e1aa6
+adventure-announcement	A legend? Here? I can scarcely believe it.	传说中的人物？在这里？我简直不敢相信。		ELF 0x104c08c
+adventure-announcement	A mandate has ended.	一项法令已结束。		ELF 0xf4475f
+adventure-announcement	A migrant has arrived at this miserable place, despite the danger.	一名移民不顾危险，来到了这个悲惨的地方。		ELF 0xf17307
+adventure-announcement	A migrant has arrived at this miserable place.	一名移民来到了这个悲惨的地方。		ELF 0xf1851f
+adventure-announcement	A migrant has arrived at this unhappy place, despite the danger.	一名移民不顾危险，来到了这个不幸的地方。		ELF 0xf16a67
+adventure-announcement	A migrant has arrived at this unhappy place.	一名移民来到了这个不幸的地方。		ELF 0xf186e1
+adventure-announcement	A migrant has arrived, despite the danger.	一名移民不顾危险，抵达了这里。		ELF 0xf17dad
+adventure-announcement	A migrant has arrived.	一名移民抵达了。		ELF 0xf18624
+adventure-announcement	A migrant has decided to brave this terrifying miserable place.	一名移民决定勇闯这个恐怖而悲惨的地方。		ELF 0xf18553
+adventure-announcement	A migrant has decided to brave this terrifying place.	一名移民决定勇闯这片恐怖之地。		ELF 0xf183e7
+adventure-announcement	A migrant has decided to brave this terrifying unhappy place.	一名移民决定勇闯这个恐怖而不幸的地方。		ELF 0xf183ac
+adventure-announcement	A new friendship will form.	一段新的友谊将会萌生。		ELF 0x11e15f6
+adventure-announcement	A reckoning awaits.	清算终将到来。		ELF 0x11e1b0a
+adventure-announcement	A sudden upheaval is in store.	一场突如其来的剧变正在等待着你。		ELF 0x11e1a92
+adventure-announcement	A towering gray cloud descends from the white sky above you.	一团高耸的灰云从你头顶的白色天空中向下延伸。		ELF 0xc860d3
+adventure-announcement	A true Mountainhome must have a true throne!	真正的山国都城，必须拥有真正的王座！		ELF 0xf46f95
+adventure-announcement	A vile force of darkness has arrived!	一支邪恶的黑暗势力已经到来！		ELF 0x1823c3b
+adventure-announcement	A vile force of darkness has arrived, seeking a parley!	一支邪恶的黑暗势力已经到来，要求谈判！		ELF 0x1823d83
+adventure-announcement	Accept a defeat.	接受失败。		ELF 0x11e1786
+adventure-announcement	Accept the loss and move on.	接受损失，继续前行。		ELF 0x11e1632
+adventure-announcement	Act quickly today.	今天要迅速行动。		ELF 0x11e1736
+adventure-announcement	After a long journey, you are here to meet your most trusted companion.	经过漫长的旅途，你来到这里与最信任的同伴会合。		ELF 0x11f12ed,0x11f14be,0x11f1915
+adventure-announcement	All drinks are free, of course!	当然，所有饮品都是免费的！		ELF 0x18bb998
+adventure-announcement	All is not as it seems.	事情并非表面看起来那样。		ELF 0x11e1a2e
+adventure-announcement	Am I supposed to engage with that?	难道还要我回应那番话？		ELF 0x18b9407
+adventure-announcement	An ambush! Curse all friends of nature!	有埋伏！诅咒所有自然之友！		ELF 0xb83843,0xb839e5
+adventure-announcement	An ambush! Curse them!	有埋伏！诅咒他们！		ELF 0xb83355,0xb835fc,0xb8373b
+adventure-announcement	An ambush! Skulking vermin!	有埋伏！鬼鬼祟祟的害虫！		ELF 0xb82a1b
+adventure-announcement	An army has come to your lands seeking a parley.	一支军队来到了你的领地，要求谈判。		ELF 0x1823c9f
+adventure-announcement	An army is invading!	一支军队正在入侵！		ELF 0x181fdee
+adventure-announcement	An end and a new beginning.	一个终点，一个新的开始。		ELF 0x11e188a
+adventure-announcement	An honor as always. How can I be of service?	每次见到你都深感荣幸。有什么需要我效劳的？		ELF 0x104c55e
+adventure-announcement	An important decision awaits your careful deliberation.	一项重要决定等待你仔细斟酌。		ELF 0x11e192a
+adventure-announcement	An item has returned!	一件物品回来了！		ELF 0x188b5e8
+adventure-announcement	An obstacle will present itself.	一个障碍即将出现。		ELF 0x11e166e
+adventure-announcement	And a true ruler requires seven symbols, symbols not of this world. Mere steel will not suffice.	真正的统治者还需要七件象征物，它们必须来自这个世界之外。普通的钢铁远远不够。		ELF 0xf46fa4
+adventure-announcement	And what exactly do you want?	你到底想要什么？		ELF 0x104b74b
+adventure-announcement	And why shouldn't you dig deeper still?!	为什么不继续往更深处挖呢？！		ELF 0xf474b7
+adventure-announcement	Any success will be fleeting.	任何成功都将转瞬即逝。		ELF 0x11e1362
+adventure-announcement	Are in a foul mood?	心情不好吗？		ELF 0x104b7d2
+adventure-announcement	Are we close?	我们快到了吗？		ELF 0x18bbdd4
+adventure-announcement	Are you being serious?	你是认真的吗？		ELF 0x18b9468
+adventure-announcement	Are you hunting for treasure?	你在寻找宝藏吗？		ELF 0x104b766
+adventure-announcement	Are you looking forward to the performance?	你期待这场表演吗？		ELF 0x18bade8
+adventure-announcement	Are you ready to learn?	准备好学习了吗？		ELF 0x104b715
+adventure-announcement	Are you stalking a dangerous beast?	你在追踪危险的野兽吗？		ELF 0x104b79c
+adventure-announcement	Are you still dancing?	你还在跳舞吗？		ELF 0x104b7ed
+adventure-announcement	Are your farmplots working? Make sure you are planting edible plants.	你们的农田在正常耕作吗？务必种植可以食用的作物。		ELF 0xf466e0
+adventure-announcement	Ask a question.	提出一个问题。		ELF 0x11e17ea
+adventure-announcement	At least it doesn't rain down here.	至少这下面不会下雨。		ELF 0x18a8429
+adventure-announcement	Avoid conflict today.	今天要避免冲突。		ELF 0x11e16aa
+adventure-announcement	Base flattery!	少来这套下作的奉承！		ELF 0x18ba829
+adventure-announcement	Be cautious of fatigue today.	今天要当心疲劳。		ELF 0x11e17fe
+adventure-announcement	Be compassionate.	心怀怜悯。		ELF 0x11e18ee
+adventure-announcement	Be diligent and undistracted.	勤勉专注。		ELF 0x11e12ae
+adventure-announcement	Be generous today.	今天要慷慨待人。		ELF 0x11e1722
+adventure-announcement	Be happy!	开心一点！		ELF 0x102f18c
+adventure-announcement	Be mindful of others around you.	留意你身边的人。		ELF 0x11e1772
+adventure-announcement	Be patient.	耐心一些。		ELF 0x11e12fe
+adventure-announcement	Be playful today.	今天不妨玩乐一番。		ELF 0x11e19de
+adventure-announcement	Be practical.	务实一些。		ELF 0x11e1416
+adventure-announcement	Be sure to keep to a high standard today.	今天务必严格要求自己。		ELF 0x11e1312
+adventure-announcement	Been in any good scraps today?	今天痛快地打过架吗？		ELF 0x104b6fa
+adventure-announcement	Begin an adventure.	开始一场冒险。		ELF 0x11e165a
+adventure-announcement	Believe no one today.	今天不要相信任何人。		ELF 0x11e13b2
+adventure-announcement	Best keep your head down.	最好还是低调些。		ELF 0x1062795
+adventure-announcement	Beware a hidden plan.	提防暗中的谋划。		ELF 0x11e142a
+adventure-announcement	Beware a lack of balance.	当心失衡。		ELF 0x11e12c2
+adventure-announcement	Beware a rival.	提防对手。		ELF 0x11e16be
+adventure-announcement	Beware doubt.	提防疑虑。		ELF 0x11e1ace
+adventure-announcement	Beware of ill-conceived plans.	提防考虑不周的计划。		ELF 0x11e1916
+adventure-announcement	Beware those that lack passion.	提防缺乏热情之人。		ELF 0x11e1a42
+adventure-announcement	Bravery is not a strength of mine.	勇敢不是我的长处。		ELF 0x102fa4f
+adventure-announcement	Bring comfort to someone today.	今天给某人带去慰藉。		ELF 0x11e16fa
+adventure-announcement	Can you tell me where I can find myself?	能告诉我到哪里能找到我自己吗？		ELF 0x18a64b0
+adventure-announcement	Can you tell me where I can find you?	能告诉我到哪里能找到你吗？		ELF 0x1889a91
+adventure-announcement	Cavern dwellers! Send them back to the darkness!	洞穴居民！把他们赶回黑暗中去！		ELF 0xb8307d
+adventure-announcement	Certainly. It would be terrible to leave someone to fend for themselves after sunset.	当然。日落之后，让人独自在外面自生自灭就太糟了。		ELF 0x1891cd4
+adventure-announcement	Cling not to material things.	不要执着于身外之物。		ELF 0x11e1a06
+adventure-announcement	Codices, scrolls, etc.	典籍、卷轴等		ELF 0x1cfb4fc
+adventure-announcement	Congratulations! This fortress is now a Mountainhome, proof that any suggestion of hubris was childish nonsense.	祝贺你！这座要塞如今已成为山国都城，证明那些狂妄自大的指责不过是幼稚的胡言乱语。		ELF 0xf4727a
+adventure-announcement	Consider placing a farmplot on some underground soil and planting seeds.	考虑在地下土壤上开辟农田，播种作物。		ELF 0xf469cf
+adventure-announcement	Consider the consequences carefully.	仔细考虑后果。		ELF 0x11e174a
+adventure-announcement	Deep underground, the promise of treasure and the thrill of overcoming danger have lured you back to this place. Will you strike the earth again?	对地底深处宝藏的憧憬，以及战胜险境的刺激，让你再次回到此地。你愿意再次开山掘地吗？		ELF 0x137b11e
+adventure-announcement	Deeper. We must dig deeper.	更深。我们必须挖得更深。		ELF 0xf4708c
+adventure-announcement	Despite some minor reservations...	尽管还有一些小小的保留意见……		ELF 0x18a6dde
+adventure-announcement	Distracted!	注意力分散！		ELF 0x11718db
+adventure-announcement	Do I look like I need to calm down?!	我看起来像是需要冷静吗？！		ELF 0x18aefa6
+adventure-announcement	Do not avoid a necessary conflict today.	今天不要回避必要的冲突。		ELF 0x11e1696
+adventure-announcement	Do not be reckless.	不要鲁莽行事。		ELF 0x11e1826
+adventure-announcement	Do not be stopped by fear.	不要让恐惧阻止你。		ELF 0x11e19ca
+adventure-announcement	Do not fear loss.	不要害怕失去。		ELF 0x11e147a
+adventure-announcement	Do not give them too much.	不要给他们太多。		ELF 0x11e17d6
+adventure-announcement	Do not hold on for too long.	不要执着太久。		ELF 0x11e1876
+adventure-announcement	Do not keep everything for yourself.	不要把一切都留给自己。		ELF 0x11e17c2
+adventure-announcement	Do not stall.	不要拖延。		ELF 0x11e133a
+adventure-announcement	Do not take any chances.	不要冒险。		ELF 0x11e19a2
+adventure-announcement	Do you have a story to tell?	你有什么故事要讲吗？		ELF 0x104b83e
+adventure-announcement	Do you have any livestock to slaughter?	你们有可以宰杀的牲畜吗？		ELF 0xf46949
+adventure-announcement	Do you have dreams? Tell me a story!	你有梦境吗？给我讲个故事！		ELF 0x102ece3
+adventure-announcement	Do you have wisdom to share, preacher?	布道者，你有什么智慧要分享吗？		ELF 0x104b6a9
+adventure-announcement	Do your duty.	尽好自己的本分。		ELF 0x102f0f6
+adventure-announcement	Don't bother trying to play on my emotions.	别费心利用我的感情。		ELF 0x102fd14
+adventure-announcement	Don't get on my bad side.	别惹我。		ELF 0x102f204
+adventure-announcement	Don't let the enemy rest.	别让敌人喘息。		ELF 0x104b8aa
+adventure-announcement	Don't talk to me.	别跟我说话。		ELF 0x18a5590
+adventure-announcement	Don't travel alone at night, or the bogeyman will get you.	别在夜间独自旅行，否则夜魔会抓走你。		ELF 0x104d350
+adventure-announcement	Don't try to throw your weight around.	别想在这里仗势欺人。		ELF 0x104b88f
+adventure-announcement	Don't walk off with anything.	别顺手拿走东西。		ELF 0x1049887
+adventure-announcement	Eat not the fruits of your labor.	不要享用自己劳动的成果。		ELF 0x11e1272
+adventure-announcement	Enjoy the hunt!	祝你狩猎愉快！		ELF 0x18ace8b
+adventure-announcement	Everybody has their own way of life.	人人都有自己的活法。		ELF 0x102efe8
+adventure-announcement	Everything is all piling up at once!	所有事情一下子全压过来了！		ELF 0x102e8f6,0x102f2b4
+adventure-announcement	Everything is properly royal, properly furnished. And yet?	一切都符合王家规格，陈设也恰如其分。但似乎还少了什么？		ELF 0xf46f82
+adventure-announcement	Everything just so in its proper place!	一切都井井有条，各归其位！		ELF 0x102f1e6
+adventure-announcement	Expect a change.	变化即将到来。		ELF 0x11e1b6e
+adventure-announcement	Explore today.	今天去探索一番。		ELF 0x11e160a
+adventure-announcement	Fine. Let's drop the argument.	好吧。我们别争了。		ELF 0x188c08b
+adventure-announcement	Focus on living in harmony.	专注于和谐共处。		ELF 0x11e1b32
+adventure-announcement	Focus today.	今天要专心。		ELF 0x11e1902
+adventure-announcement	Fog enshrouds the area.	雾气笼罩着这片区域。		ELF 0xc859af
+adventure-announcement	Follow your desire to reconcile.	遵从内心和解的愿望。		ELF 0x11e15ba
+adventure-announcement	Follow your desire.	追随你的愿望。		ELF 0x11e1a6a
+adventure-announcement	Follow your intuition.	跟随你的直觉。		ELF 0x11e1952
+adventure-announcement	Freedom is allowed even in this.	即便在这件事上，你也享有自由。		ELF 0x11dfac8
+adventure-announcement	Friendship is forever.	友谊长存。		ELF 0x102eee1
+adventure-announcement	Fulfillment will be yours.	你将获得满足。		ELF 0x11e1b1e
+adventure-announcement	Get away from me!	离我远点！		ELF 0x18abbf9,0x18afd7a
+adventure-announcement	Get me going and I won't stop for anything.	只要我行动起来，就没有什么能让我停下。		ELF 0x102f042
+adventure-announcement	Give me a break.	饶了我吧。		ELF 0x18b947c
+adventure-announcement	Give up the hopeless cause.	放弃毫无希望的事业。		ELF 0x11e184e
+adventure-announcement	Greetings.	你好。		ELF 0x104927c
+adventure-announcement	Have faith and all shall be rejuvenated.	心怀信念，一切都将重获生机。		ELF 0x11e1a1a
+adventure-announcement	Have no fear.	不必畏惧。		ELF 0x102eec3
+adventure-announcement	Have they gone on adventures or moved on to richer delving at new frontier settlements?	他们是去冒险了，还是迁往新的边疆定居点，追寻更丰厚的矿藏？		ELF 0x137b17e
+adventure-announcement	Have you written a new poem?	你写新诗了吗？		ELF 0x104b823
+adventure-announcement	Hold to hope when all else is lost.	即使失去一切，也要坚守希望。		ELF 0x11e19f2
+adventure-announcement	Hopefully your friends can dissuade you from this foolishness.	希望你的朋友能劝你别再做这种傻事。		ELF 0x104cb49
+adventure-announcement	How I long for civilization...	我多么怀念文明世界……		ELF 0x18b3d6d
+adventure-announcement	How are you enjoying the adventure?	这趟冒险还过得愉快吗？		ELF 0x18bc483
+adventure-announcement	How can people be so glum?	人为什么会这么不快乐？		ELF 0x102fa63
+adventure-announcement	How can someone be so consumed by hate?	一个人怎么会被仇恨吞噬到这种地步？		ELF 0x102fc38
+adventure-announcement	How dare you?!	你怎么敢？！		ELF 0x18ba7c8
+adventure-announcement	How gracious!	真是宽宏大量！		ELF 0x18b36ac
+adventure-announcement	How have things been?	最近怎么样？		ELF 0x18ab24f
+adventure-announcement	How have your sturdy charges fared in your absence?	在你离开的这段时间里，这些坚韧的子民过得如何？		ELF 0x137b19e
+adventure-announcement	How may I serve you?	我能为你做些什么？		ELF 0x189f2ba
+adventure-announcement	How sinister the glow...	这光芒多么阴森……		ELF 0x18b4def
+adventure-announcement	How unreasonable!	真不讲道理！		ELF 0x18b94a4
+adventure-announcement	How's life here?	在这里过得怎么样？		ELF 0x1885cad,0x18ab31a
+adventure-announcement	Huh? What was that?	嗯？刚才说什么？		ELF 0x102fcec
+adventure-announcement	I admire how brilliant you are!	你的才智让我钦佩！		ELF 0x1896d4b
+adventure-announcement	I am a little confused.	我有点困惑。		ELF 0x18b9b60
+adventure-announcement	I am a very, very important person.	我是个非常、非常重要的人物。		ELF 0x102ee87
+adventure-announcement	I am afraid of them.	我害怕他们。		ELF 0x18b34de,0x18b3f81
+adventure-announcement	I am confused.	我有些困惑。		ELF 0x187dbfc,0x187dec1,0x1884652,0x188486e,0x1885243,0x188536b,0x1888957,0x188aefd,0x188b2ca,0x1892b43,0x1895fdf,0x18a125d,0x18a62ee
+adventure-announcement	I am escaping from danger which threatened my former home.	我原来的家遭遇了危险，我是出来避难的。		ELF 0x18af635
+adventure-announcement	I am honored to be in your presence.	能见到你，我倍感荣幸。		ELF 0x104c487
+adventure-announcement	I am not governed by urges.	我不会任由冲动左右自己。		ELF 0x102fab8
+adventure-announcement	I am overmastered by your presence!	你的气势让我折服！		ELF 0x1896d0f
+adventure-announcement	I am so nearly swayed by your greatness alone that we can simply assign you the victory!	单凭你这非凡的气度，我就快服了，不如干脆算你赢吧！		ELF 0x1896c4c
+adventure-announcement	I am sorry. I do not think there is room for me.	抱歉，我觉得这里容不下我。		ELF 0x189893a
+adventure-announcement	I am sorry. There is no room for you here.	抱歉，这里没有你的容身之处。		ELF 0x1898aa9
+adventure-announcement	I am sort of confused.	我有些困惑。		ELF 0x189a09b
+adventure-announcement	I am very confused.	我非常困惑。		ELF 0x188df2c
+adventure-announcement	I beg to differ.	恕我不能苟同。		ELF 0x18b0e28
+adventure-announcement	I believe... something.	我相信……某些东西。		ELF 0x1890898
+adventure-announcement	I can't take much more of this!	这样下去，我就要撑不住了！		ELF 0x102f5cc,0x102f89f
+adventure-announcement	I cannot agree.	我无法赞同。		ELF 0x18b0e64
+adventure-announcement	I cannot stand the world any longer...	我再也受不了这个世界了……		ELF 0x102f5a7
+adventure-announcement	I confess your stunning argument overwhelms me!	我承认，你这番精彩的论辩让我心服口服！		ELF 0x1896d23
+adventure-announcement	I could really use a drink.	我真想喝一杯。		ELF 0x102ff34
+adventure-announcement	I could tell you all about it!	我可以把来龙去脉都告诉你！		ELF 0x102fbac
+adventure-announcement	I couldn't follow your rambling.	你东拉西扯的，我听不明白。		ELF 0x18b1dfe
+adventure-announcement	I disagree.	我不同意。		ELF 0x18b0e78
+adventure-announcement	I do not scheme.	我没有谋划阴谋。		ELF 0x1883cf1,0x18ab16e
+adventure-announcement	I don't agree.	我不同意。		ELF 0x18b0b81
+adventure-announcement	I don't always do things in the most efficient way.	我做事并不总是那么有效率。		ELF 0x102f25e
+adventure-announcement	I don't care one way or another.	怎样我都不在乎。		ELF 0x18b1088,0x18b3f34
+adventure-announcement	I don't feel like I need to chase anything.	我不觉得我需要追逐任何东西.		ELF 0x102f987
+adventure-announcement	I don't feel like telling you about it.	我不想和你谈这件事。		ELF 0x102ee69
+adventure-announcement	I don't handle pressure well.	我难以承受压力。		ELF 0x102f006
+adventure-announcement	I don't know anything else about them.	关于他们，我不知道更多了。		ELF 0x18b10c4,0x18b3ef0
+adventure-announcement	I don't know what to say.	我不知道该说什么。		ELF 0x18a8606
+adventure-announcement	I don't like being obligated to anybody.	我不喜欢欠任何人的情。		ELF 0x102fb70
+adventure-announcement	I don't mind stirring things up.	我不介意挑起点事端。		ELF 0x102edd3
+adventure-announcement	I don't really get attached to people.	我不太会对别人产生依恋。		ELF 0x102f99b
+adventure-announcement	I don't really want to know.	我其实并不想知道。		ELF 0x102fb5c
+adventure-announcement	I don't remember what I believe...	我不记得自己相信什么了……		ELF 0x189e68b
+adventure-announcement	I don't remember what I was going to say...	我不记得要说什么了……		ELF 0x188b414,0x1898679,0x189f8ce,0x18a0ccc
+adventure-announcement	I don't think I'm cut out for this.	我觉得自己不适合做这件事。		ELF 0x102f9af
+adventure-announcement	I don't understand how somebody can become so obsessed by what somebody else has.	我不明白，一个人怎么会如此执着于别人拥有的东西。		ELF 0x102fc10
+adventure-announcement	I don't understand why they have to be that way.	我不理解，他们为什么非要那样。		ELF 0x102fb34
+adventure-announcement	I don't want to argue.	我不想争论。		ELF 0x18a85de
+adventure-announcement	I encountered a fascinating conundrum recently.	我最近遇到了一个引人入胜的难题。		ELF 0x102ed01
+adventure-announcement	I feel angry all the time.	我心里总有一股怒气。		ELF 0x102f3ea
+adventure-announcement	I feel so tired of everything.	我对一切都感到厌倦。		ELF 0x102e49e,0x102f2d0
+adventure-announcement	I get fed up sometimes.	有时我也觉得受够了。		ELF 0x102f3c7
+adventure-announcement	I get so jealous sometimes.	有时我真是嫉妒得厉害。		ELF 0x102f0d8
+adventure-announcement	I go with the flow sometimes.	我有时也会随大流。		ELF 0x102f09c
+adventure-announcement	I guess I just don't appreciate art.	看来我就是不懂欣赏艺术。		ELF 0x102fc9c
+adventure-announcement	I guess I'm not sure.	我想我还不确定。		ELF 0x18a85f2
+adventure-announcement	I hate them.	我恨他们。		ELF 0x18b34f2,0x18b3f23
+adventure-announcement	I hate you.	我恨你。		ELF 0x18abbe5
+adventure-announcement	I have been so foolish. Yes, I agree.	我以前太愚蠢了。是的，我同意。		ELF 0x18a90dc
+adventure-announcement	I have no idea.	我完全不知道。		ELF 0x18805f9
+adventure-announcement	I have nothing for you.	我没什么能给你的。		ELF 0x104b874
+adventure-announcement	I have trouble controlling my temper.	我很难控制自己的脾气。		ELF 0x102f27c
+adventure-announcement	I haven't heard anything like that.	我没听说过这样的事。		ELF 0x189d799,0x18a6d0b
+adventure-announcement	I heard that there was an incident.	听说出事了。		ELF 0x105f558
+adventure-announcement	I hope you find what you are seeking here.	希望你能在这里找到你所追寻的东西。		ELF 0x18a867b
+adventure-announcement	I just don't care anymore...	我已经什么都不在乎了……		ELF 0x102f4b0,0x102f8bb
+adventure-announcement	I just don't know.	我实在不知道。		ELF 0x188c5fa
+adventure-announcement	I just don't understand these flames of passion people go on about.	人们总说欲火难耐，我实在无法理解。		ELF 0x102fc60
+adventure-announcement	I know you can handle yourself, but be careful out there.	我知道你能照顾好自己，但在外面还是要小心。		ELF 0x104d060
+adventure-announcement	I know you've seen your share of adventure, but be careful or the bogeyman may get you.	我知道你历经过不少冒险，但还是小心些，否则夜魔可能会抓走你。		ELF 0x104cb6b
+adventure-announcement	I like to dress well.	我喜欢衣着得体。		ELF 0x102f114
+adventure-announcement	I look splendid today.	我今天真是光彩照人。		ELF 0x102f0ba
+adventure-announcement	I must insist.	这点我坚持。		ELF 0x18b0027
+adventure-announcement	I must obey the master!	我必须服从主人！		ELF 0x18abc49
+adventure-announcement	I must say that is a truly insightful observation!	不得不说，你这番见解真是深刻！		ELF 0x1896d37
+adventure-announcement	I must take my leave.	我得告辞了。		ELF 0x18a1271
+adventure-announcement	I need some more excitement in my life.	我的生活需要多一点刺激。		ELF 0x102ef34
+adventure-announcement	I prefer to be by myself.	我更喜欢独处。		ELF 0x102fae4
+adventure-announcement	I require a substantive reply.	我需要你拿出点实实在在的答复。		ELF 0x18affa6
+adventure-announcement	I sense you're wavering.	我感觉你在动摇。		ELF 0x18b003b
+adventure-announcement	I serve no one.	我不为任何人效力。		ELF 0x1885a4a,0x18ab28f
+adventure-announcement	I tire of this pointless skirmishing.	我厌倦了这种毫无意义的小规模冲突。		ELF 0x18abe52
+adventure-announcement	I try not to interrupt.	我尽量不打断别人说话。		ELF 0x102fbfc
+adventure-announcement	I try to live and behave properly.	我尽量让生活和言行合乎规矩。		ELF 0x102efca
+adventure-announcement	I value your loyalty.	我珍视你的忠诚。		ELF 0x104b859
+adventure-announcement	I was just out at the tavern.	我刚才在酒馆。		ELF 0x18b4554
+adventure-announcement	I was just out for some water.	我刚才出去取水了。		ELF 0x18b457c
+adventure-announcement	I was never one to follow advice.	我从来不是听得进劝的人。		ELF 0x102f222
+adventure-announcement	I was out visiting the library.	我刚才去图书馆了。		ELF 0x18b452c
+adventure-announcement	I was out visiting the shrine.	我刚才去圣地了。		ELF 0x18b45a4
+adventure-announcement	I was out visiting the temple.	我刚才去神殿了。		ELF 0x18b4568
+adventure-announcement	I will fight no more.	我不会再战斗了。		ELF 0x189c1b5
+adventure-announcement	I will settle this my way.	我要用我的方式解决此事。		ELF 0x189f65c
+adventure-announcement	I wish I could tell you where to begin your search. Until then, you are free to do as you please.	我也希望能告诉你从哪里开始寻找。在那之前，你可以自由行动。		ELF 0x18ac5af
+adventure-announcement	I wonder what they think.	不知道他们会怎么想。		ELF 0x102ef70
+adventure-announcement	I would prefer to be indoors.	我更愿意待在室内。		ELF 0x18b3788
+adventure-announcement	I would prefer to be outdoors.	我更愿意待在户外。		ELF 0x18b4dc7
+adventure-announcement	I wouldn't feel comfortable getting all dressed up.	打扮得太讲究，会让我不自在。		ELF 0x102fcb0
+adventure-announcement	I yield! I yield!	我投降！我投降！		ELF 0x1892a10
+adventure-announcement	I'd just as soon not have anything too exciting happen today.	我倒希望今天别发生什么太刺激的事。		ELF 0x102fc24
+adventure-announcement	I'd just as soon you went someplace else.	我更希望你去别的地方。		ELF 0x18bb652
+adventure-announcement	I'd like to stay here another day if you don't mind.	如果你不介意，我想在这里再住一天。		ELF 0x18a6797
+adventure-announcement	I'd watch out for them.	我会提防他们。		ELF 0x18b45eb
+adventure-announcement	I'll be back with your drink in a moment.	我马上就把你的饮品送来。		ELF 0x18ba4b9
+adventure-announcement	I'll need to see something impressive before I consider it.	你得先拿出点真本事，我才会考虑。		ELF 0x18a1451
+adventure-announcement	I'll show you calm!	我让你见识一下什么叫冷静！		ELF 0x18aefbd
+adventure-announcement	I'm appalled.	我感到震惊。		ELF 0x18b1d4a
+adventure-announcement	I'm at my best under pressure.	有压力时，我反而发挥得最好。		ELF 0x102fa9f
+adventure-announcement	I'm concentrating on something.	我正专心想一件事。		ELF 0x102eea5
+adventure-announcement	I'm curious. Tell me everything!	我很好奇. 告诉我一切!		ELF 0x102ed79
+adventure-announcement	I'm feel like I'm about to snap.	我觉得自己就要崩溃了。		ELF 0x102f420,0x102f883
+adventure-announcement	I'm feeling optimistic about the future.	我对未来充满希望。		ELF 0x102f024
+adventure-announcement	I'm feeling randy today!	我今天很想与人亲热！		ELF 0x102f150
+adventure-announcement	I'm feeling really worn down.	我真的很疲惫。		ELF 0x102eb97
+adventure-announcement	I'm giving up on this hopeless venture.	我要放弃这场毫无希望的冒险。		ELF 0x1896356
+adventure-announcement	I'm going out for some water.	我正要出去取水。		ELF 0x18b4688
+adventure-announcement	I'm going out to the tavern.	我正要去酒馆。		ELF 0x18b4660
+adventure-announcement	I'm going to visit the library.	我正要去图书馆。		ELF 0x18b4638
+adventure-announcement	I'm going to visit the shrine.	我正要去圣地。		ELF 0x18b469c
+adventure-announcement	I'm going to visit the temple.	我正要去神殿。		ELF 0x18b4674
+adventure-announcement	I'm happy to help.	我很乐意帮忙。		ELF 0x102ed5b
+adventure-announcement	I'm having trouble taking you seriously.	我实在难以把你的话当真。		ELF 0x18b1dea
+adventure-announcement	I'm just out for a stroll.	我只是出来散步。		ELF 0x18b4590
+adventure-announcement	I'm not going to change my mind.	我不会改变主意。		ELF 0x102edf1
+adventure-announcement	I'm not much of a decision maker.	我不太擅长拿主意。		ELF 0x102fb48
+adventure-announcement	I'm not planning a journey.	我没有出行计划。		ELF 0x1896b47,0x18a866a
+adventure-announcement	I'm not sure.	我不确定。		ELF 0x18a82ba
+adventure-announcement	I'm on an important mission.	我正在执行一项重要任务。		ELF 0x18af650
+adventure-announcement	I'm returning from my patrol.	我正巡逻归来。		ELF 0x18b4540
+adventure-announcement	I'm returning on my own.	我要独自回去了。		ELF 0x18a86ab
+adventure-announcement	I'm walking my patrol.	我正在巡逻。		ELF 0x18b464c
+adventure-announcement	I've been feeling anxious.	我最近一直心神不宁。		ELF 0x102f538,0x102f8d7
+adventure-announcement	I've been under some pressure.	我最近有些压力。		ELF 0x102e052
+adventure-announcement	I've forgotten what trouble it was...	我忘记是什么麻烦了……		ELF 0x1889f58
+adventure-announcement	I've heard it all now!	我现在真是什么荒唐话都听过了！		ELF 0x18b93df
+adventure-announcement	If you accept the gift, one will be expected in return.	收下礼物，就应当有所回报。		ELF 0x11e170e
+adventure-announcement	If you have a task, do it properly.	有事要做，就把它做好。		ELF 0x102f060
+adventure-announcement	If you insist so strongly, we can move on.	既然你如此坚持，我们可以换个话题。		ELF 0x18b4e03
+adventure-announcement	Ignoring that I don't quite concur...	暂且不提我还不完全赞同……		ELF 0x18a6e06
+adventure-announcement	In any case, peace is no longer an option.	无论如何，都已经没法讲和了。		ELF 0x18af7dd
+adventure-announcement	In the rush of excitement, you've forgotten where you were going to go.	在兴奋之中，你忘记了原本打算前往何处。		ELF 0x11f2002
+adventure-announcement	Indoors, outdoors. It's all the same to me as long as the weather's fine.	室内也好，室外也好。只要天气不错，对我来说都一样。		ELF 0x1880167,0x18a8474
+adventure-announcement	Indulge heartily.	尽情享受。		ELF 0x11e1506
+adventure-announcement	Instability.	动荡不安。		ELF 0x11e138a
+adventure-announcement	Insufferable!	简直忍无可忍！		ELF 0x18ba83d
+adventure-announcement	Intruder!	入侵者！		ELF 0x18abb4b
+adventure-announcement	Is it raining?	在下雨吗？		ELF 0x18a237d
+adventure-announcement	Is it really you?	真的是你吗？		ELF 0x18a6e77
+adventure-announcement	Is it time to make music?	该奏乐了吗？		ELF 0x104b808
+adventure-announcement	Is there something to be happy about?	有什么值得高兴的事吗？		ELF 0x102fd00
+adventure-announcement	It has always been my dream to start a family.	组建家庭一直是我的梦想。		ELF 0x18a565e
+adventure-announcement	It has no pages.	它没有书页。		ELF 0x1782e5c
+adventure-announcement	It has no writing.	上面没有文字。		ELF 0x1783a88
+adventure-announcement	It is a false success.	这只是虚假的成功。		ELF 0x11df38c
+adventure-announcement	It is a gelding blow!	这一击造成了阉割！		ELF 0x17f0f70
+adventure-announcement	It is a gelding strike!	这一击造成了阉割！		ELF 0x17eccdd
+adventure-announcement	It is amazing how far you've come. Welcome home.	你的成就真令人惊叹。欢迎回家。		ELF 0x104cc07
+adventure-announcement	It is an honor.	不胜荣幸。		ELF 0x104c4cd
+adventure-announcement	It is good to be indoors.	在室内真好。		ELF 0x18b4db3
+adventure-announcement	It is good to be outdoors.	在户外真好。		ELF 0x18b37cc
+adventure-announcement	It is good to finally meet you!	终于见到你了，真高兴！		ELF 0x104c93e
+adventure-announcement	It is good to see you here.	很高兴在这里见到你。		ELF 0x18bbb49
+adventure-announcement	It is invigorating to be out in the wilds!	置身荒野真让人精神振奋！		ELF 0x18b3de5
+adventure-announcement	It is not as simple as you think.	事情没有你想的那么简单。		ELF 0x11e15e2
+adventure-announcement	It is not convincing.	这番话不够有说服力。		ELF 0x1868375
+adventure-announcement	It is time to leave it behind.	是时候放下过去了。		ELF 0x11e148e
+adventure-announcement	It is too soon to forgive.	现在宽恕还为时过早。		ELF 0x11e15a6
+adventure-announcement	It makes them look even more sick.	这使其看起来更加恶心了。		ELF 0xc021d9
+adventure-announcement	It really gets me down sometimes.	有时我真为此感到沮丧。		ELF 0x102f07e
+adventure-announcement	It really is a pleasure to speak with you again.	能再次与你交谈，真令人高兴。		ELF 0x104b8fb
+adventure-announcement	It sure is dark down here.	这下面可真黑。		ELF 0x18b4ddb
+adventure-announcement	It was inevitable.	这是不可避免的。		ELF 0x18b10ec,0x18b3fa8
+adventure-announcement	It will not be fair.	此事不会公平。		ELF 0x11e13c6
+adventure-announcement	It won't turn out well.	这事不会有好结果。		ELF 0x102fc74
+adventure-announcement	It's a great day to fall in love all over again.	今天真是重新坠入爱河的好日子。		ELF 0x102f8f7
+adventure-announcement	It's all starting to get me down.	这一切开始让我消沉了。		ELF 0x102e98d
+adventure-announcement	It's for the best.	这样最好。		ELF 0x18b109c,0x18b3f45
+adventure-announcement	It's good to see you have companions to travel with on your adventures.	很高兴看到你有伙伴一同冒险。		ELF 0x104b4f8
+adventure-announcement	It's great to have a friend like you!	有你这样的朋友真好！		ELF 0x104b730
+adventure-announcement	It's my mess.	是我自己弄乱的。		ELF 0x102fb98
+adventure-announcement	It's not a gift if you expect something in return.	若是指望回报，那就不算馈赠。		ELF 0x102fa77
+adventure-announcement	It's not my problem.	这不关我的事。		ELF 0x18b1100,0x18b3fbc
+adventure-announcement	It's not perfect, but it's good enough. Why fret about it?	虽然不完美，但已经够好了，何必为此烦恼？		ELF 0x102fbd4
+adventure-announcement	It's so great when everybody just gets along.	大家和睦相处，真是美好。		ELF 0x102fa27
+adventure-announcement	It's such a joy to be with people.	与人相伴，真是快乐。		ELF 0x102ed1f
+adventure-announcement	It's such a pleasure to serve you.	能为你服务真是荣幸。		ELF 0x18bbb99
+adventure-announcement	It's wrong.	这是错的。		ELF 0x18b1931
+adventure-announcement	Joy is on the horizon.	喜悦即将到来。		ELF 0x11e1aba
+adventure-announcement	Just reunited after a long journey, you are together with your companions again.	漫长的旅途结束后，你刚与同伴们重逢，大家又聚到了一起。		ELF 0x11f1b0d,0x11f1f8f
+adventure-announcement	Just think about it.	好好想想吧。		ELF 0x18b0e8c
+adventure-announcement	Keep your own counsel today.	今天不要轻易透露自己的想法。		ELF 0x11e183a
+adventure-announcement	Let the party venture forth!	让队伍踏上冒险之旅吧！		ELF 0x11f0e63
+adventure-announcement	Let's drop the argument.	我们别争了。		ELF 0x189e125,0x189e28f
+adventure-announcement	Let's move on.	我们换个话题吧。		ELF 0x18b3645
+adventure-announcement	Let's not hurt anybody.	我们别伤害任何人。		ELF 0x104b6df
+adventure-announcement	Long live the cause!	我们的事业万岁！		ELF 0x104b8e0
+adventure-announcement	Long live the cause.	我们的事业万岁。		ELF 0x18bbbfd
+adventure-announcement	Look ahead to the future.	着眼未来。		ELF 0x11e1682
+adventure-announcement	Look at the sky! Are we in the Underworld?	看看天空！我们是在地下世界吗？		ELF 0x18a2398
+adventure-announcement	Look out for a chance encounter.	留意一次偶然的相遇。		ELF 0x11e1b96
+adventure-announcement	Look to another for what you need.	向他人寻求你需要的东西。		ELF 0x11e198e
+adventure-announcement	Loyalty should be rewarded.	忠诚应当得到奖赏。		ELF 0x18bbbe9
+adventure-announcement	Make a change or forever remain.	做出改变，否则将永远停滞不前。		ELF 0x11e1862
+adventure-announcement	Make any good deals lately?	最近做成什么好买卖了吗？		ELF 0x104b6c4
+adventure-announcement	Make no needless sacrifices.	不要做无谓的牺牲。		ELF 0x11e1326
+adventure-announcement	Make the decision quickly.	迅速做出决定。		ELF 0x11e161e
+adventure-announcement	Make the sacrifice regardless of fear.	即使恐惧，也要做出牺牲。		ELF 0x11e134e
+adventure-announcement	Master yourself today; discipline will be required.	今天要约束自己；你将需要自律。		ELF 0x11e143e
+adventure-announcement	Maybe I give up too early sometimes.	也许有时我放弃得太早了。		ELF 0x102fa13
+adventure-announcement	Maybe you're right.	也许你是对的。		ELF 0x1887eb7
+adventure-announcement	Migrants refused to journey to such a dangerous and miserable fortress this season.	本季移民拒绝前往这样一座危险而悲惨的要塞。		ELF 0xf181af
+adventure-announcement	Migrants refused to journey to such a dangerous and unhappy fortress this season.	本季移民拒绝前往这样一座危险而不幸的要塞。		ELF 0xf18416
+adventure-announcement	Migrants refused to journey to such a dangerous fortress this season.	本季移民拒绝前往这样一座危险的要塞。		ELF 0xf18468,0xf18603
+adventure-announcement	Migrants refused to journey to this unhappy fortress this season.	本季移民拒绝前往这座不幸的要塞。		ELF 0xf17fd5
+adventure-announcement	Migrants were too nervous to make the journey this season to this miserable fortress.	本季移民因太过害怕，未敢踏上前往这座悲惨要塞的旅途。		ELF 0xf18788
+adventure-announcement	Migrants were too nervous to make the journey this season to this unhappy fortress.	本季移民因太过害怕，未敢踏上前往这座不幸要塞的旅途。		ELF 0xf185c9
+adventure-announcement	Migrants were too nervous to make the journey this season.	本季移民因太过害怕，未敢踏上旅途。		ELF 0xf184ae,0xf1879c
+adventure-announcement	Migrants were too wary to make the journey this season.	本季移民因太过警惕，未敢踏上旅途。		ELF 0xf180e1
+adventure-announcement	Mounds of clouds are clustered through a striped sky.	成堆的云团聚集在布满条纹的天空中。		ELF 0xc85510
+adventure-announcement	Murderer!	凶手！		ELF 0x18abc5d
+adventure-announcement	My companion.	我的伙伴。		ELF 0x18bbb5d
+adventure-announcement	My goals are important to me.	我很看重自己的目标。		ELF 0x102f29a
+adventure-announcement	My good friend.	我的好朋友。		ELF 0x18bbb85
+adventure-announcement	My talented bard! It's such an honor to have you here.	才华横溢的吟游诗人，你能来这里，真是我的荣幸！		ELF 0x18bbc25
+adventure-announcement	My trust is earned, and not by many.	想得到我的信任，得有真凭实据，而做到的人不多。		ELF 0x102f9ff
+adventure-announcement	Night creatures!	夜行生物！		ELF 0x7ec234
+adventure-announcement	Night is falling. You'd better stay indoors, or the bogeyman will get you.	天快黑了。你最好待在屋里，否则夜魔会抓走你。		ELF 0x104d364
+adventure-announcement	No one else even considered making the journey to this cursed death-trap.	其他人连前往这个受诅咒的死亡陷阱的念头都没有。		ELF 0xf184ea,0xf1858e
+adventure-announcement	No one else even considered making the journey to this cursed miserable death-trap.	其他人连前往这个受诅咒、悲惨的死亡陷阱的念头都没有。		ELF 0xf186c0
+adventure-announcement	No one else even considered making the journey to this cursed unhappy death-trap.	其他人连前往这个受诅咒、不幸的死亡陷阱的念头都没有。		ELF 0xf1847c
+adventure-announcement	No one else even considered making the journey to this miserable hellhole.	其他人连前往这个悲惨的鬼地方的念头都没有。		ELF 0xf18708
+adventure-announcement	No one even considered making the journey to such a cursed death-trap this season.	本季无人有意前往这样一个受诅咒的死亡陷阱。		ELF 0xf184c2,0xf187b0
+adventure-announcement	No one even considered making the journey to such a cursed miserable death-trap this season.	本季无人有意前往这样一个受诅咒、悲惨的死亡陷阱。		ELF 0xf1864b
+adventure-announcement	No one even considered making the journey to such a cursed unhappy death-trap this season.	本季无人有意前往这样一个受诅咒、不幸的死亡陷阱。		ELF 0xf185dd
+adventure-announcement	No one even considered making the journey to such a miserable hellhole this season.	本季无人有意前往这样一个悲惨的鬼地方。		ELF 0xf18696
+adventure-announcement	No such place exists.	没有这样的地方。		ELF 0x18999b9
+adventure-announcement	No, I mean it.	不，我是认真的。		ELF 0x18b0013
+adventure-announcement	Nobody I remember.	我不记得有谁。		ELF 0x189e618,0x18a79ca
+adventure-announcement	Now is a time for calm.	现在应当保持冷静。		ELF 0x11e16e6
+adventure-announcement	Now we will have to build our own future.	现在我们得创造自己的未来。		ELF 0x18b3fd0
+adventure-announcement	Of course.	当然。		ELF 0x18b3698
+adventure-announcement	Of course. My pleasure.	当然，我很乐意。		ELF 0x18ab1d7
+adventure-announcement	Oh, I don't usually think much.	我平时不怎么多想。		ELF 0x102ef52
+adventure-announcement	Oh, I'm nothing special.	我没什么过人之处。		ELF 0x102fa8b
+adventure-announcement	One group organized itself.	一个组织成立了。		ELF 0x18af8db
+adventure-announcement	One must always carefully consider the correct course of action.	做事之前，总应慎重考虑怎样才妥当。		ELF 0x102f9eb
+adventure-announcement	One should always return a favor.	受人恩惠，就应当回报。		ELF 0x102ed97
+adventure-announcement	Only a fool would travel alone at night! Take shelter or the bogeyman will get you.	只有傻瓜才会在夜间独自旅行！找个地方躲起来，否则夜魔会抓走你。		ELF 0x104d378
+adventure-announcement	Only a hero such as yourself can travel at night. The bogeyman would get me.	只有像你这样的英雄才能在夜间出行。换成我，就会被夜魔抓走。		ELF 0x104cc1b
+adventure-announcement	Others refused to journey to this dangerous and miserable fortress.	其他人拒绝前往这座危险而悲惨的要塞。		ELF 0xf166ba
+adventure-announcement	Others refused to journey to this dangerous and unhappy fortress.	其他人拒绝前往这座危险而不幸的要塞。		ELF 0xf1830b
+adventure-announcement	Others refused to journey to this dangerous fortress.	其他人拒绝前往这座危险的要塞。		ELF 0xf17f2b,0xf1849a
+adventure-announcement	Others refused to journey to this unhappy fortress.	其他人拒绝前往这座不幸的要塞。		ELF 0xf17397
+adventure-announcement	Others were too nervous to make the journey to this miserable fortress.	其他人因太过害怕，未敢踏上前往这座悲惨要塞的旅途。		ELF 0xf184fe
+adventure-announcement	Others were too nervous to make the journey to this unhappy fortress.	其他人因太过害怕，未敢踏上前往这座不幸要塞的旅途。		ELF 0xf1857a
+adventure-announcement	Others were too nervous to make the journey.	其他人因太过害怕，未敢踏上旅途。		ELF 0xf184d6,0xf185a2
+adventure-announcement	Others were too wary to make the journey.	其他人因太过警惕，未敢踏上旅途。		ELF 0xf182dc
+adventure-announcement	Our hopes travel with you.	我们的希望就寄托在你身上了。		ELF 0x18a3b63
+adventure-announcement	Pause to consider.	停下来想一想。		ELF 0x18b0e00
+adventure-announcement	Peace is cherished.	和平受到珍视。		ELF 0x11dfa2c
+adventure-announcement	People are basically trustworthy.	人总的来说是值得信任的。		ELF 0x102ee4b
+adventure-announcement	People can be so angry, and I just don't understand it.	人怎么会有那么大的怒气，我实在不理解。		ELF 0x102fd28
+adventure-announcement	People do get so carried away sometimes, but not I.	人有时会忘乎所以，但我不会。		ELF 0x102faf8
+adventure-announcement	People should listen to what I have to say.	人们应该听听我要说的话。		ELF 0x102ed3d
+adventure-announcement	Perhaps some of the people here will be worth talking to before you continue on your way.	继续上路之前，或许值得和这里的一些人谈谈。		ELF 0x11f1192
+adventure-announcement	Perhaps some of your friends here can remind you.	也许这里的朋友能提醒你。		ELF 0x11f11b7
+adventure-announcement	Perhaps some of your friends here have ideas.	也许这里的朋友有些主意。		ELF 0x11f134d
+adventure-announcement	Perhaps they are all still here, unwilling to leave the magnificent fortress you prepared for them.	也许他们仍全都在这里，不愿离开你为他们建造的宏伟要塞。		ELF 0x137b15e
+adventure-announcement	Perhaps you can gather plants, fruit, or go fishing.	也许可以采集植物、摘取果实，或去捕鱼。		ELF 0xf4692d
+adventure-announcement	Persevere though it may be for nothing.	即使可能徒劳，也要坚持。		ELF 0x11e1286
+adventure-announcement	Please guide me to myself.	请带我去找我自己。		ELF 0x18a8d94
+adventure-announcement	Please guide me to you.	请带我去找你。		ELF 0x1889dc2
+adventure-announcement	Please let me shelter here for the night.	请让我在这里借宿一晚。		ELF 0x1890bc0
+adventure-announcement	Prepare for disappointment.	做好失望的准备。		ELF 0x11e175e
+adventure-announcement	Probably on the move or deep underground, but I can't be sure.	可能正在途中，也可能在地下深处，但我不能确定。		ELF 0x189a1bc
+adventure-announcement	Rely on willpower to see you through.	依靠意志力度过难关。		ELF 0x11e1a56
+adventure-announcement	Remember that ice and snow can be heated by a campfire.	记住，可以用营火加热冰雪。		ELF 0x1227d88
+adventure-announcement	Rethink your approach.	重新考虑你的方法。		ELF 0x11e14de
+adventure-announcement	Rethink your priorities.	重新考虑事情的轻重缓急。		ELF 0x11e1556
+adventure-announcement	Reveal what you have been scheming or suffer the consequences.	交代你的阴谋，否则后果自负。		ELF 0x189f1e6
+adventure-announcement	See to the simple comforts.	照顾好日常起居。		ELF 0x11e13ee
+adventure-announcement	See to your legacy.	考虑自己留给后世的东西。		ELF 0x11e139e
+adventure-announcement	See to your responsibilities.	履行你的责任。		ELF 0x11e189e
+adventure-announcement	Shameful.	可耻。		ELF 0x18b1d36
+adventure-announcement	Show some mercy now and again.	偶尔也发发慈悲。		ELF 0x102fcc4
+adventure-announcement	Snatcher! Protect the children!	拐子！保护孩子们！		ELF 0xb838a1
+adventure-announcement	So I overindulge sometimes.	我偶尔也会放纵自己。		ELF 0x102ef16
+adventure-announcement	Some changes are inevitable.	有些变化不可避免。		ELF 0x11e14b6
+adventure-announcement	Some migrants have arrived at this miserable place, despite the danger.	一些移民不顾危险，来到了这个悲惨的地方。		ELF 0xf1638e
+adventure-announcement	Some migrants have arrived at this miserable place.	一些移民来到了这个悲惨的地方。		ELF 0xf172b9
+adventure-announcement	Some migrants have arrived at this unhappy place, despite the danger.	一些移民不顾危险，来到了这个不幸的地方。		ELF 0xf1422b
+adventure-announcement	Some migrants have arrived at this unhappy place.	一些移民来到了这个不幸的地方。		ELF 0xf18102
+adventure-announcement	Some migrants have arrived, despite the danger.	一些移民不顾危险，抵达了这里。		ELF 0xf169dc
+adventure-announcement	Some migrants have arrived.	一些移民抵达了。		ELF 0xf18437
+adventure-announcement	Some migrants have decided to brave this terrifying place, knowing it may be their miserable tomb.	一些移民决定勇闯这片恐怖之地，明知这里可能成为他们悲惨的坟墓。		ELF 0xf17d67
+adventure-announcement	Some migrants have decided to brave this terrifying place, knowing it may be their tomb.	一些移民决定勇闯这片恐怖之地，明知这里可能成为他们的坟墓。		ELF 0xf17470
+adventure-announcement	Some migrants have decided to brave this terrifying unhappy place, knowing it may be their tomb.	一些移民决定勇闯这片恐怖而不幸的地方，明知这里可能成为他们的坟墓。		ELF 0xf1743c
+adventure-announcement	Some people are so wrapped up in themselves.	有些人眼里实在只有自己。		ELF 0x102f973
+adventure-announcement	Some performers finish their act.	一些表演者结束了他们的节目。		ELF 0x178a7b2
+adventure-announcement	Sometimes I just don't like somebody.	有时我就是不喜欢某个人。		ELF 0x102f1c8
+adventure-announcement	Sometimes I think I need a drink, but I can control myself.	有时我觉得该喝一杯，但我能克制自己。		ELF 0x102ff48
+adventure-announcement	Soon the world will be set right.	世界很快就会恢复正轨。		ELF 0x18bc4e1
+adventure-announcement	Stay the course.	坚持既定的道路。		ELF 0x11e1b82
+adventure-announcement	Stop and reflect.	停下来反思一下。		ELF 0x18b0b95
+adventure-announcement	Such care for your happiness!	如此关心你的幸福！		ELF 0x11dfa13
+adventure-announcement	Take care you are not deceived.	小心受骗。		ELF 0x11e151a
+adventure-announcement	Take careful stock of your own stores.	仔细盘点你们自己的储备。		ELF 0xf3972b
+adventure-announcement	Take the middle path.	选择折中之道。		ELF 0x11e12ea
+adventure-announcement	Tell me who you work for, or else.	说出你为谁效力，否则后果自负。		ELF 0x189e343
+adventure-announcement	Thank you for all you do.	感谢你所做的一切。		ELF 0x104b781,0x18bbc39
+adventure-announcement	Thank you for keeping us safe.	感谢你保护我们的安全。		ELF 0x104b8c5
+adventure-announcement	Thank you for preserving our legacy of wisdom.	感谢你保护我们传承的智慧。		ELF 0x18bbad9
+adventure-announcement	Thank you for protecting our wisdom.	感谢你守护我们的智慧。		ELF 0x104b68e
+adventure-announcement	That isn't funny.	这并不好笑。		ELF 0x102ef8e
+adventure-announcement	That was compelling!	这番话很有说服力！		ELF 0x18683ad
+adventure-announcement	That's absurd!	太荒谬了！		ELF 0x18b935e
+adventure-announcement	That's not right.	那不对。		ELF 0x18b0e3c
+adventure-announcement	That's wrong.	那是错的。		ELF 0x18b0e50
+adventure-announcement	The alliance has outlived its usefulness.	这个联盟已经失去作用了。		ELF 0x18ac5f9
+adventure-announcement	The bond is broken! Return to the Underworld and trouble us no more!	束缚已被打破！回到地下世界去，别再纠缠我们！		ELF 0x1899ed6
+adventure-announcement	The burden will be lifted soon.	重担很快就会卸下。		ELF 0x11e18c6
+adventure-announcement	The dance continues.	舞蹈还在继续。		ELF 0x178adf4
+adventure-announcement	The dead!	亡者！		ELF 0x18abc0d
+adventure-announcement	The effort will reach a culmination.	这番努力将迎来顶点。		ELF 0x11e1376
+adventure-announcement	The enemy have come and are laying siege to the fortress.	敌军已经到达，正在围攻要塞。		ELF 0x1823d16
+adventure-announcement	The enemy have come and are preparing to lay siege. They seek a parley!	敌军已到达，正在准备围城。他们要求谈判！		ELF 0x1824027
+adventure-announcement	The enemy will be driven off.	敌人会被赶走的。		ELF 0x18a62a0
+adventure-announcement	The enemy!	敌人！		ELF 0x18abb73
+adventure-announcement	The enterprise will be a failure.	这项事业将会失败。		ELF 0x11e179a
+adventure-announcement	The geldables have been torn away!	生殖器被撕掉了！		ELF 0x17f0f5f
+adventure-announcement	The gods surely want you to dig deeper still!	众神一定希望你们继续向更深处挖掘！		ELF 0xf47316
+adventure-announcement	The music continues.	乐曲还在演奏。		ELF 0x178ad45
+adventure-announcement	The need for my task seems to have passed.	看来我的任务已经没有必要了。		ELF 0x18b2f0b,0x18b9b4c
+adventure-announcement	The object of your ambition will be realized.	你的宏愿将会实现。		ELF 0x11e157e
+adventure-announcement	The pages are blank.	书页是空白的。		ELF 0x17840eb
+adventure-announcement	The partnership is one-sided.	这段合作只有一方在付出。		ELF 0x11e197a
+adventure-announcement	The performers are finished.	表演者们结束了表演。		ELF 0x1788919
+adventure-announcement	The poem continues.	诗歌朗诵还在继续。		ELF 0x178a35d
+adventure-announcement	The poet! It's such an honor to have you here.	诗人！你能来这里，真是荣幸。		ELF 0x18bbbc1
+adventure-announcement	The presence of your ruler has attracted great riches.	统治者的到来吸引了大量财富。		ELF 0xf39117
+adventure-announcement	The rest of the vomit burns away in the lava.	其余呕吐物在熔岩中烧尽了。		ELF 0xc27a77
+adventure-announcement	The rest of the vomit burns away in the magma.	其余呕吐物在岩浆中烧尽了。		ELF 0xc27a4b
+adventure-announcement	The rest of the vomit disappears into the water.	其余呕吐物消失在了水中。		ELF 0xc298bc
+adventure-announcement	The rest of the vomit falls away into the chasm.	其余呕吐物掉进了深渊。		ELF 0xc29982
+adventure-announcement	The rest of the vomit falls away into the underworld.	其余呕吐物掉进了地下世界。		ELF 0xc298cd
+adventure-announcement	The rest of the vomit splatters into the shallow puddle of water.	其余呕吐物溅进了浅水洼。		ELF 0xc29ac1
+adventure-announcement	The sermon continues.	布道还在继续。		ELF 0x178a08d
+adventure-announcement	The situation cannot get worse.	情况不会更糟了。		ELF 0x11e17ae
+adventure-announcement	The sky above you is a uniform and dark gray.	你头顶的天空是一片均匀的深灰色。		ELF 0xc85edf
+adventure-announcement	The sky above you is completely gray, with dark cloud pillars pressing through it.	你头顶的天空一片灰暗，深色的云柱挤入其中。		ELF 0xc860a7
+adventure-announcement	The sky above you is gray.	你头顶的天空灰蒙蒙的。		ELF 0xc85fbf
+adventure-announcement	The sky above you is hazy and white.	你头顶的天空朦胧泛白。		ELF 0xc85fff
+adventure-announcement	The sky above you is nearly black, ripped through with towering clouds.	你头顶的天空近乎漆黑，高耸的云层从中穿过。		ELF 0xc8608f
+adventure-announcement	The sky is clear above you.	你头顶的天空一片晴朗。		ELF 0xc861ec
+adventure-announcement	The sky is otherwise clear above you.	除此之外，你头顶的天空一片晴朗。		ELF 0xc860f8
+adventure-announcement	The sky is striped with thin clouds.	薄云在天空中形成条纹。		ELF 0xc82e8b
+adventure-announcement	The stars are out.	繁星已现。		ELF 0xc83256
+adventure-announcement	The story continues.	故事还在讲述中。		ELF 0x17896c6
+adventure-announcement	The sun will set soon. Be careful that the bogeyman doesn't get you.	太阳就快落山了。小心别被夜魔抓走。		ELF 0x104cbe2
+adventure-announcement	The task is accomplished.	任务已经完成。		ELF 0x18a62b4
+adventure-announcement	The task will be successful.	任务将会成功。		ELF 0x11e1b46
+adventure-announcement	The task will not be completed.	任务无法完成。		ELF 0x11e1b5a
+adventure-announcement	The vomit burns away in the lava.	呕吐物在熔岩中烧尽了。		ELF 0xc27a3a
+adventure-announcement	The vomit burns away in the magma.	呕吐物在岩浆中烧尽了。		ELF 0xc2488b
+adventure-announcement	The vomit disappears into the water.	呕吐物消失在了水中。		ELF 0xc24981
+adventure-announcement	The vomit falls away into the chasm.	呕吐物掉进了深渊。		ELF 0xc271d4
+adventure-announcement	The vomit falls away into the underworld.	呕吐物掉进了地下世界。		ELF 0xc2715a
+adventure-announcement	The vomit splatters into the shallow puddle of water.	呕吐物溅进了浅水洼。		ELF 0xc277b4
+adventure-announcement	The webs make it impossible to stand.	蛛网使你无法站起。		ELF 0x1243d0f
+adventure-announcement	Their strength has been broken.	他们的力量已被摧毁。		ELF 0x18bc68e
+adventure-announcement	Their strength has been challenged, and their hold has loosened.	他们遭到挑战，对这里的控制已经松动了。		ELF 0x187fe76
+adventure-announcement	Their tribute is not enough.	他们的贡品还不够。		ELF 0x18ad4c9
+adventure-announcement	There are mounds of clouds above you, smooth on the bottom with prominent upward bulges.	你头顶有成堆的云团，底部平坦，顶部明显隆起。		ELF 0xc86230
+adventure-announcement	There are not enough dancers.	舞者人数不足。		ELF 0x177284a
+adventure-announcement	There are scattered clouds underneath a striped sky.	布满条纹的天空下散布着云朵。		ELF 0xc861d8
+adventure-announcement	There are scattered puffy clouds above you.	你头顶散布着蓬松的云朵。		ELF 0xc85e51
+adventure-announcement	There are two sides to every story.	每件事都有两面。		ELF 0x11e1966
+adventure-announcement	There is a heavy blanket of fog enveloping everything.	浓雾如厚毯般笼罩着一切。		ELF 0xc85a12
+adventure-announcement	There is a thin mist here.	这里有一层薄雾。		ELF 0xc85a35
+adventure-announcement	There is a thin mist outside.	外面有一层薄雾。		ELF 0xc859f2
+adventure-announcement	There is fog outside.	外面有雾。		ELF 0xc8598f
+adventure-announcement	There is no right choice.	没有正确的选择。		ELF 0x11e156a
+adventure-announcement	There is not enough room to perform here.	这里没有足够的表演空间。		ELF 0x17727e4
+adventure-announcement	There is nowhere to jump.	没有可以跳到的位置。		ELF 0x116a9bd
+adventure-announcement	There is thick fog outside.	外面有浓雾。		ELF 0xc859d2
+adventure-announcement	There must be something else to discuss.	总还有别的事情可谈。		ELF 0x18b3659,0x18b4e2b
+adventure-announcement	There will be no rest for the enemy.	敌人将永无宁日。		ELF 0x18a6084
+adventure-announcement	There will be no reward.	你将得不到回报。		ELF 0x11e129a
+adventure-announcement	There's no need for trouble here.	别在这里惹事。		ELF 0x18bb63a
+adventure-announcement	There's no room for mercy in this world.	这世界容不下仁慈。		ELF 0x102efac
+adventure-announcement	There's nothing like a good brawl.	没有什么比得上痛快打上一架。		ELF 0x102f16e
+adventure-announcement	There's nothing organized here.	这里没有什么成形的组织。		ELF 0x18a54f6
+adventure-announcement	There's nothing to be upset about.	没有什么值得烦心的。		ELF 0x102f9c3
+adventure-announcement	There's so much to be done!	还有许多事要做！		ELF 0x102ee2d
+adventure-announcement	They are outlaws.	他们是不法之徒。		ELF 0x189a0af,0x18b3eb8
+adventure-announcement	They are terrific.	他们很了不起。		ELF 0x18b34ca,0x18b3f6d
+adventure-announcement	They consider you a key figure in the opposition.	他们把你视为反对者中的关键人物。		ELF 0x18b0063,0x18b46c4
+adventure-announcement	They consider you a leader of the opposition.	他们把你视为反对者的领袖。		ELF 0x18b0077,0x18b46d8
+adventure-announcement	They consider you an infamous villain among those opposing them.	他们把你视为反对者中臭名昭著的恶人。		ELF 0x18b008b,0x18b46ec
+adventure-announcement	They do not feel challenged at all.	他们觉得没人能撼动自己的地位。		ELF 0x18bc67a
+adventure-announcement	They look sick suddenly.	其突然显得很恶心。		ELF 0xc0225c
+adventure-announcement	They must be stopped by any means at our disposal.	我们必须用尽一切手段阻止他们。		ELF 0x18b1114,0x18b3f12
+adventure-announcement	They still hold this area, but they do not feel certain.	他们仍控制着这片地区，但并没有把握。		ELF 0x18bc666
+adventure-announcement	They tangle together and fall over!	双方纠缠在一起，摔倒了！		ELF 0x19a0924,0x19a180c
+adventure-announcement	They tangle together and tumble forward!	双方纠缠在一起，向前翻滚！		ELF 0x19a127c
+adventure-announcement	Thief! Protect the hoard from skulking filth!	小偷！保护财宝，别让鬼祟的败类得手！		ELF 0xb83408
+adventure-announcement	Think of others today, not yourself.	今天为他人着想，别只顾自己。		ELF 0x11e1402
+adventure-announcement	Think on what came before and what follows.	想想过去，也想想未来。		ELF 0x11e13da
+adventure-announcement	This conversation is over.	谈话到此结束。		ELF 0x18ba815
+adventure-announcement	This is the life for me.	这正是我想要的生活。		ELF 0x18b10d8,0x18b3f01
+adventure-announcement	This legend does not end until we've chipped out the last treasures of the underworld!	直到我们凿出冥界最后的宝藏，这段传奇才会结束！		ELF 0xf471d2
+adventure-announcement	This place is insulated from the rest of the world, at least in terms of trade.	这里与外界隔绝，至少贸易方面是如此。		ELF 0x189b8df,0x18ade98
+adventure-announcement	This war must end with our victory.	这场战争必须以我们的胜利告终。		ELF 0x18ad4dd
+adventure-announcement	Today you will have a moment of weakness.	今天你将有片刻的软弱。		ELF 0x11e18da
+adventure-announcement	Today, somebody will be cruel.	今天会有人做出残酷之举。		ELF 0x11e1452
+adventure-announcement	Trade relations remain strengthened by recent negotiations.	近期谈判仍在促进贸易往来。		ELF 0xf39007
+adventure-announcement	Traveling alone in the wilds?! You know better than that.	独自在荒野旅行？！你应该知道这有多危险。		ELF 0x104cbf3
+adventure-announcement	Try building a butcher's shop and slaughtering some livestock.	试着建造屠宰场，宰杀一些牲畜。		ELF 0xf46b51
+adventure-announcement	Try to focus on the practical side of the matter.	尽量多考虑事情实际的一面。		ELF 0x102f90b
+adventure-announcement	Try to keep an open mind.	不妨多听听不同的见解。		ELF 0x102fb0c
+adventure-announcement	Uhh... nevermind.	呃……算了。		ELF 0x18af674
+adventure-announcement	Unbelievable.	难以置信。		ELF 0x18b1d72
+adventure-announcement	Vile creature!	卑劣的生物！		ELF 0x18abb5f
+adventure-announcement	W... worried? Do I look worried?	担……担心？我看起来很担心吗？		ELF 0x102ee0f
+adventure-announcement	Wait, what?	等等，什么？		ELF 0x18b9440
+adventure-announcement	We are in the right in all matters.	不管什么事，道理都在我们这边。		ELF 0x18b10b0,0x18b3f59
+adventure-announcement	We can no longer pay them homage.	我们不能再向他们称臣了。		ELF 0x18ac5db
+adventure-announcement	We can no longer travel together.	我们不能再一起旅行了。		ELF 0x18b3841
+adventure-announcement	We must be careful not to waste.	我们必须留心，不能浪费。		ELF 0x102fbe8
+adventure-announcement	We were going to entertain the world! It's a shame, but I'll have to make my own way now.	我们原本要为全世界带来欢乐！真遗憾，但现在我得独自闯荡了。		ELF 0x18a7a22
+adventure-announcement	We will be successful.	我们一定会成功。		ELF 0x102f1aa
+adventure-announcement	We will fight no more.	我们不会再战斗了。		ELF 0x187ef83
+adventure-announcement	We yield! We yield!	我们投降！我们投降！		ELF 0x18a9052
+adventure-announcement	Welcome home, my child.	欢迎回家，我的孩子。		ELF 0x104a234
+adventure-announcement	Well, I believe... something else.	嗯，我相信……别的东西。		ELF 0x187e3e3
+adventure-announcement	Well, let's see...	嗯，让我看看……		ELF 0x189d893
+adventure-announcement	Well, there must be something else to discuss.	好吧，总还有别的事情可谈。		ELF 0x18b3d43
+adventure-announcement	Were you trying to make an argument?	你刚才那也叫讲道理？		ELF 0x18b9490
+adventure-announcement	What a dancer! It's such an honor to have you here.	多么出色的舞者！你能来这里，真是荣幸。		ELF 0x18bbc11
+adventure-announcement	What a strange place!	多么奇怪的地方！		ELF 0x18b4021
+adventure-announcement	What an odd glow!	多么奇怪的光芒！		ELF 0x18aa210
+adventure-announcement	What are a few pesky demons after all?	区区几只烦人的恶魔，又算得了什么？		ELF 0xf4748f
+adventure-announcement	What can you tell me about yourself?	能说说你自己吗？		ELF 0x1888f0a
+adventure-announcement	What did you just say?	你刚才说什么？		ELF 0x18b942c
+adventure-announcement	What do you think of me?	你觉得我怎么样？		ELF 0x18aa37d
+adventure-announcement	What have you been scheming?	你在谋划什么？		ELF 0x188585c
+adventure-announcement	What stories you tell! It's such an honor to have you here.	你讲的故事真精彩！你能来这里，真是荣幸。		ELF 0x18bbbd5
+adventure-announcement	What these merchants offer might very well be the difference between a prosperous future and a slow and meaningless death.	这些商人带来的货物，很可能决定你们是走向繁荣，还是缓慢而无谓地灭亡。		ELF 0xf39708
+adventure-announcement	What's the rush?	何必着急？		ELF 0x102fc4c
+adventure-announcement	What's this about proper living?	所谓合乎规矩的生活，究竟是什么？		ELF 0x102fa3b
+adventure-announcement	Whatever happens, it will be for the best.	无论发生什么，都会是最好的安排。		ELF 0x11e14a2
+adventure-announcement	Where am I?	我在哪里？		ELF 0x18a123b
+adventure-announcement	Where should I take you?	我该带你去哪里？		ELF 0x18bbd76
+adventure-announcement	Who cares what they think?	何必在意他们怎么想？		ELF 0x102fb84
+adventure-announcement	Who do you work for?	你为谁效力？		ELF 0x188bec4
+adventure-announcement	Why are they so fixated on these baubles?	他们为什么如此痴迷这些小玩意？		ELF 0x102fc88
+adventure-announcement	Why must they be so violent?	他们为何非要诉诸暴力？		ELF 0x102fbc0
+adventure-announcement	Why should I help?	我为什么要帮忙？		ELF 0x102f9d7
+adventure-announcement	Yes! It'll be great to perform with you.	好啊！能与你一起表演一定很棒。		ELF 0x188c8f5
+adventure-announcement	Yes, I can see it clearly now.	是的，我现在看清楚了。		ELF 0x18a90b4
+adventure-announcement	Yes, I want more. Is that so bad?	是，我想要更多。这有那么糟吗？		ELF 0x102f240
+adventure-announcement	Yes, let's move on.	好，我们换个话题吧。		ELF 0x18b4e17
+adventure-announcement	You are amazing.	你真了不起。		ELF 0x18ab129
+adventure-announcement	You are bound to me!	你已受我约束！		ELF 0x189a56d
+adventure-announcement	You are bound to obey me.	你受我约束，必须服从我。		ELF 0x18baefa
+adventure-announcement	You are considered an integral part of the opposition.	你被视为反对者中不可或缺的一员。		ELF 0x18affeb,0x18b4624
+adventure-announcement	You are considered part of the opposition.	你被视为反对者的一员。		ELF 0x18b004f,0x18b46b0
+adventure-announcement	You are forgiven.	你得到了原谅。		ELF 0x11dfab7
+adventure-announcement	You are free to do as you choose.	你可以自由地作出选择。		ELF 0x11dfa9e
+adventure-announcement	You are loved.	有人爱着你。		ELF 0x11dfa5e
+adventure-announcement	You are melting!	你正在熔化！		ELF 0xbf082a
+adventure-announcement	You are riding and cannot lie down.	你正处于骑乘状态，无法趴下。		ELF 0x12444af
+adventure-announcement	You are right.	你说得对。		ELF 0x189e1c5
+adventure-announcement	You are surrounded by incessant cackling.	你被持续不断的怪笑声包围了。		ELF 0x11ca34b
+adventure-announcement	You are thinking about this all wrong.	你对这件事的想法完全错了。		ELF 0x18b0ba9
+adventure-announcement	You are too injured to climb.	你的伤势太重，无法攀爬。		ELF 0x12407fb
+adventure-announcement	You are too injured to jump.	你的伤势太重，无法跳跃。		ELF 0x116a2e2
+adventure-announcement	You are too tired to stand.	你太累了，无法站起。		ELF 0x12441ac
+adventure-announcement	You are unperturbed.	你不为所动。		ELF 0x18683dd
+adventure-announcement	You aren't wielding a ranged weapon.	你没有持用远程武器。		ELF 0x123d5bf,0x1242f18
+adventure-announcement	You assume a submissive posture.	你摆出了投降姿态。		ELF 0x12440a7
+adventure-announcement	You awaken from your slumber.	你从睡梦中醒来。		ELF 0x12252af
+adventure-announcement	You can't stand up -- somebody is in the way.	你无法站起——有人挡住了位置。		ELF 0x1244310
+adventure-announcement	You can't travel until you emerge from underground or enter a tunnel.	必须先离开地下或进入隧道，才能开始旅行。		ELF 0x123ce4d
+adventure-announcement	You cannot jump while in the air.	身处空中时无法跳跃。		ELF 0x116a501
+adventure-announcement	You cannot jump while wrestling.	摔跤时无法跳跃。		ELF 0x116a3f4
+adventure-announcement	You cannot perform here.	你无法在这里表演。		ELF 0x176c9aa
+adventure-announcement	You conclude your performance.	你结束了表演。		ELF 0x1789643
+adventure-announcement	You continue the dance.	你继续舞蹈。		ELF 0x178ad66
+adventure-announcement	You continue the music.	你继续演奏。		ELF 0x178abdf
+adventure-announcement	You continue the poem.	你继续朗诵诗歌。		ELF 0x178820d
+adventure-announcement	You continue the sermon.	你继续布道。		ELF 0x17891a3
+adventure-announcement	You continue the story.	你继续讲故事。		ELF 0x17894a5
+adventure-announcement	You could not find a partner.	你没能找到舞伴。		ELF 0x1772817
+adventure-announcement	You dare to flatter me?!	你竟敢奉承我？！		ELF 0x18ba75a
+adventure-announcement	You do not have a free grasp and your quiver is full.	你没有空闲的抓握部位，而且箭筒已装满。		ELF 0x11eb7f0
+adventure-announcement	You do not have a free grasp and your quivers are full.	你没有空闲的抓握部位，而且所有箭筒都已装满。		ELF 0x11ea388
+adventure-announcement	You do not have a free grasp.	你没有空闲的抓握部位。		ELF 0x11eb7c5
+adventure-announcement	You don't care, so don't ask.	既不关心，就不必过问。		ELF 0x102fb20
+adventure-announcement	You feel uneasy.	你感到不安。		ELF 0x7ebca2,0x7eccfc
+adventure-announcement	You have a room here, and you can stay longer if you like.	你在这里有一间房，愿意的话可以多住些日子。		ELF 0x18bb895
+adventure-announcement	You have been granted mercy.	你得到了宽恕。		ELF 0x11dfa45
+adventure-announcement	You have been such a good trade partner.	你一直是个很好的贸易伙伴。		ELF 0x18bbbad
+adventure-announcement	You have disturbed the sleep of the dead!	你惊扰了死者的长眠！		ELF 0xc11d0f
+adventure-announcement	You have missed your chance.	你已错失良机。		ELF 0x11e1646
+adventure-announcement	You have nothing left to draw or put away.	你已经没有可以取出或收起的物品了。		ELF 0x1243f60
+adventure-announcement	You know, I think you're right.	你知道，我觉得你说得对。		ELF 0x18a90c8
+adventure-announcement	You lie on the ground.	你趴在了地上。		ELF 0x78e805
+adventure-announcement	You make nothing.	你什么也没做出来。		ELF 0x15b1f3a
+adventure-announcement	You mock me?!	你在嘲弄我？！		ELF 0x18ba851
+adventure-announcement	You must be convinced.	我非得让你心服口服。		ELF 0x18affff
+adventure-announcement	You must be joking.	你一定是在开玩笑。		ELF 0x18b93f3
+adventure-announcement	You must choose between two extremes.	你必须在两个极端之间做出选择。		ELF 0x11e12d6
+adventure-announcement	You must face the challenge today.	今天你必须面对挑战。		ELF 0x11e1466
+adventure-announcement	You must move away from surrounding obstacles such as the site's walls and rivers before you can travel.	必须先远离周围的障碍物，例如聚落的围墙和河流，才能开始旅行。		ELF 0x123c6df
+adventure-announcement	You must move away from the river before you can travel.	必须先远离河流，才能开始旅行。		ELF 0x123cb48
+adventure-announcement	You must reflect on your actions.	你必须反思自己的行为。		ELF 0x11e1ae2
+adventure-announcement	You must reveal the truth.	你必须揭露真相。		ELF 0x11e14ca
+adventure-announcement	You need a free grasp to climb.	需要一个空闲的抓握部位才能攀爬。		ELF 0x1240699
+adventure-announcement	You no longer assume a submissive posture.	你不再摆出投降姿态。		ELF 0x124457e
+adventure-announcement	You ought to be rewarded for returning our treasures.	你归还了我们的宝藏，应当得到奖赏。		ELF 0x18bbb35
+adventure-announcement	You reorganize your possessions.	你重新整理了随身物品。		ELF 0xc19ea8
+adventure-announcement	You shouldn't waste your life on revenge.	不该把一生浪费在复仇上。		ELF 0x102fcd8
+adventure-announcement	You stand up.	你起身了。		ELF 0x791ecc
+adventure-announcement	You tangle together and fall over!	你们纠缠在一起，摔倒了！		ELF 0x199fc23
+adventure-announcement	You tangle together and tumble forward!	你们纠缠在一起，向前翻滚！		ELF 0x19a1a82
+adventure-announcement	You will awaken to a new possibility.	你将发现一种新的可能。		ELF 0x11e1af6
+adventure-announcement	You will be rewarded.	你将获得回报。		ELF 0x11e1baa
+adventure-announcement	You will have a great accomplishment.	你将取得伟大的成就。		ELF 0x11e18b2
+adventure-announcement	You will know suffering soon.	你很快就会体会到苦难。		ELF 0x11e14f2
+adventure-announcement	You will learn something you did not want to know.	你将得知某件你不愿知道的事。		ELF 0x11e15ce
+adventure-announcement	You will make your final stand.	你将进行最后的抗争。		ELF 0x11e1812
+adventure-announcement	You will received bad advice.	你将得到不好的建议。		ELF 0x11e1542
+adventure-announcement	You will released.	你将获得解脱。		ELF 0x11e19b6
+adventure-announcement	You will travel far from this place.	你将远行，离开此地。		ELF 0x11e193e
+adventure-announcement	You'll get nothing from me with your flattery.	再怎么奉承，你也休想从我这里捞到好处。		ELF 0x104b7b7
+adventure-announcement	You'll have the room for another day. I'm glad you're enjoying your stay.	这间房会再为你留一天。很高兴你在这里住得愉快。		ELF 0x18baa77
+adventure-announcement	You're so perceptive!	你看得真透彻！		ELF 0x102f132
+adventure-announcement	You're wrong.	你错了。		ELF 0x18b1d86
+adventure-announcement	You've already searched this area recently.	你最近已经搜寻过此区域。		ELF 0x124287f
+adventure-announcement	You've assumed tactical control as nobody else is available.	由于没有其他人可用，你已接管战术控制。		ELF 0x12238d0,0x12449bd
+adventure-announcement	You've finally got your equipment together, such as it is. Now it's time for action and adventure!	你终于把装备凑齐了，虽然算不上多好。现在正是行动与冒险之时！		ELF 0x11f2035
+adventure-announcement	You've found a small creature.	你发现了一只小型生物。		ELF 0x1243ac7
+adventure-announcement	You've found some small creatures.	你发现了一些小型生物。		ELF 0x124395f
+adventure-announcement	Your ambition is misguided.	你的抱负走错了方向。		ELF 0x11e1592
+adventure-announcement	Your dreams will come true.	你的梦想将会成真。		ELF 0x11e16d2
+adventure-announcement	Your happiness is still desired.	仍有人希望你幸福。		ELF 0x11dfa77
+adventure-announcement	Your intense search turns up nothing.	你仔细搜寻了一番，却一无所获。		ELF 0x1243b52
+adventure-announcement	Your most trusted companion has made the journey to meet you here today.	你最信任的同伴远道而来，今天将在这里与你会合。		ELF 0x11f131d
+adventure-announcement	Your most trusted companions have made the journey to meet you here today.	你最信任的同伴们远道而来，今天将在这里与你会合。		ELF 0x11f206d
+adventure-announcement	Your most trusted local companions are meeting you here today.	你最信任的本地同伴今天将在这里与你会合。		ELF 0x11f0e3b
+adventure-announcement	Your name precedes you. Thank you for all that you have done.	久仰大名。感谢你所做的一切。		ELF 0x104c8f9
+adventure-announcement	Your ruler has arrived, dressed as a peasant!	你的统治者乔装成农民抵达了！		ELF 0xf177ec
+adventure-announcement	Your selfless dedication is appreciated here.	这里的人都感激你的无私奉献。		ELF 0x18bbb71
+adventure-announcement	Your sleep has been interrupted!	你的睡眠被打断了！		ELF 0x12253b9
+adventure-announcement	Your status as a major land has attracted much more trade than usual.	作为重要领地，你们吸引了比平时多得多的贸易。		ELF 0xf395a7
+adventure-announcement	Your status as a middling land has attracted more trade than usual.	作为中等领地，你们吸引了比平时更多的贸易。		ELF 0xf39160
+adventure-announcement	Your status as a minor land has attracted a bit more trade than usual.	作为小型领地，你们吸引了比平时略多的贸易。		ELF 0xf3985a
+adventure-announcement	Your wanderings have brought you to this place after a long journey.	经过漫长的旅途，你一路漫游来到此地。		ELF 0x11f1fc5

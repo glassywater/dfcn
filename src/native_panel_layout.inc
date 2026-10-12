@@ -935,7 +935,8 @@ static std::optional<SDL_Rect> native_picture_caption_rect(
         const graphicst &gps, int x, int y, bool native_draw = false, int *next_x = nullptr,
         bool bottom_caption = false, std::array<int32_t, 9> *matched_skin = nullptr,
         bool item_action_edge = false, bool material_amount_edge = false,
-        int main_action_edge = -1, bool inventory_action_edge = false) {
+        int main_action_edge = -1, bool inventory_action_edge = false,
+        bool farm_option_edge = false) {
     if (x < 0 || x >= gps.dimx || y < 1 || y + 1 >= gps.dimy) return std::nullopt;
     const auto amount_edge = [&](int left) {
         if (!material_amount_edge || native_draw) return false;
@@ -947,6 +948,14 @@ static std::optional<SDL_Rect> native_picture_caption_rect(
     };
     const auto action_edge = [&](int left, int *width = nullptr) {
         if (native_draw || left < 0) return false;
+        // Farm choices overlay their four-column checkbox on the picture
+        // caption's right cap. Both states own the same text boundary.
+        if (farm_option_edge &&
+                (native_main_button_at(gps, left, y, INTERFACE_BUTTON_MAIN_FARM_ACTIVE_OPTION) ||
+                 native_main_button_at(gps, left, y, INTERFACE_BUTTON_MAIN_FARM_INACTIVE_OPTION))) {
+            if (width) *width = 4;
+            return true;
+        }
         // Location records end at a complete four-column main action, not
         // the three-column inventory Inspect skin. Only a caller owning
         // that list may accept the action in place of the caption's cap.
@@ -1148,7 +1157,7 @@ static std::optional<SDL_Rect> native_picture_caption_rect(
     if (caption_texture <= 0) return std::nullopt;
     const auto foreground_edge = [&](int left) {
         if (native_draw || (!item_action_edge && !material_amount_edge &&
-                main_action_edge < 0)) return false;
+                main_action_edge < 0 && !farm_option_edge)) return false;
         const size_t at = static_cast<size_t>(left) * gps.dimy + y;
         if (native_ui_top_layer_at(gps, at) != caption_top) return false;
         const auto *primary = caption_top ? gps.screentexpos_top : gps.screentexpos;
@@ -1205,7 +1214,8 @@ static std::optional<SDL_Rect> native_picture_caption_rect(
                 }
             }
             if (!complete) continue;
-            if ((strip.picture_required || item_action_edge || main_action_edge >= 0) &&
+            if ((strip.picture_required || item_action_edge || main_action_edge >= 0 ||
+                    (farm_option_edge && action_edge(last))) &&
                 !picture_edge(first - 1, y) &&
                 !(has_skin(first - 1, y, strip.left) && picture_edge(first - 2, y))) continue;
             if (matched_skin) *matched_skin = strip.normalized;
@@ -1677,6 +1687,65 @@ static std::optional<std::pair<int, int>> native_classic_tab_text_span(
     return {{left - 1, right + 1}};
 }
 
+// Full tabs use the lower two rows of their three-row skin; short tabs
+// use two rows directly. Read both shoulders and the complete rail so a
+// caption's English length never supplies the translated centring box.
+static std::optional<std::pair<int, int>> native_tab_caption_span(
+        const graphicst &gps, int x, int y) {
+    if (x < 0 || x >= gps.dimx || y < 0 || y >= gps.dimy) return std::nullopt;
+    const bool classic = native_ui_classic().value_or(false);
+    using Skin = std::array<std::array<int32_t, 2>, 5>;
+    const auto lower_rows = [](const auto &source, int first_row) {
+        Skin skin{};
+        for (int column = 0; column < 5; ++column)
+            for (int row = 0; row < 2; ++row)
+                skin[column][row] = source[column][first_row + row];
+        return skin;
+    };
+    const std::array<Skin, 4> skins{
+        lower_rows(native_texture_tab(gps), 1),
+        lower_rows(native_texture_tab_selected(gps), 1),
+        lower_rows(native_texture_short_tab(gps), 0),
+        lower_rows(native_texture_short_tab_selected(gps), 0)};
+    for (size_t index = 0; index < skins.size(); ++index) {
+        const auto &skin = skins[index];
+        const int rail = index < 2 ? 1 : 0;
+        for (const int top : {y - 1, y}) {
+            if (top < 0 || top + 1 >= gps.dimy) continue;
+            const auto at = [&](int column, int row, int part, bool caption = false) {
+                return native_ui_skin_at(gps, column, top + row,
+                    skin[part][row], classic, caption);
+            };
+            if (!at(x, rail, 2)) continue;
+            int first = x, last = x + 1;
+            while (first > 0 && at(first - 1, rail, 2)) --first;
+            while (last < gps.dimx && at(last, rail, 2)) ++last;
+            // Classic shoulder glyphs can equal the repeated rail glyph.
+            // Prove their other row before assigning either boundary.
+            for (const int left : {first - 2, first - 1})
+                for (const int right : {last + 1, last}) {
+                    if (left < 0 || right >= gps.dimx || x < left + 2 ||
+                            x > right - 2) continue;
+                    bool complete = true;
+                    for (int row = 0; row < 2 && complete; ++row) {
+                        if (!at(left, row, 0) || !at(left + 1, row, 1) ||
+                                !at(right - 1, row, 3) || !at(right, row, 4)) {
+                            complete = false;
+                            break;
+                        }
+                        for (int column = left + 2; column < right - 1; ++column)
+                            if (!at(column, row, 2, true)) {
+                                complete = false;
+                                break;
+                            }
+                    }
+                    if (complete) return {{left + 1, right}};
+                }
+        }
+    }
+    return std::nullopt;
+}
+
 static std::optional<std::pair<int, int>> native_button_text_span(
         const graphicst &gps, int first, int last, int y) {
     const auto rect = native_button_text_rect(
@@ -1773,12 +1842,15 @@ static std::optional<NativeCategoryButton> native_category_button_frame(
     };
     for (size_t state = 0; state < std::size(skins); ++state) {
         const auto *skin = skins[state];
-        for (int orientation = 0; orientation < 2; ++orientation) {
+        for (int orientation = 0; orientation < 3; ++orientation) {
             std::array<int32_t, 9> normalized;
             for (int row = 0; row < 3; ++row)
-                for (int column = 0; column < 3; ++column)
-                    normalized[row * 3 + column] = orientation
-                        ? skin[row][column] : skin[column][row];
+                for (int column = 0; column < 3; ++column) {
+                    const int source_column = orientation == 2 && column > 0
+                        ? 3 - column : column;
+                    normalized[row * 3 + column] = orientation == 1
+                        ? skin[row][column] : skin[source_column][row];
+                }
             if (const auto button = native_nineslice_button_text_rect(
                     gps, first, last, y, normalized, classic, false, false, true))
                 return NativeCategoryButton{*button, state >= 2, state % 2 != 0};
@@ -1789,8 +1861,8 @@ static std::optional<NativeCategoryButton> native_category_button_frame(
 
 // Stockpile categories/filters overlay a separate four-column status button
 // on the last four fill columns, leaving the category's right cap intact.
-// In classic mode it replaces those CP437 rails; a normal nine-slice frame
-// cannot span it. PE 53.16: category 0x37fed0, filter 0x380980;
+// It replaces the lower tiles (or CP437 rails in classic mode), so a normal
+// nine-slice frame cannot span it. PE 53.16: category 0x37fed0, filter 0x380980;
 // STOCKPILE_ON/PARTIAL/OFF are button_main[408/409/410] (parser 0x10fd02d).
 static std::optional<NativeStockpileSettingButton> native_stockpile_setting_button_frame(
         const graphicst &gps, int first, int last, int y) {
@@ -1805,8 +1877,9 @@ static std::optional<NativeStockpileSettingButton> native_stockpile_setting_butt
             status >= last && status_at(status, button->interior.y + 1) ? status : -1};
     }
     const auto settings = native_ui_settings();
-    if (!settings || !settings->classic || first < 0 || last <= first ||
-        last > gps.dimx || y < 1 || y + 1 >= gps.dimy) return std::nullopt;
+    const bool classic = settings && settings->classic;
+    if (first < 0 || last <= first || last > gps.dimx ||
+        y < 0 || y >= gps.dimy) return std::nullopt;
     const int32_t (*skins[])[3] = {
         native_texture_button_category_rectangle(gps),
         native_texture_button_category_rectangle_selected(gps),
@@ -1816,32 +1889,38 @@ static std::optional<NativeStockpileSettingButton> native_stockpile_setting_butt
         native_texture_button_category_rectangle_off_selected(gps),
     };
     for (size_t state = 0; state < std::size(skins); ++state) {
-        for (int orientation = 0; orientation < 2; ++orientation) {
-            const auto at = [&](int x, int row, int column, int band) {
-                const int32_t skin = orientation ? skins[state][band][column]
-                    : skins[state][column][band];
-                return native_ui_skin_at(gps, x, row, skin, true,
-                    column == 1 && band == 1, false, true);
-            };
-            if (!at(first, y - 1, 1, 0)) continue;
-            int left = first, status = first;
-            while (left > 0 && at(left, y - 1, 1, 0)) --left;
-            while (status < gps.dimx && at(status, y - 1, 1, 0)) ++status;
-            const int right = status + 4;
-            if (left >= first || status < last || right >= gps.dimx ||
-                !status_at(status, y)) continue;
-            bool complete = true;
-            for (int band = 0; band < 3 && complete; ++band) {
-                const int row = y - 1 + band;
-                if (!at(left, row, 0, band) || !at(right, row, 2, band)) {
-                    complete = false;
-                    break;
+        for (int orientation = 0; orientation < 3; ++orientation) {
+            for (int caption_row = 0; caption_row < 3; ++caption_row) {
+                const int top = y - caption_row;
+                if (top < 0 || top + 3 > gps.dimy) continue;
+                const auto at = [&](int x, int band, int column) {
+                    const int source_column = orientation == 2 && column > 0
+                        ? 3 - column : column;
+                    const int32_t skin = orientation == 1 ? skins[state][band][column]
+                        : skins[state][source_column][band];
+                    return native_ui_skin_at(gps, x, top + band, skin, classic,
+                        column == 1 && band == 1, false, true);
+                };
+                if (!at(first, 0, 1)) continue;
+                int left = first, status = first;
+                while (left > 0 && at(left, 0, 1)) --left;
+                while (status < gps.dimx && at(status, 0, 1)) ++status;
+                const int right = status + 4;
+                if (left >= first || status < last || right >= gps.dimx ||
+                    !status_at(status, top + 1)) continue;
+                bool complete = true;
+                for (int band = 0; band < 3 && complete; ++band) {
+                    if (!at(left, band, 0) || !at(right, band, 2)) {
+                        complete = false;
+                        break;
+                    }
+                    for (int x = left + 1; x < status; ++x)
+                        if (!at(x, band, 1)) { complete = false; break; }
                 }
-                for (int x = left + 1; x < status; ++x)
-                    if (!at(x, row, 1, band)) { complete = false; break; }
+                if (complete) return NativeStockpileSettingButton{
+                    {{left + 1, top, right - left - 1, 3}, state >= 2,
+                        state % 2 != 0}, status};
             }
-            if (complete) return NativeStockpileSettingButton{
-                {{left + 1, y - 1, right - left - 1, 3}, state >= 2, state % 2 != 0}, status};
         }
     }
     return std::nullopt;
@@ -1852,8 +1931,10 @@ static std::optional<NativeStockpileSettingButton> native_stockpile_setting_butt
 // tile aspect ratio. Anchor ownership supplies that width without assuming a
 // square cell grid or treating the first English glyph as a widget boundary.
 static std::optional<SDL_Rect> native_category_button_text_rect(
-        const graphicst &gps, int first, int last, int y) {
-    const auto frame = native_category_button_frame(gps, first, last, y);
+        const graphicst &gps, int first, int last, int y,
+        const NativeCategoryButton *proven_frame = nullptr) {
+    const auto frame = proven_frame ? std::optional(*proven_frame)
+        : native_category_button_frame(gps, first, last, y);
     if (!frame) return std::nullopt;
     const auto settings = native_ui_settings();
     const bool classic = settings && settings->classic;

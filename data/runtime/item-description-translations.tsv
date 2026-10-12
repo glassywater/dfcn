@@ -290,6 +290,51 @@ sentence	I am {n}, {n}, once of the Underworld. I bind myself to this place.	我
 sentence	In memory of {n}.	谨以此纪念{n1}。
 sentence	In memory of {n}	谨以此纪念{n1}。
 
+# Native shop/tavern slab inscriptions: ELF 0xfa3400, switch 0xfc9404.
+# Both named and unnamed branches; {p} owns the complete generated name.
+# Stored inscription bytes are translated without regenerating random names.
+sentence	{p} / Imported Goods	{p1} / 进口商品
+sentence	Imported Goods	进口商品
+sentence	{p} / Imported Food	{p1} / 进口食物
+sentence	Imported Food	进口食物
+sentence	{p} / Imported Clothing	{p1} / 进口服装
+sentence	Imported Clothing	进口服装
+sentence	{p} / Cloth	{p1} / 布料
+sentence	Cloth	布料
+sentence	{p} / Leather	{p1} / 皮革
+sentence	Leather	皮革
+sentence	{p} / Woven Clothing	{p1} / 织物服装
+sentence	Woven Clothing	织物服装
+sentence	{p} / Leather Clothing	{p1} / 皮革服装
+sentence	Leather Clothing	皮革服装
+sentence	{p} / Bone Carver	{p1} / 骨雕师
+sentence	Bone Carver	骨雕师
+sentence	{p} / Gem Cutter	{p1} / 宝石切割师
+sentence	Gem Cutter	宝石切割师
+sentence	{p} / Weaponsmith	{p1} / 武器匠
+sentence	Weaponsmith	武器匠
+sentence	{p} / Bowyer	{p1} / 弩匠
+sentence	Bowyer	弩匠
+sentence	{p} / Blacksmith	{p1} / 锻造师
+sentence	Blacksmith	锻造师
+sentence	{p} / Armorsmith	{p1} / 盔甲匠
+sentence	Armorsmith	盔甲匠
+sentence	{p} / Metal Crafts	{p1} / 金属工艺品
+sentence	Metal Crafts	金属工艺品
+sentence	{p} / Leather Goods	{p1} / 皮革制品
+sentence	Leather Goods	皮革制品
+sentence	{p} / Wooden Furniture	{p1} / 木制家具
+sentence	Wooden Furniture	木制家具
+sentence	{p} / Stone Furniture	{p1} / 石制家具
+sentence	Stone Furniture	石制家具
+sentence	{p} / Metal Furniture	{p1} / 金属家具
+sentence	Metal Furniture	金属家具
+sentence	{p} / Tavern	{p1} / 酒馆
+sentence	Tavern	酒馆
+
+# Out-of-range native shop selector: keep its named prefix and separator.
+sentence	{p} /	{p1} /
+
 # Item/coin artwork reuses the symbol editor's complete subject/action parser.
 sentence	This is the {i} currency of {r} under {r}.	这是「{r1}」在{r2}统治时期使用的{i1}币。
 sentence	This is the {i} currency of {r} from the year {c}.	这是「{r1}」第{c1}年使用的{i1}币。

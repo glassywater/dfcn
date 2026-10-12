@@ -8,7 +8,109 @@ struct FortressUnitChooser {
     std::vector<SDL_Rect> native_records;
     int skill_x = -1;
     bool trainer = false;
+    bool appointment = false;
 };
+
+// Nobles' appointment list predates the Name/Cat/Prof chooser widgets. Its
+// The candidate writer and complete portrait strips own the visible rows;
+// name/profession and relevant skills are separate fields on the same strip.
+static std::optional<FortressUnitChooser> fortress_appointment_chooser(
+        const graphicst &gps, const std::vector<std::string> &rows) {
+    const NativePanelBorders borders(gps);
+    for (int tabs_y = 0; tabs_y < gps.dimy; ++tabs_y) {
+        const auto &tabs = rows[tabs_y];
+        const auto creatures = tabs.find("Creatures"), tasks = tabs.find("Tasks");
+        const auto orders = tabs.find("Work orders");
+        const auto nobles = tabs.find("Nobles and administrators");
+        if (creatures == std::string::npos || tasks == std::string::npos ||
+                orders == std::string::npos || nobles == std::string::npos ||
+                !(creatures < tasks && tasks < orders && orders < nobles)) continue;
+        const auto panel = native_panel_interior(borders, gps,
+            static_cast<int>(creatures),
+            static_cast<int>(nobles + std::string_view("Nobles and administrators").size()), tabs_y);
+        if (!panel) continue;
+        const int right = panel->x + panel->w, bottom = panel->y + panel->h;
+        int vacant_y = -1;
+        for (int y = tabs_y + 1; y < bottom && vacant_y < 0; ++y)
+            for (const auto &field : split_text_fields(rows[y]))
+                if (field.start >= panel->x && field.end <= right &&
+                        lower(field.text) == "leave vacant") { vacant_y = y; break; }
+        bool native_appointment = false;
+#ifdef _WIN32
+        // Both a unit name and Leave Vacant use this same native list writer.
+        // Leave Vacant is the first scrollable entry, not a fixed page heading.
+        const uintptr_t base = native_history_profile_base();
+        const uintptr_t name_writer = native_reference_address(base, 0x426807);
+        const uintptr_t skill_writer = native_reference_address(base, 0x426a12);
+        const uintptr_t empty_skill_writer = native_reference_address(base, 0x426adf);
+        const std::array batches{captured_native_drawn_text_rows(false),
+            captured_native_drawn_text_rows(true)};
+        for (const auto &batch : batches) {
+            native_appointment = std::any_of(batch.begin(), batch.end(),
+                [&](const NativeDrawnTextRow &draw) {
+                    return draw.native_caller && (draw.native_caller == name_writer ||
+                        draw.native_caller == skill_writer || draw.native_caller == empty_skill_writer) &&
+                        draw.draw_grid == (draw.top_layer ? gps.screen_top : gps.screen) &&
+                        draw.draw_dimx == gps.dimx && draw.draw_dimy == gps.dimy &&
+                        !draw.source.empty() && draw.x >= panel->x && draw.x < right &&
+                        draw.y > tabs_y && draw.y < bottom &&
+                        rows[draw.y][draw.x] == draw.source.front() &&
+                        native_ui_top_layer_at(gps,
+                            static_cast<size_t>(draw.x) * gps.dimy + draw.y) == draw.top_layer;
+                });
+            if (native_appointment) break;
+        }
+#endif
+        if (!native_appointment && vacant_y < 0) continue;
+        const int list_top = native_appointment ? tabs_y + 1 : vacant_y + 1;
+        std::vector<SDL_Rect> records;
+        for (int middle = list_top + 1; middle + 1 < bottom; ++middle)
+            for (int x = panel->x; x < right;) {
+                int next = x + 1;
+                const auto box = native_picture_caption_rect(gps, x, middle,
+                    false, &next, true);
+                if (box && box->w > 1 && box->x >= panel->x && box->x + box->w <= right &&
+                        box->y >= list_top && box->y + box->h <= bottom &&
+                        !(vacant_y >= box->y && vacant_y < box->y + box->h)) {
+                    bool portrait = false;
+                    for (int picture = panel->x; picture < box->x; ++picture) {
+                        const int end = native_picture_box_right(gps, picture, middle);
+                        if (end == box->x || end == box->x - 1) { portrait = true; break; }
+                    }
+                    if (portrait && std::none_of(records.begin(), records.end(),
+                            [&](const SDL_Rect &seen) { return seen.y == box->y; }))
+                        // Native 0x426802 starts the name at L+7, two cells
+                        // inside the caption fill at L+5. Keep that inset in
+                        // the chooser's shared box.x+1 identity contract.
+                        records.push_back({box->x + 1, box->y, box->w - 1, box->h});
+                }
+                x = std::max(x + 1, next);
+            }
+        if (records.empty()) continue;
+        std::sort(records.begin(), records.end(), [](const SDL_Rect &a, const SDL_Rect &b) {
+            return a.y < b.y;
+        });
+        int skill_x = right;
+        for (const auto &box : records) {
+            // Native 0x42626f..0x42628f reserves the right thirty cells,
+            // then shares the remaining width between identity and skills.
+            // The original rectangle begins five cells before its caption
+            // fill; records above inset that fill by one more cell. Derive
+            // the column from the skin, including when skills are empty.
+            const int native_left = box.x - 6, native_right = box.x + box.w;
+            const int column = native_right - 30 -
+                std::max((native_right - native_left - 50) / 2, 0);
+            if (column > box.x + 1 && column < native_right)
+                skill_x = std::min(skill_x, column);
+        }
+        if (skill_x == right) continue;
+        return FortressUnitChooser{*panel,
+            {panel->x, list_top, panel->w, bottom - list_top},
+            list_top - 1, records.front().x + 1, bottom, std::move(records),
+            skill_x, false, true};
+    }
+    return std::nullopt;
+}
 
 // The Pets/Livestock trainer picker has a prompt and portrait buttons, but
 // no sort band, search field or skills column. Its complete portrait strips
@@ -98,8 +200,10 @@ static std::optional<FortressUnitChooser> fortress_unit_chooser(
     // treats worker-toggle records as identities without skills, so it must
     // never consume the Labor source before that page's own reader runs.
     if (fortress_labor_band(rows)) return std::nullopt;
-    if (!closed_frame_only)
+    if (!closed_frame_only) {
+        if (auto appointment = fortress_appointment_chooser(gps, rows)) return appointment;
         if (auto trainer = fortress_trainer_chooser(gps, rows)) return trainer;
+    }
     const auto settings = native_ui_settings();
     if (!settings) return std::nullopt;
     if (settings->classic && !closed_frame_only) {
@@ -266,9 +370,9 @@ void Overlay::append_fortress_unit_chooser_rows(std::vector<std::string> &rows,
             }
     auto chooser = fortress_unit_chooser(*gps_, context);
     if (!chooser && !raw_layer) {
-        // The UI-message reader can already have claimed the trainer prompt.
-        // Recover page identity from the visible grid; each field below still
-        // has to own its surviving bytes in the supplied work buffer.
+        // The UI-message reader can already have claimed a chooser prompt or
+        // tab. Recover page identity from the visible grid; each field below
+        // still has to own its surviving bytes in the supplied work buffer.
         auto native_context = context;
         for (int y = 0; y < gps_->dimy; ++y)
             for (int x = 0; x < gps_->dimx; ++x) {
@@ -276,6 +380,7 @@ void Overlay::append_fortress_unit_chooser_rows(std::vector<std::string> &rows,
                 native_context[y][x] = ch ? static_cast<char>(ch) : ' ';
             }
         chooser = fortress_trainer_chooser(*gps_, native_context);
+        if (!chooser) chooser = fortress_appointment_chooser(*gps_, native_context);
         if (chooser) context = std::move(native_context);
     }
     if (!chooser) return;
@@ -386,7 +491,7 @@ void Overlay::append_fortress_unit_chooser_rows(std::vector<std::string> &rows,
         return flags ? flags[static_cast<size_t>(x) * gps_->dimy + y] &
             ((1u << 3) | (1u << 4)) : 0u;
     };
-    int skill_left = gps_->dimx;
+    int skill_left = chooser->appointment ? chooser->skill_x : gps_->dimx;
     for (size_t index = 0; index < records.size(); ++index) {
         auto &record = records[index];
         const int right = record.box.x + record.box.w;
@@ -661,10 +766,15 @@ void Overlay::append_fortress_unit_chooser_rows(std::vector<std::string> &rows,
                 Match match{field.x + offset, field.y, count, kFortressUnitChooserRule,
                     target, field.source.substr(offset, count)};
                 match.native_picture_caption_box = record.box;
-                match.layout_x = field.skill ? skill_left : record.box.x + 1;
+                match.layout_x = field.skill
+                    ? (chooser->appointment ? field.x : skill_left) : record.box.x + 1;
                 match.layout_y = record.box.y + 1;
                 match.layout_clip_right = field.skill ? record.box.x + record.box.w
                     : std::min(record.box.x + record.box.w, identity_right);
+                if (field.skill && chooser->appointment)
+                    for (const auto &other : record.fields)
+                        if (other.skill && other.y == field.y && other.x > field.x)
+                            match.layout_clip_right = std::min(match.layout_clip_right, other.x);
                 match.layout_length = match.layout_clip_right - match.layout_x;
                 match.layout_fixed_baseline = true;
                 match.layout_left = true;

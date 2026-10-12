@@ -146,7 +146,8 @@ static void capture_native_history_theft_rampage_title(uintptr_t collection,
 
 // All eighteen HEC title families share this snapshot. Both circumstance 233
 // and Legends collection/figure pages retain the same native ID and roles.
-static bool capture_native_history_collection_title(int32_t id, NativeHistoryEventData &event) {
+static bool capture_native_history_collection_title(int32_t id, NativeHistoryEventData &event,
+        bool allow_item_replay = true) {
     const std::string key = "collection." + std::to_string(id) + ".";
     if (event.fields.contains(key + "type")) return true;
     const uintptr_t base = native_history_profile_base();
@@ -316,12 +317,13 @@ static bool capture_native_history_collection_title(int32_t id, NativeHistoryEve
             if (!native_history_copy(schedule + 4, item_type) || !native_history_copy(schedule + 8, subtype) ||
                     !native_history_copy(schedule + 0xc, material) ||
                     !native_history_copy(schedule + 0x10, material_index)) return false;
-            // bc7624 passes count=-1. Retained pages may predate that hook,
-            // so fill the same isolated typed description from its tuple.
-            // The ordinary producer hook can subsequently refresh this field.
+            // Keep the tuple for bc7624's real item hook even when this
+            // natural event capture cannot replay a native formatter.
+            // Retained Legends pages can still fill their isolated label.
             const std::vector<int32_t> tuple{item_type, subtype, material, material_index};
             event.fields[key + "throwing"] = tuple;
-            if (!capture_native_history_page_item(tuple, event, key + "throwing", -1)) return false;
+            if (allow_item_replay &&
+                    !capture_native_history_page_item(tuple, event, key + "throwing", -1)) return false;
         }
         break;
     }
@@ -333,5 +335,5 @@ static bool capture_native_history_collection_title(int32_t id, NativeHistoryEve
 
 static void capture_native_history_clause_collections(NativeHistoryEventData &event) {
     if (event.circumstance == 233 && event.circumstance_data >= 0)
-        capture_native_history_collection_title(event.circumstance_data, event);
+        capture_native_history_collection_title(event.circumstance_data, event, false);
 }

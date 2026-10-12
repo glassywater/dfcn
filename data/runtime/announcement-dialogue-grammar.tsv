@@ -139,6 +139,63 @@ dialogue-battle-death	{s} was slainby a {s}	{s1}被一只{s2}杀死了	dialogue-
 dialogue-battle-death	{s} was slainby a {s} of {s}	{s1}被{s3}的一只{s2}杀死了	dialogue-battle-person,$creature,$name	0x140675910..0x14067667c;NPC battle account via0x14049cb1a/0x1404af702;date0x140675670;person0x140a946e0;race0x140b94ed0;0x140675ff9/0x140676046
 dialogue-battle-death	{s} was slainby the forces of {s}	{s1}被{s2}的部队杀死了	dialogue-battle-person,$name	0x140675910..0x14067667c;NPC battle account via0x14049cb1a/0x1404af702;date0x140675670;person0x140a946e0;race0x140b94ed0;0x140676062 native literal 'by the forces of ' no leading space
 dialogue-battle-death	{s} died	{s1}丧生了	dialogue-battle-group	0x140675910..0x14067667c;NPC battle account via0x14049cb1a/0x1404af702;date0x140675670;person0x140a946e0;race0x140b94ed0;0x1406761eb
+# Conflict chooser: native type 118, complete caption plus occurrence paragraph.
+# ELF sources and all conditional edges: data/extracted/adventure-conversation-conflicts/.
+conversation-conflict-choice	Summarize the conflict in which {s} (This occurred {s})	概述{s1}的冲突（发生时间：{s2}）	conversation-conflict-account,conversation-conflict-context	ELF 10693e2/1069496/106955c; PE 699ed4/69a61a; both native caption paragraphs
+conversation-conflict-choice	Summarize the conflict in which {s} (This occurred {s} in )	概述{s1}的冲突（发生时间：{s2}，地点未记载）	conversation-conflict-account,rumor-time	ELF 10768f5 ->a10160; empty underground caption retains a space before the closing parenthesis
+conversation-conflict-context	{s} at this location	{s1}，地点：此地	rumor-time	ELF 1076c26..1076c39; current site equality
+conversation-conflict-context	{s} in {s}	{s1}，地点：{s2}	rumor-time,conversation-conflict-place	ELF 1069527..1069555 / 1075d0a..1075d49 / 10768dd..107691c; site/subregion/underground
+conversation-conflict-context	{s} in	{s1}，地点未记载	rumor-time	ELF 10768f5 -> a10160; a101b6..a101f8 valid underground record may append no name
+conversation-conflict-context	{s}	{s1}	rumor-time	ELF 10768e8 ->1069555; site/subregion/underground all absent
+conversation-conflict-place	an unknown site	未知地点		ELF a27e8f; site supplier missing object
+conversation-conflict-place	an unknown region	未知区域		ELF a100d5; subregion supplier missing object
+conversation-conflict-place	an unknown underground region	未知地下区域		ELF a10239; underground supplier missing object
+conversation-conflict-place	the depths of the world	世界深处		ELF a102c0; underground type 0 without a name
+conversation-conflict-place	the magma sea	岩浆海		ELF a102f8; underground type 1 without a name
+conversation-conflict-place	the Underworld	冥界		ELF a102e0; underground type 2 without a name
+conversation-conflict-place	{s}	{s1}	$conflict-place	ELF a27cd0/a0ffc0 ->12c58d0 EnglishName; site/subregion generated name
+conversation-conflict-entity	an unknown civilization	未知文明		ELF a27a97; entity supplier missing object
+conversation-conflict-entity	{s}	{s1}	$name	ELF a278f0 ->12c58d0; entity EnglishName
+conversation-conflict-caste	creature	生物		ELF a0d64b; invalid race/caste fallback
+conversation-conflict-caste	creatures	一些生物		ELF a0d64b/a0d6f7; plural fallback
+conversation-conflict-caste	{s}	{s1}	$conflict-caste	ELF a0d5f0 ->12ae800; RAW caste_name singular/plural
+conversation-conflict-person	somebody	某人		ELF 10763de/1079805/1079849/1079cf4/1079d0c; missing historical figure
+conversation-conflict-person	{s}	{s1}	$person	ELF 107648d/107966c/107970c/1079a0c/1079aa2 ->12c58d0; personal EnglishName
+conversation-conflict-attacker	you	你		ELF 1079bf2; attacker historical figure equals player
+conversation-conflict-attacker	a {s} of {s}	{s2}的一只{s1}	conversation-conflict-caste,conversation-conflict-entity	ELF 1079af5/1079b3f ->a0d5f0/a278f0; caste plus organization
+conversation-conflict-attacker	a {s}	一只{s1}	conversation-conflict-caste	ELF 1079af5 ->a0d5f0; attacker caste
+conversation-conflict-attacker	the forces of {s}	{s1}的部队	conversation-conflict-entity	ELF 1079c33 ->a278f0; attacker organization
+conversation-conflict-attacker	{s}	{s1}	conversation-conflict-person	ELF 10799dc..1079a42; historical attacker or somebody
+conversation-conflict-target	you	你		ELF 1079c0a; target historical figure equals player
+conversation-conflict-target	a {s} of {s}	{s2}的一只{s1}	conversation-conflict-caste,conversation-conflict-entity	ELF 1079b7c/1079bc6 ->a0d5f0/a278f0; caste plus organization
+conversation-conflict-target	a {s}	一只{s1}	conversation-conflict-caste	ELF 1079b7c ->a0d5f0; target caste
+conversation-conflict-target	the forces of {s}	{s1}的部队	conversation-conflict-entity	ELF 1079ca4 ->a278f0; target organization
+conversation-conflict-target	{s}	{s1}	conversation-conflict-person	ELF 1079a6e..1079add; historical target or somebody
+conversation-conflict-group	a creature	一只生物		ELF 1076c55/1079d24; one unknown creature
+conversation-conflict-group	creatures	一些生物		ELF 1076539/1079cdc; multiple unknown creatures
+conversation-conflict-group	a member of {s}	{s1}的一名成员	conversation-conflict-entity	ELF 10769f2/1079c67 ->1076319/10798e3; one member of an organization
+conversation-conflict-group	the forces of {s}	{s1}的部队	conversation-conflict-entity	ELF 10763bf/107998d ->1076319/10798e3; plural organization group
+conversation-conflict-group	{s} of {s}	{s2}的{s1}	conversation-conflict-caste,conversation-conflict-entity	ELF 1076307/10798d1 plus1076319/10798e3; singular/plural caste group
+conversation-conflict-group	{s}	{s1}	conversation-conflict-caste	ELF 1076307/10798d1; singular/plural RAW caste without cardinal text
+conversation-conflict-slain	{s}	{s1}	conversation-conflict-person	ELF 10763d0..10764c9; individually named player kill
+conversation-conflict-slain	{s}	{s1}	conversation-conflict-group	ELF 10762b4..10763cb; grouped player kills
+conversation-conflict-slain-list	many foes	许多敌人		ELF 1069456..106946e; more than five individual/group records
+conversation-conflict-slain-list	{s} and {s}	{s1}和{s2}	conversation-conflict-slain,conversation-conflict-slain	ELF 1076500/1076518; final pair
+conversation-conflict-slain-list	{s}, {s}	{s1}、{s2}	conversation-conflict-slain,conversation-conflict-slain-list	ELF 10764d0/10764e8; three or more remaining entries
+conversation-conflict-slain-list	{s}	{s1}	conversation-conflict-slain	ELF 107633d/10763fd; complete single record
+conversation-conflict-death	{s} was slain by {s}	{s1}被{s2}杀死了	conversation-conflict-person,conversation-conflict-person	ELF 1079746/107962b ->12c58d0; named killer or somebody
+conversation-conflict-death	{s} was slainby a {s} of {s}	{s1}被{s3}的一只{s2}杀死了	conversation-conflict-person,conversation-conflict-caste,conversation-conflict-entity	ELF 1079746/1079787/10797da; native by a has no leading space
+conversation-conflict-death	{s} was slainby a {s}	{s1}被一只{s2}杀死了	conversation-conflict-person,conversation-conflict-caste	ELF 1079746/1079787; native concatenation is slainby
+conversation-conflict-death	{s} was slainby the forces of {s}	{s1}被{s2}的部队杀死了	conversation-conflict-person,conversation-conflict-entity	ELF 1079746/1079834; native concatenation is slainby
+conversation-conflict-death	{s} was slain	{s1}被杀死了	conversation-conflict-person	ELF 1079746/1079827; no killer data
+conversation-conflict-death	{s} died	{s1}丧生了	conversation-conflict-group	ELF 10798ab..10799b1; grouped casualties
+conversation-conflict-deaths	{s} and {s}	{s1}和{s2}	conversation-conflict-death,conversation-conflict-death	ELF 1079879/1079c7f; final pair including personal/group transition
+conversation-conflict-deaths	{s}, {s}	{s1}、{s2}	conversation-conflict-death,conversation-conflict-deaths	ELF 1079861/10799a5; three or more remaining records
+conversation-conflict-deaths	{s}	{s1}	conversation-conflict-death	ELF 107969f/107991a; complete single death
+conversation-conflict-account	{s} attacked {s}	{s1}袭击了{s2}	conversation-conflict-attacker,conversation-conflict-target	ELF 10799b6..1079d34; no kills or casualties ->attack participants
+conversation-conflict-account	you slew {s}	你杀死了{s1}	conversation-conflict-slain-list	ELF 1069409..1069473; player kills have priority
+conversation-conflict-account	many died	许多生灵丧生		ELF 1075f05..1075f22; more than five personal/group casualty records
+conversation-conflict-account	{s}	{s1}	conversation-conflict-deaths	ELF 10795f0..10799b1; named deaths followed by grouped deaths
 sentence	Make way for {s} {s} and {s}!	给{s1}{s2}和{s3}让路！	$term,$person,$name	0x1404b604a..0x1404b617a;office99a3c0 +personname0x140a946e0 +groupname0x140a946e0
 sentence	My {s} {s} lives in {s}.	我的{s1}{s2}住在{s3}。	dialogue-family,$person,$name	0x1404b10cf..0x1404b122c;family75a580 +person/site a946e0
 dialogue-object	the object I can't remember	我记不起来的那件东西		0x1404bf98c..0x1404c1665 missing objectfallback
@@ -180,3 +237,4 @@ sentence	{s}, is it really you?	{s1}，真的是你吗？	dialogue-recognition	0
 dialogue-recognition	{s}	{s1}	dialogue-family	0x1404cd130..0x1404cd37d;native relative enum vocabulary
 dialogue-recognition	{s}	{s1}	$person	0x1404cd456..0x1404cd492;given name or complete name
 dialogue-recognition	Dear	亲爱的		0x1404cd512;replaces name
+sentence	{s}. How do you like the sound of that?	{s1}。你觉得这个名字怎么样？	$person	reference 0x1401fe5c0:0x1401ff0ea name formatter 0x140a946e0 -> 0x1401ff186 suffix -> 0x1401ff1dd speech wrapper 0x140684a10; classic 0x1401fe550:0x1401ff07a -> 0x1401ff116 -> 0x1401ff16d; name_creator context +4=7 ADVENTURER_PET and non-null conversation +0x228/named_unit +0x240

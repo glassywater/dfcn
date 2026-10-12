@@ -32,6 +32,7 @@ static void native_announcement_kinship_world(uintptr_t world, int32_t next_id) 
 }
 
 static void remember_native_announcement_kinship_parent(uintptr_t parent) {
+    remember_native_announcement_unit_parent(parent);
     NativeAnnouncementHistoryRow row;
     uintptr_t world = 0;
     int32_t next = -1;

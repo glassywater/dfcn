@@ -1763,10 +1763,11 @@ void Overlay::append_legends_detail_matches(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y,
         const unsigned char *screen_override) const {
     if (!gps_ || !face_) return;
+    const bool native_history_page = native_history_legends_page();
     // Page identity can live on the other logical layer. Use composition only
     // as context; claims below still own exact bytes from the supplied layer.
     auto context = rows;
-    if (screen_override) {
+    if (screen_override || native_history_page) {
         for (int y = 0; y < gps_->dimy; ++y) {
             for (int x = 0; x < gps_->dimx; ++x) {
                 bool top = false;
@@ -1786,8 +1787,9 @@ void Overlay::append_legends_detail_matches(std::vector<std::string> &rows,
         const auto &row = context[static_cast<size_t>(y)];
         if (legends_export_control_present(row)) { export_y = y; break; }
     }
-    if (export_y < 0) return;
-    const bool native_history_page = native_history_legends_page();
+    // The selected native richbox establishes page identity even when an
+    // earlier caption pass has claimed Export XML or the tab's visible text.
+    if (export_y < 0 && !native_history_page) return;
     const auto native_caption = native_history_page ? native_history_legends_caption() : std::nullopt;
     const std::string native_title = native_caption ? normalize_utterance(native_caption->source) : "";
     // Graphical captions occupy two flagged rows. Claim BOTH before the
@@ -1860,6 +1862,7 @@ void Overlay::append_legends_detail_matches(std::vector<std::string> &rows,
             if (caption_row) tab_rows.push_back(y);
         }
     }
+    if (tab_rows.empty() && native_history_page) tab_rows.push_back(5);
     if (tab_rows.empty()) return;
     const int tabs_y = tab_rows.back();
     const auto viewport = legends_detail_body_viewport(*gps_);
@@ -2182,7 +2185,10 @@ void Overlay::append_legends_detail_matches(std::vector<std::string> &rows,
             append_legends_typed_list_matches(rows, context, matches, only_y, tabs_y)) return;
     if (!native_history_page && (legends_prose_rules_.empty() || heading_y < 0 || records != 1)) return;
     bool detail = native_history_page;
-    const int body_top = heading_end_y >= 0 ? heading_end_y + 1 : tabs_y + 1;
+    // The verified native renderer places richbox row zero at grid row 9.
+    // Missing header glyphs must not put tabs or the pinned title in its body.
+    const int body_top = native_history_page ? 9 :
+        heading_end_y >= 0 ? heading_end_y + 1 : tabs_y + 1;
     for (int y = body_top; !detail && y < static_cast<int>(rows.size()); ++y) {
         const auto row = content(context[static_cast<size_t>(y)]);
         detail |= row.find(" was ") != std::string::npos ||
@@ -3371,6 +3377,23 @@ void Overlay::layout_legends_details(SDL_Renderer *renderer) {
         const int width = (text_right - left) * tile_w;
         const int padding = config_.horizontal_padding;
         const int gap = std::max(1, tile_w / 6);
+        // Combine the original writer clips before assigning translated
+        // baselines. A moved link must retain this richbox's scroll viewport,
+        // rather than inherit the one-row clip at its native click anchor.
+        const int viewport_top = native_history_page ? 9 : body.begin()->first;
+        const int viewport_bottom = native_history_page ? gps_->dimy - 2 : gps_->dimy - 1;
+        const SDL_Rect body_clip{origin_x + left * tile_w,
+            origin_y + viewport_top * tile_h, width,
+            std::max(0, viewport_bottom - viewport_top) * tile_h};
+        for (const auto &flow : flows) {
+            std::vector<Match> source_slots;
+            for (const auto &[y, source] : flow->source_rows) {
+                (void)source;
+                for (const Match *match : body.at(y)) source_slots.push_back(*match);
+            }
+            const auto native_clip = native_paragraph_draw_region(source_slots);
+            SDL_IntersectRect(&body_clip, &native_clip, &flow->native_clip);
+        }
         std::unordered_map<const Match *, int> widths;
         auto column_kind = [](const std::vector<Match *> &row) {
             if (row.size() != 2 || row[0]->legends_flow || row[1]->legends_flow ||
@@ -3384,11 +3407,12 @@ void Overlay::layout_legends_details(SDL_Renderer *renderer) {
         std::array<int, 3> columns{};
         auto place_flow = [&](LegendsTextFlow &flow) {
             flow.display_pieces.clear();
-            if (flow.source_rows.empty()) return false;
+            if (flow.source_rows.empty() || flow.native_clip.w <= 0 ||
+                    flow.native_clip.h <= 0) return false;
             // Complete paragraphs wrap within their native text viewport.
             // The physical screen tail also contains the scrolling control
             // and frame; it cannot supply extra width to colored text runs.
-            const int flow_width = width;
+            const int flow_width = flow.native_clip.w;
             size_t row = 0;
             int used = 0;
             for (const auto &piece : flow.pieces) {
@@ -3467,7 +3491,7 @@ void Overlay::layout_legends_details(SDL_Renderer *renderer) {
                     }
                     LegendsTextPiece fragment = piece;
                     fragment.target = text.substr(offsets[begin], offsets[end] - offsets[begin]);
-                    fragment.box_pixel_x = origin_x + left * tile_w + used;
+                    fragment.box_pixel_x = flow.native_clip.x + used;
                     fragment.box_pixel_width = glyph->width + 2 * padding;
                     // Keep complete-layout row numbers until the native
                     // scroll range has selected the visible Chinese window.

@@ -1,0 +1,6 @@
+image	role	start	end	source
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	complete-item-description	0xe76ce0	0xe7c9a8	elf-e76ce0.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	slab-title	0xe6d5b0	0xe6d7d3	elf-e6d5b0.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	item-noun-and-slab-subtype	0x12b6a70	0x12bdd2f	elf-12b6a70.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	site-building-and-sign-creation	0xfa3400	0xfcd78b	elf-fa3400.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	stored-name-english-formatter	0x12c58d0	0x12c6e5c	elf-12c58d0.asm

@@ -395,7 +395,6 @@ static void capture_native_history_append(NativeHistoryRichBox *box, const Nativ
 }
 
 static void recover_native_history_legends(NativeHistoryRichBox *box);
-#include "native_history_recovery.inc"
 
 static void capture_native_history_layout(NativeHistoryRichBox *box, int width) {
     NativeHistoryCallbackScope scope;
@@ -475,11 +474,14 @@ static void capture_native_history_draw(graphicst *graphics, const NativeString 
         NativeJustification justification, int width) {
     NativeHistoryCallbackScope scope;
     try {
-        recover_native_history_chronicle();
         std::string_view text;
         if (graphics && graphics->screenx >= 0 && graphics->screenx < graphics->dimx &&
             graphics->screeny >= 0 && graphics->screeny < graphics->dimy &&
             native_string_view(source, &text, 262144)) {
+            // Draw only the owned records captured from DF's real formatter
+            // calls (or transferred by core reload). A missing record must
+            // retain native text, never replay history formatters while world
+            // generation is finalizing or releasing their referenced objects.
             // The native parser can place the end of a word beyond addst's
             // live clipping rectangle. Capture that rectangle before the
             // renderer restores it; blank suffix cells are not missing text.
@@ -489,8 +491,22 @@ static void capture_native_history_draw(graphicst *graphics, const NativeString 
                 graphics->clipx[1], -1, graphics->dimx - 1) + 1);
             if (graphics->screeny < graphics->clipy[0] ||
                     graphics->screeny > graphics->clipy[1]) clip_right = clip_left;
+            // The native caller has already selected the link's render RGB.
+            // Read addchar's live palette/RGB branch, rather than the rich
+            // word's parser color, which can still be the neutral base color.
+            int foreground = -1;
+            if (graphics == g_native_worldgen_write_graphics && graphics->use_old_16_colors) {
+                const int palette = static_cast<int8_t>(graphics->screenf) +
+                    (graphics->screenbright ? 8 : 0);
+                if (palette >= 0 && palette < 16)
+                    foreground = (graphics->uccolor[palette][0] << 16) |
+                        (graphics->uccolor[palette][1] << 8) | graphics->uccolor[palette][2];
+            } else if (graphics == g_native_worldgen_write_graphics) {
+                foreground = (graphics->screen_color_r << 16) |
+                    (graphics->screen_color_g << 8) | graphics->screen_color_b;
+            }
             remember_native_history_draw(reinterpret_cast<uintptr_t>(source), text,
-                graphics->screenx, graphics->screeny, clip_left, clip_right);
+                graphics->screenx, graphics->screeny, clip_left, clip_right, foreground);
         }
     } catch (...) {}
     if (g_real_native_history_draw) g_real_native_history_draw(graphics, source, justification, width);

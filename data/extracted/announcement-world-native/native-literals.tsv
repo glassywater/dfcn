@@ -1,0 +1,11 @@
+edition	function_start	instruction	operand_kind	operand_address	text
+reference	0x1402afed0	0x1402b01eb	cstring	0x14165fdf8	error: intrigue actors identical
+reference	0x1402afed0	0x1402b0581	cstring	0x14165fe20	error: intrigue actors identical (3)
+reference	0x1402afed0	0x1402b111b	cstring	0x141628e20	 has revealed the presence of 
+reference	0x1402afed0	0x1402b1146	cstring	0x1415ed5b4	 to 
+reference	0x1402afed0	0x1402b1198	cstring	0x1415e85b4	.
+classic	0x1402ada90	0x1402addab	cstring	0x14165ac68	error: intrigue actors identical
+classic	0x1402ada90	0x1402ae141	cstring	0x14165aba0	error: intrigue actors identical (3)
+classic	0x1402ada90	0x1402aecdb	cstring	0x141623d38	 has revealed the presence of 
+classic	0x1402ada90	0x1402aed06	cstring	0x1415e8524	 to 
+classic	0x1402ada90	0x1402aed58	cstring	0x1415e3574	.

@@ -100,8 +100,8 @@ bool Overlay::translated_stockpile_search_matches(std::string_view source,
     return result.usable() && translated_search_text_matches(result.target, query);
 }
 
-// Custom settings are three independent category-button columns. Categories
-// and filters have their own stockpile status controls; value rows do not.
+// Custom settings have category/filter columns and a value column. The
+// category column can be absent; filters still own stockpile status controls.
 // Ordinary on/off skins also appear in unrelated preference buttons.
 // Read every caption before the task chooser can claim the icon column and
 // search results while leaving the middle filters to English-span centring.
@@ -134,7 +134,8 @@ void Overlay::append_fortress_stockpile_settings(std::vector<std::string> &rows,
             // for the outer settings panel and then reject the whole row.
             const auto panel = native_panel_interior(borders, *gps_, box);
             if (!panel || box.y < panel->y || box.y + box.h > panel->y + panel->h) continue;
-            const auto icon = native_category_button_text_rect(*gps_, field.start, field.end, y);
+            const auto icon = native_category_button_text_rect(
+                *gps_, field.start, field.end, y, button);
             const int source_left = !classic && icon ? icon->x : box.x;
             const int text_left = source_left + 1;
             int right = setting->status_left >= 0 ? setting->status_left - 1 : box.x + box.w;
@@ -171,43 +172,43 @@ void Overlay::append_fortress_stockpile_settings(std::vector<std::string> &rows,
         return a.x == b.x && a.y == b.y && a.w == b.w && a.h == b.h;
     };
     std::vector<SDL_Rect> settings_panels;
-    // Classic categories need no visible picture. Two separate columns of
-    // complete stockpile status controls plus the search field prove the
-    // page even when the query has no value rows. Derive the category from
-    // the leftmost status column, not the current English caption lengths.
-    for (const auto &category : captions) {
-        if (category.status_left < 0 ||
+    // The stockpile-only status control and the search field in the same
+    // owner prove the page even without category icons or visible results.
+    // A covered category column must not send the remaining filter labels
+    // and material names to generic matching.
+    for (const auto &caption : captions) {
+        if (caption.status_left < 0 ||
             std::any_of(settings_panels.begin(), settings_panels.end(),
-                [&](const SDL_Rect &panel) { return same_panel(panel, category.panel); })) continue;
+                [&](const SDL_Rect &panel) { return same_panel(panel, caption.panel); })) continue;
         bool found = false;
-        for (const auto &filter : captions) {
-            if (filter.status_left < 0 || !same_panel(category.panel, filter.panel) ||
-                filter.button.interior.x < category.button.interior.x + category.button.interior.w)
-                continue;
-            const int top_limit = std::min(category.button.interior.y, filter.button.interior.y);
-            const int panel_right = category.panel.x + category.panel.w;
-            for (int top = category.panel.y; top + 3 <= top_limit && !found; ++top)
-                for (int x = filter.button.interior.x + filter.button.interior.w;
-                        x + 4 < panel_right; ++x) {
-                    const auto search = native_textbox_rect_at(*gps_, x, top);
-                    if (search && search->x + search->w <= panel_right) {
-                        found = true;
-                        break;
-                    }
+        const int panel_right = caption.panel.x + caption.panel.w;
+        for (int top = caption.panel.y;
+                top + 3 <= caption.button.interior.y && !found; ++top)
+            for (int x = caption.button.interior.x + caption.button.interior.w;
+                    x + 4 < panel_right; ++x) {
+                const auto search = native_textbox_rect_at(*gps_, x, top);
+                if (search && search->x + search->w <= panel_right) {
+                    found = true;
+                    break;
                 }
-            if (found) break;
-        }
-        if (found) settings_panels.push_back(category.panel);
+            }
+        if (found) settings_panels.push_back(caption.panel);
     }
     for (const auto &panel : settings_panels) {
         int category_left = gps_->dimx;
         for (const auto &caption : captions)
             if (caption.status_left >= 0 && same_panel(panel, caption.panel))
                 category_left = std::min(category_left, caption.button.interior.x);
+        const bool has_filter_column = std::any_of(captions.begin(), captions.end(),
+            [&](const Caption &caption) {
+                return caption.status_left >= 0 && same_panel(panel, caption.panel) &&
+                    caption.button.interior.x > category_left;
+            });
         for (auto &caption : captions)
             if (same_panel(panel, caption.panel))
                 caption.category = caption.status_left >= 0 &&
-                    caption.button.interior.x == category_left;
+                    caption.button.interior.x == category_left &&
+                    (has_filter_column || caption.category);
     }
     // Keep the graphical icon/category proof when the status controls are
     // covered. A shared on/off skin alone is also used by other preferences.

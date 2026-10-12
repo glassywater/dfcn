@@ -2,6 +2,7 @@ base = "items::bucket"
 
 [[rulesets]]
 [rulesets.rules]
+"{::items::storage_container}" = "{::items::storage_container}"
 "{^0}{main}" = "{^0}{main}"
 
 [[rulesets]]

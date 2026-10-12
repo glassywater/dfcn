@@ -1,6 +1,6 @@
 // DF selects alias versus generated language_name inline at each squad field.
-// Retain verified aliases and the branch-owned fields of traveller returns;
-// the native strings themselves always remain unchanged.
+// Retain verified aliases, disband confirmation's generated names and the
+// branch-owned fields of traveller returns; native strings remain unchanged.
 #ifdef _WIN32
 using NativeSquadAliasCopyFn = NativeString *(*)(NativeString *, const NativeString *);
 using NativeSquadAliasDestroyFn = void (*)(NativeString *);
@@ -66,6 +66,25 @@ static void capture_native_squad_return_generated(const void *name,
                 capture_native_history_name(g_native_squad_name_hooks.base,
                     reinterpret_cast<uintptr_t>(name), snapshot))
             remember_native_mission_return_generated(reinterpret_cast<uintptr_t>(output),
+                source, std::move(snapshot));
+    } catch (...) {}
+}
+
+static void capture_native_squad_confirmation_generated(const void *name,
+        NativeString *output, bool first, bool second) {
+    NativeInputCallbackScope callback;
+    try { forget_native_squad_alias(reinterpret_cast<uintptr_t>(output)); }
+    catch (...) {}
+    callback.call_native([&] {
+        g_native_squad_name_hooks.return_name(name, output, first, second);
+    });
+    try {
+        std::string_view source;
+        NativeHistoryName snapshot;
+        if (g_overlay.translation_enabled() && native_string_view(output, &source, 65536) &&
+                capture_native_history_name(g_native_squad_name_hooks.base,
+                    reinterpret_cast<uintptr_t>(name), snapshot))
+            remember_native_squad_generated(reinterpret_cast<uintptr_t>(output),
                 source, std::move(snapshot));
     } catch (...) {}
 }
@@ -254,8 +273,8 @@ static bool install_native_squad_name_hooks() {
     hooks.base = base;
     if (!hooks.copy || !hooks.destroy || !hooks.destroy_direct ||
             !hooks.return_append || !hooks.return_name) return false;
-    // PE 53.16: all sources below are squad.alias (+0x80), selected only
-    // when nonempty. The alternative branches format squad.name (+0x8).
+    // PE 53.16: alias sources are squad.alias (+0x80), selected only when
+    // nonempty. Confirmation's bound alternatives format squad.name (+0x8).
     // Keep literal NativeCall sites so the normal build collects coordinates
     // for both Windows editions without a separate address inventory.
     std::vector<NativeCall> calls{
@@ -309,8 +328,12 @@ static bool install_native_squad_name_hooks() {
             reinterpret_cast<const void *>(&capture_native_squad_alias_copy)},
         {0x44198f, 0x6f5a0, // Squad selectors, rbp+d0.
             reinterpret_cast<const void *>(&capture_native_squad_alias_copy)},
+        {0x4419a7, 0xa946e0, // Disband confirmation, actual squad.name branch.
+            reinterpret_cast<const void *>(&capture_native_squad_confirmation_generated)},
         {0x441b4e, 0x6f5a0,
             reinterpret_cast<const void *>(&capture_native_squad_alias_copy)},
+        {0x441b66, 0xa946e0, // Compact disband list, actual squad.name branch.
+            reinterpret_cast<const void *>(&capture_native_squad_confirmation_generated)},
         {0x4423aa, 0x6f5a0, // Selected squad detail, rbp+130.
             reinterpret_cast<const void *>(&capture_native_squad_alias_copy)},
         {0x443f2f, 0x6f5a0, // Member sidebar's squad heading, rbp+d0.

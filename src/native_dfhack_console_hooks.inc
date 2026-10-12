@@ -16,8 +16,8 @@ static std::atomic<NativeDfhackConsoleBatchFn> g_native_dfhack_console_end{nullp
 static std::atomic<NativeDfhackConsoleBatchFn> g_native_dfhack_console_flush{nullptr};
 static std::atomic_bool g_native_dfhack_console_buffering{false};
 static std::atomic_uint g_native_dfhack_console_callbacks{0};
-static std::atomic_bool g_native_dfhack_console_tracking_failed{false};
 static std::mutex g_native_dfhack_console_hook_mutex;
+static bool g_native_dfhack_console_retiring = false;
 static std::mutex g_native_dfhack_console_pending_mutex;
 
 struct NativeDfhackConsoleCall {
@@ -426,9 +426,9 @@ static void native_dfhack_console_begin_batch(void *console) {
         std::lock_guard<std::mutex> lock(g_native_dfhack_console_pending_mutex);
         ++g_native_dfhack_console_pending[native_dfhack_console_thread(console)].batch_depth;
     } catch (...) {
-        // Losing batch ownership prevents safe teardown. Keep this core
-        // resident rather than detach an untracked native mutex pairing.
-        g_native_dfhack_console_tracking_failed.store(true, std::memory_order_release);
+        // The native begin/end pair owns only Console's mutex. Without a
+        // queue entry, add_text forwards immediately and native end still
+        // releases that mutex; no core reference spans the batch itself.
     }
 }
 
@@ -437,7 +437,8 @@ static void native_dfhack_console_end_batch(void *console) {
     const auto original = g_native_dfhack_console_end.load(std::memory_order_acquire);
     if (!original) return;
     try { native_dfhack_console_emit(call, console, native_dfhack_console_take(console, true),
-        true, 0, SIZE_MAX, true, true); }
+        g_native_dfhack_console_buffering.load(std::memory_order_acquire),
+        0, SIZE_MAX, true, true); }
     catch (...) {}
     // Flush fragments while DFHack still owns the batch mutex; its original
     // end then flushes the terminal, refreshes the prompt and releases it.
@@ -448,7 +449,8 @@ static void native_dfhack_console_flush_proxy(void *console) {
     NativeDfhackConsoleCall call;
     const auto original = g_native_dfhack_console_flush.load(std::memory_order_acquire);
     if (!original) return;
-    try { native_dfhack_console_emit(call, console, native_dfhack_console_take(console), true); }
+    try { native_dfhack_console_emit(call, console, native_dfhack_console_take(console),
+        g_native_dfhack_console_buffering.load(std::memory_order_acquire)); }
     catch (...) {}
     call.callback.call_native([&] { original(console); });
 }
@@ -468,6 +470,11 @@ static bool native_dfhack_console_hook_active() {
             return entry.installed.load(std::memory_order_acquire) ||
                 entry.protection_pending.load(std::memory_order_acquire);
         });
+}
+
+static void reset_native_dfhack_console_lifecycle() {
+    std::lock_guard<std::mutex> lock(g_native_dfhack_console_hook_mutex);
+    if (!native_dfhack_console_hook_active()) g_native_dfhack_console_retiring = false;
 }
 
 static bool native_dfhack_console_exchange(NativeDfhackConsoleSlot &entry, bool install) {
@@ -506,14 +513,15 @@ static bool native_dfhack_console_exchange(NativeDfhackConsoleSlot &entry, bool 
 
 static bool install_native_dfhack_console_hook() {
     std::lock_guard<std::mutex> lock(g_native_dfhack_console_hook_mutex);
+    if (g_native_dfhack_console_retiring) return true;
     if (native_dfhack_console_hook_active()) {
         const bool complete = std::all_of(g_native_dfhack_console_slots.begin(), g_native_dfhack_console_slots.end(),
             [](const auto &entry) {
                 return entry.installed.load(std::memory_order_acquire) &&
                     !entry.protection_pending.load(std::memory_order_acquire);
             });
-        // A deferred shutdown leaves every observer installed. Resume its
-        // translation when the still-resident core is enabled again.
+        // A retiring lifetime restores begin first. Do not publish new
+        // buffered output while its remaining observers are draining.
         if (complete) g_native_dfhack_console_buffering.store(true, std::memory_order_release);
         return complete;
     }
@@ -613,23 +621,29 @@ static bool install_native_dfhack_console_hook() {
 
 static void uninstall_native_dfhack_console_hook() {
     std::lock_guard<std::mutex> lock(g_native_dfhack_console_hook_mutex);
+    g_native_dfhack_console_retiring = true;
     if (!native_dfhack_console_hook_active()) return;
     g_native_dfhack_console_buffering.store(false, std::memory_order_release);
     constexpr const char *label = "DFHack console translation";
-    if (g_native_dfhack_console_callbacks.load(std::memory_order_acquire) ||
-            g_native_dfhack_console_tracking_failed.load(std::memory_order_acquire)) {
-        report_native_patch_error("WARN", label, "core remains resident while Console callbacks/batch ownership are active");
-        g_native_dfhack_console_buffering.store(true, std::memory_order_release);
+    // Stop admitting new tracked batches before waiting for old callbacks.
+    // Native begin/end continue to own their mutex even when just one side
+    // passes through an observer; batch depth is not a reference to this DLL.
+    auto &begin = g_native_dfhack_console_slots[0];
+    if ((begin.installed.load(std::memory_order_acquire) ||
+            begin.protection_pending.load(std::memory_order_acquire)) &&
+            !native_dfhack_console_exchange(begin, false)) return;
+    if (g_native_dfhack_console_callbacks.load(std::memory_order_acquire)) {
+        report_native_patch_error("WARN", label, "core remains resident while Console callbacks are active");
         return;
     }
     {
         std::lock_guard<std::mutex> pending_lock(g_native_dfhack_console_pending_mutex);
         if (std::any_of(g_native_dfhack_console_pending.begin(), g_native_dfhack_console_pending.end(),
-                [](const auto &item) { return item.second.batch_depth != 0; })) {
-            report_native_patch_error("WARN", label, "core remains resident until the native Console batch ends");
-            g_native_dfhack_console_buffering.store(true, std::memory_order_release);
+                [](const auto &item) { return !item.second.fragments.empty(); })) {
+            report_native_patch_error("WARN", label, "core remains resident until buffered Console text is forwarded");
             return;
         }
+        g_native_dfhack_console_pending.clear();
         g_native_dfhack_console_instrument_prefixes.clear();
     }
     constexpr std::array<size_t, 4> uninstall_order{0, 1, 3, 2};

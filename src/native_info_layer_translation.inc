@@ -1,13 +1,14 @@
 void Overlay::render_native_info_layer(SDL_Renderer *renderer) {
-    render_native_fortress_layer(renderer, false);
+    render_native_fortress_layer(renderer, NativeFortressLayerKind::Info);
 }
 
 void Overlay::render_native_stocks_layer(SDL_Renderer *renderer) {
-    render_native_fortress_layer(renderer, true);
+    render_native_fortress_layer(renderer, NativeFortressLayerKind::Stocks);
 }
 
-void Overlay::render_native_fortress_layer(SDL_Renderer *renderer, bool stocks) {
+void Overlay::render_native_fortress_layer(SDL_Renderer *renderer, NativeFortressLayerKind kind) {
     TranslationStateScope translation;
+    const bool stocks = kind == NativeFortressLayerKind::Stocks;
     auto &layer = stocks ? g_native_stocks_layer : g_native_info_layer;
     if (!renderer || !layer.ready || layer.renderer != renderer) return;
     if (!config_.enabled || !face_ || rules_.empty()) {
@@ -92,6 +93,7 @@ void Overlay::render_native_fortress_layer(SDL_Renderer *renderer, bool stocks) 
     // following the existing management-page layout order.
     const auto independent = [](const Match &match) {
         return match.native_fortress_creature_field ||
+            is_fortress_noble_symbol_field(match) ||
             match.rule == kToolbarTooltipBodyRule || match.rule == kToolbarTooltipKeyRule ||
             match.rule == kFortressUnitChooserRule || match.rule == kFortressLocationListRule ||
             match.rule == kWorkshopTaskRowRule || match.rule == kWorkshopMaterialFieldRule ||
@@ -113,6 +115,9 @@ void Overlay::render_native_fortress_layer(SDL_Renderer *renderer, bool stocks) 
         if ((match.rule == kFortressItemCaptionRule || match.rule == kFortressItemUseRule) &&
                 match.layout_x >= 0 && match.layout_clip_right > match.layout_x)
             continue;
+        if (match.rule == kFortressFarmFieldRule ||
+                (match.rule == kFortressPlaceNameRule && match.layout_x >= 0 &&
+                 match.layout_clip_right > match.layout_x)) continue;
         if (const auto button = native_button_text_span(*gps_, match.x, match.x + match.length, y)) {
             match.layout_x = button->first;
             match.layout_length = button->second - button->first;
@@ -127,7 +132,13 @@ void Overlay::render_native_fortress_layer(SDL_Renderer *renderer, bool stocks) 
     layout_fortress_sort_captions();
     switch (g_native_info_page) {
     case NativeInfoPage::Creatures: break;
-    case NativeInfoPage::Places: layout_fortress_location(renderer); break;
+    case NativeInfoPage::Places:
+        // Places picture rows have independent name/activity columns. Apply
+        // their native field bounds after the generic whole-button sizing.
+        layout_fortress_build_menu(renderer);
+        layout_fortress_farm_rows(renderer);
+        layout_fortress_location(renderer);
+        break;
     case NativeInfoPage::Labor:
         layout_fortress_labor(renderer);
         if (g_native_info_labor_page == NativeInfoLaborPage::Kitchen ||
@@ -137,7 +148,10 @@ void Overlay::render_native_fortress_layer(SDL_Renderer *renderer, bool stocks) 
                 g_native_info_labor_page == NativeInfoLaborPage::None)
             layout_fortress_stone(renderer);
         break;
-    case NativeInfoPage::Nobles: layout_fortress_nobles(renderer); break;
+    case NativeInfoPage::Nobles:
+        layout_fortress_nobles(renderer);
+        layout_fortress_item_captions(renderer);
+        break;
     case NativeInfoPage::Objects:
         layout_fortress_stocks(renderer);
         layout_fortress_item_captions(renderer);
@@ -148,6 +162,8 @@ void Overlay::render_native_fortress_layer(SDL_Renderer *renderer, bool stocks) 
     layout_multiline_matches();
     prepared_matches_.insert(prepared_matches_.end(),
         std::make_move_iterator(fields.begin()), std::make_move_iterator(fields.end()));
+    if (g_native_info_page == NativeInfoPage::Nobles)
+        layout_fortress_noble_symbols(renderer);
     if (g_native_info_page == NativeInfoPage::Tasks ||
             g_native_info_page == NativeInfoPage::Places ||
             g_native_info_page == NativeInfoPage::WorkOrders) {
@@ -158,8 +174,11 @@ void Overlay::render_native_fortress_layer(SDL_Renderer *renderer, bool stocks) 
     if (g_native_info_page == NativeInfoPage::Tasks ||
             g_native_info_page == NativeInfoPage::WorkOrders)
         layout_fortress_task_rows(renderer);
-    if (!captured_native_unit_chooser_records().empty())
+    if (g_native_info_page == NativeInfoPage::Nobles ||
+            !captured_native_unit_chooser_records().empty())
         layout_fortress_unit_chooser(renderer);
+    if (g_native_info_page == NativeInfoPage::Places)
+        layout_fortress_workshop_activities(renderer);
     if (g_native_info_page == NativeInfoPage::Places)
         layout_fortress_location_list(renderer);
     if (g_native_info_page == NativeInfoPage::Labor &&

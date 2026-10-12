@@ -13,7 +13,10 @@ shared-world	0x1404988b0	{n} drops {s}.
 shared-world	0x1404988b0	You have become enraged!
 shared-world	0x1404988b0	{n} has become enraged!
 shared-world	0x140684a10	{n} stops and pays attention to you.
-shared-world	0x1402afed0	{n} has revealed the presence of {n} to {n}.
+shared-world	0x1402afed0	{n} has revealed the presence of {b} to {n}.
+shared-world	0x1402afed0	Has revealed the presence of {b} to {n}.
+shared-world	0x1402afed0	{n} has revealed the presence of {b} to .
+shared-world	0x1402afed0	Has revealed the presence of {b} to .
 shared-world	0x1409ba3c0	{n} has assumed the position of {s} of {e}.
 shared-world	0x1409ba3c0	{n} has assumed the position of {s}.
 shared-world	0x1414644c0	After a polite discussion with local rivals, {n} has claimed the position of {s} of {e}.

@@ -35,6 +35,7 @@ static bool native_history_war_selection(uintptr_t collection, int32_t &category
 #include "native_history_capture.inc"
 #include "native_dfhack_raw_creatures.inc"
 #include "native_history_hooks.inc"
+#include "native_fortress_map_hud.inc"
 #include "native_work_order_shops.inc"
 #include "native_adventure_belief_source.inc"
 #include "native_announcement_popup.inc"
@@ -50,6 +51,7 @@ static bool native_history_war_selection(uintptr_t collection, int32_t &category
 #include "native_stocks_search_hooks.inc"
 #include "native_unit_search_hooks.inc"
 #include "native_unit_identity_hooks.inc"
+#include "native_fortress_zone_capture.inc"
 #include "native_justice_organizations.inc"
 #include "native_justice_plots.inc"
 #include "native_squad_name_hooks.inc"
@@ -66,6 +68,7 @@ static bool native_history_war_selection(uintptr_t collection, int32_t &category
 #include "native_item_picker_search_hooks.inc"
 #include "native_kitchen_search_hooks.inc"
 #include "native_justice_search_hooks.inc"
+#include "native_justice_actor_capture.inc"
 #include "native_job_details_search_hooks.inc"
 #include "native_adventure_barter_search_hooks.inc"
 #include "native_construction_search_hooks.inc"
@@ -82,12 +85,15 @@ static bool native_history_war_selection(uintptr_t collection, int32_t &category
 #include "native_announcement_hooks.inc"
 #include "native_dfhack_layer_present.inc"
 #include "native_help_layer_render.inc"
+#include "native_resolution_layer_render.inc"
 #include "native_tooltip_layer_render.inc"
 #include "native_notification_layer_render.inc"
 #include "native_info_layer_render.inc"
 #include "native_stocks_layer_render.inc"
+#include "native_squads_layer_render.inc"
 #include "native_reports_layer_render.inc"
 #include "native_pause_layer_render.inc"
+#include "native_worldgen_layer_render.inc"
 #include "native_map_layer_render.inc"
 #include "native_dfhack_render_layers.inc"
 #include "native_dfhack_capture_hooks.inc"
@@ -99,6 +105,7 @@ static bool native_history_war_selection(uintptr_t collection, int32_t &category
 #include "native_dfhack_messagebox_hooks.inc"
 #include "native_dfhack_prompt_hooks.inc"
 #include "native_dfhack_stonesense_hooks.inc"
+#include "native_render_resources.inc"
 
 static NativeProcessGuard g_process_instance_guard{NativeGuardRole::Core};
 static bool acquire_process_instance_guard() { return g_process_instance_guard.acquire(log_line); }
@@ -134,6 +141,7 @@ static bool install_sdl_hooks() {
         {"Translated display, hauling and trade search", install_native_item_picker_search_hook},
         {"Translated Kitchen search", install_native_kitchen_search_hook},
         {"Translated counterintelligence search", install_native_justice_search_hook},
+        {"Complete counterintelligence actor fields", install_native_justice_actor_capture_hook},
         {"Translated task-detail search", install_native_job_details_search_hook},
         {"Translated adventure barter search", install_native_adventure_barter_search_hook},
         {"Translated construction material search", install_native_construction_search_hook},
@@ -149,10 +157,13 @@ static bool install_sdl_hooks() {
         {"Complete announcement capture", install_native_announcement_hook},
         {"Native history event capture", install_native_history_hooks},
         {"Native tutorials and help layer", install_native_help_layer_hook},
+        {"Native resolution selector layer", install_native_resolution_layer_hook},
         {"Native fortress management layer", install_native_info_layer_hook},
         {"Native Stocks layer", install_native_stocks_layer_hook},
+        {"Native fortress Squads layer", install_native_squads_layer_hook},
         {"Native announcements and report tabs layer", install_native_reports_layer_hook},
         {"Native Escape menu layer", install_native_pause_layer_hook},
+        {"Native world generation layer", install_native_worldgen_layer_hook},
         {"Native map layer", install_native_map_layer_hook},
     };
     for (const auto &[label, install] : stages) {
@@ -183,10 +194,13 @@ static bool install_sdl_hooks() {
 static void uninstall_sdl_hooks() {
     [[maybe_unused]] NativePatchMappingScope mapping_scope;
     uninstall_native_map_layer_hook();
+    uninstall_native_worldgen_layer_hook();
     uninstall_native_pause_layer_hook();
     uninstall_native_reports_layer_hook();
+    uninstall_native_squads_layer_hook();
     uninstall_native_stocks_layer_hook();
     uninstall_native_info_layer_hook();
+    uninstall_native_resolution_layer_hook();
     uninstall_native_help_layer_hook();
     uninstall_native_dfhack_sitemap_hook();
     uninstall_native_dfhack_lua_output_hook();
@@ -218,6 +232,7 @@ static void uninstall_sdl_hooks() {
     uninstall_native_adventure_barter_search_hook();
     uninstall_native_job_details_search_hook();
     uninstall_native_justice_search_hook();
+    uninstall_native_justice_actor_capture_hook();
     uninstall_native_kitchen_search_hook();
     uninstall_native_item_picker_search_hook();
     uninstall_native_conversation_search_hook();
@@ -249,11 +264,14 @@ static bool native_hooks_detached() {
         !native_dfhack_render_layers_active() &&
         !native_dfhack_graphics_ownership_active() &&
         !native_help_layer_hook_active() &&
+        !native_resolution_layer_hook_active() &&
         !native_map_layer_hook_active() &&
         !native_info_layer_hook_active() &&
         !native_stocks_layer_hook_active() &&
+        !native_squads_layer_hook_active() &&
         !native_reports_layer_hook_active() &&
         !native_pause_layer_hook_active() &&
+        !native_worldgen_layer_hook_active() &&
         !native_dfhack_console_hook_active() &&
         !native_dfhack_lua_output_hook_active() &&
         !native_dfhack_sitemap_hook_active() &&
@@ -274,6 +292,7 @@ static bool native_hooks_detached() {
         !native_item_picker_search_hook_active() &&
         !native_kitchen_search_hook_active() &&
         !native_justice_search_hook_active() &&
+        !native_justice_actor_capture_hook_active() &&
         !native_job_details_search_hook_active() &&
         !native_adventure_barter_search_hook_active() &&
         !native_construction_search_hook_active() &&
@@ -311,6 +330,7 @@ static bool stop_reloadable_core() {
         return false;
     }
     if (g_plugin_active.load()) {
+        g_native_squads_overlay.release_native_squads_resources();
         g_overlay.shutdown();
         g_plugin_active.store(false);
     }

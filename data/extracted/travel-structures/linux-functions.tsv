@@ -1,0 +1,7 @@
+image_identity	role	start_va	end_va
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	renderer	0x12566e0	0x1264bcd
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	figure-reference	0xa10320	0xa10e58
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	entity-name	0xa278f0	0xa27adb
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	english-name	0x12c58d0	0x12c6e5c
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	species-name	0x12ae800	0x12ae995
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	figure-context	0xada1a0	0xada241

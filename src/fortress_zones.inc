@@ -33,21 +33,47 @@ std::optional<SDL_Rect> Overlay::capture_fortress_places_panel(
     return panel;
 }
 
+bool Overlay::fortress_farm_plots_selected(const std::vector<std::string> &context,
+        const SDL_Rect &panel, int tabs_y) const {
+    if (!gps_ || tabs_y < 0 || tabs_y >= gps_->dimy ||
+            context.size() != static_cast<size_t>(gps_->dimy)) return false;
+    // Every Places page shows this band. Only the selected native tab, not
+    // a crop word or an optional count, establishes the farm list.
+    int selected = -1, inactive = -1;
+    size_t cursor = static_cast<size_t>(panel.x);
+    for (const std::string_view caption : {
+            "Zones", "Locations", "Stockpiles", "Workshops", "Farm plots", "Siege engines"}) {
+        const auto at = context[tabs_y].find(caption, cursor);
+        if (at == std::string::npos ||
+                at + caption.size() > static_cast<size_t>(panel.x + panel.w)) return false;
+        bool top = false;
+        const auto *cell = cell_at(static_cast<int>(at), tabs_y, &top);
+        if (!cell) return false;
+        const int color = (cell[1] << 16) | (cell[2] << 8) | cell[3];
+        if (caption == "Farm plots") selected = color;
+        else if (inactive < 0) inactive = color;
+        else if (inactive != color) return false;
+        cursor = at + caption.size();
+    }
+    return selected >= 0 && inactive >= 0 && selected != inactive;
+}
+
 // Places' picture rows contain user-authored names, not text-entry widgets.
-// Claim a complete name before generic matching separates Chinese from ASCII
-// suffixes, translates fragments or treats a stockpile noun as a person name.
+// Claim complete names and siege job fields before generic matching separates
+// Chinese from ASCII suffixes or consumes another column as a name.
 // The ordinary picture-button layout remains the sole owner of placement.
 void Overlay::append_fortress_place_names(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y, bool raw_layer) const {
     if (!gps_ || rows.size() != static_cast<size_t>(gps_->dimy)) return;
     auto context = rows;
-    if (raw_layer) {
-        for (int y = 0; y < gps_->dimy; ++y)
-            for (int x = 0; x < gps_->dimx; ++x) {
-                const auto ch = visible_char_at(x, y);
-                context[y][x] = ch ? static_cast<char>(ch) : ' ';
-            }
-    }
+    // A name claimed by the farm reader still establishes this record's
+    // first column. Discover roles from the native row, so a remaining
+    // status cannot become an authored name after that column is blanked.
+    for (int y = 0; y < gps_->dimy; ++y)
+        for (int x = 0; x < gps_->dimx; ++x) {
+            const auto ch = visible_char_at(x, y);
+            context[y][x] = ch ? static_cast<char>(ch) : ' ';
+        }
     int tabs_y = -1;
     const auto panel = capture_fortress_places_panel(context, tabs_y);
     if (!panel || (only_y >= 0 && (only_y <= tabs_y ||
@@ -57,25 +83,7 @@ void Overlay::append_fortress_place_names(std::vector<std::string> &rows,
         const auto *cell = cell_at(x, y, &top);
         return cell ? (cell[1] << 16) | (cell[2] << 8) | cell[3] : -1;
     };
-    const bool farm_plots = [&] {
-        // Every Places page shows this band. The selected caption, not a
-        // crop word or an optional planted count, establishes the farm page.
-        int selected = -1, inactive = -1;
-        size_t cursor = static_cast<size_t>(panel->x);
-        for (const std::string_view caption : {
-                "Zones", "Locations", "Stockpiles", "Workshops", "Farm plots", "Siege engines"}) {
-            const auto at = context[tabs_y].find(caption, cursor);
-            if (at == std::string::npos ||
-                at + caption.size() > static_cast<size_t>(panel->x + panel->w)) return false;
-            const int color = color_at(static_cast<int>(at), tabs_y);
-            if (color < 0) return false;
-            if (caption == "Farm plots") selected = color;
-            else if (inactive < 0) inactive = color;
-            else if (inactive != color) return false;
-            cursor = at + caption.size();
-        }
-        return selected >= 0 && inactive >= 0 && selected != inactive;
-    }();
+    const bool farm_plots = fortress_farm_plots_selected(context, *panel, tabs_y);
     int siege_heading_y = -1;
     for (int y = tabs_y + 1; y < panel->y + panel->h; ++y) {
         for (const auto &field : split_text_fields(context[y])) {
@@ -88,10 +96,227 @@ void Overlay::append_fortress_place_names(std::vector<std::string> &rows,
     const auto top_drawn = captured_native_drawn_text_rows(true);
     drawn.insert(drawn.end(), top_drawn.begin(), top_drawn.end());
     const auto clipped = captured_clipped_captions();
+    // Render an already resolved owned field through its existing UI rule.
+    // Its name has native provenance and must not be reinterpreted as text.
+    const auto format_owned_caption = [&](std::string_view key, const std::string &value)
+            -> std::optional<std::string> {
+        const auto found = history_semantic_templates_.find(std::string(key));
+        if (found == history_semantic_templates_.end()) return std::nullopt;
+        const auto &rule = rules_[static_cast<size_t>(found->second)];
+        if (rule.template_kinds.size() != 1) return std::nullopt;
+        const std::vector<std::optional<std::string>> resolved{value};
+        bool intact = false;
+        auto target = fill_template(rule, {value}, nullptr, &intact, &resolved);
+        return intact && !target.empty() ? std::optional<std::string>(std::move(target))
+            : std::nullopt;
+    };
+    // Zones emits type, associated object and occupancy as independent addst
+    // fields. Keep each native object/name intact before generic matching.
+    for (const auto &draw : drawn) {
+        if (!draw.fortress_zone_caption || draw.source.empty() ||
+                draw.draw_grid != (draw.top_layer ? gps_->screen_top : gps_->screen) ||
+                draw.draw_dimx != gps_->dimx || draw.draw_dimy != gps_->dimy ||
+                draw.x < panel->x || draw.x >= panel->x + panel->w ||
+                draw.y <= tabs_y || draw.y >= panel->y + panel->h ||
+                (only_y >= 0 && only_y != draw.y) ||
+                draw.source.size() > static_cast<size_t>(panel->x + panel->w - draw.x) ||
+                context[draw.y].compare(draw.x, draw.source.size(), draw.source) != 0)
+            continue;
+        bool visible = true;
+        for (int offset = 0; offset < static_cast<int>(draw.source.size()); ++offset) {
+            if (draw.source[offset] == ' ') continue;
+            bool top = false;
+            cell_at(draw.x + offset, draw.y, &top);
+            if (top != draw.top_layer) { visible = false; break; }
+        }
+        if (!visible) continue;
+        const auto &caption = *draw.fortress_zone_caption;
+        using Kind = NativeFortressZoneCaption::Kind;
+        const bool lower_line = caption.kind == Kind::Location || caption.kind == Kind::Unit ||
+            caption.kind == Kind::Squad || caption.kind == Kind::SquadCount ||
+            caption.kind == Kind::Present;
+        const auto button = native_picture_caption_rect(
+            *gps_, draw.x, draw.y - (lower_line ? 1 : 0), false,
+            nullptr, true, nullptr, true);
+        if (!button || button->x < panel->x || button->y <= tabs_y ||
+                button->x + button->w > panel->x + panel->w ||
+                button->y + button->h > panel->y + panel->h) continue;
+        int right = button->x + button->w;
+        if (draw.draw_clip) right = std::min(right, draw.draw_clip->x + draw.draw_clip->w);
+        for (int x = draw.x + static_cast<int>(draw.source.size()); x < right; ++x)
+            for (int row = button->y; row < button->y + button->h; ++row)
+                if (native_foreground_picture_at(*gps_, x, row)) { right = x; break; }
+        for (const auto &other : drawn)
+            if (other.fortress_zone_caption && other.top_layer == draw.top_layer &&
+                    other.y == draw.y && other.x > draw.x && other.x < right &&
+                    !other.source.empty() && other.source.size() <=
+                        static_cast<size_t>(gps_->dimx - other.x) &&
+                    context[other.y].compare(other.x, other.source.size(), other.source) == 0)
+                right = other.x;
+        const int length = static_cast<int>(draw.source.size());
+        if (right < draw.x + length) continue;
+        const std::string complete = draw.complete_source.empty()
+            ? draw.source : draw.complete_source;
+        if (complete.empty() || complete.find_first_of("\r\n") != std::string::npos) continue;
+        std::optional<std::string> translated;
+        switch (caption.kind) {
+        case Kind::Type:
+            if (!caption.authored) {
+                for (const std::string_view canonical : {
+                        "Meeting Area", "Bedroom", "Dining Hall", "Pen/Pasture", "Pit/Pond",
+                        "Water Source", "Dungeon", "Fishing", "Sand", "Office", "Dormitory",
+                        "Barracks", "Archery Range", "Garbage Dump", "Animal Training", "Tomb",
+                        "Gather Fruit", "Clay"}) {
+                    if (complete.size() == canonical.size() &&
+                            template_literal_at(complete, 0, canonical, true)) {
+                        translated = exact_literal_translation("Zone type: " + std::string(canonical));
+                        break;
+                    }
+                }
+            }
+            break;
+        case Kind::Location:
+            if (caption.location_name) translated = translate_history_name(*caption.location_name);
+            if (!translated) translated = contains_cjk_utf8(complete)
+                ? std::optional<std::string>(native_text_to_utf8(complete))
+                : translate_procedural_fragment(complete, false, false, {},
+                    ProceduralFragmentContext::generated_name);
+            if (!translated) translated = exact_literal_translation(complete);
+            break;
+        case Kind::Unit:
+            if (draw.unit_identity_target) translated = draw.unit_identity_target;
+            else if (caption.unit_identity)
+                translated = translate_native_unit_identity(*caption.unit_identity);
+            else translated = translate_unit_identity(complete, true);
+            break;
+        case Kind::Squad: {
+            std::optional<std::string> name;
+            if (caption.squad_alias) name = native_text_to_utf8(*caption.squad_alias);
+            else if (caption.squad_name) name = translate_history_name(*caption.squad_name);
+            if (name) translated = format_owned_caption("{e} assigned", *name);
+            break;
+        }
+        case Kind::Assigned:
+        case Kind::Present:
+        case Kind::Imprisoned:
+        case Kind::SquadCount: {
+            const std::string suffix = caption.kind == Kind::Assigned ? " assigned"
+                : caption.kind == Kind::Imprisoned ? " imprisoned"
+                : caption.kind == Kind::SquadCount ? " squads assigned"
+                : complete.ends_with(" available") ? " available" : " present";
+            if (!complete.ends_with(suffix)) break;
+            const std::string digits = complete.substr(0, complete.size() - suffix.size());
+            if (digits.empty() || !std::all_of(digits.begin(), digits.end(),
+                    [](unsigned char ch) { return ch >= '0' && ch <= '9'; })) break;
+            const auto found = history_semantic_templates_.find("{d}" + suffix);
+            if (found == history_semantic_templates_.end()) break;
+            bool intact = false;
+            auto value = translate_template_captures(rules_[static_cast<size_t>(found->second)],
+                {digits}, &intact);
+            if (intact && !value.empty()) translated = std::move(value);
+            break;
+        }
+        }
+        const std::string target = translated ? *translated : native_text_to_utf8(complete);
+        if (target.empty() || target.find("[C:") != std::string::npos ||
+                target.find_first_of("\r\n") != std::string::npos) continue;
+        if (rows[draw.y].compare(draw.x, length, draw.source) == 0) {
+            Match match{draw.x, draw.y, length, kFortressLocationListRule, target, draw.source};
+            match.native_picture_caption_box = SDL_Rect{draw.x, draw.y, right - draw.x, 1};
+            match.native_picture_caption_source = complete;
+            match.layout_x = draw.x;
+            match.layout_y = draw.y;
+            match.layout_length = right - draw.x;
+            match.layout_clip_right = right;
+            match.layout_left = true;
+            matches.push_back(std::move(match));
+            std::fill_n(rows[draw.y].begin() + draw.x, length, ' ');
+        } else if (raw_layer) {
+            for (int offset = 0; offset < length;) {
+                while (offset < length && rows[draw.y][draw.x + offset] != draw.source[offset]) ++offset;
+                const int start = offset;
+                while (offset < length && rows[draw.y][draw.x + offset] == draw.source[offset]) ++offset;
+                if (offset == start) continue;
+                matches.push_back({draw.x + start, draw.y, offset - start,
+                    kFortressLocationListRule, {}, draw.source.substr(start, offset - start)});
+                std::fill_n(rows[draw.y].begin() + draw.x + start, offset - start, ' ');
+            }
+        }
+    }
     const int first_y = only_y >= 0 ? only_y : tabs_y + 1;
     const int last_y = only_y >= 0 ? only_y + 1 : panel->y + panel->h;
     for (int y = first_y; y < last_y; ++y) {
         const auto fields = split_text_fields(context[y]);
+        if (siege_heading_y >= 0 && y > siege_heading_y) {
+            // Ammunition and job status share the picture's lower row. With
+            // only one padding space, "100 bolts Operator assigned" otherwise
+            // matches the squad-name template "{e} assigned" as one field.
+            // Own the job separately, retaining its native column and the
+            // existing ammunition word/count rendering.
+            for (const auto &field : fields) {
+                if (field.start < panel->x || field.end > panel->x + panel->w) continue;
+                const auto button = native_picture_caption_rect(
+                    *gps_, field.start, y - 1, false, nullptr, true, nullptr, true);
+                if (!button || y != button->y + button->h - 1 ||
+                    button->x < panel->x || button->y <= siege_heading_y ||
+                    button->x + button->w > panel->x + panel->w ||
+                    button->y + button->h > panel->y + panel->h ||
+                    field.start < button->x ||
+                    std::string_view(context[y]).substr(button->x,
+                        field.start - button->x).find_first_not_of(' ') !=
+                        std::string_view::npos) continue;
+                int right = button->x + button->w;
+                for (int x = field.end; x < right; ++x)
+                    for (int row = button->y; row < button->y + button->h; ++row)
+                        if (native_foreground_picture_at(*gps_, x, row)) {
+                            right = x;
+                            break;
+                        }
+                if (field.start >= right) continue;
+                const auto status = std::string_view(context[y]).substr(
+                    field.start, right - field.start);
+                size_t ammo_end = 0;
+                if (status.starts_with("Unloaded")) ammo_end = 8;
+                else if (status.starts_with("Loaded")) ammo_end = 6;
+                else {
+                    while (ammo_end < status.size() && status[ammo_end] >= '0' &&
+                            status[ammo_end] <= '9') ++ammo_end;
+                    if (!ammo_end || !status.substr(ammo_end).starts_with(" bolts")) continue;
+                    ammo_end += std::string_view(" bolts").size();
+                }
+                if (ammo_end >= status.size() || status[ammo_end] != ' ') continue;
+                const auto job = trim_view(status.substr(ammo_end));
+                if (job != "Operator assigned" && job != "Operator present" &&
+                    job != "No operator" && job != "Inactive load task" &&
+                    job != "Loading") continue;
+                const auto target = exact_literal_translation(job);
+                if (!target) continue;
+                const int x = field.start + static_cast<int>(job.data() - status.data());
+                const int length = static_cast<int>(job.size());
+                const std::string source(job);
+                if (rows[y].compare(x, length, source) == 0) {
+                    // This rule also gives the picture layout an explicit
+                    // field boundary, even when native columns touch.
+                    Match match{x, y, length, kFortressPlaceNameRule, *target, source};
+                    match.layout_x = x;
+                    match.layout_length = right - x;
+                    match.layout_clip_right = right;
+                    match.layout_left = true;
+                    matches.push_back(std::move(match));
+                    std::fill_n(rows[y].begin() + x, length, ' ');
+                } else if (raw_layer) {
+                    for (int offset = 0; offset < length;) {
+                        while (offset < length && rows[y][x + offset] != source[offset]) ++offset;
+                        const int start = offset;
+                        while (offset < length && rows[y][x + offset] == source[offset]) ++offset;
+                        if (offset == start) continue;
+                        matches.push_back({x + start, y, offset - start,
+                            kFortressPlaceNameRule, {}, source.substr(start, offset - start)});
+                        std::fill_n(rows[y].begin() + x + start, offset - start, ' ');
+                    }
+                }
+            }
+        }
         for (const auto &field : fields) {
             if (field.start < panel->x || field.end > panel->x + panel->w) continue;
             // The joined picture strip has no separate rectangle left cap.

@@ -320,6 +320,9 @@ DFCN_EXPORT bool dfhooks_sdl_event(void *raw_event) {
         (event.key.keysym.sym == SDLK_F5 || event.key.keysym.sym == SDLK_F10)) {
         const bool reload_core = event.key.keysym.sym == SDLK_F5;
         bool &consumed = reload_core ? f5_consumed : f10_consumed;
+        // A release can be consumed by an earlier dfhooks callback. A fresh
+        // physical press must recover the latch without repeating held keys.
+        if (!event.key.repeat) consumed = false;
         if (consumed) return true;
         const auto mods = static_cast<SDL_Keymod>(event.key.keysym.mod);
         if ((mods & KMOD_SHIFT) && !(mods & (KMOD_ALT | KMOD_GUI)) &&

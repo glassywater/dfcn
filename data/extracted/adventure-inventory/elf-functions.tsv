@@ -1,0 +1,85 @@
+image	role	start	end	source
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	complete-material-name	0x74ca90	0x74d6c3	elf-74ca90.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	building-complete-designation	0xb288b0	0xb2892e	elf-b288b0.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	inventory-pet-location	0xb5f2d0	0xb5f5af	elf-b5f2d0.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	complete-body-part-name	0xb602d0	0xb60acb	elf-b602d0.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	item-location-label	0xb86630	0xb8768b	elf-b86630.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	unit-complete-designation	0xba53d0	0xba693b	elf-ba53d0.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	item_actualst+0x5e8 | item_ammost+0x5e8 | item_amuletst+0x5e8 | item_animaltrapst+0x5e8 | item_anvilst+0x5e8 | item_armorst+0x5e8 | item_armorstandst+0x5e8 | item_backpackst+0x5e8 | item_ballistaarrowheadst+0x5e8 | item_ballistapartsst+0x5e8 | item_barst+0x5e8 | item_bedst+0x5e8 | item_blocksst+0x5e8 | item_bolt_thrower_partsst+0x5e8 | item_boulderst+0x5e8 | item_boxst+0x5e8 | item_braceletst+0x5e8 | item_branchst+0x5e8 | item_bucketst+0x5e8 | item_cabinetst+0x5e8 | item_catapultpartsst+0x5e8 | item_chainst+0x5e8 | item_chairst+0x5e8 | item_cheesest+0x5e8 | item_clothst+0x5e8 | item_coffinst+0x5e8 | item_constructedst+0x5e8 | item_craftedst+0x5e8 | item_crownst+0x5e8 | item_crutchst+0x5e8 | item_doorst+0x5e8 | item_drinkst+0x5e8 | item_earringst+0x5e8 | item_eggst+0x5e8 | item_fish_rawst+0x5e8 | item_fishst+0x5e8 | item_flaskst+0x5e8 | item_floodgatest+0x5e8 | item_gemst+0x5e8 | item_globst+0x5e8 | item_glovesst+0x5e8 | item_gobletst+0x5e8 | item_gratest+0x5e8 | item_hatch_coverst+0x5e8 | item_helmst+0x5e8 | item_instrumentst+0x5e8 | item_liquid_miscst+0x5e8 | item_liquidst+0x5e8 | item_liquipowderst+0x5e8 | item_meatst+0x5e8 | item_millstonest+0x5e8 | item_orthopedic_castst+0x5e8 | item_pantsst+0x5e8 | item_pipe_sectionst+0x5e8 | item_plant_growthst+0x5e8 | item_plantst+0x5e8 | item_powder_miscst+0x5e8 | item_powderst+0x5e8 | item_quernst+0x5e8 | item_quiverst+0x5e8 | item_remainsst+0x5e8 | item_ringst+0x5e8 | item_roughst+0x5e8 | item_scepterst+0x5e8 | item_seedsst+0x5e8 | item_sheetst+0x5e8 | item_shieldst+0x5e8 | item_shoesst+0x5e8 | item_siegeammost+0x5e8 | item_skin_tannedst+0x5e8 | item_smallgemst+0x5e8 | item_splintst+0x5e8 | item_tablest+0x5e8 | item_threadst+0x5e8 | item_toyst+0x5e8 | item_traction_benchst+0x5e8 | item_trapcompst+0x5e8 | item_trappartsst+0x5e8 | item_weaponrackst+0x5e8 | item_weaponst+0x5e8 | item_windowst+0x5e8 | item_woodst+0x5e8 | itemst+0x5e8	0xe3bf80	0xe3c1d7	elf-e3bf80.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	item_coinst+0x5e8	0xe3c1e0	0xe3c220	elf-e3c1e0.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	item_bookst+0x5e8	0xe653f0	0xe65542	elf-e653f0.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	item_body_componentst+0x5e8 | item_corpsepiecest+0x5e8 | item_corpsest+0x5e8	0xe67280	0xe68016	elf-e67280.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	complete-item-designation	0xe68020	0xe689cb	elf-e68020.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	item_toolst+0x5e8	0xe689d0	0xe69111	elf-e689d0.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	item_totemst+0x5e8	0xe6a4e0	0xe6a817	elf-e6a4e0.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	item_binst+0x5e8	0xe6d150	0xe6d5a7	elf-e6d150.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	item_slabst+0x5e8	0xe6d5b0	0xe6d7d3	elf-e6d5b0.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	item_critterst+0x5e8 | item_petst+0x5e8 | item_verminst+0x5e8	0xe6d7e0	0xe6d9cb	elf-e6d7e0.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	item_foodst+0x5e8	0xe6d9d0	0xe6ddc4	elf-e6d9d0.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	item_barrelst+0x5e8	0xe6ddd0	0xe6e4c4	elf-e6ddd0.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	item_bagst+0x5e8	0xe6e980	0xe6ecdb	elf-e6e980.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	item_body_componentst+0x5f0 | item_corpsepiecest+0x5f0 | item_corpsest+0x5f0	0xe6ece0	0xe6efa4	elf-e6ece0.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	item_actualst+0x5f0 | item_ammost+0x5f0 | item_amuletst+0x5f0 | item_animaltrapst+0x5f0 | item_anvilst+0x5f0 | item_armorst+0x5f0 | item_armorstandst+0x5f0 | item_backpackst+0x5f0 | item_bagst+0x5f0 | item_ballistaarrowheadst+0x5f0 | item_ballistapartsst+0x5f0 | item_barrelst+0x5f0 | item_barst+0x5f0 | item_bedst+0x5f0 | item_binst+0x5f0 | item_blocksst+0x5f0 | item_bolt_thrower_partsst+0x5f0 | item_bookst+0x5f0 | item_boulderst+0x5f0 | item_boxst+0x5f0 | item_braceletst+0x5f0 | item_branchst+0x5f0 | item_bucketst+0x5f0 | item_cabinetst+0x5f0 | item_cagest+0x5f0 | item_catapultpartsst+0x5f0 | item_chainst+0x5f0 | item_chairst+0x5f0 | item_cheesest+0x5f0 | item_clothst+0x5f0 | item_coffinst+0x5f0 | item_coinst+0x5f0 | item_constructedst+0x5f0 | item_craftedst+0x5f0 | item_critterst+0x5f0 | item_crownst+0x5f0 | item_crutchst+0x5f0 | item_doorst+0x5f0 | item_drinkst+0x5f0 | item_earringst+0x5f0 | item_eggst+0x5f0 | item_figurinest+0x5f0 | item_fish_rawst+0x5f0 | item_fishst+0x5f0 | item_flaskst+0x5f0 | item_floodgatest+0x5f0 | item_foodst+0x5f0 | item_gemst+0x5f0 | item_globst+0x5f0 | item_glovesst+0x5f0 | item_gobletst+0x5f0 | item_gratest+0x5f0 | item_hatch_coverst+0x5f0 | item_helmst+0x5f0 | item_instrumentst+0x5f0 | item_liquid_miscst+0x5f0 | item_liquidst+0x5f0 | item_liquipowderst+0x5f0 | item_meatst+0x5f0 | item_millstonest+0x5f0 | item_orthopedic_castst+0x5f0 | item_pantsst+0x5f0 | item_petst+0x5f0 | item_pipe_sectionst+0x5f0 | item_plant_growthst+0x5f0 | item_plantst+0x5f0 | item_powder_miscst+0x5f0 | item_powderst+0x5f0 | item_quernst+0x5f0 | item_quiverst+0x5f0 | item_remainsst+0x5f0 | item_ringst+0x5f0 | item_rockst+0x5f0 | item_roughst+0x5f0 | item_scepterst+0x5f0 | item_seedsst+0x5f0 | item_sheetst+0x5f0 | item_shieldst+0x5f0 | item_shoesst+0x5f0 | item_siegeammost+0x5f0 | item_skin_tannedst+0x5f0 | item_slabst+0x5f0 | item_smallgemst+0x5f0 | item_splintst+0x5f0 | item_statuest+0x5f0 | item_tablest+0x5f0 | item_threadst+0x5f0 | item_toolst+0x5f0 | item_totemst+0x5f0 | item_toyst+0x5f0 | item_traction_benchst+0x5f0 | item_trapcompst+0x5f0 | item_trappartsst+0x5f0 | item_verminst+0x5f0 | item_weaponrackst+0x5f0 | item_weaponst+0x5f0 | item_windowst+0x5f0 | item_woodst+0x5f0 | itemst+0x5f0	0xe6efb0	0xe6f07b	elf-e6efb0.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	item_rockst+0x5e8	0xe6f080	0xe6f71f	elf-e6f080.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	item_statuest+0x5e8	0xe82910	0xe82ab9	elf-e82910.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	item_figurinest+0x5e8	0xe82ac0	0xe82c69	elf-e82ac0.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	item_cagest+0x5e8	0xe91d40	0xe92882	elf-e91d40.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	adventure_environment_ingest_from_containerst+0x10 | adventure_environment_ingest_materialst+0x10 | adventure_environment_place_in_bld_containerst+0x10 | adventure_environment_place_in_it_containerst+0x10 | adventure_environment_place_on_pack_animalst+0x10 | adventure_environment_unit_suck_bloodst+0x10 | adventure_option_eat_item_contaminantst+0x10 | adventure_option_eat_unit_contaminantst+0x10 | adventure_option_interact_with_itemst+0x10 | adventure_option_inventory_itemst+0x10 | adventure_option_view_contaminantst+0x10	0x1085910	0x108591a	elf-1085910.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	adventure_environment_ingest_from_containerst+0xe0 | adventure_environment_ingest_materialst+0xe0 | adventure_environment_place_in_bld_containerst+0xe0 | adventure_environment_place_in_it_containerst+0xe0 | adventure_environment_place_on_pack_animalst+0xe0 | adventure_environment_unit_suck_bloodst+0xe0 | adventure_option_eat_item_contaminantst+0xe0 | adventure_option_eat_unit_contaminantst+0xe0 | adventure_option_view_contaminantst+0xe0	0x1085a80	0x1085a87	elf-1085a80.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	adventure_environment_ingest_from_containerst+0x100 | adventure_environment_ingest_materialst+0x100 | adventure_environment_place_in_bld_containerst+0x100 | adventure_environment_place_in_it_containerst+0x100 | adventure_environment_place_on_pack_animalst+0x100 | adventure_environment_unit_suck_bloodst+0x100 | adventure_option_drop_itemst+0x100 | adventure_option_eat_drink_itemst+0x100 | adventure_option_eat_item_contaminantst+0x100 | adventure_option_eat_unit_contaminantst+0x100 | adventure_option_interact_with_itemst+0x100 | adventure_option_put_itemst+0x100 | adventure_option_remove_itemst+0x100 | adventure_option_throw_itemst+0x100 | adventure_option_view_contaminantst+0x100 | adventure_option_view_itemst+0x100 | adventure_option_wear_itemst+0x100	0x1085aa0	0x1085aa7	elf-1085aa0.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	adventure_environment_place_on_pack_animalst+0xd0	0x11355f0	0x11356fe	elf-11355f0.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	adventure_environment_unit_suck_bloodst+0xd0	0x1137710	0x1137870	elf-1137710.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	adventure_environment_place_in_bld_containerst+0xd0	0x115b870	0x115bf70	elf-115b870.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	adventure_option_throw_itemst+0x8	0x11614d0	0x11615de	elf-11614d0.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	adventure_option_eat_drink_itemst+0x8	0x11615e0	0x11616ee	elf-11615e0.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	adventure_option_interact_with_itemst+0x8	0x11616f0	0x11617fe	elf-11616f0.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	adventure_option_view_itemst+0x8	0x1161800	0x116190e	elf-1161800.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	adventure_option_drop_itemst+0x8	0x1161910	0x1161a1e	elf-1161910.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	adventure_option_inventory_itemst+0x8	0x1161a20	0x1161b2e	elf-1161a20.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	adventure_option_remove_itemst+0x8	0x1161b30	0x1161c3e	elf-1161b30.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	adventure_option_put_itemst+0x8	0x1161c40	0x1161d4e	elf-1161c40.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	adventure_option_wear_itemst+0x8	0x1161d50	0x1161e5e	elf-1161d50.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	adventure_option_wear_itemst+0x10	0x1161e60	0x116201a	elf-1161e60.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	adventure_option_drop_itemst+0x10	0x1162020	0x11621da	elf-1162020.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	adventure_option_view_itemst+0x10	0x11621e0	0x116239a	elf-11621e0.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	adventure_option_remove_itemst+0x10	0x11623a0	0x116255a	elf-11623a0.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	adventure_option_throw_itemst+0x10	0x1162560	0x116271a	elf-1162560.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	adventure_option_put_itemst+0x10	0x1162720	0x11628da	elf-1162720.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	adventure_option_eat_drink_itemst+0x10	0x11628e0	0x1162b37	elf-11628e0.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	adventure_option_view_contaminantst+0x8	0x1162b40	0x1162da6	elf-1162b40.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	inventory-selection-renderer	0x1199680	0x119cb0e	elf-1199680.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	adventure_environment_place_on_pack_animalst+0x8	0x119da20	0x119dcc3	elf-119da20.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	adventure_environment_place_in_it_containerst+0x8	0x119dcd0	0x119df73	elf-119dcd0.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	adventure_environment_unit_suck_bloodst+0x8	0x11a2ff0	0x11a3343	elf-11a2ff0.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	adventure_environment_ingest_from_containerst+0x8	0x11a8390	0x11a8817	elf-11a8390.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	adventure_environment_place_in_bld_containerst+0x8	0x11a8f50	0x11a93af	elf-11a8f50.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	adventure_environment_ingest_materialst+0x8	0x11b1160	0x11b19c4	elf-11b1160.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	adventure_option_eat_unit_contaminantst+0x8	0x11b1e50	0x11b21b6	elf-11b1e50.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	adventure_option_eat_item_contaminantst+0x8	0x11b2ad0	0x11b2e36	elf-11b2ad0.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	adventure_environment_ingest_materialst+0xd0 | adventure_option_eat_item_contaminantst+0xd0 | adventure_option_eat_unit_contaminantst+0xd0 | adventure_option_view_contaminantst+0xd0	0x126ca00	0x126ca07	elf-126ca00.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	adventure_option_inventory_itemst+0xe0	0x126cc60	0x126cc69	elf-126cc60.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	adventure_option_inventory_itemst+0x100	0x126cc80	0x126cc88	elf-126cc80.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	adventure_option_view_itemst+0xe0	0x126ccd0	0x126ccd9	elf-126ccd0.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	adventure_option_drop_itemst+0xe0	0x126cd20	0x126cd29	elf-126cd20.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	adventure_option_wear_itemst+0xe0	0x126cd80	0x126cd89	elf-126cd80.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	adventure_option_throw_itemst+0xe0	0x126cde0	0x126cde9	elf-126cde0.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	adventure_option_remove_itemst+0xe0	0x126ce30	0x126ce39	elf-126ce30.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	adventure_option_put_itemst+0xe0	0x126ce90	0x126ce99	elf-126ce90.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	adventure_option_eat_drink_itemst+0xe0	0x126cef0	0x126cef9	elf-126cef0.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	adventure_option_interact_with_itemst+0xe0	0x126cf40	0x126cf49	elf-126cf40.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	adventure_option_interact_with_itemst+0xd0	0x126e100	0x126e11b	elf-126e100.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	adventure_option_eat_drink_itemst+0xd0	0x126e120	0x126e13b	elf-126e120.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	adventure_option_put_itemst+0xd0	0x126e140	0x126e15b	elf-126e140.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	adventure_option_remove_itemst+0xd0	0x126e160	0x126e17b	elf-126e160.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	adventure_option_wear_itemst+0xd0	0x126e180	0x126e19b	elf-126e180.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	adventure_option_throw_itemst+0xd0	0x126e1a0	0x126e1bb	elf-126e1a0.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	adventure_option_drop_itemst+0xd0	0x126e1c0	0x126e1db	elf-126e1c0.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	adventure_option_view_itemst+0xd0	0x126e1e0	0x126e1fb	elf-126e1e0.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	adventure_option_inventory_itemst+0xd0	0x126e200	0x126e21b	elf-126e200.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	adventure_environment_ingest_from_containerst+0xd0	0x126e440	0x126e45b	elf-126e440.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	adventure_environment_place_in_it_containerst+0xd0	0x126e460	0x126e47b	elf-126e460.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	complete-item-type-material-noun	0x12b6a70	0x12bdd2f	elf-12b6a70.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	adventure-relative-direction	0x14f8d40	0x14f94e2	elf-14f8d40.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	coin-mint-identity	0x1998190	0x199865e	elf-1998190.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	contaminant-deposit-name	0x19bded0	0x19befd8	elf-19bded0.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	contaminant-ingestion-state	0x19befe0	0x19bf01f	elf-19befe0.asm

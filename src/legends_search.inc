@@ -6,7 +6,11 @@ std::optional<std::string> Overlay::translate_journal_title(std::string_view sou
     std::optional<std::string> target;
     switch (kind) {
     case JournalSearchKind::Event:
-        target = translate_legends_event(source);
+        // Adventure incidents and report summaries have their own native
+        // constructors. In particular, Your/you and A <RAW caste> are typed
+        // fields here, rather than generated historical names.
+        target = translate_announcement_combat(source, "journal-event-title");
+        if (!target) target = translate_legends_event(source);
         break;
     case JournalSearchKind::Creature:
         target = translate_creature_label(source);

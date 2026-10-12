@@ -1,0 +1,16 @@
+# Default vocabulary for complete RAW-use tags captured by typed UI readers.
+# Optional translation extensions retain precedence over these leaf rules.
+base = "item_tagger::tags"
+
+[[rulesets]]
+name = "tag"
+[rulesets.rules]
+"[brew]" = "[可酿酒]"
+"[cook]" = "[可烹饪]"
+"[edi]" = "[可生食]"
+"[mill]" = "[可研磨]"
+"[color]" = "[染料]"
+"[eco]" = "[经济]"
+"[flux]" = "[助熔剂]"
+"[fuel]" = "[燃料]"
+"[msafe]" = "[耐岩浆]"

@@ -1,0 +1,243 @@
+Native Windows source reconstruction for the reveal-presence announcement.
+This is an extraction of the configured PE files, with no game interaction.
+
+Images and function ranges are recorded in native-owners.tsv and field-native-owners.tsv.
+Steam producer: 0x1402afed0..0x1402b18c8, executable instructions end at RET 0x1402b17b7.
+Classic producer: 0x1402ada90..0x1402af488, executable instructions end at RET 0x1402af377.
+The remaining function bytes are two native 34-entry tables used for knowledge-record
+updates. They do not select announcement prose. All original bytes are represented by
+the full unwind-range assembly, while native-branches.tsv retains the instruction edges.
+
+Announcement production (Steam addresses):
+  REQUIRE recipient has soul at unit+0xa98                     0x1402aff10
+  for each unread knowledge objective type 10                 0x1402b0dd6..0x1402b0de3:
+    require native soul trait/knowledge sharing predicate      0x1402b0de9..0x1402b0e09
+    require context object type 17 and a found artifact        0x1402b0e1a..0x1402b0e9b
+    resolve artifact presence coordinates:
+      unlocated -> rumor/unknown-presence record, no report   0x1402b0eb3..0x1402b0ed3
+      item direct position -> xyz from item+8/+a/+c           0x1402b0fa8
+      item in a container/holder -> native reference slots   0x1402b0ed9..0x1402b0fa6
+    require resolved X coordinate != -30000                  0x1402b0fcb
+    build one knowledge record selected from:
+      type 25 = artifact has holder/site id at artifact+a8    0x1402b0fd7
+      type 26 = artifact+b4 present                          0x1402b0ffc
+      type 27 = artifact+b8 present                          0x1402b1011
+      type 28 = artifact+bc present                          0x1402b1026
+      type 29 = unresolved/unknown position, no report        0x1402b1252
+    record knowledge before formatting                       0x1402b106f
+    report enabled if native mode/announcement flags allow   0x1402b1074..0x1402b1092
+    text = full_actor_reference(speaker)                      0x1402b10e6 -> 0x141331500
+    text += " has revealed the presence of "                 0x1402b111b
+    text += artifact_reference(artifact.id, flags=0)          0x1402b113b -> 0x140b94400
+    text += " to "                                           0x1402b1146
+    text += full_actor_reference(recipient)                   0x1402b1163 -> 0x141331500
+    text += "."                                              0x1402b1198
+    capitalize(text)                                         0x1402b11b2 -> 0x14052d650
+    submit(type=321 (0x141), color=6, duration=2000)          0x1402b122e -> 0x1400e3c20
+
+There is exactly one prose production in this constructor, with two fully typed actor
+fields and an artifact-title/item field. The four known-coordinate record selectors
+and the unknown-location path affect knowledge, not the visible wording. The two
+"error: intrigue actors identical" strings in the producer are error-log calls to
+0x14052be80; they are not announcement branches.
+
+Artifact field production (Steam 0x140b94400..0x140b94710;
+Classic 0x140b91440..0x140b91750):
+  record = lookup artifact id in native artifact vector
+  if missing: append "an unknown artifact"                   0x140b946d8..0x140b946e8
+  otherwise:
+    if flags & 2:
+      prepend LPAGE:BOOK or LPAGE:ARTIFACT markup
+    title = language_name_english(record+8, true, false)      0x140b94530 -> 0x140a946e0
+    if title empty:
+      if item.virtual_getType()==0x59 or
+         item.virtual_isWriting(0x14)==true or
+         item.virtual_getType()==0x57:
+        title = "Untitled"                                  0x140b945b0 / 0x140b9460b
+      else:
+        title = item_description(item,false,true)            0x140b94583 -> 0x140c65450
+    append title
+    if flags & 2: append [/LPAGE]
+
+The announcement caller sets flags to 0, so link markup cannot appear in its title.
+The missing-record fallback is retained as a full helper branch even though the normal
+producer has already resolved the same artifact record. Generated artifact title
+components are language-name WORD data; an empty ordinary title falls through to the
+complete existing item-description grammar, including native materials, quality and
+virtual object names. The item helper has two adjacent pdata pieces: full saved body
+0x140c65450..0x140c65f0a is already available in ../fortress-announcement-artifacts/
+steam-item-description.asm and the classic counterpart. The English title supplier
+is already retained in ../adventure-travel-status/reference-english-generated-name.asm
+(RVA 0xa946e0..0xa94ea2) and classic-english-generated-name.asm (0xa91760..0xa91f22).
+No partial caption string is assumed to be the entire title.
+
+Actor field production (Steam 0x141331500..0x141333724;
+Classic 0x14132c470..0x14132e694):
+  mode 4 or 5:
+    return explicit animation name if nonempty, otherwise literal first_name
+    first_name may be empty: the copy at 0x1413334cf..0x1413334db uses
+    its real byte length, including zero, and returns normally. The classic
+    branch is 0x14132e43a..0x14132e44b. Producer 321 has no caption-size
+    guard and still appends its fixed middle, artifact, " to " and period.
+    Native completed-report capitalization changes leading " has" to
+    " Has" before visible whitespace normalization. In addition to the
+    ordinary two-caption sentence, these three complete records exist:
+      Has revealed the presence of {b} to {n}.
+      {n} has revealed the presence of {b} to .
+      Has revealed the presence of {b} to .
+  selected_name = unit.name or native linked/disguised identity's chosen name
+  selected_profession = unit.profession, optionally overridden by linked identity+ac
+  supernatural definition:
+    if deity flag: return "the deity" plus selected name only when disclosed
+    else if force flag: return "the force" plus selected name only when disclosed
+  if explicit animation name nonempty:
+    text = "the " + authored animation label
+    goto native name disclosure
+  ordinary role:
+    if unit.custom_profession nonempty:
+      role = exact authored custom_profession; bypass RAW/enum/office/status replacement
+    else if native RAW profession is available:
+      role = capitalized caste profession, else race profession
+      mark species already included
+    else:
+      switch selected_profession in 0..134:
+        see actor-profession-dispatch.tsv for all 135 native destinations in both images
+        102/outside range: "Peasant" only for viewpoint race, otherwise empty role
+        103: RAW CHILD/BABY caste/race name if available, else "Child"
+        104: RAW CHILD/BABY caste/race name if available, else "Baby"
+      if an office exists: replace role with sex/plural-specific title, falling back
+        to generic title; optionally remember an entity qualifier " of <entity>"
+      if slave relationship exists: replace adult role with "Slave";
+        child/baby with existing role append " Slave"
+      if prisoner relationship exists: replace adult role with "Prisoner";
+        child/baby with existing role append " Prisoner"; overrides slave choice
+  text = "the " except profession104 without custom_profession, which omits article
+  append optional preceding-description temporary when nonempty (rbp-0x41;
+    initialized empty on the ordinary path, no additional fixed prose literal)
+  if ghost and not named curse:
+    append "Ghost" for empty same-race role; otherwise "Ghostly "
+  if named curse with prefix but no curse name:
+    append exact curse_prefix plus space
+    if same viewpoint race: append "One"
+  if foreign race and species not already included:
+    append capitalized caste singular, falling back to race singular
+  if curse has explicit name:
+    append curse_name
+  append role
+  native name disclosure:
+    if selected language_name has_name:
+      fortress/non-adventure modes append name
+      adventure mode appends only when native historical-figure/entity knowledge
+      permits, possibly using actual unit.name instead of the linked identity
+  append remembered office entity qualifier
+
+No finite list can enumerate every generated actor or title spelling; the native
+fields above define all relevant dynamic sources. The existing complete actor body
+is referenced by field-native-owners.tsv rather than copied. Actual current-image
+literal operands, calls and every condition/jump are retained in field-native-*.
+All 135 profession table entries were read directly from the current PE's native
+jump table; they include Poet=113 and Crossbowman=79 from the screenshot.
+
+Current implementation owns this actor formatter at src/native_unit_identity_hooks.inc:
+entry[5] hooks 0x1331500 with capture_native_unit_reference. It records chosen Literal,
+Name, Species, Role, Curse, Title and Authored appends, then renders them in
+src/native_unit_identity_translation.inc. Authored animation/custom profession and
+language-less first_name without WORDs remain literal. Native language WORD character
+names are phonetic, nicknames default to authored text, and office entities use their
+separate entity-name grammar. Name visibility follows native choices.
+
+The report stores an already formatted sentence. Re-rendering the popup does not
+necessarily re-call the actor supplier. Unit-source associations are temporary and
+are cleared with the native capture epoch; additionally capitalization changes the
+first actor's native "the" to "The" inside the completed report. Announcement grammar
+therefore needs its own complete field grammar or semantic record association rather
+than depending solely on a current-frame source-string association. This observation
+comes from the report constructor and the source registry code, not from running a game.
+
+Completed-report capitalization supplier
+=======================================
+Reference 0x14052d650..0x14052d904, classic 0x14052b070..0x14052b324.
+Each owner has three adjacent pdata segments: entry, loop and epilogue/tables.
+Executable bytes end after RET at 0x14052d8b9 / 0x14052b2d9. The following
+9-entry RVA table and 36-byte selector table are data, not instructions.
+Both actual current PE bodies and all conditional branches are retained in
+reference-report-capitalization.asm / classic-report-capitalization.asm and
+field-native-branches.tsv. All 36 CP437 selectors, including default branches,
+are retained in report-capitalization-switch.tsv. This supplier makes no calls
+and contains no prose strings.
+
+capitalize_report(string):
+  if size == 0: return                                  0x14052d667
+  bracket_depth = 0; initial = true
+  for index in [0, size):                               0x14052d690
+    if byte[index] == '[': ++bracket_depth; continue    0x14052d69f
+    if byte[index] == ']': --bracket_depth; continue    0x14052d6bc
+    if bracket_depth > 0: continue                     0x14052d6ca
+    if not initial:
+      eligible = preceding byte is space or double quote
+      if preceding byte is apostrophe:
+        eligible also when index <= 0, or index >= 2 and
+        byte[index-2] is space or comma                0x14052d711..0x14052d74a
+      if not eligible: continue                       0x14052d74c
+    if 'a' <= signed_byte[index] <= 'z':
+      byte[index] -= 0x20; return                      0x14052d761..0x14052d811
+    select signed_byte[index] + 0x7f, bounded to 0..35:
+      0x81 (ue) -> 0x9a (UE)                          0x14052d816
+      0x82 (e acute) -> 0x90 (E acute)                 0x14052d85e
+      0x84 (a diaeresis) -> 0x8e (A diaeresis)         0x14052d83a
+      0x86 (a ring) -> 0x8f (A ring)                   0x14052d84c
+      0x87 (c cedilla) -> 0x80 (C cedilla)             0x14052d882
+      0x91 (ae) -> 0x92 (AE)                          0x14052d894
+      0x94 (o diaeresis) -> 0x99 (O diaeresis)         0x14052d870
+      0xa4 (n tilde) -> 0xa5 (N tilde)                 0x14052d828
+      each replacement returns immediately
+      other selectors enter the native default below 0x14052d7ac
+    if byte[index] is space or double quote:
+      initial = false; continue
+    return unchanged                                  0x14052d8a4
+
+This is a byte/CP437 routine with markup-depth and quote/space branches, not
+a Unicode uppercase operation and not an ASCII-first-byte-only operation.
+The announcement identity matcher now invokes the already resolved native
+assign and capitalize suppliers on an owned disposable NativeSearchString;
+it therefore follows the running host's actual rules without changing any
+game-owned field. Its ASCII fallback is used only before supplier pointers
+are available.
+
+Unnamed item fallback and report field staging
+=============================================
+b94400(mode=0) uses c65450(item,false,true) at 0x140b94583 when the
+artifact title is empty and the item is neither a book, writing nor slab.
+c65450's object path invokes +5f0 at 0x140c65769 and +5e8 at 0x140c65a34,
+0x140c65a89, 0x140c65ae4, 0x140c65b39, 0x140c65b94 or 0x140c65bc1.
+The actual body-component/corpse/corpsepiece vtables resolve +5f0 to
+0x140ca0d60 (classic 0x140c9dda0) and +5e8 to 0x140ca1aa0
+(classic 0x140c9eae0). Ordinary item article +5f0 is 0x140c653e0;
+ordinary description +5e8 is 0x140ca5bb0 and calls material/body noun
+supplier 0x140a82c10. Constructed container descriptions can recursively
+call c65450 for their contents; they retain the same item virtual suppliers.
+
+The full corpse/body supplier is retained in reference/classic-item-body-
+description.asm with all calls, conditional branches and literal operands.
+Its unit/history possessive names use a94030 at 0x140ca1bfc and
+0x140ca1cb7 (classic a910b0 at c9ec3c/c9ecf7). The unnamed current-unit
+branch calls the independent movement reference 132e430 at 0x140ca1da2
+(classic 13293a0 at 0x140c9ede2); the species branch calls 132e0c0 at
+0x140ca1dd2 (classic 1329030 at 0x140c9ee12). The movement formatter
+does not call 1331500: its complete body is already retained in
+../adventure-target-panel/helper-reference-identity.asm and the classic
+counterpart. These suppliers therefore do not add another native 1331500
+caption between producer 321's two calls.
+
+The movement entry and 1331500 share the C++ semantic finisher. Staging
+every published result of that finisher would still let the body's movement
+caption displace the speaker even though the native full-reference entry
+was not called. NativeUnitIdentityCall.announcement_reference now records
+that the actual entry[5] is active; only that entry stages completed reports.
+Movement/name helpers keep their existing identity publication without
+adding report candidates. Empty 1331500 returns stage a structure marker
+without a name snapshot. Exact full-report prefix and suffix proof still
+consumes both native results, and stores identities only for visible
+nonempty captions. Old report recovery permits the native empty return and
+uses the complete assembled prefix's native capitalization, preserving the
+same complete-caption anchoring for all four visible sentence forms.

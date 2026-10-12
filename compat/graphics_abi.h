@@ -14,6 +14,8 @@ enum InterfaceButtonMainType {
     INTERFACE_BUTTON_MAIN_SQUADS_SELECTED = 456,
     INTERFACE_BUTTON_MAIN_SQUADS_NOT_SELECTED = 457,
     INTERFACE_BUTTON_MAIN_SQUADS_CANCEL_ORDER = 463,
+    INTERFACE_BUTTON_MAIN_FARM_ACTIVE_OPTION = 504,
+    INTERFACE_BUTTON_MAIN_FARM_INACTIVE_OPTION = 505,
 };
 
 // MSVC x64 ABI view of the 53.16 `graphicst` character grid and UI textures.
@@ -178,7 +180,12 @@ struct graphicst {
     std::int32_t texpos_scrollbar_center_scroller_hover[2];
     std::int32_t texpos_scrollbar_offcenter_scroller[2][2];
     std::int32_t texpos_scrollbar_offcenter_scroller_hover[2][2];
-    std::uint8_t texture_storage_4e[0x1d8]; // Sliders and tabs.
+    std::uint8_t texture_storage_4e[0x6c]; // Scrollbar scenery and sliders.
+    std::int32_t texpos_tab[5][3];
+    std::int32_t texpos_tab_selected[5][3];
+    std::int32_t texpos_short_tab[5][2];
+    std::int32_t texpos_short_tab_selected[5][2];
+    std::uint8_t texture_storage_4f[0xa4]; // Nested tabs and interface background.
     std::int32_t texpos_button_main[715][4][3];
     std::uint8_t texture_storage_4d[0x100]; // Small buttons and left ornament.
     // The four caption skins and right ornament immediately precede the

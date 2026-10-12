@@ -54,6 +54,7 @@ struct NativeCaptionInlineResize {
 struct NativeInfoTitleSite {
     uintptr_t return_address = 0;
     NativeInfoTitleKind kind = NativeInfoTitleKind::None;
+    int caption_width = 0;
 };
 struct NativeCivilizationCaptionSite {
     uintptr_t return_address = 0;
@@ -88,6 +89,7 @@ struct NativeInfoTitleBinding {
     // Places' farm caption has its own caller frame, with the same native
     // building.name field but no information-sheet editing state.
     uintptr_t farm_name_return_address = 0;
+    uintptr_t farm_crop_return_address = 0;
     ptrdiff_t farm_building_slot = 0;
 };
 using NativeAnnouncementRowsFn = size_t (*)(const void *);
@@ -277,6 +279,7 @@ static void capture_native_help_cell(graphicst *gps) {
         if (!gps || gps->dimx <= 0 || gps->dimx > 1000 || gps->dimy <= 0 || gps->dimy > 1000 ||
                 native_private_ui_write_active(gps) || gps == g_native_info_write_graphics ||
                 gps == g_native_stocks_write_graphics || native_notification_write_active(gps) ||
+                gps == g_native_squads_write_graphics ||
                 gps == g_native_pause_write_graphics ||
             !gps->screen ||
             gps->screenx < 0 || gps->screenx >= gps->dimx ||
@@ -407,6 +410,14 @@ static void capture_native_tooltip_container(void *widget, uint32_t tick) {
     } catch (...) {}
 }
 static NativeInfoTitleBinding g_native_info_title_binding;
+static bool native_farm_name_caller(uintptr_t caller) {
+    return g_native_info_title_binding.farm_name_return_address &&
+        caller == g_native_info_title_binding.farm_name_return_address;
+}
+static bool native_farm_crop_caller(uintptr_t caller) {
+    return g_native_info_title_binding.farm_crop_return_address &&
+        caller == g_native_info_title_binding.farm_crop_return_address;
+}
 static std::vector<NativeCivilizationCaptionSite> g_native_civilization_caption_sites;
 static std::vector<NativeLocationPickerSite> g_native_location_picker_sites;
 static std::vector<NativeTravelBuildingSite> g_native_travel_building_sites;
@@ -649,8 +660,36 @@ static NativeAdventureInventoryRole native_adventure_inventory_role(
     if (mode == 5 || mode == 7 || mode == 8 || mode == 9)
         return NativeAdventureInventoryRole::Action;
 #else
-    (void)caller;
-    (void)source;
+    // The ELF renderer passes its complete name at rsp+0xf0. The live list
+    // and visible index are rsp+0x40 and rsp+0x48; resolve the actual virtual
+    // owner before the item, contaminant and action grammars see the field.
+    if (caller != native_reference_va(0x119a2ef) || source < 0xb0)
+        return NativeAdventureInventoryRole::None;
+    uintptr_t list = 0, index = 0, option = 0, table = 0, provider = 0;
+    int32_t mode = -1;
+    NativeBorrowedVector<void *> options;
+    if (!native_history_copy(source - 0xb0, list) || !list || list > UINTPTR_MAX - 0x30 ||
+            !native_history_copy(source - 0xa8, index) ||
+            !native_history_copy(list + 4, mode) || mode < 0 || mode > 10 ||
+            !native_history_copy(list + 0x18, options) || !options.valid() ||
+            index >= options.size()) return NativeAdventureInventoryRole::None;
+    if (!native_history_copy(reinterpret_cast<uintptr_t>(options.begin) +
+                index * sizeof(void *), option) || !option ||
+            !native_history_copy(option, table) || !table || table > UINTPTR_MAX - 0x18 ||
+            !native_history_copy(table + (mode == 8 || mode == 9 ? 0x10 : 8), provider))
+        return NativeAdventureInventoryRole::None;
+    static const std::array item_providers{
+        native_reference_va(0x11614d0), native_reference_va(0x11615e0),
+        native_reference_va(0x11616f0), native_reference_va(0x1161800),
+        native_reference_va(0x1161910), native_reference_va(0x1161a20),
+        native_reference_va(0x1161b30), native_reference_va(0x1161c40),
+        native_reference_va(0x1161d50)};
+    if (provider && std::find(item_providers.begin(), item_providers.end(), provider) !=
+            item_providers.end()) return NativeAdventureInventoryRole::Item;
+    if (provider == native_reference_va(0x1162b40))
+        return NativeAdventureInventoryRole::Deposit;
+    if (mode == 5 || mode == 7 || mode == 8 || mode == 9)
+        return NativeAdventureInventoryRole::Action;
 #endif
     return NativeAdventureInventoryRole::None;
 }
@@ -1639,7 +1678,15 @@ struct NativeClippedPending {
     bool busy = false;
     std::unordered_map<const NativeString *, PendingNativeField> fields;
 };
+static NativeClippedPending &native_squads_clipped_pending() {
+    return reloadable_thread_state<NativeClippedPending, struct SquadsClippedCaptionTag>();
+}
 static NativeClippedPending &native_clipped_pending() {
+    // Native temporary strings from the sidebar must never consume or
+    // replace a pending resize belonging to the background page.
+    if (g_native_squads_write_graphics &&
+            native_graphics() == g_native_squads_write_graphics)
+        return native_squads_clipped_pending();
     return reloadable_thread_state<NativeClippedPending, struct ClippedCaptionTag>();
 }
 
@@ -1799,7 +1846,8 @@ static bool native_caption_draw_outside_clip_y(const graphicst *graphics,
 
 static NativeMapHoverContext native_map_hover_context_for_draw(
         const graphicst *graphics, const NativeString *source, uintptr_t caller) {
-    if (native_private_ui_write_active(graphics) ||
+    if ((graphics && graphics == g_native_squads_write_graphics) ||
+            native_private_ui_write_active(graphics) ||
             native_caption_draw_outside_clip_y(graphics, source)) return {};
     // A known caller or exact current ui_look_list owner proves the source,
     // independently of which native addst variant draws its actual glyphs.
@@ -1915,6 +1963,215 @@ static PendingNativeField remember_native_clipped_draw(graphicst *graphics, cons
 // numeric editor). Pair the source with the glyphs the ORIGINAL draw wrote;
 // an undrawn suffix must not invalidate ownership of the entire visible label.
 template<typename Draw>
+static void capture_native_worldgen_caption(graphicst *graphics,
+        const NativeString *source, int width, bool top_layer,
+        uintptr_t native_caller, Draw &&draw) {
+    std::string complete;
+    const unsigned char *grid = nullptr;
+    int x = 0, y = 0, dimx = 0, dimy = 0, foreground = -1;
+    std::array<long, 4> clip{};
+    uint64_t epoch = 0;
+    try {
+        std::string_view text;
+        if (graphics == g_native_worldgen_write_graphics && width >= 0 &&
+                graphics->dimx > 0 && graphics->dimx <= 1000 &&
+                graphics->dimy > 0 && graphics->dimy <= 1000 &&
+                native_string_view(source, &text, 4096) && !text.empty() &&
+                text.find_first_of("\r\n") == std::string_view::npos &&
+                text.find('\0') == std::string_view::npos) {
+            complete.assign(text);
+            grid = top_layer ? graphics->screen_top : graphics->screen;
+            x = graphics->screenx; y = graphics->screeny;
+            dimx = graphics->dimx; dimy = graphics->dimy;
+            clip = {graphics->clipx[0], graphics->clipx[1],
+                graphics->clipy[0], graphics->clipy[1]};
+            epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
+            if (graphics->use_old_16_colors) {
+                const int palette = static_cast<int8_t>(graphics->screenf) +
+                    (graphics->screenbright ? 8 : 0);
+                if (palette >= 0 && palette < 16)
+                    foreground = (graphics->uccolor[palette][0] << 16) |
+                        (graphics->uccolor[palette][1] << 8) | graphics->uccolor[palette][2];
+            } else foreground = (graphics->screen_color_r << 16) |
+                (graphics->screen_color_g << 8) | graphics->screen_color_b;
+        }
+    } catch (...) { complete.clear(); }
+    draw();
+    if (complete.empty() || !grid) return;
+    try {
+        if ((top_layer ? graphics->screen_top : graphics->screen) != grid ||
+                graphics->dimx != dimx || graphics->dimy != dimy ||
+                graphics->screeny != y || graphics->screenx <= x ||
+                y < 0 || y >= dimy || y < clip[2] || y > clip[3] ||
+                epoch != g_embark_item_capture_epoch.load(std::memory_order_acquire)) return;
+        const int first = static_cast<int>(std::max<int64_t>(
+            0, std::max<int64_t>(x, clip[0])));
+        const int last = static_cast<int>(std::min<int64_t>(dimx,
+            std::min<int64_t>(graphics->screenx, int64_t(clip[1]) + 1)));
+        if (first >= last) return;
+        std::string visible;
+        visible.reserve(static_cast<size_t>(last - first));
+        // Read only cells written by this exact source, never another panel.
+        for (int column = first; column < last; ++column) {
+            const unsigned char ch = grid[(static_cast<size_t>(column) * dimy + y) * 8];
+            if (!ch) return;
+            visible.push_back(static_cast<char>(ch));
+        }
+        NativeDrawnTextRow row{first, y, std::move(visible),
+            reinterpret_cast<uintptr_t>(source), true};
+        row.complete_source = std::move(complete);
+        row.top_layer = top_layer;
+        row.foreground_rgb = foreground;
+        row.draw_grid = grid; row.draw_dimx = dimx; row.draw_dimy = dimy;
+        row.draw_epoch = epoch;
+        row.native_caller = native_caller;
+        row.editable_text = NativeEditableTextScope::active ||
+            NativeEditableTextScope::owns(native_caller) ||
+            native_worldgen_caption_editable(native_caller);
+        const int left = static_cast<int>(std::clamp<int64_t>(clip[0], 0, dimx));
+        const int top = static_cast<int>(std::clamp<int64_t>(clip[2], 0, dimy));
+        const int right = static_cast<int>(std::clamp<int64_t>(clip[1], -1, dimx - 1) + 1);
+        const int bottom = static_cast<int>(std::clamp<int64_t>(clip[3], -1, dimy - 1) + 1);
+        row.draw_clip = SDL_Rect{left, top, std::max(0, right - left),
+            std::max(0, bottom - top)};
+        std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
+        auto &rows = top_layer ? g_native_drawn_top_text_rows : g_native_drawn_text_rows;
+        std::erase_if(rows, [&](const NativeDrawnTextRow &previous) {
+            return previous.x == first && previous.y == y;
+        });
+        row.sequence = ++g_native_drawn_text_sequence;
+        g_native_drawn_text_epoch = epoch;
+        rows.push_back(std::move(row));
+    } catch (...) {}
+}
+
+// The sidebar's native producer already establishes ownership. Retain only
+// its submitted text and the exact interval written by this addst; no map,
+// widget-tree, button-skin or other page discovery belongs in this path.
+template<typename Draw>
+static void capture_native_squads_caption(graphicst *graphics,
+        const NativeString *source, int width, bool top_layer,
+        uintptr_t native_caller, Draw &&draw) {
+    NativeInputCallbackScope callback;
+    NativeDrawnTextRow row;
+    const unsigned char *grid = nullptr;
+    int x = 0, y = 0, dimx = 0, dimy = 0;
+    std::array<long, 4> clip{};
+    uint64_t epoch = 0;
+    try {
+        auto &pending = native_squads_clipped_pending();
+        epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
+        if (pending.epoch != epoch) {
+            pending.fields.clear(); pending.epoch = epoch;
+        }
+        PendingNativeField shortened;
+        if (!pending.busy) {
+            const auto found = pending.fields.find(source);
+            if (found != pending.fields.end()) {
+                shortened = std::move(found->second);
+                pending.fields.erase(found);
+            }
+        }
+        std::string_view submitted;
+        if (!pending.busy && graphics && graphics == g_native_squads_write_graphics &&
+                width >= 0 && graphics->dimx > 0 && graphics->dimx <= 1000 &&
+                graphics->dimy > 0 && graphics->dimy <= 1000 &&
+                native_string_view(source, &submitted, 4096) && !submitted.empty() &&
+                submitted.find_first_of("\r\n") == std::string_view::npos &&
+                submitted.find('\0') == std::string_view::npos) {
+            row.complete_source.assign(submitted);
+            if (shortened.owner == source && shortened.epoch == epoch &&
+                    shortened.visible == submitted && !shortened.complete.empty())
+                row.complete_source = std::move(shortened.complete);
+            row.address = reinterpret_cast<uintptr_t>(source);
+            row.caption_source = true;
+            row.native_caller = native_caller;
+            row.top_layer = top_layer;
+            row.editable_text = NativeEditableTextScope::owns(native_caller) ||
+                (g_native_textbox_widget_binding.text_return_address &&
+                    native_caller == g_native_textbox_widget_binding.text_return_address);
+            row.squad_alias_target = native_squad_alias_source_target(
+                row.complete_source, row.address);
+            row.squad_generated_name = native_squad_generated_source_name(
+                row.complete_source, row.address);
+            if (const auto identity = native_unit_identity_source_binding(
+                    row.complete_source, row.address)) {
+                row.unit_identity_target = identity->target;
+                row.unit_identity_owner = identity->unit_owner;
+                row.unit_identity_english = identity->english_name;
+                row.unit_identity_header = identity->character_header;
+            }
+            x = graphics->screenx; y = graphics->screeny;
+            dimx = graphics->dimx; dimy = graphics->dimy;
+            clip = {graphics->clipx[0], graphics->clipx[1],
+                graphics->clipy[0], graphics->clipy[1]};
+            if (y >= 0 && y < dimy && y >= clip[2] && y <= clip[3])
+                grid = top_layer ? graphics->screen_top : graphics->screen;
+            if (graphics->use_old_16_colors) {
+                const int palette = static_cast<int8_t>(graphics->screenf) +
+                    (graphics->screenbright ? 8 : 0);
+                if (palette >= 0 && palette < 16)
+                    row.foreground_rgb = (graphics->uccolor[palette][0] << 16) |
+                        (graphics->uccolor[palette][1] << 8) | graphics->uccolor[palette][2];
+            } else row.foreground_rgb = (graphics->screen_color_r << 16) |
+                (graphics->screen_color_g << 8) | graphics->screen_color_b;
+        }
+    } catch (...) { grid = nullptr; }
+    callback.call_native(std::forward<Draw>(draw));
+    if (!grid) return;
+    try {
+        if ((top_layer ? graphics->screen_top : graphics->screen) != grid ||
+                graphics->dimx != dimx || graphics->dimy != dimy ||
+                graphics->screeny != y || graphics->screenx <= x ||
+                epoch != g_embark_item_capture_epoch.load(std::memory_order_acquire)) return;
+        const int first = static_cast<int>(std::max<int64_t>(0, std::max<int64_t>(x, clip[0])));
+        const int last = static_cast<int>(std::min<int64_t>(dimx,
+            std::min<int64_t>(graphics->screenx, int64_t(clip[1]) + 1)));
+        if (first >= last) return;
+        row.x = first; row.y = y;
+        row.source.reserve(static_cast<size_t>(last - first));
+        // Only this call's cursor advance is read, including a native
+        // abbreviation. The number of reads is bounded by its text span.
+        for (int column = first; column < last; ++column) {
+            const auto ch = grid[(static_cast<size_t>(column) * dimy + y) * 8];
+            if (!ch) return;
+            row.source.push_back(static_cast<char>(ch));
+        }
+        if (first != x && row.squad_alias_target)
+            row.squad_alias_target = native_text_to_utf8(row.source);
+        row.draw_grid = grid; row.draw_dimx = dimx; row.draw_dimy = dimy;
+        row.draw_epoch = epoch;
+        const int left = static_cast<int>(std::clamp<int64_t>(clip[0], 0, dimx));
+        const int top = static_cast<int>(std::clamp<int64_t>(clip[2], 0, dimy));
+        const int right = static_cast<int>(std::clamp<int64_t>(clip[1], -1, dimx - 1) + 1);
+        const int bottom = static_cast<int>(std::clamp<int64_t>(clip[3], -1, dimy - 1) + 1);
+        row.draw_clip = SDL_Rect{left, top, std::max(0, right - left),
+            std::max(0, bottom - top)};
+        std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
+        if (g_native_drawn_text_epoch != epoch) {
+            g_native_drawn_text_rows.clear(); g_native_drawn_top_text_rows.clear();
+            g_native_overwritten_text_rows.clear();
+            for (auto &positions : g_native_drawn_text_positions) positions.clear();
+            for (auto &dates : g_native_date_occluded_text_rows) dates.clear();
+            g_native_drawn_text_sequence = 0;
+            g_native_drawn_text_epoch = epoch;
+        }
+        auto &rows = top_layer ? g_native_drawn_top_text_rows : g_native_drawn_text_rows;
+        auto &positions = g_native_drawn_text_positions[top_layer ? 1 : 0];
+        const uint64_t position = (static_cast<uint64_t>(static_cast<uint32_t>(first)) << 32) |
+            static_cast<uint32_t>(y);
+        if (positions.contains(position))
+            std::erase_if(rows, [&](const NativeDrawnTextRow &previous) {
+                return previous.x == first && previous.y == y;
+            });
+        if (rows.size() >= 4096) return;
+        row.sequence = ++g_native_drawn_text_sequence;
+        rows.push_back(std::move(row));
+        positions.insert(position);
+    } catch (...) {}
+}
+
+template<typename Draw>
 static void capture_native_limited_caption_draw(graphicst *graphics, const NativeString *source,
         NativeJustification just, int width, Draw &&draw, bool top_layer = false,
         NativeInfoTitleKind info_title_kind = NativeInfoTitleKind::None,
@@ -1928,6 +2185,16 @@ static void capture_native_limited_caption_draw(graphicst *graphics, const Nativ
         NativeTravelBuildingField travel_building_field = NativeTravelBuildingField::None,
         uintptr_t native_caller = 0,
         std::optional<std::array<long, 4>> capture_clip = std::nullopt) {
+    if (graphics && graphics == g_native_squads_write_graphics) {
+        capture_native_squads_caption(graphics, source, width, top_layer,
+            native_caller, std::forward<Draw>(draw));
+        return;
+    }
+    if (native_worldgen_output_active(graphics)) {
+        capture_native_worldgen_caption(graphics, source, width, top_layer,
+            native_caller, std::forward<Draw>(draw));
+        return;
+    }
     if (native_private_ui_write_active(graphics)) { draw(); return; }
     const auto inventory_role = native_adventure_inventory_role(
         native_caller, reinterpret_cast<uintptr_t>(source));
@@ -1972,10 +2239,23 @@ static void capture_native_limited_caption_draw(graphicst *graphics, const Nativ
             int64_t(graphics->clipx[1]) + 1, 0, graphics->dimx));
         if (width > 0) right = static_cast<int>(std::min<int64_t>(
             right, int64_t(graphics->screenx) + width));
-        if (info_title_kind == NativeInfoTitleKind::ItemList) {
-            // This caller clips the string manually without changing clipx.
-            // Keep its actual title column, not the enclosing screen width.
-            const auto &binding = g_native_info_title_binding;
+        const auto &binding = g_native_info_title_binding;
+        int caption_width = 0;
+        for (const auto &site : binding.sites)
+            if (site.return_address == native_caller) {
+                caption_width = site.caption_width;
+                break;
+            }
+        if (caption_width > 0) {
+            // Explicit caller-owned columns apply to every field kind.
+            // Nobles' item, assignment and value label share this renderer
+            // but have different widths from the ViewSheets item list.
+            right = std::min(right, static_cast<int>(std::clamp<int64_t>(
+                int64_t(graphics->screenx) + caption_width,
+                graphics->screenx, graphics->dimx)));
+        } else if (info_title_kind == NativeInfoTitleKind::ItemList) {
+            // ViewSheets clips this string manually without changing clipx.
+            // Its stack slot belongs only to the original ItemList caller.
             int32_t list_right = 0;
             const auto *slot = source && binding.item_list_right_slot
                 ? reinterpret_cast<const unsigned char *>(source) + binding.item_list_right_slot
@@ -2600,6 +2880,22 @@ static void capture_native_world_site_entity_fact(graphicst *graphics,
 
 static void capture_native_clipped_draw(graphicst *graphics, const NativeString *source,
         NativeJustification just, int width) {
+    if (graphics && graphics == g_native_squads_write_graphics) {
+        const auto caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
+        capture_native_squads_caption(graphics, source, width, false, caller, [&] {
+            if (const auto original = g_native_clipped_caption_hooks.draw)
+                original(graphics, source, just, width);
+        });
+        return;
+    }
+    if (native_worldgen_output_active(graphics)) {
+        const auto caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
+        capture_native_worldgen_caption(graphics, source, width, false, caller, [&] {
+            if (const auto original = g_native_clipped_caption_hooks.draw)
+                original(graphics, source, just, width);
+        });
+        return;
+    }
     if (native_private_ui_write_active(graphics)) {
         NativeInputCallbackScope callback;
         if (const auto original = g_native_clipped_caption_hooks.draw)
@@ -2660,6 +2956,22 @@ static void capture_native_clipped_draw(graphicst *graphics, const NativeString 
 
 static void capture_native_clipped_flag_draw(graphicst *graphics, const NativeString *source,
         NativeJustification just, int width, uint32_t flags) {
+    if (graphics && graphics == g_native_squads_write_graphics) {
+        const auto caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
+        capture_native_squads_caption(graphics, source, width, false, caller, [&] {
+            if (const auto original = g_native_clipped_caption_hooks.flag_draw)
+                original(graphics, source, just, width, flags);
+        });
+        return;
+    }
+    if (native_worldgen_output_active(graphics)) {
+        const auto caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
+        capture_native_worldgen_caption(graphics, source, width, false, caller, [&] {
+            if (const auto original = g_native_clipped_caption_hooks.flag_draw)
+                original(graphics, source, just, width, flags);
+        });
+        return;
+    }
     if (native_private_ui_write_active(graphics)) {
         NativeInputCallbackScope callback;
         if (const auto original = g_native_clipped_caption_hooks.flag_draw)
@@ -2684,6 +2996,20 @@ static void capture_native_clipped_flag_draw(graphicst *graphics, const NativeSt
 static void capture_native_top_caption_draw(graphicst *graphics, const NativeString *source,
         NativeJustification just, int width) {
     const uintptr_t caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
+    if (graphics && graphics == g_native_squads_write_graphics) {
+        capture_native_squads_caption(graphics, source, width, true, caller, [&] {
+            if (const auto original = g_native_clipped_caption_hooks.top_draw)
+                original(graphics, source, just, width);
+        });
+        return;
+    }
+    if (native_worldgen_output_active(graphics)) {
+        capture_native_worldgen_caption(graphics, source, width, true, caller, [&] {
+            if (const auto original = g_native_clipped_caption_hooks.top_draw)
+                original(graphics, source, just, width);
+        });
+        return;
+    }
     const auto map_hover = native_map_hover_context_for_draw(graphics, source, caller);
     capture_native_limited_caption_draw(graphics, source, just, width, [&] {
         if (g_native_clipped_caption_hooks.top_draw)
@@ -2697,6 +3023,20 @@ static void capture_native_top_caption_draw(graphicst *graphics, const NativeStr
 // only graphics/source are live incoming arguments. ELF retains just/width.
 static void capture_native_top_simple_caption_draw(graphicst *graphics, const NativeString *source) {
     const uintptr_t caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
+    if (graphics && graphics == g_native_squads_write_graphics) {
+        capture_native_squads_caption(graphics, source, 0, true, caller, [&] {
+            if (const auto original = g_native_clipped_caption_hooks.top_simple_draw)
+                original(graphics, source);
+        });
+        return;
+    }
+    if (native_worldgen_output_active(graphics)) {
+        capture_native_worldgen_caption(graphics, source, 0, true, caller, [&] {
+            if (const auto original = g_native_clipped_caption_hooks.top_simple_draw)
+                original(graphics, source);
+        });
+        return;
+    }
     const auto map_hover = native_map_hover_context_for_draw(graphics, source, caller);
     capture_native_limited_caption_draw(graphics, source, NativeJustification{}, 0, [&] {
         if (g_native_clipped_caption_hooks.top_simple_draw)
@@ -2709,6 +3049,20 @@ static void capture_native_top_simple_caption_draw(graphicst *graphics, const Na
 static void capture_native_top_flag_caption_draw(graphicst *graphics, const NativeString *source,
         NativeJustification just, int width, uint32_t flags) {
     const uintptr_t caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
+    if (graphics && graphics == g_native_squads_write_graphics) {
+        capture_native_squads_caption(graphics, source, width, true, caller, [&] {
+            if (const auto original = g_native_clipped_caption_hooks.top_flag_draw)
+                original(graphics, source, just, width, flags);
+        });
+        return;
+    }
+    if (native_worldgen_output_active(graphics)) {
+        capture_native_worldgen_caption(graphics, source, width, true, caller, [&] {
+            if (const auto original = g_native_clipped_caption_hooks.top_flag_draw)
+                original(graphics, source, just, width, flags);
+        });
+        return;
+    }
     const auto map_hover = native_map_hover_context_for_draw(graphics, source, caller);
     capture_native_limited_caption_draw(graphics, source, just, width, [&] {
         if (g_native_clipped_caption_hooks.top_flag_draw)
@@ -2727,6 +3081,12 @@ static PendingNativeField &native_caption_pending() {
 
 template<NativeFieldKind Kind>
 static void capture_native_caption_resize(NativeString *text, size_t width, char fill) {
+    if (g_native_squads_write_graphics &&
+            native_graphics() == g_native_squads_write_graphics) {
+        remember_native_clipped_resize(text, width, fill);
+        if (g_native_caption_hooks.resize) g_native_caption_hooks.resize(text, width, fill);
+        return;
+    }
     if (!native_private_ui_write_active(native_graphics()))
         capture_native_field_resize(native_caption_pending<Kind>(), text, width,
             Kind == NativeFieldKind::Origin, Kind == NativeFieldKind::EmbarkItem);
@@ -2736,6 +3096,14 @@ static void capture_native_caption_resize(NativeString *text, size_t width, char
 template<NativeFieldKind Kind>
 static void capture_native_caption_draw(graphicst *graphics, const NativeString *text,
         NativeJustification just, int width) {
+    if (graphics && graphics == g_native_squads_write_graphics) {
+        const auto caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
+        capture_native_squads_caption(graphics, text, width, false, caller, [&] {
+            if (const auto original = g_native_caption_hooks.draw)
+                original(graphics, text, just, width);
+        });
+        return;
+    }
     if (!native_private_ui_write_active(graphics))
         capture_native_field_draw(native_caption_pending<Kind>(), graphics, text, Kind);
     if (g_native_caption_hooks.draw) g_native_caption_hooks.draw(graphics, text, just, width);
@@ -2751,6 +3119,7 @@ static void reset_native_caption_capture() {
         g_native_map_track_captions.clear();
     }
     native_clipped_pending() = {};
+    native_squads_clipped_pending() = {};
     clear_clipped_captions();
     clear_native_unit_chooser_records();
     clear_native_drawn_text_rows();

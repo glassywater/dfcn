@@ -166,6 +166,7 @@ std::optional<std::string> Overlay::translate_announcement_dialogue(
         if (!speaker || speaker->empty()) continue;
         const std::vector<int> source_colors(body.size(), 0xffffff);
         std::vector<int> target_colors;
+        NativeAnnouncementUnitBodyScope semantic_body(source, body);
         const auto translated = translate_complete_announcement(
             body, source_colors, target_colors);
         if (!translated || translated->empty()) continue;

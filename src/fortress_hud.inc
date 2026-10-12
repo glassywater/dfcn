@@ -783,7 +783,7 @@ void Overlay::layout_fortress_build_menu(SDL_Renderer *renderer) {
                 x >= location_panel->x && x < location_panel->x + location_panel->w;
             const auto rect = native_picture_caption_rect(
                 *gps_, x, y, false, &next_x, places_row || location_row,
-                nullptr, places_row, false, location_row ? 181 : -1);
+                nullptr, places_row, false, location_row ? 181 : -1, false, true);
             if (!rect) { x = next_x; continue; }
             const auto &record_panel = location_row ? location_panel : places_panel;
             if ((places_row || location_row) && (rect->x < record_panel->x ||
@@ -819,9 +819,9 @@ void Overlay::layout_fortress_build_menu(SDL_Renderer *renderer) {
                 const auto ch = visible_char_at(x, y);
                 native[x - button.left] = ch ? static_cast<char>(ch) : ' ';
             }
-            // A captured authored name may contain multiple spaces. Its
-            // complete native draw is stronger field-boundary evidence than
-            // padding heuristics, and includes digits/Latin text in the name.
+            // A captured Places field establishes its own native boundary:
+            // authored names can contain multiple spaces, while siege ammo
+            // and job columns may have only one space between them.
             for (const Match &match : prepared_matches_) {
                 if (match.rule != kFortressPlaceNameRule || match.y != y ||
                     match.x < button.left || match.length <= 0 ||
@@ -843,6 +843,7 @@ void Overlay::layout_fortress_build_menu(SDL_Renderer *renderer) {
     for (Match &match : prepared_matches_) {
         if (match.target.empty() || match.native_split_duplicate ||
             match.rule == kFortressItemCaptionRule || match.rule == kFortressLaborWorkerRule ||
+            match.rule == kFortressFarmFieldRule ||
             match.rule == kFortressStandingOrderRule ||
             match.rule == kFortressAmmunitionChoiceRule ||
             match.rule == kFortressKitchenCaptionRule || match.rule == kFortressKitchenFoodRule ||

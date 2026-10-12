@@ -1,0 +1,197 @@
+Adventure travel map: native Linux information-panel source
+
+Image: /home/lulika/.local/share/Steam/steamapps/common/Dwarf Fortress/dwarfort
+Identity: ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c (Steam Linux 53.16)
+Complete owning procedure: VA 0x12566e0..0x1264bcd.
+Native caption draw: VA 0x425170. Reference coordinates are VA-0x400000.
+
+linux-native-decompiled.c contains Ghidra 12.1.2's C decompilation of the
+complete renderer and all five helper procedures. DecompileTravelPanel.java
+supplies each complete unwind body and the decoded computed-jump targets.
+The C output retains Ghidra's unknown native types/global aliases; the field
+names and caption grammar below are the source-derived annotations.
+
+This is a control-flow reconstruction from that executable, not a simulated
+screen. linux-renderer.asm retains the entire procedure: GCC interleaves the
+structure cards, environment card, compass, odor and map glyph drawing, and
+places shop caption tails as far away as VA 0x12638db. A contiguous slice
+ending at VA 0x1261dc8 cannot contain all structure captions.
+
+linux-native-switches.tsv retains all 219 entries in 11 relative jump tables.
+linux-decompiled-branches.tsv records entry addresses, reachable text operands,
+actual draw return addresses and dynamic suppliers. linux-native-branches.tsv
+and linux-native-calls.tsv retain the procedure's other branch/call operands.
+linux-panel-draw-sources.tsv records 183 structure-caption draw sites:
+167 finite-caption draws, 14 abstract-name draws and 2 shrine-practice draws.
+The finite-caption draws supply 72 distinct complete strings. Repeated category
+fallbacks and housing captions are separate native calls, not new text variants.
+
+Panel selection and native text geometry
+---------------------------------------
+The selected travel/map z coordinate selects the two structure bodies:
+  z>=1: border rows 1..11; text rows 2..10; structure dispatch VA 0x125c941.
+  z<1:  border rows 1..20; text rows 2..19; structure dispatch VA 0x125d958.
+Caption cursor x is current native width-27 (panel_left+3).
+Shop glyph cursor x is width-28 (panel_left+2). The glyph producer 0x11341e0
+and its two 18-entry icon switches are independent of caption draw 0x425170.
+The text column starts at the actual caption draw's x. Symbols such as '['
+and '/' in the preceding column are graphics; they are not name prefixes.
+
+Site, realization and cell selection use the same fields as the PE source
+described in decompiled-text.txt: site +0x2a0 rejection flags; bounds at
++0x1f8..+0x204; z bounds +0x348/+0x34c; realization +0x308; local grid index
+local_x*17+local_y; structure vector +0x17278+cell*0x40; structure type +4,
+abstract building id +0x4c, info +0x58 and flags +0x78.
+The realization cell flag 0x100000 at +0xb518 supplies Sewer Access before
+the structure loop. The Linux draw returns are 0x125d7ca and 0x125f010.
+
+Reconstructed structure selection
+--------------------------------
+Unsigned structure.type<=31 gates both main switches. The table determines
+caption behavior; schema enum values outside that guard do not print here.
+
+  type 0 cottage_plot, 4 house:
+    collect housing counters (no individual caption).
+  type 1 castle_wall, 2 castle_tower, 3 castle_courtyard, 6 tomb,
+       10 pasture, 11 waste, 12 courtyard, 14 vault, 15 great_tower,
+       27 meadow, 30 necromancer_tower:
+    continue without a caption.
+  type 5 temple, 19 mead_hall, 21 library, 22 tavern, 23 counting_house,
+       24 guild_hall, 25 city_tower:
+    if abstract_building_id==-1: use the category fallback;
+    else look up id in site.buildings (+0x2b0), using helper 0x1272140;
+    if lookup fails or its returned object is null: use category fallback;
+    else call virtual getName at vtable+0x10;
+    if name is null: use category fallback;
+    else language_name formatter 0x12c58d0(name, English=true, first_person=false).
+    Fallbacks: Temple, Mead Hall, Library, Tavern, Counting House, Guildhall, Tower.
+  type 7 shop_house:
+    draw its subtype glyph;
+    if flags&1: Abandoned shop;
+    else info.type in 0..17 selects the shop caption table below.
+  type 8 warehouse: Warehouse.
+  type 9 market_square:
+    if flags&1: Empty market;
+    else unsigned(info.type-18)<=6 selects the market table below.
+  type 13 well: Well.
+  type 16 trenches: Trenches.
+  type 17 tree_house:
+    info.type in 0..8 selects the tree caption table below;
+    no tree_info.name is formatted by this producer.
+  type 18 hillock_house:
+    info.type==0: collect housing counters;
+    info.type==1: Civic Mound;
+    info.type==2: Castle Mound;
+    info.type==3: Drinking Mound.
+  type 20 fortress_entrance: Fortress Entrance.
+  type 26 shrine: use the complete religious-practice production below.
+  type 28 dormitory: Dormitory.
+  type 29 dininghall: Dining Hall when z>=1, Dining hall when z<1.
+  type 31 barrow: Barrow.
+
+Out-of-range tree/shop/market subtypes supply no caption. Some native paths
+still advance the row counter despite drawing no ink. The extraction retains
+those branch targets; they must not be turned into invented labels.
+
+Shop captions: both 18-entry tables
+----------------------------------
+  0 General imports                 9 Weaponsmith's shop
+  1 Food imports                   10 Bowyer's shop
+  2 Clothing imports               11 Blacksmith's shop
+  3 Cloth shop                     12 Armorsmith's shop
+  4 Leather shop                   13 Metal craft shop
+  5 Woven clothing shop            14 Leather goods shop
+  6 Leather clothing shop          15 Carpenter's shop
+  7 Bone carver's shop             16 Stone furniture shop
+  8 Gem cutter's shop              17 Metal furniture shop
+
+These 36 caption calls, not only their icon dispatch tables, must carry the
+Literal source type. All were outside the previous Linux binding inventory.
+Example native return addresses:
+  Woven clothing shop: 0x1261f75 / 0x12623c6.
+  Weaponsmith's shop: 0x1261f98 / 0x126261d.
+  Gem cutter's shop: 0x126206a / 0x1262640.
+  General imports: 0x12620d3 / 0x1262712.
+
+Market captions (native info.type 18..24)
+---------------------------------------
+  18 Imported goods market
+  19 Imported food market
+  20 Imported clothing market
+  21 Meat market
+  22 Fruit and vegetable market
+  23 Cheese market
+  24 Processed goods market
+
+Tree captions (native info.type 0..8)
+-----------------------------------
+  0 Tree House; 1 The Home Tree; 2 Shaping Tree; 3 Market Tree;
+  4 Tavern Tree; 5 Library Tree; 6 Counting Tree; 7 Guild Tree; 8 Tower Tree.
+
+Underground features, z>=1 only
+------------------------------
+Iterate realization+0xb538+cell*0xa8. Keep feature base type==7:
+  subtype 11: Underground Fortress;
+  subtype 10: Underground Farms;
+  subtype 8 and feature+0x54!=-1: Underground Stair;
+  other subtypes / missing stair target: no caption.
+Draw return VAs are 0x125bc56, 0x125bc9e and 0x125bbe1.
+
+Housing aggregation and empty state
+----------------------------------
+For cottage_plot, house and hillock_house.Residence:
+  if flags&0x0a: ruined++;
+  else if flags&1: abandoned++;
+  else: intact++.
+For each group, count==0 supplies no caption, count==1 selects singular,
+count>1 selects plural. Site type==3 uses hillock nouns; otherwise house nouns.
+The twelve complete caption strings are:
+  House; Houses; Hillock; Hillocks;
+  Abandoned house; Abandoned houses; Abandoned hillock; Abandoned hillocks;
+  Ruined house; Ruined houses; Ruined hillock; Ruined hillocks.
+The native row cap can omit later aggregates. After all applicable producers,
+row==2 draws one complete string No significant structures; it is not a
+separate Boolean No plus a second caption.
+
+Shrine production and dynamic field suppliers
+--------------------------------------------
+Null info supplies Shrine. Nonnull info has practice_type at +8 and id at +0xc:
+  type 0 WORSHIP_HFID:
+    append Shrine to ; construct context through 0xada1a0;
+    append historical figure using 0xa10320 with context flags=0 and words 1,1.
+  type 1 RELIGION_ENID:
+    resolve historical entity; when present, append entity.name using
+    0xa278f0(flags=0), formatted by 0x12c58d0(English=true, first_person=false);
+    z>=1 prints {entity name} shrine; z<1 prints Shrine of {entity name}.
+  other practice values / unresolved religion entity: no text operands added.
+The constructed complete shrine is drawn at 0x125cb4b or 0x125de25.
+The deity branches jump back to these common draws; 0x1260d3d and 0x1261047
+are ordinary Temple and Ruined hillock fallbacks, not deity draw endpoints.
+
+With the panel's fresh context and word arguments, figure helper 0xa10320 can
+supply a named historical figure, an unnamed a + optional zombie/ghostly +
+species/caste description, an optional generated creature name, or the complete
+fallback an unknown creature. Species/caste formatter is 0x12ae800. The name
+and creature vocabulary comes from language_name and RAW records, so complete
+dynamic names cannot be enumerated as finite literal variants.
+LPAGE markup, possessive/person/interrogator/subject modes in the general
+helper are disabled by this caller's arguments. All helper instructions and
+literal operands remain available in linux-figure-reference.asm,
+linux-entity-name.asm, linux-english-name.asm and linux-species-name.asm.
+
+Translation ownership
+---------------------
+Every finite caption uses the existing complete Travel building: {source}
+dictionary key. Named structures use the established complete-name formatter;
+shrines use the figure/entity grammar, retaining the source if a dynamic name
+has no translation. The original icon column, native foreground and row bounds
+remain separate from the translated caption. No custom squad.alias is involved.
+
+The owning procedure also contains the existing natural-environment panel.
+Its 51 biome selections are decoded in linux-decompiled-branches.tsv; its
+temperature/tree/vegetation/surroundings, site names, construction, river,
+mountain/volcano and role/order/creature-rumor operands and branches are retained
+in the complete renderer source. Those rows keep the existing ecology and
+adventure-travel-status translation paths described in
+data/extracted/adventure-travel-status/decompiled-source.txt. Compass/odor and
+map glyph calls in this shared procedure are not structure-name captions.

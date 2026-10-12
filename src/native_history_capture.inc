@@ -2,6 +2,9 @@
 // never pointers dereferenced by the registry or by the overlay.
 static std::mutex g_native_history_mutex;
 static std::vector<std::shared_ptr<const NativeHistoryDocument>> g_native_history_documents;
+// A single live box can grow beyond the ordinary retained-cache target.
+// Zero means empty, mixed or unknown owners; full commits recompute this summary.
+static uintptr_t g_native_history_uniform_document_owner = 0;
 // Changes only when owned records are replaced, invalidated or relaid out.
 // A visible-frame query must not rebuild an index of an entire age's events.
 static uint64_t g_native_history_registry_revision = 1;
@@ -52,19 +55,36 @@ static void commit_native_history_documents(
         throw std::runtime_error("Too many native history documents");
     size_t remaining_tokens = kNativeHistoryCaptureTokens;
     decltype(g_native_history_token_owners) owners;
+    std::vector<std::pair<std::shared_ptr<const NativeHistoryDocument>,
+        std::shared_ptr<WorldgenHistoryEventMemory>>> event_memories;
+    const uint64_t registration_revision = g_native_history_registry_revision == UINT64_MAX
+        ? 1 : g_native_history_registry_revision + 1;
+    uintptr_t uniform_owner = 0;
+    bool mixed_owners = false;
     for (const auto &document : documents) {
         if (!document || !document->owner || document->tokens.empty() ||
             document->tokens.size() > kNativeHistoryDocumentTokens || document->tokens.size() > remaining_tokens)
             throw std::runtime_error("Invalid native history document");
+        if (!uniform_owner) uniform_owner = document->owner;
+        else if (uniform_owner != document->owner) mixed_owners = true;
         remaining_tokens -= document->tokens.size();
         for (size_t i = 0; i < document->tokens.size(); ++i) {
             const uintptr_t identity = document->tokens[i].identity;
             if (!identity || !owners.emplace(identity, NativeHistoryTokenOwner{document, i}).second)
                 throw std::runtime_error("Duplicate native history token identity");
         }
+        // Retain cached grammar through coordinate-only layout clones. New,
+        // replaced or restored records receive just their own empty entry.
+        if (!document->worldgen_memory || !document->worldgen_memory->owns(*document))
+            event_memories.emplace_back(document, make_worldgen_event_memory(
+                *document, document->sequence, registration_revision));
     }
+    // All allocation and token validation completed before either registry
+    // or its event memory entries are published.
+    for (auto &[document, memory] : event_memories) document->worldgen_memory = std::move(memory);
     g_native_history_documents.swap(documents);
     g_native_history_token_owners.swap(owners);
+    g_native_history_uniform_document_owner = mixed_owners ? 0 : uniform_owner;
     advance_native_history_registry_revision();
 }
 
@@ -101,6 +121,7 @@ static bool remember_native_history_region(uintptr_t owner, std::vector<NativeHi
             [&](const auto &entry) { return entry.second.document->owner == owner; });
         std::erase_if(g_native_history_documents,
             [&](const auto &document) { return document->owner == owner; });
+        if (g_native_history_documents.empty()) g_native_history_uniform_document_owner = 0;
         std::erase_if(g_native_history_region_owners,
             [&](const auto &entry) { return entry.second.region->owner == owner; });
         std::erase_if(g_native_history_regions,
@@ -156,6 +177,7 @@ static bool remember_native_history_region(uintptr_t owner, std::vector<NativeHi
 static void clear_native_history_documents() {
     std::lock_guard<std::mutex> lock(g_native_history_mutex);
     g_native_history_documents.clear();
+    g_native_history_uniform_document_owner = 0;
     g_native_history_token_owners.clear();
     g_native_history_regions.clear();
     g_native_history_region_owners.clear();
@@ -166,12 +188,68 @@ static void clear_native_history_documents() {
     g_native_history_last_draw_x = g_native_history_last_draw_y = -1;
     g_native_history_last_draw_identity = 0;
     g_native_history_last_draw_source.clear();
+    invalidate_worldgen_event_cache();
     advance_native_history_registry_revision();
 }
 
 static std::vector<std::shared_ptr<const NativeHistoryDocument>> captured_native_history_documents() {
     std::lock_guard<std::mutex> lock(g_native_history_mutex);
     return g_native_history_documents;
+}
+
+// Caller holds the registry mutex and has validated the incoming document.
+// Appending a disjoint record needs only its new token nodes, not a new index
+// of every earlier year. Replacement and whole-page eviction use the full
+// transaction below. A uniform owner retains its complete growing timeline.
+static bool append_native_history_document(
+        const std::shared_ptr<NativeHistoryDocument> &document) {
+    const size_t incoming_tokens = document->tokens.size();
+    if (g_native_history_documents.size() == kNativeHistoryCaptureDocuments ||
+            incoming_tokens > kNativeHistoryCaptureTokens - g_native_history_token_owners.size())
+        return false;
+    const size_t token_count = g_native_history_token_owners.size() + incoming_tokens;
+    if (token_count > kNativeHistoryRetainedTokens && !g_native_history_documents.empty() &&
+            g_native_history_uniform_document_owner != document->owner)
+        return false;
+    decltype(g_native_history_token_owners) incoming;
+    incoming.reserve(incoming_tokens);
+    for (size_t i = 0; i < incoming_tokens; ++i) {
+        const uintptr_t identity = document->tokens[i].identity;
+        if (g_native_history_token_owners.contains(identity)) return false;
+        if (!identity || !incoming.emplace(identity, NativeHistoryTokenOwner{document, i}).second)
+            throw std::runtime_error("Duplicate native history token identity");
+    }
+    const uint64_t sequence = g_native_history_sequence == UINT64_MAX ? 1 : g_native_history_sequence + 1;
+    const uint64_t registration_revision = g_native_history_registry_revision == UINT64_MAX
+        ? 1 : g_native_history_registry_revision + 1;
+    auto event_memory = make_worldgen_event_memory(*document, sequence, registration_revision);
+    // Prepare capacities before publishing any ownership. Grow geometrically:
+    // exact reserves on every append would merely move the quadratic work.
+    if (g_native_history_documents.size() == g_native_history_documents.capacity())
+        g_native_history_documents.reserve(std::min(kNativeHistoryCaptureDocuments,
+            std::max(g_native_history_documents.size() + 1, g_native_history_documents.size() * 2)));
+    if (token_count > g_native_history_token_owners.bucket_count() *
+            g_native_history_token_owners.max_load_factor())
+        g_native_history_token_owners.reserve(std::min(kNativeHistoryCaptureTokens,
+            std::max(token_count, g_native_history_token_owners.size() * 2)));
+    try {
+        g_native_history_token_owners.merge(incoming);
+    } catch (...) {
+        // A failed transfer must not expose a partial document. Every incoming
+        // identity was absent before this append, so rollback cannot erase an
+        // earlier record, even if the bucket array was already enlarged.
+        for (const auto &token : document->tokens) g_native_history_token_owners.erase(token.identity);
+        throw;
+    }
+    document->sequence = sequence;
+    document->worldgen_memory = std::move(event_memory);
+    if (g_native_history_documents.empty()) g_native_history_uniform_document_owner = document->owner;
+    else if (g_native_history_uniform_document_owner != document->owner)
+        g_native_history_uniform_document_owner = 0;
+    g_native_history_documents.push_back(document);
+    g_native_history_sequence = sequence;
+    advance_native_history_registry_revision();
+    return true;
 }
 
 // Publish native records in one transaction. A producer can submit a page in
@@ -192,6 +270,7 @@ static bool remember_native_history_documents(
         incoming_owners.insert(document->owner);
     }
     std::lock_guard<std::mutex> lock(g_native_history_mutex);
+    if (documents.size() == 1 && append_native_history_document(documents.front())) return true;
     std::unordered_set<const NativeHistoryDocument *> replaced;
     for (const auto &document : documents)
         for (const auto &token : document->tokens) {
@@ -271,7 +350,7 @@ static uint64_t refresh_native_history_documents(
 // The unique chronicle addst call supplies a live NativeString address and
 // cursor. Native word-local px/py are not screen coordinates after scrolling.
 static void remember_native_history_draw(uintptr_t identity, std::string_view source,
-        int x, int y, int clip_left, int clip_right) {
+        int x, int y, int clip_left, int clip_right, int foreground) {
     std::lock_guard<std::mutex> lock(g_native_history_mutex);
     const uint64_t epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
     if (!g_native_history_legends_rendering && g_native_history_draw_epoch != epoch) {
@@ -306,6 +385,9 @@ static void remember_native_history_draw(uintptr_t identity, std::string_view so
     const auto &owner = found->second;
     if (owner.index >= owner.document->tokens.size() ||
         owner.document->tokens[owner.index].source != source) return;
+    if (std::max<int64_t>(x, clip_left) <
+            std::min<int64_t>(int64_t(x) + int64_t(source.size()), clip_right))
+        remember_worldgen_event_color(*owner.document, owner.index, foreground);
     if (g_native_history_draws.size() < kNativeHistoryCaptureTokens)
         g_native_history_draws.push_back({owner.document, owner.index, x, y, epoch,
             clip_left, clip_right});

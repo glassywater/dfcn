@@ -295,6 +295,7 @@ Stockpile setting: standard	标准	l
 Stockpile setting: superior quality	上等品质的	l
 Stockpile setting: masterwork	杰作级的	l
 Stockpile setting: economic	经济石材	l
+Stockpile setting: nothing	无	l
 Stockpile setting: feet	脚	l
 Stockpile setting: hands	手	l
 Stockpile setting: legs	腿部	l
@@ -2946,6 +2947,15 @@ Storage container packing: barrel	桶装	wi
 Storage container packing: bag	袋装	wi
 Storage container packing: bin	箱装	wi
 Storage container packing: pot	罐装	wi
+Storage container packing: waterskin	袋装	wi
+Storage container packing: flask	瓶装	wi
+Storage container packing: vial	瓶装	wi
+Storage container packing: bucket	桶装	wi
+Storage container packing: goblet	杯装	wi
+Storage container packing: cup	杯装	wi
+Storage container packing: mug	杯装	wi
+Storage container packing: jug	壶装	wi
+Storage container packing: pouch	袋装	wi
 # Item sheet navigation: translate the complete button, not just View.
 View stockpile	查看储物堆	wi
 Stockpile #{d}	储物堆#{d}	wt
@@ -5365,10 +5375,30 @@ Justice intelligence tab: Actors	人物	l
 Justice intelligence tab: Organizations	组织	l
 Justice intelligence tab: Plots	阴谋	l
 Justice actor: Unidentified	身份不明	l
+# Actors card supplier: data/extracted/justice-actors-producers/decompiled-source.txt.
 Justice actor: Nameless	无名者	l
+Justice actor: Highest known in organization	组织中已知的最高层成员	l
+Justice actor: Associated Organization: Unidentified	关联组织：尚未查明	l
+Justice actor field: Associated Organization	关联组织	l
+Justice actor field: Associated Plot	关联阴谋	l
 Justice plot: Org	组织	l
 Justice plot organization: Unidentified	尚未查明	l
 Justice plot organization: Nameless	无名者	l
+# Native Justice organization summaries and chart roles; these abbreviations
+# are finite producer captions, not names or ordinary dictionary words.
+Justice organization: Selected actor	选中人物	l
+Justice organization: One member	1名成员	l
+Justice organization: members	{d}名成员	l
+Justice organization role: Boss	首领	l
+Justice organization role: Membr	成员	l
+Justice organization role: Thief	窃贼	l
+Justice organization role: Crrpt	腐败者	l
+Justice organization role: Assas	刺客	l
+Justice organization role: Snatc	绑匪	l
+Justice organization role: Sabtr	破坏者	l
+Justice organization role: Framr	构陷者	l
+Justice organization role: Asset	内应	l
+Justice organization status: RIP	已故	l
 Justice organization initials: Nameless	无名	l
 Justice organization initials: Unidentified	不明	l
 Associated Plot:	关联阴谋：	wl
@@ -10404,6 +10434,8 @@ Conversation keyword: territory	领土	l
 Conversation keyword: writing	著作	l
 Conversation keyword: reunited	重聚	l
 Conversation keyword: me	我	l
+Conversation keyword: slay	杀死	l
+Conversation keyword: slew	杀死	l
 Conversation keyword: production	生产	l
 Conversation keyword: violation	违反	l
 Conversation keyword: export	出口	l
@@ -11644,6 +11676,11 @@ Embark site ecology: Surroundings: Haunted	周围环境：闹鬼
 Embark site ecology: Surroundings: Joyous Wilds	周围环境：欢悦荒野
 Embark site ecology: Surroundings: Untamed Wilds	周围环境：未驯服的荒野
 Embark site ecology: Surroundings: Terrifying	周围环境：恐怖
+
+# Counterintelligence plot list_name switch: Steam 0x2b6b69..0x2b6fb9,
+# Classic 0x2b4729..0x2b4b79. Resolve only complete typed Justice plot fields.
+# Details absent/Location/unknown retain A plot with no date; conviction
+# action 0/2/3 and unknown actions use the separate direct-year productions.
 Justice plot: A plot	一项阴谋	l
 Justice plot: Sabotage	破坏	l
 Justice plot: Abduct	绑架	l

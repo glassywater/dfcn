@@ -1041,7 +1041,9 @@ Closing Ceremony	闭幕仪式	title
 Main Ceremony	主要仪式	title
 # Native collection fields select these composition rules. No rendered
 # English title is parsed to recover the collection, its type or its roles.
-Native history collection title of {p}	{p}	title
+# SITE_CONQUERED collections whose main event has no native title label
+# still describe a site conflict. Retain that event meaning in the fallback.
+Native history collection title of {p}	{p}争夺事件	title
 Native history collection {s} of {p}	{p}的{s}	title
 Native history collection {s} Race	{s}赛跑	title
 Related Artifacts	相关造物	term

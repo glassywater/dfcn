@@ -386,8 +386,8 @@ void Overlay::layout_fortress_building_status(SDL_Renderer *renderer) {
     }
 }
 
-// The farm footer is three independent columns, not a paragraph. Its two
-// checkbox captions and the soil hint use adjacent native text rows; the
+// Farm season tabs centre within their own skins. The footer's two checkbox
+// captions and soil hint keep three independent columns and native rows; the
 // generic prose pass would otherwise concatenate all three columns and move
 // the amount into the first row. Own each complete dictionary field before
 // that pass, without moving the checkboxes or enlarging source suppression.
@@ -408,7 +408,12 @@ void Overlay::layout_fortress_farm_plot(SDL_Renderer *renderer) {
             match.length <= 0 || match.length > gps_->dimx - match.x ||
             match.source.size() != static_cast<size_t>(match.length)) continue;
         const Rule &rule = rules_[static_cast<size_t>(match.rule)];
-        if (std::find(std::begin(fields), std::end(fields), rule.source) ==
+        const std::string source = lower(trim(match.source));
+        const bool season = source == "spring" || source == "summer" ||
+            source == "autumn" || source == "winter" ||
+            source == "spring(now)" || source == "summer(now)" ||
+            source == "autumn(now)" || source == "winter(now)";
+        if (!season && std::find(std::begin(fields), std::end(fields), rule.source) ==
             std::end(fields)) continue;
 
         // Do not lay out a hidden/stale recovered field. Numeric templates
@@ -418,6 +423,18 @@ void Overlay::layout_fortress_farm_plot(SDL_Renderer *renderer) {
         for (int x = match.x; x < match.x + match.length; ++x)
             visible.push_back(visible_char_at(x, match.y));
         if (!template_literal_at(visible, 0, match.source, rule.case_insensitive)) continue;
+
+        if (season) {
+            const auto span = native_tab_caption_span(*gps_, match.x, match.y);
+            if (!span || match.x + match.length > span->second) continue;
+            match.layout_left = false;
+            match.layout_box_pixel_x = -1;
+            match.layout_box_pixel_width = 0;
+            match.layout_clip_right = span->second;
+            layout_fortress_text_rows(renderer, {{&match}}, span->first,
+                span->second, true, true);
+            continue;
+        }
 
         if (!match.native_split_text) {
             match.layout_y = match.y;

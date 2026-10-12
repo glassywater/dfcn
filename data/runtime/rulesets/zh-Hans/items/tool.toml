@@ -2,6 +2,7 @@ base = "items::tool"
 
 [[rulesets]]
 [rulesets.rules]
+"{::items::storage_container}" = "{::items::storage_container}"
 "{^material}{main}" = "{^material}{main}"
 
 [[rulesets]]

@@ -70,6 +70,9 @@ static void native_help_draw(void *help) {
         } catch (...) { isolate = false; }
     }
     if (!isolate) { callback.call_native([&] { original(help); }); return; }
+    // The world-creation welcome card is drawn inside its parent's private
+    // page. Keep the help component's own paragraph/layout owner there too;
+    // this binding restores the parent's arrays and cursor after the card.
     NativeUiGridBinding output(gps, *layer.foreground.graphics());
     struct WriteScope {
         const graphicst *previous = g_native_help_write_graphics;
@@ -90,8 +93,11 @@ static void native_help_reset_frame(void *renderer) {
     layer.ready = false;
     native_info_begin_frame();
     native_stocks_begin_frame();
+    native_squads_begin_frame();
     native_reports_begin_frame();
     native_pause_begin_frame();
+    native_resolution_begin_frame();
+    native_worldgen_begin_frame();
     layer.frames.clear();
     layer.collapsed_titles.clear();
     layer.native_renderer = nullptr;
@@ -289,7 +295,7 @@ struct NativeUiLayerTarget {
 static NativeUiLayerTarget g_native_help_target;
 
 static void native_ui_paint_grid(NativeUiLayerStorage &layer, SDL_Renderer *renderer,
-        const std::vector<Match> &matches) {
+        const std::vector<Match> &matches, const SDL_Rect *opaque_frame) {
     if (!layer.ready || layer.renderer != renderer || !layer.native_renderer) return;
     auto *gps = layer.foreground.graphics();
     struct SourceMask {
@@ -329,7 +335,20 @@ static void native_ui_paint_grid(NativeUiLayerStorage &layer, SDL_Renderer *rend
                     const size_t at = static_cast<size_t>(x) * gps->dimy + y;
                     const bool content = pass & 1 ? source.textures[2][at] != 0 :
                         source.screen[at * 8] || source.textures[0][at] || source.textures[1][at] || source.flags[at];
-                    if (content) draw(layer.native_renderer, x, y);
+                    if (!content) continue;
+                    if (opaque_frame && !(pass & 1) &&
+                            (x < opaque_frame->x || x >= opaque_frame->x + opaque_frame->w ||
+                             y < opaque_frame->y || y >= opaque_frame->y + opaque_frame->h)) {
+                        uint64_t cell = 0;
+                        std::memcpy(&cell, source.screen.data() + at * 8, sizeof(cell));
+                        // Native clear_screen leaves a zero-color space in
+                        // both planes. It owns no artwork outside this panel;
+                        // painting its black background would hide the map.
+                        if (cell == static_cast<uint64_t>(' ') && !source.flags[at] &&
+                                std::all_of(source.textures.begin(), source.textures.end(),
+                                    [at](const auto &texture) { return !texture[at]; })) continue;
+                    }
+                    draw(layer.native_renderer, x, y);
                 }
     }
 }

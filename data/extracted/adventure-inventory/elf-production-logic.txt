@@ -1,0 +1,121 @@
+Linux Adventure inventory: recovered text production graph
+
+Image: ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c
+Source: data/runtime/native-elf-images.json reference
+Coordinates are ELF virtual addresses, not Windows RVAs.
+
+elf-decompiled.c contains actual Ghidra decompilation. elf-functions.tsv
+contains complete .eh_frame function extents; elf-owners.tsv binds each
+RTTI class and virtual slot to its producer. All instructions, including
+text-free graphic getters, remain in elf-*.asm. Literal operands, predicates,
+branch edges, calls and decoded switch tables have separate TSV catalogs.
+These are offline source artifacts; no game or translation output is run.
+
+Renderer 0x1199680..0x119cb0e
+  Mode is option-list +4, options vector is +0x18..+0x28.
+  Title switch table: 0x213687c.
+   0 Your inventory
+   1 What do you want to drop?
+   2 What do you want to wear?
+   3 What do you want to remove?
+   4 What do you want to place?
+   5 What do you want to eat or drink?
+   6 With what do you want to interact?
+   7 Where do you put <complete item designation>?
+   8 What will you do with <complete item designation>?
+   9 What will you do with <complete item designation>?
+  10 What do you want to throw?
+  Other selectors bypass title construction.
+  Done is independent; inventory mode emits Burden: weight/capacity.
+  Weight and capacity can use <1; the native weight glyph is separate.
+
+  A row has independent key, caption, location and action graphics.
+  Caption getter: option virtual +8, or +0x10 in modes 8 and 9.
+  Graphic getter: +0xd0; inventory record: +0xe0; action flags: +0x100.
+  Seven action bits select graphics, not English row labels.
+  Caption shortening differs between inventory and selection modes.
+  Capture the complete string before calls at 0x119ab1d / 0x119ac55;
+  the location shortening call is 0x119ac05. All target 0x11612a0.
+  Name draw returns to 0x119a2ef; its NativeString is rsp+0xf0.
+  Saved list is rsp+0x40, saved visible index is rsp+0x48.
+
+Actual row formatter ownership
+  0x11614d0 throw item, 0x11615e0 eat/drink item,
+  0x11616f0 interact item, 0x1161800 view item,
+  0x1161910 drop item, 0x1161a20 inventory item,
+  0x1161b30 remove item, 0x1161c40 put item, 0x1161d50 wear item:
+    complete item designation, 0xe68020, article mode -1.
+  0x1162b40 view contaminant:
+    complete contaminant + optional parenthesized complete body part.
+  0x11b1e50 / 0x11b2ad0 consume unit/item contaminant:
+    Eat or Drink + complete material/contaminant + parenthesized location.
+  Other option/environment producers are bound in elf-owners.tsv.
+  Their finite phrases are Wear, Drop, View, Remove, Throw, Put or place,
+  Eat, Drink, Put on, Put in, Set on, Suck, from, in and on.
+  Ingestion has native stagnant/salt prefixes and phase-dependent Eat/Drink.
+  Dynamic parameters are complete item, building, unit, material, body-part
+  and relative-direction names, handled by their existing typed resolvers.
+  The complete action grammar is shared with adventure-action-menu sources.
+
+Location 0xb86630..0xb8768b, selector table 0x20ef808
+  Record: item pointer +0, int16 role +8, int16 body part +0xa,
+  pet seed +0xc, nocked-in item ID +0x10.
+   0 Hauled; eligibility/relationship branches choose In Mouth or Hidden.
+   1 Multigrasp when native grasp predicates require it; otherwise body part.
+   2 Complete singular/plural body part.
+   3 In <body part>.
+   4 Matching worn/wrapped item designation; otherwise complete body part.
+   5 Wrapped around <body part>.
+   6 Stuck in <body part>.
+   7 Complete singular/plural body part.
+   8 On head / Left shoulder / Right shoulder, native seeded eligibility.
+   9 Sewn into <body part>.
+  10 Strapped to <body part>.
+  11 Nocked, optionally in <complete item designation>.
+  Invalid roles produce no location.
+  Full body-part getter 0xb602d0 owns RAW singular/plural names, native number
+  annotations and body part/body parts fallbacks. Pet getter is 0xb5f2d0.
+
+Complete item graph
+  98 RTTI item classes bind +0x5e8 title and +0x5f0 secondary title slots.
+  0xe68020 owns article/named/artifact/copy, quality, wear and improvement
+  wrappers. Shared title 0xe3bf80 delegates to 0x12b6a70 with actual type,
+  subtype, material, maker and quantity; noun modes select singular/plural.
+  Specialized title producers are fully retained for coins, books, bodies,
+  tools, bins, slabs, pets, food, barrels, bags, rocks, statues and cages.
+  The existing item-description-sources.tsv / item-info-title-sources.tsv
+  and items rulesets supply the complete vocabulary, not screenshot spelling.
+  Dynamic RAW nouns and native proper names remain dynamic parameters.
+
+  Flask material predicates choose waterskin/waterskins, vial/vials or
+  flask/flasks. Goblet material predicates choose goblet(s), cup(s) or mug(s).
+  Container title branches preserve contents independently of vessel material.
+  Barrel/tool categories include Prepared Food, Seed, Plant, Cheese, Fish,
+  Meat, Spice, Mill, Fat, Rendered Fat, Paste and Pressed Material.
+  Bin categories include Armor, Weapon, Ammo, Coin, Bar/Block, Gem,
+  Finished Goods, Leather, Cloth and Sheet.
+  Vanilla tool RAW supplies jug/jugs (LIQUID_CONTAINER), large pot/pots
+  (FOOD_STORAGE), and pouch/pouches (SMALL_OBJECT_STORAGE).
+  Material phases, creature/plant prefixes, personal owners and generated
+  substances share the complete material producer/resolver.
+
+Observed caption supplement
+  The provided screenshot supplies Mixed waterskin (llama leather).
+  This portable-vessel caption is routed through the same complete contents
+  + vessel-material production. Mixed is a scoped contents category, not a
+  global word substitution. The configured ELF's shared generic flask title
+  does not itself contain a portable-vessel Mixed literal; the screenshot
+  evidence and the extracted native producers are recorded separately.
+  Complete combinations are handled compositionally: container singular or
+  plural, contents or mixed heading, material parenthesis, pot size, quality,
+  wear/ownership and quantity. Counts include [n], xN, <#n>, (%n) and (n%).
+  User-authored names remain governed by their existing ownership rules.
+
+Shared implementation routes
+  src/native_caption_hooks.inc: bind item/deposit/action by actual formatter.
+  src/native_caption_profile.inc: retain full names before native shortening.
+  src/character_inventory.inc: location productions and row composition.
+  src/dfcn.cpp: complete designation and storage-container composition.
+  data/runtime/rulesets/zh-Hans/items/: item and contents productions.
+  data/runtime/rulesets/zh-Hans/health/contaminant.toml: deposit productions.
+  data/runtime/local-overrides.tsv: per-vessel Chinese packing vocabulary.

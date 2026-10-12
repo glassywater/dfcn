@@ -1,0 +1,4 @@
+; ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c; adventure_environment_ingest_from_containerst+0x100 | adventure_environment_ingest_materialst+0x100 | adventure_environment_place_in_bld_containerst+0x100 | adventure_environment_place_in_it_containerst+0x100 | adventure_environment_place_on_pack_animalst+0x100 | adventure_environment_unit_suck_bloodst+0x100 | adventure_option_drop_itemst+0x100 | adventure_option_eat_drink_itemst+0x100 | adventure_option_eat_item_contaminantst+0x100 | adventure_option_eat_unit_contaminantst+0x100 | adventure_option_interact_with_itemst+0x100 | adventure_option_put_itemst+0x100 | adventure_option_remove_itemst+0x100 | adventure_option_throw_itemst+0x100 | adventure_option_view_contaminantst+0x100 | adventure_option_view_itemst+0x100 | adventure_option_wear_itemst+0x100; native unwind 0x1085aa0..0x1085aa7
+0x1085aa0: endbr64
+0x1085aa4: xor    eax,eax
+0x1085aa6: ret

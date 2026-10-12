@@ -1,0 +1,220 @@
+phase	selector	value	symbol	entry_va	possible_literal_operands	draw_return_vas	dynamic_suppliers
+environment	biome	0		0x126375a	Mountain	0x1263778	
+environment	biome	1		0x12632d7	Glacier	0x12632f5	
+environment	biome	2		0x12637f4	Tundra	0x1263812	
+environment	biome	3		0x126340b	Temperate Freshwater Swamp	0x1263429	
+environment	biome	4		0x1263673	Temperate Saltwater Swamp	0x1263691	
+environment	biome	5		0x12631a3	Temperate Freshwater Marsh	0x12631c1	
+environment	biome	6		0x1263841	Temperate Saltwater Marsh	0x126385f	
+environment	biome	7		0x12634a5	Tropical Freshwater Swamp	0x12634c3	
+environment	biome	8		0x126370d	Tropical Saltwater Swamp	0x126372b	
+environment	biome	9		0x126323d	Mangrove Swamp	0x126325b	
+environment	biome	10		0x12637a7	Tropical Freshwater Marsh	0x12637c5	
+environment	biome	11		0x1263371	Tropical Saltwater Marsh	0x126338f	
+environment	biome	12		0x12635d9	Taiga	0x12635f7	
+environment	biome	13		0x1262ca7	Temperate Conifer Forest	0x1262cc5	
+environment	biome	14		0x12636c0	Temperate Broadleaf Forest	0x12636de	
+environment	biome	15		0x12634f2	Tropical Coniferous Forest	0x1263510	
+environment	biome	16		0x1263626	Tropical Dry Brdlf Forest	0x1263644	
+environment	biome	17		0x126328a	Tropical Moist Brdlf Forst	0x12632a8	
+environment	biome	18		0x126358c	Temperate Grassland	0x12635aa	
+environment	biome	19		0x12633be	Temperate Savanna	0x12633dc	
+environment	biome	20		0x1263156	Temperate Shrubland	0x1263174	
+environment	biome	21		0x1263109	Tropical Grassland	0x1263127	
+environment	biome	22		0x1263458	Tropical Savanna	0x1263476	
+environment	biome	23		0x12631f0	Tropical Shrubland	0x126320e	
+environment	biome	24		0x1263324	Badlands	0x1263342	
+environment	biome	25		0x1262b2d	Rocky Wasteland	0x1262b4b	
+environment	biome	26		0x1262ae0	Sand Desert	0x1262afe	
+environment	biome	27		0x1262a93	Tropical Ocean	0x1262ab1	
+environment	biome	28		0x1262a46	Temperate Ocean	0x1262a64	
+environment	biome	29		0x1262a00	Arctic Ocean	0x1262a1e	
+environment	biome	30		0x1263d34	Temperate Freshwater Pool	0x1263d52	
+environment	biome	31		0x1263acc	Temperate Brackish Pool	0x1263aea	
+environment	biome	32		0x1263c00	Temperate Saltwater Pool	0x1263c1e	
+environment	biome	33		0x1263998	Tropical Freshwater Pool	0x12639b6	
+environment	biome	34		0x1263c9a	Tropical Brackish Pool	0x1263cb8	
+environment	biome	35		0x1263a32	Tropical Saltwater Pool	0x1263a50	
+environment	biome	36		0x1263b66	Temperate Freshwater Lake	0x1263b84	
+environment	biome	37		0x126388e	Temperate Brackish Lake	0x12638ac	
+environment	biome	38		0x1263ce7	Temperate Saltwater Lake	0x1263d05	
+environment	biome	39		0x1263a7f	Tropical Freshwater Lake	0x1263a9d	
+environment	biome	40		0x1263bb3	Tropical Brackish Lake	0x1263bd1	
+environment	biome	41		0x126394b	Tropical Saltwater Lake	0x1263969	
+environment	biome	42		0x1263c4d	Temperate Freshwater River	0x1263c6b	
+environment	biome	43		0x12639e5	Temperate Brackish River	0x1263a03	
+environment	biome	44		0x1263b19	Temperate Saltwater River	0x1263b37	
+environment	biome	45		0x12629b0	Tropical Freshwater River	0x12629ce	
+environment	biome	46		0x12638fe	Tropical Brackish River	0x126391c	
+environment	biome	47		0x1262c5a	Tropical Saltwater River	0x1262c78	
+environment	biome	48		0x1262c0d	Subterranean Water	0x1262c2b	
+environment	biome	49		0x1262bc0	Subterranean Chasm	0x1262bde	
+environment	biome	50		0x126353f	Subterranean Magma	0x126355d	
+z>=1	structure	0	cottage_plot	0x125ca20			
+z>=1	structure	1	castle_wall	0x125c9ba			
+z>=1	structure	2	castle_tower	0x125c9ba			
+z>=1	structure	3	castle_courtyard	0x125c9ba			
+z>=1	structure	4	house	0x125ca20			
+z>=1	structure	5	temple	0x125cf1d	Temple	0x125cfe8,0x125f1d8,0x1260dcb,0x12614d6	abstract_building.getName()->language_name(English=true)
+z>=1	structure	6	tomb	0x125c9ba			
+z>=1	structure	7	shop_house	0x125cee6	Abandoned shop | Armorsmith's shop | Blacksmith's shop | Bone carver's shop | Bowyer's shop | Carpenter's shop | Cloth shop | Clothing imports | Food imports | Gem cutter's shop | General imports | Leather clothing shop | Leather goods shop | Leather shop | Metal craft shop | Metal furniture shop | Stone furniture shop | Weaponsmith's shop | Woven clothing shop	0x125f831,0x1261f0c,0x1261f2f,0x1261f52,0x1261f75,0x1261f98,0x1261fbb,0x1261fde,0x1262001,0x1262024,0x1262047,0x126206a,0x126208d,0x12620b0,0x12620d3,0x12620f6,0x126219b,0x12621be,0x12621e1	
+z>=1	structure	8	warehouse	0x125ce97	Warehouse	0x125cee1	
+z>=1	structure	9	market_square	0x125ce3c	Cheese market | Empty market | Fruit and vegetable market | Imported clothing market | Imported food market | Imported goods market | Meat market | Processed goods market	0x125d4f7,0x125d53d,0x125d583,0x125d5c9,0x125d5ec,0x125d60f,0x125d632,0x1260c38	
+z>=1	structure	10	pasture	0x125c9ba			
+z>=1	structure	11	waste	0x125c9ba			
+z>=1	structure	12	courtyard	0x125c9ba			
+z>=1	structure	13	well	0x125cd1d	Well	0x125cd67	
+z>=1	structure	14	vault	0x125c9ba			
+z>=1	structure	15	great_tower	0x125c9ba			
+z>=1	structure	16	trenches	0x125ccce	Trenches	0x125cd18	
+z>=1	structure	17	tree_house	0x125cc80	Counting Tree | Guild Tree | Library Tree | Market Tree | Shaping Tree | Tavern Tree | The Home Tree | Tower Tree | Tree House	0x125d425,0x125d448,0x125d46b,0x125d48e,0x125d4b1,0x125d4d4,0x125d51a,0x125d560,0x125d5a6	
+z>=1	structure	18	hillock_house	0x125d32d	Castle Mound | Civic Mound | Drinking Mound	0x125d3b0,0x126183b,0x1261893	
+z>=1	structure	19	mead_hall	0x125d25d	Mead Hall	0x125d328,0x125f203,0x1260ff7,0x126185e	abstract_building.getName()->language_name(English=true)
+z>=1	structure	20	fortress_entrance	0x125d3b8	Fortress Entrance	0x125d402	
+z>=1	structure	21	library	0x125cd6c	Library	0x125ce37,0x125f1ad,0x1260e21,0x1261b2b	abstract_building.getName()->language_name(English=true)
+z>=1	structure	22	tavern	0x125d0bd	Tavern	0x125d188,0x125f118,0x1260df6,0x1261806	abstract_building.getName()->language_name(English=true)
+z>=1	structure	23	counting_house	0x125cfed	Counting House	0x125d0b8,0x125f143,0x1260fcc,0x12617e3	abstract_building.getName()->language_name(English=true)
+z>=1	structure	24	guild_hall	0x125d18d	Guildhall	0x125d258,0x125f2bb,0x1260e6f,0x126177e	abstract_building.getName()->language_name(English=true)
+z>=1	structure	25	city_tower	0x125cbb0	Tower	0x125cc7b,0x125f16e,0x1260f15,0x12614f9	abstract_building.getName()->language_name(English=true)
+z>=1	structure	26	shrine	0x125ca82	 shrine | Shrine | Shrine to 	0x125cb4b,0x1260e92	religious_practice.id->historical_figure(default context,1,1) | religious_practice.id->historical_entity.name(flags=0)
+z>=1	structure	27	meadow	0x125c9ba			
+z>=1	structure	28	dormitory	0x125ca33	Dormitory	0x125ca7d	
+z>=1	structure	29	dininghall	0x125cb61	Dining Hall	0x125cbab	
+z>=1	structure	30	necromancer_tower	0x125c9ba			
+z>=1	structure	31	barrow	0x125c944	Barrow	0x125c98e	
+z>=1	tree	0		0x125d4fc	Tree House	0x125d51a	
+z>=1	tree	1		0x125d542	The Home Tree	0x125d560	
+z>=1	tree	2		0x125d4b6	Shaping Tree	0x125d4d4	
+z>=1	tree	3		0x125d493	Market Tree	0x125d4b1	
+z>=1	tree	4		0x125d44d	Tavern Tree	0x125d46b	
+z>=1	tree	5		0x125d470	Library Tree	0x125d48e	
+z>=1	tree	6		0x125d407	Counting Tree	0x125d425	
+z>=1	tree	7		0x125d42a	Guild Tree	0x125d448	
+z>=1	tree	8		0x125d588	Tower Tree	0x125d5a6	
+z>=1	market	18		0x125d5f1	Imported goods market	0x125d60f	
+z>=1	market	19		0x125d51f	Imported food market	0x125d53d	
+z>=1	market	20		0x125d614	Imported clothing market	0x125d632	
+z>=1	market	21		0x125d565	Meat market	0x125d583	
+z>=1	market	22		0x125d5ce	Fruit and vegetable market	0x125d5ec	
+z>=1	market	23		0x125d4d9	Cheese market	0x125d4f7	
+z>=1	market	24		0x125d5ab	Processed goods market	0x125d5c9	
+z>=1	shop-icon	0		0x125d70e	Abandoned shop | Armorsmith's shop | Blacksmith's shop | Bone carver's shop | Bowyer's shop | Carpenter's shop | Cloth shop | Clothing imports | Food imports | Gem cutter's shop | General imports | Leather clothing shop | Leather goods shop | Leather shop | Metal craft shop | Metal furniture shop | Stone furniture shop | Weaponsmith's shop | Woven clothing shop	0x125f831,0x1261f0c,0x1261f2f,0x1261f52,0x1261f75,0x1261f98,0x1261fbb,0x1261fde,0x1262001,0x1262024,0x1262047,0x126206a,0x126208d,0x12620b0,0x12620d3,0x12620f6,0x126219b,0x12621be,0x12621e1	
+z>=1	shop-icon	1		0x126215f	Abandoned shop | Armorsmith's shop | Blacksmith's shop | Bone carver's shop | Bowyer's shop | Carpenter's shop | Cloth shop | Clothing imports | Food imports | Gem cutter's shop | General imports | Leather clothing shop | Leather goods shop | Leather shop | Metal craft shop | Metal furniture shop | Stone furniture shop | Weaponsmith's shop | Woven clothing shop	0x125f831,0x1261f0c,0x1261f2f,0x1261f52,0x1261f75,0x1261f98,0x1261fbb,0x1261fde,0x1262001,0x1262024,0x1262047,0x126206a,0x126208d,0x12620b0,0x12620d3,0x12620f6,0x126219b,0x12621be,0x12621e1	
+z>=1	shop-icon	2		0x1262330	Abandoned shop | Armorsmith's shop | Blacksmith's shop | Bone carver's shop | Bowyer's shop | Carpenter's shop | Cloth shop | Clothing imports | Food imports | Gem cutter's shop | General imports | Leather clothing shop | Leather goods shop | Leather shop | Metal craft shop | Metal furniture shop | Stone furniture shop | Weaponsmith's shop | Woven clothing shop	0x125f831,0x1261f0c,0x1261f2f,0x1261f52,0x1261f75,0x1261f98,0x1261fbb,0x1261fde,0x1262001,0x1262024,0x1262047,0x126206a,0x126208d,0x12620b0,0x12620d3,0x12620f6,0x126219b,0x12621be,0x12621e1	
+z>=1	shop-icon	3		0x1262312	Abandoned shop | Armorsmith's shop | Blacksmith's shop | Bone carver's shop | Bowyer's shop | Carpenter's shop | Cloth shop | Clothing imports | Food imports | Gem cutter's shop | General imports | Leather clothing shop | Leather goods shop | Leather shop | Metal craft shop | Metal furniture shop | Stone furniture shop | Weaponsmith's shop | Woven clothing shop	0x125f831,0x1261f0c,0x1261f2f,0x1261f52,0x1261f75,0x1261f98,0x1261fbb,0x1261fde,0x1262001,0x1262024,0x1262047,0x126206a,0x126208d,0x12620b0,0x12620d3,0x12620f6,0x126219b,0x12621be,0x12621e1	
+z>=1	shop-icon	4		0x12622f4	Abandoned shop | Armorsmith's shop | Blacksmith's shop | Bone carver's shop | Bowyer's shop | Carpenter's shop | Cloth shop | Clothing imports | Food imports | Gem cutter's shop | General imports | Leather clothing shop | Leather goods shop | Leather shop | Metal craft shop | Metal furniture shop | Stone furniture shop | Weaponsmith's shop | Woven clothing shop	0x125f831,0x1261f0c,0x1261f2f,0x1261f52,0x1261f75,0x1261f98,0x1261fbb,0x1261fde,0x1262001,0x1262024,0x1262047,0x126206a,0x126208d,0x12620b0,0x12620d3,0x12620f6,0x126219b,0x12621be,0x12621e1	
+z>=1	shop-icon	5		0x12622d6	Abandoned shop | Armorsmith's shop | Blacksmith's shop | Bone carver's shop | Bowyer's shop | Carpenter's shop | Cloth shop | Clothing imports | Food imports | Gem cutter's shop | General imports | Leather clothing shop | Leather goods shop | Leather shop | Metal craft shop | Metal furniture shop | Stone furniture shop | Weaponsmith's shop | Woven clothing shop	0x125f831,0x1261f0c,0x1261f2f,0x1261f52,0x1261f75,0x1261f98,0x1261fbb,0x1261fde,0x1262001,0x1262024,0x1262047,0x126206a,0x126208d,0x12620b0,0x12620d3,0x12620f6,0x126219b,0x12621be,0x12621e1	
+z>=1	shop-icon	6		0x126236c	Abandoned shop | Armorsmith's shop | Blacksmith's shop | Bone carver's shop | Bowyer's shop | Carpenter's shop | Cloth shop | Clothing imports | Food imports | Gem cutter's shop | General imports | Leather clothing shop | Leather goods shop | Leather shop | Metal craft shop | Metal furniture shop | Stone furniture shop | Weaponsmith's shop | Woven clothing shop	0x125f831,0x1261f0c,0x1261f2f,0x1261f52,0x1261f75,0x1261f98,0x1261fbb,0x1261fde,0x1262001,0x1262024,0x1262047,0x126206a,0x126208d,0x12620b0,0x12620d3,0x12620f6,0x126219b,0x12621be,0x12621e1	
+z>=1	shop-icon	7		0x126234e	Abandoned shop | Armorsmith's shop | Blacksmith's shop | Bone carver's shop | Bowyer's shop | Carpenter's shop | Cloth shop | Clothing imports | Food imports | Gem cutter's shop | General imports | Leather clothing shop | Leather goods shop | Leather shop | Metal craft shop | Metal furniture shop | Stone furniture shop | Weaponsmith's shop | Woven clothing shop	0x125f831,0x1261f0c,0x1261f2f,0x1261f52,0x1261f75,0x1261f98,0x1261fbb,0x1261fde,0x1262001,0x1262024,0x1262047,0x126206a,0x126208d,0x12620b0,0x12620d3,0x12620f6,0x126219b,0x12621be,0x12621e1	
+z>=1	shop-icon	8		0x126238a	Abandoned shop | Armorsmith's shop | Blacksmith's shop | Bone carver's shop | Bowyer's shop | Carpenter's shop | Cloth shop | Clothing imports | Food imports | Gem cutter's shop | General imports | Leather clothing shop | Leather goods shop | Leather shop | Metal craft shop | Metal furniture shop | Stone furniture shop | Weaponsmith's shop | Woven clothing shop	0x125f831,0x1261f0c,0x1261f2f,0x1261f52,0x1261f75,0x1261f98,0x1261fbb,0x1261fde,0x1262001,0x1262024,0x1262047,0x126206a,0x126208d,0x12620b0,0x12620d3,0x12620f6,0x126219b,0x12621be,0x12621e1	
+z>=1	shop-icon	9		0x12620fb	Abandoned shop | Armorsmith's shop | Blacksmith's shop | Bone carver's shop | Bowyer's shop | Carpenter's shop | Cloth shop | Clothing imports | Food imports | Gem cutter's shop | General imports | Leather clothing shop | Leather goods shop | Leather shop | Metal craft shop | Metal furniture shop | Stone furniture shop | Weaponsmith's shop | Woven clothing shop	0x125f831,0x1261f0c,0x1261f2f,0x1261f52,0x1261f75,0x1261f98,0x1261fbb,0x1261fde,0x1262001,0x1262024,0x1262047,0x126206a,0x126208d,0x12620b0,0x12620d3,0x12620f6,0x126219b,0x12621be,0x12621e1	
+z>=1	shop-icon	10		0x126225e	Abandoned shop | Armorsmith's shop | Blacksmith's shop | Bone carver's shop | Bowyer's shop | Carpenter's shop | Cloth shop | Clothing imports | Food imports | Gem cutter's shop | General imports | Leather clothing shop | Leather goods shop | Leather shop | Metal craft shop | Metal furniture shop | Stone furniture shop | Weaponsmith's shop | Woven clothing shop	0x125f831,0x1261f0c,0x1261f2f,0x1261f52,0x1261f75,0x1261f98,0x1261fbb,0x1261fde,0x1262001,0x1262024,0x1262047,0x126206a,0x126208d,0x12620b0,0x12620d3,0x12620f6,0x126219b,0x12621be,0x12621e1	
+z>=1	shop-icon	11		0x1262240	Abandoned shop | Armorsmith's shop | Blacksmith's shop | Bone carver's shop | Bowyer's shop | Carpenter's shop | Cloth shop | Clothing imports | Food imports | Gem cutter's shop | General imports | Leather clothing shop | Leather goods shop | Leather shop | Metal craft shop | Metal furniture shop | Stone furniture shop | Weaponsmith's shop | Woven clothing shop	0x125f831,0x1261f0c,0x1261f2f,0x1261f52,0x1261f75,0x1261f98,0x1261fbb,0x1261fde,0x1262001,0x1262024,0x1262047,0x126206a,0x126208d,0x12620b0,0x12620d3,0x12620f6,0x126219b,0x12621be,0x12621e1	
+z>=1	shop-icon	12		0x1262222	Abandoned shop | Armorsmith's shop | Blacksmith's shop | Bone carver's shop | Bowyer's shop | Carpenter's shop | Cloth shop | Clothing imports | Food imports | Gem cutter's shop | General imports | Leather clothing shop | Leather goods shop | Leather shop | Metal craft shop | Metal furniture shop | Stone furniture shop | Weaponsmith's shop | Woven clothing shop	0x125f831,0x1261f0c,0x1261f2f,0x1261f52,0x1261f75,0x1261f98,0x1261fbb,0x1261fde,0x1262001,0x1262024,0x1262047,0x126206a,0x126208d,0x12620b0,0x12620d3,0x12620f6,0x126219b,0x12621be,0x12621e1	
+z>=1	shop-icon	13		0x1262204	Abandoned shop | Armorsmith's shop | Blacksmith's shop | Bone carver's shop | Bowyer's shop | Carpenter's shop | Cloth shop | Clothing imports | Food imports | Gem cutter's shop | General imports | Leather clothing shop | Leather goods shop | Leather shop | Metal craft shop | Metal furniture shop | Stone furniture shop | Weaponsmith's shop | Woven clothing shop	0x125f831,0x1261f0c,0x1261f2f,0x1261f52,0x1261f75,0x1261f98,0x1261fbb,0x1261fde,0x1262001,0x1262024,0x1262047,0x126206a,0x126208d,0x12620b0,0x12620d3,0x12620f6,0x126219b,0x12621be,0x12621e1	
+z>=1	shop-icon	14		0x126229a	Abandoned shop | Armorsmith's shop | Blacksmith's shop | Bone carver's shop | Bowyer's shop | Carpenter's shop | Cloth shop | Clothing imports | Food imports | Gem cutter's shop | General imports | Leather clothing shop | Leather goods shop | Leather shop | Metal craft shop | Metal furniture shop | Stone furniture shop | Weaponsmith's shop | Woven clothing shop	0x125f831,0x1261f0c,0x1261f2f,0x1261f52,0x1261f75,0x1261f98,0x1261fbb,0x1261fde,0x1262001,0x1262024,0x1262047,0x126206a,0x126208d,0x12620b0,0x12620d3,0x12620f6,0x126219b,0x12621be,0x12621e1	
+z>=1	shop-icon	15		0x126227c	Abandoned shop | Armorsmith's shop | Blacksmith's shop | Bone carver's shop | Bowyer's shop | Carpenter's shop | Cloth shop | Clothing imports | Food imports | Gem cutter's shop | General imports | Leather clothing shop | Leather goods shop | Leather shop | Metal craft shop | Metal furniture shop | Stone furniture shop | Weaponsmith's shop | Woven clothing shop	0x125f831,0x1261f0c,0x1261f2f,0x1261f52,0x1261f75,0x1261f98,0x1261fbb,0x1261fde,0x1262001,0x1262024,0x1262047,0x126206a,0x126208d,0x12620b0,0x12620d3,0x12620f6,0x126219b,0x12621be,0x12621e1	
+z>=1	shop-icon	16		0x12622b8	Abandoned shop | Armorsmith's shop | Blacksmith's shop | Bone carver's shop | Bowyer's shop | Carpenter's shop | Cloth shop | Clothing imports | Food imports | Gem cutter's shop | General imports | Leather clothing shop | Leather goods shop | Leather shop | Metal craft shop | Metal furniture shop | Stone furniture shop | Weaponsmith's shop | Woven clothing shop	0x125f831,0x1261f0c,0x1261f2f,0x1261f52,0x1261f75,0x1261f98,0x1261fbb,0x1261fde,0x1262001,0x1262024,0x1262047,0x126206a,0x126208d,0x12620b0,0x12620d3,0x12620f6,0x126219b,0x12621be,0x12621e1	
+z>=1	shop-icon	17		0x12621e6	Abandoned shop | Armorsmith's shop | Blacksmith's shop | Bone carver's shop | Bowyer's shop | Carpenter's shop | Cloth shop | Clothing imports | Food imports | Gem cutter's shop | General imports | Leather clothing shop | Leather goods shop | Leather shop | Metal craft shop | Metal furniture shop | Stone furniture shop | Weaponsmith's shop | Woven clothing shop	0x125f831,0x1261f0c,0x1261f2f,0x1261f52,0x1261f75,0x1261f98,0x1261fbb,0x1261fde,0x1262001,0x1262024,0x1262047,0x126206a,0x126208d,0x12620b0,0x12620d3,0x12620f6,0x126219b,0x12621be,0x12621e1	
+z>=1	shop	0		0x12620b5	General imports	0x12620d3	
+z>=1	shop	1		0x1261f9d	Food imports	0x1261fbb	
+z>=1	shop	2		0x12620d8	Clothing imports	0x12620f6	
+z>=1	shop	3		0x1261fe3	Cloth shop	0x1262001	
+z>=1	shop	4		0x126206f	Leather shop	0x126208d	
+z>=1	shop	5		0x1261f57	Woven clothing shop	0x1261f75	
+z>=1	shop	6		0x1262092	Leather clothing shop	0x12620b0	
+z>=1	shop	7		0x1262006	Bone carver's shop	0x1262024	
+z>=1	shop	8		0x126204c	Gem cutter's shop	0x126206a	
+z>=1	shop	9		0x1261f7a	Weaponsmith's shop	0x1261f98	
+z>=1	shop	10		0x1261fc0	Bowyer's shop	0x1261fde	
+z>=1	shop	11		0x1261f34	Blacksmith's shop	0x1261f52	
+z>=1	shop	12		0x1261f11	Armorsmith's shop	0x1261f2f	
+z>=1	shop	13		0x1261eee	Metal craft shop	0x1261f0c	
+z>=1	shop	14		0x12621a0	Leather goods shop	0x12621be	
+z>=1	shop	15		0x126217d	Carpenter's shop	0x126219b	
+z>=1	shop	16		0x12621c3	Stone furniture shop	0x12621e1	
+z>=1	shop	17		0x1262029	Metal furniture shop	0x1262047	
+z<1	structure	0	cottage_plot	0x125db7f			
+z<1	structure	1	castle_wall	0x125da47			
+z<1	structure	2	castle_tower	0x125da47			
+z<1	structure	3	castle_courtyard	0x125da47			
+z<1	structure	4	house	0x125db7f			
+z<1	structure	5	temple	0x125d95b	Temple	0x125da26,0x1260d3d,0x1261ac2,0x1261b56	abstract_building.getName()->language_name(English=true)
+z<1	structure	6	tomb	0x125da47			
+z<1	structure	7	shop_house	0x125e035	Abandoned shop | Armorsmith's shop | Blacksmith's shop | Bone carver's shop | Bowyer's shop | Carpenter's shop | Cloth shop | Clothing imports | Food imports | Gem cutter's shop | General imports | Leather clothing shop | Leather goods shop | Leather shop | Metal craft shop | Metal furniture shop | Stone furniture shop | Weaponsmith's shop | Woven clothing shop	0x1260ec7,0x1262137,0x126215a,0x12623c6,0x12623e9,0x126240c,0x126242f,0x1262452,0x126261d,0x1262640,0x1262663,0x1262686,0x12626a9,0x12626cc,0x12626ef,0x1262712,0x126277b,0x1262b98,0x12638f9	
+z<1	structure	8	warehouse	0x125dfe6	Warehouse	0x125e030	
+z<1	structure	9	market_square	0x125e20c	Cheese market | Empty market | Fruit and vegetable market | Imported clothing market | Imported food market | Imported goods market | Meat market | Processed goods market	0x125e566,0x125e5ac,0x125e5f2,0x125e638,0x125e67e,0x125e6c4,0x125e70a,0x1260f5e	
+z<1	structure	10	pasture	0x125da47			
+z<1	structure	11	waste	0x125da47			
+z<1	structure	12	courtyard	0x125da47			
+z<1	structure	13	well	0x125dec7	Well	0x125df11	
+z<1	structure	14	vault	0x125da47			
+z<1	structure	15	great_tower	0x125da47			
+z<1	structure	16	trenches	0x125de78	Trenches	0x125dec2	
+z<1	structure	17	tree_house	0x125de2a	Counting Tree | Guild Tree | Library Tree | Market Tree | Shaping Tree | Tavern Tree | The Home Tree | Tower Tree | Tree House	0x125e4fd,0x125e520,0x125e543,0x125e589,0x125e5cf,0x125e615,0x125e65b,0x125e6a1,0x125e6e7	
+z<1	structure	18	hillock_house	0x125e337	Castle Mound | Civic Mound | Drinking Mound	0x125e3ba,0x1261a32,0x1261cac	
+z<1	structure	19	mead_hall	0x125e267	Mead Hall	0x125e332,0x125f65d,0x1261cf5,0x1261d20	abstract_building.getName()->language_name(English=true)
+z<1	structure	20	fortress_entrance	0x125e3c0	Fortress Entrance	0x125e40a	
+z<1	structure	21	library	0x125df16	Library	0x125dfe1,0x125f6b3,0x12619d0,0x1261dc8	abstract_building.getName()->language_name(English=true)
+z<1	structure	22	tavern	0x125e40f	Tavern	0x125e4da,0x125f632,0x1261bfc,0x1261d70	abstract_building.getName()->language_name(English=true)
+z<1	structure	23	counting_house	0x125e06c	Counting House	0x125e137,0x125f688,0x126198a,0x1261ba4	abstract_building.getName()->language_name(English=true)
+z<1	structure	24	guild_hall	0x125e13c	Guildhall	0x125e207,0x125f723,0x1261a5d,0x1261b79	abstract_building.getName()->language_name(English=true)
+z<1	structure	25	city_tower	0x125dc4a	Tower	0x125dd15,0x125f771,0x1261b08,0x1261c77	abstract_building.getName()->language_name(English=true)
+z<1	structure	26	shrine	0x125dd69	Shrine | Shrine of  | Shrine to 	0x125de25,0x12619ad	religious_practice.id->historical_figure(default context,1,1) | religious_practice.id->historical_entity.name(flags=0)
+z<1	structure	27	meadow	0x125da47			
+z<1	structure	28	dormitory	0x125dd1a	Dormitory	0x125dd64	
+z<1	structure	29	dininghall	0x125dbfe	Dining hall	0x125dc48	
+z<1	structure	30	necromancer_tower	0x125da47			
+z<1	structure	31	barrow	0x125db95	Barrow	0x125dbdf	
+z<1	tree	0		0x125e56b	Tree House	0x125e589	
+z<1	tree	1		0x125e6c9	The Home Tree	0x125e6e7	
+z<1	tree	2		0x125e63d	Shaping Tree	0x125e65b	
+z<1	tree	3		0x125e683	Market Tree	0x125e6a1	
+z<1	tree	4		0x125e525	Tavern Tree	0x125e543	
+z<1	tree	5		0x125e502	Library Tree	0x125e520	
+z<1	tree	6		0x125e4df	Counting Tree	0x125e4fd	
+z<1	tree	7		0x125e5b1	Guild Tree	0x125e5cf	
+z<1	tree	8		0x125e5f7	Tower Tree	0x125e615	
+z<1	shop-icon	0		0x125e7b4	Abandoned shop | Armorsmith's shop | Blacksmith's shop | Bone carver's shop | Bowyer's shop | Carpenter's shop | Cloth shop | Clothing imports | Food imports | Gem cutter's shop | General imports | Leather clothing shop | Leather goods shop | Leather shop | Metal craft shop | Metal furniture shop | Stone furniture shop | Weaponsmith's shop | Woven clothing shop	0x1260ec7,0x1262137,0x126215a,0x12623c6,0x12623e9,0x126240c,0x126242f,0x1262452,0x126261d,0x1262640,0x1262663,0x1262686,0x12626a9,0x12626cc,0x12626ef,0x1262712,0x126277b,0x1262b98,0x12638f9	
+z<1	shop-icon	1		0x1263019	Abandoned shop | Armorsmith's shop | Blacksmith's shop | Bone carver's shop | Bowyer's shop | Carpenter's shop | Cloth shop | Clothing imports | Food imports | Gem cutter's shop | General imports | Leather clothing shop | Leather goods shop | Leather shop | Metal craft shop | Metal furniture shop | Stone furniture shop | Weaponsmith's shop | Woven clothing shop	0x1260ec7,0x1262137,0x126215a,0x12623c6,0x12623e9,0x126240c,0x126242f,0x1262452,0x126261d,0x1262640,0x1262663,0x1262686,0x12626a9,0x12626cc,0x12626ef,0x1262712,0x126277b,0x1262b98,0x12638f9	
+z<1	shop-icon	2		0x1262ffb	Abandoned shop | Armorsmith's shop | Blacksmith's shop | Bone carver's shop | Bowyer's shop | Carpenter's shop | Cloth shop | Clothing imports | Food imports | Gem cutter's shop | General imports | Leather clothing shop | Leather goods shop | Leather shop | Metal craft shop | Metal furniture shop | Stone furniture shop | Weaponsmith's shop | Woven clothing shop	0x1260ec7,0x1262137,0x126215a,0x12623c6,0x12623e9,0x126240c,0x126242f,0x1262452,0x126261d,0x1262640,0x1262663,0x1262686,0x12626a9,0x12626cc,0x12626ef,0x1262712,0x126277b,0x1262b98,0x12638f9	
+z<1	shop-icon	3		0x1262fdd	Abandoned shop | Armorsmith's shop | Blacksmith's shop | Bone carver's shop | Bowyer's shop | Carpenter's shop | Cloth shop | Clothing imports | Food imports | Gem cutter's shop | General imports | Leather clothing shop | Leather goods shop | Leather shop | Metal craft shop | Metal furniture shop | Stone furniture shop | Weaponsmith's shop | Woven clothing shop	0x1260ec7,0x1262137,0x126215a,0x12623c6,0x12623e9,0x126240c,0x126242f,0x1262452,0x126261d,0x1262640,0x1262663,0x1262686,0x12626a9,0x12626cc,0x12626ef,0x1262712,0x126277b,0x1262b98,0x12638f9	
+z<1	shop-icon	4		0x1262fbf	Abandoned shop | Armorsmith's shop | Blacksmith's shop | Bone carver's shop | Bowyer's shop | Carpenter's shop | Cloth shop | Clothing imports | Food imports | Gem cutter's shop | General imports | Leather clothing shop | Leather goods shop | Leather shop | Metal craft shop | Metal furniture shop | Stone furniture shop | Weaponsmith's shop | Woven clothing shop	0x1260ec7,0x1262137,0x126215a,0x12623c6,0x12623e9,0x126240c,0x126242f,0x1262452,0x126261d,0x1262640,0x1262663,0x1262686,0x12626a9,0x12626cc,0x12626ef,0x1262712,0x126277b,0x1262b98,0x12638f9	
+z<1	shop-icon	5		0x1262fa1	Abandoned shop | Armorsmith's shop | Blacksmith's shop | Bone carver's shop | Bowyer's shop | Carpenter's shop | Cloth shop | Clothing imports | Food imports | Gem cutter's shop | General imports | Leather clothing shop | Leather goods shop | Leather shop | Metal craft shop | Metal furniture shop | Stone furniture shop | Weaponsmith's shop | Woven clothing shop	0x1260ec7,0x1262137,0x126215a,0x12623c6,0x12623e9,0x126240c,0x126242f,0x1262452,0x126261d,0x1262640,0x1262663,0x1262686,0x12626a9,0x12626cc,0x12626ef,0x1262712,0x126277b,0x1262b98,0x12638f9	
+z<1	shop-icon	6		0x1263091	Abandoned shop | Armorsmith's shop | Blacksmith's shop | Bone carver's shop | Bowyer's shop | Carpenter's shop | Cloth shop | Clothing imports | Food imports | Gem cutter's shop | General imports | Leather clothing shop | Leather goods shop | Leather shop | Metal craft shop | Metal furniture shop | Stone furniture shop | Weaponsmith's shop | Woven clothing shop	0x1260ec7,0x1262137,0x126215a,0x12623c6,0x12623e9,0x126240c,0x126242f,0x1262452,0x126261d,0x1262640,0x1262663,0x1262686,0x12626a9,0x12626cc,0x12626ef,0x1262712,0x126277b,0x1262b98,0x12638f9	
+z<1	shop-icon	7		0x1263073	Abandoned shop | Armorsmith's shop | Blacksmith's shop | Bone carver's shop | Bowyer's shop | Carpenter's shop | Cloth shop | Clothing imports | Food imports | Gem cutter's shop | General imports | Leather clothing shop | Leather goods shop | Leather shop | Metal craft shop | Metal furniture shop | Stone furniture shop | Weaponsmith's shop | Woven clothing shop	0x1260ec7,0x1262137,0x126215a,0x12623c6,0x12623e9,0x126240c,0x126242f,0x1262452,0x126261d,0x1262640,0x1262663,0x1262686,0x12626a9,0x12626cc,0x12626ef,0x1262712,0x126277b,0x1262b98,0x12638f9	
+z<1	shop-icon	8		0x1263055	Abandoned shop | Armorsmith's shop | Blacksmith's shop | Bone carver's shop | Bowyer's shop | Carpenter's shop | Cloth shop | Clothing imports | Food imports | Gem cutter's shop | General imports | Leather clothing shop | Leather goods shop | Leather shop | Metal craft shop | Metal furniture shop | Stone furniture shop | Weaponsmith's shop | Woven clothing shop	0x1260ec7,0x1262137,0x126215a,0x12623c6,0x12623e9,0x126240c,0x126242f,0x1262452,0x126261d,0x1262640,0x1262663,0x1262686,0x12626a9,0x12626cc,0x12626ef,0x1262712,0x126277b,0x1262b98,0x12638f9	
+z<1	shop-icon	9		0x1263037	Abandoned shop | Armorsmith's shop | Blacksmith's shop | Bone carver's shop | Bowyer's shop | Carpenter's shop | Cloth shop | Clothing imports | Food imports | Gem cutter's shop | General imports | Leather clothing shop | Leather goods shop | Leather shop | Metal craft shop | Metal furniture shop | Stone furniture shop | Weaponsmith's shop | Woven clothing shop	0x1260ec7,0x1262137,0x126215a,0x12623c6,0x12623e9,0x126240c,0x126242f,0x1262452,0x126261d,0x1262640,0x1262663,0x1262686,0x12626a9,0x12626cc,0x12626ef,0x1262712,0x126277b,0x1262b98,0x12638f9	
+z<1	shop-icon	10		0x12630cd	Abandoned shop | Armorsmith's shop | Blacksmith's shop | Bone carver's shop | Bowyer's shop | Carpenter's shop | Cloth shop | Clothing imports | Food imports | Gem cutter's shop | General imports | Leather clothing shop | Leather goods shop | Leather shop | Metal craft shop | Metal furniture shop | Stone furniture shop | Weaponsmith's shop | Woven clothing shop	0x1260ec7,0x1262137,0x126215a,0x12623c6,0x12623e9,0x126240c,0x126242f,0x1262452,0x126261d,0x1262640,0x1262663,0x1262686,0x12626a9,0x12626cc,0x12626ef,0x1262712,0x126277b,0x1262b98,0x12638f9	
+z<1	shop-icon	11		0x12630af	Abandoned shop | Armorsmith's shop | Blacksmith's shop | Bone carver's shop | Bowyer's shop | Carpenter's shop | Cloth shop | Clothing imports | Food imports | Gem cutter's shop | General imports | Leather clothing shop | Leather goods shop | Leather shop | Metal craft shop | Metal furniture shop | Stone furniture shop | Weaponsmith's shop | Woven clothing shop	0x1260ec7,0x1262137,0x126215a,0x12623c6,0x12623e9,0x126240c,0x126242f,0x1262452,0x126261d,0x1262640,0x1262663,0x1262686,0x12626a9,0x12626cc,0x12626ef,0x1262712,0x126277b,0x1262b98,0x12638f9	
+z<1	shop-icon	12		0x12630eb	Abandoned shop | Armorsmith's shop | Blacksmith's shop | Bone carver's shop | Bowyer's shop | Carpenter's shop | Cloth shop | Clothing imports | Food imports | Gem cutter's shop | General imports | Leather clothing shop | Leather goods shop | Leather shop | Metal craft shop | Metal furniture shop | Stone furniture shop | Weaponsmith's shop | Woven clothing shop	0x1260ec7,0x1262137,0x126215a,0x12623c6,0x12623e9,0x126240c,0x126242f,0x1262452,0x126261d,0x1262640,0x1262663,0x1262686,0x12626a9,0x12626cc,0x12626ef,0x1262712,0x126277b,0x1262b98,0x12638f9	
+z<1	shop-icon	13		0x1262b9d	Abandoned shop | Armorsmith's shop | Blacksmith's shop | Bone carver's shop | Bowyer's shop | Carpenter's shop | Cloth shop | Clothing imports | Food imports | Gem cutter's shop | General imports | Leather clothing shop | Leather goods shop | Leather shop | Metal craft shop | Metal furniture shop | Stone furniture shop | Weaponsmith's shop | Woven clothing shop	0x1260ec7,0x1262137,0x126215a,0x12623c6,0x12623e9,0x126240c,0x126242f,0x1262452,0x126261d,0x1262640,0x1262663,0x1262686,0x12626a9,0x12626cc,0x12626ef,0x1262712,0x126277b,0x1262b98,0x12638f9	
+z<1	shop-icon	14		0x12627bc	Abandoned shop | Armorsmith's shop | Blacksmith's shop | Bone carver's shop | Bowyer's shop | Carpenter's shop | Cloth shop | Clothing imports | Food imports | Gem cutter's shop | General imports | Leather clothing shop | Leather goods shop | Leather shop | Metal craft shop | Metal furniture shop | Stone furniture shop | Weaponsmith's shop | Woven clothing shop	0x1260ec7,0x1262137,0x126215a,0x12623c6,0x12623e9,0x126240c,0x126242f,0x1262452,0x126261d,0x1262640,0x1262663,0x1262686,0x12626a9,0x12626cc,0x12626ef,0x1262712,0x126277b,0x1262b98,0x12638f9	
+z<1	shop-icon	15		0x126279e	Abandoned shop | Armorsmith's shop | Blacksmith's shop | Bone carver's shop | Bowyer's shop | Carpenter's shop | Cloth shop | Clothing imports | Food imports | Gem cutter's shop | General imports | Leather clothing shop | Leather goods shop | Leather shop | Metal craft shop | Metal furniture shop | Stone furniture shop | Weaponsmith's shop | Woven clothing shop	0x1260ec7,0x1262137,0x126215a,0x12623c6,0x12623e9,0x126240c,0x126242f,0x1262452,0x126261d,0x1262640,0x1262663,0x1262686,0x12626a9,0x12626cc,0x12626ef,0x1262712,0x126277b,0x1262b98,0x12638f9	
+z<1	shop-icon	16		0x12627da	Abandoned shop | Armorsmith's shop | Blacksmith's shop | Bone carver's shop | Bowyer's shop | Carpenter's shop | Cloth shop | Clothing imports | Food imports | Gem cutter's shop | General imports | Leather clothing shop | Leather goods shop | Leather shop | Metal craft shop | Metal furniture shop | Stone furniture shop | Weaponsmith's shop | Woven clothing shop	0x1260ec7,0x1262137,0x126215a,0x12623c6,0x12623e9,0x126240c,0x126242f,0x1262452,0x126261d,0x1262640,0x1262663,0x1262686,0x12626a9,0x12626cc,0x12626ef,0x1262712,0x126277b,0x1262b98,0x12638f9	
+z<1	shop-icon	17		0x1262780	Abandoned shop | Armorsmith's shop | Blacksmith's shop | Bone carver's shop | Bowyer's shop | Carpenter's shop | Cloth shop | Clothing imports | Food imports | Gem cutter's shop | General imports | Leather clothing shop | Leather goods shop | Leather shop | Metal craft shop | Metal furniture shop | Stone furniture shop | Weaponsmith's shop | Woven clothing shop	0x1260ec7,0x1262137,0x126215a,0x12623c6,0x12623e9,0x126240c,0x126242f,0x1262452,0x126261d,0x1262640,0x1262663,0x1262686,0x12626a9,0x12626cc,0x12626ef,0x1262712,0x126277b,0x1262b98,0x12638f9	
+z<1	market	18		0x125e6a6	Imported goods market	0x125e6c4	
+z<1	market	19		0x125e58e	Imported food market	0x125e5ac	
+z<1	market	20		0x125e6ec	Imported clothing market	0x125e70a	
+z<1	market	21		0x125e5d4	Meat market	0x125e5f2	
+z<1	market	22		0x125e660	Fruit and vegetable market	0x125e67e	
+z<1	market	23		0x125e548	Cheese market	0x125e566	
+z<1	market	24		0x125e61a	Processed goods market	0x125e638	
+z<1	shop	0		0x12626f4	General imports	0x1262712	
+z<1	shop	1		0x1262434	Food imports	0x1262452	
+z<1	shop	2		0x1262411	Clothing imports	0x126242f	
+z<1	shop	3		0x12623ee	Cloth shop	0x126240c	
+z<1	shop	4		0x12623cb	Leather shop	0x12623e9	
+z<1	shop	5		0x12623a8	Woven clothing shop	0x12623c6	
+z<1	shop	6		0x1262668	Leather clothing shop	0x1262686	
+z<1	shop	7		0x1262645	Bone carver's shop	0x1262663	
+z<1	shop	8		0x1262622	Gem cutter's shop	0x1262640	
+z<1	shop	9		0x12625ff	Weaponsmith's shop	0x126261d	
+z<1	shop	10		0x12626d1	Bowyer's shop	0x12626ef	
+z<1	shop	11		0x126268b	Blacksmith's shop	0x12626a9	
+z<1	shop	12		0x126213c	Armorsmith's shop	0x126215a	
+z<1	shop	13		0x1262119	Metal craft shop	0x1262137	
+z<1	shop	14		0x12638db	Leather goods shop	0x12638f9	
+z<1	shop	15		0x1262b7a	Carpenter's shop	0x1262b98	
+z<1	shop	16		0x126275d	Stone furniture shop	0x126277b	
+z<1	shop	17		0x12626ae	Metal furniture shop	0x12626cc	

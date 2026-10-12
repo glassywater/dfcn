@@ -198,6 +198,7 @@ void Overlay::append_fortress_justice_rows(std::vector<std::string> &rows,
         "Interrogations", "Actors", "Organizations", "Plots"
     }};
     int actors_body_y = -1;
+    int organizations_body_y = -1;
     int plots_body_y = -1;
     bool interrogations_selected = false;
     for (int y = band->tabs_y + 1; y < std::min(bottom, band->tabs_y + 6); ++y) {
@@ -227,6 +228,11 @@ void Overlay::append_fortress_justice_rows(std::vector<std::string> &rows,
         const int actor_color = color_at(starts[1]);
         const int report_color = color_at(starts[0]);
         const int plot_color = color_at(starts[3]);
+        const int organization_color = color_at(starts[2]);
+        if (organization_color >= 0 && actor_color >= 0 && report_color >= 0 &&
+                organization_color != actor_color && actor_color == report_color &&
+                actor_color == plot_color)
+            organizations_body_y = y + 1;
         if (plot_color >= 0 && actor_color >= 0 && report_color >= 0 &&
                 plot_color != actor_color && actor_color == report_color)
             plots_body_y = y + 1;
@@ -268,9 +274,31 @@ void Overlay::append_fortress_justice_rows(std::vector<std::string> &rows,
         return flags ? flags[static_cast<size_t>(x) * gps_->dimy + y] &
             ((1u << 3) | (1u << 4)) : 0u;
     };
+    // Disabled subtabs can have different caption colors. A current title or
+    // body draw from the Actors renderer proves this mode independently of
+    // those colors, including when scrolling hides every record's title.
+    for (const auto &draw : draws) {
+        if (draw.source.empty() || draw.x < band->panel.x || draw.x >= right ||
+                draw.y <= band->tabs_y || draw.y >= bottom ||
+                draw.draw_dimx != gps_->dimx || draw.draw_dimy != gps_->dimy ||
+                draw.draw_grid != (draw.top_layer ? gps_->screen_top : gps_->screen)) continue;
+        const size_t length = std::min(static_cast<size_t>(right - draw.x), draw.source.size());
+        if (context[draw.y].compare(draw.x, length, draw.source, 0, length) != 0 ||
+                !native_justice_actor_source(draw.address, draw.source, draw.native_caller)) continue;
+        actors_body_y = actors_body_y < 0 ? draw.y : std::min(actors_body_y, draw.y);
+    }
     const auto complete_source = [&](int x, int y, const std::string &visible,
-                                     int clip_right) {
+                                     int clip_right,
+                                     std::optional<bool> *sabotage_person = nullptr) {
         const int draw_y = half_at(x, y) == (1u << 4) ? y - 1 : y;
+        for (const auto &draw : draws) {
+            if (draw.x != x || draw.y != draw_y || clip_right <= x ||
+                trim_view(std::string_view(draw.source).substr(
+                    0, static_cast<size_t>(clip_right - x))) != visible) continue;
+            if (const auto complete = native_justice_actor_source(
+                    draw.address, draw.source, draw.native_caller, sabotage_person))
+                return *complete;
+        }
         for (const auto &capture : captures)
             if (capture.x == x && capture.y == draw_y && capture.visible == visible)
                 return capture.complete;
@@ -377,16 +405,313 @@ void Overlay::append_fortress_justice_rows(std::vector<std::string> &rows,
         }
         std::fill_n(rows[part.y].begin() + part.x, length, ' ');
     };
+    // Convicts and Fortress guard share the resident roster's unit records.
+    // Guard adds an unlabelled fourth sort after Name/Category/Profession.
+    // Own the person field before generic matches centre it in the full row.
+    if (const auto settings = native_ui_settings()) {
+        int header_y = -1, name_left = -1;
+        for (int y = band->tabs_y + 1; y < bottom; ++y) {
+            const auto columns = native_sort_columns(*gps_, y, *settings);
+            if ((columns.size() != 3 && columns.size() != 4) ||
+                    columns.front() < band->panel.x || columns.back() + 4 > right ||
+                    columns[2] + 9 > right ||
+                    context[y].compare(columns[0] + 5, 4, "Name") != 0 ||
+                    context[y].compare(columns[1] + 5, 3, "Cat") != 0 ||
+                    context[y].compare(columns[2] + 5, 4, "Prof") != 0) continue;
+            header_y = y;
+            name_left = columns[0];
+            break;
+        }
+        if (header_y >= 0) {
+            int list_right = right;
+            for (const auto &bar : native_vertical_scrollbar_spans(*gps_, band->panel))
+                list_right = std::min(list_right, bar.x);
+            const auto recenter = native_texture_button_stocks_recenter(*gps_);
+            const auto inspect = native_texture_button_stocks_view_item(*gps_);
+            for (int middle = header_y + 2; middle + 1 < bottom; ++middle) {
+                int name_right = -1, inspect_left = -1;
+                for (int x = name_left; x + 6 <= list_right; ++x) {
+                    if (!native_square_button_at(*gps_, x, middle, recenter)) continue;
+                    for (int gap = 0; gap <= 2; ++gap)
+                        if (x + 6 + gap <= list_right &&
+                                native_square_button_at(*gps_, x + 3 + gap, middle, inspect)) {
+                            name_right = x;
+                            inspect_left = x + 3 + gap;
+                            break;
+                        }
+                    if (name_right >= 0) break;
+                }
+                if (name_right <= name_left) continue;
+                bool portrait = false;
+                for (int x = band->panel.x; x < name_left; ++x) {
+                    const int edge = native_picture_box_right(*gps_, x, middle);
+                    if (edge > x && edge <= name_left && name_left - edge <= 2) {
+                        portrait = true;
+                        break;
+                    }
+                }
+                if (!portrait) continue;
+                const SDL_Rect box{name_left, middle - 1, name_right - name_left, 3};
+                std::string identity_source;
+                for (int y = middle - 1; y <= middle + 1; ++y) {
+                    int first = name_left, end = name_right;
+                    while (first < end && (context[y][first] == ' ' ||
+                            is_cp437_box_separator(context[y], first))) ++first;
+                    for (int x = first; x < end; ++x)
+                        if (is_cp437_box_separator(context[y], x)) { end = x; break; }
+                    while (end > first && context[y][end - 1] == ' ') --end;
+                    if (first == end) continue;
+                    const std::string visible = context[y].substr(first, end - first);
+                    if (std::any_of(visible.begin(), visible.end(), [](unsigned char ch) {
+                            return ch < ' ' && ch != 0x0b && ch != 0x0c;
+                        })) continue;
+                    bool top = false;
+                    const auto *cell = cell_at(first, y, &top);
+                    const uint32_t half = half_at(first, y);
+                    const int draw_y = half == (1u << 4) ? y - 1 : y;
+                    const auto same_row = [&](int candidate_y) {
+                        if (candidate_y == y) return true;
+                        if (candidate_y != draw_y || candidate_y < box.y) return false;
+                        bool other_top = false;
+                        (void)cell_at(first, candidate_y, &other_top);
+                        return other_top == top && half_at(first, candidate_y) == (1u << 3) &&
+                            context[candidate_y].compare(first, visible.size(), visible) == 0;
+                    };
+                    std::string source = visible;
+                    const NativeDrawnTextRow *owner = nullptr;
+                    for (const auto &draw : draws) {
+                        if (draw.x != first || !same_row(draw.y) || draw.top_layer != top ||
+                                draw.draw_dimx != gps_->dimx || draw.draw_dimy != gps_->dimy ||
+                                draw.draw_grid != (top ? gps_->screen_top : gps_->screen) ||
+                                trim_view(std::string_view(draw.source).substr(
+                                    0, static_cast<size_t>(name_right - first))) != visible) continue;
+                        owner = &draw;
+                        source = draw.complete_source.empty() ? draw.source : draw.complete_source;
+                        break;
+                    }
+                    for (const auto &capture : captures)
+                        if (capture.x == first && same_row(capture.y) &&
+                                trim_view(std::string_view(capture.visible).substr(
+                                    0, static_cast<size_t>(name_right - first))) == visible) {
+                            source = capture.complete;
+                            break;
+                        }
+                    const bool profession = !identity_source.empty() && source != identity_source;
+                    auto target = owner && owner->unit_identity_target
+                        ? owner->unit_identity_target
+                        : profession ? translate_unit_profession(source, true)
+                                     : translate_unit_identity(source, true);
+                    if (!profession) identity_source = source;
+                    const int foreground = cell
+                        ? (cell[1] << 16) | (cell[2] << 8) | cell[3] : 0xffffff;
+                    append({first, y, visible, {foreground}}, kFortressJusticeActorRule,
+                        target.value_or(native_text_to_utf8(source)), !target, box, source);
+                    if (!owner) continue;
+                    // Buttons may cover the middle of a longer native draw.
+                    // Its surviving suffix is source ink, not a second name;
+                    // suppress only matching bytes outside both full controls.
+                    const int tail_end = std::min(list_right,
+                        first + static_cast<int>(owner->source.size()));
+                    const auto survives = [&](int x) {
+                        if ((x >= name_right && x < name_right + 3) ||
+                                (x >= inspect_left && x < inspect_left + 3)) return false;
+                        if (owner->draw_clip && (x < owner->draw_clip->x ||
+                                x >= owner->draw_clip->x + owner->draw_clip->w ||
+                                y < owner->draw_clip->y ||
+                                y >= owner->draw_clip->y + owner->draw_clip->h)) return false;
+                        bool tail_top = false;
+                        (void)cell_at(x, y, &tail_top);
+                        return tail_top == top &&
+                            context[y][x] == owner->source[static_cast<size_t>(x - first)] &&
+                            !is_cp437_box_separator(context[y], x);
+                    };
+                    for (int x = name_right; x < tail_end;) {
+                        if (!survives(x)) { ++x; continue; }
+                        const int start = x++;
+                        while (x < tail_end && survives(x)) ++x;
+                        const auto tail = trim_view(std::string_view(context[y]).substr(start, x - start));
+                        if (tail.empty()) continue;
+                        append({static_cast<int>(tail.data() - context[y].data()), y,
+                                std::string(tail), {foreground}},
+                            kFortressJusticeActorRule, {}, false, box, source);
+                    }
+                }
+            }
+        }
+    }
 #include "fortress_justice_plots.inc"
+    // The organization renderer supplies typed draws even when a disabled
+    // neighbouring tab has a different palette. Their exact caller and live
+    // bytes also identify a scrolled chart whose heading is above the viewport.
+    const auto organization_draw_current = [&](const NativeDrawnTextRow &draw) {
+        if (!draw.justice_organization || draw.source.empty() ||
+                draw.x < band->panel.x || draw.x >= right ||
+                draw.y <= band->tabs_y || draw.y >= bottom ||
+                draw.draw_dimx != gps_->dimx || draw.draw_dimy != gps_->dimy ||
+                draw.draw_grid != (draw.top_layer ? gps_->screen_top : gps_->screen)) return false;
+        const int length = std::min(right - draw.x, static_cast<int>(draw.source.size()));
+        return length > 0 && context[draw.y].compare(draw.x, length, draw.source, 0, length) == 0;
+    };
+    for (const auto &draw : draws)
+        if (organization_draw_current(draw)) {
+            organizations_body_y = organizations_body_y < 0
+                ? draw.y : std::min(organizations_body_y, draw.y);
+            break;
+        }
+    if (organizations_body_y >= 0) {
+        int list_right = right;
+        for (const auto &bar : native_vertical_scrollbar_spans(*gps_, band->panel))
+            list_right = std::min(list_right, bar.x);
+        const auto person_target = [&](const NativeJusticeOrganizationCaption &caption,
+                                        std::string_view source) {
+            if (caption.person_target) return caption.person_target;
+            const auto person = caption.person_source.empty() ? source : std::string_view(caption.person_source);
+            auto target = exact_literal_translation("Justice actor: " + std::string(person));
+            if (!target) target = translate_unit_identity(person, true);
+            return target;
+        };
+        const auto append_draw = [&](const NativeDrawnTextRow &draw, int rule,
+                                     const std::string &target, const SDL_Rect &box,
+                                     const std::string &whole) {
+            SDL_Rect caption_box{};
+            if (!SDL_IntersectRect(&box, &band->panel, &caption_box)) return;
+            if (draw.draw_clip) {
+                SDL_Rect clipped{};
+                if (!SDL_IntersectRect(&caption_box, &*draw.draw_clip, &clipped)) return;
+                caption_box = clipped;
+            }
+            const auto source = std::string_view(draw.source).substr(0,
+                static_cast<size_t>(std::max(0, std::min(right - draw.x,
+                    static_cast<int>(draw.source.size())))));
+            const auto visible = trim_view(source);
+            if (visible.empty()) return;
+            const int x = draw.x + static_cast<int>(visible.data() - source.data());
+            const NativeTextCardRow part{x, draw.y, std::string(visible),
+                {draw.foreground_rgb >= 0 ? draw.foreground_rgb : 0xffffff}};
+            append(part, rule, target, false, caption_box, whole);
+            // addst's classic half-font writes the same caption again below
+            // the logical baseline. Both physical spans belong to this field.
+            if (half_at(x, draw.y) == (1u << 3) && draw.y + 1 < bottom &&
+                    half_at(x, draw.y + 1) == (1u << 4) &&
+                    context[draw.y + 1].compare(x, visible.size(), visible) == 0) {
+                auto lower = part;
+                ++lower.y;
+                append(lower, rule, target, false, caption_box, whole);
+            }
+        };
+        for (const auto &draw : draws) {
+            if (!organization_draw_current(draw)) continue;
+            const auto &caption = *draw.justice_organization;
+            const std::string whole = draw.complete_source.empty() ? draw.source : draw.complete_source;
+            const SDL_Rect row_box{draw.x, draw.y, std::max(1, list_right - draw.x),
+                half_at(draw.x, draw.y) == (1u << 3) ? 2 : 1};
+            switch (caption.field) {
+            case NativeJusticeOrganizationField::Title: {
+                int edge = list_right;
+                // The counter has its own draw and color. Its actual start
+                // bounds the complete title; never include it in a name.
+                for (const auto &field : split_text_fields(context[draw.y])) {
+                    if (field.start <= draw.x) continue;
+                    const auto slash = field.text.find('/');
+                    if (slash == std::string::npos || slash == 0 || slash + 1 == field.text.size()) continue;
+                    if (field.text.substr(0, slash).find_first_not_of("0123456789") == std::string::npos &&
+                            field.text.substr(slash + 1).find_first_not_of("0123456789") == std::string::npos)
+                        edge = std::min(edge, field.start);
+                }
+                const auto target = person_target(caption, trim_view(whole));
+                append_draw(draw, kFortressJusticeActorRule,
+                    target.value_or(native_text_to_utf8(whole)),
+                    {draw.x, draw.y, std::max(1, edge - draw.x), row_box.h}, whole);
+                break;
+            }
+            case NativeJusticeOrganizationField::Members: {
+                const auto target = translate_justice_case_text(whole);
+                if (target) append_draw(draw, kFortressJusticeActorRule, *target, row_box, whole);
+                break;
+            }
+            case NativeJusticeOrganizationField::SelectedLabel: {
+                const NativeDrawnTextRow *name = nullptr;
+                for (const auto &candidate : draws)
+                    if (organization_draw_current(candidate) && candidate.y == draw.y &&
+                            candidate.x == draw.x + static_cast<int>(draw.source.size()) &&
+                            candidate.justice_organization->field == NativeJusticeOrganizationField::SelectedName) {
+                        name = &candidate;
+                        break;
+                    }
+                const auto label = exact_literal_translation("Justice organization: Selected actor");
+                if (!label) break;
+                if (!name) {
+                    append_draw(draw, kFortressJusticeActorRule, *label + "：", row_box, whole);
+                    break;
+                }
+                const std::string full_name = name->complete_source.empty() ? name->source : name->complete_source;
+                const auto target = person_target(*name->justice_organization, trim_view(full_name));
+                const std::string full = whole + full_name;
+                append_draw(draw, kFortressJusticeActorRule,
+                    *label + "：" + target.value_or(native_text_to_utf8(full_name)), row_box, full);
+                append_draw(*name, kFortressJusticeActorRule, {}, row_box, full);
+                break;
+            }
+            case NativeJusticeOrganizationField::SelectedName: {
+                const bool joined = std::any_of(draws.begin(), draws.end(), [&](const auto &label) {
+                    return organization_draw_current(label) && label.y == draw.y &&
+                        label.x + static_cast<int>(label.source.size()) == draw.x &&
+                        label.justice_organization->field == NativeJusticeOrganizationField::SelectedLabel;
+                });
+                if (!joined) {
+                    const auto target = person_target(caption, trim_view(whole));
+                    append_draw(draw, kFortressJusticeActorRule,
+                        target.value_or(native_text_to_utf8(whole)), row_box, whole);
+                }
+                break;
+            }
+            case NativeJusticeOrganizationField::NodeRole: {
+                if (!caption.node_box) break;
+                const auto target = exact_literal_translation("Justice organization role: " + std::string(trim_view(whole)));
+                const auto &box = *caption.node_box;
+                if (target) append_draw(draw, kFortressJusticeActorRule, *target,
+                    {box.x, draw.y, box.w, row_box.h}, whole);
+                break;
+            }
+            case NativeJusticeOrganizationField::NodeName: {
+                if (!caption.node_box) break;
+                const auto &node = *caption.node_box;
+                // Keep the native two-initial representation. Its Chinese
+                // initials come from the actual given-name and surname
+                // fields; the complete name remains in the selected label.
+                append_draw(draw, kFortressJusticeActorRule,
+                    caption.initials_target.value_or(native_text_to_utf8(whole)),
+                    {draw.x, draw.y, std::max(1, node.x + node.w - draw.x), row_box.h},
+                    caption.person_source.empty() ? whole : caption.person_source);
+                break;
+            }
+            case NativeJusticeOrganizationField::NodeTail: {
+                if (!caption.node_box) break;
+                const auto &node = *caption.node_box;
+                const auto target = exact_literal_translation("Justice organization status: " + std::string(trim_view(whole)));
+                append_draw(draw, kFortressJusticeActorRule,
+                    target.value_or(native_text_to_utf8(whole)),
+                    {draw.x, draw.y, std::max(1, node.x + node.w - draw.x), row_box.h}, whole);
+                break;
+            }
+            default:
+                break;
+            }
+        }
+        return;
+    }
     if (actors_body_y >= 0) {
         // Actors are numbered records, not case buttons or report prose.
         // The counter owns its separate native field. Claim the complete
-        // identity before generic name/word matches centre it in an English
-        // span; use the native text starts to retain the list's shared inset.
+        // identity and every typed body row before generic name/word matches
+        // centre fragments in English spans. Supplier records retain full
+        // sources even when its stored display row was cut to 58 bytes.
         struct ActorField {
             NativeTextCardRow row;
             int right;
-            bool alias;
+            bool identity;
+            std::string complete;
+            std::optional<bool> sabotage_person;
         };
         std::vector<ActorField> fields;
         int list_right = right, list_left = right;
@@ -401,7 +726,6 @@ void Overlay::append_fortress_justice_rows(std::vector<std::string> &rows,
             };
             return digits(text.substr(0, slash)) && digits(text.substr(slash + 1));
         };
-        bool numbered = false;
         for (int y = actors_body_y; y < bottom; ++y) {
             std::vector<LogicalTextField> parts;
             for (const auto &field : split_text_fields(context[y]))
@@ -413,27 +737,31 @@ void Overlay::append_fortress_justice_rows(std::vector<std::string> &rows,
             if (title) {
                 edge = parts.back().start;
                 parts.pop_back();
-                numbered = true;
             }
-            const bool alias = !title && parts.front().text.starts_with("Alias:");
-            if (!title && !alias) continue;
             const int first = parts.front().start, end = parts.back().end;
             const auto card = capture_panel_text_card({first, y, end - first, 1}, true);
             if (!card || card->rows.size() != 1) continue;
+            const auto &part = card->rows.front();
+            std::optional<bool> sabotage_person;
+            const std::string complete = complete_source(part.x, part.y,
+                part.source, edge, &sabotage_person);
+            if (!title && !complete.starts_with("Alias:") &&
+                    !complete.starts_with("Associated Organization:") &&
+                    !complete.starts_with("Associated Plot:") &&
+                    complete != "Highest known in organization") continue;
             list_left = std::min(list_left, first);
-            fields.push_back({card->rows.front(), edge, alias});
+            fields.push_back({part, edge, title, complete, sabotage_person});
         }
-        if (numbered && list_left < list_right) {
+        if (list_left < list_right) {
             for (const auto &field : fields) {
                 const auto &part = field.row;
-                const std::string source = complete_source(part.x, part.y,
-                    part.source, field.right);
+                const std::string &source = field.complete;
                 // An unidentified actor is a native status caption, not an
                 // authored personal name. Resolve Justice's complete status
                 // before the identity grammar preserves unknown name text.
-                auto target = field.alias ? translate_justice_case_text(source)
-                    : exact_literal_translation("Justice actor: " + source);
-                if (!target && !field.alias) target = translate_unit_identity(source, true);
+                auto target = field.identity ? exact_literal_translation("Justice actor: " + source)
+                    : translate_justice_actor_text(source, field.sabotage_person);
+                if (!target && field.identity) target = translate_unit_identity(source, true);
                 const SDL_Rect box{list_left, part.y, field.right - list_left,
                     half_at(part.x, part.y) == (1u << 3) ? 2 : 1};
                 append(part, kFortressJusticeActorRule,
@@ -771,7 +1099,7 @@ void Overlay::layout_fortress_justice(SDL_Renderer *renderer) {
         match.layout_right = false;
         if (match.rule == kFortressJusticeActorRule || match.rule == kFortressJusticePlotRule) {
             // Preserve each native row/baseline and the independently drawn
-            // counter. The complete name or alias shares one left edge.
+            // counter. Names, aliases, associations and statuses share one inset.
             match.layout_left = true;
             layout_fortress_text_rows(renderer, {{&match}}, box.x, box.x + box.w, true, true);
             continue;

@@ -20,7 +20,9 @@ static void native_dfhack_graphics_display(void *renderer) {
     TranslationStateScope translation;
     std::unique_lock<std::recursive_mutex> lock(g_native_dfhack_layer_mutex);
     NativeDfhackNativeLayerScope native;
+    NativeWorldgenDisplayScope page;
     NativeMapGpuFrame map(renderer);
+    NativeFortressMapHudDisplayScope fortress_hud;
     callback.call_native([&] { original(renderer); });
 }
 

@@ -79,6 +79,43 @@ void Overlay::append_fortress_stone_rows(std::vector<std::string> &rows,
     const auto table = fortress_stone_table(rows);
     if (!table) return;
     const auto captures = captured_clipped_captions();
+    const auto translate_name = [&](std::string_view source) -> std::optional<std::string> {
+        const auto stone = [&](std::string_view name) -> std::optional<std::string> {
+            if (auto target = translate_named_stone_material(name)) return target;
+            if (config_.compositional_rules)
+                if (auto target = RULESETS.translate_material_state(lower(std::string(name))))
+                    return target;
+            return exact_literal_translation(name);
+        };
+        if (auto target = stone(source)) return target;
+
+        // Item Tagger appends use tags to the RAW name. Keep the complete
+        // stone noun (including scoped ore aliases) separate from each tag.
+        // Earlier script runs can leave extra spaces between these fields.
+        const size_t suffix = source.find(" [");
+        if (suffix == std::string_view::npos) return std::nullopt;
+        auto target = stone(trim_view(source.substr(0, suffix)));
+        if (!target) return std::nullopt;
+        for (auto tail = source.substr(suffix); !tail.empty();) {
+            if (tail.front() != ' ') return std::nullopt;
+            tail = trim_view(tail);
+            if (tail.empty()) break;
+            if (tail.front() != '[') return std::nullopt;
+            const size_t end = tail.find(']');
+            if (end == std::string_view::npos) return std::nullopt;
+            const auto tag = tail.substr(0, end + 1);
+            std::optional<std::string> translated;
+            if (config_.compositional_rules) {
+                std::vector<size_t> origins;
+                translated = RULESETS.translate_with_origins(native_text_to_utf8(tag),
+                    "::item_tagger::tags::tag", origins);
+            }
+            if (!translated) translated = exact_literal_translation(tag);
+            *target += " " + (translated ? *translated : native_text_to_utf8(tag));
+            tail.remove_prefix(end + 1);
+        }
+        return target;
+    };
     const auto current = [&](int first, int end, int y) {
         for (int x = first; x < end; ++x) {
             const auto ch = visible_char_at(x, y);
@@ -182,10 +219,7 @@ void Overlay::append_fortress_stone_rows(std::vector<std::string> &rows,
                 // and blocks, including RAW STONE_NAME aliases. Remaining
                 // complete stone names use material grammar, never month or
                 // generated-person-name senses from the generic compositor.
-                target = translate_named_stone_material(source);
-                if (!target && config_.compositional_rules)
-                    target = RULESETS.translate_material_state(lower(source));
-                if (!target) target = exact_literal_translation(source);
+                target = translate_name(source);
                 unknown = !target;
             } else {
                 // The native list can end at a whole entry with ",...",

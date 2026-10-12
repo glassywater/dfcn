@@ -1,0 +1,3 @@
+edition	image_identity	image_path	role	function_start	function_end	anchor
+reference	PE:6a70a6d9:02711000	D:/program/steam/steamapps/common/Dwarf Fortress/Dwarf Fortress.exe	reveal-knowledge-producer	0x1402afed0	0x1402b18c8	0x1402b111b
+classic	PE:6a70b91c:0270a000	C:/Users/WIN11/Downloads/df_53_16_win/Dwarf Fortress.exe	reveal-knowledge-producer	0x1402ada90	0x1402af488	0x1402aecdb

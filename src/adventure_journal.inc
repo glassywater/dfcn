@@ -35,9 +35,12 @@
             // word, to retain ownership of such People cards. Typed metadata
             // below still takes precedence for pinned cards of other kinds.
             bool people_selected = false;
+            bool events_selected = false;
             for (int y = tabs_y; y <= tabs_y + 1 && y < gps_->dimy; ++y) {
                 int people_color = -1;
+                int events_color = -1;
                 std::unordered_map<int, int> other_colors;
+                std::unordered_map<int, int> other_event_colors;
                 for (const auto caption : main_tabs) {
                     const size_t at = context[y].find(caption);
                     if (at == std::string::npos) continue;
@@ -47,10 +50,15 @@
                     const int color = (cell[1] << 16) | (cell[2] << 8) | cell[3];
                     if (caption == "People") people_color = color;
                     else ++other_colors[color];
+                    if (caption == "Events") events_color = color;
+                    else ++other_event_colors[color];
                 }
                 if (people_color >= 0 && other_colors.size() == 1 &&
                     other_colors.begin()->second == 8 &&
                     other_colors.begin()->first != people_color) people_selected = true;
+                if (events_color >= 0 && other_event_colors.size() == 1 &&
+                    other_event_colors.begin()->second == 8 &&
+                    other_event_colors.begin()->first != events_color) events_selected = true;
             }
             const auto append_tab = [&](int y, std::string_view caption, bool intrigue) {
                 const size_t at = context[y].find(caption);
@@ -238,7 +246,7 @@
                 for (int y = title_y + 1; y < bottom; ++y)
                     if (std::string_view(context[y]).substr(left, right - left).find(date_prefix) !=
                             std::string_view::npos) { event_date_y = y; break; }
-                const bool event = event_date_y >= 0;
+                const bool event = event_date_y >= 0 || (collapsed && events_selected);
 
                 // Full-font titles can start inside the card, while split
                 // captions start on its upper frame. Use the frame's origin
@@ -319,7 +327,7 @@
                     return rows;
                 };
                 const auto title = field_at(title_y, *counter);
-                const std::vector<Match> title_rows = title ? field_rows(*title) : std::vector<Match>{};
+                std::vector<Match> title_rows = title ? field_rows(*title) : std::vector<Match>{};
                 if (event)
                     for (const Match &row : title_rows) placed_header_rows.insert(row.y);
                 // Bestiary records put the species/caste in the title, with
@@ -332,6 +340,25 @@
                     return std::any_of(title_rows.begin(), title_rows.end(),
                         [&](const Match &row) { return row.y == y; });
                 };
+                // Collapsed Events cards have a complete title and counter,
+                // but omit the occurrence paragraph. The selected native tab
+                // supplies their kind; retain the same bounded title grammar
+                // and reserve both font halves against generic word matching.
+                if (event && collapsed && title) {
+                    const auto complete = native_drawn_text_for_row(*title, *counter);
+                    const std::string source = complete.value_or(title->source);
+                    const auto target = complete || title->x + title->length < *counter
+                        ? translate_journal_title(source, JournalSearchKind::Event) : std::nullopt;
+                    if (target && append_setup_paragraph(title_rows, *target, *counter, *counter))
+                        continue;
+                    title_rows.front().native_help_review_source = source;
+                    for (Match &row : title_rows) {
+                        row.native_help_source_only = true;
+                        std::fill_n(screen_rows[row.y].begin() + row.x, row.length, ' ');
+                        untranslated_help_rows.push_back(std::move(row));
+                    }
+                    continue;
+                }
                 std::optional<Match> kind;
                 std::optional<std::string> kind_target;
                 bool site = false;

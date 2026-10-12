@@ -29,6 +29,9 @@ std::optional<std::string> Overlay::translate_complete_announcement(
         std::string_view source, const std::vector<int> &source_colors,
         std::vector<int> &target_colors) const {
     refresh_native_display_translation_context();
+    // A stored reveal report no longer owns this frame's temporary formatter
+    // strings. Recover its two proven unit fields before choosing a cache key.
+    prepare_native_announcement_unit_identities(source);
     // Resolve native relationship fields before consulting the text cache.
     // Two people called "cousin" can have different proven family paths.
     // Re-enter with their private typed keys so both cache identity and
@@ -66,11 +69,11 @@ std::optional<std::string> Overlay::translate_complete_announcement(
         // those before the general catalogue can consume the opening while
         // leaving the subsequent native report outside its field grammar.
         for (const std::string_view scope : {
-                "fortress-attack", "fortress-arrival", "fortress-announcement", "historical-event-paragraph"}) {
+                "adventure-announcement", "fortress-attack", "fortress-arrival", "fortress-announcement", "fortress-embark", "historical-event-paragraph"}) {
             // The attack producer joins commander, warning and reinforcement
             // paragraphs with native [B] controls. Match their visible whole
             // record, using the same control normalization as report capture.
-            const std::string attack_source = scope == "fortress-attack"
+            const std::string attack_source = scope == "fortress-attack" || scope == "fortress-embark"
                 ? native_announcement_display_source(block) : std::string{};
             if (const auto native = translate_announcement_combat(
                     scope == "fortress-attack" ? std::string_view(attack_source) : block, scope)) {
@@ -99,6 +102,15 @@ std::optional<std::string> Overlay::translate_complete_announcement(
             for (unsigned char ch : *voice)
                 if ((ch & 0xc0) != 0x80) translated_colors.push_back(colors.front());
             return translated;
+        }
+        // 103a1d0 owns both speaker and optional addressee, including unnamed
+        // appearance/caste/occupation captions. Resolve the complete spoken
+        // body before generic catalogue templates can treat its elapsed-time
+        // prefix or the addressee's occupation as a generated personal name.
+        if (const auto speech = translate_announcement_dialogue(block)) {
+            for (unsigned char ch : *speech)
+                if ((ch & 0xc0) != 0x80) translated_colors.push_back(colors.front());
+            return speech;
         }
         // Spoken memories share the overview's authored wording. Resolve a
         // complete memory chain before generic paragraph literals, which can
@@ -162,7 +174,6 @@ std::optional<std::string> Overlay::translate_complete_announcement(
             return found->second;
         }
         translated = translate_announcement_combat(block);
-        if (!translated) translated = translate_announcement_dialogue(block);
         if (translated) {
             // Combat and speech builders emit one native announcement color.
             for (unsigned char ch : *translated)

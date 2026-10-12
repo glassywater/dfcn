@@ -1,0 +1,191 @@
+Source reconstruction from the configured Windows PE instruction bytes.
+Steam image PE:6a70a6d9:02711000; classic image PE:6a70b91c:0270a000.
+These files describe native source construction, not a gameplay observation.
+
+The screenshot instruction identifies announcement_alert_interfacest::render:
+Steam 0x40d5f0..0x40f77a; classic 0x40b1b0..0x40d33a.
+The whole function and input function were read from both installed images.
+
+Source branch precedence is:
+  if owner.viewing_unit != null:
+    iterate owner.viewing_unit.unit_announcement_ids[owner.viewing_unit_uac];
+    locate each ID in world.status.reports;
+    absent report ID: skip that entry;
+    present ID: wrap complete report.text from report+8.
+  else if owner.viewing_alert_button:
+    iterate world.status.alert_button_announcement_id;
+    locate each ID in world.status.reports;
+    absent report ID: skip that entry;
+    present ID: wrap complete report.text from report+8.
+  else if owner.viewing_alert != null:
+    iterate viewing_alert.announcement_id (alert+8);
+    locate each ID in world.status.reports;
+    absent report ID: skip that entry;
+    present ID: wrap complete report.text from report+8;
+    then iterate the parallel alert.report_unid and category vectors;
+    absent unit: skip the unit summary (popup has no Somebody fallback);
+    present unit: construct the category summary below.
+  else:
+    draw no body source.
+
+At every report path, repeat_count <= 0 uses report.text unchanged.
+At every report path, repeat_count > 0 copies report.text, appends " x",
+then appends the signed int32 result of repeat_count+1 in decimal.
+The first relevant Steam instructions are 0x40d812/0x40d82c,
+0x40dc7f/0x40dc99 and 0x40e0a0/0x40e0ba. Classic report starts are
+0x40b3d2/0x40b3ec, 0x40b83f/0x40b859 and 0x40bc60/0x40bc7a.
+Neither wrapping nor the repeat suffix creates a second semantic message.
+The renderer retains the complete report pointer beside every native row.
+
+Popup unit-summary construction (Steam 0x40e48d..0x40e50e):
+  identity = unit::full-name/profession formatter 0x1331500;
+  capitalize(identity), append " is ";
+  category == 0: append "fighting!";
+  category == 1: append "sparring.";
+  category == 2: append "hunting.";
+  all other category values: append no status text.
+Thus the complete finite productions are:
+  {unit-identity} is fighting!
+  {unit-identity} is sparring.
+  {unit-identity} is hunting.
+  {unit-identity} is [native invalid category fallthrough]
+The same formatter's modes 4/5 can copy a zero-length first_name and
+return normally. The popup does not reject that empty native caption.
+Capitalization here precedes appending " is ", so the additional complete
+visible productions have lowercase initial letters:
+  is fighting!
+  is sparring.
+  is hunting.
+  is [native invalid category fallthrough]
+Typed unit/category ownership plus equality to the entire cached summary
+proves an empty label without inferring a missing character's name. The
+three valid-category translations fill the existing {n} summary templates
+with that exact empty caption. The invalid-category empty copula has no
+activity meaning and contributes no translated ink. The hover reader also
+retains a successful empty formatter result instead of rejecting its cache.
+The hover renderer additionally uses "Somebody" when its unit lookup fails;
+that fallback belongs to hover, not the selected-alert popup.
+
+Fixed instruction productions (whole paragraph, including native spaces):
+  viewing_unit != null, or viewing_alert_button, or selected alert without
+  report_unid entries:
+    You can recenter on certain announcements.  Right click to close.
+  selected alert with report_unid entries:
+    Select a report to view the full text.  Right click to close.
+The full popup render body has no other authored UI sentence branch.
+Its empty strings, minimum-three-row icon padding and graphic glyphs
+contribute no additional translatable textual production.
+
+The body therefore accepts complete report text from every native submit
+producer admitted by the routing configuration, rather than one particular
+revelation constructor or a prefix matched from announcement history.
+
+Native report source ownership:
+  Steam submission 0xe3c20..0xe569d / classic 0xe3bb0..0xe562d
+  reads signed int16 announcement_infost.type at parameters+0;
+  values below 0 or >= 356 return;
+  the source NativeString is the second parameter;
+  at Steam 0xe4680 a native report is allocated;
+  at 0xe468a..0xe468f the exact type is copied into report+0;
+  at 0xe4692..0xe46ad the complete source is copied into report.text at +8.
+  Repeat coalescing compares the complete submitted source to report.text
+  and increments report.repeat_count at +0x34 (Steam 0xe45f8..0xe47f8).
+  Routing observes per-type announcement flags at init+0x1d0+type*4,
+  an explicit alert-type mapping, and optional unit/category ownership.
+  Alert report references always resolve those same stored complete records.
+
+The deterministic report-to-alert-group helper has no unwind entry, so its
+actual leaf code was read independently: Steam 0xeaa20..0xeab13 and classic
+0xea9b0..0xeaaa3. It bounds the unsigned type at 353, reads the native byte
+remap at Steam 0xeaba0 / classic 0xeab30, then the embedded RVA jump table
+at Steam 0xeab14 / classic 0xeaaa4. Targets return alert groups 0..33.
+Accepted announcement types 354 and 355 use the default GENERAL group 0.
+native-announcement-alert-routing.tsv records each actual table target for
+every one of the 356 types in both images. The submitter independently
+adds unit/category ownership to combat, sparring and hunting alerts.
+
+All decoded direct native submissions in the configured images:
+  235 complete PE unwind functions per edition;
+  712 actual direct call or cross-function tail-call instructions per edition.
+  Every owner body, literal operand, decoded branch and switch is retained.
+  native-submission-types.tsv reconstructs the parameters+0 branch values
+  at each of the 1424 actual sites, preserving alternative values at shared
+  tail calls instead of assuming the lexically preceding type write.
+  native-announcement-enum.tsv retains all 356 accepted numeric values;
+  symbolic enum labels are explicitly attributed to local df-structures.
+  Some accepted enum values have no current static direct producer; that
+  is not evidence for inventing additional caption sentences.
+
+Typed/open data fields are retained as fields, not enumerated proper names:
+  unit/historical-figure identity and profession;
+  language_name, site/entity/artifact names;
+  creature/caste/material/item/reaction/interaction RAW descriptions;
+  authored dialogue/performance/written content;
+  dates, counts, and recursive history-event text.
+The complete reconstruction is the finite native source productions plus
+those typed field suppliers. Runtime values and user-authored names can
+create arbitrarily many complete report strings.
+
+Native construction ownership is described by two complementary catalogs:
+  native-production-catalog.tsv maps 165 reference owners to the existing
+  complete English source catalogs and their exact native provenance.
+  native-scoped-productions.tsv supplies the remaining 70 reference owners
+  through complete report productions, recursively composed local clauses,
+  and whole typed field suppliers. Two additional entries for owners
+  0x10b150 and 0x110460 describe only their optional complete history_event
+  subproduction; their arrival/rumor and invasion/commander main productions
+  already belong to native-production-catalog.tsv. These two entries do not
+  replace or summarize either complete owner body.
+The union describes construction for all 235 actual reference submit owners.
+native-producer-owners.tsv and native-submission-edges.tsv retain the paired
+classic owners/sites, while both instruction dumps retain their branches,
+literals and switches. A catalog owner denotes a native function with one
+or more submissions, not one fixed sentence. Each owner can construct a
+finite set of fixed messages, branch compositions, and open typed fields.
+Announcement configuration and native alert/unit routing decide which
+stored report reaches this popup; the renderer uses the same report.text.
+
+native-fixed-producer-sources.tsv supplies the full-buffer constructions
+that cannot be described by a nearby literal alone: action preconditions
+returned by 0x85a8b0, slab writing copied from item+0xe8, written-work prose
+returned by 0xcc7020/0xcc6a10 with their 0xcc5d50 continuation, complete
+equipment messages, active RAW RETRACT_INTO_BP action expansion, and the
+two EMBARK_MESSAGE documents. native-scoped-productions.tsv links these
+supplier records to their runtime consumers. Stored titles, authored prose
+and custom RAW action text remain supplier fields rather than invented
+finite English expansions. These files describe source construction and
+runtime ownership; they do not describe observed game display outcomes.
+
+EMBARK_MESSAGE constructor 0x8b25a0..0x8b30e1 has exactly two submitted
+document branches, both converging at 0x8b306a (type 342):
+  second argument DL != 0 (0x8b27d3/0x8b27d5), or native state == 4
+  (0x8b27db..0x8b27e4): return without an announcement;
+  native state == 8 (0x8b2807/0x8b280a): revisit document
+  0x8b284b..0x8b29b4, jumping to common submit at 0x8b29b9;
+  every other admitted state: ordinary embark document
+  0x8b29c4..0x8b2fe4, then common submit.
+The revisit document contains its heading and two body paragraphs; the
+ordinary document contains its heading/arrival, supplies, and site/strike
+paragraphs. [B] and [C] are native paragraph/color controls, not additional
+sentences. The original instruction paths and unsimplified documents are
+in native-fixed-producer-sources.tsv; normalized complete compositions and
+their local productions are in native-scoped-productions.tsv and runtime
+announcement-combat-grammar.tsv (fortress-embark and embark-* scopes).
+
+Both headings use entity race creature_raw.name[2] (+0x60), then native
+capitalization. Missing entity supplies An. An entity with race < 0,
+race outside the creature vector, or empty adjective supplies an empty
+adjective after A, producing A  Outpost / A  Outpost Revisited; whitespace
+normalization yields the separately authored A Outpost heading branches.
+Ordinary supplies use race name[1] (+0x40), with charges for missing entity,
+and a local dangerous creature plural or the explicit beasts fallback.
+Entity race < 0/outside the vector leaves the race plural empty at
+0x8b2bd1/0x8b2bf1 -> 0x8b2c22; empty RAW plurals likewise remain empty.
+All three supplies compositions with one or both empty plural fields have
+their own complete source productions. The invalid dangerous-species path
+0x8b2e7b would dereference null+0x40 before submission; it is not an
+additional completed announcement or a beasts fallback.
+Civilization is the whole entity language_name or an empty field; site is
+the native-name/quoted-English-name pair. The separate initial reclaim
+interface constructor at 0x13797e0 has no direct submit site in the native
+submit graph and contributes no additional document branch to this popup.

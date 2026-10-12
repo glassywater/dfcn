@@ -1,0 +1,4 @@
+image	role	start	end	source
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	stored-name-English-formatter	0x12c58d0	0x12c6e5c	elf-12c58d0.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	WORD-part-of-speech-selector	0x1cc3980	0x1cc3ac7	elf-1cc3980.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	std-string-mutation-boundary	0x69f9b0	0x69fb48	elf-69f9b0.asm

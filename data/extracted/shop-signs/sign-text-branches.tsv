@@ -1,0 +1,20 @@
+owner	selector	native_branch	slab_subtype	title	unnamed_text	named_text	category_zh
+shop_house	0	0xfcc1f4	9	general imports sign	Imported Goods	{generated-name} / Imported Goods	进口商品
+shop_house	1	0xfcc1d9	7	food imports sign	Imported Food	{generated-name} / Imported Food	进口食物
+shop_house	2	0xfcc1be	8	clothing imports sign	Imported Clothing	{generated-name} / Imported Clothing	进口服装
+shop_house	3	0xfcc27b	10	cloth shop sign	Cloth	{generated-name} / Cloth	布料
+shop_house	4	0xfcc260	11	leather shop sign	Leather	{generated-name} / Leather	皮革
+shop_house	5	0xfcc245	12	woven clothing shop sign	Woven Clothing	{generated-name} / Woven Clothing	织物服装
+shop_house	6	0xfcc22a	13	leather clothing shop sign	Leather Clothing	{generated-name} / Leather Clothing	皮革服装
+shop_house	7	0xfcc1a3	14	bone carver's shop sign	Bone Carver	{generated-name} / Bone Carver	骨雕师
+shop_house	8	0xfcc188	15	gem cutter's shop sign	Gem Cutter	{generated-name} / Gem Cutter	宝石切割师
+shop_house	9	0xfcc16d	16	weaponsmith's shop sign	Weaponsmith	{generated-name} / Weaponsmith	武器匠
+shop_house	10	0xfcc152	17	bowyer's shop sign	Bowyer	{generated-name} / Bowyer	弩匠
+shop_house	11	0xfcb8de	18	blacksmith's shop sign	Blacksmith	{generated-name} / Blacksmith	锻造师
+shop_house	12	0xfcb8c3	19	armorsmith's shop sign	Armorsmith	{generated-name} / Armorsmith	盔甲匠
+shop_house	13	0xfcb8a8	20	metal craft shop sign	Metal Crafts	{generated-name} / Metal Crafts	金属工艺品
+shop_house	14	0xfcb88d	21	leather goods shop sign	Leather Goods	{generated-name} / Leather Goods	皮革制品
+shop_house	15	0xfcb8f9	22	carpenter's shop sign	Wooden Furniture	{generated-name} / Wooden Furniture	木制家具
+shop_house	16	0xfbdd40	23	stone furniture shop sign	Stone Furniture	{generated-name} / Stone Furniture	石制家具
+shop_house	17	0xfcc20f	24	metal furniture shop sign	Metal Furniture	{generated-name} / Metal Furniture	金属家具
+abstract_tavern	name pointer and has_name	0xfcb914 -> 0xfcb9e8 / 0xfcb960	25	tavern sign	Tavern	{generated-name} / Tavern	酒馆

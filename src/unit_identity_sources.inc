@@ -20,6 +20,22 @@ static std::atomic<uint64_t> g_native_unit_identity_revision{0};
 // same complete set of semantic bindings gets the same fingerprint on later
 // frames; an ambiguous source is distinct from a resolved authored target.
 static std::atomic<uint64_t> g_native_unit_identity_context{0};
+// Saved announcement fields own their semantic snapshot beyond a draw epoch.
+// Their keys include the complete native report, rather than a name spelling.
+static std::atomic<uint64_t> g_native_announcement_unit_context{0};
+static void remember_native_announcement_unit_reference(std::string_view source,
+    const NativeUnitIdentity *identity);
+static void remember_native_announcement_pet_name(std::string_view source,
+    const NativeUnitIdentity *identity);
+static void prepare_native_announcement_unit_identities(std::string_view source);
+static std::optional<std::string> native_announcement_unit_identity_target(
+    std::string_view report_source, std::string_view field_source);
+static uint64_t native_announcement_unit_body_context();
+struct NativeAnnouncementUnitBodyScope {
+    std::pair<std::string, std::string> previous;
+    NativeAnnouncementUnitBodyScope(std::string_view report, std::string_view body);
+    ~NativeAnnouncementUnitBodyScope();
+};
 static uint64_t native_identity_source_fingerprint(std::string_view source,
         const std::optional<std::string> &target) {
     uint64_t hash = 14695981039346656037ULL;
@@ -44,6 +60,8 @@ static uint64_t native_mission_return_context();
 static uint64_t native_identity_translation_context() {
     constexpr uint64_t formatter_scope = 0x9e3779b97f4a7c15ULL;
     return g_native_unit_identity_context.load(std::memory_order_acquire) ^
+        g_native_announcement_unit_context.load(std::memory_order_acquire) ^
+        native_announcement_unit_body_context() ^
         native_mission_return_context() ^
         (native_unit_identity_rendering() ? formatter_scope : 0);
 }
@@ -65,8 +83,8 @@ static void remember_native_unit_identity(uintptr_t owner, std::string_view sour
     // fields were not captured. An empty translation must never claim and
     // suppress that native name. Replace any old binding for this owner with
     // its current native spelling instead.
-    const std::string resolved_target = target.empty()
-        ? native_text_to_utf8(source) : std::string(target);
+    const std::string native_target = target.empty() ? native_text_to_utf8(source) : std::string{};
+    const std::string_view resolved_target = target.empty() ? std::string_view(native_target) : target;
     std::lock_guard<std::mutex> lock(g_native_unit_identity_mutex);
     const auto epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
     if (g_native_unit_identity_epoch != epoch) {
@@ -76,10 +94,17 @@ static void remember_native_unit_identity(uintptr_t owner, std::string_view sour
         g_native_unit_identity_epoch = epoch;
         g_native_unit_identity_revision.fetch_add(1, std::memory_order_release);
     }
+    const auto previous = g_native_unit_identity_owners.find(owner);
+    if (previous != g_native_unit_identity_owners.end() &&
+            previous->second.source == source && previous->second.target == resolved_target &&
+            previous->second.unit_owner == unit_owner &&
+            previous->second.english_name == english_name &&
+            previous->second.character_header == character_header)
+        return;
     if (g_native_unit_identity_owners.size() >= 8192 &&
         !g_native_unit_identity_owners.contains(owner)) return;
     g_native_unit_identity_owners[owner] = {
-        std::string(source), resolved_target, unit_owner, english_name, character_header};
+        std::string(source), std::string(resolved_target), unit_owner, english_name, character_header};
     g_native_unit_identity_revision.fetch_add(1, std::memory_order_release);
     uint64_t context = g_native_unit_identity_context.load(std::memory_order_relaxed);
     const auto remember_source = [&](const std::string &key) {

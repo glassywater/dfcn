@@ -328,14 +328,11 @@ static bool capture_native_history_written_content(uintptr_t content, NativeHist
             uint8_t named = 0;
             if (!native_history_copy(name + 0x72, named)) return false;
             if (named) {
-                NativeHistoryPageString spelling;
                 // Isolated language-name orthography; titles, author choice
                 // and all body clauses are still regenerated from fields.
-                reinterpret_cast<void (*)(void *, NativeString *)>(native_history_page_address(NativeHistoryPageSymbol::OriginalName))(
-                    reinterpret_cast<void *>(name), &spelling.value);
-                std::string_view raw;
-                if (!native_string_view(&spelling.value, &raw, kNativeHistoryStringLimit)) return false;
-                out.texts[prefix + ".author_name"] = std::string(raw);
+                std::string spelling;
+                if (!capture_native_history_original_name(base, name, spelling)) return false;
+                out.texts[prefix + ".author_name"] = std::move(spelling);
             }
         }
     }

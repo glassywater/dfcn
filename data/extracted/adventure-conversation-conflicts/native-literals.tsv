@@ -1,0 +1,130 @@
+role	instruction	operand	kind	text
+conflict-choice	0x1069251	0x21f424a	cstring	conflict
+conflict-choice	0x1069297	0x20e2866	cstring	fight
+conflict-choice	0x10693e2	0x2121cc8	cstring	Summarize the conflict in which 
+conflict-choice	0x1069416	0x211585d	cstring	you slew 
+conflict-choice	0x1069467	0x2114c21	cstring	many foes
+conflict-choice	0x1069496	0x2115867	cstring	 (This occurred 
+conflict-choice	0x106952e	0x219d347	cstring	 in 
+conflict-choice	0x106955c	0x219edb7	cstring	)
+conflict-choice	0x1075d22	0x219d347	cstring	 in 
+conflict-choice	0x1075f16	0x2114c36	cstring	many died
+conflict-choice	0x1076319	0x21138f2	cstring	 of 
+conflict-choice	0x10763bf	0x2114c16	cstring	the forces
+conflict-choice	0x10763de	0x20db679	cstring	somebody
+conflict-choice	0x10764d0	0x20f3aea	cstring	, 
+conflict-choice	0x10764e8	0x20f3aea	cstring	, 
+conflict-choice	0x1076500	0x219eeb1	cstring	 and 
+conflict-choice	0x1076518	0x219eeb1	cstring	 and 
+conflict-choice	0x1076539	0x220f41e	cstring	creatures
+conflict-choice	0x10768f5	0x219d347	cstring	 in 
+conflict-choice	0x10769f2	0x2114c0d	cstring	a member
+conflict-choice	0x1076c2d	0x20fcc20	cstring	 at this location
+conflict-choice	0x1076c55	0x21f4b0c	cstring	a creature
+conflict-choice	0x107962b	0x21ed222	cstring	 by 
+conflict-choice	0x1079746	0x2114c2b	cstring	 was slain
+conflict-choice	0x1079787	0x20e2e66	cstring	by a 
+conflict-choice	0x10797da	0x21138f2	cstring	 of 
+conflict-choice	0x1079805	0x20db679	cstring	somebody
+conflict-choice	0x1079834	0x20e1d14	cstring	by the forces of 
+conflict-choice	0x1079849	0x20db679	cstring	somebody
+conflict-choice	0x1079861	0x20f3aea	cstring	, 
+conflict-choice	0x1079879	0x219eeb1	cstring	 and 
+conflict-choice	0x10798e3	0x21138f2	cstring	 of 
+conflict-choice	0x107990e	0x2114c3a	cstring	 died
+conflict-choice	0x107998d	0x2114c16	cstring	the forces
+conflict-choice	0x10799a5	0x20f3aea	cstring	, 
+conflict-choice	0x1079a49	0x20e1c0c	cstring	 attacked 
+conflict-choice	0x1079af5	0x22182d4	cstring	a 
+conflict-choice	0x1079b3f	0x21138f2	cstring	 of 
+conflict-choice	0x1079b7c	0x22182d4	cstring	a 
+conflict-choice	0x1079bc6	0x21138f2	cstring	 of 
+conflict-choice	0x1079bf2	0x21b5bc3	cstring	you
+conflict-choice	0x1079c0a	0x21b5bc3	cstring	you
+conflict-choice	0x1079c33	0x20e1c97	cstring	the forces of 
+conflict-choice	0x1079c67	0x2114c0d	cstring	a member
+conflict-choice	0x1079c7f	0x219eeb1	cstring	 and 
+conflict-choice	0x1079ca4	0x20e1c97	cstring	the forces of 
+conflict-choice	0x1079cdc	0x220f41e	cstring	creatures
+conflict-choice	0x1079cf4	0x20db679	cstring	somebody
+conflict-choice	0x1079d0c	0x20db679	cstring	somebody
+conflict-choice	0x1079d24	0x21f4b0c	cstring	a creature
+change-subject	0x1072ece	0x2116042	cstring	Change the subject (new menu)
+change-subject	0x1072f13	0x2172e87	cstring	change
+change-subject	0x1072f52	0x2204ec0	cstring	subject
+change-subject	0x1072f8a	0x2172f96	cstring	back
+elapsed-time	0x1044958	0x2114b62	cstring	a few days ago
+elapsed-time	0x1044967	0x2114b71	cstring	several days ago
+elapsed-time	0x1044976	0x2114b82	cstring	a week ago
+elapsed-time	0x1044985	0x2114b8d	cstring	a few weeks ago
+elapsed-time	0x1044994	0x2114b9d	cstring	a month ago
+elapsed-time	0x10449a3	0x2114ba9	cstring	a few months ago
+elapsed-time	0x10449b2	0x2114baf	cstring	months ago
+elapsed-time	0x10449c1	0x2114bba	cstring	a year ago
+elapsed-time	0x1044a0e	0x2114bfc	cstring	long ago
+elapsed-time	0x1044a33	0x2114add	cstring	in the future
+elapsed-time	0x1044a60	0x2114ac7	cstring	in a time before time
+elapsed-time	0x1044a76	0x2114bc5	cstring	a few years ago
+elapsed-time	0x1044a9a	0x2114aeb	cstring	just now
+elapsed-time	0x1044ab2	0x2114af4	cstring	a few minutes ago
+elapsed-time	0x1044ac6	0x2114bd5	cstring	several years ago
+elapsed-time	0x1044ad6	0x2114bf6	cstring	long, long ago
+elapsed-time	0x1044aea	0x2114b31	cstring	not one hour ago
+elapsed-time	0x1044b0a	0x2114b06	cstring	not a quarter hour ago
+elapsed-time	0x1044b26	0x2114be7	cstring	many years ago
+elapsed-time	0x1044b42	0x2114b1d	cstring	not a half hour ago
+elapsed-time	0x1044b6c	0x2114b42	cstring	a few hours ago
+elapsed-time	0x1044c13	0x2114b52	cstring	not one day ago
+elapsed-time	0x1044c78	0x6f68207765662061	inline	a few ho
+elapsed-time	0x1044c82	0x6761	inline	ag
+elapsed-time	0x1044c8f	0x20737275	inline	urs 
+elapsed-time	0x1044ca1	0x20656e6f20746f6e	inline	not one 
+elapsed-time	0x1044cab	0x20796164	inline	day 
+elapsed-time	0x1044cb6	0x6761	inline	ag
+elapsed-time	0x1044cd0	0x2114b42	cstring	a few hours ago
+elapsed-time	0x1044cec	0x2114b52	cstring	not one day ago
+personal-name	0x12c5cc7	0x20656874	inline	the 
+personal-name	0x12c5dc9	0x20656874	inline	the 
+personal-name	0x12c5ee0	0x20656874	inline	the 
+personal-name	0x12c6071	0x20656874	inline	the 
+personal-name	0x12c61c6	0x666f	inline	of
+personal-name	0x12c6406	0x664f	inline	Of
+personal-name	0x12c64e8	0x20fc8f7	cstring	The 
+personal-name	0x12c6878	0x21d54c2	cstring	-
+personal-name	0x12c69a8	0x21ba050	cstring	the 
+personal-name	0x12c6a9e	0x21ba050	cstring	the 
+personal-name	0x12c6abe	0x21ba050	cstring	the 
+personal-name	0x12c6aee	0x20f7379	cstring	 
+personal-name	0x12c6b5e	0x20f7379	cstring	 
+personal-name	0x12c6b80	0x20f7379	cstring	 
+personal-name	0x12c6ba6	0x20f7379	cstring	 
+personal-name	0x12c6bce	0x21ba050	cstring	the 
+personal-name	0x12c6bef	0x21138f3	cstring	of 
+personal-name	0x12c6c0d	0x213bd94	cstring	Of 
+personal-name	0x12c6c50	0x20f7379	cstring	 
+personal-name	0x12c6c79	0x20fc8f7	cstring	The 
+personal-name	0x12c6c8d	0x20fc8f7	cstring	The 
+personal-name	0x12c6ce3	0x20f7379	cstring	 
+personal-name	0x12c6d02	0x20f7379	cstring	 
+personal-name	0x12c6d35	0x20fc8f7	cstring	The 
+creature-caste	0xa0d64b	0x21f4b0e	cstring	creature
+creature-caste	0xa0d6f7	0x2131974	cstring	s
+entity-name	0xa27a28	0x20ca6cc	cstring	[/LPAGE]
+entity-name	0xa27a53	0x20ca91e	cstring	[LPAGE:ENT:
+entity-name	0xa27a6c	0x21432dc	cstring	]
+entity-name	0xa27a97	0x20e1008	cstring	an unknown civilization
+site-name	0xa27e10	0x20ca6cc	cstring	[/LPAGE]
+site-name	0xa27e43	0x20ca735	cstring	[LPAGE:SITE:
+site-name	0xa27e5f	0x21432dc	cstring	]
+site-name	0xa27e8f	0x20e1020	cstring	an unknown site
+region-name	0xa100d5	0x20df2d3	cstring	an unknown region
+region-name	0xa100f0	0x20ca6cc	cstring	[/LPAGE]
+region-name	0xa1010b	0x20df2c8	cstring	[LPAGE:SR:
+region-name	0xa10124	0x21432dc	cstring	]
+underground-name	0xa10239	0x20df325	cstring	an unknown underground region
+underground-name	0xa10250	0x20df2e5	cstring	[LPAGE:FL:
+underground-name	0xa1026d	0x21432dc	cstring	]
+underground-name	0xa102ad	0x20ca6cc	cstring	[/LPAGE]
+underground-name	0xa102c0	0x20df2f0	cstring	the depths of the world
+underground-name	0xa102e0	0x20df316	cstring	the Underworld
+underground-name	0xa102f8	0x20df308	cstring	the magma sea

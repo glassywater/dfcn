@@ -23,6 +23,7 @@ static bool native_info_background_view(const graphicst *graphics) noexcept {
 
 static bool native_info_background_cell_hidden(const graphicst *graphics,
         int x, int y) noexcept {
+    if (native_squads_background_cell_hidden(graphics, x, y)) return true;
     if (native_reports_background_cell_hidden(graphics, x, y)) return true;
     if (native_stocks_background_cell_hidden(graphics, x, y)) return true;
     return graphics && g_native_info_layer.ready &&
@@ -31,6 +32,7 @@ static bool native_info_background_cell_hidden(const graphicst *graphics,
         graphics != g_native_info_write_graphics &&
         graphics != g_native_help_write_graphics &&
         graphics != g_native_stocks_write_graphics &&
+        graphics != g_native_squads_write_graphics &&
         graphics != g_native_reports_write_graphics &&
         !native_notification_write_active(graphics) &&
         graphics != g_native_pause_write_graphics &&

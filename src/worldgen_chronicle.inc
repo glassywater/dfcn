@@ -117,8 +117,8 @@
                         source.find(", year ") == std::string::npos) continue;
                     // A complete authored stage such as Creating the world
                     // is an interface literal, never a phonetic world name.
-                    auto target = source == "Creating the world"
-                        ? exact_literal_translation(source)
+                    auto target = source.starts_with("Creating ")
+                        ? translate_worldgen_creation(source)
                         : translate_procedural_fragment(source);
                     if (!target || target->empty()) continue;
                     // A raw-layer scan may see a different page beneath this

@@ -412,7 +412,8 @@ void Overlay::append_native_info_panel_titles(std::vector<std::string> &rows,
     // Spaces and CJK inside authored fields never become column separators.
     const auto titles = [&](const auto &draws, bool top_layer) {
         for (const auto &draw : draws) {
-            if (draw.info_title_kind == NativeInfoTitleKind::None || draw.source.empty() ||
+            if (draw.info_title_kind == NativeInfoTitleKind::None ||
+                    is_native_noble_symbol_field(draw.info_title_kind) || draw.source.empty() ||
                     draw.x < 0 || draw.x >= gps_->dimx || draw.y < 0 || draw.y >= gps_->dimy ||
                     (only_y >= 0 && draw.y != only_y) ||
                     draw.source.size() > static_cast<size_t>(gps_->dimx - draw.x)) continue;

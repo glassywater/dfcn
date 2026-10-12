@@ -1,0 +1,14 @@
+image	role	start	end	source
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	journal-event-title	0x17c06e0	0x17c24cd	elf-17c06e0.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	journal-historical-event-title	0x17c24d0	0x17c400c	elf-17c24d0.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	journal-event-hearing-and-mission-paragraphs	0x17cad80	0x17cc7b6	elf-17cad80.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	journal-event-occurrence-and-card-construction	0x17cc7c0	0x17cce10	elf-17cc7c0.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	journal-incident-summary-and-search-index-initializer	0x17b7d10	0x17bc2e2	elf-17b7d10.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	journal-performance-title	0x10207a0	0x10226a5	elf-10207a0.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	journal-unnamed-caste	0xa0d5f0	0xa0d734	elf-a0d5f0.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	journal-region-name	0xa0ffc0	0xa10155	elf-a0ffc0.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	journal-underground-region-name	0xa10160	0xa1031a	elf-a10160.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	journal-entity-name	0xa278f0	0xa27adb	elf-a278f0.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	journal-site-name	0xa27cd0	0xa27edb	elf-a27cd0.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	journal-artifact-name	0xa0d8c0	0xa0db2c	elf-a0d8c0.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	journal-religious-office-suffix	0x89fdd0	0x89fffa	elf-89fdd0.asm

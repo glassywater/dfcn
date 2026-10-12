@@ -352,9 +352,19 @@ std::optional<std::string> Overlay::translate_help_paragraph(
                             const bool visitor_artifact =
                                 sentence.starts_with("This visitor has come ") &&
                                 sentence.ends_with(" is seeking information about the location of {b}.");
-                            const bool visitor_item = visitor_artifact &&
+                            // 2afed0 submits the two full unit captions around
+                            // b94400(mode=0)'s artifact field. That field has
+                            // the same unnamed-item, written-title, Untitled
+                            // and unknown-artifact branches as a visitor quest.
+                            const bool revealed_artifact =
+                                sentence == "{n} has revealed the presence of {b} to {n}." ||
+                                sentence == "Has revealed the presence of {b} to {n}." ||
+                                sentence == "{n} has revealed the presence of {b} to ." ||
+                                sentence == "Has revealed the presence of {b} to .";
+                            const bool described_artifact = visitor_artifact || revealed_artifact;
+                            const bool described_item = described_artifact &&
                                 trim_view(captures[i]).starts_with("the ");
-                            if (trade_artifact || visitor_artifact) {
+                            if (trade_artifact || described_artifact) {
                                 auto item = trim_view(captures[i]);
                                 // c65450 mode 1 emits lowercase "the "; the
                                 // treasure reply capitalizes only that first
@@ -365,23 +375,23 @@ std::optional<std::string> Overlay::translate_help_paragraph(
                                          !generated_title_shape(item))) {
                                     item.remove_prefix(4);
                                     translated = translate_item_caption_grammar(item);
-                                    if (!translated && visitor_artifact)
+                                    if (!translated && described_artifact)
                                         translated = translate_item_description_term(item);
                                 }
                             }
                             // Named body components can omit the article.
                             // Their complete unit/body noun grammar also owns
                             // this artifact formatter's item fallback.
-                            if (!translated && visitor_artifact &&
+                            if (!translated && described_artifact &&
                                     trim_view(captures[i]).ends_with(" (copy)"))
                                 translated = translate_item_description_term(captures[i]);
-                            if (!translated && visitor_artifact && !visitor_item)
+                            if (!translated && described_artifact && !described_item)
                                 translated = translate_corpsepiece_item_name(captures[i]);
-                            if (!translated && !visitor_item)
+                            if (!translated && !described_item)
                                 translated = translate_legends_artifact_identity(captures[i]);
-                            if (!translated && !visitor_item)
+                            if (!translated && !described_item)
                                 translated = translate_legends_book(captures[i]);
-                            if (!translated && (trade_artifact || visitor_artifact))
+                            if (!translated && (trade_artifact || described_artifact))
                                 translated = translate_item_description_term(captures[i]);
                         }
                         break;
@@ -389,7 +399,10 @@ std::optional<std::string> Overlay::translate_help_paragraph(
                     case 's':
                     case 'n':
                         if (ui_message || adventure_divine_material_capture(rule, i)) {
-                            translated = translate_ui_catalog_capture(rule, i, captures[i]);
+                            if (ui_message && rule.template_kinds[i] == 'n')
+                                translated = native_announcement_unit_identity_target(raw_source, captures[i]);
+                            if (!translated)
+                                translated = translate_ui_catalog_capture(rule, i, captures[i]);
                         }
                         break;
                     case 'c':
