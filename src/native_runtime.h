@@ -49,7 +49,10 @@ inline void native_localtime(std::tm &result, const std::time_t &time) {
 #endif
 }
 
-inline graphicst *native_graphics() {
+// Consumer threads read their pinned header while the update thread binds the
+// executable's graphicst to private writer buffers.
+inline thread_local graphicst *g_native_graphics_read_view = nullptr;
+inline graphicst *native_graphics_owner() {
 #ifdef _WIN32
     constexpr uintptr_t gps_rva = 0x0264a3f0;
     // The main executable base is fixed for this core's lifetime. Keep the
@@ -63,6 +66,10 @@ inline graphicst *native_graphics() {
     static auto *graphics = reinterpret_cast<graphicst *>(dlsym(RTLD_DEFAULT, "gps"));
     return graphics;
 #endif
+}
+
+inline graphicst *native_graphics() {
+    return g_native_graphics_read_view ? g_native_graphics_read_view : native_graphics_owner();
 }
 
 struct NativeUiSettings {

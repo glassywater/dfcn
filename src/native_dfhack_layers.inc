@@ -5,6 +5,13 @@ using NativeDfhackLayerTexture = std::remove_pointer_t<decltype(graphicst::scree
 static void native_dfhack_gpu_suspend() noexcept;
 static void native_dfhack_gpu_resume() noexcept;
 static void native_dfhack_layer_committed() noexcept;
+static bool native_dfhack_text_capture_has_content(const graphicst *gps) noexcept;
+static bool native_dfhack_layer_write_active(const graphicst *gps) noexcept;
+struct NativeDfhackTextFrame;
+static std::shared_ptr<const NativeDfhackTextFrame> capture_native_dfhack_text_frame(
+    const graphicst *source, const graphicst *copy);
+static std::shared_ptr<const NativeDfhackTextFrame> use_native_dfhack_text_frame(
+    std::shared_ptr<const NativeDfhackTextFrame> frame);
 
 struct NativeDfhackOutputBinding {
     std::array<void *, 14> pointers{};
@@ -85,7 +92,9 @@ class NativeDfhackMapLayer {
     unsigned char *data_ = nullptr;
     size_t bytes_ = 0;
     std::vector<uint8_t> candidates_;
+    std::vector<size_t> dirty_offsets_;
     bool has_writes_ = false;
+    bool dirty_offsets_valid_ = false;
 #ifdef _WIN32
     std::vector<void *> pages_;
 #else
@@ -105,15 +114,16 @@ public:
         std::memcpy(object_.data(), source, object_bytes);
         stride_ = (static_cast<size_t>(dimx_) * dimy_ * 8 + 4095) & ~size_t{4095};
         bytes_ = fields_ * stride_;
+        candidates_.assign(static_cast<size_t>(dimx_) * dimy_, 0);
 #ifdef _WIN32
+        pages_.resize(bytes_ / 4096);
+        dirty_offsets_.reserve(pages_.size());
         data_ = static_cast<unsigned char *>(VirtualAlloc(nullptr, bytes_,
             MEM_RESERVE | MEM_COMMIT | MEM_WRITE_WATCH, PAGE_READWRITE));
         if (!data_) throw std::bad_alloc();
-        pages_.resize(bytes_ / 4096);
 #else
         fallback_.resize(bytes_); data_ = fallback_.data();
 #endif
-        candidates_.assign(static_cast<size_t>(dimx_) * dimy_, 0);
         auto *bytes = reinterpret_cast<unsigned char *>(object_.data());
         for (size_t i = 0; i < fields_; ++i) {
             void *array = data_ + i * stride_;
@@ -122,6 +132,39 @@ public:
             std::memcpy(bytes + prefix_ + (fields_ + i) * 8, &array, 8);
         }
     }
+    NativeDfhackMapLayer(const NativeDfhackMapLayer &source)
+        : source_(source.source_), map_port_(source.map_port_),
+          dimx_(source.dimx_), dimy_(source.dimy_), prefix_(source.prefix_),
+          fields_(source.fields_), stride_(source.stride_), object_(source.object_),
+          bytes_(source.bytes_), candidates_(source.candidates_),
+          dirty_offsets_(source.dirty_offsets_), has_writes_(source.has_writes_),
+          dirty_offsets_valid_(source.dirty_offsets_valid_) {
+        if (!source.data_) return;
+#ifdef _WIN32
+        pages_.resize(bytes_ / 4096);
+        dirty_offsets_.reserve(pages_.size());
+        data_ = static_cast<unsigned char *>(VirtualAlloc(nullptr, bytes_,
+            MEM_RESERVE | MEM_COMMIT | MEM_WRITE_WATCH, PAGE_READWRITE));
+        if (!data_) throw std::bad_alloc();
+        if (dirty_offsets_valid_) {
+            for (const size_t offset : dirty_offsets_)
+                std::memcpy(data_ + offset, source.data_ + offset,
+                    std::min(size_t{4096}, bytes_ - offset));
+        } else if (has_writes_) {
+            std::memcpy(data_, source.data_, bytes_);
+        }
+#else
+        fallback_.assign(source.data_, source.data_ + bytes_);
+        data_ = fallback_.data();
+#endif
+        auto *object = reinterpret_cast<unsigned char *>(object_.data());
+        for (size_t field = 0; field < fields_; ++field) {
+            void *array = data_ + field * stride_;
+            std::memcpy(object + prefix_ + field * sizeof(void *), &array, sizeof(array));
+            std::memcpy(object + prefix_ + (fields_ + field) * sizeof(void *), &array, sizeof(array));
+        }
+    }
+    NativeDfhackMapLayer &operator=(const NativeDfhackMapLayer &) = delete;
     ~NativeDfhackMapLayer() {
 #ifdef _WIN32
         if (data_) VirtualFree(data_, 0, MEM_RELEASE);
@@ -154,10 +197,18 @@ public:
         if (!data_) return;
 #ifdef _WIN32
         ULONG_PTR count = pages_.size(); ULONG granularity = 0;
-        if (GetWriteWatch(0, data_, bytes_, pages_.data(), &count, &granularity)) return;
+        dirty_offsets_valid_ = false;
+        dirty_offsets_.clear();
+        if (GetWriteWatch(0, data_, bytes_, pages_.data(), &count, &granularity)) {
+            has_writes_ = true;
+            std::fill(candidates_.begin(), candidates_.end(), 1);
+            return;
+        }
+        dirty_offsets_valid_ = true;
         has_writes_ = has_writes_ || count != 0;
         for (size_t page = 0; page < count; ++page) {
             const size_t offset = static_cast<unsigned char *>(pages_[page]) - data_;
+            dirty_offsets_.push_back(offset);
             const size_t field = offset / stride_;
             const size_t start = (offset % stride_) / width(field);
             const size_t end = std::min(candidates_.size(), start + granularity / width(field));
@@ -180,6 +231,8 @@ public:
         std::memset(data_, 0, bytes_);
 #endif
         std::fill(candidates_.begin(), candidates_.end(), 0);
+        dirty_offsets_.clear();
+        dirty_offsets_valid_ = false;
         has_writes_ = false;
     }
     bool any_content() const noexcept { return has_writes_; }
@@ -195,7 +248,13 @@ public:
 };
 
 struct NativeDfhackLayerGraphicsDeleter {
+    bool borrowed_commands = false;
     void operator()(graphicst *graphics) const noexcept {
+        // A frozen/paint view points into its frame's owned POD command bytes.
+        // Native consumption only reads them; its vector destructor must not
+        // free that separate owner through the host's allocator.
+        if (graphics && borrowed_commands)
+            std::memset(&graphics->texblits, 0, sizeof(graphics->texblits));
 #ifdef _WIN32
         // texblitst is a trivial native value. Release its vector storage
         // through the same host vector destructor used by native rich-text
@@ -232,6 +291,162 @@ struct NativeDfhackLayerStorage {
     int dimx = 0, dimy = 0;
     uint64_t revision = 0, page_revision = 0;
     bool ready = false;
+    uint64_t translation_fingerprint = 0;
+    bool translation_has_content = false;
+    bool translation_content_ready = false;
+    std::shared_ptr<const NativeDfhackTextFrame> text_frame;
+    std::vector<unsigned char> command_bytes;
+
+    std::shared_ptr<NativeDfhackLayerStorage> snapshot() const {
+        if (!ready || !graphics) return {};
+        auto copy = std::make_shared<NativeDfhackLayerStorage>();
+        copy->planes = planes;
+        copy->refresh = refresh;
+        copy->written = written;
+        copy->dimx = dimx; copy->dimy = dimy;
+        copy->revision = revision; copy->page_revision = page_revision;
+        copy->ready = true;
+        copy->translation_fingerprint = translation_fingerprint;
+        copy->translation_has_content = translation_has_content;
+        copy->translation_content_ready = translation_content_ready;
+#ifdef _WIN32
+        copy->graphics = decltype(graphics)(new graphicst{}, NativeDfhackLayerGraphicsDeleter{true});
+#else
+        auto *view = static_cast<graphicst *>(::operator new(sizeof(graphicst)));
+        std::construct_at(std::addressof(view->texblits));
+        copy->graphics = decltype(graphics)(view, NativeDfhackLayerGraphicsDeleter{true});
+#endif
+        std::memcpy(copy->graphics.get(), graphics.get(), sizeof(graphicst));
+        std::array<uintptr_t, 3> commands{};
+        std::memcpy(commands.data(), &graphics->texblits, sizeof(commands));
+        if (commands[1] < commands[0] || commands[2] < commands[1] ||
+                commands[1] - commands[0] > size_t{256} * 1024 * 1024 ||
+                (commands[1] - commands[0]) % 12) throw std::bad_alloc();
+        if (commands[1] != commands[0])
+            copy->command_bytes.assign(reinterpret_cast<const unsigned char *>(commands[0]),
+                reinterpret_cast<const unsigned char *>(commands[1]));
+        const uintptr_t command_begin = copy->command_bytes.empty() ? 0 :
+            reinterpret_cast<uintptr_t>(copy->command_bytes.data());
+        const std::array<uintptr_t, 3> command_view{command_begin,
+            command_begin + copy->command_bytes.size(), command_begin + copy->command_bytes.size()};
+        std::memcpy(&copy->graphics->texblits, command_view.data(), sizeof(command_view));
+        copy->maps.reserve(maps.size());
+        for (const auto &map : maps)
+            copy->maps.push_back(map && map->any_content()
+                ? std::make_unique<NativeDfhackMapLayer>(*map) : nullptr);
+        const auto mapped = [&](void *view) -> void * {
+            if (!view) return nullptr;
+            for (size_t index = 0; index < maps.size(); ++index)
+                if (maps[index] && maps[index]->view() == view)
+                    return copy->maps[index] ? copy->maps[index]->view() : nullptr;
+            return nullptr;
+        };
+        for (void *view : viewport_views) copy->viewport_views.push_back(mapped(view));
+        for (void *view : map_port_views) copy->map_port_views.push_back(mapped(view));
+        copy->output = NativeDfhackOutputBinding::capture(*graphics);
+        for (size_t index = 0; index < copy->planes.size(); ++index) {
+            auto &plane = copy->planes[index]; const size_t base = index * 7;
+            copy->output.pointers[base] = plane.screen.data();
+            for (size_t texture = 0; texture < plane.textures.size(); ++texture)
+                copy->output.pointers[base + texture + 1] = plane.textures[texture].data();
+            copy->output.pointers[base + 6] = plane.flags.data();
+        }
+        const auto vector_view = [](const auto &values) {
+            const uintptr_t first = reinterpret_cast<uintptr_t>(values.data());
+            return std::array<uintptr_t, 3>{first, first + values.size() * sizeof(void *),
+                first + values.capacity() * sizeof(void *)};
+        };
+        copy->output.viewports = vector_view(copy->viewport_views);
+        copy->output.map_ports = vector_view(copy->map_port_views);
+        copy->output.main_viewport = mapped(copy->output.main_viewport);
+        copy->output.main_map_port = mapped(copy->output.main_map_port);
+        for (auto &view : copy->output.lower) view = mapped(view);
+        copy->output.limit = copy->planes[0].screen.data() + copy->planes[0].screen.size();
+        copy->output.top_limit = copy->planes[1].screen.data() + copy->planes[1].screen.size();
+        copy->output.refresh = copy->refresh.data();
+        copy->output.apply(*copy->graphics);
+        copy->text_frame = capture_native_dfhack_text_frame(graphics.get(), copy->graphics.get());
+        return copy;
+    }
+
+    void cache_translation_input() noexcept {
+        translation_content_ready = false;
+        if (!ready || !graphics) return;
+        uint64_t fingerprint = 14695981039346656037ULL;
+        bool grid_content = false;
+        size_t grid_bytes = 0;
+        const auto nonzero = [](const void *data, size_t size) {
+            const auto *at = static_cast<const unsigned char *>(data);
+            size_t offset = 0;
+            for (; size - offset >= sizeof(uint64_t); offset += sizeof(uint64_t)) {
+                uint64_t word = 0;
+                std::memcpy(&word, at + offset, sizeof(word));
+                if (word) return true;
+            }
+            for (; offset < size; ++offset) if (at[offset]) return true;
+            return false;
+        };
+        const auto inspect = [&](const void *data, size_t size) {
+            grid_bytes += size;
+            if (!grid_content) grid_content = nonzero(data, size);
+        };
+        for (const auto &plane : planes) {
+            inspect(plane.screen.data(), plane.screen.size());
+            inspect(plane.flags.data(), plane.flags.size() * sizeof(plane.flags[0]));
+            for (const auto &textures : plane.textures)
+                inspect(textures.data(), textures.size() * sizeof(textures[0]));
+            for (const auto &pen : plane.artwork_pens) {
+                grid_bytes += sizeof(pen.texture) + sizeof(pen.ch);
+                grid_content = grid_content || pen.texture != 0 || pen.ch != 0;
+            }
+        }
+        const auto bytes = [&](const void *data, size_t size) {
+            const auto *at = static_cast<const unsigned char *>(data);
+            for (size_t i = 0; i < size; ++i) {
+                fingerprint ^= at[i];
+                fingerprint *= 1099511628211ULL;
+            }
+        };
+        const auto value = [&](const auto &field) { bytes(&field, sizeof(field)); };
+        if (grid_content) {
+            for (const auto &plane : planes) {
+                bytes(plane.screen.data(), plane.screen.size());
+                bytes(plane.flags.data(), plane.flags.size() * sizeof(plane.flags[0]));
+                for (const auto &textures : plane.textures)
+                    bytes(textures.data(), textures.size() * sizeof(textures[0]));
+                for (const auto &pen : plane.artwork_pens) {
+                    value(pen.texture);
+                    value(pen.ch);
+                }
+            }
+        } else {
+            // Each zero byte multiplies FNV by its prime. Advance the exact
+            // same fingerprint in logarithmic time after the word-sized scan.
+            uint64_t factor = 1099511628211ULL;
+            for (size_t count = grid_bytes; count; count >>= 1) {
+                if (count & 1) fingerprint *= factor;
+                factor *= factor;
+            }
+        }
+        // Typed sources can exist without visible glyphs. Their empty FNV
+        // value is still nonzero, so only actual current captures prove text.
+        const bool text_content = native_dfhack_text_capture_has_content(graphics.get());
+        const auto text_key = native_dfhack_text_capture_key(graphics.get());
+        value(text_key);
+        bool content = grid_content || text_content;
+        content = content || std::any_of(written.begin(), written.end(),
+            [](auto byte) { return byte != 0; });
+        content = content || std::any_of(maps.begin(), maps.end(),
+            [](const auto &map) { return map && map->any_content(); });
+        // Commands and map writes are conservative content evidence, but
+        // neither was part of the logical-grid translation key.
+        std::array<uintptr_t, 2> commands{};
+        std::memcpy(commands.data(), &graphics->texblits, sizeof(commands));
+        content = content || commands[0] != commands[1];
+        translation_fingerprint = fingerprint ? fingerprint : 1;
+        translation_has_content = content;
+        translation_content_ready = true;
+    }
 
     void *map_view(void *source, bool port) {
         if (!source) return nullptr;
@@ -263,6 +478,7 @@ struct NativeDfhackLayerStorage {
             refresh.resize(count); written.resize(count); maps.clear(); ready = true;
         }
         if (resized || begin) {
+            translation_content_ready = false;
             for (auto &plane : planes) {
                 std::fill(plane.screen.begin(), plane.screen.end(), 0);
                 for (auto &texture : plane.textures) std::fill(texture.begin(), texture.end(), 0);
@@ -351,6 +567,13 @@ struct NativeDfhackLayerStorage {
 static std::recursive_mutex g_native_dfhack_layer_mutex;
 static NativeDfhackLayerStorage g_native_dfhack_layer_storage;
 static NativeDfhackLayerStorage g_native_dfhack_layer_staging;
+static std::atomic<std::shared_ptr<const NativeDfhackLayerStorage>> g_native_dfhack_layer_published;
+static std::atomic_bool g_native_dfhack_layer_notification_pending{false};
+static std::atomic<uint64_t> g_native_dfhack_layer_retirement{0};
+static constexpr int64_t kNativeDfhackNoRenderRefresh = std::numeric_limits<int64_t>::min();
+static std::atomic<int64_t> g_native_dfhack_render_refresh{kNativeDfhackNoRenderRefresh};
+static std::atomic<int16_t> g_native_dfhack_render_force{0};
+static uint64_t g_native_dfhack_layer_retired = 0;
 static bool g_native_dfhack_layer_staging_pending = false;
 static bool g_native_dfhack_layer_commit_pending = false;
 static uint64_t g_native_dfhack_layer_revision = 0;
@@ -359,6 +582,89 @@ static void *g_native_dfhack_layer_page_screen = nullptr;
 static void *g_native_dfhack_layer_page_vtable = nullptr;
 static thread_local unsigned g_native_dfhack_layer_frame_depth = 0;
 static thread_local graphicst *g_native_dfhack_present_graphics = nullptr;
+static thread_local const NativeDfhackLayerStorage *g_native_dfhack_read_storage = nullptr;
+static thread_local bool g_native_dfhack_callback_writes_pending = false;
+
+static void native_dfhack_queue_render_schedule(int32_t refresh, int16_t force) noexcept {
+    g_native_dfhack_render_refresh.store(refresh, std::memory_order_release);
+    auto pending = g_native_dfhack_render_force.load(std::memory_order_relaxed);
+    while (pending < force && !g_native_dfhack_render_force.compare_exchange_weak(
+            pending, force, std::memory_order_release, std::memory_order_relaxed)) {}
+}
+static void native_dfhack_apply_render_schedule(graphicst &graphics) noexcept {
+    // Called under native output ownership. SDL never waits for that owner
+    // merely to return its refresh stamp and outstanding redraw requests.
+    const auto refresh = g_native_dfhack_render_refresh.exchange(
+        kNativeDfhackNoRenderRefresh, std::memory_order_acq_rel);
+    if (refresh != kNativeDfhackNoRenderRefresh)
+        graphics.refresh_buffer_val = static_cast<int32_t>(refresh);
+    const auto force = g_native_dfhack_render_force.exchange(0, std::memory_order_acq_rel);
+    if (force > 0)
+        graphics.force_full_display_count = std::max(graphics.force_full_display_count, force);
+}
+
+static std::shared_ptr<const NativeDfhackLayerStorage> native_dfhack_published_frame() noexcept {
+    return g_native_dfhack_layer_published.load(std::memory_order_acquire);
+}
+static const NativeDfhackLayerStorage *native_dfhack_layer_read_storage() noexcept {
+    return g_native_dfhack_read_storage;
+}
+class NativeDfhackLayerFrameReadScope {
+    std::shared_ptr<const NativeDfhackLayerStorage> frame_;
+    const NativeDfhackLayerStorage *previous_ = nullptr;
+    std::shared_ptr<const NativeDfhackTextFrame> previous_text_;
+    graphicst *previous_graphics_ = nullptr;
+public:
+    explicit NativeDfhackLayerFrameReadScope(
+            std::shared_ptr<const NativeDfhackLayerStorage> frame = {})
+        : frame_(frame ? std::move(frame) : native_dfhack_published_frame()),
+          previous_(g_native_dfhack_read_storage),
+          previous_graphics_(g_native_graphics_read_view) {
+        g_native_dfhack_read_storage = frame_.get();
+        if (frame_ && frame_->graphics)
+            g_native_graphics_read_view = frame_->graphics.get();
+        previous_text_ = use_native_dfhack_text_frame(frame_ ? frame_->text_frame : nullptr);
+    }
+    ~NativeDfhackLayerFrameReadScope() {
+        use_native_dfhack_text_frame(std::move(previous_text_));
+        g_native_graphics_read_view = previous_graphics_;
+        g_native_dfhack_read_storage = previous_;
+    }
+    const auto &frame() const noexcept { return frame_; }
+    const NativeDfhackLayerStorage *storage() const noexcept { return frame_.get(); }
+};
+class NativeDfhackOwnerReadScope {
+    graphicst *previous_ = nullptr;
+    const NativeDfhackLayerStorage *previous_storage_ = nullptr;
+    std::shared_ptr<const NativeDfhackTextFrame> previous_text_;
+public:
+    NativeDfhackOwnerReadScope()
+        : previous_(g_native_graphics_read_view),
+          previous_storage_(g_native_dfhack_read_storage),
+          previous_text_(use_native_dfhack_text_frame({})) {
+        g_native_graphics_read_view = nullptr;
+        g_native_dfhack_read_storage = nullptr;
+    }
+    ~NativeDfhackOwnerReadScope() {
+        g_native_graphics_read_view = previous_;
+        g_native_dfhack_read_storage = previous_storage_;
+        use_native_dfhack_text_frame(std::move(previous_text_));
+    }
+};
+static void native_dfhack_retire_writer_storage() {
+    const auto retirement = g_native_dfhack_layer_retirement.load(std::memory_order_acquire);
+    if (retirement == g_native_dfhack_layer_retired) return;
+    g_native_dfhack_layer_storage = {};
+    g_native_dfhack_layer_staging = {};
+    g_native_dfhack_layer_staging_pending = false;
+    g_native_dfhack_layer_commit_pending = false;
+    g_native_dfhack_layer_page_screen = g_native_dfhack_layer_page_vtable = nullptr;
+    g_native_dfhack_layer_retired = retirement;
+}
+static void native_dfhack_notify_commit() noexcept {
+    if (g_native_dfhack_layer_notification_pending.exchange(false, std::memory_order_acq_rel))
+        native_dfhack_layer_committed();
+}
 #ifdef _WIN32
 // Native buffer ownership must be serialized before the real graphicst can
 // borrow private output pointers across a DFHack update or render callback.
@@ -389,18 +695,19 @@ static void native_dfhack_layer_record_artwork_tile(const graphicst *gps,
 
 static const std::vector<NativeDfhackArtworkPen> *native_dfhack_layer_artwork_pens(
         const graphicst *gps, bool top) noexcept {
-    // Callers retain the layer mutex while borrowing this view. Matching the
-    // arrays also supports a shallow read view without selecting another frame.
+    // Readers pin a complete owned frame; writers use only their own scratch.
     if (!gps) return nullptr;
-    for (const auto *storage : {&g_native_dfhack_layer_storage, &g_native_dfhack_layer_staging}) {
-        if (!storage->ready || storage->dimx != gps->dimx || storage->dimy != gps->dimy ||
-                !storage->graphics || storage->graphics->screen != gps->screen ||
-                storage->graphics->screen_top != gps->screen_top) continue;
-        const auto &pens = storage->planes[static_cast<size_t>(top)].artwork_pens;
-        if (pens.size() != static_cast<size_t>(gps->dimx) * gps->dimy) return nullptr;
-        return &pens;
+    const auto *storage = native_dfhack_layer_read_storage();
+    if (!storage) {
+        if (!native_dfhack_layer_write_active(gps)) return nullptr;
+        storage = &g_native_dfhack_layer_staging;
     }
-    return nullptr;
+    if (!storage->ready || storage->dimx != gps->dimx || storage->dimy != gps->dimy ||
+            !storage->graphics || storage->graphics->screen != gps->screen ||
+            storage->graphics->screen_top != gps->screen_top) return nullptr;
+    const auto &pens = storage->planes[static_cast<size_t>(top)].artwork_pens;
+    if (pens.size() != static_cast<size_t>(gps->dimx) * gps->dimy) return nullptr;
+    return &pens;
 }
 
 static uint64_t native_dfhack_layer_page_revision() noexcept {
@@ -423,7 +730,7 @@ static void native_dfhack_layer_save_active() noexcept;
 static void native_dfhack_layer_bind_active() noexcept;
 static void native_dfhack_layer_abort_active() noexcept;
 static bool native_dfhack_prepare_staging(bool begin = false) {
-    const auto *gps = native_graphics();
+    const auto *gps = native_graphics_owner();
     if (!gps) return false;
     native_dfhack_layer_save_active();
     const auto native = native_dfhack_layer_source_binding(*gps);
@@ -445,12 +752,24 @@ static bool native_dfhack_prepare_staging(bool begin = false) {
 static void native_dfhack_publish_staging() noexcept {
     if (!g_native_dfhack_layer_staging_pending || !g_native_dfhack_layer_staging.ready) return;
     auto &s = g_native_dfhack_layer_staging;
-    for (auto &map : s.maps) map->collect_writes();
-    s.revision = ++g_native_dfhack_layer_revision;
-    std::swap(g_native_dfhack_layer_storage, s);
-    g_native_dfhack_layer_staging_pending = false;
-    g_native_dfhack_layer_commit_pending = false;
-    native_dfhack_layer_committed();
+    if (s.page_revision != native_dfhack_layer_page_revision() ||
+            g_native_dfhack_layer_retired !=
+                g_native_dfhack_layer_retirement.load(std::memory_order_acquire)) return;
+    try {
+        for (auto &map : s.maps) map->collect_writes();
+        s.cache_translation_input();
+        s.revision = ++g_native_dfhack_layer_revision;
+        auto frame = s.snapshot();
+        if (!frame) return;
+        g_native_dfhack_layer_published.store(std::move(frame), std::memory_order_release);
+        std::swap(g_native_dfhack_layer_storage, s);
+        g_native_dfhack_layer_staging_pending = false;
+        g_native_dfhack_layer_commit_pending = false;
+        g_native_dfhack_callback_writes_pending = false;
+        g_native_dfhack_layer_notification_pending.store(true, std::memory_order_release);
+    } catch (...) {
+        // Keep the last owned publication if this frame could not be frozen.
+    }
 }
 
 class NativeDfhackForegroundScope {
@@ -462,8 +781,11 @@ public:
 };
 
 class NativeDfhackLayerWriteScope {
-    std::optional<TranslationStateScope> translation_;
+#ifndef _WIN32
+    std::optional<TranslationStateScope> native_translation_;
+#endif
     std::unique_lock<std::recursive_mutex> lock_;
+    std::optional<NativeDfhackOwnerReadScope> native_read_;
     graphicst *gps_ = nullptr;
     graphicst **slot_ = nullptr;
     graphicst *saved_ = nullptr;
@@ -518,6 +840,7 @@ class NativeDfhackLayerWriteScope {
     }
     void abort() noexcept {
         restore_native();
+        native_dfhack_apply_render_schedule(*native_);
         *slot_ = saved_;
         installed_ = false;
         active_ = previous_;
@@ -525,49 +848,67 @@ class NativeDfhackLayerWriteScope {
         g_native_dfhack_layer_commit_pending = false;
     }
 public:
-    explicit NativeDfhackLayerWriteScope(bool enter = true, bool synchronize = false) noexcept {
-        if (!enter || (active_ && !active_->paused_)) return;
+    explicit NativeDfhackLayerWriteScope(bool enter = true, bool synchronize = false,
+            bool write_intent = true) noexcept {
+        if (!enter) return;
+        if (active_ && !active_->paused_) {
+            if (write_intent) g_native_dfhack_callback_writes_pending = true;
+            return;
+        }
         try {
-            translation_.emplace();
+#ifndef _WIN32
+            // Linux's native renderer still reads the real graphicst. Its
+            // existing T -> M boundary protects those shared pointer fields.
+            native_translation_.emplace();
+#endif
             lock_ = std::unique_lock<std::recursive_mutex>(g_native_dfhack_layer_mutex);
+            native_read_.emplace();
+            native_dfhack_retire_writer_storage();
 #ifdef _WIN32
             if (!g_native_dfhack_graphics_ownership_ready.load(std::memory_order_acquire)) return;
 #endif
             slot_ = native_dfhack_graphics_slot();
             if (!slot_) return;
-            native_ = native_graphics();
+            native_ = native_graphics_owner();
             if (!native_) return;
             const auto &staging = g_native_dfhack_layer_staging;
             if ((synchronize || !g_native_dfhack_layer_staging_pending ||
+                    !staging.ready || !staging.graphics ||
+                    staging.page_revision != native_dfhack_layer_page_revision() ||
                     staging.dimx != native_->dimx || staging.dimy != native_->dimy) &&
                     !native_dfhack_prepare_staging()) return;
             gps_ = g_native_dfhack_layer_staging.graphics.get();
+            native_dfhack_apply_render_schedule(*native_);
             native_output_ = NativeDfhackOutputBinding::capture(*native_);
             std::memcpy(native_texblits_.data(), &native_->texblits, native_texblits_.size());
             saved_ = *slot_;
             previous_ = active_; active_ = this; installed_ = true;
             bind_private();
+            if (write_intent) g_native_dfhack_callback_writes_pending = true;
         } catch (...) { gps_ = nullptr; }
     }
     ~NativeDfhackLayerWriteScope() {
         if (!installed_) return;
         save_private();
         restore_native();
+        native_dfhack_apply_render_schedule(*native_);
         *slot_ = saved_; active_ = previous_;
         // An actual render may be called from inside doUpdate. Its storage
         // cannot become committed while that outer write still selects it.
         if (!active_ && !g_native_dfhack_layer_frame_depth &&
                 g_native_dfhack_layer_commit_pending) native_dfhack_publish_staging();
+        lock_.unlock();
+        native_dfhack_notify_commit();
     }
     bool valid() const noexcept { return installed_ || (active_ && !active_->paused_); }
     static bool active(const graphicst *gps) noexcept {
         return active_ && !active_->paused_ &&
-            (active_->gps_ == gps || native_graphics() == gps);
+            (active_->gps_ == gps || active_->native_ == gps);
     }
     static bool in_progress() noexcept { return active_ != nullptr; }
     static graphicst *graphics() noexcept {
         native_dfhack_layer_save_active();
-        return active_ && !active_->paused_ ? active_->gps_ : native_graphics();
+        return active_ && !active_->paused_ ? active_->gps_ : native_graphics_owner();
     }
 };
 
@@ -593,16 +934,46 @@ static graphicst *native_dfhack_graphics() noexcept {
     return NativeDfhackLayerWriteScope::graphics();
 }
 
+static void native_dfhack_commit_callback_writes() noexcept {
+    // GPU-only callbacks never enter a CPU writer. Publish only captured
+    // drawing calls from this callback thread, without holding M across SDL.
+    if (!g_native_dfhack_callback_writes_pending) return;
+    g_native_dfhack_callback_writes_pending = false;
+    try {
+        {
+            std::lock_guard<std::recursive_mutex> lock(g_native_dfhack_layer_mutex);
+            NativeDfhackOwnerReadScope native_reads;
+            native_dfhack_retire_writer_storage();
+            if (NativeDfhackLayerWriteScope::in_progress() ||
+                    g_native_dfhack_layer_frame_depth) {
+                if (g_native_dfhack_layer_staging_pending)
+                    g_native_dfhack_layer_commit_pending = true;
+            } else {
+                native_dfhack_publish_staging();
+            }
+        }
+        native_dfhack_notify_commit();
+    } catch (...) {}
+}
+
 class NativeDfhackLayerUpdateScope {
     NativeDfhackLayerWriteScope write_;
 public:
-    explicit NativeDfhackLayerUpdateScope(bool enter = true) noexcept : write_(enter, true) {}
+    // A pending frame already owns its private arrays and map bindings.
+    // Native render segments refresh their layout before returning; reshape,
+    // zoom, release and page changes retire those bindings independently.
+    // Keep raw onUpdate writes inside the same ownership scope without
+    // rebuilding its unchanged viewport/map-port list on every game tick.
+    explicit NativeDfhackLayerUpdateScope(bool enter = true) noexcept : write_(enter) {}
     bool valid() const noexcept { return write_.valid(); }
 };
 
 class NativeDfhackFrameTransactionScope {
-    std::optional<TranslationStateScope> translation_;
+#ifndef _WIN32
+    std::optional<TranslationStateScope> native_translation_;
+#endif
     std::unique_lock<std::recursive_mutex> lock_;
+    std::optional<NativeDfhackOwnerReadScope> native_read_;
     bool entered_ = false, outer_ = false;
 public:
     explicit NativeDfhackFrameTransactionScope(bool enter = true, void *screen = nullptr) noexcept {
@@ -611,8 +982,12 @@ public:
             ++g_native_dfhack_layer_frame_depth; entered_ = true; return;
         }
         try {
-            translation_.emplace();
+#ifndef _WIN32
+            native_translation_.emplace();
+#endif
             lock_ = std::unique_lock<std::recursive_mutex>(g_native_dfhack_layer_mutex);
+            native_read_.emplace();
+            native_dfhack_retire_writer_storage();
             if (screen) {
                 void *vtable = nullptr;
                 std::memcpy(&vtable, screen, sizeof(vtable));
@@ -634,6 +1009,8 @@ public:
         if (!outer_) return;
         if (NativeDfhackLayerWriteScope::in_progress()) g_native_dfhack_layer_commit_pending = true;
         else native_dfhack_publish_staging();
+        lock_.unlock();
+        native_dfhack_notify_commit();
     }
     bool valid() const noexcept { return entered_; }
 };
@@ -682,7 +1059,9 @@ static bool native_dfhack_layer_write_active(const graphicst *gps) noexcept {
 }
 static bool native_dfhack_layer_ui_written(const graphicst *gps, int x, int y) noexcept {
     const bool writing = native_dfhack_layer_write_active(gps);
-    const auto &s = writing ? g_native_dfhack_layer_staging : g_native_dfhack_layer_storage;
+    const auto *storage = writing ? &g_native_dfhack_layer_staging : native_dfhack_layer_read_storage();
+    if (!storage) return false;
+    const auto &s = *storage;
     if (!writing && s.graphics.get() != gps) return false;
     if (!s.ready || !gps || x < 0 || y < 0 || x >= s.dimx || y >= s.dimy) return false;
     const size_t at = static_cast<size_t>(x) * s.dimy + y;
@@ -700,29 +1079,18 @@ static void native_dfhack_layer_note_ui_write(const graphicst *gps, int x, int y
 }
 
 class NativeDfhackLayerPresentScope {
-    TranslationStateScope translation_;
-    std::unique_lock<std::recursive_mutex> lock_{g_native_dfhack_layer_mutex};
+    NativeDfhackLayerFrameReadScope reader_;
     graphicst *gps_ = nullptr;
     graphicst *previous_ = nullptr;
     std::optional<NativeDfhackForegroundScope> foreground_;
 public:
-    NativeDfhackLayerPresentScope() noexcept {
-        auto &s = g_native_dfhack_layer_storage;
-        auto *gps = native_graphics();
-        if (!gps) return;
-        // SDL-only callbacks can publish before any foreign grid render.
-        // Give them an empty committed input without publishing staging.
-        if (!s.ready || s.dimx != gps->dimx || s.dimy != gps->dimy ||
-                s.page_revision != native_dfhack_layer_page_revision()) {
-            try {
-                s.prepare(*gps, NativeDfhackOutputBinding::capture(*gps), true);
-                clear_native_dfhack_text_buffer(s.graphics.get());
-                s.page_revision = native_dfhack_layer_page_revision();
-                s.revision = ++g_native_dfhack_layer_revision;
-            } catch (...) { return; }
-        }
-        if (!s.graphics) return;
-        gps_ = s.graphics.get(); previous_ = g_native_dfhack_present_graphics;
+    explicit NativeDfhackLayerPresentScope(
+            std::shared_ptr<const NativeDfhackLayerStorage> frame) noexcept
+        : reader_(std::move(frame)) {
+        const auto *s = reader_.storage();
+        if (!s || !s->ready || !s->graphics ||
+                s->page_revision != native_dfhack_layer_page_revision()) return;
+        gps_ = s->graphics.get(); previous_ = g_native_dfhack_present_graphics;
         g_native_dfhack_present_graphics = gps_; foreground_.emplace();
     }
     ~NativeDfhackLayerPresentScope() {
@@ -730,18 +1098,18 @@ public:
     }
     bool valid() const noexcept { return gps_ != nullptr; }
     graphicst *graphics() const noexcept { return gps_; }
-    const auto &maps() const noexcept { return g_native_dfhack_layer_storage.maps; }
+    const NativeDfhackLayerStorage *storage() const noexcept { return reader_.storage(); }
+    const auto &frame() const noexcept { return reader_.frame(); }
+    const auto &maps() const noexcept {
+        static const std::vector<std::unique_ptr<NativeDfhackMapLayer>> empty;
+        return storage() ? storage()->maps : empty;
+    }
 };
 
 static void clear_native_dfhack_layers() noexcept {
-    try {
-        TranslationStateScope translation;
-        std::lock_guard<std::recursive_mutex> lock(g_native_dfhack_layer_mutex);
-        g_native_dfhack_layer_storage = {};
-        g_native_dfhack_layer_staging = {};
-        g_native_dfhack_layer_staging_pending = false;
-        g_native_dfhack_layer_commit_pending = false;
-        g_native_dfhack_layer_page_screen = g_native_dfhack_layer_page_vtable = nullptr;
-        g_native_dfhack_layer_page_revision.fetch_add(1, std::memory_order_release);
-    } catch (...) {}
+    // SDL retires visibility immediately; the next writer releases scratch
+    // under its own ownership lock. No render/translation lock waits for M.
+    g_native_dfhack_layer_page_revision.fetch_add(1, std::memory_order_release);
+    g_native_dfhack_layer_published.store({}, std::memory_order_release);
+    g_native_dfhack_layer_retirement.fetch_add(1, std::memory_order_release);
 }

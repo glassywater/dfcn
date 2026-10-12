@@ -1,6 +1,7 @@
 #include "native_map_producer.inc"
 
 #ifdef _WIN32
+static void native_dfhack_display_before_ui();
 static NativeUiLayerTarget g_native_map_target;
 static NativeUiLayerTarget g_native_map_glyph_target;
 static NativeEntryHook g_native_map_ui_draw_hook;
@@ -32,9 +33,8 @@ static uint64_t native_map_layout_signature(const graphicst &gps) {
     return hash;
 }
 
-// display already owns native graphicst and the translation/output locks.
-// Keep its complete map pass on one target, then compose before update_all
-// draws interface cells. Incremental native map redraws retain this target.
+// Both map and interface passes use display's pinned native output header.
+// GPU setup and painting never retain ownership of the update-side buffers.
 class NativeMapGpuFrame {
     inline static thread_local NativeMapGpuFrame *active_ = nullptr;
     NativeMapGpuFrame *previous_ = nullptr;
@@ -125,6 +125,7 @@ public:
     static void before_ui(void *renderer) {
         if (active_ && active_->native_renderer_ == renderer) active_->finish();
     }
+    bool entered() const noexcept { return entered_; }
     ~NativeMapGpuFrame() { finish(); }
     NativeMapGpuFrame(const NativeMapGpuFrame &) = delete;
     NativeMapGpuFrame &operator=(const NativeMapGpuFrame &) = delete;
@@ -132,6 +133,7 @@ public:
 
 static void native_map_ui_draw(void *renderer) {
     NativeInputCallbackScope callback;
+    native_dfhack_display_before_ui();
     TranslationStateScope translation;
     NativeMapGpuFrame::before_ui(renderer);
     const auto original = reinterpret_cast<void (*)(void *)>(g_native_map_ui_draw_hook.original);

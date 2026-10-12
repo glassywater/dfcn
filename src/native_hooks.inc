@@ -1,6 +1,7 @@
 // One capture/input policy and one hook lifecycle. Native adapters only bind
 // symbols, ABI layouts, call sites and operating-system interfaces.
 #include "native_text_abi.h"
+#include "native_identity_translation_jobs.inc"
 #include "native_text_capture.inc"
 #include "native_text_input.inc"
 #include "native_arena_adapter.inc"
@@ -330,6 +331,7 @@ static bool stop_reloadable_core() {
         return false;
     }
     if (g_plugin_active.load()) {
+        stop_native_identity_translation_jobs();
         g_native_squads_overlay.release_native_squads_resources();
         g_overlay.shutdown();
         g_plugin_active.store(false);

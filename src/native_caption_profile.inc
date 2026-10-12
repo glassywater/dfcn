@@ -126,7 +126,11 @@ static bool resolve_native_caption_profile(NativeCaptionProfile &profile) {
         {native_pe_address(profile.base, 0x1c5289), NativeCivilizationField::TradeValue},  // None
         {native_pe_address(profile.base, 0x1c52cd), NativeCivilizationField::TradeValue},  // Amount
         {native_pe_address(profile.base, 0x1c5f6f), NativeCivilizationField::OfficialName},
-        {native_pe_address(profile.base, 0x1c6025), NativeCivilizationField::OfficialPosition}};
+        {native_pe_address(profile.base, 0x1c6025), NativeCivilizationField::OfficialPosition},
+        // The fortress HUD draws the complete native rank below its site
+        // names. Retain this producer meaning before the restricted HUD
+        // matcher considers the ordinary counter/date captions.
+        {native_pe_address(profile.base, 0x3f3202), NativeCivilizationField::FortressRank}};
     // The location chooser draws over the map before a later native pass can
     // replace that grid. Retain these fields at their verified addst callers,
     // while their allocated button/picture strip is still available.

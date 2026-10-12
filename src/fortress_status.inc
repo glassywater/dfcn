@@ -15,10 +15,22 @@ void Overlay::append_native_fortress_status_rows(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y, bool raw_layer) const {
     if (!gps_ || gps_->dimx <= 0 || gps_->dimy <= 0 ||
             rows.size() != static_cast<size_t>(gps_->dimy)) return;
-    const uint64_t epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
-    const std::array layers{captured_native_drawn_text_rows(false),
-        captured_native_drawn_text_rows(true)};
-    for (const auto &layer : layers) for (const auto &draw : layer) {
+    // Present can reuse the last native page after its producer generation
+    // has advanced. Retain that batch's typed fields while their current
+    // grid, layer and visible bytes still prove the same native ownership.
+    uint64_t epoch = 0;
+    std::vector<NativeDrawnTextRow> draws;
+    {
+        std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
+        epoch = g_native_drawn_text_epoch;
+        for (const auto *layer : {&g_native_drawn_text_rows, &g_native_drawn_top_text_rows})
+            for (const auto &draw : *layer)
+                if (draw.draw_epoch == epoch &&
+                        (draw.civilization_field == NativeCivilizationField::FortressRank ||
+                         draw.civilization_field == NativeCivilizationField::FortressPositionLabel))
+                    draws.push_back(draw);
+    }
+    for (const auto &draw : draws) {
         const bool position =
             draw.civilization_field == NativeCivilizationField::FortressPositionLabel;
         if ((!position && draw.civilization_field != NativeCivilizationField::FortressRank) ||

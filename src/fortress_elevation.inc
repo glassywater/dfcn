@@ -48,8 +48,8 @@ void Overlay::append_fortress_elevation_rows(std::vector<std::string> &rows,
             }
         if (footer_y == panel_bottom) continue;
         const auto append = [&](int x, int y, const std::string &source,
-                const std::string &target, const SDL_Rect &box) {
-            if (source.empty() || target.empty() || x < box.x ||
+                const std::string &target, const SDL_Rect &box, bool suppress_pending = false) {
+            if (source.empty() || (target.empty() && !suppress_pending) || x < box.x ||
                     x + static_cast<int>(source.size()) > box.x + box.w ||
                     y < box.y || y >= box.y + box.h ||
                     (only_y >= 0 && only_y != y)) return;
@@ -133,6 +133,7 @@ void Overlay::append_fortress_elevation_rows(std::vector<std::string> &rows,
                 if (capture.x == x && capture.y == y && capture.visible == source &&
                         !capture.complete.empty()) { complete = capture.complete; break; }
             std::optional<std::string> target;
+            bool pending_identity = false;
             // Keep the formatter-owned unit target when its draw is the
             // actual whole identity, including the native role/sex suffix.
             for (const auto &draw : draws) {
@@ -144,10 +145,16 @@ void Overlay::append_fortress_elevation_rows(std::vector<std::string> &rows,
                     ? draw.source : draw.complete_source;
                 if (draw.source == source || draw_source == complete) {
                     target = draw.unit_identity_target;
+                    pending_identity = !draw.unit_identity_ready;
                     complete = draw_source;
                     break;
                 }
                 if (source.starts_with(draw.source)) {
+                    if (!draw.unit_identity_ready) {
+                        target = std::string{};
+                        pending_identity = true;
+                        break;
+                    }
                     auto suffix = trim_view(std::string_view(source).substr(draw.source.size()));
                     if (!suffix.empty() && suffix.front() == ',') {
                         suffix.remove_prefix(1);
@@ -159,6 +166,10 @@ void Overlay::append_fortress_elevation_rows(std::vector<std::string> &rows,
                         }
                     }
                 }
+            }
+            if (pending_identity) {
+                append(x, y, source, {}, box, true);
+                continue;
             }
             if (!target) target = translate_unit_identity(normalize_utterance(complete), true);
             if (!target || target->empty()) target = native_text_to_utf8(complete);

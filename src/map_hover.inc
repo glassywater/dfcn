@@ -15,7 +15,10 @@ static size_t map_hover_conflict_identity_offset(std::string_view source) {
 
 static std::optional<NativeDrawnTextRow> native_map_hover_card_draw_for_row(
         const graphicst &gps, const Match &row, int right) {
-    if (auto drawn = native_map_hover_draw_for_row(gps, row, right)) return drawn;
+    if (auto drawn = native_map_hover_draw_for_row(gps, row, right)) {
+        refresh_native_unit_identity_draw(*drawn);
+        return drawn;
+    }
     const size_t identity_at = map_hover_conflict_identity_offset(row.source);
     if (!identity_at || row.x < 0 || row.y < 0 || row.y >= gps.dimy ||
             row.x >= gps.dimx || row.source.size() > static_cast<size_t>(gps.dimx - row.x))
@@ -25,6 +28,7 @@ static std::optional<NativeDrawnTextRow> native_map_hover_card_draw_for_row(
         row.source.substr(identity_at)};
     auto drawn = native_map_hover_draw_for_row(gps, identity, right);
     if (!drawn || drawn->map_hover.kind != NativeMapHoverKind::Unit) return std::nullopt;
+    refresh_native_unit_identity_draw(*drawn);
     // The finite conflict indicator is a separate colored native draw. Its
     // current bytes accompany this actual formatter-owned unit identity.
     for (size_t byte = 0; byte < identity_at; ++byte) {
@@ -1122,6 +1126,16 @@ void Overlay::append_map_hover_phrases(const NativeTextCard &card,
         // A submitted message may already own this complete physical row,
         // including a continuation whose translated output is now empty.
         if (rows[row.y].compare(row.x, row.source.size(), row.source) != 0) continue;
+        if (row.map_hover.kind == NativeMapHoverKind::Unit &&
+                row.unit_identity_target && row.unit_identity_target->empty()) {
+            // A typed pending identity is deliberately empty. Preserve its
+            // source ownership without converting it into an English fallback.
+            std::fill_n(rows[row.y].begin() + row.x, row.source.size(), ' ');
+            if (only_y < 0 || only_y == row.y)
+                matches.push_back({row.x, row.y, static_cast<int>(row.source.size()),
+                    kMapHoverPhraseRule, {}, row.source});
+            continue;
+        }
         // Native kind owns colored captions too. A color change cannot send
         // the remaining words back into generic item/person matching.
         std::string normalized;
@@ -1196,8 +1210,9 @@ void Overlay::append_native_map_hover_phrases(std::vector<std::string> &rows,
             Match physical{x, draw.y, end - x, kMapHoverPhraseRule, {}, std::string(source)};
             // The existing reader proves the current source bytes, layer and
             // draw grid, so a retained or covered caption cannot claim a popup.
-            const auto owned = native_map_hover_draw_for_row(*gps_, physical, end);
+            auto owned = native_map_hover_draw_for_row(*gps_, physical, end);
             if (!owned || owned->map_hover.kind < NativeMapHoverKind::Item) continue;
+            refresh_native_unit_identity_draw(*owned);
             NativeTextCard card;
             card.interior = {x, draw.y, end - x, 1};
             NativeTextCardRow row{x, draw.y, physical.source, {}};

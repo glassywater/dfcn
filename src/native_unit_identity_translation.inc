@@ -145,8 +145,43 @@ static std::string native_unit_identity_cache_key(const NativeUnitIdentity &unit
 
 std::optional<std::string> Overlay::translate_native_unit_identity(
         const NativeUnitIdentity &unit) const {
-    TranslationStateScope translation_scope;
     NativeUnitIdentityRenderScope rendering;
+    // Live government/title references still resolve under the shared lock.
+    // Complete owned snapshots can reuse this thread's exact result before
+    // waiting for an unrelated SDL translation pass.
+    const bool live_entity = unit.form == NativeUnitIdentityForm::Reference &&
+        std::any_of(unit.reference_parts.begin(), unit.reference_parts.end(),
+            [](const NativeUnitReferencePart &part) {
+                return part.kind == NativeUnitReferencePartKind::Title || part.entity_present;
+            });
+    const std::string key = live_entity ? std::string{} : native_unit_identity_cache_key(unit);
+    struct ThreadCache {
+        const Overlay *owner = nullptr;
+        uint64_t catalog = 0;
+        std::unordered_map<std::string, std::optional<std::string>> results;
+        std::deque<std::string> order;
+    };
+    ThreadCache *thread_cache = nullptr;
+    if (!live_entity && key.size() <= 8192) {
+        thread_cache = &reloadable_thread_state<ThreadCache,
+            struct NativeUnitIdentityThreadCacheTag>();
+        const uint64_t catalog = identity_translation_catalog_generation_.load(std::memory_order_acquire);
+        if (thread_cache->owner != this || thread_cache->catalog != catalog) {
+            thread_cache->results.clear();
+            thread_cache->order.clear();
+            thread_cache->owner = this;
+            thread_cache->catalog = catalog;
+        }
+        const uint64_t context = native_identity_translation_context();
+        const std::string memo_key = std::to_string(context) + '\x1f' + key;
+        if (const auto found = thread_cache->results.find(memo_key);
+                found != thread_cache->results.end()) {
+            auto target = found->second;
+            if (catalog == identity_translation_catalog_generation_.load(std::memory_order_acquire) &&
+                    context == native_identity_translation_context()) return target;
+        }
+    }
+    TranslationStateScope translation_scope;
     const auto translate = [&]() -> std::optional<std::string> {
         const auto field_text = [&](std::string_view source) {
             if (auto target = translate_creature_descriptor(source, true)) return *target;
@@ -470,16 +505,35 @@ std::optional<std::string> Overlay::translate_native_unit_identity(
     // Entity/title rendering can resolve live government fields that are not
     // owned by this unit snapshot. Keep those references live; their ordinary
     // nested NameOnly translations can still use this cache independently.
-    const bool live_entity = unit.form == NativeUnitIdentityForm::Reference &&
-        std::any_of(unit.reference_parts.begin(), unit.reference_parts.end(),
-            [](const NativeUnitReferencePart &part) {
-                return part.kind == NativeUnitReferencePartKind::Title || part.entity_present;
-            });
     if (live_entity) return translate();
-    const std::string key = native_unit_identity_cache_key(unit);
     if (key.size() > 8192) return translate();
     // Reuse the bounded, semantic-context-aware identity cache. The existing
     // dictionary/TOML/name-resource reload paths clear it together, so stale
     // translations cannot outlive their catalog after an in-place reload.
-    return memoize_identity_translation('U', key, translate);
+    const uint64_t catalog = identity_translation_catalog_generation_.load(std::memory_order_acquire);
+    const uint64_t context = native_identity_translation_context();
+    auto target = memoize_identity_translation('U', key, translate);
+    // Recursive NameOnly translations may update this same thread's memo.
+    // Keep no iterator across translation, and publish only a settled context.
+    if (thread_cache && catalog == identity_translation_catalog_generation_.load(std::memory_order_acquire) &&
+            context == native_identity_translation_context()) {
+        if (thread_cache->owner != this || thread_cache->catalog != catalog) {
+            thread_cache->results.clear();
+            thread_cache->order.clear();
+            thread_cache->owner = this;
+            thread_cache->catalog = catalog;
+        }
+        std::string memo_key = std::to_string(context) + '\x1f' + key;
+        if (!thread_cache->results.contains(memo_key)) {
+            constexpr size_t maximum = 512;
+            if (thread_cache->results.size() >= maximum && !thread_cache->order.empty()) {
+                thread_cache->results.erase(thread_cache->order.front());
+                thread_cache->order.pop_front();
+            }
+            const auto inserted = thread_cache->results.emplace(memo_key, target);
+            try { thread_cache->order.push_back(std::move(memo_key)); }
+            catch (...) { thread_cache->results.erase(inserted.first); throw; }
+        }
+    }
+    return target;
 }

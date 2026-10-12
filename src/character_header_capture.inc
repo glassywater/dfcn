@@ -34,8 +34,9 @@ void Overlay::append_character_header(
     };
     const auto claim_field = [&](const LogicalTextField &field, int y,
                                  const std::string &target, int clip_right,
-                                 std::shared_ptr<const TranslationResult> translation = {}) {
-        if (target.empty() || y < 0 || y >= static_cast<int>(screen_rows.size()) ||
+                                 std::shared_ptr<const TranslationResult> translation = {},
+                                 bool suppress_pending = false) {
+        if ((target.empty() && !suppress_pending) || y < 0 || y >= static_cast<int>(screen_rows.size()) ||
                 field.start < 0 || field.end <= field.start ||
                 field.end > static_cast<int>(screen_rows[y].size())) return;
         // The complete owner replaces earlier fragments on every source row;
@@ -99,14 +100,16 @@ void Overlay::append_character_header(
             // as classic text need not survive the graphical-occlusion reader
             // used by the earlier generic identity pass. The binding still
             // requires this draw's visible bytes, layer and native quotes.
-            const std::string quoted_target = "“" + *gloss.unit_identity_target + "”";
-            claim_field(*quoted, gloss.y, quoted_target, quoted->end);
+            const std::string quoted_target = gloss.unit_identity_ready
+                ? "“" + *gloss.unit_identity_target + "”" : std::string{};
+            claim_field(*quoted, gloss.y, quoted_target, quoted->end, {}, !gloss.unit_identity_ready);
             int name_bottom = gloss.y;
             if (gloss.y + 1 < gps_->dimy) {
                 const auto mate = character_header_bound_identity_field(*gps_, gloss,
                     name_layer != 0, gloss.y + 1, clipped_captions, read_header_char, true);
                 if (mate) {
-                    claim_field(*mate, gloss.y + 1, quoted_target, mate->end);
+                    claim_field(*mate, gloss.y + 1, quoted_target, mate->end, {},
+                        !gloss.unit_identity_ready);
                     ++name_bottom;
                 }
             }
@@ -276,6 +279,21 @@ void Overlay::append_character_header(
     for (int y = frame->top + 1; y < header_tabs_y; ++y) {
         if (tab_rows[y]) continue;
         const auto &row = header_rows[y];
+        bool pending_identity = false;
+        for (size_t layer = 0; layer < header_draws.size(); ++layer) {
+            for (const auto &draw : *header_draws[layer]) {
+                if (!draw.unit_identity_target || draw.unit_identity_ready) continue;
+                const auto field = character_header_bound_identity_field(*gps_, draw,
+                    layer != 0, y, clipped_captions, read_header_char, draw.unit_identity_english);
+                if (!field || !eligible(*field, y, true)) continue;
+                claim_field(*field, y, {}, frame->right, {}, true);
+                pending_identity = true;
+            }
+        }
+        // The immutable header rows still contain the original quote/name.
+        // Do not let their fallback reader replace a pending mask with quotes
+        // or infer another name from the same proven native field.
+        if (pending_identity) continue;
         LogicalTextField quoted{};
         std::optional<LogicalTextField> native_identity;
         std::optional<std::string> native_target;

@@ -2,14 +2,25 @@
 // after reading their semantic fields. Text equality binds a capture; it never determines
 // whether a field is a nickname, profession, or species.
 static std::string native_text_to_utf8(std::string_view input);
+static uint64_t current_native_identity_translation_catalog() noexcept;
 struct NativeUnitIdentitySource {
     std::string source, target;
     uintptr_t unit_owner = 0;
     bool english_name = false;
     bool character_header = false;
+    uint64_t pending_witness = 0;
+    // Readiness describes the complete result, not whether a worker is queued.
+    // The full typed key prevents reusing a name for another semantic source.
+    bool ready = true;
+    std::string semantic_key;
+    uint64_t catalog = 0;
+    std::string semantic_source;
+    uint64_t publication_epoch = 0;
+    std::shared_ptr<const NativeUnitIdentity> deferred_snapshot;
 };
 static std::mutex g_native_unit_identity_mutex;
 static uint64_t g_native_unit_identity_epoch = 0;
+static uint64_t g_native_unit_identity_witness = 0;
 static std::unordered_map<uintptr_t, NativeUnitIdentitySource> g_native_unit_identity_owners;
 static std::unordered_map<std::string, std::optional<std::string>> g_native_unit_identity_sources;
 // Pure roster translations can reuse a source within one match pass, but a
@@ -75,18 +86,7 @@ static void clear_native_unit_identities() {
     g_native_unit_identity_revision.fetch_add(1, std::memory_order_release);
 }
 
-static void remember_native_unit_identity(uintptr_t owner, std::string_view source,
-        std::string_view target, uintptr_t unit_owner = 0, bool english_name = false,
-        bool character_header = false) {
-    if (!owner || source.empty() || source.size() > 65536 || target.size() > 262144) return;
-    // A formatter can emit a nonempty name through a branch whose semantic
-    // fields were not captured. An empty translation must never claim and
-    // suppress that native name. Replace any old binding for this owner with
-    // its current native spelling instead.
-    const std::string native_target = target.empty() ? native_text_to_utf8(source) : std::string{};
-    const std::string_view resolved_target = target.empty() ? std::string_view(native_target) : target;
-    std::lock_guard<std::mutex> lock(g_native_unit_identity_mutex);
-    const auto epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
+static void native_unit_identity_begin_epoch_locked(uint64_t epoch) {
     if (g_native_unit_identity_epoch != epoch) {
         g_native_unit_identity_context.store(0, std::memory_order_release);
         g_native_unit_identity_owners.clear();
@@ -94,17 +94,30 @@ static void remember_native_unit_identity(uintptr_t owner, std::string_view sour
         g_native_unit_identity_epoch = epoch;
         g_native_unit_identity_revision.fetch_add(1, std::memory_order_release);
     }
+}
+
+static void remember_native_unit_identity_locked(uintptr_t owner, std::string_view source,
+        std::string_view resolved_target, uintptr_t unit_owner, bool english_name,
+        bool character_header, std::string_view semantic_key = {}, uint64_t catalog = 0,
+        std::string_view semantic_source = {}) {
+    if (semantic_source.empty()) semantic_source = source;
     const auto previous = g_native_unit_identity_owners.find(owner);
     if (previous != g_native_unit_identity_owners.end() &&
             previous->second.source == source && previous->second.target == resolved_target &&
             previous->second.unit_owner == unit_owner &&
             previous->second.english_name == english_name &&
-            previous->second.character_header == character_header)
+            previous->second.character_header == character_header &&
+            previous->second.ready && previous->second.semantic_key == semantic_key &&
+            previous->second.catalog == catalog &&
+            previous->second.semantic_source == semantic_source &&
+            !previous->second.pending_witness)
         return;
     if (g_native_unit_identity_owners.size() >= 8192 &&
         !g_native_unit_identity_owners.contains(owner)) return;
     g_native_unit_identity_owners[owner] = {
-        std::string(source), std::string(resolved_target), unit_owner, english_name, character_header};
+        std::string(source), std::string(resolved_target), unit_owner, english_name,
+        character_header, 0, true, std::string(semantic_key), catalog,
+        std::string(semantic_source)};
     g_native_unit_identity_revision.fetch_add(1, std::memory_order_release);
     uint64_t context = g_native_unit_identity_context.load(std::memory_order_relaxed);
     const auto remember_source = [&](const std::string &key) {
@@ -134,22 +147,147 @@ static void remember_native_unit_identity(uintptr_t owner, std::string_view sour
     g_native_unit_identity_context.store(context, std::memory_order_release);
 }
 
+static void remember_native_unit_identity(uintptr_t owner, std::string_view source,
+        std::string_view target, uintptr_t unit_owner = 0, bool english_name = false,
+        bool character_header = false) {
+    if (!owner || source.empty() || source.size() > 65536 || target.size() > 262144) return;
+    const std::string native_target = target.empty() ? native_text_to_utf8(source) : std::string{};
+    const std::string_view resolved_target = target.empty() ? std::string_view(native_target) : target;
+    std::lock_guard<std::mutex> lock(g_native_unit_identity_mutex);
+    native_unit_identity_begin_epoch_locked(g_embark_item_capture_epoch.load(std::memory_order_acquire));
+    remember_native_unit_identity_locked(owner, source, resolved_target, unit_owner,
+        english_name, character_header);
+}
+
+struct NativeUnitIdentityPublication {
+    uintptr_t owner = 0;
+    uint64_t epoch = 0, witness = 0, catalog = 0;
+};
+
+static void remember_completed_native_unit_identity_publication(uintptr_t owner,
+        std::string_view source, std::string_view target, uintptr_t unit_owner,
+        bool english_name, bool character_header, uint64_t catalog,
+        std::string_view semantic_key) {
+    if (!owner || source.empty() || source.size() > 65536 || target.size() > 262144) return;
+    const std::string native_target = target.empty() ? native_text_to_utf8(source) : std::string{};
+    std::lock_guard<std::mutex> lock(g_native_unit_identity_mutex);
+    if (catalog != current_native_identity_translation_catalog()) return;
+    native_unit_identity_begin_epoch_locked(g_embark_item_capture_epoch.load(std::memory_order_acquire));
+    remember_native_unit_identity_locked(owner, source,
+        target.empty() ? std::string_view(native_target) : target, unit_owner,
+        english_name, character_header, semantic_key, catalog);
+}
+
+static NativeUnitIdentityPublication begin_native_unit_identity_publication(
+        uintptr_t owner, std::string_view source, uintptr_t unit_owner,
+        bool english_name, bool character_header, uint64_t catalog,
+        std::string_view semantic_key,
+        std::shared_ptr<const NativeUnitIdentity> deferred_snapshot = {}) {
+    if (!owner || source.empty() || source.size() > 65536) return {};
+    const std::string target = native_text_to_utf8(source);
+    std::lock_guard<std::mutex> lock(g_native_unit_identity_mutex);
+    if (catalog != current_native_identity_translation_catalog()) return {};
+    const auto epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
+    std::optional<NativeUnitIdentitySource> retained;
+    const auto previous = g_native_unit_identity_owners.find(owner);
+    if (previous != g_native_unit_identity_owners.end() &&
+            previous->second.semantic_source == source && previous->second.unit_owner == unit_owner &&
+            previous->second.english_name == english_name &&
+            previous->second.character_header == character_header &&
+            previous->second.catalog == catalog && previous->second.semantic_key == semantic_key) {
+        if (previous->second.ready) retained = previous->second;
+        else if (g_native_unit_identity_epoch == epoch && previous->second.source == source &&
+                previous->second.pending_witness)
+            return {owner, epoch, previous->second.pending_witness, catalog};
+    }
+    native_unit_identity_begin_epoch_locked(epoch);
+    if (retained) {
+        const std::string retained_target = retained->target == native_text_to_utf8(retained->source)
+            ? native_text_to_utf8(source) : retained->target;
+        remember_native_unit_identity_locked(owner, source, retained_target, unit_owner,
+            english_name, character_header, semantic_key, catalog);
+        return {};
+    }
+    if (g_native_unit_identity_owners.size() >= 8192 &&
+            !g_native_unit_identity_owners.contains(owner)) return {};
+    const auto witness = ++g_native_unit_identity_witness;
+    g_native_unit_identity_owners[owner] = {
+        std::string(source), target, unit_owner, english_name, character_header,
+        witness, false, std::string(semantic_key), catalog, std::string(source), epoch,
+        std::move(deferred_snapshot)};
+    // A pending native spelling is an owner witness, not a settled global
+    // alias. Publishing it as an alias would mark its eventual Chinese result
+    // ambiguous even though both came from the same captured identity.
+    g_native_unit_identity_revision.fetch_add(1, std::memory_order_release);
+    return {owner, epoch, witness, catalog};
+}
+
+static void finish_native_unit_identity_publication(NativeUnitIdentityPublication token,
+        std::string_view original, std::string_view translated) {
+    if (!token.owner || translated.size() > 262144) return;
+    std::lock_guard<std::mutex> lock(g_native_unit_identity_mutex);
+    if (token.catalog != current_native_identity_translation_catalog() ||
+            token.epoch != g_native_unit_identity_epoch ||
+            token.epoch != g_embark_item_capture_epoch.load(std::memory_order_acquire)) return;
+    const auto found = g_native_unit_identity_owners.find(token.owner);
+    if (found == g_native_unit_identity_owners.end() ||
+            found->second.pending_witness != token.witness) return;
+    const auto binding = found->second;
+    const std::string target = translated.empty() || translated == native_text_to_utf8(original)
+        ? native_text_to_utf8(binding.source) : std::string(translated);
+    remember_native_unit_identity_locked(token.owner, binding.source, target,
+        binding.unit_owner, binding.english_name, binding.character_header,
+        binding.semantic_key, binding.catalog, binding.semantic_source);
+}
+
+static void rebind_native_unit_identity_capitalization(uintptr_t owner,
+        const NativeUnitIdentitySource &previous, std::string_view source) {
+    std::lock_guard<std::mutex> lock(g_native_unit_identity_mutex);
+    const auto found = g_native_unit_identity_owners.find(owner);
+    if (g_native_unit_identity_epoch != g_embark_item_capture_epoch.load(std::memory_order_acquire) ||
+            found == g_native_unit_identity_owners.end() ||
+            found->second.source != previous.source ||
+            found->second.pending_witness != previous.pending_witness ||
+            found->second.semantic_key != previous.semantic_key ||
+            found->second.catalog != previous.catalog) return;
+    // Only the native capitalization caller may rebind these bytes. Its
+    // operation changes neither the captured name fields nor their meaning.
+    const std::string target = found->second.target == native_text_to_utf8(previous.source)
+        ? native_text_to_utf8(source) : found->second.target;
+    if (found->second.ready) {
+        const auto binding = found->second;
+        remember_native_unit_identity_locked(owner, source, target, binding.unit_owner,
+            binding.english_name, binding.character_header, binding.semantic_key,
+            binding.catalog, binding.semantic_source);
+        return;
+    }
+    found->second.source.assign(source);
+    found->second.target = target;
+    g_native_unit_identity_revision.fetch_add(1, std::memory_order_release);
+}
+
 static std::optional<NativeUnitIdentitySource> native_unit_identity_source_binding(
-        std::string_view source, uintptr_t owner) {
+        std::string_view source, uintptr_t owner, std::string_view semantic_key = {}) {
     if (!owner || native_unit_identity_rendering()) return std::nullopt;
     std::lock_guard<std::mutex> lock(g_native_unit_identity_mutex);
     const auto found = g_native_unit_identity_owners.find(owner);
-    if (found == g_native_unit_identity_owners.end() || found->second.source != source)
+    if (found == g_native_unit_identity_owners.end() || found->second.source != source ||
+            (!semantic_key.empty() && found->second.semantic_key != semantic_key))
         return std::nullopt;
     return found->second;
 }
+
+// Only SDL's pre-draw path may resolve a deferred live title. Ordinary owned
+// names keep their nonblocking worker path and return their current readiness.
+static std::optional<NativeUnitIdentitySource> prepare_native_unit_identity_source_binding(
+    std::string_view source, uintptr_t owner, std::string_view semantic_key = {});
 
 static std::optional<std::string> native_unit_identity_source_target(
         std::string_view source, uintptr_t owner = 0) {
     if (native_unit_identity_rendering()) return std::nullopt;
     if (owner) {
         if (const auto binding = native_unit_identity_source_binding(source, owner))
-            return binding->target;
+            return binding->ready ? std::optional<std::string>(binding->target) : std::nullopt;
         return std::nullopt;
     }
     std::lock_guard<std::mutex> lock(g_native_unit_identity_mutex);

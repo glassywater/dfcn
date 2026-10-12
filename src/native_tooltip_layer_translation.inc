@@ -85,6 +85,33 @@ void Overlay::render_native_tooltip_layer(SDL_Renderer *renderer) {
         prepared_matches_.clear();
         append_toolbar_tooltip_matches(rows, prepared_matches_, -1, false);
         layout_toolbar_tooltip(renderer);
+        for (bool top_layer : {false, true})
+            for (const auto &draw : captured_native_drawn_text_rows(top_layer)) {
+                if (!draw.unit_identity_target || draw.unit_identity_ready ||
+                        draw.squad_alias_target || draw.editable_text || draw.source.empty() ||
+                        draw.draw_grid != (top_layer ? gps_->screen_top : gps_->screen) ||
+                        draw.draw_dimx != gps_->dimx || draw.draw_dimy != gps_->dimy ||
+                        draw.x < box.x || draw.x >= box.x + box.w ||
+                        draw.y < box.y || draw.y >= box.y + box.h ||
+                        draw.source.size() > static_cast<size_t>(box.x + box.w - draw.x)) continue;
+                const auto *screen = top_layer ? gps_->screen_top : gps_->screen;
+                if (!screen) continue;
+                bool same_source = true;
+                for (size_t offset = 0; same_source && offset < draw.source.size(); ++offset)
+                    same_source = screen[(static_cast<size_t>(draw.x) + offset) *
+                        gps_->dimy * 8 + static_cast<size_t>(draw.y) * 8] ==
+                        static_cast<unsigned char>(draw.source[offset]);
+                if (!same_source) continue;
+                const int right = draw.x + static_cast<int>(draw.source.size());
+                std::erase_if(prepared_matches_, [&](const Match &match) {
+                    return match.y == draw.y && match.x < right &&
+                        draw.x < match.x + match.length;
+                });
+                // A formatter-owned tooltip identity waits without submitting
+                // its native glyphs. Unknown tooltip text is unaffected.
+                prepared_matches_.push_back({draw.x, draw.y,
+                    static_cast<int>(draw.source.size()), kCreatureNameRule, {}, draw.source});
+            }
         for (auto &match : prepared_matches_) {
             match.graphical_clear_width = match.graphical_clear_height = 0;
             match.graphical_auto_foreground = false;

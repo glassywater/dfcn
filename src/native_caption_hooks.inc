@@ -2096,10 +2096,12 @@ static void capture_native_squads_caption(graphicst *graphics,
                 row.complete_source, row.address);
             if (const auto identity = native_unit_identity_source_binding(
                     row.complete_source, row.address)) {
-                row.unit_identity_target = identity->target;
+                row.unit_identity_target = identity->ready ? identity->target : std::string{};
                 row.unit_identity_owner = identity->unit_owner;
                 row.unit_identity_english = identity->english_name;
                 row.unit_identity_header = identity->character_header;
+                row.unit_identity_ready = identity->ready;
+                row.unit_identity_semantic_key = identity->semantic_key;
             }
             x = graphics->screenx; y = graphics->screeny;
             dimx = graphics->dimx; dimy = graphics->dimy;

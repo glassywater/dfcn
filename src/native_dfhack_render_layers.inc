@@ -581,13 +581,16 @@ static void native_dfhack_render_thread_callback() {
     // consuming them outside the private target after an empty observation.
     if (enabled && !native_dfhack_render_callbacks_pending()) return;
     NativeDfhackRenderForeignContentScope content(enabled);
-    NativeDfhackRenderFrame foreign(enabled);
     NativeDfhackLayerGpuScope gpu(enabled);
-    if (enabled && (!foreign.layer.valid() || !gpu.valid())) {
+    if (enabled && !gpu.valid()) {
         native_dfhack_render_capture_failed();
         return;
     }
+    // SDL callback batches own their GPU destination, not the simulation's
+    // graphicst binding. Screen APIs acquire private CPU output ownership for
+    // each write; GPU calls cannot retain that ownership across the batch.
     callback.call_native([&] { original(); });
+    if (enabled) native_dfhack_commit_callback_writes();
 }
 
 static bool install_native_dfhack_render_layers() {

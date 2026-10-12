@@ -49,6 +49,60 @@ struct NativeDfhackControlPanelCapture {
 };
 static std::vector<NativeDfhackControlPanelCapture> g_native_dfhack_control_panel_text;
 
+struct NativeDfhackTextFrame {
+    std::vector<NativeDfhackSitemapText> sitemap;
+    std::vector<NativeDfhackControlPanelCapture> control_panel;
+    uint64_t page_revision = 0;
+};
+static std::shared_ptr<const NativeDfhackTextFrame> &native_dfhack_text_frame_read() {
+    return reloadable_thread_state<std::shared_ptr<const NativeDfhackTextFrame>,
+        struct NativeDfhackTextFrameReadTag>();
+}
+static std::shared_ptr<const NativeDfhackTextFrame> use_native_dfhack_text_frame(
+        std::shared_ptr<const NativeDfhackTextFrame> frame) {
+    auto &current = native_dfhack_text_frame_read();
+    auto previous = std::move(current);
+    current = std::move(frame);
+    return previous;
+}
+struct NativeDfhackTextReadAccess {
+    std::shared_ptr<const NativeDfhackTextFrame> frame = native_dfhack_text_frame_read();
+    std::unique_lock<std::mutex> lock{g_native_dfhack_sitemap_text_mutex, std::defer_lock};
+    NativeDfhackTextReadAccess() { if (!frame) lock.lock(); }
+    const auto &sitemap() const { return frame ? frame->sitemap : g_native_dfhack_sitemap_text; }
+    const auto &control_panel() const {
+        return frame ? frame->control_panel : g_native_dfhack_control_panel_text;
+    }
+    uint64_t revision() const {
+        return frame ? frame->page_revision : g_native_dfhack_sitemap_text_page_revision;
+    }
+};
+static std::shared_ptr<const NativeDfhackTextFrame> capture_native_dfhack_text_frame(
+        const graphicst *source, const graphicst *copy) {
+    auto frame = std::make_shared<NativeDfhackTextFrame>();
+    if (!source || !copy) return frame;
+    NativeDfhackTextReadAccess access;
+    frame->page_revision = access.revision();
+    const auto current = [&](const auto &capture) {
+        return capture.page_revision == frame->page_revision &&
+            capture.dimx == source->dimx && capture.dimy == source->dimy && capture.grid &&
+            capture.grid == (capture.top_layer ? source->screen_top : source->screen);
+    };
+    for (const auto &capture : access.sitemap()) {
+        if (!current(capture)) continue;
+        auto owned = capture;
+        owned.grid = owned.top_layer ? copy->screen_top : copy->screen;
+        frame->sitemap.push_back(std::move(owned));
+    }
+    for (const auto &capture : access.control_panel()) {
+        if (!current(capture)) continue;
+        auto owned = capture;
+        owned.grid = owned.top_layer ? copy->screen_top : copy->screen;
+        frame->control_panel.push_back(std::move(owned));
+    }
+    return frame;
+}
+
 static void clear_native_dfhack_sitemap_text() {
     std::lock_guard<std::mutex> lock(g_native_dfhack_sitemap_text_mutex);
     g_native_dfhack_sitemap_text.clear();
@@ -71,11 +125,27 @@ static void clear_native_dfhack_text_buffer(const graphicst *gps) {
 // Text bytes alone do not distinguish an authored option from a sentinel or
 // a clipped document from another document with the same visible prefix.
 // Hash each current buffer's copied semantic sources for the worker's cache.
+static bool native_dfhack_text_capture_has_content(const graphicst *gps) noexcept {
+    if (!native_dfhack_logo_grid_valid(gps)) return false;
+    const auto page_revision = native_dfhack_layer_page_revision();
+    NativeDfhackTextReadAccess access;
+    if (page_revision != access.revision()) return false;
+    const auto current = [&](const auto &capture) {
+        return capture.page_revision == page_revision && capture.dimx == gps->dimx &&
+            capture.dimy == gps->dimy && capture.grid &&
+            capture.grid == (capture.top_layer ? gps->screen_top : gps->screen);
+    };
+    return std::any_of(access.sitemap().begin(),
+            access.sitemap().end(), current) ||
+        std::any_of(access.control_panel().begin(),
+            access.control_panel().end(), current);
+}
+
 static uint64_t native_dfhack_text_capture_key(const graphicst *gps) {
     if (!native_dfhack_logo_grid_valid(gps)) return 0;
     const auto page_revision = native_dfhack_layer_page_revision();
-    std::lock_guard<std::mutex> lock(g_native_dfhack_sitemap_text_mutex);
-    if (page_revision != g_native_dfhack_sitemap_text_page_revision) return 0;
+    NativeDfhackTextReadAccess access;
+    if (page_revision != access.revision()) return 0;
     uint64_t key = 14695981039346656037ULL;
     const auto scalar = [&](uint64_t value) {
         for (unsigned byte = 0; byte < 8; ++byte) {
@@ -101,7 +171,7 @@ static uint64_t native_dfhack_text_capture_key(const graphicst *gps) {
     };
     size_t count = 0;
     scalar(1);
-    for (const auto &capture : g_native_dfhack_sitemap_text) {
+    for (const auto &capture : access.sitemap()) {
         if (!current(capture)) continue;
         ++count;
         scalar(capture.x); scalar(capture.y); scalar(capture.top_layer);
@@ -121,7 +191,7 @@ static uint64_t native_dfhack_text_capture_key(const graphicst *gps) {
     scalar(count);
     count = 0;
     scalar(2);
-    for (const auto &capture : g_native_dfhack_control_panel_text) {
+    for (const auto &capture : access.control_panel()) {
         if (!current(capture)) continue;
         ++count;
         scalar(capture.top_layer);
@@ -149,12 +219,12 @@ static std::optional<std::string> lookup_native_dfhack_choice_text(
     const auto origin = native_text_grid_origin(*gps, tile,
         native_ui_top_layer_at(*gps, tile));
     if (!origin.grid) return std::nullopt;
-    std::lock_guard<std::mutex> lock(g_native_dfhack_sitemap_text_mutex);
-    if (page_revision != g_native_dfhack_sitemap_text_page_revision) return std::nullopt;
+    NativeDfhackTextReadAccess access;
+    if (page_revision != access.revision()) return std::nullopt;
     const bool scrollbar_clipped = owner == NativeDfhackChoiceTextOwner::Notification ||
         owner == NativeDfhackChoiceTextOwner::AnimalAssignment;
-    for (auto it = g_native_dfhack_sitemap_text.rbegin();
-            it != g_native_dfhack_sitemap_text.rend(); ++it) {
+    for (auto it = access.sitemap().rbegin();
+            it != access.sitemap().rend(); ++it) {
         const auto &text = *it;
         if (text.owner != owner || text.page_revision != page_revision ||
                 text.dimx != gps->dimx || text.dimy != gps->dimy ||
@@ -204,9 +274,9 @@ static std::vector<NativeDfhackNotificationText> native_dfhack_notification_text
     std::vector<NativeDfhackNotificationText> result;
     if (!native_dfhack_logo_grid_valid(gps)) return result;
     const auto page_revision = native_dfhack_layer_page_revision();
-    std::lock_guard<std::mutex> lock(g_native_dfhack_sitemap_text_mutex);
-    if (page_revision != g_native_dfhack_sitemap_text_page_revision) return result;
-    for (const auto &text : g_native_dfhack_sitemap_text) {
+    NativeDfhackTextReadAccess access;
+    if (page_revision != access.revision()) return result;
+    for (const auto &text : access.sitemap()) {
         if (text.owner != NativeDfhackChoiceTextOwner::Notification ||
                 text.page_revision != page_revision || text.dimx != gps->dimx || text.dimy != gps->dimy ||
                 text.x < 0 || text.y < 0 || text.y >= gps->dimy || text.visible.empty() ||
@@ -239,9 +309,9 @@ static std::vector<NativeDfhackOverlayText> native_dfhack_overlay_texts(
     std::vector<NativeDfhackOverlayText> result;
     if (!native_dfhack_logo_grid_valid(gps)) return result;
     const auto page_revision = native_dfhack_layer_page_revision();
-    std::lock_guard<std::mutex> lock(g_native_dfhack_sitemap_text_mutex);
-    if (page_revision != g_native_dfhack_sitemap_text_page_revision) return result;
-    for (const auto &text : g_native_dfhack_sitemap_text) {
+    NativeDfhackTextReadAccess access;
+    if (page_revision != access.revision()) return result;
+    for (const auto &text : access.sitemap()) {
         if (text.owner != NativeDfhackChoiceTextOwner::OverlayLabel ||
                 text.page_revision != page_revision || text.dimx != gps->dimx || text.dimy != gps->dimy ||
                 text.x < 0 || text.y < 0 || text.y >= gps->dimy || text.visible.empty() ||
@@ -276,8 +346,8 @@ static std::vector<NativeDfhackOverlayText> native_dfhack_overlay_texts(
                 // clear button is visible only when slot_used returned true.
                 // Keep that authored draw as evidence even when a later
                 // foreground control covers the clear button's cells.
-                const bool used = std::any_of(g_native_dfhack_sitemap_text.begin(),
-                    g_native_dfhack_sitemap_text.end(), [&](const auto &other) {
+                const bool used = std::any_of(access.sitemap().begin(),
+                    access.sitemap().end(), [&](const auto &other) {
                         return other.owner == NativeDfhackChoiceTextOwner::OverlayLabel &&
                             other.page_revision == page_revision && other.grid &&
                             other.grid == (other.top_layer ? gps->screen_top : gps->screen) &&
@@ -299,8 +369,8 @@ static std::vector<NativeDfhackControlPanelText> native_dfhack_control_panel_tex
     std::vector<NativeDfhackControlPanelText> result;
     if (!native_dfhack_logo_grid_valid(gps)) return result;
     const auto page_revision = native_dfhack_layer_page_revision();
-    std::lock_guard<std::mutex> lock(g_native_dfhack_sitemap_text_mutex);
-    if (page_revision != g_native_dfhack_sitemap_text_page_revision) return result;
+    NativeDfhackTextReadAccess access;
+    if (page_revision != access.revision()) return result;
     const auto runs = [&](const NativeDfhackControlPanelCapture &capture) {
         std::vector<std::pair<size_t, size_t>> visible;
         const auto &text = capture.text;
@@ -332,11 +402,11 @@ static std::vector<NativeDfhackControlPanelText> native_dfhack_control_panel_tex
         return visible;
     };
     std::vector<std::vector<std::pair<size_t, size_t>>> current_runs;
-    current_runs.reserve(g_native_dfhack_control_panel_text.size());
-    for (const auto &capture : g_native_dfhack_control_panel_text)
+    current_runs.reserve(access.control_panel().size());
+    for (const auto &capture : access.control_panel())
         current_runs.push_back(runs(capture));
-    for (size_t index = 0; index < g_native_dfhack_control_panel_text.size(); ++index) {
-        const auto &capture = g_native_dfhack_control_panel_text[index];
+    for (size_t index = 0; index < access.control_panel().size(); ++index) {
+        const auto &capture = access.control_panel()[index];
         const auto &text = capture.text;
         if (capture.page_revision != page_revision || capture.dimx != gps->dimx || capture.dimy != gps->dimy ||
                 capture.grid != (capture.top_layer ? gps->screen_top : gps->screen))
@@ -344,8 +414,8 @@ static std::vector<NativeDfhackControlPanelText> native_dfhack_control_panel_tex
         if (current_runs[index].empty()) {
             if (text.role != NativeDfhackControlPanelTextRole::Wrapped) continue;
             bool alive = false;
-            for (size_t other = 0; other < g_native_dfhack_control_panel_text.size(); ++other) {
-                const auto &candidate = g_native_dfhack_control_panel_text[other];
+            for (size_t other = 0; other < access.control_panel().size(); ++other) {
+                const auto &candidate = access.control_panel()[other];
                 if (!current_runs[other].empty() && candidate.text.widget_id == text.widget_id &&
                         candidate.text.parent_id == text.parent_id &&
                         candidate.text.document == text.document) { alive = true; break; }

@@ -1,21 +1,53 @@
-// DFHack owns its committed logical layer. The worker translates that input
-// while holding the same translation/storage lock order as its render pass;
-// SDL targets, textures and final composition remain on the render thread.
+// A completed submission keeps its owned source and matches together. SDL
+// can retain that whole submission while the worker prepares newer content.
+
+static bool native_dfhack_translation_layout_compatible(
+        const NativeDfhackLayerStorage &source, const NativeDfhackLayerStorage &latest) noexcept {
+    if (!source.ready || !latest.ready || !source.graphics || !latest.graphics ||
+            source.page_revision != latest.page_revision) return false;
+    const auto &a = *source.graphics;
+    const auto &b = *latest.graphics;
+    if (a.dimx != b.dimx || a.dimy != b.dimy ||
+            a.screen_pixel_x != b.screen_pixel_x || a.screen_pixel_y != b.screen_pixel_y ||
+            a.tile_pixel_x != b.tile_pixel_x || a.tile_pixel_y != b.tile_pixel_y ||
+            a.top_in_use != b.top_in_use ||
+            std::memcmp(a.uccolor, b.uccolor, sizeof(a.uccolor)) ||
+            source.maps.size() != latest.maps.size()) return false;
+    for (size_t index = 0; index < source.maps.size(); ++index) {
+        const auto &old_map = source.maps[index];
+        const auto &new_map = latest.maps[index];
+        if (static_cast<bool>(old_map) != static_cast<bool>(new_map)) return false;
+        if (!old_map) continue;
+        const auto *old_view = old_map->view();
+        const auto *new_view = new_map->view();
+        if (static_cast<bool>(old_view) != static_cast<bool>(new_view)) return false;
+        if (!old_view) continue;
+        if (old_map->map_port() != new_map->map_port() ||
+                old_map->dimx() != new_map->dimx() || old_map->dimy() != new_map->dimy() ||
+                std::memcmp(old_view, new_view, old_map->map_port() ? 0x38 : 0x28))
+            return false;
+    }
+    return true;
+}
+
 void Overlay::start_dfhack_translation_worker() {
     std::lock_guard<std::mutex> lock(dfhack_translation_mutex_);
     if (dfhack_translation_running_ || dfhack_translation_worker_.joinable()) return;
     dfhack_translation_stop_ = false;
-    dfhack_translation_pending_ = false;
-    dfhack_translation_needs_world_ = false;
-    dfhack_translation_requested_key_ = 0;
-    dfhack_translation_published_key_ = 0;
-    dfhack_translation_matches_.reset();
+    dfhack_translation_pending_.store(false, std::memory_order_release);
+    dfhack_translation_requested_frame_.store({}, std::memory_order_release);
+    dfhack_translation_consumed_frame_.store({}, std::memory_order_release);
+    dfhack_translation_consumed_catalog_revision_.store(0, std::memory_order_release);
+    dfhack_translation_consumed_identity_context_.store(0, std::memory_order_release);
+    dfhack_translation_consumed_catalog_.store(0, std::memory_order_release);
+    dfhack_translation_completed_frame_.store({}, std::memory_order_release);
     dfhack_translation_cache_.clear();
+    dfhack_translation_blocked_keys_.clear();
     try {
         dfhack_translation_cache_.reserve(8);
-        dfhack_translation_worker_ = std::thread(
-            [this] { dfhack_translation_worker_loop(); });
-        dfhack_translation_running_ = true;
+        dfhack_translation_blocked_keys_.reserve(8);
+        dfhack_translation_worker_ = std::thread([this] { dfhack_translation_worker_loop(); });
+        dfhack_translation_running_.store(true, std::memory_order_release);
     } catch (const std::exception &error) {
         dfhack_translation_stop_ = true;
         log_line("ERROR", std::string("Cannot start DFHack translation worker: ") + error.what());
@@ -28,149 +60,117 @@ void Overlay::start_dfhack_translation_worker() {
 void Overlay::stop_dfhack_translation_worker() {
     {
         std::lock_guard<std::mutex> lock(dfhack_translation_mutex_);
+        dfhack_translation_running_.store(false, std::memory_order_release);
         dfhack_translation_stop_ = true;
-        dfhack_translation_pending_ = false;
+        dfhack_translation_pending_.store(true, std::memory_order_release);
+        dfhack_translation_completed_frame_.store({}, std::memory_order_release);
     }
-    dfhack_translation_cv_.notify_all();
-    // Call before acquiring TranslationStateScope for shutdown. A worker
-    // already waiting for that scope must be able to acquire it and exit.
+    dfhack_translation_pending_.notify_all();
+    // Call before acquiring T: a worker already waiting for it must exit.
     if (dfhack_translation_worker_.joinable()) dfhack_translation_worker_.join();
     std::lock_guard<std::mutex> lock(dfhack_translation_mutex_);
-    dfhack_translation_running_ = false;
-    dfhack_translation_requested_key_ = 0;
-    dfhack_translation_published_key_ = 0;
-    dfhack_translation_matches_.reset();
+    dfhack_translation_requested_frame_.store({}, std::memory_order_release);
+    dfhack_translation_consumed_frame_.store({}, std::memory_order_release);
+    dfhack_translation_completed_frame_.store({}, std::memory_order_release);
+    dfhack_translation_pending_.store(false, std::memory_order_release);
     dfhack_translation_cache_.clear();
+    dfhack_translation_blocked_keys_.clear();
 }
 
-// Call with dfhack_translation_mutex_ held. Exact keys retain their own
-// source bindings; the newest settled inputs occupy the end of the cache.
-void Overlay::remember_dfhack_layer_matches(uint64_t key,
-        std::shared_ptr<const std::vector<Match>> matches) {
-    if (!key) return;
+// Cache complete submissions, never a match list to apply to another input.
+// Call with dfhack_translation_mutex_ held.
+void Overlay::remember_dfhack_layer_frame(std::shared_ptr<const NativeDfhackTranslatedFrame> frame) {
+    if (!frame || !frame->key) return;
     const auto previous = std::find_if(dfhack_translation_cache_.begin(),
-        dfhack_translation_cache_.end(), [key](const auto &entry) {
-            return entry.first == key;
-        });
-    if (previous != dfhack_translation_cache_.end())
-        dfhack_translation_cache_.erase(previous);
+        dfhack_translation_cache_.end(), [&](const auto &entry) { return entry->key == frame->key; });
+    if (previous != dfhack_translation_cache_.end()) dfhack_translation_cache_.erase(previous);
     if (dfhack_translation_cache_.size() >= 8)
         dfhack_translation_cache_.erase(dfhack_translation_cache_.begin());
-    dfhack_translation_cache_.emplace_back(key, std::move(matches));
+    dfhack_translation_cache_.push_back(std::move(frame));
+}
+void Overlay::block_dfhack_layer_frame(uint64_t key) {
+    if (!key || std::find(dfhack_translation_blocked_keys_.begin(),
+            dfhack_translation_blocked_keys_.end(), key) != dfhack_translation_blocked_keys_.end()) return;
+    if (dfhack_translation_blocked_keys_.size() >= 8)
+        dfhack_translation_blocked_keys_.erase(dfhack_translation_blocked_keys_.begin());
+    dfhack_translation_blocked_keys_.push_back(key);
 }
 
-void Overlay::queue_dfhack_layer_translation() {
-    // The producer has committed its input under TranslationStateScope and
-    // the layer lock. Let the worker start before the next SDL Present.
-    const auto &storage = g_native_dfhack_layer_storage;
-    auto *graphics = storage.graphics.get();
-    if (!storage.ready || !graphics) return;
-    uint64_t key = 0;
-    {
-        struct LayerGraphicsScope {
-            graphicst *&graphics;
-            graphicst *previous;
-            LayerGraphicsScope(graphicst *&value, graphicst *layer)
-                : graphics(value), previous(value) { graphics = layer; }
-            ~LayerGraphicsScope() { graphics = previous; }
-        } layer_graphics(gps_, graphics);
-        key = dfhack_layer_translation_key();
-    }
-    if (!key) return;
-    bool pending = false;
-    {
-        std::lock_guard<std::mutex> lock(dfhack_translation_mutex_);
-        if (!dfhack_translation_running_ || dfhack_translation_stop_) return;
-        dfhack_translation_requested_key_ = key;
-        const bool published = dfhack_translation_published_key_ == key &&
-            !dfhack_translation_needs_world_;
-        const bool cached = std::any_of(dfhack_translation_cache_.begin(),
-            dfhack_translation_cache_.end(), [key](const auto &entry) {
-                return entry.first == key;
-            });
-        pending = !published && !cached;
-        dfhack_translation_pending_ = pending;
-    }
-    if (pending) dfhack_translation_cv_.notify_one();
-}
-
-std::shared_ptr<const std::vector<Match>> Overlay::request_dfhack_layer_matches(
-        uint64_t key) {
-    if (!key) return {};
-    std::unique_lock<std::mutex> lock(dfhack_translation_mutex_);
-    if (!dfhack_translation_running_ || dfhack_translation_stop_) return {};
-    dfhack_translation_requested_key_ = key;
-    if (dfhack_translation_published_key_ == key && !dfhack_translation_needs_world_) {
-        remember_dfhack_layer_matches(key, dfhack_translation_matches_);
-        return dfhack_translation_matches_;
-    }
-    const auto cached = std::find_if(dfhack_translation_cache_.begin(),
-        dfhack_translation_cache_.end(), [key](const auto &entry) {
-            return entry.first == key;
-        });
-    if (cached != dfhack_translation_cache_.end()) {
-        auto matches = cached->second;
-        remember_dfhack_layer_matches(key, matches);
-        dfhack_translation_published_key_ = key;
-        dfhack_translation_matches_ = std::move(matches);
-        dfhack_translation_needs_world_ = false;
-        dfhack_translation_pending_ = false;
-        return dfhack_translation_matches_;
-    }
-    dfhack_translation_pending_ = true;
-    lock.unlock();
-    dfhack_translation_cv_.notify_one();
-    // The render caller owns TranslationStateScope and the committed layer.
-    // Settle a new exact input before this frame paints so changes unrelated
-    // to a translated field cannot expose its English while the worker waits.
-    std::shared_ptr<const std::vector<Match>> matches;
+void Overlay::queue_dfhack_layer_frame(
+        std::shared_ptr<const NativeDfhackLayerStorage> source) noexcept {
+    if (!source || !source->ready || !source->graphics || !translation_enabled() ||
+            !dfhack_translation_running_.load(std::memory_order_acquire)) return;
     try {
-        matches = std::make_shared<const std::vector<Match>>(find_dfhack_matches(-1));
-    } catch (const std::exception &error) {
-        log_line("ERROR", std::string("DFHack layer translation failed: ") + error.what());
-    } catch (...) {
-        log_line("ERROR", "DFHack layer translation failed: unknown exception");
-    }
-    lock.lock();
-    if (!dfhack_translation_running_ || dfhack_translation_stop_) return {};
-    dfhack_translation_published_key_ = key;
-    dfhack_translation_matches_ = std::move(matches);
-    dfhack_translation_needs_world_ = false;
-    remember_dfhack_layer_matches(key, dfhack_translation_matches_);
-    if (dfhack_translation_requested_key_ == key)
-        dfhack_translation_pending_ = false;
-    return dfhack_translation_matches_;
+        const auto catalog = g_dfhack_output_snapshot.load(std::memory_order_acquire);
+        const auto revision = dfhack_translation_catalog_revision_.load(std::memory_order_acquire);
+        const auto context = native_identity_translation_context();
+        const auto catalog_identity = reinterpret_cast<uintptr_t>(catalog.get());
+        dfhack_translation_requested_frame_.store(source, std::memory_order_release);
+        if (dfhack_translation_consumed_frame_.load(std::memory_order_acquire) == source &&
+                dfhack_translation_consumed_catalog_revision_.load(std::memory_order_acquire) == revision &&
+                dfhack_translation_consumed_identity_context_.load(std::memory_order_acquire) == context &&
+                dfhack_translation_consumed_catalog_.load(std::memory_order_acquire) == catalog_identity) return;
+        // Producers do not wait for the result-cache mutex or the translator.
+        dfhack_translation_pending_.store(true, std::memory_order_release);
+        dfhack_translation_pending_.notify_one();
+    } catch (...) {}
+}
+void Overlay::queue_dfhack_layer_translation() {
+    queue_dfhack_layer_frame(native_dfhack_published_frame());
+}
+
+std::shared_ptr<const NativeDfhackTranslatedFrame> Overlay::completed_dfhack_layer_frame(
+        std::shared_ptr<const NativeDfhackLayerStorage> latest) noexcept {
+    if (!latest || !latest->ready || !latest->graphics || !translation_enabled() ||
+            !dfhack_translation_running_.load(std::memory_order_acquire) ||
+            latest->page_revision != native_dfhack_layer_page_revision()) return {};
+    queue_dfhack_layer_frame(latest);
+    const auto compatible = [&](const auto &frame) {
+        return frame && frame->source && frame->matches &&
+            native_dfhack_translation_layout_compatible(*frame->source, *latest);
+    };
+    // Catalog/context changes request another job. The previous complete
+    // source remains safe to show while that replacement is being prepared.
+    auto completed = dfhack_translation_completed_frame_.load(std::memory_order_acquire);
+    if (compatible(completed)) return completed;
+    try {
+        std::unique_lock<std::mutex> lock(dfhack_translation_mutex_, std::try_to_lock);
+        if (!lock.owns_lock()) return {};
+        for (auto it = dfhack_translation_cache_.rbegin(); it != dfhack_translation_cache_.rend(); ++it)
+            if (compatible(*it)) return *it;
+    } catch (...) {}
+    return {};
 }
 
 void Overlay::dfhack_translation_worker_loop() {
     for (;;) {
         uint64_t key = 0;
+        std::shared_ptr<const NativeDfhackLayerStorage> source;
+        dfhack_translation_pending_.wait(false, std::memory_order_acquire);
         {
             std::unique_lock<std::mutex> lock(dfhack_translation_mutex_);
-            dfhack_translation_cv_.wait(lock, [&] {
-                return dfhack_translation_stop_ || dfhack_translation_pending_;
-            });
             if (dfhack_translation_stop_) break;
-            key = dfhack_translation_requested_key_;
-            dfhack_translation_pending_ = false;
+            dfhack_translation_pending_.exchange(false, std::memory_order_acq_rel);
+            source = dfhack_translation_requested_frame_.load(std::memory_order_acquire);
+            dfhack_translation_consumed_frame_.store(source, std::memory_order_release);
         }
         try {
+            NativeDfhackLayerFrameReadScope frame_scope(source);
+            const auto *input = frame_scope.storage();
+            if (!source || !input || !input->ready || !input->graphics ||
+                    input->page_revision != native_dfhack_layer_page_revision()) continue;
             TranslationStateScope translation_scope;
-            std::unique_lock<std::recursive_mutex> layer_lock(g_native_dfhack_layer_mutex);
             {
                 std::lock_guard<std::mutex> lock(dfhack_translation_mutex_);
                 if (dfhack_translation_stop_) break;
             }
-            const auto &storage = g_native_dfhack_layer_storage;
-            auto *graphics = storage.graphics.get();
-            if (!storage.ready || !graphics || !graphics->screen || !config_.enabled ||
-                    !face_ || rules_.empty() || graphics->dimx <= 0 ||
-                    graphics->dimx > 1000 || graphics->dimy <= 0 ||
-                    graphics->dimy > 1000) continue;
+            auto *graphics = input->graphics.get();
+            if (!graphics->screen || !config_.enabled || !face_ || rules_.empty() ||
+                    graphics->dimx <= 0 || graphics->dimx > 1000 ||
+                    graphics->dimy <= 0 || graphics->dimy > 1000) continue;
             struct LayerGraphicsScope {
                 graphicst *&overlay_graphics;
-                graphicst *previous_overlay;
-                graphicst *previous_present;
+                graphicst *previous_overlay, *previous_present;
                 LayerGraphicsScope(graphicst *&overlay, graphicst *layer)
                     : overlay_graphics(overlay), previous_overlay(overlay),
                       previous_present(g_native_dfhack_present_graphics) {
@@ -185,77 +185,90 @@ void Overlay::dfhack_translation_worker_loop() {
             NativeDfhackForegroundScope foreground;
             NativePanelReadScope layer_reads(gps_);
             CellReadCacheScope layer_cells(*this);
-            // Storage may have advanced after the latest request. Compute
-            // the publication key from the input actually owned by this job.
+            const auto catalog = g_dfhack_output_snapshot.load(std::memory_order_acquire);
+            const auto revision = dfhack_translation_catalog_revision_.load(std::memory_order_acquire);
+            const auto context = native_identity_translation_context();
+            dfhack_translation_consumed_catalog_revision_.store(revision, std::memory_order_release);
+            dfhack_translation_consumed_identity_context_.store(context, std::memory_order_release);
+            dfhack_translation_consumed_catalog_.store(reinterpret_cast<uintptr_t>(catalog.get()),
+                std::memory_order_release);
             key = dfhack_layer_translation_key();
             if (!key) continue;
+            // The completed source also includes commands and map output.
+            // Do not reuse a text-only key's old complete graphical source.
+            for (const auto byte : input->command_bytes) {
+                key ^= byte;
+                key *= 1099511628211ULL;
+            }
+            if (std::any_of(input->maps.begin(), input->maps.end(),
+                    [](const auto &map) { return map && map->any_content(); })) {
+                const auto *bytes = reinterpret_cast<const unsigned char *>(&input->revision);
+                for (size_t index = 0; index < sizeof(input->revision); ++index) {
+                    key ^= bytes[index];
+                    key *= 1099511628211ULL;
+                }
+            }
+            if (!key) key = 1;
+            const auto inputs_current = [&] {
+                return revision == dfhack_translation_catalog_revision_.load(std::memory_order_acquire) &&
+                    context == native_identity_translation_context() &&
+                    catalog == g_dfhack_output_snapshot.load(std::memory_order_acquire) &&
+                    input->page_revision == native_dfhack_layer_page_revision();
+            };
+            if (!inputs_current()) {
+                dfhack_translation_consumed_identity_context_.store(~context, std::memory_order_release);
+                queue_dfhack_layer_translation();
+                continue;
+            }
             {
                 std::lock_guard<std::mutex> lock(dfhack_translation_mutex_);
-                if (dfhack_translation_published_key_ == key) {
-                    if (dfhack_translation_requested_key_ == key)
-                        dfhack_translation_pending_ = false;
+                if (std::find(dfhack_translation_blocked_keys_.begin(),
+                        dfhack_translation_blocked_keys_.end(), key) != dfhack_translation_blocked_keys_.end())
                     continue;
-                }
                 const auto cached = std::find_if(dfhack_translation_cache_.begin(),
-                    dfhack_translation_cache_.end(), [key](const auto &entry) {
-                        return entry.first == key;
-                    });
+                    dfhack_translation_cache_.end(), [key](const auto &entry) { return entry->key == key; });
                 if (cached != dfhack_translation_cache_.end()) {
-                    auto matches = cached->second;
-                    remember_dfhack_layer_matches(key, matches);
-                    dfhack_translation_published_key_ = key;
-                    dfhack_translation_matches_ = std::move(matches);
-                    dfhack_translation_needs_world_ = false;
-                    if (dfhack_translation_requested_key_ == key)
-                        dfhack_translation_pending_ = false;
+                    auto completed = *cached;
+                    remember_dfhack_layer_frame(completed);
+                    dfhack_translation_completed_frame_.store(std::move(completed), std::memory_order_release);
                     continue;
                 }
             }
             DfhackTranslationThreadScope worker_scope;
-            auto matches = std::make_shared<const std::vector<Match>>(find_dfhack_matches(-1));
+            auto matches = std::make_shared<const std::vector<Match>>(
+                input->translation_content_ready && !input->translation_has_content
+                    ? std::vector<Match>{} : find_dfhack_matches(-1));
+            if (!inputs_current()) {
+                dfhack_translation_consumed_identity_context_.store(~context, std::memory_order_release);
+                queue_dfhack_layer_translation();
+                continue;
+            }
+            auto completed = std::make_shared<NativeDfhackTranslatedFrame>();
+            completed->source = source;
+            completed->matches = std::move(matches);
+            completed->key = key;
+            completed->catalog_revision = revision;
+            completed->identity_context = context;
+            completed->catalog = catalog;
             {
                 std::lock_guard<std::mutex> lock(dfhack_translation_mutex_);
                 if (dfhack_translation_stop_) break;
-                dfhack_translation_published_key_ = key;
-                dfhack_translation_matches_ = std::move(matches);
-                dfhack_translation_needs_world_ = false;
-                remember_dfhack_layer_matches(key, dfhack_translation_matches_);
-                if (dfhack_translation_requested_key_ == key)
-                    dfhack_translation_pending_ = false;
+                remember_dfhack_layer_frame(completed);
+                dfhack_translation_completed_frame_.store(std::move(completed), std::memory_order_release);
             }
         } catch (const DfhackTranslationNeedsWorld &) {
             std::lock_guard<std::mutex> lock(dfhack_translation_mutex_);
-            if (key && !dfhack_translation_stop_) {
-                dfhack_translation_published_key_ = key;
-                dfhack_translation_matches_.reset();
-                dfhack_translation_needs_world_ = true;
-            }
-            if (dfhack_translation_requested_key_ == key)
-                dfhack_translation_pending_ = false;
+            // A live-world dependency is not a completed English-only frame.
+            // Keep the last complete submission until owned inputs are ready.
+            if (!dfhack_translation_stop_) block_dfhack_layer_frame(key);
         } catch (const std::exception &error) {
             log_line("ERROR", std::string("DFHack layer translation failed: ") + error.what());
             std::lock_guard<std::mutex> lock(dfhack_translation_mutex_);
-            // Settle a failed input as an empty result until its contents or
-            // catalog change, so a stable screen cannot create a busy loop.
-            if (key && !dfhack_translation_stop_) {
-                dfhack_translation_published_key_ = key;
-                dfhack_translation_matches_.reset();
-                dfhack_translation_needs_world_ = false;
-                remember_dfhack_layer_matches(key, {});
-            }
-            if (dfhack_translation_requested_key_ == key)
-                dfhack_translation_pending_ = false;
+            if (!dfhack_translation_stop_) block_dfhack_layer_frame(key);
         } catch (...) {
             log_line("ERROR", "DFHack layer translation failed: unknown exception");
             std::lock_guard<std::mutex> lock(dfhack_translation_mutex_);
-            if (key && !dfhack_translation_stop_) {
-                dfhack_translation_published_key_ = key;
-                dfhack_translation_matches_.reset();
-                dfhack_translation_needs_world_ = false;
-                remember_dfhack_layer_matches(key, {});
-            }
-            if (dfhack_translation_requested_key_ == key)
-                dfhack_translation_pending_ = false;
+            if (!dfhack_translation_stop_) block_dfhack_layer_frame(key);
         }
     }
 }

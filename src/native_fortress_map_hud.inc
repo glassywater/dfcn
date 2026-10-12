@@ -19,12 +19,13 @@ static bool native_fortress_map_hud_page() {
             game_type == 4 || game_type == 5 ||
             !native_history_copy(native_reference_address(base, 0x18a938c), selection) ||
             selection == 2) return false;
-    // Native 0x3f58bc..0x3f5a23 uses these same component states to decide
-    // whether map controls are available. Require even its optional squads
-    // and workshop parents to be closed; their contents use the full reader.
-    // Help is an additional foreground document, including its minimized UI.
+    // Native 0x3f58bc..0x3f5a23 gates interactive map controls on both pause
+    // state and component states. Pausing does not change HUD text ownership:
+    // pause_state (0x2131b5e) must not be treated as an open UI component.
+    // Require the optional squads and workshop parents to be closed; their
+    // contents, and the help foreground, still use their complete readers.
     constexpr uintptr_t closed_states[]{
-        0x2131b5e, 0x18a6ff8, 0x18a4330, 0x18a7200, 0x18a6378,
+        0x18a6ff8, 0x18a4330, 0x18a7200, 0x18a6378,
         0x18a1f78, 0x18a21b0, 0x18a3598, 0x18a2710, 0x18a26e0,
         0x18a2590, 0x18a2cf8, 0x18a2f48, 0x18a41a8, 0x18a1a58,
         0x18a72a0, 0x18a2ac8, 0x18a4238, 0x18a75b8
