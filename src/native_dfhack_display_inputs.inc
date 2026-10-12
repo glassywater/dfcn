@@ -14,6 +14,7 @@ struct NativeDfhackDisplayInputs {
     void *relay = nullptr, *data = nullptr;
     size_t relay_size = 0, data_size = 0;
     uintptr_t graphics = 0;
+    size_t native_texture_base_slot = ~size_t{0};
     graphicst *selected = nullptr;
     bool installed = false;
     bool active() const noexcept { return installed || relay || data; }
@@ -34,14 +35,28 @@ struct NativeDfhackDisplayInputs {
         auto *slots = field_slots();
         if (!slots) return previous;
         const uintptr_t source = inputs ? reinterpret_cast<uintptr_t>(inputs) : graphics;
-        for (size_t i = 0; i < fields.size(); ++i) slots[i] = source + fields[i];
+        for (size_t i = 0; i < fields.size(); ++i) {
+            // cached_texturest lazily replaces Surface with Texture in place.
+            // Keep that renderer-owned cache on the real graphicst: a frame
+            // header copy would discard the promotion and leak a new GPU
+            // texture on every display. update_all's R12 base is used only
+            // for these indexed cached-texture lookups, not frame buffers.
+            const bool native_texture = i == native_texture_base_slot ||
+                (fields[i] >= offsetof(graphicst, tex) &&
+                    fields[i] < offsetof(graphicst, tex) + sizeof(graphicst::tex));
+            slots[i] = (native_texture ? graphics : source) + fields[i];
+        }
         selected = inputs;
         *enabled() = inputs ? 1 : 0;
         return previous;
     }
     bool uninstall() {
         constexpr const char *label = "Native display input snapshot";
-        if (!active()) { patches.clear(); fields.clear(); graphics = 0; selected = nullptr; return true; }
+        if (!active()) {
+            patches.clear(); fields.clear(); graphics = 0;
+            native_texture_base_slot = ~size_t{0};
+            selected = nullptr; return true;
+        }
         // A display callback covers every call into the instruction selectors.
         // Keep patch ownership and both allocations until it has left.
         if (!native_callbacks_idle()) return false;
@@ -53,6 +68,7 @@ struct NativeDfhackDisplayInputs {
         patches.clear();
         fields.clear();
         graphics = 0;
+        native_texture_base_slot = ~size_t{0};
         selected = nullptr;
         return true;
     }
@@ -350,8 +366,16 @@ static bool install_native_dfhack_display_inputs() {
     }
     std::memset(hook.data, 0, hook.data_size);
     hook.graphics = graphics;
+    hook.native_texture_base_slot = ~size_t{0};
     hook.fields.reserve(sites.size());
-    for (const auto &site : sites) hook.fields.push_back(site.field);
+    const uintptr_t native_texture_base = native_pe_address(base, 0x8e1cc6);
+    for (const auto &site : sites) {
+        // This LEA supplies R12 solely for tex[index] in update_all. Other
+        // field-zero operands select viewport data and must stay per-frame.
+        if (reinterpret_cast<uintptr_t>(site.address) == native_texture_base)
+            hook.native_texture_base_slot = hook.fields.size();
+        hook.fields.push_back(site.field);
+    }
     hook.select(nullptr);
     auto *relay = static_cast<unsigned char *>(hook.relay);
     for (size_t i = 0; i < sites.size(); ++i) {
