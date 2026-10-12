@@ -96,6 +96,7 @@ static void native_help_reset_frame(void *renderer) {
     native_squads_begin_frame();
     native_reports_begin_frame();
     native_pause_begin_frame();
+    native_resolution_begin_frame();
     native_worldgen_begin_frame();
     layer.frames.clear();
     layer.collapsed_titles.clear();

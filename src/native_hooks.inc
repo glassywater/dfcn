@@ -85,6 +85,7 @@ static bool native_history_war_selection(uintptr_t collection, int32_t &category
 #include "native_announcement_hooks.inc"
 #include "native_dfhack_layer_present.inc"
 #include "native_help_layer_render.inc"
+#include "native_resolution_layer_render.inc"
 #include "native_tooltip_layer_render.inc"
 #include "native_notification_layer_render.inc"
 #include "native_info_layer_render.inc"
@@ -156,6 +157,7 @@ static bool install_sdl_hooks() {
         {"Complete announcement capture", install_native_announcement_hook},
         {"Native history event capture", install_native_history_hooks},
         {"Native tutorials and help layer", install_native_help_layer_hook},
+        {"Native resolution selector layer", install_native_resolution_layer_hook},
         {"Native fortress management layer", install_native_info_layer_hook},
         {"Native Stocks layer", install_native_stocks_layer_hook},
         {"Native fortress Squads layer", install_native_squads_layer_hook},
@@ -198,6 +200,7 @@ static void uninstall_sdl_hooks() {
     uninstall_native_squads_layer_hook();
     uninstall_native_stocks_layer_hook();
     uninstall_native_info_layer_hook();
+    uninstall_native_resolution_layer_hook();
     uninstall_native_help_layer_hook();
     uninstall_native_dfhack_sitemap_hook();
     uninstall_native_dfhack_lua_output_hook();
@@ -261,6 +264,7 @@ static bool native_hooks_detached() {
         !native_dfhack_render_layers_active() &&
         !native_dfhack_graphics_ownership_active() &&
         !native_help_layer_hook_active() &&
+        !native_resolution_layer_hook_active() &&
         !native_map_layer_hook_active() &&
         !native_info_layer_hook_active() &&
         !native_stocks_layer_hook_active() &&

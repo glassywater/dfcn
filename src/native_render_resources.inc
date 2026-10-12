@@ -22,6 +22,7 @@ static void native_reset_render_resources() {
     reset_layer(g_native_squads_target, g_native_squads_layer);
     reset_layer(g_native_reports_target, g_native_reports_layer);
     reset_layer(g_native_pause_target, g_native_pause_layer);
+    reset_layer(g_native_resolution_target, g_native_resolution_layer);
     reset_layer(g_native_worldgen_target, g_native_worldgen_layer);
     native_worldgen_begin_frame();
     reset_layer(g_native_tooltip_target, g_native_tooltip_layer);
