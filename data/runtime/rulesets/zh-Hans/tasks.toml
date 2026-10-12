@@ -2,6 +2,20 @@ base = "tasks"
 
 [[rulesets]]
 [rulesets.rules]
+"{caption}" = "{caption}"
+# Material selectors append a parenthesized numeric field to the complete
+# job caption. Resolve the job separately and preserve the original digits.
+"{numbered_title} ({#digits})" = "{numbered_title} ({#digits})"
+
+[[rulesets]]
+name = "numbered_title"
+[rulesets.rules]
+"{caption}" = "{caption}"
+"{::menu}" = "{::menu}"
+
+[[rulesets]]
+name = "caption"
+[rulesets.rules]
 # Siege orders use job material adjectives and complete action captions,
 # rather than finished-item designation wrappers or equipment word ordering.
 "Assemble {::materials::adjective} ballista arrow" = "组装{::materials::adjective}弩炮箭矢"
