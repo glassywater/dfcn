@@ -1,0 +1,178 @@
+# scope	source	target	semantic field scopes	native construction evidence
+# Linux 53.16 bcc6789: complete summary+68, never shortened list_name+28.
+# 17cc7c0 dispatches incident 17c06e0 or historical summary 17c24d0.
+# Source bodies, all switch edges, literals and Ghidra C are retained in
+# data/extracted/adventure-journal-events/. Rules own only journal titles.
+journal-event-title	Your death	你的死亡		ELF 0x17c06e0 selector0; victim is the adventurer
+journal-event-title	The death of {s}	{s1}的死亡	journal-event-actor	ELF 0x17c0c60; HF English name or a + RAW caste
+journal-event-title	Your reunion with {s}	你与{s1}的重逢	journal-event-actor	ELF 0x17c14a0; either participant is the adventurer
+journal-event-title	The reunion of {s} and {s}	{s1}与{s2}的重逢	journal-event-actor,journal-event-actor	ELF 0x17c1688..0x17c17ab; two independent HF lookups
+journal-event-title	The reunion of and {s}	某人与{s1}的重逢	journal-event-actor	ELF 0x17c1688..0x17c17ab; first HF lookup absent
+journal-event-title	The reunion of {s} and	{s1}与某人的重逢	journal-event-actor	ELF 0x17c1688..0x17c17ab; second HF lookup absent
+journal-event-title	The reunion of and	某人的重逢		ELF 0x17c1688..0x17c17ab; both HF lookups absent
+journal-event-title	Your {s}	你{s1}	journal-person-event	ELF 0x17c06e0 selectors1/2/3/5/7/8/9/10; 0x17c24d0 selectors4/16/28/32
+journal-event-title	A {s}'s {s}	{s1}{s2}	$creature,journal-incident-event	ELF 0x17c06e0 selectors1/2/3/5; absent HF uses 0xa0d5f0 RAW caste
+journal-event-title	A creature's {s}	不明生物{s1}	journal-incident-event	ELF 0xa0d5f0 invalid race fallback, incident owner
+journal-event-title	Somebody's {s}	某人{s1}	journal-person-event	ELF 0x17c06e0 selectors7/8/9/10; absent actor HF
+journal-event-title	{s}'s {s}	{s1}{s2}	$person,journal-person-event	ELF 0x17c06e0 named HF branch; 0x17c24d0 selectors4/16/28/32
+journal-event-title	{s}'s {s}	{s1}{s2}	journal-event-entity,journal-entity-event	ELF 0x17c24d0 native entity-name supplier 0xa278f0
+# Missing crime record/subtype retains the constructed owner without a noun.
+journal-event-title	Your	你的事件		ELF 0x17c0dd0..0x17c0e4b -> 0x17c0928
+journal-event-title	A {s}'s	{s1}的事件	$creature	ELF 0x17c0dd0..0x17c0e4b; missing crime/subtype
+journal-event-title	A creature's	不明生物的事件		ELF 0xa0d5f0 invalid race and missing crime/subtype
+journal-event-title	{s}'s	{s1}的事件	$person	ELF 0x17c0dd0..0x17c0e4b; missing crime/subtype
+journal-event-title	's {s}	某人{s1}	journal-person-event	ELF 0x17c24d0 missing HF leaves an empty possessive owner
+journal-event-title	's {s}	某个组织{s1}	journal-entity-event	ELF 0x17c24d0 entity language_name can be empty; retain its event predicate
+journal-event-actor	you	你		ELF 0x17c1cf4; native adventurer victim/recipient
+journal-event-actor	somebody	某人		ELF 0x17c1fb4,0x17c23bc,0x17c23d0; missing HF
+journal-event-actor	creature	生物		ELF 0xa0d5f0 invalid race fallback
+journal-event-actor	A creature	不明生物		ELF 0xa0d5f0 invalid race fallback with article
+journal-event-actor	A {s}	{s1}	$creature	ELF 0x17c1638 -> 0xa0d5f0; unknown victim caste
+journal-event-actor	{s}	{s1}	$person	ELF 0x12c58d0 English language_name, translated=1
+journal-event-entity	an unknown civilization	不明文明		ELF 0xa278f0 invalid entity fallback
+journal-event-entity	{s}	{s1}	$name	ELF 0xa278f0 -> 0x12c58d0 entity language_name
+journal-event-place	an unknown site	不明地点		ELF 0xa27cd0 invalid site fallback
+journal-event-place	an unknown region	不明地区		ELF 0xa0ffc0 invalid region fallback
+journal-event-place	an unknown underground region	不明地下区域		ELF 0xa10160 invalid underground-region fallback
+journal-event-place	{s}	{s1}	$conflict-place	ELF 0xa27cd0/0xa0ffc0/0xa10160/0xa2af40 complete native place/building name
+journal-event-object	an unknown artifact	不明神器		ELF 0xa0d8c0 invalid artifact fallback
+journal-event-object	an untitled work	一部无题作品		ELF 0x17c1e50; absent written work/title
+journal-event-object	{s}	{s1}	agreement-item	ELF 0xa0d8c0 or written_content.name from 0x17c121b
+journal-person-event	{s}	{s1}	journal-incident-event	ELF 0x17c06e0 selectors1/2/3/5/9/10
+journal-person-event	{s}	{s1}	journal-transfer-event	ELF 0x17c06e0 selectors7/8; historical selectors28/32
+journal-person-event	presence	的出现		ELF 0x17c2f50; historical selector4
+journal-person-event	presence in {s}	在{s1}的出现	journal-event-place	ELF 0x17c308d -> site or region
+journal-person-event	ascension	的就任		ELF 0x17c3830; position/entity lookup absent
+journal-person-event	ascension to {s}	就任{s1}	journal-ascension-position	ELF 0x17c39a5..0x17c3a25; gendered office + entity or religious site name
+journal-ascension-position	{s} of {s}	{s2}的{s1}	$office,journal-event-place	ELF 0x17c399b -> 0x89fdd0; office linked to a religious site
+journal-ascension-position	{s} of {s}	{s2}的{s1}	$office,journal-event-entity	ELF 0x17c3a12 -> 0xa278f0; ordinary office of entity
+journal-ascension-position	{s} of	{s1}	$office	ELF 0x89fdd0; linked site exists with an empty English name
+journal-ascension-position	of {s}	{s1}的职位	journal-event-place	ELF 0x17c399b -> 0x89fdd0; empty office name
+journal-ascension-position	of {s}	{s1}的职位	journal-event-entity	ELF 0x17c3a12 -> 0xa278f0; empty office name
+journal-ascension-position	of	一项职位		ELF 0x89fdd0; office and linked site names both empty
+journal-ascension-position	{s}	{s1}	$office	ELF 0x17c39a5; office without a linked-name suffix
+journal-person-event	ascension to	的就任		ELF 0x17c39a5; office formatter returned an empty title
+journal-incident-event	attack on {s}	对{s1}的攻击	journal-event-actor	ELF 0x17c0730..0x17c0928; selector2
+journal-incident-event	attack on	对某人的攻击		ELF 0x17c0730..0x17c0928; named victim has an empty language_name
+journal-incident-event	escalated attack on {s}	对{s1}加剧的攻击	journal-event-actor	ELF 0x17c12c0..0x17c1499; selector3
+journal-incident-event	escalated attack on	对某人加剧的攻击		ELF 0x17c12c0..0x17c1499; named victim has an empty language_name
+journal-incident-event	demand of submission from {s}	要求{s1}臣服	journal-event-actor	ELF 0x17c0e50..0x17c103f; selector5
+journal-incident-event	demand of submission from	要求某人臣服		ELF 0x17c0e50..0x17c103f; named victim has an empty language_name
+journal-incident-event	self-identification to {s}	向{s1}自报身份	journal-event-entity	ELF 0x17c0950..0x17c0aee; selector9; recipient is an entity
+journal-incident-event	refusal to identify to {s}	拒绝向{s1}透露身份	journal-event-entity	ELF 0x17c0af8..0x17c0c5f; selector10; recipient is an entity
+journal-event-title	self-identification to {s}	有人向{s1}自报身份	journal-event-entity	ELF 0x17c0950 empty participant vector
+journal-event-title	refusal to identify to {s}	有人拒绝向{s1}透露身份	journal-event-entity	ELF 0x17c0af8 empty participant vector
+journal-incident-event	{s}	的{s1}	journal-crime	ELF 0x17c0e4b crime switch 0..18
+journal-crime	production order violation	违抗生产命令		ELF 0x17c1cb1; crime selector0
+journal-crime	export prohibition violation	违反出口禁令		ELF 0x17c1c91; crime selector1
+journal-crime	job order violation	违抗工作命令		ELF 0x17c1c71; crime selector2
+journal-crime	conspiracy to slow labor	合谋怠工		ELF 0x17c1c51; crime selector3
+journal-crime	crime of murder	谋杀罪		ELF 0x17c1c31; crime selector4
+journal-crime	disorderly conduct	扰乱秩序		ELF 0x17c1c11; crime selector5
+journal-crime	building destruction	毁坏建筑		ELF 0x17c1bf1; crime selector6
+journal-crime	vandalism	破坏公物		ELF 0x17c1bd1; crime selector7
+journal-crime	crime of theft	盗窃罪		ELF 0x17c1bb1; crime selector8
+journal-crime	crime of robbery	抢劫罪		ELF 0x17c1b91; crime selector9
+journal-crime	crime of blood-drinking	吸血罪		ELF 0x17c1b71; crime selector10
+journal-crime	embezzlement	侵吞公款		ELF 0x17c1b51; crime selector11
+journal-crime	crime of attempted murder	谋杀未遂		ELF 0x17c1b31; crime selector12
+journal-crime	crime of kidnapping	绑架罪		ELF 0x17c1b11; crime selector13
+journal-crime	crime of attempted kidnapping	绑架未遂		ELF 0x17c1af4; crime selector14
+journal-crime	crime of attempted theft	盗窃未遂		ELF 0x17c1ad7; crime selector15
+journal-crime	crime of treason	叛国罪		ELF 0x17c1aba; crime selector16
+journal-crime	crime of espionage	间谍罪		ELF 0x17c1a89; crime selector17
+journal-crime	bribery	贿赂		ELF 0x17c1cd1; crime selector18
+journal-transfer-event	{s}	{s1}	journal-transfer-core	ELF 0x17c06e0 selectors7/8; no place IDs
+journal-transfer-event	{s} in {s}	在{s2}{s1}	journal-transfer-core,journal-event-place	ELF 0x17c1235/0x17c199b; site/region/underground or building
+journal-transfer-event	{s} in {s} in {s}	在{s3}的{s2}{s1}	journal-transfer-core,journal-event-place,journal-event-place	ELF 0x17c19ce..0x17c1a04; building name then site name
+journal-transfer-core	possession of {s}	持有{s1}	journal-event-object	ELF 0x17c1a5a; artifact action0; historical selector28
+journal-transfer-core	lack of possession of {s}	已不再持有{s1}	journal-event-object	ELF 0x17c26e2/0x17c3ed6; historical selector32
+journal-transfer-core	placement of {s}	放置{s1}	journal-event-object	ELF 0x17c1a24/0x17c20a0; artifact action1/written action0
+journal-transfer-core	gaining of {s}	获得{s1}	journal-event-object	ELF 0x17c1a09; artifact action2
+journal-transfer-core	giving of {s} to {s}	将{s1}交给{s2}	journal-event-object,journal-event-actor	ELF 0x17c1956/0x17c11c9; artifact action3/written action1
+journal-transfer-core	refusal to give {s} to {s}	拒绝将{s1}交给{s2}	journal-event-object,journal-event-actor	ELF 0x17c1a3f; artifact action4
+# Artifact destruction intentionally lacks a space after native "of".
+journal-event-title	The destruction of{s}	{s1}的毁坏	journal-event-object	ELF 0x17c10af -> 0xa0d8c0; artifact action5
+journal-event-title	The destruction of {s}	{s1}的毁坏	journal-event-object	ELF 0x17c3380; historical selector33
+# Performance selector0..7, plus musical participant flags and dance role3.
+journal-event-title	{s}	{s1}	journal-performance	ELF 0x17c1040 -> 0x10207a0; incident selector6
+journal-performance	{s}	{s1}	journal-performance-core	ELF 0x102209ee; absent/unnamed venue
+journal-performance	{s} at {s}	在{s2}，{s1}	journal-performance-core,journal-event-place	ELF 0x10220d6; optional venue language_name
+journal-performance	at {s}	在{s1}的一场表演	journal-event-place	ELF 0x10220d6; unsupported topic leaves no core while venue is independently appended
+journal-performance-core	Your telling of the story of {s}	你讲述{s1}的故事	memory-story	ELF 0x1021370; topic0, adventurer participant
+journal-performance-core	The telling of the story of {s}	讲述{s1}的故事	memory-story	ELF 0x1021370; topic0, adventurer not participating
+journal-performance-core	Your recitation of {s}	你朗诵{s1}	memory-poem	ELF 0x1020b80; topic1, adventurer participant
+journal-performance-core	The recitation of {s}	{s1}的朗诵	memory-poem	ELF 0x1020b80; topic1, adventurer not participating
+journal-performance-core	The performance of {s}	{s1}的表演	memory-performance-work	ELF 0x1020d00/0x1020f00; topics2/3, nonparticipant
+journal-performance-core	Your {s} of {s}	你{s1}{s2}	journal-performance-role,memory-performance-work	ELF 0x1020d00/0x1020f00; adventurer role + full work/form name
+journal-performance-role	playing	演奏		ELF 0x1020e7f/0x10210f1; instrument ID present
+journal-performance-role	singing	歌唱		ELF 0x10224e5/0x102250d; vocal flag bit0
+journal-performance-role	chanting	吟唱		ELF 0x102218f/0x10223c9; vocal flag bit2
+journal-performance-role	speaking	朗诵		ELF 0x10224d1/0x10224f9; other vocal flags
+journal-performance-role	performance	表演		ELF 0x1022110/0x1022365; missing/out-of-range part
+journal-performance-role	dancing	跳		ELF 0x1022121; dance participant role3
+journal-event-object	Untitled	无题作品		ELF 0xa0d8c0 book/slab or writing-bearing unnamed artifact fallback
+journal-performance-core	Your sermon on {s}	你关于{s1}的布道	memory-sermon-topic	ELF 0x1021170/0x1021610/0x1020880; topics4/5/6/7
+journal-performance-core	The sermon on {s}	关于{s1}的布道	memory-sermon-topic	ELF 0x1021170/0x1021610/0x1020880; topics4/5/6/7
+journal-performance-core	Your sermon on	你的布道		ELF 0x1021170/0x1021610; absent topic formatter result
+journal-performance-core	The sermon on	一场布道		ELF 0x1021170/0x1021610; absent topic formatter result
+# Historical report summary switch 0..33 at 17c2514. Selector2 converts its
+# original incident pointer and reuses the incident title constructor above.
+journal-event-title	Your abduction	你被绑架		ELF 0x17c24d0 selector1, adventurer HF
+journal-event-title	The abduction of {s}	{s1}被绑架	journal-event-actor	ELF 0x17c3428; selector1, named historical figure
+journal-event-title	The abduction of	某人被绑架		ELF 0x17c3428 missing/nameless HF
+journal-event-title	The occupation of {s} by {s}	{s2}占领{s1}	journal-event-place,journal-event-entity	ELF 0x17c2520; selector3, complete site and entity language_name
+journal-event-title	The occupation of {s}	{s1}被占领	journal-event-place	ELF 0x17c2520; selector3, absent occupying entity
+journal-entity-event	march toward {s}	向{s1}进军	journal-event-place	ELF 0x17c3320; historical selector0
+journal-entity-event	march to reclaim {s}	进军收复{s1}	journal-event-place	ELF 0x17c2cb8; historical selector11
+journal-entity-event	march to found a site in {s}	前往{s1}建立聚居地	journal-event-place	ELF 0x17c2bf0; historical selector12
+journal-entity-event	march	的行军		ELF 0x17c3320/0x17c2cb8/0x17c2bf0; target ID=-1
+journal-entity-event	presence in {s}	在{s1}的出现	journal-event-place	ELF 0x17c2f10; historical selector5
+journal-entity-event	presence	的出现		ELF 0x17c2f10; historical selector5, site ID=-1
+journal-entity-event	harassment of {s}	对{s1}的骚扰	journal-event-place	ELF 0x17c2ee0 -> 0x17c2bb1; historical selector6
+journal-entity-event	harassment	的骚扰		ELF 0x17c2ee0; historical selector6, site ID=-1
+journal-entity-event	flight from {s}	逃离{s1}	journal-event-place	ELF 0x17c2ea0; historical selector7
+journal-entity-event	flight	的逃亡		ELF 0x17c2ea0; historical selector7, site ID=-1
+journal-entity-event	abandonment of {s}	放弃{s1}	journal-event-place	ELF 0x17c2e70 -> 0x17c2bb1; historical selector8
+journal-entity-event	abandonment	的弃守		ELF 0x17c2e70; historical selector8, site ID=-1
+journal-entity-event	reclamation of {s}	收复{s1}	journal-event-place	ELF 0x17c2dd8; historical selector9
+journal-entity-event	reclamation	的收复行动		ELF 0x17c2dd8; historical selector9, site ID=-1
+journal-entity-event	foundation of {s}	建立{s1}	journal-event-place	ELF 0x17c2d20; historical selector10
+journal-entity-event	foundation	的建城行动		ELF 0x17c2d20; historical selector10, site ID=-1
+# Native selector13 appends both "from " and " of " before the site name.
+journal-entity-event	withdrawal from of {s}	撤离{s1}	journal-event-place	ELF 0x17c2b90 -> 0x17c2bb1 -> 0x17c2bc7
+journal-entity-event	withdrawal from	的撤离		ELF 0x17c2b90; historical selector13, site ID=-1
+journal-event-title	The insurrection in {s} against {s}	{s1}发生的反抗{s2}的起义	journal-event-place,journal-event-entity	ELF 0x17c2b00; historical selector14
+journal-event-title	The insurrection against {s}	反抗{s1}的起义	journal-event-entity	ELF 0x17c2b00; selector14, site ID=-1
+journal-event-title	The insurrection in {s}	{s1}的起义	journal-event-place	ELF 0x17c2b00; selector14, entity ID=-1
+journal-event-title	The insurrection	起义		ELF 0x17c2b00; selector14, both IDs=-1
+journal-event-title	The overthrow of {s} in {s}	在{s2}推翻{s1}	journal-event-entity,journal-event-place	ELF 0x17c3a48; selector15, outcome0
+journal-event-title	The overthrow of {s}	推翻{s1}	journal-event-entity	ELF 0x17c3a48; selector15, outcome0, site ID=-1
+journal-event-title	The overthrow in {s}	{s1}的政权被推翻	journal-event-place	ELF 0x17c3a48; selector15, outcome0, entity ID=-1
+journal-event-title	The overthrow	政权被推翻		ELF 0x17c3a48; selector15, outcome0, both IDs=-1
+journal-event-title	The failed insurrection against {s} in {s}	{s2}反抗{s1}的起义失败	journal-event-entity,journal-event-place	ELF 0x17c3e5a; selector15, outcome1
+journal-event-title	The failed insurrection against {s}	反抗{s1}的起义失败	journal-event-entity	ELF 0x17c3e5a; selector15, outcome1, site ID=-1
+journal-event-title	The failed insurrection in {s}	{s1}的起义失败	journal-event-place	ELF 0x17c3e5a; selector15, outcome1, entity ID=-1
+journal-event-title	The failed insurrection	起义失败		ELF 0x17c3e5a; selector15, outcome1, both IDs=-1
+journal-event-title	The insurrection crushed by {s} in {s}	{s1}镇压了{s2}的起义	journal-event-entity,journal-event-place	ELF 0x17c3e31; selector15, outcome2
+journal-event-title	The insurrection crushed by {s}	{s1}镇压了起义	journal-event-entity	ELF 0x17c3e31; selector15, outcome2, site ID=-1
+journal-event-title	The insurrection crushed in {s}	{s1}的起义遭到镇压	journal-event-place	ELF 0x17c3e31; selector15, outcome2, entity ID=-1
+journal-event-title	The insurrection crushed	起义遭到镇压		ELF 0x17c3e31; selector15, outcome2, both IDs=-1
+journal-event-title	The	事件		ELF 0x17c3a48; selector15 unsupported outcome returns only The
+journal-entity-event	claim on {s}	对{s1}的主权宣称	journal-event-place	ELF 0x17c3780; historical selector17
+journal-entity-event	claim	的主权宣称		ELF 0x17c3780; selector17, site ID=-1
+journal-entity-event	acceptance of {s}'s offer of tribute	接受{s1}的进贡提议	journal-event-entity	ELF 0x17c36d0; historical selector18
+journal-entity-event	refusal of {s}'s offer of tribute	拒绝{s1}的进贡提议	journal-event-entity	ELF 0x17c32c0; historical selector19
+journal-entity-event	acceptance of {s}'s demand for tribute	接受{s1}的进贡要求	journal-event-entity	ELF 0x17c3260; historical selector20
+journal-entity-event	refusal of {s}'s demand for tribute	拒绝{s1}的进贡要求	journal-event-entity	ELF 0x17c3160; historical selector21
+journal-entity-event	acceptance of {s}'s offer of peace	接受{s1}的和平提议	journal-event-entity	ELF 0x17c3130; historical selector22
+journal-entity-event	refusal of {s}'s offer of peace	拒绝{s1}的和平提议	journal-event-entity	ELF 0x17c2a90; historical selector23
+journal-entity-event	cessation of tribute to {s}	停止向{s1}进贡	journal-event-entity	ELF 0x17c2a30; historical selector24
+journal-event-title	The presence of {s} in {s} in {s}	{s1}出现在{s2}的{s3}	journal-event-object,journal-event-place,journal-event-place	ELF 0x17c2938; historical selector25, site + building
+journal-event-title	The presence of {s} in {s}	{s1}出现在{s2}	journal-event-object,journal-event-place	ELF 0x17c2898/0x17c35c8; historical selectors25/26/27
+journal-event-title	The absence of {s} from {s}'s {s}	{s1}从{s2}的{s3}消失	journal-event-object,journal-event-place,journal-event-place	ELF 0x17c3660 -> 0x17c29e3; historical selector29, site + building
+journal-event-title	The absence of {s} from {s}	{s1}从{s2}消失	journal-event-object,journal-event-place	ELF 0x17c3660/0x17c2830/0x17c2710; historical selectors29/30/31
+# Historical case2 returns to the same incident initializer and title grammar.
+# Other native collection names continue through the shared Legends parser.
+journal-event-title	The death of	某个生物的死亡		ELF 0x17c0c60; empty caste formatter result
+journal-event-title	The destruction of	某件物品被毁坏		ELF 0x17c10af; absent artifact name

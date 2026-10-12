@@ -1,0 +1,147 @@
+Adventure log / Events, Linux Steam 53.16
+Image: ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c
+Source: data/runtime/native-elf-images.json reference (installed dwarfort)
+
+This is offline binary source reconstruction. elf-decompiled.c is Ghidra C;
+elf-*.asm retain the original instructions and packed/inline string operands.
+elf-functions/calls/conditions/branches/switches/literals.tsv retain producer
+ownership and all compiler switch edges, including aliases and empty exits.
+No game process, window or translation evaluator is used by extraction.
+
+Record construction
+  17cc7c0..17cce10 owns one event card.
+  If the paragraph vector is empty:
+    mode 0 -> 17c06e0 incident title
+    mode 1 -> 17c24d0 historical report title
+    summary+68 -> complete visible title
+    a separate copy is wrapped/truncated at 50 columns for indexing
+    append "This event occurred on the " + ordinal day + month
+           + " in the year " + signed year + "."
+    mode 1 -> 17cad80 hearing/common-knowledge/mission paragraphs
+  Index labels such as Attack/You and search keywords are built by 17b7d10.
+  They are not complete display titles and do not license global replacements.
+
+Incident switch at 17c0724, table 21b6354
+  0 death: Your death / The death of NAME / The death of a CASTE
+  1 crime: Your / NAME's / A CASTE's, then the crime noun if available
+  2 attack: OWNER + " attack on " + you / NAME / a CASTE
+  3 escalation: OWNER + " escalated attack on " + you / NAME / a CASTE
+  4 reunion: Your reunion with NAME/somebody, or The reunion of NAME and NAME
+  5 submission: OWNER + " demand of submission from " + you / NAME / a CASTE
+  6 performance: 10207a0, described below
+  7 artifact: ACTION + artifact name + optional recipient and location
+  8 written work: placement / giving, work title or an untitled work,
+                  optional recipient and location
+  9 self-identification: OWNER + " self-identification to " + ENTITY
+ 10 refusal of identification: OWNER + " refusal to identify to " + ENTITY
+  Other incident enum values append nothing.
+  OWNER is Your when the native actor ID equals the adventurer's ID.
+  Named actors use 12c58d0 English language_name; absent incident HF uses
+  a0d5f0 RAW caste. Invalid race yields creature, not a guessed proper name.
+  Identification's missing HF yields Somebody, while an empty participant
+  vector appends no owner. Reunion's two absent HF branches append no name.
+  These empty native fields have explicit scoped productions.
+
+Crime switch at 17c0e4b, table 21b6380
+  0 production order violation       10 crime of blood-drinking
+  1 export prohibition violation      11 embezzlement
+  2 job order violation               12 crime of attempted murder
+  3 conspiracy to slow labor          13 crime of kidnapping
+  4 crime of murder                   14 crime of attempted kidnapping
+  5 disorderly conduct                15 crime of attempted theft
+  6 building destruction              16 crime of treason
+  7 vandalism                         17 crime of espionage
+  8 crime of theft                    18 bribery
+  9 crime of robbery
+  A missing crime record or unsupported subtype retains the owner alone.
+
+Artifact action selectors
+  0 possession of; 1 placement of; 2 gaining of;
+  3 giving of OBJECT to RECIPIENT; 4 refusal to give OBJECT to RECIPIENT;
+  5 The destruction ofOBJECT (native string has no space after "of").
+  Actions 0..4 can append in SITE, in REGION, in UNDERGROUND REGION, or
+  in BUILDING in SITE. Native ID precedence and both building/site fields
+  are retained. Written-work actions 0/1 reuse placement/giving and locations.
+  a0d8c0 uses artifact language_name, Untitled for unnamed writing-bearing
+  artifacts, complete item caption otherwise, or an unknown artifact.
+
+Performance switch at 1020874, table 2125fc4
+  0 telling of the story of HISTORY EVENT, with history as absent-event fallback
+  1 recitation of POETIC FORM / WRITTEN WORK, with a poem fallback
+  2 performance of MUSICAL FORM / COMPOSITION, with music fallback
+  3 performance of DANCE FORM / WRITTEN WORK, with dance fallback
+  4 sermon on HF/reference
+  5 sermon on sphere
+  6 sermon on the value of VALUE
+  7 sermon on the worthlessness of VALUE
+  Other selectors append no core; native venue handling remains independent.
+  Participant lookup chooses Your or The. Musical parts choose playing if
+  instrument ID exists; otherwise flags bit0 singing, bit2 chanting, speaking.
+  Missing/out-of-range parts use performance. Dance role3 uses dancing;
+  other dance participants use the same musical part selection.
+  A known venue with a nonempty English name appends at VENUE.
+  The venue-only exit also has its own scoped production; it does not assume
+  a supported topic. Empty owner/victim names retain their typed event nouns.
+  Existing memory-story, memory-poem, memory-performance-work and
+  memory-sermon-topic scopes own all nested event/work/sphere/value fields.
+
+Historical summary switch at 17c2514, table 21b63e0
+  0 entity march, optionally toward SITE
+  1 Your abduction / The abduction of HF NAME
+  2 resolve original incident pointer and run 17b7d10 index initializer;
+    this branch appends no additional display-title literal
+  3 occupation of SITE, optionally by ENTITY
+  4 Your/HF's presence, optionally in SITE or REGION
+  5 ENTITY's presence, optionally in SITE
+  6 ENTITY's harassment, optionally of SITE
+  7 ENTITY's flight, optionally from SITE
+  8 ENTITY's abandonment, optionally of SITE
+  9 ENTITY's reclamation, optionally of SITE
+ 10 ENTITY's foundation, optionally of SITE
+ 11 ENTITY's march, optionally to reclaim SITE
+ 12 ENTITY's march, optionally to found a site in REGION
+ 13 ENTITY's withdrawal from, optionally followed by " of " + SITE
+ 14 insurrection, independently optional in SITE and against ENTITY
+ 15 outcome 0 overthrow of ENTITY; 1 failed insurrection against ENTITY;
+    2 insurrection crushed by ENTITY; each independently optional in SITE.
+    Missing entity omits its connective. Unsupported outcome retains The.
+ 16 Your/HF's ascension, optionally to OFFICE of ENTITY or religious SITE
+ 17 ENTITY's claim, optionally on SITE
+ 18 ENTITY's acceptance of ENTITY's offer of tribute
+ 19 ENTITY's refusal of ENTITY's offer of tribute
+ 20 ENTITY's acceptance of ENTITY's demand for tribute
+ 21 ENTITY's refusal of ENTITY's demand for tribute
+ 22 ENTITY's acceptance of ENTITY's offer of peace
+ 23 ENTITY's refusal of ENTITY's offer of peace
+ 24 ENTITY's cessation of tribute to ENTITY
+ 25 presence of ARTIFACT in SITE, optionally in BUILDING
+ 26 presence of ARTIFACT in SITE
+ 27 presence of ARTIFACT in SITE
+ 28 Your/HF's possession of ARTIFACT
+ 29 absence of ARTIFACT from SITE, optionally SITE's BUILDING
+ 30 absence of ARTIFACT from SITE
+ 31 absence of ARTIFACT from SITE
+ 32 Your/HF's lack of possession of ARTIFACT
+ 33 destruction of ARTIFACT
+  Other selectors append nothing. Missing IDs, objects and names take their
+  actual omitted-field/fallback branches; no fabricated name suffix is added.
+
+Paragraphs at 17cad80
+  You heard this / You last heard this / You first heard this
+    + on the DATE + optional from INFORMANT + period
+  This is common knowledge where you are from.
+  You have been ordered to slay this creature.
+  You have been ordered to drive these forces out.
+  You have been ordered to clear the forces from this site.
+  You have been ordered to cause trouble for these forces.
+  Existing adventure-journal-grammar.tsv owns the six dated/informant shapes;
+  ui-messages.tsv owns the five fixed paragraphs. The ordinary build imports
+  all twelve months and four ordinal endings through journal-calendar-date.
+
+Runtime integration
+  adventure-journal-event-titles.tsv owns the complete incident and historical
+  title grammar. Legends search and display both call translate_journal_title.
+  Expanded cards retain their date/title framing. Collapsed Events cards use
+  the native selected tab to retain the same title grammar without a date.
+  All changes are scoped to event titles and keep complete native names.
+  This source reconstruction does not claim an observed in-game result.

@@ -1816,6 +1816,7 @@ def build(args: argparse.Namespace) -> tuple[list[Entry], collections.Counter[st
     candidates += parse_local(ROOT / "data/runtime/announcement-job-fields.tsv")
     candidates += combat_entries(ROOT / "data/runtime/justice-interrogation-grammar.tsv", Entry)
     candidates += combat_entries(ROOT / "data/runtime/adventure-journal-grammar.tsv", Entry)
+    candidates += combat_entries(ROOT / "data/runtime/adventure-journal-event-titles.tsv", Entry)
     candidates += combat_entries(ROOT / "data/runtime/memorial-inscription-grammar.tsv", Entry)
     candidates += parse_ui_messages(ROOT / "data/runtime/announcement-dialogue-translations.tsv",
         ROOT / "data/extracted/announcement-dialogue-sources.tsv", documented_provenance=True)
