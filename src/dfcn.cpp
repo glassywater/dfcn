@@ -17210,6 +17210,11 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
         }
     }
     const auto mod_workshop_names = preserve_mod_workshop_names(screen_rows);
+    // Stockpile settings reuse the task chooser's icon/category skins and
+    // search field. Their status controls must claim all three columns first:
+    // the generic chooser otherwise consumes the category proof and leaves
+    // filters/values at their original English caption positions.
+    append_fortress_stockpile_settings(screen_rows, result, only_y);
     // The chooser owns complete category names and separate task controls.
     // Capture them before caption, item and paragraph readers consume the
     // labels needed to recognize its category column and search field.
@@ -17562,7 +17567,6 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     }
 
     context_detail.checkpoint(RenderTimingStage::Workshops);
-    append_fortress_stockpile_settings(screen_rows, result, only_y);
     const auto trade_request_rows = capture_fortress_trade_request_rows();
 
     context_detail.checkpoint(RenderTimingStage::Sites);
