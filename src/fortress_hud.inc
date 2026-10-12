@@ -783,7 +783,7 @@ void Overlay::layout_fortress_build_menu(SDL_Renderer *renderer) {
                 x >= location_panel->x && x < location_panel->x + location_panel->w;
             const auto rect = native_picture_caption_rect(
                 *gps_, x, y, false, &next_x, places_row || location_row,
-                nullptr, places_row, false, location_row ? 181 : -1);
+                nullptr, places_row, false, location_row ? 181 : -1, false, true);
             if (!rect) { x = next_x; continue; }
             const auto &record_panel = location_row ? location_panel : places_panel;
             if ((places_row || location_row) && (rect->x < record_panel->x ||
