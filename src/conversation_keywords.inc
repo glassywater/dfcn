@@ -14,6 +14,15 @@ std::optional<std::string> Overlay::translate_conversation_choice(
     // These are complete typed noun/event parsers. None may replace just a
     // convenient prefix of an unrecognised conversational sentence.
     if (const auto target = exact_literal_translation(source); complete(target)) return target;
+    // DISCUSS_CONFLICT owns both paragraphs, not just the generic {v} head.
+    // ELF control flow and every text supplier are retained in
+    // data/extracted/adventure-conversation-conflicts. The same typed grammar
+    // also supplies the bound keyword vector and the Chinese search adapter.
+    if (std::string_view(source).starts_with("Summarize the conflict in which ")) {
+        const auto target = translate_announcement_combat(raw_source, "conversation-conflict-choice");
+        return translation_complete_with_native_nicknames(target, raw_source)
+            ? target : std::nullopt;
+    }
     // Native talk_choice types 66..70 (failed, breaking point, major, minor,
     // negated) use these complete caption families over their emotion switches.
     // The full branch/literal/append sources for both configured PE images are

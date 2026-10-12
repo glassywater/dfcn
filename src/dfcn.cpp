@@ -18601,8 +18601,11 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                             // their wrapped strings. Cache only semantic text;
                             // each draw supplies its current score/selection ink.
                             std::vector<int> native_colors(caption_source.size(), captions.front().first_color), unused;
-                            auto target = translate_help_paragraph(caption_source, native_colors, unused, true);
-                            if (!target) target = translate_conversation_choice(caption_source);
+                            const bool conflict = std::string_view(caption_source).starts_with(
+                                "Summarize the conflict in which ");
+                            auto target = conflict ? translate_conversation_choice(caption_source)
+                                : translate_help_paragraph(caption_source, native_colors, unused, true);
+                            if (!target && !conflict) target = translate_conversation_choice(caption_source);
                             if (cache.targets.size() >= 8192) cache.targets.clear();
                             found = cache.targets.emplace(caption_source, std::move(target)).first;
                         }

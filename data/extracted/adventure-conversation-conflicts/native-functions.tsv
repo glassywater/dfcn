@@ -1,0 +1,14 @@
+image	role	owner	end	instructions
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	conflict-choice	0x10654b0	0x1084e3f	730
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	change-subject	0x10654b0	0x1084e3f	55
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	conflict-report	0x10647c0	0x10654a6	744
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	elapsed-time	0x10448d0	0x1044d5e	266
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	personal-name	0x12c58d0	0x12c6e5c	1208
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	creature-caste	0xa0d5f0	0xa0d734	80
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	entity-name	0xa278f0	0xa27adb	118
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	site-name	0xa27cd0	0xa27edb	122
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	region-name	0xa0ffc0	0xa10155	92
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	underground-name	0xa10160	0xa1031a	104
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	unique-keyword	0xff8710	0xff87f8	70
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	raw-caste-name	0x12ae800	0x12ae995	100
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	keyword-ranking	0xffbf60	0xffc8af	518

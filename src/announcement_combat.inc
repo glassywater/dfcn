@@ -424,6 +424,23 @@ std::optional<std::string> Overlay::translate_announcement_combat(
         if (scope == "$item") return finish(translate_legends_item(input));
         if (scope == "$body") return finish(translate_legends_anatomy(input));
         if (scope == "$creature") return finish(translate_creature_reference(input));
+        if (scope == "$conflict-caste") {
+            // The conflict constructor passes the RAW caste and plural flag
+            // directly to a0d5f0/12ae800, without a unit or item designation.
+            auto result = translate_creature_descriptor(input, true);
+            return finish(translation_complete_with_native_nicknames(result, input)
+                ? std::move(result) : std::nullopt);
+        }
+        if (scope == "$conflict-place") {
+            // Site, subregion and underground suppliers are distinct from
+            // the organization field. Their EnglishName output cannot borrow
+            // a civilization's identity simply because its spelling matches.
+            auto result = translate_legends_place(input, true);
+            if (!translation_complete_with_native_nicknames(result, input))
+                result = translate_legends_name(input, false, false);
+            return finish(translation_complete_with_native_nicknames(result, input)
+                ? std::move(result) : std::nullopt);
+        }
         if (scope == "$embark-race-adjective") {
             // 8b288f/8b2a67 copy creature_raw.name[2], then capitalize it.
             // Reuse the owned RAW adjective -> singular-name publication so
