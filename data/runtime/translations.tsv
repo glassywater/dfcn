@@ -78903,6 +78903,7 @@ There is a thick {s} print.	这里有一处{s1}印迹，痕迹浓重。	hPt
 There is thick fog outside.	外面有浓雾。	hP
 There is thick fog outside.	外面有浓雾。	hj
 There were {c} competitors.	共有{c1}名参赛者。	ht
+This artwork has been lost.	这件艺术品已失传。	hH
 This can also be changed in	也可在以下位置修改：	hP
 This creature is a scholar.	此生物担任学者。	hj
 This creature lives in {p}.	这种生物生活在{p}。	ht
@@ -83226,6 +83227,7 @@ They offer Autumn tribute	对方在秋季进贡	w
 They offer Spring tribute	对方在春季进贡	w
 They offer Summer tribute	对方在夏季进贡	w
 They offer Winter tribute	对方在冬季进贡	w
+This artwork appears {i}.	这件艺术品位于{i1}上。	hHt
 This chanter has promise.	这位吟唱者很有潜力。	hP
 This chanter is just bad.	这位吟唱者就是差劲。	hP
 This chanter is middling.	这位吟唱者水平一般。	hP
@@ -91268,6 +91270,7 @@ The Third {e} in {d}.	{d1}年的第三次{e1}。	htEi
 The Third {e} in {p}.	在{p1}，第三次{e1}。	htEi
 The Unbridled Jungles	不羁丛林
 The World Without {b}	没有{b}的世界	hbti
+The image {p}, a {s}.	这幅图像：{s1}「{p1}」。	hHt
 The music enters {m}.	音乐进入{m1}。	hPt
 The operator swivels 	块旋转机器。	w
 The sermon continues.	布道还在继续。	hP
@@ -107962,6 +107965,7 @@ The Twilight Age	暮光时代	hEi
 The Umber Desert	棕土沙漠	w
 The Way With {b}	{b}之道	hbti
 The World of {b}	{b}的世界	hbti
+The image a {s}.	这幅图像：{s1}。	hHt
 The plan failed.	计划失败了。	h
 The plan worked.	计划成功了。	h
 The rope is {s}.	绳索由{s1}制成。	hHt
@@ -114570,6 +114574,7 @@ hunting peasant	受过狩猎训练的平民	wi
 hunting prowess	狩猎能力	wi
 iguanodon woman	禽龙人	wi
 iguanodon women	禽龙人	wi
+image of in {i}	以{i1}制作的图像	hIit
 implicated {a}.	供出了{a1}。	ht
 implicated {n}.	供出了{n1}。	ht
 imprisoned {a}.	囚禁了{a1}。	ht
@@ -140669,6 +140674,7 @@ ibex man	羱羊人	wi
 ibex men	羱羊人	wi
 ice wolf	冰原狼	wi
 ilmenite	钛铁矿	wi
+image of	图像	hIi
 in hours	（小时）	hP
 insulted	受辱	w
 iron man	铁人	wi
@@ -143968,6 +143974,7 @@ grime	尘垢	wi
 group	势力	hIi
 guava	番石榴	wi
 guide	指南	hv
+guild	行会	hIi
 guppy	虹鳉	wi
 happy	开心	w
 hares	野兔	wi

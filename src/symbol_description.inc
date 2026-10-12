@@ -276,6 +276,18 @@ std::optional<std::string> Overlay::translate_symbol_element(
 }
 
 // The preview, role picker and deletion list share the same element grammar.
+static bool symbol_empty_element_list(std::string_view value) {
+    value = trim_view(value);
+    while (!value.empty()) {
+        if (value.front() == ',') value.remove_prefix(1);
+        else if (template_literal_at(value, 0, "and", true) &&
+                (value.size() == 3 || value[3] == ' ')) value.remove_prefix(3);
+        else return false;
+        value = trim_view(value);
+    }
+    return true;
+}
+
 std::optional<std::string> Overlay::translate_symbol_elements(
         std::string_view raw_source) const {
     std::string source = normalize_art_utterance(raw_source);
@@ -287,7 +299,8 @@ std::optional<std::string> Overlay::translate_symbol_elements(
     auto elements = [&](auto &&self, std::string_view value, unsigned depth)
             -> std::optional<std::string> {
         value = trim_view(value);
-        if (value.empty() || depth > 32) return std::nullopt;
+        if (depth > 32) return std::nullopt;
+        if (value.empty()) return std::string{};
         const std::string key(value);
         if (const auto found = element_cache.find(key); found != element_cache.end())
             return found->second;
@@ -299,6 +312,10 @@ std::optional<std::string> Overlay::translate_symbol_elements(
                 if (species && pattern) target = fill_symbol_roles(*pattern, *species);
             }
         }
+        // The base element virtual returns an empty label, but the native
+        // image writer still emits separators by vector index. Only those
+        // empty slots disappear; an unknown noun cannot become an empty slot.
+        if (!target && symbol_empty_element_list(value)) target = std::string{};
         bool quoted = false;
         const bool native_nickname = value.find('`') != std::string_view::npos;
         for (size_t at = 0; !target && at < value.size(); ++at) {
@@ -312,6 +329,11 @@ std::optional<std::string> Overlay::translate_symbol_elements(
             if (template_literal_at(value, at, ", and ", true)) { separator = 6; conjunction = true; }
             else if (template_literal_at(value, at, " and ", true)) { separator = 5; conjunction = true; }
             else if (value.substr(at).starts_with(", ")) separator = 2;
+            else if (at == 0 && template_literal_at(value, 0, "and ", true))
+                { separator = 4; conjunction = true; }
+            else if (template_literal_at(value, at, " and", true) && at + 4 == value.size())
+                { separator = 4; conjunction = true; }
+            else if (value[at] == ',' && at + 1 == value.size()) separator = 1;
             if (!separator) continue;
             const auto left_source = trim_view(value.substr(0, at));
             const auto right_source = trim_view(value.substr(at + separator));
@@ -331,7 +353,8 @@ std::optional<std::string> Overlay::translate_symbol_elements(
             const auto left = self(self, left_source, depth + 1);
             if (!left) continue;
             const auto right = self(self, right_source, depth + 1);
-            if (right) target = *left + (conjunction ? "和" : "、") + *right;
+            if (right) target = left->empty() ? *right : right->empty() ? *left :
+                *left + (conjunction ? "和" : "、") + *right;
         }
         element_cache.emplace(key, target);
         return target;

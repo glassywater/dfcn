@@ -382,6 +382,19 @@ std::optional<std::string> Overlay::translate_item_description_term(
             std::to_string(depth) + ":" + std::string(value);
         if (const auto found = memo.find(memo_key); found != memo.end()) return found->second;
         auto resolve = [&]() -> std::optional<std::string> {
+            // Native nonempty element vectors can contain only empty base
+            // labels. The writer retains "of" and their comma/and tokens;
+            // material and artist clauses remain independent. Canonicalize
+            // only that proven empty list before the ordinary noun grammar.
+            if (!predicate && template_literal_at(value, 0, "image of ", true)) {
+                size_t stop = value.size();
+                for (std::string_view suffix : {" in ", " by "}) {
+                    const size_t at = find_template_literal(value, suffix, 9, true);
+                    if (at != std::string_view::npos) stop = std::min(stop, at);
+                }
+                if (symbol_empty_element_list(value.substr(9, stop - 9)))
+                    return self(self, "image" + std::string(value.substr(stop)), false, depth + 1);
+            }
             // The native item writer can name a wood item by its material
             // alone. Share the caption spelling before a plant-name literal
             // claims that complete noun in a This-is sentence.

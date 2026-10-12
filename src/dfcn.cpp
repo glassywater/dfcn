@@ -121,6 +121,7 @@ static std::vector<SDL_Rect> native_text_input_regions(const graphicst &gps,
     const std::vector<std::string> &rows, const unsigned char *screen_override);
 static std::optional<std::vector<std::string>> native_world_artifact_description_lines();
 static bool native_history_legends_page();
+static bool native_history_legends_artwork_page();
 struct NativeHistoryLegendsCaption {
     std::string source;
     bool event_title = false;
@@ -137,6 +138,7 @@ struct NativeHistoryRenderedFrame {
     uint64_t context = 0;
     std::optional<NativeHistoryLegendsCaption> caption;
     bool ready = false, ownership = false, observed = false;
+    bool artwork_page = false;
     std::vector<NativeHistoryDraw> draws;
     std::vector<NativeHistoryUnboundDraw> unbound;
 };
