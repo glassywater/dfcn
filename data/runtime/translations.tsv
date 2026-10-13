@@ -19461,6 +19461,7 @@ Announcement combat sentence [threat-crimes]: Knowing no mercy, {s} !	这个恶�
 Announcement combat sentence [unit,object]: {s} lose hold of the {s}!	{s1}没能抓牢{s2}！	l
 Announcement combat sentence [unit]: {s} is caught in a pool of lava!	{s1}被困在了熔岩池中！	l
 Announcement combat sentence [unit]: {s} is having trouble breathing!	{s1}呼吸困难了！	l
+Announcement combat sentence [unit]: {s} has melted.	{s1}熔化而死。	l
 Announcement combat sentence [unit]: {s} was spotted sneaking around!	发现{s1}在附近鬼鬼祟祟地活动！	l
 Announcement combat site-rumor-date [$digits]: the late autumn of {s}	第{s1}年晚秋	l
 Announcement combat site-rumor-date [$digits]: the late spring of {s}	第{s1}年晚春	l
