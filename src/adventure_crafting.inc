@@ -269,7 +269,6 @@ std::vector<SDL_Rect> Overlay::append_adventure_crafting_matches(
     if (!gps_ || !gps_->screen || gps_->dimx <= 0 || gps_->dimy <= 0 ||
             screen_rows.size() != static_cast<size_t>(gps_->dimy) ||
             gps_->tile_pixel_x <= 0 || gps_->tile_pixel_y <= 0) return panels;
-    const auto epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
     const int tile_w = gps_->tile_pixel_x, tile_h = gps_->tile_pixel_y;
     const int origin_x = (gps_->screen_pixel_x - gps_->dimx * tile_w) / 2;
     const int origin_y = (gps_->screen_pixel_y - gps_->dimy * tile_h) / 2;
@@ -286,8 +285,13 @@ std::vector<SDL_Rect> Overlay::append_adventure_crafting_matches(
         const auto draws = captured_native_drawn_text_rows(top);
         for (const auto &draw : draws) {
             const auto role = draw.adventure_crafting_role;
+            // Present advances the capture epoch without requiring another
+            // native caption pass. Retain the last real writer while its grid,
+            // bounds and complete visible source still agree below; otherwise
+            // the cached glyph mask and final translation disagree on reused
+            // frames. A new caption batch replaces the retained draw registry.
             if (role == NativeAdventureCraftingRole::None || draw.editable_text ||
-                    draw.source.empty() || draw.draw_epoch != epoch ||
+                    draw.source.empty() ||
                     draw.draw_dimx != gps_->dimx || draw.draw_dimy != gps_->dimy ||
                     draw.draw_grid != (top ? gps_->screen_top : gps_->screen) ||
                     (raw && raw != draw.draw_grid) || !draw.draw_clip ||

@@ -1,4 +1,5 @@
 ; reference PE:6a70a6d9:02711000; subject-pronoun 0x140aa4730..0x140aa47a4
+; native unwind regions: 0x140aa4730..0x140aa47a4
 0x140aa4730: mov    QWORD PTR [rsp+0x8],rbx
 0x140aa4735: push   rdi
 0x140aa4736: sub    rsp,0x20

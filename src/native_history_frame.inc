@@ -83,6 +83,7 @@ static void capture_native_history_render(void *screen, uint32_t tick) {
         // A non-history tab still publishes an explicit owner=0 frame. An
         // inactive detail tab must not turn its catalog into event prose.
         const auto tab = native_history_legends_tab(false);
+        frame->artwork_page = tab.type == 7 && tab.index >= 0;
         frame->context = 1469598103934665603ULL;
         for (uint64_t value : {uint64_t(tab.tab), uint64_t(tab.type), uint64_t(tab.index),
                 native_history_registry_revision(), uint64_t(frame->ready),

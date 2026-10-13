@@ -1,0 +1,722 @@
+role	instruction_va	operand_va	storage	source
+renderer	0x1c25fda	0x303030	inline	000
+renderer	0x1c26043	0x303030	inline	000
+renderer	0x1c2630c	0x6874	inline	th
+renderer	0x1c26471	0x202c	inline	, 
+renderer	0x1c26514	0x3030	inline	00
+renderer	0x1c26694	0x21081fa	cstring	blood
+renderer	0x1c266b0	0x20db39f	cstring	smoke
+renderer	0x1c266cf	0x2142e93	cstring	mud
+renderer	0x1c266ee	0x21dc540	cstring	bug innards
+renderer	0x1c2670d	0x21dc54c	cstring	cooked flesh
+renderer	0x1c2672c	0x211550e	cstring	death
+renderer	0x1c2674b	0x21e5384	cstring	filth
+renderer	0x1c2676a	0x21dc559	cstring	soot
+renderer	0x1c26789	0x21e535d	cstring	vomit
+renderer	0x1c267a8	0x21f140e	cstring	soil
+renderer	0x1c267c7	0x21dc55e	cstring	freshly-baked goods
+renderer	0x1c267e6	0x21dc572	cstring	brimstone
+renderer	0x1c28e76	0x217601f	cstring	Move
+renderer	0x1c2b2b5	0x6361	inline	ac
+renderer	0x1c2b2da	0x206f7420	inline	 to 
+renderer	0x1c2b3a8	0x213b1f0/16	vector	Tracks Visible: 
+renderer	0x1c2b4c6	0x213b200/16	vector	Strongest Odor: 
+renderer	0x1c2cd42	0x65756e69746e6f43	inline	Continue
+renderer	0x1c2cd50	0x6f69	inline	io
+renderer	0x1c2cd7b	0x74636120	inline	 act
+renderer	0x1c2cdf2	0x6f69	inline	io
+renderer	0x1c2ce22	0x74636120706f7453	inline	Stop act
+renderer	0x1c2ced2	0x61206873696e6946	inline	Finish a
+renderer	0x1c2cee4	0x6f697463	inline	ctio
+renderer	0x1c2cfe9	0x74206e7275746552	inline	Return t
+renderer	0x1c2cffb	0x6e65	inline	en
+renderer	0x1c2d000	0x7261206f	inline	o ar
+renderer	0x1c2e463	0x21dd080	cstring	You haven't been able to act forYou can continue waiting, or savthe settings menContinue waitinga secret identity
+renderer	0x1c2e463	0x21dd080/16	vector	You haven't been
+renderer	0x1c2e46f	0x656c696877206120	inline	 a while
+renderer	0x1c2e482	0x21dd090	cstring	 able to act forYou can continue waiting, or savthe settings menContinue waitinga secret identity
+renderer	0x1c2e482	0x21dd090/16	vector	 able to act for
+renderer	0x1c2e4ee	0x21dd0a0	cstring	You can continue waiting, or savthe settings menContinue waitinga secret identity
+renderer	0x1c2e4ee	0x21dd0a0/16	vector	You can continue
+renderer	0x1c2e4f6	0x6f72	inline	ro
+renderer	0x1c2e4fd	0x6620746975712f65	inline	e/quit f
+renderer	0x1c2e51e	0x21dd0b0	cstring	 waiting, or savthe settings menContinue waitinga secret identity
+renderer	0x1c2e51e	0x21dd0b0/16	vector	 waiting, or sav
+renderer	0x1c2e58e	0x2e75	inline	u.
+renderer	0x1c2e59b	0x21dd0c0	cstring	the settings menContinue waitinga secret identity
+renderer	0x1c2e59b	0x21dd0c0/16	vector	the settings men
+renderer	0x1c2e67b	0x21dd0d0	cstring	Continue waitinga secret identity
+renderer	0x1c2e67b	0x21dd0d0/16	vector	Continue waiting
+renderer	0x1c2ed33	0x6e696873696e6946	inline	Finishin
+renderer	0x1c2ed45	0x2e2e	inline	..
+renderer	0x1c2ed4e	0x70752067	inline	g up
+renderer	0x1c2ee0f	0x74636120706f7453	inline	Stop act
+renderer	0x1c2ee1d	0x6f69	inline	io
+renderer	0x1c2fc33	0x21dc71d	cstring	HUMANOID_TRACKING_SYMBOL
+renderer	0x1c303d9	0x726564726f206e41	inline	An order
+renderer	0x1c3040d	0x6f726620	inline	 fro
+renderer	0x1c30643	0x21dd060	cstring	Complete: reportNot yet completeYou haven't been able to act forYou can continue waiting, or savthe settings menContinue waitinga secret identity
+renderer	0x1c30643	0x21dd060/16	vector	Complete: report
+renderer	0x1c3064b	0x63616220	inline	 bac
+renderer	0x1c30bc8	0x6564	inline	de
+renderer	0x1c30bd5	0x21dd040	cstring	Agreement concluFinish reportingComplete: reportNot yet completeYou haven't been able to act forYou can continue waiting, or savthe settings menContinue waitinga secret identity
+renderer	0x1c30bd5	0x21dd040/16	vector	Agreement conclu
+renderer	0x1c30ff9	0x6f4a	inline	Jo
+renderer	0x1c311ac	0x21dd070	cstring	Not yet completeYou haven't been able to act forYou can continue waiting, or savthe settings menContinue waitinga secret identity
+renderer	0x1c311ac	0x21dd070/16	vector	Not yet complete
+renderer	0x1c3121b	0x6920	inline	 i
+renderer	0x1c31229	0x21dd050	cstring	Finish reportingComplete: reportNot yet completeYou haven't been able to act forYou can continue waiting, or savthe settings menContinue waitinga secret identity
+renderer	0x1c31229	0x21dd050/16	vector	Finish reporting
+renderer	0x1c3175a	0x20f7379	cstring	 
+renderer	0x1c31780	0x20f3aea	cstring	, 
+renderer	0x1c31fed	0x646e	inline	nd
+renderer	0x1c32048	0x6472	inline	rd
+renderer	0x1c32092	0x7473	inline	st
+renderer	0x1c3217e	0x574e	inline	NW
+renderer	0x1c321c3	0x454e	inline	NE
+renderer	0x1c321ff	0x5753	inline	SW
+renderer	0x1c32242	0x4553	inline	SE
+renderer	0x1c32d60	0x7361	inline	as
+renderer	0x1c32d8d	0x656c6552	inline	Rele
+renderer	0x1c32dd2	0x646c6f48	inline	Hold
+renderer	0x1c32ed8	0x65756e69746e6f43	inline	Continue
+renderer	0x1c32efe	0x6f69	inline	io
+renderer	0x1c32f0d	0x74636120	inline	 act
+renderer	0x1c32fb5	0x74636120706f7453	inline	Stop act
+renderer	0x1c32fc3	0x6f69	inline	io
+renderer	0x1c33068	0x6c666e6f63206e49	inline	In confl
+renderer	0x1c3307a	0x21746369	inline	ict!
+renderer	0x1c330c1	0x6177796e	inline	nywa
+renderer	0x1c330c8	0x61206873696e6946	inline	Finish a
+renderer	0x1c33122	0x6d696c43	inline	Clim
+renderer	0x1c33167	0x706d754a	inline	Jump
+renderer	0x1c33188	0x6b63	inline	ck
+renderer	0x1c331ae	0x61747441	inline	Atta
+renderer	0x1c332a8	0x2131bb7	cstring	Charge
+renderer	0x1c333d7	0x213a470/16	vector	Regaining balanc
+renderer	0x1c3355d	0x657720746f6f6853	inline	Shoot we
+renderer	0x1c33583	0x6e6f7061	inline	apon
+renderer	0x1c3369a	0x746920776f726854	inline	Throw it
+renderer	0x1c336b5	0x6d65	inline	em
+renderer	0x1c33892	0x6e776f442065694c	inline	Lie Down
+renderer	0x1c339ab	0x746e756f6d736944	inline	Dismount
+renderer	0x1c33a0b	0x636f6c42	inline	Bloc
+renderer	0x1c33a4f	0x616d	inline	ma
+renderer	0x1c33a5f	0x213a450/16	vector	Stop leading ani
+renderer	0x1c33a9a	0x6576	inline	ve
+renderer	0x1c33abf	0x6f636552	inline	Reco
+renderer	0x1c33ae4	0x646f	inline	od
+renderer	0x1c33afc	0x6f6c42206b637553	inline	Suck Blo
+renderer	0x1c33b41	0x7964616574736e55	inline	Unsteady
+renderer	0x1c33bf0	0x2131c4d	cstring	Load
+renderer	0x1c33c4d	0x6d6d6120	inline	 amm
+renderer	0x1c33d47	0x705520646e617453	inline	Stand Up
+renderer	0x1c33da7	0x67646f44	inline	Dodg
+renderer	0x1c33e99	0x6e756f4d	inline	Moun
+renderer	0x1c33ebe	0x6365	inline	ec
+renderer	0x1c33eca	0x6a624f2068737550	inline	Push Obj
+renderer	0x1c33f35	0x72726150	inline	Parr
+renderer	0x1c33f5a	0x616d	inline	ma
+renderer	0x1c33f66	0x696e61206461654c	inline	Lead ani
+renderer	0x1c33fd1	0x6b6c6154	inline	Talk
+renderer	0x1c3407f	0x21734d7	cstring	Death
+renderer	0x1c340c1	0x2742	inline	B'
+renderer	0x1c34113	0x21dc57c	cstring	You smell 
+renderer	0x1c34209	0x2107edc	cstring	.
+renderer	0x1c35587	0x2175694	cstring	Climb
+renderer	0x1c35f77	0x2131955	cstring	NW
+renderer	0x1c36043	0x2130091	cstring	WNW
+renderer	0x1c36075	0x213194e	cstring	W
+renderer	0x1c360a7	0x2099bf6	cstring	SSE
+renderer	0x1c360d9	0x213008d	cstring	WSW
+renderer	0x1c3610b	0x2130085	cstring	ENE
+renderer	0x1c3613d	0x2130089	cstring	SSW
+renderer	0x1c3616f	0x21700a8	cstring	ESE
+renderer	0x1c361a1	0x213195d	cstring	SW
+renderer	0x1c361d3	0x2130081	cstring	NNE
+renderer	0x1c36205	0x2131948	cstring	S
+renderer	0x1c36237	0x2131959	cstring	SE
+renderer	0x1c36269	0x2131951	cstring	NE
+renderer	0x1c3629b	0x213194b	cstring	E
+renderer	0x1c362cd	0x2131945	cstring	N
+renderer	0x1c362ff	0x2130095	cstring	NNW
+renderer	0x1c3648d	0x2a2a	inline	**
+renderer	0x1c3651f	0x7351	inline	Qs
+renderer	0x1c365a0	0x7547	inline	Gu
+renderer	0x1c3664d	0x20f3645	cstring	rd
+renderer	0x1c36673	0x213fabc	cstring	st
+renderer	0x1c36699	0x2210e12	cstring	nd
+renderer	0x1c36841	0x68742064656b7361	inline	asked th
+renderer	0x1c36873	0x756f	inline	ou
+renderer	0x1c36882	0x79207461	inline	at y
+renderer	0x1c368c7	0x6576656972746572	inline	retrieve
+renderer	0x1c36bca	0x2e2e	inline	..
+renderer	0x1c36ff4	0x2175651	cstring	th
+renderer	0x1c3704a	0x217601f	cstring	Move
+renderer	0x1c37074	0x20fbe51	cstring	None
+renderer	0x1c372a4	0x2107edc	cstring	.
+renderer	0x1c37597	0x21dc817	cstring	requested that you
+renderer	0x1c3760e	0x21dc82a	cstring	offer your services to
+renderer	0x1c379d7	0x213b270	cstring	z
+renderer	0x1c379e9	0x213b278	cstring	z
+renderer	0x1c37a80	0x213194e	cstring	W
+renderer	0x1c37d06	0x21dca28	cstring	Being dead is cold and clammy.
+renderer	0x1c37e98	0x21dc841	cstring	Bring
+renderer	0x1c37f9d	0x22089f0	cstring	to
+renderer	0x1c38358	0x213b270	cstring	z
+renderer	0x1c3836a	0x213b278	cstring	z
+renderer	0x1c38401	0x213194e	cstring	W
+renderer	0x1c3915b	0x2114a02	cstring	It is snowing.
+renderer	0x1c3929d	0x21dc5b5	cstring	 is falling 
+renderer	0x1c392b9	0x21dc5c2	cstring	from the sky
+renderer	0x1c392cf	0x2107edc	cstring	.
+renderer	0x1c3940c	0x20f7b10	cstring	The sky is striped with thin clouds.
+renderer	0x1c394e3	0x20f78f8	cstring	There is a heavy blanket of fog enveloping everything.
+renderer	0x1c3959c	0x21073a5	cstring	0
+renderer	0x1c395b0	0x21073a5	cstring	0
+renderer	0x1c3990f	0x21dc643	cstring	The sun is in the 
+renderer	0x1c3992f	0x20f3e78	cstring	eastern
+renderer	0x1c39942	0x2142f4e	cstring	 sky
+renderer	0x1c3995e	0x20f71b8	cstring	 behind the clouds
+renderer	0x1c39971	0x2107edc	cstring	.
+renderer	0x1c399fb	0x216056a	cstring	You
+renderer	0x1c39a9c	0x20fc320	cstring	 ammo
+renderer	0x1c39b07	0x21073a5	cstring	0
+renderer	0x1c39b1b	0x21073a5	cstring	0
+renderer	0x1c39b3d	0x2107edc	cstring	.
+renderer	0x1c39baa	0x21dc5e6	cstring	There is a 
+renderer	0x1c39bde	0x21dc619	cstring	 blowing from the 
+renderer	0x1c39c8c	0x20fc8f7	cstring	The 
+renderer	0x1c39ce9	0x2131c52	cstring	Nock
+renderer	0x1c39d04	0x20f7184	cstring	waning crescent moon
+renderer	0x1c39d87	0x2107edc	cstring	.
+renderer	0x1c39e3e	0x214e027	cstring	west
+renderer	0x1c39e51	0x2107edc	cstring	.
+renderer	0x1c3a046	0x2107edc	cstring	.
+renderer	0x1c3a0dc	0x2107edc	cstring	.
+renderer	0x1c3a6a7	0x21f0cfa	cstring	/
+renderer	0x1c3a74e	0x20f7047	cstring	There is a thin mist here.
+renderer	0x1c3a77d	0x20f702f	cstring	Fog enshrouds the area.
+renderer	0x1c3a9ee	0x211550e	cstring	death
+renderer	0x1c3ab95	0x2130099	cstring	***
+renderer	0x1c3ac19	0x20f6fa8	cstring	There is thick fog outside.
+renderer	0x1c3ae5a	0x2130099	cstring	***
+renderer	0x1c3aeb7	0x20f6fda	cstring	There is a thin mist outside.
+renderer	0x1c3aee6	0x20f6fc4	cstring	There is fog outside.
+renderer	0x1c3b3f6	0x213b270	cstring	z
+renderer	0x1c3b40e	0x213b278	cstring	z
+renderer	0x1c3b4d6	0x2131955	cstring	NW
+renderer	0x1c3b51e	0x213194e	cstring	W
+renderer	0x1c3b566	0x2130091	cstring	WNW
+renderer	0x1c3b5ae	0x213008d	cstring	WSW
+renderer	0x1c3b5f6	0x213195d	cstring	SW
+renderer	0x1c3b63e	0x2130089	cstring	SSW
+renderer	0x1c3b686	0x2131948	cstring	S
+renderer	0x1c3b6ce	0x2099bf6	cstring	SSE
+renderer	0x1c3b716	0x2131959	cstring	SE
+renderer	0x1c3b75e	0x213194b	cstring	E
+renderer	0x1c3b7a6	0x21700a8	cstring	ESE
+renderer	0x1c3b7ee	0x2130085	cstring	ENE
+renderer	0x1c3b836	0x2131951	cstring	NE
+renderer	0x1c3b90a	0x2130099	cstring	***
+renderer	0x1c3b952	0x2131945	cstring	N
+renderer	0x1c3b9a9	0x2130081	cstring	NNE
+renderer	0x1c3b9f1	0x2130095	cstring	NNW
+renderer	0x1c3ba45	0x2130091	cstring	WNW
+renderer	0x1c3bac5	0x213194b	cstring	E
+renderer	0x1c3bb2c	0x2131945	cstring	N
+renderer	0x1c3bb56	0x2130081	cstring	NNE
+renderer	0x1c3bb80	0x2131951	cstring	NE
+renderer	0x1c3bbd1	0x21dcf48	cstring	$
+renderer	0x1c3be29	0x2131948	cstring	S
+renderer	0x1c3be53	0x2130089	cstring	SSW
+renderer	0x1c3bec5	0x2131955	cstring	NW
+renderer	0x1c3beef	0x2130095	cstring	NNW
+renderer	0x1c3bf27	0x2130085	cstring	ENE
+renderer	0x1c3bf51	0x2131959	cstring	SE
+renderer	0x1c3bf7b	0x213195d	cstring	SW
+renderer	0x1c3bfa5	0x21700a8	cstring	ESE
+renderer	0x1c3bfcf	0x213008d	cstring	WSW
+renderer	0x1c3bff9	0x2099bf6	cstring	SSE
+renderer	0x1c3c0ea	0x2742	inline	B'
+renderer	0x1c3c514	0x21dc8a8	cstring	You cannot see the sky clearly from here, but the available sunlight indicates the dawn
+renderer	0x1c3c65d	0x2130099	cstring	***
+renderer	0x1c3c788	0x213b270	cstring	z
+renderer	0x1c3c79a	0x213b278	cstring	z
+renderer	0x1c3c831	0x213194e	cstring	W
+renderer	0x1c3cbd5	0x21dc5f2	cstring	gentle breeze
+renderer	0x1c3cbed	0x21dc7b9	cstring	southwest
+renderer	0x1c3cc05	0x214e012	cstring	south
+renderer	0x1c3cc1d	0x21dc7ca	cstring	southeast
+renderer	0x1c3cc35	0x214dffe	cstring	east
+renderer	0x1c3cc4d	0x21dc7a8	cstring	northeast
+renderer	0x1c3cc65	0x214dfe9	cstring	north
+renderer	0x1c3cc7d	0x21dc797	cstring	northwest
+renderer	0x1c3cc95	0x21dc60e	cstring	heavy wind
+renderer	0x1c3ccad	0x21dc600	cstring	strong breeze
+renderer	0x1c3ccc5	0x21dc5cf	cstring	There is no wind here.
+renderer	0x1c3ccdd	0x20f7c30	cstring	 hardly visible behind the clouds
+renderer	0x1c3ccf5	0x20f71b3	cstring	 pale behind the clouds
+renderer	0x1c3cd0d	0x20f7199	cstring	 bright behind the clouds
+renderer	0x1c3cd25	0x20f70f5	cstring	 is setting
+renderer	0x1c3cd45	0x20f710e	cstring	 to the west
+renderer	0x1c3cd5d	0x2142337	cstring	 is
+renderer	0x1c3cd86	0x21b75d5	cstring	 in the 
+renderer	0x1c3cda2	0x20f3e5e	cstring	western
+renderer	0x1c3cdb5	0x2142f4e	cstring	 sky
+renderer	0x1c3cdcd	0x20f7101	cstring	 to the east
+renderer	0x1c3cde5	0x20f3e78	cstring	eastern
+renderer	0x1c3cdfa	0x2140590	cstring	 low
+renderer	0x1c3ce12	0x21cae37	cstring	 high
+renderer	0x1c3ce2a	0x20f70d7	cstring	 is directly above you
+renderer	0x1c3ce42	0x2142337	cstring	 is
+renderer	0x1c3ce6f	0x21b75d5	cstring	 in the 
+renderer	0x1c3ce8b	0x20f3e78	cstring	eastern
+renderer	0x1c3ce9e	0x2142f4e	cstring	 sky
+renderer	0x1c3ceb6	0x20f70a0	cstring	 is rising
+renderer	0x1c3ced2	0x20f70b8	cstring	 in the east
+renderer	0x1c3ceea	0x20f3e5e	cstring	western
+renderer	0x1c3ceff	0x21cae37	cstring	 high
+renderer	0x1c3cf17	0x2140590	cstring	 low
+renderer	0x1c3cf2f	0x20f70ab	cstring	 in the west
+renderer	0x1c3cf47	0x2130091	cstring	WNW
+renderer	0x1c3cf72	0x2131955	cstring	NW
+renderer	0x1c3cfe5	0x213194b	cstring	E
+renderer	0x1c3d010	0x21700a8	cstring	ESE
+renderer	0x1c3d07c	0x2131945	cstring	N
+renderer	0x1c3d0a7	0x2130081	cstring	NNE
+renderer	0x1c3d0d2	0x2131951	cstring	NE
+renderer	0x1c3d0fd	0x2130085	cstring	ENE
+renderer	0x1c3d128	0x2130095	cstring	NNW
+renderer	0x1c3d153	0x2131948	cstring	S
+renderer	0x1c3d17e	0x2131959	cstring	SE
+renderer	0x1c3d1a9	0x213195d	cstring	SW
+renderer	0x1c3d1d4	0x2099bf6	cstring	SSE
+renderer	0x1c3d1ff	0x2130089	cstring	SSW
+renderer	0x1c3d22a	0x213008d	cstring	WSW
+renderer	0x1c3d392	0x21dc74f	cstring	Freshest track
+renderer	0x1c3d492	0x21dc7d4	cstring	At your location
+renderer	0x1c3d4a5	0x21f11d0	cstring	:
+renderer	0x1c3d5c2	0x21dc5e6	cstring	There is a 
+renderer	0x1c3d6ac	0x21c05aa	cstring	's 
+renderer	0x1c3d73b	0x2131925	cstring	 print
+renderer	0x1c3d74a	0x2107edc	cstring	.
+renderer	0x1c3d7d9	0x2131a6c	cstring	 imprint in the 
+renderer	0x1c3d934	0x21c05aa	cstring	's 
+renderer	0x1c3da41	0x20f7379	cstring	 
+renderer	0x1c3da55	0x2131a4f	cstring	faint 
+renderer	0x1c3da69	0x2131a48	cstring	light 
+renderer	0x1c3da7d	0x2131a41	cstring	thick 
+renderer	0x1c3da98	0x2131b21	cstring	The signs lead southwest.
+renderer	0x1c3db2a	0x2134bf0	cstring	They belong to you or a companion.
+renderer	0x1c3dbb0	0x21dc75e	cstring	To the west
+renderer	0x1c3dbcc	0x21dc76a	cstring	To the east
+renderer	0x1c3dc0c	0x21dc783	cstring	To the south
+renderer	0x1c3dc21	0x2131b07	cstring	The signs lead southeast.
+renderer	0x1c3dc4c	0x2131aed	cstring	The signs lead northwest.
+renderer	0x1c3dc87	0x2131aa9	cstring	The signs lead east.
+renderer	0x1c3dcb2	0x2131a7d	cstring	The signs lead north.
+renderer	0x1c3dcdd	0x2131a93	cstring	The signs lead south.
+renderer	0x1c3dd08	0x2131abe	cstring	The signs lead west.
+renderer	0x1c3dd33	0x21dc776	cstring	To the north
+renderer	0x1c3dd58	0x2131ad3	cstring	The signs lead northeast.
+renderer	0x1c3ddb6	0x21dc790	cstring	To the northwest
+renderer	0x1c3dde2	0x21dc7a1	cstring	To the northeast
+renderer	0x1c3de0e	0x21dc7b2	cstring	To the southwest
+renderer	0x1c3de33	0x21dc7c3	cstring	To the southeast
+renderer	0x1c3de5b	0x21dc5e6	cstring	There is a 
+renderer	0x1c3df6c	0x2131925	cstring	 print
+renderer	0x1c3df7b	0x2107edc	cstring	.
+renderer	0x1c3df9f	0x2131a65	cstring	vague 
+renderer	0x1c3dfb3	0x2131a6c	cstring	 imprint in the 
+renderer	0x1c3e0ac	0x20e2ac0	cstring	left 
+renderer	0x1c3e0c0	0x21c2f6c	cstring	right 
+renderer	0x1c3e118	0x2131a65	cstring	vague 
+renderer	0x1c3e12c	0x2131a5c	cstring	shallow 
+renderer	0x1c3e140	0x2131a56	cstring	deep 
+renderer	0x1c3e234	0x20f7379	cstring	 
+renderer	0x1c3e262	0x2131a5c	cstring	shallow 
+renderer	0x1c3e276	0x2131a56	cstring	deep 
+renderer	0x1c3e2b5	0x21dc7fd	cstring	The vegetation is broken.
+renderer	0x1c3e306	0x21dcb00	cstring	There is an unintelligible mess.
+renderer	0x1c3e327	0x2131a4f	cstring	faint 
+renderer	0x1c3e342	0x21dcad0	cstring	The vegetation has been slightly perturbed.
+renderer	0x1c3e36d	0x21dc7e5	cstring	The vegetation is bent.
+renderer	0x1c3e391	0x2131a48	cstring	light 
+renderer	0x1c3e3ac	0x21dcaa8	cstring	The vegetation is heavily damaged.
+renderer	0x1c3e3d0	0x2131a41	cstring	thick 
+renderer	0x1c3e6bf	0x21dc736	cstring	FOOTWEAR_TRACKING_SYMBOL
+renderer	0x1c3e913	0x20f7062	cstring	The sky above you is gray.
+renderer	0x1c3e936	0x20f7a10	cstring	The sky above you is a uniform and dark gray.
+renderer	0x1c3e971	0x20f7978	cstring	The sky above you is completely gray, with dark cloud pillars pressing through it.
+renderer	0x1c3eb77	0x20f7a40	cstring	The sky above you is hazy and white.
+renderer	0x1c3ebbc	0x20f79d0	cstring	A towering gray cloud descends from the white sky above you.
+renderer	0x1c3ebdd	0x21149f3	cstring	It is raining.
+renderer	0x1c3ec23	0x21dc587	cstring	It is raining outside.
+renderer	0x1c3ec52	0x21dc59e	cstring	It is snowing outside.
+renderer	0x1c3ec81	0x20fcc85	cstring	outside
+renderer	0x1c3ed03	0x20f7930	cstring	The sky above you is nearly black, ripped through with towering clouds.
+renderer	0x1c3ed27	0x20f7ad8	cstring	There are scattered clouds underneath a striped sky.
+renderer	0x1c3ed3f	0x20f7aa0	cstring	Mounds of clouds are clustered through a striped sky.
+renderer	0x1c3ed57	0x20f7a68	cstring	A dark, towering cloud rises into a striped sky.
+renderer	0x1c3ed8d	0x20f7bd8	cstring	There are scattered puffy clouds above you.
+renderer	0x1c3eddc	0x21dca00	cstring	The area gives off a sickly light
+renderer	0x1c3edf4	0x21dc958	cstring	You cannot see the sky clearly from here, but the available sunlight indicates the sunset
+renderer	0x1c3ee0c	0x21dc900	cstring	You cannot see the sky clearly from here, but the available sunlight indicates the day
+renderer	0x1c3ee24	0x21dc62c	cstring	The sun is low in the 
+renderer	0x1c3ee3c	0x20f7099	cstring	The sun is rising
+renderer	0x1c3ee58	0x20f70b8	cstring	 in the east
+renderer	0x1c3ee70	0x21dc848	cstring	You cannot see the sky clearly from here, but the available sunlight indicates the night
+renderer	0x1c3ee88	0x20f70ab	cstring	 in the west
+renderer	0x1c3eea0	0x21dc62c	cstring	The sun is low in the 
+renderer	0x1c3eec0	0x20f3e5e	cstring	western
+renderer	0x1c3efa0	0x20c920e	cstring	vector::_M_default_append
+renderer	0x1c3f575	0x2131955	cstring	NW
+renderer	0x1c3f5bd	0x2130091	cstring	WNW
+renderer	0x1c3f5e4	0x213194e	cstring	W
+renderer	0x1c3f60b	0x213195d	cstring	SW
+renderer	0x1c3f635	0x213008d	cstring	WSW
+renderer	0x1c3f65f	0x2130089	cstring	SSW
+renderer	0x1c3f71d	0x2131948	cstring	S
+renderer	0x1c3f747	0x213194b	cstring	E
+renderer	0x1c3f771	0x2131945	cstring	N
+renderer	0x1c3f79b	0x2131959	cstring	SE
+renderer	0x1c3f7d4	0x2131951	cstring	NE
+renderer	0x1c3f7fe	0x2130081	cstring	NNE
+renderer	0x1c3f828	0x2130085	cstring	ENE
+renderer	0x1c3f8df	0x2130099	cstring	***
+renderer	0x1c3f928	0x2130095	cstring	NNW
+renderer	0x1c3f952	0x2099bf6	cstring	SSE
+renderer	0x1c3f9e5	0x21700a8	cstring	ESE
+renderer	0x1c3fa2c	0x213b270	cstring	z
+renderer	0x1c3fa3e	0x213b278	cstring	z
+renderer	0x1c3fc4c	0x2130091	cstring	WNW
+renderer	0x1c3fc77	0x2131955	cstring	NW
+renderer	0x1c3fcae	0x20f7173	cstring	waning half moon
+renderer	0x1c3fcc6	0x20f715f	cstring	waning gibbous moon
+renderer	0x1c3fcde	0x20f711b	cstring	full moon
+renderer	0x1c3fcf6	0x20f7125	cstring	waxing gibbous moon
+renderer	0x1c3fd0e	0x20f7139	cstring	waxing half moon
+renderer	0x1c3fd26	0x21dc69b	cstring	new moon
+renderer	0x1c3fd3e	0x20f714a	cstring	waxing crescent moon
+renderer	0x1c3fd56	0x220f86e	cstring	moon
+renderer	0x1c3fec1	0x21dc6a4	cstring	It is burning.
+renderer	0x1c40429	0x20c920e	cstring	vector::_M_default_append
+renderer	0x1c40527	0x21dc9b8	cstring	The sky is alive with vortices of purple light and dark, boiling clouds
+renderer	0x1c4053f	0x21dc689	cstring	The stars are out
+renderer	0x1c40557	0x21dc66e	cstring	The sun is setting to the 
+renderer	0x1c40573	0x214e027	cstring	west
+renderer	0x1c4058b	0x214dffe	cstring	east
+renderer	0x1c405a3	0x21dc643	cstring	The sun is in the 
+renderer	0x1c405bb	0x21dc656	cstring	The sun is high in the 
+renderer	0x1c405d3	0x20f70d0	cstring	The sun is directly above you
+renderer	0x1c405eb	0x21dc656	cstring	The sun is high in the 
+renderer	0x1c40abf	0x213194b	cstring	E
+renderer	0x1c40aea	0x21700a8	cstring	ESE
+renderer	0x1c40b32	0x2131945	cstring	N
+renderer	0x1c40b5d	0x2130081	cstring	NNE
+renderer	0x1c40ba3	0x21dc6b3	cstring	It is deathly cold.
+renderer	0x1c40bbb	0x2131948	cstring	S
+renderer	0x1c40c25	0x2130095	cstring	NNW
+renderer	0x1c40c50	0x2131951	cstring	NE
+renderer	0x1c40c7f	0x21dca48	cstring	The temperature is as it has been and always will be.
+renderer	0x1c40c97	0x2131959	cstring	SE
+renderer	0x1c40cc2	0x2099bf6	cstring	SSE
+renderer	0x1c40d01	0x2130085	cstring	ENE
+renderer	0x1c40d2c	0x213195d	cstring	SW
+renderer	0x1c40d5f	0x2130089	cstring	SSW
+renderer	0x1c40dbb	0x21dc6f5	cstring	It is warm.
+renderer	0x1c40de0	0x213008d	cstring	WSW
+renderer	0x1c40e33	0x21dc701	cstring	It is cool.
+renderer	0x1c40e4b	0x2114a90	cstring	It is hot.
+renderer	0x1c40e63	0x21dc6e4	cstring	It is scorching.
+renderer	0x1c40e7b	0x21dc6c7	cstring	The temperature is pleasant.
+renderer	0x1c40ec4	0x2114a9b	cstring	It is cold.
+renderer	0x1c40f01	0x21dc70d	cstring	It is freezing.
+renderer	0x1c40f19	0x21dca80	cstring	The temperature cannot be judged.
+renderer	0x1c40f31	0x20f7b78	cstring	There are mounds of clouds above you, smooth on the bottom with prominent upward bulges.
+renderer	0x1c40f49	0x20f7b38	cstring	A dark, menacing cloud towers above you, crowned by an anvil.
+renderer	0x1c40f63	0x2742	inline	B'
+complete-item-noun	0x12b6bad	0x206e	inline	n 
+complete-item-noun	0x12b6bb2	0x776f7267	inline	grow
+complete-item-noun	0x12b6c43	0x21c9e2a	cstring	large
+complete-item-noun	0x12b6c6a	0x213b90d	cstring	grown 
+complete-item-noun	0x12b6cc7	0x21caa1a	cstring	small
+complete-item-noun	0x12b6e1a	0x213ba10	cstring	codices
+complete-item-noun	0x12b6e84	0x5b20	inline	 [
+complete-item-noun	0x12b6fae	0x20f7379	cstring	 
+complete-item-noun	0x12b6fc4	0x21c97e7	cstring	egg
+complete-item-noun	0x12b7167	0x213bd1c	cstring	prepared meal
+complete-item-noun	0x12b71ba	0x213ba93	cstring	coin
+complete-item-noun	0x12b7217	0x21df9b8	cstring	cheese
+complete-item-noun	0x12b72cf	0x2160961	cstring	sheet
+complete-item-noun	0x12b7302	0x20f4c83	cstring	crutch
+complete-item-noun	0x12b731b	0x2193b0e	cstring	es
+complete-item-noun	0x12b7352	0x20f4c60	cstring	splint
+complete-item-noun	0x12b73a0	0x21dffba	cstring	millstone
+complete-item-noun	0x12b73f2	0x21dffb3	cstring	quern
+complete-item-noun	0x12b7440	0x20fbc06	cstring	grate
+complete-item-noun	0x12b74bb	0x21dfefd	cstring	tube
+complete-item-noun	0x12b74f2	0x21dfe2a	cstring	hatch cover
+complete-item-noun	0x12b7542	0x213b919	cstring	branch
+complete-item-noun	0x12b755b	0x2193b0e	cstring	es
+complete-item-noun	0x12b75f1	0x22106d7	cstring	cast
+complete-item-noun	0x12b7642	0x22106a1	cstring	traction bench
+complete-item-noun	0x12b765b	0x2193b0e	cstring	es
+complete-item-noun	0x12b7692	0x21dff33	cstring	ballista arrow head
+complete-item-noun	0x12b76e2	0x20f4c78	cstring	cloth
+complete-item-noun	0x12b7752	0x213ba7b	cstring	 dye mix
+complete-item-noun	0x12b7840	0x213bd42	cstring	chain 
+complete-item-noun	0x12b7970	0x213bd42	cstring	chain 
+complete-item-noun	0x12b79d8	0x21dff1b	cstring	quiver
+complete-item-noun	0x12b7a38	0x21dff11	cstring	backpack
+complete-item-noun	0x12b7b5e	0x213bd42	cstring	chain 
+complete-item-noun	0x12b7b9f	0x21dfeaf	cstring	totem
+complete-item-noun	0x12b7bf2	0x21dfcff	cstring	earring
+complete-item-noun	0x12b7c42	0x21dfcf9	cstring	ring
+complete-item-noun	0x12b7d5d	0x2107a66	cstring	small rock
+complete-item-noun	0x12b7dcb	0x20e1b63	cstring	rope
+complete-item-noun	0x12b7e20	0x21dfe93	cstring	throne
+complete-item-noun	0x12b7e72	0x2160947	cstring	bed
+complete-item-noun	0x12b7ec2	0x21dfe1f	cstring	floodgate
+complete-item-noun	0x12b7f3b	0x21dbbde	cstring	portal
+complete-item-noun	0x12b807a	0x20f457f	cstring	bucket
+complete-item-noun	0x12b80ca	0x21e03d7	cstring	barrel
+complete-item-noun	0x12b81b2	0x20dbad7	cstring	goblet
+complete-item-noun	0x12b8233	0x21e0291	cstring	waterskin
+complete-item-noun	0x12b8532	0x21dff90	cstring	bolt thrower parts
+complete-item-noun	0x12b856a	0x21dffab	cstring	statue
+complete-item-noun	0x12b85c4	0x213b914	cstring	logs
+complete-item-noun	0x12b8623	0x21dfeb6	cstring	terrarium
+complete-item-noun	0x12b8708	0x21d9d1a	cstring	rotten 
+complete-item-noun	0x12b871b	0x214dd31	cstring	corpse
+complete-item-noun	0x12b8770	0x20fbc42	cstring	window
+complete-item-noun	0x12b87c2	0x21f49bd	cstring	table
+complete-item-noun	0x12b883b	0x213b9e0	cstring	sarcophag
+complete-item-noun	0x12b8854	0x213fecb	cstring	i
+complete-item-noun	0x12b8890	0x21dfef0	cstring	animal trap
+complete-item-noun	0x12b88d0	0x21d9d1a	cstring	rotten 
+complete-item-noun	0x12b88e3	0x21dfe11	cstring	raw 
+complete-item-noun	0x12b89aa	0x20f3aea	cstring	, 
+complete-item-noun	0x12b89f0	0x21dff80	cstring	ballista parts
+complete-item-noun	0x12b8a2a	0x21dff64	cstring	catapult parts
+complete-item-noun	0x12b8a62	0x21dfe54	cstring	weapon rack
+complete-item-noun	0x12b8bd7	0x213bd04	cstring	tame 
+complete-item-noun	0x12b8c37	0x213bcec	cstring	live 
+complete-item-noun	0x12b8d38	0x21dfce9	cstring	scepter
+complete-item-noun	0x12b8d8a	0x21dfce1	cstring	amulet
+complete-item-noun	0x12b8dda	0x21dfcd7	cstring	figurine
+complete-item-noun	0x12b8e2a	0x21dfe4b	cstring	cabinet
+complete-item-noun	0x12b8e85	0x21b015a	cstring	drink
+complete-item-noun	0x12b8edd	0x213bc49	cstring	teeth
+complete-item-noun	0x12b8f38	0x21dffa4	cstring	anvil
+complete-item-noun	0x12b8f88	0x21dff74	cstring	mechanisms
+complete-item-noun	0x12b9013	0x213b9d0	cstring	boxe
+complete-item-noun	0x12b9030	0x2131974	cstring	s
+complete-item-noun	0x12b9094	0x213bccd	cstring	leaves and fruit
+complete-item-noun	0x12b90df	0x21b022b	cstring	seeds
+complete-item-noun	0x12b9110	0x21dfcf2	cstring	crown
+complete-item-noun	0x12b93cc	0x20f3aea	cstring	, 
+complete-item-noun	0x12b9412	0x21da296	cstring	bin
+complete-item-noun	0x12b9460	0x21dfe61	cstring	armor stand
+complete-item-noun	0x12b950a	0x21e003c	cstring	strands
+complete-item-noun	0x12b95ee	0x213bd42	cstring	chain 
+complete-item-noun	0x12b963d	0x213ba98	cstring	perfect 
+complete-item-noun	0x12b97e0	0x21dfd08	cstring	bracelet
+complete-item-noun	0x12b9832	0x21e03c5	cstring	bag
+complete-item-noun	0x12b987f	0x213b9fc	cstring	tanned hide
+complete-item-noun	0x12b9978	0x21c2f6c	cstring	right 
+complete-item-noun	0x12b999c	0x20e2ac0	cstring	left 
+complete-item-noun	0x12b99f8	0x213bd42	cstring	chain 
+complete-item-noun	0x12b9a54	0x2107831	cstring	remains
+complete-item-noun	0x12b9b12	0x214a4b5	cstring	slab
+complete-item-noun	0x12b9b7d	0x213ba1e	cstring	filthy 
+complete-item-noun	0x12b9b99	0x213ba26	cstring	sticky 
+complete-item-noun	0x12b9bb5	0x213ba2e	cstring	vomitous 
+complete-item-noun	0x12b9bd1	0x213ba38	cstring	slimy 
+complete-item-noun	0x12b9bed	0x212fd2a	cstring	stagnant 
+complete-item-noun	0x12b9d5c	0x213baaa	cstring	food imports sign
+complete-item-noun	0x12b9d74	0x213baa1	cstring	memorial
+complete-item-noun	0x12b9d8c	0x213bc09	cstring	stone furniture shop sign
+complete-item-noun	0x12b9da4	0x213bbf3	cstring	carpenter's shop sign
+complete-item-noun	0x12b9dbc	0x213bbdb	cstring	leather goods shop sign
+complete-item-noun	0x12b9dd4	0x213bbc5	cstring	metal craft shop sign
+complete-item-noun	0x12b9dec	0x213bc3d	cstring	tavern sign
+complete-item-noun	0x12b9e04	0x213bc23	cstring	metal furniture shop sign
+complete-item-noun	0x12b9e1c	0x213baf7	cstring	leather shop sign
+complete-item-noun	0x12b9e34	0x213bae7	cstring	cloth shop sign
+complete-item-noun	0x12b9e4c	0x213bad2	cstring	general imports sign
+complete-item-noun	0x12b9e64	0x213babc	cstring	clothing imports sign
+complete-item-noun	0x12b9e7c	0x213bbae	cstring	armorsmith's shop sign
+complete-item-noun	0x12b9e94	0x213bb97	cstring	blacksmith's shop sign
+complete-item-noun	0x12b9eac	0x213bb84	cstring	bowyer's shop sign
+complete-item-noun	0x12b9ec4	0x213bb6c	cstring	weaponsmith's shop sign
+complete-item-noun	0x12b9edc	0x213bb55	cstring	gem cutter's shop sign
+complete-item-noun	0x12b9ef4	0x213bb3d	cstring	bone carver's shop sign
+complete-item-noun	0x12b9f0c	0x213bb22	cstring	leather clothing shop sign
+complete-item-noun	0x12b9f24	0x213bb09	cstring	woven clothing shop sign
+complete-item-noun	0x12b9f4a	0x21432dc	cstring	]
+complete-item-noun	0x12b9f72	0x210ecdf	cstring	 [
+complete-item-noun	0x12b9fe1	0x21e0387	cstring	item
+complete-item-noun	0x12ba044	0x21e5325	cstring	powder
+complete-item-noun	0x12ba05c	0x21cb66e	cstring	small 
+complete-item-noun	0x12ba088	0x214dd86	cstring	rock
+complete-item-noun	0x12ba110	0x213b9d5	cstring	limb/body 
+complete-item-noun	0x12ba148	0x21adcc8	cstring	headwear
+complete-item-noun	0x12ba180	0x21adcee	cstring	footwear
+complete-item-noun	0x12ba198	0x210800a	cstring	cage
+complete-item-noun	0x12bab25	0x21dff03	cstring	pipe section
+complete-item-noun	0x12bac60	0x20d32f6	cstring	door
+complete-item-noun	0x12bb0f6	0x20fc431	cstring	plant
+complete-item-noun	0x12bb10f	0x2131974	cstring	s
+complete-item-noun	0x12bb2b2	0x21b01e5	cstring	meat
+complete-item-noun	0x12bb3aa	0x213bcaa	cstring	strand body part
+complete-item-noun	0x12bb66a	0x210f8a2	cstring	toy
+complete-item-noun	0x12bb6bf	0x21adbc9	cstring	shield
+complete-item-noun	0x12bb6e8	0x213bd53	cstring	/buckler
+complete-item-noun	0x12bb73c	0x21adbe2	cstring	weapon
+complete-item-noun	0x12bb7a0	0x21adcd5	cstring	legwear
+complete-item-noun	0x12bb7bf	0x2141bdb	cstring	musical instrument
+complete-item-noun	0x12bb82e	0x20db527	cstring	tool
+complete-item-noun	0x12bb882	0x213ba84	cstring	trap component
+complete-item-noun	0x12bb8bb	0x20fc31b	cstring	siege ammo
+complete-item-noun	0x12bb907	0x213bd49	cstring	suits of 
+complete-item-noun	0x12bb91a	0x21adb7e	cstring	armor
+complete-item-noun	0x12bb954	0x21addf3	cstring	ammunition
+complete-item-noun	0x12bb96c	0x20ca9d7	cstring	clear glass 
+complete-item-noun	0x12bb97f	0x214e6e9	cstring	gem
+complete-item-noun	0x12bb9cb	0x213b963	cstring	boulders
+complete-item-noun	0x12bbad1	0x214de54	cstring	blocks
+complete-item-noun	0x12bbb40	0x213ba6e	cstring	 laced with 
+complete-item-noun	0x12bbc25	0x20ca65d	cstring	yarn
+complete-item-noun	0x12bbc3d	0x213bd0a	cstring	small tame animal
+complete-item-noun	0x12bbc6f	0x213bcf2	cstring	small live animal
+complete-item-noun	0x12bbca1	0x213ba18	cstring	codex
+complete-item-noun	0x12bbce0	0x213ba69	cstring	glob
+complete-item-noun	0x12bbd11	0x20fc479	cstring	liquid
+complete-item-noun	0x12bbd35	0x20fc3d2	cstring	fish
+complete-item-noun	0x12bbd4d	0x20fc3d2	cstring	fish
+complete-item-noun	0x12bbdf0	0x213b95d	cstring	stone boulders
+complete-item-noun	0x12bbe25	0x213b974	cstring	coke
+complete-item-noun	0x12bbf03	0x213b96c	cstring	 wafers
+complete-item-noun	0x12bc022	0x21d9d1a	cstring	rotten 
+complete-item-noun	0x12bc18c	0x21d9d1a	cstring	rotten 
+complete-item-noun	0x12bc1a4	0x213bcbb	cstring	Rotten 
+complete-item-noun	0x12bc1bc	0x221cb86	cstring	box
+complete-item-noun	0x12bc1d5	0x2210d26	cstring	e
+complete-item-noun	0x12bc259	0x21dfe76	cstring	casket
+complete-item-noun	0x12bc28b	0x21d9d1a	cstring	rotten 
+complete-item-noun	0x12bc36f	0x21d9d1a	cstring	rotten 
+complete-item-noun	0x12bc387	0x21d9d1a	cstring	rotten 
+complete-item-noun	0x12bc3e9	0x213ba08	cstring	-bound 
+complete-item-noun	0x12bc42c	0x21d9d1a	cstring	rotten 
+complete-item-noun	0x12bc53d	0x213b9f4	cstring	cup
+complete-item-noun	0x12bc583	0x213b9f8	cstring	mug
+complete-item-noun	0x12bc59b	0x21d9d1a	cstring	rotten 
+complete-item-noun	0x12bc5b3	0x21d9d1a	cstring	rotten 
+complete-item-noun	0x12bc5cb	0x213bcc3	cstring	withered 
+complete-item-noun	0x12bc5e3	0x213bd2a	cstring	preserved 
+complete-item-noun	0x12bc7bd	0x20db647	cstring	chair
+complete-item-noun	0x12bc869	0x213bcc3	cstring	withered 
+complete-item-noun	0x12bc881	0x21adce1	cstring	handwear
+complete-item-noun	0x12bc899	0x21dfd16	cstring	large 
+complete-item-noun	0x12bc8c3	0x2142061	cstring	chest
+complete-item-noun	0x12bc8fc	0x21735aa	cstring	web
+complete-item-noun	0x12bc92e	0x21dfe8b	cstring	coffin
+complete-item-noun	0x12bc9e5	0x20f7379	cstring	 
+complete-item-noun	0x12bca6e	0x20f7379	cstring	 
+complete-item-noun	0x12bca94	0x20f7379	cstring	 
+complete-item-noun	0x12bcb68	0x20f7379	cstring	 
+complete-item-noun	0x12bcb8e	0x20f7379	cstring	 
+complete-item-noun	0x12bcc4d	0x20f7379	cstring	 
+complete-item-noun	0x12bcc73	0x20f7379	cstring	 
+complete-item-noun	0x12bcc9d	0x20f7379	cstring	 
+complete-item-noun	0x12bcd30	0x20f7379	cstring	 
+complete-item-noun	0x12bcd90	0x21dfe6e	cstring	coffer
+complete-item-noun	0x12bce41	0x221044b	cstring	vial
+complete-item-noun	0x12bcfab	0x220f969	cstring	chain
+complete-item-noun	0x12bd0b7	0x20f3aea	cstring	, 
+complete-item-noun	0x12bd0df	0x20f3aea	cstring	, 
+complete-item-noun	0x12bd107	0x213ba61	cstring	bloody 
+complete-item-noun	0x12bd11f	0x213ba57	cstring	ichorous 
+complete-item-noun	0x12bd137	0x213ba4d	cstring	purulent 
+complete-item-noun	0x12bd14f	0x213ba46	cstring	gooey 
+complete-item-noun	0x12bd167	0x213ba3f	cstring	dirty 
+complete-item-noun	0x12bd17f	0x213b920	cstring	rough gems
+complete-item-noun	0x12bd19f	0x21baa7e	cstring	rough 
+complete-item-noun	0x12bd225	0x214ddd6	cstring	thread
+complete-item-noun	0x12bd23d	0x214de54	cstring	blocks
+complete-item-noun	0x12bd255	0x214dd93	cstring	metal
+complete-item-noun	0x12bd268	0x214de47	cstring	 bars
+complete-item-noun	0x12bd280	0x20e3e3e	cstring	tooth
+complete-item-noun	0x12bd298	0x21dfb9c	cstring	bone
+complete-item-noun	0x12bd2b0	0x213b92b	cstring	raw green glass
+complete-item-noun	0x12bd3f1	0x213bcde	cstring	leaf or fruit
+complete-item-noun	0x12bd516	0x213b986	cstring	cut gems
+complete-item-noun	0x12bd52e	0x20ca9ca	cstring	green glass 
+complete-item-noun	0x12bd56b	0x213bd35	cstring	 chops
+complete-item-noun	0x12bd586	0x20ca9e4	cstring	crystal glass 
+complete-item-noun	0x12bd59e	0x20f3aea	cstring	, 
+complete-item-noun	0x12bd5b6	0x213b979	cstring	refined coal
+complete-item-noun	0x12bd63b	0x213b93b	cstring	raw clear glass
+complete-item-noun	0x12bd668	0x213b98f	cstring	cut green glass gems
+complete-item-noun	0x12bd6d1	0x214dd29	cstring	shell
+complete-item-noun	0x12bd6e9	0x214de48	cstring	bars
+complete-item-noun	0x12bd73b	0x221cb86	cstring	box
+complete-item-noun	0x12bd753	0x213b94b	cstring	raw crystal glass
+complete-item-noun	0x12bd911	0x213b9a4	cstring	cut clear glass gems
+complete-item-noun	0x12bd929	0x210ee30	cstring	us
+complete-item-noun	0x12bd941	0x21b01e5	cstring	meat
+complete-item-noun	0x12bd959	0x213bc4f	cstring	plant part
+complete-item-noun	0x12bd9a3	0x214e6e8	cstring	 gem
+complete-item-noun	0x12bd9d5	0x213b920	cstring	rough gems
+complete-item-noun	0x12bd9f6	0x21dfffc	cstring	charcoal
+complete-item-noun	0x12bda0e	0x213b9b9	cstring	cut crystal glass gems
+complete-item-noun	0x12bda26	0x219eeb1	cstring	 and 
+complete-item-noun	0x12bda45	0x213bd3c	cstring	 chop
+complete-item-noun	0x12bda75	0x2142da3	cstring	gems
+complete-item-noun	0x12bda8d	0x213bc5a	cstring	silk body part
+complete-item-noun	0x12bdab7	0x213bc69	cstring	leather body part
+complete-item-noun	0x12bdb64	0x21e5433	cstring	 paste
+complete-item-noun	0x12bdb9d	0x213bc8c	cstring	soap body part
+complete-item-noun	0x12bdbb5	0x213bc7b	cstring	wooden body part
+complete-item-noun	0x12bdbe6	0x20ca67a	cstring	pearl
+complete-item-noun	0x12bdbfe	0x213b9ea	cstring	unglazed 
+complete-item-noun	0x12bdc16	0x20ca675	cstring	horn
+complete-item-noun	0x12bdc2e	0x2210436	cstring	flask
+complete-item-noun	0x12bdc46	0x213bc9b	cstring	yarn body part
+complete-item-noun	0x12bdc5e	0x213bcb1	cstring	body part
+complete-material-noun	0x74ccf6	0x72616570	inline	pear
+complete-material-noun	0x74cdf8	0x7327	inline	's
+complete-material-noun	0x74cee8	0x6e65	inline	en
+complete-material-noun	0x74ceed	0x646f6f77	inline	wood
+complete-material-noun	0x74cf4c	0x20cec80/16	vector	unknown material
+complete-material-noun	0x74cfaf	0x6e616c70	inline	plan
+complete-material-noun	0x74d05e	0x20f7379	cstring	 
+complete-material-noun	0x74d0b4	0x6e726179	inline	yarn
+complete-material-noun	0x74d10b	0x646f6f77	inline	wood
+complete-material-noun	0x74d147	0x20fc431	cstring	plant
+complete-material-noun	0x74d1a1	0x6c656873	inline	shel
+complete-material-noun	0x74d1ce	0x20ca680	cstring	unknown material
+complete-material-noun	0x74d214	0x21c05aa	cstring	's 
+complete-material-noun	0x74d264	0x746f6c63	inline	clot
+complete-material-noun	0x74d2c8	0x6b6c6973	inline	silk
+complete-material-noun	0x74d32e	0x656e6f62	inline	bone
+complete-material-noun	0x74d348	0x20ca65d	cstring	yarn
+complete-material-noun	0x74d398	0x6568	inline	he
+complete-material-noun	0x74d39d	0x7461656c	inline	leat
+complete-material-noun	0x74d3e6	0x20ca662	cstring	wooden
+complete-material-noun	0x74d405	0x21ae350	cstring	wood
+complete-material-noun	0x74d452	0x70616f73	inline	soap
+complete-material-noun	0x74d46c	0x20f4c78	cstring	cloth
+complete-material-noun	0x74d48b	0x21e00c5	cstring	silk
+complete-material-noun	0x74d4db	0x746f	inline	ot
+complete-material-noun	0x74d4e0	0x6f742f79726f7669	inline	ivory/to
+complete-material-noun	0x74d55b	0x6e726f68	inline	horn
+complete-material-noun	0x74d575	0x21dfb9c	cstring	bone
+complete-material-noun	0x74d59e	0x214de63	cstring	leather
+complete-material-noun	0x74d5c7	0x214dd29	cstring	shell
+complete-material-noun	0x74d5f0	0x20db7b3	cstring	soap
+complete-material-noun	0x74d619	0x20ca669	cstring	ivory/tooth
+complete-material-noun	0x74d642	0x20ca675	cstring	horn
+complete-material-noun	0x74d675	0x20ca67a	cstring	pearl

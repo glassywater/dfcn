@@ -35,7 +35,8 @@ void Overlay::render_native_squads_layer(SDL_Renderer *renderer,
         release_native_squads_resources();
         face_ = source.face_;
         ft_ = source.ft_;
-        dfhack_translation_catalog_revision_ = source.dfhack_translation_catalog_revision_;
+        dfhack_translation_catalog_revision_ =
+            source.dfhack_translation_catalog_revision_.load(std::memory_order_acquire);
     }
     config_ = source.config_;
     gps_ = layer.foreground.graphics();
@@ -45,6 +46,15 @@ void Overlay::render_native_squads_layer(SDL_Renderer *renderer,
     }
     if (!gps_ || gps_->tile_pixel_x <= 0 || gps_->tile_pixel_y <= 0 ||
             gps_->screen_pixel_x <= 0 || gps_->screen_pixel_y <= 0) return;
+
+    bool identity_completed = false;
+    for (auto &plane : g_native_squads_text.rows) for (auto &draw : plane) {
+        if (draw.unit_identity_ready || !draw.unit_identity_target) continue;
+        refresh_native_unit_identity_draw(draw);
+        identity_completed = identity_completed || draw.unit_identity_ready;
+    }
+    if (identity_completed)
+        g_native_squads_matches = source.find_native_squads_matches();
 
     const int64_t tile_x = gps_->tile_pixel_x, tile_y = gps_->tile_pixel_y;
     const int64_t origin_x = (gps_->screen_pixel_x - tile_x * gps_->dimx) / 2;

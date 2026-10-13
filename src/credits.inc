@@ -349,8 +349,12 @@ void Overlay::note_main_menu_developer_copy(SDL_Renderer *renderer,
     if (!renderer || !texture || !gps_) return;
     // DEVELOPER, DEVELOPER_SMALL and DEVELOPER_TINY are live cached_texturest
     // entries. Both native ABIs store the texture pointer at 8 and variant at 16.
+    // Native display promotes these renderer-owned entries in the real header;
+    // the pinned grid snapshot can still contain their preceding SDL_Surface.
+    const auto *texture_owner = native_graphics_owner();
+    if (!texture_owner) return;
     for (int slot : {7, 8, 9}) {
-        const auto *cached = reinterpret_cast<const unsigned char *>(&gps_->tex[slot]);
+        const auto *cached = reinterpret_cast<const unsigned char *>(&texture_owner->tex[slot]);
         SDL_Texture *developer = nullptr;
         std::memcpy(&developer, cached + 8, sizeof(developer));
         if (cached[16] != 0 || developer != texture) continue;

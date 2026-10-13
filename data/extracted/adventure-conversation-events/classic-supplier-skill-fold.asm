@@ -1,4 +1,5 @@
 ; classic PE:6a70b91c:0270a000; skill-fold 0x14052aaa0..0x14052ade0
+; native unwind regions: 0x14052aaa0..0x14052ade0
 0x14052aaa0: xor    r10d,r10d
 0x14052aaa3: cmp    QWORD PTR [rcx+0x10],r10
 0x14052aaa7: jbe    0x14052abf2
@@ -96,39 +97,6 @@
 0x14052abec: jb     0x14052aac0
 0x14052abf2: ret
 0x14052abf3: nop
-0x14052abf4: mov    ebx,0x6f0052ab
-0x14052abf9: stos   DWORD PTR [rdi],eax
-0x14052abfa: push   rdx
-0x14052abfb: add    BYTE PTR [rdx-0x6affad55],al
-0x14052ac01: stos   DWORD PTR [rdi],eax
-0x14052ac02: push   rdx
-0x14052ac03: add    dh,cl
-0x14052ac05: stos   DWORD PTR [rdi],eax
-0x14052ac06: push   rdx
-0x14052ac07: add    BYTE PTR [rax+0x460052ab],ch
-0x14052ac0d: stos   DWORD PTR [rdi],eax
-0x14052ac0e: push   rdx
-0x14052ac0f: add    BYTE PTR [rbx+rbp*4+0x52],bl
-0x14052ac13: add    bh,bl
-0x14052ac15: stos   DWORD PTR [rdi],eax
-0x14052ac16: push   rdx
-0x14052ac17: add    BYTE PTR [rax],al
-0x14052ac19: or     BYTE PTR [rax],cl
-0x14052ac1b: or     BYTE PTR [rax],cl
-0x14052ac1d: or     BYTE PTR [rax],cl
-0x14052ac1f: or     BYTE PTR [rax],cl
-0x14052ac21: or     BYTE PTR [rax],cl
-0x14052ac23: or     BYTE PTR [rax],cl
-0x14052ac25: or     BYTE PTR [rcx],al
-0x14052ac27: add    al,BYTE PTR [rbx]
-0x14052ac29: or     BYTE PTR [rax+rcx*1],al
-0x14052ac2c: or     BYTE PTR [rax],cl
-0x14052ac2e: or     BYTE PTR [rax],cl
-0x14052ac30: or     BYTE PTR [rip+0x8080806],al        # 0x1485ab43c
-0x14052ac36: or     BYTE PTR [rax],cl
-0x14052ac38: or     BYTE PTR [rax],cl
-0x14052ac3a: or     BYTE PTR [rax],cl
-0x14052ac3c: or     BYTE PTR [rdi],al
 0x14052ac3e: int3
 0x14052ac3f: int3
 0x14052ac40: xor    r10d,r10d
@@ -228,42 +196,6 @@
 0x14052ad8c: jb     0x14052ac60
 0x14052ad92: ret
 0x14052ad93: nop
-0x14052ad94: out    0xac,al
-0x14052ad96: push   rdx
-0x14052ad97: add    BYTE PTR [rip+0xf0052ad],dh        # 0x14f53004a
-0x14052ad9d: lods   eax,DWORD PTR [rsi]
-0x14052ad9e: push   rdx
-0x14052ad9f: add    BYTE PTR [rdx],ah
-0x14052ada1: lods   eax,DWORD PTR [rsi]
-0x14052ada2: push   rdx
-0x14052ada3: add    BYTE PTR [rbx-0x53],bl
-0x14052ada6: push   rdx
-0x14052ada7: add    BYTE PTR [rsi-0x53],ch
-0x14052adaa: push   rdx
-0x14052adab: add    BYTE PTR [rax-0x53],cl
-0x14052adae: push   rdx
-0x14052adaf: add    ah,bh
-0x14052adb1: lods   al,BYTE PTR [rsi]
-0x14052adb2: push   rdx
-0x14052adb3: add    BYTE PTR [rdi-0x53],bh
-0x14052adb6: push   rdx
-0x14052adb7: add    BYTE PTR [rax],al
-0x14052adb9: add    DWORD PTR [rax],ecx
-0x14052adbb: add    cl,BYTE PTR [rax]
-0x14052adbd: add    eax,DWORD PTR [rax+rcx*1]
-0x14052adc0: or     BYTE PTR [rax],cl
-0x14052adc2: or     BYTE PTR [rax],cl
-0x14052adc4: or     BYTE PTR [rax],cl
-0x14052adc6: or     BYTE PTR [rax],cl
-0x14052adc8: add    eax,0x8060808
-0x14052adcd: or     BYTE PTR [rax],cl
-0x14052adcf: or     BYTE PTR [rax],cl
-0x14052add1: or     BYTE PTR [rax],cl
-0x14052add3: or     BYTE PTR [rax],cl
-0x14052add5: or     BYTE PTR [rax],cl
-0x14052add7: or     BYTE PTR [rax],cl
-0x14052add9: or     BYTE PTR [rax],cl
-0x14052addb: (bad)
 0x14052addc: int3
 0x14052addd: int3
 0x14052adde: int3

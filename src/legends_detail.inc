@@ -2492,6 +2492,10 @@ std::shared_ptr<LegendsTextFlow> Overlay::translate_legends_flow(
     // A section caption has no sentence to reorder. Keep the normal scoped
     // label translation and its original heading color, not neutral prose.
     if (source.empty() || source.starts_with("Related ")) return {};
+    // The native artwork tab is type 7. A missing/unsupported physical
+    // source emits the generic "It is a..." opening, and a scrolled page can
+    // start at an image action. Both still belong to the artwork grammar.
+    const bool artwork_page = native_history_legends_artwork_page();
     auto continuation_key = [&](size_t begin) {
         std::string key = source.substr(begin);
         key += '\0';
@@ -2567,6 +2571,7 @@ std::shared_ptr<LegendsTextFlow> Overlay::translate_legends_flow(
         cache_key.append(reinterpret_cast<const char *>(&value), sizeof(value));
     };
     key_integer(left); key_integer(right); key_integer(clipped_start);
+    key_integer(artwork_page);
     for (const auto &[y, row] : flow->source_rows) {
         key_integer(y);
         cache_key += row;
@@ -2584,6 +2589,7 @@ std::shared_ptr<LegendsTextFlow> Overlay::translate_legends_flow(
     // must not repeat an exhausted parse. Only source, colors and whether its
     // beginning was clipped affect that result; screen coordinates do not.
     std::string work_limit_key(1, clipped_start ? '\1' : '\0');
+    work_limit_key += artwork_page ? '\1' : '\0';
     work_limit_key += continuation_key(0);
     if (legends_work_limit_cache_.contains(work_limit_key)) return {};
     auto publish = [&](std::shared_ptr<LegendsTextFlow> result) {
@@ -2610,6 +2616,125 @@ std::shared_ptr<LegendsTextFlow> Overlay::translate_legends_flow(
         LegendsTextPiece piece{std::move(target), anchor.color, anchor.x, anchor.y};
         piece.source_end = end;
         return piece;
+    };
+    // Artwork and item paragraphs have their own capture meanings: {a} is
+    // an image-element list, {e} is an item predicate, and a symbol owner's
+    // {p} is an entity name. The general history parser cannot substitute its
+    // participant/event/place meanings for them. Resolve each complete native
+    // sentence through the shared item grammar, then retain its native links
+    // while the Chinese template changes their reading order.
+    const bool item_paragraph = artwork_page || item_description_sentence_start(source);
+    const auto item_sentence_pieces = [&](size_t begin, size_t end,
+            const std::string &target) -> Pieces {
+        struct Link {
+            size_t begin = 0, end = 0;
+            Atom anchor;
+            std::vector<std::string> targets;
+        };
+        std::vector<Link> links;
+        for (size_t at = begin; at < end;) {
+            if (source[at] == ' ' || !colored(atoms[at].color)) { ++at; continue; }
+            const size_t first = at;
+            const Atom anchor = atoms[at];
+            ++at;
+            while (at < end && (source[at] == ' ' || atoms[at].color == anchor.color)) ++at;
+            size_t last = at;
+            while (last > first && source[last - 1] == ' ') --last;
+            Link link{first, last, anchor, {}};
+            const auto value = std::string_view(source).substr(first, last - first);
+            const auto remember = [&](const std::optional<std::string> &translated) {
+                if (!translation_complete_with_native_nicknames(translated, value) ||
+                        target.find(*translated) == std::string::npos ||
+                        std::find(link.targets.begin(), link.targets.end(), *translated) !=
+                            link.targets.end()) return;
+                link.targets.push_back(*translated);
+            };
+            const int r = (anchor.color >> 16) & 255;
+            const int g = (anchor.color >> 8) & 255, b = anchor.color & 255;
+            const bool person = b >= r && b > g;
+            if (person) remember(translate_legends_actor(value));
+            else {
+                remember(translate_legends_name(value, false));
+                remember(translate_legends_place(value));
+            }
+            // A native link can include NAME the SPECIES, a deity's depiction,
+            // an artifact noun, or an entire historical subject. Keep those
+            // complete typed productions instead of splitting the link into
+            // independently guessed names and ordinary description words.
+            remember(translate_symbol_element(value));
+            remember(translate_legends_text(value, true, person));
+            if (link.targets.empty()) {
+                remember(translate_legends_artifact_identity(value));
+                remember(translate_legends_book(value));
+                if (std::string_view(source).substr(begin, end - begin).starts_with(
+                        "The artwork relates to "))
+                    remember(translate_legends_event(value));
+            }
+            std::stable_sort(link.targets.begin(), link.targets.end(),
+                [](const std::string &a, const std::string &b) { return a.size() > b.size(); });
+            links.push_back(std::move(link));
+        }
+        struct Placement { size_t begin, end, link; };
+        std::vector<Placement> placements;
+        std::vector<size_t> order;
+        for (size_t i = 0; i < links.size(); ++i) order.push_back(i);
+        // Complete compound links claim their interval before a shorter name
+        // that can also occur inside it. Repeated names still have independent
+        // native coordinates: allocate each occurrence separately, in source
+        // order for equal renderings, without merging identities by color.
+        std::stable_sort(order.begin(), order.end(), [&](size_t a, size_t b) {
+            const size_t a_length = links[a].targets.empty() ? 0 : links[a].targets.front().size();
+            const size_t b_length = links[b].targets.empty() ? 0 : links[b].targets.front().size();
+            return a_length > b_length;
+        });
+        std::vector<bool> assigned(links.size(), false);
+        for (size_t index : order) {
+            bool placed = false;
+            for (const auto &name : links[index].targets) {
+                std::vector<size_t> available;
+                for (size_t at = target.find(name); at != std::string::npos;
+                        at = target.find(name, at + name.size())) {
+                    const size_t stop = at + name.size();
+                    if (std::any_of(placements.begin(), placements.end(),
+                            [&](const Placement &part) { return at < part.end && stop > part.begin; }))
+                        continue;
+                    available.push_back(at);
+                }
+                const size_t references = static_cast<size_t>(std::count_if(order.begin(), order.end(),
+                    [&](size_t candidate) {
+                        return !assigned[candidate] &&
+                            std::find(links[candidate].targets.begin(), links[candidate].targets.end(), name) !=
+                                links[candidate].targets.end();
+                    }));
+                // A name that also occurs in neutral material/prose is not a
+                // proven target interval. Equal native references account for
+                // repeated names; an extra occurrence does not grant a link.
+                if (available.empty() || available.size() > references) continue;
+                placements.push_back({available.front(), available.front() + name.size(), index});
+                assigned[index] = placed = true;
+                if (placed) break;
+            }
+        }
+        std::sort(placements.begin(), placements.end(),
+            [](const Placement &a, const Placement &b) { return a.begin < b.begin; });
+        Pieces result;
+        size_t cursor = 0;
+        for (const auto &placement : placements) {
+            const Link &link = links[placement.link];
+            if (placement.begin > cursor)
+                result.push_back(supported_piece(target.substr(cursor, placement.begin - cursor),
+                    *neutral, link.end));
+            result.push_back(supported_piece(target.substr(placement.begin,
+                placement.end - placement.begin), link.anchor, link.end));
+            cursor = placement.end;
+        }
+        // A typed sentence remains fully translated even when a native link's
+        // complete rendering cannot be located in the reordered target. Its
+        // uncertain interval stays neutral rather than acquiring another
+        // object's click anchor or reverting the sentence to English.
+        if (cursor < target.size())
+            result.push_back(supported_piece(target.substr(cursor), *neutral, end));
+        return result;
     };
     using CaptureKey = std::tuple<char, size_t, size_t>;
     std::map<CaptureKey, std::optional<Pieces>> cache;
@@ -2853,6 +2978,32 @@ std::shared_ptr<LegendsTextFlow> Overlay::translate_legends_flow(
         std::vector<Candidate> candidates;
         std::vector<size_t> compositional_ends;
         const auto feature_argument_end = legends_feature_argument_end(source, cursor);
+        if (item_paragraph) {
+            for (size_t end = cursor; end < source.size(); ++end) {
+                if (source[end] != '.' && source[end] != '!' && source[end] != '?') continue;
+                size_t stop = end + 1;
+                if (stop < source.size() && source[stop] == '"') ++stop;
+                if (stop < source.size() && source[stop] != ' ') continue;
+                const auto sentence = std::string_view(source).substr(cursor, stop - cursor);
+                const auto target = translate_item_description_source(sentence, true);
+                if (!translation_complete_with_native_nicknames(target, sentence)) continue;
+                auto pieces = item_sentence_pieces(cursor, stop, *target);
+                if (stop == source.size()) {
+                    sentences[cursor] = std::move(pieces);
+                    return sentences[cursor];
+                }
+                if (auto rest = resolve(stop)) {
+                    for (auto &piece : *rest) append(pieces, std::move(piece));
+                    sentences[cursor] = std::move(pieces);
+                    return sentences[cursor];
+                }
+                candidates.push_back({stop, std::move(pieces)});
+                // Item parsing has already proved this complete sentence's
+                // boundary, including punctuation inside native nicknames and
+                // written titles. A later clause must not become its noun.
+                break;
+            }
+        }
         // Reuse complete, existing raw-description translations. Every byte
         // must be neutral: flattening a sentence containing a colored name
         // would silently discard its clickable identity.

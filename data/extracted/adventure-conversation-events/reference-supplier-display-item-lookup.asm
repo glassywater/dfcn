@@ -1,4 +1,5 @@
 ; reference PE:6a70a6d9:02711000; display-item-lookup 0x140cb1720..0x140cb1783
+; native unwind regions: 0x140cb1720..0x140cb1783
 0x140cb1720: mov    QWORD PTR [rsp+0x8],rbx
 0x140cb1725: mov    QWORD PTR [rsp+0x10],rsi
 0x140cb172a: push   rdi

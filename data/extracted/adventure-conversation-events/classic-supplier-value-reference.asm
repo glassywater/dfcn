@@ -1,4 +1,5 @@
 ; classic PE:6a70b91c:0270a000; value-reference 0x140edb2f0..0x140edb79c
+; native unwind regions: 0x140edb2f0..0x140edb79c
 0x140edb2f0: mov    QWORD PTR [rsp+0x8],rbx
 0x140edb2f5: push   rdi
 0x140edb2f6: sub    rsp,0x20
@@ -238,57 +239,3 @@
 0x140edb714: pop    rdi
 0x140edb715: ret
 0x140edb716: xchg   ax,ax
-0x140edb718: jne    0x140edb6cd
-0x140edb71a: in     eax,dx
-0x140edb71b: add    BYTE PTR [rbx+rsi*4-0x4c4cff13],dl
-0x140edb722: in     eax,dx
-0x140edb723: add    dl,dl
-0x140edb725: mov    bl,0xed
-0x140edb727: add    cl,dh
-0x140edb729: mov    bl,0xed
-0x140edb72b: add    BYTE PTR [rax],dl
-0x140edb72d: mov    ah,0xed
-0x140edb72f: add    BYTE PTR [rdi],ch
-0x140edb731: mov    ah,0xed
-0x140edb733: add    BYTE PTR [rsi-0x4c],cl
-0x140edb736: in     eax,dx
-0x140edb737: add    BYTE PTR [rdx-0x4c],bl
-0x140edb73a: in     eax,dx
-0x140edb73b: add    BYTE PTR [rcx-0x4c],bh
-0x140edb73e: in     eax,dx
-0x140edb73f: add    BYTE PTR [rax-0x5bff124c],bl
-0x140edb745: mov    ah,0xed
-0x140edb747: add    bl,al
-0x140edb749: mov    ah,0xed
-0x140edb74b: add    dl,ah
-0x140edb74d: mov    ah,0xed
-0x140edb74f: add    BYTE PTR [rcx],al
-0x140edb751: mov    ch,0xed
-0x140edb753: add    BYTE PTR [rax],ah
-0x140edb755: mov    ch,0xed
-0x140edb757: add    BYTE PTR [rdi],bh
-0x140edb759: mov    ch,0xed
-0x140edb75b: add    BYTE PTR [rsi-0x4b],bl
-0x140edb75e: in     eax,dx
-0x140edb75f: add    BYTE PTR [rbp-0x4b],bh
-0x140edb762: in     eax,dx
-0x140edb763: add    BYTE PTR [rbp+rsi*4-0x4a57ff13],bl
-0x140edb76a: in     eax,dx
-0x140edb76b: add    bh,al
-0x140edb76d: mov    ch,0xed
-0x140edb76f: add    dh,ah
-0x140edb771: mov    ch,0xed
-0x140edb773: add    BYTE PTR [rip+0x1100edb6],al        # 0x151eea52f
-0x140edb779: mov    dh,0xed
-0x140edb77b: add    BYTE PTR [rip+0x3c00edb6],bl        # 0x17ceea537
-0x140edb781: mov    dh,0xed
-0x140edb783: add    BYTE PTR [rbx-0x4a],bl
-0x140edb786: in     eax,dx
-0x140edb787: add    BYTE PTR [rdx-0x4a],bh
-0x140edb78a: in     eax,dx
-0x140edb78b: add    BYTE PTR [rcx-0x47ff124a],bl
-0x140edb791: mov    dh,0xed
-0x140edb793: add    bh,dl
-0x140edb795: mov    dh,0xed
-0x140edb797: add    dh,dh
-0x140edb799: mov    dh,0xed

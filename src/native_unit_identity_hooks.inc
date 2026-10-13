@@ -64,6 +64,137 @@ struct NativeUnitIdentityHooks {
 };
 static NativeUnitIdentityHooks g_native_unit_identity_hooks;
 
+static uint64_t current_native_identity_translation_catalog() noexcept {
+    return g_overlay.native_identity_translation_catalog_generation();
+}
+
+struct NativeUnitIdentityCompletedCache {
+    std::mutex mutex;
+    std::unordered_map<std::string, std::optional<std::string>> results;
+    std::deque<std::string> order;
+    size_t bytes = 0;
+};
+static NativeUnitIdentityCompletedCache g_native_unit_identity_completed;
+
+static void remember_completed_native_unit_identity_translation(const std::string &key,
+        const std::optional<std::string> &target) {
+    if (key.size() > 8192) return;
+    auto &cache = g_native_unit_identity_completed;
+    std::lock_guard<std::mutex> lock(cache.mutex);
+    if (cache.results.contains(key)) return;
+    constexpr size_t byte_limit = 16 * 1024 * 1024;
+    const size_t bytes = key.size() + (target ? target->size() : 0);
+    if (bytes > byte_limit) return;
+    while (!cache.order.empty() &&
+            (cache.results.size() >= 4096 || cache.bytes + bytes > byte_limit)) {
+        const auto oldest = cache.results.find(cache.order.front());
+        if (oldest != cache.results.end()) {
+            cache.bytes -= oldest->first.size() +
+                (oldest->second ? oldest->second->size() : 0);
+            cache.results.erase(oldest);
+        }
+        cache.order.pop_front();
+    }
+    cache.bytes += bytes;
+    cache.results.emplace(key, target);
+    cache.order.push_back(key);
+}
+
+static bool native_unit_identity_snapshot_worker_safe(const NativeUnitIdentity &snapshot) {
+    return snapshot.form != NativeUnitIdentityForm::Reference ||
+        std::none_of(snapshot.reference_parts.begin(), snapshot.reference_parts.end(),
+            [](const NativeUnitReferencePart &part) {
+                return part.kind == NativeUnitReferencePartKind::Title || part.entity_present;
+            });
+}
+
+static std::optional<std::string> publish_native_unit_identity_snapshot(
+        NativeUnitIdentity snapshot, uintptr_t output, std::string original,
+        uintptr_t unit_owner, bool english_name, bool character_header = false) {
+    const auto catalog = g_overlay.native_identity_translation_catalog_generation();
+    const std::string key = std::to_string(catalog) + '\x1f' +
+        native_unit_identity_cache_key(snapshot);
+    std::optional<std::string> translated;
+    bool completed = false;
+    {
+        auto &cache = g_native_unit_identity_completed;
+        std::lock_guard<std::mutex> lock(cache.mutex);
+        const auto found = cache.results.find(key);
+        if (found != cache.results.end()) { translated = found->second; completed = true; }
+    }
+    if (completed) {
+        // A memo hit is one registry transaction. Never expose a temporary
+        // native spelling between resetting an owner and publishing its result.
+        remember_completed_native_unit_identity_publication(output, original,
+            translated ? *translated : native_text_to_utf8(original),
+            unit_owner, english_name, character_header, catalog, key);
+        return translated;
+    }
+    const bool authored = snapshot.form == NativeUnitIdentityForm::NameOnly &&
+        !snapshot.english_name && snapshot.name.language < 0 && snapshot.name.nickname.empty() &&
+        std::all_of(snapshot.name.words.begin(), snapshot.name.words.end(),
+            [](const auto &word) { return word.id.empty(); });
+    if (authored) {
+        // An explicit authored field has a complete legal native result; it
+        // does not await a name dictionary or generated-name worker.
+        translated = native_text_to_utf8(original);
+        remember_completed_native_unit_identity_publication(output, original, *translated,
+            unit_owner, english_name, character_header, catalog, key);
+        return translated;
+    }
+    const bool worker_safe = native_unit_identity_snapshot_worker_safe(snapshot);
+    auto deferred = worker_safe ? std::shared_ptr<const NativeUnitIdentity>{}
+        : std::make_shared<const NativeUnitIdentity>(std::move(snapshot));
+    const auto token = begin_native_unit_identity_publication(output, original,
+        unit_owner, english_name, character_header, catalog, key, std::move(deferred));
+    if (!token.owner) return std::nullopt;
+    if (!worker_safe) return std::nullopt;
+    // The callback retains no unit/output pointer for dereferencing. Its
+    // original bytes and complete selected native fields own the whole job.
+    queue_native_identity_translation_job(
+        [snapshot = std::move(snapshot), original = std::move(original), key,
+                catalog, token]() mutable {
+            if (catalog != g_overlay.native_identity_translation_catalog_generation()) return;
+            std::optional<std::string> target;
+            try {
+                target = g_overlay.translate_native_unit_identity(snapshot);
+            }
+            catch (const DfhackTranslationNeedsWorld &) {
+                // Live office/territory lookups remain owned by SDL replay.
+                // They are not a completed untranslated dictionary result.
+                return;
+            }
+            if (target && target->empty()) target.reset();
+            if (catalog != g_overlay.native_identity_translation_catalog_generation()) return;
+            remember_completed_native_unit_identity_translation(key, target);
+            finish_native_unit_identity_publication(token, original,
+                target ? *target : native_text_to_utf8(original));
+        }, "unit:" + std::to_string(output));
+    return std::nullopt;
+}
+
+static std::optional<NativeUnitIdentitySource> prepare_native_unit_identity_source_binding(
+        std::string_view source, uintptr_t owner, std::string_view semantic_key) {
+    auto binding = native_unit_identity_source_binding(source, owner, semantic_key);
+    if (!binding || binding->ready || !binding->deferred_snapshot) return binding;
+    const NativeUnitIdentityPublication token{
+        owner, binding->publication_epoch, binding->pending_witness, binding->catalog};
+    // This entry belongs only to SDL before drawing. The registry mutex has
+    // already been released; live title lookup uses the existing UI renderer.
+    try {
+        auto target = g_overlay.translate_native_unit_identity(*binding->deferred_snapshot);
+        if (target && target->empty()) target.reset();
+        if (token.catalog == g_overlay.native_identity_translation_catalog_generation()) {
+            // SDL actually resolved the owned deferred snapshot. A legal
+            // untranslated result is complete too, unlike a rejected worker.
+            remember_completed_native_unit_identity_translation(binding->semantic_key, target);
+            finish_native_unit_identity_publication(token, binding->semantic_source,
+                target ? *target : native_text_to_utf8(binding->semantic_source));
+        }
+    } catch (const DfhackTranslationNeedsWorld &) {}
+    return native_unit_identity_source_binding(source, owner, semantic_key);
+}
+
 static void capture_native_unit_identity_name_fields(const void *name,
         const NativeString *output) noexcept {
     auto *call = g_native_unit_identity_call;
@@ -146,7 +277,6 @@ static void capture_native_unit_header_english_name(const void *name,
         std::string_view source;
         if (!native_string_view(output, &source, 262144) || source.empty()) return;
         const std::string original(source);
-        std::optional<std::string> translated;
         NativeUnitIdentity snapshot;
         std::array<int32_t, 7> indices;
         // The sheet selects the visible language_name itself and bypasses the
@@ -162,10 +292,8 @@ static void capture_native_unit_header_english_name(const void *name,
         snapshot.native_name = original;
         snapshot.form = NativeUnitIdentityForm::NameOnly;
         snapshot.english_name = true;
-        translated = g_overlay.translate_native_unit_identity(snapshot);
-        if (translated && translated->empty()) translated.reset();
-        remember_native_unit_identity(reinterpret_cast<uintptr_t>(output), original,
-            translated ? *translated : native_text_to_utf8(original),
+        publish_native_unit_identity_snapshot(std::move(snapshot),
+            reinterpret_cast<uintptr_t>(output), original,
             reinterpret_cast<uintptr_t>(unit), true, true);
     } catch (...) {
         // Never unwind across the sheet's native formatter call.
@@ -182,7 +310,6 @@ static void capture_native_unit_header_creation_name(const void *name, NativeStr
         const std::string original(source);
         NativeUnitIdentity snapshot;
         std::array<int32_t, 7> indices;
-        std::optional<std::string> translated;
         // Creator of and unit+0xa08's language_name are separate draws.
         // Capture the selected artifact roots directly, including title-only
         // names that do not follow the two-root personal surname grammar.
@@ -193,10 +320,13 @@ static void capture_native_unit_header_creation_name(const void *name, NativeStr
                 snapshot.native_name_words, &indices);
             snapshot.native_name = original;
             snapshot.form = NativeUnitIdentityForm::NameOnly;
-            translated = g_overlay.translate_native_unit_identity(snapshot);
+            publish_native_unit_identity_snapshot(std::move(snapshot),
+                reinterpret_cast<uintptr_t>(output), original,
+                reinterpret_cast<uintptr_t>(name), false, true);
+            return;
         }
         remember_native_unit_identity(reinterpret_cast<uintptr_t>(output), original,
-            translated ? *translated : native_text_to_utf8(original),
+            native_text_to_utf8(original),
             reinterpret_cast<uintptr_t>(name), false, true);
     } catch (...) {
         // Never unwind across the sheet's native name generator.
@@ -396,12 +526,16 @@ static std::optional<std::string> finish_native_unit_reference_call(
             capture_native_unit_identity(call.unit, snapshot);
         if (typed) {
             if (captured) *captured = snapshot;
-            translated = g_overlay.translate_native_unit_identity(snapshot);
+            if (call.publish)
+                translated = publish_native_unit_identity_snapshot(snapshot,
+                    reinterpret_cast<uintptr_t>(output), original, call.unit, false);
+            else translated = g_overlay.translate_native_unit_identity(snapshot);
         }
         if (translated && translated->empty()) translated.reset();
         if (call.publish) {
-            remember_native_unit_identity(reinterpret_cast<uintptr_t>(output), original,
-                translated ? *translated : native_text_to_utf8(original), call.unit, false);
+            if (!typed)
+                remember_native_unit_identity(reinterpret_cast<uintptr_t>(output), original,
+                    native_text_to_utf8(original), call.unit, false);
             if (call.announcement_reference)
                 remember_native_announcement_unit_reference(original, typed ? &snapshot : nullptr);
         }
@@ -473,10 +607,8 @@ static void capture_native_conversation_portrait_capitalization(NativeString *ou
         if (!native_string_view(output, &source, 262144) || source.empty()) return;
         // This exact caller capitalizes 1331500's same NativeString before
         // drawing it. Keep its typed identity even when no info rows follow.
-        const std::string target = identity->target == native_text_to_utf8(identity->source)
-            ? native_text_to_utf8(source) : identity->target;
-        remember_native_unit_identity(reinterpret_cast<uintptr_t>(output), source, target,
-            identity->unit_owner, identity->english_name, identity->character_header);
+        rebind_native_unit_identity_capitalization(
+            reinterpret_cast<uintptr_t>(output), *identity, source);
     } catch (...) {}
 }
 
@@ -564,6 +696,7 @@ static std::optional<std::string> finish_native_unit_identity_call(NativeUnitIde
         const std::string original(source);
         std::optional<std::string> translated;
         NativeUnitIdentity snapshot;
+        bool typed = false;
         if (!call.name_failed) {
             // Native visibility/identity selection takes priority over the
             // unit's stored name, which may be deliberately hidden or replaced.
@@ -585,15 +718,20 @@ static std::optional<std::string> finish_native_unit_identity_call(NativeUnitIde
             // caption. Preserve the native result on unsupported branches.
             const bool needs_role = Index == 0 || Index == 3 || Index == 4 ||
                 (Index == 1 && snapshot.native_name.empty());
-            if ((!needs_role || call.role_seen) &&
-                    capture_native_unit_identity(call.unit, snapshot))
-                translated = g_overlay.translate_native_unit_identity(snapshot);
+            typed = (!needs_role || call.role_seen) &&
+                capture_native_unit_identity(call.unit, snapshot);
+            if (typed) {
+                if (call.publish)
+                    translated = publish_native_unit_identity_snapshot(std::move(snapshot),
+                        reinterpret_cast<uintptr_t>(output), original, name_unit, english_name);
+                else translated = g_overlay.translate_native_unit_identity(snapshot);
+            }
         }
         // Unsupported native branches can leave the semantic name/role
         // fields empty even though the formatter produced a visible string.
         // Treat that as a capture failure, including disposable references.
         if (translated && translated->empty()) translated.reset();
-        if (call.publish)
+        if (call.publish && !typed)
             remember_native_unit_identity(reinterpret_cast<uintptr_t>(output),
                 original, translated ? *translated : native_text_to_utf8(original),
                 name_unit, english_name);

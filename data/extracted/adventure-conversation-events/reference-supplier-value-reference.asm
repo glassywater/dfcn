@@ -1,4 +1,5 @@
 ; reference PE:6a70a6d9:02711000; value-reference 0x140ee0380..0x140ee082c
+; native unwind regions: 0x140ee0380..0x140ee082c
 0x140ee0380: mov    QWORD PTR [rsp+0x8],rbx
 0x140ee0385: push   rdi
 0x140ee0386: sub    rsp,0x20
@@ -238,59 +239,3 @@
 0x140ee07a4: pop    rdi
 0x140ee07a5: ret
 0x140ee07a6: xchg   ax,ax
-0x140ee07a8: add    eax,0x2400ee04
-0x140ee07ad: add    al,0xee
-0x140ee07af: add    BYTE PTR [rbx+0x4],al
-0x140ee07b2: out    dx,al
-0x140ee07b3: add    BYTE PTR [rdx+0x4],ah
-0x140ee07b6: out    dx,al
-0x140ee07b7: add    BYTE PTR [rcx-0x5fff11fc],al
-0x140ee07bd: add    al,0xee
-0x140ee07bf: add    BYTE PTR [rdi-0x21ff11fc],bh
-0x140ee07c5: add    al,0xee
-0x140ee07c7: add    dl,ch
-0x140ee07c9: add    al,0xee
-0x140ee07cb: add    BYTE PTR [rcx],cl
-0x140ee07cd: add    eax,0x52800ee
-0x140ee07d2: out    dx,al
-0x140ee07d3: add    BYTE PTR [rax*1+0x55300ee],dh
-0x140ee07da: out    dx,al
-0x140ee07db: add    BYTE PTR [rdx+0x5],dh
-0x140ee07de: out    dx,al
-0x140ee07df: add    BYTE PTR [rcx-0x4fff11fb],dl
-0x140ee07e5: add    eax,0x5cf00ee
-0x140ee07ea: out    dx,al
-0x140ee07eb: add    dh,ch
-0x140ee07ed: add    eax,0x60d00ee
-0x140ee07f2: out    dx,al
-0x140ee07f3: add    BYTE PTR [rsi+rax*1],ch
-0x140ee07f6: out    dx,al
-0x140ee07f7: add    BYTE PTR [rax],bh
-0x140ee07f9: (bad)
-0x140ee07fa: out    dx,al
-0x140ee07fb: add    BYTE PTR [rdi+0x6],dl
-0x140ee07fe: out    dx,al
-0x140ee07ff: add    BYTE PTR [rsi+0x6],dh
-0x140ee0802: out    dx,al
-0x140ee0803: add    BYTE PTR [rbp-0x5eff11fa],dl
-0x140ee0809: (bad)
-0x140ee080a: out    dx,al
-0x140ee080b: add    BYTE PTR [rbp-0x33ff11fa],ch
-0x140ee0811: (bad)
-0x140ee0812: out    dx,al
-0x140ee0813: add    bl,ch
-0x140ee0815: (bad)
-0x140ee0816: out    dx,al
-0x140ee0817: add    BYTE PTR [rdx],cl
-0x140ee0819: (bad)
-0x140ee081a: out    dx,al
-0x140ee081b: add    BYTE PTR [rcx],ch
-0x140ee081d: (bad)
-0x140ee081e: out    dx,al
-0x140ee081f: add    BYTE PTR [rax+0x7],cl
-0x140ee0822: out    dx,al
-0x140ee0823: add    BYTE PTR [rdi+0x7],ah
-0x140ee0826: out    dx,al
-0x140ee0827: .byte 0
-0x140ee0828: xchg   BYTE PTR [rdi],al
-0x140ee082a: out    dx,al

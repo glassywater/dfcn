@@ -78,6 +78,45 @@ static bool native_world_map_screen() {
     return screen && native_history_object_is(screen, "viewscreen_worldst");
 }
 
+static std::optional<std::vector<std::string>> native_expanded_world_site_rumor_lines() {
+    const uintptr_t screen = native_current_viewscreen();
+    if (!screen || !native_history_object_is(screen, "viewscreen_worldst"))
+        return std::nullopt;
+    const uintptr_t focus_field = native_history_object_member(screen,
+        "viewscreen_worldst", "focused_on_last_hover_rumor", sizeof(bool));
+    const uintptr_t lines_field = native_history_object_member(screen,
+        "viewscreen_worldst", "rumor_text.text", sizeof(NativeBorrowedVector<uintptr_t>));
+    bool focused = false;
+    NativeBorrowedVector<uintptr_t> native_lines;
+    if (!native_history_copy(focus_field, focused) || !focused ||
+            !native_history_copy(lines_field, native_lines) ||
+            !native_lines.valid(16384) || !native_lines.size()) return std::nullopt;
+    std::vector<uintptr_t> pointers(native_lines.size());
+    if (!native_history_copy_bytes(reinterpret_cast<uintptr_t>(native_lines.begin),
+            pointers.data(), pointers.size() * sizeof(uintptr_t))) return std::nullopt;
+    std::vector<std::string> lines;
+    lines.reserve(pointers.size());
+    size_t bytes = 0;
+    for (const uintptr_t address : pointers) {
+        std::string line;
+        // The guarded reader uses the current host's std::string ABI. The
+        // retained wrap remains available even when no new paragraph is built.
+        if (!native_history_copy_string(address, line) || line.size() > 1024 ||
+                line.size() > 1048576 - bytes ||
+                line.find_first_of(std::string_view("\0\r\n", 3)) != std::string::npos)
+            return std::nullopt;
+        bytes += line.size();
+        lines.push_back(std::move(line));
+    }
+    NativeBorrowedVector<uintptr_t> current_lines;
+    if (!bytes || native_current_viewscreen() != screen ||
+            !native_history_copy(focus_field, focused) || !focused ||
+            !native_history_copy(lines_field, current_lines) ||
+            current_lines.begin != native_lines.begin || current_lines.end != native_lines.end ||
+            current_lines.capacity != native_lines.capacity) return std::nullopt;
+    return lines;
+}
+
 static std::vector<SDL_Rect> native_text_input_regions(const graphicst &gps,
         const std::vector<std::string> &rows, const unsigned char *screen_override) {
     std::vector<SDL_Rect> regions;

@@ -9,6 +9,36 @@ for (bool top_layer : {false, true}) {
                     return row.x == draw.x && row.y == draw.y &&
                         row.map_hover.kind != NativeMapHoverKind::Unit;
                 })) continue;
+        if (draw.unit_identity_target && !draw.unit_identity_ready &&
+                !draw.squad_alias_target && !draw.editable_text && !draw.source.empty() &&
+                draw.x >= 0 && draw.x < gps_->dimx && draw.y >= 0 && draw.y < gps_->dimy &&
+                draw.source.size() <= static_cast<size_t>(gps_->dimx - draw.x)) {
+            const int first = draw.y;
+            const auto *flags = top_layer ? gps_->screentexpos_top_flag : gps_->screentexpos_flag;
+            const uint32_t half = flags
+                ? flags[static_cast<size_t>(draw.x) * gps_->dimy + first] & ((1u << 3) | (1u << 4))
+                : 0;
+            const int mate = half == (1u << 3) ? first + 1 :
+                half == (1u << 4) ? first - 1 : -1;
+            for (int y : {first, mate}) {
+                if (y < 0 || y >= gps_->dimy || (only_y >= 0 && y != only_y) ||
+                        (screen_override && screen_override !=
+                            (top_layer ? gps_->screen_top : gps_->screen))) continue;
+                auto &row = screen_rows[y];
+                if (row.compare(draw.x, draw.source.size(), draw.source) != 0) continue;
+                const int right = draw.x + static_cast<int>(draw.source.size());
+                std::erase_if(result, [&](const Match &match) {
+                    return match.y == y && match.x < right && draw.x < match.x + match.length;
+                });
+                // This typed source is awaiting its own translation. Reserve
+                // only its proven bytes for the pre-draw glyph interceptor;
+                // do not render an English fallback or empty name quotes.
+                result.push_back({draw.x, y, static_cast<int>(draw.source.size()),
+                    kCreatureNameRule, {}, draw.source});
+                std::fill(row.begin() + draw.x, row.begin() + right, ' ');
+            }
+            continue;
+        }
         if (draw.unit_identity_header && draw.unit_identity_target &&
                 draw.x >= 0 && draw.x < gps_->dimx && draw.y >= 0 && draw.y < gps_->dimy) {
             // The formatter already owns this header name. Emit its current

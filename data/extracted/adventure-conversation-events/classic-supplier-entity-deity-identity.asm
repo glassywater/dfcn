@@ -1,4 +1,5 @@
 ; classic PE:6a70b91c:0270a000; entity-deity-identity 0x140b8f940..0x140b8fab8
+; native unwind regions: 0x140b8f940..0x140b8fab8
 0x140b8f940: mov    QWORD PTR [rsp+0x8],rbx
 0x140b8f945: mov    QWORD PTR [rsp+0x20],rsi
 0x140b8f94a: push   rdi

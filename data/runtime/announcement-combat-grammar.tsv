@@ -212,6 +212,8 @@ sentence	{s} are having trouble breathing!	{s1}呼吸困难了！	unit	0x1400e98
 sentence	{s} is propelled away by the force of the blow!	{s1}被这一击打飞了！	unit	0x1400e95bb
 sentence	{s} is having more trouble breathing!	{s1}呼吸更加困难了！	unit	0x1400e9867
 sentence	{s} is having trouble breathing!	{s1}呼吸困难了！	unit	0x1400e9870
+# Own the complete melting death before the unrelated rumor possession grammar.
+sentence	{s} has melted.	{s1}熔化而死。	unit	0x1413e5b20+0x1413e5fea+0x1413e664a; data/extracted/announcement-system-sources.tsv
 sentence	{s} feel sick!	{s1}觉得恶心！	unit	0x1400e992b..0x1400e995d
 sentence	{s} feel even more sick!	{s1}觉得更恶心了！	unit	0x1400e992b..0x1400e995d
 sentence	{s} looks sick!	{s1}看起来想吐了！	unit	0x1400e992b..0x1400e995d

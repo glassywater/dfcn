@@ -20,8 +20,10 @@ static bool native_worldgen_output_active(const graphicst *graphics) noexcept {
 }
 
 static bool native_worldgen_main_view(const graphicst *graphics) noexcept {
+    // Windows display and Present read an independent graphicst header for
+    // the same native output buffers. Identify that output by its grid,
+    // not the producer's header address, so its private page is composited.
     return graphics && g_native_worldgen_layer.ready && g_native_worldgen_owner &&
-        graphics == g_native_worldgen_background_graphics &&
         graphics->screen == g_native_worldgen_background_grid &&
         !native_worldgen_output_active(graphics) &&
         graphics->dimx == g_native_worldgen_layer.foreground.dimx &&

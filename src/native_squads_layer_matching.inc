@@ -54,7 +54,10 @@ std::vector<Match> Overlay::find_native_squads_matches() const {
         int footer = -1;
     };
     std::vector<Field> fields;
-    for (const auto &plane : g_native_squads_text.rows) for (const auto &draw : plane) {
+    auto captured_rows = g_native_squads_text.rows;
+    for (auto &plane : captured_rows)
+        for (auto &draw : plane) refresh_native_unit_identity_draw(draw);
+    for (const auto &plane : captured_rows) for (const auto &draw : plane) {
         if (draw.source.empty() || draw.draw_dimx != gps->dimx || draw.draw_dimy != gps->dimy ||
                 draw.draw_grid != (draw.top_layer ? gps->screen_top : gps->screen) ||
                 draw.y < panel.y || draw.y >= panel_bottom) continue;
@@ -223,6 +226,14 @@ std::vector<Match> Overlay::find_native_squads_matches() const {
     for (auto &field : owned) {
         const auto &draw = *field.draw;
         auto &match = field.match;
+        if (draw.unit_identity_target && !draw.unit_identity_ready &&
+                !draw.squad_alias_target && !draw.editable_text) {
+            // Keep the exact captured source mask before native tile paint.
+            // An unresolved typed identity cannot fall back to Latin ink.
+            match.target.clear();
+            result.push_back(std::move(match));
+            continue;
+        }
         if (field.footer >= 0 && !g_native_squads_footer_target.empty()) {
             result.push_back(std::move(match)); // exact source masks for the footer
             continue;

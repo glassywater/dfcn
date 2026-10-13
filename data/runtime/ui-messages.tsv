@@ -258,16 +258,27 @@ Do you approve this request?	是否批准此请求？
 # names, wealth and agreement dates remain separate typed captures, including
 # title/value draws on consecutive rows. PE literals include the CP437 sun.
 Accepted petition:	已批准的申请：
+Build a temple	建造神殿
+Build a temple complex	建造神殿建筑群
+Build a guildhall	建造行会大厅
+Build a grand guildhall	建造大行会大厅
+Accepted petition: for	申请对象：
+Accepted petition: missing name	（名称缺失）
 The associated zones must have enough value. ({d}\x0F)	关联区域的总价值需达到{d1}☼。
+The associated zones must have enough value. (\x0F)	关联区域必须达到足够的总价值（要求数值缺失）。
 Current temple location:	当前神殿地点：
-Current top temple location:	当前等级最高的神殿地点：
+Current top temple location:	当前价值最高的神殿地点：
 Current guildhall location:	当前行会大厅地点：
-Current top guildhall location:	当前等级最高的行会大厅地点：
+Current top guildhall location:	当前价值最高的行会大厅地点：
 Current temple location: {e}, {d}\x0F	当前神殿地点：{e1}，{d1}☼
-Current top temple location: {e}, {d}\x0F	当前等级最高的神殿地点：{e1}，{d1}☼
+Current top temple location: {e}, {d}\x0F	当前价值最高的神殿地点：{e1}，{d1}☼
 Current guildhall location: {e}, {d}\x0F	当前行会大厅地点：{e1}，{d1}☼
-Current top guildhall location: {e}, {d}\x0F	当前等级最高的行会大厅地点：{e1}，{d1}☼
+Current top guildhall location: {e}, {d}\x0F	当前价值最高的行会大厅地点：{e1}，{d1}☼
 Agreement date: {d}st Granite, {d}	协议日期：第{d2}年花岗岩月{d1}日
+Agreement date: {d}st , {d}	协议日期：第{d2}年（月份未知）{d1}日
+Agreement date: {d}nd , {d}	协议日期：第{d2}年（月份未知）{d1}日
+Agreement date: {d}rd , {d}	协议日期：第{d2}年（月份未知）{d1}日
+Agreement date: {d}th , {d}	协议日期：第{d2}年（月份未知）{d1}日
 Agreement date: {d}nd Granite, {d}	协议日期：第{d2}年花岗岩月{d1}日
 Agreement date: {d}rd Granite, {d}	协议日期：第{d2}年花岗岩月{d1}日
 Agreement date: {d}th Granite, {d}	协议日期：第{d2}年花岗岩月{d1}日
@@ -541,24 +552,43 @@ You no longer assume a submissive posture.	你不再摆出投降姿态。
 You assume a submissive posture.	你摆出了投降姿态。
 You are too injured to climb.	你的伤势太重，无法攀爬。
 You need a free grasp to climb.	需要一个空闲的抓握部位才能攀爬。
-# Adventure tracking: footwear/anatomy, species owners and complete liquid
-# materials share the compact spoor grammar. Depth/strength stays in sentences.
-# Native liquid branches: 0x140af54ce/0x140af54e2/0x140af54f6 and
-# 0x140af5905/0x140af5919/0x140af592d; print suffix 0x140af5674/0x140af5ab2.
+# Adventure tracking: complete Linux freshest-track popup productions.
+# Source: data/extracted/adventure-tracking/elf-decompiled.c and native-productions.tsv.
+# The report uses This/here; the popup uses There and omits here.
+# Four strengths include the zero-strength branch. Empty native item/body
+# names retain complete sentences; species, sides and materials are typed fields.
 There is a deep {s} imprint in the {s}.	{s2}中有一个{s1}留下的深压痕。
 There is a shallow {s} imprint in the {s}.	{s2}中有一个{s1}留下的浅压痕。
 There is a vague {s} imprint in the {s}.	{s2}中有一个{s1}留下的模糊压痕。
 There is a {s} imprint in the {s}.	{s2}中有一个{s1}留下的压痕。
-There is a {s}'s deep {s} imprint in the {s}.	{s3}中有一个{s1}{s2}留下的深压痕。
-There is a {s}'s shallow {s} imprint in the {s}.	{s3}中有一个{s1}{s2}留下的浅压痕。
-There is a {s}'s vague {s} imprint in the {s}.	{s3}中有一个{s1}{s2}留下的模糊压痕。
 There is a thick {s} print.	这里有一处{s}印迹，痕迹浓重。
 There is a light {s} print.	这里有一处{s}印迹，痕迹较淡。
 There is a faint {s} print.	这里有一处{s}印迹，痕迹隐约可见。
 There is a {s} print.	这里有一处{s}印迹。
+There is a {s}'s deep {s} imprint in the {s}.	{s3}中有一个{s1}{s2}留下的深压痕。
+There is a {s}'s shallow {s} imprint in the {s}.	{s3}中有一个{s1}{s2}留下的浅压痕。
+There is a {s}'s vague {s} imprint in the {s}.	{s3}中有一个{s1}{s2}留下的模糊压痕。
+There is a {s}'s {s} imprint in the {s}.	{s3}中有一个{s1}{s2}留下的压痕。
 There is a {s}'s thick {s} print.	这里有一处{s1}{s2}印迹，痕迹浓重。
 There is a {s}'s light {s} print.	这里有一处{s1}{s2}印迹，痕迹较淡。
 There is a {s}'s faint {s} print.	这里有一处{s1}{s2}印迹，痕迹隐约可见。
+There is a {s}'s {s} print.	这里有一处{s1}{s2}印迹。
+There is a deep imprint in the {s}.	{s}中有一个深压痕。
+There is a shallow imprint in the {s}.	{s}中有一个浅压痕。
+There is a vague imprint in the {s}.	{s}中有一个模糊压痕。
+There is a imprint in the {s}.	{s}中有一个压痕。
+There is a thick print.	这里有一处印迹，痕迹浓重。
+There is a light print.	这里有一处印迹，痕迹较淡。
+There is a faint print.	这里有一处印迹，痕迹隐约可见。
+There is a print.	这里有一处印迹。
+There is a {s}'s deep imprint in the {s}.	{s2}中有一个{s}深压痕。
+There is a {s}'s shallow imprint in the {s}.	{s2}中有一个{s}浅压痕。
+There is a {s}'s vague imprint in the {s}.	{s2}中有一个{s}模糊压痕。
+There is a {s}'s imprint in the {s}.	{s2}中有一个{s}压痕。
+There is a {s}'s thick print.	这里有一处{s}印迹，痕迹浓重。
+There is a {s}'s light print.	这里有一处{s}印迹，痕迹较淡。
+There is a {s}'s faint print.	这里有一处{s}印迹，痕迹隐约可见。
+There is a {s}'s print.	这里有一处{s}印迹。
 The signs lead north.	踪迹通向北方。
 The signs lead east.	踪迹通向东方。
 The signs lead south.	踪迹通向南方。
@@ -567,6 +597,11 @@ The signs lead northeast.	踪迹通向东北方。
 The signs lead northwest.	踪迹通向西北方。
 The signs lead southeast.	踪迹通向东南方。
 The signs lead southwest.	踪迹通向西南方。
+There is an unintelligible mess.	这里的踪迹杂乱无章，无法辨认。
+The vegetation is heavily damaged.	这里的植被受到严重破坏。
+The vegetation is bent.	这里的植被被压弯了。
+The vegetation has been slightly perturbed.	这里的植被受到轻微扰动。
+The vegetation is broken.	这里的植被被折断了。
 This is an unintelligible mess.	这里的踪迹杂乱无章，无法辨认。
 They belong to you or a companion.	这些踪迹属于你或一名同伴。
 The vegetation is bent here.	这里的植被被压弯了。

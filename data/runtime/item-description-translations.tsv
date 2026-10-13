@@ -356,6 +356,8 @@ sentence	This engraving appears on a floor somewhere.	这幅雕刻位于某处�
 sentence	This engraving appears on a wall somewhere.	这幅雕刻位于某处的墙上。
 sentence	This artwork appears on the front of {i}.	这件艺术品位于{i1}的正面。
 sentence	This artwork appears on the back of {i}.	这件艺术品位于{i1}的背面。
+# COIN source with a side other than 17/18 omits the side phrase only.
+sentence	This artwork appears {i}.	这件艺术品位于{i1}上。
 sentence	This work of art is a {i} and was crafted in {p}.	这件艺术品是{i1}，在「{p1}」制成。
 sentence	This artwork appears on a {i} and was crafted in {p}.	这件艺术品位于{i1}上，在「{p1}」制成。
 sentence	This artwork appears on a {i}.	这件艺术品位于{i1}上。
@@ -370,6 +372,8 @@ sentence	On the coin's back is an {s} image of {a}.	硬币背面图案{s1}，描
 sentence	On the front of the coin is an image of {a}.	硬币正面的图案描绘了{a1}。
 sentence	On the coin's back is an image of {a}.	硬币背面的图案描绘了{a1}。
 sentence	This artwork is {s}.	这件艺术品是{s1}。
+# Legends ART_IMAGE caller's unresolved-image branch in both configured PEs.
+sentence	This artwork has been lost.	这件艺术品已失传。
 sentence	This work of art is {s}.	这件艺术品是{s1}。
 sentence	The image is the symbol of {p}.	这幅图像是{p1}的象征。
 sentence	It is the symbol of {p}.	它是{p1}的象征。
@@ -421,6 +425,10 @@ term	an image of {a} in {i}	以{i1}制作、描绘{a1}的图像
 term	an image of {a}	描绘{a1}的图像
 term	image of {a} in {i}	以{i1}制作、描绘{a1}的图像
 term	image of {a}	描绘{a1}的图像
+# A nonempty native vector can contain only the base element's empty label.
+# The producer retains " of " and still appends material and creator fields.
+term	image of in {i}	以{i1}制作的图像
+term	image of	图像
 term	image	图像
 term	image in {i}	以{i1}制作的图像
 # ENTITY_ART_IMAGE at 0x1452357..0x145261e: the optional rendering artist
@@ -461,6 +469,11 @@ term	the deity of {s}, depicted as a {s}	{s1}之神（以{s2}形象出现）
 sentence	The image was commissioned by {p}, a {s}.	这幅图像由{s1}「{p1}」委托创作。
 sentence	The image was commissioned by a {s}.	这幅图像由{s1}委托创作。
 sentence	The image is the symbol of a {s}.	这幅图像是{s1}的象征。
+# Categories outside symbol/commission retain the owner without a predicate.
+sentence	The image {p}, a {s}.	这幅图像：{s1}「{p1}」。
+sentence	The image a {s}.	这幅图像：{s1}。
+# The native STANDARD (102) selector returns an empty profession before " guild".
+term	guild	行会
 term	{s} guild	{s1}行会
 
 # Coordination is scoped to item descriptions, so connectors never overwrite

@@ -1,0 +1,4 @@
+edition	image_identity	parent_renderer	inline_region	source
+linux-steam	ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	0x167ca30..0x16aff81	0x169f7ed..0x16a0830	configured installed dwarfort; native instructions and Ghidra decompiled.c
+windows-steam	PE:6a70a6d9:02711000	0x1403d6950..0x1403fd60d	0x1403f7f78..0x1403f92fe	data/extracted/fortress-alert-ui/reference-alert-hover-renderer.asm; independent original instruction/literal/branch inventory
+windows-classic	PE:6a70b91c:0270a000	0x1403d4510..0x1403fb1cd	0x1403f5b38..0x1403f6ebe	https://bay12games.com/dwarves/df_53_16_win.zip; native instructions and Ghidra decompiled.c

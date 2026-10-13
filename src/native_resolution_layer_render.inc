@@ -1,6 +1,5 @@
 static NativeUiLayerTarget g_native_resolution_target;
 
-#ifndef _WIN32
 static NativeEntryHook g_native_resolution_settings_hook;
 static NativeCallHook g_native_resolution_rows_hook;
 using NativeResolutionSettingsFn = void (*)(void *);
@@ -96,6 +95,25 @@ static bool install_native_resolution_layer_hook() {
             g_native_resolution_rows_hook.installed) return true;
     constexpr const char *label = "Native settings resolution selector output";
     const auto base = native_history_profile_base();
+#ifdef _WIN32
+    auto *settings = reinterpret_cast<unsigned char *>(
+        native_reference_address(base, 0x22c130));
+    const auto row = native_reference_address(base, 0x14108c0);
+    // One complete stack store; the settings relay needs no relative fixup.
+    std::vector<unsigned char> prefix{0x48, 0x89, 0x5c, 0x24, 0x10};
+    if (!settings || !row || !native_reference_bytes(0x22c130, prefix) ||
+            !g_native_resolution_settings_hook.prepare(settings, prefix,
+                reinterpret_cast<const void *>(&native_resolution_draw_settings), {}, label))
+        return false;
+    // Both selected and unselected rows choose their native slice before
+    // this one call. ELF emits two calls for the same selector branches.
+    std::vector<NativeCall> calls{
+        {0x2311b2, 0x14108c0, reinterpret_cast<const void *>(&native_resolution_draw_row)},
+    };
+    std::vector<unsigned char> row_call{0xe8, 0x09, 0xf7, 0x1d, 0x01};
+    if (!native_reference_bytes(0x2311b2, row_call)) return false;
+    constexpr uintptr_t origin = 0;
+#else
     auto *settings = reinterpret_cast<unsigned char *>(
         native_reference_address(base, 0x11648b0));
     const auto row = native_reference_address(base, 0x246b0);
@@ -113,8 +131,10 @@ static bool install_native_resolution_layer_hook() {
     std::vector<unsigned char> selected_row_call{0xe8, 0x37, 0xae, 0xeb, 0xfe};
     if (!native_reference_bytes(0x156835e, row_call) ||
             !native_reference_bytes(0x1569874, selected_row_call)) return false;
+    constexpr uintptr_t origin = 0x400000;
+#endif
     g_native_resolution_row = reinterpret_cast<NativeResolutionRowFn>(row);
-    if (!native_reference_calls(calls, 0x400000) ||
+    if (!native_reference_calls(calls, origin) ||
             !g_native_resolution_rows_hook.install(base, calls, label) ||
             !g_native_resolution_settings_hook.install(label)) return false;
     log_line("INFO", "Redirected native resolution selector drawing to its private output layer");
@@ -135,16 +155,6 @@ static void uninstall_native_resolution_layer_hook() {
         g_native_resolution_layer = {};
     }
 }
-#else
-// No established PE settings/selector binding is available for this layer.
-static bool install_native_resolution_layer_hook() { return true; }
-static bool native_resolution_layer_hook_active() { return false; }
-static void uninstall_native_resolution_layer_hook() {
-    g_native_resolution_target.release();
-    native_resolution_begin_frame();
-    g_native_resolution_layer = {};
-}
-#endif
 
 static void native_resolution_present_layer(SDL_Renderer *renderer,
         void (*draw_resolution)(SDL_Renderer *)) {

@@ -476,6 +476,7 @@ static bool resolve_native_caption_semantics_elf(NativeCaptionProfile &profile) 
         {native_reference_address(base,0xe62b98),NativeTravelBuildingField::Literal},
         {native_reference_address(base,0xe638f9),NativeTravelBuildingField::Literal},
     };
+#include "native_accepted_petition_profile.inc"
     return std::all_of(profile.info_titles.sites.begin(),profile.info_titles.sites.end(),
         [](const auto &site) { return site.return_address != 0; });
 }

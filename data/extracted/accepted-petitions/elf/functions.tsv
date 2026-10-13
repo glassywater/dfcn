@@ -1,0 +1,5 @@
+image	role	start	end
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	accepted-petition-inline-region	0x169f7ed	0x16a0830
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	calendar-month	0x14f13e0	0x14f1a87
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	guild-profession	0xb6c100	0xb6ca27
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	english-generated-name	0x12c58d0	0x12c6e5c

@@ -260,6 +260,45 @@ inline EnglishInkRows load_english_ink_rows() {
 
 } // namespace native_font_metrics_detail
 
+// Native graphical text can be carried by a font texture after its source
+// byte was cleared. Take the atlas IDs once before painting a private UI
+// frame so both representations can be withheld before any glyph draw.
+class NativeBitmapFontTextures {
+#ifdef _WIN32
+    std::array<std::array<int32_t, 256>, 9> tables_{};
+#endif
+public:
+    explicit NativeBitmapFontTextures(bool needed) noexcept {
+#ifdef _WIN32
+        if (!needed) return;
+        const auto executable = reinterpret_cast<uintptr_t>(GetModuleHandleW(nullptr));
+        const auto settings = native_pe_address(executable, 0x023cd770);
+        if (!settings) return;
+        constexpr std::array<size_t, 9> offsets{{
+            0xd8, 0x4d8, 0x8d8, 0x18d8, 0x1cd8, 0x20d8,
+            0x24d8, 0x28d8, 0x2cd8
+        }};
+        for (size_t i = 0; i < offsets.size(); ++i)
+            if (!native_font_metrics_detail::copy_native_font_memory(
+                    settings + offsets[i], tables_[i].data(), sizeof(tables_[i])))
+                tables_[i].fill(0);
+#else
+        (void)needed;
+#endif
+    }
+    bool contains(int32_t texture, unsigned char character) const noexcept {
+#ifdef _WIN32
+        if (texture <= 0 || !character || character == ' ') return false;
+        for (const auto &table : tables_)
+            if (table[character] == texture) return true;
+#else
+        (void)texture;
+        (void)character;
+#endif
+        return false;
+    }
+};
+
 // Called at native text-layout/render entry, not for every glyph. Re-read the
 // live selection and resource identities each pass; only pixel decoding is
 // cached. This also retries fonts that were not loaded at the first call.

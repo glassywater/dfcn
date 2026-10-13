@@ -380,16 +380,23 @@ struct ConversationKeywordLexicon {
 };
 
 std::optional<std::string> Overlay::translate_conversation_keywords(
-        std::string_view raw_source) const {
+        std::string_view raw_source, std::string_view bound_caption) const {
     const std::string source = lower(normalize_utterance(raw_source));
     if (source.empty()) return std::nullopt;
+    const std::string selected_caption = normalize_utterance(bound_caption);
+    // Distinct native choices may have the same deduplicated keyword vector.
+    // A renderer which has bound the complete native record supplies its own
+    // caption, and its translation must not share a cache entry with a sibling
+    // choice or with the unbound search adapter.
+    const std::string cache_key = selected_caption.empty()
+        ? source : source + '\n' + selected_caption;
     std::shared_ptr<const ConversationChoices> snapshot;
     std::shared_ptr<const ConversationKeywordLexicon> lexicon;
     {
         std::lock_guard<std::mutex> lock(conversation_choices_mutex_);
         snapshot = conversation_choices_;
         lexicon = conversation_keyword_lexicon_;
-        if (const auto found = conversation_keyword_cache_.find(source);
+        if (const auto found = conversation_keyword_cache_.find(cache_key);
                 found != conversation_keyword_cache_.end() &&
                 (!found->second.naming_epoch || found->second.naming_epoch == draw_epoch_))
             return found->second.target;
@@ -402,7 +409,7 @@ std::optional<std::string> Overlay::translate_conversation_keywords(
         if (conversation_choices_ != snapshot || conversation_keyword_lexicon_ != lexicon)
             return target;
         if (conversation_keyword_cache_.size() >= 4096) conversation_keyword_cache_.clear();
-        conversation_keyword_cache_.insert_or_assign(source,
+        conversation_keyword_cache_.insert_or_assign(cache_key,
             ConversationKeywordTranslation{target, live_caption ? draw_epoch_ : 0});
         return target;
     };
@@ -564,6 +571,7 @@ std::optional<std::string> Overlay::translate_conversation_keywords(
     const bool bound_emotion = snapshot && std::any_of(snapshot->begin(), snapshot->end(),
         [&](const auto &choice) {
             return lower(normalize_utterance(choice.second)) == source &&
+                (selected_caption.empty() || normalize_utterance(choice.first) == selected_caption) &&
                 emotion_caption(normalize_utterance(choice.first));
         });
     // Ordinary complete fixed rows keep their reviewed vocabulary. An
@@ -582,6 +590,7 @@ std::optional<std::string> Overlay::translate_conversation_keywords(
     if (snapshot) for (const auto &[raw_caption, keywords] : *snapshot) {
         if (lower(normalize_utterance(keywords)) != source) continue;
         const std::string caption = normalize_utterance(raw_caption);
+        if (!selected_caption.empty() && caption != selected_caption) continue;
         // A bound caption can contain a native event or entity name. Keep
         // its translation only for this draw; fixed vocabulary stays cached.
         live_caption = true;
@@ -690,6 +699,7 @@ std::optional<std::string> Overlay::translate_conversation_keywords(
     if (snapshot) for (const auto &[raw_caption, keywords] : *snapshot) {
         if (lower(normalize_utterance(keywords)) != source) continue;
         const std::string caption = normalize_utterance(raw_caption);
+        if (!selected_caption.empty() && caption != selected_caption) continue;
         const std::string compact = ConversationKeywordLexicon::compact_literal(caption);
         const auto probe = [&](size_t value) {
             const auto &candidate = lexicon->template_probes[value];
@@ -953,6 +963,23 @@ bool Overlay::translated_conversation_keywords_match(std::string_view keywords,
     if (!translation_enabled()) return false;
     if (translated_search_query(query).literal.empty()) return false;
     const auto translated = translate_conversation_keywords(keywords);
-    if (!translated) return false;
-    return translated_search_text_matches(*translated, query);
+    if (translated) return translated_search_text_matches(*translated, query);
+    // Native ranking searches a deduplicated keyword vector. Two different
+    // choice captions may legitimately own that same vector; Chinese search
+    // must retain both proven meanings rather than let the ambiguity veto
+    // every result. Keep the selected caption separate in the translator's
+    // cache, just as the visible chooser does for a bound native record.
+    std::shared_ptr<const ConversationChoices> snapshot;
+    {
+        std::lock_guard<std::mutex> lock(conversation_choices_mutex_);
+        snapshot = conversation_choices_;
+    }
+    if (!snapshot) return false;
+    const std::string source = lower(normalize_utterance(keywords));
+    for (const auto &[caption, native_keywords] : *snapshot) {
+        if (lower(normalize_utterance(native_keywords)) != source) continue;
+        const auto target = translate_conversation_keywords(keywords, caption);
+        if (target && translated_search_text_matches(*target, query)) return true;
+    }
+    return false;
 }

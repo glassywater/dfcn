@@ -1,4 +1,5 @@
 ; classic PE:6a70b91c:0270a000; deity-name 0x140b8ff50..0x140b90967
+; native unwind regions: 0x140b8ff50..0x140b90967
 0x140b8ff50: rex push rbp
 0x140b8ff52: push   rbx
 0x140b8ff53: push   rsi

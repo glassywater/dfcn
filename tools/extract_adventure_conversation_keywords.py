@@ -253,11 +253,98 @@ def main_flow(image, edition, instructions):
     return selector_rows, switch_rows, condition_rows, block_rows, table_guards
 
 
+def supplier_flow(image, edition, role, instructions):
+    """Read every finite supplier selector from its actual native DWORD table.
+
+    A selector's retained operands are its reachable source instructions,
+    including compiler-split literal fragments. They are provenance, rather
+    than guessed complete keyword spellings or translation assertions.
+    """
+    by_address = dict(instructions)
+    positions = {address: index for index, (address, _) in enumerate(instructions)}
+    tables, guards, indirect = [], [], {}
+    for index, (address, text) in enumerate(instructions):
+        if not re.match(r"jmp\s+r\w+$", text):
+            continue
+        before = instructions[max(0, index-30):index]
+        load = next((re.search(r"DWORD PTR \[\w+\+\w+\*4\+0x([0-9a-f]+)\]", part)
+                     for _, part in reversed(before)
+                     if re.search(r"DWORD PTR \[\w+\+\w+\*4\+0x([0-9a-f]+)\]", part)), None)
+        guard = next(((at, part, match) for at, part in reversed(before)
+                      if (match := re.match(r"cmp\s+\w+,0x([0-9a-f]+)$", part))
+                      and int(match[1], 16) < 1024), None)
+        if not load or not guard:
+            continue
+        guard_pc, guard_text, maximum_match = guard
+        maximum, table_rva = int(maximum_match[1], 16), int(load[1], 16)
+        selector_load = next((re.search(r"BYTE PTR \[\w+\+\w+\*1\+0x([0-9a-f]+)\]", part)
+                              for _, part in reversed(before)
+                              if part.startswith("movzx") and re.search(r"BYTE PTR \[\w+\+\w+\*1\+0x([0-9a-f]+)\]", part)), None)
+        selector_rva = int(selector_load[1], 16) if selector_load else None
+        if selector_rva is None:
+            native_slots = list(range(maximum+1))
+        else:
+            selector_at = image.offset(image.base+selector_rva)
+            native_slots = list(image.raw[selector_at:selector_at+maximum+1])
+        values = struct.unpack_from(f"<{max(native_slots)+1}I", image.raw,
+                                    image.offset(image.base+table_rva))
+        targets = [image.base+values[slot] for slot in native_slots]
+        if any(target not in by_address for target in targets):
+            raise ValueError(f"{edition} {role}: supplier table {table_rva:#x} has an out-of-body branch")
+        guard_branch_pc, guard_branch = next((at, part) for at, part in before
+                                             if at > guard_pc and re.match(r"j\w+\s+0x[0-9a-f]+$", part))
+        outside = int(re.search(r"0x([0-9a-f]+)$", guard_branch)[1], 16)
+        guards.append((edition, role, hex(instructions[0][0]-image.base), hex(address-image.base),
+                       hex(table_rva), maximum, hex(guard_pc-image.base), guard_text,
+                       hex(guard_branch_pc-image.base), guard_branch, hex(outside-image.base)))
+        indirect[address] = targets
+        tables.append((address, table_rva, selector_rva, native_slots, targets))
+    rows = []
+    for switch_pc, table_rva, selector_rva, native_slots, targets in tables:
+        for selector, target in enumerate(targets):
+            visited, pending = set(), [target]
+            while pending:
+                address = pending.pop()
+                if address in visited or address not in by_address:
+                    continue
+                visited.add(address)
+                text = by_address[address]
+                index = positions[address]
+                jump = re.match(r"(j\w+)\s+0x([0-9a-f]+)$", text)
+                if jump:
+                    pending.append(int(jump[2], 16))
+                    if jump[1] == "jmp":
+                        continue
+                elif address in indirect:
+                    pending.extend(indirect[address])
+                    continue
+                elif text.startswith("ret") or re.match(r"jmp\s+", text):
+                    continue
+                if index+1 < len(instructions):
+                    pending.append(instructions[index+1][0])
+            literals, calls = [], []
+            for address in sorted(visited):
+                text = by_address[address]
+                ref = re.search(r"# (?:0x)?([0-9a-f]+)", text)
+                if ref and (literal := image.string(int(ref[1], 16))):
+                    literals.append(f"{address-image.base:#x}:{json.dumps(literal, ensure_ascii=False)}")
+                call = re.match(r"call\s+0x([0-9a-f]+)$", text)
+                if call:
+                    calls.append(f"{address-image.base:#x}->{int(call[1],16)-image.base:#x}")
+            rows.append((edition, role, hex(instructions[0][0]-image.base), hex(switch_pc-image.base),
+                         hex(table_rva), hex(selector_rva) if selector_rva is not None else "",
+                         selector, native_slots[selector], hex(target-image.base),
+                         ";".join(hex(address-image.base) for address in sorted(visited)),
+                         " | ".join(literals), ";".join(calls)))
+    return rows, guards
+
+
 def main():
     DEST.mkdir(parents=True, exist_ok=True)
     config = json.loads((ROOT / "data/runtime/native-pe-images.json").read_text(encoding="utf-8"))
     literal_rows, call_rows, function_rows, token_rows, fold_rows = [], [], [], [], []
     selectors, switches, conditions, blocks, guards = [], [], [], [], []
+    supplier_selectors, supplier_guards = [], []
     for edition, key in (("steam", "reference"), ("classic", "classic")):
         image = CaptionImage(Path(config[key]), OBJDUMP)
         roots = {}
@@ -316,7 +403,7 @@ def main():
                 end = min(start+0x200, starts[bisect.bisect_right(starts, start)])
             unwind_end = end
             instructions = list(image.instructions(start,end))
-            if role == "keyword-main" or role.startswith("keyword-strength") or role in ("keyword-renderer", "search-fold"):
+            if role == "keyword-main" or role.startswith("keyword-strength") or role in ("keyword-renderer", "search-fold", "keyword-emotion", "keyword-value"):
                 for index, (_,text) in enumerate(instructions):
                     if text.startswith("ret"):
                         end = instructions[index+1][0] if index+1 < len(instructions) else end
@@ -333,6 +420,10 @@ def main():
                 conditions.extend(native_conditions)
                 blocks.extend(native_blocks)
                 guards.extend(native_guards)
+            elif role.startswith("keyword-strength") or role in ("keyword-emotion", "keyword-value"):
+                native_selectors, native_guards = supplier_flow(image, edition, role, instructions)
+                supplier_selectors.extend(native_selectors)
+                supplier_guards.extend(native_guards)
             for address, instruction in instructions:
                 note = ""
                 ref = re.search(r"# (?:0x)?([0-9a-f]+)", instruction)
@@ -374,6 +465,8 @@ def main():
     write_tsv("main-switch-guards.tsv", ("edition","function_rva","instruction_rva","table_rva","maximum_selector","guard_compare_rva","guard_compare","guard_branch_rva","guard_branch","outside_table_branch_rva"),guards)
     write_tsv("main-conditional-branches.tsv", ("edition","function_rva","block_rva","instruction_rva","instruction","branch_rva"),conditions)
     write_tsv("main-basic-blocks.tsv", ("edition","function_rva","block_rva","end_rva","outgoing_rvas","source_operands","native_calls"),blocks)
+    write_tsv("supplier-selector-branches.tsv", ("edition","role","function_rva","instruction_rva","table_rva","selector_table_rva","selector","native_slot","branch_rva","reachable_instruction_rvas","source_operands","native_calls"),supplier_selectors)
+    write_tsv("supplier-switch-guards.tsv", ("edition","role","function_rva","instruction_rva","table_rva","maximum_selector","guard_compare_rva","guard_compare","guard_branch_rva","guard_branch","outside_table_branch_rva"),supplier_guards)
 
 
 if __name__ == "__main__":

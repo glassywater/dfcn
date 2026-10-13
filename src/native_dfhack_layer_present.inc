@@ -1,6 +1,8 @@
 // DFHack owns this target and its logical buffers. Native rendering and native
 // translation finish before this layer is composed; no game pixels are read.
 #ifdef _WIN32
+static graphicst *native_dfhack_display_inputs_select(graphicst *inputs) noexcept;
+
 static bool native_dfhack_switch_disabled() noexcept {
     using Query = int (*)() noexcept;
     // The resident loader is already mapped before it initializes this core.
@@ -55,10 +57,39 @@ struct NativeDfhackLayerTarget {
 };
 static NativeDfhackLayerTarget g_native_dfhack_layer_target;
 static NativeDfhackLayerTarget g_native_dfhack_gpu_target;
+// Only the SDL consumer mutates the paint copy. The published frame remains
+// immutable for the producer handoff and the translation worker.
+static std::shared_ptr<const NativeDfhackLayerStorage> g_native_dfhack_paint_source;
+static std::shared_ptr<NativeDfhackLayerStorage> g_native_dfhack_paint_storage;
+static std::shared_ptr<const NativeDfhackTranslatedFrame> g_native_dfhack_painted_frame;
 static uint64_t g_native_dfhack_gpu_page_revision = 0;
 static uint64_t g_native_dfhack_gpu_revision = 0;
 static bool g_native_dfhack_gpu_target_initialized = false;
 static bool g_native_dfhack_gpu_frame_ready = false;
+static bool g_native_dfhack_gpu_known_graphical = false;
+static std::atomic_bool g_native_dfhack_gpu_draw_exports_covered{false};
+static std::atomic_uint64_t g_native_dfhack_gpu_draw_coverage_generation{0};
+static uint64_t g_native_dfhack_gpu_graphics_generation = 0;
+static std::atomic_uint64_t g_native_dfhack_gpu_content_page{0};
+static std::atomic_bool g_native_dfhack_gpu_content_ready{false};
+
+static void native_dfhack_publish_gpu_content(bool ready) noexcept {
+    if (!ready) {
+        g_native_dfhack_gpu_content_ready.store(false, std::memory_order_release);
+        return;
+    }
+    g_native_dfhack_gpu_content_page.store(g_native_dfhack_gpu_page_revision,
+        std::memory_order_relaxed);
+    g_native_dfhack_gpu_content_ready.store(true, std::memory_order_release);
+}
+
+static bool native_dfhack_gpu_translation_content_active() noexcept {
+    // A CPU worker needs only conservative content evidence. SDL target
+    // pointers and their lifetime remain exclusive to the render thread.
+    return g_native_dfhack_gpu_content_ready.load(std::memory_order_acquire) &&
+        g_native_dfhack_gpu_content_page.load(std::memory_order_relaxed) ==
+            native_dfhack_layer_page_revision();
+}
 
 struct NativeDfhackLayerSdlState {
     SDL_Renderer *renderer;
@@ -120,25 +151,21 @@ struct NativeDfhackLayerSdlState {
 
 struct NativeDfhackLayerRendererGrid {
     void *renderer;
-    graphicst *game_graphics = nullptr;
-    graphicst *private_graphics = nullptr;
-    NativeDfhackOutputBinding previous_graphics;
-    std::array<unsigned char, sizeof(graphicst::texblits)> previous_texblits{};
+    graphicst *previous_inputs = nullptr;
+    graphicst *previous_read_view = nullptr;
     std::array<void *, 14> previous{};
     unsigned char previous_viewport_zoom = 0;
+    bool restore_viewport_zoom = true;
 
-    NativeDfhackLayerRendererGrid(void *current, graphicst &gps) noexcept
-        : renderer(current), game_graphics(native_graphics()), private_graphics(&gps) {
-        // The private SDL target is already bound and PresentScope owns the
-        // same mutex as native root rendering. Native tile/map helpers also
-        // read the EXE's static graphicst, including its refresh output; bind
-        // that output to the committed private arrays only for these passes.
-        if (game_graphics) {
-            previous_graphics = NativeDfhackOutputBinding::capture(*game_graphics);
-            std::memcpy(previous_texblits.data(), &game_graphics->texblits, previous_texblits.size());
-            NativeDfhackOutputBinding::capture(gps).apply(*game_graphics);
-            std::memcpy(&game_graphics->texblits, &gps.texblits, sizeof(gps.texblits));
-        }
+    NativeDfhackLayerRendererGrid(void *current, graphicst &gps,
+            bool preserve_viewport_zoom = true) noexcept
+        : renderer(current), previous_inputs(native_dfhack_display_inputs_select(&gps)),
+          previous_read_view(g_native_graphics_read_view),
+          restore_viewport_zoom(preserve_viewport_zoom) {
+        // Native helpers consume this SDL thread's owned paint input. The
+        // producer can keep the real graphicst bound to private writes while
+        // these helpers read or update their independent rendering state.
+        g_native_graphics_read_view = &gps;
         // renderer has the same seven fields in each plane, but its top
         // texture field order differs from graphicst's field order.
         const std::array<void *, 14> private_grid{{
@@ -159,13 +186,10 @@ struct NativeDfhackLayerRendererGrid {
     ~NativeDfhackLayerRendererGrid() noexcept {
         std::memcpy(static_cast<unsigned char *>(renderer) + sizeof(void *),
             previous.data(), sizeof(previous));
-        *(static_cast<unsigned char *>(renderer) + 0x180) = previous_viewport_zoom;
-        if (game_graphics) {
-            std::memcpy(&private_graphics->texblits, &game_graphics->texblits,
-                sizeof(private_graphics->texblits));
-            previous_graphics.apply(*game_graphics);
-            std::memcpy(&game_graphics->texblits, previous_texblits.data(), previous_texblits.size());
-        }
+        if (restore_viewport_zoom)
+            *(static_cast<unsigned char *>(renderer) + 0x180) = previous_viewport_zoom;
+        native_dfhack_display_inputs_select(previous_inputs);
+        g_native_graphics_read_view = previous_read_view;
     }
 };
 
@@ -197,8 +221,8 @@ struct NativeDfhackLayerNativeRenderer {
 };
 
 static bool native_dfhack_layer_target_size(SDL_Renderer *renderer,
-        const NativeDfhackLayerSdlState &state, int &width, int &height) noexcept {
-    const auto *gps = native_graphics();
+        const NativeDfhackLayerSdlState &state, int &width, int &height,
+        const graphicst *gps = nullptr) noexcept {
     width = state.logical_width > 0 ? state.logical_width : gps ? gps->screen_pixel_x : 0;
     height = state.logical_height > 0 ? state.logical_height : gps ? gps->screen_pixel_y : 0;
     return (width > 0 && height > 0) ||
@@ -245,6 +269,8 @@ public:
         if (!retained) {
             g_native_dfhack_gpu_target_initialized = false;
             g_native_dfhack_gpu_frame_ready = false;
+            g_native_dfhack_gpu_known_graphical = false;
+            native_dfhack_publish_gpu_content(false);
         }
         if (!target.prepare(renderer_, width, height) ||
                 !game_state_->bind(target.texture, width, height)) {
@@ -259,16 +285,27 @@ public:
             if (SDL_RenderClear(renderer_) != 0) {
                 g_native_dfhack_gpu_target_initialized = false;
                 g_native_dfhack_gpu_frame_ready = false;
+                g_native_dfhack_gpu_known_graphical = false;
+                native_dfhack_publish_gpu_content(false);
                 game_state_->restore();
                 return;
             }
             g_native_dfhack_gpu_page_revision = page_revision_;
             g_native_dfhack_gpu_target_initialized = true;
+            g_native_dfhack_gpu_known_graphical =
+                g_native_dfhack_gpu_draw_exports_covered.load(std::memory_order_acquire);
+            g_native_dfhack_gpu_graphics_generation =
+                g_native_dfhack_gpu_draw_coverage_generation.load(std::memory_order_acquire);
         }
-        // A callback batch and presentation hold the layer mutex. Publish
-        // this target after the batch finishes; repeated Presents can then
-        // reuse it until a page change, independent of capture epochs.
+        if (!g_native_dfhack_gpu_draw_exports_covered.load(std::memory_order_acquire) ||
+                g_native_dfhack_gpu_graphics_generation !=
+                    g_native_dfhack_gpu_draw_coverage_generation.load(std::memory_order_acquire))
+            g_native_dfhack_gpu_known_graphical = false;
+        // Publish only after this SDL callback batch finishes. Repeated
+        // Presents can reuse the target until a page change; CPU readers
+        // receive content evidence rather than the SDL-owned texture.
         g_native_dfhack_gpu_frame_ready = false;
+        native_dfhack_publish_gpu_content(false);
         // The transparent clear uses its own draw state; callback drawing
         // starts with the same color and blend mode it had on the game target.
         SDL_SetRenderDrawBlendMode(renderer_, game_state_->blend);
@@ -297,12 +334,23 @@ public:
             g_native_dfhack_gpu_frame_ready = g_native_dfhack_gpu_target_initialized &&
                 g_native_dfhack_gpu_page_revision == page_revision_ &&
                 page_revision_ == native_dfhack_layer_page_revision();
+            native_dfhack_publish_gpu_content(g_native_dfhack_gpu_frame_ready);
             if (g_native_dfhack_gpu_frame_ready) ++g_native_dfhack_gpu_revision;
         }
         if (!entered_) return;
         g_drawing_overlay = previous_drawing_;
     }
     bool valid() const noexcept { return entered_; }
+
+    static bool withhold_unknown_drawing(SDL_Renderer *renderer) noexcept {
+        const auto *scope = active_ ? active_->owner_ : nullptr;
+        if (!scope || scope->paused_ || renderer != scope->renderer_) return false;
+        // Include plugin intermediate targets: their pixels can be copied
+        // into the retained target later in this or another callback batch.
+        // Do not infer text-free texture content from the caller or texture ID.
+        g_native_dfhack_gpu_known_graphical = false;
+        return true;
+    }
 
     static SDL_Texture *redirect_target(SDL_Renderer *renderer,
             SDL_Texture *target) noexcept {
@@ -339,6 +387,19 @@ static void native_dfhack_gpu_suspend() noexcept { NativeDfhackLayerGpuScope::su
 static void native_dfhack_gpu_resume() noexcept { NativeDfhackLayerGpuScope::resume(); }
 
 static NativeEntryHook g_native_dfhack_gpu_target_entry;
+enum NativeDfhackGpuDrawExport : size_t {
+    NativeDfhackGpuCopy, NativeDfhackGpuCopyEx,
+    NativeDfhackGpuCopyF, NativeDfhackGpuCopyExF,
+    NativeDfhackGpuGeometry, NativeDfhackGpuGeometryRaw,
+    NativeDfhackGpuDrawExportCount
+};
+static std::array<NativeEntryHook, NativeDfhackGpuDrawExportCount>
+    g_native_dfhack_gpu_draw_entries;
+static constexpr std::array<const char *, NativeDfhackGpuDrawExportCount>
+    g_native_dfhack_gpu_draw_export_names{{
+        "SDL_RenderCopy", "SDL_RenderCopyEx", "SDL_RenderCopyF", "SDL_RenderCopyExF",
+        "SDL_RenderGeometry", "SDL_RenderGeometryRaw"
+    }};
 using NativeDfhackLayerSetTarget = int (SDLCALL *)(SDL_Renderer *, SDL_Texture *);
 static std::atomic<uintptr_t> g_native_dfhack_render_callback_queue{0};
 
@@ -402,15 +463,66 @@ static int SDLCALL native_dfhack_gpu_set_target(SDL_Renderer *renderer,
     return callback.call_native([&] { return original(renderer, target); });
 }
 
-static bool install_native_dfhack_gpu_target_hook() {
-    auto &hook = g_native_dfhack_gpu_target_entry;
-    if (hook.installed) return true;
-    native_dfhack_bind_render_callbacks_probe();
-    constexpr const char *label = "DFHack private SDL render target";
+template<size_t Index, typename Function, typename... Arguments>
+static int native_dfhack_gpu_draw_call(SDL_Renderer *renderer, Arguments... arguments) {
+    NativeInputCallbackScope callback;
+    const auto original = reinterpret_cast<Function>(
+        g_native_dfhack_gpu_draw_entries[Index].original);
+    if (!original) return -1;
+    // A callback-owned texture has no separated text/artwork source yet.
+    // Withhold the copy before SDL submits its glyphs, rather than rendering
+    // untranslated ink into an invisible target and discarding it afterward.
+    if (NativeDfhackLayerGpuScope::withhold_unknown_drawing(renderer)) return 0;
+    return callback.call_native([&] { return original(renderer, arguments...); });
+}
+
+static int SDLCALL native_dfhack_gpu_copy(SDL_Renderer *renderer, SDL_Texture *texture,
+        const SDL_Rect *source, const SDL_Rect *destination) {
+    return native_dfhack_gpu_draw_call<NativeDfhackGpuCopy, decltype(&SDL_RenderCopy)>(
+        renderer, texture, source, destination);
+}
+
+static int SDLCALL native_dfhack_gpu_copy_ex(SDL_Renderer *renderer, SDL_Texture *texture,
+        const SDL_Rect *source, const SDL_Rect *destination, double angle,
+        const SDL_Point *center, SDL_RendererFlip flip) {
+    return native_dfhack_gpu_draw_call<NativeDfhackGpuCopyEx, decltype(&SDL_RenderCopyEx)>(
+        renderer, texture, source, destination, angle, center, flip);
+}
+
+static int SDLCALL native_dfhack_gpu_copy_f(SDL_Renderer *renderer, SDL_Texture *texture,
+        const SDL_Rect *source, const SDL_FRect *destination) {
+    return native_dfhack_gpu_draw_call<NativeDfhackGpuCopyF, decltype(&SDL_RenderCopyF)>(
+        renderer, texture, source, destination);
+}
+
+static int SDLCALL native_dfhack_gpu_copy_ex_f(SDL_Renderer *renderer, SDL_Texture *texture,
+        const SDL_Rect *source, const SDL_FRect *destination, double angle,
+        const SDL_FPoint *center, SDL_RendererFlip flip) {
+    return native_dfhack_gpu_draw_call<NativeDfhackGpuCopyExF, decltype(&SDL_RenderCopyExF)>(
+        renderer, texture, source, destination, angle, center, flip);
+}
+
+static int SDLCALL native_dfhack_gpu_geometry(SDL_Renderer *renderer, SDL_Texture *texture,
+        const SDL_Vertex *vertices, int vertex_count, const int *indices, int index_count) {
+    return native_dfhack_gpu_draw_call<NativeDfhackGpuGeometry, decltype(&SDL_RenderGeometry)>(
+        renderer, texture, vertices, vertex_count, indices, index_count);
+}
+
+static int SDLCALL native_dfhack_gpu_geometry_raw(SDL_Renderer *renderer, SDL_Texture *texture,
+        const float *xy, int xy_stride, const SDL_Color *color, int color_stride,
+        const float *uv, int uv_stride, int vertex_count,
+        const void *indices, int index_count, int index_size) {
+    return native_dfhack_gpu_draw_call<NativeDfhackGpuGeometryRaw, decltype(&SDL_RenderGeometryRaw)>(
+        renderer, texture, xy, xy_stride, color, color_stride, uv, uv_stride,
+        vertex_count, indices, index_count, index_size);
+}
+
+static bool native_dfhack_install_sdl_export(NativeEntryHook &hook,
+        const char *name, const void *wrapper, const char *label) {
     if (!hook.original) {
         const auto module = GetModuleHandleW(L"SDL2.dll");
         auto *entry = module ? reinterpret_cast<unsigned char *>(
-            GetProcAddress(module, "SDL_SetRenderTarget")) : nullptr;
+            GetProcAddress(module, name)) : nullptr;
         if (!entry) return false;
         constexpr std::array<unsigned char, 16> expected{{
             0x48,0xff,0x25,0xf1,0x65,0x13,0x00,
@@ -430,14 +542,55 @@ static bool install_native_dfhack_gpu_target_hook() {
         // Preserve the indirect jump through SDL's live dynapi slot. SDL can
         // initialize or replace that table after our export hook is installed.
         if (!hook.prepare(entry, std::vector<unsigned char>(actual.begin(), actual.end()),
-                reinterpret_cast<const void *>(&native_dfhack_gpu_set_target),
-                fixups, label)) return false;
+                wrapper, fixups, label)) return false;
     }
     return hook.install(label);
 }
 
+static bool install_native_dfhack_gpu_target_hook() {
+    if (g_native_dfhack_gpu_target_entry.installed &&
+            g_native_dfhack_gpu_draw_exports_covered.load(std::memory_order_acquire)) return true;
+    native_dfhack_bind_render_callbacks_probe();
+    constexpr const char *label = "DFHack private SDL render target";
+    if (!native_dfhack_install_sdl_export(g_native_dfhack_gpu_target_entry,
+            "SDL_SetRenderTarget", reinterpret_cast<const void *>(&native_dfhack_gpu_set_target),
+            label)) {
+        g_native_dfhack_gpu_draw_coverage_generation.fetch_add(1, std::memory_order_acq_rel);
+        g_native_dfhack_gpu_draw_exports_covered.store(false, std::memory_order_release);
+        return false;
+    }
+    const std::array<const void *, NativeDfhackGpuDrawExportCount> wrappers{{
+        reinterpret_cast<const void *>(&native_dfhack_gpu_copy),
+        reinterpret_cast<const void *>(&native_dfhack_gpu_copy_ex),
+        reinterpret_cast<const void *>(&native_dfhack_gpu_copy_f),
+        reinterpret_cast<const void *>(&native_dfhack_gpu_copy_ex_f),
+        reinterpret_cast<const void *>(&native_dfhack_gpu_geometry),
+        reinterpret_cast<const void *>(&native_dfhack_gpu_geometry_raw)
+    }};
+    bool covered = true;
+    for (size_t index = 0; index < wrappers.size(); ++index)
+        if (!native_dfhack_install_sdl_export(g_native_dfhack_gpu_draw_entries[index],
+                g_native_dfhack_gpu_draw_export_names[index], wrappers[index],
+                g_native_dfhack_gpu_draw_export_names[index])) covered = false;
+    // Target isolation remains usable if a drawing export cannot be hooked.
+    // That lifetime never claims the retained pixels are known graphics.
+    if (covered != g_native_dfhack_gpu_draw_exports_covered.load(std::memory_order_acquire))
+        g_native_dfhack_gpu_draw_coverage_generation.fetch_add(1, std::memory_order_acq_rel);
+    g_native_dfhack_gpu_draw_exports_covered.store(covered, std::memory_order_release);
+    return true;
+}
+
 static void uninstall_native_dfhack_gpu_target_hook() {
+    g_native_dfhack_gpu_draw_coverage_generation.fetch_add(1, std::memory_order_acq_rel);
+    g_native_dfhack_gpu_draw_exports_covered.store(false, std::memory_order_release);
     g_native_dfhack_render_callback_queue.store(0, std::memory_order_release);
+    for (size_t index = 0; index < g_native_dfhack_gpu_draw_entries.size(); ++index) {
+        auto &draw = g_native_dfhack_gpu_draw_entries[index];
+        const auto label = g_native_dfhack_gpu_draw_export_names[index];
+        if (draw.installed &&
+                !write_native_code_patches(draw.patches, false, label, &draw.installed)) continue;
+        if (native_callbacks_idle()) draw.uninstall(label);
+    }
     auto &hook = g_native_dfhack_gpu_target_entry;
     constexpr const char *label = "DFHack private SDL render target";
     if (hook.installed &&
@@ -446,16 +599,28 @@ static void uninstall_native_dfhack_gpu_target_hook() {
 }
 
 static bool native_dfhack_gpu_target_hook_active() noexcept {
-    return g_native_dfhack_gpu_target_entry.active();
+    return g_native_dfhack_gpu_target_entry.active() ||
+        std::any_of(g_native_dfhack_gpu_draw_entries.begin(), g_native_dfhack_gpu_draw_entries.end(),
+            [](const NativeEntryHook &hook) { return hook.active(); });
 }
 
-static void native_dfhack_compose_gpu_layer(SDL_Renderer *renderer,
-        SDL_Texture *bound_target, int width, int height) {
+static bool native_dfhack_graphical_gpu_ready(SDL_Renderer *renderer) noexcept {
     const auto &gpu = g_native_dfhack_gpu_target;
-    if (!g_native_dfhack_gpu_frame_ready || !gpu.texture ||
-            gpu.renderer != renderer || width <= 0 || height <= 0 ||
-            !bound_target || SDL_GetRenderTarget(renderer) != bound_target ||
-            g_native_dfhack_gpu_page_revision != native_dfhack_layer_page_revision()) return;
+    return g_native_dfhack_gpu_draw_exports_covered.load(std::memory_order_acquire) &&
+        g_native_dfhack_gpu_known_graphical && g_native_dfhack_gpu_frame_ready &&
+        g_native_dfhack_gpu_graphics_generation ==
+            g_native_dfhack_gpu_draw_coverage_generation.load(std::memory_order_acquire) &&
+        gpu.texture && gpu.renderer == renderer &&
+        g_native_dfhack_gpu_page_revision == native_dfhack_layer_page_revision();
+}
+
+static void native_dfhack_compose_graphical_gpu(SDL_Renderer *renderer,
+        int width, int height) {
+    const auto &gpu = g_native_dfhack_gpu_target;
+    if (!native_dfhack_graphical_gpu_ready(renderer) ||
+            width <= 0 || height <= 0 || gpu.width != width || gpu.height != height) return;
+    // Every texture/Geometry entry is observed from a freshly cleared target.
+    // Only the still-known Clear/Fill/Line pixels may bypass text completion.
     const SDL_Rect destination{0, 0, width, height};
     SDL_SetTextureColorMod(gpu.texture, 255, 255, 255);
     SDL_SetTextureAlphaMod(gpu.texture, 255);
@@ -465,11 +630,6 @@ static void native_dfhack_compose_gpu_layer(SDL_Renderer *renderer,
 
 using NativeDfhackLayerTileMethod = void (*)(void *, int, int);
 using NativeDfhackLayerMapMethod = void (*)(void *, void *, int, int);
-struct NativeDfhackLayerMapPaint {
-    void *view = nullptr;
-    NativeDfhackLayerMapMethod draw = nullptr;
-    int x = 0, y = 0;
-};
 struct NativeDfhackLayerPaintContext {
     inline static thread_local NativeDfhackLayerPaintContext *active = nullptr;
     NativeDfhackLayerPaintContext *previous = active;
@@ -480,8 +640,6 @@ struct NativeDfhackLayerPaintContext {
     void *native_renderer;
     graphicst *graphics;
     void **methods;
-    std::array<std::vector<size_t>, 2> anchors;
-    std::vector<NativeDfhackLayerMapPaint> maps;
     std::array<const int32_t *, 9> font_tables{};
     int tile_width = 0, tile_height = 0, origin_x = 0, origin_y = 0;
 
@@ -538,119 +696,61 @@ static bool native_dfhack_layer_cell_visible(const graphicst &gps, size_t at,
         (lower && lower[at]) || (anchored && anchored[at]) || (flags && flags[at]);
 }
 
-static void native_dfhack_redraw_background(SDL_Renderer *renderer,
-        const SDL_Rect &cells) {
-    auto *paint = NativeDfhackLayerPaintContext::active;
-    if (!paint || paint->renderer != renderer || !paint->graphics ||
-            !paint->bound_target || SDL_GetRenderTarget(renderer) != paint->bound_target ||
-            cells.w <= 0 || cells.h <= 0 ||
-            paint->tile_width <= 0 || paint->tile_height <= 0) return;
-    auto &gps = *paint->graphics;
-    const int left = std::clamp(cells.x, 0, gps.dimx);
-    const int top = std::clamp(cells.y, 0, gps.dimy);
-    const int right = static_cast<int>(std::clamp<int64_t>(
-        static_cast<int64_t>(cells.x) + cells.w, 0, gps.dimx));
-    const int bottom = static_cast<int>(std::clamp<int64_t>(
-        static_cast<int64_t>(cells.y) + cells.h, 0, gps.dimy));
-    if (right <= left || bottom <= top) return;
-    SDL_Rect pixels{
-        paint->origin_x + left * paint->tile_width,
-        paint->origin_y + top * paint->tile_height,
-        (right - left) * paint->tile_width,
-        (bottom - top) * paint->tile_height
+static std::vector<SDL_Rect> native_dfhack_translation_source_cells(
+        const graphicst &gps, const std::vector<Match> &matches) {
+    std::vector<SDL_Rect> fields;
+    const auto append = [&](int x, int y, int width, int height) {
+        const int left = std::clamp(x, 0, gps.dimx);
+        const int top = std::clamp(y, 0, gps.dimy);
+        const int right = static_cast<int>(std::clamp<int64_t>(
+            int64_t(x) + width, 0, gps.dimx));
+        const int bottom = static_cast<int>(std::clamp<int64_t>(
+            int64_t(y) + height, 0, gps.dimy));
+        if (right <= left || bottom <= top) return;
+        const SDL_Rect field{left, top, right - left, bottom - top};
+        if (std::none_of(fields.begin(), fields.end(), [&](const SDL_Rect &other) {
+                return other.x == field.x && other.y == field.y &&
+                    other.w == field.w && other.h == field.h;
+            })) fields.push_back(field);
     };
-    struct FieldDrawState {
-        SDL_Renderer *renderer;
-        SDL_Rect clip{};
-        SDL_BlendMode blend = SDL_BLENDMODE_NONE;
-        Uint8 r = 0, g = 0, b = 0, a = 255;
-        bool clipped;
-        explicit FieldDrawState(SDL_Renderer *sdl) noexcept
-            : renderer(sdl), clipped(SDL_RenderIsClipEnabled(sdl) == SDL_TRUE) {
-            SDL_RenderGetClipRect(renderer, &clip);
-            SDL_GetRenderDrawBlendMode(renderer, &blend);
-            SDL_GetRenderDrawColor(renderer, &r, &g, &b, &a);
+    for (const auto &match : matches) {
+        if (match.native_help_source_only || match.native_split_duplicate) continue;
+        const bool clear = match.graphical_clear_width > 0 && match.graphical_clear_height > 0;
+        if (match.target.empty() && !clear) continue;
+        if (clear) append(match.graphical_clear_x, match.graphical_clear_y,
+            match.graphical_clear_width, match.graphical_clear_height);
+        if (!match.target.empty() && match.length > 0) {
+            const int top = match.native_split_text ? match.native_split_top_y : match.y;
+            append(match.x, top, match.length, match.native_split_text ? 2 : 1);
         }
-        ~FieldDrawState() noexcept {
-            SDL_RenderSetClipRect(renderer, clipped ? &clip : nullptr);
-            SDL_SetRenderDrawBlendMode(renderer, blend);
-            SDL_SetRenderDrawColor(renderer, r, g, b, a);
-        }
-    } state(renderer);
-    if (state.clipped) {
-        SDL_Rect intersection{};
-        if (SDL_IntersectRect(&pixels, &state.clip, &intersection) != SDL_TRUE) return;
-        pixels = intersection;
     }
-    if (SDL_RenderSetClipRect(renderer, &pixels) != 0) return;
-    NativeDfhackLayerDrawingScope drawing;
-    SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_NONE);
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
-    if (SDL_RenderFillRect(renderer, &pixels) != 0) return;
+    return fields;
+}
 
-    // Blank only character bytes in the private layer. Primary/lower artwork,
-    // color bytes and flags keep their actual DFHack values; the native tile
-    // generator then supplies that field's background without its Latin ink.
-    struct PrivateSpaces {
-        using Texture = std::remove_pointer_t<decltype(graphicst::screentexpos)>;
-        std::vector<std::pair<unsigned char *, unsigned char>> characters;
-        std::vector<std::pair<Texture *, Texture>> glyph_textures;
-        ~PrivateSpaces() noexcept {
-            for (const auto &[address, original] : characters) *address = original;
-            for (const auto &[address, original] : glyph_textures) *address = original;
-        }
-        void blank(unsigned char *address) {
-            if (!address || !*address || *address == ' ') return;
-            characters.emplace_back(address, *address);
-            *address = ' ';
-        }
-        void remove_glyph(Texture *address) {
-            glyph_textures.emplace_back(address, *address);
-            *address = 0;
-        }
-    } spaces;
-    spaces.characters.reserve(static_cast<size_t>(right - left) * (bottom - top) * 2);
-    for (size_t plane = 0; plane < 2; ++plane) {
-        if (plane && !gps.top_in_use) continue;
-        auto *screen = plane ? gps.screen_top : gps.screen;
-        auto *primary = plane ? gps.screentexpos_top : gps.screentexpos;
-        if (!screen) continue;
-        for (int x = left; x < right; ++x)
-            for (int y = top; y < bottom; ++y) {
-                const size_t at = static_cast<size_t>(x) * gps.dimy + y;
-                auto *character = screen + at * 8;
-                if (primary && paint->character_texture(primary[at], *character))
-                    spaces.remove_glyph(primary + at);
-                spaces.blank(character);
-            }
-    }
-    // Only actual private map writes were retained during this layer's draw.
-    // The field clip also restores any private map beneath transparent text.
-    for (const auto &map : paint->maps)
-        map.draw(paint->native_renderer, map.view, map.x, map.y);
-    for (size_t pass = 0; pass < 4; ++pass) {
-        const bool top_plane = pass >= 2;
-        if (top_plane && !gps.top_in_use) continue;
-        const auto draw = reinterpret_cast<NativeDfhackLayerTileMethod>(paint->methods[pass]);
-        if (!draw) continue;
-        if (pass & 1) {
-            // An image anchored outside the source field can extend into it.
-            // Repaint those private images in native order, clipped here.
-            for (const size_t at : paint->anchors[top_plane])
-                draw(paint->native_renderer, static_cast<int>(at / gps.dimy),
-                    static_cast<int>(at % gps.dimy));
-        } else {
-            for (int x = left; x < right; ++x)
-                for (int y = top; y < bottom; ++y) {
+static void native_dfhack_suppress_source_glyphs(NativeDfhackLayerPaintContext &paint,
+        const std::vector<SDL_Rect> &fields) noexcept {
+    auto &gps = *paint.graphics;
+    for (const auto &field : fields)
+        for (size_t plane = 0; plane < 2; ++plane) {
+            if (plane && !gps.top_in_use) continue;
+            auto *screen = plane ? gps.screen_top : gps.screen;
+            const std::array<NativeDfhackLayerTexture *, 3> textures{{
+                plane ? gps.screentexpos_top : gps.screentexpos,
+                plane ? gps.screentexpos_top_lower : gps.screentexpos_lower,
+                plane ? gps.screentexpos_top_anchored : gps.screentexpos_anchored
+            }};
+            for (int x = field.x; x < field.x + field.w; ++x)
+                for (int y = field.y; y < field.y + field.h; ++y) {
                     const size_t at = static_cast<size_t>(x) * gps.dimy + y;
-                    if (native_dfhack_layer_cell_visible(gps, at, top_plane))
-                        draw(paint->native_renderer, x, y);
+                    const unsigned char character = screen ? screen[at * 8] : 0;
+                    for (auto *texture : textures)
+                        if (texture && paint.character_texture(texture[at], character))
+                            texture[at] = 0;
+                    // Colors, flags and unrelated artwork remain native.
+                    // Empty transparent cells must remain empty as well.
+                    if (screen && character && character != ' ') screen[at * 8] = ' ';
                 }
         }
-    }
-    // The original GPU content was composed before source replacement.
-    // Copying that cache again here would restore its untranslated ink in
-    // the field that has just been cleared.
 }
 
 static bool native_dfhack_layer_has_content(SDL_Renderer *renderer,
@@ -659,16 +759,18 @@ static bool native_dfhack_layer_has_content(SDL_Renderer *renderer,
     if (g_native_dfhack_gpu_frame_ready && gpu.texture && gpu.renderer == renderer &&
             g_native_dfhack_gpu_page_revision == native_dfhack_layer_page_revision())
         return true;
+    const auto *storage = layer.storage();
+    if (!storage) return false;
+    if (storage->translation_content_ready) return storage->translation_has_content;
     for (const auto &map : layer.maps())
         if (map && map->any_content()) return true;
-    // PresentScope holds the private storage lock. Inspect each of its own
-    // output arrays once before allocating, binding or clearing an SDL target.
+    // This scope pins one immutable submission. Inspect only that frame's
+    // arrays before allocating, binding or clearing an SDL target.
     const auto nonzero = [](const auto &values) noexcept {
         return std::any_of(values.begin(), values.end(), [](auto value) { return value != 0; });
     };
-    const auto &storage = g_native_dfhack_layer_storage;
-    if (nonzero(storage.written)) return true;
-    for (const auto &plane : storage.planes) {
+    if (nonzero(storage->written)) return true;
+    for (const auto &plane : storage->planes) {
         if (nonzero(plane.screen) || nonzero(plane.flags)) return true;
         for (const auto &textures : plane.textures)
             if (nonzero(textures)) return true;
@@ -677,23 +779,56 @@ static bool native_dfhack_layer_has_content(SDL_Renderer *renderer,
 }
 
 static void native_dfhack_present_layer(SDL_Renderer *renderer,
-        void (*translate)(SDL_Renderer *)) {
+        void (*translate)(SDL_Renderer *, const NativeDfhackTranslatedFrame &)) {
     if (!renderer || !native_pe_supported()) return;
     if (!g_native_dfhack_graphics_ownership_ready.load(std::memory_order_acquire)) return;
     const bool disabled = native_dfhack_switch_disabled();
     static bool hidden = false;
     if (disabled != hidden) {
-        // Discard both sides of the transition on the SDL thread, after any
-        // private writer has restored its borrowed graphicst pointers. Queued
-        // callbacks may still produce private output while tools are disabled.
         if (NativeDfhackLayerWriteScope::in_progress()) return;
         clear_native_dfhack_layers();
+        g_native_dfhack_paint_storage.reset();
+        g_native_dfhack_paint_source.reset();
+        g_native_dfhack_painted_frame.reset();
         g_native_dfhack_gpu_frame_ready = false;
+        g_native_dfhack_gpu_known_graphical = false;
+        native_dfhack_publish_gpu_content(false);
         g_native_dfhack_gpu_target_initialized = false;
         hidden = disabled;
     }
     if (disabled) return;
-    NativeDfhackLayerPresentScope layer;
+    const auto latest = native_dfhack_published_frame();
+    auto completed = g_overlay.completed_dfhack_layer_frame(latest);
+    if (!completed && g_native_dfhack_painted_frame && latest &&
+            g_overlay.translation_enabled() &&
+            latest->page_revision == native_dfhack_layer_page_revision() &&
+            native_dfhack_translation_layout_compatible(
+                *g_native_dfhack_painted_frame->source, *latest)) {
+        // A busy result cache must not withdraw a complete compatible target.
+        completed = g_native_dfhack_painted_frame;
+    }
+    if (!completed || !completed->source || !completed->matches) {
+        // Unknown GPU-only textures may contain plugin-owned text. They do
+        // not bypass completion or expose a raw target while matching waits.
+        g_native_dfhack_painted_frame.reset();
+        g_native_dfhack_paint_storage.reset();
+        g_native_dfhack_paint_source.reset();
+        if (native_dfhack_graphical_gpu_ready(renderer) &&
+                NativeDfhackLayerNativeRenderer::current().sdl == renderer) {
+            NativeDfhackLayerSdlState state(renderer);
+            int width = 0, height = 0;
+            const auto *layout = latest &&
+                latest->page_revision == native_dfhack_layer_page_revision()
+                    ? latest->graphics.get() : nullptr;
+            if (native_dfhack_layer_target_size(renderer, state, width, height, layout) &&
+                    state.bind_composite(width, height)) {
+                NativeDfhackLayerDrawingScope drawing;
+                native_dfhack_compose_graphical_gpu(renderer, width, height);
+            }
+        }
+        return;
+    }
+    NativeDfhackLayerPresentScope layer(completed->source);
     if (!layer.valid()) return;
     auto *gps = layer.graphics();
     if (!gps || gps->dimx <= 0 || gps->dimy <= 0) return;
@@ -701,27 +836,59 @@ static void native_dfhack_present_layer(SDL_Renderer *renderer,
 
     const auto native = NativeDfhackLayerNativeRenderer::current();
     if (native.sdl != renderer) return;
-    auto *native_renderer = native.object;
-    auto **methods = native.methods;
-
     NativeDfhackLayerSdlState state(renderer);
     int width = 0, height = 0;
-    if (!native_dfhack_layer_target_size(renderer, state, width, height)) return;
+    if (!native_dfhack_layer_target_size(renderer, state, width, height, gps)) return;
     auto &target = g_native_dfhack_layer_target;
+    const bool same_completed = g_native_dfhack_painted_frame &&
+        g_native_dfhack_painted_frame->source == completed->source &&
+        g_native_dfhack_painted_frame->matches == completed->matches &&
+        g_native_dfhack_painted_frame->key == completed->key;
+    const bool retained = same_completed && target.texture && target.renderer == renderer &&
+        target.width == width && target.height == height;
+    NativeDfhackLayerDrawingScope drawing;
+    if (retained) {
+        // A pending source keeps this complete target and translated ink.
+        // Never overlay the new raw GPU cache.
+        if (!state.bind_composite(width, height)) return;
+        native_dfhack_compose_graphical_gpu(renderer, width, height);
+        if (completed->source->page_revision != native_dfhack_layer_page_revision()) return;
+        const SDL_Rect destination{0, 0, width, height};
+        SDL_RenderCopy(renderer, target.texture, nullptr, &destination);
+        return;
+    }
+
+    if (!same_completed || g_native_dfhack_paint_source != completed->source ||
+            !g_native_dfhack_paint_storage) {
+        try {
+            auto paint = completed->source->snapshot();
+            if (!paint || !paint->graphics) return;
+            g_native_dfhack_paint_storage = std::move(paint);
+            g_native_dfhack_paint_source = completed->source;
+        } catch (...) { return; }
+    }
+    auto &paint_storage = *g_native_dfhack_paint_storage;
+    auto *paint_graphics = paint_storage.graphics.get();
+    if (!paint_graphics || paint_graphics->dimx != gps->dimx ||
+            paint_graphics->dimy != gps->dimy) return;
+    auto *native_renderer = native.object;
+    auto **methods = native.methods;
     if (!target.prepare(renderer, width, height) ||
             !state.bind(target.texture, width, height)) return;
-    NativeDfhackLayerDrawingScope drawing;
+    g_native_dfhack_painted_frame.reset();
     SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_NONE);
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
     if (SDL_RenderClear(renderer) != 0) return;
 
     {
-        NativeDfhackLayerRendererGrid grid(native_renderer, *gps);
-        NativeDfhackLayerPaintContext paint(renderer, native_renderer, gps, methods);
-        // Private map graphics precede private interface cells. Each map keeps
-        // the native dimensions and origin, while its arrays contain only
-        // DFHack's writes; empty cells leave this target transparent.
-        for (const auto &map : layer.maps()) {
+        NativeDfhackLayerRendererGrid grid(native_renderer, *paint_graphics);
+        NativeDfhackLayerPaintContext paint(renderer, native_renderer, paint_graphics, methods);
+        const auto fields = native_dfhack_translation_source_cells(*gps, *completed->matches);
+        if (!fields.empty() && (paint.tile_width <= 0 || paint.tile_height <= 0)) return;
+        // Every source glyph is removed before the first native tile/map
+        // call. Matching and authored fields still use the immutable source.
+        native_dfhack_suppress_source_glyphs(paint, fields);
+        for (const auto &map : paint_storage.maps) {
             if (!map || !map->any_content() || !map->view() ||
                     map->dimx() <= 0 || map->dimy() <= 0) continue;
             const bool map_port = map->map_port();
@@ -732,45 +899,46 @@ static void native_dfhack_present_layer(SDL_Renderer *renderer,
                     const size_t at = map_port
                         ? static_cast<size_t>(y) * map->dimx() + x
                         : static_cast<size_t>(x) * map->dimy() + y;
-                    if (map->has_content(at)) {
-                        paint.maps.push_back({map->view(), draw, x, y});
-                        draw(native_renderer, map->view(), x, y);
-                    }
+                    if (map->has_content(at)) draw(native_renderer, map->view(), x, y);
                 }
         }
-        // Match native update_all's separate passes. Anchored graphics can
-        // extend beyond their cell and must follow all ordinary cells.
         for (size_t pass = 0; pass < 4; ++pass) {
             const bool top = pass >= 2;
-            if (top && !gps->top_in_use) continue;
+            if (top && !paint_graphics->top_in_use) continue;
             const bool anchor = pass & 1;
             const auto draw = reinterpret_cast<NativeDfhackLayerTileMethod>(methods[pass]);
-            const auto *anchors = top ? gps->screentexpos_top_anchored : gps->screentexpos_anchored;
+            const auto *anchors = top ? paint_graphics->screentexpos_top_anchored : paint_graphics->screentexpos_anchored;
             if (!draw || (anchor && !anchors)) continue;
-            for (int x = 0; x < gps->dimx; ++x)
-                for (int y = 0; y < gps->dimy; ++y) {
-                    const size_t at = static_cast<size_t>(x) * gps->dimy + y;
-                    if (anchor ? anchors[at] != 0 : native_dfhack_layer_cell_visible(*gps, at, top)) {
-                        if (anchor) paint.anchors[top].push_back(at);
+            for (int x = 0; x < paint_graphics->dimx; ++x)
+                for (int y = 0; y < paint_graphics->dimy; ++y) {
+                    const size_t at = static_cast<size_t>(x) * paint_graphics->dimy + y;
+                    if (anchor ? anchors[at] != 0 : native_dfhack_layer_cell_visible(*paint_graphics, at, top))
                         draw(native_renderer, x, y);
-                    }
                 }
         }
-        native_dfhack_compose_gpu_layer(renderer, paint.bound_target, width, height);
-        if (translate) translate(renderer);
+        if (translate) translate(renderer, *completed);
     }
+    g_native_dfhack_painted_frame = completed;
     if (!state.bind_composite(width, height)) return;
-    // This is the ordinary final composition of the private target. It never
-    // copies game pixels into DFHack's layer or feeds it to native scanners.
+    // Independently confirmed graphics remain live outside this source's
+    // completed target. Unknown textures cannot enter either composition.
+    native_dfhack_compose_graphical_gpu(renderer, width, height);
+    if (completed->source->page_revision != native_dfhack_layer_page_revision()) return;
     const SDL_Rect destination{0, 0, width, height};
     SDL_RenderCopy(renderer, target.texture, nullptr, &destination);
 }
 
 static void release_native_dfhack_layer_target() noexcept {
+    g_native_dfhack_painted_frame.reset();
+    g_native_dfhack_paint_storage.reset();
+    g_native_dfhack_paint_source.reset();
     g_native_dfhack_layer_target.release();
     g_native_dfhack_gpu_target.release();
     g_native_dfhack_gpu_target_initialized = false;
     g_native_dfhack_gpu_frame_ready = false;
+    g_native_dfhack_gpu_known_graphical = false;
+    g_native_dfhack_gpu_graphics_generation = 0;
+    native_dfhack_publish_gpu_content(false);
     g_native_dfhack_gpu_page_revision = 0;
     g_native_dfhack_gpu_revision = 0;
 }
@@ -782,11 +950,12 @@ public:
 };
 static void native_dfhack_gpu_suspend() noexcept {}
 static void native_dfhack_gpu_resume() noexcept {}
+static bool native_dfhack_gpu_translation_content_active() noexcept { return false; }
 static bool install_native_dfhack_gpu_target_hook() { return true; }
 static void uninstall_native_dfhack_gpu_target_hook() {}
 static bool native_dfhack_gpu_target_hook_active() noexcept { return false; }
 static bool native_dfhack_render_callbacks_pending() noexcept { return true; }
-static void native_dfhack_redraw_background(SDL_Renderer *, const SDL_Rect &) {}
-static void native_dfhack_present_layer(SDL_Renderer *, void (*)(SDL_Renderer *)) {}
+static void native_dfhack_present_layer(SDL_Renderer *,
+    void (*)(SDL_Renderer *, const NativeDfhackTranslatedFrame &)) {}
 static void release_native_dfhack_layer_target() noexcept {}
 #endif

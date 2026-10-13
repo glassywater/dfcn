@@ -125,6 +125,12 @@ static uintptr_t native_history_legends_box() {
     return current.tab ? current.tab + 0x28 : 0;
 }
 
+static bool native_history_legends_artwork_page() {
+    if (g_native_history_frame) return g_native_history_frame->artwork_page;
+    const auto current = native_history_legends_tab(false);
+    return current.type == 7 && current.index >= 0;
+}
+
 static std::optional<NativeHistoryLegendsCaption> native_history_legends_caption() {
     if (g_native_history_frame) return g_native_history_frame->caption;
     const auto current = native_history_legends_tab();

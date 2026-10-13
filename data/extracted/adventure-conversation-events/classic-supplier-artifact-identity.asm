@@ -1,4 +1,5 @@
 ; classic PE:6a70b91c:0270a000; artifact-identity 0x140b91440..0x140b91750
+; native unwind regions: 0x140b91440..0x140b91750
 0x140b91440: mov    QWORD PTR [rsp+0x8],rbx
 0x140b91445: mov    QWORD PTR [rsp+0x18],rbp
 0x140b9144a: push   rsi

@@ -1,6 +1,7 @@
 // AttackCreature's later stages use a single summary, not the eight-row
 // target chooser. Coordinates below come from the native render and summary
-// routines (PE 53.16 Steam 0x878600/0x872f10; classic 0x875e80).
+// routines (ELF 0x1182410/0x116e110; PE 53.16 Steam
+// 0x878600/0x872f10; classic 0x875e80).
 // `panel` is the closed frame's INTERIOR: native outer L/T are panel.x/y-1.
 struct NativeAdventureCombatSelector {
     size_t row = 0;
@@ -16,6 +17,20 @@ struct NativeAdventureCombatPanel {
     // Its arrows remain native artwork and never belong to a source mask.
     std::vector<NativeAdventureCombatSelector> selectors;
 };
+
+// The two width-36 addst sites own the complete pictured name field even
+// when a covered rail prevents the closed-frame reader from recovering the
+// modal. These are actual native return addresses, not lexical body names.
+static char adventure_combat_native_picture_kind(uintptr_t caller) {
+#ifndef _WIN32
+    const uintptr_t base = native_history_profile_base();
+    if (base && caller) {
+        if (caller == native_reference_address(base, 0xd85c48)) return 't';
+        if (caller == native_reference_address(base, 0xd8745c)) return 'a';
+    }
+#endif
+    return 0;
+}
 
 // This renderer paints gps.hover_rectangle, including in classic mode.
 // Requiring init's generic border palette excludes that complete native

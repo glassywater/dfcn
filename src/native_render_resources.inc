@@ -3,7 +3,6 @@
 // rebuild them through the ordinary producer and composition paths.
 static void native_reset_render_resources() {
     TranslationStateScope translation;
-    std::lock_guard<std::recursive_mutex> layer_lock(g_native_dfhack_layer_mutex);
     g_overlay.invalidate_render_resources();
     g_native_squads_overlay.release_native_squads_resources();
 

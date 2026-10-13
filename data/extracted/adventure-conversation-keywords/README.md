@@ -16,9 +16,16 @@
 - `main-conditional-branches.tsv`：主函数每条直接条件跳转，关联其 basic block。
 - `main-basic-blocks.tsv`：主函数完整 block 列表、出边、字符串操作数和直接调用。
   结合上一项和 `reachable_basic_blocks` 可追到 selector 的条件路径，而不是只有 literal 清单。
+- `supplier-selector-branches.tsv`：emotion、value 和五个 strength constructor 的全部有限
+  selector、实际 branch RVA、该分支可达指令、字符串操作数和直接调用。两级跳转表同时保留
+  BYTE selector 表、DWORD branch 表及 native slot；不把表字节当作执行指令。
+- `supplier-switch-guards.tsv`：上述 supplier 的实际 compare、上界条件跳转及表外分支。
+  emotion 与四个完整 strength 表的 selector 为 `0..168`，value 为 `0..32`；failed
+  先按原生 `add eax,0xfffffffb` 减去 5，再按 `0..147` 的 BYTE 表映射到 DWORD branch。
+  该索引保留变换后的表 selector，原始 enum 及名称仍见兄弟情绪目录的完整分支资料。
 - `steam-keyword-sources.asm`、`classic-keyword-sources.asm`：对应源函数的完整指令体。
 - `native-functions.tsv`：源函数角色、实际指令体结束和 PE unwind 结束分别保留。
-  main 与部分 producer 的 unwind 范围包含函数末端跳转表，不能将表数据反汇编成指令。
+  main、emotion、value 与部分 producer 的 unwind 范围包含函数末端跳转表，不能将表数据反汇编成指令。
 - `native-literals.tsv`、`native-calls.tsv`：全部提取到的 source operands 和直接调用。
   `inline-immediate-fragment` 表示编译器分段装填字符串的片段，不将片段当成完整词条。
 - `literal-tokens.tsv`：完整 ASCII `lea` 字符串操作数的词汇索引，不是额外翻译表。
@@ -70,7 +77,9 @@ runtime 使用同一 native chooser snapshot 内 **完全相同的 keyword vecto
 也不能丢掉未覆盖词。该边界不依赖假定的整句追加生产路径。
 
 完整 caption 只输出一次，其所代表的去重词也只覆盖一次；其余 fixed synonyms 按原关键词
-出现顺序保留。相同 vector 如绑定到不同语义输出则拒绝选择，避免受 vector 遍历顺序影响。
+出现顺序保留。显示行使用其已绑定的完整原生 caption，缓存同时区分 caption 与 vector；
+未绑定的相同 vector 如对应不同语义输出仍拒绝任意选择。中文搜索分别解析该 vector 的
+各个完整 caption，保留它们各自已证明的语义，不依赖 vector 遍历顺序。
 11 类完整 emotion caption 优先于逐词 fixed 组合，以保留强度语义：这里的 `great` 是程度，
 不能由其它会话里的正面评价词 `great` 决定。正常固定关键词与整条 reviewed catalog
 保留原有优先级，后续旧姓名解析路径未放宽。

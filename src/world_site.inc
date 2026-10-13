@@ -362,6 +362,47 @@ std::optional<NativeTextCard> Overlay::capture_world_site_card(
         card.interior.w = right - left;
         return card;
     };
+    // Clicking the news footer replaces all site facts with the retained
+    // rumor list. Its native owner and closed frame establish this card;
+    // population/government captions and translation coverage cannot do so.
+    if (auto native_lines = native_expanded_world_site_rumor_lines()) {
+        for (int y = 1; y < gps_->dimy - 1; ++y) {
+            for (const auto &field : split_text_fields(context[y])) {
+                if (std::none_of(native_lines->begin(), native_lines->end(),
+                        [&](const auto &line) { return trim_view(line) == field.text; })) continue;
+                const auto panel = native_panel_interior(borders, *gps_,
+                    field.start, field.end, y);
+                if (!panel) continue;
+                auto card = capture_panel_text_card(*panel);
+                if (!card || card->rows.front().x != field.start ||
+                        card->rows.front().y != y) continue;
+                const auto &first = card->rows.front();
+                const size_t height = static_cast<size_t>(card->rows.back().y - first.y + 1);
+                for (size_t begin = 0; begin + height <= native_lines->size(); ++begin) {
+                    size_t row = 0;
+                    bool same = true;
+                    for (size_t offset = 0; offset < height; ++offset) {
+                        const auto expected = trim_view((*native_lines)[begin + offset]);
+                        const int line_y = first.y + static_cast<int>(offset);
+                        if (row < card->rows.size() && card->rows[row].y == line_y) {
+                            const auto &visible = card->rows[row++];
+                            if (visible.x != first.x || visible.source != expected) {
+                                same = false;
+                                break;
+                            }
+                        } else if (!expected.empty()) {
+                            same = false;
+                            break;
+                        }
+                    }
+                    if (!same) continue;
+                    card->world_site_rumor_first_line = begin;
+                    card->world_site_rumor_lines = std::move(*native_lines);
+                    return align_card(std::move(*card));
+                }
+            }
+        }
+    }
     // Travel mode replaces the ordinary gait/time footer and fortress-map
     // navigation with an edge-to-edge W/E bearing strip and a native site
     // identity in the lower HUD. Its read-only location frame must therefore
@@ -814,7 +855,8 @@ void Overlay::append_world_site_phrases(const NativeTextCard &card,
     for (size_t index = description_end; index < card.rows.size(); ++index) {
         const auto &row = card.rows[index];
         if (travel_status_rows.contains(row.y)) continue;
-        if (!action_control && (reclaim_history || normalize_utterance(row.source).starts_with("In "))) {
+        if (!action_control && (reclaim_history || !card.world_site_rumor_lines.empty() ||
+                normalize_utterance(row.source).starts_with("In "))) {
             // The site-news builder wraps dated events before drawing them.
             // Gather the whole live paragraph before any independent row,
             // term or name rule can consume one of its fragments. Native
@@ -824,7 +866,8 @@ void Overlay::append_world_site_phrases(const NativeTextCard &card,
             size_t end = index + 1;
             while (end < card.rows.size() &&
                     card.rows[end].y == card.rows[end - 1].y + 1 &&
-                    (reclaim_history || !normalize_utterance(card.rows[end].source).starts_with("In "))) ++end;
+                    (reclaim_history || !card.world_site_rumor_lines.empty() ||
+                     !normalize_utterance(card.rows[end].source).starts_with("In "))) ++end;
             std::vector<Match> paragraph;
             std::vector<int> paragraph_rows;
             std::string source;
@@ -837,6 +880,22 @@ void Overlay::append_world_site_phrases(const NativeTextCard &card,
                 source += part.source;
             }
             const int right = card.interior.x + card.interior.w;
+            std::optional<NativeParagraphViewport> viewport;
+            if (!card.world_site_rumor_lines.empty()) {
+                const auto &lines = card.world_site_rumor_lines;
+                const size_t visible = card.world_site_rumor_first_line +
+                    static_cast<size_t>(row.y - card.rows.front().y);
+                size_t begin = visible, last = visible + end - index;
+                while (begin > 0 && !trim_view(lines[begin - 1]).empty()) --begin;
+                while (last < lines.size() && !trim_view(lines[last]).empty()) ++last;
+                source.clear();
+                for (size_t at = begin; at < last; ++at) {
+                    if (!source.empty()) source += ' ';
+                    source += trim_view(lines[at]);
+                }
+                viewport = NativeParagraphViewport{static_cast<int>(visible - begin),
+                    static_cast<int>(last - begin)};
+            }
             // Both this card and the parser read the active logical cells,
             // including during a raw-layer suppression pass. The mask writer
             // still checks each owned source byte on that particular layer.
@@ -879,7 +938,7 @@ void Overlay::append_world_site_phrases(const NativeTextCard &card,
                 }
             }
             if (target.empty() || !append_bounded_paragraph(paragraph, target,
-                    rows, matches, only_y, right, right, colors)) {
+                    rows, matches, only_y, right, right, colors, false, -1, viewport)) {
                 // Keep an unknown / non-fitting event intact, not a mixture
                 // of translated words and English continuations. One review
                 // entry owns the complete paragraph at every wrapping width.

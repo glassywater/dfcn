@@ -102,6 +102,61 @@ bool Overlay::find_fortress_map_matches(int only_y,
     append_native_map_hover_phrases(rows, matches, -1, NativeMapHoverKind::Terrain);
     append_toolbar_tooltip_matches(rows, matches, -1, screen_override != nullptr);
 
+#ifdef _WIN32
+    // The main fortress renderer keeps ALERT beside the map even while the
+    // game is paused. Its reviewed addst caller owns this fixed button; an
+    // identically spelled name or a caption in another page owns no HUD span.
+    const auto alert_return = native_reference_address(native_history_profile_base(), 0x3d72a7);
+    if (alert_return) if (const auto target = exact_literal_translation("Alert")) {
+        constexpr std::string_view source = "ALERT";
+        std::vector<NativeDrawnTextRow> draws;
+        uint64_t capture_epoch = 0;
+        {
+            std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
+            capture_epoch = g_native_drawn_text_epoch;
+            for (const auto *layer : {&g_native_drawn_text_rows, &g_native_drawn_top_text_rows})
+                for (const auto &draw : *layer)
+                    if (draw.native_caller == alert_return && draw.source == source &&
+                            draw.draw_epoch == capture_epoch) draws.push_back(draw);
+        }
+        constexpr uint32_t upper = 1u << 3, lower = 1u << 4;
+        for (const auto &draw : draws) {
+            if (draw.native_caller != alert_return || draw.source != source || draw.editable_text ||
+                    draw.draw_epoch != capture_epoch || draw.draw_dimx != gps_->dimx ||
+                    draw.draw_dimy != gps_->dimy || draw.x < 0 || draw.y < 0 ||
+                    draw.x + static_cast<int>(source.size()) > gps_->dimx || draw.y >= gps_->dimy ||
+                    draw.draw_grid != (draw.top_layer ? gps_->screen_top : gps_->screen) ||
+                    (screen_override && screen_override != draw.draw_grid)) continue;
+            const auto *flags = draw.top_layer ? gps_->screentexpos_top_flag : gps_->screentexpos_flag;
+            const auto claim = [&](int y, bool mirror) {
+                if (y < 0 || y >= gps_->dimy || rows[y].compare(draw.x, source.size(), source) != 0)
+                    return;
+                for (size_t byte = 0; byte < source.size(); ++byte) {
+                    const int x = draw.x + static_cast<int>(byte);
+                    const size_t at = static_cast<size_t>(x) * gps_->dimy + y;
+                    const auto origin = native_text_grid_origin(*gps_, at, native_ui_top_layer_at(*gps_, at));
+                    if (origin.grid != draw.draw_grid || origin.top_layer != draw.top_layer ||
+                            visible_char_at(x, y) != static_cast<unsigned char>(source[byte])) return;
+                    if (mirror) {
+                        const size_t original = static_cast<size_t>(x) * gps_->dimy + draw.y;
+                        if (!flags || (flags[original] & (upper | lower)) != (y > draw.y ? upper : lower) ||
+                                (flags[at] & (upper | lower)) != (y > draw.y ? lower : upper)) return;
+                    }
+                }
+                matches.push_back({draw.x, y, static_cast<int>(source.size()), -2, *target, std::string(source)});
+                std::fill_n(rows[y].begin() + draw.x, source.size(), ' ');
+            };
+            claim(draw.y, false);
+            if (flags) {
+                const size_t at = static_cast<size_t>(draw.x) * gps_->dimy + draw.y;
+                const uint32_t half = flags[at] & (upper | lower);
+                if (half == upper) claim(draw.y + 1, true);
+                else if (half == lower) claim(draw.y - 1, true);
+            }
+        }
+    }
+#endif
+
     std::vector<std::string> hud_rows(gps_->dimy, std::string(gps_->dimx, ' '));
     for (int y = header_y; y <= header_y + 2; ++y) hud_rows[y] = rows[y];
     // Elevation is the map renderer's complete numeric field (native return

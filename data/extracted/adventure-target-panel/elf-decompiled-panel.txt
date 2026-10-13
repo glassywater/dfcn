@@ -1,0 +1,99 @@
+当前 Linux 原生攻击选择面板：从安装映像反编译还原的文本产生式
+
+映像及地址
+  dwarfort 的 ELF build ID：bcc6789e6fb477b785a2b02be80b8b1b054ff88c。
+  libg_src_lib.so 的 ELF build ID：f45d1ee1b60004b61116fcaaf96602b305170619。
+  主映像地址是原生 VA；库地址是相对地址。
+  主渲染函数：[0x1182410,0x11906f9)。边界函数：[0x114fae0,0x114fc76)。
+  elf-decompiled.c 保留 Ghidra 对整个渲染函数和八个名称/状态/几何供应函数的反编译。
+  elf-library-decompiled.c 保留序数和原生 addst 的反编译。
+  库的 Ghidra 原始输出包含对尾调用的自动展开；函数边界与分支入口以 unwind 清单和机器码为准。
+  elf-*.asm、elf-branches.tsv、elf-switches.tsv、elf-calls.tsv 保留机器码控制流。
+  elf-literals.tsv 同时提取完整字符串、立即数和 SIMD 片段；下面的完整词句由实际存储和调用还原。
+
+状态入口（标题表 0x21363d8，内容表 0x2136400）
+  0：选择目标，Who will you attack? / Who will you wrestle?；八行人物记录。
+  1：确认，投降后仍攻击 / 开始冲突 / 直接攻击；Confirm / Cancel。
+  2：行动及技能，Strike / Wrestle / Parry / Block / Dodge。
+  3：截图所在的瞄准部位，What do you want to aim for?。
+  4：Attack {部位}:；攻击名称、命中描述、速度、攻击风格、冲锋及多重攻击。
+  5：Parry {来袭攻击} with {物品} ({技能等级})。
+  6：Block {来袭攻击} with {物品} ({技能等级})。
+  7：Dodge {相对方向}。
+  8/9：Wrestle {人物}；持握关系及摔跤行动。
+  >9：不生成标题。所有分发表目标保留在 elf-switches.tsv。
+  这些关联状态的静态词句和类型化名称组合沿用 adventure-target-translations.tsv。
+
+瞄准部位行（状态 3）
+  框外边界：L=中心-50，R=中心+50；101 列外框，99 列内部。
+  每条记录占三行：图标、热键与正文共用中间一行。
+  E=R-1；有滚动条时 E=R-3。
+  先在 L+7 画 43 个 CP437 0xFA 点，再在同一位置以最多 36 个原生字符画名称。
+  名称格式化：0xb602d0；绘制调用 0x1185c43，返回地址 0x1185c48。
+  命中描述从 L+45 开始。E-2 及 E-1 分别保留给优势/警示标记。
+
+  adjusted_chance = entry.chance - ((entry.flags & 0x8000) ? 1 : 0);
+  difficulty = adjusted_chance <= -3 ? "Impossible strike"
+             : adjusted_chance == -2 ? "Difficult strike"
+             : adjusted_chance == -1 ? "Tricky strike"
+             : adjusted_chance ==  0 ? "Normal strike"
+             : adjusted_chance ==  1 ? "Easy strike"
+             : adjusted_chance ==  2 ? "Easier strike"
+             :                         "Simple strike";
+  draw(difficulty); draw(", "); draw(contact_quality(entry.contact));
+
+接触质量（状态 3/4 共用语义，原生各有一组绘制分支）
+  contact <= -3：can only graze      -> 只能擦伤
+  contact == -2：can't land squarely -> 无法正面击中
+  contact == -1：can't quite connect -> 难以有效击中
+  contact ==  0：fairly solid        -> 较为扎实
+  contact ==  1：square              -> 正面击中
+  contact ==  2：very square         -> 准确击中
+  contact >=  3：direct hit          -> 直接命中
+  分支入口、绘制调用及全部难度译文见 elf-quality-productions.tsv。
+
+攻击与速度行（状态 4）
+  名称仍在 L+7、上限 36；绘制调用 0x1187457，返回地址 0x118745c。
+  命中描述仍在 L+45。
+  难度为 Impossible / Difficult / Tricky / Normal / Easy / Easier / Simple。
+  当 adjusted_chance==0 且 speed_class!=3 时省略 Normal。
+  speed_class>=6 -> VVSlow（极慢）；5 -> V Slow（很慢）；4 -> Slow（慢速）；
+  speed_class==3 -> 不画速度；2 -> Fast（快速）；<=1 -> V Fast（很快）。
+  同时有非默认难度与速度时，在二者之间画一个空格。
+  0x11875c8..0x11875e6 的两项条件决定是否调用 0x11897ed 画 " strike"：
+    adjusted_chance==0 或 speed_class==3：有 " strike"；
+    adjusted_chance!=0 且 speed_class!=3：没有 " strike"。
+  然后始终画 ", " 与接触质量。
+  因此完整产生式有三类，不可强制要求所有行都带 strike：
+    {difficulty} strike, {contact}
+    {speed} strike, {contact}
+    {non-normal difficulty} {non-normal speed}, {contact}
+  中文按完整攻击含义组合，原生难度和速度各自保留颜色。
+
+独立标记
+  flags & 0x20：亮绿 +；flags & 0x40：暗绿 +；
+  flags & 0x80：红 -；flags & 0x100：另一红色 -；flags & 0x200：青色 !。
+  + 和 - 共用 E-2，! 在 E-1；原生分支及绘制顺序保留在完整机器码和 C 中。
+  标记不属于技能等级或接触质量句子，整行翻译不占用这两列。
+
+动态名称供应
+  部位不是固定的人体名列表。0xb602d0 从当前目标的 BODY 部位结构中取
+  单复数名称向量与具体变体；变体缺失且编号为正时调用 get_ordinal 后追加名称。
+  部位编号无效或名称向量为空时回落到 "body part" / "body parts"。
+  get_ordinal 的库入口 0xb04c0：First..Nineteenth，以及整数加 st/nd/rd/th；
+  11/12/13 的末尾为 th。该部位调用仅在编号 >0 时发生，Zeroth/Negative 分支不可达。
+  原生 RAW 名称由共用 health/bodypart 规则解析；普通、所有者链、组织、左右侧、
+  单复数和非人体名称使用同一完整名称路径。序数模板及缺省名在面板专用词表中。
+  当前安装 RAW 的共享名称由规定构建入口维护为 356 项 raw_names.toml。
+  攻击名来自武器/工具/生物 RAW：攻击动词、可选子部位、完整物品名或自身部位；
+  无关联部位时有 push 缺省分支。slash/stab/kick/bite 等比较仅选择图标，不穷举名称。
+  已有 helper-raw-display-fields.tsv 和 helper-raw-display-productions.tsv 保留 RAW 字段产生式。
+
+原生写入与翻译布局
+  libg_src_lib.so:0xa5170 的 addst 接受宽度限制；justification 参数不决定双行绘制。
+  该普通写入不会清掉此前字符格中的上下半字标志。翻译行应统一使用固定基线。
+  命中描述必须先按上述完整产生式解析，再交给布局；不能让普通词条重新拆分。
+  当前 formatter-owned 名称绘制证明三行记录的来源，外框局部不可见仍可识别该记录。
+  每段中文颜色来自对应英文原生格；接触质量使用本次 addst 的完整字符串，
+  包括 width==0 时直接保留在 draw.source 中的完整文本。
+  遮蔽只覆盖当前真实可见的原文，布局宽度限制在原生描述列内，保留图标、热键和标记。

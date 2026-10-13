@@ -1,4 +1,5 @@
 ; reference PE:6a70a6d9:02711000; display-artifact-name 0x140a94030..0x140a946d1
+; native unwind regions: 0x140a94030..0x140a946d1
 0x140a94030: mov    QWORD PTR [rsp+0x18],rbx
 0x140a94035: mov    QWORD PTR [rsp+0x20],rsi
 0x140a9403a: push   rbp

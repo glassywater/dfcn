@@ -1,4 +1,5 @@
 ; classic PE:6a70b91c:0270a000; offspring 0x1406db280..0x1406db8eb
+; native unwind regions: 0x1406db280..0x1406db8eb
 0x1406db280: rex push rbp
 0x1406db282: push   rbx
 0x1406db283: push   rsi

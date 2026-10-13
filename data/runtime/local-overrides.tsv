@@ -1,4 +1,6 @@
 # Local high-priority fixes. Rebuild through the host build-deploy entry.
+# Fortress HUD siege banner; retain case-sensitive matching for this caption.
+SIEGE	围攻	w
 # Creation rows substitute the actual noble position in this whole caption.
 Squad creation: New squad	新建{position}的小队	l
 Squad creation: Existing squad	{position}的小队	l
@@ -11715,3 +11717,12 @@ Justice plot: Start War between and	挑起战争	l
 Justice plot: Start War between {e} and	挑起涉及{e}的战争	l
 Justice plot: Start War between and {e}	挑起涉及{e}的战争	l
 sandy loam Cavern Floor	砂质壤土洞窟地板	l
+
+# Native office captions resolve these role keys before generic UI literals.
+# Captain/head/master and martial Novice/Adept retain their office meanings
+# only in a complete role field; ordinary UI and skill ratings keep their data.
+Unit profession: captain	队长	li
+Unit profession: head	首领	li
+Unit profession: master	首领	li
+Unit profession: novice	初学者	li
+Unit profession: adept	精熟者	li

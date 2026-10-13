@@ -1,0 +1,5 @@
+image_identity	role	start_va	end_va
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	renderer	0x1c25b40	0x1c41ab0
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	species-name	0x12ae800	0x12ae995
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	complete-item-noun	0x12b6a70	0x12bdd2f
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	complete-material-noun	0x74ca90	0x74d6c3

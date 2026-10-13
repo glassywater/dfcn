@@ -298,12 +298,21 @@ static void native_ui_paint_grid(NativeUiLayerStorage &layer, SDL_Renderer *rend
         const std::vector<Match> &matches, const SDL_Rect *opaque_frame) {
     if (!layer.ready || layer.renderer != renderer || !layer.native_renderer) return;
     auto *gps = layer.foreground.graphics();
+    const NativeBitmapFontTextures fonts(!matches.empty());
     struct SourceMask {
+        using Texture = std::remove_pointer_t<decltype(graphicst::screentexpos)>;
         std::vector<std::pair<unsigned char *, unsigned char>> saved;
-        ~SourceMask() { for (const auto &[slot, value] : saved) *slot = value; }
+        std::vector<std::pair<Texture *, Texture>> saved_textures;
+        ~SourceMask() {
+            for (const auto &[slot, value] : saved) *slot = value;
+            for (const auto &[slot, value] : saved_textures) *slot = value;
+        }
         void hide(unsigned char *slot, unsigned char expected) {
             if (!slot || !expected || expected == ' ' || *slot != expected) return;
             saved.emplace_back(slot, *slot); *slot = ' ';
+        }
+        void hide_texture(Texture *slot) {
+            saved_textures.emplace_back(slot, *slot); *slot = 0;
         }
     } mask;
     for (const auto &match : matches) {
@@ -315,9 +324,20 @@ static void native_ui_paint_grid(NativeUiLayerStorage &layer, SDL_Renderer *rend
             for (int i = 0; i < match.length; ++i) {
                 const int x = match.x + i;
                 if (x < 0 || x >= gps->dimx) continue;
-                const size_t at = (static_cast<size_t>(x) * gps->dimy + y) * 8;
-                for (auto &plane : layer.foreground.planes)
-                    mask.hide(plane.screen.data() + at, static_cast<unsigned char>(match.source[i]));
+                const size_t cell = static_cast<size_t>(x) * gps->dimy + y;
+                const size_t at = cell * 8;
+                const auto expected = static_cast<unsigned char>(match.source[i]);
+                for (auto &plane : layer.foreground.planes) {
+                    const auto character = plane.screen[at];
+                    if (character != expected && character != 0 && character != ' ') continue;
+                    // Font glyphs can occupy any drawable texture slot.
+                    // Exact atlas membership keeps non-font artwork intact.
+                    for (size_t slot : {size_t{0}, size_t{1}, size_t{2}}) {
+                        auto *texture = plane.textures[slot].data() + cell;
+                        if (fonts.contains(*texture, expected)) mask.hide_texture(texture);
+                    }
+                    mask.hide(plane.screen.data() + at, expected);
+                }
             }
     }
     NativeUiGridBinding grid(native_graphics(), *gps, layer.native_renderer);

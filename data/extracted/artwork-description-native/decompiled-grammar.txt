@@ -1,0 +1,191 @@
+Legends Artwork page: native source reconstruction
+================================================
+
+Source images are the reference and classic files in
+data/runtime/native-pe-images.json. Their identities are respectively
+PE:6a70a6d9:02711000 and PE:6a70b91c:0270a000. All addresses below are Reference
+RVAs; native-sources.tsv retains the actual independently read Classic operands.
+tools/extract_artwork_description_catalog.py reads both images afresh with the
+configured native objdump. It does not execute a game function, translator,
+translation-data generator or test. The assembly and TSV are source evidence,
+not an observed display result or acceptance report.
+
+The screenshot's page entry is 0xd4bf70..0xd4c427 (Classic
+0xd48fb0..0xd49467). It explicitly creates/searches Legends tabs with
+tab.type at +0x20 equal to 7 and tab.id at +0x24. It resolves a stored artwork
+ID into an art_image_chunk and a 0..499 image index. The page obtains its title
+from image.name at +0x38 with personal-name formatter 0xa94030. Empty titles
+produce Untitled. A missing image produces This artwork has been lost. instead
+of entering the paragraph formatter. These caller branches are absent from
+the paragraph's own string list, and are retained in this extraction.
+
+Paragraph call at 0xd4c350 (Classic 0xd49390):
+  art_image::getDescription 0x1451b10..0x145312c
+                         (Classic 0x144ca80..0x144e09c)
+  r9 = false: do not suppress original design quality and artist
+  argument 5 = true: include the physical source
+  argument 6 = true: include full element/action descriptions and history
+  placement = -1; rendition quality = -1; copy author = -1
+  plain separator = false; native LPAGE markup = true
+
+Consequently this page is identified by native tab.type 7, not an English first
+sentence or a particular creature noun. A null source takes the normal placement
+path, where -1 produces It is a/an ... . An unhandled source kind, or an invalid
+coin reference, also reaches the It is a prefix. The page can contain independent
+action sentences and native wrapped links as well as This artwork ... sentences.
+
+Whole paragraph order
+---------------------
+  physical_source_sentence? + main_image_sentence + property_sentences*
+    + history_sentence? + entity_relation_sentence?
+
+source.kind is queried through image.ref virtual +0x10 at 0x1451c14:
+  0: This artwork appears on ARTIFACT_OR_BOOK.
+     Artifact/book link kind follows actual item type and item flags. A missing
+     artifact record produces an unknown artifact. Its saved name comes from
+     the artifact name structure through 0xa94030.
+  5: This artwork appears on a ITEM [and was crafted in SITE].
+     placement 4 instead uses This work of art is a ITEM. Placement here is -1.
+     ITEM is shared item noun 0xa82c10 with source item kind, subtype, material.
+     SITE is image.site at +0xc4, resolved by 0x7db20 and named by 0xa94030.
+     An unresolved creation site suppresses the optional clause.
+  6: This artwork appears [on the front of / on the back of] COIN_DESIGNATION.
+     Front/back selection is image.spec_ref_type 17/18. Other values retain
+     the prefix without a side. Source coin record index is bounds checked;
+     invalid indexes suppress that source sentence. 0x5be970 supplies the
+     currency designation before the shared coin item noun 0xa82c10.
+  7: This engraving appears on a floor/wall [in SITE / somewhere].
+     Floor is source WORD +8 == 0x2b; all other values select wall.
+  8: This artwork is a/an ORIGINAL_IMAGE.
+     This directly continues into the original design quality; it adds no
+     separate It is a sentence.
+  other: no recognized physical-source sentence; continue with It is a/an.
+
+Physical source sentences use .[B] in this page's argument mode; the alternate
+caller mode uses period followed by two spaces. After recognized kinds 0/5/6/7,
+the original image begins with It is a. Both paths are preserved as native source.
+
+The shared placement superset also has The item, On the item, On the front of
+the coin, On the coin's back, and Engraved [on the floor/on the wall] prefixes,
+each followed by is a. These are shared callers' branches; the Artwork page
+sets placement=-1. Likewise the rendition branch requires physical_source=false
+and source.kind==8, so it does not occur through this page's current call.
+It remains extracted as shared grammar: separate rendition quality 1..5,
+optional copy artist, rendition of, optional original image title and comma,
+then the original design quality/image/material/original artist.
+
+Original image
+--------------
+  article + design_quality? + image
+    + (of ELEMENT_LIST)? + (in MATERIAL)? + (by ARTIST)? + .
+
+Design quality 1..5: well-designed, finely-designed, superiorly designed,
+exceptionally designed, masterfully designed. Zero/outside the finite range has
+no quality adjective. Quality changes the native a/an fragment. Suppression of
+quality/artist is a shared call argument, false here. image.elements being empty
+suppresses the entire of clause; a material can still follow, so image in MATERIAL
+is a complete native production. Materials are resolved from image +0xb4/+0xb8
+by 0x14d1920; material RAW selection, state selection, and adjective selection
+are retained as typed material suppliers. Artist ID +0xc0 is resolved as an
+historical figure; live unit/identity naming takes priority when available,
+otherwise its saved historical name supplies the by clause. Empty names suppress
+that clause. Personal names, nicknames, generated names and title links retain
+their native field and LPAGE boundaries; English letters do not imply a constant.
+
+Element dispatch: six concrete/base classes
+------------------------------------------
+Main image calls element virtual +0x38 at 0x145274a. Action subject and object
+use the same formatter with definite=true. The TSV retains both editions' real
+vtable operands for base, creature, item, shape, plant and tree.
+  base: empty string. Its actual leaf 0x72280..0x7229a clears either the heap or
+    inline std::string buffer; both return branches are retained. The main image
+    decides whether to add of solely from vector count, never from returned text.
+    It unconditionally calls +0x38 and appends the result, then adds comma/and by
+    element index. One stored empty element therefore produces image of .;
+    two empty elements produce image of  and .; three produce image of ,  and .
+    Material and artist clauses still follow independently. This is the actual
+    virtual/pasting behavior, not a claim that the current displayed image or
+    ordinary world generator has created a base element.
+  creature: RAW race/caste; historical figure name and species; named/unnamed
+    deity. Deity domains come from the full 130-way sphere table, with the native
+    article selector for dawn/moon/night/rain/seasons/sky/stars/sun/weather/wind.
+    Deity form composes skeletal, rotting, ghostly, needed female/male, and actual
+    race/caste; domains are listed in the native reversed vector order.
+  item: full type/subtype/material shared item noun; artifact lookup by real item
+    ID; named artifact, unnamed artifact identity, titled book, and copy status.
+  shape: descriptor_shape RAW NAME singular/plural and selected RAW ADJ.
+  plant and tree: plant RAW NAME singular/plural; two virtual owners share one
+    actual formatter.
+Count 1 is singular; count >=2 uses native number words and plural; count 0 is an
+unnumbered plural group. The complete native number-word function is preserved,
+including 0..19 and tens 2..9 switch entries and scale/negative/remainder grammar.
+The installed shape/adjective combinations and RAW provenance remain in
+data/extracted/statue-art-sources.tsv, not invented as C++ string constants here.
+
+Property dispatch and complete action switches
+---------------------------------------------
+Properties call virtual +0x28 at 0x14529da. Base property is empty. Transitive
+0x146750 uses verb-1, 46 entries covering verbs 1..46. Intransitive 0x146eb0 has
+48 entries covering 0..47. native-sources.tsv preserves all jump targets, including
+the native empty/default entries. Every singular/plural action production is
+retained in data/extracted/statue-art-sources.tsv and fully reconstructed in
+data/runtime/statue-description-grammar.md section 4.
+Valid empty/default actions emit SUBJECT. rather than an empty string. Invalid
+subject indexes, and invalid transitive object indexes, instead return empty.
+Count 1 selects is/looks/itself; count !=1 selects are/look/themselves. Definite
+creature/shape/plant/item names, repeated group roles, named figures and deities
+are supplied by the element graph, not split by guessed English list delimiters.
+
+Historical subject and collection
+---------------------------------
+Full-description=false suppresses both history and organization suffixes; this
+page passes true. A valid image.event produces The artwork relates to EVENT;
+event virtual +0xd8 is called at 0x1452aaa. Reverse scan of all event collections
+finds the latest containing collection and appends during COLLECTION, calling
+virtual +0x30 at 0x1452b4d. Both scopes finish with period/two spaces.
+The complete concrete event/collection graph is independently retained for both
+editions in data/extracted/artwork-history-native: 133 event roots and 18
+collection roots, their transitive direct callees, selectors, indirect typed
+leaves, and full native function bodies. This extraction deliberately reuses
+that full historical scope, rather than a selection of screenshot event phrases.
+
+Organization suffix and dynamic profession supplier
+---------------------------------------------------
+Requires image.spec_ref_type==24, a valid entity reference and a valid index
+into entity.art_image_types. Category 0 is The image is the symbol of; category 1
+is The image was commissioned by. Other category values contribute no relation
+predicate but continue with The image and the entity description. That native
+default branch is retained, rather than assumed unreachable from spelling.
+Named entities emit NAME, a DESCRIPTION; unnamed entities emit a DESCRIPTION.
+The native article here is always a. Optional species adjective is creature RAW
+field +0x60 through entity.race +0x98. The entity name is generated-name formatter
+0xa946e0; type modifiers precede species. The full type switch is:
+  0 civilization; 1 local government; 2 vessel; 3 migrating group;
+  4 nomadic group; 5 religion; 6 military organization; 7 outcast group;
+  8 performance troupe; 9 merchant company; 10 PROFESSION guild.
+Absent guild member profession produces craft guild. Present profession comes
+from 0x132cc10, not from English guessing or a fixed guild-name vocabulary.
+The helper's chained unwind function is 0x132cc10..0x132e0b4. Its actual 135-way
+0..134 built-in profession table is 0x132de98. It first uses 0x30cea0 to detect
+creature/caste RAW PROFESSION_NAME overrides, and 0x30cf70 to select them;
+0x30cf70 falls back from caste to the creature formatter 0x1bb330. These complete
+native functions and switch operands are included in the new source graph.
+Built-in profession 102 is STANDARD, with no noun: its table target 0x132de47
+adds nothing for the singular guild call. Native art code still appends guild,
+yielding bare guild unless a RAW profession name supplies text. A missing
+profession (-1) instead takes the separate craft guild branch.
+
+Shared item source boundary
+---------------------------
+The extraction retains the complete shared item description/name superset and
+its cloth, dye, written-form/content/style, die-face, gemstone/material and
+artifact identity suppliers. The finite 93-way item noun table, both 26-way
+written-form tables and 18-way writing-style table are retained for both editions.
+These supply image item elements or the physical source designation. The page
+does not directly render every unrelated food, armor, book or dice detail on an
+ordinary art-image element. Full item-title virtual bindings and later shared
+item dependencies continue in the existing item-info-title/item-raw-title,
+item-description-sources and symbol-picker-descriptions native source catalogs.
+Dynamic RAW names, historical names, player nicknames, materials, quantity and
+event data make complete paragraphs unbounded; all fixed native productions,
+selectors, typed suppliers and their composition order are the extraction unit.

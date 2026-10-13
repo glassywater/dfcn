@@ -1,0 +1,151 @@
+Adventure freshest-track popup: native source reconstruction
+
+Configured Linux executable:
+  /home/lulika/.local/share/Steam/steamapps/common/Dwarf Fortress/dwarfort
+  ELF build ID bcc6789e6fb477b785a2b02be80b8b1b054ff88c
+  Main Adventure renderer: 0x1c25b40..0x1c41ab0
+  Requested popup construction: 0x1c3d362..0x1c3e3df
+
+elf-decompiled.c is actual Ghidra 12.1.2 C output for the complete renderer
+and its three complete noun producers. DecompileTracking.java is the script
+used for this offline extraction. It defines native call boundaries and the
+eight direction-switch targets, and raises the decompiler response buffer to
+256 MiB for the large renderer. elf-renderer.asm and the three supplier ASM
+files retain every instruction and optimized literal operand. Decompiler
+inference can leave overlapping literals as UNK pointers; elf-literals.tsv
+retains their exact bytes, including all four diagonal location strings.
+
+All addresses here are ELF virtual addresses. No running process, desktop,
+translation self-test or simulated display was used for this extraction.
+
+Source fields
+  Active spoor block: global 0x297b0d8.
+  Active tile coordinates: globals 0x297b0cc / 0x297b0d0.
+  Tile index: (x % 16) * 16 + (y % 16).
+  block + 0x8   + index*2: uint16 flags.
+  block + 0x208 + index:   uint8 type.
+  block + 0x308 + index*4: id1.
+  block + 0x708 + index*4: id2.
+  block + 0xb08 + index*4: id3.
+  Types: 0 vegetation, 1 historical-figure/caste/body-part, 2 item, 3 mess.
+  Other type values, including NONE=255, add no description sentence.
+  Flags: 0x2 has direction; 0x1c direction selector; 0x20 player/companion;
+         0x40 liquid print; 0x180 intensity.
+
+These operands agree with the existing df.block.xml spoor_type/spoor_flag
+definitions; the executable operands supply the actual layout and branches.
+
+Popup ownership and visibility
+  Texture selection and mouse bounds gate this popup. A zero selected texture
+  or absent active block skips it. This supplies no alternative text.
+  A nonempty cached popup with rebuild bit 0x100 clear reuses existing text.
+  A rebuild clears the native curses_text_boxst at 0x2701cb8 and adds:
+    "Freshest track"
+    blank paragraph
+    optional relative-location paragraph
+    blank paragraph after that location
+    description paragraph, if the type selects one
+    optional track-direction sentence
+    optional ownership sentence
+
+Each complete paragraph is submitted through 0x423910, the ELF PLT entry for
+curses_text_boxst::add_paragraph(std::string const&, int), with width 24.
+This is why a complete sentence can occupy several visible rows. Existing
+append_map_hover_phrases joins connected sentence rows before catalog lookup.
+Its frame, margin and blank-row boundaries keep headings and labels separate.
+
+Relative location: nine complete strings
+  Position helper 0xb13dc0 selects the adventurer coordinate. Sentinel -30000
+  (0x8ad0) skips the entire location paragraph, including its blank separator.
+  Otherwise native coordinate comparisons choose west/east/north/south,
+  northwest/northeast/southwest/southeast, or "At your location".
+  All alternatives append the literal ":" at 0x1c3d4a5 before submission.
+  Axis-dominant directions require one absolute coordinate difference to be
+  greater than twice the other. Equality follows the diagonal/same-position
+  branch. An empty constructed bearing falls back to "At your location".
+  Runtime catalog entries contain the complete label with its colon.
+
+Description: vegetation and mess
+  type=0:
+    flags&0x180 == 0x180: "The vegetation is heavily damaged."
+    flags&0x180 == 0x100: "The vegetation is bent."
+    flags&0x180 == 0x80:  "The vegetation has been slightly perturbed."
+    flags&0x180 == 0:     "The vegetation is broken."
+  type=3:
+    "There is an unintelligible mess."
+
+The existing report sentences use "here" and "This is". They are distinct
+source strings and remain in the catalog beside these actual popup strings.
+
+Description: item
+  type=2 uses id1=item type, id2=subtype, id3=orientation.
+  Prefix is always "There is a ".
+  Non-liquid intensity: 0x180 "deep ", 0x100 "shallow ", 0x80 "vague ",
+                        0 no adjective.
+  Liquid intensity:     0x180 "thick ", 0x100 "light ", 0x80 "faint ",
+                        0 no adjective.
+  Liquid branch adds complete liquid material + " " before the item.
+  If id3&1 is set, add "right ". Otherwise if id3&2 is set, add "left ".
+  If neither is set, add no orientation word. Right takes priority when both
+  bits are set.
+  Noun supplier 0x12b6a70 receives the item type/subtype, singular count=1,
+  no item material and no live-item ID. Its native size and RAW item-name
+  branches remain in the complete supplier extraction.
+  Non-liquid suffix: " imprint in the " + complete surface material + "."
+  Liquid suffix: " print."
+
+Description: species/body part
+  type=1 uses id2 to select the combined caste index and id3's low signed word
+  as the body-part index. Species/caste is supplied by 0x12ae800, singular,
+  with the selected caste. RAW singular names, caste fallback and invalid or
+  empty names are retained in the complete producer C and ASM.
+  Body-part vector is caste+0x6c0; name vector is part+0x90; first element
+  supplies the singular body-part name.
+  Non-liquid with an available part-name vector:
+    "There is a " + species + "'s " + intensity + part +
+    " imprint in the " + surface + "."
+  Non-liquid with a negative/out-of-range part or empty name vector:
+    "There is a " + species + " imprint in the " + surface + "."
+    This branch omits both the possessive and intensity adjective.
+  Liquid:
+    "There is a " + species + "'s " + intensity + liquid +
+    (available part-name vector ? " " + part : "") + " print."
+
+Thus both owned families require their zero-intensity template. A RAW vector
+can also exist with an empty first name string: explicit whole-sentence
+templates retain this omission without permitting empty generic captures.
+When a body part is unavailable, the surviving species-only imprint uses
+the scoped creature/caste grammar. A liquid-only tail uses the complete
+material grammar already supported by translate_map_track_noun.
+
+Material producers
+  Liquid lookup 0x6e9bc0 supplies type/index/state metadata. Type=-1 is
+  replaced with type=6 and state metadata=1 before formatting.
+  Surface lookup 0x6e9b20 falls back to 0x6dbe50 if type=-1.
+  Both use 0x74ca90 for the complete material name; the caller selects liquid
+  or solid state. Material names can include creature, plant, tissue and
+  phase qualifiers. They use the existing complete material grammar.
+
+Direction and ownership suffixes are independent
+  If flags&2 is set, flags&0x1c indexes the table at 0x21dcdfc:
+    0 north, 4 south, 8 east, 12 northeast,
+    16 west, 20 northwest, 24 southeast, 28 southwest.
+  Each adds the complete sentence "The signs lead <direction>."
+  If flags&0x20 is set, add "They belong to you or a companion."
+  Each missing flag skips only its own sentence. The suffix decisions follow
+  all description branches, including the default with no description.
+
+Runtime handling
+  data/runtime/ui-messages.tsv contains all complete finite popup strings,
+  the sixteen named intensity/ownership templates, and explicit empty-name
+  sentences. Existing report variants remain available.
+  src/dfcn.cpp binds species owners to map_hover::track_owner, the printed
+  noun to translate_map_track_noun, and the final imprint surface directly
+  to translate_material_name. Empty-name templates keep those field roles.
+  src/map_hover.inc resolves the actual species-only fallback through the
+  scoped singular creature/caste vocabulary. Existing anatomy, equipment,
+  liquid material and left/right parsers supply dynamic names.
+
+native-productions.tsv retains each source family, branch condition,
+literal/formatted production, native address and runtime handler, including
+all no-new-text branches. It is source provenance, not a display result.

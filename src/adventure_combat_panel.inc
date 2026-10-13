@@ -112,6 +112,12 @@ std::optional<std::string> Overlay::translate_adventure_target_text(
             return finish(translate_legends_item(trim_view(original)));
         }
         if (kind == 't') {
+            // The native helper emits these when the part ID is invalid or
+            // the RAW name vector is empty; they are anatomy, not status.
+            if (source == "body part" || source == "body parts") {
+                const auto found = adventure_target_literals_.find(source);
+                if (found != adventure_target_literals_.end()) return finish(found->second);
+            }
             if (const auto anatomy = translate_legends_anatomy(source)) return finish(anatomy);
         } else {
             if (const auto found = adventure_target_literals_.find(source);
@@ -204,6 +210,56 @@ void Overlay::append_adventure_combat_fields(std::vector<std::string> &screen_ro
         std::vector<Match> &matches, int only_y, const unsigned char *raw) const {
     if (!gps_ || !native_gameplay_map_screen() || adventure_target_literals_.empty()) return;
     const bool classic = native_ui_classic().value_or(false);
+    const auto draws = captured_native_drawn_text_rows();
+    const auto top_draws = captured_native_drawn_text_rows(true);
+    struct PictureRow {
+        int name_x, y, right;
+        char kind;
+    };
+    std::vector<PictureRow> picture_rows;
+    for (const auto *layer_draws : {&draws, &top_draws}) {
+        for (const auto &draw : *layer_draws) {
+            const char kind = adventure_combat_native_picture_kind(draw.native_caller);
+            if (!kind || draw.source.empty() || draw.x < 7 || draw.y <= 0 ||
+                    draw.y + 1 >= gps_->dimy || draw.draw_dimx != gps_->dimx ||
+                    draw.draw_dimy != gps_->dimy || draw.draw_grid !=
+                        (draw.top_layer ? gps_->screen_top : gps_->screen) ||
+                    draw.source.size() > static_cast<size_t>(gps_->dimx - draw.x)) continue;
+            bool current = true;
+            for (size_t at = 0; at < draw.source.size(); ++at) {
+                bool top = false;
+                const auto *cell = cell_at(draw.x + static_cast<int>(at), draw.y, &top);
+                if (!cell || top != draw.top_layer || visible_char_at(
+                        draw.x + static_cast<int>(at), draw.y) !=
+                            static_cast<unsigned char>(draw.source[at])) {
+                    current = false;
+                    break;
+                }
+            }
+            if (!current) continue;
+            // Native name L+7, quality L+45, record edge E=R-1 or R-3.
+            // Discover the current cap from the upper rail; source ownership
+            // comes from the formatter draw, so an intact entire modal is
+            // unnecessary. Leave E-2/E-1 for the native +/-/! marks.
+            const int nominal_edge = draw.x + 92;
+            int edge = -1;
+            const auto *skin = native_texture_button_rectangle(*gps_);
+            for (const int candidate : {nominal_edge, nominal_edge - 2})
+                if (candidate < gps_->dimx && native_ui_skin_at(*gps_, candidate,
+                        draw.y - 1, skin[2][0], classic)) { edge = candidate; break; }
+            const int writer_right = draw.draw_clip
+                ? std::min(gps_->dimx, draw.draw_clip->x + draw.draw_clip->w) : gps_->dimx;
+            // A modal wider than the current native viewport can clip its
+            // right cap. The formatter still owns the surviving caption;
+            // never discard it merely because that off-screen cap is absent.
+            if (edge < 0 && nominal_edge - 2 >= writer_right) edge = nominal_edge;
+            const int summary_right = std::min(edge - 2, writer_right);
+            if (edge < 0 || summary_right <= draw.x + 38) continue;
+            if (std::none_of(picture_rows.begin(), picture_rows.end(), [&](const PictureRow &row) {
+                    return row.name_x == draw.x && row.y == draw.y;
+                })) picture_rows.push_back({draw.x, draw.y, summary_right, kind});
+        }
+    }
     std::vector<NativeAdventureCombatPanel> panels;
     std::vector<SDL_Rect> prompt_panels;
     std::map<std::pair<int, int>, int> prompt_stages;
@@ -288,9 +344,7 @@ void Overlay::append_adventure_combat_fields(std::vector<std::string> &screen_ro
             break;
         }
     }
-    if (panels.empty() && prompt_panels.empty()) return;
-    const auto draws = captured_native_drawn_text_rows();
-    const auto top_draws = captured_native_drawn_text_rows(true);
+    if (panels.empty() && prompt_panels.empty() && picture_rows.empty()) return;
     const int tile_w = gps_->tile_pixel_x, tile_h = gps_->tile_pixel_y;
     const int origin_x = (gps_->screen_pixel_x - gps_->dimx * tile_w) / 2;
     const int origin_y = (gps_->screen_pixel_y - gps_->dimy * tile_h) / 2;
@@ -341,10 +395,100 @@ void Overlay::append_adventure_combat_fields(std::vector<std::string> &screen_ro
             }
             std::optional<std::string> target;
             std::vector<int> target_colors;
+            if (combat_quality) {
+                // Native branches emit difficulty/speed and contact through
+                // separate addst calls. Mode four omits " strike" when both
+                // difficulty and speed differ from normal. Resolve this
+                // finite production before any generic noun/status template.
+                const size_t comma = lookup_source.find(", ");
+                if (comma == std::string::npos || comma == 0) continue;
+                const std::string_view prefix(lookup_source.data(), comma);
+                const bool native_strike = prefix.ends_with(" strike");
+                const auto literal = [&](std::string_view text) -> std::optional<std::string> {
+                    const auto found = adventure_target_literals_.find(std::string(text));
+                    return found == adventure_target_literals_.end()
+                        ? std::nullopt : std::optional(found->second);
+                };
+                const auto color_at = [&](size_t at) {
+                    bool top = false;
+                    const auto *cell = cell_at(first + static_cast<int>(at), y, &top);
+                    return cell ? (cell[1] << 16) | (cell[2] << 8) | cell[3] : 0xffffff;
+                };
+                std::string translated;
+                const auto add = [&](std::string_view text, int rgb) {
+                    translated += text;
+                    std::vector<uint32_t> codepoints;
+                    if (decode_utf8(text, codepoints))
+                        target_colors.insert(target_colors.end(), codepoints.size(), rgb);
+                };
+                const auto heading = native_strike ? prefix.substr(0, comma - 7) : prefix;
+                std::string_view difficulty = heading, speed;
+                for (const std::string_view value : {"VVSlow", "V Slow", "V Fast", "Slow", "Fast"}) {
+                    if (heading == value) { difficulty = {}; speed = value; break; }
+                    if (heading.size() > value.size() && heading.ends_with(value) &&
+                            heading[heading.size() - value.size() - 1] == ' ') {
+                        difficulty = heading.substr(0, heading.size() - value.size() - 1);
+                        speed = value;
+                        break;
+                    }
+                }
+                const bool known_difficulty = difficulty.empty() ||
+                    difficulty == "Impossible" || difficulty == "Difficult" ||
+                    difficulty == "Tricky" || difficulty == "Normal" ||
+                    difficulty == "Easy" || difficulty == "Easier" || difficulty == "Simple";
+                // addst may clip the final contact words at the viewport.
+                // Resolve the complete captured native draw, while the
+                // Match continues to suppress only its visible source bytes.
+                std::string complete_contact = lookup_source.substr(comma + 2);
+                const auto &quality_draws = layer ? top_draws : draws;
+                for (auto draw = quality_draws.rbegin(); draw != quality_draws.rend(); ++draw) {
+                    if (draw->x != first + static_cast<int>(comma) + 2 || draw->y != y ||
+                            draw->source.empty() ||
+                            !std::string_view(draw->source).starts_with(complete_contact))
+                        continue;
+                    // Width-zero addst retains the full string in source;
+                    // complete_source is supplied only for a resized draw.
+                    const auto &complete = draw->complete_source.empty()
+                        ? draw->source : draw->complete_source;
+                    if (!std::string_view(complete).starts_with(complete_contact)) continue;
+                    complete_contact = complete;
+                    break;
+                }
+                const std::string_view contact_source = complete_contact;
+                const bool known_contact = contact_source == "can only graze" ||
+                    contact_source == "can't land squarely" || contact_source == "can't quite connect" ||
+                    contact_source == "fairly solid" || contact_source == "square" ||
+                    contact_source == "very square" || contact_source == "direct hit";
+                const auto contact = known_contact ? literal(contact_source) : std::nullopt;
+                const auto punctuation = literal(",");
+                const auto strike = literal("strike");
+                if (!known_difficulty || (difficulty.empty() && speed.empty()) ||
+                        (!native_strike && (difficulty.empty() || speed.empty())) ||
+                        !contact || !punctuation || !strike) continue;
+                if (!difficulty.empty()) {
+                    const auto caption = speed.empty()
+                        ? literal(std::string(difficulty) + " strike") : literal(difficulty);
+                    if (!caption) continue;
+                    const std::string_view stem = speed.empty() && caption->ends_with(*strike)
+                        ? std::string_view(*caption).substr(0, caption->size() - strike->size())
+                        : std::string_view(*caption);
+                    add(stem, color_at(0));
+                }
+                if (!speed.empty()) {
+                    const auto caption = literal(speed);
+                    if (!caption) continue;
+                    if (!difficulty.empty()) add("、", color_at(heading.size() - speed.size()));
+                    add(*caption, color_at(heading.size() - speed.size()));
+                }
+                add(*strike, color_at(native_strike ? comma - 1 : comma));
+                add(*punctuation, color_at(comma));
+                add(*contact, color_at(comma + 2));
+                target = std::move(translated);
+            }
             // Use the exact native formatter's identity before a lexical
             // fallback. A shortened name retains its complete translation.
             const auto &layer_draws = layer ? top_draws : draws;
-            for (auto draw = layer_draws.rbegin(); draw != layer_draws.rend(); ++draw) {
+            for (auto draw = layer_draws.rbegin(); !target && draw != layer_draws.rend(); ++draw) {
                 if (draw->x != first || draw->y != y ||
                         !std::string_view(draw->source).starts_with(lookup_source)) continue;
                 if ((kind == 'n' || kind == 's') && draw->unit_identity_target)
@@ -433,46 +577,6 @@ void Overlay::append_adventure_combat_fields(std::vector<std::string> &screen_ro
             match.layout_foreground_rgb =
                 (first_cell[1] << 16) | (first_cell[2] << 8) | first_cell[3];
             match.layout_glyph_foreground_rgb = std::move(target_colors);
-            if (combat_quality) {
-                // Difficulty and contact quality are separate native color
-                // runs. Compose their complete Chinese fields as one line
-                // so punctuation and color changes cannot shift baselines.
-                const size_t comma = lookup_source.find(", ");
-                if (comma != std::string::npos) {
-                    const auto difficulty = translate_adventure_target_text(
-                        std::string_view(lookup_source).substr(0, comma));
-                    const auto contact = translate_adventure_target_text(
-                        std::string_view(lookup_source).substr(comma + 2));
-                    const auto punctuation = adventure_target_literals_.find(",");
-                    if (difficulty && contact && punctuation != adventure_target_literals_.end()) {
-                        match.target = *difficulty + punctuation->second + *contact;
-                        const auto color_at = [&](int x) {
-                            bool color_layer = false;
-                            const auto *cell = cell_at(x, y, &color_layer);
-                            return cell ? (cell[1] << 16) | (cell[2] << 8) | cell[3]
-                                : match.layout_foreground_rgb;
-                        };
-                        const auto color = [&](std::string_view text, int rgb) {
-                            std::vector<uint32_t> codepoints;
-                            if (decode_utf8(text, codepoints))
-                                match.layout_glyph_foreground_rgb.insert(
-                                    match.layout_glyph_foreground_rgb.end(), codepoints.size(), rgb);
-                        };
-                        color(*difficulty, match.layout_foreground_rgb);
-                        // Stage four switches to white for " strike, ".
-                        // Stage three draws its entire difficulty caption
-                        // with one color. The current source preserves both.
-                        if (difficulty->ends_with("攻击") && comma > 0 &&
-                                match.layout_glyph_foreground_rgb.size() >= 2) {
-                            std::fill(match.layout_glyph_foreground_rgb.end() - 2,
-                                match.layout_glyph_foreground_rgb.end(),
-                                color_at(first + static_cast<int>(comma) - 1));
-                        }
-                        color(punctuation->second, color_at(first + static_cast<int>(comma)));
-                        color(*contact, color_at(first + static_cast<int>(comma) + 2));
-                    }
-                }
-            }
             matches.push_back(std::move(match));
         }
     };
@@ -607,6 +711,15 @@ void Overlay::append_adventure_combat_fields(std::vector<std::string> &screen_ro
                 if (end > first) append({first, y, end - first, 1}, first, 's');
             }
         }
+    }
+    // Formatter-owned pictured fields also cover modals whose outer rails
+    // are partially covered. Replacing an existing same-row field removes
+    // its earlier fragments and gives suppression the complete current ink.
+    for (const auto &row : picture_rows) {
+        const int summary_left = row.name_x + 38;
+        append({row.name_x, row.y, 38, 1}, row.name_x, row.kind);
+        append({summary_left, row.y, row.right - summary_left, 1},
+            summary_left, 's', false, true);
     }
 }
 

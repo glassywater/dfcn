@@ -1,0 +1,5 @@
+image	role	start	end
+PE:6a70b91c:0270a000	accepted-petition-inline-region	0x1403f5b38	0x1403f6ebe
+PE:6a70b91c:0270a000	calendar-month	0x140770db0	0x140770ecf
+PE:6a70b91c:0270a000	guild-profession	0x141329030	0x141329398
+PE:6a70b91c:0270a000	english-generated-name	0x140a91760	0x140a91f22

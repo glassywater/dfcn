@@ -1,0 +1,157 @@
+贵族与职位：当前英文名称及译名（2026-10-13）
+来源：/home/lulika/.local/share/Steam/steamapps/common/Dwarf Fortress/dwarfort
+ELF 标识：ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c
+口径：ENTITY 贵族／官职定义、原生自动生成职位、地点工作人员。当前译名取自磁盘中的基础汉化 TSV 与 TOML 的职位作用域；贵族列的基础词表匹配优先级另列 position-column-translations.tsv。未观察游戏内画面。
+原版固定职位：30 个定义（MOUNTAIN 24；FOREST 6）。RAW 名称、性别、配偶、复数、队伍类别及领地标签共 103 条字段。
+
+一、固定贵族及官职（按职位作用域列出现有词义；复数与字段来源见 raw-positions.tsv）
+实体	职位 ID	字段	英文	当前中文
+MOUNTAIN	MONARCH	NAME	monarch	君主
+MOUNTAIN	MONARCH	NAME_MALE	king	国王
+MOUNTAIN	MONARCH	NAME_FEMALE	queen	女王
+MOUNTAIN	MONARCH	SPOUSE_MALE	king consort	王夫
+MOUNTAIN	MONARCH	SPOUSE_FEMALE	queen consort	王后
+MOUNTAIN	GENERAL	NAME	general	将军
+MOUNTAIN	LIEUTENANT	NAME	lieutenant	中尉
+MOUNTAIN	CAPTAIN	NAME	captain	队长
+MOUNTAIN	MILITIA_COMMANDER	NAME	militia commander	军事指挥官
+MOUNTAIN	MILITIA_CAPTAIN	NAME	militia captain	军事队长
+MOUNTAIN	SHERIFF	NAME	sheriff	治安官
+MOUNTAIN	CAPTAIN_OF_THE_GUARD	NAME	captain of the guard	卫队统领
+MOUNTAIN	EXPEDITION_LEADER	NAME	expedition leader	远征领袖
+MOUNTAIN	MAYOR	NAME	mayor	市长
+MOUNTAIN	MANAGER	NAME	manager	经理人
+MOUNTAIN	CHIEF_MEDICAL_DWARF	NAME	chief medical dwarf	首席矮人医师
+MOUNTAIN	BROKER	NAME	broker	交易员
+MOUNTAIN	BOOKKEEPER	NAME	bookkeeper	簿记员
+MOUNTAIN	OUTPOST_LIAISON	NAME	outpost liaison	前哨联络员
+MOUNTAIN	DIPLOMAT	NAME	diplomat	外交官
+MOUNTAIN	DUKE	NAME_MALE	duke	公爵
+MOUNTAIN	DUKE	NAME_FEMALE	duchess	女公爵
+MOUNTAIN	DUKE	SPOUSE_MALE	duke consort	女公爵之夫
+MOUNTAIN	DUKE	SPOUSE_FEMALE	duchess consort	公爵夫人
+MOUNTAIN	COUNT	NAME_MALE	count	伯爵
+MOUNTAIN	COUNT	NAME_FEMALE	countess	女伯爵
+MOUNTAIN	COUNT	SPOUSE_MALE	count consort	女伯爵之夫
+MOUNTAIN	COUNT	SPOUSE_FEMALE	countess consort	伯爵夫人
+MOUNTAIN	BARON	NAME_MALE	baron	男爵
+MOUNTAIN	BARON	NAME_FEMALE	baroness	女男爵
+MOUNTAIN	BARON	SPOUSE_MALE	baron consort	女男爵之夫
+MOUNTAIN	BARON	SPOUSE_FEMALE	baroness consort	男爵夫人
+MOUNTAIN	CHAMPION	NAME	champion	冠军
+MOUNTAIN	HAMMERER	NAME	hammerer	锤刑官
+MOUNTAIN	DUNGEON_MASTER	NAME	dungeon master	地牢主管
+MOUNTAIN	FORCED_ADMINISTRATOR	NAME	administrator	管理员
+MOUNTAIN	MESSENGER	NAME	messenger	信使
+FOREST	DRUID	NAME	druid	德鲁伊
+FOREST	ACOLYTE	NAME	acolyte	侍僧
+FOREST	GENERAL	NAME	princess	公主
+FOREST	LEADER	NAME	queen	女王
+FOREST	DIPLOMAT	NAME	diplomat	外交官
+FOREST	RANGER_CAPTAIN	NAME	ranger captain	游侠队长
+
+二、原生生成器中的固定头衔
+类别	英文单数	英文复数	当前中文（单数）	当前中文（复数）
+generated-lord	lord	lords	领主	领主
+generated-lord	lady	ladies	女领主	女领主
+generated-lord	lord consort	lords consort	女领主之夫	女领主之夫
+generated-lord	lady consort	ladies consort	领主夫人	领主夫人
+generated-lord	hearthperson	hearthpeople	亲卫	亲卫
+military-and-group-leader	constable	constables	统领	统领
+military-and-group-leader	war leader	war leaders	战争领袖	战争领袖
+military-and-group-leader	general	generals	将军	将军
+military-and-group-leader	marshal	marshals	元帅	元帅
+military-and-group-leader	field marshal	field marshals	陆军元帅	陆军元帅
+military-and-group-leader	chieftain	chieftains	酋长	酋长
+military-and-group-leader	chieftess	chieftesses	女酋长	女酋长
+military-and-group-leader	warlord	warlords	军阀	军阀
+military-and-group-leader	ringleader	ringleaders	首领	首领
+military-and-group-leader	commander	commanders	指挥官	指挥官
+military-and-group-leader	master	masters	首领	首领
+military-and-group-leader	captain	captains	队长	队长
+military-and-group-leader	overlord	overlords	霸主	霸主
+military-and-group-leader	chief	chiefs	酋长	酋长
+military-and-group-leader	boss	bosses	首领	首领
+military-and-group-leader	leader	leaders	领导者	领导者
+military-and-group-leader	soldier	soldiers	士兵	士兵
+military-and-group-leader	sergeant	sergeants	中士	中士
+judiciary	law-giver	law-givers	立法者	立法者
+judiciary	judge	judges	法官	法官
+judiciary	justice	justices	大法官	大法官
+judiciary	magistrate	magistrates	地方法官	地方法官
+guild	dean	deans	行会长	行会长
+guild	doyen	doyens	行会元老	行会元老
+guild	doyenne	doyennes	女行会元老	女行会元老
+guild	alderperson	alderperson	行会理事	行会理事
+guild	steward	stewards	行会管事	行会管事
+guild	clerk	clerks	文员	文员
+guild	bookkeeper	bookkeepers	簿记员	簿记员
+guild	recordkeeper	recordkeepers	档案员	档案员
+guild	treasurer	treasurers	司库	司库
+outcast-and-company	representative	representatives	代表	代表
+outcast-and-company	lieutenant	lieutenants	中尉	中尉
+outcast-and-company	factor	factors	贸易代理	贸易代理
+outcast-and-company	master	masters	首领	首领
+outcast-and-company	head	heads	首领	首领
+outcast-and-company	agent	agents	代理人	代理人
+outcast-and-company	administrator	administrators	管理员	管理员
+outcast-and-company	governor	governors	总督	总督
+religious-fixed	priest	priests	祭司	祭司
+religious-fixed	high priest	high priests	高阶祭司	高阶祭司
+religious-fixed	most high priest	most high priests	至高祭司	至高祭司
+
+三、宫廷及市政完整头衔词汇
+宫廷前缀：royal→皇家；chief→首席；head→首席；high→高阶。
+宫廷官职：chancellor→大臣；keeper of the seal→掌玺官；justiciar→司法官；treasurer→司库；counselor/advisor→顾问；chamberlain→宫廷总管；master of beasts→兽群总管；butler→管家；cup-bearer→斟酒官；executioner→刽子手；chef→厨师；doctor→医生；housekeeper→内务管家。
+市政领域：road→道路；bridge→桥梁；tunnel→隧道；sewer→下水道；grain→粮食；harvest→收获；fire→消防；building→建筑。
+市政职衔：master→主管；caretaker→管护员；commissioner→专员；official→官员；administrator→管理员。
+现有完整组合词汇共 192 条（含复数），全部当前译项在 court-and-civic-titles.tsv。该表表示翻译词汇组合；具体世界的职位由原生职责和生成条件决定。
+
+四、宗教动态头衔
+普通／高级宗教前缀：high→高阶；first→第一；exalted→高尚；holy→神圣；sacred→神圣。
+最高宗教前缀：most high→至高；absolute→绝对；most exalted→至尊；most holy→至圣；most sacred→至圣。
+格式为前缀 + 原生语言 WORD 的名词单／复数；缺少 WORD 时高级祭司回退到 high priest(s)，最高祭司回退到 most high priest(s)。
+已提取 3202 种语言名词词形和 32020 条前缀组合候选及当前译名，详见 religious-title-candidates.tsv；候选不表示每项均能在同一文明或世界中生成。
+同形异义 WORD 的语义保留在 religious-noun-forms.tsv；当前词表没有完整头衔译项时，候选表明确标为保留英文。
+
+五、雇佣兵／武术组织的动态等级称谓
+原生函数 0x95ee20..0x9646f1 包含 General、Captain、Sergeant、Soldier、Master、Initiate、Novice、Adept、Grandmaster 以及 Exalted、Perfect、Ultimate 等等级词；另组合武器／技法、随机语言名、数字及 Rank／Degree。
+每个等级构词字段的职位作用域译项及通用词表译项另列 martial-rank-components.tsv；完整组合需要按其完整名称匹配。所有原文字面与内联片段已保留在 native-literals.tsv、native-inline-fragments.tsv，构造指令见 native-producers.asm。
+完整生成名依赖文明语言和组织数据，无法用一个固定的短表穷尽；当前 translate_legends_office 对未收录的完整组合不做通用部件拼接。
+
+六、地点工作人员
+英文	当前中文
+Tavern Keeper	酒保
+Performer	表演者
+Scholar	学者
+Scribe	抄写员
+Mercenary	佣兵
+Monster Slayer	怪物猎手
+Doctor	医生
+Diagnostician	诊断医师
+Surgeon	外科医师
+Bone Doctor	骨科医师
+Suturer	缝合师
+Priest	祭司
+High Priest	高阶祭司
+
+七、本次修正（2026-10-13）
+Captain 在贵族／职位字段中使用“队长”；商团首领 head 使用“首领”；master 在完整职位字段中使用“首领”。
+dean/deans→行会长；doyen/doyens→行会元老；doyenne/doyennes→女行会元老。
+steward/stewards→行会管事；recordkeeper/recordkeepers→档案员。
+factor/factors→贸易代理；agent/agents→代理人；governor/governors→总督。
+Sergeant→中士；Initiate→入门者；Novice→初学者；Adept→精熟者；Grandmaster→宗师；Exalted→尊者；Perfect→至臻者；Ultimate→至高者。
+补齐 leaders→领导者、soldiers→士兵、heads→首领、priests→祭司及 militia-dwarves→民兵等复数完整头衔。
+职位词义维护在 legends-events.tsv 的 Native history office: 作用域；角色入口的优先词项维护在 local-overrides.tsv 的 Unit profession: 作用域，并同步写入当前运行时 translations.tsv。
+当前的贵族列与人物角色译名以更新后的职位作用域为准；通用界面、身体部位和技能评级词项仍具有各自词义，详见 martial-rank-components.tsv 的独立列。
+宗教候选表中的 date/order/meal 等同形异义词缺少 WORD 身份时继续保留原文；这些是候选词根歧义，不能单凭英文指定唯一的宗教头衔词义。
+本次只修改数据文件，没有执行生成器、编译部署或专项测试，也未观察游戏内最终显示。
+
+原生重建说明：
+1. Nobles 位置列在 0x16e23a0..0x16e8a57 读取 entity_position.land_name（+0x258），为空时回退到 name[0]（+0x98）；完整模式和紧凑模式使用同一字段逻辑。性别／配偶头衔由独立人物身份格式器选择。
+2. NAME、NAME_MALE、NAME_FEMALE、SPOUSE、SPOUSE_MALE、SPOUSE_FEMALE 均保留单／复数。SQUAD 字段是 RAW 队伍类别，不是用户自定义 squad.alias。
+3. 0x90a790..0x912f7a 构造领主、军务、宫廷和市政职位；CUSTOM_OFFICIAL_ 与 CUSTOM_MARKET_OFFICIAL_ 属于不同生成族。
+4. 0x96f020..0x986a6b 构造站点与宗教职位；0x97aba8..0x97acee 为最高祭司语言 WORD 生成与名词取值分支。
+5. 0x986a70..0x98bfc6 构造行会职位；0x10d0910..0x10d5781 构造流放群体副手／代表；0x1102500..0x110724b 构造商团代表与首领。
+6. 当前 ELF 的地点工作人员格式器 0xb676a0..0xb6a289 与详情片段 0x1403860..0x1403b60 的名称来源已补录；location-staff.tsv 保留实际原生引用地址。
+7. 本次产物是名称提取清单和反汇编资料；没有修改游戏源码或配置；后续修正仅更新职位词表及清单，没有执行编译部署。
