@@ -945,6 +945,7 @@ static constexpr int kFortressWorkshopActivityRule = -163;
 static constexpr int kFortressNobleSymbolNameRule = -164;
 static constexpr int kFortressNobleSymbolValueRule = -165;
 static constexpr int kFortressNobleSymbolPositionRule = -166;
+static constexpr int kFortressPressurePlateRule = -167;
 
 static bool is_fortress_noble_symbol_field(const Match &match) {
     return match.rule == kFortressNobleSymbolNameRule ||
@@ -4805,6 +4806,8 @@ private:
         std::vector<Match> &matches, int only_y,
         const unsigned char *screen_override) const;
     void append_fortress_machine_power_rows(std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y) const;
+    void append_fortress_pressure_plate(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y) const;
     void append_native_split_ui_messages(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y,
@@ -17825,6 +17828,8 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     append_embark_skill_matches(screen_rows, result, only_y, screen_override);
     append_fortress_machine_power_rows(screen_rows, result, only_y);
     if (!announcement_panel_only)
+        append_fortress_pressure_plate(screen_rows, result, only_y);
+    if (!announcement_panel_only)
         append_adventure_combat_fields(screen_rows, result, only_y, screen_override);
     if (!announcement_panel_only) {
 #include "animal_picker_rows.inc"
@@ -26692,6 +26697,7 @@ void Overlay::normalize_native_split_text() {
         const bool structured_span = match.native_adventure_target_row ||
             match.native_animal_picker_row ||
             match.rule == kWorkOrderShopFieldRule ||
+            match.rule == kFortressPressurePlateRule ||
             match.rule == kWorldgenParameterLabelRule ||
             match.rule == kAdventureAttributeFieldRule ||
             match.rule == kAdventureSkillFieldRule ||

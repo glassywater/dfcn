@@ -60610,6 +60610,7 @@ Overview sentence: This is nothing.	这不算什么。	l
 Percentage Beasts Dead For Stoppage	停止历史演算所需的巨兽死亡比例
 Poetry Competition of in the wilds.	在荒野中，诗歌比赛。	hEi
 Press plant slurry into paper sheet	将植物纸浆压成纸张	wi
+Pressure plate: Range: {s1} to {s2}	范围：{s1}至{s2}	htl
 Quiet vocalization (heard recently)	微弱叫声（刚刚听到）	wl
 Rampage of {n} in in {p} during {e}	在{e1}期间，{n1}在{p1}的肆虐事件	htEi
 Rampage of {n} in in {p} within {p}	在{p2}，{n1}在{p1}的肆虐事件	htEi
@@ -76833,6 +76834,7 @@ Poetry Recital in the wilds.	在荒野中，诗歌朗诵。	hEi
 Poetry Recital of during {e}	在{e1}期间，诗歌朗诵	htEi
 Poetry Recital of within {p}	在{p1}，诗歌朗诵	htEi
 Possessed by unknown forces!	被未知力量附身！	hP
+Pressure plate: One use only	仅触发一次	l
 Rampage in in {p} during {e}	在{e1}期间，{p1}的肆虐事件	htEi
 Rampage in in {p} within {p}	在{p2}，{p1}的肆虐事件	htEi
 Rampage of {a} in the wilds.	在荒野中，{a1}的肆虐事件。	htEi
@@ -83059,6 +83061,7 @@ Conversation mood: Wonder	惊叹	l
 Corrupt Soldier Mood: {d}	异常的军人情绪：{d1}	hPt
 Corrupt Strange Mood: {d}	奇异心境数据异常：{d1}	hPt
 Crawling around babbling!	胡言乱语地四处爬行！	hP
+Creature trigger settings	生物触发设置	wl
 DFHack GUI Design: Rotate	旋转	l
 DFHack GUI Design: Shape:	形状：	l
 DFHack GUI Design: Smooth	磨平	l
@@ -84929,6 +84932,7 @@ Conversation mood: Happy	快乐	l
 Conversation mood: Jolly	开心	l
 Conversation mood: Proud	自豪	l
 Copy output to clipboard	复制输出到剪贴板	w
+Creatures do not trigger	生物不触发	wl
 Credits: Commmunications	社区沟通	wl
 Credits: Theodorick Grau	Theodorick Grau	wl
 Crossbows, leather armor	十字弩（皮甲）	wli
@@ -85261,6 +85265,7 @@ Make a flattering remark	说句恭维话	hP
 Maximum embark dimension	最大启程尺寸	w
 Milk and shear animals, 	线。	w
 Mill seeds/nuts to paste	将种子/坚果磨浆	wi
+Minecarts do not trigger	矿车不触发	wl
 Misconceptions About {b}	关于{b}的误解	hbti
 More than a day's travel	路程超过一天	w
 Mountain name: mountains	山脉	hi
@@ -86947,6 +86952,7 @@ Ceremony of within {p}.	在{p1}，仪式。	htEi
 Change to standard dig 	切换到标准挖掘模式。	w
 Chests and coffers are 	箱子和保险箱用于个人卧室存放	w
 Citizen becomes soldier	居民成为士兵	w
+Citizens do not trigger	市民不触发	wl
 Citizens will look for 	找更好的路线。	w
 Claim a forbidden item 	认领一个被禁用的物品或建筑，	w
 Claim other death items	解除其他死者遗物禁用	wi
@@ -89339,6 +89345,7 @@ Low linguistic ability	语言能力低	wil
 Lower right back teeth	右下臼齿	w
 Lower {s} bucket ({s})	放下{s1}的水桶（{s2}）	hPt
 Machine link suspended	机械连接暂停	w
+Magma does not trigger	岩浆不触发	wl
 Make beds and various 	在此制造床和各种家具，以及储	w
 Make charcoal and ash 	在此将木材制成木炭和灰烬。	w
 Make coke from lignite	使用褐煤制作焦炭	wi
@@ -89402,6 +89409,8 @@ Popup: Shoot and throw	弹窗：射击与投掷	hq
 Popup: Shoot and throw	弹窗：射击与投掷	w
 Preparing elevation...	正在生成地形高度……
 Preserver of knowledge	博学大师	w
+Pressure plate: Resets	可重复触发	l
+Pressure plate: Weight	重量	l
 Pressure plates, like 	压力板与杠杆类似，用于与机器、	w
 Process raw fish into 	在此将生鱼加工成可食用的食物。	w
 Processing entities...	处理实体......	w
@@ -89562,6 +89571,7 @@ Very high recuperation	恢复能力很高	wil
 Very low spatial sense	空间感知很低	wil
 Visual Stealth Factors	视觉隐蔽因素	hP
 Water at this location	此处有水	wli
+Water does not trigger	水不触发	wl
 We will fight no more.	我们不会再战斗了。	hP
 Weapons and Ammunition	武器与弹药	wi
 Weave thread into silk	将线织成丝绸	wi
@@ -91478,6 +91488,9 @@ Popup: Hold and climb	弹窗：抓握与攀爬	w
 Popup: Sleep and rest	弹窗：睡眠与休息	hq
 Popup: Sleep and rest	弹窗：睡眠与休息	w
 Preparing graphics...	准备图形...	w
+Pressure plate: Depth	深度	l
+Pressure plate: Magma	岩浆	l
+Pressure plate: Water	水	l
 Priesthood unit count	祭司团人数要求
 Process plants (vial)	加工植物(小瓶)	wi
 Procession during {e}	在{e1}期间，游行	htEi
@@ -93743,6 +93756,7 @@ Paternal grandmother	祖母	w
 Pet loses dead owner	宠物失去已故主人	w
 Placing good/evil...	正在生成善良与邪恶区域……
 Prepare choreography	编排舞蹈	hP
+Pressure plate: Cart	矿车	l
 Process plant to bag	用袋子进行甩籽	wi
 Processing plants...	处理项目......	w
 Processing sounds...	处理声音......	w
@@ -96625,6 +96639,7 @@ Poetry Competition.	诗歌比赛。	hEi
 Popup: Work details	弹窗：劳动分组	hq
 Popup: Work details	弹窗：劳动分组	w
 Prepare lavish meal	准备奢侈食物	wi
+Pressure plate: Any	不限	l
 Processing items...	处理植物......	w
 Processing music...	处理音乐......	w
 Pumps from the east	从东侧抽水	wl
@@ -99983,6 +99998,7 @@ Popup: Work orders	弹窗：工作指令	w
 Prehistory init...	正在初始化史前历史……
 Prepare a raw fish	处理一条生鱼	wi
 Press the argument	继续争辩	hP
+Pressure plate: to	至	l
 Procession at {p}.	在{p1}，游行。	htEi
 Procession in {d}.	{d1}年的游行。	htEi
 Procession in {p}.	在{p1}，游行。	htEi
@@ -107996,6 +108012,7 @@ Charge {s} ({s})	冲锋攻击{s1}（{s2}）	hPt
 Child is elected	子女担任民选职位	hP
 Childhood friend	儿时的朋友	w
 Choose dye color	选择染料颜色。	hP
+Citizens trigger	市民触发	wl
 Claim other dead	解除其他尸体禁用	wi
 Claim {n} as pet	认领{n1}为宠物	hPt
 Climb ({s}/Lava)	攀爬（{s1}／熔岩）	hPt
@@ -127048,6 +127065,7 @@ Occasion of.	庆典。	hEi
 Older sister	姐姐	w
 On your own!	自己来！
 On your own!	自己来！	hq
+One use only	仅触发一次	w
 Operate pump	操作泵机	wi
 Organization	组织能力	wi
 Other skills	其他技能	w
@@ -142612,6 +142630,7 @@ Remove	移除	wi
 Report	报告	w
 Rerras	雷拉斯	wi
 Rers\x8Cr	雷尔锡尔	wi
+Resets	可重复触发	w
 Rethal	雷萨尔	wi
 Retire	退役	w
 Riding	骑术	wi

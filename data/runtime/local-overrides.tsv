@@ -1,4 +1,28 @@
 # Local high-priority fixes. Rebuild through the host build-deploy entry.
+# Native pressure-plate configuration captions are complete UI fields.
+# Keep trigger states together instead of translating their individual words.
+Resets	可重复触发	w
+One use only	仅触发一次	w
+Water does not trigger	水不触发	wl
+Magma does not trigger	岩浆不触发	wl
+Minecarts do not trigger	矿车不触发	wl
+Creature trigger settings	生物触发设置	wl
+Citizens trigger	市民触发	wl
+Citizens do not trigger	市民不触发	wl
+Creatures do not trigger	生物不触发	wl
+# Short labels and range captures are owned by this page's native producer.
+# The indexed range is a semantic template, not a global Range/to matcher.
+Pressure plate: Resets	可重复触发	l
+Pressure plate: One use only	仅触发一次	l
+Pressure plate: Water	水	l
+Pressure plate: Magma	岩浆	l
+Pressure plate: Cart	矿车	l
+Pressure plate: Depth	深度	l
+Pressure plate: Weight	重量	l
+Pressure plate: Any	不限	l
+Pressure plate: to	至	l
+Pressure plate: Range: {s1} to {s2}	范围：{s1}至{s2}	htl
+
 # Fortress HUD siege banner; retain case-sensitive matching for this caption.
 SIEGE	围攻	w
 # Creation rows substitute the actual noble position in this whole caption.
