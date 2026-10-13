@@ -425,16 +425,39 @@ std::optional<std::string> Overlay::translate_announcement_combat(
             return finish(translation_complete_with_native_nicknames(result, input)
                 ? std::move(result) : std::nullopt);
         }
-        if (scope == "$announcement-item") {
-            // e68020 supplies the complete live item caption: coin issuer,
-            // stack count, contents, vessel material and designation marks.
+        if (scope == "$item" || scope == "$announcement-item") {
+            // Shared damage's c65450 and announcements' e68020 both supply
+            // complete live item captions. A figurine/statue owns its depicted
+            // subject as well as material and designation marks; the narrower
+            // historical item segmenter does not own that subject grammar.
+            // Use the complete noun/caption grammar for every item position:
+            // projectile, target, instrument, deflection and lodged equipment.
             auto result = translate_item_description_term(input);
+            if (!translation_complete_with_native_nicknames(result, input)) {
+                // This parser proves complete typed consumption, including an
+                // authored cage name retained by its activity_place field.
+                // Such a name can contain Latin text without being prose left
+                // untranslated; the nickname-only check cannot judge it.
+                if (auto caption = translate_item_caption_grammar(input))
+                    return finish(std::move(caption));
+            }
+            // c65450 returns written titles directly for item kinds 0x56
+            // and 0x59 (copy annotation at c656f4). Their complete title
+            // grammar must own punctuation before ordinary item segments.
+            if (!translation_complete_with_native_nicknames(result, input))
+                result = translate_written_item_caption(input);
             if (!translation_complete_with_native_nicknames(result, input))
                 result = translate_legends_item(input);
+            // Combat callers pass r8d=0. At c654b9..c654e2 an artifact
+            // name therefore bypasses material/type and tail-calls a94030.
+            // Reuse inventory's native item-name grammar: its same-language
+            // root validation owns the whole name, with no generic guessing.
+            if (!translation_complete_with_native_nicknames(result, input))
+                result = translate_procedural_fragment(std::string(input),
+                    false, false, {}, ProceduralFragmentContext::native_item_name);
             return finish(translation_complete_with_native_nicknames(result, input)
                 ? std::move(result) : std::nullopt);
         }
-        if (scope == "$item") return finish(translate_legends_item(input));
         if (scope == "$body") return finish(translate_legends_anatomy(input));
         if (scope == "$creature") return finish(translate_creature_reference(input));
         if (scope == "$conflict-caste") {

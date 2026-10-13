@@ -1,0 +1,29 @@
+edition	role	owner	instruction	operand	source
+reference	shared-damage	0x1400e56a0	0x1400e977a	0x1415eecc0	 been stunned again!
+reference	embedded-item-removal	0x140643f70	0x14064527e	0x141662780	 on the embedded 
+reference	shared-damage-producer+wrestling	0x140646f00	0x14064768d	0x141662730	 a chokehold on 
+reference	shared-damage-producer+wrestling	0x140646f00	0x1406486ee	0x141662a88	 in vain against the grip of 
+reference	melee-projectile-defense+shared-damage-producer	0x14064a350	0x14064a578	0x1416627d8	 has moved out of range!
+reference	charge	0x140654d20	0x140655aef	0x141662d80	 onslaught!
+reference	collision	0x140eadea0	0x140eb12d6	0x141731f88	 flight path!
+reference	item-removal-job	0x141397100	0x141397273	0x141784ee8	 pulls out and 
+reference	bodily-impact+shared-damage-producer	0x1413b1580	0x1413b1b72	0x141784e40	 takes the full force of the impact
+reference	cloud-emission	0x1413c72b0	0x1413c743d	0x141784fe8	 a cloud of 
+reference	glob-emission	0x1413c80b0	0x1413c8215	0x141785020	 a glob of 
+reference	cloud-emission	0x1413c8f60	0x1413c90cc	0x141784fe8	 a cloud of 
+reference	cloud-emission	0x1413c9ad0	0x1413c9c5e	0x141784fe8	 a cloud of 
+reference	cloud-emission	0x1413ca1d0	0x1413ca35c	0x141784fe8	 a cloud of 
+classic	shared-damage	0x1400e5630	0x1400e970a	0x1415e9c70	 been stunned again!
+classic	embedded-item-removal	0x140641990	0x140642c9e	0x14165d630	 on the embedded 
+classic	shared-damage-producer+wrestling	0x140644920	0x1406450ad	0x14165d6f0	 a chokehold on 
+classic	shared-damage-producer+wrestling	0x140644920	0x14064610e	0x14165d980	 in vain against the grip of 
+classic	melee-projectile-defense+shared-damage-producer	0x140647d70	0x140647f98	0x14165da20	 has moved out of range!
+classic	charge	0x140652740	0x14065350f	0x14165db08	 onslaught!
+classic	collision	0x140ea8e10	0x140eac246	0x14172c910	 flight path!
+classic	item-removal-job	0x141392070	0x1413921e3	0x14177ea88	 pulls out and 
+classic	bodily-impact+shared-damage-producer	0x1413ac4f0	0x1413acae2	0x14177eab0	 takes the full force of the impact
+classic	cloud-emission	0x1413c2220	0x1413c23ad	0x14177eb50	 a cloud of 
+classic	glob-emission	0x1413c3020	0x1413c3185	0x14177eb40	 a glob of 
+classic	cloud-emission	0x1413c3ed0	0x1413c403c	0x14177eb50	 a cloud of 
+classic	cloud-emission	0x1413c4a40	0x1413c4bce	0x14177eb50	 a cloud of 
+classic	cloud-emission	0x1413c5140	0x1413c52cc	0x14177eb50	 a cloud of 

@@ -1,0 +1,27 @@
+{
+  "images": [
+    {
+      "edition": "reference",
+      "identity": "PE:6a70a6d9:02711000",
+      "path": "D:\\program\\steam\\steamapps\\common\\Dwarf Fortress\\Dwarf Fortress.exe"
+    },
+    {
+      "edition": "classic",
+      "identity": "PE:6a70b91c:0270a000",
+      "path": "C:\\Users\\WIN11\\Downloads\\df_53_16_win\\Dwarf Fortress.exe"
+    }
+  ],
+  "purpose": "Offline native combat source extraction; no game or translator execution",
+  "dynamic_fields": [
+    "unit/name/profession",
+    "body/tissue/material",
+    "complete item caption with decorations",
+    "RAW attack base/third-person verb",
+    "RAW weapon subpart"
+  ],
+  "related_sources": [
+    "data/extracted/announcement-combat-status",
+    "data/extracted/impact-announcement-decompiled.txt",
+    "data/extracted/announcement-status"
+  ]
+}

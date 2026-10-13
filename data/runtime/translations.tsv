@@ -16651,6 +16651,7 @@ Announcement combat dialogue-battle-attacker [$creature,$name]: a {s} of {s}	{s2
 Announcement combat dialogue-judgement-predicate []: a legendary storyteller	传奇故事讲述者	l
 Announcement combat dialogue-judgement-predicate []: known to be quarrelsome	出了名的爱争吵的人	l
 Announcement combat diplomacy-cause []: the disturbance of once-eternal rest	曾经永恒的安息遭到打扰	l
+Announcement combat head [owner,impact-part]: {s} {s} skids along the ground	{s1}{s2}沿地面滑行	l
 Announcement combat head [unit,unit,object]: {s} shake {s} around by the {s}	{s1}抓着{s2}的{s3}来回甩动	l
 Announcement combat journal-ascension-position [journal-event-place]: of {s}	{s1}的职位	l
 Announcement combat journal-entity-event [journal-event-place]: claim on {s}	对{s1}的主权宣称	l
@@ -17436,8 +17437,10 @@ Announcement combat sentence []: Please help me to escape from this place.	请�
 Announcement combat sentence []: You are surrounded by incessant cackling.	四周怪笑声不绝于耳。	l
 Announcement combat sentence [boast-victim]: I am the extinguisher of {s}!	终结{s1}生命的正是我！	l
 Announcement combat sentence [head]: {s}, but the attack is deflected by !	{s1}，但攻击被挡开了！	l
+Announcement combat sentence [unit,$item]: {s} pulls out and releases {s}.	{s1}拔出并松开了{s2}。	l
 Announcement combat sentence [unit,$item]: {s} scramble away from the {s}!	{s1}连滚带爬地躲开了{s2}！	l
 Announcement combat sentence [unit,$term]: {s} has transformed into a {s}!	{s1}变成了{s2}！	l
+Announcement combat sentence [unit,material]: {s} breathes a cloud of {s}!	{s1}喷出一团{s2}云雾！	l
 Announcement combat sentence [unit-list]: {s} are stunned by divine power!	{s1}被神力震慑了！	l
 Announcement combat sentence [unit]: {s} is having more trouble breathing!	{s1}呼吸更加困难了！	l
 Announcement combat sentence [work,$item]: You have written {s} on to {s}.	你将{s1}写到了{s2}上。	l
@@ -17837,6 +17840,8 @@ Announcement combat sentence [ability]: You have learned the power "{s}"!	你学
 Announcement combat sentence [fluid,fluid]: {s} is injected into the {s}!	{s1}被注入了{s2}！	l
 Announcement combat sentence [shot,shot-result]: {s} but the shot is {s}!	{s1}，但射来的攻击被{s2}！	l
 Announcement combat sentence [unit,$item]: {s} pulls on the embedded {s}.	{s1}拉扯着嵌入体内的{s2}。	l
+Announcement combat sentence [unit,material]: {s} breathe a cloud of {s}!	{s1}喷出一团{s2}云雾！	l
+Announcement combat sentence [unit,material]: {s} breathes a glob of {s}!	{s1}喷出一团{s2}！	l
 Announcement combat sentence [unit-list]: {s} is stunned by divine power!	{s1}被神力震慑了！	l
 Announcement combat sentence [unit]: {s} are caught in a cloud of flames!	{s1}被火焰云吞没了！	l
 Announcement combat sentence [unit]: {s} is stumbling around obliviously!	{s1}浑浑噩噩地四处踉跄！	l
@@ -18242,6 +18247,7 @@ Announcement combat sentence []: An ambush! Curse all friends of nature!	有埋�
 Announcement combat sentence []: You have discovered a downward passage.	你发现了一条向下的通道。	l
 Announcement combat sentence [boast-victim]: I am the vanquisher of {s}!	战胜{s1}的正是我！	l
 Announcement combat sentence [unit,$item]: {s} pull on the embedded {s}.	{s1}拉扯着嵌入体内的{s2}。	l
+Announcement combat sentence [unit,material]: {s} breathe a glob of {s}!	{s1}喷出一团{s2}！	l
 Announcement combat sentence [unit]: {s} are caught in a burst of steam!	{s1}被喷涌的蒸汽笼罩了！	l
 Announcement combat sentence [unit]: {s} are struck by a ball of flames!	{s1}被一团火球击中了！	l
 Announcement combat sentence [unit]: {s} is caught in a cloud of flames!	{s1}被火焰云吞没了！	l
@@ -18649,6 +18655,7 @@ Announcement combat sentence [boast-victim]: I am the conqueror of {s}!	我就�
 Announcement combat sentence [boast-victim]: I am the strangler of {s}!	绞杀{s1}的正是我！	l
 Announcement combat sentence [fluid,$body]: {s} splatters over the {s}!	{s1}飞溅在{s2}上！	l
 Announcement combat sentence [unit,$item]: {s} jumps away from the {s}!	{s1}跳开躲过了{s2}！	l
+Announcement combat sentence [unit,$item]: {s} pulls out and drops {s}.	{s1}拔出并丢下了{s2}。	l
 Announcement combat sentence [unit,$item]: {s} rolls away from the {s}!	{s1}翻滚躲开了{s2}！	l
 Announcement combat sentence [unit,actor]: {s} bats {s} out of the air!	{s1}将{s2}从空中击落了！	l
 Announcement combat sentence [unit,actor]: {s} scrambles away from {s}!	{s1}连滚带爬地躲开了{s2}！	l
@@ -24588,6 +24595,7 @@ Announcement combat journal-event-title [$creature]: A {s}'s	{s1}的事件	l
 Announcement combat journal-event-title []: The abduction of	某人被绑架	l
 Announcement combat journal-event-title []: The insurrection	起义	l
 Announcement combat journal-performance-role []: performance	表演	l
+Announcement combat material [$creature,material]: {s}'s {s}	{s1}的{s2}	l
 Announcement combat memorial-inscription []: In memory of...	谨以此纪念……	l
 Announcement combat memorial-killer-verb []: Scared to death	吓死	l
 Announcement combat memorial-weapon-verb []: Shot and killed	射杀	l
@@ -26194,6 +26202,7 @@ Announcement combat journal-event-actor [$creature]: A {s}	{s1}	l
 Announcement combat journal-event-title []: Your abduction	你被绑架	l
 Announcement combat justice-plot-core [$name]: Corrupt {s}	拉拢{s1}	l
 Announcement combat justice-plot-core []: Provide Position	提供职位	l
+Announcement combat material [$person,material]: {s}'s {s}	{s1}的{s2}	l
 Announcement combat memorial-death []: Killed by a vehicle	被车辆撞死	l
 Announcement combat memorial-family []: father and husband	父亲与丈夫	l
 Announcement combat memorial-killer-verb []: Fed to beasts	喂给野兽	l
@@ -34782,6 +34791,7 @@ Announcement combat journal-person [$message]: {s}	{s1}	l
 Announcement combat justice-plot-core []: Sabotage	破坏活动	l
 Announcement combat layer [layer,$term]: {s}'s {s}	{s1}的{s2}	l
 Announcement combat layer-list [layer-phrase]: {s}	{s1}	l
+Announcement combat material [material]: {s} vapor	{s1}蒸气	l
 Announcement combat memorial-death []: Put to rest	得以安息	l
 Announcement combat memory-death []: bled to death	失血而死	l
 Announcement combat memory-death []: died in magma	死于岩浆	l
@@ -38984,6 +38994,7 @@ Announcement combat journal-event-actor []: you	你	l
 Announcement combat journal-event-title []: The	事件	l
 Announcement combat justice-plot-core []: Frame	栽赃	l
 Announcement combat justice-plot-core []: Steal	窃取	l
+Announcement combat material [material]: 's {s}	无名者的{s1}	l
 Announcement combat memorial-death []: Scuttled	被凿沉	l
 Announcement combat memorial-death []: Vanished	消失无踪	l
 Announcement combat memorial-family []: husband	丈夫	l
@@ -39007,6 +39018,7 @@ Announcement combat rumor-person [$person]: {s}	{s1}	l
 Announcement combat rumor-position [$term]: {s}	{s1}	l
 Announcement combat sentence [$item]: Good {s}.	优质的{s1}。	l
 Announcement combat sentence [rumor-event]: {s}	{s1}	l
+Announcement combat sentence [unit]: {s} blocks	{s1}格挡	l
 Announcement combat threat-building []: a tower	一座高塔	l
 Announcement combat threat-crime []: devoured a	吞食了一只身份不明的生物	l
 Announcement combat visitor-statement []: are .	……。	l
@@ -40451,6 +40463,7 @@ Announcement combat reference-value []: nature	自然	l
 Announcement combat rumor-army [$name]: of {s}	（隶属{s1}）	l
 Announcement combat rumor-time []: a month ago	一个月前	l
 Announcement combat sentence [head]: {s} and !	{s1}！	l
+Announcement combat sentence [unit]: {s} block	{s1}格挡	l
 Announcement combat threat-building []: a keep	一座城堡主楼	l
 Announcement combat threat-building []: a tomb	一座陵墓	l
 Announcement combat threat-crime []: destroyed	毁坏了建筑（名称不明）	l
@@ -50401,6 +50414,7 @@ Announcement combat attack-verb []: claw	爪击	l
 Announcement combat attack-verb []: gore	顶刺	l
 Announcement combat attack-verb []: grab	抓住	l
 Announcement combat attack-verb []: hack	砍	l
+Announcement combat attack-verb []: jabs	戳击	l
 Announcement combat attack-verb []: kick	踢踹	l
 Announcement combat attack-verb []: lash	鞭打	l
 Announcement combat attack-verb []: push	推	l
@@ -52224,6 +52238,7 @@ Adventurer log reputation: rumored poet	传闻中的诗人	h
 Age of the {s} and the {s} in the wilds	在荒野中，{s1}与{s2}的时代	htEi
 Agree to make peace between {e} and {e}	同意让{e1}与{e2}停战	hPt
 Announcement combat ability []: Blister	引发水疱	l
+Announcement combat attack-verb []: jab	戳击	l
 Announcement combat attack-verb []: saw	锯割	l
 Announcement combat layer []: body part	身体部位	l
 Announcement combat layer []: main part	主要部分	l

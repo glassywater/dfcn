@@ -91,6 +91,7 @@ impact-part	body part	身体部位		Steam 0x1413b1580..0x1413b209d; classic 0x14
 impact-part	body parts	多个身体部位		Steam 0x1413b1580..0x1413b209d; classic 0x1413ac4f0..0x1413ad00d; unnamed plural fallback appends s
 impact-part	{s}	{s1}	$body	Steam 0x1413b1580..0x1413b209d; classic 0x1413ac4f0..0x1413ad00d; complete RAW singular/plural anatomy field
 head	{s} {s} takes the full force of the impact	{s1}{s2}承受了全部冲击力	owner,impact-part	Steam 0x1413b1580..0x1413b209d, prefix 0x1413b1b72; classic 0x1413ac4f0..0x1413ad00d, prefix 0x1413acae2; damage flags 0x20 preserve prefix for every outcome
+head	{s} {s} skids along the ground	{s1}{s2}沿地面滑行	owner,impact-part	data/extracted/announcement-combat-native/reference-13b20a0.asm:0x1413b20a0..0x1413b2a26, prefix 0x1413b25b8; classic-13ad010.asm:0x1413ad010..0x1413ad996; complete inline RAW anatomy with body part(s) fallback; flags 0x20 preserve prefix for every shared-damage outcome
 layer-phrase	the {s}	{s1}	layer	0x1400e7718+0x1400e777d+0x1400e79b5
 layer-phrase	it	它		0x1400e779b
 layer-list	{s}	{s1}	layer-phrase	0x1400e78d4..0x1400e79b5
@@ -282,6 +283,8 @@ sentence	{s} block {s}!	{s1}挡住了{s2}！	unit,actor	0x14064f299..0x14064f325
 sentence	{s} block {s} with {s}!	{s1}用{s3}挡住了{s2}！	unit,actor,equipment	0x14064f299..0x14064f325
 sentence	{s} blocks {s}!	{s1}挡住了{s2}！	unit,actor	0x14064f299..0x14064f325; optional item
 sentence	{s} blocks {s} with {s}!	{s1}用{s3}挡住了{s2}！	unit,actor,equipment	0x14064f299..0x14064f325
+sentence	{s} block	{s1}格挡	unit	data/extracted/announcement-combat-native/reference-13650e0.asm:0x1413652dd+0x14136530e->0x141365344+0x1413653d2; classic-1360050.asm:0x14136024d+0x14136027e->0x1413602b4+0x141360342; breath-defense enum outside 0..2 submits complete player unit and base verb without object or punctuation
+sentence	{s} blocks	{s1}格挡	unit	data/extracted/announcement-combat-native/reference-13650e0.asm:0x1413652e9+0x14136530e->0x141365344+0x1413653d2; classic-1360050.asm:0x141360259+0x14136027e->0x1413602b4+0x141360342; breath-defense enum outside 0..2 submits complete nonplayer unit and third-person verb without object or punctuation
 sentence	{s} bat {s} aside!	{s1}将{s2}拨到了一旁！	unit,actor	0x14064fa4c..0x14064faf9; optional instrument
 sentence	{s} bat {s} aside with {s}!	{s1}用{s3}将{s2}拨到了一旁！	unit,actor,equipment	0x14064fa4c..0x14064faf9
 sentence	{s} bat {s} out of the air!	{s1}将{s2}从空中击落了！	unit,actor	0x14064fa4c..0x14064faf9; optional instrument
@@ -466,11 +469,17 @@ sentence	{s} destroyed by battering ram.	{s1}被攻城锤摧毁了。	$term	0x14
 sentence	{s} toppled by battering ram.	{s1}被攻城锤撞倒了。	$term	0x1414fae12 native building description+0x1414fb01f/0x1414fb183+0x1414fb196+0x1414fb1e7
 sentence	{s} pull on the embedded {s}.	{s1}拉扯着嵌入体内的{s2}。	unit,$item	0x140645253..0x14064543a; inline period at 0x1406452e2
 sentence	{s} pulls on the embedded {s}.	{s1}拉扯着嵌入体内的{s2}。	unit,$item	0x140645253..0x14064543a; inline period at 0x1406452e2
+sentence	{s} pulls out and drops {s}.	{s1}拔出并丢下了{s2}。	unit,$item	data/extracted/announcement-combat-native/reference-1397100.asm:0x141397273+0x1413972b5+0x141397301+0x141397327; classic-1392070.asm:0x141392070..0x141392407; native always pulls, including adventure player; unit formatter then complete item caption 0x140c65450
+sentence	{s} pulls out and releases {s}.	{s1}拔出并松开了{s2}。	unit,$item	data/extracted/announcement-combat-native/reference-1397100.asm:0x141397273+0x1413972bc+0x141397301+0x141397327; classic-1392070.asm:0x141392070..0x141392407; native always pulls, including adventure player; item predicate 0x1413610f0 selects releases instead of drops
 sentence	{s} try to remove {s}.	{s1}试图取出{s2}。	unit,$item	0x14064560f..0x1406457f8; inline period 0x14064569d
 sentence	{s} tries to remove {s}.	{s1}试图取出{s2}。	unit,$item	0x14064560f..0x1406457f8; inline period 0x14064569d
 sentence	{s} are caught in a burst of {s}!	{s1}被困在了喷发的{s2}中！	unit,$term	0x140abb9a0+0x140abbd4c..0x140abbe85; material 0x1414d1920
 sentence	{s} are struck by a ball of flames!	{s1}被一团火球击中了！	unit	0x140eb3ad0+0x140eb4349..0x140eb4468
 sentence	{s} is caught in a burst of {s}!	{s1}被困在了喷发的{s2}中！	unit,$term	0x140abb9a0+0x140abbd4c..0x140abbe85; material 0x1414d1920
+sentence	{s} breathe a cloud of {s}!	{s1}喷出一团{s2}云雾！	unit,material	data/extracted/announcement-combat-native/reference-13c72b0.asm:0x1413c7412+0x1413c743d+0x1413c7b0e; reference-13c8f60.asm+reference-13c9ad0.asm+reference-13ca1d0.asm; native player base verb and complete material field, including unknown-material/vapor branches
+sentence	{s} breathes a cloud of {s}!	{s1}喷出一团{s2}云雾！	unit,material	data/extracted/announcement-combat-native/reference-13c72b0.asm:0x1413c7421+0x1413c743d+0x1413c7b0e; reference-13c8f60.asm+reference-13c9ad0.asm+reference-13ca1d0.asm; native nonplayer third-person verb and complete material field, including unknown-material/vapor branches
+sentence	{s} breathe a glob of {s}!	{s1}喷出一团{s2}！	unit,material	data/extracted/announcement-combat-native/reference-13c80b0.asm:0x1413c81ea+0x1413c8215+0x1413c86d1; classic-13c3020.asm:0x1413c3020..0x1413c3ec7; native player base verb and complete material field with explicit unknown-material fallback
+sentence	{s} breathes a glob of {s}!	{s1}喷出一团{s2}！	unit,material	data/extracted/announcement-combat-native/reference-13c80b0.asm:0x1413c81f9+0x1413c8215+0x1413c86d1; classic-13c3020.asm:0x1413c3020..0x1413c3ec7; native nonplayer third-person verb and complete material field with explicit unknown-material fallback
 sentence	{s} is struck by a ball of flames!	{s1}被一团火球击中了！	unit	0x140eb3ad0+0x140eb4349..0x140eb4468
 sentence	{s} has become entangled in a hidden web!	{s1}被隐藏的蛛网缠住了！	unit	0x140da940c+0x140da9494
 sentence	{s} scramble away from the {s}!	{s1}连滚带爬地躲开了{s2}！	unit,$item	0x140eab966..0x140eabb6e+0x14141f9e3..0x14141fb86; item projectile dodging
@@ -483,6 +492,10 @@ sentence	{s} jumps away from the {s}!	{s1}跳开躲过了{s2}！	unit,$item	0x14
 weapon-part	handle	柄		vanilla_items/objects/item_tool.txt:68 ATTACK strike/strikes:handle
 weapon-part	helve	斧柄		vanilla_items/objects/item_tool.txt:318; existing data/runtime/translations.tsv helve
 material	{s}	{s1}	$term	0x1414a3583+0x1414d1920; full material display phrase
+material	{s}'s {s}	{s1}的{s2}	$creature,material	data/extracted/announcement-combat-native/reference-13c72b0.asm:0x1413c75c1+0x1413c77c4+0x1413c79e4; reference-13c80b0.asm:0x1413c841c+0x1413c859e; complete RAW creature owner and material fields; species scope precedes historical name scope
+material	{s}'s {s}	{s1}的{s2}	$person,material	data/extracted/announcement-combat-native/reference-13c72b0.asm:0x1413c7595+0x1413c75c1+0x1413c7798+0x1413c77c4+0x1413c79b8+0x1413c79e4; reference-13c80b0.asm:0x1413c841c+0x1413c859e; complete historical or assumed-identity name, then native possessive connector and full material
+material	's {s}	无名者的{s1}	material	data/extracted/announcement-combat-native/reference-13c72b0.asm:0x1413c7525..0x1413c753d+0x1413c7582..0x1413c7586->0x1413c75a2+0x1413c75c1; repeated 0x1413c7785..0x1413c77c4+0x1413c79a5..0x1413c79e4; absent owner name retains exact possessive connector before complete material, including unknown-material/vapor suffixes
+material	{s} vapor	{s1}蒸气	material	data/extracted/announcement-combat-native/reference-13c72b0.asm:0x1413c7886+0x1413c78a2; reference-13c8f60.asm:0x1413c94fb+0x1413c9517; native vapor-state fixed suffix after complete RAW or exact unknown material fallback, including classic-13c2220.asm+classic-13c3ed0.asm
 sentence	{s}! Drive it away!	{s1}！赶走它！	$term	0x1413637de..0x141363837; full caste/creature display name
 attack-verb	stick	刺入		vanilla_items/objects/item_ammo.txt:23 ATTACK:EDGE/BLUNT
 attack-verb	sticks	刺入		vanilla_items/objects/item_ammo.txt:23 ATTACK:EDGE/BLUNT
@@ -490,6 +503,8 @@ attack-verb	drill	钻刺		vanilla_items/objects/item_trapcomp.txt:24 ATTACK:EDGE
 attack-verb	drills	钻刺		vanilla_items/objects/item_trapcomp.txt:24 ATTACK:EDGE/BLUNT
 attack-verb	saw	锯割		vanilla_items/objects/item_trapcomp.txt:45 ATTACK:EDGE/BLUNT
 attack-verb	saws	锯割		vanilla_items/objects/item_trapcomp.txt:45 ATTACK:EDGE/BLUNT
+attack-verb	jab	戳击		data/extracted/announcement-combat-native/raw-attack-verbs.tsv; available reference MOD candidate mods/2925028826 (500502)/objects/item_extra_weapons.txt:152,164 ATTACK; ITEM_WEAPON_STAFF / ITEM_WEAPON_LARGE_STAFF; not proof of a loaded world
+attack-verb	jabs	戳击		data/extracted/announcement-combat-native/raw-attack-verbs.tsv; available reference MOD candidate mods/2925028826 (500502)/objects/item_extra_weapons.txt:152,164 ATTACK; ITEM_WEAPON_STAFF / ITEM_WEAPON_LARGE_STAFF; not proof of a loaded world
 
 # CDI:ADV_NAME belongs to an ability field, never to the global verb/noun dictionary.
 # Sources are the active vanilla objects and procedural scripts; interaction examples are not enabled RAW.
