@@ -43813,6 +43813,7 @@ There is a heavy wind blowing from the east.	一阵大风从东方吹来。	hP
 There is a heavy wind blowing from the east.	一阵大风从东方吹来。	hj
 There is a heavy wind blowing from the west.	一阵大风从西方吹来。	hP
 There is a heavy wind blowing from the west.	一阵大风从西方吹来。	hj
+There is a {s}'s shallow imprint in the {s}.	{s2}中有一个{s1}浅压痕。	hPt
 These are the default Dwarf Fortress extinct	这些是《矮人要塞》的默认灭绝	wl
 This artwork appears on an unknown artifact.	这件艺术品位于未知造物上。	hH
 This engraving appears on a floor somewhere.	这幅雕刻位于某处的地面上。	hH
@@ -45329,6 +45330,7 @@ The group must be driven off or subjugated.	必须驱逐或征服这个势力。
 The performers begin improvised music, {e}.	表演者们开始以{e1}的形式即兴演奏。	hPt
 The performers begin reciting the poem {b}.	表演者们开始朗诵诗歌《{b1}》。	hPt
 The support of {a} was crucial to the coup.	{a1}的支持对政变起了关键作用。	ht
+The vegetation has been slightly perturbed.	这里的植被受到轻微扰动。	hP
 The victory was shared by {a} in the wilds.	在荒野中，{a1}共同获得了胜利。	ht
 The waning half moon is directly above you.	下弦月就在你的头顶正上方。	hP
 The waning half moon is directly above you.	下弦月就在你的头顶正上方。	hj
@@ -47070,6 +47072,7 @@ The world has passed into {e} in the wilds	在荒野中，世界已进入{e1}	ht
 The world has passed into {s} in the wilds	在荒野中，世界已进入{s1}	ht
 The {s} suspended the construction of {s}.	{s1}暂停了{s2}的建造。	hPt
 There is a shallow {s} imprint in the {s}.	{s2}中有一个{s1}留下的浅压痕。	hPt
+There is a {s}'s vague imprint in the {s}.	{s2}中有一个{s1}模糊压痕。	hPt
 This is the {i} currency of {r} under {r}.	这是「{r1}」在{r2}统治时期使用的{i1}币。	hHt
 This task has been assigned and is active.	此任务已分配工人，正在执行。	hj
 Travel building: No significant structures	无重要建筑	wi
@@ -48890,6 +48893,7 @@ The world has passed into {s} during {e}.	在{e1}期间，世界已进入{s1}。
 The world has passed into {s} within {p}.	在{p1}，世界已进入{s1}。	ht
 There are no merchants trading right now.	目前没有商人进行交易。	hP
 There is a folder with this name already.	已存在同名文件夹。	w
+There is a {s}'s deep imprint in the {s}.	{s2}中有一个{s1}深压痕。	hPt
 There is no intelligence information yet.	目前还没有任何情报。	hP
 There is not enough room to perform here.	这里没有足够的表演空间。	hP
 They are only found in the untamed wilds.	它们只会出现在蛮荒之地。	l
@@ -50727,6 +50731,7 @@ The {s} were unable to complete the {s}.	{s1}未能完成{s2}。	hPt
 There are no children to do your chores.	没有儿童可以承担杂务。	wil
 There aren't any crafted artifacts here.	这里还没有任何制作完成的造物。	hP
 There is a vague {s} imprint in the {s}.	{s2}中有一个{s1}留下的模糊压痕。	hPt
+There is a {s}'s {s} imprint in the {s}.	{s3}中有一个{s1}{s2}留下的压痕。	hPt
 There must be something else to discuss.	总还有别的事情可谈。	hP
 There were {c} competitors in the wilds.	在荒野中，共有{c1}名参赛者。	ht
 They tangle together and tumble forward!	双方纠缠在一起，向前翻滚！	hP
@@ -54444,6 +54449,7 @@ The poetry enters the verse paragraph.	诗歌开始朗诵这一段。	hP
 The victory was shared by {n} and {n}.	{n1}与{n2}共同获得了胜利。	ht
 The {s} Rampage in in {p} in the wilds	在荒野中，{p1}的{s1}肆虐事件	htEi
 Then select the corners of the bridge.	然后选择桥梁的各个角。	hP
+There is a shallow imprint in the {s}.	{s1}中有一个浅压痕。	hPt
 There were {c} competitors during {e}.	在{e1}期间，共有{c1}名参赛者。	ht
 There were {c} competitors within {p}.	在{p1}，共有{c1}名参赛者。	ht
 This building has been claimed by {n}.	此建筑已被{n1}占用。	hPt
@@ -58480,6 +58486,8 @@ The world has passed into {s} in {p}	在{p1}，世界已进入{s1}	ht
 The {n} has been missing for a week.	{n1}已经失踪一周。	hPt
 The {s} Rampage in in {p} during {e}	在{e1}期间，{p1}的{s1}肆虐事件	htEi
 The {s} Rampage in in {p} within {p}	在{p2}，{p1}的{s1}肆虐事件	htEi
+There is a vague imprint in the {s}.	{s1}中有一个模糊压痕。	hPt
+There is a {s}'s imprint in the {s}.	{s2}中有一个{s1}压痕。	hPt
 There will be no rest for the enemy.	敌人将永无宁日。	hP
 They can be found in any wilderness.	它们可在任何荒野中找到。	l
 Think of others today, not yourself.	今天为他人着想，别只顾自己。	hP
@@ -60469,6 +60477,7 @@ The weather looks to be fine today.	今天天气看起来不错。	hP
 The work has no particular subject.	这部作品没有特定主题。	h
 The {s} remains stuck in {n}'s {t}.	{s1}仍卡在{n1}的{t1}中。	hPt
 There are two sides to every story.	每件事都有两面。	hP
+There is a deep imprint in the {s}.	{s1}中有一个深压痕。	hPt
 They do not feel challenged at all.	他们觉得没人能撼动自己的地位。	hP
 They tangle together and fall over!	双方纠缠在一起，摔倒了！	hP
 This Version of DF uses FMOD Studio	本版本《矮人要塞》使用 FMOD Studio	wl
@@ -62774,6 +62783,7 @@ The sun is low in the eastern sky.	太阳位于东方低空。	hj
 The sun is low in the western sky.	太阳位于西方低空。	hP
 The sun is low in the western sky.	太阳位于西方低空。	hj
 The thread is {v} with {j} by {n}.	纺线由{n1}用{j1}染成{v1}。	hHt
+The vegetation is heavily damaged.	这里的植被受到严重破坏。	hP
 The vomit burns away in the magma.	呕吐物在岩浆中烧尽了。	hP
 The {s} Purge in {p} in the wilds.	在荒野中，{p1}的{s1}清洗事件。	htEi
 The {s} remains stuck in your {t}.	{s1}仍卡在你的{t1}中。	hPt
@@ -67208,6 +67218,7 @@ The {s} Rampage of {n} in in {p}	{n1}在{p1}的{s1}肆虐事件	htEi
 There are no active work orders.	目前没有正在执行的工单。	hP
 There are no named objects here.	这里还没有被命名的物品。	hP
 There have been several already!	已经出现过好几条了！	hq
+There is an unintelligible mess.	这里的踪迹杂乱无章，无法辨认。	hP
 They reported a seizure of goods	他们报告说货物被扣押了	h
 This chanter is a waste of time.	看这位吟唱者表演，简直浪费时间。	hP
 This dancer doesn't belong here.	这位舞者不该出现在这里。	hP
@@ -71941,6 +71952,7 @@ The {s} is hot enough already.	{s1}已经够热了。	hPt
 The {s} is torn from your {t}.	{s1}被从你的{t1}中扯了出来。	hPt
 There have been a few already!	已经出现过几条了！	hq
 There is a foul reek about it.	它周围弥漫着恶臭。	h
+There is a imprint in the {s}.	{s1}中有一个压痕。	hPt
 There is nothing to hold here.	这里没有可以抓住的东西。	hP
 This artwork appears on a {i}.	这件艺术品位于{i1}上。	hHt
 This chanter! Amazing ability.	这位吟唱者的本事真让人惊叹！	hP
@@ -74371,6 +74383,9 @@ The world has passed into {s}	世界已进入{s1}	ht
 There are not enough dancers.	舞者人数不足。	hP
 There is a thin mist outside.	外面有一层薄雾。	hP
 There is a thin mist outside.	外面有一层薄雾。	hj
+There is a {s}'s faint print.	这里有一处{s1}印迹，痕迹隐约可见。	hPt
+There is a {s}'s light print.	这里有一处{s1}印迹，痕迹较淡。	hPt
+There is a {s}'s thick print.	这里有一处{s1}印迹，痕迹浓重。	hPt
 These lyrics are too austere.	这些歌词太冷峻了。	hP
 This chanter could be better.	这位吟唱者还有进步的余地。	hP
 This creature is a mercenary.	此生物担任佣兵。	hj
@@ -78925,6 +78940,7 @@ There has been one already!	已经出现过一条了！	hq
 There is a faint {s} print.	这里有一处{s1}印迹，痕迹隐约可见。	hPt
 There is a light {s} print.	这里有一处{s1}印迹，痕迹较淡。	hPt
 There is a thick {s} print.	这里有一处{s1}印迹，痕迹浓重。	hPt
+There is a {s}'s {s} print.	这里有一处{s1}{s2}印迹。	hPt
 There is thick fog outside.	外面有浓雾。	hP
 There is thick fog outside.	外面有浓雾。	hj
 There were {c} competitors.	共有{c1}名参赛者。	ht
@@ -83235,6 +83251,7 @@ The signs lead southeast.	踪迹通向东南方。	hP
 The signs lead southwest.	踪迹通向西南方。	hP
 The task is accomplished.	任务已经完成。	hP
 The thread is {v} by {n}.	纺线由{n1}染成{v1}。	hHt
+The vegetation is broken.	这里的植被被折断了。	hP
 The {d}nd {e} during {e}.	在{e2}期间，第{d1}次{e1}。	htEi
 The {d}nd {e} within {p}.	在{p1}，第{d1}次{e1}。	htEi
 The {d}rd {e} during {e}.	在{e2}期间，第{d1}次{e1}。	htEi
@@ -87174,7 +87191,12 @@ The party and followers	队伍与追随者	hq
 The party and followers	队伍与追随者	w
 The thread is {v}, {s}.	纺线呈{v1}，{s1}。	hHt
 The upward face is {s}.	朝上的一面是{s1}。	hHt
+The vegetation is bent.	这里的植被被压弯了。	hP
 The {s} of {e} are {s}.	{e1}（{s1}）：{s2}。	hPt
+There is a faint print.	这里有一处印迹，痕迹隐约可见。	hP
+There is a light print.	这里有一处印迹，痕迹较淡。	hP
+There is a thick print.	这里有一处印迹，痕迹浓重。	hP
+There is a {s}'s print.	这里有一处{s1}印迹。	hPt
 This dancer is alright!	这位舞者还不错！	hP
 This dancer is alright.	这位舞者还不错。	hP
 This dancer is awesome!	这位舞者太棒了！	hP
@@ -103665,6 +103687,7 @@ The Student's {b}	学徒的{b}	hbti
 The chain is {s}.	链条由{s1}制成。	hHt
 The forces of {p}	{p1}的部队	htu
 The symbol of {s}	{s}的徽记	wtx
+There is a print.	这里有一处印迹。	hP
 These ornamental 	这些装饰性物品会提升其所在房	w
 They are outlaws.	他们是不法之徒。	hP
 This has promise.	这很有潜力。	hP

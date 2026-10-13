@@ -1,0 +1,9 @@
+role	selector	dispatch_va	table_va	entry	target_va
+track-direction	0	0x1c3d7d6	0x21dcdfc	0	0x1c3dcab
+track-direction	4	0x1c3d7d6	0x21dcdfc	4	0x1c3dcd6
+track-direction	8	0x1c3d7d6	0x21dcdfc	8	0x1c3dc80
+track-direction	12	0x1c3d7d6	0x21dcdfc	12	0x1c3dd51
+track-direction	16	0x1c3d7d6	0x21dcdfc	16	0x1c3dd01
+track-direction	20	0x1c3d7d6	0x21dcdfc	20	0x1c3dc45
+track-direction	24	0x1c3d7d6	0x21dcdfc	24	0x1c3dc1a
+track-direction	28	0x1c3d7d6	0x21dcdfc	28	0x1c3da91

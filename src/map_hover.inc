@@ -709,8 +709,14 @@ std::optional<std::string> Overlay::translate_map_track_noun(std::string_view so
     const auto marked_part = [&](std::string_view text) -> std::optional<std::string> {
         // A liquid print's first field is a deposited substance. Resolve
         // that boundary before equipment qualifiers can consume its name.
-        if (!liquid_print)
+        if (!liquid_print) {
             if (auto name = sided_part(text)) return name;
+            // ELF 0x1c3d644..0x1c3d7d9 omits possessive, depth and
+            // anatomy when the recorded part has no usable name. The
+            // surviving noun is the complete species/caste, not equipment.
+            if (auto name = scoped(text, "::creatures::name::singular")) return name;
+            if (auto name = scoped(text, "::creatures::caste::singular")) return name;
+        }
         // Native 0x407b33..0x407e92 and 0x408254..0x40839a prepend
         // a complete liquid material to an item or anatomical part. Try
         // semantic word boundaries, never translate those words separately.

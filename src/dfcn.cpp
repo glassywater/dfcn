@@ -11547,8 +11547,8 @@ std::optional<std::string> Overlay::translate_ui_catalog_capture(
     // complete nouns. The species owner precedes depth/strength in the
     // native body-part branch, so it has its own authored capture.
     if (rule.ui_message && rule.source.starts_with("There is a ")) {
-        const bool liquid_print = rule.source.ends_with("{s} print.");
-        const bool imprint = rule.source.ends_with("{s} imprint in the {s}.");
+        const bool liquid_print = rule.source.ends_with(" print.");
+        const bool imprint = rule.source.ends_with(" imprint in the {s}.");
         if (liquid_print || imprint) {
             const bool owned = rule.source.starts_with("There is a {s}'s ");
             if (owned && index == 0) {
@@ -11557,7 +11557,16 @@ std::optional<std::string> Overlay::translate_ui_catalog_capture(
                 return RULESETS.translate_with_origins(native_text_to_utf8(source) + "'s",
                     "::map_hover::track_owner", origins);
             }
-            if (index == static_cast<size_t>(owned))
+            // The surface is emitted by the material formatter, including
+            // its liquid/solid state and creature or plant qualifiers.
+            // Empty item/body names have separate complete templates; their
+            // only remaining capture can be this surface rather than a part.
+            if (imprint && index + 1 == rule.template_kinds.size())
+                return translate_material_name(source);
+            const bool named_part = liquid_print
+                ? rule.source.ends_with("{s} print.")
+                : rule.source.ends_with("{s} imprint in the {s}.");
+            if (named_part && index == static_cast<size_t>(owned))
                 return translate_map_track_noun(source, liquid_print);
         }
     }
