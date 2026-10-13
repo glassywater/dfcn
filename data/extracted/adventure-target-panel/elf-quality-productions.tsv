@@ -1,0 +1,40 @@
+stage	field	condition	entry	draw_call	source	target
+3	difficulty	chance-(flags&0x8000?1:0)<=-3	0x1189a75	0x1189ac8	Impossible strike	无法命中的攻击
+3	difficulty	chance-(flags&0x8000?1:0)==-2	0x118a92c	0x118a97b	Difficult strike	难以命中的攻击
+3	difficulty	chance-(flags&0x8000?1:0)==-1	0x118a8da	0x118a922	Tricky strike	不易命中的攻击
+3	difficulty	chance-(flags&0x8000?1:0)==0	0x1185c99	0x1185ce1	Normal strike	普通攻击
+3	difficulty	chance-(flags&0x8000?1:0)==1	0x118ab26	0x118ab71	Easy strike	容易命中的攻击
+3	difficulty	chance-(flags&0x8000?1:0)==2	0x1189ae9	0x1189b31	Easier strike	更易命中的攻击
+3	difficulty	chance-(flags&0x8000?1:0)>=3	0x1189b41	0x1189b89	Simple strike	轻易命中的攻击
+4	difficulty	chance-(flags&0x8000?1:0)<=-3	0x1189bc3	0x1189c09	Impossible	无法命中
+4	difficulty	chance-(flags&0x8000?1:0)==-2	0x118b6e8	0x118b729	Difficult	难以命中
+4	difficulty	chance-(flags&0x8000?1:0)==-1	0x118b652	0x118b692	Tricky	不易命中
+4	difficulty	chance-(flags&0x8000?1:0)==0&&speed_class==3	0x11874e7	0x1187524	Normal	普通
+4	difficulty	chance-(flags&0x8000?1:0)==1	0x118b5ef	0x118b625	Easy	容易命中
+4	difficulty	chance-(flags&0x8000?1:0)==2	0x1189c42	0x1189c82	Easier	更易命中
+4	difficulty	chance-(flags&0x8000?1:0)>=3	0x118a140	0x118a180	Simple	轻易命中
+4	difficulty	chance-(flags&0x8000?1:0)==0&&speed_class!=3	0x118f4fe			
+4	speed	speed_class>=6	0x118a0f1	0x118a130	VVSlow	极慢
+4	speed	speed_class==5	0x118b7c4	0x118b803	V Slow	很慢
+4	speed	speed_class==4	0x118b80d	0x118b841	Slow	慢速
+4	speed	speed_class==3	0x118a985			
+4	speed	speed_class==2	0x1187579	0x11875ad	Fast	快速
+4	speed	speed_class<=1	0x118a992	0x118a9d1	V Fast	很快
+4	strike_suffix	adjusted_chance==0||speed_class==3	0x11897b4	0x11897ed	 strike	攻击
+4	strike_suffix	adjusted_chance!=0&&speed_class!=3	0x11875ec			
+3	separator	always	0x1185cfc	0x1185d33	, 	，
+4	separator	always	0x11875ec	0x1187618	, 	，
+3	contact	contact<=-3	0x118a01e	0x118a068	can only graze	只能擦伤
+3	contact	contact==-2	0x118ab7b	0x118abd4	can't land squarely	无法正面击中
+3	contact	contact==-1	0x118abf8	0x118ac51	can't quite connect	难以有效击中
+3	contact	contact==0	0x1189fba	0x1189ffa	fairly solid	较为扎实
+3	contact	contact==1	0x118ac75	0x118acb1	square	正面击中
+3	contact	contact==2	0x118b750	0x118b797	very square	准确击中
+3	contact	contact>=3	0x1189f54	0x1189f96	direct hit	直接命中
+4	contact	contact<=-3	0x118a306	0x118a34e	can only graze	只能擦伤
+4	contact	contact==-2	0x118b9f6	0x118ba4f	can't land squarely	无法正面击中
+4	contact	contact==-1	0x118b979	0x118b9d2	can't quite connect	难以有效击中
+4	contact	contact==0	0x118a372	0x118a3b1	fairly solid	较为扎实
+4	contact	contact==1	0x118ba73	0x118baaf	square	正面击中
+4	contact	contact==2	0x118bb52	0x118bb99	very square	准确击中
+4	contact	contact>=3	0x118a475	0x118a4b8	direct hit	直接命中
