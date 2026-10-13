@@ -1,0 +1,48 @@
+family	singular	plural	current_singular_chinese	current_plural_chinese	native_source	singular_translation_source	plural_translation_source
+generated-lord	lord	lords	领主	领主	variable-offices:0x910d48	data/runtime/rulesets/zh-Hans/positions/index.toml:13	data/runtime/rulesets/zh-Hans/positions/index.toml:23
+generated-lord	lady	ladies	女领主	女领主	variable-offices:0x910d8d	data/runtime/rulesets/zh-Hans/positions/index.toml:14	data/runtime/rulesets/zh-Hans/positions/index.toml:24
+generated-lord	lord consort	lords consort	女领主之夫	女领主之夫	variable-offices:0x910dca	data/runtime/rulesets/zh-Hans/positions/index.toml:15	data/runtime/rulesets/zh-Hans/positions/index.toml:25
+generated-lord	lady consort	ladies consort	领主夫人	领主夫人	variable-offices:0x910dfd	data/runtime/rulesets/zh-Hans/positions/index.toml:16	data/runtime/rulesets/zh-Hans/positions/index.toml:26
+generated-lord	hearthperson	hearthpeople	亲卫	亲卫	variable-offices:0x910fde; barony:0x959c1c; barony:0x95a112	data/runtime/translations.tsv:128535	data/runtime/translations.tsv:128534
+military-and-group-leader	constable	constables	统领	统领	variable-offices:0x90c7c7	data/runtime/translations.tsv:138337	data/runtime/translations.tsv:135176
+military-and-group-leader	war leader	war leaders	战争领袖	战争领袖	variable-offices:0x90d49d	data/runtime/translations.tsv:137833	data/runtime/translations.tsv:134605
+military-and-group-leader	general	generals	将军	将军	variable-offices:0x912994; mercenary-and-martial-ranks:0x96033d	data/runtime/rulesets/zh-Hans/positions/mountain.toml:13	data/runtime/rulesets/zh-Hans/positions/mountain.toml:54
+military-and-group-leader	marshal	marshals	元帅	元帅	variable-offices:0x9129fc	data/runtime/translations.tsv:141717	data/runtime/translations.tsv:140821
+military-and-group-leader	field marshal	field marshals	陆军元帅	陆军元帅	variable-offices:0x9129d4	data/runtime/translations.tsv:123844	data/runtime/translations.tsv:119080
+military-and-group-leader	chieftain	chieftains	酋长	酋长	bandit-leader:0x95d931; bandit-leader-alternative:0x96da3d; bandit-leader-alternative:0x96e696	data/runtime/translations.tsv:67074	data/runtime/translations.tsv:64838
+military-and-group-leader	chieftess	chieftesses	女酋长	女酋长	bandit-leader:0x95d9fc; bandit-leader:0x95e1ae; bandit-leader:0x95e62e; bandit-leader-alternative:0x96dae7; bandit-leader-alternative:0x96e216; bandit-leader-alternative:0x96e6c1; bandit-leader-alternative:0x96e766	data/runtime/translations.tsv:138317	data/runtime/translations.tsv:131336
+military-and-group-leader	warlord	warlords	军阀	军阀	bandit-leader:0x95de56; mercenary-and-martial-ranks:0x960381; bandit-leader-alternative:0x96df26	data/runtime/translations.tsv:71790	data/runtime/translations.tsv:69261
+military-and-group-leader	ringleader	ringleaders	首领	首领	bandit-leader:0x95deef; bandit-leader-alternative:0x96e00c; bandit-leader-alternative:0x96e6e2	data/runtime/translations.tsv:64840	data/runtime/translations.tsv:62628
+military-and-group-leader	commander	commanders	指挥官	指挥官	bandit-leader:0x95df9b; bandit-leader:0x95e64f; mercenary-and-martial-ranks:0x9604dc; mercenary-and-martial-ranks:0x963976; bandit-leader-alternative:0x96e08d	data/runtime/translations.tsv:67075	data/runtime/translations.tsv:64839
+military-and-group-leader	master	masters	首领	首领	bandit-leader:0x95e01b; mercenary-and-martial-ranks:0x96047c; bandit-leader-alternative:0x96e0b2; company-offices:0x11050be	data/runtime/translations.tsv:74185	data/runtime/translations.tsv:71789
+military-and-group-leader	captain	captains	队长	队长	bandit-leader:0x95e040; mercenary-and-martial-ranks:0x96041d; bandit-leader-alternative:0x96e0f3; bandit-leader-alternative:0x96e635	data/runtime/translations.tsv:145581	data/runtime/translations.tsv:145582
+military-and-group-leader	overlord	overlords	霸主	霸主	bandit-leader:0x95e065; mercenary-and-martial-ranks:0x9603c1; bandit-leader-alternative:0x96e330	data/runtime/translations.tsv:69260	data/runtime/translations.tsv:67076
+military-and-group-leader	chief	chiefs	酋长	酋长	bandit-leader:0x95e105; bandit-leader-alternative:0x96e1d5	data/runtime/translations.tsv:76523	data/runtime/translations.tsv:74184
+military-and-group-leader	boss	bosses	首领	首领	bandit-leader:0x95e262; bandit-leader-alternative:0x96e371; bandit-leader-alternative:0x96e7a6	data/runtime/translations.tsv:78742	data/runtime/translations.tsv:74183
+military-and-group-leader	leader	leaders	领导者	领导者	bandit-leader:0x95e3d8; bandit-leader:0x95e6ee; mercenary-and-martial-ranks:0x9612d7; bandit-leader-alternative:0x96e4b8; bandit-leader-alternative:0x96e675	data/runtime/translations.tsv:145614	data/runtime/translations.tsv:145615
+military-and-group-leader	soldier	soldiers	士兵	士兵	bandit-leader:0x95dc0d; bandit-leader:0x95e36d; bandit-leader-alternative:0x96dcdd; bandit-leader-alternative:0x96e44d	data/runtime/translations.tsv:145616	data/runtime/translations.tsv:145617
+military-and-group-leader	sergeant	sergeants	中士	中士	mercenary-and-martial-ranks:0x960c1f	data/runtime/translations.tsv:145601	data/runtime/translations.tsv:145602
+judiciary	law-giver	law-givers	立法者	立法者	variable-offices:0x91030c	data/runtime/translations.tsv:139583	data/runtime/translations.tsv:137335
+judiciary	judge	judges	法官	法官	variable-offices:0x911c75	data/runtime/translations.tsv:144086	data/runtime/translations.tsv:142780
+judiciary	justice	justices	大法官	大法官	variable-offices:0x911ca0	data/runtime/translations.tsv:141688	data/runtime/translations.tsv:140776
+judiciary	magistrate	magistrates	地方法官	地方法官	variable-offices:0x90f586	data/runtime/translations.tsv:137381	data/runtime/translations.tsv:133804
+guild	dean	deans	行会长	行会长	guild-offices:0x989aa9; guild-offices:0x98b91f	data/runtime/translations.tsv:145585	data/runtime/translations.tsv:145586
+guild	doyen	doyens	行会元老	行会元老	guild-offices:0x98bb44	data/runtime/translations.tsv:145587	data/runtime/translations.tsv:145588
+guild	doyenne	doyennes	女行会元老	女行会元老	guild-offices:0x98bb6c	data/runtime/translations.tsv:145589	data/runtime/translations.tsv:145590
+guild	alderperson	alderperson	行会理事	行会理事	guild-offices:0x98a1f6; guild-offices:0x98bc60	data/runtime/translations.tsv:62627	data/runtime/translations.tsv:62627
+guild	steward	stewards	行会管事	行会管事	guild-offices:0x98b289; guild-offices:0x98b76e	data/runtime/translations.tsv:145591	data/runtime/translations.tsv:145592
+guild	clerk	clerks	文员	文员	guild-offices:0x98b1de	data/runtime/translations.tsv:143140	data/runtime/translations.tsv:141993
+guild	bookkeeper	bookkeepers	簿记员	簿记员	guild-offices:0x98b5b3	data/runtime/rulesets/zh-Hans/positions/mountain.toml:25	data/runtime/rulesets/zh-Hans/positions/mountain.toml:66
+guild	recordkeeper	recordkeepers	档案员	档案员	guild-offices:0x98b58f	data/runtime/translations.tsv:145593	data/runtime/translations.tsv:145594
+guild	treasurer	treasurers	司库	司库	variable-offices:0x911882; mercenary-treasurer:0x9344a2; mercenary-treasurer:0x9376ad; guild-offices:0x98b610	data/runtime/translations.tsv:139894	data/runtime/translations.tsv:137787
+outcast-and-company	representative	representatives	代表	代表	outcast-offices:0x10d43cd	data/runtime/translations.tsv:56266	data/runtime/translations.tsv:54343
+outcast-and-company	lieutenant	lieutenants	中尉	中尉	outcast-offices:0x10d3e2f	data/runtime/rulesets/zh-Hans/positions/mountain.toml:14	data/runtime/rulesets/zh-Hans/positions/mountain.toml:55
+outcast-and-company	factor	factors	贸易代理	贸易代理	company-offices:0x1102fb9	data/runtime/translations.tsv:145595	data/runtime/translations.tsv:145596
+outcast-and-company	master	masters	首领	首领	bandit-leader:0x95e01b; mercenary-and-martial-ranks:0x96047c; bandit-leader-alternative:0x96e0b2; company-offices:0x11050be	data/runtime/translations.tsv:74185	data/runtime/translations.tsv:71789
+outcast-and-company	head	heads	首领	首领	company-offices:0x1106663	data/runtime/translations.tsv:145583	data/runtime/translations.tsv:145584
+outcast-and-company	agent	agents	代理人	代理人	company-offices:0x1106ea9	data/runtime/translations.tsv:145597	data/runtime/translations.tsv:145598
+outcast-and-company	administrator	administrators	管理员	管理员	company-offices:0x11070d1	data/runtime/rulesets/zh-Hans/positions/mountain.toml:43	data/runtime/rulesets/zh-Hans/positions/mountain.toml:84
+outcast-and-company	governor	governors	总督	总督	company-offices:0x11070f1	data/runtime/translations.tsv:145599	data/runtime/translations.tsv:145600
+religious-fixed	priest	priests	祭司	祭司		data/runtime/translations.tsv:145618	data/runtime/translations.tsv:145619
+religious-fixed	high priest	high priests	高阶祭司	高阶祭司	site-and-religious-offices:0x986212; site-and-religious-offices:0x986745	data/runtime/translations.tsv:132812	data/runtime/translations.tsv:128868
+religious-fixed	most high priest	most high priests	至高祭司	至高祭司	site-and-religious-offices:0x98268b	data/runtime/translations.tsv:110230	data/runtime/translations.tsv:105705

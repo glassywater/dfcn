@@ -1,0 +1,14 @@
+english	current_chinese	translation_source	native_source
+Tavern Keeper	酒保	data/runtime/translations.tsv:122261	location-staff-formatter:0xb688d9
+Performer	表演者	data/runtime/translations.tsv:138125	location-staff-formatter:0xb68dc5; location-detail-staff-snippet:0x1403a9f
+Scholar	学者	data/runtime/translations.tsv:141336	location-staff-formatter:0xb68d61; location-detail-staff-snippet:0x1403a7c
+Scribe	抄写员	data/runtime/translations.tsv:142352	location-staff-formatter:0xb68825; location-detail-staff-snippet:0x140392c
+Mercenary	佣兵	data/runtime/translations.tsv:138095	location-staff-formatter:0xb68ded; location-detail-staff-snippet:0x1403ac2
+Monster Slayer	怪物猎手	data/runtime/translations.tsv:117241	location-staff-formatter:0xb68e3d
+Doctor	医生	data/runtime/translations.tsv:142020	location-staff-formatter:0xb6930a; location-detail-staff-snippet:0x1403909
+Diagnostician	诊断医师	data/runtime/translations.tsv:122023	location-staff-formatter:0xb692f6; location-detail-staff-snippet:0x14038e6
+Surgeon	外科医师	data/runtime/translations.tsv:141389	location-staff-formatter:0xb692ba; location-detail-staff-snippet:0x14038c3
+Bone Doctor	骨科医师	data/runtime/translations.tsv:130872	location-staff-formatter:0xb692e2
+Suturer	缝合师	data/runtime/translations.tsv:141392	location-staff-formatter:0xb692ce
+Priest	祭司	data/runtime/translations.tsv:142306	native religious office construction; details in native-producers.asm
+High Priest	高阶祭司	data/runtime/translations.tsv:130944	native religious office construction; details in native-producers.asm

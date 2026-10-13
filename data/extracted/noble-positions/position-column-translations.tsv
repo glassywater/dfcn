@@ -1,0 +1,31 @@
+entity	position_id	raw_source	native_capitalized_caption	office_namespace_chinese	position_column_lookup_chinese	translation_source	evidence_scope
+MOUNTAIN	MONARCH	monarch	Monarch	君主	君主	data/runtime/translations.tsv:141727	base catalog static lookup order; no in-game observation
+MOUNTAIN	GENERAL	general	General	将军	将军	data/runtime/translations.tsv:85219	base catalog static lookup order; no in-game observation
+MOUNTAIN	LIEUTENANT	lieutenant	Lieutenant	中尉	中尉	data/runtime/translations.tsv:137351	base catalog static lookup order; no in-game observation
+MOUNTAIN	CAPTAIN	captain	Captain	队长	队长	data/runtime/translations.tsv:145622	base catalog static lookup order; no in-game observation
+MOUNTAIN	MILITIA_COMMANDER	militia commander	Militia commander	军事指挥官	军事指挥官	data/runtime/translations.tsv:104924	base catalog static lookup order; no in-game observation
+MOUNTAIN	MILITIA_CAPTAIN	militia captain	Militia captain	军事队长	军事队长	data/runtime/translations.tsv:114746	base catalog static lookup order; no in-game observation
+MOUNTAIN	SHERIFF	sheriff	Sheriff	治安官	治安官	data/runtime/translations.tsv:141815	base catalog static lookup order; no in-game observation
+MOUNTAIN	CAPTAIN_OF_THE_GUARD	captain of the guard	Captain of the guard	卫队统领	卫队统领	data/runtime/translations.tsv:94015	base catalog static lookup order; no in-game observation
+MOUNTAIN	EXPEDITION_LEADER	expedition leader	Expedition leader	远征领袖	远征领袖	data/runtime/translations.tsv:104523	base catalog static lookup order; no in-game observation
+MOUNTAIN	MAYOR	mayor	Mayor	市长	市长	data/runtime/translations.tsv:144125	base catalog static lookup order; no in-game observation
+MOUNTAIN	MANAGER	manager	Manager	经理人	经理人	data/runtime/translations.tsv:141714	base catalog static lookup order; no in-game observation
+MOUNTAIN	CHIEF_MEDICAL_DWARF	chief medical dwarf	Chief medical dwarf	首席矮人医师	首席矮人医师	data/runtime/translations.tsv:96918	base catalog static lookup order; no in-game observation
+MOUNTAIN	BROKER	broker	Broker	交易员	交易员	data/runtime/translations.tsv:142631	base catalog static lookup order; no in-game observation
+MOUNTAIN	BOOKKEEPER	bookkeeper	Bookkeeper	簿记员	簿记员	data/runtime/translations.tsv:135127	base catalog static lookup order; no in-game observation
+MOUNTAIN	OUTPOST_LIAISON	outpost liaison	Outpost liaison	前哨联络员	前哨联络员	data/runtime/translations.tsv:116312	base catalog static lookup order; no in-game observation
+MOUNTAIN	DIPLOMAT	diplomat	Diplomat	外交官	外交官	data/runtime/translations.tsv:140052	base catalog static lookup order; no in-game observation
+MOUNTAIN	DUKE	a duchy	A duchy	公爵	公爵	data/runtime/rulesets/zh-Hans/fortress/status.toml	base catalog static lookup order; no in-game observation
+MOUNTAIN	COUNT	a county	A county	伯爵	伯爵	data/runtime/rulesets/zh-Hans/fortress/status.toml	base catalog static lookup order; no in-game observation
+MOUNTAIN	BARON	a barony	A barony	男爵	男爵	data/runtime/rulesets/zh-Hans/fortress/status.toml	base catalog static lookup order; no in-game observation
+MOUNTAIN	CHAMPION	champion	Champion	冠军	冠军	data/runtime/translations.tsv:140395	base catalog static lookup order; no in-game observation
+MOUNTAIN	HAMMERER	hammerer	Hammerer	锤刑官	锤刑官	data/runtime/translations.tsv:140520	base catalog static lookup order; no in-game observation
+MOUNTAIN	DUNGEON_MASTER	dungeon master	Dungeon master	地牢主管	地牢主管	data/runtime/translations.tsv:118392	base catalog static lookup order; no in-game observation
+MOUNTAIN	FORCED_ADMINISTRATOR	administrator	Administrator	管理员	管理员	data/runtime/translations.tsv:121948	base catalog static lookup order; no in-game observation
+MOUNTAIN	MESSENGER	messenger	Messenger	信使	信使	data/runtime/translations.tsv:138097	base catalog static lookup order; no in-game observation
+FOREST	DRUID	druid	Druid	德鲁伊	德鲁伊	data/runtime/translations.tsv:144014	base catalog static lookup order; no in-game observation
+FOREST	ACOLYTE	acolyte	Acolyte	侍僧	侍僧	data/runtime/translations.tsv:141471	base catalog static lookup order; no in-game observation
+FOREST	GENERAL	princess	Princess	公主	公主	data/runtime/translations.tsv:140894	base catalog static lookup order; no in-game observation
+FOREST	LEADER	queen	Queen	女王	女王	data/runtime/translations.tsv:144175	base catalog static lookup order; no in-game observation
+FOREST	DIPLOMAT	diplomat	Diplomat	外交官	外交官	data/runtime/translations.tsv:140052	base catalog static lookup order; no in-game observation
+FOREST	RANGER_CAPTAIN	ranger captain	Ranger captain	游侠队长	游侠队长	data/runtime/translations.tsv:121134	base catalog static lookup order; no in-game observation

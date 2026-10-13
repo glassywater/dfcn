@@ -145576,3 +145576,51 @@ Announcement combat dialogue-judgement-person []: an unknown creature	一个身�
 Announcement combat dialogue-judgement [dialogue-judgement-person]: {s} brought back an unknown artifact.	{s1}曾带回一件不知名的造物。	l
 Announcement combat dialogue-query-person []: a secret identity	秘密身份	l
 Announcement combat adventure-announcement [dialogue-judgement]: {s}	{s1}	l
+
+# Native noble/position role fixes, authored in legends-events.tsv and local-overrides.tsv.
+Native history office: captain	队长	h
+Native history office: captains	队长	h
+Native history office: head	首领	h
+Native history office: heads	首领	h
+Native history office: dean	行会长	h
+Native history office: deans	行会长	h
+Native history office: doyen	行会元老	h
+Native history office: doyens	行会元老	h
+Native history office: doyenne	女行会元老	h
+Native history office: doyennes	女行会元老	h
+Native history office: steward	行会管事	h
+Native history office: stewards	行会管事	h
+Native history office: recordkeeper	档案员	h
+Native history office: recordkeepers	档案员	h
+Native history office: factor	贸易代理	h
+Native history office: factors	贸易代理	h
+Native history office: agent	代理人	h
+Native history office: agents	代理人	h
+Native history office: governor	总督	h
+Native history office: governors	总督	h
+Native history office: sergeant	中士	h
+Native history office: sergeants	中士	h
+Native history office: initiate	入门者	h
+Native history office: initiates	入门者	h
+Native history office: novice	初学者	h
+Native history office: novices	初学者	h
+Native history office: adept	精熟者	h
+Native history office: adepts	精熟者	h
+Native history office: grandmaster	宗师	h
+Native history office: grandmasters	宗师	h
+Native history office: exalted	尊者	h
+Native history office: perfect	至臻者	h
+Native history office: ultimate	至高者	h
+Native history office: leader	领导者	h
+Native history office: leaders	领导者	h
+Native history office: soldier	士兵	h
+Native history office: soldiers	士兵	h
+Native history office: priest	祭司	h
+Native history office: priests	祭司	h
+Native history office: militia-dwarf	民兵	h
+Native history office: militia-dwarves	民兵	h
+Unit profession: captain	队长	li
+Unit profession: head	首领	li
+Unit profession: master	首领	li
+Unit profession: novice	初学者	li
+Unit profession: adept	精熟者	li

@@ -4313,3 +4313,48 @@ the election of {a} to the position of of {p}	{a}当选{p}的职位	title
 the selection of {a} to the position of of {p}	{a}被选任{p}的职位	title
 the claim of {a} to the position of of {p}	{a}宣称担任{p}的职位	title
 the status of {a} as a of {p}	{a}在{p}的任职身份	title
+
+# Native Linux entity-position titles: guild, company and martial offices.
+# Complete office fields share singular/plural meanings; these scoped terms
+# do not change general UI words, body-part labels or skill-rating captions.
+Native history office: captain	队长	term
+Native history office: captains	队长	term
+Native history office: head	首领	term
+Native history office: heads	首领	term
+Native history office: dean	行会长	term
+Native history office: deans	行会长	term
+Native history office: doyen	行会元老	term
+Native history office: doyens	行会元老	term
+Native history office: doyenne	女行会元老	term
+Native history office: doyennes	女行会元老	term
+Native history office: steward	行会管事	term
+Native history office: stewards	行会管事	term
+Native history office: recordkeeper	档案员	term
+Native history office: recordkeepers	档案员	term
+Native history office: factor	贸易代理	term
+Native history office: factors	贸易代理	term
+Native history office: agent	代理人	term
+Native history office: agents	代理人	term
+Native history office: governor	总督	term
+Native history office: governors	总督	term
+Native history office: sergeant	中士	term
+Native history office: sergeants	中士	term
+Native history office: initiate	入门者	term
+Native history office: initiates	入门者	term
+Native history office: novice	初学者	term
+Native history office: novices	初学者	term
+Native history office: adept	精熟者	term
+Native history office: adepts	精熟者	term
+Native history office: grandmaster	宗师	term
+Native history office: grandmasters	宗师	term
+Native history office: exalted	尊者	term
+Native history office: perfect	至臻者	term
+Native history office: ultimate	至高者	term
+Native history office: leader	领导者	term
+Native history office: leaders	领导者	term
+Native history office: soldier	士兵	term
+Native history office: soldiers	士兵	term
+Native history office: priest	祭司	term
+Native history office: priests	祭司	term
+Native history office: militia-dwarf	民兵	term
+Native history office: militia-dwarves	民兵	term
