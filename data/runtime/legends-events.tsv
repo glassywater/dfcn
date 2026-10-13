@@ -598,6 +598,15 @@ The work has {c} chapters.	这部作品共{c}章。	clause
 The writing {s} and it {s}.	文风{s1}，并且{s2}。	clause
 The writing {s} yet it {s}.	文风{s1}，但又{s2}。	clause
 The writing {s}.	文风{s}。	clause
+# The native style selector's default is a no-op for an unknown style or
+# strength. Its caller still appends the introduction, connector and stop.
+The writing .	文风未注明。	clause
+The writing and it .	两种文风均未注明。	clause
+The writing yet it .	两种文风均未注明。	clause
+The writing and it {s}.	一种文风未注明，另一种{s}。	clause
+The writing yet it {s}.	一种文风未注明，但另一种{s}。	clause
+The writing {s} and it .	文风{s}，另有一种未注明的文风。	clause
+The writing {s} yet it .	文风{s}，但另一种文风未注明。	clause
 has its moments of cleverness	偶有巧思	description
 tumbles out almost as a rant at times	时而倾泻而出，几近咆哮	description
 takes frequent interesting tangents	常常引出有趣的旁枝话题	description

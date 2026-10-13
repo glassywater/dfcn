@@ -90,6 +90,7 @@ static bool form_description_fixed_start(std::string_view text, std::string_view
         for (auto prefix : starts) if (text.starts_with(prefix)) return true;
     } else if (kind == "poetry") {
         static constexpr auto starts = std::to_array<std::string_view>({
+            "to beseech",
             "It is always written ", "Use of ", "A form of parallelism ",
             "Forms of parallelism ", "Linguistic skill is required ",
             "The poem ", "The rhyme", "The rhyme scheme ", "Each line ",
@@ -304,6 +305,29 @@ std::optional<std::string> Overlay::translate_poetic_form_description_uncached(
 std::optional<std::string> Overlay::translate_poetic_form_description_unit(
         std::string_view raw_description, bool native_chapter) const {
     std::string source = normalize_form_description(raw_description).text;
+    constexpr std::string_view detached_beseech = "to beseech";
+    // e78ece/e7a8ec append purpose 22 to the complete document rather than
+    // the section's local string. The local string is appended afterward,
+    // optionally after [B], leaving one or more unseparated literals before
+    // the native part/line clauses. Preserve their order as separate prose.
+    for (size_t at = source.find(detached_beseech); at != std::string::npos;
+         at = source.find(detached_beseech, at)) {
+        const auto prefix = trim_view(std::string_view(source).substr(0, at));
+        if (!prefix.empty() && !prefix.ends_with('.')) {
+            at += detached_beseech.size();
+            continue;
+        }
+        size_t end = at;
+        while (std::string_view(source).substr(end).starts_with(detached_beseech))
+            end += detached_beseech.size();
+        const auto next = trim_view(std::string_view(source).substr(end));
+        if (next.empty() || form_description_fixed_start(next, "poetry")) {
+            source.insert(end, ". ");
+            at = end + 2;
+        } else {
+            at = end;
+        }
+    }
     // A stale background list can precede the active widget in a merged
     // logical layer. Recover the real generated-title boundary from the
     // finite form identity itself instead of allowing an unrelated resident
@@ -321,7 +345,10 @@ std::optional<std::string> Overlay::translate_poetic_form_description_unit(
          }) {
         const size_t identity_at = source.find(marker);
         if (identity_at == std::string::npos) continue;
-        const size_t title_at = source.rfind("The ", identity_at);
+        // With name.has_name == false a946e0 appends nothing. After a
+        // complete work introduction this identity begins directly at "is".
+        const size_t title_at = identity_at > 0 && source[identity_at - 1] == '.'
+            ? identity_at + 1 : source.rfind("The ", identity_at);
         if (title_at != std::string::npos && title_at > 0) {
             const std::string_view prefix(source.data(), title_at);
             // A work's introduction precedes its poetic form in the same
@@ -599,9 +626,9 @@ std::optional<std::string> Overlay::translate_poetic_form_description_unit(
         if (!matched) return std::nullopt;
         std::string_view remainder = trim_view(text.substr(matched->source.size()));
         bool concerning = false;
-        if (remainder.starts_with("concerning ")) {
+        if (remainder == "concerning" || remainder.starts_with("concerning ")) {
             concerning = true;
-            remainder.remove_prefix(std::string_view("concerning ").size());
+            remainder = trim_view(remainder.substr(std::string_view("concerning").size()));
         }
         std::optional<std::string> topic;
         if (!remainder.empty()) topic = translate_topic(remainder);
@@ -622,7 +649,6 @@ std::optional<std::string> Overlay::translate_poetic_form_description_unit(
         } else if (matched->takes_object) {
             result = matched->chinese;
         } else {
-            if (!topic && concerning) return std::nullopt;
             if (!topic) {
                 result = matched->chinese;
             } else if (matched->source == "to move away from previous ideas") {
@@ -643,7 +669,28 @@ std::optional<std::string> Overlay::translate_poetic_form_description_unit(
                 result = "围绕" + *topic + std::string(matched->chinese);
             }
         }
+        if (concerning && !topic) {
+            const auto unspecified = exact_literal_translation("Art form: unspecified subject");
+            if (!unspecified) return std::nullopt;
+            result += "，" + *unspecified;
+        }
         return result;
+    };
+
+    auto translate_intent = [&](std::string_view raw)
+            -> std::optional<std::string> {
+        const auto text = trim_view(raw);
+        const auto unspecified = exact_literal_translation("Art form: unspecified purpose");
+        if (text.empty()) return unspecified;
+        if (auto action = translate_action(text)) return "旨在" + *action;
+        // e76537/e714a7 keep `intended` for empty/default purpose cases.
+        // Those cases append only the typed topic, without `to` or
+        // `concerning`; an unresolved action must never become a name.
+        if (text == "to" || text.starts_with("to ") || !unspecified)
+            return std::nullopt;
+        const auto topic = translate_topic(text);
+        if (!topic) return std::nullopt;
+        return *unspecified + "，以" + *topic + "为题";
     };
 
     auto translate_persona = [&](std::string_view raw)
@@ -1593,15 +1640,21 @@ std::optional<std::string> Overlay::translate_poetic_form_description_unit(
             return "某些诗行" + *clauses;
         }
 
-        struct Marker { std::string_view source; int kind; };
+        struct Marker {
+            std::string_view source;
+            int kind;
+            bool unspecified_mood = false;
+        };
         static constexpr auto markers = std::to_array<Marker>({
             {" is always written from the perspective of ", 15},
             {" is written from the perspective of ", 0},
             {" must make use of ", 1},
             {" must feature ", 2},
             {" has lines with ", 3},
-            {" is intended ", 4},
-            {" concerns ", 5},
+            {" is intended", 4},
+            {" concerns", 5},
+            {" and intended", 4, true},
+            {" and concerns", 5, true},
             {" includes ", 6},
             {" has ", 7},
             {" is dramatic", 8}, {" is reflective", 9},
@@ -1614,6 +1667,9 @@ std::optional<std::string> Overlay::translate_poetic_form_description_unit(
         for (const Marker &marker : markers) {
             const size_t at = sentence.find(marker.source);
             if (at == std::string_view::npos) continue;
+            const size_t end = at + marker.source.size();
+            if (!marker.source.ends_with(' ') && end < sentence.size() &&
+                sentence[end] != ' ') continue;
             if (!matched || at < marker_at ||
                 (at == marker_at && marker.source.size() > matched->source.size())) {
                 matched = &marker;
@@ -1632,6 +1688,11 @@ std::optional<std::string> Overlay::translate_poetic_form_description_unit(
         std::string_view value = trim_view(
             sentence.substr(marker_at + matched->source.size()));
         std::string result = scope->chinese;
+        if (matched->unspecified_mood) {
+            const auto mood = exact_literal_translation("Art form: unspecified mood");
+            if (!mood) return std::nullopt;
+            result += *mood + "，";
+        }
         switch (matched->kind) {
         case 15:
         case 0: {
@@ -1661,15 +1722,17 @@ std::optional<std::string> Overlay::translate_poetic_form_description_unit(
             break;
         }
         case 4: {
-            const auto action = translate_action(value);
-            if (!action) return std::nullopt;
-            result += "旨在" + *action;
+            const auto intent = translate_intent(value);
+            if (!intent) return std::nullopt;
+            result += *intent;
             break;
         }
         case 5: {
-            const auto topic = translate_topic(value);
+            const auto topic = value.empty()
+                ? exact_literal_translation("Art form: unspecified subject")
+                : translate_topic(value);
             if (!topic) return std::nullopt;
-            result += "描写" + *topic;
+            result += value.empty() ? *topic : "描写" + *topic;
             break;
         }
         case 6: {
@@ -1703,13 +1766,15 @@ std::optional<std::string> Overlay::translate_poetic_form_description_unit(
                 // template.  They carry the same meaning and must remain one
                 // atomic sentence; rejecting the latter left every detached
                 // part paragraph in English.
-                if (!strip_prefix(value, "and is intended ") &&
-                    !strip_prefix(value, "and intended ")) {
+                if (value == "and is intended" || value == "and intended") {
+                    value = {};
+                } else if (!strip_prefix(value, "and is intended ") &&
+                           !strip_prefix(value, "and intended ")) {
                     return std::nullopt;
                 }
-                const auto action = translate_action(value);
-                if (!action) return std::nullopt;
-                result += "，旨在" + *action;
+                const auto intent = translate_intent(value);
+                if (!intent) return std::nullopt;
+                result += "，" + *intent;
             }
             break;
         }
@@ -1722,27 +1787,53 @@ std::optional<std::string> Overlay::translate_poetic_form_description_unit(
     // sentence instead of mirroring the English modifier chain.
     std::string translated;
     size_t cursor = 0;
-    const bool has_opening = source.find(", originating in ") != std::string::npos &&
-        source.find(" poetic ") != std::string::npos;
+    const auto poetic_identity = [](std::string_view value) {
+        return value.find(" poetic ") != std::string_view::npos &&
+            (value.starts_with("A ") || value.starts_with("is a ") ||
+             value.find(" is a ") != std::string_view::npos);
+    };
+    const bool has_opening = poetic_identity(source);
     if (!native_chapter || has_opening) {
     static constexpr std::string_view origin_marker = ", originating in ";
+    static constexpr std::string_view performance_origin_marker =
+        " which grew out of the performances of ";
+    static constexpr std::string_view creator_marker = " originally devised by ";
     // A generated title or civilization may itself contain a period. The
     // next fixed poetic clause, outside quotes/parentheses, closes the opening.
     const auto opening_spans = form_description_sentences(source, "poetry",
-        [](std::string_view sentence) -> std::optional<std::string> {
-            return sentence.find(", originating in ") != std::string_view::npos
+        [&](std::string_view sentence) -> std::optional<std::string> {
+            return poetic_identity(sentence)
                 ? std::optional<std::string>("opening") : std::nullopt;
         }, false);
     if (opening_spans.empty()) return std::nullopt;
     const size_t opening_end = opening_spans.front().content_end;
     if (opening_end >= source.size() || source[opening_end] != '.') return std::nullopt;
     const std::string_view opening(source.data(), opening_end);
-    const size_t origin_at = opening.find(origin_marker);
-    if (origin_at == std::string_view::npos) return std::nullopt;
-    std::string_view identity = opening.substr(0, origin_at);
-    const auto origin = translate_generated_reference(
-        opening.substr(origin_at + origin_marker.size()));
-    if (!origin) return std::nullopt;
+    size_t provenance_at = opening.find(origin_marker);
+    std::string_view provenance_marker = origin_marker;
+    bool performance_origin = false, creator_origin = false;
+    if (provenance_at == std::string_view::npos) {
+        provenance_at = opening.find(performance_origin_marker);
+        provenance_marker = performance_origin_marker;
+        performance_origin = provenance_at != std::string_view::npos;
+    }
+    if (provenance_at == std::string_view::npos) {
+        provenance_at = opening.find(creator_marker);
+        provenance_marker = creator_marker;
+        creator_origin = provenance_at != std::string_view::npos;
+    }
+    std::string_view identity = opening.substr(0, provenance_at);
+    std::optional<std::string> provenance;
+    bool unspecified_provenance = false;
+    if (provenance_at != std::string_view::npos) {
+        const auto value = trim_view(opening.substr(provenance_at + provenance_marker.size()));
+        unspecified_provenance = value.empty();
+        provenance = value.empty()
+            ? exact_literal_translation(creator_origin ?
+                "Art form: unspecified creator" : "Art form: unspecified origin")
+            : translate_generated_reference(value);
+        if (!provenance) return std::nullopt;
+    }
 
     struct FormIdentity { std::string_view source; std::string_view chinese; };
     static constexpr auto form_identities = std::to_array<FormIdentity>({
@@ -1759,6 +1850,12 @@ std::optional<std::string> Overlay::translate_poetic_form_description_unit(
     std::optional<std::string> form_title;
     std::string named_identity;
     for (const FormIdentity &candidate : form_identities) {
+        const std::string unnamed = "is a " + std::string(candidate.source.substr(2));
+        if (identity.starts_with(unnamed)) {
+            named_identity = std::string(candidate.source) +
+                std::string(identity.substr(unnamed.size()));
+            identity = named_identity;
+        }
         if (!identity.starts_with(candidate.source)) continue;
         if (!form || candidate.source.size() > form->source.size()) form = &candidate;
     }
@@ -1795,23 +1892,31 @@ std::optional<std::string> Overlay::translate_poetic_form_description_unit(
         }
     }
     if (!form) return std::nullopt;
-    identity.remove_prefix(form->source.size());
+    identity = trim_view(identity.substr(form->source.size()));
     if (form_title) {
-        translated = "“" + *form_title + "”是一种" +
-                     std::string(form->chinese) + "，起源于“" + *origin + "”";
+        translated = "“" + *form_title + "”是一种" + std::string(form->chinese);
     } else {
-        translated = "这是一种" + std::string(form->chinese) +
-                     "，起源于“" + *origin + "”";
+        translated = "这是一种" + std::string(form->chinese);
     }
+    if (provenance)
+        translated += unspecified_provenance ?
+            std::string(creator_origin ? "，创作者" : "，来源") + *provenance :
+            creator_origin ? "，最初由“" + *provenance + "”创作" :
+            performance_origin ? "，从“" + *provenance + "”的表演中发展而来" :
+                "，起源于“" + *provenance + "”";
     if (!identity.empty()) {
-        if (strip_prefix(identity, " intended ")) {
-            const auto action = translate_action(identity);
-            if (!action) return std::nullopt;
-            translated += "，旨在" + *action;
-        } else if (strip_prefix(identity, " concerning ")) {
-            const auto topic = translate_topic(identity);
+        if (identity == "intended" || identity.starts_with("intended ")) {
+            const auto intent = translate_intent(identity.substr(8));
+            if (!intent) return std::nullopt;
+            translated += "，" + *intent;
+        } else if (identity == "concerning" || identity.starts_with("concerning ")) {
+            identity = trim_view(identity.substr(10));
+            const bool unspecified = identity.empty();
+            const auto topic = unspecified
+                ? exact_literal_translation("Art form: unspecified subject")
+                : translate_topic(identity);
             if (!topic) return std::nullopt;
-            translated += "，以" + *topic + "为题";
+            translated += unspecified ? "，" + *topic : "，以" + *topic + "为题";
         } else {
             return std::nullopt;
         }
@@ -1824,12 +1929,32 @@ std::optional<std::string> Overlay::translate_poetic_form_description_unit(
     auto translate_sentence = [&](std::string_view sentence) -> std::optional<std::string> {
         // A detached native chapter beginning with a pronoun has no proven
         // part/line antecedent. Full cross-chapter parsing remains first.
-        if (!chapter_has_antecedent && sentence.starts_with("It ") &&
+        if (!chapter_has_antecedent && (sentence == "It" || sentence.starts_with("It ")) &&
             !sentence.starts_with("It is always written from the perspective of ") &&
             native_chapter) return std::nullopt;
         const auto previous_scope = last_scope;
         std::optional<std::string> part;
-        if (sentence ==
+        if (sentence.starts_with(detached_beseech)) {
+            auto remainder = sentence;
+            std::string requests;
+            while (strip_prefix(remainder, detached_beseech)) {
+                if (!requests.empty()) requests += "、";
+                requests += "恳求";
+            }
+            if (remainder.empty()) part = std::move(requests);
+        }
+        // e7a5fd..e7a634 gate on the vectors, not this line's fields. A
+        // line with absent fields still emits its scope and a final period.
+        if (sentence == "It" || (sentence.starts_with("The ") &&
+                (sentence.ends_with(" line") || sentence.ends_with(" part")))) {
+            if (const auto scope = translate_scope(sentence)) {
+                const auto description = exact_literal_translation("Art form: unspecified description");
+                if (!description) return std::nullopt;
+                last_scope = *scope;
+                part = scope->chinese + *description;
+            }
+        }
+        if (!part && sentence ==
             "The rules of the form are applied by poets to produce individual poems which can be recited") {
             part = "诗人按这一诗体写诗，供人吟诵";
         } else if (sentence ==

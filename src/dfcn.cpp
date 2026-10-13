@@ -7714,6 +7714,17 @@ static bool is_character_knowledge_kind(std::string_view source) {
     return std::find(kinds.begin(), kinds.end(), folded) != kinds.end();
 }
 
+static bool written_work_content_sentence_start(std::string_view value) {
+    return value.starts_with("It asks the question, \"What if ") ||
+        value.starts_with("It concerns ") ||
+        value.starts_with("The writing conveys a moral lesson regarding ") ||
+        value.starts_with("The overall text emphasizes ") ||
+        value.starts_with("For lyrics, the composer has selected ") ||
+        value.starts_with("For musical accompaniment, the choreographer has selected ") ||
+        value.starts_with("It covers ") ||
+        (value.starts_with("The ") && value.find(" chapter covers ") != std::string_view::npos);
+}
+
 static bool is_written_work_description(std::string_view source) {
     // Performance choices introduce a work with its form, then append the
     // same subject/quality/chapter grammar used by written-item descriptions.
@@ -7734,7 +7745,9 @@ static bool is_written_work_description(std::string_view source) {
             ? author : source.find('.', untitled.size());
         if (end == std::string_view::npos) return false;
         const auto kind = source.substr(untitled.size(), end - untitled.size());
-        return is_character_knowledge_kind(kind) &&
+        // The native 26-way genre switch has an empty-label default.
+        // Its title/author and the complete work body are still emitted.
+        return (kind.empty() || is_character_knowledge_kind(kind)) &&
             !is_character_knowledge_subject(kind);
     }
     // The native author lookup is optional. A missing figure still produces
@@ -7747,7 +7760,7 @@ static bool is_written_work_description(std::string_view source) {
                 identity + article.size() > end) continue;
             const auto kind = source.substr(identity + article.size(),
                 end - identity - article.size());
-            if (is_character_knowledge_kind(kind) &&
+            if ((kind.empty() || is_character_knowledge_kind(kind)) &&
                 !is_character_knowledge_subject(kind)) return true;
         }
         if (author != std::string_view::npos) break;
@@ -7759,7 +7772,11 @@ static bool is_native_knowledge_description(std::string_view source) {
     return is_written_work_description(source) ||
         source.find(" poetic ") != std::string_view::npos ||
         source.find(" form of music") != std::string_view::npos ||
-        source.find(" dance") != std::string_view::npos;
+        source.find(" dance") != std::string_view::npos ||
+        // A default music-purpose selector emits no kind in the opening.
+        // The actual composer/musician rule clause still owns its document.
+        source.find("The rules of the form are applied by composers to produce individual pieces of music") != std::string_view::npos ||
+        source.find("The form guides musicians during improvised performances") != std::string_view::npos;
 }
 
 // Translation matching and structured layout must agree about complete
@@ -15284,35 +15301,58 @@ std::optional<std::string> Overlay::translate_written_work_paragraph(
     const auto translate = [&]() -> std::optional<std::string> {
         TranslationWorkFrame work_frame("written work paragraph", source);
         std::string output;
+        std::vector<size_t> sentence_ends;
+        for (size_t at = 0; at < source.size(); ++at) {
+            const bool punctuation = source[at] == '.' || source[at] == '!' || source[at] == '?';
+            // cc5e0d..cc5e7b closes alternate-history questions with ?",
+            // without an outer period. Punctuation in a title/reference is
+            // only a candidate until its complete typed sentence resolves.
+            if (punctuation && at + 1 < source.size() && source[at + 1] == '"' &&
+                (at + 2 == source.size() || source[at + 2] == ' '))
+                sentence_ends.push_back(at + 2);
+            if (source[at] == '.' &&
+                (at + 1 == source.size() || source[at + 1] == ' '))
+                sentence_ends.push_back(at + 1);
+        }
         size_t cursor = 0;
+        size_t boundary = 0;
         while (cursor < source.size()) {
             while (cursor < source.size() && source[cursor] == ' ') ++cursor;
             if (cursor == source.size()) break;
             bool translated = false;
-            // Try successive full stops so punctuation inside a generated book
-            // title cannot force a partial title or author into a sentence slot.
-            for (size_t stop = source.find('.', cursor); stop != std::string::npos;
-                 stop = source.find('.', stop + 1)) {
-                if (stop + 1 < source.size() && source[stop + 1] != ' ') continue;
-                const auto sentence = std::string_view(source).substr(cursor, stop + 1 - cursor);
-                for (int index : matching_legends_rules(sentence)) {
-                    const Rule &rule = rules_[static_cast<size_t>(index)];
-                    if (!rule.source.ends_with('.')) continue;
-                    if (auto target = translate_legends_nested(rule, sentence, 0)) {
-                        output += *target;
-                        cursor = stop + 1;
-                        translated = true;
-                        break;
-                    }
-                }
-                if (!translated) {
+            for (; boundary < sentence_ends.size(); ++boundary) {
+                const size_t end = sentence_ends[boundary];
+                if (end <= cursor) continue;
+                const auto sentence = std::string_view(source).substr(cursor, end - cursor);
+                // general_ref +0x90 can supply lists, events, art forms or
+                // empty fields. Its scoped grammar must own those clauses
+                // before generic place/person templates try the same text.
+                if (written_work_content_sentence_start(sentence)) {
                     if (auto target = translate_announcement_combat(sentence, "work-sentence")) {
                         output += *target;
-                        cursor = stop + 1;
                         translated = true;
                     }
+                } else {
+                    for (int index : matching_legends_rules(sentence)) {
+                        const Rule &rule = rules_[static_cast<size_t>(index)];
+                        if (!rule.source.ends_with('.')) continue;
+                        if (auto target = translate_legends_nested(rule, sentence, 0)) {
+                            output += *target;
+                            translated = true;
+                            break;
+                        }
+                    }
+                    if (!translated)
+                        if (auto target = translate_announcement_combat(sentence, "work-sentence")) {
+                            output += *target;
+                            translated = true;
+                        }
                 }
-                if (translated) break;
+                if (translated) {
+                    cursor = end;
+                    ++boundary;
+                    break;
+                }
             }
             if (!translated) return std::nullopt;
         }
@@ -15717,9 +15757,13 @@ const NativeKnowledgeLayout &Overlay::prepare_native_knowledge_layout(
                     } while (cursor < part.size());
                     paragraph_offset += part.size() + 1;
                 }
-            } else if (whole.find(" poetic ") != std::string::npos) {
+            } else if (whole.find(" poetic ") != std::string::npos &&
+                    (whole.find("The rules of the form are applied by poets") != std::string::npos ||
+                     whole.find("The form guides poets during improvised performances") != std::string::npos)) {
                 // Cross-chapter context has priority. The result adapter
                 // falls back only to the native [B] chapter boundaries.
+                // A work can mention a poetic form through general_ref;
+                // only the form's own rule clauses establish this document.
                 std::string chapters;
                 for (const auto &part : paragraphs) {
                     if (!chapters.empty()) chapters += "[B]";
@@ -24590,8 +24634,8 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     const int musical_first_row = character_skill_tabs_bottom_y >= 0
         ? character_skill_tabs_bottom_y + 1 : 0;
     auto looks_generated_performance = [](std::string_view value) {
-        if (value.find(" poetic ") != std::string_view::npos) return false;
         if (is_written_work_description(value)) return true;
+        if (value.find(" poetic ") != std::string_view::npos) return false;
         static constexpr std::array<std::string_view, 44> landmarks = {{
             " form of music", "musical voices", "entire performance",
             "The melody", "counterpoint melody", "It is performed",
@@ -24627,13 +24671,16 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
             });
     };
     auto translate_generated_performance = [&](std::string_view paragraph) {
+        // Written subjects/chapters can refer to poetic forms without being
+        // a poetic-form document themselves. Let the complete work grammar
+        // resolve that typed reference before the form-only ownership gate.
+        if (auto work = translate_written_work_paragraph(paragraph))
+            return work;
         // The poetic document pass above owns this identity and all of its
         // clauses. Its origin marker cannot establish a music/dance candidate,
         // even when a clipped grid opening did not translate as a poem.
         if (paragraph.find(" poetic ") != std::string_view::npos)
             return std::optional<std::string>{};
-        if (auto work = translate_written_work_paragraph(paragraph))
-            return work;
         if (auto dance = translate_dance_form_paragraph(paragraph))
             return dance;
         return translate_musical_form_paragraph(paragraph);

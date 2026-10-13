@@ -70,9 +70,13 @@ static bool announcement_combat_field_edges_fit(
     // "through a hole in the " or a damage-list separator. The complete
     // native composite owns that space; its recursive entry trims it before
     // matching the explicit empty-object productions. Dynamic name/item/body
-    // leaves still require their original nonempty field boundaries.
+    // general_ref +0x90 can likewise end in a native prefix or separator
+    // when its value/name or final subject is empty. Only these complete
+    // composites may own that trailing space; their typed leaves still
+    // require their original nonempty field boundaries.
     return scope == "head" || scope == "attack" || scope == "damage" ||
-        scope == "damage-list" || scope == "layer";
+        scope == "damage-list" || scope == "layer" ||
+        scope == "work-reference" || scope == "work-reference-list";
 }
 
 std::optional<std::string> Overlay::translate_announcement_combat(

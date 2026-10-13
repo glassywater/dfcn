@@ -679,6 +679,13 @@ attack-site-kind	important location	重要地点		PE 0x10cbe50..0x10cc160; compl
 attack-site-kind	site	地点		PE 0x10cbe50..0x10cc160; complete native site type/subtype branch; see reference-site-kind.asm and classic-site-kind.asm
 work-reference-list	{s}, {s}	{s1}、{s2}	work-reference,work-reference-list	0x140cc5fba; native repeated subject separator
 work-reference-list	{s} and {s}	{s1}和{s2}	work-reference,work-reference-list	0x140cc5fcf; native final subject separator
+# The reference's +0x90 method can return no text. Native cc5f8b does not
+# filter it before appending cc5fba/cc5fcf, so an empty element leaves its
+# separator in the list. Recursive forms retain every missing element.
+work-reference-list	, {s}	未注明的主题、{s1}	work-reference-list	0x140cc5f8b..0x140cc5fcf; empty first topic before a native comma
+work-reference-list	and {s}	未注明的主题和{s1}	work-reference	0x140cc5f8b..0x140cc5fcf; empty penultimate topic, final topic present
+work-reference-list	{s} and	{s1}和未注明的主题	work-reference	0x140cc5f8b..0x140cc5fde; final topic empty, enclosing sentence owns the space before its stop
+work-reference-list	and	未注明的主题和未注明的主题		0x140cc5f8b..0x140cc5fde; both final topic references return no text
 work-sentence	It asks the question, "What if {s} had unfolded differently?"	作品提出了这样的问题：“如果{s1}的发展有所不同，会怎样？”	work-reference	0x140cc5e0d+0x140cc5e32+0x140cc5e66
 work-sentence	It concerns the lineage of {s}.	内容涉及{s1}的家系。	work-reference	0x140cc5eb4+0x140cc5ee7; genealogy retains the complete general_ref +0x90 label, including species/deity/site prefixes
 work-sentence	It concerns {s}.	内容涉及{s1}。	work-reference-list	0x140cc5f31..0x140cc5fde; all native subject references
@@ -688,6 +695,19 @@ work-sentence	For lyrics, the composer has selected {s}.	作曲者选用{s1}作�
 work-sentence	For musical accompaniment, the choreographer has selected {s}.	编舞者选用{s1}作为伴奏音乐。	work-reference	0x140cc626d+0x140cc628c+0x140cc62f8
 work-sentence	It covers {s}.	内容涵盖{s1}。	work-reference	0x140cc6861+0x140cc68f3+0x140cc6908+0x140cc693f
 work-sentence	The {s} chapter covers {s}.	第{s1}章的内容涵盖{s2}。	work-ordinal,work-reference	0x140cc6875+0x140cc688b..0x140cc68f3+0x140cc6908
+# A present topic/role/chapter with an empty native reference differs from
+# the no-topic branch at cc600a. These are complete native sentences, not
+# an empty wildcard or a title guessed from this particular world's text.
+work-sentence	It asks the question, "What if had unfolded differently?"	作品提出了这样的问题：“如果未注明事件的发展有所不同，会怎样？”		0x140cc5e40+0x140cc5e5b+0x140cc5e66; empty reference, native adjacent spaces normalized
+work-sentence	It concerns the lineage of .	内容涉及未注明对象的家系。		0x140cc5ee7+0x140cc5f02+0x140cc5f0d; genealogy reference returns no text
+work-sentence	It concerns .	内容涉及的主题未注明。		0x140cc5f8b+0x140cc5fa6+0x140cc5fde; topic exists but its native reference returns no text
+work-sentence	It concerns {s} .	内容涉及{s1}。	work-reference-list	0x140cc5f8b..0x140cc5fde; final list reference empty leaves a space before the period
+work-sentence	The writing conveys a moral lesson regarding .	文章阐述了为人处世之道，具体主题未注明。		0x140cc607d+0x140cc6098+0x140cc60a3; empty moral-lesson reference
+work-sentence	The overall text emphasizes .	全文着重强调的主题未注明。		0x140cc6135+0x140cc6150+0x140cc615b; empty emphasis reference
+work-sentence	For lyrics, the composer has selected .	作曲者选用的歌词未注明。		0x140cc61ed+0x140cc6208+0x140cc6213; empty lyric reference
+work-sentence	For musical accompaniment, the choreographer has selected .	编舞者选用的伴奏音乐未注明。		0x140cc629d+0x140cc62c0+0x140cc62cb; empty musical-accompaniment reference
+work-sentence	It covers .	本章涵盖的内容未注明。		0x140cc692b+0x140cc6946+0x140cc6954; single chapter, empty reference
+work-sentence	The {s} chapter covers .	第{s1}章涵盖的内容未注明。	work-ordinal	0x140cc68a6+0x140cc68d4+0x140cc692b..0x140cc6954; multiple chapters, empty reference
 work-ordinal	zeroth	0		0x14052ecca; shared native ordinal formatter
 work-ordinal	first	1		0x14052ece9
 work-ordinal	second	2		0x14052ed08

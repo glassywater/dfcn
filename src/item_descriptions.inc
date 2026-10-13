@@ -591,23 +591,12 @@ std::optional<std::string> Overlay::translate_item_description_term(
     return target;
 }
 
-static bool item_work_content_sentence_start(std::string_view value) {
-    return value.starts_with("It asks the question, \"What if ") ||
-        value.starts_with("It concerns ") ||
-        value.starts_with("The writing conveys a moral lesson regarding ") ||
-        value.starts_with("The overall text emphasizes ") ||
-        value.starts_with("For lyrics, the composer has selected ") ||
-        value.starts_with("For musical accompaniment, the choreographer has selected ") ||
-        value.starts_with("It covers ") ||
-        (value.starts_with("The ") && value.find(" chapter covers ") != std::string_view::npos);
-}
-
 bool Overlay::item_description_sentence_start(std::string_view source) const {
     source = trim_view(source);
     // cc5d50's written-work clauses are independent of the item noun and
     // book title. Their fixed openings prove the preceding sentence's end
     // even when a new material or style cannot yet be translated.
-    if (item_work_content_sentence_start(source) ||
+    if (written_work_content_sentence_start(source) ||
         source.starts_with("The writing ") ||
         source.starts_with("The written portion consists of ") ||
         source.starts_with("Written on the item is ") ||
@@ -745,7 +734,7 @@ std::optional<std::string> Overlay::translate_item_description_source(
         // Reuse that complete typed grammar for every content branch; the
         // generic work-description alias also calls back here, so enter only
         // the native content-sentence family with an explicit literal anchor.
-        if (item_work_content_sentence_start(value)) {
+        if (written_work_content_sentence_start(value)) {
             const auto target = translate_announcement_combat(value, "work-sentence");
             if (translation_complete_with_native_nicknames(target, value)) return target;
             return std::nullopt;

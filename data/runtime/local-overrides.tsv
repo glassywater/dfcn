@@ -11474,6 +11474,14 @@ This is an untitled {s}.	这是一部无题{s}。	ht
 {b} is a {s}, authored by .	《{b}》是一部{s}，作者不详。	ht
 {b} is an {s}, authored by .	《{b}》是一部{s}，作者不详。	ht
 This is an untitled {s}, authored by .	这是一部无题{s}，作者不详。	ht
+# The native work-kind switch's default emits no genre and uses article a.
+# Keep that branch independent of the stored title and optional author.
+{b} is a .	《{b}》是一部体裁不详的作品。	ht
+{b} is a , authored by {n}.	《{b}》是{n}创作的体裁不详的作品。	ht
+{b} is a , authored by .	《{b}》是一部体裁不详的作品，作者不详。	ht
+This is an untitled .	这是一部无题作品，体裁不详。	ht
+This is an untitled , authored by {n}.	这是{n}创作的无题作品，体裁不详。	ht
+This is an untitled , authored by .	这是一部无题作品，体裁和作者不详。	ht
 {b} is an example of {p}.	《{b}》采用“{p}”的形式。	ht
 {b} is an example of poetry.	《{b}》是一首诗。	ht
 {b} is an example of musical composition.	《{b}》是一部音乐作品。	ht
@@ -11750,3 +11758,13 @@ Unit profession: head	首领	li
 Unit profession: master	首领	li
 Unit profession: novice	初学者	li
 Unit profession: adept	精熟者	li
+
+# Existing form records can have empty generated names or origin fields.
+It is an example of .	这部作品采用的形式未注明。	h
+Art form: unspecified origin	未注明	l
+Art form: unspecified creator	未注明	l
+Art form: unspecified purpose	目的未注明	l
+Art form: unspecified subject	主题未注明	l
+Art form: unspecified mood	风格未注明	l
+Art form: unspecified description	内容未注明	l
+Art form: unspecified deity	敬拜对象未注明	l

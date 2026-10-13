@@ -10304,6 +10304,7 @@ Announcement combat sentence [unit,owned-object,owned-object]: {s} breaks the gr
 Announcement combat sentence [unit,unit,object,owned-object]: {s} throws {s} by the {s} with {s}!	{s1}用{s4}抓住{s2}的{s3}将其抛了出去！	l
 Announcement combat site-rumor-event [$name,$travel-site]: {s} waited out an insurrection in {s}.	{s1}在{s2}按兵不动，一直等到叛乱平息。	l
 Announcement combat visitor-statement [visitor-statement-subject]: {s} were will be speaking to .	{s1}当时将正在说话。	l
+Announcement combat work-sentence []: For musical accompaniment, the choreographer has selected .	编舞者选用的伴奏音乐未注明。	l
 By now you should have a room underground where your residents can hide from the creatures above.	现在，你应该已有一间地下房间，可供居民躲避地表的生物。	hq
 Can volcanism be placed at the value 100 enough times to provide space for each of your volcanos?	火山活动度为 100 的方格是否足以容纳所有火山？	l
 Carve a track in a stone floor. Tracks are used by minecarts with routes set in the hauling menu.	在石地板上雕凿轨道。矿车沿轨道行驶，路线在搬运菜单中设置。	hj
@@ -10776,6 +10777,7 @@ Announcement combat visitor-statement [visitor-statement-subject]: {s} was will 
 Announcement combat visitor-statement [visitor-statement-subject]: {s} were will be appearing .	{s1}当时将正在出现。	l
 Announcement combat visitor-statement [visitor-statement-subject]: {s} were will be destroying.	{s1}当时将正在毁灭。	l
 Announcement combat visitor-statement [visitor-statement-subject]: {s} were will be rewarding .	{s1}当时将正在施予奖赏。	l
+Announcement combat work-sentence []: It asks the question, "What if had unfolded differently?"	作品提出了这样的问题：“如果未注明事件的发展有所不同，会怎样？”	l
 Click Workshops -> Carpenter and place the shop in an empty area on the surface or underground.	[C:7:0:0]点击“[C:5:0:1]工坊[C:7:0:0] → [C:5:0:1]木匠工坊[C:7:0:0]”，在地表或地下的空地上放置工坊。	hq
 DFHack help: "--material <mat>" Trigger the command on items with the given material. Examples:	"--material <mat>" 对具有给定材质的物品触发命令。示例：	l
 DFHack help: "-X", "--include-worn" Include worn (X) and tattered (XX) items when unforbidding.	"-X"、"--include-worn" 不禁止时包括磨损 (X) 和破烂 (XX) 的物品。	l
@@ -13915,6 +13917,7 @@ Announcement combat visitor-statement [visitor-statement-subject]: {s} will burn
 Announcement combat visitor-statement [visitor-statement-subject]: {s} will destroy.	{s1}将毁灭。	l
 Announcement combat visitor-statement [visitor-statement-subject]: {s} will flooded.	{s1}将已泛滥。	l
 Announcement combat visitor-statement [visitor-statement-subject]: {s} will reward .	{s1}将施予奖赏。	l
+Announcement combat work-sentence []: The writing conveys a moral lesson regarding .	文章阐述了为人处世之道，具体主题未注明。	l
 Announcement combat work-sentence [work-reference]: The overall text emphasizes {s}.	全文着重强调{s1}。	l
 DFHack help: "--cloth" Restrict the selection to plants that yield thread for cloth.	"--cloth" 将选择限制为生产布料线的植物。	l
 DFHack help: "--nopointers" Disables printing values which contain memory addresses.	"--nopointers" 禁用打印包含内存地址的值。	l
@@ -16297,6 +16300,7 @@ Announcement combat visitor-statement [visitor-statement-subject]: {s} spoke.	{s
 Announcement combat visitor-statement [visitor-statement-subject]: {s} were .	{s1}曾……。	l
 Announcement combat visitor-statement [visitor-statement-subject]: {s} will .	{s1}将……。	l
 Announcement combat work-reference [$creature]: a ghostly animated {s} corpse	幽灵形态的复活{s1}尸体	l
+Announcement combat work-sentence []: For lyrics, the composer has selected .	作曲者选用的歌词未注明。	l
 Assemble complete musical instruments and construct single-piece instruments.	组装完整乐器，并制作一体式乐器。	hj
 Before you begin your travels, we'll familiarize you with the basic controls.	出发旅行之前，先来熟悉基本操作。	hq
 Buckets (with a source of water), Thread for sutures, and Cloth for bandages.	[C:6:0:1]水桶[C:7:0:0]和水源、缝合用的[C:6:0:1]线[C:7:0:0]，以及制作绷带的[C:6:0:1]布[C:7:0:0]。	hq
@@ -17442,6 +17446,8 @@ Announcement combat visitor-statement [visitor-statement-emotion]: am {s}.	{s1}�
 Announcement combat visitor-statement [visitor-statement-emotion]: is {s}.	{s1}。	l
 Announcement combat visitor-statement [visitor-statement-object]: are {s}.	……{s1}。	l
 Announcement combat visitor-statement [visitor-statement-object]: was {s}.	曾……{s1}。	l
+Announcement combat work-sentence [work-ordinal]: The {s} chapter covers .	第{s1}章涵盖的内容未注明。	l
+Announcement combat work-sentence [work-reference-list]: It concerns {s} .	内容涉及{s1}。	l
 DFHack GUI Mod manager: Failed to load some mods from your default preset.	默认预设中的部分模组载入失败。	l
 DFHack help: "--dev" Include commands intended for developers and modders.	"--dev" 包括供开发人员和模组制作者使用的命令。	l
 DFHack help: "--female <INTEREST>" Set the interest level towards females.	"--female <INTEREST>" 设置对女性的兴趣程度。	l
@@ -20085,6 +20091,7 @@ Announcement combat visitor-statement-emotion []: feeling tenderness	满怀温�
 Announcement combat visitor-statement-emotion []: feeling triumphant	洋洋得意	l
 Announcement combat work-reference []: the fiery bowels of the earth	大地的炽热深处	l
 Announcement combat work-reference [reference-value]: nuances of {s}	{s1}的微妙之处	l
+Announcement combat work-reference-list [work-reference-list]: , {s}	未注明的主题、{s1}	l
 Announcement music passage: a recapitulation of the previous passage	前一乐段再现部	w
 Conversation prompt: How will you respond to the demand for tribute?	你将如何回应索要贡品的要求？	l
 DFHack help: "(un)protect <type>[,<type>...] <burrow>[,<burrow>...]"	"（取消）保护<类型>[，<类型>...] <活动区>[，<活动区>...]"	l
@@ -20567,6 +20574,7 @@ Announcement combat visitor-statement-emotion []: feeling ferocious	心生凶意
 Announcement combat visitor-statement-emotion []: feeling gratitude	满怀感激	l
 Announcement combat visitor-statement-emotion []: feeling self-pity	心生自怜	l
 Announcement combat visitor-statement-reference []: an unknown site	未知地点	l
+Announcement combat work-sentence []: The overall text emphasizes .	全文着重强调的主题未注明。	l
 Announcement distance: nearly a day's travel to the north-northeast	距此近一天路程的北东北方	l
 Announcement distance: nearly a day's travel to the north-northwest	距此近一天路程的北西北方	l
 Announcement distance: nearly a day's travel to the south-southeast	距此近一天路程的南东南方	l
@@ -21107,6 +21115,7 @@ Announcement combat visitor-statement-emotion []: feeling rejected	感到被拒�
 Announcement combat visitor-statement-reference [$creature]: a {s}	一个{s1}	l
 Announcement combat work-reference [$name]: the forest retreat {s}	森林聚落{s1}	l
 Announcement combat work-reference [$name]: the mountain halls {s}	山地大厅{s1}	l
+Announcement combat work-sentence []: It concerns the lineage of .	内容涉及未注明对象的家系。	l
 Announcement combat work-sentence [work-reference]: It covers {s}.	内容涵盖{s1}。	l
 Announcement distance: nearly a day's travel to the east-northeast	距此近一天路程的东东北方	l
 Announcement distance: nearly a day's travel to the east-southeast	距此近一天路程的东东南方	l
@@ -21609,6 +21618,8 @@ Announcement combat visitor-statement-emotion []: feeling dislike	感到不喜�
 Announcement combat visitor-statement-emotion []: feeling servile	觉得自己卑躬屈膝	l
 Announcement combat work-reference [$name]: the dark fortress {s}	黑暗要塞{s1}	l
 Announcement combat work-reference [$name]: {s} as a musical form	音乐形式{s1}	l
+Announcement combat work-reference-list [work-reference]: and {s}	未注明的主题和{s1}	l
+Announcement combat work-reference-list [work-reference]: {s} and	{s1}和未注明的主题	l
 Announcement distance: a half day's travel to the north-northeast	距此半天路程的北东北方	l
 Announcement distance: a half day's travel to the north-northwest	距此半天路程的北西北方	l
 Announcement distance: a half day's travel to the south-southeast	距此半天路程的南东南方	l
@@ -22074,6 +22085,7 @@ Announcement combat visitor-statement-emotion []: feeling caring	心怀关爱	l
 Announcement combat visitor-statement-emotion []: feeling gaiety	感到欢快	l
 Announcement combat visitor-statement-emotion []: feeling guilty	感到内疚	l
 Announcement combat work-reference [$name]: {s} as a poetic form	诗歌形式{s1}	l
+Announcement combat work-reference []: a ghostly animated corpse	种类未注明的幽灵形态复活尸体	l
 Announcement distance: a half day's travel to the east-northeast	距此半天路程的东东北方	l
 Announcement distance: a half day's travel to the east-southeast	距此半天路程的东东南方	l
 Announcement distance: a half day's travel to the west-northwest	距此半天路程的西西北方	l
@@ -23941,6 +23953,7 @@ Announcement combat merchant-address [$creature]: my good {s}	我亲爱的{s1}	l
 Announcement combat merchant-hawk [merchant-hawk-origin]: {s}	{s1}	l
 Announcement combat merchant-nation [$name,$name]: {s}, "{s}"	{s1}（“{s2}”）	l
 Announcement combat merchant-origin [$name,$name]: {s}, "{s}"	{s1}（“{s2}”）	l
+Announcement combat reference-population []: animated corpses	种类未注明的复活尸体	l
 Announcement combat rumor-event []: Best keep your head down.	最好还是低调些。	l
 Announcement combat sentence [$item]: Decent {s} right there.	就那里的不错的{s1}。	l
 Announcement combat sentence [$name]: I am a prisoner of {s}.	我是{s1}的囚犯。	l
@@ -24625,6 +24638,7 @@ Announcement combat visitor-statement-emotion []: suspicious	心怀怀疑	l
 Announcement combat visitor-statement-reference [$name]: {s}	{s1}	l
 Announcement combat work-reference [$term]: the {s} language	{s1}语	l
 Announcement combat work-reference [reference-building]: {s}	{s1}	l
+Announcement combat work-reference [reference-kind]: the {s}	{s1}	l
 Announcement distance: a day's travel to the north-northeast	距此一天路程的北东北方	l
 Announcement distance: a day's travel to the north-northwest	距此一天路程的北西北方	l
 Announcement distance: a day's travel to the south-southeast	距此一天路程的南东南方	l
@@ -25370,6 +25384,7 @@ Announcement combat visitor-statement-emotion []: repentant	心怀忏悔	l
 Announcement combat visitor-statement-emotion []: resentful	心怀怨恨	l
 Announcement combat visitor-statement-emotion []: satisfied	感到满意	l
 Announcement combat visitor-statement-emotion []: terrified	极度恐惧	l
+Announcement combat work-reference []: the worthlessness of	未注明价值毫无意义这一观点	l
 Announcement distance: a day's travel to the east-northeast	距此一天路程的东东北方	l
 Announcement distance: a day's travel to the east-southeast	距此一天路程的东东南方	l
 Announcement distance: a day's travel to the west-northwest	距此一天路程的西西北方	l
@@ -28087,6 +28102,8 @@ Announcement combat visitor-statement-emotion []: lonely	感到孤独	l
 Announcement combat visitor-statement-emotion []: shaken	震惊不已	l
 Announcement combat visitor-statement-emotion []: uneasy	感到不安	l
 Announcement combat work-description [$description]: {s}	{s1}	l
+Announcement combat work-reference []: a animated corpse	种类未注明的复活尸体	l
+Announcement combat work-reference []: as a musical form	名称未注明的音乐形式	l
 Announcement distance: nearly a day's travel to the east	距此近一天路程的东方	l
 Announcement distance: nearly a day's travel to the west	距此近一天路程的西方	l
 Argue the worthlessness of competition (not your values)	争辩竞争毫无价值（并非你的价值观）	hP
@@ -29104,6 +29121,7 @@ Announcement combat visitor-statement-emotion []: happy	感到开心	l
 Announcement combat visitor-statement-emotion []: jolly	感到开心	l
 Announcement combat visitor-statement-emotion []: proud	感到自豪	l
 Announcement combat work-reference []: an unnamed group	一个无名势力	l
+Announcement combat work-reference []: as a poetic form	名称未注明的诗歌形式	l
 Announcement distance: a half day's travel to the north	距此半天路程的北方	l
 Announcement distance: a half day's travel to the south	距此半天路程的南方	l
 Announcement music passage: the exposition of the theme	主题呈示部	w
@@ -30100,6 +30118,8 @@ Announcement combat visitor-statement []: will flood .	将泛滥。	l
 Announcement combat visitor-statement []: will reward.	将施予奖赏。	l
 Announcement combat visitor-statement-emotion []: awed	心怀敬畏	l
 Announcement combat visitor-statement-emotion []: glum	感到郁闷	l
+Announcement combat work-reference []: a population of	种类未注明的种群	l
+Announcement combat work-reference []: as a dance form	名称未注明的舞蹈形式	l
 Announcement distance: a day's travel to the northeast	距此一天路程的东北方	l
 Announcement distance: a day's travel to the northwest	距此一天路程的西北方	l
 Announcement distance: a day's travel to the southeast	距此一天路程的东南方	l
@@ -32294,6 +32314,7 @@ Announcement combat merchant-people [$creature]: {s}	{s1}	l
 Announcement combat reference-building-type []: keep	城堡主楼	l
 Announcement combat reference-building-type []: tomb	陵墓	l
 Announcement combat reference-kind []: dark fortress	黑暗要塞	l
+Announcement combat reference-population []: ghostly	种类未注明的幽灵	l
 Announcement combat reference-value []: independence	独立	l
 Announcement combat reference-value []: leisure time	闲暇	l
 Announcement combat reference-value []: perseverance	坚韧	l
@@ -33552,6 +33573,9 @@ Announcement combat visitor-statement []: speaking.	正在说话。	l
 Announcement combat visitor-statement []: will be .	将……。	l
 Announcement combat visitor-statement-object []: me	我	l
 Announcement combat visitor-statement-subject []: I	我	l
+Announcement combat work-reference []: the language	名称未注明的语言	l
+Announcement combat work-reference []: the value of	未注明价值的意义	l
+Announcement combat work-sentence []: It concerns .	内容涉及的主题未注明。	l
 Announcement unit: somebody whose name I don't know	一个我不知道名字的人	l
 Argue the worthlessness of family (not your values)	争辩家庭毫无价值（并非你的价值观）	hP
 Argue the worthlessness of nature (not your values)	争辩自然毫无价值（并非你的价值观）	hP
@@ -36127,6 +36151,8 @@ Announcement combat work-ordinal [$digits]: {s}st	{s1}	l
 Announcement combat work-ordinal [$digits]: {s}th	{s1}	l
 Announcement combat work-reference [$item]: a {s}	{s1}	l
 Announcement combat work-reference [$sphere]: {s}	{s1}	l
+Announcement combat work-reference []: nuances of	未注明价值的微妙之处	l
+Announcement combat work-sentence []: It covers .	本章涵盖的内容未注明。	l
 Announcement distance: a day's travel to the east	距此一天路程的东方	l
 Announcement distance: a day's travel to the west	距此一天路程的西方	l
 Announcement distance: far to the north-northeast	远在北东北方	l
@@ -37505,6 +37531,7 @@ Announcement combat visitor-statement []: spoke.	曾说话。	l
 Announcement combat visitor-statement []: were .	曾……。	l
 Announcement combat visitor-statement []: will .	将……。	l
 Announcement combat work-ordinal []: seventeenth	17	l
+Announcement combat work-reference []: a ghostly	种类未注明的幽灵	l
 Announcement distance: a short walk to the north	步行不远即可到达的北方	l
 Announcement distance: a short walk to the south	步行不远即可到达的南方	l
 Announcement distance: far to the east-northeast	远在东东北方	l
@@ -38990,6 +39017,7 @@ Announcement combat work-ordinal []: fourteenth	14	l
 Announcement combat work-ordinal []: nineteenth	19	l
 Announcement combat work-ordinal []: thirteenth	13	l
 Announcement combat work-reference [$book]: {s}	{s1}	l
+Announcement combat work-reference-list []: and	未注明的主题和未注明的主题	l
 Announcement distance: a short walk to the east	步行不远即可到达的东方	l
 Announcement distance: a short walk to the west	步行不远即可到达的西方	l
 Argue nuances of independence (not your values)	争辩独立自主的复杂之处（并非你的价值观）	hP
@@ -40415,7 +40443,9 @@ Announcement combat memory-value []: merriment	欢庆	l
 Announcement combat memory-value []: sacrifice	牺牲	l
 Announcement combat memory-value []: tradition	传统	l
 Announcement combat merchant-town [$name]: {s}	{s1}	l
+Announcement combat reference-building []: the	类型和名称未注明的建筑	l
 Announcement combat reference-kind []: dungeon	地牢	l
+Announcement combat reference-kind []: ghostly	种类未注明的幽灵	l
 Announcement combat reference-value []: family	亲情	l
 Announcement combat reference-value []: nature	自然	l
 Announcement combat rumor-army [$name]: of {s}	（隶属{s1}）	l
@@ -43466,6 +43496,7 @@ Announcement combat memory-value []: harmony	和谐	l
 Announcement combat memory-value []: loyalty	忠诚	l
 Announcement combat memory-value []: romance	浪漫	l
 Announcement combat memory-work [$book]: {s}	{s1}	l
+Announcement combat reference-building []: a	类型未注明的建筑	l
 Announcement combat reference-kind []: deity	神祇	l
 Announcement combat reference-kind []: force	自然之灵	l
 Announcement combat reference-kind []: tower	高塔	l
@@ -46761,6 +46792,7 @@ Announcement combat work-ordinal []: ninth	9	l
 Announcement combat work-ordinal []: sixth	6	l
 Announcement combat work-ordinal []: tenth	10	l
 Announcement combat work-ordinal []: third	3	l
+Announcement combat work-reference []: the	类型和名称未注明的对象	l
 Argue nuances of artwork (not your values)	争辩艺术的复杂之处（并非你的价值观）	hP
 Argue nuances of cunning (not your values)	争辩谋略的复杂之处（并非你的价值观）	hP
 Argue nuances of decorum (not your values)	争辩礼仪的复杂之处（并非你的价值观）	hP
@@ -50383,6 +50415,7 @@ Announcement combat memory-value []: law	法律	l
 Announcement combat object []: body part	身体部位	l
 Announcement combat sentence []: Ambush!	有埋伏！	l
 Announcement combat weapon-part []: flat	平面	l
+Announcement combat work-reference []: a	类型未注明的对象	l
 Announcement distance: just to the north	就在北方	l
 Announcement distance: just to the south	就在南方	l
 Argue nuances of peace (not your values)	争辩和平的复杂之处（并非你的价值观）	hP
@@ -54691,6 +54724,7 @@ There were {c} competitors during {e}.	在{e1}期间，共有{c1}名参赛者。
 There were {c} competitors within {p}.	在{p1}，共有{c1}名参赛者。	ht
 This building has been claimed by {n}.	此建筑已被{n1}占用。	hPt
 This creature is displeased right now.	此生物目前有些不满。	hj
+This is an untitled , authored by {n}.	这是{n}创作的无题作品，体裁不详。	ht
 This is an untitled {s}, authored by .	这是一部无题{s}，作者不详。	ht
 This storyteller is really quite good!	这位讲故事的人真的相当出色！	hP
 This storyteller? Unbelievable talent!	这位讲故事的人的天赋，简直让人不敢相信！	hP
@@ -60728,6 +60762,7 @@ This creature is pleased right now.	此生物目前很愉快。	hj
 This creature is unhappy right now.	此生物目前不开心。	hj
 This dancer couldn't be much worse.	这位舞者几乎糟到极点。	hP
 This hunt has rid us of a nuisance.	这场狩猎为我们除去了一个祸害。	hP
+This is an untitled , authored by .	这是一部无题作品，体裁和作者不详。	ht
 This is my Fifteenth year as a {s}.	这是我当{s1}的第15年。	hPt
 This is my Sixteenth year as a {s}.	这是我当{s1}的第16年。	hPt
 This is {e}. What can I do for you?	这里是{e1}。有什么可以帮你？	hPt
@@ -64591,6 +64626,7 @@ Announcement combat owner []: its	它的	l
 Announcement combat unit []: they	他们	l
 Argue the worthlessness of family	争辩家庭毫无价值	hP
 Argue the worthlessness of nature	争辩自然毫无价值	hP
+Art form: unspecified description	内容未注明	l
 Beware its hunger for warm blood!	小心它对温热鲜血的渴望！	h
 Beware their armored mounted {s}!	小心他们那些身穿盔甲的{s1}骑兵！	hPt
 Beware their armored skilled {s}!	小心他们那些身穿盔甲、训练有素的{s1}！	hPt
@@ -73785,6 +73821,9 @@ Argue nuances of leisure time	争辩闲暇的复杂之处	hP
 Argue nuances of perseverance	争辩毅力的复杂之处	hP
 Argue nuances of self-control	争辩自制的复杂之处	hP
 Argue the value of friendship	争辩友谊的价值	hP
+Art form: unspecified creator	未注明	l
+Art form: unspecified purpose	目的未注明	l
+Art form: unspecified subject	主题未注明	l
 Art image named creature: X Y	X「Y」	wl
 Ask about armies on the march	询问正在行军的各支军队	hP
 Ask about somebody (new menu)	打听某个人（新菜单）	hP
@@ -76074,6 +76113,7 @@ Argue the value of knowledge	争辩知识的价值	hP
 Argue the value of merriment	争辩玩乐的价值	hP
 Argue the value of sacrifice	争辩牺牲的价值	hP
 Argue the value of tradition	争辩传统的价值	hP
+Art form: unspecified origin	未注明	l
 Ask to be made a {s} for {e}	请求成为{e1}的{s1}	hPt
 Assigned residents will only	已分配的居民只会	wl
 Back to difficulty selection	返回难度选择	l
@@ -78408,6 +78448,7 @@ Argue nuances of friendship	争辩友谊的复杂之处	hP
 Argue the value of commerce	争辩商业的价值	hP
 Argue the value of fairness	争辩公道的价值	hP
 Argue the value of stoicism	争辩克制情感的价值	hP
+Art form: unspecified deity	敬拜对象未注明	l
 Artifact construction begun	开始制作造物	w
 Ask about listener's family	询问对方的家人	hP
 Ask how listener is feeling	询问对方的心情	hP
@@ -80491,6 +80532,7 @@ wove a masterful sewn image	织出了一幅杰作级的刺绣图像	h
 {a}'s brawl with {a} in {p}	在{p1}，{a1}与{a2}的斗殴	htEi
 {a}'s confrontation of {a}.	{a1}与{a2}的对峙。	htEi
 {b} and The Coming Troubles	{b}与将至的麻烦	hbti
+{b} is a , authored by {n}.	《{b}》是{n}创作的体裁不详的作品。	ht
 {b} is a {s}, authored by .	《{b}》是一部{s}，作者不详。	ht
 {b}: Problems And Solutions	{b}：问题与解答	hbti
 {d}nd Opal, mid-winter, {d}	第{d2}年，仲冬，蛋白石月{d1}日	wti
@@ -80719,6 +80761,7 @@ Argue the value of decorum	争辩礼仪的价值	hP
 Argue the value of harmony	争辩和谐的价值	hP
 Argue the value of loyalty	争辩忠诚的价值	hP
 Argue the value of romance	争辩爱情的价值	hP
+Art form: unspecified mood	风格未注明	l
 Ask about the law-breaking	询问违法行为	hP
 Ask listener to follow you	请对方跟随你	hP
 Attempted {e} in the wilds	在荒野中，未遂的{e1}	htEi
@@ -85444,6 +85487,8 @@ The ingredients are {s}.	所用食材为{s1}。	hHt
 The lyrics are so funny!	歌词真好笑！	hP
 The ritual involved {p}.	仪式使用了{p1}。	ht
 The weather has cleared.	天气放晴了。	hP
+The writing {s} and it .	文风{s1}，另有一种未注明的文风。	ht
+The writing {s} yet it .	文风{s1}，但另一种文风未注明。	ht
 The {d}nd {e} during {e}	在{e2}期间，第{d1}次{e1}	htEi
 The {d}nd {e} within {p}	在{p1}，第{d1}次{e1}	htEi
 The {d}rd {e} during {e}	在{e2}期间，第{d1}次{e1}	htEi
@@ -86717,6 +86762,7 @@ writing of a masterpiece	书写杰作	hEi
 {a}'s happening upon {a}	{a1}与{a2}的偶遇	htEi
 {a}'s surprising of {a}.	{a1}对{a2}的突袭。	htEi
 {b} and Other Travesties	{b}与其他荒诞之事	hbti
+{b} is a , authored by .	《{b}》是一部体裁不详的作品，作者不详。	ht
 {b} was a legendary {i}.	《{b1}》是一件传奇的{i1}。	ht
 {b} was authored by {n}.	{n}撰写了《{b}》。	ht
 {d} dormitories created.	已创建{d1}间公共宿舍。	wtl
@@ -87482,6 +87528,8 @@ The party and followers	队伍与追随者	w
 The thread is {v}, {s}.	纺线呈{v1}，{s1}。	hHt
 The upward face is {s}.	朝上的一面是{s1}。	hHt
 The vegetation is bent.	这里的植被被压弯了。	hP
+The writing and it {s}.	一种文风未注明，另一种{s1}。	ht
+The writing yet it {s}.	一种文风未注明，但另一种{s1}。	ht
 The {s} of {e} are {s}.	{e1}（{s1}）：{s2}。	hPt
 There is a faint print.	这里有一处印迹，痕迹隐约可见。	hP
 There is a light print.	这里有一处印迹，痕迹较淡。	hP
@@ -91390,6 +91438,7 @@ Importing wildlife...	正在导入野生动物……
 It Must Have Been {b}	一定是{b}	hbti
 It giggles at random.	它不时无缘无故地咯咯笑。	h
 It is a divine being.	它是神圣的生灵。	h
+It is an example of .	这部作品采用的形式未注明。	h
 It is not convincing.	这番话不够有说服力。	hP
 It is the {s} of {n}.	它是{n}的{s}。	ht
 It moves ponderously.	它行动沉重缓慢。	h
@@ -91656,6 +91705,7 @@ This chanter is okay.	这位吟唱者还可以。	hP
 This could be better.	这还有进步的余地。	hP
 This dancer is great.	这位舞者很棒。	hP
 This dancer is lousy.	这位舞者很差劲。	hP
+This is an untitled .	这是一部无题作品，体裁不详。	ht
 This preacher stinks!	这位传道者糟透了！	hP
 This preacher? Awful.	这位传道者？糟透了。	hP
 This singer is great.	这位歌手很棒。	hP
@@ -93902,6 +93952,8 @@ The pages are blank.	书页是空白的。	hP
 The signs lead east.	踪迹通向东方。	hP
 The signs lead west.	踪迹通向西方。	hP
 The story continues.	故事还在讲述中。	hP
+The writing and it .	两种文风均未注明。	h
+The writing yet it .	两种文风均未注明。	h
 The {d}nd {e} at {p}	在{p1}，第{d1}次{e1}	htEi
 The {d}nd {e} in {d}	{d2}年的第{d1}次{e1}	htEi
 The {d}nd {e} in {p}	在{p1}，第{d1}次{e1}	htEi
@@ -122579,6 +122631,7 @@ The Sixth {e}	第六次{e1}	htEi
 The Tenth {e}	第十次{e1}	htEi
 The Third {e}	第三次{e1}	htEi
 The item {e}.	这件物品{e1}。	hHt
+The writing .	文风未注明。	h
 The {d}nd {e}	第{d1}次{e1}	htEi
 The {d}rd {e}	第{d1}次{e1}	htEi
 The {d}st {e}	第{d1}次{e1}	htEi
@@ -138186,6 +138239,7 @@ zombie {s}	僵尸{s1}	htv
 {a} melted	{a1}熔化而死	ht
 {a} moved.	{a1}迁移了。	ht
 {a} of {a}	{a2}的{a1}	htu
+{b} is a .	《{b}》是一部体裁不详的作品。	ht
 {c} "{k}"s	{c1}个“{k1}”字样	hIit
 {c} images	{c1}幅图像	hIit
 {d} events	{d} 个事件	wt

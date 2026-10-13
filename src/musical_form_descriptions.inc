@@ -966,58 +966,116 @@ TranslationResult Overlay::translate_musical_form_paragraph_result(
             sentence = "The " + sentence.substr(15);
         if (sentence.empty()) return std::string{};
 
-        // Identity and purpose of the complete musical form.
-        static constexpr std::string_view origin_marker = " originating in ";
-        const size_t origin_at = sentence.find(origin_marker);
-        if (origin_at != std::string::npos) {
-            const std::string_view identity(sentence.data(), origin_at);
+        // dd5ce0/dd0c50 append the identity even when the native name is
+        // empty. Origin, performance origin and creator are alternatives;
+        // IDs of -1 omit the corresponding suffix entirely.
+        const auto translate_identity = [&]() -> std::optional<std::string> {
+            struct Provenance { std::string_view marker; int kind; };
+            static constexpr auto provenances = std::to_array<Provenance>({
+                {" originating in", 0},
+                {" which grew out of the performances of", 1},
+                {" originally devised by", 2},
+            });
+            size_t provenance_at = std::string::npos;
+            const Provenance *provenance = nullptr;
+            for (const auto &entry : provenances) {
+                const size_t at = sentence.find(entry.marker);
+                if (at == std::string::npos ||
+                    (at + entry.marker.size() < sentence.size() &&
+                     sentence[at + entry.marker.size()] != ' ')) continue;
+                if (provenance_at == std::string::npos || at < provenance_at) {
+                    provenance_at = at;
+                    provenance = &entry;
+                }
+            }
+            std::string_view identity = trim_view(
+                std::string_view(sentence).substr(0, provenance_at));
+            if (identity.ends_with(',')) identity = trim_view(identity.substr(0, identity.size() - 1));
+            std::string_view raw_title, kind;
+            if (identity == "is a") {
+                kind = {};
+            } else if (identity.starts_with("is a ")) {
+                kind = identity.substr(5);
+            } else {
+                const size_t at = identity.find(" is a");
+                if (at == std::string_view::npos || at == 0 ||
+                    (at + 5 < identity.size() && identity[at + 5] != ' '))
+                    return std::nullopt;
+                raw_title = identity.substr(0, at);
+                kind = trim_view(identity.substr(at + 5));
+            }
             struct Identity { std::string_view marker; std::string_view chinese; };
             static constexpr auto identities = std::to_array<Identity>({
-                {" is a form of music used for entertainment", "娱乐音乐"},
-                {" is a form of music used during marches and military engagements",
+                {"form of music used for entertainment", "娱乐音乐"},
+                {"form of music used during marches and military engagements",
                  "行军与作战时使用的军乐"},
-                {" is a form of music used to commemorate important events",
+                {"form of music used to commemorate important events",
                  "纪念重大事件的音乐"},
-                {" is a devotional form of music", "宗教礼乐"},
+                {"devotional form of music", "宗教礼乐"},
             });
+            std::optional<std::string> type;
+            std::string_view tail;
             for (const Identity &entry : identities) {
-                const size_t at = identity.find(entry.marker);
-                if (at == std::string_view::npos) continue;
-                // Poetry and dance also have an origin field. Establish the
-                // music production before offering its tail to a name reader;
-                // a foreign document can otherwise become one enormous name.
-                const auto origin = translate_reference(
-                    std::string_view(sentence).substr(origin_at + origin_marker.size()));
-                if (!origin) return std::nullopt;
-                const auto title = translate_reference(identity.substr(0, at));
-                if (!title) return std::nullopt;
-                std::string tail = trim(std::string(
-                    identity.substr(at + entry.marker.size())));
-                if (!tail.empty() && tail.front() == ',') {
-                    tail.erase(0, 1);
-                    tail = trim(std::move(tail));
-                }
-                std::string result = "“" + *title + "”是一种" +
-                                     std::string(entry.chinese) +
-                                     "，起源于“" + *origin + "”";
-                if (!tail.empty()) {
-                    constexpr std::string_view worship_without_leading_space =
-                        "directed toward the worship of ";
-                    const std::string_view normalized_tail = tail;
-                    if (!normalized_tail.starts_with(
-                            worship_without_leading_space)) {
-                        return std::nullopt;
-                    }
-                    const auto deity = translate_reference(
-                        normalized_tail.substr(
-                            worship_without_leading_space.size()));
-                    if (!deity) return std::nullopt;
-                    result += "，用于敬拜“" + *deity + "”";
-                }
-                return result;
+                if (!kind.starts_with(entry.marker) ||
+                    (kind.size() > entry.marker.size() &&
+                     kind[entry.marker.size()] != ' ' && kind[entry.marker.size()] != ',')) continue;
+                type = std::string(entry.chinese);
+                tail = trim_view(kind.substr(entry.marker.size()));
+                break;
             }
-            return std::nullopt;
-        }
+            if (!type) {
+                // The default usage emits no type. Its following fixed
+                // composer/musician sentence proves music ownership before
+                // an otherwise generic "is a" sentence is admitted.
+                const bool music_document = source.find(
+                    "The rules of the form are applied by composers to produce individual pieces of music which can be performed") != std::string::npos ||
+                    source.find("The form guides musicians during improvised performances") != std::string::npos;
+                if (!kind.empty() || !music_document) return std::nullopt;
+                type = exact_literal_translation("Musical form");
+                if (!type) return std::nullopt;
+            }
+            std::optional<std::string> title;
+            if (!raw_title.empty()) {
+                title = translate_reference(raw_title);
+                if (!title) return std::nullopt;
+            }
+            std::string result = title
+                ? "“" + *title + "”是一种" + *type
+                : "这是一种" + *type;
+            if (provenance) {
+                const auto raw_reference = trim_view(std::string_view(sentence).substr(
+                    provenance_at + provenance->marker.size()));
+                const auto reference = raw_reference.empty()
+                    ? exact_literal_translation(provenance->kind == 2
+                        ? "Art form: unspecified creator" : "Art form: unspecified origin")
+                    : translate_reference(raw_reference);
+                if (!reference) return std::nullopt;
+                result += raw_reference.empty()
+                    ? std::string(provenance->kind == 2 ? "，创作者" : "，来源") + *reference
+                    : provenance->kind == 2
+                    ? "，最初由“" + *reference + "”创编"
+                    : provenance->kind == 1
+                        ? "，从“" + *reference + "”的表演中发展而来"
+                        : "，起源于“" + *reference + "”";
+            }
+            if (tail.starts_with(',')) tail = trim_view(tail.substr(1));
+            if (!tail.empty()) {
+                // dd5d9f appends the worship prefix before the figure
+                // formatter, whose empty result leaves the complete prefix.
+                constexpr std::string_view worship_marker = "directed toward the worship of";
+                if (!tail.starts_with(worship_marker) ||
+                    (tail.size() > worship_marker.size() &&
+                     tail[worship_marker.size()] != ' ')) return std::nullopt;
+                const auto raw_deity = trim_view(tail.substr(worship_marker.size()));
+                const auto deity = raw_deity.empty()
+                    ? exact_literal_translation("Art form: unspecified deity")
+                    : translate_reference(raw_deity);
+                if (!deity) return std::nullopt;
+                result += raw_deity.empty() ? "，" + *deity : "，用于敬拜“" + *deity + "”";
+            }
+            return result;
+        };
+        if (auto identity = translate_identity()) return identity;
 
         if (sentence ==
             "The rules of the form are applied by composers to produce individual pieces of music which can be performed") {
