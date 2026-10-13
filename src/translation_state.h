@@ -98,8 +98,6 @@ inline void sample_owner(TranslationStateTiming &timing) noexcept {
 
 class TranslationStateScope {
     using Clock = std::chrono::steady_clock;
-    std::unique_lock<std::recursive_mutex> lock_{
-        translation_state_mutex, std::defer_lock};
     bool tracing_ = false;
     Clock::time_point acquired_{};
     TranslationStateTiming timing_;
@@ -116,7 +114,10 @@ public:
             translation_state_detail::sample_owner(timing_);
             started = Clock::now();
         }
-        lock_.lock();
+        // Nested translation callbacks already own this thread's lock. Keep
+        // it until the last scope leaves, including non-LIFO scope cleanup,
+        // rather than entering the OS mutex again for every glyph/resolver.
+        if (translation_state_detail::depth == 0) translation_state_mutex.lock();
         ++translation_state_detail::depth;
         if (tracing_) {
             acquired_ = Clock::now();
@@ -131,9 +132,8 @@ public:
                 Clock::now() - acquired_).count();
             translation_state_detail::clear_owner();
         }
-        --translation_state_detail::depth;
         // Diagnostics must never lengthen the translation critical section.
-        lock_.unlock();
+        if (--translation_state_detail::depth == 0) translation_state_mutex.unlock();
         if (!tracing_ || (timing_.wait_ms < 500.0 && timing_.hold_ms < 500.0)) return;
         const auto observer = translation_state_observer.load(std::memory_order_acquire);
         if (!observer) return;

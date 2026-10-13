@@ -5139,7 +5139,7 @@ private:
     std::vector<Match> find_matches(int only_y = -1,
                                     const unsigned char *screen_override = nullptr) const;
     std::vector<Match> find_native_matches(int only_y,
-        const unsigned char *screen_override) const;
+        const unsigned char *screen_override, bool primary_pages_probed = false) const;
     bool find_fortress_map_matches(int only_y, const unsigned char *screen_override,
         std::vector<Match> &result) const;
     std::vector<Match> find_native_worldgen_matches() const;
@@ -7565,8 +7565,15 @@ unsigned char Overlay::visible_char_at(int x, int y) const {
     // use the same layer decision as suppression and frame recognition;
     // a transparent top space cannot hide a visible base caption.
     bool top = false;
-    const auto *cell = cell_at(x, y, &top);
-    return remember(cell ? cell[0] : 0);
+    if (cached && (cached->flags & CellReadCache::Known)) {
+        top = (cached->flags & CellReadCache::Top) != 0;
+    } else {
+        top = gps_->screen_top && native_ui_top_layer_at(*gps_, tile);
+        if (cached)
+            cached->flags |= CellReadCache::Known | (top ? CellReadCache::Top : 0);
+    }
+    const auto *screen = top ? gps_->screen_top : gps_->screen;
+    return remember(screen ? screen[tile * 8] : 0);
 }
 
 static bool ascii_word_byte(unsigned char ch) {
@@ -16965,7 +16972,7 @@ std::vector<Match> Overlay::find_matches(int only_y,
 }
 
 std::vector<Match> Overlay::find_native_matches(int only_y,
-        const unsigned char *screen_override) const {
+        const unsigned char *screen_override, bool primary_pages_probed) const {
     RenderTimingScope match_timing(render_timings_, config_.trace_render_timing, RenderTimingStage::Match);
     RenderTimingScope context_timing(render_timings_, config_.trace_render_timing, RenderTimingStage::Context);
     RenderTimingScope context_detail(render_timings_, config_.trace_render_timing, RenderTimingStage::Ownership);
@@ -16978,8 +16985,10 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     }
     // Title captions have no item, character or history semantics. Establish
     // the complete current menu before entering the shared page pipeline.
-    if (find_main_menu_matches(only_y, screen_override, result)) return result;
-    if (find_settings_video_matches(only_y, screen_override, result)) return result;
+    if (!primary_pages_probed) {
+        if (find_main_menu_matches(only_y, screen_override, result)) return result;
+        if (find_settings_video_matches(only_y, screen_override, result)) return result;
+    }
     // This native view owns its captions and event viewport from the first
     // frame; its private renderer never enters the shared screen matcher.
 #ifdef _WIN32
@@ -16990,7 +16999,8 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     // those pages through the full-screen semantic pipeline a second time.
     if (native_info_background_view(gps_))
         return find_native_info_background_matches(only_y, screen_override);
-    if (find_fortress_map_matches(only_y, screen_override, result)) return result;
+    if (!primary_pages_probed &&
+            find_fortress_map_matches(only_y, screen_override, result)) return result;
     NativePanelReadScope panel_reads(gps_);
     refresh_dfhack_raw_creature_labels();
     if (!NativeUiReadScope::active) {
@@ -33506,7 +33516,10 @@ void Overlay::prepare_frame() {
             settings_video_frame_ = find_settings_video_matches(-1, nullptr, prepared_matches_);
             if (!settings_video_frame_) {
                 fortress_map_frame_ = find_fortress_map_matches(-1, nullptr, prepared_matches_);
-                if (!fortress_map_frame_) prepared_matches_ = find_matches();
+                // These three page probes just failed on this same composed
+                // view. Raw/background recursion still probes its own view.
+                if (!fortress_map_frame_)
+                    prepared_matches_ = find_native_matches(-1, nullptr, true);
             }
         }
         const size_t cells = static_cast<size_t>(gps_->dimx) * gps_->dimy;
@@ -42564,15 +42577,13 @@ extern "C" int dfcn_render_copy(SDL_Renderer *renderer, SDL_Texture *texture,
     if (g_drawing_overlay || g_native_resolution_write_graphics) {
         return g_real_copy ? g_real_copy(renderer, texture, source, dest) : -1;
     }
-    {
-        TranslationStateScope translation;
-        if (native_worldgen_main_view(native_graphics()))
-            return g_real_copy ? g_real_copy(renderer, texture, source, dest) : -1;
-        // The opaque management component is submitted on its own target.
-        // Covered background copies have no visible pixels and must not
-        // feed the main sweep's glyph/occlusion/suppression registries.
-        if (native_info_background_copy_hidden(renderer, dest)) return 0;
-    }
+    TranslationStateScope translation;
+    if (native_worldgen_main_view(native_graphics()))
+        return g_real_copy ? g_real_copy(renderer, texture, source, dest) : -1;
+    // The opaque management component is submitted on its own target.
+    // Covered background copies have no visible pixels and must not
+    // feed the main sweep's glyph/occlusion/suppression registries.
+    if (native_info_background_copy_hidden(renderer, dest)) return 0;
     const uintptr_t caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
     if (caller == g_base_glyph_return) {
         return g_overlay.intercept_glyph_copy(renderer, texture, source, dest, false, g_real_copy);

@@ -45,18 +45,6 @@ bool Overlay::find_fortress_map_matches(int only_y,
         return false;
     CellReadCacheScope cell_reads(*this);
     NativePanelReadScope panel_reads(gps_);
-    std::vector<std::string> rows(gps_->dimy, std::string(gps_->dimx, ' '));
-    for (int y = 0; y < gps_->dimy; ++y) {
-        for (int x = 0; x < gps_->dimx; ++x) {
-            const auto ch = screen_override
-                ? screen_override[(static_cast<size_t>(x) * gps_->dimy + y) * 8]
-                : visible_char_at(x, y);
-            if (ch) rows[y][x] = static_cast<char>(ch);
-        }
-        if (y >= gps_->dimy - 2)
-            if (const auto fps = native_fps_counter_span(rows[y]))
-                std::fill(rows[y].begin() + fps->first, rows[y].begin() + fps->second, ' ');
-    }
     // A raw plane can contain none of the HUD while the other plane owns it.
     // Establish its three-row widget from current composed cells; the field
     // readers below continue to claim only this pass's exact source bytes.
@@ -93,6 +81,22 @@ bool Overlay::find_fortress_map_matches(int only_y,
         }
     }
     if (std::find(counters.begin(), counters.end(), false) != counters.end()) return false;
+
+    // Reject a different document from the small composed HUD proof before
+    // reading either complete source plane. Coverage below still owns the
+    // whole grid and falls back whenever an unrelated caption remains.
+    std::vector<std::string> rows(gps_->dimy, std::string(gps_->dimx, ' '));
+    for (int y = 0; y < gps_->dimy; ++y) {
+        for (int x = 0; x < gps_->dimx; ++x) {
+            const auto ch = screen_override
+                ? screen_override[(static_cast<size_t>(x) * gps_->dimy + y) * 8]
+                : visible_char_at(x, y);
+            if (ch) rows[y][x] = static_cast<char>(ch);
+        }
+        if (y >= gps_->dimy - 2)
+            if (const auto fps = native_fps_counter_span(rows[y]))
+                std::fill(rows[y].begin() + fps->first, rows[y].begin() + fps->second, ' ');
+    }
 
     std::vector<Match> matches;
     // Keep complete identities and native rank grammar ahead of dictionary

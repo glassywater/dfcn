@@ -62,6 +62,9 @@ struct NativeUiLayerGrid {
                 source.screentexpos_top_anchored_x, source.screentexpos_top_anchored_y}
         }};
         for (size_t i = 0; i < planes.size(); ++i) {
+            // An inactive top plane is never consumed by the native input
+            // pass. When it becomes active, this complete copy replaces it.
+            if (i && !source.top_in_use) continue;
             auto &plane = planes[i];
             if (screens[i]) std::copy_n(screens[i], count * 8, plane.screen.data());
             else std::fill(plane.screen.begin(), plane.screen.end(), 0);
