@@ -6,6 +6,50 @@
 void Overlay::layout_fortress_help(SDL_Renderer *renderer) {
     if (!gps_ || !face_ || !renderer ||
         gps_->tile_pixel_x <= 0 || gps_->tile_pixel_y <= 0) return;
+    if (NativeHelpForegroundScope::active && !g_native_help_layer.index_panels.empty()) {
+        const int tile_w = gps_->tile_pixel_x, tile_h = gps_->tile_pixel_y;
+        const int origin_x = (gps_->screen_pixel_x - gps_->dimx * tile_w) / 2;
+        const int origin_y = (gps_->screen_pixel_y - gps_->dimy * tile_h) / 2;
+        const int pixels = unified_font_pixels();
+        for (const auto &panel : g_native_help_layer.index_panels) {
+            for (Match &match : prepared_matches_) {
+                if (match.rule != kHelpIndexRule || match.target.empty() ||
+                        match.native_help_source_only || match.native_split_duplicate ||
+                        match.x < panel.frame.x ||
+                        match.x + match.length > panel.frame.x + panel.frame.w) continue;
+                const bool heading = match.y == panel.heading_y;
+                const int row = match.y - panel.first_caption_y;
+                const bool caption = row >= 0 && row / 3 < panel.visible_entries &&
+                    row % 3 <= 1;
+                if (!heading && !caption) continue;
+                const int left = heading ? panel.frame.x + 1 : panel.caption_left;
+                const int right = heading ? panel.frame.x + panel.frame.w - 1
+                    : panel.caption_right;
+                if (left < 0 || right > gps_->dimx || left >= right ||
+                        match.y < 0 || match.y >= gps_->dimy) continue;
+                // Native row slots own the font, origin and baseline. A
+                // title's English length cannot create a smaller centre;
+                // viewed/completed shares its button title's left margin.
+                match.layout_x = left;
+                match.layout_y = match.y;
+                match.layout_length = right - left;
+                match.layout_clip_right = right;
+                match.layout_left = !heading;
+                match.layout_box_pixel_x = -1;
+                match.layout_box_pixel_width = 0;
+                match.layout_fixed_baseline = true;
+                match.layout_pixel_y = 0;
+                match.layout_font_pixels = pixels;
+                match.layout_lock_font_pixels = true;
+                match.layout_visual_height_pixels = 0;
+                match.layout_line_height_pixels = tile_h;
+                match.layout_native_clip = SDL_Rect{origin_x + left * tile_w,
+                    origin_y + match.y * tile_h, (right - left) * tile_w, tile_h};
+                match.layout_ellipsize = true;
+            }
+        }
+        return;
+    }
     std::array<Match *, 2> headings{};
     for (Match &match : prepared_matches_) {
         if (match.target.empty() || match.native_split_text ||
@@ -16,13 +60,11 @@ void Overlay::layout_fortress_help(SDL_Renderer *renderer) {
     if (!headings[0] || !headings[1] || headings[0]->y != headings[1]->y ||
         headings[0]->x >= headings[1]->x) return;
 
-    // Use current lower-layer skin handles, not sampled screenshot pixels,
-    // fixed grid coordinates or texture IDs remembered from a previous frame.
+    // Use the shared live skin reader for graphical textures and classic
+    // CP437/palette cells, including either native texture plane.
+    const auto settings = native_ui_settings();
     auto has_skin = [&](int x, int y, int32_t skin) {
-        bool top = false;
-        if (skin <= 0 || !cell_at(x, y, &top)) return false;
-        const long *tiles = top ? gps_->screentexpos_top_lower : gps_->screentexpos_lower;
-        return tiles && tiles[static_cast<size_t>(x) * gps_->dimy + y] == skin;
+        return native_ui_skin_at(*gps_, x, y, skin, settings && settings->classic);
     };
     struct Panel { int left, right, bottom; };
     auto panel_for = [&](const Match &heading) -> std::optional<Panel> {

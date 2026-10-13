@@ -75,10 +75,87 @@
                     if (!tile_is(left + dx, top + dy, corner[dx][dy])) return false;
             return true;
         };
-        // The index is a different native widget: two hover-frame panels.
-        // Its previously untranslated entries must join the existing shared
-        // caption layout, rather than waiting for a generic word rule.
-        for (int y = 0; y < gps_->dimy; ++y) {
+        // The directory renderer supplies complete caption slots. Consume
+        // each row once, including unknown captions, before any word matcher
+        // can turn an English label's width into its translated display box.
+        const auto append_index_row = [&](int left, int right, int y,
+                int display_left, int display_right, bool centered, bool owned_slot) {
+            left = std::max(0, left);
+            right = std::min(gps_->dimx, right);
+            if (y < 0 || y >= gps_->dimy || left >= right ||
+                    display_left < 0 || display_right > gps_->dimx ||
+                    display_left >= display_right) return;
+            std::string band = help_rows[y].substr(left, right - left);
+            if (owned_slot && settings && settings->classic) {
+                const int32_t (*skins[])[3] = {
+                    native_texture_button_rectangle(*gps_),
+                    native_texture_button_rectangle_selected(*gps_),
+                    native_texture_button_rectangle_light(*gps_),
+                    native_texture_button_rectangle_dark(*gps_),
+                };
+                // A status replaces part of the native button's lower rail.
+                // Empty classic rails remain skin, rather than prose.
+                for (int at = 0; at < right - left; ++at)
+                    for (const auto *skin : skins)
+                        for (int sx = 0; sx < 3; ++sx)
+                            for (int sy = 0; sy < 3; ++sy)
+                                if (native_ui_skin_at(*gps_, left + at, y,
+                                        skin[sx][sy], true)) band[at] = ' ';
+            }
+            const auto source = trim_view(band);
+            if (source.empty()) {
+                if (owned_slot) claim_source(left, y, right - left);
+                return;
+            }
+            const int x = left + static_cast<int>(source.data() - band.data());
+            std::vector<int> colors;
+            auto translated = translate_help_paragraph_result(source,
+                field_foregrounds(x, y, static_cast<int>(source.size())), colors);
+            Match match{x, y, static_cast<int>(source.size()),
+                kHelpIndexRule, {}, std::string(source)};
+            match.layout_x = display_left;
+            match.layout_length = display_right - display_left;
+            match.layout_clip_right = display_right;
+            match.layout_left = !centered;
+            if (translated.usable() && contains_cjk_utf8(translated.target)) {
+                match.target = translated.target;
+                match.layout_glyph_foreground_rgb = std::move(colors);
+                match.translation_result =
+                    std::make_shared<const dfcn::TranslationResult>(std::move(translated));
+                if (only_y < 0 || only_y == y) result.push_back(std::move(match));
+            } else {
+                auto preserved = preserve_native_translation(source, "help-index");
+                preserved.owner = "native-help-index";
+                match.translation_result =
+                    std::make_shared<const dfcn::TranslationResult>(std::move(preserved));
+                match.native_help_source_only = true;
+                match.native_help_review_source = source;
+                untranslated_help_rows.push_back(std::move(match));
+            }
+            if (owned_slot) claim_source(left, y, right - left);
+            else claim_source(x, y, static_cast<int>(source.size()));
+        };
+        const bool native_index = NativeHelpForegroundScope::active &&
+            !g_native_help_layer.index_panels.empty();
+        if (native_index) {
+            for (const auto &panel : g_native_help_layer.index_panels) {
+                const int panel_left = panel.frame.x + 1;
+                const int panel_right = panel.frame.x + panel.frame.w - 1;
+                append_index_row(panel_left, panel_right, panel.heading_y,
+                    panel_left, panel_right, true, true);
+                for (int entry = 0; entry < panel.visible_entries; ++entry) {
+                    const int y = panel.first_caption_y + entry * 3;
+                    append_index_row(panel.caption_left - 1, panel.caption_right, y,
+                        panel.caption_left, panel.caption_right, false, true);
+                    append_index_row(panel.caption_left - 1, panel.caption_right, y + 1,
+                        panel.caption_left, panel.caption_right, false, true);
+                }
+            }
+        }
+        // Older native owners still prove the two connected hover frames.
+        // Include their headings here too: the help layer has no generic
+        // dictionary pass to recover them after its document pass finishes.
+        for (int y = 0; !native_index && y < gps_->dimy; ++y) {
             const size_t first = help_rows[y].find("Interactive tutorial");
             const size_t second = help_rows[y].find("Information and guides");
             if (first == std::string::npos || second == std::string::npos || first >= second)
@@ -96,6 +173,8 @@
                        tile_is(right, bottom, skin[2][1])) ++bottom;
                 if (bottom >= gps_->dimy || !tile_is(left, bottom, skin[0][2]) ||
                     !tile_is(right, bottom, skin[2][2])) continue;
+                append_index_row(static_cast<int>(at), static_cast<int>(at + length), y,
+                    left + 1, right, true, false);
                 for (int row_y = y + 1; row_y < bottom; ++row_y) {
                     const std::string band = help_rows[row_y].substr(left + 1, right - left - 1);
                     for (const auto &field : split_text_fields(band)) {
@@ -122,9 +201,26 @@
             break;
         }
         std::vector<SDL_Rect> help_panels;
+        const auto append_help_panel = [&](const SDL_Rect &panel) {
+            if (panel.x < 0 || panel.y < 0 || panel.w <= 0 || panel.h <= 0 ||
+                    panel.x + panel.w > gps_->dimx || panel.y + panel.h > gps_->dimy ||
+                    std::any_of(help_panels.begin(), help_panels.end(),
+                        [&](const SDL_Rect &known) {
+                            return known.x == panel.x && known.y == panel.y &&
+                                known.w == panel.w && known.h == panel.h;
+                        })) return;
+            help_panels.push_back(panel);
+        };
+        if (NativeHelpForegroundScope::active && g_native_help_layer.index_intro) {
+            // The directory's opening prose uses HOVER_RECTANGLE rather
+            // than HELP_BORDER. Its native owner supplies the complete frame;
+            // the ordinary paragraph pass below retains all wrapped rows.
+            const auto &frame = *g_native_help_layer.index_intro;
+            append_help_panel({frame.x + 1, frame.y + 1, frame.w - 2, frame.h - 2});
+        }
         const auto collapsed_panels = native_collapsed_help_panels(*gps_);
         for (const auto &panel : collapsed_panels)
-            help_panels.push_back({panel.frame.x + 1, panel.frame.y + 1,
+            append_help_panel({panel.frame.x + 1, panel.frame.y + 1,
                 panel.frame.w - 2, panel.frame.h - 2});
         for (int bottom = 2; bottom < gps_->dimy; ++bottom) {
             for (int left = 0; left + 8 < gps_->dimx; ++left) {
@@ -164,7 +260,7 @@
                     const auto known = translate_help_paragraph(introduction,
                         std::vector<int>(introduction.size(), 0), colors);
                     if (known && contains_cjk_utf8(*known)) {
-                        help_panels.push_back({left + 1, plain_top + 1,
+                        append_help_panel({left + 1, plain_top + 1,
                             right - left - 1, bottom - plain_top - 1});
                         left = right;
                         continue;
@@ -184,7 +280,7 @@
                 for (int y = top + corner_height; y < bottom; ++y)
                     if (!skin_at(left, y, 0, 1) || !skin_at(right, y, 2, 1)) sides = false;
                 if (!sides) continue;
-                help_panels.push_back({left + 1, top + 1, right - left - 1, bottom - top - 1});
+                append_help_panel({left + 1, top + 1, right - left - 1, bottom - top - 1});
                 left = right;
             }
         }
@@ -232,7 +328,7 @@
                 std::vector<int> colors;
                 const auto known = translate_help_paragraph(introduction,
                     std::vector<int>(introduction.size(), 0), colors);
-                if (known && contains_cjk_utf8(*known)) help_panels.push_back(*panel);
+                if (known && contains_cjk_utf8(*known)) append_help_panel(*panel);
             }
         }
         // The help skin overwrites background text in the composed grid.

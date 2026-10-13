@@ -100,6 +100,8 @@ static void native_help_reset_frame(void *renderer) {
     native_worldgen_begin_frame();
     layer.frames.clear();
     layer.collapsed_titles.clear();
+    layer.index_panels.clear();
+    layer.index_intro.reset();
     layer.native_renderer = nullptr;
     layer.renderer = nullptr;
     void **methods = nullptr;

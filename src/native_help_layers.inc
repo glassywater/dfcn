@@ -118,10 +118,19 @@ struct NativeHelpCollapsedTitle {
     std::string source;
 };
 
+struct NativeHelpIndexPanel {
+    SDL_Rect frame{};
+    int heading_y = 0;
+    int caption_left = 0, caption_right = 0;
+    int first_caption_y = 0, visible_entries = 0;
+};
+
 struct NativeUiLayerStorage {
     NativeUiLayerGrid foreground;
     std::vector<SDL_Rect> frames;
     std::vector<NativeHelpCollapsedTitle> collapsed_titles;
+    std::vector<NativeHelpIndexPanel> index_panels;
+    std::optional<SDL_Rect> index_intro;
     void *native_renderer = nullptr;
     SDL_Renderer *renderer = nullptr;
     bool ready = false;
