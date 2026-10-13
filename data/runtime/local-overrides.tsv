@@ -1,4 +1,6 @@
 # Local high-priority fixes. Rebuild through the host build-deploy entry.
+# Fortress HUD siege banner; retain case-sensitive matching for this caption.
+SIEGE	围攻	w
 # Creation rows substitute the actual noble position in this whole caption.
 Squad creation: New squad	新建{position}的小队	l
 Squad creation: Existing squad	{position}的小队	l
