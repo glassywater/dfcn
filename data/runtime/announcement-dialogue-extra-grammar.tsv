@@ -132,3 +132,241 @@ merchant-hawk-origin	get your {s} all the way from {s}	快来买你的一路从{
 merchant-hawk-origin	your very own {s} from {s}	专属于你的来自{s2}的{s1}	merchant-genuine-item,merchant-advert-origin	0x1404cddfa/0x1404cde11/0x1404cde28 ->0x1404cdfdb..0x1404ce23c; imperative scopes over item with origin
 merchant-hawk-origin	your very own {s} clear from {s}	专属于你的远从{s2}运来的{s1}	merchant-genuine-item,merchant-advert-origin	0x1404cddfa/0x1404cde11/0x1404cde28 ->0x1404cdfdb..0x1404ce23c; imperative scopes over item with origin
 merchant-hawk-origin	your very own {s} all the way from {s}	专属于你的一路从{s2}运来的{s1}	merchant-genuine-item,merchant-advert-origin	0x1404cddfa/0x1404cde11/0x1404cde28 ->0x1404cdfdb..0x1404ce23c; imperative scopes over item with origin
+# ELF 53.16 complete conversation productions, reconstructed from 187c510 and its suppliers.
+sentence	Can you tell me where I can find {s}?	能告诉我到哪里能找到{s1}吗？	dialogue-query-person	ELF 189e69f..189e87c -> a10320 / b6ca30
+sentence	Please guide me to {s}.	请带我去找{s1}。	dialogue-query-person	ELF 189e40c..189e5e9 -> a10320 / b6ca30
+sentence	What can you tell me about {s}?	能跟我说说{s1}吗？	dialogue-query-person	ELF 189f926..189fb03 -> a10320 / b6ca30
+dialogue-query-person	{s}	{s1}	$historical-actor	ELF a10320: named/unnamed caste, ghost, zombie, unknown and animated identity
+dialogue-query-person	{s}	{s1}	$unit	ELF 187c510..18be0a7 ->1c428e0: live-unit fallback
+dialogue-query-person	myself	我自己		ELF a10320 reflexive role
+dialogue-query-person	you	你		ELF 1889a91 / 1889dc2
+dialogue-query-person	yourself	你自己		ELF 1888f0a
+sentence	I worship no one.	我不崇拜任何神祇。		ELF 103b6cc
+sentence	I worship {s}.	我崇拜{s1}。	dialogue-query-person	ELF 103c609 / 103d457 -> a10320
+sentence	I found myself dead.	我发现自己已经死了。		ELF 101a3d4
+sentence	I'm in charge of {s} now. Make way for {s}!	现在由我掌管{s1}。给{s2}让路！	$name,$name	ELF 18a94cd..18a98dc: leadership with no position title
+sentence	I'm in charge of {s} now. Make way for {s} {s} and {s}!	现在由我掌管{s1}。给{s2}{s3}和{s4}让路！	$name,$term,$person,$name	ELF 18a94cd..18a98dc ->858b80/12c58d0: position, leader and entity
+sentence	{s}	{s1}	dialogue-judgement	ELF 103b5f0..1042785: complete opinion and reputation production
+dialogue-judgement-subject	You are	你		ELF 103c3xx: addressee is the subject
+dialogue-judgement-subject	He is	他		ELF 103bdda ->12ca700, male historical subject
+dialogue-judgement-subject	She is	她		ELF 103bdda ->12ca700, female historical subject
+dialogue-judgement-subject	It is	它		ELF 103bdda ->12ca700, other historical subject
+dialogue-judgement-subject	{s} is	{s1}	dialogue-query-person	ELF 103bdda ->a10320, complete third-person identity
+dialogue-judgement-person	You	你		ELF 103c3xx
+dialogue-judgement-person	you	你		ELF 103c3xx
+dialogue-judgement-person	He	他		ELF 12ca700
+dialogue-judgement-person	She	她		ELF 12ca700
+dialogue-judgement-person	It	它		ELF 12ca700
+dialogue-judgement-person	him	他		ELF 12ca8a0: male object
+dialogue-judgement-person	her	她		ELF 12ca8a0: female object
+dialogue-judgement-person	it	它		ELF 12ca8a0: other object
+dialogue-judgement-person	{s}	{s1}	dialogue-query-person	ELF a10320: opinion subject/object historical reference
+dialogue-judgement	{s} {s}.	{s1}是{s2}。	dialogue-judgement-subject,dialogue-judgement-predicate	ELF 103be7d relationship switch and 103caa0 reputation switch
+dialogue-judgement	I don't know {s}.	我不认识{s1}。	dialogue-judgement-person	ELF 1040bxx: no relationship fallback
+dialogue-judgement	I loathe {s} with every fiber of my being.	我从骨子里厌恶{s1}。	dialogue-judgement-person	ELF 103d298..1040a70: opinion <-99
+dialogue-judgement	I hate {s}.	我恨{s1}。	dialogue-judgement-person	ELF 103d298: opinion <-74
+dialogue-judgement	I never liked {s}.	我从来就不喜欢{s1}。	dialogue-judgement-person	ELF 103d298: negative opinion
+dialogue-judgement	I never liked {s}, and now we can all see why.	我从来就不喜欢{s1}，现在大家都知道原因了。	dialogue-judgement-person	ELF 104089c: hostile appended clause
+dialogue-judgement	I hate {s}, and now we can all see why.	我恨{s1}，现在大家都知道原因了。	dialogue-judgement-person	ELF 104089c: hostile appended clause
+dialogue-judgement	I loathe {s} with every fiber of my being, and now we can all see why.	我从骨子里厌恶{s1}，现在大家都知道原因了。	dialogue-judgement-person	ELF 104089c: hostile appended clause
+dialogue-judgement	{s} {s}, but that bond seems so thin now.	{s1}是{s2}，可如今这份情谊似乎淡了。	dialogue-judgement-subject,dialogue-judgement-predicate	ELF 1040b82: friend affinity with adverse circumstance
+dialogue-judgement	It is my misfortune that {s} {s}.	不幸的是，{s1}是{s2}。	dialogue-judgement-subject,dialogue-judgement-predicate	ELF 10402f7: related but hostile
+dialogue-judgement	{s} feasts on the blood of the living!	{s1}吸食活人的鲜血！	dialogue-judgement-person	ELF 103ede6: blood-drinking identity
+dialogue-judgement-predicate	a murderer	杀人凶手		ELF 103b5f0..1042785: native relationship/reputation branch
+dialogue-judgement-predicate	an enemy	敌人		ELF 103b5f0..1042785: native relationship/reputation branch
+dialogue-judgement-predicate	a friend	朋友		ELF 103b5f0..1042785: native relationship/reputation branch
+dialogue-judgement-predicate	unstable	个精神不稳定的家伙		ELF 103b5f0..1042785: native relationship/reputation branch
+dialogue-judgement-predicate	gladly not of the living	个庆幸自己不属于活人行列的存在		ELF 103b5f0..1042785: native relationship/reputation branch
+dialogue-judgement-predicate	of the living and must be killed	个必须被杀死的活物		ELF 103b5f0..1042785: native relationship/reputation branch
+dialogue-judgement-predicate	not of the living	个不属于活人行列的存在		ELF 103b5f0..1042785: native relationship/reputation branch
+dialogue-judgement-predicate	the same as me	和我一样的存在		ELF 103b5f0..1042785: native relationship/reputation branch
+dialogue-judgement-predicate	an animal	一只动物		ELF 103b5f0..1042785: native relationship/reputation branch
+dialogue-judgement-predicate	a safe creature	无害的生物		ELF 103b5f0..1042785: native relationship/reputation branch
+dialogue-judgement-predicate	a dangerous animal	危险的动物		ELF 103b5f0..1042785: native relationship/reputation branch
+dialogue-judgement-predicate	my prisoner	我的囚犯		ELF 103b5f0..1042785: native relationship/reputation branch
+dialogue-judgement-predicate	my master	我的师父		ELF 103b5f0..1042785: native relationship/reputation branch
+dialogue-judgement-predicate	my apprentice	我的徒弟		ELF 103b5f0..1042785: native relationship/reputation branch
+dialogue-judgement-predicate	my traveling companion	我的旅伴		ELF 103b5f0..1042785: native relationship/reputation branch
+dialogue-judgement-predicate	my lover	我的恋人		ELF 103b5f0..1042785: native relationship/reputation branch
+dialogue-judgement-predicate	my enemy	我的敌人		ELF 103b5f0..1042785: native relationship/reputation branch
+dialogue-judgement-predicate	a monster	怪物		ELF 103b5f0..1042785: native relationship/reputation branch
+dialogue-judgement-predicate	my former master	我以前的师父		ELF 103b5f0..1042785: native relationship/reputation branch
+dialogue-judgement-predicate	my former apprentice	我以前的徒弟		ELF 103b5f0..1042785: native relationship/reputation branch
+dialogue-judgement-predicate	an intruder	闯入者		ELF 103b5f0..1042785: native relationship/reputation branch
+dialogue-judgement-predicate	a close friend	亲密的朋友		ELF 103b5f0..1042785: native relationship/reputation branch
+dialogue-judgement-predicate	a kindred spirit	志同道合的人		ELF 103b5f0..1042785: native relationship/reputation branch
+dialogue-judgement-predicate	my neighbor	我的邻居		ELF 103b5f0..1042785: native relationship/reputation branch
+dialogue-judgement-predicate	my partner	我的搭档		ELF 103b5f0..1042785: native relationship/reputation branch
+dialogue-judgement-predicate	on my side	我这一边的人		ELF 103b5f0..1042785: native relationship/reputation branch
+dialogue-judgement-predicate	my comrade	我的战友		ELF 103b5f0..1042785: native relationship/reputation branch
+dialogue-judgement-predicate	worthy of respect	值得尊敬的人		ELF 103b5f0..1042785: native relationship/reputation branch
+dialogue-judgement-predicate	a protector of the defenseless	弱者的保护者		ELF 103b5f0..1042785: native relationship/reputation branch
+dialogue-judgement-predicate	part of the problem	造成问题的人之一		ELF 103b5f0..1042785: native relationship/reputation branch
+dialogue-judgement-predicate	a thieving scoundrel	偷鸡摸狗的恶棍		ELF 103b5f0..1042785: native relationship/reputation branch
+dialogue-judgement-predicate	an enemy fighter	敌方战士		ELF 103b5f0..1042785: native relationship/reputation branch
+# All five native reputation strengths, optional also, adverse clauses and incident details.
+dialogue-judgement-predicate	something of a hunter	略懂狩猎的人		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	gives sermons, and may be a preacher	会布道、可能是传道者的人		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	something of a dancer	略懂舞蹈的人		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	a modest bard	普通的吟游诗人		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	a poet, according to some	人们口中的诗人		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	a storyteller, or at least tells stories	讲故事的人，或者至少会讲些故事		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	unhinged	疯狂的家伙		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	somewhat violent	有些暴力倾向的人		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	prone to violence	容易诉诸暴力的人		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	well-known brawler	出了名的斗殴者		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	capable of such violence	能做出这种暴行的人		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	a loyal soldier	忠诚的士兵		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	a very loyal soldier	十分忠诚的士兵		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	such a loyal soldier	如此忠诚的士兵		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	famous for your loyalty as a soldier	以忠诚闻名的士兵		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	one of the most loyal soldiers to serve anybody at any time	古往今来最忠诚的士兵之一		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	thuggish	行事蛮横的恶棍		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	a brigand	强盗		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	a killer	杀手		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	something of a flatterer	有点会奉承的人		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	somewhat quarrelsome	有些好争吵的人		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	known to be quarrelsome	出了名的爱争吵的人		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	infamously quarrelsome	爱争吵而臭名远扬的人		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	good for a deal now and then	偶尔能做成买卖的人		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	a pleasure to speak with	让人乐于交谈的人		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	brave	勇敢的人		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	so very brave	十分勇敢的人		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	a hero	英雄		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	a great hero	伟大的英雄		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	a legendary hero	传奇英雄		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	a skilled hunter	技艺娴熟的猎人		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	a talented hunter	很有天赋的猎人		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	a great hunter	卓越的猎人		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	a legendary hunter	传奇猎人		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	a skilled preacher	技艺娴熟的传道者		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	a talented preacher	很有天赋的传道者		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	a great preacher	卓越的传道者		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	a legendary preacher	传奇传道者		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	a skilled dancer	技艺娴熟的舞者		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	a talented dancer	很有天赋的舞者		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	a great dancer	卓越的舞者		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	a legendary dancer	传奇舞者		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	a skilled bard	技艺娴熟的吟游诗人		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	a talented bard	很有天赋的吟游诗人		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	a great bard	卓越的吟游诗人		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	a legendary bard	传奇吟游诗人		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	a skilled poet	技艺娴熟的诗人		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	a talented poet	很有天赋的诗人		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	a great poet	卓越的诗人		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	a legendary poet	传奇诗人		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	a skilled storyteller	技艺娴熟的故事讲述者		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	a talented storyteller	很有天赋的故事讲述者		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	a great storyteller	卓越的故事讲述者		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	a legendary storyteller	传奇故事讲述者		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	a known brigand	众所周知的强盗		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	a noted brigand	出了名的强盗		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	an infamous brigand	臭名远扬的强盗		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	a legendary brigand	传奇强盗		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	a known villain	众所周知的恶人		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	a noted villain	出了名的恶人		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	an infamous villain	臭名远扬的恶人		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	a legendary villain	传奇恶人		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	a known killer	众所周知的杀手		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	a noted killer	出了名的杀手		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	an infamous killer	臭名远扬的杀手		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	a legendary killer	传奇杀手		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	a known murderer	众所周知的杀人凶手		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	a noted murderer	出了名的杀人凶手		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	an infamous murderer	臭名远扬的杀人凶手		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	a legendary murderer	传奇杀人凶手		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	a known thug	众所周知的恶棍		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	an infamous thug	臭名远扬的恶棍		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	a legendary thug	传奇恶棍		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	a known flatterer	众所周知的奉承者		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	a noted flatterer	出了名的奉承者		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	an infamous flatterer	臭名远扬的奉承者		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	a legendary flatterer	传奇奉承者		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	a noted quarreler	出了名的好争吵的人		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	a legendary quarreler	传奇好争吵的人		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	a legendary brawler	传奇斗殴者		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	a well-known thug	出了名的恶棍		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	my {s}	我的{s1}	dialogue-family	ELF 103d9e3 ->1503cd0: full relationship field
+dialogue-judgement-subject	{s} are	{s1}	$name	ELF 103f504 / 103eee0 / 103ff5b: named entity subject
+dialogue-judgement-subject	{s} and {s} are	{s1}和{s2}	$name,dialogue-judgement-person	ELF 103eee0: group and individual outlaws
+dialogue-judgement-predicate	my comrades	我的战友们		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-predicate	dangerous outlaws	危险的亡命徒		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement	{s} also {s}.	{s1}也是{s2}。	dialogue-judgement-subject,dialogue-judgement-predicate	ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement	{s} {s}, but you can't bargain your way out of this.	{s1}是{s2}，可你靠讨价还价解决不了这件事。	dialogue-judgement-subject,dialogue-judgement-predicate	ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement	{s} also {s}, but you can't bargain your way out of this.	{s1}也是{s2}，可你靠讨价还价解决不了这件事。	dialogue-judgement-subject,dialogue-judgement-predicate	ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement	{s} {s}, but it means nothing now.	{s1}是{s2}，可如今这已经没有意义了。	dialogue-judgement-subject,dialogue-judgement-predicate	ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement	{s} also {s}, but it means nothing now.	{s1}也是{s2}，可如今这已经没有意义了。	dialogue-judgement-subject,dialogue-judgement-predicate	ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement	{s} {s}, but what does that mean now?	{s1}是{s2}，可如今这又有什么意义呢？	dialogue-judgement-subject,dialogue-judgement-predicate	ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement	{s} also {s}, but what does that mean now?	{s1}也是{s2}，可如今这又有什么意义呢？	dialogue-judgement-subject,dialogue-judgement-predicate	ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement	{s} {s}, but nothing can change the facts.	{s1}是{s2}，可事实已经无法改变了。	dialogue-judgement-subject,dialogue-judgement-predicate	ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement	{s} also {s}, but nothing can change the facts.	{s1}也是{s2}，可事实已经无法改变了。	dialogue-judgement-subject,dialogue-judgement-predicate	ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement	{s} {s}, but now this stands between us.	{s1}是{s2}，可如今这件事横在我们之间。	dialogue-judgement-subject,dialogue-judgement-predicate	ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement	{s} also {s}, but now this stands between us.	{s1}也是{s2}，可如今这件事横在我们之间。	dialogue-judgement-subject,dialogue-judgement-predicate	ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement	{s} {s}, but that hardly matters now.	{s1}是{s2}，可如今那已经无关紧要了。	dialogue-judgement-subject,dialogue-judgement-predicate	ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement	{s} also {s}, but that hardly matters now.	{s1}也是{s2}，可如今那已经无关紧要了。	dialogue-judgement-subject,dialogue-judgement-predicate	ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement	{s} {s}, but you can't talk your way out of this.	{s1}是{s2}，可你靠花言巧语逃不过这件事。	dialogue-judgement-subject,dialogue-judgement-predicate	ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement	{s} also {s}, but you can't talk your way out of this.	{s1}也是{s2}，可你靠花言巧语逃不过这件事。	dialogue-judgement-subject,dialogue-judgement-predicate	ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement	{s} {s}, but you can't argue your way out of this.	{s1}是{s2}，可你靠争辩摆脱不了这件事。	dialogue-judgement-subject,dialogue-judgement-predicate	ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement	{s} also {s}, but you can't argue your way out of this.	{s1}也是{s2}，可你靠争辩摆脱不了这件事。	dialogue-judgement-subject,dialogue-judgement-predicate	ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement	{s} {s}, but at what price?	{s1}是{s2}，可代价是什么呢？	dialogue-judgement-subject,dialogue-judgement-predicate	ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement	{s} also {s}, but at what price?	{s1}也是{s2}，可代价是什么呢？	dialogue-judgement-subject,dialogue-judgement-predicate	ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement	{s} {s}, but those acts bring no forgiveness.	{s1}是{s2}，可这些事迹无法让你得到宽恕。	dialogue-judgement-subject,dialogue-judgement-predicate	ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement	{s} also {s}, but those acts bring no forgiveness.	{s1}也是{s2}，可这些事迹无法让你得到宽恕。	dialogue-judgement-subject,dialogue-judgement-predicate	ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement	{s} are not fit to rule.	{s1}不配统治。	$name	ELF 103fa79: named entity misrule
+dialogue-judgement	{s} feast on the blood of the living!	{s1}吸食活人的鲜血！	dialogue-judgement-person	ELF 103ede6: second-person subject
+dialogue-judgement	{s} gave an unwelcome name.	{s1}起了个不受欢迎的名字。	dialogue-judgement-person	ELF 10413e0
+dialogue-judgement	{s} did not name {s}.	{s1}没有为{s2}命名。	dialogue-judgement-person,dialogue-judgement-person	ELF 103e3c6
+dialogue-judgement-person	yourself	你自己		ELF 103c3xx: self-naming subject
+dialogue-judgement-person	{s}	{s1}	$name	ELF a11560: incident party may be an organization
+dialogue-judgement	{s} started a fight with {s}.	{s1}曾挑起与{s2}的争斗。	dialogue-judgement-person,dialogue-judgement-person	ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement	{s} perpetrated a violent attack upon {s}.	{s1}曾对{s2}施暴。	dialogue-judgement-person,dialogue-judgement-person	ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement	{s} robbed {s}.	{s1}曾抢劫{s2}。	dialogue-judgement-person,dialogue-judgement-person	ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement	{s} bullied {s}.	{s1}曾欺凌{s2}。	dialogue-judgement-person,dialogue-judgement-person	ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement	{s} boldly slew {s}.	{s1}曾英勇杀死{s2}。	dialogue-judgement-person,dialogue-judgement-person	ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement	{s} brought battle to {s}.	{s1}曾进攻{s2}。	dialogue-judgement-person,dialogue-judgement-person	ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement	{s} killed {s}.	{s1}曾杀死{s2}。	dialogue-judgement-person,dialogue-judgement-person	ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement	{s} attacked {s}.	{s1}曾袭击{s2}。	dialogue-judgement-person,dialogue-judgement-person	ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement	{s} ended the days of {s}.	{s1}曾终结{s2}的生命。	dialogue-judgement-person,dialogue-judgement-person	ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement	{s} took the life of {s}.	{s1}曾夺去{s2}的性命。	dialogue-judgement-person,dialogue-judgement-person	ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement	{s} justly slew {s}.	{s1}曾正当地诛杀{s2}。	dialogue-judgement-person,dialogue-judgement-person	ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement	{s} challenged {s}.	{s1}曾挑战{s2}。	dialogue-judgement-person,dialogue-judgement-person	ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement	{s} bravely put an end to {s}.	{s1}曾英勇除掉{s2}。	dialogue-judgement-person,dialogue-judgement-person	ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement	{s} reunited {s} with {s}.	{s1}曾让{s2}与{s3}重聚。	dialogue-judgement-person,dialogue-judgement-person,dialogue-judgement-person	ELF 1041680..1041763
+dialogue-judgement-achiever	You have	你		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-achiever	He has	他		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-achiever	She has	她		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-achiever	It has	它		ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement-achiever	{s} has	{s1}	dialogue-query-person	ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement	{s} protected knowledge from being irrevocably lost.	{s1}曾保护知识，使其免于永久失传。	dialogue-judgement-achiever	ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement	{s} protected knowledge from being irrevocably lost, yet that means little now	{s1}曾保护知识，使其免于永久失传，可如今这已经没有多少意义了。	dialogue-judgement-achiever	ELF 103ffed/1040009 /104013b/1040157: native omits terminal punctuation
+dialogue-judgement	{s} also protected knowledge from being irrevocably lost.	{s1}还曾保护知识，使其免于永久失传。	dialogue-judgement-achiever	ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement	{s} also protected knowledge from being irrevocably lost, yet that means little now	{s1}还曾保护知识，使其免于永久失传，可如今这已经没有多少意义了。	dialogue-judgement-achiever	ELF 103ffed/1040009 /104013b/1040157: native omits terminal punctuation
+dialogue-judgement	{s} sought out and returned our treasures.	{s1}曾寻获并归还我们的宝物。	dialogue-judgement-achiever	ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement	{s} sought out and returned our treasures, though it doesn't much matter	{s1}曾寻获并归还我们的宝物，可如今这已经没有多少意义了。	dialogue-judgement-achiever	ELF 103ffed/1040009 /104013b/1040157: native omits terminal punctuation
+dialogue-judgement	{s} also sought out and returned our treasures.	{s1}还曾寻获并归还我们的宝物。	dialogue-judgement-achiever	ELF 103b5f0..1042785; decompiled relationship/reputation source
+dialogue-judgement	{s} also sought out and returned our treasures, though it doesn't much matter	{s1}还曾寻获并归还我们的宝物，可如今这已经没有多少意义了。	dialogue-judgement-achiever	ELF 103ffed/1040009 /104013b/1040157: native omits terminal punctuation
+dialogue-judgement	{s} brought back {s}.	{s1}曾带回{s2}。	dialogue-judgement-person,$book	ELF 103ff92 /10400e0: artifact or written work
+dialogue-judgement	{s} brought back {s}.	{s1}曾带回{s2}。	dialogue-judgement-person,$item	ELF 103ff92 /10400e0: artifact or written work
+dialogue-judgement	{s} brought back an untitled work.	{s1}曾带回一部无题作品。	dialogue-judgement-person	ELF 103ff92 /10400e0: missing work title
+adventure-announcement	Can you tell me where I can find {s}?	能告诉我到哪里能找到{s1}吗？	dialogue-query-person	ELF 189e69f..189e87c -> a10320 / b6ca30
+adventure-announcement	Please guide me to {s}.	请带我去找{s1}。	dialogue-query-person	ELF 189e40c..189e5e9 -> a10320 / b6ca30
+adventure-announcement	What can you tell me about {s}?	能跟我说说{s1}吗？	dialogue-query-person	ELF 189f926..189fb03 -> a10320 / b6ca30
+# Native clauses can continue without sentence punctuation.
+sentence	What happened to bring us to this?	究竟发生了什么，让我们走到了这一步？		ELF 103f0aa: hostile soldier reputation follow-up
+dialogue-judgement-unpunctuated	{s} protected knowledge from being irrevocably lost, yet that means little now	{s1}曾保护知识，使其免于永久失传，可如今这已经没有多少意义了。	dialogue-judgement-achiever	ELF 103ffed/1040009 /104013b/1040157: omitted period before further speech
+dialogue-judgement-unpunctuated	{s} also protected knowledge from being irrevocably lost, yet that means little now	{s1}还曾保护知识，使其免于永久失传，可如今这已经没有多少意义了。	dialogue-judgement-achiever	ELF 103ffed/1040009 /104013b/1040157: omitted period before further speech
+dialogue-judgement-unpunctuated	{s} sought out and returned our treasures, though it doesn't much matter	{s1}曾寻获并归还我们的宝物，可如今这已经没有多少意义了。	dialogue-judgement-achiever	ELF 103ffed/1040009 /104013b/1040157: omitted period before further speech
+dialogue-judgement-unpunctuated	{s} also sought out and returned our treasures, though it doesn't much matter	{s1}还曾寻获并归还我们的宝物，可如今这已经没有多少意义了。	dialogue-judgement-achiever	ELF 103ffed/1040009 /104013b/1040157: omitted period before further speech
+dialogue-judgement	{s} {s}	{s1}{s2}	dialogue-judgement-unpunctuated,dialogue-judgement	ELF 103ff92/10400e0: unpunctuated reputation followed by incident or next reputation
+dialogue-judgement-achiever	{s} have	{s1}	$name	ELF 103f504/103ff5b: plural organization subject
+dialogue-judgement-person	himself	他自己		ELF 12ca810: male reflexive
+dialogue-judgement-person	herself	她自己		ELF 12ca810: female reflexive
+dialogue-judgement-person	itself	它自己		ELF 12ca810: other reflexive
+dialogue-judgement-person	I	我		ELF a1188e: incident party subject is the speaker
+dialogue-judgement-person	me	我		ELF a1197c: incident party object is the speaker
+dialogue-judgement-person	myself	我自己		ELF a1198d: incident party reflexive is the speaker
+dialogue-judgement-person	an unknown creature	一个身份不明的生物		ELF a11810: incident party lacks historical or creature identity
+dialogue-judgement	{s} brought back an unknown artifact.	{s1}曾带回一件不知名的造物。	dialogue-judgement-person	ELF 103ff92/10400e0 -> artifact name helper: missing artifact
+# The native unit formatter emits this literal when its reference is missing.
+dialogue-query-person	a secret identity	秘密身份		ELF 1c42a9f..1c42b56: missing unit reference
+adventure-announcement	{s}	{s1}	dialogue-judgement	ELF 103b5f0..1042785: resolve typed opinion before generic paragraph parsing

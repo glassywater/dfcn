@@ -145341,3 +145341,238 @@ of	所属	h
 .	。	hq
 :	：	h
 ;	；	h
+# Authored announcement-dialogue-extra-grammar.tsv updates applied in place; no data generator required.
+Announcement combat sentence [dialogue-query-person]: Can you tell me where I can find {s}?	能告诉我到哪里能找到{s1}吗？	l
+Announcement combat sentence [dialogue-query-person]: Please guide me to {s}.	请带我去找{s1}。	l
+Announcement combat sentence [dialogue-query-person]: What can you tell me about {s}?	能跟我说说{s1}吗？	l
+Announcement combat dialogue-query-person [$historical-actor]: {s}	{s1}	l
+Announcement combat dialogue-query-person [$unit]: {s}	{s1}	l
+Announcement combat dialogue-query-person []: myself	我自己	l
+Announcement combat dialogue-query-person []: you	你	l
+Announcement combat dialogue-query-person []: yourself	你自己	l
+Announcement combat sentence []: I worship no one.	我不崇拜任何神祇。	l
+Announcement combat sentence [dialogue-query-person]: I worship {s}.	我崇拜{s1}。	l
+Announcement combat sentence []: I found myself dead.	我发现自己已经死了。	l
+Announcement combat sentence [$name,$name]: I'm in charge of {s} now. Make way for {s}!	现在由我掌管{s1}。给{s2}让路！	l
+Announcement combat sentence [$name,$term,$person,$name]: I'm in charge of {s} now. Make way for {s} {s} and {s}!	现在由我掌管{s1}。给{s2}{s3}和{s4}让路！	l
+Announcement combat sentence [dialogue-judgement]: {s}	{s1}	l
+Announcement combat dialogue-judgement-subject []: You are	你	l
+Announcement combat dialogue-judgement-subject []: He is	他	l
+Announcement combat dialogue-judgement-subject []: She is	她	l
+Announcement combat dialogue-judgement-subject []: It is	它	l
+Announcement combat dialogue-judgement-subject [dialogue-query-person]: {s} is	{s1}	l
+Announcement combat dialogue-judgement-person []: You	你	l
+Announcement combat dialogue-judgement-person []: you	你	l
+Announcement combat dialogue-judgement-person []: He	他	l
+Announcement combat dialogue-judgement-person []: She	她	l
+Announcement combat dialogue-judgement-person []: It	它	l
+Announcement combat dialogue-judgement-person []: him	他	l
+Announcement combat dialogue-judgement-person []: her	她	l
+Announcement combat dialogue-judgement-person []: it	它	l
+Announcement combat dialogue-judgement-person [dialogue-query-person]: {s}	{s1}	l
+Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} {s}.	{s1}是{s2}。	l
+Announcement combat dialogue-judgement [dialogue-judgement-person]: I don't know {s}.	我不认识{s1}。	l
+Announcement combat dialogue-judgement [dialogue-judgement-person]: I loathe {s} with every fiber of my being.	我从骨子里厌恶{s1}。	l
+Announcement combat dialogue-judgement [dialogue-judgement-person]: I hate {s}.	我恨{s1}。	l
+Announcement combat dialogue-judgement [dialogue-judgement-person]: I never liked {s}.	我从来就不喜欢{s1}。	l
+Announcement combat dialogue-judgement [dialogue-judgement-person]: I never liked {s}, and now we can all see why.	我从来就不喜欢{s1}，现在大家都知道原因了。	l
+Announcement combat dialogue-judgement [dialogue-judgement-person]: I hate {s}, and now we can all see why.	我恨{s1}，现在大家都知道原因了。	l
+Announcement combat dialogue-judgement [dialogue-judgement-person]: I loathe {s} with every fiber of my being, and now we can all see why.	我从骨子里厌恶{s1}，现在大家都知道原因了。	l
+Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} {s}, but that bond seems so thin now.	{s1}是{s2}，可如今这份情谊似乎淡了。	l
+Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: It is my misfortune that {s} {s}.	不幸的是，{s1}是{s2}。	l
+Announcement combat dialogue-judgement [dialogue-judgement-person]: {s} feasts on the blood of the living!	{s1}吸食活人的鲜血！	l
+Announcement combat dialogue-judgement-predicate []: an enemy	敌人	l
+Announcement combat dialogue-judgement-predicate []: a friend	朋友	l
+Announcement combat dialogue-judgement-predicate []: unstable	个精神不稳定的家伙	l
+Announcement combat dialogue-judgement-predicate []: gladly not of the living	个庆幸自己不属于活人行列的存在	l
+Announcement combat dialogue-judgement-predicate []: of the living and must be killed	个必须被杀死的活物	l
+Announcement combat dialogue-judgement-predicate []: not of the living	个不属于活人行列的存在	l
+Announcement combat dialogue-judgement-predicate []: the same as me	和我一样的存在	l
+Announcement combat dialogue-judgement-predicate []: an animal	一只动物	l
+Announcement combat dialogue-judgement-predicate []: a safe creature	无害的生物	l
+Announcement combat dialogue-judgement-predicate []: a dangerous animal	危险的动物	l
+Announcement combat dialogue-judgement-predicate []: my prisoner	我的囚犯	l
+Announcement combat dialogue-judgement-predicate []: my master	我的师父	l
+Announcement combat dialogue-judgement-predicate []: my apprentice	我的徒弟	l
+Announcement combat dialogue-judgement-predicate []: my traveling companion	我的旅伴	l
+Announcement combat dialogue-judgement-predicate []: my lover	我的恋人	l
+Announcement combat dialogue-judgement-predicate []: my enemy	我的敌人	l
+Announcement combat dialogue-judgement-predicate []: a monster	怪物	l
+Announcement combat dialogue-judgement-predicate []: my former master	我以前的师父	l
+Announcement combat dialogue-judgement-predicate []: my former apprentice	我以前的徒弟	l
+Announcement combat dialogue-judgement-predicate []: an intruder	闯入者	l
+Announcement combat dialogue-judgement-predicate []: a close friend	亲密的朋友	l
+Announcement combat dialogue-judgement-predicate []: a kindred spirit	志同道合的人	l
+Announcement combat dialogue-judgement-predicate []: my neighbor	我的邻居	l
+Announcement combat dialogue-judgement-predicate []: my partner	我的搭档	l
+Announcement combat dialogue-judgement-predicate []: on my side	我这一边的人	l
+Announcement combat dialogue-judgement-predicate []: my comrade	我的战友	l
+Announcement combat dialogue-judgement-predicate []: worthy of respect	值得尊敬的人	l
+Announcement combat dialogue-judgement-predicate []: a protector of the defenseless	弱者的保护者	l
+Announcement combat dialogue-judgement-predicate []: part of the problem	造成问题的人之一	l
+Announcement combat dialogue-judgement-predicate []: a thieving scoundrel	偷鸡摸狗的恶棍	l
+Announcement combat dialogue-judgement-predicate []: an enemy fighter	敌方战士	l
+Announcement combat dialogue-judgement-predicate []: something of a hunter	略懂狩猎的人	l
+Announcement combat dialogue-judgement-predicate []: gives sermons, and may be a preacher	会布道、可能是传道者的人	l
+Announcement combat dialogue-judgement-predicate []: something of a dancer	略懂舞蹈的人	l
+Announcement combat dialogue-judgement-predicate []: a modest bard	普通的吟游诗人	l
+Announcement combat dialogue-judgement-predicate []: a poet, according to some	人们口中的诗人	l
+Announcement combat dialogue-judgement-predicate []: a storyteller, or at least tells stories	讲故事的人，或者至少会讲些故事	l
+Announcement combat dialogue-judgement-predicate []: unhinged	疯狂的家伙	l
+Announcement combat dialogue-judgement-predicate []: somewhat violent	有些暴力倾向的人	l
+Announcement combat dialogue-judgement-predicate []: prone to violence	容易诉诸暴力的人	l
+Announcement combat dialogue-judgement-predicate []: well-known brawler	出了名的斗殴者	l
+Announcement combat dialogue-judgement-predicate []: capable of such violence	能做出这种暴行的人	l
+Announcement combat dialogue-judgement-predicate []: a loyal soldier	忠诚的士兵	l
+Announcement combat dialogue-judgement-predicate []: a very loyal soldier	十分忠诚的士兵	l
+Announcement combat dialogue-judgement-predicate []: such a loyal soldier	如此忠诚的士兵	l
+Announcement combat dialogue-judgement-predicate []: famous for your loyalty as a soldier	以忠诚闻名的士兵	l
+Announcement combat dialogue-judgement-predicate []: one of the most loyal soldiers to serve anybody at any time	古往今来最忠诚的士兵之一	l
+Announcement combat dialogue-judgement-predicate []: thuggish	行事蛮横的恶棍	l
+Announcement combat dialogue-judgement-predicate []: a brigand	强盗	l
+Announcement combat dialogue-judgement-predicate []: a killer	杀手	l
+Announcement combat dialogue-judgement-predicate []: a murderer	杀人凶手	l
+Announcement combat dialogue-judgement-predicate []: something of a flatterer	有点会奉承的人	l
+Announcement combat dialogue-judgement-predicate []: somewhat quarrelsome	有些好争吵的人	l
+Announcement combat dialogue-judgement-predicate []: known to be quarrelsome	出了名的爱争吵的人	l
+Announcement combat dialogue-judgement-predicate []: infamously quarrelsome	爱争吵而臭名远扬的人	l
+Announcement combat dialogue-judgement-predicate []: good for a deal now and then	偶尔能做成买卖的人	l
+Announcement combat dialogue-judgement-predicate []: a pleasure to speak with	让人乐于交谈的人	l
+Announcement combat dialogue-judgement-predicate []: brave	勇敢的人	l
+Announcement combat dialogue-judgement-predicate []: so very brave	十分勇敢的人	l
+Announcement combat dialogue-judgement-predicate []: a hero	英雄	l
+Announcement combat dialogue-judgement-predicate []: a great hero	伟大的英雄	l
+Announcement combat dialogue-judgement-predicate []: a legendary hero	传奇英雄	l
+Announcement combat dialogue-judgement-predicate []: a skilled hunter	技艺娴熟的猎人	l
+Announcement combat dialogue-judgement-predicate []: a talented hunter	很有天赋的猎人	l
+Announcement combat dialogue-judgement-predicate []: a great hunter	卓越的猎人	l
+Announcement combat dialogue-judgement-predicate []: a legendary hunter	传奇猎人	l
+Announcement combat dialogue-judgement-predicate []: a skilled preacher	技艺娴熟的传道者	l
+Announcement combat dialogue-judgement-predicate []: a talented preacher	很有天赋的传道者	l
+Announcement combat dialogue-judgement-predicate []: a great preacher	卓越的传道者	l
+Announcement combat dialogue-judgement-predicate []: a legendary preacher	传奇传道者	l
+Announcement combat dialogue-judgement-predicate []: a skilled dancer	技艺娴熟的舞者	l
+Announcement combat dialogue-judgement-predicate []: a talented dancer	很有天赋的舞者	l
+Announcement combat dialogue-judgement-predicate []: a great dancer	卓越的舞者	l
+Announcement combat dialogue-judgement-predicate []: a legendary dancer	传奇舞者	l
+Announcement combat dialogue-judgement-predicate []: a skilled bard	技艺娴熟的吟游诗人	l
+Announcement combat dialogue-judgement-predicate []: a talented bard	很有天赋的吟游诗人	l
+Announcement combat dialogue-judgement-predicate []: a great bard	卓越的吟游诗人	l
+Announcement combat dialogue-judgement-predicate []: a legendary bard	传奇吟游诗人	l
+Announcement combat dialogue-judgement-predicate []: a skilled poet	技艺娴熟的诗人	l
+Announcement combat dialogue-judgement-predicate []: a talented poet	很有天赋的诗人	l
+Announcement combat dialogue-judgement-predicate []: a great poet	卓越的诗人	l
+Announcement combat dialogue-judgement-predicate []: a legendary poet	传奇诗人	l
+Announcement combat dialogue-judgement-predicate []: a skilled storyteller	技艺娴熟的故事讲述者	l
+Announcement combat dialogue-judgement-predicate []: a talented storyteller	很有天赋的故事讲述者	l
+Announcement combat dialogue-judgement-predicate []: a great storyteller	卓越的故事讲述者	l
+Announcement combat dialogue-judgement-predicate []: a legendary storyteller	传奇故事讲述者	l
+Announcement combat dialogue-judgement-predicate []: a known brigand	众所周知的强盗	l
+Announcement combat dialogue-judgement-predicate []: a noted brigand	出了名的强盗	l
+Announcement combat dialogue-judgement-predicate []: an infamous brigand	臭名远扬的强盗	l
+Announcement combat dialogue-judgement-predicate []: a legendary brigand	传奇强盗	l
+Announcement combat dialogue-judgement-predicate []: a known villain	众所周知的恶人	l
+Announcement combat dialogue-judgement-predicate []: a noted villain	出了名的恶人	l
+Announcement combat dialogue-judgement-predicate []: an infamous villain	臭名远扬的恶人	l
+Announcement combat dialogue-judgement-predicate []: a legendary villain	传奇恶人	l
+Announcement combat dialogue-judgement-predicate []: a known killer	众所周知的杀手	l
+Announcement combat dialogue-judgement-predicate []: a noted killer	出了名的杀手	l
+Announcement combat dialogue-judgement-predicate []: an infamous killer	臭名远扬的杀手	l
+Announcement combat dialogue-judgement-predicate []: a legendary killer	传奇杀手	l
+Announcement combat dialogue-judgement-predicate []: a known murderer	众所周知的杀人凶手	l
+Announcement combat dialogue-judgement-predicate []: a noted murderer	出了名的杀人凶手	l
+Announcement combat dialogue-judgement-predicate []: an infamous murderer	臭名远扬的杀人凶手	l
+Announcement combat dialogue-judgement-predicate []: a legendary murderer	传奇杀人凶手	l
+Announcement combat dialogue-judgement-predicate []: a known thug	众所周知的恶棍	l
+Announcement combat dialogue-judgement-predicate []: an infamous thug	臭名远扬的恶棍	l
+Announcement combat dialogue-judgement-predicate []: a legendary thug	传奇恶棍	l
+Announcement combat dialogue-judgement-predicate []: a known flatterer	众所周知的奉承者	l
+Announcement combat dialogue-judgement-predicate []: a noted flatterer	出了名的奉承者	l
+Announcement combat dialogue-judgement-predicate []: an infamous flatterer	臭名远扬的奉承者	l
+Announcement combat dialogue-judgement-predicate []: a legendary flatterer	传奇奉承者	l
+Announcement combat dialogue-judgement-predicate []: a noted quarreler	出了名的好争吵的人	l
+Announcement combat dialogue-judgement-predicate []: a legendary quarreler	传奇好争吵的人	l
+Announcement combat dialogue-judgement-predicate []: a legendary brawler	传奇斗殴者	l
+Announcement combat dialogue-judgement-predicate []: a well-known thug	出了名的恶棍	l
+Announcement combat dialogue-judgement-predicate [dialogue-family]: my {s}	我的{s1}	l
+Announcement combat dialogue-judgement-subject [$name]: {s} are	{s1}	l
+Announcement combat dialogue-judgement-subject [$name,dialogue-judgement-person]: {s} and {s} are	{s1}和{s2}	l
+Announcement combat dialogue-judgement-predicate []: my comrades	我的战友们	l
+Announcement combat dialogue-judgement-predicate []: dangerous outlaws	危险的亡命徒	l
+Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} also {s}.	{s1}也是{s2}。	l
+Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} {s}, but you can't bargain your way out of this.	{s1}是{s2}，可你靠讨价还价解决不了这件事。	l
+Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} also {s}, but you can't bargain your way out of this.	{s1}也是{s2}，可你靠讨价还价解决不了这件事。	l
+Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} {s}, but it means nothing now.	{s1}是{s2}，可如今这已经没有意义了。	l
+Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} also {s}, but it means nothing now.	{s1}也是{s2}，可如今这已经没有意义了。	l
+Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} {s}, but what does that mean now?	{s1}是{s2}，可如今这又有什么意义呢？	l
+Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} also {s}, but what does that mean now?	{s1}也是{s2}，可如今这又有什么意义呢？	l
+Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} {s}, but nothing can change the facts.	{s1}是{s2}，可事实已经无法改变了。	l
+Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} also {s}, but nothing can change the facts.	{s1}也是{s2}，可事实已经无法改变了。	l
+Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} {s}, but now this stands between us.	{s1}是{s2}，可如今这件事横在我们之间。	l
+Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} also {s}, but now this stands between us.	{s1}也是{s2}，可如今这件事横在我们之间。	l
+Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} {s}, but that hardly matters now.	{s1}是{s2}，可如今那已经无关紧要了。	l
+Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} also {s}, but that hardly matters now.	{s1}也是{s2}，可如今那已经无关紧要了。	l
+Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} {s}, but you can't talk your way out of this.	{s1}是{s2}，可你靠花言巧语逃不过这件事。	l
+Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} also {s}, but you can't talk your way out of this.	{s1}也是{s2}，可你靠花言巧语逃不过这件事。	l
+Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} {s}, but you can't argue your way out of this.	{s1}是{s2}，可你靠争辩摆脱不了这件事。	l
+Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} also {s}, but you can't argue your way out of this.	{s1}也是{s2}，可你靠争辩摆脱不了这件事。	l
+Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} {s}, but at what price?	{s1}是{s2}，可代价是什么呢？	l
+Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} also {s}, but at what price?	{s1}也是{s2}，可代价是什么呢？	l
+Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} {s}, but those acts bring no forgiveness.	{s1}是{s2}，可这些事迹无法让你得到宽恕。	l
+Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} also {s}, but those acts bring no forgiveness.	{s1}也是{s2}，可这些事迹无法让你得到宽恕。	l
+Announcement combat dialogue-judgement [$name]: {s} are not fit to rule.	{s1}不配统治。	l
+Announcement combat dialogue-judgement [dialogue-judgement-person]: {s} feast on the blood of the living!	{s1}吸食活人的鲜血！	l
+Announcement combat dialogue-judgement [dialogue-judgement-person]: {s} gave an unwelcome name.	{s1}起了个不受欢迎的名字。	l
+Announcement combat dialogue-judgement [dialogue-judgement-person,dialogue-judgement-person]: {s} did not name {s}.	{s1}没有为{s2}命名。	l
+Announcement combat dialogue-judgement-person []: yourself	你自己	l
+Announcement combat dialogue-judgement-person [$name]: {s}	{s1}	l
+Announcement combat dialogue-judgement [dialogue-judgement-person,dialogue-judgement-person]: {s} started a fight with {s}.	{s1}曾挑起与{s2}的争斗。	l
+Announcement combat dialogue-judgement [dialogue-judgement-person,dialogue-judgement-person]: {s} perpetrated a violent attack upon {s}.	{s1}曾对{s2}施暴。	l
+Announcement combat dialogue-judgement [dialogue-judgement-person,dialogue-judgement-person]: {s} robbed {s}.	{s1}曾抢劫{s2}。	l
+Announcement combat dialogue-judgement [dialogue-judgement-person,dialogue-judgement-person]: {s} bullied {s}.	{s1}曾欺凌{s2}。	l
+Announcement combat dialogue-judgement [dialogue-judgement-person,dialogue-judgement-person]: {s} boldly slew {s}.	{s1}曾英勇杀死{s2}。	l
+Announcement combat dialogue-judgement [dialogue-judgement-person,dialogue-judgement-person]: {s} brought battle to {s}.	{s1}曾进攻{s2}。	l
+Announcement combat dialogue-judgement [dialogue-judgement-person,dialogue-judgement-person]: {s} killed {s}.	{s1}曾杀死{s2}。	l
+Announcement combat dialogue-judgement [dialogue-judgement-person,dialogue-judgement-person]: {s} attacked {s}.	{s1}曾袭击{s2}。	l
+Announcement combat dialogue-judgement [dialogue-judgement-person,dialogue-judgement-person]: {s} ended the days of {s}.	{s1}曾终结{s2}的生命。	l
+Announcement combat dialogue-judgement [dialogue-judgement-person,dialogue-judgement-person]: {s} took the life of {s}.	{s1}曾夺去{s2}的性命。	l
+Announcement combat dialogue-judgement [dialogue-judgement-person,dialogue-judgement-person]: {s} justly slew {s}.	{s1}曾正当地诛杀{s2}。	l
+Announcement combat dialogue-judgement [dialogue-judgement-person,dialogue-judgement-person]: {s} challenged {s}.	{s1}曾挑战{s2}。	l
+Announcement combat dialogue-judgement [dialogue-judgement-person,dialogue-judgement-person]: {s} bravely put an end to {s}.	{s1}曾英勇除掉{s2}。	l
+Announcement combat dialogue-judgement [dialogue-judgement-person,dialogue-judgement-person,dialogue-judgement-person]: {s} reunited {s} with {s}.	{s1}曾让{s2}与{s3}重聚。	l
+Announcement combat dialogue-judgement-achiever []: You have	你	l
+Announcement combat dialogue-judgement-achiever []: He has	他	l
+Announcement combat dialogue-judgement-achiever []: She has	她	l
+Announcement combat dialogue-judgement-achiever []: It has	它	l
+Announcement combat dialogue-judgement-achiever [dialogue-query-person]: {s} has	{s1}	l
+Announcement combat dialogue-judgement [dialogue-judgement-achiever]: {s} protected knowledge from being irrevocably lost.	{s1}曾保护知识，使其免于永久失传。	l
+Announcement combat dialogue-judgement [dialogue-judgement-achiever]: {s} protected knowledge from being irrevocably lost, yet that means little now	{s1}曾保护知识，使其免于永久失传，可如今这已经没有多少意义了。	l
+Announcement combat dialogue-judgement [dialogue-judgement-achiever]: {s} also protected knowledge from being irrevocably lost.	{s1}还曾保护知识，使其免于永久失传。	l
+Announcement combat dialogue-judgement [dialogue-judgement-achiever]: {s} also protected knowledge from being irrevocably lost, yet that means little now	{s1}还曾保护知识，使其免于永久失传，可如今这已经没有多少意义了。	l
+Announcement combat dialogue-judgement [dialogue-judgement-achiever]: {s} sought out and returned our treasures.	{s1}曾寻获并归还我们的宝物。	l
+Announcement combat dialogue-judgement [dialogue-judgement-achiever]: {s} sought out and returned our treasures, though it doesn't much matter	{s1}曾寻获并归还我们的宝物，可如今这已经没有多少意义了。	l
+Announcement combat dialogue-judgement [dialogue-judgement-achiever]: {s} also sought out and returned our treasures.	{s1}还曾寻获并归还我们的宝物。	l
+Announcement combat dialogue-judgement [dialogue-judgement-achiever]: {s} also sought out and returned our treasures, though it doesn't much matter	{s1}还曾寻获并归还我们的宝物，可如今这已经没有多少意义了。	l
+Announcement combat dialogue-judgement [dialogue-judgement-person,$book]: {s} brought back {s}.	{s1}曾带回{s2}。	l
+Announcement combat dialogue-judgement [dialogue-judgement-person,$item]: {s} brought back {s}.	{s1}曾带回{s2}。	l
+Announcement combat dialogue-judgement [dialogue-judgement-person]: {s} brought back an untitled work.	{s1}曾带回一部无题作品。	l
+Announcement combat adventure-announcement [dialogue-query-person]: Can you tell me where I can find {s}?	能告诉我到哪里能找到{s1}吗？	l
+Announcement combat adventure-announcement [dialogue-query-person]: Please guide me to {s}.	请带我去找{s1}。	l
+Announcement combat adventure-announcement [dialogue-query-person]: What can you tell me about {s}?	能跟我说说{s1}吗？	l
+Announcement combat sentence []: What happened to bring us to this?	究竟发生了什么，让我们走到了这一步？	l
+Announcement combat dialogue-judgement-unpunctuated [dialogue-judgement-achiever]: {s} protected knowledge from being irrevocably lost, yet that means little now	{s1}曾保护知识，使其免于永久失传，可如今这已经没有多少意义了。	l
+Announcement combat dialogue-judgement-unpunctuated [dialogue-judgement-achiever]: {s} also protected knowledge from being irrevocably lost, yet that means little now	{s1}还曾保护知识，使其免于永久失传，可如今这已经没有多少意义了。	l
+Announcement combat dialogue-judgement-unpunctuated [dialogue-judgement-achiever]: {s} sought out and returned our treasures, though it doesn't much matter	{s1}曾寻获并归还我们的宝物，可如今这已经没有多少意义了。	l
+Announcement combat dialogue-judgement-unpunctuated [dialogue-judgement-achiever]: {s} also sought out and returned our treasures, though it doesn't much matter	{s1}还曾寻获并归还我们的宝物，可如今这已经没有多少意义了。	l
+Announcement combat dialogue-judgement [dialogue-judgement-unpunctuated,dialogue-judgement]: {s} {s}	{s1}{s2}	l
+Announcement combat dialogue-judgement-achiever [$name]: {s} have	{s1}	l
+Announcement combat dialogue-judgement-person []: himself	他自己	l
+Announcement combat dialogue-judgement-person []: herself	她自己	l
+Announcement combat dialogue-judgement-person []: itself	它自己	l
+Announcement combat dialogue-judgement-person []: I	我	l
+Announcement combat dialogue-judgement-person []: me	我	l
+Announcement combat dialogue-judgement-person []: myself	我自己	l
+Announcement combat dialogue-judgement-person []: an unknown creature	一个身份不明的生物	l
+Announcement combat dialogue-judgement [dialogue-judgement-person]: {s} brought back an unknown artifact.	{s1}曾带回一件不知名的造物。	l
+Announcement combat dialogue-query-person []: a secret identity	秘密身份	l
+Announcement combat adventure-announcement [dialogue-judgement]: {s}	{s1}	l
