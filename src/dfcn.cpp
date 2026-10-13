@@ -3493,7 +3493,7 @@ public:
     void shutdown();
     void invalidate_render_resources();
     void render(SDL_Renderer *renderer);
-    bool prepare_native_ui_input(NativeUiLayerGrid &input);
+    bool prepare_native_ui_input(NativeUiLayerGrid &input, SDL_Renderer *renderer);
     void render_dfhack_layer(SDL_Renderer *renderer, const NativeDfhackTranslatedFrame &frame);
     std::shared_ptr<const NativeDfhackTranslatedFrame> completed_dfhack_layer_frame(
         std::shared_ptr<const NativeDfhackLayerStorage> latest) noexcept;
@@ -4308,6 +4308,11 @@ private:
     size_t newly_collected_untranslated_ = 0;
     bool untranslated_limit_reported_ = false;
     bool frame_prepared_ = false;
+    // The main UI owns one match/layout result from raster entry to Present.
+    bool native_ui_input_read_ = false;
+    bool native_ui_frame_ready_ = false;
+    std::shared_ptr<NativeTooltipPage> native_ui_layout_page_;
+    std::optional<NativeToolbarTooltip> native_ui_toolbar_tooltip_;
     bool fortress_map_frame_ = false;
     bool main_menu_frame_ = false;
     bool settings_video_frame_ = false;
@@ -5040,6 +5045,8 @@ private:
     void reset_worldgen_event_cache();
     bool apply_requested_reload();
     void prepare_frame();
+    std::shared_ptr<NativeTooltipPage> prepare_frame_layout(SDL_Renderer *renderer);
+    void mask_native_ui_matches(NativeUiLayerGrid &input);
     bool prepare_immediate_row(bool top_layer, int y);
     const std::vector<Match> &prepare_immediate_base_matches();
     const NativeKnowledgeLayout &prepare_native_knowledge_layout(
@@ -7296,6 +7303,9 @@ void Overlay::reset_render_state() {
     reset_worldgen_event_cache();
     destroy_textures();
     frame_prepared_ = false;
+    native_ui_frame_ready_ = false;
+    native_ui_layout_page_.reset();
+    native_ui_toolbar_tooltip_.reset();
     fortress_map_frame_ = false;
     main_menu_frame_ = false;
     settings_video_frame_ = false;
@@ -7551,7 +7561,7 @@ unsigned char Overlay::visible_char_at(int x, int y) const {
     // an SDL texture (the resolution menu does exactly this). If
     // the later graphical copy wins the cell, the hidden glyph must not be
     // returned merely because screen_top still contains its byte.
-    if (!NativeDfhackForegroundScope::active && !g_native_info_foreground &&
+    if (!native_ui_input_read_ && !NativeDfhackForegroundScope::active && !g_native_info_foreground &&
         tile < cell_composite_state_.size() &&
         tile < cell_composite_epoch_.size() &&
         graphically_occluded(cell_composite_state_[tile],
@@ -39506,15 +39516,6 @@ int Overlay::intercept_glyph_copy(SDL_Renderer *renderer, SDL_Texture *texture,
         suppression.character = cell[0];
         suppression.dirty = false;
     };
-    if (g_native_ui_input_masked && tile < mask.size() &&
-            mask[tile] != 0 && cell[0] == mask[tile]) {
-        // The renderer sees a blank glyph in its private input. Let its normal
-        // copy refresh the background/dirty history instead of skipping that
-        // blank merely because the unmodified source view still contains text.
-        const int status = real_copy(renderer, texture, source, dest);
-        if (status == 0) record_suppression(false);
-        return status;
-    }
     if ((top_layer || has_lower_layer) && transparent_background) {
         record_suppression(true);
         return 0;
@@ -41529,191 +41530,9 @@ SDL_Rect Overlay::native_paragraph_draw_region(const std::vector<Match> &rows) c
     }
     return region;
 }
-bool Overlay::prepare_native_ui_input(NativeUiLayerGrid &input) {
-    if (!config_.enabled || !face_ || rules_.empty() || !gps_ || !gps_->screen ||
-            gps_->dimx <= 0 || gps_->dimx > 1000 || gps_->dimy <= 0 || gps_->dimy > 1000 ||
-            native_worldgen_main_view(gps_)
-#ifdef _WIN32
-            || native_display_worldgen_page()
-#endif
-            ) return false;
-    // update_all has not emitted any UI glyph yet. Its pinned logical grid
-    // belongs to this draw, not to the preceding Present's graphical cover.
-    // Match the complete composed page so a paragraph spanning both planes
-    // is recognized before either plane reaches the native rasterizer.
-    composite_read_epoch_ = draw_epoch_;
-    g_native_toolbar_tooltip.reset();
-    native_knowledge_frame_matches_.reset();
-    native_knowledge_frame_transition_ = false;
-    refresh_character_overview_context(true);
-    frame_prepared_ = false;
-    prepare_frame();
-    input.copy_native_input(*gps_);
-    const size_t cells = static_cast<size_t>(gps_->dimx) * gps_->dimy;
-    suppress_base_.assign(cells, 0);
-    suppress_top_.assign(cells, 0);
-    const NativeBitmapFontTextures fonts(!prepared_matches_.empty());
-    for (const Match &match : prepared_matches_) {
-        if (match.native_help_source_only || match.native_dfhack_foreground) continue;
-        const int source_length = native_match_source_length(match);
-        const auto source = native_match_source(match);
-        const int begin = std::max(0, match.x);
-        const int end = std::min(gps_->dimx, match.x + source_length);
-        if (begin >= end) continue;
-        const bool fold_case = match.rule >= 0 && static_cast<size_t>(match.rule) < rules_.size() &&
-            rules_[static_cast<size_t>(match.rule)].case_insensitive;
-        const auto source_byte = [fold_case](unsigned char ch) {
-            return fold_case && ch >= 'A' && ch <= 'Z'
-                ? static_cast<unsigned char>(ch - 'A' + 'a') : ch;
-        };
-        const int top = match.native_split_text ? match.native_split_top_y : match.y;
-        const int bottom = top + (match.native_split_text ? 2 : 1);
-        for (int y = std::max(0, top); y < std::min(gps_->dimy, bottom); ++y)
-            for (int x = begin; x < end; ++x) {
-                const int offset = x - match.x;
-                if (help_background_covered(match, x, y)) continue;
-                const auto expected = static_cast<unsigned char>(source[static_cast<size_t>(offset)]);
-                if (!expected || expected == ' ') continue;
-                const size_t tile = static_cast<size_t>(x) * gps_->dimy + y;
-                for (size_t i = 0; i < input.planes.size(); ++i) {
-                    if (i && !gps_->top_in_use) continue;
-                    auto &plane = input.planes[i];
-                    auto &character = plane.screen[tile * 8];
-                    const bool same = source_byte(character) == source_byte(expected);
-                    if (!same && character != 0 && character != ' ') continue;
-                    const auto glyph = same ? character : expected;
-                    // Font-atlas text may remain in a texture slot after its
-                    // logical byte was cleared. Remove only that exact glyph;
-                    // unrelated artwork, frames and backgrounds keep their IDs.
-                    for (size_t slot : {size_t{0}, size_t{1}, size_t{2}})
-                        if (fonts.contains(plane.textures[slot][tile], glyph))
-                            plane.textures[slot][tile] = 0;
-                    if (same) {
-                        (i ? suppress_top_ : suppress_base_)[tile] = character;
-                        character = ' ';
-                    }
-                }
-            }
-    }
-    // Even a retained UI with no changed glyph copies is a new raster input.
-    // Its masked bytes participate in the renderer's native dirty comparison.
-    native_frame_drawn_ = true;
-    return true;
-}
-
-void Overlay::render(SDL_Renderer *renderer) {
-    TranslationStateScope translation_scope;
-    if (native_worldgen_main_view(gps_)
-#ifdef _WIN32
-            || native_history_worldgen_page()
-#endif
-            ) {
-        apply_requested_reload();
-        prepared_matches_.clear();
-        suppress_base_.clear();
-        suppress_top_.clear();
-        native_knowledge_frame_matches_.reset();
-        native_knowledge_frame_transition_ = false;
-        native_frame_submitted_ = native_worldgen_consume_frame_submission() || native_frame_drawn_;
-        native_frame_drawn_ = false;
-        if (native_frame_submitted_ && ++draw_epoch_ == 0) draw_epoch_ = 1;
-        frame_prepared_ = false;
-        return;
-    }
-    (void)install_native_dfhack_render_layers();
-    (void)install_native_dfhack_capture_hook();
-    (void)install_native_dfhack_console_hook();
-    (void)install_native_dfhack_lua_output_hook();
-    (void)install_native_dfhack_sitemap_hook();
-    (void)install_native_dfhack_messagebox_hook();
-    (void)install_native_dfhack_prompt_hook();
-    (void)install_native_dfhack_stonesense_hook();
-    struct EndKnowledgeFrame {
-        std::optional<std::vector<Match>> &matches;
-        bool &transition;
-        ~EndKnowledgeFrame() { matches.reset(); transition = false; }
-    } end_knowledge_frame{native_knowledge_frame_matches_, native_knowledge_frame_transition_};
-    RenderTimingFrame timing_frame{render_timings_, config_.trace_render_timing};
-    RenderTimingScope present_timing(render_timings_, config_.trace_render_timing, RenderTimingStage::Present);
-    NativeHistoryFrameScope history_frame(gps_);
-    native_border_repairs_.clear();
-    // Raw-layer scans may have preceded the final tooltip draw. Reconstruct
-    // its foreground frame again from the completed grid at Present.
-    g_native_toolbar_tooltip.reset();
-    struct EndTooltipFrame {
-        ~EndTooltipFrame() { g_native_toolbar_tooltip.reset(); }
-    } end_tooltip_frame;
-    if (gps_ && gps_->dimx > 0 && gps_->dimx <= 1000 &&
-        gps_->dimy > 0 && gps_->dimy <= 1000) {
-        g_embark_capture_screen_dimx.store(
-            gps_->dimx, std::memory_order_release);
-        g_embark_capture_screen_dimy.store(
-            gps_->dimy, std::memory_order_release);
-    }
-    // A page can finish publishing its quote after the last early glyph
-    // scan, or close without redrawing a quote row. Observe its current
-    // ownership at Present too, before advancing the native draw epoch.
-    refresh_character_overview_context(true);
-    ++frame_count_;
-    // Present can repeat without any native copies. Keep the last actual
-    // composite evidence until another native draw has produced a new frame.
-    native_frame_submitted_ = native_frame_drawn_;
-    native_frame_drawn_ = false;
-    if (native_frame_submitted_ || composite_read_epoch_ == 0)
-        composite_read_epoch_ = draw_epoch_;
-    // Only submitted native copies start a new suppression generation.
-    if (native_frame_submitted_ && ++draw_epoch_ == 0) {
-        draw_epoch_ = 1;
-        std::fill(immediate_base_row_epoch_.begin(), immediate_base_row_epoch_.end(), 0);
-        std::fill(immediate_top_row_epoch_.begin(), immediate_top_row_epoch_.end(), 0);
-        immediate_base_full_scan_epoch_ = 0;
-        immediate_top_full_scan_epoch_ = 0;
-        immediate_base_matches_.clear();
-        immediate_base_matches_epoch_ = 0;
-        immediate_base_matches_screen_ = nullptr;
-        std::fill(cell_composite_epoch_.begin(), cell_composite_epoch_.end(), 0);
-        std::fill(observed_glyph_epoch_.begin(), observed_glyph_epoch_.end(), 0);
-        suppressed_glyphs_.clear();
-    }
-    // Re-scan at present time so the overlay is based on the final logical
-    // grid, rather than any early-frame snapshot prepared by a glyph copy.
-    bool retry_native_knowledge = native_knowledge_frame_matches_ &&
-        native_knowledge_frame_matches_->empty();
-    if (retry_native_knowledge) {
-        std::vector<Match> menu;
-        if (find_main_menu_matches(-1, nullptr, menu) ||
-                find_settings_video_matches(-1, nullptr, menu)) retry_native_knowledge = false;
-    }
-    if (retry_native_knowledge) {
-        native_knowledge_frame_matches_.reset();
-        // Earlier glyphs may already be visible. A late replacement must
-        // describe their complete current source footprint; a transition
-        // retaining older Chinese cannot safely repair those copies.
-        (void)native_knowledge_matches(-1, embark_pause_menu_matches(), false);
-    }
-    frame_prepared_ = false;
-    prepare_frame();
+std::shared_ptr<NativeTooltipPage> Overlay::prepare_frame_layout(SDL_Renderer *renderer) {
     const bool isolated_management_background = native_info_background_view(gps_);
     NativePanelReadScope panel_reads(gps_);
-    publish_dfhack_stonesense_announcements();
-    const auto rendered_help_frames = !main_menu_frame_ && !settings_video_frame_ &&
-        !isolated_management_background && !fortress_map_frame_ &&
-        gps_ && gps_->dimx > 0 && gps_->dimx <= 1000 &&
-        gps_->dimy > 0 && gps_->dimy <= 1000
-        ? native_text_overlay_frames(*gps_) : std::vector<SDL_Rect>{};
-    const bool should_dump = dump_requested_.exchange(false) ||
-                             (config_.dump_first_screen && !dumped_first_);
-    if (should_dump) {
-        dump_screen();
-        dumped_first_ = true;
-    }
-    // Do not enter layout or snapshot recovery in native mode: those paths
-    // can synthesize translated matches even when prepare_frame is empty.
-    if (!config_.enabled || !face_ || rules_.empty() || !gps_ || !gps_->screen) {
-        frame_prepared_ = false;
-        return;
-    }
-    RenderTimingScope layout_timing(render_timings_, config_.trace_render_timing, RenderTimingStage::Layout);
     std::shared_ptr<NativeTooltipPage> layout_page;
     if (main_menu_frame_) {
         normalize_native_split_text();
@@ -42037,6 +41856,238 @@ void Overlay::render(SDL_Renderer *renderer) {
     // their complete card only after restoring its actual layer and rows.
     layout_toolbar_tooltip(renderer);
     }
+    return layout_page;
+}
+
+void Overlay::mask_native_ui_matches(NativeUiLayerGrid &input) {
+    const NativeBitmapFontTextures fonts(!prepared_matches_.empty());
+    for (const Match &match : prepared_matches_) {
+        if (match.native_help_source_only || match.native_dfhack_foreground) continue;
+        const int source_length = native_match_source_length(match);
+        const auto source = native_match_source(match);
+        const int begin = std::max(0, match.x);
+        const int end = std::min(gps_->dimx, match.x + source_length);
+        if (begin >= end) continue;
+        const bool fold_case = match.rule >= 0 && static_cast<size_t>(match.rule) < rules_.size() &&
+            rules_[static_cast<size_t>(match.rule)].case_insensitive;
+        const auto source_byte = [fold_case](unsigned char ch) {
+            return fold_case && ch >= 'A' && ch <= 'Z'
+                ? static_cast<unsigned char>(ch - 'A' + 'a') : ch;
+        };
+        const int top = match.native_split_text ? match.native_split_top_y : match.y;
+        const int bottom = top + (match.native_split_text ? 2 : 1);
+        for (int y = std::max(0, top); y < std::min(gps_->dimy, bottom); ++y)
+            for (int x = begin; x < end; ++x) {
+                const int offset = x - match.x;
+                if (help_background_covered(match, x, y)) continue;
+                const auto expected = static_cast<unsigned char>(source[static_cast<size_t>(offset)]);
+                if (!expected || expected == ' ') continue;
+                const size_t tile = static_cast<size_t>(x) * gps_->dimy + y;
+                for (size_t i = 0; i < input.planes.size(); ++i) {
+                    if (i && !gps_->top_in_use) continue;
+                    auto &plane = input.planes[i];
+                    auto &character = plane.screen[tile * 8];
+                    const bool same = source_byte(character) == source_byte(expected);
+                    if (!same && character != 0 && character != ' ') continue;
+                    const auto glyph = same ? character : expected;
+                    // Font-atlas text may remain in a texture slot after its
+                    // logical byte was cleared. Remove only that exact glyph;
+                    // unrelated artwork, frames and backgrounds keep their IDs.
+                    for (size_t slot : {size_t{0}, size_t{1}, size_t{2}})
+                        if (fonts.contains(plane.textures[slot][tile], glyph))
+                            plane.textures[slot][tile] = 0;
+                    if (same) {
+                        (i ? suppress_top_ : suppress_base_)[tile] = character;
+                        character = ' ';
+                    }
+                }
+            }
+    }
+}
+
+bool Overlay::prepare_native_ui_input(NativeUiLayerGrid &input, SDL_Renderer *renderer) {
+    native_ui_frame_ready_ = false;
+    native_ui_layout_page_.reset();
+    native_ui_toolbar_tooltip_.reset();
+    apply_requested_reload();
+    if (!renderer || !config_.enabled || !face_ || rules_.empty() || !gps_ || !gps_->screen ||
+            gps_->dimx <= 0 || gps_->dimx > 1000 || gps_->dimy <= 0 || gps_->dimy > 1000 ||
+            native_worldgen_main_view(gps_)
+#ifdef _WIN32
+            || native_display_worldgen_page()
+#endif
+            ) return false;
+    // Map-port/background copies precede update_all in this same display.
+    // Their SDL cover describes pixels already painted, not the UI bytes
+    // about to be rasterized. Read the pinned logical page with its native
+    // plane/owner rules, without applying that earlier graphical cover.
+    struct LogicalInputScope {
+        bool &active;
+        bool previous;
+        explicit LogicalInputScope(bool &value) : active(value), previous(value) { active = true; }
+        ~LogicalInputScope() { active = previous; }
+    } logical_input(native_ui_input_read_);
+    CellReadCacheScope cell_reads(*this);
+    NativeHistoryFrameScope history_frame(gps_);
+    NativePanelReadScope panel_reads(gps_);
+    composite_read_epoch_ = draw_epoch_;
+    g_native_toolbar_tooltip.reset();
+    native_knowledge_frame_matches_.reset();
+    native_knowledge_frame_transition_ = false;
+    native_border_repairs_.clear();
+    refresh_character_overview_context(true);
+    frame_prepared_ = false;
+    prepare_frame();
+    input.copy_native_input(*gps_);
+    const size_t cells = static_cast<size_t>(gps_->dimx) * gps_->dimy;
+    suppress_base_.assign(cells, 0);
+    suppress_top_.assign(cells, 0);
+    // Keep every physical source span even when layout drops duplicate
+    // halves or replaces fragments with a complete document.
+    mask_native_ui_matches(input);
+    native_ui_layout_page_ = prepare_frame_layout(renderer);
+    // Layout can recover complete fields. They enter this same raster input,
+    // before any English copy, rather than appearing only at Present.
+    mask_native_ui_matches(input);
+    native_ui_toolbar_tooltip_ = g_native_toolbar_tooltip;
+    native_ui_frame_ready_ = true;
+    // Even a retained UI with no changed glyph copies is a new raster input.
+    // Its masked bytes participate in the renderer's native dirty comparison.
+    native_frame_drawn_ = true;
+    return true;
+}
+
+void Overlay::render(SDL_Renderer *renderer) {
+    TranslationStateScope translation_scope;
+    if (native_worldgen_main_view(gps_)
+#ifdef _WIN32
+            || native_history_worldgen_page()
+#endif
+            ) {
+        apply_requested_reload();
+        prepared_matches_.clear();
+        suppress_base_.clear();
+        suppress_top_.clear();
+        native_knowledge_frame_matches_.reset();
+        native_knowledge_frame_transition_ = false;
+        native_frame_submitted_ = native_worldgen_consume_frame_submission() || native_frame_drawn_;
+        native_frame_drawn_ = false;
+        if (native_frame_submitted_ && ++draw_epoch_ == 0) draw_epoch_ = 1;
+        frame_prepared_ = false;
+        native_ui_frame_ready_ = false;
+        native_ui_layout_page_.reset();
+        native_ui_toolbar_tooltip_.reset();
+        return;
+    }
+    (void)install_native_dfhack_render_layers();
+    (void)install_native_dfhack_capture_hook();
+    (void)install_native_dfhack_console_hook();
+    (void)install_native_dfhack_lua_output_hook();
+    (void)install_native_dfhack_sitemap_hook();
+    (void)install_native_dfhack_messagebox_hook();
+    (void)install_native_dfhack_prompt_hook();
+    (void)install_native_dfhack_stonesense_hook();
+    struct EndKnowledgeFrame {
+        std::optional<std::vector<Match>> &matches;
+        bool &transition;
+        ~EndKnowledgeFrame() { matches.reset(); transition = false; }
+    } end_knowledge_frame{native_knowledge_frame_matches_, native_knowledge_frame_transition_};
+    RenderTimingFrame timing_frame{render_timings_, config_.trace_render_timing};
+    RenderTimingScope present_timing(render_timings_, config_.trace_render_timing, RenderTimingStage::Present);
+    NativeHistoryFrameScope history_frame(gps_);
+    if (!native_ui_frame_ready_) {
+        native_border_repairs_.clear();
+        g_native_toolbar_tooltip.reset();
+    } else {
+        g_native_toolbar_tooltip = native_ui_toolbar_tooltip_;
+    }
+    struct EndTooltipFrame {
+        ~EndTooltipFrame() { g_native_toolbar_tooltip.reset(); }
+    } end_tooltip_frame;
+    if (gps_ && gps_->dimx > 0 && gps_->dimx <= 1000 &&
+        gps_->dimy > 0 && gps_->dimy <= 1000) {
+        g_embark_capture_screen_dimx.store(
+            gps_->dimx, std::memory_order_release);
+        g_embark_capture_screen_dimy.store(
+            gps_->dimy, std::memory_order_release);
+    }
+    // A page can finish publishing its quote after the last early glyph
+    // scan, or close without redrawing a quote row. Observe its current
+    // ownership at Present too, before advancing the native draw epoch.
+    if (!native_ui_frame_ready_) refresh_character_overview_context(true);
+    ++frame_count_;
+    // Present can repeat without any native copies. Keep the last actual
+    // composite evidence until another native draw has produced a new frame.
+    native_frame_submitted_ = native_frame_drawn_;
+    native_frame_drawn_ = false;
+    if (native_frame_submitted_ || composite_read_epoch_ == 0)
+        composite_read_epoch_ = draw_epoch_;
+    // Only submitted native copies start a new suppression generation.
+    if (native_frame_submitted_ && ++draw_epoch_ == 0) {
+        draw_epoch_ = 1;
+        std::fill(immediate_base_row_epoch_.begin(), immediate_base_row_epoch_.end(), 0);
+        std::fill(immediate_top_row_epoch_.begin(), immediate_top_row_epoch_.end(), 0);
+        immediate_base_full_scan_epoch_ = 0;
+        immediate_top_full_scan_epoch_ = 0;
+        immediate_base_matches_.clear();
+        immediate_base_matches_epoch_ = 0;
+        immediate_base_matches_screen_ = nullptr;
+        std::fill(cell_composite_epoch_.begin(), cell_composite_epoch_.end(), 0);
+        std::fill(observed_glyph_epoch_.begin(), observed_glyph_epoch_.end(), 0);
+        suppressed_glyphs_.clear();
+    }
+    // The raster entry has already resolved source ownership and layout.
+    // Reuse its complete result: a second discovery here could draw Chinese
+    // for an English span that was never included in the native input mask.
+#ifdef _WIN32
+    if (!native_ui_frame_ready_) {
+        prepared_matches_.clear();
+        frame_prepared_ = false;
+        return;
+    }
+#endif
+    bool retry_native_knowledge = false;
+    if (!native_ui_frame_ready_) {
+        retry_native_knowledge = native_knowledge_frame_matches_ &&
+            native_knowledge_frame_matches_->empty();
+        if (retry_native_knowledge) {
+            std::vector<Match> menu;
+            if (find_main_menu_matches(-1, nullptr, menu) ||
+                    find_settings_video_matches(-1, nullptr, menu)) retry_native_knowledge = false;
+        }
+        if (retry_native_knowledge) {
+            native_knowledge_frame_matches_.reset();
+            // Earlier glyphs may already be visible. A late replacement must
+            // describe their complete current source footprint; a transition
+            // retaining older Chinese cannot safely repair those copies.
+            (void)native_knowledge_matches(-1, embark_pause_menu_matches(), false);
+        }
+        frame_prepared_ = false;
+        prepare_frame();
+    }
+    const bool isolated_management_background = native_info_background_view(gps_);
+    NativePanelReadScope panel_reads(gps_);
+    publish_dfhack_stonesense_announcements();
+    const auto rendered_help_frames = !main_menu_frame_ && !settings_video_frame_ &&
+        !isolated_management_background && !fortress_map_frame_ &&
+        gps_ && gps_->dimx > 0 && gps_->dimx <= 1000 &&
+        gps_->dimy > 0 && gps_->dimy <= 1000
+        ? native_text_overlay_frames(*gps_) : std::vector<SDL_Rect>{};
+    const bool should_dump = dump_requested_.exchange(false) ||
+                             (config_.dump_first_screen && !dumped_first_);
+    if (should_dump) {
+        dump_screen();
+        dumped_first_ = true;
+    }
+    // Do not enter layout or snapshot recovery in native mode: those paths
+    // can synthesize translated matches even when prepare_frame is empty.
+    if (!config_.enabled || !face_ || rules_.empty() || !gps_ || !gps_->screen) {
+        frame_prepared_ = false;
+        return;
+    }
+    RenderTimingScope layout_timing(render_timings_, config_.trace_render_timing, RenderTimingStage::Layout);
+    const auto layout_page = native_ui_frame_ready_
+        ? native_ui_layout_page_ : prepare_frame_layout(renderer);
     {
         RenderTimingScope collect_timing(render_timings_, config_.trace_render_timing, RenderTimingStage::Collect);
         collect_untranslated_fragments();

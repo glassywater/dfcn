@@ -138,8 +138,12 @@ static void native_map_ui_draw(void *renderer) {
     const auto original = reinterpret_cast<void (*)(void *)>(g_native_map_ui_draw_hook.original);
     if (!original) return;
     auto *source = native_graphics();
+    SDL_Renderer *sdl_renderer = nullptr;
+    if (renderer)
+        std::memcpy(&sdl_renderer, static_cast<unsigned char *>(renderer) + 0x108,
+            sizeof(sdl_renderer));
     bool prepared = false;
-    try { prepared = g_overlay.prepare_native_ui_input(g_native_ui_input); }
+    try { prepared = g_overlay.prepare_native_ui_input(g_native_ui_input, sdl_renderer); }
     catch (...) { /* Preserve native output when an input copy cannot be prepared. */ }
     if (!prepared || !source) {
         callback.call_native([&] { original(renderer); });
