@@ -2299,6 +2299,7 @@ the bestowal of the title of {s} in {p} after attaining sufficient skill with {s
 {a} received the title of {s} in {p} after attaining sufficient skill with {s}, participating in {d} battles, slaying {d} enemies, and being a member for a year in {p}	{a1}在{p2}在{s2}方面达到足够的技艺水平、参加{d1}场战斗、杀死{d2}名敌人及入会满一年后，获得了{p1}的{s1}头衔	ht
 A relatively large arboreal lizard found in the tropical forests. Though it is a vegetarian, and mainly docile, it may whip with its extremely long tail when angered.	一种生活在热带森林中，体型相对较大的树栖蜥蜴。尽管它吃素食，而且通常很温顺，但当它被激怒时，可能会用它极长的尾巴抽打对方。	lP
 Announcement combat agreement-core [agreement-party-list,agreement-party-list,$name]: {s} made an agreement with {s}, becoming a resident of {s} to eradicate monsters	{s1}与{s2}达成协议，成为{s3}的居民，以便消灭怪物	l
+Announcement combat dialogue-judgement-unpunctuated [dialogue-judgement-achiever]: {s} also protected knowledge from being irrevocably lost, yet that means little now	{s1}还曾保护知识，使其免于永久失传，可如今这已经没有多少意义了。	l
 DFHack help: "-j", "--jobs" Print out how many current unprioritized jobs of each type there are. If any job types are specified, only jobs of those types are listed.	"-j", "--jobs" 打印出每种类型当前有多少个非优先作业。如果指定了任何作业类型，则仅列出这些类型的作业。	l
 DFHack help: "misery clear" Clear away negative thoughts added by "misery". Note that this will not clear negative thoughts that your dwarves accumulated "naturally".	"misery clear" 清除"misery"添加的负面想法。请注意，这不会清除您的矮人累积的 "naturally" 的负面想法。	l
 DFHack help: Adds an additional page to the "z" status screen where you can see information about beds, bedrooms, and whether your dwarves have bedrooms of their own.	在 "z" 状态屏幕中添加一个附加页面，您可以在其中查看有关床、卧室以及您的矮人是否有自己的卧室的信息。	l
@@ -2534,6 +2535,7 @@ the bestowal of the title of {s} in {p} after attaining sufficient skill with {s
 A small round mammal whose back is covered in spines. It is nocturnal and feeds on insects. It curls into a ball when startled and is found in temperate regions.	一种小型圆形哺乳动物，背部长满尖刺。它在夜间活动，以昆虫为食。它受到惊吓时会卷曲成球状，常见于温带地区。	lP
 A tiny, foul-tempered humanoid creature that dwells in the evil mountains. They are known to enjoy drinking liquor and will take any unguarded supplies of booze.	居住在邪恶山脉中的小型、脾气暴躁的类人生物。 他们以嗜酒著称，并且会带走任何无人照看的酒类。	lP
 A {s} caravan from {e} has arrived. Your status as a minor land has attracted a bit more trade than usual. However, overall trade sentiments are tenuous at best.	来自{e1}的{s1}商队已抵达。你作为小领地的地位吸引来了比平时略多的贸易。不过，总体贸易意愿至多只能算勉强。	hPt
+Announcement combat dialogue-judgement-unpunctuated [dialogue-judgement-achiever]: {s} protected knowledge from being irrevocably lost, yet that means little now	{s1}曾保护知识，使其免于永久失传，可如今这已经没有多少意义了。	l
 DFHack help: "--dumb" Disables intelligent checking for recursive data structures (loops) and increases the "--maxdepth" to 25 if a value is not already present.	"--dumb" 禁用递归数据结构（循环）的智能检查，如果值尚不存在，则将 "--maxdepth" 增加到 25。	l
 DFHack help: "-c", "--copy" Copy current keyboard cursor position to the clipboard in format "0,0,0" instead of reporting info. For convenience with other tools.	"-c", "--copy" 将当前键盘光标位置以"0,0,0"格式复制到剪贴板，而不是报告信息。为了方便使用其他工具。	l
 DFHack help: "enable burrow" Start monitoring burrows that have names ending in '+' and automatically expand them when walls that border the burrows are dug out.	"enable burrow" 开始监控名称以"+"结尾的活动区，并在挖出与活动区接壤的墙壁时自动扩展它们。	l
@@ -2595,6 +2597,7 @@ the bestowal of the title of {s} in {p} after attaining sufficient skill with {s
 {a} received the title of {s} in {p} after attaining sufficient skill with {s}, serving in combat, slaying {d} enemies, and being a member for a year within {p}.	{a1}在{p2}在{s2}方面达到足够的技艺水平、在战斗中效力、杀死{d1}名敌人及入会满一年后，获得了{p1}的{s1}头衔。	ht
 {a} received the title of {s} in {p} after attaining sufficient skill with {s}, serving in combat, slaying {d} enemies, and {d} years of membership in the wilds.	{a1}在荒野中在{s2}方面达到足够的技艺水平、在战斗中效力、杀死{d1}名敌人及拥有{d2}年会龄后，获得了{p1}的{s1}头衔。	ht
 A {s} caravan from {e} has arrived. Your status as a major land has attracted much more trade than usual. However, overall trade sentiments are tenuous at best.	来自{e1}的{s1}商队已抵达。你作为大领地的地位吸引来了比平时多得多的贸易。不过，总体贸易意愿至多只能算勉强。	hPt
+Announcement combat dialogue-judgement-unpunctuated [dialogue-judgement-achiever]: {s} also sought out and returned our treasures, though it doesn't much matter	{s1}还曾寻获并归还我们的宝物，可如今这已经没有多少意义了。	l
 DFHack help: "--no-target-selector" Do not allow the player to switch naming targets. An option that sets the initial target is required when using this option.	"--no-target-selector" 不允许玩家切换命名目标。使用此选项时需要设置初始目标的选项。	l
 DFHack help: "-m", "--material" The material inside the tile. [number ID] (IRON/GRANITE/CLAY/ TOPAZOLITE/BLACK_OPAL/etc.) (will return nil if the tile is empty)	"-m", "--material" 瓷砖内部的材质。 [号码 ID]（IRON/GRANITE/CLAY/ TOPAZOLITE/BLACK_OPAL/等）（如果图块为空，则返回 nil）	l
 DFHack help: "<material>" can be "cloth", "silk", "yarn", or "leather". The "<item>" can be anything your civilization can produce, such as "dress" or "mitten".	"<材料>"可以是 "cloth"、"silk"、"yarn" 或 "leather"。 "<item>"可以是您的政权可以生产的任何东西，例如 "dress" 或 "mitten"。	l
@@ -2888,6 +2891,8 @@ A huge quadrupedal dinosaur with a row of spines along its back, a spiked tail, 
 Announcement combat agreement-core [agreement-party-list,agreement-party-list,agreement-item,$name,$name]: {s} asked that {s} retrieve {s} from {s} for {s}	{s1}请{s2}为{s5}从{s4}处取回{s3}	l
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list,agreement-item,$name]: the request by {s} that {s} retrieve {s} for {s}	{s1}请{s2}为{s4}取回{s3}的请求	l
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list,agreement-party-list]: the promise by {s} to {s} to give {s} a position	{s1}答应{s2}、给{s3}安排职位的承诺	l
+Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} also {s}, but you can't bargain your way out of this.	{s1}也是{s2}，可你靠讨价还价解决不了这件事。	l
+Announcement combat dialogue-judgement-unpunctuated [dialogue-judgement-achiever]: {s} sought out and returned our treasures, though it doesn't much matter	{s1}曾寻获并归还我们的宝物，可如今这已经没有多少意义了。	l
 DFHack help: "-Q", "--max-quality <integer>" Only include items whose quality level is at most "integer". Useful values are 0 (ordinary) to 5 (masterwork).	"-Q", "--max-quality <integer>" 仅包含质量等级最多为 "integer" 的物品。有用的值为 0（普通）到 5（杰作）。	l
 DFHack help: "-c", "--cursor <pos>" Indicate the starting position of the box or flood fill. If not specified, the position of the keyboard cursor is used.	"-c"、"--cursor <pos>" 表示框或洪水填充的起始位置。如果未指定，则使用键盘光标的位置。	l
 DFHack help: "a", "all [<shape>] [<material>] [<special>] [<variant>]" Set values for any or all of shape, material, special, and/or variant, in any order.	"a"，"所有 [<形状>] [<材料>] [<特殊>] [<变体>]" 以任何顺序为任何或所有形状、材料、特殊、and/or 变体设置值。	l
@@ -3014,6 +3019,8 @@ A {s} caravan from {e} has arrived. Your status as a major land has attracted mu
 Announcement combat agreement-core [agreement-party-list,agreement-party-list,$name]: {s} made an agreement with {s}, becoming a resident of {s} to study	{s1}与{s2}达成协议，成为{s3}的居民，以便求学	l
 Announcement combat agreement-core [agreement-party-list,agreement-party-list,agreement-party-list,$name]: {s} promised {s} to give {s} a position in {s}	{s1}答应{s2}，给{s3}在{s4}安排一个职位	l
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list,$name]: the agreement between {s} and {s} and become a citizen of {s}	{s1}与{s2}达成的入籍协议：成为{s3}的公民	l
+Announcement combat dialogue-judgement [dialogue-judgement-achiever]: {s} also protected knowledge from being irrevocably lost, yet that means little now	{s1}还曾保护知识，使其免于永久失传，可如今这已经没有多少意义了。	l
+Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} also {s}, but you can't argue your way out of this.	{s1}也是{s2}，可你靠争辩摆脱不了这件事。	l
 Congratulations! This fortress is now a Mountainhome, proof that any suggestion of hubris was childish nonsense. And why shouldn't you dig deeper still?!	祝贺你！这座要塞如今已成为山国都城，证明那些狂妄自大的指责不过是幼稚的胡言乱语。又有什么理由不继续向更深处挖掘呢？！	hP
 DFHack help: "ban-cooking all" Ban all otherwise useful types of foods from being cooked. This command can be enabled for Autostart in gui/control-panel.	"ban-cooking all" 禁止烹饪所有其他有用的食物类型。该命令可以在gui/control-panel.中启用自动启动	l
 DFHack help: "diggingInvaders edgesPerTick <n>" Makes the pathfinding algorithm work on at most n edges per tick. Set to 0 or lower to make it unlimited.	"diggingInvaders edgesPerTick <n>" 使寻路算法在每个刻度最多 n 条边上工作。设置为 0 或更低以使其不受限制。	l
@@ -3080,6 +3087,7 @@ Announcement combat agreement-record [agreement-core,agreement-party-list]: {s} 
 Announcement combat agreement-title-core [agreement-party-list,$name]: the agreement between and {s} to work as a mercenary and become a resident of {s}	与{s1}达成的居留协议：成为{s2}的居民，以便从事雇佣兵工作	l
 Announcement combat agreement-title-core [agreement-party-list,$name]: the agreement between {s} and to work as a mercenary and become a resident of {s}	{s1}与达成的居留协议：成为{s2}的居民，以便从事雇佣兵工作	l
 Announcement combat conversation-conflict-choice [conversation-conflict-account,rumor-time]: Summarize the conflict in which {s} (This occurred {s} in )	概述{s1}的冲突（发生时间：{s2}，地点未记载）	l
+Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} also {s}, but you can't talk your way out of this.	{s1}也是{s2}，可你靠花言巧语逃不过这件事。	l
 DFHack help: "--untransform" Turn the unit back into what it was before (assuming you used the "--setPrevRace" option when transforming the first time).	"--untransform" 将单位变回之前的样子（假设您在第一次转换时使用了 "--setPrevRace" 选项）。	l
 DFHack help: "-b", "--block" Only regrass the map block that contains the first "pos" argument. devel/block-borders can be used to visualize map blocks.	"-b", "--block" 仅重新草包含第一个 "pos" 参数的地图块。 devel/block-borders 可用于可视化地图块。	l
 DFHack help: "husbandry now" Run a single cycle, detecting animals that can be milked/sheared an creating jobs. Does not require the tool to be enabled.	"husbandry now" 运行一个循环，检测可以是 milked/sheared 并创造就业机会的动物。不需要启用该工具。	l
@@ -3218,6 +3226,7 @@ A caravan from {e} has arrived. Your status as a minor land has attracted a bit 
 A {s} caravan from {e} has arrived. Trade relations remain strengthened by recent negotiations. However, overall trade sentiments are tenuous at best.	来自{e1}的{s1}商队已抵达。近期谈判对贸易关系的促进作用仍在持续。不过，总体贸易意愿至多只能算勉强。	hPt
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list,$historical-actor]: the joining of {s} with {s} to help rescue {s}	{s1}与{s2}同行，协助营救{s3}	l
 Announcement combat artwork-artifact-destruction-title [historical-artifact,$memorial-actor,$name,$date]: the destruction of {s} by {s} and {s} in {s}	{s4}，{s2}与{s3}毁灭了{s1}	l
+Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} {s}, but you can't bargain your way out of this.	{s1}是{s2}，可你靠讨价还价解决不了这件事。	l
 Announcement combat historical-event-title [$memorial-actor,$travel-site]: the general suspicion of {s} in {s} after a murder and appearing not to age	因发生一起谋杀且看起来不会衰老，{s1}在{s2}受到普遍怀疑	l
 Announcement combat historical-event-title [$memorial-actor,$travel-site]: the general suspicion of {s} in {s} after appearing not to age and a murder	因看起来不会衰老且发生一起谋杀，{s1}在{s2}受到普遍怀疑	l
 Cages can be used to contain an animal, and metal cages can be used by the justice system. Glass cages can be filled with water and used as aquariums.	笼子可关押动物，金属笼也可用于司法系统。玻璃笼可以装水作为水族箱。	hj
@@ -3356,6 +3365,9 @@ the bestowal of the title of {s} in {p} after attaining sufficient skill with {s
 {a} received the title of {s} in {p} after attaining sufficient skill with {s}, serving in combat, slaying {d} enemies, and being a member for a year	{a1}在{s2}方面达到足够的技艺水平、在战斗中效力、杀死{d1}名敌人及入会满一年后，获得了{p1}的{s1}头衔	ht
 A caravan from {e} has arrived. Your status as a minor land has attracted a bit more trade than usual. Overall trade sentiments are tenuous at best.	来自{e1}的商队已抵达。你作为小领地的地位吸引来了比平时略多的贸易。总体贸易意愿至多只能算勉强。	hPt
 Announcement combat agreement-title-core [agreement-party-list,$historical-actor,$historical-actor]: the plot of {s} to frame {s} for by fooling {s}	{s1}欺骗{s3}、栽赃{s2}的阴谋	l
+Announcement combat dialogue-judgement [dialogue-judgement-achiever]: {s} protected knowledge from being irrevocably lost, yet that means little now	{s1}曾保护知识，使其免于永久失传，可如今这已经没有多少意义了。	l
+Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} also {s}, but those acts bring no forgiveness.	{s1}也是{s2}，可这些事迹无法让你得到宽恕。	l
+Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} {s}, but you can't argue your way out of this.	{s1}是{s2}，可你靠争辩摆脱不了这件事。	l
 Announcement combat diplomatic-event-core [diplomatic-meeting-topic,$name,$name]: {s} between {s} and {s} concluded, cementing bonds of mutual trust	{s2}与{s3}之间的{s1}结束了，并巩固了相互信任的纽带	l
 DFHack help: "--duration <ticks>" Set how long the transformation should last, or "forever". If not specified, then the transformation is permanent.	"--duration <ticks>" 设置变换应持续多长时间，或 "forever"。如果未指定，则转换是永久性的。	l
 DFHack help: "--step <amount>" Modify current trait tier up/down by given amount. Negative values need a "\\\\" before the negative symbol e.g. "\\\\-1"	"--step <amount>" 将当前特质等级 up/down 修改给定量。负值需要在负号前加一个"\\\\\\\\"，例如"\\\\\\\\-1"	l
@@ -3434,6 +3446,8 @@ A caravan from {e} has arrived. Your status as a middling land has attracted mor
 Announcement combat agreement-core [$office,$name,agreement-party-list]: began passing a portion of corruptly-obtained funds as a {s} of {s} to {s}	以{s2}的{s1}身份开始将部分非法所得转交给{s3}	l
 Announcement combat agreement-core [agreement-party-list,$name]: {s} made an agreement with , becoming a resident of {s} to entertain the citizenry	{s1}与达成协议，成为{s2}的居民，以便为居民表演	l
 Announcement combat agreement-core [agreement-party-list,$office,$name]: {s} began passing a portion of corruptly-obtained funds as a {s} of {s} to	{s1}以{s3}的{s2}身份开始将部分非法所得转交给	l
+Announcement combat dialogue-judgement [dialogue-judgement-achiever]: {s} also sought out and returned our treasures, though it doesn't much matter	{s1}还曾寻获并归还我们的宝物，可如今这已经没有多少意义了。	l
+Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} {s}, but you can't talk your way out of this.	{s1}是{s2}，可你靠花言巧语逃不过这件事。	l
 Announcement combat site-rumor-event [$name,$travel-site,$name]: a group calling itself {s} founded {s} after a long journey from the lands of {s}.	自称{s1}的势力从{s3}的领地长途跋涉而来，建立了{s2}。	l
 Any ability you possess that doesn't fit elsewhere will appear here. For instance, many creatures can spit or pet animals. Others can breathe fire.	你拥有但不属于其他分类的能力会显示在这里。例如，许多生物可以吐唾沫或抚摸动物，有些还能喷火。	hq
 DFHack help: "--age <num>" Sets the target to the age specified. If this is not set, the target age defaults to the minimum adult age for the unit.	"--age <num>" 将目标设置为指定的年龄。如果未设置，则目标年龄默认为该单位的最低成年年龄。	l
@@ -3523,6 +3537,7 @@ Announcement combat agreement-title-core [agreement-party-list,agreement-crime,$
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list,$name,$name]: the joining of {s} with {s} to oust {s} from {s}	{s1}与{s2}同行，将{s3}逐出{s4}	l
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list]: the joining of {s} with {s} in order to be brought to safety	{s1}与{s2}同行，以便被带到安全的地方	l
 Announcement combat artwork-artifact-destruction-title [historical-artifact,$name,$travel-site,$date]: the destruction of {s} by {s} in {s} in {s}	{s4}，{s2}在{s3}毁灭了{s1}	l
+Announcement combat dialogue-judgement [dialogue-judgement-person,dialogue-judgement-person,dialogue-judgement-person]: {s} reunited {s} with {s}.	{s1}曾让{s2}与{s3}重聚。	l
 Announcement combat diplomatic-event-core [diplomatic-meeting-topic,$name,$name,$travel-site]: {s} between {s} and {s} at {s} concluded in failure	{s2}与{s3}在{s4}达成的{s1}以失败告终	l
 Announcement combat rumor-event [$name,$travel-site]: A bandit gang calling itself {s} has been harassing people right here on the streets of {s}!	有伙土匪自称{s1}，就在{s2}这里的街上骚扰百姓！	l
 Announcement combat threat-killing [threat-kill-count,threat-possessive,threat-family-list]: has killed {s} in {s} lust for murder, among them {s}	{s2}嗜杀成性，已经杀害了{s1}，其中包括{s3}	l
@@ -3591,6 +3606,7 @@ Announcement combat agreement-title-core [agreement-party-list,agreement-item,$n
 Announcement combat agreement-title-core [agreement-party-list,agreement-item,$name,$name]: the request by {s} that retrieve {s} from {s} for {s}	{s1}请为{s4}从{s3}处取回{s2}的请求	l
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list]: the agreement by {s} to establish a grand guildhall for {s}	{s1}为{s2}建造大行会大厅的协议	l
 Announcement combat artwork-artifact-destruction-subject [historical-artifact,$memorial-actor,$travel-site]: the destruction of {s} by {s} in {s}	{s2}在{s3}毁灭了{s1}	l
+Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} also {s}, but nothing can change the facts.	{s1}也是{s2}，可事实已经无法改变了。	l
 DFHack help: "--reset" Forget which dwarves have been optimized. However, if you reload an existing save, the optimization list will be reloaded.	"--reset" 忘记优化了哪个矮人了。但是，如果您重新加载现有保存，优化列表也会重新加载。	l
 DFHack help: "-e", "--exclude <plant_id>[,<plant_id>...]" Same as "--filter", but target everything except these. Cannot be used with "--filter".	"-e", "--exclude <plant_id>[,<plant_id>...]" 与 "--filter" 相同，但针对除这些之外的所有内容。不能与 "--filter" 一起使用。	l
 DFHack help: "-u", "--unit <id>" Use the specified unit as the "creator" of the generated item instead of the selected unit or the first citizen.	"-u"、"--unit <id>" 使用指定单位作为生成物品的"creator"，而不是选择的单位或第一个居民。	l
@@ -3763,6 +3779,8 @@ Announcement combat agreement-title-core [agreement-party-list,agreement-party-l
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list,$name]: the promise by {s} to to give {s} a position in {s}	{s1}答应、给{s2}在{s3}安排职位的承诺	l
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list,$name]: the promise by {s} to {s} to give a position in {s}	{s1}答应{s2}在{s3}安排职位的承诺	l
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list,$travel-site]: the joining of {s} with {s} to oust from {s}	{s1}与{s2}同行，协助驱逐{s3}的势力	l
+Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} also {s}, but now this stands between us.	{s1}也是{s2}，可如今这件事横在我们之间。	l
+Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} {s}, but those acts bring no forgiveness.	{s1}是{s2}，可这些事迹无法让你得到宽恕。	l
 Announcement combat historical-event-title [historical-squad,historical-squad,historical-battle-location]: the clash between {s} and {s} in {s}	{s1}与{s2}在{s3}的交战	l
 Announcement combat justice-intrigue-sentence [justice-intrigue-actor]: Allies surrounding {s} raised their suspicions and the plan was foiled.	{s1}身边的盟友生出了疑心，挫败了这一计划。	l
 Announcement combat justice-intrigue-sentence [justice-intrigue-actor]: Effective pressure to comply came from co-conspirators surrounding {s}.	{s1}身边的同谋施压，促使其服从。	l
@@ -3843,6 +3861,7 @@ Announcement combat agreement-core [agreement-party-list,$office,$name]: {s} beg
 Announcement combat agreement-core [agreement-party-list,agreement-party-list]: {s} aided {s} in becoming a permanent part of the living world	{s1}帮助{s2}永远留在生者的世界	l
 Announcement combat agreement-core [agreement-party-list,agreement-party-list]: {s} began passing a portion of corruptly-obtained funds to {s}	{s1}开始将部分非法所得转交给{s2}	l
 Announcement combat conversation-conflict-death [conversation-conflict-person,conversation-conflict-entity]: {s} was slainby the forces of {s}	{s1}被{s2}的部队杀死了	l
+Announcement combat dialogue-judgement [dialogue-judgement-achiever]: {s} sought out and returned our treasures, though it doesn't much matter	{s1}曾寻获并归还我们的宝物，可如今这已经没有多少意义了。	l
 Announcement combat diplomatic-event-core [diplomatic-meeting-topic,$name,$name,$travel-site]: {s} between {s} and {s} at {s} concluded fairly	{s2}与{s3}在{s4}达成的{s1}顺利结束了	l
 Announcement combat quest-sentence [$name,quest-object]: {s} believes that primordial remnants such as {s} belong back in their rightful home.	{s1}认为，像{s2}这样的远古遗存应当回到它们原本的归属之地。	l
 Announcement combat sentence []: Maybe after you've improved. Prove you have what it takes. The life of the traveling performer is a hard one.	等你的本领长进些再说吧。先证明你能胜任，巡回艺人的日子可不好过。	l
@@ -4042,6 +4061,9 @@ Announcement combat agreement-core [agreement-party-list,agreement-party-list,$n
 Announcement combat agreement-core [agreement-party-list,agreement-party-list,agreement-item,$name]: {s} asked that {s} retrieve {s} for {s}	{s1}请{s2}为{s4}取回{s3}	l
 Announcement combat agreement-core [agreement-party-list,agreement-party-list,agreement-party-list]: {s} promised {s} to give {s} a position	{s1}答应{s2}，给{s3}安排一个职位	l
 Announcement combat attack-notice [$creature,$attack-creature-role,$resident-assigned-name]: The {s} have given a resident {s} the name {s}.	{s1}给一只常住的{s2}起名为{s3}。	l
+Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} also {s}, but that hardly matters now.	{s1}也是{s2}，可如今那已经无关紧要了。	l
+Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} also {s}, but what does that mean now?	{s1}也是{s2}，可如今这又有什么意义呢？	l
+Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} {s}, but nothing can change the facts.	{s1}是{s2}，可事实已经无法改变了。	l
 Announcement combat justice-interrogation-sentence [justice-interrogation-response,justice-interrogation-factors]: Subject {s}, despite {s}.	尽管{s2}，受审者仍{s1}。	l
 Commanded by {p}, they will have no mercy. There is little time -- you must flee. Perhaps your family and friends can be convinced to leave.	他们由{p1}统领，绝不会手下留情。时间所剩无几，你必须逃离。也许还能说服家人和朋友一起离开。	hqt
 DFHack GUI Notification settings: Warns when job postings stay unclaimed for more than a day while labormanager (or monitor mode) is active.	启用 labormanager 或其监控模式后，任务超过一个游戏日仍无人接手时发出警告。	l
@@ -4150,6 +4172,7 @@ Announcement combat adventure-announcement []: No one even considered making the
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list]: the agreement by {s} to establish a guildhall for {s}	{s1}为{s2}建造行会大厅的协议	l
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list]: the passing of corruptly-obtained funds by {s} to {s}	{s1}进行的非法所得的转交（交给{s2}）	l
 Announcement combat artwork-artifact-destruction-subject [historical-artifact,$memorial-actor,$name]: the destruction of {s} by {s} and {s}	{s2}与{s3}毁灭了{s1}	l
+Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} {s}, but that bond seems so thin now.	{s1}是{s2}，可如今这份情谊似乎淡了。	l
 Announcement combat diplomatic-event-core [diplomatic-meeting-topic,$name,$name]: {s} between {s} and {s} concluded with a positive outcome	{s2}与{s3}之间的{s1}结束了，结果良好	l
 Announcement combat fortress-arrival []: Some migrants have decided to brave this terrifying place, knowing it may be their miserable tomb.	一些移民决定勇闯这片恐怖之地，明知这里可能成为他们悲惨的坟墓。	l
 Announcement combat justice-intrigue-factors [justice-intrigue-factor,justice-intrigue-factor,justice-intrigue-factor]: {s} and {s} and {s}	{s1}，且{s2}，以及{s3}	l
@@ -4257,6 +4280,8 @@ Announcement combat agreement-title-core [agreement-party-list,$name]: the agree
 Announcement combat agreement-title-core [agreement-party-list,$name]: the agreement between {s} and to study and become a resident of {s}	{s1}与达成的居留协议：成为{s2}的居民，以便求学	l
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list,$name]: the promise by {s} to {s} of a position in {s}	{s1}答应给{s2}在{s3}安排职位的承诺	l
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list]: the request by {s} that {s} make an offer of service	{s1}要求{s2}表示愿意效力的请求	l
+Announcement combat dialogue-judgement [dialogue-judgement-person]: I loathe {s} with every fiber of my being, and now we can all see why.	我从骨子里厌恶{s1}，现在大家都知道原因了。	l
+Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} {s}, but now this stands between us.	{s1}是{s2}，可如今这件事横在我们之间。	l
 Announcement combat diplomatic-event-core [diplomatic-meeting-topic,$name,$name]: {s} between {s} and {s} concluded with miserable outcome	{s2}与{s3}之间的{s1}结束了，结果惨淡	l
 Announcement combat sentence [$kinship]: It pains me all the more, for the foul villain was once my own {s}, now twisted into monstrosity.	更让我痛心的是，这个恶徒曾是我的{s1}，如今却已扭曲成怪物。	l
 DFHack help: ""SHAPE": {"-1": "NONE", "0": "EMPTY", "1": "FLOOR", "2": "BOULDERS", "3": "PEBBLES", "4": "WALL", ..., "18": "ENDLESS_PIT"}"	""SHAPE": {"-1": "NONE", "0": "EMPTY", "1": "FLOOR", "2": "BOULDERS", "3": "PEBBLES", "4": "WALL", ..., "18": "ENDLESS_PIT"}"	l
@@ -4346,6 +4371,7 @@ A caravan from {e} has arrived. Your status as a major land has attracted much m
 A caravan from {e} has arrived. Your status as a minor land has attracted a bit more trade than usual. Overall trade sentiments are good.	来自{e1}的商队已抵达。你作为小领地的地位吸引来了比平时略多的贸易。总体贸易意愿良好。	hPt
 Announcement combat adventure-announcement []: No one even considered making the journey to such a cursed unhappy death-trap this season.	本季无人有意前往这样一个受诅咒、不幸的死亡陷阱。	l
 Announcement combat agreement-core [agreement-party-list,agreement-party-list]: {s} made an agreement with {s} to entertain the citizenry	{s1}与{s2}达成协议，以便为居民表演	l
+Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} also {s}, but it means nothing now.	{s1}也是{s2}，可如今这已经没有意义了。	l
 Announcement combat fortress-arrival []: Some migrants have decided to brave this terrifying unhappy place, knowing it may be their tomb.	一些移民决定勇闯这片恐怖而不幸的地方，明知这里可能成为他们的坟墓。	l
 Announcement combat historical-event-title [$memorial-actor,$travel-site]: the general suspicion of {s} in {s} after appearing not to age	因看起来不会衰老，{s1}在{s2}受到普遍怀疑	l
 Announcement combat journal-event-title [journal-event-object,journal-event-place,journal-event-place]: The absence of {s} from {s}'s {s}	{s1}从{s2}的{s3}消失	l
@@ -4467,6 +4493,7 @@ Announcement combat agreement-title-core [agreement-party-list,agreement-party-l
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list]: the agreement by {s} to establish a temple for {s}	{s1}为{s2}建造神殿的协议	l
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list]: the joining of {s} with {s} to entertain the world	{s1}与{s2}同行，为世人表演	l
 Announcement combat artwork-artifact-destruction-title [historical-artifact,$memorial-actor,$date]: the destruction of {s} by {s} in {s}	{s3}，{s2}毁灭了{s1}	l
+Announcement combat dialogue-judgement [dialogue-judgement-person,dialogue-judgement-person]: {s} perpetrated a violent attack upon {s}.	{s1}曾对{s2}施暴。	l
 Announcement combat justice-interrogation-sentence [$unit]: Attempted to appeal to shared worship of {s} in order to elicit information.	试图以共同信奉{s1}为由规劝受审者，以获取情报。	l
 Announcement combat negotiation-sentence []: The task was made somewhat more difficult by the relative populations of the civilizations.	双方政权的人口差距让这项任务困难了一些。	l
 DFHack help: "--clear" Reset the timeskip duration to its default value. Note that this won't affect timeskips which have already begun.	"--clear" 将时间跳跃持续时间重置为其默认值。请注意，这不会影响已经开始的时间跳跃。	l
@@ -4571,6 +4598,8 @@ Announcement combat adventure-announcement []: I am so nearly swayed by your gre
 Announcement combat adventure-announcement []: Some migrants have decided to brave this terrifying place, knowing it may be their tomb.	一些移民决定勇闯这片恐怖之地，明知这里可能成为他们的坟墓。	l
 Announcement combat adventure-announcement []: There are mounds of clouds above you, smooth on the bottom with prominent upward bulges.	你头顶有成堆的云团，底部平坦，顶部明显隆起。	l
 Announcement combat artwork-artifact-destruction-subject [historical-artifact,$name,$travel-site]: the destruction of {s} by {s} in {s}	{s2}在{s3}毁灭了{s1}	l
+Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} {s}, but that hardly matters now.	{s1}是{s2}，可如今那已经无关紧要了。	l
+Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} {s}, but what does that mean now?	{s1}是{s2}，可如今这又有什么意义呢？	l
 Announcement combat diplomatic-event-core [diplomatic-meeting-topic,$name,$name,$travel-site]: {s} between {s} and {s} at {s} concluded	{s2}与{s3}在{s4}达成的{s1}结束了	l
 Announcement combat justice-interrogation-sentence []: Attempted to misrepresent facts surrounding case in order to elicit information.	试图歪曲案件相关事实，以获取情报。	l
 Announcement combat justice-intrigue-method [$office,$name]: made a blackmail threat, due to embezzlement using the position {s} of {s}	以利用{s2}{s1}的职位侵吞公款的把柄进行勒索	l
@@ -4937,6 +4966,7 @@ Announcement combat adventure-announcement []: Migrants were too nervous to make
 Announcement combat agreement-core [agreement-party-list,agreement-party-list,$name,$name]: {s} joined with {s} to oust {s} from {s}	{s1}与{s2}同行，将{s3}逐出{s4}	l
 Announcement combat agreement-core [agreement-party-list,agreement-party-list]: {s} joined with {s} in order to be brought to safety	{s1}与{s2}同行，以便被带到安全的地方	l
 Announcement combat agreement-core [agreement-party-list,agreement-party-list]: {s} made an agreement with {s} to eradicate monsters	{s1}与{s2}达成协议，以便消灭怪物	l
+Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} {s}, but it means nothing now.	{s1}是{s2}，可如今这已经没有意义了。	l
 Announcement combat negotiation-sentence []: The task was made much more difficult by the relative populations of the civilizations.	双方政权的人口差距让这项任务困难了许多。	l
 Announcement combat sentence [$kinship]: It pains me all the more, for the foul villain is my own {s}, now twisted into monstrosity.	更让我痛心的是，这个恶徒竟是我的{s1}，如今却已扭曲成怪物。	l
 Announcement combat sentence [$unit,diplomacy-possessor,dialogue-family]: It does not help matters that their leader {s} is {s} {s}.	再说，他们的领袖{s1}还是{s2}{s3}，事情就更难办了。	l
@@ -5055,6 +5085,7 @@ Announcement combat agreement-title-core [agreement-party-list,agreement-item,$n
 Announcement combat agreement-title-core [agreement-party-list,agreement-item,$name]: the request by {s} that retrieve {s} from {s}	{s1}请从{s3}处取回{s2}的请求	l
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list,$name]: the joining of {s} with {s} to find {s}	{s1}与{s2}同行，寻找{s3}	l
 Announcement combat agreement-title-core [agreement-party-list,agreement-target]: the plot of {s} to sabotage the activities of {s}	{s1}破坏{s2}活动的阴谋	l
+Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: It is my misfortune that {s} {s}.	不幸的是，{s1}是{s2}。	l
 Announcement combat fortress-arrival []: No one even considered making the journey to such a cursed unhappy death-trap this season.	本季无人有意前往这样一个受诅咒、不幸的死亡陷阱。	l
 Announcement combat quest-sentence [$name,quest-object]: Speaking as a representative of {s}, it is important that {s} be returned.	我代表{s1}郑重说明，必须归还{s2}。	l
 Announcement combat site-rumor-event [site-rumor-person,site-rumor-position,site-rumor-predecessor]: {s} became {s}, replacing {s}.	{s1}取代{s3}，成为了{s2}。	l
@@ -5194,6 +5225,7 @@ Announcement combat agreement-title-core [agreement-party-list,agreement-party-l
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list]: the promise by to {s} to give {s} a position	答应{s1}、给{s2}安排职位的承诺	l
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list]: the promise by {s} to to give {s} a position	{s1}答应、给{s2}安排职位的承诺	l
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list]: the promise by {s} to {s} to give a position	{s1}答应{s2}安排职位的承诺	l
+Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} also {s}, but at what price?	{s1}也是{s2}，可代价是什么呢？	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Need bag containing powder suitable for cast application.	{s1}取消了{s2}：需要装有适合制作石膏绷带的粉末的袋子。	l
 Announcement combat historical-event-paragraph [$date,agreement-record,agreement-followup]: Subject revealed that in {s}, {s}. {s}	受审者交代，{s1}，{s2}。{s3}	l
 Announcement combat negotiation-response []: attempted to read their opposite's underlying motivations as well but was swept along	也试图看透对方的深层动机，却被对方牵着走	l
@@ -5557,6 +5589,7 @@ Announcement combat agreement-record [agreement-core]: {s} approached by to hand
 Announcement combat agreement-title-core [$name]: the agreement between and to work as a mercenary and become a resident of {s}	与达成的居留协议：成为{s1}的居民，以便从事雇佣兵工作	l
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list]: the agreement by {s} to establish for {s}	{s1}同意为{s2}建造的协议	l
 Announcement combat attack-leader-quality []: an ancient and horrible demon escaped from the underworld before the dawn of time	是一只恐怖的远古恶魔，早在时间诞生之前就逃出了地下世界	l
+Announcement combat dialogue-judgement [dialogue-judgement-achiever]: {s} also protected knowledge from being irrevocably lost.	{s1}还曾保护知识，使其免于永久失传。	l
 Announcement combat merchant-hawk-origin [merchant-genuine-item,merchant-advert-origin]: your very own {s} all the way from {s}	专属于你的一路从{s2}运来的{s1}	l
 Announcement combat negotiation-sentence []: The task was made more difficult by the relative populations of the civilizations.	双方政权的人口差距让这项任务更困难了。	l
 Announcement combat site-rumor-event [site-rumor-artifact,site-rumor-building,$travel-site]: {s} was known to be in {s} in {s}.	当时已知{s1}位于{s3}的{s2}。	l
@@ -5817,6 +5850,7 @@ Announcement combat agreement-title-core [agreement-party-list,$historical-actor
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list]: the promise by {s} to {s} of a position	{s1}答应给{s2}安排职位的承诺	l
 Announcement combat artwork-artifact-destruction-subject [historical-artifact,$memorial-actor]: the destruction of {s} by {s}	{s2}毁灭了{s1}	l
 Announcement combat conversation-conflict-slain-list [conversation-conflict-slain,conversation-conflict-slain-list]: {s}, {s}	{s1}、{s2}	l
+Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} {s}, but at what price?	{s1}是{s2}，可代价是什么呢？	l
 Announcement combat historical-event-title [$memorial-actor,$travel-site]: the general suspicion of {s} in {s} after a murder	因发生一起谋杀，{s1}在{s2}受到普遍怀疑	l
 Announcement combat journal-transfer-event [journal-transfer-core,journal-event-place,journal-event-place]: {s} in {s} in {s}	在{s3}的{s2}{s1}	l
 Announcement combat justice-interrogation-sentence [$unit]: Appealed to shared worship of {s} in order to elicit information.	以共同信奉{s1}为由规劝受审者，试图获取情报。	l
@@ -5944,6 +5978,7 @@ Announcement combat agreement-title-core [agreement-party-list,$name,$name]: the
 Announcement combat agreement-title-core [agreement-party-list,agreement-crime]: the plot of {s} to frame for {s} by fooling	{s1}用{s2}的罪名栽赃他人的阴谋	l
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list]: the joining of {s} with {s} as a guide	{s1}与{s2}同行，担任向导	l
 Announcement combat attack-notice []: The glowing barrier has disappeared, replaced by terrible shrieks from the underworld!	发光的屏障消失了，地下世界随即传来可怕的尖叫声！	l
+Announcement combat dialogue-judgement [dialogue-judgement-person,dialogue-judgement-person]: {s} bravely put an end to {s}.	{s1}曾英勇除掉{s2}。	l
 Announcement combat fortress-arrival []: Migrants refused to journey to such a dangerous and miserable fortress this season.	本季移民拒绝前往这样一座危险而悲惨的要塞。	l
 Announcement combat fortress-arrival []: Migrants were too nervous to make the journey this season to this unhappy fortress.	本季移民因太过害怕，未敢踏上前往这座不幸要塞的旅途。	l
 Announcement combat fortress-arrival []: No one else even considered making the journey to this cursed miserable death-trap.	其他人连前往这个受诅咒、悲惨的死亡陷阱的念头都没有。	l
@@ -6068,6 +6103,7 @@ Announcement combat boast-slain-clause []: whose tall tales of bravery were all 
 Announcement combat boast-slain-clause []: whose tall tales of bravery were all the more embarrassing because of its height	对方那夸大其词的英勇事迹，因其矮小的身高而更显可笑	l
 Announcement combat conversation-conflict-attacker [conversation-conflict-caste,conversation-conflict-entity]: a {s} of {s}	{s2}的一只{s1}	l
 Announcement combat conversation-conflict-slain-list [conversation-conflict-slain,conversation-conflict-slain]: {s} and {s}	{s1}和{s2}	l
+Announcement combat dialogue-judgement [dialogue-judgement-person,dialogue-judgement-person]: {s} started a fight with {s}.	{s1}曾挑起与{s2}的争斗。	l
 Announcement combat fortress-arrival []: No one even considered making the journey to such a cursed death-trap this season.	本季无人有意前往这样一个受诅咒的死亡陷阱。	l
 Announcement combat justice-interrogation-sentence []: Attempted to make flattering remarks in order to elicit information.	试图以奉承的话讨好受审者，以获取情报。	l
 Announcement combat justice-interrogation-sentence []: Subject revealed that being nameless is in fact an assumed identity.	受审者交代，所谓没有姓名实际上是在掩饰身份。	l
@@ -6203,6 +6239,7 @@ Announcement combat agreement-core [agreement-party-list,agreement-party-list,$n
 Announcement combat agreement-core [agreement-party-list,agreement-party-list]: {s} joined with {s} to entertain the world	{s1}与{s2}同行，为世人表演	l
 Announcement combat artwork-artifact-destruction-subject [historical-artifact,$travel-site]: the destruction of {s} in {s}	在{s2}发生的{s1}毁灭事件	l
 Announcement combat attack-notice []: Deep within this strange place, we've uncovered what must be a treasure of the gods!	我们在这片奇异之地的深处发现了宝藏——这一定是诸神的宝藏！	l
+Announcement combat dialogue-judgement [dialogue-judgement-achiever]: {s} protected knowledge from being irrevocably lost.	{s1}曾保护知识，使其免于永久失传。	l
 Announcement combat diplomatic-event-core [diplomatic-meeting-topic,$name,$name]: {s} between {s} and {s} concluded fairly	{s2}与{s3}之间的{s1}顺利结束了	l
 Announcement combat fortress-arrival []: Migrants refused to journey to such a dangerous and unhappy fortress this season.	本季移民拒绝前往这样一座危险而不幸的要塞。	l
 Announcement combat fortress-arrival []: No one else even considered making the journey to this cursed unhappy death-trap.	其他人连前往这个受诅咒、不幸的死亡陷阱的念头都没有。	l
@@ -6478,6 +6515,8 @@ Announcement combat agreement-core [agreement-party-list,agreement-party-list]: 
 Announcement combat agreement-title-core [agreement-item,$name,$name]: the request by that retrieve {s} from {s} for {s}	请为{s3}从{s2}处取回{s1}的请求	l
 Announcement combat agreement-title-core [agreement-party-list]: the agreement by to establish a grand guildhall for {s}	为{s1}建造大行会大厅的协议	l
 Announcement combat agreement-title-core [agreement-party-list]: the agreement by {s} to establish a grand guildhall for	{s1}为建造大行会大厅的协议	l
+Announcement combat dialogue-judgement [dialogue-judgement-person,dialogue-judgement-person]: {s} brought battle to {s}.	{s1}曾进攻{s2}。	l
+Announcement combat dialogue-judgement [dialogue-judgement-person,dialogue-judgement-person]: {s} ended the days of {s}.	{s1}曾终结{s2}的生命。	l
 Announcement combat memory-performance-core [memory-person,memory-performance-past,memory-performance-work]: {s} {s} {s}	{s1}{s2}{s3}	l
 Announcement combat negotiation-response []: joined in the discussion of history and past griefs and agreed on the issue	一起谈起了往事与旧日伤痛，并就此达成了一致	l
 Announcement combat sentence [$kinship]: It pains me all the more, for the foul villain was once my own {s}, now cursed.	更让我痛心的是，这个恶徒曾是我的{s1}，如今已遭到诅咒。	l
@@ -6610,6 +6649,7 @@ Announcement combat agreement-title-core [agreement-party-list]: the agreement b
 Announcement combat agreement-title-core [agreement-party-list]: the agreement by {s} to establish a temple complex for	{s1}为建造神殿建筑群的协议	l
 Announcement combat agreement-title-core [agreement-target,$name]: the plot of to sabotage the activities of {s} at {s}	破坏{s1}在{s2}活动的阴谋	l
 Announcement combat conversation-conflict-deaths [conversation-conflict-death,conversation-conflict-death]: {s} and {s}	{s1}和{s2}	l
+Announcement combat dialogue-judgement [dialogue-judgement-person,dialogue-judgement-person]: {s} took the life of {s}.	{s1}曾夺去{s2}的性命。	l
 Announcement combat journal-event-title [journal-event-place,journal-event-entity]: The insurrection in {s} against {s}	{s1}发生的反抗{s2}的起义	l
 Announcement combat negotiation-sentence []: The task was made easier by the relative populations of the civilizations.	双方政权的人口差距让这项任务更容易了。	l
 Announcement combat rumor-event []: The world is safer for travelers when night creatures no longer stalk the darkness.	夜行生物不再潜伏于黑暗中，旅人出门也能更安全。	l
@@ -6880,6 +6920,7 @@ Announcement combat agreement-title-core [agreement-party-list,$historical-actor
 Announcement combat agreement-title-core [agreement-party-list,$office,$name]: the embezzlement of{s} as a {s} of {s}	{s1}以{s3}的{s2}身份进行的挪用资金	l
 Announcement combat boast-slain-clause []: who should have stayed in the trees when the real elves came down to fight	真正的精灵下树作战时，对方本该乖乖留在树上	l
 Announcement combat conversation-conflict-deaths [conversation-conflict-death,conversation-conflict-deaths]: {s}, {s}	{s1}、{s2}	l
+Announcement combat dialogue-judgement [dialogue-judgement-achiever]: {s} also sought out and returned our treasures.	{s1}还曾寻获并归还我们的宝物。	l
 Announcement combat justice-intrigue-motive [justice-intrigue-place]: have someone to act on plots and schemes in {s}	让对方在{s1}为自己的阴谋效力	l
 Announcement combat merchant-hawk-origin [merchant-genuine-item,merchant-advert-origin]: try {s} all the way from {s}	来试试一路从{s2}运来的{s1}	l
 Announcement combat negotiation-recipient [$historical-actor,$office,$name,$name]: {s}, {s} of {s}, representing {s},	代表{s4}的{s3}{s2}{s1}	l
@@ -7155,6 +7196,7 @@ Announcement combat agreement-core [agreement-party-list,agreement-party-list]: 
 Announcement combat agreement-core [agreement-party-list,agreement-party-list]: {s} promised to give {s} a position	{s1}答应，给{s2}安排一个职位	l
 Announcement combat agreement-core [agreement-party-list,agreement-party-list]: {s} promised {s} to give a position	{s1}答应{s2}安排一个职位	l
 Announcement combat artwork-artifact-destruction-subject [historical-artifact,$name]: the destruction of {s} by {s}	{s2}毁灭了{s1}	l
+Announcement combat dialogue-judgement [dialogue-judgement-person,dialogue-judgement-person]: {s} did not name {s}.	{s1}没有为{s2}命名。	l
 Announcement combat diplomatic-event-core [diplomatic-meeting-topic,$name,$name]: {s} between {s} and {s} concluded	{s2}与{s3}之间的{s1}结束了	l
 Announcement combat fortress-arrival []: No one else even considered making the journey to this miserable hellhole.	其他人连前往这个悲惨的鬼地方的念头都没有。	l
 Announcement combat merchant-hawk-origin [merchant-genuine-item,merchant-advert-origin]: your very own {s} from {s}	专属于你的来自{s2}的{s1}	l
@@ -7311,6 +7353,9 @@ Announcement combat agreement-title-core [agreement-party-list]: the agreement b
 Announcement combat agreement-title-core [agreement-party-list]: the passing of corruptly-obtained funds by to {s}	进行的非法所得的转交（交给{s1}）	l
 Announcement combat agreement-title-core [agreement-party-list]: the passing of corruptly-obtained funds by {s} to	{s1}进行的非法所得的转交（交给）	l
 Announcement combat attack-reinforcement-group [attack-reinforcement-kind]: come monstrous siege engineers and {s}	可怕的攻城巨兽和{s1}	l
+Announcement combat dialogue-judgement [dialogue-judgement-person,dialogue-judgement-person]: {s} boldly slew {s}.	{s1}曾英勇杀死{s2}。	l
+Announcement combat dialogue-judgement [dialogue-judgement-person,dialogue-judgement-person]: {s} justly slew {s}.	{s1}曾正当地诛杀{s2}。	l
+Announcement combat dialogue-judgement [dialogue-judgement-person]: I never liked {s}, and now we can all see why.	我从来就不喜欢{s1}，现在大家都知道原因了。	l
 Announcement combat fortress-arrival []: No one else even considered making the journey to this cursed death-trap.	其他人连前往这个受诅咒的死亡陷阱的念头都没有。	l
 Announcement combat justice-interrogation-response []: could not accept the uncertainty following death and agreed	无法接受死后的未知，因而答应了	l
 Announcement combat negotiation-response []: attempted to put their opposite at ease as well and ultimately agreed	也试着让对方放松下来，最终同意了	l
@@ -7463,6 +7508,7 @@ Announcement combat agreement-title-core [agreement-party-list]: the request by 
 Announcement combat agreement-title-core [agreement-party-list]: the request by {s} that make an offer of service	{s1}要求表示愿意效力的请求	l
 Announcement combat artwork-artifact-destruction-title [historical-artifact,$date]: the destruction of {s} in {s}	{s2}，{s1}的毁灭	l
 Announcement combat attack-army-entry []: The enemy have come and are preparing to lay siege. They seek a parley!	敌军已到达，正在准备围城。他们要求谈判！	l
+Announcement combat dialogue-judgement [dialogue-judgement-person,dialogue-judgement-person]: {s} challenged {s}.	{s1}曾挑战{s2}。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Need valid, active clay collection zone.	{s1}取消了{s2}：需要有效且启用的采黏土区。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Need valid, active sand collection zone.	{s1}取消了{s2}：需要有效且启用的采砂区。	l
 Announcement combat historical-commanded-squad [historical-squad,$historical-actor]: {s}, brilliantly led by {s},	{s1}（由{s2}率领，指挥出色）	l
@@ -7475,6 +7521,7 @@ Announcement combat memory-possession [memory-possession-core,memory-location,me
 Announcement combat negotiation-response []: attempted to put their opposite at ease but did not ultimately agree	试着让对方放松下来，但最终仍未同意	l
 Announcement combat negotiation-response []: spun a web of deceit of their own but became tied in their own knots	也编织了一张谎言之网，却作茧自缚	l
 Announcement combat sentence [$book,$item,$name]: I am searching for {s} {s}, and this quest is taking me to {s}.	我正在寻找{s1}{s2}，为此要前往{s3}。	l
+Announcement combat sentence [$name,$term,$person,$name]: I'm in charge of {s} now. Make way for {s} {s} and {s}!	现在由我掌管{s1}。给{s2}{s3}和{s4}让路！	l
 Announcement combat sentence [$person]: Not that it matters, as the seat of {s} is here, and the law is absolute.	不过这也没什么要紧，{s1}的统治中心就在这里，法律说一不二。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} am appearing {s}.	{s1}正在出现在{s2}。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} am rewarding {s}.	{s1}正在奖赏{s2}。	l
@@ -7621,6 +7668,8 @@ Announcement combat agreement-core [agreement-party-list]: {s} made an agreement
 Announcement combat agreement-title-core [agreement-party-list,$historical-actor]: the plot of {s} to abduct {s}	{s1}绑架{s2}的阴谋	l
 Announcement combat agreement-title-core [agreement-party-list,$office,$name]: the bribery of{s} as a {s} of {s}	{s1}以{s3}的{s2}身份进行的受贿	l
 Announcement combat dialogue-battle-death [dialogue-battle-person,$creature,$name]: {s} was slainby a {s} of {s}	{s1}被{s3}的一只{s2}杀死了	l
+Announcement combat dialogue-judgement [dialogue-judgement-achiever]: {s} sought out and returned our treasures.	{s1}曾寻获并归还我们的宝物。	l
+Announcement combat dialogue-judgement-predicate []: one of the most loyal soldiers to serve anybody at any time	古往今来最忠诚的士兵之一	l
 Announcement combat embark-revisit-heading [$embark-race-adjective]: A {s} Outpost Revisited: You have returned.	重访{s1}前哨：你回来了。	l
 Announcement combat fortress-arrival []: Others were too nervous to make the journey to this miserable fortress.	其他人因太过害怕，未敢踏上前往这座悲惨要塞的旅途。	l
 Announcement combat fortress-arrival []: Some migrants have arrived at this miserable place, despite the danger.	一些移民不顾危险，来到了这个悲惨的地方。	l
@@ -7795,6 +7844,8 @@ Announcement combat agreement-title-core [agreement-party-list]: the joining of 
 Announcement combat agreement-title-core [agreement-party-list]: the joining of {s} with to entertain the world	{s1}与同行，为世人表演	l
 Announcement combat attack-leader [$historical-actor,attack-leader-quality]: The army is commanded by {s}, {s}.	这支军队的统领是{s1}，{s2}。	l
 Announcement combat dialogue-battle-death [dialogue-battle-person,dialogue-battle-person]: {s} was slain by {s}	{s1}被{s2}杀死了	l
+Announcement combat dialogue-judgement [dialogue-judgement-person,dialogue-judgement-person]: {s} attacked {s}.	{s1}曾袭击{s2}。	l
+Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} also {s}.	{s1}也是{s2}。	l
 Announcement combat fortress-arrival [$mission-return-party,$history-report]: {s} and others have returned. {s}	{s1}等人回来了。{s2}	l
 Announcement combat journal-event-title [journal-event-entity,journal-event-place]: The overthrow of {s} in {s}	在{s2}推翻{s1}	l
 Announcement combat journal-event-title [journal-event-object,journal-event-place]: The absence of {s} from {s}	{s1}从{s2}消失	l
@@ -7939,6 +7990,8 @@ Announcement combat agreement-core [agreement-party-list]: {s} began accepting b
 Announcement combat agreement-goals []: prepare a coup, instill terror, initiate sabotage, and steal treasures	筹备政变、制造恐慌、展开破坏行动、盗取财宝	l
 Announcement combat agreement-title-core [agreement-party-list]: the plot of {s} to sabotage the activities of	{s1}破坏活动的阴谋	l
 Announcement combat attack-notice []: Forms twisted from their nature, legion of the night. What hope remains?	万物扭曲变形，化作暗夜大军。我们还能指望什么？	l
+Announcement combat dialogue-judgement [dialogue-judgement-person,dialogue-judgement-person]: {s} bullied {s}.	{s1}曾欺凌{s2}。	l
+Announcement combat dialogue-judgement [dialogue-judgement-person]: I loathe {s} with every fiber of my being.	我从骨子里厌恶{s1}。	l
 Announcement combat fortress-arrival []: Migrants refused to journey to such a dangerous fortress this season.	本季移民拒绝前往这样一座危险的要塞。	l
 Announcement combat fortress-arrival []: Others were too nervous to make the journey to this unhappy fortress.	其他人因太过害怕，未敢踏上前往这座不幸要塞的旅途。	l
 Announcement combat fortress-arrival []: Some migrants have arrived at this unhappy place, despite the danger.	一些移民不顾危险，来到了这个不幸的地方。	l
@@ -8088,6 +8141,8 @@ Announcement combat agreement-core [agreement-target,$name]: plotted to sabotage
 Announcement combat agreement-title-core [agreement-party-list]: the embezzlement conspiracy concocted by {s}	{s1}策划的挪用资金阴谋	l
 Announcement combat attack-origin-group [attack-reinforcement-kind]: come monstrous siege engineers and a {s}	可怕的攻城巨兽和一只{s1}	l
 Announcement combat attack-warning [$attack-creature-role]: Beware their heavily-armored skilled mounted {s}!	小心他们那些身披重甲、训练有素的{s1}骑兵！	l
+Announcement combat dialogue-judgement [dialogue-judgement-person,dialogue-judgement-person]: {s} killed {s}.	{s1}曾杀死{s2}。	l
+Announcement combat dialogue-judgement [dialogue-judgement-person,dialogue-judgement-person]: {s} robbed {s}.	{s1}曾抢劫{s2}。	l
 Announcement combat fortress-announcement [$unit,$book,$item,artifact-claim]: {s} has created {s}, a {s}! {s}	{s1}创造了{s2}，一件{s3}！{s4}	l
 Announcement combat journal-event-title [journal-event-actor,journal-event-actor]: The reunion of {s} and {s}	{s1}与{s2}的重逢	l
 Announcement combat justice-interrogation-factor [$unit,justice-interrogation-relationship-factor]: {s}'s {s}	{s1}{s2}	l
@@ -8405,6 +8460,7 @@ Announcement combat attack-origin-group [attack-reinforcement-kind]: come monstr
 Announcement combat attack-warning [$attack-creature-role]: Beware their heavily-armored elite mounted {s}!	小心他们那些身披重甲的精锐{s1}骑兵！	l
 Announcement combat dialogue-battle-death [dialogue-battle-person,$name]: {s} was slainby the forces of {s}	{s1}被{s2}的部队杀死了	l
 Announcement combat dialogue-battle-slain-list [dialogue-battle-slain,dialogue-battle-slain-list]: {s}, {s}	{s1}、{s2}	l
+Announcement combat dialogue-judgement [dialogue-judgement-person]: I hate {s}, and now we can all see why.	我恨{s1}，现在大家都知道原因了。	l
 Announcement combat fortress-arrival []: A migrant has arrived at this miserable place, despite the danger.	一名移民不顾危险，来到了这个悲惨的地方。	l
 Announcement combat historical-event-paragraph [$date,agreement-record]: Subject revealed that in {s}, {s}.	受审者交代，{s1}，{s2}。	l
 Announcement combat historical-squad-clash [historical-squad-clash-core,historical-clash-outcome]: {s}, {s}	{s1}，{s2}	l
@@ -8563,6 +8619,8 @@ Announcement combat agreement-title-core [agreement-party-list,$name]: the joini
 Announcement combat agreement-title-core [agreement-party-list,$name]: the joining of {s} with to find {s}	{s1}与同行，寻找{s2}	l
 Announcement combat agreement-title-core [agreement-target]: the plot of to sabotage the activities of {s}	破坏{s1}活动的阴谋	l
 Announcement combat boast-slain-clause []: who was returned to the rock and muck from which it was spawned	对方被送回了孕育其生命的岩石与烂泥之中	l
+Announcement combat dialogue-judgement [dialogue-judgement-person]: {s} feasts on the blood of the living!	{s1}吸食活人的鲜血！	l
+Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} {s}.	{s1}是{s2}。	l
 Announcement combat fortress-arrival []: Migrants refused to journey to this unhappy fortress this season.	本季移民拒绝前往这座不幸的要塞。	l
 Announcement combat fortress-arrival []: Others refused to journey to this dangerous and unhappy fortress.	其他人拒绝前往这座危险而不幸的要塞。	l
 Announcement combat historical-commanded-squad [historical-squad,$historical-actor]: {s}, ably led by {s},	{s1}（由{s2}率领，指挥得当）	l
@@ -8715,6 +8773,7 @@ Announcement combat adventure-announcement []: I am escaping from danger which t
 Announcement combat adventure-announcement []: It's not perfect, but it's good enough. Why fret about it?	虽然不完美，但已经够好了，何必为此烦恼？	l
 Announcement combat adventure-announcement []: Migrants were too nervous to make the journey this season.	本季移民因太过害怕，未敢踏上旅途。	l
 Announcement combat adventure-announcement []: You have a room here, and you can stay longer if you like.	你在这里有一间房，愿意的话可以多住些日子。	l
+Announcement combat adventure-announcement [dialogue-query-person]: Can you tell me where I can find {s}?	能告诉我到哪里能找到{s1}吗？	l
 Announcement combat agreement-core [agreement-item,$name,$name]: asked that retrieve {s} from {s} for {s}	请为{s3}从{s2}处取回{s1}	l
 Announcement combat agreement-core [agreement-party-list]: joined with {s} after being compelled to serve	与{s1}同行，被迫为其效力	l
 Announcement combat agreement-core [agreement-party-list]: {s} joined with after being compelled to serve	{s1}与同行，被迫为其效力	l
@@ -8725,6 +8784,8 @@ Announcement combat agreement-title-core [agreement-party-list]: the promise by 
 Announcement combat agreement-title-core [agreement-party-list]: the promise by to {s} to give a position	答应{s1}、给安排职位的承诺	l
 Announcement combat agreement-title-core [agreement-party-list]: the promise by {s} to to give a position	{s1}答应、给安排职位的承诺	l
 Announcement combat dialogue-battle-slain-list [dialogue-battle-slain,dialogue-battle-slain]: {s} and {s}	{s1}和{s2}	l
+Announcement combat dialogue-judgement [dialogue-judgement-person]: {s} brought back an unknown artifact.	{s1}曾带回一件不知名的造物。	l
+Announcement combat dialogue-judgement [dialogue-judgement-person]: {s} feast on the blood of the living!	{s1}吸食活人的鲜血！	l
 Announcement combat fortress-arrival []: A migrant has arrived at this unhappy place, despite the danger.	一名移民不顾危险，来到了这个不幸的地方。	l
 Announcement combat inscription [$person]: I am {s}, once of the Underworld. I bind myself to this place.	我是{s1}，曾来自地下世界。我将自身束缚于此地。	l
 Announcement combat justice-interrogation-response []: was too envious of others to face death and agreed	太过嫉妒他人，无法面对死亡，因而答应了	l
@@ -9224,6 +9285,7 @@ Announcement combat agreement-title-core [agreement-party-list]: the agreement b
 Announcement combat agreement-title-core [agreement-party-list]: the agreement by {s} to establish for	{s1}同意为建造的协议	l
 Announcement combat artwork-artifact-destruction-subject [historical-artifact]: the destruction of {s}	{s1}的毁灭	l
 Announcement combat conversation-conflict-context [rumor-time,conversation-conflict-place]: {s} in {s}	{s1}，地点：{s2}	l
+Announcement combat dialogue-judgement [dialogue-judgement-person]: {s} brought back an untitled work.	{s1}曾带回一部无题作品。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Experiencing emotional shock.	{s1}取消了{s2}：受到情感冲击。	l
 Announcement combat fortress-announcement [$unit]: {s} has mandated the construction of certain goods.	{s1}下令制作某些物品。	l
 Announcement combat fortress-arrival []: A migrant has decided to brave this terrifying unhappy place.	一名移民决定勇闯这个恐怖而不幸的地方。	l
@@ -9594,6 +9656,7 @@ Announcement combat agreement-title-core [agreement-party-list]: the promise by 
 Announcement combat agreement-title-core [agreement-party-list]: the promise by {s} to of a position	{s1}答应给安排职位的承诺	l
 Announcement combat body-result [layer-phrase]: {s} is smashed into the body, an unrecognizable mass	{s1}被砸进了身体里，变成了难以辨认的一团	l
 Announcement combat conversation-conflict-attacker [conversation-conflict-entity]: the forces of {s}	{s1}的部队	l
+Announcement combat dialogue-judgement [dialogue-judgement-unpunctuated,dialogue-judgement]: {s} {s}	{s1}{s2}	l
 Announcement combat diplomacy-cause []: a dispute over the devouring of the bodies of sapient beings	对吞食智慧生物的尸体存在争议	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Getting something to drink.	{s1}取消了{s2}：正在找东西喝。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Job item lost or destroyed.	{s1}取消了{s2}：工作物品丢失或损毁。	l
@@ -9763,6 +9826,7 @@ Alternatively, you can reduce the number of glacial squares and regions required
 Announcement combat adventure-announcement []: I'd like to stay here another day if you don't mind.	如果你不介意，我想在这里再住一天。	l
 Announcement combat adventure-announcement []: Perhaps you can gather plants, fruit, or go fishing.	也许可以采集植物、摘取果实，或去捕鱼。	l
 Announcement combat adventure-announcement []: There are scattered clouds underneath a striped sky.	布满条纹的天空下散布着云朵。	l
+Announcement combat adventure-announcement [dialogue-query-person]: What can you tell me about {s}?	能跟我说说{s1}吗？	l
 Announcement combat agreement-core [agreement-party-list,agreement-party-list]: {s} joined with {s}	{s1}与{s2}同行	l
 Announcement combat agreement-title-core [$name,$name]: the plot of to induce a war of {s} upon {s}	挑起{s1}对{s2}战争的阴谋	l
 Announcement combat agreement-title-core [agreement-crime]: the plot of to frame for {s} by fooling	用{s1}的罪名栽赃他人的阴谋	l
@@ -10208,6 +10272,7 @@ Announcement combat agreement-core [agreement-party-list]: {s} joined with to en
 Announcement combat agreement-title-core []: the joining of with in order to be brought to safety	与同行，以便被带到安全的地方	l
 Announcement combat attack-army-entry []: A vile force of darkness has arrived, seeking a parley!	一支邪恶的黑暗势力已经到来，要求谈判！	l
 Announcement combat conversation-conflict-group [conversation-conflict-entity]: the forces of {s}	{s1}的部队	l
+Announcement combat dialogue-judgement-subject [$name,dialogue-judgement-person]: {s} and {s} are	{s1}和{s2}	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Ammunition inaccessible.	{s1}取消了{s2}：无法取得弹药。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Building site submerged.	{s1}取消了{s2}：建筑工地被淹没。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Creature occupying site.	{s1}取消了{s2}：有生物占据地点。	l
@@ -10668,6 +10733,9 @@ Announcement combat agreement-title-core []: the agreement by to establish a tem
 Announcement combat agreement-title-core [agreement-party-list]: the plot of {s} to assassinate	{s1}的行刺阴谋	l
 Announcement combat artifact-claim [artifact-pronoun,artifact-recipient]: {s} offers it to {s}.	{s1}将其献给{s2}。	l
 Announcement combat conversation-conflict-group [conversation-conflict-entity]: a member of {s}	{s1}的一名成员	l
+Announcement combat dialogue-judgement [dialogue-judgement-person,$book]: {s} brought back {s}.	{s1}曾带回{s2}。	l
+Announcement combat dialogue-judgement [dialogue-judgement-person,$item]: {s} brought back {s}.	{s1}曾带回{s2}。	l
+Announcement combat dialogue-judgement [dialogue-judgement-person]: {s} gave an unwelcome name.	{s1}起了个不受欢迎的名字。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Animal not restrained.	{s1}取消了{s2}：动物未被拴住。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Building inaccessible.	{s1}取消了{s2}：无法到达建筑。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Drop-off inaccessible.	{s1}取消了{s2}：无法到达交付地点。	l
@@ -11145,6 +11213,7 @@ Announcement combat attack-warning [$attack-creature-role]: Beware their heavily
 Announcement combat attack-warning [$attack-creature-role]: Beware their skilled mounted {s}!	小心他们那些训练有素的{s1}骑兵！	l
 Announcement combat boast-slain-clause []: who sought my praise, only to be rejected in death	对方渴求我的赞许，到死也没能如愿	l
 Announcement combat conversation-conflict-death [conversation-conflict-person]: {s} was slain	{s1}被杀死了	l
+Announcement combat dialogue-judgement-predicate []: a storyteller, or at least tells stories	讲故事的人，或者至少会讲些故事	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: "Farewell!" Leaving.	{s1}取消了{s2}：“再见！”正在离开。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Animal inaccessible.	{s1}取消了{s2}：无法接近动物。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Could not find path.	{s1}取消了{s2}：找不到路径。	l
@@ -11700,6 +11769,7 @@ Announcement combat adventure-announcement []: A true Mountainhome must have a t
 Announcement combat adventure-announcement []: An honor as always. How can I be of service?	每次见到你都深感荣幸。有什么需要我效劳的？	l
 Announcement combat adventure-announcement []: Others were too nervous to make the journey.	其他人因太过害怕，未敢踏上旅途。	l
 Announcement combat adventure-announcement []: Some people are so wrapped up in themselves.	有些人眼里实在只有自己。	l
+Announcement combat adventure-announcement [dialogue-query-person]: Please guide me to {s}.	请带我去找{s1}。	l
 Announcement combat agreement-core [$historical-actor]: plotted to frame for by fooling {s}	密谋欺骗{s1}，栽赃他人	l
 Announcement combat agreement-core [$historical-actor]: plotted to frame {s} for by fooling	密谋栽赃{s1}	l
 Announcement combat agreement-core [agreement-goals]: plotted to infiltrate in order to {s}	密谋潜入，以便{s1}	l
@@ -11747,6 +11817,7 @@ Announcement combat rumor-event []: We have been under siege by an ancient force
 Announcement combat sentence [boast-victim,boast-slain-clause]: I am the death of {s}, {s}!	给{s1}带来死亡的正是我，{s2}！	l
 Announcement combat sentence [description-institution,$name]: There is {s} there named {s}.	那里有一座名为{s2}的{s1}。	l
 Announcement combat sentence [dialogue-family,$person,biography-office]: My {s} {s} is {s}.	我的{s1}{s2}担任{s3}。	l
+Announcement combat sentence [dialogue-query-person]: Can you tell me where I can find {s}?	能告诉我到哪里能找到{s1}吗？	l
 Announcement combat sentence [unit,object,unit]: {s} lets the {s} drop away as {s} attacks.	{s1}在{s3}攻击时放开了{s2}。	l
 Announcement combat site-rumor-predecessor [dialogue-family,site-rumor-person]: her {s} {s}	她的{s1}{s2}	l
 Announcement combat site-rumor-predecessor [dialogue-family,site-rumor-person]: his {s} {s}	他的{s1}{s2}	l
@@ -12277,6 +12348,8 @@ Announcement combat agreement-title-core []: the request by that make an offer o
 Announcement combat boast-slain-clause []: who lies dead, now only an embarrassing memory	对方已经死了，如今只剩下一段丢人的回忆	l
 Announcement combat boast-slain-clause []: who sucked plump helmets like a purring maggot	对方像呼噜蛆一样吮吸肉盔菇	l
 Announcement combat boast-slain-clause []: whom I buried alive under a mountain of hatred	对方被我活埋在山一般的仇恨之下	l
+Announcement combat dialogue-judgement-predicate []: famous for your loyalty as a soldier	以忠诚闻名的士兵	l
+Announcement combat dialogue-judgement-predicate []: gives sermons, and may be a preacher	会布道、可能是传道者的人	l
 Announcement combat dialogue-stock [dialogue-stock-item,dialogue-stock-item]: {s} and {s}	{s1}和{s2}	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Getting married.	{s1}取消了{s2}：正在结婚。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Invalid officer.	{s1}取消了{s2}：官员无效。	l
@@ -12892,6 +12965,7 @@ Announcement combat negotiation-response []: negotiated deceptively and had the 
 Announcement combat quest-sentence [quest-holder,quest-object]: {s} wants {s} returned.	{s1}希望能归还{s2}。	l
 Announcement combat quest-sentence [quest-object]: I desire that {s} be returned to me.	我希望能把{s1}归还给我。	l
 Announcement combat rumor-event []: Our people have been pestered by skulking villains.	一伙鬼鬼祟祟的恶徒一直在骚扰我们的族人。	l
+Announcement combat sentence [$name,$name]: I'm in charge of {s} now. Make way for {s}!	现在由我掌管{s1}。给{s2}让路！	l
 Announcement combat sentence []: I've always wanted to travel the world. Let us be off!	我一直想周游世界。我们出发吧！	l
 Announcement combat sentence []: It is rumored that the dead rise and stalk the living!	据说死人会在那里复活，暗中追踪活人！	l
 Announcement combat sentence []: It would be so great to perform and make people happy.	能靠演出带给大家快乐，那该多好。	l
@@ -13135,6 +13209,7 @@ Announcement combat attack-notice []: Horrifying screams come from the darkness 
 Announcement combat attack-notice []: Some ancient horror was encased here, until now!	这里原来封着某种远古的恐怖之物，如今封印破了！	l
 Announcement combat attack-reinforcements [attack-reinforcement-group]: With them {s}!	{s1}也随军而来！	l
 Announcement combat conversation-conflict-attacker [conversation-conflict-person]: {s}	{s1}	l
+Announcement combat dialogue-judgement [dialogue-judgement-person]: I never liked {s}.	我从来就不喜欢{s1}。	l
 Announcement combat diplomatic-event-core [$name,$name]: {s} rejected contact with {s}	{s1}拒绝与{s2}建立联系	l
 Announcement combat embark-revisit-heading []: A Outpost Revisited: You have returned.	重访前哨：你回来了。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Getting food.	{s1}取消了{s2}：正在取食物。	l
@@ -13430,6 +13505,8 @@ Announcement combat attack-warning [$attack-creature-role]: Beware their mounted
 Announcement combat attack-warning [$attack-creature-role]: Beware their skilled {s}!	小心他们那些训练有素的{s1}！	l
 Announcement combat conversation-conflict-account [conversation-conflict-deaths]: {s}	{s1}	l
 Announcement combat conversation-conflict-target [conversation-conflict-caste]: a {s}	一只{s1}	l
+Announcement combat dialogue-judgement [dialogue-judgement-person]: I don't know {s}.	我不认识{s1}。	l
+Announcement combat dialogue-judgement-predicate []: of the living and must be killed	个必须被杀死的活物	l
 Announcement combat diplomatic-meeting-topic []: the elevation of the landed nobility	晋升领地贵族	l
 Announcement combat diplomatic-meeting-topic []: the establishment of landed nobility	册立领地贵族	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Need crutch.	{s1}取消了{s2}：需要拐杖。	l
@@ -13474,6 +13551,7 @@ Announcement combat rumor-event []: Our people have been tormented by a fearsome
 Announcement combat rumor-event [rumor-person]: This place has been conquered by {s}.	这个地方已经被{s1}征服了。	l
 Announcement combat sentence [$item,merchant-address]: Splendid {s} right there, {s}.	{s2}，就那里的出色的{s1}。	l
 Announcement combat sentence [$item,merchant-town]: {s} was tanned right here in {s}.	{s1}就是在{s2}鞣制的。	l
+Announcement combat sentence [dialogue-query-person]: What can you tell me about {s}?	能跟我说说{s1}吗？	l
 Announcement combat sentence [guard-building,$distance]: There are guards in {s} {s}.	{s2}的{s1}里有卫兵。	l
 Announcement combat sentence [threat-name,threat-crimes]: Knowing no mercy, {s} {s} !	{s1}毫不留情，{s2}！	l
 Announcement combat sentence [unit,owned-object,owned-object]: {s} lock {s} with {s}!	{s1}用{s3}锁住{s2}！	l
@@ -14097,6 +14175,7 @@ Announcement combat attack-leader-quality []: a talented commander and true warr
 Announcement combat attack-warning [$attack-creature-role]: Beware their elite {s}!	小心他们那些精锐{s1}！	l
 Announcement combat conversation-conflict-deaths [conversation-conflict-death]: {s}	{s1}	l
 Announcement combat conversation-conflict-slain [conversation-conflict-person]: {s}	{s1}	l
+Announcement combat dialogue-judgement-predicate []: a protector of the defenseless	弱者的保护者	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Anguished.	{s1}取消了{s2}：痛苦不堪。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Catatonic.	{s1}取消了{s2}：陷入木僵。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Exhausted.	{s1}取消了{s2}：精疲力竭。	l
@@ -14781,6 +14860,7 @@ Announcement combat attack-reinforcement-group []: come monstrous siege engineer
 Announcement combat body-result [layer-phrase]: {s} collapses into a lump of gore	{s1}塌成了一团血肉	l
 Announcement combat conversation-conflict-place []: an unknown underground region	未知地下区域	l
 Announcement combat dialogue-battle-death [dialogue-battle-person]: {s} was slain	{s1}被杀死了	l
+Announcement combat dialogue-judgement-predicate []: good for a deal now and then	偶尔能做成买卖的人	l
 Announcement combat dialogue-stock [dialogue-stock-item,dialogue-stock]: {s}, {s}	{s1}、{s2}	l
 Announcement combat embark-outpost-label [$embark-race-adjective]: A {s} Outpost:	一座{s1}前哨：	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: No item.	{s1}取消了{s2}：没有物品。	l
@@ -15160,6 +15240,7 @@ Announcement combat agreement-title-core []: the plot of to frame for by fooling
 Announcement combat agreement-title-core []: the plot of to induce a war of upon	挑起战争的阴谋	l
 Announcement combat attack-origin-group [attack-reinforcement-kind]: comes a {s}	一只{s1}	l
 Announcement combat boast-slain-clause []: who was felled like a slender sapling	对方像纤细的树苗一样被砍倒了	l
+Announcement combat dialogue-judgement-achiever [dialogue-query-person]: {s} has	{s1}	l
 Announcement combat diplomacy-cause [$book]: a dispute over the ownership of {s}	对{s1}的所有权存在争议	l
 Announcement combat diplomacy-cause [$item]: a dispute over the ownership of {s}	对{s1}的所有权存在争议	l
 Announcement combat diplomacy-cause []: a first contact that went horribly wrong	初次接触出了严重差错	l
@@ -15475,6 +15556,7 @@ Announcement combat attack-army-entry []: A vile force of darkness has arrived!	
 Announcement combat attack-notice [$creature]: There is a {s} hidden away here.	这里藏着一只{s1}。	l
 Announcement combat attack-notice [$creature]: You have transformed into a {s}!	你变成了{s1}！	l
 Announcement combat body-result [layer-phrase]: {s} is ripped into loose shreds	{s1}被撕得支离破碎	l
+Announcement combat dialogue-judgement [dialogue-judgement-person]: I hate {s}.	我恨{s1}。	l
 Announcement combat diplomacy-cause []: a dispute over the treatment of animals	对待动物的方式存在争议	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Caged.	{s1}取消了{s2}：关在笼中。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Moved.	{s1}取消了{s2}：已移动。	l
@@ -15814,6 +15896,8 @@ Announcement combat agreement-core []: joined with to live a life of adventure	�
 Announcement combat agreement-core []: requested that make an offer of service	要求表示愿意效力	l
 Announcement combat agreement-title-core []: the agreement by to establish for	同意为建造的协议	l
 Announcement combat attack-notice []: The dead walk. Hide while you still can!	死者又走动起来了。趁还来得及，快躲起来！	l
+Announcement combat dialogue-judgement-predicate []: a poet, according to some	人们口中的诗人	l
+Announcement combat dialogue-judgement-subject [dialogue-query-person]: {s} is	{s1}	l
 Announcement combat diplomacy-cause []: a dispute over the treatment of plants	对待植物的方式存在争议	l
 Announcement combat diplomatic-meeting-topic []: a strengthening of trade ties	加强贸易关系	l
 Announcement combat fortress-announcement [$unit]: {s} has forgotten a demand.	{s1}忘记了一项要求。	l
@@ -16167,6 +16251,10 @@ Announcement combat attack-commander [attack-leader,$history-report]: {s} {s}	{s
 Announcement combat attack-notice []: An ambush! Curse all friends of nature!	有埋伏！诅咒所有自然之友！	l
 Announcement combat attack-origin-group [attack-reinforcement-kind]: come {s}	{s1}	l
 Announcement combat attack-warning [$attack-creature-role]: Beware their {s}!	小心他们的{s1}！	l
+Announcement combat dialogue-judgement-predicate []: a pleasure to speak with	让人乐于交谈的人	l
+Announcement combat dialogue-judgement-predicate []: capable of such violence	能做出这种暴行的人	l
+Announcement combat dialogue-judgement-predicate []: gladly not of the living	个庆幸自己不属于活人行列的存在	l
+Announcement combat dialogue-judgement-predicate []: something of a flatterer	有点会奉承的人	l
 Announcement combat diplomacy-cause []: a dispute over a formalized agreement	对正式协议存在争议	l
 Announcement combat diplomacy-cause []: an incident involving a lost diplomat	一起涉及失踪外交官的事件	l
 Announcement combat diplomacy-cause []: an incident involving a trade caravan	一起涉及商队的事件	l
@@ -16192,6 +16280,7 @@ Announcement combat sentence [$person]: The seat of {s} is also located here.	{s
 Announcement combat sentence [$term]: You have struck {s}! Praise the miners!	你挖到了{s1}！赞美矿工们！	l
 Announcement combat sentence []: How I long for some excitement in my life...	我真想让日子过得刺激些……	l
 Announcement combat sentence [dialogue-family,$person]: My {s} was named {s}.	我已故的{s1}名叫{s2}。	l
+Announcement combat sentence [dialogue-query-person]: Please guide me to {s}.	请带我去找{s1}。	l
 Announcement combat sentence [memory-person,memory-person]: {s} attacked {s}.	{s1}攻击了{s2}。	l
 Announcement combat sentence [unit,actor,equipment]: {s} blocks {s} with {s}!	{s1}用{s3}挡住了{s2}！	l
 Announcement combat sentence [unit,owned-object]: {s} latch on firmly to {s}!	{s1}牢牢咬住了{s2}！	l
@@ -16555,6 +16644,8 @@ Announcement combat conversation-conflict-entity []: an unknown civilization	未
 Announcement combat damage-list [damage-list,equipment]: {s} through the {s}	{s1}，穿过{s2}	l
 Announcement combat dialogue-battle [dialogue-battle-slain-list]: I slew {s}	我杀死了{s1}	l
 Announcement combat dialogue-battle-attacker [$creature,$name]: a {s} of {s}	{s2}的一只{s1}	l
+Announcement combat dialogue-judgement-predicate []: a legendary storyteller	传奇故事讲述者	l
+Announcement combat dialogue-judgement-predicate []: known to be quarrelsome	出了名的爱争吵的人	l
 Announcement combat diplomacy-cause []: the disturbance of once-eternal rest	曾经永恒的安息遭到打扰	l
 Announcement combat head [unit,unit,object]: {s} shake {s} around by the {s}	{s1}抓着{s2}的{s3}来回甩动	l
 Announcement combat journal-ascension-position [journal-event-place]: of {s}	{s1}的职位	l
@@ -16914,6 +17005,9 @@ Announcement combat attack-site-type [$term,attack-site-kind]: dark {s} {s}	黑�
 Announcement combat conversation-conflict-place []: the depths of the world	世界深处	l
 Announcement combat dialogue-battle-death [dialogue-battle-group]: {s} died	{s1}丧生了	l
 Announcement combat dialogue-battle-slain-list [dialogue-battle-slain]: {s}	{s1}	l
+Announcement combat dialogue-judgement-predicate []: a talented storyteller	很有天赋的故事讲述者	l
+Announcement combat dialogue-judgement-predicate []: infamously quarrelsome	爱争吵而臭名远扬的人	l
+Announcement combat dialogue-judgement-predicate []: my traveling companion	我的旅伴	l
 Announcement combat dialogue-trouble []: brewing trouble with our neighbors	与邻邦日益紧张的关系	l
 Announcement combat fortress-announcement [$unit]: {s} has ended a mandate.	{s1}结束了一项法令。	l
 Announcement combat fortress-announcement [$unit]: {s}'s mandate has ended.	{s1}的一项法令已结束。	l
@@ -17306,6 +17400,14 @@ Announcement combat attack-notice []: The glowing barrier has disappeared!	发�
 Announcement combat attack-reinforcement-kind [$attack-creature-role]: {s}	{s1}	l
 Announcement combat dialogue-battle-attacker [dialogue-battle-person]: {s}	{s1}	l
 Announcement combat dialogue-battle-target [$creature,$name]: a {s} of {s}	{s2}的一只{s1}	l
+Announcement combat dialogue-judgement-person [dialogue-query-person]: {s}	{s1}	l
+Announcement combat dialogue-judgement-predicate []: a legendary flatterer	传奇奉承者	l
+Announcement combat dialogue-judgement-predicate []: a legendary quarreler	传奇好争吵的人	l
+Announcement combat dialogue-judgement-predicate []: a skilled storyteller	技艺娴熟的故事讲述者	l
+Announcement combat dialogue-judgement-predicate []: an infamous flatterer	臭名远扬的奉承者	l
+Announcement combat dialogue-judgement-predicate []: something of a dancer	略懂舞蹈的人	l
+Announcement combat dialogue-judgement-predicate []: something of a hunter	略懂狩猎的人	l
+Announcement combat dialogue-judgement-predicate [dialogue-family]: my {s}	我的{s1}	l
 Announcement combat diplomacy-cause []: a disagreement over prior treaties	对以往条约的分歧	l
 Announcement combat diplomacy-cause []: a dispute over livestock ownership	牲畜所有权争议	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: .	{s1}取消了{s2}。	l
@@ -17703,6 +17805,14 @@ Announcement combat attack-notice [$unit,$description]: {s} has come! {s}	{s1}�
 Announcement combat damage [layer,layer]: jamming the {s} through the {s}	将{s1}挤压穿过{s2}	l
 Announcement combat damage-list [damage-list,fluid]: {s} and spilling {s}	{s1}，使{s2}洒出	l
 Announcement combat description-institution [$person]: a tomb housing {s}	安葬着{s1}的陵墓	l
+Announcement combat dialogue-judgement-predicate []: a legendary murderer	传奇杀人凶手	l
+Announcement combat dialogue-judgement-predicate []: a legendary preacher	传奇传道者	l
+Announcement combat dialogue-judgement-predicate []: a thieving scoundrel	偷鸡摸狗的恶棍	l
+Announcement combat dialogue-judgement-predicate []: a very loyal soldier	十分忠诚的士兵	l
+Announcement combat dialogue-judgement-predicate []: an infamous murderer	臭名远扬的杀人凶手	l
+Announcement combat dialogue-judgement-predicate []: my former apprentice	我以前的徒弟	l
+Announcement combat dialogue-judgement-predicate []: somewhat quarrelsome	有些好争吵的人	l
+Announcement combat dialogue-judgement-predicate []: such a loyal soldier	如此忠诚的士兵	l
 Announcement combat diplomacy-cause []: prior aggression by the adversary	对方此前的侵略	l
 Announcement combat injury-subject [injury-subject,$body]: {s} in the {s}	{s2}内的{s1}	l
 Announcement combat journal-event-place []: an unknown underground region	不明地下区域	l
@@ -18091,6 +18201,15 @@ Announcement combat attack [attack-verb,unit,object]: {s} {s} by the {s}	{s1}{s2
 Announcement combat attack [attack-verb,unit,object]: {s} {s} in the {s}	{s1}{s2}的{s3}	l
 Announcement combat damage [damage,layer]: {s} through a hole in the {s}	{s1}，穿过{s2}上的孔洞	l
 Announcement combat dialogue-battle-target [dialogue-battle-person]: {s}	{s1}	l
+Announcement combat dialogue-judgement [$name]: {s} are not fit to rule.	{s1}不配统治。	l
+Announcement combat dialogue-judgement-predicate []: a great storyteller	卓越的故事讲述者	l
+Announcement combat dialogue-judgement-predicate []: a legendary brawler	传奇斗殴者	l
+Announcement combat dialogue-judgement-predicate []: a legendary brigand	传奇强盗	l
+Announcement combat dialogue-judgement-predicate []: a legendary villain	传奇恶人	l
+Announcement combat dialogue-judgement-predicate []: a talented preacher	很有天赋的传道者	l
+Announcement combat dialogue-judgement-predicate []: an infamous brigand	臭名远扬的强盗	l
+Announcement combat dialogue-judgement-predicate []: an infamous villain	臭名远扬的恶人	l
+Announcement combat dialogue-judgement-predicate []: part of the problem	造成问题的人之一	l
 Announcement combat fortress-announcement [$unit]: {s} has a new demand.	{s1}提出了一项新要求。	l
 Announcement combat historical-battle-location [$name,$name]: {s} in {s}	{s2}的{s1}	l
 Announcement combat journal-event-title [journal-person-event]: Your {s}	你{s1}	l
@@ -18475,6 +18594,13 @@ Announcement combat dialogue-battle-attacker [$name]: the forces of {s}	{s1}的�
 Announcement combat dialogue-battle-deaths [dialogue-battle-death]: {s}	{s1}	l
 Announcement combat dialogue-battle-group [$creature,$name]: {s} of {s}	{s2}的{s1}	l
 Announcement combat dialogue-battle-slain [dialogue-battle-person]: {s}	{s1}	l
+Announcement combat dialogue-judgement-predicate []: a dangerous animal	危险的动物	l
+Announcement combat dialogue-judgement-predicate []: a legendary dancer	传奇舞者	l
+Announcement combat dialogue-judgement-predicate []: a legendary hunter	传奇猎人	l
+Announcement combat dialogue-judgement-predicate []: a legendary killer	传奇杀手	l
+Announcement combat dialogue-judgement-predicate []: a skilled preacher	技艺娴熟的传道者	l
+Announcement combat dialogue-judgement-predicate []: an infamous killer	臭名远扬的杀手	l
+Announcement combat dialogue-judgement-predicate []: well-known brawler	出了名的斗殴者	l
 Announcement combat diplomacy-groups [$name,diplomacy-groups]: {s}, {s}	{s1}、{s2}	l
 Announcement combat historical-clash-outcome []: slaying them and dying	全歼对方，自身阵亡	l
 Announcement combat journal-performance [journal-performance-core]: {s}	{s1}	l
@@ -18939,6 +19065,16 @@ Announcement combat conversation-conflict-place [$conflict-place]: {s}	{s1}	l
 Announcement combat damage [fraction,layer]: breaking away {s} the {s}	使{s2}的{s1}断落	l
 Announcement combat description-institution [$person]: a temple to {s}	供奉{s1}的神殿	l
 Announcement combat dialogue-battle-slain [dialogue-battle-group]: {s}	{s1}	l
+Announcement combat dialogue-judgement-predicate []: a known flatterer	众所周知的奉承者	l
+Announcement combat dialogue-judgement-predicate []: a noted flatterer	出了名的奉承者	l
+Announcement combat dialogue-judgement-predicate []: a noted quarreler	出了名的好争吵的人	l
+Announcement combat dialogue-judgement-predicate []: a talented dancer	很有天赋的舞者	l
+Announcement combat dialogue-judgement-predicate []: a talented hunter	很有天赋的猎人	l
+Announcement combat dialogue-judgement-predicate []: a well-known thug	出了名的恶棍	l
+Announcement combat dialogue-judgement-predicate []: dangerous outlaws	危险的亡命徒	l
+Announcement combat dialogue-judgement-predicate []: not of the living	个不属于活人行列的存在	l
+Announcement combat dialogue-judgement-predicate []: prone to violence	容易诉诸暴力的人	l
+Announcement combat dialogue-judgement-predicate []: worthy of respect	值得尊敬的人	l
 Announcement combat historical-commanded-squad [historical-squad]: {s}	{s1}	l
 Announcement combat journal-event-title [journal-entity-event]: 's {s}	某个组织{s1}	l
 Announcement combat journal-event-title [journal-person-event]: 's {s}	某人{s1}	l
@@ -19418,6 +19554,21 @@ Announcement combat conversation-conflict-place []: an unknown region	未知区�
 Announcement combat damage [layer]: passing through a hole in the {s}	穿过{s1}上的孔洞	l
 Announcement combat description-resident [$person,$term]: {s} the {s}	{s2}{s1}	l
 Announcement combat dialogue-battle-target [$name]: the forces of {s}	{s1}的部队	l
+Announcement combat dialogue-judgement-person []: an unknown creature	一个身份不明的生物	l
+Announcement combat dialogue-judgement-predicate []: a great preacher	卓越的传道者	l
+Announcement combat dialogue-judgement-predicate []: a kindred spirit	志同道合的人	l
+Announcement combat dialogue-judgement-predicate []: a known murderer	众所周知的杀人凶手	l
+Announcement combat dialogue-judgement-predicate []: a legendary bard	传奇吟游诗人	l
+Announcement combat dialogue-judgement-predicate []: a legendary hero	传奇英雄	l
+Announcement combat dialogue-judgement-predicate []: a legendary poet	传奇诗人	l
+Announcement combat dialogue-judgement-predicate []: a legendary thug	传奇恶棍	l
+Announcement combat dialogue-judgement-predicate []: a noted murderer	出了名的杀人凶手	l
+Announcement combat dialogue-judgement-predicate []: a skilled dancer	技艺娴熟的舞者	l
+Announcement combat dialogue-judgement-predicate []: a skilled hunter	技艺娴熟的猎人	l
+Announcement combat dialogue-judgement-predicate []: an enemy fighter	敌方战士	l
+Announcement combat dialogue-judgement-predicate []: an infamous thug	臭名远扬的恶棍	l
+Announcement combat dialogue-judgement-predicate []: my former master	我以前的师父	l
+Announcement combat dialogue-judgement-predicate []: somewhat violent	有些暴力倾向的人	l
 Announcement combat diplomacy-cause []: a dispute over fishing rights	捕鱼权争议	l
 Announcement combat diplomacy-cause []: a dispute over grazing rights	放牧权争议	l
 Announcement combat diplomatic-meeting-topic []: a declaration of war	宣战	l
@@ -19461,7 +19612,6 @@ Announcement combat sentence [threat-crimes]: Knowing no mercy, {s} !	这个恶�
 Announcement combat sentence [unit,object]: {s} lose hold of the {s}!	{s1}没能抓牢{s2}！	l
 Announcement combat sentence [unit]: {s} is caught in a pool of lava!	{s1}被困在了熔岩池中！	l
 Announcement combat sentence [unit]: {s} is having trouble breathing!	{s1}呼吸困难了！	l
-Announcement combat sentence [unit]: {s} has melted.	{s1}熔化而死。	l
 Announcement combat sentence [unit]: {s} was spotted sneaking around!	发现{s1}在附近鬼鬼祟祟地活动！	l
 Announcement combat site-rumor-date [$digits]: the late autumn of {s}	第{s1}年晚秋	l
 Announcement combat site-rumor-date [$digits]: the late spring of {s}	第{s1}年晚春	l
@@ -19866,6 +20016,7 @@ Announcement combat adventure-announcement []: There is fog outside.	外面有�
 Announcement combat adventure-announcement []: What a strange place!	多么奇怪的地方！	l
 Announcement combat adventure-announcement []: You will be rewarded.	你将获得回报。	l
 Announcement combat adventure-announcement []: You're so perceptive!	你看得真透彻！	l
+Announcement combat adventure-announcement [dialogue-judgement]: {s}	{s1}	l
 Announcement combat agreement-conclusion-title []: a guide agreement	一项向导协议	l
 Announcement combat agreement-conclusion-title []: an abduction plot	一场绑架阴谋	l
 Announcement combat agreement-core [agreement-party-list]: {s} began	{s1}开始了……	l
@@ -19877,6 +20028,14 @@ Announcement combat boast-slain-clause []: who was too short to live	对方矮�
 Announcement combat damage [layer]: jamming the {s} out of the wound	将{s1}从伤口挤出	l
 Announcement combat description-institution [$name]: a temple of {s}	属于{s1}的神殿	l
 Announcement combat dialogue-battle-group [$name]: the forces of {s}	{s1}的部队	l
+Announcement combat dialogue-judgement-predicate []: a known brigand	众所周知的强盗	l
+Announcement combat dialogue-judgement-predicate []: a known villain	众所周知的恶人	l
+Announcement combat dialogue-judgement-predicate []: a loyal soldier	忠诚的士兵	l
+Announcement combat dialogue-judgement-predicate []: a noted brigand	出了名的强盗	l
+Announcement combat dialogue-judgement-predicate []: a noted villain	出了名的恶人	l
+Announcement combat dialogue-judgement-predicate []: a safe creature	无害的生物	l
+Announcement combat dialogue-judgement-predicate []: a talented bard	很有天赋的吟游诗人	l
+Announcement combat dialogue-judgement-predicate []: a talented poet	很有天赋的诗人	l
 Announcement combat dialogue-stock-item [$term,$digits]: {s} for {s}	{s1}（价格{s2}）	l
 Announcement combat diplomacy-cause []: a dispute over rights-of-way	通行权争议	l
 Announcement combat diplomatic-meeting-topic []: a tribute agreement	贡赋协议	l
@@ -19913,6 +20072,7 @@ Announcement combat sentence [boast-victim]: I am the killer of {s}!	杀死{s1}�
 Announcement combat sentence [boast-victim]: I am the master of {s}!	我就是{s1}的主人！	l
 Announcement combat sentence [boast-victim]: I am the slayer of {s}!	杀死{s1}的正是我！	l
 Announcement combat sentence [dialogue-family]: She was also my {s}.	她也是我已故的{s1}。	l
+Announcement combat sentence [dialogue-query-person]: I worship {s}.	我崇拜{s1}。	l
 Announcement combat sentence [threat-crimes]: Knowing no mercy, {s}!	这个恶徒毫不留情，{s1}！	l
 Announcement combat sentence [unit,$item]: {s} has guzzled some {s}!	{s1}猛喝了些{s2}！	l
 Announcement combat sentence [unit,$term]: {s} skips across the {s}!	{s1}在{s2}表面弹跳着掠过！	l
@@ -20337,6 +20497,14 @@ Announcement combat attack-leader-quality []: a competent commander	是一位称
 Announcement combat conversation-conflict-context [rumor-time]: {s}	{s1}	l
 Announcement combat conversation-conflict-place []: an unknown site	未知地点	l
 Announcement combat dialogue-family-indef [dialogue-family]: an {s}	一位{s1}	l
+Announcement combat dialogue-judgement-predicate []: a close friend	亲密的朋友	l
+Announcement combat dialogue-judgement-predicate []: a great dancer	卓越的舞者	l
+Announcement combat dialogue-judgement-predicate []: a great hunter	卓越的猎人	l
+Announcement combat dialogue-judgement-predicate []: a known killer	众所周知的杀手	l
+Announcement combat dialogue-judgement-predicate []: a noted killer	出了名的杀手	l
+Announcement combat dialogue-judgement-predicate []: a skilled bard	技艺娴熟的吟游诗人	l
+Announcement combat dialogue-judgement-predicate []: a skilled poet	技艺娴熟的诗人	l
+Announcement combat dialogue-judgement-predicate []: the same as me	和我一样的存在	l
 Announcement combat dialogue-object []: the object I can't remember	我记不起来的那件东西	l
 Announcement combat diplomacy-cause []: a dispute over truthfulness	对是否诚实存在争议	l
 Announcement combat diplomacy-cause []: a dispute over water rights	用水权争议	l
@@ -20363,6 +20531,7 @@ Announcement combat sentence [$term]: A {s} has sprung from ambush!	一只{s1}�
 Announcement combat sentence [$term]: {s} toppled by battering ram.	{s1}被攻城锤撞倒了。	l
 Announcement combat sentence []: I'd love to travel and create art.	我很想一边旅行，一边从事艺术创作。	l
 Announcement combat sentence []: The geldables have been torn away!	生殖器被撕掉了！	l
+Announcement combat sentence []: What happened to bring us to this?	究竟发生了什么，让我们走到了这一步？	l
 Announcement combat sentence [boast-victim]: I am the death of {s}!	给{s1}带来死亡的正是我！	l
 Announcement combat sentence [dialogue-family]: He was also my {s}.	他也是我已故的{s1}。	l
 Announcement combat sentence [dialogue-family]: It was also my {s}.	它也是我已故的{s1}。	l
@@ -20863,6 +21032,10 @@ Announcement combat conversation-conflict-slain-list []: many foes	许多敌人	
 Announcement combat dialogue-battle-group [$name]: a member of {s}	{s1}的一名成员	l
 Announcement combat dialogue-battle-person []: an unknown creature	不明生物	l
 Announcement combat dialogue-family-indef [dialogue-family]: a {s}	一位{s1}	l
+Announcement combat dialogue-judgement-predicate []: a modest bard	普通的吟游诗人	l
+Announcement combat dialogue-judgement-predicate []: my apprentice	我的徒弟	l
+Announcement combat dialogue-judgement-predicate []: so very brave	十分勇敢的人	l
+Announcement combat dialogue-query-person [$historical-actor]: {s}	{s1}	l
 Announcement combat diplomatic-meeting-topic []: a peace agreement	和平协议	l
 Announcement combat diplomatic-meeting-topic []: a trade agreement	贸易协议	l
 Announcement combat diplomatic-meeting-topic []: a vague agreement	一项未明确内容的协议	l
@@ -21375,6 +21548,11 @@ Announcement combat body-result [layer-phrase]: {s} is torn apart	{s1}被撕碎�
 Announcement combat conversation-conflict-place []: the magma sea	岩浆海	l
 Announcement combat damage-list [damage,damage-list]: {s} and {s}	{s1}，并{s2}	l
 Announcement combat dialogue-battle [dialogue-battle-deaths]: {s}	{s1}	l
+Announcement combat dialogue-judgement-achiever [$name]: {s} have	{s1}	l
+Announcement combat dialogue-judgement-predicate []: a great bard	卓越的吟游诗人	l
+Announcement combat dialogue-judgement-predicate []: a great hero	伟大的英雄	l
+Announcement combat dialogue-judgement-predicate []: a great poet	卓越的诗人	l
+Announcement combat dialogue-judgement-predicate []: a known thug	众所周知的恶棍	l
 Announcement combat dialogue-trouble-list [dialogue-trouble]: {s}	{s1}	l
 Announcement combat guard-building []: the processed goods market	加工商品市场	l
 Announcement combat historical-artifact [$memorial-artifact]: {s}	{s1}	l
@@ -21836,6 +22014,10 @@ Announcement combat agreement-title-core []: the embezzlement of	进行的挪用
 Announcement combat agreement-title-core []: the joining of with	与同行	l
 Announcement combat attack-leader-quality []: a middling warrior	是一位武艺平平的战士	l
 Announcement combat attack-notice []: An ambush! Drive them out!	有埋伏！把他们赶出去！	l
+Announcement combat dialogue-judgement-predicate []: an intruder	闯入者	l
+Announcement combat dialogue-judgement-predicate []: my comrades	我的战友们	l
+Announcement combat dialogue-judgement-predicate []: my neighbor	我的邻居	l
+Announcement combat dialogue-judgement-predicate []: my prisoner	我的囚犯	l
 Announcement combat diplomacy-cause []: a dispute over territory	领土争议	l
 Announcement combat guard-building []: the imported goods market	进口商品市场	l
 Announcement combat historical-battle-location []: unknown lands	未知之地	l
@@ -22396,6 +22578,12 @@ Announcement combat conversation-conflict-account []: many died	许多生灵丧�
 Announcement combat conversation-conflict-person [$person]: {s}	{s1}	l
 Announcement combat dialogue-battle-attacker [$creature]: a {s}	一只{s1}	l
 Announcement combat dialogue-family []: seventh eldest daughter	第七个女儿	l
+Announcement combat dialogue-judgement-predicate []: a murderer	杀人凶手	l
+Announcement combat dialogue-judgement-predicate []: my comrade	我的战友	l
+Announcement combat dialogue-judgement-predicate []: my partner	我的搭档	l
+Announcement combat dialogue-judgement-predicate []: on my side	我这一边的人	l
+Announcement combat dialogue-judgement-subject [$name]: {s} are	{s1}	l
+Announcement combat dialogue-query-person []: a secret identity	秘密身份	l
 Announcement combat dialogue-recognition [dialogue-family]: {s}	{s1}	l
 Announcement combat diplomacy-cause []: a previous insurrection	此前的一场起义	l
 Announcement combat diplomacy-groups [$name,$name]: {s} and {s}	{s1}和{s2}	l
@@ -23030,6 +23218,10 @@ Announcement combat damage-list [damage,damage-list]: {s}, {s}	{s1}，{s2}	l
 Announcement combat dialogue-family []: eighth eldest daughter	第八个女儿	l
 Announcement combat dialogue-family []: fourth eldest daughter	第四个女儿	l
 Announcement combat dialogue-family []: second eldest daughter	次女	l
+Announcement combat dialogue-judgement-predicate []: a brigand	强盗	l
+Announcement combat dialogue-judgement-predicate []: a monster	怪物	l
+Announcement combat dialogue-judgement-predicate []: an animal	一只动物	l
+Announcement combat dialogue-judgement-predicate []: my master	我的师父	l
 Announcement combat dialogue-trouble []: the army on the march	那支正在行军的军队	l
 Announcement combat diplomacy-cause []: a dispute over torture	对酷刑存在争议	l
 Announcement combat fortress-arrival [$unit]: {s} has arrived.	{s1}已经到达。	l
@@ -23707,6 +23899,14 @@ Announcement combat dialogue-family []: ninth eldest daughter	第九个女儿	l
 Announcement combat dialogue-family []: sixth eldest daughter	第六个女儿	l
 Announcement combat dialogue-family []: tenth eldest daughter	第十个女儿	l
 Announcement combat dialogue-family []: third eldest daughter	第三个女儿	l
+Announcement combat dialogue-judgement-predicate []: a friend	朋友	l
+Announcement combat dialogue-judgement-predicate []: a killer	杀手	l
+Announcement combat dialogue-judgement-predicate []: an enemy	敌人	l
+Announcement combat dialogue-judgement-predicate []: my enemy	我的敌人	l
+Announcement combat dialogue-judgement-predicate []: my lover	我的恋人	l
+Announcement combat dialogue-judgement-predicate []: thuggish	行事蛮横的恶棍	l
+Announcement combat dialogue-judgement-predicate []: unhinged	疯狂的家伙	l
+Announcement combat dialogue-judgement-predicate []: unstable	个精神不稳定的家伙	l
 Announcement combat dialogue-stock [dialogue-stock-item]: {s}	{s1}	l
 Announcement combat dialogue-stock-item [$term]: {s} for free	{s1}（免费）	l
 Announcement combat dialogue-trouble []: bone-chilling horror	骇人的恐怖之物	l
@@ -24364,6 +24564,7 @@ Announcement combat dialogue-family []: paternal grandmother	祖母	l
 Announcement combat dialogue-family []: seventh eldest child	第七个孩子	l
 Announcement combat dialogue-family []: younger half-brother	同父异母或同母异父的弟弟	l
 Announcement combat dialogue-family []: younger half-sibling	同父异母或同母异父的弟妹	l
+Announcement combat dialogue-judgement-achiever []: You have	你	l
 Announcement combat dialogue-trouble []: armies on the march	正在行军的军队	l
 Announcement combat diplomacy-cause []: an attack by a beast	一次野兽袭击	l
 Announcement combat diplomatic-meeting-topic []: an alliance	结盟	l
@@ -25108,6 +25309,8 @@ Announcement combat dialogue-family []: eighth eldest child	第八个孩子	l
 Announcement combat dialogue-family []: fourth eldest child	第四个孩子	l
 Announcement combat dialogue-family []: second eldest child	第二个孩子	l
 Announcement combat dialogue-family []: younger half-sister	同父异母或同母异父的妹妹	l
+Announcement combat dialogue-judgement-achiever []: She has	她	l
+Announcement combat dialogue-judgement-predicate []: a hero	英雄	l
 Announcement combat diplomacy-cause []: a previous conquest	此前的一次征服	l
 Announcement combat guard-building []: a bone carver's shop	骨雕店	l
 Announcement combat guard-building []: a food imports store	进口食品店	l
@@ -25959,6 +26162,12 @@ Announcement combat dialogue-family []: seventh eldest son	第七个儿子	l
 Announcement combat dialogue-family []: sixth eldest child	第六个孩子	l
 Announcement combat dialogue-family []: tenth eldest child	第十个孩子	l
 Announcement combat dialogue-family []: third eldest child	第三个孩子	l
+Announcement combat dialogue-judgement-achiever []: He has	他	l
+Announcement combat dialogue-judgement-achiever []: It has	它	l
+Announcement combat dialogue-judgement-person [$name]: {s}	{s1}	l
+Announcement combat dialogue-judgement-person []: yourself	你自己	l
+Announcement combat dialogue-judgement-predicate []: brave	勇敢的人	l
+Announcement combat dialogue-judgement-subject []: You are	你	l
 Announcement combat diplomacy-cause []: a special occasion	一次特殊活动	l
 Announcement combat fluid [owner,decay,$term]: {s} {s} {s}	{s1}{s2}{s3}	l
 Announcement combat guard-building []: a armorsmith's shop	护甲锻造店	l
@@ -26827,6 +27036,9 @@ Announcement combat dialogue-family []: fourth eldest son	第四个儿子	l
 Announcement combat dialogue-family []: older half-sister	同父异母或同母异父的姐姐	l
 Announcement combat dialogue-family []: second eldest son	次子	l
 Announcement combat dialogue-family []: youngest daughter	最小的女儿	l
+Announcement combat dialogue-judgement-person []: herself	她自己	l
+Announcement combat dialogue-judgement-person []: himself	他自己	l
+Announcement combat dialogue-judgement-subject []: She is	她	l
 Announcement combat diplomacy-cause []: a previous battle	此前的一场战役	l
 Announcement combat guard-building []: a carpenter's shop	木匠铺	l
 Announcement combat guard-building []: a metal craft shop	金属工艺品店	l
@@ -27790,6 +28002,10 @@ Announcement combat dialogue-family []: ninth eldest son	第九个儿子	l
 Announcement combat dialogue-family []: sixth eldest son	第六个儿子	l
 Announcement combat dialogue-family []: tenth eldest son	第十个儿子	l
 Announcement combat dialogue-family []: third eldest son	第三个儿子	l
+Announcement combat dialogue-judgement-person []: itself	它自己	l
+Announcement combat dialogue-judgement-person []: myself	我自己	l
+Announcement combat dialogue-judgement-subject []: He is	他	l
+Announcement combat dialogue-judgement-subject []: It is	它	l
 Announcement combat dialogue-trouble []: skulking vermin	潜伏的害兽	l
 Announcement combat embark-outpost-label []: An Outpost:	一座前哨：	l
 Announcement combat fortress-attack [attack-notice]: {s}	{s1}	l
@@ -29823,6 +30039,8 @@ Announcement combat damage-list [damage-list]: {s} and	{s1}	l
 Announcement combat description-institution []: a tomb	陵墓	l
 Announcement combat dialogue-family []: younger sister	妹妹	l
 Announcement combat dialogue-family []: youngest child	最小的孩子	l
+Announcement combat dialogue-query-person [$unit]: {s}	{s1}	l
+Announcement combat dialogue-query-person []: yourself	你自己	l
 Announcement combat dialogue-trouble []: the abduction	那起绑架	l
 Announcement combat diplomacy-cause []: a previous war	此前的一场战争	l
 Announcement combat diplomacy-possessor [$unit]: {s}'s	{s1}的	l
@@ -29865,6 +30083,7 @@ Announcement combat rumor-time []: not a half hour ago	不到半小时前	l
 Announcement combat sentence [$item]: Great {s} there.	那里的很棒的{s1}。	l
 Announcement combat sentence []: It is a gelding blow!	这一击造成了阉割！	l
 Announcement combat sentence []: Let's spread the joy!	让我们传播欢乐吧！	l
+Announcement combat sentence [dialogue-judgement]: {s}	{s1}	l
 Announcement combat site-rumor-position [$office]: {s}	{s1}	l
 Announcement combat visitor-statement []: am burning .	正在燃烧。	l
 Announcement combat visitor-statement []: am flooding.	正在泛滥。	l
@@ -30877,6 +31096,11 @@ Announcement combat adventure-announcement []: Where?	哪里？	l
 Announcement combat dialogue-family []: older brother	哥哥	l
 Announcement combat dialogue-family []: older sibling	兄姐	l
 Announcement combat dialogue-family []: only daughter	唯一的女儿	l
+Announcement combat dialogue-judgement-person []: She	她	l
+Announcement combat dialogue-judgement-person []: You	你	l
+Announcement combat dialogue-judgement-person []: her	她	l
+Announcement combat dialogue-judgement-person []: him	他	l
+Announcement combat dialogue-judgement-person []: you	你	l
 Announcement combat dialogue-trouble []: law-breaking	违法活动	l
 Announcement combat dialogue-trouble []: the fighting	争斗	l
 Announcement combat diplomacy-cause []: a competition	一场比赛	l
@@ -30928,6 +31152,7 @@ Announcement combat reference-value []: introspection	自省	l
 Announcement combat rumor-event []: The creature is .	这只生物身份不明。	l
 Announcement combat rumor-owner [rumor-person]: {s}'s	{s1}的	l
 Announcement combat sentence [$item]: Good {s} there.	那里的优质的{s1}。	l
+Announcement combat sentence []: I found myself dead.	我发现自己已经死了。	l
 Announcement combat sentence [equipment]: {s} breaks!	{s1}断裂了！	l
 Announcement combat threat-building []: the catacombs	地下墓穴	l
 Announcement combat threat-crimes [threat-crime]: {s}	{s1}	l
@@ -32024,6 +32249,11 @@ Announcement combat dialogue-family []: eldest child	最年长的孩子	l
 Announcement combat dialogue-family []: half-sibling	同父异母或同母异父的兄弟姐妹	l
 Announcement combat dialogue-family []: older sister	姐姐	l
 Announcement combat dialogue-family []: youngest son	最小的儿子	l
+Announcement combat dialogue-judgement-person []: He	他	l
+Announcement combat dialogue-judgement-person []: It	它	l
+Announcement combat dialogue-judgement-person []: it	它	l
+Announcement combat dialogue-judgement-person []: me	我	l
+Announcement combat dialogue-query-person []: myself	我自己	l
 Announcement combat dialogue-stock-item [$term]: {s}	{s1}	l
 Announcement combat dialogue-trouble []: occupations	多处占领	l
 Announcement combat diplomacy-cause []: a procession	一次游行	l
@@ -32077,6 +32307,7 @@ Announcement combat sentence [$item]: Excellent {s}.	上等的{s1}。	l
 Announcement combat sentence [$item]: Fantastic {s}.	绝妙的{s1}。	l
 Announcement combat sentence [$name]: We are in {s}.	我们在{s1}。	l
 Announcement combat sentence []: Knowing no mercy, !	这个恶徒毫不留情地作恶，具体罪行不明！	l
+Announcement combat sentence [unit]: {s} has melted.	{s1}熔化而死。	l
 Announcement combat sentence [unit]: {s} looks sick!	{s1}看起来想吐了！	l
 Announcement combat sentence [unit]: {s} passes out.	{s1}昏过去了。	l
 Announcement combat sentence [work-description]: {s}	{s1}	l
@@ -33276,6 +33507,7 @@ Announcement combat defense-adverb []: effortlessly	毫不费力地	l
 Announcement combat dialogue-family []: grandfather	祖父或外祖父	l
 Announcement combat dialogue-family []: grandmother	祖母或外祖母	l
 Announcement combat dialogue-family []: grandparent	祖辈	l
+Announcement combat dialogue-judgement-person []: I	我	l
 Announcement combat dialogue-trouble []: abductions	多起绑架	l
 Announcement combat diplomacy-cause []: persecution	迫害	l
 Announcement combat embark-charges [$creature]: {s}	{s1}	l
@@ -34541,6 +34773,7 @@ Announcement combat rumor-time []: a few hours ago	几小时前	l
 Announcement combat rumor-time []: a few weeks ago	几周前	l
 Announcement combat rumor-time []: a few years ago	几年前	l
 Announcement combat rumor-time []: not one day ago	不到一天前	l
+Announcement combat sentence []: I worship no one.	我不崇拜任何神祇。	l
 Announcement combat sentence [merchant-hawk]: {s}!	{s1}！	l
 Announcement combat sentence [unit]: {s} has come!	{s1}来了！	l
 Announcement combat sentence [unit]: {s} pass out.	{s1}昏过去了。	l
@@ -35822,6 +36055,7 @@ Announcement combat biography-office [$term]: {s}	{s1}	l
 Announcement combat damage-verb []: tearing apart	撕碎	l
 Announcement combat dialogue-battle []: many died	许多人丧生	l
 Announcement combat dialogue-battle-target []: me	我	l
+Announcement combat dialogue-query-person []: you	你	l
 Announcement combat dialogue-recognition []: Dear	亲爱的	l
 Announcement combat dialogue-trouble []: open war	公开交战	l
 Announcement combat dialogue-trouble []: ruffians	暴徒	l
@@ -37746,6 +37980,7 @@ The Monster Rampage of {n} in in {p} during {e}.	在{e1}期间，{n1}在{p1}的�
 The Monster Rampage of {n} in in {p} within {p}.	在{p2}，{n1}在{p1}的怪物肆虐事件。	htEi
 The army is commanded by {n}, a skilled warrior.	这支军队的统领是{n1}，是一位武艺高强的战士。	hPt
 The assigned vehicle is moving toward this stop.	已分配的车辆正在前往此站点。	hj
+The associated zones must have enough value. (\x0F)	关联区域必须达到足够的总价值（要求数值缺失）。	hP
 The defenders hired {a} as scouts in {p} at {p}.	在{p2}，防守方在{p1}雇佣{a1}担任斥候。	ht
 The defenders hired {a} as scouts in {p} in {p}.	在{p2}，防守方在{p1}雇佣{a1}担任斥候。	ht
 The performers are in the middle of dancing {b}.	表演者们正在表演舞蹈《{b1}》。	hPt
@@ -48518,7 +48753,7 @@ Conversation portrait label: Relationship	与你的关系：	l
 Conversation relationship: No fear of you	不怕你	l
 Converting gathering blueprint to regular	将采集蓝图转为普通指定区域	wo
 Converting smoothing blueprint to regular	将打磨蓝图转为普通指定区域	wo
-Current top guildhall location: {e}, {d}\x0F	当前等级最高的行会大厅地点：{e1}，{d1}☼	hPt
+Current top guildhall location: {e}, {d}\x0F	当前价值最高的行会大厅地点：{e1}，{d1}☼	hPt
 DFHack GUI Animal assignment: Egg layers:	产蛋动物：	l
 DFHack GUI Animal assignment: In pit/pond	在坑洞／池塘	l
 DFHack GUI Animal assignment: Max status:	最高状态：	l
@@ -53984,7 +54219,7 @@ Conversation keyword: scribe join work	抄写员 加入 工作	l
 Conversation prompt: How will you ask?	你将如何提出请求？	l
 Conversation prompt: What do you want?	你想要什么？	l
 Converting mining blueprint to regular	将挖掘蓝图转为普通指定区域	wo
-Current top temple location: {e}, {d}\x0F	当前等级最高的神殿地点：{e1}，{d1}☼	hPt
+Current top temple location: {e}, {d}\x0F	当前价值最高的神殿地点：{e1}，{d1}☼	hPt
 DFHack GUI Animal assignment: Grazers:	食草动物：	l
 DFHack GUI Animal assignment: Sort by:	排序依据：	l
 DFHack GUI Control tool: caravan.trade	交易箱内物品管理（caravan.trade）	l
@@ -54340,6 +54575,7 @@ Native Legends final battles of powers	最后的权能强者展开了最后的�
 Native Legends war livestock ownership	牲畜归属	h
 Native Legends war treaty disagreement	对先前条约的分歧	h
 Native history collection title of {p}	{p1}争夺事件	htEi
+Native history office: militia-dwarves	民兵	h
 Native history office: representatives	代表	h
 Native history relation: former member	前成员	h
 Native ransom: released {n} for ransom	收取赎金后释放了{n1}	ht
@@ -58322,6 +58558,8 @@ Native Legends war family matter {n}	{n1}的一桩家事	ht
 Native history collection {s} of {p}	{p1}的{s1}	htEi
 Native history held story {e} at {p}	在{p1}讲述了以下往事：「{e1}」	ht
 Native history held story {e} in {p}	在{p1}讲述了以下往事：「{e1}」	ht
+Native history office: militia-dwarf	民兵	h
+Native history office: recordkeepers	档案员	h
 Nearest site: 1/2 day's travel north	最近地点：向北，约半天路程	w
 Nearest site: 1/2 day's travel south	最近地点：向南，约半天路程	w
 Nearest site: {d} day's travel north	最近地点：向北，约{d}天路程	wt
@@ -60302,6 +60540,8 @@ Native Legends war animal treatment	对待动物的方式	h
 Native Legends war formal agreement	正式协议	h
 Native Legends war prior aggression	敌方先前的侵略	h
 Native history collection {s} Race.	{s1}赛跑。	htEi
+Native history office: grandmasters	宗师	h
+Native history office: recordkeeper	档案员	h
 Nearest site: 1/2 day's travel east	最近地点：向东，约半天路程	w
 Nearest site: 1/2 day's travel west	最近地点：向西，约半天路程	w
 Nearest site: {d} day's travel east	最近地点：向东，约{d}天路程	wt
@@ -62625,6 +62865,7 @@ Native Legends war godlessness {n}	{n1}对敌方不敬神灵的厌恶	ht
 Native Legends war plant treatment	对待植物的方式	h
 Native history collection {s} Race	{s1}赛跑	htEi
 Native history office: alderperson	行会理事	h
+Native history office: grandmaster	宗师	h
 Native history office: ringleaders	首领	h
 Native history relation: mercenary	佣兵	h
 Nearest site: A day's travel north	最近地点：向北，约一天路程	w
@@ -67073,7 +67314,10 @@ Native Legends war rights of way	通行权	h
 Native Legends war trade caravan	一场涉及贸易商队的事件	h
 Native history office: chieftain	酋长	h
 Native history office: commander	指挥官	h
+Native history office: governors	总督	h
+Native history office: initiates	入门者	h
 Native history office: overlords	霸主	h
+Native history office: sergeants	中士	h
 Native history telling story {e}	讲述往事：「{e1}」	ht
 Nearest site: A short trip north	最近地点：向北，很近	w
 Nearest site: A short trip south	最近地点：向南，很近	w
@@ -68636,6 +68880,7 @@ wrongfully convicted {n} of {s}.	错误地判定{n1}犯有{s1}。	ht
 A priest must then be elevated.	随后必须擢升一名祭司。	hP
 A small mud-dwelling amphibian.	一种小型泥栖两栖动物。	lP
 Above average kinesthetic sense	运动感知高于平均	wil
+Accepted petition: missing name	（名称缺失）	hP
 Acknowledge lack of aggravation	表示没有恼火	hP
 Acknowledge lack of ambivalence	表示并非没什么特别的感觉	hP
 Acknowledge lack of contentment	表示没有满足	hP
@@ -68892,7 +69137,7 @@ Conversation mood: Contemptuous	轻蔑	l
 Conversation mood: Disappointed	失望	l
 Conversation mood: Enthusiastic	热情	l
 Credits: Premium DF Playtesting	《矮人要塞》高级版试玩测试	wl
-Current top guildhall location:	当前等级最高的行会大厅地点：	hP
+Current top guildhall location:	当前价值最高的行会大厅地点：	hP
 Current top guildhall location:	当前等级最高的行会大厅地点：	wl
 DFHack GUI Caption: Add command	添加命令	l
 DFHack GUI Control tool: hermit	隐士挑战（hermit）	l
@@ -69257,7 +69502,15 @@ Native Legends special occasion	一次特殊庆典	h
 Native Legends war fallen abuse	敌方对进攻方死者的侮辱	h
 Native Legends war truthfulness	诚实	h
 Native Legends war water rights	用水权	h
+Native history office: captains	队长	h
+Native history office: doyennes	女行会元老	h
+Native history office: governor	总督	h
+Native history office: initiate	入门者	h
 Native history office: overlord	霸主	h
+Native history office: sergeant	中士	h
+Native history office: soldiers	士兵	h
+Native history office: stewards	行会管事	h
+Native history office: ultimate	至高者	h
 Native history office: warlords	军阀	h
 Native history relation: master	师傅	h
 Native history relation: member	成员	h
@@ -71786,7 +72039,17 @@ Native Legends previous battle	先前的一场战斗	h
 Native Legends war dispute {s}	关于{s1}的争端	ht
 Native Legends war kill living	杀死生者及其他反对者的欲望	h
 Native history held story {e}.	讲述了以下往事：「{e1}」。	ht
+Native history office: captain	队长	h
+Native history office: doyenne	女行会元老	h
+Native history office: exalted	尊者	h
+Native history office: factors	贸易代理	h
+Native history office: leaders	领导者	h
 Native history office: masters	首领	h
+Native history office: novices	初学者	h
+Native history office: perfect	至臻者	h
+Native history office: priests	祭司	h
+Native history office: soldier	士兵	h
+Native history office: steward	行会管事	h
 Native history office: warlord	军阀	h
 Native history relation: enemy	敌人	h
 Native history relation: owner	拥有者	h
@@ -74180,9 +74443,16 @@ Must span multiple elevations	必须跨越多个高度层。	hP
 Native Legends no forces lost	没有损失	h
 Native Legends once again {s}	{s1}，这一情形又一次出现	ht
 Native history held story {e}	讲述了以下往事：「{e1}」	ht
+Native history office: adepts	精熟者	h
+Native history office: agents	代理人	h
 Native history office: bosses	首领	h
 Native history office: chiefs	酋长	h
+Native history office: doyens	行会元老	h
+Native history office: factor	贸易代理	h
+Native history office: leader	领导者	h
 Native history office: master	首领	h
+Native history office: novice	初学者	h
+Native history office: priest	祭司	h
 Native history relation: home	家	h
 Native name pronunciation: ad	埃德	h
 Native name pronunciation: ag	埃格	h
@@ -76094,7 +76364,7 @@ Credits: DF 2010 Playtesting	《矮人要塞》2010 年版试玩测试	wl
 Credits: Initial Playtesting	早期试玩测试	wl
 Credits: Lead Sound Designer	首席声音设计师	wl
 Credits: Tarn and Zach Adams	Tarn and Zach Adams	wl
-Current top temple location:	当前等级最高的神殿地点：	hP
+Current top temple location:	当前价值最高的神殿地点：	hP
 Current top temple location:	当前等级最高的神殿地点：	wl
 DFHack GUI Design: Area: N/A	范围：无	l
 DFHack GUI Design: Main Axis	主轴	l
@@ -76520,7 +76790,12 @@ Native Legends fair occurred	举行了一场集市	h
 Native Legends force {d} {s}	{d1}个{s1}	ht
 Native Legends previous duel	先前的一场决斗	h
 Native Legends war territory	领土	h
+Native history office: adept	精熟者	h
+Native history office: agent	代理人	h
 Native history office: chief	酋长	h
+Native history office: deans	行会长	h
+Native history office: doyen	行会元老	h
+Native history office: heads	首领	h
 Need soil or mud at location	此处需要土层或淤泥	wli
 Needs ground or near machine	需要地面或邻近机械	wli
 Needs to be anchored on edge	需要在边缘固定	wli
@@ -78117,6 +78392,10 @@ Age of the {a} in the wilds	在荒野中，{a1}时代	htEi
 Age of the {s} and the {s}.	{s1}与{s2}的时代。	htEi
 Age of the {s} in the wilds	在荒野中，{s1}时代	htEi
 Agree to comply with demand	同意服从要求	hP
+Agreement date: {d}nd , {d}	协议日期：第{d2}年（月份未知）{d1}日	hPt
+Agreement date: {d}rd , {d}	协议日期：第{d2}年（月份未知）{d1}日	hPt
+Agreement date: {d}st , {d}	协议日期：第{d2}年（月份未知）{d1}日	hPt
+Agreement date: {d}th , {d}	协议日期：第{d2}年（月份未知）{d1}日	hPt
 Aim carefully and shoot {n}	仔细瞄准并射击{n1}	hPt
 Ambush (uninjured creature)	伏击：未受伤生物	w
 An animal has become a {s}.	一只动物成为了{s1}。	hPt
@@ -78740,6 +79019,8 @@ Native Legends beast attack	一次野兽袭击	h
 Native Legends previous war	先前的一场战争	h
 Native Legends war trophies	展示战争及狩猎战利品	h
 Native history office: boss	首领	h
+Native history office: dean	行会长	h
+Native history office: head	首领	h
 Need accessible mechanisms.	需要能够取用的机件。	hP
 No automatic web collection	不自动收集网	wi
 No butchery tool available.	没有可用的屠宰工具。	hP
@@ -85216,6 +85497,7 @@ Unit lists: Sort by name	单位列表：按名称排序	w
 Unit nickname: the Idiot	愚者	l
 Unit nickname: the elder	年长者	l
 Unit nickname: the older	年长者	l
+Unit profession: captain	队长	li
 Unit profession: general	将军	li
 Unit profession: soldier	士兵	li
 Unnamed sculpture garden	未命名雕塑园	wi
@@ -86653,6 +86935,7 @@ Book title subject: War	战争	hi
 Bring up your abduction	谈起你被绑架这件事	hP
 Broker can access depot	交易员可以到达贸易站	wi
 Brook: The Yellow Style	溪流:黄色风格	w
+Build a grand guildhall	建造大行会大厅	hP
 Build menu: Stoneworker	石匠工坊	wi
 Can {b} Save The World?	{b}能拯救世界吗？	hbti
 Cancel tribute from {e}	取消{e1}的贡赋	hPt
@@ -87230,6 +87513,8 @@ Tropical Saltwater Pool	热带咸水池
 Unit lists: Sort by job	单位列表：按工作排序	w
 Unit nickname: the Wise	智者	l
 Unit nickname: the wise	智者	l
+Unit profession: master	首领	li
+Unit profession: novice	初学者	li
 Unknown creature in {p}	在{p1}的未知生物	ht
 Unnamed Underworld area	未命名地下世界区域	wi
 Unrotten bone body part	未腐烂的骨头组织	wi
@@ -88645,6 +88930,7 @@ A wild colony must be 	有蜂箱蜂巢中分蜂。	w
 About whom do you ask?	你想打听谁？	hP
 Above average patience	耐心高于平均	wil
 Above average strength	力量高于平均	wil
+Accepted petition: for	申请对象：	hP
 Action or relationship	行为或关系	w
 Add snow to the arena.	向竞技场中添加雪。	hj
 Add snow to the arena.	向竞技场中添加雪。	l
@@ -88711,6 +88997,7 @@ Book title noun: races	种族	hi
 Book title noun: seals	印章	hi
 Book title noun: ticks	滴答声	hi
 Bring up {p}'s bribery	谈起{p1}贿赂这件事	hPt
+Build a temple complex	建造神殿建筑群	hP
 Build menu: Metalsmith	金属锻造坊	wi
 Carve upward staircase	挖掘上行楼梯	wi
 Catch live land animal	捕获活的陆地动物	wi
@@ -89261,6 +89548,7 @@ Travel building: House	住宅	wi
 Travel building: Tower	高塔	wi
 Tropical Brackish Lake	热带半咸水湖
 Tropical Brackish Pool	热带半咸水池
+Unit profession: adept	精熟者	li
 Unit profession: medic	医护员	li
 Unnamed magma sea area	未命名岩浆海区域	wi
 Upper right back teeth	右上臼齿	w
@@ -91362,6 +91650,7 @@ This singer is lousy.	这位歌手很差劲。	hP
 Trade or settle debts	交易或清偿债务	hP
 Travel building: Well	水井	wi
 Tropical Conif Forest	热带针叶林
+Unit profession: head	首领	li
 Unnamed archery range	未命名射箭场	wi
 Upper left back teeth	左上臼齿	w
 Upright Spears/Spikes	直立的长矛/尖刺	w
@@ -103305,6 +103594,7 @@ Bowyer's Workshop	制弓工坊	wi
 Brook: Bandedglum	小溪: 条纹忧郁	w
 Brook: Giftwinnow	溪流:礼物筛选	w
 Brook: Ringhandle	小溪：环柄
+Build a guildhall	建造行会大厅	hP
 Build menu: Siege	攻城器械工坊	wi
 Burial Receptacle	棺椁	wi
 Butcher an animal	屠宰一个动物	wi
@@ -117085,6 +117375,7 @@ Be extravagant	奢侈享受	w
 Be with family	与家人相处	w
 Begin activity	开始活动	w
 Below freezing	冰点以下
+Build a temple	建造神殿	hP
 Burial Chamber	墓室	w
 Business rival	商业竞争对手	w
 Butcher's Shop	屠夫工坊	wi
@@ -143693,6 +143984,7 @@ R\x93ber	罗伯	wi
 R\x93mab	罗玛布	wi
 R\x97kal	鲁卡尔	wi
 R\xA3bal	鲁巴尔	wi
+SIEGE	围攻	w
 Sacat	萨卡特	wi
 Sages	智者	wi
 Sakil	萨基尔	wi
@@ -143723,7 +144015,6 @@ Shame	羞愧	w
 Shash	夏石	wi
 Shock	震惊	w
 Sidos	锡多斯	wi
-SIEGE	围攻	w
 Siege	攻城器械作坊	w
 Sigun	锡古恩	wi
 Sikel	锡克尔	wi
@@ -145342,286 +145633,3 @@ of	所属	h
 .	。	hq
 :	：	h
 ;	；	h
-# Authored announcement-dialogue-extra-grammar.tsv updates applied in place; no data generator required.
-Announcement combat sentence [dialogue-query-person]: Can you tell me where I can find {s}?	能告诉我到哪里能找到{s1}吗？	l
-Announcement combat sentence [dialogue-query-person]: Please guide me to {s}.	请带我去找{s1}。	l
-Announcement combat sentence [dialogue-query-person]: What can you tell me about {s}?	能跟我说说{s1}吗？	l
-Announcement combat dialogue-query-person [$historical-actor]: {s}	{s1}	l
-Announcement combat dialogue-query-person [$unit]: {s}	{s1}	l
-Announcement combat dialogue-query-person []: myself	我自己	l
-Announcement combat dialogue-query-person []: you	你	l
-Announcement combat dialogue-query-person []: yourself	你自己	l
-Announcement combat sentence []: I worship no one.	我不崇拜任何神祇。	l
-Announcement combat sentence [dialogue-query-person]: I worship {s}.	我崇拜{s1}。	l
-Announcement combat sentence []: I found myself dead.	我发现自己已经死了。	l
-Announcement combat sentence [$name,$name]: I'm in charge of {s} now. Make way for {s}!	现在由我掌管{s1}。给{s2}让路！	l
-Announcement combat sentence [$name,$term,$person,$name]: I'm in charge of {s} now. Make way for {s} {s} and {s}!	现在由我掌管{s1}。给{s2}{s3}和{s4}让路！	l
-Announcement combat sentence [dialogue-judgement]: {s}	{s1}	l
-Announcement combat dialogue-judgement-subject []: You are	你	l
-Announcement combat dialogue-judgement-subject []: He is	他	l
-Announcement combat dialogue-judgement-subject []: She is	她	l
-Announcement combat dialogue-judgement-subject []: It is	它	l
-Announcement combat dialogue-judgement-subject [dialogue-query-person]: {s} is	{s1}	l
-Announcement combat dialogue-judgement-person []: You	你	l
-Announcement combat dialogue-judgement-person []: you	你	l
-Announcement combat dialogue-judgement-person []: He	他	l
-Announcement combat dialogue-judgement-person []: She	她	l
-Announcement combat dialogue-judgement-person []: It	它	l
-Announcement combat dialogue-judgement-person []: him	他	l
-Announcement combat dialogue-judgement-person []: her	她	l
-Announcement combat dialogue-judgement-person []: it	它	l
-Announcement combat dialogue-judgement-person [dialogue-query-person]: {s}	{s1}	l
-Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} {s}.	{s1}是{s2}。	l
-Announcement combat dialogue-judgement [dialogue-judgement-person]: I don't know {s}.	我不认识{s1}。	l
-Announcement combat dialogue-judgement [dialogue-judgement-person]: I loathe {s} with every fiber of my being.	我从骨子里厌恶{s1}。	l
-Announcement combat dialogue-judgement [dialogue-judgement-person]: I hate {s}.	我恨{s1}。	l
-Announcement combat dialogue-judgement [dialogue-judgement-person]: I never liked {s}.	我从来就不喜欢{s1}。	l
-Announcement combat dialogue-judgement [dialogue-judgement-person]: I never liked {s}, and now we can all see why.	我从来就不喜欢{s1}，现在大家都知道原因了。	l
-Announcement combat dialogue-judgement [dialogue-judgement-person]: I hate {s}, and now we can all see why.	我恨{s1}，现在大家都知道原因了。	l
-Announcement combat dialogue-judgement [dialogue-judgement-person]: I loathe {s} with every fiber of my being, and now we can all see why.	我从骨子里厌恶{s1}，现在大家都知道原因了。	l
-Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} {s}, but that bond seems so thin now.	{s1}是{s2}，可如今这份情谊似乎淡了。	l
-Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: It is my misfortune that {s} {s}.	不幸的是，{s1}是{s2}。	l
-Announcement combat dialogue-judgement [dialogue-judgement-person]: {s} feasts on the blood of the living!	{s1}吸食活人的鲜血！	l
-Announcement combat dialogue-judgement-predicate []: an enemy	敌人	l
-Announcement combat dialogue-judgement-predicate []: a friend	朋友	l
-Announcement combat dialogue-judgement-predicate []: unstable	个精神不稳定的家伙	l
-Announcement combat dialogue-judgement-predicate []: gladly not of the living	个庆幸自己不属于活人行列的存在	l
-Announcement combat dialogue-judgement-predicate []: of the living and must be killed	个必须被杀死的活物	l
-Announcement combat dialogue-judgement-predicate []: not of the living	个不属于活人行列的存在	l
-Announcement combat dialogue-judgement-predicate []: the same as me	和我一样的存在	l
-Announcement combat dialogue-judgement-predicate []: an animal	一只动物	l
-Announcement combat dialogue-judgement-predicate []: a safe creature	无害的生物	l
-Announcement combat dialogue-judgement-predicate []: a dangerous animal	危险的动物	l
-Announcement combat dialogue-judgement-predicate []: my prisoner	我的囚犯	l
-Announcement combat dialogue-judgement-predicate []: my master	我的师父	l
-Announcement combat dialogue-judgement-predicate []: my apprentice	我的徒弟	l
-Announcement combat dialogue-judgement-predicate []: my traveling companion	我的旅伴	l
-Announcement combat dialogue-judgement-predicate []: my lover	我的恋人	l
-Announcement combat dialogue-judgement-predicate []: my enemy	我的敌人	l
-Announcement combat dialogue-judgement-predicate []: a monster	怪物	l
-Announcement combat dialogue-judgement-predicate []: my former master	我以前的师父	l
-Announcement combat dialogue-judgement-predicate []: my former apprentice	我以前的徒弟	l
-Announcement combat dialogue-judgement-predicate []: an intruder	闯入者	l
-Announcement combat dialogue-judgement-predicate []: a close friend	亲密的朋友	l
-Announcement combat dialogue-judgement-predicate []: a kindred spirit	志同道合的人	l
-Announcement combat dialogue-judgement-predicate []: my neighbor	我的邻居	l
-Announcement combat dialogue-judgement-predicate []: my partner	我的搭档	l
-Announcement combat dialogue-judgement-predicate []: on my side	我这一边的人	l
-Announcement combat dialogue-judgement-predicate []: my comrade	我的战友	l
-Announcement combat dialogue-judgement-predicate []: worthy of respect	值得尊敬的人	l
-Announcement combat dialogue-judgement-predicate []: a protector of the defenseless	弱者的保护者	l
-Announcement combat dialogue-judgement-predicate []: part of the problem	造成问题的人之一	l
-Announcement combat dialogue-judgement-predicate []: a thieving scoundrel	偷鸡摸狗的恶棍	l
-Announcement combat dialogue-judgement-predicate []: an enemy fighter	敌方战士	l
-Announcement combat dialogue-judgement-predicate []: something of a hunter	略懂狩猎的人	l
-Announcement combat dialogue-judgement-predicate []: gives sermons, and may be a preacher	会布道、可能是传道者的人	l
-Announcement combat dialogue-judgement-predicate []: something of a dancer	略懂舞蹈的人	l
-Announcement combat dialogue-judgement-predicate []: a modest bard	普通的吟游诗人	l
-Announcement combat dialogue-judgement-predicate []: a poet, according to some	人们口中的诗人	l
-Announcement combat dialogue-judgement-predicate []: a storyteller, or at least tells stories	讲故事的人，或者至少会讲些故事	l
-Announcement combat dialogue-judgement-predicate []: unhinged	疯狂的家伙	l
-Announcement combat dialogue-judgement-predicate []: somewhat violent	有些暴力倾向的人	l
-Announcement combat dialogue-judgement-predicate []: prone to violence	容易诉诸暴力的人	l
-Announcement combat dialogue-judgement-predicate []: well-known brawler	出了名的斗殴者	l
-Announcement combat dialogue-judgement-predicate []: capable of such violence	能做出这种暴行的人	l
-Announcement combat dialogue-judgement-predicate []: a loyal soldier	忠诚的士兵	l
-Announcement combat dialogue-judgement-predicate []: a very loyal soldier	十分忠诚的士兵	l
-Announcement combat dialogue-judgement-predicate []: such a loyal soldier	如此忠诚的士兵	l
-Announcement combat dialogue-judgement-predicate []: famous for your loyalty as a soldier	以忠诚闻名的士兵	l
-Announcement combat dialogue-judgement-predicate []: one of the most loyal soldiers to serve anybody at any time	古往今来最忠诚的士兵之一	l
-Announcement combat dialogue-judgement-predicate []: thuggish	行事蛮横的恶棍	l
-Announcement combat dialogue-judgement-predicate []: a brigand	强盗	l
-Announcement combat dialogue-judgement-predicate []: a killer	杀手	l
-Announcement combat dialogue-judgement-predicate []: a murderer	杀人凶手	l
-Announcement combat dialogue-judgement-predicate []: something of a flatterer	有点会奉承的人	l
-Announcement combat dialogue-judgement-predicate []: somewhat quarrelsome	有些好争吵的人	l
-Announcement combat dialogue-judgement-predicate []: known to be quarrelsome	出了名的爱争吵的人	l
-Announcement combat dialogue-judgement-predicate []: infamously quarrelsome	爱争吵而臭名远扬的人	l
-Announcement combat dialogue-judgement-predicate []: good for a deal now and then	偶尔能做成买卖的人	l
-Announcement combat dialogue-judgement-predicate []: a pleasure to speak with	让人乐于交谈的人	l
-Announcement combat dialogue-judgement-predicate []: brave	勇敢的人	l
-Announcement combat dialogue-judgement-predicate []: so very brave	十分勇敢的人	l
-Announcement combat dialogue-judgement-predicate []: a hero	英雄	l
-Announcement combat dialogue-judgement-predicate []: a great hero	伟大的英雄	l
-Announcement combat dialogue-judgement-predicate []: a legendary hero	传奇英雄	l
-Announcement combat dialogue-judgement-predicate []: a skilled hunter	技艺娴熟的猎人	l
-Announcement combat dialogue-judgement-predicate []: a talented hunter	很有天赋的猎人	l
-Announcement combat dialogue-judgement-predicate []: a great hunter	卓越的猎人	l
-Announcement combat dialogue-judgement-predicate []: a legendary hunter	传奇猎人	l
-Announcement combat dialogue-judgement-predicate []: a skilled preacher	技艺娴熟的传道者	l
-Announcement combat dialogue-judgement-predicate []: a talented preacher	很有天赋的传道者	l
-Announcement combat dialogue-judgement-predicate []: a great preacher	卓越的传道者	l
-Announcement combat dialogue-judgement-predicate []: a legendary preacher	传奇传道者	l
-Announcement combat dialogue-judgement-predicate []: a skilled dancer	技艺娴熟的舞者	l
-Announcement combat dialogue-judgement-predicate []: a talented dancer	很有天赋的舞者	l
-Announcement combat dialogue-judgement-predicate []: a great dancer	卓越的舞者	l
-Announcement combat dialogue-judgement-predicate []: a legendary dancer	传奇舞者	l
-Announcement combat dialogue-judgement-predicate []: a skilled bard	技艺娴熟的吟游诗人	l
-Announcement combat dialogue-judgement-predicate []: a talented bard	很有天赋的吟游诗人	l
-Announcement combat dialogue-judgement-predicate []: a great bard	卓越的吟游诗人	l
-Announcement combat dialogue-judgement-predicate []: a legendary bard	传奇吟游诗人	l
-Announcement combat dialogue-judgement-predicate []: a skilled poet	技艺娴熟的诗人	l
-Announcement combat dialogue-judgement-predicate []: a talented poet	很有天赋的诗人	l
-Announcement combat dialogue-judgement-predicate []: a great poet	卓越的诗人	l
-Announcement combat dialogue-judgement-predicate []: a legendary poet	传奇诗人	l
-Announcement combat dialogue-judgement-predicate []: a skilled storyteller	技艺娴熟的故事讲述者	l
-Announcement combat dialogue-judgement-predicate []: a talented storyteller	很有天赋的故事讲述者	l
-Announcement combat dialogue-judgement-predicate []: a great storyteller	卓越的故事讲述者	l
-Announcement combat dialogue-judgement-predicate []: a legendary storyteller	传奇故事讲述者	l
-Announcement combat dialogue-judgement-predicate []: a known brigand	众所周知的强盗	l
-Announcement combat dialogue-judgement-predicate []: a noted brigand	出了名的强盗	l
-Announcement combat dialogue-judgement-predicate []: an infamous brigand	臭名远扬的强盗	l
-Announcement combat dialogue-judgement-predicate []: a legendary brigand	传奇强盗	l
-Announcement combat dialogue-judgement-predicate []: a known villain	众所周知的恶人	l
-Announcement combat dialogue-judgement-predicate []: a noted villain	出了名的恶人	l
-Announcement combat dialogue-judgement-predicate []: an infamous villain	臭名远扬的恶人	l
-Announcement combat dialogue-judgement-predicate []: a legendary villain	传奇恶人	l
-Announcement combat dialogue-judgement-predicate []: a known killer	众所周知的杀手	l
-Announcement combat dialogue-judgement-predicate []: a noted killer	出了名的杀手	l
-Announcement combat dialogue-judgement-predicate []: an infamous killer	臭名远扬的杀手	l
-Announcement combat dialogue-judgement-predicate []: a legendary killer	传奇杀手	l
-Announcement combat dialogue-judgement-predicate []: a known murderer	众所周知的杀人凶手	l
-Announcement combat dialogue-judgement-predicate []: a noted murderer	出了名的杀人凶手	l
-Announcement combat dialogue-judgement-predicate []: an infamous murderer	臭名远扬的杀人凶手	l
-Announcement combat dialogue-judgement-predicate []: a legendary murderer	传奇杀人凶手	l
-Announcement combat dialogue-judgement-predicate []: a known thug	众所周知的恶棍	l
-Announcement combat dialogue-judgement-predicate []: an infamous thug	臭名远扬的恶棍	l
-Announcement combat dialogue-judgement-predicate []: a legendary thug	传奇恶棍	l
-Announcement combat dialogue-judgement-predicate []: a known flatterer	众所周知的奉承者	l
-Announcement combat dialogue-judgement-predicate []: a noted flatterer	出了名的奉承者	l
-Announcement combat dialogue-judgement-predicate []: an infamous flatterer	臭名远扬的奉承者	l
-Announcement combat dialogue-judgement-predicate []: a legendary flatterer	传奇奉承者	l
-Announcement combat dialogue-judgement-predicate []: a noted quarreler	出了名的好争吵的人	l
-Announcement combat dialogue-judgement-predicate []: a legendary quarreler	传奇好争吵的人	l
-Announcement combat dialogue-judgement-predicate []: a legendary brawler	传奇斗殴者	l
-Announcement combat dialogue-judgement-predicate []: a well-known thug	出了名的恶棍	l
-Announcement combat dialogue-judgement-predicate [dialogue-family]: my {s}	我的{s1}	l
-Announcement combat dialogue-judgement-subject [$name]: {s} are	{s1}	l
-Announcement combat dialogue-judgement-subject [$name,dialogue-judgement-person]: {s} and {s} are	{s1}和{s2}	l
-Announcement combat dialogue-judgement-predicate []: my comrades	我的战友们	l
-Announcement combat dialogue-judgement-predicate []: dangerous outlaws	危险的亡命徒	l
-Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} also {s}.	{s1}也是{s2}。	l
-Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} {s}, but you can't bargain your way out of this.	{s1}是{s2}，可你靠讨价还价解决不了这件事。	l
-Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} also {s}, but you can't bargain your way out of this.	{s1}也是{s2}，可你靠讨价还价解决不了这件事。	l
-Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} {s}, but it means nothing now.	{s1}是{s2}，可如今这已经没有意义了。	l
-Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} also {s}, but it means nothing now.	{s1}也是{s2}，可如今这已经没有意义了。	l
-Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} {s}, but what does that mean now?	{s1}是{s2}，可如今这又有什么意义呢？	l
-Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} also {s}, but what does that mean now?	{s1}也是{s2}，可如今这又有什么意义呢？	l
-Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} {s}, but nothing can change the facts.	{s1}是{s2}，可事实已经无法改变了。	l
-Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} also {s}, but nothing can change the facts.	{s1}也是{s2}，可事实已经无法改变了。	l
-Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} {s}, but now this stands between us.	{s1}是{s2}，可如今这件事横在我们之间。	l
-Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} also {s}, but now this stands between us.	{s1}也是{s2}，可如今这件事横在我们之间。	l
-Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} {s}, but that hardly matters now.	{s1}是{s2}，可如今那已经无关紧要了。	l
-Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} also {s}, but that hardly matters now.	{s1}也是{s2}，可如今那已经无关紧要了。	l
-Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} {s}, but you can't talk your way out of this.	{s1}是{s2}，可你靠花言巧语逃不过这件事。	l
-Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} also {s}, but you can't talk your way out of this.	{s1}也是{s2}，可你靠花言巧语逃不过这件事。	l
-Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} {s}, but you can't argue your way out of this.	{s1}是{s2}，可你靠争辩摆脱不了这件事。	l
-Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} also {s}, but you can't argue your way out of this.	{s1}也是{s2}，可你靠争辩摆脱不了这件事。	l
-Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} {s}, but at what price?	{s1}是{s2}，可代价是什么呢？	l
-Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} also {s}, but at what price?	{s1}也是{s2}，可代价是什么呢？	l
-Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} {s}, but those acts bring no forgiveness.	{s1}是{s2}，可这些事迹无法让你得到宽恕。	l
-Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} also {s}, but those acts bring no forgiveness.	{s1}也是{s2}，可这些事迹无法让你得到宽恕。	l
-Announcement combat dialogue-judgement [$name]: {s} are not fit to rule.	{s1}不配统治。	l
-Announcement combat dialogue-judgement [dialogue-judgement-person]: {s} feast on the blood of the living!	{s1}吸食活人的鲜血！	l
-Announcement combat dialogue-judgement [dialogue-judgement-person]: {s} gave an unwelcome name.	{s1}起了个不受欢迎的名字。	l
-Announcement combat dialogue-judgement [dialogue-judgement-person,dialogue-judgement-person]: {s} did not name {s}.	{s1}没有为{s2}命名。	l
-Announcement combat dialogue-judgement-person []: yourself	你自己	l
-Announcement combat dialogue-judgement-person [$name]: {s}	{s1}	l
-Announcement combat dialogue-judgement [dialogue-judgement-person,dialogue-judgement-person]: {s} started a fight with {s}.	{s1}曾挑起与{s2}的争斗。	l
-Announcement combat dialogue-judgement [dialogue-judgement-person,dialogue-judgement-person]: {s} perpetrated a violent attack upon {s}.	{s1}曾对{s2}施暴。	l
-Announcement combat dialogue-judgement [dialogue-judgement-person,dialogue-judgement-person]: {s} robbed {s}.	{s1}曾抢劫{s2}。	l
-Announcement combat dialogue-judgement [dialogue-judgement-person,dialogue-judgement-person]: {s} bullied {s}.	{s1}曾欺凌{s2}。	l
-Announcement combat dialogue-judgement [dialogue-judgement-person,dialogue-judgement-person]: {s} boldly slew {s}.	{s1}曾英勇杀死{s2}。	l
-Announcement combat dialogue-judgement [dialogue-judgement-person,dialogue-judgement-person]: {s} brought battle to {s}.	{s1}曾进攻{s2}。	l
-Announcement combat dialogue-judgement [dialogue-judgement-person,dialogue-judgement-person]: {s} killed {s}.	{s1}曾杀死{s2}。	l
-Announcement combat dialogue-judgement [dialogue-judgement-person,dialogue-judgement-person]: {s} attacked {s}.	{s1}曾袭击{s2}。	l
-Announcement combat dialogue-judgement [dialogue-judgement-person,dialogue-judgement-person]: {s} ended the days of {s}.	{s1}曾终结{s2}的生命。	l
-Announcement combat dialogue-judgement [dialogue-judgement-person,dialogue-judgement-person]: {s} took the life of {s}.	{s1}曾夺去{s2}的性命。	l
-Announcement combat dialogue-judgement [dialogue-judgement-person,dialogue-judgement-person]: {s} justly slew {s}.	{s1}曾正当地诛杀{s2}。	l
-Announcement combat dialogue-judgement [dialogue-judgement-person,dialogue-judgement-person]: {s} challenged {s}.	{s1}曾挑战{s2}。	l
-Announcement combat dialogue-judgement [dialogue-judgement-person,dialogue-judgement-person]: {s} bravely put an end to {s}.	{s1}曾英勇除掉{s2}。	l
-Announcement combat dialogue-judgement [dialogue-judgement-person,dialogue-judgement-person,dialogue-judgement-person]: {s} reunited {s} with {s}.	{s1}曾让{s2}与{s3}重聚。	l
-Announcement combat dialogue-judgement-achiever []: You have	你	l
-Announcement combat dialogue-judgement-achiever []: He has	他	l
-Announcement combat dialogue-judgement-achiever []: She has	她	l
-Announcement combat dialogue-judgement-achiever []: It has	它	l
-Announcement combat dialogue-judgement-achiever [dialogue-query-person]: {s} has	{s1}	l
-Announcement combat dialogue-judgement [dialogue-judgement-achiever]: {s} protected knowledge from being irrevocably lost.	{s1}曾保护知识，使其免于永久失传。	l
-Announcement combat dialogue-judgement [dialogue-judgement-achiever]: {s} protected knowledge from being irrevocably lost, yet that means little now	{s1}曾保护知识，使其免于永久失传，可如今这已经没有多少意义了。	l
-Announcement combat dialogue-judgement [dialogue-judgement-achiever]: {s} also protected knowledge from being irrevocably lost.	{s1}还曾保护知识，使其免于永久失传。	l
-Announcement combat dialogue-judgement [dialogue-judgement-achiever]: {s} also protected knowledge from being irrevocably lost, yet that means little now	{s1}还曾保护知识，使其免于永久失传，可如今这已经没有多少意义了。	l
-Announcement combat dialogue-judgement [dialogue-judgement-achiever]: {s} sought out and returned our treasures.	{s1}曾寻获并归还我们的宝物。	l
-Announcement combat dialogue-judgement [dialogue-judgement-achiever]: {s} sought out and returned our treasures, though it doesn't much matter	{s1}曾寻获并归还我们的宝物，可如今这已经没有多少意义了。	l
-Announcement combat dialogue-judgement [dialogue-judgement-achiever]: {s} also sought out and returned our treasures.	{s1}还曾寻获并归还我们的宝物。	l
-Announcement combat dialogue-judgement [dialogue-judgement-achiever]: {s} also sought out and returned our treasures, though it doesn't much matter	{s1}还曾寻获并归还我们的宝物，可如今这已经没有多少意义了。	l
-Announcement combat dialogue-judgement [dialogue-judgement-person,$book]: {s} brought back {s}.	{s1}曾带回{s2}。	l
-Announcement combat dialogue-judgement [dialogue-judgement-person,$item]: {s} brought back {s}.	{s1}曾带回{s2}。	l
-Announcement combat dialogue-judgement [dialogue-judgement-person]: {s} brought back an untitled work.	{s1}曾带回一部无题作品。	l
-Announcement combat adventure-announcement [dialogue-query-person]: Can you tell me where I can find {s}?	能告诉我到哪里能找到{s1}吗？	l
-Announcement combat adventure-announcement [dialogue-query-person]: Please guide me to {s}.	请带我去找{s1}。	l
-Announcement combat adventure-announcement [dialogue-query-person]: What can you tell me about {s}?	能跟我说说{s1}吗？	l
-Announcement combat sentence []: What happened to bring us to this?	究竟发生了什么，让我们走到了这一步？	l
-Announcement combat dialogue-judgement-unpunctuated [dialogue-judgement-achiever]: {s} protected knowledge from being irrevocably lost, yet that means little now	{s1}曾保护知识，使其免于永久失传，可如今这已经没有多少意义了。	l
-Announcement combat dialogue-judgement-unpunctuated [dialogue-judgement-achiever]: {s} also protected knowledge from being irrevocably lost, yet that means little now	{s1}还曾保护知识，使其免于永久失传，可如今这已经没有多少意义了。	l
-Announcement combat dialogue-judgement-unpunctuated [dialogue-judgement-achiever]: {s} sought out and returned our treasures, though it doesn't much matter	{s1}曾寻获并归还我们的宝物，可如今这已经没有多少意义了。	l
-Announcement combat dialogue-judgement-unpunctuated [dialogue-judgement-achiever]: {s} also sought out and returned our treasures, though it doesn't much matter	{s1}还曾寻获并归还我们的宝物，可如今这已经没有多少意义了。	l
-Announcement combat dialogue-judgement [dialogue-judgement-unpunctuated,dialogue-judgement]: {s} {s}	{s1}{s2}	l
-Announcement combat dialogue-judgement-achiever [$name]: {s} have	{s1}	l
-Announcement combat dialogue-judgement-person []: himself	他自己	l
-Announcement combat dialogue-judgement-person []: herself	她自己	l
-Announcement combat dialogue-judgement-person []: itself	它自己	l
-Announcement combat dialogue-judgement-person []: I	我	l
-Announcement combat dialogue-judgement-person []: me	我	l
-Announcement combat dialogue-judgement-person []: myself	我自己	l
-Announcement combat dialogue-judgement-person []: an unknown creature	一个身份不明的生物	l
-Announcement combat dialogue-judgement [dialogue-judgement-person]: {s} brought back an unknown artifact.	{s1}曾带回一件不知名的造物。	l
-Announcement combat dialogue-query-person []: a secret identity	秘密身份	l
-Announcement combat adventure-announcement [dialogue-judgement]: {s}	{s1}	l
-
-# Native noble/position role fixes, authored in legends-events.tsv and local-overrides.tsv.
-Native history office: captain	队长	h
-Native history office: captains	队长	h
-Native history office: head	首领	h
-Native history office: heads	首领	h
-Native history office: dean	行会长	h
-Native history office: deans	行会长	h
-Native history office: doyen	行会元老	h
-Native history office: doyens	行会元老	h
-Native history office: doyenne	女行会元老	h
-Native history office: doyennes	女行会元老	h
-Native history office: steward	行会管事	h
-Native history office: stewards	行会管事	h
-Native history office: recordkeeper	档案员	h
-Native history office: recordkeepers	档案员	h
-Native history office: factor	贸易代理	h
-Native history office: factors	贸易代理	h
-Native history office: agent	代理人	h
-Native history office: agents	代理人	h
-Native history office: governor	总督	h
-Native history office: governors	总督	h
-Native history office: sergeant	中士	h
-Native history office: sergeants	中士	h
-Native history office: initiate	入门者	h
-Native history office: initiates	入门者	h
-Native history office: novice	初学者	h
-Native history office: novices	初学者	h
-Native history office: adept	精熟者	h
-Native history office: adepts	精熟者	h
-Native history office: grandmaster	宗师	h
-Native history office: grandmasters	宗师	h
-Native history office: exalted	尊者	h
-Native history office: perfect	至臻者	h
-Native history office: ultimate	至高者	h
-Native history office: leader	领导者	h
-Native history office: leaders	领导者	h
-Native history office: soldier	士兵	h
-Native history office: soldiers	士兵	h
-Native history office: priest	祭司	h
-Native history office: priests	祭司	h
-Native history office: militia-dwarf	民兵	h
-Native history office: militia-dwarves	民兵	h
-Unit profession: captain	队长	li
-Unit profession: head	首领	li
-Unit profession: master	首领	li
-Unit profession: novice	初学者	li
-Unit profession: adept	精熟者	li

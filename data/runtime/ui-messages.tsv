@@ -258,16 +258,27 @@ Do you approve this request?	是否批准此请求？
 # names, wealth and agreement dates remain separate typed captures, including
 # title/value draws on consecutive rows. PE literals include the CP437 sun.
 Accepted petition:	已批准的申请：
+Build a temple	建造神殿
+Build a temple complex	建造神殿建筑群
+Build a guildhall	建造行会大厅
+Build a grand guildhall	建造大行会大厅
+Accepted petition: for	申请对象：
+Accepted petition: missing name	（名称缺失）
 The associated zones must have enough value. ({d}\x0F)	关联区域的总价值需达到{d1}☼。
+The associated zones must have enough value. (\x0F)	关联区域必须达到足够的总价值（要求数值缺失）。
 Current temple location:	当前神殿地点：
-Current top temple location:	当前等级最高的神殿地点：
+Current top temple location:	当前价值最高的神殿地点：
 Current guildhall location:	当前行会大厅地点：
-Current top guildhall location:	当前等级最高的行会大厅地点：
+Current top guildhall location:	当前价值最高的行会大厅地点：
 Current temple location: {e}, {d}\x0F	当前神殿地点：{e1}，{d1}☼
-Current top temple location: {e}, {d}\x0F	当前等级最高的神殿地点：{e1}，{d1}☼
+Current top temple location: {e}, {d}\x0F	当前价值最高的神殿地点：{e1}，{d1}☼
 Current guildhall location: {e}, {d}\x0F	当前行会大厅地点：{e1}，{d1}☼
-Current top guildhall location: {e}, {d}\x0F	当前等级最高的行会大厅地点：{e1}，{d1}☼
+Current top guildhall location: {e}, {d}\x0F	当前价值最高的行会大厅地点：{e1}，{d1}☼
 Agreement date: {d}st Granite, {d}	协议日期：第{d2}年花岗岩月{d1}日
+Agreement date: {d}st , {d}	协议日期：第{d2}年（月份未知）{d1}日
+Agreement date: {d}nd , {d}	协议日期：第{d2}年（月份未知）{d1}日
+Agreement date: {d}rd , {d}	协议日期：第{d2}年（月份未知）{d1}日
+Agreement date: {d}th , {d}	协议日期：第{d2}年（月份未知）{d1}日
 Agreement date: {d}nd Granite, {d}	协议日期：第{d2}年花岗岩月{d1}日
 Agreement date: {d}rd Granite, {d}	协议日期：第{d2}年花岗岩月{d1}日
 Agreement date: {d}th Granite, {d}	协议日期：第{d2}年花岗岩月{d1}日

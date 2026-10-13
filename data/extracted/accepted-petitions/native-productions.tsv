@@ -1,0 +1,56 @@
+branch	native_condition	native_text_or_production	translation_owner
+header	accepted construction agreement hover; independent of type	Accepted petition:	PetitionFixed
+temple	request type == 5; requested tier == 1	Build a temple	PetitionRequest
+temple-complex	request type == 5; requested tier == 2	Build a temple complex	PetitionRequest
+guildhall	request type == 10; requested tier == 1	Build a guildhall	PetitionRequest
+grand-guildhall	request type == 10; requested tier == 2	Build a grand guildhall	PetitionRequest
+unknown-type	request type is neither 5 nor 10	no body after the header	native empty branch retained
+unknown-tier	request type is 5 or 10; requested tier is neither 1 nor 2	empty construction caption	native empty branch retained
+temple-recipient	request type == 5	for	PetitionFor; contextual catalog label
+guild-recipient	request type == 10	for	PetitionFor; contextual catalog label
+faith	request type == 5	EnglishName(agreement.name, english=true, native=false) + .	PetitionFaith; complete generated-name grammar; authored nickname preserved
+missing-faith-name	EnglishName returns empty	.	PetitionFaith; contextual missing-name label
+guild-occupation	request type == 10	RAW profession plural + ' guild.'	PetitionGuild; complete occupation grammar
+guild-caste-occupation	valid caste PROFESSION_NAME for requested occupation	caste profession string, including plural and capitalization branches	PetitionGuild; existing RAW occupation aliases
+guild-raw-occupation	no caste override; valid global profession definition	profession definition string	PetitionGuild; existing occupation vocabulary
+guild-fallback	occupation text producer returns empty	peasants guild.	PetitionGuild; existing peasant occupation fallback
+temple-value	request type == 5; tier == 1	'The associated zones must have enough value. (' + temple value setting + '\x0F)'	PetitionFixed; complete typed numeric catalog
+temple-complex-value	request type == 5; tier == 2	'The associated zones must have enough value. (' + temple complex value setting + '\x0F)'	PetitionFixed; complete typed numeric catalog
+guildhall-value	request type == 10; tier == 1	'The associated zones must have enough value. (' + guildhall value setting + '\x0F)'	PetitionFixed; complete typed numeric catalog
+grand-guildhall-value	request type == 10; tier == 2	'The associated zones must have enough value. (' + grand guildhall value setting + '\x0F)'	PetitionFixed; complete typed numeric catalog
+missing-required-value	requested tier is neither 1 nor 2	The associated zones must have enough value. (\x0F)	PetitionFixed; complete missing-value catalog
+priest	request type == 5; tier == 1	A priest must then be elevated.	PetitionFixed
+high-priest	request type == 5; tier == 2	A high priest must then be elevated.	PetitionFixed
+missing-current-site	current site lookup returns null	no location section; agreement date still drawn	native empty branch retained
+temple-candidate	active or unassigned zone location; virtual type == 2; deity and religion ids match	request-specific temple candidate	native predicate retained; no translated text
+guild-candidate	active or unassigned zone location; virtual type == 11; profession resolves to petition's guild	request-specific guildhall candidate	native predicate retained; no translated text
+temple-none	no matching temple selected with positive wealth	No temple location currently assigned to a zone.	PetitionFixed
+guildhall-none	no matching guildhall selected with positive wealth	No guildhall location currently assigned to a zone.	PetitionFixed
+single-temple	one matching temple and positive wealth	Current temple location:	PetitionFixed
+top-temple	multiple matching temples; select greatest location wealth	Current top temple location:	PetitionFixed; value, not tier, determines top
+single-guildhall	one matching guildhall and positive wealth	Current guildhall location:	PetitionFixed
+top-guildhall	multiple matching guildhalls; select greatest location wealth	Current top guildhall location:	PetitionFixed; value, not tier, determines top
+location-name	selected location's virtual name getter returns nonnull	EnglishName(location.name) + ', ' + location.wealth + '\x0F'	PetitionLocation; complete generated name plus independent wealth
+missing-location-name	selected location's virtual name getter returns null	location.wealth + '\x0F'	PetitionLocation; wealth without a fabricated name
+location-color	selected location tier less than requested tier	yellow location label/native text	native color retained
+location-color-satisfied	selected location tier meets requested tier	green location label/native text	native color retained
+date-day-1	zero-based day == 0 or 20	(day + 1) + st	PetitionDate; catalog date grammar
+date-day-2	zero-based day == 1 or 21	(day + 1) + nd	PetitionDate; catalog date grammar
+date-day-3	zero-based day == 2 or 22	(day + 1) + rd	PetitionDate; catalog date grammar
+date-other-day	all other days	(day + 1) + th	PetitionDate; catalog date grammar
+date-month-0	month selector == 0	Granite	PetitionDate; 花岗岩月
+date-month-1	month selector == 1	Slate	PetitionDate; 板岩月
+date-month-2	month selector == 2	Felsite	PetitionDate; 霏细岩月
+date-month-3	month selector == 3	Hematite	PetitionDate; 赤铁矿月
+date-month-4	month selector == 4	Malachite	PetitionDate; 孔雀石月
+date-month-5	month selector == 5	Galena	PetitionDate; 方铅矿月
+date-month-6	month selector == 6	Limestone	PetitionDate; 石灰岩月
+date-month-7	month selector == 7	Sandstone	PetitionDate; 砂岩月
+date-month-8	month selector == 8	Timber	PetitionDate; 木材月
+date-month-9	month selector == 9	Moonstone	PetitionDate; 月长石月
+date-month-10	month selector == 10	Opal	PetitionDate; 蛋白石月
+date-month-11	month selector == 11	Obsidian	PetitionDate; 黑曜石月
+date-month-default	month selector is outside 0..11	empty month string	PetitionDate; explicit missing-month catalog
+agreement-date	request type == 5 or 10	'Agreement date: ' + day ordinal + ' ' + month + ', ' + agreement.year	PetitionDate; day/month/year remain separate typed numeric fields
+native-caption-shortening	complete request/faith/profession/date length > 55 bytes	shorten to 55 bytes; overwrite final three bytes with ...	complete original retained before native clipping on both ABIs
+native-location-name-format	EnglishName honors nickname and generated name-group display modes	arbitrary generated WORD/POS compounds, modifiers and of-clause	existing complete entity/location name renderer; no screenshot-specific name entries

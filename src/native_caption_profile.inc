@@ -743,6 +743,7 @@ static bool resolve_native_caption_profile(NativeCaptionProfile &profile) {
     profile.signatures.push_back({0x3b1832, {0xe8,0xf9,0xf9,0xd2,0xff}});
     profile.signatures.push_back({0x3b8488, {0xe8,0xa3,0x8d,0xd2,0xff}});
 #include "native_adventure_crafting_profile.inc"
+#include "native_accepted_petition_profile.inc"
     // Construction material rows inline both name-width branches before
     // addst at 38270a. The generic resize hook never sees these stores.
     // Replace their complete length/terminator blocks with the same resize

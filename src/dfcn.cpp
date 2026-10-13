@@ -2022,7 +2022,9 @@ enum class NativeLocationPickerField {
     GuildWorkers, GuildLabel, GuildName, GuildMembers, GuildMissing,
     DetailName, DetailKind, DetailDedication, DetailFixed, DetailRank,
     DetailCount, DetailCountWord, DetailRequirement, DetailRole,
-    DetailGuildKind, DetailGuildName, DetailGuildCount, DetailUnit
+    DetailGuildKind, DetailGuildName, DetailGuildCount, DetailUnit,
+    PetitionFixed, PetitionRequest, PetitionFor, PetitionFaith, PetitionGuild,
+    PetitionLocation, PetitionDate
 };
 
 static bool native_faith_picker_field(NativeLocationPickerField field) {
@@ -2044,6 +2046,11 @@ static bool native_location_picker_subpage_field(NativeLocationPickerField field
 static bool native_location_detail_field(NativeLocationPickerField field) {
     return field >= NativeLocationPickerField::DetailName &&
         field <= NativeLocationPickerField::DetailUnit;
+}
+
+static bool native_accepted_petition_field(NativeLocationPickerField field) {
+    return field >= NativeLocationPickerField::PetitionFixed &&
+        field <= NativeLocationPickerField::PetitionDate;
 }
 
 enum class NativeFortressLaborKind { DetailName, Label, Control };
@@ -4765,6 +4772,8 @@ private:
     void append_fortress_site_name(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y, bool raw_layer) const;
     void append_fortress_petition_site_names(std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y, bool raw_layer) const;
+    void append_accepted_petition_matches(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y, bool raw_layer) const;
     void layout_fortress_build_placement(SDL_Renderer *renderer);
     void layout_fortress_build_materials(SDL_Renderer *renderer);
@@ -17437,6 +17446,8 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     }
 #include "pause_menu_fields.inc"
     append_fortress_elevation_rows(screen_rows, result, only_y,
+        screen_override != nullptr);
+    append_accepted_petition_matches(screen_rows, result, only_y,
         screen_override != nullptr);
     // Native chooser callers own these whole fields even when the map has
     // replaced the live outer frame by the time SDL presents its captions.

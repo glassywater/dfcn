@@ -12,6 +12,7 @@ using NativeCaptionWidgetArrangeFn = void (*)(void *);
 using NativeCaptionMultilineWrapFn = void (*)(const NativeString *, void *, int);
 #endif
 static void capture_native_roster_shorten(NativeString *,int);
+static void capture_native_clipped_resize(NativeString *,size_t,char);
 static void capture_native_map_track_shorten(NativeString *,int);
 static void capture_native_adventure_look_track_shorten(NativeString *,int);
 
@@ -471,10 +472,11 @@ static std::optional<SDL_Rect> native_location_picker_draw_box(
     const bool faith = native_faith_picker_field(field);
     const bool subpage = native_location_picker_subpage_field(field);
     const bool detail = native_location_detail_field(field);
+    const bool petition = native_accepted_petition_field(field);
     if (field == NativeLocationPickerField::None ||
             field == NativeLocationPickerField::Prompt ||
             !graphics || !graphics->screen ||
-            (!subpage && !detail && !native_ui_classic().value_or(false)))
+            (!subpage && !detail && !petition && !native_ui_classic().value_or(false)))
         return std::nullopt;
     const int x = graphics->screenx, y = graphics->screeny;
     if (graphics->dimx <= 0 || graphics->dimx > 1000 ||
@@ -482,7 +484,7 @@ static std::optional<SDL_Rect> native_location_picker_draw_box(
             x < 0 || x >= graphics->dimx || y < 0 || y >= graphics->dimy)
         return std::nullopt;
     NativePanelReadScope panel_scope(graphics);
-    if (detail) {
+    if (detail || petition) {
         // Location detail writes every caption directly into its closed
         // panel. Retain the native column and clip before later row draws;
         // the source's English length never determines its Chinese budget.
@@ -496,6 +498,9 @@ static std::optional<SDL_Rect> native_location_picker_draw_box(
             left = std::max(left, panel->x);
             right = std::min(right, panel->x + panel->w);
         }
+        // The accepted-petition renderer reserves 55 cells for each field,
+        // including names whose complete source exceeds the dotted caption.
+        if (petition) right = std::min(right, x + 55);
         if (field == NativeLocationPickerField::DetailRole) {
             // The shared occupation row begins at list_left+6; its native
             // add-person button begins at list_left+24, for all ten roles
