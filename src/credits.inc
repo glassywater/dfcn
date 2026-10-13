@@ -1,3 +1,16 @@
+// The native build entry point stamps these five bytes from the linked core's
+// binary fingerprint before deployment. Volatile reads keep -O2 from folding
+// the placeholder into the displayed credit; the version lives in the core.
+static const volatile char kTranslationBinaryVersion[] = "DFCN_BINARY_VERSION[00000]";
+
+static std::string translation_binary_version() {
+    constexpr size_t offset = sizeof("DFCN_BINARY_VERSION[") - 1;
+    std::string version(5, '\0');
+    for (size_t i = 0; i < version.size(); ++i)
+        version[i] = kTranslationBinaryVersion[offset + i];
+    return version;
+}
+
 // The About dialog contains authored records from data/credits.txt, not
 // procedural names or a paragraph assembled from unrelated English spans.
 // Resolve its current frame on every scan; no screen/scroll-position cache.
@@ -305,7 +318,7 @@ void Overlay::layout_main_menu_credits_rows() {
     // Keep source ownership at the old coordinates. Only the translated
     // baselines move, leaving the former bottom line for the credit.
     Match credit{last.x, last.y, 0, kMainMenuCreditsRule,
-        "Byayoi同人社区汉化~", {}};
+        "Byayoi同人社区汉化~ 版本 " + translation_binary_version(), {}};
     credit.layout_x = first.x;
     credit.layout_y = baseline(last);
     credit.layout_pixel_y = pixel_offset(last);
