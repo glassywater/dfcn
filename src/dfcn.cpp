@@ -193,6 +193,7 @@ static std::mutex g_log_mutex;
 // game's logical compositing order and must never be fed back into the next
 // frame's visibility detector.
 static thread_local bool g_drawing_overlay = false;
+static thread_local bool g_native_ui_input_masked = false;
 static std::atomic_bool g_logged_direct_utf8_input{false};
 
 static std::string trim(std::string s) {
@@ -718,7 +719,23 @@ struct Match {
     bool native_help_current_page = false;
     // Only the DFHack source pass may translate or suppress foreign ink.
     bool native_dfhack_foreground = false;
+    // Recovered semantic text may join wrapped rows or collapse field gaps.
+    // Raster input ownership instead follows the exact bytes of this row.
+    std::optional<std::string> native_source{};
 };
+
+static std::string_view native_match_source(const Match &match) {
+    return match.native_source ? std::string_view(*match.native_source)
+        : std::string_view(match.source);
+}
+
+static int native_match_source_length(const Match &match) {
+    // A native reading row can reserve its entire viewport in length while
+    // source contains only the actual, unpadded bytes. Placement width must
+    // neither reject that row nor claim padding as translated source ink.
+    return static_cast<int>(std::min(static_cast<size_t>(std::max(0, match.length)),
+        native_match_source(match).size()));
+}
 
 struct NativeDfhackLayerStorage;
 struct NativeDfhackTranslatedFrame {
@@ -3449,6 +3466,7 @@ enum class JournalSearchKind {
 
 struct NativeModListLayout;
 struct CivilizationReferenceCache;
+struct NativeUiLayerGrid;
 
 static std::string compact_translated_search_text(std::string_view text) {
     std::string compact;
@@ -3475,6 +3493,7 @@ public:
     void shutdown();
     void invalidate_render_resources();
     void render(SDL_Renderer *renderer);
+    bool prepare_native_ui_input(NativeUiLayerGrid &input);
     void render_dfhack_layer(SDL_Renderer *renderer, const NativeDfhackTranslatedFrame &frame);
     std::shared_ptr<const NativeDfhackTranslatedFrame> completed_dfhack_layer_frame(
         std::shared_ptr<const NativeDfhackLayerStorage> latest) noexcept;
@@ -21841,14 +21860,11 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                     if (row_begin == fields.size()) break;
                 }
 
-                std::string row_source;
                 int row_end = fields[row_begin].end;
                 bool found_period = false;
                 for (size_t end = row_begin; end < fields.size(); ++end) {
                     if (!assembled.empty()) assembled.push_back(' ');
                     assembled += fields[end].text;
-                    if (!row_source.empty()) row_source.push_back(' ');
-                    row_source += fields[end].text;
                     row_end = fields[end].end;
                     if (fields[end].text.ends_with('.')) {
                         found_period = true;
@@ -21857,7 +21873,9 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                 }
                 spans.push_back({
                     row_y, fields[row_begin].start, row_end,
-                    std::move(row_source),
+                    screen_rows[static_cast<size_t>(row_y)].substr(
+                        static_cast<size_t>(fields[row_begin].start),
+                        static_cast<size_t>(row_end - fields[row_begin].start)),
                 });
                 if (!found_period) continue;
 
@@ -21878,6 +21896,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                         span_index == 0 ? *translated : std::string{},
                         span_index == 0 ? assembled : span.source,
                     };
+                    reconstructed.native_source = span.source;
                     if (span_index == 0) {
                         // Some of these independently issued strings bypass
                         // the ordinary per-cell glyph hook.  Clear foreground
@@ -22005,6 +22024,8 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                 start, y, screen_length, -13,
                 std::move(*translated), std::string(visible_key),
             };
+            captured.native_source = row.substr(static_cast<size_t>(start),
+                static_cast<size_t>(screen_length));
             candidates.push_back(captured);
             authoritative_captured_items.push_back(std::move(captured));
             captured_item_spans.emplace_back(start, start + screen_length);
@@ -22190,11 +22211,14 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                         }
                         auto translated = translate_compositional(joined);
                         if (!translated) continue;
-                        candidates.push_back({
+                        Match anatomy{
                             fields[begin].start, y,
                             fields[end].end - fields[begin].start, -11,
                             std::move(*translated), joined,
-                        });
+                        };
+                        anatomy.native_source = row.substr(static_cast<size_t>(anatomy.x),
+                            static_cast<size_t>(anatomy.length));
+                        candidates.push_back(std::move(anatomy));
                     }
                 }
             }
@@ -22796,11 +22820,23 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                          native_start <= embark_available_items_x + 4)) {
                         continue;
                     }
-                    candidates.push_back({
+                    Match item{
                         native_start, y, native_end - native_start,
                         kEmbarkComposedCapturedItemRule,
                         std::move(*captured_item), std::move(native_source),
-                    });
+                    };
+                    if (grid_start == INT32_MAX) {
+                        // Captured fields keep their native columns even when
+                        // the final grid cannot recover their graphical text.
+                        // Single-space semantic joining loses those columns.
+                        item.native_source = std::string(static_cast<size_t>(item.length), ' ');
+                        for (size_t part = captured_item_begin; part < before_cost.size(); ++part) {
+                            const auto &piece = all_captured_item_snapshot[before_cost[part]];
+                            const size_t offset = static_cast<size_t>(piece.screen_x - native_start);
+                            item.native_source->replace(offset, piece.visible.size(), piece.visible);
+                        }
+                    }
+                    candidates.push_back(std::move(item));
                 }
             }
 
@@ -23022,11 +23058,14 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                         if (!translated)
                             translated = exact_dictionary_translation(joined);
                         if (!translated) continue;
-                        candidates.push_back({
+                        Match action{
                             runs[begin].first, y,
                             runs[end].second - runs[begin].first, -6,
                             std::move(*translated), joined,
-                        });
+                        };
+                        action.native_source = row.substr(static_cast<size_t>(action.x),
+                            static_cast<size_t>(action.length));
+                        candidates.push_back(std::move(action));
                     }
                 }
             }
@@ -26231,7 +26270,8 @@ bool Overlay::prepare_immediate_row(bool top_layer, int y) {
             const int match_y = match.y;
             if (match_y < 0 || match_y >= gps_->dimy) continue;
             const int begin = std::max(0, match.x);
-            const int end = std::min(gps_->dimx, match.x + match.length);
+            const int end = std::min(gps_->dimx, match.x + native_match_source_length(match));
+            const auto source = native_match_source(match);
             for (int x = begin; x < end; ++x) {
                 const size_t tile =
                     static_cast<size_t>(x) * gps_->dimy + match_y;
@@ -26265,7 +26305,7 @@ bool Overlay::prepare_immediate_row(bool top_layer, int y) {
                      match.rule == kAdventureJournalRule ||
                      match.rule == kAdventureJournalTabRule) &&
                     ch != static_cast<unsigned char>(
-                        match.source[static_cast<size_t>(x - match.x)])) {
+                        source[static_cast<size_t>(x - match.x)])) {
                     continue;
                 }
                 if (ch != 0 && ch != ' ') mask[tile] = ch;
@@ -26294,7 +26334,8 @@ bool Overlay::prepare_immediate_row(bool top_layer, int y) {
         for (const Match &match : prepare_immediate_base_matches()) {
             if (match.y != y || match.native_help_source_only) continue;
             const int begin = std::max(0, match.x);
-            const int end = std::min(gps_->dimx, match.x + match.length);
+            const int end = std::min(gps_->dimx, match.x + native_match_source_length(match));
+            const auto source = native_match_source(match);
             for (int x = begin; x < end; ++x) {
                 if (help_background_covered(match, x, y)) continue;
                 const size_t tile = static_cast<size_t>(x) * gps_->dimy + y;
@@ -26322,7 +26363,7 @@ bool Overlay::prepare_immediate_row(bool top_layer, int y) {
                      match.rule == kAdventureJournalRule ||
                      match.rule == kAdventureJournalTabRule) &&
                     base_ch != static_cast<unsigned char>(
-                        match.source[static_cast<size_t>(x - match.x)])) {
+                        source[static_cast<size_t>(x - match.x)])) {
                     continue;
                 }
                 const bool top_has_texture =
@@ -34041,8 +34082,11 @@ void Overlay::prepare_frame() {
         suppress_base_.assign(cells, 0);
         suppress_top_.assign(cells, 0);
         for (const Match &match : prepared_matches_) {
-            if (match.native_help_source_only) continue;
-            for (int x = match.x; x < match.x + match.length; ++x) {
+            if (match.native_help_source_only || match.y < 0 || match.y >= gps_->dimy) continue;
+            const int begin = std::max(0, match.x);
+            const int end = std::min(gps_->dimx, match.x + native_match_source_length(match));
+            const auto source = native_match_source(match);
+            for (int x = begin; x < end; ++x) {
                 if (help_background_covered(match, x, match.y)) continue;
                 bool top = false;
                 const unsigned char *cell = cell_at(x, match.y, &top);
@@ -34088,7 +34132,7 @@ void Overlay::prepare_frame() {
                          match.rule == kAdventureJournalTabRule ||
                          match.rule == kEmbarkSiteRowRule) &&
                         cell[0] != static_cast<unsigned char>(
-                            match.source[static_cast<size_t>(x - match.x)])) continue;
+                            source[static_cast<size_t>(x - match.x)])) continue;
                     (top ? suppress_top_ : suppress_base_)[tile] = cell[0];
                 }
             }
@@ -38984,6 +39028,8 @@ void Overlay::layout_multiline_matches() {
             [&](size_t index) { return looks_like_prose(prepared_matches_[index]); });
         if (cluster.size() >= 2 && prose_cluster) {
             Match &combined = prepared_matches_[cluster.front()];
+            combined.native_source = std::string(native_match_source(combined).substr(0,
+                static_cast<size_t>(native_match_source_length(combined))));
             for (size_t position = 1; position < cluster.size(); ++position) {
                 Match &part = prepared_matches_[cluster[position]];
                 const bool need_space = !combined.target.empty() && !part.target.empty() &&
@@ -38993,6 +39039,11 @@ void Overlay::layout_multiline_matches() {
                     ascii_word_byte(static_cast<unsigned char>(part.target.front()));
                 if (need_space) combined.target.push_back(' ');
                 combined.target += part.target;
+                // Keep each original column, including native field gaps,
+                // while the semantic phrase below uses ordinary separators.
+                combined.native_source->resize(static_cast<size_t>(part.x - combined.x), ' ');
+                combined.native_source->append(native_match_source(part).substr(0,
+                    static_cast<size_t>(native_match_source_length(part))));
                 combined.source.push_back(' ');
                 combined.source += part.source;
                 combined.length = std::max(combined.length,
@@ -39386,12 +39437,13 @@ int Overlay::intercept_glyph_copy(SDL_Renderer *renderer, SDL_Texture *texture,
     // the back buffer. This removes the old one-Present delay where an English
     // frame was visible before its Chinese replacement. If the raw layer
     // cannot be inspected, retain the previous final-mask fallback.
-    prepare_adventure_hover_suppression();
+    if (!g_native_ui_input_masked) prepare_adventure_hover_suppression();
     const unsigned char *cell = (top_layer ? gps_->screen_top : gps_->screen) + tile * 8;
-    const bool adventure_hover = adventure_hover_suppress_epoch_ == draw_epoch_ &&
+    const bool adventure_hover = !g_native_ui_input_masked && adventure_hover_suppress_epoch_ == draw_epoch_ &&
         tile < adventure_hover_suppress_.size() && adventure_hover_suppress_[tile] != 0 &&
         cell[0] == adventure_hover_suppress_[tile];
-    const bool immediate_ready = !adventure_hover && prepare_immediate_row(top_layer, y);
+    const bool immediate_ready = !g_native_ui_input_masked && !adventure_hover &&
+        prepare_immediate_row(top_layer, y);
     bool native_document = false;
     if (native_knowledge_frame_transition_ && native_knowledge_frame_matches_ &&
         !native_knowledge_frame_matches_->empty()) {
@@ -39441,6 +39493,15 @@ int Overlay::intercept_glyph_copy(SDL_Renderer *renderer, SDL_Texture *texture,
         suppression.character = cell[0];
         suppression.dirty = false;
     };
+    if (g_native_ui_input_masked && tile < mask.size() &&
+            mask[tile] != 0 && cell[0] == mask[tile]) {
+        // The renderer sees a blank glyph in its private input. Let its normal
+        // copy refresh the background/dirty history instead of skipping that
+        // blank merely because the unmodified source view still contains text.
+        const int status = real_copy(renderer, texture, source, dest);
+        if (status == 0) record_suppression(false);
+        return status;
+    }
     if ((top_layer || has_lower_layer) && transparent_background) {
         record_suppression(true);
         return 0;
@@ -41455,6 +41516,78 @@ SDL_Rect Overlay::native_paragraph_draw_region(const std::vector<Match> &rows) c
     }
     return region;
 }
+bool Overlay::prepare_native_ui_input(NativeUiLayerGrid &input) {
+    if (!config_.enabled || !face_ || rules_.empty() || !gps_ || !gps_->screen ||
+            gps_->dimx <= 0 || gps_->dimx > 1000 || gps_->dimy <= 0 || gps_->dimy > 1000 ||
+            native_worldgen_main_view(gps_)
+#ifdef _WIN32
+            || native_display_worldgen_page()
+#endif
+            ) return false;
+    // update_all has not emitted any UI glyph yet. Its pinned logical grid
+    // belongs to this draw, not to the preceding Present's graphical cover.
+    // Match the complete composed page so a paragraph spanning both planes
+    // is recognized before either plane reaches the native rasterizer.
+    composite_read_epoch_ = draw_epoch_;
+    g_native_toolbar_tooltip.reset();
+    native_knowledge_frame_matches_.reset();
+    native_knowledge_frame_transition_ = false;
+    refresh_character_overview_context(true);
+    frame_prepared_ = false;
+    prepare_frame();
+    input.copy_native_input(*gps_);
+    const size_t cells = static_cast<size_t>(gps_->dimx) * gps_->dimy;
+    suppress_base_.assign(cells, 0);
+    suppress_top_.assign(cells, 0);
+    const NativeBitmapFontTextures fonts(!prepared_matches_.empty());
+    for (const Match &match : prepared_matches_) {
+        if (match.native_help_source_only || match.native_dfhack_foreground) continue;
+        const int source_length = native_match_source_length(match);
+        const auto source = native_match_source(match);
+        const int begin = std::max(0, match.x);
+        const int end = std::min(gps_->dimx, match.x + source_length);
+        if (begin >= end) continue;
+        const bool fold_case = match.rule >= 0 && static_cast<size_t>(match.rule) < rules_.size() &&
+            rules_[static_cast<size_t>(match.rule)].case_insensitive;
+        const auto source_byte = [fold_case](unsigned char ch) {
+            return fold_case && ch >= 'A' && ch <= 'Z'
+                ? static_cast<unsigned char>(ch - 'A' + 'a') : ch;
+        };
+        const int top = match.native_split_text ? match.native_split_top_y : match.y;
+        const int bottom = top + (match.native_split_text ? 2 : 1);
+        for (int y = std::max(0, top); y < std::min(gps_->dimy, bottom); ++y)
+            for (int x = begin; x < end; ++x) {
+                const int offset = x - match.x;
+                if (help_background_covered(match, x, y)) continue;
+                const auto expected = static_cast<unsigned char>(source[static_cast<size_t>(offset)]);
+                if (!expected || expected == ' ') continue;
+                const size_t tile = static_cast<size_t>(x) * gps_->dimy + y;
+                for (size_t i = 0; i < input.planes.size(); ++i) {
+                    if (i && !gps_->top_in_use) continue;
+                    auto &plane = input.planes[i];
+                    auto &character = plane.screen[tile * 8];
+                    const bool same = source_byte(character) == source_byte(expected);
+                    if (!same && character != 0 && character != ' ') continue;
+                    const auto glyph = same ? character : expected;
+                    // Font-atlas text may remain in a texture slot after its
+                    // logical byte was cleared. Remove only that exact glyph;
+                    // unrelated artwork, frames and backgrounds keep their IDs.
+                    for (size_t slot : {size_t{0}, size_t{1}, size_t{2}})
+                        if (fonts.contains(plane.textures[slot][tile], glyph))
+                            plane.textures[slot][tile] = 0;
+                    if (same) {
+                        (i ? suppress_top_ : suppress_base_)[tile] = character;
+                        character = ' ';
+                    }
+                }
+            }
+    }
+    // Even a retained UI with no changed glyph copies is a new raster input.
+    // Its masked bytes participate in the renderer's native dirty comparison.
+    native_frame_drawn_ = true;
+    return true;
+}
+
 void Overlay::render(SDL_Renderer *renderer) {
     TranslationStateScope translation_scope;
     if (native_worldgen_main_view(gps_)

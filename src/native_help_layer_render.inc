@@ -316,17 +316,19 @@ static void native_ui_paint_grid(NativeUiLayerStorage &layer, SDL_Renderer *rend
         }
     } mask;
     for (const auto &match : matches) {
-        if (match.native_help_source_only || match.length <= 0 ||
-                match.source.size() != static_cast<size_t>(match.length)) continue;
+        if (match.native_help_source_only) continue;
+        const int source_length = native_match_source_length(match);
+        const auto source = native_match_source(match);
+        const int begin = std::max(0, match.x);
+        const int end = std::min(gps->dimx, match.x + source_length);
         const int top = match.native_split_text ? match.native_split_top_y : match.y;
         const int bottom = top + (match.native_split_text ? 2 : 1);
         for (int y = std::max(0, top); y < std::min(gps->dimy, bottom); ++y)
-            for (int i = 0; i < match.length; ++i) {
-                const int x = match.x + i;
-                if (x < 0 || x >= gps->dimx) continue;
+            for (int x = begin; x < end; ++x) {
+                const int i = x - match.x;
                 const size_t cell = static_cast<size_t>(x) * gps->dimy + y;
                 const size_t at = cell * 8;
-                const auto expected = static_cast<unsigned char>(match.source[i]);
+                const auto expected = static_cast<unsigned char>(source[i]);
                 for (auto &plane : layer.foreground.planes) {
                     const auto character = plane.screen[at];
                     if (character != expected && character != 0 && character != ' ') continue;

@@ -1,9 +1,9 @@
 #include "native_map_producer.inc"
 
 #ifdef _WIN32
-static void native_dfhack_display_before_ui();
 static NativeUiLayerTarget g_native_map_target;
 static NativeUiLayerTarget g_native_map_glyph_target;
+static NativeUiLayerGrid g_native_ui_input;
 static NativeEntryHook g_native_map_ui_draw_hook;
 static uint64_t g_native_map_target_serial = 0;
 static uint64_t g_native_map_target_layout = 0;
@@ -133,11 +133,34 @@ public:
 
 static void native_map_ui_draw(void *renderer) {
     NativeInputCallbackScope callback;
-    native_dfhack_display_before_ui();
     TranslationStateScope translation;
     NativeMapGpuFrame::before_ui(renderer);
     const auto original = reinterpret_cast<void (*)(void *)>(g_native_map_ui_draw_hook.original);
-    if (original) callback.call_native([&] { original(renderer); });
+    if (!original) return;
+    auto *source = native_graphics();
+    bool prepared = false;
+    try { prepared = g_overlay.prepare_native_ui_input(g_native_ui_input); }
+    catch (...) { /* Preserve native output when an input copy cannot be prepared. */ }
+    if (!prepared || !source) {
+        callback.call_native([&] { original(renderer); });
+        return;
+    }
+    // Supply the already masked copy to both renderer fields and the native
+    // RIP-relative input selectors. The overlay keeps the original page for
+    // translation; the game's producer arrays are never modified here.
+    auto *input = g_native_ui_input.graphics();
+    {
+        NativeDfhackLayerRendererGrid grid(renderer, *input);
+        struct InputScope {
+            bool previous = g_native_ui_input_masked;
+            InputScope() { g_native_ui_input_masked = true; }
+            ~InputScope() { g_native_ui_input_masked = previous; }
+        } masked;
+        callback.call_native([&] { original(renderer); });
+    }
+    source->refresh_buffer_val = input->refresh_buffer_val;
+    source->force_full_display_count = input->force_full_display_count;
+    source->last_display_background = input->last_display_background;
 }
 
 static bool install_native_map_layer_hook() {
@@ -160,6 +183,7 @@ static void uninstall_native_map_layer_hook() {
         g_native_map_target.release();
         g_native_map_glyph_target.release();
         g_native_map_target_serial = g_native_map_target_layout = 0;
+        g_native_ui_input = {};
         g_native_map_layer = {};
         native_map_begin_frame();
     }
