@@ -120,6 +120,7 @@ static bool native_arena_map_screen();
 static std::vector<SDL_Rect> native_text_input_regions(const graphicst &gps,
     const std::vector<std::string> &rows, const unsigned char *screen_override);
 static std::optional<std::vector<std::string>> native_world_artifact_description_lines();
+static std::optional<std::vector<std::string>> native_expanded_world_site_rumor_lines();
 static bool native_history_legends_page();
 static bool native_history_legends_artwork_page();
 struct NativeHistoryLegendsCaption {
@@ -997,6 +998,9 @@ struct NativeTextCard {
     std::optional<SDL_Rect> button_box{};
     // A typed owner can retain the complete document beyond its visible rows.
     std::string paragraph_source{};
+    // Expanded world-map rumors retain their native wrap and scroll allocation.
+    std::vector<std::string> world_site_rumor_lines{};
+    size_t world_site_rumor_first_line = 0;
     bool travel_buildings = false;
     bool character_group_role = false;
     bool character_group_civilization = false;
