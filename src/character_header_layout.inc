@@ -29,6 +29,7 @@ void Overlay::layout_character_header(SDL_Renderer *renderer) {
     }
     int first_y = header ? header->top + 1 : -1;
     int bottom = header ? header->bottom : -1;
+    int right = header ? header->right : -1;
     std::vector<std::vector<LogicalTextField>> owned_fields;
     if (header) {
         for (int y = first_y; y < bottom; ++y) {
@@ -107,9 +108,16 @@ void Overlay::layout_character_header(SDL_Renderer *renderer) {
                         break;
                     }
                 }
-                if (tabs_y < 0) continue;
+                if (tabs_y < 0 || !gloss.draw_clip || gloss.draw_clip->w <= 0)
+                    continue;
+                // The live writer owns this unframed text column. Its source
+                // spelling identifies the field, never the translated width.
+                const int column_right = std::min(gps_->dimx,
+                    gloss.draw_clip->x + gloss.draw_clip->w);
+                if (column_right <= column) continue;
                 first_y = name_top;
                 bottom = tabs_y;
+                right = column_right;
                 column = std::min(column, name_left);
                 owned_fields.resize(static_cast<size_t>(gps_->dimy));
                 for (auto &[y, field] : identity_fields)
@@ -133,7 +141,7 @@ void Overlay::layout_character_header(SDL_Renderer *renderer) {
         return match->native_split_text ? match->native_split_top_y : match->y;
     };
     std::vector<Match *> fields;
-    int left = gps_->dimx, right = 0;
+    int left = gps_->dimx;
     for (Match &match : prepared_matches_) {
         const int top_y = row_y(&match);
         const int next_y = top_y + (match.native_split_text ? 2 : 1);
@@ -159,19 +167,15 @@ void Overlay::layout_character_header(SDL_Renderer *renderer) {
             match.rule != kCreatureNameRule) continue;
         fields.push_back(&match);
         left = std::min(left, match.x);
-        // The owned source may cross the border; its translated display may
-        // not. In particular, never use the long English gloss as box width.
-        right = std::max(right, std::min(header ? header->right : gps_->dimx,
-            match.x + match.length));
     }
-    if (fields.empty()) return;
+    if (fields.empty() || left >= right) return;
     for (Match *field : fields) {
         // The native text column, not a previous per-caption pixel box,
         // owns the translated horizontal position.
         field->layout_box_pixel_x = -1;
         field->layout_box_pixel_width = 0;
         field->layout_right = false;
-        field->layout_clip_right = header ? header->right : right;
+        field->layout_clip_right = right;
     }
     std::sort(fields.begin(), fields.end(), [&](const Match *a, const Match *b) {
         return row_y(a) != row_y(b) ? row_y(a) < row_y(b) : a->x < b->x;

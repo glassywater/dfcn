@@ -37648,7 +37648,7 @@ void Overlay::layout_structured_panels(SDL_Renderer *renderer) {
                 native_button_text_rect(*gps_, identity.x,
                     identity.x + identity.length, identity.y)) continue;
             layout_fortress_text_rows(renderer, {{&identity}}, identity.x,
-                identity.x + identity.length, true);
+                character_header_frame ? character_header_frame->right : panel_right, true);
         }
 
         // Social tabs vary with character and game mode. Selection uses
