@@ -1,0 +1,77 @@
+Steam Linux DF 53.16 workshop task chooser
+Image: ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c
+
+Native owners and source material:
+elf-functions.tsv records the original unwind boundaries of all 14 owners.
+elf-decompiled-parts/part-*.c contains the complete Ghidra C in filename order.
+The exporter also retains elf-decompiled.c locally. Large shared owners are
+divided at native branch targets and fallthrough boundaries;
+elf-decompile-regions.tsv names each region. Analysis exits are call-shaped,
+while elf-branches.tsv and
+elf-switches.tsv retain the original machine control flow and selectors.
+elf-literals.tsv includes RIP strings, immediate ASCII stores and SIMD text.
+raw-name-and-reagent-sources.tsv retains installed reaction/name/material
+fields. Generated instrument names remain runtime inputs to the established
+instrument identity and recipe parsers rather than a finite literal list.
+
+Chooser drawing, original owner 0x13c7f90..0x14088bb:
+  Each candidate retains its own vtable and is traversed in filtered order.
+  virtual+0x08 fills the title; 0x13d11e8 submits the clipped native title.
+  virtual+0x58 returns the missing-input field; when nonempty, 0x13d1283
+  draws the complete field in the native red color, one row below the title.
+  Otherwise virtual+0x60 returns an optional additional field; virtual+0x68
+  supplies its color and 0x13d1389 draws it at the same annotation position.
+  Both material-swatch and ordinary picture variants have these same text
+  submissions; the swatch/picture changes the title inset, not the grammar.
+  These three native return sites are 0x13d11ed, 0x13d1288 and 0x13d138e.
+  Their exact visible spans and pre-clipping strings are captured together.
+
+Missing input, original owner 0x13803b0..0x1382301:
+  [Requires fuel]
+  [Requires ore]
+  [Requires ore, fuel]
+  [Requires {description of the first unavailable non-preserved reagent}]
+  No annotation is drawn if both the missing-input and additional fields
+  are empty. A present missing-input field takes priority over availability.
+  These are complete strings; Requires/Unrotten are not global word rules.
+
+Reagent description, original owner 0x1ec5710..0x1ec59ea:
+  Reagent item/subtype/material/three flag words and reaction index become
+  a native job_item and are formatted by 0x1bbc8d0..0x1bbfc0e, then the
+  first letter is capitalized. Thus Unrotten is the native unrotten flag.
+  Independent state, material, containment, class/product and tool-use
+  conditions concatenate in native order; their combinations are open.
+  Quantity conversion, excluded-bin suffix and item noun dispatch are also
+  retained in the extracted switches and the shared noun owner 0x12b6a70.
+  Existing workshop-recipe grammar resolves every constraint before the
+  shared item/material/instrument noun; unresolved identities retain text.
+
+Additional field, original owner 0x13841c0..0x138a95e:
+  {integer} available
+  At least {integer} available
+  At least {integer} dye available
+  At least {integer} thread/dye available
+  At least {integer} cloth/dye available
+  At least {integer} leather/dye available
+  Counts are native displayed values and are not divided or recomputed.
+  Memorial choices combine one of the statuses below with a comma and one
+  slab state. Missing status and other native empty fields are not invented.
+    Entombed and memorialized / Entombed / Memorialized / Not memorialized
+    Ghost
+    slab engraved / no slabs engraved / {integer} slabs engraved
+
+Titles:
+  Job candidates invoke 0x13657a0, forwarding their actual type, subtype,
+  material and reaction fields to the complete job-caption switch 0x1cab560.
+  RAW reactions copy their NAME; generated instrument and component jobs
+  use their existing complete identity grammar. Category/navigation labels
+  retain their established literal translations. The editor query is input.
+
+Runtime handling:
+  fortress_tasks.inc owns the three chooser draw fields before word/item
+  fragments. It retains their real text inset, colors and search viewport.
+  native_caption_hooks.inc also publishes clipped draws from these sites.
+  workshop_recipe_grammar.inc handles both missing-input and additional
+  fields, using scoped metadata in workshop-recipe-translations.tsv.
+  The native executable continues to decide traversal, eligibility, counts,
+  colors, item choices, sorting, search and tooltip contents.

@@ -10,6 +10,7 @@
 
 # Build and Python caches
 /data/extracted/cache/
+/data/extracted/workshop-task-choice/elf-decompiled.c
 __pycache__/
 *.py[cod]
 *.o

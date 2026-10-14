@@ -1,0 +1,2123 @@
+role	instruction	operand	kind	text
+task-availability-and-requirement	0x13810fd	0x2073	inline	s 
+task-availability-and-requirement	0x1381102	0x657269757165525b	inline	[Require
+task-availability-and-requirement	0x138145c	0x214a516	cstring	[Requires fuel]
+task-availability-and-requirement	0x138146c	0x657269757165525b	inline	[Require
+task-availability-and-requirement	0x1381476	0x6c65	inline	el
+task-availability-and-requirement	0x138147b	0x75662073	inline	s fu
+task-availability-and-requirement	0x1381526	0x21432dc	cstring	]
+task-availability-and-requirement	0x138154e	0x214a53b	cstring	[Requires 
+task-availability-and-requirement	0x13818a5	0x214a516	cstring	[Requires fuel]
+task-availability-and-requirement	0x1381dcb	0x214a546	cstring	[Requires ore]
+task-availability-and-requirement	0x1381f1c	0x214a516	cstring	[Requires fuel]
+task-availability-and-requirement	0x13821cc	0x214a526	cstring	[Requires ore, fuel]
+task-availability-and-requirement	0x13821e5	0x214a516	cstring	[Requires fuel]
+job-item-requirement	0x1bbccf0	0x21da278	cstring	games of chance
+job-item-requirement	0x1bbcd47	0x20f7379	cstring	 
+job-item-requirement	0x1bbce6f	0x21db810/16	vector	 that isn't a bi
+job-item-requirement	0x1bbcefc	0x20657964	inline	dye 
+job-item-requirement	0x1bbcf5f	0x20656c6261657964	inline	dyeable 
+job-item-requirement	0x1bbcf8f	0x21d9e27	cstring	totemable 
+job-item-requirement	0x1bbcfec	0x616d2d7373616c67	inline	glass-ma
+job-item-requirement	0x1bbcffc	0x676e696b	inline	king
+job-item-requirement	0x1bbd065	0x64657964	inline	dyed
+job-item-requirement	0x1bbd0cb	0x21db800/16	vector	melt-designated 
+job-item-requirement	0x1bbd109	0x21d9e57	cstring	deep material 
+job-item-requirement	0x1bbd16f	0x7373	inline	ss
+job-item-requirement	0x1bbd174	0x616d692d6e776573	inline	sewn-ima
+job-item-requirement	0x1bbd181	0x656c6567	inline	gele
+job-item-requirement	0x1bbd1af	0x21d9e76	cstring	screw 
+job-item-requirement	0x1bbd25e	0x21d9ee6	cstring	plaster-containing 
+job-item-requirement	0x1bbd29e	0x21d9f00	cstring	ivory/tooth 
+job-item-requirement	0x1bbd307	0x2065	inline	e 
+job-item-requirement	0x1bbd30d	0x6b6c696d2f65796c	inline	lye/milk
+job-item-requirement	0x1bbd31a	0x6572662d	inline	-fre
+job-item-requirement	0x1bbd348	0x21d9f1c	cstring	blunt 
+job-item-requirement	0x1bbd3ab	0x6465	inline	ed
+job-item-requirement	0x1bbd3b1	0x766172676e656e75	inline	unengrav
+job-item-requirement	0x1bbd3e6	0x21d9f2f	cstring	unimproved 
+job-item-requirement	0x1bbd447	0x6e6f	inline	on
+job-item-requirement	0x1bbd44d	0x2d6e657474697277	inline	written-
+job-item-requirement	0x1bbd4c1	0x2074	inline	t 
+job-item-requirement	0x1bbd4c7	0x6f7362612d6e6f6e	inline	non-abso
+job-item-requirement	0x1bbd4d4	0x6e656272	inline	rben
+job-item-requirement	0x1bbd4ff	0x21d9f56	cstring	food storage 
+job-item-requirement	0x1bbd55c	0x736572702d6e6f6e	inline	non-pres
+job-item-requirement	0x1bbd56c	0x20646573	inline	sed 
+job-item-requirement	0x1bbd5c0	0x21d9f85	cstring	sand 
+job-item-requirement	0x1bbd627	0x2064	inline	d 
+job-item-requirement	0x1bbd62d	0x65676465	inline	edge
+job-item-requirement	0x1bbd697	0x2064	inline	d 
+job-item-requirement	0x1bbd69c	0x6e756f72672d6e6f	inline	on-groun
+job-item-requirement	0x1bbd6cd	0x21d9f9d	cstring	divine 
+job-item-requirement	0x1bbd72b	0x7463616669747261	inline	artifact
+job-item-requirement	0x1bbd761	0x21d9fa5	cstring	non-artifact 
+job-item-requirement	0x1bbd7c4	0x6e65	inline	en
+job-item-requirement	0x1bbd7c9	0x646f6f77	inline	wood
+job-item-requirement	0x1bbd7f9	0x21d9fbb	cstring	stone 
+job-item-requirement	0x1bbd859	0x206d6567	inline	gem 
+job-item-requirement	0x1bbd8c2	0x206e	inline	n 
+job-item-requirement	0x1bbd8c7	0x776f7267	inline	grow
+job-item-requirement	0x1bbd916	0x21d9fc7	cstring	CALCIUM_CARBONATE
+job-item-requirement	0x1bbd930	0x21d9fd9	cstring	CAN_GLAZE
+job-item-requirement	0x1bbd94a	0x21417cf	cstring	FAT
+job-item-requirement	0x1bbd964	0x2165030	cstring	FLUX
+job-item-requirement	0x1bbd97e	0x21d9ff8	cstring	GYPSUM
+job-item-requirement	0x1bbd998	0x214a2e6	cstring	PAPER_PLANT
+job-item-requirement	0x1bbd9b2	0x214a2d9	cstring	PAPER_SLURRY
+job-item-requirement	0x1bbd9cc	0x2107391	cstring	TALLOW
+job-item-requirement	0x1bbd9e6	0x2099f7d	cstring	WAX
+job-item-requirement	0x1bbda00	0x21da02b	cstring	wax 
+job-item-requirement	0x1bbda28	0x21da030	cstring	BAG_ITEM
+job-item-requirement	0x1bbda42	0x213c4d3	cstring	DRINK_MAT
+job-item-requirement	0x1bbda5c	0x20c9505	cstring	FIRED_MAT
+job-item-requirement	0x1bbda76	0x21da05d	cstring	GLAZE_MAT
+job-item-requirement	0x1bbda90	0x21da06e	cstring	HONEYCOMB_PRESS_MAT
+job-item-requirement	0x1bbdaaa	0x21da091	cstring	PARCHMENT_MAT
+job-item-requirement	0x1bbdac4	0x21da0b4	cstring	PRESS_LIQUID_MAT
+job-item-requirement	0x1bbdade	0x21da0d2	cstring	PRESS_PAPER_MAT
+job-item-requirement	0x1bbdaf8	0x2107386	cstring	RENDER_MAT
+job-item-requirement	0x1bbdb12	0x21da100	cstring	SOAP_MAT
+job-item-requirement	0x1bbdb2c	0x20dc2cb	cstring	TAN_MAT
+job-item-requirement	0x1bbdb46	0x21da110	cstring	tannable 
+job-item-requirement	0x1bbdb66	0x20f7379	cstring	 
+job-item-requirement	0x1bbdbb2	0x7261702079646f62	inline	body par
+job-item-requirement	0x1bbdc1d	0x210836a	cstring	color 
+job-item-requirement	0x1bbdc52	0x20f7379	cstring	 
+job-item-requirement	0x1bbdc7b	0x21d9cda	cstring	unused 
+job-item-requirement	0x1bbdc98	0x21d9d3a	cstring	sharpenable 
+job-item-requirement	0x1bbdcfc	0x646572656472756d	inline	murdered
+job-item-requirement	0x1bbdd6f	0x2079	inline	y 
+job-item-requirement	0x1bbdd75	0x74706d65	inline	empt
+job-item-requirement	0x1bbdddc	0x61737365636f7270	inline	processa
+job-item-requirement	0x1bbddec	0x20656c62	inline	ble 
+job-item-requirement	0x1bbde4f	0x656c62616b6f6f63	inline	cookable
+job-item-requirement	0x1bbdec4	0x2064	inline	d 
+job-item-requirement	0x1bbdeca	0x696c6f73	inline	soli
+job-item-requirement	0x1bbdf34	0x2074	inline	t 
+job-item-requirement	0x1bbdf3a	0x21db7e0/16	vector	extract-bearing 
+job-item-requirement	0x1bbdf42	0x6e616c70	inline	plan
+job-item-requirement	0x1bbdf71	0x21d9d6f	cstring	extract-bearing fish 
+job-item-requirement	0x1bbdfd4	0x6572	inline	re
+job-item-requirement	0x1bbdfda	0x7263206c6c616d73	inline	small cr
+job-item-requirement	0x1bbdfe4	0x21db7e0/16	vector	extract-bearing 
+job-item-requirement	0x1bbdff0	0x75746165	inline	eatu
+job-item-requirement	0x1bbe064	0x2029	inline	) 
+job-item-requirement	0x1bbe06a	0x21db7f0/16	vector	processable (to 
+job-item-requirement	0x1bbe072	0x6c616976	inline	vial
+job-item-requirement	0x1bbe0e2	0x21db7f0/16	vector	processable (to 
+job-item-requirement	0x1bbe0ea	0x20296c6572726162	inline	barrel) 
+job-item-requirement	0x1bbe11d	0x21d9db5	cstring	tameable small creature 
+job-item-requirement	0x1bbe180	0x7962	inline	by
+job-item-requirement	0x1bbe185	0x7261656e	inline	near
+job-item-requirement	0x1bbe1f1	0x6165622d646e6173	inline	sand-bea
+job-item-requirement	0x1bbe201	0x676e6972	inline	ring
+job-item-requirement	0x1bbe22e	0x20ca9ec	cstring	glass 
+job-item-requirement	0x1bbe24f	0x21d9ddc	cstring	lye-bearing 
+job-item-requirement	0x1bbe2b2	0x6b6c696d	inline	milk
+job-item-requirement	0x1bbe31a	0x656c62616b6c696d	inline	milkable
+job-item-requirement	0x1bbe38f	0x2064	inline	d 
+job-item-requirement	0x1bbe394	0x64656873696e6966	inline	finished
+job-item-requirement	0x1bbe3a1	0x6f6f6720	inline	 goo
+job-item-requirement	0x1bbe40d	0x6f6d6d61	inline	ammo
+job-item-requirement	0x1bbe478	0x2065	inline	e 
+job-item-requirement	0x1bbe47d	0x727574696e727566	inline	furnitur
+job-item-requirement	0x1bbe4dc	0x6172656863747562	inline	butchera
+job-item-requirement	0x1bbe4ec	0x20656c62	inline	ble 
+job-item-requirement	0x1bbe54e	0x656c62616c6c696d	inline	millable
+job-item-requirement	0x1bbe5c0	0x2065	inline	e 
+job-item-requirement	0x1bbe5c5	0x21db7d0/16	vector	possibly buriabl
+job-item-requirement	0x1bbe62f	0x6e6574746f726e75	inline	unrotten
+job-item-requirement	0x1bbe69e	0x7275747369646e75	inline	undistur
+job-item-requirement	0x1bbe6ae	0x20646562	inline	bed 
+job-item-requirement	0x1bbe713	0x2064	inline	d 
+job-item-requirement	0x1bbe718	0x657463656c6c6f63	inline	collecte
+job-item-requirement	0x1bbe787	0x656c	inline	le
+job-item-requirement	0x1bbe78c	0x6261766f72706d69	inline	improvab
+job-item-requirement	0x1bbe826	0x21d9dd2	cstring	-bearing 
+job-item-requirement	0x1bbe8e4	0x20f7379	cstring	 
+job-item-requirement	0x1bbe9b5	0x6e6961746e6f632d	inline	-contain
+job-item-requirement	0x1bbe9c5	0x20676e69	inline	ing 
+job-item-requirement	0x1bbea46	0x21d9eed	cstring	-containing 
+job-item-requirement	0x1bbeaa6	0x21d9e19	cstring	dye 
+job-item-requirement	0x1bbeace	0x213bcb1	cstring	body part
+job-item-requirement	0x1bbeaf8	0x21d9efa	cstring	soap 
+job-item-requirement	0x1bbeb20	0x21d9f78	cstring	hard 
+job-item-requirement	0x1bbeb42	0x21d9f7e	cstring	metal 
+job-item-requirement	0x1bbeb60	0x21d9f71	cstring	woven 
+job-item-requirement	0x1bbeb80	0x21d9edf	cstring	pearl 
+job-item-requirement	0x1bbeba0	0x21d9ed9	cstring	horn 
+job-item-requirement	0x1bbebc0	0x21d9ed2	cstring	shell 
+job-item-requirement	0x1bbebe0	0x21d9ec7	cstring	hair/wool 
+job-item-requirement	0x1bbec00	0x21d9ec1	cstring	bone 
+job-item-requirement	0x1bbec20	0x21e007a	cstring	leather 
+job-item-requirement	0x1bbec40	0x21d9eb5	cstring	silk 
+job-item-requirement	0x1bbec60	0x21d9d68	cstring	plant 
+job-item-requirement	0x1bbec80	0x21d9ea7	cstring	non-economic 
+job-item-requirement	0x1bbeca0	0x21d9e94	cstring	building material 
+job-item-requirement	0x1bbecc0	0x21d9e88	cstring	magma-safe 
+job-item-requirement	0x1bbece0	0x21d9e7d	cstring	fire-safe 
+job-item-requirement	0x1bbed1e	0x21d9cee	cstring	butcherable 
+job-item-requirement	0x1bbed3e	0x21d9d05	cstring	possibly buriable 
+job-item-requirement	0x1bbed5e	0x21d9cfb	cstring	millable 
+job-item-requirement	0x1bbed7e	0x21d9ce2	cstring	improvable 
+job-item-requirement	0x1bbed9e	0x21d9d18	cstring	unrotten 
+job-item-requirement	0x1bbedbe	0x21d9d22	cstring	undisturbed 
+job-item-requirement	0x1bbedde	0x21d9d2f	cstring	collected 
+job-item-requirement	0x1bbedfe	0x21da03d	cstring	processable 
+job-item-requirement	0x1bbee1e	0x21d9d47	cstring	cookable 
+job-item-requirement	0x1bbee3e	0x21d9d85	cstring	processable (to vial) 
+job-item-requirement	0x1bbee5e	0x21d9d9c	cstring	processable (to barrel) 
+job-item-requirement	0x1bbee7e	0x210fc14	cstring	murdered 
+job-item-requirement	0x1bbee9e	0x2130136	cstring	empty 
+job-item-requirement	0x1bbeebe	0x21c2cd8	cstring	nearby 
+job-item-requirement	0x1bbeede	0x21d9dce	cstring	sand-bearing 
+job-item-requirement	0x1bbeefe	0x21d9d51	cstring	solid 
+job-item-requirement	0x1bbef1e	0x21d9d58	cstring	extract-bearing plant 
+job-item-requirement	0x1bbef3e	0x21d9c70	cstring	extract-bearing small creature 
+job-item-requirement	0x1bbef5e	0x21d9def	cstring	milkable 
+job-item-requirement	0x1bbef7e	0x21d9e0e	cstring	furniture 
+job-item-requirement	0x1bbefae	0x21d9de9	cstring	milk 
+job-item-requirement	0x1bbefce	0x21d9f23	cstring	unengraved 
+job-item-requirement	0x1bbeffe	0x21d9e66	cstring	sewn-imageless 
+job-item-requirement	0x1bbf01e	0x21d9f0d	cstring	lye/milk-free 
+job-item-requirement	0x1bbf03e	0x21d9e1e	cstring	dyeable 
+job-item-requirement	0x1bbf05e	0x21d9e32	cstring	glass-making 
+job-item-requirement	0x1bbf07e	0x21d9e40	cstring	dyed 
+job-item-requirement	0x1bbf09e	0x21d9e46	cstring	melt-designated 
+job-item-requirement	0x1bbf0be	0x21d9df9	cstring	finished good 
+job-item-requirement	0x1bbf0de	0x21d9e08	cstring	ammo 
+job-item-requirement	0x1bbf0fe	0x21d9f3b	cstring	written-on 
+job-item-requirement	0x1bbf11e	0x21d9f8b	cstring	edged 
+job-item-requirement	0x1bbf13e	0x21d9f47	cstring	non-absorbent 
+job-item-requirement	0x1bbf15e	0x213b90d	cstring	grown 
+job-item-requirement	0x1bbf18e	0x2115853	cstring	artifact 
+job-item-requirement	0x1bbf1ae	0x21d9f92	cstring	on-ground 
+job-item-requirement	0x1bbf1ce	0x21d9f64	cstring	non-pressed 
+job-item-requirement	0x1bbf1ee	0x21d9fb3	cstring	wooden 
+job-item-requirement	0x1bbf20e	0x21d9fc2	cstring	gem 
+job-item-requirement	0x1bbf22e	0x21da288	cstring	 that isn't a bin
+job-item-requirement	0x1bbf270	0x21d9ebb	cstring	yarn 
+job-item-requirement	0x1bbf520	0x21d9c90	cstring	calcite/limestone/chalk/marble 
+job-item-requirement	0x1bbf538	0x21da039	cstring	bag-processable 
+job-item-requirement	0x1bbf560	0x21da11a	cstring	liquid cooking
+job-item-requirement	0x1bbf588	0x21da161	cstring	meat carving
+job-item-requirement	0x1bbf5b0	0x21da151	cstring	powder grinding
+job-item-requirement	0x1bbf5d8	0x21da136	cstring	powder grinding receptacle
+job-item-requirement	0x1bbf600	0x21da129	cstring	liquid scoop
+job-item-requirement	0x1bbf628	0x214e0b4	cstring	hive
+job-item-requirement	0x1bbf650	0x20fc689	cstring	food storage
+job-item-requirement	0x1bbf678	0x21da1b8	cstring	liquid container
+job-item-requirement	0x1bbf6a0	0x21da1a9	cstring	meal container
+job-item-requirement	0x1bbf6c8	0x21da195	cstring	meat-carving holder
+job-item-requirement	0x1bbf6f0	0x21da187	cstring	meat cleaving
+job-item-requirement	0x1bbf718	0x21da17a	cstring	meat slicing
+job-item-requirement	0x1bbf740	0x21da16e	cstring	meat boning
+job-item-requirement	0x1bbf768	0x20f6b2a	cstring	divination
+job-item-requirement	0x1bbf790	0x21da265	cstring	offering placement
+job-item-requirement	0x1bbf7b8	0x21da256	cstring	display object
+job-item-requirement	0x1bbf7e0	0x21da24d	cstring	bookcase
+job-item-requirement	0x1bbf808	0x21da23b	cstring	writing container
+job-item-requirement	0x1bbf830	0x21da224	cstring	folded sheet protector
+job-item-requirement	0x1bbf858	0x21da217	cstring	sheet roller
+job-item-requirement	0x1bbf880	0x21da208	cstring	stand-and-work
+job-item-requirement	0x1bbf8a8	0x21da1f4	cstring	heavy object hauler
+job-item-requirement	0x1bbf8d0	0x21da1e9	cstring	track cart
+job-item-requirement	0x1bbf8f8	0x21da1d2	cstring	small object container
+job-item-requirement	0x1bbf920	0x21da1c9	cstring	nest box
+job-item-requirement	0x1bbf942	0x21d9ff2	cstring	flux 
+job-item-requirement	0x1bbf956	0x21da067	cstring	glaze 
+job-item-requirement	0x1bbf970	0x21d9fe3	cstring	glazable 
+job-item-requirement	0x1bbf988	0x21da04a	cstring	fermentable 
+job-item-requirement	0x1bbf9a0	0x21d9fed	cstring	fat 
+job-item-requirement	0x1bbf9b8	0x21da057	cstring	clay 
+job-item-requirement	0x1bbf9cc	0x21d9fff	cstring	gypsum 
+job-item-requirement	0x1bbf9e0	0x21da082	cstring	honey-bearing 
+job-item-requirement	0x1bbf9f4	0x21da007	cstring	paper-making 
+job-item-requirement	0x1bbfa08	0x21da09f	cstring	parchment-producing 
+job-item-requirement	0x1bbfa28	0x21da0c5	cstring	oil-bearing 
+job-item-requirement	0x1bbfa3c	0x21da015	cstring	paper-slurry 
+job-item-requirement	0x1bbfa50	0x21da023	cstring	tallow 
+job-item-requirement	0x1bbfa64	0x21da0e2	cstring	paper-slurryable 
+job-item-requirement	0x1bbfb11	0x21da0f4	cstring	renderable 
+job-item-requirement	0x1bbfb30	0x21da0a8	cstring	-producing 
+job-item-requirement	0x1bbfb73	0x21da109	cstring	fatty 
+task-tooltip	0x1377ae9	0x73656375646f7250	inline	Produces
+task-tooltip	0x137805c	0x7365726975716552	inline	Requires
+job-caption	0x1cab60e	0x21dfe9a	cstring	Forge 
+job-caption	0x1cab621	0x21dfea1	cstring	pair of 
+job-caption	0x1cab671	0x21dfd16	cstring	large 
+job-caption	0x1cab6b8	0x20f7379	cstring	 
+job-caption	0x1cab737	0x2173361	cstring	Strange mood
+job-caption	0x1cab74c	0x21e0355	cstring	Go shopping
+job-caption	0x1cab761	0x2173c49	cstring	Drink
+job-caption	0x1cab7b5	0x626f	inline	ob
+job-caption	0x1cab7ba	0x6a206f4e	inline	No j
+job-caption	0x1cab7e3	0x21dfc51	cstring	Give food
+job-caption	0x1cab83a	0x7265	inline	er
+job-caption	0x1cab840	0x7461772065766947	inline	Give wat
+job-caption	0x1cab871	0x21e028c	cstring	Fill waterskin
+job-caption	0x1cab8c5	0x6e6f70206c6c6946	inline	Fill pon
+job-caption	0x1cab934	0x632074726f706552	inline	Report c
+job-caption	0x1cab944	0x656d6972	inline	rime
+job-caption	0x1cab96a	0x21dfc87	cstring	Trade at depot
+job-caption	0x1cab9be	0x657274206c6c6546	inline	Fell tre
+job-caption	0x1caba30	0x656e	inline	ne
+job-caption	0x1caba35	0x6e61686320676944	inline	Dig chan
+job-caption	0x1cabaa5	0x656b614d	inline	Make
+job-caption	0x1cabac5	0x20f7379	cstring	 
+job-caption	0x1cabb5b	0x7472	inline	rt
+job-caption	0x1cabb61	0x21e2040/16	vector	 bolt thrower pa
+job-caption	0x1cabb94	0x214a2fc	cstring	Mix 
+job-caption	0x1cabbd0	0x2173e5c	cstring	dye
+job-caption	0x1cabbf3	0x21ed335	cstring	 using 
+job-caption	0x1cabc34	0x219eeb1	cstring	 and 
+job-caption	0x1cabcd6	0x21e2090/16	vector	Store squad equi
+job-caption	0x1cabcde	0x6e656d70	inline	pmen
+job-caption	0x1cabd0b	0x21755e7	cstring	Dig
+job-caption	0x1cabd23	0x21e0187	cstring	Detail wall
+job-caption	0x1cabd3b	0x21e017a	cstring	Smooth floor
+job-caption	0x1cabd92	0x656b614d	inline	Make
+job-caption	0x1cabe2c	0x656c656361726220	inline	 bracele
+job-caption	0x1cabe9e	0x656b614d	inline	Make
+job-caption	0x1cabef5	0x21dfcfe	cstring	 earring
+job-caption	0x1cabf10	0x21ae9b7	cstring	Make 
+job-caption	0x1cabfa0	0x6e697220	inline	 rin
+job-caption	0x1cabfc9	0x21e021c	cstring	Carve ramp
+job-caption	0x1cabfe1	0x21e01eb	cstring	Carve downward staircase
+job-caption	0x1cabff9	0x21e01d4	cstring	Carve upward staircase
+job-caption	0x1cac011	0x20f38e2	cstring	No activity
+job-caption	0x1cac029	0x21dfacc	cstring	Interrogate 
+job-caption	0x1cac0af	0x21dfbb3	cstring	Put item on display
+job-caption	0x1cac0c7	0x21dfd11	cstring	Make large 
+job-caption	0x1cac111	0x214e6e8	cstring	 gem
+job-caption	0x1cac146	0x21e0044	cstring	Tint 
+job-caption	0x1cac174	0x21e0079	cstring	 leather 
+job-caption	0x1cac1a2	0x21ed335	cstring	 using 
+job-caption	0x1cac1d0	0x2173e5b	cstring	 dye
+job-caption	0x1cac22a	0x656b614d	inline	Make
+job-caption	0x1cac280	0x21dfce8	cstring	 scepter
+job-caption	0x1cac2da	0x656b614d	inline	Make
+job-caption	0x1cac374	0x6e69727567696620	inline	 figurin
+job-caption	0x1cac3a7	0x21dfcb6	cstring	Geld 
+job-caption	0x1cac46c	0x6c61	inline	al
+job-caption	0x1cac472	0x772068746f6f6d53	inline	Smooth w
+job-caption	0x1cac4e6	0x6f69	inline	io
+job-caption	0x1cac4ec	0x21e2050/16	vector	Carve fortificat
+job-caption	0x1cac51f	0x21ae9b7	cstring	Make 
+job-caption	0x1cac567	0x21dfcf1	cstring	 crown
+job-caption	0x1cac5c1	0x2065	inline	e 
+job-caption	0x1cac5c7	0x67726f46	inline	Forg
+job-caption	0x1cac61e	0x21dffa3	cstring	 anvil
+job-caption	0x1cac65f	0x21dfe9a	cstring	Forge 
+job-caption	0x1cac6a6	0x20f7379	cstring	 
+job-caption	0x1cac6e0	0x21dffc4	cstring	Train 
+job-caption	0x1cac740	0x21dffe3	cstring	 for war
+job-caption	0x1cac7b4	0x206e	inline	n 
+job-caption	0x1cac7b9	0x69617254	inline	Trai
+job-caption	0x1cac827	0x21dffcb	cstring	 to hunt
+job-caption	0x1cac85c	0x21e045d	cstring	Dump item
+job-caption	0x1cac874	0x21e024b	cstring	Bring item to shop
+job-caption	0x1cac88c	0x21e025e	cstring	Bring item to depot
+job-caption	0x1cac8a4	0x21e0094	cstring	Collect webs
+job-caption	0x1cac8bc	0x21e01c0	cstring	Remove construction
+job-caption	0x1cac8fa	0x21dfe9a	cstring	Forge 
+job-caption	0x1cac917	0x21dff58	cstring	five 
+job-caption	0x1cac960	0x20f7379	cstring	 
+job-caption	0x1cac9a0	0x21dfeaa	cstring	Make totem
+job-caption	0x1cac9b8	0x21e023d	cstring	Gather plants
+job-caption	0x1cac9d0	0x21e0204	cstring	Carve up/down staircase
+job-caption	0x1cac9e8	0x21e0193	cstring	Detail floor
+job-caption	0x1caca00	0x21e04bc	cstring	Fire bolt thrower
+job-caption	0x1caca18	0x21e048e	cstring	Load bolt thrower
+job-caption	0x1caca30	0x21ae9b7	cstring	Make 
+job-caption	0x1caca79	0x21dfce0	cstring	 amulet
+job-caption	0x1caca94	0x21dfbd9	cstring	Pit/pond 
+job-caption	0x1cacb1a	0x21e0272	cstring	Get provisions
+job-caption	0x1cacb32	0x21e036f	cstring	Seek infant
+job-caption	0x1cacb86	0x747261206b656553	inline	Seek art
+job-caption	0x1cacb96	0x63616669	inline	ifac
+job-caption	0x1cacbc0	0x21e03de	cstring	Store item in bin
+job-caption	0x1cacbd8	0x21df9a7	cstring	Spin thread
+job-caption	0x1cacbf0	0x21df9a0	cstring	Shear 
+job-caption	0x1cacccf	0x214a4a4	cstring	Engrave memorial slab
+job-caption	0x1cacce7	0x21ae9b7	cstring	Make 
+job-caption	0x1cacd31	0x214a4b4	cstring	 slab
+job-caption	0x1cacd4c	0x21e02b5	cstring	Starting fist fight
+job-caption	0x1cacd64	0x21e02c9	cstring	Beat criminal
+job-caption	0x1cacd7c	0x21e02a1	cstring	Kidnap
+job-caption	0x1cacd94	0x21e030f	cstring	Hunt for small creature
+job-caption	0x1cacdac	0x2175644	cstring	Hunt
+job-caption	0x1cacdc4	0x2175085	cstring	Fish
+job-caption	0x1cacddc	0x21dfdbf	cstring	Collect sand
+job-caption	0x1cace33	0x65656c53	inline	Slee
+job-caption	0x1cace5c	0x21e044c	cstring	Pickup equipment
+job-caption	0x1cace74	0x217508a	cstring	Clean
+job-caption	0x1cacec8	0x74736552	inline	Rest
+job-caption	0x1caceee	0x21e039f	cstring	Store item in stockpile
+job-caption	0x1cacf06	0x21e037b	cstring	Store owned item
+job-caption	0x1cacf1e	0x21e0349	cstring	Return kill
+job-caption	0x1cacf75	0x6f6d	inline	mo
+job-caption	0x1cacf7a	0x72612065726f7453	inline	Store ar
+job-caption	0x1cacfea	0x65772065726f7453	inline	Store we
+job-caption	0x1cacffa	0x6e6f7061	inline	apon
+job-caption	0x1cad020	0x21e041f	cstring	Store item in location
+job-caption	0x1cad038	0x21e03c9	cstring	Store item in barrel
+job-caption	0x1cad08f	0x21e2070/16	vector	Store item in ba
+job-caption	0x1cad0bd	0x21e0005	cstring	Make ash
+job-caption	0x1cad0d5	0x21dfcab	cstring	Slaughter 
+job-caption	0x1cad15b	0x21dfbe3	cstring	Pit/pond small animal
+job-caption	0x1cad1b2	0x626d	inline	mb
+job-caption	0x1cad1b7	0x21e2060/16	vector	Place item in to
+job-caption	0x1cad1e5	0x21dfff7	cstring	Make charcoal
+job-caption	0x1cad1fd	0x21e01a0	cstring	Carve track
+job-caption	0x1cad215	0x212fae2	cstring	Cause trouble
+job-caption	0x1cad22d	0x21dfdf0	cstring	Collect hive products
+job-caption	0x1cad284	0x6576	inline	ve
+job-caption	0x1cad28a	0x21e2020/16	vector	Install colony i
+job-caption	0x1cad292	0x6968206e	inline	n hi
+job-caption	0x1cad2c0	0x21dfdcc	cstring	Collect clay
+job-caption	0x1cad317	0x21e2010/16	vector	Pen/pasture smal
+job-caption	0x1cad31f	0x6c616d696e61206c	inline	l animal
+job-caption	0x1cad34f	0x21dfbf9	cstring	Pen/pasture 
+job-caption	0x1cad414	0x636e	inline	nc
+job-caption	0x1cad419	0x21e2030/16	vector	Make traction be
+job-caption	0x1cad48a	0x656b614d	inline	Make
+job-caption	0x1cad4e0	0x20f4c82	cstring	 crutch
+job-caption	0x1cad4fb	0x21e02fe	cstring	Execute criminal
+job-caption	0x1cad513	0x21e02d7	cstring	Place track vehicle
+job-caption	0x1cad52b	0x21e02eb	cstring	Push track vehicle
+job-caption	0x1cad584	0x21e050b	cstring	Reaction
+job-caption	0x1cad5b7	0x21dfb5f	cstring	Apply cast
+job-caption	0x1cad60b	0x726320676e697242	inline	Bring cr
+job-caption	0x1cad61b	0x68637475	inline	utch
+job-caption	0x1cad641	0x21e0281	cstring	Clean self
+job-caption	0x1cad682	0x21dfe9a	cstring	Forge 
+job-caption	0x1cad70f	0x20f7379	cstring	 
+job-caption	0x1cad77b	0x2173c45	cstring	Eat
+job-caption	0x1cad793	0x21dffc4	cstring	Train 
+job-caption	0x1cad858	0x21e2080/16	vector	Store item in ve
+job-caption	0x1cad860	0x6c636968	inline	hicl
+job-caption	0x1cad88d	0x21dfb27	cstring	Cage 
+job-caption	0x1cad913	0x21dfb05	cstring	Handle small creature
+job-caption	0x1cad92b	0x21dfaee	cstring	Release small creature
+job-caption	0x1cad969	0x21dfe9a	cstring	Forge 
+job-caption	0x1cad9bb	0x21dfd16	cstring	large 
+job-caption	0x1cada04	0x20f7379	cstring	 
+job-caption	0x1cada3e	0x21dff5e	cstring	Make
+job-caption	0x1cada53	0x20f7379	cstring	 
+job-caption	0x1cadaa4	0x21dff7f	cstring	 ballista parts
+job-caption	0x1cadabc	0x21dff5e	cstring	Make
+job-caption	0x1cadad1	0x20f7379	cstring	 
+job-caption	0x1cadb21	0x21dff63	cstring	 catapult parts
+job-caption	0x1cadb5f	0x21dfe9a	cstring	Forge 
+job-caption	0x1cadbaf	0x21dfd16	cstring	large 
+job-caption	0x1cadbf6	0x20f7379	cstring	 
+job-caption	0x1cadc30	0x21ae9b7	cstring	Make 
+job-caption	0x1cadc78	0x20f4c5f	cstring	 splint
+job-caption	0x1cadc93	0x21ae9b7	cstring	Make 
+job-caption	0x1cadd22	0x656e	inline	ne
+job-caption	0x1cadd27	0x6f74736c6c696d20	inline	 millsto
+job-caption	0x1cadd96	0x21e2000/16	vector	Cage small anima
+job-caption	0x1caddc4	0x21dfc5b	cstring	Manage work orders
+job-caption	0x1cadddc	0x21e04ce	cstring	Operate pump
+job-caption	0x1caddf4	0x21dfe0c	cstring	Make raw 
+job-caption	0x1cade84	0x656b614d	inline	Make
+job-caption	0x1cadecf	0x21dfe06	cstring	four 
+job-caption	0x1cadf64	0x6b63	inline	ck
+job-caption	0x1cadf69	0x6f6c6220	inline	 blo
+job-caption	0x1cadf96	0x21ae9b7	cstring	Make 
+job-caption	0x1cadfe0	0x21dffaa	cstring	 statue
+job-caption	0x1cadffb	0x21ae9b7	cstring	Make 
+job-caption	0x1cae044	0x21dfe4a	cstring	 cabinet
+job-caption	0x1cae09e	0x656b614d	inline	Make
+job-caption	0x1cae0f6	0x21dfe53	cstring	 weapon rack
+job-caption	0x1cae150	0x656b614d	inline	Make
+job-caption	0x1cae1a7	0x21dfe60	cstring	 armor stand
+job-caption	0x1cae1c2	0x21ae9b7	cstring	Make 
+job-caption	0x1cae20c	0x21da295	cstring	 bin
+job-caption	0x1cae227	0x21ae9b7	cstring	Make 
+job-caption	0x1cae26f	0x21e03c4	cstring	 bag
+job-caption	0x1cae298	0x21df982	cstring	Process 
+job-caption	0x1cae329	0x21df9e3	cstring	 (barrel)
+job-caption	0x1cae36c	0x21df982	cstring	Process 
+job-caption	0x1cae3fd	0x21df9cd	cstring	 (vial)
+job-caption	0x1cae432	0x21dfd8d	cstring	Encrust 
+job-caption	0x1cae462	0x20fc321	cstring	ammo
+job-caption	0x1cae4bb	0x2068	inline	h 
+job-caption	0x1cae4c1	0x74697720	inline	 wit
+job-caption	0x1cae569	0x656e6f6220746553	inline	Set bone
+job-caption	0x1cae596	0x21dfb91	cstring	Suture
+job-caption	0x1cae5ed	0x7265	inline	er
+job-caption	0x1cae5f3	0x67727553	inline	Surg
+job-caption	0x1cae621	0x21dfb83	cstring	Clean patient
+job-caption	0x1cae639	0x21e000e	cstring	Smelt 
+job-caption	0x1cae681	0x21e0015	cstring	 ore
+job-caption	0x1cae69c	0x21df913	cstring	Destroy building
+job-caption	0x1cae6b4	0x21dfd8d	cstring	Encrust 
+job-caption	0x1cae6e4	0x20fc321	cstring	ammo
+job-caption	0x1cae6f7	0x20e2a73	cstring	 with 
+job-caption	0x1cae78f	0x2074737572636e45	inline	Encrust 
+job-caption	0x1cae7d4	0x20fc321	cstring	ammo
+job-caption	0x1cae7e7	0x20e2a73	cstring	 with 
+job-caption	0x1cae84a	0x21dfd23	cstring	Cut 
+job-caption	0x1cae8c3	0x21dfe9a	cstring	Forge 
+job-caption	0x1cae8d6	0x21dfec0	cstring	three 
+job-caption	0x1cae925	0x21dfec7	cstring	 waterskins
+job-caption	0x1cae962	0x21dfc96	cstring	Chain 
+job-caption	0x1cae9c9	0x21dfcbc	cstring	Tame 
+job-caption	0x1caea4f	0x21dfa0b	cstring	Make potash from ash
+job-caption	0x1caea67	0x21e0120	cstring	Fertilize field
+job-caption	0x1caea7f	0x21ae9b7	cstring	Make 
+job-caption	0x1caeb04	0x2142060	cstring	 chest
+job-caption	0x1caeb1c	0x21ae9b7	cstring	Make 
+job-caption	0x1caeb66	0x21f49bc	cstring	 table
+job-caption	0x1caeb81	0x21ae9b7	cstring	Make 
+job-caption	0x1caebf1	0x21dfe75	cstring	 casket
+job-caption	0x1caec09	0x21ae9b7	cstring	Make 
+job-caption	0x1caec75	0x20db646	cstring	 chair
+job-caption	0x1caec8d	0x21df936	cstring	Catch live fish
+job-caption	0x1caeca5	0x21df946	cstring	Catch live land animal
+job-caption	0x1caecbd	0x21e0335	cstring	Guard tax collector
+job-caption	0x1caed11	0x207463656c6c6f43	inline	Collect 
+job-caption	0x1caed21	0x65786174	inline	taxe
+job-caption	0x1caed4b	0x21e0105	cstring	Harvest plants
+job-caption	0x1caed63	0x21e002e	cstring	Extract metal strands
+job-caption	0x1caed7b	0x21e001a	cstring	Melt a metal object
+job-caption	0x1caed93	0x21df95d	cstring	Prepare a raw fish
+job-caption	0x1caedab	0x21df924	cstring	Butcher an animal
+job-caption	0x1caedc3	0x21dfd82	cstring	Stud with 
+job-caption	0x1caee3b	0x21dfe9a	cstring	Forge 
+job-caption	0x1caee8d	0x21dfd16	cstring	large 
+job-caption	0x1caeed6	0x20f7379	cstring	 
+job-caption	0x1caef4f	0x6e75	inline	un
+job-caption	0x1caef54	0x6f77207373657244	inline	Dress wo
+job-caption	0x1caef88	0x21dfb4e	cstring	Immobilize break
+job-caption	0x1caefa0	0x21dfb3d	cstring	Diagnose patient
+job-caption	0x1caefb8	0x21dfb2d	cstring	Recover wounded
+job-caption	0x1caefd0	0x21df9b3	cstring	Make cheese
+job-caption	0x1caf027	0x6b6c694d	inline	Milk
+job-caption	0x1caf0bb	0x21dff22	cstring	Bait trap with 
+job-caption	0x1caf0f2	0x214e6e9	cstring	gem
+job-caption	0x1caf111	0x21dfd49	cstring	Polish 
+job-caption	0x1caf172	0x21df982	cstring	Process 
+job-caption	0x1caf228	0x21e04a0	cstring	Fire catapult
+job-caption	0x1caf27f	0x656b614d	inline	Make
+job-caption	0x1caf2d7	0x21dffb2	cstring	 quern
+job-caption	0x1caf2f2	0x21e01ac	cstring	Remove stairs/ramps
+job-caption	0x1caf30a	0x21ae9b7	cstring	Make 
+job-caption	0x1caf354	0x20fbc05	cstring	 grate
+job-caption	0x1caf36f	0x21ae9b7	cstring	Make 
+job-caption	0x1caf3fc	0x6320686374616820	inline	 hatch c
+job-caption	0x1caf40c	0x7265766f	inline	over
+job-caption	0x1caf432	0x21dff5e	cstring	Make
+job-caption	0x1caf45d	0x2160946	cstring	 bed
+job-caption	0x1caf4b4	0x656b614d	inline	Make
+job-caption	0x1caf52b	0x21dfe16	cstring	 Portal
+job-caption	0x1caf546	0x21df900	cstring	Construct building
+job-caption	0x1caf55e	0x21dfd1d	cstring	Mint 
+job-caption	0x1caf5ec	0x736e	inline	ns
+job-caption	0x1caf5f1	0x696f6320	inline	 coi
+job-caption	0x1caf61a	0x21ae9b7	cstring	Make 
+job-caption	0x1caf664	0x20df263	cstring	 crafts
+job-caption	0x1caf686	0x21dfd23	cstring	Cut 
+job-caption	0x1caf6d7	0x21e0114	cstring	Plant seeds
+job-caption	0x1caf6ef	0x21dfae2	cstring	Release pet
+job-caption	0x1caf707	0x21dfad9	cstring	Release 
+job-caption	0x1caf78d	0x21dfac0	cstring	Unchain pet
+job-caption	0x1caf7a5	0x2174e7d	cstring	Unchain
+job-caption	0x1caf7d6	0x20f7379	cstring	 
+job-caption	0x1caf840	0x21dfaa9	cstring	Handle 
+job-caption	0x1caf8c6	0x21dfa7a	cstring	Extract from raw fish
+job-caption	0x1caf8ec	0x21dfa58	cstring	Extract from 
+job-caption	0x1caf9a0	0x21e04db	cstring	Load cage trap
+job-caption	0x1caf9b8	0x21dfcc2	cstring	Tame a small animal
+job-caption	0x1caf9d0	0x21dfa90	cstring	Extract from land animal
+job-caption	0x1caf9e8	0x21e0130	cstring	Pull the lever
+job-caption	0x1cafa00	0x21e013f	cstring	Link a building to trigger
+job-caption	0x1cafa3e	0x21dfe9a	cstring	Forge 
+job-caption	0x1cafa87	0x21dff32	cstring	 ballista arrow head
+job-caption	0x1cafaa2	0x21ae9b7	cstring	Make 
+job-caption	0x1cafaea	0x21dff1a	cstring	 quiver
+job-caption	0x1cafb05	0x21e04fa	cstring	Load weapon trap
+job-caption	0x1cafb1d	0x21e04ea	cstring	Load stone trap
+job-caption	0x1cafb35	0x21e0467	cstring	Clean trap
+job-caption	0x1cafb4d	0x21dff5e	cstring	Make
+job-caption	0x1cafb5c	0x20f7379	cstring	 
+job-caption	0x1cafbea	0x6d73	inline	sm
+job-caption	0x1cafbf0	0x696e616863656d20	inline	 mechani
+job-caption	0x1cafc61	0x6c61622065726946	inline	Fire bal
+job-caption	0x1cafc71	0x7473696c	inline	list
+job-caption	0x1cafcc1	0x21dfe9a	cstring	Forge 
+job-caption	0x1cafcfe	0x20f7379	cstring	 
+job-caption	0x1cafd48	0x20f7379	cstring	 
+job-caption	0x1cafd7e	0x21e0472	cstring	Load catapult
+job-caption	0x1cafd96	0x21dff47	cstring	Assemble 
+job-caption	0x1cafde0	0x20f7379	cstring	 
+job-caption	0x1cafe56	0x6c61622064616f4c	inline	Load bal
+job-caption	0x1cafe66	0x7473696c	inline	list
+job-caption	0x1cafe90	0x21ae9b7	cstring	Make 
+job-caption	0x1cafed8	0x21dff10	cstring	 backpack
+job-caption	0x1cafef3	0x21dfd73	cstring	Decorate with 
+job-caption	0x1caff6c	0x21dfe9a	cstring	Forge 
+job-caption	0x1caffb5	0x21e03d6	cstring	 barrel
+job-caption	0x1cafff6	0x21dfe9a	cstring	Forge 
+job-caption	0x1cb003e	0x21dfeef	cstring	 animal trap
+job-caption	0x1cb007f	0x21dfe9a	cstring	Forge 
+job-caption	0x1cb00e2	0x21dfefc	cstring	 tube
+job-caption	0x1cb010b	0x21df970	cstring	Mill 
+job-caption	0x1cb01c1	0x21ae9b7	cstring	Make 
+job-caption	0x1cb020a	0x21dfe1e	cstring	 floodgate
+job-caption	0x1cb024b	0x21dfe9a	cstring	Forge 
+job-caption	0x1cb025e	0x21dfea1	cstring	pair of 
+job-caption	0x1cb02b0	0x21dfd16	cstring	large 
+job-caption	0x1cb03b0	0x21e00a1	cstring	Weave metal cloth
+job-caption	0x1cb03d0	0x21e00f8	cstring	 (dyed only)
+job-caption	0x1cb03e8	0x21dfb1b	cstring	Recover pet
+job-caption	0x1cb0400	0x21dfc2e	cstring	Fill aquarium
+job-caption	0x1cb0418	0x21dfc1f	cstring	Drain aquarium
+job-caption	0x1cb0430	0x21dfba1	cstring	Place in traction
+job-caption	0x1cb0448	0x21df9f6	cstring	Make potash from lye
+job-caption	0x1cb049c	0x65796c20656b614d	inline	Make lye
+job-caption	0x1cb04c9	0x21dfc6e	cstring	Update stockpile records
+job-caption	0x1cb04fb	0x21e0044	cstring	Tint 
+job-caption	0x1cb0529	0x21e0064	cstring	 cloth 
+job-caption	0x1cb0557	0x21ed335	cstring	 using 
+job-caption	0x1cb0585	0x2173e5b	cstring	 dye
+job-caption	0x1cb05ba	0x21e0044	cstring	Tint 
+job-caption	0x1cb05e8	0x21e004d	cstring	 thread 
+job-caption	0x1cb0616	0x21ed335	cstring	 using 
+job-caption	0x1cb0644	0x2173e5b	cstring	 dye
+job-caption	0x1cb065f	0x21e008f	cstring	Sew 
+job-caption	0x1cb06a9	0x20e5cb5	cstring	 image
+job-caption	0x1cb06c4	0x21ae9b7	cstring	Make 
+job-caption	0x1cb070d	0x20fbc41	cstring	 window
+job-caption	0x1cb074e	0x21dfe9a	cstring	Forge 
+job-caption	0x1cb0797	0x20f457e	cstring	 bucket
+job-caption	0x1cb07d8	0x21dfe9a	cstring	Forge 
+job-caption	0x1cb081f	0x210f8a1	cstring	 toy
+job-caption	0x1cb0860	0x21dfe9a	cstring	Forge 
+job-caption	0x1cb08c3	0x21dfeb5	cstring	 terrarium
+job-caption	0x1cb0904	0x21dfe9a	cstring	Forge 
+job-caption	0x1cb0917	0x21dfec0	cstring	three 
+job-caption	0x1cb09a1	0x21dfee0	cstring	 goblets
+job-caption	0x1cb09d6	0x21dfa20	cstring	Prepare easy meal
+job-caption	0x1cb0a14	0x21dfe9a	cstring	Forge 
+job-caption	0x1cb0a85	0x20e1b62	cstring	 rope
+job-caption	0x1cb0ac3	0x21dfe9a	cstring	Forge 
+job-caption	0x1cb0b0a	0x20f7379	cstring	 
+job-caption	0x1cb0bdf	0x21dfeda	cstring	 cups
+job-caption	0x1cb0bf7	0x2131be8	cstring	animal
+job-caption	0x1cb0c0f	0x21dfab1	cstring	a large animal
+job-caption	0x1cb0c27	0x21dfab1	cstring	a large animal
+job-caption	0x1cb0c3f	0x2131be8	cstring	animal
+job-caption	0x1cb0c57	0x2131be8	cstring	animal
+job-caption	0x1cb0c6f	0x2204ec0	cstring	subject
+job-caption	0x1cb0c87	0x21dfc9d	cstring	Put in chains
+job-caption	0x1cb0c9f	0x21dfab1	cstring	a large animal
+job-caption	0x1cb0cb7	0x21dfab1	cstring	a large animal
+job-caption	0x1cb0ccf	0x21dfab1	cstring	a large animal
+job-caption	0x1cb0ce7	0x2131be8	cstring	animal
+job-caption	0x1cb0db5	0x21dfd5f	cstring	 (engrave memorial)
+job-caption	0x1cb0dda	0x21e0076	cstring	Dye leather 
+job-caption	0x1cb0e14	0x21ae9b7	cstring	Make 
+job-caption	0x1cb0e2c	0x21ae9b7	cstring	Make 
+job-caption	0x1cb0e44	0x21ae9b7	cstring	Make 
+job-caption	0x1cb0e5c	0x21ae9b7	cstring	Make 
+job-caption	0x1cb0e74	0x21dff02	cstring	 pipe section
+job-caption	0x1cb0e8c	0x21ae9b7	cstring	Make 
+job-caption	0x1cb0ea4	0x21dff51	cstring	twenty-five 
+job-caption	0x1cb0ebc	0x21ae9b7	cstring	Make 
+job-caption	0x1cb0ed4	0x21ae9b7	cstring	Make 
+job-caption	0x1cb0eec	0x2108009	cstring	 cage
+job-caption	0x1cb0f04	0x21ae9b7	cstring	Make 
+job-caption	0x1cb0f1c	0x21ae9b7	cstring	Make 
+job-caption	0x1cb0f34	0x21ae9b7	cstring	Make 
+job-caption	0x1cb0f4c	0x21ae9b7	cstring	Make 
+job-caption	0x1cb0f7f	0x21dfed3	cstring	 vials
+job-caption	0x1cb0f97	0x21ae9b7	cstring	Make 
+job-caption	0x1cb0faf	0x21ae9b7	cstring	Make 
+job-caption	0x1cb0fc7	0x21ae9b7	cstring	Make 
+job-caption	0x1cb0fd8	0x21df98b	cstring	Process plants
+job-caption	0x1cb0ff0	0x21e0061	cstring	Dye cloth 
+job-caption	0x1cb1023	0x21df976	cstring	Mill plants
+job-caption	0x1cb103b	0x21ae9b7	cstring	Make 
+job-caption	0x1cb1053	0x21e004a	cstring	Dye thread 
+job-caption	0x1cb108d	0x20d32f5	cstring	 door
+job-caption	0x1cb10a5	0x21ae9b7	cstring	Make 
+job-caption	0x1cb10b6	0x21df9bf	cstring	Process plants (vial)
+job-caption	0x1cb10c7	0x21df9d5	cstring	Process plants (barrel)
+job-caption	0x1cb10df	0x21ae9b7	cstring	Make 
+job-caption	0x1cb10f7	0x21ae9b7	cstring	Make 
+job-caption	0x1cb110f	0x21ae9b7	cstring	Make 
+job-caption	0x1cb1120	0x21dfa66	cstring	Extract from plants
+job-caption	0x1cb1138	0x21ae9b7	cstring	Make 
+job-caption	0x1cb1158	0x213b986	cstring	cut gems
+job-caption	0x1cb116c	0x21dfd28	cstring	Cut gems
+job-caption	0x1cb1184	0x21dfda5	cstring	cut glass
+job-caption	0x1cb1198	0x21dfd51	cstring	Polish stones
+job-caption	0x1cb11c7	0x21e00ca	cstring	Weave yarn into cloth
+job-caption	0x1cb11db	0x21dfdaf	cstring	polished stones
+job-caption	0x1cb11ef	0x21dfd31	cstring	Cut raw glass into gems
+job-caption	0x1cb1212	0x21e016e	cstring	Smooth wall
+job-caption	0x1cb1235	0x21dfe9a	cstring	Forge 
+job-caption	0x1cb1258	0x21ae9b7	cstring	Make 
+job-caption	0x1cb127b	0x21ae9b7	cstring	Make 
+job-caption	0x1cb129e	0x21ae9b7	cstring	Make 
+job-caption	0x1cb12c1	0x21ae9b7	cstring	Make 
+job-caption	0x1cb12e4	0x21dfbc7	cstring	Cage small animal
+job-caption	0x1cb1307	0x21d820f	cstring	 coins
+job-caption	0x1cb132a	0x21dfb98	cstring	Set bone
+job-caption	0x1cb134d	0x2212182	cstring	Surgery
+job-caption	0x1cb1370	0x214de53	cstring	 blocks
+job-caption	0x1cb1393	0x21ae9b7	cstring	Make 
+job-caption	0x1cb13ab	0x21ae2c7	cstring	furniture
+job-caption	0x1cb13c3	0x21dfd96	cstring	finished goods
+job-caption	0x1cb13db	0x221cb85	cstring	 box
+job-caption	0x1cb13fe	0x21e0327	cstring	Collect taxes
+job-caption	0x1cb1416	0x21dfd96	cstring	finished goods
+job-caption	0x1cb1439	0x21dfd8d	cstring	Encrust 
+job-caption	0x1cb1451	0x21ae2c7	cstring	furniture
+job-caption	0x1cb1474	0x21df99a	cstring	Milk 
+job-caption	0x1cb1497	0x21dfdd9	cstring	Install colony in hive
+job-caption	0x1cb14ba	0x21ae9b7	cstring	Make 
+job-caption	0x1cb14dd	0x21dfb6a	cstring	Bring crutch
+job-caption	0x1cb1500	0x21e04ae	cstring	Fire ballista
+job-caption	0x1cb1523	0x21dff73	cstring	 mechanisms
+job-caption	0x1cb153b	0x21ae2c7	cstring	furniture
+job-caption	0x1cb1553	0x21dfd96	cstring	finished goods
+job-caption	0x1cb1576	0x21dfb77	cstring	Dress wound
+job-caption	0x1cb1599	0x21e03f0	cstring	Store item in vehicle
+job-caption	0x1cb15bc	0x20e2a73	cstring	 with 
+job-caption	0x1cb15df	0x20f7379	cstring	 
+job-caption	0x1cb1602	0x21dfc06	cstring	Pen/pasture small animal
+job-caption	0x1cb1625	0x21dfe36	cstring	Make traction bench
+job-caption	0x1cb1648	0x21e0413	cstring	Store armor
+job-caption	0x1cb166b	0x21e0361	cstring	Seek artifact
+job-caption	0x1cb168e	0x21e029b	cstring	Sleep
+job-caption	0x1cb16b1	0x21dffc4	cstring	Train 
+job-caption	0x1cb16d4	0x21e0406	cstring	Store weapon
+job-caption	0x1cb16f7	0x21755bc	cstring	Rest
+job-caption	0x1cb171a	0x21e03b7	cstring	Store item in bag
+job-caption	0x1cb173d	0x21e038c	cstring	Place item in tomb
+job-caption	0x1cb1760	0x21dffb9	cstring	 millstone
+job-caption	0x1cb1783	0x21df9ed	cstring	Make lye
+job-caption	0x1cb17a6	0x21dfc46	cstring	Give water
+job-caption	0x1cb17c9	0x21e0480	cstring	Load ballista
+job-caption	0x1cb17ec	0x21dfe29	cstring	 hatch cover
+job-caption	0x1cb180f	0x21e02a8	cstring	Report crime
+job-caption	0x1cb1832	0x21ae9b7	cstring	Make 
+job-caption	0x1cb1855	0x21e015a	cstring	Carve fortification
+job-caption	0x1cb1878	0x21ae9b7	cstring	Make 
+job-caption	0x1cb189b	0x21dfd07	cstring	 bracelet
+job-caption	0x1cb18be	0x21dff5e	cstring	Make
+job-caption	0x1cb18d6	0x220f968	cstring	 chain
+job-caption	0x1cb18f9	0x21dfcf8	cstring	 ring
+job-caption	0x1cb191c	0x21e0436	cstring	Store squad equipment
+job-caption	0x1cb193f	0x21e0227	cstring	Dig channel
+job-caption	0x1cb1962	0x21ae9b7	cstring	Make 
+job-caption	0x1cb1985	0x21dfcd6	cstring	 figurine
+job-caption	0x1cb19a8	0x21ae9b7	cstring	Make 
+job-caption	0x1cb19cb	0x21dff8f	cstring	 bolt thrower parts
+job-caption	0x1cb19ee	0x20f3aa7	cstring	No job
+job-caption	0x1cb1a11	0x21dfc3c	cstring	Fill pond
+job-caption	0x1cb1a34	0x21e0233	cstring	Fell tree
+job-caption	0x1cb1a4c	0x20f7379	cstring	 
+job-caption	0x1cb1a5f	0x20db527	cstring	tool
+job-caption	0x1cb1a77	0x21dffec	cstring	war animal
+job-caption	0x1cb1a8b	0x21dffd4	cstring	hunting animal
+job-caption	0x1cb1aa3	0x21dfab1	cstring	a large animal
+job-caption	0x1cb1abb	0x2131be8	cstring	animal
+job-caption	0x1cb1ad3	0x2142060	cstring	 chest
+job-caption	0x1cb1ae7	0x21dfa44	cstring	Prepare lavish meal
+job-caption	0x1cb1afb	0x21dfa32	cstring	Prepare fine meal
+job-caption	0x1cb1b27	0x20f7379	cstring	 
+job-caption	0x1cb1b4c	0x21e006c	cstring	Dye cloth
+job-caption	0x1cb1b6e	0x21e0083	cstring	Dye leather
+job-caption	0x1cb1bbe	0x20df254	cstring	 flasks
+job-caption	0x1cb1bd6	0x20fc3d2	cstring	fish
+job-caption	0x1cb1bee	0x21b01e5	cstring	meat
+job-caption	0x1cb1c10	0x21e0056	cstring	Dye thread
+job-caption	0x1cb1c28	0x20f7379	cstring	 
+job-caption	0x1cb1c93	0x21dfe6d	cstring	 coffer
+job-caption	0x1cb1cc6	0x21dfe7d	cstring	 sarcophagus
+job-caption	0x1cb1cde	0x21dfe92	cstring	 throne
+job-caption	0x1cb1f59	0x21dfe8a	cstring	 coffin
+job-caption	0x1cb1f71	0x21e00e0	cstring	Weave thread into cloth
+job-caption	0x1cb1f89	0x21e00b3	cstring	Weave thread into silk
+job-caption	0x1cb1fc3	0x21cb66e	cstring	small 
+job-caption	0x1cb1fdb	0x21cb66e	cstring	small 
+job-caption	0x1cb1ff3	0x21cb66e	cstring	small 
+job-caption	0x1cb200b	0x220f968	cstring	 chain
+job-caption	0x1cb2023	0x21cb66e	cstring	small 
+job-caption	0x1cb203b	0x21cb66e	cstring	small 
+job-caption	0x1cb2292	0x21dfee9	cstring	 mugs
+task-job-input	0x1379353	0x214b6d0/16	vector	No slabs engrave
+task-job-input	0x13793ff	0x736f6847	inline	Ghos
+task-job-input	0x1379494	0x676e652062616c53	inline	Slab eng
+task-job-input	0x13794a8	0x65766172	inline	rave
+task-job-input	0x1379540	0x65207362616c7320	inline	 slabs e
+task-job-input	0x1379550	0x6576	inline	ve
+task-job-input	0x1379555	0x6172676e	inline	ngra
+task-job-input	0x13795a3	0x657a696c6169726f	inline	orialize
+task-job-input	0x13795be	0x214b6e0/16	vector	Entombed and mem
+task-job-input	0x137962c	0x214b6f0/16	vector	Not memorialized
+task-job-input	0x137967b	0x6465626d6f746e45	inline	Entombed
+task-job-input	0x13796ba	0x6c6169726f6d654d	inline	Memorial
+task-job-input	0x13796c4	0x64657a69	inline	ized
+task-job-input	0x13796f7	0x214a601	cstring	 slabs engraved
+task-job-input	0x1379734	0x214b6f0/16	vector	Not memorialized
+requirement-item-noun	0x12b6bad	0x206e	inline	n 
+requirement-item-noun	0x12b6bb2	0x776f7267	inline	grow
+requirement-item-noun	0x12b6c43	0x21c9e2a	cstring	large
+requirement-item-noun	0x12b6c6a	0x213b90d	cstring	grown 
+requirement-item-noun	0x12b6cc7	0x21caa1a	cstring	small
+requirement-item-noun	0x12b6e1a	0x213ba10	cstring	codices
+requirement-item-noun	0x12b6e84	0x5b20	inline	 [
+requirement-item-noun	0x12b6fae	0x20f7379	cstring	 
+requirement-item-noun	0x12b6fc4	0x21c97e7	cstring	egg
+requirement-item-noun	0x12b7167	0x213bd1c	cstring	prepared meal
+requirement-item-noun	0x12b71ba	0x213ba93	cstring	coin
+requirement-item-noun	0x12b7217	0x21df9b8	cstring	cheese
+requirement-item-noun	0x12b72cf	0x2160961	cstring	sheet
+requirement-item-noun	0x12b7302	0x20f4c83	cstring	crutch
+requirement-item-noun	0x12b731b	0x2193b0e	cstring	es
+requirement-item-noun	0x12b7352	0x20f4c60	cstring	splint
+requirement-item-noun	0x12b73a0	0x21dffba	cstring	millstone
+requirement-item-noun	0x12b73f2	0x21dffb3	cstring	quern
+requirement-item-noun	0x12b7440	0x20fbc06	cstring	grate
+requirement-item-noun	0x12b74bb	0x21dfefd	cstring	tube
+requirement-item-noun	0x12b74f2	0x21dfe2a	cstring	hatch cover
+requirement-item-noun	0x12b7542	0x213b919	cstring	branch
+requirement-item-noun	0x12b755b	0x2193b0e	cstring	es
+requirement-item-noun	0x12b75f1	0x22106d7	cstring	cast
+requirement-item-noun	0x12b7642	0x22106a1	cstring	traction bench
+requirement-item-noun	0x12b765b	0x2193b0e	cstring	es
+requirement-item-noun	0x12b7692	0x21dff33	cstring	ballista arrow head
+requirement-item-noun	0x12b76e2	0x20f4c78	cstring	cloth
+requirement-item-noun	0x12b7752	0x213ba7b	cstring	 dye mix
+requirement-item-noun	0x12b7840	0x213bd42	cstring	chain 
+requirement-item-noun	0x12b7970	0x213bd42	cstring	chain 
+requirement-item-noun	0x12b79d8	0x21dff1b	cstring	quiver
+requirement-item-noun	0x12b7a38	0x21dff11	cstring	backpack
+requirement-item-noun	0x12b7b5e	0x213bd42	cstring	chain 
+requirement-item-noun	0x12b7b9f	0x21dfeaf	cstring	totem
+requirement-item-noun	0x12b7bf2	0x21dfcff	cstring	earring
+requirement-item-noun	0x12b7c42	0x21dfcf9	cstring	ring
+requirement-item-noun	0x12b7d5d	0x2107a66	cstring	small rock
+requirement-item-noun	0x12b7dcb	0x20e1b63	cstring	rope
+requirement-item-noun	0x12b7e20	0x21dfe93	cstring	throne
+requirement-item-noun	0x12b7e72	0x2160947	cstring	bed
+requirement-item-noun	0x12b7ec2	0x21dfe1f	cstring	floodgate
+requirement-item-noun	0x12b7f3b	0x21dbbde	cstring	portal
+requirement-item-noun	0x12b807a	0x20f457f	cstring	bucket
+requirement-item-noun	0x12b80ca	0x21e03d7	cstring	barrel
+requirement-item-noun	0x12b81b2	0x20dbad7	cstring	goblet
+requirement-item-noun	0x12b8233	0x21e0291	cstring	waterskin
+requirement-item-noun	0x12b8532	0x21dff90	cstring	bolt thrower parts
+requirement-item-noun	0x12b856a	0x21dffab	cstring	statue
+requirement-item-noun	0x12b85c4	0x213b914	cstring	logs
+requirement-item-noun	0x12b8623	0x21dfeb6	cstring	terrarium
+requirement-item-noun	0x12b8708	0x21d9d1a	cstring	rotten 
+requirement-item-noun	0x12b871b	0x214dd31	cstring	corpse
+requirement-item-noun	0x12b8770	0x20fbc42	cstring	window
+requirement-item-noun	0x12b87c2	0x21f49bd	cstring	table
+requirement-item-noun	0x12b883b	0x213b9e0	cstring	sarcophag
+requirement-item-noun	0x12b8854	0x213fecb	cstring	i
+requirement-item-noun	0x12b8890	0x21dfef0	cstring	animal trap
+requirement-item-noun	0x12b88d0	0x21d9d1a	cstring	rotten 
+requirement-item-noun	0x12b88e3	0x21dfe11	cstring	raw 
+requirement-item-noun	0x12b89aa	0x20f3aea	cstring	, 
+requirement-item-noun	0x12b89f0	0x21dff80	cstring	ballista parts
+requirement-item-noun	0x12b8a2a	0x21dff64	cstring	catapult parts
+requirement-item-noun	0x12b8a62	0x21dfe54	cstring	weapon rack
+requirement-item-noun	0x12b8bd7	0x213bd04	cstring	tame 
+requirement-item-noun	0x12b8c37	0x213bcec	cstring	live 
+requirement-item-noun	0x12b8d38	0x21dfce9	cstring	scepter
+requirement-item-noun	0x12b8d8a	0x21dfce1	cstring	amulet
+requirement-item-noun	0x12b8dda	0x21dfcd7	cstring	figurine
+requirement-item-noun	0x12b8e2a	0x21dfe4b	cstring	cabinet
+requirement-item-noun	0x12b8e85	0x21b015a	cstring	drink
+requirement-item-noun	0x12b8edd	0x213bc49	cstring	teeth
+requirement-item-noun	0x12b8f38	0x21dffa4	cstring	anvil
+requirement-item-noun	0x12b8f88	0x21dff74	cstring	mechanisms
+requirement-item-noun	0x12b9013	0x213b9d0	cstring	boxe
+requirement-item-noun	0x12b9030	0x2131974	cstring	s
+requirement-item-noun	0x12b9094	0x213bccd	cstring	leaves and fruit
+requirement-item-noun	0x12b90df	0x21b022b	cstring	seeds
+requirement-item-noun	0x12b9110	0x21dfcf2	cstring	crown
+requirement-item-noun	0x12b93cc	0x20f3aea	cstring	, 
+requirement-item-noun	0x12b9412	0x21da296	cstring	bin
+requirement-item-noun	0x12b9460	0x21dfe61	cstring	armor stand
+requirement-item-noun	0x12b950a	0x21e003c	cstring	strands
+requirement-item-noun	0x12b95ee	0x213bd42	cstring	chain 
+requirement-item-noun	0x12b963d	0x213ba98	cstring	perfect 
+requirement-item-noun	0x12b97e0	0x21dfd08	cstring	bracelet
+requirement-item-noun	0x12b9832	0x21e03c5	cstring	bag
+requirement-item-noun	0x12b987f	0x213b9fc	cstring	tanned hide
+requirement-item-noun	0x12b9978	0x21c2f6c	cstring	right 
+requirement-item-noun	0x12b999c	0x20e2ac0	cstring	left 
+requirement-item-noun	0x12b99f8	0x213bd42	cstring	chain 
+requirement-item-noun	0x12b9a54	0x2107831	cstring	remains
+requirement-item-noun	0x12b9b12	0x214a4b5	cstring	slab
+requirement-item-noun	0x12b9b7d	0x213ba1e	cstring	filthy 
+requirement-item-noun	0x12b9b99	0x213ba26	cstring	sticky 
+requirement-item-noun	0x12b9bb5	0x213ba2e	cstring	vomitous 
+requirement-item-noun	0x12b9bd1	0x213ba38	cstring	slimy 
+requirement-item-noun	0x12b9bed	0x212fd2a	cstring	stagnant 
+requirement-item-noun	0x12b9d5c	0x213baaa	cstring	food imports sign
+requirement-item-noun	0x12b9d74	0x213baa1	cstring	memorial
+requirement-item-noun	0x12b9d8c	0x213bc09	cstring	stone furniture shop sign
+requirement-item-noun	0x12b9da4	0x213bbf3	cstring	carpenter's shop sign
+requirement-item-noun	0x12b9dbc	0x213bbdb	cstring	leather goods shop sign
+requirement-item-noun	0x12b9dd4	0x213bbc5	cstring	metal craft shop sign
+requirement-item-noun	0x12b9dec	0x213bc3d	cstring	tavern sign
+requirement-item-noun	0x12b9e04	0x213bc23	cstring	metal furniture shop sign
+requirement-item-noun	0x12b9e1c	0x213baf7	cstring	leather shop sign
+requirement-item-noun	0x12b9e34	0x213bae7	cstring	cloth shop sign
+requirement-item-noun	0x12b9e4c	0x213bad2	cstring	general imports sign
+requirement-item-noun	0x12b9e64	0x213babc	cstring	clothing imports sign
+requirement-item-noun	0x12b9e7c	0x213bbae	cstring	armorsmith's shop sign
+requirement-item-noun	0x12b9e94	0x213bb97	cstring	blacksmith's shop sign
+requirement-item-noun	0x12b9eac	0x213bb84	cstring	bowyer's shop sign
+requirement-item-noun	0x12b9ec4	0x213bb6c	cstring	weaponsmith's shop sign
+requirement-item-noun	0x12b9edc	0x213bb55	cstring	gem cutter's shop sign
+requirement-item-noun	0x12b9ef4	0x213bb3d	cstring	bone carver's shop sign
+requirement-item-noun	0x12b9f0c	0x213bb22	cstring	leather clothing shop sign
+requirement-item-noun	0x12b9f24	0x213bb09	cstring	woven clothing shop sign
+requirement-item-noun	0x12b9f4a	0x21432dc	cstring	]
+requirement-item-noun	0x12b9f72	0x210ecdf	cstring	 [
+requirement-item-noun	0x12b9fe1	0x21e0387	cstring	item
+requirement-item-noun	0x12ba044	0x21e5325	cstring	powder
+requirement-item-noun	0x12ba05c	0x21cb66e	cstring	small 
+requirement-item-noun	0x12ba088	0x214dd86	cstring	rock
+requirement-item-noun	0x12ba110	0x213b9d5	cstring	limb/body 
+requirement-item-noun	0x12ba148	0x21adcc8	cstring	headwear
+requirement-item-noun	0x12ba180	0x21adcee	cstring	footwear
+requirement-item-noun	0x12ba198	0x210800a	cstring	cage
+requirement-item-noun	0x12bab25	0x21dff03	cstring	pipe section
+requirement-item-noun	0x12bac60	0x20d32f6	cstring	door
+requirement-item-noun	0x12bb0f6	0x20fc431	cstring	plant
+requirement-item-noun	0x12bb10f	0x2131974	cstring	s
+requirement-item-noun	0x12bb2b2	0x21b01e5	cstring	meat
+requirement-item-noun	0x12bb3aa	0x213bcaa	cstring	strand body part
+requirement-item-noun	0x12bb66a	0x210f8a2	cstring	toy
+requirement-item-noun	0x12bb6bf	0x21adbc9	cstring	shield
+requirement-item-noun	0x12bb6e8	0x213bd53	cstring	/buckler
+requirement-item-noun	0x12bb73c	0x21adbe2	cstring	weapon
+requirement-item-noun	0x12bb7a0	0x21adcd5	cstring	legwear
+requirement-item-noun	0x12bb7bf	0x2141bdb	cstring	musical instrument
+requirement-item-noun	0x12bb82e	0x20db527	cstring	tool
+requirement-item-noun	0x12bb882	0x213ba84	cstring	trap component
+requirement-item-noun	0x12bb8bb	0x20fc31b	cstring	siege ammo
+requirement-item-noun	0x12bb907	0x213bd49	cstring	suits of 
+requirement-item-noun	0x12bb91a	0x21adb7e	cstring	armor
+requirement-item-noun	0x12bb954	0x21addf3	cstring	ammunition
+requirement-item-noun	0x12bb96c	0x20ca9d7	cstring	clear glass 
+requirement-item-noun	0x12bb97f	0x214e6e9	cstring	gem
+requirement-item-noun	0x12bb9cb	0x213b963	cstring	boulders
+requirement-item-noun	0x12bbad1	0x214de54	cstring	blocks
+requirement-item-noun	0x12bbb40	0x213ba6e	cstring	 laced with 
+requirement-item-noun	0x12bbc25	0x20ca65d	cstring	yarn
+requirement-item-noun	0x12bbc3d	0x213bd0a	cstring	small tame animal
+requirement-item-noun	0x12bbc6f	0x213bcf2	cstring	small live animal
+requirement-item-noun	0x12bbca1	0x213ba18	cstring	codex
+requirement-item-noun	0x12bbce0	0x213ba69	cstring	glob
+requirement-item-noun	0x12bbd11	0x20fc479	cstring	liquid
+requirement-item-noun	0x12bbd35	0x20fc3d2	cstring	fish
+requirement-item-noun	0x12bbd4d	0x20fc3d2	cstring	fish
+requirement-item-noun	0x12bbdf0	0x213b95d	cstring	stone boulders
+requirement-item-noun	0x12bbe25	0x213b974	cstring	coke
+requirement-item-noun	0x12bbf03	0x213b96c	cstring	 wafers
+requirement-item-noun	0x12bc022	0x21d9d1a	cstring	rotten 
+requirement-item-noun	0x12bc18c	0x21d9d1a	cstring	rotten 
+requirement-item-noun	0x12bc1a4	0x213bcbb	cstring	Rotten 
+requirement-item-noun	0x12bc1bc	0x221cb86	cstring	box
+requirement-item-noun	0x12bc1d5	0x2210d26	cstring	e
+requirement-item-noun	0x12bc259	0x21dfe76	cstring	casket
+requirement-item-noun	0x12bc28b	0x21d9d1a	cstring	rotten 
+requirement-item-noun	0x12bc36f	0x21d9d1a	cstring	rotten 
+requirement-item-noun	0x12bc387	0x21d9d1a	cstring	rotten 
+requirement-item-noun	0x12bc3e9	0x213ba08	cstring	-bound 
+requirement-item-noun	0x12bc42c	0x21d9d1a	cstring	rotten 
+requirement-item-noun	0x12bc53d	0x213b9f4	cstring	cup
+requirement-item-noun	0x12bc583	0x213b9f8	cstring	mug
+requirement-item-noun	0x12bc59b	0x21d9d1a	cstring	rotten 
+requirement-item-noun	0x12bc5b3	0x21d9d1a	cstring	rotten 
+requirement-item-noun	0x12bc5cb	0x213bcc3	cstring	withered 
+requirement-item-noun	0x12bc5e3	0x213bd2a	cstring	preserved 
+requirement-item-noun	0x12bc7bd	0x20db647	cstring	chair
+requirement-item-noun	0x12bc869	0x213bcc3	cstring	withered 
+requirement-item-noun	0x12bc881	0x21adce1	cstring	handwear
+requirement-item-noun	0x12bc899	0x21dfd16	cstring	large 
+requirement-item-noun	0x12bc8c3	0x2142061	cstring	chest
+requirement-item-noun	0x12bc8fc	0x21735aa	cstring	web
+requirement-item-noun	0x12bc92e	0x21dfe8b	cstring	coffin
+requirement-item-noun	0x12bc9e5	0x20f7379	cstring	 
+requirement-item-noun	0x12bca6e	0x20f7379	cstring	 
+requirement-item-noun	0x12bca94	0x20f7379	cstring	 
+requirement-item-noun	0x12bcb68	0x20f7379	cstring	 
+requirement-item-noun	0x12bcb8e	0x20f7379	cstring	 
+requirement-item-noun	0x12bcc4d	0x20f7379	cstring	 
+requirement-item-noun	0x12bcc73	0x20f7379	cstring	 
+requirement-item-noun	0x12bcc9d	0x20f7379	cstring	 
+requirement-item-noun	0x12bcd30	0x20f7379	cstring	 
+requirement-item-noun	0x12bcd90	0x21dfe6e	cstring	coffer
+requirement-item-noun	0x12bce41	0x221044b	cstring	vial
+requirement-item-noun	0x12bcfab	0x220f969	cstring	chain
+requirement-item-noun	0x12bd0b7	0x20f3aea	cstring	, 
+requirement-item-noun	0x12bd0df	0x20f3aea	cstring	, 
+requirement-item-noun	0x12bd107	0x213ba61	cstring	bloody 
+requirement-item-noun	0x12bd11f	0x213ba57	cstring	ichorous 
+requirement-item-noun	0x12bd137	0x213ba4d	cstring	purulent 
+requirement-item-noun	0x12bd14f	0x213ba46	cstring	gooey 
+requirement-item-noun	0x12bd167	0x213ba3f	cstring	dirty 
+requirement-item-noun	0x12bd17f	0x213b920	cstring	rough gems
+requirement-item-noun	0x12bd19f	0x21baa7e	cstring	rough 
+requirement-item-noun	0x12bd225	0x214ddd6	cstring	thread
+requirement-item-noun	0x12bd23d	0x214de54	cstring	blocks
+requirement-item-noun	0x12bd255	0x214dd93	cstring	metal
+requirement-item-noun	0x12bd268	0x214de47	cstring	 bars
+requirement-item-noun	0x12bd280	0x20e3e3e	cstring	tooth
+requirement-item-noun	0x12bd298	0x21dfb9c	cstring	bone
+requirement-item-noun	0x12bd2b0	0x213b92b	cstring	raw green glass
+requirement-item-noun	0x12bd3f1	0x213bcde	cstring	leaf or fruit
+requirement-item-noun	0x12bd516	0x213b986	cstring	cut gems
+requirement-item-noun	0x12bd52e	0x20ca9ca	cstring	green glass 
+requirement-item-noun	0x12bd56b	0x213bd35	cstring	 chops
+requirement-item-noun	0x12bd586	0x20ca9e4	cstring	crystal glass 
+requirement-item-noun	0x12bd59e	0x20f3aea	cstring	, 
+requirement-item-noun	0x12bd5b6	0x213b979	cstring	refined coal
+requirement-item-noun	0x12bd63b	0x213b93b	cstring	raw clear glass
+requirement-item-noun	0x12bd668	0x213b98f	cstring	cut green glass gems
+requirement-item-noun	0x12bd6d1	0x214dd29	cstring	shell
+requirement-item-noun	0x12bd6e9	0x214de48	cstring	bars
+requirement-item-noun	0x12bd73b	0x221cb86	cstring	box
+requirement-item-noun	0x12bd753	0x213b94b	cstring	raw crystal glass
+requirement-item-noun	0x12bd911	0x213b9a4	cstring	cut clear glass gems
+requirement-item-noun	0x12bd929	0x210ee30	cstring	us
+requirement-item-noun	0x12bd941	0x21b01e5	cstring	meat
+requirement-item-noun	0x12bd959	0x213bc4f	cstring	plant part
+requirement-item-noun	0x12bd9a3	0x214e6e8	cstring	 gem
+requirement-item-noun	0x12bd9d5	0x213b920	cstring	rough gems
+requirement-item-noun	0x12bd9f6	0x21dfffc	cstring	charcoal
+requirement-item-noun	0x12bda0e	0x213b9b9	cstring	cut crystal glass gems
+requirement-item-noun	0x12bda26	0x219eeb1	cstring	 and 
+requirement-item-noun	0x12bda45	0x213bd3c	cstring	 chop
+requirement-item-noun	0x12bda75	0x2142da3	cstring	gems
+requirement-item-noun	0x12bda8d	0x213bc5a	cstring	silk body part
+requirement-item-noun	0x12bdab7	0x213bc69	cstring	leather body part
+requirement-item-noun	0x12bdb64	0x21e5433	cstring	 paste
+requirement-item-noun	0x12bdb9d	0x213bc8c	cstring	soap body part
+requirement-item-noun	0x12bdbb5	0x213bc7b	cstring	wooden body part
+requirement-item-noun	0x12bdbe6	0x20ca67a	cstring	pearl
+requirement-item-noun	0x12bdbfe	0x213b9ea	cstring	unglazed 
+requirement-item-noun	0x12bdc16	0x20ca675	cstring	horn
+requirement-item-noun	0x12bdc2e	0x2210436	cstring	flask
+requirement-item-noun	0x12bdc46	0x213bc9b	cstring	yarn body part
+requirement-item-noun	0x12bdc5e	0x213bcb1	cstring	body part
+task-choice-construction	0x138692e	0x209fc49	cstring	BALLISTA
+task-choice-construction	0x1386983	0x415453494c4c4142	inline	BALLISTA
+task-choice-construction	0x1386e7c	0x214a5b0	cstring	Entombed and memorialized
+task-choice-construction	0x1386edb	0x202c	inline	, 
+task-choice-construction	0x1386f69	0x6576	inline	ve
+task-choice-construction	0x1386f6e	0x65207362616c7320	inline	 slabs e
+task-choice-construction	0x1386f7b	0x6172676e	inline	ngra
+task-choice-construction	0x1387354	0x2212884	cstring	Ghost
+task-choice-construction	0x138737a	0x20f3aea	cstring	, 
+task-choice-construction	0x1387390	0x214a5f1	cstring	slab engraved
+task-choice-construction	0x13873a6	0x214a5ff	cstring	no slabs engraved
+task-choice-construction	0x13873bc	0x214a5e0	cstring	Not memorialized
+task-choice-construction	0x1387450	0x214a5d7	cstring	Entombed
+task-choice-construction	0x1387466	0x214a5ca	cstring	Memorialized
+task-choice-construction	0x13874d1	0x214a601	cstring	 slabs engraved
+task-choice-construction	0x13875a5	0x214a5e0	cstring	Not memorialized
+task-choice-construction	0x13879e6	0x20f4728	cstring	 available
+task-choice-construction	0x138876e	0x214a555	cstring	At least 
+task-choice-construction	0x138878d	0x214a55f	cstring	 dye available
+task-choice-construction	0x1388875	0x214a555	cstring	At least 
+task-choice-construction	0x13888a8	0x214a59a	cstring	 thread/dye available
+task-choice-construction	0x1388dc5	0x214a583	cstring	 leather/dye available
+task-choice-construction	0x1388dd9	0x214a56e	cstring	 cloth/dye available
+task-choice-construction	0x138993e	0x20f4728	cstring	 available
+task-choice-construction	0x1389d64	0x209bb60	cstring	CLEAR
+task-choice-construction	0x1389d8f	0x214a555	cstring	At least 
+task-choice-construction	0x1389dae	0x20f4728	cstring	 available
+task-choice-render-owner	0x13c88a6	0x2151800/16	vector	Click a building
+task-choice-render-owner	0x13c88ae	0x6b6e696c206f7420	inline	 to link
+task-choice-render-owner	0x13c88d8	0x206f7420	inline	 to 
+task-choice-render-owner	0x13c9320	0x6567	inline	ge
+task-choice-render-owner	0x13c9325	0x2151710/16	vector	will be installe
+task-choice-render-owner	0x13c9331	0x7261742074612064	inline	d at tar
+task-choice-render-owner	0x13c94ee	0x2151710/16	vector	will be installe
+task-choice-render-owner	0x13c94ff	0x74612064	inline	d at
+task-choice-render-owner	0x13ca84c	0x2107edc	cstring	.
+task-choice-render-owner	0x13cb063	0x2067	inline	g 
+task-choice-render-owner	0x13cb092	0x6e69766172676e45	inline	Engravin
+task-choice-render-owner	0x13cc479	0x67616d69	inline	imag
+task-choice-render-owner	0x13cc4a8	0x2079666963657053	inline	Specify 
+task-choice-render-owner	0x13cd8a2	0x3a79	inline	y:
+task-choice-render-owner	0x13cd8b0	0x61776120646e6573	inline	send awa
+task-choice-render-owner	0x13cd8c1	0x2151790/16	vector	Cannot expel or 
+task-choice-render-owner	0x13ce740	0x214c235	cstring	Cannot link to 
+task-choice-render-owner	0x13ce8ed	0x214c22c	cstring	Link to 
+task-choice-render-owner	0x13ceb13	0x214c22c	cstring	Link to 
+task-choice-render-owner	0x13ceb70	0x206f74206b6e694c	inline	Link to 
+task-choice-render-owner	0x13cebdd	0x214c50e	cstring	Spouse does the expelling
+task-choice-render-owner	0x13cec49	0x214c551	cstring	Spouse is elected
+task-choice-render-owner	0x13cecb5	0x214c53e	cstring	Spouse is nobility
+task-choice-render-owner	0x13ced21	0x214c528	cstring	Spouse is not present
+task-choice-render-owner	0x13ced8d	0x214c4dd	cstring	Does the expelling
+task-choice-render-owner	0x13cedf9	0x214c4f0	cstring	Nobility
+task-choice-render-owner	0x13cee65	0x214c4f9	cstring	Holds elected office
+task-choice-render-owner	0x13ceed1	0x214c563	cstring	Child does the expelling
+task-choice-render-owner	0x13cefff	0x214c591	cstring	Child is nobility
+task-choice-render-owner	0x13cf06b	0x214c57c	cstring	Child is not present
+task-choice-render-owner	0x13cf0d7	0x214c5a3	cstring	Child is elected
+task-choice-render-owner	0x13cf393	0x73746867756f6854	inline	Thoughts
+task-choice-render-owner	0x13cf473	0x7469	inline	it
+task-choice-render-owner	0x13cf47b	0x6c616e6f73726550	inline	Personal
+task-choice-render-owner	0x13cf522	0x79726174696c694d	inline	Military
+task-choice-render-owner	0x13cf83e	0x2142877	cstring	_
+task-choice-render-owner	0x13cfc7f	0x214dc42	cstring	This building has
+task-choice-render-owner	0x13cfcea	0x214dc54	cstring	been claimed by
+task-choice-render-owner	0x13cfd7a	0x2107edc	cstring	.
+task-choice-render-owner	0x13d05e3	0x6b736154	inline	Task
+task-choice-render-owner	0x13d0944	0x6b636142	inline	Back
+task-choice-render-owner	0x13d1c3d	0x6c65	inline	el
+task-choice-render-owner	0x13d1c54	0x636e6143	inline	Canc
+task-choice-render-owner	0x13d2032	0x21517f0/16	vector	Show linked buil
+task-choice-render-owner	0x13d2057	0x676e6964	inline	ding
+task-choice-render-owner	0x13d20d9	0x214e78f	cstring	Show items
+task-choice-render-owner	0x13d3a86	0x214deab	cstring	Link plate
+task-choice-render-owner	0x13d3cdd	0x214de79	cstring	Need accessible mechanisms.
+task-choice-render-owner	0x13d3d42	0x214de95	cstring	Link lever
+task-choice-render-owner	0x13d3da0	0x214dea0	cstring	Pull lever
+task-choice-render-owner	0x13d43f1	0x214deb6	cstring	Add new task
+task-choice-render-owner	0x13d4610	0x7265	inline	er
+task-choice-render-owner	0x13d461f	0x64726f206b726f57	inline	Work ord
+task-choice-render-owner	0x13d469b	0x7265	inline	er
+task-choice-render-owner	0x13d46a1	0x6b726f57	inline	Work
+task-choice-render-owner	0x13d4706	0x2c46	inline	F,
+task-choice-render-owner	0x13d482a	0x214bf60	cstring	Work orders can be added specifically for this shop.
+task-choice-render-owner	0x13d5071	0x21f0cfa	cstring	/
+task-choice-render-owner	0x13d5632	0x21f0cfa	cstring	/
+task-choice-render-owner	0x13d56de	0x2142877	cstring	_
+task-choice-render-owner	0x13d57cf	0x214dedf	cstring	General work orders allowed: 
+task-choice-render-owner	0x13d5895	0x2142877	cstring	_
+task-choice-render-owner	0x13d5cab	0x214bf28	cstring	A manager is required to add work orders to the shop.
+task-choice-render-owner	0x13d5cfd	0x214bef0	cstring	Work orders cannot be assigned to this building.
+task-choice-render-owner	0x13d5d5b	0x210eb8c	cstring	...
+task-choice-render-owner	0x13d5ec1	0x2c46	inline	F,
+task-choice-render-owner	0x13d5ff4	0x6c61	inline	al
+task-choice-render-owner	0x13d6002	0x21517b0/16	vector	Slated for remov
+task-choice-render-owner	0x13d62bd	0x6c61	inline	al
+task-choice-render-owner	0x13d62de	0x766f6d65	inline	emov
+task-choice-render-owner	0x13d632b	0x72206c65636e6143	inline	Cancel r
+task-choice-render-owner	0x13d63ce	0x214db9f	cstring	Trap Occupied:
+task-choice-render-owner	0x13d64f2	0x214db7a	cstring	Removal suspended.
+task-choice-render-owner	0x13d656c	0x214db8d	cstring	Removal inactive.
+task-choice-render-owner	0x13d67ca	0x214dbe2	cstring	Partially constructed.
+task-choice-render-owner	0x13d6aec	0x6f69	inline	io
+task-choice-render-owner	0x13d6afd	0x21517c0/16	vector	Resume construct
+task-choice-render-owner	0x13d6dc4	0x6f69	inline	io
+task-choice-render-owner	0x13d6ddf	0x21517e0/16	vector	Cancel construct
+task-choice-render-owner	0x13d6e1f	0x21517d0/16	vector	Suspend construc
+task-choice-render-owner	0x13d6e2f	0x6e6f6974	inline	tion
+task-choice-render-owner	0x13d6efb	0x622065766f6d6552	inline	Remove b
+task-choice-render-owner	0x13d6f05	0x646c6975	inline	uild
+task-choice-render-owner	0x13d6f16	0x6e69	inline	in
+task-choice-render-owner	0x13d6f5b	0x214dc13	cstring	Construction suspended.
+task-choice-render-owner	0x13d744e	0x214be90	cstring	Only one master may be assigned to each workshop.
+task-choice-render-owner	0x13d76e5	0x214dec3	cstring	will only do assigned tasks
+task-choice-render-owner	0x13d77bf	0x214be60	cstring	This workshop is free for anybody to use.
+task-choice-render-owner	0x13d78af	0x214be30	cstring	Workers cannot be assigned to this building.
+task-choice-render-owner	0x13d7921	0x214bec8	cstring	will do available tasks anywhere
+task-choice-render-owner	0x13d7a2f	0x2142877	cstring	_
+task-choice-render-owner	0x13d7dc4	0x20f7379	cstring	 
+task-choice-render-owner	0x13d7e33	0x214dde2	cstring	sketches
+task-choice-render-owner	0x13d7e7c	0x214ddeb	cstring	pictures of 
+task-choice-render-owner	0x13d7ee8	0x21ae456	cstring	shells
+task-choice-render-owner	0x13d7f2a	0x2107edc	cstring	.
+task-choice-render-owner	0x13d7f75	0x211550e	cstring	death
+task-choice-render-owner	0x13d7f9c	0x214ddf8	cstring	skeletons
+task-choice-render-owner	0x13d7fe9	0x214dcfb	cstring	screams
+task-choice-render-owner	0x13d8032	0x214dd03	cstring	"""I must have "
+task-choice-render-owner	0x13d80f8	0x2130e34	cstring	"!"""
+task-choice-render-owner	0x13d816d	0x214dccb	cstring	broods
+task-choice-render-owner	0x13d81d6	0x214e7b7	cstring	"""Leave me.  I need... "
+task-choice-render-owner	0x13d8226	0x214dce1	cstring	things...  certain things
+task-choice-render-owner	0x13d827b	0x214dddf	cstring	"."""
+task-choice-render-owner	0x13d82a2	0x214dcd2	cstring	"""Yes.  I need "
+task-choice-render-owner	0x13d8357	0x214dd11	cstring	mutters
+task-choice-render-owner	0x13d83a8	0x2130cb8	cstring	""""
+task-choice-render-owner	0x13d8434	0x214d076	cstring	 needs
+task-choice-render-owner	0x13d84a3	0x214dd27	cstring	a shell
+task-choice-render-owner	0x13d84e5	0x214dddd	cstring	"..."""
+task-choice-render-owner	0x13d850c	0x214dd2f	cstring	a corpse
+task-choice-render-owner	0x13d8530	0x214dd19	cstring	bones...  yes
+task-choice-render-owner	0x13d8579	0x214de6b	cstring	stacked cloth
+task-choice-render-owner	0x13d85a0	0x214de5b	cstring	stacked leather
+task-choice-render-owner	0x13d85c7	0x214de02	cstring	a forest
+task-choice-render-owner	0x13d85ee	0x214de37	cstring	a quarry
+task-choice-render-owner	0x13d863f	0x213b920	cstring	rough gems
+task-choice-render-owner	0x13d8666	0x213b986	cstring	cut gems
+task-choice-render-owner	0x13d868d	0x214de40	cstring	shining bars
+task-choice-render-owner	0x13d86dd	0x2142de4	cstring	of metal
+task-choice-render-owner	0x13d8717	0x214de4d	cstring	square blocks
+task-choice-render-owner	0x13d873e	0x214de31	cstring	glass
+task-choice-render-owner	0x13d8765	0x214de22	cstring	rough gems and glass
+task-choice-render-owner	0x13d878c	0x214de0b	cstring	glass and burning wood
+task-choice-render-owner	0x13d87c4	0x214ddcd	cstring	cloth... thread
+task-choice-render-owner	0x13d87eb	0x214ddbd	cstring	leather... skin
+task-choice-render-owner	0x13d8854	0x214dd6e	cstring	rough... color
+task-choice-render-owner	0x13d887b	0x214dda9	cstring	blocks... bricks...
+task-choice-render-owner	0x13d88a2	0x214dd45	cstring	raw... green
+task-choice-render-owner	0x13d88c9	0x214dd5f	cstring	raw... crystal
+task-choice-render-owner	0x13d88f0	0x214dd52	cstring	raw... clear
+task-choice-render-owner	0x13d8917	0x214dd99	cstring	gems... shining
+task-choice-render-owner	0x13d893e	0x214dc97	cstring	works, darkly brooding...
+task-choice-render-owner	0x13d8965	0x214dd38	cstring	tree... life
+task-choice-render-owner	0x13d899d	0x214dd8b	cstring	bars... metal
+task-choice-render-owner	0x13d89c4	0x214dd7d	cstring	stone... rock
+task-choice-render-owner	0x13d89f9	0x214dc75	cstring	keeps muttering
+task-choice-render-owner	0x13d8a89	0x210eb8c	cstring	...
+task-choice-render-owner	0x13d8ab7	0x214dbca	cstring	Construction initiated.
+task-choice-render-owner	0x13d8b2e	0x214dc2b	cstring	Construction inactive.
+task-choice-render-owner	0x13d8b96	0x214dbf9	cstring	Construction nearly done.
+task-choice-render-owner	0x13d8bc4	0x214dbae	cstring	Waiting for construction...
+task-choice-render-owner	0x13d8beb	0x214dc64	cstring	works furiously!
+task-choice-render-owner	0x13d8c43	0x214dc85	cstring	works secretly...
+task-choice-render-owner	0x13d8cb9	0x21517a0/16	vector	*** Forbidden **
+task-choice-render-owner	0x13d8d43	0x21517a0/16	vector	*** Forbidden **
+task-choice-render-owner	0x13d8daf	0x214dcb1	cstring	works with menacing fury!
+task-choice-render-owner	0x13d9380	0x214e04d	cstring	Assigned
+task-choice-render-owner	0x13d948f	0x214e042	cstring	On display
+task-choice-render-owner	0x13d95c1	0x214e056	cstring	Assign new display items
+task-choice-render-owner	0x13d9765	0x214e06f	cstring	Install colony when ready
+task-choice-render-owner	0x13d97ba	0x214e089	cstring	   * Requires wild colony or
+task-choice-render-owner	0x13d982e	0x214e0a6	cstring	   * Existing hive
+task-choice-render-owner	0x13d997c	0x214e0cf	cstring	Gather any products
+task-choice-render-owner	0x13d99c4	0x214e0e3	cstring	   * Destroys colony
+task-choice-render-owner	0x13d9a26	0x214e0f8	cstring	   * Requires a jug
+task-choice-render-owner	0x13d9b48	0x214e13f	cstring	Outdoor access
+task-choice-render-owner	0x13d9bc9	0x214e160	cstring	Ready to be split
+task-choice-render-owner	0x13d9ce5	0x214e188	cstring	Too many hives
+task-choice-render-owner	0x13d9d31	0x214e197	cstring	* No output
+task-choice-render-owner	0x13d9d69	0x214e0b9	cstring	Do not install colony
+task-choice-render-owner	0x13d9dc5	0x214e10c	cstring	Do not gather products
+task-choice-render-owner	0x13d9e10	0x214e123	cstring	   * Saves colony for split
+task-choice-render-owner	0x13d9e8e	0x214e14e	cstring	No outdoor access
+task-choice-render-owner	0x13d9ed9	0x214e172	cstring	Not ready to be split
+task-choice-render-owner	0x13d9f0a	0x214e188	cstring	Too many hives
+task-choice-render-owner	0x13d9f56	0x214e1a3	cstring	* Output restricted
+task-choice-render-owner	0x13da00b	0x214e5de	cstring	Nest box claimed by
+task-choice-render-owner	0x13da0d3	0x214e5f2	cstring	Nest box unclaimed
+task-choice-render-owner	0x13da19c	0x214e6ed	cstring	Trap Baited:
+task-choice-render-owner	0x13da272	0x214db9f	cstring	Trap Occupied:
+task-choice-render-owner	0x13da33d	0x214e6cc	cstring	Desired bait: 
+task-choice-render-owner	0x13da3cc	0x214e6e3	cstring	Large gem
+task-choice-render-owner	0x13da4fa	0x214e6db	cstring	Nothing
+task-choice-render-owner	0x13da521	0x20fc3c2	cstring	Meat
+task-choice-render-owner	0x13da587	0x214defd	cstring	There is no bucket.
+task-choice-render-owner	0x13da6e8	0x214e45b	cstring	Not in use
+task-choice-render-owner	0x13da839	0x214bff0	cstring	Keep loaded but do not stand ready
+task-choice-render-owner	0x13da860	0x214e4c1	cstring	Practice fire
+task-choice-render-owner	0x13da887	0x214e42f	cstring	Fire at enemies
+task-choice-render-owner	0x13da8ae	0x214e43f	cstring	Stand ready but do not fire
+task-choice-render-owner	0x13da94b	0x214e466	cstring	* Will also target enemies
+task-choice-render-owner	0x13da9ae	0x214c018	cstring	* Place archery targets for better training
+task-choice-render-owner	0x13daaec	0x214e45b	cstring	Not in use
+task-choice-render-owner	0x13dac67	0x214e481	cstring	Resting orientation
+task-choice-render-owner	0x13daee0	0x214bff0	cstring	Keep loaded but do not stand ready
+task-choice-render-owner	0x13daf07	0x214e43f	cstring	Stand ready but do not fire
+task-choice-render-owner	0x13daf2e	0x214bfc8	cstring	Practice fire (uses many bolts!)
+task-choice-render-owner	0x13daf74	0x214e42f	cstring	Fire at enemies
+task-choice-render-owner	0x13daff8	0x214e466	cstring	* Will also target enemies
+task-choice-render-owner	0x13db05b	0x214c018	cstring	* Place archery targets for better training
+task-choice-render-owner	0x13db361	0x21de92e	cstring	BOLT
+task-choice-render-owner	0x13db499	0x214e495	cstring	Bolts loaded: 
+task-choice-render-owner	0x13db51d	0x214e4a4	cstring	Bolts nearby and available: 
+task-choice-render-owner	0x13db598	0x214c048	cstring	Bolts nearby but assigned to squads: 
+task-choice-render-owner	0x13db602	0x214c070	cstring	Bolts nearby but assigned to hunters: 
+task-choice-render-owner	0x13db7f7	0x214e4e6	cstring	Forbidden
+task-choice-render-owner	0x13db92e	0x214e4f0	cstring	Passable
+task-choice-render-owner	0x13db9a8	0x214e4cf	cstring	Operated by Mechanisms
+task-choice-render-owner	0x13db9e1	0x214e52a	cstring	DOOR USED BY INTRUDER
+task-choice-render-owner	0x13dba43	0x214e510	cstring	Retake door to forbid it.
+task-choice-render-owner	0x13dbaaa	0x214e4f9	cstring	DOOR TAKEN BY INVADERS
+task-choice-render-owner	0x13dbb0c	0x214e510	cstring	Retake door to forbid it.
+task-choice-render-owner	0x13dbb9b	0x2175085	cstring	Fish
+task-choice-render-owner	0x13dbbc9	0x214df25	cstring	The well is operational.
+task-choice-render-owner	0x13dbc0b	0x214df3e	cstring	The well is dry.
+task-choice-render-owner	0x13dbc43	0x214df11	cstring	The bucket is full.
+task-choice-render-owner	0x13dbd8a	0x214e605	cstring	Move goods to/from depot
+task-choice-render-owner	0x13dbf90	0x214e628	cstring	Broker requested at depot
+task-choice-render-owner	0x13dc15f	0x214e642	cstring	Anyone requested at depot
+task-choice-render-owner	0x13dc31a	0x214e65c	cstring	No trader needed at depot
+task-choice-render-owner	0x13dc65f	0x214e676	cstring	Broker: 
+task-choice-render-owner	0x13dc7bf	0x214e67f	cstring	Broker can access depot
+task-choice-render-owner	0x13dc81a	0x214e697	cstring	Broker cannot access depot
+task-choice-render-owner	0x13dc92e	0x214e6b2	cstring	You do not have a broker.
+task-choice-render-owner	0x13dcaea	0x20fcac9	cstring	Trade
+task-choice-render-owner	0x13dcb93	0x214e61e	cstring	Awaiting 
+task-choice-render-owner	0x13dcc47	0x21addd1	cstring	 items
+task-choice-render-owner	0x13dccb2	0x21e0386	cstring	 item
+task-choice-render-owner	0x13dcd0e	0x214c098	cstring	There are no merchants trading right now.
+task-choice-render-owner	0x13dce73	0x214e4e6	cstring	Forbidden
+task-choice-render-owner	0x13dcfb7	0x214e4f0	cstring	Passable
+task-choice-render-owner	0x13dcfef	0x214e4cf	cstring	Operated by Mechanisms
+task-choice-render-owner	0x13dd08d	0x214e545	cstring	HATCH TAKEN BY INVADERS
+task-choice-render-owner	0x13dd0ef	0x214e55d	cstring	Retake hatch to forbid it.
+task-choice-render-owner	0x13dd133	0x20f3aea	cstring	, 
+task-choice-render-owner	0x13dd17f	0x214e540	cstring	Open
+task-choice-render-owner	0x13dd1de	0x214e578	cstring	HATCH USED BY INTRUDER
+task-choice-render-owner	0x13dd240	0x214e55d	cstring	Retake hatch to forbid it.
+task-choice-render-owner	0x13dd362	0x214df4f	cstring	Frozen Here
+task-choice-render-owner	0x13dd3bf	0x214df73	cstring	Total Power: 
+task-choice-render-owner	0x13dd478	0x214df81	cstring	Total Power Needed: 
+task-choice-render-owner	0x13dd553	0x214df96	cstring	Stable Foundation
+task-choice-render-owner	0x13dd5d1	0x214dfb0	cstring	Stop Pumping Manually
+task-choice-render-owner	0x13dd6f1	0x214dfef	cstring	Pumps from the east
+task-choice-render-owner	0x13dd718	0x214dfc6	cstring	Start Pump Manually
+task-choice-render-owner	0x13dd74e	0x214df6c	cstring	Active
+task-choice-render-owner	0x13dd77f	0x214df5b	cstring	Frozen Elsewhere
+task-choice-render-owner	0x13dd7a6	0x214dfa8	cstring	Hanging
+task-choice-render-owner	0x13dd7d4	0x212efd1	cstring	Inactive
+task-choice-render-owner	0x13dd81f	0x214dfda	cstring	Pumps from the north
+task-choice-render-owner	0x13dd84e	0x214e018	cstring	Pumps from the west
+task-choice-render-owner	0x13dd875	0x214e003	cstring	Pumps from the south
+task-choice-render-owner	0x13dded0	0x214e1de	cstring	Aquarium
+task-choice-render-owner	0x13de004	0x214e1d4	cstring	Terrarium
+task-choice-render-owner	0x13de5bd	0x214e1c0	cstring	Unassigned occupant
+task-choice-render-owner	0x13de6ff	0x214e1b7	cstring	Occupant
+task-choice-render-owner	0x13de7ae	0x214e04d	cstring	Assigned
+task-choice-render-owner	0x13de88a	0x221ccdc	cstring	Prisoner
+task-choice-render-owner	0x13de9b9	0x214e239	cstring	This furniture is a part of
+task-choice-render-owner	0x13dea7e	0x214bf98	cstring	This furniture is a part of multiple rooms.
+task-choice-render-owner	0x13deb1e	0x214e1e7	cstring	You must designate a dungeon
+task-choice-render-owner	0x13deb96	0x214e204	cstring	before this restraint will
+task-choice-render-owner	0x13dec0c	0x214e21f	cstring	be used for imprisonment.
+task-choice-render-owner	0x13df17f	0x6f74	inline	to
+task-choice-render-owner	0x13df185	0x6c20746f6e6e6143	inline	Cannot l
+task-choice-render-owner	0x13df192	0x206b6e69	inline	ink 
+task-choice-render-owner	0x13df2da	0x214df4f	cstring	Frozen Here
+task-choice-render-owner	0x13df337	0x214df73	cstring	Total Power: 
+task-choice-render-owner	0x13df3f0	0x214df81	cstring	Total Power Needed: 
+task-choice-render-owner	0x13df4c2	0x214df96	cstring	Stable Foundation
+task-choice-render-owner	0x13df550	0x214e784	cstring	Disengaged
+task-choice-render-owner	0x13df58a	0x214dfa8	cstring	Hanging
+task-choice-render-owner	0x13df5b1	0x214df5b	cstring	Frozen Elsewhere
+task-choice-render-owner	0x13df5e7	0x214df6c	cstring	Active
+task-choice-render-owner	0x13dfc37	0x20e1ea1	cstring	Spring
+task-choice-render-owner	0x13e0368	0x214e700	cstring	Leave fallow
+task-choice-render-owner	0x13e0429	0x214e70d	cstring	No seeds
+task-choice-render-owner	0x13e072f	0x214e716	cstring	Not set to fertilize
+task-choice-render-owner	0x13e0778	0x214e73c	cstring	Current amount: 
+task-choice-render-owner	0x13e07b5	0x21f0cfa	cstring	/
+task-choice-render-owner	0x13e089b	0x214e74d	cstring	Fertilize
+task-choice-render-owner	0x13e08fa	0x214e757	cstring	every season
+task-choice-render-owner	0x13e0980	0x214e6fa	cstring	(now)
+task-choice-render-owner	0x13e09db	0x20e1ea9	cstring	Summer
+task-choice-render-owner	0x13e0a35	0x20e1eb9	cstring	Winter
+task-choice-render-owner	0x13e0a5f	0x20e1eb1	cstring	Autumn
+task-choice-render-owner	0x13e0aa2	0x214e72b	cstring	Set to fertilize
+task-choice-render-owner	0x13e0ba4	0x214e764	cstring	Poor soil
+task-choice-render-owner	0x13e0bf0	0x20f7379	cstring	 
+task-choice-render-owner	0x13e0c20	0x219edcc	cstring	%
+task-choice-render-owner	0x13e0c4b	0x214e76e	cstring	(Cavern soil
+task-choice-render-owner	0x13e0caa	0x214e77b	cstring	is best)
+task-choice-render-owner	0x13e0da7	0x2c46	inline	F,
+task-choice-render-owner	0x13e0de9	0x212efd1	cstring	Inactive
+task-choice-render-owner	0x13e0ec7	0x214e79a	cstring	This is the resting place of
+task-choice-render-owner	0x13e0f7f	0x2107edc	cstring	.
+task-choice-render-owner	0x13e11ce	0x214e239	cstring	This furniture is a part of
+task-choice-render-owner	0x13e12bc	0x214e5d5	cstring	Deceased
+task-choice-render-owner	0x13e1590	0x214bf98	cstring	This furniture is a part of multiple rooms.
+task-choice-render-owner	0x13e160e	0x214e58f	cstring	You must designate a tomb
+task-choice-render-owner	0x13e168d	0x214e5a9	cstring	before this coffin will
+task-choice-render-owner	0x13e1703	0x214e5c1	cstring	be used for burial.
+task-choice-render-owner	0x13e18fb	0x214e400	cstring	Unnamed tomb
+task-choice-render-owner	0x13e1946	0x214e3ca	cstring	Unnamed dungeon
+task-choice-render-owner	0x13e1994	0x214e394	cstring	Unnamed office
+task-choice-render-owner	0x13e19bb	0x214e384	cstring	Unnamed bedroom
+task-choice-render-owner	0x13e19ee	0x214e3b9	cstring	Unnamed barracks
+task-choice-render-owner	0x13e1a15	0x214e3a3	cstring	Unnamed archery range
+task-choice-render-owner	0x13e1a48	0x214e294	cstring	Unnamed fishing area
+task-choice-render-owner	0x13e1a6f	0x214e277	cstring	Unnamed sand collection area
+task-choice-render-owner	0x13e1a96	0x214e26a	cstring	Unnamed dump
+task-choice-render-owner	0x13e1abd	0x214e255	cstring	Unnamed water source
+task-choice-render-owner	0x13e1ae4	0x214e3ec	cstring	Unnamed dining hall
+task-choice-render-owner	0x13e1b17	0x214e32d	cstring	Unnamed clay collection area
+task-choice-render-owner	0x13e1b3e	0x214e319	cstring	Unnamed pen/pasture
+task-choice-render-owner	0x13e1b65	0x214e40d	cstring	Unnamed zone
+task-choice-render-owner	0x13e1b8c	0x214e367	cstring	Unnamed plant gathering area
+task-choice-render-owner	0x13e1bb3	0x214e3da	cstring	Unnamed dormitory
+task-choice-render-owner	0x13e1c5a	0x214e2f5	cstring	Unnamed museum
+task-choice-render-owner	0x13e1cb8	0x214e34a	cstring	Unnamed animal training area
+task-choice-render-owner	0x13e1cdf	0x214e2a9	cstring	Unnamed pit/pond
+task-choice-render-owner	0x13e1d06	0x214e304	cstring	Unnamed meeting hall
+task-choice-render-owner	0x13e1d2d	0x214e2e9	cstring	Unnamed zoo
+task-choice-render-owner	0x13e1d54	0x214e2ba	cstring	Unnamed memorial hall
+task-choice-render-owner	0x13e1d7b	0x214e2d0	cstring	Unnamed sculpture garden
+task-choice-render-owner	0x13e1e83	0x214e02c	cstring	This is a memorial to
+task-choice-render-owner	0x13e1f5b	0x2107edc	cstring	.
+task-choice-render-owner	0x13e1fee	0x22182d4	cstring	a 
+task-choice-render-owner	0x13e22a8	0x214e04d	cstring	Assigned
+task-choice-render-owner	0x13e255b	0x214e239	cstring	This furniture is a part of
+task-choice-render-owner	0x13e2636	0x214e1e7	cstring	You must designate a dungeon
+task-choice-render-owner	0x13e26ae	0x214e204	cstring	before this restraint will
+task-choice-render-owner	0x13e2724	0x214e21f	cstring	be used for imprisonment.
+task-choice-render-owner	0x13e27ac	0x214bf98	cstring	This furniture is a part of multiple rooms.
+task-choice-render-owner	0x13e2a40	0x214e41a	cstring	Assigned and chained
+task-choice-render-owner	0x13e2a6e	0x20f3ab4	cstring	Chained
+task-choice-render-owner	0x13e2c67	0x214e400	cstring	Unnamed tomb
+task-choice-render-owner	0x13e2cb2	0x214e3ca	cstring	Unnamed dungeon
+task-choice-render-owner	0x13e2cd6	0x214e3b9	cstring	Unnamed barracks
+task-choice-render-owner	0x13e2d34	0x214e3a3	cstring	Unnamed archery range
+task-choice-render-owner	0x13e2db9	0x214e394	cstring	Unnamed office
+task-choice-render-owner	0x13e2de0	0x214e384	cstring	Unnamed bedroom
+task-choice-render-owner	0x13e2e07	0x214e367	cstring	Unnamed plant gathering area
+task-choice-render-owner	0x13e2e2e	0x214e34a	cstring	Unnamed animal training area
+task-choice-render-owner	0x13e2e55	0x214e32d	cstring	Unnamed clay collection area
+task-choice-render-owner	0x13e2e7c	0x214e294	cstring	Unnamed fishing area
+task-choice-render-owner	0x13e2f15	0x214e2f5	cstring	Unnamed museum
+task-choice-render-owner	0x13e2f3c	0x214e3ec	cstring	Unnamed dining hall
+task-choice-render-owner	0x13e2f63	0x214e3da	cstring	Unnamed dormitory
+task-choice-render-owner	0x13e2f8a	0x214e26a	cstring	Unnamed dump
+task-choice-render-owner	0x13e2fb1	0x214e277	cstring	Unnamed sand collection area
+task-choice-render-owner	0x13e2fd8	0x214e255	cstring	Unnamed water source
+task-choice-render-owner	0x13e2fff	0x214e319	cstring	Unnamed pen/pasture
+task-choice-render-owner	0x13e3026	0x214e40d	cstring	Unnamed zone
+task-choice-render-owner	0x13e304d	0x214e2a9	cstring	Unnamed pit/pond
+task-choice-render-owner	0x13e3074	0x214e2e9	cstring	Unnamed zoo
+task-choice-render-owner	0x13e309b	0x214e304	cstring	Unnamed meeting hall
+task-choice-render-owner	0x13e30c2	0x214e2ba	cstring	Unnamed memorial hall
+task-choice-render-owner	0x13e3105	0x214e2d0	cstring	Unnamed sculpture garden
+task-choice-render-owner	0x13e3187	0x7370	inline	ps
+task-choice-render-owner	0x13e31a5	0x756f7247	inline	Grou
+task-choice-render-owner	0x13e31da	0x6e6f6974616c6552	inline	Relation
+task-choice-render-owner	0x13e3353	0x214e400	cstring	Unnamed tomb
+task-choice-render-owner	0x13e337a	0x214e3ca	cstring	Unnamed dungeon
+task-choice-render-owner	0x13e33a1	0x214e3b9	cstring	Unnamed barracks
+task-choice-render-owner	0x13e3402	0x214e3a3	cstring	Unnamed archery range
+task-choice-render-owner	0x13e3487	0x214e394	cstring	Unnamed office
+task-choice-render-owner	0x13e34ae	0x214e384	cstring	Unnamed bedroom
+task-choice-render-owner	0x13e34d5	0x214e367	cstring	Unnamed plant gathering area
+task-choice-render-owner	0x13e34fc	0x214e294	cstring	Unnamed fishing area
+task-choice-render-owner	0x13e3523	0x214e32d	cstring	Unnamed clay collection area
+task-choice-render-owner	0x13e354a	0x214e3ec	cstring	Unnamed dining hall
+task-choice-render-owner	0x13e3571	0x214e34a	cstring	Unnamed animal training area
+task-choice-render-owner	0x13e3598	0x214e26a	cstring	Unnamed dump
+task-choice-render-owner	0x13e3631	0x214e2f5	cstring	Unnamed museum
+task-choice-render-owner	0x13e3658	0x214e40d	cstring	Unnamed zone
+task-choice-render-owner	0x13e369b	0x214e277	cstring	Unnamed sand collection area
+task-choice-render-owner	0x13e36c2	0x214e255	cstring	Unnamed water source
+task-choice-render-owner	0x13e36e9	0x214e319	cstring	Unnamed pen/pasture
+task-choice-render-owner	0x13e3710	0x214e3da	cstring	Unnamed dormitory
+task-choice-render-owner	0x13e3737	0x214e2a9	cstring	Unnamed pit/pond
+task-choice-render-owner	0x13e375e	0x214e2e9	cstring	Unnamed zoo
+task-choice-render-owner	0x13e3785	0x214e304	cstring	Unnamed meeting hall
+task-choice-render-owner	0x13e37ac	0x214e2ba	cstring	Unnamed memorial hall
+task-choice-render-owner	0x13e37d3	0x214e2d0	cstring	Unnamed sculpture garden
+task-choice-render-owner	0x13e406a	0x2142877	cstring	_
+task-choice-render-owner	0x13e43e3	0x6e656d7461657254	inline	Treatmen
+task-choice-render-owner	0x13e45a4	0x74617453	inline	Stat
+task-choice-render-owner	0x13e45b1	0x7375	inline	us
+task-choice-render-owner	0x13e466d	0x6e756f57	inline	Woun
+task-choice-render-owner	0x13e467a	0x7364	inline	ds
+task-choice-render-owner	0x13e47cc	0x214d099	cstring	Description
+task-choice-render-owner	0x13e4852	0x22116a6	cstring	History
+task-choice-render-owner	0x13e7122	0x61655920	inline	 Yea
+task-choice-render-owner	0x13e7153	0x2131974	cstring	s
+task-choice-render-owner	0x13e71b0	0x646c4f20	inline	 Old
+task-choice-render-owner	0x13e7572	0x7374	inline	ts
+task-choice-render-owner	0x13e7577	0x69617254	inline	Trai
+task-choice-render-owner	0x13e7900	0x7365	inline	es
+task-choice-render-owner	0x13e7905	0x756c6156	inline	Valu
+task-choice-render-owner	0x13e7939	0x6465654e	inline	Need
+task-choice-render-owner	0x13e79eb	0x6e65726566657250	inline	Preferen
+task-choice-render-owner	0x13e79f8	0x6563	inline	ce
+task-choice-render-owner	0x13e864c	0x206f7420646e6553	inline	Send to 
+task-choice-render-owner	0x13e8ad5	0x65707845	inline	Expe
+task-choice-render-owner	0x13e8cd9	0x61776120646e6553	inline	Send awa
+task-choice-render-owner	0x13e8def	0x636e6143	inline	Canc
+task-choice-render-owner	0x13e8e00	0x6c65	inline	el
+task-choice-render-owner	0x13e96dc	0x214c5b4	cstring	Expel
+task-choice-render-owner	0x13e9fd3	0x3a72	inline	r:
+task-choice-render-owner	0x13e9fe8	0x656e774f	inline	Owne
+task-choice-render-owner	0x13ea189	0x203a746867696557	inline	Weight: 
+task-choice-render-owner	0x13eac40	0x20e18b4	cstring	In 
+task-choice-render-owner	0x13eb014	0x77656956	inline	View
+task-choice-render-owner	0x13eb3f1	0x3a65	inline	e:
+task-choice-render-owner	0x13eb419	0x756c6156	inline	Valu
+task-choice-render-owner	0x13eb4d2	0x656c	inline	le
+task-choice-render-owner	0x13eb4f3	0x69706b63	inline	ckpi
+task-choice-render-owner	0x13eb530	0x6f74732077656956	inline	View sto
+task-choice-render-owner	0x13eb5f5	0x73657355	inline	Uses
+task-choice-render-owner	0x13ebab0	0x7265	inline	er
+task-choice-render-owner	0x13ebabe	0x2151720/16	vector	Assigned to hunt
+task-choice-render-owner	0x13ebb4c	0x206f7420	inline	 to 
+task-choice-render-owner	0x13ebb88	0x64656e6769737341	inline	Assigned
+task-choice-render-owner	0x13edd7d	0x6e49	inline	In
+task-choice-render-owner	0x13ede0e	0x20e18b4	cstring	In 
+task-choice-render-owner	0x13ede38	0x68746957	inline	With
+task-choice-render-owner	0x13ede78	0x214c245	cstring	On 
+task-choice-render-owner	0x13eded6	0x214c245	cstring	On 
+task-choice-render-owner	0x13edee7	0x6e4f	inline	On
+task-choice-render-owner	0x13edef8	0x6e49	inline	In
+task-choice-render-owner	0x13ee6fd	0x214c235	cstring	Cannot link to 
+task-choice-render-owner	0x13ee7a7	0x736c	inline	ls
+task-choice-render-owner	0x13ee7c5	0x6c696b53	inline	Skil
+task-choice-render-owner	0x13ee7ee	0x6874	inline	th
+task-choice-render-owner	0x13ee80c	0x6c616548	inline	Heal
+task-choice-render-owner	0x13ee84a	0x6f62614c	inline	Labo
+task-choice-render-owner	0x13ee88c	0x6d6f6f52	inline	Room
+task-choice-render-owner	0x13ee90a	0x2c46	inline	F,
+task-choice-render-owner	0x13eeb0d	0x7420746e65636552	inline	Recent t
+task-choice-render-owner	0x13eeb17	0x7468	inline	ht
+task-choice-render-owner	0x13eeb30	0x67756f68	inline	houg
+task-choice-render-owner	0x13eeba6	0x214db71	cstring	Memories
+task-choice-render-owner	0x13ef2cc	0x2142877	cstring	_
+task-choice-render-owner	0x13f0414	0x6e65	inline	en
+task-choice-render-owner	0x13f043d	0x646e657065646e49	inline	Independ
+task-choice-render-owner	0x13f0969	0x2e2e	inline	..
+task-choice-render-owner	0x13f0977	0x2151760/16	vector	Sunk into depres
+task-choice-render-owner	0x13f0999	0x6e6f6973	inline	sion
+task-choice-render-owner	0x13f0a4c	0x6d75	inline	um
+task-choice-render-owner	0x13f0a5a	0x2151750/16	vector	Throwing a tantr
+task-choice-render-owner	0x13f0acf	0x2151740/16	vector	In a martial tra
+task-choice-render-owner	0x13f0adf	0x2165636e	inline	nce!
+task-choice-render-owner	0x13f0b4a	0x7365	inline	es
+task-choice-render-owner	0x13f0b58	0x2151730/16	vector	Enraged at all e
+task-choice-render-owner	0x13f0b7a	0x696d656e	inline	nemi
+task-choice-render-owner	0x13f0bd4	0x203a	inline	: 
+task-choice-render-owner	0x13f0bd9	0x2151780/16	vector	Corrupt Soldier 
+task-choice-render-owner	0x13f0bfa	0x646f6f4d	inline	Mood
+task-choice-render-owner	0x13f0cd9	0x2179	inline	y!
+task-choice-render-owner	0x13f0ce7	0x2151770/16	vector	Stumbling oblivi
+task-choice-render-owner	0x13f0cef	0x6c73756f	inline	ousl
+task-choice-render-owner	0x13f0e25	0x214c355	cstring	Staring off into space...
+task-choice-render-owner	0x13f0e7b	0x214c342	cstring	In a berserk rage!
+task-choice-render-owner	0x13f0f11	0x214c313	cstring	Crawling around crazed!
+task-choice-render-owner	0x13f0f3f	0x214c2c6	cstring	Stricken by melancholy...
+task-choice-render-owner	0x13f0f77	0x214c249	cstring	Has a horrible fell look!
+task-choice-render-owner	0x13f0faf	0x214c263	cstring	Brooding darkly...
+task-choice-render-owner	0x13f0fe7	0x214c2a9	cstring	Possessed by unknown forces!
+task-choice-render-owner	0x13f1043	0x214c291	cstring	Peculiarly secretive...
+task-choice-render-owner	0x13f107b	0x214c276	cstring	Has the aspect of one fey!
+task-choice-render-owner	0x13f10f1	0x214c32b	cstring	Running around crazed!
+task-choice-render-owner	0x13f1144	0x214c2e0	cstring	Crawling around babbling!
+task-choice-render-owner	0x13f116b	0x214c2fa	cstring	Running around babbling!
+task-choice-render-owner	0x13f1199	0x214c36f	cstring	Corrupt Strange Mood: 
+task-choice-render-owner	0x13f126e	0x214c4bd	cstring	Emotionally overloaded!
+task-choice-render-owner	0x13f13a9	0x21082b1	cstring	Creator of 
+task-choice-render-owner	0x13f1454	0x214c4d5	cstring	Pet of 
+task-choice-render-owner	0x13f153a	0x211588a	cstring	Somebody
+task-choice-render-owner	0x13f1552	0x214c459	cstring	Taken by a fright!
+task-choice-render-owner	0x13f1580	0x214c3c5	cstring	Experiencing mortal fear!
+task-choice-render-owner	0x13f15ae	0x214c438	cstring	Completely dismayed!
+task-choice-render-owner	0x13f15dc	0x214c44d	cstring	Distressed!
+task-choice-render-owner	0x13f160a	0x214c409	cstring	Writhing in agony!
+task-choice-render-owner	0x13f1638	0x214c41c	cstring	Anguished!
+task-choice-render-owner	0x13f1666	0x214c3df	cstring	Beside 
+task-choice-render-owner	0x13f16cf	0x213c20e	cstring	itself
+task-choice-render-owner	0x13f1714	0x214c3e7	cstring	 with grief!
+task-choice-render-owner	0x13f173b	0x213c1fe	cstring	himself
+task-choice-render-owner	0x13f1762	0x213c206	cstring	herself
+task-choice-render-owner	0x13f1793	0x214c427	cstring	Lost in despair!
+task-choice-render-owner	0x13f17e6	0x214c4a6	cstring	In existential crisis!
+task-choice-render-owner	0x13f1814	0x214c386	cstring	Overcome by terror!
+task-choice-render-owner	0x13f1842	0x214c39a	cstring	In emotional shock!
+task-choice-render-owner	0x13f1870	0x214c492	cstring	Shaken to the core!
+task-choice-render-owner	0x13f189e	0x214c3f4	cstring	Drowning in sadness!
+task-choice-render-owner	0x13f18cc	0x214c46c	cstring	Wallowing in misery!
+task-choice-render-owner	0x13f18fa	0x214c481	cstring	Truly mortified!
+task-choice-render-owner	0x13f1928	0x214c3ae	cstring	Overwhelmed by horror!
+task-choice-render-owner	0x13f2277	0x2073	inline	s 
+task-choice-render-owner	0x13f227c	0x6465654e	inline	Need
+task-choice-render-owner	0x13f2973	0x214d114	cstring	No assigned rooms
+task-choice-render-owner	0x13f2c95	0x6c61	inline	al
+task-choice-render-owner	0x13f2c9b	0x69636f53	inline	Soci
+task-choice-render-owner	0x13f32ed	0x20f7379	cstring	 
+task-choice-render-owner	0x13f3df0	0x214d103	cstring	Dance form
+task-choice-render-owner	0x13f3f93	0x214d0f6	cstring	Musical form
+task-choice-render-owner	0x13f3fdc	0x2212356	cstring	Medicine
+task-choice-render-owner	0x13f4025	0x214d0ea	cstring	Poetic form
+task-choice-render-owner	0x13f406e	0x214d0d6	cstring	Chemistry
+task-choice-render-owner	0x13f40b7	0x214d0e0	cstring	Geography
+task-choice-render-owner	0x13f4100	0x214d0c6	cstring	Natural history
+task-choice-render-owner	0x13f4149	0x213c0d6	cstring	Engineering
+task-choice-render-owner	0x13f4192	0x214d0bc	cstring	Astronomy
+task-choice-render-owner	0x13f4290	0x6764656c776f6e4b	inline	Knowledg
+task-choice-render-owner	0x13f4300	0x6b7320726568744f	inline	Other sk
+task-choice-render-owner	0x13f430a	0x736c6c69	inline	ills
+task-choice-render-owner	0x13f433e	0x6f62614c	inline	Labo
+task-choice-render-owner	0x13f43f4	0x7461	inline	at
+task-choice-render-owner	0x13f43fa	0x626d6f43	inline	Comb
+task-choice-render-owner	0x13f4452	0x214d0b0	cstring	Mathematics
+task-choice-render-owner	0x13f449b	0x214d0a5	cstring	Philosophy
+task-choice-render-owner	0x13f44e4	0x22116a6	cstring	History
+task-choice-render-owner	0x13f4666	0x20df12c	cstring	Untitled
+task-choice-render-owner	0x13f4878	0x214d05a	cstring	 (V Rusty)
+task-choice-render-owner	0x13f48cd	0x214d065	cstring	 (Rusty)
+task-choice-render-owner	0x13f490a	0x2130b63	cstring	Star catalogue
+task-choice-render-owner	0x13f4931	0x2130b58	cstring	Star chart
+task-choice-render-owner	0x13f4958	0x2130b4d	cstring	Dictionary
+task-choice-render-owner	0x13f497f	0x2130b16	cstring	Cultural history
+task-choice-render-owner	0x13f49a6	0x2130b3b	cstring	Alternate history
+task-choice-render-owner	0x13f49cd	0x2130aff	cstring	Genealogy
+task-choice-render-owner	0x13f49f4	0x21337b0	cstring	Treatise on technological evolution
+task-choice-render-owner	0x13f4a1b	0x2130b09	cstring	Encyclopedia
+task-choice-render-owner	0x13f4a42	0x2130b27	cstring	Cultural comparison
+task-choice-render-owner	0x13f4a69	0x2130ae7	cstring	Biographical dictionary
+task-choice-render-owner	0x13f4a90	0x2130ad1	cstring	Comparative biography
+task-choice-render-owner	0x13f4ab7	0x2130a8f	cstring	Autobiography
+task-choice-render-owner	0x13f4ade	0x214d10e	cstring	Essay
+task-choice-render-owner	0x13f4b05	0x2130a69	cstring	Chronicle
+task-choice-render-owner	0x13f4b2c	0x2130ab0	cstring	Musical composition
+task-choice-render-owner	0x13f4b53	0x2130a7f	cstring	Novel
+task-choice-render-owner	0x13f4b7a	0x2130a9d	cstring	Play
+task-choice-render-owner	0x13f4ba1	0x2130a5c	cstring	Manual
+task-choice-render-owner	0x13f4bc8	0x2130ac4	cstring	Choreography
+task-choice-render-owner	0x13f4bef	0x2130a85	cstring	Biography
+task-choice-render-owner	0x13f4c16	0x2130aa2	cstring	Letter
+task-choice-render-owner	0x13f4c3d	0x2130a63	cstring	Guide
+task-choice-render-owner	0x13f4c64	0x2130aa9	cstring	Dialog
+task-choice-render-owner	0x13f4c8b	0x2130a73	cstring	Short story
+task-choice-render-owner	0x13f4cb2	0x221299a	cstring	Poem
+task-choice-render-owner	0x13f4cd9	0x2211df7	cstring	Atlas
+task-choice-render-owner	0x13f4f88	0x61757153	inline	Squa
+task-choice-render-owner	0x13f553c	0x214db67	cstring	No orders
+task-choice-render-owner	0x13f5688	0x214c21a	cstring	No squad assigned
+task-choice-render-owner	0x13f5c14	0x214c21a	cstring	No squad assigned
+task-choice-render-owner	0x13f5cc0	0x6c6c694b	inline	Kill
+task-choice-render-owner	0x13f6698	0x726f	inline	or
+task-choice-render-owner	0x13f669d	0x66696e55	inline	Unif
+task-choice-render-owner	0x13f68c4	0x6d657449	inline	Item
+task-choice-render-owner	0x13f68fd	0x776569767265764f	inline	Overview
+task-choice-render-owner	0x13f69df	0x20f3aea	cstring	, 
+task-choice-render-owner	0x13f6a0e	0x219ee0c	cstring	x
+task-choice-render-owner	0x13f6a46	0x219ee0c	cstring	x
+task-choice-render-owner	0x13f6a5e	0x20f3aea	cstring	, 
+task-choice-render-owner	0x13f6a8d	0x219ee0c	cstring	x
+task-choice-render-owner	0x13f6b80	0x214c7ad	cstring	Poor empathy
+task-choice-render-owner	0x13f6c6b	0x212c966	cstring	Inclined to abstract
+task-choice-render-owner	0x13f6cb9	0x212c94c	cstring	Flights of fancy
+task-choice-render-owner	0x13f6d07	0x212c5b4	cstring	Polite
+task-choice-render-owner	0x13f6d55	0x212c793	cstring	Private
+task-choice-render-owner	0x13f6da3	0x214c7d0	cstring	Quick to love
+task-choice-render-owner	0x13f6df1	0x212c87f	cstring	Thoughtless
+task-choice-render-owner	0x13f6e3f	0x214c80c	cstring	Easily stressed
+task-choice-render-owner	0x13f6e8d	0x212c6a6	cstring	Zany
+task-choice-render-owner	0x13f6edb	0x214caca	cstring	Distrustful
+task-choice-render-owner	0x13f6f29	0x212c8f7	cstring	Overbearing
+task-choice-render-owner	0x13f6f77	0x214c824	cstring	Stubborn
+task-choice-render-owner	0x13f6fc5	0x214c860	cstring	Single-minded
+task-choice-render-owner	0x13f7013	0x214caf2	cstring	Avoids excitement
+task-choice-render-owner	0x13f7061	0x214c881	cstring	Emotional obsessive
+task-choice-render-owner	0x13f70af	0x214c7ef	cstring	Depression-prone
+task-choice-render-owner	0x13f70fd	0x212c62e	cstring	Vain
+task-choice-render-owner	0x13f714b	0x214ca9b	cstring	Not altruistic
+task-choice-render-owner	0x13f7199	0x214c89e	cstring	Thrill-seeker
+task-choice-render-owner	0x13f71e7	0x214c836	cstring	Prone to discord
+task-choice-render-owner	0x13f7235	0x212c757	cstring	Curious
+task-choice-render-owner	0x13f7283	0x214cb12	cstring	Not inclined to abstract
+task-choice-render-owner	0x13f72d1	0x212c844	cstring	Altruistic
+task-choice-render-owner	0x13f731f	0x212f1ae	cstring	Anxious
+task-choice-render-owner	0x13f736d	0x214c857	cstring	Gracious
+task-choice-render-owner	0x13f73bb	0x214cab6	cstring	Overcautious
+task-choice-render-owner	0x13f7409	0x214c895	cstring	Trusting
+task-choice-render-owner	0x13f7457	0x212c4fb	cstring	Intemperate
+task-choice-render-owner	0x13f74a5	0x212c6e1	cstring	Proud
+task-choice-render-owner	0x13f74f3	0x214cadc	cstring	Unassertive
+task-choice-render-owner	0x13f7541	0x214c86e	cstring	Obstinate
+task-choice-render-owner	0x13f758f	0x214c7de	cstring	Envious
+task-choice-render-owner	0x13f75dd	0x212c5ee	cstring	Fearless
+task-choice-render-owner	0x13f762b	0x214ca72	cstring	Emotionally distant
+task-choice-render-owner	0x13f7679	0x212c593	cstring	Flatterer
+task-choice-render-owner	0x13f76c7	0x214c82d	cstring	Wasteful
+task-choice-render-owner	0x13f7715	0x212c775	cstring	Bashful
+task-choice-render-owner	0x13f7763	0x214c8ac	cstring	Artistically inclined
+task-choice-render-owner	0x13f77b1	0x212c865	cstring	Dutiful
+task-choice-render-owner	0x13f77ff	0x212c4a5	cstring	Lustful
+task-choice-render-owner	0x13f784d	0x212c681	cstring	Extravagant
+task-choice-render-owner	0x13f789b	0x214cac3	cstring	Sloppy
+task-choice-render-owner	0x13f78e9	0x212c8da	cstring	Gregarious
+task-choice-render-owner	0x13f7937	0x214c81c	cstring	Brawler
+task-choice-render-owner	0x13f7985	0x212c6ff	cstring	Cruel
+task-choice-render-owner	0x13f79d3	0x214cae8	cstring	Leisurely
+task-choice-render-owner	0x13f7a21	0x214c878	cstring	Tolerant
+task-choice-render-owner	0x13f7a6f	0x214c7e6	cstring	Cheerful
+task-choice-render-owner	0x13f7abd	0x212c607	cstring	Overconfident
+task-choice-render-owner	0x13f7b0b	0x214ca86	cstring	Unswayed by emotions
+task-choice-render-owner	0x13f7b59	0x212c918	cstring	Frenetic
+task-choice-render-owner	0x13f7ba7	0x212c4e2	cstring	Greedy
+task-choice-render-owner	0x13f7bf5	0x212f2fe	cstring	Hopeful
+task-choice-render-owner	0x13f7c43	0x214cb04	cstring	Fact-oriented
+task-choice-render-owner	0x13f7c91	0x212c81e	cstring	Swayed by emotions
+task-choice-render-owner	0x13f7cdf	0x214c800	cstring	Anger-prone
+task-choice-render-owner	0x13f7d2d	0x212c647	cstring	Ambitious
+task-choice-render-owner	0x13f7d7b	0x214caaa	cstring	Not dutiful
+task-choice-render-owner	0x13f7dc9	0x212c8a1	cstring	Orderly
+task-choice-render-owner	0x13f7e17	0x212f2f6	cstring	Hateful
+task-choice-render-owner	0x13f7e65	0x212c6c0	cstring	Vengeful
+task-choice-render-owner	0x13f7eb3	0x214cad6	cstring	Loner
+task-choice-render-owner	0x13f7f01	0x212c7ab	cstring	Perfectionist
+task-choice-render-owner	0x13f7f4f	0x214ca67	cstring	Intolerant
+task-choice-render-owner	0x13f7f9d	0x214c847	cstring	Disdains advice
+task-choice-render-owner	0x13f8222	0x21b0910	cstring	Drowning
+task-choice-render-owner	0x13f8330	0x21b0752	cstring	Pale
+task-choice-render-owner	0x13f8468	0x21b0b99	cstring	Heavy bleeding
+task-choice-render-owner	0x13f852a	0x21b0ff3	cstring	Extreme pain
+task-choice-render-owner	0x13f8629	0x214d026	cstring	Healthy
+task-choice-render-owner	0x13f88fe	0x21b077b	cstring	Faint
+task-choice-render-owner	0x13f897a	0x20f47b2	cstring	Needs 
+task-choice-render-owner	0x13f8ae1	0x214d04b	cstring	Haul: 
+task-choice-render-owner	0x13f8bc5	0x20f7379	cstring	 
+task-choice-render-owner	0x13f8e66	0x214d05a	cstring	 (V Rusty)
+task-choice-render-owner	0x13f8ec5	0x214d065	cstring	 (Rusty)
+task-choice-render-owner	0x13f8efa	0x214cffb	cstring	Partially webbed
+task-choice-render-owner	0x13f8f70	0x212f93d	cstring	Webbed
+task-choice-render-owner	0x13f904a	0x221cccd	cstring	Resident
+task-choice-render-owner	0x13f90c1	0x214d036	cstring	No official position
+task-choice-render-owner	0x13f9139	0x214d02e	cstring	Citizen
+task-choice-render-owner	0x13f9186	0x214d01e	cstring	Injured
+task-choice-render-owner	0x13f922d	0x214d052	cstring	Squad: 
+task-choice-render-owner	0x13f934b	0x212f975	cstring	Pain
+task-choice-render-owner	0x13f93ab	0x20f7379	cstring	 
+task-choice-render-owner	0x13f96d5	0x214d05a	cstring	 (V Rusty)
+task-choice-render-owner	0x13f9734	0x214d065	cstring	 (Rusty)
+task-choice-render-owner	0x13f97fb	0x212ef7b	cstring	Focused
+task-choice-render-owner	0x13f98b2	0x214d07d	cstring	Unmet need: 
+task-choice-render-owner	0x13f997b	0x212fb13	cstring	Think abstractly
+task-choice-render-owner	0x13f99e0	0x212fb05	cstring	Help somebody
+task-choice-render-owner	0x13f9a04	0x2175f34	cstring	Wander
+task-choice-render-owner	0x13f9a2b	0x212fa5d	cstring	Craft object
+task-choice-render-owner	0x13f9a52	0x212face	cstring	Eat good meal
+task-choice-render-owner	0x13f9a79	0x212f9e7	cstring	Excitement
+task-choice-render-owner	0x13f9aa0	0x212faf6	cstring	Be extravagant
+task-choice-render-owner	0x13f9ac7	0x212fa21	cstring	Hear eloquence
+task-choice-render-owner	0x13f9aee	0x212fa97	cstring	Make romance
+task-choice-render-owner	0x13f9b15	0x212f99c	cstring	Drink alcohol
+task-choice-render-owner	0x13f9b3c	0x212f9dc	cstring	Admire art
+task-choice-render-owner	0x13f9b63	0x212f992	cstring	Socialize
+task-choice-render-owner	0x13f9b8a	0x212f9c2	cstring	Stay occupied
+task-choice-render-owner	0x13f9bb1	0x212f9d0	cstring	Be creative
+task-choice-render-owner	0x13f9d4c	0x212f9aa	cstring	Pray 
+task-choice-render-owner	0x13f9dce	0x212f9b0	cstring	Pray to 
+task-choice-render-owner	0x13f9df8	0x212f9b9	cstring	Meditate
+task-choice-render-owner	0x13f9e1f	0x212fae2	cstring	Cause trouble
+task-choice-render-owner	0x13f9e46	0x212fa41	cstring	Self-examination
+task-choice-render-owner	0x13f9e6d	0x212faaf	cstring	See great beast
+task-choice-render-owner	0x13f9e94	0x212fa02	cstring	Be with family
+task-choice-render-owner	0x13f9ebb	0x212faf0	cstring	Argue
+task-choice-render-owner	0x13f9ee2	0x212fa52	cstring	Make merry
+task-choice-render-owner	0x13f9f09	0x212fa7b	cstring	Practice skill
+task-choice-render-owner	0x13f9f30	0x212fa11	cstring	Be with friends
+task-choice-render-owner	0x13f9f57	0x212fadc	cstring	Fight
+task-choice-render-owner	0x13f9f7e	0x212fa30	cstring	Uphold tradition
+task-choice-render-owner	0x13f9fa5	0x212fabf	cstring	Acquire object
+task-choice-render-owner	0x13f9fcc	0x212f9f2	cstring	Learn something
+task-choice-render-owner	0x13f9ff3	0x212fa8a	cstring	Take it easy
+task-choice-render-owner	0x13fa01a	0x212faa4	cstring	See animal
+task-choice-render-owner	0x13fa041	0x212fa6a	cstring	Martial training
+task-choice-render-owner	0x13fa07f	0x212ef83	cstring	Distracted!
+task-choice-render-owner	0x13fa0c6	0x214ca5b	cstring	Acquiescing
+task-choice-render-owner	0x13fa114	0x214ca4f	cstring	Inattentive
+task-choice-render-owner	0x13fa169	0x21b07ba	cstring	Partially paralyzed
+task-choice-render-owner	0x13fa2a5	0x214c5cf	cstring	 pets
+task-choice-render-owner	0x13fa410	0x20e1956	cstring	 lovers
+task-choice-render-owner	0x13fa4c6	0x21b44bc	cstring	 children
+task-choice-render-owner	0x13fa550	0x214c5bf	cstring	Lover: 
+task-choice-render-owner	0x13fa765	0x203a6573756f7053	inline	Spouse: 
+task-choice-render-owner	0x13fa994	0x214c5c7	cstring	Child: 
+task-choice-render-owner	0x13faa85	0x214c8dc	cstring	Not envious
+task-choice-render-owner	0x13faae2	0x214c9a0	cstring	Fearful
+task-choice-render-owner	0x13fab30	0x214c98a	cstring	Overreliant on advice
+task-choice-render-owner	0x13fab85	0x21e0519	cstring	Bleeding
+task-choice-render-owner	0x13fac0a	0x214cd4b	cstring	Values peace
+task-choice-render-owner	0x13fac58	0x214cfac	cstring	Disdains peace
+task-choice-render-owner	0x13faca6	0x214cf9c	cstring	Disdains nature
+task-choice-render-owner	0x13facf4	0x214cf79	cstring	Disdains commerce
+task-choice-render-owner	0x13fad42	0x214cf8b	cstring	Disdains romance
+task-choice-render-owner	0x13fad90	0x214cf63	cstring	Disdains leisure time
+task-choice-render-owner	0x13fadde	0x214cf4d	cstring	Disdains perseverance
+task-choice-render-owner	0x13fae2c	0x214ce10	cstring	Disdains tradition
+task-choice-render-owner	0x13fae7a	0x214ceb3	cstring	Disdains harmony
+task-choice-render-owner	0x13faec8	0x214cd87	cstring	Disdains family
+task-choice-render-owner	0x13faf16	0x214cf03	cstring	Disdains skill
+task-choice-render-owner	0x13faf64	0x214cdc9	cstring	Disdains cunning
+task-choice-render-owner	0x13fafb2	0x214ce5f	cstring	Disdains stoicism
+task-choice-render-owner	0x13fb000	0x214cd69	cstring	Disdains law
+task-choice-render-owner	0x13fb04e	0x214cf25	cstring	Disdains sacrifice
+task-choice-render-owner	0x13fb09c	0x214cded	cstring	Disdains fairness
+task-choice-render-owner	0x13fb0ea	0x214ce88	cstring	Disdains self-control
+task-choice-render-owner	0x13fb138	0x214cd76	cstring	Disdains loyalty
+task-choice-render-owner	0x13fb186	0x214ced7	cstring	Disdains craftwork
+task-choice-render-owner	0x13fb1d4	0x214cdab	cstring	Disdains power
+task-choice-render-owner	0x13fb222	0x214ce34	cstring	Disdains cooperation
+task-choice-render-owner	0x13fb270	0x214cfbb	cstring	Disdains knowledge
+task-choice-render-owner	0x13fb2be	0x214cf38	cstring	Disdains competition
+task-choice-render-owner	0x13fb30c	0x214cdff	cstring	Disdains decorum
+task-choice-render-owner	0x13fb35a	0x214ce9e	cstring	Disdains tranquility
+task-choice-render-owner	0x13fb3a8	0x214cdba	cstring	Disdains truth
+task-choice-render-owner	0x13fb3f6	0x214ceea	cstring	Disdains martial prowess
+task-choice-render-owner	0x13fb444	0x214cdda	cstring	Disdains eloquence
+task-choice-render-owner	0x13fb492	0x214ce49	cstring	Disdains independence
+task-choice-render-owner	0x13fb4e0	0x214cd97	cstring	Disdains friendship
+task-choice-render-owner	0x13fb52e	0x214cf12	cstring	Disdains hard work
+task-choice-render-owner	0x13fb57c	0x214ce71	cstring	Disdains introspection
+task-choice-render-owner	0x13fb5ca	0x214cec4	cstring	Disdains merriment
+task-choice-render-owner	0x13fb618	0x214ce23	cstring	Disdains artwork
+task-choice-render-owner	0x13fb666	0x214c9f7	cstring	Low self esteem
+task-choice-render-owner	0x13fb6b4	0x2131346	cstring	Temperate
+task-choice-render-owner	0x13fb702	0x214ca30	cstring	Incurious
+task-choice-render-owner	0x13fb750	0x214c96d	cstring	Seeks harmony
+task-choice-render-owner	0x13fb79e	0x214c9cd	cstring	Ungrateful
+task-choice-render-owner	0x13fb7ec	0x214c915	cstring	Not anxious
+task-choice-render-owner	0x13fb83a	0x214ca44	cstring	Overshares
+task-choice-render-owner	0x13fb888	0x214c985	cstring	Rude
+task-choice-render-owner	0x13fb8d6	0x214c9e0	cstring	Humorless
+task-choice-render-owner	0x13fb924	0x214c92d	cstring	Resilient
+task-choice-render-owner	0x13fb972	0x214ca10	cstring	Scatterbrained
+task-choice-render-owner	0x13fb9c0	0x214c94f	cstring	Quick to give up
+task-choice-render-owner	0x13fba0e	0x214c9b6	cstring	Not vain
+task-choice-render-owner	0x13fba5c	0x214c8f2	cstring	Not easily depressed
+task-choice-render-owner	0x13fbac1	0x212ef8f	cstring	Distracted
+task-choice-render-owner	0x13fbb08	0x214c97b	cstring	Quarreler
+task-choice-render-owner	0x13fbb56	0x214c9ea	cstring	Not vengeful
+task-choice-render-owner	0x13fbba4	0x214c937	cstring	Not greedy
+task-choice-render-owner	0x13fbbf2	0x214ca1f	cstring	Quick to despair
+task-choice-render-owner	0x13fbc40	0x214c960	cstring	Not wasteful
+task-choice-render-owner	0x13fbc8e	0x214c9bf	cstring	Not ambitious
+task-choice-render-owner	0x13fbcdc	0x214c907	cstring	Slow to anger
+task-choice-render-owner	0x13fbd2a	0x214ca3a	cstring	Shameless
+task-choice-render-owner	0x13fbd78	0x214c942	cstring	Avoid fights
+task-choice-render-owner	0x13fbdc6	0x214c9d8	cstring	Austere
+task-choice-render-owner	0x13fbe14	0x214c921	cstring	Not lustful
+task-choice-render-owner	0x13fbe62	0x214ca07	cstring	Merciful
+task-choice-render-owner	0x13fbeb0	0x214c8e8	cstring	Cheerless
+task-choice-render-owner	0x13fbefe	0x214c9a8	cstring	Pusillanimous
+task-choice-render-owner	0x13fbf4c	0x214c75c	cstring	Poor memory
+task-choice-render-owner	0x13fbf9a	0x212efb5	cstring	Impatient
+task-choice-render-owner	0x13fbfef	0x21b098e	cstring	Starving
+task-choice-render-owner	0x13fc07c	0x214cfce	cstring	Harrowed
+task-choice-render-owner	0x13fc103	0x214cfdf	cstring	Stressed
+task-choice-render-owner	0x13fc152	0x214cfd7	cstring	Haggard
+task-choice-render-owner	0x13fc270	0x212ef49	cstring	Drowsy
+task-choice-render-owner	0x13fc2ff	0x212ef49	cstring	Drowsy
+task-choice-render-owner	0x13fc345	0x212ef49	cstring	Drowsy
+task-choice-render-owner	0x13fc38b	0x21b0944	cstring	Very drowsy
+task-choice-render-owner	0x13fc3d1	0x21b09f6	cstring	Thirsty
+task-choice-render-owner	0x13fc460	0x21b09b0	cstring	Slumberous
+task-choice-render-owner	0x13fc4a6	0x21b09f6	cstring	Thirsty
+task-choice-render-owner	0x13fc4ec	0x214cfe8	cstring	Very thirsty
+task-choice-render-owner	0x13fc532	0x21b0a29	cstring	Very hungry
+task-choice-render-owner	0x13fc5b9	0x212f98b	cstring	Hungry
+task-choice-render-owner	0x13fc65a	0x21b09f6	cstring	Thirsty
+task-choice-render-owner	0x13fc6f4	0x21b09f6	cstring	Thirsty
+task-choice-render-owner	0x13fc73a	0x21b09e4	cstring	Thirsty!
+task-choice-render-owner	0x13fc780	0x21b0969	cstring	Dehydrated
+task-choice-render-owner	0x13fc7c6	0x21b098e	cstring	Starving
+task-choice-render-owner	0x13fc83d	0x212f98b	cstring	Hungry
+task-choice-render-owner	0x13fc8ad	0x214cd3d	cstring	Values nature
+task-choice-render-owner	0x13fc902	0x214d00c	cstring	Seriously injured
+task-choice-render-owner	0x13fc9b2	0x214c5f5	cstring	Recovers quickly
+task-choice-render-owner	0x13fca00	0x214c5e8	cstring	High stamina
+task-choice-render-owner	0x13fca4e	0x214c5e2	cstring	Tough
+task-choice-render-owner	0x13fca9c	0x214c5dc	cstring	Agile
+task-choice-render-owner	0x13fcaea	0x214c5d5	cstring	Strong
+task-choice-render-owner	0x13fcb42	0x214c606	cstring	Resists sickness
+task-choice-render-owner	0x13fcc3a	0x214c5ba	cstring	 Old
+task-choice-render-owner	0x13fcc4b	0x214c635	cstring	Recovers slowly
+task-choice-render-owner	0x13fcc99	0x214c629	cstring	Low stamina
+task-choice-render-owner	0x13fcce7	0x214c623	cstring	Frail
+task-choice-render-owner	0x13fcd35	0x214c617	cstring	Weak
+task-choice-render-owner	0x13fcd83	0x214c61c	cstring	Clumsy
+task-choice-render-owner	0x13fcdd1	0x214c645	cstring	Sickly
+task-choice-render-owner	0x13fce2b	0x214c696	cstring	Good memory
+task-choice-render-owner	0x13fce79	0x2211ef7	cstring	Patient
+task-choice-render-owner	0x13fcec7	0x214c6d0	cstring	High kinesthetic sense
+task-choice-render-owner	0x13fcf15	0x214c66f	cstring	High willpower
+task-choice-render-owner	0x13fcf6d	0x214c687	cstring	Good intuition
+task-choice-render-owner	0x13fcfbb	0x214c67e	cstring	Creative
+task-choice-render-owner	0x13fd009	0x214c64c	cstring	Good analytical ability
+task-choice-render-owner	0x13fd057	0x214c6b5	cstring	Good spatial sense
+task-choice-render-owner	0x13fd0a5	0x214c664	cstring	Good focus
+task-choice-render-owner	0x13fd105	0x21f1cb8	cstring	 Year
+task-choice-render-owner	0x13fd116	0x214c6f9	cstring	High social awareness
+task-choice-render-owner	0x13fd164	0x214c6c8	cstring	Musical
+task-choice-render-owner	0x13fd1b2	0x214c6e7	cstring	Developed empathy
+task-choice-render-owner	0x13fd200	0x214c6a2	cstring	Good with language
+task-choice-render-owner	0x13fd24e	0x214c796	cstring	Poor kinesthetic sense
+task-choice-render-owner	0x13fd2a3	0x212f962	cstring	Numb
+task-choice-render-owner	0x13fd32b	0x214cc20	cstring	Values stoicism
+task-choice-render-owner	0x13fd379	0x214cc0c	cstring	Values independence
+task-choice-render-owner	0x13fd3e9	0x214d06e	cstring	No unmet needs
+task-choice-render-owner	0x13fd430	0x214c732	cstring	Low willpower
+task-choice-render-owner	0x13fd485	0x21b0944	cstring	Very drowsy
+task-choice-render-owner	0x13fd4c4	0x214ccb4	cstring	Values skill
+task-choice-render-owner	0x13fd521	0x214c8c2	cstring	Slow to love
+task-choice-render-owner	0x13fd56f	0x214cb2b	cstring	Not inclined to create art
+task-choice-render-owner	0x13fd5bd	0x214c8cf	cstring	Slow to hate
+task-choice-render-owner	0x13fd626	0x214c777	cstring	Poor spatial sense
+task-choice-render-owner	0x13fd674	0x214c768	cstring	Bad with words
+task-choice-render-owner	0x13fd6d1	0x214cb9a	cstring	Values cunning
+task-choice-render-owner	0x13fd71f	0x214cb8d	cstring	Values truth
+task-choice-render-owner	0x13fd76d	0x214cb80	cstring	Values power
+task-choice-render-owner	0x13fdb00	0x214d08a	cstring	Assume Control
+task-choice-render-owner	0x13fdb70	0x214c74d	cstring	Poor intuition
+task-choice-render-owner	0x13fdbc5	0x20f4bdf	cstring	Unconscious
+task-choice-render-owner	0x13fdc04	0x214ccf6	cstring	Values perseverance
+task-choice-render-owner	0x13fdc59	0x214cff5	cstring	Fever
+task-choice-render-owner	0x13fdce1	0x214c78a	cstring	Not musical
+task-choice-render-owner	0x13fdd2f	0x214c70f	cstring	Poor analytical ability
+task-choice-render-owner	0x13fdd84	0x2173163	cstring	Winded
+task-choice-render-owner	0x13fddca	0x21b08e1	cstring	Tired
+task-choice-render-owner	0x13fde59	0x21b08cb	cstring	Over-exerted
+task-choice-render-owner	0x13fde98	0x214cbd9	cstring	Values tradition
+task-choice-render-owner	0x13fdef4	0x212ef72	cstring	Focused!
+task-choice-render-owner	0x13fdf3b	0x214c740	cstring	Not creative
+task-choice-render-owner	0x13fdf90	0x21b0969	cstring	Dehydrated
+task-choice-render-owner	0x13fe018	0x214cc6c	cstring	Values harmony
+task-choice-render-owner	0x13fe066	0x214cc59	cstring	Values tranquility
+task-choice-render-owner	0x13fe0c8	0x214c727	cstring	Poor focus
+task-choice-render-owner	0x13fe116	0x214c7ba	cstring	Poor social awareness
+task-choice-render-owner	0x13fe164	0x214cb60	cstring	Values family
+task-choice-render-owner	0x13fe1be	0x214cd1e	cstring	Values commerce
+task-choice-render-owner	0x13fe20c	0x214cd0a	cstring	Values leisure time
+task-choice-render-owner	0x13fe295	0x214cbf9	cstring	Values cooperation
+task-choice-render-owner	0x13fe2e3	0x214cbea	cstring	Values artwork
+task-choice-render-owner	0x13fe331	0x214cbba	cstring	Values fairness
+task-choice-render-owner	0x13fe386	0x212f94e	cstring	Paralyzed
+task-choice-render-owner	0x13fe3c5	0x214cc8c	cstring	Values craftwork
+task-choice-render-owner	0x13fe413	0x20fbe51	cstring	None
+task-choice-render-owner	0x13fe444	0x214cb6e	cstring	Values friendship
+task-choice-render-owner	0x13fe499	0x21b0ff3	cstring	Extreme pain
+task-choice-render-owner	0x13fe521	0x214ccd2	cstring	Values sacrifice
+task-choice-render-owner	0x13fe56f	0x214ccc1	cstring	Values hard work
+task-choice-render-owner	0x13fe5bd	0x214cce3	cstring	Values competition
+task-choice-render-owner	0x13fe612	0x21b09f6	cstring	Thirsty
+task-choice-render-owner	0x13fe651	0x214cbca	cstring	Values decorum
+task-choice-render-owner	0x13fe6a6	0x21b08b8	cstring	Exhausted
+task-choice-render-owner	0x13fe6e5	0x214cc45	cstring	Values self-control
+task-choice-render-owner	0x13fe73a	0x212ef49	cstring	Drowsy
+task-choice-render-owner	0x13fe779	0x214cb46	cstring	Values law
+task-choice-render-owner	0x13fe7ce	0x212f975	cstring	Pain
+task-choice-render-owner	0x13fe80d	0x214cd2e	cstring	Values romance
+task-choice-render-owner	0x13fe862	0x212f98b	cstring	Hungry
+task-choice-render-owner	0x13fe8d2	0x214cba9	cstring	Values eloquence
+task-choice-render-owner	0x13fe927	0x2173152	cstring	Stunned
+task-choice-render-owner	0x13fe966	0x214cc9d	cstring	Values martial prowess
+task-choice-render-owner	0x13fe9bb	0x21b0932	cstring	Nauseous
+task-choice-render-owner	0x13fea43	0x214cb51	cstring	Values loyalty
+task-choice-render-owner	0x13fea91	0x214cd58	cstring	Values knowledge
+task-choice-render-owner	0x13feae6	0x21b0901	cstring	Dizzy
+task-choice-render-owner	0x13feb25	0x214cc30	cstring	Values introspection
+task-choice-render-owner	0x13feb7a	0x21b07d7	cstring	Sluggish
+task-choice-render-owner	0x13febb9	0x214cc7b	cstring	Values merriment
+task-choice-render-owner	0x13ff153	0x214bc30	cstring	Certainly considered an intruder
+task-choice-render-owner	0x13ff2f3	0x214d509	cstring	No groups
+task-choice-render-owner	0x13ff3d1	0x214d57e	cstring	Merchant company
+task-choice-render-owner	0x13ff4ae	0x214d56b	cstring	Performance troupe
+task-choice-render-owner	0x13ff4c6	0x214d563	cstring	Outcast
+task-choice-render-owner	0x13ff4de	0x214d54d	cstring	Military organization
+task-choice-render-owner	0x13ff550	0x214d602	cstring	Considered an intruder
+task-choice-render-owner	0x13ff568	0x214d5e9	cstring	Noted intruder according
+task-choice-render-owner	0x13ff580	0x214d5d7	cstring	Infamous intruder
+task-choice-render-owner	0x13ff598	0x214d5c4	cstring	Legendary intruder
+task-choice-render-owner	0x13ff5ff	0x214bd90	cstring	Greatly respected for preserving the knowledge
+task-choice-render-owner	0x13ff637	0x214dad8	cstring	Certainly considered a thief
+task-choice-render-owner	0x13ff64f	0x214bdc0	cstring	Respected for preserving the knowledge
+task-choice-render-owner	0x13ff667	0x214bd68	cstring	Noted preserver of the knowledge
+task-choice-render-owner	0x13ff67f	0x214bd40	cstring	Famous preserver of the knowledge
+task-choice-render-owner	0x13ff697	0x214bd18	cstring	Legendary preserver of the knowledge
+task-choice-render-owner	0x13ff6af	0x214daf5	cstring	Considered a thief
+task-choice-render-owner	0x13ff6c7	0x214dacc	cstring	Noted thief
+task-choice-render-owner	0x13ff6df	0x214dabd	cstring	Infamous thief
+task-choice-render-owner	0x13ff6f7	0x214daad	cstring	Legendary thief
+task-choice-render-owner	0x13ff70f	0x214db59	cstring	Former worker
+task-choice-render-owner	0x13ff727	0x20f34b4	cstring	Worker
+task-choice-render-owner	0x13ff789	0x214db08	cstring	Former 
+task-choice-render-owner	0x13ff8bc	0x214db08	cstring	Former 
+task-choice-render-owner	0x13ffb25	0x20f3772	cstring	Criminal
+task-choice-render-owner	0x13ffb3d	0x214db21	cstring	Enemy
+task-choice-render-owner	0x13ffb55	0x214db49	cstring	Former prisoner
+task-choice-render-owner	0x13ffb6d	0x221ccdc	cstring	Prisoner
+task-choice-render-owner	0x13ffb85	0x214db3c	cstring	Former slave
+task-choice-render-owner	0x13ffb9d	0x20f37b0	cstring	Slave
+task-choice-render-owner	0x13ffbb5	0x214db10	cstring	Former mercenary
+task-choice-render-owner	0x13ffbcd	0x20f372c	cstring	Mercenary
+task-choice-render-owner	0x13ffbe5	0x214db2e	cstring	Former member
+task-choice-render-owner	0x13ffc09	0x214d02e	cstring	Citizen
+task-choice-render-owner	0x13ffc45	0x214bde8	cstring	Greatly respected for hunting treasure
+task-choice-render-owner	0x13ffc79	0x214bc78	cstring	Greatly feared for violent oppositoin
+task-choice-render-owner	0x13ffcb1	0x214d8c2	cstring	Greatly feared as a murderer
+task-choice-render-owner	0x13ffcc9	0x214d937	cstring	Feared for violent opposition
+task-choice-render-owner	0x13ffce1	0x214d923	cstring	Noted enemy fighter
+task-choice-render-owner	0x13ffcf9	0x214d90c	cstring	Infamous enemy fighter
+task-choice-render-owner	0x13ffd11	0x214d8f4	cstring	Legendary enemy fighter
+task-choice-render-owner	0x13ffd29	0x214d8df	cstring	Feared as a murderer
+task-choice-render-owner	0x13ffd41	0x214d8b3	cstring	Noted murderer
+task-choice-render-owner	0x13ffd59	0x214d8a1	cstring	Infamous murderer
+task-choice-render-owner	0x13ffd71	0x214d88e	cstring	Legendary murderer
+task-choice-render-owner	0x13ffdad	0x214d9f9	cstring	Greatly respected for loyalty
+task-choice-render-owner	0x13ffde9	0x214d6ad	cstring	Certainly feared as a brigand
+task-choice-render-owner	0x13ffe25	0x214d70a	cstring	Certainly considered a bully
+task-choice-render-owner	0x13ffe61	0x214d984	cstring	Greatly respected for fighter
+task-choice-render-owner	0x13ffe79	0x214d6cb	cstring	Feared as a brigand
+task-choice-render-owner	0x13ffe91	0x214d69f	cstring	Noted brigand
+task-choice-render-owner	0x13ffea9	0x214d68e	cstring	Infamous brigand
+task-choice-render-owner	0x13ffec1	0x214d67c	cstring	Legendary brigand
+task-choice-render-owner	0x13ffed9	0x214d727	cstring	Considered a bully
+task-choice-render-owner	0x13ffef1	0x214d6fe	cstring	Noted bully
+task-choice-render-owner	0x13fff09	0x214d6ef	cstring	Infamous bully
+task-choice-render-owner	0x13fff21	0x214d6df	cstring	Legendary bully
+task-choice-render-owner	0x13fff39	0x214d9a2	cstring	Respected for fighter
+task-choice-render-owner	0x13fff51	0x214d976	cstring	Noted fighter
+task-choice-render-owner	0x13fff69	0x214d967	cstring	Famous fighter
+task-choice-render-owner	0x13fff81	0x214d955	cstring	Legendary fighter
+task-choice-render-owner	0x13fffbd	0x214bc58	cstring	Certainly considered a brawler
+task-choice-render-owner	0x13ffff9	0x214bc08	cstring	Greatly respected for heroic acts
+task-choice-render-owner	0x1400035	0x214d860	cstring	Greatly feared as a killer
+task-choice-render-owner	0x1400071	0x214d7af	cstring	Greatly feared as a villain
+task-choice-render-owner	0x1400089	0x214d5aa	cstring	Respected for heroic acts
+task-choice-render-owner	0x14000a1	0x214d30f	cstring	Hero
+task-choice-render-owner	0x14000b9	0x214d59e	cstring	Famous hero
+task-choice-render-owner	0x14000d1	0x214d58f	cstring	Legendary hero
+task-choice-render-owner	0x14000e9	0x214d87b	cstring	Feared as a killer
+task-choice-render-owner	0x1400101	0x214d853	cstring	Noted killer
+task-choice-render-owner	0x1400119	0x214d843	cstring	Infamous killer
+task-choice-render-owner	0x1400131	0x214d832	cstring	Legendary killer
+task-choice-render-owner	0x1400149	0x214d7cb	cstring	Feared as a villain
+task-choice-render-owner	0x1400161	0x214d7a1	cstring	Noted villain
+task-choice-render-owner	0x1400179	0x214d790	cstring	Infamous villain
+task-choice-render-owner	0x1400191	0x214d77e	cstring	Legendary villain
+task-choice-render-owner	0x14001cd	0x214d80d	cstring	Skilled hunter
+task-choice-render-owner	0x1400205	0x214d64a	cstring	Certainly feared as a monster
+task-choice-render-owner	0x1400241	0x214bcc0	cstring	Greatly respected for protecting the weak
+task-choice-render-owner	0x1400259	0x214db27	cstring	Member
+task-choice-render-owner	0x1400271	0x214d668	cstring	Feared as a monster
+task-choice-render-owner	0x1400289	0x214d63c	cstring	Noted monster
+task-choice-render-owner	0x14002a1	0x214d62b	cstring	Infamous monster
+task-choice-render-owner	0x14002b9	0x214d619	cstring	Legendary monster
+task-choice-render-owner	0x14002d1	0x214bcf0	cstring	Respected for protecting the weak
+task-choice-render-owner	0x14002e9	0x214da4a	cstring	Noted protector of the weak
+task-choice-render-owner	0x1400301	0x214da2d	cstring	Famous protector of the weak
+task-choice-render-owner	0x1400319	0x214bca0	cstring	Legendary protector of the weak
+task-choice-render-owner	0x1400331	0x214be10	cstring	Respected for hunting treasure
+task-choice-render-owner	0x1400349	0x214da97	cstring	Noted treasure hunter
+task-choice-render-owner	0x1400361	0x214da80	cstring	Famous treasure hunter
+task-choice-render-owner	0x1400379	0x214da66	cstring	Legendary treasure hunter
+task-choice-render-owner	0x1400391	0x214d769	cstring	Considered a brawler
+task-choice-render-owner	0x14003a9	0x214d75b	cstring	Moted brawler
+task-choice-render-owner	0x14003c1	0x214d74c	cstring	Famous brawler
+task-choice-render-owner	0x14003d9	0x214d73a	cstring	Legendary brawler
+task-choice-render-owner	0x14003f1	0x214da17	cstring	Respected for loyalty
+task-choice-render-owner	0x1400409	0x214d9e5	cstring	Noted loyal soldier
+task-choice-render-owner	0x1400421	0x214d9d0	cstring	Famous loyal soldier
+task-choice-render-owner	0x1400439	0x214d9b8	cstring	Legendary loyal soldier
+task-choice-render-owner	0x1400451	0x214d81c	cstring	Respected as a hunter
+task-choice-render-owner	0x1400469	0x214d7fd	cstring	Talented hunter
+task-choice-render-owner	0x1400481	0x214d7f0	cstring	Great hunter
+task-choice-render-owner	0x1400499	0x214d7df	cstring	Legendary hunter
+task-choice-render-owner	0x14004b1	0x2212951	cstring	Religion
+task-choice-render-owner	0x14004c9	0x214d53f	cstring	Nomadic group
+task-choice-render-owner	0x14004e1	0x214d52f	cstring	Migrating group
+task-choice-render-owner	0x14004f9	0x214d523	cstring	Vessel crew
+task-choice-render-owner	0x1400511	0x214d513	cstring	Site government
+task-choice-render-owner	0x140053e	0x21b0542	cstring	craft
+task-choice-render-owner	0x1400551	0x20fbd97	cstring	 guild
+task-choice-render-owner	0x1400575	0x20df1e6	cstring	Civilization
+task-choice-render-owner	0x14007e4	0x214d1c9	cstring	No relationships
+task-choice-render-owner	0x1400b2f	0x736c6961	inline	ails
+task-choice-render-owner	0x1400b3e	0x746564206b726f57	inline	Work det
+task-choice-render-owner	0x1400cd7	0x214d1ae	cstring	Cannot assign work animals
+task-choice-render-owner	0x140167b	0x214d126	cstring	Will only do assigned tasks
+task-choice-render-owner	0x1401754	0x706f68736b726f57	inline	Workshop
+task-choice-render-owner	0x140178e	0x696e61206b726f57	inline	Work ani
+task-choice-render-owner	0x1401798	0x736c616d	inline	mals
+task-choice-render-owner	0x14017fa	0x214bbe0	cstring	No assigned or assignable work animals
+task-choice-render-owner	0x1401fd5	0x214bbb8	cstring	No dedicated workshop assignments
+task-choice-render-owner	0x140279f	0x6e6f697461636f4c	inline	Location
+task-choice-render-owner	0x14028da	0x214d142	cstring	Cannot assign work details
+task-choice-render-owner	0x1402ecf	0x214d15d	cstring	No work details
+task-choice-render-owner	0x14034d5	0x214d1a2	cstring	Bone doctor
+task-choice-render-owner	0x14038c3	0x20f36ea	cstring	Surgeon
+task-choice-render-owner	0x14038e6	0x20f36c8	cstring	Diagnostician
+task-choice-render-owner	0x1403909	0x20f36db	cstring	Doctor
+task-choice-render-owner	0x140392c	0x20f3659	cstring	Scribe
+task-choice-render-owner	0x140394f	0x214d185	cstring	Tavern keeper
+task-choice-render-owner	0x140397b	0x214d16d	cstring	No location assignments
+task-choice-render-owner	0x14039de	0x214d193	cstring	Monster slayer
+task-choice-render-owner	0x1403a7c	0x20f3673	cstring	Scholar
+task-choice-render-owner	0x1403a9f	0x20f364f	cstring	Performer
+task-choice-render-owner	0x1403ac2	0x20f372c	cstring	Mercenary
+task-choice-render-owner	0x1403beb	0x214bb90	cstring	Will do available tasks anywhere
+task-choice-render-owner	0x1404085	0x214d364	cstring	Considers storyteller
+task-choice-render-owner	0x14040e4	0x214d314	cstring	Intruder
+task-choice-render-owner	0x1404143	0x214d398	cstring	Considers dancer
+task-choice-render-owner	0x14041a2	0x217605a	cstring	Hunter
+task-choice-render-owner	0x1404201	0x214d3cf	cstring	Good for business
+task-choice-render-owner	0x1404260	0x214d4e2	cstring	Preserver of knowledge
+task-choice-render-owner	0x14042bf	0x214d45a	cstring	Friendly fighter
+task-choice-render-owner	0x140431e	0x214d484	cstring	Former master
+task-choice-render-owner	0x14043e6	0x2213224	cstring	Pet
+task-choice-render-owner	0x1404445	0x214d4a4	cstring	Considers quarreler
+task-choice-render-owner	0x14044a4	0x214d479	cstring	Apprentice
+task-choice-render-owner	0x1404503	0x214d4b8	cstring	Considers flatterer
+task-choice-render-owner	0x1404562	0x221322c	cstring	Companion
+task-choice-render-owner	0x14045c1	0x214d492	cstring	Former apprentice
+task-choice-render-owner	0x1404620	0x2175996	cstring	Master
+task-choice-render-owner	0x140467f	0x214d31d	cstring	Considers monster
+task-choice-render-owner	0x14046de	0x214d4f9	cstring	Treasure hunter
+task-choice-render-owner	0x140473d	0x214d1ff	cstring	Bonded
+task-choice-render-owner	0x140479c	0x214d27d	cstring	Persecutor
+task-choice-render-owner	0x14047f1	0x214d414	cstring	Comrade
+task-choice-render-owner	0x1404850	0x214d2b3	cstring	Supernatural vengeance
+task-choice-render-owner	0x14048a5	0x214d1f2	cstring	Father
+task-choice-render-owner	0x1404904	0x214d25f	cstring	Athletic rival
+task-choice-render-owner	0x1404959	0x214d37a	cstring	Considers poet
+task-choice-render-owner	0x14049b8	0x2213168	cstring	Thief
+task-choice-render-owner	0x1404a17	0x214d3a9	cstring	Considers violent
+task-choice-render-owner	0x1404a76	0x214d288	cstring	Religious persecutor
+task-choice-render-owner	0x1404acb	0x214d436	cstring	Member of hated group
+task-choice-render-owner	0x1404b2a	0x214d4cc	cstring	Protector of the weak
+task-choice-render-owner	0x1404b89	0x20f7337	cstring	Child
+task-choice-render-owner	0x1404bfd	0x214d2da	cstring	Disliked
+task-choice-render-owner	0x1404c52	0x214d32f	cstring	Considers brigand
+task-choice-render-owner	0x1404cb1	0x214d46b	cstring	Loyal soldier
+task-choice-render-owner	0x1404d10	0x214d29d	cstring	Grudge
+task-choice-render-owner	0x1404d65	0x214d2e3	cstring	Long-term acquaintance
+task-choice-render-owner	0x1404dc4	0x214d2a4	cstring	Jealous grudge
+task-choice-render-owner	0x1404e19	0x214d3f0	cstring	Considers killer
+task-choice-render-owner	0x1404e78	0x214d26e	cstring	Business rival
+task-choice-render-owner	0x1404ecd	0x214d1e4	cstring	Spouse
+task-choice-render-owner	0x1404f57	0x214d389	cstring	Considers bard
+task-choice-render-owner	0x1404fb6	0x214d3bb	cstring	Considers psychotic
+task-choice-render-owner	0x1405015	0x214d44c	cstring	Enemy fighter
+task-choice-render-owner	0x14050dd	0x214d341	cstring	Considers bully
+task-choice-render-owner	0x140513c	0x214d2d4	cstring	Hated
+task-choice-render-owner	0x1405191	0x214d351	cstring	Considers preacher
+task-choice-render-owner	0x14051f0	0x214d2ca	cstring	Pure hate
+task-choice-render-owner	0x1405289	0x214d2fa	cstring	Passing acquaintance
+task-choice-render-owner	0x14052e8	0x214d401	cstring	Considers murderer
+task-choice-render-owner	0x1405347	0x214d1eb	cstring	Mother
+task-choice-render-owner	0x14053a6	0x214d22d	cstring	Fellow athlete
+task-choice-render-owner	0x14053fb	0x214d30f	cstring	Hero
+task-choice-render-owner	0x140545a	0x214d41c	cstring	Member of respected group
+task-choice-render-owner	0x14054b9	0x214d1f9	cstring	Lover
+task-choice-render-owner	0x1405518	0x22132a0	cstring	Obsession
+task-choice-render-owner	0x14055b8	0x212fec6	cstring	Deity
+task-choice-render-owner	0x140560d	0x214d3e1	cstring	Friendly terms
+task-choice-render-owner	0x140566c	0x214d1da	cstring	Pet owner
+task-choice-render-owner	0x14056cb	0x214d21f	cstring	Fellow artist
+task-choice-render-owner	0x1405724	0x212fece	cstring	Force
+task-choice-render-owner	0x1405779	0x212c291	cstring	Object of worship
+task-choice-render-owner	0x14057e3	0x214d258	cstring	Friend
+task-choice-render-owner	0x1405838	0x212c291	cstring	Object of worship
+task-choice-render-owner	0x140588d	0x214d210	cstring	Fellow scholar
+task-choice-render-owner	0x14058e2	0x214d24b	cstring	Close friend
+task-choice-render-owner	0x1405937	0x214d206	cstring	War buddy
+task-choice-render-owner	0x140598c	0x214d23c	cstring	Kindred spirit

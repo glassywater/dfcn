@@ -30718,6 +30718,7 @@ Toggle whether the task will be repeated indefinitely.	切换此任务是否无�
 We checked that stone for heat! What devilry is this?!	我们明明检查过那块石头的温度！这是什么邪术？！	hP
 What will you say about the refusal to accept tribute?	关于拒收贡品，你想说些什么？	hP
 When unpaused, a worker should now build the Workshop.	[C:7:0:0]解除暂停后，工人应该就会开始建造[C:6:0:0]工坊[C:7:0:0]。	hq
+Workshop recipe: format at least available leather/dye	可用皮革／染料：至少{d}	l
 World artifact claim: Claimed by your local government	你所在地区的政府宣称拥有	h
 You are considered an integral part of the opposition.	你被视为反对者中不可或缺的一员。	hP
 You are in the middle of a sermon on the value of {s}.	你正在布道，宣讲{s1}的价值。	hPt
@@ -31790,6 +31791,7 @@ This visitor has come {s}. She was curious about {e}.	这位访客前来{s1}。�
 Visitor overview purpose: seeking work as a mercenary	寻找佣兵的工作	hl
 Visitor overview purpose: seeking work as a performer	寻找表演者的工作	hl
 With singular purpose it seeks to destroy the living.	它一心要毁灭生者。	h
+Workshop recipe: format at least available thread/dye	可用线材／染料：至少{d}	l
 Workshop recipe: state extract-bearing small creature	含可提取物	l
 Writing materials include paper and parchment sheets.	书写材料包括纸张和兽皮纸。	hP
 Written on the item is an untitled , authored by {n}.	物品上写有{n1}撰写的无题作品，类型未注明。	ht
@@ -33062,6 +33064,7 @@ Work orders are used to automate Tasks in Workshops.	[C:7:0:0]工单用于自动
 Work orders are used to automate Tasks in Workshops.	工作命令用于自动安排工坊中的任务。	wl
 Work orders can be added specifically for this shop.	可以添加专用于此工坊的工单。	hP
 Workshop recipe: body capability parchment-producing	生皮	l
+Workshop recipe: format at least available cloth/dye	可用布料／染料：至少{d}	l
 Workshop recipe: kind extract-bearing small creature	小型生物	l
 Written on the item is a entitled {b}, authored by .	物品上写有《{b1}》，作品类型及作者姓名未注明。	ht
 Yes, you'd make a fantastic {s} here. Make us proud!	好，你来当{s1}一定很出色。可要给我们争气！	hPt
@@ -34255,6 +34258,7 @@ What will you say about the artifact's destruction?	关于造物被毁，你想�
 What will you say about the failed peace agreement?	关于和平协议破裂，你想说些什么？	hP
 With shelter ready underground, it's time to build.	地下避难场所已经就绪，该开始建造了。	hq
 With them come monstrous siege engineers and a {s}!	可怕的攻城巨兽和一只{s1}也随军而来！	hPt
+Workshop recipe: memorial entombed and memorialized	已安葬并铭记	l
 You are now in control of {e}, ruling {e} from {e}.	你现在掌控了{e1}，从{e3}统治着{e2}。	hPt
 You can limit work orders to a number of Workshops.	[C:7:0:0]你可以限制执行订单的[C:6:0:0]工坊[C:7:0:0]数量。	hq
 You can't build until you stop riding this vehicle.	你必须先离开乘坐的车辆，才能建造。	hP
@@ -41182,6 +41186,7 @@ Unrotten non-pressed oil-bearing leaf or fruit	未腐烂的含油果实/叶子	w
 Well, there must be something else to discuss.	好吧，总还有别的事情可谈。	hP
 What will you say about the failed occupation?	关于占领失败，你想说些什么？	hP
 What will you say about the site's foundation?	关于此地的建立，你想说些什么？	hP
+Workshop recipe: format at least available dye	可用染料：至少{d}	l
 Workshop recipe: state processable (to barrel)	可加工并装入桶	l
 Workshop recipe: state tameable small creature	可驯服	l
 You can zoom in and out of the play area using	你可以缩放游戏区域，使用	hq
@@ -42720,6 +42725,7 @@ While defeated, the latter escaped unscathed.	后者虽被击败，却毫发无�
 Wilderness irritation minimum (less = sooner)	荒野激怒值下限（越低越早来袭）
 Window is resizable (takes effect on restart)	窗口可调整大小 (重启后生效)	w
 Workshop mood sketch: pictures of rough gems.	画着粗糙宝石。	l
+Workshop recipe: format available leather/dye	可用皮革／染料：{d}	l
 Workshop recipe: kind tameable small creature	小型生物	l
 Workshop recipe: state folded sheet protector	用于保护折叠纸张	l
 Workshop recipe: state small object container	用于盛装小件物品	l
@@ -44372,6 +44378,7 @@ What will you say about the peace agreement?	关于和平协议，你想说些�
 While defeated, the latter escaped unscathed	后者虽被击败，却毫发无伤地逃脱了	h
 Workers cannot be assigned to this building.	无法为此建筑分配工人。	hP
 Workshop mood sketch: pictures of skeletons.	画着骷髅。	l
+Workshop recipe: format available thread/dye	可用线材／染料：{d}	l
 Workshop recipe: format body substance state	由{s}构成	l
 Workshop recipe: format state reaction class	属于{s}反应类别	l
 Workshop recipe: state extract-bearing plant	含可提取物	l
@@ -45927,6 +45934,7 @@ Workshop mood material: leather... skin..."	皮革……兽皮……	l
 Workshop mood sketch: pictures of a forest.	画着森林。	l
 Workshop mood sketch: pictures of a quarry.	画着采石场。	l
 Workshop mood sketch: pictures of cut gems.	画着切割宝石。	l
+Workshop recipe: format available cloth/dye	可用布料／染料：{d}	l
 Workshop recipe: kind extract-bearing plant	植物	l
 Workshop recipe: powder grinding receptacle	粉末研磨容器	l
 Workshop recipe: state extract-bearing fish	含可提取物	l
@@ -47648,9 +47656,12 @@ Wilderness irritation decay (more = safer)	荒野激怒值衰减（越高越安�
 With them comes a {s} from the {s} of {e}!	随军而来的还有一只{s1}，来自{e1}的{s2}！	hPt
 Workshop mood material: raw... crystal..."	粗坯……水晶……	l
 Workshop mood material: rough... color..."	粗糙……色彩……	l
+Workshop recipe: entombed and memorialized	已安葬并铭记	l
+Workshop recipe: format at least available	可用：至少{d}	l
 Workshop recipe: format material body part	由{s}构成的身体部位	l
 Workshop recipe: format quantity with unit	{d}{u}{s}	l
 Workshop recipe: kind extract-bearing fish	鱼	l
+Workshop recipe: memorial not memorialized	未被铭记	l
 Workshop recipe: state heavy object hauler	用于搬运重物	l
 Workshop recipe: state meat-carving holder	用于切肉时承托	l
 Workshop recipe: state parchment-producing	可制作兽皮纸	l
@@ -55178,8 +55189,10 @@ Workshop recipe: body noun ivory/tooth	长牙或牙齿	l
 Workshop recipe: body substance strand	丝	l
 Workshop recipe: body substance wooden	木头	l
 Workshop recipe: format qualified noun	{s1}的{s2}	l
+Workshop recipe: format slabs engraved	已雕刻{d}块石碑	l
 Workshop recipe: format state -bearing	含{s}	l
 Workshop recipe: material paper-slurry	纸浆	l
+Workshop recipe: memorial memorialized	已铭记	l
 Workshop recipe: state bag-processable	可加工并装袋	l
 Workshop recipe: state games of chance	用于博戏	l
 Workshop recipe: state melt-designated	已指定熔化	l
@@ -57256,8 +57269,10 @@ What will you say about the refugees?	关于难民，你想说些什么？	hP
 Will be assigned to {e}, position {d}	将分配至{e1}，位置{d1}	hPt
 Workers gather outdoor vermin remains	工人收集室外害兽残骸	wi
 Workers ignore outdoor vermin remains	工人不收集室外害兽残骸	wi
+Workshop recipe: [requires ore, fuel]	[需要矿石和燃料]	l
 Workshop recipe: body substance plant	植物组织	l
 Workshop recipe: body substance stone	石材	l
+Workshop recipe: format available dye	可用染料：{d}	l
 Workshop recipe: format material noun	{s1}{s2}	l
 Workshop recipe: material ivory/tooth	长牙或牙齿	l
 Workshop recipe: state display object	用于展示物品	l
@@ -63904,6 +63919,8 @@ With what do you want to interact?	你想与什么互动？	hP
 Work order condition: available is	可用数量	w
 Workshop recipe: format -producing	可产出{s1}的{s2}	l
 Workshop recipe: format laced with	掺有{s2}的{s1}	l
+Workshop recipe: memorial entombed	已安葬	l
+Workshop recipe: no slabs engraved	尚未雕刻石碑	l
 Workshop recipe: state butcherable	可屠宰	l
 Workshop recipe: state fermentable	可发酵	l
 Workshop recipe: state lye-bearing	含碱液	l
@@ -66160,10 +66177,12 @@ What will you say about services?	关于服务，你想说些什么？	hP
 What will you say about the army?	关于这支军队，你想说些什么？	hP
 What will you say about the gang?	关于这个帮派，你想说些什么？	hP
 What will you say about the site?	关于这个地点，你想说些什么？	hP
+Workshop recipe: format available	可用：{d}	l
 Workshop recipe: format kind noun	{s1}类{s2}	l
 Workshop recipe: leaves and fruit	叶和果实	l
 Workshop recipe: liquid container	液体容器	l
 Workshop recipe: material leather	皮革	l
+Workshop recipe: not memorialized	未被铭记	l
 Workshop recipe: state divination	用于占卜	l
 Workshop recipe: state improvable	可改良	l
 Workshop recipe: state magma-safe	耐岩浆	l
@@ -68355,10 +68374,12 @@ Verbally struggle against terror	说出你与恐惧的抗争	hP
 Whom does your identity worship?	你所采用的身份崇拜谁？	wl
 Will do available tasks anywhere	完成可执行的所有工作	wi
 Work order condition button: Adj	属性	w
+Workshop recipe: [requires fuel]	[需要燃料]	l
 Workshop recipe: body noun pearl	珍珠	l
 Workshop recipe: body noun shell	壳	l
 Workshop recipe: format -bearing	含{s1}的{s2}	l
 Workshop recipe: format join and	{s1}和{s2}	l
+Workshop recipe: format memorial	{s1}，{s2}	l
 Workshop recipe: format quantity	{d} {s}	l
 Workshop recipe: games of chance	博戏用具	l
 Workshop recipe: limb/body casts	肢体/身体石膏	l
@@ -70582,6 +70603,7 @@ Verbally struggle against grief	说出你与悲伤的抗争	hP
 Verbally struggle against shock	说出你与震惊的抗争	hP
 Warning: stockpile has no type.	注意：储物堆尚未设置类型。	hP
 We shall bring {n} home safely.	我们一定会把{n1}平安带回家。	hPt
+Workshop recipe: [requires ore]	[需要矿石]	l
 Workshop recipe: body noun bone	骨头	l
 Workshop recipe: body noun horn	角／蹄	l
 Workshop recipe: display object	展示用具	l
@@ -70598,6 +70620,7 @@ Workshop recipe: material plant	植物	l
 Workshop recipe: material shell	壳	l
 Workshop recipe: material stone	石材	l
 Workshop recipe: meal container	餐食容器	l
+Workshop recipe: memorial ghost	幽灵	l
 Workshop recipe: shield/buckler	盾牌/小圆盾	l
 Workshop recipe: stand-and-work	站立作业用具	l
 Workshop recipe: state bookcase	用作书柜	l
@@ -73122,6 +73145,7 @@ Workshop recipe: material silk	丝质	l
 Workshop recipe: material soap	肥皂	l
 Workshop recipe: material yarn	纱线	l
 Workshop recipe: meat cleaving	劈肉用具	l
+Workshop recipe: slab engraved	已雕刻石碑	l
 Workshop recipe: state dyeable	可染色	l
 Workshop recipe: state perfect	完美	l
 Workshop recipe: stone boulder	石块	l
@@ -75585,6 +75609,7 @@ Workshop recipe: material gem	宝石	l
 Workshop recipe: material wax	蜂蜡	l
 Workshop recipe: meat carving	切肉用具	l
 Workshop recipe: meat slicing	切肉片用具	l
+Workshop recipe: memorialized	已铭记	l
 Workshop recipe: paper-slurry	纸浆	l
 Workshop recipe: sheet roller	卷筒	l
 Workshop recipe: state bloody	含血	l
@@ -84506,6 +84531,7 @@ What do you want to drop?	你想丢下什么？	hP
 What do you want to know?	你想了解什么？	hP
 What do you want to wear?	你想穿戴什么？	hP
 Workshop recipe: charcoal	木炭	l
+Workshop recipe: entombed	已安葬	l
 Workshop recipe: kind dye	染料	l
 World mission: Rescue {n}	营救：{n}	ht
 World site action: At war	处于战争状态	hi
@@ -90494,6 +90520,7 @@ Witnessed item missing	目击物品失踪	w
 Workers gather animals	工人搬运动物	wi
 Workers ignore animals	工人不搬运动物	wi
 Workshop recipe: cloth	布匹	l
+Workshop recipe: ghost	幽灵	l
 Workshop recipe: glaze	釉料	l
 Workshop recipe: items	物品	l
 Workshop recipe: pearl	珍珠	l

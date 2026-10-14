@@ -2394,6 +2394,12 @@ static void capture_native_limited_caption_draw(graphicst *graphics, const Nativ
         // paragraph recovery; the clipped-caption registry independently
         // proves the visible prefix to the map text filter.
         if (width > 0 || first != x || info_title_kind != NativeInfoTitleKind::None ||
+#ifndef _WIN32
+                (native_caller &&
+                 (native_caller == native_reference_address(native_history_profile_base(), 0xfd11ed) ||
+                  native_caller == native_reference_address(native_history_profile_base(), 0xfd1288) ||
+                  native_caller == native_reference_address(native_history_profile_base(), 0xfd138e))) ||
+#endif
                 civilization_field != NativeCivilizationField::None || mission_title ||
                 location_picker_field != NativeLocationPickerField::None || fortress_labor_caption ||
                 travel_building_field != NativeTravelBuildingField::None ||

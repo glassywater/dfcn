@@ -75,6 +75,42 @@ std::optional<std::string> Overlay::translate_workshop_recipe_source(
         if (const auto found = memo.find(key); found != memo.end()) return found->second;
         const auto resolve = [&]() -> std::optional<std::string> {
             if (auto target = scoped("", folded); complete(target)) return target;
+            // The chooser's additional field is independent of its red
+            // requirement. Native 13841c0 writes an integer availability,
+            // optionally prefixed by "At least" and a paired dye resource.
+            constexpr std::string_view available_suffix = " available";
+            if (folded.ends_with(available_suffix)) {
+                size_t begin = folded.starts_with("at least ") ? 9 : 0;
+                size_t end = begin;
+                while (end < folded.size() && folded[end] >= '0' && folded[end] <= '9') ++end;
+                const size_t suffix = folded.size() - available_suffix.size();
+                if (end > begin && end <= suffix) {
+                    const auto resource = trim_view(std::string_view(folded).substr(end, suffix - end));
+                    if (resource.empty() || resource == "dye" || resource == "thread/dye" ||
+                        resource == "cloth/dye" || resource == "leather/dye") {
+                        const std::string key = std::string(begin ? "at least available" : "available") +
+                            (resource.empty() ? "" : " " + std::string(resource));
+                        return format(key, {{"{d}", std::string(value.substr(begin, end - begin))}});
+                    }
+                }
+            }
+            // Memorial choices append a live slab count to this same field.
+            constexpr std::string_view slabs = " slabs engraved";
+            if (folded.ends_with(slabs)) {
+                const auto count = std::string_view(folded).substr(0, folded.size() - slabs.size());
+                if (!count.empty() && std::all_of(count.begin(), count.end(),
+                        [](char ch) { return ch >= '0' && ch <= '9'; }))
+                    return format("slabs engraved", {{"{d}", std::string(count)}});
+            }
+            // The memorial status and slab state are emitted together.
+            const auto memorial = folded.find(", ");
+            if (memorial != std::string::npos) {
+                const auto status = scoped("memorial ", folded.substr(0, memorial));
+                if (complete(status)) {
+                    const auto slab = self(self, value.substr(memorial + 2), depth + 1);
+                    if (slab) return format("memorial", {{"{s1}", *status}, {"{s2}", *slab}});
+                }
+            }
             // The searchable task list wraps the same native requirement
             // noun used in recipe cards. Keep its brackets and translate the
             // whole item, including instrument names and scoped piece terms.

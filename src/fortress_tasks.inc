@@ -849,11 +849,55 @@ std::vector<WorkshopTaskCard> Overlay::capture_workshop_task_rows(
         }
         return card;
     };
+    const auto clipped = captured_clipped_captions();
+    const auto drawn = captured_native_drawn_text_rows();
+    const uintptr_t native_base = native_history_profile_base();
+    const auto task_choice_draw = [&](const NativeDrawnTextRow &draw) {
+#ifndef _WIN32
+        // Decompiled mainview owner 13c7f90: virtual+8 supplies the title;
+        // virtual+58/+60 supply the two independent annotation strings.
+        // The colored material swatch interrupts the left rectangle edge,
+        // so these text submissions do not require a closed button skin.
+        return native_base && draw.caption_source && !draw.editable_text &&
+            (draw.native_caller == native_reference_address(native_base, 0xfd11ed) ||
+             draw.native_caller == native_reference_address(native_base, 0xfd1288) ||
+             draw.native_caller == native_reference_address(native_base, 0xfd138e));
+#else
+        return false;
+#endif
+    };
     const auto append_candidates = [&](const SDL_Rect &search, int right, int bottom,
                                         int minimum_right, bool condition = false) {
         const int content_y = search.y + search.h;
         const int left = search.x + 2;
         for (int y = content_y; y < bottom; ++y) {
+            if (!condition) {
+                bool owned = false;
+                for (const auto &draw : drawn) {
+                    if (draw.y != y || !task_choice_draw(draw) || draw.x < search.x ||
+                        draw.x >= right || draw.source.empty() ||
+                        draw.source.size() > static_cast<size_t>(right - draw.x) ||
+                        !current(draw.x, y, draw.source) ||
+                        std::string_view(rows[y]).substr(draw.x, draw.source.size()) != draw.source)
+                        continue;
+                    auto card = capture_panel_text_card(
+                        {draw.x, y, static_cast<int>(draw.source.size()), 1}, true);
+                    if (!card || !current_card(*card) || card->rows.size() != 1 ||
+                        card->rows.front().source != draw.source) continue;
+                    // Keep the complete pre-clipping text and the native text
+                    // inset. Only this draw's bytes belong to suppression;
+                    // the swatch, scrollbar and adjoining fields stay live.
+                    card->rows.front().complete_source = draw.complete_source;
+                    card->interior = {draw.x, y, right - draw.x - 1, 1};
+                    if (card->interior.w <= 0) continue;
+                    WorkshopTaskCard choice(std::move(*card));
+                    choice.condition_choice = draw.native_caller !=
+                        native_reference_address(native_base, 0xfd11ed);
+                    choices.push_back(std::move(choice));
+                    owned = true;
+                }
+                if (owned) continue;
+            }
             if (condition) {
                 const auto caption = native_work_order_trait_text_rect(
                     *gps_, search.x, y, right);
@@ -886,6 +930,13 @@ std::vector<WorkshopTaskCard> Overlay::capture_workshop_task_rows(
             if (!button || button->x + button->w < minimum_right ||
                 button->x + button->w > right || button->y < content_y ||
                 button->y + button->h > bottom) continue;
+            if (!condition && std::any_of(drawn.begin(), drawn.end(),
+                    [&](const NativeDrawnTextRow &draw) {
+                        return task_choice_draw(draw) && draw.x >= button->x &&
+                            draw.x < button->x + button->w && draw.y >= button->y &&
+                            draw.y < button->y + button->h &&
+                            current(draw.x, draw.y, draw.source);
+                    })) continue;
             if (std::any_of(choices.begin(), choices.end(), [&](const NativeTextCard &card) {
                     return card.interior.x == left && card.interior.y == button->y;
                 })) continue;
@@ -902,8 +953,6 @@ std::vector<WorkshopTaskCard> Overlay::capture_workshop_task_rows(
     // remaining/total text disappears while entering an amount (including
     // an empty buffer and the cursor's off phase); it is never an anchor.
     // Both the fortress list and a workshop tab use this same capture.
-    const auto clipped = captured_clipped_captions();
-    const auto drawn = captured_native_drawn_text_rows();
     for (int tabs_y = 0; tabs_y < gps_->dimy; ++tabs_y) {
         auto tabs = workshop_task_tab_fields(rows[tabs_y]);
         if (tabs.empty()) {
