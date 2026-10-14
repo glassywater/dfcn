@@ -1,0 +1,36 @@
+object	field	ELF_address_or_offset	native_source
+d_interface	announcement_alert	0x26f8308	1684d22 passes its address to 1673400; 16911b6 reads open
+d_interface	current_hover_alert	0x26fe358	1683b00 stores the hovered alert; 167cced/1683898 reset frame selection
+d_interface	hover_announcement_alert	0x2701dd0	1683af9 compares the cached owner before rewrapping
+d_interface	hover_announcement_alert_text	0x2701dd8	1683d67 and 16859d6 pass its row vector to native wrap
+d_interface	hover_announcement_alert_width	0x2701e20	1683b80 sets 80; 16911e0 reads hover frame width
+d_interface	hover_announcement_alert_button_text	0x2701e28	169ed0d and 169ee0b pass its row vector to native wrap
+d_interface	hover_announcement_alert_button_width	0x2701e70	169a012 sets 80; 169f2cb reads hover frame width
+announcement_alert_interfacest	open	0x0	16911b6 and 1684d09
+announcement_alert_interfacest	viewing_alert	0x8	1673400 decompiled param_1[1]
+announcement_alert_interfacest	viewing_alert_button	0x10	1673400 decompiled char at param_1+2
+announcement_alert_interfacest	zoom_line_is_start	0x18	1673400 decompiled 64-bit bit-vector words at param_1[3]
+announcement_alert_interfacest	zoom_line_ann	0x40	1673400 decompiled param_1[8]
+announcement_alert_interfacest	zoom_line_unit	0x58	1673400 decompiled param_1[0xb]
+announcement_alert_interfacest	zoom_line_unit_uac	0x70	1673400 decompiled param_1[0xe]
+announcement_alert_interfacest	alert_text	0x88	1673400 decompiled param_1[0x11]
+announcement_alert_interfacest	alert_width	0xa0	1673400 decompiled int at param_1+0x14
+announcement_alert_interfacest	viewing_unit	0xb0	1673400 decompiled param_1[0x16]
+announcement_alert_interfacest	viewing_unit_uac	0xb8	1673400 decompiled short at param_1+0x17
+announcement_alert_interfacest	uac_zoom_line_is_start	0xc0	1673400 decompiled param_1[0x18]
+announcement_alert_interfacest	uac_zoom_line_ann	0xe8	1673400 decompiled param_1[0x1d]
+announcement_alert_interfacest	uac_text	0x100	1673400 decompiled param_1[0x20]
+announcement_alert_interfacest	uac_width	0x118	1673400 decompiled int at param_1+0x23
+GCC vector<bool>	start word pointer and bit offset	0x0,0x8	1673400 indexes packed uint64_t start words
+GCC vector<bool>	finish word pointer and bit offset	0x10,0x18	1673400 updates finish position after each row group
+GCC vector<bool>	storage end pointer	0x20	GCC bit-vector allocation and growth in 1673400
+announcement_alertst	announcement_id	0x8	1683c4d..1683ca9 reads IDs in order
+announcement_alertst	report_unid	0x20	1683c6b..1683e6a reads unit IDs
+announcement_alertst	report_unit_announcement_category	0x38	1683c6f and 1683f50 read parallel int16 categories
+world.status	reports	0x28154f8	1683c55/169ec57 pass this vector to 1648710
+world.status	alert_button_announcement_id	0x2815610	167ce77/167ce85 and 1673400 read the button's ID vector
+world.units	all	0x2716d60	1683e5c..1683e9d performs binary lookup by unit ID
+report	text	0x8	1683d18/169eccf; shared generated report declaration
+report	repeat_count	0x34	1683cf4/169ec9c; shared generated report declaration
+report	id	0x50	1648710 compares the actual report-ID field
+unit	id	0x130	1683e9d; shared generated unit declaration

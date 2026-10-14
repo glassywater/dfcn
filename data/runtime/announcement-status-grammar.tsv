@@ -1,0 +1,4 @@
+# Complete native growth report, shared by hover, expanded alerts and report history.
+# scope	source	target	field scopes	native provenance
+fortress-announcement	An animal has grown to become a {s}.	一只动物长成了{s1}。	$growth-result	ELF c20a54..c20b9b; selected name absent or has_name=false; b71ba0(unit,result,true); announcement 0x116
+fortress-announcement	{s} has grown to become a {s}.	{s1}长成了{s2}。	$person,$growth-result	ELF c2963e..c29646 -> c20a81..c20b9b; b33570 selected language_name -> 12bfe90; b71ba0(unit,result,true); announcement 0x116

@@ -10063,6 +10063,7 @@ Announcement combat agreement-title-core [agreement-party-list,$office,$name]: {
 Announcement combat conversation-conflict-account [conversation-conflict-slain-list]: you slew {s}	你杀死了{s1}	l
 Announcement combat conversation-conflict-target [conversation-conflict-entity]: the forces of {s}	{s1}的部队	l
 Announcement combat diplomacy-cause []: the adversary's inability to communicate and form treaties	对方无法沟通和缔结条约	l
+Announcement combat fortress-announcement [$person,$growth-result]: {s} has grown to become a {s}.	{s1}长成了{s2}。	l
 Announcement combat fortress-announcement [$unit,$job,$unit]: {s} cancels {s}: Interrupted by {s}.	{s1}取消了{s2}：被{s3}打断。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Already leading creature.	{s1}取消了{s2}：已在牵引生物。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Inappropriate dig square.	{s1}取消了{s2}：挖掘方格不合适。	l
@@ -10493,6 +10494,7 @@ Announcement combat attack-notice []: Something evil is emerging from this newly
 Announcement combat diplomacy-cause []: a desire to kill the living and any others in opposition	想杀死生者和所有其他反对者	l
 Announcement combat diplomatic-event-core [$name,$name]: {s} accepted an offer of peace from {s}	{s1}接受了{s2}的议和提议	l
 Announcement combat diplomatic-event-core [$name,$name]: {s} rejected an offer of peace from {s}	{s1}拒绝了{s2}的议和提议	l
+Announcement combat fortress-announcement [$growth-result]: An animal has grown to become a {s}.	一只动物长成了{s1}。	l
 Announcement combat fortress-announcement [$unit,$job,$requirement]: {s} cancels {s}: Needs {s}.	{s1}取消了{s2}：需要{s3}。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Inappropriate building.	{s1}取消了{s2}：建筑不合适。	l
 Announcement combat fortress-arrival []: Migrants were too wary to make the journey this season.	本季移民因太过警惕，未敢踏上旅途。	l

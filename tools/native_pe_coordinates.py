@@ -298,6 +298,7 @@ def _file_coordinates(name: str, tokens: list[str], required: dict[int, int], el
         'native_pe_rva': 0, 'native_pe_bytes': 0, 'native_reference_rva': 0,
         'native_reference_bytes': 0, 'native_pe_address': 1,
         'native_reference_address': 1, 'native_pe_match': 1,
+        'native_fortress_alert_address': 2 if elf else 1,
     }
     if elf:
         apis.update({'native_reference_va': 0, 'native_elf_history_address': 0})

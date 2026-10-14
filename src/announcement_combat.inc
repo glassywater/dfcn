@@ -460,6 +460,13 @@ std::optional<std::string> Overlay::translate_announcement_combat(
         }
         if (scope == "$body") return finish(translate_legends_anatomy(input));
         if (scope == "$creature") return finish(translate_creature_reference(input));
+        if (scope == "$growth-result") {
+            // c20abf calls b71ba0 with the post-growth unit, retaining its
+            // caste/status/name/decimal ID or adult occupation as one field.
+            auto result = translate_creature_label(input, nullptr, true);
+            if (!result) result = translate_unit_profession(input, false);
+            return finish(std::move(result));
+        }
         if (scope == "$conflict-caste") {
             // The conflict constructor passes the RAW caste and plural flag
             // directly to a0d5f0/12ae800, without a unit or item designation.

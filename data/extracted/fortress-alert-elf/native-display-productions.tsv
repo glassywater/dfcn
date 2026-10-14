@@ -1,0 +1,37 @@
+owner	branch	source	field_source	native_instructions	translation_path
+alert-hover-renderer	ALERT control	ALERT	fixed caption	167dc69	ordinary interface catalogue
+alert-hover-renderer	ALERT-button hover	Left click for recenter and expand options.  Right click to dismiss.	fixed caption	169f3de..169f43b	complete instruction catalogue
+alert-hover-renderer	individual-alert hover	Left click for recenter and expand options.  Right click to dismiss.	fixed caption	1691478..16914b4	complete instruction catalogue
+alert-hover-renderer	ALERT-button report; repeat<=0	{report.text}	report selected by native report ID; report+8	169ec65..169ee10	native parent report -> complete announcement parser
+alert-hover-renderer	ALERT-button report; repeat>0	{report.text} x{repeat+1}	report selected by native report ID; count at report+0x34	169ecb1..169ed12	complete announcement parser; separate numeric repeat suffix
+alert-hover-renderer	individual-alert report; repeat<=0	{report.text}	alert.announcement_id -> report+8	1683ca9..1683cf9;16859cc	complete announcement parser
+alert-hover-renderer	individual-alert report; repeat>0	{report.text} x{repeat+1}	alert.announcement_id -> report+8; count at report+0x34	1683cff..1683d6e	complete announcement parser; separate numeric repeat suffix
+alert-hover-renderer	missing report ID		1648710 returns not-found; renderer skips entry	1683cbc..1683cd6;169ec78..169ec8f	no text emitted
+alert-hover-renderer	unit category 0	{unit.name} is fighting!	unit ID -> b676a0; capitalize via 424f90	1683e5c..1684114;1683f50;16852f7	native unit identity; complete fighting summary
+alert-hover-renderer	unit category 1	{unit.name} is sparring.	unit ID -> b676a0; capitalize via 424f90	1683e5c..1684114;1683f55;1685327	native unit identity; complete sparring summary
+alert-hover-renderer	unit category 2	{unit.name} is hunting.	unit ID -> b676a0; capitalize via 424f90	1683e5c..1684114;1683f5f;168530f	native unit identity; complete hunting summary
+alert-hover-renderer	missing unit; category 0	Somebody is fighting!	failed unit-ID lookup; fixed Somebody fallback	1683eb7..1683edc;16852f7	Somebody catalogue; complete fighting summary
+alert-hover-renderer	missing unit; category 1	Somebody is sparring.	failed unit-ID lookup; fixed Somebody fallback	1683eb7..1683edc;1685327	Somebody catalogue; complete sparring summary
+alert-hover-renderer	missing unit; category 2	Somebody is hunting.	failed unit-ID lookup; fixed Somebody fallback	1683eb7..1683edc;168530f	Somebody catalogue; complete hunting summary
+alert-hover-renderer	unit category outside 0..2	{unit.name|Somebody} is 	native category switch appends no verb	1683f50..1683f72	native identity only; preserve empty status branch
+alert-popup-renderer	selected unit has priority	You can recenter on certain announcements.  Right click to close.	fixed instruction assembled with four SIMD chunks and final period	167372e..1673788	complete instruction catalogue
+alert-popup-renderer	ALERT-button selection	You can recenter on certain announcements.  Right click to close.	fixed instruction	1674824	complete instruction catalogue
+alert-popup-renderer	selected alert with unit reports	Select a report to view the full text.  Right click to close.	fixed instruction assembled with SIMD chunks and inline ending	16742f4..167434a	complete instruction catalogue
+alert-popup-renderer	selected alert without unit reports	You can recenter on certain announcements.  Right click to close.	fixed instruction assembled with SIMD chunks and final period	16749e5..1674a3f	complete instruction catalogue
+alert-popup-renderer	selected-unit report; repeat<=0	{report.text}	parallel uac_zoom_line_ann; report+8	1673400..16765dd	complete parent report; own wrapped rows and viewport
+alert-popup-renderer	selected-unit report; repeat>0	{report.text} x{repeat+1}	parallel uac_zoom_line_ann; report+0x34	1674e9c;16753f1	complete parent report; separate repeat suffix
+alert-popup-renderer	ALERT-button report; repeat<=0	{report.text}	parallel zoom_line_ann; report+8	1673400..16765dd	complete parent report; own wrapped rows and viewport
+alert-popup-renderer	ALERT-button report; repeat>0	{report.text} x{repeat+1}	parallel zoom_line_ann; report+0x34	1674b73;1675ddb	complete parent report; separate repeat suffix
+alert-popup-renderer	selected-alert report; repeat<=0	{report.text}	parallel zoom_line_ann; report+8	1673400..16765dd	complete parent report; own wrapped rows and viewport
+alert-popup-renderer	selected-alert report; repeat>0	{report.text} x{repeat+1}	parallel zoom_line_ann; report+0x34	16756f2;1675f7e	complete parent report; separate repeat suffix
+alert-popup-renderer	selected-alert unit category 0	{unit.name} is fighting!	parallel zoom_line_unit and zoom_line_unit_uac	1675a6f;1675dec	complete typed unit summary
+alert-popup-renderer	selected-alert unit category 1	{unit.name} is sparring.	parallel zoom_line_unit and zoom_line_unit_uac	1675a6f;1675e14	complete typed unit summary
+alert-popup-renderer	selected-alert unit category 2	{unit.name} is hunting.	parallel zoom_line_unit and zoom_line_unit_uac	1675a6f;1675e00	complete typed unit summary
+alert-popup-renderer	selected-alert unit category outside 0..2	{unit.name} is 	native switch default; no status verb	1675a6f;1675e36	identity only; preserve empty status branch
+alert-popup-renderer	padding and wrapping	{row.text}	GCC vector<bool> marks report boundaries; at least three rows per entry	1673400..16765dd	owned report rows; discard padding for translation
+unit-status-growth-producer	no resulting profession; no eligible growth or notifications disabled		profession/age/state and announcement policy gates	c20978..c20a24; c20bdc	no invented notification
+unit-status-growth-producer	selected name absent or has_name=false	An animal has grown to become a {result}.	b33570; absent name or name+0x72 false; b71ba0 post-growth unit caption	c20a54..c20b9b	fortress-announcement; typed growth-result field
+unit-status-growth-producer	selected name has_name=true	{name} has grown to become a {result}.	b33570 -> 12bfe90; b71ba0 post-growth unit caption	c2963e..c29646 -> c20a81..c20b9b	fortress-announcement; person plus typed growth-result field
+growth-result-caption	caste/species/profession	{role}	b6c100; creature RAW and caste/sex/age branches; Peasant fallback	b71ba0..b72c8d; b6c100	captured unit identity; complete creature or occupation vocabulary
+growth-result-caption	authored or selected identity	{name|custom profession|position}	native selected name, custom-profession and historical-office fields	b71ba0..b72c8d;858b80	native field identity; preserve authored names
+growth-result-caption	unit modifiers and numeric identity	{prefix}{caption}[ {id}][ {suffix}]	native Stray/Fierce/Agitated/Ghostly/Corpse/Slave/Prisoner branches; creature numeric identity	b71ba0..b72c8d	captured full unit identity; semantic caste/status/role translation
