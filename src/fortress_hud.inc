@@ -25,7 +25,7 @@ void Overlay::append_fortress_site_name(std::vector<std::string> &rows,
         const auto ranks = split_text_fields(context[y + 2]);
         for (const int population : populations) {
             for (const auto &rank : ranks) {
-                if (!translate_fortress_status(rank.text) || rank.end >= population) continue;
+                if (rank.end >= population || !translate_fortress_status(rank.text)) continue;
                 const int left = rank.start, right = population - 1;
                 if (left >= right) continue;
                 NativeHistoryName name;
@@ -110,17 +110,21 @@ std::vector<SDL_Rect> Overlay::preserve_mod_workshop_names(
                 y >= popup.y && y < popup.y + popup.h;
         });
     };
-    auto draws = captured_native_drawn_text_rows();
-    auto top_draws = captured_native_drawn_text_rows(true);
-    draws.insert(draws.end(), std::make_move_iterator(top_draws.begin()),
-        std::make_move_iterator(top_draws.end()));
+    const std::array draw_snapshots{captured_native_drawn_text_snapshot(),
+        captured_native_drawn_text_snapshot(true)};
+    std::vector<NativeDrawnTextRow> overwritten_draws;
     {
         std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
-        draws.insert(draws.end(), g_native_overwritten_text_rows.begin(),
-            g_native_overwritten_text_rows.end());
+        overwritten_draws = g_native_overwritten_text_rows;
     }
+    const std::array<const std::vector<NativeDrawnTextRow> *, 3> draw_layers{
+        draw_snapshots[0].get(), draw_snapshots[1].get(), &overwritten_draws};
+    std::vector<const NativeDrawnTextRow *> draws;
+    for (const auto *layer : draw_layers)
+        for (const auto &draw : *layer) draws.push_back(&draw);
     const uint64_t epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
-    for (const auto &draw : draws) {
+    for (const auto *draw_source : draws) {
+        const auto &draw = *draw_source;
         if (draw.draw_epoch != epoch || draw.draw_dimx != gps_->dimx ||
                 draw.draw_dimy != gps_->dimy || draw.unit_identity_owner ||
                 draw.info_title_authored || draw.fortress_labor_caption) continue;
@@ -408,18 +412,22 @@ void Overlay::append_hover_picture_captions(std::vector<std::string> &rows,
                 y >= popup.y && y < popup.y + popup.h;
         });
     };
-    auto draws = captured_native_drawn_text_rows();
-    auto top_draws = captured_native_drawn_text_rows(true);
-    draws.insert(draws.end(), std::make_move_iterator(top_draws.begin()),
-        std::make_move_iterator(top_draws.end()));
+    const std::array draw_snapshots{captured_native_drawn_text_snapshot(),
+        captured_native_drawn_text_snapshot(true)};
+    std::vector<NativeDrawnTextRow> overwritten_draws;
     {
         std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
-        draws.insert(draws.end(), g_native_overwritten_text_rows.begin(),
-            g_native_overwritten_text_rows.end());
+        overwritten_draws = g_native_overwritten_text_rows;
     }
+    const std::array<const std::vector<NativeDrawnTextRow> *, 3> draw_layers{
+        draw_snapshots[0].get(), draw_snapshots[1].get(), &overwritten_draws};
+    std::vector<const NativeDrawnTextRow *> draws;
+    for (const auto *layer : draw_layers)
+        for (const auto &draw : *layer) draws.push_back(&draw);
     std::set<std::tuple<int, int, std::string>> owners;
     std::set<std::tuple<int, int, std::string>> physical_rows;
-    for (const auto &draw : draws) {
+    for (const auto *draw_source : draws) {
+        const auto &draw = *draw_source;
         // Labor's live owner preserves authored names and owns its complete
         // captions. Generic hover recovery must not reinterpret those names.
         if (draw.fortress_labor_caption || !draw.picture_frame ||
@@ -529,7 +537,8 @@ void Overlay::append_hover_picture_captions(std::vector<std::string> &rows,
         int right = button.x + button.w;
         // Preserve neighbouring fields even when THEY are inside the popup.
         // Their current native draws, not translated fragments, bound this one.
-        for (const auto &other : draws) {
+        for (const auto *other_source : draws) {
+            const auto &other = *other_source;
             if (!other.picture_frame) continue;
             const auto &other_box = other.picture_frame->text;
             if (other_box.x != button.x || other_box.y != button.y ||

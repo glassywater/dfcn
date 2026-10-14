@@ -35,7 +35,8 @@ void Overlay::append_native_split_ui_messages(std::vector<std::string> &screen_r
     for (bool top_layer : {false, true}) {
         const auto *layer = top_layer ? gps_->screen_top : gps_->screen;
         if (!layer || (screen_override && screen_override != layer)) continue;
-        const auto draws = captured_native_drawn_text_rows(top_layer);
+        const auto draws_snapshot = captured_native_drawn_text_snapshot(top_layer);
+        const auto &draws = *draws_snapshot;
         std::map<std::pair<int, int>, const NativeDrawnTextRow *> positions;
         for (const auto &draw : draws) positions[{draw.x, draw.y}] = &draw;
         const auto current_draw = [&](const NativeDrawnTextRow &draw)

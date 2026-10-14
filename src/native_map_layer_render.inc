@@ -43,17 +43,34 @@ class NativeMapGpuFrame {
     std::optional<NativeUiLayerSdlState> state_;
     bool previous_drawing_ = false;
     bool entered_ = false, bound_ = false;
+    bool source_isolated_ = false;
     int width_ = 0, height_ = 0;
 public:
     explicit NativeMapGpuFrame(void *native_renderer) {
+        if (active_ || !native_renderer) return;
+        native_renderer_ = native_renderer;
+        previous_drawing_ = g_drawing_overlay;
+        previous_ = active_;
+        active_ = this;
+        entered_ = true;
+        // Native display paints viewport/map-port artwork before update_all.
+        // This pass remains artwork when source isolation or a GPU target is
+        // unavailable. Its SDL copies must never enter text glyph discovery.
+        g_drawing_overlay = true;
         auto *gps = native_graphics();
-        if (active_ || !native_renderer || !native_map_background_view(gps) ||
+        if (!native_map_background_view(gps) ||
                 g_native_map_layer.foreground.dimx != gps->dimx ||
-                g_native_map_layer.foreground.dimy != gps->dimy) return;
+                g_native_map_layer.foreground.dimy != gps->dimy) {
+            g_native_map_target_serial = g_native_map_target_layout = 0;
+            return;
+        }
+        source_isolated_ = true;
         std::memcpy(&renderer_, static_cast<unsigned char *>(native_renderer) + 0x108,
             sizeof(renderer_));
-        if (!renderer_) return;
-        native_renderer_ = native_renderer;
+        if (!renderer_) {
+            g_native_map_target_serial = g_native_map_target_layout = 0;
+            return;
+        }
         auto &layer = g_native_map_layer;
         layer.native_renderer = native_renderer;
         layer.renderer = renderer_;
@@ -66,13 +83,8 @@ public:
         const bool new_layout = new_target || layout != g_native_map_target_layout ||
             (g_native_map_target_serial != g_native_map_frame_serial &&
                 g_native_map_frame_serial != g_native_map_target_serial + 1);
-        previous_drawing_ = g_drawing_overlay;
-        previous_ = active_;
-        active_ = this;
-        entered_ = true;
         // Includes allocation failure: native map copies still bypass text
         // capture, and its private ASCII grid is painted before the UI.
-        g_drawing_overlay = true;
         bound_ = g_native_map_target.prepare(renderer_, width_, height_) &&
             state_->bind(g_native_map_target.texture, width_, height_);
         if (bound_ && new_layout) {
@@ -109,7 +121,7 @@ public:
             }
             state_->restore();
         }
-        if (g_native_map_classic) {
+        if (source_isolated_ && renderer_ && g_native_map_classic) {
             // ASCII is a complete fresh grid each producer frame. Give it a
             // separate cleared target so a disappearing glyph cannot survive
             // in the retained graphical viewport/map-port texture.

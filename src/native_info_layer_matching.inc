@@ -39,7 +39,8 @@ std::vector<Match> Overlay::find_native_info_matches() const {
         append_fortress_farm_rows(screen_rows, result, only_y, false);
         append_fortress_place_names(screen_rows, result, only_y, false);
     }
-    const auto clipped_template_captions = captured_clipped_captions();
+    const auto clipped_template_snapshot = captured_clipped_caption_snapshot();
+    const auto &clipped_template_captions = *clipped_template_snapshot;
     append_native_map_hover_phrases(screen_rows, result, only_y,
         NativeMapHoverKind::Terrain);
     append_toolbar_tooltip_matches(screen_rows, result, only_y, false);
@@ -181,7 +182,8 @@ std::vector<Match> Overlay::find_native_info_matches() const {
 // never invoke the generic world/item/name pipeline on covered panel cells.
 void Overlay::append_native_info_grid_matches(const std::vector<std::string> &screen_rows,
         std::vector<Match> &result, int only_y, bool fragments) const {
-    const auto clipped_template_captions = captured_clipped_captions();
+    const auto clipped_template_snapshot = captured_clipped_caption_snapshot();
+    const auto &clipped_template_captions = *clipped_template_snapshot;
     const int first_y = only_y < 0 ? 0 : only_y;
     const int end_y = only_y < 0 ? gps_->dimy : only_y + 1;
     for (int y = first_y; y < end_y; ++y) {

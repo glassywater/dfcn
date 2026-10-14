@@ -4,10 +4,10 @@ void Overlay::append_adventure_barter_fields(std::vector<std::string> &rows,
         std::vector<Match> &matches, std::vector<Match> &untranslated,
         int only_y, const unsigned char *screen_override) const {
     if (!gps_ || rows.size() != static_cast<size_t>(gps_->dimy)) return;
-    const std::array batches{captured_native_drawn_text_rows(false),
-        captured_native_drawn_text_rows(true)};
+    const std::array batches{captured_native_drawn_text_snapshot(false),
+        captured_native_drawn_text_snapshot(true)};
     std::vector<const NativeDrawnTextRow *> draws;
-    for (const auto &batch : batches) for (const auto &draw : batch) {
+    for (const auto &batch : batches) for (const auto &draw : *batch) {
         if (draw.adventure_barter_field == NativeAdventureBarterField::None ||
                 draw.source.empty() || draw.x < 0 || draw.y < 0 ||
                 draw.x >= gps_->dimx || draw.y >= gps_->dimy ||

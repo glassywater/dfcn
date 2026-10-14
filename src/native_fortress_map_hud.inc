@@ -28,12 +28,24 @@ static bool native_fortress_map_hud_page() {
         0x18a6ff8, 0x18a4330, 0x18a7200, 0x18a6378,
         0x18a1f78, 0x18a21b0, 0x18a3598, 0x18a2710, 0x18a26e0,
         0x18a2590, 0x18a2cf8, 0x18a2f48, 0x18a41a8, 0x18a1a58,
-        0x18a72a0, 0x18a2ac8, 0x18a4238, 0x18a75b8
+        0x18a72a0, 0x18a2ac8, 0x18a4238
     };
     for (const auto coordinate : closed_states) {
         uint8_t open = 1;
         if (!native_history_copy(native_reference_address(base, coordinate), open) || open)
             return false;
+    }
+    // A minimized guide leaves the same local map HUD active. Its own ink
+    // belongs to the already captured help grid, rather than a main-page
+    // document. An expanded guide or a failed private capture still needs
+    // the complete page pipeline.
+    uint8_t help_open = 1;
+    if (!native_history_copy(native_reference_address(base, 0x18a75b8), help_open))
+        return false;
+    if (help_open) {
+        uint32_t flags = 0;
+        if (!native_history_copy(native_reference_address(base, 0x18a75bc), flags) ||
+                !(flags & 4) || !g_native_help_layer.ready) return false;
     }
     // The native gate calls its popup-queue getter. Borrow the same vector
     // through the existing world layout instead of invoking a game function.

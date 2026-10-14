@@ -236,20 +236,13 @@
         // Reject impossible starts before reading caption skins or rebuilding
         // a panel. These short prefixes are only necessary conditions; retain
         // the original probe order and complete typed matcher below.
-        std::array<bool, 256> template_first{}, template_one{};
-        std::unordered_set<uint32_t> template_two, template_three;
-        bool template_slot_first = false;
-        for (const auto &probe : message_templates) {
-            if (probe.prefix.empty()) { template_slot_first = true; continue; }
-            const auto first = static_cast<unsigned char>(probe.prefix.front());
-            template_first[first] = true;
-            uint32_t prefix = first;
-            if (probe.prefix.size() == 1) { template_one[first] = true; continue; }
-            prefix = (prefix << 8) | static_cast<unsigned char>(probe.prefix[1]);
-            if (probe.prefix.size() == 2) { template_two.insert(prefix); continue; }
-            prefix = (prefix << 8) | static_cast<unsigned char>(probe.prefix[2]);
-            template_three.insert(prefix);
-        }
+        // Prefix rejection depends only on the loaded catalog. Reuse its
+        // committed filter instead of rebuilding sets for every frame/view.
+        const auto &template_first = ui_message_start_filter_.first;
+        const auto &template_one = ui_message_start_filter_.one;
+        const auto &template_two = ui_message_start_filter_.two;
+        const auto &template_three = ui_message_start_filter_.three;
+        const bool template_slot_first = ui_message_start_filter_.slot_first;
         const auto possible_wrap_edge = [&](int first, int last, int y) {
             for (int x = first + 1; x <= last; ++x)
                 // A single-cell encoding context deliberately keeps every

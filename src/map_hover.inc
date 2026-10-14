@@ -49,76 +49,80 @@ static std::optional<NativeDrawnTextRow> native_map_hover_card_draw_for_row(
 // of vocabulary, translation coverage or a retained capture's epoch.
 class NativeMapCardSources {
     struct Draw {
-        int x = 0, y = 0, dimx = 0, dimy = 0;
+        int x = 0, y = 0;
         std::string source;
         uintptr_t address = 0;
         const unsigned char *grid = nullptr;
         bool top_layer = false;
-        std::optional<SDL_Rect> clip;
-        bool document_owned = false;
     };
     const graphicst &gps_;
-    bool ready_ = false;
-    std::array<std::vector<Draw>, 2> draws_;
+    // These snapshots live only for this card capture. Read a document source
+    // only after a current row has an actual, matching native draw.
+    std::array<std::optional<std::vector<NativeAnnouncementParagraph>>, 3> announcements_;
+    std::optional<std::vector<NativeKnowledgeDraw>> rich_;
+    std::vector<NativeKnowledgeDraw> previous_rich_;
 
-    void prepare() {
-        if (ready_) return;
-        ready_ = true;
+    bool owns_matching_draw(const Match &row, int right,
+            const unsigned char *origin_grid, bool origin_top) {
+        std::vector<Draw> draws;
         {
             std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
-            const std::array batches{&g_native_drawn_text_rows, &g_native_drawn_top_text_rows};
-            for (size_t layer = 0; layer < batches.size(); ++layer)
-                for (const auto &draw : *batches[layer]) {
-                    if (!draw.address || draw.source.empty() || !draw.draw_grid ||
-                            draw.draw_dimx != gps_.dimx || draw.draw_dimy != gps_.dimy)
-                        continue;
-                    draws_[layer].push_back({draw.x, draw.y, draw.draw_dimx, draw.draw_dimy,
-                        draw.source, draw.address, draw.draw_grid, draw.top_layer, draw.draw_clip});
-                }
+            const auto &batch = origin_top ? g_native_drawn_top_text_rows : g_native_drawn_text_rows;
+            for (auto at = batch.rbegin(); at != batch.rend(); ++at) {
+                const auto &draw = *at;
+                if (!draw.address || draw.source.empty() || !draw.draw_grid ||
+                        draw.draw_dimx != gps_.dimx || draw.draw_dimy != gps_.dimy ||
+                        draw.x < 0 || draw.x > row.x || draw.y != row.y ||
+                        draw.top_layer != origin_top || draw.draw_grid != origin_grid) continue;
+                if (draw.draw_clip && (row.x < draw.draw_clip->x || row.y < draw.draw_clip->y ||
+                        int64_t(row.x) + static_cast<int64_t>(row.source.size()) >
+                            int64_t(draw.draw_clip->x) + draw.draw_clip->w ||
+                        int64_t(row.y) >= int64_t(draw.draw_clip->y) + draw.draw_clip->h)) continue;
+                const size_t offset = static_cast<size_t>(row.x - draw.x);
+                if (offset > draw.source.size() || std::any_of(draw.source.begin(),
+                        draw.source.begin() + offset, [](unsigned char ch) { return ch != ' '; }))
+                    continue;
+                if (trim_view(std::string_view(draw.source).substr(
+                        offset, static_cast<size_t>(right - row.x))) != row.source) continue;
+                draws.push_back({draw.x, draw.y, draw.source, draw.address,
+                    draw.draw_grid, draw.top_layer});
+            }
         }
+        if (draws.empty()) return false;
         {
             std::lock_guard<std::mutex> lock(g_native_paragraph_mutex);
-            for (auto &batch : draws_)
-                for (auto &draw : batch) {
-                    const NativeParagraphRowKey key{draw.address,
-                        std::hash<std::string_view>{}(draw.source)};
-                    const auto found = g_native_paragraph_row_index.find(key);
-                    if (found == g_native_paragraph_row_index.end()) continue;
-                    for (const auto *capture : found->second) {
-                        const size_t count = std::min(capture->row_addresses.size(),
-                            capture->wrapped_lines.size());
-                        for (size_t line = 0; line < count; ++line)
-                            if (capture->row_addresses[line] == draw.address &&
-                                    capture->wrapped_lines[line] == draw.source) {
-                                draw.document_owned = true;
-                                break;
-                            }
-                        if (draw.document_owned) break;
-                    }
+            for (const auto &draw : draws) {
+                const NativeParagraphRowKey key{draw.address,
+                    std::hash<std::string_view>{}(draw.source)};
+                const auto found = g_native_paragraph_row_index.find(key);
+                if (found == g_native_paragraph_row_index.end()) continue;
+                for (const auto *capture : found->second) {
+                    const size_t count = std::min(capture->row_addresses.size(),
+                        capture->wrapped_lines.size());
+                    for (size_t line = 0; line < count; ++line)
+                        if (capture->row_addresses[line] == draw.address &&
+                                capture->wrapped_lines[line] == draw.source) return true;
                 }
+            }
         }
         const auto own_announcement = [&](const auto &paragraphs) {
-            std::unordered_multimap<uintptr_t, std::string_view> sources;
             for (const auto &paragraph : paragraphs)
                 for (const auto &row : paragraph.rows)
-                    if (row.address && !row.source.empty()) sources.emplace(row.address, row.source);
-            for (auto &batch : draws_)
-                for (auto &draw : batch) {
-                    if (draw.document_owned) continue;
-                    const auto [first, last] = sources.equal_range(draw.address);
-                    for (auto at = first; at != last; ++at)
-                        if (at->second == draw.source) {
-                            draw.document_owned = true;
-                            break;
-                        }
-                }
+                    for (const auto &draw : draws)
+                        if (row.address == draw.address && row.source == draw.source) return true;
+            return false;
         };
-        own_announcement(native_adventure_announcement_paragraphs());
-        own_announcement(native_announcement_log_paragraphs());
-        own_announcement(native_fortress_alert_paragraphs());
-        bool current = false, previous_current = false;
-        std::vector<NativeKnowledgeDraw> previous;
-        const auto rich = captured_native_knowledge_draws(&current, &previous, &previous_current);
+        if (!announcements_[0]) announcements_[0] = native_adventure_announcement_paragraphs();
+        if (own_announcement(*announcements_[0])) return true;
+        if (!announcements_[1]) announcements_[1] = native_announcement_log_paragraphs();
+        if (own_announcement(*announcements_[1])) return true;
+        if (!announcements_[2]) announcements_[2] = native_fortress_alert_paragraphs();
+        if (own_announcement(*announcements_[2])) return true;
+        if (origin_top) return false;
+        if (!rich_) {
+            bool current = false, previous_current = false;
+            rich_ = captured_native_knowledge_draws(&current, &previous_rich_, &previous_current);
+        }
         const auto own_rich = [&](const auto &rows) {
             for (const auto &row : rows) {
                 if (!row.document || row.line < 0 || row.dimx != gps_.dimx ||
@@ -130,15 +134,15 @@ class NativeMapCardSources {
                 const auto &source = document.rows[line];
                 if (row.x < row.clip[0] || row.x > row.clip[1] ||
                         row.y < row.clip[2] || row.y > row.clip[3]) continue;
-                for (auto &draw : draws_[0])
+                for (const auto &draw : draws)
                     if (!draw.top_layer && draw.x == row.x && draw.y == row.y &&
                             reinterpret_cast<uintptr_t>(draw.grid) == row.screen &&
                             draw.address == document.row_addresses[line] && draw.source == source)
-                        draw.document_owned = true;
+                        return true;
             }
+            return false;
         };
-        own_rich(rich);
-        own_rich(previous);
+        return own_rich(*rich_) || own_rich(previous_rich_);
     }
 
 public:
@@ -148,44 +152,21 @@ public:
         if (row.x < 0 || row.x >= gps_.dimx || row.y < 0 || row.y >= gps_.dimy ||
                 row.source.empty() || right <= row.x || right > gps_.dimx ||
                 row.source.size() > static_cast<size_t>(right - row.x)) return false;
-        prepare();
         const size_t first = static_cast<size_t>(row.x) * gps_.dimy + row.y;
         const bool read_top = native_ui_top_layer_at(gps_, first);
         const auto *grid = read_top ? gps_.screen_top : gps_.screen;
         if (!grid) return false;
         const auto origin = native_text_grid_origin(gps_, first, read_top);
-        const auto &batch = draws_[origin.top_layer ? 1 : 0];
-        for (auto at = batch.rbegin(); at != batch.rend(); ++at) {
-            const auto &draw = *at;
-            if (!draw.document_owned || draw.x < 0 || draw.x > row.x || draw.y != row.y ||
-                    draw.top_layer != origin.top_layer || draw.grid != origin.grid) continue;
-            if (draw.clip && (row.x < draw.clip->x || row.y < draw.clip->y ||
-                    int64_t(row.x) + static_cast<int64_t>(row.source.size()) >
-                        int64_t(draw.clip->x) + draw.clip->w ||
-                    int64_t(row.y) >= int64_t(draw.clip->y) + draw.clip->h)) continue;
-            const size_t offset = static_cast<size_t>(row.x - draw.x);
-            if (offset > draw.source.size() || std::any_of(draw.source.begin(),
-                    draw.source.begin() + offset, [](unsigned char ch) { return ch != ' '; }))
-                continue;
-            const auto visible = trim_view(std::string_view(draw.source).substr(
-                offset, static_cast<size_t>(right - row.x)));
-            if (visible != row.source) continue;
-            bool intact = true;
-            for (size_t byte = 0; byte < row.source.size(); ++byte) {
-                const size_t cell = (static_cast<size_t>(row.x) + byte) * gps_.dimy + row.y;
-                const bool top = native_ui_top_layer_at(gps_, cell);
-                const auto byte_origin = native_text_grid_origin(gps_, cell, top);
-                if (top != read_top || byte_origin.grid != origin.grid ||
-                        byte_origin.top_layer != origin.top_layer ||
-                        (grid[cell * 8] ? grid[cell * 8] : ' ') !=
-                            static_cast<unsigned char>(row.source[byte])) {
-                    intact = false;
-                    break;
-                }
-            }
-            if (intact) return true;
+        for (size_t byte = 0; byte < row.source.size(); ++byte) {
+            const size_t cell = (static_cast<size_t>(row.x) + byte) * gps_.dimy + row.y;
+            const bool top = native_ui_top_layer_at(gps_, cell);
+            const auto byte_origin = native_text_grid_origin(gps_, cell, top);
+            if (top != read_top || byte_origin.grid != origin.grid ||
+                    byte_origin.top_layer != origin.top_layer ||
+                    (grid[cell * 8] ? grid[cell * 8] : ' ') !=
+                        static_cast<unsigned char>(row.source[byte])) return false;
         }
-        return false;
+        return owns_matching_draw(row, right, origin.grid, origin.top_layer);
     }
 };
 

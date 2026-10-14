@@ -374,6 +374,7 @@ static void capture_native_tooltip_container(void *widget, uint32_t tick) {
                     // At this point the entire page, including its action strips,
                     // exists and none of this tooltip's children has overwritten it.
                     std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
+                    ++g_native_drawn_text_revision;
                     for (auto &draw : g_native_drawn_text_rows) {
                         if (draw.picture_frame || draw.y < rect[1] || draw.y > rect[3] ||
                             draw.x < 0 || draw.source.empty() ||
@@ -2068,6 +2069,7 @@ static void capture_native_worldgen_caption(graphicst *graphics,
             std::max(0, bottom - top)};
         std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
         auto &rows = top_layer ? g_native_drawn_top_text_rows : g_native_drawn_text_rows;
+        ++g_native_drawn_text_revision;
         std::erase_if(rows, [&](const NativeDrawnTextRow &previous) {
             return previous.x == first && previous.y == y;
         });
@@ -2182,6 +2184,7 @@ static void capture_native_squads_caption(graphicst *graphics,
         row.draw_clip = SDL_Rect{left, top, std::max(0, right - left),
             std::max(0, bottom - top)};
         std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
+        ++g_native_drawn_text_revision;
         if (g_native_drawn_text_epoch != epoch) {
             g_native_drawn_text_rows.clear(); g_native_drawn_top_text_rows.clear();
             g_native_overwritten_text_rows.clear();

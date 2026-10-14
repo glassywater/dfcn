@@ -612,8 +612,14 @@ static thread_local graphicst *g_native_dfhack_present_graphics = nullptr;
 static thread_local const NativeDfhackLayerStorage *g_native_dfhack_read_storage = nullptr;
 static thread_local bool g_native_dfhack_callback_writes_pending = false;
 
-static void native_dfhack_queue_render_schedule(int32_t refresh, int16_t force) noexcept {
+static void native_dfhack_queue_render_schedule(int32_t refresh, int16_t force,
+        int16_t initial_force) noexcept {
     g_native_dfhack_render_refresh.store(refresh, std::memory_order_release);
+    // The display header borrows the producer's existing redraw countdown.
+    // Returning that unchanged value as a new request can re-arm a redraw
+    // the producer has already consumed while SDL was painting. Only a
+    // request raised during this display belongs in the feedback queue.
+    if (force <= initial_force) return;
     auto pending = g_native_dfhack_render_force.load(std::memory_order_relaxed);
     while (pending < force && !g_native_dfhack_render_force.compare_exchange_weak(
             pending, force, std::memory_order_release, std::memory_order_relaxed)) {}

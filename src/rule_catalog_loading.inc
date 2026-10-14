@@ -348,6 +348,13 @@ bool Overlay::load_rules() {
         candidate->name_editor_search_revision_ = name_editor_search_revision_;
         candidate->build_trie(&catalog_publication);
         candidate->rebuild_announcement_combat_rules();
+        candidate->template_anchors_.finalize();
+        candidate->ui_message_anchors_.finalize();
+        candidate->legends_event_anchors_.finalize();
+        for (auto &[scope, syntax] : candidate->announcement_combat_syntax_) {
+            (void)scope;
+            syntax.anchors.finalize();
+        }
         candidate->load_name_editor_translations();
         candidate->load_adventure_target_translations();
         candidate->load_raw_material_names();
@@ -380,8 +387,11 @@ bool Overlay::load_rules() {
     commit(help_objective_rules_, candidate->help_objective_rules_);
     commit(ui_message_trie_, candidate->ui_message_trie_);
     commit(ui_message_template_rules_, candidate->ui_message_template_rules_);
+    commit(prose_template_membership_, candidate->prose_template_membership_);
+    commit(ui_message_template_sources_, candidate->ui_message_template_sources_);
     commit(ui_message_split_prefixes_, candidate->ui_message_split_prefixes_);
     commit(ui_message_template_probes_, candidate->ui_message_template_probes_);
+    commit(ui_message_start_filter_, candidate->ui_message_start_filter_);
     commit(ui_message_anchors_, candidate->ui_message_anchors_);
     commit(announcement_combat_syntax_, candidate->announcement_combat_syntax_);
     commit(adventure_prose_rules_, candidate->adventure_prose_rules_);
@@ -545,8 +555,11 @@ void Overlay::build_trie(std::function<void()>* catalog_publication) {
     help_objective_rules_.clear();
     ui_message_trie_.assign(1, TrieNode{});
     ui_message_template_rules_.clear();
+    prose_template_membership_.assign(rules_.size(), 0);
+    ui_message_template_sources_.clear();
     ui_message_split_prefixes_.clear();
     ui_message_template_probes_.clear();
+    ui_message_start_filter_.clear();
     ui_message_anchors_.clear();
     trie_.clear();
     trie_.emplace_back();
@@ -745,7 +758,10 @@ void Overlay::build_trie(std::function<void()>* catalog_publication) {
             if (material_rule.string_template || material_rule.numeric_template) {
                 auto &templates = material_rule.ui_message ? ui_message_template_rules_ : help_template_rules_;
                 templates.push_back(static_cast<int>(rule_index));
+                prose_template_membership_[rule_index] = material_rule.ui_message ? 2u : 1u;
                 if (material_rule.ui_message) {
+                    ui_message_template_sources_.try_emplace(material_rule.source,
+                        static_cast<int>(rule_index));
                     // Split native records use a fixed subset of this catalog.
                     // Build it with the dictionary instead of scanning every
                     // message template in each raw and composed frame pass.
@@ -771,6 +787,7 @@ void Overlay::build_trie(std::function<void()>* catalog_publication) {
                     }
                     ui_message_anchors_.add(probe.anchor,
                         static_cast<int>(ui_message_template_probes_.size()));
+                    ui_message_start_filter_.add(probe.prefix);
                     ui_message_template_probes_.push_back(std::move(probe));
                 }
                 continue;

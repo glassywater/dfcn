@@ -60,6 +60,11 @@ static std::optional<std::string> native_main_menu_copyright() {
     return source;
 }
 
+static bool native_fortress_gameplay_screen() {
+    const uintptr_t screen = native_current_viewscreen();
+    return screen && native_history_object_is(screen, "viewscreen_dwarfmodest");
+}
+
 static bool native_gameplay_map_screen(bool include_world) {
     const uintptr_t screen = native_current_viewscreen();
     if (!screen) return false;

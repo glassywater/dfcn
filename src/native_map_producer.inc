@@ -8,6 +8,7 @@ static void native_map_begin_frame() {
     g_native_map_layer.native_renderer = nullptr;
     g_native_map_layer.renderer = nullptr;
     g_native_map_background_grid = nullptr;
+    g_native_map_mixed_grid = nullptr;
     g_native_map_write_graphics = nullptr;
     NativeUiReadScope::invalidate_reads();
 }
@@ -49,7 +50,7 @@ static void native_map_producer(void *map, int32_t tick, void *context) {
     TranslationStateScope translation;
     auto *gps = native_graphics();
     auto &layer = g_native_map_layer;
-    bool isolate = gps && gps->main_viewport && gps->screen && gps->screen_top &&
+    bool isolate = gps && gps->screen &&
         !g_native_map_write_graphics && !native_dfhack_layer_write_active(gps) &&
         gps->dimx > 0 && gps->dimx <= 1000 && gps->dimy > 0 && gps->dimy <= 1000;
     if (isolate) {
@@ -60,6 +61,18 @@ static void native_map_producer(void *map, int32_t tick, void *context) {
         } catch (...) { isolate = false; }
     }
     if (!isolate) {
+        g_native_map_mixed_grid = gps ? gps->screen : nullptr;
+        // A later direct producer can run without another begin_frame.
+        // Retire the preceding private source proof before native drawing
+        // advances its map arrays/history. A nested private call belongs to
+        // the outer producer, which publishes its complete output on return.
+        if (!g_native_map_write_graphics) {
+            layer.ready = false;
+            layer.native_renderer = nullptr;
+            layer.renderer = nullptr;
+            g_native_map_background_grid = nullptr;
+        }
+        NativeUiReadScope::invalidate_reads();
         callback.call_native([&] { original(map, tick, context); });
         return;
     }
@@ -82,6 +95,7 @@ static void native_map_producer(void *map, int32_t tick, void *context) {
         layer.foreground.graphics()->top_in_use = gps->top_in_use;
     }
     g_native_map_background_grid = background;
+    g_native_map_mixed_grid = nullptr;
     g_native_map_classic = native_ui_classic().value_or(false);
     layer.ready = true;
     NativeUiReadScope::invalidate_reads();

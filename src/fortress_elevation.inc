@@ -23,10 +23,13 @@ void Overlay::append_fortress_elevation_rows(std::vector<std::string> &rows,
             origin_y + box.y * gps_->tile_pixel_y,
             box.w * gps_->tile_pixel_x, box.h * gps_->tile_pixel_y};
     };
-    auto draws = captured_native_drawn_text_rows();
-    const auto top_draws = captured_native_drawn_text_rows(true);
-    draws.insert(draws.end(), top_draws.begin(), top_draws.end());
-    const auto clipped = captured_clipped_captions();
+    const std::array draw_snapshots{captured_native_drawn_text_snapshot(),
+        captured_native_drawn_text_snapshot(true)};
+    std::vector<const NativeDrawnTextRow *> draws;
+    for (const auto &layer : draw_snapshots)
+        for (const auto &draw : *layer) draws.push_back(&draw);
+    const auto clipped_snapshot = captured_clipped_caption_snapshot();
+    const auto &clipped = *clipped_snapshot;
     for (int prompt_y = 0; prompt_y < gps_->dimy; ++prompt_y) {
         const size_t at = context[prompt_y].find(prompt);
         if (at == std::string::npos ||
@@ -136,7 +139,8 @@ void Overlay::append_fortress_elevation_rows(std::vector<std::string> &rows,
             bool pending_identity = false;
             // Keep the formatter-owned unit target when its draw is the
             // actual whole identity, including the native role/sex suffix.
-            for (const auto &draw : draws) {
+            for (const auto *captured_draw : draws) {
+                const auto &draw = *captured_draw;
                 if (!draw.unit_identity_target || draw.x != x || draw.y != y) continue;
                 bool top = false;
                 (void)cell_at(x, y, &top);

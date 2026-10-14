@@ -23,8 +23,10 @@ void Overlay::append_fortress_location_matches(std::vector<std::string> &rows,
     // dictionary can consume the type or one word of a generated office.
     // The rank buffer contains the currency byte and next-tier threshold;
     // the screen's decorative glyphs are not its text grammar.
-    const auto drawn = captured_native_drawn_text_rows();
-    const auto top_drawn = captured_native_drawn_text_rows(true);
+    const auto drawn_snapshot = captured_native_drawn_text_snapshot();
+    const auto top_drawn_snapshot = captured_native_drawn_text_snapshot(true);
+    const auto &drawn = *drawn_snapshot;
+    const auto &top_drawn = *top_drawn_snapshot;
     const auto detail_draw_end = [&](const NativeDrawnTextRow &draw) {
         if (!draw.location_picker_box) return draw.x;
         int right = std::min(gps_->dimx,
@@ -356,7 +358,8 @@ void Overlay::append_fortress_location_matches(std::vector<std::string> &rows,
             ProceduralFragmentContext::generated_name);
         return name;
     };
-    const auto clipped = captured_clipped_captions();
+    const auto clipped_snapshot = captured_clipped_caption_snapshot();
+    const auto &clipped = *clipped_snapshot;
     const auto complete_source = [&](const LogicalTextField &field, int y) {
         for (const auto &capture : clipped)
             if (capture.x == field.start && capture.y == y &&

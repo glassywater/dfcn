@@ -98,6 +98,10 @@ bool Overlay::find_fortress_map_matches(int only_y,
                 std::fill(rows[y].begin() + fps->first, rows[y].begin() + fps->second, ' ');
     }
 
+    // The ordinary page matcher excludes complete classic icon-button skins.
+    // Those skins can contain ASCII letters but do not own translatable text.
+    // Apply the same ownership mask before deciding that HUD coverage failed.
+    retain_native_text_cells(rows, capture_map_text_cells());
     std::vector<Match> matches;
     // Keep complete identities and native rank grammar ahead of dictionary
     // words. Missing identity data falls back through the coverage check.
@@ -107,12 +111,27 @@ bool Overlay::find_fortress_map_matches(int only_y,
     append_toolbar_tooltip_matches(rows, matches, -1, screen_override != nullptr);
 
 #ifdef _WIN32
-    // The main fortress renderer keeps ALERT beside the map even while the
-    // game is paused. Its reviewed addst caller owns this fixed button; an
-    // identically spelled name or a caption in another page owns no HUD span.
-    const auto alert_return = native_reference_address(native_history_profile_base(), 0x3d72a7);
-    if (alert_return) if (const auto target = exact_literal_translation("Alert")) {
-        constexpr std::string_view source = "ALERT";
+    // ALERT has one fixed producer. A zero Food/Drink/Seeds/Meat/Fish/Plant/
+    // Other count writes None instead of digits at these seven HUD calls.
+    // Claim only those current native draws, never an unrelated None caption.
+    const auto base = native_history_profile_base();
+    const auto alert_return = native_reference_address(base, 0x3d72a7);
+    constexpr uintptr_t zero_coordinates[]{
+        0x3f3a6b, 0x3f3b63, 0x3f3c5b, 0x3f3d52,
+        0x3f3e49, 0x3f3f41, 0x3f4039
+    };
+    std::array<uintptr_t, std::size(zero_coordinates)> zero_returns{};
+    for (size_t i = 0; i < zero_returns.size(); ++i)
+        zero_returns[i] = native_reference_address(base, zero_coordinates[i]);
+    const auto alert_target = exact_literal_translation("Alert");
+    const auto zero_target = exact_literal_translation("None");
+    const auto owned_literal = [&](const NativeDrawnTextRow &draw) {
+        return (alert_return && draw.native_caller == alert_return && draw.source == "ALERT") ||
+            (draw.native_caller && draw.source == "None" && draw.x >= population_x &&
+                std::find(zero_returns.begin(), zero_returns.end(), draw.native_caller) !=
+                    zero_returns.end());
+    };
+    {
         std::vector<NativeDrawnTextRow> draws;
         uint64_t capture_epoch = 0;
         {
@@ -120,12 +139,14 @@ bool Overlay::find_fortress_map_matches(int only_y,
             capture_epoch = g_native_drawn_text_epoch;
             for (const auto *layer : {&g_native_drawn_text_rows, &g_native_drawn_top_text_rows})
                 for (const auto &draw : *layer)
-                    if (draw.native_caller == alert_return && draw.source == source &&
+                    if (owned_literal(draw) &&
                             draw.draw_epoch == capture_epoch) draws.push_back(draw);
         }
         constexpr uint32_t upper = 1u << 3, lower = 1u << 4;
         for (const auto &draw : draws) {
-            if (draw.native_caller != alert_return || draw.source != source || draw.editable_text ||
+            const std::string_view source = draw.source;
+            const auto &target = source == "ALERT" ? alert_target : zero_target;
+            if (!target || !owned_literal(draw) || draw.editable_text ||
                     draw.draw_epoch != capture_epoch || draw.draw_dimx != gps_->dimx ||
                     draw.draw_dimy != gps_->dimy || draw.x < 0 || draw.y < 0 ||
                     draw.x + static_cast<int>(source.size()) > gps_->dimx || draw.y >= gps_->dimy ||
@@ -211,7 +232,7 @@ bool Overlay::find_fortress_map_matches(int only_y,
         const bool counter = header && match.x >= population_x &&
             (source == "Pop" || source == "Population" || source == "Food" ||
                 source == "Drink" || source == "Seeds" || source == "Stocks" ||
-                source == "Meat" || source == "Fish" || source == "Plant");
+                source == "Meat" || source == "Fish" || source == "Plant" || source == "Other");
         const std::string folded = lower(std::string(source));
         const bool date = header && match.x > stocks_x &&
             (date_source(source) || season_source(folded) ||

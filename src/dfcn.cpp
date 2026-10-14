@@ -123,6 +123,9 @@ static bool native_display_worldgen_page() {
 #endif
 static NativeModDetails native_mod_details(bool background_owner = false);
 static std::optional<std::string> native_main_menu_copyright();
+static bool native_fortress_gameplay_screen();
+static bool native_map_mixed_view(const graphicst *graphics) noexcept;
+static bool native_map_artwork_grid(const unsigned char *screen) noexcept;
 static bool native_gameplay_map_screen(bool include_world = false);
 static bool native_world_map_screen();
 static bool native_arena_map_screen();
@@ -1517,9 +1520,11 @@ struct NativeClippedCaption {
 static std::mutex g_clipped_caption_mutex;
 static uint64_t g_clipped_caption_epoch = 0;
 static std::vector<NativeClippedCaption> g_clipped_captions;
+static uint64_t g_clipped_caption_revision = 0;
 
 static void clear_clipped_captions() {
     std::lock_guard<std::mutex> lock(g_clipped_caption_mutex);
+    ++g_clipped_caption_revision;
     g_clipped_captions.clear();
     g_clipped_caption_epoch = 0;
 }
@@ -1527,6 +1532,7 @@ static void clear_clipped_captions() {
 static void remember_clipped_caption(int x, int y, std::string_view visible,
         std::string_view complete) {
     std::lock_guard<std::mutex> lock(g_clipped_caption_mutex);
+    ++g_clipped_caption_revision;
     const auto epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
     if (epoch != g_clipped_caption_epoch) {
         g_clipped_captions.clear();
@@ -1539,11 +1545,7 @@ static void remember_clipped_caption(int x, int y, std::string_view visible,
         g_clipped_captions.push_back({x, y, std::string(visible), std::string(complete)});
 }
 
-static std::vector<NativeClippedCaption> captured_clipped_captions() {
-    std::lock_guard<std::mutex> lock(g_clipped_caption_mutex);
-    if (g_clipped_caption_epoch != g_embark_item_capture_epoch.load(std::memory_order_acquire)) return {};
-    return g_clipped_captions;
-}
+static std::vector<NativeClippedCaption> captured_clipped_captions();
 
 // Captured while the real SKILLS text widget and its parent chain are live.
 // Retain geometry only; later grid readers never dereference these widgets.
@@ -1960,7 +1962,9 @@ static void index_native_paragraph(const NativeParagraphCapture &capture, bool a
 template <typename Draw>
 static std::vector<const NativeParagraphCapture *> native_paragraph_candidates(
         const std::vector<std::string> &screen_rows,
-        const std::vector<Draw> &draws, const std::vector<Draw> &occluded_draws) {
+        const std::vector<Draw> &draws, const std::vector<Draw> &occluded_draws,
+        NativeParagraphCandidates *addressed = nullptr) {
+    if (addressed) addressed->clear();
     if (g_native_paragraph_captures.empty()) return {};
     NativeParagraphCandidates selected;
     const auto select_draws = [&](const auto &rows) {
@@ -1975,6 +1979,10 @@ static std::vector<const NativeParagraphCapture *> native_paragraph_candidates(
     };
     select_draws(draws);
     select_draws(occluded_draws);
+    // Preserve the address proof before adding text-prefix candidates. A
+    // shared opening can admit retained paragraphs from closed pages, but
+    // cannot establish any addressed row in the current native draw.
+    if (addressed) *addressed = selected;
     std::unordered_set<uint64_t> selected_prefixes;
     for (const auto &row : screen_rows)
         for (size_t x = 0; x < row.size(); ++x) {
@@ -2295,6 +2303,7 @@ struct NativeDrawnTextRow {
 static std::mutex g_native_drawn_text_mutex;
 static std::vector<NativeDrawnTextRow> g_native_drawn_text_rows;
 static uint64_t g_native_drawn_text_sequence = 0;
+static uint64_t g_native_drawn_text_revision = 0;
 // Top-layer text is independent of base draw order. Keep its map-ownership
 // evidence separate from the base paragraph-address/position registries.
 static std::vector<NativeDrawnTextRow> g_native_drawn_top_text_rows;
@@ -2747,6 +2756,7 @@ static void remember_native_drawn_text_row(int x, int y, std::string_view source
     std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
     const auto epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
     if (original_epoch && original_epoch != epoch) return;
+    ++g_native_drawn_text_revision;
     if (g_native_drawn_text_epoch != epoch) {
         g_native_drawn_text_rows.clear();
         g_native_drawn_top_text_rows.clear();
@@ -2935,15 +2945,7 @@ static void refresh_native_unit_identity_draw(NativeDrawnTextRow &row) {
     row.unit_identity_target = identity->ready ? identity->target : std::string{};
 }
 
-static std::vector<NativeDrawnTextRow> captured_native_drawn_text_rows(bool top_layer = false) {
-    std::vector<NativeDrawnTextRow> rows;
-    {
-        std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
-        rows = top_layer ? g_native_drawn_top_text_rows : g_native_drawn_text_rows;
-    }
-    for (auto &row : rows) refresh_native_unit_identity_draw(row);
-    return rows;
-}
+#include "native_captured_text_snapshot.inc"
 
 struct NativeMapHoverLiquidCaption {
     NativeDrawnTextRow row;
@@ -3146,6 +3148,7 @@ static void clear_native_drawn_text_rows() {
         g_native_embark_reclaim_history_previous_draws = {};
     }
     std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
+    ++g_native_drawn_text_revision;
     g_native_drawn_text_rows.clear();
     g_native_drawn_top_text_rows.clear();
     g_native_overwritten_text_rows.clear();
@@ -3528,6 +3531,9 @@ public:
     void invalidate_render_resources();
     void render(SDL_Renderer *renderer);
     bool prepare_native_ui_input(NativeUiLayerGrid &input, SDL_Renderer *renderer);
+    bool native_ui_hud_copy_passthrough() const noexcept {
+        return native_ui_frame_ready_ && native_ui_hud_copy_passthrough_;
+    }
     void render_dfhack_layer(SDL_Renderer *renderer, const NativeDfhackTranslatedFrame &frame);
     std::shared_ptr<const NativeDfhackTranslatedFrame> completed_dfhack_layer_frame(
         std::shared_ptr<const NativeDfhackLayerStorage> latest) noexcept;
@@ -4333,6 +4339,9 @@ private:
             owner_.cell_read_cache_ = cache;
         }
         ~CellReadCacheScope() {
+            // Read headers can be stack views. Scratch retains allocation
+            // only after this pass, never the expired header's address.
+            owner_.cell_read_cache_->begin_pass();
             owner_.cell_read_cache_ = previous_;
             --owner_.cell_read_cache_depth_;
         }
@@ -4354,6 +4363,7 @@ private:
     std::shared_ptr<NativeTooltipPage> native_ui_layout_page_;
     std::optional<NativeToolbarTooltip> native_ui_toolbar_tooltip_;
     bool fortress_map_frame_ = false;
+    bool native_ui_hud_copy_passthrough_ = false;
     bool main_menu_frame_ = false;
     bool settings_video_frame_ = false;
     std::vector<Match> prepared_matches_;
@@ -4973,6 +4983,15 @@ private:
     std::vector<int> help_objective_rules_;
     std::vector<TrieNode> ui_message_trie_;
     std::vector<int> ui_message_template_rules_;
+    // Exact loaded membership, including rules that share both prose flags.
+    // Source views borrow this catalog's immutable rules vector and move with
+    // it during publication; duplicate sources retain the first template.
+    std::vector<uint8_t> prose_template_membership_;
+    std::unordered_map<std::string_view, int> ui_message_template_sources_;
+    bool prose_template_member(int index, bool ui_message) const {
+        return index >= 0 && static_cast<size_t>(index) < prose_template_membership_.size() &&
+            (prose_template_membership_[static_cast<size_t>(index)] & (ui_message ? 2u : 1u));
+    }
     std::unordered_map<std::string, std::vector<int>> ui_message_split_prefixes_;
     struct MessageTemplateProbe {
         int index;
@@ -4980,6 +4999,27 @@ private:
         size_t literal_bytes = 0;
     };
     std::vector<MessageTemplateProbe> ui_message_template_probes_;
+    struct MessageTemplateStartFilter {
+        std::array<bool, 256> first{}, one{};
+        std::unordered_set<uint32_t> two, three;
+        bool slot_first = false;
+        void clear() {
+            first.fill(false); one.fill(false);
+            two.clear(); three.clear(); slot_first = false;
+        }
+        void add(std::string_view prefix) {
+            if (prefix.empty()) { slot_first = true; return; }
+            const auto initial = static_cast<unsigned char>(prefix.front());
+            first[initial] = true;
+            uint32_t key = initial;
+            if (prefix.size() == 1) { one[initial] = true; return; }
+            key = (key << 8) | static_cast<unsigned char>(prefix[1]);
+            if (prefix.size() == 2) { two.insert(key); return; }
+            key = (key << 8) | static_cast<unsigned char>(prefix[2]);
+            three.insert(key);
+        }
+    };
+    MessageTemplateStartFilter ui_message_start_filter_;
     LiteralAnchorIndex ui_message_anchors_;
     std::unordered_map<std::string, std::vector<std::pair<std::string, Rule>>> announcement_combat_rules_;
     struct AnnouncementGrammarSyntax {
@@ -5032,6 +5072,10 @@ private:
         const std::vector<int> &source_foregrounds,
         std::vector<int> &target_foregrounds, bool ui_message = false,
         int required_rule = -1, bool literal_only = false) const;
+    std::optional<std::string> translate_help_paragraph_uncached(std::string_view source,
+        const std::vector<int> &source_foregrounds,
+        std::vector<int> &target_foregrounds, bool ui_message,
+        int required_rule, bool literal_only, bool &cacheable) const;
     TranslationResult translate_help_paragraph_result(std::string_view source,
         const std::vector<int> &source_foregrounds, std::vector<int> &target_foregrounds,
         bool ui_message = false, int required_rule = -1) const;
@@ -7535,6 +7579,7 @@ void Overlay::shutdown() {
     clear_fortress_item_caption_cache();
     clear_material_name_cache();
     TranslationStateScope translation_scope;
+    ui_message_start_filter_.clear();
     identity_translation_catalog_generation_.fetch_add(1, std::memory_order_acq_rel);
     identity_record_translation_cache_.clear();
     identity_record_translation_order_.clear();
@@ -7580,6 +7625,7 @@ bool Overlay::apply_requested_reload() {
 const unsigned char *Overlay::cell_at(int x, int y, bool *top) const {
     *top = false;
     if (!gps_ || x < 0 || y < 0 || x >= gps_->dimx || y >= gps_->dimy) return nullptr;
+    if (native_map_mixed_view(gps_)) return nullptr;
     if (native_info_background_cell_hidden(gps_, x, y)) return nullptr;
     const size_t tile = static_cast<size_t>(x) * gps_->dimy + y;
     auto *cached = cell_read_cache_
@@ -7603,6 +7649,7 @@ static bool graphically_occluded(uint8_t state, uint64_t cell_epoch,
 
 unsigned char Overlay::visible_char_at(int x, int y) const {
     if (!gps_ || x < 0 || y < 0 || x >= gps_->dimx || y >= gps_->dimy) return 0;
+    if (native_map_mixed_view(gps_)) return 0;
     if (native_info_background_cell_hidden(gps_, x, y)) return 0;
     const size_t tile = static_cast<size_t>(x) * gps_->dimy + y;
     auto *cached = cell_read_cache_
@@ -17131,16 +17178,20 @@ std::vector<Match> Overlay::find_matches(int only_y,
 
 std::vector<Match> Overlay::find_native_matches(int only_y,
         const unsigned char *screen_override, bool primary_pages_probed) const {
+    NativeCapturedTextReadScope captured_text_reads;
     RenderTimingScope match_timing(render_timings_, config_.trace_render_timing, RenderTimingStage::Match);
     RenderTimingScope context_timing(render_timings_, config_.trace_render_timing, RenderTimingStage::Context);
     RenderTimingScope context_detail(render_timings_, config_.trace_render_timing, RenderTimingStage::Ownership);
-    NativeHistoryFrameScope history_frame(gps_);
     std::vector<Match> result;
     if (!gps_ || !gps_->screen || gps_->dimx <= 0 || gps_->dimx > 1000 ||
         gps_->dimy <= 0 || gps_->dimy > 1000 || trie_.empty() ||
-        only_y >= gps_->dimy) {
+        only_y >= gps_->dimy || native_map_mixed_view(gps_) ||
+        native_map_artwork_grid(screen_override)) {
         return result;
     }
+    NativeUiTextReadView ui_text_read(const_cast<Overlay &>(*this), gps_,
+        native_map_background_view(gps_));
+    NativeHistoryFrameScope history_frame(gps_);
     // Title captions have no item, character or history semantics. Establish
     // the complete current menu before entering the shared page pipeline.
     if (!primary_pages_probed) {
@@ -17159,6 +17210,14 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
         return find_native_info_background_matches(only_y, screen_override);
     if (!primary_pages_probed &&
             find_fortress_map_matches(only_y, screen_override, result)) return result;
+    // An unrecognised HUD field can require the ordinary text matcher without
+    // turning this native page into an embark/world/management document.
+    // Retain the native page proof even when the complete HUD reader declined.
+    const bool local_fortress_hud = native_fortress_map_hud_view(gps_);
+    // Local fortress menus retain their typed readers below, but they cannot
+    // own embark or the separate world/adventure travel page's documents.
+    // This identity remains valid even when the strict HUD reader declines.
+    const bool fortress_gameplay = native_fortress_gameplay_screen();
     NativePanelReadScope panel_reads(gps_);
     refresh_dfhack_raw_creature_labels();
     if (!NativeUiReadScope::active) {
@@ -17424,21 +17483,23 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     // these complete fields before generic words, names or picture captions.
     // Immediate raw-layer scans need the same current logical composite as
     // the final overlay; source-byte masks project ownership back per layer.
-    auto room_context = screen_rows;
-    int room_tabs_y = -1;
-    for (int y = 0; y < gps_->dimy; ++y) {
-        for (int x = 0; x < gps_->dimx; ++x) {
-            bool top = false;
-            const auto *cell = cell_at(x, y, &top);
-            room_context[y][x] = cell && cell[0] ? cell[0] : ' ';
+    if (!local_fortress_hud) {
+        auto room_context = screen_rows;
+        int room_tabs_y = -1;
+        for (int y = 0; y < gps_->dimy; ++y) {
+            for (int x = 0; x < gps_->dimx; ++x) {
+                bool top = false;
+                const auto *cell = cell_at(x, y, &top);
+                room_context[y][x] = cell && cell[0] ? cell[0] : ' ';
+            }
+            if (room_tabs_y < 0 && !character_information_tab_fields(room_context[y]).empty())
+                room_tabs_y = y;
         }
-        if (room_tabs_y < 0 && !character_information_tab_fields(room_context[y]).empty())
-            room_tabs_y = y;
+        append_character_room_fields(room_context, screen_rows, result, room_tabs_y, only_y);
     }
-    append_character_room_fields(room_context, screen_rows, result, room_tabs_y, only_y);
     // This native list already establishes the title/status field types.
     // Claim them before hover, roster and item readers inspect the same ink.
-    const bool world_artifact_list =
+    const bool world_artifact_list = !local_fortress_hud &&
         append_world_artifact_rows(screen_rows, result, only_y);
     if (world_artifact_list && !NativeTooltipPageScope::active && !tooltip_widget) {
         auto controls = screen_rows;
@@ -17476,11 +17537,13 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     // search field. Their status controls must claim all three columns first:
     // the generic chooser otherwise consumes the category proof and leaves
     // filters/values at their original English caption positions.
-    append_fortress_stockpile_settings(screen_rows, result, only_y);
+    if (!local_fortress_hud)
+        append_fortress_stockpile_settings(screen_rows, result, only_y);
     // The chooser owns complete category names and separate task controls.
     // Capture them before caption, item and paragraph readers consume the
     // labels needed to recognize its category column and search field.
-    const auto workshop_choices = capture_workshop_task_rows(screen_rows);
+    const auto workshop_choices = local_fortress_hud ? std::vector<WorkshopTaskCard>{}
+        : capture_workshop_task_rows(screen_rows);
     for (const auto &choice : workshop_choices)
         append_workshop_task_translations(choice, screen_rows, result, only_y);
     const auto mod_list = native_mod_list_layout(*gps_, [&](int x, int y) {
@@ -17519,7 +17582,8 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
         }
         append_mod_list_details(*mod_list, screen_rows, mod_details_matches);
     }
-    const auto text_input_regions = native_text_input_regions(*gps_, screen_rows, screen_override);
+    const auto text_input_regions = local_fortress_hud ? std::vector<SDL_Rect>{}
+        : native_text_input_regions(*gps_, screen_rows, screen_override);
     std::vector<Match> text_input_utf8;
     std::vector<Match> name_editor_matches;
     std::vector<SDL_Rect> name_editor_regions;
@@ -17567,15 +17631,18 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     // Task-detail material controls are independent native fields. Capture
     // their complete current frame before tooltip prose or the classic map
     // mask can consume the title and the individual Specify captions.
-    const auto workshop_task_detail = capture_workshop_material_fields(screen_rows, true);
+    const auto workshop_task_detail = local_fortress_hud ? std::vector<NativeTextCard>{}
+        : capture_workshop_material_fields(screen_rows, true);
     append_workshop_material_translations(workshop_task_detail, screen_rows, result, only_y);
     // The selector owns its complete heading and stock-name column before
     // item/title readers can consume a word and invalidate its live rows.
-    const auto workshop_materials = capture_workshop_material_fields(screen_rows);
+    const auto workshop_materials = local_fortress_hud ? std::vector<NativeTextCard>{}
+        : capture_workshop_material_fields(screen_rows);
     append_workshop_material_translations(workshop_materials, screen_rows, result, only_y);
     // A floating recipe owns its complete native fields before toolbar,
     // map and item readers can consume the headings or individual nouns.
-    const auto workshop_recipe = capture_workshop_recipe_card(screen_rows);
+    const auto workshop_recipe = local_fortress_hud ? std::optional<NativeTextCard>{}
+        : capture_workshop_recipe_card(screen_rows);
     if (workshop_recipe)
         append_workshop_recipe_card(*workshop_recipe, screen_rows, result, only_y);
     // A button draws its key and action as separate colored fields. Protect
@@ -17798,7 +17865,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     // generic UI-message/word passes can consume only part of an item name.
     // Early glyph suppression reads one raw layer; recover the same current
     // composed context used by the final draw, then project source spans.
-    if (!announcement_panel_only && config_.compositional_rules) {
+    if (!announcement_panel_only && !local_fortress_hud && config_.compositional_rules) {
         auto action_rows = screen_rows;
         // Earlier complete UI-message claims can already have consumed the
         // selection heading. Establish the native modal from the current
@@ -17823,43 +17890,48 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     append_adventure_compass_matches(screen_rows, result, only_y);
     context_detail.checkpoint(RenderTimingStage::Places);
     if (!announcement_panel_only) {
-    append_fortress_site_name(screen_rows, result, only_y,
-        screen_override != nullptr);
-    append_fortress_petition_site_names(screen_rows, result, only_y,
-        screen_override != nullptr);
-    append_fortress_workshop_activities(screen_rows, result, only_y,
-        screen_override != nullptr);
-    append_fortress_farm_rows(screen_rows, result, only_y,
-        screen_override != nullptr);
-    append_fortress_place_names(screen_rows, result, only_y,
-        screen_override != nullptr);
-    append_fortress_stockpile_types(screen_rows, result, only_y,
-        screen_override != nullptr);
-    append_fortress_zone_types(screen_rows, result, only_y,
-        screen_override != nullptr);
-    append_fortress_zone_drawing_matches(screen_rows, result, only_y,
-        screen_override != nullptr);
-    append_fortress_zone_holder_matches(screen_rows, result, only_y);
+        append_fortress_site_name(screen_rows, result, only_y,
+            screen_override != nullptr);
+        if (!local_fortress_hud) {
+            append_fortress_petition_site_names(screen_rows, result, only_y,
+                screen_override != nullptr);
+            append_fortress_workshop_activities(screen_rows, result, only_y,
+                screen_override != nullptr);
+            append_fortress_farm_rows(screen_rows, result, only_y,
+                screen_override != nullptr);
+            append_fortress_place_names(screen_rows, result, only_y,
+                screen_override != nullptr);
+            append_fortress_stockpile_types(screen_rows, result, only_y,
+                screen_override != nullptr);
+            append_fortress_zone_types(screen_rows, result, only_y,
+                screen_override != nullptr);
+            append_fortress_zone_drawing_matches(screen_rows, result, only_y,
+                screen_override != nullptr);
+            append_fortress_zone_holder_matches(screen_rows, result, only_y);
+        }
     }
 
     context_detail.checkpoint(RenderTimingStage::Workshops);
-    const auto trade_request_rows = capture_fortress_trade_request_rows();
+    const auto trade_request_rows = local_fortress_hud
+        ? std::vector<NativeTextCard>{} : capture_fortress_trade_request_rows();
 
     context_detail.checkpoint(RenderTimingStage::Sites);
     // Capture the native widget BEFORE generic matching consumes its text.
     // Its frame owns all rows, regardless of vocabulary/translation coverage.
-    const auto reclaim_history = capture_embark_reclaim_history();
+    const auto reclaim_history = local_fortress_hud || fortress_gameplay
+        ? std::optional<NativeTextCard>{} : capture_embark_reclaim_history();
     if (reclaim_history)
         append_world_site_phrases(*reclaim_history, screen_rows, result, only_y, false, true);
     // The world map can leave the local HUD visible. Its detail popup shares
     // ordinary hover borders, but belongs to the world-page field readers.
-    const bool world_map = native_world_map_screen();
+    const bool world_map = !local_fortress_hud && native_world_map_screen();
     // The structures producer shares the adventure hover frame. Claim its
     // complete typed card before that broader frame reader can treat named
     // buildings or shrines as map items/persons. Other site cards retain the
     // existing hover/embark precedence below, without a second capture pass.
     std::vector<NativeTextCard> world_site_actions;
-    auto world_site = capture_world_site_card(world_site_actions);
+    auto world_site = local_fortress_hud || fortress_gameplay ? std::optional<NativeTextCard>{}
+        : capture_world_site_card(world_site_actions);
     const bool travel_building_card = world_site && world_site->travel_buildings &&
         std::all_of(world_site->rows.begin(), world_site->rows.end(), [&](const auto &row) {
             return world_site_owned_draw_for_row(*gps_, row,
@@ -17913,14 +17985,15 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     if (!world_map && !travel_building_card && workshop_materials.empty() &&
             workshop_task_detail.empty() && !workshop_recipe)
         append_native_map_hover_phrases(screen_rows, result, only_y);
-    auto embark_site = map_hover || travel_building_card ? std::optional<NativeTextCard>{}
+    auto embark_site = local_fortress_hud || fortress_gameplay || map_hover || travel_building_card
+        ? std::optional<NativeTextCard>{}
         : capture_embark_site_card(screen_rows);
     if (map_hover || embark_site) {
         world_site.reset();
         world_site_actions.clear();
     }
-    const auto civilization_details = capture_world_civilization_details(
-        world_site ? &*world_site : nullptr);
+    const auto civilization_details = local_fortress_hud || fortress_gameplay ? std::optional<NativeTextCard>{}
+        : capture_world_civilization_details(world_site ? &*world_site : nullptr);
     const auto civilization_trade_rows = civilization_details
         ? capture_world_civilization_trade_rows(*civilization_details) : std::vector<NativeTextCard>{};
     if (embark_site) {
@@ -17939,7 +18012,9 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     }
     for (const auto &action : world_site_actions)
         append_world_site_phrases(action, screen_rows, result, only_y, true);
-    const auto world_mission_summary = capture_world_mission_summary_card();
+    const auto world_mission_summary = local_fortress_hud || fortress_gameplay ? std::optional<NativeTextCard>{}
+        : capture_world_mission_summary_card();
+    if (!local_fortress_hud) {
     append_fortress_squad_creation(screen_rows, result, only_y, screen_override != nullptr);
     if (!native_squads_layer_hook_active())
         append_fortress_squad_rows(screen_rows, result, only_y, screen_override != nullptr);
@@ -17949,6 +18024,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     append_world_mission_titles(screen_rows, result, only_y);
     append_world_mission_reports(screen_rows, result, only_y);
     append_world_mission_members(screen_rows, result, only_y);
+    }
     context_detail.checkpoint(RenderTimingStage::Roster);
     if (!announcement_panel_only) {
     append_embark_civilization_rows(screen_rows, result, only_y);
@@ -26237,6 +26313,12 @@ void Overlay::refresh_character_overview_context(bool force) {
 }
 
 const std::vector<Match> &Overlay::prepare_immediate_base_matches() {
+    if (native_map_mixed_view(gps_)) {
+        immediate_base_matches_.clear();
+        immediate_base_matches_epoch_ = 0;
+        immediate_base_matches_screen_ = nullptr;
+        return immediate_base_matches_;
+    }
     if (gps_ && immediate_base_matches_epoch_ == draw_epoch_ &&
             immediate_base_matches_screen_ == gps_->screen &&
             character_overview_context_current()) return immediate_base_matches_;
@@ -26253,7 +26335,7 @@ const std::vector<Match> &Overlay::prepare_immediate_base_matches() {
 bool Overlay::prepare_immediate_row(bool top_layer, int y) {
     if (!config_.enabled || !face_ || rules_.empty() || !gps_ ||
         gps_->dimx <= 0 || gps_->dimx > 1000 || gps_->dimy <= 0 || gps_->dimy > 1000 ||
-        y < 0 || y >= gps_->dimy) {
+        y < 0 || y >= gps_->dimy || native_map_mixed_view(gps_)) {
         return false;
     }
     const unsigned char *raw = top_layer ? gps_->screen_top : gps_->screen;
@@ -33750,6 +33832,12 @@ void Overlay::prepare_frame() {
     suppress_base_.clear();
     suppress_top_.clear();
     captured_embark_item_suppress_.clear();
+    // Terrain has no text ownership. A producer that could not redirect its
+    // output cannot grant its shared grid to UI discovery or raw recovery.
+    if (native_map_mixed_view(gps_)) {
+        frame_prepared_ = true;
+        return;
+    }
     // The native world-generation producer owns its private output. Its
     // captions and event records are prepared by that layer, never by the
     // main page's grid discovery or recovery passes.
@@ -34413,7 +34501,7 @@ void Overlay::note_graphic_copy(SDL_Renderer *renderer, SDL_Texture *texture,
     if (!config_.enabled || !dest || !gps_ || gps_->dimx <= 0 || gps_->dimy <= 0 ||
         gps_->tile_pixel_x <= 0 || gps_->tile_pixel_y <= 0 ||
         gps_->screen_pixel_x <= 0 || gps_->screen_pixel_y <= 0 ||
-        dest->w <= 0 || dest->h <= 0) {
+        dest->w <= 0 || dest->h <= 0 || native_map_mixed_view(gps_)) {
         return;
     }
     note_main_menu_developer_copy(renderer, texture, *dest);
@@ -36860,8 +36948,8 @@ void Overlay::layout_fortress_header(SDL_Renderer *renderer) {
         if ((population.source != "Pop" && population.source != "Population") ||
             population.y < 0 || population.y > 2) continue;
         for (Match &rank : prepared_matches_) {
-            if (!translate_fortress_status(rank.source) || rank.target.empty() ||
-                rank.y != population.y + 2 || rank.x >= population.x) continue;
+            if (rank.target.empty() || rank.y != population.y + 2 ||
+                rank.x >= population.x || !translate_fortress_status(rank.source)) continue;
 
             std::array<Match *, 3> labels{};
             for (Match &field : prepared_matches_) {
@@ -39598,7 +39686,7 @@ int Overlay::intercept_glyph_copy(SDL_Renderer *renderer, SDL_Texture *texture,
     TranslationStateScope translation_scope;
     RenderTimingScope glyph_timing(render_timings_, config_.trace_render_timing, RenderTimingStage::Glyph);
     if (!real_copy || !dest) return real_copy ? real_copy(renderer, texture, source, dest) : -1;
-    if (native_worldgen_main_view(gps_)
+    if (native_map_mixed_view(gps_) || native_worldgen_main_view(gps_)
 #ifdef _WIN32
             || native_display_worldgen_page()
 #endif
@@ -42148,17 +42236,20 @@ void Overlay::mask_native_ui_matches(NativeUiLayerGrid &input) {
 }
 
 bool Overlay::prepare_native_ui_input(NativeUiLayerGrid &input, SDL_Renderer *renderer) {
+    NativeCapturedTextReadScope captured_text_reads;
     native_ui_frame_ready_ = false;
+    native_ui_hud_copy_passthrough_ = false;
     native_ui_layout_page_.reset();
     native_ui_toolbar_tooltip_.reset();
     apply_requested_reload();
     if (!renderer || !config_.enabled || !face_ || rules_.empty() || !gps_ || !gps_->screen ||
             gps_->dimx <= 0 || gps_->dimx > 1000 || gps_->dimy <= 0 || gps_->dimy > 1000 ||
-            native_worldgen_main_view(gps_)
+            native_map_mixed_view(gps_) || native_worldgen_main_view(gps_)
 #ifdef _WIN32
             || native_display_worldgen_page()
 #endif
             ) return false;
+    NativeUiTextReadView ui_text_read(*this, gps_, native_map_background_view(gps_));
     // Map-port/background copies precede update_all in this same display.
     // Their SDL cover describes pixels already painted, not the UI bytes
     // about to be rasterized. Read the pinned logical page with its native
@@ -42193,6 +42284,18 @@ bool Overlay::prepare_native_ui_input(NativeUiLayerGrid &input, SDL_Renderer *re
     mask_native_ui_matches(input);
     native_ui_toolbar_tooltip_ = g_native_toolbar_tooltip;
     native_ui_frame_ready_ = true;
+    // This HUD has already resolved and masked its complete native text.
+    // It owns no document/border recovery, so collecting every glyph and
+    // painting its background again cannot contribute to the final draw.
+    // Input widgets and pixel-clear fallbacks still need the normal copy
+    // evidence; keep their original path even within a recognized HUD.
+    native_ui_hud_copy_passthrough_ = fortress_map_frame_ &&
+        native_border_repairs_.empty() &&
+        std::none_of(prepared_matches_.begin(), prepared_matches_.end(),
+            [](const Match &match) {
+                return match.rule == -8 ||
+                    (match.graphical_clear_width > 0 && match.graphical_clear_height > 0);
+            });
     // Even a retained UI with no changed glyph copies is a new raster input.
     // Its masked bytes participate in the renderer's native dirty comparison.
     native_frame_drawn_ = true;
@@ -42201,7 +42304,8 @@ bool Overlay::prepare_native_ui_input(NativeUiLayerGrid &input, SDL_Renderer *re
 
 void Overlay::render(SDL_Renderer *renderer) {
     TranslationStateScope translation_scope;
-    if (native_worldgen_main_view(gps_)
+    const bool map_artwork = native_map_mixed_view(gps_);
+    if (map_artwork || native_worldgen_main_view(gps_)
 #ifdef _WIN32
             || native_history_worldgen_page()
 #endif
@@ -42212,11 +42316,13 @@ void Overlay::render(SDL_Renderer *renderer) {
         suppress_top_.clear();
         native_knowledge_frame_matches_.reset();
         native_knowledge_frame_transition_ = false;
-        native_frame_submitted_ = native_worldgen_consume_frame_submission() || native_frame_drawn_;
+        native_frame_submitted_ = (!map_artwork && native_worldgen_consume_frame_submission()) ||
+            native_frame_drawn_;
         native_frame_drawn_ = false;
         if (native_frame_submitted_ && ++draw_epoch_ == 0) draw_epoch_ = 1;
         frame_prepared_ = false;
         native_ui_frame_ready_ = false;
+        native_ui_hud_copy_passthrough_ = false;
         native_ui_layout_page_.reset();
         native_ui_toolbar_tooltip_.reset();
         return;
@@ -42872,11 +42978,12 @@ extern "C" void dfcn_render_present(SDL_Renderer *renderer) {
 extern "C" int dfcn_render_copy(SDL_Renderer *renderer, SDL_Texture *texture,
                                  const SDL_Rect *source, const SDL_Rect *dest) {
     if (g_native_process_exiting.load(std::memory_order_acquire) ||
-            g_drawing_overlay || g_native_resolution_write_graphics) {
+            g_drawing_overlay || g_native_resolution_write_graphics ||
+            (g_native_ui_input_masked && g_overlay.native_ui_hud_copy_passthrough())) {
         return g_real_copy ? g_real_copy(renderer, texture, source, dest) : -1;
     }
     TranslationStateScope translation;
-    if (native_worldgen_main_view(native_graphics()))
+    if (native_map_mixed_view(native_graphics()) || native_worldgen_main_view(native_graphics()))
         return g_real_copy ? g_real_copy(renderer, texture, source, dest) : -1;
     // The opaque management component is submitted on its own target.
     // Covered background copies have no visible pixels and must not
