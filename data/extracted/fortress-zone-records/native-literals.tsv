@@ -1,0 +1,491 @@
+edition	image_identity	role	function_rva	instruction_rva	encoding	literal_rva	operand_role	text
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39afe3	rip-relative	0x1609ef4	finite-text-operand-or-substring	Zones
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39afef	rip-relative	0x1609ef8	finite-text-operand-or-substring	s
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39b044	rip-relative	0x15ffe18	finite-text-operand-or-substring	Locations
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39b054	rip-relative	0x15ffe20	finite-text-operand-or-substring	s
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39b0a9	rip-relative	0x1604db8	finite-text-operand-or-substring	Stockpiles
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39b0b9	rip-relative	0x1604dc0	finite-text-operand-or-substring	es
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39b10f	rip-relative	0x15ffba8	finite-text-operand-or-substring	Workshops
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39b11f	rip-relative	0x15ffbb0	finite-text-operand-or-substring	s
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39b160	rip-relative	0x162b5c0	finite-text-operand-or-substring	Farm plots
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39b1c1	rip-relative	0x162b410	finite-text-operand-or-substring	Siege engines
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39b1d1	rip-relative	0x162b418	finite-text-operand-or-substring	gines
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39b1dd	rip-relative	0x162b41c	finite-text-operand-or-substring	s
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39b3a7	rip-relative	0x162b3f0	finite-text-operand-or-substring	You do not have any zones.
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39b3f1	rip-relative	0x162b440	finite-text-operand-or-substring	Zones can be added using the zone menu at the bottom of the screen.
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39b429	rip-relative	0x162b420	finite-text-operand-or-substring	You do not have any locations.
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39b473	rip-relative	0x162b4a8	finite-text-operand-or-substring	Locations can be created from zones.
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39b4ab	rip-relative	0x162b488	finite-text-operand-or-substring	You do not have any stockpiles
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39b4f5	rip-relative	0x162b4f0	finite-text-operand-or-substring	Stockpiles can be placed using the stockpile menu at the bottom of the screen.
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39b52d	rip-relative	0x162b4d0	finite-text-operand-or-substring	You do not have any workshops.
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39b577	rip-relative	0x162b8e0	finite-text-operand-or-substring	Workshops are placed using the building menu at the bottom of the screen.
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39b5af	rip-relative	0x162b8c0	finite-text-operand-or-substring	You do not have any farm plots.
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39b5f9	rip-relative	0x162b960	finite-text-operand-or-substring	Farm plots are placed using the building menu at the bottom of the screen.
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39b631	rip-relative	0x162b930	finite-text-operand-or-substring	You do not have any siege engines.
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39b67b	rip-relative	0x162b9d0	finite-text-operand-or-substring	Siege engines are placed using the building menu at the bottom of the screen.
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39b700	rip-relative	0x162b9b0	finite-text-operand-or-substring	All siege engines
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39c742	rip-relative	0x162ba28	finite-text-operand-or-substring	Water source
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39c74e	rip-relative	0x162ba20	finite-text-operand-or-substring	Fishing
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39c75a	rip-relative	0x162b860	finite-text-operand-or-substring	Gather fruit
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39c766	rip-relative	0x162b850	finite-text-operand-or-substring	Garbage dump
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39c76f	rip-relative	0x162b880	finite-text-operand-or-substring	Pen/pasture
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39c778	rip-relative	0x162b870	finite-text-operand-or-substring	Pit/pond
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39c781	rip-relative	0x162b8a0	finite-text-operand-or-substring	Sand
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39c78a	rip-relative	0x162a4f4	finite-text-operand-or-substring	Clay
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39c793	rip-relative	0x162b890	finite-text-operand-or-substring	Meeting area
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39c79c	rip-relative	0x162b8b0	finite-text-operand-or-substring	Animal training
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39c7a5	rip-relative	0x162b8a8	finite-text-operand-or-substring	Bedroom
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39c7ae	rip-relative	0x162b7e8	finite-text-operand-or-substring	Dining hall
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39c7b7	rip-relative	0x162b7e0	finite-text-operand-or-substring	Office
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39c7c0	rip-relative	0x162b808	finite-text-operand-or-substring	Archery range
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39c7c9	rip-relative	0x162b7f8	finite-text-operand-or-substring	Barracks
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39c7d2	rip-relative	0x162b820	finite-text-operand-or-substring	Dormitory
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39c7db	rip-relative	0x162b818	finite-text-operand-or-substring	Dungeon
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39c7e4	rip-relative	0x162b844	finite-text-operand-or-substring	Tomb
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39c8ab	rip-relative	0x162b830	finite-text-operand-or-substring	Unnamed location
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39ca9c	rip-relative	0x162b788	finite-text-operand-or-substring	 squads assigned
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39cb18	rip-relative	0x162b778	finite-text-operand-or-substring	 assigned
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39cd23	rip-relative	0x162b7a0	finite-text-operand-or-substring	 imprisoned
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39ce31	rip-relative	0x1615860	finite-text-operand-or-substring	 available
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39d0de	rip-relative	0x162b778	finite-text-operand-or-substring	 assigned
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39d1ed	rip-relative	0x162b7b0	finite-text-operand-or-substring	 present
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39d24e	rip-relative	0x162b830	finite-text-operand-or-substring	Unnamed location
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39d35e	rip-relative	0x162bd38	finite-text-operand-or-substring	Hospital
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39d401	rip-relative	0x162bce0	finite-text-operand-or-substring	 meeting place
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39d41e	rip-relative	0x162bd18	finite-text-operand-or-substring	 guildhall
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39d43b	rip-relative	0x162bd00	finite-text-operand-or-substring	 grand guildhall
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39d58d	rip-relative	0x162b7c0	finite-text-operand-or-substring	Library
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39d5a5	rip-relative	0x162b7c8	finite-text-operand-or-substring	Tavern
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39d5c7	rip-relative	0x162b7d8	finite-text-operand-or-substring	Shrine
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39d5e4	rip-relative	0x162b7d0	finite-text-operand-or-substring	Temple
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39d601	rip-relative	0x162bcf0	finite-text-operand-or-substring	Temple complex
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39d643	rip-relative	0x15eb518	finite-text-operand-or-substring	 of 
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39d6f4	rip-relative	0x15ed5b4	finite-text-operand-or-substring	 to 
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39d703	rip-relative	0x15eb518	finite-text-operand-or-substring	 of 
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39d82e	rip-relative	0x162b778	finite-text-operand-or-substring	 assigned
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39db1d	rip-relative	0x162bd28	finite-text-operand-or-substring	 patient
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39db3b	rip-relative	0x15e9298	finite-text-operand-or-substring	s
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39db6f	rip-relative	0x162bd58	finite-text-operand-or-substring	Unknown location
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39de57	rip-relative	0x162bd48	finite-text-operand-or-substring	% occupied
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39df9b	rip-relative	0x162bc90	finite-text-operand-or-substring	+ 
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39dfda	rip-relative	0x162bc88	finite-text-operand-or-substring	 task
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39dff2	rip-relative	0x15e9298	finite-text-operand-or-substring	s
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39e0c2	rip-relative	0x1601fc8	finite-text-operand-or-substring	Leave fallow
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39e0d2	rip-relative	0x1601fd0	finite-text-operand-or-substring	llow
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39e34d	rip-relative	0x162bca8	finite-text-operand-or-substring	 planted
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39e46e	rip-relative	0x162bc98	finite-text-operand-or-substring	 to harvest
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39e60e	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39e627	rip-relative	0x162bcb4	finite-text-operand-or-substring	bolt
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39e642	rip-relative	0x15e9298	finite-text-operand-or-substring	s
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39e6d8	rip-relative	0x162bcd8	finite-text-operand-or-substring	Loaded
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39e6e4	rip-relative	0x162bcdc	finite-text-operand-or-substring	ed
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39e747	inline-immediate-fragment		finite-short-string-fragment	Unloaded
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39e85e	rip-relative	0x162bbd8	finite-text-operand-or-substring	Operator present
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39e8b8	rip-relative	0x162bc18	finite-text-operand-or-substring	Operator assigned
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39e912	rip-relative	0x162bc08	finite-text-operand-or-substring	No operator
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39e9d1	rip-relative	0x162bcd0	finite-text-operand-or-substring	Loading
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39e9de	rip-relative	0x162bcd4	finite-text-operand-or-substring	ing
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39e9ec	rip-relative	0x162bcd6	finite-text-operand-or-substring	g
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39eab0	rip-relative	0x162bbf0	finite-text-operand-or-substring	Inactive load task
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39eaba	rip-relative	0x162bc00	finite-text-operand-or-substring	sk
+reference	PE:6a70a6d9:02711000	guild-profession-descriptor	0x132e0c0	0x132e1e3	rip-relative	0x15e9298	finite-text-operand-or-substring	s
+reference	PE:6a70a6d9:02711000	guild-profession-descriptor	0x132e0c0	0x132e334	rip-relative	0x1782be0	finite-text-operand-or-substring	peasant
+reference	PE:6a70a6d9:02711000	guild-profession-descriptor	0x132e0c0	0x132e33b	rip-relative	0x1782bc0	finite-text-operand-or-substring	Peasant
+reference	PE:6a70a6d9:02711000	guild-profession-descriptor	0x132e0c0	0x132e363	rip-relative	0x15e9298	finite-text-operand-or-substring	s
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132cceb	rip-relative	0x1782060	finite-text-operand-or-substring	miner
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132cd05	rip-relative	0x1782080	finite-text-operand-or-substring	woodworker
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132cd1f	rip-relative	0x1782070	finite-text-operand-or-substring	carpenter
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132cd39	rip-relative	0x17821f4	finite-text-operand-or-substring	bowyer
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132cd53	rip-relative	0x17821e8	finite-text-operand-or-substring	woodcutter
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132cd6d	rip-relative	0x1782210	finite-text-operand-or-substring	stoneworker
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132cd87	rip-relative	0x1782200	finite-text-operand-or-substring	engraver
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132cda1	rip-relative	0x1782230	finite-text-operand-or-substring	stonecutter
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132cdbb	rip-relative	0x1782220	finite-text-operand-or-substring	stone carver
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132cdd5	rip-relative	0x1782244	finite-text-operand-or-substring	mason
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132cdef	rip-relative	0x178223c	finite-text-operand-or-substring	ranger
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132ce09	rip-relative	0x1782170	finite-text-operand-or-substring	animal caretaker
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132ce23	rip-relative	0x1782160	finite-text-operand-or-substring	animal trainer
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132ce3d	rip-relative	0x16a642c	finite-text-operand-or-substring	hunter
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132ce57	rip-relative	0x17821a0	finite-text-operand-or-substring	trapper
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132ce71	rip-relative	0x1782188	finite-text-operand-or-substring	animal dissector
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132ce8b	rip-relative	0x17821c0	finite-text-operand-or-substring	metalsmith
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132cea5	rip-relative	0x17821a8	finite-text-operand-or-substring	furnace operator
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132cebf	rip-relative	0x17821d8	finite-text-operand-or-substring	weaponsmith
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132ced9	rip-relative	0x17821d0	finite-text-operand-or-substring	armorer
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132cef3	rip-relative	0x17822c8	finite-text-operand-or-substring	blacksmith
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132cf0d	rip-relative	0x17822b8	finite-text-operand-or-substring	metalcrafter
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132cf27	rip-relative	0x17822e8	finite-text-operand-or-substring	jeweler
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132cf41	rip-relative	0x17822d8	finite-text-operand-or-substring	gem cutter
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132cf5b	rip-relative	0x1782300	finite-text-operand-or-substring	gem setter
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132cf6f	rip-relative	0x162a8a8	finite-text-operand-or-substring	craftsman
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132cf76	rip-relative	0x172e188	finite-text-operand-or-substring	craftsmen
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132cf95	rip-relative	0x17822f0	finite-text-operand-or-substring	woodcrafter
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132cfaf	rip-relative	0x1782320	finite-text-operand-or-substring	papermaker
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132cfc9	rip-relative	0x1782310	finite-text-operand-or-substring	bookbinder
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132cfe3	rip-relative	0x1782254	finite-text-operand-or-substring	potter
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132cffd	rip-relative	0x178224c	finite-text-operand-or-substring	glazer
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d017	rip-relative	0x1782270	finite-text-operand-or-substring	wax worker
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d031	rip-relative	0x1782260	finite-text-operand-or-substring	stonecrafter
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d04b	rip-relative	0x1782290	finite-text-operand-or-substring	leatherworker
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d065	rip-relative	0x1782280	finite-text-operand-or-substring	bone carver
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d07f	rip-relative	0x17822ac	finite-text-operand-or-substring	weaver
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d099	rip-relative	0x17822a0	finite-text-operand-or-substring	clothier
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d0b3	rip-relative	0x1782398	finite-text-operand-or-substring	glassmaker
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d0cd	rip-relative	0x1782380	finite-text-operand-or-substring	strand extractor
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d0e7	rip-relative	0x17823b8	finite-text-operand-or-substring	fishery worker
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d0fb	rip-relative	0x17823d8	finite-text-operand-or-substring	fisherman
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d102	rip-relative	0x17823a8	finite-text-operand-or-substring	fishermen
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d121	rip-relative	0x17823c8	finite-text-operand-or-substring	fish dissector
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d13b	rip-relative	0x17823f0	finite-text-operand-or-substring	fish cleaner
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d155	rip-relative	0x17823e4	finite-text-operand-or-substring	farmer
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d16f	rip-relative	0x1782338	finite-text-operand-or-substring	cheesemaker
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d189	rip-relative	0x178232c	finite-text-operand-or-substring	milker
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d1a3	rip-relative	0x1782350	finite-text-operand-or-substring	gelder
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d1bd	rip-relative	0x1782348	finite-text-operand-or-substring	shearer
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d1d7	rip-relative	0x1782360	finite-text-operand-or-substring	spinner
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d1f1	rip-relative	0x1782358	finite-text-operand-or-substring	cook
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d20b	rip-relative	0x1782370	finite-text-operand-or-substring	thresher
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d225	rip-relative	0x1782368	finite-text-operand-or-substring	miller
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d23f	rip-relative	0x1736468	finite-text-operand-or-substring	butcher
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d259	rip-relative	0x1781d10	finite-text-operand-or-substring	tanner
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d273	rip-relative	0x1781d08	finite-text-operand-or-substring	dyer
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d28d	rip-relative	0x1781d28	finite-text-operand-or-substring	presser
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d2a7	rip-relative	0x1781d18	finite-text-operand-or-substring	beekeeper
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d2c1	rip-relative	0x1781d40	finite-text-operand-or-substring	planter
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d2db	rip-relative	0x1781d30	finite-text-operand-or-substring	herbalist
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d2f5	rip-relative	0x1781d54	finite-text-operand-or-substring	brewer
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d30f	rip-relative	0x1781d48	finite-text-operand-or-substring	soap maker
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d329	rip-relative	0x1781c98	finite-text-operand-or-substring	potash maker
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d343	rip-relative	0x1781c88	finite-text-operand-or-substring	lye maker
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d35d	rip-relative	0x1781cb8	finite-text-operand-or-substring	wood burner
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d377	rip-relative	0x1781ca8	finite-text-operand-or-substring	engineer
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d391	rip-relative	0x1781cd8	finite-text-operand-or-substring	mechanic
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d3ab	rip-relative	0x1781cc8	finite-text-operand-or-substring	siege engineer
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d3c5	rip-relative	0x1781cf8	finite-text-operand-or-substring	siege operator
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d3df	rip-relative	0x1781ce8	finite-text-operand-or-substring	pump operator
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d3f9	rip-relative	0x16c1e74	finite-text-operand-or-substring	clerk
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d413	rip-relative	0x165fbf8	finite-text-operand-or-substring	administrator
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d42d	rip-relative	0x1781df8	finite-text-operand-or-substring	trader
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d447	rip-relative	0x16a65bc	finite-text-operand-or-substring	poet
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d461	rip-relative	0x16a6404	finite-text-operand-or-substring	bard
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d47b	rip-relative	0x16a640c	finite-text-operand-or-substring	dancer
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d495	rip-relative	0x1642440	finite-text-operand-or-substring	performer
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d4af	rip-relative	0x16423b4	finite-text-operand-or-substring	scribe
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d4c9	rip-relative	0x1642430	finite-text-operand-or-substring	tavern keeper
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d4e3	rip-relative	0x1642458	finite-text-operand-or-substring	doctor
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d4fd	rip-relative	0x16423f8	finite-text-operand-or-substring	diagnostician
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d517	rip-relative	0x1642410	finite-text-operand-or-substring	bone doctor
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d531	rip-relative	0x1781df0	finite-text-operand-or-substring	suturer
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d54b	rip-relative	0x1642408	finite-text-operand-or-substring	surgeon
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d565	rip-relative	0x1781e08	finite-text-operand-or-substring	merchant
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d57f	rip-relative	0x1781e00	finite-text-operand-or-substring	drunk
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d593	rip-relative	0x1781e18	finite-text-operand-or-substring	hammerman
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d59a	rip-relative	0x1781e28	finite-text-operand-or-substring	hammermen
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d5b9	rip-relative	0x1781e48	finite-text-operand-or-substring	Hammer Lord
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d5d0	rip-relative	0x1781d70	finite-text-operand-or-substring	spearman
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d5d7	rip-relative	0x1781e38	finite-text-operand-or-substring	spearmen
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d5f3	rip-relative	0x1781d60	finite-text-operand-or-substring	Spearmaster
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d60a	rip-relative	0x1781d80	finite-text-operand-or-substring	crossbowman
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d611	rip-relative	0x1781d90	finite-text-operand-or-substring	crossbowmen
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d62a	rip-relative	0x1781da0	finite-text-operand-or-substring	Elite Crossbowmen
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d631	rip-relative	0x1781db8	finite-text-operand-or-substring	Elite Crossbowman
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d64d	rip-relative	0x1781de0	finite-text-operand-or-substring	wrestler
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d667	rip-relative	0x1781dd0	finite-text-operand-or-substring	Elite Wrestler
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d67b	rip-relative	0x1781eb8	finite-text-operand-or-substring	axeman
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d682	rip-relative	0x1781ec0	finite-text-operand-or-substring	axemen
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d6a1	rip-relative	0x1781ed8	finite-text-operand-or-substring	Axe Lord
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d6b5	rip-relative	0x1781ef8	finite-text-operand-or-substring	swordsman
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d6bc	rip-relative	0x1781ec8	finite-text-operand-or-substring	swordsmen
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d6db	rip-relative	0x1781ee8	finite-text-operand-or-substring	Swordmaster
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d6ef	rip-relative	0x1781f08	finite-text-operand-or-substring	maceman
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d6f6	rip-relative	0x1781f10	finite-text-operand-or-substring	macemen
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d715	rip-relative	0x1781e60	finite-text-operand-or-substring	Mace Lord
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d729	rip-relative	0x1781e80	finite-text-operand-or-substring	pikeman
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d730	rip-relative	0x1781e58	finite-text-operand-or-substring	pikemen
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d74f	rip-relative	0x1781e70	finite-text-operand-or-substring	Pikemaster
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d763	rip-relative	0x1781e88	finite-text-operand-or-substring	bowman
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d76a	rip-relative	0x1781e90	finite-text-operand-or-substring	bowmen
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d786	rip-relative	0x1781e98	finite-text-operand-or-substring	Elite Bowman
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d78d	rip-relative	0x1781ea8	finite-text-operand-or-substring	Elite Bowmen
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d7a9	rip-relative	0x1781fa0	finite-text-operand-or-substring	blowgunner
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d7c3	rip-relative	0x1781f88	finite-text-operand-or-substring	Master Blowgunner
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d7dd	rip-relative	0x1781fc0	finite-text-operand-or-substring	lasher
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d7f7	rip-relative	0x1781fb0	finite-text-operand-or-substring	Master Lasher
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d811	rip-relative	0x1781fd8	finite-text-operand-or-substring	recruit
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d82b	rip-relative	0x16a1210	finite-text-operand-or-substring	hunting
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d840	rip-relative	0x1649be4	finite-text-operand-or-substring	war
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d855	rip-relative	0x1781fc8	finite-text-operand-or-substring	Master Thief
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d86f	rip-relative	0x16a6990	finite-text-operand-or-substring	thief
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d889	rip-relative	0x1642420	finite-text-operand-or-substring	monster slayer
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d8a3	rip-relative	0x1674d10	finite-text-operand-or-substring	scout
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d8bd	rip-relative	0x1781fe8	finite-text-operand-or-substring	beast hunter
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d8d7	rip-relative	0x16e67a8	finite-text-operand-or-substring	snatcher
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d8ee	rip-relative	0x1675290	finite-text-operand-or-substring	mercenaries
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d8fb	rip-relative	0x15ec9f0	finite-text-operand-or-substring	mercenary
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d91d	rip-relative	0x1781fe0	finite-text-operand-or-substring	sage
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d937	rip-relative	0x1642450	finite-text-operand-or-substring	scholar
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d951	rip-relative	0x1781f28	finite-text-operand-or-substring	philosopher
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d96b	rip-relative	0x1781f18	finite-text-operand-or-substring	mathematician
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d985	rip-relative	0x1781f48	finite-text-operand-or-substring	historian
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d99f	rip-relative	0x1781f38	finite-text-operand-or-substring	astronomer
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d9b9	rip-relative	0x1781f60	finite-text-operand-or-substring	naturalist
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d9d3	rip-relative	0x1781f58	finite-text-operand-or-substring	chemist
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132d9ed	rip-relative	0x1781f78	finite-text-operand-or-substring	geographer
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132da07	rip-relative	0x1673f48	finite-text-operand-or-substring	criminal
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132da21	rip-relative	0x1781f70	finite-text-operand-or-substring	peddler
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132da3b	rip-relative	0x1782ba0	finite-text-operand-or-substring	prophet
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132da55	rip-relative	0x1782b98	finite-text-operand-or-substring	pilgrim
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132da6f	rip-relative	0x1782bb4	finite-text-operand-or-substring	monk
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132da89	rip-relative	0x1782ba8	finite-text-operand-or-substring	messenger
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132db26	rip-relative	0x16a12a8	finite-text-operand-or-substring	children
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132dc5b	rip-relative	0x1646ac0	finite-text-operand-or-substring	child
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132dcb8	rip-relative	0x1782bc8	finite-text-operand-or-substring	babies
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132dcca	rip-relative	0x167ff14	finite-text-operand-or-substring	baby
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132de26	rip-relative	0x1782bc8	finite-text-operand-or-substring	babies
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132de35	rip-relative	0x167ff14	finite-text-operand-or-substring	baby
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132de57	rip-relative	0x15e9298	finite-text-operand-or-substring	s
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x398ba3	rip-relative	0x1604f54	finite-text-operand-or-substring	Zones
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x398baf	rip-relative	0x1604f58	finite-text-operand-or-substring	s
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x398c04	rip-relative	0x15fac78	finite-text-operand-or-substring	Locations
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x398c14	rip-relative	0x15fac80	finite-text-operand-or-substring	s
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x398c69	rip-relative	0x15ffd90	finite-text-operand-or-substring	Stockpiles
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x398c79	rip-relative	0x15ffd98	finite-text-operand-or-substring	es
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x398ccf	rip-relative	0x15fac88	finite-text-operand-or-substring	Workshops
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x398cdf	rip-relative	0x15fac90	finite-text-operand-or-substring	s
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x398d20	rip-relative	0x1626d08	finite-text-operand-or-substring	Farm plots
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x398d81	rip-relative	0x1626cf8	finite-text-operand-or-substring	Siege engines
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x398d91	rip-relative	0x1626d00	finite-text-operand-or-substring	gines
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x398d9d	rip-relative	0x1626d04	finite-text-operand-or-substring	s
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x398f67	rip-relative	0x1626d68	finite-text-operand-or-substring	You do not have any zones.
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x398fb1	rip-relative	0x1626d20	finite-text-operand-or-substring	Zones can be added using the zone menu at the bottom of the screen.
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x398fe9	rip-relative	0x1626db0	finite-text-operand-or-substring	You do not have any locations.
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x399033	rip-relative	0x1626d88	finite-text-operand-or-substring	Locations can be created from zones.
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39906b	rip-relative	0x1626b70	finite-text-operand-or-substring	You do not have any stockpiles
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x3990b5	rip-relative	0x1626b20	finite-text-operand-or-substring	Stockpiles can be placed using the stockpile menu at the bottom of the screen.
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x3990ed	rip-relative	0x1626be0	finite-text-operand-or-substring	You do not have any workshops.
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x399137	rip-relative	0x1626b90	finite-text-operand-or-substring	Workshops are placed using the building menu at the bottom of the screen.
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39916f	rip-relative	0x1626c50	finite-text-operand-or-substring	You do not have any farm plots.
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x3991b9	rip-relative	0x1626c00	finite-text-operand-or-substring	Farm plots are placed using the building menu at the bottom of the screen.
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x3991f1	rip-relative	0x1626cc0	finite-text-operand-or-substring	You do not have any siege engines.
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39923b	rip-relative	0x1626c70	finite-text-operand-or-substring	Siege engines are placed using the building menu at the bottom of the screen.
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x3992c0	rip-relative	0x1626ab0	finite-text-operand-or-substring	All siege engines
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39a302	rip-relative	0x1626aa0	finite-text-operand-or-substring	Water source
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39a30e	rip-relative	0x1626ad8	finite-text-operand-or-substring	Fishing
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39a31a	rip-relative	0x1626ac8	finite-text-operand-or-substring	Gather fruit
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39a326	rip-relative	0x1626af0	finite-text-operand-or-substring	Garbage dump
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39a32f	rip-relative	0x1626ae0	finite-text-operand-or-substring	Pen/pasture
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39a338	rip-relative	0x1626b08	finite-text-operand-or-substring	Pit/pond
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39a341	rip-relative	0x1626b00	finite-text-operand-or-substring	Sand
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39a34a	rip-relative	0x1625884	finite-text-operand-or-substring	Clay
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39a353	rip-relative	0x1627010	finite-text-operand-or-substring	Meeting area
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39a35c	rip-relative	0x1627000	finite-text-operand-or-substring	Animal training
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39a365	rip-relative	0x1627030	finite-text-operand-or-substring	Bedroom
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39a36e	rip-relative	0x1627020	finite-text-operand-or-substring	Dining hall
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39a377	rip-relative	0x1627048	finite-text-operand-or-substring	Office
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39a380	rip-relative	0x1627038	finite-text-operand-or-substring	Archery range
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39a389	rip-relative	0x1627060	finite-text-operand-or-substring	Barracks
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39a392	rip-relative	0x1627050	finite-text-operand-or-substring	Dormitory
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39a39b	rip-relative	0x1626f90	finite-text-operand-or-substring	Dungeon
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39a3a4	rip-relative	0x1626f84	finite-text-operand-or-substring	Tomb
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39a46b	rip-relative	0x1626fb0	finite-text-operand-or-substring	Unnamed location
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39a65c	rip-relative	0x1626f98	finite-text-operand-or-substring	 squads assigned
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39a6d8	rip-relative	0x1626fd8	finite-text-operand-or-substring	 assigned
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39a8e3	rip-relative	0x1626ff0	finite-text-operand-or-substring	 imprisoned
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39a9f1	rip-relative	0x1610978	finite-text-operand-or-substring	 available
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39ac9e	rip-relative	0x1626fd8	finite-text-operand-or-substring	 assigned
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39adad	rip-relative	0x1626fc8	finite-text-operand-or-substring	 present
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39ae0e	rip-relative	0x1626fb0	finite-text-operand-or-substring	Unnamed location
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39af1e	rip-relative	0x1626f60	finite-text-operand-or-substring	Hospital
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39afc1	rip-relative	0x1626f50	finite-text-operand-or-substring	 meeting place
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39afde	rip-relative	0x1626f40	finite-text-operand-or-substring	 guildhall
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39affb	rip-relative	0x1626f70	finite-text-operand-or-substring	 grand guildhall
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39b14d	rip-relative	0x1626f20	finite-text-operand-or-substring	Library
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39b165	rip-relative	0x1626fe4	finite-text-operand-or-substring	Tavern
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39b187	rip-relative	0x1626f14	finite-text-operand-or-substring	Shrine
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39b1a4	rip-relative	0x1626f38	finite-text-operand-or-substring	Temple
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39b1c1	rip-relative	0x1626f28	finite-text-operand-or-substring	Temple complex
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39b203	rip-relative	0x15e64d0	finite-text-operand-or-substring	 of 
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39b2b4	rip-relative	0x15e8524	finite-text-operand-or-substring	 to 
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39b2c3	rip-relative	0x15e64d0	finite-text-operand-or-substring	 of 
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39b3ee	rip-relative	0x1626fd8	finite-text-operand-or-substring	 assigned
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39b6dd	rip-relative	0x1626ec0	finite-text-operand-or-substring	 patient
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39b6fb	rip-relative	0x15e4220	finite-text-operand-or-substring	s
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39b72f	rip-relative	0x1626ea8	finite-text-operand-or-substring	Unknown location
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39ba17	rip-relative	0x1626ed0	finite-text-operand-or-substring	% occupied
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39bb5b	rip-relative	0x1626ecc	finite-text-operand-or-substring	+ 
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39bb9a	rip-relative	0x1626eec	finite-text-operand-or-substring	 task
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39bbb2	rip-relative	0x15e4220	finite-text-operand-or-substring	s
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39bc82	rip-relative	0x15fce28	finite-text-operand-or-substring	Leave fallow
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39bc92	rip-relative	0x15fce30	finite-text-operand-or-substring	llow
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39bf0d	rip-relative	0x1626ee0	finite-text-operand-or-substring	 planted
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39c02e	rip-relative	0x1626f08	finite-text-operand-or-substring	 to harvest
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39c1ce	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39c1e7	rip-relative	0x1627394	finite-text-operand-or-substring	bolt
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39c202	rip-relative	0x15e4220	finite-text-operand-or-substring	s
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39c298	rip-relative	0x162738c	finite-text-operand-or-substring	Loaded
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39c2a4	rip-relative	0x1627390	finite-text-operand-or-substring	ed
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39c307	inline-immediate-fragment		finite-short-string-fragment	Unloaded
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39c41e	rip-relative	0x16273d8	finite-text-operand-or-substring	Operator present
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39c478	rip-relative	0x16273c0	finite-text-operand-or-substring	Operator assigned
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39c4d2	rip-relative	0x16273f8	finite-text-operand-or-substring	No operator
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39c591	rip-relative	0x16273b8	finite-text-operand-or-substring	Loading
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39c59e	rip-relative	0x16273bc	finite-text-operand-or-substring	ing
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39c5ac	rip-relative	0x16273be	finite-text-operand-or-substring	g
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39c670	rip-relative	0x16273a0	finite-text-operand-or-substring	Inactive load task
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39c67a	rip-relative	0x16273b0	finite-text-operand-or-substring	sk
+classic	PE:6a70b91c:0270a000	guild-profession-descriptor	0x1329030	0x1329153	rip-relative	0x15e4220	finite-text-operand-or-substring	s
+classic	PE:6a70b91c:0270a000	guild-profession-descriptor	0x1329030	0x13292a4	rip-relative	0x177c938	finite-text-operand-or-substring	peasant
+classic	PE:6a70b91c:0270a000	guild-profession-descriptor	0x1329030	0x13292ab	rip-relative	0x177c940	finite-text-operand-or-substring	Peasant
+classic	PE:6a70b91c:0270a000	guild-profession-descriptor	0x1329030	0x13292d3	rip-relative	0x15e4220	finite-text-operand-or-substring	s
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1327c5b	rip-relative	0x177c1f4	finite-text-operand-or-substring	miner
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1327c75	rip-relative	0x177c1e8	finite-text-operand-or-substring	woodworker
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1327c8f	rip-relative	0x177c208	finite-text-operand-or-substring	carpenter
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1327ca9	rip-relative	0x177c1fc	finite-text-operand-or-substring	bowyer
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1327cc3	rip-relative	0x177c228	finite-text-operand-or-substring	woodcutter
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1327cdd	rip-relative	0x177c218	finite-text-operand-or-substring	stoneworker
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1327cf7	rip-relative	0x177c170	finite-text-operand-or-substring	engraver
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1327d11	rip-relative	0x177c160	finite-text-operand-or-substring	stonecutter
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1327d2b	rip-relative	0x177c188	finite-text-operand-or-substring	stone carver
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1327d45	rip-relative	0x177c17c	finite-text-operand-or-substring	mason
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1327d5f	rip-relative	0x177c1ac	finite-text-operand-or-substring	ranger
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1327d79	rip-relative	0x177c198	finite-text-operand-or-substring	animal caretaker
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1327d93	rip-relative	0x177c1c0	finite-text-operand-or-substring	animal trainer
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1327dad	rip-relative	0x16a1484	finite-text-operand-or-substring	hunter
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1327dc7	rip-relative	0x177c1b8	finite-text-operand-or-substring	trapper
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1327de1	rip-relative	0x177c2b8	finite-text-operand-or-substring	animal dissector
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1327dfb	rip-relative	0x177c2a8	finite-text-operand-or-substring	metalsmith
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1327e15	rip-relative	0x177c2e0	finite-text-operand-or-substring	furnace operator
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1327e2f	rip-relative	0x177c2d0	finite-text-operand-or-substring	weaponsmith
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1327e49	rip-relative	0x177c308	finite-text-operand-or-substring	armorer
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1327e63	rip-relative	0x177c2f8	finite-text-operand-or-substring	blacksmith
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1327e7d	rip-relative	0x177c318	finite-text-operand-or-substring	metalcrafter
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1327e97	rip-relative	0x177c310	finite-text-operand-or-substring	jeweler
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1327eb1	rip-relative	0x177c248	finite-text-operand-or-substring	gem cutter
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1327ecb	rip-relative	0x177c238	finite-text-operand-or-substring	gem setter
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1327edf	rip-relative	0x1625fe8	finite-text-operand-or-substring	craftsman
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1327ee6	rip-relative	0x1729eb8	finite-text-operand-or-substring	craftsmen
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1327f05	rip-relative	0x177c268	finite-text-operand-or-substring	woodcrafter
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1327f1f	rip-relative	0x177c258	finite-text-operand-or-substring	papermaker
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1327f39	rip-relative	0x177c280	finite-text-operand-or-substring	bookbinder
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1327f53	rip-relative	0x177c274	finite-text-operand-or-substring	potter
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1327f6d	rip-relative	0x177c29c	finite-text-operand-or-substring	glazer
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1327f87	rip-relative	0x177c290	finite-text-operand-or-substring	wax worker
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1327fa1	rip-relative	0x177c3a0	finite-text-operand-or-substring	stonecrafter
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1327fbb	rip-relative	0x177c390	finite-text-operand-or-substring	leatherworker
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1327fd5	rip-relative	0x177c3b8	finite-text-operand-or-substring	bone carver
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1327fef	rip-relative	0x177c3b0	finite-text-operand-or-substring	weaver
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1328009	rip-relative	0x177c3d8	finite-text-operand-or-substring	clothier
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1328023	rip-relative	0x177c3c8	finite-text-operand-or-substring	glassmaker
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x132803d	rip-relative	0x177c3f8	finite-text-operand-or-substring	strand extractor
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1328057	rip-relative	0x177c3e8	finite-text-operand-or-substring	fishery worker
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x132806b	rip-relative	0x177c328	finite-text-operand-or-substring	fisherman
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1328072	rip-relative	0x177c338	finite-text-operand-or-substring	fishermen
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1328091	rip-relative	0x177c358	finite-text-operand-or-substring	fish dissector
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x13280ab	rip-relative	0x177c348	finite-text-operand-or-substring	fish cleaner
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x13280c5	rip-relative	0x177c374	finite-text-operand-or-substring	farmer
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x13280df	rip-relative	0x177c368	finite-text-operand-or-substring	cheesemaker
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x13280f9	rip-relative	0x177c384	finite-text-operand-or-substring	milker
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1328113	rip-relative	0x177c37c	finite-text-operand-or-substring	gelder
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x132812d	rip-relative	0x177ccc8	finite-text-operand-or-substring	shearer
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1328147	rip-relative	0x177ccc0	finite-text-operand-or-substring	spinner
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1328161	rip-relative	0x177ccdc	finite-text-operand-or-substring	cook
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x132817b	rip-relative	0x177ccd0	finite-text-operand-or-substring	thresher
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1328195	rip-relative	0x177ccec	finite-text-operand-or-substring	miller
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x13281af	rip-relative	0x1730600	finite-text-operand-or-substring	butcher
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x13281c9	rip-relative	0x177cce4	finite-text-operand-or-substring	tanner
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x13281e3	rip-relative	0x177cd00	finite-text-operand-or-substring	dyer
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x13281fd	rip-relative	0x177ccf8	finite-text-operand-or-substring	presser
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1328217	rip-relative	0x177cc58	finite-text-operand-or-substring	beekeeper
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1328231	rip-relative	0x177cc50	finite-text-operand-or-substring	planter
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x132824b	rip-relative	0x177cc70	finite-text-operand-or-substring	herbalist
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1328265	rip-relative	0x177cc64	finite-text-operand-or-substring	brewer
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x132827f	rip-relative	0x177cc90	finite-text-operand-or-substring	soap maker
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1328299	rip-relative	0x177cc80	finite-text-operand-or-substring	potash maker
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x13282b3	rip-relative	0x177ccb0	finite-text-operand-or-substring	lye maker
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x13282cd	rip-relative	0x177cca0	finite-text-operand-or-substring	wood burner
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x13282e7	rip-relative	0x177cd90	finite-text-operand-or-substring	engineer
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1328301	rip-relative	0x177cd80	finite-text-operand-or-substring	mechanic
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x132831b	rip-relative	0x177cdb0	finite-text-operand-or-substring	siege engineer
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1328335	rip-relative	0x177cda0	finite-text-operand-or-substring	siege operator
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x132834f	rip-relative	0x177cdc8	finite-text-operand-or-substring	pump operator
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1328369	rip-relative	0x16bc644	finite-text-operand-or-substring	clerk
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1328383	rip-relative	0x165ae68	finite-text-operand-or-substring	administrator
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x132839d	rip-relative	0x177cdc0	finite-text-operand-or-substring	trader
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x13283b7	rip-relative	0x16a1454	finite-text-operand-or-substring	poet
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x13283d1	rip-relative	0x16a145c	finite-text-operand-or-substring	bard
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x13283eb	rip-relative	0x16a1464	finite-text-operand-or-substring	dancer
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1328405	rip-relative	0x163cf38	finite-text-operand-or-substring	performer
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x132841f	rip-relative	0x163cf30	finite-text-operand-or-substring	scribe
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1328439	rip-relative	0x163cfd8	finite-text-operand-or-substring	tavern keeper
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1328453	rip-relative	0x163cf50	finite-text-operand-or-substring	doctor
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x132846d	rip-relative	0x163cf58	finite-text-operand-or-substring	diagnostician
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1328487	rip-relative	0x163cf10	finite-text-operand-or-substring	bone doctor
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x13284a1	rip-relative	0x177cde8	finite-text-operand-or-substring	suturer
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x13284bb	rip-relative	0x163cf08	finite-text-operand-or-substring	surgeon
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x13284d5	rip-relative	0x177cdd8	finite-text-operand-or-substring	merchant
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x13284ef	rip-relative	0x177cd14	finite-text-operand-or-substring	drunk
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1328503	rip-relative	0x177cd30	finite-text-operand-or-substring	hammerman
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x132850a	rip-relative	0x177cd08	finite-text-operand-or-substring	hammermen
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1328529	rip-relative	0x177cd20	finite-text-operand-or-substring	Hammer Lord
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1328540	rip-relative	0x177cd40	finite-text-operand-or-substring	spearman
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1328547	rip-relative	0x177cd50	finite-text-operand-or-substring	spearmen
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1328563	rip-relative	0x177cd70	finite-text-operand-or-substring	Spearmaster
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x132857a	rip-relative	0x177ce68	finite-text-operand-or-substring	crossbowman
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1328581	rip-relative	0x177cd60	finite-text-operand-or-substring	crossbowmen
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x132859a	rip-relative	0x177ce88	finite-text-operand-or-substring	Elite Crossbowmen
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x13285a1	rip-relative	0x177ce50	finite-text-operand-or-substring	Elite Crossbowman
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x13285bd	rip-relative	0x177ce78	finite-text-operand-or-substring	wrestler
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x13285d7	rip-relative	0x177cea8	finite-text-operand-or-substring	Elite Wrestler
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x13285eb	rip-relative	0x177cec4	finite-text-operand-or-substring	axeman
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x13285f2	rip-relative	0x177ce9c	finite-text-operand-or-substring	axemen
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1328611	rip-relative	0x177ceb8	finite-text-operand-or-substring	Axe Lord
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1328625	rip-relative	0x177cdf0	finite-text-operand-or-substring	swordsman
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x132862c	rip-relative	0x177ce00	finite-text-operand-or-substring	swordsmen
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x132864b	rip-relative	0x177ce18	finite-text-operand-or-substring	Swordmaster
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x132865f	rip-relative	0x177ce38	finite-text-operand-or-substring	maceman
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1328666	rip-relative	0x177ce10	finite-text-operand-or-substring	macemen
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1328685	rip-relative	0x177ce28	finite-text-operand-or-substring	Mace Lord
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1328699	rip-relative	0x177ce40	finite-text-operand-or-substring	pikeman
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x13286a0	rip-relative	0x177ce48	finite-text-operand-or-substring	pikemen
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x13286bf	rip-relative	0x177cf48	finite-text-operand-or-substring	Pikemaster
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x13286d3	rip-relative	0x177cf68	finite-text-operand-or-substring	bowman
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x13286da	rip-relative	0x177cf40	finite-text-operand-or-substring	bowmen
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x13286f6	rip-relative	0x177cf80	finite-text-operand-or-substring	Elite Bowman
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x13286fd	rip-relative	0x177cf58	finite-text-operand-or-substring	Elite Bowmen
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1328719	rip-relative	0x177cf70	finite-text-operand-or-substring	blowgunner
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1328733	rip-relative	0x177cf98	finite-text-operand-or-substring	Master Blowgunner
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x132874d	rip-relative	0x177cf90	finite-text-operand-or-substring	lasher
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1328767	rip-relative	0x177ced8	finite-text-operand-or-substring	Master Lasher
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1328781	rip-relative	0x177ced0	finite-text-operand-or-substring	recruit
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x132879b	rip-relative	0x169c108	finite-text-operand-or-substring	hunting
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x13287b0	rip-relative	0x1644b7c	finite-text-operand-or-substring	war
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x13287c5	rip-relative	0x177cef8	finite-text-operand-or-substring	Master Thief
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x13287df	rip-relative	0x16a13d0	finite-text-operand-or-substring	thief
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x13287f9	rip-relative	0x163cf20	finite-text-operand-or-substring	monster slayer
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1328813	rip-relative	0x166fe1c	finite-text-operand-or-substring	scout
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x132882d	rip-relative	0x177cee8	finite-text-operand-or-substring	beast hunter
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1328847	rip-relative	0x16e1598	finite-text-operand-or-substring	snatcher
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x132885e	rip-relative	0x1670360	finite-text-operand-or-substring	mercenaries
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x132886b	rip-relative	0x15e79d0	finite-text-operand-or-substring	mercenary
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x132888d	rip-relative	0x177cf14	finite-text-operand-or-substring	sage
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x13288a7	rip-relative	0x163cf48	finite-text-operand-or-substring	scholar
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x13288c1	rip-relative	0x177cf08	finite-text-operand-or-substring	philosopher
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x13288db	rip-relative	0x177cf30	finite-text-operand-or-substring	mathematician
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x13288f5	rip-relative	0x177cf20	finite-text-operand-or-substring	historian
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x132890f	rip-relative	0x177c988	finite-text-operand-or-substring	astronomer
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1328929	rip-relative	0x177c978	finite-text-operand-or-substring	naturalist
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1328943	rip-relative	0x177c9a8	finite-text-operand-or-substring	chemist
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x132895d	rip-relative	0x177c998	finite-text-operand-or-substring	geographer
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1328977	rip-relative	0x166ee18	finite-text-operand-or-substring	criminal
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1328991	rip-relative	0x177c9b8	finite-text-operand-or-substring	peddler
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x13289ab	rip-relative	0x177c9b0	finite-text-operand-or-substring	prophet
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x13289c5	rip-relative	0x177c9c8	finite-text-operand-or-substring	pilgrim
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x13289df	rip-relative	0x177c9c0	finite-text-operand-or-substring	monk
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x13289f9	rip-relative	0x177c928	finite-text-operand-or-substring	messenger
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1328a96	rip-relative	0x169c248	finite-text-operand-or-substring	children
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1328bcb	rip-relative	0x16416fc	finite-text-operand-or-substring	child
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1328c28	rip-relative	0x177c920	finite-text-operand-or-substring	babies
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1328c3a	rip-relative	0x167b1e4	finite-text-operand-or-substring	baby
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1328d96	rip-relative	0x177c920	finite-text-operand-or-substring	babies
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1328da5	rip-relative	0x167b1e4	finite-text-operand-or-substring	baby
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1328dc7	rip-relative	0x15e4220	finite-text-operand-or-substring	s

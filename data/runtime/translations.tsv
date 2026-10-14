@@ -59611,6 +59611,7 @@ You given emergency tactical control	你获得紧急战术控制权	w
 You have no appropriate ingredients.	你没有合适的原料。	hP
 You have selected a very large area.	你选择了一个超大型区域。	l
 You will travel far from this place.	你将远行，离开此地。	hP
+Zone location: Temple complex of {e}	{e1}的神殿建筑群	htl
 a ceremony held by {a} in the wilds.	在荒野中，{a1}举办的仪式。	htEi
 a gladiatory competition during {e}.	在{e1}期间，角斗比赛。	htEi
 a gladiatory competition within {p}.	在{p1}，角斗比赛。	htEi
@@ -64064,6 +64065,7 @@ You've lost possession of the {s}.	你失去了{s1}。	hPt
 Your adventure has come to an end.	你的冒险已经结束。	hq
 Your adventure has come to an end.	你的冒险已告终。	w
 Your chant is absolutely flawless.	你的吟唱完美无瑕。	hP
+Zone location: {s} grand guildhall	{s1}大行会大厅	htl
 a ceremony held by {a} during {e}.	在{e1}期间，{a1}举办的仪式。	htEi
 a ceremony held by {a} within {p}.	在{p1}，{a1}举办的仪式。	htEi
 a competition involving {b} at {p}	在{p1}，以《{b1}》为内容的比赛	htEi
@@ -78125,6 +78127,10 @@ You leap at {n} from behind!	你从背后扑向{n1}！	hPt
 You play the {s} with skill.	你娴熟地演奏着{s1}。	hPt
 You retract into your shell.	你缩进自己的壳里。	hP
 You vomit into the sea foam.	你吐进了海沫里。	hP
+Zone location: Shrine of {e}	{e1}的圣地	htl
+Zone location: Shrine to {e}	供奉{e1}的圣地	htl
+Zone location: Temple of {e}	{e1}的神殿	htl
+Zone location: {s} guildhall	{s1}行会大厅	htl
 Zoom out from the play area.	缩小游戏区域。	hj
 Zoom out from the play area.	缩小游戏区域。	wl
 a competition involving {b}.	以《{b1}》为内容的比赛。	htEi
@@ -80430,6 +80436,7 @@ You root around in the {s}.	你在{s1}中翻找。	hPt
 Your ambition is misguided.	你的抱负走错了方向。	hP
 Your dreams will come true.	你的梦想将会成真。	hP
 Your room is up the stairs.	你的房间在楼上。	hP
+Zone location: {d} patients	{d1} 名患者	htl
 a competition in the wilds.	在荒野中，比赛。	hEi
 a competition involving {b}	以《{b1}》为内容的比赛	htEi
 a dance competition at {p}.	在{p1}，舞蹈比赛。	htEi
@@ -82744,6 +82751,7 @@ You strap {s} to your {s}.	你把{s1}系在了{s2}上。	hPt
 You vomit into the flames.	你吐进了火焰里。	hP
 You will need to appoint a	你需要任命一位	hq
 Your Attributes and Skills	你的属性与技能
+Zone location: {d} patient	{d1} 名患者	htl
 Zone type: Animal Training	驯兽区	l
 a competition in the wilds	在荒野中，比赛	hEi
 a conspiracy to slow labor	合谋怠工	h
@@ -92884,6 +92892,7 @@ You will be rewarded.	你将获得回报。	hP
 Your citizens need a 	你的居民需要一个舒适的睡眠场	w
 Z Levels Above Ground	地表上方的 Z 层数
 Zinc-bearing boulders	含锌矿石	wi
+Zone location: of {e}	{e1}的	htl
 a business rival, {a}	商业对手{a1}	htu
 a ceremony during {e}	在{e1}期间，仪式	htEi
 a ceremony within {p}	在{p1}，仪式	htEi

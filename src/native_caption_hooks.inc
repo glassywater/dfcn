@@ -1809,7 +1809,21 @@ static void remember_native_clipped_resize(NativeString *source, size_t width, c
 }
 
 static void capture_native_clipped_resize(NativeString *source, size_t width, char fill) {
-    remember_native_clipped_resize(source, width, fill);
+    bool zone_plain_prefix = false;
+#ifdef _WIN32
+    if (width > 0 && width <= 3) {
+        const auto caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
+        const auto base = native_history_profile_base();
+        // The Places zone/location column only adds dots when its retained
+        // width exceeds three bytes. Narrower nonempty captions are plain
+        // prefixes of the same complete native name or description.
+        zone_plain_prefix = base &&
+            (caller == native_reference_address(base, 0x39c8e9) ||
+             caller == native_reference_address(base, 0x39d28e) ||
+             caller == native_reference_address(base, 0x39d489));
+    }
+#endif
+    remember_native_clipped_resize(source, width, fill, false, zone_plain_prefix);
     if (g_native_clipped_caption_hooks.resize)
         g_native_clipped_caption_hooks.resize(source, width, fill);
 }

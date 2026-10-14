@@ -9037,6 +9037,17 @@ Zone type: Animal Training	驯兽区	l
 Zone type: Tomb	墓地	l
 Zone type: Gather Fruit	植物采集区	l
 Zone type: Clay	黏土采集区	l
+# Native zone location descriptions keep each complete profession or faith
+# identity in its resolved field before the row's English text is clipped.
+Zone location: {s} guildhall	{s1}行会大厅	htl
+Zone location: {s} grand guildhall	{s1}大行会大厅	htl
+Zone location: Shrine to {e}	供奉{e1}的圣地	htl
+Zone location: Shrine of {e}	{e1}的圣地	htl
+Zone location: Temple of {e}	{e1}的神殿	htl
+Zone location: Temple complex of {e}	{e1}的神殿建筑群	htl
+Zone location: of {e}	{e1}的	htl
+Zone location: {d} patient	{d1} 名患者	htl
+Zone location: {d} patients	{d1} 名患者	htl
 # Unambiguous complete labels can also be used outside the zone picker.
 Pen/Pasture	畜栏／牧场	wi
 Pit/Pond	坑洞／池塘	wi

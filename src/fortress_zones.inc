@@ -110,6 +110,40 @@ void Overlay::append_fortress_place_names(std::vector<std::string> &rows,
         return intact && !target.empty() ? std::optional<std::string>(std::move(target))
             : std::nullopt;
     };
+    // The zone's associated location has a separate name and description.
+    // 39d4e0 draws the complete description after 39d484 shortens it. Its
+    // profession and religious subject belong to that field, never to the
+    // zone's owner or to a generated location-name parser.
+    const auto location_description = [&](std::string_view source)
+            -> std::optional<std::string> {
+        for (const std::string_view suffix : {" grand guildhall", " guildhall", " meeting place"}) {
+            if (!source.ends_with(suffix) || source.size() <= suffix.size()) continue;
+            const std::string profession_source(source.substr(0, source.size() - suffix.size()));
+            auto profession = translate_unit_profession(profession_source, true);
+            if (!profession) profession = exact_literal_translation(profession_source);
+            if (!profession) return std::nullopt;
+            return format_owned_caption(suffix == " meeting place" ? "{s} meeting place"
+                : "Zone location: {s}" + std::string(suffix), *profession);
+        }
+        for (const std::string_view prefix : {"Temple complex of ", "Temple of ",
+                "Shrine of ", "Shrine to ", " of "}) {
+            if (!source.starts_with(prefix) || source.size() <= prefix.size()) continue;
+            const std::string name_source(source.substr(prefix.size()));
+            auto name = translate_legends_name(name_source, true);
+            if (!name) name = translate_legends_name(name_source, false);
+            if (!name) name = translate_procedural_fragment(name_source, false, false, {},
+                ProceduralFragmentContext::generated_name);
+            if (!name) return std::nullopt;
+            // An out-of-range temple tier can still append its religion or
+            // deity after an empty grade. Retain that native default too.
+            return format_owned_caption("Zone location: " +
+                std::string(prefix.starts_with(' ') ? prefix.substr(1) : prefix) + "{e}", *name);
+        }
+        if (auto type = exact_literal_translation(source)) return type;
+        // A guild tier outside 0..2 leaves only its profession; unknown
+        // location types leave an empty description and draw no caption.
+        return translate_unit_profession(source, true);
+    };
     // Zones emits type, associated object and occupancy as independent addst
     // fields. Keep each native object/name intact before generic matching.
     for (const auto &draw : drawn) {
@@ -132,11 +166,16 @@ void Overlay::append_fortress_place_names(std::vector<std::string> &rows,
         if (!visible) continue;
         const auto &caption = *draw.fortress_zone_caption;
         using Kind = NativeFortressZoneCaption::Kind;
-        const bool lower_line = caption.kind == Kind::Location || caption.kind == Kind::Unit ||
+        const bool lower_line = caption.kind == Kind::Location ||
+            caption.kind == Kind::LocationDescription || caption.kind == Kind::Patients ||
+            caption.kind == Kind::Unit ||
             caption.kind == Kind::Squad || caption.kind == Kind::SquadCount ||
             caption.kind == Kind::Present;
+        // Quantity fields move down in a column narrower than forty cells;
+        // available/present then occupy a third baseline below the picture.
+        const int line_offset = caption.line_offset.value_or(lower_line ? 1 : 0);
         const auto button = native_picture_caption_rect(
-            *gps_, draw.x, draw.y - (lower_line ? 1 : 0), false,
+            *gps_, draw.x, draw.y - line_offset, false,
             nullptr, true, nullptr, true);
         if (!button || button->x < panel->x || button->y <= tabs_y ||
                 button->x + button->w > panel->x + panel->w ||
@@ -176,12 +215,22 @@ void Overlay::append_fortress_place_names(std::vector<std::string> &rows,
             }
             break;
         case Kind::Location:
-            if (caption.location_name) translated = translate_history_name(*caption.location_name);
+        case Kind::LocationName:
+            if (caption.location_name && caption.location_name->has_name)
+                translated = translate_history_name(*caption.location_name);
+            if (!translated && complete == "Unnamed location")
+                translated = exact_literal_translation(complete);
             if (!translated) translated = contains_cjk_utf8(complete)
                 ? std::optional<std::string>(native_text_to_utf8(complete))
                 : translate_procedural_fragment(complete, false, false, {},
                     ProceduralFragmentContext::generated_name);
             if (!translated) translated = exact_literal_translation(complete);
+            break;
+        case Kind::LocationDescription:
+            translated = location_description(complete);
+            break;
+        case Kind::Fixed:
+            translated = exact_literal_translation(complete);
             break;
         case Kind::Unit:
             if (draw.unit_identity_target) translated = draw.unit_identity_target;
@@ -199,16 +248,20 @@ void Overlay::append_fortress_place_names(std::vector<std::string> &rows,
         case Kind::Assigned:
         case Kind::Present:
         case Kind::Imprisoned:
-        case Kind::SquadCount: {
+        case Kind::SquadCount:
+        case Kind::Patients: {
             const std::string suffix = caption.kind == Kind::Assigned ? " assigned"
                 : caption.kind == Kind::Imprisoned ? " imprisoned"
                 : caption.kind == Kind::SquadCount ? " squads assigned"
+                : caption.kind == Kind::Patients ? (complete.ends_with(" patients")
+                    ? " patients" : " patient")
                 : complete.ends_with(" available") ? " available" : " present";
             if (!complete.ends_with(suffix)) break;
             const std::string digits = complete.substr(0, complete.size() - suffix.size());
             if (digits.empty() || !std::all_of(digits.begin(), digits.end(),
                     [](unsigned char ch) { return ch >= '0' && ch <= '9'; })) break;
-            const auto found = history_semantic_templates_.find("{d}" + suffix);
+            const auto found = history_semantic_templates_.find(
+                (caption.kind == Kind::Patients ? "Zone location: {d}" : "{d}") + suffix);
             if (found == history_semantic_templates_.end()) break;
             bool intact = false;
             auto value = translate_template_captures(rules_[static_cast<size_t>(found->second)],
@@ -228,7 +281,11 @@ void Overlay::append_fortress_place_names(std::vector<std::string> &rows,
             match.layout_y = draw.y;
             match.layout_length = right - draw.x;
             match.layout_clip_right = right;
+            // This renderer uses ordinary addst once per field. Its lower
+            // line can retain old font-half flags from the picture skin.
+            match.layout_fixed_baseline = true;
             match.layout_left = true;
+            if (draw.foreground_rgb >= 0) match.layout_foreground_rgb = draw.foreground_rgb;
             matches.push_back(std::move(match));
             std::fill_n(rows[draw.y].begin() + draw.x, length, ' ');
         } else if (raw_layer) {

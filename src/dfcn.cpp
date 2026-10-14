@@ -2189,13 +2189,15 @@ struct NativeWorkOrderShopCaption {
 static std::optional<NativeWorkOrderShopCaption> capture_native_work_order_shop_caption(
     uintptr_t caller, uintptr_t source);
 struct NativeFortressZoneCaption {
-    enum class Kind { Type, Location, Unit, Squad, SquadCount, Assigned, Present, Imprisoned };
+    enum class Kind { Type, Location, LocationName, LocationDescription, Unit,
+        Squad, SquadCount, Assigned, Present, Imprisoned, Patients, Fixed };
     Kind kind = Kind::Type;
     bool authored = true;
     std::shared_ptr<const NativeHistoryName> location_name;
     std::shared_ptr<const NativeUnitIdentity> unit_identity;
     std::shared_ptr<const NativeHistoryName> squad_name;
     std::optional<std::string> squad_alias;
+    std::optional<int> line_offset;
 };
 static std::optional<NativeFortressZoneCaption> capture_native_fortress_zone_caption(
     uintptr_t caller, uintptr_t source);
