@@ -31,7 +31,8 @@ std::optional<std::string> Overlay::translate_fortress_squad_field(
         return target;
     if (auto target = exact_literal_translation(source)) return target;
     std::vector<int> colors;
-    if (auto target = translate_help_paragraph(std::string(source), {}, colors, true))
+    if (auto target = translate_help_paragraph(source,
+            std::vector<int>(source.size(), 0xffffff), colors, true))
         return target;
     // These labels append a routine name from the actual editable schedule.
     // Preserve its text if it is not one of the native built-in routines.
