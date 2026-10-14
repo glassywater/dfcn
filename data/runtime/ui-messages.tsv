@@ -677,6 +677,97 @@ What do you want to wear?	你想穿戴什么？
 What do you want to drop?	你想丢下什么？
 Where would you like to move?	你想移动到哪里？
 What do you want to do?	你想做什么？
+
+# Adventure abilities renderer 0x11c2370: both target-count branches,
+# all range/locality alternatives, and the independent DISTURBER_ONLY flag.
+Unknown interaction	未知能力
+this location	当前位置
+Done ({k})	完成（{k1}）
+Select corpses.	选择尸体。
+Select corpses ({d} selected).	选择尸体（已选{d1}个）。
+Select corpses ({d} selected, disturber only).	选择尸体（已选{d1}个，仅限惊扰者）。
+Select corpses ({d} selected, range {d}).	选择尸体（已选{d1}个，距离{d2}）。
+Select corpses ({d} selected, range {d}, disturber only).	选择尸体（已选{d1}个，距离{d2}，仅限惊扰者）。
+Select corpses ({d} selected, own tile only).	选择尸体（已选{d1}个，仅限自身地块）。
+Select corpses ({d} selected, own tile only, disturber only).	选择尸体（已选{d1}个，仅限自身地块，仅限惊扰者）。
+Select corpses ({d} selected, adjacent only).	选择尸体（已选{d1}个，仅限相邻地块）。
+Select corpses ({d} selected, adjacent only, disturber only).	选择尸体（已选{d1}个，仅限相邻地块，仅限惊扰者）。
+Select corpses ({d} of {d}).	选择尸体（{d1}/{d2}）。
+Select corpses ({d} of {d}, disturber only).	选择尸体（{d1}/{d2}，仅限惊扰者）。
+Select corpses ({d} of {d}, range {d}).	选择尸体（{d1}/{d2}，距离{d3}）。
+Select corpses ({d} of {d}, range {d}, disturber only).	选择尸体（{d1}/{d2}，距离{d3}，仅限惊扰者）。
+Select corpses ({d} of {d}, own tile only).	选择尸体（{d1}/{d2}，仅限自身地块）。
+Select corpses ({d} of {d}, own tile only, disturber only).	选择尸体（{d1}/{d2}，仅限自身地块，仅限惊扰者）。
+Select corpses ({d} of {d}, adjacent only).	选择尸体（{d1}/{d2}，仅限相邻地块）。
+Select corpses ({d} of {d}, adjacent only, disturber only).	选择尸体（{d1}/{d2}，仅限相邻地块，仅限惊扰者）。
+Select creature.	选择生物。
+Select creature ({d} selected).	选择生物（已选{d1}个）。
+Select creature ({d} selected, disturber only).	选择生物（已选{d1}个，仅限惊扰者）。
+Select creature ({d} selected, range {d}).	选择生物（已选{d1}个，距离{d2}）。
+Select creature ({d} selected, range {d}, disturber only).	选择生物（已选{d1}个，距离{d2}，仅限惊扰者）。
+Select creature ({d} selected, own tile only).	选择生物（已选{d1}个，仅限自身地块）。
+Select creature ({d} selected, own tile only, disturber only).	选择生物（已选{d1}个，仅限自身地块，仅限惊扰者）。
+Select creature ({d} selected, adjacent only).	选择生物（已选{d1}个，仅限相邻地块）。
+Select creature ({d} selected, adjacent only, disturber only).	选择生物（已选{d1}个，仅限相邻地块，仅限惊扰者）。
+Select creature ({d} of {d}).	选择生物（{d1}/{d2}）。
+Select creature ({d} of {d}, disturber only).	选择生物（{d1}/{d2}，仅限惊扰者）。
+Select creature ({d} of {d}, range {d}).	选择生物（{d1}/{d2}，距离{d3}）。
+Select creature ({d} of {d}, range {d}, disturber only).	选择生物（{d1}/{d2}，距离{d3}，仅限惊扰者）。
+Select creature ({d} of {d}, own tile only).	选择生物（{d1}/{d2}，仅限自身地块）。
+Select creature ({d} of {d}, own tile only, disturber only).	选择生物（{d1}/{d2}，仅限自身地块，仅限惊扰者）。
+Select creature ({d} of {d}, adjacent only).	选择生物（{d1}/{d2}，仅限相邻地块）。
+Select creature ({d} of {d}, adjacent only, disturber only).	选择生物（{d1}/{d2}，仅限相邻地块，仅限惊扰者）。
+Select recipient.	选择接受者。
+Select recipient ({d} selected).	选择接受者（已选{d1}个）。
+Select recipient ({d} selected, disturber only).	选择接受者（已选{d1}个，仅限惊扰者）。
+Select recipient ({d} selected, range {d}).	选择接受者（已选{d1}个，距离{d2}）。
+Select recipient ({d} selected, range {d}, disturber only).	选择接受者（已选{d1}个，距离{d2}，仅限惊扰者）。
+Select recipient ({d} selected, own tile only).	选择接受者（已选{d1}个，仅限自身地块）。
+Select recipient ({d} selected, own tile only, disturber only).	选择接受者（已选{d1}个，仅限自身地块，仅限惊扰者）。
+Select recipient ({d} selected, adjacent only).	选择接受者（已选{d1}个，仅限相邻地块）。
+Select recipient ({d} selected, adjacent only, disturber only).	选择接受者（已选{d1}个，仅限相邻地块，仅限惊扰者）。
+Select recipient ({d} of {d}).	选择接受者（{d1}/{d2}）。
+Select recipient ({d} of {d}, disturber only).	选择接受者（{d1}/{d2}，仅限惊扰者）。
+Select recipient ({d} of {d}, range {d}).	选择接受者（{d1}/{d2}，距离{d3}）。
+Select recipient ({d} of {d}, range {d}, disturber only).	选择接受者（{d1}/{d2}，距离{d3}，仅限惊扰者）。
+Select recipient ({d} of {d}, own tile only).	选择接受者（{d1}/{d2}，仅限自身地块）。
+Select recipient ({d} of {d}, own tile only, disturber only).	选择接受者（{d1}/{d2}，仅限自身地块，仅限惊扰者）。
+Select recipient ({d} of {d}, adjacent only).	选择接受者（{d1}/{d2}，仅限相邻地块）。
+Select recipient ({d} of {d}, adjacent only, disturber only).	选择接受者（{d1}/{d2}，仅限相邻地块，仅限惊扰者）。
+Select target.	选择目标。
+Select target ({d} selected).	选择目标（已选{d1}个）。
+Select target ({d} selected, disturber only).	选择目标（已选{d1}个，仅限惊扰者）。
+Select target ({d} selected, range {d}).	选择目标（已选{d1}个，距离{d2}）。
+Select target ({d} selected, range {d}, disturber only).	选择目标（已选{d1}个，距离{d2}，仅限惊扰者）。
+Select target ({d} selected, own tile only).	选择目标（已选{d1}个，仅限自身地块）。
+Select target ({d} selected, own tile only, disturber only).	选择目标（已选{d1}个，仅限自身地块，仅限惊扰者）。
+Select target ({d} selected, adjacent only).	选择目标（已选{d1}个，仅限相邻地块）。
+Select target ({d} selected, adjacent only, disturber only).	选择目标（已选{d1}个，仅限相邻地块，仅限惊扰者）。
+Select target ({d} of {d}).	选择目标（{d1}/{d2}）。
+Select target ({d} of {d}, disturber only).	选择目标（{d1}/{d2}，仅限惊扰者）。
+Select target ({d} of {d}, range {d}).	选择目标（{d1}/{d2}，距离{d3}）。
+Select target ({d} of {d}, range {d}, disturber only).	选择目标（{d1}/{d2}，距离{d3}，仅限惊扰者）。
+Select target ({d} of {d}, own tile only).	选择目标（{d1}/{d2}，仅限自身地块）。
+Select target ({d} of {d}, own tile only, disturber only).	选择目标（{d1}/{d2}，仅限自身地块，仅限惊扰者）。
+Select target ({d} of {d}, adjacent only).	选择目标（{d1}/{d2}，仅限相邻地块）。
+Select target ({d} of {d}, adjacent only, disturber only).	选择目标（{d1}/{d2}，仅限相邻地块，仅限惊扰者）。
+Select victim.	选择受害者。
+Select victim ({d} selected).	选择受害者（已选{d1}个）。
+Select victim ({d} selected, disturber only).	选择受害者（已选{d1}个，仅限惊扰者）。
+Select victim ({d} selected, range {d}).	选择受害者（已选{d1}个，距离{d2}）。
+Select victim ({d} selected, range {d}, disturber only).	选择受害者（已选{d1}个，距离{d2}，仅限惊扰者）。
+Select victim ({d} selected, own tile only).	选择受害者（已选{d1}个，仅限自身地块）。
+Select victim ({d} selected, own tile only, disturber only).	选择受害者（已选{d1}个，仅限自身地块，仅限惊扰者）。
+Select victim ({d} selected, adjacent only).	选择受害者（已选{d1}个，仅限相邻地块）。
+Select victim ({d} selected, adjacent only, disturber only).	选择受害者（已选{d1}个，仅限相邻地块，仅限惊扰者）。
+Select victim ({d} of {d}).	选择受害者（{d1}/{d2}）。
+Select victim ({d} of {d}, disturber only).	选择受害者（{d1}/{d2}，仅限惊扰者）。
+Select victim ({d} of {d}, range {d}).	选择受害者（{d1}/{d2}，距离{d3}）。
+Select victim ({d} of {d}, range {d}, disturber only).	选择受害者（{d1}/{d2}，距离{d3}，仅限惊扰者）。
+Select victim ({d} of {d}, own tile only).	选择受害者（{d1}/{d2}，仅限自身地块）。
+Select victim ({d} of {d}, own tile only, disturber only).	选择受害者（{d1}/{d2}，仅限自身地块，仅限惊扰者）。
+Select victim ({d} of {d}, adjacent only).	选择受害者（{d1}/{d2}，仅限相邻地块）。
+Select victim ({d} of {d}, adjacent only, disturber only).	选择受害者（{d1}/{d2}，仅限相邻地块，仅限惊扰者）。
 At whom or what would you like to throw?	你想向谁或什么目标投掷？
 Who or what would you like to shoot?	你想射击谁或什么目标？
 With what do you want to interact?	你想与什么互动？
@@ -1081,6 +1172,8 @@ You can continue waiting, or save/quit from the settings menu.	你可以继续�
 # Unit captures in combat confirmations retain the native named target.
 Really disband?	确定解散吗？
 Cannot appoint until commander is selected	必须先选定指挥官，才能进行任命。
+{d} target	{d}个目标
+{d} targets	{d}个目标
 # Squad creation draws three fixed lines, with a live position title in the
 # middle (or "somebody first" if no title is available). Keep the whole prompt
 # together; {s} resolves the position through the existing terminology table.
@@ -3013,3 +3106,61 @@ CONTINUE until you give me another warning.	继续生成，直到再次出现警
 ABORT NOW and I'll look over my parameters.	立即中止，我要检查参数。
 ALLOW THIS REJECTION TYPE and continue reporting others.	允许此类拒绝，并继续报告其他问题。
 ALLOW ALL REJECTS, even if I end up with a legends-only world!	允许所有拒绝，即使最终只能生成传说模式世界！
+
+# Adventure barter: complete Linux 53.16 native producer paths in
+# data/extracted/adventure-barter/elf-decompiled.c. Typed speakers, artifacts,
+# entities and preceding return reactions retain their shared grammars.
+"Greetings.  Let's trade."	“你好。来做笔交易吧。”
+"An honored visitor!  What would you like?"	“贵客光临！你想要些什么？”
+"What did you have in mind?"	“你有什么打算？”
+"That seems fair.  You have yourself a deal."	“这很公平。成交。”
+"I simply cannot afford this trade."	“我实在负担不起这笔交易。”
+"Perhaps if you throw in some more goods I can make an offer."	“如果你再添些货物，也许我就能提出交易方案。”
+"I can't possibly accept, but how about this?  A true bargain."	“我实在不能接受，不过这个方案如何？绝对划算。”
+"If it were in a cage of some kind...  As it stands, I can't accept something that wriggles and writhes so."	“要是装在笼子里就好了……现在这样，我可不能收下这不停扭动挣扎的东西。”
+"How kind!  Thank you so much."	“你真慷慨！太感谢了。”
+"I'm confused.  Did you want something?"	“我有些糊涂。你想要什么东西吗？”
+{b} is a personal treasure, and I will not part with it.	{b}是我的私人珍宝，我不会交出它。
+{n}: {b} is a personal treasure, and I will not part with it.	{n}：{b}是我的私人珍宝，我不会交出它。
+{b} is a family heirloom, and I will not part with it.	{b}是我的传家宝，我不会交出它。
+{n}: {b} is a family heirloom, and I will not part with it.	{n}：{b}是我的传家宝，我不会交出它。
+{b} is a treasure of {e}, and we will not part with it.	{b}是{e}的珍宝，我们不会交出它。
+{n}: {b} is a treasure of {e}, and we will not part with it.	{n}：{b}是{e}的珍宝，我们不会交出它。
+Thank you for returning my treasure.	谢谢你归还我的珍宝。
+{s} Thank you for returning my treasure.	{s}谢谢你归还我的珍宝。
+{n}: Thank you for returning my treasure.	{n}：谢谢你归还我的珍宝。
+{n}: {s} Thank you for returning my treasure.	{n}：{s}谢谢你归还我的珍宝。
+Thank you for returning my family's treasure.	谢谢你归还我家的珍宝。
+{s} Thank you for returning my family's treasure.	{s}谢谢你归还我家的珍宝。
+{n}: Thank you for returning my family's treasure.	{n}：谢谢你归还我家的珍宝。
+{n}: {s} Thank you for returning my family's treasure.	{n}：{s}谢谢你归还我家的珍宝。
+Thank you for returning this treasure to {e}.	谢谢你把这件珍宝归还给{e}。
+{s} Thank you for returning this treasure to {e}.	{s}谢谢你把这件珍宝归还给{e}。
+{n}: Thank you for returning this treasure to {e}.	{n}：谢谢你把这件珍宝归还给{e}。
+{n}: {s} Thank you for returning this treasure to {e}.	{n}：{s}谢谢你把这件珍宝归还给{e}。
+Thank you for returning this primordial remnant to {e}.	谢谢你把这件原初遗物归还给{e}。
+{s} Thank you for returning this primordial remnant to {e}.	{s}谢谢你把这件原初遗物归还给{e}。
+{n}: Thank you for returning this primordial remnant to {e}.	{n}：谢谢你把这件原初遗物归还给{e}。
+{n}: {s} Thank you for returning this primordial remnant to {e}.	{n}：{s}谢谢你把这件原初遗物归还给{e}。
+Thank you for rescuing this treasure!	谢谢你找回这件珍宝！
+{s} Thank you for rescuing this treasure!	{s}谢谢你找回这件珍宝！
+{n}: Thank you for rescuing this treasure!	{n}：谢谢你找回这件珍宝！
+{n}: {s} Thank you for rescuing this treasure!	{n}：{s}谢谢你找回这件珍宝！
+It's not the original, but we can hope the writing was copied faithfully.	虽然不是原件，但愿里面的文字抄录无误。
+{s} It's not the original, but we can hope the writing was copied faithfully.	{s}虽然不是原件，但愿里面的文字抄录无误。
+{n}: It's not the original, but we can hope the writing was copied faithfully.	{n}：虽然不是原件，但愿里面的文字抄录无误。
+{n}: {s} It's not the original, but we can hope the writing was copied faithfully.	{n}：{s}虽然不是原件，但愿里面的文字抄录无误。
+Ask for currency	索要货币
+Offer currency	提供货币
+Trade how many? (0-{d})	交易多少件？（0—{d}）
+Ask for how much? (0-{d})	索要多少货币？（0—{d}）
+Offer how much? (0-{d})	提供多少货币？（0—{d}）
+You are asking for	你索要的货币：
+You are offering	你提供的货币：
+(Select an item to demand)	（选择要索取的物品）
+{n} (Owes you {d}\x0f)	{n}（欠你{d}☼）
+{n} (You owe {d}\x0f)	{n}（你欠对方{d}☼）
+Give	赠送
+Demand	索要
+Trade	贸易
+Show	显示

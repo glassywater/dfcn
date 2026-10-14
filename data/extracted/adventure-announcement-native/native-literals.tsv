@@ -1720,7 +1720,31 @@ producer	0xc82ba0	0xc86218	0x20f715f	cstring	waning gibbous moon
 producer	0xc82ba0	0xc86230	0x20f7b78	cstring	There are mounds of clouds above you, smooth on the bottom with prominent upward bulges.
 producer	0xc82ba0	0xc86244	0x20f7173	cstring	waning half moon
 producer	0xc82ba0	0xc86258	0x20f7184	cstring	waning crescent moon
+book-item-caption	0xe653f0	0xe65480	0x21f118a	cstring	 (
+book-item-caption	0xe653f0	0xe654da	0x219edb7	cstring	)
 item-caption	0xe68020	0xe68438	0x210784d	cstring	 (copy)
+tool-item-caption	0xe689d0	0xe68bf0	0x20f7379	cstring	 
+tool-item-caption	0xe689d0	0xe68c6e	0x21f118a	cstring	 (
+tool-item-caption	0xe689d0	0xe68c9b	0x20f3aea	cstring	, 
+tool-item-caption	0xe689d0	0xe68cc7	0x219edb7	cstring	)
+tool-item-caption	0xe689d0	0xe68d5d	0x210788e	cstring	 <#
+tool-item-caption	0xe689d0	0xe68d94	0x20de990	cstring	>
+tool-item-caption	0xe689d0	0xe68e40	0x21f1c7e	cstring	Seed
+tool-item-caption	0xe689d0	0xe68e58	0x2107879	cstring	Fat
+tool-item-caption	0xe689d0	0xe68ed4	0x20f7379	cstring	 
+tool-item-caption	0xe689d0	0xe68f4e	0x21f118a	cstring	 (
+tool-item-caption	0xe689d0	0xe68f7f	0x20f3aea	cstring	, 
+tool-item-caption	0xe689d0	0xe68fab	0x219edb7	cstring	)
+tool-item-caption	0xe689d0	0xe68ff0	0x2107855	cstring	Prepared Food
+tool-item-caption	0xe689d0	0xe69008	0x21755e1	cstring	Plant
+tool-item-caption	0xe689d0	0xe69020	0x2107863	cstring	Cheese
+tool-item-caption	0xe689d0	0xe69038	0x2175085	cstring	Fish
+tool-item-caption	0xe689d0	0xe69050	0x20fc3c2	cstring	Meat
+tool-item-caption	0xe689d0	0xe69068	0x210786a	cstring	Spice
+tool-item-caption	0xe689d0	0xe69080	0x2174a7f	cstring	Mill
+tool-item-caption	0xe689d0	0xe69098	0x210787d	cstring	Pressed Material
+tool-item-caption	0xe689d0	0xe690ac	0x2107870	cstring	Rendered Fat
+tool-item-caption	0xe689d0	0xe690c0	0x220898d	cstring	Paste
 producer	0xe69120	0xe69663	0x20fc8f7	cstring	The 
 producer	0xe69120	0xe696a3	0x21078ac	cstring	 remains stuck in 
 producer	0xe69120	0xe696f2	0x21c05aa	cstring	's 
@@ -3082,6 +3106,11 @@ producer	0x114c350	0x114c849	0x6e6f	inline	on
 producer	0x114c350	0x114c8b1	0x6f6e207369207449	inline	It is no
 producer	0x114c350	0x114ca05	0x213a180/16	vector	Night is falling
 producer	0x114c350	0x114cae7	0x213a170/16	vector	Dawn is breaking
+adventure-announcement-log-render	0x1154220	0x1154700	0x656e6f44	inline	Done
+adventure-announcement-log-render	0x1154220	0x1154754	0x746e656d	inline	ment
+adventure-announcement-log-render	0x1154220	0x1154763	0x65636e756f6e6e41	inline	Announce
+adventure-announcement-log-render	0x1154220	0x1154b1d	0x2e73746e656d6563	inline	cements.
+adventure-announcement-log-render	0x1154220	0x1154b27	0x213a160/16	vector	No recent announ
 producer	0x115c630	0x115c809	0x2165	inline	e!
 producer	0x115c630	0x115c811	0x213a2f0/16	vector	You topple the s
 producer	0x115c630	0x115c827	0x75746174	inline	tatu
@@ -3304,6 +3333,9 @@ producer	0x11b21c0	0x11b2311	0x212fdb9	cstring	You begin to throw
 producer	0x11b21c0	0x11b25c1	0x20746120	inline	 at 
 producer	0x11b21c0	0x11b26e3	0x2107edc	cstring	.
 producer	0x11b21c0	0x11b2702	0x219eec9	cstring	 at 
+adventure-announcement-render	0x11b2e40	0x11b30a7	0x79616b4f	inline	Okay
+adventure-announcement-render	0x11b2e40	0x11b3beb	0x212ff08	cstring	@:
+adventure-announcement-render	0x11b2e40	0x11b3c2f	0x65726f4d	inline	More
 producer	0x11b4360	0x11b4433	0x212ff0b	cstring	You empty the 
 producer	0x11b4360	0x11b462e	0x212ff1a	cstring	You take out the 
 producer	0x11b4360	0x11b48e5	0x212ff2c	cstring	You take off 

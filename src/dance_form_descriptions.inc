@@ -492,7 +492,7 @@ TranslationResult Overlay::translate_dance_form_paragraph_result(
             if (end == std::string::npos) break;
             cursor = end + 1;
         }
-        if (value.empty() || (solo && group)) return std::nullopt;
+        if (solo && group) return std::nullopt;
         const int purposes = static_cast<int>(celebration) +
             static_cast<int>(participation) + static_cast<int>(social) +
             static_cast<int>(performance) + static_cast<int>(war);
@@ -664,93 +664,104 @@ TranslationResult Overlay::translate_dance_form_paragraph_result(
         std::string sentence = trim(std::string(raw_sentence));
         if (sentence.empty()) return std::string{};
 
-        // Identity: modern descriptions normally carry a generated title;
-        // older productions can begin directly with "A ... dance".
-        constexpr std::string_view origin_marker = " originating in ";
-        constexpr std::string_view performance_origin_marker =
-            " which grew out of the performances of ";
-        size_t origin_at = sentence.find(origin_marker);
-        std::string_view matched_origin_marker = origin_marker;
-        bool performance_origin = false;
-        if (origin_at == std::string::npos) {
-            origin_at = sentence.find(performance_origin_marker);
-            matched_origin_marker = performance_origin_marker;
-            performance_origin = origin_at != std::string::npos;
-        }
-        if (origin_at != std::string::npos) {
-            std::string_view identity(sentence.data(), origin_at);
+        // 4ea820/4e83e0 always append the dance type, even when a946e0
+        // emits no name or the usage selector emits no qualifier. Origin,
+        // performance origin and creator are optional native alternatives.
+        const auto translate_identity = [&]() -> std::optional<std::string> {
+            struct Provenance { std::string_view marker; int kind; };
+            static constexpr auto provenances = std::to_array<Provenance>({
+                {" originating in", 0},
+                {" which grew out of the performances of", 1},
+                {" originally devised by", 2},
+            });
+            size_t provenance_at = std::string::npos;
+            const Provenance *provenance = nullptr;
+            for (const auto &entry : provenances) {
+                const size_t at = sentence.find(entry.marker);
+                if (at == std::string::npos ||
+                    (at + entry.marker.size() < sentence.size() &&
+                     sentence[at + entry.marker.size()] != ' ')) continue;
+                if (provenance_at == std::string::npos || at < provenance_at) {
+                    provenance_at = at;
+                    provenance = &entry;
+                }
+            }
+            std::string_view identity = trim_view(
+                std::string_view(sentence).substr(0, provenance_at));
+            if (identity.ends_with(',')) identity = trim_view(identity.substr(0, identity.size() - 1));
             // Resolve the finite dance type before any opaque name. Other
             // art-form openings share the origin marker but have no dance
             // production, so their remaining prose must never be a name.
             std::string_view raw_title;
             std::string_view dance_identity;
             constexpr std::string_view anonymous_prefix = "A ";
-            if (identity.starts_with(anonymous_prefix)) {
-                dance_identity = identity.substr(anonymous_prefix.size());
-            } else {
-                const size_t is_a = identity.find(" is a ");
-                if (is_a == std::string_view::npos || is_a == 0) return std::nullopt;
+            const size_t is_a = identity.find(" is a ");
+            if (is_a != std::string_view::npos && is_a > 0) {
                 raw_title = identity.substr(0, is_a);
                 dance_identity = identity.substr(is_a + 6);
+            } else if (identity.starts_with("is a ")) {
+                dance_identity = identity.substr(5);
+            } else if (identity.starts_with(anonymous_prefix)) {
+                dance_identity = identity.substr(anonymous_prefix.size());
+            } else {
+                return std::nullopt;
             }
-            const size_t dance_at = dance_identity.find(" dance");
+            const bool unqualified = dance_identity == "dance" ||
+                dance_identity.starts_with("dance ");
+            const size_t dance_at = unqualified ? 0 : dance_identity.find(" dance");
             if (dance_at == std::string_view::npos) return std::nullopt;
             const std::string_view raw_type = dance_identity.substr(0, dance_at);
             std::string_view participants = trim_view(
-                dance_identity.substr(dance_at + 6));
+                dance_identity.substr(dance_at + (unqualified ? 5 : 6)));
             const auto type = translate_dance_type(raw_type);
             if (!type) return std::nullopt;
-
-            std::string_view raw_origin = std::string_view(sentence).substr(
-                origin_at + matched_origin_marker.size());
-            std::optional<std::string> devised_by;
-            constexpr std::string_view devised_marker =
-                ", originally devised by ";
-            const size_t devised_at = raw_origin.find(devised_marker);
-            if (devised_at != std::string_view::npos) {
-                devised_by = translate_reference(raw_origin.substr(
-                    devised_at + devised_marker.size()));
-                if (!devised_by) return std::nullopt;
-                raw_origin = raw_origin.substr(0, devised_at);
-            }
-            const auto origin = translate_reference(raw_origin);
-            if (!origin) return std::nullopt;
 
             std::optional<std::string> title;
             if (!raw_title.empty()) {
                 title = translate_reference(raw_title);
                 if (!title) return std::nullopt;
             }
-            const std::string provenance = performance_origin
-                ? "，从“" + *origin + "”的表演中发展而来"
-                : "，起源于“" + *origin + "”";
             std::string result = title
-                ? "“" + *title + "”是一种" + *type + provenance
-                : "这是一种" + *type + provenance;
+                ? "“" + *title + "”是一种" + *type
+                : "这是一种" + *type;
+            if (provenance) {
+                const auto raw_reference = trim_view(std::string_view(sentence).substr(
+                    provenance_at + provenance->marker.size()));
+                const auto reference = raw_reference.empty()
+                    ? exact_literal_translation(provenance->kind == 2
+                        ? "Art form: unspecified creator" : "Art form: unspecified origin")
+                    : translate_reference(raw_reference);
+                if (!reference) return std::nullopt;
+                result += raw_reference.empty()
+                    ? std::string(provenance->kind == 2 ? "，创作者" : "，来源") + *reference
+                    : provenance->kind == 2
+                    ? "，最初由“" + *reference + "”创编"
+                    : provenance->kind == 1
+                        ? "，从“" + *reference + "”的表演中发展而来"
+                        : "，起源于“" + *reference + "”";
+            }
             if (!participants.empty()) {
                 if (participants == "for a single pair") {
                     result += "，由一对舞伴表演";
                 } else {
                     if (participants.starts_with("for "))
                         participants.remove_prefix(4);
-                    const size_t space = participants.find(' ');
-                    if (space == std::string_view::npos)
-                        return std::nullopt;
-                    const auto count = translate_count(
-                        participants.substr(0, space));
-                    const std::string_view group = participants.substr(space + 1);
+                    const bool pairs = participants.ends_with(" pairs");
+                    const bool dancers = participants.ends_with(" dancers");
+                    const auto count = translate_count(participants.substr(0,
+                        participants.size() - (pairs ? 6 : dancers ? 8 : 0)));
                     if (!count) return std::nullopt;
-                    if (group == "pairs")
+                    if (pairs)
                         result += "，由" + *count + "对舞伴表演";
-                    else if (group == "dancers")
+                    else if (dancers)
                         result += "，由" + *count + "名舞者表演";
                     else
-                        return std::nullopt;
+                        result += "，由" + *count + "人表演";
                 }
             }
-            if (devised_by) result += "，最初由“" + *devised_by + "”创编";
             return result;
-        }
+        };
+        if (auto identity = translate_identity()) return identity;
 
         if (sentence ==
             "The rules of the form are applied by choreographers to produce individual dances which can be performed") {

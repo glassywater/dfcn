@@ -95,11 +95,6 @@ public:
     bool valid() const noexcept { return inputs_ != nullptr; }
 };
 
-static void native_dfhack_display_before_ui() {
-    // Map and interface passes consume the same pinned header. There is no
-    // lock handoff back to the simulation writer at the UI boundary.
-}
-
 static void native_dfhack_graphics_display(void *renderer) {
     NativeInputCallbackScope callback;
     const auto original = reinterpret_cast<void (*)(void *)>(

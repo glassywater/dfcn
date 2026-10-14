@@ -1,0 +1,19 @@
+selector_writer	selector	initializer_call	paragraph	native_width	source	translation_catalog
+0x16d922b	0x14c	0x1651afa	0x2700290	24	Cancel this position's scheduled orders.	data/runtime/tooltip-translations.tsv
+0x16db95d	0x151	0x1651ca2	0x2700308	24	Customize the squad's name.	data/runtime/tooltip-translations.tsv
+0x16db993	0x150	0x1651c3e	0x27002f0	24	View the positions in this squad.	data/runtime/tooltip-translations.tsv
+0x16db9d3	0x14d	0x1651b5e	0x27002a8	24	Change the squad's symbol.	data/runtime/tooltip-translations.tsv
+0x16dbfd6	0x14e	0x1651bca	0x27002c0	24	View the leader's sheet.	data/runtime/tooltip-translations.tsv
+0x16dc0d1	0x14e	0x1651bca	0x27002c0	24	View the leader's sheet.	data/runtime/tooltip-translations.tsv
+0x16dc4b3	0x149	0x16519f8	0x2700248	24	The soldiers can either keep their equipment on at all times, or only when an order is active.	data/runtime/tooltip-translations.tsv
+0x16dc4e9	0x154	0x1651dce	0x2700350	24	Assign a patrol order.  The soldiers will walk a specified route repeatedly.	data/runtime/tooltip-translations.tsv
+0x16dc51f	0x155	0x1651e32	0x2700368	24	Assign a burrow defense order.  The soldiers will patrol the burrow and attack any hostile creatures.	data/runtime/tooltip-translations.tsv
+0x16dc555	0x156	0x1651e96	0x2700380	24	Assign a training order.  The squad must be assigned to a barracks zone with the training option set.	data/runtime/tooltip-translations.tsv
+0x16dc576	0x14a	0x1651a32	0x2700260	24	The soldiers can be allowed to sleep in their rooms whenever they way, or in the barracks either when they want or only when they must.	data/runtime/tooltip-translations.tsv
+0x16dc5b0	0x14b	0x1651a96	0x2700278	24	Cancel this scheduled order.	data/runtime/tooltip-translations.tsv
+0x16dc5e6	0x152	0x1651d06	0x2700320	24	Assign a station order.  The soldiers will stand near the point selected and engage any hostile creatures that come near.	data/runtime/tooltip-translations.tsv
+0x16dc737	0x14f	0x1651c04	0x27002d8	24	The squad leader is traveling or otherwise occupied off-site.	data/runtime/tooltip-translations.tsv
+0x16dc76d	0x14f	0x1651c04	0x27002d8	24	The squad leader is traveling or otherwise occupied off-site.	data/runtime/tooltip-translations.tsv
+0x16dc8aa	0x157	0x1651ed0	0x2700398	24	Cancel an order.  Does not affect scheduled orders.	data/runtime/tooltip-translations.tsv
+0x16dc8e0	0x158	0x1651f34	0x27003b0	24	Disband the squad.	data/runtime/tooltip-translations.tsv
+0x16dc916	0x153	0x1651d6a	0x2700338	24	Assign a kill order.  The soldiers will attempt to kill a targeted creature.	data/runtime/tooltip-translations.tsv

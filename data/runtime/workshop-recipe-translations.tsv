@@ -1,5 +1,7 @@
 # Complete workshop recipe grammar. Lookup-only keys, never global fragments.
 # Native source: Windows x64 job-item describer 0x140a2adb0–0x140a2c60c.
+# Linux 53.16 chooser, reagent, noun and render branches are preserved in
+# data/extracted/workshop-task-choice/elf-decompiled-parts/ and elf-*.tsv.
 # It appends independent flag prefixes, material-reaction aliases, tool-use
 # labels and the shared item formatter at 0x140a82c10. Keep every constraint.
 # Chinese item/material terminology follows data/runtime/local-overrides.tsv and the
@@ -8,6 +10,33 @@
 # its own typed captures retain every number and resolve complete item names.
 
 # Grammar wrappers; displayed quantities have already been dimension-scaled.
+Workshop recipe: [requires fuel]	[需要燃料]	l
+Workshop recipe: [requires ore]	[需要矿石]	l
+Workshop recipe: [requires ore, fuel]	[需要矿石和燃料]	l
+Workshop recipe: format available	可用：{d}	l
+Workshop recipe: format at least available	可用：至少{d}	l
+Workshop recipe: format available dye	可用染料：{d}	l
+Workshop recipe: format at least available dye	可用染料：至少{d}	l
+Workshop recipe: format available thread/dye	可用线材／染料：{d}	l
+Workshop recipe: format at least available thread/dye	可用线材／染料：至少{d}	l
+Workshop recipe: format available cloth/dye	可用布料／染料：{d}	l
+Workshop recipe: format at least available cloth/dye	可用布料／染料：至少{d}	l
+Workshop recipe: format available leather/dye	可用皮革／染料：{d}	l
+Workshop recipe: format at least available leather/dye	可用皮革／染料：至少{d}	l
+Workshop recipe: format slabs engraved	已雕刻{d}块石碑	l
+Workshop recipe: format memorial	{s1}，{s2}	l
+Workshop recipe: memorial entombed and memorialized	已安葬并铭记	l
+Workshop recipe: memorial entombed	已安葬	l
+Workshop recipe: memorial memorialized	已铭记	l
+Workshop recipe: memorial not memorialized	未被铭记	l
+Workshop recipe: memorial ghost	幽灵	l
+Workshop recipe: entombed and memorialized	已安葬并铭记	l
+Workshop recipe: entombed	已安葬	l
+Workshop recipe: memorialized	已铭记	l
+Workshop recipe: not memorialized	未被铭记	l
+Workshop recipe: ghost	幽灵	l
+Workshop recipe: slab engraved	已雕刻石碑	l
+Workshop recipe: no slabs engraved	尚未雕刻石碑	l
 Workshop recipe: format requirement	[需要{s}]	l
 Workshop recipe: format quantity	{d} {s}	l
 Workshop recipe: format quantity with unit	{d}{u}{s}	l

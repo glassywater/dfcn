@@ -1,7 +1,15 @@
-// PE 53.16 alert sources reconstructed from both native renderers. These
+// PE and ELF 53.16 alert sources reconstructed from the native renderers. These
 // readers copy borrowed fields; the native report/cache/string objects remain
 // untouched. Exact current addst row addresses establish visible ownership.
+static uintptr_t native_fortress_alert_address(uintptr_t base,
+        uintptr_t pe, uintptr_t elf) {
 #ifdef _WIN32
+    return native_reference_address(base, pe);
+#else
+    return base ? native_elf_history_address(elf) : 0;
+#endif
+}
+
 template<typename T>
 static bool native_fortress_alert_vector(uintptr_t address, std::vector<T> &out,
         size_t maximum = 262144) {
@@ -40,8 +48,9 @@ static std::string_view native_fortress_alert_status(int16_t category) {
 static bool native_fortress_alert_report(uintptr_t report,
         NativeAnnouncementParagraph &paragraph) {
     paragraph.parent = report;
-    if (!report || !native_history_copy_string(report + 8, paragraph.source) ||
-            !native_history_copy(report + 0x34, paragraph.repeats)) return false;
+    constexpr auto &fields = native_history_layout::f_report_fields;
+    if (!report || !native_history_copy_string(report + fields[1].native, paragraph.source) ||
+            !native_history_copy(report + fields[6].native, paragraph.repeats)) return false;
     remember_native_announcement_kinship_parent(report);
     return true;
 }
@@ -88,40 +97,83 @@ static bool native_fortress_alert_find_id(uintptr_t vector, size_t offset,
 
 static std::vector<NativeAnnouncementParagraph> native_fortress_alert_popup_sources(
         uintptr_t owner) {
+#ifdef _WIN32
+    constexpr size_t viewing_unit_offset = 0xa8;
+    constexpr size_t alert_box = 0x80, unit_box = 0xf0;
+    constexpr size_t alert_reports = 0x38, unit_reports = 0xd8;
+    constexpr size_t alert_starts = 0x18, unit_starts = 0xb8;
+    constexpr size_t alert_width = 0x98, unit_width = 0x108;
+    constexpr size_t alert_units = 0x50, alert_categories = 0x68;
+#else
+    // 1673400: GCC vector<bool> occupies 40 bytes, shifting the
+    // parallel row arrays and the selected-unit cache independently.
+    constexpr size_t viewing_unit_offset = 0xb0;
+    constexpr size_t alert_box = 0x88, unit_box = 0x100;
+    constexpr size_t alert_reports = 0x40, unit_reports = 0xe8;
+    constexpr size_t alert_starts = 0x18, unit_starts = 0xc0;
+    constexpr size_t alert_width = 0xa0, unit_width = 0x118;
+    constexpr size_t alert_units = 0x58, alert_categories = 0x70;
+#endif
     uintptr_t viewing_unit = 0, viewing_alert = 0;
     uint8_t viewing_button = 0;
-    if (!native_history_copy(owner + 0xa8, viewing_unit) ||
+    if (!native_history_copy(owner + viewing_unit_offset, viewing_unit) ||
             !native_history_copy(owner + 8, viewing_alert) ||
             !native_history_copy(owner + 0x10, viewing_button) ||
             (!viewing_unit && !viewing_button && !viewing_alert)) return {};
     // Native priority is selected unit, ALERT button, then selected alert.
-    const size_t box_offset = viewing_unit ? 0xf0 : 0x80;
-    const size_t report_offset = viewing_unit ? 0xd8 : 0x38;
-    const size_t start_offset = viewing_unit ? 0xb8 : 0x18;
-    const size_t width_offset = viewing_unit ? 0x108 : 0x98;
+    const size_t box_offset = viewing_unit ? unit_box : alert_box;
+    const size_t report_offset = viewing_unit ? unit_reports : alert_reports;
+    const size_t start_offset = viewing_unit ? unit_starts : alert_starts;
+    const size_t width_offset = viewing_unit ? unit_width : alert_width;
     std::vector<NativeAnnouncementDisplayRow> rows;
     std::vector<uintptr_t> reports, units;
     std::vector<int16_t> categories;
-    NativeBorrowedVector<uint32_t> starts;
-    size_t bit_count = 0;
     int32_t width = 0;
     if (!native_fortress_alert_rows(owner + box_offset, rows) || rows.empty() ||
             !native_fortress_alert_vector(owner + report_offset, reports) ||
             reports.size() != rows.size() ||
-            !native_history_copy(owner + start_offset, starts) || !starts.valid(8192) ||
-            !native_history_copy(owner + start_offset + 0x18, bit_count) ||
-            bit_count != rows.size() || starts.size() < (bit_count + 31) / 32 ||
             !native_history_copy(owner + width_offset, width) || width <= 0 || width > 1000)
+        return {};
+#ifdef _WIN32
+    NativeBorrowedVector<uint32_t> starts;
+    size_t bit_count = 0;
+    if (!native_history_copy(owner + start_offset, starts) || !starts.valid(8192) ||
+            !native_history_copy(owner + start_offset + 0x18, bit_count) ||
+            bit_count != rows.size() || starts.size() < (bit_count + 31) / 32)
         return {};
     std::vector<uint32_t> start_words((bit_count + 31) / 32);
     if (!native_history_copy_bytes(reinterpret_cast<uintptr_t>(starts.begin),
             start_words.data(), start_words.size() * sizeof(uint32_t))) return {};
-    if (!viewing_unit && (!native_fortress_alert_vector(owner + 0x50, units) ||
-            !native_fortress_alert_vector(owner + 0x68, categories) ||
-            units.size() != rows.size() || categories.size() != rows.size())) return {};
     const auto is_start = [&](size_t line) {
         return (start_words[line / 32] & (uint32_t{1} << (line % 32))) != 0;
     };
+#else
+    struct BitVector {
+        uintptr_t begin;
+        uint32_t begin_bit, begin_padding;
+        uintptr_t end;
+        uint32_t end_bit, end_padding;
+        uintptr_t capacity;
+    } starts{};
+    if (!native_history_copy(owner + start_offset, starts) || !starts.begin ||
+            starts.begin > starts.end || starts.end > starts.capacity ||
+            starts.begin_bit >= 64 || starts.end_bit >= 64 ||
+            (starts.end - starts.begin) % sizeof(uint64_t) ||
+            starts.end - starts.begin > 32768) return {};
+    const size_t finish_bit = (starts.end - starts.begin) * 8 + starts.end_bit;
+    if (finish_bit < starts.begin_bit || finish_bit - starts.begin_bit != rows.size()) return {};
+    std::vector<uint64_t> start_words((finish_bit + 63) / 64);
+    if (start_words.size() > (starts.capacity - starts.begin) / sizeof(uint64_t) ||
+            !native_history_copy_bytes(starts.begin, start_words.data(),
+                start_words.size() * sizeof(uint64_t))) return {};
+    const auto is_start = [&](size_t line) {
+        const size_t bit = line + starts.begin_bit;
+        return (start_words[bit / 64] & (uint64_t{1} << (bit % 64))) != 0;
+    };
+#endif
+    if (!viewing_unit && (!native_fortress_alert_vector(owner + alert_units, units) ||
+            !native_fortress_alert_vector(owner + alert_categories, categories) ||
+            units.size() != rows.size() || categories.size() != rows.size())) return {};
     if (!is_start(0)) return {};
     std::vector<NativeAnnouncementParagraph> result;
     for (size_t begin = 0; begin < rows.size();) {
@@ -210,8 +262,12 @@ static bool native_fortress_alert_consume_rows(
 
 static std::vector<NativeAnnouncementParagraph> native_fortress_alert_hover_sources(
         uintptr_t base, uintptr_t alert, bool button) {
-    const uintptr_t box = native_reference_address(base, button ? 0x18ace80 : 0x18ace30);
-    const uintptr_t width_address = native_reference_address(base, button ? 0x18acec8 : 0x18ace78);
+    const uintptr_t box = button
+        ? native_fortress_alert_address(base, 0x18ace80, 0x2701e28)
+        : native_fortress_alert_address(base, 0x18ace30, 0x2701dd8);
+    const uintptr_t width_address = button
+        ? native_fortress_alert_address(base, 0x18acec8, 0x2701e70)
+        : native_fortress_alert_address(base, 0x18ace78, 0x2701e20);
     std::vector<NativeAnnouncementDisplayRow> rows;
     std::vector<int32_t> ids;
     int32_t width = 0;
@@ -270,12 +326,9 @@ static std::vector<NativeAnnouncementParagraph> native_fortress_alert_hover_sour
     // source or discard those already established report identities.
     return result;
 }
-#endif
-
 static std::vector<NativeAnnouncementParagraph> native_fortress_alert_paragraphs() {
-#ifdef _WIN32
     const uintptr_t base = native_history_profile_base();
-    const uintptr_t owner = native_reference_address(base, 0x18a3598);
+    const uintptr_t owner = native_fortress_alert_address(base, 0x18a3598, 0x26f8308);
     uint8_t open = 0;
     if (!owner || !native_history_copy(owner, open)) return {};
     if (open) return native_fortress_alert_popup_sources(owner);
@@ -283,8 +336,8 @@ static std::vector<NativeAnnouncementParagraph> native_fortress_alert_paragraphs
     if (!native_history_read_vector(native_history_global(0x24e3880), popups) || popups.size())
         return {};
     uintptr_t current_alert = 0, cached_alert = 0;
-    if (!native_history_copy(native_reference_address(base, 0x18a93b0), current_alert) ||
-            !native_history_copy(native_reference_address(base, 0x18ace28), cached_alert)) return {};
+    if (!native_history_copy(native_fortress_alert_address(base, 0x18a93b0, 0x26fe358), current_alert) ||
+            !native_history_copy(native_fortress_alert_address(base, 0x18ace28, 0x2701dd0), cached_alert)) return {};
     auto result = native_fortress_alert_hover_sources(base, 0, true);
     if (current_alert && current_alert == cached_alert) {
         auto individual = native_fortress_alert_hover_sources(base, current_alert, false);
@@ -292,9 +345,4 @@ static std::vector<NativeAnnouncementParagraph> native_fortress_alert_paragraphs
             std::make_move_iterator(individual.end()));
     }
     return result;
-#else
-    // This declaration has only the two independently decompiled PE ABIs.
-    // No PE offsets are applied to the Linux announcement interface.
-    return {};
-#endif
 }

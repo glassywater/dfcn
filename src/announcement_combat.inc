@@ -70,9 +70,13 @@ static bool announcement_combat_field_edges_fit(
     // "through a hole in the " or a damage-list separator. The complete
     // native composite owns that space; its recursive entry trims it before
     // matching the explicit empty-object productions. Dynamic name/item/body
-    // leaves still require their original nonempty field boundaries.
+    // general_ref +0x90 can likewise end in a native prefix or separator
+    // when its value/name or final subject is empty. Only these complete
+    // composites may own that trailing space; their typed leaves still
+    // require their original nonempty field boundaries.
     return scope == "head" || scope == "attack" || scope == "damage" ||
-        scope == "damage-list" || scope == "layer";
+        scope == "damage-list" || scope == "layer" ||
+        scope == "work-reference" || scope == "work-reference-list";
 }
 
 std::optional<std::string> Overlay::translate_announcement_combat(
@@ -421,18 +425,58 @@ std::optional<std::string> Overlay::translate_announcement_combat(
             return finish(translation_complete_with_native_nicknames(result, input)
                 ? std::move(result) : std::nullopt);
         }
-        if (scope == "$announcement-item") {
-            // e68020 supplies the complete live item caption: coin issuer,
-            // stack count, contents, vessel material and designation marks.
-            auto result = translate_item_description_term(input);
+        if (scope == "$item" || scope == "$announcement-item") {
+            // A complete equipment/material production has its own proven
+            // item kind. Keep it ahead of broad title conjunctions such as
+            // "{b} and {b}" and preserve authored item-name fields.
+            if (auto caption = translate_item_caption_grammar(input))
+                return finish(std::move(caption));
+            // ELF e68020 emits a complete written title for item kinds
+            // 0x56/0x59, optionally followed by " (copy)". Its punctuation
+            // belongs to this item field, before the announcement's period.
+            // Resolve the proven title productions before ordinary noun
+            // parsing can spend the record's work budget on title words.
+            auto result = translate_written_item_caption(input, false, true);
+            if (translation_complete_with_native_nicknames(result, input))
+                return finish(std::move(result));
+            // Shared damage's c65450 and announcements' e68020 both supply
+            // complete live item captions. A figurine/statue owns its depicted
+            // subject as well as material and designation marks; the narrower
+            // historical item segmenter does not own that subject grammar.
+            // Use the complete noun/caption grammar for every item position:
+            // projectile, target, instrument, deflection and lodged equipment.
+            result = translate_item_description_term(input);
             if (!translation_complete_with_native_nicknames(result, input))
                 result = translate_legends_item(input);
+            // Combat callers pass r8d=0. At c654b9..c654e2 an artifact
+            // name therefore bypasses material/type and tail-calls a94030.
+            // Reuse inventory's native item-name grammar: its same-language
+            // root validation owns the whole name, with no generic guessing.
+            if (!translation_complete_with_native_nicknames(result, input))
+                result = translate_procedural_fragment(std::string(input),
+                    false, false, {}, ProceduralFragmentContext::native_item_name);
             return finish(translation_complete_with_native_nicknames(result, input)
                 ? std::move(result) : std::nullopt);
         }
-        if (scope == "$item") return finish(translate_legends_item(input));
         if (scope == "$body") return finish(translate_legends_anatomy(input));
+        if (scope == "$announcement-substance") {
+            // 11c6cb0/11c8150 append a whole material state name, including
+            // deposited contaminants and independent stagnant/salt flags.
+            // Container contents can instead come from the item describer.
+            auto result = translate_adventure_environment_material(input);
+            if (!translation_complete_with_native_nicknames(result, input))
+                result = translate_announcement_combat(input, "$announcement-item");
+            return finish(translation_complete_with_native_nicknames(result, input)
+                ? std::move(result) : std::nullopt);
+        }
         if (scope == "$creature") return finish(translate_creature_reference(input));
+        if (scope == "$growth-result") {
+            // c20abf calls b71ba0 with the post-growth unit, retaining its
+            // caste/status/name/decimal ID or adult occupation as one field.
+            auto result = translate_creature_label(input, nullptr, true);
+            if (!result) result = translate_unit_profession(input, false);
+            return finish(std::move(result));
+        }
         if (scope == "$conflict-caste") {
             // The conflict constructor passes the RAW caste and plural flag
             // directly to a0d5f0/12ae800, without a unit or item designation.

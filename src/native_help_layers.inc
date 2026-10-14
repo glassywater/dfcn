@@ -50,6 +50,36 @@ struct NativeUiLayerGrid {
         gps.screentexpos_refresh_buffer = refresh.data();
         gps.top_in_use = true;
     }
+    void copy_native_input(const graphicst &source) {
+        prepare(source);
+        const size_t count = static_cast<size_t>(dimx) * dimy;
+        const std::array<const unsigned char *, 2> screens{{source.screen, source.screen_top}};
+        const std::array<const uint32_t *, 2> flags{{source.screentexpos_flag, source.screentexpos_top_flag}};
+        const std::array<std::array<const Texture *, 5>, 2> textures{{
+            {source.screentexpos, source.screentexpos_lower, source.screentexpos_anchored,
+                source.screentexpos_anchored_x, source.screentexpos_anchored_y},
+            {source.screentexpos_top, source.screentexpos_top_lower, source.screentexpos_top_anchored,
+                source.screentexpos_top_anchored_x, source.screentexpos_top_anchored_y}
+        }};
+        for (size_t i = 0; i < planes.size(); ++i) {
+            // An inactive top plane is never consumed by the native input
+            // pass. When it becomes active, this complete copy replaces it.
+            if (i && !source.top_in_use) continue;
+            auto &plane = planes[i];
+            if (screens[i]) std::copy_n(screens[i], count * 8, plane.screen.data());
+            else std::fill(plane.screen.begin(), plane.screen.end(), 0);
+            if (flags[i]) std::copy_n(flags[i], count, plane.flags.data());
+            else std::fill(plane.flags.begin(), plane.flags.end(), 0);
+            for (size_t slot = 0; slot < textures[i].size(); ++slot) {
+                if (textures[i][slot]) std::copy_n(textures[i][slot], count, plane.textures[slot].data());
+                else std::fill(plane.textures[slot].begin(), plane.textures[slot].end(), 0);
+            }
+        }
+        // Only text/texture inputs are private. The native raster pass still
+        // owns its refresh stamps and must retain the map pass's same buffer.
+        graphics()->screentexpos_refresh_buffer = source.screentexpos_refresh_buffer;
+        graphics()->top_in_use = source.top_in_use;
+    }
     void clear() {
         std::fill(refresh.begin(), refresh.end(), 0);
         for (auto &plane : planes) {
@@ -88,10 +118,19 @@ struct NativeHelpCollapsedTitle {
     std::string source;
 };
 
+struct NativeHelpIndexPanel {
+    SDL_Rect frame{};
+    int heading_y = 0;
+    int caption_left = 0, caption_right = 0;
+    int first_caption_y = 0, visible_entries = 0;
+};
+
 struct NativeUiLayerStorage {
     NativeUiLayerGrid foreground;
     std::vector<SDL_Rect> frames;
     std::vector<NativeHelpCollapsedTitle> collapsed_titles;
+    std::vector<NativeHelpIndexPanel> index_panels;
+    std::optional<SDL_Rect> index_intro;
     void *native_renderer = nullptr;
     SDL_Renderer *renderer = nullptr;
     bool ready = false;

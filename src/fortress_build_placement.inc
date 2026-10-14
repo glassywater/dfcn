@@ -1,3 +1,180 @@
+// Pressure-plate controls and size examples are complete native fields.
+// Their English widths must not independently centre each Chinese word/name.
+void Overlay::append_fortress_pressure_plate(std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y) const {
+    if (!gps_ || rows.size() != static_cast<size_t>(gps_->dimy)) return;
+    auto draws = captured_native_drawn_text_rows();
+    auto top_draws = captured_native_drawn_text_rows(true);
+    draws.insert(draws.end(), std::make_move_iterator(top_draws.begin()),
+        std::make_move_iterator(top_draws.end()));
+    const auto current = [&](const NativeDrawnTextRow &draw) {
+        if (draw.x < 0 || draw.x >= gps_->dimx || draw.y < 0 || draw.y >= gps_->dimy || draw.source.empty() ||
+                draw.source.size() > static_cast<size_t>(gps_->dimx - draw.x)) return false;
+        for (size_t byte = 0; byte < draw.source.size(); ++byte) {
+            bool top = false;
+            const auto *cell = cell_at(draw.x + static_cast<int>(byte), draw.y, &top);
+            const unsigned char ch = cell && cell[0] ? cell[0] : ' ';
+            if (ch != static_cast<unsigned char>(draw.source[byte]) ||
+                    (ch != ' ' && top != draw.top_layer)) return false;
+        }
+        return true;
+    };
+    const NativePanelBorders borders(*gps_);
+    std::optional<SDL_Rect> panel;
+    int heading_y = -1;
+    bool page_top = false;
+    for (const auto &reset : draws) {
+        if (reset.source != "Resets" || !current(reset)) continue;
+        for (const auto &single : draws) {
+            if (single.source != "One use only" || single.y != reset.y ||
+                    single.top_layer != reset.top_layer || single.x <= reset.x ||
+                    !current(single)) continue;
+            // The combined span belongs to the enclosing panel, rather than
+            // either of the two independent toggle-button skins.
+            panel = native_panel_interior(borders, *gps_, reset.x,
+                single.x + static_cast<int>(single.source.size()), reset.y);
+            if (panel) {
+                heading_y = reset.y;
+                page_top = reset.top_layer;
+                break;
+            }
+        }
+        if (panel) break;
+    }
+    if (!panel || (only_y >= 0 &&
+            (only_y < panel->y || only_y >= panel->y + panel->h))) return;
+    const int panel_right = panel->x + panel->w;
+    const auto owned = [&](const NativeDrawnTextRow &draw) {
+        return draw.top_layer == page_top && draw.y >= heading_y &&
+            draw.y < panel->y + panel->h && draw.x >= panel->x &&
+            draw.x + static_cast<int>(draw.source.size()) <= panel_right && current(draw);
+    };
+    static constexpr std::string_view states[] = {
+        "Water does not trigger", "Magma does not trigger",
+        "Minecarts do not trigger", "Creature trigger settings",
+        "Creatures do not trigger", "Citizens trigger", "Citizens do not trigger",
+    };
+    if (std::none_of(draws.begin(), draws.end(), [&](const auto &draw) {
+            return owned(draw) && std::find(std::begin(states), std::end(states),
+                draw.source) != std::end(states);
+        })) return;
+
+    int range_y = -1, list_x = -1;
+    for (const auto &draw : draws) {
+        if (owned(draw) && draw.source.starts_with("Range: ")) {
+            range_y = draw.y;
+            // The native size-example list uses one column, inset one cell
+            // from its range heading; species have no hierarchical indent.
+            list_x = draw.x + 1;
+            break;
+        }
+    }
+    const auto clipped = captured_clipped_captions();
+    const auto scrollbars = range_y >= 0
+        ? native_vertical_scrollbar_spans(*gps_, *panel) : std::vector<SDL_Rect>{};
+    const auto creature_or_size = [&](std::string_view source) -> std::optional<std::string> {
+        if (auto target = translate_creature_label(source)) return target;
+        if (source.size() > 2 && source.front() == '(' && source.back() == ')' &&
+                std::all_of(source.begin() + 1, source.end() - 1,
+                    [](unsigned char ch) { return ch >= '0' && ch <= '9'; }))
+            return std::string(source);
+        return std::nullopt;
+    };
+    for (const auto &draw : draws) {
+        if (!owned(draw)) continue;
+        const bool button = draw.source == "Resets" || draw.source == "One use only";
+        const bool state = std::find(std::begin(states), std::end(states), draw.source) !=
+            std::end(states);
+        const bool range = draw.y == range_y && draw.source.starts_with("Range: ");
+        const bool example = range_y >= 0 && draw.y > range_y && draw.x == list_x;
+        std::string complete = draw.complete_source.empty() ? draw.source : draw.complete_source;
+        for (const auto &caption : clipped)
+            if (caption.x == draw.x && caption.y == draw.y && caption.visible == draw.source)
+                complete = caption.complete;
+        std::optional<std::string> target;
+        if (button) target = exact_literal_translation("Pressure plate: " + draw.source);
+        else if (state) target = exact_literal_translation(draw.source);
+        else if (range) {
+            const auto separator = complete.find(" to ", std::string_view("Range: ").size());
+            const auto found = history_semantic_templates_.find(
+                "Pressure plate: Range: {s1} to {s2}");
+            if (complete.starts_with("Range: ") && separator != std::string::npos &&
+                    found != history_semantic_templates_.end()) {
+                const std::string first = complete.substr(7, separator - 7);
+                const std::string last = complete.substr(separator + 4);
+                const std::vector<std::optional<std::string>> resolved{
+                    creature_or_size(first).value_or(native_text_to_utf8(first)),
+                    creature_or_size(last).value_or(native_text_to_utf8(last))};
+                if (resolved[0] && resolved[1]) {
+                    bool translated = false;
+                    auto text = fill_template(rules_[static_cast<size_t>(found->second)],
+                        {first, last}, nullptr, &translated, &resolved);
+                    if (translated && !text.empty()) target = std::move(text);
+                }
+            }
+        } else if (example) target = creature_or_size(complete);
+        else if (draw.y > heading_y && (range_y < 0 || draw.y < range_y))
+            target = exact_literal_translation("Pressure plate: " + draw.source);
+        if (!target && !example) continue;
+
+        int left = draw.x, right = panel_right;
+        if (draw.draw_clip) right = std::min(right, draw.draw_clip->x + draw.draw_clip->w);
+        if (example)
+            for (const auto &scrollbar : scrollbars)
+                if (draw.y >= scrollbar.y && draw.y < scrollbar.y + scrollbar.h)
+                    right = std::min(right, scrollbar.x);
+        if (button) {
+            if (const auto box = native_button_text_rect(*gps_, draw.x,
+                    draw.x + static_cast<int>(draw.source.size()), draw.y)) {
+                left = box->x;
+                right = box->x + box->w;
+            }
+        } else {
+            // Enabled liquid/cart settings contain separately drawn amounts
+            // and separators. Each label stops at the next native field.
+            for (const auto &next : draws)
+                if (next.y == draw.y && next.x >= draw.x + static_cast<int>(draw.source.size()) &&
+                        owned(next)) right = std::min(right, next.x);
+        }
+        if (right <= left) continue;
+        // Claim both physical halves only when their live flags prove the
+        // same addst caption. Raw-layer suppression still uses exact bytes.
+        std::vector<int> physical_rows{draw.y};
+        bool top = false;
+        cell_at(draw.x, draw.y, &top);
+        const auto *flags = top ? gps_->screentexpos_top_flag : gps_->screentexpos_flag;
+        if (flags) {
+            const uint32_t half = flags[static_cast<size_t>(draw.x) * gps_->dimy + draw.y] &
+                ((1u << 3) | (1u << 4));
+            const int mate = half == (1u << 3) ? draw.y + 1
+                : half == (1u << 4) ? draw.y - 1 : -1;
+            if (mate >= panel->y && mate < panel->y + panel->h) {
+                NativeDrawnTextRow paired = draw;
+                paired.y = mate;
+                const uint32_t other = flags[static_cast<size_t>(draw.x) * gps_->dimy + mate] &
+                    ((1u << 3) | (1u << 4));
+                if (current(paired) && other ==
+                        (half == (1u << 3) ? (1u << 4) : (1u << 3)))
+                    physical_rows.push_back(mate);
+            }
+        }
+        for (const int y : physical_rows) {
+            if (rows[y].compare(draw.x, draw.source.size(), draw.source) != 0) continue;
+            std::fill_n(rows[y].begin() + draw.x, draw.source.size(), ' ');
+            if ((only_y >= 0 && only_y != y) || !target) continue;
+            Match match{draw.x, y, static_cast<int>(draw.source.size()),
+                kFortressPressurePlateRule, *target, draw.source};
+            match.layout_x = left;
+            match.layout_length = right - left;
+            match.layout_left = !button;
+            match.layout_clip_right = right;
+            match.layout_font_pixels = unified_font_pixels();
+            match.layout_lock_font_pixels = true;
+            matches.push_back(std::move(match));
+        }
+    }
+}
+
 // The remembered value is a material/item field, even when its first letter
 // is capitalized. Claim it before the generic native-name phonetic fallback.
 void Overlay::append_fortress_remembered_material(std::vector<std::string> &rows,

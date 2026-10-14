@@ -6,16 +6,48 @@ void Overlay::render_native_help_layer(SDL_Renderer *renderer) {
         return;
     }
     struct HelpView {
-        graphicst *&slot;
-        graphicst *previous;
-        std::vector<Match> &matches;
-        std::vector<Match> previous_matches;
-        HelpView(graphicst *&value, std::vector<Match> &prepared)
-            : slot(value), previous(value), matches(prepared), previous_matches(std::move(prepared)) {
-            slot = g_native_help_layer.foreground.graphics();
+        Overlay &overlay;
+        graphicst *graphics;
+        std::vector<Match> matches;
+        std::optional<NativeToolbarTooltip> tooltip;
+        std::optional<NativeTooltipWidgetFrame> widget;
+        GraphicalClearReadback *readback;
+        decltype(Overlay::graphical_rects_) graphical_rects;
+        decltype(Overlay::cell_composite_state_) composite;
+        decltype(Overlay::cell_composite_epoch_) composite_epochs;
+        decltype(Overlay::observed_glyph_chars_) glyphs;
+        decltype(Overlay::observed_glyph_epoch_) glyph_epochs;
+        decltype(Overlay::suppressed_glyphs_) suppressed;
+        explicit HelpView(Overlay &value)
+            : overlay(value), graphics(value.gps_), matches(std::move(value.prepared_matches_)),
+              tooltip(std::move(g_native_toolbar_tooltip)),
+              widget(std::move(g_native_tooltip_widget_frame)),
+              readback(value.graphical_clear_readback_),
+              graphical_rects(std::move(value.graphical_rects_)),
+              composite(std::move(value.cell_composite_state_)),
+              composite_epochs(std::move(value.cell_composite_epoch_)),
+              glyphs(std::move(value.observed_glyph_chars_)),
+              glyph_epochs(std::move(value.observed_glyph_epoch_)),
+              suppressed(std::move(value.suppressed_glyphs_)) {
+            overlay.gps_ = g_native_help_layer.foreground.graphics();
+            overlay.graphical_clear_readback_ = nullptr;
+            g_native_toolbar_tooltip.reset();
+            g_native_tooltip_widget_frame.reset();
         }
-        ~HelpView() { slot = previous; matches = std::move(previous_matches); }
-    } help_view(gps_, prepared_matches_);
+        ~HelpView() {
+            overlay.gps_ = graphics;
+            overlay.prepared_matches_ = std::move(matches);
+            g_native_toolbar_tooltip = std::move(tooltip);
+            g_native_tooltip_widget_frame = std::move(widget);
+            overlay.graphical_clear_readback_ = readback;
+            overlay.graphical_rects_ = std::move(graphical_rects);
+            overlay.cell_composite_state_ = std::move(composite);
+            overlay.cell_composite_epoch_ = std::move(composite_epochs);
+            overlay.observed_glyph_chars_ = std::move(glyphs);
+            overlay.observed_glyph_epoch_ = std::move(glyph_epochs);
+            overlay.suppressed_glyphs_ = std::move(suppressed);
+        }
+    } help_view(*this);
     NativeHelpForegroundScope foreground;
     NativeUiReadScope logical_document(gps_, nullptr);
     NativePanelReadScope panels(gps_);
@@ -72,8 +104,11 @@ void Overlay::render_native_help_layer(SDL_Renderer *renderer) {
         match.translation_result = std::make_shared<const dfcn::TranslationResult>(translation);
         result.push_back(std::move(match));
     }
+    result.insert(result.end(), std::make_move_iterator(untranslated_help_rows.begin()),
+        std::make_move_iterator(untranslated_help_rows.end()));
     prepared_matches_ = std::move(result);
     normalize_native_split_text();
+    layout_fortress_help(renderer);
     // Suppress source glyphs only in the private grid while native tile
     // helpers paint its backgrounds and artwork. No pixel readback or erase.
     native_help_paint_grid(renderer, prepared_matches_);

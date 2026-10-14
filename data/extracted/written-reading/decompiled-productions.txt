@@ -1,0 +1,157 @@
+Native activity / Read document source reconstruction
+
+Image: installed Linux Steam 53.16 dwarfort
+Identity: ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c
+Method: original ELF unwind bodies, Itanium RTTI/vtables, immutable rel32
+selectors, decoded literal stores, and Ghidra decompilation. Function names
+in elf-decompiled.c are descriptive aliases rather than recovered symbols.
+
+SOURCE FILES
+elf-functions.tsv: original complete function extents and image identity.
+elf-decompiled.c: Ghidra C for every function in that manifest.
+elf-*.asm: complete instructions, with literal operands annotated.
+elf-branches.tsv: both target and fallthrough of conditional branches.
+elf-predicates.tsv: original compare, test and bit-test operands.
+elf-switches.tsv: immutable selector-to-destination entries, including aliases.
+elf-calls.tsv: direct and virtual supplier calls.
+elf-literals.tsv: C strings, printable SIMD stores and immediate text stores.
+elf-references.tsv: general_ref subclass, vtable and +0x98 text supplier.
+written-productions.tsv: carrier, genre, style and quality source translations.
+numbers/: decompiled libg_src_lib.so cardinal and ordinal suppliers.
+
+ACTIVITY DOCUMENT OWNER: 0x15c1200..0x15c4863
+The selected activity supplies a complete cyan heading through its +0xb8
+caption method. The document then appends [C:7:0:0][B] and dispatches by
+activity type. Its finite alternatives include considered/discussed/taught/
+written scholarly topics, musical/poetic/dance performance and progress,
+organizational activity messages, Read/Copy item descriptions, and the
+no-specific-information default. Form/work lookups and empty names have
+separate branches. See ../activity-detail/ for the full activity/form/caption
+supplier graph and its display-productions.tsv; these clauses use the shared
+activity-detail grammar rather than literal replacements in physical rows.
+
+READ CAPTION: 0x1768590..0x17688a3
+out = "Read"
+if the activity has a first item reference:
+    resolve that reference's item ID in the world item vector
+    if found: out += " " + item_caption(item, flags=0, context=-1)
+No reference, sentinel ID, empty vector, or missing item leaves exactly Read.
+The item caption owns its complete book title, binding/material and quality
+designation. Read is an activity verb. The title is not a personal name.
+The bare Read job-title supplier is also retained at 0x1279380.
+
+READ/COPY BODY
+The activity document's Read/Copy cases resolve their referenced item and
+append its complete item description through 0xe76ce0, not only its title.
+That generator owns the initial This-is/These-are sentence, material and
+item-specific branches, decoration/condition sentences and written carriers.
+It uses page-carrier 0xe71100 and writing-carrier 0xe70c20 where appropriate.
+The source remains one document before wrapping. The ordinary inventory
+picture/Weight/state-action markers are not prerequisites for this window.
+
+The independently retained read-details dispatcher 0x1782560 additionally
+shows slab writing and page content, including the fixed alternatives
+"It has no writing.", "The pages are blank." and "It has no pages.".
+It is distinct from the activity-detail document owner above.
+
+CARRIERS: 0xe70c20..0xe710fb and 0xe71100..0xe7168f
+Writing lookup missing:
+    "There used to be writing on the item.  "
+Page work lookup missing:
+    "The written portion consists of nothing."
+Present page work:
+    "The written portion consists of a " + decimal pages + " page "
+Present writing:
+    "Written on the item is " + article + " "
+Title absent emits the untitled qualifier. Title present emits
+" entitled " + the complete title. The 26 genre selectors, in order:
+manual; guide; chronicle; short story; novel; biography; autobiography;
+poem; play; letter; essay; dialog; musical composition; choreography;
+comparative biography; biographical dictionary; genealogy; encyclopedia;
+cultural history; cultural comparison; alternate history;
+treatise on technological evolution; dictionary; star chart;
+star catalogue; atlas.
+Out-of-range genre emits no genre label but preserves the carrier, title,
+author prefix, separator spaces and subsequent work body.
+Author absent or lookup failure: no authored-by prefix.
+Author lookup succeeds: append ", authored by " and its original/name
+formatter's output. An unnamed author can leave "authored by .".
+Append ".  " and work_body(work, mode). Mode controls native reference links,
+not the semantic identity of the underlying names/events.
+
+WORK BODY: 0xe6f720..0xe70c1a
+References are counted by their parallel role vector, including empty text.
+role 0: subjects. role 5: chapters.
+No subjects: "The work has no particular subject.  "
+One subject + alternate-history genre:
+    'It asks the question, "What if ' + reference +
+    ' had unfolded differently?"  '
+One subject + genealogy genre:
+    "It concerns the lineage of " + reference + ".  "
+Otherwise: "It concerns " + role-0 references in source order;
+    join intermediate subjects by ", ", final pair by " and "; end ".  ".
+Empty references preserve their positions and separators, not the no-topic
+branch. The runtime grammar includes their complete empty-field productions.
+
+Second reference pass:
+role 6: "The writing conveys a moral lesson regarding " + ref + ".  "
+role 9: "The overall text emphasizes " + ref + ".  "
+role 7: "For lyrics, the composer has selected " + ref + ".  "
+role 8: "For musical accompaniment, the choreographer has selected " +
+        ref + ".  "
+Other roles: no sentence in this pass. Empty fields remain possible.
+
+Styles:
+No style records: omit the style sentence.
+Otherwise: "The writing " + style(first, strength, quality).
+If there is a second style: join by " and it " when their negative/positive
+classification agrees, otherwise " yet it ", then append the second style.
+Additional styles are not displayed. Always end the sentence with ".  ".
+0xe66120 selects all 18 styles, strengths 0/1/2, and quality-dependent
+alternatives. Default selector/strength emits no predicate; native connectors
+still remain. Polarity supplier 0xe3e9b0 is retained separately.
+Every emitted style phrase and empty-predicate sentence uses the existing
+scoped writing vocabulary in legends-events.tsv.
+
+Quality:
+Genre 2/16/22/23/24/25: compilation of information.
+Genre 7: poetry. Genre 12: composition. Genre 13: choreography.
+Other genres, including default: prose.
+Each category has six branches at quality thresholds 20/40/60/80/100.
+All terminal phrases and the native "the splendid source" wording are
+retained as source, with the caller's final ".  " accounted for.
+
+Chapters:
+Zero: no chapter sentences.
+One: "The work has a single chapter.  " then "It covers " + ref + ".  ".
+More than one: "The work has " + cardinal(count) + " chapters.  "; then
+    "The " + lowercase ordinal(index + 1) + " chapter covers " + ref + ".  ".
+The source uses libg_src_lib.so's get_number and get_ordinal, not a fixed
+six-chapter list. Their complete compiled suppliers are in numbers/.
+
+GENERAL REFERENCES
+Every discovered general_ref vtable +0x98 supplier is retained, including
+the inherited empty-description supplier. Nonempty families are written
+works; poetic/musical/dance forms; language; values; scholarly knowledge;
+interactions; artifacts; abstract buildings; historical events; historical
+figures; spheres; sites; subregions; feature layers; entity populations;
+creatures; item types; entities. Lookup failures, absent names and default
+selectors can emit an empty field. Animated-corpse/ghost flags are independent.
+Historical-event references dispatch to the event's +0xd8 title and retain
+its actors, place and date. Their existing native history source catalogues
+and runtime work-reference/work-sentence grammar remain authoritative.
+
+RUNTIME OWNERS
+src/activity_detail.inc: complete activity record and typed heading routing.
+src/native_history_hooks.inc: retained activity rich box, paragraph boundaries
+and original token identities/colors (resident/pet selectors use 0x26fb2f8).
+src/dfcn.cpp: activity-document dispatch before generic screen matching.
+src/fortress_item_descriptions.inc: visible Read-window item-document routing.
+src/item_descriptions.inc: complete item/carrier/written-reference parsing.
+data/runtime/legends-events.tsv: carrier, genre, style, quality/default text.
+data/runtime/announcement-combat-grammar.tsv: typed subjects, lists, chapters.
+data/runtime/announcement-description-grammar.tsv: other activity-detail text.
+data/runtime/item-description-translations.tsv: item prose and binding nouns.
+
+These files record original binary source and its semantic productions.
+They are not observations of the running game or display results.

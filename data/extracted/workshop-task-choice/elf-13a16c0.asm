@@ -1,0 +1,3 @@
+0x13a16c0: endbr64
+0x13a16c4: mov    eax,DWORD PTR [rdi+0xd8]
+0x13a16ca: ret

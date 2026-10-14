@@ -1,0 +1,368 @@
+Native combat report construction, DF 53.16 configured Windows PEs
+================================================================
+
+Source extraction: tools/extract_combat_announcement_sources.py.
+The configured reference and classic images were read and disassembled locally.
+Image identities: reference PE:6a70a6d9:02711000; classic PE:6a70b91c:0270a000.
+This is static reconstructed source, not observed game output. The extractor
+never executes the game, a translation, a generator, or a build. Addresses below
+are reference native VAs; native-owners.tsv retains the independent classic VAs.
+PE CHAININFO merges unwind pieces into complete logical native functions.
+Each per-owner .asm retains every instruction, including non-text calculations;
+native-control-flow.tsv retains conditions and branches; native-calls.tsv retains
+direct calls/tail transfers; native-switches.tsv retains decoded case/default
+paths; native-literals.tsv retains RIP strings, vector operands, inline stores.
+Printable numeric immediates such as division constants gfff/VUUU and integer
+argument 0x32 are source operands, not caption vocabulary. Text production below
+is reconstructed by following string assign/append calls and string stores.
+
+Complete typed dynamic input fields
+----------------------------------
+UNIT = complete native unit caption (0x14132e430), including player You, names,
+       identities, complete creature/caste descriptions and complete professions.
+OWNER = Your / UNIT + "'s" / native possessive pronoun your/his/her/its.
+BODY = complete body-name formatter (0x1413345d0) or indicated inline RAW name.
+LAYER = complete body/tissue/material field, optionally BODY + "'s " + TISSUE.
+ITEM = complete native item caption (0x140c65450), preserving inner title,
+       material, subtype, artwork subject and outer native quality/wear markers.
+MATERIAL = complete native material/state name, optionally native creature owner.
+Generated and authored identity/name fields are not finite English word lists.
+The screenshot's +larch figurine of blood gnats+ is one ITEM with quality markers,
+wood material and figure subject, not an English word substituted in isolation.
+
+Attack-record producer 0x14064a350..0x1406536b2
+----------------------------------------------
+Normal item attack obtains attack definitions from virtual item+0x438.
+An attack definition stores base verb at +0x10, third-person verb at +0x30 and
+weapon subpart at +0x50. The native producer copies those complete string fields
+at 0x14064ae64..0x14064ae9b. Adventure player selects base, all other actors select
+third-person at 0x14064af2d..0x14064af54. Missing/invalid item attack definition
+selects literal strike/strikes (0x14064af07..0x14064af28). Projectile setup initially
+assigns strikes (0x14064a9e6). A special shove uses push/pushes (0x14064b97a).
+Creature attack paths obtain the corresponding complete RAW ATTACK_VERB fields.
+The stealth branch prefixes "silently " to the already selected attack verb
+(0x140650ebe..0x140650ef5); it does not alter the actor's identity.
+
+INSTRUMENT = ["the " + complete SUBPART + " of "] + POSSESSIVE + " " + ITEM,
+             or POSSESSIVE + " " + complete anatomical instrument BODY.
+SUBPART is omitted when empty or equal to NO_SUB (0x14064af6a..0x14064af8f).
+For a present subpart, 0x14064af91..0x14064afc5 appends the/of wrapper; it does
+not constrain subpart to shaft, pommel or flat. PLAYER POSSESSIVE is your;
+other actors use native sex-based possessive pronoun (0x14064afdc..0x14064b034).
+ITEM is appended whole at 0x14064b063 with caption detail argument false.
+The body instrument alternative at 0x14064b736..0x14064b7b3 uses the same ownership.
+
+ACTOR = UNIT for a creature actor; with projectile:
+        "The flying " + ITEM / "The spinning " + ITEM / "The " + ITEM.
+Projectile material/state/type/flags select motion, independently of ITEM.
+See 0x14064a82a..0x14064a8eb and shared-damage 0x1400e5887..0x1400e5951.
+
+Every finite direct sentence family of this producer:
+  UNIT + " has moved out of range!"                 0x14064a578
+  UNIT + (" let" | " lets") + " the " + BODY +
+      " drop away as " + UNIT + (" attack." | " attacks.")
+                                                   0x14064bb11..0x14064bbed
+  UNIT + (" catch " | " catches ") + OWNED_BODY +
+      " with " + OWNED_BODY + "!"                 0x14064bfe9..0x14064c33c
+  ACTOR + (" attack " | " attacks ") + UNIT + " but " + EVASION + "!"
+                                                   0x14064d2f8..0x14064d7c5,
+                                                   0x14064e2ba..0x14064e3b1
+  EVASION = UNIT + (" scramble" | " scrambles" | " roll" | " rolls" |
+                    " jump" | " jumps") + " away"
+  UNIT + (" scramble" | " scrambles" | " roll" | " rolls" |
+          " jump" | " jumps") + " away from " + ACTOR + "!"
+                                                   0x14064e08a..0x14064e112
+  ACTOR + (" miss " | " misses ") + UNIT + "!"  0x14064e61b..0x14064e658
+  ACTOR + (" miss " | " misses ") + UNIT +
+      " badly, blocked by the divine intervention of mighty " + DEITY + "!"
+                                                   0x140650242..0x1406502c4
+  SHOT + " but the shot is blocked!"              0x14064d55c
+  SHOT + " but the shot is blocked" + [" with " + ITEM] + "!"
+                                                   0x14064f1e4..0x14064f254
+  SHOT + " but the shot is " + [PARRY_ADVERB] + "parried" +
+      [" by " + ITEM] + "!"                      0x14064db47..0x14064dc18
+  SHOT + " but the shot is " + [DEFLECT_ADVERB] + "deflected" +
+      [" by " + ITEM] + "!"                      0x14064f933..0x14064fa0c
+  SHOT = ACTOR + (" strike at " | " strikes at ") + UNIT
+  PARRY_ADVERB = "deftly " | "just barely " | "easily " | empty
+  DEFLECT_ADVERB = "effortlessly " | "narrowly " | "easily " | empty
+  UNIT + (" block " | " blocks ") + ACTOR + [" with " + ITEM] + "!"
+                                                   0x14064f299..0x14064f325
+  UNIT + (" bat " | " bats ") + ACTOR + (" aside" | " out of the air") +
+      [" with " + ITEM] + "!"                    0x14064fa4c..0x14064faf9
+  UNIT_LIST + (" are " | " is ") + "stunned by divine power!"
+                                                   0x140650b9e..0x140650c9a
+  "Many are stunned by divine power!"             0x140650b5d..0x140650c9a
+  UNIT_LIST preserves every selected unit with comma, comma-and, or and joining.
+  UNIT + (" have" | " has") + " become enraged!" 0x14065336e..0x14065340f
+
+The weapon optional clauses are omitted on null item pointer paths. Actor,
+defender, projectile and equipment retain distinct typed ownership.
+No adverb branch is a generalized global word replacement.
+
+Additional complete prefixes passed through shared damage (record flag0x20):
+  "The force bends the " + BODY                  0x1406530ad
+  "The force twists the " + BODY                 0x1406530d8
+  "The force pulls the " + BODY                  0x140653106
+The three prefixes are stored in the damage record at 0x14065317d..0x1406531b1
+and submitted to shared damage at 0x1406531ef, preserving every suffix family.
+
+Wrestling producer 0x140646f00..0x14064a348
+----------------------------------------
+Subject inflection selects base for the adventure player and third-person for
+other units. OWNED_BODY always contains owner plus the complete anatomical part.
+Finite direct productions, with their original punctuation:
+  UNIT + (" lock " | " locks ") + OWNED_BODY + " with " + OWNED_BODY + "!"
+                                                   0x140647499..0x140647576
+  UNIT + (" place" | " places") + " a chokehold on " + OWNED_BODY +
+      " with " + OWNED_BODY + "!"               0x140647671..0x140647733
+  UNIT + (" take " | " takes ") + UNIT + " down by the " + BODY +
+      " with " + OWNED_BODY + "!"               0x140647850..0x140647912
+  UNIT + (" throw " | " throws ") + UNIT + " by the " + BODY +
+      " with " + OWNED_BODY + "!"               0x1406479f1..0x140647ab3
+  UNIT + (" adjust" | " adjusts") + " the grip of " + OWNED_BODY +
+      " on " + OWNED_BODY + "."                0x14064828d..0x14064834f
+  UNIT + (" struggle" | " struggles") + " in vain against the grip of " +
+      OWNED_BODY + " on " + OWNED_BODY + "."    0x1406486d2..0x140648794
+  UNIT + (" release" | " releases" | " loosen" | " loosens") +
+      (" the choke hold of " | " the joint lock of ") + OWNED_BODY +
+      " on " + OWNED_BODY + "."                0x140648861..0x140648bde
+  UNIT + (" release" | " releases" | " break" | " breaks") +
+      " the grip of " + OWNED_BODY + " on " + OWNED_BODY + "."
+                                                   0x140648ca5..0x140648e04,
+                                                   0x1406494fe..0x140649601
+  "The " + BODY + " is ripped away and remains in " + OWNER +
+      (" mouth!" | " grip!")                    0x140649254..0x1406492e0
+  UNIT + (" lose" | " loses") + " hold of the " + BODY + "!"
+                                                   0x1406493b9..0x140649409
+  UNIT + (" pass" | " passes") + " out."       0x140649a0d..0x140649a37
+  UNIT + (" miss " | " misses ") + UNIT + "!"  0x140649ea3..0x140649ed2
+Release/loosen branches choose either ownership order from native hold records;
+the full owned fields must be carried in the selected order.
+
+Prefixes forwarded into every shared-damage outcome:
+  UNIT + (" pinch " | " pinches ") + OWNED_BODY + " with " + OWNED_BODY
+                                                   0x140647d60..0x140647e2e
+  UNIT + (" gouge " | " gouges ") + OWNED_BODY + " with " + OWNED_BODY
+                                                   0x140647fe8..0x1406480b6
+  UNIT + (" bend " | " bends ") + OWNED_BODY + " with " + OWNED_BODY
+                                                   0x140648491..0x14064855e
+  UNIT + (" shake " | " shakes ") + UNIT + " around by the " + BODY
+                                                   0x14064903d..0x1406490a0
+  UNIT + (" strangle " | " strangles ") + OWNED_BODY
+                                                   0x1406497b7..0x140649866
+The separate grab/grabs branch 0x140649ccf..0x140649d41 populates the ordinary
+attack-record verb/instrument and uses the same normal damage-head constructor.
+
+Grip state producer 0x141361370..0x141362544
+------------------------------------------
+Two complete owner/body pairs are constructed from units/body records; empty
+singular RAW vectors or invalid body index use body part, and the plural path
+uses body parts. Player ownership is Your, otherwise complete UNIT + "'s".
+Success and positive grip record+0x1e:
+  UNIT + (" release" | " releases") + " the grip of " + OWNED_BODY_A +
+      " from " + OWNED_BODY_B + "."             0x141361ed8..0x141361fb1
+Success and nonpositive record+0x1e:
+  UNIT + (" break" | " breaks") + " the grip of " + OWNED_BODY_B +
+      " from " + OWNED_BODY_A + "!"             0x141361fd3..0x1413620ac
+Failure (input success byte false at 0x141361e8e):
+  UNIT + (" are unable to break" | " is unable to break") + " the grip of " +
+      OWNED_BODY_B + " on " + OWNED_BODY_A + "!" 0x14136210e..0x1413621f7
+The from/on relation and swapped owner order are distinct source branches.
+
+Embedded item producer 0x140643f70..0x140646e24
+--------------------------------------------
+  UNIT + (" pull" | " pulls") + " on the embedded " + ITEM + "."
+                                                   0x140645253..0x14064543a
+  UNIT + (" try" | " tries") + " to remove " + ITEM + "."
+                                                   0x14064560f..0x1406457f8
+Caption arguments false/-1 at 0x1406452a0 and the corresponding remove branch.
+Terminal periods are inline stores 0x1406452e2 and 0x14064569d, not C strings.
+Item-removal job 0x141397100..0x141397497:
+  UNIT + " pulls out and " + ("drops" | "releases") + " " + ITEM + "."
+                                                   0x141397273..0x141397332
+Native item predicate 0x1413610f0 chooses drops/releases; the job does not choose
+a base-person alternative, even though UNIT may itself be the player caption.
+
+Charge producer 0x140654d20..0x140657a56
+-------------------------------------
+  UNIT + (" leap at " | " leaps at " | " charge at " | " charges at ") +
+      UNIT + [" from behind" | " from the side"] + "!"
+                                                   0x140655915..0x1406559d3
+  UNIT + (" are " | " looks ") + "surprised by the ferocity of " +
+      OWNER + " onslaught!"                     0x140655ab6..0x140655b5d
+  UNIT + (" scramble" | " scrambles" | " roll" | " rolls" |
+          " jump" | " jumps") + " away!"       0x14065622a..0x14065643e
+  UNIT + (" collide" | " collides") + " with " + UNIT + "!"
+                                                   0x140656634..0x140656733
+  UNIT + (" are" | " is") + " knocked over!"   0x140656d1a..0x14065719c
+  UNIT + (" are" | " is") + " knocked over" +
+      (" and tumble" | " and tumbles") + " backward!"
+                                                   0x140656a24..0x140656b6d,
+                                                   0x140656ef6..0x14065703d
+  UNIT + (" bounce" | " bounces") + " backward!" 0x140657215..0x140657497
+  "You tangle together and tumble forward!" | "They tangle together and tumble forward!"
+                                                   0x140657532..0x140657597
+  "You tangle together and fall over!" | "They tangle together and fall over!"
+                                                   0x1406576f8..0x14065779b
+
+Collision/projectile movement and impact producers
+-------------------------------------------------
+Collision 0x140eadea0..0x140eb3ac4:
+  UNIT + (" skip" | " skips") + " across the " +
+      ("water" | "magma" | "lava") + "!"      0x140eae9d7..0x140eaea96
+  UNIT + (" slam" | " slams") + " into an obstacle!"
+                                                   0x140eaf64e..0x140eaf67c,
+                                                   0x140eb38a9..0x140eb38d6
+  UNIT + (" slam" | " slams") + " into an obstacle and " +
+      ("blow" | "blows") + " apart!"           0x140eaf3e1..0x140eaf46e,
+                                                   0x140eb368b..0x140eb3711
+  UNIT + (" slam" | " slams") + " into " + UNIT + "!"
+                                                   0x140eb0235..0x140eb02e5,
+                                                   0x140eb1c83..0x140eb1d2e,
+                                                   0x140eb2f8a..0x140eb3044
+  UNIT + (" scramble" | " scrambles" | " roll" | " rolls" |
+          " jump" | " jumps") + " out of " + OWNER + " flight path!"
+                                                   0x140eb1167..0x140eb12d6
+Projectile movement 0x140ea8fb0..0x140eade98:
+  UNIT + (" scramble" | " scrambles" | " roll" | " rolls" |
+          " jump" | " jumps") + " away from the " + ITEM + "!"
+                                                   0x140eab966..0x140eabb6e
+Projectile motion invokes normal attack producer at 0x140eaab49, 0x140eac4b6,
+0x140ead66b, 0x140ead79b and 0x140eadb1b. Collision similarly invokes it at
+0x140eafda0 and 0x140eb0760, and invokes bodily impact for obstacle damage.
+
+Bodily impact 0x1413b1580..0x1413b209d, positive force only:
+  PREFIX = OWNER + " " + INLINE_BODY + " takes the full force of the impact"
+                                                   0x1413b1b72
+Ground skid 0x1413b20a0..0x1413b2a26, positive force only:
+  PREFIX = OWNER + " " + INLINE_BODY + " skids along the ground"
+                                                   0x1413b25b8
+INLINE_BODY = singular RAW name for count<=1, plural RAW name for count>1,
+body part for invalid body index, or body part/body parts for absent RAW names.
+The native verbs remain takes/skids even when the selected RAW name is plural.
+Both producers copy the COMPLETE prefix to record.kind0x12 with flag0x20, then
+invoke shared damage: 0x1413b1cdc and 0x1413b2725. Thus skidding is a separate
+prefix family composing with all damage suffixes, not a standalone status word.
+
+Fire, web and material emission
+------------------------------
+0x1413650e0..0x1413654b6 breath defense:
+  UNIT + (" block" | " blocks") +
+      (" the fire." | " the dragonfire." | " the breath.")
+enum input 0=fire, 1=dragonfire, 2=breath at 0x1413652ff..0x14136533f;
+out-of-range enum submits only UNIT + block/blocks, with no object/punctuation.
+0x1413654c0..0x141365983 and 0x141366000..0x1413664c6:
+  UNIT + (" breathe" | " breathes") + " fire!"
+0x141365990..0x141365ffa:
+  UNIT + (" hurl" | " hurls") + " a ball of fire!"
+0x1413664d0..0x141366854:
+  UNIT + (" shoot" | " shoots") + " out thick strands of webbing!"
+0x1413c72b0, 0x1413c8f60, 0x1413c9ad0, 0x1413ca1d0:
+  UNIT + (" breathe" | " breathes") + " a cloud of " + MATERIAL + "!"
+0x1413c80b0:
+  UNIT + (" breathe" | " breathes") + " a glob of " + MATERIAL + "!"
+Cloud/glob material can be builtin, plant, creature-owned or historical-creature
+material; failed material resolution uses literal unknown material. The vapor
+state appends " vapor". Native owner + "'s " and complete material name stay one
+typed MATERIAL phrase. Source operands include these alternatives, not just fire.
+
+Material ownership has three distinct native constructions:
+  MATERIAL = complete RAW material/state name, with any complete material prefix;
+  MATERIAL = (complete RAW species name | historical/assumed identity name) +
+             "'s " + complete RAW material/state name;
+  MATERIAL = "'s " + complete RAW material/state name, when the selected native
+             identity has no name. This last construction is an actual source
+             branch, not an empty translated capture or a guessed owner.
+An absent material lookup may substitute unknown material in those same fields;
+the vapor-state branch appends " vapor" after the full owned or owner-free field.
+
+The empty-identity branch follows the native string construction directly:
+0x1413c7525..0x1413c753d initializes the temporary name to an empty string;
+0x1413c7541..0x1413c7579 selects assumed identity or the historical figure name.
+At 0x1413c7582, name.has_name(+0x72)==false jumps to 0x1413c75a2 and skips the
+name formatter. 0x1413c75a2..0x1413c75b6 nevertheless appends the still-empty
+temporary string. 0x1413c75c1..0x1413c75cc then unconditionally appends "'s ".
+Thus the owner bytes are exactly "'s ", and the subsequently appended complete
+material produces actual "'s blood", "'s unknown material" or another RAW name.
+Repeated identity blocks around 0x1413c7798 and 0x1413c79b8 have the same has_name
+guard and unconditional apostrophe-s append. The glob producer repeats this at
+0x1413c841c/0x1413c859e; the alternate cloud producer repeats it at 0x1413c923f,
+0x1413c943c and 0x1413c965c. A real empty name must not be assigned an invented
+species/identity or silently discarded during translation.
+
+Vapor fallback append sequence is explicit: 0x1413c7886 selects "unknown material",
+0x1413c7893..0x1413c7897 appends the selected material, and 0x1413c78a2 selects
+" vapor" for the final append. The equivalent alternate cloud sites are
+0x1413c94fb (unknown material) and 0x1413c9517 (vapor). Consequently the finite
+fallbacks include "unknown material vapor" and "'s unknown material vapor",
+as well as a named owner plus the complete material-vapor phrase.
+
+Complete item caption with combat arguments
+------------------------------------------
+Logical owner 0x140c65450..0x140c65f0a; classic 0x140c62490..0x140c62f4a.
+Combat instrument, projectile, object, blocking item, embedded item and removed
+item call this function with detail argument r8b=false; count is -1 or 1.
+
+if false && artifact reference exists && artifact.name_present(+0x7a):
+    return language_name(artifact+0x8);  // 0x140c654b9..0x140c654e2
+    // The result is a BARE generated artifact name, with no material/type.
+if false && item_type==0x59 && nonempty item title(+0xe8):
+    return complete_title + " (copy)"; // 0x140c654fc..0x140c65513
+if false && item_type==0x56 && written content/improvement has nonempty title:
+    return complete_written_title + " (copy)";
+    // 0x140c65521..0x140c656f4; improvement kinds0xc/0x9; failed/empty lookup
+    // falls through to ordinary subtype caption, rather than inventing a title.
+ordinary:
+    construct virtual article-title(+0x5f0, count), quality/improvement markers,
+    wear wrappers, native ownership/magic marks and virtual full title(+0x5e8).
+    // All 98 item owner methods and type/material/RAW suppliers are preserved
+    // by data/extracted/item-description-sources.tsv. Specialized book, cage,
+    // slab, statue/figurine, food, corpse and tool captions enter those methods.
+    // Custom named cages/designations are authored fields, not adjective lists.
+    // Artifact-name and written-title early returns bypass the ordinary title.
+Quality/wear wrappers are whole item decorations, not ownership delimiters.
+The finite dispatch branches are unchanged when an arbitrary item is wielded as
+an improvised weapon; translating only material/type nouns omits bare names.
+
+Shared damage and companion state/death source ownership
+-------------------------------------------------------
+0x1400e56a0..0x1400e9f40 is re-extracted here in reference-e56a0.asm and classic.
+Its fully reconstructed production tree is recorded in
+data/extracted/announcement-combat-status/decompiled-shared-damage.txt and
+decompiled-productions.tsv: ordinary/prebuilt heads; flag0x4 by-the vs in-the;
+flag0x8 item vs body; direction behind/side; optional complete instrument;
+deflection, tapping, no-force, pass-through, glance-away, all destroyed-layer
+outcomes, detached-part/torso outcomes, every damage verb and omitted-repeat-verb
+list, hole/jamming/fraction/equipment/fluid suffix, artery/nerve/ligament/tendon
+injury flag ordering, gelding, equipment break, interruption, rage, embedded
+item, latching, propulsion, unconsciousness, repeated stun/breathing/sickness,
+injected/poured/flowed/splattered/crumbled/sucked material and silent record cases.
+These source records are shared by ordinary strikes, wrestling, collision,
+full-impact, force bend/twist/pull and the newly identified ground-skid head.
+0x1400e9ecc is the 29-case aux dispatch; three preceding six-case injury tables
+and unsigned-default branches are preserved in native-switches.tsv.
+Null item lookup can leave the relation or deflection connector with no object;
+optional item/prefix/body fields must retain that branch's ownership and spelling.
+
+Companion status and death producers are separately extracted from both PEs in
+data/extracted/announcement-status and data/extracted/fortress-missing-death.
+Their status-update, state-helper, full unit/role/name suppliers and direct
+submission paths include vomiting, recovery, pain/unconsciousness, hunger/thirst,
+exposure, agitation/mood and death announcements that coexist with battle reports.
+These finite native captions enter the existing announcement state grammar.
+
+Installed RAW attack inputs
+---------------------------
+raw-attack-fields.tsv retains every ATTACK and ATTACK_VERB source token in both
+configured games' vanilla and installed_mods object directories and available
+mods object directories. raw-procedural-attack-sources.tsv retains every matching
+installed vanilla Lua source expression; literal fields join the verb/part tables.
+raw-source-roots.tsv records those source ownership classes: a file in mods is
+an available candidate, not proof that it was loaded into the running world.
+Current finite weapon subparts: flat, handle, helve, pommel, shaft. NO_SUB omits
+the subpart construction entirely and is not displayed. Complete RAW verbs retain
+both base and third-person forms in raw-attack-verbs.tsv. Additional jab/jabs come
+from available Steam MOD 2925028826 (500502), item_extra_weapons.txt:152,164.
+Unknown future RAW verbs/parts are dynamically supplied strings; spelling alone
+does not provide translation or an identity-source classification.

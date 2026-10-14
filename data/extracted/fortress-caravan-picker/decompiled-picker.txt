@@ -1,0 +1,66 @@
+DF 53.16 Linux merchant-group chooser: native source reconstruction
+
+Image: ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c
+Source: /home/lulika/.local/share/Steam/steamapps/common/Dwarf Fortress/dwarfort
+Decompiler: Ghidra 12.1.2, DecompileCaravanPicker.java, imported disk image.
+Instruction source: /usr/bin/objdump; original unwind ranges from .eh_frame.
+No game execution, desktop capture or input is involved in this extraction.
+
+elf-decompiled.c contains the six actual decompiler outputs. The six .asm
+files preserve the complete procedures and literal operands. native-functions,
+native-literals, native-calls, native-branches and native-switches retain their
+original coordinates. native-productions reconstructs complete inline strings
+and the name grammar; it is source material, not a runtime/check catalog.
+
+The root renderer is 0xdcfe50..0xdd9ba4. Its choosing_merchant byte at +1
+selects the pictured window. Its merlist begins at +8, scroll position is
+at +0x20. An empty list draws only the heading. Rows are drawn in the same
+native loop for unscrolled and scrolled lists; scrolling adds no text.
+For each visible caravan, caravan_state+0xc selects its actual civilization.
+The entity lookup is 0xd42ea0. The row consists of three consecutive draws:
+
+  0xdd0cf2 / return 0xdd0cf7: capitalized species plural, caste=-1.
+  0xdd0d30 / return 0xdd0d35: " from ".
+  0xdd0d68 / return 0xdd0d6d: OriginalName(entity+0x20).
+
+The species and name reuse rbp-0x80; the connector uses rbp-0x60. The
+selected entity pointer is preserved at rbp-0xd8. The translation capture
+copies its name policy, WORD identities and complete original-language
+spelling while these native owners are live. A saved frame keeps those owned
+snapshots rather than borrowing a stack pointer. The current grid/layer and
+draw order determine which physical bytes the composite translation owns.
+
+The species helper uses RAW plural NAME, rather than an enum containing only
+dwarf/human/elf/goblin. Negative/missing species can leave the field empty;
+the connector's own draw still supplies the row identity. Custom RAW plural
+names use the existing scoped creature grammar and vocabulary.
+
+OriginalName is not an English title. It uses native translation-table WORD
+spellings in groups (0,1), (2,3,4,5), (6), plus optional first_name/nickname.
+Group (2..5) is entered only if slots 2, 3 or 5 exist. Each nonempty group is
+capitalized and joined with a space. Negative/unavailable language/WORD entries
+append nothing. Nickname policies 0, 1, 2 respectively replace the first name,
+insert after the first name, or replace the entire name. Unsupported game modes
+use policy 0. has_name=false returns without clearing the shared species
+buffer; has_name=true clears it before constructing the civilization name.
+These are distinct branches, including a genuinely empty constructed name.
+
+The complete translated row uses the civilization reference grammar, with
+whole-field phonetic fallback for native spellings, and the scoped species
+translation. Accented CP437 letters remain part of their native name field.
+An offscreen native name is recovered from its owned original-name snapshot;
+it is not recovered by splitting a visible row at spaces. All rows retain the
+native selection geometry and use the available caption width.
+
+The neighboring unavailable-trade branches produce exactly three existing
+complete UI messages: "My apologies, but we're still unloading.", "We'll be
+ready soon!", and "There are no merchants present with which to trade.".
+The merchant's unit identity has its separate native designation formatter.
+The chooser heading is "Select a merchant group to trade with:". All four
+fixed messages already have authored hP translations; no per-word "from"
+entry or world-specific civilization alias is introduced.
+
+The complete root procedure also contains the later trade controls, 29-slot
+talkline switch and item panes. They remain in this native extraction rather
+than being mistaken for additional merchant-selector labels. Their authored
+translation grammar is recorded in data/extracted/fortress-trade.

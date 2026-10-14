@@ -328,6 +328,70 @@ static bool copy_native_history_tokens(const NativeHistoryRichBox *box, size_t b
     return true;
 }
 
+static std::optional<NativeActivityDetailDocument> native_activity_detail_document(
+        const std::unordered_set<uintptr_t> &visible_words) {
+#ifdef _WIN32
+    return std::nullopt;
+#else
+    // The two native resident/pet activity selectors clear this exact markup
+    // box and pass it as RCX to 0x15c1200 (0x204e655 and 0x204f1e5).
+    // Reading retained words also covers an already-open cached popup.
+    if (visible_words.empty()) return std::nullopt;
+    const uintptr_t base = native_history_profile_base();
+    const uintptr_t address = base ? native_reference_address(base, 0x26fb2f8 - 0x400000) : 0;
+    NativeHistoryRichBox box{};
+    if (!address || !native_history_copy(address, box) ||
+            !box.words.valid(16384) || box.words.size() == 0 ||
+            box.current_width <= 0 || box.current_width > 1000) return std::nullopt;
+    std::vector<uintptr_t> words(box.words.size());
+    if (!native_history_copy_bytes(reinterpret_cast<uintptr_t>(box.words.begin),
+            words.data(), words.size() * sizeof(uintptr_t)) ||
+            std::none_of(words.begin(), words.end(), [&](uintptr_t word) {
+                return visible_words.contains(word);
+            })) return std::nullopt;
+    NativeActivityDetailDocument document;
+    document.width = box.current_width;
+    NativeActivityDetailParagraph paragraph;
+    size_t bytes = 0;
+    const auto flush = [&] {
+        if (!paragraph.tokens.empty()) document.paragraphs.push_back(std::move(paragraph));
+        paragraph = {};
+    };
+    for (size_t index = 0; index < box.words.size(); ++index) {
+        const uintptr_t word = words[index];
+        struct Fields {
+            uint8_t red, green, blue, padding;
+            int32_t link, x, y;
+            uint32_t flags;
+        } fields{};
+        NativeHistoryToken token;
+        if (!word || !native_history_copy_string(word, token.source) ||
+                !native_history_copy(word + offsetof(NativeHistoryRichWord, red), fields)) return std::nullopt;
+        if (fields.flags & 7) flush(); // Native [R], [B] and [P] controls.
+        if (token.source.empty()) continue;
+        if (fields.x < 0 || fields.y < 0 || fields.x > 262144 || fields.y > 262144 ||
+                token.source.size() > 262144 - bytes) return std::nullopt;
+        bytes += token.source.size();
+        token.identity = word; // NativeString is the word's first member.
+        token.x = fields.x;
+        token.y = fields.y;
+        token.color = (int(fields.red) << 16) | (int(fields.green) << 8) | fields.blue;
+        if (!paragraph.source.empty()) {
+            const auto &previous = paragraph.tokens.back();
+            const int64_t gap = fields.y == previous.y
+                ? int64_t(fields.x) - previous.x - int64_t(previous.source.size()) : 1;
+            if (gap > 4096) return std::nullopt;
+            if (gap > 0) paragraph.source.append(static_cast<size_t>(gap), ' ');
+        }
+        paragraph.source += token.source;
+        paragraph.tokens.push_back(std::move(token));
+    }
+    flush();
+    return document.paragraphs.size() >= 2
+        ? std::optional<NativeActivityDetailDocument>(std::move(document)) : std::nullopt;
+#endif
+}
+
 static void capture_native_history_sentence_range(void *event, NativeString *source,
         void *context, bool translated, bool glyphs_only, size_t source_begin) {
     NativeHistoryCallbackScope scope;

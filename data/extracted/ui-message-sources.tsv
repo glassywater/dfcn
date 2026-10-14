@@ -2967,3 +2967,70 @@ worldgen.rejection.controls	0xdf6773	CONTINUE until you give me another warning.
 worldgen.rejection.controls	0xdf689d	ABORT NOW and I'll look over my parameters.
 worldgen.rejection.controls	0xdf69cd	ALLOW THIS REJECTION TYPE and continue reporting others.
 worldgen.rejection.controls	0xdf6afd	ALLOW ALL REJECTS, even if I end up with a legends-only world!
+adventure.barter.talkline	0x15db8a1	"Greetings.  Let's trade."
+adventure.barter.talkline	0x15db871	"An honored visitor!  What would you like?"
+adventure.barter.talkline	0x15db8b9	"What did you have in mind?"
+adventure.barter.talkline	0x15db889	"That seems fair.  You have yourself a deal."
+adventure.barter.talkline	0x15db84b	"Ah, wonderful.  Thank you for your business."
+adventure.barter.talkline	0x15db82c	"You truly despise life, don't you?  I am beside myself with grief.  Perhaps we will show you how they suffered."
+adventure.barter.talkline	0x15db814	"I see your low race still revels in death.  That poor, gentle creature..."
+adventure.barter.talkline	0x15db7fc	"Once a beautiful tree, and now?  It is a rude bauble, fit only for your kind."
+adventure.barter.talkline	0x15db7e4	"I simply cannot afford this trade."
+adventure.barter.talkline	0x15db7cc	"Perhaps if you throw in some more goods I can make an offer."
+adventure.barter.talkline	0x15d9176	"I can't possibly accept, but how about this?  A true bargain."
+adventure.barter.talkline	0x15db7b4	"If it were in a cage of some kind...  As it stands, I can't accept something that wriggles and writhes so."
+adventure.barter.talkline	0x15db79c	"How kind!  Thank you so much."
+adventure.barter.talkline	0x15db784	"I cannot take so much -- and at such cost!"
+adventure.barter.talkline	0x15db76c	"I wish I could take so much, but my animals..."
+adventure.barter.talkline	0x15db73c	"I won't trade at a loss."
+adventure.barter.talkline	0x15db754	"I'm confused.  Did you want something?"
+adventure.barter.talkline	0x15db724	"Yes, and trade we will!  Simply tell me what interests you and what you're prepared to offer in exchange."
+adventure.barter.talkline	0x15db705	"These _are_ fine items, aren't they?  Now, what do offer for them?"
+adventure.barter.talkline	0x15db6ed	"Are these gifts?  Do you wish to trade?"
+adventure.barter.refusal	0x15d24da+0x15d24df+0x15d24fd	{b} is a personal treasure, and I will not part with it.
+adventure.barter.refusal	0x15d24da+0x15d24df+0x15d24fd	{n}: {b} is a personal treasure, and I will not part with it.
+adventure.barter.refusal	0x15d3909+0x15d390e+0x15d24fd	{b} is a family heirloom, and I will not part with it.
+adventure.barter.refusal	0x15d3909+0x15d390e+0x15d24fd	{n}: {b} is a family heirloom, and I will not part with it.
+adventure.barter.refusal	0x15d39c7+0x15d39cc+0x15d39ea+0x15d39ef+0x15d24fd	{b} is a treasure of {e}, and we will not part with it.
+adventure.barter.refusal	0x15d39c7+0x15d39cc+0x15d39ea+0x15d39ef+0x15d24fd	{n}: {b} is a treasure of {e}, and we will not part with it.
+adventure.barter.return	0x15cfab3	Thank you for returning my treasure.
+adventure.barter.return	0x15cfab3	{s} Thank you for returning my treasure.
+adventure.barter.return	0x15cfab3	{n}: Thank you for returning my treasure.
+adventure.barter.return	0x15cfab3	{n}: {s} Thank you for returning my treasure.
+adventure.barter.return	0x15cfb57	Thank you for returning my family's treasure.
+adventure.barter.return	0x15cfb57	{s} Thank you for returning my family's treasure.
+adventure.barter.return	0x15cfb57	{n}: Thank you for returning my family's treasure.
+adventure.barter.return	0x15cfb57	{n}: {s} Thank you for returning my family's treasure.
+adventure.barter.return	0x15cf57d+0x15cf59f+0x15cf5a4	Thank you for returning this treasure to {e}.
+adventure.barter.return	0x15cf57d+0x15cf59f+0x15cf5a4	{s} Thank you for returning this treasure to {e}.
+adventure.barter.return	0x15cf57d+0x15cf59f+0x15cf5a4	{n}: Thank you for returning this treasure to {e}.
+adventure.barter.return	0x15cf57d+0x15cf59f+0x15cf5a4	{n}: {s} Thank you for returning this treasure to {e}.
+adventure.barter.return	0x15ceddb+0x15cedfd+0x15cee02	Thank you for returning this primordial remnant to {e}.
+adventure.barter.return	0x15ceddb+0x15cedfd+0x15cee02	{s} Thank you for returning this primordial remnant to {e}.
+adventure.barter.return	0x15ceddb+0x15cedfd+0x15cee02	{n}: Thank you for returning this primordial remnant to {e}.
+adventure.barter.return	0x15ceddb+0x15cedfd+0x15cee02	{n}: {s} Thank you for returning this primordial remnant to {e}.
+adventure.barter.return	0x15cde03+0x15cde18+0x15cf131	Thank you for rescuing this treasure!
+adventure.barter.return	0x15cde03+0x15cde18+0x15cf131	{s} Thank you for rescuing this treasure!
+adventure.barter.return	0x15cde03+0x15cde18+0x15cf131	{n}: Thank you for rescuing this treasure!
+adventure.barter.return	0x15cde03+0x15cde18+0x15cf131	{n}: {s} Thank you for rescuing this treasure!
+adventure.barter.return	0x15cf211	It's not the original, but we can hope the writing was copied faithfully.
+adventure.barter.return	0x15cf211	{s} It's not the original, but we can hope the writing was copied faithfully.
+adventure.barter.return	0x15cf211	{n}: It's not the original, but we can hope the writing was copied faithfully.
+adventure.barter.return	0x15cf211	{n}: {s} It's not the original, but we can hope the writing was copied faithfully.
+adventure.barter.control	0x15d6656	Ask for currency
+adventure.barter.control	0x15d6758+0x15d675f+0x15d6771	Offer currency
+adventure.barter.control	0x15d55f9+0x15d5605+0x15d5658	Trade how many? (0-{d})
+adventure.barter.control	0x15da6b5+0x15da6bd+0x15da6f8	Ask for how much? (0-{d})
+adventure.barter.control	0x15daa53+0x15daa5b+0x15daa9a	Offer how much? (0-{d})
+adventure.barter.control	0x15d930b+0x15d9313+0x15d933a	You are asking for
+adventure.barter.control	0x15d8e7e+0x15d8ea8	You are offering
+adventure.barter.control	0x15d9115	(Select an item to demand)
+adventure.barter.control	0x15d4f75+0x15d5064+0x15d5097+0x15d50cb+0x15d5166	{n} (Owes you {d}\x0f)
+adventure.barter.control	0x15d4f75+0x15d53ca+0x15d5401+0x15d5440+0x15d5166	{n} (You owe {d}\x0f)
+adventure.barter.control	0x15d8e2c	Give
+adventure.barter.control	0x15d8a86	Demand
+adventure.barter.control	0x15d638f	Trade
+adventure.barter.control	0x15d6509	Show
+adventure.barter.control	0x15d5e8d+0x15d60be	Mark all
+adventure.barter.control	0x15d5f98+0x15d61d5	Unmark all
+adventure.barter.control	0x15d6c92	Cannot trade currency

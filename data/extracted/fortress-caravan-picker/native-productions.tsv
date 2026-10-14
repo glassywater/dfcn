@@ -1,0 +1,28 @@
+owner	branch	instruction	text_or_production	translation_owner
+trade-renderer-with-caravan-chooser	choosing_merchant != 0	0xdd01fb	Select a merchant group to trade with:	existing complete UI message; fortress_caravan_picker.inc
+trade-renderer-with-caravan-chooser	each visible merlist entry	0xdd0cf2	capitalize_first_word(creature_raw.name[plural=1], caste=-1)	scoped creature descriptor; fortress_caravan_picker.inc
+trade-renderer-with-caravan-chooser	each visible merlist entry	0xdd0d30	 from 	composite caravan row; fortress_caravan_picker.inc
+trade-renderer-with-caravan-chooser	each visible merlist entry	0xdd0d68	OriginalName(historical_entity.name)	actual entity snapshot plus complete civilization reference; fortress_caravan_picker.inc
+trade-renderer-with-caravan-chooser	list length > visible capacity	0xdd17da	scrollbar only; no caption	current merlist draw identities, no retained page number
+trade-renderer-with-caravan-chooser	choosing_merchant == 0; unloading or no talker	0xdd1958	UnitName(merchant_trader)	existing native unit identity formatter
+trade-renderer-with-caravan-chooser	choosing_merchant == 0; havetalker != 0; unavailable trade state	0xdd1a01	My apologies, but we're still unloading.	existing complete UI message
+trade-renderer-with-caravan-chooser	choosing_merchant == 0; havetalker != 0; unavailable trade state	0xdd1a79	We'll be ready soon!	existing complete UI message
+trade-renderer-with-caravan-chooser	choosing_merchant == 0; havetalker == 0	0xdd2749	There are no merchants present with which to trade.	existing complete UI message
+creature-singular-plural-name	race < 0 or race >= creature vector length	0x12ae91c	empty species field	origin draw owns the caravan row when species is empty
+creature-singular-plural-name	plural=1; caste=-1 (the chooser's actual arguments)	0x12ae947	creature_raw.name[1]	complete plural RAW descriptor
+creature-singular-plural-name	other callers: caste override exists and nonempty	0x12ae88a	caste_raw.name[1]	shared descriptor grammar; chooser does not select caste overrides
+creature-singular-plural-name	other callers: missing/empty caste override	0x12ae929	creature_raw.name[1]	shared descriptor grammar
+native-language-entity-name	has_name == false	0x12bfeb2	leave existing output unchanged (the chooser's species)	translate retained species as species, without inventing a civilization name
+native-language-entity-name	has_name == true	0x12bfee1	clear existing output, then render native name groups	freeze complete OriginalName output
+native-language-entity-name	nickname empty	0x12bff00	capitalized first_name; available WORD groups	complete civilization name
+native-language-entity-name	nickname nonempty; nickname mode 0	0x12c0371	`nickname'; available WORD groups	shared native name policy and civilization grammar
+native-language-entity-name	nickname nonempty; nickname mode 1	0x12c0488	capitalized first_name + `nickname'; available WORD groups	shared native name policy and civilization grammar
+native-language-entity-name	nickname nonempty; nickname mode 2	0x12bffa6	`nickname' only	shared native name policy; hidden WORD groups are excluded
+native-language-entity-name	game mode outside 0..10	0x12c0358	use nickname policy 0	shared OriginalName snapshot policy
+native-language-entity-name	WORD slots 0 or 1 present	0x12bffb0	concatenate native spellings; capitalize first word; append as a group	whole name, independent of English UI vocabulary
+native-language-entity-name	WORD slots 2, 3 or 5 present	0x12c00da	concatenate slots 2..5; capitalize first word; append as a group	whole name; slot 4 alone does not create a group
+native-language-entity-name	WORD slot 6 present	0x12c022c	capitalize native spelling; append as a group	whole name, including final accented word
+native-language-entity-name	all visible name groups empty	0x12c0330	empty civilization field	species caravan label, without a fabricated name
+native-language-word	negative/missing WORD or unavailable language	0x1cc6144	append nothing	respect actual displayed name; phonetic fallback applies to the whole surviving field
+native-language-word	valid WORD and language	0x1cc61b8	append language_translation.words[word_index]	complete native-language civilization identity
+native-first-name-copy	first_name empty/nonempty	0x127f7fd	copy exact first_name bytes	shared whole-name phonetic handling, including CP437 Latin accents

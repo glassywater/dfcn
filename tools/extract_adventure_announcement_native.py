@@ -35,6 +35,12 @@ def main():
         0xb73040: "unit-name-source", 0x12c58d0: "language-name",
         0xa10320: "historical-reference", 0x1086bd0: "unknown-speaker",
         0x1044d60: "battle-account",
+        0x1160090: "adventure-announcement-wrap",
+        0x11b2e40: "adventure-announcement-render",
+        0x1154220: "adventure-announcement-log-render",
+        0xe653f0: "book-item-caption",
+        0xe3bf80: "ordinary-item-caption",
+        0xe689d0: "tool-item-caption",
     }
     entries = {0x17ea070, 0x103a1d0}
     callers = {}

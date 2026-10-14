@@ -1808,6 +1808,7 @@ def build(args: argparse.Namespace) -> tuple[list[Entry], collections.Counter[st
     candidates += combat_entries(ROOT / "data/runtime/announcement-dialogue-extra-grammar.tsv", Entry)
     candidates += combat_entries(ROOT / "data/runtime/announcement-reference-grammar.tsv", Entry)
     candidates += combat_entries(ROOT / "data/runtime/announcement-event-grammar.tsv", Entry)
+    candidates += combat_entries(ROOT / "data/runtime/announcement-status-grammar.tsv", Entry)
     candidates += combat_entries(ROOT / "data/runtime/announcement-arrival-grammar.tsv", Entry)
     candidates += combat_entries(ROOT / "data/runtime/announcement-negotiation-grammar.tsv", Entry)
     candidates += combat_entries(ROOT / "data/runtime/announcement-artifact-grammar.tsv", Entry)

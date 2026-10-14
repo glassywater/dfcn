@@ -1,0 +1,69 @@
+role	instruction	operand	kind	text
+abilities-renderer	0x11c37ca	0x20fcc24	cstring	this location
+abilities-renderer	0x11c38c8	inline	immediate	el
+abilities-renderer	0x11c38cd	inline	immediate	Canc
+abilities-renderer	0x11c3946	inline	immediate	ct
+abilities-renderer	0x11c395d	inline	immediate	Sele
+abilities-renderer	0x11c425c	0x20fcc24	cstring	this location
+abilities-renderer	0x11c4abf	inline	immediate	el
+abilities-renderer	0x11c4aef	inline	immediate	Canc
+abilities-renderer	0x11c4b5a	inline	immediate	do
+abilities-renderer	0x11c4b8d	0x213a3c0	simd16	What do you want
+abilities-renderer	0x11c4b95	inline	immediate	 to 
+abilities-renderer	0x11c54ed	inline	immediate	el
+abilities-renderer	0x11c551b	inline	immediate	Canc
+abilities-renderer	0x11c5571	inline	immediate	ct
+abilities-renderer	0x11c55a6	inline	immediate	Sele
+abilities-renderer	0x11c5646	inline	immediate	 (
+abilities-renderer	0x11c56c8	inline	immediate	 of 
+abilities-renderer	0x11c5754	0x213ac60	simd16	, disturber only
+abilities-renderer	0x11c57a6	inline	immediate	).
+abilities-renderer	0x11c5814	0x213a1f0	simd16	Click a target o
+abilities-renderer	0x11c581c	inline	immediate	ess 
+abilities-renderer	0x11c5823	inline	immediate	r and pr
+abilities-renderer	0x11c5839	0x213a200	simd16	r move the curso
+abilities-renderer	0x11c59ae	inline	immediate	Done
+abilities-renderer	0x11c59d8	inline	immediate	 (
+abilities-renderer	0x11c5cc1	0x21300d6	cstring	Unknown interaction
+abilities-renderer	0x11c62e8	inline	immediate	 selecte
+abilities-renderer	0x11c6338	0x21300d3	cstring	).
+abilities-renderer	0x11c6371	inline	immediate	, range 
+abilities-renderer	0x11c63a4	0x21300d6	cstring	Unknown interaction
+abilities-renderer	0x11c6463	0x21f118a	cstring	 (
+abilities-renderer	0x11c64bb	inline	immediate	, 
+abilities-renderer	0x11c6518	inline	immediate	adjacent
+abilities-renderer	0x11c6528	inline	immediate	 onl
+abilities-renderer	0x11c6567	0x21300d6	cstring	Unknown interaction
+abilities-renderer	0x11c6641	inline	immediate	own tile
+abilities-renderer	0x11c6651	inline	immediate	 onl
+abilities-renderer	0x11c668a	0x21300b9	cstring	, range 
+abilities-renderer	0x11c6824	0x20f3aea	cstring	, 
+abilities-renderer	0x11c6847	0x21300d6	cstring	Unknown interaction
+abilities-renderer	0x11c6867	0x213ac70	simd16	Unknown interact
+abilities-renderer	0x11c686f	inline	immediate	io
+abilities-renderer	0x11c6884	0x213ac70	simd16	Unknown interact
+abilities-renderer	0x11c688c	inline	immediate	io
+abilities-renderer	0x11c68b3	0x21adf95	cstring	 selected
+abilities-renderer	0x11c68f2	0x21300d6	cstring	Unknown interaction
+abilities-renderer	0x11c699e	0x21300c2	cstring	, disturber only
+abilities-renderer	0x11c6a03	0x21138f2	cstring	 of 
+abilities-renderer	0x11c6a69	0x21300ab	cstring	own tile only
+abilities-renderer	0x11c6b32	0x213009d	cstring	adjacent only
+body-action-pronoun-expansion	0xb6a2fa	inline	immediate	<pro_sub
+body-action-pronoun-expansion	0xb6a3f2	inline	immediate	<pro_obj
+body-action-pronoun-expansion	0xb6a4d3	inline	immediate	<pro_pos
+body-action-pronoun-expansion	0xb6a7c9	inline	immediate	<pro_sub
+body-action-pronoun-expansion	0xb6a8bf	inline	immediate	<pro_obj
+body-action-pronoun-expansion	0xb6a9a8	inline	immediate	<pro_pos
+body-action-pronoun-expansion	0xb6aa7b	inline	immediate	yo
+body-action-pronoun-expansion	0xb6aaf4	inline	immediate	yo
+body-action-pronoun-expansion	0xb6ab2b	inline	immediate	yo
+body-action-pronoun-expansion	0xb6abbb	inline	immediate	your
+body-action-pronoun-expansion	0xb6ac22	inline	immediate	yo
+body-action-pronoun-expansion	0xb6ac50	inline	immediate	your
+body-action-pronoun-expansion	0xb6ac74	0x20cb490	cstring	%s: __pos (which is %zu) > this->size() (which is %zu)
+body-action-pronoun-expansion	0xb6ac8c	0x20cb490	cstring	%s: __pos (which is %zu) > this->size() (which is %zu)
+body-action-pronoun-expansion	0xb6aca4	0x20cb490	cstring	%s: __pos (which is %zu) > this->size() (which is %zu)
+body-action-pronoun-expansion	0xb6acc1	0x20cb490	cstring	%s: __pos (which is %zu) > this->size() (which is %zu)
+body-action-pronoun-expansion	0xb6ace1	0x20cb490	cstring	%s: __pos (which is %zu) > this->size() (which is %zu)
+body-action-pronoun-expansion	0xb6acfc	0x20cb490	cstring	%s: __pos (which is %zu) > this->size() (which is %zu)

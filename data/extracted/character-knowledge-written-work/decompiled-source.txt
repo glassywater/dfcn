@@ -1,0 +1,469 @@
+Character -> Skills -> Knowledge native source reconstruction
+
+This is an offline decompilation of the configured PE instruction bodies and
+immutable selector tables. Symbolic names below describe recovered behavior;
+they are not recovered debug symbols. Nothing here is a display observation,
+translation execution, test result or build output.
+
+SOURCE ROOTS
+  reference Character selection/input owner 0x1aa060..0x1b9a18
+  classic   Character selection/input owner 0x1a9ff0..0x1b99a8
+  reference Knowledge dispatch 0x1b392c..0x1b413f
+  classic corresponding dispatch is retained in classic-1a9ff0.asm
+  reference work body 0xcc5d50..0xcc699f, selectors 0xcc69a0..0xcc6a0e
+  classic   work body 0xcc2d90..0xcc39df, selectors 0xcc39e0..0xcc3a4e
+  reference style body 0xcc5520..0xcc5d07, selector 0xcc5d08
+  classic   style body 0xcc2560..0xcc2d47, selector 0xcc2d48
+  reference form roots: dance 0x4ea820; music 0xdd5ce0; poetry 0xe76400
+  classic   form roots: dance 0x4e83e0; music 0xdd0c50; poetry 0xe71370
+
+functions.tsv gives each complete source extent and its current-image identity.
+branches.tsv contains both destinations of every decoded conditional branch.
+conditions.tsv retains cmp/test/bt operands. switches.tsv contains every input
+selector, optional byte remap, and actual DWORD destination. calls.tsv retains
+direct and virtual/indirect calls. literals.tsv retains exact literal operands,
+including separator strings, substring loads and inline packed fragments.
+
+KNOWLEDGE SELECTION DISPATCH
+  selected entry type is stored separately from selected entry ID.
+  Type 14: resolve dance form; absent -> exit without a document; present ->
+           [C:7:0:1] + complete dance-form description.
+  Type 15: resolve musical form; absent -> exit; present ->
+           [C:7:0:1] + complete musical-form description.
+  Type 16: resolve poetic form; absent -> exit; present ->
+           [C:7:0:1] + complete poetic-form description.
+  Type 17: resolve written content; absent -> exit; present -> work document.
+  All other values leave this document-building branch without constructing a
+  new text. Scholarly topics additionally occur as general_ref subjects below.
+  A complete constructed document is assigned to sheet+0x1bc0 and wrapped by
+  the existing rich text mechanism; [C:...] and [B] are native markup.
+
+WRITTEN-CONTENT FIELDS
+  +0x00 int32 ID
+  +0x08 std::string title, length at +0x18
+  +0x30 vector<general_ref *> begin; +0x38 end
+  +0x48 parallel int32 role vector begin
+  +0x68 int32 genre; +0x6c int32 form ID
+  +0x70 vector<int32> style begin; +0x78 end
+  +0x88 parallel style strength vector begin
+  +0xa0 author historical-figure ID
+  +0xa4 int32 quality/author roll
+
+DOCUMENT INTRODUCTION
+  out = [C:7:0:1]
+  if title is nonempty:
+      out += title + " is " + article(genre) + " "
+  else:
+      out += "This is an untitled" + " "
+  append genre label only if unsigned(genre) <= 25.
+  The article remap uses "an" for genres 6, 10, 17, 20 and 25; every other
+  value, including genre outside 0..25, uses "a".
+  Genre table, in exact selector order:
+   0 manual; 1 guide; 2 chronicle; 3 short story; 4 novel; 5 biography;
+   6 autobiography; 7 poem; 8 play; 9 letter; 10 essay; 11 dialog;
+   12 musical composition; 13 choreography; 14 comparative biography;
+   15 biographical dictionary; 16 genealogy; 17 encyclopedia;
+   18 cultural history; 19 cultural comparison; 20 alternate history;
+   21 treatise on technological evolution; 22 dictionary; 23 star chart;
+   24 star catalogue; 25 atlas.
+  Native article behavior is preserved as source; it follows the extracted
+  remap rather than guessed spelling rules.
+  If author != -1 and the figure lookup succeeds:
+      append ", authored by "; resolve current/original figure identity;
+      append its formatted name only when the name record exists and has a name.
+  A successful author lookup with an absent name still leaves the entire
+  authored-by prefix in the native text. A missing author emits no prefix.
+  Always append ".  ". Therefore defaults can emit:
+      TITLE is a .
+      This is an untitled .
+      TITLE is a , authored by NAME.
+      This is an untitled , authored by .
+  For genre 7/12/13, resolve poetic/musical/dance form by +0x6c:
+      If absent: append work_body(work, mode=0) only.
+      If present: append "It is an example of " + generated form name + ".  ";
+          append work_body(work,0) + "[B]" + complete corresponding form body.
+  Form record existence does not imply a nonempty generated name. The formatter
+  a946e0 tests name+0x72 has_name at 0xa94723/0xa94727 and directly returns via
+  0xa94e6f when false. The caller has initialized its name string to empty, so
+  this branch produces "It is an example of .  ". The form body itself also
+  calls this formatter and can start with its literal " is"/" is a " after an
+  empty name. No implicit The/the prefix is appended before this early return.
+  None of the three form body roots checks has_name before constructing text:
+    dance: generated name + " is a " + usage/solo/group qualifiers + " dance";
+      reference fixed fragments at 0x4ea895 and 0x4ea9da. An unknown usage
+      selector leaves qualifiers empty, giving " is a  dance" before later
+      dancer-count/origin/deity/music/poetry clauses.
+    music: generated name + " is a " (0xdd5d50) + usage phrase:
+      0 "form of music used for entertainment";
+      1 "form of music used to commemorate important events";
+      2 "devotional form of music" (+ optional worship clause);
+      3 "form of music used during marches and military engagements";
+      default emits no usage phrase. Origin/creator fields and ".  " still
+      follow, so the anonymous default can produce " is a .  ".
+    poetry: generated name + " is" (0xe76478) + type adjective phrase:
+      1 " a dramatic"; 2 " a reflective"; 4 " a ribald"; 5 " a light";
+      6 " a solemn"; default/0/3 " a";
+      then " poetic " (0xe764e9) + 0 "narrative" / 3 "riddle" /
+      every other value "form". Topic/intent/origin/structure clauses follow.
+  Empty names therefore reach existing anonymous grammar after leading-space
+  normalization: "is a ... dance", "is a ... form of music", and
+  "is a [adjective] poetic form/narrative/riddle". The name field's absence
+  must not reject the entire document or drop its following form paragraphs.
+  Every other genre, including default, appends work_body(work,0) only.
+
+WORK BODY (reference 0xcc5d50; classic 0xcc2d90)
+  subject_count = count(role == 0)
+  chapter_count = count(role == 5)
+  All reference counts include references whose description is empty.
+  if subject_count == 0:
+      append "The work has no particular subject.  "
+  else if subject_count == 1 and genre == 20:
+      append 'It asks the question, "What if '
+      append reference_description(first role-0 ref, mode)
+      append ' had unfolded differently?"  '
+  else if subject_count == 1 and genre == 16:
+      append "It concerns the lineage of " + ref + ".  "
+  else:
+      append "It concerns "
+      for every role-0 ref in source order:
+          append its virtual +0x90 description, even if empty
+          decrement remaining subject count
+          if remaining >= 2: append ", "
+          else if remaining == 1: append " and "
+          else: append ".  "
+  An empty reference is not the no-subject branch. It can produce "It concerns
+  .  ", "It concerns  and SUBJECT.  ", "It concerns SUBJECT and .  ", or an
+  empty field in a longer comma list. Genre 16 and 20 preserve their entire
+  specialized sentence with an empty field too.
+
+  Scan all references in native vector order again:
+      role 6: "The writing conveys a moral lesson regarding " + ref + ".  "
+      role 9: "The overall text emphasizes " + ref + ".  "
+      role 7: "For lyrics, the composer has selected " + ref + ".  "
+      role 8: "For musical accompaniment, the choreographer has selected "
+                  + ref + ".  "
+      Other roles emit no sentence in this pass.
+  The same empty descriptions are possible in all four role sentences.
+
+  If style_count != 0:
+      append "The writing " + style(style[0],strength[0],quality)
+      If style_count >= 2:
+          neg(s) = s in {2,13,15} or
+                   (s in {0,3,5,6,8,9,10,17} and quality < 20)
+          append " and it " if neg(first)==neg(second), else " yet it "
+          append style(style[1],strength[1],quality)
+      append ".  "
+  Only the first two styles are used even when the stored vector is longer.
+  The style helper emits nothing for selector outside 0..17 or strength outside
+  0..2; its default return preserves the sentence's empty style position.
+  style-productions.tsv reconstructs all actual style/strength/quality branches
+  from the extracted instructions and immutable table, including native paths.
+  There are 18 styles with three strengths. Eight switch all three predicates
+  at quality 20; the other ten retain the same three predicates.
+
+  Quality family selector for genres 0..25:
+      [0,0,1,0,0,0,0,2,0,0,0,0,3,4,0,0,1,0,0,0,0,0,1,1,1,1]
+  Genre outside 0..25 uses family 0 (prose).
+  Family 0 prose; 1 compiled information; 2 poetry; 3 composition;
+         4 choreography.
+  Quality bands, in order: q<10, 10<=q<20, 20<=q<30, 30<=q<40,
+                          40<=q<50, q>=50.
+  One full quality statement is always appended, then ".  ". All thirty exact
+  native statements, including "Overall, the splendid source of information",
+  are literal operands in the retained body and literals.tsv.
+
+  if chapter_count == 1: append "The work has a single chapter.  "
+  if chapter_count >= 2:
+      append "The work has " + number_as_words(chapter_count) + " chapters.  "
+  Then each role-5 reference, in source order:
+      if chapter_count == 1: append "It"
+      else: append "The " + lowercase(ordinal_as_words(index+1)) + " chapter"
+      append " covers " + ref + ".  "
+  Empty chapter descriptions still keep "It covers ." or the ordinal chapter
+  sentence. The cardinal/ordinal helpers are dynamic numeric fields, not
+  a fixed list of chapter counts.
+
+REFERENCE DESCRIPTION DISPATCH
+  Every reference's actual vtable +0x90 is discovered from the current PE RTTI;
+  reference-bindings.tsv preserves all classes, including shared base methods.
+  Complete unique supplier bodies are retained rather than guessed from names.
+  Fields below describe actual output sources and empty/default alternatives:
+
+  general_refst: clears result to empty, emits no label (all inherited classes).
+  poetic/musical/dance form: resolve form ID, format generated form name;
+      add " as a poetic form" / " as a musical form" / " as a dance form".
+      Missing records return empty.
+  written content: resolve work ID and copy its stored title. If its first four
+      bytes are "The ", lowercase only the initial T. Missing or empty title
+      returns empty. The title is stored data, not a list of literal book names.
+  language: "the " + lowercased/normalized language RAW name + " language".
+  value level: level<-10 -> "the worthlessness of "; level>10 -> "the value
+      of "; otherwise "nuances of ". Append one of 33 value labels if the
+      unsigned selector is <=32; unknown selectors leave the trailing " of ".
+  knowledge scholar flag: category 0..13 and exact one-bit flag select a topic;
+      unknown category/flag returns empty. scholar-productions.tsv contains
+      every category and 32 flag positions, including native empty defaults.
+      This +0x90 vocabulary differs from history-event discourse names; e.g.
+      category0 flag0x80 is "medical ethics", flag0x100 is "the meaning of
+      individual happiness". Do not substitute event-specific labels.
+  interaction: requires both IDs != -1 and interaction source type == 1;
+      copy that source's +0x10 NAME. Any rejected branch returns empty.
+  artifact: lookup artifact; absent -> "an unknown artifact". Present ->
+      article/item noun and named artifact identity according to native flags.
+  abstract building: typed building label (including dungeon/sewer/catacomb
+      subtypes) and generated building name; unknown label/name fields can be
+      empty while native surrounding "the " and " " remain.
+  historical event: resolve event; missing -> empty; present -> actual
+      history_event vtable +0xd8 description, mode passed through.
+  historical figure/site: native type/caste/site label and optional generated
+      name, with the native prefix and separation preserved.
+  sphere: native sphere selector helper; unknown sphere -> empty.
+  subregion: resolve region and generated name; missing/name absent -> empty.
+  feature layer: generated name if named; otherwise depth type0 "the depths
+      of the world", type1 "the fiery bowels of the earth", type2 "the
+      Underworld"; unknown type -> empty.
+  entity population: creature RAW descriptor; independently apply animated
+      corpse and ghost flags; prefix "a population of ".
+  creature: creature RAW descriptor; independently apply animated corpse and
+      ghost flags; singular branches retain native article wording.
+  item type: "a " + shared item noun derived from type/subtype/material tuple.
+  entity: generated entity name if named, otherwise "an unnamed group".
+
+POETIC PURPOSE AND TOPIC SOURCE GRAMMAR
+  The following is reconstructed from the saved complete form bodies plus a
+  read of the current two PE topic suppliers. Addresses below are RVAs, not
+  observations of a running game. Topic supplier: reference 0xe76080 with
+  instructions through 0xe763a5 and selector table at 0xe763a8; classic
+  0xe70ff0 with instructions through 0xe71315 and table at 0xe71318.
+
+  topic(out, kind, target):
+      if unsigned(kind) > 20: return without appending anything
+      kind 0:  append "the past"
+           1:  append "current events"
+           2:  append "the future"
+           3:  append "someone recently deceased"
+           4:  append "someone recently retired"
+           5:  append "religion"
+           6:  append "a specific place"
+           7:  append "a specific wilderness region"
+           8:  append "nature"
+           9:  append "a lover"
+          10:  append "family"
+          11:  append "alcoholic beverages"
+          12:  append "a journey"
+          13:  append "war"
+          14:  append "the hunt"
+          15:  append "mining"
+          16:  append "death"
+          17:  append "immortality"
+          18:  append "someone's character"
+          19:  if target == -1: append "a historical figure"
+               else call historical-figure formatter directly into out
+          20:  if target == -1: append "an abstract concept"
+               else if target == 21: append "the concept of death"
+               else if target == 30: append "the concept of family"
+               else if target == 48: append "the concept of hunting"
+               else if target == 75: append "the concept of nature"
+               else if target == 122: append "the concept of war"
+               else:
+                   temp = empty string
+                   sphere(uint16(target), temp)
+                   append temp directly into out
+  Reference concept comparisons start at 0xe76128; the five complete concept
+  literals are at producer instructions 0xe7625f/0xe7624d/0xe7623b/0xe76229/
+  0xe76217. The generic branch narrows target at 0xe76194, calls sphere
+  0x756690 at 0xe76198, and appends its result at 0xe761c2. Classic performs
+  the identical comparisons and calls sphere 0x7540b0 at 0xe71108.
+  There is no generic "the concept of " append. An unknown sphere can leave
+  this whole topic empty, but cannot leave that prefix behind. The five
+  special concepts are complete literals rather than prefix plus dynamic
+  field. Unknown kind and a dynamic figure formatter with no output can
+  likewise leave the whole topic empty.
+
+  Action selectors and flags:
+      selector     exact action literal                    absent-topic flag
+       0           "to describe"                           chosen subject
+       1           "to satirize"                           chosen subject
+       2           "to amuse the audience"                 concerning
+       3           "to complain about"                     chosen subject
+       4           "to renounce"                           none
+       5           "to make an apology"                    concerning
+       6           "to express pleasure with"              chosen subject
+       7           "to express grief over"                 chosen subject
+       8           "to praise"                             chosen subject
+       9           "to teach a moral lesson"                concerning
+      10           "to make an assertion"                  concerning
+      11           "to make a counter-assertion"            concerning
+      12           "to make a concession"                  concerning
+      13           "to synthesize previous ideas"           concerning
+      14           "to develop the previous idea"           concerning
+      15           "to invert the previous assertion"       concerning
+      16           "to undercut the previous assertion"     concerning
+      17           "to move away from previous ideas"       concerning
+      18           "to reflect on previous ideas"           concerning
+      19           "to console the audience"                concerning
+      20           "to refuse consolation"                  concerning
+      21           "to offer a different perspective"       concerning
+      22           "to beseech"                             none
+  The chosen-subject flag supplies a placeholder only when kind == -1. The
+  concerning flag supplies " concerning" only when kind != -1; it does not
+  validate whether the topic helper will append a nonempty result.
+  Root introduction has no action for selectors 11, 13..18 and 21. Their
+  switch entries all point straight to 0xe76666 / classic 0xe715d6 with both
+  flags zero, exactly like unsigned purpose > 22. Parts and lines have all
+  23 action entries, except the output destination caveat below. All three
+  locations treat purpose == -1 separately; every other negative purpose
+  takes the unsigned default branch.
+
+  Form root fields: +0xd0 mood, +0xd4 kind, +0xd8 target, +0xdc purpose.
+  Its already-appended name/type text is followed by:
+      if purpose != -1:
+          append " intended "                 [0xe7654a / 0xe714ba]
+          append action if the root switch has one; set its flags
+          if kind != -1:
+              if concerning flag: append " concerning"
+              append " "
+              topic(out, kind, target)          [0xe766a6 / 0xe71616]
+          else if chosen-subject flag:
+              append " a chosen subject"
+      else if kind != -1:
+          append " concerning "               [0xe76736 / 0xe716a6]
+          topic(out, kind, target)
+      append origin/creator clause if selected, then ".  "
+  Therefore default purpose with a nonempty topic emits " intended  TOPIC"
+  before space normalization, or " intended TOPIC" afterward. It does not
+  introduce "concerning". Default purpose with absent/empty topic leaves
+  " intended "; purpose -1 with an empty topic leaves " concerning ". A
+  valid concerning action plus an empty helper result leaves its action and
+  " concerning ". Default/no-output action is not the purpose -1 branch.
+
+  Part fields on each section record: +0x180 mood, +0x184 kind,
+  +0x188 target, +0x18c purpose. Line values come from section vectors
+  +0xe0 mood, +0xf8 kind, +0x110 target and +0x128 purpose. Missing mood,
+  kind and purpose elements are initialized to -1; target is read together
+  with a present kind element. The part and line text independently select
+  actions but call the identical topic helper used by the introduction:
+      part call 0xe78fd9 / classic 0xe73f49
+      line call 0xe7a9f0 / classic 0xe75960
+  They are not work general_ref descriptions and do not use a separate
+  "concept of" prefix generator.
+
+  part_or_line_predicate(out, mood, purpose, kind, target):
+      append subject + " "
+      append mood predicate only if unsigned(mood) <= 6:
+          0 "is a narrative"; 1 "is dramatic"; 2 "is reflective";
+          3 "is a riddle"; 4 "is ribald"; 5 "is light"; 6 "is solemn"
+      if purpose != -1:
+          append "is" if mood == -1, otherwise " and"
+          append " intended "
+          append selected action and set flags (default leaves flags zero)
+          if kind != -1:
+              if concerning flag: append " concerning"
+              append " "; topic(out, kind, target)
+          else if chosen-subject flag:
+              append " the subject of the poem"
+      else if kind != -1:
+          if mood != -1: append " and "
+          append "concerns "; topic(out, kind, target)
+      append ".  "
+  Native part subjects are "It" for a single part, or "The " plus the
+  lowercase ordinal and " part" for multiple parts. Line subjects are "The "
+  plus lowercase ordinal and " line". The ordinal is generated dynamically.
+  The part gate skips this predicate only when all of mood/purpose/kind are
+  exactly -1 (0xe78c92..0xe78cae). The line gate instead tests whether any of
+  the three vectors mood/kind/purpose is nonempty (0xe7a5fd..0xe7a634). It
+  does not skip a current index whose three values are all missing or -1.
+  That path still emits "The ORDINAL line .  ".
+
+  Source prefixes, reference / classic:
+      part " intended " 0xe78dce / 0xe73d3e
+      part "concerns "  0xe78fb7 / 0xe73f27
+      line " intended " 0xe7a7ef / 0xe7575f
+      line "concerns "  0xe7a9d6 / 0xe75946
+  Each precedes the helper's possible empty return. With mood -1 these paths
+  really produce "It is intended .  ", "It concerns .  ", and corresponding
+  ordinal part/line clauses. Trimming/normalizing the gap before punctuation
+  yields "It is intended.", "It concerns.", "The first part is intended.",
+  "The first part concerns.", "The first line is intended." or "The first
+  line concerns.". These are native empty/default productions, not missing
+  literals inferred from a screenshot.
+  Unknown mood != -1 emits no mood predicate but still chooses the " and"
+  or " and " path. It can leave "It  and intended .  " or "The first line
+   and concerns .  " before space normalization.
+  Complete normalized unknown-mood combinations (S is the actual It/part/line
+  subject; T is the topic helper result, possibly empty):
+      purpose == -1, kind == -1:
+          S.
+          No "is" is appended. "It is." is not this native branch.
+      purpose == -1, kind != -1:
+          S and concerns T.       [empty T: S and concerns.]
+      default purpose != -1, kind == -1 or empty T:
+          S and intended.
+      default purpose != -1, kind != -1, nonempty T:
+          S and intended T.
+      chosen-subject action, kind == -1:
+          S and intended ACTION the subject of the poem.
+      chosen-subject action, kind != -1:
+          S and intended ACTION T. [empty T: S and intended ACTION.]
+      concerning action, kind == -1:
+          S and intended ACTION.
+      concerning action, kind != -1:
+          S and intended ACTION concerning T.
+          [empty T: S and intended ACTION concerning.]
+      purpose 4, kind == -1 or empty T:
+          S and intended to renounce.
+      purpose 4, kind != -1, nonempty T:
+          S and intended to renounce T.
+  Part/line purpose 22 has the local default shape for every mood, with its
+  out-of-paragraph literal append described below. A part with exactly -1
+  mood/purpose/kind emits no predicate at all; an unknown non--1 mood and
+  absent purpose/kind emits "It.", or "The ORDINAL part.". The independent
+  line-vector gate permits "The ORDINAL line." even when all three current
+  values are exactly -1, provided one of those vectors is nonempty elsewhere.
+
+  Output destination caveat retained from both image bodies: part purpose 22
+  appends "to beseech" at 0xe78ece / 0xe73e3e with rcx=r12, the complete
+  document string; line purpose 22 at 0xe7a8ec / 0xe7585c uses rcx=rbx,
+  likewise the document pointer loaded at 0xe7a5e4 / 0xe75554. Other part/line
+  actions append into local paragraph [rbp+0x28]. Thus this literal reaches
+  the complete document outside its local intended clause. The local clause
+  retains the no-action shape, including an empty "is intended" suffix.
+  Its precise output order is immediate global += "to beseech" (with no
+  leading/trailing space), then continued construction of the local section
+  paragraph. Only at 0xe7c7c6..0xe7c7fa / classic 0xe77736..0xe7776a does
+  the completed nonempty paragraph reach global. If the form has at least
+  two sections, this final append first adds "[B]"; a single section adds
+  no separator. Thus source text can contain:
+      single section, part purpose22:
+          ... .  to beseechIt is intended .  OTHER_LOCAL_SENTENCES
+      single section, no part predicate, first local sentence is line:
+          ... .  to beseechThe first line is intended .  ...
+      two or more sections, first part purpose22:
+          ... .  to beseech[B]The first part is intended .  ...
+  After ordinary whitespace/punctuation normalization these retain adjacent
+  "to beseechIt" or "to beseechThe"; native inserted no space to split them.
+  The markup variant retains "to beseech[B]The". Part purpose22 followed by
+  N line-purpose22 cases in that same section appends N+1 literal copies to
+  global before the paragraph: "to beseechto beseech...", then optional [B],
+  then the entire local paragraph in its original order. Local prefix text
+  need not be the corresponding line: previous part/property sentences also
+  remain inside that delayed paragraph. This is a prefix-before-paragraph
+  production, not a trailing action after the intended sentence.
+
+DOWNSTREAM SOURCE OWNERSHIP
+  Whole form bodies are in this directory, including all their predicates,
+  section/role/group/music/dance/poetry literal operands and selector tables.
+  The existing complementary complete semantic reconstruction is
+  data/extracted/adventure-performance-menu/steam-decompiled.txt; its helper
+  bodies use the identical reference form entries listed above.
+  Shared generated name formatting: a946e0 (reference); name fields remain
+  world data, including native WORD forms and authored names.
+  Shared item noun branch graph and typed RAW fields:
+  data/extracted/item-description-sources.tsv, shared-item-noun 0xa82c10.
+  Historical-event virtual +0xd8 RTTI roots and transitive text suppliers:
+  data/extracted/statue-history-sources.tsv and artwork-history-native source
+  graph. These catalogs own all historical-event subject wording.
+  Exact runtime reference-kind/creature/material/name values cannot be a closed
+  list of English literals: mods and saved world objects can author them.
+  Translation must retain the typed dynamic field path and empty alternatives,
+  rather than inventing a finite list of every possible world-generated name.

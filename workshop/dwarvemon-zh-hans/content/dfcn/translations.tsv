@@ -1053,7 +1053,7 @@ Effect Spore ready	孢子就绪	wi
 Effect Spore1	孢子1	wi
 Effect Spore2	孢子2	wi
 Effect Spore3	孢子3	wi
-Egg	水煮蛋片	wl
+Egg	蛋	wl
 Eggant Berries	子茄果	wi
 Eggant Berry	子茄果	wi
 Eggant Berry seed	子茄果种子	wi
@@ -6173,7 +6173,7 @@ chasen	茶筅	wi
 cheek pouches	颊囊	wi
 cheeks	脸颊	wi
 cheeks and ridges	脸颊和脊	wi
-chest	胸	wi
+# Anatomical chest stays in health/bodypart/dwarvemon.toml; the global item noun comes from the base dictionary.
 chest and back	胸和背	wi
 chest and belly	胸和腹部	wi
 chest and head	胸和头	wi
@@ -6582,7 +6582,7 @@ ectoplasm	灵质	wi
 edges	边缘	wi
 eerie blubbering	诡异的啜泣声	wi
 effect	效果	wi
-egg	水煮蛋片	wi
+egg	蛋	wi
 eighth eye	第八眼	wi
 eighth tail	第八尾	wi
 electric Memory Silvally	银伴战兽（电属性）	wi

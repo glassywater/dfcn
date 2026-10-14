@@ -1,0 +1,3 @@
+image	role	start	end
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	abilities-renderer	0x11c2370	0x11c6ca1
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	body-action-pronoun-expansion	0xb6a290	0xb6ad50

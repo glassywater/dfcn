@@ -409,7 +409,7 @@ You have bestowed the name {b} upon {s}.	你将{s}命名为{b}。
 {n} eats the {s}.	{n}吃下了{s}。
 It makes them look even more sick.	这使其看起来更加恶心了。
 They look sick suddenly.	其突然显得很恶心。
-You have located {b}, "{b}", a {s}.	你找到了{b1}（“{b2}”），一件{s}。
+You have located {b}, "{b}", a {s}.	你找到了{b1}（“{b2}”），一处{s}。
 You receive {i} to conclude the transaction.	你收到了{i}，完成了交易。
 {n} has created {b}, a {s}!	{n}创造了{b}，一件{s}！
 {n} has created {b}, a {s}! He claims it as a personal treasure.	{n}创造了{b}，一件{s}！他宣布将其作为私人珍宝。

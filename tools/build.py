@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import ctypes
+import hashlib
 import os
 from pathlib import Path
 import platform
@@ -594,6 +595,59 @@ def publish(candidate: Path, destination: Path, *, keep_candidate: bool = False)
         atomic_replace(candidate, destination)
 
 
+def stamp_core_version(candidate: Path) -> None:
+    """Embed a short fingerprint without hashing its own version bytes."""
+    image = bytearray(candidate.read_bytes())
+    marker = b"DFCN_BINARY_VERSION[00000]\0"
+    if image.count(marker) != 1:
+        raise RuntimeError(f"Core binary must contain one version slot: {candidate}")
+    version_offset = image.index(marker) + len(b"DFCN_BINARY_VERSION[")
+    image[version_offset:version_offset + 5] = b"00000"
+
+    checksum_offset = None
+    if sys.platform == "win32":
+        if len(image) < 64 or image[:2] != b"MZ":
+            raise RuntimeError(f"Core binary has no valid PE header: {candidate}")
+        pe_offset = int.from_bytes(image[60:64], "little")
+        optional_offset = pe_offset + 24
+        if (optional_offset + 68 > len(image)
+                or image[pe_offset:pe_offset + 4] != b"PE\0\0"
+                or int.from_bytes(image[pe_offset + 20:pe_offset + 22], "little") < 68
+                or int.from_bytes(image[optional_offset:optional_offset + 2], "little")
+                    not in (0x10b, 0x20b)):
+            raise RuntimeError(f"Core binary has no valid PE optional header: {candidate}")
+        checksum_offset = optional_offset + 64
+        # The PE checksum includes the embedded version. Exclude both fields
+        # from the fingerprint so stamping does not create a hash cycle.
+        image[checksum_offset:checksum_offset + 4] = b"\0" * 4
+
+    fingerprint = hashlib.sha256(image).digest()
+    alphabet = b"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    value = int.from_bytes(fingerprint, "big") % len(alphabet) ** 5
+    version = bytearray(5)
+    for index in range(4, -1, -1):
+        value, remainder = divmod(value, len(alphabet))
+        version[index] = alphabet[remainder]
+    if all(ord("0") <= char <= ord("9") for char in version):
+        version[fingerprint[0] % 5] = ord("A") + fingerprint[1] % 26
+    elif all(ord("A") <= char <= ord("Z") for char in version):
+        version[fingerprint[0] % 5] = ord("0") + fingerprint[1] % 10
+    image[version_offset:version_offset + 5] = version
+
+    if checksum_offset is not None:
+        # Sum little-endian 16-bit words, counting an odd final byte as low.
+        # The checksum field is still zero here, as the PE algorithm requires.
+        checksum = sum(image[0::2]) + (sum(image[1::2]) << 8)
+        while checksum > 0xffff:
+            checksum = (checksum & 0xffff) + (checksum >> 16)
+        checksum = (checksum + len(image)) & 0xffffffff
+        image[checksum_offset:checksum_offset + 4] = checksum.to_bytes(4, "little")
+
+    candidate.write_bytes(image)
+    print(f"Core version: {version.decode('ascii')}; normalized binary SHA-256: "
+          f"{fingerprint.hex()}", flush=True)
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--rebuild-loader", action="store_true", help="Recompile and deploy the resident loader.")
@@ -736,6 +790,7 @@ def main() -> int:
                     print("Building the reloadable core...", flush=True)
                     run([*compiler, *compile_flags, "-o", str(core_candidate), "src/dfcn.cpp",
                          "src/rulesets_manager.cpp", *link_flags, *abi["core_link"]], env, cwd=snapshot)
+                    stamp_core_version(core_candidate)
                 if rebuild_loader:
                     print("Building the resident loader...", flush=True)
                     run([*compiler, *compile_flags, "-o", str(loader_candidate), "src/loader.cpp",

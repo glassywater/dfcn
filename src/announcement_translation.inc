@@ -82,6 +82,11 @@ std::optional<std::string> Overlay::translate_complete_announcement(
                 return native;
             }
         }
+        // The native growth constructor has a single typed result field.
+        // An unresolved caste/name must retain its whole report, never enter
+        // the unrelated rumor production "{person} has {book}.".
+        if (block.find(" has grown to become a ") != std::string_view::npos &&
+                block.ends_with('.')) return std::nullopt;
         if (!colors.empty() && std::all_of(colors.begin(), colors.end(),
                 [&](int color) { return color == colors.front(); })) {
             if (const auto siren = translate_dfhack_siren_announcement(block)) {

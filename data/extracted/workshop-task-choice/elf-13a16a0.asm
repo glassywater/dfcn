@@ -1,0 +1,3 @@
+0x13a16a0: endbr64
+0x13a16a4: lea    rax,[rdi+0x98]
+0x13a16ab: ret

@@ -1,0 +1,59 @@
+; classic PE:6a70b91c:0270a000; reference-description:general_ref_poetic_formst; RVA 0xedacc0..0xedadb4; code ends 0xedadb4
+0x00edacc0: rex push rbx
+0x00edacc2: sub    rsp,0x50
+0x00edacc6: mov    rax,QWORD PTR [rip+0x9bb373]        # 0x141896040
+0x00edaccd: xor    rax,rsp
+0x00edacd0: mov    QWORD PTR [rsp+0x40],rax
+0x00edacd5: mov    rbx,rdx
+0x00edacd8: mov    edx,DWORD PTR [rcx+0x8]
+0x00edacdb: lea    rcx,[rip+0x16070d6]        # 0x1424e1db8
+0x00edace2: call   0x140072500
+0x00edace7: test   rax,rax
+0x00edacea: je     0x140edada1
+0x00edacf0: xorps  xmm0,xmm0
+0x00edacf3: movups XMMWORD PTR [rsp+0x20],xmm0
+0x00edacf8: mov    QWORD PTR [rsp+0x30],0x0
+0x00edad01: mov    QWORD PTR [rsp+0x38],0xf
+0x00edad0a: mov    BYTE PTR [rsp+0x20],0x0
+0x00edad0f: lea    rcx,[rax+0x8]
+0x00edad13: xor    r9d,r9d
+0x00edad16: mov    r8b,0x1
+0x00edad19: lea    rdx,[rsp+0x20]
+0x00edad1e: call   0x140a91760
+0x00edad23: lea    rax,[rsp+0x20]
+0x00edad28: cmp    rbx,rax
+0x00edad2b: je     0x140edad4b
+0x00edad2d: lea    rdx,[rsp+0x20]
+0x00edad32: cmp    QWORD PTR [rsp+0x38],0xf
+0x00edad38: cmova  rdx,QWORD PTR [rsp+0x20]
+0x00edad3e: mov    r8,QWORD PTR [rsp+0x30]
+0x00edad43: mov    rcx,rbx
+0x00edad46: call   0x14006f860
+0x00edad4b: mov    r8d,0x11
+0x00edad51: lea    rdx,[rip+0x857140]        # 0x141731e98 ; literal=" as a poetic form"
+0x00edad58: mov    rcx,rbx
+0x00edad5b: call   0x14006f9a0
+0x00edad60: nop
+0x00edad61: mov    rdx,QWORD PTR [rsp+0x38]
+0x00edad66: cmp    rdx,0xf
+0x00edad6a: jbe    0x140edada1
+0x00edad6c: inc    rdx
+0x00edad6f: mov    rcx,QWORD PTR [rsp+0x20]
+0x00edad74: mov    rax,rcx
+0x00edad77: cmp    rdx,0x1000
+0x00edad7e: jb     0x140edad9c
+0x00edad80: add    rdx,0x27
+0x00edad84: mov    rcx,QWORD PTR [rcx-0x8]
+0x00edad88: sub    rax,rcx
+0x00edad8b: add    rax,0xfffffffffffffff8
+0x00edad8f: cmp    rax,0x1f
+0x00edad93: jbe    0x140edad9c
+0x00edad95: call   QWORD PTR [rip+0x705d05]        # 0x1415e0aa0
+0x00edad9b: int3
+0x00edad9c: call   0x1415345f0
+0x00edada1: mov    rcx,QWORD PTR [rsp+0x40]
+0x00edada6: xor    rcx,rsp
+0x00edada9: call   0x1415345d0
+0x00edadae: add    rsp,0x50
+0x00edadb2: pop    rbx
+0x00edadb3: ret

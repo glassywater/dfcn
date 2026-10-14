@@ -1,0 +1,1242 @@
+role	instruction	operand	kind	text
+read-title	0x17685d1	0x213888b	cstring	Read
+read-title	0x17685e1	inline	immediate	Read
+read-title	0x176868e	0x213888b	cstring	Read
+read-title	0x17687ee	0x20f7379	cstring	 
+read-job-title	0x12793a2	0x213888b	cstring	Read
+read-job-title	0x12793ae	inline	immediate	Read
+read-job-title	0x12793d6	0x213888b	cstring	Read
+activity-detail-document	0x15c1216	inline	immediate	:1
+activity-detail-document	0x15c1268	inline	immediate	  [C:3:0
+activity-detail-document	0x15c1353	inline	immediate	] 
+activity-detail-document	0x15c1359	inline	immediate	[C:7:0:0
+activity-detail-document	0x15c141a	0x219a290	simd16	There is no spec
+activity-detail-document	0x15c1422	inline	immediate	ty
+activity-detail-document	0x15c1432	inline	immediate	[B
+activity-detail-document	0x15c1444	0x219a2a0	simd16	ific information
+activity-detail-document	0x15c1465	0x219a2b0	simd16	 for this activi
+activity-detail-document	0x15c15c3	0x2198c5f	cstring	[C:7:0:0]  
+activity-detail-document	0x15c15fa	0x219a230	simd16	This organizatio
+activity-detail-document	0x15c1602	inline	immediate	ts
+activity-detail-document	0x15c1622	inline	immediate	[B
+activity-detail-document	0x15c162b	0x219a240	simd16	nal activity wil
+activity-detail-document	0x15c1643	0x219a250	simd16	l branch into sp
+activity-detail-document	0x15c1657	0x219a280	simd16	ecific play even
+activity-detail-document	0x15c16da	0x219a230	simd16	This organizatio
+activity-detail-document	0x15c16e2	inline	immediate	s.
+activity-detail-document	0x15c1707	0x219a240	simd16	nal activity wil
+activity-detail-document	0x15c1717	inline	immediate	[B
+activity-detail-document	0x15c171d	inline	immediate	vent
+activity-detail-document	0x15c1728	0x219a250	simd16	l branch into sp
+activity-detail-document	0x15c173c	0x219a270	simd16	ecific worship e
+activity-detail-document	0x15c187d	0x212f5f9	cstring	 is an example of 
+activity-detail-document	0x15c190c	0x2205315	cstring	.  
+activity-detail-document	0x15c1932	0x21f67b2	cstring	[B]
+activity-detail-document	0x15c19e5	0x21f67b2	cstring	[B]
+activity-detail-document	0x15c1a5a	0x219a220	simd16	The topic being 
+activity-detail-document	0x15c1a62	inline	immediate	s 
+activity-detail-document	0x15c1a6f	inline	immediate	consider
+activity-detail-document	0x15c1a91	inline	immediate	ed i
+activity-detail-document	0x15c1ba2	inline	immediate	[B
+activity-detail-document	0x15c1d2a	inline	immediate	taught i
+activity-detail-document	0x15c1d34	0x219a220	simd16	The topic being 
+activity-detail-document	0x15c1d40	inline	immediate	s 
+activity-detail-document	0x15c1e67	inline	immediate	[B
+activity-detail-document	0x15c1eea	0x219a220	simd16	The topic being 
+activity-detail-document	0x15c1efc	inline	immediate	discusse
+activity-detail-document	0x15c1f1e	inline	immediate	d is
+activity-detail-document	0x15c2021	inline	immediate	[B
+activity-detail-document	0x15c20aa	0x219a230	simd16	This organizatio
+activity-detail-document	0x15c20be	inline	immediate	ents
+activity-detail-document	0x15c20d5	inline	immediate	[B
+activity-detail-document	0x15c20de	0x219a240	simd16	nal activity wil
+activity-detail-document	0x15c20f1	0x219a250	simd16	l branch into sp
+activity-detail-document	0x15c2105	0x219a260	simd16	ecific social ev
+activity-detail-document	0x15c226a	0x2196e50	cstring	The dance has reached the point where its accompaniment is at 
+activity-detail-document	0x15c2368	0x2196e90	cstring	The topic being written about is 
+activity-detail-document	0x15c23df	0x2107edc	cstring	.
+activity-detail-document	0x15c23f6	0x21f67b2	cstring	[B]
+activity-detail-document	0x15c2614	0x212f5f9	cstring	 is an example of 
+activity-detail-document	0x15c26a3	0x2205315	cstring	.  
+activity-detail-document	0x15c26c9	0x21f67b2	cstring	[B]
+activity-detail-document	0x15c2791	0x21f67b2	cstring	[B]
+activity-detail-document	0x15c2845	0x212f5f9	cstring	 is an example of 
+activity-detail-document	0x15c28d4	0x2205315	cstring	.  
+activity-detail-document	0x15c28fa	0x21f67b2	cstring	[B]
+activity-detail-document	0x15c29ad	0x21f67b2	cstring	[B]
+activity-detail-document	0x15c2a4f	0x212f5f9	cstring	 is an example of 
+activity-detail-document	0x15c2ade	0x2205315	cstring	.  
+activity-detail-document	0x15c2b04	0x21f67b2	cstring	[B]
+activity-detail-document	0x15c2bb7	0x21f67b2	cstring	[B]
+activity-detail-document	0x15c2bee	0x21ba050	cstring	the 
+activity-detail-document	0x15c2c1e	0x2198d03	cstring	theme
+activity-detail-document	0x15c2c66	0x2198d8f	cstring	a bridge-passage
+activity-detail-document	0x15c2c77	0x2198d72	cstring	a chorus
+activity-detail-document	0x15c2c88	0x2198d6a	cstring	a verse
+activity-detail-document	0x15c2c99	0x2198d33	cstring	the synthesis
+activity-detail-document	0x15c2cba	0x2198d54	cstring	 of previous passages
+activity-detail-document	0x15c2cce	0x2198d22	cstring	a recapitulation
+activity-detail-document	0x15c2cf3	0x2198d09	cstring	 of the previous passage
+activity-detail-document	0x15c2d07	0x2198cc3	cstring	the exposition
+activity-detail-document	0x15c2d18	0x2198cb2	cstring	the introduction
+activity-detail-document	0x15c2d2c	0x2198ca1	cstring	a simple passage
+activity-detail-document	0x15c2d40	0x2198da8	cstring	a series of variations
+activity-detail-document	0x15c2d65	0x2198de1	cstring	 on the second theme
+activity-detail-document	0x15c2d79	0x2198d86	cstring	the coda
+activity-detail-document	0x15c2d8d	0x2198d7b	cstring	the finale
+activity-detail-document	0x15c2e38	0x21f67b2	cstring	[B]
+activity-detail-document	0x15c2ed8	0x21f67b2	cstring	[B]
+activity-detail-document	0x15c2f1e	0x2107edc	cstring	.
+activity-detail-document	0x15c2f46	0x2107edc	cstring	.
+activity-detail-document	0x15c2f6e	0x2107edc	cstring	.
+activity-detail-document	0x15c3068	0x21f67b2	cstring	[B]
+activity-detail-document	0x15c326f	0x212f5f9	cstring	 is an example of 
+activity-detail-document	0x15c32fe	0x2205315	cstring	.  
+activity-detail-document	0x15c331c	0x21f67b2	cstring	[B]
+activity-detail-document	0x15c33d7	0x21f67b2	cstring	[B]
+activity-detail-document	0x15c3489	0x212f5f9	cstring	 is an example of 
+activity-detail-document	0x15c350b	0x2205315	cstring	.  
+activity-detail-document	0x15c36b0	0x2198c6b	cstring	The performance is at 
+activity-detail-document	0x15c3708	0x2107edc	cstring	.
+activity-detail-document	0x15c371f	0x21f67b2	cstring	[B]
+activity-detail-document	0x15c3888	0x2198c6b	cstring	The performance is at 
+activity-detail-document	0x15c393b	0x21ba050	cstring	the 
+activity-detail-document	0x15c396d	0x2198d03	cstring	theme
+activity-detail-document	0x15c39b5	0x2198d8f	cstring	a bridge-passage
+activity-detail-document	0x15c39c6	0x2198d72	cstring	a chorus
+activity-detail-document	0x15c39d7	0x2198d6a	cstring	a verse
+activity-detail-document	0x15c39e8	0x2198d33	cstring	the synthesis
+activity-detail-document	0x15c3a0a	0x2198d54	cstring	 of previous passages
+activity-detail-document	0x15c3a1e	0x2198d22	cstring	a recapitulation
+activity-detail-document	0x15c3a44	0x2198d09	cstring	 of the previous passage
+activity-detail-document	0x15c3a58	0x2198d86	cstring	the coda
+activity-detail-document	0x15c3a6c	0x2198d7b	cstring	the finale
+activity-detail-document	0x15c3a80	0x2198cc3	cstring	the exposition
+activity-detail-document	0x15c3a91	0x2198cb2	cstring	the introduction
+activity-detail-document	0x15c3aa5	0x2198ca1	cstring	a simple passage
+activity-detail-document	0x15c3ab9	0x2198da8	cstring	a series of variations
+activity-detail-document	0x15c3adf	0x2198de1	cstring	 on the second theme
+activity-detail-document	0x15c3b8d	0x2107edc	cstring	.
+activity-detail-document	0x15c3ba4	0x21f67b2	cstring	[B]
+activity-detail-document	0x15c3c2b	0x2107edc	cstring	.
+activity-detail-document	0x15c3c42	0x21f67b2	cstring	[B]
+activity-detail-document	0x15c3d1a	0x20ca400	cstring	musical composition
+activity-detail-document	0x15c3d2e	0x20e14de	cstring	poetry
+activity-detail-document	0x15c3d42	0x20e14de	cstring	poetry
+activity-detail-document	0x15c3d56	0x21309e1	cstring	choreography
+activity-detail-document	0x15c3d6a	0x20e14de	cstring	poetry
+activity-detail-document	0x15c3d7e	0x20ca400	cstring	musical composition
+activity-detail-document	0x15c3da8	0x20f3aea	cstring	, 
+activity-detail-document	0x15c3e05	0x21ba050	cstring	the 
+activity-detail-document	0x15c3e75	0x21c04a2	cstring	 line
+activity-detail-document	0x15c3eb0	0x20f3aea	cstring	, 
+activity-detail-document	0x15c405c	0x219eeb1	cstring	 and 
+activity-detail-document	0x15c40db	0x219eeb1	cstring	 and 
+activity-detail-document	0x15c41f4	0x21ba050	cstring	the 
+activity-detail-document	0x15c425d	0x2198c99	cstring	 stanza
+activity-detail-document	0x15c42a7	0x21ba050	cstring	the 
+activity-detail-document	0x15c4310	0x2198c85	cstring	 verse paragraph
+activity-detail-document	0x15c4324	0x2198c96	cstring	the stanza
+activity-detail-document	0x15c4338	0x2198c82	cstring	the verse paragraph
+activity-detail-document	0x15c4363	0x2198ce0	cstring	 of the first theme
+activity-detail-document	0x15c43cb	0x2198ce0	cstring	 of the first theme
+activity-detail-document	0x15c4424	0x2198cf4	cstring	 of the second theme
+activity-detail-document	0x15c4443	0x2198dcd	cstring	 on the first theme
+activity-detail-document	0x15c4457	0x2198cf4	cstring	 of the second theme
+activity-detail-document	0x15c446b	0x2198da0	cstring	second 
+activity-detail-document	0x15c447f	0x20d4378	cstring	first 
+activity-detail-document	0x15c4493	0x2198d41	cstring	 of the two themes
+activity-detail-document	0x15c44a7	0x2198da0	cstring	second 
+activity-detail-document	0x15c44bb	0x20d4378	cstring	first 
+activity-detail-document	0x15c44eb	0x2198dcd	cstring	 on the first theme
+activity-detail-document	0x15c44ff	0x2198cd2	cstring	 of the theme
+activity-detail-document	0x15c4513	0x2198cd2	cstring	 of the theme
+activity-detail-document	0x15c4527	0x2198dbf	cstring	 on the theme
+activity-detail-document	0x15c453b	0x2198d41	cstring	 of the two themes
+activity-detail-document	0x15c455b	0x2198dbf	cstring	 on the theme
+read-item-caption	0xe68438	0x210784d	cstring	 (copy)
+read-details-dispatch	0x1782e5c	0x21b43f2	cstring	It has no pages.
+read-details-dispatch	0x1783840	0x2130cb8	cstring	""""
+read-details-dispatch	0x1783a88	0x21b43df	cstring	It has no writing.
+read-details-dispatch	0x1783b7f	0x2130cb8	cstring	""""
+read-details-dispatch	0x17840eb	0x2107e98	cstring	The pages are blank.
+read-details-dispatch	0x178436d	0x2130cb8	cstring	""""
+written-style	0xe6615e	0x210776f	cstring	has its moments of cleverness
+written-style	0xe6618f	0x2106a70	cstring	tumbles out almost as a rant at times
+written-style	0xe661bf	0x21065c8	cstring	takes frequent interesting tangents
+written-style	0xe661ea	0x21073fd	cstring	is fairly cheerful
+written-style	0xe6621a	0x2107435	cstring	has a touch of melancholy
+written-style	0xe66253	0x210747c	cstring	is organized
+written-style	0xe66282	0x21074ed	cstring	is reasonably serious
+written-style	0xe662bb	0x21066a0	cstring	has some particularly crisp changes in topic
+written-style	0xe662f3	0x2106758	cstring	has rare but particularly exquisite turns of phrase
+written-style	0xe66322	0x2107591	cstring	is forceful
+written-style	0xe6635b	0x21075ca	cstring	has a touch of humor
+written-style	0xe66393	0x2106890	cstring	manages an artful inclusion here and there of childish material
+written-style	0xe663cb	0x2106920	cstring	contains some asides related to the author's preferences
+written-style	0xe663fa	0x2107694	cstring	shows a hint of tenderness
+written-style	0xe6642a	0x21069c8	cstring	gives a feeling of compassion here and there
+written-style	0xe6645a	0x21069f8	cstring	has a hint of viciousness to it
+written-style	0xe6648a	0x2107717	cstring	is fairly crisp
+written-style	0xe664ba	0x2106a18	cstring	contains the occasional biting remark
+written-style	0xe664ea	0x2107620	cstring	is a bit immature
+written-style	0xe6651a	0x21066d0	cstring	occasionally changes topic abruptly
+written-style	0xe6654a	0x2107667	cstring	is somewhat self-indulgent
+written-style	0xe6657a	0x21065f0	cstring	gets off track from time to time
+written-style	0xe665aa	0x2107552	cstring	is somewhat showy
+written-style	0xe665da	0x21074b0	cstring	is a bit stiff
+written-style	0xe6660a	0x21067c0	cstring	tries and fails to be funny at times
+written-style	0xe6663a	0x21077fa	cstring	descends to a rant in places
+written-style	0xe66650	0x2107727	cstring	is a pit of bitter scorn
+written-style	0xe66660	0x21076ec	cstring	is a monument to concision
+written-style	0xe66670	0x21074bf	cstring	is completely serious
+written-style	0xe66680	0x2107410	cstring	overflows with sadness
+written-style	0xe66690	0x2106618	cstring	bubbles over with cheerfulness
+written-style	0xe666a0	0x2106a40	cstring	is a reservoir of amusingly clever quips
+written-style	0xe666b0	0x21076c5	cstring	is as vicious as can be
+written-style	0xe666c0	0x2106998	cstring	is clear evidence of a compassionate being
+written-style	0xe666d0	0x2106960	cstring	could only have been produced by a merciful spirit
+written-style	0xe666e0	0x2107564	cstring	drives forward relentlessly
+written-style	0xe666f0	0x21076dd	cstring	is quite cruel
+written-style	0xe66700	0x2107682	cstring	is quite touching
+written-style	0xe66710	0x21073eb	cstring	is quite cheerful
+written-style	0xe66720	0x21074d5	cstring	has a very serious tone
+written-style	0xe66730	0x2107580	cstring	is full of force
+written-style	0xe66740	0x21076af	cstring	is very compassionate
+written-style	0xe66750	0x2107707	cstring	is very concise
+written-style	0xe66760	0x2107427	cstring	is depressing
+written-style	0xe66770	0x2107759	cstring	is refreshingly witty
+written-style	0xe66780	0x2107740	cstring	is quite mocking in tone
+written-style	0xe6678f	0x21068d0	cstring	indulges the author's every whim
+written-style	0xe6679e	0x2107503	cstring	is utterly disjointed
+written-style	0xe667ad	0x2107632	cstring	is stunningly self-indulgent
+written-style	0xe667bc	0x21073c5	cstring	hopelessly meanders
+written-style	0xe667cb	0x210752c	cstring	is excessively ornate
+written-style	0xe667da	0x2107489	cstring	is thoroughly mechanical
+written-style	0xe667e9	0x2106790	cstring	is littered with terrible jokes inartfully told
+written-style	0xe667f8	0x21077c5	cstring	is a completely unhinged rant
+written-style	0xe66807	0x210744f	cstring	is thoroughly organized
+written-style	0xe66816	0x210778d	cstring	is an awe-inspiring wild rant
+written-style	0xe66825	0x21073a7	cstring	rapidly shifts between topics
+written-style	0xe66834	0x210759d	cstring	is a comedy treasure trove
+written-style	0xe66843	0x2106638	cstring	artfully flashes through seemingly disjoint topics
+written-style	0xe66852	0x21066f8	cstring	uses only artful words and phrases selected with care
+written-style	0xe66861	0x21067e8	cstring	is artfully suffused with what would otherwise be childish and immature material
+written-style	0xe66870	0x21075f9	cstring	is absolutely puerile
+written-style	0xe6687f	0x2106840	cstring	contains a deft use throughout of what might be considered immature material
+written-style	0xe6688e	0x210760f	cstring	is very childish
+written-style	0xe6689d	0x2106670	cstring	breaks sharply between topics with regularity
+written-style	0xe668ac	0x2106730	cstring	is throughout ornate and refined
+written-style	0xe668bb	0x21065a0	cstring	moves quickly from subject to subject
+written-style	0xe668ca	0x21075b8	cstring	is quite humorous
+written-style	0xe668d9	0x2107467	cstring	is clearly organized
+written-style	0xe668e8	0x21077ab	cstring	careens forward as a rant
+written-style	0xe668f7	0x21075df	cstring	has poorly-executed humor
+written-style	0xe66906	0x21077e3	cstring	is a rant more or less
+written-style	0xe66915	0x2107542	cstring	is quite florid
+written-style	0xe66924	0x21074a2	cstring	is very rigid
+written-style	0xe66933	0x210764f	cstring	is quite self-indulgent
+written-style	0xe66942	0x21073d9	cstring	meanders somewhat
+written-style	0xe66951	0x21068f8	cstring	artfully indulges the author's fancies
+written-style	0xe66960	0x2107519	cstring	skips around a lot
+written-body	0xe6f76f	0x2106b28	cstring	The work has no particular subject.  
+written-body	0xe6f7af	0x2107ad5	cstring	The writing 
+written-body	0xe6f7f3	0x2205315	cstring	.  
+written-body	0xe6f85f	0x2107ae2	cstring	 yet it 
+written-body	0xe6fa57	0x21090f0	simd16	The writing conv
+written-body	0xe6fa62	inline	immediate	on regar
+written-body	0xe6fa73	0x2109100	simd16	eys a moral less
+written-body	0xe6fa7b	inline	immediate	ding
+written-body	0xe6fb15	inline	immediate	. 
+written-body	0xe6fb99	0x2109110	simd16	The overall text
+written-body	0xe6fba1	inline	immediate	 emphasi
+written-body	0xe6fbaf	inline	immediate	zes 
+written-body	0xe6fc44	inline	immediate	. 
+written-body	0xe6fcc5	0x2109120	simd16	For lyrics, the 
+written-body	0xe6fcd0	inline	immediate	d 
+written-body	0xe6fcd6	inline	immediate	ecte
+written-body	0xe6fce0	0x2109130	simd16	composer has sel
+written-body	0xe6fd7c	inline	immediate	. 
+written-body	0xe6fdfd	0x2109140	simd16	For musical acco
+written-body	0xe6fe08	inline	immediate	d 
+written-body	0xe6fe0d	inline	immediate	 selecte
+written-body	0xe6fe1e	0x2109150	simd16	mpaniment, the c
+written-body	0xe6fe2e	0x2109160	simd16	horeographer has
+written-body	0xe6fec5	inline	immediate	. 
+written-body	0xe6ff0e	0x2106b80	cstring	For lyrics, the composer has selected 
+written-body	0xe6ff2e	0x2107ab8	cstring	The overall text emphasizes 
+written-body	0xe6ff4e	0x2205315	cstring	.  
+written-body	0xe6ff6e	0x2106ba8	cstring	For musical accompaniment, the choreographer has selected 
+written-body	0xe6ff8e	0x2205315	cstring	.  
+written-body	0xe6ffae	0x2205315	cstring	.  
+written-body	0xe6ffce	0x2205315	cstring	.  
+written-body	0xe6ffee	0x2106b50	cstring	The writing conveys a moral lesson regarding 
+written-body	0xe70010	0x2107aab	cstring	It concerns 
+written-body	0xe700a2	0x2205315	cstring	.  
+written-body	0xe701ad	0x2107070	cstring	Overall, the prose is not awful, but not very good either
+written-body	0xe701f5	0x2106cb0	cstring	Overall, the information is not compiled very well
+written-body	0xe70290	0x2107aeb	cstring	 and it 
+written-body	0xe702d1	0x2106d88	cstring	Overall, the poetry is not awful, but not very good either
+written-body	0xe70312	0x2106e90	cstring	Overall, the composition is not awful, but not very good either
+written-body	0xe7034c	0x2106f98	cstring	Overall, the choreography is not awful, but not very good either
+written-body	0xe70360	0x20f3aea	cstring	, 
+written-body	0xe70378	0x219eeb1	cstring	 and 
+written-body	0xe7038c	0x2106ef8	cstring	Overall, the choreography is masterful
+written-body	0xe703df	inline	immediate	. 
+written-body	0xe7040c	0x2107b2d	cstring	The work has 
+written-body	0xe70453	0x2107b3b	cstring	 chapters.  
+written-body	0xe704ce	0x2205315	cstring	.  
+written-body	0xe70548	inline	immediate	The 
+written-body	0xe705e8	inline	immediate	 chapter
+written-body	0xe70658	inline	immediate	 covers 
+written-body	0xe706f6	inline	immediate	. 
+written-body	0xe70738	0x2107b48	cstring	It
+written-body	0xe7075e	0x2205315	cstring	.  
+written-body	0xe7077e	0x2107b54	cstring	 covers 
+written-body	0xe7079e	0x20fc8f7	cstring	The 
+written-body	0xe707be	0x2107b4b	cstring	 chapter
+written-body	0xe70810	0x21070e0	cstring	The work has a single chapter.  
+written-body	0xe70832	0x2107010	cstring	Overall, the prose is masterful
+written-body	0xe70846	0x2106be8	cstring	Overall, the information is compiled masterfully
+written-body	0xe7085a	0x2106d20	cstring	Overall, the poetry is masterful
+written-body	0xe7086e	0x2106df0	cstring	Overall, the composition is masterful
+written-body	0xe70882	0x2107a8f	cstring	It concerns the lineage of 
+written-body	0xe708d1	0x2205315	cstring	.  
+written-body	0xe7091b	0x2107050	cstring	Overall, the prose is passable
+written-body	0xe7092f	0x2106c80	cstring	Overall, this is a good source of information
+written-body	0xe70943	0x2106f70	cstring	Overall, the choreography is passable
+written-body	0xe70957	0x2106e68	cstring	Overall, the composition is passable
+written-body	0xe7096b	0x2106d68	cstring	Overall, the poetry is passable
+written-body	0xe7097f	0x2106c20	cstring	Overall, the splendid source of information
+written-body	0xe70993	0x2106d48	cstring	Overall, the poetry is inspired
+written-body	0xe709a7	0x2106e18	cstring	Overall, the composition is inspired
+written-body	0xe709bb	0x2106f20	cstring	Overall, the choreography is inspired
+written-body	0xe709cf	0x2107030	cstring	Overall, the prose is splendid
+written-body	0xe709e3	0x2106b08	cstring	"It asks the question, ""What if "
+written-body	0xe70a32	0x2107a71	cstring	" had unfolded differently?""  "
+written-body	0xe70a53	0x2107b11	cstring	Overall, the prose is great
+written-body	0xe70a67	0x2106e40	cstring	Overall, the composition is great
+written-body	0xe70a7b	0x2106f48	cstring	Overall, the choreography is great
+written-body	0xe70a8f	0x2106c50	cstring	Overall, this is a great source of information
+written-body	0xe70aa3	0x2107af4	cstring	Overall, the poetry is great
+written-body	0xe70ab7	0x21070b0	cstring	Overall, the prose is amateurish at best
+written-body	0xe70acb	0x2106ce8	cstring	Overall, this is a terrible compilation of information
+written-body	0xe70adf	0x2106fe0	cstring	Overall, the choreography is just terrible
+written-body	0xe70af3	0x2106ed0	cstring	Overall, the composition is atrocious
+written-body	0xe70b07	0x2106dc8	cstring	Overall, the poetry is very, very bad
+writing-carrier	0xe70ca6	0x2107b5d	cstring	Written on the item is 
+writing-carrier	0xe70cd4	0x212bc95	cstring	a
+writing-carrier	0xe70ce3	0x20f7379	cstring	 
+writing-carrier	0xe70d2b	0x2107108	cstring	There used to be writing on the item.  
+writing-carrier	0xe70d48	0x21de4a4	cstring	an
+writing-carrier	0xe70d59	0x20ca473	cstring	star catalogue
+writing-carrier	0xe70d9c	0x2107b80	cstring	, authored by 
+writing-carrier	0xe70dcc	0x20ca83d	cstring	[LPAGE:HF:
+writing-carrier	0xe70dea	0x21432dc	cstring	]
+writing-carrier	0xe70e43	0x2205315	cstring	.  
+writing-carrier	0xe70e82	0x21309e1	cstring	choreography
+writing-carrier	0xe70e96	0x20ca400	cstring	musical composition
+writing-carrier	0xe70eaa	0x20ca3f9	cstring	dialog
+writing-carrier	0xe70ebe	0x20ca3f3	cstring	essay
+writing-carrier	0xe70ed2	0x20ca3ec	cstring	letter
+writing-carrier	0xe70ee6	0x21b4133	cstring	play
+writing-carrier	0xe70efa	0x21309c6	cstring	poem
+writing-carrier	0xe70f0e	0x20ca3de	cstring	autobiography
+writing-carrier	0xe70f22	0x2130add	cstring	biography
+writing-carrier	0xe70f36	0x20ca3d8	cstring	novel
+writing-carrier	0xe70f4a	0x20ca3cc	cstring	short story
+writing-carrier	0xe70f5e	0x20ca3c2	cstring	chronicle
+writing-carrier	0xe70f72	0x2116779	cstring	guide
+writing-carrier	0xe70f86	0x2210584	cstring	atlas
+writing-carrier	0xe70f9a	0x20ca3bb	cstring	manual
+writing-carrier	0xe70fae	0x20cb318	cstring	treatise on technological evolution
+writing-carrier	0xe70fc2	0x20ca456	cstring	alternate history
+writing-carrier	0xe70fd6	0x20ca442	cstring	cultural comparison
+writing-carrier	0xe70fea	0x220f7f0	cstring	cultural history
+writing-carrier	0xe70ffe	0x20ca468	cstring	star chart
+writing-carrier	0xe71012	0x2224dab	cstring	dictionary
+writing-carrier	0xe71026	0x221013b	cstring	encyclopedia
+writing-carrier	0xe7103a	0x220f7bf	cstring	genealogy
+writing-carrier	0xe7104e	0x20ca42a	cstring	biographical dictionary
+writing-carrier	0xe71062	0x20ca414	cstring	comparative biography
+writing-carrier	0xe71080	0x212f5eb	cstring	an untitled
+writing-carrier	0xe7109b	0x2107b75	cstring	 entitled 
+writing-carrier	0xe710c0	0x20ca6cc	cstring	[/LPAGE]
+page-carrier	0xe71168	0x2109170	simd16	The written port
+page-carrier	0xe71176	0x2109180	simd16	ion consists of 
+page-carrier	0xe711eb	0x22182d4	cstring	a 
+page-carrier	0xe7120f	0x2107b8f	cstring	 page 
+page-carrier	0xe7126b	0x21987af	cstring	nothing.
+page-carrier	0xe71296	0x2107130	cstring	The written portion consists of 
+page-carrier	0xe712ba	0x20ca473	cstring	star catalogue
+page-carrier	0xe712fe	0x2107b80	cstring	, authored by 
+page-carrier	0xe7132e	0x20ca83d	cstring	[LPAGE:HF:
+page-carrier	0xe7134c	0x21432dc	cstring	]
+page-carrier	0xe713a5	0x2205315	cstring	.  
+page-carrier	0xe713e4	0x20ca3f3	cstring	essay
+page-carrier	0xe713f8	0x20ca3ec	cstring	letter
+page-carrier	0xe7140c	0x21b4133	cstring	play
+page-carrier	0xe71420	0x21309c6	cstring	poem
+page-carrier	0xe71434	0x20ca3de	cstring	autobiography
+page-carrier	0xe71448	0x2130add	cstring	biography
+page-carrier	0xe7145c	0x20ca3d8	cstring	novel
+page-carrier	0xe71470	0x20ca3cc	cstring	short story
+page-carrier	0xe71484	0x20ca3c2	cstring	chronicle
+page-carrier	0xe71498	0x2116779	cstring	guide
+page-carrier	0xe714ac	0x20ca3bb	cstring	manual
+page-carrier	0xe714c0	0x2210584	cstring	atlas
+page-carrier	0xe714d4	0x220f7f0	cstring	cultural history
+page-carrier	0xe714e8	0x221013b	cstring	encyclopedia
+page-carrier	0xe714fc	0x220f7bf	cstring	genealogy
+page-carrier	0xe71510	0x20ca42a	cstring	biographical dictionary
+page-carrier	0xe71524	0x20ca414	cstring	comparative biography
+page-carrier	0xe71538	0x21309e1	cstring	choreography
+page-carrier	0xe7154c	0x20ca400	cstring	musical composition
+page-carrier	0xe71560	0x20ca3f9	cstring	dialog
+page-carrier	0xe71574	0x2224dab	cstring	dictionary
+page-carrier	0xe71588	0x20cb318	cstring	treatise on technological evolution
+page-carrier	0xe7159c	0x20ca468	cstring	star chart
+page-carrier	0xe715b0	0x20ca456	cstring	alternate history
+page-carrier	0xe715c4	0x20ca442	cstring	cultural comparison
+page-carrier	0xe715e3	0x2107b75	cstring	 entitled 
+page-carrier	0xe71610	0x2107b96	cstring	untitled 
+page-carrier	0xe71648	0x20ca6cc	cstring	[/LPAGE]
+item-description	0xe76f72	0x2107bea	cstring	These are 
+item-description	0xe76f97	0x2107bf5	cstring	 bundles of
+item-description	0xe7704b	0x2107bd7	cstring	This is a stack of
+item-description	0xe77073	0x20f7379	cstring	 
+item-description	0xe770a0	0x2107c01	cstring	This is a bundle of
+item-description	0xe770b8	0x20ca832	cstring	 masterful
+item-description	0xe770d0	0x20f7379	cstring	 
+item-description	0xe77115	0x2205315	cstring	.  
+item-description	0xe77477	0x2107cdf	cstring	It is 
+item-description	0xe77490	0x2107f32	cstring	coated
+item-description	0xe7749f	0x20e2a73	cstring	 with 
+item-description	0xe77523	0x2205315	cstring	.  
+item-description	0xe775a6	0x2107f39	cstring	spattered
+item-description	0xe775d4	0x2107efb	cstring	This object is in tatters.  
+item-description	0xe77618	0x20f7378	cstring	  
+item-description	0xe77769	0x21f67b2	cstring	[B]
+item-description	0xe777a9	0x21f67b2	cstring	[B]
+item-description	0xe777ef	0x219eecf	cstring	[R]
+item-description	0xe777fe	0x2107eca	cstring	"The slab reads """
+item-description	0xe7782a	0x2107edb	cstring	"""."
+item-description	0xe77846	0x219eecf	cstring	[R]
+item-description	0xe77a19	0x21f67b2	cstring	[B]
+item-description	0xe77a59	0x21f67b2	cstring	[B]
+item-description	0xe77a81	0x2107bc5	cstring	These are
+item-description	0xe77a9c	0x212bc94	cstring	 a
+item-description	0xe77ad3	0x219f76b	cstring	n
+item-description	0xe77ce8	0x219eecf	cstring	[R]
+item-description	0xe77d1a	0x219eecf	cstring	[R]
+item-description	0xe77da3	0x2107e87	cstring	The material is 
+item-description	0xe77dcd	0x2107edc	cstring	.
+item-description	0xe77de9	0x219eecf	cstring	[R]
+item-description	0xe77e00	0x2107e87	cstring	The material is 
+item-description	0xe77f71	0x20e2a73	cstring	 with 
+item-description	0xe78085	0x20f3aea	cstring	, 
+item-description	0xe78114	0x21ed222	cstring	 by 
+item-description	0xe7812e	0x20ca83d	cstring	[LPAGE:HF:
+item-description	0xe7814d	0x21432dc	cstring	]
+item-description	0xe78198	0x2205315	cstring	.  
+item-description	0xe78203	0x2107e87	cstring	The material is 
+item-description	0xe7822d	0x2107edc	cstring	.
+item-description	0xe78249	0x219eecf	cstring	[R]
+item-description	0xe78260	0x21079aa	cstring	The thread is 
+item-description	0xe783d1	0x20e2a73	cstring	 with 
+item-description	0xe784e3	0x20f3aea	cstring	, 
+item-description	0xe78574	0x21ed222	cstring	 by 
+item-description	0xe7858e	0x20ca83d	cstring	[LPAGE:HF:
+item-description	0xe785ad	0x21432dc	cstring	]
+item-description	0xe785f8	0x2205315	cstring	.  
+item-description	0xe7862d	0x219eecf	cstring	[R]
+item-description	0xe78710	0x20f7378	cstring	  
+item-description	0xe78760	0x21f67b2	cstring	[B]
+item-description	0xe787a3	0x2107f43	cstring	&r
+item-description	0xe787c0	0x2107bc1	cstring	[P]
+item-description	0xe787d8	0x2107c98	cstring	All 
+item-description	0xe788a7	0x20f2f6a	cstring	craftsman
+item-description	0xe788cc	0x2107178	cstring	ship is of the highest quality.  
+item-description	0xe7890d	0x20f7378	cstring	  
+item-description	0xe7891c	0x2107e98	cstring	The pages are blank.
+item-description	0xe78a30	0x20f3aea	cstring	, 
+item-description	0xe78d80	0x2107ce6	cstring	encrusted with
+item-description	0xe78d8f	0x20f7379	cstring	 
+item-description	0xe78fc3	0x20e50c8	cstring	 created by 
+item-description	0xe78fdd	0x20ca83d	cstring	[LPAGE:HF:
+item-description	0xe78ffc	0x21432dc	cstring	]
+item-description	0xe79040	0x20ca6cc	cstring	[/LPAGE]
+item-description	0xe79150	0x2107ead	cstring	You have not read this book.
+item-description	0xe79168	0x20f7378	cstring	  
+item-description	0xe79180	0x2107cae	cstring	The ingredients are 
+item-description	0xe791c9	0x2107cc3	cstring	superiorly 
+item-description	0xe791f8	0x2107987	cstring	masterfully 
+item-description	0xe79223	0x2107ccf	cstring	minced 
+item-description	0xe7929a	0x20f3aea	cstring	, 
+item-description	0xe792d0	0x2107978	cstring	exceptionally 
+item-description	0xe792e8	0x2107960	cstring	well-
+item-description	0xe79310	0x2107966	cstring	finely 
+item-description	0xe79340	0x2107290	cstring	When used as a dye, it produces 
+item-description	0xe7936a	0x2107edc	cstring	.
+item-description	0xe79386	0x219eecf	cstring	[R]
+item-description	0xe793a8	0x2107c9d	cstring	It is sized for 
+item-description	0xe79406	0x2205315	cstring	.  
+item-description	0xe79450	0x2107f18	cstring	This object is mangled.  
+item-description	0xe795b0	0x210795b	cstring	gray
+item-description	0xe795c8	0x210795b	cstring	gray
+item-description	0xe795e0	0x20ca825	cstring	 exceptional
+item-description	0xe795f8	0x2107c86	cstring	 superior quality
+item-description	0xe79610	0x2107c76	cstring	 finely-crafted
+item-description	0xe79628	0x20ca80c	cstring	 well-crafted
+item-description	0xe79680	0x2107158	cstring	 created by an unknown artisan
+item-description	0xe79698	0x2107ede	cstring	This object is threadbare.  
+item-description	0xe796c8	0x2107258	cstring	There is writing in the book, but you cannot read.
+item-description	0xe796e0	0x20f3aea	cstring	, 
+item-description	0xe79711	0x2107cdf	cstring	It is 
+item-description	0xe79723	0x2107dab	cstring	encircled with bands of 
+item-description	0xe7973b	0x20f3aea	cstring	, 
+item-description	0xe797f0	0x2107cd7	cstring	cooked 
+item-description	0xe7980e	0x2205315	cstring	.  
+item-description	0xe798ac	0x2205315	cstring	.  
+item-description	0xe798c2	0x2107d81	cstring	masterfully worked 
+item-description	0xe79a3e	0x20f7379	cstring	 
+item-description	0xe79a4d	0x219eeb2	cstring	and 
+item-description	0xe79a76	0x20f7379	cstring	 
+item-description	0xe79a85	0x219eeb2	cstring	and 
+item-description	0xe79b80	0x20f3aea	cstring	, 
+item-description	0xe79c1f	0x20fc8f7	cstring	The 
+item-description	0xe79ca4	0x2107f46	cstring	This object 
+item-description	0xe79cbc	0x21071a0	cstring	is adorned with hanging rings of 
+item-description	0xe79d7c	0x2107a11	cstring	well-crafted 
+item-description	0xe79e04	0x2205315	cstring	.  
+item-description	0xe79e18	0x2107d81	cstring	masterfully worked 
+item-description	0xe79f08	0x21ed222	cstring	 by 
+item-description	0xe79f8d	0x2107ddd	cstring	The rollers are made from 
+item-description	0xe79fe5	0x2107e05	cstring	The chain is 
+item-description	0xe79ff6	0x2107d81	cstring	masterfully worked 
+item-description	0xe7a075	0x2205315	cstring	.  
+item-description	0xe7a120	0x2107cdf	cstring	It is 
+item-description	0xe7a13c	0x2107d02	cstring	decorated with
+item-description	0xe7a160	0x219eeb1	cstring	 and 
+item-description	0xe7a178	0x2107cf5	cstring	studded with
+item-description	0xe7a190	0x2107d11	cstring	glazed with
+item-description	0xe7a1c0	0x2205315	cstring	.  
+item-description	0xe7a1d8	0x21072f0	cstring	This object is showing some wear.  
+item-description	0xe7a260	0x219eeb1	cstring	 and 
+item-description	0xe7a2d0	0x20f3aea	cstring	, 
+item-description	0xe7a308	0x20f3aea	cstring	, 
+item-description	0xe7a339	0x2107987	cstring	masterfully 
+item-description	0xe7a348	0x2107994	cstring	colored
+item-description	0xe7a35c	0x2107987	cstring	masterfully 
+item-description	0xe7a36b	0x2107994	cstring	colored
+item-description	0xe7a394	0x21ed222	cstring	 by 
+item-description	0xe7a3ad	0x20ca83d	cstring	[LPAGE:HF:
+item-description	0xe7a3cc	0x21432dc	cstring	]
+item-description	0xe7a416	0x20ca6cc	cstring	[/LPAGE]
+item-description	0xe7a43a	0x2107f46	cstring	This object 
+item-description	0xe7a449	0x2107e13	cstring	menaces with spikes of 
+item-description	0xe7a482	0x20f3aea	cstring	, 
+item-description	0xe7a513	0x2107d81	cstring	masterfully worked 
+item-description	0xe7a5d0	0x2205315	cstring	.  
+item-description	0xe7ad78	0x219eecf	cstring	[R]
+item-description	0xe7ae48	0x20f7378	cstring	  
+item-description	0xe7af7b	0x21071e8	cstring	There is writing on this item which you have not read.
+item-description	0xe7af9d	0x20f7378	cstring	  
+item-description	0xe7afac	0x2107220	cstring	There is writing on this item, but you cannot read.
+item-description	0xe7afc0	0x20f7378	cstring	  
+item-description	0xe7b0a0	0x20f3aea	cstring	, 
+item-description	0xe7b0bb	0x21c0003	cstring	a series of 
+item-description	0xe7b0e0	0x2107e2b	cstring	 images and symbols
+item-description	0xe7b0f6	0x2107edc	cstring	.
+item-description	0xe7b180	0x219eecf	cstring	[R]
+item-description	0xe7b1a5	0x219eecf	cstring	[R]
+item-description	0xe7b1e9	0x20ca83d	cstring	[LPAGE:HF:
+item-description	0xe7b208	0x21432dc	cstring	]
+item-description	0xe7b25d	0x20ca6cc	cstring	[/LPAGE]
+item-description	0xe7b2d5	0x2205315	cstring	.  
+item-description	0xe7b2ff	0x2107a00	cstring	It is made from 
+item-description	0xe7b35a	0x2205315	cstring	.  
+item-description	0xe7b370	0x20f7378	cstring	  
+item-description	0xe7b388	0x20f7378	cstring	  
+item-description	0xe7b3a0	0x20f7378	cstring	  
+item-description	0xe7b3b8	0x20f7378	cstring	  
+item-description	0xe7b3d0	0x2107dc4	cstring	The handle is made from 
+item-description	0xe7b3e8	0x2107df8	cstring	The rope is 
+item-description	0xe7b400	0x2107bcf	cstring	This is
+item-description	0xe7b42d	0x20e2a73	cstring	 with 
+item-description	0xe7b49d	0x20e2a73	cstring	 with 
+item-description	0xe7b4f8	0x20f7378	cstring	  
+item-description	0xe7b510	0x2107318	cstring	This object is heavily worn.  
+item-description	0xe7b528	0x219eeb1	cstring	 and 
+item-description	0xe7b584	0x21ed222	cstring	 by 
+item-description	0xe7b59f	0x20ca83d	cstring	[LPAGE:HF:
+item-description	0xe7b5be	0x21432dc	cstring	]
+item-description	0xe7b60a	0x20ca6cc	cstring	[/LPAGE]
+item-description	0xe7b620	0x20f7378	cstring	  
+item-description	0xe7b638	0x20f7378	cstring	  
+item-description	0xe7b650	0x20f7378	cstring	  
+item-description	0xe7b668	0x219eecf	cstring	[R]
+item-description	0xe7b68d	0x219eecf	cstring	[R]
+item-description	0xe7b6a8	0x210799c	cstring	a mixture of 
+item-description	0xe7b6c0	0x210799c	cstring	a mixture of 
+item-description	0xe7b6e8	0x21ed222	cstring	 by 
+item-description	0xe7b703	0x20ca83d	cstring	[LPAGE:HF:
+item-description	0xe7b722	0x21432dc	cstring	]
+item-description	0xe7b76c	0x20ca6cc	cstring	[/LPAGE]
+item-description	0xe7b7dc	0x219eecf	cstring	[R]
+item-description	0xe7b7eb	0x21072b8	cstring	There is writing on the slab, but you cannot read.
+item-description	0xe7b807	0x219eecf	cstring	[R]
+item-description	0xe7b82f	0x21ed222	cstring	 by 
+item-description	0xe7b84a	0x20ca83d	cstring	[LPAGE:HF:
+item-description	0xe7b869	0x21432dc	cstring	]
+item-description	0xe7b8b5	0x20ca6cc	cstring	[/LPAGE]
+item-description	0xe7b8c9	0x219eeb1	cstring	 and 
+item-description	0xe7b8dd	0x2107d6b	cstring	exceptionally worked 
+item-description	0xe7b8f1	0x2107a2f	cstring	superior quality 
+item-description	0xe7b905	0x2107a1f	cstring	finely-crafted 
+item-description	0xe7b919	0x2107a11	cstring	well-crafted 
+item-description	0xe7b92d	0x2107d81	cstring	masterfully worked 
+item-description	0xe7b956	0x2107d6b	cstring	exceptionally worked 
+item-description	0xe7b967	0x2107a2f	cstring	superior quality 
+item-description	0xe7b978	0x2107a1f	cstring	finely-crafted 
+item-description	0xe7b989	0x2107a11	cstring	well-crafted 
+item-description	0xe7b99a	0x2107d81	cstring	masterfully worked 
+item-description	0xe7b9ae	0x2107d6b	cstring	exceptionally worked 
+item-description	0xe7b9c2	0x2107a2f	cstring	superior quality 
+item-description	0xe7b9d6	0x2107a1f	cstring	finely-crafted 
+item-description	0xe7b9ea	0x2107d6b	cstring	exceptionally worked 
+item-description	0xe7b9fe	0x2107a2f	cstring	superior quality 
+item-description	0xe7ba12	0x2107a1f	cstring	finely-crafted 
+item-description	0xe7ba26	0x2107a11	cstring	well-crafted 
+item-description	0xe7ba3a	0x2107c15	cstring	 well-prepared
+item-description	0xe7ba4e	0x2107c24	cstring	 finely-prepared
+item-description	0xe7ba62	0x2107c35	cstring	 superiorly prepared
+item-description	0xe7ba76	0x2107c4a	cstring	 exceptional prepared
+item-description	0xe7ba8a	0x2107c60	cstring	 masterfully prepared
+item-description	0xe7ba9e	0x2107d6b	cstring	exceptionally worked 
+item-description	0xe7bab2	0x2107a2f	cstring	superior quality 
+item-description	0xe7bac6	0x2107a1f	cstring	finely-crafted 
+item-description	0xe7bada	0x2107a11	cstring	well-crafted 
+item-description	0xe7bafe	0x2107d6b	cstring	exceptionally worked 
+item-description	0xe7bb12	0x2107a2f	cstring	superior quality 
+item-description	0xe7bb26	0x2107a1f	cstring	finely-crafted 
+item-description	0xe7bb3a	0x2107a11	cstring	well-crafted 
+item-description	0xe7bb4e	0x20f7378	cstring	  
+item-description	0xe7bba6	0x20f7378	cstring	  
+item-description	0xe7bbb5	0x2107e73	cstring	The upward face is 
+item-description	0xe7bc18	0x2107edc	cstring	.
+item-description	0xe7bc50	0x2107960	cstring	well-
+item-description	0xe7bc64	0x2107978	cstring	exceptionally 
+item-description	0xe7bc78	0x210796e	cstring	superbly 
+item-description	0xe7bc8c	0x2107966	cstring	finely 
+item-description	0xe7bca0	0x2107960	cstring	well-
+item-description	0xe7bcb4	0x210796e	cstring	superbly 
+item-description	0xe7bcc8	0x2107966	cstring	finely 
+item-description	0xe7bcdc	0x2107978	cstring	exceptionally 
+item-description	0xe7bd34	0x2107d3d	cstring	exceptionally prepared 
+item-description	0xe7bd48	0x2107a2f	cstring	superior quality 
+item-description	0xe7bd6d	0x2107d2c	cstring	finely-prepared 
+item-description	0xe7bd7e	0x2107d1d	cstring	well-prepared 
+item-description	0xe7bd8f	0x2107d55	cstring	masterfully prepared 
+item-description	0xe7bda7	0x21c0003	cstring	a series of 
+item-description	0xe7bdcc	0x214c770	cstring	 words
+item-description	0xe7bdef	0x2107e47	cstring	 which you cannot read
+item-description	0xe7be07	0x21c0003	cstring	a series of 
+item-description	0xe7be2c	0x2107e3f	cstring	 images
+item-description	0xe7be47	0x220ff27	cstring	numbers
+item-description	0xe7be72	0x2107e63	cstring	, ranging from 
+item-description	0xe7bed8	0x21cef94	cstring	 to 
+item-description	0xe7bf84	0x2107e5e	cstring	dots
+item-description	0xe7bfaf	0x2107e63	cstring	, ranging from 
+item-description	0xe7c015	0x21cef94	cstring	 to 
+item-description	0xe7c07d	0x21c0003	cstring	a series of 
+item-description	0xe7c0a2	0x2107e36	cstring	 symbols
+item-description	0xe7c0e9	0x2107a00	cstring	It is made from 
+item-description	0xe7c136	0x2205315	cstring	.  
+item-description	0xe7c172	0x21ed222	cstring	 by 
+item-description	0xe7c18b	0x20ca83d	cstring	[LPAGE:HF:
+item-description	0xe7c1aa	0x21432dc	cstring	]
+item-description	0xe7c1f6	0x20ca6cc	cstring	[/LPAGE]
+item-description	0xe7c20a	0x219eeb1	cstring	 and 
+item-description	0xe7c21e	0x20f7378	cstring	  
+item-description	0xe7c232	0x219eecf	cstring	[R]
+item-description	0xe7c318	0x2107de8	cstring	 are made from 
+item-description	0xe7c329	0x2107dce	cstring	 is made from 
+item-description	0xe7c493	0x2107d95	cstring	 by an unknown artist
+item-description	0xe7c51a	0x20f7378	cstring	  
+item-description	0xe7c535	0x21071c8	cstring	On the faces of the object are 
+item-description	0xe7c546	0x219eeb1	cstring	 and 
+item-description	0xe7c55a	0x219eeb1	cstring	 and 
+item-description	0xe7c56e	0x219eeb1	cstring	 and 
+item-description	0xe7c582	0x20ca6cc	cstring	[/LPAGE]
+item-description	0xe7c596	0x20ca6cc	cstring	[/LPAGE]
+item-description	0xe7c5aa	0x20f7378	cstring	  
+item-description	0xe7c618	0x20f7378	cstring	  
+item-description	0xe7c62c	0x20f7378	cstring	  
+item-description	0xe7c69b	0x2107e87	cstring	The material is 
+item-description	0xe7c6c5	0x2107edc	cstring	.
+item-description	0xe7c6dd	0x219eecf	cstring	[R]
+item-description	0xe7c72d	0x20f7378	cstring	  
+item-description	0xe7c741	0x20f7378	cstring	  
+item-description	0xe7c755	0x20f7378	cstring	  
+22general_ref_artifactst-25general_ref_is_artifactst	0x1ee2452	0x20ca6d5	cstring	an unknown artifact
+22general_ref_artifactst-25general_ref_is_artifactst	0x1ee25aa	0x21b8f60	simd16	[LPAGE:ARTIFACT:
+22general_ref_artifactst-25general_ref_is_artifactst	0x1ee2724	inline	immediate	[/LPAGE]
+22general_ref_artifactst-25general_ref_is_artifactst	0x1ee2752	0x20f7379	cstring	 
+22general_ref_artifactst-25general_ref_is_artifactst	0x1ee2785	0x20ca6bb	cstring	[LPAGE:ARTIFACT:
+22general_ref_artifactst-25general_ref_is_artifactst	0x1ee27a4	0x21432dc	cstring	]
+22general_ref_artifactst-25general_ref_is_artifactst	0x1ee27d1	0x20ca6cc	cstring	[/LPAGE]
+36general_ref_knowledge_scholar_flagst	0x1ed80c4	0x220bbe8	cstring	the construction and use of the lever
+36general_ref_knowledge_scholar_flagst	0x1ed8124	0x220c158	cstring	the construction and use of the armillary sphere
+36general_ref_knowledge_scholar_flagst	0x1ed8184	0x220f258	cstring	the nature of time
+36general_ref_knowledge_scholar_flagst	0x1ed828c	0x2209568	cstring	the existence of incommensurable ratios
+36general_ref_knowledge_scholar_flagst	0x1ed82db	0x220f379	cstring	the properties of chords
+36general_ref_knowledge_scholar_flagst	0x1ed837c	0x220f54c	cstring	the notion of relapse
+36general_ref_knowledge_scholar_flagst	0x1ed83c9	0x220a900	cstring	the struggle for survival among creatures
+36general_ref_knowledge_scholar_flagst	0x1ed842a	0x220ab88	cstring	the classification of alkali and acids
+36general_ref_knowledge_scholar_flagst	0x1ed848c	0x220b6c0	cstring	the classification of bodily fluids
+36general_ref_knowledge_scholar_flagst	0x1ed862c	0x2209da8	cstring	a triangular configuration of numbers relating to the successive powers of any sum
+36general_ref_knowledge_scholar_flagst	0x1ed8678	0x2209158	cstring	social welfare, its forms and recommendations
+36general_ref_knowledge_scholar_flagst	0x1ed86c8	0x220b4d0	cstring	the surgical method of suturing
+36general_ref_knowledge_scholar_flagst	0x1ed8718	0x220f678	cstring	schools of medicine
+36general_ref_knowledge_scholar_flagst	0x1ed8768	0x2209a08	cstring	an algorithm for calculating prime numbers
+36general_ref_knowledge_scholar_flagst	0x1ed87b8	0x220f68c	cstring	the action of the siphon
+36general_ref_knowledge_scholar_flagst	0x1ed87e6	0x220f428	cstring	the diseases of creatures
+36general_ref_knowledge_scholar_flagst	0x1ed882c	0x220c468	cstring	the construction and use of the trip hammer
+36general_ref_knowledge_scholar_flagst	0x1ed8867	0x220c2e0	cstring	a precise explanation of the cause of twilight involving atmospheric refraction
+36general_ref_knowledge_scholar_flagst	0x1ed88b8	0x220ad68	cstring	the construction and use of laboratory ovens
+36general_ref_knowledge_scholar_flagst	0x1ed88f9	0x220b178	cstring	methods of adjusting maps to account for the shape of the world
+36general_ref_knowledge_scholar_flagst	0x1ed8937	0x220b088	cstring	the forces that govern wind patterns
+36general_ref_knowledge_scholar_flagst	0x1ed897d	0x220a6c0	cstring	the method of forming precise models for the paths of astronomical objects
+36general_ref_knowledge_scholar_flagst	0x1ed89bd	0x220a378	cstring	the method of examining artifacts to determine how techniques have changed over time
+36general_ref_knowledge_scholar_flagst	0x1ed8a27	0x2209040	cstring	ethics as applied to interpersonal conduct
+36general_ref_knowledge_scholar_flagst	0x1ed8a67	0x220bd58	cstring	the construction and use of the water-powered sawmill
+36general_ref_knowledge_scholar_flagst	0x1ed8aa7	0x220f642	cstring	the source of the voice
+36general_ref_knowledge_scholar_flagst	0x1ed8ae7	0x2209750	cstring	an algorithm for dividing one number into another, possibly yielding a remainder
+36general_ref_knowledge_scholar_flagst	0x1ed8b27	0x220b430	cstring	the surgical method of excision
+36general_ref_knowledge_scholar_flagst	0x1ed8b67	0x220af48	cstring	the use of a distance scale in the creation of maps
+36general_ref_knowledge_scholar_flagst	0x1ed8ba7	0x220ac98	cstring	the construction and use of the crucible
+36general_ref_knowledge_scholar_flagst	0x1ed8bdc	0x220a1d0	cstring	the method of accurately and comprehensively describing cultures and civilizations
+36general_ref_knowledge_scholar_flagst	0x1ed8c0c	0x220a5e8	cstring	the classification of stars according to color
+36general_ref_knowledge_scholar_flagst	0x1ed8c3c	0x220a528	cstring	the theory that the world moves around the sun
+36general_ref_knowledge_scholar_flagst	0x1ed8c6c	0x220a018	cstring	the method of compiling several biographies to compare and contrast the subjects' character and to gain insight into history
+36general_ref_knowledge_scholar_flagst	0x1ed8c94	0x2209be8	cstring	the solving of quadratic equations by completion of the square
+36general_ref_knowledge_scholar_flagst	0x1ed8cbc	0x220b608	cstring	the construction and use of the scalpel
+36general_ref_knowledge_scholar_flagst	0x1ed8ce4	0x220b288	cstring	the method of bandaging wounds
+36general_ref_knowledge_scholar_flagst	0x1ed8d0c	0x2210bd9	cstring	medical ethics
+36general_ref_knowledge_scholar_flagst	0x1ed8d34	0x2209240	cstring	the properties of similar and congruent triangles
+36general_ref_knowledge_scholar_flagst	0x1ed8d5c	0x220ba88	cstring	the reasons why pulleys are effective
+36general_ref_knowledge_scholar_flagst	0x1ed8d82	0x220bb28	cstring	the reasons why the wheel-and-axle construction is effective
+36general_ref_knowledge_scholar_flagst	0x1ed8dae	0x220a650	cstring	the precession of the equinoxes over great periods of time
+36general_ref_knowledge_scholar_flagst	0x1ed8dd4	0x220a4c8	cstring	the variation of daylight with the season
+36general_ref_knowledge_scholar_flagst	0x1ed8df3	0x220bad8	cstring	the reasons why screws are effective
+36general_ref_knowledge_scholar_flagst	0x1ed8e1c	0x220aea8	cstring	surveying by triangulation for engineering projects
+36general_ref_knowledge_scholar_flagst	0x1ed8e42	0x220c220	cstring	the construction and use of the water-powered trip hammer
+36general_ref_knowledge_scholar_flagst	0x1ed8e6a	0x220c3d0	cstring	the construction and use of the bellows
+36general_ref_knowledge_scholar_flagst	0x1ed8e92	0x220be30	cstring	the construction and use of the differential gear
+36general_ref_knowledge_scholar_flagst	0x1ed8eb3	0x220c1c8	cstring	the construction and use of mural instruments
+36general_ref_knowledge_scholar_flagst	0x1ed8ed3	0x220c380	cstring	the construction and use of the piston
+36general_ref_knowledge_scholar_flagst	0x1ed8ef3	0x220bdc8	cstring	the construction and use of chain drives
+36general_ref_knowledge_scholar_flagst	0x1ed8f1a	0x22098b0	cstring	an approximation of the ratio of the circumference of a circle to its diameter, using the area of polygons and the method of exhaustion
+36general_ref_knowledge_scholar_flagst	0x1ed8f3b	0x220f2b4	cstring	the nature of causation
+36general_ref_knowledge_scholar_flagst	0x1ed8f5b	0x22097d8	cstring	the computation of the area of a triangle from its three side lengths alone
+36general_ref_knowledge_scholar_flagst	0x1ed8f82	0x220b800	cstring	the preparation and use of dedicated hospitals
+36general_ref_knowledge_scholar_flagst	0x1ed8fa3	0x220f62c	cstring	pulmonary circulation
+36general_ref_knowledge_scholar_flagst	0x1ed8fc3	0x220b7b0	cstring	the classification of mental illnesses
+36general_ref_knowledge_scholar_flagst	0x1ed8fea	0x220f5c0	cstring	the lithotomy surgery
+36general_ref_knowledge_scholar_flagst	0x1ed900b	0x220bcf8	cstring	the construction and use of the camshaft
+36general_ref_knowledge_scholar_flagst	0x1ed902b	0x220f599	cstring	hernia surgery
+36general_ref_knowledge_scholar_flagst	0x1ed9052	0x2210c33	cstring	etymology
+36general_ref_knowledge_scholar_flagst	0x1ed9073	0x2209688	cstring	the computation of the volume of a sphere
+36general_ref_knowledge_scholar_flagst	0x1ed9093	0x2209098	cstring	education, its forms and recommendations
+36general_ref_knowledge_scholar_flagst	0x1ed90be	0x220afd8	cstring	the placement of economic information on maps
+36general_ref_knowledge_scholar_flagst	0x1ed90e6	0x220b148	cstring	the division of the world into climate zones
+36general_ref_knowledge_scholar_flagst	0x1ed9101	0x220c028	cstring	the construction and use of the parabolic mirror
+36general_ref_knowledge_scholar_flagst	0x1ed9124	0x2209fb0	cstring	conflict between members of a community
+36general_ref_knowledge_scholar_flagst	0x1ed914a	0x220fc3d	cstring	cauterization
+36general_ref_knowledge_scholar_flagst	0x1ed916b	0x2209e58	cstring	experiments with symbolic notation for addition
+36general_ref_knowledge_scholar_flagst	0x1ed918b	0x220b660	cstring	the construction and use of surgical needles
+36general_ref_knowledge_scholar_flagst	0x1ed91ab	0x22090f8	cstring	government, its forms and recommendations
+36general_ref_knowledge_scholar_flagst	0x1ed91cb	0x220c2a0	cstring	a precise description of buoyancy and water displacement
+36general_ref_knowledge_scholar_flagst	0x1ed91eb	0x220be98	cstring	the construction and use of the verge escapement
+36general_ref_knowledge_scholar_flagst	0x1ed920b	0x220f5e7	cstring	pulmonary medicine
+36general_ref_knowledge_scholar_flagst	0x1ed922b	0x220c100	cstring	the construction and use of the dioptra
+36general_ref_knowledge_scholar_flagst	0x1ed9256	0x2209cc8	cstring	the relationship between the half chords of a triangle's angles, the opposite side lengths, and the diameter of the triangle's circumscribed circle
+36general_ref_knowledge_scholar_flagst	0x1ed927a	0x2209390	cstring	the relationship between the lengths of the hypotenuse of a right triangle and the other two sides
+36general_ref_knowledge_scholar_flagst	0x1ed929b	0x2209470	cstring	examples of triples of large whole numbers which, when taken together, are the lengths of the sides of a right triangle
+36general_ref_knowledge_scholar_flagst	0x1ed92bb	0x2209308	cstring	the equality of the base angle of isosceles triangles
+36general_ref_knowledge_scholar_flagst	0x1ed92e2	0x220f517	cstring	the theory of endemic disease
+36general_ref_knowledge_scholar_flagst	0x1ed9303	0x220b328	cstring	the notion of the exacerbation of a patient's condition
+36general_ref_knowledge_scholar_flagst	0x1ed9323	0x220b2a8	cstring	the classification of toxic substances
+36general_ref_knowledge_scholar_flagst	0x1ed934e	0x220aac0	cstring	the theory and methods involved in the extraction of a constituent liquid from one solution to another
+36general_ref_knowledge_scholar_flagst	0x1ed936b	0x220bb98	cstring	the reasons why the wedge is effective
+36general_ref_knowledge_scholar_flagst	0x1ed9396	0x220f45d	cstring	the preparation of aqua regia
+36general_ref_knowledge_scholar_flagst	0x1ed93b3	0x220b3d8	cstring	the method of fracture immobilization
+36general_ref_knowledge_scholar_flagst	0x1ed93da	0x220b388	cstring	the classification of fractures
+36general_ref_knowledge_scholar_flagst	0x1ed9402	0x2209628	cstring	the computation of the volume of different pyramids
+36general_ref_knowledge_scholar_flagst	0x1ed9423	0x220b360	cstring	the treatment of traumatic injuries
+36general_ref_knowledge_scholar_flagst	0x1ed9443	0x2209590	cstring	the unique decomposition of a number into products of its prime divisors
+36general_ref_knowledge_scholar_flagst	0x1ed946a	0x220f611	cstring	the study of reaction time
+36general_ref_knowledge_scholar_flagst	0x1ed9492	0x220bca0	cstring	the construction and use of the tumbler lock
+36general_ref_knowledge_scholar_flagst	0x1ed94b3	0x220b6e8	cstring	the distinction between motor and sensory nerves
+36general_ref_knowledge_scholar_flagst	0x1ed94d3	0x220bc48	cstring	the reasons why gears are effective
+36general_ref_knowledge_scholar_flagst	0x1ed94fe	0x220ac20	cstring	the construction and use of the beaker
+36general_ref_knowledge_scholar_flagst	0x1ed9522	0x220f287	cstring	the nature of events
+36general_ref_knowledge_scholar_flagst	0x1ed954e	0x220a148	cstring	the compilation of family lineages and methods of displaying them artfully
+36general_ref_knowledge_scholar_flagst	0x1ed9576	0x220a580	cstring	the compilation of information about stars
+36general_ref_knowledge_scholar_flagst	0x1ed9593	0x2208fd8	cstring	the relationship between objects and their properties
+36general_ref_knowledge_scholar_flagst	0x1ed95b3	0x220b490	cstring	the surgical method of draining
+36general_ref_knowledge_scholar_flagst	0x1ed95d3	0x2209970	cstring	an algorithm for computing a number which has given remainders when divided by several given primes
+36general_ref_knowledge_scholar_flagst	0x1ed95f3	0x220b858	cstring	the use of specialized wards in hospitals
+36general_ref_knowledge_scholar_flagst	0x1ed9613	0x220a828	cstring	the links between the diets of different creatures
+36general_ref_knowledge_scholar_flagst	0x1ed963a	0x220f1f6	cstring	the nature of perception
+36general_ref_knowledge_scholar_flagst	0x1ed965b	0x220f22b	cstring	the nature of belief
+36general_ref_knowledge_scholar_flagst	0x1ed967b	0x2208fa8	cstring	ethics as it regards the benefit of the state
+36general_ref_knowledge_scholar_flagst	0x1ed96a2	0x220c0d0	cstring	the use of models and templates in engineering
+36general_ref_knowledge_scholar_flagst	0x1ed96ca	0x220a2b8	cstring	the exploration of how history would be different if some key past events had transpired differently
+36general_ref_knowledge_scholar_flagst	0x1ed96eb	0x220c060	cstring	the appearance of rainbows based on optical theories
+36general_ref_knowledge_scholar_flagst	0x1ed9700	0x2209c58	cstring	notation for abbreviating the unknown and other elements of an equation in a systematic and useful fashion
+36general_ref_knowledge_scholar_flagst	0x1ed9710	0x220f3f5	cstring	the shape of the world
+36general_ref_knowledge_scholar_flagst	0x1ed9720	0x220a268	cstring	the role of cultural differences in source reliability and interpretation
+36general_ref_knowledge_scholar_flagst	0x1ed9730	0x220f3d9	cstring	the creation of star charts
+36general_ref_knowledge_scholar_flagst	0x1ed9740	0x2209f88	cstring	bonds between members of a community
+36general_ref_knowledge_scholar_flagst	0x1ed9750	0x220a490	cstring	the relationship between the lunar and solar year
+36general_ref_knowledge_scholar_flagst	0x1ed9760	0x220a0d8	cstring	the method of writing a biography of oneself, particularly as it concerns a military campaign or adventure
+36general_ref_knowledge_scholar_flagst	0x1ed9770	0x220ae70	cstring	surveying by triangulation for military purposes
+36general_ref_knowledge_scholar_flagst	0x1ed9780	0x220b0f0	cstring	a world-wide cycle involving precipitation, oceans, rivers and other forms of water
+36general_ref_knowledge_scholar_flagst	0x1ed9790	0x220afb0	cstring	the process of economic data collection
+36general_ref_knowledge_scholar_flagst	0x1ed97a0	0x220af10	cstring	the use of a grid system in the creation of maps
+36general_ref_knowledge_scholar_flagst	0x1ed97b0	0x220b048	cstring	the process of the formation of deltas at the mouths of rivers
+36general_ref_knowledge_scholar_flagst	0x1ed97c0	0x220ad40	cstring	the construction and use of the retort
+36general_ref_knowledge_scholar_flagst	0x1ed97d0	0x220ac70	cstring	the construction and use of the funnel
+36general_ref_knowledge_scholar_flagst	0x1ed97e0	0x220abf8	cstring	the construction and use of the flask
+36general_ref_knowledge_scholar_flagst	0x1ed97f0	0x220acf0	cstring	the preparation of oil of vitriol
+36general_ref_knowledge_scholar_flagst	0x1ed9800	0x220aa98	cstring	the construction and use of the alembic
+36general_ref_knowledge_scholar_flagst	0x1ed9810	0x220ab58	cstring	the theory and methods involved in evaporation
+36general_ref_knowledge_scholar_flagst	0x1ed9820	0x220c438	cstring	the construction and use of the water wheel
+36general_ref_knowledge_scholar_flagst	0x1ed9830	0x220ba58	cstring	the construction and use of mechanical clocks
+36general_ref_knowledge_scholar_flagst	0x1ed9840	0x220f34c	cstring	the method of exhaustion
+36general_ref_knowledge_scholar_flagst	0x1ed9850	0x220f1cd	cstring	analogical inference
+36general_ref_knowledge_scholar_flagst	0x1ed9860	0x220f4e8	cstring	mineral remedies
+36general_ref_knowledge_scholar_flagst	0x1ed9870	0x220b5e0	cstring	the construction and use of forceps
+36general_ref_knowledge_scholar_flagst	0x1ed9880	0x220a8d0	cstring	the embriological development of creatures
+36general_ref_knowledge_scholar_flagst	0x1ed9890	0x2209ba0	cstring	the techniques of balancing and completion for solving equations
+36general_ref_knowledge_scholar_flagst	0x1ed98a0	0x220f6d9	cstring	atmospheric refraction
+36general_ref_knowledge_scholar_flagst	0x1ed98b0	0x220c098	cstring	the relation between refraction and the half chord
+36general_ref_knowledge_scholar_flagst	0x1ed98c0	0x220c128	cstring	the construction and use of the astrolabe
+36general_ref_knowledge_scholar_flagst	0x1ed98d0	0x220c3a8	cstring	the construction and use of the crank
+36general_ref_knowledge_scholar_flagst	0x1ed98e0	0x220c1f8	cstring	the construction and use of the orrery
+36general_ref_knowledge_scholar_flagst	0x1ed98f0	0x220b400	cstring	the creation and use of the orthopedic cast
+36general_ref_knowledge_scholar_flagst	0x1ed9900	0x22096b8	cstring	an approximate value of the ratio of the circumference of a circle to its diameter, using the circumference of polygons and the method of exhaustion
+36general_ref_knowledge_scholar_flagst	0x1ed9910	0x220bb00	cstring	the construction and use of the screw
+36general_ref_knowledge_scholar_flagst	0x1ed9920	0x220f2cc	cstring	ethics as applied to war
+36general_ref_knowledge_scholar_flagst	0x1ed9930	0x220bed0	cstring	the construction and use of the balance wheel
+36general_ref_knowledge_scholar_flagst	0x1ed9940	0x220f240	cstring	the nature of existence
+36general_ref_knowledge_scholar_flagst	0x1ed9950	0x22099d8	cstring	the area enclosed by a parabola and a line
+36general_ref_knowledge_scholar_flagst	0x1ed9960	0x220b888	cstring	the use of a laboratory for preparation of remedies in a hospital
+36general_ref_knowledge_scholar_flagst	0x1ed9970	0x220b4b0	cstring	the surgical method of probing
+36general_ref_knowledge_scholar_flagst	0x1ed9980	0x2209128	cstring	economic policy, its forms and recommendations
+36general_ref_knowledge_scholar_flagst	0x1ed9990	0x220b690	cstring	anatomical studies for medical edification
+36general_ref_knowledge_scholar_flagst	0x1ed99a0	0x220bdf8	cstring	the construction and use of the mechanical compass
+36general_ref_knowledge_scholar_flagst	0x1ed99b0	0x220f1e2	cstring	the nature of truth
+36general_ref_knowledge_scholar_flagst	0x1ed99c0	0x220b7d8	cstring	the treatment of mental illnesses
+36general_ref_knowledge_scholar_flagst	0x1ed99d0	0x2209828	cstring	the relationship between the area of a circle and its radius, involving the ratio of the circumference of the circle to its diameter
+36general_ref_knowledge_scholar_flagst	0x1ed99e0	0x2210c1d	cstring	grammar
+36general_ref_knowledge_scholar_flagst	0x1ed99f0	0x220f5a8	cstring	the tracheotomy surgery
+36general_ref_knowledge_scholar_flagst	0x1ed9a00	0x220f5d6	cstring	cataract surgery
+36general_ref_knowledge_scholar_flagst	0x1ed9a10	0x220b2d0	cstring	the distinction between acute and chronic conditions
+36general_ref_knowledge_scholar_flagst	0x1ed9a20	0x2209340	cstring	the angles of triangles inscribed in a circle with one edge on the diameter
+36general_ref_knowledge_scholar_flagst	0x1ed9a30	0x22095e0	cstring	an algorithm for computing the greatest common divisor of two numbers
+36general_ref_knowledge_scholar_flagst	0x1ed9a40	0x220f57e	cstring	the treatment of fractures
+36general_ref_knowledge_scholar_flagst	0x1ed9a50	0x2209010	cstring	the relationship between wholes and parts
+36general_ref_knowledge_scholar_flagst	0x1ed9a60	0x220bc70	cstring	the construction and use of the warded lock
+36general_ref_knowledge_scholar_flagst	0x1ed9a70	0x220b720	cstring	the function of the nervous system
+36general_ref_knowledge_scholar_flagst	0x1ed9a80	0x220f535	cstring	the notion of paroxysm
+36general_ref_knowledge_scholar_flagst	0x1ed9a90	0x22094e8	cstring	examples of triples of very large whole numbers which, when taken together, are the lengths of the sides of a right triangle
+36general_ref_knowledge_scholar_flagst	0x1ed9aa0	0x220bbc0	cstring	the reasons why the lever is effective
+36general_ref_knowledge_scholar_flagst	0x1ed9ab0	0x220b778	cstring	comparative anatomical studies for use in medicine
+36general_ref_knowledge_scholar_flagst	0x1ed9ac0	0x220bd28	cstring	the construction and use of the crankshaft
+36general_ref_knowledge_scholar_flagst	0x1ed9ad0	0x220a860	cstring	the social behavior of creatures
+36general_ref_knowledge_scholar_flagst	0x1ed9ae0	0x2209e88	cstring	the divergence of the harmonic series
+36general_ref_knowledge_scholar_flagst	0x1ed9af0	0x220b8d0	cstring	the creation of asylums for the mentally ill
+36general_ref_knowledge_scholar_flagst	0x1ed9aff	0x221010e	cstring	dictionaries
+36general_ref_knowledge_scholar_flagst	0x1ed9b0e	0x2210cb2	cstring	the value of art
+36general_ref_knowledge_scholar_flagst	0x1ed9b1d	0x220f30a	cstring	the nature of beauty
+36general_ref_knowledge_scholar_flagst	0x1ed9b2c	0x220f2f9	cstring	direct inference
+36general_ref_knowledge_scholar_flagst	0x1ed9b3b	0x220f2e5	cstring	inductive reasoning
+36general_ref_knowledge_scholar_flagst	0x1ed9b4a	0x220a7d0	cstring	the reproductive behavior of creatures
+36general_ref_knowledge_scholar_flagst	0x1ed9b59	0x220a7a8	cstring	the migratory patterns of creatures
+36general_ref_knowledge_scholar_flagst	0x1ed9b68	0x220a768	cstring	the classification of creatures by their physical features
+36general_ref_knowledge_scholar_flagst	0x1ed9b77	0x220a738	cstring	the comparison of the anatomy of creatures
+36general_ref_knowledge_scholar_flagst	0x1ed9b86	0x220a710	cstring	the anatomical study of creatures
+36general_ref_knowledge_scholar_flagst	0x1ed9b95	0x220f40c	cstring	the dissection of creatures
+36general_ref_knowledge_scholar_flagst	0x1ed9ba4	0x2209b70	cstring	methods for solving systems of equations
+36general_ref_knowledge_scholar_flagst	0x1ed9bb3	0x2209b38	cstring	simple formulas for certain arbitrarily large sums
+36general_ref_knowledge_scholar_flagst	0x1ed9bc2	0x2209b08	cstring	the computation of the surface area of a sphere
+36general_ref_knowledge_scholar_flagst	0x1ed9bd1	0x2209ab0	cstring	a proof that the length of the diagonal of a square is incommensurable with its edge
+36general_ref_knowledge_scholar_flagst	0x1ed9be0	0x2209a78	cstring	a proof that there are infinitely many prime numbers
+36general_ref_knowledge_scholar_flagst	0x1ed9bef	0x2209a38	cstring	an approximation for the length of the diagonal of a square
+36general_ref_knowledge_scholar_flagst	0x1ed9bfe	0x220a460	cstring	the rise of the sun according to the season
+36general_ref_knowledge_scholar_flagst	0x1ed9c0d	0x220a430	cstring	the height of the tides, the moon and the sun
+36general_ref_knowledge_scholar_flagst	0x1ed9c1c	0x220a400	cstring	the relationship between the moon and the tides
+36general_ref_knowledge_scholar_flagst	0x1ed9c2b	0x220f3c4	cstring	the path of the moon
+36general_ref_knowledge_scholar_flagst	0x1ed9c3a	0x220a3d0	cstring	the rise of the moon according to the season
+36general_ref_knowledge_scholar_flagst	0x1ed9c49	0x220f3ad	cstring	the phases of the moon
+36general_ref_knowledge_scholar_flagst	0x1ed9c58	0x2209f10	cstring	using personal interviews as sources
+36general_ref_knowledge_scholar_flagst	0x1ed9c67	0x2209ed8	cstring	the role of state bias and propaganda in sources
+36general_ref_knowledge_scholar_flagst	0x1ed9c76	0x2209eb0	cstring	the role of systemic bias in sources
+36general_ref_knowledge_scholar_flagst	0x1ed9c85	0x220f392	cstring	the reliability of sources
+36general_ref_knowledge_scholar_flagst	0x1ed9c94	0x2209f58	cstring	historical, governmental and social cycles
+36general_ref_knowledge_scholar_flagst	0x1ed9ca3	0x2209f38	cstring	the causes of historical events
+36general_ref_knowledge_scholar_flagst	0x1ed9cb2	0x220f499	cstring	surveying by triangulation
+36general_ref_knowledge_scholar_flagst	0x1ed9cc1	0x220adc8	cstring	the process involved in creating maps
+36general_ref_knowledge_scholar_flagst	0x1ed9cd0	0x220ad98	cstring	the construction and use of the surveying staff
+36general_ref_knowledge_scholar_flagst	0x1ed9cdf	0x220f47b	cstring	the process of surveying land
+36general_ref_knowledge_scholar_flagst	0x1ed9cee	0x220ae30	cstring	surveying by triangulation for the purpose of allocating land
+36general_ref_knowledge_scholar_flagst	0x1ed9cfd	0x220adf0	cstring	surveying by triangulation for the purpose of creating maps
+36general_ref_knowledge_scholar_flagst	0x1ed9d0c	0x220aa38	cstring	the preparation and use of adhesive materials
+36general_ref_knowledge_scholar_flagst	0x1ed9d1b	0x220a9e0	cstring	the classification of materials based on which elemental materials might form them
+36general_ref_knowledge_scholar_flagst	0x1ed9d2a	0x220a988	cstring	a method of classify the hardness of materials by scratching them against each other
+36general_ref_knowledge_scholar_flagst	0x1ed9d39	0x220a960	cstring	the mixture of metals to produce alloys
+36general_ref_knowledge_scholar_flagst	0x1ed9d48	0x220f442	cstring	the classification of ores
+36general_ref_knowledge_scholar_flagst	0x1ed9d57	0x220a930	cstring	the classification of combustible materials
+36general_ref_knowledge_scholar_flagst	0x1ed9d66	0x220bf88	cstring	the construction and use of water-filled sphere as a lens
+36general_ref_knowledge_scholar_flagst	0x1ed9d75	0x220bf58	cstring	the construction and use of the crystal lens
+36general_ref_knowledge_scholar_flagst	0x1ed9d84	0x220bf28	cstring	the construction and use of the force pump
+36general_ref_knowledge_scholar_flagst	0x1ed9d93	0x220bf00	cstring	the construction and use of valves
+36general_ref_knowledge_scholar_flagst	0x1ed9da2	0x220bff8	cstring	the construction and use of the camera obscura
+36general_ref_knowledge_scholar_flagst	0x1ed9db1	0x220bfc8	cstring	the construction and use of the glass lens
+36general_ref_knowledge_scholar_flagst	0x1ed9dc0	0x220b5b0	cstring	the use of specialized surgical instruments
+36general_ref_knowledge_scholar_flagst	0x1ed9dcf	0x220b588	cstring	the use of animals as surgical models
+36general_ref_knowledge_scholar_flagst	0x1ed9dde	0x22091f8	cstring	geometric objects:  points, lines, circles, triangles, and so on
+36general_ref_knowledge_scholar_flagst	0x1ed9ded	0x220f338	cstring	positional notation
+36general_ref_knowledge_scholar_flagst	0x1ed9dfc	0x22091d8	cstring	notation for very large numbers
+36general_ref_knowledge_scholar_flagst	0x1ed9e0b	0x22091b0	cstring	notation for negative quantities
+36general_ref_knowledge_scholar_flagst	0x1ed9e1a	0x220f31f	cstring	a symbol for nothingness
+36general_ref_knowledge_scholar_flagst	0x1ed9e29	0x2209188	cstring	the method of proof by contradiction
+36general_ref_knowledge_scholar_flagst	0x1ed9e38	0x220b268	cstring	remedies prepared from animals
+36general_ref_knowledge_scholar_flagst	0x1ed9e47	0x220fafa	cstring	herbal remedies
+36general_ref_knowledge_scholar_flagst	0x1ed9e56	0x220b228	cstring	determining the likely outcome given a patient's current status
+36general_ref_knowledge_scholar_flagst	0x1ed9e65	0x220f4d2	cstring	the method of autopsy
+36general_ref_knowledge_scholar_flagst	0x1ed9e74	0x220b1e8	cstring	the method of physical examination in diagnosing illness
+36general_ref_knowledge_scholar_flagst	0x1ed9e83	0x220b1b8	cstring	the connection between disease and fouled water
+36general_ref_knowledge_scholar_flagst	0x1ed9e92	0x220f1b9	cstring	dialectic reasoning
+36general_ref_knowledge_scholar_flagst	0x1ed9ea1	0x220f1a5	cstring	propositional logic
+36general_ref_knowledge_scholar_flagst	0x1ed9eb0	0x220f18d	cstring	hypothetical syllogisms
+36general_ref_knowledge_scholar_flagst	0x1ed9ebf	0x220f17b	cstring	syllogistic logic
+36general_ref_knowledge_scholar_flagst	0x1ed9ece	0x220f167	cstring	deductive reasoning
+36general_ref_knowledge_scholar_flagst	0x1ed9edd	0x220f156	cstring	formal reasoning
+36general_ref_knowledge_scholar_flagst	0x1ed9eec	0x220b560	cstring	the use of plants as surgical models
+36general_ref_knowledge_scholar_flagst	0x1ed9efb	0x220b538	cstring	the use of mud bags as surgical models
+36general_ref_knowledge_scholar_flagst	0x1ed9f0a	0x220b510	cstring	the use of practice models in surgery
+36general_ref_knowledge_scholar_flagst	0x1ed9f19	0x220b4f0	cstring	the surgical method of ligature
+36general_ref_knowledge_scholar_flagst	0x1ed9f28	0x220ba28	cstring	the construction and use of the hourglass
+36general_ref_knowledge_scholar_flagst	0x1ed9f37	0x220b9f8	cstring	the construction and use of the astrarium
+36general_ref_knowledge_scholar_flagst	0x1ed9f46	0x220b9b0	cstring	the use of reservoirs in water-based clocks to improve their accuracy
+36general_ref_knowledge_scholar_flagst	0x1ed9f55	0x220b960	cstring	the use of conical shapes in water-based clocks to improve their accuracy
+36general_ref_knowledge_scholar_flagst	0x1ed9f64	0x220b930	cstring	the use of water-based devices to tell time
+36general_ref_knowledge_scholar_flagst	0x1ed9f73	0x220b900	cstring	the use of shadows to tell direction and time
+36general_ref_knowledge_scholar_flagst	0x1ed9f8b	0x220a7f8	cstring	the foraging behavior and diet of creatures
+36general_ref_knowledge_scholar_flagst	0x1ed9fa0	0x220a888	cstring	the ways that creatures are suited to the climates in which they live
+36general_ref_knowledge_scholar_flagst	0x1ed9faf	0x2209e00	cstring	methods for solving certain equations involving powers higher than the quadratic
+36general_ref_knowledge_scholar_flagst	0x1ed9fbe	0x2209c28	cstring	a formula which solves quadratic equations
+36general_ref_knowledge_scholar_flagst	0x1ed9fd0	0x2209d60	cstring	trigonometric identities relating to the sums and differences of angles
+36general_ref_knowledge_scholar_flagst	0x1ed9fe0	0x220a690	cstring	methods of empirical observation in astronomy
+36general_ref_knowledge_scholar_flagst	0x1ed9fef	0x220a618	cstring	the classification of stars according to brightness
+36general_ref_knowledge_scholar_flagst	0x1eda000	0x220a198	cstring	the compilation of many summaries into a single text
+36general_ref_knowledge_scholar_flagst	0x1eda010	0x220a5b0	cstring	the precise compilation of information about stars
+36general_ref_knowledge_scholar_flagst	0x1eda01f	0x220a558	cstring	the dates of lunar and solar eclipses
+36general_ref_knowledge_scholar_flagst	0x1eda02e	0x220a098	cstring	the compilation of brief biographies into one large collection
+36general_ref_knowledge_scholar_flagst	0x1eda040	0x220a320	cstring	the method of collecting and evaluating artifacts to learn about history and culture
+36general_ref_knowledge_scholar_flagst	0x1eda04f	0x220a228	cstring	the method of comparing and contrasting different cultures
+36general_ref_knowledge_scholar_flagst	0x1eda060	0x2209fd8	cstring	the method of writing the history of a single individual
+36general_ref_knowledge_scholar_flagst	0x1eda070	0x220a4f8	cstring	the theory that the sun moves around the world
+36general_ref_knowledge_scholar_flagst	0x1eda080	0x220f4b4	cstring	the creation of accurate maps
+36general_ref_knowledge_scholar_flagst	0x1eda08f	0x220b0b0	cstring	the origin of rainfall through evaporation and condensation
+36general_ref_knowledge_scholar_flagst	0x1eda0a0	0x220b008	cstring	the collection of maps and other information into a single text
+36general_ref_knowledge_scholar_flagst	0x1eda0af	0x220af80	cstring	the measurement of the heights of land features
+36general_ref_knowledge_scholar_flagst	0x1eda0c0	0x220aee0	cstring	the placement of geological information on maps
+36general_ref_knowledge_scholar_flagst	0x1eda0d0	0x220ad18	cstring	the construction and use of the ampoule
+36general_ref_knowledge_scholar_flagst	0x1eda0df	0x220acc8	cstring	the preparation of spirit of niter
+36general_ref_knowledge_scholar_flagst	0x1eda0ee	0x220abb0	cstring	methods for performing experiments systematically in the laboratory
+36general_ref_knowledge_scholar_flagst	0x1eda100	0x220ab28	cstring	the theory and methods involved in distillation
+36general_ref_knowledge_scholar_flagst	0x1eda10f	0x220aa68	cstring	the construction and use of the blast furnace
+36general_ref_knowledge_scholar_flagst	0x1eda120	0x220ac48	cstring	the construction and use of the vial
+36general_ref_knowledge_scholar_flagst	0x1eda12f	0x220f6c3	cstring	the use of lamination
+36general_ref_knowledge_scholar_flagst	0x1eda13e	0x220f6a5	cstring	the theory of light and color
+36general_ref_knowledge_scholar_flagst	0x1eda14d	0x220c190	cstring	the construction and use of the spherical astrolabe
+36general_ref_knowledge_scholar_flagst	0x1eda15c	0x220c260	cstring	the construction and use of double-acting piston bellows
+36general_ref_knowledge_scholar_flagst	0x1eda170	0x220c3f8	cstring	the construction and use of the water-powered piston bellows
+36general_ref_knowledge_scholar_flagst	0x1eda17f	0x220c330	cstring	the calculation of the height of the atmosphere based on atmospheric refraction
+36general_ref_knowledge_scholar_flagst	0x1eda18e	0x220f365	cstring	axiomatic reasoning
+36general_ref_knowledge_scholar_flagst	0x1eda19d	0x22090c8	cstring	diplomacy, its forms and recommendations
+36general_ref_knowledge_scholar_flagst	0x1eda1ac	0x2209070	cstring	law, its forms and recommendations
+36general_ref_knowledge_scholar_flagst	0x1eda1bb	0x220be68	cstring	the construction and use of combination locks
+36general_ref_knowledge_scholar_flagst	0x1eda1ca	0x220bd90	cstring	the construction and use of the chariot odometer
+36general_ref_knowledge_scholar_flagst	0x1eda1d9	0x2209938	cstring	the categorization and properties of conic sections
+36general_ref_knowledge_scholar_flagst	0x1eda1e8	0x22097a8	cstring	a table of chord lengths indexed by angle
+36general_ref_knowledge_scholar_flagst	0x1eda1f7	0x220b830	cstring	the use of professional hospital staff
+36general_ref_knowledge_scholar_flagst	0x1eda206	0x220f65a	cstring	the classification of muscles
+36general_ref_knowledge_scholar_flagst	0x1eda215	0x220f26b	cstring	the nature of mind and body
+36general_ref_knowledge_scholar_flagst	0x1eda224	0x220bc10	cstring	the construction and use of the straight-beam balance
+36general_ref_knowledge_scholar_flagst	0x1eda233	0x220b3a8	cstring	the construction and use of the traction bench
+36general_ref_knowledge_scholar_flagst	0x1eda242	0x220f562	cstring	the theory of convalescence
+36general_ref_knowledge_scholar_flagst	0x1eda251	0x220b308	cstring	the theory of epidemic disease
+36general_ref_knowledge_scholar_flagst	0x1eda260	0x2209278	cstring	the relationship between the length of the altitude of a right triangle and the lengths of the segments into which it divides the hypotenuse
+36general_ref_knowledge_scholar_flagst	0x1eda26f	0x220bab0	cstring	the construction and use of the pulley
+36general_ref_knowledge_scholar_flagst	0x1eda27e	0x2209660	cstring	the computation of the volume of a cone
+36general_ref_knowledge_scholar_flagst	0x1eda28d	0x220b748	cstring	the distinction between veins and arteries
+36general_ref_knowledge_scholar_flagst	0x1eda29c	0x2208f80	cstring	the meaning of individual happiness
+36general_ref_knowledge_scholar_flagst	0x1eda2ab	0x220fc5b	cstring	anesthesia
+36general_ref_knowledge_scholar_flagst	0x1eda2ba	0x220f20f	cstring	the nature of justification
+36general_ref_knowledge_scholar_flagst	0x1eda2c9	0x220b630	cstring	the construction and use of surgical scissors
+36general_ref_knowledge_scholar_flagst	0x1eda2d8	0x220f4f9	cstring	the classification of disease
+36general_ref_knowledge_scholar_flagst	0x1eda2e7	0x220b470	cstring	the surgical method of scraping
+36general_ref_knowledge_scholar_flagst	0x1eda2f6	0x220b450	cstring	the surgical method of incision
+36general_ref_knowledge_scholar_flagst	0x1eda305	0x22093f8	cstring	examples of triples of small whole numbers which, when taken together, are the lengths of the sides of a right triangle
+36general_ref_knowledge_scholar_flagst	0x1eda314	0x220bb68	cstring	the construction and use of the windlass
+36general_ref_knowledge_scholar_flagst	0x1eda323	0x220f5fa	cstring	the anatomy of the eye
+36general_ref_knowledge_scholar_flagst	0x1eda332	0x220f29c	cstring	the nature of processes
+36general_ref_knowledge_scholar_flagst	0x1eda341	0x220bcd0	cstring	the construction and use of the padlock
+25general_ref_value_levelst	0x1ee2881	0x2210d01	cstring	nuances
+25general_ref_value_levelst	0x1ee28cf	inline	immediate	 of 
+25general_ref_value_levelst	0x1ee2916	0x2210cf7	cstring	the value
+25general_ref_value_levelst	0x1ee2964	inline	immediate	knowledg
+25general_ref_value_levelst	0x1ee299e	0x2210ce5	cstring	the worthlessness
+25general_ref_value_levelst	0x1ee29c6	0x21138f2	cstring	 of 
+25general_ref_value_levelst	0x1ee2a27	inline	immediate	peac
+25general_ref_value_levelst	0x1ee2a87	inline	immediate	la
+25general_ref_value_levelst	0x1ee2adc	inline	immediate	introspe
+25general_ref_value_levelst	0x1ee2aec	inline	immediate	ctio
+25general_ref_value_levelst	0x1ee2b44	inline	immediate	self-con
+25general_ref_value_levelst	0x1ee2b54	inline	immediate	trol
+25general_ref_value_levelst	0x1ee2ba4	inline	immediate	eloquenc
+25general_ref_value_levelst	0x1ee2bf4	inline	immediate	fairness
+25general_ref_value_levelst	0x1ee2c54	inline	immediate	hard wor
+25general_ref_value_levelst	0x1ee2ca4	inline	immediate	sacrific
+25general_ref_value_levelst	0x1ee2cf7	inline	immediate	ip
+25general_ref_value_levelst	0x1ee2cfc	inline	immediate	friendsh
+25general_ref_value_levelst	0x1ee2d57	inline	immediate	powe
+25general_ref_value_levelst	0x1ee2da4	inline	immediate	merrimen
+25general_ref_value_levelst	0x1ee2df4	inline	immediate	craftsma
+25general_ref_value_levelst	0x1ee2e04	inline	immediate	nshi
+25general_ref_value_levelst	0x1ee2e4f	inline	immediate	or
+25general_ref_value_levelst	0x1ee2e55	inline	immediate	artw
+25general_ref_value_levelst	0x1ee2eb7	inline	immediate	io
+25general_ref_value_levelst	0x1ee2ebd	inline	immediate	cooperat
+25general_ref_value_levelst	0x1ee2f24	inline	immediate	leisure 
+25general_ref_value_levelst	0x1ee2f34	inline	immediate	time
+25general_ref_value_levelst	0x1ee2f74	inline	immediate	commerce
+25general_ref_value_levelst	0x1ee2fc7	inline	immediate	lt
+25general_ref_value_levelst	0x1ee2fcc	inline	immediate	loya
+25general_ref_value_levelst	0x1ee3017	inline	immediate	ly
+25general_ref_value_levelst	0x1ee301c	inline	immediate	fami
+25general_ref_value_levelst	0x1ee3077	inline	immediate	it
+25general_ref_value_levelst	0x1ee307d	inline	immediate	tranquil
+25general_ref_value_levelst	0x1ee30d7	inline	immediate	on
+25general_ref_value_levelst	0x1ee30dd	inline	immediate	harm
+25general_ref_value_levelst	0x1ee312f	inline	immediate	ru
+25general_ref_value_levelst	0x1ee3135	inline	immediate	deco
+25general_ref_value_levelst	0x1ee3184	inline	immediate	traditio
+25general_ref_value_levelst	0x1ee31d7	inline	immediate	io
+25general_ref_value_levelst	0x1ee31dc	inline	immediate	competit
+25general_ref_value_levelst	0x1ee3234	inline	immediate	persever
+25general_ref_value_levelst	0x1ee3244	inline	immediate	ance
+25general_ref_value_levelst	0x1ee3287	inline	immediate	trut
+25general_ref_value_levelst	0x1ee32d7	inline	immediate	in
+25general_ref_value_levelst	0x1ee32dd	inline	immediate	cunn
+25general_ref_value_levelst	0x1ee332f	inline	immediate	es
+25general_ref_value_levelst	0x1ee3334	inline	immediate	martial 
+25general_ref_value_levelst	0x1ee3341	inline	immediate	prow
+25general_ref_value_levelst	0x1ee339f	inline	immediate	skil
+25general_ref_value_levelst	0x1ee33e4	inline	immediate	independ
+25general_ref_value_levelst	0x1ee33f4	inline	immediate	ence
+25general_ref_value_levelst	0x1ee3434	inline	immediate	stoicism
+25general_ref_value_levelst	0x1ee3487	inline	immediate	nc
+25general_ref_value_levelst	0x1ee348c	inline	immediate	roma
+25general_ref_value_levelst	0x1ee34d7	inline	immediate	re
+25general_ref_value_levelst	0x1ee34dc	inline	immediate	natu
+25general_ref_value_levelst	0x1ee34f9	0x20f38b6	cstring	peace
+25general_ref_value_levelst	0x1ee3518	0x21737ee	cstring	knowledge
+25general_ref_value_levelst	0x1ee3537	0x21b050e	cstring	introspection
+25general_ref_value_levelst	0x1ee3556	0x212fa26	cstring	eloquence
+25general_ref_value_levelst	0x1ee3575	0x214ccc8	cstring	hard work
+25general_ref_value_levelst	0x1ee3594	0x20e3cda	cstring	friendship
+25general_ref_value_levelst	0x1ee35b3	0x214cc82	cstring	merriment
+25general_ref_value_levelst	0x1ee35d2	0x21e2b55	cstring	artwork
+25general_ref_value_levelst	0x1ee35f1	0x214cd11	cstring	leisure time
+25general_ref_value_levelst	0x1ee3610	0x214da25	cstring	loyalty
+25general_ref_value_levelst	0x1ee362f	0x214cc60	cstring	tranquility
+25general_ref_value_levelst	0x1ee364e	0x214cbd1	cstring	decorum
+25general_ref_value_levelst	0x1ee366d	0x21e2f39	cstring	competition
+25general_ref_value_levelst	0x1ee368c	0x219d606	cstring	truth
+25general_ref_value_levelst	0x1ee36ab	0x21f628a	cstring	martial prowess
+25general_ref_value_levelst	0x1ee36ca	0x21f63cd	cstring	independence
+25general_ref_value_levelst	0x1ee36e9	0x212fa9c	cstring	romance
+25general_ref_value_levelst	0x1ee3708	0x219d58e	cstring	law
+25general_ref_value_levelst	0x1ee3727	0x21f56df	cstring	family
+25general_ref_value_levelst	0x1ee3746	0x2173e2a	cstring	power
+25general_ref_value_levelst	0x1ee3765	0x214cba1	cstring	cunning
+25general_ref_value_levelst	0x1ee3784	0x214cbc1	cstring	fairness
+25general_ref_value_levelst	0x1ee37a3	0x212fa37	cstring	tradition
+25general_ref_value_levelst	0x1ee37c2	0x219d4b5	cstring	cooperation
+25general_ref_value_levelst	0x1ee37e1	0x214cc27	cstring	stoicism
+25general_ref_value_levelst	0x1ee3800	0x214cc4c	cstring	self-control
+25general_ref_value_levelst	0x1ee381f	0x219d599	cstring	harmony
+25general_ref_value_levelst	0x1ee383e	0x20dc77f	cstring	craftsmanship
+25general_ref_value_levelst	0x1ee385d	0x21b055b	cstring	skill
+25general_ref_value_levelst	0x1ee387c	0x214ccd9	cstring	sacrifice
+25general_ref_value_levelst	0x1ee389b	0x214ccfd	cstring	perseverance
+25general_ref_value_levelst	0x1ee38ba	0x214cd25	cstring	commerce
+25general_ref_value_levelst	0x1ee38d9	0x21b94e3	cstring	nature
+22general_ref_languagest	0x1ee1a2a	0x21ba050	cstring	the 
+22general_ref_languagest	0x1ee1b11	inline	immediate	 languag
+22general_ref_languagest	0x1ee1b76	0x214c6ab	cstring	 language
+25general_ref_poetic_formst	0x1eded7b	0x22162d0	simd16	 as a poetic for
+25general_ref_poetic_formst	0x1ededde	0x2210b9c	cstring	 as a poetic form
+26general_ref_musical_formst	0x1ede9eb	inline	immediate	rm
+26general_ref_musical_formst	0x1ede9f0	0x22162b0	simd16	 as a musical fo
+26general_ref_musical_formst	0x1edea56	0x2210b78	cstring	 as a musical form
+24general_ref_dance_formst	0x1edebb4	0x22162c0	simd16	 as a dance form
+24general_ref_dance_formst	0x1edec16	0x2210b8b	cstring	 as a dance form
+31general_ref_abstract_buildingst	0x1ee047b	inline	immediate	the 
+31general_ref_abstract_buildingst	0x1ee05e3	inline	immediate	a 
+31general_ref_abstract_buildingst	0x1ee062e	0x21ba050	cstring	the 
+31general_ref_abstract_buildingst	0x1ee06bb	inline	immediate	towe
+31general_ref_abstract_buildingst	0x1ee071e	inline	immediate	 in 
+31general_ref_abstract_buildingst	0x1ee07fd	inline	immediate	[/LPAGE]
+31general_ref_abstract_buildingst	0x1ee082e	0x22182d4	cstring	a 
+31general_ref_abstract_buildingst	0x1ee0890	inline	immediate	guildhal
+31general_ref_abstract_buildingst	0x1ee08f3	inline	immediate	se
+31general_ref_abstract_buildingst	0x1ee08f9	inline	immediate	counting
+31general_ref_abstract_buildingst	0x1ee0906	inline	immediate	 hou
+31general_ref_abstract_buildingst	0x1ee0963	inline	immediate	ar
+31general_ref_abstract_buildingst	0x1ee0969	inline	immediate	libr
+31general_ref_abstract_buildingst	0x1ee09cb	inline	immediate	le
+31general_ref_abstract_buildingst	0x1ee09d1	inline	immediate	temp
+31general_ref_abstract_buildingst	0x1ee0a30	inline	immediate	keep
+31general_ref_abstract_buildingst	0x1ee0a76	0x214e1fc	cstring	dungeon
+31general_ref_abstract_buildingst	0x1ee0ac8	inline	immediate	tomb
+31general_ref_abstract_buildingst	0x1ee0b10	inline	immediate	mead hal
+31general_ref_abstract_buildingst	0x1ee0b68	inline	immediate	hospital
+31general_ref_abstract_buildingst	0x1ee0bcb	inline	immediate	rn
+31general_ref_abstract_buildingst	0x1ee0bd0	inline	immediate	tave
+31general_ref_abstract_buildingst	0x1ee0c1b	inline	immediate	spir
+31general_ref_abstract_buildingst	0x1ee0c6b	inline	immediate	et
+31general_ref_abstract_buildingst	0x1ee0c70	inline	immediate	mark
+31general_ref_abstract_buildingst	0x1ee0cde	0x20ca6cc	cstring	[/LPAGE]
+31general_ref_abstract_buildingst	0x1ee0d28	inline	immediate	[LPAGE:A
+31general_ref_abstract_buildingst	0x1ee0d38	inline	immediate	B:
+31general_ref_abstract_buildingst	0x1ee0e0e	0x20f7379	cstring	 
+31general_ref_abstract_buildingst	0x1ee0e86	0x20e16f2	cstring	[LPAGE:AB:
+31general_ref_abstract_buildingst	0x1ee0ebe	0x21432dc	cstring	]
+31general_ref_abstract_buildingst	0x1ee0ede	0x21f11d0	cstring	:
+31general_ref_abstract_buildingst	0x1ee0f61	inline	immediate	[LPAGE:S
+31general_ref_abstract_buildingst	0x1ee0f71	inline	immediate	ITE:
+31general_ref_abstract_buildingst	0x1ee0f94	0x21432dc	cstring	]
+31general_ref_abstract_buildingst	0x1ee0fbe	0x219d347	cstring	 in 
+31general_ref_abstract_buildingst	0x1ee0fdb	0x20e1784	cstring	tower
+31general_ref_abstract_buildingst	0x1ee1055	0x20e172e	cstring	library
+31general_ref_abstract_buildingst	0x1ee1083	0x214e5a4	cstring	tomb
+31general_ref_abstract_buildingst	0x1ee10b4	0x20e171b	cstring	mead hall
+31general_ref_abstract_buildingst	0x1ee10e5	0x20e1738	cstring	tavern
+31general_ref_abstract_buildingst	0x1ee1116	0x20e1762	cstring	market
+31general_ref_abstract_buildingst	0x1ee112d	0x20e16ff	cstring	counting house
+31general_ref_abstract_buildingst	0x1ee115b	0x219f861	cstring	temple
+31general_ref_abstract_buildingst	0x1ee116f	0x219f8ce	cstring	guildhall
+31general_ref_abstract_buildingst	0x1ee1189	0x20e1710	cstring	hospital
+31general_ref_abstract_buildingst	0x1ee11b7	0x20e1727	cstring	keep
+31general_ref_abstract_buildingst	0x1ee11ce	0x21e2d02	cstring	spire
+31general_ref_abstract_buildingst	0x1ee11f5	0x20ca735	cstring	[LPAGE:SITE:
+31general_ref_abstract_buildingst	0x1ee1214	0x20ca6cc	cstring	[/LPAGE]
+31general_ref_abstract_buildingst	0x1ee1225	0x20e1778	cstring	catacombs
+31general_ref_abstract_buildingst	0x1ee1239	0x20e176d	cstring	sewers
+18general_ref_sitest	0x1edf252	inline	immediate	a 
+18general_ref_sitest	0x1edf35b	inline	immediate	the 
+18general_ref_sitest	0x1edf42a	inline	immediate	[LPAGE:S
+18general_ref_sitest	0x1edf43a	inline	immediate	ITE:
+18general_ref_sitest	0x1edf58e	0x21ba050	cstring	the 
+18general_ref_sitest	0x1edf5be	0x22182d4	cstring	a 
+18general_ref_sitest	0x1edf5de	0x20f7379	cstring	 
+18general_ref_sitest	0x1edf628	inline	immediate	[/LPAGE]
+18general_ref_sitest	0x1edf6b6	0x21432dc	cstring	]
+18general_ref_sitest	0x1edf6de	0x20ca735	cstring	[LPAGE:SITE:
+18general_ref_sitest	0x1edf70e	0x20ca6cc	cstring	[/LPAGE]
+23general_ref_subregionst	0x1edef9f	inline	immediate	R:
+23general_ref_subregionst	0x1edefa4	inline	immediate	[LPAGE:S
+23general_ref_subregionst	0x1edf072	inline	immediate	[/LPAGE]
+23general_ref_subregionst	0x1edf0c6	0x20ca6cc	cstring	[/LPAGE]
+23general_ref_subregionst	0x1edf0e6	0x21432dc	cstring	]
+23general_ref_subregionst	0x1edf10e	0x20df2c8	cstring	[LPAGE:SR:
+27general_ref_feature_layerst	0x1edf8b4	inline	immediate	[/LPAGE]
+27general_ref_feature_layerst	0x1edf918	inline	immediate	rl
+27general_ref_feature_layerst	0x1edf91d	0x22162e0	simd16	the depths of th
+27general_ref_feature_layerst	0x1edf925	inline	immediate	e wo
+27general_ref_feature_layerst	0x1edf990	inline	immediate	ld
+27general_ref_feature_layerst	0x1edf995	inline	immediate	the Unde
+27general_ref_feature_layerst	0x1edf9a2	inline	immediate	rwor
+27general_ref_feature_layerst	0x1edf9ff	inline	immediate	L:
+27general_ref_feature_layerst	0x1edfa04	inline	immediate	[LPAGE:F
+27general_ref_feature_layerst	0x1edfb70	0x22162f0	simd16	the fiery bowels
+27general_ref_feature_layerst	0x1edfb78	inline	immediate	 of the 
+27general_ref_feature_layerst	0x1edfb86	inline	immediate	eart
+27general_ref_feature_layerst	0x1edfbbe	0x20df316	cstring	the Underworld
+27general_ref_feature_layerst	0x1edfbde	0x20df2f0	cstring	the depths of the world
+27general_ref_feature_layerst	0x1edfbfe	0x2210bae	cstring	the fiery bowels of the earth
+27general_ref_feature_layerst	0x1edfc1e	0x20ca6cc	cstring	[/LPAGE]
+27general_ref_feature_layerst	0x1edfc3e	0x21432dc	cstring	]
+27general_ref_feature_layerst	0x1edfc5e	0x20df2e5	cstring	[LPAGE:FL:
+31general_ref_historical_figurest	0x1ef74c1	0x21ba050	cstring	the 
+31general_ref_historical_figurest	0x1ef7561	0x21ba050	cstring	the 
+31general_ref_historical_figurest	0x1ef75b2	inline	immediate	deit
+31general_ref_historical_figurest	0x1ef76f7	0x22182d4	cstring	a 
+31general_ref_historical_figurest	0x1ef776e	inline	immediate	ghostly 
+31general_ref_historical_figurest	0x1ef7871	0x21ba050	cstring	the 
+31general_ref_historical_figurest	0x1ef78c6	0x21ba050	cstring	the 
+31general_ref_historical_figurest	0x1ef78e6	0x22182d4	cstring	a 
+31general_ref_historical_figurest	0x1ef7951	inline	immediate	[/LPAGE]
+31general_ref_historical_figurest	0x1ef79cc	inline	immediate	F:
+31general_ref_historical_figurest	0x1ef79d1	inline	immediate	[LPAGE:H
+31general_ref_historical_figurest	0x1ef7a5e	0x20f7379	cstring	 
+31general_ref_historical_figurest	0x1ef7a6f	0x22182d4	cstring	a 
+31general_ref_historical_figurest	0x1ef7aba	inline	immediate	forc
+31general_ref_historical_figurest	0x1ef7aea	0x20df441	cstring	deity
+31general_ref_historical_figurest	0x1ef7b09	0x21e2b47	cstring	force
+31general_ref_historical_figurest	0x1ef7b2e	0x22182d4	cstring	a 
+31general_ref_historical_figurest	0x1ef7b6a	0x21ba050	cstring	the 
+31general_ref_historical_figurest	0x1ef7b90	inline	immediate	the 
+31general_ref_historical_figurest	0x1ef7bb4	0x20f7379	cstring	 
+31general_ref_historical_figurest	0x1ef7bf5	0x21432dc	cstring	]
+31general_ref_historical_figurest	0x1ef7c14	0x20ca83d	cstring	[LPAGE:HF:
+31general_ref_historical_figurest	0x1ef7c33	0x20ca6cc	cstring	[/LPAGE]
+31general_ref_historical_figurest	0x1ef7c7a	0x20df374	cstring	ghostly 
+24general_ref_entity_popst	0x1ee15ea	0x2210cc3	cstring	a population of 
+24general_ref_entity_popst	0x1ee1677	inline	immediate	[/LPAGE]
+24general_ref_entity_popst	0x1ee16d9	inline	immediate	[LPAGE:E
+24general_ref_entity_popst	0x1ee16e9	inline	immediate	POP:
+24general_ref_entity_popst	0x1ee179d	inline	immediate	ghostly 
+24general_ref_entity_popst	0x1ee1800	inline	immediate	animated
+24general_ref_entity_popst	0x1ee1869	inline	immediate	 corpses
+24general_ref_entity_popst	0x1ee189e	0x21ae3de	cstring	 corpses
+24general_ref_entity_popst	0x1ee18ce	0x20f7411	cstring	animated 
+24general_ref_entity_popst	0x1ee18fe	0x20df374	cstring	ghostly 
+24general_ref_entity_popst	0x1ee192e	0x21432dc	cstring	]
+24general_ref_entity_popst	0x1ee194e	0x20e16bb	cstring	[LPAGE:EPOP:
+24general_ref_entity_popst	0x1ee196e	0x20ca6cc	cstring	[/LPAGE]
+22general_ref_creaturest	0x1ee131c	0x22182d4	cstring	a 
+22general_ref_creaturest	0x1ee13cd	inline	immediate	ghostly 
+22general_ref_creaturest	0x1ee1430	inline	immediate	animated
+22general_ref_creaturest	0x1ee149b	inline	immediate	ps
+22general_ref_creaturest	0x1ee14a0	inline	immediate	 cor
+22general_ref_creaturest	0x1ee14d6	0x20df374	cstring	ghostly 
+22general_ref_creaturest	0x1ee150e	0x214dd30	cstring	 corpse
+22general_ref_creaturest	0x1ee153e	0x20f7411	cstring	animated 
+23general_ref_item_typest	0x1ed7faa	inline	immediate	a 
+23general_ref_item_typest	0x1ed800e	0x22182d4	cstring	a 
+20general_ref_entityst-27general_ref_entity_stolenst-28general_ref_entity_offeredst-30general_ref_entity_itemownerst	0x1ee2148	0x2210cd4	cstring	an unnamed group
+20general_ref_entityst-27general_ref_entity_stolenst-28general_ref_entity_offeredst-30general_ref_entity_itemownerst	0x1ee21c6	inline	immediate	[/LPAGE]
+20general_ref_entityst-27general_ref_entity_stolenst-28general_ref_entity_offeredst-30general_ref_entity_itemownerst	0x1ee2248	inline	immediate	NT
+20general_ref_entityst-27general_ref_entity_stolenst-28general_ref_entity_offeredst-30general_ref_entity_itemownerst	0x1ee224d	inline	immediate	[LPAGE:E
+20general_ref_entityst-27general_ref_entity_stolenst-28general_ref_entity_offeredst-30general_ref_entity_itemownerst	0x1ee22fe	0x20ca6cc	cstring	[/LPAGE]
+20general_ref_entityst-27general_ref_entity_stolenst-28general_ref_entity_offeredst-30general_ref_entity_itemownerst	0x1ee231e	0x21432dc	cstring	]
+20general_ref_entityst-27general_ref_entity_stolenst-28general_ref_entity_offeredst-30general_ref_entity_itemownerst	0x1ee233e	0x20ca91e	cstring	[LPAGE:ENT:

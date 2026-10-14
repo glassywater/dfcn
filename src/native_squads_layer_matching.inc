@@ -5,6 +5,7 @@ void Overlay::prepare_native_squads_text() {
     TranslationStateScope translation;
     g_native_squads_footer_rows.clear();
     g_native_squads_footer_target.clear();
+    g_native_squads_paragraphs.clear();
     g_native_squads_matches.clear();
     if (config_.enabled && !rules_.empty())
         g_native_squads_matches = find_native_squads_matches();
@@ -52,6 +53,7 @@ std::vector<Match> Overlay::find_native_squads_matches() const {
         std::string complete;
         bool generated_name = false;
         int footer = -1;
+        bool paragraph = false;
     };
     std::vector<Field> fields;
     auto captured_rows = g_native_squads_text.rows;
@@ -223,6 +225,36 @@ std::vector<Match> Overlay::find_native_squads_matches() const {
             }
         }
     }
+    for (auto &first : owned) {
+        for (const auto &spec : native_squad_messages) {
+            // The four-writer footer already has its separate provenance.
+            if (!spec.parts.back().empty() || first.complete != spec.parts.front()) continue;
+            NativeSquadsParagraph paragraph;
+            std::vector<Field *> parts;
+            std::string source;
+            for (size_t i = 0; i < spec.parts.size() && !spec.parts[i].empty(); ++i) {
+                const auto found = std::find_if(owned.begin(), owned.end(), [&](const Field &field) {
+                    return field.draw->x == first.draw->x &&
+                        field.draw->y == first.draw->y + static_cast<int>(i) &&
+                        !field.draw->squad_alias_target && !field.draw->squad_generated_name &&
+                        !field.draw->editable_text && !field.draw->unit_identity_target &&
+                        (spec.parts[i] == "{s}" || field.complete == spec.parts[i]);
+                });
+                if (found == owned.end()) { parts.clear(); break; }
+                if (!source.empty()) source += ' ';
+                source += found->complete;
+                parts.push_back(&*found);
+                paragraph.rows.push_back(found->match);
+            }
+            if (parts.empty()) continue;
+            const auto target = translate_fortress_squad_field(source);
+            if (!target || target->empty()) continue;
+            paragraph.target = *target;
+            for (auto *part : parts) part->paragraph = true;
+            g_native_squads_paragraphs.push_back(std::move(paragraph));
+            break;
+        }
+    }
     for (auto &field : owned) {
         const auto &draw = *field.draw;
         auto &match = field.match;
@@ -236,6 +268,10 @@ std::vector<Match> Overlay::find_native_squads_matches() const {
         }
         if (field.footer >= 0 && !g_native_squads_footer_target.empty()) {
             result.push_back(std::move(match)); // exact source masks for the footer
+            continue;
+        }
+        if (field.paragraph) {
+            result.push_back(std::move(match));
             continue;
         }
         std::optional<std::string> target;
@@ -295,6 +331,7 @@ std::vector<Match> Overlay::find_native_squads_matches() const {
                         const auto translated = exact_literal_translation(value);
                         if (label) target = *label + (translated ? *translated : native_text_to_utf8(value));
                     }
+                    if (!target) target = translate_fortress_squad_field(field.complete);
                     if (!target) target = translate_world_mission_title(field.complete);
                     if (!target) target = translate_fortress_activity(field.complete);
                     // Match only the complete submitted field, without

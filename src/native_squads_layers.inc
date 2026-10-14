@@ -5,6 +5,11 @@ static NativeInfoCapturedText g_native_squads_text;
 static std::vector<Match> g_native_squads_matches;
 static std::vector<Match> g_native_squads_footer_rows;
 static std::string g_native_squads_footer_target;
+struct NativeSquadsParagraph {
+    std::vector<Match> rows;
+    std::string target;
+};
+static std::vector<NativeSquadsParagraph> g_native_squads_paragraphs;
 static std::array<uintptr_t, 4> g_native_squads_footer_callers{};
 // Producer-owned member text columns stop at the selection control. These
 // bounds are submitted by its native cursor calls, never found in a grid.
@@ -42,6 +47,7 @@ static void native_squads_begin_frame() {
     g_native_squads_matches.clear();
     g_native_squads_footer_rows.clear();
     g_native_squads_footer_target.clear();
+    g_native_squads_paragraphs.clear();
     g_native_squads_member_columns.clear();
     g_native_squads_background_grid = nullptr;
     g_native_squads_background_top_grid = nullptr;

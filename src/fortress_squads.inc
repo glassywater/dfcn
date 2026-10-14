@@ -1,3 +1,152 @@
+// These are fixed addst records in the complete squad renderer, rather than
+// paragraphs wrapped at a panel edge. The middle title is supplied by the
+// live military position. See fortress-squad-sidebar/elf-decompiled.c.
+struct NativeSquadMessageSpec {
+    std::array<std::string_view, 4> parts;
+};
+static constexpr NativeSquadMessageSpec native_squad_messages[] = {
+    {{"Cannot appoint", "until commander", "is selected", {}}},
+    {{"You must appoint a", "{s}", "to create a squad.", {}}},
+    {{"You must appoint", "somebody first", "to create a squad.", {}}},
+    {{"Minimum number of", "soldiers to follow", "new order", {}}},
+    {{"Select a squad or squad", "member to give orders,",
+      "change equipment, and", "assign schedules."}},
+};
+
+static bool native_squad_sidebar_caller(uintptr_t caller) {
+#ifdef _WIN32
+    // PE submits the complete component to its private layer instead.
+    return false;
+#else
+    const auto base = native_history_profile_base();
+    const auto first = native_reference_address(base, 0x12d4540);
+    const auto last = native_reference_address(base, 0x12dcc2f);
+    return first && last && caller >= first && caller <= last;
+#endif
+}
+
+std::optional<std::string> Overlay::translate_fortress_squad_field(
+        std::string_view source) const {
+    if (auto target = exact_literal_translation("Squad sidebar: " + std::string(source)))
+        return target;
+    if (auto target = exact_literal_translation(source)) return target;
+    std::vector<int> colors;
+    if (auto target = translate_help_paragraph(std::string(source), {}, colors, true))
+        return target;
+    // These labels append a routine name from the actual editable schedule.
+    // Preserve its text if it is not one of the native built-in routines.
+    for (const std::string_view prefix : {"Routine:", "Editing routine "}) {
+        if (!source.starts_with(prefix)) continue;
+        auto label = exact_literal_translation(trim_view(prefix));
+        const auto value = trim_view(source.substr(prefix.size()));
+        const auto routine = exact_literal_translation(value);
+        if (label) return *label + (routine ? *routine : native_text_to_utf8(value));
+    }
+    if (auto target = translate_fortress_activity(std::string(source), true)) return target;
+    for (int index : candidate_template_rules(source)) {
+        const auto &rule = rules_[index];
+        size_t end = 0;
+        std::vector<std::string> captures;
+        if (!match_template(rule, source, 0, &end, &captures) || end != source.size()) continue;
+        auto target = translate_template_captures_display(rule, captures, source);
+        if (target.usable() && target.changed()) return target.target;
+    }
+    return std::nullopt;
+}
+
+void Overlay::append_fortress_squad_messages(std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y, const unsigned char *raw) const {
+    if (!gps_ || rows.size() != static_cast<size_t>(gps_->dimy)) return;
+    for (bool top : {false, true}) {
+        const auto *grid = top ? gps_->screen_top : gps_->screen;
+        if (!grid || (raw && raw != grid)) continue;
+        const auto draws = captured_native_drawn_text_rows(top);
+        std::map<std::pair<int, int>, const NativeDrawnTextRow *> positions;
+        for (const auto &draw : draws)
+            if (native_squad_sidebar_caller(draw.native_caller))
+                positions[{draw.x, draw.y}] = &draw;
+        const auto current = [&](const NativeDrawnTextRow &draw) -> std::optional<Match> {
+            if (draw.squad_alias_target || draw.squad_generated_name || draw.editable_text ||
+                    draw.unit_identity_target || draw.source.empty() || draw.x < 0 ||
+                    draw.y < 0 || draw.y >= gps_->dimy || draw.x >= gps_->dimx ||
+                    draw.source.size() > static_cast<size_t>(gps_->dimx - draw.x) ||
+                    rows[draw.y].compare(draw.x, draw.source.size(), draw.source) != 0)
+                return std::nullopt;
+            for (size_t byte = 0; byte < draw.source.size(); ++byte) {
+                bool layer = false;
+                const int x = draw.x + static_cast<int>(byte);
+                const auto *cell = cell_at(x, draw.y, &layer);
+                const auto expected = static_cast<unsigned char>(draw.source[byte]);
+                if (!cell || (cell[0] ? cell[0] : ' ') != expected ||
+                        (layer != top && (expected != ' ' ||
+                            !native_item_row_layer_at(*gps_, x, draw.y, top)))) return std::nullopt;
+            }
+            const auto source = trim_view(draw.source);
+            if (source.empty()) return std::nullopt;
+            Match match{draw.x + static_cast<int>(source.data() - draw.source.data()), draw.y,
+                static_cast<int>(source.size()), kUiMessageRule, {}, std::string(source)};
+            match.layout_foreground_rgb = draw.foreground_rgb;
+            return match;
+        };
+        for (const auto &[position, first] : positions) {
+            for (const auto &spec : native_squad_messages) {
+                if (trim_view(first->source) != spec.parts.front()) continue;
+                std::vector<Match> parts;
+                std::string source;
+                bool complete = true;
+                int right = first->x;
+                for (size_t i = 0; i < spec.parts.size() && !spec.parts[i].empty(); ++i) {
+                    const auto found = positions.find({first->x, first->y + static_cast<int>(i)});
+                    if (found == positions.end() || (spec.parts[i] != "{s}" &&
+                            trim_view(found->second->source) != spec.parts[i])) {
+                        complete = false; break;
+                    }
+                    auto part = current(*found->second);
+                    if (!part) { complete = false; break; }
+                    if (!source.empty()) source += ' ';
+                    source += trim(found->second->complete_source.empty()
+                        ? found->second->source : found->second->complete_source);
+                    right = std::max(right, part->x + part->length);
+                    parts.push_back(std::move(*part));
+                }
+                if (!complete || parts.empty()) continue;
+                const auto target = translate_fortress_squad_field(source);
+                if (!target || target->empty()) continue;
+                // The native record allocates exactly these rows. Clip the
+                // translated paragraph to that allocation, including rows
+                // whose original English has no standalone dictionary entry.
+                const int origin_x = (gps_->screen_pixel_x - gps_->dimx * gps_->tile_pixel_x) / 2;
+                const int origin_y = (gps_->screen_pixel_y - gps_->dimy * gps_->tile_pixel_y) / 2;
+                const SDL_Rect clip{origin_x + first->x * gps_->tile_pixel_x,
+                    origin_y + first->y * gps_->tile_pixel_y,
+                    (right - first->x) * gps_->tile_pixel_x,
+                    static_cast<int>(parts.size()) * gps_->tile_pixel_y};
+                for (auto &part : parts) part.layout_native_clip = clip;
+                append_bounded_paragraph(std::move(parts), *target, rows, matches,
+                    only_y, right, right, {}, false, first->x);
+                break;
+            }
+        }
+        // All remaining submitted fields use the complete native source,
+        // including shortened order descriptions and numeric captions.
+        for (const auto &[position, draw] : positions) {
+            auto match = current(*draw);
+            if (!match) continue;
+            const auto source = trim_view(draw->complete_source.empty()
+                ? draw->source : draw->complete_source);
+            auto target = translate_fortress_squad_field(source);
+            if (!target || target->empty()) continue;
+            match->target = std::move(*target);
+            match->layout_x = match->x;
+            match->layout_left = true;
+            match->layout_length = match->length;
+            match->layout_clip_right = match->x + match->length;
+            std::fill_n(rows[match->y].begin() + match->x, match->length, ' ');
+            if (only_y < 0 || only_y == match->y) matches.push_back(std::move(*match));
+        }
+    }
+}
+
 std::optional<std::string> Overlay::translate_fortress_squad_name(
         std::string_view source, int x, int y) const {
     // Text-only templates have no squad object or draw coordinates. Keep

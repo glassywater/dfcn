@@ -1,0 +1,62 @@
+scope	source	zh	fields	native_source
+activity-detail-sentence	The topic being considered is {s}.	正在思考的主题是{s1}。	work-reference	ELF 53.16 0x15c1200..0x15c4863; data/extracted/activity-detail/decompiled-source.c
+activity-detail-sentence	The topic being considered is .	正在思考的主题未注明。		ELF 53.16 0x15c1200..0x15c4863; data/extracted/activity-detail/decompiled-source.c
+activity-detail-sentence	The topic being discussed is {s}.	正在讨论的主题是{s1}。	work-reference	ELF 53.16 0x15c1200..0x15c4863; data/extracted/activity-detail/decompiled-source.c
+activity-detail-sentence	The topic being discussed is .	正在讨论的主题未注明。		ELF 53.16 0x15c1200..0x15c4863; data/extracted/activity-detail/decompiled-source.c
+activity-detail-sentence	The topic being taught is {s}.	正在讲授的主题是{s1}。	work-reference	ELF 53.16 0x15c1200..0x15c4863; data/extracted/activity-detail/decompiled-source.c
+activity-detail-sentence	The topic being taught is .	正在讲授的主题未注明。		ELF 53.16 0x15c1200..0x15c4863; data/extracted/activity-detail/decompiled-source.c
+activity-detail-sentence	The topic being written about is {s}.	正在撰写的主题是{s1}。	work-reference	ELF 53.16 0x15c1200..0x15c4863; data/extracted/activity-detail/decompiled-source.c
+activity-detail-sentence	The topic being written about is .	正在撰写的主题未注明。		ELF 53.16 0x15c1200..0x15c4863; data/extracted/activity-detail/decompiled-source.c
+activity-detail-sentence	This organizational activity will branch into specific social events.	这项组织活动将安排具体的社交活动。		ELF 53.16 0x15c1200..0x15c4863; data/extracted/activity-detail/decompiled-source.c
+activity-detail-sentence	This organizational activity will branch into specific worship events.	这项组织活动将安排具体的宗教活动。		ELF 53.16 0x15c1200..0x15c4863; data/extracted/activity-detail/decompiled-source.c
+activity-detail-sentence	This organizational activity will branch into specific play events.	这项组织活动将安排具体的娱乐活动。		ELF 53.16 0x15c1200..0x15c4863; data/extracted/activity-detail/decompiled-source.c
+activity-detail-sentence	There is no specific information for this activity.	这项活动没有具体信息。		ELF 53.16 0x15c1200..0x15c4863; data/extracted/activity-detail/decompiled-source.c
+activity-detail-sentence	The performance is at {s}.	表演进行到了{s1}。	activity-detail-position	ELF 53.16 0x15c1200..0x15c4863; data/extracted/activity-detail/decompiled-source.c
+activity-detail-sentence	The performance is at .	表演当前进度未注明。		ELF 53.16 0x15c1200..0x15c4863; data/extracted/activity-detail/decompiled-source.c
+activity-detail-sentence	The dance has reached the point where its accompaniment is at {s}.	舞蹈进行到此处时，伴奏已进行到{s1}。	activity-detail-position	ELF 53.16 0x15c1200..0x15c4863; data/extracted/activity-detail/decompiled-source.c
+activity-detail-sentence	The dance has reached the point where its accompaniment is at .	舞蹈此处的伴奏进度未注明。		ELF 53.16 0x15c1200..0x15c4863; data/extracted/activity-detail/decompiled-source.c
+activity-detail-sentence	{s} is an example of {s}.	《{s1}》是{s2}的作品。	$book,activity-detail-form	ELF 53.16 0x15c1200..0x15c4863; data/extracted/activity-detail/decompiled-source.c
+activity-detail-sentence	is an example of {s}.	这部未命名的作品属于{s1}。	activity-detail-form	ELF 53.16 0x15c1200..0x15c4863; data/extracted/activity-detail/decompiled-source.c
+activity-detail-sentence	{s} is an example of .	《{s1}》的艺术形式未注明。	$book	ELF 53.16 0x15c1200..0x15c4863; data/extracted/activity-detail/decompiled-source.c
+activity-detail-sentence	is an example of .	这部作品的名称和艺术形式未注明。		ELF 53.16 0x15c1200..0x15c4863; data/extracted/activity-detail/decompiled-source.c
+activity-detail-form	musical composition	音乐作品		ELF 53.16 0x15c1200..0x15c4863; data/extracted/activity-detail/decompiled-source.c
+activity-detail-form	poetry	诗歌		ELF 53.16 0x15c1200..0x15c4863; data/extracted/activity-detail/decompiled-source.c
+activity-detail-form	choreography	舞蹈编排		ELF 53.16 0x15c1200..0x15c4863; data/extracted/activity-detail/decompiled-source.c
+activity-detail-form	{s}	{s1}体	$name	ELF 53.16 0x15c1200..0x15c4863; data/extracted/activity-detail/decompiled-source.c
+activity-detail-section	simple passage	简单乐段		ELF 53.16 0x15c1200..0x15c4863; data/extracted/activity-detail/decompiled-source.c
+activity-detail-section	introduction	引子		ELF 53.16 0x15c1200..0x15c4863; data/extracted/activity-detail/decompiled-source.c
+activity-detail-section	exposition	呈示部		ELF 53.16 0x15c1200..0x15c4863; data/extracted/activity-detail/decompiled-source.c
+activity-detail-section	recapitulation	再现部		ELF 53.16 0x15c1200..0x15c4863; data/extracted/activity-detail/decompiled-source.c
+activity-detail-section	synthesis	综合部		ELF 53.16 0x15c1200..0x15c4863; data/extracted/activity-detail/decompiled-source.c
+activity-detail-section	verse	主歌段		ELF 53.16 0x15c1200..0x15c4863; data/extracted/activity-detail/decompiled-source.c
+activity-detail-section	chorus	副歌段		ELF 53.16 0x15c1200..0x15c4863; data/extracted/activity-detail/decompiled-source.c
+activity-detail-section	bridge-passage	过渡段		ELF 53.16 0x15c1200..0x15c4863; data/extracted/activity-detail/decompiled-source.c
+activity-detail-section	finale	终曲		ELF 53.16 0x15c1200..0x15c4863; data/extracted/activity-detail/decompiled-source.c
+activity-detail-section	coda	尾声		ELF 53.16 0x15c1200..0x15c4863; data/extracted/activity-detail/decompiled-source.c
+activity-detail-section	theme	主题段		ELF 53.16 0x15c1200..0x15c4863; data/extracted/activity-detail/decompiled-source.c
+activity-detail-section	series of variations	变奏组		ELF 53.16 0x15c1200..0x15c4863; data/extracted/activity-detail/decompiled-source.c
+activity-detail-section	previous passage	前一乐段		ELF 53.16 0x15c1200..0x15c4863; data/extracted/activity-detail/decompiled-source.c
+activity-detail-section	previous passages	前述乐段		ELF 53.16 0x15c1200..0x15c4863; data/extracted/activity-detail/decompiled-source.c
+activity-detail-section	two themes	双主题		ELF 53.16 0x15c1200..0x15c4863; data/extracted/activity-detail/decompiled-source.c
+activity-detail-section	line	行		ELF 53.16 0x15c1200..0x15c4863; data/extracted/activity-detail/decompiled-source.c
+activity-detail-section	stanza	诗节		ELF 53.16 0x15c1200..0x15c4863; data/extracted/activity-detail/decompiled-source.c
+activity-detail-section	verse paragraph	诗段		ELF 53.16 0x15c1200..0x15c4863; data/extracted/activity-detail/decompiled-source.c
+activity-detail-section	{s} {s}	第{s1}{s2}	work-ordinal,activity-detail-section	ELF 53.16 0x15c1200..0x15c4863; data/extracted/activity-detail/decompiled-source.c
+activity-detail-section	{s} of {s}	{s2}的{s1}	activity-detail-section,activity-detail-section	ELF 53.16 0x15c1200..0x15c4863; data/extracted/activity-detail/decompiled-source.c
+activity-detail-section	{s} on {s}	基于{s2}的{s1}	activity-detail-section,activity-detail-section	ELF 53.16 0x15c1200..0x15c4863; data/extracted/activity-detail/decompiled-source.c
+activity-detail-section	the {s}	{s1}	activity-detail-section	ELF 53.16 0x15c1200..0x15c4863; data/extracted/activity-detail/decompiled-source.c
+activity-detail-section	a {s}	{s1}	activity-detail-section	ELF 53.16 0x15c1200..0x15c4863; data/extracted/activity-detail/decompiled-source.c
+activity-detail-position	{s}	{s1}	activity-detail-section	ELF 53.16 0x15c1200..0x15c4863; data/extracted/activity-detail/decompiled-source.c
+activity-detail-position	{s}, {s}	{s1}、{s2}	activity-detail-section,activity-detail-position	ELF 53.16 0x15c1200..0x15c4863; data/extracted/activity-detail/decompiled-source.c
+activity-detail-position	{s} and {s}	{s1}和{s2}	activity-detail-section,activity-detail-position	ELF 53.16 0x15c1200..0x15c4863; data/extracted/activity-detail/decompiled-source.c
+activity-detail-heading	Ponder	思考		ELF 53.16 activity_event +0xb8; empty category, selector or subject branch; data/extracted/activity-detail/elf-caption-bindings.tsv
+activity-detail-heading	Discuss	讨论		ELF 53.16 activity_event +0xb8; empty category, selector or subject branch; data/extracted/activity-detail/elf-caption-bindings.tsv
+activity-detail-heading	Teach	讲授		ELF 53.16 activity_event +0xb8; empty category, selector or subject branch; data/extracted/activity-detail/elf-caption-bindings.tsv
+activity-detail-heading	Learn	学习		ELF 53.16 activity_event +0xb8; empty category, selector or subject branch; data/extracted/activity-detail/elf-caption-bindings.tsv
+activity-detail-heading	Write about	撰写		ELF 53.16 activity_event +0xb8; empty category, selector or subject branch; data/extracted/activity-detail/elf-caption-bindings.tsv
+activity-detail-heading	Pray to	祈祷（对象未注明）		ELF 53.16 activity_event +0xb8; empty category, selector or subject branch; data/extracted/activity-detail/elf-caption-bindings.tsv
+activity-detail-heading	Meditate on	冥想（主题未注明）		ELF 53.16 activity_event +0xb8; empty category, selector or subject branch; data/extracted/activity-detail/elf-caption-bindings.tsv
+activity-detail-heading	Preach on	布道（主题未注明）		ELF 53.16 activity_event +0xb8; empty category, selector or subject branch; data/extracted/activity-detail/elf-caption-bindings.tsv
+activity-detail-heading	Simulate	模拟演奏		ELF 53.16 activity_event +0xb8; empty category, selector or subject branch; data/extracted/activity-detail/elf-caption-bindings.tsv
+activity-detail-heading	Promote	宣扬价值观		ELF 53.16 activity_event +0xb8; empty category, selector or subject branch; data/extracted/activity-detail/elf-caption-bindings.tsv
+activity-detail-heading	Inveigh Against	抨击价值观		ELF 53.16 activity_event +0xb8; empty category, selector or subject branch; data/extracted/activity-detail/elf-caption-bindings.tsv
