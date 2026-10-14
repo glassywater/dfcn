@@ -12338,3 +12338,65 @@ Art form: unspecified subject	主题未注明	l
 Art form: unspecified mood	风格未注明	l
 Art form: unspecified description	内容未注明	l
 Art form: unspecified deity	敬拜对象未注明	l
+
+# ELF conversation directions and army: authored caption search words.
+Conversation keyword: a	一个	l
+Conversation keyword: all	全部	l
+Conversation keyword: an	一个	l
+Conversation keyword: and	和	l
+Conversation keyword: anything	任何事	l
+Conversation keyword: are	是	l
+Conversation keyword: as	作为	l
+Conversation keyword: ask	询问	l
+Conversation keyword: be	被	l
+Conversation keyword: but	但	l
+Conversation keyword: by	通过	l
+Conversation keyword: care	在意	l
+Conversation keyword: completely	完全	l
+Conversation keyword: current	当前	l
+Conversation keyword: disapprove	不赞同	l
+Conversation keyword: don t	不	l
+Conversation keyword: enjoyed	喜欢	l
+Conversation keyword: for	为	l
+Conversation keyword: from	从	l
+Conversation keyword: had	有过	l
+Conversation keyword: ignorance	不知情	l
+Conversation keyword: in	在	l
+Conversation keyword: is	是	l
+Conversation keyword: it	此事	l
+Conversation keyword: kind	种类	l
+Conversation keyword: know	知道	l
+Conversation keyword: listener	对方	l
+Conversation keyword: matters	事情	l
+Conversation keyword: menu	菜单	l
+Conversation keyword: must	必须	l
+Conversation keyword: not	不	l
+Conversation keyword: of	的	l
+Conversation keyword: problem	问题	l
+Conversation keyword: profess	表示	l
+Conversation keyword: provide	告知	l
+Conversation keyword: recommend	推荐	l
+Conversation keyword: rescued	获救	l
+Conversation keyword: riddles	谜语	l
+Conversation keyword: stopped	制止	l
+Conversation keyword: that	这	l
+Conversation keyword: the	该	l
+Conversation keyword: they	他们	l
+Conversation keyword: they ve	他们已经	l
+Conversation keyword: this	这	l
+Conversation keyword: to	向	l
+Conversation keyword: topic	话题	l
+Conversation keyword: total	完全	l
+Conversation keyword: unexpected	意外	l
+Conversation keyword: violent	暴力	l
+Conversation keyword: was	曾是	l
+Conversation keyword: whereabouts	下落	l
+Conversation keyword: with	用	l
+Conversation keyword: you	你	l
+Conversation keyword: yourself	你自己	l
+Conversation keyword: goblin	地精	l
+Conversation keyword: elf	精灵	l
+Conversation keyword: human	人类	l
+Conversation keyword: ask for directions	询问路线	l
+Conversation keyword: ask for whereabouts	询问下落	l
+Conversation keyword: listener s	对方的	l

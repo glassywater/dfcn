@@ -1898,7 +1898,7 @@ adventure.conversation.emotion	0x167a618	Acknowledge lack of repentance
 adventure.conversation.emotion	0x167a638	Acknowledge lack of relief
 adventure.conversation.emotion	0x167a658	Acknowledge lack of regret
 adventure.conversation.dynamic	0x1672638	Claim this site for yourself and {e}
-adventure.conversation.dynamic	0x1672e28	Ask for the whereabouts of {p}
+adventure.conversation.dynamic	0x1672e28	Ask for the whereabouts of {n}
 adventure.conversation.dynamic	0x1672ea0	Summarize the hold of {e} on its territory
 adventure.conversation.dynamic	0x1672ef0	Go into {e}'s relationship with {e}
 adventure.conversation.dynamic	0x1672f08	Give an order based on {q}
@@ -1975,11 +1975,11 @@ adventure.conversation.dynamic	0x1674f78	Charge to serve {e}
 adventure.conversation.dynamic	0x1674fd8	Lay quest to retrieve {i}
 adventure.conversation.dynamic	0x16753c8	Praise for returning {i}
 adventure.conversation.dynamic	0x16753e8	Express astonishment at seeing {p}
-adventure.conversation.dynamic	0x16755f8	Tell the listener that {p} is dead
-adventure.conversation.dynamic	0x1675620	Recommend {p}
+adventure.conversation.dynamic	0x16755f8	Tell the listener that {n} is dead
+adventure.conversation.dynamic	0x1675620	Recommend {n} as a guide
 adventure.conversation.dynamic	0x1675648	Tell listener about {q}
 adventure.conversation.dynamic	0x1675660	Provide directions to {e}
-adventure.conversation.dynamic	0x1675900	Provide the whereabouts of {p}
+adventure.conversation.dynamic	0x1675900	Provide the whereabouts of {n}
 adventure.conversation.dynamic	0x1675968	Provide the location of {e}
 adventure.conversation.dynamic	0x1675988	Give your opinion of {p}
 
@@ -3034,3 +3034,4 @@ adventure.barter.control	0x15d6509	Show
 adventure.barter.control	0x15d5e8d+0x15d60be	Mark all
 adventure.barter.control	0x15d5f98+0x15d61d5	Unmark all
 adventure.barter.control	0x15d6c92	Cannot trade currency
+adventure.conversation.dynamic.elf	0x106c612	Request a guide to {n}

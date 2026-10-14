@@ -1,0 +1,4275 @@
+role	instruction	condition
+return-topic	0x10676e7	cmp    rdi,rax
+return-topic	0x10676ea	je     10676f9
+return-topic	0x1067726	cmp    rdi,QWORD PTR [rbp-0x278]
+return-topic	0x106772d	je     106773c
+return-topic	0x106775e	cmp    rdi,QWORD PTR [rbp-0x278]
+return-topic	0x1067765	je     1065920
+return-topic	0x1067778	jmp    1065920
+change-subject	0x1072efd	cmp    rdi,rax
+change-subject	0x1072f00	je     1072f0f
+change-subject	0x1072f3c	cmp    rdi,QWORD PTR [rbp-0x278]
+change-subject	0x1072f43	je     1072f52
+change-subject	0x1072f74	cmp    rdi,QWORD PTR [rbp-0x278]
+change-subject	0x1072f7b	je     1072f8a
+change-subject	0x1072fac	cmp    rdi,QWORD PTR [rbp-0x278]
+change-subject	0x1072fb3	je     1065920
+change-subject	0x1072fc6	jmp    1065920
+opinion	0x1071624	cmp    DWORD PTR [rax+0x18],0x3d
+opinion	0x1071628	ja     107cad4
+opinion	0x107400d	cmp    rdi,rax
+opinion	0x1074010	je     107401f
+opinion	0x1074041	cmp    rdi,QWORD PTR [rbp-0x278]
+opinion	0x1074048	je     1074057
+opinion	0x1074070	cmp    rdi,QWORD PTR [rbp-0x2c0]
+opinion	0x1074077	je     1065920
+opinion	0x107408a	jmp    1065920
+opinion	0x10745e8	cmp    rdi,rax
+opinion	0x10745eb	je     1074057
+opinion	0x10745fe	jmp    1074057
+opinion	0x1074659	cmp    rdi,rax
+opinion	0x107465c	je     107466b
+opinion	0x107468d	cmp    rdi,QWORD PTR [rbp-0x278]
+opinion	0x1074694	je     10746a3
+opinion	0x10746c5	cmp    rdi,QWORD PTR [rbp-0x278]
+opinion	0x10746cc	je     1074057
+opinion	0x10746df	jmp    1074057
+opinion	0x107a81e	cmp    rdi,rax
+opinion	0x107a821	je     1074057
+opinion	0x107a834	jmp    1074057
+opinion	0x107a88f	cmp    rdi,rax
+opinion	0x107a892	je     107a8a1
+opinion	0x107a8c3	cmp    rdi,QWORD PTR [rbp-0x278]
+opinion	0x107a8ca	je     1074057
+opinion	0x107a8dd	jmp    1074057
+opinion	0x107a9ad	cmp    rdi,rax
+opinion	0x107a9b0	je     107a9bf
+opinion	0x107a9e1	cmp    rdi,QWORD PTR [rbp-0x278]
+opinion	0x107a9e8	je     1074057
+opinion	0x107a9fb	jmp    1074057
+opinion	0x107aa56	cmp    rdi,rax
+opinion	0x107aa59	je     107aa68
+opinion	0x107aa8a	cmp    rdi,QWORD PTR [rbp-0x278]
+opinion	0x107aa91	je     1074057
+opinion	0x107aaa4	jmp    1074057
+opinion	0x107aaf8	cmp    rdi,rax
+opinion	0x107aafb	je     1074057
+opinion	0x107ab0e	jmp    1074057
+opinion	0x107ab69	cmp    rdi,rax
+opinion	0x107ab6c	je     107ab7b
+opinion	0x107ab9d	cmp    rdi,QWORD PTR [rbp-0x278]
+opinion	0x107aba4	je     107abb3
+opinion	0x107abd5	cmp    rdi,QWORD PTR [rbp-0x278]
+opinion	0x107abdc	je     1074057
+opinion	0x107abef	jmp    1074057
+opinion	0x107ac43	cmp    rdi,rax
+opinion	0x107ac46	je     1074057
+opinion	0x107ac59	jmp    1074057
+opinion	0x107acb4	cmp    rdi,rax
+opinion	0x107acb7	je     107acc6
+opinion	0x107ace8	cmp    rdi,QWORD PTR [rbp-0x278]
+opinion	0x107acef	je     1074057
+opinion	0x107ad02	jmp    1074057
+opinion	0x107ad56	cmp    rdi,rax
+opinion	0x107ad59	je     1074057
+opinion	0x107ad6c	jmp    1074057
+opinion	0x107adc0	cmp    rdi,rax
+opinion	0x107adc3	je     1074057
+opinion	0x107add6	jmp    1074057
+opinion	0x107ae2a	cmp    rdi,rax
+opinion	0x107ae2d	je     1074057
+opinion	0x107ae40	jmp    1074057
+opinion	0x107ae9b	cmp    rdi,rax
+opinion	0x107ae9e	je     107aead
+opinion	0x107aecf	cmp    rdi,QWORD PTR [rbp-0x278]
+opinion	0x107aed6	je     1074057
+opinion	0x107aee9	jmp    1074057
+opinion	0x107af3d	cmp    rdi,rax
+opinion	0x107af40	je     1074057
+opinion	0x107af53	jmp    1074057
+opinion	0x107afa7	cmp    rdi,rax
+opinion	0x107afaa	je     1074057
+opinion	0x107afbd	jmp    1074057
+opinion	0x107b011	cmp    rdi,rax
+opinion	0x107b014	je     1074057
+opinion	0x107b027	jmp    1074057
+opinion	0x107b07b	cmp    rdi,rax
+opinion	0x107b07e	je     1074057
+opinion	0x107b091	jmp    1074057
+opinion	0x107b0e5	cmp    rdi,rax
+opinion	0x107b0e8	je     1074057
+opinion	0x107b0fb	jmp    1074057
+opinion	0x107b156	cmp    rdi,rax
+opinion	0x107b159	je     107b168
+opinion	0x107b18a	cmp    rdi,QWORD PTR [rbp-0x278]
+opinion	0x107b191	je     1074057
+opinion	0x107b1a4	jmp    1074057
+opinion	0x107b1f8	cmp    rdi,rax
+opinion	0x107b1fb	je     1074057
+opinion	0x107b20e	jmp    1074057
+opinion	0x107b470	cmp    rdi,rax
+opinion	0x107b473	je     107b482
+opinion	0x107b4a4	cmp    rdi,QWORD PTR [rbp-0x278]
+opinion	0x107b4ab	je     1074057
+opinion	0x107b4be	jmp    1074057
+opinion	0x107b519	cmp    rdi,rax
+opinion	0x107b51c	je     107b52b
+opinion	0x107b54d	cmp    rdi,QWORD PTR [rbp-0x278]
+opinion	0x107b554	je     1074057
+opinion	0x107b567	jmp    1074057
+opinion	0x107b70d	cmp    rdi,rax
+opinion	0x107b710	je     1074057
+opinion	0x107b723	jmp    1074057
+opinion	0x107b777	cmp    rdi,rax
+opinion	0x107b77a	je     1074057
+opinion	0x107b78d	jmp    1074057
+opinion	0x107b7e1	cmp    rdi,rax
+opinion	0x107b7e4	je     1074057
+opinion	0x107b7f7	jmp    1074057
+opinion	0x107b8d4	cmp    rdi,rax
+opinion	0x107b8d7	je     1074057
+opinion	0x107b8ea	jmp    1074057
+opinion	0x107ba63	cmp    rdi,rax
+opinion	0x107ba66	je     1074057
+opinion	0x107ba79	jmp    1074057
+opinion	0x107bacd	cmp    rdi,rax
+opinion	0x107bad0	je     1074057
+opinion	0x107bae3	jmp    1074057
+opinion	0x107bb37	cmp    rdi,rax
+opinion	0x107bb3a	je     1074057
+opinion	0x107bb4d	jmp    1074057
+opinion	0x107bba1	cmp    rdi,rax
+opinion	0x107bba4	je     1074057
+opinion	0x107bbb7	jmp    1074057
+opinion	0x107bc12	cmp    rdi,rax
+opinion	0x107bc15	je     107bc24
+opinion	0x107bc46	cmp    rdi,QWORD PTR [rbp-0x278]
+opinion	0x107bc4d	je     1074057
+opinion	0x107bc60	jmp    1074057
+opinion	0x107bcd3	cmp    rdi,rax
+opinion	0x107bcd6	je     107bce5
+opinion	0x107bd07	cmp    rdi,QWORD PTR [rbp-0x278]
+opinion	0x107bd0e	je     1074057
+opinion	0x107bd21	jmp    1074057
+opinion	0x107bd7c	cmp    rdi,rax
+opinion	0x107bd7f	je     107bd8e
+opinion	0x107bdb0	cmp    rdi,QWORD PTR [rbp-0x278]
+opinion	0x107bdb7	je     1074057
+opinion	0x107bdca	jmp    1074057
+opinion	0x107be25	cmp    rdi,rax
+opinion	0x107be28	je     107be37
+opinion	0x107be59	cmp    rdi,QWORD PTR [rbp-0x278]
+opinion	0x107be60	je     1074057
+opinion	0x107be73	jmp    1074057
+opinion	0x107bece	cmp    rdi,rax
+opinion	0x107bed1	je     107bee0
+opinion	0x107bf02	cmp    rdi,QWORD PTR [rbp-0x278]
+opinion	0x107bf09	je     1074057
+opinion	0x107bf1c	jmp    1074057
+opinion	0x107bf77	cmp    rdi,rax
+opinion	0x107bf7a	je     107bf89
+opinion	0x107bfab	cmp    rdi,QWORD PTR [rbp-0x278]
+opinion	0x107bfb2	je     1074057
+opinion	0x107bfc5	jmp    1074057
+opinion	0x107c165	cmp    rdi,rax
+opinion	0x107c168	je     1074057
+opinion	0x107c17b	jmp    1074057
+opinion	0x107c1d6	cmp    rdi,rax
+opinion	0x107c1d9	je     107c1e8
+opinion	0x107c20a	cmp    rdi,QWORD PTR [rbp-0x278]
+opinion	0x107c211	je     1074057
+opinion	0x107c224	jmp    1074057
+opinion	0x107c27f	cmp    rdi,rax
+opinion	0x107c282	je     107c291
+opinion	0x107c2b3	cmp    rdi,QWORD PTR [rbp-0x278]
+opinion	0x107c2ba	je     1074057
+opinion	0x107c2cd	jmp    1074057
+opinion	0x107c33c	cmp    rdi,rax
+opinion	0x107c33f	je     107c34e
+opinion	0x107c370	cmp    rdi,QWORD PTR [rbp-0x278]
+opinion	0x107c377	je     107c386
+opinion	0x107c3a8	cmp    rdi,QWORD PTR [rbp-0x278]
+opinion	0x107c3af	je     1074057
+opinion	0x107c3c2	jmp    1074057
+opinion	0x107c41d	cmp    rdi,rax
+opinion	0x107c420	je     107c42f
+opinion	0x107c451	cmp    rdi,QWORD PTR [rbp-0x278]
+opinion	0x107c458	je     1074057
+opinion	0x107c46b	jmp    1074057
+opinion	0x107c5e4	cmp    rdi,rax
+opinion	0x107c5e7	je     1074057
+opinion	0x107c5fa	jmp    1074057
+opinion	0x107c655	cmp    rdi,rax
+opinion	0x107c658	je     107c667
+opinion	0x107c689	cmp    rdi,QWORD PTR [rbp-0x278]
+opinion	0x107c690	je     107c69f
+opinion	0x107c6c1	cmp    rdi,QWORD PTR [rbp-0x278]
+opinion	0x107c6c8	je     1074057
+opinion	0x107c6db	jmp    1074057
+opinion	0x107c747	cmp    rdi,rax
+opinion	0x107c74a	je     1074057
+opinion	0x107c75d	jmp    1074057
+opinion	0x107c7b8	cmp    rdi,rax
+opinion	0x107c7bb	je     107c7ca
+opinion	0x107c7ec	cmp    rdi,QWORD PTR [rbp-0x278]
+opinion	0x107c7f3	je     1074057
+opinion	0x107c806	jmp    1074057
+opinion	0x107c85a	cmp    rdi,rax
+opinion	0x107c85d	je     1074057
+opinion	0x107c870	jmp    1074057
+opinion	0x107c8cb	cmp    rdi,rax
+opinion	0x107c8ce	je     107c8dd
+opinion	0x107c8ff	cmp    rdi,QWORD PTR [rbp-0x278]
+opinion	0x107c906	je     1074057
+opinion	0x107c919	jmp    1074057
+opinion	0x107cab9	cmp    rdi,rax
+opinion	0x107cabc	je     1074057
+opinion	0x107cacf	jmp    1074057
+opinion	0x107cadf	jmp    1074057
+join-rescued	0x106deab	cmp    rdi,rax
+join-rescued	0x106deae	je     106debd
+join-rescued	0x106dedc	cmp    rdi,QWORD PTR [rbp-0x278]
+join-rescued	0x106dee3	je     1065920
+join-rescued	0x106def6	jmp    1065920
+directions-menu	0x106cbae	cmp    rdi,rax
+directions-menu	0x106cbb1	je     106cbc0
+directions-menu	0x106cbed	cmp    rdi,QWORD PTR [rbp-0x278]
+directions-menu	0x106cbf4	je     106cc03
+directions-menu	0x106cc25	cmp    rdi,QWORD PTR [rbp-0x278]
+directions-menu	0x106cc2c	je     1065920
+directions-menu	0x106cc3f	jmp    1065920
+ask-site	0x106db93	test   rax,rax
+ask-site	0x106db96	je     1065920
+ask-site	0x106dc4b	cmp    rdi,QWORD PTR [rbp-0x278]
+ask-site	0x106dc52	je     106dc61
+ask-site	0x106dc65	cmp    rdi,QWORD PTR [rbp-0x2c0]
+ask-site	0x106dc6c	je     1065920
+ask-site	0x106dc7f	jmp    1065920
+ask-person	0x106833a	cmp    BYTE PTR [rbp-0x250],0x0
+ask-person	0x1068341	je     106834a
+ask-person	0x1068389	cmp    DWORD PTR [rdi+0xc30],eax
+ask-person	0x106838f	je     1075f27
+ask-person	0x106839a	test   rbx,rbx
+ask-person	0x106839d	je     10683a8
+ask-person	0x106839f	cmp    rbx,rax
+ask-person	0x10683a2	je     1075f27
+ask-person	0x10683a8	cmp    QWORD PTR [rbp-0x298],0x0
+ask-person	0x10683b0	je     1076921
+ask-person	0x10683ff	cmp    QWORD PTR [rbp-0x298],0x0
+ask-person	0x1068407	je     1075e66
+ask-person	0x106842c	cmp    rdi,QWORD PTR [rbp-0x278]
+ask-person	0x1068433	je     1065920
+ask-person	0x1068446	jmp    1065920
+ask-person	0x1075e66	test   rbx,rbx
+ask-person	0x1075e69	je     1068428
+ask-person	0x1075e7a	test   rax,rax
+ask-person	0x1075e7d	je     1068428
+ask-person	0x1075e93	jmp    1068428
+ask-person	0x1075f36	jmp    10683ee
+ask-person	0x1076921	test   rbx,rbx
+ask-person	0x1076924	je     10683ee
+ask-person	0x1076965	jmp    10683ee
+guide-site	0x1068468	test   rax,rax
+guide-site	0x106846b	je     1065920
+guide-site	0x1068520	cmp    rdi,QWORD PTR [rbp-0x278]
+guide-site	0x1068527	je     1068536
+guide-site	0x106853a	cmp    rdi,QWORD PTR [rbp-0x2c0]
+guide-site	0x1068541	je     1065920
+guide-site	0x1068554	jmp    1065920
+guide-person	0x106c5f6	cmp    BYTE PTR [rbp-0x250],0x0
+guide-person	0x106c5fd	je     106c606
+guide-person	0x106c645	cmp    DWORD PTR [rdi+0xc30],eax
+guide-person	0x106c64b	je     1075d4e
+guide-person	0x106c656	test   rbx,rbx
+guide-person	0x106c659	je     106c664
+guide-person	0x106c65b	cmp    rbx,rax
+guide-person	0x106c65e	je     1075d4e
+guide-person	0x106c664	cmp    QWORD PTR [rbp-0x298],0x0
+guide-person	0x106c66c	je     10767c3
+guide-person	0x106c6bb	cmp    QWORD PTR [rbp-0x298],0x0
+guide-person	0x106c6c3	je     1075cd8
+guide-person	0x106c6e8	cmp    rdi,QWORD PTR [rbp-0x278]
+guide-person	0x106c6ef	je     1065920
+guide-person	0x106c702	jmp    1065920
+guide-person	0x1075cd8	test   rbx,rbx
+guide-person	0x1075cdb	je     106c6e4
+guide-person	0x1075cec	test   rax,rax
+guide-person	0x1075cef	je     106c6e4
+guide-person	0x1075d05	jmp    106c6e4
+guide-person	0x1075d5d	jmp    106c6aa
+guide-person	0x10767c3	test   rbx,rbx
+guide-person	0x10767c6	je     106c6aa
+guide-person	0x1076805	jmp    106c6aa
+provide-site	0x106d939	test   rax,rax
+provide-site	0x106d93c	je     1065920
+provide-site	0x106d9f1	cmp    rdi,QWORD PTR [rbp-0x278]
+provide-site	0x106d9f8	je     106da07
+provide-site	0x106da0b	cmp    rdi,QWORD PTR [rbp-0x2c0]
+provide-site	0x106da12	je     1065920
+provide-site	0x106da25	jmp    1065920
+provide-person	0x106b496	cmp    edx,0xffffffff
+provide-person	0x106b499	je     1076591
+provide-person	0x106b512	cmp    rdi,rax
+provide-person	0x106b515	je     106b524
+provide-person	0x106b546	cmp    rdi,QWORD PTR [rbp-0x278]
+provide-person	0x106b54d	je     106b55c
+provide-person	0x106b57e	cmp    rdi,QWORD PTR [rbp-0x278]
+provide-person	0x106b585	je     106b594
+provide-person	0x106b598	cmp    rdi,QWORD PTR [rbp-0x2c0]
+provide-person	0x106b59f	je     1065920
+provide-person	0x106b5b2	jmp    1065920
+provide-person	0x10765bb	jmp    106b4c1
+found-you	0x106b5ea	cmp    rdi,rax
+found-you	0x106b5ed	je     106b5fc
+found-you	0x106b629	cmp    rdi,QWORD PTR [rbp-0x278]
+found-you	0x106b630	je     106b63f
+found-you	0x106b661	cmp    rdi,QWORD PTR [rbp-0x278]
+found-you	0x106b668	je     1065920
+found-you	0x106b67b	jmp    1065920
+person-dead	0x106b751	cmp    rdi,rax
+person-dead	0x106b754	je     106b763
+person-dead	0x106b767	cmp    rdi,QWORD PTR [rbp-0x2c0]
+person-dead	0x106b76e	je     1065920
+person-dead	0x106b781	jmp    1065920
+recommend-guide	0x106ce0d	test   rax,rax
+recommend-guide	0x106ce10	je     1065920
+recommend-guide	0x106ceb3	cmp    rdi,QWORD PTR [rbp-0x278]
+recommend-guide	0x106ceba	je     1065920
+recommend-guide	0x106cecd	jmp    1065920
+ignorance	0x10665ab	cmp    rdi,rax
+ignorance	0x10665ae	je     10665bd
+ignorance	0x10665dc	cmp    rdi,QWORD PTR [rbp-0x278]
+ignorance	0x10665e3	je     1065920
+ignorance	0x10665f6	jmp    1065920
+histfig-reference	0xa1036f	cmp    rdx,rax
+histfig-reference	0xa10376	cmp    edi,0xffffffff
+histfig-reference	0xa10385	jne    a103bb
+histfig-reference	0xa1038d	test   esi,esi
+histfig-reference	0xa1038f	js     a103bb
+histfig-reference	0xa103ac	cmp    edi,ebx
+histfig-reference	0xa103ae	je     a10420
+histfig-reference	0xa103b0	jge    a10410
+histfig-reference	0xa103b6	cmp    r9d,r10d
+histfig-reference	0xa103b9	jge    a10398
+histfig-reference	0xa103ca	cmp    r15w,0x2
+histfig-reference	0xa103cf	jne    a10512
+histfig-reference	0xa103e6	jne    a10e0b
+histfig-reference	0xa10407	jmp    8377e0
+histfig-reference	0xa10414	cmp    r9d,r10d
+histfig-reference	0xa10417	jge    a10398
+histfig-reference	0xa1041d	jmp    a103bb
+histfig-reference	0xa10424	test   r8,r8
+histfig-reference	0xa10427	je     a10540
+histfig-reference	0xa10431	test   rax,rax
+histfig-reference	0xa10434	je     a10448
+histfig-reference	0xa10436	cmp    DWORD PTR [rax+0x20],edi
+histfig-reference	0xa10439	je     a10cb0
+histfig-reference	0xa1043f	cmp    DWORD PTR [rax+0x24],edi
+histfig-reference	0xa10442	je     a10cd3
+histfig-reference	0xa1045b	cmp    BYTE PTR [rsp+0x40],0x0
+histfig-reference	0xa10460	je     a104f8
+histfig-reference	0xa1046b	test   rax,rax
+histfig-reference	0xa1046e	je     a104f8
+histfig-reference	0xa10474	test   BYTE PTR [rax+0x4],0x8
+histfig-reference	0xa10478	je     a10800
+histfig-reference	0xa1047e	cmp    BYTE PTR [rbp+0xaa],0x0
+histfig-reference	0xa10485	je     a10908
+histfig-reference	0xa104da	cmp    rdi,rbx
+histfig-reference	0xa104dd	je     a10507
+histfig-reference	0xa104f0	jmp    a10507
+histfig-reference	0xa10507	cmp    r15w,0x2
+histfig-reference	0xa1050c	je     a103d5
+histfig-reference	0xa10523	jne    a10e0b
+histfig-reference	0xa10540	test   BYTE PTR [r14],0x2
+histfig-reference	0xa10544	jne    a10898
+histfig-reference	0xa10559	test   edi,edi
+histfig-reference	0xa1055b	jle    a10a50
+histfig-reference	0xa1056b	test   sil,0x4
+histfig-reference	0xa1056f	jne    a10b6f
+histfig-reference	0xa10595	cmp    rdx,rax
+histfig-reference	0xa10598	je     a10635
+histfig-reference	0xa105a4	cmp    r10d,0xffffffff
+histfig-reference	0xa105a8	je     a10d0f
+histfig-reference	0xa105b3	js     a10635
+histfig-reference	0xa105cc	cmp    DWORD PTR [r8+0xe0],r10d
+histfig-reference	0xa105d3	je     a109e8
+histfig-reference	0xa105d9	jle    a10920
+histfig-reference	0xa105e2	cmp    esi,edi
+histfig-reference	0xa105e4	jge    a105c0
+histfig-reference	0xa105e6	cmp    r9d,0xffffffff
+histfig-reference	0xa105ea	je     a10635
+histfig-reference	0xa10604	cmp    DWORD PTR [rdi+0xe0],r9d
+histfig-reference	0xa1060b	je     a10622
+histfig-reference	0xa1060d	jle    a10930
+histfig-reference	0xa10616	cmp    esi,ecx
+histfig-reference	0xa10618	jle    a105f8
+histfig-reference	0xa1061a	test   r8,r8
+histfig-reference	0xa1061d	je     a10635
+histfig-reference	0xa10629	cmp    WORD PTR [rdi+0x2],r11w
+histfig-reference	0xa1063c	test   r12,r12
+histfig-reference	0xa1063f	je     a10671
+histfig-reference	0xa10646	test   r12,r12
+histfig-reference	0xa10649	je     a10671
+histfig-reference	0xa10655	cmp    QWORD PTR [r12+0x158],0x0
+histfig-reference	0xa10661	cmp    BYTE PTR [r12+0x88],0x0
+histfig-reference	0xa10671	cmp    r11w,0xffff
+histfig-reference	0xa10676	je     a109d8
+histfig-reference	0xa1067c	cmp    WORD PTR [rsp+0x10],0x1
+histfig-reference	0xa10682	je     a109d8
+histfig-reference	0xa106af	cmp    ebx,r9d
+histfig-reference	0xa106b2	je     a10a00
+histfig-reference	0xa106b8	cmp    BYTE PTR [rbp+0xaa],0x0
+histfig-reference	0xa106bf	je     a10a88
+histfig-reference	0xa106c5	cmp    ebx,DWORD PTR [rsp+0x20]
+histfig-reference	0xa106c9	je     a107dd
+histfig-reference	0xa106cf	cmp    WORD PTR [rsp+0x10],0x0
+histfig-reference	0xa106d5	jne    a10940
+histfig-reference	0xa106db	cmp    BYTE PTR [rsp+0x17],0x0
+histfig-reference	0xa106e0	je     a10940
+histfig-reference	0xa106f5	test   r12,r12
+histfig-reference	0xa106f8	je     a10709
+histfig-reference	0xa106fa	cmp    QWORD PTR [r12+0x158],0x0
+histfig-reference	0xa10703	jne    a10daa
+histfig-reference	0xa10710	test   r10d,r10d
+histfig-reference	0xa10713	jle    a10740
+histfig-reference	0xa1071c	test   BYTE PTR [rax],0x80
+histfig-reference	0xa1071f	je     a10740
+histfig-reference	0xa10721	test   r12,r12
+histfig-reference	0xa10724	je     a10731
+histfig-reference	0xa10726	cmp    BYTE PTR [r12+0x88],0x0
+histfig-reference	0xa1072f	jne    a10740
+histfig-reference	0xa10795	test   r12,r12
+histfig-reference	0xa10798	je     a107a9
+histfig-reference	0xa1079a	cmp    BYTE PTR [r12+0x88],0x0
+histfig-reference	0xa107a3	jne    a10d82
+histfig-reference	0xa107bb	cmp    rdi,QWORD PTR [rsp+0x20]
+histfig-reference	0xa107c0	je     a107d3
+histfig-reference	0xa107d3	cmp    DWORD PTR [r14+0x20],ebx
+histfig-reference	0xa107d7	jne    a10940
+histfig-reference	0xa107f5	jmp    a10955
+histfig-reference	0xa10807	cmp    QWORD PTR [rax+0x88],rdx
+histfig-reference	0xa1080e	je     a104f8
+histfig-reference	0xa1081f	cmp    BYTE PTR [rsp+0x40],0x0
+histfig-reference	0xa10824	je     a10908
+histfig-reference	0xa1082f	test   rax,rax
+histfig-reference	0xa10832	je     a10908
+histfig-reference	0xa10838	cmp    BYTE PTR [rax+0x7a],0x0
+histfig-reference	0xa1083c	je     a10908
+histfig-reference	0xa1088c	jmp    a104d5
+histfig-reference	0xa108d8	test   r11d,r11d
+histfig-reference	0xa108db	jle    a10b81
+histfig-reference	0xa108f2	test   sil,0x4
+histfig-reference	0xa108f6	jne    a10d74
+histfig-reference	0xa10900	jmp    a10575
+histfig-reference	0xa10917	jmp    a10507
+histfig-reference	0xa10923	cmp    edi,esi
+histfig-reference	0xa10925	jle    a105c0
+histfig-reference	0xa1092b	jmp    a105e6
+histfig-reference	0xa10933	cmp    ecx,esi
+histfig-reference	0xa10935	jge    a105f8
+histfig-reference	0xa1093b	jmp    a1061a
+histfig-reference	0xa10967	cmp    DWORD PTR [r14+0x20],ebx
+histfig-reference	0xa1096b	je     a10984
+histfig-reference	0xa1096d	cmp    WORD PTR [rsp+0x10],0x2
+histfig-reference	0xa1097e	jne    a10bd3
+histfig-reference	0xa10989	cmp    r15w,0x2
+histfig-reference	0xa1098e	jne    a109a6
+histfig-reference	0xa10990	cmp    BYTE PTR [rsp+0x8],0x0
+histfig-reference	0xa10995	je     a109a6
+histfig-reference	0xa109a6	test   BYTE PTR [r14],0x2
+histfig-reference	0xa109aa	jne    a10a70
+histfig-reference	0xa109b5	cmp    rdi,QWORD PTR [rsp+0x18]
+histfig-reference	0xa109ba	je     a10512
+histfig-reference	0xa109ce	jmp    a10512
+histfig-reference	0xa109dd	jmp    a10688
+histfig-reference	0xa109e8	cmp    r9d,0xffffffff
+histfig-reference	0xa109ec	jne    a105ef
+histfig-reference	0xa109f2	jmp    a1061f
+histfig-reference	0xa10a00	cmp    r15w,0x2
+histfig-reference	0xa10a05	je     a10d32
+histfig-reference	0xa10a0b	cmp    r15w,0x3
+histfig-reference	0xa10a10	je     a10d5e
+histfig-reference	0xa10a16	cmp    r15w,0x1
+histfig-reference	0xa10a1b	je     a10d48
+histfig-reference	0xa10a49	jmp    a10989
+histfig-reference	0xa10a59	cmp    r10d,0xffffffff
+histfig-reference	0xa10a5d	je     a10d0a
+histfig-reference	0xa10a6a	jmp    a105bb
+histfig-reference	0xa10a7f	jmp    a109b0
+histfig-reference	0xa10a88	cmp    ebx,DWORD PTR [rsp+0x20]
+histfig-reference	0xa10a8c	je     a10cf6
+histfig-reference	0xa10aa1	test   r12,r12
+histfig-reference	0xa10aa4	je     a10ab5
+histfig-reference	0xa10aa6	cmp    QWORD PTR [r12+0x158],0x0
+histfig-reference	0xa10aaf	jne    a10bbf
+histfig-reference	0xa10abc	test   r8d,r8d
+histfig-reference	0xa10abf	jle    a10af0
+histfig-reference	0xa10ac8	test   BYTE PTR [rax],0x80
+histfig-reference	0xa10acb	je     a10af0
+histfig-reference	0xa10acd	test   r12,r12
+histfig-reference	0xa10ad0	je     a10add
+histfig-reference	0xa10ad2	cmp    BYTE PTR [r12+0x88],0x0
+histfig-reference	0xa10adb	jne    a10af0
+histfig-reference	0xa10b39	test   r12,r12
+histfig-reference	0xa10b3c	je     a10b49
+histfig-reference	0xa10b3e	cmp    BYTE PTR [r12+0x88],0x0
+histfig-reference	0xa10b47	jne    a10b96
+histfig-reference	0xa10b4e	cmp    rdi,QWORD PTR [rsp+0x20]
+histfig-reference	0xa10b53	je     a10984
+histfig-reference	0xa10b6a	jmp    a10984
+histfig-reference	0xa10b7c	jmp    a1059e
+histfig-reference	0xa10b91	jmp    a10582
+histfig-reference	0xa10bbd	jmp    a10b49
+histfig-reference	0xa10bce	jmp    a10ab5
+histfig-reference	0xa10be2	test   r12,r12
+histfig-reference	0xa10be5	je     a10bf6
+histfig-reference	0xa10be7	cmp    QWORD PTR [r12+0x158],0x0
+histfig-reference	0xa10bf0	jne    a10dea
+histfig-reference	0xa10bfd	test   r9d,r9d
+histfig-reference	0xa10c00	jle    a10c2d
+histfig-reference	0xa10c09	test   BYTE PTR [rax],0x80
+histfig-reference	0xa10c0c	je     a10c2d
+histfig-reference	0xa10c0e	test   r12,r12
+histfig-reference	0xa10c11	je     a10c1e
+histfig-reference	0xa10c13	cmp    BYTE PTR [r12+0x88],0x0
+histfig-reference	0xa10c1c	jne    a10c2d
+histfig-reference	0xa10c76	test   r12,r12
+histfig-reference	0xa10c79	je     a10c8a
+histfig-reference	0xa10c7b	cmp    BYTE PTR [r12+0x88],0x0
+histfig-reference	0xa10c84	jne    a10dbe
+histfig-reference	0xa10c8f	cmp    rdi,QWORD PTR [rsp+0x20]
+histfig-reference	0xa10c94	je     a10989
+histfig-reference	0xa10cab	jmp    a10989
+histfig-reference	0xa10cc1	jne    a10e0b
+histfig-reference	0xa10cce	jmp    a103f3
+histfig-reference	0xa10ce4	jne    a10e0b
+histfig-reference	0xa10cf1	jmp    a103f3
+histfig-reference	0xa10d05	jmp    a10aa1
+histfig-reference	0xa10d0f	cmp    r9d,0xffffffff
+histfig-reference	0xa10d13	je     a10dfe
+histfig-reference	0xa10d1c	js     a10dfe
+histfig-reference	0xa10d2d	jmp    a105ef
+histfig-reference	0xa10d43	jmp    a10a37
+histfig-reference	0xa10d59	jmp    a10a32
+histfig-reference	0xa10d6f	jmp    a10a32
+histfig-reference	0xa10d7d	jmp    a10582
+histfig-reference	0xa10da5	jmp    a107a9
+histfig-reference	0xa10db9	jmp    a10709
+histfig-reference	0xa10de5	jmp    a10c8a
+histfig-reference	0xa10df9	jmp    a10bf6
+histfig-reference	0xa10e06	jmp    a10635
+histfig-reference	0xa10e17	jmp    4597c2
+histfig-reference	0xa10e23	jmp    459801
+histfig-reference	0xa10e2f	jmp    4597c2
+histfig-reference	0xa10e3b	jmp    459801
+histfig-reference	0xa10e47	jmp    4597c2
+histfig-reference	0xa10e53	jmp    4597df
+assumed-identity	0x1c42930	test   edx,edx
+assumed-identity	0x1c42932	je     1c42a9f
+assumed-identity	0x1c42948	cmp    edx,0x40
+assumed-identity	0x1c4294b	jle    1c42979
+assumed-identity	0x1c42962	cmp    rsi,r10
+assumed-identity	0x1c4296b	cmp    eax,0x40
+assumed-identity	0x1c4296e	jg     1c42950
+assumed-identity	0x1c42979	cmp    eax,0xffffffff
+assumed-identity	0x1c4297c	je     1c42a9f
+assumed-identity	0x1c42982	cmp    ecx,eax
+assumed-identity	0x1c42984	jge    1c42a9f
+assumed-identity	0x1c429a5	jmp    1c429bd
+assumed-identity	0x1c429b4	cmp    rcx,rdx
+assumed-identity	0x1c429b7	je     1c42a98
+assumed-identity	0x1c429c3	cmp    rsi,rax
+assumed-identity	0x1c429c6	jne    1c429b0
+assumed-identity	0x1c429d5	cmp    edx,0xffffffff
+assumed-identity	0x1c429d8	jne    1c42b60
+assumed-identity	0x1c429fc	test   r8b,r8b
+assumed-identity	0x1c429ff	je     1c42c10
+assumed-identity	0x1c42a09	cmp    rdx,rcx
+assumed-identity	0x1c42a0f	cmp    r9d,0xffffffff
+assumed-identity	0x1c42a1a	jne    1c42a5d
+assumed-identity	0x1c42a1f	js     1c42a5d
+assumed-identity	0x1c42a3c	cmp    r9d,DWORD PTR [r8+0xe0]
+assumed-identity	0x1c42a43	je     1c433c2
+assumed-identity	0x1c42a49	jge    1c42bf0
+assumed-identity	0x1c42a52	cmp    eax,edi
+assumed-identity	0x1c42a54	jge    1c42a30
+assumed-identity	0x1c42a64	cmp    esi,0xffffffff
+assumed-identity	0x1c42a67	je     1c42a75
+assumed-identity	0x1c42a69	cmp    r15w,0x1
+assumed-identity	0x1c42a8c	jmp    1c43412
+assumed-identity	0x1c42ab7	cmp    rax,0x10
+assumed-identity	0x1c42abb	jbe    1c44418
+assumed-identity	0x1c42ad3	cmp    rax,rdx
+assumed-identity	0x1c42ad6	je     1c42c00
+assumed-identity	0x1c42ae0	cmp    r12,rdx
+assumed-identity	0x1c42ae3	ja     1c42b38
+assumed-identity	0x1c42b0a	cmp    r14w,0x2
+assumed-identity	0x1c42b0f	je     1c42b88
+assumed-identity	0x1c42b1e	jne    1c44413
+assumed-identity	0x1c42b56	jmp    1c42af7
+assumed-identity	0x1c42b7a	cmp    r14w,0x2
+assumed-identity	0x1c42b7f	jne    1c42b11
+assumed-identity	0x1c42ba0	cmp    rax,0x1
+assumed-identity	0x1c42ba4	jbe    1c44418
+assumed-identity	0x1c42bb5	cmp    rax,rdx
+assumed-identity	0x1c42bb8	je     1c43b5a
+assumed-identity	0x1c42bc2	cmp    r12,rdx
+assumed-identity	0x1c42bc5	ja     1c43783
+assumed-identity	0x1c42be7	jmp    1c42b11
+assumed-identity	0x1c42bf3	cmp    edi,eax
+assumed-identity	0x1c42bf5	jle    1c42a30
+assumed-identity	0x1c42bfb	jmp    1c42a56
+assumed-identity	0x1c42c05	jmp    1c42ae0
+assumed-identity	0x1c42c14	cmp    rdx,rcx
+assumed-identity	0x1c42c17	je     1c43ce1
+assumed-identity	0x1c42c21	cmp    edi,0xffffffff
+assumed-identity	0x1c42c24	je     1c43cd2
+assumed-identity	0x1c42c2d	js     1c43ce1
+assumed-identity	0x1c42c4d	cmp    edi,DWORD PTR [r10+0xe0]
+assumed-identity	0x1c42c54	je     1c43b44
+assumed-identity	0x1c42c5a	jge    1c433b0
+assumed-identity	0x1c42c64	cmp    r12d,r11d
+assumed-identity	0x1c42c67	jge    1c42c40
+assumed-identity	0x1c42c70	cmp    r9d,0xffffffff
+assumed-identity	0x1c42c74	je     1c43ce1
+assumed-identity	0x1c42c9c	cmp    r9d,DWORD PTR [r11+0xe0]
+assumed-identity	0x1c42ca3	je     1c43b38
+assumed-identity	0x1c42ca9	jge    1c437b0
+assumed-identity	0x1c42cb2	cmp    eax,edi
+assumed-identity	0x1c42cb4	jge    1c42c90
+assumed-identity	0x1c42cbd	test   r10,r10
+assumed-identity	0x1c42cc0	je     1c43ce1
+assumed-identity	0x1c42cce	cmp    eax,esi
+assumed-identity	0x1c42cd4	cmp    esi,0xffffffff
+assumed-identity	0x1c42cf4	cmp    r15w,0x1
+assumed-identity	0x1c42d0b	cmp    BYTE PTR [rbx+0x7a],0x0
+assumed-identity	0x1c42d24	je     1c4387f
+assumed-identity	0x1c42d2a	cmp    r13,rax
+assumed-identity	0x1c42d2d	je     1c44526
+assumed-identity	0x1c42d53	cmp    rax,rcx
+assumed-identity	0x1c42d56	je     1c43ed7
+assumed-identity	0x1c42d60	cmp    QWORD PTR [rbp-0xb8],rdx
+assumed-identity	0x1c42d67	ja     1c43cec
+assumed-identity	0x1c42d80	test   r15w,r15w
+assumed-identity	0x1c42d94	jne    1c43b64
+assumed-identity	0x1c42d9a	test   r12b,r12b
+assumed-identity	0x1c42d9d	je     1c43b64
+assumed-identity	0x1c42db4	cmp    rax,0x3
+assumed-identity	0x1c42db8	jbe    1c444f6
+assumed-identity	0x1c42dcc	cmp    QWORD PTR [rbp-0xb0],rax
+assumed-identity	0x1c42dd3	je     1c4428a
+assumed-identity	0x1c42ddd	cmp    QWORD PTR [rbp-0xb8],rdx
+assumed-identity	0x1c42de4	ja     1c44216
+assumed-identity	0x1c42e5b	cmp    QWORD PTR [rbp-0xb0],rax
+assumed-identity	0x1c42e62	je     1c44294
+assumed-identity	0x1c42e6c	cmp    r13,rdx
+assumed-identity	0x1c42e6f	ja     1c441f9
+assumed-identity	0x1c42e75	test   r8,r8
+assumed-identity	0x1c42e78	je     1c42e9d
+assumed-identity	0x1c42e7e	cmp    r8,0x1
+assumed-identity	0x1c42e82	je     1c443aa
+assumed-identity	0x1c42ebb	cmp    r13,rax
+assumed-identity	0x1c42ebe	je     1c4453e
+assumed-identity	0x1c42ed2	cmp    QWORD PTR [rbp-0xb0],rax
+assumed-identity	0x1c42ed9	je     1c442c6
+assumed-identity	0x1c42ee3	cmp    QWORD PTR [rbp-0xb8],rdx
+assumed-identity	0x1c42eea	ja     1c4414f
+assumed-identity	0x1c42f14	cmp    rdi,QWORD PTR [rbp-0xc0]
+assumed-identity	0x1c42f1b	je     1c42f2a
+assumed-identity	0x1c42f31	cmp    ax,0xffff
+assumed-identity	0x1c42f35	je     1c430f1
+assumed-identity	0x1c42f3b	cmp    ax,0x66
+assumed-identity	0x1c42f3f	je     1c430f1
+assumed-identity	0x1c42f5d	cmp    rax,0x3
+assumed-identity	0x1c42f61	jbe    1c444ea
+assumed-identity	0x1c42f7c	cmp    QWORD PTR [rbp-0xb0],rax
+assumed-identity	0x1c42f83	je     1c44280
+assumed-identity	0x1c42f8d	cmp    QWORD PTR [rbp-0xb8],rdx
+assumed-identity	0x1c42f94	ja     1c44172
+assumed-identity	0x1c43022	cmp    QWORD PTR [rbp-0xb0],rax
+assumed-identity	0x1c43029	je     1c43fa8
+assumed-identity	0x1c43033	cmp    r13,rdx
+assumed-identity	0x1c43036	ja     1c43e65
+assumed-identity	0x1c4303c	test   r8,r8
+assumed-identity	0x1c4303f	je     1c43064
+assumed-identity	0x1c43045	cmp    r8,0x1
+assumed-identity	0x1c43049	je     1c4426c
+assumed-identity	0x1c43082	cmp    r13,rax
+assumed-identity	0x1c43085	je     1c4450e
+assumed-identity	0x1c43099	cmp    QWORD PTR [rbp-0xb0],rax
+assumed-identity	0x1c430a0	je     1c43fb2
+assumed-identity	0x1c430aa	cmp    QWORD PTR [rbp-0xb8],rdx
+assumed-identity	0x1c430b1	ja     1c43e82
+assumed-identity	0x1c430db	cmp    rdi,QWORD PTR [rbp-0xc0]
+assumed-identity	0x1c430e2	je     1c430f1
+assumed-identity	0x1c43128	cmp    QWORD PTR [rbp-0xb0],rax
+assumed-identity	0x1c4312f	je     1c43ec3
+assumed-identity	0x1c43139	cmp    r13,rdx
+assumed-identity	0x1c4313c	ja     1c43d6b
+assumed-identity	0x1c43142	test   r8,r8
+assumed-identity	0x1c43145	je     1c4316a
+assumed-identity	0x1c4314b	cmp    r8,0x1
+assumed-identity	0x1c4314f	je     1c441a9
+assumed-identity	0x1c4317a	cmp    r15w,0x2
+assumed-identity	0x1c4317f	jne    1c4329f
+assumed-identity	0x1c43185	test   r12b,r12b
+assumed-identity	0x1c43188	je     1c4329f
+assumed-identity	0x1c4319f	cmp    rax,0x4
+assumed-identity	0x1c431a3	jbe    1c444a2
+assumed-identity	0x1c431b1	cmp    QWORD PTR [rbp-0xb0],rax
+assumed-identity	0x1c431b8	je     1c442e4
+assumed-identity	0x1c431c2	cmp    r13,rdx
+assumed-identity	0x1c431c5	ja     1c441d6
+assumed-identity	0x1c43233	cmp    QWORD PTR [rbp-0xb0],rax
+assumed-identity	0x1c4323a	je     1c442da
+assumed-identity	0x1c43244	cmp    r12,rdx
+assumed-identity	0x1c43247	ja     1c441bd
+assumed-identity	0x1c4324d	test   r8,r8
+assumed-identity	0x1c43250	je     1c43275
+assumed-identity	0x1c43256	cmp    r8,0x1
+assumed-identity	0x1c4325a	je     1c443f5
+assumed-identity	0x1c43289	cmp    rdi,QWORD PTR [rbp-0xc0]
+assumed-identity	0x1c43290	je     1c4329f
+assumed-identity	0x1c432a6	cmp    DWORD PTR [rbx+0xb0],0xffffffff
+assumed-identity	0x1c432b1	je     1c4332a
+assumed-identity	0x1c432c0	cmp    rax,0x3
+assumed-identity	0x1c432c4	jbe    1c4451a
+assumed-identity	0x1c432d9	cmp    QWORD PTR [rbp-0xb0],rax
+assumed-identity	0x1c432e0	je     1c43fbc
+assumed-identity	0x1c432ea	cmp    r13,rdx
+assumed-identity	0x1c432ed	ja     1c43e1f
+assumed-identity	0x1c43334	cmp    r12,rax
+assumed-identity	0x1c43337	je     1c444de
+assumed-identity	0x1c4334c	cmp    QWORD PTR [rbp-0xb0],rax
+assumed-identity	0x1c43353	je     1c43ecd
+assumed-identity	0x1c4335d	cmp    rbx,rdx
+assumed-identity	0x1c43360	ja     1c43d88
+assumed-identity	0x1c43386	cmp    rdi,QWORD PTR [rbp-0xc8]
+assumed-identity	0x1c4338d	je     1c42b0a
+assumed-identity	0x1c433a3	jmp    1c42b0a
+assumed-identity	0x1c433b4	cmp    r11d,r12d
+assumed-identity	0x1c433b7	jle    1c42c40
+assumed-identity	0x1c433bd	jmp    1c42c69
+assumed-identity	0x1c433d0	cmp    esi,0xffffffff
+assumed-identity	0x1c433d3	je     1c433ea
+assumed-identity	0x1c433d5	cmp    r15w,0x1
+assumed-identity	0x1c433da	je     1c433ea
+assumed-identity	0x1c433e1	cmp    eax,esi
+assumed-identity	0x1c433f2	cmp    rbx,rax
+assumed-identity	0x1c43404	je     1c437c0
+assumed-identity	0x1c43416	cmp    BYTE PTR [rbx+0x7a],0x0
+assumed-identity	0x1c4341a	je     1c43b96
+assumed-identity	0x1c43420	cmp    DWORD PTR [r13+0x20],r12d
+assumed-identity	0x1c43424	je     1c43621
+assumed-identity	0x1c4342a	test   r15w,r15w
+assumed-identity	0x1c4342e	jne    1c43621
+assumed-identity	0x1c43434	cmp    BYTE PTR [rbp-0xc8],0x0
+assumed-identity	0x1c4343b	je     1c43621
+assumed-identity	0x1c43460	cmp    rax,0x3
+assumed-identity	0x1c43464	jbe    1c4447e
+assumed-identity	0x1c4348d	cmp    rax,rcx
+assumed-identity	0x1c43490	je     1c44474
+assumed-identity	0x1c4349a	cmp    QWORD PTR [rbp-0xd0],rdx
+assumed-identity	0x1c434a1	ja     1c4435c
+assumed-identity	0x1c4352b	cmp    QWORD PTR [rbp-0xd8],rax
+assumed-identity	0x1c43532	je     1c4442e
+assumed-identity	0x1c4353c	cmp    QWORD PTR [rbp-0xd0],rdx
+assumed-identity	0x1c43543	ja     1c4433f
+assumed-identity	0x1c43549	test   r8,r8
+assumed-identity	0x1c4354c	je     1c43571
+assumed-identity	0x1c43552	cmp    r8,0x1
+assumed-identity	0x1c43556	je     1c44460
+assumed-identity	0x1c4359c	cmp    rsi,rax
+assumed-identity	0x1c4359f	je     1c44496
+assumed-identity	0x1c435bd	cmp    QWORD PTR [rbp-0xd8],rax
+assumed-identity	0x1c435c4	je     1c44424
+assumed-identity	0x1c435ce	cmp    QWORD PTR [rbp-0xe0],rdx
+assumed-identity	0x1c435d5	ja     1c44383
+assumed-identity	0x1c4360b	cmp    rdi,QWORD PTR [rbp-0xc0]
+assumed-identity	0x1c43612	je     1c43621
+assumed-identity	0x1c43629	cmp    DWORD PTR [r13+0x78],r12d
+assumed-identity	0x1c4362d	je     1c43f7b
+assumed-identity	0x1c4366b	cmp    rax,rdx
+assumed-identity	0x1c4366e	je     1c44262
+assumed-identity	0x1c43678	cmp    QWORD PTR [rbp-0xc0],rdx
+assumed-identity	0x1c4367f	ja     1c43f04
+assumed-identity	0x1c43685	test   r8,r8
+assumed-identity	0x1c43688	je     1c436ad
+assumed-identity	0x1c4368e	cmp    r8,0x1
+assumed-identity	0x1c43692	je     1c4429e
+assumed-identity	0x1c436c3	cmp    DWORD PTR [r13+0x20],r12d
+assumed-identity	0x1c436c7	je     1c436e8
+assumed-identity	0x1c436c9	cmp    r15w,0x2
+assumed-identity	0x1c436dc	jne    1c43fd0
+assumed-identity	0x1c436e8	cmp    r14w,0x2
+assumed-identity	0x1c436ed	jne    1c43760
+assumed-identity	0x1c436ef	cmp    BYTE PTR [rbp-0xb0],0x0
+assumed-identity	0x1c436f6	je     1c43760
+assumed-identity	0x1c43710	cmp    rax,0x1
+assumed-identity	0x1c43714	jbe    1c444ae
+assumed-identity	0x1c43728	cmp    QWORD PTR [rbp-0xd0],rax
+assumed-identity	0x1c4372f	je     1c43fc6
+assumed-identity	0x1c43739	cmp    r12,rdx
+assumed-identity	0x1c4373c	ja     1c43e42
+assumed-identity	0x1c43764	cmp    rdi,QWORD PTR [rbp-0xb8]
+assumed-identity	0x1c4376b	je     1c42b11
+assumed-identity	0x1c4377e	jmp    1c42b11
+assumed-identity	0x1c437a1	jmp    1c42bd4
+assumed-identity	0x1c437b3	cmp    edi,eax
+assumed-identity	0x1c437b5	jle    1c42c90
+assumed-identity	0x1c437bb	jmp    1c42cb6
+assumed-identity	0x1c437c0	cmp    r14w,0x2
+assumed-identity	0x1c437c5	je     1c43dab
+assumed-identity	0x1c437cb	cmp    r14w,0x3
+assumed-identity	0x1c437d0	je     1c43df6
+assumed-identity	0x1c437d6	cmp    r14w,0x1
+assumed-identity	0x1c437db	je     1c43dd4
+assumed-identity	0x1c43815	cmp    rax,rcx
+assumed-identity	0x1c43818	je     1c43eaf
+assumed-identity	0x1c43822	cmp    rbx,rdx
+assumed-identity	0x1c43825	ja     1c43d0f
+assumed-identity	0x1c4382e	cmp    r8,0x1
+assumed-identity	0x1c43832	je     1c44239
+assumed-identity	0x1c4383b	test   r8d,r8d
+assumed-identity	0x1c4383e	je     1c4386b
+assumed-identity	0x1c4385d	cmp    eax,edi
+assumed-identity	0x1c4385f	jb     1c43850
+assumed-identity	0x1c4387a	jmp    1c436e8
+assumed-identity	0x1c43882	cmp    rax,0x1
+assumed-identity	0x1c43886	jbe    1c4448a
+assumed-identity	0x1c4389e	cmp    rax,r12
+assumed-identity	0x1c438a1	je     1c43eb9
+assumed-identity	0x1c438ab	cmp    r15,rdx
+assumed-identity	0x1c438ae	ja     1c43d48
+assumed-identity	0x1c4391c	cmp    r12,rax
+assumed-identity	0x1c4391f	je     1c43ea5
+assumed-identity	0x1c43929	cmp    r13,rdx
+assumed-identity	0x1c4392c	ja     1c43d2f
+assumed-identity	0x1c43932	test   r8,r8
+assumed-identity	0x1c43935	je     1c4395a
+assumed-identity	0x1c4393b	cmp    r8,0x1
+assumed-identity	0x1c4393f	je     1c44195
+assumed-identity	0x1c43971	cmp    ax,0xffff
+assumed-identity	0x1c43975	je     1c43a96
+assumed-identity	0x1c4397b	cmp    ax,0x66
+assumed-identity	0x1c4397f	je     1c43a96
+assumed-identity	0x1c43993	cmp    r13,rax
+assumed-identity	0x1c43996	je     1c444c6
+assumed-identity	0x1c439a3	cmp    r12,rax
+assumed-identity	0x1c439a6	je     1c442ee
+assumed-identity	0x1c439b0	cmp    r15,rdx
+assumed-identity	0x1c439b3	ja     1c440f0
+assumed-identity	0x1c43a2e	cmp    r12,rax
+assumed-identity	0x1c43a31	je     1c442f8
+assumed-identity	0x1c43a3b	cmp    r13,rdx
+assumed-identity	0x1c43a3e	ja     1c44136
+assumed-identity	0x1c43a44	test   r8,r8
+assumed-identity	0x1c43a47	je     1c43a6c
+assumed-identity	0x1c43a4d	cmp    r8,0x1
+assumed-identity	0x1c43a51	je     1c443be
+assumed-identity	0x1c43a80	cmp    rdi,QWORD PTR [rbp-0xc0]
+assumed-identity	0x1c43a87	je     1c43a96
+assumed-identity	0x1c43a96	cmp    DWORD PTR [rbx+0xb0],0xffffffff
+assumed-identity	0x1c43a9d	je     1c43b15
+assumed-identity	0x1c43ab7	cmp    rax,0x3
+assumed-identity	0x1c43abb	jbe    1c44532
+assumed-identity	0x1c43acf	cmp    r12,rax
+assumed-identity	0x1c43ad2	je     1c4424e
+assumed-identity	0x1c43adc	cmp    r15,rdx
+assumed-identity	0x1c43adf	ja     1c43ee1
+assumed-identity	0x1c43b19	cmp    rdi,QWORD PTR [rbp-0xb8]
+assumed-identity	0x1c43b20	je     1c4337f
+assumed-identity	0x1c43b33	jmp    1c4337f
+assumed-identity	0x1c43b3f	jmp    1c42cc9
+assumed-identity	0x1c43b4b	cmp    r9d,0xffffffff
+assumed-identity	0x1c43b4f	jne    1c42c7d
+assumed-identity	0x1c43b55	jmp    1c42cc6
+assumed-identity	0x1c43b5f	jmp    1c42bc2
+assumed-identity	0x1c43b6b	cmp    ax,0xffff
+assumed-identity	0x1c43b6f	je     1c430f1
+assumed-identity	0x1c43b75	cmp    ax,0x66
+assumed-identity	0x1c43b79	je     1c430f1
+assumed-identity	0x1c43b7f	cmp    r12b,0x1
+assumed-identity	0x1c43b83	jne    1c42f45
+assumed-identity	0x1c43b89	test   dl,dl
+assumed-identity	0x1c43b8b	je     1c42fc4
+assumed-identity	0x1c43b91	jmp    1c42f45
+assumed-identity	0x1c43bae	cmp    DWORD PTR [r13+0x78],r12d
+assumed-identity	0x1c43bb2	je     1c43f21
+assumed-identity	0x1c43bb8	cmp    rax,0x1
+assumed-identity	0x1c43bbc	jbe    1c44502
+assumed-identity	0x1c43bdb	cmp    rax,rcx
+assumed-identity	0x1c43bde	je     1c442d0
+assumed-identity	0x1c43be8	cmp    r12,rdx
+assumed-identity	0x1c43beb	ja     1c44113
+assumed-identity	0x1c43c5e	cmp    rax,QWORD PTR [rbp-0xd0]
+assumed-identity	0x1c43c65	je     1c44258
+assumed-identity	0x1c43c6f	cmp    rbx,rdx
+assumed-identity	0x1c43c72	ja     1c43f8f
+assumed-identity	0x1c43c78	test   r8,r8
+assumed-identity	0x1c43c7b	je     1c43ca0
+assumed-identity	0x1c43c81	cmp    r8,0x1
+assumed-identity	0x1c43c85	je     1c442b2
+assumed-identity	0x1c43cb3	cmp    rdi,QWORD PTR [rbp-0xc0]
+assumed-identity	0x1c43cba	je     1c436e8
+assumed-identity	0x1c43ccd	jmp    1c436e8
+assumed-identity	0x1c43cd2	cmp    r9d,0xffffffff
+assumed-identity	0x1c43cd6	je     1c43ce1
+assumed-identity	0x1c43cdb	jns    1c42c7a
+assumed-identity	0x1c43ce7	jmp    1c42cd4
+assumed-identity	0x1c43d0a	jmp    1c42d72
+assumed-identity	0x1c43d2a	jmp    1c4386b
+assumed-identity	0x1c43d43	jmp    1c4395a
+assumed-identity	0x1c43d66	jmp    1c438be
+assumed-identity	0x1c43d83	jmp    1c4316a
+assumed-identity	0x1c43da6	jmp    1c4336b
+assumed-identity	0x1c43dcf	jmp    1c437f8
+assumed-identity	0x1c43df1	jmp    1c437f8
+assumed-identity	0x1c43e1a	jmp    1c437f8
+assumed-identity	0x1c43e3d	jmp    1c432fb
+assumed-identity	0x1c43e60	jmp    1c4374d
+assumed-identity	0x1c43e7d	jmp    1c43064
+assumed-identity	0x1c43ea0	jmp    1c430bc
+assumed-identity	0x1c43eaa	jmp    1c43929
+assumed-identity	0x1c43eb4	jmp    1c43822
+assumed-identity	0x1c43ebe	jmp    1c438ab
+assumed-identity	0x1c43ec8	jmp    1c43139
+assumed-identity	0x1c43ed2	jmp    1c4335d
+assumed-identity	0x1c43edc	jmp    1c42d60
+assumed-identity	0x1c43eff	jmp    1c43aed
+assumed-identity	0x1c43f1c	jmp    1c436ad
+assumed-identity	0x1c43f21	cmp    rax,0x3
+assumed-identity	0x1c43f25	jbe    1c444ba
+assumed-identity	0x1c43f44	cmp    rax,rcx
+assumed-identity	0x1c43f47	je     1c44409
+assumed-identity	0x1c43f51	cmp    r12,rdx
+assumed-identity	0x1c43f54	ja     1c44302
+assumed-identity	0x1c43f76	jmp    1c43c10
+assumed-identity	0x1c43f8a	jmp    1c4363f
+assumed-identity	0x1c43fa3	jmp    1c43ca0
+assumed-identity	0x1c43fad	jmp    1c43033
+assumed-identity	0x1c43fb7	jmp    1c430aa
+assumed-identity	0x1c43fc1	jmp    1c432ea
+assumed-identity	0x1c43fcb	jmp    1c43739
+assumed-identity	0x1c43fe1	cmp    rax,0x4
+assumed-identity	0x1c43fe5	jbe    1c444d2
+assumed-identity	0x1c43ff3	cmp    QWORD PTR [rbp-0xd0],rax
+assumed-identity	0x1c43ffa	je     1c4444c
+assumed-identity	0x1c44004	cmp    r13,rdx
+assumed-identity	0x1c44007	ja     1c443d2
+assumed-identity	0x1c44079	cmp    QWORD PTR [rbp-0xd0],rax
+assumed-identity	0x1c44080	je     1c44456
+assumed-identity	0x1c4408a	cmp    rbx,rdx
+assumed-identity	0x1c4408d	ja     1c44325
+assumed-identity	0x1c44093	test   r8,r8
+assumed-identity	0x1c44096	je     1c440bb
+assumed-identity	0x1c4409c	cmp    r8,0x1
+assumed-identity	0x1c440a0	je     1c44438
+assumed-identity	0x1c440ce	cmp    rdi,QWORD PTR [rbp-0xc0]
+assumed-identity	0x1c440d5	je     1c440e4
+assumed-identity	0x1c440eb	jmp    1c436e8
+assumed-identity	0x1c4410e	jmp    1c439be
+assumed-identity	0x1c44131	jmp    1c43bfc
+assumed-identity	0x1c4414a	jmp    1c43a6c
+assumed-identity	0x1c4416d	jmp    1c42ef5
+assumed-identity	0x1c44190	jmp    1c42fa2
+assumed-identity	0x1c441a4	jmp    1c4395a
+assumed-identity	0x1c441b8	jmp    1c4316a
+assumed-identity	0x1c441d1	jmp    1c43275
+assumed-identity	0x1c441f4	jmp    1c431d8
+assumed-identity	0x1c44211	jmp    1c42e9d
+assumed-identity	0x1c44234	jmp    1c42df2
+assumed-identity	0x1c44249	jmp    1c4386b
+assumed-identity	0x1c44253	jmp    1c43adc
+assumed-identity	0x1c4425d	jmp    1c43c6f
+assumed-identity	0x1c44267	jmp    1c43678
+assumed-identity	0x1c4427b	jmp    1c43064
+assumed-identity	0x1c44285	jmp    1c42f8d
+assumed-identity	0x1c4428f	jmp    1c42ddd
+assumed-identity	0x1c44299	jmp    1c42e6c
+assumed-identity	0x1c442ad	jmp    1c436ad
+assumed-identity	0x1c442c1	jmp    1c43ca0
+assumed-identity	0x1c442cb	jmp    1c42ee3
+assumed-identity	0x1c442d5	jmp    1c43be8
+assumed-identity	0x1c442df	jmp    1c43244
+assumed-identity	0x1c442e9	jmp    1c431c2
+assumed-identity	0x1c442f3	jmp    1c439b0
+assumed-identity	0x1c442fd	jmp    1c43a3b
+assumed-identity	0x1c44320	jmp    1c43f62
+assumed-identity	0x1c4433a	jmp    1c440bb
+assumed-identity	0x1c44357	jmp    1c43571
+assumed-identity	0x1c4437e	jmp    1c434b5
+assumed-identity	0x1c443a5	jmp    1c435e6
+assumed-identity	0x1c443b9	jmp    1c42e9d
+assumed-identity	0x1c443cd	jmp    1c43a6c
+assumed-identity	0x1c443f0	jmp    1c4401a
+assumed-identity	0x1c44404	jmp    1c43275
+assumed-identity	0x1c4440e	jmp    1c43f51
+assumed-identity	0x1c44429	jmp    1c435ce
+assumed-identity	0x1c44433	jmp    1c4353c
+assumed-identity	0x1c44447	jmp    1c440bb
+assumed-identity	0x1c44451	jmp    1c44004
+assumed-identity	0x1c4445b	jmp    1c4408a
+assumed-identity	0x1c4446f	jmp    1c43571
+assumed-identity	0x1c44479	jmp    1c4349a
+assumed-identity	0x1c44551	jmp    502b02
+assumed-identity	0x1c4455d	jmp    502b44
+assumed-identity	0x1c44569	jmp    502b60
+assumed-identity	0x1c44575	jmp    502b7c
+assumed-identity	0x1c44581	jmp    502bcc
+assumed-identity	0x1c4458d	jmp    502bef
+assumed-identity	0x1c44599	jmp    502b1c
+assumed-identity	0x1c445a5	jmp    502c0b
+assumed-identity	0x1c445b1	jmp    502b96
+assumed-identity	0x1c445bd	jmp    502bb2
+english-name	0x12c58fd	cmp    BYTE PTR [rdi+0x72],0x0
+english-name	0x12c5901	je     12c5a30
+english-name	0x12c5917	cmp    eax,0xa
+english-name	0x12c591a	ja     12c5a60
+english-name	0x12c5937	cmp    QWORD PTR [rdi+0x28],0x0
+english-name	0x12c593c	je     12c594b
+english-name	0x12c593e	test   r14d,0xfffffffd
+english-name	0x12c5945	je     12c5a79
+english-name	0x12c596c	cmp    BYTE PTR [rsp+0x10],0x0
+english-name	0x12c5971	je     12c597b
+english-name	0x12c599a	cmp    rdi,rax
+english-name	0x12c599d	je     12c6248
+english-name	0x12c59a7	cmp    r13,rax
+english-name	0x12c59aa	ja     12c6230
+english-name	0x12c59b0	test   r8,r8
+english-name	0x12c59b3	jne    12c60d0
+english-name	0x12c59cb	test   r15,r15
+english-name	0x12c59d2	cmp    rdi,r12
+english-name	0x12c59d5	je     12c59e5
+english-name	0x12c59e9	test   rax,rax
+english-name	0x12c59ec	je     12c5a03
+english-name	0x12c59ee	cmp    r14d,0x1
+english-name	0x12c59f2	je     12c6258
+english-name	0x12c59f8	test   rax,rax
+english-name	0x12c59fb	je     12c5a03
+english-name	0x12c59fd	cmp    r14d,0x2
+english-name	0x12c5a01	je     12c5a30
+english-name	0x12c5a03	cmp    QWORD PTR [rbx+0x40],0xffffffffffffffff
+english-name	0x12c5a08	je     12c5bf9
+english-name	0x12c5a0e	test   r13b,r13b
+english-name	0x12c5a11	je     12c5b50
+english-name	0x12c5a17	cmp    BYTE PTR [rsp+0x14],0x0
+english-name	0x12c5a1c	je     12c5b50
+english-name	0x12c5a22	cmp    DWORD PTR [rbx+0x54],0xffffffff
+english-name	0x12c5a26	je     12c60f8
+english-name	0x12c5a3e	jne    12c6d67
+english-name	0x12c5a6e	cmp    QWORD PTR [rdi+0x28],0x0
+english-name	0x12c5a73	je     12c594b
+english-name	0x12c5a8e	cmp    r15,rax
+english-name	0x12c5a91	je     12c6500
+english-name	0x12c5a9b	cmp    r12,rax
+english-name	0x12c5a9e	ja     12c6510
+english-name	0x12c5acb	cmp    rdi,QWORD PTR [rsp+0x8]
+english-name	0x12c5ad0	je     12c69c0
+english-name	0x12c5ada	cmp    r12,rax
+english-name	0x12c5add	ja     12c65a0
+english-name	0x12c5ae3	test   r8,r8
+english-name	0x12c5ae6	jne    12c6340
+english-name	0x12c5b01	cmp    r15,QWORD PTR [rsp+0x8]
+english-name	0x12c5b06	je     12c65b8
+english-name	0x12c5b10	cmp    r12,rax
+english-name	0x12c5b13	ja     12c65d0
+english-name	0x12c5b30	test   rax,rax
+english-name	0x12c5b33	je     12c5b3f
+english-name	0x12c5b35	cmp    r14d,0x1
+english-name	0x12c5b39	je     12c6660
+english-name	0x12c5b45	jmp    12c59f8
+english-name	0x12c5ba7	cmp    QWORD PTR [rsp+0x58],0x0
+english-name	0x12c5bad	je     12c5be1
+english-name	0x12c5baf	test   r13b,r13b
+english-name	0x12c5bb2	jne    12c6430
+english-name	0x12c5bb8	cmp    BYTE PTR [rsp+0x10],0x0
+english-name	0x12c5bbd	je     12c5bc9
+english-name	0x12c5be6	cmp    rdi,r12
+english-name	0x12c5be9	je     12c5bf9
+english-name	0x12c5bf9	cmp    DWORD PTR [rbx+0x54],0xffffffff
+english-name	0x12c5bfd	je     12c60f8
+english-name	0x12c5c03	test   r13b,r13b
+english-name	0x12c5c06	je     12c5c13
+english-name	0x12c5c08	cmp    BYTE PTR [rsp+0x14],0x0
+english-name	0x12c5c0d	jne    12c5a30
+english-name	0x12c5c53	cmp    QWORD PTR [rsp+0x38],0x0
+english-name	0x12c5c59	je     12c6330
+english-name	0x12c5c68	test   r13b,r13b
+english-name	0x12c5c6b	jne    12c6800
+english-name	0x12c5c71	cmp    BYTE PTR [rsp+0x10],0x1
+english-name	0x12c5c76	jne    12c5c84
+english-name	0x12c5c78	cmp    QWORD PTR [rsp+0x18],0x0
+english-name	0x12c5c7e	je     12c64e8
+english-name	0x12c5c93	cmp    rax,0x3
+english-name	0x12c5c97	jbe    12c6db4
+english-name	0x12c5caa	cmp    rax,QWORD PTR [rsp+0x8]
+english-name	0x12c5caf	je     12c6a68
+english-name	0x12c5cb9	cmp    r12,rdx
+english-name	0x12c5cbc	ja     12c6998
+english-name	0x12c5ce0	cmp    BYTE PTR [rsp+0x10],0x0
+english-name	0x12c5ce5	je     12c5cef
+english-name	0x12c5d05	cmp    rdi,QWORD PTR [rsp+0x8]
+english-name	0x12c5d0a	je     12c6a40
+english-name	0x12c5d14	cmp    r12,rax
+english-name	0x12c5d17	ja     12c6908
+english-name	0x12c5d1d	test   r8,r8
+english-name	0x12c5d20	jne    12c63a0
+english-name	0x12c5d63	cmp    QWORD PTR [rsp+0x38],0x0
+english-name	0x12c5d69	je     12c5e63
+english-name	0x12c5d6f	test   r13b,r13b
+english-name	0x12c5d72	jne    12c68a8
+english-name	0x12c5d78	test   r12b,r12b
+english-name	0x12c5d7b	jne    12c5ddf
+english-name	0x12c5d81	test   r12,r12
+english-name	0x12c5d84	jne    12c5d91
+english-name	0x12c5d86	cmp    BYTE PTR [rsp+0x10],0x1
+english-name	0x12c5d8b	je     12c6c79
+english-name	0x12c5d9e	cmp    rax,0x3
+english-name	0x12c5da2	jbe    12c6dfc
+english-name	0x12c5db1	cmp    rax,QWORD PTR [rsp+0x8]
+english-name	0x12c5db6	je     12c6c38
+english-name	0x12c5dc0	cmp    r13,rdx
+english-name	0x12c5dc3	ja     12c6a90
+english-name	0x12c5ddf	cmp    BYTE PTR [rsp+0x10],0x0
+english-name	0x12c5de4	je     12c5dee
+english-name	0x12c5e04	cmp    rdi,QWORD PTR [rsp+0x8]
+english-name	0x12c5e09	je     12c6a50
+english-name	0x12c5e13	cmp    r12,rax
+english-name	0x12c5e16	ja     12c6920
+english-name	0x12c5e1c	test   r8,r8
+english-name	0x12c5e1f	je     12c5e3d
+english-name	0x12c5e24	cmp    r8,0x1
+english-name	0x12c5e28	je     12c6b30
+english-name	0x12c5e7a	cmp    QWORD PTR [rsp+0x38],0x0
+english-name	0x12c5e80	je     12c5ff4
+english-name	0x12c5e86	test   r13b,r13b
+english-name	0x12c5e89	jne    12c6938
+english-name	0x12c5e8f	test   r12b,r12b
+english-name	0x12c5e92	jne    12c5ef6
+english-name	0x12c5e98	test   r12,r12
+english-name	0x12c5e9b	jne    12c5ea8
+english-name	0x12c5e9d	cmp    BYTE PTR [rsp+0x10],0x1
+english-name	0x12c5ea2	je     12c6c8d
+english-name	0x12c5eb5	cmp    rax,0x3
+english-name	0x12c5eb9	jbe    12c6df0
+english-name	0x12c5ec8	cmp    rax,QWORD PTR [rsp+0x8]
+english-name	0x12c5ecd	je     12c6c2e
+english-name	0x12c5ed7	cmp    r13,rdx
+english-name	0x12c5eda	ja     12c6ab0
+english-name	0x12c5ef6	cmp    BYTE PTR [rsp+0x10],0x0
+english-name	0x12c5efb	je     12c5f05
+english-name	0x12c5f3a	cmp    r13,rax
+english-name	0x12c5f3d	je     12c6e08
+english-name	0x12c5f56	cmp    rdx,r12
+english-name	0x12c5f5f	cmp    rcx,rax
+english-name	0x12c5f62	ja     12c6868
+english-name	0x12c5f98	cmp    QWORD PTR [rsp+0x8],rdi
+english-name	0x12c5f9d	je     12c6a30
+english-name	0x12c5fa7	cmp    r13,rax
+english-name	0x12c5faa	ja     12c6890
+english-name	0x12c5fb0	test   r8,r8
+english-name	0x12c5fb3	jne    12c63c8
+english-name	0x12c5fc7	cmp    rdi,r12
+english-name	0x12c5fca	je     12c5fda
+english-name	0x12c600b	cmp    QWORD PTR [rsp+0x38],0x0
+english-name	0x12c6011	je     12c60aa
+english-name	0x12c6017	test   r13b,r13b
+english-name	0x12c601a	jne    12c69d0
+english-name	0x12c6020	test   r12b,r12b
+english-name	0x12c6023	jne    12c6087
+english-name	0x12c6025	cmp    BYTE PTR [rsp+0x10],0x1
+english-name	0x12c602e	jne    12c6039
+english-name	0x12c6030	test   r12,r12
+english-name	0x12c6033	je     12c6d35
+english-name	0x12c6046	cmp    rax,0x3
+english-name	0x12c604a	jbe    12c6d9c
+english-name	0x12c6059	cmp    QWORD PTR [rsp+0x8],rax
+english-name	0x12c605e	je     12c6cc9
+english-name	0x12c6068	cmp    r13,rdx
+english-name	0x12c606b	ja     12c6bc0
+english-name	0x12c6087	cmp    BYTE PTR [rsp+0x10],0x0
+english-name	0x12c608c	jne    12c6368
+english-name	0x12c60af	cmp    rdi,QWORD PTR [rsp+0x28]
+english-name	0x12c60b4	je     12c6103
+english-name	0x12c60c4	jmp    12c6103
+english-name	0x12c60d3	cmp    r8,0x1
+english-name	0x12c60d7	je     12c6320
+english-name	0x12c60ec	jmp    12c59b9
+english-name	0x12c60f8	cmp    QWORD PTR [rbx+0x48],0xffffffffffffffff
+english-name	0x12c60fd	jne    12c5c03
+english-name	0x12c6106	cmp    esi,0xffffffff
+english-name	0x12c6109	je     12c5a30
+english-name	0x12c610f	test   r13b,r13b
+english-name	0x12c6112	je     12c611f
+english-name	0x12c6114	cmp    BYTE PTR [rsp+0x14],0x0
+english-name	0x12c6119	jne    12c5a30
+english-name	0x12c6159	cmp    QWORD PTR [rsp+0x58],0x0
+english-name	0x12c615f	je     12c6207
+english-name	0x12c616e	test   r13b,r13b
+english-name	0x12c6171	jne    12c6480
+english-name	0x12c6177	cmp    QWORD PTR [rsp+0x18],0x0
+english-name	0x12c617d	je     12c63f0
+english-name	0x12c6192	cmp    rax,0x2
+english-name	0x12c6196	jbe    12c6dc0
+english-name	0x12c61a9	cmp    QWORD PTR [rsp+0x8],rax
+english-name	0x12c61ae	je     12c6d1f
+english-name	0x12c61b8	cmp    rbx,rdx
+english-name	0x12c61bb	ja     12c6bdf
+english-name	0x12c61e4	cmp    BYTE PTR [rsp+0x10],0x0
+english-name	0x12c61e9	je     12c61f5
+english-name	0x12c620c	cmp    rdi,r12
+english-name	0x12c620f	je     12c5a30
+english-name	0x12c6223	jmp    12c5a30
+english-name	0x12c623e	jmp    12c59b9
+english-name	0x12c624d	jmp    12c59a7
+english-name	0x12c6258	test   r15,r15
+english-name	0x12c625b	jne    12c6660
+english-name	0x12c626d	cmp    r14,QWORD PTR [rsp+0x8]
+english-name	0x12c6272	je     12c66b0
+english-name	0x12c627c	cmp    r15,r12
+english-name	0x12c627f	ja     12c66c0
+english-name	0x12c62ac	cmp    rdi,QWORD PTR [rsp+0x8]
+english-name	0x12c62b1	je     12c6a20
+english-name	0x12c62bb	cmp    r12,rax
+english-name	0x12c62be	ja     12c67e8
+english-name	0x12c62c4	test   r8,r8
+english-name	0x12c62c7	jne    12c6378
+english-name	0x12c62e2	cmp    r14,QWORD PTR [rsp+0x8]
+english-name	0x12c62e7	je     12c6748
+english-name	0x12c62f1	cmp    r15,r12
+english-name	0x12c62f4	ja     12c6760
+english-name	0x12c6313	jmp    12c5a03
+english-name	0x12c6329	jmp    12c59b9
+english-name	0x12c6333	jmp    12c5d4c
+english-name	0x12c6343	cmp    r8,0x1
+english-name	0x12c6347	je     12c6a78
+english-name	0x12c635c	jmp    12c5aec
+english-name	0x12c6370	jmp    12c6092
+english-name	0x12c637b	cmp    r8,0x1
+english-name	0x12c637f	je     12c6ad0
+english-name	0x12c6394	jmp    12c62cd
+english-name	0x12c63a3	cmp    r8,0x1
+english-name	0x12c63a7	je     12c6b20
+english-name	0x12c63bc	jmp    12c5d26
+english-name	0x12c63cb	cmp    r8,0x1
+english-name	0x12c63cf	je     12c6b10
+english-name	0x12c63e4	jmp    12c5fb9
+english-name	0x12c63f4	cmp    QWORD PTR [rsp+0x8],rax
+english-name	0x12c63f9	je     12c6406
+english-name	0x12c63fb	cmp    QWORD PTR [rbp+0x10],0x2
+english-name	0x12c6400	jbe    12c6c00
+english-name	0x12c6422	jmp    12c61e4
+english-name	0x12c643e	cmp    r13,rax
+english-name	0x12c6441	je     12c6d84
+english-name	0x12c644f	cmp    rax,QWORD PTR [rsp+0x8]
+english-name	0x12c6454	je     12c6d53
+english-name	0x12c645e	cmp    r14,rdx
+english-name	0x12c6461	ja     12c6cf4
+english-name	0x12c647a	jmp    12c5bb8
+english-name	0x12c648a	cmp    QWORD PTR [rsp+0x18],rax
+english-name	0x12c648f	je     12c6de4
+english-name	0x12c64a2	cmp    QWORD PTR [rsp+0x8],rax
+english-name	0x12c64a7	je     12c6d5d
+english-name	0x12c64b1	cmp    rbx,rdx
+english-name	0x12c64b4	ja     12c6cd3
+english-name	0x12c64de	jmp    12c6177
+english-name	0x12c64f7	jmp    12c5ce0
+english-name	0x12c6500	cmp    r12,0xf
+english-name	0x12c6504	jbe    12c5aa4
+english-name	0x12c6510	test   r12,r12
+english-name	0x12c6513	js     12c6d6c
+english-name	0x12c6521	cmp    r12,rax
+english-name	0x12c6524	jae    12c6b00
+english-name	0x12c652a	test   rax,rax
+english-name	0x12c652d	js     12c6a60
+english-name	0x12c653c	js     12c6a60
+english-name	0x12c654e	test   r13,r13
+english-name	0x12c6551	je     12c6575
+english-name	0x12c6553	cmp    r13,0x1
+english-name	0x12c6557	je     12c6c61
+english-name	0x12c6575	cmp    QWORD PTR [rsp+0x8],r8
+english-name	0x12c657a	je     12c658c
+english-name	0x12c6599	jmp    12c5aa4
+english-name	0x12c65ae	jmp    12c5aec
+english-name	0x12c65b8	cmp    r12,0xf
+english-name	0x12c65bc	jbe    12c5b19
+english-name	0x12c65d0	test   r12,r12
+english-name	0x12c65d3	js     12c6d6c
+english-name	0x12c65e1	cmp    r12,rax
+english-name	0x12c65e4	jae    12c6b40
+english-name	0x12c65ea	test   rax,rax
+english-name	0x12c65ed	js     12c6a60
+english-name	0x12c65fc	js     12c6a60
+english-name	0x12c660e	test   r13,r13
+english-name	0x12c6611	je     12c6635
+english-name	0x12c6613	cmp    r13,0x1
+english-name	0x12c6617	je     12c6c6d
+english-name	0x12c6635	cmp    QWORD PTR [rsp+0x8],r8
+english-name	0x12c663a	je     12c664c
+english-name	0x12c6659	jmp    12c5b19
+english-name	0x12c666e	cmp    r12,rax
+english-name	0x12c6671	je     12c6da8
+english-name	0x12c6680	cmp    QWORD PTR [rsp+0x8],rax
+english-name	0x12c6685	je     12c6ca1
+english-name	0x12c668f	cmp    r13,rdx
+english-name	0x12c6692	ja     12c6ae0
+english-name	0x12c66ab	jmp    12c6261
+english-name	0x12c66b0	cmp    r15,0xf
+english-name	0x12c66b4	jbe    12c6285
+english-name	0x12c66c0	test   r15,r15
+english-name	0x12c66c3	js     12c6d6c
+english-name	0x12c66cc	cmp    r15,r12
+english-name	0x12c66cf	jae    12c6c1e
+english-name	0x12c66d5	test   r12,r12
+english-name	0x12c66d8	js     12c6a60
+english-name	0x12c66e5	js     12c6a60
+english-name	0x12c66f7	test   r13,r13
+english-name	0x12c66fa	je     12c671e
+english-name	0x12c66fc	cmp    r13,0x1
+english-name	0x12c6700	je     12c6d13
+english-name	0x12c671e	cmp    r8,QWORD PTR [rsp+0x8]
+english-name	0x12c6723	je     12c6735
+english-name	0x12c673d	jmp    12c6285
+english-name	0x12c6748	cmp    r15,0xf
+english-name	0x12c674c	jbe    12c62fa
+english-name	0x12c6760	test   r15,r15
+english-name	0x12c6763	js     12c6d6c
+english-name	0x12c676c	cmp    r15,r12
+english-name	0x12c676f	jae    12c6c26
+english-name	0x12c6775	test   r12,r12
+english-name	0x12c6778	js     12c6a60
+english-name	0x12c6785	js     12c6a60
+english-name	0x12c6797	test   r13,r13
+english-name	0x12c679a	je     12c67be
+english-name	0x12c679c	cmp    r13,0x1
+english-name	0x12c67a0	je     12c6d29
+english-name	0x12c67be	cmp    QWORD PTR [rsp+0x8],r8
+english-name	0x12c67c3	je     12c67d5
+english-name	0x12c67dd	jmp    12c62fa
+english-name	0x12c67f6	jmp    12c62cd
+english-name	0x12c680a	cmp    QWORD PTR [rsp+0x18],rax
+english-name	0x12c680f	je     12c6d90
+english-name	0x12c6822	cmp    rax,QWORD PTR [rsp+0x8]
+english-name	0x12c6827	je     12c6cbf
+english-name	0x12c6831	cmp    r12,rdx
+english-name	0x12c6834	ja     12c6b70
+english-name	0x12c685e	jmp    12c5c71
+english-name	0x12c6884	jmp    12c5f6d
+english-name	0x12c689e	jmp    12c5fb9
+english-name	0x12c68b6	cmp    r13,rax
+english-name	0x12c68b9	je     12c6dcc
+english-name	0x12c68cc	cmp    rax,QWORD PTR [rsp+0x8]
+english-name	0x12c68d1	je     12c6cab
+english-name	0x12c68db	cmp    QWORD PTR [rsp+0x18],rdx
+english-name	0x12c68e0	ja     12c6b50
+english-name	0x12c68fe	jmp    12c5d78
+english-name	0x12c6916	jmp    12c5d26
+english-name	0x12c692e	jmp    12c5e3d
+english-name	0x12c6946	cmp    r13,rax
+english-name	0x12c6949	je     12c6dd8
+english-name	0x12c695c	cmp    rax,QWORD PTR [rsp+0x8]
+english-name	0x12c6961	je     12c6cb5
+english-name	0x12c696b	cmp    QWORD PTR [rsp+0x18],rdx
+english-name	0x12c6970	ja     12c6b98
+english-name	0x12c698e	jmp    12c5e8f
+english-name	0x12c69b4	jmp    12c5cce
+english-name	0x12c69c5	jmp    12c5ada
+english-name	0x12c69de	cmp    r13,rax
+english-name	0x12c69e1	je     12c6d78
+english-name	0x12c69ef	cmp    QWORD PTR [rsp+0x8],rax
+english-name	0x12c69f4	je     12c6d49
+english-name	0x12c69fe	cmp    r14,rdx
+english-name	0x12c6a01	ja     12c6c42
+english-name	0x12c6a1a	jmp    12c6020
+english-name	0x12c6a25	jmp    12c62bb
+english-name	0x12c6a35	jmp    12c5fa7
+english-name	0x12c6a45	jmp    12c5d14
+english-name	0x12c6a55	jmp    12c5e13
+english-name	0x12c6a6d	jmp    12c5cb9
+english-name	0x12c6a81	jmp    12c5aec
+english-name	0x12c6aaa	jmp    12c5dd1
+english-name	0x12c6aca	jmp    12c5ee8
+english-name	0x12c6ad9	jmp    12c62cd
+english-name	0x12c6afa	jmp    12c669d
+english-name	0x12c6b05	jmp    12c6533
+english-name	0x12c6b19	jmp    12c5fb9
+english-name	0x12c6b29	jmp    12c5d26
+english-name	0x12c6b39	jmp    12c5e3d
+english-name	0x12c6b45	jmp    12c65f3
+english-name	0x12c6b6a	jmp    12c68eb
+english-name	0x12c6b8c	jmp    12c6843
+english-name	0x12c6bb2	jmp    12c697b
+english-name	0x12c6bda	jmp    12c6079
+english-name	0x12c6bfb	jmp    12c61d2
+english-name	0x12c6c19	jmp    12c6412
+english-name	0x12c6c21	jmp    12c66de
+english-name	0x12c6c29	jmp    12c677e
+english-name	0x12c6c33	jmp    12c5ed7
+english-name	0x12c6c3d	jmp    12c5dc0
+english-name	0x12c6c5c	jmp    12c6a0c
+english-name	0x12c6c68	jmp    12c6575
+english-name	0x12c6c74	jmp    12c6635
+english-name	0x12c6c88	jmp    12c5ddf
+english-name	0x12c6c9c	jmp    12c5ef6
+english-name	0x12c6ca6	jmp    12c668f
+english-name	0x12c6cb0	jmp    12c68db
+english-name	0x12c6cba	jmp    12c696b
+english-name	0x12c6cc4	jmp    12c6831
+english-name	0x12c6cce	jmp    12c6068
+english-name	0x12c6cef	jmp    12c64c3
+english-name	0x12c6d0e	jmp    12c646c
+english-name	0x12c6d1a	jmp    12c671e
+english-name	0x12c6d24	jmp    12c61b8
+english-name	0x12c6d30	jmp    12c67be
+english-name	0x12c6d44	jmp    12c6087
+english-name	0x12c6d4e	jmp    12c69fe
+english-name	0x12c6d58	jmp    12c645e
+english-name	0x12c6d62	jmp    12c64b1
+english-name	0x12c6e1b	jmp    49f944
+english-name	0x12c6e27	jmp    49f964
+english-name	0x12c6e33	jmp    49f998
+english-name	0x12c6e3f	jmp    49f944
+english-name	0x12c6e4b	jmp    49f944
+english-name	0x12c6e57	jmp    49f97c
+caste-name	0xa0d612	test   edx,edx
+caste-name	0xa0d614	js     a0d62e
+caste-name	0xa0d62a	cmp    edx,eax
+caste-name	0xa0d62c	jl     a0d680
+caste-name	0xa0d63c	cmp    rax,0x7
+caste-name	0xa0d640	jbe    a0d71c
+caste-name	0xa0d65a	test   r12b,r12b
+caste-name	0xa0d65d	jne    a0d6e0
+caste-name	0xa0d671	jne    a0d717
+caste-name	0xa0d6a1	test   cl,cl
+caste-name	0xa0d6a3	jne    a0d710
+caste-name	0xa0d6c8	cmp    rdi,rbx
+caste-name	0xa0d6cb	je     a0d663
+caste-name	0xa0d6db	jmp    a0d663
+caste-name	0xa0d6ee	jne    a0d717
+caste-name	0xa0d702	jmp    8377e0
+caste-name	0xa0d715	jmp    a0d6b3
+caste-name	0xa0d72f	jmp    45965e
+raw-caste-name	0x12ae81b	cmp    cx,0xffff
+raw-caste-name	0x12ae81f	je     12ae918
+raw-caste-name	0x12ae825	test   dl,dl
+raw-caste-name	0x12ae827	je     12ae8a8
+raw-caste-name	0x12ae829	test   di,di
+raw-caste-name	0x12ae82c	js     12ae89a
+raw-caste-name	0x12ae847	cmp    rbx,rax
+raw-caste-name	0x12ae84a	jae    12ae93e
+raw-caste-name	0x12ae850	test   cx,cx
+raw-caste-name	0x12ae853	js     12ae93e
+raw-caste-name	0x12ae876	cmp    rcx,rax
+raw-caste-name	0x12ae879	jae    12ae947
+raw-caste-name	0x12ae88f	cmp    QWORD PTR [rbp+0x8],0x0
+raw-caste-name	0x12ae894	je     12ae929
+raw-caste-name	0x12ae8a8	test   di,di
+raw-caste-name	0x12ae8ab	js     12ae89a
+raw-caste-name	0x12ae8c6	cmp    rbx,rax
+raw-caste-name	0x12ae8c9	jae    12ae89a
+raw-caste-name	0x12ae8cb	test   cx,cx
+raw-caste-name	0x12ae8ce	js     12ae982
+raw-caste-name	0x12ae8f1	cmp    rcx,rax
+raw-caste-name	0x12ae8f4	jae    12ae98b
+raw-caste-name	0x12ae90a	cmp    QWORD PTR [rbp+0x8],0x0
+raw-caste-name	0x12ae90f	jne    12ae89a
+raw-caste-name	0x12ae911	jmp    12ae96d
+raw-caste-name	0x12ae918	test   dl,dl
+raw-caste-name	0x12ae91a	je     12ae960
+raw-caste-name	0x12ae91c	test   di,di
+raw-caste-name	0x12ae91f	js     12ae89a
+raw-caste-name	0x12ae93e	cmp    rax,rbx
+raw-caste-name	0x12ae941	jbe    12ae89a
+raw-caste-name	0x12ae958	jmp    69f890
+raw-caste-name	0x12ae960	test   di,di
+raw-caste-name	0x12ae963	js     12ae89a
+raw-caste-name	0x12ae982	cmp    rbx,rax
+raw-caste-name	0x12ae985	jae    12ae89a
+raw-caste-name	0x12ae993	jmp    12ae94f
+name-keywords	0x1cc3498	cmp    BYTE PTR [rsi+0x72],0x0
+name-keywords	0x1cc349c	jne    1cc34d0
+name-keywords	0x1cc34af	jne    1cc38aa
+name-keywords	0x1cc3596	test   eax,eax
+name-keywords	0x1cc3598	jle    1cc3663
+name-keywords	0x1cc35a7	jmp    1cc35c1
+name-keywords	0x1cc35b4	cmp    rbp,QWORD PTR [rsp]
+name-keywords	0x1cc35b8	je     1cc3663
+name-keywords	0x1cc35cf	cmp    al,0x19
+name-keywords	0x1cc35d1	jbe    1cc3698
+name-keywords	0x1cc35d7	test   rbx,rbx
+name-keywords	0x1cc35da	je     1cc35b0
+name-keywords	0x1cc35ee	js     1cc36f5
+name-keywords	0x1cc3604	jmp    1cc361a
+name-keywords	0x1cc3614	jb     1cc36f0
+name-keywords	0x1cc361e	cmp    QWORD PTR [rax+0x8],rbx
+name-keywords	0x1cc3622	jne    1cc3610
+name-keywords	0x1cc3632	test   eax,eax
+name-keywords	0x1cc3634	jne    1cc3610
+name-keywords	0x1cc3659	cmp    rbp,QWORD PTR [rsp]
+name-keywords	0x1cc365d	jne    1cc35be
+name-keywords	0x1cc3663	test   rbx,rbx
+name-keywords	0x1cc3666	jne    1cc37d8
+name-keywords	0x1cc366c	cmp    DWORD PTR [rsp+0x24],0x1
+name-keywords	0x1cc3671	je     1cc3750
+name-keywords	0x1cc368c	jmp    1cc3592
+name-keywords	0x1cc36a5	cmp    rax,QWORD PTR [rsp+0x10]
+name-keywords	0x1cc36b7	cmp    r15,rdx
+name-keywords	0x1cc36ba	ja     1cc37b0
+name-keywords	0x1cc36e1	jmp    1cc35b0
+name-keywords	0x1cc372b	cmp    rsi,QWORD PTR [r14+0x10]
+name-keywords	0x1cc372f	je     1cc3838
+name-keywords	0x1cc3748	jmp    1cc363e
+name-keywords	0x1cc3758	cmp    rdi,QWORD PTR [rsp+0x10]
+name-keywords	0x1cc375d	je     1cc3770
+name-keywords	0x1cc3775	cmp    rdi,QWORD PTR [rsp+0x30]
+name-keywords	0x1cc377a	je     1cc378d
+name-keywords	0x1cc3792	cmp    rdi,QWORD PTR [rsp+0x28]
+name-keywords	0x1cc3797	je     1cc349e
+name-keywords	0x1cc37ab	jmp    1cc349e
+name-keywords	0x1cc37cf	jmp    1cc36c0
+name-keywords	0x1cc37ea	js     1cc384a
+name-keywords	0x1cc37f4	jmp    1cc3806
+name-keywords	0x1cc3804	jb     1cc384a
+name-keywords	0x1cc380a	cmp    QWORD PTR [rax+0x8],rbx
+name-keywords	0x1cc380e	jne    1cc3800
+name-keywords	0x1cc381e	test   eax,eax
+name-keywords	0x1cc3820	jne    1cc3800
+name-keywords	0x1cc3833	jmp    1cc366c
+name-keywords	0x1cc3845	jmp    1cc3740
+name-keywords	0x1cc3880	cmp    rsi,QWORD PTR [r14+0x10]
+name-keywords	0x1cc3884	je     1cc389b
+name-keywords	0x1cc3899	jmp    1cc3822
+name-keywords	0x1cc38a8	jmp    1cc3891
+name-keywords	0x1cc38b6	jmp    5069d0
+name-keywords	0x1cc38c2	jmp    506a0d
+name-keywords	0x1cc38ce	jmp    5069f0
+unique-keyword	0xff8746	js     ff87a0
+unique-keyword	0xff874f	jmp    ff875e
+unique-keyword	0xff875c	jb     ff87a0
+unique-keyword	0xff8763	cmp    QWORD PTR [rax+0x8],rbp
+unique-keyword	0xff8767	jne    ff8758
+unique-keyword	0xff8769	test   rbp,rbp
+unique-keyword	0xff876c	je     ff8780
+unique-keyword	0xff877c	test   eax,eax
+unique-keyword	0xff877e	jne    ff8758
+unique-keyword	0xff878e	jne    ff87f3
+unique-keyword	0xff87d3	cmp    rsi,QWORD PTR [r14+0x10]
+unique-keyword	0xff87d7	je     ff87e6
+unique-keyword	0xff87e4	jmp    ff8780
+unique-keyword	0xff87f1	jmp    ff8780
+site-reference	0xa27cff	cmp    QWORD PTR [rsi+0x1a0],rax
+site-reference	0xa27d06	je     a27e78
+site-reference	0xa27d0c	cmp    edx,0xffffffff
+site-reference	0xa27d0f	je     a27e78
+site-reference	0xa27d29	cmp    BYTE PTR [rsp+0x10],0x0
+site-reference	0xa27d2e	je     a27e78
+site-reference	0xa27d39	test   r12,r12
+site-reference	0xa27d3c	je     a27e78
+site-reference	0xa27d45	jne    a27e40
+site-reference	0xa27d91	cmp    rdi,rax
+site-reference	0xa27d94	je     a27ec0
+site-reference	0xa27d9e	cmp    r12,rax
+site-reference	0xa27da1	ja     a27e28
+site-reference	0xa27da7	test   r8,r8
+site-reference	0xa27daa	je     a27dc8
+site-reference	0xa27daf	cmp    r8,0x1
+site-reference	0xa27db3	je     a27ea8
+site-reference	0xa27dd1	test   ebx,ebx
+site-reference	0xa27dd3	jne    a27e10
+site-reference	0xa27dda	cmp    rdi,r13
+site-reference	0xa27ddd	je     a27ded
+site-reference	0xa27dfb	jne    a27eca
+site-reference	0xa27e1f	jmp    a27dd5
+site-reference	0xa27e36	jmp    a27dc8
+site-reference	0xa27e6e	jmp    a27d4b
+site-reference	0xa27e86	jne    a27eca
+site-reference	0xa27e9c	jmp    8377e0
+site-reference	0xa27eb1	jmp    a27dc8
+site-reference	0xa27ec5	jmp    a27d9e
+site-reference	0xa27ed6	jmp    45a098
+dispatcher-prefix	0x10654e7	cmp    rax,r13
+dispatcher-prefix	0x10654ea	jb     1065655
+dispatcher-prefix	0x1065502	cmp    rax,QWORD PTR [rcx+0x40]
+dispatcher-prefix	0x1065506	je     106550c
+dispatcher-prefix	0x106558c	cmp    rsi,rax
+dispatcher-prefix	0x106558f	jb     106594e
+dispatcher-prefix	0x1065595	ja     1065810
+dispatcher-prefix	0x10655d0	cmp    rax,QWORD PTR [rbp-0x2a0]
+dispatcher-prefix	0x10655d7	ja     1065825
+dispatcher-prefix	0x10655ed	jne    1076a0b
+dispatcher-prefix	0x1065608	jmp    ffbf60
+dispatcher-prefix	0x106564c	cmp    r13,rbx
+dispatcher-prefix	0x106564f	jbe    10654f0
+dispatcher-prefix	0x106565f	test   rax,rax
+dispatcher-prefix	0x1065662	je     1065648
+dispatcher-prefix	0x106566c	cmp    rdi,r8
+dispatcher-prefix	0x106566f	je     10657f8
+dispatcher-prefix	0x106567b	test   r12,r12
+dispatcher-prefix	0x106567e	je     10656a9
+dispatcher-prefix	0x1065689	cmp    rdi,rax
+dispatcher-prefix	0x106568c	je     106569c
+dispatcher-prefix	0x10656bc	cmp    rax,rsi
+dispatcher-prefix	0x10656bf	je     10657c8
+dispatcher-prefix	0x10656f5	cmp    r8,rdi
+dispatcher-prefix	0x10656f8	jne    1065678
+dispatcher-prefix	0x1065728	cmp    rdi,r8
+dispatcher-prefix	0x106572b	je     10657e0
+dispatcher-prefix	0x106573b	test   r12,r12
+dispatcher-prefix	0x106573e	je     1065769
+dispatcher-prefix	0x1065749	cmp    rdi,rax
+dispatcher-prefix	0x106574c	je     106575c
+dispatcher-prefix	0x106577c	cmp    rax,rsi
+dispatcher-prefix	0x106577f	je     1065610
+dispatcher-prefix	0x10657b5	cmp    r8,rdi
+dispatcher-prefix	0x10657b8	jne    1065738
+dispatcher-prefix	0x10657be	jmp    106561e
+dispatcher-prefix	0x10657d6	jmp    1065700
+dispatcher-prefix	0x10657e0	test   r8,r8
+dispatcher-prefix	0x10657e3	je     1065637
+dispatcher-prefix	0x10657f0	jmp    106561e
+dispatcher-prefix	0x10657f8	test   r8,r8
+dispatcher-prefix	0x10657fb	je     1065719
+dispatcher-prefix	0x1065808	jmp    1065700
+dispatcher-prefix	0x1065813	cmp    rcx,rax
+dispatcher-prefix	0x1065816	je     106559b
+dispatcher-prefix	0x1065820	jmp    106559b
+dispatcher-prefix	0x10658cc	cmp    DWORD PTR [rax],0xfd
+dispatcher-prefix	0x10658d2	ja     1065920
+dispatcher-prefix	0x1065903	cmp    rax,rdx
+dispatcher-prefix	0x1065906	jae    1065920
+dispatcher-prefix	0x106590b	cmp    DWORD PTR [rbx],0x1
+dispatcher-prefix	0x106590e	je     1074825
+dispatcher-prefix	0x1065918	cmp    rdx,rax
+dispatcher-prefix	0x106591b	ja     1065908
+dispatcher-prefix	0x1065932	cmp    QWORD PTR [rbp-0x2b0],rcx
+dispatcher-prefix	0x1065939	je     10655e0
+dispatcher-prefix	0x1065949	jmp    1065850
+dispatcher-prefix	0x106596b	jmp    106559b
+rumor-menu	0x1865e5e	cmp    DWORD PTR [rip+0xc2354f],0x1        # 24893b4
+rumor-menu	0x1865e65	je     1865e90
+rumor-menu	0x1865e67	cmp    DWORD PTR [rbp+0x88],0x21
+rumor-menu	0x1865e6e	ja     1865fb0
+rumor-menu	0x1865e90	cmp    QWORD PTR [rip+0xeb0f29],rsi        # 2716dc0
+rumor-menu	0x1865e97	jne    1865e67
+rumor-menu	0x1865eae	cmp    edi,0x21
+rumor-menu	0x1865eb1	ja     1866267
+rumor-menu	0x1865eda	cmp    rax,rdx
+rumor-menu	0x1865edd	je     1865f05
+rumor-menu	0x1865ef1	cmp    edx,DWORD PTR [r12+0x130]
+rumor-menu	0x1865ef9	je     1865f05
+rumor-menu	0x1865efb	cmp    DWORD PTR [rax+0x8],0x18
+rumor-menu	0x1865eff	je     1866853
+rumor-menu	0x1865f05	test   cl,cl
+rumor-menu	0x1865f07	jne    18666ad
+rumor-menu	0x1865f14	cmp    QWORD PTR [rbp+0x318],rax
+rumor-menu	0x1865f1b	jne    1866130
+rumor-menu	0x1865f48	cmp    DWORD PTR [rsp+0x30],0xffffffff
+rumor-menu	0x1865f54	je     1866946
+rumor-menu	0x1865fb7	cmp    QWORD PTR [rbp+0x318],rax
+rumor-menu	0x1865fbe	jne    1866130
+rumor-menu	0x186600e	jne    1866ec9
+rumor-menu	0x1866028	jmp    ff1d00
+rumor-menu	0x186603d	cmp    rdx,rax
+rumor-menu	0x1866040	je     1866068
+rumor-menu	0x1866054	cmp    edx,DWORD PTR [r12+0x130]
+rumor-menu	0x186605c	je     1866068
+rumor-menu	0x186605e	cmp    DWORD PTR [rax+0x8],0x2a
+rumor-menu	0x1866062	je     1866896
+rumor-menu	0x1866068	test   cl,cl
+rumor-menu	0x186606a	jne    1866740
+rumor-menu	0x1866077	cmp    QWORD PTR [rbp+0x318],rax
+rumor-menu	0x186607e	jne    1866130
+rumor-menu	0x18660ab	cmp    DWORD PTR [rsp+0x30],0xffffffff
+rumor-menu	0x18660b7	je     1866a85
+rumor-menu	0x186611a	cmp    QWORD PTR [rbp+0x318],rax
+rumor-menu	0x1866121	je     1865fc4
+rumor-menu	0x1866141	jne    1866ec9
+rumor-menu	0x1866187	cmp    DWORD PTR [rsp+0x30],0xffffffff
+rumor-menu	0x1866193	je     18668f6
+rumor-menu	0x18661f6	cmp    QWORD PTR [rbp+0x310],rax
+rumor-menu	0x18661fd	je     1865fc4
+rumor-menu	0x1866203	jmp    1866130
+rumor-menu	0x1866212	jmp    186621e
+rumor-menu	0x1866225	test   al,al
+rumor-menu	0x1866227	je     186625f
+rumor-menu	0x1866262	cmp    ebx,0x3e
+rumor-menu	0x1866265	jne    1866218
+rumor-menu	0x186626c	jmp    1865fc9
+rumor-menu	0x18662ae	test   rax,rax
+rumor-menu	0x18662b1	je     1866670
+rumor-menu	0x18662bf	test   rax,rax
+rumor-menu	0x18662c2	je     1866670
+rumor-menu	0x18662d9	cmp    BYTE PTR [rsp+0x60],0x0
+rumor-menu	0x18662e1	je     1866496
+rumor-menu	0x18662ec	test   rbx,rbx
+rumor-menu	0x18662ef	je     1866496
+rumor-menu	0x18663dd	test   edi,edi
+rumor-menu	0x18663df	jg     18663f0
+rumor-menu	0x18663e8	test   edx,edx
+rumor-menu	0x18663ea	jle    1866e08
+rumor-menu	0x186641e	test   edx,edx
+rumor-menu	0x1866420	jle    1866e88
+rumor-menu	0x186642d	test   eax,eax
+rumor-menu	0x186642f	jle    1866e4e
+rumor-menu	0x1866435	cmp    edx,eax
+rumor-menu	0x186643f	cmp    edx,0x63
+rumor-menu	0x1866442	jg     1866463
+rumor-menu	0x1866449	cmp    edx,0x31
+rumor-menu	0x186644c	jg     1866463
+rumor-menu	0x1866453	cmp    edx,0x18
+rumor-menu	0x1866456	jg     1866463
+rumor-menu	0x186645a	cmp    edx,0xa
+rumor-menu	0x18664a9	cmp    DWORD PTR [rsp+0x30],0xffffffff
+rumor-menu	0x18664b5	jne    1866199
+rumor-menu	0x1866512	jmp    18661ef
+rumor-menu	0x1866525	cmp    BYTE PTR [rsp+0x60],0x0
+rumor-menu	0x186652a	je     1866267
+rumor-menu	0x1866535	test   rsi,rsi
+rumor-menu	0x1866538	je     1866267
+rumor-menu	0x1866549	jmp    1866267
+rumor-menu	0x186655e	cmp    rax,rdx
+rumor-menu	0x1866561	je     18666a0
+rumor-menu	0x1866579	cmp    edx,DWORD PTR [r12+0x130]
+rumor-menu	0x1866581	je     18666a0
+rumor-menu	0x186658a	cmp    eax,0x19
+rumor-menu	0x186658d	je     18667f3
+rumor-menu	0x1866593	cmp    eax,0x24
+rumor-menu	0x1866596	jne    18666a0
+rumor-menu	0x186659c	test   cl,cl
+rumor-menu	0x186659e	je     18669cc
+rumor-menu	0x1866625	test   al,al
+rumor-menu	0x1866627	je     1866663
+rumor-menu	0x1866666	cmp    ebx,0x3e
+rumor-menu	0x1866669	jne    1866618
+rumor-menu	0x186666b	jmp    1866267
+rumor-menu	0x1866679	jmp    1866496
+rumor-menu	0x1866683	jmp    1865ecc
+rumor-menu	0x186668d	jmp    1866550
+rumor-menu	0x1866697	jmp    186602f
+rumor-menu	0x18666a0	test   cl,cl
+rumor-menu	0x18666a2	je     1865f0d
+rumor-menu	0x18666a8	jmp    18665a4
+rumor-menu	0x18666f5	test   al,al
+rumor-menu	0x18666f7	je     1866733
+rumor-menu	0x1866736	cmp    ebx,0x3e
+rumor-menu	0x1866739	jne    18666e8
+rumor-menu	0x186673b	jmp    1866267
+rumor-menu	0x1866748	test   rax,rax
+rumor-menu	0x186674b	je     1866758
+rumor-menu	0x1866753	cmp    DWORD PTR [rbp+0x68],eax
+rumor-menu	0x1866756	je     18667b8
+rumor-menu	0x186676d	test   al,al
+rumor-menu	0x186676f	je     18667ab
+rumor-menu	0x18667ae	cmp    ebx,0x3e
+rumor-menu	0x18667b1	jne    1866760
+rumor-menu	0x18667b3	jmp    1866267
+rumor-menu	0x18667ee	jmp    1866758
+rumor-menu	0x18667f3	test   cl,cl
+rumor-menu	0x18667f5	jne    18665a4
+rumor-menu	0x18667fb	cmp    edx,DWORD PTR [r12+0x3d0]
+rumor-menu	0x1866803	je     1866991
+rumor-menu	0x186684e	jmp    1865f0d
+rumor-menu	0x1866853	test   cl,cl
+rumor-menu	0x1866855	jne    18666ad
+rumor-menu	0x186685b	cmp    edx,DWORD PTR [r12+0x3d0]
+rumor-menu	0x1866863	je     1866991
+rumor-menu	0x1866894	jmp    1866837
+rumor-menu	0x1866896	test   cl,cl
+rumor-menu	0x1866898	jne    1866740
+rumor-menu	0x186689e	cmp    edx,DWORD PTR [r12+0x3d0]
+rumor-menu	0x18668a6	je     1866b89
+rumor-menu	0x18668f1	jmp    1866070
+rumor-menu	0x1866941	jmp    18661ef
+rumor-menu	0x186698c	jmp    1865fb0
+rumor-menu	0x18669c7	jmp    1865f0d
+rumor-menu	0x18669d7	test   rax,rax
+rumor-menu	0x18669da	je     1866ad0
+rumor-menu	0x18669e8	cmp    eax,0xffffffff
+rumor-menu	0x18669eb	je     1866ad0
+rumor-menu	0x1866a18	cmp    DWORD PTR [rsp+0x30],0xffffffff
+rumor-menu	0x1866a24	je     1866ece
+rumor-menu	0x1866a80	jmp    1865f0d
+rumor-menu	0x1866acb	jmp    1866113
+rumor-menu	0x1866af7	cmp    rax,r8
+rumor-menu	0x1866afa	je     1866b2b
+rumor-menu	0x1866afc	cmp    r9d,0xffffffff
+rumor-menu	0x1866b00	je     1866b2b
+rumor-menu	0x1866b05	js     1866b2b
+rumor-menu	0x1866b15	cmp    r9d,DWORD PTR [rdi+0xe0]
+rumor-menu	0x1866b1c	je     1866bff
+rumor-menu	0x1866b22	jge    1866b80
+rumor-menu	0x1866b27	cmp    edx,ecx
+rumor-menu	0x1866b29	jge    1866b09
+rumor-menu	0x1866b2b	test   rbx,rbx
+rumor-menu	0x1866b2e	je     1866bc4
+rumor-menu	0x1866b37	cmp    DWORD PTR [rbx+0x88],eax
+rumor-menu	0x1866b3d	je     1866bc4
+rumor-menu	0x1866b7b	jmp    1865f0d
+rumor-menu	0x1866b83	cmp    ecx,edx
+rumor-menu	0x1866b85	jle    1866b09
+rumor-menu	0x1866b87	jmp    1866b2b
+rumor-menu	0x1866bbf	jmp    1866070
+rumor-menu	0x1866bfa	jmp    1865f0d
+rumor-menu	0x1866bff	test   rbx,rbx
+rumor-menu	0x1866c02	je     1866bc4
+rumor-menu	0x1866c7c	js     1866f19
+rumor-menu	0x1866c9e	cmp    rdx,r9
+rumor-menu	0x1866cbb	cmp    edi,0xffffffff
+rumor-menu	0x1866cbe	je     1866cfd
+rumor-menu	0x1866cc0	cmp    BYTE PTR [rsp+0xf],0x0
+rumor-menu	0x1866cc5	jne    1866cfd
+rumor-menu	0x1866cc7	test   r10d,r10d
+rumor-menu	0x1866cca	js     1866cfd
+rumor-menu	0x1866ce4	cmp    edi,DWORD PTR [rsi+0xe0]
+rumor-menu	0x1866cea	je     1866da0
+rumor-menu	0x1866cf0	jge    1866d90
+rumor-menu	0x1866cf9	cmp    ecx,edx
+rumor-menu	0x1866cfb	jge    1866cd8
+rumor-menu	0x1866d01	test   r8d,r8d
+rumor-menu	0x1866d04	jns    1866cb7
+rumor-menu	0x1866d0b	test   rax,rax
+rumor-menu	0x1866d0e	je     1866d20
+rumor-menu	0x1866d25	test   rdi,rdi
+rumor-menu	0x1866d28	je     1866d37
+rumor-menu	0x1866d3c	test   rdi,rdi
+rumor-menu	0x1866d3f	je     1866d4e
+rumor-menu	0x1866d4e	cmp    r13d,0xffffffff
+rumor-menu	0x1866d52	je     1866b34
+rumor-menu	0x1866d8b	jmp    1865f0d
+rumor-menu	0x1866d93	cmp    edx,ecx
+rumor-menu	0x1866d95	jle    1866cd8
+rumor-menu	0x1866d9b	jmp    1866cfd
+rumor-menu	0x1866da0	cmp    DWORD PTR [rsi+0x30],0xffffffff
+rumor-menu	0x1866da4	jne    1866cfd
+rumor-menu	0x1866db1	test   rax,rax
+rumor-menu	0x1866db4	je     1866cfd
+rumor-menu	0x1866dbe	test   rax,rax
+rumor-menu	0x1866dc1	je     1866cfd
+rumor-menu	0x1866dcd	cmp    DWORD PTR [rax+0x4],ecx
+rumor-menu	0x1866dd0	jne    1866cfd
+rumor-menu	0x1866ddd	cmp    ax,0x47
+rumor-menu	0x1866de1	ja     1866dee
+rumor-menu	0x1866dee	cmp    edx,r14d
+rumor-menu	0x1866df1	jg     1866dfd
+rumor-menu	0x1866df3	cmp    r13d,0xffffffff
+rumor-menu	0x1866df7	jne    1866cfd
+rumor-menu	0x1866e03	jmp    1866cfd
+rumor-menu	0x1866e0f	test   eax,eax
+rumor-menu	0x1866e11	jle    1866492
+rumor-menu	0x1866e49	jmp    1866467
+rumor-menu	0x1866e53	cmp    edx,0x63
+rumor-menu	0x1866e56	jg     1866463
+rumor-menu	0x1866e61	cmp    edx,0x31
+rumor-menu	0x1866e64	jg     1866463
+rumor-menu	0x1866e6f	cmp    edx,0x18
+rumor-menu	0x1866e72	jg     1866463
+rumor-menu	0x1866e7a	cmp    edx,0xa
+rumor-menu	0x1866e83	jmp    1866463
+rumor-menu	0x1866e94	cmp    edx,0x63
+rumor-menu	0x1866e97	jg     1866463
+rumor-menu	0x1866ea2	cmp    edx,0x31
+rumor-menu	0x1866ea5	jg     1866463
+rumor-menu	0x1866eb0	cmp    edx,0x18
+rumor-menu	0x1866eb3	jg     1866463
+rumor-menu	0x1866ebb	cmp    edx,0xa
+rumor-menu	0x1866ec4	jmp    1866463
+rumor-menu	0x1866f14	jmp    1865f0d
+rumor-menu	0x1866f1d	jmp    1866d06
+rumor-menu	0x1866f29	jmp    4da258
+rumor-directions	0xff5fb4	cmp    DWORD PTR [rip+0x14933f9],0x1        # 24893b4
+rumor-directions	0xff5fbe	je     ff5fe0
+rumor-directions	0xff5fc0	cmp    eax,0x20
+rumor-directions	0xff5fc3	ja     ff6130
+rumor-directions	0xff5fe7	cmp    r13,rdx
+rumor-directions	0xff5fee	cmp    eax,0x20
+rumor-directions	0xff5ff1	ja     ff6130
+rumor-directions	0xff603f	cmp    r12b,0x1
+rumor-directions	0xff609f	jne    ff65f2
+rumor-directions	0xff60b2	jmp    ff1b50
+rumor-directions	0xff60f0	cmp    r12b,0x1
+rumor-directions	0xff6110	jne    ff65f2
+rumor-directions	0xff6123	jmp    ff5300
+rumor-directions	0xff613e	jne    ff65f2
+rumor-directions	0xff617f	jmp    ff60f0
+rumor-directions	0xff6195	cmp    r12b,0x1
+rumor-directions	0xff621b	je     ff60a5
+rumor-directions	0xff6221	jmp    ff65f2
+rumor-directions	0xff6260	cmp    r12b,0x1
+rumor-directions	0xff62a3	jmp    ff61fb
+rumor-directions	0xff62e2	cmp    r12b,0x1
+rumor-directions	0xff6303	je     ff60a5
+rumor-directions	0xff6309	jmp    ff65f2
+rumor-directions	0xff6323	cmp    BYTE PTR [rsp+0x20],0x0
+rumor-directions	0xff6328	je     ff6130
+rumor-directions	0xff6333	test   rsi,rsi
+rumor-directions	0xff6336	je     ff6130
+rumor-directions	0xff634f	jne    ff65f2
+rumor-directions	0xff6362	jmp    ff5ad0
+rumor-directions	0xff639f	jmp    ff6260
+rumor-directions	0xff63d0	jmp    ff6038
+rumor-directions	0xff63e9	cmp    r12b,0x1
+rumor-directions	0xff6459	jmp    ff6055
+rumor-directions	0xff6487	jmp    ff62d8
+rumor-directions	0xff649d	cmp    r12b,0x1
+rumor-directions	0xff6541	jmp    ff6086
+rumor-directions	0xff6561	cmp    r12b,0x1
+rumor-directions	0xff65a0	cmp    DWORD PTR [rbx+0x4],0xffffffff
+rumor-directions	0xff65a4	je     ff6130
+rumor-directions	0xff65ec	je     ff6116
+rumor-directions	0xff6636	jmp    ff641a
+rumor-directions	0xff666d	cmp    r13,rdx
+rumor-directions	0xff6689	jmp    ff641a
+opinion-filter	0xfece94	cmp    edi,0x21
+opinion-filter	0xfece97	ja     478e84
+opinion-filter	0xfeceb0	cmp    esi,0xd
+opinion-filter	0xfeceb3	ja     fecec8
+opinion-filter	0xfeced0	cmp    esi,0x3b
+opinion-filter	0xfeced3	ja     fecec8
+entity-name	0xa27916	cmp    QWORD PTR [rip+0x1cdbb93],rax        # 27034b0
+entity-name	0xa2791d	je     a27a80
+entity-name	0xa27923	cmp    edx,0xffffffff
+entity-name	0xa27926	je     a27a80
+entity-name	0xa27940	cmp    BYTE PTR [rsp+0x10],0x0
+entity-name	0xa27945	je     a27a80
+entity-name	0xa27950	test   r12,r12
+entity-name	0xa27953	je     a27a80
+entity-name	0xa2795c	jne    a27a50
+entity-name	0xa279aa	cmp    rdi,rax
+entity-name	0xa279ad	je     a27ac0
+entity-name	0xa279b7	cmp    r12,rax
+entity-name	0xa279ba	ja     a27a40
+entity-name	0xa279c0	test   r8,r8
+entity-name	0xa279c3	je     a279e1
+entity-name	0xa279c8	cmp    r8,0x1
+entity-name	0xa279cc	je     a27ab0
+entity-name	0xa279ea	test   ebx,ebx
+entity-name	0xa279ec	jne    a27a28
+entity-name	0xa279f3	cmp    rdi,r13
+entity-name	0xa279f6	je     a27a06
+entity-name	0xa27a14	jne    a27aca
+entity-name	0xa27a37	jmp    a279ee
+entity-name	0xa27a4e	jmp    a279e1
+entity-name	0xa27a7b	jmp    a27962
+entity-name	0xa27a8e	jne    a27aca
+entity-name	0xa27aa4	jmp    8377e0
+entity-name	0xa27ab9	jmp    a279e1
+entity-name	0xa27ac5	jmp    a279b7
+entity-name	0xa27ad6	jmp    45a058
+profession	0xb6c155	cmp    ax,0xfffe
+profession	0xb6c159	je     b6c670
+profession	0xb6c166	cmp    ax,0xffff
+profession	0xb6c16a	je     b6c658
+profession	0xb6c172	test   ax,ax
+profession	0xb6c175	js     b6c19f
+profession	0xb6c190	cmp    rdx,rax
+profession	0xb6c193	jbe    b6c19f
+profession	0xb6c1b4	cmp    BYTE PTR [rbp-0xbc],0x0
+profession	0xb6c1fa	je     b6c3b0
+profession	0xb6c205	cmp    r14w,0x86
+profession	0xb6c20b	ja     b6c690
+profession	0xb6c23e	cmp    BYTE PTR [rbp-0xbc],0x0
+profession	0xb6c247	je     b6c265
+profession	0xb6c257	test   rdx,rdx
+profession	0xb6c25a	je     b6c265
+profession	0xb6c25c	cmp    BYTE PTR [rax],0x73
+profession	0xb6c25f	je     b6c6a0
+profession	0xb6c273	test   r8,r8
+profession	0xb6c276	je     b6c319
+profession	0xb6c296	cmp    rdi,rax
+profession	0xb6c299	je     b6c7f8
+profession	0xb6c2a3	cmp    r14,rax
+profession	0xb6c2a6	ja     b6c6f8
+profession	0xb6c2af	cmp    r8,0x1
+profession	0xb6c2b3	je     b6c838
+profession	0xb6c2e2	cmp    QWORD PTR [rbp-0xd0],rax
+profession	0xb6c2e9	je     b6c808
+profession	0xb6c2f3	cmp    QWORD PTR [rbp-0xe0],rdx
+profession	0xb6c2fa	ja     b6c710
+profession	0xb6c320	cmp    WORD PTR [rbp-0xa6],ax
+profession	0xb6c327	je     b6c5c0
+profession	0xb6c32d	cmp    BYTE PTR [rbp-0xa7],0x0
+profession	0xb6c334	je     b6c3dc
+profession	0xb6c341	test   r8,r8
+profession	0xb6c344	jne    b6c740
+profession	0xb6c351	cmp    rdi,QWORD PTR [rbp-0xc8]
+profession	0xb6c358	je     b6c367
+profession	0xb6c36e	cmp    rdi,r15
+profession	0xb6c371	je     b6c383
+profession	0xb6c390	jne    b6c9da
+profession	0xb6c3b2	cmp    r14w,0x86
+profession	0xb6c3b8	jbe    b6c211
+profession	0xb6c3cf	cmp    ax,WORD PTR [rbp-0xa6]
+profession	0xb6c3d6	je     b6c5c0
+profession	0xb6c40f	cmp    BYTE PTR [rbp-0xc0],0x0
+profession	0xb6c416	je     b6c420
+profession	0xb6c43e	cmp    rdi,rax
+profession	0xb6c441	je     b6c828
+profession	0xb6c44b	cmp    r12,rax
+profession	0xb6c44e	ja     b6c7a0
+profession	0xb6c454	test   r8,r8
+profession	0xb6c457	je     b6c474
+profession	0xb6c45c	cmp    r8,0x1
+profession	0xb6c460	je     b6c858
+profession	0xb6c47d	cmp    QWORD PTR [rbp-0x98],0x0
+profession	0xb6c485	jne    b6c7b8
+profession	0xb6c48f	cmp    rdi,QWORD PTR [rbp-0xe0]
+profession	0xb6c496	je     b6c4a5
+profession	0xb6c4ac	test   r8,r8
+profession	0xb6c4af	jne    b6c5db
+profession	0xb6c4bc	cmp    ax,WORD PTR [rbp-0xa6]
+profession	0xb6c4c3	jne    b6c34a
+profession	0xb6c4de	test   rcx,rcx
+profession	0xb6c4ef	cmp    BYTE PTR [rbp-0xc0],0x0
+profession	0xb6c4f6	je     b6c750
+profession	0xb6c4fc	cmp    rax,0x6
+profession	0xb6c500	jbe    b6c9eb
+profession	0xb6c511	cmp    rax,r13
+profession	0xb6c514	je     b6c9a8
+profession	0xb6c51e	cmp    r14,rdx
+profession	0xb6c521	ja     b6c930
+profession	0xb6c554	cmp    BYTE PTR [rbp-0xbc],0x0
+profession	0xb6c55b	je     b6c34d
+profession	0xb6c576	cmp    rcx,rax
+profession	0xb6c579	je     b6c9df
+profession	0xb6c586	cmp    rax,r13
+profession	0xb6c589	je     b6c920
+profession	0xb6c593	cmp    r14,rdx
+profession	0xb6c596	ja     b6c980
+profession	0xb6c5ba	jmp    b6c34d
+profession	0xb6c5d2	test   r8,r8
+profession	0xb6c5d5	je     b6c4d0
+profession	0xb6c5ed	cmp    rdi,QWORD PTR [rbp-0xd0]
+profession	0xb6c5f4	je     b6c818
+profession	0xb6c5fe	cmp    r12,rax
+profession	0xb6c601	ja     b6c730
+profession	0xb6c60a	cmp    r8,0x1
+profession	0xb6c60e	je     b6c848
+profession	0xb6c632	cmp    WORD PTR [rbp-0xa6],ax
+profession	0xb6c639	jne    b6c34a
+profession	0xb6c63f	cmp    QWORD PTR [rbp-0x98],0x0
+profession	0xb6c647	jne    b6c34a
+profession	0xb6c64d	jmp    b6c4d0
+profession	0xb6c662	jmp    b6c1a5
+profession	0xb6c683	jmp    b6c1a5
+profession	0xb6c69a	jmp    b6c319
+profession	0xb6c6ae	cmp    rax,0x7fffffff
+profession	0xb6c6b4	jg     b6c26f
+profession	0xb6c6ba	cmp    rax,0xffffffff80000000
+profession	0xb6c6c0	jl     b6c26f
+profession	0xb6c6c6	test   eax,eax
+profession	0xb6c6c8	jne    b6c26f
+profession	0xb6c6ec	jmp    b6c26f
+profession	0xb6c702	jmp    b6c2c4
+profession	0xb6c728	jmp    b6c300
+profession	0xb6c73a	jmp    b6c61f
+profession	0xb6c74b	jmp    b6c5db
+profession	0xb6c750	cmp    rax,0x6
+profession	0xb6c754	jbe    b6c9f7
+profession	0xb6c765	cmp    rax,r13
+profession	0xb6c768	je     b6c9b8
+profession	0xb6c772	cmp    r14,rdx
+profession	0xb6c775	ja     b6c958
+profession	0xb6c795	jmp    b6c541
+profession	0xb6c7ad	jmp    b6c474
+profession	0xb6c7c4	cmp    QWORD PTR [rbp-0xd0],rcx
+profession	0xb6c7cb	je     b6c868
+profession	0xb6c7d5	cmp    r13,rax
+profession	0xb6c7d8	ja     b6c880
+profession	0xb6c7f0	jmp    b6c48b
+profession	0xb6c7fd	jmp    b6c2a3
+profession	0xb6c80d	jmp    b6c2f3
+profession	0xb6c81d	jmp    b6c5fe
+profession	0xb6c82d	jmp    b6c44b
+profession	0xb6c83d	jmp    b6c2c4
+profession	0xb6c84d	jmp    b6c61f
+profession	0xb6c860	jmp    b6c474
+profession	0xb6c868	cmp    r13,0xf
+profession	0xb6c86c	jbe    b6c7de
+profession	0xb6c880	test   r13,r13
+profession	0xb6c883	js     b6ca03
+profession	0xb6c88d	cmp    r13,r14
+profession	0xb6c890	jae    b6c9c2
+profession	0xb6c896	test   r14,r14
+profession	0xb6c899	js     b6c9d5
+profession	0xb6c8a6	js     b6c9d5
+profession	0xb6c8b7	test   r12,r12
+profession	0xb6c8ba	je     b6c8e5
+profession	0xb6c8bc	cmp    r12,0x1
+profession	0xb6c8c0	je     b6c9ca
+profession	0xb6c8e5	cmp    QWORD PTR [rbp-0xd0],r8
+profession	0xb6c8ec	je     b6c90c
+profession	0xb6c913	jmp    b6c7de
+profession	0xb6c925	jmp    b6c593
+profession	0xb6c94e	jmp    b6c541
+profession	0xb6c976	jmp    b6c541
+profession	0xb6c99e	jmp    b6c5a7
+profession	0xb6c9ad	jmp    b6c51e
+profession	0xb6c9bd	jmp    b6c772
+profession	0xb6c9c5	jmp    b6c89f
+profession	0xb6c9d0	jmp    b6c8e5
+profession	0xb6ca16	jmp    45f351
+profession	0xb6ca22	jmp    45f337
+menu-entry	0x186864e	cmp    rbx,rax
+menu-entry	0x1868651	jb     1868760
+menu-entry	0x1868667	cmp    rax,QWORD PTR [r15+0x318]
+menu-entry	0x186866e	je     1868677
+menu-entry	0x1868677	cmp    DWORD PTR [rip+0xc20d36],0x1        # 24893b4
+menu-entry	0x1868685	je     1868880
+menu-entry	0x186869c	cmp    al,0x1
+menu-entry	0x18686a6	cmp    al,0x1
+menu-entry	0x18686b6	cmp    al,0x1
+menu-entry	0x18686c9	cmp    al,0x1
+menu-entry	0x18686dc	cmp    al,0x1
+menu-entry	0x18686ec	cmp    al,0x1
+menu-entry	0x18686ff	cmp    al,0x1
+menu-entry	0x186870f	cmp    al,0x1
+menu-entry	0x186873e	cmp    ebx,0x54
+menu-entry	0x1868741	ja     1868810
+menu-entry	0x1868763	test   rdi,rdi
+menu-entry	0x1868766	je     1868772
+menu-entry	0x1868776	cmp    r12,rbx
+menu-entry	0x1868779	jbe    1868660
+menu-entry	0x186877f	jmp    1868760
+menu-entry	0x1868789	test   rax,rax
+menu-entry	0x186878c	je     18687ca
+menu-entry	0x186879f	cmp    rax,rbx
+menu-entry	0x18687a2	jbe    18687ca
+menu-entry	0x18687aa	test   eax,eax
+menu-entry	0x18687ac	jg     1873aa0
+menu-entry	0x18687b7	cmp    ax,0x8
+menu-entry	0x18687bb	je     1878220
+menu-entry	0x18687c5	cmp    r12,rbx
+menu-entry	0x18687c8	ja     18687a4
+menu-entry	0x1868817	je     18688ec
+menu-entry	0x1868824	cmp    QWORD PTR [r15+0x318],rax
+menu-entry	0x186882b	jne    186883d
+menu-entry	0x1868834	cmp    eax,0x1
+menu-entry	0x1868837	ja     1868738
+menu-entry	0x1868848	test   rax,rax
+menu-entry	0x186884b	je     186885c
+menu-entry	0x1868853	cmp    esi,0xffffffff
+menu-entry	0x1868856	jne    1868b68
+menu-entry	0x1868869	jne    1868bec
+menu-entry	0x1868880	cmp    QWORD PTR [rip+0xeae539],r14        # 2716dc0
+menu-entry	0x1868887	jne    186868b
+menu-entry	0x186889b	test   rax,rax
+menu-entry	0x186889e	je     18688bf
+menu-entry	0x18688ab	test   rax,rax
+menu-entry	0x18688ae	je     18688bf
+menu-entry	0x18688c6	jmp    186868b
+menu-entry	0x18688d2	cmp    QWORD PTR [r15+0x310],rax
+menu-entry	0x18688d9	je     18766f4
+menu-entry	0x18688df	cmp    DWORD PTR [rbp-0x958],0x1
+menu-entry	0x18688e6	jne    186883d
+menu-entry	0x186a29b	jmp    1868810
+renderer	0x1172661	cmp    BYTE PTR [rip+0x1369e59],0x0        # 24dc4c1
+renderer	0x1172668	je     1173c6b
+renderer	0x117268b	cmp    BYTE PTR [rbx+0x1],0x0
+renderer	0x117268f	je     1172ee2
+renderer	0x11726df	cmp    edx,0x21
+renderer	0x11726f4	cmp    ecx,eax
+renderer	0x11726fd	cmp    ebx,esi
+renderer	0x11726ff	jg     1172913
+renderer	0x1172740	jmp    1172786
+renderer	0x1172748	cmp    DWORD PTR [rsp+0x10],ebx
+renderer	0x117274c	je     1173e48
+renderer	0x1172752	cmp    r14d,DWORD PTR [rsp+0x8]
+renderer	0x1172757	je     1173e88
+renderer	0x117275d	cmp    r14d,ebp
+renderer	0x1172760	je     1173e70
+renderer	0x117277d	cmp    ebp,r14d
+renderer	0x1172780	jl     1172900
+renderer	0x11727b4	cmp    rax,QWORD PTR [rip+0x1319fcd]        # 248c788
+renderer	0x11727bb	jae    11728c0
+renderer	0x11727c1	cmp    QWORD PTR [rip+0x131a060],r12        # 248c828
+renderer	0x11727c8	jg     11728c0
+renderer	0x11727ce	cmp    QWORD PTR [rip+0x131a05b],r12        # 248c830
+renderer	0x11727d5	jl     11728c0
+renderer	0x11727e0	cmp    rcx,QWORD PTR [rip+0x131a051]        # 248c838
+renderer	0x11727e7	jl     11728c0
+renderer	0x11727ed	cmp    rcx,QWORD PTR [rip+0x131a04c]        # 248c840
+renderer	0x11727f4	jg     11728c0
+renderer	0x11727fd	cmp    BYTE PTR [rip+0x1319e2b],0x0        # 248c62f
+renderer	0x1172804	je     1174004
+renderer	0x1172813	cmp    BYTE PTR [rip+0x1319e14],0x0        # 248c62e
+renderer	0x11728c0	cmp    DWORD PTR [rsp+0x60],ebx
+renderer	0x11728c4	jne    1172748
+renderer	0x11728ca	cmp    r14d,DWORD PTR [rsp+0x8]
+renderer	0x11728cf	je     1173f01
+renderer	0x11728d5	cmp    r14d,ebp
+renderer	0x11728d8	je     1173e9c
+renderer	0x11728f5	cmp    ebp,r14d
+renderer	0x11728f8	jge    1172786
+renderer	0x1172909	cmp    ebx,DWORD PTR [rsp+0x20]
+renderer	0x117290d	jne    1172720
+renderer	0x1172928	test   ebp,ebp
+renderer	0x117292a	je     117296f
+renderer	0x1172930	cmp    ebp,0xb
+renderer	0x1172933	je     11729a7
+renderer	0x117295f	cmp    r14,0x4
+renderer	0x1172963	jne    117293b
+renderer	0x117296b	test   ebp,ebp
+renderer	0x117296d	jne    1172930
+renderer	0x1172997	cmp    rbp,0x4
+renderer	0x117299b	jne    1172974
+renderer	0x11729a5	jmp    1172935
+renderer	0x11729e2	cmp    r12,0x4
+renderer	0x11729e6	jne    11729c0
+renderer	0x1172a6e	cmp    rdi,r14
+renderer	0x1172a71	je     1172a84
+renderer	0x1172b25	cmp    rdi,r14
+renderer	0x1172b28	je     1172b3b
+renderer	0x1172b52	cmp    rdx,rcx
+renderer	0x1172b55	je     1173f7e
+renderer	0x1172b96	cmp    esi,eax
+renderer	0x1172bab	cmp    eax,esi
+renderer	0x1172bb6	test   eax,eax
+renderer	0x1172bbe	cmp    eax,esi
+renderer	0x1172bc0	jge    1173f5f
+renderer	0x1172c5d	cmp    rax,rdi
+renderer	0x1172c60	jbe    1173f5f
+renderer	0x1172c90	cmp    DWORD PTR [rsp+0x18],r14d
+renderer	0x1172c95	jl     1173ce0
+renderer	0x1172ce0	jmp    1172ea3
+renderer	0x1172ce8	cmp    ebp,DWORD PTR [rsp+0x10]
+renderer	0x1172cec	je     1173e10
+renderer	0x1172cf2	cmp    DWORD PTR [rsp+0x20],ebp
+renderer	0x1172cf6	je     1173c90
+renderer	0x1172cfc	cmp    DWORD PTR [rsp+0x28],ebp
+renderer	0x1172d00	je     1173c90
+renderer	0x1172d06	cmp    DWORD PTR [rsp+0x30],ebp
+renderer	0x1172d0a	je     1173c90
+renderer	0x1172d13	cmp    DWORD PTR [rsp+0x3c],ebp
+renderer	0x1172d17	je     1173e30
+renderer	0x1172d1d	cmp    DWORD PTR [rsp+0x18],ebp
+renderer	0x1172d21	je     1173cb0
+renderer	0x1172d3d	test   eax,eax
+renderer	0x1172d3f	jle    1172e90
+renderer	0x1172d48	test   BYTE PTR [rsi],0x1
+renderer	0x1172d4b	je     1172e90
+renderer	0x1172d84	cmp    rsi,QWORD PTR [rip+0x13199fd]        # 248c788
+renderer	0x1172d8b	jae    1172e90
+renderer	0x1172d91	cmp    r8,QWORD PTR [rip+0x1319a90]        # 248c828
+renderer	0x1172d98	jl     1172e90
+renderer	0x1172d9e	cmp    r8,QWORD PTR [rip+0x1319a8b]        # 248c830
+renderer	0x1172da5	jg     1172e90
+renderer	0x1172dab	cmp    r9,QWORD PTR [rip+0x1319a86]        # 248c838
+renderer	0x1172db2	jl     1172e90
+renderer	0x1172db8	cmp    r9,QWORD PTR [rip+0x1319a81]        # 248c840
+renderer	0x1172dbf	jg     1172e90
+renderer	0x1172dc8	cmp    BYTE PTR [rip+0x1319860],0x0        # 248c62f
+renderer	0x1172dcf	je     1173fa7
+renderer	0x1172de0	cmp    BYTE PTR [rip+0x1319847],0x0        # 248c62e
+renderer	0x1172e98	cmp    r13d,DWORD PTR [rsp+0x8]
+renderer	0x1172e9d	jg     1173cc8
+renderer	0x1172eb8	test   ebx,ebx
+renderer	0x1172eba	jne    1172ce8
+renderer	0x1172ec3	cmp    ebp,DWORD PTR [rsp+0x10]
+renderer	0x1172ec7	jne    1172d1d
+renderer	0x1172edd	jmp    1172d37
+renderer	0x1172f42	jmp    1172f87
+renderer	0x1172f48	cmp    DWORD PTR [rsp+0x18],0x13
+renderer	0x1172f4d	je     1173b80
+renderer	0x1172f53	cmp    DWORD PTR [rsp+0x8],r13d
+renderer	0x1172f58	je     1173bc0
+renderer	0x1172f5e	cmp    ebp,r13d
+renderer	0x1172f61	je     1173ba8
+renderer	0x1172f7e	cmp    ebp,r13d
+renderer	0x1172f81	jl     1173100
+renderer	0x1172fb7	cmp    rax,QWORD PTR [rip+0x13197ca]        # 248c788
+renderer	0x1172fbe	jae    11730c0
+renderer	0x1172fc4	cmp    r14,QWORD PTR [rip+0x131985d]        # 248c828
+renderer	0x1172fcb	jl     11730c0
+renderer	0x1172fd1	cmp    r14,QWORD PTR [rip+0x1319858]        # 248c830
+renderer	0x1172fd8	jg     11730c0
+renderer	0x1172fde	cmp    rbx,QWORD PTR [rip+0x1319853]        # 248c838
+renderer	0x1172fe5	jl     11730c0
+renderer	0x1172feb	cmp    rbx,QWORD PTR [rip+0x131984e]        # 248c840
+renderer	0x1172ff2	jg     11730c0
+renderer	0x1172ffb	cmp    BYTE PTR [rip+0x131962d],0x0        # 248c62f
+renderer	0x1173002	je     1173c28
+renderer	0x1173011	cmp    BYTE PTR [rip+0x1319616],0x0        # 248c62e
+renderer	0x11730c0	cmp    rbx,0x6
+renderer	0x11730c4	jne    1172f48
+renderer	0x11730ca	cmp    DWORD PTR [rsp+0x8],r13d
+renderer	0x11730cf	je     1173c00
+renderer	0x11730d5	cmp    ebp,r13d
+renderer	0x11730d8	je     1173bd8
+renderer	0x11730f5	cmp    ebp,r13d
+renderer	0x11730f8	jge    1172f87
+renderer	0x1173104	cmp    rbx,0x14
+renderer	0x1173108	jne    1172f28
+renderer	0x117314b	js     117350d
+renderer	0x117315d	js     117722e
+renderer	0x117316f	js     1177404
+renderer	0x1173181	js     117740e
+renderer	0x1173193	js     1177435
+renderer	0x11731a5	js     117743f
+renderer	0x11731b7	js     1177418
+renderer	0x11731c7	js     1176040
+renderer	0x117326c	cmp    edx,r12d
+renderer	0x117326f	je     1173380
+renderer	0x1173275	cmp    edx,0xffffffff
+renderer	0x1173278	je     1173380
+renderer	0x1173285	cmp    QWORD PTR [rip+0x15a3af4],rcx        # 2716d80
+renderer	0x117328c	je     11732a6
+renderer	0x1173295	test   rcx,rcx
+renderer	0x1173298	je     11732a6
+renderer	0x117329a	cmp    edx,DWORD PTR [rcx+0x130]
+renderer	0x11732a0	je     11750e6
+renderer	0x11732ac	cmp    edx,ecx
+renderer	0x11732ae	je     117778a
+renderer	0x11732b4	cmp    ecx,0xffffffff
+renderer	0x11732b7	je     1177822
+renderer	0x11732c3	cmp    edx,ecx
+renderer	0x11732c5	je     1177818
+renderer	0x11732cb	cmp    ecx,0xffffffff
+renderer	0x11732ce	je     1177811
+renderer	0x11732da	cmp    edx,ecx
+renderer	0x11732dc	je     1177807
+renderer	0x11732e2	cmp    ecx,0xffffffff
+renderer	0x11732e5	je     1177800
+renderer	0x11732f1	cmp    edx,ecx
+renderer	0x11732f3	je     11777f9
+renderer	0x11732f9	cmp    ecx,0xffffffff
+renderer	0x11732fc	je     11777e0
+renderer	0x1173308	cmp    edx,ecx
+renderer	0x117330a	je     11777d9
+renderer	0x1173310	cmp    ecx,0xffffffff
+renderer	0x1173313	je     1177b5d
+renderer	0x117331f	cmp    edx,ecx
+renderer	0x1173321	je     1177a87
+renderer	0x1173327	cmp    ecx,0xffffffff
+renderer	0x117332a	je     1179935
+renderer	0x1173336	cmp    edx,ecx
+renderer	0x1173338	je     117926c
+renderer	0x117333e	cmp    ecx,0xffffffff
+renderer	0x1173341	je     1179e4b
+renderer	0x117334d	cmp    edx,ecx
+renderer	0x117334f	je     11796e8
+renderer	0x1173355	cmp    ecx,0xffffffff
+renderer	0x1173358	je     1179b79
+renderer	0x1173364	cmp    edx,ecx
+renderer	0x1173366	je     1178852
+renderer	0x117336c	cmp    ecx,0xffffffff
+renderer	0x117336f	je     1178f31
+renderer	0x117338a	test   edx,edx
+renderer	0x117338c	jle    1173463
+renderer	0x1173399	test   BYTE PTR [rdx],0x1
+renderer	0x117339c	jne    1173463
+renderer	0x11733a2	cmp    QWORD PTR [rsp+0x128],0x0
+renderer	0x11733ab	je     1173463
+renderer	0x11733e6	test   edx,edx
+renderer	0x11733e8	je     1173426
+renderer	0x11733ea	cmp    r8d,0xffffffff
+renderer	0x11733ee	je     1173426
+renderer	0x11733f3	js     1173426
+renderer	0x117340c	cmp    r8d,DWORD PTR [rdi+0x130]
+renderer	0x1173413	je     1175125
+renderer	0x1173419	jge    1175088
+renderer	0x1173422	cmp    ecx,edx
+renderer	0x1173424	jle    1173400
+renderer	0x11734a0	cmp    QWORD PTR [rsi+0x8],0x0
+renderer	0x11734a9	jne    1175098
+renderer	0x11734af	test   BYTE PTR [rax+0x30],0x1
+renderer	0x11734b3	jne    11734bf
+renderer	0x11734b5	cmp    DWORD PTR [rax+0x64],0xffffffff
+renderer	0x11734b9	je     117551f
+renderer	0x11734e4	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x11734e9	je     11750d4
+renderer	0x1173504	cmp    ebx,0xffffffff
+renderer	0x1173507	jne    1173218
+renderer	0x1173523	test   rax,rax
+renderer	0x1173526	je     117385d
+renderer	0x1173532	test   edi,edi
+renderer	0x1173534	jle    1173579
+renderer	0x117353d	test   BYTE PTR [rax],0x1
+renderer	0x1173540	je     1173579
+renderer	0x117354d	test   eax,eax
+renderer	0x117354f	je     117355e
+renderer	0x1173551	test   BYTE PTR [rcx+0x11d],0x40
+renderer	0x1173558	je     11760d1
+renderer	0x1173571	test   eax,eax
+renderer	0x1173573	jne    11760d1
+renderer	0x1173586	test   rax,rax
+renderer	0x1173589	je     11735a3
+renderer	0x11735cc	test   rdx,rdx
+renderer	0x11735cf	je     1173602
+renderer	0x11735df	cmp    r8,rax
+renderer	0x11735e2	jbe    1173602
+renderer	0x11735e9	cmp    ecx,0xffffffff
+renderer	0x11735ec	je     11735f9
+renderer	0x11735f1	test   esi,esi
+renderer	0x11735f3	jg     1174047
+renderer	0x11735fd	cmp    r8,rax
+renderer	0x1173600	ja     11735e4
+renderer	0x1173602	cmp    edi,r12d
+renderer	0x1173688	test   r13,r13
+renderer	0x117368b	je     1174a24
+renderer	0x1173710	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1173715	je     1173728
+renderer	0x117372f	cmp    eax,0x18
+renderer	0x1173732	jle    1175a10
+renderer	0x1173738	cmp    eax,0x4b
+renderer	0x11737bf	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x11737c4	je     11737d7
+renderer	0x11737de	cmp    eax,0x18
+renderer	0x11737e1	jg     1175eab
+renderer	0x11737e7	cmp    eax,0xffffffe8
+renderer	0x11737ea	jl     117736b
+renderer	0x11737f7	cmp    eax,0x18
+renderer	0x11737fa	jg     1175ddf
+renderer	0x1173800	cmp    eax,0xffffffe8
+renderer	0x1173803	jl     11772e2
+renderer	0x1173810	cmp    eax,0x18
+renderer	0x1173813	jg     1175d14
+renderer	0x1173819	cmp    eax,0xffffffe8
+renderer	0x117381c	jl     117725c
+renderer	0x1173822	cmp    r12d,0x1
+renderer	0x1173826	jg     1175a9d
+renderer	0x1173835	test   esi,esi
+renderer	0x1173837	jg     1174a35
+renderer	0x1173845	cmp    rdi,QWORD PTR [rsp+0x40]
+renderer	0x117384a	je     117385d
+renderer	0x1173862	cmp    BYTE PTR [rax+0x84],0x0
+renderer	0x1173869	je     117466d
+renderer	0x11738b0	cmp    edx,0x21
+renderer	0x11738c5	cmp    ecx,eax
+renderer	0x11738ce	cmp    ebx,r11d
+renderer	0x11738d1	jg     1173ae4
+renderer	0x1173911	jmp    1173956
+renderer	0x1173918	cmp    DWORD PTR [rsp+0x10],ebx
+renderer	0x117391c	je     11740e8
+renderer	0x1173922	cmp    DWORD PTR [rsp+0x8],r15d
+renderer	0x1173927	je     1174120
+renderer	0x117392d	cmp    ebp,r15d
+renderer	0x1173930	je     117410c
+renderer	0x117394d	cmp    ebp,r15d
+renderer	0x1173950	jl     1173ace
+renderer	0x1173984	cmp    rax,QWORD PTR [rip+0x1318dfd]        # 248c788
+renderer	0x117398b	jae    1173a90
+renderer	0x1173991	cmp    r12,QWORD PTR [rip+0x1318e90]        # 248c828
+renderer	0x1173998	jl     1173a90
+renderer	0x117399e	cmp    r12,QWORD PTR [rip+0x1318e8b]        # 248c830
+renderer	0x11739a5	jg     1173a90
+renderer	0x11739b0	cmp    rcx,QWORD PTR [rip+0x1318e81]        # 248c838
+renderer	0x11739b7	jl     1173a90
+renderer	0x11739bd	cmp    rcx,QWORD PTR [rip+0x1318e7c]        # 248c840
+renderer	0x11739c4	jg     1173a90
+renderer	0x11739cd	cmp    BYTE PTR [rip+0x1318c5b],0x0        # 248c62f
+renderer	0x11739d4	je     117462a
+renderer	0x11739e4	cmp    BYTE PTR [rip+0x1318c43],0x0        # 248c62e
+renderer	0x1173a90	cmp    DWORD PTR [rsp+0x20],ebx
+renderer	0x1173a94	jne    1173918
+renderer	0x1173a9a	cmp    DWORD PTR [rsp+0x8],r15d
+renderer	0x1173a9f	je     1174602
+renderer	0x1173aa5	cmp    ebp,r15d
+renderer	0x1173aa8	je     1174134
+renderer	0x1173ac5	cmp    ebp,r15d
+renderer	0x1173ac8	jge    1173956
+renderer	0x1173ada	cmp    ebx,DWORD PTR [rsp+0x28]
+renderer	0x1173ade	jne    11738ee
+renderer	0x1173af9	test   ebp,ebp
+renderer	0x1173afb	je     1173b40
+renderer	0x1173afd	cmp    ebp,0xb
+renderer	0x1173b00	je     117415c
+renderer	0x1173b30	cmp    r14,0x4
+renderer	0x1173b34	jne    1173b0c
+renderer	0x1173b3c	test   ebp,ebp
+renderer	0x1173b3e	jne    1173afd
+renderer	0x1173b68	cmp    rbp,0x4
+renderer	0x1173b6c	jne    1173b45
+renderer	0x1173b76	jmp    1173b06
+renderer	0x1173b80	cmp    DWORD PTR [rsp+0x8],r13d
+renderer	0x1173b85	je     1173c14
+renderer	0x1173b8b	cmp    ebp,r13d
+renderer	0x1173b8e	je     1173bec
+renderer	0x1173b9f	jmp    1172f76
+renderer	0x1173bb7	jmp    1172f76
+renderer	0x1173bcf	jmp    1172f76
+renderer	0x1173be7	jmp    1172f76
+renderer	0x1173bfb	jmp    1172f76
+renderer	0x1173c0f	jmp    1172f76
+renderer	0x1173c23	jmp    1172f76
+renderer	0x1173c66	jmp    1173091
+renderer	0x1173c84	jmp    117268b
+renderer	0x1173ca3	jmp    1172d37
+renderer	0x1173cc0	jmp    1172d37
+renderer	0x1173cd2	cmp    DWORD PTR [rsp+0x18],r15d
+renderer	0x1173cd7	jge    1172cc8
+renderer	0x1173ce0	test   ebx,ebx
+renderer	0x1173ce2	jne    1173ec4
+renderer	0x1173d8c	cmp    rbx,QWORD PTR [rsp+0x148]
+renderer	0x1173d94	ja     1173da7
+renderer	0x1173d9e	test   r12d,r12d
+renderer	0x1173da1	jns    1173f15
+renderer	0x1173dc0	cmp    rdi,QWORD PTR [rsp+0x68]
+renderer	0x1173dc5	je     1173dd8
+renderer	0x1173de8	cmp    rax,QWORD PTR [rsp+0x88]
+renderer	0x1173df9	je     1173f5f
+renderer	0x1173e03	jmp    1172c28
+renderer	0x1173e23	jmp    1172d37
+renderer	0x1173e40	jmp    1172d37
+renderer	0x1173e48	cmp    r14d,DWORD PTR [rsp+0x8]
+renderer	0x1173e4d	je     1173ff0
+renderer	0x1173e53	cmp    r14d,ebp
+renderer	0x1173e56	je     1173eb0
+renderer	0x1173e67	jmp    1172775
+renderer	0x1173e7f	jmp    1172775
+renderer	0x1173e97	jmp    1172775
+renderer	0x1173eab	jmp    1172775
+renderer	0x1173ebf	jmp    1172775
+renderer	0x1173efc	jmp    1173ce8
+renderer	0x1173f10	jmp    1172775
+renderer	0x1173f20	cmp    r12d,0x3
+renderer	0x1173f24	jle    1173da7
+renderer	0x1173f5a	jmp    1173da7
+renderer	0x1173f71	cmp    eax,DWORD PTR [rsp+0xa8]
+renderer	0x1173f78	jg     1174b2a
+renderer	0x1173f8f	jne    11789fa
+renderer	0x1173feb	jmp    1172e64
+renderer	0x1173fff	jmp    1172775
+renderer	0x1174042	jmp    1172893
+renderer	0x1174047	test   edi,edi
+renderer	0x1174049	je     1174a0b
+renderer	0x117404f	cmp    esi,DWORD PTR [rsp+0xe0]
+renderer	0x1174056	jg     1177422
+renderer	0x117405c	cmp    edi,0x1
+renderer	0x117405f	je     1174a0b
+renderer	0x1174065	cmp    esi,DWORD PTR [rsp+0xe4]
+renderer	0x117406c	jg     117742a
+renderer	0x1174072	cmp    edi,0x2
+renderer	0x1174075	je     1174a0b
+renderer	0x1174081	cmp    esi,DWORD PTR [rsp+0xe8]
+renderer	0x1174088	jle    11735f9
+renderer	0x1174091	cmp    edx,r9d
+renderer	0x1174094	jle    11740ce
+renderer	0x1174096	cmp    edx,0x1
+renderer	0x1174099	je     11740a8
+renderer	0x117409e	cmp    edx,r9d
+renderer	0x11740a1	je     11740ce
+renderer	0x11740a3	cmp    edx,0x1
+renderer	0x11740a6	jne    117409b
+renderer	0x11740c9	cmp    edi,edx
+renderer	0x11740de	jmp    11735f9
+renderer	0x11740e8	cmp    DWORD PTR [rsp+0x8],r15d
+renderer	0x11740ed	je     1174616
+renderer	0x11740f3	cmp    ebp,r15d
+renderer	0x11740f6	je     1174148
+renderer	0x1174107	jmp    1173945
+renderer	0x117411b	jmp    1173945
+renderer	0x117412f	jmp    1173945
+renderer	0x1174143	jmp    1173945
+renderer	0x1174157	jmp    1173945
+renderer	0x1174197	cmp    r12,0x4
+renderer	0x117419b	jne    1174175
+renderer	0x1174223	cmp    rdi,r14
+renderer	0x1174226	je     1174239
+renderer	0x11742bf	cmp    rdi,r14
+renderer	0x11742c2	je     11742d5
+renderer	0x11742e1	cmp    QWORD PTR [rax+0x98],rcx
+renderer	0x11742e8	je     1173f7e
+renderer	0x1174300	test   rax,rax
+renderer	0x1174303	je     117431c
+renderer	0x117438e	cmp    edi,eax
+renderer	0x117439b	cmp    eax,ecx
+renderer	0x11743a6	test   eax,eax
+renderer	0x11743ae	cmp    eax,ecx
+renderer	0x11743b0	jge    11757d1
+renderer	0x11743fe	cmp    rax,QWORD PTR [rsp+0x30]
+renderer	0x1174403	jbe    11757d1
+renderer	0x1174420	cmp    DWORD PTR [rsp+0x8],eax
+renderer	0x1174424	jl     1174d80
+renderer	0x117444b	jmp    11745c1
+renderer	0x1174466	test   eax,eax
+renderer	0x1174468	jle    11745b0
+renderer	0x1174471	test   BYTE PTR [rdx],0x1
+renderer	0x1174474	je     11745b0
+renderer	0x11744ac	cmp    rdx,QWORD PTR [rip+0x13182d5]        # 248c788
+renderer	0x11744b3	jae    11745b0
+renderer	0x11744b9	cmp    rsi,QWORD PTR [rip+0x1318368]        # 248c828
+renderer	0x11744c0	jl     11745b0
+renderer	0x11744c6	cmp    rsi,QWORD PTR [rip+0x1318363]        # 248c830
+renderer	0x11744cd	jg     11745b0
+renderer	0x11744d3	cmp    rdi,QWORD PTR [rip+0x131835e]        # 248c838
+renderer	0x11744da	jl     11745b0
+renderer	0x11744e0	cmp    rdi,QWORD PTR [rip+0x1318359]        # 248c840
+renderer	0x11744e7	jg     11745b0
+renderer	0x11744f0	cmp    BYTE PTR [rip+0x1318138],0x0        # 248c62f
+renderer	0x11744f7	je     11754dc
+renderer	0x1174506	cmp    BYTE PTR [rip+0x1318121],0x0        # 248c62e
+renderer	0x11745b8	cmp    r12d,r13d
+renderer	0x11745bb	jg     1174d68
+renderer	0x11745d9	cmp    DWORD PTR [rsp+0x18],ebx
+renderer	0x11745dd	je     1174d50
+renderer	0x11745e3	cmp    DWORD PTR [rsp+0x8],ebx
+renderer	0x11745e7	jne    1174450
+renderer	0x11745fd	jmp    1174460
+renderer	0x1174611	jmp    1173945
+renderer	0x1174625	jmp    1173945
+renderer	0x1174668	jmp    1173a67
+renderer	0x1174677	cmp    rsi,r8
+renderer	0x117467a	ja     1174d29
+renderer	0x11746b7	cmp    ecx,eax
+renderer	0x11746c0	cmp    ebx,esi
+renderer	0x11746c2	jg     11748e4
+renderer	0x117470c	jmp    117474e
+renderer	0x1174710	cmp    DWORD PTR [rsp+0x10],ebx
+renderer	0x1174714	je     1174930
+renderer	0x117471a	cmp    DWORD PTR [rsp+0x8],r15d
+renderer	0x117471f	je     1174964
+renderer	0x1174725	cmp    ebp,r15d
+renderer	0x1174728	je     1174950
+renderer	0x1174745	cmp    ebp,r15d
+renderer	0x1174748	jl     11748ce
+renderer	0x117477c	cmp    rax,QWORD PTR [rip+0x1318005]        # 248c788
+renderer	0x1174783	jae    1174890
+renderer	0x1174789	cmp    QWORD PTR [rip+0x1318098],r12        # 248c828
+renderer	0x1174790	jg     1174890
+renderer	0x1174796	cmp    QWORD PTR [rip+0x1318093],r12        # 248c830
+renderer	0x117479d	jl     1174890
+renderer	0x11747a8	cmp    rcx,QWORD PTR [rip+0x1318089]        # 248c838
+renderer	0x11747af	jl     1174890
+renderer	0x11747b5	cmp    rcx,QWORD PTR [rip+0x1318084]        # 248c840
+renderer	0x11747bc	jg     1174890
+renderer	0x11747c5	cmp    BYTE PTR [rip+0x1317e63],0x0        # 248c62f
+renderer	0x11747cc	je     11749c8
+renderer	0x11747dc	cmp    BYTE PTR [rip+0x1317e4b],0x0        # 248c62e
+renderer	0x1174890	cmp    DWORD PTR [rsp+0x3c],ebx
+renderer	0x1174894	jne    1174710
+renderer	0x117489a	cmp    DWORD PTR [rsp+0x8],r15d
+renderer	0x117489f	je     11749a0
+renderer	0x11748a5	cmp    ebp,r15d
+renderer	0x11748a8	je     1174978
+renderer	0x11748c5	cmp    ebp,r15d
+renderer	0x11748c8	jge    117474e
+renderer	0x11748da	cmp    DWORD PTR [rsp+0x28],ebx
+renderer	0x11748de	jne    11746e3
+renderer	0x117490f	cmp    DWORD PTR [rax+0x60],0x54
+renderer	0x1174913	ja     1176313
+renderer	0x1174930	cmp    DWORD PTR [rsp+0x8],r15d
+renderer	0x1174935	je     11749b4
+renderer	0x1174937	cmp    ebp,r15d
+renderer	0x117493a	je     117498c
+renderer	0x117494b	jmp    117473d
+renderer	0x117495f	jmp    117473d
+renderer	0x1174973	jmp    117473d
+renderer	0x1174987	jmp    117473d
+renderer	0x117499b	jmp    117473d
+renderer	0x11749af	jmp    117473d
+renderer	0x11749c3	jmp    117473d
+renderer	0x1174a06	jmp    117485f
+renderer	0x1174a1f	jmp    11735f9
+renderer	0x1174a2d	test   esi,esi
+renderer	0x1174a2f	jle    117383d
+renderer	0x1174acb	cmp    rdi,rbx
+renderer	0x1174ace	je     1174ae1
+renderer	0x1174b11	cmp    DWORD PTR [rbx],0xa8
+renderer	0x1174b17	ja     11756ec
+renderer	0x1174b8f	test   eax,eax
+renderer	0x1174b91	jle    1174cf5
+renderer	0x1174bb0	test   eax,eax
+renderer	0x1174bd9	test   r11d,r11d
+renderer	0x1174bdc	je     1175ff8
+renderer	0x1174bee	cmp    r11d,eax
+renderer	0x1174bf1	je     1176022
+renderer	0x1174bf7	cmp    ecx,DWORD PTR [rsp+0xc8]
+renderer	0x1174bfe	jl     1174c24
+renderer	0x1174c00	test   r11d,r11d
+renderer	0x1174c03	jle    1174c24
+renderer	0x1174c24	cmp    r11d,r10d
+renderer	0x1174c2b	cmp    edi,DWORD PTR [rsp+0xcc]
+renderer	0x1174c32	jg     1174c3d
+renderer	0x1174c34	test   r8b,r8b
+renderer	0x1174c37	jne    1175fdc
+renderer	0x1174c3d	cmp    ecx,DWORD PTR [rsp+0xc8]
+renderer	0x1174c44	jle    1174c5e
+renderer	0x1174c5e	cmp    edi,DWORD PTR [rsp+0xc8]
+renderer	0x1174c65	jge    1174c7f
+renderer	0x1174c7f	cmp    ecx,DWORD PTR [rsp+0xcc]
+renderer	0x1174c86	jle    1174ca1
+renderer	0x1174ca1	cmp    edi,DWORD PTR [rsp+0xcc]
+renderer	0x1174ca8	jl     1175fc5
+renderer	0x1174cb5	cmp    eax,DWORD PTR [rsp+0xcc]
+renderer	0x1174cbc	je     11774dc
+renderer	0x1174cc9	cmp    ecx,eax
+renderer	0x1174cce	cmp    eax,edi
+renderer	0x1174ce1	cmp    ecx,eax
+renderer	0x1174ce6	cmp    edi,ecx
+renderer	0x1174ce8	jge    1175fb9
+renderer	0x1174d24	jmp    1173f7e
+renderer	0x1174d41	cmp    rsi,rdx
+renderer	0x1174d44	jbe    1174680
+renderer	0x1174d4a	jmp    1174d2c
+renderer	0x1174d60	jmp    1174460
+renderer	0x1174d71	cmp    DWORD PTR [rsp+0x8],ebx
+renderer	0x1174d75	jge    1174438
+renderer	0x1174dc9	test   ebx,ebx
+renderer	0x1174dcb	je     1175138
+renderer	0x1174dd1	cmp    ebx,0x1
+renderer	0x1174dd4	jne    1175055
+renderer	0x1174e40	cmp    rdi,rbx
+renderer	0x1174e43	je     1174e56
+renderer	0x1174ef6	cmp    rbx,rax
+renderer	0x1174ef9	je     1178daa
+renderer	0x1174f0c	cmp    rdx,QWORD PTR [rsp+0x70]
+renderer	0x1174f23	cmp    rcx,rax
+renderer	0x1174f26	ja     1175793
+renderer	0x1174fa0	cmp    rax,QWORD PTR [rsp+0x70]
+renderer	0x1174fba	cmp    rbx,rdx
+renderer	0x1174fbd	ja     117577c
+renderer	0x1174fc3	test   r8,r8
+renderer	0x1174fc6	je     1174fe9
+renderer	0x1174fcc	cmp    r8,0x1
+renderer	0x1174fd0	je     117724a
+renderer	0x1175007	cmp    DWORD PTR [rsp+0x80],0x1
+renderer	0x117500f	jg     1175544
+renderer	0x117501d	cmp    rdi,QWORD PTR [rsp+0x40]
+renderer	0x1175022	je     1175035
+renderer	0x117503d	cmp    rdi,QWORD PTR [rsp+0x70]
+renderer	0x1175042	je     1175055
+renderer	0x1175065	cmp    rax,QWORD PTR [rsp+0x68]
+renderer	0x1175076	je     11757d1
+renderer	0x117507f	jmp    11743e5
+renderer	0x117508b	cmp    edx,ecx
+renderer	0x117508d	jge    1173400
+renderer	0x1175093	jmp    1173426
+renderer	0x1175098	test   BYTE PTR [rax+0x30],0x1
+renderer	0x117509c	jne    11750a8
+renderer	0x117509e	cmp    DWORD PTR [rax+0x64],0xffffffff
+renderer	0x11750a2	je     11754c0
+renderer	0x11750c9	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x11750ce	jne    11734ef
+renderer	0x11750d8	cmp    ebx,0xffffffff
+renderer	0x11750db	jne    1173218
+renderer	0x11750e1	jmp    117350d
+renderer	0x1175117	test   r11d,r11d
+renderer	0x117511a	jg     1173392
+renderer	0x1175120	jmp    11733b1
+renderer	0x1175133	jmp    1173430
+renderer	0x11751ab	cmp    rdi,r14
+renderer	0x11751ae	je     11751c1
+renderer	0x1175264	cmp    rcx,rax
+renderer	0x1175267	je     1178391
+renderer	0x117527a	cmp    rdx,QWORD PTR [rsp+0x70]
+renderer	0x1175294	cmp    rcx,rax
+renderer	0x1175297	ja     11757b2
+renderer	0x1175316	cmp    rax,QWORD PTR [rsp+0x70]
+renderer	0x1175333	cmp    rdi,rdx
+renderer	0x1175336	ja     1175765
+renderer	0x117533c	test   r8,r8
+renderer	0x117533f	je     1175362
+renderer	0x1175345	cmp    r8,0x1
+renderer	0x1175349	je     1177238
+renderer	0x1175381	cmp    DWORD PTR [rsp+0x80],0x1
+renderer	0x1175389	jle    1175015
+renderer	0x11753db	test   rax,rax
+renderer	0x11753de	je     1175457
+renderer	0x11753e7	test   r10d,r10d
+renderer	0x11753ea	jle    11771a0
+renderer	0x11753fd	test   rcx,rcx
+renderer	0x1175400	je     1175436
+renderer	0x1175410	test   rcx,rcx
+renderer	0x1175413	je     117542c
+renderer	0x117541e	cmp    ax,cx
+renderer	0x1175426	test   ax,ax
+renderer	0x117542c	cmp    ax,0x5a
+renderer	0x1175430	jle    1176077
+renderer	0x1175438	test   ebx,ebx
+renderer	0x117545a	cmp    eax,r14d
+renderer	0x117545d	jl     11771c6
+renderer	0x1175466	cmp    eax,r14d
+renderer	0x1175469	jl     1177497
+renderer	0x117546f	cmp    r14d,edx
+renderer	0x1175472	jg     117604a
+renderer	0x1175478	test   edx,edx
+renderer	0x117547a	jle    1177449
+renderer	0x1175480	test   r14d,r14d
+renderer	0x1175483	jg     1177449
+renderer	0x11754b1	jmp    1175685
+renderer	0x11754d7	jmp    11734dc
+renderer	0x117551a	jmp    1174583
+renderer	0x117553f	jmp    11734dc
+renderer	0x117558d	test   rax,rax
+renderer	0x1175590	je     117562f
+renderer	0x117559d	test   r9d,r9d
+renderer	0x11755a0	jle    117717c
+renderer	0x11755b3	test   rsi,rsi
+renderer	0x11755b6	je     117560d
+renderer	0x11755c6	test   rsi,rsi
+renderer	0x11755c9	je     11755e2
+renderer	0x11755d4	cmp    dx,si
+renderer	0x11755dc	test   dx,dx
+renderer	0x11755e2	cmp    dx,0x5a
+renderer	0x11755e6	jg     1176117
+renderer	0x11755ec	cmp    dx,0x4b
+renderer	0x11755f0	jle    11774c4
+renderer	0x11755f6	test   eax,eax
+renderer	0x1175606	cmp    eax,0xc8
+renderer	0x117560b	jg     1175614
+renderer	0x117560f	test   eax,eax
+renderer	0x1175632	cmp    eax,ebx
+renderer	0x1175634	jl     1177103
+renderer	0x117563d	cmp    eax,ebx
+renderer	0x117563f	jl     1177a5a
+renderer	0x1175645	cmp    ebx,ecx
+renderer	0x1175647	jg     11760a4
+renderer	0x117564d	test   ecx,ecx
+renderer	0x117564f	jle    1177a0f
+renderer	0x1175655	test   ebx,ebx
+renderer	0x1175657	jg     1177a0f
+renderer	0x117568d	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1175692	je     1175015
+renderer	0x11756a9	jmp    1175015
+renderer	0x11756d4	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x11756d9	je     11756ec
+renderer	0x11756ec	cmp    QWORD PTR [rsp+0x8],rbx
+renderer	0x11756f1	je     117383d
+renderer	0x1175744	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1175749	je     117575c
+renderer	0x1175760	jmp    1174b07
+renderer	0x1175777	jmp    1175362
+renderer	0x117578e	jmp    1174fe9
+renderer	0x11757ad	jmp    1174f30
+renderer	0x11757cc	jmp    11752a2
+renderer	0x11757e6	cmp    eax,DWORD PTR [rsp+0x64]
+renderer	0x11757ea	jle    1173f7e
+renderer	0x1175855	test   eax,eax
+renderer	0x1175857	jle    11759d9
+renderer	0x1175876	test   eax,eax
+renderer	0x117589f	test   r11d,r11d
+renderer	0x11758a2	je     1177d22
+renderer	0x11758b1	cmp    r11d,eax
+renderer	0x11758b4	je     1177d49
+renderer	0x11758ba	cmp    ecx,DWORD PTR [rsp+0xc8]
+renderer	0x11758c1	jl     11758e7
+renderer	0x11758c3	test   r11d,r11d
+renderer	0x11758c6	jle    11758e7
+renderer	0x11758e7	cmp    r11d,r10d
+renderer	0x11758ee	cmp    edi,DWORD PTR [rsp+0xcc]
+renderer	0x11758f5	jg     1175913
+renderer	0x11758f7	test   r8b,r8b
+renderer	0x11758fa	je     1175913
+renderer	0x1175913	cmp    ecx,DWORD PTR [rsp+0xc8]
+renderer	0x117591a	jle    1175934
+renderer	0x1175934	cmp    edi,DWORD PTR [rsp+0xc8]
+renderer	0x117593b	jge    1175955
+renderer	0x1175955	cmp    ecx,DWORD PTR [rsp+0xcc]
+renderer	0x117595c	jle    1175977
+renderer	0x1175977	cmp    edi,DWORD PTR [rsp+0xcc]
+renderer	0x117597e	jge    1175992
+renderer	0x1175999	cmp    eax,DWORD PTR [rsp+0xcc]
+renderer	0x11759a0	je     1177c18
+renderer	0x11759ad	cmp    ecx,eax
+renderer	0x11759b2	cmp    eax,edi
+renderer	0x11759c5	cmp    ecx,eax
+renderer	0x11759ca	cmp    edi,ecx
+renderer	0x11759cc	jl     11777cd
+renderer	0x1175a0b	jmp    1173f7e
+renderer	0x1175a10	cmp    eax,0xffffffe8
+renderer	0x1175a13	jge    1177b67
+renderer	0x1175a19	cmp    eax,0xffffffb5
+renderer	0x1175a98	jmp    11737b7
+renderer	0x1175b19	cmp    rdi,r12
+renderer	0x1175b1c	je     1175b2f
+renderer	0x1175b33	cmp    eax,0x4a
+renderer	0x1175b36	jg     117611e
+renderer	0x1175b3c	cmp    eax,0x18
+renderer	0x1175b3f	jg     1177840
+renderer	0x1175b45	cmp    eax,0xffffffb6
+renderer	0x1175b48	jl     1179a69
+renderer	0x1175b4e	cmp    eax,0xffffffe8
+renderer	0x1175b51	jl     11784ca
+renderer	0x1175b5b	cmp    eax,0x4a
+renderer	0x1175b5e	jg     11761be
+renderer	0x1175b64	cmp    eax,0x18
+renderer	0x1175b67	jg     117761e
+renderer	0x1175b6d	cmp    eax,0xffffffe8
+renderer	0x1175b70	jl     11775a6
+renderer	0x1175b7a	cmp    eax,0x4a
+renderer	0x1175b7d	jle    1177c9c
+renderer	0x1175bb3	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1175bb8	je     1175bcb
+renderer	0x1175bcf	cmp    eax,0x4a
+renderer	0x1175bd2	jle    11778ee
+renderer	0x1175c0b	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1175c10	je     1175c23
+renderer	0x1175c53	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1175c58	je     1175c6b
+renderer	0x1175c6f	cmp    eax,0x4a
+renderer	0x1175c72	jle    117786d
+renderer	0x1175cab	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1175cb0	je     1175cc3
+renderer	0x1175cf3	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1175cf8	je     117382c
+renderer	0x1175d0f	jmp    117382c
+renderer	0x1175d68	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1175d6d	je     1175d80
+renderer	0x1175d8a	cmp    DWORD PTR [r13+0x88],0x4a
+renderer	0x1175d92	jle    11762f0
+renderer	0x1175dbe	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1175dc3	je     1173822
+renderer	0x1175dda	jmp    1173822
+renderer	0x1175e33	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1175e38	je     1175e4b
+renderer	0x1175e52	test   r10d,r10d
+renderer	0x1175e55	jns    11762a6
+renderer	0x1175e61	cmp    DWORD PTR [r13+0x8c],0x4b
+renderer	0x1175ea6	jmp    11762c7
+renderer	0x1175efd	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1175f02	je     1175f15
+renderer	0x1175f15	cmp    DWORD PTR [r13+0x84],0x19
+renderer	0x1175f98	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1175f9d	je     11737f0
+renderer	0x1175fb4	jmp    11737f0
+renderer	0x1175fc0	jmp    1174cf5
+renderer	0x1175fd7	jmp    1174cae
+renderer	0x1175ff3	jmp    1174c3d
+renderer	0x1176018	cmp    r10d,0xffffffff
+renderer	0x117601c	jne    1174c24
+renderer	0x117603b	jmp    1174bf7
+renderer	0x1176045	jmp    11731d9
+renderer	0x1176072	jmp    1175685
+renderer	0x1176077	cmp    ax,0x4b
+renderer	0x117607b	jle    1177826
+renderer	0x1176081	test   esi,esi
+renderer	0x1176093	cmp    ebx,0xc8
+renderer	0x1176099	jg     117543d
+renderer	0x117609f	jmp    1175436
+renderer	0x11760cc	jmp    1175685
+renderer	0x1176112	jmp    1173579
+renderer	0x1176119	jmp    117560d
+renderer	0x117614e	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1176153	je     1176166
+renderer	0x117616a	cmp    eax,0x4a
+renderer	0x117616d	jle    1177549
+renderer	0x11761a6	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x11761ab	je     11761be
+renderer	0x11761ee	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x11761f3	je     1176206
+renderer	0x117620a	cmp    eax,0x4a
+renderer	0x117620d	jg     1177b09
+renderer	0x1176213	cmp    eax,0x18
+renderer	0x1176216	jg     1177a91
+renderer	0x117621c	cmp    eax,0xffffffb6
+renderer	0x117621f	jl     1177e1d
+renderer	0x1176225	cmp    eax,0xffffffe8
+renderer	0x1176228	jge    1175bcb
+renderer	0x1176261	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1176266	je     1176279
+renderer	0x11762a1	jmp    1175bab
+renderer	0x11762cf	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x11762d4	je     1173809
+renderer	0x11762eb	jmp    1173809
+renderer	0x117630e	jmp    1175db6
+renderer	0x1176345	cmp    DWORD PTR [rsp+0x88],eax
+renderer	0x117634c	jg     1176ede
+renderer	0x1176365	cmp    eax,r12d
+renderer	0x1176368	jg     11765d7
+renderer	0x11763a1	jmp    1176539
+renderer	0x11763b3	cmp    eax,r13d
+renderer	0x11763b6	je     1176574
+renderer	0x11763bf	cmp    eax,r13d
+renderer	0x11763c2	je     117659c
+renderer	0x11763c8	cmp    r13d,ebp
+renderer	0x11763cb	je     1176c45
+renderer	0x11763e7	test   r8d,r8d
+renderer	0x11763ea	jle    1176530
+renderer	0x11763f3	test   BYTE PTR [rax],0x1
+renderer	0x11763f6	je     1176530
+renderer	0x117642c	cmp    rax,QWORD PTR [rip+0x1316355]        # 248c788
+renderer	0x1176433	jae    1176530
+renderer	0x1176439	cmp    rcx,QWORD PTR [rip+0x13163e8]        # 248c828
+renderer	0x1176440	jl     1176530
+renderer	0x1176446	cmp    rcx,QWORD PTR [rip+0x13163e3]        # 248c830
+renderer	0x117644d	jg     1176530
+renderer	0x1176453	cmp    rdi,QWORD PTR [rip+0x13163de]        # 248c838
+renderer	0x117645a	jl     1176530
+renderer	0x1176460	cmp    rdi,QWORD PTR [rip+0x13163d9]        # 248c840
+renderer	0x1176467	jg     1176530
+renderer	0x1176470	cmp    BYTE PTR [rip+0x13161b8],0x0        # 248c62f
+renderer	0x1176477	je     1177726
+renderer	0x1176486	cmp    BYTE PTR [rip+0x13161a1],0x0        # 248c62e
+renderer	0x1176534	cmp    r13d,ebp
+renderer	0x1176537	jg     11765b0
+renderer	0x1176550	cmp    r12d,r13d
+renderer	0x1176553	je     1176588
+renderer	0x1176555	cmp    DWORD PTR [rsp+0x28],r13d
+renderer	0x117655a	jne    11763b0
+renderer	0x117656f	jmp    11763e0
+renderer	0x1176583	jmp    11763e0
+renderer	0x1176597	jmp    11763e0
+renderer	0x11765ab	jmp    11763e0
+renderer	0x11765c9	cmp    rbx,rax
+renderer	0x11765cc	jne    1176395
+renderer	0x1176630	cmp    QWORD PTR [rsp+0xe8],0x0
+renderer	0x1176639	jne    1176e49
+renderer	0x117663f	cmp    BYTE PTR [rbx+0x50],0x0
+renderer	0x1176643	je     1176dfd
+renderer	0x1176663	cmp    ecx,0x1f3
+renderer	0x1176669	jbe    11776c6
+renderer	0x11766a4	test   eax,eax
+renderer	0x11766a6	jle    1176a90
+renderer	0x1176725	cmp    DWORD PTR [rsp+0x18],eax
+renderer	0x1176729	jl     117691f
+renderer	0x1176736	jmp    11768bb
+renderer	0x1176756	test   esi,esi
+renderer	0x1176758	jle    11768b0
+renderer	0x1176765	test   BYTE PTR [rax],0x1
+renderer	0x1176768	je     11768b0
+renderer	0x117679d	cmp    rax,QWORD PTR [rip+0x1315fe4]        # 248c788
+renderer	0x11767a4	jae    11768a0
+renderer	0x11767ad	cmp    rcx,QWORD PTR [rip+0x1316074]        # 248c828
+renderer	0x11767b4	jl     11768a0
+renderer	0x11767ba	cmp    rcx,QWORD PTR [rip+0x131606f]        # 248c830
+renderer	0x11767c1	jg     11768a0
+renderer	0x11767c7	cmp    rsi,QWORD PTR [rip+0x131606a]        # 248c838
+renderer	0x11767ce	jl     11768a0
+renderer	0x11767d4	cmp    rsi,QWORD PTR [rip+0x1316065]        # 248c840
+renderer	0x11767db	jg     11768a0
+renderer	0x11767e4	cmp    BYTE PTR [rip+0x1315e44],0x0        # 248c62f
+renderer	0x11767eb	je     1176c65
+renderer	0x11767fa	cmp    BYTE PTR [rip+0x1315e2d],0x0        # 248c62e
+renderer	0x11768b6	cmp    r14d,ebx
+renderer	0x11768b9	jl     1176910
+renderer	0x11768c8	cmp    ebx,r13d
+renderer	0x11768cb	jl     11768b0
+renderer	0x11768cd	cmp    ebx,DWORD PTR [rsp+0x8]
+renderer	0x11768d1	jg     1176910
+renderer	0x11768de	cmp    r12d,DWORD PTR [rsp+0x20]
+renderer	0x11768e3	je     1176ad0
+renderer	0x11768e9	cmp    r12d,DWORD PTR [rsp+0x18]
+renderer	0x11768ee	jne    1176740
+renderer	0x1176904	jmp    1176750
+renderer	0x1176914	cmp    r12d,DWORD PTR [rsp+0x18]
+renderer	0x1176919	jle    1176730
+renderer	0x1176923	cmp    ecx,r13d
+renderer	0x1176926	jl     117696b
+renderer	0x117692c	cmp    ecx,eax
+renderer	0x117692e	jg     117696b
+renderer	0x1176999	cmp    QWORD PTR [rax+0x60],0x0
+renderer	0x117699e	je     1176ae5
+renderer	0x11769b4	cmp    eax,0x98967f
+renderer	0x11769b9	jg     1176c59
+renderer	0x11769bf	cmp    eax,0x270f
+renderer	0x11769c4	jg     1176df1
+renderer	0x11769ca	test   eax,eax
+renderer	0x1176a10	cmp    r14,rbx
+renderer	0x1176a13	ja     1176b25
+renderer	0x1176a24	cmp    eax,r13d
+renderer	0x1176a27	jl     1176a35
+renderer	0x1176a2d	cmp    eax,ecx
+renderer	0x1176a2f	jle    1176ca3
+renderer	0x1176a48	cmp    rdi,QWORD PTR [rsp+0x40]
+renderer	0x1176a4d	je     1176af4
+renderer	0x1176a88	cmp    ecx,eax
+renderer	0x1176a8a	jl     11766dd
+renderer	0x1176a97	cmp    DWORD PTR [rsp+0x88],ecx
+renderer	0x1176a9e	jg     1176ef5
+renderer	0x1176aac	cmp    rdi,QWORD PTR [rsp+0x70]
+renderer	0x1176ab1	je     1173f7e
+renderer	0x1176ac8	jmp    1173f7e
+renderer	0x1176ae0	jmp    1176750
+renderer	0x1176aef	jmp    11769dc
+renderer	0x1176b18	cmp    eax,ecx
+renderer	0x1176b1a	jg     11766dd
+renderer	0x1176b20	jmp    1176a90
+renderer	0x1176b3c	cmp    eax,r13d
+renderer	0x1176b3f	jl     1176be0
+renderer	0x1176b49	cmp    eax,ecx
+renderer	0x1176b4b	jg     1176be0
+renderer	0x1176b95	cmp    rax,QWORD PTR [rsp+0x128]
+renderer	0x1176b9d	ja     1176ba7
+renderer	0x1176ba3	test   edx,edx
+renderer	0x1176ba5	jns    1176bf7
+renderer	0x1176bbe	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1176bc3	je     1176be0
+renderer	0x1176be9	cmp    r14,rbx
+renderer	0x1176bec	jbe    1176a20
+renderer	0x1176bf2	jmp    1176b38
+renderer	0x1176c02	cmp    DWORD PTR [rsp+0x64],0x3
+renderer	0x1176c07	jle    1176ba7
+renderer	0x1176c40	jmp    1176ba7
+renderer	0x1176c54	jmp    11763e0
+renderer	0x1176c60	jmp    11769dc
+renderer	0x1176c9e	jmp    1176874
+renderer	0x1176d2c	cmp    rdi,rbx
+renderer	0x1176d2f	je     1176d42
+renderer	0x1176d6d	cmp    r12,rbx
+renderer	0x1176d70	jbe    1176a35
+renderer	0x1176d8e	cmp    r14,rax
+renderer	0x1176d91	ja     1176db5
+renderer	0x1176d93	jmp    1176a35
+renderer	0x1176dac	cmp    rax,r14
+renderer	0x1176daf	jae    1176a35
+renderer	0x1176de6	cmp    r12,rbx
+renderer	0x1176de9	jbe    1176a35
+renderer	0x1176def	jmp    1176da0
+renderer	0x1176df8	jmp    11769dc
+renderer	0x1176e0f	cmp    rax,QWORD PTR [rsp+0x70]
+renderer	0x1176e14	je     1176e25
+renderer	0x1176e16	cmp    QWORD PTR [rsp+0xf0],0x2
+renderer	0x1176e1f	jbe    117752b
+renderer	0x1176e4e	cmp    BYTE PTR [rax+0x50],0x0
+renderer	0x1176e52	je     117666f
+renderer	0x1176e72	cmp    ecx,0x1f3
+renderer	0x1176e78	ja     117666f
+renderer	0x1176e90	cmp    rsi,rax
+renderer	0x1176e93	je     1178c72
+renderer	0x1176ea6	cmp    rdx,QWORD PTR [rsp+0x70]
+renderer	0x1176eb8	cmp    rbx,rax
+renderer	0x1176ebb	ja     117764b
+renderer	0x1176ed9	jmp    117666f
+renderer	0x1176ef0	jmp    117635e
+renderer	0x1176f5d	test   ebx,ebx
+renderer	0x1176f5f	jle    11770cf
+renderer	0x1176f80	test   eax,eax
+renderer	0x1176fa9	test   r9d,r9d
+renderer	0x1176fac	je     1177667
+renderer	0x1176fbf	cmp    r9d,edx
+renderer	0x1176fc2	je     11776cd
+renderer	0x1176fc8	cmp    esi,DWORD PTR [rsp+0xc8]
+renderer	0x1176fcf	jl     1176ff7
+renderer	0x1176fd1	test   r9d,r9d
+renderer	0x1176fd4	jle    1176ff7
+renderer	0x1176ff7	cmp    r9d,eax
+renderer	0x1176ffe	cmp    edi,DWORD PTR [rsp+0xcc]
+renderer	0x1177005	jg     1177010
+renderer	0x1177007	test   r8b,r8b
+renderer	0x117700a	jne    11776a4
+renderer	0x1177010	cmp    esi,DWORD PTR [rsp+0xc8]
+renderer	0x1177017	jle    117702a
+renderer	0x117702a	cmp    edi,DWORD PTR [rsp+0xc8]
+renderer	0x1177031	jge    117704b
+renderer	0x117704b	cmp    esi,DWORD PTR [rsp+0xcc]
+renderer	0x1177052	jle    117706d
+renderer	0x117706d	cmp    edi,DWORD PTR [rsp+0xcc]
+renderer	0x1177074	jge    1177088
+renderer	0x117708f	cmp    eax,DWORD PTR [rsp+0xcc]
+renderer	0x1177096	je     11776f7
+renderer	0x11770a3	cmp    esi,eax
+renderer	0x11770a8	cmp    eax,edi
+renderer	0x11770bb	cmp    esi,eax
+renderer	0x11770c0	cmp    edi,eax
+renderer	0x11770c2	jl     11776eb
+renderer	0x11770fe	jmp    1176aa4
+renderer	0x117716e	cmp    rdi,rbx
+renderer	0x1177171	jne    1175698
+renderer	0x1177177	jmp    1175015
+renderer	0x1177192	test   rsi,rsi
+renderer	0x1177195	jne    11755b8
+renderer	0x117719b	jmp    1175601
+renderer	0x11771b6	test   rcx,rcx
+renderer	0x11771b9	jne    1175402
+renderer	0x11771c1	jmp    117608e
+renderer	0x1177229	jmp    1177166
+renderer	0x1177233	jmp    11731d9
+renderer	0x1177245	jmp    1175362
+renderer	0x1177257	jmp    1174fe9
+renderer	0x117728f	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1177294	je     11772a7
+renderer	0x11772b1	cmp    DWORD PTR [r13+0x88],0xffffffb6
+renderer	0x11772b9	jge    11779ec
+renderer	0x11772dd	jmp    1175db6
+renderer	0x1177315	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x117731a	je     117732d
+renderer	0x1177337	cmp    DWORD PTR [r13+0x8c],0xffffffb6
+renderer	0x117733f	jge    1177764
+renderer	0x1177366	jmp    11762c7
+renderer	0x117739e	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x11773a3	je     11773b6
+renderer	0x11773b6	cmp    DWORD PTR [r13+0x84],0xffffffb5
+renderer	0x11773ff	jmp    1175f90
+renderer	0x1177409	jmp    11731d9
+renderer	0x1177413	jmp    11731d9
+renderer	0x117741d	jmp    11731d9
+renderer	0x1177425	jmp    117408e
+renderer	0x1177430	jmp    117408e
+renderer	0x117743a	jmp    11731d9
+renderer	0x1177444	jmp    11731d9
+renderer	0x117744d	cmp    eax,edx
+renderer	0x117744f	jl     1179d3b
+renderer	0x1177459	cmp    eax,edx
+renderer	0x117745b	jl     11795d8
+renderer	0x1177461	cmp    r14d,edx
+renderer	0x1177464	je     1178986
+renderer	0x1177492	jmp    1175685
+renderer	0x11774bf	jmp    1175685
+renderer	0x11774c4	cmp    dx,0x3c
+renderer	0x11774c8	jle    1179175
+renderer	0x11774d7	jmp    1175601
+renderer	0x11774dc	cmp    edi,eax
+renderer	0x11774de	jle    1177507
+renderer	0x11774ee	cmp    edi,eax
+renderer	0x11774f0	jg     11774fb
+renderer	0x11774f2	test   r8b,r8b
+renderer	0x11774f5	jne    11786bd
+renderer	0x1177502	jmp    1174cc2
+renderer	0x117750a	cmp    eax,ecx
+renderer	0x1177526	jmp    1174cc2
+renderer	0x1177544	jmp    1176e31
+renderer	0x1177549	cmp    eax,0x18
+renderer	0x117754c	jg     11775d3
+renderer	0x1177552	cmp    eax,0xffffffe8
+renderer	0x1177555	jge    1179f7f
+renderer	0x117758e	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1177593	je     11775a6
+renderer	0x11775ce	jmp    11761e6
+renderer	0x1177606	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x117760b	je     117761e
+renderer	0x1177646	jmp    11761e6
+renderer	0x1177662	jmp    1176ec5
+renderer	0x1177682	cmp    eax,0xffffffff
+renderer	0x1177685	je     11776cd
+renderer	0x117768f	cmp    edi,DWORD PTR [rsp+0xcc]
+renderer	0x1177696	jg     117702a
+renderer	0x117769c	test   al,al
+renderer	0x117769e	je     117702a
+renderer	0x11776c1	jmp    1177010
+renderer	0x11776c8	jmp    1176e99
+renderer	0x11776e6	jmp    1176fc8
+renderer	0x11776f2	jmp    11770cf
+renderer	0x11776f7	cmp    edi,eax
+renderer	0x11776f9	jle    1178052
+renderer	0x117770d	cmp    edi,eax
+renderer	0x117770f	jg     117771a
+renderer	0x1177711	test   r8b,r8b
+renderer	0x1177714	jne    117981c
+renderer	0x1177721	jmp    117709c
+renderer	0x117775f	jmp    1176503
+renderer	0x1177785	jmp    11762c7
+renderer	0x11777bf	test   r9d,r9d
+renderer	0x11777c2	jle    11733b1
+renderer	0x11777c8	jmp    1173392
+renderer	0x11777d4	jmp    11759d9
+renderer	0x11777de	jmp    117778c
+renderer	0x11777f7	jmp    117778c
+renderer	0x11777fe	jmp    117778c
+renderer	0x1177805	jmp    11777e5
+renderer	0x117780c	jmp    117778c
+renderer	0x1177816	jmp    11777e5
+renderer	0x117781d	jmp    117778c
+renderer	0x1177824	jmp    11777e5
+renderer	0x1177826	cmp    ax,0x3c
+renderer	0x117782a	jle    1177c87
+renderer	0x117783b	jmp    117608e
+renderer	0x1177868	jmp    1176146
+renderer	0x117786d	cmp    eax,0x18
+renderer	0x1177870	jle    117382c
+renderer	0x11778a9	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x11778ae	je     11778c1
+renderer	0x11778e9	jmp    1175ceb
+renderer	0x11778ee	cmp    eax,0x18
+renderer	0x11778f1	jle    117796b
+renderer	0x1177926	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x117792b	je     117793e
+renderer	0x1177966	jmp    1175c4b
+renderer	0x117796b	cmp    eax,0xffffffb6
+renderer	0x117796e	jge    1177b97
+renderer	0x11779a7	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x11779ac	je     11779bf
+renderer	0x11779e7	jmp    1175c4b
+renderer	0x1177a0a	jmp    1175db6
+renderer	0x1177a12	cmp    eax,ecx
+renderer	0x1177a14	jl     1179065
+renderer	0x1177a1d	cmp    eax,ecx
+renderer	0x1177a1f	jl     1178b62
+renderer	0x1177a25	cmp    ebx,ecx
+renderer	0x1177a27	je     1177f42
+renderer	0x1177a55	jmp    1175685
+renderer	0x1177a82	jmp    1175685
+renderer	0x1177a8c	jmp    117778c
+renderer	0x1177ac4	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1177ac9	je     1177adc
+renderer	0x1177b04	jmp    1175bab
+renderer	0x1177b3c	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1177b41	je     1175b83
+renderer	0x1177b58	jmp    1175b83
+renderer	0x1177b62	jmp    11777e5
+renderer	0x1177b92	jmp    11737b7
+renderer	0x1177b97	cmp    eax,0xffffffe8
+renderer	0x1177b9a	jge    1175c6b
+renderer	0x1177bd3	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1177bd8	je     1177beb
+renderer	0x1177c13	jmp    1175c4b
+renderer	0x1177c18	cmp    edi,eax
+renderer	0x1177c1a	jle    1177c3f
+renderer	0x1177c2a	cmp    edi,eax
+renderer	0x1177c2c	jg     1177c33
+renderer	0x1177c2e	test   r8b,r8b
+renderer	0x1177c31	jne    1177c63
+renderer	0x1177c3a	jmp    11759a6
+renderer	0x1177c42	cmp    eax,ecx
+renderer	0x1177c5e	jmp    11759a6
+renderer	0x1177c66	cmp    eax,ecx
+renderer	0x1177c82	jmp    11759a6
+renderer	0x1177c87	cmp    ax,0x9
+renderer	0x1177c8b	jg     1177d67
+renderer	0x1177c97	jmp    117608e
+renderer	0x1177c9c	cmp    eax,0x18
+renderer	0x1177c9f	jg     1177adc
+renderer	0x1177ca5	cmp    eax,0xffffffb6
+renderer	0x1177ca8	jl     1177e68
+renderer	0x1177cae	cmp    eax,0xffffffe8
+renderer	0x1177cb1	jl     1176279
+renderer	0x1177cbb	cmp    eax,0x4a
+renderer	0x1177cbe	jg     1175c23
+renderer	0x1177cc4	cmp    eax,0x18
+renderer	0x1177cc7	jg     117793e
+renderer	0x1177ccd	cmp    eax,0xffffffb6
+renderer	0x1177cd0	jl     11779bf
+renderer	0x1177cd6	cmp    eax,0xffffffe8
+renderer	0x1177cd9	jl     1177beb
+renderer	0x1177ce3	cmp    eax,0x4a
+renderer	0x1177ce6	jg     1175cc3
+renderer	0x1177cec	cmp    eax,0x18
+renderer	0x1177cef	jg     11778c1
+renderer	0x1177d1d	jmp    1175ceb
+renderer	0x1177d3f	cmp    r10d,0xffffffff
+renderer	0x1177d43	jne    11758e7
+renderer	0x1177d62	jmp    11758ba
+renderer	0x1177d67	cmp    ax,0x18
+renderer	0x1177d6b	jg     1177eea
+renderer	0x1177d78	jmp    117608e
+renderer	0x1177db3	cmp    rdi,rax
+renderer	0x1177db6	je     1177dc9
+renderer	0x1177dfb	cmp    eax,DWORD PTR [rsp+0x88]
+renderer	0x1177e02	jl     1176ede
+renderer	0x1177e18	jmp    117635e
+renderer	0x1177e50	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1177e55	je     1177e68
+renderer	0x1177e90	jmp    1175bab
+renderer	0x1177ecb	cmp    rdi,rax
+renderer	0x1177ece	je     1177dc9
+renderer	0x1177ee5	jmp    1177dc9
+renderer	0x1177eed	cmp    ax,0x28
+renderer	0x1177ef6	jmp    117608e
+renderer	0x1177f21	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1177f26	je     11756ec
+renderer	0x1177f3d	jmp    11756ec
+renderer	0x1177f6a	jmp    1175685
+renderer	0x1177f95	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1177f9a	je     11756ec
+renderer	0x1177fb1	jmp    11756ec
+renderer	0x1177fec	cmp    rdi,rax
+renderer	0x1177fef	je     1177dc9
+renderer	0x1178006	jmp    1177dc9
+renderer	0x1178031	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1178036	je     11756ec
+renderer	0x117804d	jmp    11756ec
+renderer	0x1178055	cmp    eax,esi
+renderer	0x1178071	jmp    117709c
+renderer	0x117809c	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x11780a1	je     11756ec
+renderer	0x11780b8	jmp    11756ec
+renderer	0x11780e3	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x11780e8	je     11756ec
+renderer	0x11780ff	jmp    11756ec
+renderer	0x117812a	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x117812f	je     11756ec
+renderer	0x1178146	jmp    11756ec
+renderer	0x1178171	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1178176	je     11756ec
+renderer	0x117818d	jmp    11756ec
+renderer	0x11781b8	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x11781bd	je     11756ec
+renderer	0x11781d4	jmp    11756ec
+renderer	0x11781ff	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1178204	je     11756ec
+renderer	0x117821b	jmp    11756ec
+renderer	0x1178246	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x117824b	je     11756ec
+renderer	0x1178262	jmp    11756ec
+renderer	0x117828d	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1178292	je     11756ec
+renderer	0x11782a9	jmp    11756ec
+renderer	0x11782d4	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x11782d9	je     11756ec
+renderer	0x11782f0	jmp    11756ec
+renderer	0x117832b	cmp    rdi,rax
+renderer	0x117832e	je     1177dc9
+renderer	0x1178345	jmp    1177dc9
+renderer	0x1178370	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1178375	je     11756ec
+renderer	0x117838c	jmp    11756ec
+renderer	0x11783c6	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x11783cb	je     11756ec
+renderer	0x11783e2	jmp    11756ec
+renderer	0x117840d	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1178412	je     11756ec
+renderer	0x1178429	jmp    11756ec
+renderer	0x1178464	cmp    rdi,rax
+renderer	0x1178467	je     1177dc9
+renderer	0x117847e	jmp    1177dc9
+renderer	0x11784a9	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x11784ae	je     11756ec
+renderer	0x11784c5	jmp    11756ec
+renderer	0x11784f2	jmp    1176146
+renderer	0x117851d	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1178522	je     11756ec
+renderer	0x1178539	jmp    11756ec
+renderer	0x1178574	cmp    rdi,rax
+renderer	0x1178577	je     1177dc9
+renderer	0x117858e	jmp    1177dc9
+renderer	0x11785b9	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x11785be	je     11756ec
+renderer	0x11785d5	jmp    11756ec
+renderer	0x1178600	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1178605	je     11756ec
+renderer	0x117861c	jmp    11756ec
+renderer	0x1178657	cmp    rdi,rax
+renderer	0x117865a	je     1177dc9
+renderer	0x1178671	jmp    1177dc9
+renderer	0x117869c	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x11786a1	je     11756ec
+renderer	0x11786b8	jmp    11756ec
+renderer	0x11786c0	cmp    eax,ecx
+renderer	0x11786dc	jmp    1174cc2
+renderer	0x1178707	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x117870c	je     11756ec
+renderer	0x1178723	jmp    11756ec
+renderer	0x117874e	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1178753	je     11756ec
+renderer	0x117876a	jmp    11756ec
+renderer	0x1178795	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x117879a	je     11756ec
+renderer	0x11787b1	jmp    11756ec
+renderer	0x11787ec	cmp    rdi,rax
+renderer	0x11787ef	je     1177dc9
+renderer	0x1178806	jmp    1177dc9
+renderer	0x1178831	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1178836	je     11756ec
+renderer	0x117884d	jmp    11756ec
+renderer	0x1178857	jmp    117778c
+renderer	0x1178882	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1178887	je     11756ec
+renderer	0x117889e	jmp    11756ec
+renderer	0x11788c9	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x11788ce	je     11756ec
+renderer	0x11788e5	jmp    11756ec
+renderer	0x1178920	cmp    rdi,rax
+renderer	0x1178923	je     1177dc9
+renderer	0x117893a	jmp    1177dc9
+renderer	0x1178965	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x117896a	je     11756ec
+renderer	0x1178981	jmp    11756ec
+renderer	0x11789ae	jmp    1175685
+renderer	0x11789d9	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x11789de	je     11756ec
+renderer	0x11789f5	jmp    11756ec
+renderer	0x1178a25	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1178a2a	je     11756ec
+renderer	0x1178a41	jmp    11756ec
+renderer	0x1178a6c	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1178a71	je     11756ec
+renderer	0x1178a88	jmp    11756ec
+renderer	0x1178ab3	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1178ab8	je     11756ec
+renderer	0x1178acf	jmp    11756ec
+renderer	0x1178afa	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1178aff	je     11756ec
+renderer	0x1178b16	jmp    11756ec
+renderer	0x1178b41	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1178b46	je     11756ec
+renderer	0x1178b5d	jmp    11756ec
+renderer	0x1178b8a	jmp    1175685
+renderer	0x1178bb5	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1178bba	je     11756ec
+renderer	0x1178bd1	jmp    11756ec
+renderer	0x1178c0c	cmp    rdi,rax
+renderer	0x1178c0f	je     1177dc9
+renderer	0x1178c26	jmp    1177dc9
+renderer	0x1178c51	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1178c56	je     11756ec
+renderer	0x1178c6d	jmp    11756ec
+renderer	0x1178ca6	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1178cab	je     11756ec
+renderer	0x1178cc2	jmp    11756ec
+renderer	0x1178ced	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1178cf2	je     11756ec
+renderer	0x1178d09	jmp    11756ec
+renderer	0x1178d44	cmp    rdi,rax
+renderer	0x1178d47	je     1177dc9
+renderer	0x1178d5e	jmp    1177dc9
+renderer	0x1178d89	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1178d8e	je     11756ec
+renderer	0x1178da5	jmp    11756ec
+renderer	0x1178de6	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1178deb	je     11756ec
+renderer	0x1178e02	jmp    11756ec
+renderer	0x1178e2d	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1178e32	je     11756ec
+renderer	0x1178e49	jmp    11756ec
+renderer	0x1178e74	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1178e79	je     11756ec
+renderer	0x1178e90	jmp    11756ec
+renderer	0x1178ecb	cmp    rdi,rax
+renderer	0x1178ece	je     1177dc9
+renderer	0x1178ee5	jmp    1177dc9
+renderer	0x1178f10	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1178f15	je     11756ec
+renderer	0x1178f2c	jmp    11756ec
+renderer	0x1178f36	jmp    11777e5
+renderer	0x1178f61	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1178f66	je     11756ec
+renderer	0x1178f7d	jmp    11756ec
+renderer	0x1178fa8	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1178fad	je     11756ec
+renderer	0x1178fc4	jmp    11756ec
+renderer	0x1178fff	cmp    rdi,rax
+renderer	0x1179002	je     1177dc9
+renderer	0x1179019	jmp    1177dc9
+renderer	0x1179044	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1179049	je     11756ec
+renderer	0x1179060	jmp    11756ec
+renderer	0x117908d	jmp    1175685
+renderer	0x11790b8	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x11790bd	je     11756ec
+renderer	0x11790d4	jmp    11756ec
+renderer	0x117910f	cmp    rdi,rax
+renderer	0x1179112	je     1177dc9
+renderer	0x1179129	jmp    1177dc9
+renderer	0x1179154	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1179159	je     11756ec
+renderer	0x1179170	jmp    11756ec
+renderer	0x1179175	cmp    dx,0x9
+renderer	0x1179179	jg     1179887
+renderer	0x1179184	jmp    1175601
+renderer	0x11791af	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x11791b4	je     11756ec
+renderer	0x11791cb	jmp    11756ec
+renderer	0x1179206	cmp    rdi,rax
+renderer	0x1179209	je     1177dc9
+renderer	0x1179220	jmp    1177dc9
+renderer	0x117924b	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1179250	je     11756ec
+renderer	0x1179267	jmp    11756ec
+renderer	0x1179271	jmp    117778c
+renderer	0x117929c	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x11792a1	je     11756ec
+renderer	0x11792b8	jmp    11756ec
+renderer	0x11792e3	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x11792e8	je     11756ec
+renderer	0x11792ff	jmp    11756ec
+renderer	0x117932a	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x117932f	je     11756ec
+renderer	0x1179346	jmp    11756ec
+renderer	0x1179371	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1179376	je     11756ec
+renderer	0x117938d	jmp    11756ec
+renderer	0x11793b8	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x11793bd	je     11756ec
+renderer	0x11793d4	jmp    11756ec
+renderer	0x11793ff	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1179404	je     11756ec
+renderer	0x117941b	jmp    11756ec
+renderer	0x1179446	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x117944b	je     11756ec
+renderer	0x1179462	jmp    11756ec
+renderer	0x117948d	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1179492	je     11756ec
+renderer	0x11794a9	jmp    11756ec
+renderer	0x11794d4	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x11794d9	je     11756ec
+renderer	0x11794f0	jmp    11756ec
+renderer	0x117951b	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1179520	je     11756ec
+renderer	0x1179537	jmp    11756ec
+renderer	0x1179572	cmp    rdi,rax
+renderer	0x1179575	je     1177dc9
+renderer	0x117958c	jmp    1177dc9
+renderer	0x11795b7	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x11795bc	je     11756ec
+renderer	0x11795d3	jmp    11756ec
+renderer	0x1179600	jmp    1175685
+renderer	0x117962b	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1179630	je     11756ec
+renderer	0x1179647	jmp    11756ec
+renderer	0x1179682	cmp    rdi,rax
+renderer	0x1179685	je     1177dc9
+renderer	0x117969c	jmp    1177dc9
+renderer	0x11796c7	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x11796cc	je     11756ec
+renderer	0x11796e3	jmp    11756ec
+renderer	0x11796ed	jmp    117778c
+renderer	0x1179718	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x117971d	je     11756ec
+renderer	0x1179734	jmp    11756ec
+renderer	0x117975f	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1179764	je     11756ec
+renderer	0x117977b	jmp    11756ec
+renderer	0x11797b6	cmp    rdi,rax
+renderer	0x11797b9	je     1177dc9
+renderer	0x11797d0	jmp    1177dc9
+renderer	0x11797fb	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1179800	je     11756ec
+renderer	0x1179817	jmp    11756ec
+renderer	0x117981f	cmp    eax,esi
+renderer	0x117983b	jmp    117709c
+renderer	0x1179866	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x117986b	je     11756ec
+renderer	0x1179882	jmp    11756ec
+renderer	0x1179887	cmp    dx,0x18
+renderer	0x117988b	jg     117ab74
+renderer	0x1179894	jmp    1175601
+renderer	0x11798cf	cmp    rdi,rax
+renderer	0x11798d2	je     1177dc9
+renderer	0x11798e9	jmp    1177dc9
+renderer	0x1179914	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1179919	je     11756ec
+renderer	0x1179930	jmp    11756ec
+renderer	0x117993a	jmp    11777e5
+renderer	0x1179965	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x117996a	je     11756ec
+renderer	0x1179981	jmp    11756ec
+renderer	0x11799ac	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x11799b1	je     11756ec
+renderer	0x11799c8	jmp    11756ec
+renderer	0x1179a03	cmp    rdi,rax
+renderer	0x1179a06	je     1177dc9
+renderer	0x1179a1d	jmp    1177dc9
+renderer	0x1179a48	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1179a4d	je     11756ec
+renderer	0x1179a64	jmp    11756ec
+renderer	0x1179a91	jmp    1176146
+renderer	0x1179abc	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1179ac1	je     11756ec
+renderer	0x1179ad8	jmp    11756ec
+renderer	0x1179b13	cmp    rdi,rax
+renderer	0x1179b16	je     1177dc9
+renderer	0x1179b2d	jmp    1177dc9
+renderer	0x1179b58	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1179b5d	je     11756ec
+renderer	0x1179b74	jmp    11756ec
+renderer	0x1179b7e	jmp    11777e5
+renderer	0x1179ba9	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1179bae	je     11756ec
+renderer	0x1179bc5	jmp    11756ec
+renderer	0x1179bf0	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1179bf5	je     11756ec
+renderer	0x1179c0c	jmp    11756ec
+renderer	0x1179c37	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1179c3c	je     11756ec
+renderer	0x1179c53	jmp    11756ec
+renderer	0x1179c7e	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1179c83	je     11756ec
+renderer	0x1179c9a	jmp    11756ec
+renderer	0x1179cd5	cmp    rdi,rax
+renderer	0x1179cd8	je     1177dc9
+renderer	0x1179cef	jmp    1177dc9
+renderer	0x1179d1a	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1179d1f	je     11756ec
+renderer	0x1179d36	jmp    11756ec
+renderer	0x1179d63	jmp    1175685
+renderer	0x1179d8e	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1179d93	je     11756ec
+renderer	0x1179daa	jmp    11756ec
+renderer	0x1179de5	cmp    rdi,rax
+renderer	0x1179de8	je     1177dc9
+renderer	0x1179dff	jmp    1177dc9
+renderer	0x1179e2a	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1179e2f	je     11756ec
+renderer	0x1179e46	jmp    11756ec
+renderer	0x1179e50	jmp    11777e5
+renderer	0x1179e7b	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1179e80	je     11756ec
+renderer	0x1179e97	jmp    11756ec
+renderer	0x1179ec2	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1179ec7	je     11756ec
+renderer	0x1179ede	jmp    11756ec
+renderer	0x1179f19	cmp    rdi,rax
+renderer	0x1179f1c	je     1177dc9
+renderer	0x1179f33	jmp    1177dc9
+renderer	0x1179f5e	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1179f63	je     11756ec
+renderer	0x1179f7a	jmp    11756ec
+renderer	0x1179f83	cmp    eax,0x4a
+renderer	0x1179f86	jg     1177b09
+renderer	0x1179f8c	cmp    eax,0x18
+renderer	0x1179f8f	jg     1177a91
+renderer	0x1179f95	cmp    eax,0xffffffb6
+renderer	0x1179f98	jl     1177e1d
+renderer	0x1179f9e	cmp    eax,0xffffffe8
+renderer	0x1179fa1	jl     117622e
+renderer	0x1179fa7	jmp    1175bcb
+renderer	0x1179fd6	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x1179fdb	je     11756ec
+renderer	0x1179ff2	jmp    11756ec
+renderer	0x117a01d	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x117a022	je     11756ec
+renderer	0x117a039	jmp    11756ec
+renderer	0x117a064	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x117a069	je     11756ec
+renderer	0x117a080	jmp    11756ec
+renderer	0x117a0bb	cmp    rdi,rax
+renderer	0x117a0be	je     1177dc9
+renderer	0x117a0d5	jmp    1177dc9
+renderer	0x117a100	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x117a105	je     11756ec
+renderer	0x117a11c	jmp    11756ec
+renderer	0x117a157	cmp    rdi,rax
+renderer	0x117a15a	je     1177dc9
+renderer	0x117a171	jmp    1177dc9
+renderer	0x117a19c	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x117a1a1	je     11756ec
+renderer	0x117a1b8	jmp    11756ec
+renderer	0x117a1f3	cmp    rdi,rax
+renderer	0x117a1f6	je     1177dc9
+renderer	0x117a20d	jmp    1177dc9
+renderer	0x117a238	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x117a23d	je     11756ec
+renderer	0x117a254	jmp    11756ec
+renderer	0x117a28f	cmp    rdi,rax
+renderer	0x117a292	je     1177dc9
+renderer	0x117a2a9	jmp    1177dc9
+renderer	0x117a2d4	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x117a2d9	je     11756ec
+renderer	0x117a2f0	jmp    11756ec
+renderer	0x117a2fa	cmp    DWORD PTR [rax+0x88],0x21
+renderer	0x117a301	ja     1176313
+renderer	0x117a34c	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x117a351	je     11756ec
+renderer	0x117a368	jmp    11756ec
+renderer	0x117a393	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x117a398	je     11756ec
+renderer	0x117a3af	jmp    11756ec
+renderer	0x117a3da	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x117a3df	je     11756ec
+renderer	0x117a3f6	jmp    11756ec
+renderer	0x117a421	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x117a426	je     11756ec
+renderer	0x117a43d	jmp    11756ec
+renderer	0x117a468	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x117a46d	je     11756ec
+renderer	0x117a484	jmp    11756ec
+renderer	0x117a4af	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x117a4b4	je     11756ec
+renderer	0x117a4cb	jmp    11756ec
+renderer	0x117a4f6	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x117a4fb	je     11756ec
+renderer	0x117a512	jmp    11756ec
+renderer	0x117a53d	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x117a542	je     11756ec
+renderer	0x117a559	jmp    11756ec
+renderer	0x117a584	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x117a589	je     11756ec
+renderer	0x117a5a0	jmp    11756ec
+renderer	0x117a5cb	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x117a5d0	je     11756ec
+renderer	0x117a5e7	jmp    11756ec
+renderer	0x117a622	cmp    rdi,rax
+renderer	0x117a625	je     1177dc9
+renderer	0x117a63c	jmp    1177dc9
+renderer	0x117a667	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x117a66c	je     11756ec
+renderer	0x117a683	jmp    11756ec
+renderer	0x117a6be	cmp    rdi,rax
+renderer	0x117a6c1	je     1177dc9
+renderer	0x117a6d8	jmp    1177dc9
+renderer	0x117a703	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x117a708	je     11756ec
+renderer	0x117a71f	jmp    11756ec
+renderer	0x117a75a	cmp    rdi,rax
+renderer	0x117a75d	je     1177dc9
+renderer	0x117a774	jmp    1177dc9
+renderer	0x117a79f	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x117a7a4	je     11756ec
+renderer	0x117a7bb	jmp    11756ec
+renderer	0x117a7f6	cmp    rdi,rax
+renderer	0x117a7f9	je     1177dc9
+renderer	0x117a810	jmp    1177dc9
+renderer	0x117a83b	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x117a840	je     11756ec
+renderer	0x117a857	jmp    11756ec
+renderer	0x117a892	cmp    rdi,rax
+renderer	0x117a895	je     1177dc9
+renderer	0x117a8ac	jmp    1177dc9
+renderer	0x117a8d7	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x117a8dc	je     11756ec
+renderer	0x117a8f3	jmp    11756ec
+renderer	0x117a92e	cmp    rdi,rax
+renderer	0x117a931	je     1177dc9
+renderer	0x117a948	jmp    1177dc9
+renderer	0x117a973	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x117a978	je     11756ec
+renderer	0x117a98f	jmp    11756ec
+renderer	0x117a9ca	cmp    rdi,rax
+renderer	0x117a9cd	je     1177dc9
+renderer	0x117a9e4	jmp    1177dc9
+renderer	0x117aa0f	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x117aa14	je     11756ec
+renderer	0x117aa2b	jmp    11756ec
+renderer	0x117aa66	cmp    rdi,rax
+renderer	0x117aa69	je     1177dc9
+renderer	0x117aa80	jmp    1177dc9
+renderer	0x117aab3	cmp    rdi,rax
+renderer	0x117aab6	je     1177dc9
+renderer	0x117aacd	jmp    1177dc9
+renderer	0x117ab0e	cmp    rdi,rax
+renderer	0x117ab11	je     1177dc9
+renderer	0x117ab28	jmp    1177dc9
+renderer	0x117ab53	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x117ab58	je     11756ec
+renderer	0x117ab6f	jmp    11756ec
+renderer	0x117ab77	cmp    dx,0x28
+renderer	0x117ab7e	jmp    1175601
+renderer	0x117aba9	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x117abae	je     11756ec
+renderer	0x117abc5	jmp    11756ec
+renderer	0x117abf0	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x117abf5	je     11756ec
+renderer	0x117ac0c	jmp    11756ec
+renderer	0x117ac37	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x117ac3c	je     11756ec
+renderer	0x117ac53	jmp    11756ec
+renderer	0x117ac7e	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x117ac83	je     11756ec
+renderer	0x117ac9a	jmp    11756ec
+renderer	0x117acc5	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x117acca	je     11756ec
+renderer	0x117ace1	jmp    11756ec
+renderer	0x117ad08	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x117ad0d	je     11756ec
+renderer	0x117ad24	jmp    11756ec
+renderer	0x117ad4f	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x117ad54	je     11756ec
+renderer	0x117ad6b	jmp    11756ec
+renderer	0x117ad96	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x117ad9b	je     11756ec
+renderer	0x117adb2	jmp    11756ec
+renderer	0x117addd	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x117ade2	je     11756ec
+renderer	0x117adf9	jmp    11756ec
+renderer	0x117ae24	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x117ae29	je     11756ec
+renderer	0x117ae40	jmp    11756ec
+renderer	0x117ae6b	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x117ae70	je     11756ec
+renderer	0x117ae87	jmp    11756ec
+renderer	0x117aeb2	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x117aeb7	je     11756ec
+renderer	0x117aece	jmp    11756ec
+renderer	0x117aef9	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x117aefe	je     11756ec
+renderer	0x117af15	jmp    11756ec
+renderer	0x117af40	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x117af45	je     11756ec
+renderer	0x117af5c	jmp    11756ec
+renderer	0x117af87	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x117af8c	je     11756ec
+renderer	0x117afa3	jmp    11756ec
+renderer	0x117afce	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x117afd3	je     11756ec
+renderer	0x117afea	jmp    11756ec
+renderer	0x117b015	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x117b01a	je     11756ec
+renderer	0x117b031	jmp    11756ec
+renderer	0x117b064	cmp    rdi,rax
+renderer	0x117b067	je     1177dc9
+renderer	0x117b07e	jmp    1177dc9
+renderer	0x117b0be	cmp    rdi,rax
+renderer	0x117b0c1	je     1177dc9
+renderer	0x117b0d8	jmp    1177dc9
+renderer	0x117b10b	cmp    rdi,rax
+renderer	0x117b10e	je     1177dc9
+renderer	0x117b125	jmp    1177dc9
+renderer	0x117b166	cmp    rdi,rax
+renderer	0x117b169	je     1177dc9
+renderer	0x117b180	jmp    1177dc9
+renderer	0x117b1ab	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x117b1b0	je     11756ec
+renderer	0x117b1c7	jmp    11756ec
+renderer	0x117b202	cmp    rdi,rax
+renderer	0x117b205	je     1177dc9
+renderer	0x117b21c	jmp    1177dc9
+renderer	0x117b24f	cmp    rdi,rax
+renderer	0x117b252	je     1177dc9
+renderer	0x117b269	jmp    1177dc9
+renderer	0x117b2a6	cmp    rdi,rax
+renderer	0x117b2a9	je     1177dc9
+renderer	0x117b2c0	jmp    1177dc9
+renderer	0x117b2f3	cmp    rdi,rax
+renderer	0x117b2f6	je     1177dc9
+renderer	0x117b30d	jmp    1177dc9
+renderer	0x117b34e	cmp    rdi,rax
+renderer	0x117b351	je     1177dc9
+renderer	0x117b368	jmp    1177dc9
+renderer	0x117b39b	cmp    rdi,rax
+renderer	0x117b39e	je     1177dc9
+renderer	0x117b3b5	jmp    1177dc9
+renderer	0x117b3f6	cmp    rdi,rax
+renderer	0x117b3f9	je     1177dc9
+renderer	0x117b410	jmp    1177dc9
+renderer	0x117b43b	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x117b440	je     11756ec
+renderer	0x117b457	jmp    11756ec
+renderer	0x117b492	cmp    rdi,rax
+renderer	0x117b495	je     1177dc9
+renderer	0x117b4ac	jmp    1177dc9
+renderer	0x117b4df	cmp    rdi,rax
+renderer	0x117b4e2	je     1177dc9
+renderer	0x117b4f9	jmp    1177dc9
+renderer	0x117b536	cmp    rdi,rax
+renderer	0x117b539	je     1177dc9
+renderer	0x117b550	jmp    1177dc9
+renderer	0x117b583	cmp    rdi,rax
+renderer	0x117b586	je     1177dc9
+renderer	0x117b59d	jmp    1177dc9
+renderer	0x117b5de	cmp    rdi,rax
+renderer	0x117b5e1	je     1177dc9
+renderer	0x117b5f8	jmp    1177dc9
+renderer	0x117b62b	cmp    rdi,rax
+renderer	0x117b62e	je     1177dc9
+renderer	0x117b645	jmp    1177dc9
+renderer	0x117b686	cmp    rdi,rax
+renderer	0x117b689	je     1177dc9
+renderer	0x117b6a0	jmp    1177dc9
+renderer	0x117b6cb	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x117b6d0	je     11756ec
+renderer	0x117b6e7	jmp    11756ec
+renderer	0x117b722	cmp    rdi,rax
+renderer	0x117b725	je     1177dc9
+renderer	0x117b73c	jmp    1177dc9
+renderer	0x117b76f	cmp    rdi,rax
+renderer	0x117b772	je     1177dc9
+renderer	0x117b789	jmp    1177dc9
+renderer	0x117b7c6	cmp    rdi,rax
+renderer	0x117b7c9	je     1177dc9
+renderer	0x117b7e0	jmp    1177dc9
+renderer	0x117b813	cmp    rdi,rax
+renderer	0x117b816	je     1177dc9
+renderer	0x117b82d	jmp    1177dc9
+renderer	0x117b86e	cmp    rdi,rax
+renderer	0x117b871	je     1177dc9
+renderer	0x117b888	jmp    1177dc9
+renderer	0x117b8bb	cmp    rdi,rax
+renderer	0x117b8be	je     1177dc9
+renderer	0x117b8d5	jmp    1177dc9
+renderer	0x117b906	cmp    rdi,QWORD PTR [rsp+0x10]
+renderer	0x117b90b	je     11756ec
+renderer	0x117b922	jmp    11756ec
+renderer	0x117b955	cmp    rdi,rax
+renderer	0x117b958	je     1177dc9
+renderer	0x117b96f	jmp    1177dc9
+renderer	0x117b9a2	cmp    rdi,rax
+renderer	0x117b9a5	je     1177dc9
+renderer	0x117b9bc	jmp    1177dc9
+renderer	0x117b9ef	cmp    rdi,rax
+renderer	0x117b9f2	je     1177dc9
+renderer	0x117ba09	jmp    1177dc9
+renderer	0x117ba3c	cmp    rdi,rax
+renderer	0x117ba3f	je     1177dc9
+renderer	0x117ba56	jmp    1177dc9
+renderer	0x117ba89	cmp    rdi,rax
+renderer	0x117ba8c	je     1177dc9
+renderer	0x117baa3	jmp    1177dc9
+renderer	0x117bad6	cmp    rdi,rax
+renderer	0x117bad9	je     1177dc9
+renderer	0x117baf0	jmp    1177dc9
+renderer	0x117bb23	cmp    rdi,rax
+renderer	0x117bb26	je     1177dc9
+renderer	0x117bb3d	jmp    1177dc9
+renderer	0x117bb70	cmp    rdi,rax
+renderer	0x117bb73	je     1177dc9
+renderer	0x117bb8a	jmp    1177dc9
+renderer	0x117bbbd	cmp    rdi,rax
+renderer	0x117bbc0	je     1177dc9
+renderer	0x117bbd7	jmp    1177dc9
+renderer	0x117bc0a	cmp    rdi,rax
+renderer	0x117bc0d	je     1177dc9
+renderer	0x117bc24	jmp    1177dc9
+renderer	0x117bc57	cmp    rdi,rax
+renderer	0x117bc5a	je     1177dc9
+renderer	0x117bc71	jmp    1177dc9
+renderer	0x117bca4	cmp    rdi,rax
+renderer	0x117bca7	je     1177dc9
+renderer	0x117bcbe	jmp    1177dc9
+renderer	0x117bcca	jmp    48f810
+renderer	0x117bcd6	jmp    48f858
+renderer	0x117bce2	jmp    48f886
+renderer	0x117bcee	jmp    48f8b4
+renderer	0x117bcfa	jmp    48f8dd
+renderer	0x117bd06	jmp    48f90b
+renderer	0x117bd12	jmp    48f934
+renderer	0x117bd1e	jmp    48f962
+renderer	0x117bd2a	jmp    48f98b
+renderer	0x117bd36	jmp    48f9b9
+renderer	0x117bd42	jmp    48f9e2
+renderer	0x117bd4e	jmp    48fa10
+renderer	0x117bd5a	jmp    48fa39
+renderer	0x117bd66	jmp    48fa67
+renderer	0x117bd72	jmp    48fa90
+renderer	0x117bd7e	jmp    48fabe
+renderer	0x117bd8a	jmp    48fae7
+renderer	0x117bd96	jmp    48fb15
+renderer	0x117bda2	jmp    48fb3e
+renderer	0x117bdae	jmp    48fb6c
+renderer	0x117bdba	jmp    48fb95
+renderer	0x117bdc6	jmp    48fbc3
+renderer	0x117bdd2	jmp    48fbec
+renderer	0x117bdde	jmp    48fc1a
+renderer	0x117bdea	jmp    48fc43
+renderer	0x117bdf6	jmp    48fc71
+renderer	0x117be02	jmp    48fc9a
+renderer	0x117be0e	jmp    48fcc8
+renderer	0x117be1a	jmp    48fcf1
+renderer	0x117be26	jmp    48fd1f
+renderer	0x117be32	jmp    48fd48
+renderer	0x117be3e	jmp    48fd76
+renderer	0x117be4a	jmp    48fd9f
+renderer	0x117be56	jmp    48fdc8
+renderer	0x117be62	jmp    48fdf1
+renderer	0x117be6e	jmp    48fe1a
+renderer	0x117be7a	jmp    48fe43
+renderer	0x117be86	jmp    48fe6c
+renderer	0x117be92	jmp    48fe95
+renderer	0x117be9e	jmp    48febe
+renderer	0x117beaa	jmp    48fee7
+renderer	0x117beb6	jmp    48ff10
+renderer	0x117bec2	jmp    48ff39
+renderer	0x117bece	jmp    48ff62
+renderer	0x117beda	jmp    48ff8b
+renderer	0x117bee6	jmp    48fff3
+renderer	0x117bef2	jmp    49001c
+renderer	0x117befe	jmp    490045
+renderer	0x117bf0a	jmp    49008e
+renderer	0x117bf16	jmp    4900d6
+renderer	0x117bf22	jmp    48ff8b
+renderer	0x117bf2e	jmp    4900fe
+renderer	0x117bf3a	jmp    490127
+renderer	0x117bf46	jmp    490150
+renderer	0x117bf52	jmp    490179
+renderer	0x117bf5e	jmp    4901a2
+renderer	0x117bf6a	jmp    4901cb
+renderer	0x117bf76	jmp    4901f4
+renderer	0x117bf82	jmp    48ffab
+renderer	0x117bf8e	jmp    49021d
+renderer	0x117bf9a	jmp    490245
+renderer	0x117bfa6	jmp    49026e
+renderer	0x117bfb2	jmp    48ff8b
+renderer	0x117bfbe	jmp    490297
+renderer	0x117bfca	jmp    49065c
+renderer	0x117bfd6	jmp    4903cc
+renderer	0x117bfe2	jmp    490300
+renderer	0x117bfee	jmp    490499
+renderer	0x117bffa	jmp    49006e
+renderer	0x117c006	jmp    49006e
+renderer	0x117c012	jmp    4902e0
+renderer	0x117c01e	jmp    4902c0
+renderer	0x117c02a	jmp    490328
+renderer	0x117c036	jmp    490351
+renderer	0x117c042	jmp    49037a
+renderer	0x117c04e	jmp    4903a3
+renderer	0x117c05a	jmp    4903f5
+renderer	0x117c066	jmp    49041e
+renderer	0x117c072	jmp    490447
+renderer	0x117c07e	jmp    490470
+renderer	0x117c08a	jmp    48ff8b
+renderer	0x117c096	jmp    49006e
+renderer	0x117c0a2	jmp    4904c2
+renderer	0x117c0ae	jmp    4906ae
+renderer	0x117c0ba	jmp    49053d
+renderer	0x117c0c6	jmp    4904eb
+renderer	0x117c0d2	jmp    490514
+renderer	0x117c0de	jmp    490566
+renderer	0x117c0ea	jmp    49058f
+renderer	0x117c0f6	jmp    4905b8
+renderer	0x117c102	jmp    4905e1
+renderer	0x117c10e	jmp    490685
+renderer	0x117c11a	jmp    49006e
+renderer	0x117c126	jmp    49060a
+renderer	0x117c132	jmp    490633
+renderer	0x117c13e	jmp    49006e
+renderer	0x117c14a	jmp    4906d6
+renderer	0x117c156	jmp    4906ff
+renderer	0x117c162	jmp    490728
+renderer	0x117c16e	jmp    490751
+renderer	0x117c17a	jmp    49077a
+renderer	0x117c186	jmp    4907a3
+renderer	0x117c192	jmp    4907cc
+renderer	0x117c19e	jmp    4907f5
+renderer	0x117c1aa	jmp    49081e
+renderer	0x117c1b6	jmp    490846
+renderer	0x117c1c2	jmp    48f830
+renderer	0x117c1ce	jmp    49086e
+renderer	0x117c1da	jmp    490896
+renderer	0x117c1e6	jmp    4908be
+renderer	0x117c1f2	jmp    4908e7
+renderer	0x117c1fe	jmp    49090f
+renderer	0x117c20a	jmp    490938
+renderer	0x117c216	jmp    490961
+renderer	0x117c222	jmp    49098a
+renderer	0x117c22e	jmp    4909b3
+renderer	0x117c23a	jmp    4909dc
+renderer	0x117c246	jmp    490a05
+renderer	0x117c252	jmp    490a2e
+renderer	0x117c25e	jmp    490a57
+renderer	0x117c26a	jmp    490a80
+renderer	0x117c276	jmp    490aa9
+renderer	0x117c282	jmp    490ad2
+renderer	0x117c28e	jmp    490afb
+renderer	0x117c29a	jmp    490b24
+renderer	0x117c2a6	jmp    490b4d
+renderer	0x117c2b2	jmp    490b76
+renderer	0x117c2be	jmp    490b9f
+renderer	0x117c2ca	jmp    490bc8
+renderer	0x117c2d6	jmp    490bf1
+renderer	0x117c2e2	jmp    490c1a
+renderer	0x117c2ee	jmp    490c43
+renderer	0x117c2fa	jmp    490c71
+renderer	0x117c306	jmp    490c9a
+renderer	0x117c312	jmp    490cc8
+renderer	0x117c31e	jmp    490cf1
+renderer	0x117c32a	jmp    490d1f
+renderer	0x117c336	jmp    490d48
+renderer	0x117c342	jmp    490d76
+renderer	0x117c34e	jmp    490d9f
+renderer	0x117c35a	jmp    490dcd
+renderer	0x117c366	jmp    490df6
+renderer	0x117c372	jmp    490e24
+renderer	0x117c37e	jmp    490e4d
+renderer	0x117c38a	jmp    490e7b
+renderer	0x117c396	jmp    490ea4
+renderer	0x117c3a2	jmp    490ecd
+renderer	0x117c3ae	jmp    490ef6
+renderer	0x117c3ba	jmp    490f1f
+renderer	0x117c3c6	jmp    490f48
+renderer	0x117c3d2	jmp    490f71
+renderer	0x117c3de	jmp    490f9a
+renderer	0x117c3ea	jmp    490fc3
+renderer	0x117c3f6	jmp    490fec
+renderer	0x117c402	jmp    49101a
+renderer	0x117c40e	jmp    491043
+renderer	0x117c41a	jmp    491071
+renderer	0x117c426	jmp    49109a
+renderer	0x117c432	jmp    4910c8
+renderer	0x117c43e	jmp    4910f1
+renderer	0x117c44a	jmp    49111f
+renderer	0x117c456	jmp    491148
+renderer	0x117c462	jmp    491171
+renderer	0x117c46e	jmp    49119a
+renderer	0x117c47a	jmp    4911c3
+renderer	0x117c486	jmp    4911ec
+renderer	0x117c492	jmp    491215
+renderer	0x117c49e	jmp    49123e
+renderer	0x117c4aa	jmp    491267
+renderer	0x117c4b6	jmp    491295
+renderer	0x117c4c2	jmp    4912be
+renderer	0x117c4ce	jmp    4912e7
+renderer	0x117c4da	jmp    491310
+renderer	0x117c4e6	jmp    491339
+renderer	0x117c4f2	jmp    491367
+renderer	0x117c4fe	jmp    48ff8b
+renderer	0x117c50a	jmp    491390
+renderer	0x117c516	jmp    4913b9
+renderer	0x117c522	jmp    4913e2
+renderer	0x117c52e	jmp    49140b
+renderer	0x117c53a	jmp    491434
+renderer	0x117c546	jmp    49145d
+renderer	0x117c552	jmp    491486
+renderer	0x117c55e	jmp    4914af
+renderer	0x117c56a	jmp    4914d8
+renderer	0x117c576	jmp    48ff8b
+renderer	0x117c582	jmp    491501
+renderer	0x117c58e	jmp    49152a
+renderer	0x117c59a	jmp    491553
+renderer	0x117c5a6	jmp    49157c
+renderer	0x117c5b2	jmp    48ff8b
+renderer	0x117c5be	jmp    4917e3
+renderer	0x117c5ca	jmp    491a1b
+renderer	0x117c5d6	jmp    48ff8b
+renderer	0x117c5e2	jmp    4915a5
+renderer	0x117c5ee	jmp    4915ce
+renderer	0x117c5fa	jmp    4915f7
+renderer	0x117c606	jmp    491620
+renderer	0x117c612	jmp    491649
+renderer	0x117c61e	jmp    491672
+renderer	0x117c62a	jmp    49169b
+renderer	0x117c636	jmp    4916c4
+renderer	0x117c642	jmp    4916ed
+renderer	0x117c64e	jmp    491716
+renderer	0x117c65a	jmp    49173f
+renderer	0x117c666	jmp    491768
+renderer	0x117c672	jmp    491791
+renderer	0x117c67e	jmp    4917ba
+renderer	0x117c68a	jmp    491811
+renderer	0x117c696	jmp    49006e
+renderer	0x117c6a2	jmp    49183a
+renderer	0x117c6ae	jmp    49006e
+renderer	0x117c6ba	jmp    491868
+renderer	0x117c6c6	jmp    49006e
+renderer	0x117c6d2	jmp    491896
+renderer	0x117c6de	jmp    4918c4
+renderer	0x117c6ea	jmp    4918f2
+renderer	0x117c6f6	jmp    491920
+renderer	0x117c702	jmp    491949
+renderer	0x117c70e	jmp    491972
+renderer	0x117c71a	jmp    49199b
+renderer	0x117c726	jmp    4919c9
+renderer	0x117c732	jmp    4919f2
+renderer	0x117c73e	jmp    491a44
+renderer	0x117c74a	jmp    491a6d
+renderer	0x117c756	jmp    491a96
+renderer	0x117c762	jmp    491abf
+renderer	0x117c76e	jmp    491ae8
+renderer	0x117c77a	jmp    491b11
+renderer	0x117c786	jmp    491b3a
+renderer	0x117c792	jmp    491b63
+renderer	0x117c79e	jmp    491b8c
+renderer	0x117c7aa	jmp    491bb5
+renderer	0x117c7b6	jmp    491bde
+renderer	0x117c7c2	jmp    491c07
+renderer	0x117c7ce	jmp    491c35
+renderer	0x117c7da	jmp    491c5e
+renderer	0x117c7e6	jmp    491c8c
+renderer	0x117c7f2	jmp    491cb5
+renderer	0x117c7fe	jmp    491ce3
+renderer	0x117c80a	jmp    491d0c
+renderer	0x117c816	jmp    491d35
+renderer	0x117c822	jmp    491d5e
+renderer	0x117c82e	jmp    491d87
+renderer	0x117c83a	jmp    491db0
+renderer	0x117c846	jmp    491dd9
+renderer	0x117c852	jmp    491e07
+renderer	0x117c85e	jmp    491e35
+renderer	0x117c86a	jmp    491e5e
+renderer	0x117c876	jmp    491e8c
+renderer	0x117c882	jmp    491eb5
+renderer	0x117c88e	jmp    491ee3
+renderer	0x117c89a	jmp    491f0c
+renderer	0x117c8a6	jmp    491f3a
+renderer	0x117c8b2	jmp    491f63
+renderer	0x117c8be	jmp    491f8c
+renderer	0x117c8ca	jmp    491fb5
+renderer	0x117c8d6	jmp    491fe3
+renderer	0x117c8e2	jmp    492011
+renderer	0x117c8ee	jmp    49203f
+renderer	0x117c8fa	jmp    492068
+renderer	0x117c906	jmp    492091
+renderer	0x117c912	jmp    4920bf
+renderer	0x117c91e	jmp    4920ed
+renderer	0x117c92a	jmp    49211b
+renderer	0x117c936	jmp    492149
+renderer	0x117c942	jmp    492177
+renderer	0x117c94e	jmp    4921a5
+renderer	0x117c95a	jmp    4921d3
+renderer	0x117c966	jmp    492201
+renderer	0x117c972	jmp    49222f
+renderer	0x117c97e	jmp    49225d
+renderer	0x117c98a	jmp    49228b
+renderer	0x117c996	jmp    4922b9
+renderer	0x117c9a2	jmp    4922e7
+renderer	0x117c9ae	jmp    492315
+renderer	0x117c9ba	jmp    492343
+renderer	0x117c9c6	jmp    492371
+renderer	0x117c9d2	jmp    49239f
+renderer	0x117c9de	jmp    4923cd
+renderer	0x117c9ea	jmp    4923fb
+renderer	0x117c9f6	jmp    492429
+renderer	0x117ca02	jmp    492457
+renderer	0x117ca0e	jmp    492485
+renderer	0x117ca1a	jmp    4924b3
+renderer	0x117ca26	jmp    4924e1
+renderer	0x117ca32	jmp    49250f
+renderer	0x117ca3e	jmp    49253d

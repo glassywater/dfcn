@@ -49084,6 +49084,7 @@ Choose a poetic form for the composition.	为这次创作选择一种诗歌形�
 Choose a uniform for the selected squads.	为所选小队选择一套制式服装。	hP
 Click an existing stockpile to select it.	点击已有储物堆以选中它。	hP
 Click in the play area to paint the zone.	在游戏区域中点击，涂画区域。	hP
+Conversation keyword: ask for whereabouts	询问下落	l
 Conversation keyword: change subject back	更换 话题 回去	l
 Conversation keyword: crime of kidnapping	绑架罪	l
 Conversation keyword: duty advice service	职责 建议 效力	l
@@ -50898,6 +50899,7 @@ Charge attack: move toward your opponent	冲锋攻击：朝对手移动。	hP
 Climb to {s} ({s} holding {s}/Air/Magma)	攀向{s1}（{s2}，抓着{s3}／空气／岩浆）	hPt
 Climb to {s} ({s} holding {s}/Air/Water)	攀向{s1}（{s2}，抓着{s3}／空气／水）	hPt
 Come see me at the trade depot sometime.	有空到贸易站来找我。	hP
+Conversation keyword: ask for directions	询问路线	l
 Conversation keyword: crime of espionage	间谍罪	l
 Conversation keyword: demand item object	要求 物品 物件	l
 Conversation keyword: disorderly conduct	扰乱秩序	l
@@ -60929,6 +60931,7 @@ Are you stalking a dangerous beast?	你在追踪危险的野兽吗？	hP
 Argue the worthlessness of commerce	争辩商业毫无价值	hP
 Argue the worthlessness of fairness	争辩公道毫无价值	hP
 Argue the worthlessness of stoicism	争辩克制情感毫无价值	hP
+Ask for the whereabouts of yourself	询问你自己的下落	hP
 Ask listener to join you (new menu)	邀请对方加入你（新菜单）	hP
 Ask listener why they are traveling	询问对方为何旅行	hP
 At least it doesn't rain down here.	至少这下面不会下雨。	hP
@@ -63824,7 +63827,7 @@ Tell me about the brewing trouble.	跟我说说正在酝酿的麻烦。	hP
 Tell me about the skulking vermin.	跟我说说潜伏的害兽。	hP
 Tell me about this counting house.	跟我说说这间账房。	hP
 Tell me who you work for, or else.	说出你为谁效力，否则后果自负。	hP
-Tell the listener that {p} is dead	告诉对方{p1}已经去世	hPt
+Tell the listener that {n} is dead	告诉对方{n1}已经去世	hPt
 The Abduction at {p} in the wilds.	在荒野中，{p1}的绑架事件。	htEi
 The Abduction in {p} in the wilds.	在荒野中，{p1}的绑架事件。	htEi
 The Abduction of {n} at {p} at {p}	在{p2}，{p1}绑架{n1}的事件	htEi
@@ -65594,6 +65597,7 @@ Conversation keyword: prohibition	禁令	l
 Conversation keyword: return back	返回 回去	l
 Conversation keyword: tranquility	宁静	l
 Conversation keyword: unhappiness	不快	l
+Conversation keyword: whereabouts	下落	l
 Converting to gathering blueprint	将采集指定区域转为蓝图	wo
 Converting to smoothing blueprint	将打磨指定区域转为蓝图	wo
 Convict a suspect for this crime.	将嫌疑人判定为此案的罪犯。	hj
@@ -67734,9 +67738,11 @@ Conversation keyword: alienation	疏离感	l
 Conversation keyword: ambivalent	没什么特别的感觉	l
 Conversation keyword: astonished	惊异	l
 Conversation keyword: bitterness	苦涩	l
+Conversation keyword: completely	完全	l
 Conversation keyword: conflicted	内心矛盾	l
 Conversation keyword: conspiracy	合谋	l
 Conversation keyword: directions	问路	l
+Conversation keyword: disapprove	不赞同	l
 Conversation keyword: disorderly	扰乱	l
 Conversation keyword: enthusiasm	热情	l
 Conversation keyword: excitement	兴奋	l
@@ -67748,6 +67754,7 @@ Conversation keyword: inevitable	不可避免	l
 Conversation keyword: irritation	恼怒	l
 Conversation keyword: jubilation	欢腾	l
 Conversation keyword: kidnapping	绑架	l
+Conversation keyword: listener s	对方的	l
 Conversation keyword: loneliness	孤独	l
 Conversation keyword: occupation	占领	l
 Conversation keyword: opposition	反抗	l
@@ -67769,6 +67776,7 @@ Conversation keyword: succession	继位	l
 Conversation keyword: tenderness	温柔	l
 Conversation keyword: terrifying	骇人	l
 Conversation keyword: uneasiness	不安	l
+Conversation keyword: unexpected	意外	l
 Conversation keyword: withdrawal	撤军	l
 Conversation mood: Disillusioned	幻灭	l
 Conversation relationship: Loyal	忠诚	l
@@ -69983,6 +69991,7 @@ Conversation keyword: fantastic	好极了	l
 Conversation keyword: gratitude	感激	l
 Conversation keyword: happiness	快乐	l
 Conversation keyword: hard work	勤勉	l
+Conversation keyword: ignorance	不知情	l
 Conversation keyword: improving	提高	l
 Conversation keyword: isolation	孤立	l
 Conversation keyword: jolliness	开心	l
@@ -69999,6 +70008,7 @@ Conversation keyword: performer	表演者	l
 Conversation keyword: pessimism	悲观	l
 Conversation keyword: preaching	布道	l
 Conversation keyword: protected	保护	l
+Conversation keyword: recommend	推荐	l
 Conversation keyword: rejection	被拒绝感	l
 Conversation keyword: relations	关系	l
 Conversation keyword: righteous	正义	l
@@ -72218,7 +72228,7 @@ Argue the worthlessness of law	争辩法律毫无价值	hP
 Ask about the missing treasure	询问失踪宝物	hP
 Ask about the surrounding area	询问周边地区	hP
 Ask for a cease to hostilities	请求停止敌对行动	hP
-Ask for the whereabouts of {p}	询问{p1}的下落	hPt
+Ask for the whereabouts of {n}	询问{n1}的下落	hPt
 Automatically weave all thread	自动纺织所有线	wi
 Autosave the game after embark	启程后自动保存游戏	w
 Bed rejected (already in use.)	床未被选用（已被占用）	hP
@@ -72394,6 +72404,7 @@ Conversation demeanor: Patient	有耐心	l
 Conversation keyword: a thrill	激动	l
 Conversation keyword: ancestor	祖先	l
 Conversation keyword: announce	宣布	l
+Conversation keyword: anything	任何事	l
 Conversation keyword: argument	争论	l
 Conversation keyword: artifact	造物	l
 Conversation keyword: aversion	厌恶	l
@@ -72427,6 +72438,7 @@ Conversation keyword: incident	事件	l
 Conversation keyword: interest	兴趣	l
 Conversation keyword: intruder	入侵者	l
 Conversation keyword: invasion	入侵	l
+Conversation keyword: listener	对方	l
 Conversation keyword: loathing	憎恶	l
 Conversation keyword: location	位置	l
 Conversation keyword: occupied	无暇	l
@@ -72462,6 +72474,7 @@ Conversation keyword: unneeded	不需要	l
 Conversation keyword: verbally	口头	l
 Conversation keyword: vigilant	警惕	l
 Conversation keyword: withdraw	撤离	l
+Conversation keyword: yourself	你自己	l
 Conversation mood: Displeasure	不满	l
 Conversation mood: Embarrassed	尴尬	l
 Conversation mood: Exasperated	懊恼	l
@@ -72970,7 +72983,7 @@ Poetry Competition during {e}.	在{e1}期间，诗歌比赛。	htEi
 Poetry Competition within {p}.	在{p1}，诗歌比赛。	htEi
 Poetry Recital of in the wilds	在荒野中，诗歌朗诵	hEi
 Prepare for the Journey to {s}	准备前往{s}	tx
-Provide the whereabouts of {p}	告知{p1}的下落	hPt
+Provide the whereabouts of {n}	告知{n1}的下落	hPt
 Rainfall And Rivers And Beyond	降雨与河流及更远之处	wli
 Rampage in in {p} in the wilds	在荒野中，{p1}的肆虐事件	htEi
 Refuse request to become a {s}	拒绝成为{s1}的请求	hPt
@@ -74886,6 +74899,7 @@ Conversation keyword: conduct	行为	l
 Conversation keyword: confirm	确认	l
 Conversation keyword: crushed	被镇压	l
 Conversation keyword: cunning	谋略	l
+Conversation keyword: current	当前	l
 Conversation keyword: decline	谢绝	l
 Conversation keyword: decorum	礼仪	l
 Conversation keyword: delight	欣喜	l
@@ -74897,6 +74911,7 @@ Conversation keyword: doctors	医生	l
 Conversation keyword: elation	狂喜	l
 Conversation keyword: emotion	情绪	l
 Conversation keyword: empathy	同理心	l
+Conversation keyword: enjoyed	喜欢	l
 Conversation keyword: explain	说明	l
 Conversation keyword: express	表达	l
 Conversation keyword: failure	失败	l
@@ -74910,6 +74925,7 @@ Conversation keyword: journey	旅程	l
 Conversation keyword: leisure	闲暇	l
 Conversation keyword: loyalty	忠诚	l
 Conversation keyword: martial	武力	l
+Conversation keyword: matters	事情	l
 Conversation keyword: monster	怪物	l
 Conversation keyword: nothing	无事	l
 Conversation keyword: nuances	细微差别	l
@@ -74919,6 +74935,9 @@ Conversation keyword: outrage	愤慨	l
 Conversation keyword: passion	热血沸腾	l
 Conversation keyword: passive	消极	l
 Conversation keyword: pending	待办	l
+Conversation keyword: problem	问题	l
+Conversation keyword: profess	表示	l
+Conversation keyword: provide	告知	l
 Conversation keyword: prowess	本领	l
 Conversation keyword: rapture	陶醉	l
 Conversation keyword: raunchy	粗俗	l
@@ -74926,8 +74945,10 @@ Conversation keyword: reclaim	收复	l
 Conversation keyword: refusal	拒绝	l
 Conversation keyword: remorse	懊悔	l
 Conversation keyword: request	请求	l
+Conversation keyword: rescued	获救	l
 Conversation keyword: respond	回应	l
 Conversation keyword: reunion	团聚	l
+Conversation keyword: riddles	谜语	l
 Conversation keyword: robbery	抢劫	l
 Conversation keyword: romance	爱情	l
 Conversation keyword: ruffian	暴徒	l
@@ -74937,14 +74958,17 @@ Conversation keyword: scribes	抄写员	l
 Conversation keyword: service	服务	l
 Conversation keyword: servile	卑躬屈膝	l
 Conversation keyword: soldier	士兵	l
+Conversation keyword: stopped	制止	l
 Conversation keyword: subject	话题	l
 Conversation keyword: suggest	建议	l
 Conversation keyword: surgeon	外科医师	l
+Conversation keyword: they ve	他们已经	l
 Conversation keyword: treason	叛国	l
 Conversation keyword: tribute	进贡	l
 Conversation keyword: triumph	得意	l
 Conversation keyword: trouble	烦恼	l
 Conversation keyword: village	村庄	l
+Conversation keyword: violent	暴力	l
 Conversation keyword: weather	天气	l
 Conversation keyword: welcome	欢迎	l
 Conversation keyword: writing	著作	l
@@ -77199,6 +77223,7 @@ Conversation keyword: follow	跟随	l
 Conversation keyword: forces	部队	l
 Conversation keyword: fright	惊恐	l
 Conversation keyword: gaiety	欢快	l
+Conversation keyword: goblin	地精	l
 Conversation keyword: groups	势力	l
 Conversation keyword: grovel	卑躬屈膝	l
 Conversation keyword: guards	卫兵	l
@@ -79496,6 +79521,7 @@ Conversation keyword: crime	犯罪	l
 Conversation keyword: dance	舞蹈	l
 Conversation keyword: death	死亡	l
 Conversation keyword: debts	债务	l
+Conversation keyword: don t	不	l
 Conversation keyword: doubt	怀疑	l
 Conversation keyword: drink	饮用	l
 Conversation keyword: drive	驱逐	l
@@ -79518,6 +79544,7 @@ Conversation keyword: guard	卫兵	l
 Conversation keyword: guide	向导	l
 Conversation keyword: guilt	内疚	l
 Conversation keyword: hello	你好	l
+Conversation keyword: human	人类	l
 Conversation keyword: humor	幽默	l
 Conversation keyword: labor	劳作	l
 Conversation keyword: later	稍后	l
@@ -79556,6 +79583,8 @@ Conversation keyword: sorry	抱歉	l
 Conversation keyword: state	阐述	l
 Conversation keyword: thank	致谢	l
 Conversation keyword: theft	盗窃	l
+Conversation keyword: topic	话题	l
+Conversation keyword: total	完全	l
 Conversation keyword: trade	交易	l
 Conversation keyword: truth	诚实	l
 Conversation keyword: value	价值	l
@@ -79989,6 +80018,7 @@ Related Underground Regions	相关地下区域	h
 Religion with ruined temple	宗教（神殿已毁）	wl
 Remove hidden designations.	移除隐藏标记。	hj
 Removing fluids and spatter	正在移除流体和飞溅物	wo
+Request a guide to yourself	请求向导带你找到你自己	hP
 Requests (Imports from {e})	商品需求（从{e1}进口）	hPt
 Room completed ({d} of {d})	房间已挖掘（{d1}/{d2}）	hqtO
 Room completed ({d} of {d})	房间建设完成 ({d} of {d})	wt
@@ -81649,6 +81679,7 @@ Argue the value of loyalty	争辩忠诚的价值	hP
 Argue the value of romance	争辩爱情的价值	hP
 Art form: unspecified mood	风格未注明	l
 Ask about the law-breaking	询问违法行为	hP
+Ask for the whereabouts of	询问下落（对象不明）	hP
 Ask listener to follow you	请对方跟随你	hP
 Attempted {e} in the wilds	在荒野中，未遂的{e1}	htEi
 Automatically collect webs	自动收集网	wi
@@ -81806,6 +81837,7 @@ Conversation keyword: boss	上司	l
 Conversation keyword: both	双方	l
 Conversation keyword: brag	吹嘘	l
 Conversation keyword: calm	冷静	l
+Conversation keyword: care	在意	l
 Conversation keyword: come	过来	l
 Conversation keyword: dead	已死	l
 Conversation keyword: deal	成交	l
@@ -81818,6 +81850,7 @@ Conversation keyword: fear	恐惧	l
 Conversation keyword: fled	已逃离	l
 Conversation keyword: flee	逃离	l
 Conversation keyword: free	免费	l
+Conversation keyword: from	从	l
 Conversation keyword: give	赠送	l
 Conversation keyword: glee	欢喜	l
 Conversation keyword: good	不错	l
@@ -81834,13 +81867,17 @@ Conversation keyword: join	加入	l
 Conversation keyword: joke	笑话	l
 Conversation keyword: kick	驱逐	l
 Conversation keyword: kill	杀死	l
+Conversation keyword: kind	种类	l
+Conversation keyword: know	知道	l
 Conversation keyword: lair	巢穴	l
 Conversation keyword: land	领地	l
 Conversation keyword: life	生活	l
 Conversation keyword: list	列出	l
 Conversation keyword: love	爱意	l
 Conversation keyword: lust	欲望	l
+Conversation keyword: menu	菜单	l
 Conversation keyword: mock	讥讽	l
+Conversation keyword: must	必须	l
 Conversation keyword: name	名字	l
 Conversation keyword: okay	还可以	l
 Conversation keyword: pike	长枪术	l
@@ -81866,11 +81903,15 @@ Conversation keyword: take	拿取	l
 Conversation keyword: talk	交谈	l
 Conversation keyword: task	任务	l
 Conversation keyword: tell	讲述	l
+Conversation keyword: that	这	l
+Conversation keyword: they	他们	l
+Conversation keyword: this	这	l
 Conversation keyword: town	城镇	l
 Conversation keyword: true	真正的	l
 Conversation keyword: upon	之后	l
 Conversation keyword: wait	等待	l
 Conversation keyword: what	什么	l
+Conversation keyword: with	用	l
 Conversation keyword: work	工作	l
 Conversation keyword: your	你的	l
 Conversation keyword: zeal	热忱	l
@@ -83952,28 +83993,40 @@ Competition of within {p}	在{p1}，比赛	htEi
 Construction nearly done.	建造即将完成。	wli
 Conversation keyword: age	年龄	l
 Conversation keyword: aid	援助	l
+Conversation keyword: all	全部	l
+Conversation keyword: and	和	l
+Conversation keyword: are	是	l
 Conversation keyword: art	艺术	l
+Conversation keyword: ask	询问	l
 Conversation keyword: awe	敬畏	l
 Conversation keyword: bad	不好	l
 Conversation keyword: bow	行礼	l
+Conversation keyword: but	但	l
 Conversation keyword: buy	买入	l
 Conversation keyword: bye	告别	l
 Conversation keyword: die	死亡	l
+Conversation keyword: elf	精灵	l
 Conversation keyword: end	结束	l
+Conversation keyword: for	为	l
+Conversation keyword: had	有过	l
 Conversation keyword: job	职务	l
 Conversation keyword: joy	喜悦	l
 Conversation keyword: law	法律	l
 Conversation keyword: lie	说谎	l
 Conversation keyword: map	地图	l
 Conversation keyword: new	新的	l
+Conversation keyword: not	不	l
 Conversation keyword: out	出去	l
 Conversation keyword: pet	宠物	l
 Conversation keyword: rob	抢夺	l
 Conversation keyword: sad	难过	l
 Conversation keyword: say	说	l
+Conversation keyword: the	该	l
 Conversation keyword: war	战争	l
+Conversation keyword: was	曾是	l
 Conversation keyword: who	谁	l
 Conversation keyword: yes	是	l
+Conversation keyword: you	你	l
 Conversation mood: Afraid	害怕	l
 Conversation mood: Amazed	惊奇	l
 Conversation mood: Amused	愉快	l
@@ -85862,8 +85915,17 @@ Closing Ceremony in {p}.	在{p1}，闭幕仪式。	htEi
 Competition in the wilds	在荒野中，比赛	hEi
 Confirm and save uniform	确认并保存制式服装	w
 Conflicts with Dwarvemon	与 Dwarvemon 冲突
+Conversation keyword: an	一个	l
+Conversation keyword: as	作为	l
+Conversation keyword: be	被	l
+Conversation keyword: by	通过	l
+Conversation keyword: in	在	l
+Conversation keyword: is	是	l
+Conversation keyword: it	此事	l
 Conversation keyword: me	我	l
 Conversation keyword: no	否	l
+Conversation keyword: of	的	l
+Conversation keyword: to	向	l
 Conversation mood: Angry	愤怒	l
 Conversation mood: Bored	无聊	l
 Conversation mood: Doubt	怀疑	l
@@ -86263,6 +86325,7 @@ Rampage in in {p} in {d}	{d1}年的{p1}的肆虐事件	htEi
 Rampage in in {p} in {p}	在{p2}，{p1}的肆虐事件	htEi
 Rampage of {n} in in {p}	{n1}在{p1}的肆虐事件	htEi
 Recenter on this burrow.	将视图重新居中到此活动区。	hj
+Recommend {n} as a guide	推荐{n1}担任向导	hPt
 Refuse the interrogation	拒绝接受审问	hP
 Regular mining blueprint	常规挖掘蓝图	wo
 Rethink your priorities.	重新考虑事情的轻重缓急。	hP
@@ -87918,6 +87981,7 @@ Conquest of {p} in {p}.	在{p2}，征服「{p1}」。	htEi
 Construction initiated.	建造已开始。	wli
 Construction suspended.	建造暂停。	wli
 Conversation (Conflict)	对话（冲突）	w
+Conversation keyword: a	一个	l
 Conversation mood: Free	自由自在	l
 Conversation mood: Glum	忧郁	l
 Copper-bearing boulders	含铜矿石	wi
@@ -90385,6 +90449,7 @@ Release small creature	释放小型生物	wi
 Remove this condition.	移除此条件。	hj
 Reorganize possessions	整理随身物品	w
 Request a guide to {e}	请求向导带路前往{e1}	hPt
+Request a guide to {n}	请求向导带你找到{n1}	hPt
 Rethink your approach.	重新考虑你的方法。	hP
 Revealing hidden items	显示隐藏物品	wo
 Running around crazed!	发疯般四处奔跑！	hP
@@ -101002,6 +101067,7 @@ Related Structures	相关建筑	h
 Removal suspended.	拆除暂停。	wli
 Remove this route.	移除此路线。	hj
 Repaint this zone.	重新涂画此区域。	hj
+Request a guide to	请求向导带路（目的地不明）	hP
 SAVAGERY REJECTION	野性不符合要求	hP
 Salt water [{d}/7]	咸水 [{d}/7]	wtl
 Savagery Mesh Size	野蛮度网格尺寸
@@ -123490,7 +123556,6 @@ Put in chains	戴上锁链	wi
 Quick to love	容易动情	w
 Rear Compound	后置复合词	w
 Recite a poem	朗诵诗歌	hP
-Recommend {p}	推荐{p1}	hPt
 Record Keeper	记录员	wi
 Regular beast	野兽来袭	w
 Related Sites	相关地点	h

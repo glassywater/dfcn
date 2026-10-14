@@ -747,6 +747,40 @@ std::optional<std::string> Overlay::translate_conversation_keywords(
                 std::vector<std::string> components;
                 for (std::string component; input >> component;)
                     components.push_back(std::move(component));
+                // ELF a10320 / 1c428e0 put a complete creature/identity in
+                // these chooser fields. Its given name is still a person
+                // even when the keyword vector interleaves its native and
+                // English surnames (e.g. `the goblin Song Clashhate`).
+                // Resolve the complete role before assigning that boundary;
+                // the article and caste cannot become personal-name words.
+                size_t given_component = kind == 'p' ? 0 : components.size();
+                if (kind == 'n' && !components.empty()) {
+                    const size_t role_begin = components.front() == "the" ||
+                        components.front() == "The" || components.front() == "a" ||
+                        components.front() == "an" ? 1 : 0;
+                    if (role_begin == 0 &&
+                            native_name_language_masks_.contains(lower_native_name(components.front())))
+                        given_component = 0;
+                    for (size_t end = components.size(); end-- > role_begin + 1;) {
+                        std::string role, name;
+                        for (size_t part = role_begin; part < end; ++part) {
+                            if (!role.empty()) role.push_back(' ');
+                            role += components[part];
+                        }
+                        for (size_t part = end; part < components.size(); ++part) {
+                            if (!name.empty()) name.push_back(' ');
+                            name += components[part];
+                        }
+                        if (!generated_title_shape(name)) continue;
+                        auto translated_role = translate_unit_profession(role, false);
+                        if (!complete_target(translated_role))
+                            translated_role = translate_creature_descriptor(role, true);
+                        if (complete_target(translated_role)) {
+                            given_component = end;
+                            break;
+                        }
+                    }
+                }
                 uint8_t native_languages = 0xff;
                 for (const auto &component : components) {
                     const std::string folded = lower_native_name(component);
@@ -775,11 +809,11 @@ std::optional<std::string> Overlay::translate_conversation_keywords(
                         })) continue;
                     const std::string component_key =
                         std::string(1, native_field ? 'N' :
-                            (kind == 'p' && component_index == 0 ? 'p' : 'e')) + component;
+                            (component_index == given_component ? 'p' : 'e')) + component;
                     auto [part, fresh] = caption_slots.try_emplace(component_key);
                     if (fresh) part->second = native_field
                         ? translate_procedural_fragment(component, true)
-                        : translate_legends_name(component, kind == 'p' && component_index == 0);
+                        : translate_legends_name(component, component_index == given_component);
                     add_caption_name(component, part->second, false);
                 }
             }

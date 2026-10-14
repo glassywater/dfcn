@@ -2227,7 +2227,7 @@ Acknowledge lack of repentance	表示没有忏悔
 Acknowledge lack of relief	表示没有如释重负
 Acknowledge lack of regret	表示没有后悔
 Claim this site for yourself and {e}	宣布此地归你和{e}所有
-Ask for the whereabouts of {p}	询问{p}的下落
+Ask for the whereabouts of {n}	询问{n}的下落
 Summarize the hold of {e} on its territory	概述{e}对其领土的控制
 Go into {e}'s relationship with {e}	详谈{e1}与{e2}的关系
 Give an order based on {q}	根据{q}下达命令
@@ -2304,11 +2304,11 @@ Charge to serve {e}	责令为{e}效力
 Lay quest to retrieve {i}	下达寻回{i}的任务
 Praise for returning {i}	称赞归还{i}之举
 Express astonishment at seeing {p}	对见到{p}表示惊讶
-Tell the listener that {p} is dead	告诉对方{p}已经去世
-Recommend {p}	推荐{p}
+Tell the listener that {n} is dead	告诉对方{n}已经去世
+Recommend {n} as a guide	推荐{n}担任向导
 Tell listener about {q}	向对方讲述{q}
 Provide directions to {e}	指明前往{e}的路线
-Provide the whereabouts of {p}	告知{p}的下落
+Provide the whereabouts of {n}	告知{n}的下落
 Provide the location of {e}	告知{e}的位置
 Give your opinion of {p}	说说你对{p}的看法
 
@@ -3164,3 +3164,10 @@ Give	赠送
 Demand	索要
 Trade	贸易
 Show	显示
+
+# Native ELF talk-choice 77..85: complete person descriptions, not bare names.
+Request a guide to {n}	请求向导带你找到{n}
+Ask for the whereabouts of yourself	询问你自己的下落
+Request a guide to yourself	请求向导带你找到你自己
+Ask for the whereabouts of	询问下落（对象不明）
+Request a guide to	请求向导带路（目的地不明）
