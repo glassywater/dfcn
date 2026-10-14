@@ -79,6 +79,7 @@ namespace dfcn {
 
 static std::vector<NativeHistoryDraw> captured_native_history_draws();
 static std::vector<NativeHistoryUnboundDraw> captured_native_history_unbound_draws();
+static std::optional<NativeActivityDetailDocument> native_activity_detail_document();
 static uintptr_t native_history_profile_base();
 static uintptr_t native_reference_va(uintptr_t address);
 static uintptr_t native_reference_address(uintptr_t base, uintptr_t offset);
@@ -5335,6 +5336,11 @@ private:
         std::string_view description) const;
     std::optional<std::string> translate_written_work_paragraph(
         std::string_view paragraph) const;
+    std::optional<std::string> translate_activity_detail_paragraph(
+        std::string_view paragraph, bool heading = false) const;
+    void append_activity_detail_matches(std::vector<std::string> &rows,
+        std::vector<Match> &matches, std::vector<Match> &untranslated,
+        int only_y, const unsigned char *screen_override) const;
     std::optional<std::string> translate_dance_form_paragraph(
         std::string_view paragraph) const;
     TranslationResult translate_dance_form_paragraph_result(
@@ -15479,6 +15485,7 @@ static std::string normalize_art_utterance(std::string_view source);
 #include "symbol_picker_descriptions.inc"
 #include "item_descriptions.inc"
 #include "health_description.inc"
+#include "activity_detail.inc"
 template <typename Cache>
 static TranslationResult cache_native_display_translation(Cache &cache, size_t &bytes,
     const std::string &key, const std::vector<int> &source_colors,
@@ -17631,6 +17638,8 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     if (gps_->display_background == -1 &&
         is_transient_startup_loading_grid(screen_rows)) return result;
     std::vector<Match> untranslated_help_rows;
+    append_activity_detail_matches(screen_rows, result, untranslated_help_rows,
+        only_y, screen_override);
     // This renderer owns RAW directory/recipe fields and their descriptions
     // before item, name and generic action readers see any of their bytes.
     const auto crafting_panels = append_adventure_crafting_matches(

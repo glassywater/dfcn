@@ -274,6 +274,17 @@ struct NativeHistoryToken {
     int32_t link_type = -1, link_id = -1, link_subid = -1;
 };
 
+// The activity popup uses a markup_text_boxst, with complete retained word
+// objects and native blank-line controls. It is independent of history events.
+struct NativeActivityDetailParagraph {
+    std::string source;
+    std::vector<NativeHistoryToken> tokens;
+};
+struct NativeActivityDetailDocument {
+    int width = 0;
+    std::vector<NativeActivityDetailParagraph> paragraphs;
+};
+
 #include "native_history_page_data.h"
 
 struct WorldgenHistoryEventMemory;

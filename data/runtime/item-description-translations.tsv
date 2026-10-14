@@ -17,6 +17,8 @@
 # Whole descriptions and quantity wrappers.
 sentence	This is {s}.	这是{s1}。
 sentence	These are {s}.	这些是{s1}。
+term	{i}-bound codex	{i1}书壳装订的抄本
+term	{i}-bound codices	{i1}书壳装订的抄本
 sentence	It is {s}.	它是{s1}。
 sentence	It {e}.	它{e1}。
 sentence	This object {e}.	这件物品{e1}。

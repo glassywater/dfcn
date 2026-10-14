@@ -1,0 +1,5 @@
+0x8161a0: endbr64
+0x8161a4: mov    rax,QWORD PTR [rsi]
+0x8161a7: mov    QWORD PTR [rsi+0x8],0x0
+0x8161af: mov    BYTE PTR [rax],0x0
+0x8161b2: ret

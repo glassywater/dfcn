@@ -499,6 +499,8 @@ This item is difficult to look at.	这件物品令人难以直视。	clause
 This item whistles quietly.	这件物品发出轻微的呼啸声。	clause
 This item seems to spin in place.	这件物品似乎在原地旋转。	clause
 The pages are blank.	书页是空白的。	clause
+It has no writing.	上面没有文字。	clause
+It has no pages.	没有书页。	clause
 You have not read this book.	你还没有读过这本书。	clause
 There used to be writing on the item.	这件物品上曾有文字。	clause
 The handle is made from {s}.	握柄由{s}制成。	clause
@@ -512,12 +514,32 @@ The written portion consists of a {d} page {s} entitled {b}.	文字部分为{s}�
 The written portion consists of a {d} page untitled {s}, authored by {n}.	文字部分为{n}撰写的无题{s}，共{d}页。	clause
 The written portion consists of a {d} page untitled {s}.	文字部分为无题{s}，共{d}页。	clause
 The written portion consists of nothing.	没有任何文字内容。	clause
+# Linux e71100/e70c20 preserve empty genre and empty author-name branches.
+# An absent author omits the prefix; a present unnamed author emits "by .".
+# An unknown genre leaves the native space before the comma or full stop.
+The written portion consists of a {d} page {s} entitled {b}, authored by .	文字部分为{s}《{b}》，作者未署名，共{d}页。	clause
+The written portion consists of a {d} page untitled {s}, authored by .	文字部分为无题{s}，作者未署名，共{d}页。	clause
+The written portion consists of a {d} page entitled {b}, authored by {n}.	文字部分为{n}撰写的《{b}》，作品类型未注明，共{d}页。	clause
+The written portion consists of a {d} page entitled {b}, authored by .	文字部分为《{b}》，作品类型及作者姓名未注明，共{d}页。	clause
+The written portion consists of a {d} page entitled {b}.	文字部分为《{b}》，作品类型未注明，共{d}页。	clause
+The written portion consists of a {d} page untitled , authored by {n}.	文字部分为{n}撰写的无题作品，类型未注明，共{d}页。	clause
+The written portion consists of a {d} page untitled , authored by .	文字部分为无题作品，类型及作者姓名未注明，共{d}页。	clause
+The written portion consists of a {d} page untitled .	文字部分为无题作品，类型未注明，共{d}页。	clause
 Written on the item is a {s} entitled {b}, authored by {n}.	物品上写有{n}撰写的{s}《{b}》。	clause
 Written on the item is an {s} entitled {b}, authored by {n}.	物品上写有{n}撰写的{s}《{b}》。	clause
 Written on the item is a {s} entitled {b}.	物品上写有{s}《{b}》。	clause
 Written on the item is an {s} entitled {b}.	物品上写有{s}《{b}》。	clause
 Written on the item is an untitled {s}, authored by {n}.	物品上写有{n}撰写的无题{s}。	clause
 Written on the item is an untitled {s}.	物品上写有无题{s}。	clause
+Written on the item is a {s} entitled {b}, authored by .	物品上写有{s}《{b}》，作者未署名。	clause
+Written on the item is an {s} entitled {b}, authored by .	物品上写有{s}《{b}》，作者未署名。	clause
+Written on the item is an untitled {s}, authored by .	物品上写有无题{s}，作者未署名。	clause
+Written on the item is a entitled {b}, authored by {n}.	物品上写有{n}撰写的《{b}》，作品类型未注明。	clause
+Written on the item is a entitled {b}, authored by .	物品上写有《{b}》，作品类型及作者姓名未注明。	clause
+Written on the item is a entitled {b}.	物品上写有《{b}》，作品类型未注明。	clause
+Written on the item is an untitled , authored by {n}.	物品上写有{n}撰写的无题作品，类型未注明。	clause
+Written on the item is an untitled , authored by .	物品上写有无题作品，类型及作者姓名未注明。	clause
+Written on the item is an untitled .	物品上写有无题作品，类型未注明。	clause
 # The scroll writer can print the work genre without an indefinite article.
 Written on the item is {s} entitled {b}, authored by {n}.	物品上写有{n}撰写的{s}《{b}》。	clause
 Written on the item is {s} entitled {b}.	物品上写有{s}《{b}》。	clause

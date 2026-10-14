@@ -7,6 +7,97 @@
         const auto location_captures = captured_clipped_captions();
         const auto location_draws = captured_native_drawn_text_rows();
         const auto top_location_draws = captured_native_drawn_text_rows(true);
+        // activity_event_readst owns an item description in the activity
+        // detail window. Unlike an inventory sheet it has no picture, Weight
+        // heading or forbid/dump/melt strip. Its complete Read caption and
+        // the following writing document establish this separate owner.
+        // Native source: data/extracted/written-reading/elf-decompiled.c.
+        std::vector<std::pair<SDL_Rect, int>> reading_panels;
+        const auto reading_opening = [](std::string_view source) {
+            return source.starts_with("This is ") || source.starts_with("These are ") ||
+                source.starts_with("The written portion consists of ") ||
+                source.starts_with("Written on the item is ") ||
+                source.starts_with("There used to be writing on the item.") ||
+                source.starts_with("The pages are blank.") ||
+                source.starts_with("It has no writing.") || source.starts_with("It has no pages.");
+        };
+        for (int y = 0; y < gps_->dimy; ++y) {
+            for (const auto &field : split_text_fields(screen_rows[y])) {
+                if (field.text != "Read" && !field.text.starts_with("Read ")) continue;
+                const auto panel = native_panel_interior(borders, *gps_, field.start, field.end, y);
+                if (!panel) continue;
+                bool document = false;
+                for (int next = y + 1; next < std::min(y + 5, panel->y + panel->h); ++next) {
+                    const auto line = trim_view(std::string_view(screen_rows[next]).substr(panel->x, panel->w));
+                    if (line.empty()) continue;
+                    if (line == field.text) continue; // paired native font halves
+                    document = reading_opening(line);
+                    if (!document) {
+                        const int left = static_cast<int>(line.data() - screen_rows[next].data());
+                        const std::vector<Match> probe{{left, next, static_cast<int>(line.size()),
+                            kUiMessageRule, {}, std::string(line)}};
+                        if (const auto complete = native_source_for_rows(probe))
+                            document = reading_opening(*complete);
+                    }
+                    break;
+                }
+                // If the event has no item, its native caption is exactly
+                // Read and the document is empty. Translate that complete
+                // label without authorizing item prose in the empty window.
+                if (!document && field.text != "Read") continue;
+                if (document) reading_panels.emplace_back(*panel, y);
+                std::string source = field.text;
+                for (const auto &capture : location_captures)
+                    if (capture.x == field.start && capture.y == y && capture.visible == field.text)
+                        source = capture.complete;
+                const auto translation = translate_fortress_activity_display(source, true);
+                // The whole native caption owns its title, even if a modded
+                // item leaves one typed field unresolved. Generic words must
+                // not turn Read into Open or consume pieces of the book name.
+                const std::string target = translation.usable() ? translation.target
+                    : cp437_to_utf8(field.text);
+                bool owns_layer = true;
+                for (int x = field.start; x < field.end; ++x) {
+                    bool top = false;
+                    const auto *cell = cell_at(x, y, &top);
+                    if (!cell || (screen_override && screen_override !=
+                            (top ? gps_->screen_top : gps_->screen))) owns_layer = false;
+                }
+                if (!owns_layer) continue;
+                std::erase_if(result, [&](const Match &part) {
+                    return part.y == y && part.x < field.end && part.x + part.length > field.start;
+                });
+                std::fill_n(screen_rows[y].begin() + field.start, field.end - field.start, ' ');
+                if (only_y >= 0 && only_y != y) continue;
+                Match title{field.start, y, field.end - field.start,
+                    kFortressItemCaptionRule, target, field.text};
+                title.layout_x = field.start;
+                title.layout_length = panel->x + panel->w - field.start;
+                title.layout_clip_right = panel->x + panel->w;
+                title.layout_left = true;
+                title.native_hover_untranslated = !translation.usable() || translation.has_untranslated();
+                bool top_layer = false;
+                cell_at(field.start, y, &top_layer);
+                const auto *flags = top_layer ? gps_->screentexpos_top_flag : gps_->screentexpos_flag;
+                const uint32_t half = flags ? flags[static_cast<size_t>(field.start) * gps_->dimy + y]
+                    & ((1u << 3) | (1u << 4)) : 0;
+                if (half == (1u << 3) || half == (1u << 4)) {
+                    title.native_split_text = true;
+                    title.native_split_top_y = half == (1u << 4) ? y - 1 : y;
+                    title.native_split_duplicate = half == (1u << 4);
+                    if (title.native_split_duplicate) title.target.clear();
+                }
+                title.translation_result = std::make_shared<const TranslationResult>(translation);
+                result.push_back(std::move(title));
+            }
+        }
+        const auto reading_panel_for_field = [&](int first, int last, int row)
+                -> std::optional<SDL_Rect> {
+            for (const auto &[panel, heading_y] : reading_panels)
+                if (row > heading_y && row < panel.y + panel.h &&
+                    first >= panel.x && last <= panel.x + panel.w) return panel;
+            return std::nullopt;
+        };
         std::vector<std::pair<SDL_Rect, bool>> panel_contexts;
         std::map<std::array<int, 4>, std::optional<SDL_Rect>> item_headings;
         std::map<std::array<int, 4>, std::optional<SDL_Rect>> stepped_panels;
@@ -59,6 +150,7 @@
         };
         const auto item_panel_for_field = [&](int first, int last, int row)
                 -> std::optional<SDL_Rect> {
+            if (auto panel = reading_panel_for_field(first, last, row)) return panel;
             if (!possible_items) return std::nullopt;
             if (const auto panel = native_panel_interior(borders, *gps_, first, last, row);
                 panel && is_item_panel(*panel)) return panel;
@@ -148,8 +240,8 @@
             return remember(SDL_Rect{left + 1, top + 1, right - left - 1, bottom - top - 1});
         };
         const auto item_description_context = [&](int first, int last, int row) {
-            if (!possible_items) return false;
             if (item_panel_for_field(first, last, row)) return true;
+            if (!possible_items) return false;
             // The item tabs can replace the sheet's right corner as well as
             // its side. A captured textbox supplies its own dimensions; it
             // needs item identity here, not a second rectangular outer frame.
@@ -183,8 +275,7 @@
                 source.starts_with("Engraved is ");
         };
         const auto description_opening = [&](std::string_view source) {
-            return engraving_opening(source) || source.starts_with("This is ") ||
-                source.starts_with("These are ");
+            return engraving_opening(source) || reading_opening(source);
         };
         const auto engraving_panel_for_field = [&](int first, int last, int row)
                 -> std::optional<SDL_Rect> {
@@ -388,8 +479,7 @@
         for (int y = 0; y < gps_->dimy; ++y) {
             for (const auto &field : split_text_fields(screen_rows[y])) {
                 const bool engraving = engraving_opening(field.text);
-                const bool introduction = engraving || field.text.starts_with("This is ") ||
-                    field.text.starts_with("These are ");
+                const bool introduction = engraving || reading_opening(field.text);
                 bool location = field.text.starts_with("In ") ||
                     field.text.starts_with("On ") || field.text.starts_with("With ");
                 bool owner = field.text.starts_with("Owner: ");
@@ -627,8 +717,7 @@
                 const auto native = native_source_for_rows(rows, -1, nullptr, &viewport);
                 if (native) source = *native;
                 if (engraving && !engraving_opening(source)) continue;
-                if (!introduction && (!native ||
-                    (!source.starts_with("This is ") && !source.starts_with("These are "))))
+                if (!introduction && (!native || !description_opening(source)))
                     continue;
                 const auto translation = translate_item_description_source_display(source, true);
                 const size_t first_match = result.size();

@@ -1,0 +1,351 @@
+role	instruction	operand
+chapter-cardinal	0xb1995	test   ebx,ebx
+chapter-cardinal	0xb1999	cmp    ebx,0x13
+chapter-cardinal	0xb19ec	cmp    rcx,rax
+chapter-cardinal	0xb19f1	cmp    QWORD PTR [rbp+0x10],0x7
+chapter-cardinal	0xb1a03	cmp    rcx,rsi
+chapter-cardinal	0xb1a10	cmp    rax,rsi
+chapter-cardinal	0xb1a19	cmp    rdx,0x7
+chapter-cardinal	0xb1a2a	cmp    rax,rdi
+chapter-cardinal	0xb1a33	cmp    rax,rsi
+chapter-cardinal	0xb1a4f	cmp    rax,0x1
+chapter-cardinal	0xb1a59	test   rdx,rdx
+chapter-cardinal	0xb1afc	cmp    r8,rax
+chapter-cardinal	0xb1b01	cmp    QWORD PTR [rbp+0x10],0x6
+chapter-cardinal	0xb1b13	cmp    r8,rsi
+chapter-cardinal	0xb1b20	cmp    rax,rsi
+chapter-cardinal	0xb1b29	cmp    rdx,0x6
+chapter-cardinal	0xb1b3a	cmp    rax,rcx
+chapter-cardinal	0xb1b43	cmp    rax,rsi
+chapter-cardinal	0xb1bcc	cmp    rcx,rax
+chapter-cardinal	0xb1bd1	cmp    QWORD PTR [rbp+0x10],0x7
+chapter-cardinal	0xb1be3	cmp    rcx,rsi
+chapter-cardinal	0xb1bf0	cmp    rax,rsi
+chapter-cardinal	0xb1bf9	cmp    rdx,0x7
+chapter-cardinal	0xb1c0a	cmp    rax,rdi
+chapter-cardinal	0xb1c13	cmp    rax,rsi
+chapter-cardinal	0xb1c2f	cmp    rax,0x1
+chapter-cardinal	0xb1c54	cmp    rcx,rax
+chapter-cardinal	0xb1c59	cmp    QWORD PTR [rbp+0x10],0x5
+chapter-cardinal	0xb1c6b	cmp    rcx,rsi
+chapter-cardinal	0xb1c78	cmp    rax,rsi
+chapter-cardinal	0xb1c81	cmp    rdx,0x5
+chapter-cardinal	0xb1c92	cmp    rax,rdi
+chapter-cardinal	0xb1c9b	cmp    rax,rsi
+chapter-cardinal	0xb1cb7	cmp    rax,0x1
+chapter-cardinal	0xb1cc1	test   rdx,rdx
+chapter-cardinal	0xb1d04	cmp    rcx,rax
+chapter-cardinal	0xb1d09	cmp    QWORD PTR [rbp+0x10],0x2
+chapter-cardinal	0xb1d1b	cmp    rcx,rsi
+chapter-cardinal	0xb1d28	cmp    rax,rsi
+chapter-cardinal	0xb1d31	cmp    rdx,0x2
+chapter-cardinal	0xb1d42	cmp    rax,rdi
+chapter-cardinal	0xb1d4b	cmp    rax,rsi
+chapter-cardinal	0xb1d67	cmp    rax,0x1
+chapter-cardinal	0xb1d71	test   rdx,rdx
+chapter-cardinal	0xb1db4	cmp    rcx,rax
+chapter-cardinal	0xb1db9	cmp    QWORD PTR [rbp+0x10],0x3
+chapter-cardinal	0xb1dcb	cmp    rcx,rsi
+chapter-cardinal	0xb1dd8	cmp    rax,rsi
+chapter-cardinal	0xb1de1	cmp    rdx,0x3
+chapter-cardinal	0xb1df2	cmp    rax,rdi
+chapter-cardinal	0xb1dfb	cmp    rax,rsi
+chapter-cardinal	0xb1e17	cmp    rax,0x1
+chapter-cardinal	0xb1e21	test   rdx,rdx
+chapter-cardinal	0xb1e8c	cmp    rcx,rax
+chapter-cardinal	0xb1e91	cmp    QWORD PTR [rbp+0x10],0x4
+chapter-cardinal	0xb1ea3	cmp    rcx,rsi
+chapter-cardinal	0xb1eb0	cmp    rax,rsi
+chapter-cardinal	0xb1eb9	cmp    rdx,0x4
+chapter-cardinal	0xb1eca	cmp    rax,rdi
+chapter-cardinal	0xb1ed3	cmp    rax,rsi
+chapter-cardinal	0xb1eef	cmp    rax,0x1
+chapter-cardinal	0xb1ef9	test   rdx,rdx
+chapter-cardinal	0xb1f3c	cmp    rcx,rax
+chapter-cardinal	0xb1f41	cmp    QWORD PTR [rbp+0x10],0x2
+chapter-cardinal	0xb1f53	cmp    rcx,rsi
+chapter-cardinal	0xb1f60	cmp    rax,rsi
+chapter-cardinal	0xb1f69	cmp    rdx,0x2
+chapter-cardinal	0xb1f7a	cmp    rax,rdi
+chapter-cardinal	0xb1f83	cmp    rax,rsi
+chapter-cardinal	0xb1f9f	cmp    rax,0x1
+chapter-cardinal	0xb1fc4	cmp    rcx,rax
+chapter-cardinal	0xb1fc9	cmp    QWORD PTR [rbp+0x10],0x3
+chapter-cardinal	0xb1fdb	cmp    rcx,rsi
+chapter-cardinal	0xb1fe8	cmp    rax,rsi
+chapter-cardinal	0xb1ff1	cmp    rdx,0x3
+chapter-cardinal	0xb2002	cmp    rax,rdi
+chapter-cardinal	0xb200b	cmp    rax,rsi
+chapter-cardinal	0xb2027	cmp    rax,0x1
+chapter-cardinal	0xb204c	cmp    rcx,rax
+chapter-cardinal	0xb2051	cmp    QWORD PTR [rbp+0x10],0x4
+chapter-cardinal	0xb2063	cmp    rcx,rsi
+chapter-cardinal	0xb2070	cmp    rax,rsi
+chapter-cardinal	0xb2079	cmp    rdx,0x4
+chapter-cardinal	0xb208a	cmp    rax,rdi
+chapter-cardinal	0xb2093	cmp    rax,rsi
+chapter-cardinal	0xb20af	cmp    rax,0x1
+chapter-cardinal	0xb20d4	cmp    rcx,rax
+chapter-cardinal	0xb20d9	cmp    QWORD PTR [rbp+0x10],0x4
+chapter-cardinal	0xb20eb	cmp    rcx,rsi
+chapter-cardinal	0xb20f8	cmp    rax,rsi
+chapter-cardinal	0xb2101	cmp    rdx,0x4
+chapter-cardinal	0xb2112	cmp    rax,rdi
+chapter-cardinal	0xb211b	cmp    rax,rsi
+chapter-cardinal	0xb2137	cmp    rax,0x1
+chapter-cardinal	0xb215c	cmp    rcx,rax
+chapter-cardinal	0xb2161	cmp    QWORD PTR [rbp+0x10],0x2
+chapter-cardinal	0xb2173	cmp    rcx,rsi
+chapter-cardinal	0xb217c	cmp    rax,rsi
+chapter-cardinal	0xb2181	cmp    rdx,0x2
+chapter-cardinal	0xb218e	cmp    rax,rdi
+chapter-cardinal	0xb21c4	cmp    rcx,rax
+chapter-cardinal	0xb21c9	cmp    QWORD PTR [rbp+0x10],0x5
+chapter-cardinal	0xb21db	cmp    rcx,rsi
+chapter-cardinal	0xb21e8	cmp    rax,rsi
+chapter-cardinal	0xb21f1	cmp    rdx,0x5
+chapter-cardinal	0xb2202	cmp    rax,rdi
+chapter-cardinal	0xb220b	cmp    rax,rsi
+chapter-cardinal	0xb2227	cmp    rax,0x1
+chapter-cardinal	0xb224c	cmp    rcx,rax
+chapter-cardinal	0xb2251	cmp    QWORD PTR [rbp+0x10],0x3
+chapter-cardinal	0xb2263	cmp    rcx,rsi
+chapter-cardinal	0xb2270	cmp    rax,rsi
+chapter-cardinal	0xb2279	cmp    rdx,0x3
+chapter-cardinal	0xb228a	cmp    rax,rdi
+chapter-cardinal	0xb2293	cmp    rax,rsi
+chapter-cardinal	0xb22af	cmp    rax,0x1
+chapter-cardinal	0xb22d4	cmp    rcx,rax
+chapter-cardinal	0xb22d9	cmp    QWORD PTR [rbp+0x10],0x2
+chapter-cardinal	0xb22eb	cmp    rcx,rsi
+chapter-cardinal	0xb22f8	cmp    rax,rsi
+chapter-cardinal	0xb2301	cmp    rdx,0x2
+chapter-cardinal	0xb2312	cmp    rax,rdi
+chapter-cardinal	0xb231b	cmp    rax,rsi
+chapter-cardinal	0xb2337	cmp    rax,0x1
+chapter-cardinal	0xb235c	cmp    rcx,rax
+chapter-cardinal	0xb2361	cmp    QWORD PTR [rbp+0x10],0x7
+chapter-cardinal	0xb2373	cmp    rcx,rsi
+chapter-cardinal	0xb2380	cmp    rax,rsi
+chapter-cardinal	0xb2389	cmp    rdx,0x7
+chapter-cardinal	0xb239a	cmp    rax,rdi
+chapter-cardinal	0xb23a3	cmp    rax,rsi
+chapter-cardinal	0xb23bf	cmp    rax,0x1
+chapter-cardinal	0xb23d8	cmp    ebx,0x3b9ac9ff
+chapter-cardinal	0xb23ea	cmp    eax,0x3b8b87bf
+chapter-cardinal	0xb23fb	cmp    eax,0xf3e57
+chapter-cardinal	0xb2409	cmp    eax,0x383
+chapter-cardinal	0xb2427	cmp    eax,0x6
+chapter-cardinal	0xb24b5	cmp    rdi,r12
+chapter-cardinal	0xb2780	cmp    rax,0x7
+chapter-cardinal	0xb279b	cmp    rax,rcx
+chapter-cardinal	0xb27a8	cmp    r15,rdx
+chapter-cardinal	0xb27ff	cmp    rbx,rax
+chapter-cardinal	0xb2810	cmp    QWORD PTR [rsp+0x8],rax
+chapter-cardinal	0xb281f	cmp    r15,rdx
+chapter-cardinal	0xb2a36	cmp    rax,0x7
+chapter-cardinal	0xb2a51	cmp    rax,rdx
+chapter-cardinal	0xb2a5e	cmp    QWORD PTR [rsp+0x8],rdx
+chapter-cardinal	0xb2b2a	cmp    rax,0x8
+chapter-cardinal	0xb2b45	cmp    rax,rdx
+chapter-cardinal	0xb2b52	cmp    QWORD PTR [rsp+0x8],rdx
+chapter-cardinal	0xb2c43	cmp    rax,0x7
+chapter-cardinal	0xb2c5e	cmp    rax,rdx
+chapter-cardinal	0xb2c6b	cmp    QWORD PTR [rsp+0x8],rdx
+chapter-cardinal	0xb2d58	cmp    r12,0x1
+chapter-cardinal	0xb2d99	cmp    r12,0x1
+chapter-cardinal	0xb2dda	cmp    r12,0x1
+chapter-cardinal	0xb2dfc	cmp    r12,0x1
+chapter-cardinal	0xb2e5c	cmp    r12,0x1
+chapter-cardinal	0xb2e7d	test   r12,r12
+chapter-cardinal	0xb2eb7	cmp    rax,0x1
+chapter-cardinal	0xb2ec1	test   rax,rax
+chapter-cardinal	0xb2ee4	test   r12,r12
+chapter-cardinal	0xb2ef8	test   r12,r12
+chapter-cardinal	0xb2f10	test   r12,r12
+chapter-cardinal	0xb2f28	test   r12,r12
+chapter-cardinal	0xb2f41	cmp    r12,0x1
+chapter-cardinal	0xb2f8a	test   r12,r12
+chapter-ordinal	0xb04df	test   dl,dl
+chapter-ordinal	0xb04e3	test   ebx,ebx
+chapter-ordinal	0xb04eb	cmp    ebx,0x13
+chapter-ordinal	0xb0508	test   ebx,ebx
+chapter-ordinal	0xb0532	cmp    eax,0x2
+chapter-ordinal	0xb053b	cmp    eax,0x3
+chapter-ordinal	0xb0544	cmp    eax,0x1
+chapter-ordinal	0xb055e	cmp    rax,0x1
+chapter-ordinal	0xb0574	cmp    rax,rdx
+chapter-ordinal	0xb0581	cmp    r12,rdx
+chapter-ordinal	0xb05e5	cmp    r12,rax
+chapter-ordinal	0xb05ea	cmp    QWORD PTR [rsi+0x10],0x0
+chapter-ordinal	0xb05fc	cmp    r12,rsi
+chapter-ordinal	0xb0609	cmp    rdi,rsi
+chapter-ordinal	0xb0612	test   rdx,rdx
+chapter-ordinal	0xb0622	cmp    rdi,rax
+chapter-ordinal	0xb0658	cmp    ebx,0x28f5c28
+chapter-ordinal	0xb0660	cmp    rax,0x1
+chapter-ordinal	0xb0677	cmp    rax,rdx
+chapter-ordinal	0xb0684	cmp    rbx,rdx
+chapter-ordinal	0xb06b0	cmp    rax,0x1
+chapter-ordinal	0xb06c7	cmp    rax,rdx
+chapter-ordinal	0xb06d4	cmp    rbx,rdx
+chapter-ordinal	0xb0710	cmp    ebx,0x28f5c28
+chapter-ordinal	0xb0718	cmp    rax,0x1
+chapter-ordinal	0xb072f	cmp    rax,rdx
+chapter-ordinal	0xb073c	cmp    rbx,rdx
+chapter-ordinal	0xb0778	cmp    ebx,0x28f5c28
+chapter-ordinal	0xb0784	cmp    rax,0x1
+chapter-ordinal	0xb079b	cmp    rax,rdx
+chapter-ordinal	0xb07a8	cmp    rbx,rdx
+chapter-ordinal	0xb07d4	cmp    rcx,rax
+chapter-ordinal	0xb07d9	cmp    QWORD PTR [rbp+0x10],0x4
+chapter-ordinal	0xb07eb	cmp    rcx,rsi
+chapter-ordinal	0xb07f8	cmp    rax,rsi
+chapter-ordinal	0xb0801	cmp    rdx,0x4
+chapter-ordinal	0xb0812	cmp    rax,rdi
+chapter-ordinal	0xb081b	cmp    rax,rsi
+chapter-ordinal	0xb0837	cmp    rax,0x1
+chapter-ordinal	0xb0841	test   rdx,rdx
+chapter-ordinal	0xb0884	cmp    rcx,rax
+chapter-ordinal	0xb0889	cmp    QWORD PTR [rbp+0x10],0x9
+chapter-ordinal	0xb089b	cmp    rcx,rsi
+chapter-ordinal	0xb08a8	cmp    rax,rsi
+chapter-ordinal	0xb08b1	cmp    rdx,0x9
+chapter-ordinal	0xb08c2	cmp    rax,rdi
+chapter-ordinal	0xb08cb	cmp    rax,rsi
+chapter-ordinal	0xb08e7	cmp    rax,0x1
+chapter-ordinal	0xb08f1	test   rdx,rdx
+chapter-ordinal	0xb0934	cmp    r8,rax
+chapter-ordinal	0xb0939	cmp    QWORD PTR [rbp+0x10],0xa
+chapter-ordinal	0xb094b	cmp    r8,rsi
+chapter-ordinal	0xb0958	cmp    rax,rsi
+chapter-ordinal	0xb0961	cmp    rdx,0xa
+chapter-ordinal	0xb0972	cmp    rax,rcx
+chapter-ordinal	0xb09ac	cmp    rcx,rax
+chapter-ordinal	0xb09b1	cmp    QWORD PTR [rbp+0x10],0x8
+chapter-ordinal	0xb09c3	cmp    rcx,rsi
+chapter-ordinal	0xb09d0	cmp    rax,rsi
+chapter-ordinal	0xb09d9	cmp    rdx,0x8
+chapter-ordinal	0xb09ea	cmp    rax,rdi
+chapter-ordinal	0xb09f3	cmp    rax,rsi
+chapter-ordinal	0xb0a0f	cmp    rax,0x1
+chapter-ordinal	0xb0a19	test   rdx,rdx
+chapter-ordinal	0xb0a5c	cmp    rcx,rax
+chapter-ordinal	0xb0a61	cmp    QWORD PTR [rbp+0x10],0x8
+chapter-ordinal	0xb0a73	cmp    rcx,rsi
+chapter-ordinal	0xb0a80	cmp    rax,rsi
+chapter-ordinal	0xb0a89	cmp    rdx,0x8
+chapter-ordinal	0xb0a9a	cmp    rax,rdi
+chapter-ordinal	0xb0aa3	cmp    rax,rsi
+chapter-ordinal	0xb0abf	cmp    rax,0x1
+chapter-ordinal	0xb0ae4	cmp    rcx,rax
+chapter-ordinal	0xb0ae9	cmp    QWORD PTR [rbp+0x10],0x5
+chapter-ordinal	0xb0afb	cmp    rcx,rsi
+chapter-ordinal	0xb0b08	cmp    rax,rsi
+chapter-ordinal	0xb0b11	cmp    rdx,0x5
+chapter-ordinal	0xb0b22	cmp    rax,rdi
+chapter-ordinal	0xb0b2b	cmp    rax,rsi
+chapter-ordinal	0xb0b47	cmp    rax,0x1
+chapter-ordinal	0xb0b51	test   rdx,rdx
+chapter-ordinal	0xb0b94	cmp    rcx,rax
+chapter-ordinal	0xb0b99	cmp    QWORD PTR [rbp+0x10],0x9
+chapter-ordinal	0xb0bab	cmp    rcx,rsi
+chapter-ordinal	0xb0bb8	cmp    rax,rsi
+chapter-ordinal	0xb0bc1	cmp    rdx,0x9
+chapter-ordinal	0xb0bd2	cmp    rax,rdi
+chapter-ordinal	0xb0bdb	cmp    rax,rsi
+chapter-ordinal	0xb0bf7	cmp    rax,0x1
+chapter-ordinal	0xb0c1c	cmp    rcx,rax
+chapter-ordinal	0xb0c21	cmp    QWORD PTR [rbp+0x10],0x9
+chapter-ordinal	0xb0c33	cmp    rcx,rsi
+chapter-ordinal	0xb0c40	cmp    rax,rsi
+chapter-ordinal	0xb0c49	cmp    rdx,0x9
+chapter-ordinal	0xb0c5a	cmp    rax,rdi
+chapter-ordinal	0xb0c63	cmp    rax,rsi
+chapter-ordinal	0xb0c7f	cmp    rax,0x1
+chapter-ordinal	0xb0ccc	cmp    rcx,rax
+chapter-ordinal	0xb0cd1	cmp    QWORD PTR [rbp+0x10],0x4
+chapter-ordinal	0xb0ce3	cmp    rcx,rsi
+chapter-ordinal	0xb0cf0	cmp    rax,rsi
+chapter-ordinal	0xb0cf9	cmp    rdx,0x4
+chapter-ordinal	0xb0d0a	cmp    rax,rdi
+chapter-ordinal	0xb0d13	cmp    rax,rsi
+chapter-ordinal	0xb0d2f	cmp    rax,0x1
+chapter-ordinal	0xb0d54	cmp    rcx,rax
+chapter-ordinal	0xb0d59	cmp    QWORD PTR [rbp+0x10],0x4
+chapter-ordinal	0xb0d6b	cmp    rcx,rsi
+chapter-ordinal	0xb0d78	cmp    rax,rsi
+chapter-ordinal	0xb0d81	cmp    rdx,0x4
+chapter-ordinal	0xb0d92	cmp    rax,rdi
+chapter-ordinal	0xb0d9b	cmp    rax,rsi
+chapter-ordinal	0xb0db7	cmp    rax,0x1
+chapter-ordinal	0xb0dec	cmp    rcx,rax
+chapter-ordinal	0xb0df1	cmp    QWORD PTR [rbp+0x10],0x4
+chapter-ordinal	0xb0e03	cmp    rcx,rsi
+chapter-ordinal	0xb0e0c	cmp    rax,rsi
+chapter-ordinal	0xb0e11	cmp    rdx,0x4
+chapter-ordinal	0xb0e1e	cmp    rax,rdi
+chapter-ordinal	0xb0e6c	cmp    rcx,rax
+chapter-ordinal	0xb0e71	cmp    QWORD PTR [rbp+0x10],0x5
+chapter-ordinal	0xb0e83	cmp    rcx,rsi
+chapter-ordinal	0xb0e90	cmp    rax,rsi
+chapter-ordinal	0xb0e99	cmp    rdx,0x5
+chapter-ordinal	0xb0eaa	cmp    rax,rdi
+chapter-ordinal	0xb0eb3	cmp    rax,rsi
+chapter-ordinal	0xb0ecf	cmp    rax,0x1
+chapter-ordinal	0xb0ef4	cmp    r8,rax
+chapter-ordinal	0xb0ef9	cmp    QWORD PTR [rbp+0x10],0x6
+chapter-ordinal	0xb0f0b	cmp    r8,rsi
+chapter-ordinal	0xb0f18	cmp    rax,rsi
+chapter-ordinal	0xb0f21	cmp    rdx,0x6
+chapter-ordinal	0xb0f32	cmp    rax,rcx
+chapter-ordinal	0xb0f6c	cmp    rcx,rax
+chapter-ordinal	0xb0f71	cmp    QWORD PTR [rbp+0x10],0x4
+chapter-ordinal	0xb0f83	cmp    rcx,rsi
+chapter-ordinal	0xb0f8c	cmp    rax,rsi
+chapter-ordinal	0xb0f91	cmp    rdx,0x4
+chapter-ordinal	0xb0f9e	cmp    rax,rdi
+chapter-ordinal	0xb0fcc	cmp    rcx,rax
+chapter-ordinal	0xb0fd1	cmp    QWORD PTR [rbp+0x10],0x4
+chapter-ordinal	0xb0fe3	cmp    rcx,rsi
+chapter-ordinal	0xb0ff0	cmp    rax,rsi
+chapter-ordinal	0xb0ff9	cmp    rdx,0x4
+chapter-ordinal	0xb100a	cmp    rax,rdi
+chapter-ordinal	0xb1013	cmp    rax,rsi
+chapter-ordinal	0xb102f	cmp    rax,0x1
+chapter-ordinal	0xb10cc	cmp    eax,0x2
+chapter-ordinal	0xb10d5	cmp    eax,0x3
+chapter-ordinal	0xb10de	cmp    eax,0x1
+chapter-ordinal	0xb10f5	cmp    eax,0x28f5c28
+chapter-ordinal	0xb1111	cmp    rax,0x1
+chapter-ordinal	0xb1127	cmp    rax,rdx
+chapter-ordinal	0xb1134	cmp    r12,rdx
+chapter-ordinal	0xb156e	cmp    eax,0x28f5c28
+chapter-ordinal	0xb1586	cmp    rax,0x1
+chapter-ordinal	0xb159c	cmp    rax,rdx
+chapter-ordinal	0xb15a9	cmp    r12,rdx
+chapter-ordinal	0xb15ce	cmp    eax,0x28f5c28
+chapter-ordinal	0xb15ea	cmp    rax,0x1
+chapter-ordinal	0xb1600	cmp    rax,rdx
+chapter-ordinal	0xb160d	cmp    r12,rdx
+chapter-ordinal	0xb1638	cmp    rdi,rsi
+chapter-ordinal	0xb1656	cmp    r12,0x1
+chapter-ordinal	0xb168a	cmp    r13,0x1
+chapter-ordinal	0xb1698	test   r13,r13
+chapter-ordinal	0xb172b	cmp    r12,0x1
+chapter-ordinal	0xb1742	test   r12,r12
+chapter-ordinal	0xb1750	cmp    rax,rsi
+chapter-ordinal	0xb1771	cmp    rax,rsi
+chapter-ordinal	0xb17e6	cmp    r12,0x1
+chapter-ordinal	0xb1808	cmp    r12,0x1
+chapter-ordinal	0xb181f	test   r12,r12
+chapter-ordinal	0xb1840	cmp    rax,0x1
+chapter-ordinal	0xb184a	test   rax,rax
+chapter-ordinal	0xb1876	cmp    rax,0x1
+chapter-ordinal	0xb1880	test   rax,rax
+chapter-ordinal	0xb18b1	cmp    r12,0x1
+chapter-ordinal	0xb18cc	test   r12,r12
+chapter-ordinal	0xb18e5	cmp    r12,0x1
+chapter-ordinal	0xb18f8	test   r12,r12
+chapter-ordinal	0xb1928	test   r12,r12
+chapter-ordinal	0xb193e	test   r12,r12
