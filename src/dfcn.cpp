@@ -4643,6 +4643,8 @@ private:
         std::vector<Match> &matches, int only_y, bool raw_layer = false) const;
     void append_settings_announcement_names(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y) const;
+    void append_settings_toggle_labels(std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y) const;
     std::vector<NativeTextCard> capture_fortress_trade_request_rows() const;
     void layout_fortress_trade_requests(SDL_Renderer *renderer);
     std::optional<NativeTextCard> capture_map_hover_card(
@@ -17475,6 +17477,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     screen_rows.reserve(static_cast<size_t>(gps_->dimy));
     for (int row_y = 0; row_y < gps_->dimy; ++row_y)
         screen_rows.push_back(read_row(row_y));
+    append_settings_toggle_labels(screen_rows, result, only_y);
     // The native placement status/header owns its whole source before room,
     // location, item and generic caption readers can consume an inner word.
     append_fortress_build_placement_fields(screen_rows, result, only_y);
