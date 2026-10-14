@@ -1951,6 +1951,24 @@ DFHack output: Agreements for Guildhalls:	行会大厅建设协议：	l
 DFHack output: No outstanding agreements	没有尚未兑现的协议	l
 DFHack output: No agreements	没有协议	l
 
+# gui/petitions.lua colored List choices differ from list-agreements console records.
+DFHack GUI Title: Petitions	建造申请	l
+DFHack GUI Petitions caption: Show past agreements:	显示历史协议：	l
+DFHack GUI Petitions state: On	开启	l
+DFHack GUI Petitions state: Off	关闭	l
+DFHack GUI Petitions location: Temple	神庙	l
+DFHack GUI Petitions location: Temple Complex	神庙建筑群	l
+DFHack GUI Petitions location: Guildhall	行会大厅	l
+DFHack GUI Petitions location: Grand Guildhall	大型行会大厅	l
+DFHack GUI Petitions text: No outstanding agreements	没有尚未兑现的协议	l
+DFHack GUI Petitions text: Establish a {s} for {s}, a {s} guild,	为{s2}（{s3}行会）建立{s1}	l
+DFHack GUI Petitions text: Establish a {s} for {s}, worshiping {s},	为{s2}建立{s1}，敬奉{s3}	l
+DFHack GUI Petitions text: as agreed on {d}-{d}-{d}, {d}y, {d}m, {d}d ago {s}	协议签订于 {d1}-{d2}-{d3}，距今 {d4} 年 {d5} 个月 {d6} 天{s1}	l
+DFHack GUI Petitions status: (outstanding)	（尚未兑现）	l
+DFHack GUI Petitions status: (satisfied)	（已兑现）	l
+DFHack GUI Petitions status: (denied)	（已拒绝）	l
+DFHack GUI Petitions status: (expired)	（已过期）	l
+
 # Lever GUI display roles; IDs, custom names, coordinates, switch marks, enums, and timers stay native.
 DFHack GUI Lever caption: lever	拉杆	l
 DFHack GUI Lever caption: linked to	连接到	l
