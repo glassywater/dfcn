@@ -242,6 +242,8 @@ Overview sentence: This place could really use some more trouble.	这地方还�
 # Trade depot inspection: whole captions, not independent Trade/Broker/No
 # fragments. Preserve the existing building and broker terminology.
 Trade depot	贸易站	wi
+# The construction caption must win over the earlier UI-message literal Trade.
+Trade depot	贸易站	hP
 Move goods to/from depot	搬运货物进出贸易站	wi
 Broker requested at depot	请求交易员前往贸易站	wi
 Anyone requested at depot	请求任意居民前往贸易站	wi
