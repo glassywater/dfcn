@@ -1,0 +1,75 @@
+edition	call_rva	return_rva	kind	production
+reference	0x86e03b	0x86e040	literal	Done
+reference	0x86e0d4	0x86e0d9	literal	Companions
+reference	0x86e7da	0x86e7df	identity	You / formatter-owned identity
+reference	0x86e854	0x86e859	literal	Dead
+reference	0x86e92c	0x86e931	literal	Unconscious
+reference	0x86e996	0x86e99b	literal	Paralyzed
+reference	0x86e9ff	0x86ea04	literal	Webbed
+reference	0x86ead7	0x86eadc	literal	In party nearby
+reference	0x86ed3c	0x86ed41	literal	Distant
+reference	0x86ee77	0x86ee7c	place	Traveling through {region}
+reference	0x86ef0d	0x86ef12	place	In {site}
+reference	0x86efa3	0x86efa8	place	In {region}
+reference	0x86f025	0x86f02a	place	In {underground region}
+reference	0x86f0b5	0x86f0ba	literal	Dead
+reference	0x86f53f	0x86f544	literal	Wrestle
+reference	0x86f5eb	0x86f5f0	literal	Ground
+reference	0x86f6ab	0x86f6b0	literal	Nearby
+reference	0x86f93c	0x86f941	literal	Visible: 
+reference	0x86f976	0x86f97b	literal	In party: 
+reference	0x86f9f5	0x86f9fa	bearing	N
+reference	0x86fa28	0x86fa2d	bearing	NNE
+reference	0x86fa5b	0x86fa60	bearing	NE
+reference	0x86fa8e	0x86fa93	bearing	ENE
+reference	0x86fac1	0x86fac6	bearing	E
+reference	0x86faf4	0x86faf9	bearing	ESE
+reference	0x86fb27	0x86fb2c	bearing	SE
+reference	0x86fb5a	0x86fb5f	bearing	SSE
+reference	0x86fb8d	0x86fb92	bearing	S
+reference	0x86fbc0	0x86fbc5	bearing	SSW
+reference	0x86fbf3	0x86fbf8	bearing	SW
+reference	0x86fc26	0x86fc2b	bearing	WSW
+reference	0x86fc59	0x86fc5e	bearing	W
+reference	0x86fc8c	0x86fc91	bearing	WNW
+reference	0x86fcbf	0x86fcc4	bearing	NW
+reference	0x86fcf2	0x86fcf7	bearing	NNW
+reference	0x86fd40	0x86fd45	bearing	***
+reference	0x86ff04	0x86ff09	literal	Not visible
+classic	0x86b8bb	0x86b8c0	literal	Done
+classic	0x86b954	0x86b959	literal	Companions
+classic	0x86c05a	0x86c05f	identity	You / formatter-owned identity
+classic	0x86c0d4	0x86c0d9	literal	Dead
+classic	0x86c1ac	0x86c1b1	literal	Unconscious
+classic	0x86c216	0x86c21b	literal	Paralyzed
+classic	0x86c27f	0x86c284	literal	Webbed
+classic	0x86c357	0x86c35c	literal	In party nearby
+classic	0x86c5bc	0x86c5c1	literal	Distant
+classic	0x86c6f7	0x86c6fc	place	Traveling through {region}
+classic	0x86c78d	0x86c792	place	In {site}
+classic	0x86c823	0x86c828	place	In {region}
+classic	0x86c8a5	0x86c8aa	place	In {underground region}
+classic	0x86c935	0x86c93a	literal	Dead
+classic	0x86cdbf	0x86cdc4	literal	Wrestle
+classic	0x86ce6b	0x86ce70	literal	Ground
+classic	0x86cf2b	0x86cf30	literal	Nearby
+classic	0x86d1bc	0x86d1c1	literal	Visible: 
+classic	0x86d1f6	0x86d1fb	literal	In party: 
+classic	0x86d275	0x86d27a	bearing	N
+classic	0x86d2a8	0x86d2ad	bearing	NNE
+classic	0x86d2db	0x86d2e0	bearing	NE
+classic	0x86d30e	0x86d313	bearing	ENE
+classic	0x86d341	0x86d346	bearing	E
+classic	0x86d374	0x86d379	bearing	ESE
+classic	0x86d3a7	0x86d3ac	bearing	SE
+classic	0x86d3da	0x86d3df	bearing	SSE
+classic	0x86d40d	0x86d412	bearing	S
+classic	0x86d440	0x86d445	bearing	SSW
+classic	0x86d473	0x86d478	bearing	SW
+classic	0x86d4a6	0x86d4ab	bearing	WSW
+classic	0x86d4d9	0x86d4de	bearing	W
+classic	0x86d50c	0x86d511	bearing	WNW
+classic	0x86d53f	0x86d544	bearing	NW
+classic	0x86d572	0x86d577	bearing	NNW
+classic	0x86d5c0	0x86d5c5	bearing	***
+classic	0x86d784	0x86d789	literal	Not visible
