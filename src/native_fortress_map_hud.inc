@@ -19,6 +19,13 @@ static bool native_fortress_map_hud_page() {
             game_type == 4 || game_type == 5 ||
             !native_history_copy(native_reference_address(base, 0x18a938c), selection) ||
             selection == 2) return false;
+    // The stockpile type panel has no open bit. Its native renderer
+    // (0x3e5e54..0x3e5e62) uses stockpile_interfacest::cur_bld instead.
+    // Keep that panel on the complete UI path so its two-row category
+    // captions are joined before word and generated-name matching.
+    uintptr_t stockpile = 0;
+    if (!native_history_copy(native_reference_address(base, 0x18a41e0), stockpile) ||
+            stockpile) return false;
     // Native 0x3f58bc..0x3f5a23 gates interactive map controls on both pause
     // state and component states. Pausing does not change HUD text ownership:
     // pause_state (0x2131b5e) must not be treated as an open UI component.
