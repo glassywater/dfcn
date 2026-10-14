@@ -450,6 +450,13 @@ std::optional<std::string> Overlay::translate_item_description_term(
             // and named-artifact productions have had a chance to own it;
             // ordinary noun/material fallback must still reject prose.
             const bool punctuated = item_term_contains_sentence_punctuation(value);
+            // Descriptions and headings own the same complete item noun.
+            // Resolve its material/type with the caption grammar before art
+            // or anatomy rules can select a homonym such as chest -> body part.
+            // Quality and article wrappers recurse into this same entry.
+            if (!predicate && !punctuated)
+                if (auto target = translate_item_caption_grammar(value);
+                    translation_complete_with_native_nicknames(target, value)) return target;
             // Body components share the complete caption grammar with Stocks
             // and inventory. Preserve the unit prefix and noun sense before
             // generic material/item decomposition can produce a qualifier.

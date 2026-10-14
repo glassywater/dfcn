@@ -320,9 +320,9 @@ boiling rope reed mash	沸腾的绳芦苇酿醪	l
 boiling rye beer	沸腾的黑麦啤酒	l
 boiling rye mash	沸腾的黑麦酿醪	l
 boiling sake	沸腾的清酒	l
-boiling sand pear brandy	沸腾的砂梨白兰地	l
-boiling sand pear cider	沸腾的砂梨西打酒	l
-boiling sand pear mash	沸腾的砂梨酿醪	l
+boiling sand pear brandy	沸腾的沙梨白兰地	l
+boiling sand pear cider	沸腾的沙梨西打酒	l
+boiling sand pear mash	沸腾的沙梨酿醪	l
 boiling sewer brew	沸腾的下水道酿酒	l
 boiling sewer gin	沸腾的下水道金酒	l
 boiling single-grain wheat beer	沸腾的单粒小麦啤酒	l
@@ -549,7 +549,7 @@ Distill raspberry wine into brandy	将树莓果酒蒸馏为白兰地	l
 Distill rice beer into sake	将稻米啤酒蒸馏为清酒	l
 Distill river beer into spirits	将河流啤酒蒸馏为烈酒	l
 Distill rye beer into whiskey	将黑麦啤酒蒸馏为威士忌	l
-Distill sand pear wine into brandy	将砂梨果酒蒸馏为白兰地	l
+Distill sand pear wine into brandy	将沙梨果酒蒸馏为白兰地	l
 Distill sewer brew into gin	将下水道酿酒蒸馏为金酒	l
 Distill single-grain wheat beer into whiskey	将单粒小麦啤酒蒸馏为威士忌	l
 Distill soft wheat beer into whiskey	将软粒小麦啤酒蒸馏为威士忌	l
@@ -812,9 +812,9 @@ frozen rope reed mash	结冻的绳芦苇酿醪	l
 frozen rye beer	结冻的黑麦啤酒	l
 frozen rye mash	结冻的黑麦酿醪	l
 frozen sake	结冻的清酒	l
-frozen sand pear brandy	结冻的砂梨白兰地	l
-frozen sand pear cider	结冻的砂梨西打酒	l
-frozen sand pear mash	结冻的砂梨酿醪	l
+frozen sand pear brandy	结冻的沙梨白兰地	l
+frozen sand pear cider	结冻的沙梨西打酒	l
+frozen sand pear mash	结冻的沙梨酿醪	l
 frozen sewer brew	结冻的下水道酿酒	l
 frozen sewer gin	结冻的下水道金酒	l
 frozen single-grain wheat beer	结冻的单粒小麦啤酒	l
@@ -1218,7 +1218,7 @@ Prepare rat weed for sewer brew	准备鼠草以酿造下水道酿酒	l
 Prepare rice for beer	准备稻米以酿造啤酒	l
 Prepare rope reed for river beer	准备绳芦苇以酿造河流啤酒	l
 Prepare rye for beer	准备黑麦以酿造啤酒	l
-Prepare sand pears for wine	准备砂梨以酿造果酒	l
+Prepare sand pears for wine	准备沙梨以酿造果酒	l
 Prepare single-grain wheat for beer	准备单粒小麦以酿造啤酒	l
 Prepare sliver barbs for beer	准备银刺草以酿造啤酒	l
 Prepare soft wheat for beer	准备软粒小麦以酿造啤酒	l
@@ -1322,17 +1322,17 @@ rye mash	黑麦酿醪	l
 rye seed	黑麦种子	l
 rye seeds	黑麦种子	l
 sake	清酒	l
-sand pear	砂梨	l
-sand pear brandy	砂梨白兰地	l
-sand pear cider	砂梨西打酒	l
-sand pear flower	砂梨花	l
-sand pear leaf	砂梨叶	l
-sand pear leaves	砂梨叶	l
-sand pear mash	砂梨酿醪	l
-sand pear seed	砂梨种子	l
-sand pear seeds	砂梨种子	l
-sand pear tree	砂梨树	l
-sand pear wood	砂梨木材	l
+sand pear	沙梨	l
+sand pear brandy	沙梨白兰地	l
+sand pear cider	沙梨西打酒	l
+sand pear flower	沙梨花	l
+sand pear leaf	沙梨叶	l
+sand pear leaves	沙梨叶	l
+sand pear mash	沙梨酿醪	l
+sand pear seed	沙梨种子	l
+sand pear seeds	沙梨种子	l
+sand pear tree	沙梨树	l
+sand pear wood	沙梨木	l
 sewer brew	下水道酿酒	l
 sewer gin	下水道金酒	l
 single-grain wheat	单粒小麦	l
@@ -1534,7 +1534,7 @@ rambutan trees	红毛丹树	l
 raspberry bushes	树莓灌木	l
 rice plants	稻米植株	l
 rope reeds	绳芦苇	l
-sand pear trees	砂梨树	l
+sand pear trees	沙梨树	l
 sliver barbs	银刺草	l
 strawberry plants	草莓植株	l
 sun berries	太阳浆果	l

@@ -6173,7 +6173,7 @@ chasen	茶筅	wi
 cheek pouches	颊囊	wi
 cheeks	脸颊	wi
 cheeks and ridges	脸颊和脊	wi
-chest	胸	wi
+# Anatomical chest stays in health/bodypart/dwarvemon.toml; the global item noun comes from the base dictionary.
 chest and back	胸和背	wi
 chest and belly	胸和腹部	wi
 chest and head	胸和头	wi
