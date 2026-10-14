@@ -1,0 +1,119 @@
+role	instruction	operand	kind	text
+trade-renderer-with-caravan-chooser	0xdd01b2	immediate	inline-immediate	h:
+trade-renderer-with-caravan-chooser	0xdd01bc	0x21034f0	cstring	Select a merchant group to tradeMy apologies, but we're still unWe'll be ready sThere are no merchants present with which to tra-
+trade-renderer-with-caravan-chooser	0xdd01bc	0x21034f0	inline-16-byte	Select a merchan
+trade-renderer-with-caravan-chooser	0xdd01cd	immediate	inline-immediate	 wit
+trade-renderer-with-caravan-chooser	0xdd01d7	0x2103500	cstring	t group to tradeMy apologies, but we're still unWe'll be ready sThere are no merchants present with which to tra-
+trade-renderer-with-caravan-chooser	0xdd01d7	0x2103500	inline-16-byte	t group to trade
+trade-renderer-with-caravan-chooser	0xdd0cf7	immediate	inline-immediate	m 
+trade-renderer-with-caravan-chooser	0xdd0d18	immediate	inline-immediate	 fro
+trade-renderer-with-caravan-chooser	0xdd19b6	0x2103510	cstring	My apologies, but we're still unWe'll be ready sThere are no merchants present with which to tra-
+trade-renderer-with-caravan-chooser	0xdd19b6	0x2103510	inline-16-byte	My apologies, bu
+trade-renderer-with-caravan-chooser	0xdd19c3	immediate	inline-immediate	loading.
+trade-renderer-with-caravan-chooser	0xdd19e1	0x2103520	cstring	t we're still unWe'll be ready sThere are no merchants present with which to tra-
+trade-renderer-with-caravan-chooser	0xdd19e1	0x2103520	inline-16-byte	t we're still un
+trade-renderer-with-caravan-chooser	0xdd1a4c	0x2103530	cstring	We'll be ready sThere are no merchants present with which to tra-
+trade-renderer-with-caravan-chooser	0xdd1a4c	0x2103530	inline-16-byte	We'll be ready s
+trade-renderer-with-caravan-chooser	0xdd1a54	immediate	inline-immediate	oon!
+trade-renderer-with-caravan-chooser	0xdd1d78	0x21079b4	cstring	 is 
+trade-renderer-with-caravan-chooser	0xdd1dd4	0x20fb980	cstring	not going to take much more of this
+trade-renderer-with-caravan-chooser	0xdd1df1	0x2107edc	cstring	.
+trade-renderer-with-caravan-chooser	0xdd2263	0x20fca3a	cstring	The following fortress goods
+trade-renderer-with-caravan-chooser	0xdd22f3	0x20fb9a8	cstring	were added for the counteroffer:
+trade-renderer-with-caravan-chooser	0xdd26f1	immediate	inline-immediate	de
+trade-renderer-with-caravan-chooser	0xdd26fb	0x2103540	cstring	There are no merchants present with which to tra-
+trade-renderer-with-caravan-chooser	0xdd26fb	0x2103540	inline-16-byte	There are no mer
+trade-renderer-with-caravan-chooser	0xdd2719	0x2103550	cstring	chants present with which to tra-
+trade-renderer-with-caravan-chooser	0xdd2719	0x2103550	inline-16-byte	chants present w
+trade-renderer-with-caravan-chooser	0xdd2729	0x2103560	cstring	ith which to tra-
+trade-renderer-with-caravan-chooser	0xdd2729	0x2103560	inline-16-byte	ith which to tra
+trade-renderer-with-caravan-chooser	0xdd2c05	0x210eb8c	cstring	...
+trade-renderer-with-caravan-chooser	0xdd2e16	0x20fca57	cstring	Okay
+trade-renderer-with-caravan-chooser	0xdd32f8	0x20fc0d9	cstring	Value: 
+trade-renderer-with-caravan-chooser	0xdd356e	0x20fca5c	cstring	Trader Profit: 
+trade-renderer-with-caravan-chooser	0xdd4554	0x20fca7a	cstring	Allowed Weight: 
+trade-renderer-with-caravan-chooser	0xdd46a2	0x20fca9b	cstring	Mark all
+trade-renderer-with-caravan-chooser	0xdd479e	0x20fcaa4	cstring	Unmark all
+trade-renderer-with-caravan-chooser	0xdd48af	0x20fca9b	cstring	Mark all
+trade-renderer-with-caravan-chooser	0xdd49a2	0x20fcaa4	cstring	Unmark all
+trade-renderer-with-caravan-chooser	0xdd4af3	0x20fcaaf	cstring	Seize
+trade-renderer-with-caravan-chooser	0xdd4cd5	0x20fcab5	cstring	Accept Counteroffer
+trade-renderer-with-caravan-chooser	0xdd4f87	0x20fcacf	cstring	Offer as gift
+trade-renderer-with-caravan-chooser	0xdd54f3	0x20fcac9	cstring	Trade
+trade-renderer-with-caravan-chooser	0xdd6bdb	0x20fca8b	cstring	Excess Weight: 
+trade-renderer-with-caravan-chooser	0xdd71cd	0x20fca6c	cstring	Trader Loss: 
+trade-renderer-with-caravan-chooser	0xdd730a	0x2142877	cstring	_
+trade-renderer-with-caravan-chooser	0xdd7842	0x20fc0d9	cstring	Value: 
+trade-renderer-with-caravan-chooser	0xdd78cd	0x20fca82	cstring	Weight: 
+trade-renderer-with-caravan-chooser	0xdd7d08	0x2130cb8	cstring	""""
+trade-renderer-with-caravan-chooser	0xdd7d78	0x20fb950	cstring	I see your low race still revels in death.  
+trade-renderer-with-caravan-chooser	0xdd7d87	0x20fc993	cstring	That poor, gentle creature...
+trade-renderer-with-caravan-chooser	0xdd7e68	0x20fc9b1	cstring	 seems 
+trade-renderer-with-caravan-chooser	0xdd8281	0x20fca82	cstring	Weight: 
+trade-renderer-with-caravan-chooser	0xdd840e	0x20fc0cf	cstring	Contains 
+trade-renderer-with-caravan-chooser	0xdd843c	0x21e0386	cstring	 item
+trade-renderer-with-caravan-chooser	0xdd8450	0x2131974	cstring	s
+trade-renderer-with-caravan-chooser	0xdd86e6	0x20fc0d9	cstring	Value: 
+trade-renderer-with-caravan-chooser	0xdd88ab	0x20fca29	cstring	willing to trade
+trade-renderer-with-caravan-chooser	0xdd88cd	0x20fc9f0	cstring	pleased with the trading
+trade-renderer-with-caravan-chooser	0xdd88ef	0x20fc9d3	cstring	very happy about the trading
+trade-renderer-with-caravan-chooser	0xdd8911	0x20fc9b9	cstring	ecstatic with the trading
+trade-renderer-with-caravan-chooser	0xdd8955	0x20c920e	cstring	vector::_M_default_append
+trade-renderer-with-caravan-chooser	0xdd8a26	0x20fca27	cstring	unwilling to trade
+trade-renderer-with-caravan-chooser	0xdd8a48	0x20fca09	cstring	to be rapidly losing patience
+trade-renderer-with-caravan-chooser	0xdd8c82	0x20fb4a0	cstring	Even with your combined trade goods, such as they are, I can't 
+trade-renderer-with-caravan-chooser	0xdd8c91	0x20fb4e0	cstring	fathom you ending up with the items you desire.
+trade-renderer-with-caravan-chooser	0xdd8cac	0x20fb468	cstring	You'll need more goods to make this arrangement.  
+trade-renderer-with-caravan-chooser	0xdd8cbb	0x20fc934	cstring	All I see here is not enough.
+trade-renderer-with-caravan-chooser	0xdd8cd6	0x20fb338	cstring	Please understand the journey must be profitable.  Perhaps you'd consider tossing in a little extra?
+trade-renderer-with-caravan-chooser	0xdd8cee	0x20fb8f8	cstring	Once a beautiful tree, and now?  
+trade-renderer-with-caravan-chooser	0xdd8cfd	0x20fb920	cstring	It is a rude bauble, fit only for your kind.
+trade-renderer-with-caravan-chooser	0xdd8d18	0x20fb880	cstring	You truly despise life, don't you?  
+trade-renderer-with-caravan-chooser	0xdd8d27	0x20fb8a8	cstring	I am beside myself with grief.  Perhaps we will show you how they suffered.
+trade-renderer-with-caravan-chooser	0xdd8d73	0x20fb858	cstring	Are these gifts?  Do you wish to trade?
+trade-renderer-with-caravan-chooser	0xdd8d8b	0x20fb7a0	cstring	For me?  At no price?  I can accept your offer, or perhaps you wish to trade.
+trade-renderer-with-caravan-chooser	0xdd8da3	0x20fb770	cstring	These _are_ fine items, aren't they?  Now, 
+trade-renderer-with-caravan-chooser	0xdd8db2	0x20fc97b	cstring	what do offer for them?
+trade-renderer-with-caravan-chooser	0xdd8dcd	0x20fb730	cstring	Ah, but my goods are not free!  What do you offer in trade?
+trade-renderer-with-caravan-chooser	0xdd8de5	0x20fb700	cstring	Yes, and trade we will!  Simply tell me 
+trade-renderer-with-caravan-chooser	0xdd8df4	0x2197130	cstring	what interests you and what you're prepared to offer in exchange.
+trade-renderer-with-caravan-chooser	0xdd8e0f	0x20fb6a8	cstring	I am a merchant, yes.  You see, I wish to trade.  Which of my goods do you desire?
+trade-renderer-with-caravan-chooser	0xdd8e62	0x20fc964	cstring	[Chuckles]  How droll.
+trade-renderer-with-caravan-chooser	0xdd8e7a	0x20fb570	cstring	Take what you wish.  I can't stop you.
+trade-renderer-with-caravan-chooser	0xdd8ec9	0x20fc952	cstring	You are too kind.
+trade-renderer-with-caravan-chooser	0xdd8ef1	0x20fb540	cstring	I will see that our leader gets this offering.
+trade-renderer-with-caravan-chooser	0xdd8f46	0x20fb5c8	cstring	You wish to make an offering?  We love gifts.
+trade-renderer-with-caravan-chooser	0xdd8f72	0x20fb630	cstring	[Laughs uproariously]  You had me 
+trade-renderer-with-caravan-chooser	0xdd8f85	0x20fb658	cstring	going there.  Obviously, your copious wit is matched only by your industry!
+trade-renderer-with-caravan-chooser	0xdd8fad	0x20fb598	cstring	You wish to make an offering to our leader?  
+trade-renderer-with-caravan-chooser	0xdd8fc0	0x20fb5f8	cstring	This would please us greatly.  What do you offer?
+trade-renderer-with-caravan-chooser	0xdd8fdf	0x20fb510	cstring	Ah, wonderful.  Thank you for your business.
+trade-renderer-with-caravan-chooser	0xdd8ff7	0x20fc91b	cstring	I won't trade at a loss.
+trade-renderer-with-caravan-chooser	0xdd900f	0x20fb2f8	cstring	I must make a profit.  There is simply not enough value here.
+trade-renderer-with-caravan-chooser	0xdd9027	0x20fb2c8	cstring	I wish I could take so much, but my animals...
+trade-renderer-with-caravan-chooser	0xdd903f	0x20fb280	cstring	Do not tempt me!  My beasts of burden cannot possibly haul such a load.
+trade-renderer-with-caravan-chooser	0xdd9057	0x20fb250	cstring	I cannot take so much -- and at such cost!
+trade-renderer-with-caravan-chooser	0xdd906f	0x20fb218	cstring	These goods are too heavy and cheap for me to consider.
+trade-renderer-with-caravan-chooser	0xdd90a9	0x20fb068	cstring	Greetings from the outer lands.  
+trade-renderer-with-caravan-chooser	0xdd90bc	0x20fb0b8	cstring	Your efforts are legend there.  Let us trade!
+trade-renderer-with-caravan-chooser	0xdd90d4	0x20fb7f0	cstring	My stones, are you giving me those?  Do you 
+trade-renderer-with-caravan-chooser	0xdd90e3	0x20fb820	cstring	wish to trade or to make an offering to our leader?
+trade-renderer-with-caravan-chooser	0xdd90fe	0x20fb090	cstring	Greetings from the Mountainhomes.  
+trade-renderer-with-caravan-chooser	0xdd9141	0x20fb0e8	cstring	Greetings.  We are enchanted by 
+trade-renderer-with-caravan-chooser	0xdd9150	0x20fb110	cstring	your more ethical works.  We've come to trade.
+trade-renderer-with-caravan-chooser	0xdd919d	0x20fc8eb	cstring	Greetings.  The 
+trade-renderer-with-caravan-chooser	0xdd9264	0x20f2f6a	cstring	craftsman
+trade-renderer-with-caravan-chooser	0xdd9287	0x20fc8fc	cstring	ship of the 
+trade-renderer-with-caravan-chooser	0xdd92d9	0x20fb198	cstring	 is unparalleled.  Let's make a deal!
+trade-renderer-with-caravan-chooser	0xdd9352	0x20fb140	cstring	Greetings from our mountain halls to yours.  Let us strengthen our bonds in trade.
+trade-renderer-with-caravan-chooser	0xdd95a2	0x20fb400	cstring	Leave it to the besotted dullard to miss the finer points of discourse.  I'm leaving.  Do reflect.
+trade-renderer-with-caravan-chooser	0xdd960d	0x20fc909	cstring	What do you want?
+trade-renderer-with-caravan-chooser	0xdd9639	0x20fb3a0	cstring	Your childish games have made me tired.  Perhaps next time I visit you'll take this seriously.
+trade-renderer-with-caravan-chooser	0xdd9663	0x20fb1c0	cstring	A hairy drunkard has come hither to once more disrespect the sanctity of life, I see.
+trade-renderer-with-caravan-chooser	0xdd9787	0x20fc0cf	cstring	Contains 
+trade-renderer-with-caravan-chooser	0xdd97c4	0x21e0386	cstring	 item
+trade-renderer-with-caravan-chooser	0xdd97d9	0x2131974	cstring	s
+native-language-entity-name	0x12c05de	0x20f7379	cstring	 
+native-language-entity-name	0x12c05fe	0x20f7379	cstring	 
+native-language-entity-name	0x12c08be	0x20f7379	cstring	 
+native-language-entity-name	0x12c0a56	0x20f7379	cstring	 

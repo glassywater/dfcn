@@ -1,0 +1,679 @@
+role	instruction	callee
+trade-renderer-with-caravan-chooser	0xdcffb2	423d30
+trade-renderer-with-caravan-chooser	0xdd013e	423d30
+trade-renderer-with-caravan-chooser	0xdd01ad	423860
+trade-renderer-with-caravan-chooser	0xdd01fb	425170
+trade-renderer-with-caravan-chooser	0xdd0211	423790
+trade-renderer-with-caravan-chooser	0xdd032a	423d30
+trade-renderer-with-caravan-chooser	0xdd04dd	423d30
+trade-renderer-with-caravan-chooser	0xdd0552	e3d840
+trade-renderer-with-caravan-chooser	0xdd058a	b761e0
+trade-renderer-with-caravan-chooser	0xdd05a1	b312f0
+trade-renderer-with-caravan-chooser	0xdd06f8	e4ce40
+trade-renderer-with-caravan-chooser	0xdd08ea	423d30
+trade-renderer-with-caravan-chooser	0xdd0a6b	423d30
+trade-renderer-with-caravan-chooser	0xdd0b71	19df270
+trade-renderer-with-caravan-chooser	0xdd0bc7	423b20
+trade-renderer-with-caravan-chooser	0xdd0be4	423790
+trade-renderer-with-caravan-chooser	0xdd0c0a	423d30
+trade-renderer-with-caravan-chooser	0xdd0c79	d42ea0
+trade-renderer-with-caravan-chooser	0xdd0cd8	12ae800
+trade-renderer-with-caravan-chooser	0xdd0ce0	424f90
+trade-renderer-with-caravan-chooser	0xdd0cf2	425170
+trade-renderer-with-caravan-chooser	0xdd0d30	425170
+trade-renderer-with-caravan-chooser	0xdd0d46	423790
+trade-renderer-with-caravan-chooser	0xdd0d59	12bfe90
+trade-renderer-with-caravan-chooser	0xdd0d68	425170
+trade-renderer-with-caravan-chooser	0xdd0d82	423790
+trade-renderer-with-caravan-chooser	0xdd0e00	423d30
+trade-renderer-with-caravan-chooser	0xdd0e32	423d30
+trade-renderer-with-caravan-chooser	0xdd0e4a	423d30
+trade-renderer-with-caravan-chooser	0xdd0e62	423d30
+trade-renderer-with-caravan-chooser	0xdd0e7a	423d30
+trade-renderer-with-caravan-chooser	0xdd0e8e	423d30
+trade-renderer-with-caravan-chooser	0xdd0ea2	423d30
+trade-renderer-with-caravan-chooser	0xdd0eb6	423d30
+trade-renderer-with-caravan-chooser	0xdd0eca	423d30
+trade-renderer-with-caravan-chooser	0xdd0ede	423d30
+trade-renderer-with-caravan-chooser	0xdd0ef2	423d30
+trade-renderer-with-caravan-chooser	0xdd0f06	423d30
+trade-renderer-with-caravan-chooser	0xdd0f5d	423d30
+trade-renderer-with-caravan-chooser	0xdd0f71	423d30
+trade-renderer-with-caravan-chooser	0xdd1042	424900
+trade-renderer-with-caravan-chooser	0xdd1077	424900
+trade-renderer-with-caravan-chooser	0xdd10f6	69e270
+trade-renderer-with-caravan-chooser	0xdd11bd	69e270
+trade-renderer-with-caravan-chooser	0xdd135a	d435b0
+trade-renderer-with-caravan-chooser	0xdd136d	d435b0
+trade-renderer-with-caravan-chooser	0xdd13c2	423870
+trade-renderer-with-caravan-chooser	0xdd155e	423ce0
+trade-renderer-with-caravan-chooser	0xdd15e6	QWORD PTR [rax]
+trade-renderer-with-caravan-chooser	0xdd1680	QWORD PTR [rax+0x10]
+trade-renderer-with-caravan-chooser	0xdd16a5	QWORD PTR [rax+0x18]
+trade-renderer-with-caravan-chooser	0xdd16cc	835af0
+trade-renderer-with-caravan-chooser	0xdd1785	423870
+trade-renderer-with-caravan-chooser	0xdd1859	b24020
+trade-renderer-with-caravan-chooser	0xdd1871	QWORD PTR [rax]
+trade-renderer-with-caravan-chooser	0xdd190d	ba53d0
+trade-renderer-with-caravan-chooser	0xdd1929	b24020
+trade-renderer-with-caravan-chooser	0xdd1958	425170
+trade-renderer-with-caravan-chooser	0xdd196e	423790
+trade-renderer-with-caravan-chooser	0xdd19b1	423860
+trade-renderer-with-caravan-chooser	0xdd1a01	425170
+trade-renderer-with-caravan-chooser	0xdd1a17	423790
+trade-renderer-with-caravan-chooser	0xdd1a3c	423860
+trade-renderer-with-caravan-chooser	0xdd1a79	425170
+trade-renderer-with-caravan-chooser	0xdd1a93	423790
+trade-renderer-with-caravan-chooser	0xdd1b55	19df270
+trade-renderer-with-caravan-chooser	0xdd1bab	423b20
+trade-renderer-with-caravan-chooser	0xdd1bc8	423790
+trade-renderer-with-caravan-chooser	0xdd1bff	b24020
+trade-renderer-with-caravan-chooser	0xdd1c17	QWORD PTR [rax]
+trade-renderer-with-caravan-chooser	0xdd1c21	d41a40
+trade-renderer-with-caravan-chooser	0xdd1c59	ba53d0
+trade-renderer-with-caravan-chooser	0xdd1c75	b24020
+trade-renderer-with-caravan-chooser	0xdd1caa	425170
+trade-renderer-with-caravan-chooser	0xdd1cc4	b8a5e0
+trade-renderer-with-caravan-chooser	0xdd1d51	d43d30
+trade-renderer-with-caravan-chooser	0xdd1d7f	d67000
+trade-renderer-with-caravan-chooser	0xdd1de5	d67000
+trade-renderer-with-caravan-chooser	0xdd1dfb	d67000
+trade-renderer-with-caravan-chooser	0xdd1e0a	425170
+trade-renderer-with-caravan-chooser	0xdd1e24	423790
+trade-renderer-with-caravan-chooser	0xdd1e40	423790
+trade-renderer-with-caravan-chooser	0xdd2003	423d30
+trade-renderer-with-caravan-chooser	0xdd2134	d43d30
+trade-renderer-with-caravan-chooser	0xdd2163	4248a0
+trade-renderer-with-caravan-chooser	0xdd21b1	425170
+trade-renderer-with-caravan-chooser	0xdd220e	423790
+trade-renderer-with-caravan-chooser	0xdd22b1	d43ed0
+trade-renderer-with-caravan-chooser	0xdd22c0	425170
+trade-renderer-with-caravan-chooser	0xdd22e1	423790
+trade-renderer-with-caravan-chooser	0xdd2318	d43ed0
+trade-renderer-with-caravan-chooser	0xdd2327	425170
+trade-renderer-with-caravan-chooser	0xdd2341	423790
+trade-renderer-with-caravan-chooser	0xdd23b8	423d30
+trade-renderer-with-caravan-chooser	0xdd2455	QWORD PTR [rax]
+trade-renderer-with-caravan-chooser	0xdd24f0	QWORD PTR [rax+0x10]
+trade-renderer-with-caravan-chooser	0xdd2515	QWORD PTR [rax+0x18]
+trade-renderer-with-caravan-chooser	0xdd253c	835af0
+trade-renderer-with-caravan-chooser	0xdd25f1	423870
+trade-renderer-with-caravan-chooser	0xdd2645	d4d9f0
+trade-renderer-with-caravan-chooser	0xdd2660	d4c880
+trade-renderer-with-caravan-chooser	0xdd266d	d4d9f0
+trade-renderer-with-caravan-chooser	0xdd268b	d4c880
+trade-renderer-with-caravan-chooser	0xdd26ec	423860
+trade-renderer-with-caravan-chooser	0xdd2749	425170
+trade-renderer-with-caravan-chooser	0xdd275d	98ed40
+trade-renderer-with-caravan-chooser	0xdd2774	d44540
+trade-renderer-with-caravan-chooser	0xdd2879	82c310
+trade-renderer-with-caravan-chooser	0xdd28a8	QWORD PTR [rax]
+trade-renderer-with-caravan-chooser	0xdd28ba	QWORD PTR [rax]
+trade-renderer-with-caravan-chooser	0xdd28ca	QWORD PTR [rax+0x8]
+trade-renderer-with-caravan-chooser	0xdd2924	82c310
+trade-renderer-with-caravan-chooser	0xdd2935	QWORD PTR [rax+0x8]
+trade-renderer-with-caravan-chooser	0xdd2987	QWORD PTR [rax]
+trade-renderer-with-caravan-chooser	0xdd2998	QWORD PTR [rax]
+trade-renderer-with-caravan-chooser	0xdd29a7	QWORD PTR [rax+0x8]
+trade-renderer-with-caravan-chooser	0xdd2a0d	QWORD PTR [rax+0x8]
+trade-renderer-with-caravan-chooser	0xdd2a1f	QWORD PTR [rax+0x8]
+trade-renderer-with-caravan-chooser	0xdd2a55	d44540
+trade-renderer-with-caravan-chooser	0xdd2a6d	423790
+trade-renderer-with-caravan-chooser	0xdd2aeb	423d30
+trade-renderer-with-caravan-chooser	0xdd2b06	423d30
+trade-renderer-with-caravan-chooser	0xdd2b1a	423d30
+trade-renderer-with-caravan-chooser	0xdd2b35	423d30
+trade-renderer-with-caravan-chooser	0xdd2b49	423d30
+trade-renderer-with-caravan-chooser	0xdd2b61	c36610
+trade-renderer-with-caravan-chooser	0xdd2b79	8380b0
+trade-renderer-with-caravan-chooser	0xdd2b91	c36610
+trade-renderer-with-caravan-chooser	0xdd2ba9	8380b0
+trade-renderer-with-caravan-chooser	0xdd2bef	423d30
+trade-renderer-with-caravan-chooser	0xdd2c16	d67000
+trade-renderer-with-caravan-chooser	0xdd2c74	423870
+trade-renderer-with-caravan-chooser	0xdd2c92	423870
+trade-renderer-with-caravan-chooser	0xdd2dfb	425110
+trade-renderer-with-caravan-chooser	0xdd2e3c	d43ed0
+trade-renderer-with-caravan-chooser	0xdd2e4b	425170
+trade-renderer-with-caravan-chooser	0xdd2e65	423790
+trade-renderer-with-caravan-chooser	0xdd2f29	eeb460
+trade-renderer-with-caravan-chooser	0xdd2ffe	QWORD PTR [rax+0x10]
+trade-renderer-with-caravan-chooser	0xdd3052	QWORD PTR [rax+0x478]
+trade-renderer-with-caravan-chooser	0xdd3074	QWORD PTR [rax+0x488]
+trade-renderer-with-caravan-chooser	0xdd309b	e3e320
+trade-renderer-with-caravan-chooser	0xdd30ab	14c4ac0
+trade-renderer-with-caravan-chooser	0xdd30c7	QWORD PTR [rax+0x488]
+trade-renderer-with-caravan-chooser	0xdd31ae	QWORD PTR [rax+0x10]
+trade-renderer-with-caravan-chooser	0xdd3201	QWORD PTR [rax+0x478]
+trade-renderer-with-caravan-chooser	0xdd3223	QWORD PTR [rax+0x488]
+trade-renderer-with-caravan-chooser	0xdd324a	e3e320
+trade-renderer-with-caravan-chooser	0xdd325a	14c4ac0
+trade-renderer-with-caravan-chooser	0xdd3276	QWORD PTR [rax+0x488]
+trade-renderer-with-caravan-chooser	0xdd32e6	b8a5e0
+trade-renderer-with-caravan-chooser	0xdd3330	d43ed0
+trade-renderer-with-caravan-chooser	0xdd3342	425170
+trade-renderer-with-caravan-chooser	0xdd335c	423790
+trade-renderer-with-caravan-chooser	0xdd3385	423830
+trade-renderer-with-caravan-chooser	0xdd33f3	425170
+trade-renderer-with-caravan-chooser	0xdd340d	423790
+trade-renderer-with-caravan-chooser	0xdd3430	d43ed0
+trade-renderer-with-caravan-chooser	0xdd3442	425170
+trade-renderer-with-caravan-chooser	0xdd345c	423790
+trade-renderer-with-caravan-chooser	0xdd3485	423830
+trade-renderer-with-caravan-chooser	0xdd34db	425170
+trade-renderer-with-caravan-chooser	0xdd34f5	423790
+trade-renderer-with-caravan-chooser	0xdd358b	d43ed0
+trade-renderer-with-caravan-chooser	0xdd359d	425170
+trade-renderer-with-caravan-chooser	0xdd35b7	423790
+trade-renderer-with-caravan-chooser	0xdd35e0	423830
+trade-renderer-with-caravan-chooser	0xdd35ed	c31180
+trade-renderer-with-caravan-chooser	0xdd35fc	425170
+trade-renderer-with-caravan-chooser	0xdd3616	423790
+trade-renderer-with-caravan-chooser	0xdd365a	QWORD PTR [rax]
+trade-renderer-with-caravan-chooser	0xdd3693	QWORD PTR [rax+0x478]
+trade-renderer-with-caravan-chooser	0xdd36b5	QWORD PTR [rax+0x488]
+trade-renderer-with-caravan-chooser	0xdd375c	QWORD PTR [rax+0x488]
+trade-renderer-with-caravan-chooser	0xdd379b	QWORD PTR [rax+0x478]
+trade-renderer-with-caravan-chooser	0xdd37c4	QWORD PTR [rax+0x488]
+trade-renderer-with-caravan-chooser	0xdd38fc	QWORD PTR [rax+0x488]
+trade-renderer-with-caravan-chooser	0xdd3917	QWORD PTR [rax]
+trade-renderer-with-caravan-chooser	0xdd39a9	QWORD PTR [rax+0x10]
+trade-renderer-with-caravan-chooser	0xdd39f5	QWORD PTR [rax+0x60]
+trade-renderer-with-caravan-chooser	0xdd3a4f	QWORD PTR [rax+0x478]
+trade-renderer-with-caravan-chooser	0xdd3a6d	QWORD PTR [rax+0x488]
+trade-renderer-with-caravan-chooser	0xdd3b6d	QWORD PTR [rax+0x488]
+trade-renderer-with-caravan-chooser	0xdd3b7f	QWORD PTR [rax]
+trade-renderer-with-caravan-chooser	0xdd3bf9	QWORD PTR [rax+0x10]
+trade-renderer-with-caravan-chooser	0xdd3c7f	QWORD PTR [rax+0x60]
+trade-renderer-with-caravan-chooser	0xdd3ca0	QWORD PTR [rax+0x478]
+trade-renderer-with-caravan-chooser	0xdd3cba	QWORD PTR [rax+0x488]
+trade-renderer-with-caravan-chooser	0xdd3ce3	816fa0
+trade-renderer-with-caravan-chooser	0xdd3d07	816fa0
+trade-renderer-with-caravan-chooser	0xdd3d15	QWORD PTR [rax+0x488]
+trade-renderer-with-caravan-chooser	0xdd3d49	QWORD PTR [rax+0x478]
+trade-renderer-with-caravan-chooser	0xdd3d71	QWORD PTR [rax+0x488]
+trade-renderer-with-caravan-chooser	0xdd3e18	QWORD PTR [rax+0x488]
+trade-renderer-with-caravan-chooser	0xdd3e2c	QWORD PTR [rax]
+trade-renderer-with-caravan-chooser	0xdd3e98	QWORD PTR [rax+0x10]
+trade-renderer-with-caravan-chooser	0xdd3f0d	QWORD PTR [rax+0x60]
+trade-renderer-with-caravan-chooser	0xdd3f2f	QWORD PTR [rax+0x478]
+trade-renderer-with-caravan-chooser	0xdd3f4c	QWORD PTR [rax+0x488]
+trade-renderer-with-caravan-chooser	0xdd3f6c	816fa0
+trade-renderer-with-caravan-chooser	0xdd3f7a	QWORD PTR [rax+0x488]
+trade-renderer-with-caravan-chooser	0xdd40a3	e3e320
+trade-renderer-with-caravan-chooser	0xdd40b3	14c4ac0
+trade-renderer-with-caravan-chooser	0xdd40d9	e3e320
+trade-renderer-with-caravan-chooser	0xdd40e9	14c4ac0
+trade-renderer-with-caravan-chooser	0xdd41f6	e3d050
+trade-renderer-with-caravan-chooser	0xdd4218	e3d050
+trade-renderer-with-caravan-chooser	0xdd4459	423d30
+trade-renderer-with-caravan-chooser	0xdd44ab	82f700
+trade-renderer-with-caravan-chooser	0xdd4568	d43ed0
+trade-renderer-with-caravan-chooser	0xdd4577	425170
+trade-renderer-with-caravan-chooser	0xdd4591	423790
+trade-renderer-with-caravan-chooser	0xdd45be	14ef8e0
+trade-renderer-with-caravan-chooser	0xdd45cd	425170
+trade-renderer-with-caravan-chooser	0xdd45e3	423790
+trade-renderer-with-caravan-chooser	0xdd4671	423d30
+trade-renderer-with-caravan-chooser	0xdd46db	d43ed0
+trade-renderer-with-caravan-chooser	0xdd46ea	425170
+trade-renderer-with-caravan-chooser	0xdd4704	423790
+trade-renderer-with-caravan-chooser	0xdd4775	423d30
+trade-renderer-with-caravan-chooser	0xdd47ce	d43ed0
+trade-renderer-with-caravan-chooser	0xdd47dd	425170
+trade-renderer-with-caravan-chooser	0xdd47f7	423790
+trade-renderer-with-caravan-chooser	0xdd487e	423d30
+trade-renderer-with-caravan-chooser	0xdd48df	d43ed0
+trade-renderer-with-caravan-chooser	0xdd48ee	425170
+trade-renderer-with-caravan-chooser	0xdd4908	423790
+trade-renderer-with-caravan-chooser	0xdd4979	423d30
+trade-renderer-with-caravan-chooser	0xdd49d2	d43ed0
+trade-renderer-with-caravan-chooser	0xdd49e1	425170
+trade-renderer-with-caravan-chooser	0xdd49fb	423790
+trade-renderer-with-caravan-chooser	0xdd4aa7	423d30
+trade-renderer-with-caravan-chooser	0xdd4b33	d43ed0
+trade-renderer-with-caravan-chooser	0xdd4b42	425170
+trade-renderer-with-caravan-chooser	0xdd4b5c	423790
+trade-renderer-with-caravan-chooser	0xdd4c32	423d30
+trade-renderer-with-caravan-chooser	0xdd4cdf	d43ed0
+trade-renderer-with-caravan-chooser	0xdd4cee	425170
+trade-renderer-with-caravan-chooser	0xdd4d08	423790
+trade-renderer-with-caravan-chooser	0xdd4df4	423d30
+trade-renderer-with-caravan-chooser	0xdd4e9a	423d30
+trade-renderer-with-caravan-chooser	0xdd4ede	423d30
+trade-renderer-with-caravan-chooser	0xdd4f1e	423d30
+trade-renderer-with-caravan-chooser	0xdd4f62	423d30
+trade-renderer-with-caravan-chooser	0xdd4fc7	d43ed0
+trade-renderer-with-caravan-chooser	0xdd4fd6	425170
+trade-renderer-with-caravan-chooser	0xdd5002	423d30
+trade-renderer-with-caravan-chooser	0xdd503c	423d30
+trade-renderer-with-caravan-chooser	0xdd5050	423d30
+trade-renderer-with-caravan-chooser	0xdd5064	423d30
+trade-renderer-with-caravan-chooser	0xdd50ad	423d30
+trade-renderer-with-caravan-chooser	0xdd511f	423d30
+trade-renderer-with-caravan-chooser	0xdd51b9	423d30
+trade-renderer-with-caravan-chooser	0xdd5246	423d30
+trade-renderer-with-caravan-chooser	0xdd526e	423d30
+trade-renderer-with-caravan-chooser	0xdd52ed	423d30
+trade-renderer-with-caravan-chooser	0xdd5351	423d30
+trade-renderer-with-caravan-chooser	0xdd53cb	423d30
+trade-renderer-with-caravan-chooser	0xdd5437	423d30
+trade-renderer-with-caravan-chooser	0xdd5460	423d30
+trade-renderer-with-caravan-chooser	0xdd54fd	d43ed0
+trade-renderer-with-caravan-chooser	0xdd550c	425170
+trade-renderer-with-caravan-chooser	0xdd5519	e3d050
+trade-renderer-with-caravan-chooser	0xdd553d	e3d050
+trade-renderer-with-caravan-chooser	0xdd55b6	423d30
+trade-renderer-with-caravan-chooser	0xdd55ca	423d30
+trade-renderer-with-caravan-chooser	0xdd5643	e18da0
+trade-renderer-with-caravan-chooser	0xdd566c	425110
+trade-renderer-with-caravan-chooser	0xdd578b	423ce0
+trade-renderer-with-caravan-chooser	0xdd5958	425170
+trade-renderer-with-caravan-chooser	0xdd5c7c	816fa0
+trade-renderer-with-caravan-chooser	0xdd5c9d	816fa0
+trade-renderer-with-caravan-chooser	0xdd5dcc	423ce0
+trade-renderer-with-caravan-chooser	0xdd5e79	e3d050
+trade-renderer-with-caravan-chooser	0xdd5e8c	e3d050
+trade-renderer-with-caravan-chooser	0xdd5e9d	e3d050
+trade-renderer-with-caravan-chooser	0xdd5eb9	e3d050
+trade-renderer-with-caravan-chooser	0xdd5ed0	e3d050
+trade-renderer-with-caravan-chooser	0xdd5ef9	e3d050
+trade-renderer-with-caravan-chooser	0xdd5f31	425170
+trade-renderer-with-caravan-chooser	0xdd5f58	425170
+trade-renderer-with-caravan-chooser	0xdd5f79	423860
+trade-renderer-with-caravan-chooser	0xdd602b	69e720
+trade-renderer-with-caravan-chooser	0xdd62af	QWORD PTR [rax]
+trade-renderer-with-caravan-chooser	0xdd62c4	QWORD PTR [rax+0x8]
+trade-renderer-with-caravan-chooser	0xdd6436	423d30
+trade-renderer-with-caravan-chooser	0xdd661a	e4d220
+trade-renderer-with-caravan-chooser	0xdd66fb	423d30
+trade-renderer-with-caravan-chooser	0xdd670f	423d30
+trade-renderer-with-caravan-chooser	0xdd6723	423d30
+trade-renderer-with-caravan-chooser	0xdd6737	423d30
+trade-renderer-with-caravan-chooser	0xdd6786	423510
+trade-renderer-with-caravan-chooser	0xdd67b6	423510
+trade-renderer-with-caravan-chooser	0xdd6872	423d30
+trade-renderer-with-caravan-chooser	0xdd6b1a	423510
+trade-renderer-with-caravan-chooser	0xdd6b33	423d30
+trade-renderer-with-caravan-chooser	0xdd6b4b	423d30
+trade-renderer-with-caravan-chooser	0xdd6b9d	e3d050
+trade-renderer-with-caravan-chooser	0xdd6bbf	e3d050
+trade-renderer-with-caravan-chooser	0xdd6bef	d43ed0
+trade-renderer-with-caravan-chooser	0xdd6bfe	425170
+trade-renderer-with-caravan-chooser	0xdd6c18	423790
+trade-renderer-with-caravan-chooser	0xdd6c59	14ef8e0
+trade-renderer-with-caravan-chooser	0xdd6c68	425170
+trade-renderer-with-caravan-chooser	0xdd6c9f	e3d050
+trade-renderer-with-caravan-chooser	0xdd6cd3	e3d050
+trade-renderer-with-caravan-chooser	0xdd6d53	QWORD PTR [rax+0x10]
+trade-renderer-with-caravan-chooser	0xdd6d9c	QWORD PTR [rax+0x60]
+trade-renderer-with-caravan-chooser	0xdd6dfb	QWORD PTR [rax+0x478]
+trade-renderer-with-caravan-chooser	0xdd6e1f	QWORD PTR [rax+0x488]
+trade-renderer-with-caravan-chooser	0xdd6ec9	QWORD PTR [rax+0x488]
+trade-renderer-with-caravan-chooser	0xdd6f0a	816fa0
+trade-renderer-with-caravan-chooser	0xdd6f83	e3d050
+trade-renderer-with-caravan-chooser	0xdd6fa2	e3d050
+trade-renderer-with-caravan-chooser	0xdd6fd0	69e720
+trade-renderer-with-caravan-chooser	0xdd7028	423b20
+trade-renderer-with-caravan-chooser	0xdd7074	423ce0
+trade-renderer-with-caravan-chooser	0xdd71bc	423510
+trade-renderer-with-caravan-chooser	0xdd71e1	d43ed0
+trade-renderer-with-caravan-chooser	0xdd71f3	425170
+trade-renderer-with-caravan-chooser	0xdd720d	423790
+trade-renderer-with-caravan-chooser	0xdd723f	423830
+trade-renderer-with-caravan-chooser	0xdd724c	c31180
+trade-renderer-with-caravan-chooser	0xdd725b	425170
+trade-renderer-with-caravan-chooser	0xdd7268	e3d050
+trade-renderer-with-caravan-chooser	0xdd727b	e3d050
+trade-renderer-with-caravan-chooser	0xdd728c	e3d050
+trade-renderer-with-caravan-chooser	0xdd72a3	e3d050
+trade-renderer-with-caravan-chooser	0xdd72d3	816fa0
+trade-renderer-with-caravan-chooser	0xdd72f9	816fa0
+trade-renderer-with-caravan-chooser	0xdd7311	d67000
+trade-renderer-with-caravan-chooser	0xdd731e	e3d050
+trade-renderer-with-caravan-chooser	0xdd733b	e3d050
+trade-renderer-with-caravan-chooser	0xdd7368	816fa0
+trade-renderer-with-caravan-chooser	0xdd7375	e3d050
+trade-renderer-with-caravan-chooser	0xdd7388	e3d050
+trade-renderer-with-caravan-chooser	0xdd7399	e3d050
+trade-renderer-with-caravan-chooser	0xdd73b0	e3d050
+trade-renderer-with-caravan-chooser	0xdd7427	423860
+trade-renderer-with-caravan-chooser	0xdd744b	423690
+trade-renderer-with-caravan-chooser	0xdd7464	423790
+trade-renderer-with-caravan-chooser	0xdd7525	e18da0
+trade-renderer-with-caravan-chooser	0xdd7548	425110
+trade-renderer-with-caravan-chooser	0xdd75fe	12b6a70
+trade-renderer-with-caravan-chooser	0xdd760a	424f90
+trade-renderer-with-caravan-chooser	0xdd7640	425170
+trade-renderer-with-caravan-chooser	0xdd765e	423790
+trade-renderer-with-caravan-chooser	0xdd76fb	423510
+trade-renderer-with-caravan-chooser	0xdd770b	e3d050
+trade-renderer-with-caravan-chooser	0xdd7730	e3d050
+trade-renderer-with-caravan-chooser	0xdd7744	423d30
+trade-renderer-with-caravan-chooser	0xdd7751	e3d050
+trade-renderer-with-caravan-chooser	0xdd7775	e3d050
+trade-renderer-with-caravan-chooser	0xdd778d	eeb460
+trade-renderer-with-caravan-chooser	0xdd77ae	b8a5e0
+trade-renderer-with-caravan-chooser	0xdd7821	e3e320
+trade-renderer-with-caravan-chooser	0xdd7839	14f4380
+trade-renderer-with-caravan-chooser	0xdd7859	d43ed0
+trade-renderer-with-caravan-chooser	0xdd786b	425170
+trade-renderer-with-caravan-chooser	0xdd7885	423790
+trade-renderer-with-caravan-chooser	0xdd7898	425170
+trade-renderer-with-caravan-chooser	0xdd78b2	423790
+trade-renderer-with-caravan-chooser	0xdd78ff	d43ed0
+trade-renderer-with-caravan-chooser	0xdd793f	14ef8e0
+trade-renderer-with-caravan-chooser	0xdd7956	d66f60
+trade-renderer-with-caravan-chooser	0xdd7965	425170
+trade-renderer-with-caravan-chooser	0xdd797f	423790
+trade-renderer-with-caravan-chooser	0xdd799d	423790
+trade-renderer-with-caravan-chooser	0xdd79db	QWORD PTR [rax+0x10]
+trade-renderer-with-caravan-chooser	0xdd7a05	QWORD PTR [rax+0x10]
+trade-renderer-with-caravan-chooser	0xdd7aed	e68020
+trade-renderer-with-caravan-chooser	0xdd7b27	425170
+trade-renderer-with-caravan-chooser	0xdd7b45	423790
+trade-renderer-with-caravan-chooser	0xdd7b6e	QWORD PTR [rax+0x370]
+trade-renderer-with-caravan-chooser	0xdd7b7e	QWORD PTR [rax+0x640]
+trade-renderer-with-caravan-chooser	0xdd7b8c	d41a40
+trade-renderer-with-caravan-chooser	0xdd7be3	423d30
+trade-renderer-with-caravan-chooser	0xdd7c60	423ce0
+trade-renderer-with-caravan-chooser	0xdd7d17	e19190
+trade-renderer-with-caravan-chooser	0xdd7d46	d43ed0
+trade-renderer-with-caravan-chooser	0xdd7d82	d67000
+trade-renderer-with-caravan-chooser	0xdd7d91	d67000
+trade-renderer-with-caravan-chooser	0xdd7da3	d67000
+trade-renderer-with-caravan-chooser	0xdd7dbb	423910
+trade-renderer-with-caravan-chooser	0xdd7e07	425170
+trade-renderer-with-caravan-chooser	0xdd7e4b	423790
+trade-renderer-with-caravan-chooser	0xdd7e57	816ef0
+trade-renderer-with-caravan-chooser	0xdd7e6f	d67000
+trade-renderer-with-caravan-chooser	0xdd7ee6	423860
+trade-renderer-with-caravan-chooser	0xdd7f18	423690
+trade-renderer-with-caravan-chooser	0xdd7f38	423790
+trade-renderer-with-caravan-chooser	0xdd7f61	e3d050
+trade-renderer-with-caravan-chooser	0xdd7f8c	e3d050
+trade-renderer-with-caravan-chooser	0xdd7fa0	e3d050
+trade-renderer-with-caravan-chooser	0xdd7fce	e3d050
+trade-renderer-with-caravan-chooser	0xdd8127	423d30
+trade-renderer-with-caravan-chooser	0xdd8151	d41a40
+trade-renderer-with-caravan-chooser	0xdd818b	423d30
+trade-renderer-with-caravan-chooser	0xdd81a0	423d30
+trade-renderer-with-caravan-chooser	0xdd8208	e4d220
+trade-renderer-with-caravan-chooser	0xdd82b0	d43ed0
+trade-renderer-with-caravan-chooser	0xdd82ef	14ef8e0
+trade-renderer-with-caravan-chooser	0xdd8306	d66f60
+trade-renderer-with-caravan-chooser	0xdd8315	425170
+trade-renderer-with-caravan-chooser	0xdd832f	423790
+trade-renderer-with-caravan-chooser	0xdd834d	423790
+trade-renderer-with-caravan-chooser	0xdd836b	423d30
+trade-renderer-with-caravan-chooser	0xdd8380	423d30
+trade-renderer-with-caravan-chooser	0xdd83b8	QWORD PTR [rax+0x10]
+trade-renderer-with-caravan-chooser	0xdd83cd	QWORD PTR [rax+0x18]
+trade-renderer-with-caravan-chooser	0xdd842d	d43ed0
+trade-renderer-with-caravan-chooser	0xdd8437	423830
+trade-renderer-with-caravan-chooser	0xdd8446	d67000
+trade-renderer-with-caravan-chooser	0xdd845a	d67000
+trade-renderer-with-caravan-chooser	0xdd8477	425170
+trade-renderer-with-caravan-chooser	0xdd8495	423790
+trade-renderer-with-caravan-chooser	0xdd84d0	QWORD PTR [rax+0x10]
+trade-renderer-with-caravan-chooser	0xdd84f3	QWORD PTR [rax+0x10]
+trade-renderer-with-caravan-chooser	0xdd854b	e54250
+trade-renderer-with-caravan-chooser	0xdd85d2	e68020
+trade-renderer-with-caravan-chooser	0xdd8606	425170
+trade-renderer-with-caravan-chooser	0xdd8620	423790
+trade-renderer-with-caravan-chooser	0xdd8639	eeb460
+trade-renderer-with-caravan-chooser	0xdd865a	b8a5e0
+trade-renderer-with-caravan-chooser	0xdd86c3	e3e320
+trade-renderer-with-caravan-chooser	0xdd86da	14f4380
+trade-renderer-with-caravan-chooser	0xdd86fa	d43ed0
+trade-renderer-with-caravan-chooser	0xdd870c	425170
+trade-renderer-with-caravan-chooser	0xdd8726	423790
+trade-renderer-with-caravan-chooser	0xdd8739	425170
+trade-renderer-with-caravan-chooser	0xdd8753	423790
+trade-renderer-with-caravan-chooser	0xdd87c2	e54250
+trade-renderer-with-caravan-chooser	0xdd87db	d60410
+trade-renderer-with-caravan-chooser	0xdd881b	e3d050
+trade-renderer-with-caravan-chooser	0xdd8844	423b20
+trade-renderer-with-caravan-chooser	0xdd8880	QWORD PTR [rax+0x370]
+trade-renderer-with-caravan-chooser	0xdd888c	QWORD PTR [rax+0x640]
+trade-renderer-with-caravan-chooser	0xdd889a	d41a40
+trade-renderer-with-caravan-chooser	0xdd88bc	d67000
+trade-renderer-with-caravan-chooser	0xdd88de	d67000
+trade-renderer-with-caravan-chooser	0xdd8900	d67000
+trade-renderer-with-caravan-chooser	0xdd8922	d67000
+trade-renderer-with-caravan-chooser	0xdd8940	423860
+trade-renderer-with-caravan-chooser	0xdd895c	4244b0
+trade-renderer-with-caravan-chooser	0xdd89af	423b20
+trade-renderer-with-caravan-chooser	0xdd89d0	423790
+trade-renderer-with-caravan-chooser	0xdd89e0	423870
+trade-renderer-with-caravan-chooser	0xdd89fe	e3d050
+trade-renderer-with-caravan-chooser	0xdd8a15	e3d050
+trade-renderer-with-caravan-chooser	0xdd8a37	d67000
+trade-renderer-with-caravan-chooser	0xdd8a59	d67000
+trade-renderer-with-caravan-chooser	0xdd8a6f	423510
+trade-renderer-with-caravan-chooser	0xdd8a85	423510
+trade-renderer-with-caravan-chooser	0xdd8a9b	423510
+trade-renderer-with-caravan-chooser	0xdd8ab1	423510
+trade-renderer-with-caravan-chooser	0xdd8ac7	423510
+trade-renderer-with-caravan-chooser	0xdd8ae1	e3d050
+trade-renderer-with-caravan-chooser	0xdd8af7	e3d050
+trade-renderer-with-caravan-chooser	0xdd8b0b	e3d050
+trade-renderer-with-caravan-chooser	0xdd8b25	e3d050
+trade-renderer-with-caravan-chooser	0xdd8b3b	423510
+trade-renderer-with-caravan-chooser	0xdd8b51	423510
+trade-renderer-with-caravan-chooser	0xdd8b67	423510
+trade-renderer-with-caravan-chooser	0xdd8b7d	423510
+trade-renderer-with-caravan-chooser	0xdd8b93	423510
+trade-renderer-with-caravan-chooser	0xdd8bae	e54250
+trade-renderer-with-caravan-chooser	0xdd8beb	e54250
+trade-renderer-with-caravan-chooser	0xdd8c13	e3d050
+trade-renderer-with-caravan-chooser	0xdd8c3a	d60410
+trade-renderer-with-caravan-chooser	0xdd8c8c	d67000
+trade-renderer-with-caravan-chooser	0xdd8c9b	d67000
+trade-renderer-with-caravan-chooser	0xdd8cb6	d67000
+trade-renderer-with-caravan-chooser	0xdd8cc5	d67000
+trade-renderer-with-caravan-chooser	0xdd8cdd	d67000
+trade-renderer-with-caravan-chooser	0xdd8cf8	d67000
+trade-renderer-with-caravan-chooser	0xdd8d07	d67000
+trade-renderer-with-caravan-chooser	0xdd8d22	d67000
+trade-renderer-with-caravan-chooser	0xdd8d31	d67000
+trade-renderer-with-caravan-chooser	0xdd8d7a	d67000
+trade-renderer-with-caravan-chooser	0xdd8d92	d67000
+trade-renderer-with-caravan-chooser	0xdd8dad	d67000
+trade-renderer-with-caravan-chooser	0xdd8dbc	d67000
+trade-renderer-with-caravan-chooser	0xdd8dd4	d67000
+trade-renderer-with-caravan-chooser	0xdd8def	d67000
+trade-renderer-with-caravan-chooser	0xdd8dfe	d67000
+trade-renderer-with-caravan-chooser	0xdd8e16	d67000
+trade-renderer-with-caravan-chooser	0xdd8e36	14be300
+trade-renderer-with-caravan-chooser	0xdd8e69	d67000
+trade-renderer-with-caravan-chooser	0xdd8e81	d67000
+trade-renderer-with-caravan-chooser	0xdd8ea1	14be300
+trade-renderer-with-caravan-chooser	0xdd8ed0	d67000
+trade-renderer-with-caravan-chooser	0xdd8ee1	14be300
+trade-renderer-with-caravan-chooser	0xdd8ef8	d67000
+trade-renderer-with-caravan-chooser	0xdd8f1e	14be300
+trade-renderer-with-caravan-chooser	0xdd8f4d	d67000
+trade-renderer-with-caravan-chooser	0xdd8f5e	14be300
+trade-renderer-with-caravan-chooser	0xdd8f79	d67000
+trade-renderer-with-caravan-chooser	0xdd8f8c	d67000
+trade-renderer-with-caravan-chooser	0xdd8f9d	14be300
+trade-renderer-with-caravan-chooser	0xdd8fb4	d67000
+trade-renderer-with-caravan-chooser	0xdd8fc7	d67000
+trade-renderer-with-caravan-chooser	0xdd8fe6	d67000
+trade-renderer-with-caravan-chooser	0xdd8ffe	d67000
+trade-renderer-with-caravan-chooser	0xdd9016	d67000
+trade-renderer-with-caravan-chooser	0xdd902e	d67000
+trade-renderer-with-caravan-chooser	0xdd9046	d67000
+trade-renderer-with-caravan-chooser	0xdd905e	d67000
+trade-renderer-with-caravan-chooser	0xdd9076	d67000
+trade-renderer-with-caravan-chooser	0xdd90b0	d67000
+trade-renderer-with-caravan-chooser	0xdd90c3	d67000
+trade-renderer-with-caravan-chooser	0xdd90de	d67000
+trade-renderer-with-caravan-chooser	0xdd90ed	d67000
+trade-renderer-with-caravan-chooser	0xdd9105	d67000
+trade-renderer-with-caravan-chooser	0xdd9113	14be300
+trade-renderer-with-caravan-chooser	0xdd914b	d67000
+trade-renderer-with-caravan-chooser	0xdd915a	d67000
+trade-renderer-with-caravan-chooser	0xdd916b	14be300
+trade-renderer-with-caravan-chooser	0xdd91a4	d67000
+trade-renderer-with-caravan-chooser	0xdd926b	d670d0
+trade-renderer-with-caravan-chooser	0xdd9282	d66f60
+trade-renderer-with-caravan-chooser	0xdd9291	d67000
+trade-renderer-with-caravan-chooser	0xdd92c4	12ae800
+trade-renderer-with-caravan-chooser	0xdd92d4	d66f60
+trade-renderer-with-caravan-chooser	0xdd92e3	d67000
+trade-renderer-with-caravan-chooser	0xdd92fd	423790
+trade-renderer-with-caravan-chooser	0xdd931b	423790
+trade-renderer-with-caravan-chooser	0xdd9341	69f890
+trade-renderer-with-caravan-chooser	0xdd9359	d67000
+trade-renderer-with-caravan-chooser	0xdd9381	69f890
+trade-renderer-with-caravan-chooser	0xdd93c1	69f890
+trade-renderer-with-caravan-chooser	0xdd93d0	4236b0
+trade-renderer-with-caravan-chooser	0xdd9426	4244b0
+trade-renderer-with-caravan-chooser	0xdd943c	423510
+trade-renderer-with-caravan-chooser	0xdd9452	423510
+trade-renderer-with-caravan-chooser	0xdd9468	423510
+trade-renderer-with-caravan-chooser	0xdd947e	423510
+trade-renderer-with-caravan-chooser	0xdd9488	423c70
+trade-renderer-with-caravan-chooser	0xdd94fb	e18da0
+trade-renderer-with-caravan-chooser	0xdd9523	425110
+trade-renderer-with-caravan-chooser	0xdd9539	423510
+trade-renderer-with-caravan-chooser	0xdd9576	14be300
+trade-renderer-with-caravan-chooser	0xdd95a9	d67000
+trade-renderer-with-caravan-chooser	0xdd95c8	14be300
+trade-renderer-with-caravan-chooser	0xdd9614	d67000
+trade-renderer-with-caravan-chooser	0xdd9625	14be300
+trade-renderer-with-caravan-chooser	0xdd9640	d67000
+trade-renderer-with-caravan-chooser	0xdd9651	14be300
+trade-renderer-with-caravan-chooser	0xdd966a	d67000
+trade-renderer-with-caravan-chooser	0xdd968f	423860
+trade-renderer-with-caravan-chooser	0xdd9720	423b20
+trade-renderer-with-caravan-chooser	0xdd9755	QWORD PTR [rax+0x10]
+trade-renderer-with-caravan-chooser	0xdd97b4	d43ed0
+trade-renderer-with-caravan-chooser	0xdd97bf	423830
+trade-renderer-with-caravan-chooser	0xdd97ce	d67000
+trade-renderer-with-caravan-chooser	0xdd97e3	d67000
+trade-renderer-with-caravan-chooser	0xdd9800	425170
+trade-renderer-with-caravan-chooser	0xdd981e	423790
+trade-renderer-with-caravan-chooser	0xdd9837	QWORD PTR [rax+0x18]
+trade-renderer-with-caravan-chooser	0xdd988f	423d30
+trade-renderer-with-caravan-chooser	0xdd9899	4236b0
+trade-renderer-with-caravan-chooser	0xdd98ad	4244b0
+trade-renderer-with-caravan-chooser	0xdd98db	423790
+trade-renderer-with-caravan-chooser	0xdd98eb	423870
+trade-renderer-with-caravan-chooser	0xdd9953	46f5f6
+trade-renderer-with-caravan-chooser	0xdd995f	46f5f6
+trade-renderer-with-caravan-chooser	0xdd996b	46f5f6
+trade-renderer-with-caravan-chooser	0xdd9977	46f5f6
+trade-renderer-with-caravan-chooser	0xdd9983	46f612
+trade-renderer-with-caravan-chooser	0xdd998f	46f654
+trade-renderer-with-caravan-chooser	0xdd999b	46f5f6
+trade-renderer-with-caravan-chooser	0xdd99a7	46f68a
+trade-renderer-with-caravan-chooser	0xdd99b3	46f5f6
+trade-renderer-with-caravan-chooser	0xdd99bf	46f5f6
+trade-renderer-with-caravan-chooser	0xdd99cb	46f5f6
+trade-renderer-with-caravan-chooser	0xdd99d7	46f5f6
+trade-renderer-with-caravan-chooser	0xdd99e3	46f5f6
+trade-renderer-with-caravan-chooser	0xdd99ef	46f69d
+trade-renderer-with-caravan-chooser	0xdd99fb	46f6f0
+trade-renderer-with-caravan-chooser	0xdd9a07	46f703
+trade-renderer-with-caravan-chooser	0xdd9a13	46f746
+trade-renderer-with-caravan-chooser	0xdd9a1f	46f760
+trade-renderer-with-caravan-chooser	0xdd9a2b	46f783
+trade-renderer-with-caravan-chooser	0xdd9a37	46f5f6
+trade-renderer-with-caravan-chooser	0xdd9a43	46f7c0
+trade-renderer-with-caravan-chooser	0xdd9a4f	46f7e3
+trade-renderer-with-caravan-chooser	0xdd9a5b	46f5f6
+trade-renderer-with-caravan-chooser	0xdd9a67	46f5f6
+trade-renderer-with-caravan-chooser	0xdd9a73	46f5f6
+trade-renderer-with-caravan-chooser	0xdd9a7f	46f5f6
+trade-renderer-with-caravan-chooser	0xdd9a8b	46f5f6
+trade-renderer-with-caravan-chooser	0xdd9a97	46f5f6
+trade-renderer-with-caravan-chooser	0xdd9aa3	46f5f6
+trade-renderer-with-caravan-chooser	0xdd9aaf	46f5f6
+trade-renderer-with-caravan-chooser	0xdd9abb	46f70f
+trade-renderer-with-caravan-chooser	0xdd9ac7	46f5f6
+trade-renderer-with-caravan-chooser	0xdd9ad3	46f5f6
+trade-renderer-with-caravan-chooser	0xdd9adf	46f5f6
+trade-renderer-with-caravan-chooser	0xdd9aeb	46f6bc
+trade-renderer-with-caravan-chooser	0xdd9af7	46f6d6
+trade-renderer-with-caravan-chooser	0xdd9b03	46f5f6
+trade-renderer-with-caravan-chooser	0xdd9b0f	46f62c
+trade-renderer-with-caravan-chooser	0xdd9b1b	46f5f6
+trade-renderer-with-caravan-chooser	0xdd9b27	46f5f6
+trade-renderer-with-caravan-chooser	0xdd9b33	46f5f6
+trade-renderer-with-caravan-chooser	0xdd9b3f	46f5f6
+trade-renderer-with-caravan-chooser	0xdd9b4b	46f5f6
+trade-renderer-with-caravan-chooser	0xdd9b57	46f7ff
+trade-renderer-with-caravan-chooser	0xdd9b63	46f5f6
+trade-renderer-with-caravan-chooser	0xdd9b6f	46f5f6
+trade-renderer-with-caravan-chooser	0xdd9b7b	46f7a6
+trade-renderer-with-caravan-chooser	0xdd9b87	46f7c0
+trade-renderer-with-caravan-chooser	0xdd9b93	46f5f6
+trade-renderer-with-caravan-chooser	0xdd9b9f	46f82b
+creature-singular-plural-name	0x12ae88a	69f890
+creature-singular-plural-name	0x12ae905	69f890
+creature-singular-plural-name	0x12ae958	69f890
+native-language-entity-name	0x12bff1d	127f7f0
+native-language-entity-name	0x12bff25	424200
+native-language-entity-name	0x12bff89	423790
+native-language-entity-name	0x12bffeb	1cc6140
+native-language-entity-name	0x12bfffc	1cc6140
+native-language-entity-name	0x12c0065	424200
+native-language-entity-name	0x12c00ad	423690
+native-language-entity-name	0x12c00d5	423790
+native-language-entity-name	0x12c011b	1cc6140
+native-language-entity-name	0x12c012c	1cc6140
+native-language-entity-name	0x12c013d	1cc6140
+native-language-entity-name	0x12c014e	1cc6140
+native-language-entity-name	0x12c01b7	424200
+native-language-entity-name	0x12c01ff	423690
+native-language-entity-name	0x12c0227	423790
+native-language-entity-name	0x12c0262	1cc6140
+native-language-entity-name	0x12c02c0	424200
+native-language-entity-name	0x12c0308	423690
+native-language-entity-name	0x12c032b	423790
+native-language-entity-name	0x12c044b	423690
+native-language-entity-name	0x12c0465	69f9b0
+native-language-entity-name	0x12c0545	69f9b0
+native-language-entity-name	0x12c057b	423690
+native-language-entity-name	0x12c05b3	423690
+native-language-entity-name	0x12c05e5	69f9b0
+native-language-entity-name	0x12c0605	69f9b0
+native-language-entity-name	0x12c064f	423860
+native-language-entity-name	0x12c067f	423690
+native-language-entity-name	0x12c06a9	423790
+native-language-entity-name	0x12c06cd	69f9b0
+native-language-entity-name	0x12c0720	423860
+native-language-entity-name	0x12c0748	423690
+native-language-entity-name	0x12c076a	423790
+native-language-entity-name	0x12c078d	69f9b0
+native-language-entity-name	0x12c07a5	69f9b0
+native-language-entity-name	0x12c0800	423860
+native-language-entity-name	0x12c0828	423690
+native-language-entity-name	0x12c0842	423790
+native-language-entity-name	0x12c08c5	69f9b0
+native-language-entity-name	0x12c08d5	69f9b0
+native-language-entity-name	0x12c0930	423860
+native-language-entity-name	0x12c0958	423690
+native-language-entity-name	0x12c0972	423790
+native-language-entity-name	0x12c09e0	4236b0
+native-language-entity-name	0x12c0a5d	69f9b0
+native-language-entity-name	0x12c0ad5	423c70
+native-language-entity-name	0x12c0ae1	4244b0
+native-language-entity-name	0x12c0aed	4244b0
+native-language-entity-name	0x12c0af9	4244b0
+native-language-entity-name	0x12c0b05	4244b0
+native-language-entity-name	0x12c0b11	4244b0
+native-language-entity-name	0x12c0b1d	49f5db
+native-language-entity-name	0x12c0b29	49f5db
+native-language-entity-name	0x12c0b35	49f5db
+native-language-entity-name	0x12c0b41	49f5db
+native-language-word	0x1cc61f4	423690
+native-language-word	0x1cc6215	69f9b0
+native-first-name-copy	0x127f85e	423860
+native-first-name-copy	0x127f874	423690
+native-first-name-copy	0x127f891	4235e0
+native-first-name-copy	0x127f8a0	4236b0
+native-first-name-copy	0x127f8ac	4244b0

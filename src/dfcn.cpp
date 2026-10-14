@@ -2192,6 +2192,9 @@ static std::optional<NativeFortressZoneCaption> capture_native_fortress_zone_cap
 static bool native_farm_name_caller(uintptr_t caller);
 static bool native_farm_crop_caller(uintptr_t caller);
 
+static std::shared_ptr<const NativeHistoryName> capture_native_caravan_entity_name(
+    uintptr_t caller, uintptr_t source);
+
 struct NativeDrawnTextRow {
     int x = 0, y = 0;
     std::string source;
@@ -2222,6 +2225,9 @@ struct NativeDrawnTextRow {
     bool info_title_authored = false;
     int info_title_right = -1; // exclusive native draw clip boundary
     NativeCivilizationField civilization_field = NativeCivilizationField::None;
+    // The chooser's species and civilization draws share a temporary string.
+    // Freeze the actual entity before that string is reused or clipped.
+    std::shared_ptr<const NativeHistoryName> caravan_entity_name{};
     // The chooser redraws over the map. Save its typed caller and allocated
     // caption span during that draw, before a later native grid replaces it.
     NativeLocationPickerField location_picker_field = NativeLocationPickerField::None;
@@ -2713,6 +2719,7 @@ static void remember_native_drawn_text_row(int x, int y, std::string_view source
     // actual addst caller is live, before acquiring the draw registry lock.
     auto work_order_shop_caption = capture_native_work_order_shop_caption(native_caller, address);
     auto fortress_zone_caption = capture_native_fortress_zone_caption(native_caller, address);
+    auto caravan_entity_name = capture_native_caravan_entity_name(native_caller, address);
     // Identity translation acquires TranslationStateScope before any native
     // registry mutex. Freeze organization evidence in that same lock order.
     auto justice_organization = top_layer ? std::nullopt :
@@ -2819,6 +2826,8 @@ static void remember_native_drawn_text_row(int x, int y, std::string_view source
         row.info_title_authored = info_title_authored;
         row.info_title_right = info_title_right;
         row.civilization_field = civilization_field;
+        row.caravan_entity_name = std::move(caravan_entity_name);
+        if (row.caravan_entity_name) row.caption_source = true;
         row.location_picker_field = location_picker_field;
         row.location_picker_box = location_picker_box;
         row.travel_building_field = travel_building_field;
@@ -4589,6 +4598,8 @@ private:
         std::vector<Match> &matches, int only_y, bool raw_layer = false) const;
     void layout_fortress_depot(SDL_Renderer *renderer);
     void append_fortress_trade_fields(std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y, bool raw_layer = false) const;
+    void append_fortress_caravan_picker_fields(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y, bool raw_layer = false) const;
     void append_settings_announcement_names(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y) const;
@@ -16600,6 +16611,7 @@ static NativeKeybindingScope capture_native_keybinding_scope(const graphicst &gp
 #include "fortress_workshop_activities.inc"
 #include "work_order_shop_fields.inc"
 #include "fortress_depot.inc"
+#include "fortress_caravan_picker.inc"
 #include "work_order_buttons.inc"
 #include "workshop_tooltip_rows.inc"
 #include "fortress_labor.inc"
@@ -17458,6 +17470,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     append_worldgen_parameter_labels(screen_rows, result, only_y);
     // The trade controls and totals are independent native fields. Claim
     // them before paragraph/item readers or generic word translations.
+    append_fortress_caravan_picker_fields(screen_rows, result, only_y, screen_override != nullptr);
     append_fortress_trade_fields(screen_rows, result, only_y, screen_override != nullptr);
     // Task-detail material controls are independent native fields. Capture
     // their complete current frame before tooltip prose or the classic map

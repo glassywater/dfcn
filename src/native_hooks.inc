@@ -38,6 +38,7 @@ static bool native_history_war_selection(uintptr_t collection, int32_t &category
 #include "native_history_hooks.inc"
 #include "native_fortress_map_hud.inc"
 #include "native_work_order_shops.inc"
+#include "native_caravan_picker.inc"
 #include "native_adventure_belief_source.inc"
 #include "native_announcement_popup.inc"
 #include "native_adventure_quest_source.inc"
