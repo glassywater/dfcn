@@ -326,13 +326,20 @@ static bool native_can_shutdown() {
 
 static bool stop_reloadable_core() {
     if (!native_can_shutdown()) return false;
+    // Hook retirement can defer until a later DFHack update, but normal game
+    // shutdown has already stopped that update loop. Stop our owned-snapshot
+    // workers even when live callbacks require the core to remain mapped;
+    // otherwise DLL teardown destroys their waiters while they are still asleep.
+    // Join without the translation lock and retain catalogs/fonts until every
+    // native callback has detached. Retiring captures reject new queued jobs.
+    stop_native_identity_translation_jobs();
+    g_overlay.stop_dfhack_translation_worker();
     uninstall_sdl_hooks();
     if (!native_hooks_detached() || !native_callbacks_idle()) {
         log_line("ERROR", "Core remains resident because callbacks could not be detached");
         return false;
     }
     if (g_plugin_active.load()) {
-        stop_native_identity_translation_jobs();
         g_native_squads_overlay.release_native_squads_resources();
         g_overlay.shutdown();
         g_plugin_active.store(false);

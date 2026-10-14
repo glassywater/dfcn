@@ -3516,6 +3516,7 @@ class Overlay {
 public:
     bool initialize();
     void shutdown();
+    void stop_dfhack_translation_worker();
     void invalidate_render_resources();
     void render(SDL_Renderer *renderer);
     bool prepare_native_ui_input(NativeUiLayerGrid &input, SDL_Renderer *renderer);
@@ -5197,7 +5198,6 @@ private:
     std::vector<Match> find_dfhack_matches(int only_y) const;
     void normalize_dfhack_layer_matches(std::vector<Match> &matches) const;
     void start_dfhack_translation_worker();
-    void stop_dfhack_translation_worker();
     void dfhack_translation_worker_loop();
     uint64_t dfhack_layer_translation_key() const;
     void queue_dfhack_layer_frame(std::shared_ptr<const NativeDfhackLayerStorage> source) noexcept;
