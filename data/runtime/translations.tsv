@@ -56620,6 +56620,8 @@ A huge monster in the shape of a fox.	一只巨大的狐狸怪。	lP
 A tiny, colorful, long-bodied insect.	一种小型、色彩斑斓的长体昆虫。	lP
 A vile force of darkness has arrived!	一支邪恶的黑暗势力已经到来！	hP
 Acknowledge lack of grim satisfaction	表示没有冷酷的满足	hP
+Adventure action conflict: No Quarter	不留活口	h
+Adventure action conflict: Non-lethal	非致命	h
 Adventure action: Raise bitter corpse	复生苦痛尸体	l
 Adventure action: Raise bitter hunter	复生苦痛猎手	l
 Adventure action: Raise bitter slayer	复生苦痛杀手	l
@@ -58684,6 +58686,8 @@ A huge monster the shape of a moose.	一只巨大的驼鹿怪。	lP
 A huge woolly mammal with two horns.	一种巨大的长毛哺乳动物，长有两根角。	lP
 A person with the head of a warthog.	一种长着疣猪头的人形生物。	lP
 A {s} diplomat from {e} has arrived.	来自{e1}的{s1}外交官已抵达。	hPt
+Adventure action conflict: Encounter	遭遇战	h
+Adventure action conflict: Horseplay	打闹	h
 Adventure action: Raise bitter ghoul	复生苦痛食尸鬼	l
 Adventure action: Raise bitter haunt	复生苦痛游魂	l
 Adventure action: Raise bitter shade	复生苦痛幽影	l
@@ -60906,6 +60910,8 @@ A large mammal person with a shell.	一种背负甲壳的大型哺乳类人形�
 A man-shaped creature made of iron.	由铁组成的人形生物。	lP
 A small amphibian with a flat body.	一种身体扁平的小型两栖动物。	lP
 Acknowledge lack of disillusionment	表示没有幻灭	hP
+Adventure action conflict separator	：	h
+Adventure action conflict: Training	训练	h
 Adventure action: Raise bleak ghoul	复生凄凉食尸鬼	l
 Adventure action: Raise bleak haunt	复生凄凉游魂	l
 Adventure action: Raise bleak shade	复生凄凉幽影	l
@@ -65494,6 +65500,7 @@ A person with the head of an elk.	一种长着麋鹿头的人形生物。	lP
 Accept invitation to become a {s}	接受成为{s1}的邀请	hPt
 Acknowledge lack of embarrassment	表示没有尴尬	hP
 Acknowledge lack of mortification	表示没有羞愧难当	hP
+Adventure action conflict: Lethal	致命	h
 Adventure action target: building	建筑	h
 Adventure action target: creature	生物	h
 Adventure action target: the Void	虚空	h
@@ -67661,6 +67668,7 @@ Acknowledge lack of hopelessness	表示没有绝望感	hP
 Acknowledge lack of restlessness	表示没有躁动不安	hP
 Acknowledge lack of satisfaction	表示没有满意	hP
 Acknowledge lack of vengefulness	表示没有复仇心	hP
+Adventure action conflict: Brawl	斗殴	h
 Adventure action: Animate corpse	活化尸体	l
 Adventure action: Cause bleeding	引发出血	l
 Adventure action: Compose a poem	创作诗歌	l
@@ -69885,6 +69893,7 @@ Acknowledge lack of humiliation	表示没有屈辱	hP
 Acknowledge lack of nervousness	表示没有紧张	hP
 Acknowledge lack of unhappiness	表示没有不快	hP
 Acquiesce (changes your values)	默认接受（改变你的价值观）	hP
+Adventure action conflict: Ally	盟友	h
 Adventure action: Compose music	创作音乐	l
 Adventure action: Give a sermon	布道	l
 Adventure action: Hurl fireball	投掷火球	l

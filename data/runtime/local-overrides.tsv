@@ -11419,6 +11419,17 @@ Adventure action target: item	物品	h
 Adventure action target: building	建筑	h
 Adventure action target: tree	树	h
 Adventure action target: the Void	虚空	h
+# ELF 115acc0: conflict prelude drawn before shoot/throw-creature captions.
+# All seven enum levels, the relationship fallback and shared punctuation.
+Adventure action conflict: Encounter	遭遇战	h
+Adventure action conflict: Horseplay	打闹	h
+Adventure action conflict: Training	训练	h
+Adventure action conflict: Brawl	斗殴	h
+Adventure action conflict: Non-lethal	非致命	h
+Adventure action conflict: Lethal	致命	h
+Adventure action conflict: No Quarter	不留活口	h
+Adventure action conflict: Ally	盟友	h
+Adventure action conflict separator	：	h
 Adventure item action: the Void	虚空	h
 Adventure item action: engraving	雕刻	h
 Adventure item action: View engraving	查看雕刻	h

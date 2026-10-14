@@ -19118,7 +19118,64 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                 std::vector<Match> choice_rows{choice};
                 std::vector<Match> continuation_companions;
                 bool complete_caption = true;
-                if (visible_right < choice_right) {
+                bool recovered_action_prelude = false;
+#ifndef _WIN32
+                if (const size_t prelude = adventure_action_conflict_prefix_length(choice.source)) {
+                    // 115acc0 paints the prelude separately, but 11667e0
+                    // still shortens the action using the whole frame width.
+                    // Its final dots can therefore lie beyond this frame.
+                    // Recover the actual action draw even when the visible
+                    // row does not include those dots, before treating a
+                    // partial unit designation as a complete target.
+                    const int action_x = first + static_cast<int>(prelude);
+                    const uintptr_t writer = native_reference_va(0x1167fba);
+                    std::optional<std::string> captured;
+                    bool ambiguous = false;
+                    for (const auto &draws : {&action_draws, &top_action_draws}) {
+                        for (const auto &draw : *draws) {
+                            if (!writer || draw.native_caller != writer || draw.x != action_x ||
+                                (draw.y != y && (!companion || draw.y != companion_y)) ||
+                                draw.source.empty() || action_x >= visible_right) continue;
+                            bool top = false;
+                            cell_at(action_x, draw.y, &top);
+                            if (top != (draws == &top_action_draws)) continue;
+                            const size_t exposed = std::min(draw.source.size(),
+                                static_cast<size_t>(visible_right - action_x));
+                            if (context[draw.y].compare(action_x, exposed,
+                                    draw.source, 0, exposed) != 0 ||
+                                (draw.source.size() < static_cast<size_t>(visible_right - action_x) &&
+                                    !std::all_of(context[draw.y].begin() + action_x + exposed,
+                                        context[draw.y].begin() + visible_right,
+                                        [](char ch) { return ch == ' '; }))) continue;
+                            const auto &action = draw.complete_source.empty()
+                                ? draw.source : draw.complete_source;
+                            const std::string complete = normalize_utterance(
+                                choice.source.substr(0, prelude) + action);
+                            if (complete.ends_with("...") ||
+                                    !adventure_action_conflict_prefix_length(complete)) continue;
+                            if (captured && *captured != complete) { ambiguous = true; break; }
+                            captured = complete;
+                        }
+                        if (ambiguous) break;
+                    }
+                    complete_caption = captured && !ambiguous;
+                    if (complete_caption) {
+                        std::vector<size_t> origins;
+                        const std::string joined = normalize_utterance(choice.source, &origins);
+                        const size_t exposed = joined.size() - (joined.ends_with("...") ? 3 : 0);
+                        if (!captured->starts_with(std::string_view(joined).substr(0, exposed))) {
+                            complete_caption = false;
+                        } else {
+                            translation_source = *captured;
+                            recovered_action_prelude = true;
+                            translation_colors.assign(translation_source.size(), source_colors.back());
+                            for (size_t at = 0; at < exposed; ++at)
+                                translation_colors[at] = source_colors[origins[at]];
+                        }
+                    }
+                }
+#endif
+                if (visible_right < choice_right && !recovered_action_prelude) {
                     // The popup's border/text is not part of this action.
                     // Before using its exposed prefix, bind a complete native
                     // draw at the same caption origin and verify every visible
@@ -19153,13 +19210,28 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                 if (translation_source.ends_with("...")) {
                     std::vector<size_t> origins;
                     const std::string joined = normalize_utterance(choice.source, &origins);
+                    // The conflict prelude has already advanced the native
+                    // cursor before the action's independent resize/draw.
+                    // Bind the shortened action at that actual origin, then
+                    // restore the visible prelude without folding its color
+                    // into the action or dropping it from the complete row.
+                    const size_t prelude = adventure_action_conflict_prefix_length(joined);
+                    const int action_x = prelude
+                        ? first + static_cast<int>(origins[prelude]) : first;
+                    const std::string action_visible = joined.substr(prelude);
+                    const auto join_caption = [&](int origin, const std::string &text) {
+                        return origin == action_x && prelude
+                            ? joined.substr(0, prelude) + normalize_utterance(text)
+                            : normalize_utterance(text);
+                    };
                     std::optional<std::string> captured;
                     bool ambiguous = false;
                     for (const auto &caption : clipped_captions) {
-                        if (caption.x != first ||
+                        if ((caption.x != first && caption.x != action_x) ||
                             (caption.y != y && (!companion || caption.y != companion_y)) ||
-                            normalize_utterance(caption.visible) != joined) continue;
-                        const std::string complete = normalize_utterance(caption.complete);
+                            normalize_utterance(caption.visible) !=
+                                (caption.x == action_x ? action_visible : joined)) continue;
+                        const std::string complete = join_caption(caption.x, caption.complete);
                         if (captured && *captured != complete) { ambiguous = true; break; }
                         captured = complete;
                     }
@@ -19170,15 +19242,16 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                     // evidence for a hidden direction or item-name suffix.
                     for (const auto &draws : {&action_draws, &top_action_draws}) {
                         for (const auto &draw : *draws) {
-                            if (draw.x != first || draw.complete_source.empty() ||
+                            if ((draw.x != first && draw.x != action_x) || draw.complete_source.empty() ||
                                 (draw.y != y && (!companion || draw.y != companion_y)) ||
-                                draw.source.size() > static_cast<size_t>(visible_right - first) ||
-                                context[draw.y].compare(first, draw.source.size(), draw.source) != 0 ||
-                                normalize_utterance(draw.source) != joined) continue;
+                                draw.source.size() > static_cast<size_t>(visible_right - draw.x) ||
+                                context[draw.y].compare(draw.x, draw.source.size(), draw.source) != 0 ||
+                                normalize_utterance(draw.source) !=
+                                    (draw.x == action_x ? action_visible : joined)) continue;
                             bool top = false;
                             cell_at(first, draw.y, &top);
                             if (top != (draws == &top_action_draws)) continue;
-                            const std::string complete = normalize_utterance(draw.complete_source);
+                            const std::string complete = join_caption(draw.x, draw.complete_source);
                             if (captured && *captured != complete) { ambiguous = true; break; }
                             captured = complete;
                         }

@@ -1,0 +1,168 @@
+冒险模式地图动作菜单：Linux 原生反编译与完整文本来源
+
+映像：data/runtime/native-elf-images.json 的 reference，即当前安装的 dwarfort。
+ELF Build ID：bcc6789e6fb477b785a2b02be80b8b1b054ff88c。
+本目录 elf-* 文件的地址是 ELF 虚拟地址，不是旧 Windows PE 的 RVA。
+
+提取范围
+
+通过实际 Itanium RTTI 单继承指针追到 adventure_optionst，找到 76 个具体选项类。
+每个类保留虚表 +8（普通文字）、+10（物品详情文字）、+120（文字前的绘制）三槽。
+空基类方法由其实际被继承的槽保留；不是额外的可选菜单项。
+加上完整菜单渲染、冲突前缀渲染、等级选择和方向格式化，共 92 个函数。
+
+elf-owners.tsv：每个类的实际虚表、三个槽、生产函数和继承链。
+elf-functions.tsv / elf-*.asm：完整原生函数范围及逐条指令、字符串操作数。
+elf-literals.tsv：C 字符串、块复制片段及可打印立即数；片段不等于独立菜单句子。
+elf-conditions.tsv / elf-branches.tsv：每个条件、跳转目标和顺序后继。
+elf-switches.tsv：间接跳转表的每个枚举值及对应原生分支。
+elf-decompiled.c：Ghidra 对全部 92 个函数的 C 输出。
+
+elf-text-productions.tsv 将原有完整动作语法按真实类和槽映射到 ELF 生产函数。
+其中 reference_semantic_branch 明示是已有语法的语义索引，不能把其中的 PE
+字段偏移当作 ELF 偏移；Linux 的实际偏移和条件以本次指令、条件表和 C 输出为准。
+elf-ranged-productions.tsv 独立列出本次从 Linux 前缀开关重建的全部 40 种组合。
+以上均为用户要求的离线源提取资料，没有执行游戏或翻译检查。
+
+菜单及可选状态
+
+11667e0..116890c 是本截图的完整菜单渲染函数。
+普通模式标题开关：
+  类别 0/3/5/6/7：What do you want to do?
+  类别 1/2：Where would you like to move?
+  类别 4：Who or what would you like to shoot?
+           或 At whom or what would you like to throw?，由原生投掷状态决定。
+普通类别调用 option+8；类别 3/6/7 调用 option+10。
+每条记录高 3 格，按键起点 frame-left+8，文字最初起点 frame-left+10。
+有图标和没有图标使用相同的文字起点；按键和图标不是待翻译文本。
+Cancel 为共同按钮。单独的数量分支在普通列表之前返回：
+  option+98 取得实际物品，e68020 生成完整物品名；
+  Pick up how many? (0-N)，N 为菜单 +40 的原生整数；
+  输入态显示 +50 的输入串，非输入态显示 +44 的数值，可追加闪烁的下划线；
+  按钮 Okay / Cancel。
+标题、数量提示、数值、输入和按钮均使用现有完整提示及数值处理。
+
+射击／投掷行的遗漏来源
+
+1167f19 先调用 option+120，然后 1167f7c / 11681ce 才构建动作文字。
+这 76 个类中只有两个类的 +120 非空：
+  adventure_movement_shoot_creaturest：115b300..115b369；
+  adventure_movement_throw_item_at_creaturest：115b370..115b3d9。
+两者根据 option+20 在 unit 全局有序向量中查找目标，成功时尾调用 115acc0。
+单位向量为空、目标 ID=-1 或查找失败时，不写前缀。
+74 个其他具体选项的 +120 继承 1085ae0，立即返回，不生成文字。
+Windows 原有资料将这一槽记为单纯单位符号绘制，不能据此省略当前 Linux 前缀。
+
+115acc0 的所有显示分支
+
+目标就是玩家时不写前缀。
+否则 6fa720(world,player,target) 取得直接冲突等级。
+  0：Encounter:   原色 7，普通亮度
+  1：Horseplay:   原色 2，高亮
+  2：Training:    原色 7，高亮
+  3：Brawl:       原色 3，高亮
+  4：Non-lethal:  原色 6，高亮
+  5：Lethal:      原色 4，高亮
+  6：No Quarter:  原色 5，高亮
+每个已知等级先画等级词，再独立画冒号和空格；冒号沿用等级的当前颜色。
+不是 -1 且不在 0..6 的值只画 ': '，不能凭空补一个等级词。
+
+直接等级为 -1 时，遍历玩家 activity IDs，定位 activity type=2 的有效冲突事件。
+事件 virtual type=8 且未停用；按历史人物 ID 或单位 ID 确认双方属于该事件，
+在匹配的冲突条目中取得最高有效等级。没有有效条目则不写前缀。
+找到等级后走独立关系分支，绘制 Ally:（原色 1，高亮），不是再次走等级开关。
+因此还存在 'Ally: '，并且它不能通过单纯的七值开关提取出来。
+
+主动作文字的全部四个分支
+
+11a7b00..11a7ccb，射击生物：
+  option+38=0：Quickly shoot UNIT
+  option+38!=0：Aim carefully and shoot UNIT
+11a7cd0..11a7e9b，向生物投掷：
+  option+30=0：Quickly throw at UNIT
+  option+30!=0：Aim carefully and throw at UNIT
+两个生产器再次按 option+20 解析目标；失败时直接返回，不产生虚构名称。
+UNIT 为 b6ca30(unit,output,0,1,1) 的整个返回串；追加后即结束，没有额外方向、
+射程、武器或身体部位后缀。
+七个等级、Ally、仅冒号、无前缀，共十种前置形式，分别组合上述四种动作。
+目标缺失的空文字分支另外保留在原生条件及 C 输出中。
+
+生物字段不是固定一句 'A frail troglodyte'
+
+b6ca30 的完整反编译及指令已保存在 adventure-target-panel 的 unit-identity 源中。
+其他选项用到的 ba53d0 完整单位名称已保存在 adventure-inventory 的源中。
+它们根据原生参数和实际对象生成冠词、区分性外貌、RAW 种族／阶级、训练／幽灵
+等状态、职业／领地／身份、个人名字和昵称等完整字段。此处没有有限的单位名单。
+外貌的肌肉／脂肪／体型、声音和五官分支已有 announcement-unit-appearance
+的反编译语法；当前词表 map_hover/unit.toml 覆盖 appearance/body_size/feature/part。
+截图 frail 属于 appearance，troglodyte 属于 RAW 种族；使用现有单位身份解析将
+整个字段译为“瘦弱的穴居人”，不将 frail 当作名字，也不只译动作动词。
+
+其他所有动作族
+
+完整的实际类、槽和文字组合见 elf-owners.tsv / elf-text-productions.tsv。
+继承关系和实际生产函数覆盖下列语法族；共享字段使用其已有完整语义来源。
+
+交谈／查看：Continue shouting，Continue conversation with PARTICIPANTS，
+View yourself，View TARGET，View the Void，Start new conversation with TARGET，
+Start new conversation with the Void，Shout out to everybody，Assume an identity。
+PARTICIPANTS 是非玩家的实际单位／历史人物列表，跳过无法解析的成员，
+按原生逗号和最终 and 连接；不是把含 and 的个人昵称随意拆开。
+
+物品原样主名称、engraving，以及详情槽 View engraving、View/Drop/Throw/Wear/
+Remove ITEM、Put or place ITEM、Eat/Drink ITEM。
+固定交互：Gain possession，Pull it out，Cease nocking，Read，Roll，Roll all。
+装填：Nock in [ITEM] / Load into [ITEM]，由武器种类／子类型选择；缺少物品
+仍保留原生前缀。名称：Name the ITEM。
+填充：Fill ITEM from ITEM / Fill ITEM with MATERIAL，各有独立的可选位置。
+加热：Heat ITEM，源后缀为 near magma/lava/burning trunk/burning branches/
+burning twigs/burning cap/fire/campfire，或无匹配源；方向仍为独立可选分支。
+放置：Put on UNIT，Put in/on BUILDING，Set on BUILDING，Put in ITEM，均可有位置。
+摄取：Suck UNIT's MATERIAL；Eat/Drink ITEM from ITEM；Eat/Drink MATERIAL；
+Eat/Drink DEPOSIT (BODY_PART/ITEM)；纯 DEPOSIT (BODY_PART)。液相决定 Eat/Drink；
+缺少实际对象、沉积或所属对象按原生代码产生空串，不能伪造实体。
+环境：A VERMIN (DIR)，Ignite TILE (DIR) / Ignite，Make Campfire，Fell TREE。
+
+战斗：Attack error / Attack UNIT/creature/creatures；Combat error /
+Combat UNIT/creature，位置独立；空目标与未解析目标是不同分支。
+物件移动：Push ITEM [to DIR]，Guide ITEM [to DIR]，
+Ride ITEM [, push off toward DIR]；查找失败才使用原生 item 占位。
+建筑：Raise/Lower BUILDING bucket，Pull BUILDING，Break in BUILDING，
+Pick BUILDING lock，Bash down BUILDING，Topple BUILDING，均可有位置；
+门／舱盖锁使用各自实际类和相同句型。
+移动：Move to / Charge TILE 或 UNIT；Climb to TILE；Hold / Hang from TILE；
+Mount UNIT；Dismount to TILE；Release hold on TILE；Climb [ITEM]；
+Claim UNIT as pet；Lead UNIT；Stop leading UNIT；Climb down [from ITEM]。
+路径：Path to here / Go below hatch，可独立带 (no climbing/jumping)，
+以及非零高度差 (N level[s] up/down)；单复数和上／下由原生高度差决定。
+跳跃：Jump to the DIR / DIR。射击地形：Shoot TILE / TILE。
+投掷地形：Throw at TILE / TILE。后二者不生成本次冲突前缀。
+拾取：Get ITEM；Get ITEM from UNIT/BUILDING/ITEM；可独立省略来源或位置；
+缺少待取物品为空串。植物：Pick ITEM / Pull ITEM，由原生物品类型选择。
+
+DIR 是 14f8d40 的 27 个完整输出：八个水平罗盘方向，可独立带 /Above 或 /Below；
+另有 Here / Above / Below。一般位置为 ' (' DIR ')'，无已知来源坐标时全部省略；
+拾取物品位置与玩家相同时也省略。
+移动的介质依次独立追加 /Air、/Water、/Lava 或 /Magma，浅水可同时产生 Air/Water。
+攀爬位置可包含 holding DIR 或 releasing hold；悬挂位置可包含 from DIR。
+不存在已知位置时整组省略，不能留下孤立的介质或握持方向。
+ITEM 保留质量、磨损、材料、RAW 名称、装饰和名称的完整物品语法；BUILDING 为
+实际虚方法的名称；TILE 为完整地形说明；MATERIAL / DEPOSIT 为完整材料／沉积
+语法，包括污染、历史人物所有格、RAW 前缀、stagnant/salt 和原生数量。
+以上字段分别走现有物品、单位、地形、材料、解剖及数字解析，不枚举世界生成名称。
+
+本次处理
+
+等级词条和中文冒号限定在 Adventure action conflict 命名空间。
+前缀拆分只接受反编译证明的四个射击／投掷句型，物品名不会因同名冒号被改写。
+translate_adventure_action_choice 和 translate_adventure_item_action 共用该语义，
+界面保留等级颜色，主体继续使用现有完整 UNIT 解析；所有其他已覆盖动作族沿用
+其完整动作规则和各自语义字段。
+
+原生 11667e0 使用整个菜单宽度缩短主体，没有减去已画的前缀宽度，因此长目标的
+最后省略号可能落在框外。恢复主体绑定 1167fb5 的真实文字调用（返回 1167fba）、
+实际主体起点和可见原文；完整源取该绘制保留的缩短前文字。
+原有省略号恢复也能按前缀后的实际起点匹配，保留前缀及两类文字的独立颜色。
+这避免将菜单框内露出的半截生物名称误当作完整目标。
+
+反编译及正常编译部署不等于已观察到实机最终效果。本次没有操作游戏桌面或窗口。
