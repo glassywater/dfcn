@@ -689,8 +689,12 @@ std::optional<std::string> Overlay::translate_announcement_combat(
                 const size_t final_end = input.size() - following.size();
                 // A final field owns the entire remaining span. Interior
                 // fields backtrack only over native literal boundaries.
-                for (size_t end = field + 1 == scopes.size() ? final_end : at + 1;
-                        end <= final_end; ++end) {
+                // Prefer the complete attack verb: "snatches at" must own
+                // "at" before a typed CJK name can preserve it as name text.
+                const size_t first_end = field + 1 == scopes.size() ? final_end : at + 1;
+                for (size_t choice = first_end; choice <= final_end; ++choice) {
+                    const size_t end = scopes[field] == "attack-verb"
+                        ? final_end - (choice - first_end) : choice;
                     translation_work_step();
                     if (end <= at || !template_literal_at(input, end, following, true)) continue;
                     const auto value = input.substr(at, end - at);
