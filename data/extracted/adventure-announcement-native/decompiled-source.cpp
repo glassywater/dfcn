@@ -81,7 +81,7 @@ void reconstructed_artifact_rumor() { // 10108c0..10140f1
 }
 
 // native-functions.tsv identifies every retained unwind owner. The two actual
-// text entry points yield 979 decoded direct call/tail-call sites in 260 owners
+// text entry points yield 979 decoded direct call/tail-call sites in 266 owners
 // (including separately retained field suppliers). These are call sites, not
 // a count of unique messages: a speech-wrapper call can itself reach the queue.
 // native-switches.tsv retains 5514 selector -> basic-block entries, including
@@ -91,3 +91,58 @@ void reconstructed_artifact_rumor() { // 10108c0..10140f1
 // the semantic owners of their dynamic productions. Newly extracted complete
 // literals and adventure-specific productions use adventure-announcement;
 // all source addresses are recorded in adventure-announcement-grammar.tsv.
+
+// Actual Ghidra C output is retained as elf-source-<original ELF VA>.c for
+// EVERY owner in native-functions.tsv, using the installed ET_EXEC image's
+// original 0x400000 image base. Native jump tables supply explicit overrides;
+// the original assembly remains authoritative for unwind boundaries and
+// compiler cold blocks. DecompileAdventureAnnouncements.java reads these
+// same native manifests without executing the game or the translator.
+// The two very large shared owners 1bdb520 and 1da1ea0 retain actual Ghidra
+// C for all instruction regions instead of a single optimized C function.
+// native-decompile-regions.tsv records the exact boundaries. Region entries
+// are analysis boundaries, not native call entries: analysis-only call/return
+// and no-fallthrough overrides bound each excerpt. Original game bytes are
+// unchanged, and native-branches.tsv/native-switches.tsv retain ALL original
+// cross-region conditions, fallthrough instructions and table destinations.
+//
+// Display ownership is independently decompiled in:
+//   1160090: select timed reports, retain report parents, wrap at 95 columns;
+//   11b2e40: render the adventure announcement box, centered ordinary reports,
+//             speech/continuation rows, scrolling and Okay/More branches;
+//   1154220: render the same original entries in the announcements log.
+// 17ea070 supplies both interfaces with the same complete report::text.
+//
+// Item action productions (read/pull/drop/wear/remove/fill/empty/throw/shoot,
+// nock/load, struggle/grab, equipment handling and shared unit actions) use
+// complete item fields, rather than generic text or personal-name slots.
+// 11dc270: "You drop " + e68020(item, string, 0, 1) + "." -> 17ea070.
+// 11b5e00: "You read " + e68020(item, string, 0, 1) + "." -> 17ea070.
+// e68020: named artifact branch; written tool 0x56 and book 0x59 branches;
+//          nonempty written title + optional " (copy)"; otherwise the whole
+//          item description including material, quality, ownership/counts,
+//          depicted subjects and virtual item-specific caption suppliers.
+// e653f0: title + " (" + ordinary item caption + ")" when called through
+//          the book's virtual caption getter; otherwise e3bf80.
+// e689d0: tool-specific written references and ordinary tool captions.
+//
+// A written title can end with '?' or contain sentence punctuation. The
+// parent action still appends its own '.', so the item grammar must consume
+// the title's punctuation before the announcement is split into sentences.
+// The shared written-item parser keeps copy, quality and quantity wrappers;
+// announcement item fields place only the actual title in Chinese book marks,
+// leaving its native quality/count/copy wrappers outside those marks.
+// The same parser now resolves both typed announcement-item fields and the
+// generic catalogue's non-unit action fields before ordinary noun parsing.
+// Existing BOOK_ART/BOOK_INSTRUCTION templates and native subject aliases
+// remain the semantic owners of every generated title and subject.
+// Both template lists also have the bare [NAME] production. The written-item
+// resolver therefore accepts their complete scoped subject/phrase aliases
+// without requiring an outer template or a copy annotation.
+//
+// Container actions have separate full/empty/capacity/material branches:
+// "Your " ITEM " is already full with " CONTENTS "." is distinct from
+// "Your " ITEM " is already full.". CONTENTS can be an item or material
+// state name with deposited contaminants and independent stagnant/salt
+// modifiers. Their typed grammar shares the native environment material
+// parser, before falling back to the complete physical-item grammar.

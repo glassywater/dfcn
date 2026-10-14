@@ -1,7 +1,7 @@
 // A written item can be named by its work alone. Share the same title grammar
 // between inventory/Stocks captions and activities, preserving item wrappers.
 std::optional<std::string> Overlay::translate_written_item_caption(
-        std::string_view source, bool book_context) const {
+        std::string_view source, bool book_context, bool title_marks) const {
     if (!config_.compositional_rules) return std::nullopt;
     const auto written = [&](auto &&self, std::string_view value,
                              unsigned depth, bool book_context)
@@ -35,15 +35,26 @@ std::optional<std::string> Overlay::translate_written_item_caption(
         // Read/copy supplies the book type. An ordinary item field instead
         // needs a complete book-title production before accepting a name.
         if (!book_context) {
+            // Both native BOOK_ART and BOOK_INSTRUCTION can select [NAME]
+            // alone. Their complete subject/phrase aliases carry the source
+            // meaning even without a title wrapper or copy annotation.
+            const std::string subject = lower(std::string(value));
+            for (std::string_view prefix : {"book title subject: ", "book title phrase: "}) {
+                const auto found = legends_terms_ci_.find(std::string(prefix) + subject);
+                if (found != legends_terms_ci_.end())
+                    return title_marks ? "《" + found->second + "》" : found->second;
+            }
             for (int index : legends_book_rules_) {
                 const auto title = translate_legends_nested(
                     rules_[static_cast<size_t>(index)], value, depth);
-                if (item_description_translation_complete(title)) return title;
+                if (item_description_translation_complete(title))
+                    return title_marks ? "《" + *title + "》" : *title;
             }
             return std::nullopt;
         }
         const auto title = translate_legends_book(value);
-        return item_description_translation_complete(title) ? title : std::nullopt;
+        if (!item_description_translation_complete(title)) return std::nullopt;
+        return title_marks ? "《" + *title + "》" : *title;
     };
     return written(written, source, 0, book_context);
 }

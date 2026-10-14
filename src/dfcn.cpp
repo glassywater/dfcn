@@ -3952,7 +3952,7 @@ private:
     std::optional<std::string> translate_named_art_item(
         std::string_view source) const;
     std::optional<std::string> translate_written_item_caption(
-        std::string_view source, bool book_context = false) const;
+        std::string_view source, bool book_context = false, bool title_marks = false) const;
     std::optional<std::string> translate_fortress_item_caption(
         std::string_view source, bool relationship = false,
         bool building_material = false) const;
@@ -12622,6 +12622,15 @@ std::optional<std::string> Overlay::translate_ui_message_capture(
     if (caption.front() >= 'a' && caption.front() <= 'z') {
         caption.front() -= 'a' - 'A';
         target = exact_literal_translation(caption);
+        if (complete(target)) return target;
+    }
+    // e68020 passes written titles unchanged to every item action, including
+    // a title's own question mark and an optional copy/designation wrapper.
+    // Only complete native book productions establish this interpretation;
+    // the unit identity branch keeps its own name and nickname policy.
+    if (!unit_label) {
+        if (auto item = translate_item_caption_grammar(source)) return item;
+        target = translate_written_item_caption(source, false, true);
         if (complete(target)) return target;
     }
     // Action targets can be complete item descriptions, including a statue's

@@ -43297,6 +43297,33 @@ producer	0xc82ba0	0xc86428	jmp    464044
 producer	0xc82ba0	0xc86434	jmp    46402e
 producer	0xc82ba0	0xc86440	jmp    46402e
 producer	0xc82ba0	0xc8644c	jmp    464066
+ordinary-item-caption	0xe3bf80	0xe3bfa3	cmp    rbx,r12
+ordinary-item-caption	0xe3bf80	0xe3bfa6	jb     e3c080
+ordinary-item-caption	0xe3bf80	0xe3bfc8	cmp    r13b,0x1
+ordinary-item-caption	0xe3bf80	0xe3bfcc	je     e3c150
+ordinary-item-caption	0xe3bf80	0xe3bfd2	cmp    r13b,0x2
+ordinary-item-caption	0xe3bf80	0xe3bfd6	je     e3c0c0
+ordinary-item-caption	0xe3bf80	0xe3c089	cmp    eax,0x1
+ordinary-item-caption	0xe3bf80	0xe3c08c	je     e3c0a9
+ordinary-item-caption	0xe3bf80	0xe3c092	cmp    r12,rbx
+ordinary-item-caption	0xe3bf80	0xe3c095	jbe    e3bfb0
+ordinary-item-caption	0xe3bf80	0xe3c0a4	cmp    eax,0x1
+ordinary-item-caption	0xe3bf80	0xe3c0a7	jne    e3c08e
+ordinary-item-caption	0xe3bf80	0xe3c0b5	jmp    e3bfb2
+book-item-caption	0xe653f0	0xe65419	test   dl,dl
+book-item-caption	0xe653f0	0xe6541b	jne    e65422
+book-item-caption	0xe653f0	0xe6541d	test   r8,r8
+book-item-caption	0xe653f0	0xe65420	jne    e65450
+book-item-caption	0xe653f0	0xe65430	jne    e65519
+book-item-caption	0xe653f0	0xe65447	jmp    e3bf80
+book-item-caption	0xe653f0	0xe65471	cmp    rax,0x1
+book-item-caption	0xe653f0	0xe65475	jbe    e6552a
+book-item-caption	0xe653f0	0xe654ce	cmp    QWORD PTR [r12+0x8],rax
+book-item-caption	0xe653f0	0xe654d3	je     e6551e
+book-item-caption	0xe653f0	0xe654ed	cmp    rdi,rbx
+book-item-caption	0xe653f0	0xe654f0	je     e65500
+book-item-caption	0xe653f0	0xe6550e	jne    e65519
+book-item-caption	0xe653f0	0xe6553d	jmp    4710ae
 item-caption	0xe68020	0xe68066	test   rax,rax
 item-caption	0xe68020	0xe68069	je     e680b0
 item-caption	0xe68020	0xe6806b	cmp    BYTE PTR [rax+0x7a],0x0
@@ -43459,6 +43486,106 @@ item-caption	0xe68020	0xe68947	jmp    e68195
 item-caption	0xe68020	0xe68962	jmp    e68317
 item-caption	0xe68020	0xe689bc	jmp    e682a3
 item-caption	0xe68020	0xe689c6	jmp    e68214
+tool-item-caption	0xe689d0	0xe68a07	test   r8d,r8d
+tool-item-caption	0xe689d0	0xe68a0a	jne    e68db0
+tool-item-caption	0xe689d0	0xe68a21	cmp    rax,rdx
+tool-item-caption	0xe689d0	0xe68a24	jne    e68e28
+tool-item-caption	0xe689d0	0xe68a38	cmp    rax,rdx
+tool-item-caption	0xe689d0	0xe68a3b	jne    e68e08
+tool-item-caption	0xe689d0	0xe68a6d	test   dl,dl
+tool-item-caption	0xe689d0	0xe68a6f	je     e68d2c
+tool-item-caption	0xe689d0	0xe68a75	cmp    DWORD PTR [rbp-0x8c],0xffffffff
+tool-item-caption	0xe689d0	0xe68a7c	je     e68d2c
+tool-item-caption	0xe689d0	0xe68a90	test   eax,eax
+tool-item-caption	0xe689d0	0xe68a92	jg     e68d2c
+tool-item-caption	0xe689d0	0xe68aa4	test   rax,rax
+tool-item-caption	0xe689d0	0xe68aa7	je     e68cf0
+tool-item-caption	0xe689d0	0xe68ab4	cmp    rax,rdx
+tool-item-caption	0xe689d0	0xe68ab7	je     e68ff0
+tool-item-caption	0xe689d0	0xe68ac4	cmp    rax,rdx
+tool-item-caption	0xe689d0	0xe68ac7	je     e68e40
+tool-item-caption	0xe689d0	0xe68ad4	cmp    rax,rdx
+tool-item-caption	0xe689d0	0xe68ad7	je     e69008
+tool-item-caption	0xe689d0	0xe68ae4	cmp    rax,rdx
+tool-item-caption	0xe689d0	0xe68ae7	je     e69020
+tool-item-caption	0xe689d0	0xe68af4	cmp    rax,rdx
+tool-item-caption	0xe689d0	0xe68af7	je     e69038
+tool-item-caption	0xe689d0	0xe68b04	cmp    rax,rdx
+tool-item-caption	0xe689d0	0xe68b07	je     e69050
+tool-item-caption	0xe689d0	0xe68b14	cmp    rax,rdx
+tool-item-caption	0xe689d0	0xe68b17	je     e69068
+tool-item-caption	0xe689d0	0xe68b24	cmp    rax,rdx
+tool-item-caption	0xe689d0	0xe68b27	je     e69080
+tool-item-caption	0xe689d0	0xe68b34	cmp    rax,rdx
+tool-item-caption	0xe689d0	0xe68b37	je     e68e58
+tool-item-caption	0xe689d0	0xe68b44	cmp    rax,rdx
+tool-item-caption	0xe689d0	0xe68b47	je     e690ac
+tool-item-caption	0xe689d0	0xe68b54	cmp    rax,rdx
+tool-item-caption	0xe689d0	0xe68b57	je     e690c0
+tool-item-caption	0xe689d0	0xe68b64	cmp    rax,rdx
+tool-item-caption	0xe689d0	0xe68b67	je     e69098
+tool-item-caption	0xe689d0	0xe68bb3	test   rax,rax
+tool-item-caption	0xe689d0	0xe68bb6	je     e690d4
+tool-item-caption	0xe689d0	0xe68bd5	cmp    rdi,rbx
+tool-item-caption	0xe689d0	0xe68bd8	je     e68bf0
+tool-item-caption	0xe689d0	0xe68c25	cmp    dx,0xffff
+tool-item-caption	0xe689d0	0xe68c29	je     e68d3e
+tool-item-caption	0xe689d0	0xe68c91	cmp    QWORD PTR [rax+0xe0],0x0
+tool-item-caption	0xe689d0	0xe68c99	je     e68cc7
+tool-item-caption	0xe689d0	0xe68cda	cmp    rdi,rbx
+tool-item-caption	0xe689d0	0xe68cdd	je     e68d3e
+tool-item-caption	0xe689d0	0xe68cec	jmp    e68d3e
+tool-item-caption	0xe689d0	0xe68cf7	test   BYTE PTR [rax+0x10],0x40
+tool-item-caption	0xe689d0	0xe68cfb	je     e68d2c
+tool-item-caption	0xe689d0	0xe68d05	cmp    r13,r14
+tool-item-caption	0xe689d0	0xe68d08	jae    e68d2c
+tool-item-caption	0xe689d0	0xe68d1a	cmp    eax,0xa
+tool-item-caption	0xe689d0	0xe68d1d	je     e68e70
+tool-item-caption	0xe689d0	0xe68d27	cmp    r14,r13
+tool-item-caption	0xe689d0	0xe68d2a	ja     e68d10
+tool-item-caption	0xe689d0	0xe68d54	test   rax,rax
+tool-item-caption	0xe689d0	0xe68d57	je     e68de0
+tool-item-caption	0xe689d0	0xe68d87	jne    e690dc
+tool-item-caption	0xe689d0	0xe68da5	jmp    8377e0
+tool-item-caption	0xe689d0	0xe68dbd	jne    e690dc
+tool-item-caption	0xe689d0	0xe68dd4	jmp    e3bf80
+tool-item-caption	0xe689d0	0xe68ded	jne    e690dc
+tool-item-caption	0xe689d0	0xe68e12	test   al,al
+tool-item-caption	0xe689d0	0xe68e14	je     e68d2c
+tool-item-caption	0xe689d0	0xe68e1d	jmp    e68a82
+tool-item-caption	0xe689d0	0xe68e2a	test   al,al
+tool-item-caption	0xe689d0	0xe68e2c	je     e68d2c
+tool-item-caption	0xe689d0	0xe68e32	jmp    e68a98
+tool-item-caption	0xe689d0	0xe68e4f	jmp    e68bf0
+tool-item-caption	0xe689d0	0xe68e67	jmp    e68bf0
+tool-item-caption	0xe689d0	0xe68e7d	test   rax,rax
+tool-item-caption	0xe689d0	0xe68e80	je     e68d23
+tool-item-caption	0xe689d0	0xe68e92	test   al,al
+tool-item-caption	0xe689d0	0xe68e94	je     e68d23
+tool-item-caption	0xe689d0	0xe68f09	cmp    dx,0xffff
+tool-item-caption	0xe689d0	0xe68f0d	je     e68fd0
+tool-item-caption	0xe689d0	0xe68f75	cmp    QWORD PTR [rax+0xe0],0x0
+tool-item-caption	0xe689d0	0xe68f7d	je     e68fab
+tool-item-caption	0xe689d0	0xe68fbe	cmp    rdi,rbx
+tool-item-caption	0xe689d0	0xe68fc1	je     e68fd0
+tool-item-caption	0xe689d0	0xe68fd4	cmp    rdi,r13
+tool-item-caption	0xe689d0	0xe68fd7	je     e68d3e
+tool-item-caption	0xe689d0	0xe68fea	jmp    e68d3e
+tool-item-caption	0xe689d0	0xe68fff	jmp    e68bf0
+tool-item-caption	0xe689d0	0xe69017	jmp    e68bf0
+tool-item-caption	0xe689d0	0xe6902f	jmp    e68bf0
+tool-item-caption	0xe689d0	0xe69047	jmp    e68bf0
+tool-item-caption	0xe689d0	0xe6905f	jmp    e68bf0
+tool-item-caption	0xe689d0	0xe69077	jmp    e68bf0
+tool-item-caption	0xe689d0	0xe6908f	jmp    e68bf0
+tool-item-caption	0xe689d0	0xe690a7	jmp    e68bf0
+tool-item-caption	0xe689d0	0xe690bb	jmp    e68bf0
+tool-item-caption	0xe689d0	0xe690cf	jmp    e68bf0
+tool-item-caption	0xe689d0	0xe690d7	jmp    e68bbc
+tool-item-caption	0xe689d0	0xe690e8	jmp    471258
+tool-item-caption	0xe689d0	0xe690f4	jmp    471258
+tool-item-caption	0xe689d0	0xe69100	jmp    471276
+tool-item-caption	0xe689d0	0xe6910c	jmp    47128f
 producer	0xe69120	0xe691a6	js     e69530
 producer	0xe69120	0xe691d0	jmp    e691f0
 producer	0xe69120	0xe691dc	cmp    rbx,r13
@@ -58899,6 +59026,150 @@ producer	0x114c350	0x114cb55	jmp    114c845
 producer	0x114c350	0x114cb66	jmp    48d582
 producer	0x114c350	0x114cb72	jmp    48d5a8
 producer	0x114c350	0x114cb7e	jmp    48d5ce
+adventure-announcement-log-render	0x1154220	0x115424d	cmp    BYTE PTR [rip+0x138826d],0x0        # 24dc4c1
+adventure-announcement-log-render	0x1154220	0x1154254	je     1154970
+adventure-announcement-log-render	0x1154220	0x11542ac	cmp    eax,0x21
+adventure-announcement-log-render	0x1154220	0x11542ba	cmp    edx,eax
+adventure-announcement-log-render	0x1154220	0x11542bc	jl     1154953
+adventure-announcement-log-render	0x1154220	0x11542eb	cmp    ebx,eax
+adventure-announcement-log-render	0x1154220	0x11542ed	jg     1154503
+adventure-announcement-log-render	0x1154220	0x1154332	jmp    1154375
+adventure-announcement-log-render	0x1154220	0x1154338	cmp    DWORD PTR [rsp+0x10],ebx
+adventure-announcement-log-render	0x1154220	0x115433c	je     1154580
+adventure-announcement-log-render	0x1154220	0x1154342	cmp    DWORD PTR [rsp],r13d
+adventure-announcement-log-render	0x1154220	0x1154346	je     1154608
+adventure-announcement-log-render	0x1154220	0x115434c	cmp    ebp,r13d
+adventure-announcement-log-render	0x1154220	0x115434f	je     11545f0
+adventure-announcement-log-render	0x1154220	0x115436c	cmp    ebp,r13d
+adventure-announcement-log-render	0x1154220	0x115436f	jl     11544f0
+adventure-announcement-log-render	0x1154220	0x11543a3	cmp    rax,QWORD PTR [rip+0x13383de]        # 248c788
+adventure-announcement-log-render	0x1154220	0x11543aa	jae    11544b0
+adventure-announcement-log-render	0x1154220	0x11543b0	cmp    QWORD PTR [rip+0x1338471],r14        # 248c828
+adventure-announcement-log-render	0x1154220	0x11543b7	jg     11544b0
+adventure-announcement-log-render	0x1154220	0x11543bd	cmp    QWORD PTR [rip+0x133846c],r14        # 248c830
+adventure-announcement-log-render	0x1154220	0x11543c4	jl     11544b0
+adventure-announcement-log-render	0x1154220	0x11543cf	cmp    QWORD PTR [rip+0x1338462],rcx        # 248c838
+adventure-announcement-log-render	0x1154220	0x11543d6	jg     11544b0
+adventure-announcement-log-render	0x1154220	0x11543dc	cmp    QWORD PTR [rip+0x133845d],rcx        # 248c840
+adventure-announcement-log-render	0x1154220	0x11543e3	jl     11544b0
+adventure-announcement-log-render	0x1154220	0x11543ec	cmp    BYTE PTR [rip+0x133823c],0x0        # 248c62f
+adventure-announcement-log-render	0x1154220	0x11543f3	je     1154910
+adventure-announcement-log-render	0x1154220	0x1154402	cmp    BYTE PTR [rip+0x1338225],0x0        # 248c62e
+adventure-announcement-log-render	0x1154220	0x11544b0	cmp    DWORD PTR [rsp+0x4],ebx
+adventure-announcement-log-render	0x1154220	0x11544b4	jne    1154338
+adventure-announcement-log-render	0x1154220	0x11544ba	cmp    DWORD PTR [rsp],r13d
+adventure-announcement-log-render	0x1154220	0x11544be	je     1154650
+adventure-announcement-log-render	0x1154220	0x11544c4	cmp    ebp,r13d
+adventure-announcement-log-render	0x1154220	0x11544c7	je     1154620
+adventure-announcement-log-render	0x1154220	0x11544e4	cmp    ebp,r13d
+adventure-announcement-log-render	0x1154220	0x11544e7	jge    1154375
+adventure-announcement-log-render	0x1154220	0x11544f9	cmp    ebx,DWORD PTR [rsp+0x14]
+adventure-announcement-log-render	0x1154220	0x11544fd	jne    1154310
+adventure-announcement-log-render	0x1154220	0x115452b	test   ebx,ebx
+adventure-announcement-log-render	0x1154220	0x115452d	je     11545b0
+adventure-announcement-log-render	0x1154220	0x1154533	cmp    ebx,0x7
+adventure-announcement-log-render	0x1154220	0x1154536	je     1154680
+adventure-announcement-log-render	0x1154220	0x1154575	cmp    r13,rbp
+adventure-announcement-log-render	0x1154220	0x1154578	jne    1154548
+adventure-announcement-log-render	0x1154220	0x115457d	jmp    1154518
+adventure-announcement-log-render	0x1154220	0x1154580	cmp    DWORD PTR [rsp],r13d
+adventure-announcement-log-render	0x1154220	0x1154584	je     1154668
+adventure-announcement-log-render	0x1154220	0x115458a	cmp    ebp,r13d
+adventure-announcement-log-render	0x1154220	0x115458d	je     1154638
+adventure-announcement-log-render	0x1154220	0x11545a2	jmp    1154364
+adventure-announcement-log-render	0x1154220	0x11545dd	cmp    rbp,r13
+adventure-announcement-log-render	0x1154220	0x11545e0	jne    11545b0
+adventure-announcement-log-render	0x1154220	0x11545e7	jmp    1154518
+adventure-announcement-log-render	0x1154220	0x11545ff	jmp    1154364
+adventure-announcement-log-render	0x1154220	0x1154617	jmp    1154364
+adventure-announcement-log-render	0x1154220	0x115462f	jmp    1154364
+adventure-announcement-log-render	0x1154220	0x1154647	jmp    1154364
+adventure-announcement-log-render	0x1154220	0x115465f	jmp    1154364
+adventure-announcement-log-render	0x1154220	0x1154677	jmp    1154364
+adventure-announcement-log-render	0x1154220	0x11546b9	cmp    r14,rbp
+adventure-announcement-log-render	0x1154220	0x11546bc	jne    115468c
+adventure-announcement-log-render	0x1154220	0x1154723	cmp    rdi,r14
+adventure-announcement-log-render	0x1154220	0x1154726	je     1154736
+adventure-announcement-log-render	0x1154220	0x11547a5	cmp    rdi,r14
+adventure-announcement-log-render	0x1154220	0x11547a8	je     11547b8
+adventure-announcement-log-render	0x1154220	0x11547f5	cmp    ebp,edi
+adventure-announcement-log-render	0x1154220	0x1154802	cmp    edi,eax
+adventure-announcement-log-render	0x1154220	0x115480e	test   edi,edi
+adventure-announcement-log-render	0x1154220	0x1154816	cmp    edi,eax
+adventure-announcement-log-render	0x1154220	0x1154818	jge    11548d3
+adventure-announcement-log-render	0x1154220	0x115483b	jmp    11548aa
+adventure-announcement-log-render	0x1154220	0x115487a	cmp    QWORD PTR [rsi+0x8],0x0
+adventure-announcement-log-render	0x1154220	0x115487f	jne    1154889
+adventure-announcement-log-render	0x1154220	0x11548a1	cmp    r15,r13
+adventure-announcement-log-render	0x1154220	0x11548a4	je     1154985
+adventure-announcement-log-render	0x1154220	0x11548c6	cmp    rcx,r15
+adventure-announcement-log-render	0x1154220	0x11548c9	ja     1154840
+adventure-announcement-log-render	0x1154220	0x11548d3	cmp    ebp,ecx
+adventure-announcement-log-render	0x1154220	0x11548d5	jl     115499b
+adventure-announcement-log-render	0x1154220	0x11548db	cmp    rsi,rdx
+adventure-announcement-log-render	0x1154220	0x11548de	je     1154ae7
+adventure-announcement-log-render	0x1154220	0x11548f5	jne    1154bf6
+adventure-announcement-log-render	0x1154220	0x115494e	jmp    1154482
+adventure-announcement-log-render	0x1154220	0x115496b	jmp    11542dc
+adventure-announcement-log-render	0x1154220	0x1154980	jmp    115426e
+adventure-announcement-log-render	0x1154220	0x1154993	cmp    ebp,ecx
+adventure-announcement-log-render	0x1154220	0x1154995	jge    11548db
+adventure-announcement-log-render	0x1154220	0x11549e2	test   ecx,ecx
+adventure-announcement-log-render	0x1154220	0x11549e4	jle    1154ab0
+adventure-announcement-log-render	0x1154220	0x1154a02	test   eax,eax
+adventure-announcement-log-render	0x1154220	0x1154a1e	test   r10d,r10d
+adventure-announcement-log-render	0x1154220	0x1154a21	je     1154b79
+adventure-announcement-log-render	0x1154220	0x1154a27	cmp    r10d,ecx
+adventure-announcement-log-render	0x1154220	0x1154a2a	je     1154be8
+adventure-announcement-log-render	0x1154220	0x1154a30	test   r10d,r10d
+adventure-announcement-log-render	0x1154220	0x1154a33	jle    1154a44
+adventure-announcement-log-render	0x1154220	0x1154a35	cmp    edi,eax
+adventure-announcement-log-render	0x1154220	0x1154a37	jl     1154a44
+adventure-announcement-log-render	0x1154220	0x1154a44	cmp    r10d,r9d
+adventure-announcement-log-render	0x1154220	0x1154a4a	cmp    r8d,edx
+adventure-announcement-log-render	0x1154220	0x1154a4d	jg     1154a57
+adventure-announcement-log-render	0x1154220	0x1154a4f	test   cl,cl
+adventure-announcement-log-render	0x1154220	0x1154a51	jne    1154b9d
+adventure-announcement-log-render	0x1154220	0x1154a57	cmp    edi,eax
+adventure-announcement-log-render	0x1154220	0x1154a59	jle    1154a61
+adventure-announcement-log-render	0x1154220	0x1154a61	cmp    r8d,eax
+adventure-announcement-log-render	0x1154220	0x1154a64	jge    1154a6d
+adventure-announcement-log-render	0x1154220	0x1154a6d	cmp    edi,edx
+adventure-announcement-log-render	0x1154220	0x1154a6f	jle    1154a78
+adventure-announcement-log-render	0x1154220	0x1154a78	cmp    r8d,edx
+adventure-announcement-log-render	0x1154220	0x1154a7b	jge    1154a86
+adventure-announcement-log-render	0x1154220	0x1154a86	cmp    eax,edx
+adventure-announcement-log-render	0x1154220	0x1154a88	je     1154bb9
+adventure-announcement-log-render	0x1154220	0x1154a8e	cmp    edi,eax
+adventure-announcement-log-render	0x1154220	0x1154a93	cmp    eax,r8d
+adventure-announcement-log-render	0x1154220	0x1154a9a	cmp    edi,edx
+adventure-announcement-log-render	0x1154220	0x1154aa3	cmp    edx,r8d
+adventure-announcement-log-render	0x1154220	0x1154aa6	jg     1154baf
+adventure-announcement-log-render	0x1154220	0x1154ade	cmp    rsi,rdx
+adventure-announcement-log-render	0x1154220	0x1154ae1	jne    11548e4
+adventure-announcement-log-render	0x1154220	0x1154b5d	cmp    rdi,r14
+adventure-announcement-log-render	0x1154220	0x1154b60	je     11548e4
+adventure-announcement-log-render	0x1154220	0x1154b74	jmp    11548e4
+adventure-announcement-log-render	0x1154220	0x1154b7d	test   ecx,ecx
+adventure-announcement-log-render	0x1154220	0x1154b7f	je     1154be8
+adventure-announcement-log-render	0x1154220	0x1154b8c	cmp    r8d,edx
+adventure-announcement-log-render	0x1154220	0x1154b8f	jg     1154a5f
+adventure-announcement-log-render	0x1154220	0x1154b95	test   al,al
+adventure-announcement-log-render	0x1154220	0x1154b97	je     1154a5f
+adventure-announcement-log-render	0x1154220	0x1154baa	jmp    1154a57
+adventure-announcement-log-render	0x1154220	0x1154bb4	jmp    1154ab0
+adventure-announcement-log-render	0x1154220	0x1154bb9	cmp    r8d,eax
+adventure-announcement-log-render	0x1154220	0x1154bbc	jle    1154bd7
+adventure-announcement-log-render	0x1154220	0x1154bc6	cmp    r8d,edx
+adventure-announcement-log-render	0x1154220	0x1154bc9	jg     1154a8e
+adventure-announcement-log-render	0x1154220	0x1154bcf	test   cl,cl
+adventure-announcement-log-render	0x1154220	0x1154bd1	je     1154a8e
+adventure-announcement-log-render	0x1154220	0x1154bda	cmp    eax,edi
+adventure-announcement-log-render	0x1154220	0x1154be3	jmp    1154a8e
+adventure-announcement-log-render	0x1154220	0x1154bf1	jmp    1154a30
+adventure-announcement-log-render	0x1154220	0x1154c02	jmp    48db8a
+adventure-announcement-log-render	0x1154220	0x1154c0e	jmp    48dbaa
+adventure-announcement-log-render	0x1154220	0x1154c1a	jmp    48dbca
 producer	0x115c630	0x115c671	cmp    rax,r8
 producer	0x115c630	0x115c674	je     115c6a3
 producer	0x115c630	0x115c676	cmp    r9d,0xffffffff
@@ -58958,6 +59229,89 @@ producer	0x115c630	0x115c97d	jmp    115c8f0
 producer	0x115c630	0x115c993	jmp    115c770
 producer	0x115c630	0x115c9ab	jne    115c998
 producer	0x115c630	0x115c9c6	jmp    48dd14
+adventure-announcement-wrap	0x1160090	0x11600cc	test   rax,rax
+adventure-announcement-wrap	0x1160090	0x11600cf	je     1160170
+adventure-announcement-wrap	0x1160090	0x11600d5	test   BYTE PTR [rax+0x110],0x2
+adventure-announcement-wrap	0x1160090	0x11600dc	jne    1160170
+adventure-announcement-wrap	0x1160090	0x11600fc	js     1160170
+adventure-announcement-wrap	0x1160090	0x1160114	jmp    1160130
+adventure-announcement-wrap	0x1160090	0x1160124	cmp    rbp,rbx
+adventure-announcement-wrap	0x1160090	0x1160127	je     1160170
+adventure-announcement-wrap	0x1160090	0x1160136	test   BYTE PTR [rax+0x30],0x2
+adventure-announcement-wrap	0x1160090	0x116013a	je     1160120
+adventure-announcement-wrap	0x1160090	0x1160147	cmp    rdx,rsi
+adventure-announcement-wrap	0x1160090	0x116014a	je     116015b
+adventure-announcement-wrap	0x1160090	0x116016a	cmp    rbp,rbx
+adventure-announcement-wrap	0x1160090	0x116016d	jne    1160129
+adventure-announcement-wrap	0x1160090	0x1160197	jmp    11601b8
+adventure-announcement-wrap	0x1160090	0x11601b0	test   r9d,r9d
+adventure-announcement-wrap	0x1160090	0x11601b3	jle    11601bd
+adventure-announcement-wrap	0x1160090	0x11601b8	test   r12d,r12d
+adventure-announcement-wrap	0x1160090	0x11601bb	jg     11601a0
+adventure-announcement-wrap	0x1160090	0x11601d8	cmp    rdi,r8
+adventure-announcement-wrap	0x1160090	0x11601db	je     11601f5
+adventure-announcement-wrap	0x1160090	0x11601f0	test   r8d,r8d
+adventure-announcement-wrap	0x1160090	0x11601f3	jne    1160220
+adventure-announcement-wrap	0x1160090	0x1160203	jne    116058f
+adventure-announcement-wrap	0x1160090	0x1160235	cmp    rbx,rbp
+adventure-announcement-wrap	0x1160090	0x1160238	jae    116029b
+adventure-announcement-wrap	0x1160090	0x1160243	test   r13,r13
+adventure-announcement-wrap	0x1160090	0x1160246	je     116026f
+adventure-announcement-wrap	0x1160090	0x1160250	cmp    rdi,rax
+adventure-announcement-wrap	0x1160090	0x1160253	je     1160262
+adventure-announcement-wrap	0x1160090	0x1160273	cmp    rbp,rbx
+adventure-announcement-wrap	0x1160090	0x1160276	ja     1160240
+adventure-announcement-wrap	0x1160090	0x116029e	cmp    rbx,rbp
+adventure-announcement-wrap	0x1160090	0x11602a1	je     11602aa
+adventure-announcement-wrap	0x1160090	0x11602b1	cmp    r12d,esi
+adventure-announcement-wrap	0x1160090	0x11602b4	jl     1160332
+adventure-announcement-wrap	0x1160090	0x11602b6	jmp    116044e
+adventure-announcement-wrap	0x1160090	0x11602e0	cmp    rsi,QWORD PTR [rip+0x16b95f1]        # 28198d8
+adventure-announcement-wrap	0x1160090	0x11602ff	je     1160420
+adventure-announcement-wrap	0x1160090	0x1160329	cmp    r12d,eax
+adventure-announcement-wrap	0x1160090	0x116032c	jge    1160440
+adventure-announcement-wrap	0x1160090	0x1160336	cmp    QWORD PTR [rsi+0x10],0x5f
+adventure-announcement-wrap	0x1160090	0x116033b	jbe    11602c0
+adventure-announcement-wrap	0x1160090	0x1160374	cmp    r13,rdi
+adventure-announcement-wrap	0x1160090	0x1160377	ja     11604f8
+adventure-announcement-wrap	0x1160090	0x1160380	cmp    r13,rdi
+adventure-announcement-wrap	0x1160090	0x1160383	je     1160430
+adventure-announcement-wrap	0x1160090	0x116038c	test   rbp,rbp
+adventure-announcement-wrap	0x1160090	0x116038f	je     11603c2
+adventure-announcement-wrap	0x1160090	0x1160399	cmp    rdi,rax
+adventure-announcement-wrap	0x1160090	0x116039c	je     11603ab
+adventure-announcement-wrap	0x1160090	0x11603c6	cmp    rsi,r13
+adventure-announcement-wrap	0x1160090	0x11603c9	je     1160410
+adventure-announcement-wrap	0x1160090	0x11603e9	cmp    r13,rdi
+adventure-announcement-wrap	0x1160090	0x11603ec	jne    1160389
+adventure-announcement-wrap	0x1160090	0x1160404	jmp    1160313
+adventure-announcement-wrap	0x1160090	0x1160415	jmp    11603f0
+adventure-announcement-wrap	0x1160090	0x116042d	jmp    11603fd
+adventure-announcement-wrap	0x1160090	0x1160430	test   rdi,rdi
+adventure-announcement-wrap	0x1160090	0x1160433	je     11603fd
+adventure-announcement-wrap	0x1160090	0x1160435	jmp    11603f0
+adventure-announcement-wrap	0x1160090	0x1160460	cmp    DWORD PTR [rip+0x155b40a],eax        # 26bb870
+adventure-announcement-wrap	0x1160090	0x116046c	jl     1160479
+adventure-announcement-wrap	0x1160090	0x1160484	test   ecx,ecx
+adventure-announcement-wrap	0x1160090	0x1160486	jle    1160497
+adventure-announcement-wrap	0x1160090	0x116049e	test   rcx,rcx
+adventure-announcement-wrap	0x1160090	0x11604a1	je     11604e6
+adventure-announcement-wrap	0x1160090	0x11604b3	je     11601f5
+adventure-announcement-wrap	0x1160090	0x11604b9	test   al,al
+adventure-announcement-wrap	0x1160090	0x11604bb	jne    11601f5
+adventure-announcement-wrap	0x1160090	0x11604d0	test   al,0x1
+adventure-announcement-wrap	0x1160090	0x11604d2	je     11601f5
+adventure-announcement-wrap	0x1160090	0x11604e1	jmp    11601f5
+adventure-announcement-wrap	0x1160090	0x11604e6	test   dl,0x8
+adventure-announcement-wrap	0x1160090	0x11604e9	je     11601f5
+adventure-announcement-wrap	0x1160090	0x11604ef	jmp    11604b9
+adventure-announcement-wrap	0x1160090	0x116053f	cmp    rsi,QWORD PTR [rip+0x16b9392]        # 28198d8
+adventure-announcement-wrap	0x1160090	0x116054e	je     1160580
+adventure-announcement-wrap	0x1160090	0x1160562	cmp    r13,rbp
+adventure-announcement-wrap	0x1160090	0x1160565	ja     1160500
+adventure-announcement-wrap	0x1160090	0x1160571	jmp    1160380
+adventure-announcement-wrap	0x1160090	0x116058d	jmp    116055e
+adventure-announcement-wrap	0x1160090	0x116059b	jmp    48de2e
 producer	0x1165890	0x11658bd	test   eax,eax
 producer	0x1165890	0x11658bf	js     1165a88
 producer	0x1165890	0x11658de	cmp    rcx,rax
@@ -61140,6 +61494,403 @@ producer	0x11b21c0	0x11b2811	ja     11b27f7
 producer	0x11b21c0	0x11b2821	jmp    11b2770
 producer	0x11b21c0	0x11b284a	jmp    49656c
 producer	0x11b21c0	0x11b2856	jmp    49654e
+adventure-announcement-render	0x11b2e40	0x11b2e6d	test   BYTE PTR [rdi+0x43c0],0x1
+adventure-announcement-render	0x11b2e40	0x11b2e74	jne    11b30e8
+adventure-announcement-render	0x11b2e40	0x11b2e7e	cmp    QWORD PTR [rdi+0x20],rax
+adventure-announcement-render	0x11b2e40	0x11b2e82	je     11b30e8
+adventure-announcement-render	0x11b2e40	0x11b2e88	cmp    BYTE PTR [rip+0x1329632],0x0        # 24dc4c1
+adventure-announcement-render	0x11b2e40	0x11b2e93	jne    11b317b
+adventure-announcement-render	0x11b2e40	0x11b2ee8	cmp    rdx,rax
+adventure-announcement-render	0x11b2e40	0x11b2eeb	jb     11b3111
+adventure-announcement-render	0x11b2e40	0x11b2f25	cmp    ecx,esi
+adventure-announcement-render	0x11b2e40	0x11b2f36	test   r8b,0x2
+adventure-announcement-render	0x11b2e40	0x11b2f3a	jne    11b3197
+adventure-announcement-render	0x11b2e40	0x11b2f47	test   rdi,rdi
+adventure-announcement-render	0x11b2e40	0x11b2f4a	je     11b3cc6
+adventure-announcement-render	0x11b2e40	0x11b2f50	test   BYTE PTR [rdi+0x110],0x2
+adventure-announcement-render	0x11b2e40	0x11b2f57	je     11b3cc6
+adventure-announcement-render	0x11b2e40	0x11b2f64	cmp    esi,0x5
+adventure-announcement-render	0x11b2e40	0x11b2f67	jg     11b31a7
+adventure-announcement-render	0x11b2e40	0x11b2f74	jmp    11b3402
+adventure-announcement-render	0x11b2e40	0x11b2f86	test   eax,eax
+adventure-announcement-render	0x11b2e40	0x11b2f88	jg     11b3c50
+adventure-announcement-render	0x11b2e40	0x11b2f95	test   BYTE PTR [rax+0x43c0],0x2
+adventure-announcement-render	0x11b2e40	0x11b2f9c	jne    11b2fbb
+adventure-announcement-render	0x11b2e40	0x11b2fa5	test   rax,rax
+adventure-announcement-render	0x11b2e40	0x11b2fa8	je     11b30e8
+adventure-announcement-render	0x11b2e40	0x11b2fae	test   BYTE PTR [rax+0x110],0x2
+adventure-announcement-render	0x11b2e40	0x11b2fb5	je     11b30e8
+adventure-announcement-render	0x11b2e40	0x11b2ff0	cmp    DWORD PTR [rsp+0x8],ebx
+adventure-announcement-render	0x11b2e40	0x11b2ff4	je     11b3b8e
+adventure-announcement-render	0x11b2e40	0x11b2ffa	cmp    r13d,ebx
+adventure-announcement-render	0x11b2e40	0x11b2ffd	je     11b3b40
+adventure-announcement-render	0x11b2e40	0x11b3038	cmp    r12,r15
+adventure-announcement-render	0x11b2e40	0x11b303b	jne    11b300e
+adventure-announcement-render	0x11b2e40	0x11b3040	cmp    r13d,ebx
+adventure-announcement-render	0x11b2e40	0x11b3043	jge    11b2ff0
+adventure-announcement-render	0x11b2e40	0x11b308b	test   BYTE PTR [rax+0x43c0],0x8
+adventure-announcement-render	0x11b2e40	0x11b3092	jne    11b3c20
+adventure-announcement-render	0x11b2e40	0x11b30cb	cmp    rdi,rbx
+adventure-announcement-render	0x11b2e40	0x11b30ce	je     11b30e8
+adventure-announcement-render	0x11b2e40	0x11b30f9	jne    11b431c
+adventure-announcement-render	0x11b2e40	0x11b3118	cmp    DWORD PTR [rsi+0x64],0xffffffff
+adventure-announcement-render	0x11b2e40	0x11b311c	jne    11b3138
+adventure-announcement-render	0x11b2e40	0x11b3122	cmp    rax,rcx
+adventure-announcement-render	0x11b2e40	0x11b3125	jbe    11b2ef8
+adventure-announcement-render	0x11b2e40	0x11b3132	cmp    DWORD PTR [rsi+0x64],0xffffffff
+adventure-announcement-render	0x11b2e40	0x11b3136	je     11b311e
+adventure-announcement-render	0x11b2e40	0x11b316c	cmp    ecx,esi
+adventure-announcement-render	0x11b2e40	0x11b3171	cmp    esi,edi
+adventure-announcement-render	0x11b2e40	0x11b3176	jmp    11b2f2a
+adventure-announcement-render	0x11b2e40	0x11b3192	jmp    11b2eac
+adventure-announcement-render	0x11b2e40	0x11b319e	cmp    edi,0x5
+adventure-announcement-render	0x11b2e40	0x11b31a1	jle    11b3b22
+adventure-announcement-render	0x11b2e40	0x11b31c0	cmp    r12d,ebx
+adventure-announcement-render	0x11b2e40	0x11b31c3	jg     11b33d2
+adventure-announcement-render	0x11b2e40	0x11b31ea	jmp    11b3232
+adventure-announcement-render	0x11b2e40	0x11b31f4	cmp    DWORD PTR [rsp+0x1c],edx
+adventure-announcement-render	0x11b2e40	0x11b31f8	je     11b37f0
+adventure-announcement-render	0x11b2e40	0x11b31fe	cmp    r15d,DWORD PTR [rsp+0x8]
+adventure-announcement-render	0x11b2e40	0x11b3203	je     11b3930
+adventure-announcement-render	0x11b2e40	0x11b3209	cmp    r15d,ebx
+adventure-announcement-render	0x11b2e40	0x11b320c	je     11b3820
+adventure-announcement-render	0x11b2e40	0x11b3229	cmp    r15d,ebx
+adventure-announcement-render	0x11b2e40	0x11b322c	jg     11b33b0
+adventure-announcement-render	0x11b2e40	0x11b3262	cmp    rax,QWORD PTR [rip+0x12d951f]        # 248c788
+adventure-announcement-render	0x11b2e40	0x11b3269	jae    11b3368
+adventure-announcement-render	0x11b2e40	0x11b326f	cmp    QWORD PTR [rip+0x12d95b2],r12        # 248c828
+adventure-announcement-render	0x11b2e40	0x11b3276	jg     11b3368
+adventure-announcement-render	0x11b2e40	0x11b327c	cmp    QWORD PTR [rip+0x12d95ad],r12        # 248c830
+adventure-announcement-render	0x11b2e40	0x11b3283	jl     11b3368
+adventure-announcement-render	0x11b2e40	0x11b3289	cmp    QWORD PTR [rip+0x12d95a8],rbp        # 248c838
+adventure-announcement-render	0x11b2e40	0x11b3290	jg     11b3368
+adventure-announcement-render	0x11b2e40	0x11b3296	cmp    QWORD PTR [rip+0x12d95a3],rbp        # 248c840
+adventure-announcement-render	0x11b2e40	0x11b329d	jl     11b3368
+adventure-announcement-render	0x11b2e40	0x11b32a6	cmp    BYTE PTR [rip+0x12d9382],0x0        # 248c62f
+adventure-announcement-render	0x11b2e40	0x11b32ad	je     11b3aa0
+adventure-announcement-render	0x11b2e40	0x11b32bc	cmp    BYTE PTR [rip+0x12d936b],0x0        # 248c62e
+adventure-announcement-render	0x11b2e40	0x11b3368	cmp    rbp,0x6
+adventure-announcement-render	0x11b2e40	0x11b336c	jne    11b31f0
+adventure-announcement-render	0x11b2e40	0x11b3372	cmp    r15d,DWORD PTR [rsp+0x8]
+adventure-announcement-render	0x11b2e40	0x11b3377	je     11b3a00
+adventure-announcement-render	0x11b2e40	0x11b337d	cmp    r15d,ebx
+adventure-announcement-render	0x11b2e40	0x11b3380	je     11b39a0
+adventure-announcement-render	0x11b2e40	0x11b339d	cmp    r15d,ebx
+adventure-announcement-render	0x11b2e40	0x11b33a0	jle    11b3232
+adventure-announcement-render	0x11b2e40	0x11b33b4	cmp    DWORD PTR [rsp+0x1c],ebp
+adventure-announcement-render	0x11b2e40	0x11b33b8	jge    11b31d0
+adventure-announcement-render	0x11b2e40	0x11b33fc	jne    11b3b29
+adventure-announcement-render	0x11b2e40	0x11b340d	test   rdi,rdi
+adventure-announcement-render	0x11b2e40	0x11b3410	je     11b3420
+adventure-announcement-render	0x11b2e40	0x11b3412	test   BYTE PTR [rdi+0x110],0x2
+adventure-announcement-render	0x11b2e40	0x11b3419	jne    11b3b29
+adventure-announcement-render	0x11b2e40	0x11b3432	cmp    edi,ecx
+adventure-announcement-render	0x11b2e40	0x11b344b	cmp    r13d,esi
+adventure-announcement-render	0x11b2e40	0x11b3454	test   r13d,r13d
+adventure-announcement-render	0x11b2e40	0x11b345b	cmp    DWORD PTR [r11+0x43cc],esi
+adventure-announcement-render	0x11b2e40	0x11b3462	jge    11b346b
+adventure-announcement-render	0x11b2e40	0x11b3473	cmp    r13d,esi
+adventure-announcement-render	0x11b2e40	0x11b3476	jge    11b421b
+adventure-announcement-render	0x11b2e40	0x11b34b9	cmp    eax,r13d
+adventure-announcement-render	0x11b2e40	0x11b34bc	jle    11b3781
+adventure-announcement-render	0x11b2e40	0x11b34d8	cmp    eax,r13d
+adventure-announcement-render	0x11b2e40	0x11b34db	jne    11b34e9
+adventure-announcement-render	0x11b2e40	0x11b34ed	cmp    BYTE PTR [rip+0x1328fcd],0x0        # 24dc4c1
+adventure-announcement-render	0x11b2e40	0x11b34f7	cmp    r12d,edi
+adventure-announcement-render	0x11b2e40	0x11b34ff	cmp    DWORD PTR [rsp+0x28],edi
+adventure-announcement-render	0x11b2e40	0x11b3508	cmp    DWORD PTR [rsp+0x34],r15d
+adventure-announcement-render	0x11b2e40	0x11b3512	jne    11b3cee
+adventure-announcement-render	0x11b2e40	0x11b354b	cmp    ecx,0xffffffff
+adventure-announcement-render	0x11b2e40	0x11b354e	je     11b3678
+adventure-announcement-render	0x11b2e40	0x11b3558	cmp    BYTE PTR [rsp+0x43],0x0
+adventure-announcement-render	0x11b2e40	0x11b356b	cmp    QWORD PTR [rip+0x1563806],rax        # 2716d78
+adventure-announcement-render	0x11b2e40	0x11b3572	je     11b35a0
+adventure-announcement-render	0x11b2e40	0x11b357b	test   rax,rax
+adventure-announcement-render	0x11b2e40	0x11b357e	je     11b358c
+adventure-announcement-render	0x11b2e40	0x11b3580	cmp    DWORD PTR [rax+0x130],ecx
+adventure-announcement-render	0x11b2e40	0x11b3586	je     11b3bd9
+adventure-announcement-render	0x11b2e40	0x11b35ab	cmp    eax,ecx
+adventure-announcement-render	0x11b2e40	0x11b35ad	je     11b41fb
+adventure-announcement-render	0x11b2e40	0x11b35b3	cmp    eax,0xffffffff
+adventure-announcement-render	0x11b2e40	0x11b35b6	je     11b4101
+adventure-announcement-render	0x11b2e40	0x11b35c2	cmp    eax,ecx
+adventure-announcement-render	0x11b2e40	0x11b35c4	je     11b4110
+adventure-announcement-render	0x11b2e40	0x11b35ca	cmp    eax,0xffffffff
+adventure-announcement-render	0x11b2e40	0x11b35cd	je     11b4256
+adventure-announcement-render	0x11b2e40	0x11b35d9	cmp    eax,ecx
+adventure-announcement-render	0x11b2e40	0x11b35db	je     11b4268
+adventure-announcement-render	0x11b2e40	0x11b35e1	cmp    eax,0xffffffff
+adventure-announcement-render	0x11b2e40	0x11b35e4	je     11b423a
+adventure-announcement-render	0x11b2e40	0x11b35f0	cmp    eax,ecx
+adventure-announcement-render	0x11b2e40	0x11b35f2	je     11b424c
+adventure-announcement-render	0x11b2e40	0x11b35f8	cmp    eax,0xffffffff
+adventure-announcement-render	0x11b2e40	0x11b35fb	je     11b4228
+adventure-announcement-render	0x11b2e40	0x11b3607	cmp    eax,ecx
+adventure-announcement-render	0x11b2e40	0x11b3609	je     11b427c
+adventure-announcement-render	0x11b2e40	0x11b360f	cmp    eax,0xffffffff
+adventure-announcement-render	0x11b2e40	0x11b3612	je     11b42b4
+adventure-announcement-render	0x11b2e40	0x11b361e	cmp    eax,ecx
+adventure-announcement-render	0x11b2e40	0x11b3620	je     11b4272
+adventure-announcement-render	0x11b2e40	0x11b3626	cmp    eax,0xffffffff
+adventure-announcement-render	0x11b2e40	0x11b3629	je     11b4286
+adventure-announcement-render	0x11b2e40	0x11b3635	cmp    eax,ecx
+adventure-announcement-render	0x11b2e40	0x11b3637	je     11b4298
+adventure-announcement-render	0x11b2e40	0x11b363d	cmp    eax,0xffffffff
+adventure-announcement-render	0x11b2e40	0x11b3640	je     11b42a2
+adventure-announcement-render	0x11b2e40	0x11b364c	cmp    eax,ecx
+adventure-announcement-render	0x11b2e40	0x11b364e	je     11b42ed
+adventure-announcement-render	0x11b2e40	0x11b3654	cmp    eax,0xffffffff
+adventure-announcement-render	0x11b2e40	0x11b3657	je     11b42d1
+adventure-announcement-render	0x11b2e40	0x11b3663	cmp    eax,ecx
+adventure-announcement-render	0x11b2e40	0x11b3665	je     11b42e3
+adventure-announcement-render	0x11b2e40	0x11b366b	cmp    eax,0xffffffff
+adventure-announcement-render	0x11b2e40	0x11b366e	je     11b3f20
+adventure-announcement-render	0x11b2e40	0x11b3690	test   eax,eax
+adventure-announcement-render	0x11b2e40	0x11b3692	jle    11b3838
+adventure-announcement-render	0x11b2e40	0x11b369f	test   BYTE PTR [rcx],0x1
+adventure-announcement-render	0x11b2e40	0x11b36a2	je     11b3838
+adventure-announcement-render	0x11b2e40	0x11b36b2	cmp    BYTE PTR [rsp+0x42],0x0
+adventure-announcement-render	0x11b2e40	0x11b36e3	test   BYTE PTR [rsi+0x30],0x1
+adventure-announcement-render	0x11b2e40	0x11b36e7	jne    11b36f3
+adventure-announcement-render	0x11b2e40	0x11b36e9	cmp    DWORD PTR [rsi+0x64],0xffffffff
+adventure-announcement-render	0x11b2e40	0x11b36ed	je     11b3a48
+adventure-announcement-render	0x11b2e40	0x11b36fc	cmp    QWORD PTR [r8+0x8],0x0
+adventure-announcement-render	0x11b2e40	0x11b370d	jne    11b3980
+adventure-announcement-render	0x11b2e40	0x11b372f	cmp    rdi,QWORD PTR [rsp+0x10]
+adventure-announcement-render	0x11b2e40	0x11b3734	je     11b3948
+adventure-announcement-render	0x11b2e40	0x11b376c	cmp    DWORD PTR [rsp+0x3c],r15d
+adventure-announcement-render	0x11b2e40	0x11b3771	jne    11b34b0
+adventure-announcement-render	0x11b2e40	0x11b3781	cmp    DWORD PTR [rsp+0x48],ecx
+adventure-announcement-render	0x11b2e40	0x11b3785	jl     11b3d43
+adventure-announcement-render	0x11b2e40	0x11b378b	cmp    DWORD PTR [rsp+0x30],0xffffffff
+adventure-announcement-render	0x11b2e40	0x11b3790	je     11b2f90
+adventure-announcement-render	0x11b2e40	0x11b37ab	test   edx,edx
+adventure-announcement-render	0x11b2e40	0x11b37ad	je     11b2f90
+adventure-announcement-render	0x11b2e40	0x11b37b6	js     11b2f90
+adventure-announcement-render	0x11b2e40	0x11b37d0	cmp    esi,DWORD PTR [rbp+0x130]
+adventure-announcement-render	0x11b2e40	0x11b37d6	je     11b2f80
+adventure-announcement-render	0x11b2e40	0x11b37dc	jge    11b39d0
+adventure-announcement-render	0x11b2e40	0x11b37e5	cmp    edx,ecx
+adventure-announcement-render	0x11b2e40	0x11b37e7	jge    11b37c0
+adventure-announcement-render	0x11b2e40	0x11b37e9	jmp    11b2f90
+adventure-announcement-render	0x11b2e40	0x11b37f0	cmp    r15d,DWORD PTR [rsp+0x8]
+adventure-announcement-render	0x11b2e40	0x11b37f5	je     11b3a30
+adventure-announcement-render	0x11b2e40	0x11b37fb	cmp    r15d,ebx
+adventure-announcement-render	0x11b2e40	0x11b37fe	je     11b39b8
+adventure-announcement-render	0x11b2e40	0x11b3813	jmp    11b3221
+adventure-announcement-render	0x11b2e40	0x11b382f	jmp    11b3221
+adventure-announcement-render	0x11b2e40	0x11b3838	cmp    QWORD PTR [rsp+0x88],0x0
+adventure-announcement-render	0x11b2e40	0x11b3853	je     11b38f9
+adventure-announcement-render	0x11b2e40	0x11b3879	test   edx,edx
+adventure-announcement-render	0x11b2e40	0x11b387b	je     11b38b2
+adventure-announcement-render	0x11b2e40	0x11b387d	cmp    r8d,0xffffffff
+adventure-announcement-render	0x11b2e40	0x11b3881	je     11b38b2
+adventure-announcement-render	0x11b2e40	0x11b3886	js     11b38b2
+adventure-announcement-render	0x11b2e40	0x11b389c	cmp    r8d,DWORD PTR [rdi+0x130]
+adventure-announcement-render	0x11b2e40	0x11b38a3	je     11b3a18
+adventure-announcement-render	0x11b2e40	0x11b38a9	jge    11b3920
+adventure-announcement-render	0x11b2e40	0x11b38ae	cmp    ecx,edx
+adventure-announcement-render	0x11b2e40	0x11b38b0	jle    11b3890
+adventure-announcement-render	0x11b2e40	0x11b38fc	test   eax,eax
+adventure-announcement-render	0x11b2e40	0x11b38fe	jg     11b39e0
+adventure-announcement-render	0x11b2e40	0x11b3908	cmp    DWORD PTR [rax+0x64],0xffffffff
+adventure-announcement-render	0x11b2e40	0x11b390c	je     11b36af
+adventure-announcement-render	0x11b2e40	0x11b3917	jmp    11b36af
+adventure-announcement-render	0x11b2e40	0x11b3923	cmp    ecx,edx
+adventure-announcement-render	0x11b2e40	0x11b3925	jle    11b3890
+adventure-announcement-render	0x11b2e40	0x11b392b	jmp    11b38b2
+adventure-announcement-render	0x11b2e40	0x11b393f	jmp    11b3221
+adventure-announcement-render	0x11b2e40	0x11b3969	cmp    r15d,DWORD PTR [rsp+0x3c]
+adventure-announcement-render	0x11b2e40	0x11b396e	jne    11b34b0
+adventure-announcement-render	0x11b2e40	0x11b3974	jmp    11b3777
+adventure-announcement-render	0x11b2e40	0x11b3993	jmp    11b3727
+adventure-announcement-render	0x11b2e40	0x11b39af	jmp    11b3221
+adventure-announcement-render	0x11b2e40	0x11b39c7	jmp    11b3221
+adventure-announcement-render	0x11b2e40	0x11b39d3	cmp    edx,ecx
+adventure-announcement-render	0x11b2e40	0x11b39d5	jge    11b37c0
+adventure-announcement-render	0x11b2e40	0x11b39db	jmp    11b2f90
+adventure-announcement-render	0x11b2e40	0x11b39eb	test   BYTE PTR [rsi],0x1
+adventure-announcement-render	0x11b2e40	0x11b39ee	je     11b3904
+adventure-announcement-render	0x11b2e40	0x11b39f4	jmp    11b36af
+adventure-announcement-render	0x11b2e40	0x11b3a0f	jmp    11b3221
+adventure-announcement-render	0x11b2e40	0x11b3a26	jmp    11b38b9
+adventure-announcement-render	0x11b2e40	0x11b3a3f	jmp    11b3221
+adventure-announcement-render	0x11b2e40	0x11b3a4c	test   rax,rax
+adventure-announcement-render	0x11b2e40	0x11b3a4f	jne    11b3ae3
+adventure-announcement-render	0x11b2e40	0x11b3a71	cmp    eax,ebp
+adventure-announcement-render	0x11b2e40	0x11b3a91	jmp    11b3727
+adventure-announcement-render	0x11b2e40	0x11b3ade	jmp    11b333c
+adventure-announcement-render	0x11b2e40	0x11b3b01	cmp    eax,ebp
+adventure-announcement-render	0x11b2e40	0x11b3b1d	jmp    11b3727
+adventure-announcement-render	0x11b2e40	0x11b3b34	jmp    11b3420
+adventure-announcement-render	0x11b2e40	0x11b3b78	cmp    r12,rbp
+adventure-announcement-render	0x11b2e40	0x11b3b7b	jne    11b3b4c
+adventure-announcement-render	0x11b2e40	0x11b3b80	cmp    r13d,ebx
+adventure-announcement-render	0x11b2e40	0x11b3b83	jge    11b2ff0
+adventure-announcement-render	0x11b2e40	0x11b3b89	jmp    11b3045
+adventure-announcement-render	0x11b2e40	0x11b3bc3	cmp    r12,r15
+adventure-announcement-render	0x11b2e40	0x11b3bc6	jne    11b3b99
+adventure-announcement-render	0x11b2e40	0x11b3bcb	cmp    r13d,ebx
+adventure-announcement-render	0x11b2e40	0x11b3bce	jge    11b2ff0
+adventure-announcement-render	0x11b2e40	0x11b3bd4	jmp    11b3045
+adventure-announcement-render	0x11b2e40	0x11b3c08	cmp    QWORD PTR [rsp+0x88],0x0
+adventure-announcement-render	0x11b2e40	0x11b3c11	jne    11b3678
+adventure-announcement-render	0x11b2e40	0x11b3c17	jmp    11b358c
+adventure-announcement-render	0x11b2e40	0x11b3c4b	jmp    11b30c3
+adventure-announcement-render	0x11b2e40	0x11b3c57	test   BYTE PTR [rax],0x1
+adventure-announcement-render	0x11b2e40	0x11b3c5a	je     11b2f90
+adventure-announcement-render	0x11b2e40	0x11b3c66	test   eax,eax
+adventure-announcement-render	0x11b2e40	0x11b3c68	je     11b3f03
+adventure-announcement-render	0x11b2e40	0x11b3c6e	test   BYTE PTR [rbp+0x11d],0x40
+adventure-announcement-render	0x11b2e40	0x11b3c75	jne    11b3f03
+adventure-announcement-render	0x11b2e40	0x11b3cc1	jmp    11b2f90
+adventure-announcement-render	0x11b2e40	0x11b3ccf	cmp    r9d,0x5
+adventure-announcement-render	0x11b2e40	0x11b3cd3	jg     11b31a7
+adventure-announcement-render	0x11b2e40	0x11b3ce9	jmp    11b340d
+adventure-announcement-render	0x11b2e40	0x11b3cf1	cmp    esi,0xffffffff
+adventure-announcement-render	0x11b2e40	0x11b3cf4	je     11b3518
+adventure-announcement-render	0x11b2e40	0x11b3d35	cmp    ecx,0xffffffff
+adventure-announcement-render	0x11b2e40	0x11b3d38	jne    11b3564
+adventure-announcement-render	0x11b2e40	0x11b3d3e	jmp    11b3678
+adventure-announcement-render	0x11b2e40	0x11b3d8b	test   ecx,ecx
+adventure-announcement-render	0x11b2e40	0x11b3d8d	jle    11b3e8d
+adventure-announcement-render	0x11b2e40	0x11b3da6	test   eax,eax
+adventure-announcement-render	0x11b2e40	0x11b3dc4	test   r9d,r9d
+adventure-announcement-render	0x11b2e40	0x11b3dc7	je     11b408b
+adventure-announcement-render	0x11b2e40	0x11b3dcd	cmp    r9d,ecx
+adventure-announcement-render	0x11b2e40	0x11b3dd0	je     11b4080
+adventure-announcement-render	0x11b2e40	0x11b3dd6	cmp    r9d,r8d
+adventure-announcement-render	0x11b2e40	0x11b3ddc	test   r9d,r9d
+adventure-announcement-render	0x11b2e40	0x11b3ddf	jle    11b3dea
+adventure-announcement-render	0x11b2e40	0x11b3de1	cmp    eax,0x8
+adventure-announcement-render	0x11b2e40	0x11b3de4	jle    11b3ed9
+adventure-announcement-render	0x11b2e40	0x11b3dea	cmp    edi,edx
+adventure-announcement-render	0x11b2e40	0x11b3dec	jg     11b3e02
+adventure-announcement-render	0x11b2e40	0x11b3dee	test   cl,cl
+adventure-announcement-render	0x11b2e40	0x11b3df0	je     11b3e02
+adventure-announcement-render	0x11b2e40	0x11b3e02	cmp    eax,0x7
+adventure-announcement-render	0x11b2e40	0x11b3e05	jg     11b40ae
+adventure-announcement-render	0x11b2e40	0x11b3e0e	cmp    edi,0x7
+adventure-announcement-render	0x11b2e40	0x11b3e11	jg     11b3e5f
+adventure-announcement-render	0x11b2e40	0x11b3e18	cmp    edx,0x7
+adventure-announcement-render	0x11b2e40	0x11b3e1b	jg     11b3ef6
+adventure-announcement-render	0x11b2e40	0x11b3e28	cmp    edi,0x7
+adventure-announcement-render	0x11b2e40	0x11b3e2b	jg     11b3ebb
+adventure-announcement-render	0x11b2e40	0x11b3e37	cmp    eax,edx
+adventure-announcement-render	0x11b2e40	0x11b3e39	jne    11b3e68
+adventure-announcement-render	0x11b2e40	0x11b3e3b	cmp    edi,eax
+adventure-announcement-render	0x11b2e40	0x11b3e3d	jle    11b3e4e
+adventure-announcement-render	0x11b2e40	0x11b3e46	cmp    edi,edx
+adventure-announcement-render	0x11b2e40	0x11b3e48	jg     11b3e68
+adventure-announcement-render	0x11b2e40	0x11b3e4a	test   cl,cl
+adventure-announcement-render	0x11b2e40	0x11b3e4c	je     11b3e68
+adventure-announcement-render	0x11b2e40	0x11b3e56	cmp    eax,edx
+adventure-announcement-render	0x11b2e40	0x11b3e5d	jmp    11b3e72
+adventure-announcement-render	0x11b2e40	0x11b3e64	cmp    edi,edx
+adventure-announcement-render	0x11b2e40	0x11b3e66	jl     11b3e31
+adventure-announcement-render	0x11b2e40	0x11b3e6d	cmp    edx,esi
+adventure-announcement-render	0x11b2e40	0x11b3e77	cmp    eax,edx
+adventure-announcement-render	0x11b2e40	0x11b3e7c	cmp    eax,edi
+adventure-announcement-render	0x11b2e40	0x11b3e85	cmp    edi,esi
+adventure-announcement-render	0x11b2e40	0x11b3e87	jge    11b3ed3
+adventure-announcement-render	0x11b2e40	0x11b3eb6	jmp    11b378b
+adventure-announcement-render	0x11b2e40	0x11b3ec5	cmp    eax,edx
+adventure-announcement-render	0x11b2e40	0x11b3eca	cmp    eax,edi
+adventure-announcement-render	0x11b2e40	0x11b3ed7	jmp    11b3e8d
+adventure-announcement-render	0x11b2e40	0x11b3edc	cmp    edi,edx
+adventure-announcement-render	0x11b2e40	0x11b3ede	jg     11b3ee8
+adventure-announcement-render	0x11b2e40	0x11b3ee0	test   cl,cl
+adventure-announcement-render	0x11b2e40	0x11b3ee2	jne    11b3df2
+adventure-announcement-render	0x11b2e40	0x11b3eed	cmp    edi,0x8
+adventure-announcement-render	0x11b2e40	0x11b3ef0	jle    11b3e13
+adventure-announcement-render	0x11b2e40	0x11b3ef6	cmp    edi,edx
+adventure-announcement-render	0x11b2e40	0x11b3ef8	jge    11b3e37
+adventure-announcement-render	0x11b2e40	0x11b3efe	jmp    11b3e31
+adventure-announcement-render	0x11b2e40	0x11b3f11	test   eax,eax
+adventure-announcement-render	0x11b2e40	0x11b3f13	je     11b2f90
+adventure-announcement-render	0x11b2e40	0x11b3f19	jmp    11b3c7b
+adventure-announcement-render	0x11b2e40	0x11b3f3c	cmp    r14,QWORD PTR [rsp+0x10]
+adventure-announcement-render	0x11b2e40	0x11b3f41	je     11b3f52
+adventure-announcement-render	0x11b2e40	0x11b3f43	cmp    QWORD PTR [rsp+0x90],0x0
+adventure-announcement-render	0x11b2e40	0x11b3f4c	je     11b40bb
+adventure-announcement-render	0x11b2e40	0x11b3f86	cmp    rcx,QWORD PTR [rsp+0x10]
+adventure-announcement-render	0x11b2e40	0x11b3f8b	je     11b3fce
+adventure-announcement-render	0x11b2e40	0x11b3f95	cmp    rdx,rax
+adventure-announcement-render	0x11b2e40	0x11b3f98	ja     11b3fdb
+adventure-announcement-render	0x11b2e40	0x11b3fc9	jmp    11b3678
+adventure-announcement-render	0x11b2e40	0x11b3fce	cmp    QWORD PTR [rsp+0x50],0xf
+adventure-announcement-render	0x11b2e40	0x11b3fd4	jbe    11b3f9a
+adventure-announcement-render	0x11b2e40	0x11b3fdb	cmp    QWORD PTR [rsp+0x50],0x0
+adventure-announcement-render	0x11b2e40	0x11b3fe1	js     11b4310
+adventure-announcement-render	0x11b2e40	0x11b3feb	cmp    QWORD PTR [rsp+0x50],r14
+adventure-announcement-render	0x11b2e40	0x11b3ff0	jae    11b4301
+adventure-announcement-render	0x11b2e40	0x11b3ff6	test   r14,r14
+adventure-announcement-render	0x11b2e40	0x11b3ff9	js     11b430b
+adventure-announcement-render	0x11b2e40	0x11b4006	js     11b430b
+adventure-announcement-render	0x11b2e40	0x11b401c	test   rbp,rbp
+adventure-announcement-render	0x11b2e40	0x11b401f	je     11b4046
+adventure-announcement-render	0x11b2e40	0x11b4021	cmp    rbp,0x1
+adventure-announcement-render	0x11b2e40	0x11b4025	je     11b42c6
+adventure-announcement-render	0x11b2e40	0x11b4046	cmp    r8,QWORD PTR [rsp+0x10]
+adventure-announcement-render	0x11b2e40	0x11b404b	je     11b406b
+adventure-announcement-render	0x11b2e40	0x11b407b	jmp    11b3f9a
+adventure-announcement-render	0x11b2e40	0x11b4086	jmp    11b3dd6
+adventure-announcement-render	0x11b2e40	0x11b408e	test   ecx,ecx
+adventure-announcement-render	0x11b2e40	0x11b4090	je     11b4080
+adventure-announcement-render	0x11b2e40	0x11b409d	cmp    edi,edx
+adventure-announcement-render	0x11b2e40	0x11b409f	jg     11b40a9
+adventure-announcement-render	0x11b2e40	0x11b40a1	test   al,al
+adventure-announcement-render	0x11b2e40	0x11b40a3	jne    11b3df2
+adventure-announcement-render	0x11b2e40	0x11b40ae	cmp    edi,eax
+adventure-announcement-render	0x11b2e40	0x11b40b0	jge    11b3e18
+adventure-announcement-render	0x11b2e40	0x11b40b6	jmp    11b3e13
+adventure-announcement-render	0x11b2e40	0x11b40d0	cmp    rdi,QWORD PTR [rsp+0x10]
+adventure-announcement-render	0x11b2e40	0x11b40d5	je     11b40e8
+adventure-announcement-render	0x11b2e40	0x11b40fc	jmp    11b3f52
+adventure-announcement-render	0x11b2e40	0x11b410b	jmp    11b3f2d
+adventure-announcement-render	0x11b2e40	0x11b411d	cmp    r14,QWORD PTR [rsp+0x10]
+adventure-announcement-render	0x11b2e40	0x11b4122	je     11b4133
+adventure-announcement-render	0x11b2e40	0x11b4124	cmp    QWORD PTR [rsp+0x90],0x0
+adventure-announcement-render	0x11b2e40	0x11b412d	je     11b41b5
+adventure-announcement-render	0x11b2e40	0x11b4167	cmp    rcx,QWORD PTR [rsp+0x10]
+adventure-announcement-render	0x11b2e40	0x11b416c	je     11b4205
+adventure-announcement-render	0x11b2e40	0x11b417a	cmp    rdx,rax
+adventure-announcement-render	0x11b2e40	0x11b417d	jbe    11b3f9a
+adventure-announcement-render	0x11b2e40	0x11b4183	cmp    QWORD PTR [rsp+0x50],0x0
+adventure-announcement-render	0x11b2e40	0x11b4189	js     11b4321
+adventure-announcement-render	0x11b2e40	0x11b4193	cmp    QWORD PTR [rsp+0x50],r14
+adventure-announcement-render	0x11b2e40	0x11b4198	jae    11b42f7
+adventure-announcement-render	0x11b2e40	0x11b419e	test   r14,r14
+adventure-announcement-render	0x11b2e40	0x11b41a1	js     11b41b0
+adventure-announcement-render	0x11b2e40	0x11b41aa	jns    11b400c
+adventure-announcement-render	0x11b2e40	0x11b41ca	cmp    rdi,QWORD PTR [rsp+0x10]
+adventure-announcement-render	0x11b2e40	0x11b41cf	je     11b41e2
+adventure-announcement-render	0x11b2e40	0x11b41f6	jmp    11b4133
+adventure-announcement-render	0x11b2e40	0x11b4200	jmp    11b4115
+adventure-announcement-render	0x11b2e40	0x11b4205	cmp    QWORD PTR [rsp+0x50],0xf
+adventure-announcement-render	0x11b2e40	0x11b420b	jbe    11b3f9a
+adventure-announcement-render	0x11b2e40	0x11b4216	jmp    11b4183
+adventure-announcement-render	0x11b2e40	0x11b4223	jmp    11b3781
+adventure-announcement-render	0x11b2e40	0x11b4235	jmp    11b3f2d
+adventure-announcement-render	0x11b2e40	0x11b4247	jmp    11b3f2d
+adventure-announcement-render	0x11b2e40	0x11b4251	jmp    11b4115
+adventure-announcement-render	0x11b2e40	0x11b4263	jmp    11b3f2d
+adventure-announcement-render	0x11b2e40	0x11b426d	jmp    11b4115
+adventure-announcement-render	0x11b2e40	0x11b4277	jmp    11b4115
+adventure-announcement-render	0x11b2e40	0x11b4281	jmp    11b4115
+adventure-announcement-render	0x11b2e40	0x11b4293	jmp    11b3f2d
+adventure-announcement-render	0x11b2e40	0x11b429d	jmp    11b4115
+adventure-announcement-render	0x11b2e40	0x11b42af	jmp    11b3f2d
+adventure-announcement-render	0x11b2e40	0x11b42c1	jmp    11b3f2d
+adventure-announcement-render	0x11b2e40	0x11b42cc	jmp    11b4046
+adventure-announcement-render	0x11b2e40	0x11b42de	jmp    11b3f2d
+adventure-announcement-render	0x11b2e40	0x11b42e8	jmp    11b4115
+adventure-announcement-render	0x11b2e40	0x11b42f2	jmp    11b4115
+adventure-announcement-render	0x11b2e40	0x11b42fc	jmp    11b41a3
+adventure-announcement-render	0x11b2e40	0x11b4306	jmp    11b3fff
+adventure-announcement-render	0x11b2e40	0x11b4334	jmp    4965ec
+adventure-announcement-render	0x11b2e40	0x11b4340	jmp    496614
+adventure-announcement-render	0x11b2e40	0x11b434c	jmp    49663c
 producer	0x11b4360	0x11b43a2	je     11b43bb
 producer	0x11b4360	0x11b43b6	cmp    rcx,rax
 producer	0x11b4360	0x11b43b9	jne    11b43a8

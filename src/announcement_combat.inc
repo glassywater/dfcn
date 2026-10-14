@@ -426,26 +426,26 @@ std::optional<std::string> Overlay::translate_announcement_combat(
                 ? std::move(result) : std::nullopt);
         }
         if (scope == "$item" || scope == "$announcement-item") {
+            // A complete equipment/material production has its own proven
+            // item kind. Keep it ahead of broad title conjunctions such as
+            // "{b} and {b}" and preserve authored item-name fields.
+            if (auto caption = translate_item_caption_grammar(input))
+                return finish(std::move(caption));
+            // ELF e68020 emits a complete written title for item kinds
+            // 0x56/0x59, optionally followed by " (copy)". Its punctuation
+            // belongs to this item field, before the announcement's period.
+            // Resolve the proven title productions before ordinary noun
+            // parsing can spend the record's work budget on title words.
+            auto result = translate_written_item_caption(input, false, true);
+            if (translation_complete_with_native_nicknames(result, input))
+                return finish(std::move(result));
             // Shared damage's c65450 and announcements' e68020 both supply
             // complete live item captions. A figurine/statue owns its depicted
             // subject as well as material and designation marks; the narrower
             // historical item segmenter does not own that subject grammar.
             // Use the complete noun/caption grammar for every item position:
             // projectile, target, instrument, deflection and lodged equipment.
-            auto result = translate_item_description_term(input);
-            if (!translation_complete_with_native_nicknames(result, input)) {
-                // This parser proves complete typed consumption, including an
-                // authored cage name retained by its activity_place field.
-                // Such a name can contain Latin text without being prose left
-                // untranslated; the nickname-only check cannot judge it.
-                if (auto caption = translate_item_caption_grammar(input))
-                    return finish(std::move(caption));
-            }
-            // c65450 returns written titles directly for item kinds 0x56
-            // and 0x59 (copy annotation at c656f4). Their complete title
-            // grammar must own punctuation before ordinary item segments.
-            if (!translation_complete_with_native_nicknames(result, input))
-                result = translate_written_item_caption(input);
+            result = translate_item_description_term(input);
             if (!translation_complete_with_native_nicknames(result, input))
                 result = translate_legends_item(input);
             // Combat callers pass r8d=0. At c654b9..c654e2 an artifact
@@ -459,6 +459,16 @@ std::optional<std::string> Overlay::translate_announcement_combat(
                 ? std::move(result) : std::nullopt);
         }
         if (scope == "$body") return finish(translate_legends_anatomy(input));
+        if (scope == "$announcement-substance") {
+            // 11c6cb0/11c8150 append a whole material state name, including
+            // deposited contaminants and independent stagnant/salt flags.
+            // Container contents can instead come from the item describer.
+            auto result = translate_adventure_environment_material(input);
+            if (!translation_complete_with_native_nicknames(result, input))
+                result = translate_announcement_combat(input, "$announcement-item");
+            return finish(translation_complete_with_native_nicknames(result, input)
+                ? std::move(result) : std::nullopt);
+        }
         if (scope == "$creature") return finish(translate_creature_reference(input));
         if (scope == "$growth-result") {
             // c20abf calls b71ba0 with the post-growth unit, retaining its
