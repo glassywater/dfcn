@@ -94825,6 +94825,17 @@ Elevation X-Variance	海拔 X 轴差异
 Elevation Y-Variance	海拔 Y 轴差异
 Elven forest retreat	精灵森林聚落	wi
 Embark finder: Begin	开始	w
+Embark finder: Clay	黏土	w
+Embark finder: Sand	沙	w
+Embark finder: Iron	铁	w
+Embark finder: Gold	金	w
+Embark finder: Silver	银	w
+Embark finder: Copper	铜	w
+Embark finder: Nickel	镍	w
+Embark finder: Zinc	锌	w
+Embark finder: Platinum	铂	w
+Embark finder: Tin	锡	w
+Embark finder: Lead	铅	w
 Exotic Clothing Shop	异域服装店	wi
 Famous loyal soldier	名声显赫的忠诚军人	w
 Feared as a murderer	令人恐惧的屠夫	w
@@ -105138,6 +105149,7 @@ Set high and low 	设置高、低优先级通行区域。	w
 Severe blood loss	严重失血	w
 She tries to keep	她会努力保持
 Show cliffs/grade	显示峭壁/坡度
+cliffs/grade	峭壁/坡度	wi
 Show overlay help	显示帮助悬浮层	w
 Showing important	显示重要记录	wl
 Showing type,date	显示类型及日期	wl

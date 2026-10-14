@@ -3335,6 +3335,8 @@ No {s} available	没有可用的{s}	wtl
 Cannot afford {s} ({d})	买不起{s}（{d}）	wtl
 Show elevation	显示高度层
 Show cliffs/grade	显示峭壁/坡度
+# Native map buttons draw the verb and terrain label as separate fields.
+cliffs/grade	峭壁/坡度	wi
 {d} x {d}	{d} × {d}	wt
 Cannot embark entirely on water or mountains.	出发区域不能完全位于水域或山脉之中。
 Cannot embark on another site.	不能在已有地点上出发。	l
@@ -4676,6 +4678,18 @@ Embark site resource: Flux stone layer	助熔石层
 # Embark site finder: fixed field labels and compact filter values.  These
 # must be whole-label rules; word/procedural fallback produced partial strings
 # such as "Flux 石材 Layer" and treated the biome-alignment field literally.
+# Keep geological criteria scoped when extensions reuse metal names for items/colors.
+Embark finder: Clay	黏土	w
+Embark finder: Sand	沙	w
+Embark finder: Iron	铁	w
+Embark finder: Gold	金	w
+Embark finder: Silver	银	w
+Embark finder: Copper	铜	w
+Embark finder: Nickel	镍	w
+Embark finder: Zinc	锌	w
+Embark finder: Platinum	铂	w
+Embark finder: Tin	锡	w
+Embark finder: Lead	铅	w
 X Dimension	X 轴尺寸	wi
 Y Dimension	Y 轴尺寸	wi
 Spirit	善恶倾向	wi
