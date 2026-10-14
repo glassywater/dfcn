@@ -1,0 +1,137 @@
+edition	family	branch	native_sources	source	translation
+steam	adventure.barter.talkline	0; !personal && !strong_affiliation	0x26fe63	"""Greetings.  Let's trade."""	“你好。来做笔交易吧。”
+steam	adventure.barter.talkline	0; !personal && strong_affiliation	0x26fe5c	"""An honored visitor!  What would you like?"""	“贵客光临！你想要些什么？”
+steam	adventure.barter.talkline	0; personal	0x26fe50	"""What did you have in mind?"""	“你有什么打算？”
+steam	adventure.barter.talkline	7; no zone	0x26feb0	"""That seems fair.  You have yourself a deal."""	“这很公平。成交。”
+steam	adventure.barter.talkline	7; zone	0x26fea9	"""Ah, wonderful.  Thank you for your business."""	“啊，太好了。多谢惠顾。”
+steam	adventure.barter.talkline	18	0x26feef	"""You truly despise life, don't you?  I am beside myself with grief.  Perhaps we will show you how they suffered."""	“你真是蔑视生命，不是吗？我悲痛得难以自持。也许我们该让你体会它们遭受的痛苦。”
+steam	adventure.barter.talkline	19	0x26ff01	"""I see your low race still revels in death.  That poor, gentle creature..."""	“看来你们这低劣的种族仍以杀戮为乐。那可怜而温顺的生灵……”
+steam	adventure.barter.talkline	20	0x26fef8	"""Once a beautiful tree, and now?  It is a rude bauble, fit only for your kind."""	“它曾是一棵美丽的树，现在呢？却成了粗俗的小玩意，只配给你们这种族用。”
+steam	adventure.barter.talkline	21	0x26ff13	"""I simply cannot afford this trade."""	“我实在负担不起这笔交易。”
+steam	adventure.barter.talkline	22	0x26ff1c	"""Perhaps if you throw in some more goods I can make an offer."""	“如果你再添些货物，也许我就能提出交易方案。”
+steam	adventure.barter.talkline	23	0x26ff25	"""I can't possibly accept, but how about this?  A true bargain."""	“我实在不能接受，不过这个方案如何？绝对划算。”
+steam	adventure.barter.talkline	29	0x26ff0a	"""If it were in a cage of some kind...  As it stands, I can't accept something that wriggles and writhes so."""	“要是装在笼子里就好了……现在这样，我可不能收下这不停扭动挣扎的东西。”
+steam	adventure.barter.talkline	30	0x26fe9d	"""How kind!  Thank you so much."""	“你真慷慨！太感谢了。”
+steam	adventure.barter.talkline	31	0x26fe79	"""I cannot take so much -- and at such cost!"""	“这么多货物我带不走，况且还要付这个价！”
+steam	adventure.barter.talkline	32	0x26fe85	"""I wish I could take so much, but my animals..."""	“我倒想带走这么多，可我的牲畜……”
+steam	adventure.barter.talkline	33	0x26fe91	"""I won't trade at a loss."""	“我不会做亏本买卖。”
+steam	adventure.barter.talkline	34; no zone	0x26feca	"""I'm confused.  Did you want something?"""	“我有些糊涂。你想要什么东西吗？”
+steam	adventure.barter.talkline	34; zone	0x26fec3	"""Yes, and trade we will!  Simply tell me what interests you and what you're prepared to offer in exchange."""	“没错，我们就来交易吧！告诉我你看中了什么，以及准备拿什么来交换。”
+steam	adventure.barter.talkline	35	0x26fedd	"""These _are_ fine items, aren't they?  Now, what do offer for them?"""	“这些可都是好东西，对吧？那么，你拿什么来换？”
+steam	adventure.barter.talkline	36	0x26fee6	"""Are these gifts?  Do you wish to trade?"""	“这些是礼物吗？你想做笔交易？”
+steam	adventure.barter.refusal	subsequent reply: separator; no speaker	0x2743ae	{b} is a personal treasure, and I will not part with it.	{b}是我的私人珍宝，我不会交出它。
+steam	adventure.barter.refusal	first reply: 0x1331500 speaker + colon	0x2743ae	{n}: {b} is a personal treasure, and I will not part with it.	{n}：{b}是我的私人珍宝，我不会交出它。
+steam	adventure.barter.refusal	subsequent reply: separator; no speaker	0x274497	{b} is a family heirloom, and I will not part with it.	{b}是我的传家宝，我不会交出它。
+steam	adventure.barter.refusal	first reply: 0x1331500 speaker + colon	0x274497	{n}: {b} is a family heirloom, and I will not part with it.	{n}：{b}是我的传家宝，我不会交出它。
+steam	adventure.barter.refusal	subsequent reply: separator; no speaker	0x27462b+0x274652	{b} is a treasure of {e}, and we will not part with it.	{b}是{e}的珍宝，我们不会交出它。
+steam	adventure.barter.refusal	first reply: 0x1331500 speaker + colon	0x27462b+0x274652	{n}: {b} is a treasure of {e}, and we will not part with it.	{n}：{b}是{e}的珍宝，我们不会交出它。
+steam	adventure.barter.return	no speaker; no preceding reaction	0x278050	Thank you for returning my treasure.	谢谢你归还我的珍宝。
+steam	adventure.barter.return	no speaker; complete 0x66fe50/0x673bc0 reaction and preceding acknowledgements	0x278050	{s} Thank you for returning my treasure.	{s}谢谢你归还我的珍宝。
+steam	adventure.barter.return	speaker; no preceding reaction	0x278050	{n}: Thank you for returning my treasure.	{n}：谢谢你归还我的珍宝。
+steam	adventure.barter.return	speaker; complete 0x66fe50/0x673bc0 reaction and preceding acknowledgements	0x278050	{n}: {s} Thank you for returning my treasure.	{n}：{s}谢谢你归还我的珍宝。
+steam	adventure.barter.return	no speaker; no preceding reaction	0x2780b2	Thank you for returning my family's treasure.	谢谢你归还我家的珍宝。
+steam	adventure.barter.return	no speaker; complete 0x66fe50/0x673bc0 reaction and preceding acknowledgements	0x2780b2	{s} Thank you for returning my family's treasure.	{s}谢谢你归还我家的珍宝。
+steam	adventure.barter.return	speaker; no preceding reaction	0x2780b2	{n}: Thank you for returning my family's treasure.	{n}：谢谢你归还我家的珍宝。
+steam	adventure.barter.return	speaker; complete 0x66fe50/0x673bc0 reaction and preceding acknowledgements	0x2780b2	{n}: {s} Thank you for returning my family's treasure.	{n}：{s}谢谢你归还我家的珍宝。
+steam	adventure.barter.return	no speaker; no preceding reaction	0x278182	Thank you for returning this treasure to {e}.	谢谢你把这件珍宝归还给{e}。
+steam	adventure.barter.return	no speaker; complete 0x66fe50/0x673bc0 reaction and preceding acknowledgements	0x278182	{s} Thank you for returning this treasure to {e}.	{s}谢谢你把这件珍宝归还给{e}。
+steam	adventure.barter.return	speaker; no preceding reaction	0x278182	{n}: Thank you for returning this treasure to {e}.	{n}：谢谢你把这件珍宝归还给{e}。
+steam	adventure.barter.return	speaker; complete 0x66fe50/0x673bc0 reaction and preceding acknowledgements	0x278182	{n}: {s} Thank you for returning this treasure to {e}.	{n}：{s}谢谢你把这件珍宝归还给{e}。
+steam	adventure.barter.return	no speaker; no preceding reaction	0x277d22	Thank you for returning this primordial remnant to {e}.	谢谢你把这件原初遗物归还给{e}。
+steam	adventure.barter.return	no speaker; complete 0x66fe50/0x673bc0 reaction and preceding acknowledgements	0x277d22	{s} Thank you for returning this primordial remnant to {e}.	{s}谢谢你把这件原初遗物归还给{e}。
+steam	adventure.barter.return	speaker; no preceding reaction	0x277d22	{n}: Thank you for returning this primordial remnant to {e}.	{n}：谢谢你把这件原初遗物归还给{e}。
+steam	adventure.barter.return	speaker; complete 0x66fe50/0x673bc0 reaction and preceding acknowledgements	0x277d22	{n}: {s} Thank you for returning this primordial remnant to {e}.	{n}：{s}谢谢你把这件原初遗物归还给{e}。
+steam	adventure.barter.return	no speaker; no preceding reaction	0x2787bf	Thank you for rescuing this treasure!	谢谢你找回这件珍宝！
+steam	adventure.barter.return	no speaker; complete 0x66fe50/0x673bc0 reaction and preceding acknowledgements	0x2787bf	{s} Thank you for rescuing this treasure!	{s}谢谢你找回这件珍宝！
+steam	adventure.barter.return	speaker; no preceding reaction	0x2787bf	{n}: Thank you for rescuing this treasure!	{n}：谢谢你找回这件珍宝！
+steam	adventure.barter.return	speaker; complete 0x66fe50/0x673bc0 reaction and preceding acknowledgements	0x2787bf	{n}: {s} Thank you for rescuing this treasure!	{n}：{s}谢谢你找回这件珍宝！
+steam	adventure.barter.return	no speaker; no preceding reaction	0x27904a	It's not the original, but we can hope the writing was copied faithfully.	虽然不是原件，但愿里面的文字抄录无误。
+steam	adventure.barter.return	no speaker; complete 0x66fe50/0x673bc0 reaction and preceding acknowledgements	0x27904a	{s} It's not the original, but we can hope the writing was copied faithfully.	{s}虽然不是原件，但愿里面的文字抄录无误。
+steam	adventure.barter.return	speaker; no preceding reaction	0x27904a	{n}: It's not the original, but we can hope the writing was copied faithfully.	{n}：虽然不是原件，但愿里面的文字抄录无误。
+steam	adventure.barter.return	speaker; complete 0x66fe50/0x673bc0 reaction and preceding acknowledgements	0x27904a	{n}: {s} It's not the original, but we can hope the writing was copied faithfully.	{n}：{s}虽然不是原件，但愿里面的文字抄录无误。
+steam	adventure.barter.control		0x271ceb	Ask for currency	索要货币
+steam	adventure.barter.control		0x271dcf	Offer currency	提供货币
+steam	adventure.barter.control		0x26f9fe	Trade how many? (0-{d})	交易多少件？（0—{d}）
+steam	adventure.barter.control		0x26fbf9	Ask for how much? (0-{d})	索要多少货币？（0—{d}）
+steam	adventure.barter.control		0x26fd12	Offer how much? (0-{d})	提供多少货币？（0—{d}）
+steam	adventure.barter.control		0x271285	You are asking for	你索要的货币：
+steam	adventure.barter.control		0x271331	You are offering	你提供的货币：
+steam	adventure.barter.control		0x26fdb7	(Select an item to demand)	（选择要索取的物品）
+steam	adventure.barter.control		0x26f86b	{n} (Owes you {d}\x0f)	{n}（欠你{d}☼）
+steam	adventure.barter.control		0x26f86b	{n} (You owe {d}\x0f)	{n}（你欠对方{d}☼）
+steam	adventure.barter.control		0x271ae3	Give	赠送
+steam	adventure.barter.control		0x27195d+0x271ab0	Demand	索要
+steam	adventure.barter.control		0x2719a0+0x271a8a	Trade	贸易
+steam	adventure.barter.control		0x271bac	Show	显示
+steam	adventure.barter.control		0x27149c+0x2716c0	Mark all	全选
+steam	adventure.barter.control		0x2715a6+0x27179d	Unmark all	取消全选
+steam	adventure.barter.control		0x2713c2	Cannot trade currency	无法交易货币。
+steam	adventure.barter.talkline	1..6,8..17,24..28,out-of-range	0x26ff38	""""""	""""""
+classic	adventure.barter.talkline	0; !personal && !strong_affiliation	0x26da23	"""Greetings.  Let's trade."""	“你好。来做笔交易吧。”
+classic	adventure.barter.talkline	0; !personal && strong_affiliation	0x26da1c	"""An honored visitor!  What would you like?"""	“贵客光临！你想要些什么？”
+classic	adventure.barter.talkline	0; personal	0x26da10	"""What did you have in mind?"""	“你有什么打算？”
+classic	adventure.barter.talkline	7; no zone	0x26da70	"""That seems fair.  You have yourself a deal."""	“这很公平。成交。”
+classic	adventure.barter.talkline	7; zone	0x26da69	"""Ah, wonderful.  Thank you for your business."""	“啊，太好了。多谢惠顾。”
+classic	adventure.barter.talkline	18	0x26daaf	"""You truly despise life, don't you?  I am beside myself with grief.  Perhaps we will show you how they suffered."""	“你真是蔑视生命，不是吗？我悲痛得难以自持。也许我们该让你体会它们遭受的痛苦。”
+classic	adventure.barter.talkline	19	0x26dac1	"""I see your low race still revels in death.  That poor, gentle creature..."""	“看来你们这低劣的种族仍以杀戮为乐。那可怜而温顺的生灵……”
+classic	adventure.barter.talkline	20	0x26dab8	"""Once a beautiful tree, and now?  It is a rude bauble, fit only for your kind."""	“它曾是一棵美丽的树，现在呢？却成了粗俗的小玩意，只配给你们这种族用。”
+classic	adventure.barter.talkline	21	0x26dad3	"""I simply cannot afford this trade."""	“我实在负担不起这笔交易。”
+classic	adventure.barter.talkline	22	0x26dadc	"""Perhaps if you throw in some more goods I can make an offer."""	“如果你再添些货物，也许我就能提出交易方案。”
+classic	adventure.barter.talkline	23	0x26dae5	"""I can't possibly accept, but how about this?  A true bargain."""	“我实在不能接受，不过这个方案如何？绝对划算。”
+classic	adventure.barter.talkline	29	0x26daca	"""If it were in a cage of some kind...  As it stands, I can't accept something that wriggles and writhes so."""	“要是装在笼子里就好了……现在这样，我可不能收下这不停扭动挣扎的东西。”
+classic	adventure.barter.talkline	30	0x26da5d	"""How kind!  Thank you so much."""	“你真慷慨！太感谢了。”
+classic	adventure.barter.talkline	31	0x26da39	"""I cannot take so much -- and at such cost!"""	“这么多货物我带不走，况且还要付这个价！”
+classic	adventure.barter.talkline	32	0x26da45	"""I wish I could take so much, but my animals..."""	“我倒想带走这么多，可我的牲畜……”
+classic	adventure.barter.talkline	33	0x26da51	"""I won't trade at a loss."""	“我不会做亏本买卖。”
+classic	adventure.barter.talkline	34; no zone	0x26da8a	"""I'm confused.  Did you want something?"""	“我有些糊涂。你想要什么东西吗？”
+classic	adventure.barter.talkline	34; zone	0x26da83	"""Yes, and trade we will!  Simply tell me what interests you and what you're prepared to offer in exchange."""	“没错，我们就来交易吧！告诉我你看中了什么，以及准备拿什么来交换。”
+classic	adventure.barter.talkline	35	0x26da9d	"""These _are_ fine items, aren't they?  Now, what do offer for them?"""	“这些可都是好东西，对吧？那么，你拿什么来换？”
+classic	adventure.barter.talkline	36	0x26daa6	"""Are these gifts?  Do you wish to trade?"""	“这些是礼物吗？你想做笔交易？”
+classic	adventure.barter.refusal	subsequent reply: separator; no speaker	0x271f6e	{b} is a personal treasure, and I will not part with it.	{b}是我的私人珍宝，我不会交出它。
+classic	adventure.barter.refusal	first reply: 0x132c470 speaker + colon	0x271f6e	{n}: {b} is a personal treasure, and I will not part with it.	{n}：{b}是我的私人珍宝，我不会交出它。
+classic	adventure.barter.refusal	subsequent reply: separator; no speaker	0x272057	{b} is a family heirloom, and I will not part with it.	{b}是我的传家宝，我不会交出它。
+classic	adventure.barter.refusal	first reply: 0x132c470 speaker + colon	0x272057	{n}: {b} is a family heirloom, and I will not part with it.	{n}：{b}是我的传家宝，我不会交出它。
+classic	adventure.barter.refusal	subsequent reply: separator; no speaker	0x2721eb+0x272212	{b} is a treasure of {e}, and we will not part with it.	{b}是{e}的珍宝，我们不会交出它。
+classic	adventure.barter.refusal	first reply: 0x132c470 speaker + colon	0x2721eb+0x272212	{n}: {b} is a treasure of {e}, and we will not part with it.	{n}：{b}是{e}的珍宝，我们不会交出它。
+classic	adventure.barter.return	no speaker; no preceding reaction	0x275c10	Thank you for returning my treasure.	谢谢你归还我的珍宝。
+classic	adventure.barter.return	no speaker; complete 0x66d870/0x6715e0 reaction and preceding acknowledgements	0x275c10	{s} Thank you for returning my treasure.	{s}谢谢你归还我的珍宝。
+classic	adventure.barter.return	speaker; no preceding reaction	0x275c10	{n}: Thank you for returning my treasure.	{n}：谢谢你归还我的珍宝。
+classic	adventure.barter.return	speaker; complete 0x66d870/0x6715e0 reaction and preceding acknowledgements	0x275c10	{n}: {s} Thank you for returning my treasure.	{n}：{s}谢谢你归还我的珍宝。
+classic	adventure.barter.return	no speaker; no preceding reaction	0x275c72	Thank you for returning my family's treasure.	谢谢你归还我家的珍宝。
+classic	adventure.barter.return	no speaker; complete 0x66d870/0x6715e0 reaction and preceding acknowledgements	0x275c72	{s} Thank you for returning my family's treasure.	{s}谢谢你归还我家的珍宝。
+classic	adventure.barter.return	speaker; no preceding reaction	0x275c72	{n}: Thank you for returning my family's treasure.	{n}：谢谢你归还我家的珍宝。
+classic	adventure.barter.return	speaker; complete 0x66d870/0x6715e0 reaction and preceding acknowledgements	0x275c72	{n}: {s} Thank you for returning my family's treasure.	{n}：{s}谢谢你归还我家的珍宝。
+classic	adventure.barter.return	no speaker; no preceding reaction	0x275d42	Thank you for returning this treasure to {e}.	谢谢你把这件珍宝归还给{e}。
+classic	adventure.barter.return	no speaker; complete 0x66d870/0x6715e0 reaction and preceding acknowledgements	0x275d42	{s} Thank you for returning this treasure to {e}.	{s}谢谢你把这件珍宝归还给{e}。
+classic	adventure.barter.return	speaker; no preceding reaction	0x275d42	{n}: Thank you for returning this treasure to {e}.	{n}：谢谢你把这件珍宝归还给{e}。
+classic	adventure.barter.return	speaker; complete 0x66d870/0x6715e0 reaction and preceding acknowledgements	0x275d42	{n}: {s} Thank you for returning this treasure to {e}.	{n}：{s}谢谢你把这件珍宝归还给{e}。
+classic	adventure.barter.return	no speaker; no preceding reaction	0x2758e2	Thank you for returning this primordial remnant to {e}.	谢谢你把这件原初遗物归还给{e}。
+classic	adventure.barter.return	no speaker; complete 0x66d870/0x6715e0 reaction and preceding acknowledgements	0x2758e2	{s} Thank you for returning this primordial remnant to {e}.	{s}谢谢你把这件原初遗物归还给{e}。
+classic	adventure.barter.return	speaker; no preceding reaction	0x2758e2	{n}: Thank you for returning this primordial remnant to {e}.	{n}：谢谢你把这件原初遗物归还给{e}。
+classic	adventure.barter.return	speaker; complete 0x66d870/0x6715e0 reaction and preceding acknowledgements	0x2758e2	{n}: {s} Thank you for returning this primordial remnant to {e}.	{n}：{s}谢谢你把这件原初遗物归还给{e}。
+classic	adventure.barter.return	no speaker; no preceding reaction	0x27637f	Thank you for rescuing this treasure!	谢谢你找回这件珍宝！
+classic	adventure.barter.return	no speaker; complete 0x66d870/0x6715e0 reaction and preceding acknowledgements	0x27637f	{s} Thank you for rescuing this treasure!	{s}谢谢你找回这件珍宝！
+classic	adventure.barter.return	speaker; no preceding reaction	0x27637f	{n}: Thank you for rescuing this treasure!	{n}：谢谢你找回这件珍宝！
+classic	adventure.barter.return	speaker; complete 0x66d870/0x6715e0 reaction and preceding acknowledgements	0x27637f	{n}: {s} Thank you for rescuing this treasure!	{n}：{s}谢谢你找回这件珍宝！
+classic	adventure.barter.return	no speaker; no preceding reaction	0x276c0a	It's not the original, but we can hope the writing was copied faithfully.	虽然不是原件，但愿里面的文字抄录无误。
+classic	adventure.barter.return	no speaker; complete 0x66d870/0x6715e0 reaction and preceding acknowledgements	0x276c0a	{s} It's not the original, but we can hope the writing was copied faithfully.	{s}虽然不是原件，但愿里面的文字抄录无误。
+classic	adventure.barter.return	speaker; no preceding reaction	0x276c0a	{n}: It's not the original, but we can hope the writing was copied faithfully.	{n}：虽然不是原件，但愿里面的文字抄录无误。
+classic	adventure.barter.return	speaker; complete 0x66d870/0x6715e0 reaction and preceding acknowledgements	0x276c0a	{n}: {s} It's not the original, but we can hope the writing was copied faithfully.	{n}：{s}虽然不是原件，但愿里面的文字抄录无误。
+classic	adventure.barter.control		0x26f8ab	Ask for currency	索要货币
+classic	adventure.barter.control		0x26f98f	Offer currency	提供货币
+classic	adventure.barter.control		0x26d5be	Trade how many? (0-{d})	交易多少件？（0—{d}）
+classic	adventure.barter.control		0x26d7b9	Ask for how much? (0-{d})	索要多少货币？（0—{d}）
+classic	adventure.barter.control		0x26d8d2	Offer how much? (0-{d})	提供多少货币？（0—{d}）
+classic	adventure.barter.control		0x26ee45	You are asking for	你索要的货币：
+classic	adventure.barter.control		0x26eef1	You are offering	你提供的货币：
+classic	adventure.barter.control		0x26d977	(Select an item to demand)	（选择要索取的物品）
+classic	adventure.barter.control		0x26d42b	{n} (Owes you {d}\x0f)	{n}（欠你{d}☼）
+classic	adventure.barter.control		0x26d42b	{n} (You owe {d}\x0f)	{n}（你欠对方{d}☼）
+classic	adventure.barter.control		0x26f6a3	Give	赠送
+classic	adventure.barter.control		0x26f51d+0x26f670	Demand	索要
+classic	adventure.barter.control		0x26f560+0x26f64a	Trade	贸易
+classic	adventure.barter.control		0x26f76c	Show	显示
+classic	adventure.barter.control		0x26f05c+0x26f280	Mark all	全选
+classic	adventure.barter.control		0x26f166+0x26f35d	Unmark all	取消全选
+classic	adventure.barter.control		0x26ef82	Cannot trade currency	无法交易货币。
+classic	adventure.barter.talkline	1..6,8..17,24..28,out-of-range	0x26daf8	""""""	""""""

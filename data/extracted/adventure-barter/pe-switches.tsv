@@ -1,0 +1,393 @@
+edition	role	dispatch_rva	table_rva	remap_rva	selector	table_index	target_rva
+steam	barter-renderer-and-talkline-producer	0x26fe46	0x271e40	0x271e84	0	0	0x26fe48
+steam	barter-renderer-and-talkline-producer	0x26fe46	0x271e40	0x271e84	1	16	0x26ff38
+steam	barter-renderer-and-talkline-producer	0x26fe46	0x271e40	0x271e84	2	16	0x26ff38
+steam	barter-renderer-and-talkline-producer	0x26fe46	0x271e40	0x271e84	3	16	0x26ff38
+steam	barter-renderer-and-talkline-producer	0x26fe46	0x271e40	0x271e84	4	16	0x26ff38
+steam	barter-renderer-and-talkline-producer	0x26fe46	0x271e40	0x271e84	5	16	0x26ff38
+steam	barter-renderer-and-talkline-producer	0x26fe46	0x271e40	0x271e84	6	16	0x26ff38
+steam	barter-renderer-and-talkline-producer	0x26fe46	0x271e40	0x271e84	7	1	0x26fea9
+steam	barter-renderer-and-talkline-producer	0x26fe46	0x271e40	0x271e84	8	16	0x26ff38
+steam	barter-renderer-and-talkline-producer	0x26fe46	0x271e40	0x271e84	9	16	0x26ff38
+steam	barter-renderer-and-talkline-producer	0x26fe46	0x271e40	0x271e84	10	16	0x26ff38
+steam	barter-renderer-and-talkline-producer	0x26fe46	0x271e40	0x271e84	11	16	0x26ff38
+steam	barter-renderer-and-talkline-producer	0x26fe46	0x271e40	0x271e84	12	16	0x26ff38
+steam	barter-renderer-and-talkline-producer	0x26fe46	0x271e40	0x271e84	13	16	0x26ff38
+steam	barter-renderer-and-talkline-producer	0x26fe46	0x271e40	0x271e84	14	16	0x26ff38
+steam	barter-renderer-and-talkline-producer	0x26fe46	0x271e40	0x271e84	15	16	0x26ff38
+steam	barter-renderer-and-talkline-producer	0x26fe46	0x271e40	0x271e84	16	16	0x26ff38
+steam	barter-renderer-and-talkline-producer	0x26fe46	0x271e40	0x271e84	17	16	0x26ff38
+steam	barter-renderer-and-talkline-producer	0x26fe46	0x271e40	0x271e84	18	2	0x26feef
+steam	barter-renderer-and-talkline-producer	0x26fe46	0x271e40	0x271e84	19	3	0x26ff01
+steam	barter-renderer-and-talkline-producer	0x26fe46	0x271e40	0x271e84	20	4	0x26fef8
+steam	barter-renderer-and-talkline-producer	0x26fe46	0x271e40	0x271e84	21	5	0x26ff13
+steam	barter-renderer-and-talkline-producer	0x26fe46	0x271e40	0x271e84	22	6	0x26ff1c
+steam	barter-renderer-and-talkline-producer	0x26fe46	0x271e40	0x271e84	23	7	0x26ff25
+steam	barter-renderer-and-talkline-producer	0x26fe46	0x271e40	0x271e84	24	16	0x26ff38
+steam	barter-renderer-and-talkline-producer	0x26fe46	0x271e40	0x271e84	25	16	0x26ff38
+steam	barter-renderer-and-talkline-producer	0x26fe46	0x271e40	0x271e84	26	16	0x26ff38
+steam	barter-renderer-and-talkline-producer	0x26fe46	0x271e40	0x271e84	27	16	0x26ff38
+steam	barter-renderer-and-talkline-producer	0x26fe46	0x271e40	0x271e84	28	16	0x26ff38
+steam	barter-renderer-and-talkline-producer	0x26fe46	0x271e40	0x271e84	29	8	0x26ff0a
+steam	barter-renderer-and-talkline-producer	0x26fe46	0x271e40	0x271e84	30	9	0x26fe9d
+steam	barter-renderer-and-talkline-producer	0x26fe46	0x271e40	0x271e84	31	10	0x26fe79
+steam	barter-renderer-and-talkline-producer	0x26fe46	0x271e40	0x271e84	32	11	0x26fe85
+steam	barter-renderer-and-talkline-producer	0x26fe46	0x271e40	0x271e84	33	12	0x26fe91
+steam	barter-renderer-and-talkline-producer	0x26fe46	0x271e40	0x271e84	34	13	0x26fec3
+steam	barter-renderer-and-talkline-producer	0x26fe46	0x271e40	0x271e84	35	14	0x26fedd
+steam	barter-renderer-and-talkline-producer	0x26fe46	0x271e40	0x271e84	36	15	0x26fee6
+steam	speaker-field-producer	0x1331e10	0x1333508		0	0	0x1331e12
+steam	speaker-field-producer	0x1331e10	0x1333508		1	1	0x1331e36
+steam	speaker-field-producer	0x1331e10	0x1333508		2	2	0x1331e5f
+steam	speaker-field-producer	0x1331e10	0x1333508		3	3	0x1331e87
+steam	speaker-field-producer	0x1331e10	0x1333508		4	4	0x1331eac
+steam	speaker-field-producer	0x1331e10	0x1333508		5	5	0x1331ed5
+steam	speaker-field-producer	0x1331e10	0x1333508		6	6	0x1331f27
+steam	speaker-field-producer	0x1331e10	0x1333508		7	7	0x1331f3c
+steam	speaker-field-producer	0x1331e10	0x1333508		8	8	0x1331f08
+steam	speaker-field-producer	0x1331e10	0x1333508		9	9	0x1331f51
+steam	speaker-field-producer	0x1331e10	0x1333508		10	10	0x1331f66
+steam	speaker-field-producer	0x1331e10	0x1333508		11	11	0x1331f7b
+steam	speaker-field-producer	0x1331e10	0x1333508		12	12	0x1331f90
+steam	speaker-field-producer	0x1331e10	0x1333508		13	13	0x1331fa5
+steam	speaker-field-producer	0x1331e10	0x1333508		14	14	0x1331fba
+steam	speaker-field-producer	0x1331e10	0x1333508		15	15	0x1331fcf
+steam	merchant-heading-producer	0x13310ec	0x1331298		0	0	0x13311d1
+steam	merchant-heading-producer	0x13310ec	0x1331298		1	1	0x13310ee
+steam	merchant-heading-producer	0x13310ec	0x1331298		2	2	0x1331100
+steam	merchant-heading-producer	0x13310ec	0x1331298		3	3	0x133110c
+steam	merchant-heading-producer	0x13310ec	0x1331298		4	4	0x1331118
+steam	merchant-heading-producer	0x13310ec	0x1331298		5	5	0x1331124
+steam	merchant-heading-producer	0x13310ec	0x1331298		6	6	0x1331172
+steam	merchant-heading-producer	0x13310ec	0x1331298		7	7	0x13311c2
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		0	0	0xa83249
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		1	1	0xa833de
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		2	2	0xa835c5
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		3	3	0xa82f11
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		4	4	0xa83172
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		5	5	0xa82de5
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		6	6	0xa83680
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		7	7	0xa83736
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		8	8	0xa86522
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		9	9	0xa84a81
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		10	10	0xa840cb
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		11	11	0xa841f4
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		12	12	0xa84736
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		13	13	0xa8435c
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		14	14	0xa84669
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		15	15	0xa84807
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		16	16	0xa84877
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		17	17	0xa84931
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		18	18	0xa849a1
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		19	19	0xa84a11
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		20	20	0xa83886
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		21	21	0xa83fc7
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		22	22	0xa866e2
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		23	23	0xa86a02
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		24	24	0xa87584
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		25	25	0xa876bd
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		26	26	0xa87b5b
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		27	27	0xa87a87
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		28	28	0xa87ccb
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		29	29	0xa8789a
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		30	30	0xa83ab6
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		31	31	0xa83c00
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		32	32	0xa83a46
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		33	33	0xa839d6
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		34	34	0xa83966
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		35	35	0xa838f6
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		36	36	0xa84efc
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		37	37	0xa85d2e
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		38	38	0xa86007
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		39	39	0xa85eea
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		40	40	0xa86077
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		41	41	0xa863d8
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		42	42	0xa86442
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		43	43	0xa864b2
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		44	44	0xa86151
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		45	45	0xa85cbe
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		46	46	0xa86a35
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		47	47	0xa86ba6
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		48	48	0xa87427
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		49	49	0xa8727a
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		50	50	0xa86f2a
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		51	51	0xa8739f
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		52	52	0xa873f2
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		53	53	0xa86d36
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		54	54	0xa86e98
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		55	55	0xa84de3
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		56	56	0xa86de0
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		57	57	0xa84b17
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		58	58	0xa84c61
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		59	59	0xa84e4f
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		60	60	0xa87e00
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		61	61	0xa83c70
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		62	62	0xa83f2c
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		63	63	0xa858dc
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		64	64	0xa85c46
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		65	65	0xa85e0e
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		66	66	0xa85d9e
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		67	67	0xa859cc
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		68	68	0xa85b0d
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		69	69	0xa84f6c
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		70	70	0xa85769
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		71	71	0xa8588a
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		72	72	0xa87415
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		73	73	0xa84fc7
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		74	74	0xa860e7
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		75	75	0xa84fc7
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		76	76	0xa82fee
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		77	77	0xa85a44
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		78	78	0xa837a6
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		79	79	0xa83816
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		80	80	0xa86602
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		81	81	0xa86672
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		82	82	0xa83e52
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		83	83	0xa83ec2
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		84	84	0xa86592
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		85	85	0xa83d0b
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		86	86	0xa84432
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		87	87	0xa86752
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		88	88	0xa87118
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		89	89	0xa84e61
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		90	90	0xa84cd9
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		91	91	0xa82e7a
+steam	barter-group-caption-supplier	0xa82de3	0xa880e0		92	92	0xa85954
+steam	barter-group-caption-supplier	0xa8514b	0xa88254		0	0	0xa85155
+steam	barter-group-caption-supplier	0xa8514b	0xa88254		1	1	0xa85162
+steam	barter-group-caption-supplier	0xa8514b	0xa88254		2	2	0xa8516f
+steam	barter-group-caption-supplier	0xa8514b	0xa88254		3	3	0xa8530e
+steam	barter-group-caption-supplier	0xa8514b	0xa88254		4	4	0xa8531e
+steam	barter-group-caption-supplier	0xa8514b	0xa88254		5	5	0xa8532e
+steam	barter-group-caption-supplier	0xa8514b	0xa88254		6	6	0xa8533e
+steam	barter-group-caption-supplier	0xa8514b	0xa88254		7	7	0xa8534e
+steam	barter-group-caption-supplier	0xa8568b	0xa88274		0	0	0xa85735
+steam	barter-group-caption-supplier	0xa8568b	0xa88274		1	1	0xa85735
+steam	barter-group-caption-supplier	0xa8568b	0xa88274		2	2	0xa85735
+steam	barter-group-caption-supplier	0xa8568b	0xa88274		3	3	0xa85735
+steam	barter-group-caption-supplier	0xa8568b	0xa88274		4	4	0xa85735
+steam	barter-group-caption-supplier	0xa8568b	0xa88274		5	5	0xa85735
+steam	barter-group-caption-supplier	0xa8568b	0xa88274		6	6	0xa85735
+steam	barter-group-caption-supplier	0xa8568b	0xa88274		7	7	0xa85735
+steam	barter-group-caption-supplier	0xa86850	0xa88294		0	0	0xa86852
+steam	barter-group-caption-supplier	0xa86850	0xa88294		1	1	0xa869e2
+steam	barter-group-caption-supplier	0xa86850	0xa88294		2	2	0xa869e2
+steam	barter-group-caption-supplier	0xa86850	0xa88294		3	3	0xa869e2
+steam	barter-group-caption-supplier	0xa86850	0xa88294		4	4	0xa869e2
+steam	barter-group-caption-supplier	0xa86850	0xa88294		5	5	0xa869e2
+steam	barter-group-caption-supplier	0xa86850	0xa88294		6	6	0xa869e2
+steam	barter-group-caption-supplier	0xa86850	0xa88294		7	7	0xa86866
+steam	barter-group-caption-supplier	0xa86850	0xa88294		8	8	0xa8687a
+steam	barter-group-caption-supplier	0xa86850	0xa88294		9	9	0xa8688e
+steam	barter-group-caption-supplier	0xa86850	0xa88294		10	10	0xa868a2
+steam	barter-group-caption-supplier	0xa86850	0xa88294		11	11	0xa868b6
+steam	barter-group-caption-supplier	0xa86850	0xa88294		12	12	0xa868ca
+steam	barter-group-caption-supplier	0xa86850	0xa88294		13	13	0xa868de
+steam	barter-group-caption-supplier	0xa86850	0xa88294		14	14	0xa868f2
+steam	barter-group-caption-supplier	0xa86850	0xa88294		15	15	0xa86906
+steam	barter-group-caption-supplier	0xa86850	0xa88294		16	16	0xa8691a
+steam	barter-group-caption-supplier	0xa86850	0xa88294		17	17	0xa8692e
+steam	barter-group-caption-supplier	0xa86850	0xa88294		18	18	0xa86942
+steam	barter-group-caption-supplier	0xa86850	0xa88294		19	19	0xa86956
+steam	barter-group-caption-supplier	0xa86850	0xa88294		20	20	0xa8696a
+steam	barter-group-caption-supplier	0xa86850	0xa88294		21	21	0xa8697e
+steam	barter-group-caption-supplier	0xa86850	0xa88294		22	22	0xa86992
+steam	barter-group-caption-supplier	0xa86850	0xa88294		23	23	0xa869a6
+steam	barter-group-caption-supplier	0xa86850	0xa88294		24	24	0xa869ba
+steam	barter-group-caption-supplier	0xa86850	0xa88294		25	25	0xa869ce
+classic	barter-renderer-and-talkline-producer	0x26da06	0x26fa00	0x26fa44	0	0	0x26da08
+classic	barter-renderer-and-talkline-producer	0x26da06	0x26fa00	0x26fa44	1	16	0x26daf8
+classic	barter-renderer-and-talkline-producer	0x26da06	0x26fa00	0x26fa44	2	16	0x26daf8
+classic	barter-renderer-and-talkline-producer	0x26da06	0x26fa00	0x26fa44	3	16	0x26daf8
+classic	barter-renderer-and-talkline-producer	0x26da06	0x26fa00	0x26fa44	4	16	0x26daf8
+classic	barter-renderer-and-talkline-producer	0x26da06	0x26fa00	0x26fa44	5	16	0x26daf8
+classic	barter-renderer-and-talkline-producer	0x26da06	0x26fa00	0x26fa44	6	16	0x26daf8
+classic	barter-renderer-and-talkline-producer	0x26da06	0x26fa00	0x26fa44	7	1	0x26da69
+classic	barter-renderer-and-talkline-producer	0x26da06	0x26fa00	0x26fa44	8	16	0x26daf8
+classic	barter-renderer-and-talkline-producer	0x26da06	0x26fa00	0x26fa44	9	16	0x26daf8
+classic	barter-renderer-and-talkline-producer	0x26da06	0x26fa00	0x26fa44	10	16	0x26daf8
+classic	barter-renderer-and-talkline-producer	0x26da06	0x26fa00	0x26fa44	11	16	0x26daf8
+classic	barter-renderer-and-talkline-producer	0x26da06	0x26fa00	0x26fa44	12	16	0x26daf8
+classic	barter-renderer-and-talkline-producer	0x26da06	0x26fa00	0x26fa44	13	16	0x26daf8
+classic	barter-renderer-and-talkline-producer	0x26da06	0x26fa00	0x26fa44	14	16	0x26daf8
+classic	barter-renderer-and-talkline-producer	0x26da06	0x26fa00	0x26fa44	15	16	0x26daf8
+classic	barter-renderer-and-talkline-producer	0x26da06	0x26fa00	0x26fa44	16	16	0x26daf8
+classic	barter-renderer-and-talkline-producer	0x26da06	0x26fa00	0x26fa44	17	16	0x26daf8
+classic	barter-renderer-and-talkline-producer	0x26da06	0x26fa00	0x26fa44	18	2	0x26daaf
+classic	barter-renderer-and-talkline-producer	0x26da06	0x26fa00	0x26fa44	19	3	0x26dac1
+classic	barter-renderer-and-talkline-producer	0x26da06	0x26fa00	0x26fa44	20	4	0x26dab8
+classic	barter-renderer-and-talkline-producer	0x26da06	0x26fa00	0x26fa44	21	5	0x26dad3
+classic	barter-renderer-and-talkline-producer	0x26da06	0x26fa00	0x26fa44	22	6	0x26dadc
+classic	barter-renderer-and-talkline-producer	0x26da06	0x26fa00	0x26fa44	23	7	0x26dae5
+classic	barter-renderer-and-talkline-producer	0x26da06	0x26fa00	0x26fa44	24	16	0x26daf8
+classic	barter-renderer-and-talkline-producer	0x26da06	0x26fa00	0x26fa44	25	16	0x26daf8
+classic	barter-renderer-and-talkline-producer	0x26da06	0x26fa00	0x26fa44	26	16	0x26daf8
+classic	barter-renderer-and-talkline-producer	0x26da06	0x26fa00	0x26fa44	27	16	0x26daf8
+classic	barter-renderer-and-talkline-producer	0x26da06	0x26fa00	0x26fa44	28	16	0x26daf8
+classic	barter-renderer-and-talkline-producer	0x26da06	0x26fa00	0x26fa44	29	8	0x26daca
+classic	barter-renderer-and-talkline-producer	0x26da06	0x26fa00	0x26fa44	30	9	0x26da5d
+classic	barter-renderer-and-talkline-producer	0x26da06	0x26fa00	0x26fa44	31	10	0x26da39
+classic	barter-renderer-and-talkline-producer	0x26da06	0x26fa00	0x26fa44	32	11	0x26da45
+classic	barter-renderer-and-talkline-producer	0x26da06	0x26fa00	0x26fa44	33	12	0x26da51
+classic	barter-renderer-and-talkline-producer	0x26da06	0x26fa00	0x26fa44	34	13	0x26da83
+classic	barter-renderer-and-talkline-producer	0x26da06	0x26fa00	0x26fa44	35	14	0x26da9d
+classic	barter-renderer-and-talkline-producer	0x26da06	0x26fa00	0x26fa44	36	15	0x26daa6
+classic	speaker-field-producer	0x132cd80	0x132e478		0	0	0x132cd82
+classic	speaker-field-producer	0x132cd80	0x132e478		1	1	0x132cda6
+classic	speaker-field-producer	0x132cd80	0x132e478		2	2	0x132cdcf
+classic	speaker-field-producer	0x132cd80	0x132e478		3	3	0x132cdf7
+classic	speaker-field-producer	0x132cd80	0x132e478		4	4	0x132ce1c
+classic	speaker-field-producer	0x132cd80	0x132e478		5	5	0x132ce45
+classic	speaker-field-producer	0x132cd80	0x132e478		6	6	0x132ce97
+classic	speaker-field-producer	0x132cd80	0x132e478		7	7	0x132ceac
+classic	speaker-field-producer	0x132cd80	0x132e478		8	8	0x132ce78
+classic	speaker-field-producer	0x132cd80	0x132e478		9	9	0x132cec1
+classic	speaker-field-producer	0x132cd80	0x132e478		10	10	0x132ced6
+classic	speaker-field-producer	0x132cd80	0x132e478		11	11	0x132ceeb
+classic	speaker-field-producer	0x132cd80	0x132e478		12	12	0x132cf00
+classic	speaker-field-producer	0x132cd80	0x132e478		13	13	0x132cf15
+classic	speaker-field-producer	0x132cd80	0x132e478		14	14	0x132cf2a
+classic	speaker-field-producer	0x132cd80	0x132e478		15	15	0x132cf3f
+classic	merchant-heading-producer	0x132c05c	0x132c208		0	0	0x132c141
+classic	merchant-heading-producer	0x132c05c	0x132c208		1	1	0x132c05e
+classic	merchant-heading-producer	0x132c05c	0x132c208		2	2	0x132c070
+classic	merchant-heading-producer	0x132c05c	0x132c208		3	3	0x132c07c
+classic	merchant-heading-producer	0x132c05c	0x132c208		4	4	0x132c088
+classic	merchant-heading-producer	0x132c05c	0x132c208		5	5	0x132c094
+classic	merchant-heading-producer	0x132c05c	0x132c208		6	6	0x132c0e2
+classic	merchant-heading-producer	0x132c05c	0x132c208		7	7	0x132c132
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		0	0	0xa802c9
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		1	1	0xa8045e
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		2	2	0xa80645
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		3	3	0xa7ff91
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		4	4	0xa801f2
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		5	5	0xa7fe65
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		6	6	0xa80700
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		7	7	0xa807b6
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		8	8	0xa835a2
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		9	9	0xa81b01
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		10	10	0xa8114b
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		11	11	0xa81274
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		12	12	0xa817b6
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		13	13	0xa813dc
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		14	14	0xa816e9
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		15	15	0xa81887
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		16	16	0xa818f7
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		17	17	0xa819b1
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		18	18	0xa81a21
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		19	19	0xa81a91
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		20	20	0xa80906
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		21	21	0xa81047
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		22	22	0xa83762
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		23	23	0xa83a82
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		24	24	0xa84604
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		25	25	0xa8473d
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		26	26	0xa84bdb
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		27	27	0xa84b07
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		28	28	0xa84d4b
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		29	29	0xa8491a
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		30	30	0xa80b36
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		31	31	0xa80c80
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		32	32	0xa80ac6
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		33	33	0xa80a56
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		34	34	0xa809e6
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		35	35	0xa80976
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		36	36	0xa81f7c
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		37	37	0xa82dae
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		38	38	0xa83087
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		39	39	0xa82f6a
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		40	40	0xa830f7
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		41	41	0xa83458
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		42	42	0xa834c2
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		43	43	0xa83532
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		44	44	0xa831d1
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		45	45	0xa82d3e
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		46	46	0xa83ab5
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		47	47	0xa83c26
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		48	48	0xa844a7
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		49	49	0xa842fa
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		50	50	0xa83faa
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		51	51	0xa8441f
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		52	52	0xa84472
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		53	53	0xa83db6
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		54	54	0xa83f18
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		55	55	0xa81e63
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		56	56	0xa83e60
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		57	57	0xa81b97
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		58	58	0xa81ce1
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		59	59	0xa81ecf
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		60	60	0xa84e80
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		61	61	0xa80cf0
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		62	62	0xa80fac
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		63	63	0xa8295c
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		64	64	0xa82cc6
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		65	65	0xa82e8e
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		66	66	0xa82e1e
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		67	67	0xa82a4c
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		68	68	0xa82b8d
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		69	69	0xa81fec
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		70	70	0xa827e9
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		71	71	0xa8290a
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		72	72	0xa84495
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		73	73	0xa82047
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		74	74	0xa83167
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		75	75	0xa82047
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		76	76	0xa8006e
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		77	77	0xa82ac4
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		78	78	0xa80826
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		79	79	0xa80896
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		80	80	0xa83682
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		81	81	0xa836f2
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		82	82	0xa80ed2
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		83	83	0xa80f42
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		84	84	0xa83612
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		85	85	0xa80d8b
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		86	86	0xa814b2
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		87	87	0xa837d2
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		88	88	0xa84198
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		89	89	0xa81ee1
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		90	90	0xa81d59
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		91	91	0xa7fefa
+classic	barter-group-caption-supplier	0xa7fe63	0xa85160		92	92	0xa829d4
+classic	barter-group-caption-supplier	0xa821cb	0xa852d4		0	0	0xa821d5
+classic	barter-group-caption-supplier	0xa821cb	0xa852d4		1	1	0xa821e2
+classic	barter-group-caption-supplier	0xa821cb	0xa852d4		2	2	0xa821ef
+classic	barter-group-caption-supplier	0xa821cb	0xa852d4		3	3	0xa8238e
+classic	barter-group-caption-supplier	0xa821cb	0xa852d4		4	4	0xa8239e
+classic	barter-group-caption-supplier	0xa821cb	0xa852d4		5	5	0xa823ae
+classic	barter-group-caption-supplier	0xa821cb	0xa852d4		6	6	0xa823be
+classic	barter-group-caption-supplier	0xa821cb	0xa852d4		7	7	0xa823ce
+classic	barter-group-caption-supplier	0xa8270b	0xa852f4		0	0	0xa827b5
+classic	barter-group-caption-supplier	0xa8270b	0xa852f4		1	1	0xa827b5
+classic	barter-group-caption-supplier	0xa8270b	0xa852f4		2	2	0xa827b5
+classic	barter-group-caption-supplier	0xa8270b	0xa852f4		3	3	0xa827b5
+classic	barter-group-caption-supplier	0xa8270b	0xa852f4		4	4	0xa827b5
+classic	barter-group-caption-supplier	0xa8270b	0xa852f4		5	5	0xa827b5
+classic	barter-group-caption-supplier	0xa8270b	0xa852f4		6	6	0xa827b5
+classic	barter-group-caption-supplier	0xa8270b	0xa852f4		7	7	0xa827b5
+classic	barter-group-caption-supplier	0xa838d0	0xa85314		0	0	0xa838d2
+classic	barter-group-caption-supplier	0xa838d0	0xa85314		1	1	0xa83a62
+classic	barter-group-caption-supplier	0xa838d0	0xa85314		2	2	0xa83a62
+classic	barter-group-caption-supplier	0xa838d0	0xa85314		3	3	0xa83a62
+classic	barter-group-caption-supplier	0xa838d0	0xa85314		4	4	0xa83a62
+classic	barter-group-caption-supplier	0xa838d0	0xa85314		5	5	0xa83a62
+classic	barter-group-caption-supplier	0xa838d0	0xa85314		6	6	0xa83a62
+classic	barter-group-caption-supplier	0xa838d0	0xa85314		7	7	0xa838e6
+classic	barter-group-caption-supplier	0xa838d0	0xa85314		8	8	0xa838fa
+classic	barter-group-caption-supplier	0xa838d0	0xa85314		9	9	0xa8390e
+classic	barter-group-caption-supplier	0xa838d0	0xa85314		10	10	0xa83922
+classic	barter-group-caption-supplier	0xa838d0	0xa85314		11	11	0xa83936
+classic	barter-group-caption-supplier	0xa838d0	0xa85314		12	12	0xa8394a
+classic	barter-group-caption-supplier	0xa838d0	0xa85314		13	13	0xa8395e
+classic	barter-group-caption-supplier	0xa838d0	0xa85314		14	14	0xa83972
+classic	barter-group-caption-supplier	0xa838d0	0xa85314		15	15	0xa83986
+classic	barter-group-caption-supplier	0xa838d0	0xa85314		16	16	0xa8399a
+classic	barter-group-caption-supplier	0xa838d0	0xa85314		17	17	0xa839ae
+classic	barter-group-caption-supplier	0xa838d0	0xa85314		18	18	0xa839c2
+classic	barter-group-caption-supplier	0xa838d0	0xa85314		19	19	0xa839d6
+classic	barter-group-caption-supplier	0xa838d0	0xa85314		20	20	0xa839ea
+classic	barter-group-caption-supplier	0xa838d0	0xa85314		21	21	0xa839fe
+classic	barter-group-caption-supplier	0xa838d0	0xa85314		22	22	0xa83a12
+classic	barter-group-caption-supplier	0xa838d0	0xa85314		23	23	0xa83a26
+classic	barter-group-caption-supplier	0xa838d0	0xa85314		24	24	0xa83a3a
+classic	barter-group-caption-supplier	0xa838d0	0xa85314		25	25	0xa83a4e

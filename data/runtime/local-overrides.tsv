@@ -396,6 +396,8 @@ Unit nickname: the elder	年长者	l
 Unit nickname: the older	年长者	l
 Unit nickname: the wise	智者	l
 Unit nickname: the sickly	体弱者	l
+# Adventure barter player heading, owned by the native renderer's draw site.
+Adventure barter: You	你	l
 # Adventure action caption; the profession keeps the existing Butcher wording.
 Adventure action: Butcher	屠宰	l
 # Default creature abilities: creature_standard.txt CDI:ADV_NAME values.

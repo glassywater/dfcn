@@ -3107,9 +3107,11 @@ ABORT NOW and I'll look over my parameters.	立即中止，我要检查参数。
 ALLOW THIS REJECTION TYPE and continue reporting others.	允许此类拒绝，并继续报告其他问题。
 ALLOW ALL REJECTS, even if I end up with a legends-only world!	允许所有拒绝，即使最终只能生成传说模式世界！
 
-# Adventure barter: complete Linux 53.16 native producer paths in
-# data/extracted/adventure-barter/elf-decompiled.c. Typed speakers, artifacts,
-# entities and preceding return reactions retain their shared grammars.
+# Adventure barter: complete 53.16 native producers in
+# data/extracted/adventure-barter/elf-decompiled.c and pe-*.asm/tsv.
+# The PE draw sites retain all controls and whole quoted dialogue before
+# name matching. Typed speakers, artifacts, entities and preceding return
+# reactions retain their shared grammars.
 "Greetings.  Let's trade."	“你好。来做笔交易吧。”
 "An honored visitor!  What would you like?"	“贵客光临！你想要些什么？”
 "What did you have in mind?"	“你有什么打算？”

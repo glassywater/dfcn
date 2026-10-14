@@ -2173,6 +2173,12 @@ enum class NativeAdventureInventoryRole {
 static NativeAdventureInventoryRole native_adventure_inventory_role(
     uintptr_t caller, uintptr_t source);
 
+enum class NativeAdventureBarterField : uint8_t {
+    None, Control, Prompt, Talkline, Reply, Merchant, ItemHeading, Item,
+    Contents, Weight, CurrencyAmount, Editable,
+};
+static NativeAdventureBarterField native_adventure_barter_field(uintptr_t caller);
+
 struct NativeWorkOrderShopCaption {
     enum class Kind { Unlimited, Limit, Editing, Explanation, ColorWarning, Building };
     Kind kind = Kind::Unlimited;
@@ -2272,6 +2278,7 @@ struct NativeDrawnTextRow {
     // Freeze the actual option formatter while its renderer frame is live.
     // Pictured ingestion actions and ordinary items share the same addst.
     NativeAdventureInventoryRole adventure_inventory_role = NativeAdventureInventoryRole::None;
+    NativeAdventureBarterField adventure_barter_field = NativeAdventureBarterField::None;
     // The work-order producer owns this complete workshop restriction/name.
     std::optional<NativeWorkOrderShopCaption> work_order_shop_caption{};
     std::optional<NativeFortressZoneCaption> fortress_zone_caption{};
@@ -2848,8 +2855,10 @@ static void remember_native_drawn_text_row(int x, int y, std::string_view source
         if (row.justice_plot) row.caption_source = true;
         row.adventure_crafting_role = native_adventure_crafting_role(native_caller, address);
         row.adventure_inventory_role = native_adventure_inventory_role(native_caller, address);
+        row.adventure_barter_field = native_adventure_barter_field(native_caller);
         if (row.adventure_crafting_role != NativeAdventureCraftingRole::None ||
-                row.adventure_inventory_role != NativeAdventureInventoryRole::None)
+                row.adventure_inventory_role != NativeAdventureInventoryRole::None ||
+                row.adventure_barter_field != NativeAdventureBarterField::None)
             row.caption_source = true;
         row.fortress_labor_caption = std::move(fortress_labor_caption);
         if (row.fortress_labor_caption) row.caption_source = true;
@@ -4839,6 +4848,9 @@ private:
     void append_native_split_ui_messages(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y,
         const unsigned char *screen_override) const;
+    void append_adventure_barter_fields(std::vector<std::string> &rows,
+        std::vector<Match> &matches, std::vector<Match> &untranslated,
+        int only_y, const unsigned char *screen_override) const;
     void append_mod_list_details(const NativeModListLayout &layout,
         std::vector<std::string> &rows, std::vector<Match> &matches) const;
     void layout_resting_place_details(SDL_Renderer *renderer);
@@ -16880,6 +16892,7 @@ static std::optional<AsciiPanelFrame> find_character_overview_frame(
 #include "health_history_rows.inc"
 #include "native_split_ui_messages.inc"
 #include "native_message_paragraphs.inc"
+#include "adventure_barter_fields.inc"
 #include "settings_announcements.inc"
 
 static bool help_background_covered(const Match &match, int x, int y) {
@@ -17659,6 +17672,8 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     if (gps_->display_background == -1 &&
         is_transient_startup_loading_grid(screen_rows)) return result;
     std::vector<Match> untranslated_help_rows;
+    append_adventure_barter_fields(screen_rows, result, untranslated_help_rows,
+        only_y, screen_override);
     append_activity_detail_matches(screen_rows, result, untranslated_help_rows,
         only_y, screen_override);
     // This renderer owns RAW directory/recipe fields and their descriptions

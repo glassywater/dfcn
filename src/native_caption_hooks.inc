@@ -73,6 +73,10 @@ struct NativeAdventureCraftingSite {
     uintptr_t return_address = 0;
     NativeAdventureCraftingRole role = NativeAdventureCraftingRole::None;
 };
+struct NativeAdventureBarterSite {
+    uintptr_t return_address = 0;
+    NativeAdventureBarterField field = NativeAdventureBarterField::None;
+};
 struct NativeAdventureLookCaptionSite {
     uintptr_t return_address = 0;
     ptrdiff_t index_slot = 0;
@@ -146,6 +150,7 @@ struct NativeCaptionProfile {
     std::vector<NativeLocationPickerSite> location_picker_fields;
     std::vector<NativeTravelBuildingSite> travel_building_fields;
     std::vector<NativeAdventureCraftingSite> adventure_crafting_fields;
+    std::vector<NativeAdventureBarterSite> adventure_barter_fields;
     std::vector<uintptr_t> mission_title_returns;
     NativeAnnouncementPageBinding announcement_page;
     uintptr_t announcement_popup_call = 0, announcement_popup_target = 0;
@@ -154,6 +159,7 @@ struct NativeCaptionProfile {
 #endif
 };
 #include "native_caption_profile.inc"
+#include "native_adventure_barter_caption_profile.inc"
 
 struct NativeCaptionHooks {
     NativeCallHook code;
@@ -423,6 +429,7 @@ static std::vector<NativeCivilizationCaptionSite> g_native_civilization_caption_
 static std::vector<NativeLocationPickerSite> g_native_location_picker_sites;
 static std::vector<NativeTravelBuildingSite> g_native_travel_building_sites;
 static std::vector<NativeAdventureCraftingSite> g_native_adventure_crafting_sites;
+static std::vector<NativeAdventureBarterSite> g_native_adventure_barter_sites;
 static std::vector<uintptr_t> g_native_mission_title_returns;
 static std::vector<uintptr_t> g_native_map_hover_returns;
 static std::vector<NativeAdventureLookCaptionSite> g_native_adventure_look_caption_sites;
@@ -464,6 +471,12 @@ static NativeTravelBuildingField native_travel_building_field(uintptr_t caller) 
     for (const auto &site : g_native_travel_building_sites)
         if (site.return_address == caller) return site.field;
     return NativeTravelBuildingField::None;
+}
+
+static NativeAdventureBarterField native_adventure_barter_field(uintptr_t caller) {
+    for (const auto &site : g_native_adventure_barter_sites)
+        if (site.return_address == caller) return site.field;
+    return NativeAdventureBarterField::None;
 }
 
 static std::optional<SDL_Rect> native_location_picker_draw_box(
@@ -2205,6 +2218,7 @@ static void capture_native_limited_caption_draw(graphicst *graphics, const Nativ
     if (native_private_ui_write_active(graphics)) { draw(); return; }
     const auto inventory_role = native_adventure_inventory_role(
         native_caller, reinterpret_cast<uintptr_t>(source));
+    const auto barter_field = native_adventure_barter_field(native_caller);
     const std::array<long, 4> draw_clip = capture_clip.value_or(graphics
         ? std::array<long, 4>{graphics->clipx[0], graphics->clipx[1],
                               graphics->clipy[0], graphics->clipy[1]}
@@ -2320,7 +2334,8 @@ static void capture_native_limited_caption_draw(graphicst *graphics, const Nativ
              int64_t(graphics->screenx) + static_cast<int64_t>(text.size()) >
                  int64_t(graphics->clipx[1]) + 1 ||
              native_adventure_crafting_role(native_caller) != NativeAdventureCraftingRole::None ||
-             inventory_role != NativeAdventureInventoryRole::None)) {
+             inventory_role != NativeAdventureInventoryRole::None ||
+             barter_field != NativeAdventureBarterField::None)) {
             complete.assign(text);
             x = graphics->screenx;
             y = graphics->screeny;
@@ -2359,7 +2374,8 @@ static void capture_native_limited_caption_draw(graphicst *graphics, const Nativ
             (graphics->screenx > dimx && info_title_kind == NativeInfoTitleKind::None &&
                 !mission_title && !fortress_labor_caption &&
                 travel_building_field == NativeTravelBuildingField::None &&
-                inventory_role == NativeAdventureInventoryRole::None) ||
+                inventory_role == NativeAdventureInventoryRole::None &&
+                barter_field == NativeAdventureBarterField::None) ||
             (width > 0 && graphics->screenx - x > width) ||
             epoch != g_embark_item_capture_epoch.load(std::memory_order_acquire)) return;
         // addchar advances the cursor even outside clipx/clipy. Its verified
@@ -2404,7 +2420,8 @@ static void capture_native_limited_caption_draw(graphicst *graphics, const Nativ
                 location_picker_field != NativeLocationPickerField::None || fortress_labor_caption ||
                 travel_building_field != NativeTravelBuildingField::None ||
                 native_adventure_crafting_role(native_caller) != NativeAdventureCraftingRole::None ||
-                inventory_role != NativeAdventureInventoryRole::None)
+                inventory_role != NativeAdventureInventoryRole::None ||
+                barter_field != NativeAdventureBarterField::None)
             remember_native_drawn_text_row(first, y, visible,
                 reinterpret_cast<uintptr_t>(source), graphics, top_layer,
                 first == x ? std::string_view(complete) : std::string_view{},
@@ -2922,7 +2939,8 @@ static void capture_native_clipped_draw(graphicst *graphics, const NativeString 
     const bool textbox_text = g_native_textbox_widget_binding.text_return_address &&
         caller == g_native_textbox_widget_binding.text_return_address;
     NativeEditableTextScope input_scope(
-        textbox_text || NativeEditableTextScope::owns(caller) || native_legacy_editable_draw(caller,source));
+        textbox_text || NativeEditableTextScope::owns(caller) || native_legacy_editable_draw(caller,source) ||
+        native_adventure_barter_field(caller) == NativeAdventureBarterField::Editable);
     const auto kind = native_info_title_kind(caller);
     const bool authored = native_info_title_authored(kind, source, caller);
     const auto civilization_field = native_civilization_caption_field(caller);
@@ -3187,7 +3205,8 @@ static bool install_native_caption_hooks() {
         }
     } guard;
     NativeCaptionProfile profile;
-    if (!resolve_native_caption_profile(profile) || !profile.resize || !profile.draw ||
+    if (!resolve_native_caption_profile(profile) || !bind_native_adventure_barter_captions(profile) ||
+        !profile.resize || !profile.draw ||
         !profile.truncated_widget.render_slot || !profile.textbox_widget.render_slot) {
         log_line("ERROR", "Cannot resolve the native complete-caption profile");
         return false;
@@ -3327,6 +3346,7 @@ static bool install_native_caption_hooks() {
     g_native_location_picker_sites = std::move(profile.location_picker_fields);
     g_native_travel_building_sites = std::move(profile.travel_building_fields);
     g_native_adventure_crafting_sites = std::move(profile.adventure_crafting_fields);
+    g_native_adventure_barter_sites = std::move(profile.adventure_barter_fields);
     g_native_mission_title_returns = std::move(profile.mission_title_returns);
     g_native_map_hover_returns = std::move(profile.map_hover_returns);
     g_native_adventure_look_caption_sites = std::move(profile.adventure_look_caption_sites);
@@ -3557,6 +3577,7 @@ static bool uninstall_native_caption_hooks() {
     g_native_location_picker_sites.clear();
     g_native_travel_building_sites.clear();
     g_native_adventure_crafting_sites.clear();
+    g_native_adventure_barter_sites.clear();
     g_native_mission_title_returns.clear();
     g_native_caption_hooks.resize = nullptr;
     g_native_caption_hooks.draw = nullptr;

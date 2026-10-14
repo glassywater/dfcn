@@ -1,0 +1,1077 @@
+edition	role	instruction_rva	operand	kind	text
+steam	barter-renderer-and-talkline-producer	0x26f2a5	0x55555556	inline	VUUU
+steam	barter-renderer-and-talkline-producer	0x26f6f1	0x14161b870	cstring	 (Owes you 
+steam	barter-renderer-and-talkline-producer	0x26f744	0x141615580	cstring	)
+steam	barter-renderer-and-talkline-producer	0x26f7a8	0x14161b748	cstring	 (You owe 
+steam	barter-renderer-and-talkline-producer	0x26f7fb	0x141615580	cstring	)
+steam	barter-renderer-and-talkline-producer	0x26f8eb	0x14161b758	fixed16	Trade how many? 
+steam	barter-renderer-and-talkline-producer	0x26f8f5	0x14161b768	fixed2	(0
+steam	barter-renderer-and-talkline-producer	0x26f900	0x14161b76a	fixed1	-
+steam	barter-renderer-and-talkline-producer	0x26f9da	0x141615580	cstring	)
+steam	barter-renderer-and-talkline-producer	0x26fb0b	0x14161b770	fixed16	Ask for how much
+steam	barter-renderer-and-talkline-producer	0x26fb15	0x14161b780	fixed4	? (0
+steam	barter-renderer-and-talkline-producer	0x26fb1e	0x14161b784	fixed1	-
+steam	barter-renderer-and-talkline-producer	0x26fbd5	0x141615580	cstring	)
+steam	barter-renderer-and-talkline-producer	0x26fcd2	0x14161b788	cstring	Offer how much? (0-
+steam	barter-renderer-and-talkline-producer	0x26fcf4	0x141615580	cstring	)
+steam	barter-renderer-and-talkline-producer	0x26fd98	0x14161b348	cstring	(Select an item to demand)
+steam	barter-renderer-and-talkline-producer	0x26fe07	0x1415e9718	cstring	""""
+steam	barter-renderer-and-talkline-producer	0x26fe50	0x14161b368	cstring	What did you have in mind?
+steam	barter-renderer-and-talkline-producer	0x26fe5c	0x14161b388	cstring	An honored visitor!  What would you like?
+steam	barter-renderer-and-talkline-producer	0x26fe63	0x14161b3b8	cstring	Greetings.  Let's trade.
+steam	barter-renderer-and-talkline-producer	0x26fe79	0x14161b2a8	cstring	I cannot take so much -- and at such cost!
+steam	barter-renderer-and-talkline-producer	0x26fe85	0x14161b2d8	cstring	I wish I could take so much, but my animals...
+steam	barter-renderer-and-talkline-producer	0x26fe91	0x14161b308	cstring	I won't trade at a loss.
+steam	barter-renderer-and-talkline-producer	0x26fe9d	0x14161b328	cstring	How kind!  Thank you so much.
+steam	barter-renderer-and-talkline-producer	0x26fea9	0x14161b540	cstring	Ah, wonderful.  Thank you for your business.
+steam	barter-renderer-and-talkline-producer	0x26feb0	0x14161b510	cstring	That seems fair.  You have yourself a deal.
+steam	barter-renderer-and-talkline-producer	0x26fec3	0x14161b5a0	cstring	Yes, and trade we will!  Simply tell me what interests you and what you're prepared to offer in exchange.
+steam	barter-renderer-and-talkline-producer	0x26feca	0x14161b570	cstring	I'm confused.  Did you want something?
+steam	barter-renderer-and-talkline-producer	0x26fedd	0x14161b3e0	cstring	These _are_ fine items, aren't they?  Now, what do offer for them?
+steam	barter-renderer-and-talkline-producer	0x26fee6	0x14161b428	cstring	Are these gifts?  Do you wish to trade?
+steam	barter-renderer-and-talkline-producer	0x26feef	0x14161b450	cstring	You truly despise life, don't you?  I am beside myself with grief.  Perhaps we will show you how they suffered.
+steam	barter-renderer-and-talkline-producer	0x26fef8	0x14161b4c0	cstring	Once a beautiful tree, and now?  It is a rude bauble, fit only for your kind.
+steam	barter-renderer-and-talkline-producer	0x26ff01	0x14161bb90	cstring	I see your low race still revels in death.  That poor, gentle creature...
+steam	barter-renderer-and-talkline-producer	0x26ff0a	0x14161bbe0	cstring	If it were in a cage of some kind...  As it stands, I can't accept something that wriggles and writhes so.
+steam	barter-renderer-and-talkline-producer	0x26ff13	0x14161bc50	cstring	I simply cannot afford this trade.
+steam	barter-renderer-and-talkline-producer	0x26ff1c	0x14161bc78	cstring	Perhaps if you throw in some more goods I can make an offer.
+steam	barter-renderer-and-talkline-producer	0x26ff25	0x14161bb10	cstring	I can't possibly accept, but how about this?  A true bargain.
+steam	barter-renderer-and-talkline-producer	0x26ff38	0x1415e9718	cstring	""""
+steam	barter-renderer-and-talkline-producer	0x270359	0x1415ec860	cstring	...
+steam	barter-renderer-and-talkline-producer	0x27039d	0x1415ec82c	cstring	_
+steam	barter-renderer-and-talkline-producer	0x270c9f	0x14161bb50	cstring	Contains 
+steam	barter-renderer-and-talkline-producer	0x270cbd	0x1415f71ec	cstring	 item
+steam	barter-renderer-and-talkline-producer	0x270cd4	0x1415e9298	cstring	s
+steam	barter-renderer-and-talkline-producer	0x270d3b	0x1415fe088	cstring	Weight: 
+steam	barter-renderer-and-talkline-producer	0x2711a2	0x1415e8ca0	fixed4	You
+steam	barter-renderer-and-talkline-producer	0x2711af	0x1415e8ca2	fixed1	u
+steam	barter-renderer-and-talkline-producer	0x271254	0x14161bb60	fixed16	You are asking f
+steam	barter-renderer-and-talkline-producer	0x27125e	0x14161bb70	fixed2	or
+steam	barter-renderer-and-talkline-producer	0x271269	0x14161bb72	fixed1	 
+steam	barter-renderer-and-talkline-producer	0x271312	0x14161bb78	cstring	You are offering 
+steam	barter-renderer-and-talkline-producer	0x2713a3	0x14161bce8	cstring	Cannot trade currency
+steam	barter-renderer-and-talkline-producer	0x271479	0x6c6c61206b72614d	inline	Mark all
+steam	barter-renderer-and-talkline-producer	0x271576	0x14161bd10	fixed8	Unmark a
+steam	barter-renderer-and-talkline-producer	0x271583	0x14161bd18	fixed2	ll
+steam	barter-renderer-and-talkline-producer	0x27169d	0x6c6c61206b72614d	inline	Mark all
+steam	barter-renderer-and-talkline-producer	0x27176d	0x14161bd10	fixed8	Unmark a
+steam	barter-renderer-and-talkline-producer	0x27177a	0x14161bd18	fixed2	ll
+steam	barter-renderer-and-talkline-producer	0x271937	0x14161bd1c	fixed4	Dema
+steam	barter-renderer-and-talkline-producer	0x271940	0x14161bd20	fixed2	nd
+steam	barter-renderer-and-talkline-producer	0x271981	0x1415f70a8	cstring	Trade
+steam	barter-renderer-and-talkline-producer	0x271a6f	0x1415f70a8	cstring	Trade
+steam	barter-renderer-and-talkline-producer	0x271a95	0x14161bd1c	cstring	Demand
+steam	barter-renderer-and-talkline-producer	0x271ac4	0x14161bcb8	cstring	Give
+steam	barter-renderer-and-talkline-producer	0x271b93	0x776f6853	inline	Show
+steam	barter-renderer-and-talkline-producer	0x271ccf	0x14161bcc0	fixed16	Ask for currency
+steam	barter-renderer-and-talkline-producer	0x271d93	0x14161bcd8	fixed8	Offer cu
+steam	barter-renderer-and-talkline-producer	0x271da0	0x14161bce0	fixed4	rren
+steam	barter-renderer-and-talkline-producer	0x271dac	0x14161bce4	fixed2	cy
+steam	barter-input-and-refusal-producer	0x271fdc	0x55555556	inline	VUUU
+steam	barter-input-and-refusal-producer	0x273c41	0x141603460	cstring	: 
+steam	barter-input-and-refusal-producer	0x274377	0x141603460	cstring	: 
+steam	barter-input-and-refusal-producer	0x2743ae	0x14161b910	cstring	 is a personal treasure, and I will not part with it.
+steam	barter-input-and-refusal-producer	0x274460	0x141603460	cstring	: 
+steam	barter-input-and-refusal-producer	0x274497	0x14161b948	cstring	 is a family heirloom, and I will not part with it.
+steam	barter-input-and-refusal-producer	0x2745f4	0x141603460	cstring	: 
+steam	barter-input-and-refusal-producer	0x27462b	0x14161b980	cstring	 is a treasure of 
+steam	barter-input-and-refusal-producer	0x274652	0x14161b998	cstring	, and we will not part with it.
+steam	barter-input-and-refusal-producer	0x276444	0x232a	inline	*#
+steam	barter-transaction-reward-producer	0x2770fe	0x14161b880	fixed8	You rece
+steam	barter-transaction-reward-producer	0x27710b	0x14161b888	fixed4	ive 
+steam	barter-transaction-reward-producer	0x277181	0x1415e90d8	cstring	, 
+steam	barter-transaction-reward-producer	0x27719f	0x1415e9110	cstring	 and 
+steam	barter-transaction-reward-producer	0x2771bb	0x14161b890	cstring	 to conclude the transaction.
+steam	barter-transfer-and-treasure-return-producer	0x277c63	0x141603460	cstring	: 
+steam	barter-transfer-and-treasure-return-producer	0x277d0c	0x1415fcfe8	cstring	  
+steam	barter-transfer-and-treasure-return-producer	0x277d22	0x14161b8b0	cstring	Thank you for returning this primordial remnant to 
+steam	barter-transfer-and-treasure-return-producer	0x277d4a	0x1415e85b4	cstring	.
+steam	barter-transfer-and-treasure-return-producer	0x277ea8	0x141603460	cstring	: 
+steam	barter-transfer-and-treasure-return-producer	0x278040	0x1415fcfe8	cstring	  
+steam	barter-transfer-and-treasure-return-producer	0x278050	0x14161b8e8	cstring	Thank you for returning my treasure.
+steam	barter-transfer-and-treasure-return-producer	0x2780a2	0x1415fcfe8	cstring	  
+steam	barter-transfer-and-treasure-return-producer	0x2780b2	0x14161ba38	cstring	Thank you for returning my family's treasure.
+steam	barter-transfer-and-treasure-return-producer	0x27816c	0x1415fcfe8	cstring	  
+steam	barter-transfer-and-treasure-return-producer	0x278182	0x14161ba68	cstring	Thank you for returning this treasure to 
+steam	barter-transfer-and-treasure-return-producer	0x2781a5	0x1415e85b4	cstring	.
+steam	barter-transfer-and-treasure-return-producer	0x278348	0x1415e873c	cstring	 
+steam	barter-transfer-and-treasure-return-producer	0x2786b1	0x141603460	cstring	: 
+steam	barter-transfer-and-treasure-return-producer	0x2787a9	0x1415fcfe8	cstring	  
+steam	barter-transfer-and-treasure-return-producer	0x2787bf	0x14161ba98	cstring	Thank you for rescuing this treasure!
+steam	barter-transfer-and-treasure-return-producer	0x278fb1	0x141603460	cstring	: 
+steam	barter-transfer-and-treasure-return-producer	0x27904a	0x14161bac0	cstring	  It's not the original, but we can hope the writing was copied faithfully.
+steam	barter-transfer-and-treasure-return-producer	0x2791b6	0x1415e873c	cstring	 
+steam	artifact-field-producer	0xb944bf	0x1415fdaa8	cstring	[LPAGE:ARTIFACT:
+steam	artifact-field-producer	0xb944ce	0x1416df718	cstring	[LPAGE:BOOK:
+steam	artifact-field-producer	0xb944f3	0x1415fd690	cstring	]
+steam	artifact-field-producer	0xb945b0	0x64656c7469746e55	inline	Untitled
+steam	artifact-field-producer	0xb9460b	0x64656c7469746e55	inline	Untitled
+steam	artifact-field-producer	0xb94686	0x1415fda88	cstring	[/LPAGE]
+steam	artifact-field-producer	0xb946de	0x1416df700	cstring	an unknown artifact
+steam	entity-field-producer	0xb9296a	0x14165e438	cstring	[LPAGE:ENT:
+steam	entity-field-producer	0xb9298a	0x1415fd690	cstring	]
+steam	entity-field-producer	0xb929f4	0x1415fda88	cstring	[/LPAGE]
+steam	entity-field-producer	0xb92a4c	0x1416df940	cstring	an unknown civilization
+steam	speaker-field-producer	0x1331674	0x141782bf8	cstring	the force
+steam	speaker-field-producer	0x1331873	0x141782ca0	cstring	the deity
+steam	speaker-field-producer	0x1331b08	0x1415e8e48	cstring	the 
+steam	speaker-field-producer	0x1331e1a	0x141608940	fixed4	Mine
+steam	speaker-field-producer	0x1331e23	0x141608944	fixed1	r
+steam	speaker-field-producer	0x1331e3e	0x141782be8	fixed8	Woodwork
+steam	speaker-field-producer	0x1331e4b	0x141782bf0	fixed2	er
+steam	speaker-field-producer	0x1331e67	0x14162c9e0	fixed8	Carpente
+steam	speaker-field-producer	0x1331e74	0x14162c9e8	fixed1	r
+steam	speaker-field-producer	0x1331e8f	0x14162c9c8	fixed4	Bowy
+steam	speaker-field-producer	0x1331e98	0x14162c9cc	fixed2	er
+steam	speaker-field-producer	0x1331eb4	0x141608960	fixed8	Woodcutt
+steam	speaker-field-producer	0x1331ec1	0x141608968	fixed2	er
+steam	speaker-field-producer	0x1331edd	0x14162c958	fixed8	Stonewor
+steam	speaker-field-producer	0x1331eea	0x14162c960	fixed2	ke
+steam	speaker-field-producer	0x1331ef5	0x14162c962	fixed1	r
+steam	speaker-field-producer	0x1331f10	0x7265766172676e45	inline	Engraver
+steam	speaker-field-producer	0x1331f27	0x1416a5848	cstring	Stonecutter
+steam	speaker-field-producer	0x1331f3c	0x1416a5838	cstring	Stone Carver
+steam	speaker-field-producer	0x1331f51	0x1416a5864	cstring	Mason
+steam	speaker-field-producer	0x1331f66	0x141782c10	cstring	Ranger
+steam	speaker-field-producer	0x1331f7b	0x1416a5880	cstring	Animal Caretaker
+steam	speaker-field-producer	0x1331f90	0x1416a5870	cstring	Animal Trainer
+steam	speaker-field-producer	0x1331fa5	0x141600378	cstring	Hunter
+steam	speaker-field-producer	0x1331fba	0x1416a56f8	cstring	Trapper
+steam	speaker-field-producer	0x1331fcf	0x1416a56d0	cstring	Animal Dissector
+steam	speaker-field-producer	0x1331fe4	0x14162c938	cstring	Metalsmith
+steam	speaker-field-producer	0x1331ff9	0x1416a5628	cstring	Furnace Operator
+steam	speaker-field-producer	0x133200e	0x1416a5690	cstring	Weaponsmith
+steam	speaker-field-producer	0x1332023	0x141782c08	cstring	Armorer
+steam	speaker-field-producer	0x1332040	0x1416a56b0	fixed8	Blacksmi
+steam	speaker-field-producer	0x133204d	0x1416a56b8	fixed2	th
+steam	speaker-field-producer	0x1332069	0x141782c28	fixed8	Metalcra
+steam	speaker-field-producer	0x1332076	0x141782c30	fixed4	fter
+steam	speaker-field-producer	0x1332088	0x14162c930	cstring	Jeweler
+steam	speaker-field-producer	0x133209d	0x1416a54e0	cstring	Gem Cutter
+steam	speaker-field-producer	0x13320b2	0x1416a54f0	cstring	Gem Setter
+steam	speaker-field-producer	0x13320c7	0x141651c38	cstring	Craftsman
+steam	speaker-field-producer	0x13320dc	0x1416a5500	cstring	Woodcrafter
+steam	speaker-field-producer	0x13320f1	0x1416a5510	cstring	Papermaker
+steam	speaker-field-producer	0x1332106	0x1416a5520	cstring	Bookbinder
+steam	speaker-field-producer	0x133211b	0x1416a552c	cstring	Potter
+steam	speaker-field-producer	0x1332130	0x1416a59c4	cstring	Glazer
+steam	speaker-field-producer	0x1332145	0x1416a5538	cstring	Wax Worker
+steam	speaker-field-producer	0x133215a	0x141782c18	cstring	Stonecrafter
+steam	speaker-field-producer	0x133216f	0x1416a59a0	cstring	Leatherworker
+steam	speaker-field-producer	0x1332184	0x1416a59d0	cstring	Bone Carver
+steam	speaker-field-producer	0x1332199	0x1416a59dc	cstring	Weaver
+steam	speaker-field-producer	0x13321ae	0x141651cd0	cstring	Clothier
+steam	speaker-field-producer	0x13321c3	0x1416a5568	cstring	Glassmaker
+steam	speaker-field-producer	0x13321d8	0x1416a5640	cstring	Strand Extractor
+steam	speaker-field-producer	0x13321ed	0x141782c48	cstring	Fishery Worker
+steam	speaker-field-producer	0x1332202	0x1416a5618	cstring	Fisherman
+steam	speaker-field-producer	0x1332217	0x1416a56c0	cstring	Fish Dissector
+steam	speaker-field-producer	0x133222c	0x1416a56e8	cstring	Fish Cleaner
+steam	speaker-field-producer	0x1332241	0x14162cb88	cstring	Farmer
+steam	speaker-field-producer	0x1332256	0x1416a58c0	cstring	Cheesemaker
+steam	speaker-field-producer	0x133226b	0x1416a58cc	cstring	Milker
+steam	speaker-field-producer	0x1332280	0x1416a58d4	cstring	Gelder
+steam	speaker-field-producer	0x1332295	0x1416a58e0	cstring	Shearer
+steam	speaker-field-producer	0x13322aa	0x1416a58e8	cstring	Spinner
+steam	speaker-field-producer	0x13322bf	0x14163cf84	cstring	Cook
+steam	speaker-field-producer	0x13322d4	0x1416a59f8	cstring	Thresher
+steam	speaker-field-producer	0x13322e9	0x1416a59ec	cstring	Miller
+steam	speaker-field-producer	0x13322fe	0x14161be28	cstring	Butcher
+steam	speaker-field-producer	0x1332313	0x14162cb80	cstring	Tanner
+steam	speaker-field-producer	0x1332328	0x14162c910	cstring	Dyer
+steam	speaker-field-producer	0x133233d	0x1416a59b0	cstring	Presser
+steam	speaker-field-producer	0x1332352	0x1416a59b8	cstring	Beekeeper
+steam	speaker-field-producer	0x1332367	0x1416a5700	cstring	Planter
+steam	speaker-field-producer	0x133237c	0x1416a5708	cstring	Herbalist
+steam	speaker-field-producer	0x1332391	0x1416a59e4	cstring	Brewer
+steam	speaker-field-producer	0x13323a6	0x141782c38	cstring	Soap Maker
+steam	speaker-field-producer	0x13323bb	0x1416a5660	cstring	Potash Maker
+steam	speaker-field-producer	0x13323d0	0x1416a5670	cstring	Lye Maker
+steam	speaker-field-producer	0x13323e5	0x1416a5680	cstring	Wood Burner
+steam	speaker-field-producer	0x13323fa	0x141782d20	cstring	Engineer
+steam	speaker-field-producer	0x133240f	0x14162c948	cstring	Mechanic
+steam	speaker-field-producer	0x1332424	0x1416a5970	cstring	Siege Engineer
+steam	speaker-field-producer	0x1332439	0x1416a5980	cstring	Siege Operator
+steam	speaker-field-producer	0x133244e	0x1416a5990	cstring	Pump Operator
+steam	speaker-field-producer	0x1332463	0x141782d18	cstring	Clerk
+steam	speaker-field-producer	0x1332478	0x141782d38	cstring	Administrator
+steam	speaker-field-producer	0x133248d	0x141782d2c	cstring	Trader
+steam	speaker-field-producer	0x13324a2	0x1416a55a4	cstring	Poet
+steam	speaker-field-producer	0x13324b7	0x141782d50	cstring	Bard
+steam	speaker-field-producer	0x13324cc	0x1416a5ad8	cstring	Dancer
+steam	speaker-field-producer	0x13324e1	0x1415ffd30	cstring	Performer
+steam	speaker-field-producer	0x13324f6	0x1415ffd1c	cstring	Scribe
+steam	speaker-field-producer	0x133250b	0x14162c890	cstring	Tavern Keeper
+steam	speaker-field-producer	0x1332520	0x141782d48	cstring	Sage
+steam	speaker-field-producer	0x1332535	0x1415ffd28	cstring	Scholar
+steam	speaker-field-producer	0x133254a	0x141782d68	cstring	Philosopher
+steam	speaker-field-producer	0x133255f	0x1416a5b78	cstring	Mathematician
+steam	speaker-field-producer	0x1332574	0x141782d58	cstring	Historian
+steam	speaker-field-producer	0x1332589	0x1416a5b88	cstring	Astronomer
+steam	speaker-field-producer	0x133259e	0x141782cd0	cstring	Naturalist
+steam	speaker-field-producer	0x13325b3	0x1416a5b98	cstring	Chemist
+steam	speaker-field-producer	0x13325c8	0x1416a5ba0	cstring	Geographer
+steam	speaker-field-producer	0x13325dd	0x1415ffcf8	cstring	Doctor
+steam	speaker-field-producer	0x13325f2	0x1415ffce8	cstring	Diagnostician
+steam	speaker-field-producer	0x1332607	0x14162c8a8	cstring	Bone Doctor
+steam	speaker-field-producer	0x133261c	0x1416a5918	cstring	Suturer
+steam	speaker-field-producer	0x1332631	0x1415fff10	cstring	Surgeon
+steam	speaker-field-producer	0x1332646	0x141782cc0	cstring	Merchant
+steam	speaker-field-producer	0x133265b	0x141782ce4	cstring	Drunk
+steam	speaker-field-producer	0x1332670	0x14162c880	cstring	Monster Slayer
+steam	speaker-field-producer	0x1332685	0x141782cdc	cstring	Scout
+steam	speaker-field-producer	0x133269a	0x141782cf8	cstring	Beast Hunter
+steam	speaker-field-producer	0x13326af	0x14169e2f0	cstring	Snatcher
+steam	speaker-field-producer	0x13326c4	0x1415ffd10	cstring	Mercenary
+steam	speaker-field-producer	0x13326d9	0x1416a5a90	cstring	Hammerman
+steam	speaker-field-producer	0x13326ee	0x141781e48	cstring	Hammer Lord
+steam	speaker-field-producer	0x1332703	0x1416a5aa0	cstring	Spearman
+steam	speaker-field-producer	0x1332718	0x141781d60	cstring	Spearmaster
+steam	speaker-field-producer	0x133272d	0x1416a5ab0	cstring	Crossbowman
+steam	speaker-field-producer	0x1332742	0x141781db8	cstring	Elite Crossbowman
+steam	speaker-field-producer	0x1332757	0x1416a5a40	cstring	Wrestler
+steam	speaker-field-producer	0x133276c	0x141781dd0	cstring	Elite Wrestler
+steam	speaker-field-producer	0x1332781	0x1416a5a70	cstring	Axeman
+steam	speaker-field-producer	0x1332796	0x141781ed8	cstring	Axe Lord
+steam	speaker-field-producer	0x13327ab	0x1416a5a78	cstring	Swordsman
+steam	speaker-field-producer	0x13327c0	0x141781ee8	cstring	Swordmaster
+steam	speaker-field-producer	0x13327d5	0x1416a5a88	cstring	Maceman
+steam	speaker-field-producer	0x13327ea	0x141781e60	cstring	Mace Lord
+steam	speaker-field-producer	0x13327ff	0x1416a5ac0	cstring	Pikeman
+steam	speaker-field-producer	0x1332814	0x141781e70	cstring	Pikemaster
+steam	speaker-field-producer	0x1332829	0x1416a5948	cstring	Bowman
+steam	speaker-field-producer	0x133283e	0x141781e98	cstring	Elite Bowman
+steam	speaker-field-producer	0x1332853	0x1416a5a08	cstring	Blowgunner
+steam	speaker-field-producer	0x1332868	0x141781f88	cstring	Master Blowgunner
+steam	speaker-field-producer	0x133287d	0x1416a58b4	cstring	Lasher
+steam	speaker-field-producer	0x1332892	0x141781fb0	cstring	Master Lasher
+steam	speaker-field-producer	0x13328a7	0x141782cf0	cstring	Recruit
+steam	speaker-field-producer	0x13328bc	0x1415f7148	cstring	Hunting
+steam	speaker-field-producer	0x13328d1	0x1416036fc	cstring	War
+steam	speaker-field-producer	0x13328e6	0x141781fc8	cstring	Master Thief
+steam	speaker-field-producer	0x13328fb	0x14160032c	cstring	Thief
+steam	speaker-field-producer	0x1332910	0x1415ec960	cstring	Criminal
+steam	speaker-field-producer	0x1332925	0x141782d10	cstring	Peddler
+steam	speaker-field-producer	0x133293a	0x141782d08	cstring	Prophet
+steam	speaker-field-producer	0x133294f	0x141782df8	cstring	Pilgrim
+steam	speaker-field-producer	0x1332964	0x141782dec	cstring	Monk
+steam	speaker-field-producer	0x1332979	0x141782e08	cstring	Messenger
+steam	speaker-field-producer	0x1332a17	0x1415ffe64	cstring	Child
+steam	speaker-field-producer	0x1332a80	0x141782e00	cstring	Baby
+steam	speaker-field-producer	0x1332aa8	0x141782bc0	fixed8	Peasant
+steam	speaker-field-producer	0x1332ab2	0x141782bc4	fixed2	an
+steam	speaker-field-producer	0x1332abd	0x141782bc6	fixed1	t
+steam	speaker-field-producer	0x1332c76	0x141782b50	cstring	 Slave
+steam	speaker-field-producer	0x1332cb0	0x141600c30	cstring	Slave
+steam	speaker-field-producer	0x1332d06	0x141600c30	fixed4	Slav
+steam	speaker-field-producer	0x1332d0e	0x141600c34	fixed1	e
+steam	speaker-field-producer	0x1332de9	0x141782b70	cstring	 Prisoner
+steam	speaker-field-producer	0x1332e1d	0x72656e6f73697250	inline	Prisoner
+steam	speaker-field-producer	0x1332e6c	0x72656e6f73697250	inline	Prisoner
+steam	speaker-field-producer	0x1332ef4	0x1415e8e48	cstring	the 
+steam	speaker-field-producer	0x1332f25	0x1415e873c	cstring	 
+steam	speaker-field-producer	0x1332f8d	0x1416bec90	cstring	Ghost
+steam	speaker-field-producer	0x1332f9c	0x141629b50	cstring	Ghostly 
+steam	speaker-field-producer	0x1332fe9	0x1415e873c	cstring	 
+steam	speaker-field-producer	0x133300c	0x141782e38	cstring	One
+steam	merchant-heading-producer	0x1330e5d	0x1415e90d8	cstring	, 
+steam	merchant-heading-producer	0x1330f58	0x1415e9718	cstring	""""
+steam	merchant-heading-producer	0x1330fad	0x1415e9718	cstring	""""
+steam	merchant-heading-producer	0x1330fc2	0x1415e90d8	cstring	, 
+steam	merchant-heading-producer	0x1331001	0x1415e90d8	cstring	, 
+steam	merchant-heading-producer	0x133105d	0x1415e90d8	cstring	, 
+steam	merchant-heading-producer	0x13310b8	0x141615540	cstring	 (
+steam	merchant-heading-producer	0x13310f4	0x141782c58	cstring	Trained
+steam	merchant-heading-producer	0x1331100	0x141782c78	cstring	-Trained-
+steam	merchant-heading-producer	0x133110c	0x141782c68	cstring	+Trained+
+steam	merchant-heading-producer	0x1331118	0x141782c90	cstring	*Trained*
+steam	merchant-heading-producer	0x133114c	0x141782c58	cstring	Trained
+steam	merchant-heading-producer	0x133119c	0x141782c58	cstring	Trained
+steam	merchant-heading-producer	0x13311c8	0x141782c84	cstring	Tame
+steam	merchant-heading-producer	0x13311d1	0x141782cb0	cstring	Semi-Wild
+steam	merchant-heading-producer	0x13311e9	0x141615580	cstring	)
+steam	barter-item-caption-supplier	0xc656f4	0x1416ee318	cstring	 (copy)
+steam	barter-group-caption-supplier	0xa82d27	0x141649d9c	fixed4	larg
+steam	barter-group-caption-supplier	0xa82d30	0x141649da0	fixed1	e
+steam	barter-group-caption-supplier	0xa82d39	0x141686358	fixed4	smal
+steam	barter-group-caption-supplier	0xa82d42	0x14168635c	fixed1	l
+steam	barter-group-caption-supplier	0xa82d8c	0x1416cbf50	cstring	grown 
+steam	barter-group-caption-supplier	0xa82e66	0x14167ccf0	cstring	logs
+steam	barter-group-caption-supplier	0xa82ed8	0x1416ce7e0	cstring	branch
+steam	barter-group-caption-supplier	0xa82efd	0x1416ce880	cstring	es
+steam	barter-group-caption-supplier	0xa82f1d	0x141601038	cstring	rough gems
+steam	barter-group-caption-supplier	0xa82f36	0x1416ce870	cstring	raw green glass
+steam	barter-group-caption-supplier	0xa82f4f	0x1416ce860	cstring	raw clear glass
+steam	barter-group-caption-supplier	0xa82f68	0x1416ce848	cstring	raw crystal glass
+steam	barter-group-caption-supplier	0xa82f8a	0x141601038	cstring	rough gems
+steam	barter-group-caption-supplier	0xa82fa8	0x1416cc1b0	cstring	rough 
+steam	barter-group-caption-supplier	0xa83047	0x1416862ac	cstring	small 
+steam	barter-group-caption-supplier	0xa8305e	0x1416862ac	cstring	small 
+steam	barter-group-caption-supplier	0xa8313e	0x1416ce7ac	cstring	rock
+steam	barter-group-caption-supplier	0xa8315e	0x1416ce7a0	cstring	small rock
+steam	barter-group-caption-supplier	0xa831b7	0x1416ce790	cstring	stone boulders
+steam	barter-group-caption-supplier	0xa831dd	0x1416ce780	cstring	boulders
+steam	barter-group-caption-supplier	0xa832ba	0x1416ce738	cstring	bars
+steam	barter-group-caption-supplier	0xa832d3	0x1416ce7c0	cstring	charcoal
+steam	barter-group-caption-supplier	0xa832e9	0x1416ce7b4	cstring	coke
+steam	barter-group-caption-supplier	0xa832f2	0x1416ce740	cstring	refined coal
+steam	barter-group-caption-supplier	0xa8330b	0x14163e59c	cstring	metal
+steam	barter-group-caption-supplier	0xa8331a	0x1416ce7cc	cstring	 bars
+steam	barter-group-caption-supplier	0xa833ca	0x1416ce7d8	cstring	 wafers
+steam	barter-group-caption-supplier	0xa834b8	0x1416011f0	cstring	cut gems
+steam	barter-group-caption-supplier	0xa834d1	0x1416ce720	cstring	cut green glass gems
+steam	barter-group-caption-supplier	0xa834ea	0x1416ce708	cstring	cut clear glass gems
+steam	barter-group-caption-supplier	0xa83500	0x1416ce768	cstring	cut crystal glass gems
+steam	barter-group-caption-supplier	0xa8351b	0x1416ce760	cstring	gems
+steam	barter-group-caption-supplier	0xa83658	0x1416ce758	cstring	blocks
+steam	barter-group-caption-supplier	0xa8366f	0x1416ce758	cstring	blocks
+steam	barter-group-caption-supplier	0xa8371d	0x1416ce6ec	cstring	door
+steam	barter-group-caption-supplier	0xa83724	0x1416ce750	cstring	portal
+steam	barter-group-caption-supplier	0xa8379a	0x1416ce6e0	cstring	floodgate
+steam	barter-group-caption-supplier	0xa8380a	0x1416ce6d0	cstring	hatch cover
+steam	barter-group-caption-supplier	0xa8387a	0x1416ce6c8	cstring	grate
+steam	barter-group-caption-supplier	0xa838ea	0x14162fdb4	cstring	table
+steam	barter-group-caption-supplier	0xa8395a	0x14163cea0	cstring	cabinet
+steam	barter-group-caption-supplier	0xa839ca	0x14163ce90	cstring	weapon rack
+steam	barter-group-caption-supplier	0xa83a3a	0x14163ce08	cstring	armor stand
+steam	barter-group-caption-supplier	0xa83aaa	0x1416ce704	cstring	bin
+steam	barter-group-caption-supplier	0xa83b51	0x1416ce700	cstring	box
+steam	barter-group-caption-supplier	0xa83b6a	0x1416ce6fc	cstring	e
+steam	barter-group-caption-supplier	0xa83b93	0x1416ce6f4	cstring	coffer
+steam	barter-group-caption-supplier	0xa83ba2	0x14163cea8	cstring	chest
+steam	barter-group-caption-supplier	0xa83bc3	0x1416ce6a0	cstring	boxe
+steam	barter-group-caption-supplier	0xa83bd8	0x1415e9298	cstring	s
+steam	barter-group-caption-supplier	0xa83bec	0x1416ce700	cstring	box
+steam	barter-group-caption-supplier	0xa83c64	0x1416ce69c	cstring	bag
+steam	barter-group-caption-supplier	0xa83cff	0x1416ce690	cstring	backpack
+steam	barter-group-caption-supplier	0xa83dbc	0x1416ce6c0	cstring	cast
+steam	barter-group-caption-supplier	0xa83dc8	0x1416ce680	cstring	limb/body 
+steam	barter-group-caption-supplier	0xa83dd7	0x1416ce6c0	cstring	cast
+steam	barter-group-caption-supplier	0xa83e37	0x1416ce680	cstring	limb/body 
+steam	barter-group-caption-supplier	0xa83e46	0x1416ce6c0	cstring	cast
+steam	barter-group-caption-supplier	0xa83eb6	0x1416ce6b8	cstring	splint
+steam	barter-group-caption-supplier	0xa83f20	0x1416ce6b0	cstring	crutch
+steam	barter-group-caption-supplier	0xa83fbb	0x1416ce6a8	cstring	quiver
+steam	barter-group-caption-supplier	0xa8403a	0x1416ce63c	cstring	casket
+steam	barter-group-caption-supplier	0xa84085	0x1416ce630	cstring	sarcophag
+steam	barter-group-caption-supplier	0xa84094	0x141642184	cstring	us
+steam	barter-group-caption-supplier	0xa8409b	0x1416c0828	cstring	i
+steam	barter-group-caption-supplier	0xa840b7	0x14162fe0c	cstring	coffin
+steam	barter-group-caption-supplier	0xa841d4	0x1416ce61c	cstring	chain
+steam	barter-group-caption-supplier	0xa841e8	0x1416ce624	cstring	rope
+steam	barter-group-caption-supplier	0xa84328	0x1416ce664	cstring	vial
+steam	barter-group-caption-supplier	0xa84339	0x1416ce65c	cstring	flask
+steam	barter-group-caption-supplier	0xa84350	0x1416ce670	cstring	waterskin
+steam	barter-group-caption-supplier	0xa843f9	0x1416ce648	cstring	musical instrument
+steam	barter-group-caption-supplier	0xa844db	0x1416ce5e8	cstring	unglazed 
+steam	barter-group-caption-supplier	0xa84643	0x1415e873c	cstring	 
+steam	barter-group-caption-supplier	0xa8465d	0x1416c1e44	cstring	tool
+steam	barter-group-caption-supplier	0xa846fd	0x1416c1d64	cstring	toy
+steam	barter-group-caption-supplier	0xa847ad	0x1416ce5e0	cstring	cup
+steam	barter-group-caption-supplier	0xa847e1	0x1416ce5dc	cstring	mug
+steam	barter-group-caption-supplier	0xa847fb	0x1416ce5d4	cstring	goblet
+steam	barter-group-caption-supplier	0xa8486b	0x1416ce614	cstring	window
+steam	barter-group-caption-supplier	0xa8491a	0x1416ce5fc	cstring	cage
+steam	barter-group-caption-supplier	0xa84921	0x1416ce608	cstring	terrarium
+steam	barter-group-caption-supplier	0xa84995	0x1416ce5f4	cstring	barrel
+steam	barter-group-caption-supplier	0xa84a05	0x1416cec8c	cstring	bucket
+steam	barter-group-caption-supplier	0xa84a75	0x1416cec80	cstring	animal trap
+steam	barter-group-caption-supplier	0xa84af1	0x14162fe04	cstring	chair
+steam	barter-group-caption-supplier	0xa84b0b	0x1416cec74	cstring	throne
+steam	barter-group-caption-supplier	0xa84bc1	0x1416cec70	cstring	web
+steam	barter-group-caption-supplier	0xa84c0c	0x1416cecb8	cstring	strands
+steam	barter-group-caption-supplier	0xa84c3f	0x1416158b4	cstring	yarn
+steam	barter-group-caption-supplier	0xa84c50	0x14161589c	cstring	thread
+steam	barter-group-caption-supplier	0xa84cc5	0x1416158a4	cstring	cloth
+steam	barter-group-caption-supplier	0xa84dcf	0x1416cecac	cstring	sheet
+steam	barter-group-caption-supplier	0xa84df2	0x1416ceca0	cstring	tanned hide
+steam	barter-group-caption-supplier	0xa84e55	0x1416cec94	cstring	totem
+steam	barter-group-caption-supplier	0xa84ebe	0x1416cec40	cstring	-bound 
+steam	barter-group-caption-supplier	0xa84eda	0x1416cec2c	cstring	codex
+steam	barter-group-caption-supplier	0xa84ee1	0x1416cec38	cstring	codices
+steam	barter-group-caption-supplier	0xa84f60	0x1416cec20	cstring	figurine
+steam	barter-group-caption-supplier	0xa84f7e	0x1416cec68	cstring	rotten 
+steam	barter-group-caption-supplier	0xa84fa3	0x14164fc00	cstring	drink
+steam	barter-group-caption-supplier	0xa84fe6	0x1416cec68	cstring	rotten 
+steam	barter-group-caption-supplier	0xa851cb	0x1416cec60	cstring	filthy 
+steam	barter-group-caption-supplier	0xa851e4	0x1416cec58	cstring	sticky 
+steam	barter-group-caption-supplier	0xa85203	0x1416cec48	cstring	vomitous 
+steam	barter-group-caption-supplier	0xa8521f	0x1416cebec	cstring	slimy 
+steam	barter-group-caption-supplier	0xa85238	0x1416b1070	cstring	stagnant 
+steam	barter-group-caption-supplier	0xa85254	0x1416cebe4	cstring	dirty 
+steam	barter-group-caption-supplier	0xa85270	0x1416cebdc	cstring	gooey 
+steam	barter-group-caption-supplier	0xa85289	0x1416cebd0	cstring	purulent 
+steam	barter-group-caption-supplier	0xa852a2	0x1416cec10	cstring	ichorous 
+steam	barter-group-caption-supplier	0xa852bb	0x1416cec08	cstring	bloody 
+steam	barter-group-caption-supplier	0xa852fa	0x1416a6358	cstring	liquid
+steam	barter-group-caption-supplier	0xa8543c	0x1416cebfc	cstring	 paste
+steam	barter-group-caption-supplier	0xa85491	0x1416cebf4	cstring	glob
+steam	barter-group-caption-supplier	0xa85692	0x1416ceb80	cstring	 laced with 
+steam	barter-group-caption-supplier	0xa85706	0x1415e90d8	cstring	, 
+steam	barter-group-caption-supplier	0xa85716	0x1415e9110	cstring	 and 
+steam	barter-group-caption-supplier	0xa8577b	0x1416cec68	cstring	rotten 
+steam	barter-group-caption-supplier	0xa85818	0x1416ceb70	cstring	 dye mix
+steam	barter-group-caption-supplier	0xa8583c	0x1416ceb64	cstring	powder
+steam	barter-group-caption-supplier	0xa85896	0x1416cec68	cstring	rotten 
+steam	barter-group-caption-supplier	0xa858b8	0x1416ceb5c	cstring	cheese
+steam	barter-group-caption-supplier	0xa85940	0x1416cebc0	cstring	catapult parts
+steam	barter-group-caption-supplier	0xa859b8	0x1416ceba8	cstring	bolt thrower parts
+steam	barter-group-caption-supplier	0xa85a30	0x1416ceb98	cstring	mechanisms
+steam	barter-group-caption-supplier	0xa85adf	0x1416ceb90	cstring	tube
+steam	barter-group-caption-supplier	0xa85af9	0x1416ceb10	cstring	pipe section
+steam	barter-group-caption-supplier	0xa85b97	0x1416ceb00	cstring	trap component
+steam	barter-group-caption-supplier	0xa85bc8	0x1415e873c	cstring	 
+steam	barter-group-caption-supplier	0xa85caa	0x1416ceaf0	cstring	ballista parts
+steam	barter-group-caption-supplier	0xa85d22	0x1416ceae8	cstring	anvil
+steam	barter-group-caption-supplier	0xa85d92	0x1416ceb54	cstring	amulet
+steam	barter-group-caption-supplier	0xa85e02	0x1416ceb40	cstring	ballista arrow head
+steam	barter-group-caption-supplier	0xa85ea9	0x1416ceb30	cstring	siege ammo
+steam	barter-group-caption-supplier	0xa85ff3	0x1416ceb20	cstring	ammunition
+steam	barter-group-caption-supplier	0xa8606b	0x1416ceaa8	cstring	scepter
+steam	barter-group-caption-supplier	0xa860db	0x1416cea9c	cstring	crown
+steam	barter-group-caption-supplier	0xa86145	0x1416cea94	cstring	coin
+steam	barter-group-caption-supplier	0xa86164	0x1416cea88	cstring	perfect 
+steam	barter-group-caption-supplier	0xa86173	0x14164a2c8	cstring	large 
+steam	barter-group-caption-supplier	0xa8625b	0x1416cead8	cstring	green glass 
+steam	barter-group-caption-supplier	0xa86271	0x1416ceac8	cstring	clear glass 
+steam	barter-group-caption-supplier	0xa86287	0x1416ceab8	cstring	crystal glass 
+steam	barter-group-caption-supplier	0xa862a3	0x1416158fc	cstring	gem
+steam	barter-group-caption-supplier	0xa8635b	0x1416ceab0	cstring	 gem
+steam	barter-group-caption-supplier	0xa86436	0x1416cea50	cstring	ring
+steam	barter-group-caption-supplier	0xa864a6	0x1416cea48	cstring	earring
+steam	barter-group-caption-supplier	0xa86516	0x1416cea38	cstring	bracelet
+steam	barter-group-caption-supplier	0xa86586	0x14162fdb0	cstring	bed
+steam	barter-group-caption-supplier	0xa865f6	0x1416cea28	cstring	traction bench
+steam	barter-group-caption-supplier	0xa86666	0x1416cea7c	cstring	quern
+steam	barter-group-caption-supplier	0xa866d6	0x1416cea70	cstring	millstone
+steam	barter-group-caption-supplier	0xa86746	0x1416cea64	cstring	statue
+steam	barter-group-caption-supplier	0xa86852	0x1416cea58	cstring	memorial
+steam	barter-group-caption-supplier	0xa86866	0x1416ce9a0	cstring	food imports sign
+steam	barter-group-caption-supplier	0xa8687a	0x1416ce988	cstring	clothing imports sign
+steam	barter-group-caption-supplier	0xa8688e	0x1416ce970	cstring	general imports sign
+steam	barter-group-caption-supplier	0xa868a2	0x1416ce960	cstring	cloth shop sign
+steam	barter-group-caption-supplier	0xa868b6	0x1416cea10	cstring	leather shop sign
+steam	barter-group-caption-supplier	0xa868ca	0x1416ce9f0	cstring	woven clothing shop sign
+steam	barter-group-caption-supplier	0xa868de	0x1416ce9d0	cstring	leather clothing shop sign
+steam	barter-group-caption-supplier	0xa868f2	0x1416ce9b8	cstring	bone carver's shop sign
+steam	barter-group-caption-supplier	0xa86906	0x1416cf090	cstring	gem cutter's shop sign
+steam	barter-group-caption-supplier	0xa8691a	0x1416cf078	cstring	weaponsmith's shop sign
+steam	barter-group-caption-supplier	0xa8692e	0x1416cf060	cstring	bowyer's shop sign
+steam	barter-group-caption-supplier	0xa86942	0x1416cf048	cstring	blacksmith's shop sign
+steam	barter-group-caption-supplier	0xa86956	0x1416cf0f0	cstring	armorsmith's shop sign
+steam	barter-group-caption-supplier	0xa8696a	0x1416cf0d8	cstring	metal craft shop sign
+steam	barter-group-caption-supplier	0xa8697e	0x1416cf0c0	cstring	leather goods shop sign
+steam	barter-group-caption-supplier	0xa86992	0x1416cf0a8	cstring	carpenter's shop sign
+steam	barter-group-caption-supplier	0xa869a6	0x1416ceff8	cstring	stone furniture shop sign
+steam	barter-group-caption-supplier	0xa869ba	0x1416cefd8	cstring	metal furniture shop sign
+steam	barter-group-caption-supplier	0xa869ce	0x1416cefc8	cstring	tavern sign
+steam	barter-group-caption-supplier	0xa869e2	0x1416cefbc	cstring	slab
+steam	barter-group-caption-supplier	0xa869f6	0x1416cefbc	cstring	slab
+steam	barter-group-caption-supplier	0xa86a14	0x1416cec68	cstring	rotten 
+steam	barter-group-caption-supplier	0xa86a29	0x1416cf03c	cstring	corpse
+steam	barter-group-caption-supplier	0xa86a47	0x1416cec68	cstring	rotten 
+steam	barter-group-caption-supplier	0xa86a6b	0x1416158cc	cstring	tooth
+steam	barter-group-caption-supplier	0xa86a7c	0x1416cf034	cstring	teeth
+steam	barter-group-caption-supplier	0xa86a91	0x1416158c4	cstring	bone
+steam	barter-group-caption-supplier	0xa86aa9	0x1416158bc	cstring	shell
+steam	barter-group-caption-supplier	0xa86ac1	0x1416cf028	cstring	plant part
+steam	barter-group-caption-supplier	0xa86ad9	0x1416cf018	cstring	silk body part
+steam	barter-group-caption-supplier	0xa86af1	0x1416cef70	cstring	leather body part
+steam	barter-group-caption-supplier	0xa86b09	0x1416cef58	cstring	wooden body part
+steam	barter-group-caption-supplier	0xa86b23	0x1416cef48	cstring	soap body part
+steam	barter-group-caption-supplier	0xa86b3d	0x1416158e4	cstring	horn
+steam	barter-group-caption-supplier	0xa86b57	0x1416158dc	cstring	pearl
+steam	barter-group-caption-supplier	0xa86b71	0x1416cef38	cstring	yarn body part
+steam	barter-group-caption-supplier	0xa86b89	0x1416cefa8	cstring	strand body part
+steam	barter-group-caption-supplier	0xa86b92	0x141681050	cstring	body part
+steam	barter-group-caption-supplier	0xa86bbb	0x1416cefa0	cstring	Rotten 
+steam	barter-group-caption-supplier	0xa86d22	0x14167f0c0	cstring	remains
+steam	barter-group-caption-supplier	0xa86d81	0x1416cef94	cstring	seeds
+steam	barter-group-caption-supplier	0xa86df2	0x1416cef88	cstring	withered 
+steam	barter-group-caption-supplier	0xa86e66	0x1416ceee0	cstring	leaves and fruit
+steam	barter-group-caption-supplier	0xa86e77	0x1416ceed0	cstring	leaf or fruit
+steam	barter-group-caption-supplier	0xa86eaa	0x1416cef88	cstring	withered 
+steam	barter-group-caption-supplier	0xa86efd	0x141614d54	cstring	plant
+steam	barter-group-caption-supplier	0xa86f16	0x1415e9298	cstring	s
+steam	barter-group-caption-supplier	0xa86f3c	0x1416cec68	cstring	rotten 
+steam	barter-group-caption-supplier	0xa86f54	0x1416ceec8	cstring	raw 
+steam	barter-group-caption-supplier	0xa870d5	0x1415e90d8	cstring	, 
+steam	barter-group-caption-supplier	0xa870eb	0x1415e90d8	cstring	, 
+steam	barter-group-caption-supplier	0xa87104	0x1416a11f0	cstring	fish
+steam	barter-group-caption-supplier	0xa8712a	0x1416cec68	cstring	rotten 
+steam	barter-group-caption-supplier	0xa87251	0x1415e873c	cstring	 
+steam	barter-group-caption-supplier	0xa87266	0x1416ceec4	cstring	egg
+steam	barter-group-caption-supplier	0xa8728c	0x1416cec68	cstring	rotten 
+steam	barter-group-caption-supplier	0xa8738b	0x1416a11f0	cstring	fish
+steam	barter-group-caption-supplier	0xa873a8	0x1416cef2c	cstring	live 
+steam	barter-group-caption-supplier	0xa873e1	0x1416cef18	cstring	small live animal
+steam	barter-group-caption-supplier	0xa873fb	0x1416cef0c	cstring	tame 
+steam	barter-group-caption-supplier	0xa87404	0x1416ceef8	cstring	small tame animal
+steam	barter-group-caption-supplier	0xa8741b	0x1416cee88	cstring	prepared meal
+steam	barter-group-caption-supplier	0xa87435	0x1416cec68	cstring	rotten 
+steam	barter-group-caption-supplier	0xa8744a	0x1416cee78	cstring	preserved 
+steam	barter-group-caption-supplier	0xa8750c	0x1416cee70	cstring	 chops
+steam	barter-group-caption-supplier	0xa8751d	0x1416cee68	cstring	 chop
+steam	barter-group-caption-supplier	0xa87556	0x1416ceebc	cstring	meat
+steam	barter-group-caption-supplier	0xa87570	0x1416ceebc	cstring	meat
+steam	barter-group-caption-supplier	0xa87602	0x1416c1ecc	cstring	weapon
+steam	barter-group-caption-supplier	0xa8763b	0x1415e873c	cstring	 
+steam	barter-group-caption-supplier	0xa87767	0x1416ceea8	cstring	suits of 
+steam	barter-group-caption-supplier	0xa87776	0x1416c1ec4	cstring	armor
+steam	barter-group-caption-supplier	0xa877dc	0x1415e873c	cstring	 
+steam	barter-group-caption-supplier	0xa87886	0x1416ceeb4	cstring	chain 
+steam	barter-group-caption-supplier	0xa87995	0x14163a34c	cstring	right 
+steam	barter-group-caption-supplier	0xa879b5	0x14163a324	cstring	left 
+steam	barter-group-caption-supplier	0xa879fe	0x1416ceeb4	cstring	chain 
+steam	barter-group-caption-supplier	0xa87a5f	0x1415e873c	cstring	 
+steam	barter-group-caption-supplier	0xa87a73	0x1416cee98	cstring	handwear
+steam	barter-group-caption-supplier	0xa87b17	0x1416c1d74	cstring	shield
+steam	barter-group-caption-supplier	0xa87b36	0x1416cee10	cstring	/buckler
+steam	barter-group-caption-supplier	0xa87b4a	0x1416cee10	cstring	/buckler
+steam	barter-group-caption-supplier	0xa87c87	0x1415e873c	cstring	 
+steam	barter-group-caption-supplier	0xa87cb7	0x1416cee00	cstring	footwear
+steam	barter-group-caption-supplier	0xa87da8	0x1416cedf0	cstring	headwear
+steam	barter-group-caption-supplier	0xa87dec	0x1415e873c	cstring	 
+steam	barter-group-caption-supplier	0xa87ea8	0x1416cede8	cstring	legwear
+steam	barter-group-caption-supplier	0xa87f2c	0x1415e873c	cstring	 
+steam	barter-group-caption-supplier	0xa88046	0x1415fcfe0	cstring	item
+steam	barter-group-caption-supplier	0xa88077	0x14161bdcc	cstring	 [
+steam	barter-group-caption-supplier	0xa88097	0x1415fd690	cstring	]
+classic	barter-renderer-and-talkline-producer	0x26ce65	0x55555556	inline	VUUU
+classic	barter-renderer-and-talkline-producer	0x26d2b1	0x141616080	cstring	 (Owes you 
+classic	barter-renderer-and-talkline-producer	0x26d304	0x1416102d8	cstring	)
+classic	barter-renderer-and-talkline-producer	0x26d368	0x141616090	cstring	 (You owe 
+classic	barter-renderer-and-talkline-producer	0x26d3bb	0x1416102d8	cstring	)
+classic	barter-renderer-and-talkline-producer	0x26d4ab	0x1416160a0	fixed16	Trade how many? 
+classic	barter-renderer-and-talkline-producer	0x26d4b5	0x1416160b0	fixed2	(0
+classic	barter-renderer-and-talkline-producer	0x26d4c0	0x1416160b2	fixed1	-
+classic	barter-renderer-and-talkline-producer	0x26d59a	0x1416102d8	cstring	)
+classic	barter-renderer-and-talkline-producer	0x26d6cb	0x1416160b8	fixed16	Ask for how much
+classic	barter-renderer-and-talkline-producer	0x26d6d5	0x1416160c8	fixed4	? (0
+classic	barter-renderer-and-talkline-producer	0x26d6de	0x1416160cc	fixed1	-
+classic	barter-renderer-and-talkline-producer	0x26d795	0x1416102d8	cstring	)
+classic	barter-renderer-and-talkline-producer	0x26d892	0x141616290	cstring	Offer how much? (0-
+classic	barter-renderer-and-talkline-producer	0x26d8b4	0x1416102d8	cstring	)
+classic	barter-renderer-and-talkline-producer	0x26d958	0x1416162a8	cstring	(Select an item to demand)
+classic	barter-renderer-and-talkline-producer	0x26d9c7	0x1415e46fc	cstring	""""
+classic	barter-renderer-and-talkline-producer	0x26da10	0x1416162c8	cstring	What did you have in mind?
+classic	barter-renderer-and-talkline-producer	0x26da1c	0x1416162e8	cstring	An honored visitor!  What would you like?
+classic	barter-renderer-and-talkline-producer	0x26da23	0x1416161f0	cstring	Greetings.  Let's trade.
+classic	barter-renderer-and-talkline-producer	0x26da39	0x141616210	cstring	I cannot take so much -- and at such cost!
+classic	barter-renderer-and-talkline-producer	0x26da45	0x141616240	cstring	I wish I could take so much, but my animals...
+classic	barter-renderer-and-talkline-producer	0x26da51	0x141616270	cstring	I won't trade at a loss.
+classic	barter-renderer-and-talkline-producer	0x26da5d	0x1416167d0	cstring	How kind!  Thank you so much.
+classic	barter-renderer-and-talkline-producer	0x26da69	0x141616820	cstring	Ah, wonderful.  Thank you for your business.
+classic	barter-renderer-and-talkline-producer	0x26da70	0x1416167f0	cstring	That seems fair.  You have yourself a deal.
+classic	barter-renderer-and-talkline-producer	0x26da83	0x141616680	cstring	Yes, and trade we will!  Simply tell me what interests you and what you're prepared to offer in exchange.
+classic	barter-renderer-and-talkline-producer	0x26da8a	0x141616850	cstring	I'm confused.  Did you want something?
+classic	barter-renderer-and-talkline-producer	0x26da9d	0x1416166f0	cstring	These _are_ fine items, aren't they?  Now, what do offer for them?
+classic	barter-renderer-and-talkline-producer	0x26daa6	0x141616738	cstring	Are these gifts?  Do you wish to trade?
+classic	barter-renderer-and-talkline-producer	0x26daaf	0x141616760	cstring	You truly despise life, don't you?  I am beside myself with grief.  Perhaps we will show you how they suffered.
+classic	barter-renderer-and-talkline-producer	0x26dab8	0x141616920	cstring	Once a beautiful tree, and now?  It is a rude bauble, fit only for your kind.
+classic	barter-renderer-and-talkline-producer	0x26dac1	0x141616970	cstring	I see your low race still revels in death.  That poor, gentle creature...
+classic	barter-renderer-and-talkline-producer	0x26daca	0x1416169c0	cstring	If it were in a cage of some kind...  As it stands, I can't accept something that wriggles and writhes so.
+classic	barter-renderer-and-talkline-producer	0x26dad3	0x141616a30	cstring	I simply cannot afford this trade.
+classic	barter-renderer-and-talkline-producer	0x26dadc	0x141616878	cstring	Perhaps if you throw in some more goods I can make an offer.
+classic	barter-renderer-and-talkline-producer	0x26dae5	0x1416168b8	cstring	I can't possibly accept, but how about this?  A true bargain.
+classic	barter-renderer-and-talkline-producer	0x26daf8	0x1415e46fc	cstring	""""
+classic	barter-renderer-and-talkline-producer	0x26df19	0x1415e77d0	cstring	...
+classic	barter-renderer-and-talkline-producer	0x26df5d	0x1415e783c	cstring	_
+classic	barter-renderer-and-talkline-producer	0x26e85f	0x1416168f8	cstring	Contains 
+classic	barter-renderer-and-talkline-producer	0x26e87d	0x1415f2204	cstring	 item
+classic	barter-renderer-and-talkline-producer	0x26e894	0x1415e4220	cstring	s
+classic	barter-renderer-and-talkline-producer	0x26e8fb	0x1415f90d0	cstring	Weight: 
+classic	barter-renderer-and-talkline-producer	0x26ed62	0x1415e3c40	fixed4	You
+classic	barter-renderer-and-talkline-producer	0x26ed6f	0x1415e3c42	fixed1	u
+classic	barter-renderer-and-talkline-producer	0x26ee14	0x141616908	fixed16	You are asking f
+classic	barter-renderer-and-talkline-producer	0x26ee1e	0x141616918	fixed2	or
+classic	barter-renderer-and-talkline-producer	0x26ee29	0x14161691a	fixed1	 
+classic	barter-renderer-and-talkline-producer	0x26eed2	0x141616510	cstring	You are offering 
+classic	barter-renderer-and-talkline-producer	0x26ef63	0x141616528	cstring	Cannot trade currency
+classic	barter-renderer-and-talkline-producer	0x26f039	0x6c6c61206b72614d	inline	Mark all
+classic	barter-renderer-and-talkline-producer	0x26f136	0x141616550	fixed8	Unmark a
+classic	barter-renderer-and-talkline-producer	0x26f143	0x141616558	fixed2	ll
+classic	barter-renderer-and-talkline-producer	0x26f25d	0x6c6c61206b72614d	inline	Mark all
+classic	barter-renderer-and-talkline-producer	0x26f32d	0x141616550	fixed8	Unmark a
+classic	barter-renderer-and-talkline-producer	0x26f33a	0x141616558	fixed2	ll
+classic	barter-renderer-and-talkline-producer	0x26f4f7	0x1416164e8	fixed4	Dema
+classic	barter-renderer-and-talkline-producer	0x26f500	0x1416164ec	fixed2	nd
+classic	barter-renderer-and-talkline-producer	0x26f541	0x1415f2020	cstring	Trade
+classic	barter-renderer-and-talkline-producer	0x26f62f	0x1415f2020	cstring	Trade
+classic	barter-renderer-and-talkline-producer	0x26f655	0x1416164e8	cstring	Demand
+classic	barter-renderer-and-talkline-producer	0x26f684	0x1416164f0	cstring	Give
+classic	barter-renderer-and-talkline-producer	0x26f753	0x776f6853	inline	Show
+classic	barter-renderer-and-talkline-producer	0x26f88f	0x1416164f8	fixed16	Ask for currency
+classic	barter-renderer-and-talkline-producer	0x26f953	0x1416165e8	fixed8	Offer cu
+classic	barter-renderer-and-talkline-producer	0x26f960	0x1416165f0	fixed4	rren
+classic	barter-renderer-and-talkline-producer	0x26f96c	0x1416165f4	fixed2	cy
+classic	barter-input-and-refusal-producer	0x26fb9c	0x55555556	inline	VUUU
+classic	barter-input-and-refusal-producer	0x271801	0x1415fe430	cstring	: 
+classic	barter-input-and-refusal-producer	0x271f37	0x1415fe430	cstring	: 
+classic	barter-input-and-refusal-producer	0x271f6e	0x1416165f8	cstring	 is a personal treasure, and I will not part with it.
+classic	barter-input-and-refusal-producer	0x272020	0x1415fe430	cstring	: 
+classic	barter-input-and-refusal-producer	0x272057	0x141616630	cstring	 is a family heirloom, and I will not part with it.
+classic	barter-input-and-refusal-producer	0x2721b4	0x1415fe430	cstring	: 
+classic	barter-input-and-refusal-producer	0x2721eb	0x141616668	cstring	 is a treasure of 
+classic	barter-input-and-refusal-producer	0x272212	0x141616560	cstring	, and we will not part with it.
+classic	barter-input-and-refusal-producer	0x274004	0x232a	inline	*#
+classic	barter-transaction-reward-producer	0x274cbe	0x141616580	fixed8	You rece
+classic	barter-transaction-reward-producer	0x274ccb	0x141616588	fixed4	ive 
+classic	barter-transaction-reward-producer	0x274d41	0x1415e40c4	cstring	, 
+classic	barter-transaction-reward-producer	0x274d5f	0x1415e40bc	cstring	 and 
+classic	barter-transaction-reward-producer	0x274d7b	0x141616590	cstring	 to conclude the transaction.
+classic	barter-transfer-and-treasure-return-producer	0x275823	0x1415fe430	cstring	: 
+classic	barter-transfer-and-treasure-return-producer	0x2758cc	0x1415f7ff8	cstring	  
+classic	barter-transfer-and-treasure-return-producer	0x2758e2	0x1416165b0	cstring	Thank you for returning this primordial remnant to 
+classic	barter-transfer-and-treasure-return-producer	0x27590a	0x1415e3574	cstring	.
+classic	barter-transfer-and-treasure-return-producer	0x275a68	0x1415fe430	cstring	: 
+classic	barter-transfer-and-treasure-return-producer	0x275c00	0x1415f7ff8	cstring	  
+classic	barter-transfer-and-treasure-return-producer	0x275c10	0x141616c58	cstring	Thank you for returning my treasure.
+classic	barter-transfer-and-treasure-return-producer	0x275c62	0x1415f7ff8	cstring	  
+classic	barter-transfer-and-treasure-return-producer	0x275c72	0x141616c80	cstring	Thank you for returning my family's treasure.
+classic	barter-transfer-and-treasure-return-producer	0x275d2c	0x1415f7ff8	cstring	  
+classic	barter-transfer-and-treasure-return-producer	0x275d42	0x141616cb0	cstring	Thank you for returning this treasure to 
+classic	barter-transfer-and-treasure-return-producer	0x275d65	0x1415e3574	cstring	.
+classic	barter-transfer-and-treasure-return-producer	0x275f08	0x1415e3720	cstring	 
+classic	barter-transfer-and-treasure-return-producer	0x276271	0x1415fe430	cstring	: 
+classic	barter-transfer-and-treasure-return-producer	0x276369	0x1415f7ff8	cstring	  
+classic	barter-transfer-and-treasure-return-producer	0x27637f	0x141616ce0	cstring	Thank you for rescuing this treasure!
+classic	barter-transfer-and-treasure-return-producer	0x276b71	0x1415fe430	cstring	: 
+classic	barter-transfer-and-treasure-return-producer	0x276c0a	0x141616bb0	cstring	  It's not the original, but we can hope the writing was copied faithfully.
+classic	barter-transfer-and-treasure-return-producer	0x276d76	0x1415e3720	cstring	 
+classic	artifact-field-producer	0xb914ff	0x1415f8a20	cstring	[LPAGE:ARTIFACT:
+classic	artifact-field-producer	0xb9150e	0x1416da4e8	cstring	[LPAGE:BOOK:
+classic	artifact-field-producer	0xb91533	0x1415f8664	cstring	]
+classic	artifact-field-producer	0xb915f0	0x64656c7469746e55	inline	Untitled
+classic	artifact-field-producer	0xb9164b	0x64656c7469746e55	inline	Untitled
+classic	artifact-field-producer	0xb916c6	0x1415f8b50	cstring	[/LPAGE]
+classic	artifact-field-producer	0xb9171e	0x1416da4d0	cstring	an unknown artifact
+classic	entity-field-producer	0xb8f9aa	0x1416592f8	cstring	[LPAGE:ENT:
+classic	entity-field-producer	0xb8f9ca	0x1415f8664	cstring	]
+classic	entity-field-producer	0xb8fa34	0x1415f8b50	cstring	[/LPAGE]
+classic	entity-field-producer	0xb8fa8c	0x1416da720	cstring	an unknown civilization
+classic	speaker-field-producer	0x132c5e4	0x14177ca08	cstring	the force
+classic	speaker-field-producer	0x132c7e3	0x14177ca18	cstring	the deity
+classic	speaker-field-producer	0x132ca78	0x1415e3e34	cstring	the 
+classic	speaker-field-producer	0x132cd8a	0x1416038f0	fixed4	Mine
+classic	speaker-field-producer	0x132cd93	0x1416038f4	fixed1	r
+classic	speaker-field-producer	0x132cdae	0x14177ca30	fixed8	Woodwork
+classic	speaker-field-producer	0x132cdbb	0x14177ca38	fixed2	er
+classic	speaker-field-producer	0x132cdd7	0x141628000	fixed8	Carpente
+classic	speaker-field-producer	0x132cde4	0x141628008	fixed1	r
+classic	speaker-field-producer	0x132cdff	0x14162800c	fixed4	Bowy
+classic	speaker-field-producer	0x132ce08	0x141628010	fixed2	er
+classic	speaker-field-producer	0x132ce24	0x141603910	fixed8	Woodcutt
+classic	speaker-field-producer	0x132ce31	0x141603918	fixed2	er
+classic	speaker-field-producer	0x132ce4d	0x141627f98	fixed8	Stonewor
+classic	speaker-field-producer	0x132ce5a	0x141627fa0	fixed2	ke
+classic	speaker-field-producer	0x132ce65	0x141627fa2	fixed1	r
+classic	speaker-field-producer	0x132ce80	0x7265766172676e45	inline	Engraver
+classic	speaker-field-producer	0x132ce97	0x1416a0200	cstring	Stonecutter
+classic	speaker-field-producer	0x132ceac	0x1416a01f0	cstring	Stone Carver
+classic	speaker-field-producer	0x132cec1	0x1416a0754	cstring	Mason
+classic	speaker-field-producer	0x132ced6	0x14177ca24	cstring	Ranger
+classic	speaker-field-producer	0x132ceeb	0x1416a0770	cstring	Animal Caretaker
+classic	speaker-field-producer	0x132cf00	0x1416a0760	cstring	Animal Trainer
+classic	speaker-field-producer	0x132cf15	0x1415fb1e8	cstring	Hunter
+classic	speaker-field-producer	0x132cf2a	0x1416a07c0	cstring	Trapper
+classic	speaker-field-producer	0x132cf3f	0x1416a0798	cstring	Animal Dissector
+classic	speaker-field-producer	0x132cf54	0x141628050	cstring	Metalsmith
+classic	speaker-field-producer	0x132cf69	0x1416a06f0	cstring	Furnace Operator
+classic	speaker-field-producer	0x132cf7e	0x1416a0568	cstring	Weaponsmith
+classic	speaker-field-producer	0x132cf93	0x14177cb08	cstring	Armorer
+classic	speaker-field-producer	0x132cfb0	0x1416a0588	fixed8	Blacksmi
+classic	speaker-field-producer	0x132cfbd	0x1416a0590	fixed2	th
+classic	speaker-field-producer	0x132cfd9	0x14177caf8	fixed8	Metalcra
+classic	speaker-field-producer	0x132cfe6	0x14177cb00	fixed4	fter
+classic	speaker-field-producer	0x132cff8	0x141628018	cstring	Jeweler
+classic	speaker-field-producer	0x132d00d	0x1416a0598	cstring	Gem Cutter
+classic	speaker-field-producer	0x132d022	0x1416a05a8	cstring	Gem Setter
+classic	speaker-field-producer	0x132d037	0x14164cbe8	cstring	Craftsman
+classic	speaker-field-producer	0x132d04c	0x1416a05b8	cstring	Woodcrafter
+classic	speaker-field-producer	0x132d061	0x1416a05c8	cstring	Papermaker
+classic	speaker-field-producer	0x132d076	0x1416a05d8	cstring	Bookbinder
+classic	speaker-field-producer	0x132d08b	0x1416a05e4	cstring	Potter
+classic	speaker-field-producer	0x132d0a0	0x1416a0a6c	cstring	Glazer
+classic	speaker-field-producer	0x132d0b5	0x1416a05f0	cstring	Wax Worker
+classic	speaker-field-producer	0x132d0ca	0x14177cb20	cstring	Stonecrafter
+classic	speaker-field-producer	0x132d0df	0x1416a0a48	cstring	Leatherworker
+classic	speaker-field-producer	0x132d0f4	0x1416a0a78	cstring	Bone Carver
+classic	speaker-field-producer	0x132d109	0x1416a0a84	cstring	Weaver
+classic	speaker-field-producer	0x132d11e	0x14164cc80	cstring	Clothier
+classic	speaker-field-producer	0x132d133	0x1416a0620	cstring	Glassmaker
+classic	speaker-field-producer	0x132d148	0x1416a0708	cstring	Strand Extractor
+classic	speaker-field-producer	0x132d15d	0x14177cb10	cstring	Fishery Worker
+classic	speaker-field-producer	0x132d172	0x1416a06e0	cstring	Fisherman
+classic	speaker-field-producer	0x132d187	0x1416a0788	cstring	Fish Dissector
+classic	speaker-field-producer	0x132d19c	0x1416a07b0	cstring	Fish Cleaner
+classic	speaker-field-producer	0x132d1b1	0x141627ef0	cstring	Farmer
+classic	speaker-field-producer	0x132d1c6	0x1416a0958	cstring	Cheesemaker
+classic	speaker-field-producer	0x132d1db	0x1416a0964	cstring	Milker
+classic	speaker-field-producer	0x132d1f0	0x1416a096c	cstring	Gelder
+classic	speaker-field-producer	0x132d205	0x1416a0978	cstring	Shearer
+classic	speaker-field-producer	0x132d21a	0x1416a0980	cstring	Spinner
+classic	speaker-field-producer	0x132d22f	0x141638128	cstring	Cook
+classic	speaker-field-producer	0x132d244	0x1416a0910	cstring	Thresher
+classic	speaker-field-producer	0x132d259	0x1416a0904	cstring	Miller
+classic	speaker-field-producer	0x132d26e	0x141616fc8	cstring	Butcher
+classic	speaker-field-producer	0x132d283	0x141627f64	cstring	Tanner
+classic	speaker-field-producer	0x132d298	0x141627f5c	cstring	Dyer
+classic	speaker-field-producer	0x132d2ad	0x1416a0a58	cstring	Presser
+classic	speaker-field-producer	0x132d2c2	0x1416a0a60	cstring	Beekeeper
+classic	speaker-field-producer	0x132d2d7	0x1416a07c8	cstring	Planter
+classic	speaker-field-producer	0x132d2ec	0x1416a07d0	cstring	Herbalist
+classic	speaker-field-producer	0x132d301	0x1416a0a8c	cstring	Brewer
+classic	speaker-field-producer	0x132d316	0x14177cb40	cstring	Soap Maker
+classic	speaker-field-producer	0x132d32b	0x1416a0728	cstring	Potash Maker
+classic	speaker-field-producer	0x132d340	0x1416a0738	cstring	Lye Maker
+classic	speaker-field-producer	0x132d355	0x1416a0748	cstring	Wood Burner
+classic	speaker-field-producer	0x132d36a	0x14177cb30	cstring	Engineer
+classic	speaker-field-producer	0x132d37f	0x141628028	cstring	Mechanic
+classic	speaker-field-producer	0x132d394	0x1416a0a18	cstring	Siege Engineer
+classic	speaker-field-producer	0x132d3a9	0x1416a0a28	cstring	Siege Operator
+classic	speaker-field-producer	0x132d3be	0x1416a0a38	cstring	Pump Operator
+classic	speaker-field-producer	0x132d3d3	0x14177cb60	cstring	Clerk
+classic	speaker-field-producer	0x132d3e8	0x14177cb50	cstring	Administrator
+classic	speaker-field-producer	0x132d3fd	0x14177caa0	cstring	Trader
+classic	speaker-field-producer	0x132d412	0x1416a0484	cstring	Poet
+classic	speaker-field-producer	0x132d427	0x14177ca98	cstring	Bard
+classic	speaker-field-producer	0x132d43c	0x1416a04a8	cstring	Dancer
+classic	speaker-field-producer	0x132d451	0x1415fae10	cstring	Performer
+classic	speaker-field-producer	0x132d466	0x1415fadfc	cstring	Scribe
+classic	speaker-field-producer	0x132d47b	0x141627a38	cstring	Tavern Keeper
+classic	speaker-field-producer	0x132d490	0x14177cab4	cstring	Sage
+classic	speaker-field-producer	0x132d4a5	0x1415fae08	cstring	Scholar
+classic	speaker-field-producer	0x132d4ba	0x14177caa8	cstring	Philosopher
+classic	speaker-field-producer	0x132d4cf	0x1416a0548	cstring	Mathematician
+classic	speaker-field-producer	0x132d4e4	0x14177cad0	cstring	Historian
+classic	speaker-field-producer	0x132d4f9	0x1416a0558	cstring	Astronomer
+classic	speaker-field-producer	0x132d50e	0x14177cac0	cstring	Naturalist
+classic	speaker-field-producer	0x132d523	0x1416a0a98	cstring	Chemist
+classic	speaker-field-producer	0x132d538	0x1416a0aa0	cstring	Geographer
+classic	speaker-field-producer	0x132d54d	0x1415fadd8	cstring	Doctor
+classic	speaker-field-producer	0x132d562	0x1415fadc8	cstring	Diagnostician
+classic	speaker-field-producer	0x132d577	0x141627938	cstring	Bone Doctor
+classic	speaker-field-producer	0x132d58c	0x1416a09b0	cstring	Suturer
+classic	speaker-field-producer	0x132d5a1	0x1415fadc0	cstring	Surgeon
+classic	speaker-field-producer	0x132d5b6	0x14177cae8	cstring	Merchant
+classic	speaker-field-producer	0x132d5cb	0x14177cadc	cstring	Drunk
+classic	speaker-field-producer	0x132d5e0	0x141627948	cstring	Monster Slayer
+classic	speaker-field-producer	0x132d5f5	0x14177cc10	cstring	Scout
+classic	speaker-field-producer	0x132d60a	0x14177cc00	cstring	Beast Hunter
+classic	speaker-field-producer	0x132d61f	0x141699490	cstring	Snatcher
+classic	speaker-field-producer	0x132d634	0x1415fadf0	cstring	Mercenary
+classic	speaker-field-producer	0x132d649	0x1416a0b30	cstring	Hammerman
+classic	speaker-field-producer	0x132d65e	0x14177cd20	cstring	Hammer Lord
+classic	speaker-field-producer	0x132d673	0x1416a09c8	cstring	Spearman
+classic	speaker-field-producer	0x132d688	0x14177cd70	cstring	Spearmaster
+classic	speaker-field-producer	0x132d69d	0x1416a09d8	cstring	Crossbowman
+classic	speaker-field-producer	0x132d6b2	0x14177ce50	cstring	Elite Crossbowman
+classic	speaker-field-producer	0x132d6c7	0x1416a0ae0	cstring	Wrestler
+classic	speaker-field-producer	0x132d6dc	0x14177cea8	cstring	Elite Wrestler
+classic	speaker-field-producer	0x132d6f1	0x1416a0b10	cstring	Axeman
+classic	speaker-field-producer	0x132d706	0x14177ceb8	cstring	Axe Lord
+classic	speaker-field-producer	0x132d71b	0x1416a0b18	cstring	Swordsman
+classic	speaker-field-producer	0x132d730	0x14177ce18	cstring	Swordmaster
+classic	speaker-field-producer	0x132d745	0x1416a0b28	cstring	Maceman
+classic	speaker-field-producer	0x132d75a	0x14177ce28	cstring	Mace Lord
+classic	speaker-field-producer	0x132d76f	0x1416a09e8	cstring	Pikeman
+classic	speaker-field-producer	0x132d784	0x14177cf48	cstring	Pikemaster
+classic	speaker-field-producer	0x132d799	0x1416a09f0	cstring	Bowman
+classic	speaker-field-producer	0x132d7ae	0x14177cf80	cstring	Elite Bowman
+classic	speaker-field-producer	0x132d7c3	0x1416a0920	cstring	Blowgunner
+classic	speaker-field-producer	0x132d7d8	0x14177cf98	cstring	Master Blowgunner
+classic	speaker-field-producer	0x132d7ed	0x1416a094c	cstring	Lasher
+classic	speaker-field-producer	0x132d802	0x14177ced8	cstring	Master Lasher
+classic	speaker-field-producer	0x132d817	0x14177cc20	cstring	Recruit
+classic	speaker-field-producer	0x132d82c	0x1415f2160	cstring	Hunting
+classic	speaker-field-producer	0x132d841	0x1415fe6cc	cstring	War
+classic	speaker-field-producer	0x132d856	0x14177cef8	cstring	Master Thief
+classic	speaker-field-producer	0x132d86b	0x1415fb19c	cstring	Thief
+classic	speaker-field-producer	0x132d880	0x1415e7948	cstring	Criminal
+classic	speaker-field-producer	0x132d895	0x14177cc18	cstring	Peddler
+classic	speaker-field-producer	0x132d8aa	0x14177cc30	cstring	Prophet
+classic	speaker-field-producer	0x132d8bf	0x14177cc28	cstring	Pilgrim
+classic	speaker-field-producer	0x132d8d4	0x14177cc44	cstring	Monk
+classic	speaker-field-producer	0x132d8e9	0x14177cc38	cstring	Messenger
+classic	speaker-field-producer	0x132d987	0x1415faf04	cstring	Child
+classic	speaker-field-producer	0x132d9f0	0x14177cb6c	cstring	Baby
+classic	speaker-field-producer	0x132da18	0x14177c940	fixed8	Peasant
+classic	speaker-field-producer	0x132da22	0x14177c944	fixed2	an
+classic	speaker-field-producer	0x132da2d	0x14177c946	fixed1	t
+classic	speaker-field-producer	0x132dbe6	0x14177ca4c	cstring	 Slave
+classic	speaker-field-producer	0x132dc20	0x1415fbcc8	cstring	Slave
+classic	speaker-field-producer	0x132dc76	0x1415fbcc8	fixed4	Slav
+classic	speaker-field-producer	0x132dc7e	0x1415fbccc	fixed1	e
+classic	speaker-field-producer	0x132dd59	0x14177ca40	cstring	 Prisoner
+classic	speaker-field-producer	0x132dd8d	0x72656e6f73697250	inline	Prisoner
+classic	speaker-field-producer	0x132dddc	0x72656e6f73697250	inline	Prisoner
+classic	speaker-field-producer	0x132de64	0x1415e3e34	cstring	the 
+classic	speaker-field-producer	0x132de95	0x1415e3720	cstring	 
+classic	speaker-field-producer	0x132defd	0x1416b9d2c	cstring	Ghost
+classic	speaker-field-producer	0x132df0c	0x141625190	cstring	Ghostly 
+classic	speaker-field-producer	0x132df59	0x1415e3720	cstring	 
+classic	speaker-field-producer	0x132df7c	0x14177cb68	cstring	One
+classic	merchant-heading-producer	0x132bdcd	0x1415e40c4	cstring	, 
+classic	merchant-heading-producer	0x132bec8	0x1415e46fc	cstring	""""
+classic	merchant-heading-producer	0x132bf1d	0x1415e46fc	cstring	""""
+classic	merchant-heading-producer	0x132bf32	0x1415e40c4	cstring	, 
+classic	merchant-heading-producer	0x132bf71	0x1415e40c4	cstring	, 
+classic	merchant-heading-producer	0x132bfcd	0x1415e40c4	cstring	, 
+classic	merchant-heading-producer	0x132c028	0x141610298	cstring	 (
+classic	merchant-heading-producer	0x132c064	0x14177ca90	cstring	Trained
+classic	merchant-heading-producer	0x132c070	0x14177ca80	cstring	-Trained-
+classic	merchant-heading-producer	0x132c07c	0x14177c9e0	cstring	+Trained+
+classic	merchant-heading-producer	0x132c088	0x14177c9d0	cstring	*Trained*
+classic	merchant-heading-producer	0x132c0bc	0x14177ca90	cstring	Trained
+classic	merchant-heading-producer	0x132c10c	0x14177ca90	cstring	Trained
+classic	merchant-heading-producer	0x132c138	0x14177c9fc	cstring	Tame
+classic	merchant-heading-producer	0x132c141	0x14177c9f0	cstring	Semi-Wild
+classic	merchant-heading-producer	0x132c159	0x1416102d8	cstring	)
+classic	barter-item-caption-supplier	0xc62734	0x1416e8e38	cstring	 (copy)
+classic	barter-group-caption-supplier	0xa7fda7	0x14164517c	fixed4	larg
+classic	barter-group-caption-supplier	0xa7fdb0	0x141645180	fixed1	e
+classic	barter-group-caption-supplier	0xa7fdb9	0x141681108	fixed4	smal
+classic	barter-group-caption-supplier	0xa7fdc2	0x14168110c	fixed1	l
+classic	barter-group-caption-supplier	0xa7fe0c	0x1416c6848	cstring	grown 
+classic	barter-group-caption-supplier	0xa7fee6	0x141677d30	cstring	logs
+classic	barter-group-caption-supplier	0xa7ff58	0x1416ca230	cstring	branch
+classic	barter-group-caption-supplier	0xa7ff7d	0x1416ca2d0	cstring	es
+classic	barter-group-caption-supplier	0xa7ff9d	0x1415fc0c8	cstring	rough gems
+classic	barter-group-caption-supplier	0xa7ffb6	0x1416ca2c0	cstring	raw green glass
+classic	barter-group-caption-supplier	0xa7ffcf	0x1416ca2b0	cstring	raw clear glass
+classic	barter-group-caption-supplier	0xa7ffe8	0x1416ca298	cstring	raw crystal glass
+classic	barter-group-caption-supplier	0xa8000a	0x1415fc0c8	cstring	rough gems
+classic	barter-group-caption-supplier	0xa80028	0x1416c70a4	cstring	rough 
+classic	barter-group-caption-supplier	0xa800c7	0x141680d5c	cstring	small 
+classic	barter-group-caption-supplier	0xa800de	0x141680d5c	cstring	small 
+classic	barter-group-caption-supplier	0xa801be	0x1416ca1fc	cstring	rock
+classic	barter-group-caption-supplier	0xa801de	0x1416ca1f0	cstring	small rock
+classic	barter-group-caption-supplier	0xa80237	0x1416ca1e0	cstring	stone boulders
+classic	barter-group-caption-supplier	0xa8025d	0x1416ca1d0	cstring	boulders
+classic	barter-group-caption-supplier	0xa8033a	0x1416ca188	cstring	bars
+classic	barter-group-caption-supplier	0xa80353	0x1416ca210	cstring	charcoal
+classic	barter-group-caption-supplier	0xa80369	0x1416ca204	cstring	coke
+classic	barter-group-caption-supplier	0xa80372	0x1416ca190	cstring	refined coal
+classic	barter-group-caption-supplier	0xa8038b	0x1416396f8	cstring	metal
+classic	barter-group-caption-supplier	0xa8039a	0x1416ca21c	cstring	 bars
+classic	barter-group-caption-supplier	0xa8044a	0x1416ca228	cstring	 wafers
+classic	barter-group-caption-supplier	0xa80538	0x1415fc088	cstring	cut gems
+classic	barter-group-caption-supplier	0xa80551	0x1416ca170	cstring	cut green glass gems
+classic	barter-group-caption-supplier	0xa8056a	0x1416ca158	cstring	cut clear glass gems
+classic	barter-group-caption-supplier	0xa80580	0x1416ca1b8	cstring	cut crystal glass gems
+classic	barter-group-caption-supplier	0xa8059b	0x1416ca1b0	cstring	gems
+classic	barter-group-caption-supplier	0xa806d8	0x1416ca1a8	cstring	blocks
+classic	barter-group-caption-supplier	0xa806ef	0x1416ca1a8	cstring	blocks
+classic	barter-group-caption-supplier	0xa8079d	0x1416ca13c	cstring	door
+classic	barter-group-caption-supplier	0xa807a4	0x1416ca1a0	cstring	portal
+classic	barter-group-caption-supplier	0xa8081a	0x1416ca130	cstring	floodgate
+classic	barter-group-caption-supplier	0xa8088a	0x1416ca120	cstring	hatch cover
+classic	barter-group-caption-supplier	0xa808fa	0x1416ca118	cstring	grate
+classic	barter-group-caption-supplier	0xa8096a	0x14162aa9c	cstring	table
+classic	barter-group-caption-supplier	0xa809da	0x141637a60	cstring	cabinet
+classic	barter-group-caption-supplier	0xa80a4a	0x141637a50	cstring	weapon rack
+classic	barter-group-caption-supplier	0xa80aba	0x141637a40	cstring	armor stand
+classic	barter-group-caption-supplier	0xa80b2a	0x1416ca154	cstring	bin
+classic	barter-group-caption-supplier	0xa80bd1	0x1416ca150	cstring	box
+classic	barter-group-caption-supplier	0xa80bea	0x1416ca14c	cstring	e
+classic	barter-group-caption-supplier	0xa80c13	0x1416ca144	cstring	coffer
+classic	barter-group-caption-supplier	0xa80c22	0x141637a68	cstring	chest
+classic	barter-group-caption-supplier	0xa80c43	0x1416caa88	cstring	boxe
+classic	barter-group-caption-supplier	0xa80c58	0x1415e4220	cstring	s
+classic	barter-group-caption-supplier	0xa80c6c	0x1416ca150	cstring	box
+classic	barter-group-caption-supplier	0xa80ce4	0x1416caa84	cstring	bag
+classic	barter-group-caption-supplier	0xa80d7f	0x1416caa78	cstring	backpack
+classic	barter-group-caption-supplier	0xa80e3c	0x1416caaa8	cstring	cast
+classic	barter-group-caption-supplier	0xa80e48	0x1416caa68	cstring	limb/body 
+classic	barter-group-caption-supplier	0xa80e57	0x1416caaa8	cstring	cast
+classic	barter-group-caption-supplier	0xa80eb7	0x1416caa68	cstring	limb/body 
+classic	barter-group-caption-supplier	0xa80ec6	0x1416caaa8	cstring	cast
+classic	barter-group-caption-supplier	0xa80f36	0x1416caaa0	cstring	splint
+classic	barter-group-caption-supplier	0xa80fa0	0x1416caa98	cstring	crutch
+classic	barter-group-caption-supplier	0xa8103b	0x1416caa90	cstring	quiver
+classic	barter-group-caption-supplier	0xa810ba	0x1416caa24	cstring	casket
+classic	barter-group-caption-supplier	0xa81105	0x1416caa18	cstring	sarcophag
+classic	barter-group-caption-supplier	0xa81114	0x14163d170	cstring	us
+classic	barter-group-caption-supplier	0xa8111b	0x1416bafec	cstring	i
+classic	barter-group-caption-supplier	0xa81137	0x14162a9ec	cstring	coffin
+classic	barter-group-caption-supplier	0xa81254	0x1416caa04	cstring	chain
+classic	barter-group-caption-supplier	0xa81268	0x1416caa0c	cstring	rope
+classic	barter-group-caption-supplier	0xa813a8	0x1416caa4c	cstring	vial
+classic	barter-group-caption-supplier	0xa813b9	0x1416caa44	cstring	flask
+classic	barter-group-caption-supplier	0xa813d0	0x1416caa58	cstring	waterskin
+classic	barter-group-caption-supplier	0xa81479	0x1416caa30	cstring	musical instrument
+classic	barter-group-caption-supplier	0xa8155b	0x1416ca9d0	cstring	unglazed 
+classic	barter-group-caption-supplier	0xa816c3	0x1415e3720	cstring	 
+classic	barter-group-caption-supplier	0xa816dd	0x1416bcee4	cstring	tool
+classic	barter-group-caption-supplier	0xa8177d	0x1416bcefc	cstring	toy
+classic	barter-group-caption-supplier	0xa8182d	0x1416ca9cc	cstring	cup
+classic	barter-group-caption-supplier	0xa81861	0x1416ca9c8	cstring	mug
+classic	barter-group-caption-supplier	0xa8187b	0x1416ca9c0	cstring	goblet
+classic	barter-group-caption-supplier	0xa818eb	0x1416ca9fc	cstring	window
+classic	barter-group-caption-supplier	0xa8199a	0x1416ca9e4	cstring	cage
+classic	barter-group-caption-supplier	0xa819a1	0x1416ca9f0	cstring	terrarium
+classic	barter-group-caption-supplier	0xa81a15	0x1416ca9dc	cstring	barrel
+classic	barter-group-caption-supplier	0xa81a85	0x1416ca98c	cstring	bucket
+classic	barter-group-caption-supplier	0xa81af5	0x1416ca980	cstring	animal trap
+classic	barter-group-caption-supplier	0xa81b71	0x14162aaa4	cstring	chair
+classic	barter-group-caption-supplier	0xa81b8b	0x1416ca974	cstring	throne
+classic	barter-group-caption-supplier	0xa81c41	0x1416ca970	cstring	web
+classic	barter-group-caption-supplier	0xa81c8c	0x1416ca9b8	cstring	strands
+classic	barter-group-caption-supplier	0xa81cbf	0x1416106b8	cstring	yarn
+classic	barter-group-caption-supplier	0xa81cd0	0x1416106a0	cstring	thread
+classic	barter-group-caption-supplier	0xa81d45	0x1416106a8	cstring	cloth
+classic	barter-group-caption-supplier	0xa81e4f	0x1416ca9ac	cstring	sheet
+classic	barter-group-caption-supplier	0xa81e72	0x1416ca9a0	cstring	tanned hide
+classic	barter-group-caption-supplier	0xa81ed5	0x1416ca994	cstring	totem
+classic	barter-group-caption-supplier	0xa81f3e	0x1416ca940	cstring	-bound 
+classic	barter-group-caption-supplier	0xa81f5a	0x1416ca92c	cstring	codex
+classic	barter-group-caption-supplier	0xa81f61	0x1416ca938	cstring	codices
+classic	barter-group-caption-supplier	0xa81fe0	0x1416ca920	cstring	figurine
+classic	barter-group-caption-supplier	0xa81ffe	0x1416ca968	cstring	rotten 
+classic	barter-group-caption-supplier	0xa82023	0x14164aac0	cstring	drink
+classic	barter-group-caption-supplier	0xa82066	0x1416ca968	cstring	rotten 
+classic	barter-group-caption-supplier	0xa8224b	0x1416ca960	cstring	filthy 
+classic	barter-group-caption-supplier	0xa82264	0x1416ca958	cstring	sticky 
+classic	barter-group-caption-supplier	0xa82283	0x1416ca948	cstring	vomitous 
+classic	barter-group-caption-supplier	0xa8229f	0x1416ca8ec	cstring	slimy 
+classic	barter-group-caption-supplier	0xa822b8	0x1416ab578	cstring	stagnant 
+classic	barter-group-caption-supplier	0xa822d4	0x1416ca8e4	cstring	dirty 
+classic	barter-group-caption-supplier	0xa822f0	0x1416ca8dc	cstring	gooey 
+classic	barter-group-caption-supplier	0xa82309	0x1416ca8d0	cstring	purulent 
+classic	barter-group-caption-supplier	0xa82322	0x1416ca910	cstring	ichorous 
+classic	barter-group-caption-supplier	0xa8233b	0x1416ca908	cstring	bloody 
+classic	barter-group-caption-supplier	0xa8237a	0x1416a1240	cstring	liquid
+classic	barter-group-caption-supplier	0xa824bc	0x1416ca8fc	cstring	 paste
+classic	barter-group-caption-supplier	0xa82511	0x1416ca8f4	cstring	glob
+classic	barter-group-caption-supplier	0xa82712	0x1416ca880	cstring	 laced with 
+classic	barter-group-caption-supplier	0xa82786	0x1415e40c4	cstring	, 
+classic	barter-group-caption-supplier	0xa82796	0x1415e40bc	cstring	 and 
+classic	barter-group-caption-supplier	0xa827fb	0x1416ca968	cstring	rotten 
+classic	barter-group-caption-supplier	0xa82898	0x1416ca870	cstring	 dye mix
+classic	barter-group-caption-supplier	0xa828bc	0x1416ca864	cstring	powder
+classic	barter-group-caption-supplier	0xa82916	0x1416ca968	cstring	rotten 
+classic	barter-group-caption-supplier	0xa82938	0x1416ca85c	cstring	cheese
+classic	barter-group-caption-supplier	0xa829c0	0x1416ca8c0	cstring	catapult parts
+classic	barter-group-caption-supplier	0xa82a38	0x1416ca8a8	cstring	bolt thrower parts
+classic	barter-group-caption-supplier	0xa82ab0	0x1416ca898	cstring	mechanisms
+classic	barter-group-caption-supplier	0xa82b5f	0x1416ca890	cstring	tube
+classic	barter-group-caption-supplier	0xa82b79	0x1416ca810	cstring	pipe section
+classic	barter-group-caption-supplier	0xa82c17	0x1416ca800	cstring	trap component
+classic	barter-group-caption-supplier	0xa82c48	0x1415e3720	cstring	 
+classic	barter-group-caption-supplier	0xa82d2a	0x1416ca7f0	cstring	ballista parts
+classic	barter-group-caption-supplier	0xa82da2	0x1416ca7e4	cstring	anvil
+classic	barter-group-caption-supplier	0xa82e12	0x1416ca854	cstring	amulet
+classic	barter-group-caption-supplier	0xa82e82	0x1416ca840	cstring	ballista arrow head
+classic	barter-group-caption-supplier	0xa82f29	0x1416ca830	cstring	siege ammo
+classic	barter-group-caption-supplier	0xa83073	0x1416ca820	cstring	ammunition
+classic	barter-group-caption-supplier	0xa830eb	0x1416cae98	cstring	scepter
+classic	barter-group-caption-supplier	0xa8315b	0x1416cae8c	cstring	crown
+classic	barter-group-caption-supplier	0xa831c5	0x1416cae84	cstring	coin
+classic	barter-group-caption-supplier	0xa831e4	0x1416cae78	cstring	perfect 
+classic	barter-group-caption-supplier	0xa831f3	0x1416455a8	cstring	large 
+classic	barter-group-caption-supplier	0xa832db	0x1416caec8	cstring	green glass 
+classic	barter-group-caption-supplier	0xa832f1	0x1416caeb8	cstring	clear glass 
+classic	barter-group-caption-supplier	0xa83307	0x1416caea8	cstring	crystal glass 
+classic	barter-group-caption-supplier	0xa83323	0x1416106fc	cstring	gem
+classic	barter-group-caption-supplier	0xa833db	0x1416caea0	cstring	 gem
+classic	barter-group-caption-supplier	0xa834b6	0x1416cae40	cstring	ring
+classic	barter-group-caption-supplier	0xa83526	0x1416cae38	cstring	earring
+classic	barter-group-caption-supplier	0xa83596	0x1416cae28	cstring	bracelet
+classic	barter-group-caption-supplier	0xa83606	0x14162aab0	cstring	bed
+classic	barter-group-caption-supplier	0xa83676	0x1416cae18	cstring	traction bench
+classic	barter-group-caption-supplier	0xa836e6	0x1416cae6c	cstring	quern
+classic	barter-group-caption-supplier	0xa83756	0x1416cae60	cstring	millstone
+classic	barter-group-caption-supplier	0xa837c6	0x1416cae54	cstring	statue
+classic	barter-group-caption-supplier	0xa838d2	0x1416cae48	cstring	memorial
+classic	barter-group-caption-supplier	0xa838e6	0x1416cad90	cstring	food imports sign
+classic	barter-group-caption-supplier	0xa838fa	0x1416cad78	cstring	clothing imports sign
+classic	barter-group-caption-supplier	0xa8390e	0x1416cad60	cstring	general imports sign
+classic	barter-group-caption-supplier	0xa83922	0x1416cad50	cstring	cloth shop sign
+classic	barter-group-caption-supplier	0xa83936	0x1416cae00	cstring	leather shop sign
+classic	barter-group-caption-supplier	0xa8394a	0x1416cade0	cstring	woven clothing shop sign
+classic	barter-group-caption-supplier	0xa8395e	0x1416cadc0	cstring	leather clothing shop sign
+classic	barter-group-caption-supplier	0xa83972	0x1416cada8	cstring	bone carver's shop sign
+classic	barter-group-caption-supplier	0xa83986	0x1416cacd8	cstring	gem cutter's shop sign
+classic	barter-group-caption-supplier	0xa8399a	0x1416cacc0	cstring	weaponsmith's shop sign
+classic	barter-group-caption-supplier	0xa839ae	0x1416caca8	cstring	bowyer's shop sign
+classic	barter-group-caption-supplier	0xa839c2	0x1416cac90	cstring	blacksmith's shop sign
+classic	barter-group-caption-supplier	0xa839d6	0x1416cad38	cstring	armorsmith's shop sign
+classic	barter-group-caption-supplier	0xa839ea	0x1416cad20	cstring	metal craft shop sign
+classic	barter-group-caption-supplier	0xa839fe	0x1416cad08	cstring	leather goods shop sign
+classic	barter-group-caption-supplier	0xa83a12	0x1416cacf0	cstring	carpenter's shop sign
+classic	barter-group-caption-supplier	0xa83a26	0x1416cac40	cstring	stone furniture shop sign
+classic	barter-group-caption-supplier	0xa83a3a	0x1416cac20	cstring	metal furniture shop sign
+classic	barter-group-caption-supplier	0xa83a4e	0x1416cac10	cstring	tavern sign
+classic	barter-group-caption-supplier	0xa83a62	0x1416cac04	cstring	slab
+classic	barter-group-caption-supplier	0xa83a76	0x1416cac04	cstring	slab
+classic	barter-group-caption-supplier	0xa83a94	0x1416ca968	cstring	rotten 
+classic	barter-group-caption-supplier	0xa83aa9	0x1416cac84	cstring	corpse
+classic	barter-group-caption-supplier	0xa83ac7	0x1416ca968	cstring	rotten 
+classic	barter-group-caption-supplier	0xa83aeb	0x1416106d0	cstring	tooth
+classic	barter-group-caption-supplier	0xa83afc	0x1416cac7c	cstring	teeth
+classic	barter-group-caption-supplier	0xa83b11	0x1416106c8	cstring	bone
+classic	barter-group-caption-supplier	0xa83b29	0x1416106c0	cstring	shell
+classic	barter-group-caption-supplier	0xa83b41	0x1416cac70	cstring	plant part
+classic	barter-group-caption-supplier	0xa83b59	0x1416cac60	cstring	silk body part
+classic	barter-group-caption-supplier	0xa83b71	0x1416cabb8	cstring	leather body part
+classic	barter-group-caption-supplier	0xa83b89	0x1416caba0	cstring	wooden body part
+classic	barter-group-caption-supplier	0xa83ba3	0x1416cab90	cstring	soap body part
+classic	barter-group-caption-supplier	0xa83bbd	0x1416106e8	cstring	horn
+classic	barter-group-caption-supplier	0xa83bd7	0x1416106e0	cstring	pearl
+classic	barter-group-caption-supplier	0xa83bf1	0x1416cab80	cstring	yarn body part
+classic	barter-group-caption-supplier	0xa83c09	0x1416cabf0	cstring	strand body part
+classic	barter-group-caption-supplier	0xa83c12	0x14167bdf0	cstring	body part
+classic	barter-group-caption-supplier	0xa83c3b	0x1416cabe8	cstring	Rotten 
+classic	barter-group-caption-supplier	0xa83da2	0x141679ef8	cstring	remains
+classic	barter-group-caption-supplier	0xa83e01	0x1416cabdc	cstring	seeds
+classic	barter-group-caption-supplier	0xa83e72	0x1416cabd0	cstring	withered 
+classic	barter-group-caption-supplier	0xa83ee6	0x1416cab28	cstring	leaves and fruit
+classic	barter-group-caption-supplier	0xa83ef7	0x1416cab18	cstring	leaf or fruit
+classic	barter-group-caption-supplier	0xa83f2a	0x1416cabd0	cstring	withered 
+classic	barter-group-caption-supplier	0xa83f7d	0x14160fd14	cstring	plant
+classic	barter-group-caption-supplier	0xa83f96	0x1415e4220	cstring	s
+classic	barter-group-caption-supplier	0xa83fbc	0x1416ca968	cstring	rotten 
+classic	barter-group-caption-supplier	0xa83fd4	0x1416cab10	cstring	raw 
+classic	barter-group-caption-supplier	0xa84155	0x1415e40c4	cstring	, 
+classic	barter-group-caption-supplier	0xa8416b	0x1415e40c4	cstring	, 
+classic	barter-group-caption-supplier	0xa84184	0x14169c0e8	cstring	fish
+classic	barter-group-caption-supplier	0xa841aa	0x1416ca968	cstring	rotten 
+classic	barter-group-caption-supplier	0xa842d1	0x1415e3720	cstring	 
+classic	barter-group-caption-supplier	0xa842e6	0x1416cab0c	cstring	egg
+classic	barter-group-caption-supplier	0xa8430c	0x1416ca968	cstring	rotten 
+classic	barter-group-caption-supplier	0xa8440b	0x14169c0e8	cstring	fish
+classic	barter-group-caption-supplier	0xa84428	0x1416cab74	cstring	live 
+classic	barter-group-caption-supplier	0xa84461	0x1416cab60	cstring	small live animal
+classic	barter-group-caption-supplier	0xa8447b	0x1416cab54	cstring	tame 
+classic	barter-group-caption-supplier	0xa84484	0x1416cab40	cstring	small tame animal
+classic	barter-group-caption-supplier	0xa8449b	0x1416caad0	cstring	prepared meal
+classic	barter-group-caption-supplier	0xa844b5	0x1416ca968	cstring	rotten 
+classic	barter-group-caption-supplier	0xa844ca	0x1416caac0	cstring	preserved 
+classic	barter-group-caption-supplier	0xa8458c	0x1416caab8	cstring	 chops
+classic	barter-group-caption-supplier	0xa8459d	0x1416caab0	cstring	 chop
+classic	barter-group-caption-supplier	0xa845d6	0x1416cab04	cstring	meat
+classic	barter-group-caption-supplier	0xa845f0	0x1416cab04	cstring	meat
+classic	barter-group-caption-supplier	0xa84682	0x1416bce90	cstring	weapon
+classic	barter-group-caption-supplier	0xa846bb	0x1415e3720	cstring	 
+classic	barter-group-caption-supplier	0xa847e7	0x1416caaf0	cstring	suits of 
+classic	barter-group-caption-supplier	0xa847f6	0x1416bce88	cstring	armor
+classic	barter-group-caption-supplier	0xa8485c	0x1415e3720	cstring	 
+classic	barter-group-caption-supplier	0xa84906	0x1416caafc	cstring	chain 
+classic	barter-group-caption-supplier	0xa84a15	0x141635604	cstring	right 
+classic	barter-group-caption-supplier	0xa84a35	0x14163560c	cstring	left 
+classic	barter-group-caption-supplier	0xa84a7e	0x1416caafc	cstring	chain 
+classic	barter-group-caption-supplier	0xa84adf	0x1415e3720	cstring	 
+classic	barter-group-caption-supplier	0xa84af3	0x1416caae0	cstring	handwear
+classic	barter-group-caption-supplier	0xa84b97	0x1416bce58	cstring	shield
+classic	barter-group-caption-supplier	0xa84bb6	0x1416cb2a0	cstring	/buckler
+classic	barter-group-caption-supplier	0xa84bca	0x1416cb2a0	cstring	/buckler
+classic	barter-group-caption-supplier	0xa84d07	0x1415e3720	cstring	 
+classic	barter-group-caption-supplier	0xa84d37	0x1416cb290	cstring	footwear
+classic	barter-group-caption-supplier	0xa84e28	0x1416cb280	cstring	headwear
+classic	barter-group-caption-supplier	0xa84e6c	0x1415e3720	cstring	 
+classic	barter-group-caption-supplier	0xa84f28	0x1416cb278	cstring	legwear
+classic	barter-group-caption-supplier	0xa84fac	0x1415e3720	cstring	 
+classic	barter-group-caption-supplier	0xa850c6	0x1415f7fb0	cstring	item
+classic	barter-group-caption-supplier	0xa850f7	0x141616f6c	cstring	 [
+classic	barter-group-caption-supplier	0xa85117	0x1415f8664	cstring	]

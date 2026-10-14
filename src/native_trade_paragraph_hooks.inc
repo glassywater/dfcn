@@ -1,6 +1,6 @@
 // The artifact trade reply constructor has an inline 68-column wrapper,
-// outside curses_text_boxst::add_paragraph. Observe only its two local calls:
-// copy the pristine sentence, then bind the actual appended native row strings.
+// outside curses_text_boxst::add_paragraph. Observe each producer's local copy
+// and cleanup calls: retain the pristine sentence and the actual appended rows.
 #ifdef _WIN32
 using NativeTradeReplyCopyFn = uintptr_t (*)(NativeString *, const char *, size_t);
 using NativeTradeReplyRowsReleaseFn = uintptr_t (*)(void *);
@@ -23,6 +23,7 @@ static bool native_trade_reply_rows(uintptr_t owner,
     return native_history_copy(owner, rows) && rows.valid(16384);
 }
 
+template<size_t OwnerOffset>
 static uintptr_t capture_native_trade_reply_copy(NativeString *destination,
         const char *source, size_t size, void *screen) {
     NativeInputCallbackScope callback;
@@ -30,8 +31,8 @@ static uintptr_t capture_native_trade_reply_copy(NativeString *destination,
         auto &pending = native_trade_reply_pending();
         pending = {};
         const uintptr_t address = reinterpret_cast<uintptr_t>(screen);
-        if (address && address <= UINTPTR_MAX - 0x3c0 && size && size <= 262144) {
-            const uintptr_t owner = address + 0x3c0;
+        if (address && address <= UINTPTR_MAX - OwnerOffset && size && size <= 262144) {
+            const uintptr_t owner = address + OwnerOffset;
             NativeBorrowedVector<NativeString *> rows;
             std::string text(size, '\0');
             if (native_trade_reply_rows(owner, rows) && native_history_copy_bytes(
@@ -45,6 +46,7 @@ static uintptr_t capture_native_trade_reply_copy(NativeString *destination,
     });
 }
 
+template<size_t OwnerOffset>
 static uintptr_t capture_native_trade_reply_rows_release(void *temporary_rows, void *screen) {
     NativeInputCallbackScope callback;
     const uintptr_t result = callback.call_native([&] {
@@ -54,8 +56,8 @@ static uintptr_t capture_native_trade_reply_rows_release(void *temporary_rows, v
         auto pending = std::move(native_trade_reply_pending());
         native_trade_reply_pending() = {};
         const uintptr_t address = reinterpret_cast<uintptr_t>(screen);
-        if (!address || address > UINTPTR_MAX - 0x3c0 ||
-                pending.owner != address + 0x3c0 || pending.source.empty()) return result;
+        if (!address || address > UINTPTR_MAX - OwnerOffset ||
+                pending.owner != address + OwnerOffset || pending.source.empty()) return result;
         NativeBorrowedVector<NativeString *> native_rows;
         if (!native_trade_reply_rows(pending.owner, native_rows) ||
                 native_rows.size() <= pending.first_line) return result;
@@ -115,10 +117,23 @@ static bool install_native_trade_paragraph_hooks() {
     // Pass that preserved register as an extra callback argument; the original
     // functions retain all their own arguments and exact native return values.
     std::vector<NativeCall> calls{
-        {0x36ad21, 0x6f8d0, reinterpret_cast<const void *>(&capture_native_trade_reply_copy),
+        {0x36ad21, 0x6f8d0, reinterpret_cast<const void *>(&capture_native_trade_reply_copy<0x3c0>),
             {0x4d, 0x89, 0xe1}}, // mov r9,r12
-        {0x36b007, 0x66b70, reinterpret_cast<const void *>(&capture_native_trade_reply_rows_release),
+        {0x36b007, 0x66b70, reinterpret_cast<const void *>(&capture_native_trade_reply_rows_release<0x3c0>),
             {0x4c, 0x89, 0xe2}}, // mov rdx,r12
+        // Adventure personal/family/entity returns retain their complete
+        // reaction plus acknowledgements before the inline 68-column split.
+        // R14 owns big_announce (+0x340) at both calls, after RDI is reused.
+        {0x278241, 0x6f8d0, reinterpret_cast<const void *>(&capture_native_trade_reply_copy<0>),
+            {0x4d, 0x89, 0xf1}}, // mov r9,r14: actual row vector
+        {0x278528, 0x66b70, reinterpret_cast<const void *>(&capture_native_trade_reply_rows_release<0>),
+            {0x4c, 0x89, 0xf2}}, // mov rdx,r14
+        // Copied written works use a second pristine source and the same
+        // native row ABI. Its vector is preserved in R13 through cleanup.
+        {0x2790be, 0x6f8d0, reinterpret_cast<const void *>(&capture_native_trade_reply_copy<0>),
+            {0x4d, 0x89, 0xe9}}, // mov r9,r13
+        {0x2792a4, 0x66b70, reinterpret_cast<const void *>(&capture_native_trade_reply_rows_release<0>),
+            {0x4c, 0x89, 0xea}}, // mov rdx,r13
     };
     if (!native_reference_calls(calls, 0) ||
             !g_native_trade_reply_calls.install(base, calls, "Native trade reply source")) return false;

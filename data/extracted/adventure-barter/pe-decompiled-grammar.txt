@@ -1,0 +1,184 @@
+Windows 53.16 Adventure barter source reconstruction
+
+Sources: the two files selected by data/runtime/native-pe-images.json.
+Steam image: PE:6a70a6d9:02711000.
+Classic image: PE:6a70b91c:0270a000.
+
+This is a reconstruction of native text production, not a runtime observation.
+pe-*.asm keeps all instruction regions of the 15 relevant procedures in each
+edition. MSVC UNW_FLAG_CHAININFO regions are recursively assigned to their
+original root in pe-unwind-regions.tsv; the first .pdata end is not treated as
+the end of a complete chained procedure. The compiler-packed text stores are
+kept at their actual 1/2/4/8/16/32-byte load widths in pe-literals.tsv.
+pe-branches.tsv and pe-conditions.tsv preserve the decisions; pe-switches.tsv
+keeps every native selector/remap alias. pe-draw-fields.tsv records all 34
+renderer string consumers for each edition. pe-decompiled-productions.tsv
+reconstructs complete messages with existing Chinese language choices.
+
+The existing elf-decompiled.c is actual Ghidra C for all 14 ELF source owners.
+pe-source-reconstruction.c below is handwritten source-level pseudocode from
+the PE instruction bodies, cross-referenced against that real Ghidra output.
+It is not represented as automatically generated Ghidra C or compiled code.
+
+PE native barter object offsets, relative to the object's own start:
+  +8 merchant, +10 player-side trader, +18 zone, +20 conversation;
+  +28 personal, +29 demand_only, +2a strong affiliation bonus;
+  +2b8 and +2d8 two 32-byte std::string item filters;
+  +2f8 and +2f9 filter input flags, +2fa signed 16-bit talkline;
+  +300/+304 maximum currency, +308/+30c selected currency;
+  +310 item quantity input, +311 requested currency input,
+  +312 offered currency input, +318 editable 32-byte std::string amount;
+  +338/+33c current quantity item indices;
+  +340 reply-row pointer vector, +358 reply-row scroll, +35c scroll flag.
+These differ from the ELF object offsets; neither should replace the other.
+
+Steam main text procedures (complete bounds):
+  renderer 26e080..271ea9, input/refusal 271eb0..27646a;
+  transaction reward 276850..277336, transfer/return 277500..279351.
+Classic counterparts are these RVAs minus 2440.
+Main render string callee is Steam ad9960 / Classic ad69a0.
+Native wrap callee is Steam 8e7310 / Classic 8e4b80.
+The complete image identities, hashes, bounds, related procedures, direct
+callees and all original unwind regions remain in the manifests.
+
+Renderer state priority:
+  item quantity input -> Trade how many? (0-MAX), then amount;
+  requested currency input -> Ask for how much? (0-MAX), then amount;
+  offered currency input -> Offer how much? (0-MAX), then amount;
+  demand-only -> (Select an item to demand);
+  talkline == -1 -> existing reply-vector rows;
+  otherwise -> opening quote + selected complete body + closing quote,
+               wrapped to screen width minus 18 and drawn row by row.
+The editable amount, two user-entered filters, numeric quantities, cursors,
+ellipsis placeholder and CP437 currency/weight/quality marks retain native
+meaning; they do not become vocabulary/name entries.
+
+The 37-way talkline switch is at Steam dispatch 26fe46, table 271e40,
+byte remap 271e84. Classic uses the same switch minus 2440. Source states:
+  0 personal: What did you have in mind?
+  0 !personal && strong affiliation: An honored visitor!  What would you like?
+  0 !personal && !strong affiliation: Greetings.  Let's trade.
+  7 zone: Ah, wonderful.  Thank you for your business.
+  7 no zone: That seems fair.  You have yourself a deal.
+  18: You truly despise life, don't you?  I am beside myself with grief.
+      Perhaps we will show you how they suffered.
+  19: I see your low race still revels in death.  That poor, gentle creature...
+  20: Once a beautiful tree, and now?  It is a rude bauble, fit only for your kind.
+  21: I simply cannot afford this trade.
+  22: Perhaps if you throw in some more goods I can make an offer.
+  23: I can't possibly accept, but how about this?  A true bargain.
+  29: If it were in a cage of some kind...  As it stands, I can't accept
+      something that wriggles and writhes so.
+  30: How kind!  Thank you so much.
+  31: I cannot take so much -- and at such cost!
+  32: I wish I could take so much, but my animals...
+  33: I won't trade at a loss.
+  34 zone: Yes, and trade we will!  Simply tell me what interests you and
+           what you're prepared to offer in exchange.
+  34 no zone: I'm confused.  Did you want something?
+  35: These _are_ fine items, aren't they?  Now, what do offer for them?
+  36: Are these gifts?  Do you wish to trade?
+  1..6,8..17,24..28 and out-of-range: empty quoted body, no omitted words.
+There are 20 nonempty complete talkline texts across those states.
+
+All transaction button branches:
+  demand-only -> Demand;
+  goods/currency requested and goods/currency offered -> Trade;
+  goods requested without an offer -> Demand;
+  an offer without a request -> Give;
+  no effective request or offer -> disabled Trade;
+  Show is available for showing selected goods to the merchant.
+Requested currency alone without requested goods or any offer does not enable
+the Demand variant (271846..271860). The native requests/offers and selected
+goods determine both text and enabled tint; localized labels keep this state.
+Both item panes have Mark all and Unmark all. Currency buttons use complete
+Ask for currency (16-byte SIMD copy) and Offer currency (8+4+2-byte stores).
+The absence of a tradeable currency source produces Cannot trade currency.
+You are asking for / You are offering are separate text draws from decimal
+amount and the subsequent currency glyph (bb190 call at 271395).
+
+Heading and inventory fields:
+  upper and lower merchant headings use 1330c30 unit identity;
+  positive debt appends (Owes you AMOUNT\x0f), negative debt appends
+  (You owe AMOUNT\x0f), zero debt appends nothing;
+  player-side heading is You for the global player, or the complete 1330c30
+  trader identity when another unit is the player-side trader;
+  group heading uses a82c10 type/material/body/caste producer;
+  item caption uses c65450 artifact/book/copy/item and quality-mark branches;
+  captions may be clipped to the native pane width with trailing ellipsis;
+  container rows append Contains COUNT item / items;
+  item weight is Weight: + original formatted weight and its native glyph.
+The item/body/material/creature/instrument/book/name grammars own these
+dynamic supplier fields; literal fragments in their complete procedure are
+not separate dialogue. The filter owner here is 279360, not ELF 11a9c70's
+shared movement/stealth menu owner. The latter's movement text is unrelated
+to this screen's reachable production graph.
+
+Input/refusal productions:
+  no relinquishment timestamp on personal claim -> ARTIFACT is a personal
+  treasure, and I will not part with it.;
+  family claim -> ARTIFACT is a family heirloom, and I will not part with it.;
+  membership in entity type 10 or 13, and its unrelinquished artifact claim ->
+  ARTIFACT is a treasure of ENTITY, and we will not part with it.
+  first reply prepends capitalized merchant speaker + ': '; later replies
+  retain the original blank separator and omit repeated speaker identity.
+  These are complete strings before wrap(68), at Steam calls
+  2743cb / 2744b4 / 27466f.
+  Show may produce a complete artifact-rumor reply at 273c8c -> 65a250,
+  then speaker prefix and wrap(68) at 273cb3. Its shared full source is
+  ../announcement-conversation/reference-artifact-rumor.asm (same PE identity)
+  and corresponding classic-artifact-rumor.asm; existing complete artifact
+  rumor/event grammar owns its branches, rather than invented fixed labels.
+
+Artifact field b94400:
+  unresolved ID -> an unknown artifact;
+  resolved English-language name -> a946e0 name formatter;
+  unnamed book/written object -> Untitled;
+  other unnamed item -> complete c65450 item description;
+  flag bit 2 wraps LPAGE BOOK/ARTIFACT markup, but barter passes 0.
+Entity field b92900 keeps full language-name and unknown civilization branches.
+Speaker field 1331500 and heading 1330c30 keep authored identity, profession,
+caste, curse and role semantics from their existing complete shared grammars.
+
+Transfer/return productions:
+  optionally prepend first capitalized merchant speaker;
+  prepend complete reaction from 673bc0 with topic=19 and incident ID;
+  personal claim -> Thank you for returning my treasure.;
+  family claim -> Thank you for returning my family's treasure.;
+  entity claim -> Thank you for returning this treasure to ENTITY.;
+  primordial quest -> Thank you for returning this primordial remnant to ENTITY.;
+  rescue quest -> Thank you for rescuing this treasure!;
+  copied written work -> It's not the original, but we can hope the writing
+                         was copied faithfully.
+Personal, family and entity acknowledgements may all be appended in one
+native source, separated by two spaces. Reaction may be empty. Complete
+reaction/memory source is already retained under ../announcement-conversation/
+reference-dialogue-10226b0.asm, reference-memory-events.asm, and
+reference-memory-source.asm (and Classic equivalents, same image identities).
+
+Primordial/remnant and rescue call wrap(68) at 277d88 and 2787f8.
+The personal/family/entity combination and copy acknowledgement use native
+inline 68-column wrapping. They are not lost from the graph merely because
+there is no explicit 8e7310 call:
+  personal/family/entity original source string-copy 278241 -> 6f8d0,
+  return 278246; RDI=barter object, R14=barter+340 reply vector;
+  native row loop 278272..2784b6, completed temporary cleanup at
+  278528 -> 66b70, return 27852d; R14 still points to reply vector;
+  copy original source string-copy 2790be -> 6f8d0, return 2790c3;
+  RBX=barter object, R13=barter+340 reply vector;
+  native row loop 279110..27927b, cleanup 2792a4 -> 66b70, return 2792a9;
+  RBX remains the barter object and R13 remains the reply vector.
+Classic sites/returns are minus 2440; string-copy callee is 6f860 and
+temporary cleanup callee is 66b00. Source-owned native-row capture can use
+these complete sources and native row addresses without guessing fragments.
+
+Transaction reward 276850:
+  You receive ITEM_LIST to conclude the transaction.
+ITEM_LIST is assembled from complete c65450 descriptions, quantities and
+native comma/'and' joins. The existing adventure-announcement item-list
+production owns this complete sentence; no item-name enumeration is added.
+
+Arithmetic immediates such as 55555556 (printable as VUUU) and '*#' key codes
+are retained as raw extraction evidence, not classified as displayed text.
+Nothing in this source reconstruction inspects a running game, reload state,
+or desktop, or substitutes simulated results for an observed game display.
