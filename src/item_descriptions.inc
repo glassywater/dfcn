@@ -752,7 +752,15 @@ std::optional<std::string> Overlay::translate_item_description_source(
                 [&](char kind, std::string_view part) -> std::optional<std::string> {
                     if (part.size() >= value.size()) return std::nullopt;
                     switch (kind) {
-                    case 's': case 'i': return translate_item_description_term(part);
+                    case 's': return translate_item_description_term(part);
+                    case 'i':
+                        // Native instrument improvement kind 11 supplies a
+                        // RAW component name, including unqualified bellows.
+                        if (rule.source == "The {i} is made from {s}." ||
+                            rule.source == "The {i} are made from {s}.")
+                            if (auto component = translate_instrument_component_name(part))
+                                return component;
+                        return translate_item_description_term(part);
                     case 'v': return translate_item_color_pattern(part);
                     case 'j': return translate_item_dye_materials(part);
                     case 'o': return translate_item_craftsmanship(part);
@@ -1069,7 +1077,13 @@ TranslationResult Overlay::translate_item_description_source_display(
                         [&](char kind, std::string_view part) -> TranslationResult {
                             std::optional<std::string> translated;
                             switch (kind) {
-                            case 's': case 'i': return translate_item_description_term_display(part);
+                            case 's': return translate_item_description_term_display(part);
+                            case 'i':
+                                if (rule.source == "The {i} is made from {s}." ||
+                                    rule.source == "The {i} are made from {s}.")
+                                    if (auto component = translate_instrument_component_name(part))
+                                        return TranslationResult::translated(part, *component, "instrument-component");
+                                return translate_item_description_term_display(part);
                             case 'e': return translate_item_description_term_display(part, true);
                             case 'q': return translate_item_description_source_display(part, true);
                             case 'v': return translate_item_color_pattern_display(part);

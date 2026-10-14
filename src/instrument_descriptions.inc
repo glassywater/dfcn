@@ -125,6 +125,17 @@ std::optional<std::string> Overlay::translate_instrument_string_material(
     return translate_embark_item_material_qualifier(source, true);
 }
 
+std::optional<std::string> Overlay::translate_instrument_component_name(
+        std::string_view raw) const {
+    // The item prose producer reads the component's own RAW name, not its
+    // material-prefixed item caption (ELF e7c2fc..e7c329, improvement kind 11).
+    // Prefer the component sense: body/chest/head are musical parts here.
+    const std::string source = lower(trim(std::string(raw)));
+    if (const auto found = instrument_terms_.find("piece:" + source);
+        found != instrument_terms_.end()) return found->second;
+    return translate_embark_instrument_item(raw, false, false);
+}
+
 std::optional<std::string> Overlay::translate_instrument_description(
         std::string_view raw, bool complete_source, bool instrument_context) const {
     std::string source;
@@ -170,6 +181,27 @@ std::optional<std::string> Overlay::translate_instrument_description(
             if (scope == "n") return translate_instrument_native_name(text, true);
             if (scope == "i") return translate_embark_instrument_item(text, false, true);
             if (scope == "f") return translate_instrument_string_material(text);
+            if (scope == "t") {
+                // 1345a40 loops over an owned vector of timbre adjectives.
+                // Resolve that sequence directly, so its length does not
+                // consume the recursive construction grammar's depth budget.
+                std::istringstream tokens{std::string(text)};
+                std::string token, result;
+                bool first = true;
+                while (tokens >> token) {
+                    if (first && (token == "a" || token == "an")) {
+                        first = false;
+                        continue;
+                    }
+                    first = false;
+                    const auto term = instrument_terms_.find("t:" + token);
+                    if (term == instrument_terms_.end()) return std::nullopt;
+                    if (!result.empty()) result += "、";
+                    result += term->second;
+                }
+                if (!result.empty()) return result;
+                return std::nullopt;
+            }
             if (scope == "d") {
                 // Share shape qualifiers with the named component resolver;
                 // a barrel drum is not a barrel material or a native name.
@@ -200,12 +232,17 @@ std::optional<std::string> Overlay::translate_instrument_description(
                 std::string count(text);
                 std::replace(count.begin(), count.end(), '-', ' ');
                 std::istringstream tokens(count);
-                int total = 0, group = 0;
-                bool valid = true, seen = false;
+                int64_t total = 0, group = 0;
+                bool valid = true, seen = false, negative = false;
                 for (std::string token; tokens >> token;) {
                     if (token == "and") continue;
-                    if (token == "hundred") { group = std::max(1, group) * 100; continue; }
-                    if (token == "thousand") { total += std::max(1, group) * 1000; group = 0; continue; }
+                    if (token == "negative" && !seen && !negative) { negative = true; continue; }
+                    if (token == "hundred") { group = std::max<int64_t>(1, group) * 100; continue; }
+                    // libg_src_lib.so get_number uses all three magnitudes,
+                    // as well as hyphenated tens and the zero leaf.
+                    const int64_t scale = token == "thousand" ? 1000 :
+                        token == "million" ? 1000000 : token == "billion" ? 1000000000 : 0;
+                    if (scale) { total += std::max<int64_t>(1, group) * scale; group = 0; continue; }
                     const auto number = instrument_terms_.find("c:" + token);
                     if (number == instrument_terms_.end() || number->second.empty() ||
                         !std::all_of(number->second.begin(), number->second.end(), [](unsigned char c) {
@@ -214,7 +251,7 @@ std::optional<std::string> Overlay::translate_instrument_description(
                     group += parse_int(number->second, 0);
                     seen = true;
                 }
-                if (valid && seen) return std::to_string(total + group);
+                if (valid && seen) return std::to_string((negative ? -1 : 1) * (total + group));
             }
             for (const auto &pattern : instrument_patterns_) {
                 if (pattern.scope != scope) continue;
@@ -236,8 +273,17 @@ std::optional<std::string> Overlay::translate_instrument_description(
                         (following == std::string::npos ? pattern.source.size() : following) - close - 1);
                     // Adjacent unbounded captures are not supported.
                     if (delimiter.empty() && following != std::string::npos) return false;
-                    size_t end = delimiter.empty() ? text.size() : text.find(delimiter, pos + 1);
-                    for (; end != std::string_view::npos && end > pos;) {
+                    std::vector<size_t> ends;
+                    for (size_t end = delimiter.empty() ? text.size() : text.find(delimiter, pos + 1);
+                         end != std::string_view::npos && end > pos;) {
+                        ends.push_back(end);
+                        if (delimiter.empty()) break;
+                        end = text.find(delimiter, end + 1);
+                    }
+                    // A multiword cardinal is one count, not nested groups
+                    // of objects ("thirty three wooden pipes" means 33).
+                    if (token.front() == 'c') std::reverse(ends.begin(), ends.end());
+                    for (const size_t end : ends) {
                         const auto value = self(self, std::string_view(token).substr(0, 1),
                             text.substr(pos, end - pos), depth + 1);
                         if (value) {
@@ -245,8 +291,6 @@ std::optional<std::string> Overlay::translate_instrument_description(
                             if (next(next, close + 1, end)) return true;
                             captures.erase(token);
                         }
-                        if (delimiter.empty()) break;
-                        end = text.find(delimiter, end + 1);
                     }
                     return false;
                 };

@@ -72,13 +72,10 @@ const auto item_instrument_component_name = [&](const std::string &raw)
     // c7691f..c76b9f selects an instrument RAW component, whose +48 name
     // retains the instrument glossary's sense (body = 琴身, not anatomy).
     // It can also contain the generated instrument name and a piece suffix.
-    const std::string key = "piece:" + lower(trim(raw));
-    if (const auto found = instrument_terms_.find(key); found != instrument_terms_.end())
-        return Pieces{piece(found->second, neutral)};
     // Without a separately captured instrument-name identity, this fallback
     // requires the existing native lexicon for every name word. Unknown
     // English component words cannot become invented phonetic names.
-    if (const auto named = translate_embark_instrument_item(raw, false, false))
+    if (const auto named = translate_instrument_component_name(raw))
         return Pieces{piece(*named, neutral)};
     return term(raw);
 };

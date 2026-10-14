@@ -5369,6 +5369,8 @@ private:
         bool instrument_context = false) const;
     std::optional<std::string> translate_instrument_string_material(
         std::string_view source) const;
+    std::optional<std::string> translate_instrument_component_name(
+        std::string_view source) const;
     std::unordered_map<std::string, std::string> instrument_terms_;
     struct InstrumentPattern { std::string scope, source, target; };
     std::vector<InstrumentPattern> instrument_patterns_;

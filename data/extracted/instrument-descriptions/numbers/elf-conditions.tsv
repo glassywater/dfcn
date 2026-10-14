@@ -1,0 +1,168 @@
+role	instruction	condition
+english-cardinal	0xb1995	test   ebx,ebx
+english-cardinal	0xb1999	cmp    ebx,0x13
+english-cardinal	0xb19ec	cmp    rcx,rax
+english-cardinal	0xb19f1	cmp    QWORD PTR [rbp+0x10],0x7
+english-cardinal	0xb1a03	cmp    rcx,rsi
+english-cardinal	0xb1a10	cmp    rax,rsi
+english-cardinal	0xb1a19	cmp    rdx,0x7
+english-cardinal	0xb1a2a	cmp    rax,rdi
+english-cardinal	0xb1a33	cmp    rax,rsi
+english-cardinal	0xb1a4f	cmp    rax,0x1
+english-cardinal	0xb1a59	test   rdx,rdx
+english-cardinal	0xb1afc	cmp    r8,rax
+english-cardinal	0xb1b01	cmp    QWORD PTR [rbp+0x10],0x6
+english-cardinal	0xb1b13	cmp    r8,rsi
+english-cardinal	0xb1b20	cmp    rax,rsi
+english-cardinal	0xb1b29	cmp    rdx,0x6
+english-cardinal	0xb1b3a	cmp    rax,rcx
+english-cardinal	0xb1b43	cmp    rax,rsi
+english-cardinal	0xb1bcc	cmp    rcx,rax
+english-cardinal	0xb1bd1	cmp    QWORD PTR [rbp+0x10],0x7
+english-cardinal	0xb1be3	cmp    rcx,rsi
+english-cardinal	0xb1bf0	cmp    rax,rsi
+english-cardinal	0xb1bf9	cmp    rdx,0x7
+english-cardinal	0xb1c0a	cmp    rax,rdi
+english-cardinal	0xb1c13	cmp    rax,rsi
+english-cardinal	0xb1c2f	cmp    rax,0x1
+english-cardinal	0xb1c54	cmp    rcx,rax
+english-cardinal	0xb1c59	cmp    QWORD PTR [rbp+0x10],0x5
+english-cardinal	0xb1c6b	cmp    rcx,rsi
+english-cardinal	0xb1c78	cmp    rax,rsi
+english-cardinal	0xb1c81	cmp    rdx,0x5
+english-cardinal	0xb1c92	cmp    rax,rdi
+english-cardinal	0xb1c9b	cmp    rax,rsi
+english-cardinal	0xb1cb7	cmp    rax,0x1
+english-cardinal	0xb1cc1	test   rdx,rdx
+english-cardinal	0xb1d04	cmp    rcx,rax
+english-cardinal	0xb1d09	cmp    QWORD PTR [rbp+0x10],0x2
+english-cardinal	0xb1d1b	cmp    rcx,rsi
+english-cardinal	0xb1d28	cmp    rax,rsi
+english-cardinal	0xb1d31	cmp    rdx,0x2
+english-cardinal	0xb1d42	cmp    rax,rdi
+english-cardinal	0xb1d4b	cmp    rax,rsi
+english-cardinal	0xb1d67	cmp    rax,0x1
+english-cardinal	0xb1d71	test   rdx,rdx
+english-cardinal	0xb1db4	cmp    rcx,rax
+english-cardinal	0xb1db9	cmp    QWORD PTR [rbp+0x10],0x3
+english-cardinal	0xb1dcb	cmp    rcx,rsi
+english-cardinal	0xb1dd8	cmp    rax,rsi
+english-cardinal	0xb1de1	cmp    rdx,0x3
+english-cardinal	0xb1df2	cmp    rax,rdi
+english-cardinal	0xb1dfb	cmp    rax,rsi
+english-cardinal	0xb1e17	cmp    rax,0x1
+english-cardinal	0xb1e21	test   rdx,rdx
+english-cardinal	0xb1e8c	cmp    rcx,rax
+english-cardinal	0xb1e91	cmp    QWORD PTR [rbp+0x10],0x4
+english-cardinal	0xb1ea3	cmp    rcx,rsi
+english-cardinal	0xb1eb0	cmp    rax,rsi
+english-cardinal	0xb1eb9	cmp    rdx,0x4
+english-cardinal	0xb1eca	cmp    rax,rdi
+english-cardinal	0xb1ed3	cmp    rax,rsi
+english-cardinal	0xb1eef	cmp    rax,0x1
+english-cardinal	0xb1ef9	test   rdx,rdx
+english-cardinal	0xb1f3c	cmp    rcx,rax
+english-cardinal	0xb1f41	cmp    QWORD PTR [rbp+0x10],0x2
+english-cardinal	0xb1f53	cmp    rcx,rsi
+english-cardinal	0xb1f60	cmp    rax,rsi
+english-cardinal	0xb1f69	cmp    rdx,0x2
+english-cardinal	0xb1f7a	cmp    rax,rdi
+english-cardinal	0xb1f83	cmp    rax,rsi
+english-cardinal	0xb1f9f	cmp    rax,0x1
+english-cardinal	0xb1fc4	cmp    rcx,rax
+english-cardinal	0xb1fc9	cmp    QWORD PTR [rbp+0x10],0x3
+english-cardinal	0xb1fdb	cmp    rcx,rsi
+english-cardinal	0xb1fe8	cmp    rax,rsi
+english-cardinal	0xb1ff1	cmp    rdx,0x3
+english-cardinal	0xb2002	cmp    rax,rdi
+english-cardinal	0xb200b	cmp    rax,rsi
+english-cardinal	0xb2027	cmp    rax,0x1
+english-cardinal	0xb204c	cmp    rcx,rax
+english-cardinal	0xb2051	cmp    QWORD PTR [rbp+0x10],0x4
+english-cardinal	0xb2063	cmp    rcx,rsi
+english-cardinal	0xb2070	cmp    rax,rsi
+english-cardinal	0xb2079	cmp    rdx,0x4
+english-cardinal	0xb208a	cmp    rax,rdi
+english-cardinal	0xb2093	cmp    rax,rsi
+english-cardinal	0xb20af	cmp    rax,0x1
+english-cardinal	0xb20d4	cmp    rcx,rax
+english-cardinal	0xb20d9	cmp    QWORD PTR [rbp+0x10],0x4
+english-cardinal	0xb20eb	cmp    rcx,rsi
+english-cardinal	0xb20f8	cmp    rax,rsi
+english-cardinal	0xb2101	cmp    rdx,0x4
+english-cardinal	0xb2112	cmp    rax,rdi
+english-cardinal	0xb211b	cmp    rax,rsi
+english-cardinal	0xb2137	cmp    rax,0x1
+english-cardinal	0xb215c	cmp    rcx,rax
+english-cardinal	0xb2161	cmp    QWORD PTR [rbp+0x10],0x2
+english-cardinal	0xb2173	cmp    rcx,rsi
+english-cardinal	0xb217c	cmp    rax,rsi
+english-cardinal	0xb2181	cmp    rdx,0x2
+english-cardinal	0xb218e	cmp    rax,rdi
+english-cardinal	0xb21c4	cmp    rcx,rax
+english-cardinal	0xb21c9	cmp    QWORD PTR [rbp+0x10],0x5
+english-cardinal	0xb21db	cmp    rcx,rsi
+english-cardinal	0xb21e8	cmp    rax,rsi
+english-cardinal	0xb21f1	cmp    rdx,0x5
+english-cardinal	0xb2202	cmp    rax,rdi
+english-cardinal	0xb220b	cmp    rax,rsi
+english-cardinal	0xb2227	cmp    rax,0x1
+english-cardinal	0xb224c	cmp    rcx,rax
+english-cardinal	0xb2251	cmp    QWORD PTR [rbp+0x10],0x3
+english-cardinal	0xb2263	cmp    rcx,rsi
+english-cardinal	0xb2270	cmp    rax,rsi
+english-cardinal	0xb2279	cmp    rdx,0x3
+english-cardinal	0xb228a	cmp    rax,rdi
+english-cardinal	0xb2293	cmp    rax,rsi
+english-cardinal	0xb22af	cmp    rax,0x1
+english-cardinal	0xb22d4	cmp    rcx,rax
+english-cardinal	0xb22d9	cmp    QWORD PTR [rbp+0x10],0x2
+english-cardinal	0xb22eb	cmp    rcx,rsi
+english-cardinal	0xb22f8	cmp    rax,rsi
+english-cardinal	0xb2301	cmp    rdx,0x2
+english-cardinal	0xb2312	cmp    rax,rdi
+english-cardinal	0xb231b	cmp    rax,rsi
+english-cardinal	0xb2337	cmp    rax,0x1
+english-cardinal	0xb235c	cmp    rcx,rax
+english-cardinal	0xb2361	cmp    QWORD PTR [rbp+0x10],0x7
+english-cardinal	0xb2373	cmp    rcx,rsi
+english-cardinal	0xb2380	cmp    rax,rsi
+english-cardinal	0xb2389	cmp    rdx,0x7
+english-cardinal	0xb239a	cmp    rax,rdi
+english-cardinal	0xb23a3	cmp    rax,rsi
+english-cardinal	0xb23bf	cmp    rax,0x1
+english-cardinal	0xb23d8	cmp    ebx,0x3b9ac9ff
+english-cardinal	0xb23ea	cmp    eax,0x3b8b87bf
+english-cardinal	0xb23fb	cmp    eax,0xf3e57
+english-cardinal	0xb2409	cmp    eax,0x383
+english-cardinal	0xb2427	cmp    eax,0x6
+english-cardinal	0xb24b5	cmp    rdi,r12
+english-cardinal	0xb2780	cmp    rax,0x7
+english-cardinal	0xb279b	cmp    rax,rcx
+english-cardinal	0xb27a8	cmp    r15,rdx
+english-cardinal	0xb27ff	cmp    rbx,rax
+english-cardinal	0xb2810	cmp    QWORD PTR [rsp+0x8],rax
+english-cardinal	0xb281f	cmp    r15,rdx
+english-cardinal	0xb2a36	cmp    rax,0x7
+english-cardinal	0xb2a51	cmp    rax,rdx
+english-cardinal	0xb2a5e	cmp    QWORD PTR [rsp+0x8],rdx
+english-cardinal	0xb2b2a	cmp    rax,0x8
+english-cardinal	0xb2b45	cmp    rax,rdx
+english-cardinal	0xb2b52	cmp    QWORD PTR [rsp+0x8],rdx
+english-cardinal	0xb2c43	cmp    rax,0x7
+english-cardinal	0xb2c5e	cmp    rax,rdx
+english-cardinal	0xb2c6b	cmp    QWORD PTR [rsp+0x8],rdx
+english-cardinal	0xb2d58	cmp    r12,0x1
+english-cardinal	0xb2d99	cmp    r12,0x1
+english-cardinal	0xb2dda	cmp    r12,0x1
+english-cardinal	0xb2dfc	cmp    r12,0x1
+english-cardinal	0xb2e5c	cmp    r12,0x1
+english-cardinal	0xb2e7d	test   r12,r12
+english-cardinal	0xb2eb7	cmp    rax,0x1
+english-cardinal	0xb2ec1	test   rax,rax
+english-cardinal	0xb2ee4	test   r12,r12
+english-cardinal	0xb2ef8	test   r12,r12
+english-cardinal	0xb2f10	test   r12,r12
+english-cardinal	0xb2f28	test   r12,r12
+english-cardinal	0xb2f41	cmp    r12,0x1
+english-cardinal	0xb2f8a	test   r12,r12
