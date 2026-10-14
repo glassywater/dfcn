@@ -1,0 +1,369 @@
+edition	role	instruction_rva	operand	kind	text
+steam	journal-agreement-details-and-card-fields	0xc2999	0x1415ec1e8	cstring	Agreements
+steam	journal-agreement-details-and-card-fields	0xc29cb	0x1415ec1d0	cstring	Events
+steam	journal-agreement-details-and-card-fields	0xc29fd	0x1415ec1d8	cstring	People
+steam	journal-agreement-details-and-card-fields	0xc2a2f	0x1415ec20c	cstring	Sites
+steam	journal-agreement-details-and-card-fields	0xc2a61	0x1415ec214	cstring	Groups
+steam	journal-agreement-details-and-card-fields	0xc2a93	0x1415ec1f8	cstring	Regions
+steam	journal-agreement-details-and-card-fields	0xc2ac5	0x1415ec200	cstring	Bestiary
+steam	journal-agreement-details-and-card-fields	0xc2af4	0x1415ec238	cstring	Artifacts
+steam	journal-agreement-details-and-card-fields	0xc2b23	0x1415ec248	cstring	Intrigue
+steam	journal-agreement-details-and-card-fields	0xc2e66	0x1415ec288	cstring	Plots
+steam	journal-agreement-details-and-card-fields	0xc2e94	0x1415ec228	cstring	Organizations
+steam	journal-agreement-details-and-card-fields	0xc2ec2	0x1415ec21c	cstring	Actors
+steam	journal-agreement-details-and-card-fields	0xc320e	0x1415eb514	cstring	/
+steam	journal-agreement-details-and-card-fields	0xc34d8	0x1415ec270	cstring	Centered on first heard
+steam	journal-agreement-details-and-card-fields	0xc3546	0x1415ec258	cstring	Centered on last heard
+steam	journal-agreement-details-and-card-fields	0xc35b1	0x1415ec290	cstring	Centered on location
+steam	journal-agreement-details-and-card-fields	0xc3808	0x1415ec2e8	cstring	 Showing type,date
+steam	journal-agreement-details-and-card-fields	0xc3832	0x1415ec2d0	cstring	 Showing pin,last
+steam	journal-agreement-details-and-card-fields	0xc39fb	0x1415eb514	cstring	/
+steam	journal-agreement-details-and-card-fields	0xc3b8b	0x1415ec2a8	cstring	Overthrow Agreement
+steam	journal-agreement-details-and-card-fields	0xc3b97	0x1415ec2c0	cstring	Guide Agreement
+steam	journal-agreement-details-and-card-fields	0xc3ba3	0x1415ec328	cstring	Rescue Agreement
+steam	journal-agreement-details-and-card-fields	0xc3baf	0x1415ec340	cstring	Aid Rescue Agreement
+steam	journal-agreement-details-and-card-fields	0xc3bbb	0x1415ec300	cstring	Adventuring Agreement
+steam	journal-agreement-details-and-card-fields	0xc3bc7	0x1415ec318	cstring	Bound Servitude
+steam	journal-agreement-details-and-card-fields	0xc3bd3	0x1415ec388	cstring	Entertainment Agreement
+steam	journal-agreement-details-and-card-fields	0xc3bdf	0x1415ec3a0	cstring	World Joining Agreement
+steam	journal-agreement-details-and-card-fields	0xc3beb	0x1415ec358	cstring	Residency Agreement
+steam	journal-agreement-details-and-card-fields	0xc3bf7	0x1415ec370	cstring	Grant of Citizenship
+steam	journal-agreement-details-and-card-fields	0xc3c03	0x1415ec3e0	cstring	Parley Arrangement
+steam	journal-agreement-details-and-card-fields	0xc3c0f	0x1415ec3f8	cstring	Corruption
+steam	journal-agreement-details-and-card-fields	0xc3c1b	0x1415ec3b8	cstring	Artifact Theft
+steam	journal-agreement-details-and-card-fields	0xc3c27	0x1415ec3c8	cstring	Promise of Position
+steam	journal-agreement-details-and-card-fields	0xc3c33	0x1415ec430	cstring	Assassination Plot
+steam	journal-agreement-details-and-card-fields	0xc3c3f	0x1415ec448	cstring	Abduction Plot
+steam	journal-agreement-details-and-card-fields	0xc3c48	0x1415ec408	cstring	Sabotage Plot
+steam	journal-agreement-details-and-card-fields	0xc3c51	0x1415ec418	cstring	Infiltration Plot
+steam	journal-agreement-details-and-card-fields	0xc3c5a	0x1415ec498	cstring	Framing Plot
+steam	journal-agreement-details-and-card-fields	0xc3c63	0x1415ec4a8	cstring	War Starting Plot
+steam	journal-agreement-details-and-card-fields	0xc3c90	0x1415ec4e8	cstring	Foiled Embezzlement Conspiracy
+steam	journal-agreement-details-and-card-fields	0xc3c99	0x1415ec478	cstring	Foiled Corruption Conspiracy
+steam	journal-agreement-details-and-card-fields	0xc3ca2	0x1415ec458	cstring	Foiled Bribery Conspiracy
+steam	journal-agreement-details-and-card-fields	0xc3cab	0x1415ec508	cstring	Build Structure
+steam	journal-agreement-details-and-card-fields	0xc3cb4	0x1415ec4c0	cstring	Offer Service
+steam	journal-agreement-details-and-card-fields	0xc3cbd	0x1415ec4d0	cstring	Retrieve Artifact
+steam	journal-agreement-details-and-card-fields	0xc3e17	0x1415e8ca0	cstring	You
+steam	journal-agreement-details-and-card-fields	0xc3ec4	0x1415ec6a0	cstring	asked that
+steam	journal-agreement-details-and-card-fields	0xc3f25	0x1415ec550	cstring	you
+steam	journal-agreement-details-and-card-fields	0xc3fcc	0x1415ec6b0	cstring	retrieve
+steam	journal-agreement-details-and-card-fields	0xc40c2	0x1415ec70c	cstring	from
+steam	journal-agreement-details-and-card-fields	0xc41be	0x1415ec714	cstring	for
+steam	journal-agreement-details-and-card-fields	0xc4311	0x1415ec6f8	cstring	Drive members of
+steam	journal-agreement-details-and-card-fields	0xc43d4	0x1415ec740	cstring	out of
+steam	journal-agreement-details-and-card-fields	0xc456a	0x1415e8ca0	cstring	You
+steam	journal-agreement-details-and-card-fields	0xc4617	0x1415ec6c0	cstring	requested that
+steam	journal-agreement-details-and-card-fields	0xc4678	0x1415ec550	cstring	you
+steam	journal-agreement-details-and-card-fields	0xc471b	0x1415ec6d0	cstring	make an offer of service to
+steam	journal-agreement-details-and-card-fields	0xc490c	0x1415e8ca0	cstring	You
+steam	journal-agreement-details-and-card-fields	0xc49b9	0x1415ec540	cstring	agreed to join
+steam	journal-agreement-details-and-card-fields	0xc4a1a	0x1415ec550	cstring	you
+steam	journal-agreement-details-and-card-fields	0xc4abf	0x1415ec518	cstring	in insurrection against
+steam	journal-agreement-details-and-card-fields	0xc4b97	0x1415ec530	cstring	thereby freeing
+steam	journal-agreement-details-and-card-fields	0xc4c88	0x1415e8ca0	cstring	You
+steam	journal-agreement-details-and-card-fields	0xc4d35	0x1415ec598	cstring	agreed to guide
+steam	journal-agreement-details-and-card-fields	0xc4d96	0x1415ec550	cstring	you
+steam	journal-agreement-details-and-card-fields	0xc4e3b	0x1415ec5a8	cstring	to
+steam	journal-agreement-details-and-card-fields	0xc5043	0x1415ec558	cstring	somebody unknown
+steam	journal-agreement-details-and-card-fields	0xc50b8	0x1415e8ca0	cstring	You
+steam	journal-agreement-details-and-card-fields	0xc5165	0x1415ec540	cstring	agreed to join
+steam	journal-agreement-details-and-card-fields	0xc51c6	0x1415ec550	cstring	you
+steam	journal-agreement-details-and-card-fields	0xc5267	0x1415ec570	cstring	in order to be brought safely away from
+steam	journal-agreement-details-and-card-fields	0xc535c	0x1415e8ca0	cstring	You
+steam	journal-agreement-details-and-card-fields	0xc5409	0x1415ec540	cstring	agreed to join
+steam	journal-agreement-details-and-card-fields	0xc546a	0x1415ec550	cstring	you
+steam	journal-agreement-details-and-card-fields	0xc550b	0x1415ec5e8	cstring	in order to rescue
+steam	journal-agreement-details-and-card-fields	0xc5686	0x1415ec558	cstring	somebody unknown
+steam	journal-agreement-details-and-card-fields	0xc56fb	0x1415e8ca0	cstring	You
+steam	journal-agreement-details-and-card-fields	0xc57a8	0x1415ec600	cstring	agreed to adventure with
+steam	journal-agreement-details-and-card-fields	0xc5809	0x1415ec550	cstring	you
+steam	journal-agreement-details-and-card-fields	0xc58aa	0x1415ec5b0	cstring	wherever the journey might lead
+steam	journal-agreement-details-and-card-fields	0xc5919	0x1415e8ca0	cstring	You
+steam	journal-agreement-details-and-card-fields	0xc59c6	0x1415ec5d0	cstring	was bound to serve
+steam	journal-agreement-details-and-card-fields	0xc5a27	0x1415ec550	cstring	you
+steam	journal-agreement-details-and-card-fields	0xc5ac8	0x1415ec650	cstring	by invocation of True Name
+steam	journal-agreement-details-and-card-fields	0xc5b37	0x1415e8ca0	cstring	You
+steam	journal-agreement-details-and-card-fields	0xc5be4	0x1415ec670	cstring	agreed to entertain people with
+steam	journal-agreement-details-and-card-fields	0xc5c45	0x1415ec550	cstring	you
+steam	journal-agreement-details-and-card-fields	0xc5ce6	0x1415ec620	cstring	throughout the world
+steam	journal-agreement-details-and-card-fields	0xc5d6d	0x1415ec638	cstring	Agreement concluded
+steam	journal-agreement-details-and-card-fields	0xc5e40	0x1415ec698	cstring	st
+steam	journal-agreement-details-and-card-fields	0xc5e49	0x1415ec69c	cstring	nd
+steam	journal-agreement-details-and-card-fields	0xc5e52	0x1415ec690	cstring	rd
+steam	journal-agreement-details-and-card-fields	0xc5e5b	0x1415ec694	cstring	th
+steam	journal-agreement-details-and-card-fields	0xc5e6b	0x1415e873c	cstring	 
+steam	journal-agreement-details-and-card-fields	0xc5e9d	0x1415e90d8	cstring	, 
+steam	journal-agreement-details-and-card-fields	0xc5f25	0x1415ec6ec	cstring	Kill
+steam	journal-agreement-details-and-card-fields	0xc6006	0x1415ec718	cstring	Cause trouble for
+steam	journal-agreement-details-and-card-fields	0xc60ca	0x1415ec748	cstring	Drive
+steam	journal-agreement-details-and-card-fields	0xc618d	0x1415ec70c	cstring	from
+steam	journal-agreement-details-and-card-fields	0xc6253	0x1415ec730	cstring	An order from
+steam	journal-agreement-details-and-card-fields	0xc633d	0x1415ec770	cstring	Finish reporting in
+steam	journal-agreement-details-and-card-fields	0xc63ae	0x1415ec788	cstring	Complete: report back
+steam	journal-agreement-details-and-card-fields	0xc63fb	0x1415ec750	cstring	Not yet completed
+steam	journal-agreement-details-and-card-fields	0xc6574	0x1415e8ca0	cstring	You
+steam	journal-agreement-details-and-card-fields	0xc6621	0x1415ec6a0	cstring	asked that
+steam	journal-agreement-details-and-card-fields	0xc6682	0x1415ec550	cstring	you
+steam	journal-agreement-details-and-card-fields	0xc6725	0x1415ec7c8	cstring	retrieve 
+steam	journal-agreement-details-and-card-fields	0xc68bf	0x1415e8ca0	cstring	You
+steam	journal-agreement-details-and-card-fields	0xc696c	0x1415ec6c0	cstring	requested that
+steam	journal-agreement-details-and-card-fields	0xc69cd	0x1415ec550	cstring	you
+steam	journal-agreement-details-and-card-fields	0xc6a70	0x1415ec764	cstring	serve 
+steam	journal-agreement-details-and-card-fields	0xc6b55	0x1415ec638	cstring	Agreement concluded
+steam	journal-agreement-details-and-card-fields	0xc6bf6	0x1415ec730	cstring	An order from
+steam	journal-agreement-details-and-card-fields	0xc6cdd	0x1415ec770	cstring	Finish reporting in
+steam	journal-agreement-details-and-card-fields	0xc6d4b	0x1415ec788	cstring	Complete: report back
+steam	journal-agreement-details-and-card-fields	0xc6d95	0x1415ec750	cstring	Not yet completed
+steam	journal-agreement-details-and-card-fields	0xc6f67	0x1415ec7d8	cstring	Centered on commander
+steam	journal-agreement-details-and-card-fields	0xc6fd1	0x1415ec7a0	cstring	Centered on target
+steam	journal-agreement-details-and-card-fields	0xc7251	0x1415ec824	cstring	Org: 
+steam	journal-agreement-details-and-card-fields	0xc72db	0x1415eb514	cstring	/
+steam	journal-agreement-details-and-card-fields	0xc7542	0x1415eb514	cstring	/
+steam	journal-agreement-details-and-card-fields	0xc7f39	0x1415ec7b8	cstring	One member
+steam	journal-agreement-details-and-card-fields	0xc7f85	0x1415ec818	cstring	 members
+steam	journal-agreement-details-and-card-fields	0xc8275	0x1415eb514	cstring	/
+steam	journal-agreement-details-and-card-fields	0xc8660	0x1415eb514	cstring	/
+steam	journal-agreement-details-and-card-fields	0xc8a50	0x1415eb514	cstring	/
+steam	journal-agreement-details-and-card-fields	0xc8d9c	0x1415ec7f0	cstring	 Showing important
+steam	journal-agreement-details-and-card-fields	0xc8dd7	0x1415ec808	cstring	 Showing all
+steam	journal-agreement-details-and-card-fields	0xc8fa2	0x1415eb514	cstring	/
+steam	journal-agreement-details-and-card-fields	0xc92ec	0x1415ec7f0	cstring	 Showing important
+steam	journal-agreement-details-and-card-fields	0xc9327	0x1415ec808	cstring	 Showing all
+steam	journal-agreement-details-and-card-fields	0xc94e0	0x1415eb514	cstring	/
+steam	journal-agreement-details-and-card-fields	0xc982c	0x1415ec7f0	cstring	 Showing important
+steam	journal-agreement-details-and-card-fields	0xc9867	0x1415ec808	cstring	 Showing all
+steam	journal-agreement-details-and-card-fields	0xc9a20	0x1415eb514	cstring	/
+steam	journal-agreement-details-and-card-fields	0xc9e10	0x1415eb514	cstring	/
+steam	journal-agreement-details-and-card-fields	0xca12c	0x1415ec850	cstring	: Toggle line
+steam	journal-agreement-details-and-card-fields	0xca286	0x1415ec860	cstring	...
+steam	journal-agreement-details-and-card-fields	0xca2ca	0x1415ec82c	cstring	_
+steam	journal-agreement-title-and-orders	0xdf9e2	0x1415ee2f0	cstring	Done: 
+steam	journal-agreement-title-and-orders	0xdfb92	0x1415ee2b8	cstring	Insurrection with 
+steam	journal-agreement-title-and-orders	0xdfb9b	0x1415ee2d0	cstring	Guided by 
+steam	journal-agreement-title-and-orders	0xdfba4	0x1415ee320	cstring	Rescue 
+steam	journal-agreement-title-and-orders	0xdfbad	0x1415ee328	cstring	Aid rescue with 
+steam	journal-agreement-title-and-orders	0xdfbb6	0x1415ee2f8	cstring	Adventure with 
+steam	journal-agreement-title-and-orders	0xdfbbf	0x1415ee308	cstring	The bound service of
+steam	journal-agreement-title-and-orders	0xdfbc8	0x1415ee378	cstring	Entertain people with 
+steam	journal-agreement-title-and-orders	0xdfc84	0x1415ec3a0	cstring	World Joining Agreement
+steam	journal-agreement-title-and-orders	0xdfc96	0x1415ec358	cstring	Residency Agreement
+steam	journal-agreement-title-and-orders	0xdfca8	0x1415ec370	cstring	Grant of Citizenship
+steam	journal-agreement-title-and-orders	0xdfcba	0x1415ec3e0	cstring	Parley Arrangement
+steam	journal-agreement-title-and-orders	0xdfccc	0x1415ec3f8	cstring	Corruption
+steam	journal-agreement-title-and-orders	0xdfcde	0x1415ec3b8	cstring	Artifact Theft
+steam	journal-agreement-title-and-orders	0xdfcf0	0x1415ec3c8	cstring	Promise of Position
+steam	journal-agreement-title-and-orders	0xdfd02	0x1415ec430	cstring	Assassination Plot
+steam	journal-agreement-title-and-orders	0xdfd14	0x1415ec448	cstring	Abduction Plot
+steam	journal-agreement-title-and-orders	0xdfd26	0x1415ec408	cstring	Sabotage Plot
+steam	journal-agreement-title-and-orders	0xdfd32	0x1415ec418	cstring	Infiltration Plot
+steam	journal-agreement-title-and-orders	0xdfd41	0x1415ec498	cstring	Framing Plot
+steam	journal-agreement-title-and-orders	0xdfd4a	0x1415ec4a8	cstring	War Starting Plot
+steam	journal-agreement-title-and-orders	0xdfd6e	0x1415ec4e8	cstring	Foiled Embezzlement Conspiracy
+steam	journal-agreement-title-and-orders	0xdfd7d	0x1415ec478	cstring	Foiled Corruption Conspiracy
+steam	journal-agreement-title-and-orders	0xdfd8c	0x1415ec458	cstring	Foiled Bribery Conspiracy
+steam	journal-agreement-title-and-orders	0xdfd9b	0x1415ec508	cstring	Build Structure
+steam	journal-agreement-title-and-orders	0xdfdaa	0x1415ec4c0	cstring	Offer Service
+steam	journal-agreement-title-and-orders	0xdfdb3	0x1415ec4d0	cstring	Retrieve Artifact
+steam	journal-agreement-title-and-orders	0xdff5b	0x1415ee340	cstring	Order: Drive off 
+steam	journal-agreement-title-and-orders	0xdff88	0x1415ed97c	cstring	 from 
+steam	journal-agreement-title-and-orders	0xe0185	0x1415ee390	cstring	Order: Kill 
+steam	journal-agreement-title-and-orders	0xe03ba	0x1415ee358	cstring	Order: Cause trouble for 
+steam	journal-agreement-title-and-orders	0xe0ccc	0x1415ee340	cstring	Order: Drive off 
+steam	journal-agreement-title-and-orders	0xe0cf4	0x1415ed97c	cstring	 from 
+steam	journal-agreement-calendar-month	0x7733b8	0x1416a4968	cstring	Granite
+steam	journal-agreement-calendar-month	0x7733cd	0x1416a4970	cstring	Slate
+steam	journal-agreement-calendar-month	0x7733e2	0x1416a4978	cstring	Felsite
+steam	journal-agreement-calendar-month	0x7733f1	0x1416a4980	cstring	Hematite
+steam	journal-agreement-calendar-month	0x77340c	0x1416a4990	cstring	Malachite
+steam	journal-agreement-calendar-month	0x773421	0x1416a499c	cstring	Galena
+steam	journal-agreement-calendar-month	0x773436	0x1416a49a8	cstring	Limestone
+steam	journal-agreement-calendar-month	0x77344b	0x1416a49b8	cstring	Sandstone
+steam	journal-agreement-calendar-month	0x773460	0x1416a50d4	cstring	Timber
+steam	journal-agreement-calendar-month	0x773475	0x1416a50e0	cstring	Moonstone
+steam	journal-agreement-calendar-month	0x77348a	0x1416a50ec	cstring	Opal
+steam	journal-agreement-calendar-month	0x773499	0x141605b78	cstring	Obsidian
+classic	journal-agreement-details-and-card-fields	0xc2929	0x1415e7168	cstring	Agreements
+classic	journal-agreement-details-and-card-fields	0xc295b	0x1415e71ac	cstring	Events
+classic	journal-agreement-details-and-card-fields	0xc298d	0x1415e71b4	cstring	People
+classic	journal-agreement-details-and-card-fields	0xc29bf	0x1415e719c	cstring	Sites
+classic	journal-agreement-details-and-card-fields	0xc29f1	0x1415e71a4	cstring	Groups
+classic	journal-agreement-details-and-card-fields	0xc2a23	0x1415e71e0	cstring	Regions
+classic	journal-agreement-details-and-card-fields	0xc2a55	0x1415e71e8	cstring	Bestiary
+classic	journal-agreement-details-and-card-fields	0xc2a84	0x1415e71c0	cstring	Artifacts
+classic	journal-agreement-details-and-card-fields	0xc2ab3	0x1415e71d0	cstring	Intrigue
+classic	journal-agreement-details-and-card-fields	0xc2df6	0x1415e71f4	cstring	Plots
+classic	journal-agreement-details-and-card-fields	0xc2e24	0x1415e7220	cstring	Organizations
+classic	journal-agreement-details-and-card-fields	0xc2e52	0x1415e7218	cstring	Actors
+classic	journal-agreement-details-and-card-fields	0xc319e	0x1415e64cc	cstring	/
+classic	journal-agreement-details-and-card-fields	0xc3468	0x1415e7278	cstring	Centered on first heard
+classic	journal-agreement-details-and-card-fields	0xc34d6	0x1415e7260	cstring	Centered on last heard
+classic	journal-agreement-details-and-card-fields	0xc3541	0x1415e7200	cstring	Centered on location
+classic	journal-agreement-details-and-card-fields	0xc3798	0x1415e7248	cstring	 Showing type,date
+classic	journal-agreement-details-and-card-fields	0xc37c2	0x1415e7230	cstring	 Showing pin,last
+classic	journal-agreement-details-and-card-fields	0xc398b	0x1415e64cc	cstring	/
+classic	journal-agreement-details-and-card-fields	0xc3b1b	0x1415e72c0	cstring	Overthrow Agreement
+classic	journal-agreement-details-and-card-fields	0xc3b27	0x1415e72d8	cstring	Guide Agreement
+classic	journal-agreement-details-and-card-fields	0xc3b33	0x1415e7290	cstring	Rescue Agreement
+classic	journal-agreement-details-and-card-fields	0xc3b3f	0x1415e72a8	cstring	Aid Rescue Agreement
+classic	journal-agreement-details-and-card-fields	0xc3b4b	0x1415e7318	cstring	Adventuring Agreement
+classic	journal-agreement-details-and-card-fields	0xc3b57	0x1415e7330	cstring	Bound Servitude
+classic	journal-agreement-details-and-card-fields	0xc3b63	0x1415e72e8	cstring	Entertainment Agreement
+classic	journal-agreement-details-and-card-fields	0xc3b6f	0x1415e7300	cstring	World Joining Agreement
+classic	journal-agreement-details-and-card-fields	0xc3b7b	0x1415e7368	cstring	Residency Agreement
+classic	journal-agreement-details-and-card-fields	0xc3b87	0x1415e7380	cstring	Grant of Citizenship
+classic	journal-agreement-details-and-card-fields	0xc3b93	0x1415e7340	cstring	Parley Arrangement
+classic	journal-agreement-details-and-card-fields	0xc3b9f	0x1415e7358	cstring	Corruption
+classic	journal-agreement-details-and-card-fields	0xc3bab	0x1415e73c0	cstring	Artifact Theft
+classic	journal-agreement-details-and-card-fields	0xc3bb7	0x1415e73d0	cstring	Promise of Position
+classic	journal-agreement-details-and-card-fields	0xc3bc3	0x1415e7398	cstring	Assassination Plot
+classic	journal-agreement-details-and-card-fields	0xc3bcf	0x1415e73b0	cstring	Abduction Plot
+classic	journal-agreement-details-and-card-fields	0xc3bd8	0x1415e7410	cstring	Sabotage Plot
+classic	journal-agreement-details-and-card-fields	0xc3be1	0x1415e7420	cstring	Infiltration Plot
+classic	journal-agreement-details-and-card-fields	0xc3bea	0x1415e73e8	cstring	Framing Plot
+classic	journal-agreement-details-and-card-fields	0xc3bf3	0x1415e73f8	cstring	War Starting Plot
+classic	journal-agreement-details-and-card-fields	0xc3c20	0x1415e7438	cstring	Foiled Embezzlement Conspiracy
+classic	journal-agreement-details-and-card-fields	0xc3c29	0x1415e7488	cstring	Foiled Corruption Conspiracy
+classic	journal-agreement-details-and-card-fields	0xc3c32	0x1415e7468	cstring	Foiled Bribery Conspiracy
+classic	journal-agreement-details-and-card-fields	0xc3c3b	0x1415e7458	cstring	Build Structure
+classic	journal-agreement-details-and-card-fields	0xc3c44	0x1415e74c0	cstring	Offer Service
+classic	journal-agreement-details-and-card-fields	0xc3c4d	0x1415e74d0	cstring	Retrieve Artifact
+classic	journal-agreement-details-and-card-fields	0xc3da7	0x1415e3c40	cstring	You
+classic	journal-agreement-details-and-card-fields	0xc3e54	0x1415e7690	cstring	asked that
+classic	journal-agreement-details-and-card-fields	0xc3eb5	0x1415e74b8	cstring	you
+classic	journal-agreement-details-and-card-fields	0xc3f5c	0x1415e76a0	cstring	retrieve
+classic	journal-agreement-details-and-card-fields	0xc4052	0x1415e7684	cstring	from
+classic	journal-agreement-details-and-card-fields	0xc414e	0x1415e768c	cstring	for
+classic	journal-agreement-details-and-card-fields	0xc42a1	0x1415e76c8	cstring	Drive members of
+classic	journal-agreement-details-and-card-fields	0xc4364	0x1415e76ac	cstring	out of
+classic	journal-agreement-details-and-card-fields	0xc44fa	0x1415e3c40	cstring	You
+classic	journal-agreement-details-and-card-fields	0xc45a7	0x1415e7650	cstring	requested that
+classic	journal-agreement-details-and-card-fields	0xc4608	0x1415e74b8	cstring	you
+classic	journal-agreement-details-and-card-fields	0xc46ab	0x1415e7660	cstring	make an offer of service to
+classic	journal-agreement-details-and-card-fields	0xc489c	0x1415e3c40	cstring	You
+classic	journal-agreement-details-and-card-fields	0xc4949	0x1415e74a8	cstring	agreed to join
+classic	journal-agreement-details-and-card-fields	0xc49aa	0x1415e74b8	cstring	you
+classic	journal-agreement-details-and-card-fields	0xc4a4f	0x1415e7500	cstring	in insurrection against
+classic	journal-agreement-details-and-card-fields	0xc4b27	0x1415e7518	cstring	thereby freeing
+classic	journal-agreement-details-and-card-fields	0xc4c18	0x1415e3c40	cstring	You
+classic	journal-agreement-details-and-card-fields	0xc4cc5	0x1415e74e8	cstring	agreed to guide
+classic	journal-agreement-details-and-card-fields	0xc4d26	0x1415e74b8	cstring	you
+classic	journal-agreement-details-and-card-fields	0xc4dcb	0x1415e74f8	cstring	to
+classic	journal-agreement-details-and-card-fields	0xc4fd3	0x1415e7560	cstring	somebody unknown
+classic	journal-agreement-details-and-card-fields	0xc5048	0x1415e3c40	cstring	You
+classic	journal-agreement-details-and-card-fields	0xc50f5	0x1415e74a8	cstring	agreed to join
+classic	journal-agreement-details-and-card-fields	0xc5156	0x1415e74b8	cstring	you
+classic	journal-agreement-details-and-card-fields	0xc51f7	0x1415e7578	cstring	in order to be brought safely away from
+classic	journal-agreement-details-and-card-fields	0xc52ec	0x1415e3c40	cstring	You
+classic	journal-agreement-details-and-card-fields	0xc5399	0x1415e74a8	cstring	agreed to join
+classic	journal-agreement-details-and-card-fields	0xc53fa	0x1415e74b8	cstring	you
+classic	journal-agreement-details-and-card-fields	0xc549b	0x1415e7528	cstring	in order to rescue
+classic	journal-agreement-details-and-card-fields	0xc5616	0x1415e7560	cstring	somebody unknown
+classic	journal-agreement-details-and-card-fields	0xc568b	0x1415e3c40	cstring	You
+classic	journal-agreement-details-and-card-fields	0xc5738	0x1415e7540	cstring	agreed to adventure with
+classic	journal-agreement-details-and-card-fields	0xc5799	0x1415e74b8	cstring	you
+classic	journal-agreement-details-and-card-fields	0xc583a	0x1415e75e0	cstring	wherever the journey might lead
+classic	journal-agreement-details-and-card-fields	0xc58a9	0x1415e3c40	cstring	You
+classic	journal-agreement-details-and-card-fields	0xc5956	0x1415e7600	cstring	was bound to serve
+classic	journal-agreement-details-and-card-fields	0xc59b7	0x1415e74b8	cstring	you
+classic	journal-agreement-details-and-card-fields	0xc5a58	0x1415e75a0	cstring	by invocation of True Name
+classic	journal-agreement-details-and-card-fields	0xc5ac7	0x1415e3c40	cstring	You
+classic	journal-agreement-details-and-card-fields	0xc5b74	0x1415e75c0	cstring	agreed to entertain people with
+classic	journal-agreement-details-and-card-fields	0xc5bd5	0x1415e74b8	cstring	you
+classic	journal-agreement-details-and-card-fields	0xc5c76	0x1415e7620	cstring	throughout the world
+classic	journal-agreement-details-and-card-fields	0xc5cfd	0x1415e7638	cstring	Agreement concluded
+classic	journal-agreement-details-and-card-fields	0xc5dd0	0x1415e7614	cstring	st
+classic	journal-agreement-details-and-card-fields	0xc5dd9	0x1415e7618	cstring	nd
+classic	journal-agreement-details-and-card-fields	0xc5de2	0x1415e767c	cstring	rd
+classic	journal-agreement-details-and-card-fields	0xc5deb	0x1415e7680	cstring	th
+classic	journal-agreement-details-and-card-fields	0xc5dfb	0x1415e3720	cstring	 
+classic	journal-agreement-details-and-card-fields	0xc5e2d	0x1415e40c4	cstring	, 
+classic	journal-agreement-details-and-card-fields	0xc5eb5	0x1415e76bc	cstring	Kill
+classic	journal-agreement-details-and-card-fields	0xc5f96	0x1415e7710	cstring	Cause trouble for
+classic	journal-agreement-details-and-card-fields	0xc605a	0x1415e76b4	cstring	Drive
+classic	journal-agreement-details-and-card-fields	0xc611d	0x1415e7684	cstring	from
+classic	journal-agreement-details-and-card-fields	0xc61e3	0x1415e7728	cstring	An order from
+classic	journal-agreement-details-and-card-fields	0xc62cd	0x1415e76e0	cstring	Finish reporting in
+classic	journal-agreement-details-and-card-fields	0xc633e	0x1415e76f8	cstring	Complete: report back
+classic	journal-agreement-details-and-card-fields	0xc638b	0x1415e7760	cstring	Not yet completed
+classic	journal-agreement-details-and-card-fields	0xc6504	0x1415e3c40	cstring	You
+classic	journal-agreement-details-and-card-fields	0xc65b1	0x1415e7690	cstring	asked that
+classic	journal-agreement-details-and-card-fields	0xc6612	0x1415e74b8	cstring	you
+classic	journal-agreement-details-and-card-fields	0xc66b5	0x1415e7738	cstring	retrieve 
+classic	journal-agreement-details-and-card-fields	0xc684f	0x1415e3c40	cstring	You
+classic	journal-agreement-details-and-card-fields	0xc68fc	0x1415e7650	cstring	requested that
+classic	journal-agreement-details-and-card-fields	0xc695d	0x1415e74b8	cstring	you
+classic	journal-agreement-details-and-card-fields	0xc6a00	0x1415e7774	cstring	serve 
+classic	journal-agreement-details-and-card-fields	0xc6ae5	0x1415e7638	cstring	Agreement concluded
+classic	journal-agreement-details-and-card-fields	0xc6b86	0x1415e7728	cstring	An order from
+classic	journal-agreement-details-and-card-fields	0xc6c6d	0x1415e76e0	cstring	Finish reporting in
+classic	journal-agreement-details-and-card-fields	0xc6cdb	0x1415e76f8	cstring	Complete: report back
+classic	journal-agreement-details-and-card-fields	0xc6d25	0x1415e7760	cstring	Not yet completed
+classic	journal-agreement-details-and-card-fields	0xc6ef7	0x1415e7748	cstring	Centered on commander
+classic	journal-agreement-details-and-card-fields	0xc6f61	0x1415e7798	cstring	Centered on target
+classic	journal-agreement-details-and-card-fields	0xc71e1	0x1415e778c	cstring	Org: 
+classic	journal-agreement-details-and-card-fields	0xc726b	0x1415e64cc	cstring	/
+classic	journal-agreement-details-and-card-fields	0xc74d2	0x1415e64cc	cstring	/
+classic	journal-agreement-details-and-card-fields	0xc7ec9	0x1415e77b0	cstring	One member
+classic	journal-agreement-details-and-card-fields	0xc7f15	0x1415e7780	cstring	 members
+classic	journal-agreement-details-and-card-fields	0xc8205	0x1415e64cc	cstring	/
+classic	journal-agreement-details-and-card-fields	0xc85f0	0x1415e64cc	cstring	/
+classic	journal-agreement-details-and-card-fields	0xc89e0	0x1415e64cc	cstring	/
+classic	journal-agreement-details-and-card-fields	0xc8d2c	0x1415e77d8	cstring	 Showing important
+classic	journal-agreement-details-and-card-fields	0xc8d67	0x1415e77f0	cstring	 Showing all
+classic	journal-agreement-details-and-card-fields	0xc8f32	0x1415e64cc	cstring	/
+classic	journal-agreement-details-and-card-fields	0xc927c	0x1415e77d8	cstring	 Showing important
+classic	journal-agreement-details-and-card-fields	0xc92b7	0x1415e77f0	cstring	 Showing all
+classic	journal-agreement-details-and-card-fields	0xc9470	0x1415e64cc	cstring	/
+classic	journal-agreement-details-and-card-fields	0xc97bc	0x1415e77d8	cstring	 Showing important
+classic	journal-agreement-details-and-card-fields	0xc97f7	0x1415e77f0	cstring	 Showing all
+classic	journal-agreement-details-and-card-fields	0xc99b0	0x1415e64cc	cstring	/
+classic	journal-agreement-details-and-card-fields	0xc9da0	0x1415e64cc	cstring	/
+classic	journal-agreement-details-and-card-fields	0xca0bc	0x1415e77c0	cstring	: Toggle line
+classic	journal-agreement-details-and-card-fields	0xca216	0x1415e77d0	cstring	...
+classic	journal-agreement-details-and-card-fields	0xca25a	0x1415e783c	cstring	_
+classic	journal-agreement-title-and-orders	0xdf972	0x1415e9260	cstring	Done: 
+classic	journal-agreement-title-and-orders	0xdfb22	0x1415e92a8	cstring	Insurrection with 
+classic	journal-agreement-title-and-orders	0xdfb2b	0x1415e92c0	cstring	Guided by 
+classic	journal-agreement-title-and-orders	0xdfb34	0x1415e9288	cstring	Rescue 
+classic	journal-agreement-title-and-orders	0xdfb3d	0x1415e9290	cstring	Aid rescue with 
+classic	journal-agreement-title-and-orders	0xdfb46	0x1415e92f8	cstring	Adventure with 
+classic	journal-agreement-title-and-orders	0xdfb4f	0x1415e9308	cstring	The bound service of
+classic	journal-agreement-title-and-orders	0xdfb58	0x1415e92d0	cstring	Entertain people with 
+classic	journal-agreement-title-and-orders	0xdfc14	0x1415e7300	cstring	World Joining Agreement
+classic	journal-agreement-title-and-orders	0xdfc26	0x1415e7368	cstring	Residency Agreement
+classic	journal-agreement-title-and-orders	0xdfc38	0x1415e7380	cstring	Grant of Citizenship
+classic	journal-agreement-title-and-orders	0xdfc4a	0x1415e7340	cstring	Parley Arrangement
+classic	journal-agreement-title-and-orders	0xdfc5c	0x1415e7358	cstring	Corruption
+classic	journal-agreement-title-and-orders	0xdfc6e	0x1415e73c0	cstring	Artifact Theft
+classic	journal-agreement-title-and-orders	0xdfc80	0x1415e73d0	cstring	Promise of Position
+classic	journal-agreement-title-and-orders	0xdfc92	0x1415e7398	cstring	Assassination Plot
+classic	journal-agreement-title-and-orders	0xdfca4	0x1415e73b0	cstring	Abduction Plot
+classic	journal-agreement-title-and-orders	0xdfcb6	0x1415e7410	cstring	Sabotage Plot
+classic	journal-agreement-title-and-orders	0xdfcc2	0x1415e7420	cstring	Infiltration Plot
+classic	journal-agreement-title-and-orders	0xdfcd1	0x1415e73e8	cstring	Framing Plot
+classic	journal-agreement-title-and-orders	0xdfcda	0x1415e73f8	cstring	War Starting Plot
+classic	journal-agreement-title-and-orders	0xdfcfe	0x1415e7438	cstring	Foiled Embezzlement Conspiracy
+classic	journal-agreement-title-and-orders	0xdfd0d	0x1415e7488	cstring	Foiled Corruption Conspiracy
+classic	journal-agreement-title-and-orders	0xdfd1c	0x1415e7468	cstring	Foiled Bribery Conspiracy
+classic	journal-agreement-title-and-orders	0xdfd2b	0x1415e7458	cstring	Build Structure
+classic	journal-agreement-title-and-orders	0xdfd3a	0x1415e74c0	cstring	Offer Service
+classic	journal-agreement-title-and-orders	0xdfd43	0x1415e74d0	cstring	Retrieve Artifact
+classic	journal-agreement-title-and-orders	0xdfeeb	0x1415e9320	cstring	Order: Drive off 
+classic	journal-agreement-title-and-orders	0xdff18	0x1415e8984	cstring	 from 
+classic	journal-agreement-title-and-orders	0xe0115	0x1415e92e8	cstring	Order: Kill 
+classic	journal-agreement-title-and-orders	0xe034a	0x1415e9338	cstring	Order: Cause trouble for 
+classic	journal-agreement-title-and-orders	0xe0c5c	0x1415e9320	cstring	Order: Drive off 
+classic	journal-agreement-title-and-orders	0xe0c84	0x1415e8984	cstring	 from 
+classic	journal-agreement-calendar-month	0x770dd8	0x14169fa78	cstring	Granite
+classic	journal-agreement-calendar-month	0x770ded	0x14169fa80	cstring	Slate
+classic	journal-agreement-calendar-month	0x770e02	0x14169fa88	cstring	Felsite
+classic	journal-agreement-calendar-month	0x770e11	0x14169fa90	cstring	Hematite
+classic	journal-agreement-calendar-month	0x770e2c	0x14169faa0	cstring	Malachite
+classic	journal-agreement-calendar-month	0x770e41	0x14169f898	cstring	Galena
+classic	journal-agreement-calendar-month	0x770e56	0x14169f8a0	cstring	Limestone
+classic	journal-agreement-calendar-month	0x770e6b	0x14169f8b0	cstring	Sandstone
+classic	journal-agreement-calendar-month	0x770e80	0x14169f8bc	cstring	Timber
+classic	journal-agreement-calendar-month	0x770e95	0x14169f8c8	cstring	Moonstone
+classic	journal-agreement-calendar-month	0x770eaa	0x14169f8d4	cstring	Opal
+classic	journal-agreement-calendar-month	0x770eb9	0x141600b40	cstring	Obsidian

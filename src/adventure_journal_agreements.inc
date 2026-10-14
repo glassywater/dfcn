@@ -1,3 +1,4 @@
+// PE 53.16: df540 supplies titles; c2110 draws independent detail fields.
 // ELF 53.16: 17db9b0 supplies titles; 17cda80 draws independent detail fields.
 // Keep the same title grammar in the journal, Tasks strip and Chinese search.
 std::optional<std::string> Overlay::translate_journal_agreement_title(

@@ -1,0 +1,1642 @@
+edition	role	instruction_rva	condition
+steam	journal-agreement-details-and-card-fields	0xc214f	cmp    BYTE PTR [rip+0x17e5462],0x0        # 0x1418a75b8
+steam	journal-agreement-details-and-card-fields	0xc216e	cmp    BYTE PTR [rip+0x25884ff],0x0        # 0x14264a674
+steam	journal-agreement-details-and-card-fields	0xc2181	cmp    BYTE PTR [rip+0x25884ed],0x0        # 0x14264a675
+steam	journal-agreement-details-and-card-fields	0xc2191	test   rax,rax
+steam	journal-agreement-details-and-card-fields	0xc21bd	cmp    BYTE PTR [rip+0x22ce411],0x0        # 0x1423905d5
+steam	journal-agreement-details-and-card-fields	0xc2232	cmp    BYTE PTR [r13+0x233],dl
+steam	journal-agreement-details-and-card-fields	0xc225a	test   al,al
+steam	journal-agreement-details-and-card-fields	0xc2262	cmp    QWORD PTR [rip+0x25881fe],0x0        # 0x14264a468
+steam	journal-agreement-details-and-card-fields	0xc22b4	cmp    BYTE PTR [r13+0x254],0x0
+steam	journal-agreement-details-and-card-fields	0xc23b6	cmp    BYTE PTR [r13+0x254],0x0
+steam	journal-agreement-details-and-card-fields	0xc23e1	cmp    r8d,0xfa
+steam	journal-agreement-details-and-card-fields	0xc242e	cmp    edx,r14d
+steam	journal-agreement-details-and-card-fields	0xc2447	cmp    ax,di
+steam	journal-agreement-details-and-card-fields	0xc2457	cmp    eax,ecx
+steam	journal-agreement-details-and-card-fields	0xc245e	cmp    ax,si
+steam	journal-agreement-details-and-card-fields	0xc246b	cmp    eax,ecx
+steam	journal-agreement-details-and-card-fields	0xc24c7	cmp    r14d,edx
+steam	journal-agreement-details-and-card-fields	0xc24e0	cmp    ax,di
+steam	journal-agreement-details-and-card-fields	0xc24f4	cmp    eax,ecx
+steam	journal-agreement-details-and-card-fields	0xc2504	cmp    ax,si
+steam	journal-agreement-details-and-card-fields	0xc2517	cmp    eax,ecx
+steam	journal-agreement-details-and-card-fields	0xc2538	cmp    r8d,0xfa
+steam	journal-agreement-details-and-card-fields	0xc2597	cmp    ax,di
+steam	journal-agreement-details-and-card-fields	0xc25ab	cmp    eax,ecx
+steam	journal-agreement-details-and-card-fields	0xc25bb	cmp    ax,si
+steam	journal-agreement-details-and-card-fields	0xc25cc	cmp    eax,ecx
+steam	journal-agreement-details-and-card-fields	0xc25f6	cmp    r8d,0xfa
+steam	journal-agreement-details-and-card-fields	0xc2650	test   al,al
+steam	journal-agreement-details-and-card-fields	0xc265b	test   rcx,rcx
+steam	journal-agreement-details-and-card-fields	0xc26ba	cmp    r9d,0x8
+steam	journal-agreement-details-and-card-fields	0xc27c2	cmp    esi,edi
+steam	journal-agreement-details-and-card-fields	0xc27e2	cmp    r15w,WORD PTR [r13+0x256]
+steam	journal-agreement-details-and-card-fields	0xc27f3	cmp    ebx,esi
+steam	journal-agreement-details-and-card-fields	0xc2818	cmp    ebx,esi
+steam	journal-agreement-details-and-card-fields	0xc2825	cmp    ebx,eax
+steam	journal-agreement-details-and-card-fields	0xc2830	cmp    ebx,edi
+steam	journal-agreement-details-and-card-fields	0xc283e	cmp    ebx,eax
+steam	journal-agreement-details-and-card-fields	0xc286c	cmp    ebx,edi
+steam	journal-agreement-details-and-card-fields	0xc287a	cmp    r14d,0x1
+steam	journal-agreement-details-and-card-fields	0xc2898	cmp    ebx,0x1
+steam	journal-agreement-details-and-card-fields	0xc28b2	test   al,al
+steam	journal-agreement-details-and-card-fields	0xc28b6	test   ebx,ebx
+steam	journal-agreement-details-and-card-fields	0xc2900	test   al,al
+steam	journal-agreement-details-and-card-fields	0xc2909	cmp    r15w,cx
+steam	journal-agreement-details-and-card-fields	0xc294d	cmp    r15w,cx
+steam	journal-agreement-details-and-card-fields	0xc297d	cmp    eax,0x8
+steam	journal-agreement-details-and-card-fields	0xc2b5b	cmp    ebx,0x2
+steam	journal-agreement-details-and-card-fields	0xc2b6f	cmp    r9d,0x9
+steam	journal-agreement-details-and-card-fields	0xc2b8c	cmp    WORD PTR [r13+0x256],0x8
+steam	journal-agreement-details-and-card-fields	0xc2bd2	test   edx,edx
+steam	journal-agreement-details-and-card-fields	0xc2bdb	cmp    ecx,0x1
+steam	journal-agreement-details-and-card-fields	0xc2be2	test   edx,edx
+steam	journal-agreement-details-and-card-fields	0xc2beb	cmp    ecx,0x1
+steam	journal-agreement-details-and-card-fields	0xc2c43	cmp    r14d,r15d
+steam	journal-agreement-details-and-card-fields	0xc2c5c	cmp    r12w,WORD PTR [r13+0x258]
+steam	journal-agreement-details-and-card-fields	0xc2c69	cmp    ebx,r14d
+steam	journal-agreement-details-and-card-fields	0xc2c77	cmp    ebx,eax
+steam	journal-agreement-details-and-card-fields	0xc2c82	cmp    ebx,r15d
+steam	journal-agreement-details-and-card-fields	0xc2c95	cmp    ebx,eax
+steam	journal-agreement-details-and-card-fields	0xc2ca0	cmp    ebx,r14d
+steam	journal-agreement-details-and-card-fields	0xc2cae	cmp    ebx,eax
+steam	journal-agreement-details-and-card-fields	0xc2cb9	cmp    ebx,r15d
+steam	journal-agreement-details-and-card-fields	0xc2cc9	cmp    ebx,eax
+steam	journal-agreement-details-and-card-fields	0xc2cf8	cmp    ebx,r15d
+steam	journal-agreement-details-and-card-fields	0xc2d33	cmp    eax,0x3
+steam	journal-agreement-details-and-card-fields	0xc2d55	cmp    edi,0x1
+steam	journal-agreement-details-and-card-fields	0xc2d60	cmp    DWORD PTR [rip+0x230aa11],0x0        # 0x1423cd778
+steam	journal-agreement-details-and-card-fields	0xc2d70	test   BYTE PTR [rax],0x1
+steam	journal-agreement-details-and-card-fields	0xc2d75	test   edi,edi
+steam	journal-agreement-details-and-card-fields	0xc2d80	test   r15d,r15d
+steam	journal-agreement-details-and-card-fields	0xc2dde	test   al,al
+steam	journal-agreement-details-and-card-fields	0xc2de8	cmp    r12w,cx
+steam	journal-agreement-details-and-card-fields	0xc2e05	cmp    r12w,cx
+steam	journal-agreement-details-and-card-fields	0xc2e36	cmp    r12w,cx
+steam	journal-agreement-details-and-card-fields	0xc2e53	test   r15d,r15d
+steam	journal-agreement-details-and-card-fields	0xc2e5d	cmp    ecx,0x1
+steam	journal-agreement-details-and-card-fields	0xc2efc	cmp    edi,0x2
+steam	journal-agreement-details-and-card-fields	0xc2f0c	cmp    r15d,0x3
+steam	journal-agreement-details-and-card-fields	0xc2fbc	cmp    eax,0x8
+steam	journal-agreement-details-and-card-fields	0xc3011	cmp    eax,edx
+steam	journal-agreement-details-and-card-fields	0xc302c	cmp    ebx,ecx
+steam	journal-agreement-details-and-card-fields	0xc3035	test   ecx,ecx
+steam	journal-agreement-details-and-card-fields	0xc3043	cmp    edi,eax
+steam	journal-agreement-details-and-card-fields	0xc3054	cmp    edi,r8d
+steam	journal-agreement-details-and-card-fields	0xc30a6	cmp    BYTE PTR [r13+0x278],0x0
+steam	journal-agreement-details-and-card-fields	0xc30c3	cmp    edi,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc30e4	test   rcx,rcx
+steam	journal-agreement-details-and-card-fields	0xc30e9	test   BYTE PTR [rcx+0x28],0x1
+steam	journal-agreement-details-and-card-fields	0xc30ef	cmp    edi,eax
+steam	journal-agreement-details-and-card-fields	0xc30f8	cmp    edi,eax
+steam	journal-agreement-details-and-card-fields	0xc311f	cmp    edi,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc315c	cmp    rax,0x2
+steam	journal-agreement-details-and-card-fields	0xc31d9	cmp    edi,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc3263	cmp    edi,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc3294	cmp    BYTE PTR [r13+0x278],0x0
+steam	journal-agreement-details-and-card-fields	0xc329e	cmp    edi,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc32b7	cmp    rax,0x2
+steam	journal-agreement-details-and-card-fields	0xc32c8	cmp    ebx,0x1
+steam	journal-agreement-details-and-card-fields	0xc32d1	cmp    eax,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc32ee	cmp    BYTE PTR [r13+0x278],cl
+steam	journal-agreement-details-and-card-fields	0xc3308	cmp    ebx,eax
+steam	journal-agreement-details-and-card-fields	0xc3320	cmp    ebx,r15d
+steam	journal-agreement-details-and-card-fields	0xc3325	cmp    edi,r13d
+steam	journal-agreement-details-and-card-fields	0xc335f	cmp    ebx,DWORD PTR [rbp-0x78]
+steam	journal-agreement-details-and-card-fields	0xc3378	cmp    edi,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc3385	cmp    BYTE PTR [r13+0x278],0x0
+steam	journal-agreement-details-and-card-fields	0xc33f8	cmp    rbx,rax
+steam	journal-agreement-details-and-card-fields	0xc33ff	cmp    ebx,r12d
+steam	journal-agreement-details-and-card-fields	0xc3468	cmp    rbx,rax
+steam	journal-agreement-details-and-card-fields	0xc3481	test   ecx,ecx
+steam	journal-agreement-details-and-card-fields	0xc348e	cmp    ecx,0x1
+steam	journal-agreement-details-and-card-fields	0xc3497	cmp    BYTE PTR [r15+0xfc],bl
+steam	journal-agreement-details-and-card-fields	0xc34a0	cmp    BYTE PTR [r15+0xfd],bl
+steam	journal-agreement-details-and-card-fields	0xc3505	cmp    BYTE PTR [r15+0xfc],bl
+steam	journal-agreement-details-and-card-fields	0xc350e	cmp    BYTE PTR [r15+0xfe],bl
+steam	journal-agreement-details-and-card-fields	0xc3570	cmp    BYTE PTR [r15+0xfd],bl
+steam	journal-agreement-details-and-card-fields	0xc3579	cmp    BYTE PTR [r15+0xfe],bl
+steam	journal-agreement-details-and-card-fields	0xc35e2	test   bl,bl
+steam	journal-agreement-details-and-card-fields	0xc3644	cmp    rbx,rax
+steam	journal-agreement-details-and-card-fields	0xc3655	test   rax,rax
+steam	journal-agreement-details-and-card-fields	0xc3664	test   BYTE PTR [rax+0x28],0x1
+steam	journal-agreement-details-and-card-fields	0xc36a9	cmp    rdi,r13
+steam	journal-agreement-details-and-card-fields	0xc36e9	cmp    rdi,r13
+steam	journal-agreement-details-and-card-fields	0xc370f	cmp    edi,DWORD PTR [rbp-0x60]
+steam	journal-agreement-details-and-card-fields	0xc372f	cmp    eax,0x2
+steam	journal-agreement-details-and-card-fields	0xc373c	cmp    r14d,DWORD PTR [rbp-0x70]
+steam	journal-agreement-details-and-card-fields	0xc3772	cmp    rsi,r12
+steam	journal-agreement-details-and-card-fields	0xc377c	cmp    rsi,r15
+steam	journal-agreement-details-and-card-fields	0xc379a	cmp    rbx,r13
+steam	journal-agreement-details-and-card-fields	0xc37a5	cmp    r14d,DWORD PTR [rbp-0x70]
+steam	journal-agreement-details-and-card-fields	0xc37ff	test   ecx,ecx
+steam	journal-agreement-details-and-card-fields	0xc3803	cmp    ecx,0x1
+steam	journal-agreement-details-and-card-fields	0xc3897	cmp    eax,r15d
+steam	journal-agreement-details-and-card-fields	0xc38b6	cmp    r9d,ecx
+steam	journal-agreement-details-and-card-fields	0xc38bf	test   ecx,ecx
+steam	journal-agreement-details-and-card-fields	0xc38ce	cmp    eax,ecx
+steam	journal-agreement-details-and-card-fields	0xc38d6	cmp    eax,edx
+steam	journal-agreement-details-and-card-fields	0xc3916	cmp    BYTE PTR [r13+0x278],0x0
+steam	journal-agreement-details-and-card-fields	0xc3935	cmp    r15d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc3948	cmp    r15d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc3978	cmp    r15d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc39bf	cmp    r15d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc3a5e	cmp    r15d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc3a8f	cmp    BYTE PTR [r13+0x278],0x0
+steam	journal-agreement-details-and-card-fields	0xc3a9d	cmp    r15d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc3ac3	test   r12,r12
+steam	journal-agreement-details-and-card-fields	0xc3b0a	cmp    eax,0x11
+steam	journal-agreement-details-and-card-fields	0xc3b3b	cmp    DWORD PTR [rax+0x18],0xffffffff
+steam	journal-agreement-details-and-card-fields	0xc3b6e	cmp    ecx,0x2a
+steam	journal-agreement-details-and-card-fields	0xc3c82	test   ecx,ecx
+steam	journal-agreement-details-and-card-fields	0xc3c8b	cmp    ecx,0x1
+steam	journal-agreement-details-and-card-fields	0xc3cff	test   eax,eax
+steam	journal-agreement-details-and-card-fields	0xc3d10	cmp    ecx,0x1
+steam	journal-agreement-details-and-card-fields	0xc3d5e	test   rdi,rdi
+steam	journal-agreement-details-and-card-fields	0xc3d67	test   rax,rax
+steam	journal-agreement-details-and-card-fields	0xc3d79	test   rax,rax
+steam	journal-agreement-details-and-card-fields	0xc3d8b	test   rax,rax
+steam	journal-agreement-details-and-card-fields	0xc3dcc	test   rax,rax
+steam	journal-agreement-details-and-card-fields	0xc3dd5	test   rbx,rbx
+steam	journal-agreement-details-and-card-fields	0xc3dff	cmp    DWORD PTR [rbx+0xe0],r15d
+steam	journal-agreement-details-and-card-fields	0xc3f12	cmp    DWORD PTR [rdi+0xe0],r15d
+steam	journal-agreement-details-and-card-fields	0xc4092	cmp    DWORD PTR [rax+0xc],0xffffffff
+steam	journal-agreement-details-and-card-fields	0xc418e	cmp    DWORD PTR [rax+0x10],0xffffffff
+steam	journal-agreement-details-and-card-fields	0xc42a3	test   rbx,rbx
+steam	journal-agreement-details-and-card-fields	0xc42ac	test   rdi,rdi
+steam	journal-agreement-details-and-card-fields	0xc42db	cmp    ecx,0x1
+steam	journal-agreement-details-and-card-fields	0xc44b1	test   rdi,rdi
+steam	journal-agreement-details-and-card-fields	0xc44ba	test   rax,rax
+steam	journal-agreement-details-and-card-fields	0xc44cc	test   rax,rax
+steam	journal-agreement-details-and-card-fields	0xc44de	test   rax,rax
+steam	journal-agreement-details-and-card-fields	0xc451f	test   rax,rax
+steam	journal-agreement-details-and-card-fields	0xc4528	test   rbx,rbx
+steam	journal-agreement-details-and-card-fields	0xc4552	cmp    DWORD PTR [rbx+0xe0],r15d
+steam	journal-agreement-details-and-card-fields	0xc4665	cmp    DWORD PTR [rdi+0xe0],r15d
+steam	journal-agreement-details-and-card-fields	0xc4819	test   r15,r15
+steam	journal-agreement-details-and-card-fields	0xc4822	test   rax,rax
+steam	journal-agreement-details-and-card-fields	0xc4834	test   rax,rax
+steam	journal-agreement-details-and-card-fields	0xc4846	test   rax,rax
+steam	journal-agreement-details-and-card-fields	0xc4887	test   rbx,rbx
+steam	journal-agreement-details-and-card-fields	0xc4890	test   rax,rax
+steam	journal-agreement-details-and-card-fields	0xc48af	cmp    eax,0x2a
+steam	journal-agreement-details-and-card-fields	0xc48f4	cmp    DWORD PTR [rbx+0xe0],r15d
+steam	journal-agreement-details-and-card-fields	0xc4a07	cmp    DWORD PTR [rdi+0xe0],r15d
+steam	journal-agreement-details-and-card-fields	0xc4c70	cmp    DWORD PTR [rbx+0xe0],r15d
+steam	journal-agreement-details-and-card-fields	0xc4d83	cmp    DWORD PTR [rdi+0xe0],r15d
+steam	journal-agreement-details-and-card-fields	0xc4e92	cmp    DWORD PTR [rdx+0xc],0xffffffff
+steam	journal-agreement-details-and-card-fields	0xc4f53	test   rbx,rbx
+steam	journal-agreement-details-and-card-fields	0xc4fb5	test   rax,rax
+steam	journal-agreement-details-and-card-fields	0xc4fcb	test   rax,rax
+steam	journal-agreement-details-and-card-fields	0xc50a0	cmp    DWORD PTR [rbx+0xe0],r15d
+steam	journal-agreement-details-and-card-fields	0xc51b3	cmp    DWORD PTR [rdi+0xe0],r15d
+steam	journal-agreement-details-and-card-fields	0xc5344	cmp    DWORD PTR [rbx+0xe0],r15d
+steam	journal-agreement-details-and-card-fields	0xc5457	cmp    DWORD PTR [rdi+0xe0],r15d
+steam	journal-agreement-details-and-card-fields	0xc5596	test   rbx,rbx
+steam	journal-agreement-details-and-card-fields	0xc55f8	test   rax,rax
+steam	journal-agreement-details-and-card-fields	0xc560e	test   rax,rax
+steam	journal-agreement-details-and-card-fields	0xc56e3	cmp    DWORD PTR [rbx+0xe0],r15d
+steam	journal-agreement-details-and-card-fields	0xc57f6	cmp    DWORD PTR [rdi+0xe0],r15d
+steam	journal-agreement-details-and-card-fields	0xc5901	cmp    DWORD PTR [rbx+0xe0],r15d
+steam	journal-agreement-details-and-card-fields	0xc5a14	cmp    DWORD PTR [rdi+0xe0],r15d
+steam	journal-agreement-details-and-card-fields	0xc5b1f	cmp    DWORD PTR [rbx+0xe0],r15d
+steam	journal-agreement-details-and-card-fields	0xc5c32	cmp    DWORD PTR [rdi+0xe0],r15d
+steam	journal-agreement-details-and-card-fields	0xc5d3c	cmp    DWORD PTR [rax+0x18],0xffffffff
+steam	journal-agreement-details-and-card-fields	0xc5e1d	cmp    ebx,0x20
+steam	journal-agreement-details-and-card-fields	0xc630f	test   BYTE PTR [rdi+0x1c],0x1
+steam	journal-agreement-details-and-card-fields	0xc6383	cmp    BYTE PTR [rcx+0x18],r8b
+steam	journal-agreement-details-and-card-fields	0xc643d	test   r12,r12
+steam	journal-agreement-details-and-card-fields	0xc645c	test   eax,eax
+steam	journal-agreement-details-and-card-fields	0xc646d	cmp    ecx,0x1
+steam	journal-agreement-details-and-card-fields	0xc64bb	test   r15,r15
+steam	journal-agreement-details-and-card-fields	0xc64c4	test   rax,rax
+steam	journal-agreement-details-and-card-fields	0xc64d6	test   rax,rax
+steam	journal-agreement-details-and-card-fields	0xc64e8	test   rax,rax
+steam	journal-agreement-details-and-card-fields	0xc6529	test   rax,rax
+steam	journal-agreement-details-and-card-fields	0xc6532	test   rbx,rbx
+steam	journal-agreement-details-and-card-fields	0xc655c	cmp    DWORD PTR [rbx+0xe0],r15d
+steam	journal-agreement-details-and-card-fields	0xc666f	cmp    DWORD PTR [rdi+0xe0],r15d
+steam	journal-agreement-details-and-card-fields	0xc6806	test   r15,r15
+steam	journal-agreement-details-and-card-fields	0xc680f	test   rax,rax
+steam	journal-agreement-details-and-card-fields	0xc6821	test   rax,rax
+steam	journal-agreement-details-and-card-fields	0xc6833	test   rax,rax
+steam	journal-agreement-details-and-card-fields	0xc6874	test   rax,rax
+steam	journal-agreement-details-and-card-fields	0xc687d	test   rbx,rbx
+steam	journal-agreement-details-and-card-fields	0xc68a7	cmp    DWORD PTR [rbx+0xe0],r15d
+steam	journal-agreement-details-and-card-fields	0xc69ba	cmp    DWORD PTR [rdi+0xe0],r15d
+steam	journal-agreement-details-and-card-fields	0xc6b25	cmp    DWORD PTR [rax+0x18],0xffffffff
+steam	journal-agreement-details-and-card-fields	0xc6bba	test   rbx,rbx
+steam	journal-agreement-details-and-card-fields	0xc6bc3	test   rdi,rdi
+steam	journal-agreement-details-and-card-fields	0xc6caf	test   BYTE PTR [rdi+0x1c],bl
+steam	journal-agreement-details-and-card-fields	0xc6d20	cmp    BYTE PTR [rcx+0x18],r8b
+steam	journal-agreement-details-and-card-fields	0xc6dd0	cmp    eax,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc6de8	cmp    BYTE PTR [r13+0x278],0x0
+steam	journal-agreement-details-and-card-fields	0xc6e48	cmp    rbx,rax
+steam	journal-agreement-details-and-card-fields	0xc6ea8	cmp    rbx,rax
+steam	journal-agreement-details-and-card-fields	0xc6ec5	cmp    QWORD PTR [rcx+0x10],0x0
+steam	journal-agreement-details-and-card-fields	0xc6ee6	cmp    BYTE PTR [rcx+0x98],bl
+steam	journal-agreement-details-and-card-fields	0xc6f08	cmp    DWORD PTR [rcx+0x9c],0xffffffff
+steam	journal-agreement-details-and-card-fields	0xc6f2a	cmp    BYTE PTR [rcx+0x18],0x0
+steam	journal-agreement-details-and-card-fields	0xc6f98	test   bl,bl
+steam	journal-agreement-details-and-card-fields	0xc7058	cmp    rbx,rax
+steam	journal-agreement-details-and-card-fields	0xc707d	cmp    eax,DWORD PTR [rbp-0x78]
+steam	journal-agreement-details-and-card-fields	0xc70be	cmp    ecx,0x1
+steam	journal-agreement-details-and-card-fields	0xc70e5	cmp    eax,edx
+steam	journal-agreement-details-and-card-fields	0xc7108	cmp    r9d,ecx
+steam	journal-agreement-details-and-card-fields	0xc7115	test   ecx,ecx
+steam	journal-agreement-details-and-card-fields	0xc7120	cmp    ebx,ecx
+steam	journal-agreement-details-and-card-fields	0xc7128	cmp    ebx,eax
+steam	journal-agreement-details-and-card-fields	0xc7144	cmp    DWORD PTR [rip+0x17d514d],0x0        # 0x14189c298
+steam	journal-agreement-details-and-card-fields	0xc7161	test   al,al
+steam	journal-agreement-details-and-card-fields	0xc717d	cmp    rax,r12
+steam	journal-agreement-details-and-card-fields	0xc7191	cmp    ebx,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc71ce	cmp    ebx,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc7215	test   al,al
+steam	journal-agreement-details-and-card-fields	0xc7228	cmp    ebx,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc72a7	cmp    ebx,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc734e	cmp    ebx,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc7388	cmp    edi,DWORD PTR [rbp-0x78]
+steam	journal-agreement-details-and-card-fields	0xc73cc	cmp    eax,edx
+steam	journal-agreement-details-and-card-fields	0xc73e9	cmp    r9d,ecx
+steam	journal-agreement-details-and-card-fields	0xc73f6	test   ecx,ecx
+steam	journal-agreement-details-and-card-fields	0xc7404	cmp    edi,ecx
+steam	journal-agreement-details-and-card-fields	0xc7410	cmp    edi,eax
+steam	journal-agreement-details-and-card-fields	0xc7457	cmp    BYTE PTR [r13+0x278],0x0
+steam	journal-agreement-details-and-card-fields	0xc7474	cmp    edi,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc7487	cmp    edi,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc74c3	cmp    edi,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc7510	cmp    edi,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc75a3	cmp    BYTE PTR [r13+0x278],0x0
+steam	journal-agreement-details-and-card-fields	0xc75b1	cmp    edi,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc7632	test   al,al
+steam	journal-agreement-details-and-card-fields	0xc766b	cmp    r13d,ebx
+steam	journal-agreement-details-and-card-fields	0xc7675	cmp    edi,ecx
+steam	journal-agreement-details-and-card-fields	0xc767e	cmp    esi,eax
+steam	journal-agreement-details-and-card-fields	0xc7686	cmp    r12d,eax
+steam	journal-agreement-details-and-card-fields	0xc76b1	test   al,al
+steam	journal-agreement-details-and-card-fields	0xc76cb	test   r8d,r8d
+steam	journal-agreement-details-and-card-fields	0xc76ec	test   r9,r9
+steam	journal-agreement-details-and-card-fields	0xc76ff	cmp    ecx,eax
+steam	journal-agreement-details-and-card-fields	0xc7712	cmp    eax,esi
+steam	journal-agreement-details-and-card-fields	0xc7726	cmp    r8d,edi
+steam	journal-agreement-details-and-card-fields	0xc7749	cmp    ecx,eax
+steam	journal-agreement-details-and-card-fields	0xc7763	cmp    eax,r12d
+steam	journal-agreement-details-and-card-fields	0xc77a8	test   al,al
+steam	journal-agreement-details-and-card-fields	0xc77bc	cmp    QWORD PTR [rcx+0x8],0x0
+steam	journal-agreement-details-and-card-fields	0xc77d7	cmp    QWORD PTR [rax],rcx
+steam	journal-agreement-details-and-card-fields	0xc77ef	cmp    QWORD PTR [rcx+0x8],rax
+steam	journal-agreement-details-and-card-fields	0xc78ac	cmp    eax,0x1
+steam	journal-agreement-details-and-card-fields	0xc78ee	cmp    edi,DWORD PTR [rip+0x2582d84]        # 0x14264a678
+steam	journal-agreement-details-and-card-fields	0xc78fa	cmp    edi,DWORD PTR [rip+0x2582d7c]        # 0x14264a67c
+steam	journal-agreement-details-and-card-fields	0xc7906	cmp    ebx,DWORD PTR [rip+0x2582d74]        # 0x14264a680
+steam	journal-agreement-details-and-card-fields	0xc7912	cmp    ebx,DWORD PTR [rip+0x2582d6c]        # 0x14264a684
+steam	journal-agreement-details-and-card-fields	0xc7921	cmp    eax,edi
+steam	journal-agreement-details-and-card-fields	0xc7925	cmp    r14d,ebx
+steam	journal-agreement-details-and-card-fields	0xc792a	cmp    r12d,edi
+steam	journal-agreement-details-and-card-fields	0xc792f	cmp    r15d,ebx
+steam	journal-agreement-details-and-card-fields	0xc794b	cmp    r12d,edi
+steam	journal-agreement-details-and-card-fields	0xc7950	cmp    r15d,ebx
+steam	journal-agreement-details-and-card-fields	0xc795b	cmp    r14d,ebx
+steam	journal-agreement-details-and-card-fields	0xc7960	cmp    r12d,edi
+steam	journal-agreement-details-and-card-fields	0xc7965	cmp    r15d,ebx
+steam	journal-agreement-details-and-card-fields	0xc7981	cmp    r12d,edi
+steam	journal-agreement-details-and-card-fields	0xc7986	cmp    r15d,ebx
+steam	journal-agreement-details-and-card-fields	0xc798f	cmp    r14d,ebx
+steam	journal-agreement-details-and-card-fields	0xc7994	cmp    r15d,ebx
+steam	journal-agreement-details-and-card-fields	0xc7999	cmp    eax,edi
+steam	journal-agreement-details-and-card-fields	0xc799d	cmp    r12d,edi
+steam	journal-agreement-details-and-card-fields	0xc79ca	cmp    r13d,eax
+steam	journal-agreement-details-and-card-fields	0xc79fe	test   al,al
+steam	journal-agreement-details-and-card-fields	0xc7a46	test   al,al
+steam	journal-agreement-details-and-card-fields	0xc7a76	cmp    QWORD PTR [rax],rcx
+steam	journal-agreement-details-and-card-fields	0xc7ba5	cmp    ecx,DWORD PTR [rip+0x2582acd]        # 0x14264a678
+steam	journal-agreement-details-and-card-fields	0xc7bbf	cmp    ecx,DWORD PTR [rip+0x2582ab7]        # 0x14264a67c
+steam	journal-agreement-details-and-card-fields	0xc7bdd	cmp    eax,DWORD PTR [rip+0x2582a9d]        # 0x14264a680
+steam	journal-agreement-details-and-card-fields	0xc7bfb	cmp    eax,DWORD PTR [rip+0x2582a83]        # 0x14264a684
+steam	journal-agreement-details-and-card-fields	0xc7c90	cmp    ecx,DWORD PTR [rip+0x25829e2]        # 0x14264a678
+steam	journal-agreement-details-and-card-fields	0xc7cb0	cmp    ecx,DWORD PTR [rip+0x25829c6]        # 0x14264a67c
+steam	journal-agreement-details-and-card-fields	0xc7cd1	cmp    eax,DWORD PTR [rip+0x25829a9]        # 0x14264a680
+steam	journal-agreement-details-and-card-fields	0xc7cf2	cmp    eax,DWORD PTR [rip+0x258298c]        # 0x14264a684
+steam	journal-agreement-details-and-card-fields	0xc7d7f	cmp    ecx,DWORD PTR [rip+0x25828f3]        # 0x14264a678
+steam	journal-agreement-details-and-card-fields	0xc7d9f	cmp    ecx,DWORD PTR [rip+0x25828d7]        # 0x14264a67c
+steam	journal-agreement-details-and-card-fields	0xc7dc0	cmp    eax,DWORD PTR [rip+0x25828ba]        # 0x14264a680
+steam	journal-agreement-details-and-card-fields	0xc7de1	cmp    eax,DWORD PTR [rip+0x258289d]        # 0x14264a684
+steam	journal-agreement-details-and-card-fields	0xc7e2f	test   al,al
+steam	journal-agreement-details-and-card-fields	0xc7e40	cmp    QWORD PTR [r13+0x280],0x0
+steam	journal-agreement-details-and-card-fields	0xc7ef2	cmp    BYTE PTR [r13+0x278],0x0
+steam	journal-agreement-details-and-card-fields	0xc7f33	cmp    rax,0x1
+steam	journal-agreement-details-and-card-fields	0xc7fb5	cmp    edi,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc7fc5	cmp    BYTE PTR [r13+0x278],0x0
+steam	journal-agreement-details-and-card-fields	0xc8028	cmp    rbx,rax
+steam	journal-agreement-details-and-card-fields	0xc8033	cmp    eax,DWORD PTR [rbp-0x5c]
+steam	journal-agreement-details-and-card-fields	0xc8098	cmp    rbx,rax
+steam	journal-agreement-details-and-card-fields	0xc80c1	cmp    edi,DWORD PTR [rbp-0x28]
+steam	journal-agreement-details-and-card-fields	0xc8108	cmp    eax,edx
+steam	journal-agreement-details-and-card-fields	0xc8124	cmp    edi,ecx
+steam	journal-agreement-details-and-card-fields	0xc812f	test   ecx,ecx
+steam	journal-agreement-details-and-card-fields	0xc813c	cmp    r12d,ecx
+steam	journal-agreement-details-and-card-fields	0xc8145	cmp    r12d,eax
+steam	journal-agreement-details-and-card-fields	0xc818b	cmp    BYTE PTR [r13+0x278],0x0
+steam	journal-agreement-details-and-card-fields	0xc81a7	cmp    r12d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc81b5	cmp    r12d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc81f4	cmp    r12d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc8241	cmp    r12d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc82e7	cmp    r12d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc830f	cmp    BYTE PTR [r13+0x278],0x0
+steam	journal-agreement-details-and-card-fields	0xc8319	cmp    r12d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc832a	cmp    r15d,0x1
+steam	journal-agreement-details-and-card-fields	0xc8338	cmp    r12d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc8351	cmp    ebx,eax
+steam	journal-agreement-details-and-card-fields	0xc8362	cmp    ebx,r15d
+steam	journal-agreement-details-and-card-fields	0xc839b	cmp    ebx,DWORD PTR [rbp-0x28]
+steam	journal-agreement-details-and-card-fields	0xc83ac	cmp    r12d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc83bf	cmp    BYTE PTR [r13+0x278],0x0
+steam	journal-agreement-details-and-card-fields	0xc8428	cmp    rbx,rax
+steam	journal-agreement-details-and-card-fields	0xc842f	cmp    r15d,edi
+steam	journal-agreement-details-and-card-fields	0xc8488	cmp    rbx,rax
+steam	journal-agreement-details-and-card-fields	0xc84ad	cmp    r12d,DWORD PTR [rbp-0x60]
+steam	journal-agreement-details-and-card-fields	0xc84f2	cmp    eax,edx
+steam	journal-agreement-details-and-card-fields	0xc850e	cmp    edi,ecx
+steam	journal-agreement-details-and-card-fields	0xc8519	test   ecx,ecx
+steam	journal-agreement-details-and-card-fields	0xc8526	cmp    r12d,ecx
+steam	journal-agreement-details-and-card-fields	0xc8530	cmp    r12d,eax
+steam	journal-agreement-details-and-card-fields	0xc8576	cmp    BYTE PTR [r13+0x278],0x0
+steam	journal-agreement-details-and-card-fields	0xc8592	cmp    r12d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc85a0	cmp    r12d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc85df	cmp    r12d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc862c	cmp    r12d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc86d2	cmp    r12d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc86fa	cmp    BYTE PTR [r13+0x278],0x0
+steam	journal-agreement-details-and-card-fields	0xc8704	cmp    r12d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc8715	cmp    r15d,0x1
+steam	journal-agreement-details-and-card-fields	0xc8723	cmp    r12d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc873c	cmp    ebx,eax
+steam	journal-agreement-details-and-card-fields	0xc8750	cmp    ebx,r15d
+steam	journal-agreement-details-and-card-fields	0xc8789	cmp    ebx,DWORD PTR [rbp-0x28]
+steam	journal-agreement-details-and-card-fields	0xc879a	cmp    r12d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc87ad	cmp    BYTE PTR [r13+0x278],0x0
+steam	journal-agreement-details-and-card-fields	0xc8818	cmp    rbx,rax
+steam	journal-agreement-details-and-card-fields	0xc881f	cmp    r15d,edi
+steam	journal-agreement-details-and-card-fields	0xc8878	cmp    rbx,rax
+steam	journal-agreement-details-and-card-fields	0xc889d	cmp    r12d,DWORD PTR [rbp-0x60]
+steam	journal-agreement-details-and-card-fields	0xc88e2	cmp    eax,edx
+steam	journal-agreement-details-and-card-fields	0xc88fd	cmp    r8d,ecx
+steam	journal-agreement-details-and-card-fields	0xc890a	test   ecx,ecx
+steam	journal-agreement-details-and-card-fields	0xc8917	cmp    r12d,ecx
+steam	journal-agreement-details-and-card-fields	0xc8920	cmp    r12d,eax
+steam	journal-agreement-details-and-card-fields	0xc8966	cmp    BYTE PTR [r13+0x278],0x0
+steam	journal-agreement-details-and-card-fields	0xc8982	cmp    r12d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc8990	cmp    r12d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc89cf	cmp    r12d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc8a1c	cmp    r12d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc8ac2	cmp    r12d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc8aea	cmp    BYTE PTR [r13+0x278],0x0
+steam	journal-agreement-details-and-card-fields	0xc8af4	cmp    r12d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc8b05	cmp    r15d,0x1
+steam	journal-agreement-details-and-card-fields	0xc8b13	cmp    r12d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc8b2c	cmp    ebx,eax
+steam	journal-agreement-details-and-card-fields	0xc8b40	cmp    ebx,r15d
+steam	journal-agreement-details-and-card-fields	0xc8b79	cmp    ebx,DWORD PTR [rbp-0x28]
+steam	journal-agreement-details-and-card-fields	0xc8b8a	cmp    r12d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc8b9d	cmp    BYTE PTR [r13+0x278],0x0
+steam	journal-agreement-details-and-card-fields	0xc8c08	cmp    rbx,rax
+steam	journal-agreement-details-and-card-fields	0xc8c0f	cmp    r15d,edi
+steam	journal-agreement-details-and-card-fields	0xc8c68	cmp    rbx,rax
+steam	journal-agreement-details-and-card-fields	0xc8c8d	cmp    r12d,DWORD PTR [rbp-0x60]
+steam	journal-agreement-details-and-card-fields	0xc8cb4	cmp    eax,0x2
+steam	journal-agreement-details-and-card-fields	0xc8cbd	cmp    ebx,edi
+steam	journal-agreement-details-and-card-fields	0xc8d01	cmp    r14,r13
+steam	journal-agreement-details-and-card-fields	0xc8d0b	cmp    r14,r12
+steam	journal-agreement-details-and-card-fields	0xc8d29	cmp    rbx,rsi
+steam	journal-agreement-details-and-card-fields	0xc8d38	cmp    r15d,DWORD PTR [rbp-0x70]
+steam	journal-agreement-details-and-card-fields	0xc8d92	cmp    BYTE PTR [r13+0x3ba],0x0
+steam	journal-agreement-details-and-card-fields	0xc8e34	cmp    eax,edx
+steam	journal-agreement-details-and-card-fields	0xc8e4f	cmp    r8d,ecx
+steam	journal-agreement-details-and-card-fields	0xc8e5c	test   ecx,ecx
+steam	journal-agreement-details-and-card-fields	0xc8e69	cmp    r12d,ecx
+steam	journal-agreement-details-and-card-fields	0xc8e72	cmp    r12d,eax
+steam	journal-agreement-details-and-card-fields	0xc8eb8	cmp    BYTE PTR [r13+0x278],0x0
+steam	journal-agreement-details-and-card-fields	0xc8ed4	cmp    r12d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc8ee2	cmp    r12d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc8f21	cmp    r12d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc8f6e	cmp    r12d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc9014	cmp    r12d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc903c	cmp    BYTE PTR [r13+0x278],0x0
+steam	journal-agreement-details-and-card-fields	0xc9046	cmp    r12d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc9057	cmp    r15d,0x1
+steam	journal-agreement-details-and-card-fields	0xc9065	cmp    r12d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc907e	cmp    ebx,eax
+steam	journal-agreement-details-and-card-fields	0xc9090	cmp    ebx,r15d
+steam	journal-agreement-details-and-card-fields	0xc90c9	cmp    ebx,DWORD PTR [rbp-0x28]
+steam	journal-agreement-details-and-card-fields	0xc90da	cmp    r12d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc90ed	cmp    BYTE PTR [r13+0x278],0x0
+steam	journal-agreement-details-and-card-fields	0xc9158	cmp    rbx,rax
+steam	journal-agreement-details-and-card-fields	0xc915f	cmp    r15d,edi
+steam	journal-agreement-details-and-card-fields	0xc91b8	cmp    rbx,rax
+steam	journal-agreement-details-and-card-fields	0xc91dd	cmp    r12d,DWORD PTR [rbp-0x60]
+steam	journal-agreement-details-and-card-fields	0xc9204	cmp    eax,0x2
+steam	journal-agreement-details-and-card-fields	0xc920d	cmp    ebx,edi
+steam	journal-agreement-details-and-card-fields	0xc9251	cmp    r14,r13
+steam	journal-agreement-details-and-card-fields	0xc925b	cmp    r14,r12
+steam	journal-agreement-details-and-card-fields	0xc9279	cmp    rbx,rsi
+steam	journal-agreement-details-and-card-fields	0xc9288	cmp    r15d,DWORD PTR [rbp-0x70]
+steam	journal-agreement-details-and-card-fields	0xc92e2	cmp    BYTE PTR [r13+0x3b9],0x0
+steam	journal-agreement-details-and-card-fields	0xc9372	cmp    eax,edx
+steam	journal-agreement-details-and-card-fields	0xc938d	cmp    r8d,ecx
+steam	journal-agreement-details-and-card-fields	0xc939a	test   ecx,ecx
+steam	journal-agreement-details-and-card-fields	0xc93a7	cmp    r12d,ecx
+steam	journal-agreement-details-and-card-fields	0xc93b0	cmp    r12d,eax
+steam	journal-agreement-details-and-card-fields	0xc93f6	cmp    BYTE PTR [r13+0x278],0x0
+steam	journal-agreement-details-and-card-fields	0xc9412	cmp    r12d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc9420	cmp    r12d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc945f	cmp    r12d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc94ac	cmp    r12d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc9552	cmp    r12d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc957a	cmp    BYTE PTR [r13+0x278],0x0
+steam	journal-agreement-details-and-card-fields	0xc9584	cmp    r12d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc9595	cmp    r15d,0x1
+steam	journal-agreement-details-and-card-fields	0xc95a3	cmp    r12d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc95bc	cmp    ebx,eax
+steam	journal-agreement-details-and-card-fields	0xc95d0	cmp    ebx,r15d
+steam	journal-agreement-details-and-card-fields	0xc9609	cmp    ebx,DWORD PTR [rbp-0x28]
+steam	journal-agreement-details-and-card-fields	0xc961a	cmp    r12d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc962d	cmp    BYTE PTR [r13+0x278],0x0
+steam	journal-agreement-details-and-card-fields	0xc9698	cmp    rbx,rax
+steam	journal-agreement-details-and-card-fields	0xc969f	cmp    r15d,edi
+steam	journal-agreement-details-and-card-fields	0xc96f8	cmp    rbx,rax
+steam	journal-agreement-details-and-card-fields	0xc971d	cmp    r12d,DWORD PTR [rbp-0x60]
+steam	journal-agreement-details-and-card-fields	0xc9744	cmp    eax,0x2
+steam	journal-agreement-details-and-card-fields	0xc974d	cmp    ebx,edi
+steam	journal-agreement-details-and-card-fields	0xc9791	cmp    r14,r13
+steam	journal-agreement-details-and-card-fields	0xc979b	cmp    r14,r12
+steam	journal-agreement-details-and-card-fields	0xc97b9	cmp    rbx,rsi
+steam	journal-agreement-details-and-card-fields	0xc97c8	cmp    r15d,DWORD PTR [rbp-0x70]
+steam	journal-agreement-details-and-card-fields	0xc9822	cmp    BYTE PTR [r13+0x3b8],0x0
+steam	journal-agreement-details-and-card-fields	0xc98b2	cmp    eax,edx
+steam	journal-agreement-details-and-card-fields	0xc98ce	cmp    edi,ecx
+steam	journal-agreement-details-and-card-fields	0xc98d9	test   ecx,ecx
+steam	journal-agreement-details-and-card-fields	0xc98e6	cmp    r12d,ecx
+steam	journal-agreement-details-and-card-fields	0xc98f0	cmp    r12d,eax
+steam	journal-agreement-details-and-card-fields	0xc9936	cmp    BYTE PTR [r13+0x278],0x0
+steam	journal-agreement-details-and-card-fields	0xc9952	cmp    r12d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc9960	cmp    r12d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc999f	cmp    r12d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc99ec	cmp    r12d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc9a92	cmp    r12d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc9aba	cmp    BYTE PTR [r13+0x278],0x0
+steam	journal-agreement-details-and-card-fields	0xc9ac4	cmp    r12d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc9ad5	cmp    r15d,0x1
+steam	journal-agreement-details-and-card-fields	0xc9ae3	cmp    r12d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc9afc	cmp    ebx,eax
+steam	journal-agreement-details-and-card-fields	0xc9b10	cmp    ebx,r15d
+steam	journal-agreement-details-and-card-fields	0xc9b49	cmp    ebx,DWORD PTR [rbp-0x28]
+steam	journal-agreement-details-and-card-fields	0xc9b5a	cmp    r12d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc9b6d	cmp    BYTE PTR [r13+0x278],0x0
+steam	journal-agreement-details-and-card-fields	0xc9bd8	cmp    rbx,rax
+steam	journal-agreement-details-and-card-fields	0xc9bdf	cmp    r15d,edi
+steam	journal-agreement-details-and-card-fields	0xc9c38	cmp    rbx,rax
+steam	journal-agreement-details-and-card-fields	0xc9c5d	cmp    r12d,DWORD PTR [rbp-0x60]
+steam	journal-agreement-details-and-card-fields	0xc9ca2	cmp    eax,edx
+steam	journal-agreement-details-and-card-fields	0xc9cbe	cmp    edi,ecx
+steam	journal-agreement-details-and-card-fields	0xc9cc9	test   ecx,ecx
+steam	journal-agreement-details-and-card-fields	0xc9cd6	cmp    r12d,ecx
+steam	journal-agreement-details-and-card-fields	0xc9ce0	cmp    r12d,eax
+steam	journal-agreement-details-and-card-fields	0xc9d26	cmp    BYTE PTR [r13+0x278],0x0
+steam	journal-agreement-details-and-card-fields	0xc9d42	cmp    r12d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc9d50	cmp    r12d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc9d8f	cmp    r12d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc9ddc	cmp    r12d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc9e82	cmp    r12d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc9eaa	cmp    BYTE PTR [r13+0x278],0x0
+steam	journal-agreement-details-and-card-fields	0xc9eb4	cmp    r12d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc9ec5	cmp    r15d,0x1
+steam	journal-agreement-details-and-card-fields	0xc9ed3	cmp    r12d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc9eec	cmp    ebx,eax
+steam	journal-agreement-details-and-card-fields	0xc9f00	cmp    ebx,r15d
+steam	journal-agreement-details-and-card-fields	0xc9f39	cmp    ebx,DWORD PTR [rbp-0x28]
+steam	journal-agreement-details-and-card-fields	0xc9f4a	cmp    r12d,DWORD PTR [r13+0x250]
+steam	journal-agreement-details-and-card-fields	0xc9f5d	cmp    BYTE PTR [r13+0x278],0x0
+steam	journal-agreement-details-and-card-fields	0xc9fc8	cmp    rbx,rax
+steam	journal-agreement-details-and-card-fields	0xc9fcf	cmp    r15d,edi
+steam	journal-agreement-details-and-card-fields	0xca028	cmp    rbx,rax
+steam	journal-agreement-details-and-card-fields	0xca04d	cmp    r12d,DWORD PTR [rbp-0x60]
+steam	journal-agreement-details-and-card-fields	0xca088	cmp    r14d,esi
+steam	journal-agreement-details-and-card-fields	0xca183	cmp    r13d,r12d
+steam	journal-agreement-details-and-card-fields	0xca19c	cmp    ebx,r13d
+steam	journal-agreement-details-and-card-fields	0xca1ab	cmp    ebx,eax
+steam	journal-agreement-details-and-card-fields	0xca1b8	cmp    ebx,eax
+steam	journal-agreement-details-and-card-fields	0xca1c6	cmp    ebx,eax
+steam	journal-agreement-details-and-card-fields	0xca1cf	cmp    ebx,r12d
+steam	journal-agreement-details-and-card-fields	0xca1e8	cmp    DWORD PTR [rip+0x2303589],0x0        # 0x1423cd778
+steam	journal-agreement-details-and-card-fields	0xca1f8	test   BYTE PTR [rax],0x1
+steam	journal-agreement-details-and-card-fields	0xca210	cmp    ebx,r12d
+steam	journal-agreement-details-and-card-fields	0xca21f	cmp    rdi,r15
+steam	journal-agreement-details-and-card-fields	0xca25e	cmp    QWORD PTR [rbp+0x98],0x0
+steam	journal-agreement-details-and-card-fields	0xca268	cmp    BYTE PTR [r13+0x2a8],0x0
+steam	journal-agreement-details-and-card-fields	0xca299	cmp    BYTE PTR [r13+0x2a8],0x0
+steam	journal-agreement-details-and-card-fields	0xca2c1	cmp    r9d,0x1f4
+steam	journal-agreement-details-and-card-fields	0xca303	cmp    BYTE PTR [rip+0x17dd2ae],0x0        # 0x1418a75b8
+steam	journal-agreement-details-and-card-fields	0xca368	cmp    al,0x27
+steam	journal-agreement-details-and-card-fields	0xca39c	test   al,0x27
+steam	journal-agreement-details-and-card-fields	0xca3e9	cmp    ecx,DWORD PTR [rax+rax*1]
+steam	journal-agreement-details-and-card-fields	0xca3fd	cmp    al,0xc
+steam	journal-agreement-details-and-card-fields	0xca401	cmp    al,0xc
+steam	journal-agreement-details-and-card-fields	0xca405	cmp    al,0xc
+steam	journal-agreement-details-and-card-fields	0xca409	cmp    al,0xc
+steam	journal-agreement-details-and-card-fields	0xca40d	cmp    al,0xc
+steam	journal-agreement-details-and-card-fields	0xca415	cmp    al,0xc
+steam	journal-agreement-details-and-card-fields	0xca41d	cmp    al,0xc
+steam	journal-agreement-details-and-card-fields	0xca439	cmp    ecx,DWORD PTR [rax+rax*1]
+steam	journal-agreement-details-and-card-fields	0xca445	cmp    ecx,DWORD PTR [rax+rax*1]
+steam	journal-agreement-title-and-orders	0xdf590	cmp    rbx,rdi
+steam	journal-agreement-title-and-orders	0xdf598	test   r14,r14
+steam	journal-agreement-title-and-orders	0xdf5e1	cmp    rbx,rdi
+steam	journal-agreement-title-and-orders	0xdf5e9	cmp    rax,QWORD PTR [r15+0x8]
+steam	journal-agreement-title-and-orders	0xdf64a	test   rax,rax
+steam	journal-agreement-title-and-orders	0xdf664	cmp    DWORD PTR [rcx+0x2a8],0x0
+steam	journal-agreement-title-and-orders	0xdf674	test   BYTE PTR [rax],0x1
+steam	journal-agreement-title-and-orders	0xdf67d	test   BYTE PTR [rax],0x4
+steam	journal-agreement-title-and-orders	0xdf696	test   cx,cx
+steam	journal-agreement-title-and-orders	0xdf69b	cmp    ecx,DWORD PTR [rbx+0xa0]
+steam	journal-agreement-title-and-orders	0xdf6a3	test   r8w,r8w
+steam	journal-agreement-title-and-orders	0xdf6a9	cmp    r8d,DWORD PTR [rbx+0xa4]
+steam	journal-agreement-title-and-orders	0xdf6b9	test   r9,r9
+steam	journal-agreement-title-and-orders	0xdf6c6	cmp    DWORD PTR [rax+rcx*1+0x28],0x1
+steam	journal-agreement-title-and-orders	0xdf6d2	test   BYTE PTR [rax+0x1],0x2
+steam	journal-agreement-title-and-orders	0xdf6de	test   al,al
+steam	journal-agreement-title-and-orders	0xdf6ec	cmp    r11,r10
+steam	journal-agreement-title-and-orders	0xdf733	cmp    rax,rcx
+steam	journal-agreement-title-and-orders	0xdf752	cmp    rbx,rdi
+steam	journal-agreement-title-and-orders	0xdf75f	cmp    ax,0xd
+steam	journal-agreement-title-and-orders	0xdf793	cmp    r14,r15
+steam	journal-agreement-title-and-orders	0xdf79f	test   BYTE PTR [rdi+0x4c],0x2
+steam	journal-agreement-title-and-orders	0xdf7c2	cmp    rbx,rdi
+steam	journal-agreement-title-and-orders	0xdf7f1	cmp    BYTE PTR [rbp-0x58],r8b
+steam	journal-agreement-title-and-orders	0xdf7fa	cmp    eax,0xffffffff
+steam	journal-agreement-title-and-orders	0xdf81c	cmp    DWORD PTR [rax+0x18],0x0
+steam	journal-agreement-title-and-orders	0xdf82a	cmp    DWORD PTR [rax+0x18],0xffffffff
+steam	journal-agreement-title-and-orders	0xdf838	test   r13,r13
+steam	journal-agreement-title-and-orders	0xdf860	cmp    rbx,rdi
+steam	journal-agreement-title-and-orders	0xdf88f	cmp    BYTE PTR [rbp-0x48],r14b
+steam	journal-agreement-title-and-orders	0xdf898	cmp    eax,0xffffffff
+steam	journal-agreement-title-and-orders	0xdf8a7	cmp    rcx,r8
+steam	journal-agreement-title-and-orders	0xdf8c0	cmp    rax,rsi
+steam	journal-agreement-title-and-orders	0xdf8c5	cmp    DWORD PTR [rax],r9d
+steam	journal-agreement-title-and-orders	0xdf8d7	cmp    eax,0xffffffff
+steam	journal-agreement-title-and-orders	0xdf8e0	cmp    rcx,r8
+steam	journal-agreement-title-and-orders	0xdf903	cmp    r13d,0x2
+steam	journal-agreement-title-and-orders	0xdf91f	test   cl,cl
+steam	journal-agreement-title-and-orders	0xdf927	test   r12b,r12b
+steam	journal-agreement-title-and-orders	0xdf9cc	cmp    DWORD PTR [rax+0x18],r13d
+steam	journal-agreement-title-and-orders	0xdf9d6	cmp    DWORD PTR [rax+0x18],0xffffffff
+steam	journal-agreement-title-and-orders	0xdf9f9	cmp    eax,0x11
+steam	journal-agreement-title-and-orders	0xdfa38	test   r13,r13
+steam	journal-agreement-title-and-orders	0xdfa41	test   rax,rax
+steam	journal-agreement-title-and-orders	0xdfa55	test   rcx,0xfffffffffffffffc
+steam	journal-agreement-title-and-orders	0xdfa6a	test   rax,0xfffffffffffffffc
+steam	journal-agreement-title-and-orders	0xdfa91	test   rcx,rcx
+steam	journal-agreement-title-and-orders	0xdfa96	cmp    r9d,0xffffffff
+steam	journal-agreement-title-and-orders	0xdfac5	cmp    r8d,r9d
+steam	journal-agreement-title-and-orders	0xdfad2	cmp    r8d,r9d
+steam	journal-agreement-title-and-orders	0xdfad9	cmp    edx,ecx
+steam	journal-agreement-title-and-orders	0xdfafc	test   rax,0xfffffffffffffff8
+steam	journal-agreement-title-and-orders	0xdfb04	cmp    r9d,0xffffffff
+steam	journal-agreement-title-and-orders	0xdfb2d	cmp    DWORD PTR [rbx+0xe0],r9d
+steam	journal-agreement-title-and-orders	0xdfb46	cmp    edx,eax
+steam	journal-agreement-title-and-orders	0xdfb4d	test   rdi,rdi
+steam	journal-agreement-title-and-orders	0xdfb56	test   rbx,rbx
+steam	journal-agreement-title-and-orders	0xdfb72	cmp    ecx,0x2a
+steam	journal-agreement-title-and-orders	0xdfbe3	cmp    DWORD PTR [rdi+0xe0],eax
+steam	journal-agreement-title-and-orders	0xdfc0e	cmp    QWORD PTR [rbp+0x138],0xf
+steam	journal-agreement-title-and-orders	0xdfd5a	test   edx,edx
+steam	journal-agreement-title-and-orders	0xdfd63	cmp    edx,0x1
+steam	journal-agreement-title-and-orders	0xdfdee	cmp    r11d,0xffffffff
+steam	journal-agreement-title-and-orders	0xdfe0d	test   rax,rax
+steam	journal-agreement-title-and-orders	0xdfe2f	cmp    DWORD PTR [r13+0x0],r11d
+steam	journal-agreement-title-and-orders	0xdfe42	cmp    ecx,eax
+steam	journal-agreement-title-and-orders	0xdfe49	test   r13,r13
+steam	journal-agreement-title-and-orders	0xdfe7c	cmp    r15,r12
+steam	journal-agreement-title-and-orders	0xdfe93	cmp    DWORD PTR [rcx+0xc],eax
+steam	journal-agreement-title-and-orders	0xdff4c	cmp    eax,0x1
+steam	journal-agreement-title-and-orders	0xdffbd	test   rax,0xfffffffffffffff8
+steam	journal-agreement-title-and-orders	0xdffc5	cmp    ecx,0xffffffff
+steam	journal-agreement-title-and-orders	0xdffec	test   rax,rax
+steam	journal-agreement-title-and-orders	0xdfff5	test   rbx,rbx
+steam	journal-agreement-title-and-orders	0xe0010	cmp    r8,r9
+steam	journal-agreement-title-and-orders	0xe0045	cmp    DWORD PTR [r14+0x1f8],r10d
+steam	journal-agreement-title-and-orders	0xe004e	cmp    DWORD PTR [r14+0x200],r10d
+steam	journal-agreement-title-and-orders	0xe0057	cmp    DWORD PTR [r14+0x1fc],edx
+steam	journal-agreement-title-and-orders	0xe0060	cmp    DWORD PTR [r14+0x204],edx
+steam	journal-agreement-title-and-orders	0xe0080	cmp    rax,rcx
+steam	journal-agreement-title-and-orders	0xe0091	test   r10d,r10d
+steam	journal-agreement-title-and-orders	0xe009a	test   rax,rax
+steam	journal-agreement-title-and-orders	0xe009f	cmp    DWORD PTR [rax+0x138],0x1
+steam	journal-agreement-title-and-orders	0xe00af	test   BYTE PTR [rax],0x1
+steam	journal-agreement-title-and-orders	0xe00d5	cmp    rbx,rdi
+steam	journal-agreement-title-and-orders	0xe00dd	test   BYTE PTR [rcx+0x110],0x2
+steam	journal-agreement-title-and-orders	0xe00ed	test   rdx,rdx
+steam	journal-agreement-title-and-orders	0xe00f5	cmp    DWORD PTR [rdx+0x4],eax
+steam	journal-agreement-title-and-orders	0xe00ff	cmp    rax,r14
+steam	journal-agreement-title-and-orders	0xe010a	cmp    BYTE PTR [rsp+0x30],0x0
+steam	journal-agreement-title-and-orders	0xe0120	cmp    rax,rbx
+steam	journal-agreement-title-and-orders	0xe0136	test   cl,cl
+steam	journal-agreement-title-and-orders	0xe0148	cmp    DWORD PTR [rdx+0x88],ecx
+steam	journal-agreement-title-and-orders	0xe0290	test   rcx,rcx
+steam	journal-agreement-title-and-orders	0xe0299	cmp    r11d,0xffffffff
+steam	journal-agreement-title-and-orders	0xe02c7	cmp    r9d,r11d
+steam	journal-agreement-title-and-orders	0xe02d9	cmp    r8d,ecx
+steam	journal-agreement-title-and-orders	0xe02e3	test   r10,r10
+steam	journal-agreement-title-and-orders	0xe02ec	cmp    DWORD PTR [r10+0x30],0xffffffff
+steam	journal-agreement-title-and-orders	0xe0309	test   rbx,rbx
+steam	journal-agreement-title-and-orders	0xe0320	cmp    rcx,rax
+steam	journal-agreement-title-and-orders	0xe0330	test   r8,r8
+steam	journal-agreement-title-and-orders	0xe0335	cmp    DWORD PTR [r8+0x24],0x4
+steam	journal-agreement-title-and-orders	0xe033c	cmp    DWORD PTR [r8],r9d
+steam	journal-agreement-title-and-orders	0xe034b	cmp    r9d,0xffffffff
+steam	journal-agreement-title-and-orders	0xe0363	cmp    rax,rbx
+steam	journal-agreement-title-and-orders	0xe0375	test   dl,dl
+steam	journal-agreement-title-and-orders	0xe0380	cmp    DWORD PTR [rdx+0x88],r9d
+steam	journal-agreement-title-and-orders	0xe03f8	test   rax,0xfffffffffffffff8
+steam	journal-agreement-title-and-orders	0xe0400	cmp    ecx,0xffffffff
+steam	journal-agreement-title-and-orders	0xe0420	test   rax,rax
+steam	journal-agreement-title-and-orders	0xe0462	test   rdi,rdi
+steam	journal-agreement-title-and-orders	0xe046f	test   rdi,rdi
+steam	journal-agreement-title-and-orders	0xe0480	cmp    rbx,rdi
+steam	journal-agreement-title-and-orders	0xe048c	cmp    DWORD PTR [rsi+0x8],0x0
+steam	journal-agreement-title-and-orders	0xe04a6	test   r10d,r10d
+steam	journal-agreement-title-and-orders	0xe04b5	cmp    r10d,0x40
+steam	journal-agreement-title-and-orders	0xe04d1	cmp    esi,DWORD PTR [rcx]
+steam	journal-agreement-title-and-orders	0xe04dd	cmp    r10d,0x40
+steam	journal-agreement-title-and-orders	0xe04ec	cmp    eax,0xffffffff
+steam	journal-agreement-title-and-orders	0xe04f1	cmp    r9d,eax
+steam	journal-agreement-title-and-orders	0xe0504	cmp    esi,DWORD PTR [rax]
+steam	journal-agreement-title-and-orders	0xe050e	cmp    rcx,rdx
+steam	journal-agreement-title-and-orders	0xe0551	test   rcx,rcx
+steam	journal-agreement-title-and-orders	0xe0556	cmp    DWORD PTR [rcx+0xf8],edx
+steam	journal-agreement-title-and-orders	0xe0564	cmp    edx,0xffffffff
+steam	journal-agreement-title-and-orders	0xe056c	cmp    eax,0xffffffff
+steam	journal-agreement-title-and-orders	0xe0571	cmp    edx,eax
+steam	journal-agreement-title-and-orders	0xe05c0	cmp    rbx,rdi
+steam	journal-agreement-title-and-orders	0xe05cc	test   BYTE PTR [rsi+0x20],0x1
+steam	journal-agreement-title-and-orders	0xe05d6	cmp    DWORD PTR [rsi+0x10],r14d
+steam	journal-agreement-title-and-orders	0xe05e8	cmp    DWORD PTR [rsi+0x14],eax
+steam	journal-agreement-title-and-orders	0xe05f1	cmp    DWORD PTR [rsi+0x24],0x2
+steam	journal-agreement-title-and-orders	0xe060c	test   r10d,r10d
+steam	journal-agreement-title-and-orders	0xe061d	cmp    r10d,0x40
+steam	journal-agreement-title-and-orders	0xe0634	cmp    esi,DWORD PTR [rcx]
+steam	journal-agreement-title-and-orders	0xe0640	cmp    r10d,0x40
+steam	journal-agreement-title-and-orders	0xe064f	cmp    eax,0xffffffff
+steam	journal-agreement-title-and-orders	0xe0654	cmp    r9d,eax
+steam	journal-agreement-title-and-orders	0xe0664	cmp    esi,DWORD PTR [rax]
+steam	journal-agreement-title-and-orders	0xe066e	cmp    rcx,rdx
+steam	journal-agreement-title-and-orders	0xe06b5	test   rcx,rcx
+steam	journal-agreement-title-and-orders	0xe06ba	cmp    DWORD PTR [rcx+0xf8],edx
+steam	journal-agreement-title-and-orders	0xe06c8	cmp    edx,0xffffffff
+steam	journal-agreement-title-and-orders	0xe06da	cmp    eax,0xffffffff
+steam	journal-agreement-title-and-orders	0xe06df	cmp    edx,eax
+steam	journal-agreement-title-and-orders	0xe0720	cmp    edi,0xffffffff
+steam	journal-agreement-title-and-orders	0xe073e	test   r10d,r10d
+steam	journal-agreement-title-and-orders	0xe074f	cmp    r10d,0x40
+steam	journal-agreement-title-and-orders	0xe0771	cmp    edi,DWORD PTR [rcx]
+steam	journal-agreement-title-and-orders	0xe077d	cmp    r10d,0x40
+steam	journal-agreement-title-and-orders	0xe078c	cmp    eax,0xffffffff
+steam	journal-agreement-title-and-orders	0xe0795	cmp    r9d,eax
+steam	journal-agreement-title-and-orders	0xe07a8	cmp    edi,DWORD PTR [rax]
+steam	journal-agreement-title-and-orders	0xe07b2	cmp    rcx,rdx
+steam	journal-agreement-title-and-orders	0xe07c3	test   rdi,rdi
+steam	journal-agreement-title-and-orders	0xe07e3	cmp    rbx,rdi
+steam	journal-agreement-title-and-orders	0xe07ef	test   BYTE PTR [rsi+0x20],0x1
+steam	journal-agreement-title-and-orders	0xe07f9	cmp    DWORD PTR [rsi+0x10],r14d
+steam	journal-agreement-title-and-orders	0xe080b	cmp    DWORD PTR [rsi+0x14],eax
+steam	journal-agreement-title-and-orders	0xe0814	cmp    DWORD PTR [rsi+0x24],0x2
+steam	journal-agreement-title-and-orders	0xe082f	test   r10d,r10d
+steam	journal-agreement-title-and-orders	0xe083f	cmp    r10d,0x40
+steam	journal-agreement-title-and-orders	0xe0861	cmp    esi,DWORD PTR [rcx]
+steam	journal-agreement-title-and-orders	0xe086d	cmp    r10d,0x40
+steam	journal-agreement-title-and-orders	0xe0877	cmp    eax,r12d
+steam	journal-agreement-title-and-orders	0xe087c	cmp    r9d,eax
+steam	journal-agreement-title-and-orders	0xe088b	cmp    esi,DWORD PTR [rax]
+steam	journal-agreement-title-and-orders	0xe0895	cmp    rcx,rdx
+steam	journal-agreement-title-and-orders	0xe08d0	test   rcx,rcx
+steam	journal-agreement-title-and-orders	0xe08d5	cmp    DWORD PTR [rcx+0xf8],r12d
+steam	journal-agreement-title-and-orders	0xe08e4	cmp    edx,r12d
+steam	journal-agreement-title-and-orders	0xe08f6	cmp    eax,r12d
+steam	journal-agreement-title-and-orders	0xe08fb	cmp    edx,eax
+steam	journal-agreement-title-and-orders	0xe0940	cmp    rsi,r14
+steam	journal-agreement-title-and-orders	0xe0951	test   ax,ax
+steam	journal-agreement-title-and-orders	0xe096e	test   rax,0xfffffffffffffff8
+steam	journal-agreement-title-and-orders	0xe097a	cmp    ecx,0xffffffff
+steam	journal-agreement-title-and-orders	0xe098f	test   rax,rax
+steam	journal-agreement-title-and-orders	0xe09ad	test   rcx,rcx
+steam	journal-agreement-title-and-orders	0xe09d0	cmp    rbx,rdi
+steam	journal-agreement-title-and-orders	0xe09dc	test   BYTE PTR [rcx+0x20],0x1
+steam	journal-agreement-title-and-orders	0xe09e9	cmp    eax,DWORD PTR [rip+0x2293d05]        # 0x1423746f4
+steam	journal-agreement-title-and-orders	0xe09fd	cmp    DWORD PTR [rcx+0x14],eax
+steam	journal-agreement-title-and-orders	0xe0a06	cmp    DWORD PTR [rcx+0x24],0x2
+steam	journal-agreement-title-and-orders	0xe0a22	test   r10d,r10d
+steam	journal-agreement-title-and-orders	0xe0a37	cmp    r10d,0x40
+steam	journal-agreement-title-and-orders	0xe0a52	cmp    r11d,DWORD PTR [rdx]
+steam	journal-agreement-title-and-orders	0xe0a5f	cmp    r10d,0x40
+steam	journal-agreement-title-and-orders	0xe0a69	cmp    ecx,0xffffffff
+steam	journal-agreement-title-and-orders	0xe0a72	cmp    eax,ecx
+steam	journal-agreement-title-and-orders	0xe0a85	cmp    r11d,DWORD PTR [rcx]
+steam	journal-agreement-title-and-orders	0xe0a8f	cmp    rdx,r8
+steam	journal-agreement-title-and-orders	0xe0ab8	test   rax,rax
+steam	journal-agreement-title-and-orders	0xe0abd	cmp    DWORD PTR [rax+0xf8],0xffffffff
+steam	journal-agreement-title-and-orders	0xe0acc	cmp    edx,0xffffffff
+steam	journal-agreement-title-and-orders	0xe0ade	cmp    eax,0xffffffff
+steam	journal-agreement-title-and-orders	0xe0ae3	cmp    edx,eax
+steam	journal-agreement-title-and-orders	0xe0b29	test   rax,rax
+steam	journal-agreement-title-and-orders	0xe0b43	cmp    rdx,r11
+steam	journal-agreement-title-and-orders	0xe0b5d	cmp    ecx,eax
+steam	journal-agreement-title-and-orders	0xe0b61	cmp    r9d,eax
+steam	journal-agreement-title-and-orders	0xe0b69	cmp    r9d,0xffffffff
+steam	journal-agreement-title-and-orders	0xe0b6f	cmp    r9d,DWORD PTR [r12+0x4]
+steam	journal-agreement-title-and-orders	0xe0b76	cmp    WORD PTR [r12],0x0
+steam	journal-agreement-title-and-orders	0xe0b90	cmp    rax,rcx
+steam	journal-agreement-title-and-orders	0xe0b98	cmp    WORD PTR [r8],0x1
+steam	journal-agreement-title-and-orders	0xe0b9f	cmp    DWORD PTR [r8+0x4],r9d
+steam	journal-agreement-title-and-orders	0xe0bb2	cmp    DWORD PTR [rsp+0x40],eax
+steam	journal-agreement-title-and-orders	0xe0bdf	cmp    r9d,0xffffffff
+steam	journal-agreement-title-and-orders	0xe0c09	test   rbx,rbx
+steam	journal-agreement-title-and-orders	0xe0c20	cmp    rcx,rax
+steam	journal-agreement-title-and-orders	0xe0c2c	test   r8,r8
+steam	journal-agreement-title-and-orders	0xe0c31	cmp    DWORD PTR [r8+0x24],0x5
+steam	journal-agreement-title-and-orders	0xe0c3c	cmp    DWORD PTR [r8],edx
+steam	journal-agreement-title-and-orders	0xe0c4b	cmp    r10d,0xffffffff
+steam	journal-agreement-title-and-orders	0xe0c60	cmp    rax,rbx
+steam	journal-agreement-title-and-orders	0xe0c68	cmp    DWORD PTR [rdx+0x88],r10d
+steam	journal-agreement-title-and-orders	0xe0d28	test   rax,0xfffffffffffffff8
+steam	journal-agreement-title-and-orders	0xe0d30	cmp    ecx,0xffffffff
+steam	journal-agreement-title-and-orders	0xe0d5a	test   rax,rax
+steam	journal-agreement-title-and-orders	0xe0d5f	test   rdi,rdi
+steam	journal-agreement-title-and-orders	0xe0d72	cmp    rcx,rdx
+steam	journal-agreement-title-and-orders	0xe0d7a	test   BYTE PTR [rax+0x1c],0x1
+steam	journal-agreement-title-and-orders	0xe0d80	cmp    DWORD PTR [rax+0x10],0x0
+steam	journal-agreement-title-and-orders	0xe0d86	cmp    DWORD PTR [rax+0x14],0xffffffff
+steam	journal-agreement-title-and-orders	0xe0da1	test   rax,0xfffffffffffffff8
+steam	journal-agreement-title-and-orders	0xe0da9	cmp    ecx,0xffffffff
+steam	journal-agreement-title-and-orders	0xe0dc1	test   rax,rax
+steam	journal-agreement-title-and-orders	0xe0dc9	cmp    ax,0x1
+steam	journal-agreement-title-and-orders	0xe0dcf	cmp    r9,rdi
+steam	journal-agreement-title-and-orders	0xe0deb	cmp    ax,0x7
+steam	journal-agreement-title-and-orders	0xe0df1	cmp    ax,0x4
+steam	journal-agreement-title-and-orders	0xe0df7	test   ax,ax
+steam	journal-agreement-title-and-orders	0xe0e10	cmp    rax,rcx
+steam	journal-agreement-title-and-orders	0xe0e18	cmp    WORD PTR [r8],0x1
+steam	journal-agreement-title-and-orders	0xe0e23	cmp    DWORD PTR [r8+0x4],edx
+steam	journal-agreement-title-and-orders	0xe0e3a	test   al,al
+steam	journal-agreement-title-and-orders	0xe0e46	cmp    rax,rbx
+steam	journal-agreement-title-and-orders	0xe0e58	test   cl,cl
+steam	journal-agreement-title-and-orders	0xe0e66	cmp    DWORD PTR [rdx+0x88],ecx
+steam	journal-card-border	0xdec7e	cmp    edx,r8d
+steam	journal-card-border	0xdecc3	cmp    r13d,r14d
+steam	journal-card-border	0xdecd0	cmp    edi,r13d
+steam	journal-card-border	0xdecd9	cmp    edi,r14d
+steam	journal-card-border	0xdecf1	test   r12b,r12b
+steam	journal-card-border	0xdecf6	test   r15b,r15b
+steam	journal-card-border	0xded03	cmp    ebx,ebp
+steam	journal-card-border	0xded14	cmp    ebx,esi
+steam	journal-card-border	0xded2f	test   r12b,r12b
+steam	journal-card-border	0xded34	cmp    ebx,ebp
+steam	journal-card-border	0xded42	cmp    ebx,esi
+steam	journal-card-border	0xded5a	test   r15b,r15b
+steam	journal-card-border	0xded5f	cmp    ebx,ebp
+steam	journal-card-border	0xded6d	cmp    ebx,esi
+steam	journal-card-border	0xded85	cmp    ebx,ebp
+steam	journal-card-border	0xded93	cmp    ebx,esi
+steam	journal-card-border	0xdedb1	cmp    DWORD PTR [rip+0x22ee9c0],0x0        # 0x1423cd778
+steam	journal-card-border	0xdedc1	test   BYTE PTR [rax],0x1
+steam	journal-card-border	0xdede1	cmp    edi,r14d
+steam	journal-card-border	0xdedec	cmp    ebx,esi
+steam	journal-agreement-retained-title-clipping	0xcdf36	cmp    QWORD PTR [rcx+0x70],0x0
+steam	journal-agreement-retained-title-clipping	0xcdf4d	cmp    rbx,rdx
+steam	journal-agreement-retained-title-clipping	0xcdf52	cmp    QWORD PTR [rdx+0x18],0xf
+steam	journal-agreement-retained-title-clipping	0xcdf68	cmp    QWORD PTR [rdi+0x70],0x3a
+steam	journal-agreement-retained-title-clipping	0xcdf78	cmp    rax,rdx
+steam	journal-agreement-retained-title-clipping	0xcdf81	cmp    QWORD PTR [rbx+0x18],0xf
+steam	journal-agreement-calendar-month	0x773393	cmp    ecx,0xb
+classic	journal-agreement-details-and-card-fields	0xc20df	cmp    BYTE PTR [rip+0x17df4a2],0x0        # 0x1418a1588
+classic	journal-agreement-details-and-card-fields	0xc20fe	cmp    BYTE PTR [rip+0x258245f],0x0        # 0x142644564
+classic	journal-agreement-details-and-card-fields	0xc2111	cmp    BYTE PTR [rip+0x258244d],0x0        # 0x142644565
+classic	journal-agreement-details-and-card-fields	0xc2121	test   rax,rax
+classic	journal-agreement-details-and-card-fields	0xc214d	cmp    BYTE PTR [rip+0x22c8371],0x0        # 0x14238a4c5
+classic	journal-agreement-details-and-card-fields	0xc21c2	cmp    BYTE PTR [r13+0x233],dl
+classic	journal-agreement-details-and-card-fields	0xc21ea	test   al,al
+classic	journal-agreement-details-and-card-fields	0xc21f2	cmp    QWORD PTR [rip+0x258215e],0x0        # 0x142644358
+classic	journal-agreement-details-and-card-fields	0xc2244	cmp    BYTE PTR [r13+0x254],0x0
+classic	journal-agreement-details-and-card-fields	0xc2346	cmp    BYTE PTR [r13+0x254],0x0
+classic	journal-agreement-details-and-card-fields	0xc2371	cmp    r8d,0xfa
+classic	journal-agreement-details-and-card-fields	0xc23be	cmp    edx,r14d
+classic	journal-agreement-details-and-card-fields	0xc23d7	cmp    ax,di
+classic	journal-agreement-details-and-card-fields	0xc23e7	cmp    eax,ecx
+classic	journal-agreement-details-and-card-fields	0xc23ee	cmp    ax,si
+classic	journal-agreement-details-and-card-fields	0xc23fb	cmp    eax,ecx
+classic	journal-agreement-details-and-card-fields	0xc2457	cmp    r14d,edx
+classic	journal-agreement-details-and-card-fields	0xc2470	cmp    ax,di
+classic	journal-agreement-details-and-card-fields	0xc2484	cmp    eax,ecx
+classic	journal-agreement-details-and-card-fields	0xc2494	cmp    ax,si
+classic	journal-agreement-details-and-card-fields	0xc24a7	cmp    eax,ecx
+classic	journal-agreement-details-and-card-fields	0xc24c8	cmp    r8d,0xfa
+classic	journal-agreement-details-and-card-fields	0xc2527	cmp    ax,di
+classic	journal-agreement-details-and-card-fields	0xc253b	cmp    eax,ecx
+classic	journal-agreement-details-and-card-fields	0xc254b	cmp    ax,si
+classic	journal-agreement-details-and-card-fields	0xc255c	cmp    eax,ecx
+classic	journal-agreement-details-and-card-fields	0xc2586	cmp    r8d,0xfa
+classic	journal-agreement-details-and-card-fields	0xc25e0	test   al,al
+classic	journal-agreement-details-and-card-fields	0xc25eb	test   rcx,rcx
+classic	journal-agreement-details-and-card-fields	0xc264a	cmp    r9d,0x8
+classic	journal-agreement-details-and-card-fields	0xc2752	cmp    esi,edi
+classic	journal-agreement-details-and-card-fields	0xc2772	cmp    r15w,WORD PTR [r13+0x256]
+classic	journal-agreement-details-and-card-fields	0xc2783	cmp    ebx,esi
+classic	journal-agreement-details-and-card-fields	0xc27a8	cmp    ebx,esi
+classic	journal-agreement-details-and-card-fields	0xc27b5	cmp    ebx,eax
+classic	journal-agreement-details-and-card-fields	0xc27c0	cmp    ebx,edi
+classic	journal-agreement-details-and-card-fields	0xc27ce	cmp    ebx,eax
+classic	journal-agreement-details-and-card-fields	0xc27fc	cmp    ebx,edi
+classic	journal-agreement-details-and-card-fields	0xc280a	cmp    r14d,0x1
+classic	journal-agreement-details-and-card-fields	0xc2828	cmp    ebx,0x1
+classic	journal-agreement-details-and-card-fields	0xc2842	test   al,al
+classic	journal-agreement-details-and-card-fields	0xc2846	test   ebx,ebx
+classic	journal-agreement-details-and-card-fields	0xc2890	test   al,al
+classic	journal-agreement-details-and-card-fields	0xc2899	cmp    r15w,cx
+classic	journal-agreement-details-and-card-fields	0xc28dd	cmp    r15w,cx
+classic	journal-agreement-details-and-card-fields	0xc290d	cmp    eax,0x8
+classic	journal-agreement-details-and-card-fields	0xc2aeb	cmp    ebx,0x2
+classic	journal-agreement-details-and-card-fields	0xc2aff	cmp    r9d,0x9
+classic	journal-agreement-details-and-card-fields	0xc2b1c	cmp    WORD PTR [r13+0x256],0x8
+classic	journal-agreement-details-and-card-fields	0xc2b62	test   edx,edx
+classic	journal-agreement-details-and-card-fields	0xc2b6b	cmp    ecx,0x1
+classic	journal-agreement-details-and-card-fields	0xc2b72	test   edx,edx
+classic	journal-agreement-details-and-card-fields	0xc2b7b	cmp    ecx,0x1
+classic	journal-agreement-details-and-card-fields	0xc2bd3	cmp    r14d,r15d
+classic	journal-agreement-details-and-card-fields	0xc2bec	cmp    r12w,WORD PTR [r13+0x258]
+classic	journal-agreement-details-and-card-fields	0xc2bf9	cmp    ebx,r14d
+classic	journal-agreement-details-and-card-fields	0xc2c07	cmp    ebx,eax
+classic	journal-agreement-details-and-card-fields	0xc2c12	cmp    ebx,r15d
+classic	journal-agreement-details-and-card-fields	0xc2c25	cmp    ebx,eax
+classic	journal-agreement-details-and-card-fields	0xc2c30	cmp    ebx,r14d
+classic	journal-agreement-details-and-card-fields	0xc2c3e	cmp    ebx,eax
+classic	journal-agreement-details-and-card-fields	0xc2c49	cmp    ebx,r15d
+classic	journal-agreement-details-and-card-fields	0xc2c59	cmp    ebx,eax
+classic	journal-agreement-details-and-card-fields	0xc2c88	cmp    ebx,r15d
+classic	journal-agreement-details-and-card-fields	0xc2cc3	cmp    eax,0x3
+classic	journal-agreement-details-and-card-fields	0xc2ce5	cmp    edi,0x1
+classic	journal-agreement-details-and-card-fields	0xc2cf0	cmp    DWORD PTR [rip+0x2304971],0x0        # 0x1423c7668
+classic	journal-agreement-details-and-card-fields	0xc2d00	test   BYTE PTR [rax],0x1
+classic	journal-agreement-details-and-card-fields	0xc2d05	test   edi,edi
+classic	journal-agreement-details-and-card-fields	0xc2d10	test   r15d,r15d
+classic	journal-agreement-details-and-card-fields	0xc2d6e	test   al,al
+classic	journal-agreement-details-and-card-fields	0xc2d78	cmp    r12w,cx
+classic	journal-agreement-details-and-card-fields	0xc2d95	cmp    r12w,cx
+classic	journal-agreement-details-and-card-fields	0xc2dc6	cmp    r12w,cx
+classic	journal-agreement-details-and-card-fields	0xc2de3	test   r15d,r15d
+classic	journal-agreement-details-and-card-fields	0xc2ded	cmp    ecx,0x1
+classic	journal-agreement-details-and-card-fields	0xc2e8c	cmp    edi,0x2
+classic	journal-agreement-details-and-card-fields	0xc2e9c	cmp    r15d,0x3
+classic	journal-agreement-details-and-card-fields	0xc2f4c	cmp    eax,0x8
+classic	journal-agreement-details-and-card-fields	0xc2fa1	cmp    eax,edx
+classic	journal-agreement-details-and-card-fields	0xc2fbc	cmp    ebx,ecx
+classic	journal-agreement-details-and-card-fields	0xc2fc5	test   ecx,ecx
+classic	journal-agreement-details-and-card-fields	0xc2fd3	cmp    edi,eax
+classic	journal-agreement-details-and-card-fields	0xc2fe4	cmp    edi,r8d
+classic	journal-agreement-details-and-card-fields	0xc3036	cmp    BYTE PTR [r13+0x278],0x0
+classic	journal-agreement-details-and-card-fields	0xc3053	cmp    edi,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc3074	test   rcx,rcx
+classic	journal-agreement-details-and-card-fields	0xc3079	test   BYTE PTR [rcx+0x28],0x1
+classic	journal-agreement-details-and-card-fields	0xc307f	cmp    edi,eax
+classic	journal-agreement-details-and-card-fields	0xc3088	cmp    edi,eax
+classic	journal-agreement-details-and-card-fields	0xc30af	cmp    edi,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc30ec	cmp    rax,0x2
+classic	journal-agreement-details-and-card-fields	0xc3169	cmp    edi,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc31f3	cmp    edi,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc3224	cmp    BYTE PTR [r13+0x278],0x0
+classic	journal-agreement-details-and-card-fields	0xc322e	cmp    edi,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc3247	cmp    rax,0x2
+classic	journal-agreement-details-and-card-fields	0xc3258	cmp    ebx,0x1
+classic	journal-agreement-details-and-card-fields	0xc3261	cmp    eax,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc327e	cmp    BYTE PTR [r13+0x278],cl
+classic	journal-agreement-details-and-card-fields	0xc3298	cmp    ebx,eax
+classic	journal-agreement-details-and-card-fields	0xc32b0	cmp    ebx,r15d
+classic	journal-agreement-details-and-card-fields	0xc32b5	cmp    edi,r13d
+classic	journal-agreement-details-and-card-fields	0xc32ef	cmp    ebx,DWORD PTR [rbp-0x78]
+classic	journal-agreement-details-and-card-fields	0xc3308	cmp    edi,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc3315	cmp    BYTE PTR [r13+0x278],0x0
+classic	journal-agreement-details-and-card-fields	0xc3388	cmp    rbx,rax
+classic	journal-agreement-details-and-card-fields	0xc338f	cmp    ebx,r12d
+classic	journal-agreement-details-and-card-fields	0xc33f8	cmp    rbx,rax
+classic	journal-agreement-details-and-card-fields	0xc3411	test   ecx,ecx
+classic	journal-agreement-details-and-card-fields	0xc341e	cmp    ecx,0x1
+classic	journal-agreement-details-and-card-fields	0xc3427	cmp    BYTE PTR [r15+0xfc],bl
+classic	journal-agreement-details-and-card-fields	0xc3430	cmp    BYTE PTR [r15+0xfd],bl
+classic	journal-agreement-details-and-card-fields	0xc3495	cmp    BYTE PTR [r15+0xfc],bl
+classic	journal-agreement-details-and-card-fields	0xc349e	cmp    BYTE PTR [r15+0xfe],bl
+classic	journal-agreement-details-and-card-fields	0xc3500	cmp    BYTE PTR [r15+0xfd],bl
+classic	journal-agreement-details-and-card-fields	0xc3509	cmp    BYTE PTR [r15+0xfe],bl
+classic	journal-agreement-details-and-card-fields	0xc3572	test   bl,bl
+classic	journal-agreement-details-and-card-fields	0xc35d4	cmp    rbx,rax
+classic	journal-agreement-details-and-card-fields	0xc35e5	test   rax,rax
+classic	journal-agreement-details-and-card-fields	0xc35f4	test   BYTE PTR [rax+0x28],0x1
+classic	journal-agreement-details-and-card-fields	0xc3639	cmp    rdi,r13
+classic	journal-agreement-details-and-card-fields	0xc3679	cmp    rdi,r13
+classic	journal-agreement-details-and-card-fields	0xc369f	cmp    edi,DWORD PTR [rbp-0x60]
+classic	journal-agreement-details-and-card-fields	0xc36bf	cmp    eax,0x2
+classic	journal-agreement-details-and-card-fields	0xc36cc	cmp    r14d,DWORD PTR [rbp-0x70]
+classic	journal-agreement-details-and-card-fields	0xc3702	cmp    rsi,r12
+classic	journal-agreement-details-and-card-fields	0xc370c	cmp    rsi,r15
+classic	journal-agreement-details-and-card-fields	0xc372a	cmp    rbx,r13
+classic	journal-agreement-details-and-card-fields	0xc3735	cmp    r14d,DWORD PTR [rbp-0x70]
+classic	journal-agreement-details-and-card-fields	0xc378f	test   ecx,ecx
+classic	journal-agreement-details-and-card-fields	0xc3793	cmp    ecx,0x1
+classic	journal-agreement-details-and-card-fields	0xc3827	cmp    eax,r15d
+classic	journal-agreement-details-and-card-fields	0xc3846	cmp    r9d,ecx
+classic	journal-agreement-details-and-card-fields	0xc384f	test   ecx,ecx
+classic	journal-agreement-details-and-card-fields	0xc385e	cmp    eax,ecx
+classic	journal-agreement-details-and-card-fields	0xc3866	cmp    eax,edx
+classic	journal-agreement-details-and-card-fields	0xc38a6	cmp    BYTE PTR [r13+0x278],0x0
+classic	journal-agreement-details-and-card-fields	0xc38c5	cmp    r15d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc38d8	cmp    r15d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc3908	cmp    r15d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc394f	cmp    r15d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc39ee	cmp    r15d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc3a1f	cmp    BYTE PTR [r13+0x278],0x0
+classic	journal-agreement-details-and-card-fields	0xc3a2d	cmp    r15d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc3a53	test   r12,r12
+classic	journal-agreement-details-and-card-fields	0xc3a9a	cmp    eax,0x11
+classic	journal-agreement-details-and-card-fields	0xc3acb	cmp    DWORD PTR [rax+0x18],0xffffffff
+classic	journal-agreement-details-and-card-fields	0xc3afe	cmp    ecx,0x2a
+classic	journal-agreement-details-and-card-fields	0xc3c12	test   ecx,ecx
+classic	journal-agreement-details-and-card-fields	0xc3c1b	cmp    ecx,0x1
+classic	journal-agreement-details-and-card-fields	0xc3c8f	test   eax,eax
+classic	journal-agreement-details-and-card-fields	0xc3ca0	cmp    ecx,0x1
+classic	journal-agreement-details-and-card-fields	0xc3cee	test   rdi,rdi
+classic	journal-agreement-details-and-card-fields	0xc3cf7	test   rax,rax
+classic	journal-agreement-details-and-card-fields	0xc3d09	test   rax,rax
+classic	journal-agreement-details-and-card-fields	0xc3d1b	test   rax,rax
+classic	journal-agreement-details-and-card-fields	0xc3d5c	test   rax,rax
+classic	journal-agreement-details-and-card-fields	0xc3d65	test   rbx,rbx
+classic	journal-agreement-details-and-card-fields	0xc3d8f	cmp    DWORD PTR [rbx+0xe0],r15d
+classic	journal-agreement-details-and-card-fields	0xc3ea2	cmp    DWORD PTR [rdi+0xe0],r15d
+classic	journal-agreement-details-and-card-fields	0xc4022	cmp    DWORD PTR [rax+0xc],0xffffffff
+classic	journal-agreement-details-and-card-fields	0xc411e	cmp    DWORD PTR [rax+0x10],0xffffffff
+classic	journal-agreement-details-and-card-fields	0xc4233	test   rbx,rbx
+classic	journal-agreement-details-and-card-fields	0xc423c	test   rdi,rdi
+classic	journal-agreement-details-and-card-fields	0xc426b	cmp    ecx,0x1
+classic	journal-agreement-details-and-card-fields	0xc4441	test   rdi,rdi
+classic	journal-agreement-details-and-card-fields	0xc444a	test   rax,rax
+classic	journal-agreement-details-and-card-fields	0xc445c	test   rax,rax
+classic	journal-agreement-details-and-card-fields	0xc446e	test   rax,rax
+classic	journal-agreement-details-and-card-fields	0xc44af	test   rax,rax
+classic	journal-agreement-details-and-card-fields	0xc44b8	test   rbx,rbx
+classic	journal-agreement-details-and-card-fields	0xc44e2	cmp    DWORD PTR [rbx+0xe0],r15d
+classic	journal-agreement-details-and-card-fields	0xc45f5	cmp    DWORD PTR [rdi+0xe0],r15d
+classic	journal-agreement-details-and-card-fields	0xc47a9	test   r15,r15
+classic	journal-agreement-details-and-card-fields	0xc47b2	test   rax,rax
+classic	journal-agreement-details-and-card-fields	0xc47c4	test   rax,rax
+classic	journal-agreement-details-and-card-fields	0xc47d6	test   rax,rax
+classic	journal-agreement-details-and-card-fields	0xc4817	test   rbx,rbx
+classic	journal-agreement-details-and-card-fields	0xc4820	test   rax,rax
+classic	journal-agreement-details-and-card-fields	0xc483f	cmp    eax,0x2a
+classic	journal-agreement-details-and-card-fields	0xc4884	cmp    DWORD PTR [rbx+0xe0],r15d
+classic	journal-agreement-details-and-card-fields	0xc4997	cmp    DWORD PTR [rdi+0xe0],r15d
+classic	journal-agreement-details-and-card-fields	0xc4c00	cmp    DWORD PTR [rbx+0xe0],r15d
+classic	journal-agreement-details-and-card-fields	0xc4d13	cmp    DWORD PTR [rdi+0xe0],r15d
+classic	journal-agreement-details-and-card-fields	0xc4e22	cmp    DWORD PTR [rdx+0xc],0xffffffff
+classic	journal-agreement-details-and-card-fields	0xc4ee3	test   rbx,rbx
+classic	journal-agreement-details-and-card-fields	0xc4f45	test   rax,rax
+classic	journal-agreement-details-and-card-fields	0xc4f5b	test   rax,rax
+classic	journal-agreement-details-and-card-fields	0xc5030	cmp    DWORD PTR [rbx+0xe0],r15d
+classic	journal-agreement-details-and-card-fields	0xc5143	cmp    DWORD PTR [rdi+0xe0],r15d
+classic	journal-agreement-details-and-card-fields	0xc52d4	cmp    DWORD PTR [rbx+0xe0],r15d
+classic	journal-agreement-details-and-card-fields	0xc53e7	cmp    DWORD PTR [rdi+0xe0],r15d
+classic	journal-agreement-details-and-card-fields	0xc5526	test   rbx,rbx
+classic	journal-agreement-details-and-card-fields	0xc5588	test   rax,rax
+classic	journal-agreement-details-and-card-fields	0xc559e	test   rax,rax
+classic	journal-agreement-details-and-card-fields	0xc5673	cmp    DWORD PTR [rbx+0xe0],r15d
+classic	journal-agreement-details-and-card-fields	0xc5786	cmp    DWORD PTR [rdi+0xe0],r15d
+classic	journal-agreement-details-and-card-fields	0xc5891	cmp    DWORD PTR [rbx+0xe0],r15d
+classic	journal-agreement-details-and-card-fields	0xc59a4	cmp    DWORD PTR [rdi+0xe0],r15d
+classic	journal-agreement-details-and-card-fields	0xc5aaf	cmp    DWORD PTR [rbx+0xe0],r15d
+classic	journal-agreement-details-and-card-fields	0xc5bc2	cmp    DWORD PTR [rdi+0xe0],r15d
+classic	journal-agreement-details-and-card-fields	0xc5ccc	cmp    DWORD PTR [rax+0x18],0xffffffff
+classic	journal-agreement-details-and-card-fields	0xc5dad	cmp    ebx,0x20
+classic	journal-agreement-details-and-card-fields	0xc629f	test   BYTE PTR [rdi+0x1c],0x1
+classic	journal-agreement-details-and-card-fields	0xc6313	cmp    BYTE PTR [rcx+0x18],r8b
+classic	journal-agreement-details-and-card-fields	0xc63cd	test   r12,r12
+classic	journal-agreement-details-and-card-fields	0xc63ec	test   eax,eax
+classic	journal-agreement-details-and-card-fields	0xc63fd	cmp    ecx,0x1
+classic	journal-agreement-details-and-card-fields	0xc644b	test   r15,r15
+classic	journal-agreement-details-and-card-fields	0xc6454	test   rax,rax
+classic	journal-agreement-details-and-card-fields	0xc6466	test   rax,rax
+classic	journal-agreement-details-and-card-fields	0xc6478	test   rax,rax
+classic	journal-agreement-details-and-card-fields	0xc64b9	test   rax,rax
+classic	journal-agreement-details-and-card-fields	0xc64c2	test   rbx,rbx
+classic	journal-agreement-details-and-card-fields	0xc64ec	cmp    DWORD PTR [rbx+0xe0],r15d
+classic	journal-agreement-details-and-card-fields	0xc65ff	cmp    DWORD PTR [rdi+0xe0],r15d
+classic	journal-agreement-details-and-card-fields	0xc6796	test   r15,r15
+classic	journal-agreement-details-and-card-fields	0xc679f	test   rax,rax
+classic	journal-agreement-details-and-card-fields	0xc67b1	test   rax,rax
+classic	journal-agreement-details-and-card-fields	0xc67c3	test   rax,rax
+classic	journal-agreement-details-and-card-fields	0xc6804	test   rax,rax
+classic	journal-agreement-details-and-card-fields	0xc680d	test   rbx,rbx
+classic	journal-agreement-details-and-card-fields	0xc6837	cmp    DWORD PTR [rbx+0xe0],r15d
+classic	journal-agreement-details-and-card-fields	0xc694a	cmp    DWORD PTR [rdi+0xe0],r15d
+classic	journal-agreement-details-and-card-fields	0xc6ab5	cmp    DWORD PTR [rax+0x18],0xffffffff
+classic	journal-agreement-details-and-card-fields	0xc6b4a	test   rbx,rbx
+classic	journal-agreement-details-and-card-fields	0xc6b53	test   rdi,rdi
+classic	journal-agreement-details-and-card-fields	0xc6c3f	test   BYTE PTR [rdi+0x1c],bl
+classic	journal-agreement-details-and-card-fields	0xc6cb0	cmp    BYTE PTR [rcx+0x18],r8b
+classic	journal-agreement-details-and-card-fields	0xc6d60	cmp    eax,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc6d78	cmp    BYTE PTR [r13+0x278],0x0
+classic	journal-agreement-details-and-card-fields	0xc6dd8	cmp    rbx,rax
+classic	journal-agreement-details-and-card-fields	0xc6e38	cmp    rbx,rax
+classic	journal-agreement-details-and-card-fields	0xc6e55	cmp    QWORD PTR [rcx+0x10],0x0
+classic	journal-agreement-details-and-card-fields	0xc6e76	cmp    BYTE PTR [rcx+0x98],bl
+classic	journal-agreement-details-and-card-fields	0xc6e98	cmp    DWORD PTR [rcx+0x9c],0xffffffff
+classic	journal-agreement-details-and-card-fields	0xc6eba	cmp    BYTE PTR [rcx+0x18],0x0
+classic	journal-agreement-details-and-card-fields	0xc6f28	test   bl,bl
+classic	journal-agreement-details-and-card-fields	0xc6fe8	cmp    rbx,rax
+classic	journal-agreement-details-and-card-fields	0xc700d	cmp    eax,DWORD PTR [rbp-0x78]
+classic	journal-agreement-details-and-card-fields	0xc704e	cmp    ecx,0x1
+classic	journal-agreement-details-and-card-fields	0xc7075	cmp    eax,edx
+classic	journal-agreement-details-and-card-fields	0xc7098	cmp    r9d,ecx
+classic	journal-agreement-details-and-card-fields	0xc70a5	test   ecx,ecx
+classic	journal-agreement-details-and-card-fields	0xc70b0	cmp    ebx,ecx
+classic	journal-agreement-details-and-card-fields	0xc70b8	cmp    ebx,eax
+classic	journal-agreement-details-and-card-fields	0xc70d4	cmp    DWORD PTR [rip+0x17cf18d],0x0        # 0x141896268
+classic	journal-agreement-details-and-card-fields	0xc70f1	test   al,al
+classic	journal-agreement-details-and-card-fields	0xc710d	cmp    rax,r12
+classic	journal-agreement-details-and-card-fields	0xc7121	cmp    ebx,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc715e	cmp    ebx,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc71a5	test   al,al
+classic	journal-agreement-details-and-card-fields	0xc71b8	cmp    ebx,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc7237	cmp    ebx,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc72de	cmp    ebx,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc7318	cmp    edi,DWORD PTR [rbp-0x78]
+classic	journal-agreement-details-and-card-fields	0xc735c	cmp    eax,edx
+classic	journal-agreement-details-and-card-fields	0xc7379	cmp    r9d,ecx
+classic	journal-agreement-details-and-card-fields	0xc7386	test   ecx,ecx
+classic	journal-agreement-details-and-card-fields	0xc7394	cmp    edi,ecx
+classic	journal-agreement-details-and-card-fields	0xc73a0	cmp    edi,eax
+classic	journal-agreement-details-and-card-fields	0xc73e7	cmp    BYTE PTR [r13+0x278],0x0
+classic	journal-agreement-details-and-card-fields	0xc7404	cmp    edi,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc7417	cmp    edi,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc7453	cmp    edi,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc74a0	cmp    edi,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc7533	cmp    BYTE PTR [r13+0x278],0x0
+classic	journal-agreement-details-and-card-fields	0xc7541	cmp    edi,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc75c2	test   al,al
+classic	journal-agreement-details-and-card-fields	0xc75fb	cmp    r13d,ebx
+classic	journal-agreement-details-and-card-fields	0xc7605	cmp    edi,ecx
+classic	journal-agreement-details-and-card-fields	0xc760e	cmp    esi,eax
+classic	journal-agreement-details-and-card-fields	0xc7616	cmp    r12d,eax
+classic	journal-agreement-details-and-card-fields	0xc7641	test   al,al
+classic	journal-agreement-details-and-card-fields	0xc765b	test   r8d,r8d
+classic	journal-agreement-details-and-card-fields	0xc767c	test   r9,r9
+classic	journal-agreement-details-and-card-fields	0xc768f	cmp    ecx,eax
+classic	journal-agreement-details-and-card-fields	0xc76a2	cmp    eax,esi
+classic	journal-agreement-details-and-card-fields	0xc76b6	cmp    r8d,edi
+classic	journal-agreement-details-and-card-fields	0xc76d9	cmp    ecx,eax
+classic	journal-agreement-details-and-card-fields	0xc76f3	cmp    eax,r12d
+classic	journal-agreement-details-and-card-fields	0xc7738	test   al,al
+classic	journal-agreement-details-and-card-fields	0xc774c	cmp    QWORD PTR [rcx+0x8],0x0
+classic	journal-agreement-details-and-card-fields	0xc7767	cmp    QWORD PTR [rax],rcx
+classic	journal-agreement-details-and-card-fields	0xc777f	cmp    QWORD PTR [rcx+0x8],rax
+classic	journal-agreement-details-and-card-fields	0xc783c	cmp    eax,0x1
+classic	journal-agreement-details-and-card-fields	0xc787e	cmp    edi,DWORD PTR [rip+0x257cce4]        # 0x142644568
+classic	journal-agreement-details-and-card-fields	0xc788a	cmp    edi,DWORD PTR [rip+0x257ccdc]        # 0x14264456c
+classic	journal-agreement-details-and-card-fields	0xc7896	cmp    ebx,DWORD PTR [rip+0x257ccd4]        # 0x142644570
+classic	journal-agreement-details-and-card-fields	0xc78a2	cmp    ebx,DWORD PTR [rip+0x257cccc]        # 0x142644574
+classic	journal-agreement-details-and-card-fields	0xc78b1	cmp    eax,edi
+classic	journal-agreement-details-and-card-fields	0xc78b5	cmp    r14d,ebx
+classic	journal-agreement-details-and-card-fields	0xc78ba	cmp    r12d,edi
+classic	journal-agreement-details-and-card-fields	0xc78bf	cmp    r15d,ebx
+classic	journal-agreement-details-and-card-fields	0xc78db	cmp    r12d,edi
+classic	journal-agreement-details-and-card-fields	0xc78e0	cmp    r15d,ebx
+classic	journal-agreement-details-and-card-fields	0xc78eb	cmp    r14d,ebx
+classic	journal-agreement-details-and-card-fields	0xc78f0	cmp    r12d,edi
+classic	journal-agreement-details-and-card-fields	0xc78f5	cmp    r15d,ebx
+classic	journal-agreement-details-and-card-fields	0xc7911	cmp    r12d,edi
+classic	journal-agreement-details-and-card-fields	0xc7916	cmp    r15d,ebx
+classic	journal-agreement-details-and-card-fields	0xc791f	cmp    r14d,ebx
+classic	journal-agreement-details-and-card-fields	0xc7924	cmp    r15d,ebx
+classic	journal-agreement-details-and-card-fields	0xc7929	cmp    eax,edi
+classic	journal-agreement-details-and-card-fields	0xc792d	cmp    r12d,edi
+classic	journal-agreement-details-and-card-fields	0xc795a	cmp    r13d,eax
+classic	journal-agreement-details-and-card-fields	0xc798e	test   al,al
+classic	journal-agreement-details-and-card-fields	0xc79d6	test   al,al
+classic	journal-agreement-details-and-card-fields	0xc7a06	cmp    QWORD PTR [rax],rcx
+classic	journal-agreement-details-and-card-fields	0xc7b35	cmp    ecx,DWORD PTR [rip+0x257ca2d]        # 0x142644568
+classic	journal-agreement-details-and-card-fields	0xc7b4f	cmp    ecx,DWORD PTR [rip+0x257ca17]        # 0x14264456c
+classic	journal-agreement-details-and-card-fields	0xc7b6d	cmp    eax,DWORD PTR [rip+0x257c9fd]        # 0x142644570
+classic	journal-agreement-details-and-card-fields	0xc7b8b	cmp    eax,DWORD PTR [rip+0x257c9e3]        # 0x142644574
+classic	journal-agreement-details-and-card-fields	0xc7c20	cmp    ecx,DWORD PTR [rip+0x257c942]        # 0x142644568
+classic	journal-agreement-details-and-card-fields	0xc7c40	cmp    ecx,DWORD PTR [rip+0x257c926]        # 0x14264456c
+classic	journal-agreement-details-and-card-fields	0xc7c61	cmp    eax,DWORD PTR [rip+0x257c909]        # 0x142644570
+classic	journal-agreement-details-and-card-fields	0xc7c82	cmp    eax,DWORD PTR [rip+0x257c8ec]        # 0x142644574
+classic	journal-agreement-details-and-card-fields	0xc7d0f	cmp    ecx,DWORD PTR [rip+0x257c853]        # 0x142644568
+classic	journal-agreement-details-and-card-fields	0xc7d2f	cmp    ecx,DWORD PTR [rip+0x257c837]        # 0x14264456c
+classic	journal-agreement-details-and-card-fields	0xc7d50	cmp    eax,DWORD PTR [rip+0x257c81a]        # 0x142644570
+classic	journal-agreement-details-and-card-fields	0xc7d71	cmp    eax,DWORD PTR [rip+0x257c7fd]        # 0x142644574
+classic	journal-agreement-details-and-card-fields	0xc7dbf	test   al,al
+classic	journal-agreement-details-and-card-fields	0xc7dd0	cmp    QWORD PTR [r13+0x280],0x0
+classic	journal-agreement-details-and-card-fields	0xc7e82	cmp    BYTE PTR [r13+0x278],0x0
+classic	journal-agreement-details-and-card-fields	0xc7ec3	cmp    rax,0x1
+classic	journal-agreement-details-and-card-fields	0xc7f45	cmp    edi,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc7f55	cmp    BYTE PTR [r13+0x278],0x0
+classic	journal-agreement-details-and-card-fields	0xc7fb8	cmp    rbx,rax
+classic	journal-agreement-details-and-card-fields	0xc7fc3	cmp    eax,DWORD PTR [rbp-0x5c]
+classic	journal-agreement-details-and-card-fields	0xc8028	cmp    rbx,rax
+classic	journal-agreement-details-and-card-fields	0xc8051	cmp    edi,DWORD PTR [rbp-0x28]
+classic	journal-agreement-details-and-card-fields	0xc8098	cmp    eax,edx
+classic	journal-agreement-details-and-card-fields	0xc80b4	cmp    edi,ecx
+classic	journal-agreement-details-and-card-fields	0xc80bf	test   ecx,ecx
+classic	journal-agreement-details-and-card-fields	0xc80cc	cmp    r12d,ecx
+classic	journal-agreement-details-and-card-fields	0xc80d5	cmp    r12d,eax
+classic	journal-agreement-details-and-card-fields	0xc811b	cmp    BYTE PTR [r13+0x278],0x0
+classic	journal-agreement-details-and-card-fields	0xc8137	cmp    r12d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc8145	cmp    r12d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc8184	cmp    r12d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc81d1	cmp    r12d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc8277	cmp    r12d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc829f	cmp    BYTE PTR [r13+0x278],0x0
+classic	journal-agreement-details-and-card-fields	0xc82a9	cmp    r12d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc82ba	cmp    r15d,0x1
+classic	journal-agreement-details-and-card-fields	0xc82c8	cmp    r12d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc82e1	cmp    ebx,eax
+classic	journal-agreement-details-and-card-fields	0xc82f2	cmp    ebx,r15d
+classic	journal-agreement-details-and-card-fields	0xc832b	cmp    ebx,DWORD PTR [rbp-0x28]
+classic	journal-agreement-details-and-card-fields	0xc833c	cmp    r12d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc834f	cmp    BYTE PTR [r13+0x278],0x0
+classic	journal-agreement-details-and-card-fields	0xc83b8	cmp    rbx,rax
+classic	journal-agreement-details-and-card-fields	0xc83bf	cmp    r15d,edi
+classic	journal-agreement-details-and-card-fields	0xc8418	cmp    rbx,rax
+classic	journal-agreement-details-and-card-fields	0xc843d	cmp    r12d,DWORD PTR [rbp-0x60]
+classic	journal-agreement-details-and-card-fields	0xc8482	cmp    eax,edx
+classic	journal-agreement-details-and-card-fields	0xc849e	cmp    edi,ecx
+classic	journal-agreement-details-and-card-fields	0xc84a9	test   ecx,ecx
+classic	journal-agreement-details-and-card-fields	0xc84b6	cmp    r12d,ecx
+classic	journal-agreement-details-and-card-fields	0xc84c0	cmp    r12d,eax
+classic	journal-agreement-details-and-card-fields	0xc8506	cmp    BYTE PTR [r13+0x278],0x0
+classic	journal-agreement-details-and-card-fields	0xc8522	cmp    r12d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc8530	cmp    r12d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc856f	cmp    r12d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc85bc	cmp    r12d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc8662	cmp    r12d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc868a	cmp    BYTE PTR [r13+0x278],0x0
+classic	journal-agreement-details-and-card-fields	0xc8694	cmp    r12d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc86a5	cmp    r15d,0x1
+classic	journal-agreement-details-and-card-fields	0xc86b3	cmp    r12d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc86cc	cmp    ebx,eax
+classic	journal-agreement-details-and-card-fields	0xc86e0	cmp    ebx,r15d
+classic	journal-agreement-details-and-card-fields	0xc8719	cmp    ebx,DWORD PTR [rbp-0x28]
+classic	journal-agreement-details-and-card-fields	0xc872a	cmp    r12d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc873d	cmp    BYTE PTR [r13+0x278],0x0
+classic	journal-agreement-details-and-card-fields	0xc87a8	cmp    rbx,rax
+classic	journal-agreement-details-and-card-fields	0xc87af	cmp    r15d,edi
+classic	journal-agreement-details-and-card-fields	0xc8808	cmp    rbx,rax
+classic	journal-agreement-details-and-card-fields	0xc882d	cmp    r12d,DWORD PTR [rbp-0x60]
+classic	journal-agreement-details-and-card-fields	0xc8872	cmp    eax,edx
+classic	journal-agreement-details-and-card-fields	0xc888d	cmp    r8d,ecx
+classic	journal-agreement-details-and-card-fields	0xc889a	test   ecx,ecx
+classic	journal-agreement-details-and-card-fields	0xc88a7	cmp    r12d,ecx
+classic	journal-agreement-details-and-card-fields	0xc88b0	cmp    r12d,eax
+classic	journal-agreement-details-and-card-fields	0xc88f6	cmp    BYTE PTR [r13+0x278],0x0
+classic	journal-agreement-details-and-card-fields	0xc8912	cmp    r12d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc8920	cmp    r12d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc895f	cmp    r12d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc89ac	cmp    r12d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc8a52	cmp    r12d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc8a7a	cmp    BYTE PTR [r13+0x278],0x0
+classic	journal-agreement-details-and-card-fields	0xc8a84	cmp    r12d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc8a95	cmp    r15d,0x1
+classic	journal-agreement-details-and-card-fields	0xc8aa3	cmp    r12d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc8abc	cmp    ebx,eax
+classic	journal-agreement-details-and-card-fields	0xc8ad0	cmp    ebx,r15d
+classic	journal-agreement-details-and-card-fields	0xc8b09	cmp    ebx,DWORD PTR [rbp-0x28]
+classic	journal-agreement-details-and-card-fields	0xc8b1a	cmp    r12d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc8b2d	cmp    BYTE PTR [r13+0x278],0x0
+classic	journal-agreement-details-and-card-fields	0xc8b98	cmp    rbx,rax
+classic	journal-agreement-details-and-card-fields	0xc8b9f	cmp    r15d,edi
+classic	journal-agreement-details-and-card-fields	0xc8bf8	cmp    rbx,rax
+classic	journal-agreement-details-and-card-fields	0xc8c1d	cmp    r12d,DWORD PTR [rbp-0x60]
+classic	journal-agreement-details-and-card-fields	0xc8c44	cmp    eax,0x2
+classic	journal-agreement-details-and-card-fields	0xc8c4d	cmp    ebx,edi
+classic	journal-agreement-details-and-card-fields	0xc8c91	cmp    r14,r13
+classic	journal-agreement-details-and-card-fields	0xc8c9b	cmp    r14,r12
+classic	journal-agreement-details-and-card-fields	0xc8cb9	cmp    rbx,rsi
+classic	journal-agreement-details-and-card-fields	0xc8cc8	cmp    r15d,DWORD PTR [rbp-0x70]
+classic	journal-agreement-details-and-card-fields	0xc8d22	cmp    BYTE PTR [r13+0x3ba],0x0
+classic	journal-agreement-details-and-card-fields	0xc8dc4	cmp    eax,edx
+classic	journal-agreement-details-and-card-fields	0xc8ddf	cmp    r8d,ecx
+classic	journal-agreement-details-and-card-fields	0xc8dec	test   ecx,ecx
+classic	journal-agreement-details-and-card-fields	0xc8df9	cmp    r12d,ecx
+classic	journal-agreement-details-and-card-fields	0xc8e02	cmp    r12d,eax
+classic	journal-agreement-details-and-card-fields	0xc8e48	cmp    BYTE PTR [r13+0x278],0x0
+classic	journal-agreement-details-and-card-fields	0xc8e64	cmp    r12d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc8e72	cmp    r12d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc8eb1	cmp    r12d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc8efe	cmp    r12d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc8fa4	cmp    r12d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc8fcc	cmp    BYTE PTR [r13+0x278],0x0
+classic	journal-agreement-details-and-card-fields	0xc8fd6	cmp    r12d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc8fe7	cmp    r15d,0x1
+classic	journal-agreement-details-and-card-fields	0xc8ff5	cmp    r12d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc900e	cmp    ebx,eax
+classic	journal-agreement-details-and-card-fields	0xc9020	cmp    ebx,r15d
+classic	journal-agreement-details-and-card-fields	0xc9059	cmp    ebx,DWORD PTR [rbp-0x28]
+classic	journal-agreement-details-and-card-fields	0xc906a	cmp    r12d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc907d	cmp    BYTE PTR [r13+0x278],0x0
+classic	journal-agreement-details-and-card-fields	0xc90e8	cmp    rbx,rax
+classic	journal-agreement-details-and-card-fields	0xc90ef	cmp    r15d,edi
+classic	journal-agreement-details-and-card-fields	0xc9148	cmp    rbx,rax
+classic	journal-agreement-details-and-card-fields	0xc916d	cmp    r12d,DWORD PTR [rbp-0x60]
+classic	journal-agreement-details-and-card-fields	0xc9194	cmp    eax,0x2
+classic	journal-agreement-details-and-card-fields	0xc919d	cmp    ebx,edi
+classic	journal-agreement-details-and-card-fields	0xc91e1	cmp    r14,r13
+classic	journal-agreement-details-and-card-fields	0xc91eb	cmp    r14,r12
+classic	journal-agreement-details-and-card-fields	0xc9209	cmp    rbx,rsi
+classic	journal-agreement-details-and-card-fields	0xc9218	cmp    r15d,DWORD PTR [rbp-0x70]
+classic	journal-agreement-details-and-card-fields	0xc9272	cmp    BYTE PTR [r13+0x3b9],0x0
+classic	journal-agreement-details-and-card-fields	0xc9302	cmp    eax,edx
+classic	journal-agreement-details-and-card-fields	0xc931d	cmp    r8d,ecx
+classic	journal-agreement-details-and-card-fields	0xc932a	test   ecx,ecx
+classic	journal-agreement-details-and-card-fields	0xc9337	cmp    r12d,ecx
+classic	journal-agreement-details-and-card-fields	0xc9340	cmp    r12d,eax
+classic	journal-agreement-details-and-card-fields	0xc9386	cmp    BYTE PTR [r13+0x278],0x0
+classic	journal-agreement-details-and-card-fields	0xc93a2	cmp    r12d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc93b0	cmp    r12d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc93ef	cmp    r12d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc943c	cmp    r12d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc94e2	cmp    r12d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc950a	cmp    BYTE PTR [r13+0x278],0x0
+classic	journal-agreement-details-and-card-fields	0xc9514	cmp    r12d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc9525	cmp    r15d,0x1
+classic	journal-agreement-details-and-card-fields	0xc9533	cmp    r12d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc954c	cmp    ebx,eax
+classic	journal-agreement-details-and-card-fields	0xc9560	cmp    ebx,r15d
+classic	journal-agreement-details-and-card-fields	0xc9599	cmp    ebx,DWORD PTR [rbp-0x28]
+classic	journal-agreement-details-and-card-fields	0xc95aa	cmp    r12d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc95bd	cmp    BYTE PTR [r13+0x278],0x0
+classic	journal-agreement-details-and-card-fields	0xc9628	cmp    rbx,rax
+classic	journal-agreement-details-and-card-fields	0xc962f	cmp    r15d,edi
+classic	journal-agreement-details-and-card-fields	0xc9688	cmp    rbx,rax
+classic	journal-agreement-details-and-card-fields	0xc96ad	cmp    r12d,DWORD PTR [rbp-0x60]
+classic	journal-agreement-details-and-card-fields	0xc96d4	cmp    eax,0x2
+classic	journal-agreement-details-and-card-fields	0xc96dd	cmp    ebx,edi
+classic	journal-agreement-details-and-card-fields	0xc9721	cmp    r14,r13
+classic	journal-agreement-details-and-card-fields	0xc972b	cmp    r14,r12
+classic	journal-agreement-details-and-card-fields	0xc9749	cmp    rbx,rsi
+classic	journal-agreement-details-and-card-fields	0xc9758	cmp    r15d,DWORD PTR [rbp-0x70]
+classic	journal-agreement-details-and-card-fields	0xc97b2	cmp    BYTE PTR [r13+0x3b8],0x0
+classic	journal-agreement-details-and-card-fields	0xc9842	cmp    eax,edx
+classic	journal-agreement-details-and-card-fields	0xc985e	cmp    edi,ecx
+classic	journal-agreement-details-and-card-fields	0xc9869	test   ecx,ecx
+classic	journal-agreement-details-and-card-fields	0xc9876	cmp    r12d,ecx
+classic	journal-agreement-details-and-card-fields	0xc9880	cmp    r12d,eax
+classic	journal-agreement-details-and-card-fields	0xc98c6	cmp    BYTE PTR [r13+0x278],0x0
+classic	journal-agreement-details-and-card-fields	0xc98e2	cmp    r12d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc98f0	cmp    r12d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc992f	cmp    r12d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc997c	cmp    r12d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc9a22	cmp    r12d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc9a4a	cmp    BYTE PTR [r13+0x278],0x0
+classic	journal-agreement-details-and-card-fields	0xc9a54	cmp    r12d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc9a65	cmp    r15d,0x1
+classic	journal-agreement-details-and-card-fields	0xc9a73	cmp    r12d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc9a8c	cmp    ebx,eax
+classic	journal-agreement-details-and-card-fields	0xc9aa0	cmp    ebx,r15d
+classic	journal-agreement-details-and-card-fields	0xc9ad9	cmp    ebx,DWORD PTR [rbp-0x28]
+classic	journal-agreement-details-and-card-fields	0xc9aea	cmp    r12d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc9afd	cmp    BYTE PTR [r13+0x278],0x0
+classic	journal-agreement-details-and-card-fields	0xc9b68	cmp    rbx,rax
+classic	journal-agreement-details-and-card-fields	0xc9b6f	cmp    r15d,edi
+classic	journal-agreement-details-and-card-fields	0xc9bc8	cmp    rbx,rax
+classic	journal-agreement-details-and-card-fields	0xc9bed	cmp    r12d,DWORD PTR [rbp-0x60]
+classic	journal-agreement-details-and-card-fields	0xc9c32	cmp    eax,edx
+classic	journal-agreement-details-and-card-fields	0xc9c4e	cmp    edi,ecx
+classic	journal-agreement-details-and-card-fields	0xc9c59	test   ecx,ecx
+classic	journal-agreement-details-and-card-fields	0xc9c66	cmp    r12d,ecx
+classic	journal-agreement-details-and-card-fields	0xc9c70	cmp    r12d,eax
+classic	journal-agreement-details-and-card-fields	0xc9cb6	cmp    BYTE PTR [r13+0x278],0x0
+classic	journal-agreement-details-and-card-fields	0xc9cd2	cmp    r12d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc9ce0	cmp    r12d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc9d1f	cmp    r12d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc9d6c	cmp    r12d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc9e12	cmp    r12d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc9e3a	cmp    BYTE PTR [r13+0x278],0x0
+classic	journal-agreement-details-and-card-fields	0xc9e44	cmp    r12d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc9e55	cmp    r15d,0x1
+classic	journal-agreement-details-and-card-fields	0xc9e63	cmp    r12d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc9e7c	cmp    ebx,eax
+classic	journal-agreement-details-and-card-fields	0xc9e90	cmp    ebx,r15d
+classic	journal-agreement-details-and-card-fields	0xc9ec9	cmp    ebx,DWORD PTR [rbp-0x28]
+classic	journal-agreement-details-and-card-fields	0xc9eda	cmp    r12d,DWORD PTR [r13+0x250]
+classic	journal-agreement-details-and-card-fields	0xc9eed	cmp    BYTE PTR [r13+0x278],0x0
+classic	journal-agreement-details-and-card-fields	0xc9f58	cmp    rbx,rax
+classic	journal-agreement-details-and-card-fields	0xc9f5f	cmp    r15d,edi
+classic	journal-agreement-details-and-card-fields	0xc9fb8	cmp    rbx,rax
+classic	journal-agreement-details-and-card-fields	0xc9fdd	cmp    r12d,DWORD PTR [rbp-0x60]
+classic	journal-agreement-details-and-card-fields	0xca018	cmp    r14d,esi
+classic	journal-agreement-details-and-card-fields	0xca113	cmp    r13d,r12d
+classic	journal-agreement-details-and-card-fields	0xca12c	cmp    ebx,r13d
+classic	journal-agreement-details-and-card-fields	0xca13b	cmp    ebx,eax
+classic	journal-agreement-details-and-card-fields	0xca148	cmp    ebx,eax
+classic	journal-agreement-details-and-card-fields	0xca156	cmp    ebx,eax
+classic	journal-agreement-details-and-card-fields	0xca15f	cmp    ebx,r12d
+classic	journal-agreement-details-and-card-fields	0xca178	cmp    DWORD PTR [rip+0x22fd4e9],0x0        # 0x1423c7668
+classic	journal-agreement-details-and-card-fields	0xca188	test   BYTE PTR [rax],0x1
+classic	journal-agreement-details-and-card-fields	0xca1a0	cmp    ebx,r12d
+classic	journal-agreement-details-and-card-fields	0xca1af	cmp    rdi,r15
+classic	journal-agreement-details-and-card-fields	0xca1ee	cmp    QWORD PTR [rbp+0x98],0x0
+classic	journal-agreement-details-and-card-fields	0xca1f8	cmp    BYTE PTR [r13+0x2a8],0x0
+classic	journal-agreement-details-and-card-fields	0xca229	cmp    BYTE PTR [r13+0x2a8],0x0
+classic	journal-agreement-details-and-card-fields	0xca251	cmp    r9d,0x1f4
+classic	journal-agreement-details-and-card-fields	0xca293	cmp    BYTE PTR [rip+0x17d72ee],0x0        # 0x1418a1588
+classic	journal-agreement-details-and-card-fields	0xca314	test   eax,0xc2000c26
+classic	journal-agreement-details-and-card-fields	0xca32c	cmp    BYTE PTR [rdi],ah
+classic	journal-agreement-details-and-card-fields	0xca34c	test   BYTE PTR [rdx],ch
+classic	journal-agreement-details-and-card-fields	0xca371	test   BYTE PTR [rax+rax*1],cl
+classic	journal-agreement-details-and-card-fields	0xca37d	cmp    ecx,DWORD PTR [rax+rax*1]
+classic	journal-agreement-details-and-card-fields	0xca389	cmp    ecx,DWORD PTR [rax+rax*1]
+classic	journal-agreement-details-and-card-fields	0xca38d	cmp    ecx,DWORD PTR [rax+rax*1]
+classic	journal-agreement-details-and-card-fields	0xca391	cmp    ecx,DWORD PTR [rax+rax*1]
+classic	journal-agreement-details-and-card-fields	0xca399	cmp    ecx,DWORD PTR [rax+rax*1]
+classic	journal-agreement-details-and-card-fields	0xca39d	cmp    ecx,DWORD PTR [rax+rax*1]
+classic	journal-agreement-details-and-card-fields	0xca3a5	cmp    ecx,DWORD PTR [rax+rax*1]
+classic	journal-agreement-details-and-card-fields	0xca3a8	cmp    edi,DWORD PTR [rsp+rcx*1]
+classic	journal-agreement-details-and-card-fields	0xca3ad	cmp    ecx,DWORD PTR [rax+rax*1]
+classic	journal-agreement-details-and-card-fields	0xca3b1	cmp    ecx,DWORD PTR [rax+rax*1]
+classic	journal-agreement-details-and-card-fields	0xca3c4	cmp    rcx,QWORD PTR [r8+r8*1]
+classic	journal-agreement-details-and-card-fields	0xca3c9	cmp    ecx,DWORD PTR [rax+rax*1]
+classic	journal-agreement-details-and-card-fields	0xca3d1	cmp    ecx,DWORD PTR [rax+rax*1]
+classic	journal-agreement-details-and-card-fields	0xca3d5	cmp    ecx,DWORD PTR [rax+rax*1]
+classic	journal-agreement-details-and-card-fields	0xca3dd	cmp    al,0xc
+classic	journal-agreement-title-and-orders	0xdf520	cmp    rbx,rdi
+classic	journal-agreement-title-and-orders	0xdf528	test   r14,r14
+classic	journal-agreement-title-and-orders	0xdf571	cmp    rbx,rdi
+classic	journal-agreement-title-and-orders	0xdf579	cmp    rax,QWORD PTR [r15+0x8]
+classic	journal-agreement-title-and-orders	0xdf5da	test   rax,rax
+classic	journal-agreement-title-and-orders	0xdf5f4	cmp    DWORD PTR [rcx+0x2a8],0x0
+classic	journal-agreement-title-and-orders	0xdf604	test   BYTE PTR [rax],0x1
+classic	journal-agreement-title-and-orders	0xdf60d	test   BYTE PTR [rax],0x4
+classic	journal-agreement-title-and-orders	0xdf626	test   cx,cx
+classic	journal-agreement-title-and-orders	0xdf62b	cmp    ecx,DWORD PTR [rbx+0xa0]
+classic	journal-agreement-title-and-orders	0xdf633	test   r8w,r8w
+classic	journal-agreement-title-and-orders	0xdf639	cmp    r8d,DWORD PTR [rbx+0xa4]
+classic	journal-agreement-title-and-orders	0xdf649	test   r9,r9
+classic	journal-agreement-title-and-orders	0xdf656	cmp    DWORD PTR [rax+rcx*1+0x28],0x1
+classic	journal-agreement-title-and-orders	0xdf662	test   BYTE PTR [rax+0x1],0x2
+classic	journal-agreement-title-and-orders	0xdf66e	test   al,al
+classic	journal-agreement-title-and-orders	0xdf67c	cmp    r11,r10
+classic	journal-agreement-title-and-orders	0xdf6c3	cmp    rax,rcx
+classic	journal-agreement-title-and-orders	0xdf6e2	cmp    rbx,rdi
+classic	journal-agreement-title-and-orders	0xdf6ef	cmp    ax,0xd
+classic	journal-agreement-title-and-orders	0xdf723	cmp    r14,r15
+classic	journal-agreement-title-and-orders	0xdf72f	test   BYTE PTR [rdi+0x4c],0x2
+classic	journal-agreement-title-and-orders	0xdf752	cmp    rbx,rdi
+classic	journal-agreement-title-and-orders	0xdf781	cmp    BYTE PTR [rbp-0x58],r8b
+classic	journal-agreement-title-and-orders	0xdf78a	cmp    eax,0xffffffff
+classic	journal-agreement-title-and-orders	0xdf7ac	cmp    DWORD PTR [rax+0x18],0x0
+classic	journal-agreement-title-and-orders	0xdf7ba	cmp    DWORD PTR [rax+0x18],0xffffffff
+classic	journal-agreement-title-and-orders	0xdf7c8	test   r13,r13
+classic	journal-agreement-title-and-orders	0xdf7f0	cmp    rbx,rdi
+classic	journal-agreement-title-and-orders	0xdf81f	cmp    BYTE PTR [rbp-0x48],r14b
+classic	journal-agreement-title-and-orders	0xdf828	cmp    eax,0xffffffff
+classic	journal-agreement-title-and-orders	0xdf837	cmp    rcx,r8
+classic	journal-agreement-title-and-orders	0xdf850	cmp    rax,rsi
+classic	journal-agreement-title-and-orders	0xdf855	cmp    DWORD PTR [rax],r9d
+classic	journal-agreement-title-and-orders	0xdf867	cmp    eax,0xffffffff
+classic	journal-agreement-title-and-orders	0xdf870	cmp    rcx,r8
+classic	journal-agreement-title-and-orders	0xdf893	cmp    r13d,0x2
+classic	journal-agreement-title-and-orders	0xdf8af	test   cl,cl
+classic	journal-agreement-title-and-orders	0xdf8b7	test   r12b,r12b
+classic	journal-agreement-title-and-orders	0xdf95c	cmp    DWORD PTR [rax+0x18],r13d
+classic	journal-agreement-title-and-orders	0xdf966	cmp    DWORD PTR [rax+0x18],0xffffffff
+classic	journal-agreement-title-and-orders	0xdf989	cmp    eax,0x11
+classic	journal-agreement-title-and-orders	0xdf9c8	test   r13,r13
+classic	journal-agreement-title-and-orders	0xdf9d1	test   rax,rax
+classic	journal-agreement-title-and-orders	0xdf9e5	test   rcx,0xfffffffffffffffc
+classic	journal-agreement-title-and-orders	0xdf9fa	test   rax,0xfffffffffffffffc
+classic	journal-agreement-title-and-orders	0xdfa21	test   rcx,rcx
+classic	journal-agreement-title-and-orders	0xdfa26	cmp    r9d,0xffffffff
+classic	journal-agreement-title-and-orders	0xdfa55	cmp    r8d,r9d
+classic	journal-agreement-title-and-orders	0xdfa62	cmp    r8d,r9d
+classic	journal-agreement-title-and-orders	0xdfa69	cmp    edx,ecx
+classic	journal-agreement-title-and-orders	0xdfa8c	test   rax,0xfffffffffffffff8
+classic	journal-agreement-title-and-orders	0xdfa94	cmp    r9d,0xffffffff
+classic	journal-agreement-title-and-orders	0xdfabd	cmp    DWORD PTR [rbx+0xe0],r9d
+classic	journal-agreement-title-and-orders	0xdfad6	cmp    edx,eax
+classic	journal-agreement-title-and-orders	0xdfadd	test   rdi,rdi
+classic	journal-agreement-title-and-orders	0xdfae6	test   rbx,rbx
+classic	journal-agreement-title-and-orders	0xdfb02	cmp    ecx,0x2a
+classic	journal-agreement-title-and-orders	0xdfb73	cmp    DWORD PTR [rdi+0xe0],eax
+classic	journal-agreement-title-and-orders	0xdfb9e	cmp    QWORD PTR [rbp+0x138],0xf
+classic	journal-agreement-title-and-orders	0xdfcea	test   edx,edx
+classic	journal-agreement-title-and-orders	0xdfcf3	cmp    edx,0x1
+classic	journal-agreement-title-and-orders	0xdfd7e	cmp    r11d,0xffffffff
+classic	journal-agreement-title-and-orders	0xdfd9d	test   rax,rax
+classic	journal-agreement-title-and-orders	0xdfdbf	cmp    DWORD PTR [r13+0x0],r11d
+classic	journal-agreement-title-and-orders	0xdfdd2	cmp    ecx,eax
+classic	journal-agreement-title-and-orders	0xdfdd9	test   r13,r13
+classic	journal-agreement-title-and-orders	0xdfe0c	cmp    r15,r12
+classic	journal-agreement-title-and-orders	0xdfe23	cmp    DWORD PTR [rcx+0xc],eax
+classic	journal-agreement-title-and-orders	0xdfedc	cmp    eax,0x1
+classic	journal-agreement-title-and-orders	0xdff4d	test   rax,0xfffffffffffffff8
+classic	journal-agreement-title-and-orders	0xdff55	cmp    ecx,0xffffffff
+classic	journal-agreement-title-and-orders	0xdff7c	test   rax,rax
+classic	journal-agreement-title-and-orders	0xdff85	test   rbx,rbx
+classic	journal-agreement-title-and-orders	0xdffa0	cmp    r8,r9
+classic	journal-agreement-title-and-orders	0xdffd5	cmp    DWORD PTR [r14+0x1f8],r10d
+classic	journal-agreement-title-and-orders	0xdffde	cmp    DWORD PTR [r14+0x200],r10d
+classic	journal-agreement-title-and-orders	0xdffe7	cmp    DWORD PTR [r14+0x1fc],edx
+classic	journal-agreement-title-and-orders	0xdfff0	cmp    DWORD PTR [r14+0x204],edx
+classic	journal-agreement-title-and-orders	0xe0010	cmp    rax,rcx
+classic	journal-agreement-title-and-orders	0xe0021	test   r10d,r10d
+classic	journal-agreement-title-and-orders	0xe002a	test   rax,rax
+classic	journal-agreement-title-and-orders	0xe002f	cmp    DWORD PTR [rax+0x138],0x1
+classic	journal-agreement-title-and-orders	0xe003f	test   BYTE PTR [rax],0x1
+classic	journal-agreement-title-and-orders	0xe0065	cmp    rbx,rdi
+classic	journal-agreement-title-and-orders	0xe006d	test   BYTE PTR [rcx+0x110],0x2
+classic	journal-agreement-title-and-orders	0xe007d	test   rdx,rdx
+classic	journal-agreement-title-and-orders	0xe0085	cmp    DWORD PTR [rdx+0x4],eax
+classic	journal-agreement-title-and-orders	0xe008f	cmp    rax,r14
+classic	journal-agreement-title-and-orders	0xe009a	cmp    BYTE PTR [rsp+0x30],0x0
+classic	journal-agreement-title-and-orders	0xe00b0	cmp    rax,rbx
+classic	journal-agreement-title-and-orders	0xe00c6	test   cl,cl
+classic	journal-agreement-title-and-orders	0xe00d8	cmp    DWORD PTR [rdx+0x88],ecx
+classic	journal-agreement-title-and-orders	0xe0220	test   rcx,rcx
+classic	journal-agreement-title-and-orders	0xe0229	cmp    r11d,0xffffffff
+classic	journal-agreement-title-and-orders	0xe0257	cmp    r9d,r11d
+classic	journal-agreement-title-and-orders	0xe0269	cmp    r8d,ecx
+classic	journal-agreement-title-and-orders	0xe0273	test   r10,r10
+classic	journal-agreement-title-and-orders	0xe027c	cmp    DWORD PTR [r10+0x30],0xffffffff
+classic	journal-agreement-title-and-orders	0xe0299	test   rbx,rbx
+classic	journal-agreement-title-and-orders	0xe02b0	cmp    rcx,rax
+classic	journal-agreement-title-and-orders	0xe02c0	test   r8,r8
+classic	journal-agreement-title-and-orders	0xe02c5	cmp    DWORD PTR [r8+0x24],0x4
+classic	journal-agreement-title-and-orders	0xe02cc	cmp    DWORD PTR [r8],r9d
+classic	journal-agreement-title-and-orders	0xe02db	cmp    r9d,0xffffffff
+classic	journal-agreement-title-and-orders	0xe02f3	cmp    rax,rbx
+classic	journal-agreement-title-and-orders	0xe0305	test   dl,dl
+classic	journal-agreement-title-and-orders	0xe0310	cmp    DWORD PTR [rdx+0x88],r9d
+classic	journal-agreement-title-and-orders	0xe0388	test   rax,0xfffffffffffffff8
+classic	journal-agreement-title-and-orders	0xe0390	cmp    ecx,0xffffffff
+classic	journal-agreement-title-and-orders	0xe03b0	test   rax,rax
+classic	journal-agreement-title-and-orders	0xe03f2	test   rdi,rdi
+classic	journal-agreement-title-and-orders	0xe03ff	test   rdi,rdi
+classic	journal-agreement-title-and-orders	0xe0410	cmp    rbx,rdi
+classic	journal-agreement-title-and-orders	0xe041c	cmp    DWORD PTR [rsi+0x8],0x0
+classic	journal-agreement-title-and-orders	0xe0436	test   r10d,r10d
+classic	journal-agreement-title-and-orders	0xe0445	cmp    r10d,0x40
+classic	journal-agreement-title-and-orders	0xe0461	cmp    esi,DWORD PTR [rcx]
+classic	journal-agreement-title-and-orders	0xe046d	cmp    r10d,0x40
+classic	journal-agreement-title-and-orders	0xe047c	cmp    eax,0xffffffff
+classic	journal-agreement-title-and-orders	0xe0481	cmp    r9d,eax
+classic	journal-agreement-title-and-orders	0xe0494	cmp    esi,DWORD PTR [rax]
+classic	journal-agreement-title-and-orders	0xe049e	cmp    rcx,rdx
+classic	journal-agreement-title-and-orders	0xe04e1	test   rcx,rcx
+classic	journal-agreement-title-and-orders	0xe04e6	cmp    DWORD PTR [rcx+0xf8],edx
+classic	journal-agreement-title-and-orders	0xe04f4	cmp    edx,0xffffffff
+classic	journal-agreement-title-and-orders	0xe04fc	cmp    eax,0xffffffff
+classic	journal-agreement-title-and-orders	0xe0501	cmp    edx,eax
+classic	journal-agreement-title-and-orders	0xe0550	cmp    rbx,rdi
+classic	journal-agreement-title-and-orders	0xe055c	test   BYTE PTR [rsi+0x20],0x1
+classic	journal-agreement-title-and-orders	0xe0566	cmp    DWORD PTR [rsi+0x10],r14d
+classic	journal-agreement-title-and-orders	0xe0578	cmp    DWORD PTR [rsi+0x14],eax
+classic	journal-agreement-title-and-orders	0xe0581	cmp    DWORD PTR [rsi+0x24],0x2
+classic	journal-agreement-title-and-orders	0xe059c	test   r10d,r10d
+classic	journal-agreement-title-and-orders	0xe05ad	cmp    r10d,0x40
+classic	journal-agreement-title-and-orders	0xe05c4	cmp    esi,DWORD PTR [rcx]
+classic	journal-agreement-title-and-orders	0xe05d0	cmp    r10d,0x40
+classic	journal-agreement-title-and-orders	0xe05df	cmp    eax,0xffffffff
+classic	journal-agreement-title-and-orders	0xe05e4	cmp    r9d,eax
+classic	journal-agreement-title-and-orders	0xe05f4	cmp    esi,DWORD PTR [rax]
+classic	journal-agreement-title-and-orders	0xe05fe	cmp    rcx,rdx
+classic	journal-agreement-title-and-orders	0xe0645	test   rcx,rcx
+classic	journal-agreement-title-and-orders	0xe064a	cmp    DWORD PTR [rcx+0xf8],edx
+classic	journal-agreement-title-and-orders	0xe0658	cmp    edx,0xffffffff
+classic	journal-agreement-title-and-orders	0xe066a	cmp    eax,0xffffffff
+classic	journal-agreement-title-and-orders	0xe066f	cmp    edx,eax
+classic	journal-agreement-title-and-orders	0xe06b0	cmp    edi,0xffffffff
+classic	journal-agreement-title-and-orders	0xe06ce	test   r10d,r10d
+classic	journal-agreement-title-and-orders	0xe06df	cmp    r10d,0x40
+classic	journal-agreement-title-and-orders	0xe0701	cmp    edi,DWORD PTR [rcx]
+classic	journal-agreement-title-and-orders	0xe070d	cmp    r10d,0x40
+classic	journal-agreement-title-and-orders	0xe071c	cmp    eax,0xffffffff
+classic	journal-agreement-title-and-orders	0xe0725	cmp    r9d,eax
+classic	journal-agreement-title-and-orders	0xe0738	cmp    edi,DWORD PTR [rax]
+classic	journal-agreement-title-and-orders	0xe0742	cmp    rcx,rdx
+classic	journal-agreement-title-and-orders	0xe0753	test   rdi,rdi
+classic	journal-agreement-title-and-orders	0xe0773	cmp    rbx,rdi
+classic	journal-agreement-title-and-orders	0xe077f	test   BYTE PTR [rsi+0x20],0x1
+classic	journal-agreement-title-and-orders	0xe0789	cmp    DWORD PTR [rsi+0x10],r14d
+classic	journal-agreement-title-and-orders	0xe079b	cmp    DWORD PTR [rsi+0x14],eax
+classic	journal-agreement-title-and-orders	0xe07a4	cmp    DWORD PTR [rsi+0x24],0x2
+classic	journal-agreement-title-and-orders	0xe07bf	test   r10d,r10d
+classic	journal-agreement-title-and-orders	0xe07cf	cmp    r10d,0x40
+classic	journal-agreement-title-and-orders	0xe07f1	cmp    esi,DWORD PTR [rcx]
+classic	journal-agreement-title-and-orders	0xe07fd	cmp    r10d,0x40
+classic	journal-agreement-title-and-orders	0xe0807	cmp    eax,r12d
+classic	journal-agreement-title-and-orders	0xe080c	cmp    r9d,eax
+classic	journal-agreement-title-and-orders	0xe081b	cmp    esi,DWORD PTR [rax]
+classic	journal-agreement-title-and-orders	0xe0825	cmp    rcx,rdx
+classic	journal-agreement-title-and-orders	0xe0860	test   rcx,rcx
+classic	journal-agreement-title-and-orders	0xe0865	cmp    DWORD PTR [rcx+0xf8],r12d
+classic	journal-agreement-title-and-orders	0xe0874	cmp    edx,r12d
+classic	journal-agreement-title-and-orders	0xe0886	cmp    eax,r12d
+classic	journal-agreement-title-and-orders	0xe088b	cmp    edx,eax
+classic	journal-agreement-title-and-orders	0xe08d0	cmp    rsi,r14
+classic	journal-agreement-title-and-orders	0xe08e1	test   ax,ax
+classic	journal-agreement-title-and-orders	0xe08fe	test   rax,0xfffffffffffffff8
+classic	journal-agreement-title-and-orders	0xe090a	cmp    ecx,0xffffffff
+classic	journal-agreement-title-and-orders	0xe091f	test   rax,rax
+classic	journal-agreement-title-and-orders	0xe093d	test   rcx,rcx
+classic	journal-agreement-title-and-orders	0xe0960	cmp    rbx,rdi
+classic	journal-agreement-title-and-orders	0xe096c	test   BYTE PTR [rcx+0x20],0x1
+classic	journal-agreement-title-and-orders	0xe0979	cmp    eax,DWORD PTR [rip+0x228dc85]        # 0x14236e604
+classic	journal-agreement-title-and-orders	0xe098d	cmp    DWORD PTR [rcx+0x14],eax
+classic	journal-agreement-title-and-orders	0xe0996	cmp    DWORD PTR [rcx+0x24],0x2
+classic	journal-agreement-title-and-orders	0xe09b2	test   r10d,r10d
+classic	journal-agreement-title-and-orders	0xe09c7	cmp    r10d,0x40
+classic	journal-agreement-title-and-orders	0xe09e2	cmp    r11d,DWORD PTR [rdx]
+classic	journal-agreement-title-and-orders	0xe09ef	cmp    r10d,0x40
+classic	journal-agreement-title-and-orders	0xe09f9	cmp    ecx,0xffffffff
+classic	journal-agreement-title-and-orders	0xe0a02	cmp    eax,ecx
+classic	journal-agreement-title-and-orders	0xe0a15	cmp    r11d,DWORD PTR [rcx]
+classic	journal-agreement-title-and-orders	0xe0a1f	cmp    rdx,r8
+classic	journal-agreement-title-and-orders	0xe0a48	test   rax,rax
+classic	journal-agreement-title-and-orders	0xe0a4d	cmp    DWORD PTR [rax+0xf8],0xffffffff
+classic	journal-agreement-title-and-orders	0xe0a5c	cmp    edx,0xffffffff
+classic	journal-agreement-title-and-orders	0xe0a6e	cmp    eax,0xffffffff
+classic	journal-agreement-title-and-orders	0xe0a73	cmp    edx,eax
+classic	journal-agreement-title-and-orders	0xe0ab9	test   rax,rax
+classic	journal-agreement-title-and-orders	0xe0ad3	cmp    rdx,r11
+classic	journal-agreement-title-and-orders	0xe0aed	cmp    ecx,eax
+classic	journal-agreement-title-and-orders	0xe0af1	cmp    r9d,eax
+classic	journal-agreement-title-and-orders	0xe0af9	cmp    r9d,0xffffffff
+classic	journal-agreement-title-and-orders	0xe0aff	cmp    r9d,DWORD PTR [r12+0x4]
+classic	journal-agreement-title-and-orders	0xe0b06	cmp    WORD PTR [r12],0x0
+classic	journal-agreement-title-and-orders	0xe0b20	cmp    rax,rcx
+classic	journal-agreement-title-and-orders	0xe0b28	cmp    WORD PTR [r8],0x1
+classic	journal-agreement-title-and-orders	0xe0b2f	cmp    DWORD PTR [r8+0x4],r9d
+classic	journal-agreement-title-and-orders	0xe0b42	cmp    DWORD PTR [rsp+0x40],eax
+classic	journal-agreement-title-and-orders	0xe0b6f	cmp    r9d,0xffffffff
+classic	journal-agreement-title-and-orders	0xe0b99	test   rbx,rbx
+classic	journal-agreement-title-and-orders	0xe0bb0	cmp    rcx,rax
+classic	journal-agreement-title-and-orders	0xe0bbc	test   r8,r8
+classic	journal-agreement-title-and-orders	0xe0bc1	cmp    DWORD PTR [r8+0x24],0x5
+classic	journal-agreement-title-and-orders	0xe0bcc	cmp    DWORD PTR [r8],edx
+classic	journal-agreement-title-and-orders	0xe0bdb	cmp    r10d,0xffffffff
+classic	journal-agreement-title-and-orders	0xe0bf0	cmp    rax,rbx
+classic	journal-agreement-title-and-orders	0xe0bf8	cmp    DWORD PTR [rdx+0x88],r10d
+classic	journal-agreement-title-and-orders	0xe0cb8	test   rax,0xfffffffffffffff8
+classic	journal-agreement-title-and-orders	0xe0cc0	cmp    ecx,0xffffffff
+classic	journal-agreement-title-and-orders	0xe0cea	test   rax,rax
+classic	journal-agreement-title-and-orders	0xe0cef	test   rdi,rdi
+classic	journal-agreement-title-and-orders	0xe0d02	cmp    rcx,rdx
+classic	journal-agreement-title-and-orders	0xe0d0a	test   BYTE PTR [rax+0x1c],0x1
+classic	journal-agreement-title-and-orders	0xe0d10	cmp    DWORD PTR [rax+0x10],0x0
+classic	journal-agreement-title-and-orders	0xe0d16	cmp    DWORD PTR [rax+0x14],0xffffffff
+classic	journal-agreement-title-and-orders	0xe0d31	test   rax,0xfffffffffffffff8
+classic	journal-agreement-title-and-orders	0xe0d39	cmp    ecx,0xffffffff
+classic	journal-agreement-title-and-orders	0xe0d51	test   rax,rax
+classic	journal-agreement-title-and-orders	0xe0d59	cmp    ax,0x1
+classic	journal-agreement-title-and-orders	0xe0d5f	cmp    r9,rdi
+classic	journal-agreement-title-and-orders	0xe0d7b	cmp    ax,0x7
+classic	journal-agreement-title-and-orders	0xe0d81	cmp    ax,0x4
+classic	journal-agreement-title-and-orders	0xe0d87	test   ax,ax
+classic	journal-agreement-title-and-orders	0xe0da0	cmp    rax,rcx
+classic	journal-agreement-title-and-orders	0xe0da8	cmp    WORD PTR [r8],0x1
+classic	journal-agreement-title-and-orders	0xe0db3	cmp    DWORD PTR [r8+0x4],edx
+classic	journal-agreement-title-and-orders	0xe0dca	test   al,al
+classic	journal-agreement-title-and-orders	0xe0dd6	cmp    rax,rbx
+classic	journal-agreement-title-and-orders	0xe0de8	test   cl,cl
+classic	journal-agreement-title-and-orders	0xe0df6	cmp    DWORD PTR [rdx+0x88],ecx
+classic	journal-card-border	0xdec0e	cmp    edx,r8d
+classic	journal-card-border	0xdec53	cmp    r13d,r14d
+classic	journal-card-border	0xdec60	cmp    edi,r13d
+classic	journal-card-border	0xdec69	cmp    edi,r14d
+classic	journal-card-border	0xdec81	test   r12b,r12b
+classic	journal-card-border	0xdec86	test   r15b,r15b
+classic	journal-card-border	0xdec93	cmp    ebx,ebp
+classic	journal-card-border	0xdeca4	cmp    ebx,esi
+classic	journal-card-border	0xdecbf	test   r12b,r12b
+classic	journal-card-border	0xdecc4	cmp    ebx,ebp
+classic	journal-card-border	0xdecd2	cmp    ebx,esi
+classic	journal-card-border	0xdecea	test   r15b,r15b
+classic	journal-card-border	0xdecef	cmp    ebx,ebp
+classic	journal-card-border	0xdecfd	cmp    ebx,esi
+classic	journal-card-border	0xded15	cmp    ebx,ebp
+classic	journal-card-border	0xded23	cmp    ebx,esi
+classic	journal-card-border	0xded41	cmp    DWORD PTR [rip+0x22e8920],0x0        # 0x1423c7668
+classic	journal-card-border	0xded51	test   BYTE PTR [rax],0x1
+classic	journal-card-border	0xded71	cmp    edi,r14d
+classic	journal-card-border	0xded7c	cmp    ebx,esi
+classic	journal-agreement-retained-title-clipping	0xcdec6	cmp    QWORD PTR [rcx+0x70],0x0
+classic	journal-agreement-retained-title-clipping	0xcdedd	cmp    rbx,rdx
+classic	journal-agreement-retained-title-clipping	0xcdee2	cmp    QWORD PTR [rdx+0x18],0xf
+classic	journal-agreement-retained-title-clipping	0xcdef8	cmp    QWORD PTR [rdi+0x70],0x3a
+classic	journal-agreement-retained-title-clipping	0xcdf08	cmp    rax,rdx
+classic	journal-agreement-retained-title-clipping	0xcdf11	cmp    QWORD PTR [rbx+0x18],0xf
+classic	journal-agreement-calendar-month	0x770db3	cmp    ecx,0xb

@@ -6,7 +6,8 @@ static std::optional<NativeAdventureQuestTitle> native_adventure_quest_original_
     const uintptr_t base = native_history_profile_base();
     if (!base || address < 0x60) return std::nullopt;
 #ifdef _WIN32
-    if (caller != native_reference_address(base, 0xaf628f)) return std::nullopt;
+    if (caller != native_reference_address(base, 0xaf628f) &&
+            caller != native_reference_address(base, 0xc39bf)) return std::nullopt;
 #else
     // The map Tasks strip and the adventure journal both pass the actual
     // agreement_entryst::p_list_name. Their retained title lives in list_name.
@@ -39,17 +40,75 @@ static std::optional<NativeAdventureQuestTitle> native_adventure_quest_original_
     return result;
 }
 
-// ELF agreement detail fields from the original addst call sites retained in
-// data/extracted/adventure-journal-agreements/elf-display-fields.tsv.
+// Agreement fields from the original addst call sites retained in
+// data/extracted/adventure-journal-agreements/{pe,elf}-display-fields.tsv.
 static NativeJournalAgreementField native_journal_agreement_field(uintptr_t caller) {
 #ifdef _WIN32
-    return NativeJournalAgreementField::None;
+    const auto base = native_history_profile_base();
+    if (!base || caller < native_reference_address(base, 0xc3871) ||
+            caller >= native_reference_address(base, 0xc70a4))
+        return NativeJournalAgreementField::None;
+    // Retain reference-image return sites explicitly so the normal PE binding
+    // generator maps every field to its corresponding classic instruction.
+    const std::pair<uintptr_t, NativeJournalAgreementField> fields[] = {
+        {native_reference_address(base, 0xc3a5e), NativeJournalAgreementField::Counter},
+        {native_reference_address(base, 0xc3ce9), NativeJournalAgreementField::Type},
+        {native_reference_address(base, 0xc3e8b), NativeJournalAgreementField::Person},
+        {native_reference_address(base, 0xc3f94), NativeJournalAgreementField::Person},
+        {native_reference_address(base, 0xc45de), NativeJournalAgreementField::Person},
+        {native_reference_address(base, 0xc46e7), NativeJournalAgreementField::Person},
+        {native_reference_address(base, 0xc4980), NativeJournalAgreementField::Person},
+        {native_reference_address(base, 0xc4a89), NativeJournalAgreementField::Person},
+        {native_reference_address(base, 0xc4cfc), NativeJournalAgreementField::Person},
+        {native_reference_address(base, 0xc4e05), NativeJournalAgreementField::Person},
+        {native_reference_address(base, 0xc4fa6), NativeJournalAgreementField::Person},
+        {native_reference_address(base, 0xc501b), NativeJournalAgreementField::Person},
+        {native_reference_address(base, 0xc512c), NativeJournalAgreementField::Person},
+        {native_reference_address(base, 0xc5231), NativeJournalAgreementField::Person},
+        {native_reference_address(base, 0xc53d0), NativeJournalAgreementField::Person},
+        {native_reference_address(base, 0xc54d5), NativeJournalAgreementField::Person},
+        {native_reference_address(base, 0xc55e9), NativeJournalAgreementField::Person},
+        {native_reference_address(base, 0xc565e), NativeJournalAgreementField::Person},
+        {native_reference_address(base, 0xc576f), NativeJournalAgreementField::Person},
+        {native_reference_address(base, 0xc5874), NativeJournalAgreementField::Person},
+        {native_reference_address(base, 0xc598d), NativeJournalAgreementField::Person},
+        {native_reference_address(base, 0xc5a92), NativeJournalAgreementField::Person},
+        {native_reference_address(base, 0xc5bab), NativeJournalAgreementField::Person},
+        {native_reference_address(base, 0xc5cb0), NativeJournalAgreementField::Person},
+        {native_reference_address(base, 0xc65e8), NativeJournalAgreementField::Person},
+        {native_reference_address(base, 0xc66f1), NativeJournalAgreementField::Person},
+        {native_reference_address(base, 0xc6933), NativeJournalAgreementField::Person},
+        {native_reference_address(base, 0xc6a3c), NativeJournalAgreementField::Person},
+        {native_reference_address(base, 0xc4071), NativeJournalAgreementField::Artifact},
+        {native_reference_address(base, 0xc67b7), NativeJournalAgreementField::Artifact},
+        {native_reference_address(base, 0xc4168), NativeJournalAgreementField::Site},
+        {native_reference_address(base, 0xc4466), NativeJournalAgreementField::Site},
+        {native_reference_address(base, 0xc4c40), NativeJournalAgreementField::Site},
+        {native_reference_address(base, 0xc4efd), NativeJournalAgreementField::Site},
+        {native_reference_address(base, 0xc530e), NativeJournalAgreementField::Site},
+        {native_reference_address(base, 0xc621f), NativeJournalAgreementField::Site},
+        {native_reference_address(base, 0xc425f), NativeJournalAgreementField::Group},
+        {native_reference_address(base, 0xc43a3), NativeJournalAgreementField::Group},
+        {native_reference_address(base, 0xc47c4), NativeJournalAgreementField::Group},
+        {native_reference_address(base, 0xc4b66), NativeJournalAgreementField::Group},
+        {native_reference_address(base, 0xc6098), NativeJournalAgreementField::Group},
+        {native_reference_address(base, 0xc615c), NativeJournalAgreementField::Group},
+        {native_reference_address(base, 0xc6b06), NativeJournalAgreementField::Group},
+        {native_reference_address(base, 0xc5fd6), NativeJournalAgreementField::Actor},
+        {native_reference_address(base, 0xc6305), NativeJournalAgreementField::Actor},
+        {native_reference_address(base, 0xc6ca5), NativeJournalAgreementField::Actor},
+        {native_reference_address(base, 0xc5ee2), NativeJournalAgreementField::Date},
+    };
+    for (const auto &[site, kind] : fields)
+        if (caller == site) return kind;
+    return NativeJournalAgreementField::Literal;
 #else
     const auto base = native_history_profile_base();
     if (!base || caller < native_reference_address(base, 0x17cda80) ||
             caller >= native_reference_address(base, 0x17d92b0))
         return NativeJournalAgreementField::None;
     static constexpr std::pair<uintptr_t, NativeJournalAgreementField> fields[] = {
+        {0x17cffdd, NativeJournalAgreementField::Counter},
         {0x17d2614, NativeJournalAgreementField::Type},
         {0x17d0263, NativeJournalAgreementField::Actor},
         {0x17d276b, NativeJournalAgreementField::Group},

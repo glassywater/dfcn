@@ -1,0 +1,231 @@
+edition	instruction_rva	return_site_rva	source_kind	nearby_literals
+steam	0xc39ba	0xc39bf	Title	 Showing type,date /  Showing pin,last
+steam	0xc3a59	0xc3a5e	Counter	/
+steam	0xc3ce4	0xc3ce9	Type	Offer Service / Retrieve Artifact
+steam	0xc3e39	0xc3e3e	Literal	You
+steam	0xc3e86	0xc3e8b	Person	
+steam	0xc3ee6	0xc3eeb	Literal	asked that
+steam	0xc3f47	0xc3f4c	Literal	you
+steam	0xc3f8f	0xc3f94	Person	
+steam	0xc3fee	0xc3ff3	Literal	retrieve
+steam	0xc406c	0xc4071	Artifact	
+steam	0xc40e4	0xc40e9	Literal	from
+steam	0xc4163	0xc4168	Site	
+steam	0xc41e0	0xc41e5	Literal	for
+steam	0xc425a	0xc425f	Group	
+steam	0xc4333	0xc4338	Literal	Drive members of
+steam	0xc439e	0xc43a3	Group	
+steam	0xc43f6	0xc43fb	Literal	out of
+steam	0xc4461	0xc4466	Site	
+steam	0xc458c	0xc4591	Literal	You
+steam	0xc45d9	0xc45de	Person	
+steam	0xc4639	0xc463e	Literal	requested that
+steam	0xc469a	0xc469f	Literal	you
+steam	0xc46e2	0xc46e7	Person	
+steam	0xc473d	0xc4742	Literal	make an offer of service to
+steam	0xc47bf	0xc47c4	Group	
+steam	0xc492e	0xc4933	Literal	You
+steam	0xc497b	0xc4980	Person	
+steam	0xc49db	0xc49e0	Literal	agreed to join
+steam	0xc4a3c	0xc4a41	Literal	you
+steam	0xc4a84	0xc4a89	Person	
+steam	0xc4ae1	0xc4ae6	Literal	in insurrection against
+steam	0xc4b61	0xc4b66	Group	
+steam	0xc4bb9	0xc4bbe	Literal	thereby freeing
+steam	0xc4c3b	0xc4c40	Site	
+steam	0xc4caa	0xc4caf	Literal	You
+steam	0xc4cf7	0xc4cfc	Person	
+steam	0xc4d57	0xc4d5c	Literal	agreed to guide
+steam	0xc4db8	0xc4dbd	Literal	you
+steam	0xc4e00	0xc4e05	Person	
+steam	0xc4e5d	0xc4e62	Literal	to
+steam	0xc4ef8	0xc4efd	Site	
+steam	0xc4fa1	0xc4fa6	Person	
+steam	0xc5016	0xc501b	Person	
+steam	0xc5065	0xc506a	Literal	somebody unknown
+steam	0xc50da	0xc50df	Literal	You
+steam	0xc5127	0xc512c	Person	
+steam	0xc5187	0xc518c	Literal	agreed to join
+steam	0xc51e8	0xc51ed	Literal	you
+steam	0xc522c	0xc5231	Person	
+steam	0xc5289	0xc528e	Literal	in order to be brought safely away from
+steam	0xc5309	0xc530e	Site	
+steam	0xc537e	0xc5383	Literal	You
+steam	0xc53cb	0xc53d0	Person	
+steam	0xc542b	0xc5430	Literal	agreed to join
+steam	0xc548c	0xc5491	Literal	you
+steam	0xc54d0	0xc54d5	Person	
+steam	0xc552d	0xc5532	Literal	in order to rescue
+steam	0xc55e4	0xc55e9	Person	
+steam	0xc5659	0xc565e	Person	
+steam	0xc56a8	0xc56ad	Literal	somebody unknown
+steam	0xc571d	0xc5722	Literal	You
+steam	0xc576a	0xc576f	Person	
+steam	0xc57ca	0xc57cf	Literal	agreed to adventure with
+steam	0xc582b	0xc5830	Literal	you
+steam	0xc586f	0xc5874	Person	
+steam	0xc58cc	0xc58d1	Literal	wherever the journey might lead
+steam	0xc593b	0xc5940	Literal	You
+steam	0xc5988	0xc598d	Person	
+steam	0xc59e8	0xc59ed	Literal	was bound to serve
+steam	0xc5a49	0xc5a4e	Literal	you
+steam	0xc5a8d	0xc5a92	Person	
+steam	0xc5aea	0xc5aef	Literal	by invocation of True Name
+steam	0xc5b59	0xc5b5e	Literal	You
+steam	0xc5ba6	0xc5bab	Person	
+steam	0xc5c06	0xc5c0b	Literal	agreed to entertain people with
+steam	0xc5c67	0xc5c6c	Literal	you
+steam	0xc5cab	0xc5cb0	Person	
+steam	0xc5d08	0xc5d0d	Literal	throughout the world
+steam	0xc5d8f	0xc5d94	Literal	Agreement concluded
+steam	0xc5edd	0xc5ee2	Date	  / , 
+steam	0xc5f47	0xc5f4c	Literal	Kill
+steam	0xc5fd1	0xc5fd6	Actor	
+steam	0xc6028	0xc602d	Literal	Cause trouble for
+steam	0xc6093	0xc6098	Group	
+steam	0xc60ec	0xc60f1	Literal	Drive
+steam	0xc6157	0xc615c	Group	
+steam	0xc61af	0xc61b4	Literal	from
+steam	0xc621a	0xc621f	Site	
+steam	0xc6275	0xc627a	Literal	An order from
+steam	0xc6300	0xc6305	Actor	
+steam	0xc635f	0xc6364	Literal	Finish reporting in
+steam	0xc63d0	0xc63d5	Literal	Complete: report back
+steam	0xc641d	0xc6422	Literal	Not yet completed
+steam	0xc6596	0xc659b	Literal	You
+steam	0xc65e3	0xc65e8	Person	
+steam	0xc6643	0xc6648	Literal	asked that
+steam	0xc66a4	0xc66a9	Literal	you
+steam	0xc66ec	0xc66f1	Person	
+steam	0xc6747	0xc674c	Literal	retrieve 
+steam	0xc67b2	0xc67b7	Artifact	
+steam	0xc68e1	0xc68e6	Literal	You
+steam	0xc692e	0xc6933	Person	
+steam	0xc698e	0xc6993	Literal	requested that
+steam	0xc69ef	0xc69f4	Literal	you
+steam	0xc6a37	0xc6a3c	Person	
+steam	0xc6a92	0xc6a97	Literal	serve 
+steam	0xc6b01	0xc6b06	Group	
+steam	0xc6b77	0xc6b7c	Literal	Agreement concluded
+steam	0xc6c18	0xc6c1d	Literal	An order from
+steam	0xc6ca0	0xc6ca5	Actor	
+steam	0xc6cff	0xc6d04	Literal	Finish reporting in
+steam	0xc6d6d	0xc6d72	Literal	Complete: report back
+steam	0xc6db7	0xc6dbc	Literal	Not yet completed
+steam	0xc6f89	0xc6f8e	Literal	Centered on commander
+steam	0xc6ff3	0xc6ff8	Literal	Centered on target
+classic	0xc394a	0xc394f	Title	 Showing type,date /  Showing pin,last
+classic	0xc39e9	0xc39ee	Counter	/
+classic	0xc3c74	0xc3c79	Type	Offer Service / Retrieve Artifact
+classic	0xc3dc9	0xc3dce	Literal	You
+classic	0xc3e16	0xc3e1b	Person	
+classic	0xc3e76	0xc3e7b	Literal	asked that
+classic	0xc3ed7	0xc3edc	Literal	you
+classic	0xc3f1f	0xc3f24	Person	
+classic	0xc3f7e	0xc3f83	Literal	retrieve
+classic	0xc3ffc	0xc4001	Artifact	
+classic	0xc4074	0xc4079	Literal	from
+classic	0xc40f3	0xc40f8	Site	
+classic	0xc4170	0xc4175	Literal	for
+classic	0xc41ea	0xc41ef	Group	
+classic	0xc42c3	0xc42c8	Literal	Drive members of
+classic	0xc432e	0xc4333	Group	
+classic	0xc4386	0xc438b	Literal	out of
+classic	0xc43f1	0xc43f6	Site	
+classic	0xc451c	0xc4521	Literal	You
+classic	0xc4569	0xc456e	Person	
+classic	0xc45c9	0xc45ce	Literal	requested that
+classic	0xc462a	0xc462f	Literal	you
+classic	0xc4672	0xc4677	Person	
+classic	0xc46cd	0xc46d2	Literal	make an offer of service to
+classic	0xc474f	0xc4754	Group	
+classic	0xc48be	0xc48c3	Literal	You
+classic	0xc490b	0xc4910	Person	
+classic	0xc496b	0xc4970	Literal	agreed to join
+classic	0xc49cc	0xc49d1	Literal	you
+classic	0xc4a14	0xc4a19	Person	
+classic	0xc4a71	0xc4a76	Literal	in insurrection against
+classic	0xc4af1	0xc4af6	Group	
+classic	0xc4b49	0xc4b4e	Literal	thereby freeing
+classic	0xc4bcb	0xc4bd0	Site	
+classic	0xc4c3a	0xc4c3f	Literal	You
+classic	0xc4c87	0xc4c8c	Person	
+classic	0xc4ce7	0xc4cec	Literal	agreed to guide
+classic	0xc4d48	0xc4d4d	Literal	you
+classic	0xc4d90	0xc4d95	Person	
+classic	0xc4ded	0xc4df2	Literal	to
+classic	0xc4e88	0xc4e8d	Site	
+classic	0xc4f31	0xc4f36	Person	
+classic	0xc4fa6	0xc4fab	Person	
+classic	0xc4ff5	0xc4ffa	Literal	somebody unknown
+classic	0xc506a	0xc506f	Literal	You
+classic	0xc50b7	0xc50bc	Person	
+classic	0xc5117	0xc511c	Literal	agreed to join
+classic	0xc5178	0xc517d	Literal	you
+classic	0xc51bc	0xc51c1	Person	
+classic	0xc5219	0xc521e	Literal	in order to be brought safely away from
+classic	0xc5299	0xc529e	Site	
+classic	0xc530e	0xc5313	Literal	You
+classic	0xc535b	0xc5360	Person	
+classic	0xc53bb	0xc53c0	Literal	agreed to join
+classic	0xc541c	0xc5421	Literal	you
+classic	0xc5460	0xc5465	Person	
+classic	0xc54bd	0xc54c2	Literal	in order to rescue
+classic	0xc5574	0xc5579	Person	
+classic	0xc55e9	0xc55ee	Person	
+classic	0xc5638	0xc563d	Literal	somebody unknown
+classic	0xc56ad	0xc56b2	Literal	You
+classic	0xc56fa	0xc56ff	Person	
+classic	0xc575a	0xc575f	Literal	agreed to adventure with
+classic	0xc57bb	0xc57c0	Literal	you
+classic	0xc57ff	0xc5804	Person	
+classic	0xc585c	0xc5861	Literal	wherever the journey might lead
+classic	0xc58cb	0xc58d0	Literal	You
+classic	0xc5918	0xc591d	Person	
+classic	0xc5978	0xc597d	Literal	was bound to serve
+classic	0xc59d9	0xc59de	Literal	you
+classic	0xc5a1d	0xc5a22	Person	
+classic	0xc5a7a	0xc5a7f	Literal	by invocation of True Name
+classic	0xc5ae9	0xc5aee	Literal	You
+classic	0xc5b36	0xc5b3b	Person	
+classic	0xc5b96	0xc5b9b	Literal	agreed to entertain people with
+classic	0xc5bf7	0xc5bfc	Literal	you
+classic	0xc5c3b	0xc5c40	Person	
+classic	0xc5c98	0xc5c9d	Literal	throughout the world
+classic	0xc5d1f	0xc5d24	Literal	Agreement concluded
+classic	0xc5e6d	0xc5e72	Date	  / , 
+classic	0xc5ed7	0xc5edc	Literal	Kill
+classic	0xc5f61	0xc5f66	Actor	
+classic	0xc5fb8	0xc5fbd	Literal	Cause trouble for
+classic	0xc6023	0xc6028	Group	
+classic	0xc607c	0xc6081	Literal	Drive
+classic	0xc60e7	0xc60ec	Group	
+classic	0xc613f	0xc6144	Literal	from
+classic	0xc61aa	0xc61af	Site	
+classic	0xc6205	0xc620a	Literal	An order from
+classic	0xc6290	0xc6295	Actor	
+classic	0xc62ef	0xc62f4	Literal	Finish reporting in
+classic	0xc6360	0xc6365	Literal	Complete: report back
+classic	0xc63ad	0xc63b2	Literal	Not yet completed
+classic	0xc6526	0xc652b	Literal	You
+classic	0xc6573	0xc6578	Person	
+classic	0xc65d3	0xc65d8	Literal	asked that
+classic	0xc6634	0xc6639	Literal	you
+classic	0xc667c	0xc6681	Person	
+classic	0xc66d7	0xc66dc	Literal	retrieve 
+classic	0xc6742	0xc6747	Artifact	
+classic	0xc6871	0xc6876	Literal	You
+classic	0xc68be	0xc68c3	Person	
+classic	0xc691e	0xc6923	Literal	requested that
+classic	0xc697f	0xc6984	Literal	you
+classic	0xc69c7	0xc69cc	Person	
+classic	0xc6a22	0xc6a27	Literal	serve 
+classic	0xc6a91	0xc6a96	Group	
+classic	0xc6b07	0xc6b0c	Literal	Agreement concluded
+classic	0xc6ba8	0xc6bad	Literal	An order from
+classic	0xc6c30	0xc6c35	Actor	
+classic	0xc6c8f	0xc6c94	Literal	Finish reporting in
+classic	0xc6cfd	0xc6d02	Literal	Complete: report back
+classic	0xc6d47	0xc6d4c	Literal	Not yet completed
+classic	0xc6f19	0xc6f1e	Literal	Centered on commander
+classic	0xc6f83	0xc6f88	Literal	Centered on target
