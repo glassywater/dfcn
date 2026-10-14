@@ -949,6 +949,7 @@ static constexpr int kFortressNobleSymbolValueRule = -165;
 static constexpr int kFortressNobleSymbolPositionRule = -166;
 static constexpr int kFortressPressurePlateRule = -167;
 static constexpr int kAdventureCompanionFieldRule = -168;
+static constexpr int kFortressBuildPlacementStatusRule = -169;
 
 static bool is_fortress_noble_symbol_field(const Match &match) {
     return match.rule == kFortressNobleSymbolNameRule ||
@@ -4822,6 +4823,8 @@ private:
         std::vector<Match> &matches, int only_y, bool raw_layer) const;
     void layout_fortress_build_placement(SDL_Renderer *renderer);
     void layout_fortress_build_materials(SDL_Renderer *renderer);
+    void append_fortress_build_placement_fields(std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y) const;
     void append_fortress_remembered_material(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y,
         const unsigned char *screen_override) const;
@@ -17374,6 +17377,9 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     screen_rows.reserve(static_cast<size_t>(gps_->dimy));
     for (int row_y = 0; row_y < gps_->dimy; ++row_y)
         screen_rows.push_back(read_row(row_y));
+    // The native placement status/header owns its whole source before room,
+    // location, item and generic caption readers can consume an inner word.
+    append_fortress_build_placement_fields(screen_rows, result, only_y);
     // The Rooms renderer writes editable names and grades as independent
     // fields, and its requirement prefix/suffix as two adjacent draws. Own
     // these complete fields before generic words, names or picture captions.
@@ -26811,6 +26817,7 @@ void Overlay::normalize_native_split_text() {
             match.native_animal_picker_row ||
             match.rule == kWorkOrderShopFieldRule ||
             match.rule == kFortressPressurePlateRule ||
+            match.rule == kFortressBuildPlacementStatusRule ||
             match.rule == kWorldgenParameterLabelRule ||
             match.rule == kAdventureAttributeFieldRule ||
             match.rule == kAdventureSkillFieldRule ||

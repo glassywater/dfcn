@@ -1621,6 +1621,15 @@ Smelter	熔炉	w
 + {d} task	+ {d}项任务	wt
 + {d} tasks	+ {d}项任务	wt
 Click a tile to place the {s}.	点击地格放置{s}。	wtli
+Click a tile to be a corner of the {s}.	点击地格选择{s}的一个角。	wtli
+Click a tile to be one end of the {s}.	点击地格选择{s}的一端。	wtli
+Click a tile to position the stop.	点击地格放置轨道站点。	wli
+# The renderer substitutes these typed construction names in its headings.
+Build placement: Track	轨道	wi
+Build placement: Stairs	楼梯	wi
+Build placement: {s}'s Shop	{s}工坊	wtlx
+Build placement: {s}'s Forge	{s}锻造工坊	wtlx
+Build placement: {s}'s Workshop	{s}工坊	wtlx
 # Stair placement reports the current span as a separate numeric field.
 (spans {d} levels)	（跨越{d}层）	wtli
 Select material after placement	放置后选择材料	wli
@@ -1628,6 +1637,7 @@ Select material at placement	放置时选择材料	wli
 Use closest material	使用最近的材料	wli
 Use last material	使用上次的材料	wli
 Keep building after placement	放置后继续建造	wli
+Must span multiple elevations	必须跨越多个高度层	wli
 Blocked at this location	此处有障碍，无法放置	wli
 Hidden, cannot build at this location	不可见，无法在此处建造	wli
 # Native building-placement restrictions (same status row as Blocked).
@@ -12400,3 +12410,37 @@ Conversation keyword: human	人类	l
 Conversation keyword: ask for directions	询问路线	l
 Conversation keyword: ask for whereabouts	询问下落	l
 Conversation keyword: listener s	对方的	l
+
+# Native placement building-name branches (ELF 0x1957df0).
+Build placement: Floor Hatch	地板活板门	wi
+Build placement: Furnace	熔炉	wi
+Build placement: Track/Ramp (NSW)	坡道轨道（北南西）	wi
+Build placement: Track/Ramp (SE)	坡道轨道（南东）	wi
+Build placement: Track/Ramp (SEW)	坡道轨道（南东西）	wi
+Build placement: Track (NW)	轨道（北西）	wi
+Build placement: Track/Ramp (EW)	坡道轨道（东西）	wi
+Build placement: Track (NSEW)	轨道（北南东西）	wi
+Build placement: Track/Ramp (NSEW)	坡道轨道（北南东西）	wi
+Build placement: Track/Ramp (NSE)	坡道轨道（北南东）	wi
+Build placement: Track/Ramp (W)	坡道轨道（西）	wi
+Build placement: Track/Ramp (NEW)	坡道轨道（北东西）	wi
+Build placement: Track (E)	轨道（东）	wi
+Build placement: Track/Ramp (SW)	坡道轨道（南西）	wi
+Build placement: Track (NSE)	轨道（北南东）	wi
+Build placement: Track/Ramp (NE)	坡道轨道（北东）	wi
+Build placement: Track (NS)	轨道（北南）	wi
+Build placement: Track (NEW)	轨道（北东西）	wi
+Build placement: Track/Ramp (S)	坡道轨道（南）	wi
+Build placement: Track (N)	轨道（北）	wi
+Build placement: Track (SW)	轨道（南西）	wi
+Build placement: Track/Ramp (NW)	坡道轨道（北西）	wi
+Build placement: Track (NE)	轨道（北东）	wi
+Build placement: Track (SEW)	轨道（南东西）	wi
+Build placement: Track/Ramp (E)	坡道轨道（东）	wi
+Build placement: Track (S)	轨道（南）	wi
+Build placement: Track (EW)	轨道（东西）	wi
+Build placement: Track/Ramp (NS)	坡道轨道（北南）	wi
+Build placement: Track (W)	轨道（西）	wi
+Build placement: Track (NSW)	轨道（北南西）	wi
+Build placement: Track/Ramp (N)	坡道轨道（北）	wi
+Build placement: Track (SE)	轨道（南东）	wi

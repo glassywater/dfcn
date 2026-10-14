@@ -52743,6 +52743,7 @@ Bring up {p}'s crime of attempted theft	谈起{p1}犯下盗窃未遂罪这件事
 Calcite/limestone/chalk/marble boulders	方解石/石灰岩/白垩岩/大理石岩块	wi
 Change the inequality of the condition.	修改此条件的数量比较方式。	hj
 Click a tile to be a corner of the {s}.	点击一个地格，作为{s1}的一个角。	hPt
+Click a tile to be a corner of the {s}.	点击地格选择{s}的一个角。	wtli
 Climb to {s} ({s} holding {s}/Air/Lava)	攀向{s1}（{s2}，抓着{s3}／空气／熔岩）	hPt
 Climb to {s} ({s} releasing hold/Magma)	攀向{s1}（{s2}，松开抓住的手／岩浆）	hPt
 Climb to {s} ({s} releasing hold/Water)	攀向{s1}（{s2}，松开抓住的手／水）	hPt
@@ -54678,6 +54679,7 @@ Bring up {p}'s escalated attack on {p}	谈起{p1}对{p2}加剧攻击这件事	hP
 Bring up {p}'s placement of {i} to {p}	谈起{p1}将{i1}交由{p2}保管这件事	hPt
 Claiming forbidden items and buildings	解除物品和建筑的禁用状态	wo
 Click a tile to be one end of the {s}.	点击一个地格，作为{s1}的一端。	hPt
+Click a tile to be one end of the {s}.	点击地格选择{s}的一端。	wtli
 Click to recover (creates new mission)	点击取回（创建新任务）。	hP
 Clicking delete will instantly delete!	单击删除会立即删档！	l
 Climb to {s} ({s} releasing hold/Lava)	攀向{s1}（{s2}，松开抓住的手／熔岩）	hPt
@@ -63245,8 +63247,10 @@ Book title subject: the Underworld	地狱	hi
 Bring up {p}'s crime of kidnapping	谈起{p1}犯下绑架罪这件事	hPt
 Bring up {p}'s job order violation	谈起{p1}违反工作命令这件事	hPt
 Bring up {p}'s refusal to give {i}	谈起{p1}拒绝交出{i1}这件事	hPt
+Build placement: Track/Ramp (NSEW)	坡道轨道（北南东西）	wi
 Cannot make request without leader	没有领袖，无法提出请求。	hP
 Click a tile to position the stop.	点击格子设置停靠点的位置。	hP
+Click a tile to position the stop.	点击地格放置轨道站点。	wli
 Climb to {s} ({s} holding {s}/Air)	攀向{s1}（{s2}，抓着{s3}／空气）	hPt
 Conversation demeanor: Acquiescent	顺从	l
 Conversation event collection: {s}	在{s1}期间	ht
@@ -65560,6 +65564,10 @@ Bring up {e}'s abandonment of {e}	谈起{e1}放弃{e2}这件事	hPt
 Bring up {e}'s reclamation of {e}	谈起{e1}收复{e2}这件事	hPt
 Bring up {p}'s crime of espionage	谈起{p1}犯下间谍罪这件事	hPt
 Bring up {p}'s disorderly conduct	谈起{p1}扰乱秩序这件事	hPt
+Build placement: Track/Ramp (NEW)	坡道轨道（北东西）	wi
+Build placement: Track/Ramp (NSE)	坡道轨道（北南东）	wi
+Build placement: Track/Ramp (NSW)	坡道轨道（北南西）	wi
+Build placement: Track/Ramp (SEW)	坡道轨道（南东西）	wi
 Change tab or highlight selection	更改选项卡或高亮选择	w
 Character room grade: Dining Room	餐厅	l
 Click for assignments and details	点击查看人员分配和详细信息。	hP
@@ -67719,6 +67727,12 @@ Book title subject: the Wounding	负伤	hi
 Bring up {e}'s foundation of {e}	谈起{e1}建立{e2}这件事	hPt
 Bring up {e}'s harassment of {e}	谈起{e1}侵扰{e2}这件事	hPt
 Bring up {p}'s possession of {i}	谈起{p1}持有{i1}这件事	hPt
+Build placement: Track/Ramp (EW)	坡道轨道（东西）	wi
+Build placement: Track/Ramp (NE)	坡道轨道（北东）	wi
+Build placement: Track/Ramp (NS)	坡道轨道（北南）	wi
+Build placement: Track/Ramp (NW)	坡道轨道（北西）	wi
+Build placement: Track/Ramp (SE)	坡道轨道（南东）	wi
+Build placement: Track/Ramp (SW)	坡道轨道（南西）	wi
 Cavern Layer Passage Density Max	洞穴层通道密度上限
 Cavern Layer Passage Density Min	洞穴层通道密度下限
 Cavern dweller maximum attackers	洞穴居民来袭人数上限
@@ -69938,6 +69952,11 @@ Bring up {i}'s absence from {e}	谈起{i1}已不在{e1}这件事	hPt
 Bring up {p}'s crime of robbery	谈起{p1}犯下抢劫罪这件事	hPt
 Bring up {p}'s crime of treason	谈起{p1}犯下叛国罪这件事	hPt
 Bring up {p}'s placement of {i}	谈起{p1}安置{i1}这件事	hPt
+Build placement: Track/Ramp (E)	坡道轨道（东）	wi
+Build placement: Track/Ramp (N)	坡道轨道（北）	wi
+Build placement: Track/Ramp (S)	坡道轨道（南）	wi
+Build placement: Track/Ramp (W)	坡道轨道（西）	wi
+Build placement: {s}'s Workshop	{s}工坊	wtlx
 Can you tell me the way to {e}?	你能告诉我去{e1}的路吗？	hPt
 Change dream/goal (if possible)	更改梦想/目标（如果可以）
 Change to standard gather mode.	切换到普通采集模式。	hj
@@ -74864,6 +74883,7 @@ Bring up the abduction of {p}	谈起{p1}被绑架这件事	hPt
 Bring up the journey together	谈起共同的旅程	hP
 Bring up {p}'s crime of theft	谈起{p1}犯下盗窃罪这件事	hPt
 Bring up {p}'s gaining of {i}	谈起{p1}获得{i1}这件事	hPt
+Build placement: Track (NSEW)	轨道（北南东西）	wi
 Cannot build at highest level	不能在最高层建造	wli
 Cannot raid your civilization	无法突袭自己的政权。	hP
 Certainly feared as a brigand	害怕被当作盗贼	w
@@ -75365,6 +75385,7 @@ Musical Performance of at {p}	在{p1}，音乐表演	htEi
 Musical Performance of in {d}	{d1}年的音乐表演	htEi
 Musical Performance of in {p}	在{p1}，音乐表演	htEi
 Must span multiple elevations	必须跨越多个高度层。	hP
+Must span multiple elevations	必须跨越多个高度层	wli
 Native Legends no forces lost	没有损失	h
 Native Legends once again {s}	{s1}，这一情形又一次出现	ht
 Native history held story {e}	讲述了以下往事：「{e1}」	ht
@@ -77176,6 +77197,12 @@ Bring up {p}'s attack on {p}	谈起{p1}袭击{p2}这件事	hPt
 Bring up {p}'s giving of {i}	谈起{p1}交出{i1}这件事	hPt
 Brook: The Ocean of Dressing	溪流:调味海洋	w
 Brook: The Problematic Hedge	溪流:有问题的树篱	w
+Build placement: Floor Hatch	地板活板门	wi
+Build placement: Track (NEW)	轨道（北东西）	wi
+Build placement: Track (NSE)	轨道（北南东）	wi
+Build placement: Track (NSW)	轨道（北南西）	wi
+Build placement: Track (SEW)	轨道（南东西）	wi
+Build placement: {s}'s Forge	{s}锻造工坊	wtlx
 Camera controls ({d} of {d})	镜头控制 ({d} of {d})	wt
 Cancel this scheduled order.	取消此日程命令。	hj
 Certainly considered a bully	被肯定地看做是一名恶霸	w
@@ -79486,6 +79513,13 @@ Bring up {e}'s claim on {e}	谈起{e1}宣称拥有{e2}这件事	hPt
 Bring up {p}'s embezzlement	谈起{p1}挪用资金这件事	hPt
 Brook: The Packs of Tugging	小溪：拉扯之兽群	l
 Brook: The Primitive Defect	溪流:原始缺陷	w
+Build placement: Track (EW)	轨道（东西）	wi
+Build placement: Track (NE)	轨道（北东）	wi
+Build placement: Track (NS)	轨道（北南）	wi
+Build placement: Track (NW)	轨道（北西）	wi
+Build placement: Track (SE)	轨道（南东）	wi
+Build placement: Track (SW)	轨道（南西）	wi
+Build placement: {s}'s Shop	{s}工坊	wtlx
 Character overview: Healthy	健康	l
 Character overview: Musical	有乐感	l
 Character room grade: Study	书房	l
@@ -81804,6 +81838,10 @@ Book title subject: Wedges	楔子	hi
 Bring up {e}'s destruction	谈起{e1}被毁这件事	hPt
 Broker cannot access depot	交易员无法到达贸易站	wi
 Brook: The Rift of Beetles	溪流:甲虫裂缝	w
+Build placement: Track (E)	轨道（东）	wi
+Build placement: Track (N)	轨道（北）	wi
+Build placement: Track (S)	轨道（南）	wi
+Build placement: Track (W)	轨道（西）	wi
 Building destroyed/toppled	建筑被摧毁或推倒	w
 Bypass greeting (new menu)	跳过问候（打开新菜单）	hP
 Cannot assign work animals	无法分配工作动物	w
@@ -85894,6 +85932,7 @@ Book title subject: Wind	风	hi
 Book title subject: Word	词	hi
 Book title subject: Year	年	hi
 Bring up {p}'s vandalism	谈起{p1}蓄意破坏这件事	hPt
+Build placement: Furnace	熔炉	wi
 Capture and train small 	在此捕获和训练小动物。需要动	w
 Carve a gap in a smooth 	在光滑的墙面上凿一个缺口，让	w
 Carve downward staircase	挖掘下行楼梯	wi
@@ -87953,6 +87992,7 @@ Broker can access depot	交易员可以到达贸易站	wi
 Brook: The Yellow Style	溪流:黄色风格	w
 Build a grand guildhall	建造大行会大厅	hP
 Build menu: Stoneworker	石匠工坊	wi
+Build placement: Stairs	楼梯	wi
 Can {b} Save The World?	{b}能拯救世界吗？	hbti
 Cancel tribute from {e}	取消{e1}的贡赋	hPt
 Cannot afford {s} ({d})	买不起{s}（{d}）	wtl
@@ -90022,6 +90062,7 @@ Book title noun: ticks	滴答声	hi
 Bring up {p}'s bribery	谈起{p1}贿赂这件事	hPt
 Build a temple complex	建造神殿建筑群	hP
 Build menu: Metalsmith	金属锻造坊	wi
+Build placement: Track	轨道	wi
 Carve upward staircase	挖掘上行楼梯	wi
 Catch live land animal	捕获活的陆地动物	wi
 Cavern Layer Water Max	洞穴层含水量上限

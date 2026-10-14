@@ -912,6 +912,7 @@ void Overlay::build_trie(std::function<void()>* catalog_publication) {
         // retains its ordinary meaning until its native widget owns it.
         if (rules_[rule_index].source.starts_with("Preference reason: ") ||
             rules_[rule_index].source.starts_with("Build menu: ") ||
+            rules_[rule_index].source.starts_with("Build placement: ") ||
             rules_[rule_index].source.starts_with("Pressure plate: ") ||
             rules_[rule_index].source.starts_with("Embark finder: ") ||
             rules_[rule_index].source.starts_with("Embark site resource: ") ||

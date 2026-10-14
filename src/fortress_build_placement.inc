@@ -1,3 +1,139 @@
+// ELF 53.16: buildreq::evaluate_buildability (0xde22e0) produces 23
+// complete error/warning strings. The renderer adds the stair elevation
+// restriction at 0x16a102a. See data/extracted/fortress-build-placement.
+static constexpr std::string_view fortress_build_placement_statuses[] = {
+    "Disconnected", "Need trigger type", "Needs walkable perimeter",
+    "Needs to be anchored on edge", "Blocked at this location",
+    "Hidden, cannot build at this location", "Surrounded by empty space",
+    "Needs adjacent wall", "Needs open space", "Off map",
+    "Water at this location", "Lava/Magma at this location", "Building present",
+    "Must remove construction", "Must be inside", "Too close to edge",
+    "Must be outside", "Cannot build at highest level",
+    "Need soil or mud at location", "Need soil at location",
+    "Needs ground or near machine", "No mud/soil for farm", "Mud is left by water",
+    "Must span multiple elevations",
+};
+
+// Own the native status vector's whole fields before item/location readers
+// can consume "this location" and leave an English "Blocked at" behind.
+// The same current panel establishes ownership on both raw-layer suppression
+// scans and the final draw; the pointer may change the status every frame.
+void Overlay::append_fortress_build_placement_fields(std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y) const {
+    if (!gps_ || rows.size() != static_cast<size_t>(gps_->dimy)) return;
+    const NativePanelBorders borders(*gps_);
+    std::vector<std::string> visible;
+    visible.reserve(rows.size());
+    for (int y = 0; y < gps_->dimy; ++y) {
+        std::string row(gps_->dimx, ' ');
+        for (int x = 0; x < gps_->dimx; ++x) {
+            const unsigned char ch = visible_char_at(x, y);
+            if (ch) row[x] = static_cast<char>(ch);
+        }
+        visible.push_back(std::move(row));
+    }
+    constexpr std::string_view control = "Keep building after placement";
+    std::vector<SDL_Rect> panels;
+    for (int y = 0; y < gps_->dimy; ++y) {
+        const size_t at = visible[y].find(control);
+        if (at == std::string::npos ||
+                !has_word_boundaries(visible[y], at, at + control.size())) continue;
+        const auto panel = native_panel_interior(borders, *gps_, static_cast<int>(at),
+            static_cast<int>(at + control.size()), y);
+        if (panel && std::none_of(panels.begin(), panels.end(), [&](const SDL_Rect &other) {
+                return other.x == panel->x && other.y == panel->y &&
+                    other.w == panel->w && other.h == panel->h;
+            })) panels.push_back(*panel);
+    }
+    if (panels.empty()) return;
+    auto draws = captured_native_drawn_text_rows();
+    auto top_draws = captured_native_drawn_text_rows(true);
+    draws.insert(draws.end(), std::make_move_iterator(top_draws.begin()),
+        std::make_move_iterator(top_draws.end()));
+    for (const SDL_Rect &panel : panels) {
+        const int right = panel.x + panel.w;
+        // All three native heading branches append the complete building
+        // name and a period before addst. The name is a typed building field:
+        // Track means construction here, independently of the tracking verb.
+        for (const auto &draw : draws) {
+            if (draw.x < panel.x || draw.y < panel.y || draw.y >= panel.y + panel.h ||
+                    draw.source.empty() || draw.x + static_cast<int>(draw.source.size()) > right ||
+                    (only_y >= 0 && only_y != draw.y) ||
+                    rows[draw.y].compare(draw.x, draw.source.size(), draw.source) != 0 ||
+                    visible[draw.y].compare(draw.x, draw.source.size(), draw.source) != 0) continue;
+            const std::string_view complete = draw.complete_source.empty()
+                ? draw.source : draw.complete_source;
+            for (const std::string_view prefix : {"Click a tile to place the ",
+                    "Click a tile to be a corner of the ", "Click a tile to be one end of the "}) {
+                if (!complete.starts_with(prefix) || !complete.ends_with('.') ||
+                        complete.size() <= prefix.size() + 1) continue;
+                const auto found = history_semantic_templates_.find(std::string(prefix) + "{s}.");
+                if (found == history_semantic_templates_.end()) continue;
+                const std::string building(complete.substr(prefix.size(), complete.size() - prefix.size() - 1));
+                auto name = exact_literal_translation("Build placement: " + building);
+                const auto custom = native_mod_workshop_names();
+                const bool authored = custom && custom->contains(lower(building));
+                if (!name && !authored) name = exact_literal_translation(building);
+                // The name producer also appends one of three suffixes to a
+                // race's profession name (0x19808b0), so a finite noun list
+                // alone cannot cover every workshop title supplied by RAWs.
+                if (!name && !authored) {
+                    for (const std::string_view suffix : {"'s Shop", "'s Forge", "'s Workshop"}) {
+                        if (!building.ends_with(suffix) || building.size() <= suffix.size()) continue;
+                        const std::string profession = building.substr(0, building.size() - suffix.size());
+                        const auto form = history_semantic_templates_.find("Build placement: {s}" + std::string(suffix));
+                        if (form == history_semantic_templates_.end()) continue;
+                        const std::vector<std::optional<std::string>> role{
+                            translate_unit_profession(profession, true).value_or(native_text_to_utf8(profession))};
+                        name = fill_template(rules_[static_cast<size_t>(form->second)],
+                            {profession}, nullptr, nullptr, &role);
+                        break;
+                    }
+                }
+                if (!name && !authored)
+                    name = translate_ui_message_capture(building, false);
+                if (!name) name = native_text_to_utf8(building);
+                const std::vector<std::optional<std::string>> resolved{name};
+                const auto target = fill_template(rules_[static_cast<size_t>(found->second)],
+                    {building}, nullptr, nullptr, &resolved);
+                if (target.empty()) continue;
+                Match match{draw.x, draw.y, static_cast<int>(draw.source.size()),
+                    found->second, target, draw.source};
+                match.layout_x = draw.x;
+                match.layout_length = right - draw.x;
+                match.layout_clip_right = right;
+                match.layout_left = true;
+                match.layout_font_pixels = unified_font_pixels();
+                match.layout_lock_font_pixels = true;
+                matches.push_back(std::move(match));
+                std::fill_n(rows[draw.y].begin() + draw.x, draw.source.size(), ' ');
+                break;
+            }
+        }
+        for (int y = panel.y; y < panel.y + panel.h; ++y) {
+            if (only_y >= 0 && only_y != y) continue;
+            for (const std::string_view source : fortress_build_placement_statuses) {
+                const size_t at = visible[y].find(source, static_cast<size_t>(panel.x));
+                if (at == std::string::npos || at + source.size() > static_cast<size_t>(right) ||
+                        !has_word_boundaries(visible[y], at, at + source.size()) ||
+                        rows[y].compare(at, source.size(), source) != 0) continue;
+                const auto target = exact_literal_translation(source);
+                if (!target) continue;
+                Match match{static_cast<int>(at), y, static_cast<int>(source.size()),
+                    kFortressBuildPlacementStatusRule, *target, std::string(source)};
+                match.layout_x = match.x;
+                match.layout_length = right - match.x;
+                match.layout_clip_right = right;
+                match.layout_left = true;
+                match.layout_font_pixels = unified_font_pixels();
+                match.layout_lock_font_pixels = true;
+                matches.push_back(std::move(match));
+                std::fill_n(rows[y].begin() + at, source.size(), ' ');
+            }
+        }
+    }
+}
+
 // Pressure-plate controls and size examples are complete native fields.
 // Their English widths must not independently centre each Chinese word/name.
 void Overlay::append_fortress_pressure_plate(std::vector<std::string> &rows,
@@ -664,17 +800,6 @@ void Overlay::layout_fortress_build_placement(SDL_Renderer *renderer) {
     };
     // All native placement outcomes share the status field. Translations
     // remain in the dictionary, including the established Disconnected term.
-    static constexpr std::string_view statuses[] = {
-        "disconnected", "need trigger type", "needs walkable perimeter",
-        "needs to be anchored on edge", "blocked at this location",
-        "hidden, cannot build at this location",
-        "surrounded by empty space", "needs adjacent wall", "needs open space",
-        "off map", "water at this location", "lava/magma at this location",
-        "building present", "must remove construction", "must be inside",
-        "too close to edge", "must be outside", "cannot build at highest level",
-        "need soil or mud at location", "need soil at location",
-        "needs ground or near machine", "no mud/soil for farm", "mud is left by water",
-    };
     struct Field {
         Match *match;
         int right;
@@ -684,22 +809,28 @@ void Overlay::layout_fortress_build_placement(SDL_Renderer *renderer) {
     std::vector<Field> fields;
     bool has_placement_control = false;
     for (Match &match : prepared_matches_) {
-        if (match.rule < 0 || static_cast<size_t>(match.rule) >= rules_.size()) continue;
+        if (match.rule != kFortressBuildPlacementStatusRule &&
+                (match.rule < 0 || static_cast<size_t>(match.rule) >= rules_.size())) continue;
         const std::string source = lower(match.source);
         const bool button = source == "select material after placement" ||
             source == "select material at placement" ||
             source == "use closest material" || source == "use last material";
         const bool control = button || source == "keep building after placement" ||
-            (source.starts_with("click a tile to place the ") && source.ends_with('.'));
-        const std::string &rule_source = rules_[static_cast<size_t>(match.rule)].source;
+            ((source.starts_with("click a tile to place the ") ||
+              source.starts_with("click a tile to be a corner of the ") ||
+              source.starts_with("click a tile to be one end of the ")) && source.ends_with('.'));
+        const std::string_view rule_source = match.rule >= 0
+            ? rules_[static_cast<size_t>(match.rule)].source : std::string_view{};
         const bool material_requirement = rule_source == "Needs {s}" ||
             rule_source == "No access to {s}";
         // The stair span is a numeric field on its own native row, not a
         // continuation to merge into the placement heading or material button.
         const bool level_span = rule_source == "(spans {d} levels)";
         if (!control && !material_requirement && !level_span &&
-            std::find(std::begin(statuses), std::end(statuses), source) ==
-                std::end(statuses)) continue;
+            std::none_of(std::begin(fortress_build_placement_statuses),
+                std::end(fortress_build_placement_statuses), [&](std::string_view status) {
+                    return source == lower(std::string(status));
+                })) continue;
 
         // Page recovery and half-font normalization may have retained hidden
         // metadata. Only the CURRENT visible bytes may own a placement field.
