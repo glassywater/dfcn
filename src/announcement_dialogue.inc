@@ -147,7 +147,20 @@ std::optional<std::string> Overlay::translate_announcement_dialogue(
         std::string_view source) const {
     auto actor = [&](std::string_view value) -> std::optional<std::string> {
         if (value == "You") return std::string("你");
-        return translate_ui_message_capture(value, true);
+        // The speech wrapper's live-unit formatter copies animation+0x20
+        // directly for a corpse or detached body component. This production
+        // owns the possessive owner and every native damage/anatomy/material
+        // branch, even when that owner has no generated-name dictionary entry.
+        if (const auto identity = native_unit_identity_source_target(value)) return identity;
+        if (const auto body = translate_native_animation_label(value)) return body;
+        if (const auto unit = translate_ui_message_capture(value, true)) return unit;
+        // Without a live unit, 103a1d0 falls back to the historical figure's
+        // complete EnglishName. A surname-only name or English title has no
+        // native given-word mask, so it needs the same typed person renderer
+        // used by the body's historical-figure fields.
+        const auto figure = translate_legends_actor(value, 0, true);
+        return translation_complete_with_native_nicknames(figure, value)
+            ? figure : std::nullopt;
     };
     for (size_t colon = source.find(": "); colon != std::string_view::npos;
          colon = source.find(": ", colon + 2)) {

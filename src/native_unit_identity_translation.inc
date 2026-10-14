@@ -3,7 +3,8 @@
 std::optional<std::string> Overlay::translate_native_animation_label(
         std::string_view source) const {
     TranslationStateScope translation_scope;
-    if (auto target = translate_corpsepiece_item_name(source)) return target;
+    if (auto target = translate_corpsepiece_item_name(source);
+            translation_complete_with_native_nicknames(target, source)) return target;
     // Native corpse producers append a possessive after the selected name.
     // An authored nickname can contain an earlier possessive of its own.
     // Prove the entire body suffix before accepting any owner boundary.
@@ -17,7 +18,16 @@ std::optional<std::string> Overlay::translate_native_animation_label(
             "::items::corpsepiece::animated_body", origins);
         if (!noun) continue;
         auto name = native_unit_identity_source_target(owner);
-        if (!name) name = translate_legends_actor(owner);
+        if (!name) {
+            name = translate_legends_actor(owner);
+            // The corpse's native producer can choose EnglishName too:
+            // first_name, concatenated WORD0/1 surname, title and OfX are
+            // still one typed owner. Reuse the complete character renderer
+            // before retaining an actually authored spelling.
+            if (!translation_complete_with_native_nicknames(name, owner))
+                name = translate_english_character_name(owner);
+            if (!translation_complete_with_native_nicknames(name, owner)) name.reset();
+        }
         // This is the native producer's owner field, not an inferred person
         // in ordinary prose. Preserve an authored spelling while translating
         // the independently resolved body, including all damage modifiers.

@@ -1,0 +1,225 @@
+Spoken popup native source reconstruction
+
+This is maintained binary source material, not a display/acceptance report.
+The executable images are the configured Steam and official Windows PE files.
+No game process, window, translator, or translation check executes here.
+
+Full source ownership
+---------------------
+native-role-correspondence.tsv pairs every one of the 42 complete ELF
+decompiled source owners with its current decoded PE source. It retains the
+ELF C path, both PE ranges and both original instruction bodies. The literal
+co-reference evidence is in reference-source-mapping.tsv and its classic
+counterpart. Small leaf text formatters with no PE unwind entry are located
+through decoded calls in the actual dispatcher and source owners; their
+entries are not silently discarded for lacking unwind metadata.
+
+The complete native topic dispatcher has selectors 0..253. The Steam owner
+is 0x1404988b0..0x1404df174; its main 254-entry switch dispatch is 0x14049a050,
+table 0x1404de19c. reference-topic-dispatch.tsv and classic-topic-dispatch.tsv
+retain all slots, shared target aliases, and upstream enum labels. The labels
+come from local df-structures; targets and branches come from executable bytes.
+Additional dispatcher switches, remap bytes, conditional edges and fallback
+branches remain in the corresponding switches/branches/instruction sources.
+
+The speech wrapper is Steam 0x140684a10..0x1406858fc and official
+0x140682430..0x14068331c. It is the same complete production for every topic,
+rather than a prefix inferred from the screenshot. Its ELF C source is
+elf-speech-wrapper.c. The complete 42-owner C reconstruction remains available
+as elf-<role>.c; the new PE material is decoded instructions and manually
+reconstructed source productions, not a claimed new Ghidra C export.
+
+Normalized wrapper production (storage/allocation mechanics are omitted;
+all native branches remain in its full source bodies):
+
+  speaker = find_unit(speaker_ref.unit_id);
+  if (speaker exists) {
+      if (adventure_mode)
+          header = full_speaker_caption(speaker, relative_to_player,
+                                        article/capitalization/name_flags);
+      else if (native anonymous/identity conditions hold)
+          header = anonymous_unit_caption(speaker);
+      else
+          header = whole_unit_name(speaker);
+  } else if (speaker_ref.historical_figure resolves) {
+      header = language_name(historical_figure.name);
+  } else {
+      header = "";
+  }
+
+  if (adventure_mode && speaker_is_player)
+      header = "You";
+  if (header != "" && recipient_is_player)
+      addressed_player_flag = true;
+  else if (header != "" && recipient_ref.unit_id != -1) {
+      if (recipient unit resolves)
+          header += " (to " + native_recipient_caption(recipient) + ")";
+      else
+          addressed_player_flag = false;     // no invented recipient text
+  }
+
+  body = speech_parameter_expansion(body, speaker_ref, typed_parameters);
+  capitalize_initial(body);
+  if (header != "") header += ": ";        // native literal 0x1406852ce
+  if (speaker exists && race/caste indices are valid
+      && caste_flags contains the native speech-transform bit)
+      body = native_speech_transform(body);
+  complete_report = header + body;
+  retain_speech_record(original_ref, topic, typed_parameters, flags);
+  if (native visibility/distance/routing admits the speech)
+      submit_announcement(complete_report, native_report_type);
+
+Silent or open branches are explicit: no unit/historical speaker produces no
+header or colon; unavailable recipient produces no (to ...) header; invalid
+race/caste uses the original body; native visibility/distance can retain the
+speech record while omitting report submission. Complete wrapper sources retain
+the extra "stops and pays attention to you." announcement and type/category
+routing, so these do not become fabricated speech sentences.
+
+Speech transform is Steam 0x14067b6c0..0x14067bc4d, called at wrapper
+0x140685380. It replaces S/s through temporary ([LIP])/([lip]) markers, then
+expands them into native repetitions. Both markers, every search/replace loop,
+random repetition bound and punctuation behavior are retained in
+reference-speech-transform.asm and classic-speech-transform.asm. They are
+temporary construction controls, not additional dialogue topics or names.
+
+Incident/memory source
+----------------------
+The screenshot body originates in incident type 10, but this reconstruction
+includes the complete type 0..10 source, not only the refusal branch.
+Steam source: 0x14066ba00..0x14066fe48.
+Official source: 0x140669420..0x14066d868.
+Complete previous C: elf-dialogue-1016060.c (ELF 0x1016060..0x101b7e6).
+The main native selector is incident+4 with unsigned bound 10. A null incident
+returns immediately; out-of-range types return without appending text.
+
+  switch (incident.type) {
+    0 DEATH:
+      corpse-found memory -> "I found myself dead." or
+        "I found " + ("you" | incident_person(victim)) + " dead.";
+      speaker is the victim -> "I died.";
+      otherwise -> ("You" | initial_capital(incident_person(victim)))
+        + " " + death_cause_clause + ".";
+      death_cause dispatch includes every numeric alias 0..54 and its default;
+      cause 53 adds gender-selected himself/herself/itself when HF resolves;
+      missing HF leaves the native shorter drowned branch.
+
+    1 CRIME:
+      absent memory or memory subtype != 0 -> no text;
+      otherwise -> ("You" | initial_capital(incident_person(actor)))
+        + (" attempted " | " perpetrated ") + native_crime_clause + ".";
+      crime lookup/default and all 0..18 crime switch arms are retained.
+
+    2 ATTACK:
+      ("You" | initial_capital(incident_person(actor))) + " attacked "
+        + ("you" | incident_person(victim)) + ".";
+
+    3 ESCALATION:
+      ("You" | initial_capital(incident_person(actor)))
+        + " escalated a conflict with "
+        + ("you" | incident_person(victim)) + ".";
+
+    4 REUNION:
+      native participant/knowledge choice yields "I was reunited with ",
+      "You were reunited with ", or capitalized incident person +
+      " was reunited with "; facilitator adds " due to your efforts" or
+      " and it is all thanks to " + incident_person(facilitator).
+      Full participant/self/facilitator alternatives are in the complete C.
+
+    5 YIELD_DEMAND:
+      ("You" | initial_capital(incident_person(actor)))
+        + " demanded submission from "
+        + ("you" | incident_person(victim)) + ".";
+
+    6 PERFORMANCE:
+      participant/observer/not-witnessed modes remain distinct;
+      subtypes 0..4 are story, poem, music, dance and sermon;
+      stored form, written-content, history-event and participant role fields
+      determine the title and the story/recite/play/sing/chant/speak/dance/
+      preach verbs; no participants has its native passive/anonymous wording.
+      Speaker participation, viewer participation, multiple music performers,
+      invalid form/role and untitled-work fallback are separate branches.
+      Titles are whole language_name or stored authored content, not literals.
+      Location appends " at " + abstract-building-name when its id is present;
+      a supplier returning empty preserves the native final "at ." production.
+
+    7 ARTIFACT_LOCATION:
+      states 0..4 emit had/placed/obtained/gave/would not give respectively;
+      state 5 emits artifact-name + " was destroyed";
+      states 3 AND 4 append " to " + ("you" | incident_person(receiver));
+      then native site/building/region/underground location branches run.
+
+    8 WRITTEN_CONTENT_LOCATION:
+      states 0..1 emit placed/gave; state 1 appends receiver;
+      written-content title or "an untitled work" is followed by the same
+      native site/building/region/underground location construction.
+
+    9 GAVE_IDENTIFICATION:
+      no identifier -> "Somebody named themself";
+      first identifier is viewer -> "You named yourself";
+      otherwise -> initial_capital(incident_person(first_identifier))
+        + " self-identified";
+      all append " to " + entity_name(incident.entity) + ".".
+
+    10 REFUSED_TO_IDENTIFY:
+      no refuser -> "Somebody refused to name themself";
+      first refuser is viewer -> "You refused to name yourself";
+      otherwise -> initial_capital(incident_person(first_refuser))
+        + " refused to give a name";
+      all append " to " + entity_name(incident.entity) + ".".
+  }
+
+The exact case-10 terminal blocks are Steam 0x14066edc1 (You), 0x14066edd5
+(incident person), 0x14066ee64 (Somebody), all reaching 0x14066ebb5 (" to "),
+0x14066ebd5 (entity-name), then the shared period path. The second slot is an
+entity/civilization identity, not an incident_person merely because its current
+proper name resembles a person's name. Invalid entity yields the finite
+"an unknown civilization"; a valid entity with empty generated name supplies
+the empty string and therefore produces the complete native "to ." sentence.
+
+The previously missed state-4 receiver is proved in the current Steam image:
+0x14066c6e9 reads artifact state; 0x14066c6eb subtracts 3; zero reaches
+0x14066c6f4; 0x14066c6f0 compares the remaining value to 1; state 4 also reaches
+0x14066c6f4 (" to "). Receiver uses 0x140c1d100 for viewer identity or
+0x140b92af0 for the full incident person, through 0x14066c761 common location.
+Official source retains the same branch at addresses offset by -0x25e0.
+
+Typed dynamic suppliers
+-----------------------
+incident_person: Steam 0x140b92af0..0x140b92f0c; handles true/visual/historical
+HF identity, witness identity ids, I/me/my/myself and unknown creature. It calls
+historical-reference 0x140b92f10, unit-reference 0x140c3a590 and creature/caste
+description 0x140b94ed0. These suppliers retain zombie/ghostly/corpse/name/role,
+unidentified creature, unknown creature, pronoun and ownership alternatives.
+speaker_caption: wrapper calls Steam 0x141330c30, with full sender name,
+profession/creature description and dead/corpse alternatives. No arbitrary
+English proper-name inventory can replace these typed generated fields.
+entity_name: Steam 0x140b92900..0x140b92a78; entity lookup, optional ENT page
+markup, language_name at entity+0x20, and unknown-civilization fallback.
+language_name: Steam 0x140a946e0..0x140a94ea2; first name/nickname and generated
+language-word forms; these remain open fields with their authored component.
+location: site b93930, abstract building b94090, region b94940 and underground
+b94a40; all use actual id/name suppliers. Underground additionally has fixed
+world-deeps/magma-sea/underworld clauses and silent/empty name branches.
+performance: form and written-content lookups, history_event virtual text,
+sermon value/sphere/name and title fields; recursive event text follows its
+existing full source catalog rather than a made-up finite name list.
+
+Markup [LPAGE:HF:...], [LPAGE:ENT:...], [LPAGE:SITE:...], [/LPAGE] and parameter
+tokens belong to native field construction. Their grammar/control alternatives
+are retained; numeric ids and user-authored names stay opaque field content.
+Literal whitespace is normalized only for the translation productions; raw
+instructions and native literal operands preserve the original source bytes.
+
+Catalog connection
+-------------------
+The finite body/source productions belong to the existing complete
+announcement spoken corpus, announcement-spoken-grammar,
+announcement-description-grammar and announcement-memory-grammar data.
+The 42-owner full decompiled source and native topic/call inventories describe
+the popup's body universe; announcement-popup-native retains submission,
+report storage, alert routing and complete report-text renderer ownership.
+The new current-PE material establishes branch and supplier provenance for
+these catalogs, including finite silent/empty supplier branches. It does not
+claim that arbitrary generated names, authored content or RAW descriptions
+form a finite list of all possible complete strings.

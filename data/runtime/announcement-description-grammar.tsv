@@ -710,6 +710,11 @@ memory-person	somebody	有人		ELF 53.16 0x101b7f0..0x1020794 event-memory const
 memory-person	someone	有人		ELF 53.16 0x101b7f0..0x1020794 event-memory constructor
 memory-person	I	我		ELF 53.16 0x101b7f0..0x1020794 event-memory constructor
 memory-person	me	我		ELF 53.16 0x101b7f0..0x1020794 event-memory constructor
+memory-person	my	我的		PE 0x140b92c34; ELF a11560 grammar mode 2 self-reference
+memory-person	myself	我自己		PE 0x140b92c15; classic 0x140b8fc55; ELF a11560 grammar mode 3 self-reference
+memory-person	a secret identity	秘密身份		ELF a11560 ->1c428e0; secret-identity label without a resolved historical figure
+memory-person	{s}'s	{s1}的	memory-person	PE 0x140b92ea5; ELF a11560 grammar mode 2 appends possessive suffix to the complete non-self label
+memory-person	's	某人的		PE 0x140b92ea5; ELF a11560 grammar mode 2; empty generated label before possessive suffix
 memory-person	you	你		ELF 53.16 0x101b7f0..0x1020794 event-memory constructor
 memory-relation	spouse	伴侣		ELF 53.16 0x101b7f0..0x1020794 event-memory constructor
 memory-relation	lover	恋人		ELF 53.16 0x101b7f0..0x1020794 event-memory constructor
@@ -943,6 +948,7 @@ memory-sentence	I died.	我死了。		0x14066d037; death subject is the speaker
 memory-sentence	{s}.	{s1}。	memory-performance	0x14066d821..0x14066e912 -> common period 0x14066f1df
 memory-performance	{s}	{s1}	memory-performance-core	0x14066e857; absent venue
 memory-performance	{s} at {s}	在{s2}，{s1}	memory-performance-core,$name	0x14066e8e7; venue's generated English name
+memory-performance	{s} at	{s1}（演出地点未记载）	memory-performance-core	0x14066e8e7; venue record exists but its generated English name is empty
 memory-performance-core	I preached on {s}	我讲了关于{s1}的道理	memory-sermon-topic	0x14066d8dc..0x14066da8e
 memory-performance-core	I saw {s} preach on {s}	我听{s1}讲了关于{s2}的道理	memory-person,memory-sermon-topic	0x14066daa1..0x14066db62
 memory-performance-core	I saw a sermon on {s}	我听了一场关于{s1}的布道	memory-sermon-topic	0x14066db3a..0x14066db62
@@ -992,8 +998,12 @@ memory-sentence	{s}.	{s1}。	memory-possession	0x14066bba3..0x14066c7a5; native 
 memory-possession	{s}	{s1}	memory-possession-core	0x14066c25c/0x14066c2c2; absent location
 memory-possession	{s} in {s}	在{s2}，{s1}	memory-possession-core,memory-location	0x14066c201..0x14066c3ed
 memory-possession	{s} in {s} in {s}	在{s3}的{s2}，{s1}	memory-possession-core,memory-location,memory-location	0x14066c232+0x14066c237; building inside site
+memory-possession	{s} in	{s1}（地点未记载）	memory-possession-core	ELF 101a133/101a213/101a4fb -> a10160; PE 0x14066c201..0x14066c3ed; location helper can append no name
+memory-possession	{s} in in {s}	在{s2}，{s1}	memory-possession-core,memory-location	0x14066c232+0x14066c237; building name empty, enclosing site name present; native spaces normalized
+memory-possession	{s} in {s} in	在{s2}，{s1}	memory-possession-core,memory-location	0x14066c232+0x14066c237; building name present, enclosing site name empty
+memory-possession	{s} in in	{s1}（地点未记载）	memory-possession-core	0x14066c232+0x14066c237; both building and enclosing site names empty
 memory-possession-core	{s} gave {s} to {s}	{s1}把{s2}给了{s3}	memory-person,memory-transfer-object,memory-person	0x14066be9f/0x14066c690 + to tail
-memory-possession-core	{s} would not give {s}	{s1}不肯交出{s2}	memory-person,agreement-item	0x14066c687; no receiver is appended on this native branch
+memory-possession-core	{s} would not give {s} to {s}	{s1}不肯把{s2}交给{s3}	memory-person,agreement-item,memory-person	PE 0x14066c687+0x14066c6e9..0x14066c761; action4 shares the receiver tail with action3; ELF 1016060 case7 (*action - 3U < 2)
 memory-possession-core	{s} obtained {s}	{s1}得到了{s2}	memory-person,agreement-item	0x14066c699
 memory-possession-core	{s} placed {s}	{s1}放下了{s2}	memory-person,memory-transfer-object	0x14066bea8/0x14066c6a2
 memory-possession-core	{s} had {s}	{s1}拥有{s2}	memory-person,agreement-item	0x14066c6ab
@@ -1004,6 +1014,9 @@ memory-location	{s}	{s1}	$name	0x140b94090/0x140b93930/0x140b94a40/0x140b94940; 
 memory-location	an unknown site	一个不知名的地点		Native site-name fallback
 memory-location	an unknown region	一个不知名的地区		Native region-name fallback
 memory-location	an unknown underground region	一个不知名的地下区域		Native underground-region fallback
+memory-location	the depths of the world	世界深处		ELF a10160 -> a102c0; unnamed underground type 0
+memory-location	the magma sea	岩浆海		ELF a10160 -> a102f8; unnamed underground type 1
+memory-location	the Underworld	冥界		ELF a10160 -> a102e0; unnamed underground type 2
 memory-sentence	{s}.	{s1}。	memory-reunion	0x14066c7a5..0x14066cf4f; native reunion and optional helper credit
 memory-reunion	{s}	{s1}	memory-reunion-core	0x14066ccfe; no credited helper
 memory-reunion	{s} and it is all thanks to {s}	{s1}，这全多亏了{s2}	memory-reunion-core,memory-person	0x14066cd4d..0x14066cd97
@@ -1028,12 +1041,20 @@ memory-crime	embezzlement	侵吞公款的罪		0x14066d7d1
 memory-crime	treason	叛国罪		0x14066d7e5
 memory-crime	espionage	间谍罪		0x14066d7f9
 memory-crime	bribery	贿赂罪		0x14066d80d
-memory-sentence	You named yourself to {s}.	你向{s1}报上了自己的名字。	$name	0x14066eb00+0x14066ebbb
-memory-sentence	{s} self-identified to {s}.	{s1}向{s2}报上了自己的名字。	memory-person,$name	0x14066eb82+0x14066ebbb
-memory-sentence	Somebody named themself to {s}.	有人向{s1}报上了自己的名字。	$name	0x14066eba6+0x14066ebbb
-memory-sentence	You refused to name yourself to {s}.	你不肯向{s1}透露自己的名字。	$name	0x14066edc1 -> 0x14066ebb5
-memory-sentence	{s} refused to give a name to {s}.	{s1}不肯向{s2}透露自己的名字。	memory-person,$name	0x14066ee43 -> 0x14066ebb5
-memory-sentence	Somebody refused to name themself to {s}.	有人不肯向{s1}透露自己的名字。	$name	0x14066ee6a -> 0x14066ebb5
+memory-sentence	You named yourself to {s}.	你向{s1}报上了自己的名字。	memory-entity	0x14066eb00+0x14066ebbb; ELF 1016222 -> a278f0 entity recipient
+memory-sentence	{s} self-identified to {s}.	{s1}向{s2}报上了自己的名字。	memory-person,memory-entity	0x14066eb82+0x14066ebbb; ELF 1016222 -> a278f0 entity recipient
+memory-sentence	Somebody named themself to {s}.	有人向{s1}报上了自己的名字。	memory-entity	0x14066eba6+0x14066ebbb; ELF 1016222 -> a278f0 entity recipient
+memory-sentence	You refused to name yourself to {s}.	你不肯向{s1}透露自己的名字。	memory-entity	0x14066edc1 -> 0x14066ebb5; ELF 1016222 -> a278f0 entity recipient
+memory-sentence	{s} refused to give a name to {s}.	{s1}不肯向{s2}透露自己的名字。	memory-person,memory-entity	0x14066ee43 -> 0x14066ebb5; ELF 1016222 -> a278f0 entity recipient
+memory-sentence	Somebody refused to name themself to {s}.	有人不肯向{s1}透露自己的名字。	memory-entity	0x14066ee6a -> 0x14066ebb5; ELF 1016222 -> a278f0 entity recipient
+memory-entity	an unknown civilization	未知文明		PE 0x140b92a4c; ELF a278f0 -> a27a97; invalid entity id, missing lookup or null record
+memory-entity	{s}	{s1}	$memory-entity	PE 0x140b92900 -> 0x140a946e0; ELF a278f0 ->12c58d0; generated entity/deity language_name
+memory-sentence	You named yourself to .	你向名称未记载的一方报上了自己的名字。		0x14066eb00+0x14066ebbb; ELF 1016215..1016222; valid entity with empty language_name
+memory-sentence	{s} self-identified to .	{s1}向名称未记载的一方报上了自己的名字。	memory-person	0x14066eb82+0x14066ebbb; ELF 1016215..1016222; valid entity with empty language_name
+memory-sentence	Somebody named themself to .	有人向名称未记载的一方报上了自己的名字。		0x14066eba6+0x14066ebbb; ELF 1016215..1016222; valid entity with empty language_name
+memory-sentence	You refused to name yourself to .	你不肯向名称未记载的一方透露自己的名字。		0x14066edc1 -> 0x14066ebb5; ELF 1016215..1016222; valid entity with empty language_name
+memory-sentence	{s} refused to give a name to .	{s1}不肯向名称未记载的一方透露自己的名字。	memory-person	0x14066ee43 -> 0x14066ebb5; ELF 1016215..1016222; valid entity with empty language_name
+memory-sentence	Somebody refused to name themself to .	有人不肯向名称未记载的一方透露自己的名字。		0x14066ee6a -> 0x14066ebb5; ELF 1016215..1016222; valid entity with empty language_name
 
 # scope	source	target	semantic field scopes	native construction evidence
 # Visitor prophet quote, classic PE 53.16 statement formatter 0x140656ab0.

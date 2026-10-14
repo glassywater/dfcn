@@ -6801,6 +6801,7 @@ Announcement combat agreement-title-core [agreement-party-list,$travel-site]: th
 Announcement combat agreement-title-core [agreement-party-list,$travel-site]: the joining of {s} with to oust from {s}	{s1}与同行，协助驱逐{s2}的势力	l
 Announcement combat conversation-conflict-group [conversation-conflict-caste,conversation-conflict-entity]: {s} of {s}	{s2}的{s1}	l
 Announcement combat inscription [$person,$person]: I am {s}, {s}, once of the Underworld. I bind myself to this place.	我是{s1}，又名{s2}，曾来自地下世界。我将自身束缚于此地。	l
+Announcement combat memory-possession-core [memory-person,agreement-item,memory-person]: {s} would not give {s} to {s}	{s1}不肯把{s2}交给{s3}	l
 Announcement combat quest-sentence [quest-object,$name]: It would be wonderful if {s} found a lasting home within {s}.	若能让{s1}长久地留在{s2}，那就再好不过了。	l
 Announcement combat sentence [$name,dialogue-family,$unit]: I'm going to {s} to move into my new home with my {s} {s}.	我正前往{s1}，与我的{s2}{s3}搬入我们的新家。	l
 Announcement combat sentence [$travel-site]: The village {s} is the only other settlement to utilize the market there.	只有{s1}这座村庄也去那里赶集。	l
@@ -9537,6 +9538,7 @@ Announcement combat justice-interrogation-response []: had a distrustful nature 
 Announcement combat justice-intrigue-relationship-factor [justice-intrigue-actor]: loyalty toward {s}	忠于{s1}	l
 Announcement combat memory-sentence [$name]: I have performed the rites of {s} in this dubious place.	在这不太像样的地方参加了{s1}的仪式。	l
 Announcement combat memory-sentence [$name]: The agreement to establish a temple for {s} was ignored.	说好为{s1}建神殿，却没人管了。	l
+Announcement combat memory-sentence [memory-person,memory-entity]: {s} refused to give a name to {s}.	{s1}不肯向{s2}透露自己的名字。	l
 Announcement combat memory-sentence [memory-person,memory-person]: {s} escalated a conflict with {s}.	{s1}跟{s2}闹得更厉害了。	l
 Announcement combat negotiation-response []: made several jokes of their own and dismissed the matter	也讲了几个笑话，便把正事抛在一边	l
 Announcement combat rumor-event [$name]: I hear that a group from {s} left to found a new settlement.	听说一群来自{s1}的人出发去建立新的定居点了。	l
@@ -10355,7 +10357,6 @@ Announcement combat justice-interrogation-sentence [justice-interrogation-respon
 Announcement combat justice-intrigue-relationship-factor [justice-intrigue-actor]: respect of {s}	尊重{s1}	l
 Announcement combat memorial-inscription [memorial-name,memorial-clauses]: In memory of {s} / {s}	谨以此纪念{s1}／{s2}	l
 Announcement combat memory-performance-core [memory-performance-work]: I saw a performance of {s}	我看了一场{s1}的表演	l
-Announcement combat memory-possession-core [memory-person,agreement-item]: {s} would not give {s}	{s1}不肯交出{s2}	l
 Announcement combat memory-possession-core [memory-person,memory-transfer-object]: {s} placed {s}	{s1}放下了{s2}	l
 Announcement combat memory-sentence [$creature,memory-work,$name]: I saw a {s} recite {s} at {s}.	我看到一名{s1}在{s3}朗诵《{s2}》。	l
 Announcement combat memory-sentence [memory-exhibit]: I saw {s} on display in my personal museum.	在自己的博物馆里看到了展出的{s1}。	l
@@ -11087,6 +11088,8 @@ Announcement combat justice-intrigue-relationship-factor [justice-intrigue-actor
 Announcement combat justice-intrigue-response [justice-intrigue-actor]: agreed for love of {s}	出于对{s1}的爱而答应了	l
 Announcement combat justice-intrigue-response [justice-intrigue-actor]: trusted {s} and agreed	信任{s1}，因而答应了	l
 Announcement combat memory-sentence [$person]: I have communed with {s} in this dubious place.	在这不太像样的地方跟{s1}沟通过了。	l
+Announcement combat memory-sentence [memory-entity]: Somebody refused to name themself to {s}.	有人不肯向{s1}透露自己的名字。	l
+Announcement combat memory-sentence [memory-person,memory-entity]: {s} self-identified to {s}.	{s1}向{s2}报上了自己的名字。	l
 Announcement combat negotiation-response []: negotiated eloquently in turn and had the mastery	也凭口才谈判，并占据了上风	l
 Announcement combat negotiation-response []: negotiated forcefully in turn and had the mastery	也强硬地谈判，并占据了上风	l
 Announcement combat negotiation-response []: negotiated with discernment but was outmaneuvered	审时度势地谈判，却被对方胜过一筹	l
@@ -11307,7 +11310,8 @@ Announcement combat journal-performance-core [memory-story]: Your telling of the
 Announcement combat justice-interrogation-relationship-factor []: loyalty toward interrogator	忠于审讯者	l
 Announcement combat justice-intrigue-response [justice-intrigue-actor]: hated {s} and refused	憎恨{s1}，因而拒绝了	l
 Announcement combat memory-performance-core [memory-person,memory-poem]: I saw {s} recite {s}	我听{s1}朗诵了{s2}	l
-Announcement combat memory-sentence [memory-person,$name]: {s} refused to give a name to {s}.	{s1}不肯向{s2}透露自己的名字。	l
+Announcement combat memory-possession [memory-possession-core,memory-location]: {s} in in {s}	在{s2}，{s1}	l
+Announcement combat memory-possession [memory-possession-core,memory-location]: {s} in {s} in	在{s2}，{s1}	l
 Announcement combat negotiation-recipient [$historical-actor,$office,$name]: {s}, {s} of {s},	{s3}的{s2}{s1}	l
 Announcement combat negotiation-response []: negotiated lightly in turn but was outmaneuvered	也轻松地谈判，却被对方胜过一筹	l
 Announcement combat rumor-event [$book,$name,$travel-site]: I hear that {s} is in {s} in {s}.	听说{s1}在{s2}的{s3}里。	l
@@ -12462,6 +12466,7 @@ Announcement combat justice-interrogation-response []: was swayed by the emotion
 Announcement combat justice-intrigue-actor [justice-intrigue-actor,$unit]: {s}, as "{s}",	{s1}以“{s2}”的身份	l
 Announcement combat justice-intrigue-actor [justice-intrigue-actor]: childhood friend {s}	童年好友{s1}	l
 Announcement combat memory-sentence [$name]: The guildhall petition for {s} was rejected.	为{s1}建公会大厅的申请被拒绝了。	l
+Announcement combat memory-sentence [memory-entity]: You refused to name yourself to {s}.	你不肯向{s1}透露自己的名字。	l
 Announcement combat memory-sentence [memory-ghost-action,memory-ghost]: I was {s} by {s}.	我被{s2}{s1}。	l
 Announcement combat memory-sentence [memory-relation]: I was attacked by my own dead {s}.	我死去的{s1}竟然袭击了我。	l
 Announcement combat negotiation-response []: negotiated deceptively but was outmaneuvered	用欺骗手段谈判，却被对方胜过一筹	l
@@ -13327,10 +13332,8 @@ Announcement combat justice-intrigue-response []: spurned the law and agreed wil
 Announcement combat memorial-clause [$creature,$memorial-actor]: Slayer of the {s} {s}	斩杀{s1}·{s2}者	l
 Announcement combat memorial-death [memorial-possessive]: Burned up in {s} dragon fire	被{s1}的龙焰焚毁	l
 Announcement combat memory-possession-core [memory-person,agreement-item]: {s} had {s}	{s1}拥有{s2}	l
-Announcement combat memory-sentence [$name]: Somebody refused to name themself to {s}.	有人不肯向{s1}透露自己的名字。	l
 Announcement combat memory-sentence [$name]: The temple petition for {s} was rejected.	为{s1}建神殿的申请被拒绝了。	l
 Announcement combat memory-sentence [memory-offspring]: I have become a parent of {s}.	我有{s1}了。	l
-Announcement combat memory-sentence [memory-person,$name]: {s} self-identified to {s}.	{s1}向{s2}报上了自己的名字。	l
 Announcement combat memory-sentence [memory-person,memory-crime]: {s} perpetrated {s}.	{s1}犯下了{s2}。	l
 Announcement combat memory-sentence [memory-person,memory-person]: {s}, slayer of {s}.	{s1}，就是杀死{s2}的那个。	l
 Announcement combat negotiation-response []: negotiated eloquently and had the mastery	凭口才谈判，并占据了上风	l
@@ -13967,9 +13970,11 @@ Announcement combat justice-interrogation-crime []: the export prohibition viola
 Announcement combat justice-interrogation-unit [justice-interrogation-sentence]: {s}	{s1}	l
 Announcement combat memory-performance-core [memory-sermon-topic]: I preached on {s}	我讲了关于{s1}的道理	l
 Announcement combat memory-performance-core [memory-story]: Thestory of {s} was told	有人讲了{s1}的故事	l
+Announcement combat memory-sentence [memory-entity]: Somebody named themself to {s}.	有人向{s1}报上了自己的名字。	l
 Announcement combat memory-sentence [memory-knowledge]: I just don't understand {s}.	就是弄不懂{s1}。	l
 Announcement combat memory-sentence [memory-person,memory-crime]: {s} attempted {s}.	{s1}企图犯下{s2}。	l
 Announcement combat memory-sentence [memory-person,memory-person]: {s} attacked {s}.	{s1}袭击了{s2}。	l
+Announcement combat memory-sentence [memory-person]: {s} refused to give a name to .	{s1}不肯向名称未记载的一方透露自己的名字。	l
 Announcement combat negotiation-response []: made a persuasive argument of their own	也提出了有说服力的论点	l
 Announcement combat negotiation-response []: negotiated calmly but was outmaneuvered	冷静地谈判，却被对方胜过一筹	l
 Announcement combat negotiation-sentence []: The proposal was a spectacular failure.	这项提案以惨败告终。	l
@@ -14998,7 +15003,6 @@ Announcement combat justice-intrigue-revenge-target [justice-intrigue-actor]: {s
 Announcement combat memorial-clause [memorial-death,$digits]: {s} in the year {s}	于{s2}年{s1}	l
 Announcement combat memory-performance-core [memory-poem]: I saw a recital of {s}	我听了{s1}的朗诵	l
 Announcement combat memory-reunion [memory-reunion-core]: {s} due to your efforts	多亏你帮忙，{s1}	l
-Announcement combat memory-sentence [$name]: You refused to name yourself to {s}.	你不肯向{s1}透露自己的名字。	l
 Announcement combat memory-sentence [memory-furniture]: I was near to my own {s}.	靠近过自己的{s1}。	l
 Announcement combat memory-sentence [memory-knowledge]: I've been discussing {s}.	最近在跟人讨论{s1}。	l
 Announcement combat memory-sentence [memory-person]: I can't believe {s} is dead.	真不敢相信，{s1}死了。	l
@@ -15696,6 +15700,7 @@ Announcement combat justice-intrigue-actor [justice-intrigue-actor]: spouse {s}	
 Announcement combat justice-intrigue-factor [justice-interrogation-factor]: {s}	{s1}	l
 Announcement combat justice-intrigue-paragraph [justice-intrigue-sentence]: {s}	{s1}	l
 Announcement combat memory-sentence [$name]: I have performed the rites of {s}.	参加了{s1}的仪式。	l
+Announcement combat memory-sentence [memory-entity]: You named yourself to {s}.	你向{s1}报上了自己的名字。	l
 Announcement combat memory-sentence [memory-value-insight]: I am awoken to {s}.	我领悟到了{s1}。	l
 Announcement combat negotiation-opening []: negotiate amidst light conversation	在轻松的闲谈中谈判	l
 Announcement combat negotiation-opening []: negotiate, keeping a sense of humor	以幽默的方式谈判	l
@@ -16035,6 +16040,7 @@ Announcement combat journal-event-title [journal-person-event]: Somebody's {s}	�
 Announcement combat justice-intrigue-actor [justice-intrigue-actor]: lover {s}	爱人{s1}	l
 Announcement combat memorial-clause [$office,$name,$digits]: {s} of {s} in {s}	{s3}年担任{s2}的{s1}	l
 Announcement combat memory-possession-core [agreement-item]: {s} was destroyed	{s1}被毁掉了	l
+Announcement combat memory-sentence []: Somebody refused to name themself to .	有人不肯向名称未记载的一方透露自己的名字。	l
 Announcement combat negotiation-opening []: use humor to disarm their opponent	用幽默打消对方的戒心	l
 Announcement combat negotiation-response []: spun a web of deceit of their own	也编织了一张谎言之网	l
 Announcement combat negotiation-sentence []: The proposal was a great success.	这项提案大获成功。	l
@@ -16396,6 +16402,7 @@ Announcement combat justice-plot [justice-plot-attempted,$digits]: {s} in {s}	{s
 Announcement combat memorial-death [$creature]: Burned to death by a {s} fire	被一只{s1}的火焰烧死	l
 Announcement combat memory-sentence [memory-person]: I am separated from {s}.	我跟{s1}分开了。	l
 Announcement combat memory-sentence [memory-person]: I was reunited with {s}.	我跟{s1}重逢了。	l
+Announcement combat memory-sentence [memory-person]: {s} self-identified to .	{s1}向名称未记载的一方报上了自己的名字。	l
 Announcement combat negotiation-response []: negotiated but was outmaneuvered	展开谈判，却被对方胜过一筹	l
 Announcement combat negotiation-sentence []: The proposal was not successful.	这项提案未能成功。	l
 Announcement combat negotiation-speaker [$historical-actor,$name]: {s} of {s}	{s2}的{s1}	l
@@ -16788,7 +16795,6 @@ Announcement combat justice-interrogation-factor []: being unafraid of death	不
 Announcement combat justice-interrogation-response []: was overcome by greed	被贪欲压倒了	l
 Announcement combat justice-intrigue-response []: valued the law and refused	重视法律，因而拒绝了	l
 Announcement combat memorial-death []: Died after colliding with an obstacle	撞上障碍物而死	l
-Announcement combat memory-sentence [$name]: Somebody named themself to {s}.	有人向{s1}报上了自己的名字。	l
 Announcement combat memory-sentence [$name]: There was a performance in {s}.	{s1}办了场表演。	l
 Announcement combat memory-sentence [memory-furniture]: I was near to a {s}.	靠近过一个{s1}。	l
 Announcement combat memory-sentence [memory-knowledge]: I learned about {s}.	学到了关于{s1}的知识。	l
@@ -17964,6 +17970,8 @@ Announcement combat justice-plot-core [$office,$name]: Corrupt {s} of {s}	拉拢
 Announcement combat memorial-clause [$memorial-material]: At one with {s}	与{s1}合而为一	l
 Announcement combat memorial-clause [$memorial-material]: United with {s}	与{s1}融为一体	l
 Announcement combat memorial-death []: Crushed under a collapsing ceiling	被坍塌的天花板压死	l
+Announcement combat memory-possession [memory-possession-core]: {s} in in	{s1}（地点未记载）	l
+Announcement combat memory-sentence []: You refused to name yourself to .	你不肯向名称未记载的一方透露自己的名字。	l
 Announcement combat memory-sentence [agreement-item]: {s} was given away.	{s1}被送人了。	l
 Announcement combat memory-value-insight [memory-value]: the value of {s}	{s1}的价值	l
 Announcement combat reference-building [reference-building-type]: the {s}	{s1}	l
@@ -18369,6 +18377,7 @@ Announcement combat justice-plot-core [$name]: Start War between and {s}	挑起�
 Announcement combat justice-plot-core [$name]: Start War between {s} and	挑起涉及{s1}的战争	l
 Announcement combat memorial-clause [$memorial-artifact]: Creator of {s}	{s1}的创作者	l
 Announcement combat memorial-clause [memorial-liked-value]: Lover of {s}	喜爱{s1}	l
+Announcement combat memory-performance [memory-performance-core]: {s} at	{s1}（演出地点未记载）	l
 Announcement combat memory-performance-core [memory-poem]: I recited {s}	我朗诵了{s1}	l
 Announcement combat memory-sentence [$person]: I have communed with {s}.	跟{s1}沟通过了。	l
 Announcement combat memory-sentence [memory-person]: {s} and I broke up.	我跟{s1}分手了。	l
@@ -18765,7 +18774,6 @@ Announcement combat memorial-clause [memorial-death,$event]: {s} in {s}	在{s2}�
 Announcement combat memory-ghost [memory-relation]: the ghost of my {s}	我的{s1}的鬼魂	l
 Announcement combat memory-person [memory-relation,$person]: my {s} {s}	我的{s1}{s2}	l
 Announcement combat memory-sentence [$creature]: I was pestered by {s}.	被{s1}缠上了。	l
-Announcement combat memory-sentence [$name]: You named yourself to {s}.	你向{s1}报上了自己的名字。	l
 Announcement combat memory-sentence []: I put on a finely-crafted item.	穿上了一件做得很精致的衣物。	l
 Announcement combat memory-sentence []: I put on a truly splendid item.	穿上了一件品质好极了的衣物。	l
 Announcement combat memory-sentence [memory-knowledge]: I realized {s}.	我想明白了{s1}。	l
@@ -19236,6 +19244,7 @@ Announcement combat justice-interrogation-crime []: disorderly conduct	扰乱秩
 Announcement combat justice-interrogation-factor []: feelings of greed	怀有贪欲	l
 Announcement combat justice-interrogation-factor []: valuing the truth	重视真相	l
 Announcement combat justice-plot-core [$name]: Provide Position in {s}	提供{s1}的职位	l
+Announcement combat memory-possession [memory-possession-core]: {s} in	{s1}（地点未记载）	l
 Announcement combat memory-sentence [memory-knowledge]: I learned {s}.	学会了{s1}。	l
 Announcement combat memory-sentence [memory-person]: Oh, where is {s}?	唉，{s1}在哪里啊？	l
 Announcement combat merchant-origin [$name]: {s}, out to the northeast	东北方的{s1}	l
@@ -20209,6 +20218,7 @@ Announcement combat memorial-weapon-death []: Collapsed, struck down	遭击杀�
 Announcement combat memory-sentence [$name]: {s} will be recognized.	{s1}将得到认可。	l
 Announcement combat memory-sentence [$person]: I shall name you {s}.	就给你起名叫{s1}吧。	l
 Announcement combat memory-sentence [$term]: I have improved my {s}.	我的{s1}进步了。	l
+Announcement combat memory-sentence []: Somebody named themself to .	有人向名称未记载的一方报上了自己的名字。	l
 Announcement combat memory-sentence [memory-object]: I acquired {s}.	得到了{s1}。	l
 Announcement combat memory-sentence [memory-person]: I abducted {s}.	我绑走了{s1}。	l
 Announcement combat memory-sentence [memory-person]: I defeated {s}.	我打败了{s1}。	l
@@ -22781,9 +22791,11 @@ Announcement combat memorial-death [memorial-killer-death]: {s}	{s1}	l
 Announcement combat memorial-death [memorial-weapon-death]: {s}	{s1}	l
 Announcement combat memorial-possessive [$memorial-actor]: {s}'	{s1}	l
 Announcement combat memory-crime []: a conspiracy to slow labor	合谋怠工的罪	l
+Announcement combat memory-location []: the depths of the world	世界深处	l
 Announcement combat memory-relation []: animal training partner	一起训练的动物伙伴	l
 Announcement combat memory-sentence []: I got into an argument.	跟人吵了一架。	l
 Announcement combat memory-sentence []: I have become a parent.	我有孩子了。	l
+Announcement combat memory-sentence []: You named yourself to .	你向名称未记载的一方报上了自己的名字。	l
 Announcement combat memory-sentence [memory-object]: I saw {s}.	看到了{s1}。	l
 Announcement combat memory-sentence [memory-person]: Oh, {s}...	唉，{s1}……	l
 Announcement combat memory-sentence [memory-work]: I wrote {s}.	写了{s1}。	l
@@ -24123,6 +24135,7 @@ Announcement combat memorial-killer-verb []: Drained of blood	吸干血液	l
 Announcement combat memorial-killer-verb []: Hacked to pieces	砍成碎片	l
 Announcement combat memorial-weapon [$memorial-artifact]: {s}	{s1}	l
 Announcement combat memory-death []: was executed by drowning	被执行了溺刑	l
+Announcement combat memory-entity []: an unknown civilization	未知文明	l
 Announcement combat memory-reunion [memory-reunion-core]: {s}	{s1}	l
 Announcement combat memory-sentence [memory-possession]: {s}.	{s1}。	l
 Announcement combat memory-sermon-topic [work-reference]: {s}	{s1}	l
@@ -28272,6 +28285,7 @@ Announcement combat memory-death []: was scared to death	被吓死了	l
 Announcement combat memory-death []: was shot and killed	被射杀了	l
 Announcement combat memory-exhibit [agreement-item]: {s}	{s1}	l
 Announcement combat memory-performance-work [$book]: {s}	{s1}	l
+Announcement combat memory-person [memory-person]: {s}'s	{s1}的	l
 Announcement combat merchant-origin []: a village nearby	附近的村庄	l
 Announcement combat merchant-people []: some of our kind	我们的一些同族	l
 Announcement combat negotiation-opening []: brazenly lie	肆无忌惮地撒谎	l
@@ -29309,11 +29323,13 @@ Announcement combat memorial-death []: Starved to death	饥饿而死	l
 Announcement combat memorial-family []: mother and wife	母亲与妻子	l
 Announcement combat memory-crime []: disorderly conduct	扰乱秩序的罪	l
 Announcement combat memory-death []: died of an illness	病死了	l
+Announcement combat memory-entity [$memory-entity]: {s}	{s1}	l
 Announcement combat memory-exhibit [memory-object]: {s}	{s1}	l
 Announcement combat memory-ghost []: the ghost of a pet	一只宠物的鬼魂	l
 Announcement combat memory-location []: an unknown site	一个不知名的地点	l
 Announcement combat memory-performance-past []: chanted	吟唱了	l
 Announcement combat memory-performance-verb []: perform	表演了	l
+Announcement combat memory-person []: a secret identity	秘密身份	l
 Announcement combat memory-setting []: an awful setting	糟透了	l
 Announcement combat merchant-address []: my good person	好心人	l
 Announcement combat merchant-advert-origin [$name]: {s}	{s1}	l
@@ -30332,6 +30348,7 @@ Announcement combat memorial-killer-verb []: Crucified	钉死在十字架上	l
 Announcement combat memory-death []: fell into a chasm	坠入了深渊	l
 Announcement combat memory-death []: was fed to beasts	被喂给了野兽	l
 Announcement combat memory-knowledge [$reference]: {s}	{s1}	l
+Announcement combat memory-location []: the Underworld	冥界	l
 Announcement combat memory-offspring []: quindecaplets	十五胞胎	l
 Announcement combat memory-performance-past []: danced	跳了	l
 Announcement combat memory-performance-past []: played	演奏了	l
@@ -31417,6 +31434,7 @@ Announcement combat memory-death []: was buried alive	被活埋了	l
 Announcement combat memory-death []: was burned alive	被活活烧死了	l
 Announcement combat memory-ghost-action []: possessed	附身了	l
 Announcement combat memory-ghost-action []: tormented	折磨了	l
+Announcement combat memory-location []: the magma sea	岩浆海	l
 Announcement combat memory-offspring []: duodecaplets	十二胞胎	l
 Announcement combat memory-offspring []: tredecaplets	十三胞胎	l
 Announcement combat memory-performance-past []: spoke	念了	l
@@ -43849,6 +43867,7 @@ Announcement combat memory-crime []: treason	叛国罪	l
 Announcement combat memory-death []: drowned	淹死了	l
 Announcement combat memory-ghost []: a ghost	一个鬼魂	l
 Announcement combat memory-person []: my own	我自己	l
+Announcement combat memory-person []: myself	我自己	l
 Announcement combat memory-poem [$book]: {s}	{s1}	l
 Announcement combat memory-room []: sleeping	睡觉	l
 Announcement combat memory-story []: history	往事	l
@@ -50849,7 +50868,9 @@ Announcement combat attack-verb []: stab	戳刺	l
 Announcement combat fraction []: half of	一半	l
 Announcement combat fraction []: most of	大部分	l
 Announcement combat layer [$body]: {s}'s	{s1}	l
+Announcement combat memory-person []: 's	某人的	l
 Announcement combat memory-person []: me	我	l
+Announcement combat memory-person []: my	我的	l
 Announcement combat memory-value []: law	法律	l
 Announcement combat object []: body part	身体部位	l
 Announcement combat sentence []: Ambush!	有埋伏！	l

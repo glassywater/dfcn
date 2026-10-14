@@ -267,6 +267,11 @@ std::optional<std::string> Overlay::translate_announcement_combat(
         }
         if (scope == "$unit") {
             auto result = native_announcement_unit_identity_target(raw_source, input);
+            if (!result) result = native_unit_identity_source_target(input);
+            // b6ca30/132e430 can copy the complete animated corpse/body-part
+            // label into a proved unit field. Resolve its owner and native
+            // body suffix together before treating it as a bare person name.
+            if (!result) result = translate_native_animation_label(input);
             if (!result) result = translate_ui_message_capture(input, true);
             if (!result && (initial_scope == "fortress-announcement" ||
                     initial_scope == "fortress-job" || initial_scope == "fortress-arrival" ||
@@ -539,6 +544,13 @@ std::optional<std::string> Overlay::translate_announcement_combat(
             auto result = native_announcement_unit_identity_target(raw_source, input);
             if (!result) result = translate_legends_name(input, true);
             return finish(std::move(result));
+        }
+        if (scope == "$memory-entity") {
+            // The incident-memory name/refusal tail calls b92900, whose
+            // field is an entity/deity language_name. Resolve its complete
+            // civilization identity before the shared generated-name path;
+            // its participant's personal-name spelling cannot choose a type.
+            return finish(translate_legends_name(input, false, true));
         }
         if (scope == "$name") return finish(translate_legends_name(input, false));
         if (scope == "$event") return finish(translate_legends_event(input, 0));
