@@ -4748,6 +4748,10 @@ private:
         std::vector<Match> &matches, int only_y, bool raw_layer) const;
     void append_fortress_squad_alias_rows(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y, const unsigned char *raw) const;
+    void append_fortress_squad_messages(std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y, const unsigned char *raw) const;
+    std::optional<std::string> translate_fortress_squad_field(
+        std::string_view source) const;
     std::optional<std::string> translate_fortress_squad_name(
         std::string_view source, int x = -1, int y = -1) const;
     std::optional<std::string> translate_fortress_squad_reference(
@@ -17711,6 +17715,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     // item reader sees "This is". That reader reserves unresolved descriptions
     // as source-only rows, which would otherwise block this complete message
     // and erase its translated matches again in finish_matches.
+    append_fortress_squad_messages(screen_rows, result, only_y, screen_override);
     append_native_split_ui_messages(screen_rows, result, only_y, screen_override);
     // Item and engraving prose owns its author names and wrapped rows before
     // caption/identity readers can consume individual fields from that text.

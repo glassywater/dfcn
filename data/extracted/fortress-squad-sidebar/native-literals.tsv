@@ -1,0 +1,146 @@
+role	instruction	operand	kind	text
+squad-sidebar-renderer	0x16d4b94	0x21ada82	cstring	Confirm
+squad-sidebar-renderer	0x16d4e0d	0x21602ea	cstring	Cancel
+squad-sidebar-renderer	0x16d4ff3	0x20e2675	cstring	 target
+squad-sidebar-renderer	0x16d550d	0x21ade60	cstring	Really disband?
+squad-sidebar-renderer	0x16d588b	0x21ade70	cstring	Disband
+squad-sidebar-renderer	0x16d5aac	0x21602ea	cstring	Cancel
+squad-sidebar-renderer	0x16d61fd	0x2131974	cstring	s
+squad-sidebar-renderer	0x16d6947	0x21ada82	cstring	Confirm
+squad-sidebar-renderer	0x16d6b09	0x21602ea	cstring	Cancel
+squad-sidebar-renderer	0x16d6c09	0x21ade78	cstring	Done editing
+squad-sidebar-renderer	0x16d6dee	0x21adf46	cstring	Back to squads
+squad-sidebar-renderer	0x16d73cc	0x21adeb4	cstring	Equip/orders only
+squad-sidebar-renderer	0x16d7646	0x21adf07	cstring	Minimum number of
+squad-sidebar-renderer	0x16d76bd	0x21adf19	cstring	soldiers to follow
+squad-sidebar-renderer	0x16d7711	0x21adf2c	cstring	new order
+squad-sidebar-renderer	0x16d7f72	0x214db67	cstring	No orders
+squad-sidebar-renderer	0x16d88b0	0x214a555	cstring	At least 
+squad-sidebar-renderer	0x16d8ca7	0x21602ea	cstring	Cancel
+squad-sidebar-renderer	0x16d8f05	0x21adf36	cstring	Vacant position
+squad-sidebar-renderer	0x16d90c7	0x20f4b1e	cstring	No target
+squad-sidebar-renderer	0x16d910a	0x214db67	cstring	No orders
+squad-sidebar-renderer	0x16d928c	0x21ade85	cstring	(unnamed orders)
+squad-sidebar-renderer	0x16d9b95	0x21ade96	cstring	Editing routine 
+squad-sidebar-renderer	0x16d9d76	0x2142877	cstring	_
+squad-sidebar-renderer	0x16da2cd	0x21adf74	cstring	Cannot appoint
+squad-sidebar-renderer	0x16da33c	0x21adf83	cstring	until commander
+squad-sidebar-renderer	0x16da38c	0x21adf93	cstring	is selected
+squad-sidebar-renderer	0x16da824	0x21adf63	cstring	Assign position 
+squad-sidebar-renderer	0x16da8a2	0x21602ea	cstring	Cancel
+squad-sidebar-renderer	0x16da92a	0x21adfed	cstring	Move: click on the map.
+squad-sidebar-renderer	0x16daa00	0x21adfc1	cstring	Create new squad
+squad-sidebar-renderer	0x16db34f	0x21adaa2	cstring	Multiple orders
+squad-sidebar-renderer	0x16db44e	0x21adfe4	cstring	Routine:
+squad-sidebar-renderer	0x16db472	0x21cfba8	cstring	#
+squad-sidebar-renderer	0x16db902	0x21adfd2	cstring	No special orders
+squad-sidebar-renderer	0x16dba6b	0x21adf55	cstring	Assign leader
+squad-sidebar-renderer	0x16dbb79	0x2142877	cstring	_
+squad-sidebar-renderer	0x16dbb94	0x21adea7	cstring	Equip/always
+squad-sidebar-renderer	0x16dbbf0	0x21ae005	cstring	Equip
+squad-sidebar-renderer	0x16dbd5e	0x21ae00b	cstring	Schedule
+squad-sidebar-renderer	0x16dbffe	0x21aded9	cstring	Sleep/barracks at will
+squad-sidebar-renderer	0x16dc04a	0x21adec6	cstring	Sleep/room at will
+squad-sidebar-renderer	0x16dc08b	0x21adef0	cstring	Sleep/barracks at need
+squad-sidebar-renderer	0x16dc2e0	0x21ae014	cstring	Select a squad or squad
+squad-sidebar-renderer	0x16dc351	0x21ae02c	cstring	member to give orders,
+squad-sidebar-renderer	0x16dc3b2	0x21ae043	cstring	change equipment, and
+squad-sidebar-renderer	0x16dc415	0x21ae059	cstring	assign schedules.
+squad-sidebar-renderer	0x16dc614	0x21ae06b	cstring	You must appoint a
+squad-sidebar-renderer	0x16dc6d7	0x21adfae	cstring	to create a squad.
+squad-sidebar-renderer	0x16dc7d1	0x21ae07e	cstring	You must appoint
+squad-sidebar-renderer	0x16dc838	0x21adf9f	cstring	somebody first
+calendar-month-name	0x14f1448	immediate	inline-immediate	Opal
+calendar-month-name	0x14f1498	immediate	inline-immediate	Obsidian
+calendar-month-name	0x14f14fb	immediate	inline-immediate	it
+calendar-month-name	0x14f1500	immediate	inline-immediate	Gran
+calendar-month-name	0x14f155b	immediate	inline-immediate	Slat
+calendar-month-name	0x14f15bb	immediate	inline-immediate	it
+calendar-month-name	0x14f15c0	immediate	inline-immediate	Fels
+calendar-month-name	0x14f1610	immediate	inline-immediate	Limeston
+calendar-month-name	0x14f1678	immediate	inline-immediate	Sandston
+calendar-month-name	0x14f16cb	immediate	inline-immediate	er
+calendar-month-name	0x14f16d0	immediate	inline-immediate	Timb
+calendar-month-name	0x14f1728	immediate	inline-immediate	Moonston
+calendar-month-name	0x14f1780	immediate	inline-immediate	Malachit
+calendar-month-name	0x14f17db	immediate	inline-immediate	na
+calendar-month-name	0x14f17e0	immediate	inline-immediate	Gale
+calendar-month-name	0x14f1824	immediate	inline-immediate	Hematite
+calendar-month-name	0x14f184e	0x217589e	cstring	Opal
+calendar-month-name	0x14f186e	0x217585f	cstring	Hematite
+calendar-month-name	0x14f188e	0x2175872	cstring	Galena
+calendar-month-name	0x14f18ae	0x2175868	cstring	Malachite
+calendar-month-name	0x14f18ce	0x2175894	cstring	Moonstone
+calendar-month-name	0x14f18ee	0x217588d	cstring	Timber
+calendar-month-name	0x14f190e	0x2175883	cstring	Sandstone
+calendar-month-name	0x14f192e	0x2175879	cstring	Limestone
+calendar-month-name	0x14f194e	0x2175857	cstring	Felsite
+calendar-month-name	0x14f196e	0x2175851	cstring	Slate
+calendar-month-name	0x14f198e	0x2175849	cstring	Granite
+calendar-month-name	0x14f19ae	0x2160768	cstring	Obsidian
+kill-list-default-title	0x20333cf	0x2175198	cstring	Kill
+kill-list-default-title	0x20333df	immediate	inline-immediate	Kill
+kill-list-default-title	0x203353b	0x2175198	cstring	Kill
+kill-list-default-title	0x20335cb	immediate	inline-immediate	 various
+kill-list-default-title	0x203376c	0x221c227	cstring	 various
+kill-list-default-title	0x203383b	0x20f7379	cstring	 
+kill-list-default-title	0x2033883	0x20f7379	cstring	 
+kill-historical-figure-default-title	0x2031791	0x21b60d2	cstring	Kill 
+kill-historical-figure-default-title	0x20317a1	immediate	inline-immediate	Kill
+kill-historical-figure-default-title	0x203180e	0x21b60d2	cstring	Kill 
+squad_order_movest	0x2032e21	0x21750a2	cstring	Station
+squad_order_movest	0x2032e31	immediate	inline-immediate	io
+squad_order_movest	0x2032e36	immediate	inline-immediate	Stat
+squad_order_movest	0x2032eb2	immediate	inline-immediate	 at 
+squad_order_movest	0x2032f4e	0x21750a2	cstring	Station
+squad_order_movest	0x2032fc6	0x219eec9	cstring	 at 
+squad_order_movest	0x203301c	immediate	inline-immediate	t 
+squad_order_movest	0x2033021	immediate	inline-immediate	Poin
+squad_order_movest	0x20330ae	0x221c220	cstring	Point 
+squad_order_defend_burrowsst	0x2032a33	0x221c218	cstring	Defend 
+squad_order_defend_burrowsst	0x2032a43	immediate	inline-immediate	nd
+squad_order_defend_burrowsst	0x2032a48	immediate	inline-immediate	Defe
+squad_order_defend_burrowsst	0x2032b52	immediate	inline-immediate	ow
+squad_order_defend_burrowsst	0x2032b57	immediate	inline-immediate	Burr
+squad_order_defend_burrowsst	0x2032bcf	immediate	inline-immediate	 etc
+squad_order_defend_burrowsst	0x2032c7f	0x221c218	cstring	Defend 
+squad_order_defend_burrowsst	0x2032cf6	0x20fba42	cstring	Burrow 
+squad_order_defend_burrowsst	0x2032d4f	0x21e2c80	cstring	 etc.
+squad_order_retrieve_artifactst	0x203140b	0x221c1c9	cstring	Retrieve 
+squad_order_retrieve_artifactst	0x2031417	immediate	inline-immediate	Retrieve
+squad_order_retrieve_artifactst	0x2031466	0x221c1c9	cstring	Retrieve 
+squad_order_raid_sitest	0x2032849	0x20d334b	cstring	Raid 
+squad_order_raid_sitest	0x2032855	immediate	inline-immediate	Raid
+squad_order_raid_sitest	0x2032896	0x20d334b	cstring	Raid 
+squad_order_raid_sitest	0x2032913	0x20d3315	cstring	Pillage 
+squad_order_raid_sitest	0x2032927	0x20d330c	cstring	Explore 
+squad_order_raid_sitest	0x203293b	0x221c1f8	cstring	Demand Tribute from 
+squad_order_raid_sitest	0x203294f	0x20d3344	cstring	Seize 
+squad_order_raid_sitest	0x2032963	0x221c20d	cstring	Take Over 
+squad_order_raid_sitest	0x2032977	0x20d3333	cstring	Raze 
+squad_order_raid_sitest	0x203298b	0x20d334b	cstring	Raid 
+squad_order_rescue_hfst	0x2031a55	0x20d335a	cstring	Rescue 
+squad_order_rescue_hfst	0x2031a65	immediate	inline-immediate	ue
+squad_order_rescue_hfst	0x2031a6a	immediate	inline-immediate	Resc
+squad_order_rescue_hfst	0x2031bc6	0x20d335a	cstring	Rescue 
+squad_order_patrol_routest	0x20324cd	0x221c1f0	cstring	Patrol 
+squad_order_patrol_routest	0x20324dd	immediate	inline-immediate	ol
+squad_order_patrol_routest	0x20324e2	immediate	inline-immediate	Patr
+squad_order_patrol_routest	0x20325e1	immediate	inline-immediate	e 
+squad_order_patrol_routest	0x20325e6	immediate	inline-immediate	Rout
+squad_order_patrol_routest	0x203263e	0x221c1f0	cstring	Patrol 
+squad_order_patrol_routest	0x20326ee	0x20fc0e1	cstring	Route 
+squad_order_trainst	0x20311d2	0x221c180	cstring	Train
+squad_order_trainst	0x20311de	immediate	inline-immediate	Trai
+squad_order_trainst	0x2031206	0x221c180	cstring	Train
+squad_order_drive_armies_from_sitest	0x2031f80	0x221c1da	cstring	Drive any members of 
+squad_order_drive_armies_from_sitest	0x2031fdf	immediate	inline-immediate	 out of 
+squad_order_drive_armies_from_sitest	0x203204e	0x20e1f80	cstring	 out of 
+squad_order_drive_entity_off_sitest	0x2031d80	0x221c1d3	cstring	Drive 
+squad_order_drive_entity_off_sitest	0x2031de2	immediate	inline-immediate	m 
+squad_order_drive_entity_off_sitest	0x2031de7	immediate	inline-immediate	 fro
+squad_order_drive_entity_off_sitest	0x2031e5e	0x20e2431	cstring	 from 
+squad_order_cause_trouble_for_entityst	0x203324c	0x21b60f1	cstring	Cause trouble for 
+squad_order_cause_trouble_for_entityst	0x2033258	immediate	inline-immediate	r 
+squad_order_cause_trouble_for_entityst	0x203325d	0x221c4e0	inline-16-byte	Cause trouble fo
+squad_order_cause_trouble_for_entityst	0x20332fd	0x21b60f1	cstring	Cause trouble for 

@@ -88323,6 +88323,7 @@ Small Animal Dissection	小动物解剖	wi
 Smooth a rough wall to 	将粗糙的墙面打磨平整，让居民	w
 So, {p}... {p}, was it?	那么，{p1}……是叫{p2}，对吗？	hPt
 Spread rumor of the {v}	传播{v1}的传闻	hPt
+Squad sidebar: At least	至少	l
 Start Your Day With {b}	以{b}开启一天	hbti
 State feelings of anger	表达愤怒	hP
 State feelings of bliss	表达极度幸福	hP
@@ -135934,6 +135935,7 @@ zesty green	鲜柠檬绿	wi
 {c} {s} (\x0C)	{c} {s}（♀）	ht
 {d} planted	已种植{d}	wtl
 {d} present	在场 {d}	wtl
+{d} targets	{d1}个目标	hPt
 {d}nd Slate	板岩月{d}日	wt
 {d}rd Slate	板岩月{d}日	wt
 {d}st Slate	板岩月{d}日	wt
@@ -139150,6 +139152,7 @@ zombie {s}	僵尸{s1}	htv
 {c} images	{c1}幅图像	hIit
 {d} events	{d} 个事件	wt
 {d} lovers	{d} 位爱人	wti
+{d} target	{d1}个目标	hPt
 {d} to {d}	{d} 至 {d}	wt
 {d} {s}, \x0B	{d}只{s}，♂	wt
 {d} {s}, \x0C	{d}只{s}，♀	wt

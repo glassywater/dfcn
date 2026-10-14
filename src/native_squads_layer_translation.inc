@@ -106,11 +106,13 @@ void Overlay::render_native_squads_layer(SDL_Renderer *renderer,
     // The native producer has already proved this complete four-writer
     // footer. Measure its translated string inside those submitted bounds;
     // no grid rows are discovered, joined or borrowed by this drawer.
-    if (!g_native_squads_footer_rows.empty() && !g_native_squads_footer_target.empty()) {
+    const auto render_paragraph = [&](const std::vector<Match> &paragraph_rows,
+            std::string_view paragraph_target) {
+        if (paragraph_rows.empty() || paragraph_target.empty()) return;
         int left = panel.x, right = panel.x + panel.w;
         int top = panel.y + panel.h, bottom = panel.y;
         bool valid = true;
-        for (const Match &row : g_native_squads_footer_rows) {
+        for (const Match &row : paragraph_rows) {
             const int row_left = row.layout_x >= 0 ? row.layout_x : row.x;
             const int row_width = row.layout_length > 0 ? row.layout_length : row.length;
             int row_right = row_left + row_width;
@@ -136,7 +138,7 @@ void Overlay::render_native_squads_layer(SDL_Renderer *renderer,
         std::vector<std::vector<int>> line_foregrounds;
         int font_pixels = 0;
         if (valid && left < right && top < bottom &&
-                measure_paragraph_layout(g_native_squads_footer_target, right - left,
+                measure_paragraph_layout(paragraph_target, right - left,
                     {}, {}, lines, line_foregrounds, font_pixels)) {
             const SDL_Rect footer_pixels{
                 static_cast<int>(origin_x + int64_t(left) * tile_x),
@@ -144,7 +146,7 @@ void Overlay::render_native_squads_layer(SDL_Renderer *renderer,
                 static_cast<int>(int64_t(right - left) * tile_x),
                 static_cast<int>(int64_t(bottom - top) * tile_y),
             };
-            const Match &owner = g_native_squads_footer_rows.front();
+            const Match &owner = paragraph_rows.front();
             const int line_height = native_text_row_height(gps_);
             const int first_pixel = top * gps_->tile_pixel_y +
                 (owner.native_split_text ? gps_->tile_pixel_y / 2 : 0);
@@ -188,7 +190,10 @@ void Overlay::render_native_squads_layer(SDL_Renderer *renderer,
                 prepared_matches_.push_back(std::move(text));
             }
         }
-    }
+    };
+    render_paragraph(g_native_squads_footer_rows, g_native_squads_footer_target);
+    for (const auto &paragraph : g_native_squads_paragraphs)
+        render_paragraph(paragraph.rows, paragraph.target);
     // Empty translated targets still own the footer's native source bytes.
     // Painting masks the producer's original records; display-only reflow
     // lines above neither discover nor suppress any additional source cells.

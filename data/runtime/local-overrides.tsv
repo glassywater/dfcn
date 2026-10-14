@@ -1855,6 +1855,8 @@ Minimum number of soldiers to follow new order	执行新命令所需的最少士
 Fortress schedule editor: Minimum number of	执行新命令	l
 Fortress schedule editor: soldiers to follow	所需的最少	l
 Fortress schedule editor: new order	士兵人数	l
+# The squad sidebar draws this prefix and its live count separately.
+Squad sidebar: At least	至少	l
 # Minimum participants for each scheduled order; retain the native count.
 At least {d}	至少 {d}	wtl
 # Squad status rows: match the complete phrases before generic No / Off.

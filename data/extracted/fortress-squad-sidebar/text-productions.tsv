@@ -1,0 +1,73 @@
+owner	branch	text	processing
+0x16d4540	disband confirmation	Really disband?	ui-messages.tsv complete literal
+0x16d4540	disband confirmation	Disband | Cancel	ordinary complete control literals
+0x16d4540	order/target confirmation	Confirm | Cancel	ordinary complete control literals
+0x16d4ff3	target vector empty	No target	ordinary complete literal
+0x16d4ff3	target vector has one entry	{d} target	ui-messages.tsv numeric template
+0x16d4ff3	target vector has more than one entry	{d} targets	ui-messages.tsv numeric template; appended s belongs to the whole string
+0x16d6dee	member list navigation	Back to squads	ordinary complete control literal
+0x16d8f05	scheduled roster slot has unit id -1	Vacant position	ordinary complete literal
+0x16da2cd	first roster slot is vacant; later vacant slots cannot be assigned	Cannot appoint / until commander / is selected	three captured native records join to one translated paragraph
+0x16dba6b	first vacant slot can be assigned	Assign leader	ordinary complete literal
+0x16da824	later vacant slot can be assigned	Assign position {d}	numeric slot retained; whole template
+0x16d4540	occupied member: live unit	{unit identity}	existing formatter-owned unit identity including profession/sex; no name guessing
+0x16d4540	occupied member: absent/unavailable unit	{historical figure identity}	existing historical-figure language_name formatter
+0x16d4540	squad alias string is nonempty	{squad.alias}	copy and display authored bytes verbatim; including confirmation and routine editor
+0x16d4540	squad alias string is empty	{generated squad language_name}	existing generated language_name path and article abbreviation; never classify by spelling
+0x16dc614	creating a squad; military position title exists	You must appoint a / {position title} / to create a squad.	three captured records; title from 0x858b80; ui-messages.tsv full template
+0x16dc7d1	creating a squad; no suitable named title is available	You must appoint / somebody first / to create a squad.	three captured records; ui-messages.tsv full literal
+0x16daa00	creating a squad is allowed	Create new squad	ordinary complete control literal
+0x16dc2e0	no squad/member selection	Select a squad or squad / member to give orders, / change equipment, and / assign schedules.	four captured native records; whole translated paragraph
+0x16da92a	move destination selection	Move: click on the map.	ui-message full literal
+0x16db44e	routine caption	Routine:{routine name}	translate native built-in routine; preserve otherwise-authored name
+0x16db34f	squad has more than one special order	Multiple orders	ordinary complete literal
+0x16db902	squad has no special order	No special orders	ordinary complete literal
+0x16d4540	member/schedule has no order object	No orders	ordinary complete literal
+0x16d4540	member/schedule has an order object	{order description}	actual squad_order vtable+0x70; complete activity grammar before word matching
+0x16d928c	order title empty	(unnamed orders)	ordinary complete literal
+0x16d9b95	valid editable routine id	Editing routine {routine name}	translated label plus native built-in/custom routine name
+0x16d4540	editing an order/routine title	{editable title} + flashing _	native editable field/cursor preserved
+0x16d6c09	routine editor navigation	Done editing	ordinary complete control literal
+0x16d7646	routine editor minimum-participant control	Minimum number of / soldiers to follow / new order	three captured records; full literal in local-overrides.tsv
+0x16d4540	routine editor numeric minimum	{d}	retain exact native integer
+0x16d88b0	scheduled order with no explicit selected participant mask	At least {d}	typed prefix plus native count; count remains intact
+0x16d4540	scheduled order has an explicit participant mask	{selected unit identity}	existing unit formatter; no minimum-prefix text on this branch
+0x16dbb94	routine equipment policy enabled at all times	Equip/always	ordinary complete literal
+0x16d73cc	routine equipment policy applies during orders	Equip/orders only	ordinary complete literal
+0x16dc04a	routine sleep policy 0	Sleep/room at will	whole UI-message literal
+0x16dbffe	routine sleep policy 1	Sleep/barracks at will	whole UI-message literal
+0x16dc08b	routine sleep policy 2	Sleep/barracks at need	whole UI-message literal
+0x16dbbf0	equipment navigation	Equip	ordinary complete control literal
+0x16dbd5e	schedule navigation	Schedule	ordinary complete control literal
+0x14f13e0	month selector 0..11	Granite | Slate | Felsite | Hematite | Malachite | Galena | Limestone | Sandstone | Timber | Moonstone | Opal | Obsidian	existing month vocabulary; all 12 switch targets retained
+0x14f13e0	month selector outside 0..11	[no text]	native branch writes no month string
+0x858b80	position title selects gender/plural/alternate title and fallback	{RAW position title}	existing title vocabulary; all native pointer-return branches retained
+0x2032de0	station point not found	Station	Fortress activity: Station
+0x2032de0	station point found and named	Station at {point name}	activity_place slot preserves authored name
+0x2032de0	station point found and unnamed	Station at Point {d}	activity_place default Point plus exact native id
+0x20311b0	train order	Train	Fortress activity: Train
+0x2033960	kill-list stored title nonempty	{stored kill-order title}	existing complete activity/title path
+0x2033380	kill-list default: matching creature kind/caste	Kill {creature caption}	complete creature activity grammar
+0x2033380	kill-list default: heterogeneous/unknown targets	Kill various	Fortress activity: Kill various
+0x20318e0	kill-historical-figure stored title nonempty	{stored kill-order title}	existing complete activity/title path
+0x2031660	kill-historical-figure default	Kill {historical figure name}	person activity grammar
+0x2032a00	defend first valid burrow is named	Defend {burrow name}	activity_place preserves authored name
+0x2032a00	defend first valid burrow is unnamed	Defend Burrow {d}	activity_place default Burrow plus exact native id
+0x2032a00	defend additional valid burrows	Defend {burrow caption} etc.	complete suffix grammar; named and numbered burrows
+0x2032a00	defend no valid burrow	Defend	Fortress activity: Defend
+0x20324a0	patrol route is named	Patrol {route name}	activity_place preserves authored name
+0x20324a0	patrol route is unnamed	Patrol Route {d}	activity_place default Route plus exact native id
+0x20324a0	patrol route not found	Patrol	Fortress activity: Patrol
+0x20313e0	retrieve artifact	Retrieve {artifact caption}	artifact activity grammar including native artifact/item/name fallback
+0x2032790	matched site raid mission goal 0	Raze {site}	complete site activity grammar
+0x2032790	matched site raid mission goal 1	Take Over {site}	complete site activity grammar
+0x2032790	matched site raid mission goal 2	Seize {site}	complete site activity grammar
+0x2032790	matched site raid mission goal 3	Demand Tribute from {site}	complete site activity grammar
+0x2032790	matched site raid mission goal 4	Raid {site}	complete site activity grammar
+0x2032790	matched site raid mission goal 5	Explore {site}	complete site activity grammar
+0x2032790	matched site raid mission goal 6	Pillage {site}	complete site activity grammar
+0x2032790	no matched raid mission or goal outside 0..6	Raid {site}	native default branch; site activity grammar
+0x2031a10	rescue historical figure	Rescue {historical figure name}	person activity grammar
+0x2031ea0	drive members of entity away from site	Drive any members of {entity} out of {site}	complete entity/site activity grammar
+0x2031ca0	drive entity away from site	Drive {entity} from {site}	complete entity/site activity grammar
+0x2033150	cause trouble for entity	Cause trouble for {entity}	complete entity activity grammar

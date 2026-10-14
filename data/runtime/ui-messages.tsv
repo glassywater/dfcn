@@ -1172,6 +1172,8 @@ You can continue waiting, or save/quit from the settings menu.	你可以继续�
 # Unit captures in combat confirmations retain the native named target.
 Really disband?	确定解散吗？
 Cannot appoint until commander is selected	必须先选定指挥官，才能进行任命。
+{d} target	{d}个目标
+{d} targets	{d}个目标
 # Squad creation draws three fixed lines, with a live position title in the
 # middle (or "somebody first" if no title is available). Keep the whole prompt
 # together; {s} resolves the position through the existing terminology table.
