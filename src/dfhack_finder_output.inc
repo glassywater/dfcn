@@ -1,6 +1,6 @@
 // gui/adv-finder.lua builds these two Windows from explicit Label lines.
-// Only proved label slots enter translation. Names, edit fields, keys and
-// numeric target identifiers remain native, including captured named places.
+// Only proved label slots enter translation. Complete captured name/place
+// fields share the typed name readers; edit fields, keys and IDs stay native.
 {
     const auto finder_field = [&](int x, int y, std::string_view source,
             std::string_view target, int right) {
@@ -25,20 +25,31 @@
             int right, bool centered = false) {
         auxiliary_literal(x, y, source, right, centered, "DFHack output: ");
     };
-    const auto finder_named = [&](int x, int y, std::string_view source,
-            std::string_view pattern, int right) {
+    const auto finder_named = [&](int x, int y, std::string_view visible,
+            std::string_view source, std::string_view pattern, int right) {
         const auto found = dfhack_output_template_source_index_.find(std::string(pattern));
         if (found == dfhack_output_template_source_index_.end()) return;
         const auto &rule = dfhack_output_templates_[found->second];
         std::vector<std::string> captures;
         if (!match_dfhack_output_template(rule, source, captures)) return;
-        // A holder, site or region is a proper name. In this particular GUI
-        // it must bypass message/value recursion, even if named "You" or "On".
-        std::vector<std::optional<std::string>> raw;
-        raw.reserve(captures.size());
-        for (const auto &capture : captures) raw.emplace_back(native_text_to_utf8(capture));
-        finder_field(x, y, source,
-            fill_template(rule, captures, nullptr, nullptr, &raw), right);
+        // Holder and place fields have different name grammars. Neither
+        // may reenter the ordinary message/value reader (e.g. "You", "On").
+        std::vector<std::optional<std::string>> names;
+        names.reserve(captures.size());
+        for (const auto &capture : captures) {
+            std::optional<std::string> target;
+            if (pattern == "Held by {s}") target = translate_legends_name(capture, true);
+            else {
+                if (pattern == "Wilderness ({s})")
+                    target = translate_world_region_heading(capture);
+                // adv-finder explicitly calls translateName(name, true)
+                // for both site and surface-region location fields.
+                if (!target) target = translate_legends_place(capture, true);
+            }
+            names.emplace_back(target ? *target : native_text_to_utf8(capture));
+        }
+        finder_field(x, y, visible,
+            fill_template(rule, captures, nullptr, nullptr, &names), right);
     };
     const auto finder_text = [&](int y, int left, int right) {
         return trim_view(std::string_view(dfhack_context_rows[y]).substr(left, right - left));
@@ -49,18 +60,19 @@
         // never parse a partial item or race hidden behind its native edge.
         return right > left && dfhack_context_rows[y][right - 1] == ' ';
     };
-    const auto finder_location = [&](int y, int left, int right) {
-        const auto text = finder_text(y, left, right);
-        if (!finder_complete(y, left, right)) return;
+    const auto finder_location = [&](int y, int left, int right,
+            std::string_view source) {
+        const auto visible = finder_text(y, left, right);
         for (const std::string_view fixed : {"Transcendent", "Missing", "Nearby",
                 "Traveling", "Underground", "Error"})
-            if (text == fixed) {
-                finder_literal(left, y, text, right);
+            if (source == fixed) {
+                finder_literal(left, y, visible, right);
                 return;
             }
-        if (text.starts_with("At ")) finder_named(left, y, text, "At {s}", right);
-        else if (text.starts_with("Wilderness (") && text.ends_with(')'))
-            finder_named(left, y, text, "Wilderness ({s})", right);
+        if (source.starts_with("At "))
+            finder_named(left, y, visible, source, "At {s}", right);
+        else if (source.starts_with("Wilderness (") && source.ends_with(')'))
+            finder_named(left, y, visible, source, "Wilderness ({s})", right);
     };
     const auto finder_coordinates = [&](int y, int left, int right) {
         const auto text = finder_text(y, left, right);
@@ -208,7 +220,7 @@
         }
         // hf_text/art_text reserve name/optional translated-name rows 0-2,
         // status/holder row 3, location row 4, then two coordinate rows.
-        // Name rows never enter either the grammar or the output catalog.
+        // Keep each field's allocation and name type separate from messages.
         if (target_y + 3 >= target_bottom) continue;
         const auto status = finder_text(target_y + 3, left, right);
         const bool figure = status == "DEAD" || status == "ETERNAL" || status == "ALIVE";
@@ -216,18 +228,58 @@
         if (!figure && !artifact) continue;
         const auto name = finder_text(target_y, left, right);
         if (name.empty()) continue;
+        // Painter:string's existing Label capture retains text before the
+        // native right clip, including closing quotes/parentheses outside
+        // this narrow window. Resolve only this target_label's current draw.
+        const auto target_fields = native_dfhack_overlay_texts(gps_);
+        const auto complete_target = [&](int y) -> std::optional<std::string> {
+            const auto visible = finder_text(y, left, right);
+            for (const auto &field : target_fields) {
+                if (field.view_id != "target_label" ||
+                        field.role != NativeDfhackOverlayTextRole::Text ||
+                        field.x != left || field.y != y || field.full_x != left ||
+                        field.visible_offset != 0 ||
+                        field.visible.size() > static_cast<size_t>(right - left) ||
+                        trim_view(field.visible) != visible ||
+                        !field.full.starts_with(field.visible)) continue;
+                return std::string(trim_view(field.full));
+            }
+            return finder_complete(y, left, right)
+                ? std::optional<std::string>(visible) : std::nullopt;
+        };
+        if (const auto full = complete_target(target_y)) {
+            auto target = *full == "Unnamed"
+                ? exact_literal_translation("DFHack output: Unnamed")
+                : translate_legends_name(*full, figure, false);
+            if (target) finder_field(left, target_y, name, *target, right);
+        }
         const auto second = finder_text(target_y + 1, left, right);
-        const int caption_y = second.starts_with('"') ? target_y + 2 : target_y + 1;
+        const bool gloss_row = second.starts_with('"');
+        if (gloss_row) {
+            if (const auto full = complete_target(target_y + 1);
+                    full && full->size() > 2 && full->starts_with('"') && full->ends_with('"')) {
+                const auto gloss = std::string_view(*full).substr(1, full->size() - 2);
+                const auto target = figure ? translate_english_character_name(gloss)
+                    : translate_legends_name(gloss, false, false);
+                if (target) finder_field(left, target_y + 1, second, "“" + *target + "”", right);
+            }
+        }
+        const int caption_y = gloss_row ? target_y + 2 : target_y + 1;
         const auto caption = finder_text(caption_y, left, right);
-        if (!caption.empty() && finder_complete(caption_y, left, right)) {
-            if (figure && caption == "Force") finder_literal(left, caption_y, caption, right);
-            else if (const auto target = translate_dfhack_caption(figure ? "creature" : "item", caption))
-                finder_field(left, caption_y, caption, *target, right);
+        if (!caption.empty()) {
+            if (const auto full = complete_target(caption_y)) {
+                if (figure && *full == "Force") finder_literal(left, caption_y, caption, right);
+                else if (const auto target = translate_dfhack_caption(figure ? "creature" : "item", *full))
+                    finder_field(left, caption_y, caption, *target, right);
+            }
         }
         if (figure) finder_literal(left, target_y + 3, status, right);
-        else if (finder_complete(target_y + 3, left, right) && status.starts_with("Held by "))
-            finder_named(left, target_y + 3, status, "Held by {s}", right);
-        if (target_y + 4 < target_bottom) finder_location(target_y + 4, left, right);
+        else if (const auto full = complete_target(target_y + 3);
+                full && full->starts_with("Held by "))
+            finder_named(left, target_y + 3, status, *full, "Held by {s}", right);
+        if (target_y + 4 < target_bottom)
+            if (const auto full = complete_target(target_y + 4))
+                finder_location(target_y + 4, left, right, *full);
         for (int y = target_y + 5; y <= target_y + 6 && y < target_bottom; ++y)
             finder_coordinates(y, left, right);
     }
