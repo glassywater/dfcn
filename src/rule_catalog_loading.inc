@@ -923,6 +923,7 @@ void Overlay::build_trie(std::function<void()>* catalog_publication) {
             rules_[rule_index].source.starts_with("Uniform name: ") ||
             rules_[rule_index].source.starts_with("Workshop recipe: ") ||
             rules_[rule_index].source.starts_with("Adventure compass: ") ||
+            rules_[rule_index].source.starts_with("Adventure companion: ") ||
             rules_[rule_index].source.starts_with("Adventure movement: ") ||
             rules_[rule_index].source.starts_with("Adventure action: ") ||
             rules_[rule_index].source.starts_with("Adventure crafting ") ||

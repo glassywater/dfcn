@@ -1113,7 +1113,10 @@ static bool resolve_native_caption_profile(NativeCaptionProfile &profile) {
     // Inventory mode, other selection modes and their location line use the
     // same default-fill clone. Capture each complete string before dots are
     // written; the ensuing draw binds the original item/body-part grammar.
-    for (const uintptr_t call : {native_reference_va(0x119ab1d),
+    // Companions copies either a historical-figure name or a full unit label
+    // into its own string, then uses this same 33-cell default-fill clone.
+    for (const uintptr_t call : {native_reference_va(0x11be13e),
+            native_reference_va(0x119ab1d),
             native_reference_va(0x119ac55), native_reference_va(0x119ac05)}) {
         if (!image.contains(call, 5) ||
                 image.relative(call, 1, 5) != native_reference_va(0x11612a0)) return false;

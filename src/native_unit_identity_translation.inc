@@ -1,3 +1,31 @@
+// A stored animation label is a corpse/body-component production, including
+// a literal owner whose name need not occur in the generated-name vocabulary.
+std::optional<std::string> Overlay::translate_native_animation_label(
+        std::string_view source) const {
+    TranslationStateScope translation_scope;
+    if (auto target = translate_corpsepiece_item_name(source)) return target;
+    // Native corpse producers append a possessive after the selected name.
+    // An authored nickname can contain an earlier possessive of its own.
+    // Prove the entire body suffix before accepting any owner boundary.
+    for (size_t at = source.rfind("'s "); at != std::string_view::npos;
+         at = at == 0 ? std::string_view::npos : source.rfind("'s ", at - 1)) {
+        const auto owner = trim_view(source.substr(0, at));
+        const auto body = trim_view(source.substr(at + 3));
+        if (owner.empty() || body.empty()) continue;
+        std::vector<size_t> origins;
+        const auto noun = RULESETS.translate_with_origins(native_text_to_utf8(body),
+            "::items::corpsepiece::animated_body", origins);
+        if (!noun) continue;
+        auto name = native_unit_identity_source_target(owner);
+        if (!name) name = translate_legends_actor(owner);
+        // This is the native producer's owner field, not an inferred person
+        // in ordinary prose. Preserve an authored spelling while translating
+        // the independently resolved body, including all damage modifiers.
+        return (name ? *name : native_text_to_utf8(owner)) + "的" + *noun;
+    }
+    return std::nullopt;
+}
+
 // Render one semantic identity for drawing and searching. Classification is
 // already settled by native fields and formatter arguments, not its spelling.
 std::optional<std::string> Overlay::translate_native_justice_organization_initials(
@@ -236,9 +264,14 @@ std::optional<std::string> Overlay::translate_native_unit_identity(
                     break;
                 }
                 case NativeUnitReferencePartKind::Authored:
-                    // Animated names and modes 4/5's direct first-name field are
-                    // explicit literal strings, with no generated-name inference.
-                    value = native_text_to_utf8(part.source);
+                    // Animation labels can be generated corpse/body-part names.
+                    // Only the captured animation field uses that grammar;
+                    // modes 4/5's direct first-name field remains authored text.
+                    if (!unit.animated_name.empty() &&
+                            lower(trim(part.source)) == lower(trim(unit.animated_name))) {
+                        const auto target = translate_native_animation_label(part.source);
+                        value = target ? *target : native_text_to_utf8(part.source);
+                    } else value = native_text_to_utf8(part.source);
                     break;
                 case NativeUnitReferencePartKind::GivenName:
                     // The known companion branch deliberately renders only the
@@ -319,8 +352,15 @@ std::optional<std::string> Overlay::translate_native_unit_identity(
             return result.empty() ? std::nullopt : std::optional<std::string>(std::move(result));
         }
         const auto role = [&]() -> std::string {
-            // An animated unit's explicit name replaces the entire role in DF.
-            if (!unit.animated_name.empty()) return native_text_to_utf8(unit.animated_name);
+            // ELF b71be3/b725d0 copies animation+0x20 as the whole role.
+            // This field includes the corpse producer's possessive owner,
+            // rotten/mangled/mutilated/partial, skeleton, remains and RAW
+            // body-part/material branches. Reuse their complete grammar.
+            if (!unit.animated_name.empty()) {
+                if (auto target = translate_native_animation_label(unit.animated_name))
+                    return *target;
+                return native_text_to_utf8(unit.animated_name);
+            }
             if (unit.native_role_authored) return native_text_to_utf8(unit.native_role);
             if (!unit.use_custom || unit.custom_profession.empty()) {
                 // This is the game's actual RAW/occupation formatter result. Its

@@ -3253,6 +3253,27 @@ Companions	同伴	wl
 # Native Windows source: 0x16b2670. The build expands this finite format with
 # the compass entries above and consumes the template before runtime matching.
 Visible: {s}	可见：{s}	wtlx
+# Complete ELF Companions productions: 11bd3f0..11c2367. These keys are
+# lookup-only fields at the renderer's exact native draws, including all
+# historical-figure/local-unit, travel, incapacitation and bearing branches.
+Adventure companion: Companions	同伴	wl
+Adventure companion: Done	完成	wl
+Adventure companion: You	你	wl
+Adventure companion: Dead	已死亡	wl
+Adventure companion: Distant	远处	wl
+Adventure companion: Nearby	附近	wl
+Adventure companion: Not visible	不可见	wl
+Adventure companion: In party nearby	队伍中，位于附近	wl
+Adventure companion: In party:	队伍中：	wl
+Adventure companion: Visible:	可见：	wl
+Adventure companion: Unconscious	失去意识	wl
+Adventure companion: Paralyzed	麻痹	wl
+Adventure companion: Webbed	被蛛网缠住	wl
+Adventure companion: Wrestle	摔跤	wl
+Adventure companion: Ground	倒地	wl
+Adventure companion: Traveling through	途经：	wl
+Adventure companion: In	位于：	wl
+Adventure companion: ***	不明	wl
 Tropical Saltwater Swamp	热带咸水沼泽
 Tropical Freshwater Swamp	热带淡水沼泽
 Tropical Moist Brdlf Forst	热带湿润阔叶林

@@ -54505,6 +54505,7 @@ Adventure action: Raise wasting spirit	复生衰朽灵体	l
 Adventure action: Raise wasting wraith	复生衰朽怨灵	l
 Adventure action: Raise wasting zombie	复生衰朽僵尸	l
 Adventure action: Write something down	写下内容	l
+Adventure companion: Traveling through	途经：	wl
 Adventure item action: Climb {s} ({p})	攀爬{s}（{p}）	h
 Adventure item action: Dismount to {s}	下坐骑到{s}	h
 Adventure item action: Drink {s} ({p})	饮用{s}（{p}）	h
@@ -58714,6 +58715,7 @@ Adventure action: Raise tomb butcher	复生陵墓屠夫	l
 Adventure action: Raise tomb stalker	复生陵墓潜行者	l
 Adventure action: Raise void butcher	复生虚空屠夫	l
 Adventure action: Raise void stalker	复生虚空潜行者	l
+Adventure companion: In party nearby	队伍中，位于附近	wl
 Adventure environment modifier: salt	含盐的	h
 Adventure item action: Bash down {s}	撞倒{s}	h
 Adventure item action: Cease nocking	停止搭箭	h
@@ -67568,6 +67570,8 @@ Adventure action: Raise pale one	复生苍白之人	l
 Adventure action: Raise tomb one	复生陵墓之人	l
 Adventure action: Raise void one	复生虚空之人	l
 Adventure action: Root around in	翻找	l
+Adventure companion: Not visible	不可见	wl
+Adventure companion: Unconscious	失去意识	wl
 Adventure item action: Climb {s}	攀爬{s}	h
 Adventure item action: Drink {s}	饮用{s}	h
 Adventure item action: Guide {s}	引导{s}	h
@@ -69773,6 +69777,7 @@ Adventure action: Give a sermon	布道	l
 Adventure action: Hurl fireball	投掷火球	l
 Adventure action: Perform music	演奏音乐	l
 Adventure action: Recite a poem	朗诵诗歌	l
+Adventure companion: Companions	同伴	wl
 Adventure item action: Drop {s}	丢下{s}	h
 Adventure item action: Fell {s}	砍倒{s}	h
 Adventure item action: Heat {s}	加热{s}	h
@@ -72182,6 +72187,8 @@ Acknowledge lack of uneasiness	表示没有不安	hP
 Adventure action: Breathe fire	喷火	l
 Adventure action: Create ghoul	制造食尸鬼	l
 Adventure action: Tell a story	讲故事	l
+Adventure companion: In party:	队伍中：	wl
+Adventure companion: Paralyzed	麻痹	wl
 Adventure item action: A ({p})	小生物（{p}）	h
 Adventure item action: Eat {s}	食用{s}	h
 Adventure item action: Get {s}	拿取{s}	h
@@ -74651,6 +74658,7 @@ Adventure action target: tree	树	h
 Adventure action: Propel away	击退	l
 Adventure action: Spray juice	喷射汁液	l
 Adventure action: Spray vapor	喷射蒸气	l
+Adventure companion: Visible:	可见：	wl
 Adventure item action: Ignite	点火	h
 Adventure movement: Excellent	极好	l
 Adventure movement: Fantastic	极好	l
@@ -76956,6 +76964,8 @@ Adventure action: Cause pain	引发疼痛	l
 Adventure action: Pet animal	抚摸动物	l
 Adventure action: Spray dust	喷射粉尘	l
 Adventure action: Squirt ink	喷墨	l
+Adventure companion: Distant	远处	wl
+Adventure companion: Wrestle	摔跤	wl
 Adventure item action: Climb	攀爬	h
 Adventure movement: Darkness	黑暗	l
 Adventure movement: Scramble	快速挪动	l
@@ -79295,6 +79305,9 @@ Adventure action: Spray gas	喷射气体	l
 Adventure action: Spray web	喷射蛛网	l
 Adventure action: Suffocate	窒息	l
 Adventure action: Transform	变形	l
+Adventure companion: Ground	倒地	wl
+Adventure companion: Nearby	附近	wl
+Adventure companion: Webbed	被蛛网缠住	wl
 Adventure item action: Read	阅读	h
 Adventure item action: Roll	掷骰	h
 Adventure movement: Average	一般	l
@@ -83772,6 +83785,8 @@ Add or choose a location.	添加或选择一个地点。	wli
 Adventure action: Blister	引发水疱	l
 Adventure action: Butcher	屠宰	l
 Adventure action: Scratch	刨地	l
+Adventure companion: Dead	已死亡	wl
+Adventure companion: Done	完成	wl
 Adventure movement: Awful	很差	l
 Adventure movement: Clear	视野清晰	l
 Adventure movement: Climb	攀爬	l
@@ -85711,6 +85726,8 @@ Acknowledge lack of zeal	表示没有热忱	hP
 Adventure action: Sicken	致病	l
 Adventure action: Unroll	舒展开来	l
 Adventure action: Vanish	隐身	l
+Adventure companion: ***	不明	wl
+Adventure companion: You	你	wl
 Adventure movement: Fair	尚可	l
 Adventure movement: Good	良好	l
 Adventure movement: Move	移动	l
@@ -87818,6 +87835,7 @@ Adventure action: Blind	致盲	l
 Adventure action: Clean	清洁	l
 Adventure action: Curse	诅咒	l
 Adventure action: Dance	跳舞	l
+Adventure companion: In	位于：	wl
 Adventure movement: Fly	飞行	l
 Adventure movement: Jog	慢跑	l
 Adventure movement: Run	奔跑	l

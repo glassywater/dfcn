@@ -948,6 +948,7 @@ static constexpr int kFortressNobleSymbolNameRule = -164;
 static constexpr int kFortressNobleSymbolValueRule = -165;
 static constexpr int kFortressNobleSymbolPositionRule = -166;
 static constexpr int kFortressPressurePlateRule = -167;
+static constexpr int kAdventureCompanionFieldRule = -168;
 
 static bool is_fortress_noble_symbol_field(const Match &match) {
     return match.rule == kFortressNobleSymbolNameRule ||
@@ -3588,6 +3589,8 @@ public:
                                         std::string_view query, bool activity) const;
     std::optional<std::string> translate_native_unit_identity(
         const NativeUnitIdentity &identity) const;
+    std::optional<std::string> translate_native_animation_label(
+        std::string_view source) const;
     std::optional<std::string> translate_native_justice_organization_initials(
         const NativeUnitIdentity &identity,
         const std::array<int32_t, 7> &native_indices) const;
@@ -17935,6 +17938,9 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
         append_fortress_pressure_plate(screen_rows, result, only_y);
     if (!announcement_panel_only)
         append_adventure_combat_fields(screen_rows, result, only_y, screen_override);
+    if (!announcement_panel_only) {
+#include "adventure_companion_rows.inc"
+    }
     if (!announcement_panel_only) {
 #include "animal_picker_rows.inc"
     }
