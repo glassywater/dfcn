@@ -14631,6 +14631,7 @@ Announcement combat negotiation-opening []: calm any misgivings about the propos
 Announcement combat negotiation-response []: negotiated calmly and had the mastery	冷静地谈判，并占据了上风	l
 Announcement combat quest-sentence [quest-destination]: Last I saw, it was in {s}.	我最后见到它时，它在{s1}。	l
 Announcement combat quest-sentence [quest-holder]: Last I saw, it was held by {s}.	我最后见到它时，它由{s1}保管。	l
+Announcement combat read-announcement [ability]: You have learned the power "{s}"!	你学会了能力“{s1}”！	l
 Announcement combat rumor-event []: A marauding warband is threatening our people.	一支四处劫掠的战帮正威胁着我们的人民。	l
 Announcement combat rumor-event []: The forces of darkness have descended upon us.	黑暗势力已经杀到我们这里了。	l
 Announcement combat rumor-event [rumor-identity]: Seek this place if you hunt {s}.	想猎杀{s1}，就去找这个地方。	l
@@ -21744,6 +21745,7 @@ Announcement combat negotiation-opening []: negotiate deceptively	用欺骗手�
 Announcement combat negotiation-response []: spun a web of deceit	编织了一张谎言之网	l
 Announcement combat quest-sentence []: Last I heard, you held it.	我最后听说，它由你保管。	l
 Announcement combat quest-sentence []: Last I remember, I had it.	我记得最后是由我保管的。	l
+Announcement combat read-announcement [$read-item]: You read {s}.	你阅读了{s1}。	l
 Announcement combat reference-kind [reference-building-type]: {s}	{s1}	l
 Announcement combat rumor-event []: Seek this place if you hunt .	想猎杀这只身份不明的生物，就去找这个地方。	l
 Announcement combat sentence [$name,$name]: {s} has occupied {s}.	{s1}占领了{s2}。	l
@@ -23435,6 +23437,8 @@ Announcement combat memory-sentence [memory-performance]: {s}.	{s1}。	l
 Announcement combat memory-sentence [memory-work]: I read {s}.	读了{s1}。	l
 Announcement combat negotiation-opening []: argue persuasively	据理说服对方	l
 Announcement combat quest-sentence []: Last I heard, I had it.	我最后听说，它由我保管。	l
+Announcement combat read-announcement [$read-description]: {s}	{s1}	l
+Announcement combat read-announcement []: The pages are blank.	书页是空白的。	l
 Announcement combat reference-building-type []: counting house	账房	l
 Announcement combat rumor-identity-descriptor [$creature]: {s}	{s1}	l
 Announcement combat sentence [$announcement,$digits]: {s} x{s}	{s1} ×{s2}	l
@@ -24779,6 +24783,7 @@ Announcement combat merchant-advert-origin [$name]: fair {s}	美丽的{s1}	l
 Announcement combat merchant-origin []: the surrounding area	周边地区	l
 Announcement combat negotiation-opening []: negotiate calmly	冷静地谈判	l
 Announcement combat negotiation-purpose []: seek an alliance	寻求结盟	l
+Announcement combat read-announcement []: It has no writing.	上面没有文字。	l
 Announcement combat rumor-event []: This insidious evil is .	这个阴险的恶徒身份不明。	l
 Announcement combat rumor-person [$term,$person]: my {s} {s}	我的{s1}{s2}	l
 Announcement combat rumor-position [$term,$name]: {s} of {s}	{s2}的{s1}	l
@@ -25535,6 +25540,7 @@ Announcement combat memory-person [memory-relation]: my {s}	我的{s1}	l
 Announcement combat memory-work []: an untitled composition	一部没起名的作品	l
 Announcement combat merchant-genuine-item [$item]: real {s}	货真价实的{s1}	l
 Announcement combat negotiation-sentence []: The proposal .	这项提案……。	l
+Announcement combat read-announcement [$inscription]: "{s}"	“{s1}”	l
 Announcement combat reference-kind [$creature]: ghostly {s}	幽灵形态的{s1}	l
 Announcement combat rumor-event [$book]: I do not have {s}.	{s1}不在我手里。	l
 Announcement combat sentence [$item]: Good {s} right there.	就那里的优质的{s1}。	l
@@ -26409,6 +26415,8 @@ Announcement combat memory-setting []: a fantastic setting	好极了	l
 Announcement combat memory-setting []: a very good setting	相当好	l
 Announcement combat memory-setting []: a very poor setting	很差	l
 Announcement combat quest-object [$announcement-item]: {s}	{s1}	l
+Announcement combat read-announcement []: It has no pages.	它没有书页。	l
+Announcement combat read-announcement []: You cannot read.	你无法阅读。	l
 Announcement combat sentence [$item]: Excellent {s} there.	那里的上等的{s1}。	l
 Announcement combat sentence [$item]: Fantastic {s} there.	那里的绝妙的{s1}。	l
 Announcement combat sentence [$name,$name]: {s} is in {s}.	{s1}位于{s2}。	l
@@ -27295,6 +27303,7 @@ Announcement combat memory-sentence [$event]: It was {s}.	那是{s1}。	l
 Announcement combat memory-setting []: a horrible setting	差极了	l
 Announcement combat merchant-origin []: just outside town	镇外不远处	l
 Announcement combat quest-holder [$historical-actor]: {s}	{s1}	l
+Announcement combat read-announcement []: You cannot see.	你看不见。	l
 Announcement combat reference-building-type []: catacombs	地下墓穴	l
 Announcement combat reference-building-type []: guildhall	行会大厅	l
 Announcement combat reference-building-type []: mead hall	蜂蜜酒厅	l
@@ -32577,6 +32586,7 @@ Announcement combat memory-relation []: acquaintance	熟人	l
 Announcement combat memory-value []: martial prowess	武艺	l
 Announcement combat merchant-address []: my good man	好先生	l
 Announcement combat merchant-people [$creature]: {s}	{s1}	l
+Announcement combat read-announcement []: You read .	你进行了阅读。	l
 Announcement combat reference-building-type []: keep	城堡主楼	l
 Announcement combat reference-building-type []: tomb	陵墓	l
 Announcement combat reference-kind []: dark fortress	黑暗要塞	l

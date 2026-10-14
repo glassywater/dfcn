@@ -20,6 +20,7 @@ std::vector<Match> Overlay::find_native_notification_matches() const {
     // original address proofs, palettes, repeat counts and visible viewport.
 #include "adventure_divine_popup.inc"
 #include "adventure_announcements.inc"
+#include "adventure_reading_rows.inc"
 
     // The alert renderers emit these fixed instructions as ordinary addst
     // captions. Translate their complete catalog paragraph directly: the

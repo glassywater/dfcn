@@ -69,7 +69,7 @@ std::optional<std::string> Overlay::translate_complete_announcement(
         // those before the general catalogue can consume the opening while
         // leaving the subsequent native report outside its field grammar.
         for (const std::string_view scope : {
-                "adventure-announcement", "fortress-attack", "fortress-arrival", "fortress-announcement", "fortress-embark", "historical-event-paragraph"}) {
+                "read-announcement", "adventure-announcement", "fortress-attack", "fortress-arrival", "fortress-announcement", "fortress-embark", "historical-event-paragraph"}) {
             // The attack producer joins commander, warning and reinforcement
             // paragraphs with native [B] controls. Match their visible whole
             // record, using the same control normalization as report capture.
@@ -279,7 +279,7 @@ std::optional<std::string> Overlay::translate_complete_announcement(
         auto best = translate_help_paragraph_result(source, source_colors, target_colors, true);
         work_limited = best.status == dfcn::TranslationStatus::WorkLimited;
         for (const std::string_view scope : {
-                "fortress-arrival", "fortress-announcement", "historical-event-paragraph", "sentence"}) {
+                "read-announcement", "fortress-arrival", "fortress-announcement", "historical-event-paragraph", "sentence"}) {
             if (work_limited) break;
             const auto candidate = translate_announcement_combat_result(source, scope);
             if (!candidate.usable()) continue;

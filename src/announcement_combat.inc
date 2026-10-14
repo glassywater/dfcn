@@ -425,6 +425,33 @@ std::optional<std::string> Overlay::translate_announcement_combat(
             return finish(translation_complete_with_native_nicknames(result, input)
                 ? std::move(result) : std::nullopt);
         }
+        if (scope == "$read-item") {
+            // READ_ITEM owns this whole e68020/c65450 field. Native title
+            // productions precede ordinary item parsing here, including
+            // punctuation, copy annotations and designation/count wrappers.
+            auto result = translate_written_item_caption(input, false, true);
+            if (translation_complete_with_native_nicknames(result, input))
+                return finish(std::move(result));
+            result = translate_item_caption_grammar(input);
+            if (translation_complete_with_native_nicknames(result, input))
+                return finish(std::move(result));
+            // Read also admits slabs and written tools. Keep every complete
+            // physical caption on the shared item path before allowing the
+            // BOOK_ART/BOOK_INSTRUCTION bare [NAME] title alternative.
+            result = translate_announcement_combat(input, "$announcement-item");
+            if (translation_complete_with_native_nicknames(result, input))
+                return finish(std::move(result));
+            result = translate_written_item_caption(input, true, true);
+            return finish(translation_complete_with_native_nicknames(result, input)
+                ? std::move(result) : std::nullopt);
+        }
+        if (scope == "$read-description") {
+            // cc7020/cc6a10 submit their entire carrier and work body.
+            // A displayed wrap row is never a separate work description.
+            const auto normalized = normalize_utterance(input);
+            if (!is_written_work_description(normalized)) return finish(std::nullopt);
+            return finish(translate_written_work_paragraph(input));
+        }
         if (scope == "$item" || scope == "$announcement-item") {
             // A complete equipment/material production has its own proven
             // item kind. Keep it ahead of broad title conjunctions such as

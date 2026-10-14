@@ -1,5 +1,18 @@
 # Complete Linux native adventure records, before generic personal-name templates.
 # scope / source / target / typed fields / native construction
+# The complete reading productions share one semantic entry for native
+# report parents and unabridged captured captions. Original PE instructions,
+# branches, predicates and all submit sites are in adventure-reading-popup/.
+read-announcement	You read {s}.	你阅读了{s1}。	$read-item	PE reference 833df0:8341fc / classic 831670:831a7c; c65450/c62490 whole item caption; ELF 11b5e00:11b623a->e68020
+read-announcement	You read .	你进行了阅读。		PE reference c654b9..c654e2->a94030: named artifact with empty contributed name retains an empty caption; 83409c..8341fc still appends the period and submits the whole record; paired classic caption/action
+read-announcement	You cannot see.	你看不见。		PE reference 833df0:833f89 / classic 831670:831809; ELF 11b5e00; native action sight precondition
+read-announcement	You cannot read.	你无法阅读。		PE reference 833df0:834396 / classic 831670:831c16; ELF 11b5e00; native reading skill precondition
+read-announcement	"{s}"	“{s1}”	$inscription	PE reference b3df0:b3f54/b404d/b42c8 / classic b3d80:b3ee4/b3fdd/b4258; all three SLAB engraving branches copy item_slabst writing, not its title
+read-announcement	It has no writing.	上面没有文字。		PE reference b3df0:b43bb / classic b3d80:b434b; absent slab description
+read-announcement	The pages are blank.	书页是空白的。		PE reference b3df0:b4601 / classic b3d80:b4591; present written-pages improvement with empty content list
+read-announcement	It has no pages.	它没有书页。		PE reference b3df0:b4740 / classic b3d80:b46d0; BOOK has no written-pages improvement
+read-announcement	{s}	{s1}	$read-description	PE reference b3df0:b44ec/b4879 / classic b3d80:b447c/b4809; cc7020/cc6a10 complete carrier plus cc5d50 body; ELF 1782560->e71100/e70c20
+read-announcement	You have learned the power "{s}"!	你学会了能力“{s1}”！	ability	PE reference 1352f20:13537b4 / classic 134de90:134e724; CE_CAN_DO_INTERACTION ADV_NAME; ELF 1782560->bbdef0
 adventure-announcement	You put the {s} into the {s}.	你将{s1}放进{s2}。	$announcement-item,$announcement-item	ELF 11a7600/11e2320 ->e68020, destination virtual item writer, 17ea070
 adventure-announcement	You put the {s} on the {s}.	你将{s1}放在{s2}上。	$announcement-item,$announcement-item	ELF 11e25aa..11e27f3; destination +0x188 virtual item writer
 adventure-announcement	You put the {s} on display.	你将{s1}摆出来展示。	$announcement-item	ELF 11e2acb..11e2af4/11e2cb7..11e2cc3 ->11e2bf5 ->11e2a4d ->17ea070

@@ -7778,6 +7778,12 @@ static bool written_work_content_sentence_start(std::string_view value) {
 }
 
 static bool is_written_work_description(std::string_view source) {
+    // READ_ITEM submits the same complete work body after these page/writing
+    // carriers (PE cc7020/cc6a10, ELF e71100/e70c20). The strict paragraph
+    // translator below still requires every carrier and following sentence.
+    if (source.starts_with("The written portion consists of ") ||
+            source.starts_with("Written on the item is ") ||
+            source == "There used to be writing on the item.") return true;
     // Performance choices introduce a work with its form, then append the
     // same subject/quality/chapter grammar used by written-item descriptions.
     // Those introductions have no author field.
@@ -11665,6 +11671,9 @@ static bool fortress_squad_reference_template(std::string_view source) {
 
 std::optional<std::string> Overlay::translate_ui_catalog_capture(
         const Rule &rule, size_t index, std::string_view source) const {
+    if (rule.ui_message && rule.source == "You read {s}." && index == 0 &&
+            rule.template_kinds.size() == 1 && rule.template_kinds.front() == 's')
+        return translate_announcement_combat(source, "$read-item");
     if (rule.ui_message && adventure_barter_return_template(rule) &&
             index < rule.template_kinds.size() && rule.template_kinds[index] == 's') {
         // A returned treasure can append several acknowledgements after the
@@ -17691,6 +17700,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     append_adventure_personality_matches(screen_rows, result, only_y, screen_override);
 #include "adventure_divine_popup.inc"
 #include "adventure_announcements.inc"
+#include "adventure_reading_rows.inc"
 #include "world_mission_body.inc"
     append_world_spoils_items(screen_rows, result, untranslated_help_rows,
         only_y, screen_override);
