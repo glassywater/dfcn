@@ -1,0 +1,21 @@
+edition	image_identity	source	literal_rva	instruction_rva	owner_rva
+steam	PE:6a70a6d9:02711000	What do you want to do?	0x16b4540	0x8a9c71	0x8a8300
+steam	PE:6a70a6d9:02711000	Unknown interaction	0x16b4998	0x8aa2b8	0x8a8300
+steam	PE:6a70a6d9:02711000	Unknown interaction	0x16b4998	0x8aa40c	0x8a8300
+steam	PE:6a70a6d9:02711000	Unknown interaction	0x16b4998	0x8aa46c	0x8a8300
+steam	PE:6a70a6d9:02711000	Unknown interaction	0x16b4998	0x8aa682	0x8a8300
+steam	PE:6a70a6d9:02711000	Unknown interaction	0x16b4998	0x8aa6ee	0x8a8300
+steam	PE:6a70a6d9:02711000	Click a target or move the cursor and press 	0x16b4710	0x8a97aa	0x8a8300
+steam	PE:6a70a6d9:02711000	this location	0x16b4918	0x8a87d7	0x8a8300
+steam	PE:6a70a6d9:02711000	this location	0x16b4918	0x8a913c	0x8a8300
+steam	PE:6a70a6d9:02711000	this location	0x16b4918	0x8a91a1	0x8a8300
+classic	PE:6a70b91c:0270a000	What do you want to do?	0x16af510	0x8a74f1	0x8a5b80
+classic	PE:6a70b91c:0270a000	Unknown interaction	0x16af910	0x8a7b38	0x8a5b80
+classic	PE:6a70b91c:0270a000	Unknown interaction	0x16af910	0x8a7c8c	0x8a5b80
+classic	PE:6a70b91c:0270a000	Unknown interaction	0x16af910	0x8a7cec	0x8a5b80
+classic	PE:6a70b91c:0270a000	Unknown interaction	0x16af910	0x8a7f02	0x8a5b80
+classic	PE:6a70b91c:0270a000	Unknown interaction	0x16af910	0x8a7f6e	0x8a5b80
+classic	PE:6a70b91c:0270a000	Click a target or move the cursor and press 	0x16af820	0x8a702a	0x8a5b80
+classic	PE:6a70b91c:0270a000	this location	0x16afa70	0x8a6057	0x8a5b80
+classic	PE:6a70b91c:0270a000	this location	0x16afa70	0x8a69bc	0x8a5b80
+classic	PE:6a70b91c:0270a000	this location	0x16afa70	0x8a6a21	0x8a5b80

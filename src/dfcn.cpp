@@ -18403,7 +18403,9 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
             for (std::string_view action_title : {"What do you want to do?",
                     "What would you like to do?", "Where would you like to move?",
                     "Who or what would you like to shoot?",
-                    "At whom or what would you like to throw?"})
+                    "At whom or what would you like to throw?",
+                    "Select corpses.", "Select creature.", "Select recipient.",
+                    "Select target.", "Select victim."})
                 if (const size_t x = context[y].find(action_title); x != std::string::npos)
                     add_choice_panel(y, static_cast<int>(x), static_cast<int>(action_title.size()),
                         ChoiceKind::Action);
@@ -18468,27 +18470,26 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                     return std::max(panel->x, occluding_frame->x);
                 return edge;
             };
-            if (conversation) {
-                // The renderer paints each choice's button skin before its
-                // retained caption vector (0x86d480..0x86d717 in the reference
-                // PE). Graphical-copy bookkeeping can therefore hide only
-                // parts of that caption from visible_char_at(). Read the
-                // current logical layer inside this proven chooser frame;
-                // the complete native caption/keyword record below still
-                // decides ownership, including clipping and other popups.
-                for (int row_y = panel->y; row_y < panel->y + panel->h; ++row_y) {
-                    for (int x = panel->x; x < caption_right(row_y); ++x) {
-                        if (occluding_frame && row_y >= occluding_frame->y &&
-                                row_y < occluding_frame->y + occluding_frame->h &&
-                                x >= occluding_frame->x &&
-                                x < occluding_frame->x + occluding_frame->w) continue;
-                        bool top = false;
-                        const auto *cell = cell_at(x, row_y, &top);
-                        if (cell && (!screen_override || screen_override ==
-                                (top ? gps_->screen_top : gps_->screen)))
-                            context[row_y][x] = cell[0] ? static_cast<char>(cell[0]) : ' ';
-                    }
+            // Conversation (0x86d480..0x86d717) and abilities (0x8a8300,
+            // caption draw 0x8aa822) paint their button skins before text.
+            // Graphical-copy bookkeeping can hide parts of either caption
+            // from visible_char_at(). Read the current logical layer inside
+            // every proven chooser frame; the complete control and native
+            // caption binding below still decide ownership and clipping.
+            for (int row_y = panel->y; row_y < panel->y + panel->h; ++row_y) {
+                for (int x = panel->x; x < caption_right(row_y); ++x) {
+                    if (occluding_frame && row_y >= occluding_frame->y &&
+                            row_y < occluding_frame->y + occluding_frame->h &&
+                            x >= occluding_frame->x &&
+                            x < occluding_frame->x + occluding_frame->w) continue;
+                    bool top = false;
+                    const auto *cell = cell_at(x, row_y, &top);
+                    if (cell && (!screen_override || screen_override ==
+                            (top ? gps_->screen_top : gps_->screen)))
+                        context[row_y][x] = cell[0] ? static_cast<char>(cell[0]) : ' ';
                 }
+            }
+            if (conversation) {
                 struct NativeChoiceText {
                     std::string caption, keywords;
                     std::vector<std::string> lines;

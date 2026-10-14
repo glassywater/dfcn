@@ -1,0 +1,145 @@
+edition	image_identity	owners	function_rva	instruction_rva	encoding	literal_rva	operand_role	source
+steam	PE:6a70a6d9:02711000	abilities-renderer	0x8a8300	0x8a87d7	rip-relative	0x16b4918	finite-text-operand-or-substring	this location
+steam	PE:6a70a6d9:02711000	abilities-renderer	0x8a8300	0x8a8c07	rip-relative	0x15fe724	finite-text-operand-or-substring	Cancel
+steam	PE:6a70a6d9:02711000	abilities-renderer	0x8a8300	0x8a8c10	rip-relative	0x15fe728	finite-text-operand-or-substring	el
+steam	PE:6a70a6d9:02711000	abilities-renderer	0x8a8300	0x8a8ca1	rip-relative	0x16604e8	finite-text-operand-or-substring	Select 
+steam	PE:6a70a6d9:02711000	abilities-renderer	0x8a8300	0x8a8cab	rip-relative	0x16604ec	finite-text-operand-or-substring	ct 
+steam	PE:6a70a6d9:02711000	abilities-renderer	0x8a8300	0x8a8cb6	rip-relative	0x16604ee	separator	 
+steam	PE:6a70a6d9:02711000	abilities-renderer	0x8a8300	0x8a913c	rip-relative	0x16b4918	finite-text-operand-or-substring	this location
+steam	PE:6a70a6d9:02711000	abilities-renderer	0x8a8300	0x8a91a0	rip-relative	0x16b4918	finite-text-operand-or-substring	this location
+steam	PE:6a70a6d9:02711000	abilities-renderer	0x8a8300	0x8a91ac	rip-relative	0x16b4920	finite-text-operand-or-substring	ation
+steam	PE:6a70a6d9:02711000	abilities-renderer	0x8a8300	0x8a91b5	rip-relative	0x16b4924	finite-text-operand-or-substring	n
+steam	PE:6a70a6d9:02711000	abilities-renderer	0x8a8300	0x8a95d1	rip-relative	0x15fe724	finite-text-operand-or-substring	Cancel
+steam	PE:6a70a6d9:02711000	abilities-renderer	0x8a8300	0x8a95da	rip-relative	0x15fe728	finite-text-operand-or-substring	el
+steam	PE:6a70a6d9:02711000	abilities-renderer	0x8a8300	0x8a9626	rip-relative	0x16604e8	finite-text-operand-or-substring	Select 
+steam	PE:6a70a6d9:02711000	abilities-renderer	0x8a8300	0x8a965d	rip-relative	0x1615540	separator	 (
+steam	PE:6a70a6d9:02711000	abilities-renderer	0x8a8300	0x8a9693	rip-relative	0x15eb518	finite-text-operand-or-substring	 of 
+steam	PE:6a70a6d9:02711000	abilities-renderer	0x8a8300	0x8a96b9	rip-relative	0x16b4908	finite-text-operand-or-substring	 selected
+steam	PE:6a70a6d9:02711000	abilities-renderer	0x8a8300	0x8a96d2	rip-relative	0x15e90d8	separator	, 
+steam	PE:6a70a6d9:02711000	abilities-renderer	0x8a8300	0x8a96e2	rip-relative	0x16b49c8	finite-text-operand-or-substring	adjacent only
+steam	PE:6a70a6d9:02711000	abilities-renderer	0x8a8300	0x8a96e9	rip-relative	0x16b49b8	finite-text-operand-or-substring	own tile only
+steam	PE:6a70a6d9:02711000	abilities-renderer	0x8a8300	0x8a970f	rip-relative	0x16b49f0	finite-text-operand-or-substring	, range 
+steam	PE:6a70a6d9:02711000	abilities-renderer	0x8a8300	0x8a9737	rip-relative	0x16b49d8	finite-text-operand-or-substring	, disturber only
+steam	PE:6a70a6d9:02711000	abilities-renderer	0x8a8300	0x8a9747	rip-relative	0x164a8ec	finite-text-operand-or-substring	).
+steam	PE:6a70a6d9:02711000	abilities-renderer	0x8a8300	0x8a979d	rip-relative	0x178b3e0	numeric-string-layout-vector	,
+steam	PE:6a70a6d9:02711000	abilities-renderer	0x8a8300	0x8a97aa	rip-relative	0x16b4710	finite-text-operand-or-substring	Click a target or move the cursor and press 
+steam	PE:6a70a6d9:02711000	abilities-renderer	0x8a8300	0x8a97b4	rip-relative	0x16b4720	finite-text-operand-or-substring	r move the cursor and press 
+steam	PE:6a70a6d9:02711000	abilities-renderer	0x8a8300	0x8a97bf	rip-relative	0x16b4730	finite-text-operand-or-substring	r and press 
+steam	PE:6a70a6d9:02711000	abilities-renderer	0x8a8300	0x8a97cc	rip-relative	0x16b4738	finite-text-operand-or-substring	ess 
+steam	PE:6a70a6d9:02711000	abilities-renderer	0x8a8300	0x8a9953	rip-relative	0x16b49ac	finite-text-operand-or-substring	Done (
+steam	PE:6a70a6d9:02711000	abilities-renderer	0x8a8300	0x8a995c	rip-relative	0x16b49b0	separator	 (
+steam	PE:6a70a6d9:02711000	abilities-renderer	0x8a8300	0x8a9bf8	rip-relative	0x15fe724	finite-text-operand-or-substring	Cancel
+steam	PE:6a70a6d9:02711000	abilities-renderer	0x8a8300	0x8a9c01	rip-relative	0x15fe728	finite-text-operand-or-substring	el
+steam	PE:6a70a6d9:02711000	abilities-renderer	0x8a8300	0x8a9c71	rip-relative	0x16b4540	finite-text-operand-or-substring	What do you want to do?
+steam	PE:6a70a6d9:02711000	abilities-renderer	0x8a8300	0x8a9c7b	rip-relative	0x16b4550	finite-text-operand-or-substring	 to do?
+steam	PE:6a70a6d9:02711000	abilities-renderer	0x8a8300	0x8a9c84	rip-relative	0x16b4554	finite-text-operand-or-substring	do?
+steam	PE:6a70a6d9:02711000	abilities-renderer	0x8a8300	0x8a9c8f	rip-relative	0x16b4556	finite-text-operand-or-substring	?
+steam	PE:6a70a6d9:02711000	abilities-renderer	0x8a8300	0x8aa2b8	rip-relative	0x16b4998	finite-text-operand-or-substring	Unknown interaction
+steam	PE:6a70a6d9:02711000	abilities-renderer	0x8a8300	0x8aa2c2	rip-relative	0x16b49a8	finite-text-operand-or-substring	ion
+steam	PE:6a70a6d9:02711000	abilities-renderer	0x8a8300	0x8aa2cd	rip-relative	0x16b49aa	finite-text-operand-or-substring	n
+steam	PE:6a70a6d9:02711000	abilities-renderer	0x8a8300	0x8aa40c	rip-relative	0x16b4998	finite-text-operand-or-substring	Unknown interaction
+steam	PE:6a70a6d9:02711000	abilities-renderer	0x8a8300	0x8aa46c	rip-relative	0x16b4998	finite-text-operand-or-substring	Unknown interaction
+steam	PE:6a70a6d9:02711000	abilities-renderer	0x8a8300	0x8aa476	rip-relative	0x16b49a8	finite-text-operand-or-substring	ion
+steam	PE:6a70a6d9:02711000	abilities-renderer	0x8a8300	0x8aa481	rip-relative	0x16b49aa	finite-text-operand-or-substring	n
+steam	PE:6a70a6d9:02711000	abilities-renderer	0x8a8300	0x8aa682	rip-relative	0x16b4998	finite-text-operand-or-substring	Unknown interaction
+steam	PE:6a70a6d9:02711000	abilities-renderer	0x8a8300	0x8aa6ee	rip-relative	0x16b4998	finite-text-operand-or-substring	Unknown interaction
+steam	PE:6a70a6d9:02711000	abilities-renderer	0x8a8300	0x8aa6f8	rip-relative	0x16b49a8	finite-text-operand-or-substring	ion
+steam	PE:6a70a6d9:02711000	abilities-renderer	0x8a8300	0x8aa703	rip-relative	0x16b49aa	finite-text-operand-or-substring	n
+steam	PE:6a70a6d9:02711000	body-action-pronoun-expansion	0x13e81e0	0x13e8271	rip-relative	0x17854e0	finite-text-operand-or-substring	<pro_sub>
+steam	PE:6a70a6d9:02711000	body-action-pronoun-expansion	0x13e81e0	0x13e827e	rip-relative	0x17854e8	finite-text-operand-or-substring	>
+steam	PE:6a70a6d9:02711000	body-action-pronoun-expansion	0x13e81e0	0x13e82d3	rip-relative	0x15ec550	finite-text-operand-or-substring	you
+steam	PE:6a70a6d9:02711000	body-action-pronoun-expansion	0x13e81e0	0x13e82dd	rip-relative	0x15ec552	finite-text-operand-or-substring	u
+steam	PE:6a70a6d9:02711000	body-action-pronoun-expansion	0x13e81e0	0x13e8364	rip-relative	0x17854d0	finite-text-operand-or-substring	<pro_obj>
+steam	PE:6a70a6d9:02711000	body-action-pronoun-expansion	0x13e81e0	0x13e8371	rip-relative	0x17854d8	finite-text-operand-or-substring	>
+steam	PE:6a70a6d9:02711000	body-action-pronoun-expansion	0x13e81e0	0x13e83bf	rip-relative	0x15ec550	finite-text-operand-or-substring	you
+steam	PE:6a70a6d9:02711000	body-action-pronoun-expansion	0x13e81e0	0x13e83c9	rip-relative	0x15ec552	finite-text-operand-or-substring	u
+steam	PE:6a70a6d9:02711000	body-action-pronoun-expansion	0x13e81e0	0x13e8417	rip-relative	0x1785500	finite-text-operand-or-substring	<pro_pos>
+steam	PE:6a70a6d9:02711000	body-action-pronoun-expansion	0x13e81e0	0x13e8424	rip-relative	0x1785508	finite-text-operand-or-substring	>
+steam	PE:6a70a6d9:02711000	body-action-pronoun-expansion	0x13e81e0	0x13e8475	inline-immediate-fragment		finite-short-string-fragment	your
+steam	PE:6a70a6d9:02711000	body-action-pronoun-expansion	0x13e81e0	0x13e84fa	rip-relative	0x17854e0	finite-text-operand-or-substring	<pro_sub>
+steam	PE:6a70a6d9:02711000	body-action-pronoun-expansion	0x13e81e0	0x13e8507	rip-relative	0x17854e8	finite-text-operand-or-substring	>
+steam	PE:6a70a6d9:02711000	body-action-pronoun-expansion	0x13e81e0	0x13e857e	rip-relative	0x16cecc8	finite-text-operand-or-substring	she
+steam	PE:6a70a6d9:02711000	body-action-pronoun-expansion	0x13e81e0	0x13e8588	rip-relative	0x16cecca	finite-text-operand-or-substring	e
+steam	PE:6a70a6d9:02711000	body-action-pronoun-expansion	0x13e81e0	0x13e85ec	rip-relative	0x17854d0	finite-text-operand-or-substring	<pro_obj>
+steam	PE:6a70a6d9:02711000	body-action-pronoun-expansion	0x13e81e0	0x13e85f9	rip-relative	0x17854d8	finite-text-operand-or-substring	>
+steam	PE:6a70a6d9:02711000	body-action-pronoun-expansion	0x13e81e0	0x13e8664	rip-relative	0x16cecc4	finite-text-operand-or-substring	him
+steam	PE:6a70a6d9:02711000	body-action-pronoun-expansion	0x13e81e0	0x13e866e	rip-relative	0x16cecc6	finite-text-operand-or-substring	m
+steam	PE:6a70a6d9:02711000	body-action-pronoun-expansion	0x13e81e0	0x13e8687	rip-relative	0x16cecc0	finite-text-operand-or-substring	her
+steam	PE:6a70a6d9:02711000	body-action-pronoun-expansion	0x13e81e0	0x13e8691	rip-relative	0x16cecc2	finite-text-operand-or-substring	r
+steam	PE:6a70a6d9:02711000	body-action-pronoun-expansion	0x13e81e0	0x13e86f5	rip-relative	0x1785500	finite-text-operand-or-substring	<pro_pos>
+steam	PE:6a70a6d9:02711000	body-action-pronoun-expansion	0x13e81e0	0x13e8702	rip-relative	0x1785508	finite-text-operand-or-substring	>
+steam	PE:6a70a6d9:02711000	body-action-pronoun-expansion	0x13e81e0	0x13e8710	rip-relative	0x15ee528	finite-text-operand-or-substring	its
+steam	PE:6a70a6d9:02711000	body-action-pronoun-expansion	0x13e81e0	0x13e876f	rip-relative	0x16ced18	finite-text-operand-or-substring	his
+steam	PE:6a70a6d9:02711000	body-action-pronoun-expansion	0x13e81e0	0x13e8778	rip-relative	0x16cecc0	finite-text-operand-or-substring	her
+classic	PE:6a70b91c:0270a000	abilities-renderer	0x8a5b80	0x8a6057	rip-relative	0x16afa70	finite-text-operand-or-substring	this location
+classic	PE:6a70b91c:0270a000	abilities-renderer	0x8a5b80	0x8a6487	rip-relative	0x15f959c	finite-text-operand-or-substring	Cancel
+classic	PE:6a70b91c:0270a000	abilities-renderer	0x8a5b80	0x8a6490	rip-relative	0x15f95a0	finite-text-operand-or-substring	el
+classic	PE:6a70b91c:0270a000	abilities-renderer	0x8a5b80	0x8a6521	rip-relative	0x165b418	finite-text-operand-or-substring	Select 
+classic	PE:6a70b91c:0270a000	abilities-renderer	0x8a5b80	0x8a652b	rip-relative	0x165b41c	finite-text-operand-or-substring	ct 
+classic	PE:6a70b91c:0270a000	abilities-renderer	0x8a5b80	0x8a6536	rip-relative	0x165b41e	separator	 
+classic	PE:6a70b91c:0270a000	abilities-renderer	0x8a5b80	0x8a69bc	rip-relative	0x16afa70	finite-text-operand-or-substring	this location
+classic	PE:6a70b91c:0270a000	abilities-renderer	0x8a5b80	0x8a6a20	rip-relative	0x16afa70	finite-text-operand-or-substring	this location
+classic	PE:6a70b91c:0270a000	abilities-renderer	0x8a5b80	0x8a6a2c	rip-relative	0x16afa78	finite-text-operand-or-substring	ation
+classic	PE:6a70b91c:0270a000	abilities-renderer	0x8a5b80	0x8a6a35	rip-relative	0x16afa7c	finite-text-operand-or-substring	n
+classic	PE:6a70b91c:0270a000	abilities-renderer	0x8a5b80	0x8a6e51	rip-relative	0x15f959c	finite-text-operand-or-substring	Cancel
+classic	PE:6a70b91c:0270a000	abilities-renderer	0x8a5b80	0x8a6e5a	rip-relative	0x15f95a0	finite-text-operand-or-substring	el
+classic	PE:6a70b91c:0270a000	abilities-renderer	0x8a5b80	0x8a6ea6	rip-relative	0x165b418	finite-text-operand-or-substring	Select 
+classic	PE:6a70b91c:0270a000	abilities-renderer	0x8a5b80	0x8a6edd	rip-relative	0x1610298	separator	 (
+classic	PE:6a70b91c:0270a000	abilities-renderer	0x8a5b80	0x8a6f13	rip-relative	0x15e64d0	finite-text-operand-or-substring	 of 
+classic	PE:6a70b91c:0270a000	abilities-renderer	0x8a5b80	0x8a6f39	rip-relative	0x16afa60	finite-text-operand-or-substring	 selected
+classic	PE:6a70b91c:0270a000	abilities-renderer	0x8a5b80	0x8a6f52	rip-relative	0x15e40c4	separator	, 
+classic	PE:6a70b91c:0270a000	abilities-renderer	0x8a5b80	0x8a6f62	rip-relative	0x16af9f8	finite-text-operand-or-substring	adjacent only
+classic	PE:6a70b91c:0270a000	abilities-renderer	0x8a5b80	0x8a6f69	rip-relative	0x16af9e8	finite-text-operand-or-substring	own tile only
+classic	PE:6a70b91c:0270a000	abilities-renderer	0x8a5b80	0x8a6f8f	rip-relative	0x16afa20	finite-text-operand-or-substring	, range 
+classic	PE:6a70b91c:0270a000	abilities-renderer	0x8a5b80	0x8a6fb7	rip-relative	0x16afa08	finite-text-operand-or-substring	, disturber only
+classic	PE:6a70b91c:0270a000	abilities-renderer	0x8a5b80	0x8a6fc7	rip-relative	0x1645790	finite-text-operand-or-substring	).
+classic	PE:6a70b91c:0270a000	abilities-renderer	0x8a5b80	0x8a701d	rip-relative	0x1785ce0	numeric-string-layout-vector	,
+classic	PE:6a70b91c:0270a000	abilities-renderer	0x8a5b80	0x8a702a	rip-relative	0x16af820	finite-text-operand-or-substring	Click a target or move the cursor and press 
+classic	PE:6a70b91c:0270a000	abilities-renderer	0x8a5b80	0x8a7034	rip-relative	0x16af830	finite-text-operand-or-substring	r move the cursor and press 
+classic	PE:6a70b91c:0270a000	abilities-renderer	0x8a5b80	0x8a703f	rip-relative	0x16af840	finite-text-operand-or-substring	r and press 
+classic	PE:6a70b91c:0270a000	abilities-renderer	0x8a5b80	0x8a704c	rip-relative	0x16af848	finite-text-operand-or-substring	ess 
+classic	PE:6a70b91c:0270a000	abilities-renderer	0x8a5b80	0x8a71d3	rip-relative	0x16af924	finite-text-operand-or-substring	Done (
+classic	PE:6a70b91c:0270a000	abilities-renderer	0x8a5b80	0x8a71dc	rip-relative	0x16af928	separator	 (
+classic	PE:6a70b91c:0270a000	abilities-renderer	0x8a5b80	0x8a7478	rip-relative	0x15f959c	finite-text-operand-or-substring	Cancel
+classic	PE:6a70b91c:0270a000	abilities-renderer	0x8a5b80	0x8a7481	rip-relative	0x15f95a0	finite-text-operand-or-substring	el
+classic	PE:6a70b91c:0270a000	abilities-renderer	0x8a5b80	0x8a74f1	rip-relative	0x16af510	finite-text-operand-or-substring	What do you want to do?
+classic	PE:6a70b91c:0270a000	abilities-renderer	0x8a5b80	0x8a74fb	rip-relative	0x16af520	finite-text-operand-or-substring	 to do?
+classic	PE:6a70b91c:0270a000	abilities-renderer	0x8a5b80	0x8a7504	rip-relative	0x16af524	finite-text-operand-or-substring	do?
+classic	PE:6a70b91c:0270a000	abilities-renderer	0x8a5b80	0x8a750f	rip-relative	0x16af526	finite-text-operand-or-substring	?
+classic	PE:6a70b91c:0270a000	abilities-renderer	0x8a5b80	0x8a7b38	rip-relative	0x16af910	finite-text-operand-or-substring	Unknown interaction
+classic	PE:6a70b91c:0270a000	abilities-renderer	0x8a5b80	0x8a7b42	rip-relative	0x16af920	finite-text-operand-or-substring	ion
+classic	PE:6a70b91c:0270a000	abilities-renderer	0x8a5b80	0x8a7b4d	rip-relative	0x16af922	finite-text-operand-or-substring	n
+classic	PE:6a70b91c:0270a000	abilities-renderer	0x8a5b80	0x8a7c8c	rip-relative	0x16af910	finite-text-operand-or-substring	Unknown interaction
+classic	PE:6a70b91c:0270a000	abilities-renderer	0x8a5b80	0x8a7cec	rip-relative	0x16af910	finite-text-operand-or-substring	Unknown interaction
+classic	PE:6a70b91c:0270a000	abilities-renderer	0x8a5b80	0x8a7cf6	rip-relative	0x16af920	finite-text-operand-or-substring	ion
+classic	PE:6a70b91c:0270a000	abilities-renderer	0x8a5b80	0x8a7d01	rip-relative	0x16af922	finite-text-operand-or-substring	n
+classic	PE:6a70b91c:0270a000	abilities-renderer	0x8a5b80	0x8a7f02	rip-relative	0x16af910	finite-text-operand-or-substring	Unknown interaction
+classic	PE:6a70b91c:0270a000	abilities-renderer	0x8a5b80	0x8a7f6e	rip-relative	0x16af910	finite-text-operand-or-substring	Unknown interaction
+classic	PE:6a70b91c:0270a000	abilities-renderer	0x8a5b80	0x8a7f78	rip-relative	0x16af920	finite-text-operand-or-substring	ion
+classic	PE:6a70b91c:0270a000	abilities-renderer	0x8a5b80	0x8a7f83	rip-relative	0x16af922	finite-text-operand-or-substring	n
+classic	PE:6a70b91c:0270a000	body-action-pronoun-expansion	0x13e3150	0x13e31e1	rip-relative	0x177f6b0	finite-text-operand-or-substring	<pro_sub>
+classic	PE:6a70b91c:0270a000	body-action-pronoun-expansion	0x13e3150	0x13e31ee	rip-relative	0x177f6b8	finite-text-operand-or-substring	>
+classic	PE:6a70b91c:0270a000	body-action-pronoun-expansion	0x13e3150	0x13e3243	rip-relative	0x15e74b8	finite-text-operand-or-substring	you
+classic	PE:6a70b91c:0270a000	body-action-pronoun-expansion	0x13e3150	0x13e324d	rip-relative	0x15e74ba	finite-text-operand-or-substring	u
+classic	PE:6a70b91c:0270a000	body-action-pronoun-expansion	0x13e3150	0x13e32d4	rip-relative	0x177f6f8	finite-text-operand-or-substring	<pro_obj>
+classic	PE:6a70b91c:0270a000	body-action-pronoun-expansion	0x13e3150	0x13e32e1	rip-relative	0x177f700	finite-text-operand-or-substring	>
+classic	PE:6a70b91c:0270a000	body-action-pronoun-expansion	0x13e3150	0x13e332f	rip-relative	0x15e74b8	finite-text-operand-or-substring	you
+classic	PE:6a70b91c:0270a000	body-action-pronoun-expansion	0x13e3150	0x13e3339	rip-relative	0x15e74ba	finite-text-operand-or-substring	u
+classic	PE:6a70b91c:0270a000	body-action-pronoun-expansion	0x13e3150	0x13e3387	rip-relative	0x177f6e8	finite-text-operand-or-substring	<pro_pos>
+classic	PE:6a70b91c:0270a000	body-action-pronoun-expansion	0x13e3150	0x13e3394	rip-relative	0x177f6f0	finite-text-operand-or-substring	>
+classic	PE:6a70b91c:0270a000	body-action-pronoun-expansion	0x13e3150	0x13e33e5	inline-immediate-fragment		finite-short-string-fragment	your
+classic	PE:6a70b91c:0270a000	body-action-pronoun-expansion	0x13e3150	0x13e346a	rip-relative	0x177f6b0	finite-text-operand-or-substring	<pro_sub>
+classic	PE:6a70b91c:0270a000	body-action-pronoun-expansion	0x13e3150	0x13e3477	rip-relative	0x177f6b8	finite-text-operand-or-substring	>
+classic	PE:6a70b91c:0270a000	body-action-pronoun-expansion	0x13e3150	0x13e34ee	rip-relative	0x16cb158	finite-text-operand-or-substring	she
+classic	PE:6a70b91c:0270a000	body-action-pronoun-expansion	0x13e3150	0x13e34f8	rip-relative	0x16cb15a	finite-text-operand-or-substring	e
+classic	PE:6a70b91c:0270a000	body-action-pronoun-expansion	0x13e3150	0x13e355c	rip-relative	0x177f6f8	finite-text-operand-or-substring	<pro_obj>
+classic	PE:6a70b91c:0270a000	body-action-pronoun-expansion	0x13e3150	0x13e3569	rip-relative	0x177f700	finite-text-operand-or-substring	>
+classic	PE:6a70b91c:0270a000	body-action-pronoun-expansion	0x13e3150	0x13e35d4	rip-relative	0x16cb154	finite-text-operand-or-substring	him
+classic	PE:6a70b91c:0270a000	body-action-pronoun-expansion	0x13e3150	0x13e35de	rip-relative	0x16cb156	finite-text-operand-or-substring	m
+classic	PE:6a70b91c:0270a000	body-action-pronoun-expansion	0x13e3150	0x13e35f7	rip-relative	0x16cb150	finite-text-operand-or-substring	her
+classic	PE:6a70b91c:0270a000	body-action-pronoun-expansion	0x13e3150	0x13e3601	rip-relative	0x16cb152	finite-text-operand-or-substring	r
+classic	PE:6a70b91c:0270a000	body-action-pronoun-expansion	0x13e3150	0x13e3665	rip-relative	0x177f6e8	finite-text-operand-or-substring	<pro_pos>
+classic	PE:6a70b91c:0270a000	body-action-pronoun-expansion	0x13e3150	0x13e3672	rip-relative	0x177f6f0	finite-text-operand-or-substring	>
+classic	PE:6a70b91c:0270a000	body-action-pronoun-expansion	0x13e3150	0x13e3680	rip-relative	0x15e94d8	finite-text-operand-or-substring	its
+classic	PE:6a70b91c:0270a000	body-action-pronoun-expansion	0x13e3150	0x13e36df	rip-relative	0x16cb1a8	finite-text-operand-or-substring	his
+classic	PE:6a70b91c:0270a000	body-action-pronoun-expansion	0x13e3150	0x13e36e8	rip-relative	0x16cb150	finite-text-operand-or-substring	her
