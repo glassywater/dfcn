@@ -1,5 +1,8 @@
 # Authored Dwarvemon terminology; supplemental original terms and official-name spelling aliases.
 # Preserve case and semantic scope: iron is metal/tissue; Iron is the vitamin item.
+# Egg/egg in Dwarvemon RAW denotes an egg, not the sandwich ingredient.
+Egg	蛋
+egg	蛋
 Iron	防御增强剂
 iron	铁
 iron bar	铁锭
