@@ -123,16 +123,6 @@ std::optional<std::string> Overlay::translate_inventory_location(
 // including native search candidates that have no screen coordinates.
 std::optional<std::string> Overlay::translate_adventure_item_action(
         const std::string &source, int y, int x) const {
-    if (const size_t prefix = adventure_action_conflict_prefix_length(source)) {
-        const std::string label = source.substr(0, prefix - 2);
-        const auto conflict = label.empty() ? std::optional<std::string>("") :
-            exact_literal_translation("Adventure action conflict: " + label);
-        const auto separator = exact_literal_translation("Adventure action conflict separator");
-        const auto action = translate_adventure_item_action(source.substr(prefix), y,
-            x < 0 ? x : x + static_cast<int>(prefix));
-        if (conflict && separator && action) return *conflict + *separator + *action;
-        return std::nullopt;
-    }
     const auto complete_term = [](const std::optional<std::string> &target) {
         return target && !target->empty() && target->find("[C:") == std::string::npos &&
             target->find_first_of("\r\n") == std::string::npos &&

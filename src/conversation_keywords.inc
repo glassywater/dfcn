@@ -146,27 +146,6 @@ std::optional<std::string> Overlay::translate_conversation_choice(
     return complete(target) ? target : std::nullopt;
 }
 
-// ELF chooser 11667e0 calls option+120 before constructing option+8. Only
-// shoot/throw-creature override that prelude, through 115b300/115b370 to
-// 115acc0. Its seven conflict levels, Ally and unnamed-level ':' precede
-// one of these four complete actions, never an item or performance name.
-static size_t adventure_action_conflict_prefix_length(std::string_view source) {
-    const auto action = [](std::string_view value) {
-        return value.starts_with("Quickly shoot ") ||
-            value.starts_with("Aim carefully and shoot ") ||
-            value.starts_with("Quickly throw at ") ||
-            value.starts_with("Aim carefully and throw at ");
-    };
-    if (source.starts_with(": ") && action(source.substr(2))) return 2;
-    for (const std::string_view label : {"Encounter", "Horseplay", "Training",
-            "Brawl", "Non-lethal", "Lethal", "No Quarter", "Ally"}) {
-        const size_t length = label.size() + 2;
-        if (source.starts_with(label) && source.substr(label.size()).starts_with(": ") &&
-                action(source.substr(length))) return length;
-    }
-    return 0;
-}
-
 std::optional<std::string> Overlay::translate_adventure_action_choice(
         std::string_view source, const std::vector<int> &source_colors,
         std::vector<int> &target_colors, const NativePerformanceChoice *native_choice) const {
@@ -178,30 +157,6 @@ std::optional<std::string> Overlay::translate_adventure_action_choice(
     const std::string normalized = normalize_utterance(source);
     if (normalized.empty() || normalized.ends_with("...") || source_colors.empty())
         return std::nullopt;
-    if (!native_choice) {
-        const size_t prefix = adventure_action_conflict_prefix_length(source);
-        if (prefix) {
-            const auto label = source.substr(0, prefix - 2);
-            const auto conflict = label.empty() ? std::optional<std::string>("") :
-                exact_literal_translation("Adventure action conflict: " + std::string(label));
-            const auto separator = exact_literal_translation("Adventure action conflict separator");
-            if (!conflict || !separator) return std::nullopt;
-            std::vector<int> action_colors;
-            for (size_t at = prefix; at < source.size(); ++at)
-                action_colors.push_back(source_colors[std::min(at, source_colors.size() - 1)]);
-            std::vector<int> translated_action_colors;
-            const auto action = translate_adventure_action_choice(source.substr(prefix),
-                action_colors, translated_action_colors, nullptr);
-            if (!action) return std::nullopt;
-            const std::string heading = *conflict + *separator;
-            std::vector<uint32_t> heading_codepoints;
-            if (!decode_utf8(heading, heading_codepoints)) return std::nullopt;
-            target_colors.assign(heading_codepoints.size(), source_colors.front());
-            target_colors.insert(target_colors.end(), translated_action_colors.begin(),
-                translated_action_colors.end());
-            return heading + *action;
-        }
-    }
     const auto uniform_colors = [&](std::optional<std::string> target) {
         if (!target) return target;
         std::vector<uint32_t> codepoints;

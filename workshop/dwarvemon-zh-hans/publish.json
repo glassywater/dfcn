@@ -10,12 +10,12 @@
     "Chinese"
   ],
   "visibility": 0,
-  "changelog": "修复汉化词表将原版弩矢误译为“电流”的问题。",
+  "changelog": "- 修正蛋被误译为水煮蛋片的问题，同步调整物品和身体部位译名。\n- 修正箱子被误译为胸的问题，保留身体部位的正确翻译。\n",
   "github_url": "https://github.com/pokemonchw/dfcn",
   "required_items": [
     3811193379,
     2898307461
   ],
-  "release_tag": "v53.16-20261011.3",
-  "release_url": "https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261011.3"
+  "release_tag": "v53.16-20261014",
+  "release_url": "https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261014"
 }
