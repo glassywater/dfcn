@@ -3632,6 +3632,10 @@ private:
         std::string_view source) const;
     std::optional<std::string> translate_journal_title(std::string_view source,
         JournalSearchKind kind) const;
+    std::optional<std::string> translate_journal_agreement_title(std::string_view source,
+        const NativeAdventureQuestTitle *native = nullptr) const;
+    std::optional<std::string> translate_journal_agreement_field(std::string_view source,
+        NativeJournalAgreementField kind) const;
     std::optional<std::string> translate_symbol_candidate(std::string_view source,
         SymbolCaptionKind kind, bool instrument_catalog = true) const;
     mutable std::unordered_map<std::string, std::optional<std::string>> material_name_cache_;
@@ -16642,6 +16646,7 @@ static NativeKeybindingScope capture_native_keybinding_scope(const graphicst &gp
 #include "embark_civilizations.inc"
 #include "fortress_livestock.inc"
 #include "native_calendar_date.inc"
+#include "adventure_journal_agreements.inc"
 #include "justice_case_translation.inc"
 #include "justice_plot_translation.inc"
 #include "justice_actor_translation.inc"

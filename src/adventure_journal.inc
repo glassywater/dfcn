@@ -20,6 +20,36 @@
                 break;
             }
         if (tabs_y >= 0) {
+            auto journal_draws = captured_native_drawn_text_rows();
+            auto journal_upper_draws = captured_native_drawn_text_rows(true);
+            journal_draws.insert(journal_draws.end(),
+                std::make_move_iterator(journal_upper_draws.begin()),
+                std::make_move_iterator(journal_upper_draws.end()));
+            const auto journal_epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
+            const auto agreement_draw = [&](const Match &row, int edge) -> const NativeDrawnTextRow * {
+                for (auto it = journal_draws.rbegin(); it != journal_draws.rend(); ++it) {
+                    if (it->draw_epoch != journal_epoch || it->draw_dimx != gps_->dimx ||
+                            it->draw_dimy != gps_->dimy || it->x != row.x || it->y != row.y ||
+                            edge <= row.x || trim_view(std::string_view(it->source).substr(
+                                0, static_cast<size_t>(edge - row.x))) != row.source) continue;
+                    bool current = true;
+                    for (int byte = 0; byte < row.length; ++byte) {
+                        bool top = false;
+                        const auto *cell = cell_at(row.x + byte, row.y, &top);
+                        const size_t tile = static_cast<size_t>(row.x + byte) * gps_->dimy + row.y;
+                        const auto origin = native_text_grid_origin(*gps_, tile, top);
+                        if (!cell || cell[0] != static_cast<unsigned char>(row.source[byte]) ||
+                                it->draw_grid != origin.grid || it->top_layer != origin.top_layer ||
+                                (screen_override && screen_override !=
+                                    (top ? gps_->screen_top : gps_->screen))) {
+                            current = false;
+                            break;
+                        }
+                    }
+                    if (current) return &*it;
+                }
+                return nullptr;
+            };
             // Own complete log captions before generic words or procedural
             // names can claim them. In particular, intrigue's Plots are not
             // parcels of land, and the green Tab shortcut is not a caption.
@@ -36,11 +66,14 @@
             // below still takes precedence for pinned cards of other kinds.
             bool people_selected = false;
             bool events_selected = false;
+            bool agreements_selected = false;
             for (int y = tabs_y; y <= tabs_y + 1 && y < gps_->dimy; ++y) {
                 int people_color = -1;
                 int events_color = -1;
+                int agreements_color = -1;
                 std::unordered_map<int, int> other_colors;
                 std::unordered_map<int, int> other_event_colors;
+                std::unordered_map<int, int> other_agreement_colors;
                 for (const auto caption : main_tabs) {
                     const size_t at = context[y].find(caption);
                     if (at == std::string::npos) continue;
@@ -52,6 +85,8 @@
                     else ++other_colors[color];
                     if (caption == "Events") events_color = color;
                     else ++other_event_colors[color];
+                    if (caption == "Agreements") agreements_color = color;
+                    else ++other_agreement_colors[color];
                 }
                 if (people_color >= 0 && other_colors.size() == 1 &&
                     other_colors.begin()->second == 8 &&
@@ -59,6 +94,9 @@
                 if (events_color >= 0 && other_event_colors.size() == 1 &&
                     other_event_colors.begin()->second == 8 &&
                     other_event_colors.begin()->first != events_color) events_selected = true;
+                if (agreements_color >= 0 && other_agreement_colors.size() == 1 &&
+                    other_agreement_colors.begin()->second == 8 &&
+                    other_agreement_colors.begin()->first != agreements_color) agreements_selected = true;
             }
             const auto append_tab = [&](int y, std::string_view caption, bool intrigue) {
                 const size_t at = context[y].find(caption);
@@ -328,6 +366,13 @@
                 };
                 const auto title = field_at(title_y, *counter);
                 std::vector<Match> title_rows = title ? field_rows(*title) : std::vector<Match>{};
+                std::optional<NativeAdventureQuestTitle> native_agreement_title;
+                if (title)
+                    if (const auto *draw = agreement_draw(*title, *counter))
+                        native_agreement_title = native_adventure_quest_original_title(
+                            draw->address, draw->source, draw->native_caller);
+                bool agreement = native_agreement_title.has_value() ||
+                    (collapsed && agreements_selected);
                 if (event)
                     for (const Match &row : title_rows) placed_header_rows.insert(row.y);
                 // Bestiary records put the species/caste in the title, with
@@ -365,11 +410,21 @@
                 bool group = false;
                 bool civilization = false;
                 bool region = false;
-                for (int y = title_y + 1; !event && !bestiary && y < bottom; ++y) {
+                for (int y = title_y + 1; !agreement && !event && !bestiary && y < bottom; ++y) {
                     if (title_row(y)) continue;
                     const auto field = field_at(y, text_right(y));
                     if (!field) continue;
                     const std::string source = lower(normalize_utterance(field->source));
+                    if (const auto *draw = agreement_draw(*field, text_right(y)); draw &&
+                            native_journal_agreement_field(draw->native_caller) ==
+                                NativeJournalAgreementField::Type) {
+                        agreement = true;
+                        break;
+                    }
+                    if (legends_terms_.contains("Adventurer log agreement type: " + field->source)) {
+                        agreement = true;
+                        break;
+                    }
                     // Mountain is also a generated creature kind. Resolve
                     // native region metadata before the species parser so
                     // all biomes use the same card layout and name grammar.
@@ -422,7 +477,7 @@
                         }
                     }
                 }
-                const bool person = !event && !bestiary && !site && !group && !region &&
+                const bool person = !agreement && !event && !bestiary && !site && !group && !region &&
                     (kind.has_value() || people_selected);
                 const std::vector<Match> kind_rows = kind ? field_rows(*kind) : std::vector<Match>{};
                 struct HeaderField {
@@ -467,10 +522,11 @@
                 // fields retain the native baseline and their original row.
                 const auto place_field = [&](const std::vector<Match> &rows, std::string_view target,
                         int display_y, int edge, int margin, bool fixed_baseline,
-                        std::vector<std::string> &layout_rows, std::vector<Match> &layout_matches) {
+                        std::vector<std::string> &layout_rows, std::vector<Match> &layout_matches,
+                        const std::vector<int> &colors = std::vector<int>{}) {
                     const size_t first_match = layout_matches.size();
                     if (!append_bounded_paragraph({rows.front()}, target, layout_rows,
-                            layout_matches, -1, edge, edge, {}, false, margin)) return false;
+                            layout_matches, -1, edge, edge, colors, false, margin)) return false;
                     const int tile_h = gps_->tile_pixel_y;
                     const Match &first = layout_matches[first_match];
                     const int old_top = first.layout_y * tile_h + first.layout_pixel_y;
@@ -506,6 +562,93 @@
                     return true;
                 };
                 std::unordered_set<int> owned_body_rows;
+                if (agreement) {
+                    std::vector<Match> agreement_matches;
+                    if (title) {
+                        const auto complete = native_drawn_text_for_row(*title, *counter);
+                        const std::string source = native_agreement_title
+                            ? native_agreement_title->source : complete.value_or(title->source);
+                        const auto target = native_agreement_title || complete ||
+                                title->x + title->length < *counter
+                            ? translate_journal_agreement_title(source,
+                                native_agreement_title ? &*native_agreement_title : nullptr)
+                            : std::nullopt;
+                        if (target && place_field(title_rows, *target, title_rows.front().y,
+                                *counter, left, false, screen_rows, agreement_matches))
+                            for (const Match &row : title_rows) placed_header_rows.insert(row.y);
+                    }
+                    // 17cda80 writes each agreement field with a separate addst.
+                    // Preserve those boundaries, colors and rows, including the
+                    // completed date; never merge adjacent labels with names.
+                    for (int y = title_y + 1; y < bottom; ++y) {
+                        if (title_row(y)) continue;
+                        const int edge = text_right(y);
+                        const auto field = field_at(y, edge);
+                        if (!field) continue;
+                        const auto rows = field_rows(*field);
+                        std::optional<std::string> target;
+                        std::vector<int> colors;
+                        std::string translated;
+                        bool complete = true;
+                        for (int x = field->x; x < field->x + field->length;) {
+                            if (context[y][x] == ' ') { ++x; continue; }
+                            const NativeDrawnTextRow *part = nullptr;
+                            for (auto it = journal_draws.rbegin(); it != journal_draws.rend(); ++it) {
+                                if (it->draw_epoch != journal_epoch || it->draw_dimx != gps_->dimx ||
+                                        it->draw_dimy != gps_->dimy || it->y != y || it->x > x ||
+                                        int64_t(it->x) + static_cast<int64_t>(it->source.size()) <= x)
+                                    continue;
+                                bool top = false;
+                                const auto *cell = cell_at(x, y, &top);
+                                const auto origin = native_text_grid_origin(*gps_,
+                                    static_cast<size_t>(x) * gps_->dimy + y, top);
+                                if (!cell || it->draw_grid != origin.grid ||
+                                        it->top_layer != origin.top_layer ||
+                                        (screen_override && screen_override !=
+                                            (top ? gps_->screen_top : gps_->screen))) continue;
+                                part = &*it;
+                                break;
+                            }
+                            if (!part) { complete = false; break; }
+                            const int end = static_cast<int>(std::min<int64_t>(
+                                field->x + field->length, int64_t(part->x) + part->source.size()));
+                            for (int column = x; column < end; ++column)
+                                if (context[y][column] != part->source[column - part->x]) {
+                                    complete = false;
+                                    break;
+                                }
+                            if (!complete) break;
+                            const auto kind = native_journal_agreement_field(part->native_caller);
+                            auto value = translate_journal_agreement_field(part->source, kind);
+                            if (!value && (kind == NativeJournalAgreementField::Group ||
+                                    kind == NativeJournalAgreementField::Site ||
+                                    kind == NativeJournalAgreementField::Artifact))
+                                value = native_text_to_utf8(part->source);
+                            if (!value) { complete = false; break; }
+                            bool top = false;
+                            const auto *cell = cell_at(x, y, &top);
+                            const int color = cell ? (cell[1] << 16) | (cell[2] << 8) | cell[3]
+                                : field->layout_foreground_rgb;
+                            for (unsigned char ch : *value)
+                                if ((ch & 0xc0) != 0x80) colors.push_back(color);
+                            translated += *value;
+                            x = end;
+                        }
+                        if (complete && !translated.empty()) target = std::move(translated);
+                        else if (field->x + field->length < edge) {
+                            colors.clear();
+                            target = translate_journal_agreement_field(field->source,
+                                NativeJournalAgreementField::None);
+                        }
+                        if (target)
+                            place_field(rows, *target, rows.front().y, edge,
+                                field->x, false, screen_rows, agreement_matches, colors);
+                        y = rows.back().y;
+                    }
+                    for (Match &match : agreement_matches)
+                        if (only_y < 0 || only_y == match.y) result.push_back(std::move(match));
+                    continue;
+                }
                 if (kind || bestiary || person) {
                     if (title) {
                         const auto complete = native_drawn_text_for_row(*title, *counter);

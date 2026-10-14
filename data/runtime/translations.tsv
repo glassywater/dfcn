@@ -18715,6 +18715,7 @@ A small, squat humanoid with large pointy ears and yellow glowing eyes.	一个�
 A tiny, brightly colored parrot. They are clever and learn many tricks.	一种小型的彩色鹦鹉。它们非常聪明且能学习很多把戏。	lP
 A {s} caravan from {e} has arrived. Overall trade sentiments are great.	来自{e1}的{s1}商队已抵达。总体贸易意愿很高。	hPt
 Adventure action: Give a sermon concerning a deity or object of worship	发表关于神祇或崇拜对象的布道	l
+Adventurer log agreement field: in order to be brought safely away from	以便被安全带离以下地点：	h
 After a long journey, you are here to meet your most trusted companion.	经过漫长的旅途，你来到这里与最信任的同伴会合。	hq
 Allies surrounding {a} raised their suspicions and the plan was foiled.	{a1}身边的盟友提出了怀疑，使计划落空。	ht
 Announcement combat adventure-announcement []: Do not take any chances.	不要冒险。	l
@@ -22715,6 +22716,8 @@ A small, pale arthropod found in underground streams and ponds.	一种在地底�
 A tiny black bug that lacks a web but can leap short distances.	一种没有网但能短距离跳跃的小型黑虫。	lP
 A tiny blue-green oceanic fish, found only in temperate waters.	一种微小的蓝绿色海洋鱼类，只在温带水域发现。	lP
 A very large herbivorous quadrupedal dinosaur with a long neck.	一种体型很大、颈部修长的四足食草恐龙。	lP
+Adventurer log agreement field: agreed to entertain people with	同意与以下对象为众人表演：	h
+Adventurer log agreement field: wherever the journey might lead	无论旅途通向何方。	h
 After being interrogated by {a}, {a} implicated {a} during {e}.	在{e1}期间，经过{a1}审讯后，{a2}供出了{a3}。	ht
 After being interrogated by {a}, {a} implicated {a} within {p}.	在{p1}，经过{a1}审讯后，{a2}供出了{a3}。	ht
 After enduring an interrogation by {a}, {a} was released at {p}	在{p1}，忍受{a1}的审讯后，{a2}被释放了	ht
@@ -23367,6 +23370,7 @@ A very small amphibian with a wedge-shaped head and long tail.	一种很小的�
 A very small squat amphibian with a round tummy and long tail.	一种很小的矮壮两栖动物，腹部浑圆，尾巴修长。	lP
 ALLOW ALL REJECTS, even if I end up with a legends-only world!	允许所有拒绝，即使最终只能生成传说模式世界！	hP
 ALLOW ALL REJECTS, even if I end up with a legends-only world!	允许所有拒绝，即使最终只能生成传说模式世界！	l
+Adventurer log agreement field: Foiled Embezzlement Conspiracy	已挫败的挪用资金阴谋	h
 After being interrogated by {a}, {a} implicated {a} during {e}	在{e1}期间，经过{a1}审讯后，{a2}供出了{a3}	ht
 After being interrogated by {a}, {a} implicated {a} within {p}	在{p1}，经过{a1}审讯后，{a2}供出了{a3}	ht
 After enduring an interrogation, {a} was released in the wilds	在荒野中，忍受审讯后，{a1}被释放了	ht
@@ -24038,6 +24042,7 @@ A tiny snake with ridged scales and a powerful venomous bite.	一种有脊状鳞
 A towering herbivorous quadrupedal dinosaur with a long neck.	一种高耸如塔、颈部修长的四足食草恐龙。	lP
 A very large snake. It is amphibious and constricts its prey.	一条体型很大的蛇，能在水陆两栖生活，并会缠住猎物将其勒死。	lP
 Adventure action: Give a sermon concerning a cosmic principle	发表关于宇宙原理的布道	l
+Adventurer log agreement type: Foiled Embezzlement Conspiracy	已挫败的挪用资金阴谋	h
 Affects ability to spot and interpret tracks and other spoor.	影响发现和辨识足迹及其他踪迹的能力。	w
 After enduring an interrogation, {a} was released during {e}.	在{e1}期间，忍受审讯后，{a1}被释放了。	ht
 After enduring an interrogation, {a} was released within {p}.	在{p1}，忍受审讯后，{a1}被释放了。	ht
@@ -24709,6 +24714,7 @@ A small flat fish found on the muddy bottom of shallow seas.	在浅海泥泞的�
 A towering gray cloud descends from the white sky above you.	一团高耸的灰云从你头顶的白色天空中向下延伸。	hP
 A towering gray cloud descends from the white sky above you.	一团高耸的灰云从你头顶的白色天空中向下延伸。	hj
 A very large person with a spiky head frill and three horns.	一种体型很大的人形生物，头盾布满尖刺，另长有三根角。	lP
+Adventurer log agreement field: Foiled Corruption Conspiracy	已挫败的腐败阴谋	h
 Adventurer log reputation: greatly respected for heroic acts	因英雄之举而备受尊敬	h
 After enduring an interrogation, {a} was released during {e}	在{e1}期间，忍受审讯后，{a1}被释放了	ht
 After enduring an interrogation, {a} was released within {p}	在{p1}，忍受审讯后，{a1}被释放了	ht
@@ -25488,6 +25494,8 @@ A venomous person with the head and tail of a gila monster.	一种长着毒蜥�
 A very large person with a bony head frill and three horns.	一种体型很大的人形生物，长有骨质头盾和三根角。	lP
 Adventure item action: Go below hatch (no climbing/jumping)	到舱盖下方（不攀爬或跳跃）	h
 Adventure item action: Heat {s} near burning branches ({p})	在燃烧的树枝旁加热{s}（{p}）	h
+Adventurer log agreement field: make an offer of service to	向以下团体表示愿意效力：	h
+Adventurer log agreement type: Foiled Corruption Conspiracy	已挫败的腐败阴谋	h
 Adventurer log reputation: legendary preserver of knowledge	传奇博学大师	h
 After being interrogated by {a}, {a} implicated {a} at {p}.	在{p1}，经过{a1}审讯后，{a2}供出了{a3}。	ht
 After being interrogated by {a}, {a} implicated {a} in {p}.	在{p1}，经过{a1}审讯后，{a2}供出了{a3}。	ht
@@ -26337,6 +26345,7 @@ A small, long-armed ape. It lives in trees and eats fruit.	一种小型的长臂
 A tiny pest insect. It feeds on both crops and other bugs.	一种小型的害虫。它以庄稼和其他昆虫为食。	lP
 Ability to fight with objects not covered by other skills.	使用其他技能未涵盖的物品进行战斗的能力。	w
 Adventure action: Give a sermon inveighing against a value	发表反对某种价值观的布道	l
+Adventurer log agreement field: by invocation of True Name	由于真名被唤出。	h
 Adventurer log reputation: legendary protector of the weak	传奇庇护者	h
 After being interrogated by {a}, {a} implicated {a} at {p}	在{p1}，经过{a1}审讯后，{a2}供出了{a3}	ht
 After being interrogated by {a}, {a} implicated {a} in {p}	在{p1}，经过{a1}审讯后，{a2}供出了{a3}	ht
@@ -27227,6 +27236,7 @@ A small four-eyed fish person with a pronounced back fin.	一种小型四眼鱼�
 A small whiskered fish found scavenging in inland waters.	一种在内陆水域觅食的带须的小鱼。	lP
 Adventure action: Tell a story about a person or creature	讲述一个人物或生物的故事	l
 Adventure item action: Path to here (no climbing/jumping)	前往此处（不攀爬或跳跃）	h
+Adventurer log agreement field: Foiled Bribery Conspiracy	已挫败的贿赂阴谋	h
 Adventurer log reputation: rumored preserver of knowledge	传闻中的博学大师	h
 After being interrogated, {a} implicated {a} in the wilds	在荒野中，经过审讯后，{a1}供出了{a2}	ht
 After enduring an interrogation by {a}, {a} was released.	忍受{a1}的审讯后，{a2}被释放了。	ht
@@ -28189,6 +28199,8 @@ ALLOW THIS REJECTION TYPE and continue reporting others.	允许此类拒绝，�
 ALLOW THIS REJECTION TYPE and continue reporting others.	允许此类拒绝，并继续报告其他问题。	l
 Adventure item action: Heat {s} near burning trunk ({p})	在燃烧的树干旁加热{s}（{p}）	h
 Adventure item action: Heat {s} near burning twigs ({p})	在燃烧的细枝旁加热{s}（{p}）	h
+Adventurer log agreement field: agreed to adventure with	同意与以下对象共同冒险：	h
+Adventurer log agreement type: Foiled Bribery Conspiracy	已挫败的贿赂阴谋	h
 Adventurer log reputation: famous preserver of knowledge	名声显赫的博学大师	h
 Adventurer log reputation: rumored protector of the weak	传闻中的庇护者	h
 Affects ability to move quickly and dodge while armored.	影响穿甲时快速移动和闪避的能力。	w
@@ -29241,6 +29253,10 @@ A small winged reptile person with a long narrow mouth.	一种长有双翼的小
 A tiny feathered dinosaur with wings capable of flight.	一种微小的带羽毛恐龙，双翼能够飞行。	lP
 A vile force of darkness has arrived, seeking a parley!	一支邪恶的黑暗势力已经到来，要求谈判！	hP
 Adventure item action: Go below hatch ({d} levels down)	到舱盖下方（下方{d}层）	h
+Adventurer log agreement field: Centered on first heard	已定位到最初获悉处	h
+Adventurer log agreement field: Entertainment Agreement	表演约定	h
+Adventurer log agreement field: World Joining Agreement	降临世界协议	h
+Adventurer log agreement field: in insurrection against	共同起义，反抗以下势力：	h
 Adventurer log reputation: famous protector of the weak	声名显赫的庇护者	h
 Adventurer log reputation: known preserver of knowledge	众所周知的博学大师	h
 Adventurer log reputation: legendary information source	传奇情报来源	h
@@ -30257,6 +30273,9 @@ A very large legless person with a giant toothy mouth.	一种体型很大、没�
 Adventure item action: Go below hatch ({d} level down)	到舱盖下方（下方{d}层）	h
 Adventure item action: Heat {s} near burning cap ({p})	在燃烧的菌盖旁加热{s}（{p}）	h
 Adventure item action: Start new conversation with {n}	与{n}开始新的交谈	h
+Adventurer log agreement field: Centered on last heard	已定位到最近获悉处	h
+Adventurer log agreement type: Entertainment Agreement	表演约定	h
+Adventurer log agreement type: World Joining Agreement	降临世界协议	h
 Adventurer log reputation: infamous information source	臭名昭著的情报来源	h
 Adventurer log reputation: known protector of the weak	众所周知的庇护者	h
 Adventurer log reputation: noted protector of the weak	著名的庇护者	h
@@ -31332,6 +31351,9 @@ Adventure item action: Continue conversation with {n}	继续与{n}交谈	h
 Adventure item action: Go below hatch ({d} levels up)	到舱盖下方（上方{d}层）	h
 Adventure item action: Heat {s} near burning branches	在燃烧的树枝旁加热{s}	h
 Adventure item action: Path to here ({d} levels down)	前往此处（下方{d}层）	h
+Adventurer log agreement field: Adventuring Agreement	共同冒险的约定	h
+Adventurer log agreement field: Centered on commander	已定位到指挥官	h
+Adventurer log agreement field: Complete: report back	已完成：返回汇报	h
 Adventurer log reputation: legendary training partner	传奇训练伙伴	h
 Adventurer log reputation: rumored information source	传闻中的情报来源	h
 Alcohol, good food, and personal rooms go a long way.	酒、美食和私人房间都能起到很大作用。	hq
@@ -32490,6 +32512,11 @@ Adventure item action: Go below hatch ({d} level up)	到舱盖下方（上方{d}
 Adventure item action: Path to here ({d} level down)	前往此处（下方{d}层）	h
 Adventure item action: Ride {s}, push off toward {p}	乘坐{s}，向{p}蹬离	h
 Adventure performance genre: Biographical dictionary	传记辞典	l
+Adventurer log agreement field: Aid Rescue Agreement	协助营救的约定	h
+Adventurer log agreement field: Centered on location	已定位到地点	h
+Adventurer log agreement field: Grant of Citizenship	授予公民身份	h
+Adventurer log agreement field: throughout the world	足迹遍及整个世界。	h
+Adventurer log agreement type: Adventuring Agreement	共同冒险的约定	h
 Adventurer log reputation: dabbling training partner	初入门径的训练伙伴	h
 Adventurer log reputation: legendary treasure hunter	传奇寻宝者	h
 Adventurer log reputation: respected for heroic acts	因英雄之举而受人尊敬	h
@@ -33752,6 +33779,13 @@ A striped person with the head and tail of a skunk.	一种长着臭鼬头和尾�
 A tiny translucent creature, found in evil forests.	一种微小的半透明生物，发现于邪恶的森林中。	lP
 Adventure item action: Heat {s} near campfire ({p})	在篝火旁加热{s}（{p}）	h
 Adventure item action: Path to here ({d} levels up)	前往此处（上方{d}层）	h
+Adventurer log agreement field: Agreement concluded	约定已结束	h
+Adventurer log agreement field: Finish reporting in	完成汇报	h
+Adventurer log agreement field: Overthrow Agreement	推翻统治的约定	h
+Adventurer log agreement field: Promise of Position	许诺职位	h
+Adventurer log agreement field: Residency Agreement	居留协议	h
+Adventurer log agreement type: Aid Rescue Agreement	协助营救的约定	h
+Adventurer log agreement type: Grant of Citizenship	授予公民身份	h
 Adventurer log reputation: known information source	众所周知的情报来源	h
 Adventurer log reputation: noted information source	著名的情报来源	h
 After being interrogated by {a}, {a} implicated {a}	经过{a1}审讯后，{a2}供出了{a3}	ht
@@ -34983,6 +35017,14 @@ Adventure item action: Heat {s} near burning trunk	在燃烧的树干旁加热{s
 Adventure item action: Heat {s} near burning twigs	在燃烧的细枝旁加热{s}	h
 Adventure item action: Path to here ({d} level up)	前往此处（上方{d}层）	h
 Adventure performance genre: Comparative biography	比较传记	l
+Adventurer log agreement field: Assassination Plot	刺杀阴谋	h
+Adventurer log agreement field: Centered on target	已定位到目标	h
+Adventurer log agreement field: Parley Arrangement	会谈安排	h
+Adventurer log agreement field: in order to rescue	以便营救以下对象：	h
+Adventurer log agreement field: was bound to serve	被迫为以下对象效力：	h
+Adventurer log agreement type: Overthrow Agreement	推翻统治的约定	h
+Adventurer log agreement type: Promise of Position	许诺职位	h
+Adventurer log agreement type: Residency Agreement	居留协议	h
 Adventurer log reputation: famous training partner	名声显赫的训练伙伴	h
 Adventurer log reputation: legendary enemy fighter	传奇退敌斗士	h
 Adventurer log reputation: legendary loyal soldier	传奇的忠诚军人	h
@@ -36305,6 +36347,13 @@ A very large woolly mammal person with two tusks.	一种体型很大的长毛哺
 Adventure action: Give a sermon promoting a value	发表宣扬某种价值观的布道	l
 Adventure item action: Continue conversation with	继续交谈	h
 Adventure item action: What will you do with {s}?	你想如何处理{s}？	h
+Adventurer log agreement field: Cause trouble for	给以下团体制造麻烦：	h
+Adventurer log agreement field: Infiltration Plot	渗透阴谋	h
+Adventurer log agreement field: Not yet completed	尚未完成	h
+Adventurer log agreement field: Retrieve Artifact	取回神器	h
+Adventurer log agreement field: War Starting Plot	挑起战争的阴谋	h
+Adventurer log agreement type: Assassination Plot	刺杀阴谋	h
+Adventurer log agreement type: Parley Arrangement	会谈安排	h
 Adventurer log group status: Affiliated mercenary	附属佣兵	h
 Adventurer log group status: Associated mercenary	有关联的佣兵	h
 Adventurer log reputation: dabbling trade partner	初入门径的贸易伙伴	h
@@ -37716,6 +37765,12 @@ Adventure item action: Heat {s} near burning cap	在燃烧的菌盖旁加热{s}	
 Adventure item action: Heat {s} near magma ({p})	在岩浆旁加热{s}（{p}）	h
 Adventure performance genre: Cultural comparison	文化比较	l
 Adventure performance genre: Musical composition	乐曲	l
+Adventurer log agreement field: Drive members of	驱逐以下团体的成员：	h
+Adventurer log agreement field: Rescue Agreement	营救约定	h
+Adventurer log agreement field: somebody unknown	身份不明的人	h
+Adventurer log agreement type: Infiltration Plot	渗透阴谋	h
+Adventurer log agreement type: Retrieve Artifact	取回神器	h
+Adventurer log agreement type: War Starting Plot	挑起战争的阴谋	h
 Adventurer log reputation: known treasure hunter	众所周知的宝物猎人	h
 Adventurer log reputation: legendary storyteller	传奇说书人	h
 Adventurer log reputation: noted treasure hunter	著名的宝物猎人	h
@@ -39204,6 +39259,12 @@ Adventure item action: Drink {s} from {s} ({p})	饮用{s2}中的{s1}（{p}）	h
 Adventure item action: Heat {s} near fire ({p})	在火旁加热{s}（{p}）	h
 Adventure item action: Heat {s} near lava ({p})	在熔岩旁加热{s}（{p}）	h
 Adventure performance list continuation: (etc.)	（等）	l
+Adventurer log agreement field: Bound Servitude	受束缚的服役	h
+Adventurer log agreement field: Build Structure	建造设施	h
+Adventurer log agreement field: Guide Agreement	向导约定	h
+Adventurer log agreement field: agreed to guide	同意为以下对象带路：	h
+Adventurer log agreement field: thereby freeing	从而解放以下地点：	h
+Adventurer log agreement type: Rescue Agreement	营救约定	h
 Adventurer log reputation: famous loyal soldier	名声显赫的忠诚军人	h
 Adventurer log reputation: famous trade partner	名声显赫的贸易伙伴	h
 Announcement combat ability []: Cause dizziness	引发眩晕	l
@@ -40637,6 +40698,13 @@ A very large dinosaur person with a long neck.	一种体型很大、颈部修长
 Adventure item action: Fill {s} from {s} ({p})	用{s2}中的内容物装满{s1}（{p}）	h
 Adventure item action: Fill {s} with {s} ({p})	用{s2}装满{s1}（{p}）	h
 Adventure performance genre: Alternate history	架空历史	l
+Adventurer log agreement field: Abduction Plot	绑架阴谋	h
+Adventurer log agreement field: Artifact Theft	盗取神器	h
+Adventurer log agreement field: agreed to join	同意与以下对象同行：	h
+Adventurer log agreement field: requested that	请求：	h
+Adventurer log agreement type: Bound Servitude	受束缚的服役	h
+Adventurer log agreement type: Build Structure	建造设施	h
+Adventurer log agreement type: Guide Agreement	向导约定	h
 Adventurer log group status: Aligned mercenary	立场一致的佣兵	h
 Adventurer log group status: Devoted mercenary	忠心耿耿的佣兵	h
 Adventurer log reputation: known enemy fighter	众所周知的敌方战士	h
@@ -42196,6 +42264,12 @@ Adventure item action: Lower {s} bucket ({p})	降下{s}的水桶（{p}）	h
 Adventure item action: Raise {s} bucket ({p})	升起{s}的水桶（{p}）	h
 Adventure item action: Shout out to everybody	向所有人喊话	h
 Adventure performance genre: Cultural history	文化史	l
+Adventurer log agreement field: An order from	下令者：	h
+Adventurer log agreement field: Offer Service	提供服务	h
+Adventurer log agreement field: Sabotage Plot	破坏阴谋	h
+Adventurer log agreement field: Unknown month	（月份未知）	h
+Adventurer log agreement type: Abduction Plot	绑架阴谋	h
+Adventurer log agreement type: Artifact Theft	盗取神器	h
 Adventurer log group status: Affiliated slave	附属奴隶	h
 Adventurer log group status: Associated slave	有关联的奴隶	h
 Adventurer log group status: Former mercenary	前佣兵	h
@@ -43722,6 +43796,9 @@ Adventure item action: Dismount to {s} ({p})	下坐骑到{s}（{p}）	h
 Adventure item action: Where do you put {s}?	你想把{s}放在哪里？	h
 Adventure movement qualifier: releasing hold	，松开抓握	h
 Adventure performance value: Martial Prowess	武勇	l
+Adventurer log agreement field: Framing Plot	栽赃阴谋	h
+Adventurer log agreement type: Offer Service	提供服务	h
+Adventurer log agreement type: Sabotage Plot	破坏阴谋	h
 Adventurer log group status: Former prisoner	前囚犯	h
 Adventurer log group status: Loyal mercenary	忠诚的佣兵	h
 Adventurer log reputation: infamous intruder	臭名昭著的入侵者	h
@@ -45364,6 +45441,7 @@ Adventure action: Raise once-resting zombie	复生昔日安眠的僵尸	l
 Adventure action: Tell a story about a site	讲述一个地点的故事	l
 Adventure item action: Quickly throw at {n}	快速投向{n}	h
 Adventure performance genre: Star catalogue	星表	l
+Adventurer log agreement type: Framing Plot	栽赃阴谋	h
 Adventurer log group status: Devoted member	忠心耿耿的成员	h
 Adventurer log reputation: infamous brigand	臭名昭著的强盗	h
 Adventurer log reputation: infamous monster	臭名昭著的怪物	h
@@ -47032,6 +47110,8 @@ Adventure performance genre: Autobiography	自传	l
 Adventure performance value: Craftsmanship	工艺	l
 Adventure performance value: Introspection	自省	l
 Adventure: move view/cursor down (z), fast	冒险模式：向下移动视野/光标（z），快速	w
+Adventurer log agreement field: Corruption	腐败	h
+Adventurer log agreement field: asked that	请求：	h
 Adventurer log group status: Aligned slave	立场一致的奴隶	h
 Adventurer log group status: Devoted slave	忠心耿耿的奴隶	h
 Adventurer log group status: Former member	前成员	h
@@ -48911,6 +48991,7 @@ Adventure performance value: Independence	独立	l
 Adventure performance value: Leisure Time	闲暇	l
 Adventure performance value: Perseverance	坚持	l
 Adventure performance value: Self-Control	自律	l
+Adventurer log agreement type: Corruption	腐败	h
 Adventurer log group status: Former slave	前奴隶	h
 Adventurer log group status: Loyal member	忠诚的成员	h
 Adventurer log reputation: famous brawler	名声显赫的斗士	h
@@ -50719,6 +50800,7 @@ Adventure performance value: Competition	竞争	l
 Adventure performance value: Cooperation	合作	l
 Adventure performance value: Tranquility	宁静	l
 Adventure: move view/cursor up (z), fast	冒险模式：向上移动视野/光标（z），快速	w
+Adventurer log agreement field: retrieve	取回：	h
 Adventurer log group status: Loyal slave	忠诚的奴隶	h
 Adventurer log reputation: famous dancer	名声显赫的舞蹈家	h
 Adventurer log reputation: known brawler	众所周知的斗士	h
@@ -54527,6 +54609,7 @@ Adventure performance value: Knowledge	知识	l
 Adventure performance value: Merriment	欢乐	l
 Adventure performance value: Sacrifice	牺牲	l
 Adventure performance value: Tradition	传统	l
+Adventurer log agreement field: out of	逐出以下地点：	h
 Adventurer log reputation: famous ally	名声显赫的同盟者	h
 Adventurer log reputation: famous bard	名声显赫的吟游诗人	h
 Adventurer log reputation: famous hero	名声显赫的英雄	h
@@ -56670,6 +56753,8 @@ Adventure movement qualifier: holding	，抓住	h
 Adventure performance value: Commerce	商业	l
 Adventure performance value: Fairness	公平	l
 Adventure performance value: Stoicism	斯多葛主义	l
+Adventurer log agreement field: Drive	驱逐以下团体：	h
+Adventurer log agreement field: serve	为以下团体效力：	h
 Adventurer log group status: Criminal	罪犯	h
 Adventurer log group status: Prisoner	囚犯	h
 Adventurer log reputation: known ally	众所周知的同盟者	h
@@ -58738,6 +58823,8 @@ Adventure performance value: Harmony	和谐	l
 Adventure performance value: Loyalty	忠诚	l
 Adventure performance value: Romance	浪漫	l
 Adventure: move view/cursor down (z)	冒险模式：向下移动视野/光标（z）	w
+Adventurer log agreement field: Kill	杀死以下目标：	h
+Adventurer log agreement field: from	来源：	h
 Adventurer log group status: Aligned	立场一致	h
 Affects maximum number of followers.	影响追随者人数上限。	w
 Agreement date: {d}nd Limestone, {d}	协议日期：第{d2}年石灰岩月{d1}日	hPt
@@ -60911,6 +60998,9 @@ Adventure performance genre: Letter	信	l
 Adventure performance genre: Manual	手册	l
 Adventure performance value: Family	家庭	l
 Adventure performance value: Nature	自然	l
+Adventurer log agreement field: You	你	h
+Adventurer log agreement field: for	交给：	h
+Adventurer log agreement field: you	你	h
 Agree to have {e} pay homage to {e}	同意让{e1}向{e2}称臣纳贡	hPt
 Agreement date: {d}nd Hematite, {d}	协议日期：第{d2}年赤铁矿月{d1}日	hPt
 Agreement date: {d}nd Obsidian, {d}	协议日期：第{d2}年黑曜石月{d1}日	hPt
@@ -63123,6 +63213,7 @@ Adventure performance value: Truth	诚实	l
 Adventure performance voice: Chant	吟唱	l
 Adventure performance voice: Speak	念白	l
 Adventure: move view/cursor up (z)	冒险模式：向上移动视野/光标（z）	w
+Adventurer log agreement field: to	前往：	h
 Adventurer log group status: Enemy	敌人	h
 Adventurer log reputation: comrade	同志	h
 Age of the {s} and the {s} at {p}.	在{p1}，{s1}与{s2}的时代。	htEi

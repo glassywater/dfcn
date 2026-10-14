@@ -12444,3 +12444,96 @@ Build placement: Track (W)	轨道（西）	wi
 Build placement: Track (NSW)	轨道（北南西）	wi
 Build placement: Track/Ramp (N)	坡道轨道（北）	wi
 Build placement: Track (SE)	轨道（南东）	wi
+
+# Adventure journal agreement fields: ELF 53.16 17cda80 / 17db9b0
+Adventurer log agreement type: World Joining Agreement	降临世界协议	h
+Adventurer log agreement type: Residency Agreement	居留协议	h
+Adventurer log agreement type: Grant of Citizenship	授予公民身份	h
+Adventurer log agreement type: Parley Arrangement	会谈安排	h
+Adventurer log agreement type: Corruption	腐败	h
+Adventurer log agreement type: Artifact Theft	盗取神器	h
+Adventurer log agreement type: Promise of Position	许诺职位	h
+Adventurer log agreement type: Assassination Plot	刺杀阴谋	h
+Adventurer log agreement type: Abduction Plot	绑架阴谋	h
+Adventurer log agreement type: Sabotage Plot	破坏阴谋	h
+Adventurer log agreement type: Infiltration Plot	渗透阴谋	h
+Adventurer log agreement type: Framing Plot	栽赃阴谋	h
+Adventurer log agreement type: War Starting Plot	挑起战争的阴谋	h
+Adventurer log agreement type: Foiled Embezzlement Conspiracy	已挫败的挪用资金阴谋	h
+Adventurer log agreement type: Foiled Corruption Conspiracy	已挫败的腐败阴谋	h
+Adventurer log agreement type: Foiled Bribery Conspiracy	已挫败的贿赂阴谋	h
+Adventurer log agreement type: Build Structure	建造设施	h
+Adventurer log agreement type: Offer Service	提供服务	h
+Adventurer log agreement type: Retrieve Artifact	取回神器	h
+Adventurer log agreement type: Overthrow Agreement	推翻统治的约定	h
+Adventurer log agreement type: Adventuring Agreement	共同冒险的约定	h
+Adventurer log agreement type: Guide Agreement	向导约定	h
+Adventurer log agreement type: Rescue Agreement	营救约定	h
+Adventurer log agreement type: Aid Rescue Agreement	协助营救的约定	h
+Adventurer log agreement type: Bound Servitude	受束缚的服役	h
+Adventurer log agreement type: Entertainment Agreement	表演约定	h
+Adventurer log agreement field: World Joining Agreement	降临世界协议	h
+Adventurer log agreement field: Residency Agreement	居留协议	h
+Adventurer log agreement field: Grant of Citizenship	授予公民身份	h
+Adventurer log agreement field: Parley Arrangement	会谈安排	h
+Adventurer log agreement field: Corruption	腐败	h
+Adventurer log agreement field: Artifact Theft	盗取神器	h
+Adventurer log agreement field: Promise of Position	许诺职位	h
+Adventurer log agreement field: Assassination Plot	刺杀阴谋	h
+Adventurer log agreement field: Abduction Plot	绑架阴谋	h
+Adventurer log agreement field: Sabotage Plot	破坏阴谋	h
+Adventurer log agreement field: Infiltration Plot	渗透阴谋	h
+Adventurer log agreement field: Framing Plot	栽赃阴谋	h
+Adventurer log agreement field: War Starting Plot	挑起战争的阴谋	h
+Adventurer log agreement field: Foiled Embezzlement Conspiracy	已挫败的挪用资金阴谋	h
+Adventurer log agreement field: Foiled Corruption Conspiracy	已挫败的腐败阴谋	h
+Adventurer log agreement field: Foiled Bribery Conspiracy	已挫败的贿赂阴谋	h
+Adventurer log agreement field: Build Structure	建造设施	h
+Adventurer log agreement field: Offer Service	提供服务	h
+Adventurer log agreement field: Retrieve Artifact	取回神器	h
+Adventurer log agreement field: Overthrow Agreement	推翻统治的约定	h
+Adventurer log agreement field: Adventuring Agreement	共同冒险的约定	h
+Adventurer log agreement field: Guide Agreement	向导约定	h
+Adventurer log agreement field: Rescue Agreement	营救约定	h
+Adventurer log agreement field: Aid Rescue Agreement	协助营救的约定	h
+Adventurer log agreement field: Bound Servitude	受束缚的服役	h
+Adventurer log agreement field: Entertainment Agreement	表演约定	h
+Adventurer log agreement field: You	你	h
+Adventurer log agreement field: you	你	h
+Adventurer log agreement field: somebody unknown	身份不明的人	h
+Adventurer log agreement field: agreed to join	同意与以下对象同行：	h
+Adventurer log agreement field: in insurrection against	共同起义，反抗以下势力：	h
+Adventurer log agreement field: thereby freeing	从而解放以下地点：	h
+Adventurer log agreement field: agreed to guide	同意为以下对象带路：	h
+Adventurer log agreement field: to	前往：	h
+Adventurer log agreement field: in order to be brought safely away from	以便被安全带离以下地点：	h
+Adventurer log agreement field: in order to rescue	以便营救以下对象：	h
+Adventurer log agreement field: agreed to adventure with	同意与以下对象共同冒险：	h
+Adventurer log agreement field: wherever the journey might lead	无论旅途通向何方。	h
+Adventurer log agreement field: was bound to serve	被迫为以下对象效力：	h
+Adventurer log agreement field: by invocation of True Name	由于真名被唤出。	h
+Adventurer log agreement field: agreed to entertain people with	同意与以下对象为众人表演：	h
+Adventurer log agreement field: throughout the world	足迹遍及整个世界。	h
+Adventurer log agreement field: requested that	请求：	h
+Adventurer log agreement field: make an offer of service to	向以下团体表示愿意效力：	h
+Adventurer log agreement field: asked that	请求：	h
+Adventurer log agreement field: retrieve	取回：	h
+Adventurer log agreement field: serve	为以下团体效力：	h
+Adventurer log agreement field: from	来源：	h
+Adventurer log agreement field: for	交给：	h
+Adventurer log agreement field: Agreement concluded	约定已结束	h
+Adventurer log agreement field: Unknown month	（月份未知）	h
+Adventurer log agreement field: Kill	杀死以下目标：	h
+Adventurer log agreement field: Cause trouble for	给以下团体制造麻烦：	h
+Adventurer log agreement field: Drive	驱逐以下团体：	h
+Adventurer log agreement field: Drive members of	驱逐以下团体的成员：	h
+Adventurer log agreement field: out of	逐出以下地点：	h
+Adventurer log agreement field: An order from	下令者：	h
+Adventurer log agreement field: Finish reporting in	完成汇报	h
+Adventurer log agreement field: Complete: report back	已完成：返回汇报	h
+Adventurer log agreement field: Not yet completed	尚未完成	h
+Adventurer log agreement field: Centered on location	已定位到地点	h
+Adventurer log agreement field: Centered on commander	已定位到指挥官	h
+Adventurer log agreement field: Centered on target	已定位到目标	h
+Adventurer log agreement field: Centered on first heard	已定位到最初获悉处	h
+Adventurer log agreement field: Centered on last heard	已定位到最近获悉处	h

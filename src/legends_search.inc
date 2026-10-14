@@ -57,7 +57,8 @@ std::optional<std::string> Overlay::translate_journal_title(std::string_view sou
         if (!target) target = translate_legends_name(source, true);
         break;
     case JournalSearchKind::Agreement:
-        target = translate_announcement_combat(source, "agreement-title");
+        target = translate_journal_agreement_title(source);
+        if (!target) target = translate_announcement_combat(source, "agreement-title");
         if (!target) target = translate_legends_event(source);
         if (!target) target = translate_legends_text(std::string(source), false, false);
         break;
