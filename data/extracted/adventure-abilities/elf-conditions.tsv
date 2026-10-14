@@ -1,0 +1,497 @@
+source_asm	instruction	condition_operands
+elf-11c2370.asm	0x11c23b0	cmp    BYTE PTR [rdi+0x10],0x0
+elf-11c2370.asm	0x11c23ba	cmp    BYTE PTR [rdi+0x8],0x0
+elf-11c2370.asm	0x11c240d	cmp    BYTE PTR [rip+0x131a0ad],0x0        # 24dc4c1
+elf-11c2370.asm	0x11c2492	cmp    eax,0x21
+elf-11c2370.asm	0x11c24a0	cmp    eax,edx
+elf-11c2370.asm	0x11c24d4	cmp    ebx,eax
+elf-11c2370.asm	0x11c2540	cmp    DWORD PTR [rbp-0xb4],ebx
+elf-11c2370.asm	0x11c254c	cmp    DWORD PTR [rbp-0xb0],r14d
+elf-11c2370.asm	0x11c2559	cmp    DWORD PTR [rbp-0xa8],r14d
+elf-11c2370.asm	0x11c257d	cmp    DWORD PTR [rbp-0xa8],r14d
+elf-11c2370.asm	0x11c25b8	cmp    rax,QWORD PTR [rip+0x12ca1c9]        # 248c788
+elf-11c2370.asm	0x11c25c5	cmp    QWORD PTR [rip+0x12ca25c],r15        # 248c828
+elf-11c2370.asm	0x11c25d2	cmp    QWORD PTR [rip+0x12ca257],r15        # 248c830
+elf-11c2370.asm	0x11c25e6	cmp    rdx,QWORD PTR [rip+0x12ca24b]        # 248c838
+elf-11c2370.asm	0x11c25f3	cmp    rdx,QWORD PTR [rip+0x12ca246]        # 248c840
+elf-11c2370.asm	0x11c2603	cmp    BYTE PTR [rip+0x12ca025],0x0        # 248c62f
+elf-11c2370.asm	0x11c261a	cmp    BYTE PTR [rip+0x12ca00d],0x0        # 248c62e
+elf-11c2370.asm	0x11c26c8	cmp    DWORD PTR [rbp-0xc0],ebx
+elf-11c2370.asm	0x11c26d4	cmp    DWORD PTR [rbp-0xb0],r14d
+elf-11c2370.asm	0x11c26e1	cmp    DWORD PTR [rbp-0xa8],r14d
+elf-11c2370.asm	0x11c2710	cmp    rax,rdx
+elf-11c2370.asm	0x11c2720	cmp    BYTE PTR [rip+0x1319d9a],0x0        # 24dc4c1
+elf-11c2370.asm	0x11c2757	cmp    rcx,rdx
+elf-11c2370.asm	0x11c2760	cmp    BYTE PTR [rip+0x1319d5a],0x0        # 24dc4c1
+elf-11c2370.asm	0x11c2798	cmp    edx,0x6e
+elf-11c2370.asm	0x11c27af	cmp    edx,0x19
+elf-11c2370.asm	0x11c2806	cmp    edx,eax
+elf-11c2370.asm	0x11c2838	cmp    ebx,0x1e
+elf-11c2370.asm	0x11c2841	cmp    DWORD PTR [rbp-0xb4],r13d
+elf-11c2370.asm	0x11c284e	cmp    DWORD PTR [rbp-0xa8],r13d
+elf-11c2370.asm	0x11c286a	cmp    DWORD PTR [rbp-0xa8],r12d
+elf-11c2370.asm	0x11c28b5	cmp    rax,QWORD PTR [rip+0x12c9ecc]        # 248c788
+elf-11c2370.asm	0x11c28c2	cmp    QWORD PTR [rip+0x12c9f5f],r15        # 248c828
+elf-11c2370.asm	0x11c28cf	cmp    QWORD PTR [rip+0x12c9f5a],r15        # 248c830
+elf-11c2370.asm	0x11c28e3	cmp    QWORD PTR [rip+0x12c9f4e],rdx        # 248c838
+elf-11c2370.asm	0x11c28f0	cmp    QWORD PTR [rip+0x12c9f49],rdx        # 248c840
+elf-11c2370.asm	0x11c2900	cmp    BYTE PTR [rip+0x12c9d28],0x0        # 248c62f
+elf-11c2370.asm	0x11c2916	cmp    BYTE PTR [rip+0x12c9d11],0x0        # 248c62e
+elf-11c2370.asm	0x11c29c0	cmp    ebx,DWORD PTR [rbp-0xe8]
+elf-11c2370.asm	0x11c29cc	cmp    DWORD PTR [rbp-0xb4],r13d
+elf-11c2370.asm	0x11c29d9	cmp    DWORD PTR [rbp-0xa8],r13d
+elf-11c2370.asm	0x11c29f5	cmp    DWORD PTR [rbp-0xa8],r12d
+elf-11c2370.asm	0x11c2a19	cmp    ebx,0x1f
+elf-11c2370.asm	0x11c2a30	cmp    DWORD PTR [rbp-0xb4],r13d
+elf-11c2370.asm	0x11c2a3d	cmp    DWORD PTR [rbp-0xa8],r13d
+elf-11c2370.asm	0x11c2a59	cmp    DWORD PTR [rbp-0xa8],r12d
+elf-11c2370.asm	0x11c2a7e	cmp    ebx,edx
+elf-11c2370.asm	0x11c2a99	cmp    eax,edx
+elf-11c2370.asm	0x11c2aa0	test   eax,eax
+elf-11c2370.asm	0x11c2aa9	cmp    edx,ebx
+elf-11c2370.asm	0x11c2aae	cmp    edx,eax
+elf-11c2370.asm	0x11c2b56	cmp    eax,0x4
+elf-11c2370.asm	0x11c2b5f	cmp    eax,0xd
+elf-11c2370.asm	0x11c2b83	test   rax,rax
+elf-11c2370.asm	0x11c2bbc	test   dx,dx
+elf-11c2370.asm	0x11c2be4	cmp    dx,cx
+elf-11c2370.asm	0x11c2c1c	cmp    rdi,r14
+elf-11c2370.asm	0x11c2c60	cmp    DWORD PTR [rbp-0xb4],r14d
+elf-11c2370.asm	0x11c2cdd	test   esi,esi
+elf-11c2370.asm	0x11c2ce9	test   BYTE PTR [rcx],0x1
+elf-11c2370.asm	0x11c2d23	cmp    rcx,QWORD PTR [rip+0x12c9a5e]        # 248c788
+elf-11c2370.asm	0x11c2d33	cmp    r10,QWORD PTR [rip+0x12c9aee]        # 248c828
+elf-11c2370.asm	0x11c2d40	cmp    r10,QWORD PTR [rip+0x12c9ae9]        # 248c830
+elf-11c2370.asm	0x11c2d4d	cmp    r9,QWORD PTR [rip+0x12c9ae4]        # 248c838
+elf-11c2370.asm	0x11c2d5a	cmp    r9,QWORD PTR [rip+0x12c9adf]        # 248c840
+elf-11c2370.asm	0x11c2d6a	cmp    BYTE PTR [rip+0x12c98be],0x0        # 248c62f
+elf-11c2370.asm	0x11c2d80	cmp    BYTE PTR [rip+0x12c98a7],0x0        # 248c62e
+elf-11c2370.asm	0x11c2e45	cmp    r12d,r15d
+elf-11c2370.asm	0x11c2e64	test   esi,esi
+elf-11c2370.asm	0x11c2e6c	test   BYTE PTR [rcx],0x1
+elf-11c2370.asm	0x11c2e77	test   esi,esi
+elf-11c2370.asm	0x11c2e82	cmp    DWORD PTR [rbp-0xb0],r14d
+elf-11c2370.asm	0x11c2e8f	cmp    DWORD PTR [rbp-0xb4],r14d
+elf-11c2370.asm	0x11c2eb0	cmp    DWORD PTR [rbp-0xb0],r14d
+elf-11c2370.asm	0x11c2ebd	cmp    r14d,DWORD PTR [rbp-0xd0]
+elf-11c2370.asm	0x11c2eca	cmp    r14d,DWORD PTR [rbp-0xd8]
+elf-11c2370.asm	0x11c2ed7	cmp    r14d,DWORD PTR [rbp-0xf8]
+elf-11c2370.asm	0x11c2eeb	cmp    r14d,DWORD PTR [rbp-0x100]
+elf-11c2370.asm	0x11c2f17	cmp    DWORD PTR [rbp-0xb4],r14d
+elf-11c2370.asm	0x11c2f24	test   esi,esi
+elf-11c2370.asm	0x11c2f2f	test   BYTE PTR [rax],0x1
+elf-11c2370.asm	0x11c2f3a	test   ecx,ecx
+elf-11c2370.asm	0x11c2f98	cmp    eax,0xd
+elf-11c2370.asm	0x11c2fa1	cmp    eax,0x2e
+elf-11c2370.asm	0x11c2faa	cmp    eax,0x4
+elf-11c2370.asm	0x11c2fd7	cmp    r14,QWORD PTR [rbp-0x58]
+elf-11c2370.asm	0x11c2fe4	test   r15d,r15d
+elf-11c2370.asm	0x11c3088	cmp    r15d,eax
+elf-11c2370.asm	0x11c30a3	cmp    rax,QWORD PTR [rbp-0xd8]
+elf-11c2370.asm	0x11c30b4	cmp    rdi,QWORD PTR [rbp-0xf0]
+elf-11c2370.asm	0x11c30e2	cmp    DWORD PTR [rbp-0xb8],r12d
+elf-11c2370.asm	0x11c30f5	cmp    DWORD PTR [rbp-0x150],edx
+elf-11c2370.asm	0x11c3108	cmp    BYTE PTR [rax+0x10],0x0
+elf-11c2370.asm	0x11c3112	cmp    BYTE PTR [rip+0x13193a8],0x0        # 24dc4c1
+elf-11c2370.asm	0x11c319a	cmp    eax,0x21
+elf-11c2370.asm	0x11c31a8	cmp    eax,edx
+elf-11c2370.asm	0x11c31dc	cmp    ebx,eax
+elf-11c2370.asm	0x11c3240	cmp    DWORD PTR [rbp-0xb4],ebx
+elf-11c2370.asm	0x11c324c	cmp    DWORD PTR [rbp-0xb0],r15d
+elf-11c2370.asm	0x11c3259	cmp    DWORD PTR [rbp-0xa8],r15d
+elf-11c2370.asm	0x11c327d	cmp    DWORD PTR [rbp-0xa8],r15d
+elf-11c2370.asm	0x11c32b8	cmp    rax,QWORD PTR [rip+0x12c94c9]        # 248c788
+elf-11c2370.asm	0x11c32c5	cmp    r12,QWORD PTR [rip+0x12c955c]        # 248c828
+elf-11c2370.asm	0x11c32d2	cmp    r12,QWORD PTR [rip+0x12c9557]        # 248c830
+elf-11c2370.asm	0x11c32e6	cmp    QWORD PTR [rip+0x12c954b],rdx        # 248c838
+elf-11c2370.asm	0x11c32f3	cmp    QWORD PTR [rip+0x12c9546],rdx        # 248c840
+elf-11c2370.asm	0x11c3303	cmp    BYTE PTR [rip+0x12c9325],0x0        # 248c62f
+elf-11c2370.asm	0x11c3319	cmp    BYTE PTR [rip+0x12c930e],0x0        # 248c62e
+elf-11c2370.asm	0x11c33c8	cmp    DWORD PTR [rbp-0xd0],ebx
+elf-11c2370.asm	0x11c33d4	cmp    DWORD PTR [rbp-0xb0],r15d
+elf-11c2370.asm	0x11c33e1	cmp    DWORD PTR [rbp-0xa8],r15d
+elf-11c2370.asm	0x11c3448	cmp    DWORD PTR [rbp-0xb0],r15d
+elf-11c2370.asm	0x11c3455	cmp    DWORD PTR [rbp-0xa8],r15d
+elf-11c2370.asm	0x11c34c9	cmp    ebx,DWORD PTR [rbp-0xe0]
+elf-11c2370.asm	0x11c34eb	test   r15d,r15d
+elf-11c2370.asm	0x11c34f0	cmp    r15d,0xb
+elf-11c2370.asm	0x11c3540	cmp    r12,QWORD PTR [rbp-0xd8]
+elf-11c2370.asm	0x11c3558	test   r15d,r15d
+elf-11c2370.asm	0x11c35aa	cmp    r12,r15
+elf-11c2370.asm	0x11c3627	cmp    r12d,DWORD PTR [rbp-0xb8]
+elf-11c2370.asm	0x11c3675	test   rax,rax
+elf-11c2370.asm	0x11c36b7	cmp    r15d,0x3
+elf-11c2370.asm	0x11c3778	test   rax,rax
+elf-11c2370.asm	0x11c380a	test   rax,rax
+elf-11c2370.asm	0x11c388b	cmp    r12,r13
+elf-11c2370.asm	0x11c38f9	cmp    rdi,rbx
+elf-11c2370.asm	0x11c3981	cmp    rdi,rbx
+elf-11c2370.asm	0x11c39e0	cmp    rdi,rbx
+elf-11c2370.asm	0x11c3a43	cmp    ebx,edi
+elf-11c2370.asm	0x11c3a5c	cmp    eax,edx
+elf-11c2370.asm	0x11c3a63	test   eax,eax
+elf-11c2370.asm	0x11c3a6b	cmp    edx,edi
+elf-11c2370.asm	0x11c3a70	cmp    eax,edx
+elf-11c2370.asm	0x11c3b11	cmp    eax,0x4
+elf-11c2370.asm	0x11c3b1a	cmp    eax,0xd
+elf-11c2370.asm	0x11c3b3e	test   rax,rax
+elf-11c2370.asm	0x11c3b73	test   ax,ax
+elf-11c2370.asm	0x11c3b9b	cmp    ax,cx
+elf-11c2370.asm	0x11c3bd7	cmp    rdi,r15
+elf-11c2370.asm	0x11c3c1c	cmp    DWORD PTR [rbp-0xc0],r15d
+elf-11c2370.asm	0x11c3c99	test   ecx,ecx
+elf-11c2370.asm	0x11c3ca5	test   BYTE PTR [rsi],0x1
+elf-11c2370.asm	0x11c3ce1	cmp    rsi,QWORD PTR [rip+0x12c8aa0]        # 248c788
+elf-11c2370.asm	0x11c3cf1	cmp    r11,QWORD PTR [rip+0x12c8b30]        # 248c828
+elf-11c2370.asm	0x11c3cfe	cmp    r11,QWORD PTR [rip+0x12c8b2b]        # 248c830
+elf-11c2370.asm	0x11c3d0b	cmp    r10,QWORD PTR [rip+0x12c8b26]        # 248c838
+elf-11c2370.asm	0x11c3d18	cmp    r10,QWORD PTR [rip+0x12c8b21]        # 248c840
+elf-11c2370.asm	0x11c3d28	cmp    BYTE PTR [rip+0x12c8900],0x0        # 248c62f
+elf-11c2370.asm	0x11c3d3f	cmp    BYTE PTR [rip+0x12c88e8],0x0        # 248c62e
+elf-11c2370.asm	0x11c3e0d	cmp    DWORD PTR [rbp-0xb0],r13d
+elf-11c2370.asm	0x11c3e30	test   ecx,ecx
+elf-11c2370.asm	0x11c3e38	test   BYTE PTR [rcx],0x1
+elf-11c2370.asm	0x11c3e43	test   eax,eax
+elf-11c2370.asm	0x11c3e47	cmp    DWORD PTR [rbp-0xb4],r15d
+elf-11c2370.asm	0x11c3e54	cmp    DWORD PTR [rbp-0xc0],r15d
+elf-11c2370.asm	0x11c3e80	cmp    DWORD PTR [rbp-0xb4],r15d
+elf-11c2370.asm	0x11c3e8d	cmp    DWORD PTR [rbp-0xe0],r15d
+elf-11c2370.asm	0x11c3e9a	cmp    r15d,DWORD PTR [rbp-0xe8]
+elf-11c2370.asm	0x11c3ea7	cmp    r15d,DWORD PTR [rbp-0x100]
+elf-11c2370.asm	0x11c3eb4	cmp    r15d,DWORD PTR [rbp-0x108]
+elf-11c2370.asm	0x11c3ee6	cmp    DWORD PTR [rbp-0xc0],r15d
+elf-11c2370.asm	0x11c3ef3	test   ecx,ecx
+elf-11c2370.asm	0x11c3efe	test   BYTE PTR [rax],0x1
+elf-11c2370.asm	0x11c3f0a	test   r13d,r13d
+elf-11c2370.asm	0x11c3f94	cmp    eax,0xd
+elf-11c2370.asm	0x11c3f9d	cmp    eax,0x2e
+elf-11c2370.asm	0x11c3fa6	cmp    eax,0x4
+elf-11c2370.asm	0x11c3fc0	cmp    rbx,QWORD PTR [rbp-0x58]
+elf-11c2370.asm	0x11c3fcd	test   r15d,r15d
+elf-11c2370.asm	0x11c3fed	cmp    rdi,QWORD PTR [rbp-0xf0]
+elf-11c2370.asm	0x11c4029	cmp    rax,QWORD PTR [rbp-0x130]
+elf-11c2370.asm	0x11c403c	cmp    DWORD PTR [rbp-0x150],eax
+elf-11c2370.asm	0x11c40fc	test   rax,rax
+elf-11c2370.asm	0x11c412a	cmp    r15d,0x3
+elf-11c2370.asm	0x11c41d1	test   rax,rax
+elf-11c2370.asm	0x11c4228	test   rax,rax
+elf-11c2370.asm	0x11c43ee	cmp    edx,0x19
+elf-11c2370.asm	0x11c441a	cmp    ebx,0x1e
+elf-11c2370.asm	0x11c44ff	cmp    DWORD PTR [rip+0x17b6db2],0x1        # 297b2b8
+elf-11c2370.asm	0x11c452f	cmp    ebx,eax
+elf-11c2370.asm	0x11c4598	cmp    DWORD PTR [rbp-0xc0],ebx
+elf-11c2370.asm	0x11c45a4	cmp    DWORD PTR [rbp-0xb0],r14d
+elf-11c2370.asm	0x11c45b1	cmp    DWORD PTR [rbp-0xa8],r14d
+elf-11c2370.asm	0x11c45d5	cmp    DWORD PTR [rbp-0xa8],r14d
+elf-11c2370.asm	0x11c4610	cmp    rax,QWORD PTR [rip+0x12c8171]        # 248c788
+elf-11c2370.asm	0x11c461d	cmp    r15,QWORD PTR [rip+0x12c8204]        # 248c828
+elf-11c2370.asm	0x11c462a	cmp    r15,QWORD PTR [rip+0x12c81ff]        # 248c830
+elf-11c2370.asm	0x11c463e	cmp    rdx,QWORD PTR [rip+0x12c81f3]        # 248c838
+elf-11c2370.asm	0x11c464b	cmp    rdx,QWORD PTR [rip+0x12c81ee]        # 248c840
+elf-11c2370.asm	0x11c465b	cmp    BYTE PTR [rip+0x12c7fcd],0x0        # 248c62f
+elf-11c2370.asm	0x11c4672	cmp    BYTE PTR [rip+0x12c7fb5],0x0        # 248c62e
+elf-11c2370.asm	0x11c4720	cmp    DWORD PTR [rbp-0xb4],ebx
+elf-11c2370.asm	0x11c472c	cmp    DWORD PTR [rbp-0xb0],r14d
+elf-11c2370.asm	0x11c4739	cmp    DWORD PTR [rbp-0xa8],r14d
+elf-11c2370.asm	0x11c475a	cmp    DWORD PTR [rbp-0xb0],r14d
+elf-11c2370.asm	0x11c4767	cmp    DWORD PTR [rbp-0xa8],r14d
+elf-11c2370.asm	0x11c4788	cmp    DWORD PTR [rbp-0xb0],r14d
+elf-11c2370.asm	0x11c4795	cmp    DWORD PTR [rbp-0xa8],r14d
+elf-11c2370.asm	0x11c47ca	cmp    ebx,DWORD PTR [rbp-0xe8]
+elf-11c2370.asm	0x11c4805	test   r12d,r12d
+elf-11c2370.asm	0x11c480a	cmp    r12d,0xb
+elf-11c2370.asm	0x11c4852	cmp    QWORD PTR [rbp-0xd8],rbx
+elf-11c2370.asm	0x11c4869	test   r12d,r12d
+elf-11c2370.asm	0x11c48ac	cmp    QWORD PTR [rbp-0xd8],rbx
+elf-11c2370.asm	0x11c48d4	cmp    ebx,DWORD PTR [rbp-0x100]
+elf-11c2370.asm	0x11c48f6	test   r15d,r15d
+elf-11c2370.asm	0x11c48fb	cmp    r15d,0xb
+elf-11c2370.asm	0x11c494b	cmp    rbx,QWORD PTR [rbp-0xd8]
+elf-11c2370.asm	0x11c4963	test   r15d,r15d
+elf-11c2370.asm	0x11c49b5	cmp    rbx,r15
+elf-11c2370.asm	0x11c4ab4	cmp    r15,r13
+elf-11c2370.asm	0x11c4b24	cmp    rdi,rbx
+elf-11c2370.asm	0x11c4bcc	cmp    rdi,rbx
+elf-11c2370.asm	0x11c4c2e	cmp    edi,ebx
+elf-11c2370.asm	0x11c4c4a	cmp    edx,eax
+elf-11c2370.asm	0x11c4c53	test   edx,edx
+elf-11c2370.asm	0x11c4c64	cmp    eax,edi
+elf-11c2370.asm	0x11c4c6f	cmp    eax,edx
+elf-11c2370.asm	0x11c4d23	cmp    eax,DWORD PTR [rbp-0xd0]
+elf-11c2370.asm	0x11c4d41	cmp    eax,0xffffffff
+elf-11c2370.asm	0x11c4d7a	cmp    DWORD PTR [rbp-0xb0],eax
+elf-11c2370.asm	0x11c4dd0	test   esi,esi
+elf-11c2370.asm	0x11c4ddb	test   BYTE PTR [rdx],0x1
+elf-11c2370.asm	0x11c4e15	cmp    rdx,QWORD PTR [rip+0x12c796c]        # 248c788
+elf-11c2370.asm	0x11c4e25	cmp    r8,QWORD PTR [rip+0x12c79fc]        # 248c828
+elf-11c2370.asm	0x11c4e32	cmp    r8,QWORD PTR [rip+0x12c79f7]        # 248c830
+elf-11c2370.asm	0x11c4e3f	cmp    rdi,QWORD PTR [rip+0x12c79f2]        # 248c838
+elf-11c2370.asm	0x11c4e4c	cmp    rdi,QWORD PTR [rip+0x12c79ed]        # 248c840
+elf-11c2370.asm	0x11c4e5c	cmp    BYTE PTR [rip+0x12c77cc],0x0        # 248c62f
+elf-11c2370.asm	0x11c4e72	cmp    BYTE PTR [rip+0x12c77b5],0x0        # 248c62e
+elf-11c2370.asm	0x11c4f35	cmp    r12d,r13d
+elf-11c2370.asm	0x11c4f4f	cmp    DWORD PTR [rbp-0xb4],ebx
+elf-11c2370.asm	0x11c4f57	cmp    DWORD PTR [rbp-0xb0],ebx
+elf-11c2370.asm	0x11c4fb1	cmp    DWORD PTR [rbp-0xb0],ebx
+elf-11c2370.asm	0x11c4fca	test   ecx,ecx
+elf-11c2370.asm	0x11c4fd8	test   BYTE PTR [rax],0x1
+elf-11c2370.asm	0x11c4fdd	cmp    QWORD PTR [rbp-0xd8],0x0
+elf-11c2370.asm	0x11c506a	cmp    eax,DWORD PTR [rbp-0xd0]
+elf-11c2370.asm	0x11c50a8	test   BYTE PTR [rax+rcx*1],0x3
+elf-11c2370.asm	0x11c50c8	cmp    DWORD PTR [rax+0x290],0xffffffff
+elf-11c2370.asm	0x11c5102	cmp    rbx,QWORD PTR [rbp-0x58]
+elf-11c2370.asm	0x11c510f	test   r13d,r13d
+elf-11c2370.asm	0x11c512f	cmp    rdi,QWORD PTR [rbp-0xf0]
+elf-11c2370.asm	0x11c516e	cmp    DWORD PTR [rbp-0x130],eax
+elf-11c2370.asm	0x11c5180	cmp    DWORD PTR [rbp-0x13c],edx
+elf-11c2370.asm	0x11c51f4	test   r14d,r14d
+elf-11c2370.asm	0x11c5217	test   eax,eax
+elf-11c2370.asm	0x11c5235	test   r9d,r9d
+elf-11c2370.asm	0x11c523e	cmp    r9d,r11d
+elf-11c2370.asm	0x11c5247	test   r9d,r9d
+elf-11c2370.asm	0x11c524c	cmp    ecx,eax
+elf-11c2370.asm	0x11c525c	cmp    r9d,r8d
+elf-11c2370.asm	0x11c5263	cmp    edi,edx
+elf-11c2370.asm	0x11c5267	test   r8b,r8b
+elf-11c2370.asm	0x11c5270	cmp    ecx,eax
+elf-11c2370.asm	0x11c5279	cmp    edi,eax
+elf-11c2370.asm	0x11c5282	cmp    ecx,edx
+elf-11c2370.asm	0x11c528c	cmp    edi,edx
+elf-11c2370.asm	0x11c5296	cmp    eax,edx
+elf-11c2370.asm	0x11c529e	cmp    ecx,eax
+elf-11c2370.asm	0x11c52a3	cmp    eax,edi
+elf-11c2370.asm	0x11c52a8	cmp    ecx,edx
+elf-11c2370.asm	0x11c52b3	cmp    edx,edi
+elf-11c2370.asm	0x11c531e	cmp    eax,edx
+elf-11c2370.asm	0x11c534d	test   BYTE PTR [rax+r13*4],0x3
+elf-11c2370.asm	0x11c5370	cmp    eax,0x1
+elf-11c2370.asm	0x11c5379	test   eax,eax
+elf-11c2370.asm	0x11c5393	cmp    DWORD PTR [rdx+0xd98],eax
+elf-11c2370.asm	0x11c53d2	cmp    eax,0x2
+elf-11c2370.asm	0x11c5432	cmp    eax,edx
+elf-11c2370.asm	0x11c5447	cmp    ecx,0xffffffff
+elf-11c2370.asm	0x11c5467	cmp    r13d,0x3
+elf-11c2370.asm	0x11c54e2	cmp    r13,rbx
+elf-11c2370.asm	0x11c554f	cmp    rdi,r15
+elf-11c2370.asm	0x11c55ca	cmp    r12,0xf
+elf-11c2370.asm	0x11c55d7	test   rbx,rbx
+elf-11c2370.asm	0x11c55dc	cmp    rbx,0x1
+elf-11c2370.asm	0x11c561e	cmp    rax,0x1
+elf-11c2370.asm	0x11c5635	cmp    rdx,r15
+elf-11c2370.asm	0x11c563d	cmp    r12,rax
+elf-11c2370.asm	0x11c5677	test   r8d,r8d
+elf-11c2370.asm	0x11c56a0	cmp    rax,0x3
+elf-11c2370.asm	0x11c56b7	cmp    rdx,r15
+elf-11c2370.asm	0x11c56bf	cmp    r12,rax
+elf-11c2370.asm	0x11c5705	test   al,0x2
+elf-11c2370.asm	0x11c5713	test   ecx,ecx
+elf-11c2370.asm	0x11c571b	test   al,0x4
+elf-11c2370.asm	0x11c572c	cmp    rax,0xf
+elf-11c2370.asm	0x11c5743	cmp    rdx,r15
+elf-11c2370.asm	0x11c574b	cmp    r12,rax
+elf-11c2370.asm	0x11c577e	cmp    rax,0x1
+elf-11c2370.asm	0x11c5795	cmp    rdx,r15
+elf-11c2370.asm	0x11c579d	cmp    r12,rax
+elf-11c2370.asm	0x11c5862	cmp    rdi,rbx
+elf-11c2370.asm	0x11c58c7	cmp    rdi,rbx
+elf-11c2370.asm	0x11c58e3	cmp    QWORD PTR [rax+0x8],rdx
+elf-11c2370.asm	0x11c5929	cmp    DWORD PTR [rbp-0xb4],eax
+elf-11c2370.asm	0x11c5935	cmp    r13d,eax
+elf-11c2370.asm	0x11c596e	cmp    rbx,QWORD PTR [rbp-0xd8]
+elf-11c2370.asm	0x11c5984	cmp    r13d,eax
+elf-11c2370.asm	0x11c59f2	cmp    rdi,rbx
+elf-11c2370.asm	0x11c5a4d	cmp    rdi,rbx
+elf-11c2370.asm	0x11c5a63	cmp    rdi,r15
+elf-11c2370.asm	0x11c5aae	cmp    rbx,QWORD PTR [rbp-0xd8]
+elf-11c2370.asm	0x11c5aec	cmp    rbx,QWORD PTR [rbp-0xd8]
+elf-11c2370.asm	0x11c5b76	cmp    ax,0xa
+elf-11c2370.asm	0x11c5bae	test   BYTE PTR [rax+r13*4],0x3
+elf-11c2370.asm	0x11c5bc3	cmp    DWORD PTR [rbx+0x2c8],0xffffffff
+elf-11c2370.asm	0x11c5c21	cmp    ax,0xa
+elf-11c2370.asm	0x11c5c92	test   r11d,r11d
+elf-11c2370.asm	0x11c5dcb	cmp    rdx,0x3
+elf-11c2370.asm	0x11c5de0	cmp    r13d,0xc
+elf-11c2370.asm	0x11c5e00	cmp    eax,0xffffffff
+elf-11c2370.asm	0x11c5e10	test   r8d,r8d
+elf-11c2370.asm	0x11c5e33	test   r10d,r10d
+elf-11c2370.asm	0x11c5e6f	cmp    eax,0x1
+elf-11c2370.asm	0x11c5e97	cmp    eax,0xffffffff
+elf-11c2370.asm	0x11c5eb2	cmp    eax,0xffffffff
+elf-11c2370.asm	0x11c5ec1	test   edi,edi
+elf-11c2370.asm	0x11c5edc	cmp    DWORD PTR [rbx+0x200],0xffffffff
+elf-11c2370.asm	0x11c5f95	test   eax,eax
+elf-11c2370.asm	0x11c5fbe	test   eax,eax
+elf-11c2370.asm	0x11c5fdc	test   r9d,r9d
+elf-11c2370.asm	0x11c5fe5	cmp    r9d,r11d
+elf-11c2370.asm	0x11c5fee	cmp    ecx,eax
+elf-11c2370.asm	0x11c5ff2	test   r9d,r9d
+elf-11c2370.asm	0x11c5ffb	cmp    r9d,r8d
+elf-11c2370.asm	0x11c6002	cmp    edi,edx
+elf-11c2370.asm	0x11c6006	test   r8b,r8b
+elf-11c2370.asm	0x11c600f	cmp    ecx,eax
+elf-11c2370.asm	0x11c6018	cmp    edi,eax
+elf-11c2370.asm	0x11c6021	cmp    ecx,edx
+elf-11c2370.asm	0x11c602b	cmp    edi,edx
+elf-11c2370.asm	0x11c6035	cmp    eax,edx
+elf-11c2370.asm	0x11c603d	cmp    ecx,eax
+elf-11c2370.asm	0x11c6042	cmp    eax,edi
+elf-11c2370.asm	0x11c6047	cmp    ecx,edx
+elf-11c2370.asm	0x11c6052	cmp    edi,edx
+elf-11c2370.asm	0x11c60c3	cmp    BYTE PTR [rax+0x8],0x0
+elf-11c2370.asm	0x11c613d	test   r15d,r15d
+elf-11c2370.asm	0x11c6160	test   eax,eax
+elf-11c2370.asm	0x11c617e	test   r9d,r9d
+elf-11c2370.asm	0x11c6187	cmp    r9d,r11d
+elf-11c2370.asm	0x11c6190	test   r9d,r9d
+elf-11c2370.asm	0x11c6195	cmp    ecx,eax
+elf-11c2370.asm	0x11c619d	cmp    r9d,r8d
+elf-11c2370.asm	0x11c61a4	cmp    edi,edx
+elf-11c2370.asm	0x11c61a8	test   r8b,r8b
+elf-11c2370.asm	0x11c61b1	cmp    ecx,eax
+elf-11c2370.asm	0x11c61ba	cmp    edi,eax
+elf-11c2370.asm	0x11c61c3	cmp    ecx,edx
+elf-11c2370.asm	0x11c61cd	cmp    edi,edx
+elf-11c2370.asm	0x11c61d7	cmp    eax,edx
+elf-11c2370.asm	0x11c61df	cmp    ecx,eax
+elf-11c2370.asm	0x11c61e4	cmp    eax,edi
+elf-11c2370.asm	0x11c61e9	cmp    ecx,edx
+elf-11c2370.asm	0x11c61f4	cmp    edx,edi
+elf-11c2370.asm	0x11c625c	cmp    ecx,0x1
+elf-11c2370.asm	0x11c6265	test   ecx,ecx
+elf-11c2370.asm	0x11c6282	cmp    DWORD PTR [rcx+0xd98],eax
+elf-11c2370.asm	0x11c62c0	cmp    rax,0x8
+elf-11c2370.asm	0x11c62d7	cmp    rax,r15
+elf-11c2370.asm	0x11c62df	cmp    r12,rdx
+elf-11c2370.asm	0x11c6349	cmp    rdx,0x7
+elf-11c2370.asm	0x11c6360	cmp    rdx,r15
+elf-11c2370.asm	0x11c6368	cmp    r12,rax
+elf-11c2370.asm	0x11c638c	cmp    rcx,QWORD PTR [rbp-0xf0]
+elf-11c2370.asm	0x11c6399	cmp    QWORD PTR [rbp-0x50],0x12
+elf-11c2370.asm	0x11c63ab	cmp    rcx,rsi
+elf-11c2370.asm	0x11c63b8	cmp    rdx,rsi
+elf-11c2370.asm	0x11c63c1	cmp    r9,0x12
+elf-11c2370.asm	0x11c63d2	cmp    rdx,rax
+elf-11c2370.asm	0x11c63db	cmp    rdx,rsi
+elf-11c2370.asm	0x11c6430	cmp    eax,0x1
+elf-11c2370.asm	0x11c6493	cmp    rdx,0x1
+elf-11c2370.asm	0x11c64aa	cmp    rdx,r15
+elf-11c2370.asm	0x11c64b2	cmp    r12,rax
+elf-11c2370.asm	0x11c64e8	test   esi,esi
+elf-11c2370.asm	0x11c64f0	cmp    rax,0xc
+elf-11c2370.asm	0x11c6507	cmp    rax,r15
+elf-11c2370.asm	0x11c650f	cmp    r12,rdx
+elf-11c2370.asm	0x11c654f	cmp    rcx,QWORD PTR [rbp-0xf0]
+elf-11c2370.asm	0x11c655c	cmp    QWORD PTR [rbp-0x50],0x12
+elf-11c2370.asm	0x11c656e	cmp    rcx,rsi
+elf-11c2370.asm	0x11c657b	cmp    rdx,rsi
+elf-11c2370.asm	0x11c6584	cmp    r9,0x12
+elf-11c2370.asm	0x11c6595	cmp    rdx,rax
+elf-11c2370.asm	0x11c659e	cmp    rdx,rsi
+elf-11c2370.asm	0x11c6619	cmp    rax,0xc
+elf-11c2370.asm	0x11c6630	cmp    rax,r15
+elf-11c2370.asm	0x11c6638	cmp    r12,rdx
+elf-11c2370.asm	0x11c66c7	test   r11d,r11d
+elf-11c2370.asm	0x11c66dc	cmp    edi,edx
+elf-11c2370.asm	0x11c66e4	test   al,al
+elf-11c2370.asm	0x11c6713	test   r11d,r11d
+elf-11c2370.asm	0x11c6724	cmp    edi,edx
+elf-11c2370.asm	0x11c672c	test   al,al
+elf-11c2370.asm	0x11c676a	cmp    eax,0xffffffff
+elf-11c2370.asm	0x11c677b	test   r11d,r11d
+elf-11c2370.asm	0x11c678c	cmp    edi,edx
+elf-11c2370.asm	0x11c6794	test   al,al
+elf-11c2370.asm	0x11c67af	cmp    edi,eax
+elf-11c2370.asm	0x11c67ba	cmp    edi,edx
+elf-11c2370.asm	0x11c67c2	test   r8b,r8b
+elf-11c2370.asm	0x11c67ce	cmp    eax,ecx
+elf-11c2370.asm	0x11c67e6	cmp    edi,eax
+elf-11c2370.asm	0x11c67f1	cmp    edi,edx
+elf-11c2370.asm	0x11c67f9	test   r8b,r8b
+elf-11c2370.asm	0x11c6805	cmp    eax,ecx
+elf-11c2370.asm	0x11c68c4	cmp    ecx,0x2
+elf-11c2370.asm	0x11c6915	cmp    eax,0xffffffff
+elf-11c2370.asm	0x11c6930	cmp    eax,0xffffffff
+elf-11c2370.asm	0x11c6940	test   r9d,r9d
+elf-11c2370.asm	0x11c6975	cmp    eax,0x1
+elf-11c2370.asm	0x11c69c5	cmp    edi,eax
+elf-11c2370.asm	0x11c69d0	cmp    edi,edx
+elf-11c2370.asm	0x11c69d8	test   r8b,r8b
+elf-11c2370.asm	0x11c69e4	cmp    eax,ecx
+elf-11c2370.asm	0x11c6aa2	cmp    rdx,0x1
+elf-11c2370.asm	0x11c6aac	test   rdx,rdx
+elf-11c2370.asm	0x11c6af8	cmp    rdx,0x1
+elf-11c2370.asm	0x11c6b02	test   rdx,rdx
+elf-11c2370.asm	0x11c6b76	cmp    r8,0x1
+elf-11c2370.asm	0x11c6b90	test   r8,r8
+elf-11c2370.asm	0x11c6ba9	cmp    r13,0x1
+elf-11c2370.asm	0x11c6bc2	test   r13,r13
+elf-b6a290.asm	0xb6a2bd	cmp    DWORD PTR [rip+0x191f0f0],0x1        # 24893b4
+elf-b6a290.asm	0xb6a2cd	cmp    QWORD PTR [rip+0x1bacaac],rax        # 2716d80
+elf-b6a290.asm	0xb6a2dd	test   rax,rax
+elf-b6a290.asm	0xb6a2e2	cmp    rax,rdi
+elf-b6a290.asm	0xb6a337	test   rbp,rbp
+elf-b6a290.asm	0xb6a340	test   r12,r12
+elf-b6a290.asm	0xb6a34f	cmp    r12,rbp
+elf-b6a290.asm	0xb6a380	test   rax,rax
+elf-b6a290.asm	0xb6a393	test   eax,eax
+elf-b6a290.asm	0xb6a3a7	cmp    rax,rbp
+elf-b6a290.asm	0xb6a3b6	cmp    r14,QWORD PTR [rsp+0x28]
+elf-b6a290.asm	0xb6a418	test   rbp,rbp
+elf-b6a290.asm	0xb6a421	test   r12,r12
+elf-b6a290.asm	0xb6a430	cmp    r12,rbp
+elf-b6a290.asm	0xb6a461	test   rax,rax
+elf-b6a290.asm	0xb6a474	test   eax,eax
+elf-b6a290.asm	0xb6a488	cmp    rbp,rax
+elf-b6a290.asm	0xb6a497	cmp    r14,QWORD PTR [rsp+0x28]
+elf-b6a290.asm	0xb6a4f8	test   rbp,rbp
+elf-b6a290.asm	0xb6a501	test   r12,r12
+elf-b6a290.asm	0xb6a510	cmp    r12,rbp
+elf-b6a290.asm	0xb6a53c	test   rax,rax
+elf-b6a290.asm	0xb6a54f	test   eax,eax
+elf-b6a290.asm	0xb6a564	cmp    rbp,r12
+elf-b6a290.asm	0xb6a573	cmp    r14,QWORD PTR [rsp+0x28]
+elf-b6a290.asm	0xb6a5be	cmp    r15,0xffffffffffffffff
+elf-b6a290.asm	0xb6a611	cmp    rdx,rax
+elf-b6a290.asm	0xb6a618	cmp    rbp,rcx
+elf-b6a290.asm	0xb6a634	cmp    rdi,r12
+elf-b6a290.asm	0xb6a666	cmp    r15,0xffffffffffffffff
+elf-b6a290.asm	0xb6a6b9	cmp    rdx,rax
+elf-b6a290.asm	0xb6a6c0	cmp    rbp,rcx
+elf-b6a290.asm	0xb6a6dc	cmp    rdi,r12
+elf-b6a290.asm	0xb6a70e	cmp    rbp,0xffffffffffffffff
+elf-b6a290.asm	0xb6a761	cmp    rdx,rax
+elf-b6a290.asm	0xb6a768	cmp    rbp,rcx
+elf-b6a290.asm	0xb6a784	cmp    rdi,r12
+elf-b6a290.asm	0xb6a7f0	test   r15,r15
+elf-b6a290.asm	0xb6a800	test   r12,r12
+elf-b6a290.asm	0xb6a80f	cmp    r12,r15
+elf-b6a290.asm	0xb6a840	test   rax,rax
+elf-b6a290.asm	0xb6a85a	test   eax,eax
+elf-b6a290.asm	0xb6a86e	cmp    rax,r15
+elf-b6a290.asm	0xb6a87d	cmp    r14,QWORD PTR [rsp+0x28]
+elf-b6a290.asm	0xb6a8e0	test   r15,r15
+elf-b6a290.asm	0xb6a8e9	test   r12,r12
+elf-b6a290.asm	0xb6a8f8	cmp    r12,r15
+elf-b6a290.asm	0xb6a929	test   rax,rax
+elf-b6a290.asm	0xb6a943	test   eax,eax
+elf-b6a290.asm	0xb6a957	cmp    rax,r15
+elf-b6a290.asm	0xb6a966	cmp    r14,QWORD PTR [rsp+0x28]
+elf-b6a290.asm	0xb6a9c9	test   r15,r15
+elf-b6a290.asm	0xb6a9d2	test   r12,r12
+elf-b6a290.asm	0xb6a9e5	cmp    r12,r15
+elf-b6a290.asm	0xb6aa1e	test   rax,rax
+elf-b6a290.asm	0xb6aa3c	test   eax,eax
+elf-b6a290.asm	0xb6aa50	cmp    rax,r15
+elf-b6a290.asm	0xb6aa6e	cmp    rsi,0xffffffffffffffff
+elf-b6a290.asm	0xb6aa8c	cmp    r15,rax
+elf-b6a290.asm	0xb6aaa5	cmp    r12,rsi
+elf-b6a290.asm	0xb6aac7	cmp    rdi,rbp
+elf-b6a290.asm	0xb6aaeb	test   r15,r15
+elf-b6a290.asm	0xb6ab1e	cmp    rsi,0xffffffffffffffff
+elf-b6a290.asm	0xb6ab3c	cmp    r15,rax
+elf-b6a290.asm	0xb6ab55	cmp    r12,rsi
+elf-b6a290.asm	0xb6ab77	cmp    rdi,rbp
+elf-b6a290.asm	0xb6aba6	cmp    rsi,0xffffffffffffffff
+elf-b6a290.asm	0xb6abc2	cmp    r15,rax
+elf-b6a290.asm	0xb6abd7	cmp    r12,rsi
+elf-b6a290.asm	0xb6abf9	cmp    rdi,rbp

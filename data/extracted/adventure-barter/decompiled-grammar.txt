@@ -1,0 +1,117 @@
+Steam Linux 53.16 Adventure barter source reconstruction
+Image: /home/lulika/.local/share/Steam/steamapps/common/Dwarf Fortress/dwarfort
+ELF build ID: bcc6789e6fb477b785a2b02be80b8b1b054ff88c
+
+elf-decompiled.c is actual Ghidra 12.1.2 C output for all 14 unwind
+procedures in elf-functions.tsv. The shared DecompileJournalEvents.java
+manifest reader gives analysis functions its journal_source_ name prefix;
+these names do not describe the original game's function roles.
+elf-*.asm retains every instruction in each original procedure, including
+GCC remote branches. elf-branches.tsv, elf-calls.tsv, elf-literals.tsv and
+elf-switches.tsv retain original conditions, direct callees, literal operands
+and all signed relative jump-table entries. SIMD/immediate operands are
+fragments; adjacent rodata blocks are not null-terminated UI strings.
+decompiled-productions.tsv gives reconstructed complete displayed messages
+and their Chinese text, including the existing shared translations.
+
+Native barter object offsets (relative to its own start):
+  +8 merchant, +10 your_trader, +18 zone, +20 conversation;
+  +28 personal, +29 demand_only, +2a strong_affiliation_bonus;
+  +2e8 two item filters, +328 two entering-filter flags;
+  +32a talkline, +330/+334 maximum currency, +338/+33c offered currency;
+  +340 entering item quantity, +341 entering asked currency,
+  +342 entering offered currency, +348 editable amount;
+  +370 big_announce rows, +388 scroll position.
+
+15d4900 renderer:
+  entering item quantity -> Trade how many? (0-MAX), then editable amount;
+  entering asked currency -> Ask for how much? (0-MAX), then editable amount;
+  entering offered currency -> Offer how much? (0-MAX), then editable amount;
+  demand_only -> (Select an item to demand);
+  otherwise talkline == -1 -> existing big_announce reply rows;
+  otherwise wrap the complete quoted talkline at screen_width-18.
+The 37-way selector is retained at 21997d8 / dispatch 15d8e14:
+  0: personal -> What did you have in mind?
+     otherwise strong affiliation -> An honored visitor! What would you like?
+     otherwise -> Greetings. Let's trade.
+  7: zone -> Ah, wonderful. Thank you for your business.
+     no zone -> That seems fair. You have yourself a deal.
+  18,19,20: ethical refusal (death/living creature/tree);
+  21: cannot afford; 22: more goods needed; 23: counteroffer;
+  29: uncaged living creature; 30: gift accepted;
+  31,32: burden/cost refusals; 33: loss refusal;
+  34: zone -> Yes, and trade we will! ...
+      no zone -> I'm confused. Did you want something?
+  35: selected requested goods without an offer;
+  36: offered goods without selecting requested goods;
+  1..6,8..17,24..28 and out-of-range values: original empty quoted body.
+Empty native bodies contain no words; their quotation marks remain native.
+
+15cfd50 artifact refusals:
+  personal artifact claim with no relinquishment timestamp -> personal treasure;
+  family claim with no relinquishment timestamp -> family heirloom;
+  member of entity type 10 or 13 and entity claim with no relinquishment
+  timestamp -> treasure of ENTITY.
+Personal and entity replies prepend capitalized b676a0 speaker + ': ' when
+big_announce is empty, otherwise append the original blank separator.
+The family producer explicitly prepends that speaker. Its body-only catalog
+form also allows the same typed artifact clause to be composed independently.
+All three use a0d8c0 flags=0 and submit the complete source to 423910,
+width=68. The existing paragraph hook retains source and native row addresses.
+
+a0d8c0 artifact field:
+  unresolved ID -> an unknown artifact;
+  resolved name -> language_name English=true;
+  unnamed book / written object -> Untitled;
+  other unnamed item -> complete e68020 item description;
+  flag bit 2 wraps LPAGE markup, but barter callers pass 0.
+The runtime uses the existing artifact/book/item/body-component/copy grammar
+for this whole field. b676a0 speakers use the existing formatter-owned unit
+identity, including caste, profession, curse and authored names/roles.
+a278f0 entities retain the existing complete entity-name grammar and unknown
+civilization fallback. Names from the supplied screenshot are not dictionary
+entries. Typed speaker matching retries colon boundaries before an artifact
+title or authored role can be consumed as part of the speaker.
+
+15cd540 transfer/return producer:
+  first acknowledgement includes the capitalized merchant speaker;
+  subsequent acknowledgements use the existing separator and omit the speaker;
+  10226b0, with topic=19 and a returned incident ID, supplies a complete
+  memory/reaction prefix; the prefix may be empty;
+  personal claim -> Thank you for returning my treasure.;
+  family claim -> Thank you for returning my family's treasure.;
+  entity claim -> Thank you for returning this treasure to ENTITY.;
+  primordial quest -> Thank you for returning this primordial remnant to ENTITY.;
+  rescue quest -> Thank you for rescuing this treasure!;
+  copied written work -> It's not the original, but we can hope the writing
+                         was copied faithfully.
+Personal/family/entity acknowledgements can occur in the same complete source.
+Fixed-ending catalog forms therefore accept the entire earlier reaction and
+acknowledgements as one typed body, translated through the existing complete
+announcement grammar; each prefix is shorter than the enclosing message.
+The shared native decompiler outputs are:
+  ../announcement-conversation/elf-dialogue-10226b0.c
+  ../announcement-conversation/elf-memory-events.c (101b7f0, topic 19)
+  ../announcement-conversation/elf-dialogue-1016060.c (incident narrative)
+Their native dispatch/field branches remain owned by the existing complete
+conversation, memory and incident grammars rather than a new list of names.
+
+15cb080 transaction rewards:
+  You receive ITEM_LIST to conclude the transaction.
+  Native item lists use comma and 'and' joins, complete e68020 labels and
+  optional quantity data. This existing adventure-announcement production
+  remains in adventure-announcements.tsv, using the shared {i} list grammar.
+
+Other renderer text and dynamic sources:
+  Ask for currency / Offer currency / Cannot trade currency;
+  You are asking for / You are offering: separate native numbers and 0x0f;
+  merchant heading plus (Owes you AMOUNT[0x0f]) or (You owe AMOUNT[0x0f]);
+  Trade / Show / Give / Demand, Mark all / Unmark all, You;
+  two independent filter strings and their original editing cursor;
+  native item-type headings, whole item captions and container captions;
+  Contains COUNT item(s), Weight: NUMBER[weight glyph].
+The current shared item/creature/material grammar owns all dynamic inventory
+labels. Currency/quantity entries retain the original amounts; the debt
+caption uses the Unicode equivalent of the native 0x0f currency glyph (☼).
+User-entered filter/amount strings, underscores, dots and other native marks
+are data or controls, not additional translatable dialogue.

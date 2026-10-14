@@ -1,0 +1,100 @@
+vanilla_relative_source	line	table	singular_or_adjective	plural
+vanilla_procedural/scripts/generators/interactions/secret.lua	2	necromancer_raise_adjectives	night	
+vanilla_procedural/scripts/generators/interactions/secret.lua	3	necromancer_raise_adjectives	risen	
+vanilla_procedural/scripts/generators/interactions/secret.lua	4	necromancer_raise_adjectives	sunless	
+vanilla_procedural/scripts/generators/interactions/secret.lua	5	necromancer_raise_adjectives	dark	
+vanilla_procedural/scripts/generators/interactions/secret.lua	6	necromancer_raise_adjectives	pale	
+vanilla_procedural/scripts/generators/interactions/secret.lua	7	necromancer_raise_adjectives	returned	
+vanilla_procedural/scripts/generators/interactions/secret.lua	8	necromancer_raise_adjectives	hollow	
+vanilla_procedural/scripts/generators/interactions/secret.lua	9	necromancer_raise_adjectives	cold	
+vanilla_procedural/scripts/generators/interactions/secret.lua	10	necromancer_raise_adjectives	gaunt	
+vanilla_procedural/scripts/generators/interactions/secret.lua	11	necromancer_raise_adjectives	doomed	
+vanilla_procedural/scripts/generators/interactions/secret.lua	12	necromancer_raise_adjectives	death	
+vanilla_procedural/scripts/generators/interactions/secret.lua	13	necromancer_raise_adjectives	empty	
+vanilla_procedural/scripts/generators/interactions/secret.lua	14	necromancer_raise_adjectives	void	
+vanilla_procedural/scripts/generators/interactions/secret.lua	15	necromancer_raise_adjectives	fallen	
+vanilla_procedural/scripts/generators/interactions/secret.lua	16	necromancer_raise_adjectives	fell	
+vanilla_procedural/scripts/generators/interactions/secret.lua	17	necromancer_raise_adjectives	cursed	
+vanilla_procedural/scripts/generators/interactions/secret.lua	18	necromancer_raise_adjectives	damned	
+vanilla_procedural/scripts/generators/interactions/secret.lua	19	necromancer_raise_adjectives	lost	
+vanilla_procedural/scripts/generators/interactions/secret.lua	20	necromancer_raise_adjectives	ruined	
+vanilla_procedural/scripts/generators/interactions/secret.lua	21	necromancer_raise_adjectives	dismal	
+vanilla_procedural/scripts/generators/interactions/secret.lua	22	necromancer_raise_adjectives	fetid	
+vanilla_procedural/scripts/generators/interactions/secret.lua	23	necromancer_raise_adjectives	rotten	
+vanilla_procedural/scripts/generators/interactions/secret.lua	24	necromancer_raise_adjectives	putrid	
+vanilla_procedural/scripts/generators/interactions/secret.lua	25	necromancer_raise_adjectives	corrupted	
+vanilla_procedural/scripts/generators/interactions/secret.lua	26	necromancer_raise_adjectives	bitter	
+vanilla_procedural/scripts/generators/interactions/secret.lua	27	necromancer_raise_adjectives	bleak	
+vanilla_procedural/scripts/generators/interactions/secret.lua	28	necromancer_raise_adjectives	frozen	
+vanilla_procedural/scripts/generators/interactions/secret.lua	29	necromancer_raise_adjectives	faded	
+vanilla_procedural/scripts/generators/interactions/secret.lua	30	necromancer_raise_adjectives	faint	
+vanilla_procedural/scripts/generators/interactions/secret.lua	31	necromancer_raise_adjectives	sallow	
+vanilla_procedural/scripts/generators/interactions/secret.lua	32	necromancer_raise_adjectives	forlorn	
+vanilla_procedural/scripts/generators/interactions/secret.lua	33	necromancer_raise_adjectives	grim	
+vanilla_procedural/scripts/generators/interactions/secret.lua	34	necromancer_raise_adjectives	wasting	
+vanilla_procedural/scripts/generators/interactions/secret.lua	38	necromancer_raise_nouns	one	ones
+vanilla_procedural/scripts/generators/interactions/secret.lua	39	necromancer_raise_nouns	corpse	corpses
+vanilla_procedural/scripts/generators/interactions/secret.lua	40	necromancer_raise_nouns	ghoul	ghouls
+vanilla_procedural/scripts/generators/interactions/secret.lua	41	necromancer_raise_nouns	zombie	zombies
+vanilla_procedural/scripts/generators/interactions/secret.lua	42	necromancer_raise_nouns	stalker	stalkers
+vanilla_procedural/scripts/generators/interactions/secret.lua	43	necromancer_raise_nouns	butcher	butchers
+vanilla_procedural/scripts/generators/interactions/secret.lua	44	necromancer_raise_nouns	hunter	hunters
+vanilla_procedural/scripts/generators/interactions/secret.lua	45	necromancer_raise_nouns	slayer	slayers
+vanilla_procedural/scripts/generators/interactions/secret.lua	63	necromancer_ghost_adjs	night	
+vanilla_procedural/scripts/generators/interactions/secret.lua	64	necromancer_ghost_adjs	risen	
+vanilla_procedural/scripts/generators/interactions/secret.lua	65	necromancer_ghost_adjs	sunless	
+vanilla_procedural/scripts/generators/interactions/secret.lua	66	necromancer_ghost_adjs	dark	
+vanilla_procedural/scripts/generators/interactions/secret.lua	67	necromancer_ghost_adjs	pale	
+vanilla_procedural/scripts/generators/interactions/secret.lua	68	necromancer_ghost_adjs	returned	
+vanilla_procedural/scripts/generators/interactions/secret.lua	69	necromancer_ghost_adjs	hollow	
+vanilla_procedural/scripts/generators/interactions/secret.lua	70	necromancer_ghost_adjs	cold	
+vanilla_procedural/scripts/generators/interactions/secret.lua	71	necromancer_ghost_adjs	gaunt	
+vanilla_procedural/scripts/generators/interactions/secret.lua	72	necromancer_ghost_adjs	doomed	
+vanilla_procedural/scripts/generators/interactions/secret.lua	73	necromancer_ghost_adjs	death	
+vanilla_procedural/scripts/generators/interactions/secret.lua	74	necromancer_ghost_adjs	empty	
+vanilla_procedural/scripts/generators/interactions/secret.lua	75	necromancer_ghost_adjs	void	
+vanilla_procedural/scripts/generators/interactions/secret.lua	76	necromancer_ghost_adjs	fallen	
+vanilla_procedural/scripts/generators/interactions/secret.lua	77	necromancer_ghost_adjs	fell	
+vanilla_procedural/scripts/generators/interactions/secret.lua	78	necromancer_ghost_adjs	cursed	
+vanilla_procedural/scripts/generators/interactions/secret.lua	79	necromancer_ghost_adjs	damned	
+vanilla_procedural/scripts/generators/interactions/secret.lua	80	necromancer_ghost_adjs	lost	
+vanilla_procedural/scripts/generators/interactions/secret.lua	81	necromancer_ghost_adjs	ruined	
+vanilla_procedural/scripts/generators/interactions/secret.lua	82	necromancer_ghost_adjs	dismal	
+vanilla_procedural/scripts/generators/interactions/secret.lua	83	necromancer_ghost_adjs	fetid	
+vanilla_procedural/scripts/generators/interactions/secret.lua	84	necromancer_ghost_adjs	rotten	
+vanilla_procedural/scripts/generators/interactions/secret.lua	85	necromancer_ghost_adjs	putrid	
+vanilla_procedural/scripts/generators/interactions/secret.lua	86	necromancer_ghost_adjs	corrupted	
+vanilla_procedural/scripts/generators/interactions/secret.lua	87	necromancer_ghost_adjs	bitter	
+vanilla_procedural/scripts/generators/interactions/secret.lua	88	necromancer_ghost_adjs	bleak	
+vanilla_procedural/scripts/generators/interactions/secret.lua	89	necromancer_ghost_adjs	frozen	
+vanilla_procedural/scripts/generators/interactions/secret.lua	90	necromancer_ghost_adjs	faded	
+vanilla_procedural/scripts/generators/interactions/secret.lua	91	necromancer_ghost_adjs	faint	
+vanilla_procedural/scripts/generators/interactions/secret.lua	92	necromancer_ghost_adjs	sallow	
+vanilla_procedural/scripts/generators/interactions/secret.lua	93	necromancer_ghost_adjs	forlorn	
+vanilla_procedural/scripts/generators/interactions/secret.lua	94	necromancer_ghost_adjs	grim	
+vanilla_procedural/scripts/generators/interactions/secret.lua	95	necromancer_ghost_adjs	wasting	
+vanilla_procedural/scripts/generators/interactions/secret.lua	98	necromancer_ghost_nouns	haunt	haunts
+vanilla_procedural/scripts/generators/interactions/secret.lua	99	necromancer_ghost_nouns	shade	shades
+vanilla_procedural/scripts/generators/interactions/secret.lua	100	necromancer_ghost_nouns	wraith	wraiths
+vanilla_procedural/scripts/generators/interactions/secret.lua	101	necromancer_ghost_nouns	spirit	spirits
+vanilla_procedural/scripts/generators/interactions/disturbance.lua	2	mummy_raise_adjectives	crypt	
+vanilla_procedural/scripts/generators/interactions/disturbance.lua	3	mummy_raise_adjectives	tomb	
+vanilla_procedural/scripts/generators/interactions/disturbance.lua	4	mummy_raise_adjectives	entombed	
+vanilla_procedural/scripts/generators/interactions/disturbance.lua	5	mummy_raise_adjectives	buried	
+vanilla_procedural/scripts/generators/interactions/disturbance.lua	6	mummy_raise_adjectives	once-resting	
+vanilla_procedural/scripts/generators/interactions/disturbance.lua	7	mummy_raise_adjectives	sanctified	
+vanilla_procedural/scripts/generators/interactions/disturbance.lua	8	mummy_raise_adjectives	sacred	
+vanilla_procedural/scripts/generators/interactions/disturbance.lua	9	mummy_raise_adjectives	profane	
+vanilla_procedural/scripts/generators/interactions/disturbance.lua	10	mummy_raise_adjectives	mausoleum	
+vanilla_procedural/scripts/generators/interactions/disturbance.lua	11	mummy_raise_adjectives	coffin	
+vanilla_procedural/scripts/generators/interactions/disturbance.lua	12	mummy_raise_adjectives	grave	
+vanilla_procedural/scripts/generators/interactions/disturbance.lua	13	mummy_raise_adjectives	sepulcher	
+vanilla_procedural/scripts/generators/interactions/disturbance.lua	14	mummy_raise_adjectives	interred	
+vanilla_procedural/scripts/generators/interactions/disturbance.lua	18	mummy_raise_nouns	one	ones
+vanilla_procedural/scripts/generators/interactions/disturbance.lua	19	mummy_raise_nouns	corpse	corpses
+vanilla_procedural/scripts/generators/interactions/disturbance.lua	20	mummy_raise_nouns	ghoul	ghouls
+vanilla_procedural/scripts/generators/interactions/disturbance.lua	21	mummy_raise_nouns	zombie	zombies
+vanilla_procedural/scripts/generators/interactions/disturbance.lua	22	mummy_raise_nouns	stalker	stalkers
+vanilla_procedural/scripts/generators/interactions/disturbance.lua	23	mummy_raise_nouns	butcher	butchers
+vanilla_procedural/scripts/generators/interactions/disturbance.lua	24	mummy_raise_nouns	hunter	hunters
+vanilla_procedural/scripts/generators/interactions/disturbance.lua	25	mummy_raise_nouns	slayer	slayers

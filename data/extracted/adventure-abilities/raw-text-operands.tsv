@@ -1,0 +1,160 @@
+vanilla_relative_source	line	token	value	source_line
+interaction examples/example - bogeyman transformation.txt	4	CDI:ADV_NAME	Transform	[CDI:ADV_NAME:Transform]
+interaction examples/example - shrine effects.txt	11	IT_MANUAL_INPUT	recipient	[IT_MANUAL_INPUT:recipient]
+interaction examples/example - shrine effects.txt	38	IT_MANUAL_INPUT	recipient	[IT_MANUAL_INPUT:recipient]
+interaction examples/example - shrine effects.txt	53	IT_MANUAL_INPUT	recipient	[IT_MANUAL_INPUT:recipient]
+interaction examples/example - shrine effects.txt	94	IT_MANUAL_INPUT	victim	[IT_MANUAL_INPUT:victim]
+interaction examples/interaction_disturbance.txt	27	CDI:ADV_NAME	Curse	[CDI:ADV_NAME:Curse]
+interaction examples/interaction_disturbance.txt	38	CDI:ADV_NAME	Animate corpse	[CDI:ADV_NAME:Animate corpse]
+interaction examples/interaction_disturbance.txt	50	IT_MANUAL_INPUT	victim	[IT_MANUAL_INPUT:victim]
+interaction examples/interaction_disturbance.txt	64	IT_MANUAL_INPUT	corpses	[IT_MANUAL_INPUT:corpses]
+interaction examples/interaction_secret.txt	28	CDI:ADV_NAME	Animate corpse	[CDI:ADV_NAME:Animate corpse]
+interaction examples/interaction_secret.txt	36	CDI:ADV_NAME	Raise faded hunter	[CDI:ADV_NAME:Raise faded hunter]
+interaction examples/interaction_secret.txt	44	CDI:ADV_NAME	Summon bogeymen	[CDI:ADV_NAME:Summon bogeymen]
+interaction examples/interaction_secret.txt	55	IT_MANUAL_INPUT	corpses	[IT_MANUAL_INPUT:corpses]
+interaction examples/interaction_secret.txt	85	IT_MANUAL_INPUT	corpses	[IT_MANUAL_INPUT:corpses]
+interaction examples/interaction_secret.txt	104	CDI:ADV_NAME	Propel away	[CDI:ADV_NAME:Propel away]
+interaction examples/interaction_secret.txt	114	CDI:ADV_NAME	Raise fog	[CDI:ADV_NAME:Raise fog]
+interaction examples/interaction_secret.txt	129	IT_MANUAL_INPUT	target	[IT_MANUAL_INPUT:target]
+vanilla_creatures/objects/creature_birds.txt	1406	ROOT_AROUND	BY_CATEGORY:BEAK:root around in:roots around in	[ROOT_AROUND:BY_CATEGORY:BEAK:root around in:roots around in]
+vanilla_creatures/objects/creature_domestic.txt	253	CDI:ADV_NAME	Clean	[CDI:ADV_NAME:Clean]
+vanilla_creatures/objects/creature_domestic.txt	264	CDI:ADV_NAME	Head bump	[CDI:ADV_NAME:Head bump]
+vanilla_creatures/objects/creature_domestic.txt	938	ROOT_AROUND	BY_CATEGORY:NOSE:root around in:roots around in	[ROOT_AROUND:BY_CATEGORY:NOSE:root around in:roots around in]
+vanilla_creatures/objects/creature_domestic.txt	1189	ROOT_AROUND	BY_TYPE:STANCE:scratch:scratches	[ROOT_AROUND:BY_TYPE:STANCE:scratch:scratches]
+vanilla_creatures/objects/creature_domestic.txt	1377	ROOT_AROUND	BY_CATEGORY:BEAK:root around in:roots around in	[ROOT_AROUND:BY_CATEGORY:BEAK:root around in:roots around in]
+vanilla_creatures/objects/creature_domestic.txt	1727	ROOT_AROUND	BY_CATEGORY:BEAK:root around in:roots around in	[ROOT_AROUND:BY_CATEGORY:BEAK:root around in:roots around in]
+vanilla_creatures/objects/creature_domestic.txt	2209	ROOT_AROUND	BY_CATEGORY:BEAK:root around in:roots around in	[ROOT_AROUND:BY_CATEGORY:BEAK:root around in:roots around in]
+vanilla_creatures/objects/creature_domestic.txt	2313	ROOT_AROUND	BY_CATEGORY:BEAK:root around in:roots around in	[ROOT_AROUND:BY_CATEGORY:BEAK:root around in:roots around in]
+vanilla_creatures/objects/creature_domestic.txt	2424	ROOT_AROUND	BY_CATEGORY:BEAK:root around in:roots around in	[ROOT_AROUND:BY_CATEGORY:BEAK:root around in:roots around in]
+vanilla_creatures/objects/creature_large_mountain.txt	364	CDI:ADV_NAME	Pet animal	[CDI:ADV_NAME:Pet animal]
+vanilla_creatures/objects/creature_large_mountain.txt	375	CDI:ADV_NAME	Spit	[CDI:ADV_NAME:Spit]
+vanilla_creatures/objects/creature_large_mountain.txt	608	CDI:ADV_NAME	Pet animal	[CDI:ADV_NAME:Pet animal]
+vanilla_creatures/objects/creature_large_mountain.txt	619	CDI:ADV_NAME	Spit	[CDI:ADV_NAME:Spit]
+vanilla_creatures/objects/creature_large_temperate.txt	2511	CDI:ADV_NAME	Clean	[CDI:ADV_NAME:Clean]
+vanilla_creatures/objects/creature_large_temperate.txt	2522	CDI:ADV_NAME	Head bump	[CDI:ADV_NAME:Head bump]
+vanilla_creatures/objects/creature_large_tropical.txt	3810	RETRACT_INTO_BP	BY_CATEGORY:SHELL:retract into <pro_pos> shell:retracts into <pro_pos> shell:come out of <pro_pos> shell:comes out of <pro_pos> shell	[RETRACT_INTO_BP:BY_CATEGORY:SHELL:retract into <pro_pos> shell:retracts into <pro_pos> shell:come out of <pro_pos> shell:comes out of <pro_pos> shell]
+vanilla_creatures/objects/creature_large_tropical.txt	3959	RETRACT_INTO_BP	BY_CATEGORY:SHELL:roll into a ball:rolls into a ball:unroll:unrolls	[RETRACT_INTO_BP:BY_CATEGORY:SHELL:roll into a ball:rolls into a ball:unroll:unrolls]
+vanilla_creatures/objects/creature_next_underground.txt	478	CDI:ADV_NAME	Spit molten rock	[CDI:ADV_NAME:Spit molten rock]
+vanilla_creatures/objects/creature_next_underground.txt	2243	CDI:ADV_NAME	Pet animal	[CDI:ADV_NAME:Pet animal]
+vanilla_creatures/objects/creature_next_underground.txt	2254	CDI:ADV_NAME	Spit	[CDI:ADV_NAME:Spit]
+vanilla_creatures/objects/creature_next_underground.txt	2386	CDI:ADV_NAME	Spray juice	[CDI:ADV_NAME:Spray juice]
+vanilla_creatures/objects/creature_ocean_new.txt	75	CDI:ADV_NAME	Squirt ink	[CDI:ADV_NAME:Squirt ink]
+vanilla_creatures/objects/creature_ocean_new.txt	478	CDI:ADV_NAME	Squirt ink	[CDI:ADV_NAME:Squirt ink]
+vanilla_creatures/objects/creature_riverlakepool_new.txt	1097	RETRACT_INTO_BP	BY_CATEGORY:SHELL:retract into <pro_pos> shell:retracts into <pro_pos> shell:come out of <pro_pos> shell:comes out of <pro_pos> shell	[RETRACT_INTO_BP:BY_CATEGORY:SHELL:retract into <pro_pos> shell:retracts into <pro_pos> shell:come out of <pro_pos> shell:comes out of <pro_pos> shell]
+vanilla_creatures/objects/creature_small_mammal_new.txt	222	RETRACT_INTO_BP	BY_CATEGORY:BODY_UPPER:roll into a ball:rolls into a ball:unroll:unrolls	[RETRACT_INTO_BP:BY_CATEGORY:BODY_UPPER:roll into a ball:rolls into a ball:unroll:unrolls]
+vanilla_creatures/objects/creature_small_mammal_new.txt	223	ROOT_AROUND	BY_CATEGORY:NOSE:root around in:roots around in	[ROOT_AROUND:BY_CATEGORY:NOSE:root around in:roots around in]
+vanilla_creatures/objects/creature_small_ocean.txt	1492	CDI:ADV_NAME	Squirt ink	[CDI:ADV_NAME:Squirt ink]
+vanilla_creatures/objects/creature_standard.txt	96	CDI:ADV_NAME	Pet animal	[CDI:ADV_NAME:Pet animal]
+vanilla_creatures/objects/creature_standard.txt	108	CDI:ADV_NAME	Spit	[CDI:ADV_NAME:Spit]
+vanilla_creatures/objects/creature_standard.txt	503	CDI:ADV_NAME	Pet animal	[CDI:ADV_NAME:Pet animal]
+vanilla_creatures/objects/creature_standard.txt	514	CDI:ADV_NAME	Spit	[CDI:ADV_NAME:Spit]
+vanilla_creatures/objects/creature_standard.txt	793	CDI:ADV_NAME	Pet animal	[CDI:ADV_NAME:Pet animal]
+vanilla_creatures/objects/creature_standard.txt	804	CDI:ADV_NAME	Spit	[CDI:ADV_NAME:Spit]
+vanilla_creatures/objects/creature_standard.txt	1077	CDI:ADV_NAME	Pet animal	[CDI:ADV_NAME:Pet animal]
+vanilla_creatures/objects/creature_standard.txt	1088	CDI:ADV_NAME	Spit	[CDI:ADV_NAME:Spit]
+vanilla_creatures/objects/creature_standard.txt	1339	CDI:ADV_NAME	Pet animal	[CDI:ADV_NAME:Pet animal]
+vanilla_creatures/objects/creature_standard.txt	1350	CDI:ADV_NAME	Spit	[CDI:ADV_NAME:Spit]
+vanilla_creatures/objects/creature_standard.txt	1581	CDI:ADV_NAME	Pet animal	[CDI:ADV_NAME:Pet animal]
+vanilla_creatures/objects/creature_standard.txt	1592	CDI:ADV_NAME	Spit	[CDI:ADV_NAME:Spit]
+vanilla_creatures/objects/creature_standard.txt	2228	CDI:ADV_NAME	Breathe fire	[CDI:ADV_NAME:Breathe fire]
+vanilla_creatures/objects/creature_standard.txt	2412	CDI:ADV_NAME	Pet animal	[CDI:ADV_NAME:Pet animal]
+vanilla_creatures/objects/creature_standard.txt	2423	CDI:ADV_NAME	Spit	[CDI:ADV_NAME:Spit]
+vanilla_creatures/objects/creature_standard.txt	2737	CDI:ADV_NAME	Pet animal	[CDI:ADV_NAME:Pet animal]
+vanilla_creatures/objects/creature_standard.txt	2748	CDI:ADV_NAME	Spit	[CDI:ADV_NAME:Spit]
+vanilla_creatures/objects/creature_standard.txt	2993	CDI:ADV_NAME	Pet animal	[CDI:ADV_NAME:Pet animal]
+vanilla_creatures/objects/creature_standard.txt	3004	CDI:ADV_NAME	Spit	[CDI:ADV_NAME:Spit]
+vanilla_creatures/objects/creature_standard.txt	3241	CDI:ADV_NAME	Pet animal	[CDI:ADV_NAME:Pet animal]
+vanilla_creatures/objects/creature_standard.txt	3252	CDI:ADV_NAME	Spit	[CDI:ADV_NAME:Spit]
+vanilla_creatures/objects/creature_standard.txt	3498	CDI:ADV_NAME	Pet animal	[CDI:ADV_NAME:Pet animal]
+vanilla_creatures/objects/creature_standard.txt	3509	CDI:ADV_NAME	Spit	[CDI:ADV_NAME:Spit]
+vanilla_creatures/objects/creature_standard.txt	4967	CDI:ADV_NAME	Pet animal	[CDI:ADV_NAME:Pet animal]
+vanilla_creatures/objects/creature_standard.txt	4978	CDI:ADV_NAME	Spit	[CDI:ADV_NAME:Spit]
+vanilla_creatures/objects/creature_standard.txt	5239	CDI:ADV_NAME	Pet animal	[CDI:ADV_NAME:Pet animal]
+vanilla_creatures/objects/creature_standard.txt	5250	CDI:ADV_NAME	Spit	[CDI:ADV_NAME:Spit]
+vanilla_creatures/objects/creature_subterranean.txt	893	CDI:ADV_NAME	Hurl fireball	[CDI:ADV_NAME:Hurl fireball]
+vanilla_creatures/objects/creature_subterranean.txt	903	CDI:ADV_NAME	Spray jet of fire	[CDI:ADV_NAME:Spray jet of fire]
+vanilla_creatures/objects/creature_subterranean.txt	1017	CDI:ADV_NAME	Spray web	[CDI:ADV_NAME:Spray web]
+vanilla_creatures/objects/creature_subterranean.txt	1672	CDI:ADV_NAME	Hurl fireball	[CDI:ADV_NAME:Hurl fireball]
+vanilla_creatures/objects/creature_subterranean.txt	1681	CDI:ADV_NAME	Spray jet of fire	[CDI:ADV_NAME:Spray jet of fire]
+vanilla_creatures/objects/creature_temperate_new.txt	956	RETRACT_INTO_BP	BY_CATEGORY:BODY_UPPER:roll into a ball:rolls into a ball:unroll:unrolls	[RETRACT_INTO_BP:BY_CATEGORY:BODY_UPPER:roll into a ball:rolls into a ball:unroll:unrolls]
+vanilla_creatures/objects/creature_tropical_new.txt	1631	RETRACT_INTO_BP	BY_CATEGORY:BODY_UPPER:roll into a ball:rolls into a ball:unroll:unrolls	[RETRACT_INTO_BP:BY_CATEGORY:BODY_UPPER:roll into a ball:rolls into a ball:unroll:unrolls]
+vanilla_creatures/objects/creature_tropical_new.txt	1632	ROOT_AROUND	BY_CATEGORY:NOSE:root around in:roots around in	[ROOT_AROUND:BY_CATEGORY:NOSE:root around in:roots around in]
+vanilla_creatures_extinct/objects/creature_cambrian.txt	433	RETRACT_INTO_BP	BY_CATEGORY:SHELL:roll into a ball:rolls into a ball:unroll:unrolls	[RETRACT_INTO_BP:BY_CATEGORY:SHELL:roll into a ball:rolls into a ball:unroll:unrolls]
+vanilla_interactions/objects/interaction_standard.txt	9	IT_MANUAL_INPUT	creature	[IT_MANUAL_INPUT:creature]
+vanilla_interactions/objects/interaction_standard.txt	22	IT_MANUAL_INPUT	creature	[IT_MANUAL_INPUT:creature]
+vanilla_interactions/objects/interaction_standard.txt	35	IT_MANUAL_INPUT	creature	[IT_MANUAL_INPUT:creature]
+vanilla_interactions/objects/interaction_standard.txt	49	IT_MANUAL_INPUT	target	[IT_MANUAL_INPUT:target]
+vanilla_procedural/scripts/generators/creatures/shared_info.lua	4974	CDI:ADV_NAME	Hurl fireball	[CDI:ADV_NAME:Hurl fireball]
+vanilla_procedural/scripts/generators/creatures/shared_info.lua	4983	CDI:ADV_NAME	Spray jet of fire	[CDI:ADV_NAME:Spray jet of fire]
+vanilla_procedural/scripts/generators/creatures/shared_info.lua	5126	CDI:ADV_NAME	Hurl fireball	"lines[#lines+1]=""[CDI:ADV_NAME:Hurl fireball]"""
+vanilla_procedural/scripts/generators/creatures/shared_info.lua	5139	CDI:ADV_NAME	Spray jet of fire	"lines[#lines+1]=""[CDI:ADV_NAME:Spray jet of fire]"""
+vanilla_procedural/scripts/generators/creatures/shared_info.lua	5175	CDI:ADV_NAME	"Spray ""..name.."""	"lines[#lines+1]=""[CDI:ADV_NAME:Spray ""..name..""]"""
+vanilla_procedural/scripts/generators/creatures/shared_info.lua	5199	CDI:ADV_NAME	Spit glob	"lines[#lines+1]=""[CDI:ADV_NAME:Spit glob]"""
+vanilla_procedural/scripts/generators/creatures/shared_info.lua	5222	CDI:ADV_NAME	"Spray ""..name.."""	"lines[#lines+1]=""[CDI:ADV_NAME:Spray ""..name..""]"""
+vanilla_procedural/scripts/generators/creatures/shared_info.lua	5689	CDI:ADV_NAME	Transform	"lines[#lines+1]=""[CDI:ADV_NAME:Transform]"""
+vanilla_procedural/scripts/generators/creatures/shared_info.lua	6361	CDI:ADV_NAME	Spray web	"lines[#lines+1]=""[CDI:ADV_NAME:Spray web]"""
+vanilla_procedural/scripts/generators/interactions/blessing.lua	9	IT_MANUAL_INPUT	recipient	[IT_MANUAL_INPUT:recipient]
+vanilla_procedural/scripts/generators/interactions/blessing.lua	44	IT_MANUAL_INPUT	recipient	[IT_MANUAL_INPUT:recipient]
+vanilla_procedural/scripts/generators/interactions/blessing.lua	62	IT_MANUAL_INPUT	recipient	[IT_MANUAL_INPUT:recipient]
+vanilla_procedural/scripts/generators/interactions/blessing.lua	109	IT_MANUAL_INPUT	recipient	[IT_MANUAL_INPUT:recipient]
+vanilla_procedural/scripts/generators/interactions/curse.lua	9	IT_MANUAL_INPUT	victim	[IT_MANUAL_INPUT:victim]
+vanilla_procedural/scripts/generators/interactions/curse.lua	28	IT_MANUAL_INPUT	victim	[IT_MANUAL_INPUT:victim]
+vanilla_procedural/scripts/generators/interactions/disturbance.lua	36	IT_MANUAL_INPUT	victim	[IT_MANUAL_INPUT:victim]
+vanilla_procedural/scripts/generators/interactions/disturbance.lua	94	CDI:ADV_NAME	Curse	[CDI:ADV_NAME:Curse]
+vanilla_procedural/scripts/generators/interactions/disturbance.lua	106	CDI:ADV_NAME	Animate corpse	[CDI:ADV_NAME:Animate corpse]
+vanilla_procedural/scripts/generators/interactions/disturbance.lua	115	CDI:ADV_NAME	Raise 	[CDI:ADV_NAME:Raise ]]..raise_name..[[]
+vanilla_procedural/scripts/generators/interactions/item_power.lua	11	IS_CDI:ADV_NAME	Launch ice bolt	"""[IS_CDI:ADV_NAME:Launch ice bolt]"","
+vanilla_procedural/scripts/generators/interactions/item_power.lua	28	IT_MANUAL_INPUT	target	"""[IT_MANUAL_INPUT:target]"","
+vanilla_procedural/scripts/generators/interactions/item_power.lua	56	IS_CDI:ADV_NAME	Propel away	"""[IS_CDI:ADV_NAME:Propel away]"","
+vanilla_procedural/scripts/generators/interactions/item_power.lua	70	IT_MANUAL_INPUT	target	"""[IT_MANUAL_INPUT:target]"","
+vanilla_procedural/scripts/generators/interactions/item_power.lua	88	IS_CDI:ADV_NAME	Cause pain	"""[IS_CDI:ADV_NAME:Cause pain]"","
+vanilla_procedural/scripts/generators/interactions/item_power.lua	100	IT_MANUAL_INPUT	victim	"""[IT_MANUAL_INPUT:victim]"","
+vanilla_procedural/scripts/generators/interactions/item_power.lua	119	IS_CDI:ADV_NAME	Blister	"""[IS_CDI:ADV_NAME:Blister]"","
+vanilla_procedural/scripts/generators/interactions/item_power.lua	131	IT_MANUAL_INPUT	victim	"""[IT_MANUAL_INPUT:victim]"","
+vanilla_procedural/scripts/generators/interactions/item_power.lua	149	IS_CDI:ADV_NAME	Paralyze	"""[IS_CDI:ADV_NAME:Paralyze]"","
+vanilla_procedural/scripts/generators/interactions/item_power.lua	161	IT_MANUAL_INPUT	victim	"""[IT_MANUAL_INPUT:victim]"","
+vanilla_procedural/scripts/generators/interactions/item_power.lua	178	IS_CDI:ADV_NAME	Cause bleeding	"""[IS_CDI:ADV_NAME:Cause bleeding]"","
+vanilla_procedural/scripts/generators/interactions/item_power.lua	190	IT_MANUAL_INPUT	victim	"""[IT_MANUAL_INPUT:victim]"","
+vanilla_procedural/scripts/generators/interactions/item_power.lua	206	IS_CDI:ADV_NAME	Sicken	"""[IS_CDI:ADV_NAME:Sicken]"","
+vanilla_procedural/scripts/generators/interactions/item_power.lua	218	IT_MANUAL_INPUT	victim	"""[IT_MANUAL_INPUT:victim]"","
+vanilla_procedural/scripts/generators/interactions/item_power.lua	234	IS_CDI:ADV_NAME	Sicken	"""[IS_CDI:ADV_NAME:Sicken]"","
+vanilla_procedural/scripts/generators/interactions/item_power.lua	246	IT_MANUAL_INPUT	victim	"""[IT_MANUAL_INPUT:victim]"","
+vanilla_procedural/scripts/generators/interactions/item_power.lua	265	IS_CDI:ADV_NAME	Sicken	"""[IS_CDI:ADV_NAME:Sicken]"","
+vanilla_procedural/scripts/generators/interactions/item_power.lua	277	IT_MANUAL_INPUT	victim	"""[IT_MANUAL_INPUT:victim]"","
+vanilla_procedural/scripts/generators/interactions/item_power.lua	294	IS_CDI:ADV_NAME	Rot	"""[IS_CDI:ADV_NAME:Rot]"","
+vanilla_procedural/scripts/generators/interactions/item_power.lua	306	IT_MANUAL_INPUT	victim	"""[IT_MANUAL_INPUT:victim]"","
+vanilla_procedural/scripts/generators/interactions/item_power.lua	336	IS_CDI:ADV_NAME	Blind	"""[IS_CDI:ADV_NAME:Blind]"","
+vanilla_procedural/scripts/generators/interactions/item_power.lua	348	IT_MANUAL_INPUT	victim	"""[IT_MANUAL_INPUT:victim]"","
+vanilla_procedural/scripts/generators/interactions/item_power.lua	368	IS_CDI:ADV_NAME	Suffocate	"""[IS_CDI:ADV_NAME:Suffocate]"","
+vanilla_procedural/scripts/generators/interactions/item_power.lua	380	IT_MANUAL_INPUT	victim	"""[IT_MANUAL_INPUT:victim]"","
+vanilla_procedural/scripts/generators/interactions/item_power.lua	398	IS_CDI:ADV_NAME	Cause dizziness	"""[IS_CDI:ADV_NAME:Cause dizziness]"","
+vanilla_procedural/scripts/generators/interactions/item_power.lua	410	IT_MANUAL_INPUT	victim	"""[IT_MANUAL_INPUT:victim]"","
+vanilla_procedural/scripts/generators/interactions/secret.lua	152	CDI:ADV_NAME	Animate corpse	[CDI:ADV_NAME:Animate corpse]
+vanilla_procedural/scripts/generators/interactions/secret.lua	177	CDI:ADV_NAME	Raise 	[CDI:ADV_NAME:Raise ]]..raise_name..[[]
+vanilla_procedural/scripts/generators/interactions/secret.lua	192	CDI:ADV_NAME	Summon bogeymen	[CDI:ADV_NAME:Summon bogeymen]
+vanilla_procedural/scripts/generators/interactions/secret.lua	202	CDI:ADV_NAME	Summon nightmare	[CDI:ADV_NAME:Summon nightmare]
+vanilla_procedural/scripts/generators/interactions/secret.lua	213	CDI:ADV_NAME	Create ghoul	[CDI:ADV_NAME:Create ghoul]
+vanilla_procedural/scripts/generators/interactions/secret.lua	222	CDI:ADV_NAME	Raise 	[CDI:ADV_NAME:Raise ]]..ghost_name_sing..[[]
+vanilla_procedural/scripts/generators/interactions/secret.lua	281	IT_MANUAL_INPUT	corpses	[IT_MANUAL_INPUT:corpses]
+vanilla_procedural/scripts/generators/interactions/secret.lua	331	IT_MANUAL_INPUT	victim	[IT_MANUAL_INPUT:victim]
+vanilla_procedural/scripts/generators/interactions.lua	22	CDI:ADV_NAME	Launch ice bolt	[CDI:ADV_NAME:Launch ice bolt]
+vanilla_procedural/scripts/generators/interactions.lua	47	IT_MANUAL_INPUT	target	[IT_MANUAL_INPUT:target]
+vanilla_procedural/scripts/generators/interactions.lua	67	CDI:ADV_NAME	Vanish	[CDI:ADV_NAME:Vanish]
+vanilla_procedural/scripts/generators/interactions.lua	105	CDI:ADV_NAME	Propel away	[CDI:ADV_NAME:Propel away]
+vanilla_procedural/scripts/generators/interactions.lua	127	IT_MANUAL_INPUT	target	[IT_MANUAL_INPUT:target]
+vanilla_procedural/scripts/generators/interactions.lua	147	CDI:ADV_NAME	Raise fog	[CDI:ADV_NAME:Raise fog]
+vanilla_procedural/scripts/generators/interactions.lua	181	IT_MANUAL_INPUT	corpses	"tbl[#tbl+1]=""[IT_MANUAL_INPUT:corpses]"""
+vanilla_procedural/scripts/generators/interactions.lua	249	IT_MANUAL_INPUT	corpses	[IT_MANUAL_INPUT:corpses]
+vanilla_procedural/scripts/init.lua	104	INIT_DAMAGE_ADV_NAME	Cause pain	"adv_name=""Cause pain"","
+vanilla_procedural/scripts/init.lua	112	INIT_DAMAGE_ADV_NAME	Blister	"adv_name=""Blister"","
+vanilla_procedural/scripts/init.lua	120	INIT_DAMAGE_ADV_NAME	Paralyze	"adv_name=""Paralyze"","
+vanilla_procedural/scripts/init.lua	128	INIT_DAMAGE_ADV_NAME	Cause bleeding	"adv_name=""Cause bleeding"","
+vanilla_procedural/scripts/init.lua	136	INIT_DAMAGE_ADV_NAME	Sicken	"adv_name=""Sicken"","
+vanilla_procedural/scripts/init.lua	144	INIT_DAMAGE_ADV_NAME	Sicken	"adv_name=""Sicken"","
+vanilla_procedural/scripts/init.lua	152	INIT_DAMAGE_ADV_NAME	Sicken	"adv_name=""Sicken"","
+vanilla_procedural/scripts/init.lua	160	INIT_DAMAGE_ADV_NAME	Rot	"adv_name=""Rot"","
+vanilla_procedural/scripts/init.lua	184	INIT_DAMAGE_ADV_NAME	Suffocate	"adv_name=""Suffocate"","
+vanilla_procedural/scripts/init.lua	192	INIT_DAMAGE_ADV_NAME	Blind	"adv_name=""Blind"","
+vanilla_procedural/scripts/init.lua	200	INIT_DAMAGE_ADV_NAME	Cause dizziness	"adv_name=""Cause dizziness"","
+vanilla_procedural/scripts/init.lua	225	CDI:ADV_NAME	[Lua concatenation; see source line]	[CDI:ADV_NAME:]]..chosen.adv_name..[[]
+vanilla_procedural/scripts/init.lua	242	IT_MANUAL_INPUT	victim	[IT_MANUAL_INPUT:victim]

@@ -1,0 +1,35 @@
+native_source	production	condition	translation_source
+0x11c2370	What do you want to do?	non-targeting ability list	ui-messages.tsv
+0x11c2370+interaction_cdi	CDI.ADV_NAME	CE ability type_id != -1; capitalize complete name	Adventure action: whole caption
+0x11c2370+interaction_cdi	Unknown interaction	CE ability type_id == -1	Adventure action: Unknown interaction
+0x11c2370+body_action	CDI.ADV_NAME	body_action.type == 1 and info.type_id != -1; capitalize	Adventure action: whole caption
+0x11c2370+body_action	Unknown interaction	body_action.type == 1 and info.type_id == -1	Adventure action: Unknown interaction
+0x11c2370+body_action	VERB_2ND	body_action.type == 0 and selected interaction differs from player.retract_into_bp	Adventure action: complete pronoun-expanded caption
+0x11c2370+body_action	VERB_REVERSE_2ND	body_action.type == 0 and selected interaction equals player.retract_into_bp	Adventure action: complete pronoun-expanded caption
+0x11c2370+body_action	VERB_2ND	body_action.type == 2 ROOT_AROUND	Adventure action: complete pronoun-expanded caption
+0x11c2370+item_power	IS_CDI.ADV_NAME	item power source virtual type == 10 and info.type_id != -1; capitalize	Adventure action: whole caption
+0x11c2370+item_power	Unknown interaction	item power source virtual type == 10 and info.type_id == -1	Adventure action: Unknown interaction
+0x11c2370+item_power		item power source virtual type != 10; no caption	no text
+0xb6a290	<pro_sub> -> you; <pro_obj> -> you; <pro_pos> -> your	adventure mode and subject == player	body-action complete labels
+0xb6a290	<pro_sub>/<pro_obj>/<pro_pos> -> sex pronoun helper	other subjects; native generic helper outside player menu	retained in native source; menu calls pass player
+0x11c2370+targeting	Select TARGET (N selected RANGE DISTURBER).	maximum target count < 1; N is current selected count	ui-messages.tsv; complete numeric template per RAW TARGET
+0x11c2370+targeting	Select TARGET (N of M RANGE DISTURBER).	maximum target count >= 1; N is selected count + 1, M maximum	ui-messages.tsv; complete numeric template per RAW TARGET
+0x11c2370+targeting	RANGE := empty	!(target_flags & 2) and range < 0	whole prompt variant
+0x11c2370+targeting	RANGE := , range N	!(target_flags & 2) and range >= 0	whole prompt variant
+0x11c2370+targeting	RANGE := , own tile only	(target_flags & 2) and range < 1	whole prompt variant
+0x11c2370+targeting	RANGE := , adjacent only	(target_flags & 2) and range >= 1	whole prompt variant
+0x11c2370+targeting	DISTURBER := empty | , disturber only	independent target_flags & 4	both whole prompt variants
+0x11c2370+targeting	Click a target or move the cursor and press KEY.	already targeting; key enum 1	ui-messages.tsv existing contextual key template
+0x11c2370+targeting	Done (KEY)	at least one target selected; key enum 0x4b	ui-messages.tsv contextual key template
+0x11c2370+target_list	Select TARGET.	target list heading; three contiguous native draws	ui-messages.tsv whole prompt
+0x11c2370+target_list	UNIT	target virtual type 0xd; native b6ca30 complete designation	existing unit identity grammar
+0x11c2370+target_list	ITEM	target virtual type 4; native e68020 complete designation	existing item designation grammar
+0x11c2370+target_list	this location	target virtual type 0x2e	ui-messages.tsv
+0x11c2370+target_list		missing unit/item or other target virtual type	no text
+0x11c2370	Cancel	all list/targeting frames	existing complete button translation
+0x11c2370	SHORTCUT	key enum starts at 0x52 for visible rows; increments per row	preserve native key
+0x11c2370	CAPTION... or complete CAPTION	length >= available width; native 11612a0 before draw 425170	existing pre-shortening caption capture
+secret.lua	Raise ADJECTIVE NOUN	33 necromancer adjectives x 8 singular nouns = 264	Adventure action: each complete generated label
+disturbance.lua	Raise ADJECTIVE NOUN	13 mummy adjectives x 8 singular nouns = 104	Adventure action: each complete generated label
+secret.lua	Raise ADJECTIVE GHOST_NOUN	33 adjectives x 4 singular ghost nouns = 132; generator false-and-ghost gate	Adventure action: complete labels retained for dormant branch
+shared_info.lua	Spray dust | Spray vapor | Spray gas	SOLID_POWDER | LIQUID | GAS; trailing and undirected emissions	Adventure action: complete labels

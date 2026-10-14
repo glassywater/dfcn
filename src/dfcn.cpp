@@ -11620,9 +11620,20 @@ static bool fortress_squad_reference_template(std::string_view source) {
 }
 
 #include "adventure_divine_guidance.inc"
+#include "adventure_barter.inc"
 
 std::optional<std::string> Overlay::translate_ui_catalog_capture(
         const Rule &rule, size_t index, std::string_view source) const {
+    if (rule.ui_message && adventure_barter_return_template(rule) &&
+            index < rule.template_kinds.size() && rule.template_kinds[index] == 's') {
+        // A returned treasure can append several acknowledgements after the
+        // native memory/reaction paragraph. Resolve the entire preceding body
+        // through its existing announcement grammar; each recursive prefix is
+        // shorter than the enclosing, fixed-ending barter reply.
+        const std::vector<int> colors(source.size(), 0xffffff);
+        std::vector<int> translated_colors;
+        return translate_complete_announcement(source, colors, translated_colors);
+    }
     // Tracking descriptions bind footwear/anatomy and liquid materials as
     // complete nouns. The species owner precedes depth/strength in the
     // native body-part branch, so it has its own authored capture.
@@ -11796,6 +11807,7 @@ bool Overlay::match_catalog_template(const Rule &rule, std::string_view source,
     std::unordered_map<std::string, bool> scoped_terms;
     const bool divine_guidance = adventure_divine_guidance_template(rule);
     std::unordered_map<std::string, bool> divine_fields;
+    std::unordered_map<std::string, bool> barter_speakers;
     const auto match_capture = [&](auto &&self, size_t index, size_t at) -> bool {
         if (index == rule.template_kinds.size())
             return trim_view(source.substr(at)).empty();
@@ -11820,6 +11832,17 @@ bool Overlay::match_catalog_template(const Rule &rule, std::string_view source,
                 rule.case_insensitive);
             if (!next) continue;
             const std::string_view value = source.substr(at, end - at);
+            if (adventure_barter_speaker_capture(rule, index)) {
+                // Titles and authored roles may contain additional colons.
+                // Try the earlier native speaker boundary when a longer
+                // lexical split swallowed part of the artifact or reaction.
+                const auto [speaker, added] = barter_speakers.try_emplace(std::string(value), false);
+                if (added) {
+                    const auto target = translate_ui_message_capture(value, true);
+                    speaker->second = target && !target->empty();
+                }
+                if (!speaker->second) continue;
+            }
             if (divine_guidance) {
                 // A generated destination can itself contain " in ". Keep
                 // trying earlier boundaries when the native-typed field at

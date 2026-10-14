@@ -403,7 +403,11 @@ std::optional<std::string> Overlay::translate_help_paragraph(
                                 sentence == "Has revealed the presence of {b} to {n}." ||
                                 sentence == "{n} has revealed the presence of {b} to ." ||
                                 sentence == "Has revealed the presence of {b} to .";
-                            const bool described_artifact = visitor_artifact || revealed_artifact;
+                            // Adventure barter calls ELF a0d8c0(mode=0):
+                            // named artifacts, written titles, Untitled,
+                            // unknown IDs and e68020's full item fallback.
+                            const bool described_artifact = visitor_artifact || revealed_artifact ||
+                                adventure_barter_refusal_template(rule);
                             const bool described_item = described_artifact &&
                                 trim_view(captures[i]).starts_with("the ");
                             if (trade_artifact || described_artifact) {

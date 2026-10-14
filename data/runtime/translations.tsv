@@ -8462,6 +8462,7 @@ the bestowal of the title of {s} in {p} after slaying {d} enemies and being a me
 {a} received the title of {s} in {p} after serving in combat, slaying an enemy, and {d} years of membership.	{a1}在战斗中效力、杀死一名敌人及拥有{d1}年会龄后，获得了{p1}的{s1}头衔。	ht
 {a} thrust a spire of slade up from the underworld, naming it {p}, and established a gateway between worlds.	{a1}从地下世界升起一座基岩尖塔，将其命名为{p1}，并建立了世界之间的通道。	ht
 {n} told me to tell {n} to tell {n} to ask {n} to grant an important position to me when one came available.	{n1}让我转告{n2}，让其再转告{n3}，要求{n4}在职位出现空缺时，将一个重要职位授予我。	hPt
+"If it were in a cage of some kind... As it stands, I can't accept something that wriggles and writhes so."	“要是装在笼子里就好了……现在这样，我可不能收下这不停扭动挣扎的东西。”	hP
 A small sea bird with great wings. It soars through the sky and dives for food on the surface of the water.	一种长着巨大翅膀的小海鸟。它在天空中翱翔并在水面上潜水觅食。	lP
 Announcement combat adventure-announcement [$announcement-item]: You have finished working on {s} and more.	你完成了对{s1}等物品的加工。	l
 Announcement combat adventure-announcement [$unit,$announcement-item]: {s} maintains possession of the {s}.	{s1}仍控制着{s2}。	l
@@ -14899,6 +14900,7 @@ was wrongfully convicted as a go-between in a conspiracy to commit {s} within {p
 {n} engaged me to infiltrate {e} in order to initiate sabotage and prepare a coup.	{n1}雇我渗透{e1}，以开展破坏活动和策划政变。	hPt
 {n} of {p} compelled the creation of the position of {s} with threats of violence.	{p}的{n}以暴力威胁，强行设立了{s}一职。	ht
 {n} was asked to grant an important position in {e} to me when one came available.	有人要求{n1}在职位出现空缺时，将{e1}的一个重要职位授予我。	hPt
+{n}: {s} It's not the original, but we can hope the writing was copied faithfully.	{n1}：{s1}虽然不是原件，但愿里面的文字抄录无误。	hPt
 "Anybody that sticks to something a moment longer than they have to is an idiot."	“没必要再坚持，却还多耗一刻的人，都是傻子。”	l
 "Don't think about the truth, whatever that is.  Just say what needs to be said."	“不必琢磨什么才是真相，说该说的话就好。”	l
 "Friends are future enemies. I don't see the difference. People do as they must."	“朋友终会成为敌人，两者并无区别。人各有不得已。”	l
@@ -16306,6 +16308,7 @@ were taken by a mood to act against their better judgment at {p} in the wilds.	�
 {e} in order to sanctify {n} as the item was a favorite possession within {p}.	在{p1}，因该物品是{n1}的心爱之物，借此将其奉为圣徒，{e1}。	htEi
 {n} engaged me to infiltrate in order to initiate sabotage and instill terror.	{n1}雇我渗透，以开展破坏活动和制造恐慌。	hPt
 {n} engaged me to infiltrate in order to initiate sabotage and prepare a coup.	{n1}雇我渗透，以开展破坏活动和策划政变。	hPt
+{n}: It's not the original, but we can hope the writing was copied faithfully.	{n1}：虽然不是原件，但愿里面的文字抄录无误。	hPt
 {p}: There is much to share... (Information added to Civilizations/World Info)	{p1}：有许多消息要分享……（信息已添加至政权／世界信息）	hPt
 "For me? At no price? I can accept your offer, or perhaps you wish to trade."	“给我的？不用付钱？我可以收下你的礼物，或者你其实想做笔交易？”	hP
 "You've found {p}! My chosen, you must speak to them and offer your service."	“你找到了{p1}！我的天选者，你必须与其交谈，表示愿意效劳。”	hPt
@@ -16692,6 +16695,7 @@ were taken by a mood to act against their better judgment at {p} in the wilds	�
 {n} and {n} cemented a bond of friendship amidst the horror of combat in {p}.	在{p1}，{n1}与{n2}在惨烈战斗中结下了深厚友谊。	ht
 {n} has been cursed to assume the form of a {s}-like monster every fool moon!	{n1}受到诅咒，每逢满月就会化身为形似{s1}的怪物！	hPt
 {p} defeated {p} of {p} and took over {p}. The new government was called {p}.	{p1}击败了{p3}的{p2}，并接管了{p4}。新政府名为{p5}。	ht
+{s} It's not the original, but we can hope the writing was copied faithfully.	{s1}虽然不是原件，但愿里面的文字抄录无误。	hPt
 "A tool should get the job done, but one shouldn't obsess over the details."	“工具能把活干好就行，不必执着于细枝末节。”	l
 "Loyalty has value, but you should always keep the broader picture in mind."	“忠诚固然可贵，但也要顾全大局。”	l
 A gigantic hairless mammal with a long trunk and two backward-curving tusks.	一种体型极其庞大、没有毛发的哺乳动物，长有长鼻和两根向后弯曲的獠牙。	lP
@@ -18054,6 +18058,7 @@ Indoors, outdoors. It's all the same to me as long as the weather's fine.	室内
 It has {s} and flashes of energy pulse across its surface intermittently.	它长有{s1}，它的体表不时闪过能量的脉动。	ht
 It started at {p} and returned there after following its route during {e}	在{e1}期间，从{p1}出发，沿游行路线行进后返回起点	ht
 It started at {p} and returned there after following its route within {p}	在{p2}，从{p1}出发，沿游行路线行进后返回起点	ht
+It's not the original, but we can hope the writing was copied faithfully.	虽然不是原件，但愿里面的文字抄录无误。	hP
 Later you can assign Doctors to specific roles such as the Diagnostician.	[C:7:0:0]之后可以为[C:5:0:0]医生[C:7:0:0]分配[C:5:0:0]诊断医师[C:7:0:0]等具体职位。	hq
 Like others in her culture, she strongly values tranquility and quiet, is	与其文化中的其他人一样，她十分重视宁静与安详，	l
 Like others in his culture, he holds craftsdwarfship to be of the highest	与同族人一样，他将矮人工艺奉为最高	l
@@ -22656,6 +22661,7 @@ were taken by a mood to act against their better judgment at {p}	在{p1}一时�
 {n} has created {b}, a {s}! He claims it as a personal treasure.	{n1}创造了{b1}，一件{s1}！他宣布将其作为私人珍宝。	hPt
 {n} has created {b}, a {s}! It claims it as a personal treasure.	{n1}创造了{b1}，一件{s1}！它宣布将其作为私人珍宝。	hPt
 {n}, being the rightful heir, has inherited the position of {s}.	{n1}作为合法继承人，继承了{s1}。	hPt
+{n}: {s} Thank you for returning this primordial remnant to {e}.	{n1}：{s1}谢谢你把这件原初遗物归还给{e1}。	hPt
 {p} concluded with the local government overthrown in the wilds.	在荒野中，{p1}以当地政府被推翻告终。	ht
 "I'd just as soon not have anything too exciting happen today."	“我倒希望今天别发生什么太刺激的事。”	l
 "There is nothing so important that it is worth telling a lie."	“没有什么事重要到值得为它说谎。”	l
@@ -22934,6 +22940,8 @@ Overview sentence: My spouse shared a personal insight with me.	伴侣跟我讲�
 Praise {p} for ignoring your hubris. Such is the spirit of {r}.	赞美{p1}，宽恕了你的狂妄。这就是{r1}的精神。	hPt
 Praise {p} for ignoring your hubris. Such {r}! Let a week pass.	赞美{p1}，宽恕了你的狂妄。何等的{r1}！等上一周。	hPt
 Prevents adamantine clothing from wearing out while being worn.	防止金刚砂服装在穿着时磨损.	w
+Select recipient ({d} selected, adjacent only, disturber only).	选择接受者（已选{d1}个，仅限相邻地块，仅限惊扰者）。	hPt
+Select recipient ({d} selected, own tile only, disturber only).	选择接受者（已选{d1}个，仅限自身地块，仅限惊扰者）。	hPt
 Some Administrators will require Offices to perform their work.	[C:7:0:0]有些[C:5:0:0]官员[C:7:0:0]需要[C:3:0:0]办公室[C:7:0:0]才能履行职责。	hq
 The agreement to establish a temple for {e} has been abandoned.	为{e1}建立神殿的协议已被放弃。	hPt
 The door is operated by a remote mechanism. You cannot proceed.	这扇门由远程机关控制，无法继续操作。	hP
@@ -23303,7 +23311,9 @@ was unafraid of {a} and refused, despite loathing the powerful.	虽然厌恶权�
 {n} is most often depicted as a {s} and is associated with {r}.	{n}最常以{s}的形象出现，并与{r}有关。	ht
 {n} sent me to demand a portion of the official funds from {n}.	{n1}派我向{n2}索要一部分公款。	hPt
 {p} concluded with the local government overthrown in the wilds	在荒野中，{p1}以当地政府被推翻告终	ht
+"I can't possibly accept, but how about this? A true bargain."	“我实在不能接受，不过这个方案如何？绝对划算。”	hP
 "I must make a profit. There is simply not enough value here."	“我得有利可图。这些货物的价值实在不够。”	hP
+"Perhaps if you throw in some more goods I can make an offer."	“如果你再添些货物，也许我就能提出交易方案。”	hP
 "We grow through debate and struggle, even chaos and discord."	“我们在辩论与抗争中成长，甚至混乱与不和也能促人成长。”	l
 A gigantic hairless mammal with a long neck and a small trunk.	一种体型极其庞大、没有毛发的哺乳动物，颈部修长，鼻子短小。	lP
 A humanoid with the head, tail and poison spurs of a platypus.	一个长着鸭嘴兽脑袋、尾巴和蹼的人。	lP
@@ -23590,6 +23600,8 @@ Overview sentence: Somebody shared a personal insight with me.	有人跟我讲�
 Overview sentence: What's inside me isn't emptiness exactly...	我心里这感觉，也不能说是空虚……	l
 Probably on the move or deep underground, but I can't be sure.	可能正在途中，也可能在地下深处，但我不能确定。	hP
 Reveal what you have been scheming or suffer the consequences.	交代你的阴谋，否则后果自负。	hP
+Select creature ({d} selected, adjacent only, disturber only).	选择生物（已选{d1}个，仅限相邻地块，仅限惊扰者）。	hPt
+Select creature ({d} selected, own tile only, disturber only).	选择生物（已选{d1}个，仅限自身地块，仅限惊扰者）。	hPt
 The Help button at the top of the screen contains more guides.	[C:7:0:0]屏幕顶部的“[C:5:0:1]帮助[C:7:0:0]”按钮中还有更多指南。	hq
 The task also requires a Barrel from the Carpenter's Workshop.	[C:7:0:0]这一任务还需要[C:6:0:0]木匠工坊[C:7:0:0]制作的[C:6:0:1]桶[C:7:0:0]。	hq
 The world generator is having trouble placing enough volcanos.	世界生成器无法放置足够的火山。	l
@@ -24276,6 +24288,10 @@ Overview sentence: My lover discussed their problems with me.	恋人跟我聊了
 Overview sentence: Somebody discussed their problems with me.	有人跟我聊了聊自己的烦恼。	l
 Overview sentence: Why does it keep happening to me? Why me?!	为什么这种事总落在我头上？为什么偏偏是我？！	l
 Request duty or advice pertaining to service as a {s} for {e}	请求分派为{e1}担任{s1}的职责或给予建议	hPt
+Select corpses ({d} selected, adjacent only, disturber only).	选择尸体（已选{d1}个，仅限相邻地块，仅限惊扰者）。	hPt
+Select corpses ({d} selected, own tile only, disturber only).	选择尸体（已选{d1}个，仅限自身地块，仅限惊扰者）。	hPt
+Select recipient ({d} of {d}, adjacent only, disturber only).	选择接受者（{d1}/{d2}，仅限相邻地块，仅限惊扰者）。	hPt
+Select recipient ({d} of {d}, own tile only, disturber only).	选择接受者（{d1}/{d2}，仅限自身地块，仅限惊扰者）。	hPt
 Set a low traffic area. Citizens will look for better routes.	设置低通行区域。居民会寻找更好的路线。	hj
 Start a performance. This can take several turns to complete.	开始表演。可能需要多个回合才能完成。	hj
 The following fortress goods were added for the counteroffer:	下列要塞货物已加入还价方案：	hP
@@ -24629,6 +24645,7 @@ was willing to accept eventual death and refused in the wilds	在荒野中愿意
 {n} engaged me to infiltrate {e} in order to steal treasures.	{n1}雇我渗透{e1}，以窃取宝藏。	hPt
 {n} is in the middle of a sermon on the worthlessness of {s}.	{n1}正在布道，宣讲{s1}毫无价值。	hPt
 {n} of {p} created the position of {s} as a matter of course.	{p}的{n}顺理成章地设立了{s}一职。	ht
+{n}: {b} is a personal treasure, and I will not part with it.	{n1}：{b1}是我的私人珍宝，我不会交出它。	hPt
 {p} concluded with the local government overthrown during {e}	在{e1}期间，{p1}以当地政府被推翻告终	ht
 {p} concluded with the local government overthrown within {p}	在{p2}，{p1}以当地政府被推翻告终	ht
 {p} was stolen from {p} by {a} during {e} and brought to {p}.	在{e1}期间，{a1}从{p2}偷走了{p1}，并将其带到{p3}。	ht
@@ -24962,6 +24979,12 @@ Push off {s} in {d} days when at least {d}% of desired items	等待{d1}天且所
 Quick attack: faster to strike and recover, but not powerful	快速攻击：出手和恢复更快，但威力较弱。	hP
 Say something general about your emotional state or thoughts	大致谈谈你的情绪或想法	hP
 Select a report to view the full text. Right click to close.	选择一份报告查看全文。右键点击关闭。	hP
+Select creature ({d} of {d}, adjacent only, disturber only).	选择生物（{d1}/{d2}，仅限相邻地块，仅限惊扰者）。	hPt
+Select creature ({d} of {d}, own tile only, disturber only).	选择生物（{d1}/{d2}，仅限自身地块，仅限惊扰者）。	hPt
+Select target ({d} selected, adjacent only, disturber only).	选择目标（已选{d1}个，仅限相邻地块，仅限惊扰者）。	hPt
+Select target ({d} selected, own tile only, disturber only).	选择目标（已选{d1}个，仅限自身地块，仅限惊扰者）。	hPt
+Select victim ({d} selected, adjacent only, disturber only).	选择受害者（已选{d1}个，仅限相邻地块，仅限惊扰者）。	hPt
+Select victim ({d} selected, own tile only, disturber only).	选择受害者（已选{d1}个，仅限自身地块，仅限惊扰者）。	hPt
 Set conditions for the minecart to move on to the next stop.	设置矿车前往下一站的条件。	hj
 Show up and down arrows over ramps at the current elevation.	在当前高度的斜坡上显示上下箭头。	hj
 Show up and down arrows over ramps at the current elevation.	在当前高度的斜坡上显示上下箭头。	wl
@@ -25402,6 +25425,8 @@ with special abilities like spraying webs or breathing fire.	还具有喷网或�
 {n} sent me to engage {n} to sabotage the activities of {n}.	{n1}派我雇{n2}破坏{n3}的活动。	hPt
 {n}'s {t} was {s} as a means of torture by {a} in the wilds.	在荒野中，{a1}以酷刑折磨{n1}，将其{t1}{s1}。	ht
 {n}'s {t} was {s} by {a} as a means of torture in the wilds.	在荒野中，{a1}以酷刑折磨{n1}，将其{t1}{s1}。	ht
+{n}: Thank you for returning this primordial remnant to {e}.	{n1}：谢谢你把这件原初遗物归还给{e1}。	hPt
+{n}: {b} is a treasure of {e}, and we will not part with it.	{n1}：{b1}是{e1}的珍宝，我们不会交出它。	hPt
 {p} was made a symbol of the {s} of {p} by {a} in the wilds.	在荒野中，{a1}将{p1}定为{p2}的{s1}的象征。	ht
 {p} was stolen from {p} by {a} during {e} and brought to {p}	在{e1}期间，{a1}从{p2}偷走了{p1}，并将其带到{p3}	ht
 "I consider laws to be more of a suggestion than anything."	“在我看来，法律更像是一种建议。”	l
@@ -25747,6 +25772,9 @@ Push off {s} immediately when at most {d}% of desired items	所需物品装载�
 Push off {s} in {d} day when at least {d}% of desired items	等待{d1}天且所需物品装载量不低于{d2}%时，向{s1}推出矿车	hPt
 Push off {s} in {d} days when at most {d}% of desired items	等待{d1}天且所需物品装载量不高于{d2}%时，向{s1}推出矿车	hPt
 Recenter on the creature (at the time of the announcement.)	将视图重新居中到生物在公告发生时的位置。	hj
+Select corpses ({d} of {d}, adjacent only, disturber only).	选择尸体（{d1}/{d2}，仅限相邻地块，仅限惊扰者）。	hPt
+Select corpses ({d} of {d}, own tile only, disturber only).	选择尸体（{d1}/{d2}，仅限自身地块，仅限惊扰者）。	hPt
+Select recipient ({d} selected, range {d}, disturber only).	选择接受者（已选{d1}个，距离{d2}，仅限惊扰者）。	hPt
 Set a high traffic area. Use this in wide central passages.	设置高通行区域。适用于宽阔的主要通道。	hj
 Set details for this task, such as the material to be used.	设置此任务的详细信息，例如要使用的材料。	hj
 The moon is high in the eastern sky pale behind the clouds.	月亮位于东方高空，在云后显得黯淡。	hP
@@ -26242,8 +26270,10 @@ was willing to accept eventual death and refused within {p}	在{p1}愿意接受�
 {n}'s tactical planning was superior to {n}'s in the wilds.	在荒野中，{n1}的战术谋划胜过了{n2}。	ht
 {n}'s {t} was {s} as a means of torture by {a} in the wilds	在荒野中，{a1}以酷刑折磨{n1}，将其{t1}{s1}	ht
 {n}'s {t} was {s} by {a} as a means of torture in the wilds	在荒野中，{a1}以酷刑折磨{n1}，将其{t1}{s1}	ht
+{n}: {b} is a family heirloom, and I will not part with it.	{n1}：{b1}是我的传家宝，我不会交出它。	hPt
 {p} was made a symbol of the {s} of {p} by {a} in the wilds	在荒野中，{a1}将{p1}定为{p2}的{s1}的象征	ht
 {p}: Greetings from the woodlands. We have much to discuss.	{p1}：向你们致以林地的问候。我们有许多事要谈。	hPt
+{s} Thank you for returning this primordial remnant to {e}.	{s1}谢谢你把这件原初遗物归还给{e1}。	hPt
 "An artisan, their materials and the tools to shape them!"	“工匠、材料，还有将材料塑造成形的工具，多么美妙！”	l
 "Some laws are just, while others were made to be broken."	“有些法律公正合理，有些却注定要被打破。”	l
 A blue-rumped person with the head and tail of a mandrill.	一种长着蓝屁股有着山魈头和尾巴的人形生物。	lP
@@ -26617,6 +26647,11 @@ Partially used in place of low musical performance skills.	可部分弥补音乐
 Please be patient. I'll have your order ready in a moment.	请耐心等候。你点的东西马上就好。	hP
 Prepare writing material and assign scholars to a library.	请准备书写材料，并为图书馆指派学者。	hP
 Push off {s} in {d} day when at most {d}% of desired items	等待{d1}天且所需物品装载量不高于{d2}%时，向{s1}推出矿车	hPt
+Select creature ({d} selected, range {d}, disturber only).	选择生物（已选{d1}个，距离{d2}，仅限惊扰者）。	hPt
+Select target ({d} of {d}, adjacent only, disturber only).	选择目标（{d1}/{d2}，仅限相邻地块，仅限惊扰者）。	hPt
+Select target ({d} of {d}, own tile only, disturber only).	选择目标（{d1}/{d2}，仅限自身地块，仅限惊扰者）。	hPt
+Select victim ({d} of {d}, adjacent only, disturber only).	选择受害者（{d1}/{d2}，仅限相邻地块，仅限惊扰者）。	hPt
+Select victim ({d} of {d}, own tile only, disturber only).	选择受害者（{d1}/{d2}，仅限自身地块，仅限惊扰者）。	hPt
 Some essential tasks must be assigned from the Labor menu.	[C:7:0:0]某些重要工作必须在“[C:5:0:1]劳动[C:7:0:0]”菜单中分配。	hq
 Something evil is emerging from this newly exposed pocket!	有什么邪恶之物正从这片新露出的空腔中涌出！	hP
 Spread rumor of {e}'s acceptance of {e}'s offer of tribute	传播{e1}接受{e2}的进贡提议的传闻	hPt
@@ -27516,6 +27551,8 @@ Overview sentence: There are not enough cages and chains.	笼子和锁链都不�
 Overview sentence: There's nothing to be indignant about.	这没什么好愤愤不平的。	l
 Recenter on the deepest discovered area at this location.	将视图重新居中到此位置已发现的最深区域。	hj
 Recenter on the deepest discovered area at this location.	将视图重新居中到此位置已发现的最深区域。	wl
+Select corpses ({d} selected, range {d}, disturber only).	选择尸体（已选{d1}个，距离{d2}，仅限惊扰者）。	hPt
+Select recipient ({d} of {d}, range {d}, disturber only).	选择接受者（{d1}/{d2}，距离{d3}，仅限惊扰者）。	hPt
 Spread rumor of {e}'s refusal of {e}'s demand for tribute	传播{e1}拒绝{e2}的进贡要求的传闻	hPt
 State the worthlessness of independence (not your values)	阐述独立自主毫无价值（并非你的价值观）	hP
 State the worthlessness of leisure time (not your values)	阐述闲暇毫无价值（并非你的价值观）	hP
@@ -28529,6 +28566,9 @@ Push off {s} immediately when at least {d}% of any items	总装载量不低于{d
 Push off {s} in {d} days when at least {d}% of any items	等待{d1}天且总装载量不低于{d2}%时，向{s1}推出矿车	hPt
 Ride {s} immediately when at least {d}% of desired items	所需物品装载量不低于{d1}%时，立即乘坐矿车向{s1}行驶	hPt
 Ride {s} in {d} days when at least {d}% of desired items	等待{d1}天且所需物品装载量不低于{d2}%时，乘坐矿车向{s1}行驶	hPt
+Select creature ({d} of {d}, range {d}, disturber only).	选择生物（{d1}/{d2}，距离{d3}，仅限惊扰者）。	hPt
+Select target ({d} selected, range {d}, disturber only).	选择目标（已选{d1}个，距离{d2}，仅限惊扰者）。	hPt
+Select victim ({d} selected, range {d}, disturber only).	选择受害者（已选{d1}个，距离{d2}，仅限惊扰者）。	hPt
 Set the details of this task, such as the material used.	设置此任务的详细信息，例如使用的材料。	hj
 Some patients will need Crutches after they are treated.	[C:7:0:0]某些病人在治疗后仍需要[C:6:0:1]拐杖[C:7:0:0]。	hq
 Spread rumor of {e}'s acceptance of {e}'s offer of peace	传播{e1}接受{e2}的和平提议的传闻	hPt
@@ -29091,6 +29131,7 @@ was willing to accept eventual death and refused in {p}.	在{p1}愿意接受终�
 {a} were hired as scouts in {p} by the attackers in {p}.	在{p2}，进攻方在{p1}雇佣{a1}担任斥候。	ht
 {a} were the first to reach the summit of {p} during {e}	{a1}在{e1}期间率先登上了{p1}的顶峰	ht
 {a} were the first to reach the summit of {p} within {p}	{a1}在{p2}率先登上了{p1}的顶峰	ht
+{b} is a personal treasure, and I will not part with it.	{b1}是我的私人珍宝，我不会交出它。	hPt
 {e} after a murder and appearing not to age in the wilds	在荒野中，因发生一起谋杀且看起来不会衰老而产生的{e1}	htEi
 {e} after an attack attack with {i} from {p} during {e}.	在{e2}期间，在遭到来自{p1}的{i1}袭击之后发生的{e1}。	htEi
 {e} after an attack attack with {i} from {p} within {p}.	在{p2}，在遭到来自{p1}的{i1}袭击之后发生的{e1}。	htEi
@@ -29542,9 +29583,11 @@ Ride {s} immediately when at most {d}% of desired items	所需物品装载量不
 Ride {s} in {d} day when at least {d}% of desired items	等待{d1}天且所需物品装载量不低于{d2}%时，乘坐矿车向{s1}行驶	hPt
 Ride {s} in {d} days when at most {d}% of desired items	等待{d1}天且所需物品装载量不高于{d2}%时，乘坐矿车向{s1}行驶	hPt
 Rooms with multiple beds will be made into dormitories.	放有多张床的房间会被设为公共宿舍。	hP
+Select corpses ({d} of {d}, range {d}, disturber only).	选择尸体（{d1}/{d2}，距离{d3}，仅限惊扰者）。	hPt
 Spread rumor of the failed insurrection {e} against {e}	传播{e1}反抗{e2}的起义失败的传闻	hPt
 Spread rumor of {e}'s refusal of {e}'s offer of tribute	传播{e1}拒绝{e2}的进贡提议的传闻	hPt
 State the worthlessness of friendship (not your values)	阐述友谊毫无价值（并非你的价值观）	hP
+Thank you for returning this primordial remnant to {e}.	谢谢你把这件原初遗物归还给{e1}。	hPt
 The army is commanded by {n}, a seasoned commander. {v}	这支军队的统领是{n1}，是一位久经沙场的统帅。{v1}	hPt
 The army is commanded by {n}, a talented commander. {v}	这支军队的统领是{n1}，是一位才华出众的统帅。{v1}	hPt
 The lyrics of the accompaniment are my favorite poetry.	伴奏的歌词是我最喜欢的诗歌。	hP
@@ -30088,6 +30131,7 @@ were the first to reach the summit of {p} in the wilds.	在荒野中率先登上
 {a} were hired as scouts by the attackers in the wilds.	在荒野中，进攻方雇佣{a1}担任斥候。	ht
 {a} were hired as scouts in {p} by the attackers at {p}	在{p2}，进攻方在{p1}雇佣{a1}担任斥候	ht
 {a} were hired as scouts in {p} by the attackers in {p}	在{p2}，进攻方在{p1}雇佣{a1}担任斥候	ht
+{b} is a treasure of {e}, and we will not part with it.	{b1}是{e1}的珍宝，我们不会交出它。	hPt
 {e} after a murder and appearing not to age during {e}.	在{e2}期间，因发生一起谋杀且看起来不会衰老而产生的{e1}。	htEi
 {e} after a murder and appearing not to age within {p}.	在{p1}，因发生一起谋杀且看起来不会衰老而产生的{e1}。	htEi
 {e} after an attack attack with {i} from {p} during {e}	在{e2}期间，在遭到来自{p1}的{i1}袭击之后发生的{e1}	htEi
@@ -30571,6 +30615,8 @@ Praise {p} for ignoring your hubris. You are forgiven.	赞美{p1}，宽恕了你
 Precise attack: very slow to strike, improved accuracy	精准攻击：出手很慢，但命中更准。	hP
 Push off {s} in {d} day when at most {d}% of any items	等待{d1}天且总装载量不高于{d2}%时，向{s1}推出矿车	hPt
 Ride {s} in {d} day when at most {d}% of desired items	等待{d1}天且所需物品装载量不高于{d2}%时，乘坐矿车向{s1}行驶	hPt
+Select target ({d} of {d}, range {d}, disturber only).	选择目标（{d1}/{d2}，距离{d3}，仅限惊扰者）。	hPt
+Select victim ({d} of {d}, range {d}, disturber only).	选择受害者（{d1}/{d2}，距离{d3}，仅限惊扰者）。	hPt
 State the worthlessness of eloquence (not your values)	阐述口才毫无价值（并非你的价值观）	hP
 State the worthlessness of hard work (not your values)	阐述勤勉毫无价值（并非你的价值观）	hP
 State the worthlessness of knowledge (not your values)	阐述知识毫无价值（并非你的价值观）	hP
@@ -31145,6 +31191,7 @@ were the first to reach the summit of {p} in the wilds	在荒野中率先登上�
 {a} was wrongfully convicted of {s} by {a} within {p}.	{a1}在{p1}被{a2}错判犯有{s1}。	ht
 {a} were hired as scouts by the attackers in the wilds	在荒野中，进攻方雇佣{a1}担任斥候	ht
 {a} wove a masterful sewn image to a {i} in the wilds.	{a1}在荒野中为{i1}织出了一幅杰作级的刺绣图像。	ht
+{b} is a family heirloom, and I will not part with it.	{b1}是我的传家宝，我不会交出它。	hPt
 {b} was authored by {n} in {p} in order to glorify {a}	在{p1}，{n1}为了颂扬{a1}而撰写了《{b1}》	ht
 {e} after a murder and appearing not to age during {e}	在{e2}期间，因发生一起谋杀且看起来不会衰老而产生的{e1}	htEi
 {e} after a murder and appearing not to age within {p}	在{p1}，因发生一起谋杀且看起来不会衰老而产生的{e1}	htEi
@@ -31194,6 +31241,8 @@ were the first to reach the summit of {p} in the wilds	在荒野中率先登上�
 {n}'s {t} was {s} as a means of torture by {a} in {p}.	在{p1}，{a1}以酷刑折磨{n1}，将其{t1}{s1}。	ht
 {n}'s {t} was {s} by {a} as a means of torture at {p}.	在{p1}，{a1}以酷刑折磨{n1}，将其{t1}{s1}。	ht
 {n}'s {t} was {s} by {a} as a means of torture in {p}.	在{p1}，{a1}以酷刑折磨{n1}，将其{t1}{s1}。	ht
+{n}: {s} Thank you for returning my family's treasure.	{n1}：{s1}谢谢你归还我家的珍宝。	hPt
+{n}: {s} Thank you for returning this treasure to {e}.	{n1}：{s1}谢谢你把这件珍宝归还给{e1}。	hPt
 {p} was made a symbol of the {s} of {p} by {a} at {p}.	在{p3}，{a1}将{p1}定为{p2}的{s1}的象征。	ht
 {p} was made a symbol of the {s} of {p} by {a} in {p}.	在{p3}，{a1}将{p1}定为{p2}的{s1}的象征。	ht
 {p} was stolen from {p} by {a} during {e} in the wilds	在荒野中，在{e1}期间，{a1}从{p2}偷走了{p1}	ht
@@ -36131,6 +36180,8 @@ wove a masterful sewn image to a {i} in the wilds.	在荒野中为{i1}织出了�
 {n} artfully delivers a lucid and powerful sermon.	{n1}布道技巧高明，讲得条理清晰、铿锵有力。	hPt
 {n} has been crushed under the collapsing ceiling.	{n1}被坍塌的顶板压死了。	hPt
 {n} was chosen by fate as the vanguard of destiny.	{n}被命运选中，成为命运的先锋。	ht
+{n}: Thank you for returning my family's treasure.	{n1}：谢谢你归还我家的珍宝。	hPt
+{n}: Thank you for returning this treasure to {e}.	{n1}：谢谢你把这件珍宝归还给{e1}。	hPt
 {p} concluded with the local government overthrown	{p1}以当地政府被推翻告终	ht
 {p} received its name in {p} from {a} in the wilds	在荒野中，{a1}在{p2}为{p1}命名	ht
 {p} was made a family heirloom by {a} in the wilds	在荒野中，{a1}将{p1}定为传家宝	ht
@@ -37539,6 +37590,8 @@ you want to dump using the Dump Designation tool.	[C:7:0:0]想要倾倒的物品
 {p} was stolen from {p} by {a} during {e} at {p}.	在{p3}，在{e1}期间，{a1}从{p2}偷走了{p1}。	ht
 {p} was stolen from {p} by {a} during {e} in {p}.	在{p3}，在{e1}期间，{a1}从{p2}偷走了{p1}。	ht
 {p}: We can part with at most {d} trees, butcher.	{p1}：最多只能让你们砍{d1}棵树，刽子手。	hPt
+{s} Thank you for returning my family's treasure.	{s1}谢谢你归还我家的珍宝。	hPt
+{s} Thank you for returning this treasure to {e}.	{s1}谢谢你把这件珍宝归还给{e1}。	hPt
 {s} has been misplaced. No doubt {n} is to blame!	{s1}被挪走了。毫无疑问，{n1}就是罪魁祸首！	hPt
 "Bah!  I hope you aren't celebrating something."	“哼！但愿你不是在庆祝什么。”	l
 "Do not hide yourself behind an unfeeling mask."	“不要把自己藏在冷漠的面具后面。”	l
@@ -38101,6 +38154,7 @@ Really, I've been over all this nonsense before.	说真的，这些废话我早�
 Restarts if completed, conditions checked yearly	完成后重新开始，每年检查条件。	hP
 Ride {s} immediately when empty of desired items	未装载所需物品时，立即乘坐矿车向{s1}行驶	hPt
 Ride {s} in {d} days when empty of desired items	等待{d1}天且未装载所需物品时，乘坐矿车向{s1}行驶	hPt
+Select recipient ({d} selected, disturber only).	选择接受者（已选{d1}个，仅限惊扰者）。	hPt
 Set the exact weight in steps of a traffic type.	设置此通行类型的具体步数权重。	hj
 Some ancient horror was encased here, until now!	这里原来封着某种远古的恐怖之物，如今封印破了！	hP
 Spread rumor of {e}'s withdrawal from {e} of {e}	传播{e1}从{e3}的{e2}撤离的传闻	hPt
@@ -39475,6 +39529,9 @@ Restarts if completed, conditions checked daily	完成后重新开始，每日�
 Ride {s} immediately when full of desired items	所需物品装满矿车时，立即乘坐矿车向{s1}行驶	hPt
 Ride {s} in {d} day when empty of desired items	等待{d1}天且未装载所需物品时，乘坐矿车向{s1}行驶	hPt
 Ride {s} in {d} days when full of desired items	等待{d1}天且所需物品装满矿车时，乘坐矿车向{s1}行驶	hPt
+Select creature ({d} selected, disturber only).	选择生物（已选{d1}个，仅限惊扰者）。	hPt
+Select recipient ({d} selected, adjacent only).	选择接受者（已选{d1}个，仅限相邻地块）。	hPt
+Select recipient ({d} selected, own tile only).	选择接受者（已选{d1}个，仅限自身地块）。	hPt
 Set this entry to recenter on the current view.	将此条目设为重新居中到当前视图的位置。	hj
 Set this entry to recenter on the current view.	将此条目设为重新居中到当前视图的位置。	wl
 Shoot. Requires a ranged weapon and ammunition.	射击。需要远程武器和弹药。	hj
@@ -40982,6 +41039,10 @@ Push off {s} in {d} day when full of any items	等待{d1}天且矿车满载时�
 Push off {s} in {d} days always (at most 100%)	等待{d1}天后向{s1}推出矿车（不限装载量，至多100%）	hPt
 Ride {s} in {d} day when full of desired items	等待{d1}天且所需物品装满矿车时，乘坐矿车向{s1}行驶	hPt
 Say something about this site's trade partners	谈谈此地的贸易伙伴	hP
+Select corpses ({d} selected, disturber only).	选择尸体（已选{d1}个，仅限惊扰者）。	hPt
+Select creature ({d} selected, adjacent only).	选择生物（已选{d1}个，仅限相邻地块）。	hPt
+Select creature ({d} selected, own tile only).	选择生物（已选{d1}个，仅限自身地块）。	hPt
+Select recipient ({d} of {d}, disturber only).	选择接受者（{d1}/{d2}，仅限惊扰者）。	hPt
 She has a noticeable lack of perseverance, and	她明显缺乏毅力，而且	l
 She is not inherently proud of her talents and	她并不会自然地为自己的才华与	l
 Snow-covered peach tree branches, peach leaves	覆雪的桃树枝、桃叶	wl
@@ -41989,6 +42050,7 @@ weaving of a masterful sewn image in the wilds	在荒野中，织出杰作级的
 {n}'s tactical planning was superior to {n}'s.	{n1}的战术谋划胜过了{n2}。	ht
 {n}'s {t} was {s} as a means of torture by {a}	{a1}以酷刑折磨{n1}，将其{t1}{s1}	ht
 {n}'s {t} was {s} by {a} as a means of torture	{a1}以酷刑折磨{n1}，将其{t1}{s1}	ht
+{n}: {s} Thank you for rescuing this treasure!	{n1}：{s1}谢谢你找回这件珍宝！	hPt
 {p} concluded with {p} overthrown in the wilds	在荒野中，{p1}以{p2}被推翻告终	ht
 {p} crushed the insurrection in {p} during {e}	在{e1}期间，{p1}镇压了{p2}的起义	ht
 {p} crushed the insurrection in {p} within {p}	在{p3}，{p1}镇压了{p2}的起义	ht
@@ -42511,6 +42573,13 @@ Push off {s} in {d} day always (at most 100%)	等待{d1}天后向{s1}推出矿�
 Push off {s} in {d} days always (at least 0%)	等待{d1}天后向{s1}推出矿车（不限装载量，至少0%）	hPt
 Right click to dismiss the information sheet.	右键关闭信息面板。	hq
 Seek out {p} in {e} and fulfill your destiny.	去{e1}寻找{p1}，完成你的天命。	hqt
+Select corpses ({d} selected, adjacent only).	选择尸体（已选{d1}个，仅限相邻地块）。	hPt
+Select corpses ({d} selected, own tile only).	选择尸体（已选{d1}个，仅限自身地块）。	hPt
+Select creature ({d} of {d}, disturber only).	选择生物（{d1}/{d2}，仅限惊扰者）。	hPt
+Select recipient ({d} of {d}, adjacent only).	选择接受者（{d1}/{d2}，仅限相邻地块）。	hPt
+Select recipient ({d} of {d}, own tile only).	选择接受者（{d1}/{d2}，仅限自身地块）。	hPt
+Select target ({d} selected, disturber only).	选择目标（已选{d1}个，仅限惊扰者）。	hPt
+Select victim ({d} selected, disturber only).	选择受害者（已选{d1}个，仅限惊扰者）。	hPt
 Selected tiles are medium priority. [DEFAULT]	将选中地格设为中等优先级。【默认】	hj
 Set a normal traffic area, the default state.	设置普通通行区域，这是默认状态。	hj
 She has no sense of vengeance or retribution.	她没有复仇或报应意识。	l
@@ -42527,6 +42596,8 @@ State the value of stoicism (not your values)	阐述克制情感的价值（并�
 Suggest traveling to {e} to offer condolences	建议前往{e1}表示慰问	hPt
 Summarize your views on the opposition to {e}	概述你对反抗{e1}的看法	hPt
 Tell listener both of you must be at location	告诉对方你们双方都必须到场	hP
+Thank you for returning my family's treasure.	谢谢你归还我家的珍宝。	hP
+Thank you for returning this treasure to {e}.	谢谢你把这件珍宝归还给{e1}。	hPt
 The Attempted Abduction of {n} at {p} at {p}.	在{p2}，{p1}绑架{n1}未遂的事件。	htEi
 The Attempted Abduction of {n} at {p} in {d}.	{d1}年的{p1}绑架{n1}未遂的事件。	htEi
 The Attempted Abduction of {n} at {p} in {p}.	在{p2}，{p1}绑架{n1}未遂的事件。	htEi
@@ -43505,6 +43576,7 @@ wrongfully convicted {n} of {s} in the wilds.	在荒野中错误地判定{n1}犯
 {n} sent me to engage {n} to assassinate {n}.	{n1}派我雇{n2}刺杀{n3}。	hPt
 {n} sent me to engage {n} to obtain Untitled.	{n1}派我雇{n2}取得《无题》。	hPt
 {n}'s tactical planning was superior to {n}'s	{n1}的战术谋划胜过了{n2}	ht
+{n}: {s} Thank you for returning my treasure.	{n1}：{s1}谢谢你归还我的珍宝。	hPt
 {p} concluded with {p} overthrown during {e}.	在{e1}期间，{p1}以{p2}被推翻告终。	ht
 {p} concluded with {p} overthrown within {p}.	在{p3}，{p1}以{p2}被推翻告终。	ht
 {p} received its name in {p} from {a} at {p}.	在{p3}，{a1}在{p2}为{p1}命名。	ht
@@ -43532,6 +43604,7 @@ wrongfully convicted {n} of {s} in the wilds.	在荒野中错误地判定{n1}犯
 "A great piece of art is one that moves me."	“能打动我的，才是好艺术。”	l
 "I can appreciate the right turn of phrase."	“恰到好处的措辞，我是懂得欣赏的。”	l
 "I cannot take so much -- and at such cost!"	“这么多货物我带不走，况且还要付这个价！”	hP
+"That seems fair. You have yourself a deal."	“这很公平。成交。”	hP
 , while completely misreading the situation,	，却完全看错了形势，	h
 A huge monster in the shape of a black bear.	一只巨大的黑熊怪。	lP
 A huge monster in the shape of a moon snail.	一只巨大的月亮蜗牛怪。	lP
@@ -43561,6 +43634,8 @@ A small ape found in the trees eating fruit.	在树上吃水果的小猴子被�
 A small aquatic bird, prized for its beauty.	一种小型水禽，因其美丽而珍贵。	lP
 A small, green, intelligent mountain parrot.	一种小型,绿油油的,高智商山鹦。	lP
 A very large cephalopod with a coiled shell.	一种体型很大的头足类动物，背负螺旋形外壳。	lP
+Adventure action: Raise once-resting butcher	复生昔日安眠的屠夫	l
+Adventure action: Raise once-resting stalker	复生昔日安眠的潜行者	l
 Adventure item action: Dismount to {s} ({p})	下坐骑到{s}（{p}）	h
 Adventure item action: Where do you put {s}?	你想把{s}放在哪里？	h
 Adventure movement qualifier: releasing hold	，松开抓握	h
@@ -44136,7 +44211,14 @@ Required to climb difficult surfaces safely.	使攀爬难以攀附的表面更�
 Ride {s} immediately when empty of any items	矿车空载时，立即乘坐矿车向{s1}行驶	hPt
 Ride {s} in {d} days when empty of any items	等待{d1}天且矿车空载时，乘坐矿车向{s1}行驶	hPt
 Select a stockpile or workshop to take from.	选择一个供货的储物堆或工坊。	hP
+Select corpses ({d} of {d}, disturber only).	选择尸体（{d1}/{d2}，仅限惊扰者）。	hPt
+Select creature ({d} of {d}, adjacent only).	选择生物（{d1}/{d2}，仅限相邻地块）。	hPt
+Select creature ({d} of {d}, own tile only).	选择生物（{d1}/{d2}，仅限自身地块）。	hPt
 Select memorized content or a form of prose.	选择已记住的内容或一种散文形式。	hP
+Select target ({d} selected, adjacent only).	选择目标（已选{d1}个，仅限相邻地块）。	hPt
+Select target ({d} selected, own tile only).	选择目标（已选{d1}个，仅限自身地块）。	hPt
+Select victim ({d} selected, adjacent only).	选择受害者（已选{d1}个，仅限相邻地块）。	hPt
+Select victim ({d} selected, own tile only).	选择受害者（已选{d1}个，仅限自身地块）。	hPt
 Siege frequency (percentage, otherwise raid)	围城概率（百分比，否则为突袭）
 Spread rumor of the occupation of {e} by {e}	传播{e1}被{e2}占领的传闻	hPt
 State minor feeling of righteous indignation	表达些许义愤	hP
@@ -45192,6 +45274,10 @@ A spiny person with the head of an echidna.	一种长着豪猪的多刺的人形
 ABORT NOW and I'll look over my parameters.	立即中止，我要检查参数。	hP
 ABORT NOW and I'll look over my parameters.	立即中止，我要检查参数。	l
 Accept that the listener will not trade {i}	接受对方不愿交换{i1}的决定	hPt
+Adventure action: Raise once-resting corpse	复生昔日安眠的尸体	l
+Adventure action: Raise once-resting hunter	复生昔日安眠的猎手	l
+Adventure action: Raise once-resting slayer	复生昔日安眠的杀手	l
+Adventure action: Raise once-resting zombie	复生昔日安眠的僵尸	l
 Adventure action: Tell a story about a site	讲述一个地点的故事	l
 Adventure item action: Quickly throw at {n}	快速投向{n}	h
 Adventure performance genre: Star catalogue	星表	l
@@ -45692,6 +45778,11 @@ Ride {s} immediately when full of any items	矿车满载时，立即乘坐矿车
 Ride {s} in {d} day when empty of any items	等待{d1}天且矿车空载时，乘坐矿车向{s1}行驶	hPt
 Ride {s} in {d} days when full of any items	等待{d1}天且矿车满载时，乘坐矿车向{s1}行驶	hPt
 See the SDL folder for license information.	许可证信息请参阅 SDL 文件夹。	wl
+Select corpses ({d} of {d}, adjacent only).	选择尸体（{d1}/{d2}，仅限相邻地块）。	hPt
+Select corpses ({d} of {d}, own tile only).	选择尸体（{d1}/{d2}，仅限自身地块）。	hPt
+Select recipient ({d} selected, range {d}).	选择接受者（已选{d1}个，距离{d2}）。	hPt
+Select target ({d} of {d}, disturber only).	选择目标（{d1}/{d2}，仅限惊扰者）。	hPt
+Select victim ({d} of {d}, disturber only).	选择受害者（{d1}/{d2}，仅限惊扰者）。	hPt
 State nuances of commerce (not your values)	阐述商业的复杂之处（并非你的价值观）	hP
 State nuances of fairness (not your values)	阐述公道的复杂之处（并非你的价值观）	hP
 State nuances of stoicism (not your values)	阐述克制情感的复杂之处（并非你的价值观）	hP
@@ -46802,6 +46893,7 @@ wrongfully convicted {n} of {s} within {p}.	在{p1}错误地判定{n1}犯有{s1}
 {p} was offered to {a} by {n} in the wilds.	在荒野中，{n1}将{p1}献给了{a1}。	ht
 {p} was stolen from {p} by {a} in the wilds	在荒野中，{a1}从{p2}偷走了{p1}	ht
 "All of that practice is misspent effort."	“那些练习全是白费力气。”	l
+"An honored visitor! What would you like?"	“贵客光临！你想要些什么？”	hP
 "Hard work is the true sign of character."	“勤勉才是真正品格的体现。”	l
 "How can society function without loyalty?	“没有忠诚，社会如何维系？	wl
 "I don't like being obligated to anybody."	“我不喜欢欠任何人的情。”	l
@@ -46842,6 +46934,9 @@ A tiny brown bird found in open woodlands.	一种褐色的小鸟，常见于开�
 A tiny larva which is prized for its milk.	一种微小的幼虫，因其乳汁而备受珍视。	lP
 A tiny, giggling humanoid with lacy wings.	一个长着花边翅膀、咯咯笑的小人形生物。	lP
 Accuse the speaker of being a troublemaker	指责说话者是个惹事精	hP
+Adventure action: Raise once-resting ghoul	复生昔日安眠的食尸鬼	l
+Adventure action: Raise sanctified butcher	复生祝圣屠夫	l
+Adventure action: Raise sanctified stalker	复生祝圣潜行者	l
 Adventure item action: Bash down {s} ({p})	撞倒{s}（{p}）	h
 Adventure item action: Climb down from {s}	从{s}爬下	h
 Adventure item action: Hang from {s} ({p})	悬挂于{s}（{p}）	h
@@ -47424,6 +47519,11 @@ Ride {s} in {d} days always (at most 100%)	等待{d1}天后乘坐矿车向{s1}�
 Saves starting here will be grouped on the	从此处开始的存档将在标题菜单中	w
 Say something about your family's ancestor	谈谈你家族的祖先	hP
 Select a stockpile or workshop to give to.	选择一个接收货物的储物堆或工坊。	hP
+Select creature ({d} selected, range {d}).	选择生物（已选{d1}个，距离{d2}）。	hPt
+Select target ({d} of {d}, adjacent only).	选择目标（{d1}/{d2}，仅限相邻地块）。	hPt
+Select target ({d} of {d}, own tile only).	选择目标（{d1}/{d2}，仅限自身地块）。	hPt
+Select victim ({d} of {d}, adjacent only).	选择受害者（{d1}/{d2}，仅限相邻地块）。	hPt
+Select victim ({d} of {d}, own tile only).	选择受害者（{d1}/{d2}，仅限自身地块）。	hPt
 Spread rumor of the reunion of {p} and {p}	传播{p1}与{p2}团聚的传闻	hPt
 Spread rumor of {e}'s march to reclaim {e}	传播{e1}进军收复{e2}的传闻	hPt
 Spread rumor of {p}'s building destruction	传播{p1}毁坏建筑的传闻	hPt
@@ -48641,6 +48741,7 @@ you will need to unretire the fort to play	但你需要先重新启用这座要�
 {n} was wrongfully convicted of {s} at {p}	在{p1}，{n1}被错判犯有{s1}	ht
 {n} was wrongfully convicted of {s} in {p}	在{p1}，{n1}被错判犯有{s1}	ht
 {n}'s ascension to {s} of {p} in the wilds	在荒野中，{n1}就任{p1}的{s1}	htEi
+{n}: Thank you for rescuing this treasure!	{n1}：谢谢你找回这件珍宝！	hPt
 {p} could be found within {p} in the wilds	在荒野中，{p1}位于{p2}之内	ht
 {p} crushed the insurrection in {p} at {p}	在{p3}，{p1}镇压了{p2}的起义	ht
 {p} crushed the insurrection in {p} in {p}	在{p3}，{p1}镇压了{p2}的起义	ht
@@ -48700,6 +48801,17 @@ A tiny amphibian that lives in the trees.	一种生活在树上的微型两栖�
 A tiny marine fish found in vast schools.	一种在大量鱼群中发现的微小海鱼。	lP
 Accuse listener of being a night creature	指控对方是夜行生物	hP
 Acknowledge lack of righteous indignation	表示没有义愤	hP
+Adventure action: Raise corrupted butcher	复生腐化屠夫	l
+Adventure action: Raise corrupted stalker	复生腐化潜行者	l
+Adventure action: Raise mausoleum butcher	复生陵寝屠夫	l
+Adventure action: Raise mausoleum stalker	复生陵寝潜行者	l
+Adventure action: Raise sanctified corpse	复生祝圣尸体	l
+Adventure action: Raise sanctified hunter	复生祝圣猎手	l
+Adventure action: Raise sanctified slayer	复生祝圣杀手	l
+Adventure action: Raise sanctified zombie	复生祝圣僵尸	l
+Adventure action: Raise sepulcher butcher	复生墓室屠夫	l
+Adventure action: Raise sepulcher stalker	复生墓室潜行者	l
+Adventure action: Retract into your shell	缩进自己的壳里	l
 Adventure item action: Assume an identity	假扮身份	h
 Adventure item action: Break in {s} ({p})	破开{s}（{p}）	h
 Adventure item action: Climb to {s} ({p})	攀向{s}（{p}）	h
@@ -49226,6 +49338,8 @@ Ride {s} immediately always (at least 0%)	立即乘坐矿车向{s1}行驶（不�
 Ride {s} in {d} day always (at most 100%)	等待{d1}天后乘坐矿车向{s1}行驶（不限装载量，至多100%）	hPt
 Ride {s} in {d} days always (at least 0%)	等待{d1}天后乘坐矿车向{s1}行驶（不限装载量，至少0%）	hPt
 Seems a pleasant enough sunset out there.	看起来外头这日落时分挺宜人。	hP
+Select corpses ({d} selected, range {d}).	选择尸体（已选{d1}个，距离{d2}）。	hPt
+Select recipient ({d} of {d}, range {d}).	选择接受者（{d1}/{d2}，距离{d3}）。	hPt
 Set the friction and auto-dump direction.	设置摩擦力和自动倾倒方向。	hP
 She was one of the only ones of her kind.	她是同类中仅有的少数个体之一。	h
 She was the only daughter of {n} and {n}.	她是{n1}与{n2}唯一的女儿。	ht
@@ -50409,6 +50523,7 @@ you will need to reclaim the fort to play	但你需要先收复这座要塞，	w
 {n} was a {s} born in a time before time.	{n}是{s}，诞生于时间开始之前。	ht
 {n}'s ascension to {s} of {p} during {e}.	在{e1}期间，{n1}就任{p1}的{s1}。	htEi
 {n}'s ascension to {s} of {p} within {p}.	在{p2}，{n1}就任{p1}的{s1}。	htEi
+{n}: Thank you for returning my treasure.	{n1}：谢谢你归还我的珍宝。	hPt
 {p} concluded with {p} overthrown at {p}.	在{p3}，{p1}以{p2}被推翻告终。	ht
 {p} concluded with {p} overthrown in {p}.	在{p3}，{p1}以{p2}被推翻告终。	ht
 {p} could be found within {p} during {e}.	在{e1}期间，{p1}位于{p2}之内。	ht
@@ -50436,6 +50551,7 @@ you will need to reclaim the fort to play	但你需要先收复这座要塞，	w
 {p}, an insurrection, began in {p} at {p}	在{p3}，{p2}爆发了名为{p1}的起义	ht
 {p}, an insurrection, began in {p} in {p}	在{p3}，{p2}爆发了名为{p1}的起义	ht
 {s} Rampage of {n} in in {p} in the wilds	在荒野中，{n1}在{p1}的{s1}肆虐事件	htEi
+{s} Thank you for rescuing this treasure!	{s1}谢谢你找回这件珍宝！	hPt
 {s} between {a} and {a} at {p} concluded.	{a1}与{a2}在{p1}达成的{s1}结束了。	ht
 {s} between {a} and {a} concluded at {p}.	在{p1}，{a1}与{a2}之间的{s1}结束了。	ht
 {s} between {a} and {a} concluded in {p}.	在{p1}，{a1}与{a2}之间的{s1}结束了。	ht
@@ -50479,6 +50595,29 @@ A large monster in the shape of a stoat.	一只体型巨大的白鼬怪。	lP
 A large person with the head of a hippo.	一种长着河马头的体型庞大的人形生物。	lP
 A large sloth person with a long tongue.	一种大型树懒类人形生物，长着长舌头。	lP
 A thousand or more people were expelled.	至少一千人遭到驱逐。	h
+Adventure action: Come out of your shell	从自己的壳里出来	l
+Adventure action: Raise corrupted corpse	复生腐化尸体	l
+Adventure action: Raise corrupted hunter	复生腐化猎手	l
+Adventure action: Raise corrupted slayer	复生腐化杀手	l
+Adventure action: Raise corrupted spirit	复生腐化灵体	l
+Adventure action: Raise corrupted wraith	复生腐化怨灵	l
+Adventure action: Raise corrupted zombie	复生腐化僵尸	l
+Adventure action: Raise entombed butcher	复生封陵屠夫	l
+Adventure action: Raise entombed stalker	复生封陵潜行者	l
+Adventure action: Raise interred butcher	复生安葬屠夫	l
+Adventure action: Raise interred stalker	复生安葬潜行者	l
+Adventure action: Raise mausoleum corpse	复生陵寝尸体	l
+Adventure action: Raise mausoleum hunter	复生陵寝猎手	l
+Adventure action: Raise mausoleum slayer	复生陵寝杀手	l
+Adventure action: Raise mausoleum zombie	复生陵寝僵尸	l
+Adventure action: Raise once-resting one	复生昔日安眠之人	l
+Adventure action: Raise returned butcher	复生归来屠夫	l
+Adventure action: Raise returned stalker	复生归来潜行者	l
+Adventure action: Raise sanctified ghoul	复生祝圣食尸鬼	l
+Adventure action: Raise sepulcher corpse	复生墓室尸体	l
+Adventure action: Raise sepulcher hunter	复生墓室猎手	l
+Adventure action: Raise sepulcher slayer	复生墓室杀手	l
+Adventure action: Raise sepulcher zombie	复生墓室僵尸	l
 Adventure environment modifier: stagnant	停滞的	h
 Adventure item action: Continue shouting	继续喊话	h
 Adventure item action: Fill {s} from {s}	用{s2}中的内容物装满{s1}	h
@@ -51052,6 +51191,9 @@ Retire the fortress (for the time being)	暂时退役要塞	w
 Ride {s} in {d} day always (at least 0%)	等待{d1}天后乘坐矿车向{s1}行驶（不限装载量，至少0%）	hPt
 Scale interface to fit grid height/width	缩放界面以适应网格高度/宽度	w
 Seems a pleasant enough night out there.	看起来外头的夜色挺宜人。	hP
+Select creature ({d} of {d}, range {d}).	选择生物（{d1}/{d2}，距离{d3}）。	hPt
+Select target ({d} selected, range {d}).	选择目标（已选{d1}个，距离{d2}）。	hPt
+Select victim ({d} selected, range {d}).	选择受害者（已选{d1}个，距离{d2}）。	hPt
 Selected tiles are high-medium priority.	将选中地格设为中高优先级。	hj
 Several major structures were destroyed.	数座主要建筑被摧毁。	h
 She is one of the only ones of her kind.	她是同类中仅有的少数个体之一。	h
@@ -52275,6 +52417,7 @@ wove a masterful sewn image in the wilds	在荒野中织出了一幅杰作级的
 {p}. I can't say I've heard that before.	{p1}。这个名字我以前还真没听过。	hPt
 {s} Rampage of {n} in in {p} during {e}.	在{e1}期间，{n1}在{p1}的{s1}肆虐事件。	htEi
 {s} Rampage of {n} in in {p} within {p}.	在{p2}，{n1}在{p1}的{s1}肆虐事件。	htEi
+{s} Thank you for returning my treasure.	{s1}谢谢你归还我的珍宝。	hPt
 {s} between {a} and {a} at {p} concluded	{a1}与{a2}在{p1}达成的{s1}结束了	ht
 {s} between {a} and {a} concluded at {p}	在{p1}，{a1}与{a2}之间的{s1}结束了	ht
 {s} between {a} and {a} concluded in {p}	在{p1}，{a1}与{a2}之间的{s1}结束了	ht
@@ -52284,6 +52427,7 @@ wove a masterful sewn image in the wilds	在荒野中织出了一幅杰作级的
 "Be careful of your so-called friends."	“要提防那些所谓的朋友。”	l
 "Do you have dreams?  Tell me a story!"	“你有梦境吗？给我讲个故事！”	l
 "I have trouble controlling my temper."	“我很难控制自己的脾气。”	l
+"I'm confused. Did you want something?"	“我有些糊涂。你想要什么东西吗？”	hP
 "Is there something to be happy about?"	“有什么值得高兴的事吗？”	l
 "It is important to discover yourself."	“认识自己，是件重要的事。”	l
 "Sometimes I just don't like somebody."	“有时我就是不喜欢某个人。”	l
@@ -52308,6 +52452,33 @@ A small orange monkey with a long tail.	一只有长尾的橙色小猴子。	lP
 A small, slender gazelle-like creature.	一种像瞪羚一样的小而细长的生物。	lP
 A thousand or more people were expelled	至少一千人遭到驱逐	h
 A tiny land mollusk with a large shell.	一个有着大壳的小型陆地软体动物。	lP
+Adventure action: Raise corrupted ghoul	复生腐化食尸鬼	l
+Adventure action: Raise corrupted haunt	复生腐化游魂	l
+Adventure action: Raise corrupted shade	复生腐化幽影	l
+Adventure action: Raise entombed corpse	复生封陵尸体	l
+Adventure action: Raise entombed hunter	复生封陵猎手	l
+Adventure action: Raise entombed slayer	复生封陵杀手	l
+Adventure action: Raise entombed zombie	复生封陵僵尸	l
+Adventure action: Raise forlorn butcher	复生孤绝屠夫	l
+Adventure action: Raise forlorn stalker	复生孤绝潜行者	l
+Adventure action: Raise interred corpse	复生安葬尸体	l
+Adventure action: Raise interred hunter	复生安葬猎手	l
+Adventure action: Raise interred slayer	复生安葬杀手	l
+Adventure action: Raise interred zombie	复生安葬僵尸	l
+Adventure action: Raise mausoleum ghoul	复生陵寝食尸鬼	l
+Adventure action: Raise profane butcher	复生亵渎屠夫	l
+Adventure action: Raise profane stalker	复生亵渎潜行者	l
+Adventure action: Raise returned corpse	复生归来尸体	l
+Adventure action: Raise returned hunter	复生归来猎手	l
+Adventure action: Raise returned slayer	复生归来杀手	l
+Adventure action: Raise returned spirit	复生归来灵体	l
+Adventure action: Raise returned wraith	复生归来怨灵	l
+Adventure action: Raise returned zombie	复生归来僵尸	l
+Adventure action: Raise sepulcher ghoul	复生墓室食尸鬼	l
+Adventure action: Raise sunless butcher	复生无日屠夫	l
+Adventure action: Raise sunless stalker	复生无日潜行者	l
+Adventure action: Raise wasting butcher	复生衰朽屠夫	l
+Adventure action: Raise wasting stalker	复生衰朽潜行者	l
 Adventure item action: Attack {n} ({p})	攻击{n}（{p}）	h
 Adventure item action: Charge {n} ({p})	冲向{n}（{p}）	h
 Adventure item action: Charge {s} ({p})	冲向{s}（{p}）	h
@@ -52825,6 +52996,7 @@ Persevere though it may be for nothing.	即使可能徒劳，也要坚持。	hP
 Praise listener for completing the task	称赞对方完成了任务	hP
 Request suggestion for course of action	请求建议下一步行动	hP
 Seems a pleasant enough dawn out there.	看起来外头的黎明挺宜人。	hP
+Select corpses ({d} of {d}, range {d}).	选择尸体（{d1}/{d2}，距离{d3}）。	hPt
 Selected tiles are medium-low priority.	将选中地格设为中低优先级。	hj
 Set the camera to follow this creature.	让镜头跟随此生物。	hj
 Set the weather, temperature, and time.	调整天气、温度和时间。	l
@@ -54187,6 +54359,64 @@ A small, grey, tree-dwelling creature.	一种居住在树上的灰色小生物�
 Acknowledge lack of existential crisis	表示没有存在危机	hP
 Add stockpile links for this workshop.	为此工坊添加储物堆连接。	hj
 Adventure action: Prepare choreography	编排舞蹈	l
+Adventure action: Raise bitter butcher	复生苦痛屠夫	l
+Adventure action: Raise bitter stalker	复生苦痛潜行者	l
+Adventure action: Raise buried butcher	复生埋葬屠夫	l
+Adventure action: Raise buried stalker	复生埋葬潜行者	l
+Adventure action: Raise coffin butcher	复生棺木屠夫	l
+Adventure action: Raise coffin stalker	复生棺木潜行者	l
+Adventure action: Raise cursed butcher	复生受诅咒的屠夫	l
+Adventure action: Raise cursed stalker	复生受诅咒的潜行者	l
+Adventure action: Raise damned butcher	复生被咒逐的屠夫	l
+Adventure action: Raise damned stalker	复生被咒逐的潜行者	l
+Adventure action: Raise dismal butcher	复生阴郁屠夫	l
+Adventure action: Raise dismal stalker	复生阴郁潜行者	l
+Adventure action: Raise doomed butcher	复生劫数已定的屠夫	l
+Adventure action: Raise doomed stalker	复生劫数已定的潜行者	l
+Adventure action: Raise entombed ghoul	复生封陵食尸鬼	l
+Adventure action: Raise fallen butcher	复生堕落屠夫	l
+Adventure action: Raise fallen stalker	复生堕落潜行者	l
+Adventure action: Raise forlorn corpse	复生孤绝尸体	l
+Adventure action: Raise forlorn hunter	复生孤绝猎手	l
+Adventure action: Raise forlorn slayer	复生孤绝杀手	l
+Adventure action: Raise forlorn spirit	复生孤绝灵体	l
+Adventure action: Raise forlorn wraith	复生孤绝怨灵	l
+Adventure action: Raise forlorn zombie	复生孤绝僵尸	l
+Adventure action: Raise frozen butcher	复生冰冻屠夫	l
+Adventure action: Raise frozen stalker	复生冰冻潜行者	l
+Adventure action: Raise hollow butcher	复生空虚屠夫	l
+Adventure action: Raise hollow stalker	复生空虚潜行者	l
+Adventure action: Raise interred ghoul	复生安葬食尸鬼	l
+Adventure action: Raise profane corpse	复生亵渎尸体	l
+Adventure action: Raise profane hunter	复生亵渎猎手	l
+Adventure action: Raise profane slayer	复生亵渎杀手	l
+Adventure action: Raise profane zombie	复生亵渎僵尸	l
+Adventure action: Raise putrid butcher	复生腐败屠夫	l
+Adventure action: Raise putrid stalker	复生腐败潜行者	l
+Adventure action: Raise returned ghoul	复生归来食尸鬼	l
+Adventure action: Raise returned haunt	复生归来游魂	l
+Adventure action: Raise returned shade	复生归来幽影	l
+Adventure action: Raise rotten butcher	复生腐烂屠夫	l
+Adventure action: Raise rotten stalker	复生腐烂潜行者	l
+Adventure action: Raise ruined butcher	复生破败屠夫	l
+Adventure action: Raise ruined stalker	复生破败潜行者	l
+Adventure action: Raise sacred butcher	复生神圣屠夫	l
+Adventure action: Raise sacred stalker	复生神圣潜行者	l
+Adventure action: Raise sallow butcher	复生蜡黄屠夫	l
+Adventure action: Raise sallow stalker	复生蜡黄潜行者	l
+Adventure action: Raise sanctified one	复生祝圣之人	l
+Adventure action: Raise sunless corpse	复生无日尸体	l
+Adventure action: Raise sunless hunter	复生无日猎手	l
+Adventure action: Raise sunless slayer	复生无日杀手	l
+Adventure action: Raise sunless spirit	复生无日灵体	l
+Adventure action: Raise sunless wraith	复生无日怨灵	l
+Adventure action: Raise sunless zombie	复生无日僵尸	l
+Adventure action: Raise wasting corpse	复生衰朽尸体	l
+Adventure action: Raise wasting hunter	复生衰朽猎手	l
+Adventure action: Raise wasting slayer	复生衰朽杀手	l
+Adventure action: Raise wasting spirit	复生衰朽灵体	l
+Adventure action: Raise wasting wraith	复生衰朽怨灵	l
+Adventure action: Raise wasting zombie	复生衰朽僵尸	l
 Adventure action: Write something down	写下内容	l
 Adventure item action: Climb {s} ({p})	攀爬{s}（{p}）	h
 Adventure item action: Dismount to {s}	下坐骑到{s}	h
@@ -54784,6 +55014,8 @@ Restarts if completed, checked monthly	完成后重新开始，每月检查。	h
 Seems a pleasant enough day out there.	看起来外头的天气挺舒适。	hP
 Select a merchant group to trade with:	选择要与之交易的商队：	hP
 Select how squads will use this space.	选择小队如何使用此空间。	hP
+Select target ({d} of {d}, range {d}).	选择目标（{d1}/{d2}，距离{d3}）。	hPt
+Select victim ({d} of {d}, range {d}).	选择受害者（{d1}/{d2}，距离{d3}）。	hPt
 Selected tiles are very high priority.	将选中地格设为很高优先级。	hj
 Set details for the assigned location.	设置所指定地点的详细信息。	hj
 Show improvement quality in item names	在物品名称中显示改进品质	w
@@ -56210,6 +56442,126 @@ A huge monster in the shape of a fox.	一只巨大的狐狸怪。	lP
 A tiny, colorful, long-bodied insect.	一种小型、色彩斑斓的长体昆虫。	lP
 A vile force of darkness has arrived!	一支邪恶的黑暗势力已经到来！	hP
 Acknowledge lack of grim satisfaction	表示没有冷酷的满足	hP
+Adventure action: Raise bitter corpse	复生苦痛尸体	l
+Adventure action: Raise bitter hunter	复生苦痛猎手	l
+Adventure action: Raise bitter slayer	复生苦痛杀手	l
+Adventure action: Raise bitter spirit	复生苦痛灵体	l
+Adventure action: Raise bitter wraith	复生苦痛怨灵	l
+Adventure action: Raise bitter zombie	复生苦痛僵尸	l
+Adventure action: Raise bleak butcher	复生凄凉屠夫	l
+Adventure action: Raise bleak stalker	复生凄凉潜行者	l
+Adventure action: Raise buried corpse	复生埋葬尸体	l
+Adventure action: Raise buried hunter	复生埋葬猎手	l
+Adventure action: Raise buried slayer	复生埋葬杀手	l
+Adventure action: Raise buried zombie	复生埋葬僵尸	l
+Adventure action: Raise coffin corpse	复生棺木尸体	l
+Adventure action: Raise coffin hunter	复生棺木猎手	l
+Adventure action: Raise coffin slayer	复生棺木杀手	l
+Adventure action: Raise coffin zombie	复生棺木僵尸	l
+Adventure action: Raise corrupted one	复生腐化之人	l
+Adventure action: Raise crypt butcher	复生地穴屠夫	l
+Adventure action: Raise crypt stalker	复生地穴潜行者	l
+Adventure action: Raise cursed corpse	复生受诅咒的尸体	l
+Adventure action: Raise cursed hunter	复生受诅咒的猎手	l
+Adventure action: Raise cursed slayer	复生受诅咒的杀手	l
+Adventure action: Raise cursed spirit	复生受诅咒的灵体	l
+Adventure action: Raise cursed wraith	复生受诅咒的怨灵	l
+Adventure action: Raise cursed zombie	复生受诅咒的僵尸	l
+Adventure action: Raise damned corpse	复生被咒逐的尸体	l
+Adventure action: Raise damned hunter	复生被咒逐的猎手	l
+Adventure action: Raise damned slayer	复生被咒逐的杀手	l
+Adventure action: Raise damned spirit	复生被咒逐的灵体	l
+Adventure action: Raise damned wraith	复生被咒逐的怨灵	l
+Adventure action: Raise damned zombie	复生被咒逐的僵尸	l
+Adventure action: Raise death butcher	复生死亡屠夫	l
+Adventure action: Raise death stalker	复生死亡潜行者	l
+Adventure action: Raise dismal corpse	复生阴郁尸体	l
+Adventure action: Raise dismal hunter	复生阴郁猎手	l
+Adventure action: Raise dismal slayer	复生阴郁杀手	l
+Adventure action: Raise dismal spirit	复生阴郁灵体	l
+Adventure action: Raise dismal wraith	复生阴郁怨灵	l
+Adventure action: Raise dismal zombie	复生阴郁僵尸	l
+Adventure action: Raise doomed corpse	复生劫数已定的尸体	l
+Adventure action: Raise doomed hunter	复生劫数已定的猎手	l
+Adventure action: Raise doomed slayer	复生劫数已定的杀手	l
+Adventure action: Raise doomed spirit	复生劫数已定的灵体	l
+Adventure action: Raise doomed wraith	复生劫数已定的怨灵	l
+Adventure action: Raise doomed zombie	复生劫数已定的僵尸	l
+Adventure action: Raise empty butcher	复生空无屠夫	l
+Adventure action: Raise empty stalker	复生空无潜行者	l
+Adventure action: Raise faded butcher	复生褪色屠夫	l
+Adventure action: Raise faded stalker	复生褪色潜行者	l
+Adventure action: Raise faint butcher	复生虚弱屠夫	l
+Adventure action: Raise faint stalker	复生虚弱潜行者	l
+Adventure action: Raise fallen corpse	复生堕落尸体	l
+Adventure action: Raise fallen hunter	复生堕落猎手	l
+Adventure action: Raise fallen slayer	复生堕落杀手	l
+Adventure action: Raise fallen spirit	复生堕落灵体	l
+Adventure action: Raise fallen wraith	复生堕落怨灵	l
+Adventure action: Raise fallen zombie	复生堕落僵尸	l
+Adventure action: Raise fetid butcher	复生恶臭屠夫	l
+Adventure action: Raise fetid stalker	复生恶臭潜行者	l
+Adventure action: Raise forlorn ghoul	复生孤绝食尸鬼	l
+Adventure action: Raise forlorn haunt	复生孤绝游魂	l
+Adventure action: Raise forlorn shade	复生孤绝幽影	l
+Adventure action: Raise frozen corpse	复生冰冻尸体	l
+Adventure action: Raise frozen hunter	复生冰冻猎手	l
+Adventure action: Raise frozen slayer	复生冰冻杀手	l
+Adventure action: Raise frozen spirit	复生冰冻灵体	l
+Adventure action: Raise frozen wraith	复生冰冻怨灵	l
+Adventure action: Raise frozen zombie	复生冰冻僵尸	l
+Adventure action: Raise gaunt butcher	复生枯瘦屠夫	l
+Adventure action: Raise gaunt stalker	复生枯瘦潜行者	l
+Adventure action: Raise grave butcher	复生坟墓屠夫	l
+Adventure action: Raise grave stalker	复生坟墓潜行者	l
+Adventure action: Raise hollow corpse	复生空虚尸体	l
+Adventure action: Raise hollow hunter	复生空虚猎手	l
+Adventure action: Raise hollow slayer	复生空虚杀手	l
+Adventure action: Raise hollow spirit	复生空虚灵体	l
+Adventure action: Raise hollow wraith	复生空虚怨灵	l
+Adventure action: Raise hollow zombie	复生空虚僵尸	l
+Adventure action: Raise mausoleum one	复生陵寝之人	l
+Adventure action: Raise night butcher	复生暗夜屠夫	l
+Adventure action: Raise night stalker	复生暗夜潜行者	l
+Adventure action: Raise profane ghoul	复生亵渎食尸鬼	l
+Adventure action: Raise putrid corpse	复生腐败尸体	l
+Adventure action: Raise putrid hunter	复生腐败猎手	l
+Adventure action: Raise putrid slayer	复生腐败杀手	l
+Adventure action: Raise putrid spirit	复生腐败灵体	l
+Adventure action: Raise putrid wraith	复生腐败怨灵	l
+Adventure action: Raise putrid zombie	复生腐败僵尸	l
+Adventure action: Raise risen butcher	复生再起屠夫	l
+Adventure action: Raise risen stalker	复生再起潜行者	l
+Adventure action: Raise rotten corpse	复生腐烂尸体	l
+Adventure action: Raise rotten hunter	复生腐烂猎手	l
+Adventure action: Raise rotten slayer	复生腐烂杀手	l
+Adventure action: Raise rotten spirit	复生腐烂灵体	l
+Adventure action: Raise rotten wraith	复生腐烂怨灵	l
+Adventure action: Raise rotten zombie	复生腐烂僵尸	l
+Adventure action: Raise ruined corpse	复生破败尸体	l
+Adventure action: Raise ruined hunter	复生破败猎手	l
+Adventure action: Raise ruined slayer	复生破败杀手	l
+Adventure action: Raise ruined spirit	复生破败灵体	l
+Adventure action: Raise ruined wraith	复生破败怨灵	l
+Adventure action: Raise ruined zombie	复生破败僵尸	l
+Adventure action: Raise sacred corpse	复生神圣尸体	l
+Adventure action: Raise sacred hunter	复生神圣猎手	l
+Adventure action: Raise sacred slayer	复生神圣杀手	l
+Adventure action: Raise sacred zombie	复生神圣僵尸	l
+Adventure action: Raise sallow corpse	复生蜡黄尸体	l
+Adventure action: Raise sallow hunter	复生蜡黄猎手	l
+Adventure action: Raise sallow slayer	复生蜡黄杀手	l
+Adventure action: Raise sallow spirit	复生蜡黄灵体	l
+Adventure action: Raise sallow wraith	复生蜡黄怨灵	l
+Adventure action: Raise sallow zombie	复生蜡黄僵尸	l
+Adventure action: Raise sepulcher one	复生墓室之人	l
+Adventure action: Raise sunless ghoul	复生无日食尸鬼	l
+Adventure action: Raise sunless haunt	复生无日游魂	l
+Adventure action: Raise sunless shade	复生无日幽影	l
+Adventure action: Raise wasting ghoul	复生衰朽食尸鬼	l
+Adventure action: Raise wasting haunt	复生衰朽游魂	l
+Adventure action: Raise wasting shade	复生衰朽幽影	l
+Adventure action: Unknown interaction	未知能力	l
 Adventure item action: Fell {s} ({p})	砍倒{s}（{p}）	h
 Adventure item action: Go below hatch	到舱盖下方	h
 Adventure item action: Heat {s} ({p})	加热{s}（{p}）	h
@@ -56735,6 +57087,7 @@ State that you hate reflective poetry	表示你讨厌沉思诗	hP
 State that you love reflective poetry	表示你喜欢沉思诗	hP
 State the worthlessness of friendship	阐述友谊毫无价值	hP
 Supplies carried by each squad member	每名队员携带的补给	wl
+Thank you for rescuing this treasure!	谢谢你找回这件珍宝！	hP
 The Attempted Abduction at {p} at {p}	在{p2}，{p1}的绑架未遂事件	htEi
 The Attempted Abduction at {p} in {d}	{d1}年的{p1}的绑架未遂事件	htEi
 The Attempted Abduction at {p} in {p}	在{p2}，{p1}的绑架未遂事件	htEi
@@ -58129,6 +58482,7 @@ writing of a masterpiece in the wilds	在荒野中，书写杰作	hEi
 {s} was rejected by {a} in the wilds.	在荒野中，{a1}拒绝了{s1}。	ht
 {s} was seen being passed to a thief!	{s1}被人看见交给了一个窃贼！	hPt
 "Bravery is not a strength of mine."	“勇敢不是我的长处。”	l
+"I simply cannot afford this trade."	“我实在负担不起这笔交易。”	hP
 "I try to live and behave properly."	“我尽量让生活和言行合乎规矩。”	l
 "It's such a joy to be with people."	“与人相伴，真是快乐。”	l
 "One should always respect the law."	“人应当始终尊重法律。”	l
@@ -58148,6 +58502,126 @@ A huge monster the shape of a moose.	一只巨大的驼鹿怪。	lP
 A huge woolly mammal with two horns.	一种巨大的长毛哺乳动物，长有两根角。	lP
 A person with the head of a warthog.	一种长着疣猪头的人形生物。	lP
 A {s} diplomat from {e} has arrived.	来自{e1}的{s1}外交官已抵达。	hPt
+Adventure action: Raise bitter ghoul	复生苦痛食尸鬼	l
+Adventure action: Raise bitter haunt	复生苦痛游魂	l
+Adventure action: Raise bitter shade	复生苦痛幽影	l
+Adventure action: Raise bleak corpse	复生凄凉尸体	l
+Adventure action: Raise bleak hunter	复生凄凉猎手	l
+Adventure action: Raise bleak slayer	复生凄凉杀手	l
+Adventure action: Raise bleak spirit	复生凄凉灵体	l
+Adventure action: Raise bleak wraith	复生凄凉怨灵	l
+Adventure action: Raise bleak zombie	复生凄凉僵尸	l
+Adventure action: Raise buried ghoul	复生埋葬食尸鬼	l
+Adventure action: Raise coffin ghoul	复生棺木食尸鬼	l
+Adventure action: Raise cold butcher	复生冰冷屠夫	l
+Adventure action: Raise cold stalker	复生冰冷潜行者	l
+Adventure action: Raise crypt corpse	复生地穴尸体	l
+Adventure action: Raise crypt hunter	复生地穴猎手	l
+Adventure action: Raise crypt slayer	复生地穴杀手	l
+Adventure action: Raise crypt zombie	复生地穴僵尸	l
+Adventure action: Raise cursed ghoul	复生受诅咒的食尸鬼	l
+Adventure action: Raise cursed haunt	复生受诅咒的游魂	l
+Adventure action: Raise cursed shade	复生受诅咒的幽影	l
+Adventure action: Raise damned ghoul	复生被咒逐的食尸鬼	l
+Adventure action: Raise damned haunt	复生被咒逐的游魂	l
+Adventure action: Raise damned shade	复生被咒逐的幽影	l
+Adventure action: Raise dark butcher	复生黑暗屠夫	l
+Adventure action: Raise dark stalker	复生黑暗潜行者	l
+Adventure action: Raise death corpse	复生死亡尸体	l
+Adventure action: Raise death hunter	复生死亡猎手	l
+Adventure action: Raise death slayer	复生死亡杀手	l
+Adventure action: Raise death spirit	复生死亡灵体	l
+Adventure action: Raise death wraith	复生死亡怨灵	l
+Adventure action: Raise death zombie	复生死亡僵尸	l
+Adventure action: Raise dismal ghoul	复生阴郁食尸鬼	l
+Adventure action: Raise dismal haunt	复生阴郁游魂	l
+Adventure action: Raise dismal shade	复生阴郁幽影	l
+Adventure action: Raise doomed ghoul	复生劫数已定的食尸鬼	l
+Adventure action: Raise doomed haunt	复生劫数已定的游魂	l
+Adventure action: Raise doomed shade	复生劫数已定的幽影	l
+Adventure action: Raise empty corpse	复生空无尸体	l
+Adventure action: Raise empty hunter	复生空无猎手	l
+Adventure action: Raise empty slayer	复生空无杀手	l
+Adventure action: Raise empty spirit	复生空无灵体	l
+Adventure action: Raise empty wraith	复生空无怨灵	l
+Adventure action: Raise empty zombie	复生空无僵尸	l
+Adventure action: Raise entombed one	复生封陵之人	l
+Adventure action: Raise faded corpse	复生褪色尸体	l
+Adventure action: Raise faded hunter	复生褪色猎手	l
+Adventure action: Raise faded slayer	复生褪色杀手	l
+Adventure action: Raise faded spirit	复生褪色灵体	l
+Adventure action: Raise faded wraith	复生褪色怨灵	l
+Adventure action: Raise faded zombie	复生褪色僵尸	l
+Adventure action: Raise faint corpse	复生虚弱尸体	l
+Adventure action: Raise faint hunter	复生虚弱猎手	l
+Adventure action: Raise faint slayer	复生虚弱杀手	l
+Adventure action: Raise faint spirit	复生虚弱灵体	l
+Adventure action: Raise faint wraith	复生虚弱怨灵	l
+Adventure action: Raise faint zombie	复生虚弱僵尸	l
+Adventure action: Raise fallen ghoul	复生堕落食尸鬼	l
+Adventure action: Raise fallen haunt	复生堕落游魂	l
+Adventure action: Raise fallen shade	复生堕落幽影	l
+Adventure action: Raise fell butcher	复生凶恶屠夫	l
+Adventure action: Raise fell stalker	复生凶恶潜行者	l
+Adventure action: Raise fetid corpse	复生恶臭尸体	l
+Adventure action: Raise fetid hunter	复生恶臭猎手	l
+Adventure action: Raise fetid slayer	复生恶臭杀手	l
+Adventure action: Raise fetid spirit	复生恶臭灵体	l
+Adventure action: Raise fetid wraith	复生恶臭怨灵	l
+Adventure action: Raise fetid zombie	复生恶臭僵尸	l
+Adventure action: Raise frozen ghoul	复生冰冻食尸鬼	l
+Adventure action: Raise frozen haunt	复生冰冻游魂	l
+Adventure action: Raise frozen shade	复生冰冻幽影	l
+Adventure action: Raise gaunt corpse	复生枯瘦尸体	l
+Adventure action: Raise gaunt hunter	复生枯瘦猎手	l
+Adventure action: Raise gaunt slayer	复生枯瘦杀手	l
+Adventure action: Raise gaunt spirit	复生枯瘦灵体	l
+Adventure action: Raise gaunt wraith	复生枯瘦怨灵	l
+Adventure action: Raise gaunt zombie	复生枯瘦僵尸	l
+Adventure action: Raise grave corpse	复生坟墓尸体	l
+Adventure action: Raise grave hunter	复生坟墓猎手	l
+Adventure action: Raise grave slayer	复生坟墓杀手	l
+Adventure action: Raise grave zombie	复生坟墓僵尸	l
+Adventure action: Raise grim butcher	复生阴森屠夫	l
+Adventure action: Raise grim stalker	复生阴森潜行者	l
+Adventure action: Raise hollow ghoul	复生空虚食尸鬼	l
+Adventure action: Raise hollow haunt	复生空虚游魂	l
+Adventure action: Raise hollow shade	复生空虚幽影	l
+Adventure action: Raise interred one	复生安葬之人	l
+Adventure action: Raise lost butcher	复生迷失屠夫	l
+Adventure action: Raise lost stalker	复生迷失潜行者	l
+Adventure action: Raise night corpse	复生暗夜尸体	l
+Adventure action: Raise night hunter	复生暗夜猎手	l
+Adventure action: Raise night slayer	复生暗夜杀手	l
+Adventure action: Raise night spirit	复生暗夜灵体	l
+Adventure action: Raise night wraith	复生暗夜怨灵	l
+Adventure action: Raise night zombie	复生暗夜僵尸	l
+Adventure action: Raise pale butcher	复生苍白屠夫	l
+Adventure action: Raise pale stalker	复生苍白潜行者	l
+Adventure action: Raise putrid ghoul	复生腐败食尸鬼	l
+Adventure action: Raise putrid haunt	复生腐败游魂	l
+Adventure action: Raise putrid shade	复生腐败幽影	l
+Adventure action: Raise returned one	复生归来之人	l
+Adventure action: Raise risen corpse	复生再起尸体	l
+Adventure action: Raise risen hunter	复生再起猎手	l
+Adventure action: Raise risen slayer	复生再起杀手	l
+Adventure action: Raise risen spirit	复生再起灵体	l
+Adventure action: Raise risen wraith	复生再起怨灵	l
+Adventure action: Raise risen zombie	复生再起僵尸	l
+Adventure action: Raise rotten ghoul	复生腐烂食尸鬼	l
+Adventure action: Raise rotten haunt	复生腐烂游魂	l
+Adventure action: Raise rotten shade	复生腐烂幽影	l
+Adventure action: Raise ruined ghoul	复生破败食尸鬼	l
+Adventure action: Raise ruined haunt	复生破败游魂	l
+Adventure action: Raise ruined shade	复生破败幽影	l
+Adventure action: Raise sacred ghoul	复生神圣食尸鬼	l
+Adventure action: Raise sallow ghoul	复生蜡黄食尸鬼	l
+Adventure action: Raise sallow haunt	复生蜡黄游魂	l
+Adventure action: Raise sallow shade	复生蜡黄幽影	l
+Adventure action: Raise tomb butcher	复生陵墓屠夫	l
+Adventure action: Raise tomb stalker	复生陵墓潜行者	l
+Adventure action: Raise void butcher	复生虚空屠夫	l
+Adventure action: Raise void stalker	复生虚空潜行者	l
 Adventure environment modifier: salt	含盐的	h
 Adventure item action: Bash down {s}	撞倒{s}	h
 Adventure item action: Cease nocking	停止搭箭	h
@@ -58824,6 +59298,7 @@ Symbol picker entity status local: X	本地X	hi
 Tell me about the army on the march.	跟我说说那支正在行军的军队。	hP
 Temperature Weighted Range ({d}-{d})	温度加权范围（{d}-{d}）	wt
 Thank you for protecting our wisdom.	感谢你守护我们的智慧。	hP
+Thank you for returning my treasure.	谢谢你归还我的珍宝。	hP
 The Destruction of {p} in the wilds.	在荒野中，{p1}毁灭事件。	htEi
 The Duel of {n} and {n} in the wilds	在荒野中，{n1}与{n2}的决斗	htEi
 The Insurrection in {p} in the wilds	在荒野中，{p1}起义	htEi
@@ -60245,6 +60720,86 @@ A large mammal person with a shell.	一种背负甲壳的大型哺乳类人形�
 A man-shaped creature made of iron.	由铁组成的人形生物。	lP
 A small amphibian with a flat body.	一种身体扁平的小型两栖动物。	lP
 Acknowledge lack of disillusionment	表示没有幻灭	hP
+Adventure action: Raise bleak ghoul	复生凄凉食尸鬼	l
+Adventure action: Raise bleak haunt	复生凄凉游魂	l
+Adventure action: Raise bleak shade	复生凄凉幽影	l
+Adventure action: Raise cold corpse	复生冰冷尸体	l
+Adventure action: Raise cold hunter	复生冰冷猎手	l
+Adventure action: Raise cold slayer	复生冰冷杀手	l
+Adventure action: Raise cold spirit	复生冰冷灵体	l
+Adventure action: Raise cold wraith	复生冰冷怨灵	l
+Adventure action: Raise cold zombie	复生冰冷僵尸	l
+Adventure action: Raise crypt ghoul	复生地穴食尸鬼	l
+Adventure action: Raise dark corpse	复生黑暗尸体	l
+Adventure action: Raise dark hunter	复生黑暗猎手	l
+Adventure action: Raise dark slayer	复生黑暗杀手	l
+Adventure action: Raise dark spirit	复生黑暗灵体	l
+Adventure action: Raise dark wraith	复生黑暗怨灵	l
+Adventure action: Raise dark zombie	复生黑暗僵尸	l
+Adventure action: Raise death ghoul	复生死亡食尸鬼	l
+Adventure action: Raise death haunt	复生死亡游魂	l
+Adventure action: Raise death shade	复生死亡幽影	l
+Adventure action: Raise empty ghoul	复生空无食尸鬼	l
+Adventure action: Raise empty haunt	复生空无游魂	l
+Adventure action: Raise empty shade	复生空无幽影	l
+Adventure action: Raise faded ghoul	复生褪色食尸鬼	l
+Adventure action: Raise faded haunt	复生褪色游魂	l
+Adventure action: Raise faded shade	复生褪色幽影	l
+Adventure action: Raise faint ghoul	复生虚弱食尸鬼	l
+Adventure action: Raise faint haunt	复生虚弱游魂	l
+Adventure action: Raise faint shade	复生虚弱幽影	l
+Adventure action: Raise fell corpse	复生凶恶尸体	l
+Adventure action: Raise fell hunter	复生凶恶猎手	l
+Adventure action: Raise fell slayer	复生凶恶杀手	l
+Adventure action: Raise fell spirit	复生凶恶灵体	l
+Adventure action: Raise fell wraith	复生凶恶怨灵	l
+Adventure action: Raise fell zombie	复生凶恶僵尸	l
+Adventure action: Raise fetid ghoul	复生恶臭食尸鬼	l
+Adventure action: Raise fetid haunt	复生恶臭游魂	l
+Adventure action: Raise fetid shade	复生恶臭幽影	l
+Adventure action: Raise forlorn one	复生孤绝之人	l
+Adventure action: Raise gaunt ghoul	复生枯瘦食尸鬼	l
+Adventure action: Raise gaunt haunt	复生枯瘦游魂	l
+Adventure action: Raise gaunt shade	复生枯瘦幽影	l
+Adventure action: Raise grave ghoul	复生坟墓食尸鬼	l
+Adventure action: Raise grim corpse	复生阴森尸体	l
+Adventure action: Raise grim hunter	复生阴森猎手	l
+Adventure action: Raise grim slayer	复生阴森杀手	l
+Adventure action: Raise grim spirit	复生阴森灵体	l
+Adventure action: Raise grim wraith	复生阴森怨灵	l
+Adventure action: Raise grim zombie	复生阴森僵尸	l
+Adventure action: Raise lost corpse	复生迷失尸体	l
+Adventure action: Raise lost hunter	复生迷失猎手	l
+Adventure action: Raise lost slayer	复生迷失杀手	l
+Adventure action: Raise lost spirit	复生迷失灵体	l
+Adventure action: Raise lost wraith	复生迷失怨灵	l
+Adventure action: Raise lost zombie	复生迷失僵尸	l
+Adventure action: Raise night ghoul	复生暗夜食尸鬼	l
+Adventure action: Raise night haunt	复生暗夜游魂	l
+Adventure action: Raise night shade	复生暗夜幽影	l
+Adventure action: Raise pale corpse	复生苍白尸体	l
+Adventure action: Raise pale hunter	复生苍白猎手	l
+Adventure action: Raise pale slayer	复生苍白杀手	l
+Adventure action: Raise pale spirit	复生苍白灵体	l
+Adventure action: Raise pale wraith	复生苍白怨灵	l
+Adventure action: Raise pale zombie	复生苍白僵尸	l
+Adventure action: Raise profane one	复生亵渎之人	l
+Adventure action: Raise risen ghoul	复生再起食尸鬼	l
+Adventure action: Raise risen haunt	复生再起游魂	l
+Adventure action: Raise risen shade	复生再起幽影	l
+Adventure action: Raise sunless one	复生无日之人	l
+Adventure action: Raise tomb corpse	复生陵墓尸体	l
+Adventure action: Raise tomb hunter	复生陵墓猎手	l
+Adventure action: Raise tomb slayer	复生陵墓杀手	l
+Adventure action: Raise tomb zombie	复生陵墓僵尸	l
+Adventure action: Raise void corpse	复生虚空尸体	l
+Adventure action: Raise void hunter	复生虚空猎手	l
+Adventure action: Raise void slayer	复生虚空杀手	l
+Adventure action: Raise void spirit	复生虚空灵体	l
+Adventure action: Raise void wraith	复生虚空怨灵	l
+Adventure action: Raise void zombie	复生虚空僵尸	l
+Adventure action: Raise wasting one	复生衰朽之人	l
+Adventure action: Spray jet of fire	喷射火柱	l
 Adventure item action: Attack error	攻击错误	h
 Adventure item action: Break in {s}	破开{s}	h
 Adventure item action: Climb to {s}	攀向{s}	h
@@ -62408,6 +62963,46 @@ Ability to grasp somewhat impaired	抓取能力有所受损	w
 Ability to stand somewhat impaired	直立能力有所受损	w
 Acknowledge lack of disappointment	表示没有失望	hP
 Adventure action target: creatures	生物	h
+Adventure action: Raise bitter one	复生苦痛之人	l
+Adventure action: Raise buried one	复生埋葬之人	l
+Adventure action: Raise coffin one	复生棺木之人	l
+Adventure action: Raise cold ghoul	复生冰冷食尸鬼	l
+Adventure action: Raise cold haunt	复生冰冷游魂	l
+Adventure action: Raise cold shade	复生冰冷幽影	l
+Adventure action: Raise cursed one	复生受诅咒之人	l
+Adventure action: Raise damned one	复生被咒逐之人	l
+Adventure action: Raise dark ghoul	复生黑暗食尸鬼	l
+Adventure action: Raise dark haunt	复生黑暗游魂	l
+Adventure action: Raise dark shade	复生黑暗幽影	l
+Adventure action: Raise dismal one	复生阴郁之人	l
+Adventure action: Raise doomed one	复生劫数已定之人	l
+Adventure action: Raise fallen one	复生堕落之人	l
+Adventure action: Raise fell ghoul	复生凶恶食尸鬼	l
+Adventure action: Raise fell haunt	复生凶恶游魂	l
+Adventure action: Raise fell shade	复生凶恶幽影	l
+Adventure action: Raise frozen one	复生冰冻之人	l
+Adventure action: Raise grim ghoul	复生阴森食尸鬼	l
+Adventure action: Raise grim haunt	复生阴森游魂	l
+Adventure action: Raise grim shade	复生阴森幽影	l
+Adventure action: Raise hollow one	复生空虚之人	l
+Adventure action: Raise lost ghoul	复生迷失食尸鬼	l
+Adventure action: Raise lost haunt	复生迷失游魂	l
+Adventure action: Raise lost shade	复生迷失幽影	l
+Adventure action: Raise pale ghoul	复生苍白食尸鬼	l
+Adventure action: Raise pale haunt	复生苍白游魂	l
+Adventure action: Raise pale shade	复生苍白幽影	l
+Adventure action: Raise putrid one	复生腐败之人	l
+Adventure action: Raise rotten one	复生腐烂之人	l
+Adventure action: Raise ruined one	复生破败之人	l
+Adventure action: Raise sacred one	复生神圣之人	l
+Adventure action: Raise sallow one	复生蜡黄之人	l
+Adventure action: Raise tomb ghoul	复生陵墓食尸鬼	l
+Adventure action: Raise void ghoul	复生虚空食尸鬼	l
+Adventure action: Raise void haunt	复生虚空游魂	l
+Adventure action: Raise void shade	复生虚空幽影	l
+Adventure action: Roll into a ball	蜷成一团	l
+Adventure action: Spit molten rock	吐出熔岩	l
+Adventure action: Summon nightmare	召唤梦魇	l
 Adventure item action: A {s} ({p})	一只{s}（{p}）	h
 Adventure item action: Climb ({p})	攀爬（{p}）	h
 Adventure item action: Move to {n}	移动到{n}	h
@@ -64707,6 +65302,20 @@ Acknowledge lack of mortification	表示没有羞愧难当	hP
 Adventure action target: building	建筑	h
 Adventure action target: creature	生物	h
 Adventure action target: the Void	虚空	h
+Adventure action: Cause dizziness	引发眩晕	l
+Adventure action: Launch ice bolt	发射冰箭	l
+Adventure action: Raise bleak one	复生凄凉之人	l
+Adventure action: Raise crypt one	复生地穴之人	l
+Adventure action: Raise death one	复生死亡之人	l
+Adventure action: Raise empty one	复生空无之人	l
+Adventure action: Raise faded one	复生褪色之人	l
+Adventure action: Raise faint one	复生虚弱之人	l
+Adventure action: Raise fetid one	复生恶臭之人	l
+Adventure action: Raise gaunt one	复生枯瘦之人	l
+Adventure action: Raise grave one	复生坟墓之人	l
+Adventure action: Raise night one	复生暗夜之人	l
+Adventure action: Raise risen one	复生再起之人	l
+Adventure action: Summon bogeymen	召唤夜妖	l
 Adventure item action: Attack {n}	攻击{n}	h
 Adventure item action: Charge {n}	冲向{n}	h
 Adventure item action: Charge {s}	冲向{s}	h
@@ -66850,7 +67459,18 @@ Acknowledge lack of hopelessness	表示没有绝望感	hP
 Acknowledge lack of restlessness	表示没有躁动不安	hP
 Acknowledge lack of satisfaction	表示没有满意	hP
 Acknowledge lack of vengefulness	表示没有复仇心	hP
+Adventure action: Animate corpse	活化尸体	l
+Adventure action: Cause bleeding	引发出血	l
 Adventure action: Compose a poem	创作诗歌	l
+Adventure action: Raise cold one	复生冰冷之人	l
+Adventure action: Raise dark one	复生黑暗之人	l
+Adventure action: Raise fell one	复生凶恶之人	l
+Adventure action: Raise grim one	复生阴森之人	l
+Adventure action: Raise lost one	复生迷失之人	l
+Adventure action: Raise pale one	复生苍白之人	l
+Adventure action: Raise tomb one	复生陵墓之人	l
+Adventure action: Raise void one	复生虚空之人	l
+Adventure action: Root around in	翻找	l
 Adventure item action: Climb {s}	攀爬{s}	h
 Adventure item action: Drink {s}	饮用{s}	h
 Adventure item action: Guide {s}	引导{s}	h
@@ -67528,6 +68148,7 @@ Save list mode: Reclaim Fortress	收复要塞模式	h
 Say something about your schemes	谈谈你的谋划	hP
 Seek your foe in the {s} of {e}.	去{e1}的{s1}寻找你的敌人。	hPt
 Select a stockpile to take from.	选择一个供货的储物堆。	hP
+Select recipient ({d} selected).	选择接受者（已选{d1}个）。	hPt
 Select the squads to train here.	选择在这里训练的小队。	hP
 Selected tiles are low priority.	将选中地格设为低优先级。	hj
 She does not often feel lustful.	她不常产生情欲。	l
@@ -69050,6 +69671,7 @@ Acknowledge lack of unhappiness	表示没有不快	hP
 Acquiesce (changes your values)	默认接受（改变你的价值观）	hP
 Adventure action: Compose music	创作音乐	l
 Adventure action: Give a sermon	布道	l
+Adventure action: Hurl fireball	投掷火球	l
 Adventure action: Perform music	演奏音乐	l
 Adventure action: Recite a poem	朗诵诗歌	l
 Adventure item action: Drop {s}	丢下{s}	h
@@ -69728,6 +70350,7 @@ Rampage of {n} in in {p} in {p}	在{p2}，{n1}在{p1}的肆虐事件	htEi
 Remove this burrow permanently.	永久移除此活动区。	hj
 Saving civilized populations...	保存政权人口...	w
 Say something about your family	谈谈你的家人	hP
+Select creature ({d} selected).	选择生物（已选{d1}个）。	hPt
 Select material after placement	放置后选择材料	wli
 Select which burrows to defend.	选择要防守的活动区。	hP
 Select your combat preferences.	选择你的战斗偏好。	hP
@@ -71426,6 +72049,7 @@ wrongfully convicted {n} of {s}	错误地判定{n1}犯有{s1}	ht
 {s} was rejected by {a} at {p}.	在{p1}，{a1}拒绝了{s1}。	ht
 {s} was rejected by {a} in {p}.	在{p1}，{a1}拒绝了{s1}。	ht
 {t} was {s} by {a} in the wilds	在荒野中，{t1}被{a1}{s1}	ht
+"How kind! Thank you so much."	“你真慷慨！太感谢了。”	hP
 "I don't really want to know."	“我其实并不想知道。”	l
 "I just don't care anymore..."	“我已经什么都不在乎了……”	l
 "We should all work together."	“大家应当齐心协力。”	l
@@ -71454,6 +72078,8 @@ Acknowledge lack of repentance	表示没有忏悔	hP
 Acknowledge lack of resentment	表示没有怨恨	hP
 Acknowledge lack of tenderness	表示没有温柔	hP
 Acknowledge lack of uneasiness	表示没有不安	hP
+Adventure action: Breathe fire	喷火	l
+Adventure action: Create ghoul	制造食尸鬼	l
 Adventure action: Tell a story	讲故事	l
 Adventure item action: A ({p})	小生物（{p}）	h
 Adventure item action: Eat {s}	食用{s}	h
@@ -72244,6 +72870,8 @@ Respected for hunting treasure	因狩猎宝物而受人尊敬	w
 Saving fortress information...	正在保存要塞信息……	w
 Saving tracking information...	正在保存追踪信息……	w
 Select a stockpile to give to.	选择一个接收货物的储物堆。	hP
+Select corpses ({d} selected).	选择尸体（已选{d1}个）。	hPt
+Select recipient ({d} of {d}).	选择接受者（{d1}/{d2}）。	hPt
 She has an active imagination.	她想象力活跃。	l
 She is somewhat fearful in the	她在面对迫在眉睫的	l
 She is the head of the family.	她是家族的首领。	hP
@@ -73918,6 +74546,9 @@ Acquiescing <-> Resists ideas	易受影响 ↔ 抗拒观念	wl
 Adds Pokemon related content.	添加宝可梦相关内容。	wl
 Adventure action target: item	物品	h
 Adventure action target: tree	树	h
+Adventure action: Propel away	击退	l
+Adventure action: Spray juice	喷射汁液	l
+Adventure action: Spray vapor	喷射蒸气	l
 Adventure item action: Ignite	点火	h
 Adventure movement: Excellent	极好	l
 Adventure movement: Fantastic	极好	l
@@ -74700,7 +75331,10 @@ Saving cultural identities...	正在保存文化身份……	w
 Saving general information...	正在保存基本信息……	w
 Scatterbrained - Singleminded	心不在焉 - 专心致志	wl
 See to your responsibilities.	履行你的责任。	hP
+Select creature ({d} of {d}).	选择生物（{d1}/{d2}）。	hPt
 Select materials for the {s}.	为{s1}选择材料。	hPt
+Select target ({d} selected).	选择目标（已选{d1}个）。	hPt
+Select victim ({d} selected).	选择受害者（已选{d1}个）。	hPt
 Set the draw direction below.	在下方设置升起方向。	hP
 Several people were expelled.	数人遭到驱逐。	h
 Shameless     <->     Bashful	不知羞耻 ↔ 害羞	wl
@@ -76191,6 +76825,7 @@ you can succumb to invasions.	入侵就可能让你覆灭。	hq
 "I feel angry all the time."	“我心里总有一股怒气。”	l
 "I've been feeling anxious."	“我最近一直心神不宁。”	l
 "Keep going and never quit."	“坚持下去，永不放弃。”	l
+"What did you have in mind?"	“你有什么打算？”	hP
 "Who cares what they think?"	“何必在意他们怎么想？”	l
 .Partially impaired function	·功能部分受损
 A huge hippo-shaped monster.	一个巨大的河马怪兽。	lP
@@ -76214,7 +76849,10 @@ Acknowledge lack of optimism	表示没有乐观	hP
 Acknowledge lack of patience	表示没有耐心	hP
 Acknowledge lack of pleasure	表示没有愉悦	hP
 Acknowledge lack of sympathy	表示没有同情	hP
+Adventure action: Cause pain	引发疼痛	l
 Adventure action: Pet animal	抚摸动物	l
+Adventure action: Spray dust	喷射粉尘	l
+Adventure action: Squirt ink	喷墨	l
 Adventure item action: Climb	攀爬	h
 Adventure movement: Darkness	黑暗	l
 Adventure movement: Scramble	快速挪动	l
@@ -77008,6 +77646,7 @@ Reveal All Historical Events	显示全部历史事件
 Roughly a hundred live there	那里住着约一百人	al
 Save to timeline folder: {s}	保存到时间线文件夹：{s}	wt
 Select a game type to begin!	选择一种游戏模式开始！	wi
+Select corpses ({d} of {d}).	选择尸体（{d1}/{d2}）。	hPt
 Select material at placement	放置时选择材料	wli
 Set conditions for Stop {d}.	设置站点 {d} 的发车条件。	wtl
 Several people were expelled	数人遭到驱逐	h
@@ -78546,6 +79185,13 @@ Acknowledge lack of remorse	表示没有懊悔	hP
 Acknowledge lack of sadness	表示没有悲伤	hP
 Acknowledge lack of triumph	表示没有得意	hP
 Add/edit routines (columns)	添加/编辑日程（列）	w
+Adventure action: Head bump	头部轻碰	l
+Adventure action: Raise fog	唤起迷雾	l
+Adventure action: Spit glob	吐出团块	l
+Adventure action: Spray gas	喷射气体	l
+Adventure action: Spray web	喷射蛛网	l
+Adventure action: Suffocate	窒息	l
+Adventure action: Transform	变形	l
 Adventure item action: Read	阅读	h
 Adventure item action: Roll	掷骰	h
 Adventure movement: Average	一般	l
@@ -79237,6 +79883,8 @@ Saving world information...	正在保存世界信息……	w
 Say that you don't remember	表示你不记得了	hP
 Say that you have no family	表示你没有家人	hP
 See to the simple comforts.	照顾好日常起居。	hP
+Select target ({d} of {d}).	选择目标（{d1}/{d2}）。	hPt
+Select victim ({d} of {d}).	选择受害者（{d1}/{d2}）。	hPt
 Set plant gathering orders.	设置植物采集命令。	hj
 Set plant gathering orders.	设置植物采集命令.	w
 Site Cap After Civ Creation	政权生成后的聚落上限
@@ -80820,6 +81468,7 @@ wove a masterful sewn image	织出了一幅杰作级的刺绣图像	h
 "Oh, I'm nothing special."	“我没什么过人之处。”	l
 "There's work to be done!"	“还有事要做！”	l
 (Adventure) Cackling fades	冒险：狂笑声消失	w
+(Select an item to demand)	（选择要索取的物品）	hP
 (Wrestle) Part ripped away	(摔跤)部件被扯下	w
 * Will also target enemies	* 也会向敌人射击	hP
 * Will also target enemies	* 也会向敌人射击	wi
@@ -80843,6 +81492,7 @@ Acknowledge lack of regret	表示没有后悔	hP
 Acknowledge lack of relief	表示没有如释重负	hP
 Acknowledge lack of terror	表示没有恐惧	hP
 Acknowledge lack of wonder	表示没有惊叹	hP
+Adventure action: Paralyze	麻痹	l
 Adventure item action: {p}	{p}	h
 Adventure movement: Canter	慢跑	l
 Adventure movement: Gallop	疾驰	l
@@ -82987,6 +83637,7 @@ were expelled in the wilds	在荒野中遭到了驱逐	h
 {s} {s} sideburns are {s}.	{s}的{s}鬓角{s}。	wtlx
 {t} was {s} by {a} at {p}.	在{p1}，{t1}被{a1}{s1}。	ht
 {t} was {s} by {a} in {p}.	在{p1}，{t1}被{a1}{s1}。	ht
+"Greetings. Let's trade."	“你好。来做笔交易吧。”	hP
 "I get fed up sometimes."	“有时我也觉得受够了。”	l
 "I try not to interrupt."	“我尽量不打断别人说话。”	l
 "It won't turn out well."	“这事不会有好结果。”	l
@@ -83015,7 +83666,9 @@ Acknowledge lack of worry	表示没有担心	hP
 Acknowledge lack of wrath	表示没有暴怒	hP
 Add new recenter location	添加新的重新居中位置
 Add or choose a location.	添加或选择一个地点。	wli
+Adventure action: Blister	引发水疱	l
 Adventure action: Butcher	屠宰	l
+Adventure action: Scratch	刨地	l
 Adventure movement: Awful	很差	l
 Adventure movement: Clear	视野清晰	l
 Adventure movement: Climb	攀爬	l
@@ -83054,6 +83707,7 @@ Argue the value of nature	争辩自然的价值	hP
 Art image named item: X Y	X「Y」	wl
 Ask about the local ruler	询问当地统治者	hP
 Ask for directions to {e}	询问前往{e1}的路线	hPt
+Ask for how much? (0-{d})	索要多少货币？（0—{d1}）	hPt
 Ask listener to adopt {n}	请对方收养{n1}	hPt
 Ask listener to wait here	请对方在这里等候	hP
 Attempted {e} during {e}.	在{e2}期间，未遂的{e1}。	htEi
@@ -84950,6 +85604,9 @@ Acknowledge lack of love	表示没有爱意	hP
 Acknowledge lack of lust	表示没有欲望	hP
 Acknowledge lack of rage	表示没有狂怒	hP
 Acknowledge lack of zeal	表示没有热忱	hP
+Adventure action: Sicken	致病	l
+Adventure action: Unroll	舒展开来	l
+Adventure action: Vanish	隐身	l
 Adventure movement: Fair	尚可	l
 Adventure movement: Good	良好	l
 Adventure movement: Move	移动	l
@@ -87053,6 +87710,9 @@ Add magma to the arena.	向竞技场中添加岩浆。	hj
 Add magma to the arena.	向竞技场中添加岩浆。	l
 Add water to the arena.	向竞技场中添加水。	hj
 Add water to the arena.	向竞技场中添加水。	l
+Adventure action: Blind	致盲	l
+Adventure action: Clean	清洁	l
+Adventure action: Curse	诅咒	l
 Adventure action: Dance	跳舞	l
 Adventure movement: Fly	飞行	l
 Adventure movement: Jog	慢跑	l
@@ -87491,6 +88151,7 @@ Number of civilizations	政权数量	w
 Occasion of during {e}.	在{e1}期间，庆典。	htEi
 Occasion of within {p}.	在{p1}，庆典。	htEi
 Of course. My pleasure.	当然，我很乐意。	hP
+Offer how much? (0-{d})	提供多少货币？（0—{d1}）	hPt
 Open the squad sidebar.	打开小队侧栏。	hj
 Open the squad sidebar.	打开军队侧边栏。	w
 Opening Ceremony at {p}	在{p1}，开幕仪式	htEi
@@ -87674,6 +88335,7 @@ This {s} player stinks!	这位{s1}演奏者糟透了！	hPt
 This {s} player? Awful.	这位{s1}演奏者？糟透了。	hPt
 Total Power Needed: {d}	总动力需求：{d}	wtl
 Track carving blueprint	轨道雕凿蓝图	wo
+Trade how many? (0-{d})	交易多少件？（0—{d1}）	hPt
 Travel building: Barrow	坟冢	wi
 Travel building: Houses	住宅群	wi
 Travel building: Shrine	神龛	wi
@@ -91224,6 +91886,7 @@ Add mud to the arena.	向竞技场中添加淤泥。	hj
 Add mud to the arena.	向竞技场中添加淤泥。	l
 Add or remove fluids.	添加或移除流体。	hj
 Add or remove fluids.	添加或移除流体。	l
+Adventure action: Rot	腐烂	l
 Adventure compass: NE	东北
 Adventure compass: NW	西北
 Adventure compass: SE	东南
@@ -96972,6 +97635,7 @@ Throwing a tantrum!	正在大发脾气！	hP
 Time Spent With {b}	与{b}共度的时光	hbti
 Toggle/edit setting	切换/编辑设置	w
 Underground regions	地下区域
+Unknown interaction	未知能力	hP
 Unnamed dining hall	未命名餐厅	wi
 Unnamed pen/pasture	未命名畜栏／牧场	wi
 Upright Spear/Spike	直立长矛或尖刺	wi
@@ -99738,6 +100402,7 @@ younger half-sister	同父异母或同母异父的妹妹	wi
 {i} was confiscated	{i1}被没收了	ht
 {m} figurine of {a}	{m1}{a1}小塑像	hIit
 {m} memorial to {n}	纪念{n1}的{m1}纪念碑	hIit
+{n} (Owes you {d}\x0F)	{n1}（欠你{d1}☼）	hPt
 {n} charges at {n}!	{n1}冲向{n2}！	hPt
 {n} devoured a {s}.	{n}吞噬了一只{s}。	ht
 {n} drinks the {s}.	{n1}喝下了{s1}。	hPt
@@ -100335,6 +101000,7 @@ Workers save bones	工人保留骨头	wi
 Workers save skins	工人保留兽皮	wi
 Writhing in agony!	痛苦得扭动着身体！	hP
 X is contemplating	X正在沉思	wl
+You are asking for	你索要的货币：	hP
 You are catatonic.	你陷入了紧张性木僵。	hj
 You are depressed.	你情绪低落。	hj
 You are nauseated.	你感到恶心。	hj
@@ -103670,6 +104336,7 @@ yellow spessartine	橙榴石	wi
 {i} created by {n}	{n1}制作的{i1}	htEi
 {i} was recovered.	{i1}被找回了。	ht
 {m} statues of {a}	{m1}{a1}雕像	hIit
+{n} (You owe {d}\x0F)	{n1}（你欠对方{d1}☼）	hPt
 {n} breathes fire!	{n1}喷出火焰！	hPt
 {n} conquered {n}.	{n1}征服了{n2}。	ht
 {n} conquered {p}.	{n1}征服了{p}。	ht
@@ -104096,6 +104763,7 @@ Saving effects...	正在保存效果……	w
 Saving history...	保存历史...	w
 Scattered cumulus	零散积云
 Second eldest son	次子	w
+Select recipient.	选择接受者。	hP
 Seriously injured	重伤	w
 Set a restricted 	设置限制通行区域。居民将尽力	w
 Set high and low 	设置高、低优先级通行区域。	w
@@ -108152,6 +108820,7 @@ And what a wind!	而且好大的风！	hP
 Animal Caretaker	动物护理员	wi
 Animal Dissector	动物解剖员	wi
 Animal Societies	动物群体	hi
+Ask for currency	索要货币	hP
 Associated Plot:	关联阴谋：	wl
 Assumed position	已经就位	w
 Attack creatures	攻击多个生物	hP
@@ -108456,6 +109125,7 @@ Search for bugs.	寻找虫子。	hj
 Second Adjective	第二形容词	w
 Secondary Select	次要选择	w
 Select bodywear.	选择躯干装备。	hP
+Select creature.	选择生物。	hP
 Select footwear.	选择足部装备。	hP
 Select handwear.	选择手部装备。	hP
 Select headwear.	选择头部装备。	hP
@@ -108574,6 +109244,7 @@ You are berserk.	你陷入了狂暴。	hj
 You are burning!	你遭到了灼烧！	hP
 You are enraged.	你怒不可遏。	hj
 You are melting!	你正在熔化！	hP
+You are offering	你提供的货币：	hP
 You are on fire!	你着火了！	hP
 You are stunned.	你被击晕了。	hj
 You are thirsty.	你口渴了。	hj
@@ -112995,6 +113666,7 @@ SWAMP REJECTION	沼泽不符合要求	hP
 Saving items...	正在保存物品……	w
 Saving units...	正在保存单位……	w
 See great beast	见到巨兽	w
+Select corpses.	选择尸体。	hP
 Select crow man	选择乌鸦人
 Select legwear.	选择腿部装备。	hP
 She tends to be	她往往
@@ -117739,6 +118411,7 @@ North or South	北极或南极
 Not altruistic	不愿助人	w
 Not in contact	尚未建立联系	wli
 Noted murderer	著名的谋杀犯	w
+Offer currency	提供货币	hP
 Offering Place	供奉处	wi
 Offering place	供奉处	w
 One-time order	一次性工单	wl
@@ -117793,6 +118466,8 @@ SMALLER REGION	较小的地区	w
 Saving jobs...	正在保存工作……	w
 Scatterbrained	容易分心	w
 Select shield.	选择盾牌。	hP
+Select target.	选择目标。	hP
+Select victim.	选择受害者。	hP
 Select weapon.	选择武器。	hP
 Set profession	设置职业	w
 Show elevation	显示高度层
@@ -126891,6 +127566,7 @@ the magma sea	岩浆海	h
 the scouting.	侦察活动。	hEi
 the thievery.	盗窃活动。	hEi
 the wandering	游荡	hEi
+this location	当前位置	hP
 thornback ray	刺鳐	wi
 three-pointed	三尖的	wi
 thylacine man	袋狼人	wi
@@ -135287,6 +135963,7 @@ Dig deeper	向下再挖	w
 Discipline	遵守纪律	wi
 Displayed:	正在被展示：	w
 Distressed	痛苦	w
+Done ({k})	完成（{k1}）	hPt
 Dorenoltar	多伦塔尔	w
 Down Stair	下行楼梯	wi
 Dragonfire	龙焰
@@ -142494,6 +143171,7 @@ Debish	德比石	wi
 Defeat	失败感	w
 Delete	删除	w
 Deleth	德莱斯	wi
+Demand	索要	hP
 Dense 	茂密	wi
 Detect	自动检测	w
 Dezrem	德兹雷姆	wi
@@ -144292,6 +144970,7 @@ Tough	坚固的	w
 Tower	高塔
 Toz\x94r	托佐尔	wi
 Track	跟踪	w
+Trade	贸易	hP
 Trade	贸易	hq
 Trade	贸易	w
 Train	训练	wl
@@ -144970,6 +145649,7 @@ Free	自由	w
 Game	游戏	w
 Geth	格斯	wi
 Ging	金戈	wi
+Give	赠送	hP
 Glee	欢喜	w
 Glum	郁闷	w
 Gold	金	wi
@@ -145149,6 +145829,7 @@ Shin	辛	wi
 Shis	希斯	wi
 Shop	商店	wi
 Shos	肖斯	wi
+Show	显示	hP
 Shuk	舒克	wi
 Sing	歌唱	hP
 Site	地点
