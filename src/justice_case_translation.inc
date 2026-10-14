@@ -77,6 +77,13 @@ std::optional<std::string> Overlay::translate_justice_case_text(
 
     const size_t number_end = source.find_first_not_of("0123456789");
     if (number_end > 0 && number_end < source.size() && source[number_end] == ' ') {
+        if (auto witnesses = exact_literal_translation("Justice witness count: " +
+                std::string(trim_view(std::string_view(source).substr(number_end))))) {
+            if (const size_t count = witnesses->find("{d}"); count != std::string::npos) {
+                witnesses->replace(count, 3, source.substr(0, number_end));
+                return witnesses;
+            }
+        }
         if (auto members = exact_literal_translation("Justice organization: " +
                 std::string(trim_view(std::string_view(source).substr(number_end))))) {
             if (const size_t count = members->find("{d}"); count != std::string::npos) {

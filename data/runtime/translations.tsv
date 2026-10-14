@@ -68286,6 +68286,7 @@ Justice plot: Corrupt {s} of {e}	拉拢{e}的{s}	l
 Justice plot: Figure {n} the {s}	{n}（{s}）	l
 Justice sentence: day in prison.	监禁{d}日。	l
 Justice sentence: hammerstrikes.	锤刑{d}次。	l
+Justice witness count: witnesses	{d}名证人	l
 Labor caption: Furnace Operating	操作熔炉	wi
 Labor caption: Furniture Hauling	搬运家具	wi
 Labor caption: Siege Engineering	制造攻城器械	wi
@@ -73024,6 +73025,7 @@ Justice alias title head: ward	守护者	l
 Justice case: Attempted murder	谋杀未遂	l
 Justice person value: somebody	某人	l
 Justice plot: Provide Position	提供职位	l
+Justice witness count: witness	{d}名证人	l
 Labor caption: Animal Training	驯兽	wi
 Labor caption: Crossbow-making	制弩	wi
 Labor caption: Dressing Wounds	包扎伤口	wi

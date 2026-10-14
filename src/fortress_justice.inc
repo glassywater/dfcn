@@ -405,6 +405,7 @@ void Overlay::append_fortress_justice_rows(std::vector<std::string> &rows,
         }
         std::fill_n(rows[part.y].begin() + part.x, length, ' ');
     };
+#include "fortress_justice_suspects.inc"
     // Convicts and Fortress guard share the resident roster's unit records.
     // Guard adds an unlabelled fourth sort after Name/Category/Profession.
     // Own the person field before generic matches centre it in the full row.

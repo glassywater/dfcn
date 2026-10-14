@@ -82,6 +82,10 @@ static std::vector<NativeHistoryUnboundDraw> captured_native_history_unbound_dra
 static std::optional<NativeActivityDetailDocument> native_activity_detail_document(
     const std::unordered_set<uintptr_t> &visible_words);
 static uintptr_t native_history_profile_base();
+static bool native_history_copy_bytes(uintptr_t address, void *destination, size_t size);
+template<typename T>
+static bool native_history_copy(uintptr_t address, T &value);
+static bool native_history_copy_string(uintptr_t address, std::string &value);
 static uintptr_t native_reference_va(uintptr_t address);
 static uintptr_t native_reference_address(uintptr_t base, uintptr_t offset);
 static std::optional<NativeJusticeOrganizationCaption>
