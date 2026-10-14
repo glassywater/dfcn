@@ -79,7 +79,8 @@ namespace dfcn {
 
 static std::vector<NativeHistoryDraw> captured_native_history_draws();
 static std::vector<NativeHistoryUnboundDraw> captured_native_history_unbound_draws();
-static std::optional<NativeActivityDetailDocument> native_activity_detail_document();
+static std::optional<NativeActivityDetailDocument> native_activity_detail_document(
+    const std::unordered_set<uintptr_t> &visible_words);
 static uintptr_t native_history_profile_base();
 static uintptr_t native_reference_va(uintptr_t address);
 static uintptr_t native_reference_address(uintptr_t base, uintptr_t offset);

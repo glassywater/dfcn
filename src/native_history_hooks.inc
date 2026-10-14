@@ -328,19 +328,27 @@ static bool copy_native_history_tokens(const NativeHistoryRichBox *box, size_t b
     return true;
 }
 
-static std::optional<NativeActivityDetailDocument> native_activity_detail_document() {
+static std::optional<NativeActivityDetailDocument> native_activity_detail_document(
+        const std::unordered_set<uintptr_t> &visible_words) {
 #ifdef _WIN32
     return std::nullopt;
 #else
     // The two native resident/pet activity selectors clear this exact markup
     // box and pass it as RCX to 0x15c1200 (0x204e655 and 0x204f1e5).
     // Reading retained words also covers an already-open cached popup.
+    if (visible_words.empty()) return std::nullopt;
     const uintptr_t base = native_history_profile_base();
     const uintptr_t address = base ? native_reference_address(base, 0x26fb2f8 - 0x400000) : 0;
     NativeHistoryRichBox box{};
     if (!address || !native_history_copy(address, box) ||
             !box.words.valid(16384) || box.words.size() == 0 ||
             box.current_width <= 0 || box.current_width > 1000) return std::nullopt;
+    std::vector<uintptr_t> words(box.words.size());
+    if (!native_history_copy_bytes(reinterpret_cast<uintptr_t>(box.words.begin),
+            words.data(), words.size() * sizeof(uintptr_t)) ||
+            std::none_of(words.begin(), words.end(), [&](uintptr_t word) {
+                return visible_words.contains(word);
+            })) return std::nullopt;
     NativeActivityDetailDocument document;
     document.width = box.current_width;
     NativeActivityDetailParagraph paragraph;
@@ -350,15 +358,14 @@ static std::optional<NativeActivityDetailDocument> native_activity_detail_docume
         paragraph = {};
     };
     for (size_t index = 0; index < box.words.size(); ++index) {
-        uintptr_t word = 0;
+        const uintptr_t word = words[index];
         struct Fields {
             uint8_t red, green, blue, padding;
             int32_t link, x, y;
             uint32_t flags;
         } fields{};
         NativeHistoryToken token;
-        if (!native_history_copy(reinterpret_cast<uintptr_t>(box.words.begin) + index * sizeof(void *), word) ||
-                !word || !native_history_copy_string(word, token.source) ||
+        if (!word || !native_history_copy_string(word, token.source) ||
                 !native_history_copy(word + offsetof(NativeHistoryRichWord, red), fields)) return std::nullopt;
         if (fields.flags & 7) flush(); // Native [R], [B] and [P] controls.
         if (token.source.empty()) continue;

@@ -62,7 +62,19 @@ void Overlay::append_activity_detail_matches(std::vector<std::string> &screen_ro
         std::vector<Match> &matches, std::vector<Match> &untranslated,
         int only_y, const unsigned char *screen_override) const {
     if (!config_.enabled || !gps_ || !face_) return;
-    const auto document = native_activity_detail_document();
+    const std::array draws{captured_native_drawn_text_rows(), captured_native_drawn_text_rows(true)};
+    std::unordered_set<uintptr_t> visible_words;
+    for (const auto &layer : draws)
+        for (const auto &draw : layer)
+            if (draw.address && !draw.source.empty() && draw.x >= 0 && draw.y >= 0 &&
+                    draw.y < gps_->dimy && draw.x < gps_->dimx &&
+                    draw.source.size() <= static_cast<size_t>(gps_->dimx - draw.x) &&
+                    draw.draw_dimx == gps_->dimx && draw.draw_dimy == gps_->dimy &&
+                    draw.draw_grid == (draw.top_layer ? gps_->screen_top : gps_->screen) &&
+                    (!screen_override || screen_override == draw.draw_grid) &&
+                    screen_rows[draw.y].compare(draw.x, draw.source.size(), draw.source) == 0)
+                visible_words.insert(draw.address);
+    const auto document = native_activity_detail_document(visible_words);
     if (!document) return;
     const auto heading = translate_activity_detail_paragraph(document->paragraphs.front().source, true);
     if (!heading) return;
@@ -71,7 +83,6 @@ void Overlay::append_activity_detail_matches(std::vector<std::string> &screen_ro
         for (const auto &token : document->paragraphs[index].tokens)
             identities.emplace(token.identity, std::pair{index, &token});
     std::vector<std::vector<const NativeDrawnTextRow *>> visible(document->paragraphs.size());
-    const std::array draws{captured_native_drawn_text_rows(), captured_native_drawn_text_rows(true)};
     for (const auto &layer : draws) {
         for (const auto &draw : layer) {
             const auto found = identities.find(draw.address);
