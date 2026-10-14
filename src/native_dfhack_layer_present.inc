@@ -67,6 +67,7 @@ static uint64_t g_native_dfhack_gpu_revision = 0;
 static bool g_native_dfhack_gpu_target_initialized = false;
 static bool g_native_dfhack_gpu_frame_ready = false;
 static bool g_native_dfhack_gpu_known_graphical = false;
+static bool g_native_dfhack_gpu_translation_enabled = true;
 static std::atomic_bool g_native_dfhack_gpu_draw_exports_covered{false};
 static std::atomic_uint64_t g_native_dfhack_gpu_draw_coverage_generation{0};
 static uint64_t g_native_dfhack_gpu_graphics_generation = 0;
@@ -240,6 +241,7 @@ class NativeDfhackLayerGpuScope {
     uint64_t page_revision_ = 0;
     unsigned paused_ = 0;
     bool entered_ = false, previous_drawing_ = false;
+    bool translation_enabled_ = true;
 
 public:
     explicit NativeDfhackLayerGpuScope(bool enter = true) noexcept {
@@ -256,6 +258,7 @@ public:
         }
         const auto native = NativeDfhackLayerNativeRenderer::current();
         if (!native.sdl) return;
+        translation_enabled_ = g_overlay.translation_enabled();
         renderer_ = native.sdl;
         game_state_.emplace(renderer_);
         int width = 0, height = 0;
@@ -279,7 +282,8 @@ public:
         }
         page_revision_ = native_dfhack_layer_page_revision();
         if (!g_native_dfhack_gpu_target_initialized ||
-                g_native_dfhack_gpu_page_revision != page_revision_) {
+                g_native_dfhack_gpu_page_revision != page_revision_ ||
+                g_native_dfhack_gpu_translation_enabled != translation_enabled_) {
             SDL_SetRenderDrawBlendMode(renderer_, SDL_BLENDMODE_NONE);
             SDL_SetRenderDrawColor(renderer_, 0, 0, 0, 0);
             if (SDL_RenderClear(renderer_) != 0) {
@@ -291,6 +295,7 @@ public:
                 return;
             }
             g_native_dfhack_gpu_page_revision = page_revision_;
+            g_native_dfhack_gpu_translation_enabled = translation_enabled_;
             g_native_dfhack_gpu_target_initialized = true;
             g_native_dfhack_gpu_known_graphical =
                 g_native_dfhack_gpu_draw_exports_covered.load(std::memory_order_acquire);
@@ -349,7 +354,8 @@ public:
         // into the retained target later in this or another callback batch.
         // Do not infer text-free texture content from the caller or texture ID.
         g_native_dfhack_gpu_known_graphical = false;
-        return true;
+        // English mode keeps the plugin's original texture/geometry output.
+        return scope->translation_enabled_;
     }
 
     static SDL_Texture *redirect_target(SDL_Renderer *renderer,
@@ -606,10 +612,16 @@ static bool native_dfhack_gpu_target_hook_active() noexcept {
 
 static bool native_dfhack_graphical_gpu_ready(SDL_Renderer *renderer) noexcept {
     const auto &gpu = g_native_dfhack_gpu_target;
-    return g_native_dfhack_gpu_draw_exports_covered.load(std::memory_order_acquire) &&
-        g_native_dfhack_gpu_known_graphical && g_native_dfhack_gpu_frame_ready &&
-        g_native_dfhack_gpu_graphics_generation ==
-            g_native_dfhack_gpu_draw_coverage_generation.load(std::memory_order_acquire) &&
+    const bool translation_enabled = g_overlay.translation_enabled();
+    // A language switch retires the previous mode's pixels immediately. The
+    // next callback clears the target before drawing in the new mode.
+    return g_native_dfhack_gpu_translation_enabled == translation_enabled &&
+        (!translation_enabled ||
+            (g_native_dfhack_gpu_draw_exports_covered.load(std::memory_order_acquire) &&
+            g_native_dfhack_gpu_known_graphical &&
+            g_native_dfhack_gpu_graphics_generation ==
+                g_native_dfhack_gpu_draw_coverage_generation.load(std::memory_order_acquire))) &&
+        g_native_dfhack_gpu_frame_ready &&
         gpu.texture && gpu.renderer == renderer &&
         g_native_dfhack_gpu_page_revision == native_dfhack_layer_page_revision();
 }
@@ -619,8 +631,8 @@ static void native_dfhack_compose_graphical_gpu(SDL_Renderer *renderer,
     const auto &gpu = g_native_dfhack_gpu_target;
     if (!native_dfhack_graphical_gpu_ready(renderer) ||
             width <= 0 || height <= 0 || gpu.width != width || gpu.height != height) return;
-    // Every texture/Geometry entry is observed from a freshly cleared target.
-    // Only the still-known Clear/Fill/Line pixels may bypass text completion.
+    // Chinese mode admits only known graphics; English mode also retains
+    // the plugin's original text textures and geometry.
     const SDL_Rect destination{0, 0, width, height};
     SDL_SetTextureColorMod(gpu.texture, 255, 255, 255);
     SDL_SetTextureAlphaMod(gpu.texture, 255);
@@ -799,7 +811,8 @@ static void native_dfhack_present_layer(SDL_Renderer *renderer,
     if (disabled) return;
     const auto latest = native_dfhack_published_frame();
     auto completed = g_overlay.completed_dfhack_layer_frame(latest);
-    if (!completed && g_native_dfhack_painted_frame && latest &&
+    if (!completed && g_native_dfhack_painted_frame &&
+            g_native_dfhack_painted_frame->key && latest &&
             g_overlay.translation_enabled() &&
             latest->page_revision == native_dfhack_layer_page_revision() &&
             native_dfhack_translation_layout_compatible(

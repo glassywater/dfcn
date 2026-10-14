@@ -121,9 +121,21 @@ void Overlay::queue_dfhack_layer_translation() {
 
 std::shared_ptr<const NativeDfhackTranslatedFrame> Overlay::completed_dfhack_layer_frame(
         std::shared_ptr<const NativeDfhackLayerStorage> latest) noexcept {
-    if (!latest || !latest->ready || !latest->graphics || !translation_enabled() ||
-            !dfhack_translation_running_.load(std::memory_order_acquire) ||
+    if (!latest || !latest->ready || !latest->graphics ||
             latest->page_revision != native_dfhack_layer_page_revision()) return {};
+    if (!translation_enabled()) {
+        // DFHack still draws into private output in English mode. Publish
+        // its original source with no suppressed glyphs or translated text;
+        // displaying it must not depend on the translation worker.
+        try {
+            static const auto empty_matches = std::make_shared<const std::vector<Match>>();
+            auto original = std::make_shared<NativeDfhackTranslatedFrame>();
+            original->source = std::move(latest);
+            original->matches = empty_matches;
+            return original;
+        } catch (...) { return {}; }
+    }
+    if (!dfhack_translation_running_.load(std::memory_order_acquire)) return {};
     queue_dfhack_layer_frame(latest);
     const auto compatible = [&](const auto &frame) {
         return frame && frame->source && frame->matches &&
