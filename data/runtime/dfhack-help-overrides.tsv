@@ -157,6 +157,9 @@ DFHack GUI Input prompt: Enter command:	输入命令：	l
 DFHack GUI Input prompt: Enter name:	输入名称：	l
 DFHack GUI Confirmation prompt: Are you sure you want to delete this command:	确定删除此命令吗：	l
 DFHack GUI Confirmation action: Yes, proceed	确认继续	l
+# internal/confirm/specs.lua:340-342: selected unit name in the 45-column conviction prompt.
+DFHack GUI Title: Confirm conviction	确认定罪	l
+DFHack GUI Confirmation prompt: Are you sure you want to convict {n}? This action is irreversible.	确定要将{n}定罪吗？此操作无法撤销。	l
 # internal/notify/notifications.lua save_popup: two plain Label paragraphs.
 # The elapsed value is formatInt output and remains unchanged in the GUI.
 DFHack GUI Title: Save now?	现在保存？	l

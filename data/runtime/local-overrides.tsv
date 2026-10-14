@@ -5965,6 +5965,8 @@ Justice detail: Unknown convict.	罪犯不明。	l
 Justice detail: No sentence pending.	无待执行的判决。	l
 Justice detail: No witnesses	无证人	l
 Justice detail: No witnesses.	无证人。	l
+{d} witness	{d}名证人	wt
+{d} witnesses	{d}名证人	wt
 Justice detail: Beating.	殴打惩罚。	l
 Justice detail: Already interviewed	已审讯	l
 Justice detail: Interview Scheduled	已安排审讯	l

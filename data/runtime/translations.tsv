@@ -10159,6 +10159,7 @@ Announcement combat site-rumor-event [$name,$travel-site]: {s} gave up on their 
 Announcement combat site-rumor-event [site-rumor-person,$travel-site]: {s} was kidnapped from {s}.	{s1}在{s2}被绑架了。	l
 Announcement combat travel-role-main [travel-squad-role,$travel-site]: You are a {s} based in {s}.	你是一名{s1}，驻地在{s2}。	l
 As the guild grows in power they may demand a Guildhall of greater value. This can be increased by	[C:7:0:0]随着行会势力增长，他们可能要求提高[C:1:0:1]行会大厅[C:7:0:0]的价值。你可以通过	hq
+DFHack GUI Confirmation prompt: Are you sure you want to convict {n}? This action is irreversible.	确定要将{n}定罪吗？此操作无法撤销。	l
 DFHack GUI Journal tutorial: Welcome to gui/journal, the adventurer's notebook for Dwarf Fortress!	欢迎使用 gui/journal，这里是《矮人要塞》的冒险笔记！	l
 DFHack GUI Notification settings: Reports missing nemesis records, indicating savegame corruption.	报告缺失的人物关联记录，提示存档可能损坏。	l
 DFHack help: "--all" Selects all units. This is the default if no selection options are specified.	"--all" 选择所有单位。如果未指定选择选项，则这是默认值。	l
@@ -59006,6 +59007,7 @@ DFHack GUI Squad assignment: Include	包含	l
 DFHack GUI Squad assignment: Maimed:	残疾：	l
 DFHack GUI Teleport: Selected units:	已选单位：	l
 DFHack GUI Teleport: to zoom to unit	定位至该单位	l
+DFHack GUI Title: Confirm conviction	确认定罪	l
 DFHack help: "--opposite <INTEREST>"	"--opposite <INTEREST>"	l
 DFHack help: "--severity <severity>"	"--severity <severity>"	l
 DFHack help: "--strength <strength>"	"--strength <strength>"	l
@@ -128027,6 +128029,7 @@ yellow zircon	黄锆石	wi
 {d} rock nuts	{d} 份岩石坚果	wt
 {d} shops max	最多{d}座工坊	wtl
 {d} until {d}	{d1}至{d2}年	ht
+{d} witnesses	{d}名证人	wt
 {d}% occupied	已占用{d}%	wtl
 {d}nd Felsite	霏细岩月{d}日	wt
 {d}nd Granite	花岗岩月{d}日	wt
@@ -136162,6 +136165,7 @@ zesty green	鲜柠檬绿	wi
 {d} planted	已种植{d}	wtl
 {d} present	在场 {d}	wtl
 {d} targets	{d1}个目标	hPt
+{d} witness	{d}名证人	wt
 {d}nd Slate	板岩月{d}日	wt
 {d}rd Slate	板岩月{d}日	wt
 {d}st Slate	板岩月{d}日	wt

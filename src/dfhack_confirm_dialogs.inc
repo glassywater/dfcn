@@ -1,8 +1,9 @@
 // Included in dfhack_auxiliary_help.inc's connected-frame loop after the
 // footer roles are known. confirm.lua:142 supplies a 45-column prewrapped
-// string to DialogWindow's plain Label, not a WrappedLabel.
+// string to DialogWindow's plain Label, not a WrappedLabel. specs.lua's
+// conviction prompt contains the selected unit's actual visible name.
 {
-    const auto fixed_confirm_dialog = [&]() -> bool {
+    const auto confirm_dialog = [&]() -> bool {
         if (!confirm_action || action != "Yes, proceed") return false;
         using ConfirmPair = std::pair<std::string_view, std::string_view>;
         static constexpr std::array<ConfirmPair, 13> questions{{
@@ -35,7 +36,8 @@
         }};
         const auto question = std::find_if(questions.begin(), questions.end(),
             [&](const ConfirmPair &pair) { return pair.first == title; });
-        if (question == questions.end()) return false;
+        const bool conviction = title == "Confirm conviction";
+        if (question == questions.end() && !conviction) return false;
 
         // showYesNoPrompt always receives on_settings from confirm.lua.
         // Its controls have b=2 in the same Window body whose accept has b=0.
@@ -68,17 +70,62 @@
                 settings_source.size(), settings_source) != 0)
             return false;
 
-        const auto body_target = exact_literal_translation(
-            "DFHack output: " + std::string(question->second));
+        std::string question_source;
+        std::optional<std::string> body_target;
+        if (conviction) {
+            size_t previous_length = 0;
+            std::vector<size_t> full_wrap_breaks;
+            for (int y = top; y <= label_last; ++y) {
+                const auto band = std::string_view(dfhack_context_rows[y]).substr(left, body_width);
+                const auto ink = trim_view(band);
+                if (ink.empty()) break;
+                if (!question_source.empty()) {
+                    if (previous_length == 45) full_wrap_breaks.push_back(question_source.size());
+                    question_source += ' ';
+                }
+                question_source += ink;
+                previous_length = ink.size();
+            }
+            constexpr std::string_view prefix = "Are you sure you want to convict ";
+            constexpr std::string_view suffix = "? This action is irreversible.";
+            if (!question_source.starts_with(prefix) || !question_source.ends_with(suffix) ||
+                    question_source.size() <= prefix.size() + suffix.size()) return false;
+            const auto name = std::string_view(question_source).substr(prefix.size(),
+                question_source.size() - prefix.size() - suffix.size());
+            std::string native_name(name);
+            // A full wrap row can split a long nickname token. Preserve its
+            // visible break inside the name instead of inventing a space.
+            for (const size_t split : full_wrap_breaks)
+                if (split >= prefix.size() && split < prefix.size() + name.size())
+                    native_name[split - prefix.size()] = '\n';
+            body_target = exact_literal_translation(
+                "DFHack GUI Confirmation prompt: Are you sure you want to convict {n}? This action is irreversible.");
+            if (!body_target) return false;
+            const size_t name_at = body_target->find("{n}");
+            if (name_at == std::string::npos) return false;
+            // This is a typed unit field. Reuse its existing identity grammar;
+            // authored names or ambiguous hard splits keep their native text.
+            const auto name_target = name == "this creature"
+                ? std::optional<std::string>("该生物")
+                : native_name.find('\n') == std::string::npos
+                    ? translate_dfhack_readable_unit_name(name)
+                    : native_unit_identity_source_target(name);
+            body_target->replace(name_at, 3,
+                name_target ? *name_target : native_text_to_utf8(native_name));
+        } else {
+            question_source = question->second;
+            body_target = exact_literal_translation("DFHack output: " + question_source);
+        }
+        const std::string_view title_scope = conviction ? "DFHack GUI Title: " : "DFHack output: ";
         const auto title_target = exact_literal_translation(
-            "DFHack output: " + std::string(title));
+            std::string(title_scope) + std::string(title));
         if (!body_target || !title_target || !contains_cjk_utf8(*body_target) ||
                 !contains_cjk_utf8(*title_target) ||
                 read_row(title_y).compare(at, title.size(), title) != 0 ||
                 read_row(footer_y).compare(action_x, action.size(), action) != 0)
             return false;
 
-        const auto expected = dfhack_item_native_wrap(question->second, 45);
+        const auto expected = dfhack_item_native_wrap(question_source, 45);
         if (expected.empty() || expected.size() > static_cast<size_t>(label_last - top + 1))
             return false;
         std::vector<Match> rows;
@@ -135,7 +182,7 @@
         // Own only this proven frame. The unknown ethics paragraph retains
         // native glyphs, while the translated question clips to its own rows.
         dfhack_auxiliary_regions.push_back(*frame);
-        auxiliary_literal(at, title_y, title, title_end, true, "DFHack output: ");
+        auxiliary_literal(at, title_y, title, title_end, true, title_scope);
         append_gui_prompt(GuiPrompt{std::move(rows), *body_target}, left, body_right);
         gui_literal(action_x, footer_y, action, body_right, "Confirmation action");
         gui_literal(left + static_cast<int>(settings_at), controls_y, settings,
@@ -163,5 +210,5 @@
         }
         return true;
     };
-    if (fixed_confirm_dialog()) continue;
+    if (confirm_dialog()) continue;
 }
