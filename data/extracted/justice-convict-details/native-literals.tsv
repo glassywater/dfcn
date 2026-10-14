@@ -1,0 +1,87 @@
+edition	image_identity	owner	owner_rva	instruction_rva	source_kind	literal_rva	operand_role	text
+reference	PE:6a70a6d9:02711000	convict-renderer	0x472020	0x4720e5	rip-relative	0x163ead0	finite-text-operand-or-substring	No sentence pending.
+reference	PE:6a70a6d9:02711000	convict-renderer	0x472020	0x472191	rip-relative	0x163eac0	finite-text-operand-or-substring	 hammerstrike
+reference	PE:6a70a6d9:02711000	convict-renderer	0x472020	0x4721ad	rip-relative	0x15e9298	finite-text-operand-or-substring	s
+reference	PE:6a70a6d9:02711000	convict-renderer	0x472020	0x4721c0	rip-relative	0x15e85b4	finite-text-operand-or-substring	.
+reference	PE:6a70a6d9:02711000	convict-renderer	0x472020	0x47230f	rip-relative	0x163ee60	finite-text-operand-or-substring	Beating.
+reference	PE:6a70a6d9:02711000	convict-renderer	0x472020	0x4723b6	rip-relative	0x163ee54	finite-text-operand-or-substring	 day
+reference	PE:6a70a6d9:02711000	convict-renderer	0x472020	0x4723ce	rip-relative	0x15e9298	finite-text-operand-or-substring	s
+reference	PE:6a70a6d9:02711000	convict-renderer	0x472020	0x4723e4	rip-relative	0x163ee48	finite-text-operand-or-substring	 in prison.
+reference	PE:6a70a6d9:02711000	convict-renderer	0x472020	0x47248b	rip-relative	0x163ee40	finite-text-operand-or-substring	Padding
+reference	PE:6a70a6d9:02711000	convict-renderer	0x472020	0x4724ea	rip-relative	0x163eeb0	finite-text-operand-or-substring	Officer: 
+reference	PE:6a70a6d9:02711000	convict-renderer	0x472020	0x4724f7	rip-relative	0x163eeb8	separator	 
+reference	PE:6a70a6d9:02711000	convict-renderer	0x472020	0x4725fe	rip-relative	0x163eea0	finite-text-operand-or-substring	none assigned
+reference	PE:6a70a6d9:02711000	convict-renderer	0x472020	0x472611	rip-relative	0x15e85b4	finite-text-operand-or-substring	.
+reference	PE:6a70a6d9:02711000	convict-renderer	0x472020	0x472765	rip-relative	0x163ee40	finite-text-operand-or-substring	Padding
+reference	PE:6a70a6d9:02711000	convict-without-sentence-renderer	0x4728a0	0x472916	rip-relative	0x163ead0	finite-text-operand-or-substring	No sentence pending.
+reference	PE:6a70a6d9:02711000	convict-without-sentence-renderer	0x4728a0	0x472963	rip-relative	0x163ee40	finite-text-operand-or-substring	Padding
+reference	PE:6a70a6d9:02711000	crime-detail	0x46f6d0	0x46f8a5	rip-relative	0x163eb98	finite-text-operand-or-substring	Injured party: 
+reference	PE:6a70a6d9:02711000	crime-detail	0x46f6d0	0x46f8b2	rip-relative	0x163eba0	finite-text-operand-or-substring	party: 
+reference	PE:6a70a6d9:02711000	crime-detail	0x46f6d0	0x46f8bc	rip-relative	0x163eba4	finite-text-operand-or-substring	y: 
+reference	PE:6a70a6d9:02711000	crime-detail	0x46f6d0	0x46f8c8	rip-relative	0x163eba6	separator	 
+reference	PE:6a70a6d9:02711000	crime-detail	0x46f6d0	0x46f8ed	rip-relative	0x15e85b4	finite-text-operand-or-substring	.
+reference	PE:6a70a6d9:02711000	case-caption	0x46d660	0x46d6d1	rip-relative	0x163ec28	finite-text-operand-or-substring	Violation of production order
+reference	PE:6a70a6d9:02711000	case-caption	0x46d660	0x46d6e3	rip-relative	0x163ec08	finite-text-operand-or-substring	Violation of export prohibition
+reference	PE:6a70a6d9:02711000	case-caption	0x46d660	0x46d6f5	rip-relative	0x163ebf0	finite-text-operand-or-substring	Violation of job order
+reference	PE:6a70a6d9:02711000	case-caption	0x46d660	0x46d707	rip-relative	0x163ebd0	finite-text-operand-or-substring	Conspiracy to alow labor
+reference	PE:6a70a6d9:02711000	case-caption	0x46d660	0x46d773	rip-relative	0x15ede74	finite-text-operand-or-substring	Murder
+reference	PE:6a70a6d9:02711000	case-caption	0x46d660	0x46d791	rip-relative	0x15eb518	finite-text-operand-or-substring	 of 
+reference	PE:6a70a6d9:02711000	case-caption	0x46d660	0x46d7ff	rip-relative	0x163eb70	finite-text-operand-or-substring	Disorderly conduct
+reference	PE:6a70a6d9:02711000	case-caption	0x46d660	0x46d80b	rip-relative	0x163eb58	finite-text-operand-or-substring	Building destruction
+reference	PE:6a70a6d9:02711000	case-caption	0x46d660	0x46d81d	rip-relative	0x15eded0	finite-text-operand-or-substring	Bribery
+reference	PE:6a70a6d9:02711000	case-caption	0x46d660	0x46d82f	rip-relative	0x15eded8	finite-text-operand-or-substring	Embezzlement
+reference	PE:6a70a6d9:02711000	case-caption	0x46d660	0x46d841	rip-relative	0x15edeb8	finite-text-operand-or-substring	Vandalism
+reference	PE:6a70a6d9:02711000	case-caption	0x46d660	0x46d853	rip-relative	0x15edec4	finite-text-operand-or-substring	Theft
+reference	PE:6a70a6d9:02711000	case-caption	0x46d660	0x46d93c	rip-relative	0x15eb518	finite-text-operand-or-substring	 of 
+reference	PE:6a70a6d9:02711000	case-caption	0x46d660	0x46d96c	rip-relative	0x15edf08	finite-text-operand-or-substring	Robbery
+reference	PE:6a70a6d9:02711000	case-caption	0x46d660	0x46d97e	rip-relative	0x15edef0	finite-text-operand-or-substring	Espionage
+reference	PE:6a70a6d9:02711000	case-caption	0x46d660	0x46da5c	rip-relative	0x15ed9b0	finite-text-operand-or-substring	 against 
+reference	PE:6a70a6d9:02711000	case-caption	0x46d660	0x46da89	rip-relative	0x15edf38	finite-text-operand-or-substring	Treason
+reference	PE:6a70a6d9:02711000	case-caption	0x46d660	0x46da98	rip-relative	0x15edf18	finite-text-operand-or-substring	Blood-drinking
+reference	PE:6a70a6d9:02711000	case-caption	0x46d660	0x46daa7	rip-relative	0x163eb48	finite-text-operand-or-substring	Attempted theft
+reference	PE:6a70a6d9:02711000	case-caption	0x46d660	0x46dab6	rip-relative	0x163eb30	finite-text-operand-or-substring	Attempted murder
+reference	PE:6a70a6d9:02711000	case-caption	0x46d660	0x46dac5	rip-relative	0x163ebc0	finite-text-operand-or-substring	Kidnapping
+reference	PE:6a70a6d9:02711000	case-caption	0x46d660	0x46dace	rip-relative	0x163eba8	finite-text-operand-or-substring	Attempted kidnapping
+classic	PE:6a70b91c:0270a000	convict-renderer	0x46fbe0	0x46fca5	rip-relative	0x1639a60	finite-text-operand-or-substring	No sentence pending.
+classic	PE:6a70b91c:0270a000	convict-renderer	0x46fbe0	0x46fd51	rip-relative	0x1639a50	finite-text-operand-or-substring	 hammerstrike
+classic	PE:6a70b91c:0270a000	convict-renderer	0x46fbe0	0x46fd6d	rip-relative	0x15e4220	finite-text-operand-or-substring	s
+classic	PE:6a70b91c:0270a000	convict-renderer	0x46fbe0	0x46fd80	rip-relative	0x15e3574	finite-text-operand-or-substring	.
+classic	PE:6a70b91c:0270a000	convict-renderer	0x46fbe0	0x46fecf	rip-relative	0x1639a40	finite-text-operand-or-substring	Beating.
+classic	PE:6a70b91c:0270a000	convict-renderer	0x46fbe0	0x46ff76	rip-relative	0x1639ad4	finite-text-operand-or-substring	 day
+classic	PE:6a70b91c:0270a000	convict-renderer	0x46fbe0	0x46ff8e	rip-relative	0x15e4220	finite-text-operand-or-substring	s
+classic	PE:6a70b91c:0270a000	convict-renderer	0x46fbe0	0x46ffa4	rip-relative	0x1639ac8	finite-text-operand-or-substring	 in prison.
+classic	PE:6a70b91c:0270a000	convict-renderer	0x46fbe0	0x47004b	rip-relative	0x1639ac0	finite-text-operand-or-substring	Padding
+classic	PE:6a70b91c:0270a000	convict-renderer	0x46fbe0	0x4700aa	rip-relative	0x1639ab0	finite-text-operand-or-substring	Officer: 
+classic	PE:6a70b91c:0270a000	convict-renderer	0x46fbe0	0x4700b7	rip-relative	0x1639ab8	separator	 
+classic	PE:6a70b91c:0270a000	convict-renderer	0x46fbe0	0x4701be	rip-relative	0x16399c8	finite-text-operand-or-substring	none assigned
+classic	PE:6a70b91c:0270a000	convict-renderer	0x46fbe0	0x4701d1	rip-relative	0x15e3574	finite-text-operand-or-substring	.
+classic	PE:6a70b91c:0270a000	convict-renderer	0x46fbe0	0x470325	rip-relative	0x1639ac0	finite-text-operand-or-substring	Padding
+classic	PE:6a70b91c:0270a000	convict-without-sentence-renderer	0x470460	0x4704d6	rip-relative	0x1639a60	finite-text-operand-or-substring	No sentence pending.
+classic	PE:6a70b91c:0270a000	convict-without-sentence-renderer	0x470460	0x470523	rip-relative	0x1639ac0	finite-text-operand-or-substring	Padding
+classic	PE:6a70b91c:0270a000	crime-detail	0x46d290	0x46d465	rip-relative	0x1639b08	finite-text-operand-or-substring	Injured party: 
+classic	PE:6a70b91c:0270a000	crime-detail	0x46d290	0x46d472	rip-relative	0x1639b10	finite-text-operand-or-substring	party: 
+classic	PE:6a70b91c:0270a000	crime-detail	0x46d290	0x46d47c	rip-relative	0x1639b14	finite-text-operand-or-substring	y: 
+classic	PE:6a70b91c:0270a000	crime-detail	0x46d290	0x46d488	rip-relative	0x1639b16	separator	 
+classic	PE:6a70b91c:0270a000	crime-detail	0x46d290	0x46d4ad	rip-relative	0x15e3574	finite-text-operand-or-substring	.
+classic	PE:6a70b91c:0270a000	case-caption	0x46b220	0x46b291	rip-relative	0x1639968	finite-text-operand-or-substring	Violation of production order
+classic	PE:6a70b91c:0270a000	case-caption	0x46b220	0x46b2a3	rip-relative	0x1639bc0	finite-text-operand-or-substring	Violation of export prohibition
+classic	PE:6a70b91c:0270a000	case-caption	0x46b220	0x46b2b5	rip-relative	0x1639ba8	finite-text-operand-or-substring	Violation of job order
+classic	PE:6a70b91c:0270a000	case-caption	0x46b220	0x46b2c7	rip-relative	0x1639b88	finite-text-operand-or-substring	Conspiracy to alow labor
+classic	PE:6a70b91c:0270a000	case-caption	0x46b220	0x46b333	rip-relative	0x15e8e00	finite-text-operand-or-substring	Murder
+classic	PE:6a70b91c:0270a000	case-caption	0x46b220	0x46b351	rip-relative	0x15e64d0	finite-text-operand-or-substring	 of 
+classic	PE:6a70b91c:0270a000	case-caption	0x46b220	0x46b3bf	rip-relative	0x1639b70	finite-text-operand-or-substring	Disorderly conduct
+classic	PE:6a70b91c:0270a000	case-caption	0x46b220	0x46b3cb	rip-relative	0x1639c18	finite-text-operand-or-substring	Building destruction
+classic	PE:6a70b91c:0270a000	case-caption	0x46b220	0x46b3dd	rip-relative	0x15e8e50	finite-text-operand-or-substring	Bribery
+classic	PE:6a70b91c:0270a000	case-caption	0x46b220	0x46b3ef	rip-relative	0x15e8e58	finite-text-operand-or-substring	Embezzlement
+classic	PE:6a70b91c:0270a000	case-caption	0x46b220	0x46b401	rip-relative	0x15e8e98	finite-text-operand-or-substring	Vandalism
+classic	PE:6a70b91c:0270a000	case-caption	0x46b220	0x46b413	rip-relative	0x15e8ea4	finite-text-operand-or-substring	Theft
+classic	PE:6a70b91c:0270a000	case-caption	0x46b220	0x46b4fc	rip-relative	0x15e64d0	finite-text-operand-or-substring	 of 
+classic	PE:6a70b91c:0270a000	case-caption	0x46b220	0x46b52c	rip-relative	0x15e8e90	finite-text-operand-or-substring	Robbery
+classic	PE:6a70b91c:0270a000	case-caption	0x46b220	0x46b53e	rip-relative	0x15e8ed0	finite-text-operand-or-substring	Espionage
+classic	PE:6a70b91c:0270a000	case-caption	0x46b220	0x46b61c	rip-relative	0x15e89b8	finite-text-operand-or-substring	 against 
+classic	PE:6a70b91c:0270a000	case-caption	0x46b220	0x46b649	rip-relative	0x15e8ec0	finite-text-operand-or-substring	Treason
+classic	PE:6a70b91c:0270a000	case-caption	0x46b220	0x46b658	rip-relative	0x15e8f00	finite-text-operand-or-substring	Blood-drinking
+classic	PE:6a70b91c:0270a000	case-caption	0x46b220	0x46b667	rip-relative	0x1639c08	finite-text-operand-or-substring	Attempted theft
+classic	PE:6a70b91c:0270a000	case-caption	0x46b220	0x46b676	rip-relative	0x1639bf0	finite-text-operand-or-substring	Attempted murder
+classic	PE:6a70b91c:0270a000	case-caption	0x46b220	0x46b685	rip-relative	0x1639be0	finite-text-operand-or-substring	Kidnapping
+classic	PE:6a70b91c:0270a000	case-caption	0x46b220	0x46b68e	rip-relative	0x1639b18	finite-text-operand-or-substring	Attempted kidnapping
