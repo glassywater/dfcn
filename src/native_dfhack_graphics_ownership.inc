@@ -100,6 +100,10 @@ static void native_dfhack_graphics_display(void *renderer) {
     const auto original = reinterpret_cast<void (*)(void *)>(
         g_native_dfhack_graphics_display_entry.original);
     if (!original) return;
+    if (g_native_process_exiting.load(std::memory_order_acquire)) {
+        callback.call_native([&] { original(renderer); });
+        return;
+    }
     NativeDfhackDisplayOwnershipScope ownership(renderer);
     if (!ownership.valid()) return;
     {
@@ -147,6 +151,12 @@ static void native_dfhack_graphics_resize(void *renderer, int32_t dimx,
         int32_t, int32_t, int32_t, int32_t)>(
         g_native_dfhack_graphics_resize_entry.original);
     if (!original) return;
+    if (g_native_process_exiting.load(std::memory_order_acquire)) {
+        callback.call_native([&] {
+            original(renderer, dimx, dimy, pixel_x, pixel_y, tile_x, tile_y);
+        });
+        return;
+    }
     NativeDfhackGraphicsOwnershipScope ownership;
     callback.call_native([&] {
         original(renderer, dimx, dimy, pixel_x, pixel_y, tile_x, tile_y);
@@ -158,6 +168,10 @@ static void native_dfhack_graphics_zoom(void *graphics, int32_t factor) {
     const auto original = reinterpret_cast<void (*)(void *, int32_t)>(
         g_native_dfhack_graphics_zoom_entry.original);
     if (!original) return;
+    if (g_native_process_exiting.load(std::memory_order_acquire)) {
+        callback.call_native([&] { original(graphics, factor); });
+        return;
+    }
     NativeDfhackGraphicsOwnershipScope ownership;
     callback.call_native([&] { original(graphics, factor); });
 }
@@ -167,6 +181,10 @@ static void native_dfhack_graphics_release(void *renderer) {
     const auto original = reinterpret_cast<void (*)(void *)>(
         g_native_dfhack_graphics_release_entry.original);
     if (!original) return;
+    if (g_native_process_exiting.load(std::memory_order_acquire)) {
+        callback.call_native([&] { original(renderer); });
+        return;
+    }
     NativeDfhackGraphicsOwnershipScope ownership;
     callback.call_native([&] { original(renderer); });
 }

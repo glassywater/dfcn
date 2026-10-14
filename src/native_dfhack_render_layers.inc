@@ -543,6 +543,10 @@ static void native_dfhack_render_update_callback(void *core, void *console) {
     NativeInputCallbackScope callback;
     const auto original = reinterpret_cast<NativeDfhackRenderUpdate>(g_native_dfhack_render_update_entry.original);
     if (!original) return;
+    if (g_native_process_exiting.load(std::memory_order_acquire)) {
+        callback.call_native([&] { original(core, console); });
+        return;
+    }
     const bool enabled = g_native_dfhack_render_enabled.load(std::memory_order_acquire);
     if (!enabled) native_dfhack_render_retire_links();
     const bool guarded = enabled && native_dfhack_render_refresh(false);
@@ -563,6 +567,10 @@ static void native_dfhack_render_lua_callback(void *screen, uint32_t tick) {
     NativeInputCallbackScope callback;
     const auto original = reinterpret_cast<NativeDfhackRenderMethod>(g_native_dfhack_render_lua_entry.original);
     if (!original) return;
+    if (g_native_process_exiting.load(std::memory_order_acquire)) {
+        callback.call_native([&] { original(screen, tick); });
+        return;
+    }
     const bool enabled = g_native_dfhack_render_enabled.load(std::memory_order_acquire);
     const bool guarded = enabled && native_dfhack_render_refresh(false);
     if (enabled && !guarded) native_dfhack_render_capture_failed();
@@ -576,6 +584,10 @@ static void native_dfhack_render_thread_callback() {
     NativeInputCallbackScope callback;
     const auto original = reinterpret_cast<void (*)()>(g_native_dfhack_render_thread_entry.original);
     if (!original) return;
+    if (g_native_process_exiting.load(std::memory_order_acquire)) {
+        callback.call_native([&] { original(); });
+        return;
+    }
     const bool enabled = g_native_dfhack_render_enabled.load(std::memory_order_acquire);
     // Leave newly enqueued callbacks for the next render loop rather than
     // consuming them outside the private target after an empty observation.
@@ -584,6 +596,9 @@ static void native_dfhack_render_thread_callback() {
     NativeDfhackLayerGpuScope gpu(enabled);
     if (enabled && !gpu.valid()) {
         native_dfhack_render_capture_failed();
+        // The native queue also completes synchronization/lifecycle work.
+        // Losing our optional target must not strand its pending callbacks.
+        callback.call_native([&] { original(); });
         return;
     }
     // SDL callback batches own their GPU destination, not the simulation's

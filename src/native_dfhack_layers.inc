@@ -878,7 +878,7 @@ class NativeDfhackLayerWriteScope {
 public:
     explicit NativeDfhackLayerWriteScope(bool enter = true, bool synchronize = false,
             bool write_intent = true) noexcept {
-        if (!enter) return;
+        if (!enter || g_native_process_exiting.load(std::memory_order_acquire)) return;
         if (active_ && !active_->paused_) {
             if (write_intent) g_native_dfhack_callback_writes_pending = true;
             return;
@@ -890,6 +890,7 @@ public:
             native_translation_.emplace();
 #endif
             lock_ = std::unique_lock<std::recursive_mutex>(g_native_dfhack_layer_mutex);
+            if (g_native_process_exiting.load(std::memory_order_acquire)) return;
             native_read_.emplace();
             native_dfhack_retire_writer_storage();
 #ifdef _WIN32
@@ -1007,7 +1008,7 @@ class NativeDfhackFrameTransactionScope {
     bool entered_ = false, outer_ = false;
 public:
     explicit NativeDfhackFrameTransactionScope(bool enter = true, void *screen = nullptr) noexcept {
-        if (!enter) return;
+        if (!enter || g_native_process_exiting.load(std::memory_order_acquire)) return;
         if (g_native_dfhack_layer_frame_depth) {
             ++g_native_dfhack_layer_frame_depth; entered_ = true; return;
         }
@@ -1016,6 +1017,7 @@ public:
             native_translation_.emplace();
 #endif
             lock_ = std::unique_lock<std::recursive_mutex>(g_native_dfhack_layer_mutex);
+            if (g_native_process_exiting.load(std::memory_order_acquire)) return;
             native_read_.emplace();
             native_dfhack_retire_writer_storage();
             if (screen) {

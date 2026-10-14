@@ -75,6 +75,9 @@ namespace fs = std::filesystem;
 
 namespace dfcn {
 
+static std::atomic_bool g_native_process_exiting{false};
+static void request_native_process_exit() noexcept;
+
 #include "history_event_clauses.inc"
 
 static std::vector<NativeHistoryDraw> captured_native_history_draws();
@@ -3520,6 +3523,7 @@ class Overlay {
 public:
     bool initialize();
     void shutdown();
+    void request_dfhack_translation_stop();
     void stop_dfhack_translation_worker();
     void invalidate_render_resources();
     void render(SDL_Renderer *renderer);
@@ -42771,6 +42775,10 @@ static graphicst *native_dfhack_render_read_graphics();
 static bool native_dfhack_display_inputs_active() noexcept;
 #endif
 extern "C" void dfcn_render_present(SDL_Renderer *renderer) {
+    if (g_native_process_exiting.load(std::memory_order_acquire)) {
+        if (g_real_present) g_real_present(renderer);
+        return;
+    }
     // A producer can reset or publish private UI output between individual
     // layer calls. Keep the page and every foreground layer in one snapshot
     // until the completed composite has been submitted to SDL. Native
@@ -42863,7 +42871,8 @@ extern "C" void dfcn_render_present(SDL_Renderer *renderer) {
 
 extern "C" int dfcn_render_copy(SDL_Renderer *renderer, SDL_Texture *texture,
                                  const SDL_Rect *source, const SDL_Rect *dest) {
-    if (g_drawing_overlay || g_native_resolution_write_graphics) {
+    if (g_native_process_exiting.load(std::memory_order_acquire) ||
+            g_drawing_overlay || g_native_resolution_write_graphics) {
         return g_real_copy ? g_real_copy(renderer, texture, source, dest) : -1;
     }
     TranslationStateScope translation;
@@ -42907,6 +42916,7 @@ DFCN_EXPORT void dfhooks_init() {
         dfcn::log_line("WARN", "Ignoring a second DFCN module loaded into this process");
         return;
     }
+    dfcn::g_native_process_exiting.store(false, std::memory_order_release);
     dfcn::reset_native_dfhack_render_lifecycle();
     dfcn::reset_native_dfhack_console_lifecycle();
     dfcn::g_native_hook_thread = std::this_thread::get_id();
@@ -42933,6 +42943,7 @@ DFCN_EXPORT void dfhooks_init() {
 }
 
 DFCN_EXPORT void dfhooks_shutdown() {
+    dfcn::request_native_process_exit();
     dfcn::g_core_ready = false;
     dfcn::stop_reloadable_core();
 }

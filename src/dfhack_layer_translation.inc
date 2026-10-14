@@ -57,15 +57,18 @@ void Overlay::start_dfhack_translation_worker() {
     }
 }
 
-void Overlay::stop_dfhack_translation_worker() {
+void Overlay::request_dfhack_translation_stop() {
     {
         std::lock_guard<std::mutex> lock(dfhack_translation_mutex_);
         dfhack_translation_running_.store(false, std::memory_order_release);
         dfhack_translation_stop_ = true;
         dfhack_translation_pending_.store(true, std::memory_order_release);
-        dfhack_translation_completed_frame_.store({}, std::memory_order_release);
     }
     dfhack_translation_pending_.notify_all();
+}
+
+void Overlay::stop_dfhack_translation_worker() {
+    request_dfhack_translation_stop();
     // Call before acquiring T: a worker already waiting for it must exit.
     if (dfhack_translation_worker_.joinable()) dfhack_translation_worker_.join();
     std::lock_guard<std::mutex> lock(dfhack_translation_mutex_);
