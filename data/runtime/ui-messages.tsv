@@ -3167,6 +3167,10 @@ Demand	索要
 Trade	贸易
 Show	显示
 
+# Complete settings caption shares the UI-message pass with the Show control.
+# Match the full label before the short control can consume its first word.
+Show tunnels on world map	在世界地图上显示隧道
+
 # Native ELF talk-choice 77..85: complete person descriptions, not bare names.
 Request a guide to {n}	请求向导带你找到{n}
 Ask for the whereabouts of yourself	询问你自己的下落
