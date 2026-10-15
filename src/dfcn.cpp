@@ -8072,6 +8072,8 @@ static std::string native_text_to_utf8(std::string_view input) {
     return output;
 }
 
+#include "native_file_errors.inc"
+
 // Soundtrack titles and credits are authored metadata, including built-in
 // songs. Translate only the status; never send the metadata to word/name rules.
 static std::optional<std::string> translate_soundtrack_status(std::string_view text) {
