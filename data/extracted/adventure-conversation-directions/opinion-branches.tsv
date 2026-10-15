@@ -1,0 +1,63 @@
+selector	table	branch	text_operands
+0	0x2127ef4	0x107c180	State opinion that it must be stopped with violent force | stop | force
+1	0x2127ef4	0x107c116	State opinion that it is not your problem | no
+2	0x2127ef4	0x107ca6a	State opinion that it was inevitable | inevitable
+3	0x2127ef4	0x107b792	State opinion that this is the life for you | life
+4	0x2127ef4	0x107b728	State opinion that it is terrifying | terrifying
+5	0x2127ef4	0x107b6be	State that you don't know anything about it | no
+6	0x2127ef4	0x107bb52	State that you are right in all matters | right
+7	0x2127ef4	0x107bae8	State that it is for the best | best
+8	0x2127ef4	0x107ba7e	State that you don't care | no
+9	0x2127ef4	0x107ba14	State your general hatred | hate
+10	0x2127ef4	0x107c5ff	State your general fear | fear | afraid | fright
+11	0x2127ef4	0x107bbbc	State opinion that it is sad but not unexpected | sad | expected
+12	0x2127ef4	0x107c595	State opinion that it is terrible | terrible
+13	0x2127ef4	0x107b1a9	State that it is terrific | terrific
+14	0x2127ef4	0x107b100	State that you enjoyed performing | enjoy | performing
+15	0x2127ef4	0x107addb	State that it was legendary | legendary
+16	0x2127ef4	0x107afc2	State that it was fantastic | fantastic
+17	0x2127ef4	0x107abf4	State that it was great | great
+18	0x2127ef4	0x107b096	State that it was good | good
+19	0x2127ef4	0x107ad07	State that it was okay | okay
+20	0x2127ef4	0x107aeee	Agree completely | agreement
+21	0x2127ef4	0x107aaa9	State that this is fantastic | fantastic
+22	0x2127ef4	0x107b02c	State that this is great | great
+23	0x2127ef4	0x107ad71	State that this is good | good
+24	0x2127ef4	0x107af58	State that this is okay | okay
+25	0x2127ef4	0x107ab13	State that this is no good | bad | no | good
+26	0x2127ef4	0x107ae45	State that this is your favorite dance | favorite | dance
+27	0x2127ef4	0x107ac5e	State that this is your favorite music | favorite | music
+28	0x2127ef4	0x107aa00	State that this is your favorite poetry | favorite | poetry
+29	0x2127ef4	0x107a957	State that you love reflective poetry | reflective | poetry
+30	0x2127ef4	0x107c762	State that you hate reflective poetry | reflective | poetry
+31	0x2127ef4	0x107c6f8	State that you love riddles | riddle
+32	0x2127ef4	0x107c80b	State that you hate riddles | riddle
+33	0x2127ef4	0x107bf21	State that you are embarrassed by this kind of humor | embarrassed | humor
+34	0x2127ef4	0x107be78	State your amusement | amused | funny
+35	0x2127ef4	0x107bdcf	State that you love raunchy poems | raunchy | poems
+36	0x2127ef4	0x107bd26	State that you love ribald poems | ribald | poems
+37	0x2127ef4	0x107bc7d	State that you disapprove of ribald poems | ribald | poems
+38	0x2127ef4	0x107c875	State that you love light poems | light | poems
+39	0x2127ef4	0x107c3c7	State that you hate light poems | light | poems
+40	0x2127ef4	0x107b4c3	State that you love solemn poems | solemn | poems
+41	0x2127ef4	0x107b41a	State that you hate solemn poems | solemn | poems
+42	0x2127ef4	0x1074603	State that listener's hunt saved you from an enemy | hunt | saved | enemy
+43	0x2127ef4	0x1074603	State that listener's hunt saved you from an enemy | hunt | saved | enemy
+44	0x2127ef4	0x1074603	State that listener's hunt saved you from an enemy | hunt | saved | enemy
+45	0x2127ef4	0x1074603	State that listener's hunt saved you from an enemy | hunt | saved | enemy
+46	0x2127ef4	0x1074603	State that listener's hunt saved you from an enemy | hunt | saved | enemy
+47	0x2127ef4	0x1074599	State that listener had a good hunt | hunt
+48	0x2127ef4	0x1074599	State that listener had a good hunt | hunt
+49	0x2127ef4	0x1074599	State that listener had a good hunt | hunt
+50	0x2127ef4	0x1074599	State that listener had a good hunt | hunt
+51	0x2127ef4	0x1074599	State that listener had a good hunt | hunt
+52	0x2127ef4	0x1073fb7	State that listener saved you from an enemy | saved | enemy
+53	0x2127ef4	0x1073fb7	State that listener saved you from an enemy | saved | enemy
+54	0x2127ef4	0x1073fb7	State that listener saved you from an enemy | saved | enemy
+55	0x2127ef4	0x1073fb7	State that listener saved you from an enemy | saved | enemy
+56	0x2127ef4	0x1073fb7	State that listener saved you from an enemy | saved | enemy
+57	0x2127ef4	0x107a7cf	State that they are outlaws | outlaws
+58	0x2127ef4	0x107c2e6	State that listener protected the defenseless from outlaws | protected | defenseless | oulaws
+59	0x2127ef4	0x107b885	State that you are conflicted | conflicted
+60	0x2127ef4	0x107a839	State that preaching is your calling | preaching | calling
+61	0x2127ef4	0x107c229	State that it accords with your faith | accords | faith

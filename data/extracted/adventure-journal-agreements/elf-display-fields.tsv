@@ -1,0 +1,167 @@
+instruction	return_site	source_kind	nearby_literals
+0x17cddd9	0x17cddde	Literal	
+0x17cf24f	0x17cf254	Literal	
+0x17cf355	0x17cf35a	Counter	
+0x17cf5d3	0x17cf5d8	Literal	
+0x17cf935	0x17cf93a	Literal	
+0x17cf96d	0x17cf972	Literal	
+0x17cfa96	0x17cfa9b	Counter	
+0x17cfd09	0x17cfd0e	Literal	
+0x17cfece	0x17cfed3	Title	
+0x17cffd8	0x17cffdd	Counter	
+0x17d00bc	0x17d00c1	Literal	cstring='An order from'
+0x17d025e	0x17d0263	Actor	
+0x17d02eb	0x17d02f0	Literal	cstring='Complete: report back'
+0x17d0519	0x17d051e	Literal	
+0x17d0621	0x17d0626	Counter	
+0x17d07b5	0x17d07ba	Literal	cstring=' Showing important'
+0x17d0a3e	0x17d0a43	Literal	
+0x17d0b44	0x17d0b49	Counter	
+0x17d0cd8	0x17d0cdd	Literal	cstring=' Showing important'
+0x17d0f05	0x17d0f0a	Literal	
+0x17d100d	0x17d1012	Counter	
+0x17d1251	0x17d1256	Literal	
+0x17d1357	0x17d135c	Counter	
+0x17d159b	0x17d15a0	Literal	
+0x17d16a1	0x17d16a6	Counter	
+0x17d1835	0x17d183a	Literal	cstring=' Showing important'
+0x17d1a73	0x17d1a78	Literal	cstring='...' / cstring=' Showing type,date'
+0x17d1bbf	0x17d1bc4	Literal	
+0x17d1d7f	0x17d1d84	Literal	
+0x17d1f3f	0x17d1f44	Literal	
+0x17d20ff	0x17d2104	Literal	
+0x17d22bf	0x17d22c4	Literal	
+0x17d247f	0x17d2484	Literal	
+0x17d260f	0x17d2614	Type	cstring='Offer Service'
+0x17d26d5	0x17d26da	Literal	cstring='Cause trouble for'
+0x17d2766	0x17d276b	Group	
+0x17d27cd	0x17d27d2	Literal	cstring='An order from'
+0x17d296f	0x17d2974	Actor	
+0x17d29fc	0x17d2a01	Literal	cstring='Complete: report back'
+0x17d2d4e	0x17d2d53	Literal	cstring='World Joining Agreement' / cstring='Retrieve Artifact'
+0x17d2e1c	0x17d2e21	Literal	cstring='Centered on location'
+0x17d31a5	0x17d31aa	Literal	cstring='/' / cstring='Centered on commander'
+0x17d3448	0x17d344d	Literal	cstring='_' / cstring='Drive members of'
+0x17d34e3	0x17d34e8	Group	
+0x17d354a	0x17d354f	Literal	cstring='out of'
+0x17d35db	0x17d35e0	Site	
+0x17d3836	0x17d383b	Literal	cstring='Centered on first heard'
+0x17d388c	0x17d3891	Literal	cstring='Centered on last heard'
+0x17d3c47	0x17d3c4c	Literal	cstring='Agreement concluded'
+0x17d3e86	0x17d3e8b	Person	
+0x17d3eec	0x17d3ef1	Literal	cstring='requested that'
+0x17d3f8a	0x17d3f8f	Person	
+0x17d3fef	0x17d3ff4	Literal	cstring='make an offer of service to'
+0x17d4084	0x17d4089	Group	
+0x17d40e0	0x17d40e5	Literal	cstring='Not yet completed'
+0x17d411c	0x17d4121	Literal	cstring='Finish reporting in'
+0x17d449e	0x17d44a3	Person	
+0x17d4505	0x17d450a	Literal	cstring='asked that'
+0x17d45b1	0x17d45b6	Person	
+0x17d461b	0x17d4620	Literal	cstring='retrieve '
+0x17d469a	0x17d469f	Artifact	
+0x17d484a	0x17d484f	Person	
+0x17d48b1	0x17d48b6	Literal	cstring='requested that'
+0x17d495d	0x17d4962	Person	
+0x17d49c7	0x17d49cc	Literal	cstring='serve '
+0x17d4a46	0x17d4a4b	Group	
+0x17d4be9	0x17d4bee	Person	
+0x17d4c4f	0x17d4c54	Literal	cstring='asked that'
+0x17d4ced	0x17d4cf2	Person	
+0x17d4d52	0x17d4d57	Literal	cstring='retrieve'
+0x17d4de8	0x17d4ded	Artifact	
+0x17d4e5f	0x17d4e64	Literal	cstring='from'
+0x17d4ef5	0x17d4efa	Site	
+0x17d4f73	0x17d4f78	Literal	cstring='for'
+0x17d5009	0x17d500e	Group	
+0x17d5038	0x17d503d	Literal	cstring=' Showing all'
+0x17d509f	0x17d50a4	Literal	cstring='Centered on target'
+0x17d5113	0x17d5118	Literal	cstring='Kill'
+0x17d52b5	0x17d52ba	Actor	
+0x17d5305	0x17d530a	Literal	cstring='Drive'
+0x17d53a0	0x17d53a5	Group	
+0x17d5407	0x17d540c	Literal	cstring='from'
+0x17d5498	0x17d549d	Site	
+0x17d54c2	0x17d54c7	Literal	cstring=' Showing all'
+0x17d5522	0x17d5527	Literal	cstring='Not yet completed'
+0x17d554c	0x17d5551	Literal	cstring=' Showing all'
+0x17d55ac	0x17d55b1	Literal	cstring='Finish reporting in'
+0x17d57c0	0x17d57c5	Literal	
+0x17d58c6	0x17d58cb	Counter	
+0x17d5a0b	0x17d5a10	Literal	
+0x17d5bd6	0x17d5bdb	Literal	cstring='/' / cstring=' Showing pin,last'
+0x17d5e12	0x17d5e17	Literal	
+0x17d5e7f	0x17d5e84	Literal	cstring='Org: '
+0x17d5eaf	0x17d5eb4	Literal	
+0x17d5fb9	0x17d5fbe	Counter	
+0x17d61ca	0x17d61cf	Counter	cstring='/' / cstring=' members'
+0x17d6394	0x17d6399	Literal	
+0x17d64a6	0x17d64ab	Counter	
+0x17d6647	0x17d664c	Person	
+0x17d6799	0x17d679e	Literal	cstring='/' / cstring='One member'
+0x17d6895	0x17d689a	Literal	cstring='you'
+0x17d68ca	0x17d68cf	Literal	cstring='You'
+0x17d690a	0x17d690f	Literal	cstring='you'
+0x17d6952	0x17d6957	Literal	cstring='You'
+0x17d6acc	0x17d6ad1	Literal	cstring='Foiled Corruption Conspiracy' / cstring='you'
+0x17d6b01	0x17d6b06	Literal	cstring='You'
+0x17d6b35	0x17d6b3a	Literal	cstring='You'
+0x17d6b89	0x17d6b8e	Literal	cstring='you'
+0x17d7106	0x17d710b	Literal	
+0x17d7154	0x17d7159	Literal	
+0x17d7170	0x17d7175	Literal	
+0x17d72a0	0x17d72a5	Person	
+0x17d7306	0x17d730b	Literal	cstring='was bound to serve'
+0x17d73a4	0x17d73a9	Person	
+0x17d7409	0x17d740e	Literal	cstring='by invocation of True Name'
+0x17d7489	0x17d748e	Literal	cstring='Agreement concluded'
+0x17d763b	0x17d7640	Date	cstring=' ' / cstring=', '
+0x17d76f0	0x17d76f5	Literal	cstring='rd' / cstring='You'
+0x17d7724	0x17d7729	Literal	cstring='you'
+0x17d77a5	0x17d77aa	Person	
+0x17d780b	0x17d7810	Literal	cstring='agreed to join'
+0x17d78a9	0x17d78ae	Person	
+0x17d790e	0x17d7913	Literal	cstring='in order to rescue'
+0x17d7a0b	0x17d7a10	Person	
+0x17d7a4f	0x17d7a54	Literal	cstring='you'
+0x17d7a8d	0x17d7a92	Literal	cstring='somebody unknown'
+0x17d7ac2	0x17d7ac7	Literal	cstring='You'
+0x17d7b22	0x17d7b27	Person	
+0x17d7ba9	0x17d7bae	Person	
+0x17d7c15	0x17d7c1a	Literal	cstring='agreed to adventure with'
+0x17d7cb9	0x17d7cbe	Person	
+0x17d7d24	0x17d7d29	Literal	cstring='wherever the journey might lead'
+0x17d7d58	0x17d7d5d	Literal	cstring='you'
+0x17d7d8d	0x17d7d92	Literal	cstring='You'
+0x17d7e14	0x17d7e19	Person	
+0x17d7e80	0x17d7e85	Literal	cstring='agreed to join'
+0x17d7f24	0x17d7f29	Person	
+0x17d7f8f	0x17d7f94	Literal	cstring='in insurrection against'
+0x17d802b	0x17d8030	Group	
+0x17d8092	0x17d8097	Literal	cstring='thereby freeing'
+0x17d812e	0x17d8133	Site	
+0x17d8162	0x17d8167	Literal	cstring='you'
+0x17d8197	0x17d819c	Literal	cstring='You'
+0x17d821e	0x17d8223	Person	
+0x17d828a	0x17d828f	Literal	cstring='agreed to join'
+0x17d832e	0x17d8333	Person	
+0x17d8399	0x17d839e	Literal	cstring='in order to be brought safely away from'
+0x17d8435	0x17d843a	Site	
+0x17d8469	0x17d846e	Literal	cstring='you'
+0x17d849e	0x17d84a3	Literal	cstring='You'
+0x17d851f	0x17d8524	Person	
+0x17d8585	0x17d858a	Literal	cstring='agreed to entertain people with'
+0x17d8623	0x17d8628	Person	
+0x17d8688	0x17d868d	Literal	cstring='throughout the world'
+0x17d86bc	0x17d86c1	Literal	cstring='you'
+0x17d86f1	0x17d86f6	Literal	cstring='You'
+0x17d8778	0x17d877d	Person	
+0x17d87e4	0x17d87e9	Literal	cstring='agreed to guide'
+0x17d8888	0x17d888d	Person	
+0x17d88f3	0x17d88f8	Literal	cstring='to'
+0x17d89a6	0x17d89ab	Site	
+0x17d89da	0x17d89df	Literal	cstring='you'
+0x17d8a9b	0x17d8aa0	Person	
+0x17d8ad0	0x17d8ad5	Literal	cstring='You'
+0x17d8b0e	0x17d8b13	Literal	cstring='somebody unknown'
+0x17d8b6e	0x17d8b73	Person	

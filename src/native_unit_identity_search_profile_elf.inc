@@ -133,6 +133,7 @@ static bool install_native_unit_identity_hooks() {
                 "Native unit identity formatter")) return false;
     }
     std::vector<NativeCall> names{
+        {0xdbe101,0xec58d0,reinterpret_cast<const void *>(&capture_native_companion_english_name),{}},
         {0x772da2,0xec58d0,reinterpret_cast<const void *>(&capture_native_unit_identity_english_name),{}},
         {0x772f06,0xebfe90,reinterpret_cast<const void *>(&capture_native_unit_identity_name),{}},
         {0x7628e3,0xebfe90,reinterpret_cast<const void *>(&capture_native_unit_identity_quoted_name),{0x41,0x0f,0xb6,0xd5}},

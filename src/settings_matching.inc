@@ -1,3 +1,112 @@
+// Boolean settings own their complete label before generic item/word readers.
+// The visible glyph copy can omit words whose logical bytes are still current;
+// translating those surviving runs separately also makes table layout place
+// every translated word at the same left edge.
+void Overlay::append_settings_toggle_labels(std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y) const {
+    if (!gps_ || rows.size() != static_cast<size_t>(gps_->dimy) ||
+            NativeTooltipPageScope::active) return;
+    std::vector<std::string> logical(rows.size(), std::string(gps_->dimx, ' '));
+    const auto read_row = [&](int y) {
+        for (int x = 0; x < gps_->dimx; ++x) {
+            bool top = false;
+            const auto *cell = cell_at(x, y, &top);
+            if (cell && cell[0]) logical[y][x] = static_cast<char>(cell[0]);
+        }
+    };
+    bool settings_tabs = false;
+    for (int y = 0; y < std::min(10, gps_->dimy); ++y) {
+        read_row(y);
+        size_t after = 0;
+        bool ordered = true;
+        for (std::string_view tab : {"Video", "Audio", "Game", "Keybindings",
+                "Announcements"}) {
+            const size_t at = logical[y].find(tab, after);
+            if (at == std::string::npos ||
+                    (at && ascii_word_byte(static_cast<unsigned char>(logical[y][at - 1]))) ||
+                    (at + tab.size() < logical[y].size() && ascii_word_byte(
+                        static_cast<unsigned char>(logical[y][at + tab.size()])))) {
+                ordered = false;
+                break;
+            }
+            after = at + tab.size();
+        }
+        settings_tabs = settings_tabs || ordered;
+    }
+    if (!settings_tabs) return;
+    for (int y = std::min(10, gps_->dimy); y < gps_->dimy; ++y) read_row(y);
+    const auto clipped = captured_clipped_captions();
+    std::vector<SDL_Rect> value_cells;
+    for (int y = 0; y < gps_->dimy; ++y) {
+        std::optional<SDL_Rect> value_cell;
+        int count = 0;
+        for (const auto &field : split_text_fields(logical[y])) {
+            if (field.text != "Yes" && field.text != "No") continue;
+            const auto button = native_button_text_rect(*gps_, field.start,
+                field.end, y);
+            if (!button) continue;
+            ++count;
+            value_cell = button;
+        }
+        // Announcements have a toggle matrix, rather than one label/value row.
+        if (count == 1 && value_cell && std::none_of(value_cells.begin(), value_cells.end(),
+                [&](const SDL_Rect &cell) {
+                    return cell.x == value_cell->x && cell.y == value_cell->y;
+                })) value_cells.push_back(*value_cell);
+    }
+    for (const auto &value : value_cells) {
+        const int right = value.x - 1; // Exclude the value button's left cap.
+        if (right <= 0 || right > gps_->dimx) continue;
+        for (int y = value.y; y < std::min(gps_->dimy, value.y + value.h); ++y) {
+            if (y < 0 || (only_y >= 0 && only_y != y)) continue;
+            const auto &row = logical[y];
+            int first = 0, end = right;
+            const auto decoration = [&](int x) {
+                const unsigned char ch = row[x];
+                return ch <= ' ' || is_cp437_box_separator(row, x);
+            };
+            while (first < end && decoration(first)) ++first;
+            while (end > first && decoration(end - 1)) --end;
+            if (first == end) continue;
+            const std::string source = row.substr(first, end - first);
+            if (std::any_of(source.begin(), source.end(),
+                    [](unsigned char ch) { return ch < ' ' || ch >= 0x80; })) continue;
+            std::string key;
+            bool pending_space = false;
+            for (unsigned char ch : source) {
+                if (ch == ' ') {
+                    pending_space = !key.empty();
+                } else {
+                    if (pending_space) key.push_back(' ');
+                    key.push_back(static_cast<char>(ch));
+                    pending_space = false;
+                }
+            }
+            for (const auto &caption : clipped) {
+                if (caption.x == first && caption.y == y && caption.visible == source) {
+                    key = caption.complete;
+                    break;
+                }
+            }
+            const auto target = exact_literal_translation(key);
+            if (!target || target->empty()) continue;
+            // Current visible ink must agree byte for byte. Spaces may be
+            // hidden glyph copies; an overlapping tooltip/control is not.
+            bool exposed = false, current = true;
+            for (int x = first; x < end; ++x) {
+                const unsigned char ch = rows[y][x];
+                if (!ch || ch == ' ') continue;
+                exposed = true;
+                if (ch != static_cast<unsigned char>(row[x])) { current = false; break; }
+            }
+            if (!current || !exposed) continue;
+            Match match{first, y, end - first, -13, *target, source};
+            std::fill(rows[y].begin() + first, rows[y].begin() + end, ' ');
+            matches.push_back(std::move(match));
+        }
+    }
+}
+
 // Video settings contain authored captions and numeric controls. Establish
 // this complete current page before entering character, item and prose readers.
 bool Overlay::find_settings_video_matches(int only_y,

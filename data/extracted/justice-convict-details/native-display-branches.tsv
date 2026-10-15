@@ -1,0 +1,37 @@
+edition	image_identity	owner_rva	condition_rva	role	condition	display_result
+reference	PE:6a70a6d9:02711000	0x4728a0	0x472916	no-sentence-record	callback for selected unit with no sentence record	No sentence pending.; then matching crime-detail widget groups
+reference	PE:6a70a6d9:02711000	0x4728a0	0x4729d3	crime-selection-without-sentence	crime.u8(+0xa0)&2 && crime.i32(+0xb8)==global(0x2393674) && crime.i32(+0xbc)==global(0x2393678) && crime.i32(+0x40)==selected_unit.i32(+0x130)	Append every matching crime independently; preserve repetitions.
+reference	PE:6a70a6d9:02711000	0x472020	0x4720d1	no-pending-sentence	sentence.i16(+0x8)==0 && sentence.i16(+0xa)==0 && sentence.i32(+0xc)==0	No sentence pending.
+reference	PE:6a70a6d9:02711000	0x472020	0x472162	hammer-count	sentence.i16(+0xa)>0	decimal(count) + ' hammerstrike' + (count>1?'s':'') + '.'
+reference	PE:6a70a6d9:02711000	0x472020	0x4721a4	hammer-plural	sentence.i16(+0xa)>1	hammerstrikes.; otherwise hammerstrike.
+reference	PE:6a70a6d9:02711000	0x472020	0x472308	beating	sentence.i16(+0x8)>0	Beating.
+reference	PE:6a70a6d9:02711000	0x472020	0x472370	prison	sentence.i32(+0xc)>0	days=trunc(remaining/120)+1; decimal(days)+' day'+(days>1?'s':'')+' in prison.'
+reference	PE:6a70a6d9:02711000	0x472020	0x4723c6	prison-plural	days>1	days in prison.; otherwise day in prison.
+reference	PE:6a70a6d9:02711000	0x472020	0x472521	officer-lookup	sentence.i32(+0x4)!=-1 and sorted unit vector contains unit.i32(+0x130)==id	Officer: <unit identity>.
+reference	PE:6a70a6d9:02711000	0x472020	0x4725fe	officer-missing	unit lookup missing (including id=-1 or empty vector)	Officer: none assigned.
+reference	PE:6a70a6d9:02711000	0x472020	0x4727c3	crime-selection	crime.u8(+0xa0)&2 && crime.i32(+0xb8)==global(0x2393674) && crime.i32(+0xbc)==global(0x2393678) && crime.i32(+0x40)==selected_unit.i32(+0x130)	Append one independent crime-detail widget group for every matching crime; retain repetitions.
+reference	PE:6a70a6d9:02711000	0x46d660	0x46d6af	crime-switch	unsigned crime.i32(+0x4)<=18	19 exact branches in native-crime-jump-table.tsv
+reference	PE:6a70a6d9:02711000	0x46d660	0x46d6b2	crime-default	unsigned crime.i32(+0x4)>18	empty string; crime-detail omits caption widget
+reference	PE:6a70a6d9:02711000	0x46d660	0x46d713	murder-target	crime.i32(+0x70) resolves unit.i32(+0x130)	Murder of <unit identity>; otherwise Murder
+reference	PE:6a70a6d9:02711000	0x46d660	0x46d862	theft-target	crime.i32(+0x110) resolves plot; first target.type(+0x18)==6; target.payload(+0x10).i32(+0xc)!=-1	Theft of <artifact name>; missing plot, target or id preserves Theft
+reference	PE:6a70a6d9:02711000	0x46d660	0x46d98d	espionage-target	crime.i32(+0x110) resolves plot; first target.type(+0x18)==13; target.payload(+0x10).i32(+0x8)!=-1	Espionage against <historical entity name>; missing plot, target or id preserves Espionage
+reference	PE:6a70a6d9:02711000	0x46f6d0	0x46f716	caption-widget	case_caption.length()!=0	one independent text widget; color 7, bright true, text placement mode 9
+reference	PE:6a70a6d9:02711000	0x46f6d0	0x46f793	injured-party	crime.i32(+0x70) resolves unit.i32(+0x130)	separate widget: Injured party: <unit identity>. ; missing lookup omits it
+classic	PE:6a70b91c:0270a000	0x470460	0x4704d6	no-sentence-record	callback for selected unit with no sentence record	No sentence pending.; then matching crime-detail widget groups
+classic	PE:6a70b91c:0270a000	0x470460	0x470593	crime-selection-without-sentence	crime.u8(+0xa0)&2 && crime.i32(+0xb8)==global(0x238d564) && crime.i32(+0xbc)==global(0x238d568) && crime.i32(+0x40)==selected_unit.i32(+0x130)	Append every matching crime independently; preserve repetitions.
+classic	PE:6a70b91c:0270a000	0x46fbe0	0x46fc91	no-pending-sentence	sentence.i16(+0x8)==0 && sentence.i16(+0xa)==0 && sentence.i32(+0xc)==0	No sentence pending.
+classic	PE:6a70b91c:0270a000	0x46fbe0	0x46fd22	hammer-count	sentence.i16(+0xa)>0	decimal(count) + ' hammerstrike' + (count>1?'s':'') + '.'
+classic	PE:6a70b91c:0270a000	0x46fbe0	0x46fd64	hammer-plural	sentence.i16(+0xa)>1	hammerstrikes.; otherwise hammerstrike.
+classic	PE:6a70b91c:0270a000	0x46fbe0	0x46fec8	beating	sentence.i16(+0x8)>0	Beating.
+classic	PE:6a70b91c:0270a000	0x46fbe0	0x46ff30	prison	sentence.i32(+0xc)>0	days=trunc(remaining/120)+1; decimal(days)+' day'+(days>1?'s':'')+' in prison.'
+classic	PE:6a70b91c:0270a000	0x46fbe0	0x46ff86	prison-plural	days>1	days in prison.; otherwise day in prison.
+classic	PE:6a70b91c:0270a000	0x46fbe0	0x4700e1	officer-lookup	sentence.i32(+0x4)!=-1 and sorted unit vector contains unit.i32(+0x130)==id	Officer: <unit identity>.
+classic	PE:6a70b91c:0270a000	0x46fbe0	0x4701be	officer-missing	unit lookup missing (including id=-1 or empty vector)	Officer: none assigned.
+classic	PE:6a70b91c:0270a000	0x46fbe0	0x470383	crime-selection	crime.u8(+0xa0)&2 && crime.i32(+0xb8)==global(0x238d564) && crime.i32(+0xbc)==global(0x238d568) && crime.i32(+0x40)==selected_unit.i32(+0x130)	Append one independent crime-detail widget group for every matching crime; retain repetitions.
+classic	PE:6a70b91c:0270a000	0x46b220	0x46b26f	crime-switch	unsigned crime.i32(+0x4)<=18	19 exact branches in native-crime-jump-table.tsv
+classic	PE:6a70b91c:0270a000	0x46b220	0x46b272	crime-default	unsigned crime.i32(+0x4)>18	empty string; crime-detail omits caption widget
+classic	PE:6a70b91c:0270a000	0x46b220	0x46b2d3	murder-target	crime.i32(+0x70) resolves unit.i32(+0x130)	Murder of <unit identity>; otherwise Murder
+classic	PE:6a70b91c:0270a000	0x46b220	0x46b422	theft-target	crime.i32(+0x110) resolves plot; first target.type(+0x18)==6; target.payload(+0x10).i32(+0xc)!=-1	Theft of <artifact name>; missing plot, target or id preserves Theft
+classic	PE:6a70b91c:0270a000	0x46b220	0x46b54d	espionage-target	crime.i32(+0x110) resolves plot; first target.type(+0x18)==13; target.payload(+0x10).i32(+0x8)!=-1	Espionage against <historical entity name>; missing plot, target or id preserves Espionage
+classic	PE:6a70b91c:0270a000	0x46d290	0x46d2d6	caption-widget	case_caption.length()!=0	one independent text widget; color 7, bright true, text placement mode 9
+classic	PE:6a70b91c:0270a000	0x46d290	0x46d353	injured-party	crime.i32(+0x70) resolves unit.i32(+0x130)	separate widget: Injured party: <unit identity>. ; missing lookup omits it

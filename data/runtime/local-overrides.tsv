@@ -242,6 +242,8 @@ Overview sentence: This place could really use some more trouble.	这地方还�
 # Trade depot inspection: whole captions, not independent Trade/Broker/No
 # fragments. Preserve the existing building and broker terminology.
 Trade depot	贸易站	wi
+# The construction caption must win over the earlier UI-message literal Trade.
+Trade depot	贸易站	hP
 Move goods to/from depot	搬运货物进出贸易站	wi
 Broker requested at depot	请求交易员前往贸易站	wi
 Anyone requested at depot	请求任意居民前往贸易站	wi
@@ -394,6 +396,8 @@ Unit nickname: the elder	年长者	l
 Unit nickname: the older	年长者	l
 Unit nickname: the wise	智者	l
 Unit nickname: the sickly	体弱者	l
+# Adventure barter player heading, owned by the native renderer's draw site.
+Adventure barter: You	你	l
 # Adventure action caption; the profession keeps the existing Butcher wording.
 Adventure action: Butcher	屠宰	l
 # Default creature abilities: creature_standard.txt CDI:ADV_NAME values.
@@ -1619,6 +1623,15 @@ Smelter	熔炉	w
 + {d} task	+ {d}项任务	wt
 + {d} tasks	+ {d}项任务	wt
 Click a tile to place the {s}.	点击地格放置{s}。	wtli
+Click a tile to be a corner of the {s}.	点击地格选择{s}的一个角。	wtli
+Click a tile to be one end of the {s}.	点击地格选择{s}的一端。	wtli
+Click a tile to position the stop.	点击地格放置轨道站点。	wli
+# The renderer substitutes these typed construction names in its headings.
+Build placement: Track	轨道	wi
+Build placement: Stairs	楼梯	wi
+Build placement: {s}'s Shop	{s}工坊	wtlx
+Build placement: {s}'s Forge	{s}锻造工坊	wtlx
+Build placement: {s}'s Workshop	{s}工坊	wtlx
 # Stair placement reports the current span as a separate numeric field.
 (spans {d} levels)	（跨越{d}层）	wtli
 Select material after placement	放置后选择材料	wli
@@ -1626,6 +1639,7 @@ Select material at placement	放置时选择材料	wli
 Use closest material	使用最近的材料	wli
 Use last material	使用上次的材料	wli
 Keep building after placement	放置后继续建造	wli
+Must span multiple elevations	必须跨越多个高度层	wli
 Blocked at this location	此处有障碍，无法放置	wli
 Hidden, cannot build at this location	不可见，无法在此处建造	wli
 # Native building-placement restrictions (same status row as Blocked).
@@ -3253,6 +3267,27 @@ Companions	同伴	wl
 # Native Windows source: 0x16b2670. The build expands this finite format with
 # the compass entries above and consumes the template before runtime matching.
 Visible: {s}	可见：{s}	wtlx
+# Complete ELF Companions productions: 11bd3f0..11c2367. These keys are
+# lookup-only fields at the renderer's exact native draws, including all
+# historical-figure/local-unit, travel, incapacitation and bearing branches.
+Adventure companion: Companions	同伴	wl
+Adventure companion: Done	完成	wl
+Adventure companion: You	你	wl
+Adventure companion: Dead	已死亡	wl
+Adventure companion: Distant	远处	wl
+Adventure companion: Nearby	附近	wl
+Adventure companion: Not visible	不可见	wl
+Adventure companion: In party nearby	队伍中，位于附近	wl
+Adventure companion: In party:	队伍中：	wl
+Adventure companion: Visible:	可见：	wl
+Adventure companion: Unconscious	失去意识	wl
+Adventure companion: Paralyzed	麻痹	wl
+Adventure companion: Webbed	被蛛网缠住	wl
+Adventure companion: Wrestle	摔跤	wl
+Adventure companion: Ground	倒地	wl
+Adventure companion: Traveling through	途经：	wl
+Adventure companion: In	位于：	wl
+Adventure companion: ***	不明	wl
 Tropical Saltwater Swamp	热带咸水沼泽
 Tropical Freshwater Swamp	热带淡水沼泽
 Tropical Moist Brdlf Forst	热带湿润阔叶林
@@ -3300,6 +3335,8 @@ No {s} available	没有可用的{s}	wtl
 Cannot afford {s} ({d})	买不起{s}（{d}）	wtl
 Show elevation	显示高度层
 Show cliffs/grade	显示峭壁/坡度
+# Native map buttons draw the verb and terrain label as separate fields.
+cliffs/grade	峭壁/坡度	wi
 {d} x {d}	{d} × {d}	wt
 Cannot embark entirely on water or mountains.	出发区域不能完全位于水域或山脉之中。
 Cannot embark on another site.	不能在已有地点上出发。	l
@@ -3411,7 +3448,8 @@ Value of grand guildhall	大行会大厅价值要求
 Guild unit count	行会成员人数要求
 Grand guild unit count	大行会成员人数要求
 Mandate period (more = fewer)	法令间隔（越高越少）
-Demand period (more = fewer)	贵族要求间隔（越高越少）
+# Match the complete caption before the barter button's UI-message literal Demand.
+Demand period (more = fewer)	贵族要求间隔（越高越少）	P
 Citizen/resident dig speed (more = faster)	公民/居民挖掘速度（越高越快）
 Prepare for the journey carefully	仔细准备旅程	l
 Choose your own skills, equipment, and animals.	自行选择技能、装备和动物。	l
@@ -4641,6 +4679,18 @@ Embark site resource: Flux stone layer	助熔石层
 # Embark site finder: fixed field labels and compact filter values.  These
 # must be whole-label rules; word/procedural fallback produced partial strings
 # such as "Flux 石材 Layer" and treated the biome-alignment field literally.
+# Keep geological criteria scoped when extensions reuse metal names for items/colors.
+Embark finder: Clay	黏土	w
+Embark finder: Sand	沙	w
+Embark finder: Iron	铁	w
+Embark finder: Gold	金	w
+Embark finder: Silver	银	w
+Embark finder: Copper	铜	w
+Embark finder: Nickel	镍	w
+Embark finder: Zinc	锌	w
+Embark finder: Platinum	铂	w
+Embark finder: Tin	锡	w
+Embark finder: Lead	铅	w
 X Dimension	X 轴尺寸	wi
 Y Dimension	Y 轴尺寸	wi
 Spirit	善恶倾向	wi
@@ -4931,8 +4981,8 @@ Abandoned shop	废弃商店
 Ruined house	房屋废墟
 Ruined houses	房屋废墟
 Sorting items...	正在整理物品……
-Last track: Dwarf Fortress - Dabu & Simon Swerwer	上一首曲目：矮人要塞 — 达布与西蒙·斯沃沃
-Last interlude: Toady Two - Dabu	上一首间奏：托迪二号 — 达布
+Last track: Dwarf Fortress - Dabu & Simon Swerwer	上一首曲目：Dwarf Fortress — Dabu & Simon Swerwer
+Last interlude: Toady Two - Dabu	上一首间奏：Toady Two — Dabu
 
 # Newly observed history entry from the same full-session audit.
 
@@ -5930,6 +5980,10 @@ Justice detail: Unknown convict.	罪犯不明。	l
 Justice detail: No sentence pending.	无待执行的判决。	l
 Justice detail: No witnesses	无证人	l
 Justice detail: No witnesses.	无证人。	l
+Justice witness count: witness	{d}名证人	l
+Justice witness count: witnesses	{d}名证人	l
+{d} witness	{d}名证人	wt
+{d} witnesses	{d}名证人	wt
 Justice detail: Beating.	殴打惩罚。	l
 Justice detail: Already interviewed	已审讯	l
 Justice detail: Interview Scheduled	已安排审讯	l
@@ -9000,6 +9054,17 @@ Zone type: Animal Training	驯兽区	l
 Zone type: Tomb	墓地	l
 Zone type: Gather Fruit	植物采集区	l
 Zone type: Clay	黏土采集区	l
+# Native zone location descriptions keep each complete profession or faith
+# identity in its resolved field before the row's English text is clipped.
+Zone location: {s} guildhall	{s1}行会大厅	htl
+Zone location: {s} grand guildhall	{s1}大行会大厅	htl
+Zone location: Shrine to {e}	供奉{e1}的圣地	htl
+Zone location: Shrine of {e}	{e1}的圣地	htl
+Zone location: Temple of {e}	{e1}的神殿	htl
+Zone location: Temple complex of {e}	{e1}的神殿建筑群	htl
+Zone location: of {e}	{e1}的	htl
+Zone location: {d} patient	{d1} 名患者	htl
+Zone location: {d} patients	{d1} 名患者	htl
 # Unambiguous complete labels can also be used outside the zone picker.
 Pen/Pasture	畜栏／牧场	wi
 Pit/Pond	坑洞／池塘	wi
@@ -12315,3 +12380,192 @@ Art form: unspecified subject	主题未注明	l
 Art form: unspecified mood	风格未注明	l
 Art form: unspecified description	内容未注明	l
 Art form: unspecified deity	敬拜对象未注明	l
+
+# ELF conversation directions and army: authored caption search words.
+Conversation keyword: a	一个	l
+Conversation keyword: all	全部	l
+Conversation keyword: an	一个	l
+Conversation keyword: and	和	l
+Conversation keyword: anything	任何事	l
+Conversation keyword: are	是	l
+Conversation keyword: as	作为	l
+Conversation keyword: ask	询问	l
+Conversation keyword: be	被	l
+Conversation keyword: but	但	l
+Conversation keyword: by	通过	l
+Conversation keyword: care	在意	l
+Conversation keyword: completely	完全	l
+Conversation keyword: current	当前	l
+Conversation keyword: disapprove	不赞同	l
+Conversation keyword: don t	不	l
+Conversation keyword: enjoyed	喜欢	l
+Conversation keyword: for	为	l
+Conversation keyword: from	从	l
+Conversation keyword: had	有过	l
+Conversation keyword: ignorance	不知情	l
+Conversation keyword: in	在	l
+Conversation keyword: is	是	l
+Conversation keyword: it	此事	l
+Conversation keyword: kind	种类	l
+Conversation keyword: know	知道	l
+Conversation keyword: listener	对方	l
+Conversation keyword: matters	事情	l
+Conversation keyword: menu	菜单	l
+Conversation keyword: must	必须	l
+Conversation keyword: not	不	l
+Conversation keyword: of	的	l
+Conversation keyword: problem	问题	l
+Conversation keyword: profess	表示	l
+Conversation keyword: provide	告知	l
+Conversation keyword: recommend	推荐	l
+Conversation keyword: rescued	获救	l
+Conversation keyword: riddles	谜语	l
+Conversation keyword: stopped	制止	l
+Conversation keyword: that	这	l
+Conversation keyword: the	该	l
+Conversation keyword: they	他们	l
+Conversation keyword: they ve	他们已经	l
+Conversation keyword: this	这	l
+Conversation keyword: to	向	l
+Conversation keyword: topic	话题	l
+Conversation keyword: total	完全	l
+Conversation keyword: unexpected	意外	l
+Conversation keyword: violent	暴力	l
+Conversation keyword: was	曾是	l
+Conversation keyword: whereabouts	下落	l
+Conversation keyword: with	用	l
+Conversation keyword: you	你	l
+Conversation keyword: yourself	你自己	l
+Conversation keyword: goblin	地精	l
+Conversation keyword: elf	精灵	l
+Conversation keyword: human	人类	l
+Conversation keyword: ask for directions	询问路线	l
+Conversation keyword: ask for whereabouts	询问下落	l
+Conversation keyword: listener s	对方的	l
+
+# Native placement building-name branches (ELF 0x1957df0).
+Build placement: Floor Hatch	地板活板门	wi
+Build placement: Furnace	熔炉	wi
+Build placement: Track/Ramp (NSW)	坡道轨道（北南西）	wi
+Build placement: Track/Ramp (SE)	坡道轨道（南东）	wi
+Build placement: Track/Ramp (SEW)	坡道轨道（南东西）	wi
+Build placement: Track (NW)	轨道（北西）	wi
+Build placement: Track/Ramp (EW)	坡道轨道（东西）	wi
+Build placement: Track (NSEW)	轨道（北南东西）	wi
+Build placement: Track/Ramp (NSEW)	坡道轨道（北南东西）	wi
+Build placement: Track/Ramp (NSE)	坡道轨道（北南东）	wi
+Build placement: Track/Ramp (W)	坡道轨道（西）	wi
+Build placement: Track/Ramp (NEW)	坡道轨道（北东西）	wi
+Build placement: Track (E)	轨道（东）	wi
+Build placement: Track/Ramp (SW)	坡道轨道（南西）	wi
+Build placement: Track (NSE)	轨道（北南东）	wi
+Build placement: Track/Ramp (NE)	坡道轨道（北东）	wi
+Build placement: Track (NS)	轨道（北南）	wi
+Build placement: Track (NEW)	轨道（北东西）	wi
+Build placement: Track/Ramp (S)	坡道轨道（南）	wi
+Build placement: Track (N)	轨道（北）	wi
+Build placement: Track (SW)	轨道（南西）	wi
+Build placement: Track/Ramp (NW)	坡道轨道（北西）	wi
+Build placement: Track (NE)	轨道（北东）	wi
+Build placement: Track (SEW)	轨道（南东西）	wi
+Build placement: Track/Ramp (E)	坡道轨道（东）	wi
+Build placement: Track (S)	轨道（南）	wi
+Build placement: Track (EW)	轨道（东西）	wi
+Build placement: Track/Ramp (NS)	坡道轨道（北南）	wi
+Build placement: Track (W)	轨道（西）	wi
+Build placement: Track (NSW)	轨道（北南西）	wi
+Build placement: Track/Ramp (N)	坡道轨道（北）	wi
+Build placement: Track (SE)	轨道（南东）	wi
+
+# Adventure journal agreement fields: ELF 53.16 17cda80 / 17db9b0
+Adventurer log agreement type: World Joining Agreement	降临世界协议	h
+Adventurer log agreement type: Residency Agreement	居留协议	h
+Adventurer log agreement type: Grant of Citizenship	授予公民身份	h
+Adventurer log agreement type: Parley Arrangement	会谈安排	h
+Adventurer log agreement type: Corruption	腐败	h
+Adventurer log agreement type: Artifact Theft	盗取神器	h
+Adventurer log agreement type: Promise of Position	许诺职位	h
+Adventurer log agreement type: Assassination Plot	刺杀阴谋	h
+Adventurer log agreement type: Abduction Plot	绑架阴谋	h
+Adventurer log agreement type: Sabotage Plot	破坏阴谋	h
+Adventurer log agreement type: Infiltration Plot	渗透阴谋	h
+Adventurer log agreement type: Framing Plot	栽赃阴谋	h
+Adventurer log agreement type: War Starting Plot	挑起战争的阴谋	h
+Adventurer log agreement type: Foiled Embezzlement Conspiracy	已挫败的挪用资金阴谋	h
+Adventurer log agreement type: Foiled Corruption Conspiracy	已挫败的腐败阴谋	h
+Adventurer log agreement type: Foiled Bribery Conspiracy	已挫败的贿赂阴谋	h
+Adventurer log agreement type: Build Structure	建造设施	h
+Adventurer log agreement type: Offer Service	提供服务	h
+Adventurer log agreement type: Retrieve Artifact	取回神器	h
+Adventurer log agreement type: Overthrow Agreement	推翻统治的约定	h
+Adventurer log agreement type: Adventuring Agreement	共同冒险的约定	h
+Adventurer log agreement type: Guide Agreement	向导约定	h
+Adventurer log agreement type: Rescue Agreement	营救约定	h
+Adventurer log agreement type: Aid Rescue Agreement	协助营救的约定	h
+Adventurer log agreement type: Bound Servitude	受束缚的服役	h
+Adventurer log agreement type: Entertainment Agreement	表演约定	h
+Adventurer log agreement field: World Joining Agreement	降临世界协议	h
+Adventurer log agreement field: Residency Agreement	居留协议	h
+Adventurer log agreement field: Grant of Citizenship	授予公民身份	h
+Adventurer log agreement field: Parley Arrangement	会谈安排	h
+Adventurer log agreement field: Corruption	腐败	h
+Adventurer log agreement field: Artifact Theft	盗取神器	h
+Adventurer log agreement field: Promise of Position	许诺职位	h
+Adventurer log agreement field: Assassination Plot	刺杀阴谋	h
+Adventurer log agreement field: Abduction Plot	绑架阴谋	h
+Adventurer log agreement field: Sabotage Plot	破坏阴谋	h
+Adventurer log agreement field: Infiltration Plot	渗透阴谋	h
+Adventurer log agreement field: Framing Plot	栽赃阴谋	h
+Adventurer log agreement field: War Starting Plot	挑起战争的阴谋	h
+Adventurer log agreement field: Foiled Embezzlement Conspiracy	已挫败的挪用资金阴谋	h
+Adventurer log agreement field: Foiled Corruption Conspiracy	已挫败的腐败阴谋	h
+Adventurer log agreement field: Foiled Bribery Conspiracy	已挫败的贿赂阴谋	h
+Adventurer log agreement field: Build Structure	建造设施	h
+Adventurer log agreement field: Offer Service	提供服务	h
+Adventurer log agreement field: Retrieve Artifact	取回神器	h
+Adventurer log agreement field: Overthrow Agreement	推翻统治的约定	h
+Adventurer log agreement field: Adventuring Agreement	共同冒险的约定	h
+Adventurer log agreement field: Guide Agreement	向导约定	h
+Adventurer log agreement field: Rescue Agreement	营救约定	h
+Adventurer log agreement field: Aid Rescue Agreement	协助营救的约定	h
+Adventurer log agreement field: Bound Servitude	受束缚的服役	h
+Adventurer log agreement field: Entertainment Agreement	表演约定	h
+Adventurer log agreement field: You	你	h
+Adventurer log agreement field: you	你	h
+Adventurer log agreement field: somebody unknown	身份不明的人	h
+Adventurer log agreement field: agreed to join	同意与以下对象同行：	h
+Adventurer log agreement field: in insurrection against	共同起义，反抗以下势力：	h
+Adventurer log agreement field: thereby freeing	从而解放以下地点：	h
+Adventurer log agreement field: agreed to guide	同意为以下对象带路：	h
+Adventurer log agreement field: to	前往：	h
+Adventurer log agreement field: in order to be brought safely away from	以便被安全带离以下地点：	h
+Adventurer log agreement field: in order to rescue	以便营救以下对象：	h
+Adventurer log agreement field: agreed to adventure with	同意与以下对象共同冒险：	h
+Adventurer log agreement field: wherever the journey might lead	无论旅途通向何方。	h
+Adventurer log agreement field: was bound to serve	被迫为以下对象效力：	h
+Adventurer log agreement field: by invocation of True Name	由于真名被唤出。	h
+Adventurer log agreement field: agreed to entertain people with	同意与以下对象为众人表演：	h
+Adventurer log agreement field: throughout the world	足迹遍及整个世界。	h
+Adventurer log agreement field: requested that	请求：	h
+Adventurer log agreement field: make an offer of service to	向以下团体表示愿意效力：	h
+Adventurer log agreement field: asked that	请求：	h
+Adventurer log agreement field: retrieve	取回：	h
+Adventurer log agreement field: serve	为以下团体效力：	h
+Adventurer log agreement field: from	来源：	h
+Adventurer log agreement field: for	交给：	h
+Adventurer log agreement field: Agreement concluded	约定已结束	h
+Adventurer log agreement field: Unknown month	（月份未知）	h
+Adventurer log agreement field: Kill	杀死以下目标：	h
+Adventurer log agreement field: Cause trouble for	给以下团体制造麻烦：	h
+Adventurer log agreement field: Drive	驱逐以下团体：	h
+Adventurer log agreement field: Drive members of	驱逐以下团体的成员：	h
+Adventurer log agreement field: out of	逐出以下地点：	h
+Adventurer log agreement field: An order from	下令者：	h
+Adventurer log agreement field: Finish reporting in	完成汇报	h
+Adventurer log agreement field: Complete: report back	已完成：返回汇报	h
+Adventurer log agreement field: Not yet completed	尚未完成	h
+Adventurer log agreement field: Centered on location	已定位到地点	h
+Adventurer log agreement field: Centered on commander	已定位到指挥官	h
+Adventurer log agreement field: Centered on target	已定位到目标	h
+Adventurer log agreement field: Centered on first heard	已定位到最初获悉处	h
+Adventurer log agreement field: Centered on last heard	已定位到最近获悉处	h

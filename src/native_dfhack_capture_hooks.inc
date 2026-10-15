@@ -39,8 +39,14 @@ static bool native_dfhack_set_tile_capture(const void *pen, int x, int y,
     NativeInputCallbackScope callback;
     const auto original = g_native_dfhack_original_set_tile.load(std::memory_order_acquire);
     if (!original || original == native_dfhack_set_tile_capture) return false;
+    if (g_native_process_exiting.load(std::memory_order_acquire))
+        return callback.call_native([&] { return original(pen, x, y, map, member_field); });
     NativeDfhackLayerWriteScope layer;
-    if (!layer.valid()) return false;
+    if (!layer.valid()) {
+        if (g_native_process_exiting.load(std::memory_order_acquire))
+            return callback.call_native([&] { return original(pen, x, y, map, member_field); });
+        return false;
+    }
     const bool result = callback.call_native([&] { return original(pen, x, y, map, member_field); });
     if (pen && result && (!map || native_ui_classic().value_or(false))) {
         native_dfhack_layer_note_ui_write(native_dfhack_graphics(), x, y);
@@ -66,6 +72,8 @@ static void *native_dfhack_get_tile_capture(void *result, int x, int y,
     NativeInputCallbackScope callback;
     const auto original = g_native_dfhack_original_get_tile.load(std::memory_order_acquire);
     if (!original || original == native_dfhack_get_tile_capture) return result;
+    if (g_native_process_exiting.load(std::memory_order_acquire))
+        return callback.call_native([&] { return original(result, x, y, map, member_field); });
     NativeDfhackLayerWriteScope layer(true, false, false);
     if (native_dfhack_read_native_tile(x, y, map)) {
         NativeDfhackNativeLayerScope native(false);
@@ -81,8 +89,14 @@ static bool native_dfhack_paint_tile_capture(const void *pen, int x, int y,
     const auto original = reinterpret_cast<NativeDfhackSetTileFn>(
         native_dfhack_draw_entry(NativeDfhackDrawApi::Tile).original);
     if (!original) return false;
+    if (g_native_process_exiting.load(std::memory_order_acquire))
+        return callback.call_native([&] { return original(pen, x, y, map, member_field); });
     NativeDfhackLayerWriteScope layer;
-    if (!layer.valid()) return false;
+    if (!layer.valid()) {
+        if (g_native_process_exiting.load(std::memory_order_acquire))
+            return callback.call_native([&] { return original(pen, x, y, map, member_field); });
+        return false;
+    }
     return callback.call_native([&] { return original(pen, x, y, map, member_field); });
 }
 using NativeDfhackPaintStringFn = bool (*)(const void *, int, int, const NativeString *, bool);
@@ -92,8 +106,14 @@ static bool native_dfhack_paint_string_capture(const void *pen, int x, int y,
     const auto original = reinterpret_cast<NativeDfhackPaintStringFn>(
         native_dfhack_draw_entry(NativeDfhackDrawApi::String).original);
     if (!original) return false;
+    if (g_native_process_exiting.load(std::memory_order_acquire))
+        return callback.call_native([&] { return original(pen, x, y, text, map); });
     NativeDfhackLayerWriteScope layer;
-    if (!layer.valid()) return false;
+    if (!layer.valid()) {
+        if (g_native_process_exiting.load(std::memory_order_acquire))
+            return callback.call_native([&] { return original(pen, x, y, text, map); });
+        return false;
+    }
     return callback.call_native([&] { return original(pen, x, y, text, map); });
 }
 using NativeDfhackFillRectFn = bool (*)(const void *, int, int, int, int, bool);
@@ -103,8 +123,14 @@ static bool native_dfhack_fill_rect_capture(const void *pen, int x1, int y1,
     const auto original = reinterpret_cast<NativeDfhackFillRectFn>(
         native_dfhack_draw_entry(NativeDfhackDrawApi::Fill).original);
     if (!original) return false;
+    if (g_native_process_exiting.load(std::memory_order_acquire))
+        return callback.call_native([&] { return original(pen, x1, y1, x2, y2, map); });
     NativeDfhackLayerWriteScope layer;
-    if (!layer.valid()) return false;
+    if (!layer.valid()) {
+        if (g_native_process_exiting.load(std::memory_order_acquire))
+            return callback.call_native([&] { return original(pen, x1, y1, x2, y2, map); });
+        return false;
+    }
     return callback.call_native([&] { return original(pen, x1, y1, x2, y2, map); });
 }
 static bool native_dfhack_clear_capture() {
@@ -112,8 +138,14 @@ static bool native_dfhack_clear_capture() {
     const auto original = reinterpret_cast<bool (*)()>(
         native_dfhack_draw_entry(NativeDfhackDrawApi::Clear).original);
     if (!original) return false;
+    if (g_native_process_exiting.load(std::memory_order_acquire))
+        return callback.call_native([&] { return original(); });
     NativeDfhackLayerWriteScope layer;
-    if (!layer.valid()) return false;
+    if (!layer.valid()) {
+        if (g_native_process_exiting.load(std::memory_order_acquire))
+            return callback.call_native([&] { return original(); });
+        return false;
+    }
     return callback.call_native([&] { return original(); });
 }
 static bool native_dfhack_draw_border_capture(const NativeString *title) {
@@ -121,8 +153,14 @@ static bool native_dfhack_draw_border_capture(const NativeString *title) {
     const auto original = reinterpret_cast<bool (*)(const NativeString *)>(
         native_dfhack_draw_entry(NativeDfhackDrawApi::Border).original);
     if (!original) return false;
+    if (g_native_process_exiting.load(std::memory_order_acquire))
+        return callback.call_native([&] { return original(title); });
     NativeDfhackLayerWriteScope layer;
-    if (!layer.valid()) return false;
+    if (!layer.valid()) {
+        if (g_native_process_exiting.load(std::memory_order_acquire))
+            return callback.call_native([&] { return original(title); });
+        return false;
+    }
     return callback.call_native([&] { return original(title); });
 }
 using NativeDfhackMapPortFn = bool (*)(const void *, int, int, uintptr_t);
@@ -132,8 +170,14 @@ static bool native_dfhack_map_port_capture(const void *pen, int x, int y,
     const auto original = reinterpret_cast<NativeDfhackMapPortFn>(
         native_dfhack_draw_entry(NativeDfhackDrawApi::MapPort).original);
     if (!original) return false;
+    if (g_native_process_exiting.load(std::memory_order_acquire))
+        return callback.call_native([&] { return original(pen, x, y, member_field); });
     NativeDfhackLayerWriteScope layer;
-    if (!layer.valid()) return false;
+    if (!layer.valid()) {
+        if (g_native_process_exiting.load(std::memory_order_acquire))
+            return callback.call_native([&] { return original(pen, x, y, member_field); });
+        return false;
+    }
     const bool result = callback.call_native([&] { return original(pen, x, y, member_field); });
     if (pen && result && native_ui_classic().value_or(false)) {
         native_dfhack_layer_note_ui_write(native_dfhack_graphics(), x, y);
@@ -153,8 +197,16 @@ static void native_dfhack_pen_array_capture(void *array, unsigned x, unsigned y,
     const auto original = reinterpret_cast<NativeDfhackPenArrayDrawFn>(
         native_dfhack_draw_entry(NativeDfhackDrawApi::PenArray).original);
     if (!original) return;
+    if (g_native_process_exiting.load(std::memory_order_acquire)) {
+        callback.call_native([&] { original(array, x, y, width, height, bufx, bufy); });
+        return;
+    }
     NativeDfhackLayerWriteScope layer;
-    if (!layer.valid()) return;
+    if (!layer.valid()) {
+        if (g_native_process_exiting.load(std::memory_order_acquire))
+            callback.call_native([&] { original(array, x, y, width, height, bufx, bufy); });
+        return;
+    }
     callback.call_native([&] { original(array, x, y, width, height, bufx, bufy); });
 }
 static void *native_dfhack_read_tile_capture(void *result, int x, int y,
@@ -163,6 +215,8 @@ static void *native_dfhack_read_tile_capture(void *result, int x, int y,
     const auto original = reinterpret_cast<NativeDfhackReadTileFn>(
         native_dfhack_draw_entry(NativeDfhackDrawApi::ReadTile).original);
     if (!original) return result;
+    if (g_native_process_exiting.load(std::memory_order_acquire))
+        return callback.call_native([&] { return original(result, x, y, map, member_field); });
     NativeDfhackLayerWriteScope layer(true, false, false);
     if (native_dfhack_read_native_tile(x, y, map)) {
         NativeDfhackNativeLayerScope native(false);
@@ -176,6 +230,8 @@ static void *native_dfhack_read_map_port_capture(void *result, int x, int y, uin
     const auto original = reinterpret_cast<NativeDfhackReadMapPortFn>(
         native_dfhack_draw_entry(NativeDfhackDrawApi::ReadMapPort).original);
     if (!original) return result;
+    if (g_native_process_exiting.load(std::memory_order_acquire))
+        return callback.call_native([&] { return original(result, x, y, member_field); });
     NativeDfhackLayerWriteScope layer(true, false, false);
     NativeDfhackNativeLayerScope native(false);
     return callback.call_native([&] { return original(result, x, y, member_field); });

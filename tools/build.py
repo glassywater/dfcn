@@ -384,6 +384,7 @@ def generate_data(env: dict[str, str]) -> None:
         run([sys.executable, "-B", "tools/build_translations.py"], env)
     creature_inputs = [ROOT / "tools/build_creature_vocabulary.py", RUNTIME / "creature-name-vocabulary.tsv",
                        ROOT / "tools/legends_grammar.py", RUNTIME / "legends-creature-descriptions.tsv",
+                       RUNTIME / "magical-material-vocabulary.tsv",
                        RUNTIME / "procedural-word-senses.tsv", GAME / "data/init/globals.lua",
                        dictionary, generators / "creatures.lua", generators / "evil.lua",
                        generators / "creatures/rcp.lua",

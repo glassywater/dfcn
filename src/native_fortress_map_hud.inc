@@ -19,6 +19,13 @@ static bool native_fortress_map_hud_page() {
             game_type == 4 || game_type == 5 ||
             !native_history_copy(native_reference_address(base, 0x18a938c), selection) ||
             selection == 2) return false;
+    // The stockpile type panel has no open bit. Its native renderer
+    // (0x3e5e54..0x3e5e62) uses stockpile_interfacest::cur_bld instead.
+    // Keep that panel on the complete UI path so its two-row category
+    // captions are joined before word and generated-name matching.
+    uintptr_t stockpile = 0;
+    if (!native_history_copy(native_reference_address(base, 0x18a41e0), stockpile) ||
+            stockpile) return false;
     // Native 0x3f58bc..0x3f5a23 gates interactive map controls on both pause
     // state and component states. Pausing does not change HUD text ownership:
     // pause_state (0x2131b5e) must not be treated as an open UI component.
@@ -28,12 +35,24 @@ static bool native_fortress_map_hud_page() {
         0x18a6ff8, 0x18a4330, 0x18a7200, 0x18a6378,
         0x18a1f78, 0x18a21b0, 0x18a3598, 0x18a2710, 0x18a26e0,
         0x18a2590, 0x18a2cf8, 0x18a2f48, 0x18a41a8, 0x18a1a58,
-        0x18a72a0, 0x18a2ac8, 0x18a4238, 0x18a75b8
+        0x18a72a0, 0x18a2ac8, 0x18a4238
     };
     for (const auto coordinate : closed_states) {
         uint8_t open = 1;
         if (!native_history_copy(native_reference_address(base, coordinate), open) || open)
             return false;
+    }
+    // A minimized guide leaves the same local map HUD active. Its own ink
+    // belongs to the already captured help grid, rather than a main-page
+    // document. An expanded guide or a failed private capture still needs
+    // the complete page pipeline.
+    uint8_t help_open = 1;
+    if (!native_history_copy(native_reference_address(base, 0x18a75b8), help_open))
+        return false;
+    if (help_open) {
+        uint32_t flags = 0;
+        if (!native_history_copy(native_reference_address(base, 0x18a75bc), flags) ||
+                !(flags & 4) || !g_native_help_layer.ready) return false;
     }
     // The native gate calls its popup-queue getter. Borrow the same vector
     // through the existing world layout instead of invoking a game function.

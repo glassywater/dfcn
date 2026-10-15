@@ -33,6 +33,9 @@ std::optional<std::string> Overlay::translate_unit_profession(
     // Tame/unowned and agitated prefixes wrap the complete native role, not
     // only a species. Keep the caste prefix glossary authoritative.
     for (const std::string_view prefix : {"stray ", "fierce ", "agitated "}) {
+        if (folded == prefix.substr(0, prefix.size() - 1))
+            return RULESETS.compose_bound_rule(
+                "::creatures::caste::name::prefix", std::string(prefix));
         if (!folded.starts_with(prefix) || source.size() <= prefix.size()) continue;
         const auto status = RULESETS.compose_bound_rule(
             "::creatures::caste::name::prefix", std::string(prefix));
@@ -73,11 +76,32 @@ std::optional<std::string> Overlay::translate_unit_profession(
     // Share the species status wording, but leave the remaining role intact
     // so its office, territory and occupation grammar can resolve together.
     constexpr std::string_view ghostly = "ghostly ";
+    if (folded == ghostly.substr(0, ghostly.size() - 1))
+        return std::string(creature_name_status_prefix.at("ghostly"));
     if (folded.starts_with(ghostly)) {
         const auto role = translate_unit_profession(source.substr(ghostly.size()), typed);
         const auto status = creature_name_status_prefix.find("ghostly");
         if (role && status != creature_name_status_prefix.end())
             return std::string(status->second) + *role;
+    }
+
+    // The adjective-only CE_DISPLAY_NAME branch (PE 0x13300f6..0x1330137)
+    // runs only when the singular display name is empty. Its third NAME
+    // field precedes the complete role; it is not an arbitrary creature-kind
+    // modifier. Keep the actual fixed/generated third-field vocabulary
+    // separate from species adjectives, including an empty remaining role.
+    if (const auto adjective = creature_name_display_adjective.find(folded);
+            adjective != creature_name_display_adjective.end())
+        return std::string(adjective->second);
+    for (size_t at = source.rfind(' '); at != std::string::npos;
+         at = at == 0 ? std::string::npos : source.rfind(' ', at - 1)) {
+        const auto adjective = creature_name_display_adjective.find(
+            std::string_view(folded).substr(0, at));
+        if (adjective == creature_name_display_adjective.end()) continue;
+        const auto base = std::string_view(source).substr(at + 1);
+        const auto role = translate_unit_profession(base, false);
+        if (translation_complete_with_native_nicknames(role, base))
+            return std::string(adjective->second) + *role;
     }
 
     // The shared adventure unit formatter prepends its distinguishing
@@ -109,6 +133,24 @@ std::optional<std::string> Overlay::translate_unit_profession(
             source.substr(0, source.size() - necromancer.size()), typed);
         const auto status = exact_literal_translation("Necromancer");
         if (role && status) return *role + "／" + *status;
+    }
+
+    // PE 0x133019d appends the complete CE_DISPLAY_NAME after the selected
+    // RAW/species/occupation role. Stored speech and combat reports can
+    // outlive the live formatter's typed curse-name capture. Admit only the
+    // installed interaction display-name vocabulary here: it includes fixed
+    // curses, resurrection/ghoul/mummy families and every mythical tier and
+    // adjective direction, including "worshipper of change". A generic
+    // creature or an arbitrary title is not evidence of this suffix.
+    for (size_t at = source.find(' '); at != std::string::npos;
+         at = source.find(' ', at + 1)) {
+        const auto display = creature_name_display_name.find(
+            std::string_view(folded).substr(at + 1));
+        if (display == creature_name_display_name.end()) continue;
+        const auto base = std::string_view(source).substr(0, at);
+        const auto role = translate_unit_profession(base, false);
+        if (translation_complete_with_native_nicknames(role, base))
+            return *role + "／" + std::string(display->second);
     }
 
     // Preserve the name's case and accents when an office appends a territory.

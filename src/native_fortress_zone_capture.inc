@@ -6,15 +6,36 @@ static std::optional<NativeFortressZoneCaption> capture_native_fortress_zone_cap
     const uintptr_t base = native_history_profile_base();
     if (!base || !caller || !source) return std::nullopt;
     using Kind = NativeFortressZoneCaption::Kind;
-    if (caller == native_reference_address(base, 0x39d10a))
-        return NativeFortressZoneCaption{Kind::Assigned, false};
-    if (caller == native_reference_address(base, 0x39ce56))
-        return NativeFortressZoneCaption{Kind::Present, false};
+    const auto variable_row_caption = [&](Kind kind, int following_line = 0) {
+        NativeFortressZoneCaption caption{kind, false};
+        // These callers use r13/rsp+0x54. The renderer selects row_top+1
+        // at width >= 40, otherwise row_top+2. With source at rbp+0xb0,
+        // its original column width at rbp-0x6c is source-0x11c.
+        // Available/Present add one more row to that selected baseline.
+        int32_t width = -1;
+        if (source >= 0x11c && native_history_copy(source - 0x11c, width) &&
+                width >= 0 && width <= 1000)
+            caption.line_offset = (width < 40 ? 1 : 0) + following_line;
+        return caption;
+    };
+    if (caller == native_reference_address(base, 0x39d10a) ||
+            caller == native_reference_address(base, 0x39d857))
+        return variable_row_caption(Kind::Assigned);
+    if (caller == native_reference_address(base, 0x39ce56) ||
+            caller == native_reference_address(base, 0x39d1f9))
+        return variable_row_caption(Kind::Present, 1);
     if (caller == native_reference_address(base, 0x39cd4f))
-        return NativeFortressZoneCaption{Kind::Imprisoned, false};
+        return variable_row_caption(Kind::Imprisoned);
+    if (caller == native_reference_address(base, 0x39db64))
+        return variable_row_caption(Kind::Patients);
+    if (caller == native_reference_address(base, 0x39db94))
+        return NativeFortressZoneCaption{Kind::Fixed, false};
     const bool type = caller == native_reference_address(base, 0x39c809);
     const bool related = caller == native_reference_address(base, 0x39cb3d);
-    if (!type && !related) return std::nullopt;
+    const bool location_name_draw = caller == native_reference_address(base, 0x39d2e9);
+    const bool location_description_draw = caller == native_reference_address(base, 0x39d4e0);
+    const bool current_location = location_name_draw || location_description_draw;
+    if (!type && !related && !current_location) return std::nullopt;
 
     const uintptr_t buildings = native_reference_address(base, 0x23edf10);
     const auto current_building = [&](uintptr_t candidate) {
@@ -27,6 +48,34 @@ static std::optional<NativeFortressZoneCaption> capture_native_fortress_zone_cap
     };
 
     NativeFortressZoneCaption caption;
+    if (current_location) {
+        caption.kind = location_name_draw ? Kind::LocationName : Kind::LocationDescription;
+        caption.authored = false;
+        // These separate native callers own the name and type/tier fields,
+        // even when their object snapshot is unavailable. Their later block
+        // uses current_site and does not require building.site_id (+0x114).
+        if (location_description_draw) return caption;
+        uintptr_t building = 0, location = 0;
+        // 39d215 freezes the location chosen by 6ff00 at rsp+0x68.
+        // source is rbp+0xb0 == rsp+0x1b0, so this exact draw still owns
+        // source-0x148; source-0x170 retains its original zone at rsp+0x40.
+        if (source < 0x170 || !native_history_copy(source - 0x170, building) ||
+                !current_building(building) ||
+                !native_history_copy(source - 0x148, location) || !location) return caption;
+        const auto *layout = native_history_dynamic_layout(location);
+        if (layout) {
+            for (const auto &profile : kNativeHistoryStructureProfiles) {
+                if (std::string_view(layout->name) != profile.name) continue;
+                NativeHistoryName name;
+                if (capture_native_history_name(base, native_history_object_field(
+                        location, {}, profile.name_offset), name) && name.has_name)
+                    caption.location_name = std::make_shared<const NativeHistoryName>(
+                        std::move(name));
+                break;
+            }
+        }
+        return caption;
+    }
     if (type) {
         // 39c70c checks building.name.size; its nonempty branch passes the
         // owned string at building+0xd0 directly, without a stack copy.

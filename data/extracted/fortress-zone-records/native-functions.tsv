@@ -1,0 +1,9 @@
+edition	image_identity	role	start_rva	code_end_rva
+reference	PE:6a70a6d9:02711000	places-zone-location-records	0x39ac20	0x39eeed
+reference	PE:6a70a6d9:02711000	guild-profession-descriptor	0x132e0c0	0x132e428
+reference	PE:6a70a6d9:02711000	raw-profession-supplier	0x132cc10	0x132de98
+reference	PE:6a70a6d9:02711000	current-site-location-lookup	0x6ff00	0x6ffa8
+classic	PE:6a70b91c:0270a000	places-zone-location-records	0x3987e0	0x39caad
+classic	PE:6a70b91c:0270a000	guild-profession-descriptor	0x1329030	0x1329398
+classic	PE:6a70b91c:0270a000	raw-profession-supplier	0x1327b80	0x1328e08
+classic	PE:6a70b91c:0270a000	current-site-location-lookup	0x6fe90	0x6ff38

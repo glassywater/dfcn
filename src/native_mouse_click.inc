@@ -34,6 +34,10 @@ static unsigned char *g_native_left_held = nullptr;
 static bool dfcn_native_ui_tick() {
     NativeInputCallbackScope callback;
     const bool result = callback.call_native([] { return g_native_ui_tick(); });
+    // QUIT returns true before enabler sends its simulation-stop message.
+    // Signal only: this simulation boundary must not join workers or retire
+    // SDL/DFHack hooks. Their native shutdown follows on the SDL thread.
+    if (result) request_native_process_exit();
     // The event loop pauses this simulation thread before changing mouse
     // state. All native logic/feed consumers have now had their opportunity;
     // do not let an unhandled released click follow the pointer into a later UI.

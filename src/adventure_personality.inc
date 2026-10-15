@@ -126,9 +126,10 @@ void Overlay::append_adventure_personality_matches(std::vector<std::string> &row
             return found->second;
         return exact_literal_translation(source);
     };
-    const std::array draws{captured_native_drawn_text_rows(false),
-        captured_native_drawn_text_rows(true)};
-    for (const auto &layer : draws) {
+    const std::array draws{captured_native_drawn_text_snapshot(false),
+        captured_native_drawn_text_snapshot(true)};
+    for (const auto &layer_snapshot : draws) {
+        const auto &layer = *layer_snapshot;
         const auto current = [&](const NativeDrawnTextRow &draw) {
             // The right-side action shares a row with the last visible facet.
             return draw.draw_epoch == epoch && draw.draw_dimx == gps_->dimx &&

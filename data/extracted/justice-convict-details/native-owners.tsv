@@ -1,0 +1,21 @@
+edition	image_identity	role	owner_rva	end_rva	anchor_rva	literal_rva	text
+reference	PE:6a70a6d9:02711000	literal-anchor:case-caption	0x46d660	0x46db54	0x46d6f5	0x163ebf0	Violation of job order
+reference	PE:6a70a6d9:02711000	literal-anchor:crime-detail	0x46db60	0x46e258	0x46dd42	0x163eb98	Injured party: 
+reference	PE:6a70a6d9:02711000	literal-anchor:crime-detail	0x46f6d0	0x46fa98	0x46f8a5	0x163eb98	Injured party: 
+reference	PE:6a70a6d9:02711000	literal-anchor:convict-renderer	0x472020	0x472897	0x4720e5	0x163ead0	No sentence pending.
+reference	PE:6a70a6d9:02711000	literal-anchor:convict-renderer	0x4728a0	0x472ab7	0x472916	0x163ead0	No sentence pending.
+reference	PE:6a70a6d9:02711000	convict-renderer	0x472020	0x472897			
+reference	PE:6a70a6d9:02711000	convict-without-sentence-renderer	0x4728a0	0x472ab7			
+reference	PE:6a70a6d9:02711000	crime-detail	0x46f6d0	0x46fa98			
+reference	PE:6a70a6d9:02711000	case-caption	0x46d660	0x46db54			
+reference	PE:6a70a6d9:02711000	case-caption-code-end	0x46d660	0x46db06			
+classic	PE:6a70b91c:0270a000	literal-anchor:case-caption	0x46b220	0x46b714	0x46b2b5	0x1639ba8	Violation of job order
+classic	PE:6a70b91c:0270a000	literal-anchor:crime-detail	0x46b720	0x46be18	0x46b902	0x1639b08	Injured party: 
+classic	PE:6a70b91c:0270a000	literal-anchor:crime-detail	0x46d290	0x46d658	0x46d465	0x1639b08	Injured party: 
+classic	PE:6a70b91c:0270a000	literal-anchor:convict-renderer	0x46fbe0	0x470457	0x46fca5	0x1639a60	No sentence pending.
+classic	PE:6a70b91c:0270a000	literal-anchor:convict-renderer	0x470460	0x470677	0x4704d6	0x1639a60	No sentence pending.
+classic	PE:6a70b91c:0270a000	convict-renderer	0x46fbe0	0x470457			
+classic	PE:6a70b91c:0270a000	convict-without-sentence-renderer	0x470460	0x470677			
+classic	PE:6a70b91c:0270a000	crime-detail	0x46d290	0x46d658			
+classic	PE:6a70b91c:0270a000	case-caption	0x46b220	0x46b714			
+classic	PE:6a70b91c:0270a000	case-caption-code-end	0x46b220	0x46b6c6			

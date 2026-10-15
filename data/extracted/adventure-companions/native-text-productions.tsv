@@ -1,0 +1,54 @@
+kind	production	native_source	condition_or_supplier	translation_owner
+control	Companions	0x11bd99b..0x11bda07	inline Companio + ns; all renderer branches	Adventure companion: Companions
+control	Done	0x11bd95f..0x11bd97f	inline Done; all renderer branches	Adventure companion: Done
+identity	You	0x11be773..0x11be7c2	adventure-mode historical figure is the current player	Adventure companion: You
+identity	{historical figure EnglishName}	0x11be0c5..0x11be12b	companion record exists; selected figure language_name+0x38; EnglishName(1,0)	capture_native_companion_english_name; native name/WORD/nickname renderer
+identity	{complete local unit identity}	0x11be4b8..0x11be4e0	no companion record; unit pointer exists; ba53d0(unit,1)	translate_native_unit_identity
+identity	{identity first 30 bytes}...	0x11be12b..0x11be182	complete identity exceeds 33 bytes; resize to 33 then replace final 3 bytes	complete caption capture at 0x11be13e
+identity	(empty)	0x11be0c5..0x11be12b	neither companion record nor unit pointer	no invented name
+unit-name	{selected native name}	0xba54db..0xba55a0;0xba5827	selected name has_name; visibility/relationship permits revealing it; language_name formatter	captured language_name and native WORDs
+unit-name	{nickname or quoted selected name}	0xba555c;0xba60be	selected identity/nickname policy; literal quotation marks are separate fields	native name renderer; authored nickname preserved
+unit-role	{animated_name}	0xb71bde..0xb71be8;0xb725d0	unit.active_animation exists and animated_name is nonempty; replaces whole occupation	corpsepiece::caption grammar
+unit-role	{literal first_name or animated_name}	0xba53f6..0xba5444	game types 4/5; animation takes precedence over first_name	animation grammar; authored first_name preserved
+unit-role	{custom_profession}	0xb71cf0..0xb71d07;0xb72630	use_custom and actual unit custom_profession nonempty	typed custom-profession override; otherwise preserved
+unit-role	{noble position} of {territory}	0xb7210a;0xb72735;0xb7279e	selected office/position present; b1f6f0 and 89fdd0	shared position and territory translators
+unit-role	{profession/caste RAW label}	0xb71cc9;0xb7205f;0xb6c100	profession enum, caste RAW, child/baby, special caste occupation and fallback branches	shared professions/caste vocabulary; profession-labels decompilation
+unit-role	Slave; {child/baby role} Slave	0xb72139;0xb729ea;0xb72ac2	actual slave status; retain child/baby caste role only	shared unit profession/status grammar
+unit-role	Prisoner; {child/baby role} Prisoner	0xb7218d;0xb728ba;0xb72a99	actual prisoner status; retain child/baby caste role only	shared unit profession/status grammar
+unit-role	Stray {role}; Fierce {role}; Agitated {role}	0xb72378;0xb72440;0xb72558	PET/PET_EXOTIC, pet owner, civilization flags and agitated flag	typed prefixes and caste vocabulary
+unit-role	Ghost; Ghostly {role}	0xb71dc6;0xb72a57	ghostly flag, no named curse; no underlying role versus nonempty role	shared ghost status/role grammar
+unit-role	{curse prefix}{role}; {role} {curse name}	0xb71df3..0xb71edb	actual curse_named and typed curse.name/curse.name_prefix	captured curse fields and creature descriptor grammar
+unit-role	Corpse; {role} Corpse	0xb71ee0;0xb72482;0xb7260b	active animation with empty animated_name; empty versus nonempty role	shared corpse status/role grammar
+unit-role	force; deity	0xb7269a;0xb727ca;0xb72a68;0xb72af6	caste/profession native special cases	shared unit profession/creature vocabulary
+unit-suffix	, female; , male; , x-female-x; , x-male-x	0xba56ed..0xba5924	gender requested; two-gender RAW flag; gelded flag	captured sex/gelded fields; native sex glyphs preserved
+unit-suffix	(Semi-Wild); (Trained); (-Trained-); (+Trained+); (*Trained*); (marked Trained); (Tame)	0xba59ea..0xba6684	TAME flag and all training_level values 0..7; CP437 marks at levels 5/6	typed training-level array and original tier marks
+status	Dead	0x11be1c8..0x11be1ea;0x11be8c2..0x11be8e4	figure death year present or local unit.dead flag	Adventure companion: Dead
+status	Not visible	0x11bf0ee..0x11bf138	no companion record and local visibility bit is unset	Adventure companion: Not visible
+status	Unconscious	0x11c02e2..0x11c032c	figure's loaded living unit; unconscious counter > 0	Adventure companion: Unconscious
+status	Paralyzed	0x11c0970..0x11c09a1	figure's loaded living unit; not unconscious; paralysis counter >= 100	Adventure companion: Paralyzed
+status	Webbed	0x11c0aef..0x11c0b2e	figure's loaded living unit; not unconscious/paralyzed; webbed counter > 9	Adventure companion: Webbed
+status	Wrestle	0x11bef93..0x11befca	visible local unit has a nonempty wrestling relation vector	Adventure companion: Wrestle
+status	Ground	0x11c0696..0x11c06f7	visible local unit on_ground flag	Adventure companion: Ground
+status-glyph	X; paralysis icon; web icon; !; severity glyphs	0x11beca0..0x11bef42	visible local unit counters, health state and severity switch 0..4	preserve native icons and colors
+location	Nearby	0x11c08c7..0x11c0922	non-player local position absent; x=-30000	Adventure companion: Nearby
+location	In party nearby	0x11bee8d..0x11beefb	loaded living figure in party; non-player local position absent	Adventure companion: In party nearby
+location	Distant	0x11be723..0x11be76e	off-map figure; position/location references unavailable or world coordinates cannot resolve a region	Adventure companion: Distant
+location	Traveling through {region}	0x11be6a6..0x11be700	figure world-travel position resolves valid world-region record	region-name supplier; shared place translator
+location	In {site}	0x11c011c..0x11c0190	off-map figure location: site ID present; site-name supplier	shared site name translator
+location	In {region}	0x11bf169..0x11bf1d3	off-map figure location: no site; region ID present	shared region name translator
+location	In {underground region}	0x11c09f5..0x11c0a69	off-map figure location: no site/region; underground-region ID present	shared underground region name translator
+location	In an unknown site	0xa27e8f	native site lookup fails	shared reviewed unknown-site term
+location	In an unknown region	0xa100d5	native region lookup fails	shared reviewed unknown-region term
+location	In an unknown underground region	0xa10239	native underground-region lookup fails	shared reviewed unknown-underground-region term
+location	Visible: {bearing}	0x11c087f..0x11c08a4	visible local unit; both local coordinates exist	Adventure companion: Visible: + compass vocabulary
+location	In party: {bearing}	0x11c0800..0x11c083a	figure in party; both local coordinates exist	Adventure companion: In party: + compass vocabulary
+bearing	N; NNE; NE; ENE; E; ESE; SE; SSE; S; SSW; SW; WSW; W; WNW; NW; NNW	0x11bf027..0x11c086d;0x11c0df0;0x11c1eec..0x11c2182	atan2 and all 16 jump-table targets; distance bands change only color	Adventure compass scoped vocabulary
+bearing	***	0x11c1e0f..0x11c1e2d	unavailable or same-position direction; selector outside 0..15	Adventure companion: ***
+bearing-glyph	vertical separation and distance color	0x11bf027..0x11c0d23	z difference and distance thresholds 0/26/51/101	preserve native vertical markers and distance palette
+animation-owner	{name}'s {body}; {species} {body}; your {body}	0xe66e98..0xe66f18;0xe67280..0xe67c9f	historical-figure or unit name, unnamed caste label, or player corpse	corpse owner/person/caste grammar
+animation-body	{rotten}{mangled}{mutilated}corpse	0xe6706b;0xe671e3;0xe671f6	rotten flag; body damage; surviving non-skeletal tissue	shared corpse modifiers and main grammar
+animation-body	{rotten}{mangled}{partial}skeleton	0xe671b5;0xe67223;0xe67fb6	all retained tissue is bone; completeness permits partial prefix on full description	shared corpse skeleton grammar
+animation-body	{rotten}{mangled}partial remains	0xe67105;0xe67d5a	missing body/anatomy or mixed/incomplete component outcome	shared corpse remains grammar
+animation-body	{rotten}{mangled}{RAW body part}	0xe66cf5;0xe677f5	a single valid retained body part	shared health body-part grammar
+animation-body	{rotten}{mangled}{RAW body part} {material}; {material}; material	0xe66d36;0xe67143;0xe6783c;0xe67ddd	retained tissue resolves a material; optional part prefix; unavailable material fallback	shared body-part/material noun grammar
+animation-body	{body} [{number}]	0xe67d17..0xe67d3b	short corpse-description mode adds a native number	shared item designation/number grammar

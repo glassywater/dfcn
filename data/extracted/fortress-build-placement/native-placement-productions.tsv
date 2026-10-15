@@ -1,0 +1,40 @@
+owner	branch	native_block_or_literal	field	source	translation
+0xde22e0	build_square=0 (FINE)		no text		
+0xde22e0	build_square=1 (FINE_BLOCKED)		no text		
+0xde22e0	build_square=2 (FINE_WATER)		no text		
+0xde22e0	build_square=3 (FINE_MAGMA)		no text		
+0xde22e0	build_square=4 (SKIP)		no text		
+0xde22e0	build_square=5 (BAD_ANCHOR)	0xde3660	errors	Needs to be anchored on edge	需要在边缘固定
+0xde22e0	build_square=6 (BLOCKED)	0xde35eb	errors	Blocked at this location	此处有障碍，无法放置
+0xde22e0	build_square=7 (HIDDEN)	0xde35d3	errors	Hidden, cannot build at this location	不可见，无法在此处建造
+0xde22e0	build_square=8 (NEED_WALL)	0xde35bb	errors	Needs adjacent wall	需要紧邻墙壁
+0xde22e0	build_square=9 (OFF_MAP)	0xde35a3	errors	Off map	超出地图范围
+0xde22e0	build_square=10 (WATER)	0xde352e	errors	Water at this location	此处有水
+0xde22e0	build_square=11 (MAGMA)	0xde34b9	errors	Lava/Magma at this location	此处有岩浆
+0xde22e0	build_square=12 (BUILDING_PRESENT)	0xde39dd	errors	Building present	此处已有建筑
+0xde22e0	build_square=13 (OUTSIDE)	0xde3959	errors	Must be inside	必须放置在室内
+0xde22e0	build_square=14 (CLOSE_TO_EDGE)	0xde3941	errors	Too close to edge	距离地图边缘太近
+0xde22e0	build_square=15 (INSIDE)	0xde38c1	errors	Must be outside	必须放置在室外
+0xde22e0	build_square=16 (NEED_OPEN_AIR)	0xde384c	errors	Needs open space	需要开放空间
+0xde22e0	build_square=17 (SURROUNDED_BY_AIR)	0xde37d7	errors	Surrounded by empty space	四周均为空处
+0xde22e0	build_square=18 (TOO_HIGH)	0xde3762	errors	Cannot build at highest level	不能在最高层建造
+0xde22e0	build_square=19 (CONSTRUCTION_PRESENT)	0xde36ed	errors	Must remove construction	必须先拆除建筑物
+0xde22e0	build_square=20 (NEEDS_SOIL_OR_MUD)	0xde3347	errors	Need soil or mud at location	此处需要土层或淤泥
+0xde22e0	build_square=21 (NEED_SOIL)	0xde3678	errors	Need soil at location	此处需要土层
+0xde22e0	footprint connection fails and 0xd50c00 returns true	0xde3b55	errors	Disconnected	断开的
+0xde22e0	building=23, subtype=1, pressure-plate flags & 0x27 == 0	0xde3aff	errors	Need trigger type	需要选择触发类型
+0xde22e0	perimeter helper 0x128a230 returns false	0xde3ac7	errors	Needs walkable perimeter	周围需要可通行区域
+0xde22e0	errors are nonempty and building connection requirement is active	0xde3b17	errors	Needs ground or near machine	需要地面或邻近机械
+0xde22e0	building=4 and farm-soil flag is false	0xde3c16	warnings	No mud/soil for farm	没有可供耕种的淤泥或土层
+0xde22e0	building=4 and farm-soil flag is false; follows the previous warning	0xde3c25	warnings	Mud is left by water	水流过后会留下淤泥
+0x167ca30	construction=34, subtype=5, selected z == current z	0x168f973	status	Must span multiple elevations	必须跨越多个高度层
+0x167ca30	single tile or already selected first corner/end	0x1696d5b	heading	Click a tile to place the {s}.	点击地格放置{s}。
+0x167ca30	area selection before first corner	0x169ec1f	heading	Click a tile to be a corner of the {s}.	点击地格选择{s}的一个角。
+0x167ca30	linear selection before first end	0x16a1472	heading	Click a tile to be one end of the {s}.	点击地格选择{s}的一端。
+0x167ca30	construction=34 and selected z differs from current z	0x16a0f4e	level span	(spans {d} levels)	（跨越{d}层）
+0x167ca30	material selection button; enabled/disabled skin	0x1696ef7	button	Select material after placement	放置后选择材料
+0x167ca30	closest material button; enabled/disabled skin	0x1697001	button	Use closest material	使用最近的材料
+0x167ca30	a remembered material is available	0x169710c	button	Use last material	使用上次的材料
+0x167ca30	continue-building checkbox; both states	0x16972d6	checkbox	Keep building after placement	放置后继续建造
+0x167ca30	track-stop position selector	0x169a3d5	heading	Click a tile to position the stop.	点击地格放置轨道站点。
+0x167ca30	remembered-material formatter 0x12b6a70; separate name row	0x16971cc	material value	{material/item name}	existing complete material/item grammar

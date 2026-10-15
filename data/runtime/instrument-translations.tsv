@@ -3,9 +3,10 @@
 # m=material, f=string material, c=count, r=pitch band, t=timbre, z=size, d=shape,
 # p=phrase, v=verb, s=sentence.
 # Existing piece terminology migrated from translate_embark_instrument_item.
-# Generator evidence: Linux 53.16 dwarfort rodata 0x1d41279..0x1d464b0.
-piece	pump	气泵
-piece	pumps	气泵
+# Generator evidence: data/extracted/instrument-descriptions/elf-decompiled.c;
+# Linux 53.16 writer 0x1346520, range 0x13429d0, registers 0x1345a40.
+piece	pump	水泵
+piece	pumps	水泵
 piece	bellows	风箱
 piece	bells	音铃
 piece	string	琴弦
@@ -172,6 +173,7 @@ c	a	1
 c	an	1
 c	a single	1
 c	single	1
+c	zero	0
 c	one	1
 c	two	2
 c	three	3
@@ -264,9 +266,13 @@ p	a {p1}	{p1}
 p	an {p1}	{p1}
 p	the {p1}	{p1}
 p	{c1} main strings	{c1}根主弦
+p	{c1} {f1} main strings	{c1}根{f1}主弦
 p	{c1} strings	{c1}根琴弦
+p	{c1} {f1} strings	{c1}根{f1}琴弦
 p	{c1} pipes	{c1}根音管
+p	{c1} {m1} pipes	{c1}根{m1}音管
 p	{c1} bells	{c1}个音铃
+p	{c1} {m1} bells	{c1}个{m1}音铃
 p	{c1} {p1}	{c1}个{p1}
 # Resolve the complete bore construction before generic modifier sequences.
 # Keep the interior shape separate from the instrument's material and size.
@@ -362,6 +368,8 @@ s	the instrument has a single {r1} pitch	乐器只能发出一个{r1}音
 s	the instrument has less than an octave of range, with {r1} pitch	乐器的音域跨度不足一个八度，音高为{r1}音
 s	the instrument has a {c1} octave range going from {r1} to {r2} pitch	乐器的音域跨度为{c1}个八度，从{r1}音至{r2}音
 s	the instrument has an {c1} octave range going from {r1} to {r2} pitch	乐器的音域跨度为{c1}个八度，从{r1}音至{r2}音
+s	the instrument has a {c1} octave range with {r1} pitch	乐器的音域跨度为{c1}个八度，位于{r1}音高区间
+s	the instrument has an {c1} octave range with {r1} pitch	乐器的音域跨度为{c1}个八度，位于{r1}音高区间
 s	the instrument has a {c1}-octave range going from {r1} to {r2} pitch	乐器的音域跨度为{c1}个八度，从{r1}音至{r2}音
 s	the instrument has an {c1}-octave range going from {r1} to {r2} pitch	乐器的音域跨度为{c1}个八度，从{r1}音至{r2}音
 s	the instrument produces a complex sound that cannot be said to be of a single pitch	乐器发出的声音复杂，没有单一确定的音高
@@ -377,7 +385,7 @@ p	{p1}, fitted with free reeds	装有自由簧的{p1}
 p	wind instrument through which constant air flow is maintained by use of a {p1} bag, itself supplied by a {p2}	管乐器，使用{p1}气囊维持稳定气流，并通过{p2}向气囊供气
 p	{p1} which uses a {m1} bellows to send air over interior reeds	{p1}，用{m1}风箱使气流吹过内部簧片
 p	{p1} which uses a {m1} bellows to pressurize air, ultimately blowing it through any of {p2}	{p1}，用{m1}风箱压缩空气，并将气流送入{p2}
-p	{p1} which uses a {m1} pump to send water into a chamber, ultimately supplying air to blow through any of {p2}	{p1}，用{m1}气泵向腔室注水，从而供气吹响{p2}
+p	{p1} which uses a {m1} pump to send water into a chamber, ultimately supplying air to blow through any of {p2}	{p1}，用{m1}水泵向腔室注水，从而供气吹响{p2}
 # Free-reed keyboard instruments use an independent playing sentence, not
 # the relative clause used by the pumped/pressurized pipe branches.
 # Linux 53.16: 0x134f7fe appends ".  The musician uses a ", then the
@@ -422,7 +430,7 @@ p	by pressing valves to route air through different tubes	按下活塞，使气�
 p	by pressing valves to route air through different tube	按下活塞，使气流通过不同的音管
 s	{s1} and can also press keys to stop holes	{s1}，也可以按键闭合音孔
 s	{s1} and can also stop holes	{s1}，也可以按住音孔
-# Additional complete generator branches found in manual hover captures.
+# Additional complete generator branches from the native stored-description writer.
 # Musical components are not jewelry rings or construction/metal stock bars.
 piece	ring	音环
 piece	rings	音环

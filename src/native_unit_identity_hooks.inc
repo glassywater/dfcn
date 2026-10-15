@@ -240,6 +240,33 @@ static void capture_native_unit_identity_english_name(const void *name,
     capture_native_unit_identity_name_fields(name, output);
 }
 
+// The Companions historical-figure branch bypasses all unit formatters.
+// Capture its selected language_name before the caller copies and clips it.
+static void capture_native_companion_english_name(const void *name,
+        NativeString *output, bool first, bool second) {
+    NativeInputCallbackScope callback;
+    callback.call_native([&] {
+        g_native_unit_identity_hooks.english_name(name, output, first, second);
+    });
+    try {
+        std::string_view source;
+        if (!g_overlay.translation_enabled() ||
+                !native_string_view(output, &source, 262144) || source.empty()) return;
+        NativeUnitIdentity snapshot;
+        std::array<int32_t, 7> indices;
+        if (!capture_native_history_name(g_native_unit_identity_hooks.base,
+                reinterpret_cast<uintptr_t>(name), snapshot.name, &indices)) return;
+        snapshot.native_name_words_valid = capture_native_unit_identity_name_words(
+            reinterpret_cast<uintptr_t>(name), snapshot.name,
+            snapshot.native_name_words, &indices);
+        snapshot.native_name.assign(source);
+        snapshot.form = NativeUnitIdentityForm::NameOnly;
+        snapshot.english_name = true;
+        publish_native_unit_identity_snapshot(std::move(snapshot),
+            reinterpret_cast<uintptr_t>(output), std::string(source), 0, true);
+    } catch (...) {}
+}
+
 // Only the verified pet naming response calls this wrapper. Its English
 // formatter still supplies a typed language_name, including authored names.
 static void capture_native_announcement_pet_english_name(const void *name,

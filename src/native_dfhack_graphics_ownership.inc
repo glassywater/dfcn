@@ -23,6 +23,7 @@ class NativeDfhackDisplayOwnershipScope {
     graphicst *previous_view_ = nullptr, *previous_selector_ = nullptr;
     graphicst *inputs_ = nullptr;
     graphicst nested_inputs_{};
+    int16_t initial_force_full_display_ = 0;
     std::optional<NativeDfhackLayerRendererGrid> renderer_grid_;
     bool committed_ = false;
 public:
@@ -60,6 +61,7 @@ public:
         if (preceding && inputs_->screentexpos_refresh_buffer == refresh_buffer &&
                 inputs_->dimx == dimx && inputs_->dimy == dimy)
             inputs_->refresh_buffer_val = refresh;
+        initial_force_full_display_ = inputs_->force_full_display_count;
         previous_selector_ = native_dfhack_display_inputs_select(inputs_);
         g_native_graphics_read_view = inputs_;
         renderer_grid_.emplace(renderer, *inputs_, false);
@@ -74,7 +76,8 @@ public:
         // A busy update never makes SDL wait for scheduling feedback. Its
         // next writer transaction drains these scalar requests itself.
         native_dfhack_queue_render_schedule(
-            inputs_->refresh_buffer_val, inputs_->force_full_display_count);
+            inputs_->refresh_buffer_val, inputs_->force_full_display_count,
+            initial_force_full_display_);
         std::unique_lock<std::recursive_mutex> writer(
             g_native_dfhack_layer_mutex, std::try_to_lock);
         if (writer.owns_lock()) {
@@ -100,10 +103,19 @@ static void native_dfhack_graphics_display(void *renderer) {
     const auto original = reinterpret_cast<void (*)(void *)>(
         g_native_dfhack_graphics_display_entry.original);
     if (!original) return;
+    if (g_native_process_exiting.load(std::memory_order_acquire)) {
+        callback.call_native([&] { original(renderer); });
+        return;
+    }
+    // Pin the input header only after the producer's translation transaction
+    // has finished. Waiting after that copy could pair its previous screen
+    // pointers with newly published map/text-layer ownership below.
+    // Header pinning and scheduling feedback only try the writer lock; a busy
+    // producer therefore cannot create a T -> M blocking lock inversion.
+    TranslationStateScope translation;
     NativeDfhackDisplayOwnershipScope ownership(renderer);
     if (!ownership.valid()) return;
     {
-        TranslationStateScope translation;
         struct OverlayReadScope {
             graphicst *previous = g_overlay.bind_render_graphics(native_graphics());
             ~OverlayReadScope() { g_overlay.bind_render_graphics(previous); }
@@ -147,6 +159,12 @@ static void native_dfhack_graphics_resize(void *renderer, int32_t dimx,
         int32_t, int32_t, int32_t, int32_t)>(
         g_native_dfhack_graphics_resize_entry.original);
     if (!original) return;
+    if (g_native_process_exiting.load(std::memory_order_acquire)) {
+        callback.call_native([&] {
+            original(renderer, dimx, dimy, pixel_x, pixel_y, tile_x, tile_y);
+        });
+        return;
+    }
     NativeDfhackGraphicsOwnershipScope ownership;
     callback.call_native([&] {
         original(renderer, dimx, dimy, pixel_x, pixel_y, tile_x, tile_y);
@@ -158,6 +176,10 @@ static void native_dfhack_graphics_zoom(void *graphics, int32_t factor) {
     const auto original = reinterpret_cast<void (*)(void *, int32_t)>(
         g_native_dfhack_graphics_zoom_entry.original);
     if (!original) return;
+    if (g_native_process_exiting.load(std::memory_order_acquire)) {
+        callback.call_native([&] { original(graphics, factor); });
+        return;
+    }
     NativeDfhackGraphicsOwnershipScope ownership;
     callback.call_native([&] { original(graphics, factor); });
 }
@@ -167,6 +189,10 @@ static void native_dfhack_graphics_release(void *renderer) {
     const auto original = reinterpret_cast<void (*)(void *)>(
         g_native_dfhack_graphics_release_entry.original);
     if (!original) return;
+    if (g_native_process_exiting.load(std::memory_order_acquire)) {
+        callback.call_native([&] { original(renderer); });
+        return;
+    }
     NativeDfhackGraphicsOwnershipScope ownership;
     callback.call_native([&] { original(renderer); });
 }

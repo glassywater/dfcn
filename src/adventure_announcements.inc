@@ -142,15 +142,15 @@
                     identity = exact_literal_translation("Somebody");
                 constexpr std::array<std::string_view, 3> summaries = {
                     "{n} is fighting!", "{n} is sparring.", "{n} is hunting."};
-                if (identity && paragraph.category >= 0 && paragraph.category < 3)
-                    for (int index : ui_message_template_rules_) {
-                        const auto &rule = rules_[static_cast<size_t>(index)];
-                        if (rule.source != summaries[paragraph.category]) continue;
+                if (identity && paragraph.category >= 0 && paragraph.category < 3) {
+                    const auto found = ui_message_template_sources_.find(summaries[paragraph.category]);
+                    if (found != ui_message_template_sources_.end()) {
+                        const auto &rule = rules_[static_cast<size_t>(found->second)];
                         const std::vector<std::optional<std::string>> resolved{identity};
                         target = fill_template(rule, {paragraph.name_source}, nullptr,
                             nullptr, &resolved);
-                        break;
                     }
+                }
                 // 40e48d..40e50e has a real default branch: the unit
                 // caption is followed by " is " with no status appended.
                 // Chinese has no corresponding empty copula; retain the

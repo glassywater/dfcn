@@ -41,16 +41,21 @@ public:
         catch (...) { stopping_ = true; return false; }
         return true;
     }
-    void stop() noexcept {
+    void request_stop() noexcept {
         {
             std::lock_guard<std::mutex> lock(mutex_);
             stopping_ = true;
+        }
+        ready_.notify_all();
+    }
+    void stop() noexcept {
+        request_stop();
+        {
+            std::lock_guard<std::mutex> lock(mutex_);
             jobs_.clear();
             keyed_.clear();
         }
-        ready_.notify_all();
-        // The caller detaches capture callbacks first and holds no translation
-        // lock while joining a dictionary operation already in progress.
+        // Hold no translation lock while joining an owned dictionary operation.
         if (worker_.joinable()) worker_.join();
     }
     bool queue(std::function<void()> run, std::string key) {

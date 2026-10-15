@@ -4969,6 +4969,8 @@ the bestowal of the title of {s} in {p} after participating in {d} battles, slay
 {a} received the title of {s} in {p} after participating in {d} battles, slaying {d} enemies, and {d} years of membership within {p}.	{a1}在{p2}参加{d1}场战斗、杀死{d2}名敌人及拥有{d3}年会龄后，获得了{p1}的{s1}头衔。	ht
 A caravan from {e} has arrived. The presence of your ruler has attracted great riches. Overall trade sentiments are tenuous at best.	来自{e1}的商队已抵达。你的统治者在此坐镇，吸引来了巨额财富。总体贸易意愿至多只能算勉强。	hPt
 A large, pale rodent with loose, hanging, hairless skin. It has long teeth and an incredibly powerful bite. It is found underground.	一种大型、苍白的啮齿动物，皮肤松弛、下垂、无毛。它有很长的牙齿，咬起来非常有力。它是在地底发现的。	lP
+Announcement combat adventure-announcement [$announcement-building,announcement-bearing]: You've located a {s} above and to the {s}!	你发现上方的{s2}有一处{s1}！	l
+Announcement combat adventure-announcement [$announcement-building,announcement-bearing]: You've located a {s} below and to the {s}!	你发现下方的{s2}有一处{s1}！	l
 Announcement combat adventure-announcement []: Certainly. It would be terrible to leave someone to fend for themselves after sunset.	当然。日落之后，让人独自在外面自生自灭就太糟了。	l
 Announcement combat adventure-announcement []: Migrants were too nervous to make the journey this season to this miserable fortress.	本季移民因太过害怕，未敢踏上前往这座悲惨要塞的旅途。	l
 Announcement combat agreement-core [agreement-party-list,agreement-party-list,$name,$name]: {s} joined with {s} to oust {s} from {s}	{s1}与{s2}同行，将{s3}逐出{s4}	l
@@ -6245,6 +6247,7 @@ A caravan from {e} has arrived. The presence of your ruler has attracted great r
 A huge monster with an enormous tail, covered with thick fur. They run on four legs and can be found deep under the earth.	一个巨大的怪物，有一条巨大的尾巴，覆盖着厚厚的毛皮。它们用四条腿跑步，可以在地底深处找到。	lP
 A tiny arthropod that walks tilted upright on two large legs. Six spined projections radiate outward from its head shield.	一种微小的节肢动物，靠两条粗大的腿斜立行走。六根带刺的突起从它的头甲向四周伸展。	lP
 Although this location is relatively safe, it is recommended that you prepare a squad and get them training at some point.	虽然这里比较安全，仍然建议你在适当时候组建小队并开始训练。	hq
+Announcement combat adventure-announcement [$announcement-building,announcement-bearing]: You've located a {s} to the {s}!	你发现{s2}有一处{s1}！	l
 Announcement combat agreement-core [$name]: made an agreement with , becoming a resident of {s} to entertain the citizenry	与达成协议，成为{s1}的居民，以便为居民表演	l
 Announcement combat agreement-core [$office,$name]: began passing a portion of corruptly-obtained funds as a {s} of {s} to	以{s2}的{s1}身份开始将部分非法所得转交给	l
 Announcement combat agreement-core [agreement-party-list,agreement-party-list,$name]: {s} joined with {s} to oust {s} from	{s1}与{s2}同行，协助驱逐{s3}	l
@@ -6801,6 +6804,7 @@ Announcement combat agreement-title-core [agreement-party-list,$travel-site]: th
 Announcement combat agreement-title-core [agreement-party-list,$travel-site]: the joining of {s} with to oust from {s}	{s1}与同行，协助驱逐{s2}的势力	l
 Announcement combat conversation-conflict-group [conversation-conflict-caste,conversation-conflict-entity]: {s} of {s}	{s2}的{s1}	l
 Announcement combat inscription [$person,$person]: I am {s}, {s}, once of the Underworld. I bind myself to this place.	我是{s1}，又名{s2}，曾来自地下世界。我将自身束缚于此地。	l
+Announcement combat memory-possession-core [memory-person,agreement-item,memory-person]: {s} would not give {s} to {s}	{s1}不肯把{s2}交给{s3}	l
 Announcement combat quest-sentence [quest-object,$name]: It would be wonderful if {s} found a lasting home within {s}.	若能让{s1}长久地留在{s2}，那就再好不过了。	l
 Announcement combat sentence [$name,dialogue-family,$unit]: I'm going to {s} to move into my new home with my {s} {s}.	我正前往{s1}，与我的{s2}{s3}搬入我们的新家。	l
 Announcement combat sentence [$travel-site]: The village {s} is the only other settlement to utilize the market there.	只有{s1}这座村庄也去那里赶集。	l
@@ -8328,6 +8332,8 @@ A huge, predatory reptile with pale, colorless scales and red eyes. It lives in 
 Affects all spoken performances, from poetry recitals to preaching to storytelling to certain musical forms.	影响所有口头表演，包括诗歌朗诵、布道、讲故事和某些音乐形式。	w
 An evil monster from the swamp. It resembles a knot of waterlogged weeds but will strike the unaware victim.	一个来自沼泽地的邪恶怪物。它就像一结积水的杂草，会袭击不知情的受害者。	lP
 Announcement combat activity-detail-position [activity-detail-section,activity-detail-position]: {s} and {s}	{s1}和{s2}	l
+Announcement combat adventure-announcement [$announcement-building]: You've located a {s} above and to the !	你发现正上方有一处{s1}！	l
+Announcement combat adventure-announcement [$announcement-building]: You've located a {s} below and to the !	你发现正下方有一处{s1}！	l
 Announcement combat adventure-announcement []: A dark, menacing cloud towers above you, crowned by an anvil.	一团阴暗而险恶的云高耸在你头顶，顶部呈铁砧状。	l
 Announcement combat adventure-announcement []: A migrant has decided to brave this terrifying unhappy place.	一名移民决定勇闯这个恐怖而不幸的地方。	l
 Announcement combat adventure-announcement []: I'd just as soon not have anything too exciting happen today.	我倒希望今天别发生什么太刺激的事。	l
@@ -8637,6 +8643,7 @@ the bestowal of the title of {s} in {p} after slaying {d} enemies and {d} years 
 A huge emaciated-looking bear with great drooping ears and many sharp teeth. It is found deep underground.	一种长着大垂耳和许多尖牙的，体形消瘦的巨熊。被发现于深层地底。	lP
 A small carnivorous animal found in temperate climates. It has orange fur and is known for its cleverness.	一种生活在温带的小型食肉动物。它有橙色的皮毛，以聪明著称。	lP
 Although my own insignificant beliefs lie elsewhere, we can both agree you are by far the most persuasive!	虽说我有点不值一提的不同看法，但我们都承认，你的说服力远胜众人！	hP
+Announcement combat adventure-announcement [$announcement-building]: You've located a {s} right under you!	你发现脚下就有一处{s1}！	l
 Announcement combat adventure-announcement [$announcement-item]: {s} has been moved from its proper place!	{s1}被移离了原本的位置！	l
 Announcement combat adventure-announcement []: I'll need to see something impressive before I consider it.	你得先拿出点真本事，我才会考虑。	l
 Announcement combat adventure-announcement []: Sometimes I think I need a drink, but I can control myself.	有时我觉得该喝一杯，但我能克制自己。	l
@@ -9537,6 +9544,7 @@ Announcement combat justice-interrogation-response []: had a distrustful nature 
 Announcement combat justice-intrigue-relationship-factor [justice-intrigue-actor]: loyalty toward {s}	忠于{s1}	l
 Announcement combat memory-sentence [$name]: I have performed the rites of {s} in this dubious place.	在这不太像样的地方参加了{s1}的仪式。	l
 Announcement combat memory-sentence [$name]: The agreement to establish a temple for {s} was ignored.	说好为{s1}建神殿，却没人管了。	l
+Announcement combat memory-sentence [memory-person,memory-entity]: {s} refused to give a name to {s}.	{s1}不肯向{s2}透露自己的名字。	l
 Announcement combat memory-sentence [memory-person,memory-person]: {s} escalated a conflict with {s}.	{s1}跟{s2}闹得更厉害了。	l
 Announcement combat negotiation-response []: made several jokes of their own and dismissed the matter	也讲了几个笑话，便把正事抛在一边	l
 Announcement combat rumor-event [$name]: I hear that a group from {s} left to found a new settlement.	听说一群来自{s1}的人出发去建立新的定居点了。	l
@@ -10159,6 +10167,7 @@ Announcement combat site-rumor-event [$name,$travel-site]: {s} gave up on their 
 Announcement combat site-rumor-event [site-rumor-person,$travel-site]: {s} was kidnapped from {s}.	{s1}在{s2}被绑架了。	l
 Announcement combat travel-role-main [travel-squad-role,$travel-site]: You are a {s} based in {s}.	你是一名{s1}，驻地在{s2}。	l
 As the guild grows in power they may demand a Guildhall of greater value. This can be increased by	[C:7:0:0]随着行会势力增长，他们可能要求提高[C:1:0:1]行会大厅[C:7:0:0]的价值。你可以通过	hq
+DFHack GUI Confirmation prompt: Are you sure you want to convict {n}? This action is irreversible.	确定要将{n}定罪吗？此操作无法撤销。	l
 DFHack GUI Journal tutorial: Welcome to gui/journal, the adventurer's notebook for Dwarf Fortress!	欢迎使用 gui/journal，这里是《矮人要塞》的冒险笔记！	l
 DFHack GUI Notification settings: Reports missing nemesis records, indicating savegame corruption.	报告缺失的人物关联记录，提示存档可能损坏。	l
 DFHack help: "--all" Selects all units. This is the default if no selection options are specified.	"--all" 选择所有单位。如果未指定选择选项，则这是默认值。	l
@@ -10354,7 +10363,6 @@ Announcement combat justice-interrogation-sentence [justice-interrogation-respon
 Announcement combat justice-intrigue-relationship-factor [justice-intrigue-actor]: respect of {s}	尊重{s1}	l
 Announcement combat memorial-inscription [memorial-name,memorial-clauses]: In memory of {s} / {s}	谨以此纪念{s1}／{s2}	l
 Announcement combat memory-performance-core [memory-performance-work]: I saw a performance of {s}	我看了一场{s1}的表演	l
-Announcement combat memory-possession-core [memory-person,agreement-item]: {s} would not give {s}	{s1}不肯交出{s2}	l
 Announcement combat memory-possession-core [memory-person,memory-transfer-object]: {s} placed {s}	{s1}放下了{s2}	l
 Announcement combat memory-sentence [$creature,memory-work,$name]: I saw a {s} recite {s} at {s}.	我看到一名{s1}在{s3}朗诵《{s2}》。	l
 Announcement combat memory-sentence [memory-exhibit]: I saw {s} on display in my personal museum.	在自己的博物馆里看到了展出的{s1}。	l
@@ -11086,6 +11094,8 @@ Announcement combat justice-intrigue-relationship-factor [justice-intrigue-actor
 Announcement combat justice-intrigue-response [justice-intrigue-actor]: agreed for love of {s}	出于对{s1}的爱而答应了	l
 Announcement combat justice-intrigue-response [justice-intrigue-actor]: trusted {s} and agreed	信任{s1}，因而答应了	l
 Announcement combat memory-sentence [$person]: I have communed with {s} in this dubious place.	在这不太像样的地方跟{s1}沟通过了。	l
+Announcement combat memory-sentence [memory-entity]: Somebody refused to name themself to {s}.	有人不肯向{s1}透露自己的名字。	l
+Announcement combat memory-sentence [memory-person,memory-entity]: {s} self-identified to {s}.	{s1}向{s2}报上了自己的名字。	l
 Announcement combat negotiation-response []: negotiated eloquently in turn and had the mastery	也凭口才谈判，并占据了上风	l
 Announcement combat negotiation-response []: negotiated forcefully in turn and had the mastery	也强硬地谈判，并占据了上风	l
 Announcement combat negotiation-response []: negotiated with discernment but was outmaneuvered	审时度势地谈判，却被对方胜过一筹	l
@@ -11306,7 +11316,8 @@ Announcement combat journal-performance-core [memory-story]: Your telling of the
 Announcement combat justice-interrogation-relationship-factor []: loyalty toward interrogator	忠于审讯者	l
 Announcement combat justice-intrigue-response [justice-intrigue-actor]: hated {s} and refused	憎恨{s1}，因而拒绝了	l
 Announcement combat memory-performance-core [memory-person,memory-poem]: I saw {s} recite {s}	我听{s1}朗诵了{s2}	l
-Announcement combat memory-sentence [memory-person,$name]: {s} refused to give a name to {s}.	{s1}不肯向{s2}透露自己的名字。	l
+Announcement combat memory-possession [memory-possession-core,memory-location]: {s} in in {s}	在{s2}，{s1}	l
+Announcement combat memory-possession [memory-possession-core,memory-location]: {s} in {s} in	在{s2}，{s1}	l
 Announcement combat negotiation-recipient [$historical-actor,$office,$name]: {s}, {s} of {s},	{s3}的{s2}{s1}	l
 Announcement combat negotiation-response []: negotiated lightly in turn but was outmaneuvered	也轻松地谈判，却被对方胜过一筹	l
 Announcement combat rumor-event [$book,$name,$travel-site]: I hear that {s} is in {s} in {s}.	听说{s1}在{s2}的{s3}里。	l
@@ -12461,6 +12472,7 @@ Announcement combat justice-interrogation-response []: was swayed by the emotion
 Announcement combat justice-intrigue-actor [justice-intrigue-actor,$unit]: {s}, as "{s}",	{s1}以“{s2}”的身份	l
 Announcement combat justice-intrigue-actor [justice-intrigue-actor]: childhood friend {s}	童年好友{s1}	l
 Announcement combat memory-sentence [$name]: The guildhall petition for {s} was rejected.	为{s1}建公会大厅的申请被拒绝了。	l
+Announcement combat memory-sentence [memory-entity]: You refused to name yourself to {s}.	你不肯向{s1}透露自己的名字。	l
 Announcement combat memory-sentence [memory-ghost-action,memory-ghost]: I was {s} by {s}.	我被{s2}{s1}。	l
 Announcement combat memory-sentence [memory-relation]: I was attacked by my own dead {s}.	我死去的{s1}竟然袭击了我。	l
 Announcement combat negotiation-response []: negotiated deceptively but was outmaneuvered	用欺骗手段谈判，却被对方胜过一筹	l
@@ -13326,10 +13338,8 @@ Announcement combat justice-intrigue-response []: spurned the law and agreed wil
 Announcement combat memorial-clause [$creature,$memorial-actor]: Slayer of the {s} {s}	斩杀{s1}·{s2}者	l
 Announcement combat memorial-death [memorial-possessive]: Burned up in {s} dragon fire	被{s1}的龙焰焚毁	l
 Announcement combat memory-possession-core [memory-person,agreement-item]: {s} had {s}	{s1}拥有{s2}	l
-Announcement combat memory-sentence [$name]: Somebody refused to name themself to {s}.	有人不肯向{s1}透露自己的名字。	l
 Announcement combat memory-sentence [$name]: The temple petition for {s} was rejected.	为{s1}建神殿的申请被拒绝了。	l
 Announcement combat memory-sentence [memory-offspring]: I have become a parent of {s}.	我有{s1}了。	l
-Announcement combat memory-sentence [memory-person,$name]: {s} self-identified to {s}.	{s1}向{s2}报上了自己的名字。	l
 Announcement combat memory-sentence [memory-person,memory-crime]: {s} perpetrated {s}.	{s1}犯下了{s2}。	l
 Announcement combat memory-sentence [memory-person,memory-person]: {s}, slayer of {s}.	{s1}，就是杀死{s2}的那个。	l
 Announcement combat negotiation-response []: negotiated eloquently and had the mastery	凭口才谈判，并占据了上风	l
@@ -13966,9 +13976,11 @@ Announcement combat justice-interrogation-crime []: the export prohibition viola
 Announcement combat justice-interrogation-unit [justice-interrogation-sentence]: {s}	{s1}	l
 Announcement combat memory-performance-core [memory-sermon-topic]: I preached on {s}	我讲了关于{s1}的道理	l
 Announcement combat memory-performance-core [memory-story]: Thestory of {s} was told	有人讲了{s1}的故事	l
+Announcement combat memory-sentence [memory-entity]: Somebody named themself to {s}.	有人向{s1}报上了自己的名字。	l
 Announcement combat memory-sentence [memory-knowledge]: I just don't understand {s}.	就是弄不懂{s1}。	l
 Announcement combat memory-sentence [memory-person,memory-crime]: {s} attempted {s}.	{s1}企图犯下{s2}。	l
 Announcement combat memory-sentence [memory-person,memory-person]: {s} attacked {s}.	{s1}袭击了{s2}。	l
+Announcement combat memory-sentence [memory-person]: {s} refused to give a name to .	{s1}不肯向名称未记载的一方透露自己的名字。	l
 Announcement combat negotiation-response []: made a persuasive argument of their own	也提出了有说服力的论点	l
 Announcement combat negotiation-response []: negotiated calmly but was outmaneuvered	冷静地谈判，却被对方胜过一筹	l
 Announcement combat negotiation-sentence []: The proposal was a spectacular failure.	这项提案以惨败告终。	l
@@ -14630,6 +14642,7 @@ Announcement combat negotiation-opening []: calm any misgivings about the propos
 Announcement combat negotiation-response []: negotiated calmly and had the mastery	冷静地谈判，并占据了上风	l
 Announcement combat quest-sentence [quest-destination]: Last I saw, it was in {s}.	我最后见到它时，它在{s1}。	l
 Announcement combat quest-sentence [quest-holder]: Last I saw, it was held by {s}.	我最后见到它时，它由{s1}保管。	l
+Announcement combat read-announcement [ability]: You have learned the power "{s}"!	你学会了能力“{s1}”！	l
 Announcement combat rumor-event []: A marauding warband is threatening our people.	一支四处劫掠的战帮正威胁着我们的人民。	l
 Announcement combat rumor-event []: The forces of darkness have descended upon us.	黑暗势力已经杀到我们这里了。	l
 Announcement combat rumor-event [rumor-identity]: Seek this place if you hunt {s}.	想猎杀{s1}，就去找这个地方。	l
@@ -14996,7 +15009,6 @@ Announcement combat justice-intrigue-revenge-target [justice-intrigue-actor]: {s
 Announcement combat memorial-clause [memorial-death,$digits]: {s} in the year {s}	于{s2}年{s1}	l
 Announcement combat memory-performance-core [memory-poem]: I saw a recital of {s}	我听了{s1}的朗诵	l
 Announcement combat memory-reunion [memory-reunion-core]: {s} due to your efforts	多亏你帮忙，{s1}	l
-Announcement combat memory-sentence [$name]: You refused to name yourself to {s}.	你不肯向{s1}透露自己的名字。	l
 Announcement combat memory-sentence [memory-furniture]: I was near to my own {s}.	靠近过自己的{s1}。	l
 Announcement combat memory-sentence [memory-knowledge]: I've been discussing {s}.	最近在跟人讨论{s1}。	l
 Announcement combat memory-sentence [memory-person]: I can't believe {s} is dead.	真不敢相信，{s1}死了。	l
@@ -15694,6 +15706,7 @@ Announcement combat justice-intrigue-actor [justice-intrigue-actor]: spouse {s}	
 Announcement combat justice-intrigue-factor [justice-interrogation-factor]: {s}	{s1}	l
 Announcement combat justice-intrigue-paragraph [justice-intrigue-sentence]: {s}	{s1}	l
 Announcement combat memory-sentence [$name]: I have performed the rites of {s}.	参加了{s1}的仪式。	l
+Announcement combat memory-sentence [memory-entity]: You named yourself to {s}.	你向{s1}报上了自己的名字。	l
 Announcement combat memory-sentence [memory-value-insight]: I am awoken to {s}.	我领悟到了{s1}。	l
 Announcement combat negotiation-opening []: negotiate amidst light conversation	在轻松的闲谈中谈判	l
 Announcement combat negotiation-opening []: negotiate, keeping a sense of humor	以幽默的方式谈判	l
@@ -16033,6 +16046,7 @@ Announcement combat journal-event-title [journal-person-event]: Somebody's {s}	�
 Announcement combat justice-intrigue-actor [justice-intrigue-actor]: lover {s}	爱人{s1}	l
 Announcement combat memorial-clause [$office,$name,$digits]: {s} of {s} in {s}	{s3}年担任{s2}的{s1}	l
 Announcement combat memory-possession-core [agreement-item]: {s} was destroyed	{s1}被毁掉了	l
+Announcement combat memory-sentence []: Somebody refused to name themself to .	有人不肯向名称未记载的一方透露自己的名字。	l
 Announcement combat negotiation-opening []: use humor to disarm their opponent	用幽默打消对方的戒心	l
 Announcement combat negotiation-response []: spun a web of deceit of their own	也编织了一张谎言之网	l
 Announcement combat negotiation-sentence []: The proposal was a great success.	这项提案大获成功。	l
@@ -16394,6 +16408,7 @@ Announcement combat justice-plot [justice-plot-attempted,$digits]: {s} in {s}	{s
 Announcement combat memorial-death [$creature]: Burned to death by a {s} fire	被一只{s1}的火焰烧死	l
 Announcement combat memory-sentence [memory-person]: I am separated from {s}.	我跟{s1}分开了。	l
 Announcement combat memory-sentence [memory-person]: I was reunited with {s}.	我跟{s1}重逢了。	l
+Announcement combat memory-sentence [memory-person]: {s} self-identified to .	{s1}向名称未记载的一方报上了自己的名字。	l
 Announcement combat negotiation-response []: negotiated but was outmaneuvered	展开谈判，却被对方胜过一筹	l
 Announcement combat negotiation-sentence []: The proposal was not successful.	这项提案未能成功。	l
 Announcement combat negotiation-speaker [$historical-actor,$name]: {s} of {s}	{s2}的{s1}	l
@@ -16786,7 +16801,6 @@ Announcement combat justice-interrogation-factor []: being unafraid of death	不
 Announcement combat justice-interrogation-response []: was overcome by greed	被贪欲压倒了	l
 Announcement combat justice-intrigue-response []: valued the law and refused	重视法律，因而拒绝了	l
 Announcement combat memorial-death []: Died after colliding with an obstacle	撞上障碍物而死	l
-Announcement combat memory-sentence [$name]: Somebody named themself to {s}.	有人向{s1}报上了自己的名字。	l
 Announcement combat memory-sentence [$name]: There was a performance in {s}.	{s1}办了场表演。	l
 Announcement combat memory-sentence [memory-furniture]: I was near to a {s}.	靠近过一个{s1}。	l
 Announcement combat memory-sentence [memory-knowledge]: I learned about {s}.	学到了关于{s1}的知识。	l
@@ -17962,6 +17976,8 @@ Announcement combat justice-plot-core [$office,$name]: Corrupt {s} of {s}	拉拢
 Announcement combat memorial-clause [$memorial-material]: At one with {s}	与{s1}合而为一	l
 Announcement combat memorial-clause [$memorial-material]: United with {s}	与{s1}融为一体	l
 Announcement combat memorial-death []: Crushed under a collapsing ceiling	被坍塌的天花板压死	l
+Announcement combat memory-possession [memory-possession-core]: {s} in in	{s1}（地点未记载）	l
+Announcement combat memory-sentence []: You refused to name yourself to .	你不肯向名称未记载的一方透露自己的名字。	l
 Announcement combat memory-sentence [agreement-item]: {s} was given away.	{s1}被送人了。	l
 Announcement combat memory-value-insight [memory-value]: the value of {s}	{s1}的价值	l
 Announcement combat reference-building [reference-building-type]: the {s}	{s1}	l
@@ -18367,6 +18383,7 @@ Announcement combat justice-plot-core [$name]: Start War between and {s}	挑起�
 Announcement combat justice-plot-core [$name]: Start War between {s} and	挑起涉及{s1}的战争	l
 Announcement combat memorial-clause [$memorial-artifact]: Creator of {s}	{s1}的创作者	l
 Announcement combat memorial-clause [memorial-liked-value]: Lover of {s}	喜爱{s1}	l
+Announcement combat memory-performance [memory-performance-core]: {s} at	{s1}（演出地点未记载）	l
 Announcement combat memory-performance-core [memory-poem]: I recited {s}	我朗诵了{s1}	l
 Announcement combat memory-sentence [$person]: I have communed with {s}.	跟{s1}沟通过了。	l
 Announcement combat memory-sentence [memory-person]: {s} and I broke up.	我跟{s1}分手了。	l
@@ -18715,6 +18732,7 @@ A small, squat humanoid with large pointy ears and yellow glowing eyes.	一个�
 A tiny, brightly colored parrot. They are clever and learn many tricks.	一种小型的彩色鹦鹉。它们非常聪明且能学习很多把戏。	lP
 A {s} caravan from {e} has arrived. Overall trade sentiments are great.	来自{e1}的{s1}商队已抵达。总体贸易意愿很高。	hPt
 Adventure action: Give a sermon concerning a deity or object of worship	发表关于神祇或崇拜对象的布道	l
+Adventurer log agreement field: in order to be brought safely away from	以便被安全带离以下地点：	h
 After a long journey, you are here to meet your most trusted companion.	经过漫长的旅途，你来到这里与最信任的同伴会合。	hq
 Allies surrounding {a} raised their suspicions and the plan was foiled.	{a1}身边的盟友提出了怀疑，使计划落空。	ht
 Announcement combat adventure-announcement []: Do not take any chances.	不要冒险。	l
@@ -18762,7 +18780,6 @@ Announcement combat memorial-clause [memorial-death,$event]: {s} in {s}	在{s2}�
 Announcement combat memory-ghost [memory-relation]: the ghost of my {s}	我的{s1}的鬼魂	l
 Announcement combat memory-person [memory-relation,$person]: my {s} {s}	我的{s1}{s2}	l
 Announcement combat memory-sentence [$creature]: I was pestered by {s}.	被{s1}缠上了。	l
-Announcement combat memory-sentence [$name]: You named yourself to {s}.	你向{s1}报上了自己的名字。	l
 Announcement combat memory-sentence []: I put on a finely-crafted item.	穿上了一件做得很精致的衣物。	l
 Announcement combat memory-sentence []: I put on a truly splendid item.	穿上了一件品质好极了的衣物。	l
 Announcement combat memory-sentence [memory-knowledge]: I realized {s}.	我想明白了{s1}。	l
@@ -19233,6 +19250,7 @@ Announcement combat justice-interrogation-crime []: disorderly conduct	扰乱秩
 Announcement combat justice-interrogation-factor []: feelings of greed	怀有贪欲	l
 Announcement combat justice-interrogation-factor []: valuing the truth	重视真相	l
 Announcement combat justice-plot-core [$name]: Provide Position in {s}	提供{s1}的职位	l
+Announcement combat memory-possession [memory-possession-core]: {s} in	{s1}（地点未记载）	l
 Announcement combat memory-sentence [memory-knowledge]: I learned {s}.	学会了{s1}。	l
 Announcement combat memory-sentence [memory-person]: Oh, where is {s}?	唉，{s1}在哪里啊？	l
 Announcement combat merchant-origin [$name]: {s}, out to the northeast	东北方的{s1}	l
@@ -20206,6 +20224,7 @@ Announcement combat memorial-weapon-death []: Collapsed, struck down	遭击杀�
 Announcement combat memory-sentence [$name]: {s} will be recognized.	{s1}将得到认可。	l
 Announcement combat memory-sentence [$person]: I shall name you {s}.	就给你起名叫{s1}吧。	l
 Announcement combat memory-sentence [$term]: I have improved my {s}.	我的{s1}进步了。	l
+Announcement combat memory-sentence []: Somebody named themself to .	有人向名称未记载的一方报上了自己的名字。	l
 Announcement combat memory-sentence [memory-object]: I acquired {s}.	得到了{s1}。	l
 Announcement combat memory-sentence [memory-person]: I abducted {s}.	我绑走了{s1}。	l
 Announcement combat memory-sentence [memory-person]: I defeated {s}.	我打败了{s1}。	l
@@ -21742,6 +21761,7 @@ Announcement combat negotiation-opening []: negotiate deceptively	用欺骗手�
 Announcement combat negotiation-response []: spun a web of deceit	编织了一张谎言之网	l
 Announcement combat quest-sentence []: Last I heard, you held it.	我最后听说，它由你保管。	l
 Announcement combat quest-sentence []: Last I remember, I had it.	我记得最后是由我保管的。	l
+Announcement combat read-announcement [$read-item]: You read {s}.	你阅读了{s1}。	l
 Announcement combat reference-kind [reference-building-type]: {s}	{s1}	l
 Announcement combat rumor-event []: Seek this place if you hunt .	想猎杀这只身份不明的生物，就去找这个地方。	l
 Announcement combat sentence [$name,$name]: {s} has occupied {s}.	{s1}占领了{s2}。	l
@@ -22715,6 +22735,8 @@ A small, pale arthropod found in underground streams and ponds.	一种在地底�
 A tiny black bug that lacks a web but can leap short distances.	一种没有网但能短距离跳跃的小型黑虫。	lP
 A tiny blue-green oceanic fish, found only in temperate waters.	一种微小的蓝绿色海洋鱼类，只在温带水域发现。	lP
 A very large herbivorous quadrupedal dinosaur with a long neck.	一种体型很大、颈部修长的四足食草恐龙。	lP
+Adventurer log agreement field: agreed to entertain people with	同意与以下对象为众人表演：	h
+Adventurer log agreement field: wherever the journey might lead	无论旅途通向何方。	h
 After being interrogated by {a}, {a} implicated {a} during {e}.	在{e1}期间，经过{a1}审讯后，{a2}供出了{a3}。	ht
 After being interrogated by {a}, {a} implicated {a} within {p}.	在{p1}，经过{a1}审讯后，{a2}供出了{a3}。	ht
 After enduring an interrogation by {a}, {a} was released at {p}	在{p1}，忍受{a1}的审讯后，{a2}被释放了	ht
@@ -22775,9 +22797,11 @@ Announcement combat memorial-death [memorial-killer-death]: {s}	{s1}	l
 Announcement combat memorial-death [memorial-weapon-death]: {s}	{s1}	l
 Announcement combat memorial-possessive [$memorial-actor]: {s}'	{s1}	l
 Announcement combat memory-crime []: a conspiracy to slow labor	合谋怠工的罪	l
+Announcement combat memory-location []: the depths of the world	世界深处	l
 Announcement combat memory-relation []: animal training partner	一起训练的动物伙伴	l
 Announcement combat memory-sentence []: I got into an argument.	跟人吵了一架。	l
 Announcement combat memory-sentence []: I have become a parent.	我有孩子了。	l
+Announcement combat memory-sentence []: You named yourself to .	你向名称未记载的一方报上了自己的名字。	l
 Announcement combat memory-sentence [memory-object]: I saw {s}.	看到了{s1}。	l
 Announcement combat memory-sentence [memory-person]: Oh, {s}...	唉，{s1}……	l
 Announcement combat memory-sentence [memory-work]: I wrote {s}.	写了{s1}。	l
@@ -23367,6 +23391,7 @@ A very small amphibian with a wedge-shaped head and long tail.	一种很小的�
 A very small squat amphibian with a round tummy and long tail.	一种很小的矮壮两栖动物，腹部浑圆，尾巴修长。	lP
 ALLOW ALL REJECTS, even if I end up with a legends-only world!	允许所有拒绝，即使最终只能生成传说模式世界！	hP
 ALLOW ALL REJECTS, even if I end up with a legends-only world!	允许所有拒绝，即使最终只能生成传说模式世界！	l
+Adventurer log agreement field: Foiled Embezzlement Conspiracy	已挫败的挪用资金阴谋	h
 After being interrogated by {a}, {a} implicated {a} during {e}	在{e1}期间，经过{a1}审讯后，{a2}供出了{a3}	ht
 After being interrogated by {a}, {a} implicated {a} within {p}	在{p1}，经过{a1}审讯后，{a2}供出了{a3}	ht
 After enduring an interrogation, {a} was released in the wilds	在荒野中，忍受审讯后，{a1}被释放了	ht
@@ -23430,6 +23455,8 @@ Announcement combat memory-sentence [memory-performance]: {s}.	{s1}。	l
 Announcement combat memory-sentence [memory-work]: I read {s}.	读了{s1}。	l
 Announcement combat negotiation-opening []: argue persuasively	据理说服对方	l
 Announcement combat quest-sentence []: Last I heard, I had it.	我最后听说，它由我保管。	l
+Announcement combat read-announcement [$read-description]: {s}	{s1}	l
+Announcement combat read-announcement []: The pages are blank.	书页是空白的。	l
 Announcement combat reference-building-type []: counting house	账房	l
 Announcement combat rumor-identity-descriptor [$creature]: {s}	{s1}	l
 Announcement combat sentence [$announcement,$digits]: {s} x{s}	{s1} ×{s2}	l
@@ -24038,6 +24065,7 @@ A tiny snake with ridged scales and a powerful venomous bite.	一种有脊状鳞
 A towering herbivorous quadrupedal dinosaur with a long neck.	一种高耸如塔、颈部修长的四足食草恐龙。	lP
 A very large snake. It is amphibious and constricts its prey.	一条体型很大的蛇，能在水陆两栖生活，并会缠住猎物将其勒死。	lP
 Adventure action: Give a sermon concerning a cosmic principle	发表关于宇宙原理的布道	l
+Adventurer log agreement type: Foiled Embezzlement Conspiracy	已挫败的挪用资金阴谋	h
 Affects ability to spot and interpret tracks and other spoor.	影响发现和辨识足迹及其他踪迹的能力。	w
 After enduring an interrogation, {a} was released during {e}.	在{e1}期间，忍受审讯后，{a1}被释放了。	ht
 After enduring an interrogation, {a} was released within {p}.	在{p1}，忍受审讯后，{a1}被释放了。	ht
@@ -24113,6 +24141,7 @@ Announcement combat memorial-killer-verb []: Drained of blood	吸干血液	l
 Announcement combat memorial-killer-verb []: Hacked to pieces	砍成碎片	l
 Announcement combat memorial-weapon [$memorial-artifact]: {s}	{s1}	l
 Announcement combat memory-death []: was executed by drowning	被执行了溺刑	l
+Announcement combat memory-entity []: an unknown civilization	未知文明	l
 Announcement combat memory-reunion [memory-reunion-core]: {s}	{s1}	l
 Announcement combat memory-sentence [memory-possession]: {s}.	{s1}。	l
 Announcement combat memory-sermon-topic [work-reference]: {s}	{s1}	l
@@ -24709,6 +24738,7 @@ A small flat fish found on the muddy bottom of shallow seas.	在浅海泥泞的�
 A towering gray cloud descends from the white sky above you.	一团高耸的灰云从你头顶的白色天空中向下延伸。	hP
 A towering gray cloud descends from the white sky above you.	一团高耸的灰云从你头顶的白色天空中向下延伸。	hj
 A very large person with a spiky head frill and three horns.	一种体型很大的人形生物，头盾布满尖刺，另长有三根角。	lP
+Adventurer log agreement field: Foiled Corruption Conspiracy	已挫败的腐败阴谋	h
 Adventurer log reputation: greatly respected for heroic acts	因英雄之举而备受尊敬	h
 After enduring an interrogation, {a} was released during {e}	在{e1}期间，忍受审讯后，{a1}被释放了	ht
 After enduring an interrogation, {a} was released within {p}	在{p1}，忍受审讯后，{a1}被释放了	ht
@@ -24772,6 +24802,7 @@ Announcement combat merchant-advert-origin [$name]: fair {s}	美丽的{s1}	l
 Announcement combat merchant-origin []: the surrounding area	周边地区	l
 Announcement combat negotiation-opening []: negotiate calmly	冷静地谈判	l
 Announcement combat negotiation-purpose []: seek an alliance	寻求结盟	l
+Announcement combat read-announcement []: It has no writing.	上面没有文字。	l
 Announcement combat rumor-event []: This insidious evil is .	这个阴险的恶徒身份不明。	l
 Announcement combat rumor-person [$term,$person]: my {s} {s}	我的{s1}{s2}	l
 Announcement combat rumor-position [$term,$name]: {s} of {s}	{s2}的{s1}	l
@@ -25488,6 +25519,8 @@ A venomous person with the head and tail of a gila monster.	一种长着毒蜥�
 A very large person with a bony head frill and three horns.	一种体型很大的人形生物，长有骨质头盾和三根角。	lP
 Adventure item action: Go below hatch (no climbing/jumping)	到舱盖下方（不攀爬或跳跃）	h
 Adventure item action: Heat {s} near burning branches ({p})	在燃烧的树枝旁加热{s}（{p}）	h
+Adventurer log agreement field: make an offer of service to	向以下团体表示愿意效力：	h
+Adventurer log agreement type: Foiled Corruption Conspiracy	已挫败的腐败阴谋	h
 Adventurer log reputation: legendary preserver of knowledge	传奇博学大师	h
 After being interrogated by {a}, {a} implicated {a} at {p}.	在{p1}，经过{a1}审讯后，{a2}供出了{a3}。	ht
 After being interrogated by {a}, {a} implicated {a} in {p}.	在{p1}，经过{a1}审讯后，{a2}供出了{a3}。	ht
@@ -25526,6 +25559,7 @@ Announcement combat memory-person [memory-relation]: my {s}	我的{s1}	l
 Announcement combat memory-work []: an untitled composition	一部没起名的作品	l
 Announcement combat merchant-genuine-item [$item]: real {s}	货真价实的{s1}	l
 Announcement combat negotiation-sentence []: The proposal .	这项提案……。	l
+Announcement combat read-announcement [$inscription]: "{s}"	“{s1}”	l
 Announcement combat reference-kind [$creature]: ghostly {s}	幽灵形态的{s1}	l
 Announcement combat rumor-event [$book]: I do not have {s}.	{s1}不在我手里。	l
 Announcement combat sentence [$item]: Good {s} right there.	就那里的优质的{s1}。	l
@@ -26337,6 +26371,7 @@ A small, long-armed ape. It lives in trees and eats fruit.	一种小型的长臂
 A tiny pest insect. It feeds on both crops and other bugs.	一种小型的害虫。它以庄稼和其他昆虫为食。	lP
 Ability to fight with objects not covered by other skills.	使用其他技能未涵盖的物品进行战斗的能力。	w
 Adventure action: Give a sermon inveighing against a value	发表反对某种价值观的布道	l
+Adventurer log agreement field: by invocation of True Name	由于真名被唤出。	h
 Adventurer log reputation: legendary protector of the weak	传奇庇护者	h
 After being interrogated by {a}, {a} implicated {a} at {p}	在{p1}，经过{a1}审讯后，{a2}供出了{a3}	ht
 After being interrogated by {a}, {a} implicated {a} in {p}	在{p1}，经过{a1}审讯后，{a2}供出了{a3}	ht
@@ -26399,6 +26434,8 @@ Announcement combat memory-setting []: a fantastic setting	好极了	l
 Announcement combat memory-setting []: a very good setting	相当好	l
 Announcement combat memory-setting []: a very poor setting	很差	l
 Announcement combat quest-object [$announcement-item]: {s}	{s1}	l
+Announcement combat read-announcement []: It has no pages.	它没有书页。	l
+Announcement combat read-announcement []: You cannot read.	你无法阅读。	l
 Announcement combat sentence [$item]: Excellent {s} there.	那里的上等的{s1}。	l
 Announcement combat sentence [$item]: Fantastic {s} there.	那里的绝妙的{s1}。	l
 Announcement combat sentence [$name,$name]: {s} is in {s}.	{s1}位于{s2}。	l
@@ -27227,6 +27264,7 @@ A small four-eyed fish person with a pronounced back fin.	一种小型四眼鱼�
 A small whiskered fish found scavenging in inland waters.	一种在内陆水域觅食的带须的小鱼。	lP
 Adventure action: Tell a story about a person or creature	讲述一个人物或生物的故事	l
 Adventure item action: Path to here (no climbing/jumping)	前往此处（不攀爬或跳跃）	h
+Adventurer log agreement field: Foiled Bribery Conspiracy	已挫败的贿赂阴谋	h
 Adventurer log reputation: rumored preserver of knowledge	传闻中的博学大师	h
 After being interrogated, {a} implicated {a} in the wilds	在荒野中，经过审讯后，{a1}供出了{a2}	ht
 After enduring an interrogation by {a}, {a} was released.	忍受{a1}的审讯后，{a2}被释放了。	ht
@@ -27284,6 +27322,7 @@ Announcement combat memory-sentence [$event]: It was {s}.	那是{s1}。	l
 Announcement combat memory-setting []: a horrible setting	差极了	l
 Announcement combat merchant-origin []: just outside town	镇外不远处	l
 Announcement combat quest-holder [$historical-actor]: {s}	{s1}	l
+Announcement combat read-announcement []: You cannot see.	你看不见。	l
 Announcement combat reference-building-type []: catacombs	地下墓穴	l
 Announcement combat reference-building-type []: guildhall	行会大厅	l
 Announcement combat reference-building-type []: mead hall	蜂蜜酒厅	l
@@ -28189,6 +28228,8 @@ ALLOW THIS REJECTION TYPE and continue reporting others.	允许此类拒绝，�
 ALLOW THIS REJECTION TYPE and continue reporting others.	允许此类拒绝，并继续报告其他问题。	l
 Adventure item action: Heat {s} near burning trunk ({p})	在燃烧的树干旁加热{s}（{p}）	h
 Adventure item action: Heat {s} near burning twigs ({p})	在燃烧的细枝旁加热{s}（{p}）	h
+Adventurer log agreement field: agreed to adventure with	同意与以下对象共同冒险：	h
+Adventurer log agreement type: Foiled Bribery Conspiracy	已挫败的贿赂阴谋	h
 Adventurer log reputation: famous preserver of knowledge	名声显赫的博学大师	h
 Adventurer log reputation: rumored protector of the weak	传闻中的庇护者	h
 Affects ability to move quickly and dodge while armored.	影响穿甲时快速移动和闪避的能力。	w
@@ -28250,6 +28291,7 @@ Announcement combat memory-death []: was scared to death	被吓死了	l
 Announcement combat memory-death []: was shot and killed	被射杀了	l
 Announcement combat memory-exhibit [agreement-item]: {s}	{s1}	l
 Announcement combat memory-performance-work [$book]: {s}	{s1}	l
+Announcement combat memory-person [memory-person]: {s}'s	{s1}的	l
 Announcement combat merchant-origin []: a village nearby	附近的村庄	l
 Announcement combat merchant-people []: some of our kind	我们的一些同族	l
 Announcement combat negotiation-opening []: brazenly lie	肆无忌惮地撒谎	l
@@ -29241,6 +29283,10 @@ A small winged reptile person with a long narrow mouth.	一种长有双翼的小
 A tiny feathered dinosaur with wings capable of flight.	一种微小的带羽毛恐龙，双翼能够飞行。	lP
 A vile force of darkness has arrived, seeking a parley!	一支邪恶的黑暗势力已经到来，要求谈判！	hP
 Adventure item action: Go below hatch ({d} levels down)	到舱盖下方（下方{d}层）	h
+Adventurer log agreement field: Centered on first heard	已定位到最初获悉处	h
+Adventurer log agreement field: Entertainment Agreement	表演约定	h
+Adventurer log agreement field: World Joining Agreement	降临世界协议	h
+Adventurer log agreement field: in insurrection against	共同起义，反抗以下势力：	h
 Adventurer log reputation: famous protector of the weak	声名显赫的庇护者	h
 Adventurer log reputation: known preserver of knowledge	众所周知的博学大师	h
 Adventurer log reputation: legendary information source	传奇情报来源	h
@@ -29283,11 +29329,13 @@ Announcement combat memorial-death []: Starved to death	饥饿而死	l
 Announcement combat memorial-family []: mother and wife	母亲与妻子	l
 Announcement combat memory-crime []: disorderly conduct	扰乱秩序的罪	l
 Announcement combat memory-death []: died of an illness	病死了	l
+Announcement combat memory-entity [$memory-entity]: {s}	{s1}	l
 Announcement combat memory-exhibit [memory-object]: {s}	{s1}	l
 Announcement combat memory-ghost []: the ghost of a pet	一只宠物的鬼魂	l
 Announcement combat memory-location []: an unknown site	一个不知名的地点	l
 Announcement combat memory-performance-past []: chanted	吟唱了	l
 Announcement combat memory-performance-verb []: perform	表演了	l
+Announcement combat memory-person []: a secret identity	秘密身份	l
 Announcement combat memory-setting []: an awful setting	糟透了	l
 Announcement combat merchant-address []: my good person	好心人	l
 Announcement combat merchant-advert-origin [$name]: {s}	{s1}	l
@@ -30257,6 +30305,9 @@ A very large legless person with a giant toothy mouth.	一种体型很大、没�
 Adventure item action: Go below hatch ({d} level down)	到舱盖下方（下方{d}层）	h
 Adventure item action: Heat {s} near burning cap ({p})	在燃烧的菌盖旁加热{s}（{p}）	h
 Adventure item action: Start new conversation with {n}	与{n}开始新的交谈	h
+Adventurer log agreement field: Centered on last heard	已定位到最近获悉处	h
+Adventurer log agreement type: Entertainment Agreement	表演约定	h
+Adventurer log agreement type: World Joining Agreement	降临世界协议	h
 Adventurer log reputation: infamous information source	臭名昭著的情报来源	h
 Adventurer log reputation: known protector of the weak	众所周知的庇护者	h
 Adventurer log reputation: noted protector of the weak	著名的庇护者	h
@@ -30273,6 +30324,10 @@ Announcement combat adventure-announcement []: Really.	真是的。	l
 Announcement combat agreement-crime []: blood-drinking	吸血	l
 Announcement combat agreement-goals []: instill terror	制造恐慌	l
 Announcement combat agreement-goals []: prepare a coup	筹备政变	l
+Announcement combat announcement-bearing []: northeast	东北方	l
+Announcement combat announcement-bearing []: northwest	西北方	l
+Announcement combat announcement-bearing []: southeast	东南方	l
+Announcement combat announcement-bearing []: southwest	西南方	l
 Announcement combat attack [attack]: {s} from the side	从侧面{s1}	l
 Announcement combat damage-list [damage-list]: {s} and	{s1}	l
 Announcement combat description-institution []: a tomb	陵墓	l
@@ -30303,6 +30358,7 @@ Announcement combat memorial-killer-verb []: Crucified	钉死在十字架上	l
 Announcement combat memory-death []: fell into a chasm	坠入了深渊	l
 Announcement combat memory-death []: was fed to beasts	被喂给了野兽	l
 Announcement combat memory-knowledge [$reference]: {s}	{s1}	l
+Announcement combat memory-location []: the Underworld	冥界	l
 Announcement combat memory-offspring []: quindecaplets	十五胞胎	l
 Announcement combat memory-performance-past []: danced	跳了	l
 Announcement combat memory-performance-past []: played	演奏了	l
@@ -31332,6 +31388,9 @@ Adventure item action: Continue conversation with {n}	继续与{n}交谈	h
 Adventure item action: Go below hatch ({d} levels up)	到舱盖下方（上方{d}层）	h
 Adventure item action: Heat {s} near burning branches	在燃烧的树枝旁加热{s}	h
 Adventure item action: Path to here ({d} levels down)	前往此处（下方{d}层）	h
+Adventurer log agreement field: Adventuring Agreement	共同冒险的约定	h
+Adventurer log agreement field: Centered on commander	已定位到指挥官	h
+Adventurer log agreement field: Complete: report back	已完成：返回汇报	h
 Adventurer log reputation: legendary training partner	传奇训练伙伴	h
 Adventurer log reputation: rumored information source	传闻中的情报来源	h
 Alcohol, good food, and personal rooms go a long way.	酒、美食和私人房间都能起到很大作用。	hq
@@ -31385,6 +31444,7 @@ Announcement combat memory-death []: was buried alive	被活埋了	l
 Announcement combat memory-death []: was burned alive	被活活烧死了	l
 Announcement combat memory-ghost-action []: possessed	附身了	l
 Announcement combat memory-ghost-action []: tormented	折磨了	l
+Announcement combat memory-location []: the magma sea	岩浆海	l
 Announcement combat memory-offspring []: duodecaplets	十二胞胎	l
 Announcement combat memory-offspring []: tredecaplets	十三胞胎	l
 Announcement combat memory-performance-past []: spoke	念了	l
@@ -32490,6 +32550,11 @@ Adventure item action: Go below hatch ({d} level up)	到舱盖下方（上方{d}
 Adventure item action: Path to here ({d} level down)	前往此处（下方{d}层）	h
 Adventure item action: Ride {s}, push off toward {p}	乘坐{s}，向{p}蹬离	h
 Adventure performance genre: Biographical dictionary	传记辞典	l
+Adventurer log agreement field: Aid Rescue Agreement	协助营救的约定	h
+Adventurer log agreement field: Centered on location	已定位到地点	h
+Adventurer log agreement field: Grant of Citizenship	授予公民身份	h
+Adventurer log agreement field: throughout the world	足迹遍及整个世界。	h
+Adventurer log agreement type: Adventuring Agreement	共同冒险的约定	h
 Adventurer log reputation: dabbling training partner	初入门径的训练伙伴	h
 Adventurer log reputation: legendary treasure hunter	传奇寻宝者	h
 Adventurer log reputation: respected for heroic acts	因英雄之举而受人尊敬	h
@@ -32549,6 +32614,7 @@ Announcement combat memory-relation []: acquaintance	熟人	l
 Announcement combat memory-value []: martial prowess	武艺	l
 Announcement combat merchant-address []: my good man	好先生	l
 Announcement combat merchant-people [$creature]: {s}	{s1}	l
+Announcement combat read-announcement []: You read .	你进行了阅读。	l
 Announcement combat reference-building-type []: keep	城堡主楼	l
 Announcement combat reference-building-type []: tomb	陵墓	l
 Announcement combat reference-kind []: dark fortress	黑暗要塞	l
@@ -33752,6 +33818,13 @@ A striped person with the head and tail of a skunk.	一种长着臭鼬头和尾�
 A tiny translucent creature, found in evil forests.	一种微小的半透明生物，发现于邪恶的森林中。	lP
 Adventure item action: Heat {s} near campfire ({p})	在篝火旁加热{s}（{p}）	h
 Adventure item action: Path to here ({d} levels up)	前往此处（上方{d}层）	h
+Adventurer log agreement field: Agreement concluded	约定已结束	h
+Adventurer log agreement field: Finish reporting in	完成汇报	h
+Adventurer log agreement field: Overthrow Agreement	推翻统治的约定	h
+Adventurer log agreement field: Promise of Position	许诺职位	h
+Adventurer log agreement field: Residency Agreement	居留协议	h
+Adventurer log agreement type: Aid Rescue Agreement	协助营救的约定	h
+Adventurer log agreement type: Grant of Citizenship	授予公民身份	h
 Adventurer log reputation: known information source	众所周知的情报来源	h
 Adventurer log reputation: noted information source	著名的情报来源	h
 After being interrogated by {a}, {a} implicated {a}	经过{a1}审讯后，{a2}供出了{a3}	ht
@@ -34983,6 +35056,14 @@ Adventure item action: Heat {s} near burning trunk	在燃烧的树干旁加热{s
 Adventure item action: Heat {s} near burning twigs	在燃烧的细枝旁加热{s}	h
 Adventure item action: Path to here ({d} level up)	前往此处（上方{d}层）	h
 Adventure performance genre: Comparative biography	比较传记	l
+Adventurer log agreement field: Assassination Plot	刺杀阴谋	h
+Adventurer log agreement field: Centered on target	已定位到目标	h
+Adventurer log agreement field: Parley Arrangement	会谈安排	h
+Adventurer log agreement field: in order to rescue	以便营救以下对象：	h
+Adventurer log agreement field: was bound to serve	被迫为以下对象效力：	h
+Adventurer log agreement type: Overthrow Agreement	推翻统治的约定	h
+Adventurer log agreement type: Promise of Position	许诺职位	h
+Adventurer log agreement type: Residency Agreement	居留协议	h
 Adventurer log reputation: famous training partner	名声显赫的训练伙伴	h
 Adventurer log reputation: legendary enemy fighter	传奇退敌斗士	h
 Adventurer log reputation: legendary loyal soldier	传奇的忠诚军人	h
@@ -35000,6 +35081,8 @@ Announcement combat adventure-announcement []: No.	不。	l
 Announcement combat agreement-core []: joined with	与同行	l
 Announcement combat agreement-crime []: kidnapping	绑架	l
 Announcement combat agreement-party-list []: , and	和	l
+Announcement combat announcement-bearing []: north	北方	l
+Announcement combat announcement-bearing []: south	南方	l
 Announcement combat artifact-ancestor [$unit]: {s}	{s1}	l
 Announcement combat artifact-ancestor []: Nameless	无名者	l
 Announcement combat attack-site-kind []: labyrinth	迷宫	l
@@ -36305,6 +36388,13 @@ A very large woolly mammal person with two tusks.	一种体型很大的长毛哺
 Adventure action: Give a sermon promoting a value	发表宣扬某种价值观的布道	l
 Adventure item action: Continue conversation with	继续交谈	h
 Adventure item action: What will you do with {s}?	你想如何处理{s}？	h
+Adventurer log agreement field: Cause trouble for	给以下团体制造麻烦：	h
+Adventurer log agreement field: Infiltration Plot	渗透阴谋	h
+Adventurer log agreement field: Not yet completed	尚未完成	h
+Adventurer log agreement field: Retrieve Artifact	取回神器	h
+Adventurer log agreement field: War Starting Plot	挑起战争的阴谋	h
+Adventurer log agreement type: Assassination Plot	刺杀阴谋	h
+Adventurer log agreement type: Parley Arrangement	会谈安排	h
 Adventurer log group status: Affiliated mercenary	附属佣兵	h
 Adventurer log group status: Associated mercenary	有关联的佣兵	h
 Adventurer log reputation: dabbling trade partner	初入门径的贸易伙伴	h
@@ -36318,6 +36408,8 @@ Announcement combat actor [$item]: the flying {s}	飞来的{s1}	l
 Announcement combat agreement-crime []: espionage	间谍活动	l
 Announcement combat agreement-crime []: vandalism	破坏公物	l
 Announcement combat agreement-target [$name]: {s}	{s1}	l
+Announcement combat announcement-bearing []: east	东方	l
+Announcement combat announcement-bearing []: west	西方	l
 Announcement combat attack-site-kind []: fortress	要塞	l
 Announcement combat attack-site-kind []: hillocks	丘堡	l
 Announcement combat attack-site-kind []: monument	纪念碑	l
@@ -36768,7 +36860,7 @@ It has {s} and it makes nearby water undrinkable.	它长有{s1}，它使附近�
 It is one of the great untold tales of our times.	这是我们时代尚未讲述的伟大故事之一。	h
 It repeatedly makes threats of torture and death.	它不断以折磨和死亡相威胁。	h
 Join me and we'll bring this poor soul back home!	加入我，我们一起把这个可怜人带回家！	hP
-Last track: Dwarf Fortress - Dabu & Simon Swerwer	上一首曲目：矮人要塞 — 达布与西蒙·斯沃沃
+Last track: Dwarf Fortress - Dabu & Simon Swerwer	上一首曲目：Dwarf Fortress — Dabu & Simon Swerwer
 Native history collection title of {p} during {e}	在{e1}期间，{p1}争夺事件	htEi
 Native history collection title of {p} within {p}	在{p2}，{p1}争夺事件	htEi
 Native history collection {s} of {p} in the wilds	在荒野中，{p1}的{s1}	htEi
@@ -37716,6 +37808,12 @@ Adventure item action: Heat {s} near burning cap	在燃烧的菌盖旁加热{s}	
 Adventure item action: Heat {s} near magma ({p})	在岩浆旁加热{s}（{p}）	h
 Adventure performance genre: Cultural comparison	文化比较	l
 Adventure performance genre: Musical composition	乐曲	l
+Adventurer log agreement field: Drive members of	驱逐以下团体的成员：	h
+Adventurer log agreement field: Rescue Agreement	营救约定	h
+Adventurer log agreement field: somebody unknown	身份不明的人	h
+Adventurer log agreement type: Infiltration Plot	渗透阴谋	h
+Adventurer log agreement type: Retrieve Artifact	取回神器	h
+Adventurer log agreement type: War Starting Plot	挑起战争的阴谋	h
 Adventurer log reputation: known treasure hunter	众所周知的宝物猎人	h
 Adventurer log reputation: legendary storyteller	传奇说书人	h
 Adventurer log reputation: noted treasure hunter	著名的宝物猎人	h
@@ -39204,6 +39302,12 @@ Adventure item action: Drink {s} from {s} ({p})	饮用{s2}中的{s1}（{p}）	h
 Adventure item action: Heat {s} near fire ({p})	在火旁加热{s}（{p}）	h
 Adventure item action: Heat {s} near lava ({p})	在熔岩旁加热{s}（{p}）	h
 Adventure performance list continuation: (etc.)	（等）	l
+Adventurer log agreement field: Bound Servitude	受束缚的服役	h
+Adventurer log agreement field: Build Structure	建造设施	h
+Adventurer log agreement field: Guide Agreement	向导约定	h
+Adventurer log agreement field: agreed to guide	同意为以下对象带路：	h
+Adventurer log agreement field: thereby freeing	从而解放以下地点：	h
+Adventurer log agreement type: Rescue Agreement	营救约定	h
 Adventurer log reputation: famous loyal soldier	名声显赫的忠诚军人	h
 Adventurer log reputation: famous trade partner	名声显赫的贸易伙伴	h
 Announcement combat ability []: Cause dizziness	引发眩晕	l
@@ -40637,6 +40741,13 @@ A very large dinosaur person with a long neck.	一种体型很大、颈部修长
 Adventure item action: Fill {s} from {s} ({p})	用{s2}中的内容物装满{s1}（{p}）	h
 Adventure item action: Fill {s} with {s} ({p})	用{s2}装满{s1}（{p}）	h
 Adventure performance genre: Alternate history	架空历史	l
+Adventurer log agreement field: Abduction Plot	绑架阴谋	h
+Adventurer log agreement field: Artifact Theft	盗取神器	h
+Adventurer log agreement field: agreed to join	同意与以下对象同行：	h
+Adventurer log agreement field: requested that	请求：	h
+Adventurer log agreement type: Bound Servitude	受束缚的服役	h
+Adventurer log agreement type: Build Structure	建造设施	h
+Adventurer log agreement type: Guide Agreement	向导约定	h
 Adventurer log group status: Aligned mercenary	立场一致的佣兵	h
 Adventurer log group status: Devoted mercenary	忠心耿耿的佣兵	h
 Adventurer log reputation: known enemy fighter	众所周知的敌方战士	h
@@ -42196,6 +42307,12 @@ Adventure item action: Lower {s} bucket ({p})	降下{s}的水桶（{p}）	h
 Adventure item action: Raise {s} bucket ({p})	升起{s}的水桶（{p}）	h
 Adventure item action: Shout out to everybody	向所有人喊话	h
 Adventure performance genre: Cultural history	文化史	l
+Adventurer log agreement field: An order from	下令者：	h
+Adventurer log agreement field: Offer Service	提供服务	h
+Adventurer log agreement field: Sabotage Plot	破坏阴谋	h
+Adventurer log agreement field: Unknown month	（月份未知）	h
+Adventurer log agreement type: Abduction Plot	绑架阴谋	h
+Adventurer log agreement type: Artifact Theft	盗取神器	h
 Adventurer log group status: Affiliated slave	附属奴隶	h
 Adventurer log group status: Associated slave	有关联的奴隶	h
 Adventurer log group status: Former mercenary	前佣兵	h
@@ -43722,6 +43839,9 @@ Adventure item action: Dismount to {s} ({p})	下坐骑到{s}（{p}）	h
 Adventure item action: Where do you put {s}?	你想把{s}放在哪里？	h
 Adventure movement qualifier: releasing hold	，松开抓握	h
 Adventure performance value: Martial Prowess	武勇	l
+Adventurer log agreement field: Framing Plot	栽赃阴谋	h
+Adventurer log agreement type: Offer Service	提供服务	h
+Adventurer log agreement type: Sabotage Plot	破坏阴谋	h
 Adventurer log group status: Former prisoner	前囚犯	h
 Adventurer log group status: Loyal mercenary	忠诚的佣兵	h
 Adventurer log reputation: infamous intruder	臭名昭著的入侵者	h
@@ -43761,6 +43881,7 @@ Announcement combat memory-crime []: treason	叛国罪	l
 Announcement combat memory-death []: drowned	淹死了	l
 Announcement combat memory-ghost []: a ghost	一个鬼魂	l
 Announcement combat memory-person []: my own	我自己	l
+Announcement combat memory-person []: myself	我自己	l
 Announcement combat memory-poem [$book]: {s}	{s1}	l
 Announcement combat memory-room []: sleeping	睡觉	l
 Announcement combat memory-story []: history	往事	l
@@ -45364,6 +45485,7 @@ Adventure action: Raise once-resting zombie	复生昔日安眠的僵尸	l
 Adventure action: Tell a story about a site	讲述一个地点的故事	l
 Adventure item action: Quickly throw at {n}	快速投向{n}	h
 Adventure performance genre: Star catalogue	星表	l
+Adventurer log agreement type: Framing Plot	栽赃阴谋	h
 Adventurer log group status: Devoted member	忠心耿耿的成员	h
 Adventurer log reputation: infamous brigand	臭名昭著的强盗	h
 Adventurer log reputation: infamous monster	臭名昭著的怪物	h
@@ -47032,6 +47154,8 @@ Adventure performance genre: Autobiography	自传	l
 Adventure performance value: Craftsmanship	工艺	l
 Adventure performance value: Introspection	自省	l
 Adventure: move view/cursor down (z), fast	冒险模式：向下移动视野/光标（z），快速	w
+Adventurer log agreement field: Corruption	腐败	h
+Adventurer log agreement field: asked that	请求：	h
 Adventurer log group status: Aligned slave	立场一致的奴隶	h
 Adventurer log group status: Devoted slave	忠心耿耿的奴隶	h
 Adventurer log group status: Former member	前成员	h
@@ -48911,6 +49035,7 @@ Adventure performance value: Independence	独立	l
 Adventure performance value: Leisure Time	闲暇	l
 Adventure performance value: Perseverance	坚持	l
 Adventure performance value: Self-Control	自律	l
+Adventurer log agreement type: Corruption	腐败	h
 Adventurer log group status: Former slave	前奴隶	h
 Adventurer log group status: Loyal member	忠诚的成员	h
 Adventurer log reputation: famous brawler	名声显赫的斗士	h
@@ -49084,6 +49209,7 @@ Choose a poetic form for the composition.	为这次创作选择一种诗歌形�
 Choose a uniform for the selected squads.	为所选小队选择一套制式服装。	hP
 Click an existing stockpile to select it.	点击已有储物堆以选中它。	hP
 Click in the play area to paint the zone.	在游戏区域中点击，涂画区域。	hP
+Conversation keyword: ask for whereabouts	询问下落	l
 Conversation keyword: change subject back	更换 话题 回去	l
 Conversation keyword: crime of kidnapping	绑架罪	l
 Conversation keyword: duty advice service	职责 建议 效力	l
@@ -50718,6 +50844,7 @@ Adventure performance value: Competition	竞争	l
 Adventure performance value: Cooperation	合作	l
 Adventure performance value: Tranquility	宁静	l
 Adventure: move view/cursor up (z), fast	冒险模式：向上移动视野/光标（z），快速	w
+Adventurer log agreement field: retrieve	取回：	h
 Adventurer log group status: Loyal slave	忠诚的奴隶	h
 Adventurer log reputation: famous dancer	名声显赫的舞蹈家	h
 Adventurer log reputation: known brawler	众所周知的斗士	h
@@ -50755,7 +50882,9 @@ Announcement combat attack-verb []: stab	戳刺	l
 Announcement combat fraction []: half of	一半	l
 Announcement combat fraction []: most of	大部分	l
 Announcement combat layer [$body]: {s}'s	{s1}	l
+Announcement combat memory-person []: 's	某人的	l
 Announcement combat memory-person []: me	我	l
+Announcement combat memory-person []: my	我的	l
 Announcement combat memory-value []: law	法律	l
 Announcement combat object []: body part	身体部位	l
 Announcement combat sentence []: Ambush!	有埋伏！	l
@@ -50898,6 +51027,7 @@ Charge attack: move toward your opponent	冲锋攻击：朝对手移动。	hP
 Climb to {s} ({s} holding {s}/Air/Magma)	攀向{s1}（{s2}，抓着{s3}／空气／岩浆）	hPt
 Climb to {s} ({s} holding {s}/Air/Water)	攀向{s1}（{s2}，抓着{s3}／空气／水）	hPt
 Come see me at the trade depot sometime.	有空到贸易站来找我。	hP
+Conversation keyword: ask for directions	询问路线	l
 Conversation keyword: crime of espionage	间谍罪	l
 Conversation keyword: demand item object	要求 物品 物件	l
 Conversation keyword: disorderly conduct	扰乱秩序	l
@@ -52741,6 +52871,7 @@ Bring up {p}'s crime of attempted theft	谈起{p1}犯下盗窃未遂罪这件事
 Calcite/limestone/chalk/marble boulders	方解石/石灰岩/白垩岩/大理石岩块	wi
 Change the inequality of the condition.	修改此条件的数量比较方式。	hj
 Click a tile to be a corner of the {s}.	点击一个地格，作为{s1}的一个角。	hPt
+Click a tile to be a corner of the {s}.	点击地格选择{s}的一个角。	wtli
 Climb to {s} ({s} holding {s}/Air/Lava)	攀向{s1}（{s2}，抓着{s3}／空气／熔岩）	hPt
 Climb to {s} ({s} releasing hold/Magma)	攀向{s1}（{s2}，松开抓住的手／岩浆）	hPt
 Climb to {s} ({s} releasing hold/Water)	攀向{s1}（{s2}，松开抓住的手／水）	hPt
@@ -54505,6 +54636,7 @@ Adventure action: Raise wasting spirit	复生衰朽灵体	l
 Adventure action: Raise wasting wraith	复生衰朽怨灵	l
 Adventure action: Raise wasting zombie	复生衰朽僵尸	l
 Adventure action: Write something down	写下内容	l
+Adventure companion: Traveling through	途经：	wl
 Adventure item action: Climb {s} ({p})	攀爬{s}（{p}）	h
 Adventure item action: Dismount to {s}	下坐骑到{s}	h
 Adventure item action: Drink {s} ({p})	饮用{s}（{p}）	h
@@ -54523,6 +54655,7 @@ Adventure performance value: Knowledge	知识	l
 Adventure performance value: Merriment	欢乐	l
 Adventure performance value: Sacrifice	牺牲	l
 Adventure performance value: Tradition	传统	l
+Adventurer log agreement field: out of	逐出以下地点：	h
 Adventurer log reputation: famous ally	名声显赫的同盟者	h
 Adventurer log reputation: famous bard	名声显赫的吟游诗人	h
 Adventurer log reputation: famous hero	名声显赫的英雄	h
@@ -54675,6 +54808,7 @@ Bring up {p}'s escalated attack on {p}	谈起{p1}对{p2}加剧攻击这件事	hP
 Bring up {p}'s placement of {i} to {p}	谈起{p1}将{i1}交由{p2}保管这件事	hPt
 Claiming forbidden items and buildings	解除物品和建筑的禁用状态	wo
 Click a tile to be one end of the {s}.	点击一个地格，作为{s1}的一端。	hPt
+Click a tile to be one end of the {s}.	点击地格选择{s}的一端。	wtli
 Click to recover (creates new mission)	点击取回（创建新任务）。	hP
 Clicking delete will instantly delete!	单击删除会立即删档！	l
 Climb to {s} ({s} releasing hold/Lava)	攀向{s1}（{s2}，松开抓住的手／熔岩）	hPt
@@ -56665,6 +56799,8 @@ Adventure movement qualifier: holding	，抓住	h
 Adventure performance value: Commerce	商业	l
 Adventure performance value: Fairness	公平	l
 Adventure performance value: Stoicism	斯多葛主义	l
+Adventurer log agreement field: Drive	驱逐以下团体：	h
+Adventurer log agreement field: serve	为以下团体效力：	h
 Adventurer log group status: Criminal	罪犯	h
 Adventurer log group status: Prisoner	囚犯	h
 Adventurer log reputation: known ally	众所周知的同盟者	h
@@ -58714,6 +58850,7 @@ Adventure action: Raise tomb butcher	复生陵墓屠夫	l
 Adventure action: Raise tomb stalker	复生陵墓潜行者	l
 Adventure action: Raise void butcher	复生虚空屠夫	l
 Adventure action: Raise void stalker	复生虚空潜行者	l
+Adventure companion: In party nearby	队伍中，位于附近	wl
 Adventure environment modifier: salt	含盐的	h
 Adventure item action: Bash down {s}	撞倒{s}	h
 Adventure item action: Cease nocking	停止搭箭	h
@@ -58732,6 +58869,8 @@ Adventure performance value: Harmony	和谐	l
 Adventure performance value: Loyalty	忠诚	l
 Adventure performance value: Romance	浪漫	l
 Adventure: move view/cursor down (z)	冒险模式：向下移动视野/光标（z）	w
+Adventurer log agreement field: Kill	杀死以下目标：	h
+Adventurer log agreement field: from	来源：	h
 Adventurer log group status: Aligned	立场一致	h
 Affects maximum number of followers.	影响追随者人数上限。	w
 Agreement date: {d}nd Limestone, {d}	协议日期：第{d2}年石灰岩月{d1}日	hPt
@@ -58909,6 +59048,7 @@ DFHack GUI Squad assignment: Include	包含	l
 DFHack GUI Squad assignment: Maimed:	残疾：	l
 DFHack GUI Teleport: Selected units:	已选单位：	l
 DFHack GUI Teleport: to zoom to unit	定位至该单位	l
+DFHack GUI Title: Confirm conviction	确认定罪	l
 DFHack help: "--opposite <INTEREST>"	"--opposite <INTEREST>"	l
 DFHack help: "--severity <severity>"	"--severity <severity>"	l
 DFHack help: "--strength <strength>"	"--strength <strength>"	l
@@ -59512,6 +59652,7 @@ You given emergency tactical control	你获得紧急战术控制权	w
 You have no appropriate ingredients.	你没有合适的原料。	hP
 You have selected a very large area.	你选择了一个超大型区域。	l
 You will travel far from this place.	你将远行，离开此地。	hP
+Zone location: Temple complex of {e}	{e1}的神殿建筑群	htl
 a ceremony held by {a} in the wilds.	在荒野中，{a1}举办的仪式。	htEi
 a gladiatory competition during {e}.	在{e1}期间，角斗比赛。	htEi
 a gladiatory competition within {p}.	在{p1}，角斗比赛。	htEi
@@ -60905,6 +61046,9 @@ Adventure performance genre: Letter	信	l
 Adventure performance genre: Manual	手册	l
 Adventure performance value: Family	家庭	l
 Adventure performance value: Nature	自然	l
+Adventurer log agreement field: You	你	h
+Adventurer log agreement field: for	交给：	h
+Adventurer log agreement field: you	你	h
 Agree to have {e} pay homage to {e}	同意让{e1}向{e2}称臣纳贡	hPt
 Agreement date: {d}nd Hematite, {d}	协议日期：第{d2}年赤铁矿月{d1}日	hPt
 Agreement date: {d}nd Obsidian, {d}	协议日期：第{d2}年黑曜石月{d1}日	hPt
@@ -60927,6 +61071,7 @@ Are you stalking a dangerous beast?	你在追踪危险的野兽吗？	hP
 Argue the worthlessness of commerce	争辩商业毫无价值	hP
 Argue the worthlessness of fairness	争辩公道毫无价值	hP
 Argue the worthlessness of stoicism	争辩克制情感毫无价值	hP
+Ask for the whereabouts of yourself	询问你自己的下落	hP
 Ask listener to join you (new menu)	邀请对方加入你（新菜单）	hP
 Ask listener why they are traveling	询问对方为何旅行	hP
 At least it doesn't rain down here.	至少这下面不会下雨。	hP
@@ -63116,6 +63261,7 @@ Adventure performance value: Truth	诚实	l
 Adventure performance voice: Chant	吟唱	l
 Adventure performance voice: Speak	念白	l
 Adventure: move view/cursor up (z)	冒险模式：向上移动视野/光标（z）	w
+Adventurer log agreement field: to	前往：	h
 Adventurer log group status: Enemy	敌人	h
 Adventurer log reputation: comrade	同志	h
 Age of the {s} and the {s} at {p}.	在{p1}，{s1}与{s2}的时代。	htEi
@@ -63240,8 +63386,10 @@ Book title subject: the Underworld	地狱	hi
 Bring up {p}'s crime of kidnapping	谈起{p1}犯下绑架罪这件事	hPt
 Bring up {p}'s job order violation	谈起{p1}违反工作命令这件事	hPt
 Bring up {p}'s refusal to give {i}	谈起{p1}拒绝交出{i1}这件事	hPt
+Build placement: Track/Ramp (NSEW)	坡道轨道（北南东西）	wi
 Cannot make request without leader	没有领袖，无法提出请求。	hP
 Click a tile to position the stop.	点击格子设置停靠点的位置。	hP
+Click a tile to position the stop.	点击地格放置轨道站点。	wli
 Climb to {s} ({s} holding {s}/Air)	攀向{s1}（{s2}，抓着{s3}／空气）	hPt
 Conversation demeanor: Acquiescent	顺从	l
 Conversation event collection: {s}	在{s1}期间	ht
@@ -63822,7 +63970,7 @@ Tell me about the brewing trouble.	跟我说说正在酝酿的麻烦。	hP
 Tell me about the skulking vermin.	跟我说说潜伏的害兽。	hP
 Tell me about this counting house.	跟我说说这间账房。	hP
 Tell me who you work for, or else.	说出你为谁效力，否则后果自负。	hP
-Tell the listener that {p} is dead	告诉对方{p1}已经去世	hPt
+Tell the listener that {n} is dead	告诉对方{n1}已经去世	hPt
 The Abduction at {p} in the wilds.	在荒野中，{p1}的绑架事件。	htEi
 The Abduction in {p} in the wilds.	在荒野中，{p1}的绑架事件。	htEi
 The Abduction of {n} at {p} at {p}	在{p2}，{p1}绑架{n1}的事件	htEi
@@ -63956,6 +64104,7 @@ You've lost possession of the {s}.	你失去了{s1}。	hPt
 Your adventure has come to an end.	你的冒险已经结束。	hq
 Your adventure has come to an end.	你的冒险已告终。	w
 Your chant is absolutely flawless.	你的吟唱完美无瑕。	hP
+Zone location: {s} grand guildhall	{s1}大行会大厅	htl
 a ceremony held by {a} during {e}.	在{e1}期间，{a1}举办的仪式。	htEi
 a ceremony held by {a} within {p}.	在{p1}，{a1}举办的仪式。	htEi
 a competition involving {b} at {p}	在{p1}，以《{b1}》为内容的比赛	htEi
@@ -65555,6 +65704,10 @@ Bring up {e}'s abandonment of {e}	谈起{e1}放弃{e2}这件事	hPt
 Bring up {e}'s reclamation of {e}	谈起{e1}收复{e2}这件事	hPt
 Bring up {p}'s crime of espionage	谈起{p1}犯下间谍罪这件事	hPt
 Bring up {p}'s disorderly conduct	谈起{p1}扰乱秩序这件事	hPt
+Build placement: Track/Ramp (NEW)	坡道轨道（北东西）	wi
+Build placement: Track/Ramp (NSE)	坡道轨道（北南东）	wi
+Build placement: Track/Ramp (NSW)	坡道轨道（北南西）	wi
+Build placement: Track/Ramp (SEW)	坡道轨道（南东西）	wi
 Change tab or highlight selection	更改选项卡或高亮选择	w
 Character room grade: Dining Room	餐厅	l
 Click for assignments and details	点击查看人员分配和详细信息。	hP
@@ -65592,6 +65745,7 @@ Conversation keyword: prohibition	禁令	l
 Conversation keyword: return back	返回 回去	l
 Conversation keyword: tranquility	宁静	l
 Conversation keyword: unhappiness	不快	l
+Conversation keyword: whereabouts	下落	l
 Converting to gathering blueprint	将采集指定区域转为蓝图	wo
 Converting to smoothing blueprint	将打磨指定区域转为蓝图	wo
 Convict a suspect for this crime.	将嫌疑人判定为此案的罪犯。	hj
@@ -67568,6 +67722,8 @@ Adventure action: Raise pale one	复生苍白之人	l
 Adventure action: Raise tomb one	复生陵墓之人	l
 Adventure action: Raise void one	复生虚空之人	l
 Adventure action: Root around in	翻找	l
+Adventure companion: Not visible	不可见	wl
+Adventure companion: Unconscious	失去意识	wl
 Adventure item action: Climb {s}	攀爬{s}	h
 Adventure item action: Drink {s}	饮用{s}	h
 Adventure item action: Guide {s}	引导{s}	h
@@ -67711,6 +67867,12 @@ Book title subject: the Wounding	负伤	hi
 Bring up {e}'s foundation of {e}	谈起{e1}建立{e2}这件事	hPt
 Bring up {e}'s harassment of {e}	谈起{e1}侵扰{e2}这件事	hPt
 Bring up {p}'s possession of {i}	谈起{p1}持有{i1}这件事	hPt
+Build placement: Track/Ramp (EW)	坡道轨道（东西）	wi
+Build placement: Track/Ramp (NE)	坡道轨道（北东）	wi
+Build placement: Track/Ramp (NS)	坡道轨道（北南）	wi
+Build placement: Track/Ramp (NW)	坡道轨道（北西）	wi
+Build placement: Track/Ramp (SE)	坡道轨道（南东）	wi
+Build placement: Track/Ramp (SW)	坡道轨道（南西）	wi
 Cavern Layer Passage Density Max	洞穴层通道密度上限
 Cavern Layer Passage Density Min	洞穴层通道密度下限
 Cavern dweller maximum attackers	洞穴居民来袭人数上限
@@ -67730,9 +67892,11 @@ Conversation keyword: alienation	疏离感	l
 Conversation keyword: ambivalent	没什么特别的感觉	l
 Conversation keyword: astonished	惊异	l
 Conversation keyword: bitterness	苦涩	l
+Conversation keyword: completely	完全	l
 Conversation keyword: conflicted	内心矛盾	l
 Conversation keyword: conspiracy	合谋	l
 Conversation keyword: directions	问路	l
+Conversation keyword: disapprove	不赞同	l
 Conversation keyword: disorderly	扰乱	l
 Conversation keyword: enthusiasm	热情	l
 Conversation keyword: excitement	兴奋	l
@@ -67744,6 +67908,7 @@ Conversation keyword: inevitable	不可避免	l
 Conversation keyword: irritation	恼怒	l
 Conversation keyword: jubilation	欢腾	l
 Conversation keyword: kidnapping	绑架	l
+Conversation keyword: listener s	对方的	l
 Conversation keyword: loneliness	孤独	l
 Conversation keyword: occupation	占领	l
 Conversation keyword: opposition	反抗	l
@@ -67765,6 +67930,7 @@ Conversation keyword: succession	继位	l
 Conversation keyword: tenderness	温柔	l
 Conversation keyword: terrifying	骇人	l
 Conversation keyword: uneasiness	不安	l
+Conversation keyword: unexpected	意外	l
 Conversation keyword: withdrawal	撤军	l
 Conversation mood: Disillusioned	幻灭	l
 Conversation relationship: Loyal	忠诚	l
@@ -68157,11 +68323,12 @@ Justice plot: Corrupt {s} of {e}	拉拢{e}的{s}	l
 Justice plot: Figure {n} the {s}	{n}（{s}）	l
 Justice sentence: day in prison.	监禁{d}日。	l
 Justice sentence: hammerstrikes.	锤刑{d}次。	l
+Justice witness count: witnesses	{d}名证人	l
 Labor caption: Furnace Operating	操作熔炉	wi
 Labor caption: Furniture Hauling	搬运家具	wi
 Labor caption: Siege Engineering	制造攻城器械	wi
 Labor caption: Strand Extraction	缕丝提取	wi
-Last interlude: Toady Two - Dabu	上一首间奏：托迪二号 — 达布
+Last interlude: Toady Two - Dabu	上一首间奏：Toady Two — Dabu
 Loading civilized populations...	加载政权人口......	w
 Log world generation map rejects	记录世界生成地图拒绝	w
 Look out for a chance encounter.	留意一次偶然的相遇。	hP
@@ -69773,6 +69940,7 @@ Adventure action: Give a sermon	布道	l
 Adventure action: Hurl fireball	投掷火球	l
 Adventure action: Perform music	演奏音乐	l
 Adventure action: Recite a poem	朗诵诗歌	l
+Adventure companion: Companions	同伴	wl
 Adventure item action: Drop {s}	丢下{s}	h
 Adventure item action: Fell {s}	砍倒{s}	h
 Adventure item action: Heat {s}	加热{s}	h
@@ -69925,6 +70093,11 @@ Bring up {i}'s absence from {e}	谈起{i1}已不在{e1}这件事	hPt
 Bring up {p}'s crime of robbery	谈起{p1}犯下抢劫罪这件事	hPt
 Bring up {p}'s crime of treason	谈起{p1}犯下叛国罪这件事	hPt
 Bring up {p}'s placement of {i}	谈起{p1}安置{i1}这件事	hPt
+Build placement: Track/Ramp (E)	坡道轨道（东）	wi
+Build placement: Track/Ramp (N)	坡道轨道（北）	wi
+Build placement: Track/Ramp (S)	坡道轨道（南）	wi
+Build placement: Track/Ramp (W)	坡道轨道（西）	wi
+Build placement: {s}'s Workshop	{s}工坊	wtlx
 Can you tell me the way to {e}?	你能告诉我去{e1}的路吗？	hPt
 Change dream/goal (if possible)	更改梦想/目标（如果可以）
 Change to standard gather mode.	切换到普通采集模式。	hj
@@ -69978,6 +70151,7 @@ Conversation keyword: fantastic	好极了	l
 Conversation keyword: gratitude	感激	l
 Conversation keyword: happiness	快乐	l
 Conversation keyword: hard work	勤勉	l
+Conversation keyword: ignorance	不知情	l
 Conversation keyword: improving	提高	l
 Conversation keyword: isolation	孤立	l
 Conversation keyword: jolliness	开心	l
@@ -69994,6 +70168,7 @@ Conversation keyword: performer	表演者	l
 Conversation keyword: pessimism	悲观	l
 Conversation keyword: preaching	布道	l
 Conversation keyword: protected	保护	l
+Conversation keyword: recommend	推荐	l
 Conversation keyword: rejection	被拒绝感	l
 Conversation keyword: relations	关系	l
 Conversation keyword: righteous	正义	l
@@ -72182,6 +72357,8 @@ Acknowledge lack of uneasiness	表示没有不安	hP
 Adventure action: Breathe fire	喷火	l
 Adventure action: Create ghoul	制造食尸鬼	l
 Adventure action: Tell a story	讲故事	l
+Adventure companion: In party:	队伍中：	wl
+Adventure companion: Paralyzed	麻痹	wl
 Adventure item action: A ({p})	小生物（{p}）	h
 Adventure item action: Eat {s}	食用{s}	h
 Adventure item action: Get {s}	拿取{s}	h
@@ -72211,7 +72388,7 @@ Argue the worthlessness of law	争辩法律毫无价值	hP
 Ask about the missing treasure	询问失踪宝物	hP
 Ask about the surrounding area	询问周边地区	hP
 Ask for a cease to hostilities	请求停止敌对行动	hP
-Ask for the whereabouts of {p}	询问{p1}的下落	hPt
+Ask for the whereabouts of {n}	询问{n1}的下落	hPt
 Automatically weave all thread	自动纺织所有线	wi
 Autosave the game after embark	启程后自动保存游戏	w
 Bed rejected (already in use.)	床未被选用（已被占用）	hP
@@ -72387,6 +72564,7 @@ Conversation demeanor: Patient	有耐心	l
 Conversation keyword: a thrill	激动	l
 Conversation keyword: ancestor	祖先	l
 Conversation keyword: announce	宣布	l
+Conversation keyword: anything	任何事	l
 Conversation keyword: argument	争论	l
 Conversation keyword: artifact	造物	l
 Conversation keyword: aversion	厌恶	l
@@ -72420,6 +72598,7 @@ Conversation keyword: incident	事件	l
 Conversation keyword: interest	兴趣	l
 Conversation keyword: intruder	入侵者	l
 Conversation keyword: invasion	入侵	l
+Conversation keyword: listener	对方	l
 Conversation keyword: loathing	憎恶	l
 Conversation keyword: location	位置	l
 Conversation keyword: occupied	无暇	l
@@ -72455,6 +72634,7 @@ Conversation keyword: unneeded	不需要	l
 Conversation keyword: verbally	口头	l
 Conversation keyword: vigilant	警惕	l
 Conversation keyword: withdraw	撤离	l
+Conversation keyword: yourself	你自己	l
 Conversation mood: Displeasure	不满	l
 Conversation mood: Embarrassed	尴尬	l
 Conversation mood: Exasperated	懊恼	l
@@ -72881,6 +73061,7 @@ Justice alias title head: ward	守护者	l
 Justice case: Attempted murder	谋杀未遂	l
 Justice person value: somebody	某人	l
 Justice plot: Provide Position	提供职位	l
+Justice witness count: witness	{d}名证人	l
 Labor caption: Animal Training	驯兽	wi
 Labor caption: Crossbow-making	制弩	wi
 Labor caption: Dressing Wounds	包扎伤口	wi
@@ -72963,7 +73144,7 @@ Poetry Competition during {e}.	在{e1}期间，诗歌比赛。	htEi
 Poetry Competition within {p}.	在{p1}，诗歌比赛。	htEi
 Poetry Recital of in the wilds	在荒野中，诗歌朗诵	hEi
 Prepare for the Journey to {s}	准备前往{s}	tx
-Provide the whereabouts of {p}	告知{p1}的下落	hPt
+Provide the whereabouts of {n}	告知{n1}的下落	hPt
 Rainfall And Rivers And Beyond	降雨与河流及更远之处	wli
 Rampage in in {p} in the wilds	在荒野中，{p1}的肆虐事件	htEi
 Refuse request to become a {s}	拒绝成为{s1}的请求	hPt
@@ -74651,6 +74832,7 @@ Adventure action target: tree	树	h
 Adventure action: Propel away	击退	l
 Adventure action: Spray juice	喷射汁液	l
 Adventure action: Spray vapor	喷射蒸气	l
+Adventure companion: Visible:	可见：	wl
 Adventure item action: Ignite	点火	h
 Adventure movement: Excellent	极好	l
 Adventure movement: Fantastic	极好	l
@@ -74843,6 +75025,7 @@ Bring up the abduction of {p}	谈起{p1}被绑架这件事	hPt
 Bring up the journey together	谈起共同的旅程	hP
 Bring up {p}'s crime of theft	谈起{p1}犯下盗窃罪这件事	hPt
 Bring up {p}'s gaining of {i}	谈起{p1}获得{i1}这件事	hPt
+Build placement: Track (NSEW)	轨道（北南东西）	wi
 Cannot build at highest level	不能在最高层建造	wli
 Cannot raid your civilization	无法突袭自己的政权。	hP
 Certainly feared as a brigand	害怕被当作盗贼	w
@@ -74878,6 +75061,7 @@ Conversation keyword: conduct	行为	l
 Conversation keyword: confirm	确认	l
 Conversation keyword: crushed	被镇压	l
 Conversation keyword: cunning	谋略	l
+Conversation keyword: current	当前	l
 Conversation keyword: decline	谢绝	l
 Conversation keyword: decorum	礼仪	l
 Conversation keyword: delight	欣喜	l
@@ -74889,6 +75073,7 @@ Conversation keyword: doctors	医生	l
 Conversation keyword: elation	狂喜	l
 Conversation keyword: emotion	情绪	l
 Conversation keyword: empathy	同理心	l
+Conversation keyword: enjoyed	喜欢	l
 Conversation keyword: explain	说明	l
 Conversation keyword: express	表达	l
 Conversation keyword: failure	失败	l
@@ -74902,6 +75087,7 @@ Conversation keyword: journey	旅程	l
 Conversation keyword: leisure	闲暇	l
 Conversation keyword: loyalty	忠诚	l
 Conversation keyword: martial	武力	l
+Conversation keyword: matters	事情	l
 Conversation keyword: monster	怪物	l
 Conversation keyword: nothing	无事	l
 Conversation keyword: nuances	细微差别	l
@@ -74911,6 +75097,9 @@ Conversation keyword: outrage	愤慨	l
 Conversation keyword: passion	热血沸腾	l
 Conversation keyword: passive	消极	l
 Conversation keyword: pending	待办	l
+Conversation keyword: problem	问题	l
+Conversation keyword: profess	表示	l
+Conversation keyword: provide	告知	l
 Conversation keyword: prowess	本领	l
 Conversation keyword: rapture	陶醉	l
 Conversation keyword: raunchy	粗俗	l
@@ -74918,8 +75107,10 @@ Conversation keyword: reclaim	收复	l
 Conversation keyword: refusal	拒绝	l
 Conversation keyword: remorse	懊悔	l
 Conversation keyword: request	请求	l
+Conversation keyword: rescued	获救	l
 Conversation keyword: respond	回应	l
 Conversation keyword: reunion	团聚	l
+Conversation keyword: riddles	谜语	l
 Conversation keyword: robbery	抢劫	l
 Conversation keyword: romance	爱情	l
 Conversation keyword: ruffian	暴徒	l
@@ -74929,14 +75120,17 @@ Conversation keyword: scribes	抄写员	l
 Conversation keyword: service	服务	l
 Conversation keyword: servile	卑躬屈膝	l
 Conversation keyword: soldier	士兵	l
+Conversation keyword: stopped	制止	l
 Conversation keyword: subject	话题	l
 Conversation keyword: suggest	建议	l
 Conversation keyword: surgeon	外科医师	l
+Conversation keyword: they ve	他们已经	l
 Conversation keyword: treason	叛国	l
 Conversation keyword: tribute	进贡	l
 Conversation keyword: triumph	得意	l
 Conversation keyword: trouble	烦恼	l
 Conversation keyword: village	村庄	l
+Conversation keyword: violent	暴力	l
 Conversation keyword: weather	天气	l
 Conversation keyword: welcome	欢迎	l
 Conversation keyword: writing	著作	l
@@ -75333,6 +75527,7 @@ Musical Performance of at {p}	在{p1}，音乐表演	htEi
 Musical Performance of in {d}	{d1}年的音乐表演	htEi
 Musical Performance of in {p}	在{p1}，音乐表演	htEi
 Must span multiple elevations	必须跨越多个高度层。	hP
+Must span multiple elevations	必须跨越多个高度层	wli
 Native Legends no forces lost	没有损失	h
 Native Legends once again {s}	{s1}，这一情形又一次出现	ht
 Native history held story {e}	讲述了以下往事：「{e1}」	ht
@@ -76956,6 +77151,8 @@ Adventure action: Cause pain	引发疼痛	l
 Adventure action: Pet animal	抚摸动物	l
 Adventure action: Spray dust	喷射粉尘	l
 Adventure action: Squirt ink	喷墨	l
+Adventure companion: Distant	远处	wl
+Adventure companion: Wrestle	摔跤	wl
 Adventure item action: Climb	攀爬	h
 Adventure movement: Darkness	黑暗	l
 Adventure movement: Scramble	快速挪动	l
@@ -77142,6 +77339,12 @@ Bring up {p}'s attack on {p}	谈起{p1}袭击{p2}这件事	hPt
 Bring up {p}'s giving of {i}	谈起{p1}交出{i1}这件事	hPt
 Brook: The Ocean of Dressing	溪流:调味海洋	w
 Brook: The Problematic Hedge	溪流:有问题的树篱	w
+Build placement: Floor Hatch	地板活板门	wi
+Build placement: Track (NEW)	轨道（北东西）	wi
+Build placement: Track (NSE)	轨道（北南东）	wi
+Build placement: Track (NSW)	轨道（北南西）	wi
+Build placement: Track (SEW)	轨道（南东西）	wi
+Build placement: {s}'s Forge	{s}锻造工坊	wtlx
 Camera controls ({d} of {d})	镜头控制 ({d} of {d})	wt
 Cancel this scheduled order.	取消此日程命令。	hj
 Certainly considered a bully	被肯定地看做是一名恶霸	w
@@ -77189,6 +77392,7 @@ Conversation keyword: follow	跟随	l
 Conversation keyword: forces	部队	l
 Conversation keyword: fright	惊恐	l
 Conversation keyword: gaiety	欢快	l
+Conversation keyword: goblin	地精	l
 Conversation keyword: groups	势力	l
 Conversation keyword: grovel	卑躬屈膝	l
 Conversation keyword: guards	卫兵	l
@@ -77567,7 +77771,7 @@ Dance Performance of at {p}.	在{p1}，舞蹈表演。	htEi
 Dance Performance of in {d}.	{d1}年的舞蹈表演。	htEi
 Dance Performance of in {p}.	在{p1}，舞蹈表演。	htEi
 Dance Performance within {p}	在{p1}，舞蹈表演	htEi
-Demand period (more = fewer)	贵族要求间隔（越高越少）
+Demand period (more = fewer)	贵族要求间隔（越高越少）	P
 Designating low traffic area	设置低通行区域	wo
 Did anybody flee the attack?	有人从袭击中逃出来吗？	hP
 Do not hold on for too long.	不要执着太久。	hP
@@ -77961,6 +78165,10 @@ You leap at {n} from behind!	你从背后扑向{n1}！	hPt
 You play the {s} with skill.	你娴熟地演奏着{s1}。	hPt
 You retract into your shell.	你缩进自己的壳里。	hP
 You vomit into the sea foam.	你吐进了海沫里。	hP
+Zone location: Shrine of {e}	{e1}的圣地	htl
+Zone location: Shrine to {e}	供奉{e1}的圣地	htl
+Zone location: Temple of {e}	{e1}的神殿	htl
+Zone location: {s} guildhall	{s1}行会大厅	htl
 Zoom out from the play area.	缩小游戏区域。	hj
 Zoom out from the play area.	缩小游戏区域。	wl
 a competition involving {b}.	以《{b1}》为内容的比赛。	htEi
@@ -79295,6 +79503,9 @@ Adventure action: Spray gas	喷射气体	l
 Adventure action: Spray web	喷射蛛网	l
 Adventure action: Suffocate	窒息	l
 Adventure action: Transform	变形	l
+Adventure companion: Ground	倒地	wl
+Adventure companion: Nearby	附近	wl
+Adventure companion: Webbed	被蛛网缠住	wl
 Adventure item action: Read	阅读	h
 Adventure item action: Roll	掷骰	h
 Adventure movement: Average	一般	l
@@ -79448,6 +79659,13 @@ Bring up {e}'s claim on {e}	谈起{e1}宣称拥有{e2}这件事	hPt
 Bring up {p}'s embezzlement	谈起{p1}挪用资金这件事	hPt
 Brook: The Packs of Tugging	小溪：拉扯之兽群	l
 Brook: The Primitive Defect	溪流:原始缺陷	w
+Build placement: Track (EW)	轨道（东西）	wi
+Build placement: Track (NE)	轨道（北东）	wi
+Build placement: Track (NS)	轨道（北南）	wi
+Build placement: Track (NW)	轨道（北西）	wi
+Build placement: Track (SE)	轨道（南东）	wi
+Build placement: Track (SW)	轨道（南西）	wi
+Build placement: {s}'s Shop	{s}工坊	wtlx
 Character overview: Healthy	健康	l
 Character overview: Musical	有乐感	l
 Character room grade: Study	书房	l
@@ -79483,6 +79701,7 @@ Conversation keyword: crime	犯罪	l
 Conversation keyword: dance	舞蹈	l
 Conversation keyword: death	死亡	l
 Conversation keyword: debts	债务	l
+Conversation keyword: don t	不	l
 Conversation keyword: doubt	怀疑	l
 Conversation keyword: drink	饮用	l
 Conversation keyword: drive	驱逐	l
@@ -79505,6 +79724,7 @@ Conversation keyword: guard	卫兵	l
 Conversation keyword: guide	向导	l
 Conversation keyword: guilt	内疚	l
 Conversation keyword: hello	你好	l
+Conversation keyword: human	人类	l
 Conversation keyword: humor	幽默	l
 Conversation keyword: labor	劳作	l
 Conversation keyword: later	稍后	l
@@ -79543,6 +79763,8 @@ Conversation keyword: sorry	抱歉	l
 Conversation keyword: state	阐述	l
 Conversation keyword: thank	致谢	l
 Conversation keyword: theft	盗窃	l
+Conversation keyword: topic	话题	l
+Conversation keyword: total	完全	l
 Conversation keyword: trade	交易	l
 Conversation keyword: truth	诚实	l
 Conversation keyword: value	价值	l
@@ -79976,6 +80198,7 @@ Related Underground Regions	相关地下区域	h
 Religion with ruined temple	宗教（神殿已毁）	wl
 Remove hidden designations.	移除隐藏标记。	hj
 Removing fluids and spatter	正在移除流体和飞溅物	wo
+Request a guide to yourself	请求向导带你找到你自己	hP
 Requests (Imports from {e})	商品需求（从{e1}进口）	hPt
 Room completed ({d} of {d})	房间已挖掘（{d1}/{d2}）	hqtO
 Room completed ({d} of {d})	房间建设完成 ({d} of {d})	wt
@@ -80251,6 +80474,7 @@ You root around in the {s}.	你在{s1}中翻找。	hPt
 Your ambition is misguided.	你的抱负走错了方向。	hP
 Your dreams will come true.	你的梦想将会成真。	hP
 Your room is up the stairs.	你的房间在楼上。	hP
+Zone location: {d} patients	{d1} 名患者	htl
 a competition in the wilds.	在荒野中，比赛。	hEi
 a competition involving {b}	以《{b1}》为内容的比赛	htEi
 a dance competition at {p}.	在{p1}，舞蹈比赛。	htEi
@@ -81636,6 +81860,7 @@ Argue the value of loyalty	争辩忠诚的价值	hP
 Argue the value of romance	争辩爱情的价值	hP
 Art form: unspecified mood	风格未注明	l
 Ask about the law-breaking	询问违法行为	hP
+Ask for the whereabouts of	询问下落（对象不明）	hP
 Ask listener to follow you	请对方跟随你	hP
 Attempted {e} in the wilds	在荒野中，未遂的{e1}	htEi
 Automatically collect webs	自动收集网	wi
@@ -81760,6 +81985,10 @@ Book title subject: Wedges	楔子	hi
 Bring up {e}'s destruction	谈起{e1}被毁这件事	hPt
 Broker cannot access depot	交易员无法到达贸易站	wi
 Brook: The Rift of Beetles	溪流:甲虫裂缝	w
+Build placement: Track (E)	轨道（东）	wi
+Build placement: Track (N)	轨道（北）	wi
+Build placement: Track (S)	轨道（南）	wi
+Build placement: Track (W)	轨道（西）	wi
 Building destroyed/toppled	建筑被摧毁或推倒	w
 Bypass greeting (new menu)	跳过问候（打开新菜单）	hP
 Cannot assign work animals	无法分配工作动物	w
@@ -81793,6 +82022,7 @@ Conversation keyword: boss	上司	l
 Conversation keyword: both	双方	l
 Conversation keyword: brag	吹嘘	l
 Conversation keyword: calm	冷静	l
+Conversation keyword: care	在意	l
 Conversation keyword: come	过来	l
 Conversation keyword: dead	已死	l
 Conversation keyword: deal	成交	l
@@ -81805,6 +82035,7 @@ Conversation keyword: fear	恐惧	l
 Conversation keyword: fled	已逃离	l
 Conversation keyword: flee	逃离	l
 Conversation keyword: free	免费	l
+Conversation keyword: from	从	l
 Conversation keyword: give	赠送	l
 Conversation keyword: glee	欢喜	l
 Conversation keyword: good	不错	l
@@ -81821,13 +82052,17 @@ Conversation keyword: join	加入	l
 Conversation keyword: joke	笑话	l
 Conversation keyword: kick	驱逐	l
 Conversation keyword: kill	杀死	l
+Conversation keyword: kind	种类	l
+Conversation keyword: know	知道	l
 Conversation keyword: lair	巢穴	l
 Conversation keyword: land	领地	l
 Conversation keyword: life	生活	l
 Conversation keyword: list	列出	l
 Conversation keyword: love	爱意	l
 Conversation keyword: lust	欲望	l
+Conversation keyword: menu	菜单	l
 Conversation keyword: mock	讥讽	l
+Conversation keyword: must	必须	l
 Conversation keyword: name	名字	l
 Conversation keyword: okay	还可以	l
 Conversation keyword: pike	长枪术	l
@@ -81853,11 +82088,15 @@ Conversation keyword: take	拿取	l
 Conversation keyword: talk	交谈	l
 Conversation keyword: task	任务	l
 Conversation keyword: tell	讲述	l
+Conversation keyword: that	这	l
+Conversation keyword: they	他们	l
+Conversation keyword: this	这	l
 Conversation keyword: town	城镇	l
 Conversation keyword: true	真正的	l
 Conversation keyword: upon	之后	l
 Conversation keyword: wait	等待	l
 Conversation keyword: what	什么	l
+Conversation keyword: with	用	l
 Conversation keyword: work	工作	l
 Conversation keyword: your	你的	l
 Conversation keyword: zeal	热忱	l
@@ -82550,6 +82789,7 @@ You strap {s} to your {s}.	你把{s1}系在了{s2}上。	hPt
 You vomit into the flames.	你吐进了火焰里。	hP
 You will need to appoint a	你需要任命一位	hq
 Your Attributes and Skills	你的属性与技能
+Zone location: {d} patient	{d1} 名患者	htl
 Zone type: Animal Training	驯兽区	l
 a competition in the wilds	在荒野中，比赛	hEi
 a conspiracy to slow labor	合谋怠工	h
@@ -83772,6 +84012,8 @@ Add or choose a location.	添加或选择一个地点。	wli
 Adventure action: Blister	引发水疱	l
 Adventure action: Butcher	屠宰	l
 Adventure action: Scratch	刨地	l
+Adventure companion: Dead	已死亡	wl
+Adventure companion: Done	完成	wl
 Adventure movement: Awful	很差	l
 Adventure movement: Clear	视野清晰	l
 Adventure movement: Climb	攀爬	l
@@ -83937,28 +84179,40 @@ Competition of within {p}	在{p1}，比赛	htEi
 Construction nearly done.	建造即将完成。	wli
 Conversation keyword: age	年龄	l
 Conversation keyword: aid	援助	l
+Conversation keyword: all	全部	l
+Conversation keyword: and	和	l
+Conversation keyword: are	是	l
 Conversation keyword: art	艺术	l
+Conversation keyword: ask	询问	l
 Conversation keyword: awe	敬畏	l
 Conversation keyword: bad	不好	l
 Conversation keyword: bow	行礼	l
+Conversation keyword: but	但	l
 Conversation keyword: buy	买入	l
 Conversation keyword: bye	告别	l
 Conversation keyword: die	死亡	l
+Conversation keyword: elf	精灵	l
 Conversation keyword: end	结束	l
+Conversation keyword: for	为	l
+Conversation keyword: had	有过	l
 Conversation keyword: job	职务	l
 Conversation keyword: joy	喜悦	l
 Conversation keyword: law	法律	l
 Conversation keyword: lie	说谎	l
 Conversation keyword: map	地图	l
 Conversation keyword: new	新的	l
+Conversation keyword: not	不	l
 Conversation keyword: out	出去	l
 Conversation keyword: pet	宠物	l
 Conversation keyword: rob	抢夺	l
 Conversation keyword: sad	难过	l
 Conversation keyword: say	说	l
+Conversation keyword: the	该	l
 Conversation keyword: war	战争	l
+Conversation keyword: was	曾是	l
 Conversation keyword: who	谁	l
 Conversation keyword: yes	是	l
+Conversation keyword: you	你	l
 Conversation mood: Afraid	害怕	l
 Conversation mood: Amazed	惊奇	l
 Conversation mood: Amused	愉快	l
@@ -85711,6 +85965,8 @@ Acknowledge lack of zeal	表示没有热忱	hP
 Adventure action: Sicken	致病	l
 Adventure action: Unroll	舒展开来	l
 Adventure action: Vanish	隐身	l
+Adventure companion: ***	不明	wl
+Adventure companion: You	你	wl
 Adventure movement: Fair	尚可	l
 Adventure movement: Good	良好	l
 Adventure movement: Move	移动	l
@@ -85824,6 +86080,7 @@ Book title subject: Wind	风	hi
 Book title subject: Word	词	hi
 Book title subject: Year	年	hi
 Bring up {p}'s vandalism	谈起{p1}蓄意破坏这件事	hPt
+Build placement: Furnace	熔炉	wi
 Capture and train small 	在此捕获和训练小动物。需要动	w
 Carve a gap in a smooth 	在光滑的墙面上凿一个缺口，让	w
 Carve downward staircase	挖掘下行楼梯	wi
@@ -85845,8 +86102,17 @@ Closing Ceremony in {p}.	在{p1}，闭幕仪式。	htEi
 Competition in the wilds	在荒野中，比赛	hEi
 Confirm and save uniform	确认并保存制式服装	w
 Conflicts with Dwarvemon	与 Dwarvemon 冲突
+Conversation keyword: an	一个	l
+Conversation keyword: as	作为	l
+Conversation keyword: be	被	l
+Conversation keyword: by	通过	l
+Conversation keyword: in	在	l
+Conversation keyword: is	是	l
+Conversation keyword: it	此事	l
 Conversation keyword: me	我	l
 Conversation keyword: no	否	l
+Conversation keyword: of	的	l
+Conversation keyword: to	向	l
 Conversation mood: Angry	愤怒	l
 Conversation mood: Bored	无聊	l
 Conversation mood: Doubt	怀疑	l
@@ -86246,6 +86512,7 @@ Rampage in in {p} in {d}	{d1}年的{p1}的肆虐事件	htEi
 Rampage in in {p} in {p}	在{p2}，{p1}的肆虐事件	htEi
 Rampage of {n} in in {p}	{n1}在{p1}的肆虐事件	htEi
 Recenter on this burrow.	将视图重新居中到此活动区。	hj
+Recommend {n} as a guide	推荐{n1}担任向导	hPt
 Refuse the interrogation	拒绝接受审问	hP
 Regular mining blueprint	常规挖掘蓝图	wo
 Rethink your priorities.	重新考虑事情的轻重缓急。	hP
@@ -87818,6 +88085,7 @@ Adventure action: Blind	致盲	l
 Adventure action: Clean	清洁	l
 Adventure action: Curse	诅咒	l
 Adventure action: Dance	跳舞	l
+Adventure companion: In	位于：	wl
 Adventure movement: Fly	飞行	l
 Adventure movement: Jog	慢跑	l
 Adventure movement: Run	奔跑	l
@@ -87872,6 +88140,7 @@ Broker can access depot	交易员可以到达贸易站	wi
 Brook: The Yellow Style	溪流:黄色风格	w
 Build a grand guildhall	建造大行会大厅	hP
 Build menu: Stoneworker	石匠工坊	wi
+Build placement: Stairs	楼梯	wi
 Can {b} Save The World?	{b}能拯救世界吗？	hbti
 Cancel tribute from {e}	取消{e1}的贡赋	hPt
 Cannot afford {s} ({d})	买不起{s}（{d}）	wtl
@@ -87900,6 +88169,7 @@ Conquest of {p} in {p}.	在{p2}，征服「{p1}」。	htEi
 Construction initiated.	建造已开始。	wli
 Construction suspended.	建造暂停。	wli
 Conversation (Conflict)	对话（冲突）	w
+Conversation keyword: a	一个	l
 Conversation mood: Free	自由自在	l
 Conversation mood: Glum	忧郁	l
 Copper-bearing boulders	含铜矿石	wi
@@ -89940,6 +90210,7 @@ Book title noun: ticks	滴答声	hi
 Bring up {p}'s bribery	谈起{p1}贿赂这件事	hPt
 Build a temple complex	建造神殿建筑群	hP
 Build menu: Metalsmith	金属锻造坊	wi
+Build placement: Track	轨道	wi
 Carve upward staircase	挖掘上行楼梯	wi
 Catch live land animal	捕获活的陆地动物	wi
 Cavern Layer Water Max	洞穴层含水量上限
@@ -90367,6 +90638,7 @@ Release small creature	释放小型生物	wi
 Remove this condition.	移除此条件。	hj
 Reorganize possessions	整理随身物品	w
 Request a guide to {e}	请求向导带路前往{e1}	hPt
+Request a guide to {n}	请求向导带你找到{n1}	hPt
 Rethink your approach.	重新考虑你的方法。	hP
 Revealing hidden items	显示隐藏物品	wo
 Running around crazed!	发疯般四处奔跑！	hP
@@ -91993,6 +92265,7 @@ Add mud to the arena.	向竞技场中添加淤泥。	l
 Add or remove fluids.	添加或移除流体。	hj
 Add or remove fluids.	添加或移除流体。	l
 Adventure action: Rot	腐烂	l
+Adventure barter: You	你	l
 Adventure compass: NE	东北
 Adventure compass: NW	西北
 Adventure compass: SE	东南
@@ -92657,6 +92930,7 @@ You will be rewarded.	你将获得回报。	hP
 Your citizens need a 	你的居民需要一个舒适的睡眠场	w
 Z Levels Above Ground	地表上方的 Z 层数
 Zinc-bearing boulders	含锌矿石	wi
+Zone location: of {e}	{e1}的	htl
 a business rival, {a}	商业对手{a1}	htu
 a ceremony during {e}	在{e1}期间，仪式	htEi
 a ceremony within {p}	在{p1}，仪式	htEi
@@ -94565,6 +94839,17 @@ Elevation X-Variance	海拔 X 轴差异
 Elevation Y-Variance	海拔 Y 轴差异
 Elven forest retreat	精灵森林聚落	wi
 Embark finder: Begin	开始	w
+Embark finder: Clay	黏土	w
+Embark finder: Sand	沙	w
+Embark finder: Iron	铁	w
+Embark finder: Gold	金	w
+Embark finder: Silver	银	w
+Embark finder: Copper	铜	w
+Embark finder: Nickel	镍	w
+Embark finder: Zinc	锌	w
+Embark finder: Platinum	铂	w
+Embark finder: Tin	锡	w
+Embark finder: Lead	铅	w
 Exotic Clothing Shop	异域服装店	wi
 Famous loyal soldier	名声显赫的忠诚军人	w
 Feared as a murderer	令人恐惧的屠夫	w
@@ -100984,6 +101269,7 @@ Related Structures	相关建筑	h
 Removal suspended.	拆除暂停。	wli
 Remove this route.	移除此路线。	hj
 Repaint this zone.	重新涂画此区域。	hj
+Request a guide to	请求向导带路（目的地不明）	hP
 SAVAGERY REJECTION	野性不符合要求	hP
 Salt water [{d}/7]	咸水 [{d}/7]	wtl
 Savagery Mesh Size	野蛮度网格尺寸
@@ -104877,6 +105163,7 @@ Set high and low 	设置高、低优先级通行区域。	w
 Severe blood loss	严重失血	w
 She tries to keep	她会努力保持
 Show cliffs/grade	显示峭壁/坡度
+cliffs/grade	峭壁/坡度	wi
 Show overlay help	显示帮助悬浮层	w
 Showing important	显示重要记录	wl
 Showing type,date	显示类型及日期	wl
@@ -123472,7 +123759,6 @@ Put in chains	戴上锁链	wi
 Quick to love	容易动情	w
 Rear Compound	后置复合词	w
 Recite a poem	朗诵诗歌	hP
-Recommend {p}	推荐{p1}	hPt
 Record Keeper	记录员	wi
 Regular beast	野兽来袭	w
 Related Sites	相关地点	h
@@ -127802,6 +128088,7 @@ yellow zircon	黄锆石	wi
 {d} rock nuts	{d} 份岩石坚果	wt
 {d} shops max	最多{d}座工坊	wtl
 {d} until {d}	{d1}至{d2}年	ht
+{d} witnesses	{d}名证人	wt
 {d}% occupied	已占用{d}%	wtl
 {d}nd Felsite	霏细岩月{d}日	wt
 {d}nd Granite	花岗岩月{d}日	wt
@@ -132385,6 +132672,7 @@ Thoughtless	行事冲动	w
 Throne Room	王座厅	w
 Toggle line	切换连线	wl
 Track/Spoor	踪迹	w
+Trade depot	贸易站	hP
 Trade depot	贸易站	wi
 Trees: None	树木: 无	w
 UI Overlays	界面覆盖层	w
@@ -135936,6 +136224,7 @@ zesty green	鲜柠檬绿	wi
 {d} planted	已种植{d}	wtl
 {d} present	在场 {d}	wtl
 {d} targets	{d1}个目标	hPt
+{d} witness	{d}名证人	wt
 {d}nd Slate	板岩月{d}日	wt
 {d}rd Slate	板岩月{d}日	wt
 {d}st Slate	板岩月{d}日	wt
@@ -145943,6 +146232,7 @@ Shis	希斯	wi
 Shop	商店	wi
 Shos	肖斯	wi
 Show	显示	hP
+Show tunnels on world map	在世界地图上显示隧道	hP
 Shuk	舒克	wi
 Sing	歌唱	hP
 Site	地点

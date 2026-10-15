@@ -1,0 +1,352 @@
+Windows PE 53.16 Companions: manual native source reconstruction
+================================================================
+This file is a manual reconstruction from the complete native disassemblies
+reference-companions-renderer.asm and classic-companions-renderer.asm.
+It is not output from a Ghidra execution in this Windows session, replacement
+game code, or an executable check. ELF readable field meanings are taken from
+elf-decompiled.c and the adjacent extracted supplier assembly. Raw field offsets
+and conditional branches below are established by the Windows PE instructions.
+All addresses below are RVAs, without image base 0x140000000. A pair is
+reference / classic. Corresponding renderer instructions have delta 0x2780.
+Native image identities: reference PE:6a70a6d9:02711000;
+classic PE:6a70b91c:0270a000. Exact source ranges are in native-functions.tsv.
+
+Renderer starts: 0x86ddb0 / 0x86b630.
+Native addst: reference 0xad9960; classic 0xad69a0.
+Native glyph writer: reference 0x0bb190; classic 0x0bb120.
+String housekeeping, allocation failure and exception paths do not add UI text.
+The procedure extraction stops before the adjacent sixteen-entry jump table;
+its targets are retained separately in native-switches.tsv as data.
+
+Per-row inputs:
+  nemesis = companions.companion_party_nem[index] at interface +0x08.
+  unit = companions.companion[index] at interface +0x20.
+  visible = packed 32-bit visibility word array at +0x38, bit index % 32.
+  position x/y/z = int16 vector arrays at +0x58 / +0x70 / +0x88.
+  index 0 is the player entry, and skips the location/bearing row.
+  unavailable local coordinate sentinel = -30000 (0xffff8ad0).
+  status_x = center - 4; status_y = row_top + 1;
+  location_x = center - 38; location_y = row_top + 2.
+
+Complete right-column control flow
+---------------------------------
+At 0x86e7f1 / 0x86c071 the renderer separates a nemesis record from a local-only unit.
+
+if (nemesis != nullptr) {
+    historical_figure = nemesis->historical_figure;       // record +0x10
+    if (historical_figure->death_year != -1) {           // hf +0x30
+        // condition 0x86e7fe / 0x86c07e
+        addst("Dead");                                  // call 0x86e854 / 0x86c0d4
+        goto next_row_status;
+    }
+
+    unit = nemesis->unit;                               // record +0x18
+    if (unit != nullptr && (unit->flags1 & 0x80000002) == 0x80000000) {
+        // loaded/active, alive; branches 0x86e8a2 / 0x86c122 and 0x86e8b6 / 0x86c136
+        if (unit->counters.unconscious > 0) {           // +0x800; 0x86e8c1 / 0x86c141
+            addst("Unconscious");                       // call 0x86e92c / 0x86c1ac
+        } else if (unit->counters2.paralysis >= 100) {   // +0x978; 0x86e937 / 0x86c1b7
+            addst("Paralyzed");                         // call 0x86e996 / 0x86c216
+        } else if (unit->counters.webbed >= 10) {       // +0x804; 0x86e99e / 0x86c21e
+            addst("Webbed");                            // call 0x86e9ff / 0x86c27f
+        } // all false: no status word; no invented "Healthy"
+
+        if (index == 0) goto next_row_status;           // 0x86ea4a / 0x86c2ca
+        if (position_x[index] == -30000) {              // 0x86ea5e / 0x86c2de
+            addst("In party nearby");                  // call 0x86ead7 / 0x86c357
+        } else {
+            goto bearing_row;                          // target 0x86f6b6 / 0x86cf36
+        }
+        goto next_row_status;
+    }
+
+    // Off-map or unavailable living active unit.
+    info = historical_figure->info;                    // hf +0x130
+    location = info ? info->location : nullptr;         // info +0x28
+    if (!info || !location) goto distant;               // 0x86ec4d / 0x86c4cd, 0x86ec5a / 0x86c4da
+
+    if (location->world_position_id != -1) {            // +0x10; 0x86ec63 / 0x86c4e3
+        // Search native sorted world-position records for this ID.
+        // Empty vector, exhausted ID search or null matching record => Distant.
+        // Branches 0x86ec84 / 0x86c504, 0x86ecba / 0x86c53a, 0x86ecbf / 0x86c53f,
+        // 0x86eccd / 0x86c54d, 0x86ed51 / 0x86c5d1.
+        world_position = find_world_position(location->world_position_id);
+        if (!world_position) goto distant;
+
+        // Native signed local world coordinates +4/+6 divide by 48.
+        // Requires nonnull world region_map, nonnegative/in-range x and y,
+        // region-map index >=0 and < region-vector count, nonnull region.
+        // Branch range 0x86ed93 / 0x86c613 .. 0x86edf0 / 0x86c670.
+        region = region_at(world_position->x / 48, world_position->y / 48);
+        if (!region) goto distant;
+        caption = "Traveling through ";
+        region_name_append(caption, region->id, 0);      // call 0x86ee61 / 0x86c6e1
+        addst(caption, clip_columns=30);                // call 0x86ee77 / 0x86c6f7
+        goto next_row_status;
+    }
+
+    // The three static location IDs are strictly prioritized; not coexisting.
+    if (location->site_id != -1) {                      // +4; 0x86ee82 / 0x86c702
+        caption = "In ";
+        site_name_append(caption, location->site_id, 0);// call 0x86eef7 / 0x86c777
+        addst(caption, clip_columns=30);                // call 0x86ef0d / 0x86c78d
+    } else if (location->region_id != -1) {             // +8; 0x86ef18 / 0x86c798
+        caption = "In ";
+        region_name_append(caption, location->region_id, 0);
+                                                        // call 0x86ef8d / 0x86c80d
+        addst(caption, clip_columns=30);                // call 0x86efa3 / 0x86c823
+    } else if (location->underground_region_id != -1) { // +0xc; 0x86efae / 0x86c82e
+        caption = "In ";
+        underground_region_name_append(caption, location->underground_region_id, 0);
+                                                        // call 0x86f00f / 0x86c88f
+        addst(caption, clip_columns=30);                // call 0x86f025 / 0x86c8a5
+    } else {
+distant:
+        addst("Distant");                               // call 0x86ed3c / 0x86c5bc
+    }
+} else {
+    if (!visible) {                                    // 0x86f051 / 0x86c8d1
+        addst("Not visible");                           // call 0x86ff04 / 0x86d784
+        goto next_row_status;
+    }
+    if (unit->flags1 & 2) {                             // 0x86f062 / 0x86c8e2
+        addst("Dead");                                  // call 0x86f0b5 / 0x86c935
+        goto next_row_status;
+    }
+
+    // Visible living local unit. Independent native status icons follow.
+    // No words Unconscious/Paralyzed/Webbed are drawn on THIS branch.
+    render_health_icons(unit);
+
+    if ((unit->wrestling.end - unit->wrestling.begin) / 16 != 0) {
+        // +0xb20/+0xb18; condition 0x86f4d0 / 0x86cd50
+        addst_at(status_x + 13, "Wrestle");             // call 0x86f53f / 0x86cdbf
+    }
+    if (unit->flags1 & 0x8000) {                        // condition 0x86f580 / 0x86ce00
+        addst_at(status_x + 22, "Ground");              // call 0x86f5eb / 0x86ce6b
+    }
+    // These are separate if statements: Wrestle AND Ground can coexist.
+    // They also coexist with any independently drawn preceding health icons.
+
+    if (index == 0) goto next_row_status;               // 0x86f631 / 0x86ceb1
+    if (position_x[index] == -30000) {                  // 0x86f64d / 0x86cecd
+        addst_at(location_x, "Nearby");                 // call 0x86f6ab / 0x86cf2b
+    } else {
+        goto bearing_row;
+    }
+}
+
+Health icon producer (no translated text)
+----------------------------------------
+The PE renderer inlines ELF supplier 0xb89d40 rather than calling it.
+Inlined logic spans 0x86f0c0 / 0x86c940 .. 0x86f1aa / 0x86ca2a:
+
+  mild = 0; severe = 0;
+  if ((unit->flags3 & 0x1000) == 0) { // ghostly at +0x118; 0x86f0c6 / 0x86c946
+      refresh_limb_counts(unit);     // reference 0x1385b10 / classic 0x1380a80
+      grasp_count = unit->status2.limbs_grasp_count; // int16 +0xc3e
+      refresh_limb_counts(unit);
+      grasp_max = unit->status2.limbs_grasp_max;     // int16 +0xc3c
+      if (grasp_count < grasp_max) {               // 0x86f0fa / 0x86c97a
+          mild = 1;
+          if (grasp_count < grasp_max - 1) severe = 1;
+      }
+      if (unit->body.blood_count < (unit->body.blood_max >> 1)) mild = 1;
+      if (unit->body.blood_count < (unit->body.blood_max >> 2)) severe = 1;
+      // +0x6c8 count/+0x6c4 max; 0x86f124 / 0x86c9a4, 0x86f131 / 0x86c9b1
+
+      // Second ghostly guard is preserved literally; refresh can mutate state.
+      if ((unit->flags3 & 0x1000) == 0) {
+          refresh_limb_counts(unit);
+          stand_max = unit->status2.limbs_stand_max;     // int16 +0xc38
+          if (stand_max != 0) {                        // 0x86f152 / 0x86c9d2
+              stand_count = unit->status2.limbs_stand_count; // int16 +0xc3a
+              if ((unit->flags3 & 0x40) != 0 && stand_max >= 2) ++stand_count;
+              // Raw native +0x118 mask 0x40 preserved; 0x86f15e / 0x86c9de
+              if (stand_count <= (stand_max >> 1)) severe = 1;
+          }
+      }
+      if (native_severe_health_predicate(unit)) severe = 2;
+      // call 0x86f17d / 0x86c9fd; supplier reference 0x1383a70 / classic 0x137e9e0
+      if (mild && severe != 0) mild = 0;               // 0x86f196 / 0x86ca16 .. 0x86f1a6 / 0x86ca26
+  } // ghostly: both + flags remain zero; no health-loss '+' is invented
+
+Critical-health predicate is also fully extracted; it emits no strings.
+Manual reconstruction of reference 0x1383a70..0x1383b39 and
+classic 0x137e9e0..0x137eaa9 (helper instruction delta 0x5090):
+
+  plan = unit->body.body_plan;                  // unit +0x5f8
+  raw_parts = plan->vector_at_0;
+  statuses = unit->body.components.body_part_status.begin; // unit +0x4f0
+  for (int16 part = int16(raw_parts.size() - 1); part >= 0; --part) {
+      // status-bit condition 0x1383aa4 / 0x137ea14
+      if ((statuses[part] & 0x4) == 0) continue;
+      // native index bounds branch 0x1383abc / 0x137ea2c
+      if (part >= raw_parts.size()) continue;
+      raw = raw_parts[part];
+      bits = raw->byte_vector_at_0x48;          // size at raw +0x50
+      if (bits.size() > 0 && (bits[0] & 0x40)) return true;
+      // conditions 0x1383ac2,0x1383acc / 0x137ea32,0x137ea3c
+      if (bits.size() > 1 && (bits[1] & 0x40)) return true;
+      // conditions 0x1383ae3,0x1383aed / 0x137ea53,0x137ea5d
+      if (bits.size() > 1 && (bits[1] & 0x10)) return true;
+      // conditions 0x1383b05,0x1383b0f / 0x137ea75,0x137ea7f
+  }
+  return (unit->flags2 & 0x4000) != 0;          // unit +0x114
+  // fallback 0x1383b29 / 0x137ea99; early true return 0x1383b36 / 0x137eaa6
+
+The refresh-health supplier 0x1385b10..0x1386326 / 0x1380a80..0x1381296
+updates native availability and limb maximum/count fields; it emits no strings.
+Its full branches are retained in reference-refresh-health.asm and
+classic-refresh-health.asm. The visible status decision consumes the exact
+limb and blood values reconstructed above; there is no additional health label
+hidden inside either supplier.
+
+Each glyph draw is independent unless the mild/severe + precedence says otherwise.
+Values are packed native gps color words. Native glyphs/colors are preserved.
+condition                         glyph  x relative status_x  color       branch                 call
+unconscious +0x800 >0              X       0                   0x1010007   0x86f1af / 0x86ca2f  0x86f1e0 / 0x86ca60
+paralysis +0x978 >=100             0x0f    1                   0x1010003   0x86f1e5 / 0x86ca65  0x86f218 / 0x86ca98
+webbed +0x804 >=10                 0x0f    2                   0x1010007   0x86f21d / 0x86ca9d  0x86f251 / 0x86cad1
+nausea +0x81c >0                   X       3                   0x1010002   0x86f256 / 0x86cad6  0x86f289 / 0x86cb09
+stunned +0x7fe >0 OR dizziness
+ +0x820 >0                        X       4                   0x1010003   0x86f28e / 0x86cb0e  0x86f2ca / 0x86cb4a
+winded +0x7fc >0                   X       5                   0x1000007   0x86f2cf / 0x86cb4f  0x86f303 / 0x86cb83
+severe !=0                        +       6                   0x1010704   0x86f308 / 0x86cb88  0x86f348 / 0x86cbc8
+else mild !=0                     +       6                   0x1010706   0x86f319 / 0x86cb99  0x86f348 / 0x86cbc8
+fever +0x980 >0                    X       7                   0x1010704   0x86f34d / 0x86cbcd  0x86f380 / 0x86cc00
+thirst_timer +0x98c >=57600        0x19    8                   0x1010001   0x86f385 / 0x86cc05  0x86f3bb / 0x86cc3b
+hunger_timer +0x988 >=57600        0x19    9                   0x1000006   0x86f3c0 / 0x86cc40  0x86f3f6 / 0x86cc76
+sleepiness_timer +0x990 >=115200   0x19   10                   0x1000007   0x86f3fb / 0x86cc7b  0x86f431 / 0x86ccb1
+soldier_mood +0x814 !=-1           !      11                   switch      0x86f436 / 0x86ccb6  0x86f4b9 / 0x86cd39
+
+Soldier mood palette at 0x86f454 / 0x86ccd4 .. 0x86f4a3 / 0x86cd23:
+  0 -> 0x1010002; 1 -> 0x1000004; 2 -> 0x1010006;
+  3 -> 0x1000006; 4 -> 0x1000003.
+Other non--1 values still draw ! using the current native palette.
+No additional English statuses accompany any of these icons.
+
+Bearing row
+-----------
+Entry 0x86f6b6 / 0x86cf36 reads player and selected companion x/y/z.
+If player x OR companion x equals -30000, 0x86f6e0 / 0x86cf60 and
+0x86f6e9 / 0x86cf69 jump to 0x86ff0f / 0x86d78f: no prefix, bearing or vertical glyph.
+(The companion sentinel is normally intercepted earlier as Nearby/In party nearby.)
+Otherwise selector starts at -1 (0x86f6f2 / 0x86cf72).
+If player and companion x/y are equal, selector stays -1 (same horizontal tile,
+even if z differs); otherwise atan2(player_y - companion_y, companion_x - player_x)
+is called at 0x86f720 / 0x86cfa0 and compared to the complete sixteen angle sectors.
+
+Distance = int16(truncate(sqrt(int16(dx)^2 + int16(dy)^2))).
+Color branches 0x86f882 / 0x86d102 .. 0x86f8c7 / 0x86d147:
+  distance <=0 -> 0x1010007;
+  1..25 -> 0x1010002;
+  26..50 -> 0x1000002;
+  51..100 -> 0x1000006;
+  >100 -> 0x1010000.
+Only color changes, never the textual production.
+
+If nemesis==nullptr: addst("Visible: "); // condition 0x86f904 / 0x86d184, call 0x86f93c / 0x86d1bc
+else: addst("In party: ");              // call 0x86f976 / 0x86d1f6
+Then selector >15 unsigned => "***" at 0x86f9b7 / 0x86d237, call 0x86fd40 / 0x86d5c0.
+This includes -1; it is not a seventeenth direction.
+The native jump-table dispatch at 0x86f9ca / 0x86d24a handles every 0..15 target:
+  selector 0: N; addst call 0x86f9f5 / 0x86d275; return 0x86f9fa / 0x86d27a
+  selector 1: NNE; addst call 0x86fa28 / 0x86d2a8; return 0x86fa2d / 0x86d2ad
+  selector 2: NE; addst call 0x86fa5b / 0x86d2db; return 0x86fa60 / 0x86d2e0
+  selector 3: ENE; addst call 0x86fa8e / 0x86d30e; return 0x86fa93 / 0x86d313
+  selector 4: E; addst call 0x86fac1 / 0x86d341; return 0x86fac6 / 0x86d346
+  selector 5: ESE; addst call 0x86faf4 / 0x86d374; return 0x86faf9 / 0x86d379
+  selector 6: SE; addst call 0x86fb27 / 0x86d3a7; return 0x86fb2c / 0x86d3ac
+  selector 7: SSE; addst call 0x86fb5a / 0x86d3da; return 0x86fb5f / 0x86d3df
+  selector 8: S; addst call 0x86fb8d / 0x86d40d; return 0x86fb92 / 0x86d412
+  selector 9: SSW; addst call 0x86fbc0 / 0x86d440; return 0x86fbc5 / 0x86d445
+  selector 10: SW; addst call 0x86fbf3 / 0x86d473; return 0x86fbf8 / 0x86d478
+  selector 11: WSW; addst call 0x86fc26 / 0x86d4a6; return 0x86fc2b / 0x86d4ab
+  selector 12: W; addst call 0x86fc59 / 0x86d4d9; return 0x86fc5e / 0x86d4de
+  selector 13: WNW; addst call 0x86fc8c / 0x86d50c; return 0x86fc91 / 0x86d511
+  selector 14: NW; addst call 0x86fcbf / 0x86d53f; return 0x86fcc4 / 0x86d544
+  selector 15: NNW; addst call 0x86fcf2 / 0x86d572; return 0x86fcf7 / 0x86d577
+
+After text, palette becomes 0x1000007 and dz = player_z - companion_z.
+Preserve actual PE control flow; do not normalize cumulative negative fallthrough:
+  dz <-6: calls 0x86fda2 / 0x86d622, 0x86fdb3 / 0x86d633, 0x86fdc4 / 0x86d644;
+           jump 0x86fdc9 / 0x86d649 to 0x86fdd0 / 0x86d650, draws two plus one below;
+           six upward 0x18 glyph calls total.
+  -6..-4: calls 0x86fddc / 0x86d65c, 0x86fded / 0x86d66d, then 0x86fe04 / 0x86d684;
+           three upward glyph calls total.
+  -3..-1: call 0x86fe04 / 0x86d684; one upward glyph.
+  dz >6: calls 0x86fe29 / 0x86d6a9, 0x86fe3a / 0x86d6ba, 0x86fe4b / 0x86d6cb;
+          three downward 0x19 glyphs.
+  4..6: calls 0x86fe70 / 0x86d6f0, 0x86fe81 / 0x86d701; two downward glyphs.
+  1..3: jump 0x86fe9d / 0x86d71d to last downward draw 0x86fe4b / 0x86d6cb.
+  dz==0: no vertical glyph (0x86fe95 / 0x86d715).
+These are original native glyph branches, not untranslated English text.
+
+Dynamic geographic supplier closure
+------------------------------------
+site_name_append: reference 0xb93930 / classic 0xb90970.
+  The renderer passes flags=0. Native site lookup misses => append
+  "an unknown site"; reference miss branch 0xb93969, fallback 0xb93a58,
+  append call 0xb93a68; classic miss 0xb909a9, fallback 0xb90a98,
+  append call 0xb90aa8. Successful lookup appends EnglishName(site,1,0).
+  Prefix produces "In an unknown site" on fallback.
+  Flags=0 disables [LPAGE:SITE:...] and [/LPAGE], so these markers are unreachable here.
+
+region_name_append: reference 0xb94a40 / classic 0xb91a80.
+  Successful lookup appends EnglishName(region,1,0); reference lookup branch
+  0xb94a79 / classic 0xb91ab9, name call 0xb94ae6 / 0xb91b26.
+  Unavailable lookup appends "an unknown region" at fallback 0xb94b65 / 0xb91ba5,
+  append call 0xb94b75 / 0xb91bb5. Full productions are "In {region}" and
+  "Traveling through {region}", including their unknown-region suffix.
+  Flags=0 disables native link markers.
+
+underground_region_name_append: reference 0xb94940 / classic 0xb91980.
+  Unavailable lookup appends "an unknown underground region"; lookup miss branch
+  0xb94971 / 0xb919b1; fallback 0xb94a11 / 0xb91a51; append 0xb94a21 / 0xb91a61.
+  Valid native record with byte +0x7a==0 chooses type int16 +0:
+    0 -> "the depths of the world"; branch 0xb949bd / 0xb919fd;
+         literal selection 0xb949e9 / 0xb91a29;
+    1 -> "the magma sea"; branch 0xb949c4 / 0xb91a04;
+         literal selection 0xb949da / 0xb91a1a;
+    2 -> "the Underworld"; branch 0xb949c6 / 0xb91a06;
+         literal selection 0xb949cb / 0xb91a0b;
+    other type -> appends nothing.
+  Shared append of all three type labels: 0xb949f9 / 0xb91a39.
+  If native record byte +0x7a!=0, it also appends nothing; branch 0xb949b4 / 0xb919f4.
+  Other type branch 0xb949c9 / 0xb91a09 jumps to the same no-label path.
+  The empty supplier retains the complete visible "In " prefix and must
+  translate its label rather than inventing a geographic name.
+  Flags=0 disables [LPAGE:FL:...] and [/LPAGE].
+  PE supplier instruction provenance is stored in the adjacent full supplier
+  disassemblies; the ELF equivalents are a10160..a1031a, including literal
+  append branches a102c0, a102e0, a102f8 and unknown fallback a10200.
+  Do not infer a custom name from spelling: native EnglishName provenance,
+  reviewed fixed geographic labels and original authored fields determine ownership.
+
+Other renderer English outputs (outside right-column scope)
+-----------------------------------------------------------
+Done: call 0x86e03b / 0x86b8bb; Companions: call 0x86e0d4 / 0x86b954.
+Identity path: gamemode==1 and selected nemesis equals current player -> "You"
+at 0x86e5d1 / 0x86be51 .. 0x86e627 / 0x86bea7; shared draw 0x86e7da / 0x86c05a.
+Else nonnull record -> historical figure EnglishName at call 0x86e668 / 0x86bee8
+(reference supplier 0xa946e0 / classic 0xa91760); else nonnull unit -> complete
+unit designation call 0x86e6fa / 0x86bf7a (reference 0x1330c30 / classic 0x132bba0);
+else an empty identity. Length >=34 is reduced to 33 bytes with final "..."
+at 0x86e75a / 0x86bfda .. 0x86e7c8 / 0x86c048 before the shared draw.
+Complete identity grammar is documented by native-text-productions.tsv and the
+supplier extraction. Authored nicknames/custom professions remain owned by their
+typed formatter, not generic status translation.
+
+Coverage and ownership
+----------------------
+All fixed status/location texts and all 16 bearings already have reviewed
+Adventure companion / Adventure compass vocabulary in local-overrides.tsv.
+Site/region/underground names need geographic formatter ownership, including
+native generated names, reviewed unknown labels, special depths/magma/Underworld
+labels, and the prefix-only "In " production.
+The existing pre-change adventure_companion_rows.inc wraps its entire owner table
+in #ifndef _WIN32: those textual draw sites were unavailable on Windows despite
+the vocabulary being present. Capturing every PE addst return supplies the
+missing ownership for both editions. Glyph paths are preserved unchanged.
+

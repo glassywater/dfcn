@@ -1,0 +1,15 @@
+edition	image	path	role	start_rva	end_rva
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	companions-renderer	0x86ddb0	0x87021a
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	site-name	0xb93930	0xb93a8a
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	region-name	0xb94a40	0xb94b97
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	underground-region-name	0xb94940	0xb94a36
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	english-language-name	0xa946e0	0xa94ea2
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	critical-health	0x1383a70	0x1383b39
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	refresh-health	0x1385b10	0x1386326
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	companions-renderer	0x86b630	0x86da9a
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	site-name	0xb90970	0xb90aca
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	region-name	0xb91a80	0xb91bd7
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	underground-region-name	0xb91980	0xb91a76
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	english-language-name	0xa91760	0xa91f22
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	critical-health	0x137e9e0	0x137eaa9
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	refresh-health	0x1380a80	0x1381296

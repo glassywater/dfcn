@@ -57,15 +57,18 @@ void Overlay::start_dfhack_translation_worker() {
     }
 }
 
-void Overlay::stop_dfhack_translation_worker() {
+void Overlay::request_dfhack_translation_stop() {
     {
         std::lock_guard<std::mutex> lock(dfhack_translation_mutex_);
         dfhack_translation_running_.store(false, std::memory_order_release);
         dfhack_translation_stop_ = true;
         dfhack_translation_pending_.store(true, std::memory_order_release);
-        dfhack_translation_completed_frame_.store({}, std::memory_order_release);
     }
     dfhack_translation_pending_.notify_all();
+}
+
+void Overlay::stop_dfhack_translation_worker() {
+    request_dfhack_translation_stop();
     // Call before acquiring T: a worker already waiting for it must exit.
     if (dfhack_translation_worker_.joinable()) dfhack_translation_worker_.join();
     std::lock_guard<std::mutex> lock(dfhack_translation_mutex_);
@@ -121,9 +124,21 @@ void Overlay::queue_dfhack_layer_translation() {
 
 std::shared_ptr<const NativeDfhackTranslatedFrame> Overlay::completed_dfhack_layer_frame(
         std::shared_ptr<const NativeDfhackLayerStorage> latest) noexcept {
-    if (!latest || !latest->ready || !latest->graphics || !translation_enabled() ||
-            !dfhack_translation_running_.load(std::memory_order_acquire) ||
+    if (!latest || !latest->ready || !latest->graphics ||
             latest->page_revision != native_dfhack_layer_page_revision()) return {};
+    if (!translation_enabled()) {
+        // DFHack still draws into private output in English mode. Publish
+        // its original source with no suppressed glyphs or translated text;
+        // displaying it must not depend on the translation worker.
+        try {
+            static const auto empty_matches = std::make_shared<const std::vector<Match>>();
+            auto original = std::make_shared<NativeDfhackTranslatedFrame>();
+            original->source = std::move(latest);
+            original->matches = empty_matches;
+            return original;
+        } catch (...) { return {}; }
+    }
+    if (!dfhack_translation_running_.load(std::memory_order_acquire)) return {};
     queue_dfhack_layer_frame(latest);
     const auto compatible = [&](const auto &frame) {
         return frame && frame->source && frame->matches &&

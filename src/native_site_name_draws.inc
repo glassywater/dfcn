@@ -1,9 +1,9 @@
 // Exact native site-name draws keep the world_site identity alongside the
 // displayed buffer. Equal spellings never borrow another site's type/name.
-static void capture_native_site_name_draw(graphicst *graphics,
-        const NativeString *source, uintptr_t site, int name_right) {
+static void capture_native_site_name_draw_with(graphicst *graphics,
+        const NativeString *source, uintptr_t site, int name_right,
+        NativeJustification just, uintptr_t caller) {
     NativeInputCallbackScope callback;
-    const auto caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
     NativeHistoryName name;
     bool owned = false;
     std::optional<std::array<long, 4>> name_clip;
@@ -33,13 +33,28 @@ static void capture_native_site_name_draw(graphicst *graphics,
     // The exact producer holds this object even when its name/quoted-English
     // or map type/name string has already been clipped to dots.
     NativeSiteNameFactScope scope(owned ? &name : nullptr);
-    capture_native_limited_caption_draw(graphics, source, NativeJustification{}, 0, [&] {
+    capture_native_limited_caption_draw(graphics, source, just, 0, [&] {
         if (const auto original = g_native_clipped_caption_hooks.draw)
-            callback.call_native([&] { original(graphics, source, NativeJustification{}, 0); });
+            callback.call_native([&] { original(graphics, source, just, 0); });
     }, false, NativeInfoTitleKind::None, false, {}, false,
         NativeCivilizationField::None, false, {},
         NativeLocationPickerField::None, NativeTravelBuildingField::None, caller, name_clip);
 }
+
+static void capture_native_site_name_draw(graphicst *graphics,
+        const NativeString *source, uintptr_t site, int name_right) {
+    const auto caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
+    capture_native_site_name_draw_with(graphics, source, site, name_right,
+        NativeJustification{}, caller);
+}
+
+#ifdef _WIN32
+static void capture_native_worldgen_site_name_draw(graphicst *graphics,
+        const NativeString *source, uintptr_t site, NativeJustification just) {
+    const auto caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
+    capture_native_site_name_draw_with(graphics, source, site, 0, just, caller);
+}
+#endif
 
 #ifdef _WIN32
 static bool append_native_site_name_draw_calls(std::vector<NativeCall> &calls) {
@@ -61,6 +76,15 @@ static bool append_native_site_name_draw_calls(std::vector<NativeCall> &calls) {
         {0x1c7856, 0xad9960,
             reinterpret_cast<const void *>(&capture_native_site_name_draw),
             {0x4d, 0x8b, 0x87, 0xd8, 0x01, 0x00, 0x00}}, // mov r8,[r15+1d8]
+        // World generation's site loop holds the actual world_site in RBX
+        // for both native and English names. Preserve each original draw's
+        // justification (including the English half-font flag) in R9D.
+        {0xdfde6f, 0xad9960,
+            reinterpret_cast<const void *>(&capture_native_worldgen_site_name_draw),
+            {0x45, 0x89, 0xc1, 0x49, 0x89, 0xd8}}, // r9d=r8d; r8=rbx.
+        {0xdfdeef, 0xad9960,
+            reinterpret_cast<const void *>(&capture_native_worldgen_site_name_draw),
+            {0x45, 0x89, 0xc1, 0x49, 0x89, 0xd8}},
     };
     if (!native_reference_calls(site_calls, 0)) return false;
     calls.insert(calls.end(), site_calls.begin(), site_calls.end());

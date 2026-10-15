@@ -194,6 +194,9 @@ std::optional<std::string> Overlay::translate_legends_name(
         (person ? "person:" : "place:") +
         (entity_reference ? "entity:" : "unbound:") + name;
     return translation_work_memo(memo_key, [&]() -> std::optional<std::string> {
+    if (person)
+        if (const auto identity = native_unit_identity_source_target(trim_view(raw)))
+            return identity;
     // A typed actor/title can follow a lower-case article in prose. Preserve
     // its native name-group boundary while normalizing only that article;
     // the complete title-word validation below still rejects ordinary prose.
@@ -348,12 +351,26 @@ std::optional<std::string> Overlay::translate_legends_name(
         if (titled != std::string::npos && titled > 0) {
             const auto epithet = std::string_view(name).substr(titled + 5);
             if (generated_title_shape(epithet)) {
+                // a11560's historical-figure field can be an EnglishName
+                // first_name + WORD0/1 surname + WORD2..6 title. Resolve that
+                // whole generated identity before the native-language prefix
+                // parser can accept only its given name and retain the rest.
+                // The English renderer still requires every surname/title
+                // component and keeps authored nicknames on the branch above.
+                const auto english = translate_english_character_name(name);
+                if (translation_complete_with_native_nicknames(english, name))
+                    return english;
+                const auto actor_source = std::string_view(name).substr(0, titled);
                 const auto actor = translate_legends_name(
-                    std::string_view(name).substr(0, titled), true);
+                    actor_source, true);
                 const auto title = english_character_names_.title(
                     native_text_to_utf8(epithet));
-                if (actor) return *actor + "·" +
-                    (title ? *title : native_text_to_utf8(epithet));
+                if (translation_complete_with_native_nicknames(actor, actor_source) && title)
+                    return *actor + "·" + *title;
+                // An incomplete generated title is not an authored span.
+                // Keep the full field unresolved instead of accepting a
+                // translated given name followed by English surname/title.
+                return std::nullopt;
             }
         }
         // A surname can be the first visible group when the given name is
@@ -440,22 +457,36 @@ std::optional<std::string> Overlay::translate_legends_name(
     if (person && (name.starts_with("The ") || name.starts_with("Of "))) {
         const auto title = english_character_names_.title(native_text_to_utf8(name));
         if (title) return *title;
-        return name.starts_with("Of ")
-            ? native_text_to_utf8(std::string_view(name).substr(3)) + "之"
-            : native_text_to_utf8(name);
+        return std::nullopt;
     }
     // This is already a person slot. Resolve its native given/surname groups
     // through the personal-name grammar instead of reentering the complete
     // screen-text grammar on the same input. That grammar still requires
     // recognized native/name components before accepting a person.
-    if (person && !single_person)
-        if (auto translated = translate_procedural_fragment(name, false, false, {},
-                ProceduralFragmentContext::personal_name)) return translated;
+    if (person && !single_person) {
+        // Complete same-language native WORD groups keep their pronunciation.
+        // This strict entry has no English/prose fallback or partial result.
+        const auto native = translate_procedural_fragment(name, false, false, {},
+            ProceduralFragmentContext::native_name_group);
+        if (translation_complete_with_native_nicknames(native, name)) return native;
+        // EnglishName may omit its title, first_name or surname independently.
+        // Resolve a full surname-only/given+surname/OfX field before the older
+        // personal-name path can accept just its native given-name prefix.
+        const auto english = translate_english_character_name(name);
+        if (translation_complete_with_native_nicknames(english, name)) return english;
+        const auto translated = translate_procedural_fragment(name, false, false, {},
+            ProceduralFragmentContext::personal_name);
+        return translation_complete_with_native_nicknames(translated, name)
+            ? translated : std::nullopt;
+    }
     auto quoted = translate_procedural_fragment("\"" + name + "\"", false, person, {},
         entity_reference ? ProceduralFragmentContext::generated_name
             : ProceduralFragmentContext::non_entity_name);
-    if (quoted && quoted->starts_with("“") && quoted->ends_with("”"))
-        return quoted->substr(3, quoted->size() - 6);
+    if (quoted && quoted->starts_with("“") && quoted->ends_with("”")) {
+        const std::optional<std::string> translated = quoted->substr(3, quoted->size() - 6);
+        if (!person || translation_complete_with_native_nicknames(translated, name))
+            return translated;
+    }
     return std::nullopt;
     });
     });

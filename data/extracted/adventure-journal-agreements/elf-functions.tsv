@@ -1,0 +1,5 @@
+image	role	start	end
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	journal-agreement-details-and-card-fields	0x17cda80	0x17d92b0
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	journal-agreement-title-and-orders	0x17db9b0	0x17dd94e
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	journal-agreement-person-index-insertion	0x17db8d0	0x17db9a8
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	journal-agreement-calendar-month	0x14f13e0	0x14f1a87

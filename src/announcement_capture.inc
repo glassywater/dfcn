@@ -64,6 +64,8 @@ struct NativeAdventureQuestTitle {
 };
 static std::optional<NativeAdventureQuestTitle> native_adventure_quest_original_title(
     uintptr_t address, std::string_view displayed, uintptr_t caller);
+enum class NativeJournalAgreementField { None, Literal, Type, Person, Actor, Group, Site, Artifact, Date, Counter };
+static NativeJournalAgreementField native_journal_agreement_field(uintptr_t caller);
 static bool native_announcement_history_index(std::vector<uintptr_t> &records,
     int32_t &next_id, uintptr_t &world);
 static bool native_announcement_history_row(uintptr_t record, NativeAnnouncementHistoryRow &row);

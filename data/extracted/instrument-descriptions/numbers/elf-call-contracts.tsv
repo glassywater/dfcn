@@ -1,0 +1,3 @@
+address	symbol
+0x36350	_ZSt20__throw_length_errorPKc@plt
+0x37420	__stack_chk_fail@plt

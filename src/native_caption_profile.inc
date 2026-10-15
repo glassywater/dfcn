@@ -334,6 +334,33 @@ static bool resolve_native_caption_profile(NativeCaptionProfile &profile) {
          0xc6,0x04,0x18,0x00},
         // rcx = &caption (rbp-0x80), rdx = width (rbx), r8b = zero fill.
         {0x48,0x8d,0x4d,0x80, 0x48,0x89,0xda, 0x45,0x31,0xc0}},
+        // The abilities renderer independently shortens its complete CDI
+        // or pronoun-expanded body-action caption inline. Preserve the same
+        // rbp-0x28 owner before the dots and addst at 0x8aa822. No branch
+        // enters these five instructions; cmp rbx,3 replaces their flags,
+        // all volatile registers are dead or reset before use, and the
+        // native frame already supplies aligned calls and shadow space.
+        {0x8aa7ab,
+         {0x48,0x89,0x5d,0xe8,0x48,0x8d,0x45,0xd8,
+          0x48,0x83,0x7d,0xf0,0x0f,0x48,0x0f,0x47,0x45,0xd8,
+          0xc6,0x04,0x03,0x00},
+         // rcx = &caption (rbp-0x28), rdx = width (rbx), r8b = zero.
+         {0x48,0x8d,0x4d,0xd8,0x48,0x89,0xda,0x45,0x31,0xc0}},
+        // Its length guard also admits width-1. Preserve that one-byte
+        // padding case before the same three dot stores.
+        {0x8aa7d0, {0xe8,0xdb,0x6a,0x83,0xff},
+         {0x48,0x03,0x51,0x10}, true},
+        // The ability's target list builds complete unit/item designations
+        // and "this location" in rbp-0x48, then uses the same independent
+        // inline shortening and padding branches. Its cmp rbx,3 resets
+        // flags; volatile registers are reset before addst at 0x8a9325.
+        {0x8a92ae,
+         {0x48,0x89,0x5d,0xc8,0x48,0x8d,0x45,0xb8,
+          0x48,0x83,0x7d,0xd0,0x0f,0x48,0x0f,0x47,0x45,0xb8,
+          0xc6,0x04,0x03,0x00},
+         {0x48,0x8d,0x4d,0xb8,0x48,0x89,0xda,0x45,0x31,0xc0}},
+        {0x8a92d3, {0xe8,0xd8,0x7f,0x83,0xff},
+         {0x48,0x03,0x51,0x10}, true},
         // At length == width-1, the same caller instead appends one zero byte
         // at 0x8855d6 and still writes the dots. Convert the append count into
         // total width, then use the equivalent shared resize operation with
@@ -1113,7 +1140,10 @@ static bool resolve_native_caption_profile(NativeCaptionProfile &profile) {
     // Inventory mode, other selection modes and their location line use the
     // same default-fill clone. Capture each complete string before dots are
     // written; the ensuing draw binds the original item/body-part grammar.
-    for (const uintptr_t call : {native_reference_va(0x119ab1d),
+    // Companions copies either a historical-figure name or a full unit label
+    // into its own string, then uses this same 33-cell default-fill clone.
+    for (const uintptr_t call : {native_reference_va(0x11be13e),
+            native_reference_va(0x119ab1d),
             native_reference_va(0x119ac55), native_reference_va(0x119ac05)}) {
         if (!image.contains(call, 5) ||
                 image.relative(call, 1, 5) != native_reference_va(0x11612a0)) return false;

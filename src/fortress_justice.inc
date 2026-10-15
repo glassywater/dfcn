@@ -317,6 +317,17 @@ void Overlay::append_fortress_justice_rows(std::vector<std::string> &rows,
         return text.starts_with("Interrogation Report:") ||
             text.starts_with("Interrogation report:");
     };
+    // The native crime-caption switch (reference PE 0x46d660) has three
+    // named variants. Convicts draws them as independent, unframed records,
+    // using exactly the same caption as a case-list button. A wrapped first
+    // line may end at the prefix after the card reader trims its final space.
+    const auto is_named_case = [](std::string_view text) {
+        text = trim_view(text);
+        for (const std::string_view prefix : {
+                "Murder of ", "Theft of ", "Espionage against "})
+            if (text.starts_with(prefix) || text == trim_view(prefix)) return true;
+        return false;
+    };
     bool interrogation_list = false;
     // Classic report buttons put a CP437 side cap before the caption.
     // Inspect text fields inside the panel, not the framed row's prefix.
@@ -337,8 +348,7 @@ void Overlay::append_fortress_justice_rows(std::vector<std::string> &rows,
         if ((!interrogation_list && !interrogations_selected) || text.empty()) return false;
         if (is_interrogation_report(text) || text.starts_with(justice_report_preparer_prefix) ||
             text.starts_with(justice_witness_prefix) ||
-            text.starts_with("Murder of ") || text.starts_with("Theft of ") ||
-            text.starts_with("Espionage against ") ||
+            is_named_case(text) ||
             exact_literal_translation("Justice detail: " + std::string(text)) ||
             exact_literal_translation("Justice case: " + std::string(text))) return false;
         const auto colon = text.find(':');
@@ -366,7 +376,8 @@ void Overlay::append_fortress_justice_rows(std::vector<std::string> &rows,
         // Convicts also prints a crime as plain detail text below the sentence.
         // It has no case-button frame; keep the same column and paragraph
         // boundaries instead of centering a generic match in its English span.
-        if (exact_literal_translation("Justice case: " + std::string(text))) return true;
+        if (is_named_case(text) ||
+            exact_literal_translation("Justice case: " + std::string(text))) return true;
         // The name and action can wrap onto later native rows. Claim the
         // witness sentence from its first row, then resolve the full source.
         if (text.starts_with(justice_witness_prefix) ||
@@ -405,6 +416,7 @@ void Overlay::append_fortress_justice_rows(std::vector<std::string> &rows,
         }
         std::fill_n(rows[part.y].begin() + part.x, length, ' ');
     };
+#include "fortress_justice_suspects.inc"
     // Convicts and Fortress guard share the resident roster's unit records.
     // Guard adds an unlabelled fourth sort after Name/Category/Profession.
     // Own the person field before generic matches centre it in the full row.
@@ -794,9 +806,7 @@ void Overlay::append_fortress_justice_rows(std::vector<std::string> &rows,
             const auto action = exact_literal_translation("Justice action: " + complete);
             const bool report = is_interrogation_report(complete);
             auto target = action ? action : exact_literal_translation("Justice case: " + complete);
-            if (!target && (report || complete.starts_with("Theft of ") ||
-                           complete.starts_with("Murder of ") ||
-                           complete.starts_with("Espionage against ")))
+            if (!target && (report || is_named_case(complete)))
                 target = translate_justice_case_text(complete);
             if (!target) continue;
             // Report captions use the same left-aligned button layout as
@@ -897,9 +907,11 @@ void Overlay::append_fortress_justice_rows(std::vector<std::string> &rows,
     for (size_t begin = 0; begin < physical.size();) {
         const bool report_body = is_report_body(physical[begin].source) ||
             is_report_body(physical[begin].complete_source);
+        const bool captured_detail = is_detail(physical[begin].complete_source);
         const bool report_officer = awaiting_officer && !report_body &&
-            !is_detail(physical[begin].source);
-        if (!is_detail(physical[begin].source) && !report_body && !report_officer) {
+            !is_detail(physical[begin].source) && !captured_detail;
+        if (!is_detail(physical[begin].source) && !captured_detail &&
+            !report_body && !report_officer) {
             ++begin;
             continue;
         }
@@ -914,7 +926,9 @@ void Overlay::append_fortress_justice_rows(std::vector<std::string> &rows,
                     if (is_report_body(physical[begin].complete_source) &&
                         is_report_body(part.complete_source) &&
                         physical[begin].complete_source != part.complete_source) break;
-                } else if (is_detail(part.source)) break;
+                } else if (is_detail(part.source) ||
+                    (!part.complete_source.empty() && is_detail(part.complete_source) &&
+                     part.complete_source != physical[begin].complete_source)) break;
             }
             if (!report_body && !logical.empty() &&
                 physical[logical.back()].source.ends_with('.')) break;
@@ -941,10 +955,10 @@ void Overlay::append_fortress_justice_rows(std::vector<std::string> &rows,
             source = *complete;
             recovered = true;
         }
-        // A visible suffix still belongs to its full native paragraph. Its
-        // viewport is recovered again during measured layout below.
-        if (!recovered && report_body &&
-            is_report_body(physical[begin].complete_source) &&
+        // A wrapped or clipped record still belongs to its full native draw.
+        // Keep one shared capture across continuation rows; separate crime
+        // starts above retain separate boxes even when their text repeats.
+        if (!recovered && is_detail(physical[begin].complete_source) &&
             std::all_of(logical.begin(), logical.end(), [&](size_t at) {
                 return physical[at].complete_source == physical[begin].complete_source;
             })) {

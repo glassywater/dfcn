@@ -324,15 +324,41 @@ static bool native_can_shutdown() {
     return true;
 }
 
+static void request_native_process_exit() noexcept {
+    if (g_native_process_exiting.exchange(true, std::memory_order_acq_rel)) return;
+#ifdef _WIN32
+    g_native_dfhack_render_enabled.store(false, std::memory_order_release);
+    g_native_dfhack_render_retiring.store(true, std::memory_order_release);
+    g_native_dfhack_graphics_ownership_ready.store(false, std::memory_order_release);
+#endif
+    // This is the simulation's QUIT boundary, before DFHack shuts down its
+    // console/plugins. Stop accepting work without joining or freeing any
+    // callback-owned arrays, catalogs, fonts, textures or native interposes.
+    g_native_identity_translation_jobs.request_stop();
+    try { g_overlay.request_dfhack_translation_stop(); } catch (...) {}
+}
+
 static bool stop_reloadable_core() {
     if (!native_can_shutdown()) return false;
+    // Hook retirement can defer until a later DFHack update, but normal game
+    // shutdown has already stopped that update loop. Stop our owned-snapshot
+    // workers even when live callbacks require the core to remain mapped;
+    // otherwise DLL teardown destroys their waiters while they are still asleep.
+    // Join without the translation lock and retain catalogs/fonts until every
+    // native callback has detached. Retiring captures reject new queued jobs.
+    stop_native_identity_translation_jobs();
+    g_overlay.stop_dfhack_translation_worker();
+    // Process exit has no future DFHack suspension context for retiring links.
+    // Native shutdown still owns cleanup callbacks and renderer arrays. Leave
+    // their core image/resources mapped for the process to reclaim instead of
+    // running the hot-reload teardown against an already stopped DFHack Core.
+    if (g_native_process_exiting.load(std::memory_order_acquire)) return false;
     uninstall_sdl_hooks();
     if (!native_hooks_detached() || !native_callbacks_idle()) {
         log_line("ERROR", "Core remains resident because callbacks could not be detached");
         return false;
     }
     if (g_plugin_active.load()) {
-        stop_native_identity_translation_jobs();
         g_native_squads_overlay.release_native_squads_resources();
         g_overlay.shutdown();
         g_plugin_active.store(false);

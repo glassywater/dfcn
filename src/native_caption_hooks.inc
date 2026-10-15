@@ -73,6 +73,10 @@ struct NativeAdventureCraftingSite {
     uintptr_t return_address = 0;
     NativeAdventureCraftingRole role = NativeAdventureCraftingRole::None;
 };
+struct NativeAdventureBarterSite {
+    uintptr_t return_address = 0;
+    NativeAdventureBarterField field = NativeAdventureBarterField::None;
+};
 struct NativeAdventureLookCaptionSite {
     uintptr_t return_address = 0;
     ptrdiff_t index_slot = 0;
@@ -146,6 +150,7 @@ struct NativeCaptionProfile {
     std::vector<NativeLocationPickerSite> location_picker_fields;
     std::vector<NativeTravelBuildingSite> travel_building_fields;
     std::vector<NativeAdventureCraftingSite> adventure_crafting_fields;
+    std::vector<NativeAdventureBarterSite> adventure_barter_fields;
     std::vector<uintptr_t> mission_title_returns;
     NativeAnnouncementPageBinding announcement_page;
     uintptr_t announcement_popup_call = 0, announcement_popup_target = 0;
@@ -154,6 +159,7 @@ struct NativeCaptionProfile {
 #endif
 };
 #include "native_caption_profile.inc"
+#include "native_adventure_barter_caption_profile.inc"
 
 struct NativeCaptionHooks {
     NativeCallHook code;
@@ -368,6 +374,7 @@ static void capture_native_tooltip_container(void *widget, uint32_t tick) {
                     // At this point the entire page, including its action strips,
                     // exists and none of this tooltip's children has overwritten it.
                     std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
+                    ++g_native_drawn_text_revision;
                     for (auto &draw : g_native_drawn_text_rows) {
                         if (draw.picture_frame || draw.y < rect[1] || draw.y > rect[3] ||
                             draw.x < 0 || draw.source.empty() ||
@@ -423,6 +430,7 @@ static std::vector<NativeCivilizationCaptionSite> g_native_civilization_caption_
 static std::vector<NativeLocationPickerSite> g_native_location_picker_sites;
 static std::vector<NativeTravelBuildingSite> g_native_travel_building_sites;
 static std::vector<NativeAdventureCraftingSite> g_native_adventure_crafting_sites;
+static std::vector<NativeAdventureBarterSite> g_native_adventure_barter_sites;
 static std::vector<uintptr_t> g_native_mission_title_returns;
 static std::vector<uintptr_t> g_native_map_hover_returns;
 static std::vector<NativeAdventureLookCaptionSite> g_native_adventure_look_caption_sites;
@@ -464,6 +472,12 @@ static NativeTravelBuildingField native_travel_building_field(uintptr_t caller) 
     for (const auto &site : g_native_travel_building_sites)
         if (site.return_address == caller) return site.field;
     return NativeTravelBuildingField::None;
+}
+
+static NativeAdventureBarterField native_adventure_barter_field(uintptr_t caller) {
+    for (const auto &site : g_native_adventure_barter_sites)
+        if (site.return_address == caller) return site.field;
+    return NativeAdventureBarterField::None;
 }
 
 static std::optional<SDL_Rect> native_location_picker_draw_box(
@@ -1686,12 +1700,18 @@ struct NativeClippedPending {
 static NativeClippedPending &native_squads_clipped_pending() {
     return reloadable_thread_state<NativeClippedPending, struct SquadsClippedCaptionTag>();
 }
+static NativeClippedPending &native_worldgen_clipped_pending() {
+    return reloadable_thread_state<NativeClippedPending, struct WorldgenClippedCaptionTag>();
+}
 static NativeClippedPending &native_clipped_pending() {
     // Native temporary strings from the sidebar must never consume or
     // replace a pending resize belonging to the background page.
     if (g_native_squads_write_graphics &&
             native_graphics() == g_native_squads_write_graphics)
         return native_squads_clipped_pending();
+    if (g_native_worldgen_write_graphics &&
+            native_graphics() == g_native_worldgen_write_graphics)
+        return native_worldgen_clipped_pending();
     return reloadable_thread_state<NativeClippedPending, struct ClippedCaptionTag>();
 }
 
@@ -1755,7 +1775,8 @@ static void capture_native_roster_shorten(NativeString *source, int width) {
 
 static void remember_native_clipped_resize(NativeString *source, size_t width, char fill,
         bool zero_pad_one = false, bool plain_shrink = false) {
-    if (native_private_ui_write_active(native_graphics()) ||
+    if ((native_private_ui_write_active(native_graphics()) &&
+            native_graphics() != g_native_worldgen_write_graphics) ||
             native_caption_separate_output(native_graphics())) return;
     auto &state = native_clipped_pending();
     if (!state.busy) {
@@ -1796,7 +1817,21 @@ static void remember_native_clipped_resize(NativeString *source, size_t width, c
 }
 
 static void capture_native_clipped_resize(NativeString *source, size_t width, char fill) {
-    remember_native_clipped_resize(source, width, fill);
+    bool zone_plain_prefix = false;
+#ifdef _WIN32
+    if (width > 0 && width <= 3) {
+        const auto caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
+        const auto base = native_history_profile_base();
+        // The Places zone/location column only adds dots when its retained
+        // width exceeds three bytes. Narrower nonempty captions are plain
+        // prefixes of the same complete native name or description.
+        zone_plain_prefix = base &&
+            (caller == native_reference_address(base, 0x39c8e9) ||
+             caller == native_reference_address(base, 0x39d28e) ||
+             caller == native_reference_address(base, 0x39d489));
+    }
+#endif
+    remember_native_clipped_resize(source, width, fill, false, zone_plain_prefix);
     if (g_native_clipped_caption_hooks.resize)
         g_native_clipped_caption_hooks.resize(source, width, fill);
 }
@@ -1985,12 +2020,28 @@ static void capture_native_worldgen_caption(graphicst *graphics,
                 text.find_first_of("\r\n") == std::string_view::npos &&
                 text.find('\0') == std::string_view::npos) {
             complete.assign(text);
+            // Worldgen shortens river names before addst. Consume only the
+            // same string's exact abbreviation from this producer's epoch.
+            auto &pending = native_worldgen_clipped_pending();
+            epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
+            if (pending.epoch != epoch) {
+                pending.fields.clear(); pending.epoch = epoch;
+            }
+            if (!pending.busy) {
+                const auto found = pending.fields.find(source);
+                if (found != pending.fields.end()) {
+                    auto shortened = std::move(found->second);
+                    pending.fields.erase(found);
+                    if (shortened.owner == source && shortened.epoch == epoch &&
+                            shortened.visible == text && !shortened.complete.empty())
+                        complete = std::move(shortened.complete);
+                }
+            }
             grid = top_layer ? graphics->screen_top : graphics->screen;
             x = graphics->screenx; y = graphics->screeny;
             dimx = graphics->dimx; dimy = graphics->dimy;
             clip = {graphics->clipx[0], graphics->clipx[1],
                 graphics->clipy[0], graphics->clipy[1]};
-            epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
             if (graphics->use_old_16_colors) {
                 const int palette = static_cast<int8_t>(graphics->screenf) +
                     (graphics->screenbright ? 8 : 0);
@@ -2030,6 +2081,8 @@ static void capture_native_worldgen_caption(graphicst *graphics,
         row.draw_grid = grid; row.draw_dimx = dimx; row.draw_dimy = dimy;
         row.draw_epoch = epoch;
         row.native_caller = native_caller;
+        if (g_native_site_name_fact)
+            row.site_name = std::make_shared<NativeHistoryName>(*g_native_site_name_fact);
         row.editable_text = NativeEditableTextScope::active ||
             NativeEditableTextScope::owns(native_caller) ||
             native_worldgen_caption_editable(native_caller);
@@ -2041,6 +2094,7 @@ static void capture_native_worldgen_caption(graphicst *graphics,
             std::max(0, bottom - top)};
         std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
         auto &rows = top_layer ? g_native_drawn_top_text_rows : g_native_drawn_text_rows;
+        ++g_native_drawn_text_revision;
         std::erase_if(rows, [&](const NativeDrawnTextRow &previous) {
             return previous.x == first && previous.y == y;
         });
@@ -2155,6 +2209,7 @@ static void capture_native_squads_caption(graphicst *graphics,
         row.draw_clip = SDL_Rect{left, top, std::max(0, right - left),
             std::max(0, bottom - top)};
         std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
+        ++g_native_drawn_text_revision;
         if (g_native_drawn_text_epoch != epoch) {
             g_native_drawn_text_rows.clear(); g_native_drawn_top_text_rows.clear();
             g_native_overwritten_text_rows.clear();
@@ -2205,6 +2260,7 @@ static void capture_native_limited_caption_draw(graphicst *graphics, const Nativ
     if (native_private_ui_write_active(graphics)) { draw(); return; }
     const auto inventory_role = native_adventure_inventory_role(
         native_caller, reinterpret_cast<uintptr_t>(source));
+    const auto barter_field = native_adventure_barter_field(native_caller);
     const std::array<long, 4> draw_clip = capture_clip.value_or(graphics
         ? std::array<long, 4>{graphics->clipx[0], graphics->clipx[1],
                               graphics->clipy[0], graphics->clipy[1]}
@@ -2320,7 +2376,8 @@ static void capture_native_limited_caption_draw(graphicst *graphics, const Nativ
              int64_t(graphics->screenx) + static_cast<int64_t>(text.size()) >
                  int64_t(graphics->clipx[1]) + 1 ||
              native_adventure_crafting_role(native_caller) != NativeAdventureCraftingRole::None ||
-             inventory_role != NativeAdventureInventoryRole::None)) {
+             inventory_role != NativeAdventureInventoryRole::None ||
+             barter_field != NativeAdventureBarterField::None)) {
             complete.assign(text);
             x = graphics->screenx;
             y = graphics->screeny;
@@ -2359,7 +2416,8 @@ static void capture_native_limited_caption_draw(graphicst *graphics, const Nativ
             (graphics->screenx > dimx && info_title_kind == NativeInfoTitleKind::None &&
                 !mission_title && !fortress_labor_caption &&
                 travel_building_field == NativeTravelBuildingField::None &&
-                inventory_role == NativeAdventureInventoryRole::None) ||
+                inventory_role == NativeAdventureInventoryRole::None &&
+                barter_field == NativeAdventureBarterField::None) ||
             (width > 0 && graphics->screenx - x > width) ||
             epoch != g_embark_item_capture_epoch.load(std::memory_order_acquire)) return;
         // addchar advances the cursor even outside clipx/clipy. Its verified
@@ -2404,7 +2462,8 @@ static void capture_native_limited_caption_draw(graphicst *graphics, const Nativ
                 location_picker_field != NativeLocationPickerField::None || fortress_labor_caption ||
                 travel_building_field != NativeTravelBuildingField::None ||
                 native_adventure_crafting_role(native_caller) != NativeAdventureCraftingRole::None ||
-                inventory_role != NativeAdventureInventoryRole::None)
+                inventory_role != NativeAdventureInventoryRole::None ||
+                barter_field != NativeAdventureBarterField::None)
             remember_native_drawn_text_row(first, y, visible,
                 reinterpret_cast<uintptr_t>(source), graphics, top_layer,
                 first == x ? std::string_view(complete) : std::string_view{},
@@ -2922,7 +2981,8 @@ static void capture_native_clipped_draw(graphicst *graphics, const NativeString 
     const bool textbox_text = g_native_textbox_widget_binding.text_return_address &&
         caller == g_native_textbox_widget_binding.text_return_address;
     NativeEditableTextScope input_scope(
-        textbox_text || NativeEditableTextScope::owns(caller) || native_legacy_editable_draw(caller,source));
+        textbox_text || NativeEditableTextScope::owns(caller) || native_legacy_editable_draw(caller,source) ||
+        native_adventure_barter_field(caller) == NativeAdventureBarterField::Editable);
     const auto kind = native_info_title_kind(caller);
     const bool authored = native_info_title_authored(kind, source, caller);
     const auto civilization_field = native_civilization_caption_field(caller);
@@ -3133,6 +3193,7 @@ static void reset_native_caption_capture() {
     }
     native_clipped_pending() = {};
     native_squads_clipped_pending() = {};
+    native_worldgen_clipped_pending() = {};
     clear_clipped_captions();
     clear_native_unit_chooser_records();
     clear_native_drawn_text_rows();
@@ -3187,7 +3248,8 @@ static bool install_native_caption_hooks() {
         }
     } guard;
     NativeCaptionProfile profile;
-    if (!resolve_native_caption_profile(profile) || !profile.resize || !profile.draw ||
+    if (!resolve_native_caption_profile(profile) || !bind_native_adventure_barter_captions(profile) ||
+        !profile.resize || !profile.draw ||
         !profile.truncated_widget.render_slot || !profile.textbox_widget.render_slot) {
         log_line("ERROR", "Cannot resolve the native complete-caption profile");
         return false;
@@ -3327,6 +3389,7 @@ static bool install_native_caption_hooks() {
     g_native_location_picker_sites = std::move(profile.location_picker_fields);
     g_native_travel_building_sites = std::move(profile.travel_building_fields);
     g_native_adventure_crafting_sites = std::move(profile.adventure_crafting_fields);
+    g_native_adventure_barter_sites = std::move(profile.adventure_barter_fields);
     g_native_mission_title_returns = std::move(profile.mission_title_returns);
     g_native_map_hover_returns = std::move(profile.map_hover_returns);
     g_native_adventure_look_caption_sites = std::move(profile.adventure_look_caption_sites);
@@ -3557,6 +3620,7 @@ static bool uninstall_native_caption_hooks() {
     g_native_location_picker_sites.clear();
     g_native_travel_building_sites.clear();
     g_native_adventure_crafting_sites.clear();
+    g_native_adventure_barter_sites.clear();
     g_native_mission_title_returns.clear();
     g_native_caption_hooks.resize = nullptr;
     g_native_caption_hooks.draw = nullptr;

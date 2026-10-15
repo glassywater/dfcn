@@ -50,9 +50,12 @@ void Overlay::append_fortress_location_list_matches(std::vector<std::string> &ro
     auto panel = capture_fortress_location_picker(tabs_y);
     const bool picker = panel.has_value();
     if (!panel && !picker_only) panel = capture_fortress_places_panel(context, tabs_y);
-    const auto drawn = captured_native_drawn_text_rows();
-    const auto top_drawn = captured_native_drawn_text_rows(true);
-    const auto clipped = captured_clipped_captions();
+    const auto drawn_snapshot = captured_native_drawn_text_snapshot();
+    const auto top_drawn_snapshot = captured_native_drawn_text_snapshot(true);
+    const auto clipped_snapshot = captured_clipped_caption_snapshot();
+    const auto &drawn = *drawn_snapshot;
+    const auto &top_drawn = *top_drawn_snapshot;
+    const auto &clipped = *clipped_snapshot;
 
     struct Field {
         int x, y, end, right;

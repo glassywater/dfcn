@@ -752,7 +752,15 @@ std::optional<std::string> Overlay::translate_item_description_source(
                 [&](char kind, std::string_view part) -> std::optional<std::string> {
                     if (part.size() >= value.size()) return std::nullopt;
                     switch (kind) {
-                    case 's': case 'i': return translate_item_description_term(part);
+                    case 's': return translate_item_description_term(part);
+                    case 'i':
+                        // Native instrument improvement kind 11 supplies a
+                        // RAW component name, including unqualified bellows.
+                        if (rule.source == "The {i} is made from {s}." ||
+                            rule.source == "The {i} are made from {s}.")
+                            if (auto component = translate_instrument_component_name(part))
+                                return component;
+                        return translate_item_description_term(part);
                     case 'v': return translate_item_color_pattern(part);
                     case 'j': return translate_item_dye_materials(part);
                     case 'o': return translate_item_craftsmanship(part);
@@ -1069,7 +1077,13 @@ TranslationResult Overlay::translate_item_description_source_display(
                         [&](char kind, std::string_view part) -> TranslationResult {
                             std::optional<std::string> translated;
                             switch (kind) {
-                            case 's': case 'i': return translate_item_description_term_display(part);
+                            case 's': return translate_item_description_term_display(part);
+                            case 'i':
+                                if (rule.source == "The {i} is made from {s}." ||
+                                    rule.source == "The {i} are made from {s}.")
+                                    if (auto component = translate_instrument_component_name(part))
+                                        return TranslationResult::translated(part, *component, "instrument-component");
+                                return translate_item_description_term_display(part);
                             case 'e': return translate_item_description_term_display(part, true);
                             case 'q': return translate_item_description_source_display(part, true);
                             case 'v': return translate_item_color_pattern_display(part);
@@ -1118,23 +1132,33 @@ TranslationResult Overlay::translate_item_description_source_display(
             // boundaries before display fallback, whose preserved fields must
             // not let the first noun swallow all later independent sentences.
             std::vector<size_t> boundaries{0};
-            if (source.find('`') == std::string::npos) {
-                bool quoted = false;
-                for (size_t at = 0; at + 1 < source.size(); ++at) {
-                    if (source[at] == '"' || source[at] == '\x10' || source[at] == '\x11') quoted = !quoted;
-                    if (quoted || (source[at] != '.' && source[at] != '!' && source[at] != '?') ||
-                        source[at + 1] != ' ') continue;
-                    const auto next = trim_view(std::string_view(source).substr(at + 1));
-                    const auto previous = trim_view(std::string_view(source).substr(
-                        boundaries.back(), at + 1 - boundaries.back()));
-                    // A complete existing production also proves its end,
-                    // even when the following independent sentence is new.
-                    // Unknown text alone never grants punctuation that role.
-                    if (anchored(next) || translate_item_description_source(previous, true))
-                        boundaries.push_back(at + 1);
+            bool quoted = false, native_nickname = false;
+            for (size_t at = 0; at + 1 < source.size(); ++at) {
+                if (source[at] == '`') native_nickname = true;
+                // Authored nicknames can contain apostrophes, backticks and
+                // unmatched double quotes. Only a complete typed production
+                // may prove the end of a sentence containing one. Keep that
+                // restriction local so a later nickname cannot suppress all
+                // earlier independent item/material/quality sentences.
+                if (!native_nickname && (source[at] == '"' ||
+                        source[at] == '\x10' || source[at] == '\x11')) quoted = !quoted;
+                if ((!native_nickname && quoted) ||
+                    (source[at] != '.' && source[at] != '!' && source[at] != '?') ||
+                    source[at + 1] != ' ') continue;
+                const auto next = trim_view(std::string_view(source).substr(at + 1));
+                const auto previous = trim_view(std::string_view(source).substr(
+                    boundaries.back(), at + 1 - boundaries.back()));
+                // A complete existing production also proves its end,
+                // even when the following independent sentence is new.
+                // Unknown text alone never grants punctuation that role.
+                if ((!native_nickname && anchored(next)) ||
+                        translate_item_description_source(previous, true)) {
+                    boundaries.push_back(at + 1);
+                    quoted = native_nickname = false;
                 }
-                if (quoted) boundaries.resize(1);
             }
+            // An unmatched quoted title invalidates only its current unit;
+            // boundaries already established before it remain independent.
             boundaries.push_back(source.size());
             if (boundaries.size() > 2) {
                 result = {};

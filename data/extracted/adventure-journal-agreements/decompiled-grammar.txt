@@ -1,0 +1,121 @@
+Installed image: ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c
+Source: configured native-elf-images.json reference, dwarfort, Linux 53.16.
+This directory contains offline source extraction, not game execution results.
+
+Ghidra C and its original instructions are retained for these complete unwind owners:
+  17cda80..17d92b0: journal renderer, including agreement cards and detail fields
+  17db9b0..17dd94e: agreement list constructor and its order title branches
+  17db8d0..17db9a8: sorted person-index insertion used by the constructor
+  14f13e0..14f1a87: month-name writer, 12 cases and empty default
+
+elf-switches.tsv retains every selector and alias in these owners. The broader
+renderer also contains the neighboring journal tabs; those switch entries and
+instructions are retained to preserve the original function's control flow.
+elf-display-fields.tsv records addst return sites and their supplying formatter.
+Nearby literals in that file are assembly context, not inferred field contents.
+
+Agreement title source and clipping:
+  17db9b0 stores full list_name at agreement_entryst+20.
+  17cda80 copies list_name to p_list_name at +60 and resizes it to 58 bytes.
+  addst at 17cfece returns to 17cfed3 and receives the +60 string.
+  The previously configured 13cfed3 belongs to an unrelated indirect-call loop.
+  Translation recovers +20 only from the proven +60 writer and matching bytes.
+  Journal headings, collapsed headings, the Tasks strip and search share one
+  complete title grammar; the original counter remains an independent field.
+
+Subject switch: 0..17, default produces no additional subject label.
+  0 JoinParty: reason switch below
+  1 DemonicBinding: World Joining Agreement
+  2 Residency: Residency Agreement
+  3 Citizenship: Grant of Citizenship
+  4 Parley: Parley Arrangement
+  5 PositionCorruption: Corruption
+  6 PlotStealArtifact: Artifact Theft
+  7 PromisePosition: Promise of Position
+  8 PlotAssassination: Assassination Plot
+  9 PlotAbduct: Abduction Plot
+ 10 PlotSabotage: Sabotage Plot
+ 11 PlotConviction: circumstance 0 -> Foiled Bribery Conspiracy,
+                    2 -> Foiled Corruption Conspiracy,
+                    3 -> Foiled Embezzlement Conspiracy;
+                    other circumstances do not assign a label
+ 12 Location: Build Structure
+ 13 PlotInfiltrationCoup: Infiltration Plot
+ 14 PlotFrameTreason: Framing Plot
+ 15 PlotInduceWar: War Starting Plot
+ 16 OfferService: Offer Service
+ 17 RetrieveArtifact: Retrieve Artifact
+
+JoinParty reason switch (selector range 0..42, all aliases retained):
+  0: Insurrection with <person>; Overthrow Agreement
+     <person/You>, agreed to join, <person/you>, in insurrection against,
+     <group>, thereby freeing, <site>
+  1: Adventure with <person>; Adventuring Agreement
+     <person/You>, agreed to adventure with, <person/you>,
+     wherever the journey might lead
+  2: Guided by <person>; Guide Agreement
+     <person/You>, agreed to guide, <person/you>, to, <site>
+ 23: Rescue <person>; Rescue Agreement
+     <person/You>, agreed to join, <person/you>,
+     in order to be brought safely away from, <site>
+ 24: Aid rescue with <person>; Aid Rescue Agreement
+     <person/You>, agreed to join, <person/you>, in order to rescue,
+     <person/you/somebody unknown>
+ 39: The bound service of<person>; Bound Servitude
+     <person/You>, was bound to serve, <person/you>, by invocation of True Name
+ 42: Entertain people with <person>; Entertainment Agreement
+     <person/You>, agreed to entertain people with, <person/you>, throughout the world
+ default: constructor may retain the unprefixed person name; detail reason
+          switch emits no reason prose. Native type information selects the
+          personal-name resolver for this title, including label-shaped names.
+
+Party resolution branches:
+  Each relevant subject looks up both party IDs and their first historical
+  figure. Missing/empty party vectors or unresolved figures omit that prose.
+  A participating player is drawn as You/you; other people use 12c58d0.
+  The rescue target uses its figure name, you, or somebody unknown.
+  Groups use a278f0; sites use a27cd0; artifacts use a0d8c0.
+  These are independent typed fields, not dictionary guesses from their spelling.
+
+OfferService / RetrieveArtifact:
+  Expanded OfferService: <requester/You>, requested that, <recipient/you>,
+                         make an offer of service to, <group>
+  Compact OfferService:  <requester/You>, requested that, <recipient/you>,
+                         serve <group> (two addst writes on the same row)
+  Expanded RetrieveArtifact: <requester/You>, asked that, <recipient/you>,
+                            retrieve, <artifact>, optional from <site>,
+                            optional for <group>
+  Compact RetrieveArtifact: <requester/You>, asked that, <recipient/you>,
+                           retrieve <artifact> (two writes on the same row)
+  Other subject types have their subject label; this renderer does not emit
+  extra diplomatic/intrigue prose for those types.
+
+Completion:
+  JoinParty end_year != -1 adds Done: to the title, marks the subject heading,
+  and emits Agreement concluded followed by a separately drawn calendar date.
+  The date has st/nd/rd/th day branches, the shared twelve-month switch and year.
+  The month switch default appends an empty month; numeric fields are preserved
+  with a translated unknown-month label. No cancellation sentence is emitted
+  by this agreement renderer.
+
+Order record branches (native virtual kind 7, 8, 9):
+  7: Order: Kill <actor>; Kill, <actor>
+  8: Order: Cause trouble for <group>; Cause trouble for, <group>
+  9: Order: Drive off <group> from <site>; Drive members of, <group>, out of,
+     <site>, or compact Drive, <group>, from, <site>
+  Actor/commander source is a10320 and may describe an unnamed native actor.
+  Issuer: An order from, <actor>.
+  States: Finish reporting in / Complete: report back / Not yet completed.
+  A concluded associated agreement can add Agreement concluded.
+  Missing references retain the corresponding command prefix or empty field.
+  Centering labels: Centered on commander / Centered on target; shared location
+  branches also include Centered on location / first heard / last heard.
+
+Runtime handling:
+  Fixed fields live under Adventurer log agreement field in local-overrides.tsv.
+  Type labels separately identify the card when its title is unavailable.
+  Original addst return sites select Person / Actor / Group / Site / Artifact /
+  Date / Type. Independent rows retain their native positions and colors;
+  adjacent writes on one row are translated together with per-field colors.
+  Complete retained titles cover native 58-byte truncation and the finished
+  prefix. Unknown reason/crime branches preserve the absence of native text.

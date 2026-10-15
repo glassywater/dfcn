@@ -1,0 +1,9 @@
+edition	role	instruction_rva	function_rva	literal_rva
+reference	You-read	0x834055	0x833df0	0x16b0f70
+reference	You-have-learned-power	0x1353705	0x1352f20	0x17826c0
+reference	caption-call	0x834081	0xc65450	
+reference	read-item-call	0x834299	0xb3df0	
+classic	You-read	0x8318d5	0x831670	0x16ab590
+classic	You-have-learned-power	0x134e675	0x134de90	0x177d828
+classic	caption-call	0x831901	0xc62490	
+classic	read-item-call	0x831b19	0xb3d80	

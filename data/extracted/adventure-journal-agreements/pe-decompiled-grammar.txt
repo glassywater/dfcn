@@ -1,0 +1,336 @@
+Agreement journal: Windows PE 53.16, offline manual decompilation
+================================================================
+
+This file and pe-manual-decompiled.c are manually reconstructed from the actual
+native instructions and jump tables. They are not automatic Ghidra output and
+are not game execution observations. Existing ELF output is retained separately.
+
+Binary sources (configured data/runtime/native-pe-images.json):
+  Steam: D:/program/steam/steamapps/common/Dwarf Fortress/Dwarf Fortress.exe
+         PE:6a70a6d9:02711000, preferred image base 0x140000000.
+  Classic: C:/Users/WIN11/Downloads/df_53_16_win/Dwarf Fortress.exe
+           PE:6a70b91c:0270a000, preferred image base 0x140000000.
+  pe-functions.tsv records the full source paths, identities, SHA-256 and ranges.
+
+Complete retained source ranges, RVAs (end exclusive):
+                         Steam               Classic
+  Journal renderer       c2110..ca4f9         c20a0..ca489
+  List/title/orders      df540..e0f67         df4d0..e0ef7
+  Retained title clip    cdf30..cdfb3         cdec0..cdf43
+  Calendar month leaf    773390..7734af       770db0..770ecf
+  Journal card border    dec60..dee12         debf0..deda2
+
+Original asm is saved separately for each image and role. pe-branches.tsv,
+pe-conditions.tsv, pe-calls.tsv and pe-literals.tsv preserve the original
+control-flow decisions, literal addresses and suppliers. pe-switches.tsv
+preserves all selectors, including aliases in byte-remapped switches and the
+neighboring journal tabs of the full renderer. PE unwind metadata splits some
+small functions into chained chunks: clipping and border ranges include their
+entire native body rather than only the first short unwind entry. The month
+supplier is a leaf without an unwind entry; its decoded body ends at its ret.
+
+Agreement panel and rendering modes
+----------------------------------
+  Journal tab selector 1 -> c3871, its entire card section ends before c70a4.
+  Every card draws a title and its separate numeric current/total counter.
+  Byte journal+278 != 0 enables expanded presentation for the selected card;
+  nonselected cards then retain only their collapsed header.
+  Byte journal+278 == 0 uses the compact detail forms on the listed cards.
+  The expanded selected card draws subject type followed by subject prose.
+  Compact JoinParty draws only Agreement concluded if end_year != -1; compact
+  OfferService/RetrieveArtifact draw the shorter prose below. Other compact
+  subjects have their stored titles without additional subject prose.
+  Missing entry agreement or unresolved required parties omits the corresponding
+  subject prose. The card title and counter have their own native source.
+
+Retained titles and header geometry
+----------------------------------
+  entry+20: full list_name; entry+40: another native string; entry+60: p_list_name.
+  Native cdf30 copies +20 to +60 only while p_list_name is empty, and clips +60
+  to 58 bytes. PE string length is +10 and capacity +18 relative to the string.
+  Journal title addst c39ba -> return c39bf receives precisely entry+60.
+  Full-title recovery is justified by this exact writer and matching original
+  bytes, not by assuming every title-shaped string is an agreement.
+  Counter addst c3a59 -> return c3a5e is a separate numeric "current/total".
+  Counter is an independent typed card source, including when a default order
+  kind leaves the operation title empty but still draws its issuer and status.
+  Runtime Counter recognition uses PE return c3a5e and ELF return 17cffdd, so
+  those cards can be identified without inventing a missing operation title.
+  Title and counter share the card's top row. The title begins left+1; counter
+  begins right-length-1 and ends right-2, preserving the top right corner.
+  Completed JoinParty end_year != -1 prefixes the retained title with "Done: ".
+
+All subject types and subject-label branches
+--------------------------------------------
+Native renderer dispatch c3b26/table ca3e8; title constructor dfa14/table e0ed4.
+The selector range is 0..17. Out-of-range default assigns no subject label.
+
+  0 JoinParty: reason label switch listed below
+  1 DemonicBinding: World Joining Agreement
+  2 Residency: Residency Agreement
+  3 Citizenship: Grant of Citizenship
+  4 Parley: Parley Arrangement
+  5 PositionCorruption: Corruption
+  6 PlotStealArtifact: Artifact Theft
+  7 PromisePosition: Promise of Position
+  8 PlotAssassination: Assassination Plot
+  9 PlotAbduct: Abduction Plot
+ 10 PlotSabotage: Sabotage Plot
+ 11 PlotConviction: data+18 corruption_action == 0 -> Foiled Bribery Conspiracy;
+                    == 2 -> Foiled Corruption Conspiracy;
+                    == 3 -> Foiled Embezzlement Conspiracy;
+                    all other values assign no label
+ 12 Location: Build Structure
+ 13 PlotInfiltrationCoup: Infiltration Plot
+ 14 PlotFrameTreason: Framing Plot
+ 15 PlotInduceWar: War Starting Plot
+ 16 OfferService: Offer Service
+ 17 RetrieveArtifact: Retrieve Artifact
+
+Only subjects 0, 16 and 17 emit further subject prose in this renderer. Other
+subject types retain the exact subject label; no further diplomatic/intrigue
+sentence may be invented for this panel.
+
+JoinParty: all reason values, titles and expanded prose
+------------------------------------------------------
+Native reason switches cover 0..42, including every shared default alias:
+  Type-label switch c3b89, table ca430, byte remap ca450.
+  Prose switch c48d1, table ca47c, byte remap ca49c.
+  Title-prefix switch dfb90, table e0f1c, byte remap e0f3c.
+All nondefault reasons are exactly 0, 1, 2, 23, 24, 39 and 42. Values
+3..22, 25..38, 40 and 41 alias the native default. Values outside 0..42 also
+take the default. It produces no reason type/prose, but the title constructor
+still appends the other participant's name after an empty prefix when the
+required parties resolve. It must not translate that personal name as a label.
+
+For each nondefault reason, fields below are independent native draw writes:
+
+  0:
+    Title: "Insurrection with " + <other participant>
+    Type: Overthrow Agreement
+    Prose: <member/You>, agreed to join, <party/you>,
+           in insurrection against, <Group>, thereby freeing, <Site>
+  1:
+    Title: "Adventure with " + <other participant>
+    Type: Adventuring Agreement
+    Prose: <member/You>, agreed to adventure with, <party/you>,
+           wherever the journey might lead
+  2:
+    Title: "Guided by " + <other participant>
+    Type: Guide Agreement
+    Prose: <member/You>, agreed to guide, <party/you>, to,
+           <destination resolved by the complete fallback below>
+ 23:
+    Title: "Rescue " + <other participant>
+    Type: Rescue Agreement
+    Prose: <member/You>, agreed to join, <party/you>,
+           in order to be brought safely away from, <Site>
+ 24:
+    Title: "Aid rescue with " + <other participant>
+    Type: Aid Rescue Agreement
+    Prose: <member/You>, agreed to join, <party/you>, in order to rescue,
+           <target resolved by the HF/unit/default fallback below>
+ 39:
+    Title: "The bound service of" + <other participant>
+           (the original literal does not contain a trailing space)
+    Type: Bound Servitude
+    Prose: <member/You>, was bound to serve, <party/you>,
+           by invocation of True Name
+ 42:
+    Title: "Entertain people with " + <other participant>
+    Type: Entertainment Agreement
+    Prose: <member/You>, agreed to entertain people with, <party/you>,
+           throughout the world
+
+Party/name/default branches:
+  JoinParty data+4 identifies the member party; data+8 the joined party.
+  Both parties must exist, have a nonempty HF vector and resolve their first HF.
+  Otherwise expanded prose is omitted. Native comparisons use the player HF id:
+  the member is "You" when it matches; the joined party is "you" when it
+  matches; all other participants are independent Person-name fields.
+  Title uses the joined person when the member is the player, otherwise member.
+
+Guide destination (c4e92..c507a):
+  1. data+0c != -1 -> Site formatter, return site c4efd.
+  2. Otherwise, data+14 resolves an HF -> Person name, return site c4fa6.
+  3. Otherwise, data+10 resolves a unit via 72570 -> native unit-name resolver
+     c3a4f0; a resulting name uses the Person formatter, return site c501b.
+  4. Neither HF nor unit resolves -> literal somebody unknown (c506a).
+  5. A unit exists but its name resolver returns null -> no destination field.
+The upstream structure names the union slot +10 "entity"; this native branch
+actually calls the unit lookup/name path and must be retained independently.
+
+Aid Rescue target (c554f..c56bd):
+  Same HF +14, unit +10, somebody unknown, or null unit-name branches as Guide,
+  without Guide's preceding Site option. HF and unit names are Person fields at
+  c55e9 and c565e; somebody unknown returns c56ad. These target blocks do not
+  contain an explicit player-id comparison replacing the target with "you".
+
+JoinParty completion and the entire date grammar
+-----------------------------------------------
+  Completed iff data.end_year(+18) != -1. The expanded type heading changes
+  its native color, the retained title gains "Done: ", and expanded prose adds
+  Agreement concluded followed by a separately drawn Date field (c5ee2).
+  The expanded conclusion is reached after the resolved-party/reason block,
+  including the empty default reason branch. Compact conclusion is independently
+  selected by type==0 and end_year!=-1 (c6b12..c6b86), without rendering a date.
+  No agreement cancellation sentence is emitted here.
+
+  Native expanded date:
+    days = end_tick / 1200; month = days / 28; day0 = days % 28;
+    decimal(day0 + 1) + ordinal + " " + month_name + ", " + decimal(end_year).
+  Ordinal switch c5e3e/table ca4c8/remap ca4d8 retains selectors 0..32:
+    day0 0,20,30 -> st; 1,21,31 -> nd; 2,22,32 -> rd; remaining -> th.
+    Values 28..32 are retained raw switch entries, even though valid day0 from
+    the 28-day month arithmetic is 0..27. Out-of-range defaults to th.
+  Month selector 0..11:
+    Granite, Slate, Felsite, Hematite, Malachite, Galena, Limestone,
+    Sandstone, Timber, Moonstone, Opal, Obsidian.
+    Default returns without appending any month text. The surrounding numeric
+    day/year and separators are emitted independently.
+
+OfferService and RetrieveArtifact
+---------------------------------
+The renderer selects subject 16/17 after the type label. Both required parties,
+their nonempty first-HF vectors and resolved figures must exist; otherwise the
+corresponding prose is omitted. The player variants use You/you and other people
+use Person-name fields.
+
+  Subject 16 expanded:
+    <requester/You>, requested that, <recipient/you>,
+    make an offer of service to, <Group>.
+  Subject 16 compact:
+    <requester/You>, requested that, <recipient/you>, serve <Group>.
+    "serve " and Group are separate adjacent writes on one native row.
+  Subject 17 expanded:
+    <requester/You>, asked that, <retriever/you>, retrieve, <Artifact>,
+    optional from, <Site> when artifact_site != -1,
+    optional for, <Group> when receiving_entity != -1.
+  Subject 17 compact:
+    <requester/You>, asked that, <retriever/you>, retrieve <Artifact>.
+    "retrieve " and Artifact are separate adjacent writes on one native row;
+    compact prose does not draw the Site or receiving Group fields.
+
+All native order-kind, issuer and progress branches
+-------------------------------------------------
+Actual Windows PE virtual kind values are 5, 6, 7 and 8, from calls through
+vtable+18 at dff2e and c42bb. They must not be relabeled as ELF order selectors.
+
+  Kind 5:
+    Constructor e0cc6: Order: Drive off <Group> from <Site>
+    Expanded card c609e: Drive, <Group>, from, <Site>
+  Kind 6:
+    Constructor e03b4: Order: Cause trouble for <Group>
+    Expanded card c5fdc: Cause trouble for, <Group>
+  Kind 7:
+    Constructor e017f: Order: Kill <Actor>
+    Expanded card c5efb: Kill, <Actor>
+  Kind 8:
+    Constructor dff55: Order: Drive off <Group> from <Site>
+    Expanded card c42e4: Drive members of, <Group>, out of, <Site>
+  Default kind:
+    No operation title/operation prose assigned; shared issuer/status remains.
+
+  Kind 5 and 8 share the same title literals but retain distinct native
+  completion and target/commander-location control flow in the constructor.
+  The full native branches and decisions are saved, including missing reference
+  paths. No additional English text is generated by those location decisions.
+  Compact cards omit expanded operation prose but retain stored title plus the
+  issuer/progress below. Missing references retain empty or native-formatted
+  fields; the fixed command fragments are separate from those fields.
+
+  Common issuer: An order from, <Actor>.
+    Actor source uses native b92f10 and can format an unnamed actor reference.
+  Progress branch order:
+    order flags(+1c) bit 0 set -> Finish reporting in;
+    otherwise entry.complete(+18) true -> Complete: report back;
+    otherwise -> Not yet completed.
+  Both expanded and compact forms draw the corresponding issuer/progress.
+  Agreement concluded belongs to an independent concluded JoinParty entry,
+  not to an order entry carrying an associated JoinParty agreement pointer.
+  Selected order centering branch:
+    entry.center_on_commander(+98) -> Centered on commander;
+    other branch -> Centered on target.
+  Shared neighboring journal location fields use Centered on location,
+  Centered on first heard and Centered on last heard; they remain in the full
+  renderer source but are not fabricated agreement sentences.
+
+Agreement/order entry fields and mutually exclusive construction
+--------------------------------------------------------------
+  agreement_entryst fields in the actual PE layout:
+    +00 ag (agreement pointer), +08 sq (squad pointer), +10 so (squad_order).
+    +18 order progress bool, +20 full list_name, +40 simple_list_name,
+    +60 clipped p_list_name.
+  The constructor creates separate agreement and order entries:
+    Agreement allocation df930 initializes +08/+10 to zero at df99d/df9a1,
+    then stores the agreement pointer in +00 at df9c2.
+    Order allocation dfe9c allocates 0xa8 bytes. dfe16 clears rbx before the
+    order loop, dff04 stores that zero in +00, dff20 stores sq in +08 and
+    dff27 stores the actual order pointer in +10. The following virtual kind
+    call dff2e uses that order pointer to select the operation title.
+  No order title/completion/location branch later assigns an agreement pointer
+  to +00. At e0e7d rbx is cleared again before the next iteration; the default
+  order-kind path reaches insertion with its original zero initialization.
+  Insertion supplier cc680..cc804 only copies +20 to +40, folds that string
+  to lowercase and inserts/sorts the entry pointer. It does not assign +00.
+  Classic has the same constructor layout/control flow; these constructor
+  instruction RVAs are Steam minus 0x70.
+  Therefore a native order entry has ag==NULL, while an agreement entry has
+  sq==NULL and so==NULL. Runtime title metadata can safely read the retained
+  entry's +00 agreement pointer: command titles cannot acquire JoinParty
+  companion metadata through this constructor. Unknown JoinParty reason names
+  and the order grammar remain separate by their actual entry source.
+
+Native typed display field sources
+----------------------------------
+  Steam addst is ad9960; Classic addst is ad69a0. pe-display-fields.tsv preserves
+  every agreement-section addst instruction/return site with original literals.
+  PE reference suppliers:
+    Person a946e0; Group b92900; Site b93930; Artifact b94400; Actor b92f10;
+    Date has the explicit month supplier 773390 inside the numeric date writer.
+  Classic suppliers:
+    Person a91760; Group b8f940; Site b90970; Artifact b91440; Actor b8ff50;
+    Date month supplier 770db0.
+  Title return c39bf, Type return c3ce9, Counter return c3a5e are separately
+  identified by their proven native source. Classic journal returns are -70.
+  Counter has its own runtime field classification and can supply card identity
+  even when its title has no native operation text in the order-kind default.
+  Remaining addst fields within the agreement section are Literal unless their
+  exact return site identifies a typed supplier. You/you/somebody unknown are
+  fixed literal branches, not guessed Person/Group/Site tokens.
+  pe-typed-field-return-sites.inc lists exact Steam source-call classification
+  expressions using native_reference_address for runtime address mapping.
+
+Native card border, clipping and section ownership
+-------------------------------------------------
+  Frame call c3973 -> border producer dec60. Arguments:
+    left=title_x-1, right=card_right, top=header_y,
+    bottom=header_y+height+1, selected=(index==selected_index), alternate=false.
+  Default collapsed height=-1 -> top==bottom. The expanded selected card uses
+  DIMY-index-6. Titles/counters overwrite the top interior skin tiles while
+  the top corners remain. The entire frame is filled by native 3x3 skin tiles;
+  ownership cannot assume each tile is a generic CP437 box glyph.
+
+  Native gfx base Steam 14264a3f0, Classic 1426442e0.
+  Skin columns are contiguous triples in the order top/middle/bottom:
+    Selected agreement skin +aa4c(left), +aa58(center), +aa64(right).
+    Normal agreement skin   +aa70(left), +aa7c(center), +aa88(right).
+    Alternate selected +aa04/+aa10/+aa1c; alternate normal +aa28/+aa34/+aa40
+    are preserved border-producer branches, although this agreement caller
+    passes alternate=false.
+  For selected/normal cards respectively:
+    NW +aa4c/+aa70; N +aa58/+aa7c; NE +aa64/+aa88;
+    W  +aa50/+aa74; interior +aa5c/+aa80; E +aa68/+aa8c;
+    SW +aa54/+aa78; S +aa60/+aa84; SE +aa6c/+aa90.
+  Collapsed top==bottom resolves y_role=top before the bottom comparison, so
+  its single row uses the top triplet cells. Expanded forms use real middle
+  vertical edges and bottom corners. These native selected/normal skin values
+  supply card ownership for both forms without relying on name spelling.
+
+Runtime text handling follows the native grammar and exact field source:
+fixed clauses/type headings use translation data; typed fields retain the
+corresponding Person/Actor/Group/Site/Artifact formatter; stored complete titles
+cover native 58-byte clipping and Done:; compact adjacent prefix/name fields
+share a row without losing their original colors; default/no-text branches
+preserve the absence of native text. The files here provide binary source
+evidence, not evidence of observed game-screen results.

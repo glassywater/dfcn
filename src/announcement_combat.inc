@@ -267,6 +267,11 @@ std::optional<std::string> Overlay::translate_announcement_combat(
         }
         if (scope == "$unit") {
             auto result = native_announcement_unit_identity_target(raw_source, input);
+            if (!result) result = native_unit_identity_source_target(input);
+            // b6ca30/132e430 can copy the complete animated corpse/body-part
+            // label into a proved unit field. Resolve its owner and native
+            // body suffix together before treating it as a bare person name.
+            if (!result) result = translate_native_animation_label(input);
             if (!result) result = translate_ui_message_capture(input, true);
             if (!result && (initial_scope == "fortress-announcement" ||
                     initial_scope == "fortress-job" || initial_scope == "fortress-arrival" ||
@@ -425,6 +430,41 @@ std::optional<std::string> Overlay::translate_announcement_combat(
             return finish(translation_complete_with_native_nicknames(result, input)
                 ? std::move(result) : std::nullopt);
         }
+        if (scope == "$read-item") {
+            // READ_ITEM owns this whole e68020/c65450 field. Native title
+            // productions precede ordinary item parsing here, including
+            // punctuation, copy annotations and designation/count wrappers.
+            auto result = translate_written_item_caption(input, false, true);
+            if (translation_complete_with_native_nicknames(result, input))
+                return finish(std::move(result));
+            result = translate_item_caption_grammar(input);
+            if (translation_complete_with_native_nicknames(result, input))
+                return finish(std::move(result));
+            // Read also admits slabs and written tools. Keep every complete
+            // physical caption on the shared item path before allowing the
+            // BOOK_ART/BOOK_INSTRUCTION bare [NAME] title alternative.
+            result = translate_announcement_combat(input, "$announcement-item");
+            if (translation_complete_with_native_nicknames(result, input))
+                return finish(std::move(result));
+            result = translate_written_item_caption(input, true, true);
+            return finish(translation_complete_with_native_nicknames(result, input)
+                ? std::move(result) : std::nullopt);
+        }
+        if (scope == "$read-description") {
+            // cc7020/cc6a10 submit their entire carrier and work body.
+            // A displayed wrap row is never a separate work description.
+            const auto normalized = normalize_utterance(input);
+            if (!is_written_work_description(normalized)) return finish(std::nullopt);
+            return finish(translate_written_work_paragraph(input));
+        }
+        if (scope == "$announcement-building") {
+            // 1168910 obtains a discovered building's entire caption from
+            // virtual +0x188. Reuse that exact hover-caption grammar, keeping
+            // its materials, mechanism states and contained items together.
+            std::vector<size_t> building_origins;
+            return finish(RULESETS.translate_with_origins(native_text_to_utf8(input),
+                "::map_hover::building", building_origins));
+        }
         if (scope == "$item" || scope == "$announcement-item") {
             // A complete equipment/material production has its own proven
             // item kind. Keep it ahead of broad title conjunctions such as
@@ -512,6 +552,13 @@ std::optional<std::string> Overlay::translate_announcement_combat(
             auto result = native_announcement_unit_identity_target(raw_source, input);
             if (!result) result = translate_legends_name(input, true);
             return finish(std::move(result));
+        }
+        if (scope == "$memory-entity") {
+            // The incident-memory name/refusal tail calls b92900, whose
+            // field is an entity/deity language_name. Resolve its complete
+            // civilization identity before the shared generated-name path;
+            // its participant's personal-name spelling cannot choose a type.
+            return finish(translate_legends_name(input, false, true));
         }
         if (scope == "$name") return finish(translate_legends_name(input, false));
         if (scope == "$event") return finish(translate_legends_event(input, 0));
@@ -650,8 +697,12 @@ std::optional<std::string> Overlay::translate_announcement_combat(
                 const size_t final_end = input.size() - following.size();
                 // A final field owns the entire remaining span. Interior
                 // fields backtrack only over native literal boundaries.
-                for (size_t end = field + 1 == scopes.size() ? final_end : at + 1;
-                        end <= final_end; ++end) {
+                // Prefer the complete attack verb: "snatches at" must own
+                // "at" before a typed CJK name can preserve it as name text.
+                const size_t first_end = field + 1 == scopes.size() ? final_end : at + 1;
+                for (size_t choice = first_end; choice <= final_end; ++choice) {
+                    const size_t end = scopes[field] == "attack-verb"
+                        ? final_end - (choice - first_end) : choice;
                     translation_work_step();
                     if (end <= at || !template_literal_at(input, end, following, true)) continue;
                     const auto value = input.substr(at, end - at);

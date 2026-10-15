@@ -1,0 +1,23 @@
+edition	image_identity	role	producer_rva	draw_return_rva	resize_call_rva	source_fields
+reference	PE:6a70a6d9:02711000	zone-type-or-authored-name	0x39c70c	0x39c809		authored building+0xd0 directly; default type is rbp+0xb0
+reference	PE:6a70a6d9:02711000	zone-related-location-unit-or-squad	0x39c809	0x39cb3d	0x39c8e4	rbp+0xb0; original building at source-0x170 (rsp+0x40)
+reference	PE:6a70a6d9:02711000	zone-imprisoned-count	0x39cb55	0x39cd4f		rbp+0xb0; original building at source-0x170 (rsp+0x40)
+reference	PE:6a70a6d9:02711000	zone-available-count	0x39cd4f	0x39ce56		rbp+0xb0; original building at source-0x170 (rsp+0x40)
+reference	PE:6a70a6d9:02711000	zone-assigned-count	0x39ce5b	0x39d10a		rbp+0xb0; original building at source-0x170 (rsp+0x40)
+reference	PE:6a70a6d9:02711000	zone-present-count	0x39d10a	0x39d1f9		rbp+0xb0; original building at source-0x170 (rsp+0x40)
+reference	PE:6a70a6d9:02711000	location-name	0x39d1f9	0x39d2e9	0x39d289	rbp+0xb0; original building at source-0x170 (rsp+0x40); exact related location at source-0x148 (rsp+0x68)
+reference	PE:6a70a6d9:02711000	location-complete-type-description	0x39d2e9	0x39d4e0	0x39d484	rbp+0xb0; original building at source-0x170 (rsp+0x40); exact related location at source-0x148 (rsp+0x68)
+reference	PE:6a70a6d9:02711000	location-assigned-count	0x39d4e0	0x39d857		rbp+0xb0; original building at source-0x170 (rsp+0x40)
+reference	PE:6a70a6d9:02711000	hospital-patient-count	0x39d857	0x39db64		rbp+0xb0; original building at source-0x170 (rsp+0x40)
+reference	PE:6a70a6d9:02711000	location-missing-object	0x39db69	0x39db94		rbp+0xb0; original building at source-0x170 (rsp+0x40)
+classic	PE:6a70b91c:0270a000	zone-type-or-authored-name	0x39a2cc	0x39a3c9		authored building+0xd0 directly; default type is rbp+0xb0
+classic	PE:6a70b91c:0270a000	zone-related-location-unit-or-squad	0x39a3c9	0x39a6fd	0x39a4a4	rbp+0xb0; original building at source-0x170 (rsp+0x40)
+classic	PE:6a70b91c:0270a000	zone-imprisoned-count	0x39a715	0x39a90f		rbp+0xb0; original building at source-0x170 (rsp+0x40)
+classic	PE:6a70b91c:0270a000	zone-available-count	0x39a90f	0x39aa16		rbp+0xb0; original building at source-0x170 (rsp+0x40)
+classic	PE:6a70b91c:0270a000	zone-assigned-count	0x39aa1b	0x39acca		rbp+0xb0; original building at source-0x170 (rsp+0x40)
+classic	PE:6a70b91c:0270a000	zone-present-count	0x39acca	0x39adb9		rbp+0xb0; original building at source-0x170 (rsp+0x40)
+classic	PE:6a70b91c:0270a000	location-name	0x39adb9	0x39aea9	0x39ae49	rbp+0xb0; original building at source-0x170 (rsp+0x40); exact related location at source-0x148 (rsp+0x68)
+classic	PE:6a70b91c:0270a000	location-complete-type-description	0x39aea9	0x39b0a0	0x39b044	rbp+0xb0; original building at source-0x170 (rsp+0x40); exact related location at source-0x148 (rsp+0x68)
+classic	PE:6a70b91c:0270a000	location-assigned-count	0x39b0a0	0x39b417		rbp+0xb0; original building at source-0x170 (rsp+0x40)
+classic	PE:6a70b91c:0270a000	hospital-patient-count	0x39b417	0x39b724		rbp+0xb0; original building at source-0x170 (rsp+0x40)
+classic	PE:6a70b91c:0270a000	location-missing-object	0x39b729	0x39b754		rbp+0xb0; original building at source-0x170 (rsp+0x40)

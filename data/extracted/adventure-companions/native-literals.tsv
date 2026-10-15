@@ -1,0 +1,185 @@
+edition	role	instruction_rva	operand_rva	storage	source
+reference	companions-renderer	0x86e022	inline	immediate	Done
+reference	companions-renderer	0x86e0aa	0x16135e8	rip	Companions
+reference	companions-renderer	0x86e0b7	0x16135f0	rip	ns
+reference	companions-renderer	0x86e60f	0x15e8ca0	rip	You
+reference	companions-renderer	0x86e619	0x15e8ca2	rip	u
+reference	companions-renderer	0x86e83b	inline	immediate	Dead
+reference	companions-renderer	0x86e8f8	0x15ff5c0	rip	Unconscious
+reference	companions-renderer	0x86e905	0x15ff5c8	rip	ous
+reference	companions-renderer	0x86e910	0x15ff5ca	rip	s
+reference	companions-renderer	0x86e96d	0x15ff5b0	rip	Paralyzed
+reference	companions-renderer	0x86e97a	0x15ff5b8	rip	d
+reference	companions-renderer	0x86e9d9	0x15ff664	rip	Webbed
+reference	companions-renderer	0x86e9e2	0x15ff668	rip	ed
+reference	companions-renderer	0x86ea9a	0x16b3490	rip	In party nearby
+reference	companions-renderer	0x86eaa7	0x16b3498	rip	 nearby
+reference	companions-renderer	0x86eab0	0x16b349c	rip	rby
+reference	companions-renderer	0x86eabb	0x16b349e	rip	y
+reference	companions-renderer	0x86ed0b	0x16b34b0	rip	Distant
+reference	companions-renderer	0x86ed15	0x16b34b4	rip	ant
+reference	companions-renderer	0x86ed20	0x16b34b6	rip	t
+reference	companions-renderer	0x86ee3d	0x16b34b8	rip	Traveling through 
+reference	companions-renderer	0x86ee47	0x16b34c8	rip	h 
+reference	companions-renderer	0x86eebd	0x15fe078	rip	In 
+reference	companions-renderer	0x86eec7	0x15fe07a	rip	 
+reference	companions-renderer	0x86ef53	0x15fe078	rip	In 
+reference	companions-renderer	0x86ef5d	0x15fe07a	rip	 
+reference	companions-renderer	0x86efd2	0x15fe078	rip	In 
+reference	companions-renderer	0x86f09c	inline	immediate	Dead
+reference	companions-renderer	0x86f50e	0x1613fa0	rip	Wrestle
+reference	companions-renderer	0x86f518	0x1613fa4	rip	tle
+reference	companions-renderer	0x86f523	0x1613fa6	rip	e
+reference	companions-renderer	0x86f5c5	0x16b3464	rip	Ground
+reference	companions-renderer	0x86f5ce	0x16b3468	rip	nd
+reference	companions-renderer	0x86f685	0x16b345c	rip	Nearby
+reference	companions-renderer	0x86f68e	0x16b3460	rip	by
+reference	companions-renderer	0x86f913	0x16b3470	rip	Visible: 
+reference	companions-renderer	0x86f920	0x16b3478	rip	 
+reference	companions-renderer	0x86f94c	0x16b3178	rip	In party: 
+reference	companions-renderer	0x86f959	0x16b3180	rip	: 
+reference	companions-renderer	0x86f9d6	0x16b11b0	rip	N
+reference	companions-renderer	0x86fa09	0x16b1144	rip	NNE
+reference	companions-renderer	0x86fa3c	0x169f528	rip	NE
+reference	companions-renderer	0x86fa6f	0x16b1140	rip	ENE
+reference	companions-renderer	0x86faa2	0x16b114c	rip	E
+reference	companions-renderer	0x86fad5	0x16b1148	rip	ESE
+reference	companions-renderer	0x86fb08	0x169f530	rip	SE
+reference	companions-renderer	0x86fb3b	0x16b11e4	rip	SSE
+reference	companions-renderer	0x86fb6e	0x1670cd4	rip	S
+reference	companions-renderer	0x86fba1	0x16b11e0	rip	SSW
+reference	companions-renderer	0x86fbd4	0x169f52c	rip	SW
+reference	companions-renderer	0x86fc07	0x16b11ec	rip	WSW
+reference	companions-renderer	0x86fc3a	0x16b11e8	rip	W
+reference	companions-renderer	0x86fc6d	0x16b11d4	rip	WNW
+reference	companions-renderer	0x86fca0	0x169f524	rip	NW
+reference	companions-renderer	0x86fcd3	0x16b11d0	rip	NNW
+reference	companions-renderer	0x86fd1a	0x16b11dc	rip	***
+reference	companions-renderer	0x86fd24	0x16b11de	rip	*
+reference	companions-renderer	0x86fed0	0x16b3480	rip	Not visible
+reference	companions-renderer	0x86fedd	0x16b3488	rip	ble
+reference	companions-renderer	0x86fee8	0x16b348a	rip	e
+reference	site-name	0xb9397a	0x16df920	rip	[LPAGE:SITE:
+reference	site-name	0xb9399d	0x15fd690	rip	]
+reference	site-name	0xb93a06	0x15fda88	rip	[/LPAGE]
+reference	site-name	0xb93a5e	0x16df910	rip	an unknown site
+reference	region-name	0xb94a8a	0x16df638	rip	[LPAGE:SR:
+reference	region-name	0xb94aaa	0x15fd690	rip	]
+reference	region-name	0xb94b13	0x15fda88	rip	[/LPAGE]
+reference	region-name	0xb94b6b	0x16df678	rip	an unknown region
+reference	underground-region-name	0xb94982	0x16df6a8	rip	[LPAGE:FL:
+reference	underground-region-name	0xb949a5	0x15fd690	rip	]
+reference	underground-region-name	0xb949d1	0x16df6b8	rip	the Underworld
+reference	underground-region-name	0xb949e0	0x16df6c8	rip	the magma sea
+reference	underground-region-name	0xb949ef	0x16df690	rip	the depths of the world
+reference	underground-region-name	0xb94a08	0x15fda88	rip	[/LPAGE]
+reference	underground-region-name	0xb94a17	0x16df648	rip	an unknown underground region
+reference	english-language-name	0xa948a3	0x15e873c	rip	 
+reference	english-language-name	0xa9495e	0x15e873c	rip	 
+reference	english-language-name	0xa94a3b	0x15e873c	rip	 
+reference	english-language-name	0xa94a5d	0x15ed9bc	rip	The 
+reference	english-language-name	0xa94a78	0x15e8e48	rip	the 
+reference	english-language-name	0xa94af2	0x15e873c	rip	 
+reference	english-language-name	0xa94b11	0x15ed9bc	rip	The 
+reference	english-language-name	0xa94b1a	0x15e8e48	rip	the 
+reference	english-language-name	0xa94b9a	0x15e873c	rip	 
+reference	english-language-name	0xa94bb9	0x15ed9bc	rip	The 
+reference	english-language-name	0xa94bc2	0x15e8e48	rip	the 
+reference	english-language-name	0xa94d1f	0x15e873c	rip	 
+reference	english-language-name	0xa94d4b	0x15ed9bc	rip	The 
+reference	english-language-name	0xa94d62	0x15e8e48	rip	the 
+reference	english-language-name	0xa94e09	0x15e873c	rip	 
+reference	english-language-name	0xa94e18	0x16ced90	rip	of 
+reference	english-language-name	0xa94e1f	0x16cee1c	rip	Of 
+classic	companions-renderer	0x86b8a2	inline	immediate	Done
+classic	companions-renderer	0x86b92a	0x160dae0	rip	Companions
+classic	companions-renderer	0x86b937	0x160dae8	rip	ns
+classic	companions-renderer	0x86be8f	0x15e3c40	rip	You
+classic	companions-renderer	0x86be99	0x15e3c42	rip	u
+classic	companions-renderer	0x86c0bb	inline	immediate	Dead
+classic	companions-renderer	0x86c178	0x15fa628	rip	Unconscious
+classic	companions-renderer	0x86c185	0x15fa630	rip	ous
+classic	companions-renderer	0x86c190	0x15fa632	rip	s
+classic	companions-renderer	0x86c1ed	0x15fa618	rip	Paralyzed
+classic	companions-renderer	0x86c1fa	0x15fa620	rip	d
+classic	companions-renderer	0x86c259	0x15fa6cc	rip	Webbed
+classic	companions-renderer	0x86c262	0x15fa6d0	rip	ed
+classic	companions-renderer	0x86c31a	0x16ae680	rip	In party nearby
+classic	companions-renderer	0x86c327	0x16ae688	rip	 nearby
+classic	companions-renderer	0x86c330	0x16ae68c	rip	rby
+classic	companions-renderer	0x86c33b	0x16ae68e	rip	y
+classic	companions-renderer	0x86c58b	0x16ae6a0	rip	Distant
+classic	companions-renderer	0x86c595	0x16ae6a4	rip	ant
+classic	companions-renderer	0x86c5a0	0x16ae6a6	rip	t
+classic	companions-renderer	0x86c6bd	0x16ae6a8	rip	Traveling through 
+classic	companions-renderer	0x86c6c7	0x16ae6b8	rip	h 
+classic	companions-renderer	0x86c73d	0x15f90c0	rip	In 
+classic	companions-renderer	0x86c747	0x15f90c2	rip	 
+classic	companions-renderer	0x86c7d3	0x15f90c0	rip	In 
+classic	companions-renderer	0x86c7dd	0x15f90c2	rip	 
+classic	companions-renderer	0x86c852	0x15f90c0	rip	In 
+classic	companions-renderer	0x86c91c	inline	immediate	Dead
+classic	companions-renderer	0x86cd8e	0x160ef80	rip	Wrestle
+classic	companions-renderer	0x86cd98	0x160ef84	rip	tle
+classic	companions-renderer	0x86cda3	0x160ef86	rip	e
+classic	companions-renderer	0x86ce45	0x16ae33c	rip	Ground
+classic	companions-renderer	0x86ce4e	0x16ae340	rip	nd
+classic	companions-renderer	0x86cf05	0x16ae334	rip	Nearby
+classic	companions-renderer	0x86cf0e	0x16ae338	rip	by
+classic	companions-renderer	0x86d193	0x16ae348	rip	Visible: 
+classic	companions-renderer	0x86d1a0	0x16ae350	rip	 
+classic	companions-renderer	0x86d1cc	0x16ae2c8	rip	In party: 
+classic	companions-renderer	0x86d1d9	0x16ae2d0	rip	: 
+classic	companions-renderer	0x86d256	0x16ac210	rip	N
+classic	companions-renderer	0x86d289	0x16ac2d8	rip	NNE
+classic	companions-renderer	0x86d2bc	0x169a660	rip	NE
+classic	companions-renderer	0x86d2ef	0x16ac2d4	rip	ENE
+classic	companions-renderer	0x86d322	0x16ac2e0	rip	E
+classic	companions-renderer	0x86d355	0x16ac2dc	rip	ESE
+classic	companions-renderer	0x86d388	0x169a668	rip	SE
+classic	companions-renderer	0x86d3bb	0x16ac2c8	rip	SSE
+classic	companions-renderer	0x86d3ee	0x166c08c	rip	S
+classic	companions-renderer	0x86d421	0x16ac2c4	rip	SSW
+classic	companions-renderer	0x86d454	0x169a664	rip	SW
+classic	companions-renderer	0x86d487	0x16ac2d0	rip	WSW
+classic	companions-renderer	0x86d4ba	0x16ac2cc	rip	W
+classic	companions-renderer	0x86d4ed	0x16ac138	rip	WNW
+classic	companions-renderer	0x86d520	0x169a65c	rip	NW
+classic	companions-renderer	0x86d553	0x16ac134	rip	NNW
+classic	companions-renderer	0x86d59a	0x16ac140	rip	***
+classic	companions-renderer	0x86d5a4	0x16ac142	rip	*
+classic	companions-renderer	0x86d750	0x16ae358	rip	Not visible
+classic	companions-renderer	0x86d75d	0x16ae360	rip	ble
+classic	companions-renderer	0x86d768	0x16ae362	rip	e
+classic	site-name	0xb909ba	0x16da6f8	rip	[LPAGE:SITE:
+classic	site-name	0xb909dd	0x15f8664	rip	]
+classic	site-name	0xb90a46	0x15f8b50	rip	[/LPAGE]
+classic	site-name	0xb90a9e	0x16da6e8	rip	an unknown site
+classic	region-name	0xb91aca	0x16da4a0	rip	[LPAGE:SR:
+classic	region-name	0xb91aea	0x15f8664	rip	]
+classic	region-name	0xb91b53	0x15f8b50	rip	[/LPAGE]
+classic	region-name	0xb91bab	0x16daec8	rip	an unknown region
+classic	underground-region-name	0xb919c2	0x16da510	rip	[LPAGE:FL:
+classic	underground-region-name	0xb919e5	0x15f8664	rip	]
+classic	underground-region-name	0xb91a11	0x16da480	rip	the Underworld
+classic	underground-region-name	0xb91a20	0x16da490	rip	the magma sea
+classic	underground-region-name	0xb91a2f	0x16da4f8	rip	the depths of the world
+classic	underground-region-name	0xb91a48	0x15f8b50	rip	[/LPAGE]
+classic	underground-region-name	0xb91a57	0x16da4b0	rip	an unknown underground region
+classic	english-language-name	0xa91923	0x15e3720	rip	 
+classic	english-language-name	0xa919de	0x15e3720	rip	 
+classic	english-language-name	0xa91abb	0x15e3720	rip	 
+classic	english-language-name	0xa91add	0x15e89c4	rip	The 
+classic	english-language-name	0xa91af8	0x15e3e34	rip	the 
+classic	english-language-name	0xa91b72	0x15e3720	rip	 
+classic	english-language-name	0xa91b91	0x15e89c4	rip	The 
+classic	english-language-name	0xa91b9a	0x15e3e34	rip	the 
+classic	english-language-name	0xa91c1a	0x15e3720	rip	 
+classic	english-language-name	0xa91c39	0x15e89c4	rip	The 
+classic	english-language-name	0xa91c42	0x15e3e34	rip	the 
+classic	english-language-name	0xa91d9f	0x15e3720	rip	 
+classic	english-language-name	0xa91dcb	0x15e89c4	rip	The 
+classic	english-language-name	0xa91de2	0x15e3e34	rip	the 
+classic	english-language-name	0xa91e89	0x15e3720	rip	 
+classic	english-language-name	0xa91e98	0x16cb220	rip	of 
+classic	english-language-name	0xa91e9f	0x16cb2ac	rip	Of 

@@ -140,10 +140,11 @@ void Overlay::layout_fortress_help(SDL_Renderer *renderer) {
 
 // Choose catalog fragments only when the rest of the paragraph is covered.
 // Native assembly can put a short entry before one with the same longer prefix.
-std::optional<std::string> Overlay::translate_help_paragraph(
+std::optional<std::string> Overlay::translate_help_paragraph_uncached(
         std::string_view raw_source, const std::vector<int> &raw_foregrounds,
         std::vector<int> &target_foregrounds, bool ui_message, int required_rule,
-        bool literal_only) const {
+        bool literal_only, bool &cacheable) const {
+    cacheable = true;
     target_foregrounds.clear();
     const auto &catalog = ui_message ? ui_message_trie_ : help_trie_;
     const auto &templates = ui_message ? ui_message_template_rules_ : help_template_rules_;
@@ -240,7 +241,7 @@ std::optional<std::string> Overlay::translate_help_paragraph(
     std::vector<int> candidate_templates;
     if (path.front().end == SIZE_MAX) {
         if (required_rule >= 0) {
-            if (std::find(templates.begin(), templates.end(), required_rule) != templates.end())
+            if (prose_template_member(required_rule, ui_message))
                 candidate_templates.push_back(required_rule);
         } else if (ui_message) {
             for (int index : ui_message_anchors_.candidates(compact_ui_message_literal(source)))
@@ -249,6 +250,13 @@ std::optional<std::string> Overlay::translate_help_paragraph(
     }
     const auto &paragraph_templates = ui_message || required_rule >= 0
         ? candidate_templates : templates;
+    // Typed captures can consult the current draw's authored squad alias or
+    // world/site bindings, which the unit-identity context does not cover.
+    // Cache literal-only parses and misses without any typed candidates.
+    if (path.front().end == SIZE_MAX &&
+            std::any_of(paragraph_templates.begin(), paragraph_templates.end(),
+                [&](int index) { return !rules_[static_cast<size_t>(index)].template_kinds.empty(); }))
+        cacheable = false;
     // Before filling suffixes, try the complete source through this SAME
     // matcher. Only path[source.size()] is reachable yet, so this first pass
     // cannot admit a shorter span. A complete match wins the existing longest
@@ -616,6 +624,47 @@ static dfcn::TranslationResult cache_native_display_translation(Cache &cache, si
     return result;
 }
 
+std::optional<std::string> Overlay::translate_help_paragraph(
+        std::string_view raw_source, const std::vector<int> &raw_foregrounds,
+        std::vector<int> &target_foregrounds, bool ui_message, int required_rule,
+        bool literal_only) const {
+    target_foregrounds.clear();
+    if (raw_source.empty() || raw_source.size() != raw_foregrounds.size()) return std::nullopt;
+    refresh_native_display_translation_context();
+    const auto context = native_identity_translation_context();
+    std::string cache_key = std::to_string(context) + '\x1f' +
+        std::string(ui_message ? "strict-ui-message:" : "strict-help:") +
+        std::to_string(required_rule) + ":" + (literal_only ? "1:" : "0:");
+    cache_key.push_back(gps_ ? '\x01' : '\0');
+    if (gps_) cache_key.append(reinterpret_cast<const char *>(gps_->uccolor), sizeof(gps_->uccolor));
+    cache_key.push_back('\x1f');
+    cache_key.append(raw_source);
+    if (const auto found = native_display_translation_cache_.find(cache_key);
+            found != native_display_translation_cache_.end() &&
+            found->second.result.resource_revision == RULESETS.resource_revision() &&
+            found->second.source_colors == raw_foregrounds) {
+        target_foregrounds = found->second.target_colors;
+        return found->second.result.strict_target();
+    }
+    bool cacheable = false;
+    const auto target = translate_help_paragraph_uncached(raw_source, raw_foregrounds,
+        target_foregrounds, ui_message, required_rule, literal_only, cacheable);
+    // A thrown work limit leaves this wrapper before publication; neither a
+    // limited parse nor a context-dependent typed miss becomes a strict hit.
+    if (cacheable && !dfcn::translation_work_exhausted()) {
+        dfcn::TranslationResult result;
+        result.source.assign(raw_source);
+        if (target) {
+            result.status = dfcn::TranslationStatus::Translated;
+            result.target = *target;
+        }
+        cache_native_display_translation(native_display_translation_cache_,
+            native_display_translation_cache_bytes_, cache_key, raw_foregrounds,
+            target_foregrounds, std::move(result));
+    }
+    return target;
+}
+
 dfcn::TranslationResult Overlay::translate_help_paragraph_result(
         std::string_view raw_source, const std::vector<int> &raw_foregrounds,
         std::vector<int> &target_foregrounds, bool ui_message, int required_rule) const {
@@ -672,12 +721,24 @@ dfcn::TranslationResult Overlay::translate_help_paragraph_result(
     const auto source = normalize_utterance(raw_source, &origins);
     if (source.empty() || source.size() != origins.size()) return {};
     const auto &templates = ui_message ? ui_message_template_rules_ : help_template_rules_;
+    // Display fallback has the same mandatory catalog literals as strict
+    // matching. Partial typed fields cannot make an absent literal match.
+    std::vector<int> candidate_templates;
+    if (required_rule >= 0) {
+        if (prose_template_member(required_rule, ui_message))
+            candidate_templates.push_back(required_rule);
+    } else if (ui_message) {
+        for (int index : ui_message_anchors_.candidates(compact_ui_message_literal(source)))
+            candidate_templates.push_back(ui_message_template_probes_[index].index);
+    }
+    const auto &display_templates = ui_message || required_rule >= 0
+        ? candidate_templates : templates;
     std::optional<dfcn::TranslationResult> best;
     const Rule *best_rule = nullptr;
     std::vector<std::pair<size_t, size_t>> best_ranges;
     size_t best_literals = 0;
     try {
-        for (int index : templates) {
+        for (int index : display_templates) {
             if (required_rule >= 0 && index != required_rule) continue;
             const Rule &rule = rules_[static_cast<size_t>(index)];
             if (rule.template_kinds.empty()) continue;

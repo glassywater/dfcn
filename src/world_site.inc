@@ -205,7 +205,8 @@ std::optional<NativeTextCard> Overlay::capture_world_action_card(
 std::vector<NativeTextCard> Overlay::capture_world_civilization_records(
         const SDL_Rect &panel) const {
     std::vector<NativeTextCard> records;
-    const auto captures = captured_clipped_captions();
+    const auto captures_snapshot = captured_clipped_caption_snapshot();
+    const auto &captures = *captures_snapshot;
     const auto settings = native_ui_settings();
     const bool classic = settings && settings->classic;
     const int right = panel.x + panel.w, bottom = panel.y + panel.h;
@@ -312,7 +313,8 @@ std::optional<NativeTextCard> Overlay::capture_world_site_card(
                 return at != std::string::npos && has_word_boundaries(row, at, at + label.size());
             })) ++navigation;
     const NativePanelBorders borders(*gps_);
-    const auto captures = captured_clipped_captions();
+    const auto captures_snapshot = captured_clipped_caption_snapshot();
+    const auto &captures = *captures_snapshot;
     const auto align_card = [&](NativeTextCard card) {
         const int right = card.interior.x + card.interior.w;
         for (auto &row : card.rows) {
@@ -624,7 +626,8 @@ std::optional<NativeTextCard> Overlay::capture_world_site_card(
                 SDL_Rect{panel->x, panel->y, right - panel->x, bottom - panel->y});
             if (!card) continue;
             std::string heading = card->rows.front().source;
-            for (const auto &capture : captured_clipped_captions())
+            const auto clipped_snapshot = captured_clipped_caption_snapshot();
+            for (const auto &capture : *clipped_snapshot)
                 if (capture.x == card->rows.front().x && capture.y == card->rows.front().y &&
                     capture.visible == heading) {
                     heading = capture.complete;
@@ -715,7 +718,8 @@ std::optional<NativeTextCard> Overlay::capture_world_site_card(
     // accented names as well as English glosses without borrowing Legends'
     // Export XML context or assuming any particular world/name/row count.
     if (navigation >= 2) {
-        const auto captures = captured_clipped_captions();
+        const auto captures_snapshot = captured_clipped_caption_snapshot();
+        const auto &captures = *captures_snapshot;
         for (int y = 0; y < gps_->dimy; ++y) {
             auto anchor = context[y].find(", \"");
             if (anchor == std::string::npos) anchor = context[y].find("Your site government");
@@ -842,15 +846,17 @@ void Overlay::append_world_site_phrases(const NativeTextCard &card,
     bool artifacts = false;
     const auto travel_status_rows = action_control ? std::unordered_set<int>{}
         : append_adventure_travel_status_paragraphs(card, rows, matches, only_y);
-    const auto captures = captured_clipped_captions();
+    const auto captures_snapshot = captured_clipped_caption_snapshot();
+    const auto &captures = *captures_snapshot;
     const auto reclaim_draws = reclaim_history ? captured_embark_reclaim_history_rows(*gps_)
         : std::array<std::vector<NativeDrawnTextRow>, 2>{};
     // The artifact popup shares this frame and mission footer, but its body
     // is ONE item document, not independently translatable location facts.
     const size_t description_end = action_control ? 0
         : append_world_artifact_description(card, rows, matches, only_y);
-    const auto claim_draws = description_end ? captured_native_drawn_text_rows()
-        : std::vector<NativeDrawnTextRow>{};
+    const auto claim_draws_snapshot = description_end ? captured_native_drawn_text_snapshot()
+        : std::make_shared<const std::vector<NativeDrawnTextRow>>();
+    const auto &claim_draws = *claim_draws_snapshot;
     bool facts = action_control || description_end != 0;
     for (size_t index = description_end; index < card.rows.size(); ++index) {
         const auto &row = card.rows[index];
@@ -1241,7 +1247,8 @@ static std::optional<SDL_Rect> world_mission_member_text_rect(
 // keeps the native left origin and is bounded by the next column/control.
 void Overlay::append_world_mission_members(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y) const {
-    const auto captures = captured_clipped_captions();
+    const auto captures_snapshot = captured_clipped_caption_snapshot();
+    const auto &captures = *captures_snapshot;
     for (int y = 0; y < gps_->dimy; ++y) {
         if (only_y >= 0 && only_y != y) continue;
         for (std::string_view status : {"On this mission", "No specific orders"}) {
@@ -1379,10 +1386,11 @@ void Overlay::append_world_mission_titles(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y) const {
     if (!gps_ || gps_->tile_pixel_x <= 0 || gps_->tile_pixel_y <= 0) return;
     const NativePanelBorders borders(*gps_);
-    const auto captures = captured_clipped_captions();
-    const std::array batches{captured_native_drawn_text_rows(false),
-        captured_native_drawn_text_rows(true)};
-    for (const auto &batch : batches) for (const auto &draw : batch) {
+    const auto captures_snapshot = captured_clipped_caption_snapshot();
+    const auto &captures = *captures_snapshot;
+    const std::array batches{captured_native_drawn_text_snapshot(false),
+        captured_native_drawn_text_snapshot(true)};
+    for (const auto &batch : batches) for (const auto &draw : *batch) {
         if (!draw.mission_title || draw.x < 0 || draw.x >= gps_->dimx ||
                 draw.y < 0 || draw.y >= gps_->dimy || draw.source.empty()) continue;
         std::string complete = draw.complete_source.empty() ? draw.source : draw.complete_source;
@@ -1543,9 +1551,10 @@ void Overlay::append_world_mission_reports(std::vector<std::string> &rows,
             if (cell && cell[0]) context[y][x] = cell[0];
         }
     const NativePanelBorders borders(*gps_);
-    const auto captures = captured_clipped_captions();
-    const std::array<std::vector<NativeDrawnTextRow>, 2> draws = {
-        captured_native_drawn_text_rows(), captured_native_drawn_text_rows(true)};
+    const auto captures_snapshot = captured_clipped_caption_snapshot();
+    const auto &captures = *captures_snapshot;
+    const std::array draws{captured_native_drawn_text_snapshot(),
+        captured_native_drawn_text_snapshot(true)};
     for (int y = 0; y < gps_->dimy; ++y) {
         if (only_y >= 0 && only_y != y) continue;
         size_t at = std::string::npos;
@@ -1599,7 +1608,7 @@ void Overlay::append_world_mission_reports(std::vector<std::string> &rows,
         // Draws retain complete_source across cached frames too. Their source
         // is the actually drawn (possibly resized) string, which alone can
         // prove ownership of surviving letters beyond the scrollbar.
-        for (const auto &draw : draws[top ? 1 : 0])
+        for (const auto &draw : *draws[top ? 1 : 0])
             if (draw.x == x && same_draw_row(draw.y) && agrees(draw.source)) {
                 drawn_source = draw.source;
                 if (!draw.complete_source.empty()) complete = draw.complete_source;
@@ -1726,8 +1735,8 @@ static size_t world_civilization_trade_label_end(std::string_view source) {
 // border recognition. Require their actual current bytes and common row/
 // column origins; the source binding never authorizes unrelated grid cells.
 std::optional<NativeTextCard> Overlay::capture_native_world_civilization_details() const {
-    const std::array batches{captured_native_drawn_text_rows(false),
-        captured_native_drawn_text_rows(true)};
+    const std::array batches{captured_native_drawn_text_snapshot(false),
+        captured_native_drawn_text_snapshot(true)};
     const auto visible = [&](const NativeDrawnTextRow &draw, int right) {
         if (draw.x < 0 || draw.y < 0 || draw.y >= gps_->dimy || draw.x >= right ||
                 right > gps_->dimx || draw.source.empty()) return false;
@@ -1753,7 +1762,8 @@ std::optional<NativeTextCard> Overlay::capture_native_world_civilization_details
         }
         return row;
     };
-    for (const auto &draws : batches) {
+    for (const auto &draws_snapshot : batches) {
+        const auto &draws = *draws_snapshot;
         struct Heading {
             const NativeDrawnTextRow *prefix;
             int value_x;
@@ -2067,9 +2077,10 @@ void Overlay::append_world_civilization_officials(const NativeTextCard &details,
         std::vector<std::string> &rows, std::vector<Match> &matches, int only_y) const {
     // The independent detail capture proves this trade/official frame.
     // Neither another card nor translation coverage establishes ownership.
-    const auto captures = captured_clipped_captions();
-    const std::array draws{captured_native_drawn_text_rows(false),
-        captured_native_drawn_text_rows(true)};
+    const auto captures_snapshot = captured_clipped_caption_snapshot();
+    const auto &captures = *captures_snapshot;
+    const std::array draws{captured_native_drawn_text_snapshot(false),
+        captured_native_drawn_text_snapshot(true)};
     const auto complete_source = [&](int x, int y, std::string_view visible, int right) {
         bool top = false;
         cell_at(x, y, &top);
@@ -2108,7 +2119,7 @@ void Overlay::append_world_civilization_officials(const NativeTextCard &details,
             }
         // Draw records retain pre-shortening text across cached frames after
         // the clipping registry's epoch has expired.
-        for (const auto &draw : draws[top ? 1 : 0])
+        for (const auto &draw : *draws[top ? 1 : 0])
             if (draw.x == x && same_draw_row(draw.y) && agrees(draw.source)) {
                 if (!draw.complete_source.empty()) complete = draw.complete_source;
                 else if (complete == visible) complete = draw.source;

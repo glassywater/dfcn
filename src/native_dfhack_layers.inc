@@ -612,8 +612,14 @@ static thread_local graphicst *g_native_dfhack_present_graphics = nullptr;
 static thread_local const NativeDfhackLayerStorage *g_native_dfhack_read_storage = nullptr;
 static thread_local bool g_native_dfhack_callback_writes_pending = false;
 
-static void native_dfhack_queue_render_schedule(int32_t refresh, int16_t force) noexcept {
+static void native_dfhack_queue_render_schedule(int32_t refresh, int16_t force,
+        int16_t initial_force) noexcept {
     g_native_dfhack_render_refresh.store(refresh, std::memory_order_release);
+    // The display header borrows the producer's existing redraw countdown.
+    // Returning that unchanged value as a new request can re-arm a redraw
+    // the producer has already consumed while SDL was painting. Only a
+    // request raised during this display belongs in the feedback queue.
+    if (force <= initial_force) return;
     auto pending = g_native_dfhack_render_force.load(std::memory_order_relaxed);
     while (pending < force && !g_native_dfhack_render_force.compare_exchange_weak(
             pending, force, std::memory_order_release, std::memory_order_relaxed)) {}
@@ -878,7 +884,7 @@ class NativeDfhackLayerWriteScope {
 public:
     explicit NativeDfhackLayerWriteScope(bool enter = true, bool synchronize = false,
             bool write_intent = true) noexcept {
-        if (!enter) return;
+        if (!enter || g_native_process_exiting.load(std::memory_order_acquire)) return;
         if (active_ && !active_->paused_) {
             if (write_intent) g_native_dfhack_callback_writes_pending = true;
             return;
@@ -890,6 +896,7 @@ public:
             native_translation_.emplace();
 #endif
             lock_ = std::unique_lock<std::recursive_mutex>(g_native_dfhack_layer_mutex);
+            if (g_native_process_exiting.load(std::memory_order_acquire)) return;
             native_read_.emplace();
             native_dfhack_retire_writer_storage();
 #ifdef _WIN32
@@ -1007,7 +1014,7 @@ class NativeDfhackFrameTransactionScope {
     bool entered_ = false, outer_ = false;
 public:
     explicit NativeDfhackFrameTransactionScope(bool enter = true, void *screen = nullptr) noexcept {
-        if (!enter) return;
+        if (!enter || g_native_process_exiting.load(std::memory_order_acquire)) return;
         if (g_native_dfhack_layer_frame_depth) {
             ++g_native_dfhack_layer_frame_depth; entered_ = true; return;
         }
@@ -1016,6 +1023,7 @@ public:
             native_translation_.emplace();
 #endif
             lock_ = std::unique_lock<std::recursive_mutex>(g_native_dfhack_layer_mutex);
+            if (g_native_process_exiting.load(std::memory_order_acquire)) return;
             native_read_.emplace();
             native_dfhack_retire_writer_storage();
             if (screen) {

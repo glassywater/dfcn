@@ -1,0 +1,39 @@
+edition	image_identity	entry_rva	crime_enum	target_rva	base_caption	optional_typed_suffix
+reference	PE:6a70a6d9:02711000	0x46db08	0	0x46d6cb	Violation of production order	
+reference	PE:6a70a6d9:02711000	0x46db0c	1	0x46d6dd	Violation of export prohibition	
+reference	PE:6a70a6d9:02711000	0x46db10	2	0x46d6ef	Violation of job order	
+reference	PE:6a70a6d9:02711000	0x46db14	3	0x46d701	Conspiracy to alow labor	
+reference	PE:6a70a6d9:02711000	0x46db18	4	0x46d713	Murder	 of <unit identity>
+reference	PE:6a70a6d9:02711000	0x46db1c	5	0x46d7f9	Disorderly conduct	
+reference	PE:6a70a6d9:02711000	0x46db20	6	0x46d80b	Building destruction	
+reference	PE:6a70a6d9:02711000	0x46db24	7	0x46d83b	Vandalism	
+reference	PE:6a70a6d9:02711000	0x46db28	8	0x46d84d	Theft	 of <artifact name>
+reference	PE:6a70a6d9:02711000	0x46db2c	9	0x46d966	Robbery	
+reference	PE:6a70a6d9:02711000	0x46db30	10	0x46da92	Blood-drinking	
+reference	PE:6a70a6d9:02711000	0x46db34	11	0x46d829	Embezzlement	
+reference	PE:6a70a6d9:02711000	0x46db38	12	0x46dab0	Attempted murder	
+reference	PE:6a70a6d9:02711000	0x46db3c	13	0x46dabf	Kidnapping	
+reference	PE:6a70a6d9:02711000	0x46db40	14	0x46dace	Attempted kidnapping	
+reference	PE:6a70a6d9:02711000	0x46db44	15	0x46daa1	Attempted theft	
+reference	PE:6a70a6d9:02711000	0x46db48	16	0x46da83	Treason	
+reference	PE:6a70a6d9:02711000	0x46db4c	17	0x46d978	Espionage	 against <historical entity name>
+reference	PE:6a70a6d9:02711000	0x46db50	18	0x46d817	Bribery	
+classic	PE:6a70b91c:0270a000	0x46b6c8	0	0x46b28b	Violation of production order	
+classic	PE:6a70b91c:0270a000	0x46b6cc	1	0x46b29d	Violation of export prohibition	
+classic	PE:6a70b91c:0270a000	0x46b6d0	2	0x46b2af	Violation of job order	
+classic	PE:6a70b91c:0270a000	0x46b6d4	3	0x46b2c1	Conspiracy to alow labor	
+classic	PE:6a70b91c:0270a000	0x46b6d8	4	0x46b2d3	Murder	 of <unit identity>
+classic	PE:6a70b91c:0270a000	0x46b6dc	5	0x46b3b9	Disorderly conduct	
+classic	PE:6a70b91c:0270a000	0x46b6e0	6	0x46b3cb	Building destruction	
+classic	PE:6a70b91c:0270a000	0x46b6e4	7	0x46b3fb	Vandalism	
+classic	PE:6a70b91c:0270a000	0x46b6e8	8	0x46b40d	Theft	 of <artifact name>
+classic	PE:6a70b91c:0270a000	0x46b6ec	9	0x46b526	Robbery	
+classic	PE:6a70b91c:0270a000	0x46b6f0	10	0x46b652	Blood-drinking	
+classic	PE:6a70b91c:0270a000	0x46b6f4	11	0x46b3e9	Embezzlement	
+classic	PE:6a70b91c:0270a000	0x46b6f8	12	0x46b670	Attempted murder	
+classic	PE:6a70b91c:0270a000	0x46b6fc	13	0x46b67f	Kidnapping	
+classic	PE:6a70b91c:0270a000	0x46b700	14	0x46b68e	Attempted kidnapping	
+classic	PE:6a70b91c:0270a000	0x46b704	15	0x46b661	Attempted theft	
+classic	PE:6a70b91c:0270a000	0x46b708	16	0x46b643	Treason	
+classic	PE:6a70b91c:0270a000	0x46b70c	17	0x46b538	Espionage	 against <historical entity name>
+classic	PE:6a70b91c:0270a000	0x46b710	18	0x46b3d7	Bribery	

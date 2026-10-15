@@ -1,0 +1,231 @@
+Adventure ability-menu native source reconstruction, DF 53.16 Windows
+
+This file is a manual semantic decompilation of the complete native PE
+instructions saved beside it. It is source extraction, not a runtime observation
+or a test. The pre-existing elf-decompiled.c is an independent actual decompiler
+output for the same menu. These PE bodies were rediscovered from intersecting
+the actual "What do you want to do?" and "Unknown interaction" literal owners.
+The adventure_optionst chooser at Steam RVA 0x884460 is a different renderer.
+
+Image identities and logical function ranges:
+Steam PE:6a70a6d9:02711000, renderer 0x8a8300..0x8aa94c.
+Classic PE:6a70b91c:0270a000, renderer 0x8a5b80..0x8a81cc.
+Every renderer instruction RVA in the following reconstruction maps to Classic
+by subtracting 0x2780. Helper callees have their own separately listed mappings.
+native-branches.tsv retains every direct conditional branch and its actual
+next-instruction fallthrough. native-calls.tsv retains direct calls and jumps;
+the complete .asm also retains indirect calls, cmov selections and all operands.
+
+TOP-LEVEL DISPLAY BRANCHES
+The receiver is the ability-menu state, saved at [rbp-0x80].
+state+0x10 is the target-list flag; state+8 is the cursor-targeting flag.
+If either flag is set and the selected-target vector global at RVA0x26496c8
+is nonempty, the first region draws already selected targets. It then continues
+to the active targeting/list region; the selected-target preview is not the
+ordinary ability list and does not supply its action captions.
+
+At 0x8a89f1, state+0x10 chooses the target-list region first. Otherwise 0x8a9400
+chooses the cursor-targeting region if state+8 is set. Otherwise 0x8a99d8 chooses
+the ordinary ability list shown in the supplied screenshot.
+
+ALREADY SELECTED TARGETS
+The selected-target preview iterates the selected vector, three native rows per
+entry. Missing graphics only suppress the item/unit picture; caption selection
+still executes. Target virtual+0x10 returns the type:
+  0xd: virtual+0x20 resolves a unit; null emits empty text. Nonnull calls complete
+       unit designation 0x132e430(unit,out,1,1,1) and symbol helper0x7e4860.
+  4:   virtual+0x18 resolves an item; null emits empty text. Nonnull calls complete
+       item designation0xc65450(item,out,0,-1).
+  0x2e: "this location".
+  all other types: empty caption.
+Unit/item picture selection has its own type and null-pointer branches at
+0x8a8544..0x8a8623; it does not replace the caption. Preview caption draw is
+0x8a88de ->0xad9960. Preview truncation uses resize0xe1230 at0x8a8894 followed
+by three indexed '.' writes if available length>3.
+
+TARGET LIST
+At 0x8a8ca1..0x8a8d55, the heading is three contiguous draws:
+  "Select " + target_description(global0x26496b0+0x30) + "."
+The description is a complete dynamic std::string from interaction RAW target
+data. It is not a finite renderer enum and is not limited to the vanilla target
+names; mods may supply other complete target descriptions.
+Each visible target row obtains its reference from global0x2649680. The same
+virtual types0xd/4/0x2e and null/other-type empty alternatives above produce its
+caption at0x8a90eb..0x8a927b. Unit/item fields retain complete native designation
+suppliers. A row shortcut is index-within-visible-page+0x52; the key draw is
+0x8a90b4 ->0xc394b0. Caption draw is0x8a9325 ->0xad9960.
+The complete target-list caption is shortened at0x8a927b..0x8a9317 and dotted
+only if target length>3. Its shrink is inlined at0x8a92ae..0x8a92c4; its
+zero-append alternative calls0xe12b0 at0x8a92d3.
+The frame always has Cancel. Its caption draw is0x8a8c2d ->0xad9960.
+
+CURSOR TARGETING
+At0x8a9626..0x8a9765 the complete heading is:
+  "Select " + complete TARGET + " (" + COUNT + RANGE + DISTURBER + ")."
+COUNT has two branches:
+  maximum_target_count(global0x26496b8)<1:
+      decimal(selected_target_count) + " selected"
+  maximum_target_count>=1:
+      decimal(selected_target_count+1) + " of " + decimal(maximum_target_count)
+RANGE has four branches from flags(global0x26496c0) and range(global0x26496bc):
+  flags&2, range<1:  ", own tile only"
+  flags&2, range>=1: ", adjacent only"
+  !(flags&2), range<0: empty
+  !(flags&2), range>=0: ", range " + decimal(range)
+DISTURBER is independent: flags&4 adds ", disturber only"; otherwise empty.
+All COUNT/RANGE/DISTURBER combinations above are actual independent branches.
+The decimal helper is0x52c130 (Classic0x529b50).
+
+The following row is drawn in separate native fragments:
+  "Click a target or move the cursor and press " + key(enum1) + "."
+Its prose draw is0x8a97e7, period draw0x8a9856, both ->0xad9960.
+If selected_target_count>0, the footer adds:
+  "Done (" + key(enum0x4b) + ")"
+The Done prefix draw is0x8a9979, suffix draw0x8a99ba ->0xad9960.
+Cancel is always drawn at0x8a95f7 ->0xad9960.
+
+ORDINARY ABILITY LIST AND ALL CAPTION SOURCES
+The count is state-vector+0x68/+0x70 (CE powers) plus state-vector+0x20/+0x28
+(body actions) plus state-vector+0xb0/+0xb8 (item powers). Caption lookup uses
+state+0xc8 for the item-power interaction/source index pairs. CE entries appear
+first, then body actions, then item powers; the first two counts select which
+producer owns each row. Scrolling changes visible bounds only.
+Cancel draw:0x8a9c1e ->0xad9960.
+"What do you want to do?" draw:0x8a9cab ->0xad9960.
+
+CE power branch0x8aa1b7..0x8aa330:
+  cdi = state.CE_vector[row]
+  if cdi.type_id(+0x290)==-1: caption="Unknown interaction"
+  else: caption=whole_std_string(cdi+0x378) // CE_CAN_DO_INTERACTION CDI:ADV_NAME
+  capitalize_first_eligible_letter(caption)
+The complete string copy has native source length+0x10 and storage-capacity
++0x18. Capacity<=15 uses inline storage; capacity>15 dereferences the buffer.
+There is no additional creature-name interpolation, screenshot-text lookup,
+or English-word fallback in this branch. Raise adjective/noun names are already
+whole names produced by vanilla procedural interaction generators.
+
+Body-action branch0x8aa330..0x8aa5ba:
+  body = state.body_vector[row-CE_count]
+  caption initially empty
+  if body.type(+0)==1:
+    if body.interaction.type_id(+0x200)==-1: caption="Unknown interaction"
+    else: caption=whole_std_string(body+0x2e8) // body interaction CDI:ADV_NAME
+  if body.type==0:
+    idx = state.body_selection_index_vector(+0x50)[row-CE_count]
+    if player.retract_into_bp(+0xd98)==idx:
+        caption=whole_std_string(body+0x160) // VERB_REVERSE_2ND
+    else:
+        caption=whole_std_string(body+0x100) // VERB_2ND
+    expand_body_pronouns(player,caption)
+    capitalize_first_eligible_letter(caption)
+  if body.type==2:
+    caption=whole_std_string(body+0x100) // ROOT_AROUND VERB_2ND
+    expand_body_pronouns(player,caption)
+    capitalize_first_eligible_letter(caption)
+  capitalize_first_eligible_letter(caption)
+  // every other body.type retains an empty caption
+Type1, type0 and type2 conditions are separately recorded comparisons; the
+type0 and type2 expansion passes are not applied to CDI:ADV_NAME.
+
+Item-power branch0x8aa5ba..0x8aa783:
+  pair=state.item_power_pairs(+0xc8)[row-CE_count-body_count]
+  interaction=global_interaction_vector0x24f74c8[pair.interaction_id]
+  source=interaction.sources(+0x50)[pair.source_index]
+  if source.virtual_type()!=10: caption remains empty; go directly to shortening
+  else if source.type_id(+0x2c8)==-1: caption="Unknown interaction"
+  else: caption=whole_std_string(source+0x3b0) // IS_CDI CDI:ADV_NAME
+  capitalize_first_eligible_letter(caption)
+There is no body-pronoun expansion or hardcoded power-name enum here.
+
+The caller0x8aa77e (Classic0x8a7ffe) invokes capitalization0x52d650
+(Classic0x52b070) immediately before normal-list shortening. Type0/2 also call
+it locally at0x8aa557/0x8aa59d and the common body exit0x8aa5a6.
+Pronoun expansion is0x13e81e0..0x13e87f3 (Classic0x13e3150..0x13e3763).
+In adventure mode with a nonempty active-adventurer vector and subject==player,
+it repeatedly replaces all "<pro_sub>" ->"you", "<pro_obj>" ->"you",
+"<pro_pos>" ->"your". Other callers/subjects choose sex-pronoun helpers for
+subject/object/possessive respectively. The menu passes the player as subject.
+Capitalization0x52d650..0x52d8ba includes three contiguous unwind intervals;
+retaining only its first interval would omit the actual text operation. It
+ignores bracketed control spans, preceding blanks/quotes and apostrophe cases,
+then uppercases the first eligible lowercase ASCII or supported CP437 byte.
+native-switches.tsv retains every CP437 selector entry and target; no menu
+sentence is generated by that switch.
+
+AVAILABILITY COLORS (TEXT DOES NOT CHANGE)
+The initial normal-list color is packed0x01010007.
+CE flags state+0x80[row]&3 => low color byte5. Otherwise availability helper
+0x13dec20(player,cdi+0x98,temporary_state) returns:
+  result0 or2 => packed0x01010005
+  result1 => packed0x01010003
+  other => default0x01010007
+Body flags state+0x38[body_index] bit0 OR bit1 produce byte5; otherwise the same
+helper uses body+8 and has exactly the same result-color alternatives.
+Item flags state+0xe0[item_index] bit0 OR bit1 produce packed0x01010005;
+otherwise the same helper uses source+0xd0 with the same result alternatives.
+These branch conditions remain independent from all caption-source choices,
+including Unknown interaction and empty captions. Colors are not name enums.
+
+ORDINARY ROW ICON SOURCES
+The pre-caption icon choice at0x8a9d9c..0x8a9fca independently follows:
+CE: cdi+0x3cc!=-1 selects a preset48-byte tile array from global0x264c448;
+otherwise nonzero cdi+0x39c selects its inline tiles; otherwise type_id!=-1 looks
+up interaction RAW and tries preset raw+0xd0, then nonzero inline raw+0xa0.
+Body: body+0x33c!=-1 selects a preset; otherwise nonzero inline body+0x30c;
+otherwise type1 with valid type_id uses interaction RAW preset/inline above;
+type0 selects one of normal/retract tile globals0x26541b8/0x26541e8 according
+to player+0xd98 and state+0x50 index; type2 selects global0x2654218; all other
+body types have no icon. The no-RAW/no-inline/preset-sentinel branches can leave
+the icon null without changing the caption producer.
+Item source virtual_type10: source+0x404!=-1 preset, else nonzero inline+0x3d4,
+else valid type_id source+0x2c8 resolves raw preset+0xd0 or inline+0xa0.
+Other item source types have no icon and no caption.
+
+Graphics-enabled AND icon-nonnull gates the actual icon draw at0x8aa0e9..158.
+At0x8aa110 the outer loop count is4 columns, incrementing x; at0x8aa113 the
+inner loop count is3 rows, incrementing y. Native draw is0x8aa139 ->0xadb100.
+This is width4,height3, not width3,height4. Frame row skin uses height3 also.
+There is no normal-list font-mode change in these branches; color writes and
+picture writes are separate from caption construction and the text pen.
+
+GEOMETRY, SHORTCUTS AND COMPLETE-CAPTION SHORTENING
+Frame x extends center-30..center+30, y bounds adjust to count and screen height.
+Title and Cancel y=frame_top+2; title x=frame_left+2.
+Visible first row top=frame_top+4, advancing by3 per row.
+Row icon x=frame_left+2,y=row_top,width4,height3 when drawn.
+Shortcut x=frame_left+8,y=row_top+1, key enum visible_index+0x52.
+Caption x=frame_left+10,y=row_top+1. It is drawn once, complete or shortened,
+at0x8aa822 ->0xad9960 (Classic0x8a80a2 ->0xad69a0).
+Caption frame skin, key pen and caption pen retain the same three-row owner;
+the tile row where a rendered glyph fragment later appears is not its source.
+
+At0x8aa783..814 (Classic0x8a8003..094):
+  inner_left=frame_left+1; inner_right=frame_right-1;
+  trigger_length=inner_right-inner_left-14;
+  if caption.size() >= trigger_length:
+      new_length=inner_right-inner_left-13;
+      if new_length>=0:
+          if new_length<=caption.size(): inline write length and trailing zero
+          else: append_zero_bytes(new_length-caption.size()) through0xe12b0
+      if new_length>3: overwrite final3bytes with "..."
+  draw(caption)
+The native inline shrink is0x8aa7ab..0x8aa7c3, Classic0x8a802b..0x8a8043,
+identical24bytes:
+  48 89 5d e8 48 8d 45 d8 48 83 7d f0 0f 48 0f 47 45 d8
+  c6 04 03 00 eb 12
+This is the whole straight-line size/inline-or-heap terminator path, with the
+last jump going to0x8aa7d5 (Classic0x8a8055). It does not call the common resize
+used by preview/target rows. Complete names need retention before this path;
+a screenshot's dots or clipped suffix are never the naming source.
+
+CAPTION-VOCABULARY BOUNDARIES
+The screenshot's Animate corpse and Raise frozen/cold/night ... are the CE
+whole CDI:ADV_NAME field, not finite prose embedded in this executable. Pet
+animals and Spit are likewise whole RAW interactions on their owning branch.
+The finite dynamic sources remain their existing raw-text-operands.tsv and
+generator-name-tables.tsv inventories, including all native generator branches
+and the dormant ghost-name gate, rather than just the visible screenshot names.
+Unknown interaction, every targeting heading clause, Cancel, Done, this location,
+shortcut fields, body verbs/reverse verbs/pronouns, empty branches, colors,
+graphics/preset/inline/no-icon branches, and all shortening paths are included
+in this reconstruction and the complete underlying PE instruction manifests.

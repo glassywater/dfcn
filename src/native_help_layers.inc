@@ -7,6 +7,59 @@ struct NativeHelpForegroundScope {
     ~NativeHelpForegroundScope() { active = previous; NativeUiReadScope::invalidate_reads(); }
 };
 
+// A UI reader/raster input must not expose the native terrain output through
+// its borrowed header. Keep map viewport objects and their current/history
+// arrays exclusively on the original map header; only these alias fields are
+// cleared, so native allocation ownership and GPU history remain untouched.
+static void native_ui_detach_map_output(graphicst &gps) noexcept {
+    std::memset(&gps.viewport, 0, sizeof(gps.viewport));
+    std::memset(&gps.map_port, 0, sizeof(gps.map_port));
+    gps.main_viewport = nullptr;
+    gps.main_map_port = nullptr;
+    std::fill_n(gps.lower_viewport, 8, nullptr);
+}
+
+// Matching borrows the proven UI arrays, but its header cannot reach native
+// map objects. This read view never changes producer bindings or native SDL
+// input selectors; it ends before control returns to the native raster.
+class NativeUiTextReadView {
+    alignas(graphicst) std::array<unsigned char, sizeof(graphicst)> header_;
+    Overlay *owner_ = nullptr;
+    graphicst *original_ = nullptr, *previous_read_ = nullptr;
+    NativeUiTextReadView *previous_ = nullptr;
+    inline static thread_local NativeUiTextReadView *active_ = nullptr;
+    graphicst *graphics() noexcept { return reinterpret_cast<graphicst *>(header_.data()); }
+public:
+    NativeUiTextReadView(Overlay &owner, graphicst *source, bool enabled) noexcept {
+        // A nested matcher already borrows this same detached read header.
+        // Preserve its outer read scopes and address-dependent scratch keys.
+        if (!enabled || !source || (active_ && source == active_->graphics())) return;
+        std::memcpy(header_.data(), source, header_.size());
+        native_ui_detach_map_output(*graphics());
+        owner_ = &owner;
+        original_ = owner.bind_render_graphics(graphics());
+        previous_read_ = std::exchange(g_native_graphics_read_view, graphics());
+        previous_ = active_;
+        active_ = this;
+        NativeUiReadScope::invalidate_reads();
+    }
+    ~NativeUiTextReadView() {
+        if (!owner_) return;
+        // A parent capture-read scope can outlive a nested matcher. Keep its
+        // owned row snapshot, but never retain this stack header as a key.
+        if (auto *captures = NativeCapturedTextReadScope::active)
+            for (auto &draws : captures->draws)
+                if (draws.key && draws.key->graphics_read_view == graphics())
+                    draws.key.reset();
+        owner_->bind_render_graphics(original_);
+        g_native_graphics_read_view = previous_read_;
+        active_ = previous_;
+        NativeUiReadScope::invalidate_reads();
+    }
+    NativeUiTextReadView(const NativeUiTextReadView &) = delete;
+    NativeUiTextReadView &operator=(const NativeUiTextReadView &) = delete;
+};
+
 struct NativeUiLayerGrid {
     using Texture = NativeDfhackLayerTexture;
     struct Plane {
@@ -52,6 +105,7 @@ struct NativeUiLayerGrid {
     }
     void copy_native_input(const graphicst &source) {
         prepare(source);
+        native_ui_detach_map_output(*graphics());
         const size_t count = static_cast<size_t>(dimx) * dimy;
         const std::array<const unsigned char *, 2> screens{{source.screen, source.screen_top}};
         const std::array<const uint32_t *, 2> flags{{source.screentexpos_flag, source.screentexpos_top_flag}};

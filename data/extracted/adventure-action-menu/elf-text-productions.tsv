@@ -1,0 +1,157 @@
+elf_function	role	production	dynamic_fields	reference_semantic_branch	reference_function_rva	elf_owners
+0x1030d70	conversation	Continue conversation with {participants}	participants=unit/HF name list	ignore player; join comma and final and; unresolved ids skipped	0x6b7080	adventure_option_talk_existing_conversationst+0x8
+0x1030d70	conversation	Continue shouting		conversation flag bit1	0x6b7080	adventure_option_talk_existing_conversationst+0x8
+0x1031b50	conversation	Start new conversation with the Void		missing unit/HF/name	0x6b75a0	adventure_option_talk_new_conversationst+0x8
+0x1031b50	conversation	Start new conversation with {target}	target=unit/HF name	resolved name	0x6b75a0	adventure_option_talk_new_conversationst+0x8
+0x1031dd0	view	View the Void		missing unit/HF/name	0x6b7320	adventure_option_view_unitst+0x8
+0x1031dd0	view	View yourself		player id	0x6b7320	adventure_option_view_unitst+0x8
+0x1031dd0	view	View {target}	target=unit/HF name	resolved name	0x6b7320	adventure_option_view_unitst+0x8
+0x1085910	empty-detail			inherited detail slot	0x7e1230	adventure_environment_ingest_from_containerst+0x10 | adventure_environment_ingest_materialst+0x10 | adventure_environment_pick_up_building_item_contentsst+0x10 | adventure_environment_pick_up_building_itemst+0x10 | adventure_environment_pick_up_environmentst+0x10 | adventure_environment_pick_up_ground_itemst+0x10 | adventure_environment_pick_vegetationst+0x10 | adventure_environment_pickup_chop_treest+0x10 | adventure_environment_pickup_ignite_vegst+0x10 | adventure_environment_pickup_make_campfirest+0x10 | adventure_environment_pickup_vermin_eventst+0x10 | adventure_environment_place_in_bld_containerst+0x10 | adventure_environment_place_in_it_containerst+0x10 | adventure_environment_place_on_pack_animalst+0x10 | adventure_environment_take_from_pack_animalst+0x10 | adventure_environment_take_item_from_containerst+0x10 | adventure_environment_unit_suck_bloodst+0x10 | adventure_item_interact_fill_from_containerst+0x10 | adventure_item_interact_fill_with_materialst+0x10 | adventure_item_interact_give_namest+0x10 | adventure_item_interact_heat_from_tilest+0x10 | adventure_item_interact_load_ranged_weaponst+0x10 | adventure_item_interact_pull_outst+0x10 | adventure_item_interact_readst+0x10 | adventure_item_interact_roll_allst+0x10 | adventure_item_interact_rollst+0x10 | adventure_item_interact_strugglest+0x10 | adventure_item_interact_unnockst+0x10 | adventure_movement_attack_creaturest+0x10 | adventure_movement_building_interact_bash_down_doorst+0x10 | adventure_movement_building_interact_break_in_hatchst+0x10 | adventure_movement_building_interact_lower_well_bucketst+0x10 | adventure_movement_building_interact_pick_door_lockst+0x10 | adventure_movement_building_interact_pick_hatch_lockst+0x10 | adventure_movement_building_interact_pull_leverst+0x10 | adventure_movement_building_interact_raise_well_bucketst+0x10 | adventure_movement_building_interact_topple_statuest+0x10 | adventure_movement_claim_petst+0x10 | adventure_movement_climbst+0x10 | adventure_movement_combat_menu_creaturest+0x10 | adventure_movement_dismountst+0x10 | adventure_movement_hold_itemst+0x10 | adventure_movement_hold_tilest+0x10 | adventure_movement_item_interact_guidest+0x10 | adventure_movement_item_interact_pushst+0x10 | adventure_movement_item_interact_ridest+0x10 | adventure_movement_jumpst+0x10 | adventure_movement_lead_animalst+0x10 | adventure_movement_mountst+0x10 | adventure_movement_movest+0x10 | adventure_movement_pathst+0x10 | adventure_movement_release_hold_itemst+0x10 | adventure_movement_release_hold_tilest+0x10 | adventure_movement_shoot_creaturest+0x10 | adventure_movement_shoot_tilest+0x10 | adventure_movement_stop_lead_animalst+0x10 | adventure_movement_throw_item_at_creaturest+0x10 | adventure_movement_throw_item_at_tilest+0x10 | adventure_option_assume_identityst+0x10 | adventure_option_eat_item_contaminantst+0x10 | adventure_option_eat_unit_contaminantst+0x10 | adventure_option_interact_with_itemst+0x10 | adventure_option_inventory_itemst+0x10 | adventure_option_start_shoutingst+0x10 | adventure_option_talk_existing_conversationst+0x10 | adventure_option_talk_new_conversationst+0x10 | adventure_option_view_contaminantst+0x10 | adventure_option_view_unitst+0x10
+0x1161380	engraving	engraving		primary caption	0x894240	adventure_option_view_event_detailst+0x8
+0x1161420	engraving-detail	View engraving		fixed	0x894260	adventure_option_view_event_detailst+0x10
+0x11614d0	inventory	{item}	item=whole item designation	shared item caption mode1	0x894180	adventure_option_throw_itemst+0x8
+0x11615e0	inventory	{item}	item=whole item designation	shared item caption mode1	0x894180	adventure_option_eat_drink_itemst+0x8
+0x11616f0	inventory	{item}	item=whole item designation	shared item caption mode1	0x894180	adventure_option_interact_with_itemst+0x8
+0x1161800	inventory	{item}	item=whole item designation	shared item caption mode1	0x894180	adventure_option_view_itemst+0x8
+0x1161910	inventory	{item}	item=whole item designation	shared item caption mode1	0x894180	adventure_option_drop_itemst+0x8
+0x1161a20	inventory	{item}	item=whole item designation	shared item caption mode1	0x894180	adventure_option_inventory_itemst+0x8
+0x1161b30	inventory	{item}	item=whole item designation	shared item caption mode1	0x894180	adventure_option_remove_itemst+0x8
+0x1161c40	inventory	{item}	item=whole item designation	shared item caption mode1	0x894180	adventure_option_put_itemst+0x8
+0x1161d50	inventory	{item}	item=whole item designation	shared item caption mode1	0x894180	adventure_option_wear_itemst+0x8
+0x1161e60	item-detail	Wear {item}	item=whole item	no location	0x894550	adventure_option_wear_itemst+0x10
+0x1162020	item-detail	Drop {item}	item=whole item	no location	0x894370	adventure_option_drop_itemst+0x10
+0x11621e0	item-detail	View {item}	item=whole item	no location	0x894280	adventure_option_view_itemst+0x10
+0x11623a0	item-detail	Remove {item}	item=whole item	no location	0x894640	adventure_option_remove_itemst+0x10
+0x1162560	item-detail	Throw {item}	item=whole item	no location	0x894460	adventure_option_throw_itemst+0x10
+0x1162720	item-detail	Put or place {item}	item=whole item	no location	0x894730	adventure_option_put_itemst+0x10
+0x11628e0	item-detail	Drink {item}	item=whole item	virtual+2b0!=0	0x894820	adventure_option_eat_drink_itemst+0x10
+0x11628e0	item-detail	Eat {item}	item=whole item	virtual+2b0=0	0x894820	adventure_option_eat_drink_itemst+0x10
+0x1162b40	deposit-view	{deposit} ({body_part})	deposit=quantity/material grammar; body_part=RAW singular/plural	missing deposit or owner empty	0x8392a0	adventure_option_view_contaminantst+0x8
+0x1164f40	pet	Stop leading {unit}	unit=whole unit	no location	0x842860	adventure_movement_stop_lead_animalst+0x8
+0x1165190	item-name	Name the {item}	item=whole item designation	mode-1	0x835d50	adventure_item_interact_give_namest+0x8
+0x11653d0	holding	Release hold on {tile}	tile=terrain grammar	no direction suffix	0x8421b0	adventure_movement_release_hold_tilest+0x8
+0x1165610	campfire	Make Campfire[ ({direction})]	direction=DIR	location optional	0x83a330	adventure_environment_pickup_make_campfirest+0x8
+0x11667e0	button	Cancel		popup or chooser	0x884460	chooser-renderer
+0x11667e0	button	Okay		quantity popup	0x884460	chooser-renderer
+0x11667e0	chooser-title	At whom or what would you like to throw?		category4/throw flag	0x884460	chooser-renderer
+0x11667e0	chooser-title	What do you want to do?		categories0/3/5/6/7	0x884460	chooser-renderer
+0x11667e0	chooser-title	Where would you like to move?		categories1/2	0x884460	chooser-renderer
+0x11667e0	chooser-title	Who or what would you like to shoot?		category4/shoot flag	0x884460	chooser-renderer
+0x11667e0	quantity-input	{input}[_]	input=state+50 text or state+44 decimal	input-active state+48; underscore blink	0x884460	chooser-renderer
+0x11667e0	quantity-prompt	Pick up how many? (0-{maximum})	maximum=nonnegative decimal state+40	quantity flag state+38	0x884460	chooser-renderer
+0x11667e0	quantity-title	{item}	item=whole item	selected option+90; mode-1	0x884460	chooser-renderer
+0x119d270	climbing	Climb down[ from {item}]	item=whole item	player held-item id lookup	0x842940	adventure_movement_release_hold_itemst+0x8
+0x119d4c0	pet	Lead {unit}[ ({direction})]	unit=whole unit; direction=DIR	location optional	0x842710	adventure_movement_lead_animalst+0x8
+0x119d770	mount	Mount {unit}[ ({direction})]	unit=whole unit; direction=DIR	location optional	0x841f00	adventure_movement_mountst+0x8
+0x119da20	placement	Put on {unit}[ ({direction})]	unit=whole unit designation; direction=DIR	location optional	0x837ea0	adventure_environment_place_on_pack_animalst+0x8
+0x119dcd0	placement	Put in {item}[ ({direction})]	item=whole item; direction=DIR	location optional	0x8381a0	adventure_environment_place_in_it_containerst+0x8
+0x119df80	fell	Fell {tree}[ ({direction})]	tree=RAW plant singular or tree; direction=DIR	location optional	0x83a3d0	adventure_environment_pickup_chop_treest+0x8
+0x119e260	pet	Claim {unit}[ ({direction})] as pet	unit=whole unit; direction=DIR	location optional	0x8425b0	adventure_movement_claim_petst+0x8
+0x119e5b0	dismount	Dismount to {tile}[ ({direction})]	tile=terrain grammar; direction=DIR	location optional	0x842050	adventure_movement_dismountst+0x8
+0x119e870	object-movement	Ride {item}[, push off toward {direction}]	item=whole item or finite item; direction=DIR	location optional	0x8403e0	adventure_movement_item_interact_ridest+0x8
+0x119eb60	object-movement	Guide {item}[ to {direction}]	item=whole item or finite item; direction=DIR	location optional	0x8405a0	adventure_movement_item_interact_guidest+0x8
+0x119ee40	object-movement	Push {item}[ to {direction}]	item=whole item or finite item; direction=DIR	location optional	0x840220	adventure_movement_item_interact_pushst+0x8
+0x119f120	building	Break in {building}[ ({direction})]	building=whole name or building; direction=DIR	location optional	0x840cf0	adventure_movement_building_interact_break_in_hatchst+0x8
+0x119f4a0	building	Pull {building}[ ({direction})]	building=whole name or building; direction=DIR	location optional	0x840b20	adventure_movement_building_interact_pull_leverst+0x8
+0x119f820	building	Bash down {building}[ ({direction})]	building=whole name or building; direction=DIR	location optional	0x8410a0	adventure_movement_building_interact_bash_down_doorst+0x8
+0x119fba0	building	Topple {building}[ ({direction})]	building=whole name or building; direction=DIR	location optional	0x841270	adventure_movement_building_interact_topple_statuest+0x8
+0x119ff20	building	Lower {building} bucket[ ({direction})]	building=whole name or building; direction=DIR	location optional	0x840940	adventure_movement_building_interact_lower_well_bucketst+0x8
+0x11a0330	building	Pick {building} lock[ ({direction})]	building=whole name or building; direction=DIR	shared door/hatch	0x840ec0	adventure_movement_building_interact_pick_hatch_lockst+0x8
+0x11a0730	building	Pick {building} lock[ ({direction})]	building=whole name or building; direction=DIR	shared door/hatch	0x840ec0	adventure_movement_building_interact_pick_door_lockst+0x8
+0x11a0b30	building	Raise {building} bucket[ ({direction})]	building=whole name or building; direction=DIR	location optional	0x840760	adventure_movement_building_interact_raise_well_bucketst+0x8
+0x11a0f40	jump	Jump to the {direction}	direction=DIR	prefix flag nonzero	0x8a46d0	adventure_movement_jumpst+0x8
+0x11a0f40	jump	{direction}	direction=DIR	prefix flag zero	0x8a46d0	adventure_movement_jumpst+0x8
+0x11a0fb0	item-fill	Fill {item} from {container}[ ({direction})]	item/container=whole item designation; direction=27-output DIR	location optional	0x835260	adventure_item_interact_fill_from_containerst+0x8
+0x11a1410	ignite	Ignite 		origin sentinel suppresses name and direction	0x83a0e0	adventure_environment_pickup_ignite_vegst+0x8
+0x11a1410	ignite	Ignite {tile} ({direction})	tile=terrain grammar; direction=DIR	known origin	0x83a0e0	adventure_environment_pickup_ignite_vegst+0x8
+0x11a1730	vermin	A 		origin sentinel suppresses name and direction	0x839e40	adventure_environment_pickup_vermin_eventst+0x8
+0x11a1730	vermin	A  ({direction})	direction=DIR	invalid RAW; known origin	0x839e40	adventure_environment_pickup_vermin_eventst+0x8
+0x11a1730	vermin	A {vermin} ({direction})	vermin=RAW singular; direction=DIR	known origin	0x839e40	adventure_environment_pickup_vermin_eventst+0x8
+0x11a1a50	get	Get {item}	item=option+20 whole item mode-1	shared environment/ground item; item nonnull; unknown item origin or origin equals player; no source clause	0x8935f0	adventure_environment_pick_up_environmentst+0x8
+0x11a1a50	get	Get {item} ({direction})	item=option+20 whole item mode-1; direction=DIR	shared environment/ground item; item nonnull; known item origin differs from player; no source clause	0x8935f0	adventure_environment_pick_up_environmentst+0x8
+0x11a1a50	get-empty			option+20 item null; no Get/location text is appended	0x8935f0	adventure_environment_pick_up_environmentst+0x8
+0x11a1d50	get	Get {item}	item=option+20 whole item mode-1	shared environment/ground item; item nonnull; unknown item origin or origin equals player; no source clause	0x8935f0	adventure_environment_pick_up_ground_itemst+0x8
+0x11a1d50	get	Get {item} ({direction})	item=option+20 whole item mode-1; direction=DIR	shared environment/ground item; item nonnull; known item origin differs from player; no source clause	0x8935f0	adventure_environment_pick_up_ground_itemst+0x8
+0x11a1d50	get-empty			option+20 item null; no Get/location text is appended	0x8935f0	adventure_environment_pick_up_ground_itemst+0x8
+0x11a2050	path	Go below hatch[ (no climbing/jumping)][ ({depth} level[s] down)]	depth=positive decimal	down; s iff depth>1	0x842ab0	adventure_movement_pathst+0x8
+0x11a2050	path	Go below hatch[ (no climbing/jumping)][ ({depth} level[s] up)]	depth=positive decimal	up; s iff depth>1	0x842ab0	adventure_movement_pathst+0x8
+0x11a2050	path	Path to here[ (no climbing/jumping)][ ({depth} level[s] down)]	depth=positive decimal	down; s iff depth>1	0x842ab0	adventure_movement_pathst+0x8
+0x11a2050	path	Path to here[ (no climbing/jumping)][ ({depth} level[s] up)]	depth=positive decimal	up; s iff depth>1	0x842ab0	adventure_movement_pathst+0x8
+0x11a2ff0	material-suck	Suck {unit}'s {material}	unit=whole unit; material=RAW/state/identity	no location	0x8382f0	adventure_environment_unit_suck_bloodst+0x8
+0x11a3350	item-heat	Heat {item} near burning branches[ ({direction})]	item=whole item; direction=DIR	burning branches tile	0x835e40	adventure_item_interact_heat_from_tilest+0x8
+0x11a3350	item-heat	Heat {item} near burning cap[ ({direction})]	item=whole item; direction=DIR	burning cap tile	0x835e40	adventure_item_interact_heat_from_tilest+0x8
+0x11a3350	item-heat	Heat {item} near burning trunk[ ({direction})]	item=whole item; direction=DIR	burning trunk tile	0x835e40	adventure_item_interact_heat_from_tilest+0x8
+0x11a3350	item-heat	Heat {item} near burning twigs[ ({direction})]	item=whole item; direction=DIR	burning twigs tile	0x835e40	adventure_item_interact_heat_from_tilest+0x8
+0x11a3350	item-heat	Heat {item} near campfire[ ({direction})]	item=whole item; direction=DIR	campfire tile	0x835e40	adventure_item_interact_heat_from_tilest+0x8
+0x11a3350	item-heat	Heat {item} near fire[ ({direction})]	item=whole item; direction=DIR	fire tile	0x835e40	adventure_item_interact_heat_from_tilest+0x8
+0x11a3350	item-heat	Heat {item} near lava[ ({direction})]	item=whole item; direction=DIR	lava	0x835e40	adventure_item_interact_heat_from_tilest+0x8
+0x11a3350	item-heat	Heat {item} near magma[ ({direction})]	item=whole item; direction=DIR	magma	0x835e40	adventure_item_interact_heat_from_tilest+0x8
+0x11a3350	item-heat	Heat {item}[ ({direction})]	item=whole item; direction=DIR	unmatched source; location optional	0x835e40	adventure_item_interact_heat_from_tilest+0x8
+0x11a3c40	shoot	Shoot {tile}	tile=terrain grammar	prefix flag nonzero	0x8a5540	adventure_movement_shoot_tilest+0x8
+0x11a3c40	shoot	{tile}	tile=terrain grammar	prefix flag zero	0x8a5540	adventure_movement_shoot_tilest+0x8
+0x11a3d90	throw	Throw at {tile}	tile=terrain grammar	prefix flag nonzero	0x8a64d0	adventure_movement_throw_item_at_tilest+0x8
+0x11a3d90	throw	{tile}	tile=terrain grammar	prefix flag zero	0x8a64d0	adventure_movement_throw_item_at_tilest+0x8
+0x11a3ee0	climbing	Climb[ {item}][ ({direction}{media})]	item=whole item; direction=DIR; media=MEDIA	item and suffix independently optional	0x8422b0	adventure_movement_hold_itemst+0x8
+0x11a47d0	get	Get {item}	item=option+28 whole item mode-1	item nonnull; option+8!=0 or unit null; unknown item origin or origin equals player; complete source clause omitted	0x8932c0	adventure_environment_take_from_pack_animalst+0x8
+0x11a47d0	get	Get {item} ({direction})	item=option+28 whole item mode-1; direction=DIR	item nonnull; option+8!=0 or unit null; known item origin differs from player; complete source clause omitted	0x8932c0	adventure_environment_take_from_pack_animalst+0x8
+0x11a47d0	get	Get {item} from {unit}	item=option+28 whole item mode-1; unit=option+20 whole 1330c30 result	item nonnull; option+8=0 and unit nonnull; unknown item origin or origin equals player	0x8932c0	adventure_environment_take_from_pack_animalst+0x8
+0x11a47d0	get	Get {item} from {unit} ({direction})	item=option+28 whole item mode-1; unit=option+20 whole 1330c30 result; direction=DIR	item nonnull; option+8=0 and unit nonnull; known item origin differs from player	0x8932c0	adventure_environment_take_from_pack_animalst+0x8
+0x11a47d0	get-empty			option+28 item null; no Get/source/location text is appended	0x8932c0	adventure_environment_take_from_pack_animalst+0x8
+0x11a4c90	climbing	Climb to {tile}[ ({direction} holding {held_direction}{media})]	tile=terrain grammar; direction/held_direction=DIR; media=MEDIA	full suffix optional	0x841900	adventure_movement_climbst+0x8
+0x11a4c90	climbing	Climb to {tile}[ ({direction} releasing hold{media})]	tile=terrain grammar; direction=DIR; media=MEDIA	full suffix optional	0x841900	adventure_movement_climbst+0x8
+0x11a56d0	get	Get {item}	item=option+20 whole item mode-1	item nonnull; option+8!=0 or container null; unknown item origin or origin equals player; complete source clause omitted	0x893bb0	adventure_environment_take_item_from_containerst+0x8
+0x11a56d0	get	Get {item} ({direction})	item=option+20 whole item mode-1; direction=DIR	item nonnull; option+8!=0 or container null; known item origin differs from player; complete source clause omitted	0x893bb0	adventure_environment_take_item_from_containerst+0x8
+0x11a56d0	get	Get {item} from {container}	item=option+20 whole item mode-1; container=option+28 whole item mode-1	shared container/building item contents; item nonnull; option+8=0 and container nonnull; unknown item origin or origin equals player	0x893bb0	adventure_environment_take_item_from_containerst+0x8
+0x11a56d0	get	Get {item} from {container} ({direction})	item=option+20 whole item mode-1; container=option+28 whole item mode-1; direction=DIR	shared container/building item contents; item nonnull; option+8=0 and container nonnull; known item origin differs from player	0x893bb0	adventure_environment_take_item_from_containerst+0x8
+0x11a56d0	get-empty			option+20 item null; no Get/source/location text is appended	0x893bb0	adventure_environment_take_item_from_containerst+0x8
+0x11a5b90	get	Get {item}	item=option+20 whole item mode-1	item nonnull; option+8!=0 or container null; unknown item origin or origin equals player; complete source clause omitted	0x893bb0	adventure_environment_pick_up_building_item_contentsst+0x8
+0x11a5b90	get	Get {item} ({direction})	item=option+20 whole item mode-1; direction=DIR	item nonnull; option+8!=0 or container null; known item origin differs from player; complete source clause omitted	0x893bb0	adventure_environment_pick_up_building_item_contentsst+0x8
+0x11a5b90	get	Get {item} from {container}	item=option+20 whole item mode-1; container=option+28 whole item mode-1	shared container/building item contents; item nonnull; option+8=0 and container nonnull; unknown item origin or origin equals player	0x893bb0	adventure_environment_pick_up_building_item_contentsst+0x8
+0x11a5b90	get	Get {item} from {container} ({direction})	item=option+20 whole item mode-1; container=option+28 whole item mode-1; direction=DIR	shared container/building item contents; item nonnull; option+8=0 and container nonnull; known item origin differs from player	0x893bb0	adventure_environment_pick_up_building_item_contentsst+0x8
+0x11a5b90	get-empty			option+20 item null; no Get/source/location text is appended	0x893bb0	adventure_environment_pick_up_building_item_contentsst+0x8
+0x11a6050	get	Get {item}	item=option+20 whole item mode-1	item nonnull; option+8!=0 or building null; unknown item origin or origin equals player; complete source clause omitted	0x893870	adventure_environment_pick_up_building_itemst+0x8
+0x11a6050	get	Get {item} ({direction})	item=option+20 whole item mode-1; direction=DIR	item nonnull; option+8!=0 or building null; known item origin differs from player; complete source clause omitted	0x893870	adventure_environment_pick_up_building_itemst+0x8
+0x11a6050	get	Get {item} from {building}	item=option+20 whole item mode-1; building=option+28 virtual+188 result	item nonnull; option+8=0 and building nonnull; unknown item origin or origin equals player; no building fallback	0x893870	adventure_environment_pick_up_building_itemst+0x8
+0x11a6050	get	Get {item} from {building} ({direction})	item=option+20 whole item mode-1; building=option+28 virtual+188 result; direction=DIR	item nonnull; option+8=0 and building nonnull; known item origin differs from player; no building fallback	0x893870	adventure_environment_pick_up_building_itemst+0x8
+0x11a6050	get-empty			option+20 item null; no Get/source/location text is appended	0x893870	adventure_environment_pick_up_building_itemst+0x8
+0x11a6c20	material-fill	Fill {item} with {material}[ ({direction})]	item=whole item; material=RAW/identity/stagnant/salt/adjectives; direction=DIR	location optional	0x835460	adventure_item_interact_fill_with_materialst+0x8
+0x11a7b00	shoot	Aim carefully and shoot {unit}	unit=whole unit	careful; no direction/range/weapon suffix	0x8a4890	adventure_movement_shoot_creaturest+0x8
+0x11a7b00	shoot	Quickly shoot {unit}	unit=whole unit	quick; missing unit empty	0x8a4890	adventure_movement_shoot_creaturest+0x8
+0x11a7cd0	throw	Aim carefully and throw at {unit}	unit=whole unit	careful; no direction/range/weapon suffix	0x8a5e70	adventure_movement_throw_item_at_creaturest+0x8
+0x11a7cd0	throw	Quickly throw at {unit}	unit=whole unit	quick; missing unit empty	0x8a5e70	adventure_movement_throw_item_at_creaturest+0x8
+0x11a8390	ingest	Drink {item} from {container}[ ({direction})]	item/container=whole item; direction=DIR	consumed virtual+2b0!=0	0x8387d0	adventure_environment_ingest_from_containerst+0x8
+0x11a8390	ingest	Eat {item} from {container}[ ({direction})]	item/container=whole item; direction=DIR	consumed virtual+2b0=0	0x8387d0	adventure_environment_ingest_from_containerst+0x8
+0x11a8f50	placement	Put in {building}[ ({direction})]	building=virtual+188 name; direction=DIR	container building	0x837ff0	adventure_environment_place_in_bld_containerst+0x8
+0x11a8f50	placement	Put on {building}[ ({direction})]	building=virtual+188 name; direction=DIR	building surface	0x837ff0	adventure_environment_place_in_bld_containerst+0x8
+0x11a8f50	placement	Set on {building}[ ({direction})]	building=virtual+188 name; direction=DIR	set-on surface	0x837ff0	adventure_environment_place_in_bld_containerst+0x8
+0x11aeea0	holding	Hang from {tile}[ ({direction}[ from {origin_direction}]{media})]	tile=terrain grammar; direction/origin_direction=DIR; media=MEDIA	full suffix optional	0x841bf0	adventure_movement_hold_tilest+0x8
+0x11aeea0	holding	Hold {tile}[ ({direction}[ from {origin_direction}]{media})]	tile=terrain grammar; direction/origin_direction=DIR; media=MEDIA	full suffix optional	0x841bf0	adventure_movement_hold_tilest+0x8
+0x11af870	vegetation	Pick {item}[ ({direction})]	item=whole growth/item; direction=DIR	type!=0x5b	0x893ef0	adventure_environment_pick_vegetationst+0x8
+0x11af870	vegetation	Pull {item}[ ({direction})]	item=whole growth/item; direction=DIR	type0x5b	0x893ef0	adventure_environment_pick_vegetationst+0x8
+0x11b00f0	movement	Charge {target}[ ({direction}{media})]	target=terrain grammar or whole unit; direction=DIR; media=MEDIA	bit0=1; full suffix optional	0x841440	adventure_movement_movest+0x8
+0x11b00f0	movement	Move to {target}[ ({direction}{media})]	target=terrain grammar or whole unit; direction=DIR; media=MEDIA	bit0=0; full suffix optional	0x841440	adventure_movement_movest+0x8
+0x11b0d80	combat	Combat creature[ ({direction})]	direction=DIR	missing nonnegative id	0x840030	adventure_movement_combat_menu_creaturest+0x8
+0x11b0d80	combat	Combat error		target id-1	0x840030	adventure_movement_combat_menu_creaturest+0x8
+0x11b0d80	combat	Combat {unit}[ ({direction})]	unit=whole unit; direction=DIR	valid target	0x840030	adventure_movement_combat_menu_creaturest+0x8
+0x11b1160	ingest	Drink {material}[ ({direction})]	material=RAW/identity/stagnant/salt/adjectives; direction=DIR	phase selects drink	0x8389f0	adventure_environment_ingest_materialst+0x8
+0x11b1160	ingest	Eat {material}[ ({direction})]	material=RAW/identity/stagnant/salt/adjectives; direction=DIR	phase selects eat	0x8389f0	adventure_environment_ingest_materialst+0x8
+0x11b19d0	attack	Attack creature[ ({direction})]	direction=DIR	one missing target	0x83fe00	adventure_movement_attack_creaturest+0x8
+0x11b19d0	attack	Attack creatures[ ({direction})]	direction=DIR	multiple targets	0x83fe00	adventure_movement_attack_creaturest+0x8
+0x11b19d0	attack	Attack error		empty target vector	0x83fe00	adventure_movement_attack_creaturest+0x8
+0x11b19d0	attack	Attack {unit}[ ({direction})]	unit=whole unit; direction=DIR	one valid target	0x83fe00	adventure_movement_attack_creaturest+0x8
+0x11b1e50	deposit-ingest	Drink {deposit} ({body_part})	deposit=quantity/material grammar; body_part=RAW singular/plural	phase1 or phase0/type73	0x839850	adventure_option_eat_unit_contaminantst+0x8
+0x11b1e50	deposit-ingest	Eat {deposit} ({body_part})	deposit=quantity/material grammar; body_part=RAW singular/plural	solid	0x839850	adventure_option_eat_unit_contaminantst+0x8
+0x11b2860	item-load	Load into		item absent	0x834d50	adventure_item_interact_load_ranged_weaponst+0x8
+0x11b2860	item-load	Load into {item}	item=whole item designation	other weapon	0x834d50	adventure_item_interact_load_ranged_weaponst+0x8
+0x11b2860	item-load	Nock in		item absent	0x834d50	adventure_item_interact_load_ranged_weaponst+0x8
+0x11b2860	item-load	Nock in {item}	item=whole item designation	type0x18 subtype1cc=0	0x834d50	adventure_item_interact_load_ranged_weaponst+0x8
+0x11b2ad0	deposit-ingest	Drink {deposit} ({item})	deposit=quantity/material grammar; item=whole item	phase1 or phase0/type73	0x839ca0	adventure_option_eat_item_contaminantst+0x8
+0x11b2ad0	deposit-ingest	Eat {deposit} ({item})	deposit=quantity/material grammar; item=whole item	solid	0x839ca0	adventure_option_eat_item_contaminantst+0x8
+0x1279380	item-read	Read		fixed	0x7e13d0	adventure_item_interact_readst+0x8
+0x1279480	item-dice	Roll		fixed	0x7e13f0	adventure_item_interact_rollst+0x8
+0x1279580	item-possession	Gain possession		fixed	0x7e12e0	adventure_item_interact_strugglest+0x8
+0x12796b0	item-dice	Roll all		fixed	0x7e1410	adventure_item_interact_roll_allst+0x8
+0x12797b0	item-nocking	Cease nocking		fixed	0x7e1340	adventure_item_interact_unnockst+0x8
+0x12798d0	item-pull	Pull it out		fixed	0x7e1320	adventure_item_interact_pull_outst+0x8
+0xffcdd0	conversation	Shout out to everybody		fixed	0x6b7990	adventure_option_start_shoutingst+0x8
+0xffcf00	identity	Assume an identity		fixed	0x6b79b0	adventure_option_assume_identityst+0x8

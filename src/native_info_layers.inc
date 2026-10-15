@@ -87,6 +87,8 @@ struct NativeInfoCapturedText {
         std::scoped_lock lock(g_native_drawn_text_mutex, g_clipped_caption_mutex,
             g_native_unit_chooser_record_mutex, g_embark_item_source_mutex,
             g_native_paragraph_mutex);
+        ++g_native_drawn_text_revision;
+        ++g_clipped_caption_revision;
         rows[0].swap(g_native_drawn_text_rows);
         rows[1].swap(g_native_drawn_top_text_rows);
         overwritten.swap(g_native_overwritten_text_rows);

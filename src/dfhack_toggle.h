@@ -6,6 +6,9 @@
 #include "dfhack_command_context.h"
 
 #include "dfhack_interpose.h"
+#ifdef _WIN32
+#include "dfhack_console_exit.h"
+#endif
 #include <array>
 #include <mutex>
 #include <unordered_set>
@@ -113,6 +116,8 @@ class Toggle {
     Report report_ = nullptr;
 #ifdef _WIN32
     HMODULE module_ = nullptr;
+    ConsoleExit console_exit_;
+    Detour console_shutdown_;
 #else
     void *module_ = nullptr;
     Detour core_update_, core_shutdown_, core_event_, core_key_;
@@ -245,6 +250,8 @@ class Toggle {
             {0x48,0x89,0x5c,0x24,0x08,0x48,0x89,0x74,0x24,0x10,0x57,0x48,0x83,0xec,0x20};
         static constexpr unsigned char command_prefix[] =
             {0x40,0x55,0x53,0x56,0x57,0x41,0x54,0x41,0x55,0x41,0x56,0x41,0x57,0x48,0x8d,0x6c,0x24,0xa8};
+        static constexpr unsigned char console_shutdown_prefix[] =
+            {0x48,0x89,0x5c,0x24,0x08,0x57,0x48,0x83,0xec,0x20,0x48,0x8b,0x79,0x20};
         static constexpr char command_symbol[] =
             "?runCommand@Core@DFHack@@QEAA?AW4command_result@2@AEAVcolor_ostream@2@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEAV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@6@_N@Z";
         return apply_.prepare(reinterpret_cast<void *>(registry_.apply_function()),
@@ -256,7 +263,9 @@ class Toggle {
             update_.prepare(symbol(module_, "?onUpdate@Core@DFHack@@AEAAXAEAVcolor_ostream@2@@Z"),
                    reinterpret_cast<void *>(&on_update_callback), update_prefix) &&
             command_.prepare(symbol(module_, command_symbol),
-                   reinterpret_cast<void *>(&command_callback), command_prefix) && prepare_lifecycle();
+                   reinterpret_cast<void *>(&command_callback), command_prefix) && prepare_lifecycle() &&
+            console_shutdown_.prepare(symbol(module_, "?shutdown@Console@DFHack@@QEAA_NXZ"),
+                   reinterpret_cast<void *>(&console_shutdown_callback), console_shutdown_prefix);
     }
 
     bool prepare_lifecycle() {
@@ -521,9 +530,24 @@ class Toggle {
             self.desired_order_.clear();
         }
         original();
+#ifdef _WIN32
+        self.console_exit_.detach();
+#endif
         self.native_stopped_ = true;
         self.shutdown();
     }
+
+#ifdef _WIN32
+    static bool console_shutdown_callback(void *console) {
+        auto &self = *instance_;
+        // Core has set its shutdown flag. Cancel and drain input before the
+        // native Console takes its write lock and closes the input handle.
+        auto *core = read<void *>(self.core_slot_);
+        if (core && self.console_ && self.console_(core) == console &&
+                read<unsigned char>(core, 0x1548)) self.console_exit_.begin_shutdown();
+        return reinterpret_cast<bool (*)(void *)>(self.console_shutdown_.trampoline)(console);
+    }
+#endif
 
 public:
     bool disabled() const noexcept {
@@ -582,10 +606,23 @@ public:
             report("ERROR", "Shift+F11 unavailable: installed DFHack native interfaces do not match 53.16-r2");
             return;
         }
+#ifdef _WIN32
+        if (!console_exit_.initialize(module_, report_)) return;
+        if (!console_shutdown_.write(true)) {
+            console_shutdown_.write(false);
+            console_exit_.detach();
+            report("ERROR", "DFHack console shutdown hook installation failed");
+            return;
+        }
+#endif
         for (auto *hook : {&apply_, &remove_, &destroy_, &update_, &command_, &plugin_state_, &lua_state_, &load_scripts_}) {
             if (!hook->write(true)) {
                 for (auto *installed : {&load_scripts_, &lua_state_, &plugin_state_, &command_, &update_, &destroy_, &remove_, &apply_})
                     installed->write(false);
+#ifdef _WIN32
+                console_shutdown_.write(false);
+                console_exit_.detach();
+#endif
                 report("ERROR", "Shift+F11 unavailable: DFHack hook installation failed");
                 return;
             }
@@ -594,6 +631,10 @@ public:
             chain_write(false);
             for (auto *hook : {&load_scripts_, &lua_state_, &plugin_state_, &command_, &update_, &destroy_, &remove_, &apply_})
                 hook->write(false);
+#ifdef _WIN32
+            console_shutdown_.write(false);
+            console_exit_.detach();
+#endif
             report("ERROR", "Shift+F11 unavailable: DFHack native callback installation failed");
             return;
         }
@@ -639,6 +680,9 @@ public:
         turbo_saved_ = turbo_owned_ = false;
         for (auto *hook : {&load_scripts_, &lua_state_, &plugin_state_, &command_, &update_, &destroy_, &remove_, &apply_})
             if (!hook->write(false)) report("ERROR", "DFHack hook could not detach during shutdown");
+#ifdef _WIN32
+        if (!console_shutdown_.write(false)) report("ERROR", "DFHack console shutdown hook could not detach");
+#endif
         chain_write(false);
         ready_ = false;
         requests_.store(0, std::memory_order_release);

@@ -1,0 +1,137 @@
+instruction	operand	native_source	translation	treatment
+0x1957e5c	0x2175750	Instrument	乐器	existing complete term
+0x1957f2b	0x21c2de2	Display Furniture	展示家具	existing complete term
+0x1957f5c	0x20fbba2	Bookcase	书架	existing complete term
+0x195800b	0x21c2d1a	Rollers	滚动辊	existing complete term
+0x195803b	0x20fbb8e	Hive	蜂箱	existing complete term
+0x195806b	0x2174bd8	Nest Box	巢箱	existing complete term
+0x195809c	0x21c2cfe	Nest	巢穴	existing complete term
+0x195814b	0x2174b17	Zone	活动区	existing complete term
+0x195817b	0x21c3328	Stockpile	堆料区	existing complete term
+0x19581ab	0x2174b56	Cage	笼子	existing complete term
+0x19581db	0x21c3574	Restraint	束缚器具	existing complete term
+0x195820c	0x21c2d59	Slab	石板	existing complete term
+0x1958293	0x21c2d3b	Cabinet	橱柜	existing complete term
+0x19582c3	0x21c3566	Vertical Bars	墙壁栅条	existing complete term
+0x1958310	0x21c3559	Siege Engine	攻城器械	existing complete term
+0x1958343	0x21c358e	Vertical Axle	传动竖轴	existing complete term
+0x1958373	0x21c357e	Horizontal Axle	传动横轴	existing complete term
+0x19583a3	0x21c2d6b	Gear Assembly	齿轮组	existing complete term
+0x19583d3	0x21c2d0e	Floor Bars	地板栅条	existing complete term
+0x1958403	0x21c2cf2	Trade Depot	贸易站	existing complete term
+0x195845b	0x21c2dbc	Archery Target	标靶	existing complete term
+0x195848b	0x2174bf1	Animal Trap	动物陷阱	existing complete term
+0x19584dc	0x20fbc71	Windmill	风车	existing complete term
+0x1958563	0x22120f0	Traction Bench	牵引台	existing complete term
+0x1958593	0x21c2d5f	Wall Grate	墙壁格栅	existing complete term
+0x19585c3	0x2212842	Water Wheel	水车	existing complete term
+0x19585f4	0x2175fc2	Wagon	货车	existing complete term
+0x195867b	0x21c2d44	Floor Grate	地板格栅	existing complete term
+0x19586ac	0x21c2da9	Screw Pump	螺杆泵	existing complete term
+0x1958734	0x21c2d8d	Floor Hatch	地板活板门	scoped caption
+0x195879b	0x21c359c	Upright Spear/Spike	直立长矛或尖刺	existing complete term
+0x19587cb	0x21c35c7	Container	容器	existing complete term
+0x19587fb	0x2175554	Well	井	existing complete term
+0x195882b	0x22113f0	Table	桌子	existing complete term
+0x195885b	0x21c2e58	Support	支柱	existing complete term
+0x195888b	0x21c2d23	Armor Stand	盔甲架	existing complete term
+0x19588bb	0x21c35d1	Dirt Road	泥土道路	existing complete term
+0x19588eb	0x21c2d03	Farm Plot	耕地	existing complete term
+0x195891b	0x21c35e6	Glass Window	玻璃窗	existing complete term
+0x195894b	0x21c2d7a	Door	门	existing complete term
+0x195897c	0x21c35db	Paved Road	铺装道路	existing complete term
+0x1958a03	0x21c35c2	Seat	座位	existing complete term
+0x1958a33	0x21c35f3	Gem Window	宝石窗	existing complete term
+0x1958a8b	0x21c2dcc	Bridge	桥	existing complete term
+0x1958adc	0x21c2d51	Statue	雕像	existing complete term
+0x1958b64	0x21c2d30	Floodgate	水闸	existing complete term
+0x1958beb	0x2174cdd	Bed	床	existing complete term
+0x1958c1b	0x21c2d80	Weapon Rack	兵器架	existing complete term
+0x1958c4b	0x21c35b0	Burial Receptacle	棺椁	existing complete term
+0x1958c7b	0x21c2e4a	Shop	商店	existing complete term
+0x1958cab	0x21c2dd3	Offering Place	供奉处	existing complete term
+0x1958cd7	0x21c2f50	Pressure Plate	压力板	existing complete term
+0x1958d03	0x21c2f1f	Stone-Fall Trap	落石陷阱	existing complete term
+0x1958d2f	0x21c2f39	Track Stop	轨道站点	existing complete term
+0x1958d5b	0x21c2f44	Weapon Trap	武器陷阱	existing complete term
+0x1958d87	0x221246b	Lever	控制杆	existing complete term
+0x1958db3	0x21c2f2f	Cage Trap	笼式陷阱	existing complete term
+0x1958ddf	0x21c2fbd	Magma Kiln	岩浆黏土窑	existing complete term
+0x1958e0b	0x21c2fa9	Magma Glass Furnace	岩浆玻璃窑	existing complete term
+0x1958e37	0x21c2fa1	Smelter	熔炉	existing complete term
+0x1958e63	0x21c2fc3	Kiln	黏土窑	existing complete term
+0x1958ee3	0x21c2f9b	Magma Smelter	岩浆熔炉	existing complete term
+0x1958f0f	0x21c2f8e	Wood Furnace	烧木窑	existing complete term
+0x1958f3b	0x21c2faf	Glass Furnace	玻璃窑	existing complete term
+0x1958fc4	0x20fbb7d	's Shop	{s}工坊	profession 0x19808b0 + complete suffix template
+0x1958ff0	0x20fbb69	Quern	手推磨	existing complete term
+0x195901c	0x20fbb3c	Loom	织布机	existing complete term
+0x1959048	0x20fbb61	Kitchen	厨房	existing complete term
+0x1959074	0x20fbb53	Still	蒸馏工坊	existing complete term
+0x19590a0	0x20fbad3	Ashery	灰坊	existing complete term
+0x19590cc	0x20fbb59	Fishery	渔业工坊	existing complete term
+0x19590f8	0x20fbb6f	Vermin Catcher's Shop	害虫捕坊	existing complete term
+0x1959237	0x21c3508	's Forge	{s}锻造工坊	profession 0x19808b0 + complete suffix template
+0x19592c0	0x21c3538	's Workshop	{s}工坊	profession 0x19808b0 + complete suffix template
+0x19592ec	0x20fbca6	Millstone	机械石磨	existing complete term
+0x1959318	0x21c34eb	Siege Workshop	攻城器械工坊	existing complete term
+0x1959344	0x21c3532	Farmer's Workshop	农夫工坊	existing complete term
+0x1959370	0x21c34fa	Leather Works	皮革工坊	existing complete term
+0x1959460	0x21c3554	Tool	工具	existing complete term
+0x19595b2	0x21c351d	Carpenter's Workshop	木匠工坊	existing complete term
+0x1959640	0x21c3511	Magma Forge	岩浆锻造坊	existing complete term
+0x195966c	0x21c34a6	Track/Ramp (NSW)	坡道轨道（北南西）	scoped caption
+0x1959698	0x21c3465	Track/Ramp (SE)	坡道轨道（南东）	scoped caption
+0x19596c4	0x21c34c8	Track/Ramp (SEW)	坡道轨道（南东西）	scoped caption
+0x19596f0	0x2206588	Track (NW)	轨道（北西）	scoped caption
+0x195971c	0x21c3485	Track/Ramp (EW)	坡道轨道（东西）	scoped caption
+0x1959748	0x220664c	Track (NSEW)	轨道（北南东西）	scoped caption
+0x1959774	0x21c34d9	Track/Ramp (NSEW)	坡道轨道（北南东西）	scoped caption
+0x19597a0	0x21c33eb	Up/Down Stair	上下行楼梯	existing complete term
+0x19597cc	0x21c3495	Track/Ramp (NSE)	坡道轨道（北南东）	scoped caption
+0x19597f8	0x21c3426	Track/Ramp (W)	坡道轨道（西）	scoped caption
+0x1959824	0x21c34b7	Track/Ramp (NEW)	坡道轨道（北东西）	scoped caption
+0x1959850	0x220652a	Track (E)	轨道（东）	scoped caption
+0x195987c	0x21c3475	Track/Ramp (SW)	坡道轨道（南西）	scoped caption
+0x19598a8	0x22065e8	Track (NSE)	轨道（北南东）	scoped caption
+0x19598d4	0x20fbbcd	Wall	墙	existing complete term
+0x1959900	0x21c3445	Track/Ramp (NE)	坡道轨道（北东）	scoped caption
+0x195992c	0x2206558	Track (NS)	轨道（北南）	scoped caption
+0x1959958	0x220661a	Track (NEW)	轨道（北东西）	scoped caption
+0x1959984	0x21c33e2	Up Stair	上行楼梯	existing complete term
+0x19599b0	0x21c3408	Track/Ramp (S)	坡道轨道（南）	scoped caption
+0x19599dc	0x22064fc	Track (N)	轨道（北）	scoped caption
+0x1959a08	0x22065b8	Track (SW)	轨道（南西）	scoped caption
+0x1959a34	0x20fbbc2	Reinforced Wall	加固墙体	existing complete term
+0x1959a60	0x21c3455	Track/Ramp (NW)	坡道轨道（北西）	scoped caption
+0x1959a8c	0x2206570	Track (NE)	轨道（北东）	scoped caption
+0x1959ab8	0x2206633	Track (SEW)	轨道（南东西）	scoped caption
+0x1959ae4	0x21c33ee	Down Stair	下行楼梯	existing complete term
+0x1959b10	0x21c3417	Track/Ramp (E)	坡道轨道（东）	scoped caption
+0x1959b3c	0x2206513	Track (S)	轨道（南）	scoped caption
+0x1959b68	0x22065d0	Track (EW)	轨道（东西）	scoped caption
+0x1959b94	0x20fbbf3	Fortification	城防垛口	existing complete term
+0x1959bc0	0x21c3435	Track/Ramp (NS)	坡道轨道（北南）	scoped caption
+0x1959bec	0x2206541	Track (W)	轨道（西）	scoped caption
+0x1959c18	0x2206601	Track (NSW)	轨道（北南西）	scoped caption
+0x1959c44	0x220608c	Floor	地板	existing complete term
+0x1959c70	0x21c33f9	Track/Ramp (N)	坡道轨道（北）	scoped caption
+0x1959c9c	0x20fbbd2	Ramp	斜坡	existing complete term
+0x1959cc8	0x22065a0	Track (SE)	轨道（南东）	scoped caption
+0x1959f43	0x20fbd26	Catapult	投石机	existing complete term
+0x1959f6f	0x21c2e85	Bolt Thrower	弩箭投射器	existing complete term
+0x1959f9b	0x20fbd1d	Ballista	弩炮	existing complete term
+0x1959fc7	0x21c2f34	Trap	陷阱	existing complete term
+0x1959ff3	0x21c2f93	Furnace	熔炉	scoped caption
+0x195a0c4	0x21c34f1	Workshop	工坊	existing complete term
+0x195a0e2	0x20f338a	Bowyer	弓弩匠	existing complete term
+0x195a0f6	0x20f35ee	Mechanic	机械师	existing complete term
+0x195a136	0x20f3589	Tanner	制革工	existing complete term
+0x195a14a	0x20f3590	Dyer	染色工	existing complete term
+0x195a180	0x20f3410	Metalsmith	金工	existing complete term
+0x195a1af	0x21754e8	Construction	构筑物	existing complete term
+0x195a1c0	0x20f3458	Jeweler	宝石匠	existing complete term
+0x195a1f6	0x20f34e9	Clothier	裁缝	existing complete term
+0x195a20a	0x20f339c	Stoneworker	石工	existing complete term
+0x195a21e	0x20f3476	Craftsman	工匠	existing complete term
+0x195a232	0x21751c0	Butcher	屠夫	existing complete term

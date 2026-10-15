@@ -1,0 +1,175 @@
+Adventure Read completion popup: original PE decompilation
+
+Images are the two files configured by data/runtime/native-pe-images.json.
+Steam identity: PE:6a70a6d9:02711000.
+Official Windows identity: PE:6a70b91c:0270a000.
+reference-decompiled.c and classic-decompiled.c are actual Ghidra 12.1.4 C
+output from the original disk images, x86:LE:64:default:windows, -noanalysis,
+using tools/DecompileAdventureReading.java. They retain 17 complete core
+functions per edition. reference-suppliers-decompiled.c and
+classic-suppliers-decompiled.c retain actual current-PE Ghidra C for all
+21 typed general_ref description suppliers (including the inherited empty
+description) and the complete sphere selector, in a separate suppliers pass.
+Together the two passes retain every function in native-functions.tsv as
+actual current-PE C. Descriptive names are aliases, not debug symbols.
+The extraction does not attach to or observe a game process.
+
+native-functions.tsv retains every full chained-unwind owner and the code
+boundary before embedded selector data. The matching *.asm files retain all
+decoded instruction operands. native-branches.tsv includes branch targets
+and fallthrough; native-predicates.tsv preserves source cmp/test/bt operands;
+native-switches.tsv includes every native selector and table alias;
+native-calls.tsv includes direct and virtual suppliers; native-literals.tsv
+includes original RIP-relative text loads and inline string fragments;
+native-emits.tsv retains all 12 direct announcement submissions per edition.
+
+SOURCE CHAIN
+Role                               Steam RVA              Official RVA
+Read action                        0x833df0..0x83440d      0x831670..0x831c8d
+Item caption                       0xc65450..0xc65f0a      0xc62490..0xc62f4a
+Unit Read item                     0xb3df0..0xb5f4c        0xb3d80..0xb5edc
+Interaction power update           0x1352f20..0x1353937    0x134de90..0x134e8a7
+Adventure modal renderer           0x8020c0..0x802a5e      0x7ff940..0x8002de
+Announcement row builder           0x8a40e0..0x8a44a7      0x8a1960..0x8a1d27
+Read page carrier                  0xcc7020..0xcc75f8      0xcc4060..0xcc4638
+Read writing carrier               0xcc6a10..0xcc7020      0xcc3a50..0xcc4060
+Written work body                  0xcc5d50..0xcc6a0e      0xcc2d90..0xcc3a4e
+Written work style                 0xcc5520..0xcc5d50      0xcc2560..0xcc2d90
+Announcement submit                0xe3c20                0xe3bb0
+
+READ ACTION: three mutually exclusive text alternatives
+The action's selected item pointer is action+0x10. It clears report timers
+and sets adventure announcement flags before selecting its outcome.
+The exact native visibility predicate is retained rather than inferred:
+    visibility_supplier(unit) != 0 && unit.word[0x814] != 0 &&
+    (refresh_visibility(), (unit.u32[0x114] & 0x6000000) == 0)
+If true: submit "You cannot see." with packed event/color 0x400ea.
+Otherwise look up skill 0x5b at unit.soul(+0xa98)+0x218.
+Missing skill or rating(+4) <= 0:
+    submit "You cannot read." with packed event/color 0x400ea.
+Present skill with rating > 0:
+    caption = item_caption(action.item, out, flags=0, context=1)
+    submit "You read " + COMPLETE caption + ".", packed 0x700ea.
+    then call Unit Read item(unit, action.item).
+Every action announcement respects its type-234 announcement settings:
+gamemode == 0 uses settings & 0x70; other modes use settings & 8.
+Disabled settings omit text but successful reading still calls Unit Read item.
+
+COMPLETE TITLE/CAPTION
+The native caption is not always written_content.title.
+It can select an artifact's native generated name, a BOOK's nonempty title
+at item+0xe8, a TOOL's first nonempty referenced work title (including scroll
+tools), or the complete native item designation with qualities/material/binding
+modifiers. The item_type enum in data/upstream/df-structures/df.d_basics.xml
+identifies TOOL as 0x56, SLAB as 0x57, BOOK as 0x59, and SHEET as 0x5a.
+The complete item-caption function is retained for both PE images. Its
+selected title and designation remain one dynamic field of the Read sentence.
+An artifact name can have has_name=true but no contributing first name,
+nickname or generated name words. The caption's c654b9..c654e2 branch tail-
+calls a94030 and returns without a nonempty-output fallback. The Read action
+still appends its final period, yielding the complete production "You read .".
+has_name=false instead falls through to the ordinary item caption and must
+not be confused with that empty contributed-name branch.
+
+UNIT READ ITEM: eight direct emit sites
+All normal content emissions require gamemode == 1, unit == current adventurer,
+and the type-234 setting's adventure display bit (8). Two special slab paths
+use the native option supplier for type 234 instead of directly reading bit 8.
+
+SLAB (item virtual type 0x57):
+  subtype(+0x10c) == 6 and linked ID(+0x108) != -1:
+    when writing(+0xe8, length at +0xf8) is nonempty and allowed:
+      submit '"' + the complete raw writing string + '"', packed 0x300ea.
+    collect linked interaction ID even when no text is submitted.
+  subtype == 26 and linked ID != -1:
+    same quoted-writing emission, packed 0x300ea.
+    resolve linked historical figure/event knowledge through their real IDs.
+  every other slab subtype, including missing special linked ID:
+    nonempty writing -> same quoted-writing emission, packed 0x300ea.
+    empty writing -> "It has no writing.", packed 0x700ea.
+The quoted string is copied from item+0xe8; it is not an adjacent RAW title
+guess. Its possible writing genres include the existing linked memorial,
+secret/true-name and shop-sign suppliers described by their own source data.
+
+BOOK (virtual type 0x59; TOOL is 0x56, SLAB is 0x57):
+  Iterate every improvement in item+0xd0..+0xd8 in source order.
+  Improvement virtual getType(+0x28) == 9 means pages.
+  Present pages with a nonempty work-ID vector(+0x30..+0x38):
+    page_carrier(improvement, complete output, native mode R9D=0)
+    submit that WHOLE output, packed 0x700ea.
+    collect all referenced work IDs.
+  Present pages with an empty work-ID vector:
+    submit "The pages are blank.", packed 0x700ea.
+  No page improvement found:
+    submit "It has no pages.", packed 0x700ea.
+Multiple page improvements can each submit a separate whole paragraph.
+
+WRITING ON ANY APPLICABLE ITEM:
+  If item virtual method +0x5a8 returns true, iterate its improvements.
+  Improvement getType(+0x28) == 12 and ID vector(+0x28..+0x30) nonempty:
+    writing_carrier(improvement, whole output, native mode R8D=0)
+    submit that WHOLE output, packed 0x700ea; collect all work IDs.
+  Empty writing improvements and unsupported improvement types emit nothing.
+This pass follows the slab/BOOK pass; it is not a mutually exclusive subtype.
+
+POWERS: one looped direct emit site
+Reading collects explicit SLAB linked interactions and general_ref_interaction
+(reference type 0x2f, ID at reference+8) from work subjects. Learning applies
+interaction effects and invokes unit-interaction-power-update.
+For each effect, iterate its parallel granted interaction ID/target vectors.
+Skip unless target equals effect+0xd8; append the ID to unit+0x8f8..+0x900.
+Only a newly appended ID can display a learning announcement.
+The original conditions then require:
+  gamemode == 1; nonempty adventure unit vector; unit == current adventurer;
+  interaction virtual type == 0x16 (CE_CAN_DO_INTERACTION);
+  its name string(+0x378) length(+0x388) != 0;
+  type-258 announcement display setting permits it.
+The native string construction is exactly:
+    'You have learned the power "' + interaction.string(+0x378) + '"!'
+with packed event/color 0x30102. Arbitrarily many new powers can be submitted;
+missing names, other interaction kinds and already known IDs emit nothing.
+The dynamic power name belongs to the interaction RAW/generated effect field.
+
+WRITTEN WORK GENRE / KNOWLEDGE BRANCHES
+The Unit Read item function has a 20-entry remap and a 20-entry genre switch
+for selectors 5..24. They are retained including repeated destinations.
+Biographies, genealogies, cultural histories/comparisons, encyclopedias and
+star works update the native knowledge flags; poems/music/choreography add
+their form IDs. Default genres omit these category-specific updates. Subject
+roles 0/5 can apply value/reference knowledge and interaction IDs. These
+branches do not directly emit additional text in this popup. Their complete
+state-update control flow remains in the actual C and original instructions.
+
+FULL PROSE SUPPLIERS
+Both PE decompilations retain page and writing carriers, the complete work
+body and its style function, native cardinal/ordinal chapter suppliers, and
+poetic/musical/dance form suppliers. The source-derived genre table has all
+26 genres and its default; subject joins, untitled and missing-work branches,
+authors, all 18 styles/strengths/polarity, all five quality categories and all
+six quality levels, chapter lists and default/empty references are preserved by
+these complete functions and the native selectors in this directory.
+The quality-category switch is 0/default prose, 1 compilation, 2 poetry,
+3 composition, 4 choreography. The current PE's five thresholds are
+10, 20, 30, 40 and 50, yielding six levels in each category.
+Every typed general_ref supplier is retained as complete current-PE ASM and
+actual current-PE C in reference-suppliers-decompiled.c or
+classic-suppliers-decompiled.c. native-functions.tsv identifies each supplier's
+edition, original address range, instructions and actual decompiled source.
+../written-reading/elf-decompiled.c additionally preserves the corresponding
+Linux binary source; it does not substitute for the current-PE supplier C.
+Their semantic productions and field provenance are already documented in
+../written-reading/decompiled-productions.txt and
+../character-knowledge-written-work/decompiled-source.txt.
+
+WRAP AND RENDER OWNERSHIP
+The native row builder wraps report.text at 95 columns when its length > 95.
+Every resulting adv_announcementst row retains report as row.parent(+0x20).
+For shorter text the row string is empty and drawing uses report.text(+8).
+The renderer selects row.str, falling back to parent.text only when empty.
+Non-continuation report.flags(+0x30)&1 == 0 and speaker(+0x64) == -1 are
+centered; other records preserve their native speech/continuation placement.
+These are physical wrap rows of whole reports, not independent source text
+sentences. Caption, body and learned powers retain distinct report ownership.
+
+These files preserve source text/control flow. They are not game observations,
+translation results, test fixtures, checks or acceptance reports.

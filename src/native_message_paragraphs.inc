@@ -131,6 +131,16 @@ void Overlay::append_native_message_paragraphs(std::vector<std::string> &screen_
         std::vector<Match> &result, std::vector<Match> &untranslated_help_rows,
         int only_y, const unsigned char *screen_override, bool announcements_only) const {
     if (ui_message_trie_.size() <= 1 && ui_message_template_rules_.empty()) return;
+    if (!announcements_only) {
+        // This pass has no screen-only fallback: every result below needs
+        // a retained paragraph with a possible current draw or wrap prefix.
+        // Consult that existing necessary-condition index before copying
+        // draw metadata, building position maps or refreshing report history.
+        std::scoped_lock lock(g_native_paragraph_mutex, g_native_drawn_text_mutex);
+        const std::vector<NativeDrawnTextRow> no_occluded_draws;
+        if (native_paragraph_candidates(screen_rows, g_native_drawn_text_rows,
+                no_occluded_draws).empty()) return;
+    }
     const NativePanelBorders borders(*gps_);
     const auto visible_layer = [&](int x, int y) {
         if (!screen_override) return true;
@@ -618,8 +628,9 @@ void Overlay::append_native_message_paragraphs(std::vector<std::string> &screen_
         // These indices only exclude captures with no possible live identity
         // or complete-wrap opening. Keep all rule and row proofs below,
         // including unaddressed recovery and partially visible reports.
+        NativeParagraphCandidates addressed_captures;
         const auto candidates = native_paragraph_candidates(
-            screen_rows, native_draws, date_occluded_draws);
+            screen_rows, native_draws, date_occluded_draws, &addressed_captures);
         for (const auto *capture : candidates) {
             if (capture->wrapped_lines.empty() || capture->paragraph_width <= 0 ||
                 capture->paragraph_width > gps_->dimx) continue;
@@ -630,38 +641,12 @@ void Overlay::append_native_message_paragraphs(std::vector<std::string> &screen_
             // A native row address can prove a catalog paragraph's visible
             // continuation as well as an announcement's. The full captured
             // source still selects its rule; screen suffixes never do so.
-            // The capture history also contains character descriptions,
-            // item records and other documents. Reject sources outside
-            // the message catalog before searching the screen for them.
-            // Template literals only select candidates here; the typed
-            // matcher still proves visible messages below.
-            std::vector<int> rule_indices;
-            bool template_candidates = false;
-            if (announcement) rule_indices.push_back(-1);
-            else {
-                int node = 0;
-                for (unsigned char ch : capture->source) {
-                    if (native_prose_space(ch)) continue;
-                    const auto next = ui_message_trie_[node].next.find(ch);
-                    if (next == ui_message_trie_[node].next.end()) { node = -1; break; }
-                    node = next->second;
-                }
-                if (node >= 0 && ui_message_trie_[node].rule >= 0)
-                    rule_indices.push_back(ui_message_trie_[node].rule);
-                else {
-                    template_candidates = true;
-                    const auto compact = compact_ui_message_literal(capture->source);
-                    for (int index : ui_message_anchors_.candidates(compact)) {
-                        const auto &probe = message_templates[index];
-                        if (!compact.starts_with(probe.prefix) || !compact.ends_with(probe.suffix) ||
-                            compact.find(probe.anchor) == std::string::npos) continue;
-                        rule_indices.push_back(probe.index);
-                    }
-                }
-            }
-            if (rule_indices.empty()) continue;
             std::vector<NativeMessageSpan> spans;
-            if (capture->row_addresses.size() == capture->wrapped_lines.size()) {
+            // Prefix-only candidates have no current or Date-occluded row
+            // identity. Prove their complete visible wrap below without
+            // scanning every retained address of an unrelated old document.
+            if (addressed_captures.contains(capture) &&
+                    capture->row_addresses.size() == capture->wrapped_lines.size()) {
                 if (announcement && capture->wrapped_lines.size() >= 2) {
                     const auto [first, last] = draws_by_address.equal_range(capture->row_addresses.front());
                     for (auto at = first; at != last; ++at) {
@@ -719,6 +704,34 @@ void Overlay::append_native_message_paragraphs(std::vector<std::string> &screen_
                     }
             }
             if (spans.empty()) continue;
+            // A short indexed prefix can select many retained paragraphs
+            // that are absent from this frame. Resolve catalog candidates
+            // only after the same live-row/address proof establishes ink.
+            std::vector<int> rule_indices;
+            bool template_candidates = false;
+            if (announcement) rule_indices.push_back(-1);
+            else {
+                int node = 0;
+                for (unsigned char ch : capture->source) {
+                    if (native_prose_space(ch)) continue;
+                    const auto next = ui_message_trie_[node].next.find(ch);
+                    if (next == ui_message_trie_[node].next.end()) { node = -1; break; }
+                    node = next->second;
+                }
+                if (node >= 0 && ui_message_trie_[node].rule >= 0)
+                    rule_indices.push_back(ui_message_trie_[node].rule);
+                else {
+                    template_candidates = true;
+                    const auto compact = compact_ui_message_literal(capture->source);
+                    for (int index : ui_message_anchors_.candidates(compact)) {
+                        const auto &probe = message_templates[index];
+                        if (!compact.starts_with(probe.prefix) || !compact.ends_with(probe.suffix) ||
+                            compact.find(probe.anchor) == std::string::npos) continue;
+                        rule_indices.push_back(probe.index);
+                    }
+                }
+            }
+            if (rule_indices.empty()) continue;
             if (template_candidates) {
                 std::erase_if(rule_indices, [&](int index) {
                     const Rule &rule = rules_[static_cast<size_t>(index)];

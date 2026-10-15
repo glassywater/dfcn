@@ -77,6 +77,13 @@ std::optional<std::string> Overlay::translate_justice_case_text(
 
     const size_t number_end = source.find_first_not_of("0123456789");
     if (number_end > 0 && number_end < source.size() && source[number_end] == ' ') {
+        if (auto witnesses = exact_literal_translation("Justice witness count: " +
+                std::string(trim_view(std::string_view(source).substr(number_end))))) {
+            if (const size_t count = witnesses->find("{d}"); count != std::string::npos) {
+                witnesses->replace(count, 3, source.substr(0, number_end));
+                return witnesses;
+            }
+        }
         if (auto members = exact_literal_translation("Justice organization: " +
                 std::string(trim_view(std::string_view(source).substr(number_end))))) {
             if (const size_t count = members->find("{d}"); count != std::string::npos) {
@@ -192,8 +199,13 @@ std::optional<std::string> Overlay::translate_justice_case_text(
         }
     }
 
-    // These native case types append a named object or an organization.
-    // Resolve the entire typed suffix; individual words never become names.
+    // The 19-way native switch at PE 0x46d660 has three named variants:
+    // Murder resolves crime+70 through the unit-name formatter (1330c30),
+    // Theft resolves the type-6 agreement target through artifact-name
+    // formatter b94400, and Espionage resolves the type-13 target through
+    // historical-entity formatter b92900. Failed lookups keep the bare crime
+    // label, handled above. See data/extracted/justice-convict-details.
+    // Resolve each complete typed suffix; never infer its kind from spelling.
     for (const std::string_view prefix : {"Murder of ", "Theft of ", "Espionage against "}) {
         if (!source.starts_with(prefix)) continue;
         const auto caption = exact_literal_translation("Justice case: " + std::string(trim_view(prefix)));

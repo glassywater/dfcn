@@ -1,0 +1,7 @@
+edition	image_identity	path	role	start_rva	end_rva
+steam	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	abilities-renderer	0x8a8300	0x8aa94c
+steam	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	body-action-pronoun-expansion	0x13e81e0	0x13e87f3
+steam	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	capitalize-complete-caption	0x52d650	0x52d8ba
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	abilities-renderer	0x8a5b80	0x8a81cc
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	body-action-pronoun-expansion	0x13e3150	0x13e3763
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	capitalize-complete-caption	0x52b070	0x52b2da

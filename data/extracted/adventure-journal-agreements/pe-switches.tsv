@@ -1,0 +1,475 @@
+edition	role	dispatch_rva	table_rva	remap_rva	selector	table_index	target_rva
+steam	journal-agreement-details-and-card-fields	0xc26d9	0xca358		0	0	0xc26db
+steam	journal-agreement-details-and-card-fields	0xc26d9	0xca358		1	1	0xc26f2
+steam	journal-agreement-details-and-card-fields	0xc26d9	0xca358		2	2	0xc270d
+steam	journal-agreement-details-and-card-fields	0xc26d9	0xca358		3	3	0xc2726
+steam	journal-agreement-details-and-card-fields	0xc26d9	0xca358		4	4	0xc273c
+steam	journal-agreement-details-and-card-fields	0xc26d9	0xca358		5	5	0xc2754
+steam	journal-agreement-details-and-card-fields	0xc26d9	0xca358		6	6	0xc276a
+steam	journal-agreement-details-and-card-fields	0xc26d9	0xca358		7	7	0xc2782
+steam	journal-agreement-details-and-card-fields	0xc26d9	0xca358		8	8	0xc279a
+steam	journal-agreement-details-and-card-fields	0xc2997	0xca3a0		0	0	0xc29cb
+steam	journal-agreement-details-and-card-fields	0xc2997	0xca3a0		1	1	0xc2999
+steam	journal-agreement-details-and-card-fields	0xc2997	0xca3a0		2	2	0xc29fd
+steam	journal-agreement-details-and-card-fields	0xc2997	0xca3a0		3	3	0xc2a2f
+steam	journal-agreement-details-and-card-fields	0xc2997	0xca3a0		4	4	0xc2a61
+steam	journal-agreement-details-and-card-fields	0xc2997	0xca3a0		5	5	0xc2a93
+steam	journal-agreement-details-and-card-fields	0xc2997	0xca3a0		6	6	0xc2ac5
+steam	journal-agreement-details-and-card-fields	0xc2997	0xca3a0		7	7	0xc2af4
+steam	journal-agreement-details-and-card-fields	0xc2997	0xca3a0		8	8	0xc2b23
+steam	journal-agreement-details-and-card-fields	0xc2fec	0xca3c4		0	0	0xc2fee
+steam	journal-agreement-details-and-card-fields	0xc2fec	0xca3c4		1	1	0xc3871
+steam	journal-agreement-details-and-card-fields	0xc2fec	0xca3c4		2	2	0xc88c0
+steam	journal-agreement-details-and-card-fields	0xc2fec	0xca3c4		3	3	0xc9350
+steam	journal-agreement-details-and-card-fields	0xc2fec	0xca3c4		4	4	0xc8e12
+steam	journal-agreement-details-and-card-fields	0xc2fec	0xca3c4		5	5	0xc9890
+steam	journal-agreement-details-and-card-fields	0xc2fec	0xca3c4		6	6	0xc9c80
+steam	journal-agreement-details-and-card-fields	0xc2fec	0xca3c4		7	7	0xc84d0
+steam	journal-agreement-details-and-card-fields	0xc2fec	0xca3c4		8	8	0xc70a4
+steam	journal-agreement-details-and-card-fields	0xc3b26	0xca3e8		0	0	0xc3b28
+steam	journal-agreement-details-and-card-fields	0xc3b26	0xca3e8		1	1	0xc3bdf
+steam	journal-agreement-details-and-card-fields	0xc3b26	0xca3e8		2	2	0xc3beb
+steam	journal-agreement-details-and-card-fields	0xc3b26	0xca3e8		3	3	0xc3bf7
+steam	journal-agreement-details-and-card-fields	0xc3b26	0xca3e8		4	4	0xc3c03
+steam	journal-agreement-details-and-card-fields	0xc3b26	0xca3e8		5	5	0xc3c0f
+steam	journal-agreement-details-and-card-fields	0xc3b26	0xca3e8		6	6	0xc3c1b
+steam	journal-agreement-details-and-card-fields	0xc3b26	0xca3e8		7	7	0xc3c27
+steam	journal-agreement-details-and-card-fields	0xc3b26	0xca3e8		8	8	0xc3c33
+steam	journal-agreement-details-and-card-fields	0xc3b26	0xca3e8		9	9	0xc3c3f
+steam	journal-agreement-details-and-card-fields	0xc3b26	0xca3e8		10	10	0xc3c48
+steam	journal-agreement-details-and-card-fields	0xc3b26	0xca3e8		11	11	0xc3c6c
+steam	journal-agreement-details-and-card-fields	0xc3b26	0xca3e8		12	12	0xc3cab
+steam	journal-agreement-details-and-card-fields	0xc3b26	0xca3e8		13	13	0xc3c51
+steam	journal-agreement-details-and-card-fields	0xc3b26	0xca3e8		14	14	0xc3c5a
+steam	journal-agreement-details-and-card-fields	0xc3b26	0xca3e8		15	15	0xc3c63
+steam	journal-agreement-details-and-card-fields	0xc3b26	0xca3e8		16	16	0xc3cb4
+steam	journal-agreement-details-and-card-fields	0xc3b26	0xca3e8		17	17	0xc3cbd
+steam	journal-agreement-details-and-card-fields	0xc3b89	0xca430	0xca450	0	0	0xc3b8b
+steam	journal-agreement-details-and-card-fields	0xc3b89	0xca430	0xca450	1	1	0xc3bbb
+steam	journal-agreement-details-and-card-fields	0xc3b89	0xca430	0xca450	2	2	0xc3b97
+steam	journal-agreement-details-and-card-fields	0xc3b89	0xca430	0xca450	3	7	0xc3cd0
+steam	journal-agreement-details-and-card-fields	0xc3b89	0xca430	0xca450	4	7	0xc3cd0
+steam	journal-agreement-details-and-card-fields	0xc3b89	0xca430	0xca450	5	7	0xc3cd0
+steam	journal-agreement-details-and-card-fields	0xc3b89	0xca430	0xca450	6	7	0xc3cd0
+steam	journal-agreement-details-and-card-fields	0xc3b89	0xca430	0xca450	7	7	0xc3cd0
+steam	journal-agreement-details-and-card-fields	0xc3b89	0xca430	0xca450	8	7	0xc3cd0
+steam	journal-agreement-details-and-card-fields	0xc3b89	0xca430	0xca450	9	7	0xc3cd0
+steam	journal-agreement-details-and-card-fields	0xc3b89	0xca430	0xca450	10	7	0xc3cd0
+steam	journal-agreement-details-and-card-fields	0xc3b89	0xca430	0xca450	11	7	0xc3cd0
+steam	journal-agreement-details-and-card-fields	0xc3b89	0xca430	0xca450	12	7	0xc3cd0
+steam	journal-agreement-details-and-card-fields	0xc3b89	0xca430	0xca450	13	7	0xc3cd0
+steam	journal-agreement-details-and-card-fields	0xc3b89	0xca430	0xca450	14	7	0xc3cd0
+steam	journal-agreement-details-and-card-fields	0xc3b89	0xca430	0xca450	15	7	0xc3cd0
+steam	journal-agreement-details-and-card-fields	0xc3b89	0xca430	0xca450	16	7	0xc3cd0
+steam	journal-agreement-details-and-card-fields	0xc3b89	0xca430	0xca450	17	7	0xc3cd0
+steam	journal-agreement-details-and-card-fields	0xc3b89	0xca430	0xca450	18	7	0xc3cd0
+steam	journal-agreement-details-and-card-fields	0xc3b89	0xca430	0xca450	19	7	0xc3cd0
+steam	journal-agreement-details-and-card-fields	0xc3b89	0xca430	0xca450	20	7	0xc3cd0
+steam	journal-agreement-details-and-card-fields	0xc3b89	0xca430	0xca450	21	7	0xc3cd0
+steam	journal-agreement-details-and-card-fields	0xc3b89	0xca430	0xca450	22	7	0xc3cd0
+steam	journal-agreement-details-and-card-fields	0xc3b89	0xca430	0xca450	23	3	0xc3ba3
+steam	journal-agreement-details-and-card-fields	0xc3b89	0xca430	0xca450	24	4	0xc3baf
+steam	journal-agreement-details-and-card-fields	0xc3b89	0xca430	0xca450	25	7	0xc3cd0
+steam	journal-agreement-details-and-card-fields	0xc3b89	0xca430	0xca450	26	7	0xc3cd0
+steam	journal-agreement-details-and-card-fields	0xc3b89	0xca430	0xca450	27	7	0xc3cd0
+steam	journal-agreement-details-and-card-fields	0xc3b89	0xca430	0xca450	28	7	0xc3cd0
+steam	journal-agreement-details-and-card-fields	0xc3b89	0xca430	0xca450	29	7	0xc3cd0
+steam	journal-agreement-details-and-card-fields	0xc3b89	0xca430	0xca450	30	7	0xc3cd0
+steam	journal-agreement-details-and-card-fields	0xc3b89	0xca430	0xca450	31	7	0xc3cd0
+steam	journal-agreement-details-and-card-fields	0xc3b89	0xca430	0xca450	32	7	0xc3cd0
+steam	journal-agreement-details-and-card-fields	0xc3b89	0xca430	0xca450	33	7	0xc3cd0
+steam	journal-agreement-details-and-card-fields	0xc3b89	0xca430	0xca450	34	7	0xc3cd0
+steam	journal-agreement-details-and-card-fields	0xc3b89	0xca430	0xca450	35	7	0xc3cd0
+steam	journal-agreement-details-and-card-fields	0xc3b89	0xca430	0xca450	36	7	0xc3cd0
+steam	journal-agreement-details-and-card-fields	0xc3b89	0xca430	0xca450	37	7	0xc3cd0
+steam	journal-agreement-details-and-card-fields	0xc3b89	0xca430	0xca450	38	7	0xc3cd0
+steam	journal-agreement-details-and-card-fields	0xc3b89	0xca430	0xca450	39	5	0xc3bc7
+steam	journal-agreement-details-and-card-fields	0xc3b89	0xca430	0xca450	40	7	0xc3cd0
+steam	journal-agreement-details-and-card-fields	0xc3b89	0xca430	0xca450	41	7	0xc3cd0
+steam	journal-agreement-details-and-card-fields	0xc3b89	0xca430	0xca450	42	6	0xc3bd3
+steam	journal-agreement-details-and-card-fields	0xc48d1	0xca47c	0xca49c	0	0	0xc48d3
+steam	journal-agreement-details-and-card-fields	0xc48d1	0xca47c	0xca49c	1	1	0xc56c2
+steam	journal-agreement-details-and-card-fields	0xc48d1	0xca47c	0xca49c	2	2	0xc4c4f
+steam	journal-agreement-details-and-card-fields	0xc48d1	0xca47c	0xca49c	3	7	0xc5d19
+steam	journal-agreement-details-and-card-fields	0xc48d1	0xca47c	0xca49c	4	7	0xc5d19
+steam	journal-agreement-details-and-card-fields	0xc48d1	0xca47c	0xca49c	5	7	0xc5d19
+steam	journal-agreement-details-and-card-fields	0xc48d1	0xca47c	0xca49c	6	7	0xc5d19
+steam	journal-agreement-details-and-card-fields	0xc48d1	0xca47c	0xca49c	7	7	0xc5d19
+steam	journal-agreement-details-and-card-fields	0xc48d1	0xca47c	0xca49c	8	7	0xc5d19
+steam	journal-agreement-details-and-card-fields	0xc48d1	0xca47c	0xca49c	9	7	0xc5d19
+steam	journal-agreement-details-and-card-fields	0xc48d1	0xca47c	0xca49c	10	7	0xc5d19
+steam	journal-agreement-details-and-card-fields	0xc48d1	0xca47c	0xca49c	11	7	0xc5d19
+steam	journal-agreement-details-and-card-fields	0xc48d1	0xca47c	0xca49c	12	7	0xc5d19
+steam	journal-agreement-details-and-card-fields	0xc48d1	0xca47c	0xca49c	13	7	0xc5d19
+steam	journal-agreement-details-and-card-fields	0xc48d1	0xca47c	0xca49c	14	7	0xc5d19
+steam	journal-agreement-details-and-card-fields	0xc48d1	0xca47c	0xca49c	15	7	0xc5d19
+steam	journal-agreement-details-and-card-fields	0xc48d1	0xca47c	0xca49c	16	7	0xc5d19
+steam	journal-agreement-details-and-card-fields	0xc48d1	0xca47c	0xca49c	17	7	0xc5d19
+steam	journal-agreement-details-and-card-fields	0xc48d1	0xca47c	0xca49c	18	7	0xc5d19
+steam	journal-agreement-details-and-card-fields	0xc48d1	0xca47c	0xca49c	19	7	0xc5d19
+steam	journal-agreement-details-and-card-fields	0xc48d1	0xca47c	0xca49c	20	7	0xc5d19
+steam	journal-agreement-details-and-card-fields	0xc48d1	0xca47c	0xca49c	21	7	0xc5d19
+steam	journal-agreement-details-and-card-fields	0xc48d1	0xca47c	0xca49c	22	7	0xc5d19
+steam	journal-agreement-details-and-card-fields	0xc48d1	0xca47c	0xca49c	23	3	0xc507f
+steam	journal-agreement-details-and-card-fields	0xc48d1	0xca47c	0xca49c	24	4	0xc5323
+steam	journal-agreement-details-and-card-fields	0xc48d1	0xca47c	0xca49c	25	7	0xc5d19
+steam	journal-agreement-details-and-card-fields	0xc48d1	0xca47c	0xca49c	26	7	0xc5d19
+steam	journal-agreement-details-and-card-fields	0xc48d1	0xca47c	0xca49c	27	7	0xc5d19
+steam	journal-agreement-details-and-card-fields	0xc48d1	0xca47c	0xca49c	28	7	0xc5d19
+steam	journal-agreement-details-and-card-fields	0xc48d1	0xca47c	0xca49c	29	7	0xc5d19
+steam	journal-agreement-details-and-card-fields	0xc48d1	0xca47c	0xca49c	30	7	0xc5d19
+steam	journal-agreement-details-and-card-fields	0xc48d1	0xca47c	0xca49c	31	7	0xc5d19
+steam	journal-agreement-details-and-card-fields	0xc48d1	0xca47c	0xca49c	32	7	0xc5d19
+steam	journal-agreement-details-and-card-fields	0xc48d1	0xca47c	0xca49c	33	7	0xc5d19
+steam	journal-agreement-details-and-card-fields	0xc48d1	0xca47c	0xca49c	34	7	0xc5d19
+steam	journal-agreement-details-and-card-fields	0xc48d1	0xca47c	0xca49c	35	7	0xc5d19
+steam	journal-agreement-details-and-card-fields	0xc48d1	0xca47c	0xca49c	36	7	0xc5d19
+steam	journal-agreement-details-and-card-fields	0xc48d1	0xca47c	0xca49c	37	7	0xc5d19
+steam	journal-agreement-details-and-card-fields	0xc48d1	0xca47c	0xca49c	38	7	0xc5d19
+steam	journal-agreement-details-and-card-fields	0xc48d1	0xca47c	0xca49c	39	5	0xc58e0
+steam	journal-agreement-details-and-card-fields	0xc48d1	0xca47c	0xca49c	40	7	0xc5d19
+steam	journal-agreement-details-and-card-fields	0xc48d1	0xca47c	0xca49c	41	7	0xc5d19
+steam	journal-agreement-details-and-card-fields	0xc48d1	0xca47c	0xca49c	42	6	0xc5afe
+steam	journal-agreement-details-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	0	0	0xc5e40
+steam	journal-agreement-details-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	1	1	0xc5e49
+steam	journal-agreement-details-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	2	2	0xc5e52
+steam	journal-agreement-details-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	3	3	0xc5e5b
+steam	journal-agreement-details-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	4	3	0xc5e5b
+steam	journal-agreement-details-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	5	3	0xc5e5b
+steam	journal-agreement-details-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	6	3	0xc5e5b
+steam	journal-agreement-details-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	7	3	0xc5e5b
+steam	journal-agreement-details-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	8	3	0xc5e5b
+steam	journal-agreement-details-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	9	3	0xc5e5b
+steam	journal-agreement-details-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	10	3	0xc5e5b
+steam	journal-agreement-details-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	11	3	0xc5e5b
+steam	journal-agreement-details-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	12	3	0xc5e5b
+steam	journal-agreement-details-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	13	3	0xc5e5b
+steam	journal-agreement-details-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	14	3	0xc5e5b
+steam	journal-agreement-details-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	15	3	0xc5e5b
+steam	journal-agreement-details-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	16	3	0xc5e5b
+steam	journal-agreement-details-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	17	3	0xc5e5b
+steam	journal-agreement-details-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	18	3	0xc5e5b
+steam	journal-agreement-details-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	19	3	0xc5e5b
+steam	journal-agreement-details-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	20	0	0xc5e40
+steam	journal-agreement-details-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	21	1	0xc5e49
+steam	journal-agreement-details-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	22	2	0xc5e52
+steam	journal-agreement-details-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	23	3	0xc5e5b
+steam	journal-agreement-details-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	24	3	0xc5e5b
+steam	journal-agreement-details-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	25	3	0xc5e5b
+steam	journal-agreement-details-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	26	3	0xc5e5b
+steam	journal-agreement-details-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	27	3	0xc5e5b
+steam	journal-agreement-details-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	28	3	0xc5e5b
+steam	journal-agreement-details-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	29	3	0xc5e5b
+steam	journal-agreement-details-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	30	0	0xc5e40
+steam	journal-agreement-details-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	31	1	0xc5e49
+steam	journal-agreement-details-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	32	2	0xc5e52
+steam	journal-agreement-title-and-orders	0xdfa14	0xe0ed4		0	0	0xdfa16
+steam	journal-agreement-title-and-orders	0xdfa14	0xe0ed4		1	1	0xdfc7e
+steam	journal-agreement-title-and-orders	0xdfa14	0xe0ed4		2	2	0xdfc90
+steam	journal-agreement-title-and-orders	0xdfa14	0xe0ed4		3	3	0xdfca2
+steam	journal-agreement-title-and-orders	0xdfa14	0xe0ed4		4	4	0xdfcb4
+steam	journal-agreement-title-and-orders	0xdfa14	0xe0ed4		5	5	0xdfcc6
+steam	journal-agreement-title-and-orders	0xdfa14	0xe0ed4		6	6	0xdfcd8
+steam	journal-agreement-title-and-orders	0xdfa14	0xe0ed4		7	7	0xdfcea
+steam	journal-agreement-title-and-orders	0xdfa14	0xe0ed4		8	8	0xdfcfc
+steam	journal-agreement-title-and-orders	0xdfa14	0xe0ed4		9	9	0xdfd0e
+steam	journal-agreement-title-and-orders	0xdfa14	0xe0ed4		10	10	0xdfd20
+steam	journal-agreement-title-and-orders	0xdfa14	0xe0ed4		11	11	0xdfd53
+steam	journal-agreement-title-and-orders	0xdfa14	0xe0ed4		12	12	0xdfd95
+steam	journal-agreement-title-and-orders	0xdfa14	0xe0ed4		13	13	0xdfd32
+steam	journal-agreement-title-and-orders	0xdfa14	0xe0ed4		14	14	0xdfd3b
+steam	journal-agreement-title-and-orders	0xdfa14	0xe0ed4		15	15	0xdfd4a
+steam	journal-agreement-title-and-orders	0xdfa14	0xe0ed4		16	16	0xdfda4
+steam	journal-agreement-title-and-orders	0xdfa14	0xe0ed4		17	17	0xdfdb3
+steam	journal-agreement-title-and-orders	0xdfb90	0xe0f1c	0xe0f3c	0	0	0xdfb92
+steam	journal-agreement-title-and-orders	0xdfb90	0xe0f1c	0xe0f3c	1	1	0xdfbb6
+steam	journal-agreement-title-and-orders	0xdfb90	0xe0f1c	0xe0f3c	2	2	0xdfb9b
+steam	journal-agreement-title-and-orders	0xdfb90	0xe0f1c	0xe0f3c	3	7	0xdfbd8
+steam	journal-agreement-title-and-orders	0xdfb90	0xe0f1c	0xe0f3c	4	7	0xdfbd8
+steam	journal-agreement-title-and-orders	0xdfb90	0xe0f1c	0xe0f3c	5	7	0xdfbd8
+steam	journal-agreement-title-and-orders	0xdfb90	0xe0f1c	0xe0f3c	6	7	0xdfbd8
+steam	journal-agreement-title-and-orders	0xdfb90	0xe0f1c	0xe0f3c	7	7	0xdfbd8
+steam	journal-agreement-title-and-orders	0xdfb90	0xe0f1c	0xe0f3c	8	7	0xdfbd8
+steam	journal-agreement-title-and-orders	0xdfb90	0xe0f1c	0xe0f3c	9	7	0xdfbd8
+steam	journal-agreement-title-and-orders	0xdfb90	0xe0f1c	0xe0f3c	10	7	0xdfbd8
+steam	journal-agreement-title-and-orders	0xdfb90	0xe0f1c	0xe0f3c	11	7	0xdfbd8
+steam	journal-agreement-title-and-orders	0xdfb90	0xe0f1c	0xe0f3c	12	7	0xdfbd8
+steam	journal-agreement-title-and-orders	0xdfb90	0xe0f1c	0xe0f3c	13	7	0xdfbd8
+steam	journal-agreement-title-and-orders	0xdfb90	0xe0f1c	0xe0f3c	14	7	0xdfbd8
+steam	journal-agreement-title-and-orders	0xdfb90	0xe0f1c	0xe0f3c	15	7	0xdfbd8
+steam	journal-agreement-title-and-orders	0xdfb90	0xe0f1c	0xe0f3c	16	7	0xdfbd8
+steam	journal-agreement-title-and-orders	0xdfb90	0xe0f1c	0xe0f3c	17	7	0xdfbd8
+steam	journal-agreement-title-and-orders	0xdfb90	0xe0f1c	0xe0f3c	18	7	0xdfbd8
+steam	journal-agreement-title-and-orders	0xdfb90	0xe0f1c	0xe0f3c	19	7	0xdfbd8
+steam	journal-agreement-title-and-orders	0xdfb90	0xe0f1c	0xe0f3c	20	7	0xdfbd8
+steam	journal-agreement-title-and-orders	0xdfb90	0xe0f1c	0xe0f3c	21	7	0xdfbd8
+steam	journal-agreement-title-and-orders	0xdfb90	0xe0f1c	0xe0f3c	22	7	0xdfbd8
+steam	journal-agreement-title-and-orders	0xdfb90	0xe0f1c	0xe0f3c	23	3	0xdfba4
+steam	journal-agreement-title-and-orders	0xdfb90	0xe0f1c	0xe0f3c	24	4	0xdfbad
+steam	journal-agreement-title-and-orders	0xdfb90	0xe0f1c	0xe0f3c	25	7	0xdfbd8
+steam	journal-agreement-title-and-orders	0xdfb90	0xe0f1c	0xe0f3c	26	7	0xdfbd8
+steam	journal-agreement-title-and-orders	0xdfb90	0xe0f1c	0xe0f3c	27	7	0xdfbd8
+steam	journal-agreement-title-and-orders	0xdfb90	0xe0f1c	0xe0f3c	28	7	0xdfbd8
+steam	journal-agreement-title-and-orders	0xdfb90	0xe0f1c	0xe0f3c	29	7	0xdfbd8
+steam	journal-agreement-title-and-orders	0xdfb90	0xe0f1c	0xe0f3c	30	7	0xdfbd8
+steam	journal-agreement-title-and-orders	0xdfb90	0xe0f1c	0xe0f3c	31	7	0xdfbd8
+steam	journal-agreement-title-and-orders	0xdfb90	0xe0f1c	0xe0f3c	32	7	0xdfbd8
+steam	journal-agreement-title-and-orders	0xdfb90	0xe0f1c	0xe0f3c	33	7	0xdfbd8
+steam	journal-agreement-title-and-orders	0xdfb90	0xe0f1c	0xe0f3c	34	7	0xdfbd8
+steam	journal-agreement-title-and-orders	0xdfb90	0xe0f1c	0xe0f3c	35	7	0xdfbd8
+steam	journal-agreement-title-and-orders	0xdfb90	0xe0f1c	0xe0f3c	36	7	0xdfbd8
+steam	journal-agreement-title-and-orders	0xdfb90	0xe0f1c	0xe0f3c	37	7	0xdfbd8
+steam	journal-agreement-title-and-orders	0xdfb90	0xe0f1c	0xe0f3c	38	7	0xdfbd8
+steam	journal-agreement-title-and-orders	0xdfb90	0xe0f1c	0xe0f3c	39	5	0xdfbbf
+steam	journal-agreement-title-and-orders	0xdfb90	0xe0f1c	0xe0f3c	40	7	0xdfbd8
+steam	journal-agreement-title-and-orders	0xdfb90	0xe0f1c	0xe0f3c	41	7	0xdfbd8
+steam	journal-agreement-title-and-orders	0xdfb90	0xe0f1c	0xe0f3c	42	6	0xdfbc8
+steam	journal-agreement-calendar-month	0x7733b0	0x7734b0		0	0	0x7733b2
+steam	journal-agreement-calendar-month	0x7733b0	0x7734b0		1	1	0x7733c7
+steam	journal-agreement-calendar-month	0x7733b0	0x7734b0		2	2	0x7733dc
+steam	journal-agreement-calendar-month	0x7733b0	0x7734b0		3	3	0x7733f1
+steam	journal-agreement-calendar-month	0x7733b0	0x7734b0		4	4	0x773406
+steam	journal-agreement-calendar-month	0x7733b0	0x7734b0		5	5	0x77341b
+steam	journal-agreement-calendar-month	0x7733b0	0x7734b0		6	6	0x773430
+steam	journal-agreement-calendar-month	0x7733b0	0x7734b0		7	7	0x773445
+steam	journal-agreement-calendar-month	0x7733b0	0x7734b0		8	8	0x77345a
+steam	journal-agreement-calendar-month	0x7733b0	0x7734b0		9	9	0x77346f
+steam	journal-agreement-calendar-month	0x7733b0	0x7734b0		10	10	0x773484
+steam	journal-agreement-calendar-month	0x7733b0	0x7734b0		11	11	0x773499
+classic	journal-agreement-details-and-card-fields	0xc2669	0xca2e8		0	0	0xc266b
+classic	journal-agreement-details-and-card-fields	0xc2669	0xca2e8		1	1	0xc2682
+classic	journal-agreement-details-and-card-fields	0xc2669	0xca2e8		2	2	0xc269d
+classic	journal-agreement-details-and-card-fields	0xc2669	0xca2e8		3	3	0xc26b6
+classic	journal-agreement-details-and-card-fields	0xc2669	0xca2e8		4	4	0xc26cc
+classic	journal-agreement-details-and-card-fields	0xc2669	0xca2e8		5	5	0xc26e4
+classic	journal-agreement-details-and-card-fields	0xc2669	0xca2e8		6	6	0xc26fa
+classic	journal-agreement-details-and-card-fields	0xc2669	0xca2e8		7	7	0xc2712
+classic	journal-agreement-details-and-card-fields	0xc2669	0xca2e8		8	8	0xc272a
+classic	journal-agreement-details-and-card-fields	0xc2927	0xca330		0	0	0xc295b
+classic	journal-agreement-details-and-card-fields	0xc2927	0xca330		1	1	0xc2929
+classic	journal-agreement-details-and-card-fields	0xc2927	0xca330		2	2	0xc298d
+classic	journal-agreement-details-and-card-fields	0xc2927	0xca330		3	3	0xc29bf
+classic	journal-agreement-details-and-card-fields	0xc2927	0xca330		4	4	0xc29f1
+classic	journal-agreement-details-and-card-fields	0xc2927	0xca330		5	5	0xc2a23
+classic	journal-agreement-details-and-card-fields	0xc2927	0xca330		6	6	0xc2a55
+classic	journal-agreement-details-and-card-fields	0xc2927	0xca330		7	7	0xc2a84
+classic	journal-agreement-details-and-card-fields	0xc2927	0xca330		8	8	0xc2ab3
+classic	journal-agreement-details-and-card-fields	0xc2f7c	0xca354		0	0	0xc2f7e
+classic	journal-agreement-details-and-card-fields	0xc2f7c	0xca354		1	1	0xc3801
+classic	journal-agreement-details-and-card-fields	0xc2f7c	0xca354		2	2	0xc8850
+classic	journal-agreement-details-and-card-fields	0xc2f7c	0xca354		3	3	0xc92e0
+classic	journal-agreement-details-and-card-fields	0xc2f7c	0xca354		4	4	0xc8da2
+classic	journal-agreement-details-and-card-fields	0xc2f7c	0xca354		5	5	0xc9820
+classic	journal-agreement-details-and-card-fields	0xc2f7c	0xca354		6	6	0xc9c10
+classic	journal-agreement-details-and-card-fields	0xc2f7c	0xca354		7	7	0xc8460
+classic	journal-agreement-details-and-card-fields	0xc2f7c	0xca354		8	8	0xc7034
+classic	journal-agreement-details-and-card-fields	0xc3ab6	0xca378		0	0	0xc3ab8
+classic	journal-agreement-details-and-card-fields	0xc3ab6	0xca378		1	1	0xc3b6f
+classic	journal-agreement-details-and-card-fields	0xc3ab6	0xca378		2	2	0xc3b7b
+classic	journal-agreement-details-and-card-fields	0xc3ab6	0xca378		3	3	0xc3b87
+classic	journal-agreement-details-and-card-fields	0xc3ab6	0xca378		4	4	0xc3b93
+classic	journal-agreement-details-and-card-fields	0xc3ab6	0xca378		5	5	0xc3b9f
+classic	journal-agreement-details-and-card-fields	0xc3ab6	0xca378		6	6	0xc3bab
+classic	journal-agreement-details-and-card-fields	0xc3ab6	0xca378		7	7	0xc3bb7
+classic	journal-agreement-details-and-card-fields	0xc3ab6	0xca378		8	8	0xc3bc3
+classic	journal-agreement-details-and-card-fields	0xc3ab6	0xca378		9	9	0xc3bcf
+classic	journal-agreement-details-and-card-fields	0xc3ab6	0xca378		10	10	0xc3bd8
+classic	journal-agreement-details-and-card-fields	0xc3ab6	0xca378		11	11	0xc3bfc
+classic	journal-agreement-details-and-card-fields	0xc3ab6	0xca378		12	12	0xc3c3b
+classic	journal-agreement-details-and-card-fields	0xc3ab6	0xca378		13	13	0xc3be1
+classic	journal-agreement-details-and-card-fields	0xc3ab6	0xca378		14	14	0xc3bea
+classic	journal-agreement-details-and-card-fields	0xc3ab6	0xca378		15	15	0xc3bf3
+classic	journal-agreement-details-and-card-fields	0xc3ab6	0xca378		16	16	0xc3c44
+classic	journal-agreement-details-and-card-fields	0xc3ab6	0xca378		17	17	0xc3c4d
+classic	journal-agreement-details-and-card-fields	0xc3b19	0xca3c0	0xca3e0	0	0	0xc3b1b
+classic	journal-agreement-details-and-card-fields	0xc3b19	0xca3c0	0xca3e0	1	1	0xc3b4b
+classic	journal-agreement-details-and-card-fields	0xc3b19	0xca3c0	0xca3e0	2	2	0xc3b27
+classic	journal-agreement-details-and-card-fields	0xc3b19	0xca3c0	0xca3e0	3	7	0xc3c60
+classic	journal-agreement-details-and-card-fields	0xc3b19	0xca3c0	0xca3e0	4	7	0xc3c60
+classic	journal-agreement-details-and-card-fields	0xc3b19	0xca3c0	0xca3e0	5	7	0xc3c60
+classic	journal-agreement-details-and-card-fields	0xc3b19	0xca3c0	0xca3e0	6	7	0xc3c60
+classic	journal-agreement-details-and-card-fields	0xc3b19	0xca3c0	0xca3e0	7	7	0xc3c60
+classic	journal-agreement-details-and-card-fields	0xc3b19	0xca3c0	0xca3e0	8	7	0xc3c60
+classic	journal-agreement-details-and-card-fields	0xc3b19	0xca3c0	0xca3e0	9	7	0xc3c60
+classic	journal-agreement-details-and-card-fields	0xc3b19	0xca3c0	0xca3e0	10	7	0xc3c60
+classic	journal-agreement-details-and-card-fields	0xc3b19	0xca3c0	0xca3e0	11	7	0xc3c60
+classic	journal-agreement-details-and-card-fields	0xc3b19	0xca3c0	0xca3e0	12	7	0xc3c60
+classic	journal-agreement-details-and-card-fields	0xc3b19	0xca3c0	0xca3e0	13	7	0xc3c60
+classic	journal-agreement-details-and-card-fields	0xc3b19	0xca3c0	0xca3e0	14	7	0xc3c60
+classic	journal-agreement-details-and-card-fields	0xc3b19	0xca3c0	0xca3e0	15	7	0xc3c60
+classic	journal-agreement-details-and-card-fields	0xc3b19	0xca3c0	0xca3e0	16	7	0xc3c60
+classic	journal-agreement-details-and-card-fields	0xc3b19	0xca3c0	0xca3e0	17	7	0xc3c60
+classic	journal-agreement-details-and-card-fields	0xc3b19	0xca3c0	0xca3e0	18	7	0xc3c60
+classic	journal-agreement-details-and-card-fields	0xc3b19	0xca3c0	0xca3e0	19	7	0xc3c60
+classic	journal-agreement-details-and-card-fields	0xc3b19	0xca3c0	0xca3e0	20	7	0xc3c60
+classic	journal-agreement-details-and-card-fields	0xc3b19	0xca3c0	0xca3e0	21	7	0xc3c60
+classic	journal-agreement-details-and-card-fields	0xc3b19	0xca3c0	0xca3e0	22	7	0xc3c60
+classic	journal-agreement-details-and-card-fields	0xc3b19	0xca3c0	0xca3e0	23	3	0xc3b33
+classic	journal-agreement-details-and-card-fields	0xc3b19	0xca3c0	0xca3e0	24	4	0xc3b3f
+classic	journal-agreement-details-and-card-fields	0xc3b19	0xca3c0	0xca3e0	25	7	0xc3c60
+classic	journal-agreement-details-and-card-fields	0xc3b19	0xca3c0	0xca3e0	26	7	0xc3c60
+classic	journal-agreement-details-and-card-fields	0xc3b19	0xca3c0	0xca3e0	27	7	0xc3c60
+classic	journal-agreement-details-and-card-fields	0xc3b19	0xca3c0	0xca3e0	28	7	0xc3c60
+classic	journal-agreement-details-and-card-fields	0xc3b19	0xca3c0	0xca3e0	29	7	0xc3c60
+classic	journal-agreement-details-and-card-fields	0xc3b19	0xca3c0	0xca3e0	30	7	0xc3c60
+classic	journal-agreement-details-and-card-fields	0xc3b19	0xca3c0	0xca3e0	31	7	0xc3c60
+classic	journal-agreement-details-and-card-fields	0xc3b19	0xca3c0	0xca3e0	32	7	0xc3c60
+classic	journal-agreement-details-and-card-fields	0xc3b19	0xca3c0	0xca3e0	33	7	0xc3c60
+classic	journal-agreement-details-and-card-fields	0xc3b19	0xca3c0	0xca3e0	34	7	0xc3c60
+classic	journal-agreement-details-and-card-fields	0xc3b19	0xca3c0	0xca3e0	35	7	0xc3c60
+classic	journal-agreement-details-and-card-fields	0xc3b19	0xca3c0	0xca3e0	36	7	0xc3c60
+classic	journal-agreement-details-and-card-fields	0xc3b19	0xca3c0	0xca3e0	37	7	0xc3c60
+classic	journal-agreement-details-and-card-fields	0xc3b19	0xca3c0	0xca3e0	38	7	0xc3c60
+classic	journal-agreement-details-and-card-fields	0xc3b19	0xca3c0	0xca3e0	39	5	0xc3b57
+classic	journal-agreement-details-and-card-fields	0xc3b19	0xca3c0	0xca3e0	40	7	0xc3c60
+classic	journal-agreement-details-and-card-fields	0xc3b19	0xca3c0	0xca3e0	41	7	0xc3c60
+classic	journal-agreement-details-and-card-fields	0xc3b19	0xca3c0	0xca3e0	42	6	0xc3b63
+classic	journal-agreement-details-and-card-fields	0xc4861	0xca40c	0xca42c	0	0	0xc4863
+classic	journal-agreement-details-and-card-fields	0xc4861	0xca40c	0xca42c	1	1	0xc5652
+classic	journal-agreement-details-and-card-fields	0xc4861	0xca40c	0xca42c	2	2	0xc4bdf
+classic	journal-agreement-details-and-card-fields	0xc4861	0xca40c	0xca42c	3	7	0xc5ca9
+classic	journal-agreement-details-and-card-fields	0xc4861	0xca40c	0xca42c	4	7	0xc5ca9
+classic	journal-agreement-details-and-card-fields	0xc4861	0xca40c	0xca42c	5	7	0xc5ca9
+classic	journal-agreement-details-and-card-fields	0xc4861	0xca40c	0xca42c	6	7	0xc5ca9
+classic	journal-agreement-details-and-card-fields	0xc4861	0xca40c	0xca42c	7	7	0xc5ca9
+classic	journal-agreement-details-and-card-fields	0xc4861	0xca40c	0xca42c	8	7	0xc5ca9
+classic	journal-agreement-details-and-card-fields	0xc4861	0xca40c	0xca42c	9	7	0xc5ca9
+classic	journal-agreement-details-and-card-fields	0xc4861	0xca40c	0xca42c	10	7	0xc5ca9
+classic	journal-agreement-details-and-card-fields	0xc4861	0xca40c	0xca42c	11	7	0xc5ca9
+classic	journal-agreement-details-and-card-fields	0xc4861	0xca40c	0xca42c	12	7	0xc5ca9
+classic	journal-agreement-details-and-card-fields	0xc4861	0xca40c	0xca42c	13	7	0xc5ca9
+classic	journal-agreement-details-and-card-fields	0xc4861	0xca40c	0xca42c	14	7	0xc5ca9
+classic	journal-agreement-details-and-card-fields	0xc4861	0xca40c	0xca42c	15	7	0xc5ca9
+classic	journal-agreement-details-and-card-fields	0xc4861	0xca40c	0xca42c	16	7	0xc5ca9
+classic	journal-agreement-details-and-card-fields	0xc4861	0xca40c	0xca42c	17	7	0xc5ca9
+classic	journal-agreement-details-and-card-fields	0xc4861	0xca40c	0xca42c	18	7	0xc5ca9
+classic	journal-agreement-details-and-card-fields	0xc4861	0xca40c	0xca42c	19	7	0xc5ca9
+classic	journal-agreement-details-and-card-fields	0xc4861	0xca40c	0xca42c	20	7	0xc5ca9
+classic	journal-agreement-details-and-card-fields	0xc4861	0xca40c	0xca42c	21	7	0xc5ca9
+classic	journal-agreement-details-and-card-fields	0xc4861	0xca40c	0xca42c	22	7	0xc5ca9
+classic	journal-agreement-details-and-card-fields	0xc4861	0xca40c	0xca42c	23	3	0xc500f
+classic	journal-agreement-details-and-card-fields	0xc4861	0xca40c	0xca42c	24	4	0xc52b3
+classic	journal-agreement-details-and-card-fields	0xc4861	0xca40c	0xca42c	25	7	0xc5ca9
+classic	journal-agreement-details-and-card-fields	0xc4861	0xca40c	0xca42c	26	7	0xc5ca9
+classic	journal-agreement-details-and-card-fields	0xc4861	0xca40c	0xca42c	27	7	0xc5ca9
+classic	journal-agreement-details-and-card-fields	0xc4861	0xca40c	0xca42c	28	7	0xc5ca9
+classic	journal-agreement-details-and-card-fields	0xc4861	0xca40c	0xca42c	29	7	0xc5ca9
+classic	journal-agreement-details-and-card-fields	0xc4861	0xca40c	0xca42c	30	7	0xc5ca9
+classic	journal-agreement-details-and-card-fields	0xc4861	0xca40c	0xca42c	31	7	0xc5ca9
+classic	journal-agreement-details-and-card-fields	0xc4861	0xca40c	0xca42c	32	7	0xc5ca9
+classic	journal-agreement-details-and-card-fields	0xc4861	0xca40c	0xca42c	33	7	0xc5ca9
+classic	journal-agreement-details-and-card-fields	0xc4861	0xca40c	0xca42c	34	7	0xc5ca9
+classic	journal-agreement-details-and-card-fields	0xc4861	0xca40c	0xca42c	35	7	0xc5ca9
+classic	journal-agreement-details-and-card-fields	0xc4861	0xca40c	0xca42c	36	7	0xc5ca9
+classic	journal-agreement-details-and-card-fields	0xc4861	0xca40c	0xca42c	37	7	0xc5ca9
+classic	journal-agreement-details-and-card-fields	0xc4861	0xca40c	0xca42c	38	7	0xc5ca9
+classic	journal-agreement-details-and-card-fields	0xc4861	0xca40c	0xca42c	39	5	0xc5870
+classic	journal-agreement-details-and-card-fields	0xc4861	0xca40c	0xca42c	40	7	0xc5ca9
+classic	journal-agreement-details-and-card-fields	0xc4861	0xca40c	0xca42c	41	7	0xc5ca9
+classic	journal-agreement-details-and-card-fields	0xc4861	0xca40c	0xca42c	42	6	0xc5a8e
+classic	journal-agreement-details-and-card-fields	0xc5dce	0xca458	0xca468	0	0	0xc5dd0
+classic	journal-agreement-details-and-card-fields	0xc5dce	0xca458	0xca468	1	1	0xc5dd9
+classic	journal-agreement-details-and-card-fields	0xc5dce	0xca458	0xca468	2	2	0xc5de2
+classic	journal-agreement-details-and-card-fields	0xc5dce	0xca458	0xca468	3	3	0xc5deb
+classic	journal-agreement-details-and-card-fields	0xc5dce	0xca458	0xca468	4	3	0xc5deb
+classic	journal-agreement-details-and-card-fields	0xc5dce	0xca458	0xca468	5	3	0xc5deb
+classic	journal-agreement-details-and-card-fields	0xc5dce	0xca458	0xca468	6	3	0xc5deb
+classic	journal-agreement-details-and-card-fields	0xc5dce	0xca458	0xca468	7	3	0xc5deb
+classic	journal-agreement-details-and-card-fields	0xc5dce	0xca458	0xca468	8	3	0xc5deb
+classic	journal-agreement-details-and-card-fields	0xc5dce	0xca458	0xca468	9	3	0xc5deb
+classic	journal-agreement-details-and-card-fields	0xc5dce	0xca458	0xca468	10	3	0xc5deb
+classic	journal-agreement-details-and-card-fields	0xc5dce	0xca458	0xca468	11	3	0xc5deb
+classic	journal-agreement-details-and-card-fields	0xc5dce	0xca458	0xca468	12	3	0xc5deb
+classic	journal-agreement-details-and-card-fields	0xc5dce	0xca458	0xca468	13	3	0xc5deb
+classic	journal-agreement-details-and-card-fields	0xc5dce	0xca458	0xca468	14	3	0xc5deb
+classic	journal-agreement-details-and-card-fields	0xc5dce	0xca458	0xca468	15	3	0xc5deb
+classic	journal-agreement-details-and-card-fields	0xc5dce	0xca458	0xca468	16	3	0xc5deb
+classic	journal-agreement-details-and-card-fields	0xc5dce	0xca458	0xca468	17	3	0xc5deb
+classic	journal-agreement-details-and-card-fields	0xc5dce	0xca458	0xca468	18	3	0xc5deb
+classic	journal-agreement-details-and-card-fields	0xc5dce	0xca458	0xca468	19	3	0xc5deb
+classic	journal-agreement-details-and-card-fields	0xc5dce	0xca458	0xca468	20	0	0xc5dd0
+classic	journal-agreement-details-and-card-fields	0xc5dce	0xca458	0xca468	21	1	0xc5dd9
+classic	journal-agreement-details-and-card-fields	0xc5dce	0xca458	0xca468	22	2	0xc5de2
+classic	journal-agreement-details-and-card-fields	0xc5dce	0xca458	0xca468	23	3	0xc5deb
+classic	journal-agreement-details-and-card-fields	0xc5dce	0xca458	0xca468	24	3	0xc5deb
+classic	journal-agreement-details-and-card-fields	0xc5dce	0xca458	0xca468	25	3	0xc5deb
+classic	journal-agreement-details-and-card-fields	0xc5dce	0xca458	0xca468	26	3	0xc5deb
+classic	journal-agreement-details-and-card-fields	0xc5dce	0xca458	0xca468	27	3	0xc5deb
+classic	journal-agreement-details-and-card-fields	0xc5dce	0xca458	0xca468	28	3	0xc5deb
+classic	journal-agreement-details-and-card-fields	0xc5dce	0xca458	0xca468	29	3	0xc5deb
+classic	journal-agreement-details-and-card-fields	0xc5dce	0xca458	0xca468	30	0	0xc5dd0
+classic	journal-agreement-details-and-card-fields	0xc5dce	0xca458	0xca468	31	1	0xc5dd9
+classic	journal-agreement-details-and-card-fields	0xc5dce	0xca458	0xca468	32	2	0xc5de2
+classic	journal-agreement-title-and-orders	0xdf9a4	0xe0e64		0	0	0xdf9a6
+classic	journal-agreement-title-and-orders	0xdf9a4	0xe0e64		1	1	0xdfc0e
+classic	journal-agreement-title-and-orders	0xdf9a4	0xe0e64		2	2	0xdfc20
+classic	journal-agreement-title-and-orders	0xdf9a4	0xe0e64		3	3	0xdfc32
+classic	journal-agreement-title-and-orders	0xdf9a4	0xe0e64		4	4	0xdfc44
+classic	journal-agreement-title-and-orders	0xdf9a4	0xe0e64		5	5	0xdfc56
+classic	journal-agreement-title-and-orders	0xdf9a4	0xe0e64		6	6	0xdfc68
+classic	journal-agreement-title-and-orders	0xdf9a4	0xe0e64		7	7	0xdfc7a
+classic	journal-agreement-title-and-orders	0xdf9a4	0xe0e64		8	8	0xdfc8c
+classic	journal-agreement-title-and-orders	0xdf9a4	0xe0e64		9	9	0xdfc9e
+classic	journal-agreement-title-and-orders	0xdf9a4	0xe0e64		10	10	0xdfcb0
+classic	journal-agreement-title-and-orders	0xdf9a4	0xe0e64		11	11	0xdfce3
+classic	journal-agreement-title-and-orders	0xdf9a4	0xe0e64		12	12	0xdfd25
+classic	journal-agreement-title-and-orders	0xdf9a4	0xe0e64		13	13	0xdfcc2
+classic	journal-agreement-title-and-orders	0xdf9a4	0xe0e64		14	14	0xdfccb
+classic	journal-agreement-title-and-orders	0xdf9a4	0xe0e64		15	15	0xdfcda
+classic	journal-agreement-title-and-orders	0xdf9a4	0xe0e64		16	16	0xdfd34
+classic	journal-agreement-title-and-orders	0xdf9a4	0xe0e64		17	17	0xdfd43
+classic	journal-agreement-title-and-orders	0xdfb20	0xe0eac	0xe0ecc	0	0	0xdfb22
+classic	journal-agreement-title-and-orders	0xdfb20	0xe0eac	0xe0ecc	1	1	0xdfb46
+classic	journal-agreement-title-and-orders	0xdfb20	0xe0eac	0xe0ecc	2	2	0xdfb2b
+classic	journal-agreement-title-and-orders	0xdfb20	0xe0eac	0xe0ecc	3	7	0xdfb68
+classic	journal-agreement-title-and-orders	0xdfb20	0xe0eac	0xe0ecc	4	7	0xdfb68
+classic	journal-agreement-title-and-orders	0xdfb20	0xe0eac	0xe0ecc	5	7	0xdfb68
+classic	journal-agreement-title-and-orders	0xdfb20	0xe0eac	0xe0ecc	6	7	0xdfb68
+classic	journal-agreement-title-and-orders	0xdfb20	0xe0eac	0xe0ecc	7	7	0xdfb68
+classic	journal-agreement-title-and-orders	0xdfb20	0xe0eac	0xe0ecc	8	7	0xdfb68
+classic	journal-agreement-title-and-orders	0xdfb20	0xe0eac	0xe0ecc	9	7	0xdfb68
+classic	journal-agreement-title-and-orders	0xdfb20	0xe0eac	0xe0ecc	10	7	0xdfb68
+classic	journal-agreement-title-and-orders	0xdfb20	0xe0eac	0xe0ecc	11	7	0xdfb68
+classic	journal-agreement-title-and-orders	0xdfb20	0xe0eac	0xe0ecc	12	7	0xdfb68
+classic	journal-agreement-title-and-orders	0xdfb20	0xe0eac	0xe0ecc	13	7	0xdfb68
+classic	journal-agreement-title-and-orders	0xdfb20	0xe0eac	0xe0ecc	14	7	0xdfb68
+classic	journal-agreement-title-and-orders	0xdfb20	0xe0eac	0xe0ecc	15	7	0xdfb68
+classic	journal-agreement-title-and-orders	0xdfb20	0xe0eac	0xe0ecc	16	7	0xdfb68
+classic	journal-agreement-title-and-orders	0xdfb20	0xe0eac	0xe0ecc	17	7	0xdfb68
+classic	journal-agreement-title-and-orders	0xdfb20	0xe0eac	0xe0ecc	18	7	0xdfb68
+classic	journal-agreement-title-and-orders	0xdfb20	0xe0eac	0xe0ecc	19	7	0xdfb68
+classic	journal-agreement-title-and-orders	0xdfb20	0xe0eac	0xe0ecc	20	7	0xdfb68
+classic	journal-agreement-title-and-orders	0xdfb20	0xe0eac	0xe0ecc	21	7	0xdfb68
+classic	journal-agreement-title-and-orders	0xdfb20	0xe0eac	0xe0ecc	22	7	0xdfb68
+classic	journal-agreement-title-and-orders	0xdfb20	0xe0eac	0xe0ecc	23	3	0xdfb34
+classic	journal-agreement-title-and-orders	0xdfb20	0xe0eac	0xe0ecc	24	4	0xdfb3d
+classic	journal-agreement-title-and-orders	0xdfb20	0xe0eac	0xe0ecc	25	7	0xdfb68
+classic	journal-agreement-title-and-orders	0xdfb20	0xe0eac	0xe0ecc	26	7	0xdfb68
+classic	journal-agreement-title-and-orders	0xdfb20	0xe0eac	0xe0ecc	27	7	0xdfb68
+classic	journal-agreement-title-and-orders	0xdfb20	0xe0eac	0xe0ecc	28	7	0xdfb68
+classic	journal-agreement-title-and-orders	0xdfb20	0xe0eac	0xe0ecc	29	7	0xdfb68
+classic	journal-agreement-title-and-orders	0xdfb20	0xe0eac	0xe0ecc	30	7	0xdfb68
+classic	journal-agreement-title-and-orders	0xdfb20	0xe0eac	0xe0ecc	31	7	0xdfb68
+classic	journal-agreement-title-and-orders	0xdfb20	0xe0eac	0xe0ecc	32	7	0xdfb68
+classic	journal-agreement-title-and-orders	0xdfb20	0xe0eac	0xe0ecc	33	7	0xdfb68
+classic	journal-agreement-title-and-orders	0xdfb20	0xe0eac	0xe0ecc	34	7	0xdfb68
+classic	journal-agreement-title-and-orders	0xdfb20	0xe0eac	0xe0ecc	35	7	0xdfb68
+classic	journal-agreement-title-and-orders	0xdfb20	0xe0eac	0xe0ecc	36	7	0xdfb68
+classic	journal-agreement-title-and-orders	0xdfb20	0xe0eac	0xe0ecc	37	7	0xdfb68
+classic	journal-agreement-title-and-orders	0xdfb20	0xe0eac	0xe0ecc	38	7	0xdfb68
+classic	journal-agreement-title-and-orders	0xdfb20	0xe0eac	0xe0ecc	39	5	0xdfb4f
+classic	journal-agreement-title-and-orders	0xdfb20	0xe0eac	0xe0ecc	40	7	0xdfb68
+classic	journal-agreement-title-and-orders	0xdfb20	0xe0eac	0xe0ecc	41	7	0xdfb68
+classic	journal-agreement-title-and-orders	0xdfb20	0xe0eac	0xe0ecc	42	6	0xdfb58
+classic	journal-agreement-calendar-month	0x770dd0	0x770ed0		0	0	0x770dd2
+classic	journal-agreement-calendar-month	0x770dd0	0x770ed0		1	1	0x770de7
+classic	journal-agreement-calendar-month	0x770dd0	0x770ed0		2	2	0x770dfc
+classic	journal-agreement-calendar-month	0x770dd0	0x770ed0		3	3	0x770e11
+classic	journal-agreement-calendar-month	0x770dd0	0x770ed0		4	4	0x770e26
+classic	journal-agreement-calendar-month	0x770dd0	0x770ed0		5	5	0x770e3b
+classic	journal-agreement-calendar-month	0x770dd0	0x770ed0		6	6	0x770e50
+classic	journal-agreement-calendar-month	0x770dd0	0x770ed0		7	7	0x770e65
+classic	journal-agreement-calendar-month	0x770dd0	0x770ed0		8	8	0x770e7a
+classic	journal-agreement-calendar-month	0x770dd0	0x770ed0		9	9	0x770e8f
+classic	journal-agreement-calendar-month	0x770dd0	0x770ed0		10	10	0x770ea4
+classic	journal-agreement-calendar-month	0x770dd0	0x770ed0		11	11	0x770eb9

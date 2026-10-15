@@ -62,10 +62,12 @@ void Overlay::append_activity_detail_matches(std::vector<std::string> &screen_ro
         std::vector<Match> &matches, std::vector<Match> &untranslated,
         int only_y, const unsigned char *screen_override) const {
     if (!config_.enabled || !gps_ || !face_) return;
-    const std::array draws{captured_native_drawn_text_rows(), captured_native_drawn_text_rows(true)};
+    const std::array draw_snapshots{captured_native_drawn_text_snapshot(),
+        captured_native_drawn_text_snapshot(true)};
+    const std::array draws{draw_snapshots[0].get(), draw_snapshots[1].get()};
     std::unordered_set<uintptr_t> visible_words;
     for (const auto &layer : draws)
-        for (const auto &draw : layer)
+        for (const auto &draw : *layer)
             if (draw.address && !draw.source.empty() && draw.x >= 0 && draw.y >= 0 &&
                     draw.y < gps_->dimy && draw.x < gps_->dimx &&
                     draw.source.size() <= static_cast<size_t>(gps_->dimx - draw.x) &&
@@ -84,7 +86,7 @@ void Overlay::append_activity_detail_matches(std::vector<std::string> &screen_ro
             identities.emplace(token.identity, std::pair{index, &token});
     std::vector<std::vector<const NativeDrawnTextRow *>> visible(document->paragraphs.size());
     for (const auto &layer : draws) {
-        for (const auto &draw : layer) {
+        for (const auto &draw : *layer) {
             const auto found = identities.find(draw.address);
             if (found == identities.end() || draw.source.empty() || draw.x < 0 || draw.y < 0 ||
                     draw.y >= gps_->dimy || draw.x >= gps_->dimx ||

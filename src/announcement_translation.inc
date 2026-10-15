@@ -69,7 +69,7 @@ std::optional<std::string> Overlay::translate_complete_announcement(
         // those before the general catalogue can consume the opening while
         // leaving the subsequent native report outside its field grammar.
         for (const std::string_view scope : {
-                "adventure-announcement", "fortress-attack", "fortress-arrival", "fortress-announcement", "fortress-embark", "historical-event-paragraph"}) {
+                "read-announcement", "adventure-announcement", "fortress-attack", "fortress-arrival", "fortress-announcement", "fortress-embark", "historical-event-paragraph"}) {
             // The attack producer joins commander, warning and reinforcement
             // paragraphs with native [B] controls. Match their visible whole
             // record, using the same control normalization as report capture.
@@ -158,16 +158,6 @@ std::optional<std::string> Overlay::translate_complete_announcement(
                 if (translated) return translated;
             }
         }
-        // 7eb225/7eb273 submits the complete adventure introduction and its
-        // optional vault paragraph to the same announcement queue as ordinary
-        // reports. e9f40 draws that live queue through markup words; it never
-        // enters the help document renderer. Resolve the reviewed help
-        // productions here as a complete record, including every siege,
-        // bandit, companion, rescue and ending branch. Keep help's native
-        // historical-figure fields and palette handling for both popup/log
-        // consumers; this succeeds only when the entire source is covered.
-        translated = translate_help_paragraph(block, colors, translated_colors);
-        if (translated) return translated;
         // ELF 53.16 1882b38/1882bc0 builds spoken memories with the SAME
         // event and emotion formatters (101b7f0, 10283d0) as the overview.
         // Share complete authored sentences, including intensity/negation;
@@ -179,11 +169,28 @@ std::optional<std::string> Overlay::translate_complete_announcement(
             return found->second;
         }
         translated = translate_announcement_combat(block);
+        if (!translated) {
+            // The conversation dispatcher and dialogue-1048a40 submit the
+            // same complete mental-picture statement as the visitor quote.
+            // Its six actions, time flags, 170-slot emotion switch and empty
+            // defaults belong here too, before display-only partial rules.
+            // Reuse the whole typed production for each native sentence;
+            // no speaker name or individual emotion is a special case.
+            translated = translate_announcement_combat(block, "visitor-statement");
+        }
         if (translated) {
             // Combat and speech builders emit one native announcement color.
             for (unsigned char ch : *translated)
                 if ((ch & 0xc0) != 0x80) translated_colors.push_back(colors.front());
-        } else translated = translate_help_paragraph(block, colors, translated_colors, true);
+        } else {
+            // Combat owns its complete verb, unit and anatomy fields before
+            // the help catalogue can compose shorter unrelated fragments.
+            // Adventure introductions and their optional vault paragraphs
+            // still use the reviewed complete help productions and palettes.
+            translated = translate_help_paragraph(block, colors, translated_colors);
+            if (!translated)
+                translated = translate_help_paragraph(block, colors, translated_colors, true);
+        }
         if (!translated) {
             // Reading and news can submit a complete existing item, work or
             // historical-event description without an announcement prefix.
@@ -279,7 +286,7 @@ std::optional<std::string> Overlay::translate_complete_announcement(
         auto best = translate_help_paragraph_result(source, source_colors, target_colors, true);
         work_limited = best.status == dfcn::TranslationStatus::WorkLimited;
         for (const std::string_view scope : {
-                "fortress-arrival", "fortress-announcement", "historical-event-paragraph", "sentence"}) {
+                "read-announcement", "fortress-arrival", "fortress-announcement", "historical-event-paragraph", "sentence"}) {
             if (work_limited) break;
             const auto candidate = translate_announcement_combat_result(source, scope);
             if (!candidate.usable()) continue;

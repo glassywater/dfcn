@@ -1,5 +1,18 @@
 # Complete Linux native adventure records, before generic personal-name templates.
 # scope / source / target / typed fields / native construction
+# The complete reading productions share one semantic entry for native
+# report parents and unabridged captured captions. Original PE instructions,
+# branches, predicates and all submit sites are in adventure-reading-popup/.
+read-announcement	You read {s}.	你阅读了{s1}。	$read-item	PE reference 833df0:8341fc / classic 831670:831a7c; c65450/c62490 whole item caption; ELF 11b5e00:11b623a->e68020
+read-announcement	You read .	你进行了阅读。		PE reference c654b9..c654e2->a94030: named artifact with empty contributed name retains an empty caption; 83409c..8341fc still appends the period and submits the whole record; paired classic caption/action
+read-announcement	You cannot see.	你看不见。		PE reference 833df0:833f89 / classic 831670:831809; ELF 11b5e00; native action sight precondition
+read-announcement	You cannot read.	你无法阅读。		PE reference 833df0:834396 / classic 831670:831c16; ELF 11b5e00; native reading skill precondition
+read-announcement	"{s}"	“{s1}”	$inscription	PE reference b3df0:b3f54/b404d/b42c8 / classic b3d80:b3ee4/b3fdd/b4258; all three SLAB engraving branches copy item_slabst writing, not its title
+read-announcement	It has no writing.	上面没有文字。		PE reference b3df0:b43bb / classic b3d80:b434b; absent slab description
+read-announcement	The pages are blank.	书页是空白的。		PE reference b3df0:b4601 / classic b3d80:b4591; present written-pages improvement with empty content list
+read-announcement	It has no pages.	它没有书页。		PE reference b3df0:b4740 / classic b3d80:b46d0; BOOK has no written-pages improvement
+read-announcement	{s}	{s1}	$read-description	PE reference b3df0:b44ec/b4879 / classic b3d80:b447c/b4809; cc7020/cc6a10 complete carrier plus cc5d50 body; ELF 1782560->e71100/e70c20
+read-announcement	You have learned the power "{s}"!	你学会了能力“{s1}”！	ability	PE reference 1352f20:13537b4 / classic 134de90:134e724; CE_CAN_DO_INTERACTION ADV_NAME; ELF 1782560->bbdef0
 adventure-announcement	You put the {s} into the {s}.	你将{s1}放进{s2}。	$announcement-item,$announcement-item	ELF 11a7600/11e2320 ->e68020, destination virtual item writer, 17ea070
 adventure-announcement	You put the {s} on the {s}.	你将{s1}放在{s2}上。	$announcement-item,$announcement-item	ELF 11e25aa..11e27f3; destination +0x188 virtual item writer
 adventure-announcement	You put the {s} on display.	你将{s1}摆出来展示。	$announcement-item	ELF 11e2acb..11e2af4/11e2cb7..11e2cc3 ->11e2bf5 ->11e2a4d ->17ea070
@@ -781,6 +794,22 @@ adventure-announcement	Your status as a major land has attracted much more trade
 adventure-announcement	Your status as a middling land has attracted more trade than usual.	作为中等领地，你们吸引了比平时更多的贸易。		ELF 0xf39160
 adventure-announcement	Your status as a minor land has attracted a bit more trade than usual.	作为小型领地，你们吸引了比平时略多的贸易。		ELF 0xf3985a
 adventure-announcement	Your wanderings have brought you to this place after a long journey.	经过漫长的旅途，你一路漫游来到此地。		ELF 0x11f1fc5
+# Discovered buildings use virtual +0x188, with eight finite horizontal bearings.
+# A purely vertical offset appends above/below and "to the " but no bearing.
+announcement-bearing	north	北方		ELF 1168910:116969f..1169789; finite horizontal branch
+announcement-bearing	northeast	东北方		ELF 1168910:116959a+1169789; finite horizontal branch
+announcement-bearing	east	东方		ELF 1168910:1168f84+11696f9; finite horizontal branch
+announcement-bearing	southeast	东南方		ELF 1168910:1169272+1169765; finite horizontal branch
+announcement-bearing	south	南方		ELF 1168910:116930b+11697d1; finite horizontal branch
+announcement-bearing	southwest	西南方		ELF 1168910:116966c+11697f5; finite horizontal branch
+announcement-bearing	west	西方		ELF 1168910:116937c+116971d; finite horizontal branch
+announcement-bearing	northwest	西北方		ELF 1168910:11691e9+11697ad; finite horizontal branch
+adventure-announcement	You've located a {s} right under you!	你发现脚下就有一处{s1}！	$announcement-building	PE 805600; ELF 1168910:1168ca5+1169448..116945a+11695d6; complete virtual building caption
+adventure-announcement	You've located a {s} to the {s}!	你发现{s2}有一处{s1}！	$announcement-building,announcement-bearing	PE 805600; ELF 1168910:1168ee1+1169524; complete building and selected horizontal bearing
+adventure-announcement	You've located a {s} above and to the {s}!	你发现上方的{s2}有一处{s1}！	$announcement-building,announcement-bearing	PE 805600; ELF 1168910:11694cf+11695f8->1168e73; independent upper-level prefix
+adventure-announcement	You've located a {s} below and to the {s}!	你发现下方的{s2}有一处{s1}！	$announcement-building,announcement-bearing	PE 805600; ELF 1168910:1169328->1168e56->1168e73; independent lower-level prefix
+adventure-announcement	You've located a {s} above and to the !	你发现正上方有一处{s1}！	$announcement-building	ELF 1168910:11694cf+11695f8->1168e73; equal X/Y leaves horizontal bearing empty, 1169222..116922b->1168fa8 appends ! and submits
+adventure-announcement	You've located a {s} below and to the !	你发现正下方有一处{s1}！	$announcement-building	ELF 1168910:1169328->1168e56->1168e73; equal X/Y leaves horizontal bearing empty, 1169222..116922b->1168fa8 appends ! and submits
 # Complete item-action fields retain title punctuation, copies and native designations.
 adventure-announcement	Your {s} is already full with {s}.	你的{s1}已经装满了{s2}。	$announcement-item,$announcement-substance	ELF 11c6cb0:11c7d08..11c7ed9; 11c8150:11c8c40..11c8d8b; e68020 item and 74ca90 material/contained-item suppliers; complete full-container branch
 adventure-announcement	You read {s}.	你阅读了{s1}。	$announcement-item	ELF 11b5e00:11b623a ->e68020; PE 0x140833df0; ELF native submission owners, elf-source-*.c and native-calls.tsv; complete typed action

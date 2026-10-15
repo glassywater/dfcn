@@ -1,0 +1,1659 @@
+role	instruction	condition
+pitch-band	0x13360f1	cmp    ebx,0x3
+pitch-band	0x13360f6	cmp    ebx,0xfffffffd
+pitch-band	0x13360fb	test   dl,dl
+pitch-band	0x1336106	cmp    ebx,0x5
+pitch-band	0x1336120	test   dl,dl
+pitch-band	0x1336132	cmp    rax,0xc
+pitch-band	0x1336158	test   dl,dl
+pitch-band	0x133616e	cmp    rax,0xd
+pitch-band	0x1336231	cmp    rax,0x1
+pitch-band	0x1336246	cmp    rax,rdx
+pitch-band	0x133624f	cmp    r12,rdx
+material-adjective	0x13362eb	cmp    edi,0x4a
+material-adjective	0x1336331	cmp    rax,0x3
+material-adjective	0x1336346	cmp    rax,rdx
+material-adjective	0x1336353	cmp    r12,rdx
+pitch-range	0x1342a43	cmp    rdx,0x35
+pitch-range	0x1342a58	cmp    rax,rdx
+pitch-range	0x1342a65	cmp    r13,rdx
+pitch-range	0x1342b28	cmp    rdi,r14
+pitch-range	0x1342b60	cmp    rdx,0x13
+pitch-range	0x1342b7a	cmp    rdx,rcx
+pitch-range	0x1342b87	cmp    r9,rcx
+pitch-range	0x1342bd5	cmp    r14d,0x9
+pitch-range	0x1342c0b	cmp    BYTE PTR [rax],0x65
+pitch-range	0x1342c35	cmp    r13d,0x5
+pitch-range	0x1342c44	cmp    rdi,r14
+pitch-range	0x1342cf7	cmp    rdx,QWORD PTR [rsp+0x48]
+pitch-range	0x1342d55	cmp    rax,0x8
+pitch-range	0x1342d67	cmp    QWORD PTR [rsp+0x8],rax
+pitch-range	0x1342d76	cmp    r12,rdx
+pitch-range	0x1342da5	cmp    rdi,r14
+pitch-range	0x1342dbd	cmp    rdi,r13
+pitch-range	0x1342eb0	test   rdx,rdx
+pitch-range	0x1342eba	test   eax,eax
+timbre-qualities	0x1505954	cmp    edi,0x3e
+timbre-qualities	0x1505991	cmp    rax,0x7
+timbre-qualities	0x15059a6	cmp    rax,rdx
+timbre-qualities	0x15059b3	cmp    r12,rdx
+timbre-qualities	0x15059f9	cmp    rax,0x4
+timbre-qualities	0x1505a0e	cmp    rax,rdx
+timbre-qualities	0x1505a1b	cmp    r12,rdx
+timbre-qualities	0x1505a59	cmp    rax,0x7
+timbre-qualities	0x1505a6e	cmp    rax,rdx
+timbre-qualities	0x1505a7b	cmp    r12,rdx
+timbre-qualities	0x1505ad9	cmp    rax,0x5
+timbre-qualities	0x1505aee	cmp    rax,rdx
+timbre-qualities	0x1505afb	cmp    r12,rdx
+timbre-qualities	0x1505b41	cmp    rax,0x5
+timbre-qualities	0x1505b56	cmp    rax,rdx
+timbre-qualities	0x1505b63	cmp    r12,rdx
+timbre-qualities	0x1505ba9	cmp    rax,0x4
+timbre-qualities	0x1505bbe	cmp    rax,rdx
+timbre-qualities	0x1505bcb	cmp    r12,rdx
+timbre-qualities	0x1505c01	cmp    rax,0x5
+timbre-qualities	0x1505c16	cmp    rax,rdx
+timbre-qualities	0x1505c23	cmp    r12,rdx
+timbre-qualities	0x1505c59	cmp    rax,0x7
+timbre-qualities	0x1505c6e	cmp    rax,rdx
+timbre-qualities	0x1505c7b	cmp    r12,rdx
+timbre-qualities	0x1505cb1	cmp    rax,0x4
+timbre-qualities	0x1505cc6	cmp    rax,rdx
+timbre-qualities	0x1505cd3	cmp    r12,rdx
+timbre-qualities	0x1505d01	cmp    rax,0x5
+timbre-qualities	0x1505d16	cmp    rax,rdx
+timbre-qualities	0x1505d23	cmp    r12,rdx
+timbre-qualities	0x1505d59	cmp    rax,0x3
+timbre-qualities	0x1505d6e	cmp    rax,rdx
+timbre-qualities	0x1505d7b	cmp    r12,rdx
+timbre-qualities	0x1505db1	cmp    rax,0x6
+timbre-qualities	0x1505dc6	cmp    rax,rdx
+timbre-qualities	0x1505dd3	cmp    r12,rdx
+timbre-qualities	0x1505e21	cmp    rax,0x3
+timbre-qualities	0x1505e36	cmp    rax,rdx
+timbre-qualities	0x1505e43	cmp    r12,rdx
+timbre-qualities	0x1505e71	cmp    rax,0x4
+timbre-qualities	0x1505e86	cmp    rax,rdx
+timbre-qualities	0x1505e93	cmp    r12,rdx
+timbre-qualities	0x1505ec1	cmp    rax,0x5
+timbre-qualities	0x1505ed6	cmp    rax,rdx
+timbre-qualities	0x1505ee3	cmp    r12,rdx
+timbre-qualities	0x1505f19	cmp    rax,0x4
+timbre-qualities	0x1505f2e	cmp    rax,rdx
+timbre-qualities	0x1505f3b	cmp    r12,rdx
+timbre-qualities	0x1505f71	cmp    rax,0x6
+timbre-qualities	0x1505f86	cmp    rax,rdx
+timbre-qualities	0x1505f93	cmp    r12,rdx
+timbre-qualities	0x1505fd1	cmp    rax,0x7
+timbre-qualities	0x1505fe6	cmp    rax,rdx
+timbre-qualities	0x1505ff3	cmp    r12,rdx
+timbre-qualities	0x1506021	cmp    rax,0x4
+timbre-qualities	0x1506036	cmp    rax,rdx
+timbre-qualities	0x1506043	cmp    r12,rdx
+timbre-qualities	0x1506071	cmp    rax,0x8
+timbre-qualities	0x1506086	cmp    rax,rdx
+timbre-qualities	0x1506093	cmp    r12,rdx
+timbre-qualities	0x15060d9	cmp    rax,0x3
+timbre-qualities	0x15060ee	cmp    rax,rdx
+timbre-qualities	0x15060fb	cmp    r12,rdx
+timbre-qualities	0x1506121	cmp    rax,0x3
+timbre-qualities	0x1506136	cmp    rax,rdx
+timbre-qualities	0x1506143	cmp    r12,rdx
+timbre-qualities	0x1506171	cmp    rax,0x5
+timbre-qualities	0x1506186	cmp    rax,rdx
+timbre-qualities	0x1506193	cmp    r12,rdx
+timbre-qualities	0x15061c9	cmp    rax,0x7
+timbre-qualities	0x15061de	cmp    rax,rdx
+timbre-qualities	0x15061eb	cmp    r12,rdx
+timbre-qualities	0x1506221	cmp    rax,0x5
+timbre-qualities	0x1506236	cmp    rax,rdx
+timbre-qualities	0x1506243	cmp    r12,rdx
+timbre-qualities	0x1506279	cmp    rax,0x6
+timbre-qualities	0x150628e	cmp    rax,rdx
+timbre-qualities	0x150629b	cmp    r12,rdx
+timbre-qualities	0x15062d1	cmp    rax,0x4
+timbre-qualities	0x15062e6	cmp    rax,rdx
+timbre-qualities	0x15062f3	cmp    r12,rdx
+timbre-qualities	0x1506321	cmp    rax,0x4
+timbre-qualities	0x1506336	cmp    rax,rdx
+timbre-qualities	0x1506343	cmp    r12,rdx
+timbre-qualities	0x1506371	cmp    rax,0x4
+timbre-qualities	0x1506386	cmp    rax,rdx
+timbre-qualities	0x1506393	cmp    r12,rdx
+timbre-qualities	0x15063c1	cmp    rax,0x4
+timbre-qualities	0x15063d6	cmp    rax,rdx
+timbre-qualities	0x15063e3	cmp    r12,rdx
+timbre-qualities	0x1506411	cmp    rax,0x3
+timbre-qualities	0x1506426	cmp    rax,rdx
+timbre-qualities	0x1506433	cmp    r12,rdx
+timbre-qualities	0x1506461	cmp    rax,0x4
+timbre-qualities	0x1506476	cmp    rax,rdx
+timbre-qualities	0x1506483	cmp    r12,rdx
+timbre-qualities	0x15064b1	cmp    rax,0x3
+timbre-qualities	0x15064c6	cmp    rax,rdx
+timbre-qualities	0x15064d3	cmp    r12,rdx
+timbre-qualities	0x1506501	cmp    rax,0x3
+timbre-qualities	0x1506516	cmp    rax,rdx
+timbre-qualities	0x1506523	cmp    r12,rdx
+timbre-qualities	0x1506551	cmp    rax,0x6
+timbre-qualities	0x1506566	cmp    rax,rdx
+timbre-qualities	0x1506573	cmp    r12,rdx
+timbre-qualities	0x15065b1	cmp    rax,0x6
+timbre-qualities	0x15065c6	cmp    rax,rdx
+timbre-qualities	0x15065d3	cmp    r12,rdx
+timbre-qualities	0x1506611	cmp    rax,0x4
+timbre-qualities	0x1506626	cmp    rax,rdx
+timbre-qualities	0x1506633	cmp    r12,rdx
+timbre-qualities	0x1506661	cmp    rax,0x5
+timbre-qualities	0x1506676	cmp    rax,rdx
+timbre-qualities	0x1506683	cmp    r12,rdx
+timbre-qualities	0x15066b9	cmp    rax,0x5
+timbre-qualities	0x15066ce	cmp    rax,rdx
+timbre-qualities	0x15066db	cmp    r12,rdx
+timbre-qualities	0x1506711	cmp    rax,0x7
+timbre-qualities	0x1506726	cmp    rax,rdx
+timbre-qualities	0x1506733	cmp    r12,rdx
+timbre-qualities	0x1506761	cmp    rax,0x4
+timbre-qualities	0x1506776	cmp    rax,rdx
+timbre-qualities	0x1506783	cmp    r12,rdx
+timbre-qualities	0x15067b1	cmp    rax,0x4
+timbre-qualities	0x15067c6	cmp    rax,rdx
+timbre-qualities	0x15067d3	cmp    r12,rdx
+timbre-qualities	0x1506801	cmp    rax,0x7
+timbre-qualities	0x1506816	cmp    rax,rdx
+timbre-qualities	0x1506823	cmp    r12,rdx
+timbre-qualities	0x1506851	cmp    rax,0x5
+timbre-qualities	0x1506866	cmp    rax,rdx
+timbre-qualities	0x1506873	cmp    r12,rdx
+timbre-qualities	0x15068a9	cmp    rax,0x4
+timbre-qualities	0x15068be	cmp    rax,rdx
+timbre-qualities	0x15068cb	cmp    r12,rdx
+timbre-qualities	0x1506901	cmp    rax,0x4
+timbre-qualities	0x1506916	cmp    rax,rdx
+timbre-qualities	0x1506923	cmp    r12,rdx
+timbre-qualities	0x1506951	cmp    rax,0x4
+timbre-qualities	0x1506966	cmp    rax,rdx
+timbre-qualities	0x1506973	cmp    r12,rdx
+timbre-qualities	0x15069a1	cmp    rax,0x3
+timbre-qualities	0x15069b6	cmp    rax,rdx
+timbre-qualities	0x15069c3	cmp    r12,rdx
+timbre-qualities	0x15069f1	cmp    rax,0x5
+timbre-qualities	0x1506a06	cmp    rax,rdx
+timbre-qualities	0x1506a13	cmp    r12,rdx
+timbre-qualities	0x1506a69	cmp    rax,0x4
+timbre-qualities	0x1506a7e	cmp    rax,rdx
+timbre-qualities	0x1506a8b	cmp    r12,rdx
+timbre-qualities	0x1506ac1	cmp    rax,0x7
+timbre-qualities	0x1506ad6	cmp    rax,rdx
+timbre-qualities	0x1506ae3	cmp    r12,rdx
+timbre-qualities	0x1506b21	cmp    rax,0x7
+timbre-qualities	0x1506b36	cmp    rax,rdx
+timbre-qualities	0x1506b43	cmp    r12,rdx
+timbre-qualities	0x1506b71	cmp    rax,0x7
+timbre-qualities	0x1506b86	cmp    rax,rdx
+timbre-qualities	0x1506b93	cmp    r12,rdx
+timbre-qualities	0x1506bc1	cmp    rax,0x5
+timbre-qualities	0x1506bd6	cmp    rax,rdx
+timbre-qualities	0x1506be3	cmp    r12,rdx
+timbre-qualities	0x1506c19	cmp    rax,0x5
+timbre-qualities	0x1506c2e	cmp    rax,rdx
+timbre-qualities	0x1506c3b	cmp    r12,rdx
+timbre-qualities	0x1506c71	cmp    rax,0x4
+timbre-qualities	0x1506c86	cmp    rax,rdx
+timbre-qualities	0x1506c93	cmp    r12,rdx
+timbre-qualities	0x1506cc1	cmp    rax,0x8
+timbre-qualities	0x1506cd6	cmp    rax,rdx
+timbre-qualities	0x1506ce3	cmp    r12,rdx
+timbre-registers	0x1345a76	cmp    QWORD PTR [rbp+0x18],rsi
+timbre-registers	0x1345a80	cmp    rax,rdx
+timbre-registers	0x1345aa6	cmp    rax,0x10
+timbre-registers	0x1345abb	cmp    rax,r12
+timbre-registers	0x1345ac8	cmp    r14,rdx
+timbre-registers	0x1345af8	cmp    r9,r13
+timbre-registers	0x1345b19	cmp    rax,0x9
+timbre-registers	0x1345b2a	cmp    r12,rax
+timbre-registers	0x1345b37	cmp    r14,rdx
+timbre-registers	0x1345b70	cmp    rax,rdx
+timbre-registers	0x1345b95	cmp    rax,0x6
+timbre-registers	0x1345bab	cmp    rax,r15
+timbre-registers	0x1345bb8	cmp    r13,rdx
+timbre-registers	0x1345c34	cmp    rax,0xc
+timbre-registers	0x1345c46	cmp    r15,rax
+timbre-registers	0x1345c53	cmp    r13,rdx
+timbre-registers	0x1345c91	cmp    rax,rsi
+timbre-registers	0x1345ca5	cmp    rdi,QWORD PTR [rsp+0x28]
+timbre-registers	0x1345d14	cmp    r13,r14
+timbre-registers	0x1345d24	cmp    r12,rdx
+timbre-registers	0x1345d2d	cmp    r9,rcx
+timbre-registers	0x1345d53	cmp    r15,rbp
+timbre-registers	0x1345e0c	cmp    rax,0x3
+timbre-registers	0x1345e27	cmp    r15,rax
+timbre-registers	0x1345e34	cmp    r12,rdx
+timbre-registers	0x1345e57	test   rcx,rcx
+timbre-registers	0x1345e60	cmp    DWORD PTR [rsp+0x8],0x1
+timbre-registers	0x1345e6b	cmp    DWORD PTR [rsp+0x1c],0x2
+timbre-registers	0x1345e7d	cmp    rax,0x5
+timbre-registers	0x1345ea5	cmp    rax,0x8
+timbre-registers	0x1345eb6	cmp    r15,rax
+timbre-registers	0x1345ec3	cmp    r12,rdx
+timbre-registers	0x1345ee3	cmp    QWORD PTR [rsp+0x8],0x0
+timbre-registers	0x1345f02	cmp    rax,0xa
+timbre-registers	0x1345f13	cmp    r15,rax
+timbre-registers	0x1345f20	cmp    r12,rdx
+timbre-registers	0x1345fb6	cmp    r15,rdi
+timbre-registers	0x1345fc3	cmp    rbp,rax
+timbre-registers	0x1345fcc	test   r8,r8
+timbre-registers	0x1345fd4	cmp    r8,0x1
+timbre-registers	0x1345ffe	cmp    rax,0x9
+timbre-registers	0x134600f	cmp    r15,rax
+timbre-registers	0x134601c	cmp    r12,rdx
+timbre-registers	0x134604f	cmp    rdi,r13
+timbre-registers	0x134606c	cmp    rax,0x5
+timbre-registers	0x134607d	cmp    r15,rax
+timbre-registers	0x134608a	cmp    r12,rdx
+timbre-registers	0x13460cb	cmp    rax,r12
+timbre-registers	0x13460e2	cmp    rax,0x9
+timbre-registers	0x13460f3	cmp    r15,rax
+timbre-registers	0x1346100	cmp    r12,rdx
+timbre-registers	0x1346137	cmp    QWORD PTR [rsp+0x20],rcx
+timbre-registers	0x1346151	cmp    rax,0x3
+timbre-registers	0x1346174	cmp    rbp,r14
+timbre-registers	0x1346184	cmp    r15,rax
+timbre-registers	0x134618d	cmp    r13,rdx
+timbre-registers	0x13461b2	cmp    QWORD PTR [rsp],r12
+timbre-registers	0x13461f7	cmp    edx,eax
+timbre-registers	0x13461fb	cmp    ecx,0x3
+timbre-registers	0x134620e	cmp    rax,0x3
+timbre-registers	0x134621f	cmp    r15,rax
+timbre-registers	0x134622c	cmp    r12,rdx
+timbre-registers	0x13462d7	cmp    rax,0x2
+stored-instrument-and-part-descriptions	0x1346561	test   r15d,r15d
+stored-instrument-and-part-descriptions	0x134656a	cmp    QWORD PTR [rsp+0x58],0x0
+stored-instrument-and-part-descriptions	0x1346685	test   ebp,ebp
+stored-instrument-and-part-descriptions	0x1346708	cmp    DWORD PTR [rsp+0x138],0xffffffff
+stored-instrument-and-part-descriptions	0x1346758	test   r13d,r13d
+stored-instrument-and-part-descriptions	0x1346770	cmp    DWORD PTR [rsp+0x10],0x1
+stored-instrument-and-part-descriptions	0x13467dd	cmp    r15,rbx
+stored-instrument-and-part-descriptions	0x1346800	cmp    r15,rbp
+stored-instrument-and-part-descriptions	0x1346941	cmp    rdx,0x3
+stored-instrument-and-part-descriptions	0x134694b	cmp    edx,0x4
+stored-instrument-and-part-descriptions	0x1346954	cmp    edx,0x1
+stored-instrument-and-part-descriptions	0x134695d	cmp    edx,0x2
+stored-instrument-and-part-descriptions	0x13469bb	cmp    edi,0x30d3f
+stored-instrument-and-part-descriptions	0x13469d2	cmp    eax,0x3d08ff
+stored-instrument-and-part-descriptions	0x1346b11	cmp    DWORD PTR [rbp+0x40],0xffffffff
+stored-instrument-and-part-descriptions	0x1346b69	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x1346b84	cmp    DWORD PTR [rbp+0x44],0xffffffff
+stored-instrument-and-part-descriptions	0x1346bd4	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x1346e6d	cmp    DWORD PTR [rbp+0x40],0xffffffff
+stored-instrument-and-part-descriptions	0x1346ebb	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x1346ed6	cmp    DWORD PTR [rbp+0x44],0xffffffff
+stored-instrument-and-part-descriptions	0x1346f26	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x1346fae	cmp    DWORD PTR [rsp+0x38],0x9c3f
+stored-instrument-and-part-descriptions	0x1346ff0	cmp    BYTE PTR [rsp+0x50],0x0
+stored-instrument-and-part-descriptions	0x1346ffb	cmp    DWORD PTR [rsp+0x38],0x9c3f
+stored-instrument-and-part-descriptions	0x13470f7	cmp    BYTE PTR [rsp+0x50],0x0
+stored-instrument-and-part-descriptions	0x1347102	cmp    DWORD PTR [rsp+0x38],0x9c3f
+stored-instrument-and-part-descriptions	0x1347141	cmp    BYTE PTR [rsp+0x60],0x0
+stored-instrument-and-part-descriptions	0x13471e0	test   r12b,r12b
+stored-instrument-and-part-descriptions	0x1347268	cmp    DWORD PTR [rbx+0x40],0xffffffff
+stored-instrument-and-part-descriptions	0x13472b6	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x13472d1	cmp    DWORD PTR [r15+0x44],0xffffffff
+stored-instrument-and-part-descriptions	0x1347323	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x1347388	cmp    BYTE PTR [rsp+0xe8],0x0
+stored-instrument-and-part-descriptions	0x13473ca	cmp    BYTE PTR [rsp+0xe8],0x0
+stored-instrument-and-part-descriptions	0x1347417	cmp    BYTE PTR [rsp+0xe8],0x0
+stored-instrument-and-part-descriptions	0x13474d9	cmp    BYTE PTR [rsp+0xe8],0x0
+stored-instrument-and-part-descriptions	0x1347555	cmp    DWORD PTR [rbx+0x40],0xffffffff
+stored-instrument-and-part-descriptions	0x13475a3	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x13475be	cmp    DWORD PTR [r15+0x44],0xffffffff
+stored-instrument-and-part-descriptions	0x1347610	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x13476cb	cmp    ebx,0x9c3f
+stored-instrument-and-part-descriptions	0x134778b	cmp    BYTE PTR [rsp+0x50],0x0
+stored-instrument-and-part-descriptions	0x1347796	cmp    DWORD PTR [rsp+0x38],0x9c3f
+stored-instrument-and-part-descriptions	0x13477c9	cmp    BYTE PTR [rsp+0x60],0x0
+stored-instrument-and-part-descriptions	0x13477d4	test   r12b,r12b
+stored-instrument-and-part-descriptions	0x134780b	cmp    BYTE PTR [rsp+0xe8],0x0
+stored-instrument-and-part-descriptions	0x13478b9	cmp    r12d,eax
+stored-instrument-and-part-descriptions	0x1347900	cmp    BYTE PTR [rsp+0xf8],0x0
+stored-instrument-and-part-descriptions	0x134790e	cmp    BYTE PTR [rsp+0xfc],0x0
+stored-instrument-and-part-descriptions	0x134791c	cmp    BYTE PTR [rsp+0x60],0x0
+stored-instrument-and-part-descriptions	0x1347927	cmp    BYTE PTR [rsp+0xf0],0x0
+stored-instrument-and-part-descriptions	0x1347935	cmp    BYTE PTR [rsp+0xe8],0x0
+stored-instrument-and-part-descriptions	0x13479bb	cmp    DWORD PTR [rsp+0x38],0x9c3f
+stored-instrument-and-part-descriptions	0x13479e9	cmp    edx,0x15555555
+stored-instrument-and-part-descriptions	0x13479f1	cmp    BYTE PTR [rsp+0x60],0x0
+stored-instrument-and-part-descriptions	0x1347ad0	cmp    DWORD PTR [rsp+0x38],0xea5f
+stored-instrument-and-part-descriptions	0x1347ade	cmp    DWORD PTR [rsp+0x38],0x9c3f
+stored-instrument-and-part-descriptions	0x1347aec	cmp    DWORD PTR [rsp+0x38],0x752f
+stored-instrument-and-part-descriptions	0x1347afa	cmp    DWORD PTR [rsp+0x38],0x270f
+stored-instrument-and-part-descriptions	0x1347b08	cmp    DWORD PTR [rsp+0x38],0x1387
+stored-instrument-and-part-descriptions	0x1347b5d	cmp    BYTE PTR [rsp+0x50],0x0
+stored-instrument-and-part-descriptions	0x1347b68	cmp    BYTE PTR [rsp+0x60],0x0
+stored-instrument-and-part-descriptions	0x1347b73	cmp    BYTE PTR [rsp+0xf8],0x0
+stored-instrument-and-part-descriptions	0x1347b81	cmp    BYTE PTR [rsp+0xfc],0x0
+stored-instrument-and-part-descriptions	0x1347c4b	test   bl,bl
+stored-instrument-and-part-descriptions	0x1347c83	cmp    rdi,QWORD PTR [rsp+0x40]
+stored-instrument-and-part-descriptions	0x1347ccb	cmp    BYTE PTR [rsi+rdx*1-0x1],0x20
+stored-instrument-and-part-descriptions	0x1347cfe	cmp    rdi,QWORD PTR [rsp+0x18]
+stored-instrument-and-part-descriptions	0x1347d28	cmp    rdi,QWORD PTR [rsp+0xc8]
+stored-instrument-and-part-descriptions	0x1347d4b	cmp    rdi,QWORD PTR [rsp+0xc0]
+stored-instrument-and-part-descriptions	0x1347d6e	cmp    rdi,QWORD PTR [rsp+0xb8]
+stored-instrument-and-part-descriptions	0x1347d91	cmp    rdi,QWORD PTR [rsp+0xb0]
+stored-instrument-and-part-descriptions	0x1347db4	cmp    rdi,QWORD PTR [rsp+0xa8]
+stored-instrument-and-part-descriptions	0x1347dd7	cmp    rdi,QWORD PTR [rsp+0xa0]
+stored-instrument-and-part-descriptions	0x1347dfa	cmp    rdi,QWORD PTR [rsp+0x98]
+stored-instrument-and-part-descriptions	0x1347e21	cmp    ecx,DWORD PTR [rax+0xd8]
+stored-instrument-and-part-descriptions	0x1347e33	test   ebx,ebx
+stored-instrument-and-part-descriptions	0x1347e80	cmp    DWORD PTR [rsp+0x138],0xffffffff
+stored-instrument-and-part-descriptions	0x1347ed3	test   r13d,r13d
+stored-instrument-and-part-descriptions	0x1347ef0	cmp    DWORD PTR [rsp+0x18],0x1
+stored-instrument-and-part-descriptions	0x1347f5f	cmp    r12,rcx
+stored-instrument-and-part-descriptions	0x1347f80	cmp    r8,rcx
+stored-instrument-and-part-descriptions	0x134818a	cmp    rax,0x2
+stored-instrument-and-part-descriptions	0x1348194	cmp    eax,0x3
+stored-instrument-and-part-descriptions	0x134819d	cmp    eax,0x1
+stored-instrument-and-part-descriptions	0x1348209	cmp    edx,0x4444444
+stored-instrument-and-part-descriptions	0x134821f	test   eax,eax
+stored-instrument-and-part-descriptions	0x1348238	cmp    DWORD PTR [rsp+0x60],0x1387
+stored-instrument-and-part-descriptions	0x134824f	cmp    ecx,eax
+stored-instrument-and-part-descriptions	0x134833c	cmp    DWORD PTR [rax+0x40],0xffffffff
+stored-instrument-and-part-descriptions	0x134839b	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x13483b6	cmp    DWORD PTR [rbp+0x44],0xffffffff
+stored-instrument-and-part-descriptions	0x1348410	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x1348604	cmp    DWORD PTR [rsp+0x28],0x1
+stored-instrument-and-part-descriptions	0x1348687	cmp    DWORD PTR [rbp+0x40],0xffffffff
+stored-instrument-and-part-descriptions	0x13486d7	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x13486f2	cmp    DWORD PTR [rbp+0x44],0xffffffff
+stored-instrument-and-part-descriptions	0x1348742	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x13488d1	cmp    DWORD PTR [rsp+0x28],0x1
+stored-instrument-and-part-descriptions	0x134893d	cmp    ecx,0x2aaaaaaa
+stored-instrument-and-part-descriptions	0x1348951	cmp    edx,0x1
+stored-instrument-and-part-descriptions	0x13489aa	cmp    eax,0x6666666
+stored-instrument-and-part-descriptions	0x1348a6e	cmp    DWORD PTR [rbx+0x40],0xffffffff
+stored-instrument-and-part-descriptions	0x1348abc	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x1348ad7	cmp    DWORD PTR [rbp+0x44],0xffffffff
+stored-instrument-and-part-descriptions	0x1348b27	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x1348ba3	cmp    DWORD PTR [rsp+0x28],0x1
+stored-instrument-and-part-descriptions	0x1348cdb	cmp    DWORD PTR [rsp+0x28],0x1
+stored-instrument-and-part-descriptions	0x1348d7f	cmp    BYTE PTR [rsp+0x110],0x0
+stored-instrument-and-part-descriptions	0x1348dc0	cmp    BYTE PTR [rsp+0x108],0x0
+stored-instrument-and-part-descriptions	0x1348dce	cmp    QWORD PTR [rsp+0x3c8],0x0
+stored-instrument-and-part-descriptions	0x1348df3	cmp    BYTE PTR [rsp+0x100],0x1
+stored-instrument-and-part-descriptions	0x1348e58	cmp    DWORD PTR [rbx+0x40],0xffffffff
+stored-instrument-and-part-descriptions	0x1348eb0	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x1348ecb	cmp    DWORD PTR [r13+0x44],0xffffffff
+stored-instrument-and-part-descriptions	0x1348f1d	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x1348f82	cmp    BYTE PTR [rsp+0xfc],0x0
+stored-instrument-and-part-descriptions	0x1348f90	cmp    BYTE PTR [rsp+0x100],0x0
+stored-instrument-and-part-descriptions	0x1348f9e	cmp    BYTE PTR [rsp+0x110],0x0
+stored-instrument-and-part-descriptions	0x1348fd1	cmp    BYTE PTR [rsp+0xfc],0x0
+stored-instrument-and-part-descriptions	0x1348fdf	cmp    BYTE PTR [rsp+0x100],0x0
+stored-instrument-and-part-descriptions	0x1348fed	cmp    BYTE PTR [rsp+0x110],0x0
+stored-instrument-and-part-descriptions	0x13490d3	cmp    BYTE PTR [rsp+0xfc],0x0
+stored-instrument-and-part-descriptions	0x13490e1	cmp    BYTE PTR [rsp+0x100],0x0
+stored-instrument-and-part-descriptions	0x13490ef	cmp    BYTE PTR [rsp+0x110],0x0
+stored-instrument-and-part-descriptions	0x13490fd	cmp    DWORD PTR [rsp+0x28],0x1
+stored-instrument-and-part-descriptions	0x134912d	cmp    BYTE PTR [rsp+0x108],0x0
+stored-instrument-and-part-descriptions	0x134918d	cmp    DWORD PTR [rbx+0x40],0xffffffff
+stored-instrument-and-part-descriptions	0x13491db	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x13491f6	cmp    DWORD PTR [rbp+0x44],0xffffffff
+stored-instrument-and-part-descriptions	0x1349246	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x134943a	cmp    DWORD PTR [rbx+0x40],0xffffffff
+stored-instrument-and-part-descriptions	0x1349488	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x13494a3	cmp    DWORD PTR [rbp+0x44],0xffffffff
+stored-instrument-and-part-descriptions	0x13494f3	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x13495ae	cmp    ebx,0x9c3f
+stored-instrument-and-part-descriptions	0x13495ba	cmp    BYTE PTR [rsp+0xe8],0x0
+stored-instrument-and-part-descriptions	0x13495c8	cmp    BYTE PTR [rsp+0x13f],0x0
+stored-instrument-and-part-descriptions	0x13495d6	cmp    BYTE PTR [rsp+0xf8],0x0
+stored-instrument-and-part-descriptions	0x13495e4	cmp    BYTE PTR [rsp+0x140],0x0
+stored-instrument-and-part-descriptions	0x13496f6	cmp    DWORD PTR [rsp+0x28],0x1
+stored-instrument-and-part-descriptions	0x134971b	cmp    QWORD PTR [rsp+0x3c8],0x0
+stored-instrument-and-part-descriptions	0x134972a	cmp    BYTE PTR [rsp+0x108],0x0
+stored-instrument-and-part-descriptions	0x13497da	cmp    BYTE PTR [rsp+0xfc],0x0
+stored-instrument-and-part-descriptions	0x13497e8	cmp    BYTE PTR [rsp+0x100],0x0
+stored-instrument-and-part-descriptions	0x13497f6	cmp    BYTE PTR [rsp+0x110],0x0
+stored-instrument-and-part-descriptions	0x1349804	cmp    BYTE PTR [rsp+0x150],0x0
+stored-instrument-and-part-descriptions	0x1349812	cmp    BYTE PTR [rsp+0x108],0x0
+stored-instrument-and-part-descriptions	0x1349824	cmp    eax,0x1
+stored-instrument-and-part-descriptions	0x1349831	cmp    edi,0x1
+stored-instrument-and-part-descriptions	0x1349893	cmp    edx,0xccccccc
+stored-instrument-and-part-descriptions	0x134989f	cmp    ebx,0xccccccc
+stored-instrument-and-part-descriptions	0x13498ab	cmp    r13d,0x1
+stored-instrument-and-part-descriptions	0x13498b5	cmp    ebp,0x1
+stored-instrument-and-part-descriptions	0x13498f6	cmp    BYTE PTR [rsp+0xe8],0x0
+stored-instrument-and-part-descriptions	0x1349911	cmp    BYTE PTR [rsp+0xf8],0x0
+stored-instrument-and-part-descriptions	0x134991f	cmp    DWORD PTR [rsp+0x60],0x9c3f
+stored-instrument-and-part-descriptions	0x1349959	cmp    edx,0x15555555
+stored-instrument-and-part-descriptions	0x13499bd	cmp    DWORD PTR [rsp+0x28],0x3b
+stored-instrument-and-part-descriptions	0x13499cf	test   bpl,bpl
+stored-instrument-and-part-descriptions	0x1349a25	cmp    BYTE PTR [rsp+0xf8],0x0
+stored-instrument-and-part-descriptions	0x1349b8f	cmp    DWORD PTR [rsp+0x60],0xea5f
+stored-instrument-and-part-descriptions	0x1349b9d	cmp    DWORD PTR [rsp+0x60],0x9c3f
+stored-instrument-and-part-descriptions	0x1349bab	cmp    DWORD PTR [rsp+0x60],0x752f
+stored-instrument-and-part-descriptions	0x1349bb9	cmp    DWORD PTR [rsp+0x60],0x270f
+stored-instrument-and-part-descriptions	0x1349bc7	cmp    DWORD PTR [rsp+0x60],0x1387
+stored-instrument-and-part-descriptions	0x1349c13	cmp    BYTE PTR [rsp+0xe8],0x0
+stored-instrument-and-part-descriptions	0x1349c21	cmp    BYTE PTR [rsp+0x13f],0x0
+stored-instrument-and-part-descriptions	0x1349c2f	cmp    BYTE PTR [rsp+0x140],0x0
+stored-instrument-and-part-descriptions	0x1349c3d	cmp    BYTE PTR [rsp+0xf8],0x0
+stored-instrument-and-part-descriptions	0x1349c86	cmp    BYTE PTR [rsp+0xe8],0x0
+stored-instrument-and-part-descriptions	0x1349c94	cmp    BYTE PTR [rsp+0x13f],0x0
+stored-instrument-and-part-descriptions	0x1349ca2	cmp    BYTE PTR [rsp+0x140],0x0
+stored-instrument-and-part-descriptions	0x1349cb0	cmp    BYTE PTR [rsp+0xf8],0x0
+stored-instrument-and-part-descriptions	0x1349cd8	cmp    BYTE PTR [rsp+0xfc],0x0
+stored-instrument-and-part-descriptions	0x1349ce6	cmp    BYTE PTR [rsp+0x100],0x0
+stored-instrument-and-part-descriptions	0x1349cf4	cmp    BYTE PTR [rsp+0x110],0x0
+stored-instrument-and-part-descriptions	0x1349d02	cmp    BYTE PTR [rsp+0x150],0x0
+stored-instrument-and-part-descriptions	0x1349d1f	test   eax,eax
+stored-instrument-and-part-descriptions	0x1349d27	cmp    eax,0x1
+stored-instrument-and-part-descriptions	0x1349da9	cmp    rdi,QWORD PTR [rsp+0x40]
+stored-instrument-and-part-descriptions	0x1349dd0	test   eax,eax
+stored-instrument-and-part-descriptions	0x1349dd8	cmp    eax,0x1
+stored-instrument-and-part-descriptions	0x1349e5a	cmp    rdi,r13
+stored-instrument-and-part-descriptions	0x1349e70	cmp    BYTE PTR [rsp+0x110],0x0
+stored-instrument-and-part-descriptions	0x1349e8d	cmp    BYTE PTR [rsp+0x80],0x0
+stored-instrument-and-part-descriptions	0x1349e97	cmp    BYTE PTR [rsp+0xe8],0x0
+stored-instrument-and-part-descriptions	0x1349eb0	cmp    BYTE PTR [rsp+0x68],0x0
+stored-instrument-and-part-descriptions	0x1349ebb	cmp    BYTE PTR [rsp+0xe8],0x0
+stored-instrument-and-part-descriptions	0x1349ed4	cmp    DWORD PTR [rsp+0x28],0x1
+stored-instrument-and-part-descriptions	0x1349efd	cmp    BYTE PTR [rsp+0x68],0x0
+stored-instrument-and-part-descriptions	0x1349f04	cmp    BYTE PTR [rsp+0xf8],0x0
+stored-instrument-and-part-descriptions	0x1349f1d	cmp    DWORD PTR [rsp+0x28],0x1
+stored-instrument-and-part-descriptions	0x1349f46	cmp    BYTE PTR [rsp+0xd0],0x0
+stored-instrument-and-part-descriptions	0x1349f54	cmp    BYTE PTR [rsp+0xe0],0x0
+stored-instrument-and-part-descriptions	0x1349f62	cmp    BYTE PTR [rsp+0x90],0x0
+stored-instrument-and-part-descriptions	0x1349f70	cmp    BYTE PTR [rsp+0x88],0x0
+stored-instrument-and-part-descriptions	0x1349f97	cmp    BYTE PTR [rsp+0x108],0x0
+stored-instrument-and-part-descriptions	0x1349ffb	cmp    BYTE PTR [rsi+rdx*1-0x1],0x20
+stored-instrument-and-part-descriptions	0x134a02e	cmp    rdi,QWORD PTR [rsp+0x18]
+stored-instrument-and-part-descriptions	0x134a058	cmp    rdi,QWORD PTR [rsp+0xc8]
+stored-instrument-and-part-descriptions	0x134a07b	cmp    rdi,QWORD PTR [rsp+0xc0]
+stored-instrument-and-part-descriptions	0x134a09e	cmp    rdi,QWORD PTR [rsp+0xb8]
+stored-instrument-and-part-descriptions	0x134a0c1	cmp    rdi,QWORD PTR [rsp+0xb0]
+stored-instrument-and-part-descriptions	0x134a0e4	cmp    rdi,QWORD PTR [rsp+0xa8]
+stored-instrument-and-part-descriptions	0x134a107	cmp    rdi,QWORD PTR [rsp+0xa0]
+stored-instrument-and-part-descriptions	0x134a12a	cmp    rdi,QWORD PTR [rsp+0x98]
+stored-instrument-and-part-descriptions	0x134a14d	cmp    rdi,QWORD PTR [rsp+0xf0]
+stored-instrument-and-part-descriptions	0x134a170	cmp    rdi,QWORD PTR [rsp+0x128]
+stored-instrument-and-part-descriptions	0x134a193	cmp    rdi,QWORD PTR [rsp+0x120]
+stored-instrument-and-part-descriptions	0x134a1ba	cmp    ecx,DWORD PTR [rax+0xdc]
+stored-instrument-and-part-descriptions	0x134a1cd	test   r11d,r11d
+stored-instrument-and-part-descriptions	0x134a218	cmp    DWORD PTR [rsp+0x138],0xffffffff
+stored-instrument-and-part-descriptions	0x134a26b	test   eax,eax
+stored-instrument-and-part-descriptions	0x134a280	cmp    DWORD PTR [rsp+0x18],0x1
+stored-instrument-and-part-descriptions	0x134a2ef	cmp    r13,rcx
+stored-instrument-and-part-descriptions	0x134a310	cmp    r8,rcx
+stored-instrument-and-part-descriptions	0x134a575	cmp    rdx,0x3
+stored-instrument-and-part-descriptions	0x134a57f	cmp    edx,0x4
+stored-instrument-and-part-descriptions	0x134a588	cmp    edx,0x1
+stored-instrument-and-part-descriptions	0x134a591	cmp    edx,0x2
+stored-instrument-and-part-descriptions	0x134a626	cmp    DWORD PTR [rbp+0x40],0xffffffff
+stored-instrument-and-part-descriptions	0x134a67e	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x134a699	cmp    DWORD PTR [rbp+0x44],0xffffffff
+stored-instrument-and-part-descriptions	0x134a6e9	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x134a7bb	cmp    BYTE PTR [rsp+0x70],0x0
+stored-instrument-and-part-descriptions	0x134a80b	test   r13b,r13b
+stored-instrument-and-part-descriptions	0x134a814	cmp    BYTE PTR [rsp+0x68],0x0
+stored-instrument-and-part-descriptions	0x134a841	cmp    BYTE PTR [rsp+0x28],0x0
+stored-instrument-and-part-descriptions	0x134a877	cmp    BYTE PTR [rsp+0x48],0x0
+stored-instrument-and-part-descriptions	0x134a8ba	cmp    BYTE PTR [rsp+0x70],0x0
+stored-instrument-and-part-descriptions	0x134a8cb	test   r15b,r15b
+stored-instrument-and-part-descriptions	0x134a938	cmp    edx,0x2aaaaaaa
+stored-instrument-and-part-descriptions	0x134aae2	cmp    BYTE PTR [rsp+0x28],0x0
+stored-instrument-and-part-descriptions	0x134abea	cmp    DWORD PTR [rsp+0x38],0x752f
+stored-instrument-and-part-descriptions	0x134abf8	cmp    DWORD PTR [rsp+0x38],0x270f
+stored-instrument-and-part-descriptions	0x134ac06	cmp    DWORD PTR [rsp+0x38],0x1387
+stored-instrument-and-part-descriptions	0x134ac3a	test   r13b,r13b
+stored-instrument-and-part-descriptions	0x134ac43	cmp    BYTE PTR [rsp+0x28],0x0
+stored-instrument-and-part-descriptions	0x134ac55	test   eax,eax
+stored-instrument-and-part-descriptions	0x134ac5d	cmp    DWORD PTR [rsp+0x120],0x1
+stored-instrument-and-part-descriptions	0x134acc2	cmp    BYTE PTR [rsp+0x148],0x0
+stored-instrument-and-part-descriptions	0x134acd0	cmp    BYTE PTR [rsp+0xe0],0x0
+stored-instrument-and-part-descriptions	0x134acde	cmp    BYTE PTR [rsp+0x13f],0x0
+stored-instrument-and-part-descriptions	0x134acec	cmp    BYTE PTR [rsp+0x140],0x0
+stored-instrument-and-part-descriptions	0x134ad14	cmp    BYTE PTR [rsp+0x48],0x0
+stored-instrument-and-part-descriptions	0x134ad1f	cmp    BYTE PTR [rsp+0xd0],0x0
+stored-instrument-and-part-descriptions	0x134ad2d	cmp    BYTE PTR [rsp+0x158],0x0
+stored-instrument-and-part-descriptions	0x134ad3b	cmp    BYTE PTR [rsp+0x80],0x0
+stored-instrument-and-part-descriptions	0x134ad83	cmp    BYTE PTR [rsp+0x78],0x0
+stored-instrument-and-part-descriptions	0x134adab	cmp    BYTE PTR [rsp+0x100],0x0
+stored-instrument-and-part-descriptions	0x134adb9	cmp    BYTE PTR [rsp+0x108],0x0
+stored-instrument-and-part-descriptions	0x134adc7	cmp    BYTE PTR [rsp+0x110],0x0
+stored-instrument-and-part-descriptions	0x134add5	cmp    BYTE PTR [rsp+0x128],0x0
+stored-instrument-and-part-descriptions	0x134ade3	cmp    BYTE PTR [rsp+0x130],0x0
+stored-instrument-and-part-descriptions	0x134adfc	cmp    BYTE PTR [rsp+0xe0],0x0
+stored-instrument-and-part-descriptions	0x134ae19	cmp    BYTE PTR [rsp+0x150],0x0
+stored-instrument-and-part-descriptions	0x134ae27	cmp    BYTE PTR [rsp+0x90],0x0
+stored-instrument-and-part-descriptions	0x134ae40	cmp    BYTE PTR [rsp+0x70],0x0
+stored-instrument-and-part-descriptions	0x134ae4b	cmp    BYTE PTR [rsp+0x68],0x0
+stored-instrument-and-part-descriptions	0x134aed3	cmp    BYTE PTR [rsp+0x80],0x0
+stored-instrument-and-part-descriptions	0x134af1b	cmp    BYTE PTR [rsp+0x78],0x0
+stored-instrument-and-part-descriptions	0x134af4f	cmp    BYTE PTR [rsp+0x90],0x0
+stored-instrument-and-part-descriptions	0x134af83	cmp    rdi,QWORD PTR [rsp+0x40]
+stored-instrument-and-part-descriptions	0x134afdb	cmp    BYTE PTR [rsi+rdx*1-0x1],0x20
+stored-instrument-and-part-descriptions	0x134b00e	cmp    rdi,QWORD PTR [rsp+0x18]
+stored-instrument-and-part-descriptions	0x134b038	cmp    rdi,QWORD PTR [rsp+0xc8]
+stored-instrument-and-part-descriptions	0x134b05b	cmp    rdi,QWORD PTR [rsp+0xc0]
+stored-instrument-and-part-descriptions	0x134b07e	cmp    rdi,QWORD PTR [rsp+0xb8]
+stored-instrument-and-part-descriptions	0x134b0a1	cmp    rdi,QWORD PTR [rsp+0xb0]
+stored-instrument-and-part-descriptions	0x134b0c4	cmp    rdi,QWORD PTR [rsp+0xa8]
+stored-instrument-and-part-descriptions	0x134b0e7	cmp    rdi,QWORD PTR [rsp+0xa0]
+stored-instrument-and-part-descriptions	0x134b10a	cmp    rdi,QWORD PTR [rsp+0x98]
+stored-instrument-and-part-descriptions	0x134b12d	cmp    rdi,QWORD PTR [rsp+0xf0]
+stored-instrument-and-part-descriptions	0x134b154	cmp    ecx,DWORD PTR [rax+0xe0]
+stored-instrument-and-part-descriptions	0x134b166	test   eax,eax
+stored-instrument-and-part-descriptions	0x134b1b8	cmp    DWORD PTR [rsp+0x138],0xffffffff
+stored-instrument-and-part-descriptions	0x134b208	test   r13d,r13d
+stored-instrument-and-part-descriptions	0x134b220	cmp    DWORD PTR [rsp+0x10],0x1
+stored-instrument-and-part-descriptions	0x134b28d	cmp    rbx,r15
+stored-instrument-and-part-descriptions	0x134b2b0	cmp    rbp,r15
+stored-instrument-and-part-descriptions	0x134b3bc	cmp    eax,0x270f
+stored-instrument-and-part-descriptions	0x134b3ff	test   edx,edx
+stored-instrument-and-part-descriptions	0x134b446	test   edx,edx
+stored-instrument-and-part-descriptions	0x134b50f	cmp    r15d,0x2aaaaaaa
+stored-instrument-and-part-descriptions	0x134b524	cmp    BYTE PTR [rsp+0x60],0x0
+stored-instrument-and-part-descriptions	0x134b603	cmp    BYTE PTR [rsp+0x100],0x0
+stored-instrument-and-part-descriptions	0x134b660	cmp    DWORD PTR [rsp+0xe8],0x2aaaaaaa
+stored-instrument-and-part-descriptions	0x134b6e5	cmp    BYTE PTR [rsp+0x60],0x0
+stored-instrument-and-part-descriptions	0x134b76e	cmp    edx,0x6
+stored-instrument-and-part-descriptions	0x134b795	cmp    rax,QWORD PTR [rsp+0x68]
+stored-instrument-and-part-descriptions	0x134b7f5	cmp    r13d,eax
+stored-instrument-and-part-descriptions	0x134b85a	cmp    ebp,eax
+stored-instrument-and-part-descriptions	0x134b866	cmp    rdi,QWORD PTR [rsp+0x178]
+stored-instrument-and-part-descriptions	0x134b8ed	cmp    r12d,0x1
+stored-instrument-and-part-descriptions	0x134b90b	cmp    DWORD PTR [rsp+0xfc],0x2aaaaaaa
+stored-instrument-and-part-descriptions	0x134b972	cmp    r13d,0x9c3f
+stored-instrument-and-part-descriptions	0x134b9ef	cmp    DWORD PTR [rax+0x40],0xffffffff
+stored-instrument-and-part-descriptions	0x134ba4e	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x134ba69	cmp    DWORD PTR [rax+0x44],0xffffffff
+stored-instrument-and-part-descriptions	0x134babe	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x134bcc6	test   rdx,rdx
+stored-instrument-and-part-descriptions	0x134bd32	cmp    r12d,0x1
+stored-instrument-and-part-descriptions	0x134bd56	cmp    BYTE PTR [rsp+0x60],0x0
+stored-instrument-and-part-descriptions	0x134bdea	cmp    DWORD PTR [rbx+0x40],0xffffffff
+stored-instrument-and-part-descriptions	0x134be38	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x134be53	cmp    DWORD PTR [rbp+0x44],0xffffffff
+stored-instrument-and-part-descriptions	0x134bea3	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x134c042	cmp    DWORD PTR [rsp+0xe8],0x2aaaaaaa
+stored-instrument-and-part-descriptions	0x134c053	cmp    DWORD PTR [rsp+0xfc],0x2aaaaaaa
+stored-instrument-and-part-descriptions	0x134c0ed	cmp    DWORD PTR [rbx+0x40],0xffffffff
+stored-instrument-and-part-descriptions	0x134c13b	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x134c156	cmp    DWORD PTR [rbp+0x44],0xffffffff
+stored-instrument-and-part-descriptions	0x134c1a6	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x134c366	cmp    QWORD PTR [rsp+0x130],0x0
+stored-instrument-and-part-descriptions	0x134c413	cmp    DWORD PTR [rbp+0x40],0xffffffff
+stored-instrument-and-part-descriptions	0x134c461	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x134c47c	cmp    DWORD PTR [rbp+0x44],0xffffffff
+stored-instrument-and-part-descriptions	0x134c4cc	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x134c59f	test   eax,eax
+stored-instrument-and-part-descriptions	0x134c5ad	test   al,r13b
+stored-instrument-and-part-descriptions	0x134c5b2	cmp    DWORD PTR [rsp+0xfc],0x2aaaaaaa
+stored-instrument-and-part-descriptions	0x134c5c3	cmp    DWORD PTR [rsp+0xf8],0x9c3f
+stored-instrument-and-part-descriptions	0x134c5d7	cmp    BYTE PTR [rsp+0x60],0x0
+stored-instrument-and-part-descriptions	0x134c5e2	cmp    BYTE PTR [rsp+0x13f],0x0
+stored-instrument-and-part-descriptions	0x134c682	cmp    r12d,0x1
+stored-instrument-and-part-descriptions	0x134c6a6	cmp    BYTE PTR [rsp+0x60],0x0
+stored-instrument-and-part-descriptions	0x134c6b1	cmp    DWORD PTR [rsp+0xe8],0x2aaaaaaa
+stored-instrument-and-part-descriptions	0x134c6c2	cmp    DWORD PTR [rsp+0xfc],0x2aaaaaaa
+stored-instrument-and-part-descriptions	0x134c72f	cmp    DWORD PTR [rsp+0xfc],0x2aaaaaaa
+stored-instrument-and-part-descriptions	0x134c740	cmp    DWORD PTR [rsp+0xe8],0x2aaaaaaa
+stored-instrument-and-part-descriptions	0x134c761	cmp    rbx,0x5
+stored-instrument-and-part-descriptions	0x134c76b	test   rbx,rbx
+stored-instrument-and-part-descriptions	0x134c79a	cmp    eax,0x19999999
+stored-instrument-and-part-descriptions	0x134c7d9	cmp    DWORD PTR [rsp+0xf8],0x9c3f
+stored-instrument-and-part-descriptions	0x134c7fd	cmp    r12d,0x1
+stored-instrument-and-part-descriptions	0x134c811	test   r13b,r13b
+stored-instrument-and-part-descriptions	0x134c824	test   bpl,bpl
+stored-instrument-and-part-descriptions	0x134c8f9	cmp    DWORD PTR [rsp+0xf8],0xea5f
+stored-instrument-and-part-descriptions	0x134c90a	cmp    DWORD PTR [rsp+0xf8],0x9c3f
+stored-instrument-and-part-descriptions	0x134c91b	cmp    BYTE PTR [rsp+0x60],0x0
+stored-instrument-and-part-descriptions	0x134c926	cmp    DWORD PTR [rsp+0xf8],0x752f
+stored-instrument-and-part-descriptions	0x134c937	cmp    DWORD PTR [rsp+0xf8],0x270f
+stored-instrument-and-part-descriptions	0x134c948	cmp    DWORD PTR [rsp+0xf8],0x1387
+stored-instrument-and-part-descriptions	0x134c97f	cmp    DWORD PTR [rsp+0xe8],0x2aaaaaaa
+stored-instrument-and-part-descriptions	0x134c99f	cmp    r12d,0x1
+stored-instrument-and-part-descriptions	0x134ca02	cmp    rdi,r13
+stored-instrument-and-part-descriptions	0x134ca96	cmp    r12d,0x1
+stored-instrument-and-part-descriptions	0x134cabe	cmp    r12d,0x1
+stored-instrument-and-part-descriptions	0x134cac8	cmp    BYTE PTR [rsp+0x60],0x0
+stored-instrument-and-part-descriptions	0x134cade	cmp    r12d,0x1
+stored-instrument-and-part-descriptions	0x134cb27	cmp    DWORD PTR [rsp+0xfc],0x2aaaaaaa
+stored-instrument-and-part-descriptions	0x134cb47	cmp    BYTE PTR [rsp+0x68],0x0
+stored-instrument-and-part-descriptions	0x134cb52	cmp    BYTE PTR [rsp+0x80],0x0
+stored-instrument-and-part-descriptions	0x134cb60	cmp    BYTE PTR [rsp+0x88],0x0
+stored-instrument-and-part-descriptions	0x134cb7d	cmp    DWORD PTR [rsp+0xe8],0x2aaaaaaa
+stored-instrument-and-part-descriptions	0x134cb9d	cmp    r12d,0x1
+stored-instrument-and-part-descriptions	0x134cbb6	cmp    QWORD PTR [rsp+0x130],0x0
+stored-instrument-and-part-descriptions	0x134cc0f	cmp    BYTE PTR [rsp+0x70],0x0
+stored-instrument-and-part-descriptions	0x134cc29	cmp    BYTE PTR [rsp+0x48],0x0
+stored-instrument-and-part-descriptions	0x134cc6b	cmp    BYTE PTR [rsi+rdx*1-0x1],0x20
+stored-instrument-and-part-descriptions	0x134cc9e	cmp    rdi,QWORD PTR [rsp+0x18]
+stored-instrument-and-part-descriptions	0x134ccc8	cmp    rdi,QWORD PTR [rsp+0xc8]
+stored-instrument-and-part-descriptions	0x134cceb	cmp    rdi,QWORD PTR [rsp+0xc0]
+stored-instrument-and-part-descriptions	0x134cd0e	cmp    rdi,QWORD PTR [rsp+0xb8]
+stored-instrument-and-part-descriptions	0x134cd31	cmp    rdi,QWORD PTR [rsp+0xb0]
+stored-instrument-and-part-descriptions	0x134cd54	cmp    rdi,QWORD PTR [rsp+0xa8]
+stored-instrument-and-part-descriptions	0x134cd77	cmp    rdi,QWORD PTR [rsp+0xa0]
+stored-instrument-and-part-descriptions	0x134cd9a	cmp    rdi,QWORD PTR [rsp+0x98]
+stored-instrument-and-part-descriptions	0x134cdbd	cmp    rdi,QWORD PTR [rsp+0xf0]
+stored-instrument-and-part-descriptions	0x134cde0	cmp    rdi,QWORD PTR [rsp+0x128]
+stored-instrument-and-part-descriptions	0x134ce03	cmp    rdi,QWORD PTR [rsp+0x120]
+stored-instrument-and-part-descriptions	0x134ce26	cmp    rdi,QWORD PTR [rsp+0x148]
+stored-instrument-and-part-descriptions	0x134ce49	cmp    rdi,QWORD PTR [rsp+0x140]
+stored-instrument-and-part-descriptions	0x134ce70	cmp    ecx,DWORD PTR [rax+0xe4]
+stored-instrument-and-part-descriptions	0x134cf05	cmp    r15d,eax
+stored-instrument-and-part-descriptions	0x134cf5a	cmp    ecx,eax
+stored-instrument-and-part-descriptions	0x134cf8f	cmp    QWORD PTR [rsp+0x218],rdi
+stored-instrument-and-part-descriptions	0x134cf9c	test   rbp,rbp
+stored-instrument-and-part-descriptions	0x134cfa9	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x134cfdc	cmp    rdx,rsi
+stored-instrument-and-part-descriptions	0x134d009	cmp    rax,rdi
+stored-instrument-and-part-descriptions	0x134d02c	cmp    r13d,ebx
+stored-instrument-and-part-descriptions	0x134d083	test   BYTE PTR [rax],0x2
+stored-instrument-and-part-descriptions	0x134d0d0	cmp    DWORD PTR [rbx+0xb0],0x1
+stored-instrument-and-part-descriptions	0x134d0e4	test   BYTE PTR [rax+0x1],0x20
+stored-instrument-and-part-descriptions	0x134d172	cmp    DWORD PTR [rbx+0xb0],0x1
+stored-instrument-and-part-descriptions	0x134d186	test   BYTE PTR [rax+0x1],0x2
+stored-instrument-and-part-descriptions	0x134d1f2	cmp    DWORD PTR [rbx+0xb0],0x1
+stored-instrument-and-part-descriptions	0x134d206	test   BYTE PTR [rax+0x1],0x10
+stored-instrument-and-part-descriptions	0x134d2d6	test   ecx,ecx
+stored-instrument-and-part-descriptions	0x134d2de	cmp    DWORD PTR [rbx+0xb0],0x1
+stored-instrument-and-part-descriptions	0x134d2f2	test   BYTE PTR [rax+0x1],0x40
+stored-instrument-and-part-descriptions	0x134d2fc	cmp    DWORD PTR [rbx+0xf8],0xf9f
+stored-instrument-and-part-descriptions	0x134d30c	test   BYTE PTR [rax],0x40
+stored-instrument-and-part-descriptions	0x134d377	cmp    DWORD PTR [rbx+0xb0],0x1
+stored-instrument-and-part-descriptions	0x134d38b	test   BYTE PTR [rax+0x1],0x40
+stored-instrument-and-part-descriptions	0x134d391	cmp    DWORD PTR [rbx+0xf8],0xf9f
+stored-instrument-and-part-descriptions	0x134d3a1	test   BYTE PTR [rax+0x1],0x4
+stored-instrument-and-part-descriptions	0x134d3c1	cmp    eax,0x6
+stored-instrument-and-part-descriptions	0x134d3d3	cmp    BYTE PTR [rdx+rcx*1],0x73
+stored-instrument-and-part-descriptions	0x134d443	cmp    DWORD PTR [rbx+0xb0],0x1
+stored-instrument-and-part-descriptions	0x134d457	test   BYTE PTR [rax+0x1],0x8
+stored-instrument-and-part-descriptions	0x134d477	cmp    eax,0x6
+stored-instrument-and-part-descriptions	0x134d489	cmp    BYTE PTR [rdx+rcx*1],0x73
+stored-instrument-and-part-descriptions	0x134d4f9	cmp    DWORD PTR [rbx+0xb0],0x1
+stored-instrument-and-part-descriptions	0x134d50d	test   BYTE PTR [rax+0x1],0x80
+stored-instrument-and-part-descriptions	0x134d59b	cmp    DWORD PTR [rbx+0xb0],0x2
+stored-instrument-and-part-descriptions	0x134d5af	test   BYTE PTR [rax+0x2],0x1
+stored-instrument-and-part-descriptions	0x134d681	test   r13b,r13b
+stored-instrument-and-part-descriptions	0x134d69a	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x134d6c0	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x134d6de	cmp    r15,QWORD PTR [rsp+0x10]
+stored-instrument-and-part-descriptions	0x134d775	cmp    DWORD PTR [rax+0x40],0xffffffff
+stored-instrument-and-part-descriptions	0x134d7d3	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x134d7ee	cmp    DWORD PTR [rax+0x44],0xffffffff
+stored-instrument-and-part-descriptions	0x134d84c	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x134d868	test   eax,eax
+stored-instrument-and-part-descriptions	0x134d89b	cmp    r12d,0x1
+stored-instrument-and-part-descriptions	0x134d8cd	cmp    r12d,0x1
+stored-instrument-and-part-descriptions	0x134d8ff	cmp    r12d,0x1
+stored-instrument-and-part-descriptions	0x134d931	cmp    r12d,0x1
+stored-instrument-and-part-descriptions	0x134d963	cmp    r12d,0x1
+stored-instrument-and-part-descriptions	0x134d9fc	cmp    QWORD PTR [rax+0x70],rbx
+stored-instrument-and-part-descriptions	0x134da06	cmp    r12,r13
+stored-instrument-and-part-descriptions	0x134da18	test   rbx,rbx
+stored-instrument-and-part-descriptions	0x134da2c	test   eax,eax
+stored-instrument-and-part-descriptions	0x134da5b	cmp    QWORD PTR [rax+0x70],rbx
+stored-instrument-and-part-descriptions	0x134da65	cmp    r13,r15
+stored-instrument-and-part-descriptions	0x134da70	test   rbx,rbx
+stored-instrument-and-part-descriptions	0x134da84	test   eax,eax
+stored-instrument-and-part-descriptions	0x134dab3	cmp    QWORD PTR [rax+0x70],r13
+stored-instrument-and-part-descriptions	0x134dabd	cmp    rbx,r15
+stored-instrument-and-part-descriptions	0x134dad0	test   r13,r13
+stored-instrument-and-part-descriptions	0x134dae4	test   eax,eax
+stored-instrument-and-part-descriptions	0x134db13	cmp    QWORD PTR [rax+0x70],r13
+stored-instrument-and-part-descriptions	0x134db1d	cmp    rbx,r15
+stored-instrument-and-part-descriptions	0x134db30	test   r13,r13
+stored-instrument-and-part-descriptions	0x134db44	test   eax,eax
+stored-instrument-and-part-descriptions	0x134db7c	cmp    QWORD PTR [rax+0x8],rbp
+stored-instrument-and-part-descriptions	0x134db8c	cmp    r13,r15
+stored-instrument-and-part-descriptions	0x134db9b	cmp    QWORD PTR [rax+0x8],rbp
+stored-instrument-and-part-descriptions	0x134dba1	test   rbp,rbp
+stored-instrument-and-part-descriptions	0x134dbb5	test   eax,eax
+stored-instrument-and-part-descriptions	0x134dbdd	cmp    QWORD PTR [rax+0x8],rbp
+stored-instrument-and-part-descriptions	0x134dbec	cmp    r12,r13
+stored-instrument-and-part-descriptions	0x134dbfc	cmp    QWORD PTR [rax+0x8],rbp
+stored-instrument-and-part-descriptions	0x134dc02	test   rbp,rbp
+stored-instrument-and-part-descriptions	0x134dc16	test   eax,eax
+stored-instrument-and-part-descriptions	0x134dc36	cmp    QWORD PTR [rax+0x8],r13
+stored-instrument-and-part-descriptions	0x134dc44	cmp    rbp,r15
+stored-instrument-and-part-descriptions	0x134dc53	cmp    QWORD PTR [rax+0x8],r13
+stored-instrument-and-part-descriptions	0x134dc59	test   r13,r13
+stored-instrument-and-part-descriptions	0x134dc6d	test   eax,eax
+stored-instrument-and-part-descriptions	0x134dc96	cmp    QWORD PTR [rax+0x8],r13
+stored-instrument-and-part-descriptions	0x134dca4	cmp    rbp,r15
+stored-instrument-and-part-descriptions	0x134dcb3	cmp    QWORD PTR [rax+0x8],r13
+stored-instrument-and-part-descriptions	0x134dcb9	test   r13,r13
+stored-instrument-and-part-descriptions	0x134dccd	test   eax,eax
+stored-instrument-and-part-descriptions	0x134dd0f	cmp    BYTE PTR [rsp+0x60],0x0
+stored-instrument-and-part-descriptions	0x134dd2e	cmp    BYTE PTR [rsp+0x60],0x0
+stored-instrument-and-part-descriptions	0x134dd4d	cmp    BYTE PTR [rsp+0x60],0x0
+stored-instrument-and-part-descriptions	0x134dd6c	cmp    BYTE PTR [rsp+0x60],0x0
+stored-instrument-and-part-descriptions	0x134ddaf	test   BYTE PTR [rax],0x2
+stored-instrument-and-part-descriptions	0x134ddc7	cmp    DWORD PTR [rbx+0x128],0x5
+stored-instrument-and-part-descriptions	0x134de41	test   r11d,r11d
+stored-instrument-and-part-descriptions	0x134de51	test   BYTE PTR [rax],0x40
+stored-instrument-and-part-descriptions	0x134de56	cmp    DWORD PTR [rbx+0xf8],0xf9f
+stored-instrument-and-part-descriptions	0x134de66	cmp    DWORD PTR [rbx+0xb0],0x1
+stored-instrument-and-part-descriptions	0x134de79	test   eax,eax
+stored-instrument-and-part-descriptions	0x134de88	test   BYTE PTR [rax],0x40
+stored-instrument-and-part-descriptions	0x134de91	cmp    DWORD PTR [rbx+0xf8],0xf9f
+stored-instrument-and-part-descriptions	0x134deb5	cmp    BYTE PTR [rsp+0x68],0x0
+stored-instrument-and-part-descriptions	0x134dec0	cmp    BYTE PTR [rsp+0x78],0x0
+stored-instrument-and-part-descriptions	0x134decb	cmp    BYTE PTR [rsp+0x80],0x0
+stored-instrument-and-part-descriptions	0x134ded9	cmp    BYTE PTR [rsp+0x90],0x0
+stored-instrument-and-part-descriptions	0x134dee7	cmp    BYTE PTR [rsp+0xd0],0x0
+stored-instrument-and-part-descriptions	0x134df04	cmp    DWORD PTR [rsp+0xe8],0x2aaaaaaa
+stored-instrument-and-part-descriptions	0x134df24	cmp    r12d,0x1
+stored-instrument-and-part-descriptions	0x134df2e	cmp    BYTE PTR [rsp+0x78],0x0
+stored-instrument-and-part-descriptions	0x134df52	cmp    r12d,0x1
+stored-instrument-and-part-descriptions	0x134dfb5	cmp    rdi,r13
+stored-instrument-and-part-descriptions	0x134e017	cmp    BYTE PTR [rsp+0x60],0x0
+stored-instrument-and-part-descriptions	0x134e043	cmp    DWORD PTR [rsp+0x28],0x27
+stored-instrument-and-part-descriptions	0x134e0c5	cmp    r12d,0x13
+stored-instrument-and-part-descriptions	0x134e0d6	cmp    BYTE PTR [rsp+0x30],0x0
+stored-instrument-and-part-descriptions	0x134e133	cmp    BYTE PTR [rsp+0x60],0x0
+stored-instrument-and-part-descriptions	0x134e13e	cmp    DWORD PTR [rsp+0xe8],0x2aaaaaaa
+stored-instrument-and-part-descriptions	0x134e159	test   eax,eax
+stored-instrument-and-part-descriptions	0x134e179	cmp    QWORD PTR [rsp+0x10],r15
+stored-instrument-and-part-descriptions	0x134e188	cmp    DWORD PTR [rsp+0x18],eax
+stored-instrument-and-part-descriptions	0x134e2a3	cmp    DWORD PTR [rbx+0x40],0xffffffff
+stored-instrument-and-part-descriptions	0x134e302	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x134e31d	cmp    DWORD PTR [rbx+0x44],0xffffffff
+stored-instrument-and-part-descriptions	0x134e37c	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x134e399	cmp    QWORD PTR [r13+0xd0],rax
+stored-instrument-and-part-descriptions	0x134e43d	cmp    r12,rbx
+stored-instrument-and-part-descriptions	0x134e44d	test   r15d,r15d
+stored-instrument-and-part-descriptions	0x134e45d	test   BYTE PTR [rax],0x4
+stored-instrument-and-part-descriptions	0x134e48a	cmp    DWORD PTR [r13+0xc4],0x5
+stored-instrument-and-part-descriptions	0x134e558	test   r12d,r12d
+stored-instrument-and-part-descriptions	0x134e568	test   BYTE PTR [rax],0x8
+stored-instrument-and-part-descriptions	0x134e571	cmp    DWORD PTR [r13+0xbc],0xf9f
+stored-instrument-and-part-descriptions	0x134e582	cmp    DWORD PTR [r13+0xbc],0xf9f
+stored-instrument-and-part-descriptions	0x134e593	test   BYTE PTR [rax],0x10
+stored-instrument-and-part-descriptions	0x134e59c	test   BYTE PTR [rax],0x20
+stored-instrument-and-part-descriptions	0x134e715	test   r8d,r8d
+stored-instrument-and-part-descriptions	0x134e725	test   BYTE PTR [rax],0x40
+stored-instrument-and-part-descriptions	0x134e82e	test   edi,edi
+stored-instrument-and-part-descriptions	0x134e83d	test   BYTE PTR [rax],0x80
+stored-instrument-and-part-descriptions	0x134e93f	cmp    DWORD PTR [r13+0xb0],0x1
+stored-instrument-and-part-descriptions	0x134e954	test   BYTE PTR [rax+0x1],0x1
+stored-instrument-and-part-descriptions	0x134eaac	cmp    BYTE PTR [rsp+0x50],0x0
+stored-instrument-and-part-descriptions	0x134eabf	cmp    rdi,QWORD PTR [rsp+0x18]
+stored-instrument-and-part-descriptions	0x134eae7	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x134eb0c	cmp    rax,QWORD PTR [rsp+0x68]
+stored-instrument-and-part-descriptions	0x134eb70	cmp    r12,rbx
+stored-instrument-and-part-descriptions	0x134ebb5	cmp    rax,rbx
+stored-instrument-and-part-descriptions	0x134ec4d	cmp    rax,rbx
+stored-instrument-and-part-descriptions	0x134ec65	test   rax,rax
+stored-instrument-and-part-descriptions	0x134ec6e	cmp    DWORD PTR [rax+0xb0],0x1
+stored-instrument-and-part-descriptions	0x134ec7e	test   BYTE PTR [rax+0x1],0x20
+stored-instrument-and-part-descriptions	0x134ec98	cmp    DWORD PTR [rax+0xb0],0x1
+stored-instrument-and-part-descriptions	0x134eca8	test   BYTE PTR [rax+0x1],0x2
+stored-instrument-and-part-descriptions	0x134ecc2	cmp    DWORD PTR [rax+0xb0],0x1
+stored-instrument-and-part-descriptions	0x134ecd2	test   BYTE PTR [rax+0x1],0x10
+stored-instrument-and-part-descriptions	0x134ecf6	test   esi,esi
+stored-instrument-and-part-descriptions	0x134ed03	cmp    DWORD PTR [rax+0xb0],0x1
+stored-instrument-and-part-descriptions	0x134ed16	test   edx,edx
+stored-instrument-and-part-descriptions	0x134ed23	cmp    DWORD PTR [rax+0xb0],0x2
+stored-instrument-and-part-descriptions	0x134ed33	test   BYTE PTR [rax+0x2],0x1
+stored-instrument-and-part-descriptions	0x134ed58	cmp    rdi,QWORD PTR [rsp+0x40]
+stored-instrument-and-part-descriptions	0x134edb7	cmp    rax,0x7
+stored-instrument-and-part-descriptions	0x134edce	cmp    rdx,QWORD PTR [rsp+0x18]
+stored-instrument-and-part-descriptions	0x134ede1	cmp    r15,rax
+stored-instrument-and-part-descriptions	0x134ee36	cmp    rax,0xa
+stored-instrument-and-part-descriptions	0x134ee4d	cmp    rdx,QWORD PTR [rsp+0x18]
+stored-instrument-and-part-descriptions	0x134ee60	cmp    r15,rax
+stored-instrument-and-part-descriptions	0x134eedd	cmp    rsi,QWORD PTR [rsp+0x220]
+stored-instrument-and-part-descriptions	0x134eefe	cmp    QWORD PTR [rsp+0x28],rbx
+stored-instrument-and-part-descriptions	0x134ef21	cmp    rdx,QWORD PTR [r13+0xe8]
+stored-instrument-and-part-descriptions	0x134ef2e	cmp    r12,rbx
+stored-instrument-and-part-descriptions	0x134ef40	test   rdx,rdx
+stored-instrument-and-part-descriptions	0x134ef4a	test   eax,eax
+stored-instrument-and-part-descriptions	0x134ef77	cmp    r8,r15
+stored-instrument-and-part-descriptions	0x134efab	cmp    QWORD PTR [rbx+0x10],rbp
+stored-instrument-and-part-descriptions	0x134efb5	cmp    r12,r15
+stored-instrument-and-part-descriptions	0x134efd0	test   rbp,rbp
+stored-instrument-and-part-descriptions	0x134efff	test   eax,eax
+stored-instrument-and-part-descriptions	0x134f08b	test   r9d,r9d
+stored-instrument-and-part-descriptions	0x134f09b	test   BYTE PTR [rax],0x4
+stored-instrument-and-part-descriptions	0x134f216	cmp    BYTE PTR [rsp+0xf8],0x0
+stored-instrument-and-part-descriptions	0x134f224	cmp    BYTE PTR [rsp+0xfc],0x0
+stored-instrument-and-part-descriptions	0x134f2dc	cmp    DWORD PTR [r15+0x40],0xffffffff
+stored-instrument-and-part-descriptions	0x134f32c	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x134f347	cmp    DWORD PTR [rbp+0x44],0xffffffff
+stored-instrument-and-part-descriptions	0x134f397	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x134f3fc	cmp    BYTE PTR [rsp+0xf8],0x0
+stored-instrument-and-part-descriptions	0x134f40a	cmp    BYTE PTR [rsp+0xfc],0x0
+stored-instrument-and-part-descriptions	0x134f44c	cmp    BYTE PTR [rsp+0xf8],0x0
+stored-instrument-and-part-descriptions	0x134f45a	cmp    BYTE PTR [rsp+0xfc],0x0
+stored-instrument-and-part-descriptions	0x134f49f	cmp    BYTE PTR [rsp+0xf8],0x0
+stored-instrument-and-part-descriptions	0x134f564	cmp    BYTE PTR [rsp+0xf8],0x0
+stored-instrument-and-part-descriptions	0x134f572	cmp    BYTE PTR [rsp+0xfc],0x0
+stored-instrument-and-part-descriptions	0x134f5c7	cmp    BYTE PTR [rsp+0x158],0x0
+stored-instrument-and-part-descriptions	0x134f5d5	cmp    BYTE PTR [rsp+0x13f],0x0
+stored-instrument-and-part-descriptions	0x134f5f2	cmp    BYTE PTR [rsp+0x48],0x0
+stored-instrument-and-part-descriptions	0x134f639	cmp    r12d,0x1
+stored-instrument-and-part-descriptions	0x134f696	cmp    BYTE PTR [rsp+0xe8],0x0
+stored-instrument-and-part-descriptions	0x134f76f	test   bl,bl
+stored-instrument-and-part-descriptions	0x134f791	cmp    BYTE PTR [rsp+0x70],0x0
+stored-instrument-and-part-descriptions	0x134f79c	cmp    BYTE PTR [rsp+0x78],0x0
+stored-instrument-and-part-descriptions	0x134f7a7	cmp    BYTE PTR [rsp+0x48],0x0
+stored-instrument-and-part-descriptions	0x134f7d7	cmp    rdi,QWORD PTR [rsp+0x40]
+stored-instrument-and-part-descriptions	0x134f7f3	cmp    BYTE PTR [rsp+0x60],0x0
+stored-instrument-and-part-descriptions	0x134f866	cmp    BYTE PTR [rsp+0xf8],0x0
+stored-instrument-and-part-descriptions	0x134f930	test   bl,bl
+stored-instrument-and-part-descriptions	0x134f952	cmp    BYTE PTR [rsp+0x68],0x0
+stored-instrument-and-part-descriptions	0x134f97a	cmp    BYTE PTR [rsp+0xf0],0x0
+stored-instrument-and-part-descriptions	0x134f990	cmp    rdi,QWORD PTR [rsp+0x40]
+stored-instrument-and-part-descriptions	0x134fa14	cmp    BYTE PTR [rsp+0x60],0x0
+stored-instrument-and-part-descriptions	0x134fa92	cmp    rdx,0x3
+stored-instrument-and-part-descriptions	0x134fa98	cmp    edx,0x4
+stored-instrument-and-part-descriptions	0x134fa9d	cmp    edx,0x1
+stored-instrument-and-part-descriptions	0x134faa6	cmp    edx,0x2
+stored-instrument-and-part-descriptions	0x134fb27	cmp    rdx,0x1
+stored-instrument-and-part-descriptions	0x134fb31	cmp    edx,0x2
+stored-instrument-and-part-descriptions	0x134fb49	cmp    QWORD PTR [rsp+0x130],0x0
+stored-instrument-and-part-descriptions	0x134fbdd	cmp    BYTE PTR [rsp+0xd0],0x0
+stored-instrument-and-part-descriptions	0x134fbeb	cmp    BYTE PTR [rsp+0x80],0x0
+stored-instrument-and-part-descriptions	0x134fc33	cmp    BYTE PTR [rsp+0x100],0x0
+stored-instrument-and-part-descriptions	0x134fc41	cmp    BYTE PTR [rsp+0x108],0x0
+stored-instrument-and-part-descriptions	0x134fc4f	cmp    BYTE PTR [rsp+0x110],0x0
+stored-instrument-and-part-descriptions	0x134fc5d	cmp    BYTE PTR [rsp+0x128],0x0
+stored-instrument-and-part-descriptions	0x134fc6b	cmp    BYTE PTR [rsp+0x130],0x0
+stored-instrument-and-part-descriptions	0x134fc90	cmp    rdi,QWORD PTR [rsp+0x40]
+stored-instrument-and-part-descriptions	0x134fd3d	cmp    BYTE PTR [rsp+0xe8],0x0
+stored-instrument-and-part-descriptions	0x134fe8c	cmp    DWORD PTR [rsp+0x60],0x1
+stored-instrument-and-part-descriptions	0x134feb1	cmp    BYTE PTR [rsp+0x68],0x0
+stored-instrument-and-part-descriptions	0x134fee2	cmp    eax,0xccccccc
+stored-instrument-and-part-descriptions	0x134ff4f	cmp    eax,0x2aaaaaaa
+stored-instrument-and-part-descriptions	0x134ffac	cmp    BYTE PTR [rsp+0x28],0x0
+stored-instrument-and-part-descriptions	0x135003c	cmp    rax,0x2
+stored-instrument-and-part-descriptions	0x1350046	cmp    eax,0x3
+stored-instrument-and-part-descriptions	0x135004f	cmp    eax,0x1
+stored-instrument-and-part-descriptions	0x135006c	cmp    BYTE PTR [rsp+0x48],0x0
+stored-instrument-and-part-descriptions	0x13500bc	cmp    eax,0xccccccc
+stored-instrument-and-part-descriptions	0x135014d	test   edx,edx
+stored-instrument-and-part-descriptions	0x1350157	cmp    ecx,0x2aaaaaaa
+stored-instrument-and-part-descriptions	0x13501a7	cmp    BYTE PTR [rsp+0x70],0x0
+stored-instrument-and-part-descriptions	0x13501df	cmp    eax,0xccccccc
+stored-instrument-and-part-descriptions	0x13501f4	test   eax,eax
+stored-instrument-and-part-descriptions	0x1350219	test   eax,eax
+stored-instrument-and-part-descriptions	0x135029f	cmp    rdx,0x1
+stored-instrument-and-part-descriptions	0x13502a9	cmp    edx,0x2
+stored-instrument-and-part-descriptions	0x13502bc	test   eax,eax
+stored-instrument-and-part-descriptions	0x1350406	test   r13b,r13b
+stored-instrument-and-part-descriptions	0x1350414	cmp    DWORD PTR [rsp+0xe8],0x2aaaaaaa
+stored-instrument-and-part-descriptions	0x13504d9	cmp    DWORD PTR [rbp+0x40],0xffffffff
+stored-instrument-and-part-descriptions	0x1350527	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x1350542	cmp    DWORD PTR [rbp+0x44],0xffffffff
+stored-instrument-and-part-descriptions	0x1350592	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x135061f	cmp    r12d,0x1
+stored-instrument-and-part-descriptions	0x1350785	cmp    r12d,0x1
+stored-instrument-and-part-descriptions	0x1350809	cmp    BYTE PTR [rsp+0xe8],0x0
+stored-instrument-and-part-descriptions	0x1350856	cmp    BYTE PTR [rsp+0x90],0x0
+stored-instrument-and-part-descriptions	0x13508af	cmp    BYTE PTR [rsp+0x80],0x0
+stored-instrument-and-part-descriptions	0x13508d9	cmp    BYTE PTR [rsp+0x40],0x0
+stored-instrument-and-part-descriptions	0x13508f3	cmp    BYTE PTR [rsp+0x78],0x0
+stored-instrument-and-part-descriptions	0x1350909	cmp    DWORD PTR [rsp+0x60],0x1
+stored-instrument-and-part-descriptions	0x1350980	cmp    rdi,r13
+stored-instrument-and-part-descriptions	0x13509c1	cmp    DWORD PTR [rsp+0x60],0x1
+stored-instrument-and-part-descriptions	0x1350bf1	cmp    QWORD PTR [rsp+0x3c8],0x0
+stored-instrument-and-part-descriptions	0x1350c9d	cmp    BYTE PTR [rsp+0xfc],0x0
+stored-instrument-and-part-descriptions	0x1350cab	cmp    BYTE PTR [rsp+0x100],0x0
+stored-instrument-and-part-descriptions	0x1350cb9	cmp    BYTE PTR [rsp+0x110],0x0
+stored-instrument-and-part-descriptions	0x1350d36	cmp    BYTE PTR [rsp+0x13f],0x0
+stored-instrument-and-part-descriptions	0x1350d8f	cmp    BYTE PTR [rsp+0x140],0x0
+stored-instrument-and-part-descriptions	0x1350e18	cmp    DWORD PTR [rsp+0x28],0x1
+stored-instrument-and-part-descriptions	0x1350eab	cmp    DWORD PTR [rsp+0x50],0x1
+stored-instrument-and-part-descriptions	0x1350eb6	cmp    DWORD PTR [rsp+0x28],0x1
+stored-instrument-and-part-descriptions	0x1350f25	cmp    BYTE PTR [rsp+0x140],0x0
+stored-instrument-and-part-descriptions	0x1350f6a	cmp    DWORD PTR [rsp+0x50],0x1
+stored-instrument-and-part-descriptions	0x1350f75	cmp    DWORD PTR [rsp+0x28],0x1
+stored-instrument-and-part-descriptions	0x1350fbc	cmp    BYTE PTR [rsp+0x100],0x0
+stored-instrument-and-part-descriptions	0x1350fd9	cmp    DWORD PTR [rsp+0x50],0x1
+stored-instrument-and-part-descriptions	0x1350fe4	cmp    DWORD PTR [rsp+0x28],0x1
+stored-instrument-and-part-descriptions	0x1351069	cmp    ebx,0xccccccc
+stored-instrument-and-part-descriptions	0x135115a	cmp    r12d,0xd
+stored-instrument-and-part-descriptions	0x1351182	cmp    ebp,0x9c3f
+stored-instrument-and-part-descriptions	0x1351243	cmp    DWORD PTR [rsp+0xe8],0x2aaaaaaa
+stored-instrument-and-part-descriptions	0x13512b5	cmp    DWORD PTR [rsp+0x28],0x13
+stored-instrument-and-part-descriptions	0x1351305	cmp    BYTE PTR [rsp+0x90],0x0
+stored-instrument-and-part-descriptions	0x1351358	cmp    DWORD PTR [rsp+0xe8],0x2aaaaaaa
+stored-instrument-and-part-descriptions	0x135136f	test   eax,eax
+stored-instrument-and-part-descriptions	0x1351381	cmp    eax,0x1
+stored-instrument-and-part-descriptions	0x135138a	cmp    eax,0x2
+stored-instrument-and-part-descriptions	0x1351393	test   eax,eax
+stored-instrument-and-part-descriptions	0x13513c5	cmp    DWORD PTR [rsp+0xf8],0x752f
+stored-instrument-and-part-descriptions	0x13513d6	cmp    DWORD PTR [rsp+0xf8],0x270f
+stored-instrument-and-part-descriptions	0x13513e7	cmp    DWORD PTR [rsp+0xf8],0x1387
+stored-instrument-and-part-descriptions	0x1351443	cmp    DWORD PTR [rsp+0x50],0x1
+stored-instrument-and-part-descriptions	0x135144e	cmp    DWORD PTR [rsp+0x28],0x1
+stored-instrument-and-part-descriptions	0x13514fe	cmp    QWORD PTR [rsp+0x130],0x0
+stored-instrument-and-part-descriptions	0x135155e	cmp    r12d,0x1
+stored-instrument-and-part-descriptions	0x13516d7	cmp    eax,0x4444444
+stored-instrument-and-part-descriptions	0x13516ec	test   eax,eax
+stored-instrument-and-part-descriptions	0x1351705	cmp    DWORD PTR [rsp+0x60],0x1387
+stored-instrument-and-part-descriptions	0x135171c	cmp    ecx,eax
+stored-instrument-and-part-descriptions	0x1351765	cmp    ebx,0x3d08ff
+stored-instrument-and-part-descriptions	0x13517e1	cmp    DWORD PTR [rax+0x40],0xffffffff
+stored-instrument-and-part-descriptions	0x1351840	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x135185b	cmp    DWORD PTR [rbx+0x44],0xffffffff
+stored-instrument-and-part-descriptions	0x13518b5	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x1351aa6	cmp    DWORD PTR [rsp+0x28],0x1
+stored-instrument-and-part-descriptions	0x1351afd	cmp    rax,0x1
+stored-instrument-and-part-descriptions	0x1351b07	cmp    eax,0x2
+stored-instrument-and-part-descriptions	0x1351b10	test   eax,eax
+stored-instrument-and-part-descriptions	0x1351c1a	cmp    eax,0x19999999
+stored-instrument-and-part-descriptions	0x1351c36	cmp    DWORD PTR [rsp+0x60],0x1387
+stored-instrument-and-part-descriptions	0x1351c4d	cmp    ecx,eax
+stored-instrument-and-part-descriptions	0x1351ccb	cmp    r12d,0x3d08ff
+stored-instrument-and-part-descriptions	0x1351d48	cmp    DWORD PTR [rax+0x40],0xffffffff
+stored-instrument-and-part-descriptions	0x1351da7	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x1351dc2	cmp    DWORD PTR [rbx+0x44],0xffffffff
+stored-instrument-and-part-descriptions	0x1351e1c	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x135205d	cmp    DWORD PTR [r13+0x40],0xffffffff
+stored-instrument-and-part-descriptions	0x13520b7	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x13520d2	cmp    DWORD PTR [rbx+0x44],0xffffffff
+stored-instrument-and-part-descriptions	0x1352122	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x135239f	cmp    eax,0x19999999
+stored-instrument-and-part-descriptions	0x13523b7	cmp    DWORD PTR [rsp+0x60],0x1387
+stored-instrument-and-part-descriptions	0x13523d2	cmp    ecx,eax
+stored-instrument-and-part-descriptions	0x13524bc	cmp    DWORD PTR [r13+0x40],0xffffffff
+stored-instrument-and-part-descriptions	0x1352516	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x1352531	cmp    DWORD PTR [rbp+0x44],0xffffffff
+stored-instrument-and-part-descriptions	0x1352581	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x13527c3	cmp    DWORD PTR [r13+0x40],0xffffffff
+stored-instrument-and-part-descriptions	0x135281d	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x1352838	cmp    DWORD PTR [rbp+0x44],0xffffffff
+stored-instrument-and-part-descriptions	0x1352888	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x1352a68	cmp    ecx,0x2aaaaaaa
+stored-instrument-and-part-descriptions	0x1352a74	cmp    edx,0x1
+stored-instrument-and-part-descriptions	0x1352c6a	test   r11d,r11d
+stored-instrument-and-part-descriptions	0x1352c7a	test   BYTE PTR [rax],0x10
+stored-instrument-and-part-descriptions	0x1352c83	cmp    DWORD PTR [r13+0xbc],0xf9f
+stored-instrument-and-part-descriptions	0x1352c94	cmp    DWORD PTR [r13+0xbc],0xf9f
+stored-instrument-and-part-descriptions	0x1352d6d	test   r9d,r9d
+stored-instrument-and-part-descriptions	0x1352e82	cmp    r13,0x9
+stored-instrument-and-part-descriptions	0x1352e8c	test   r13,r13
+stored-instrument-and-part-descriptions	0x1352ea4	test   eax,eax
+stored-instrument-and-part-descriptions	0x1352ed6	test   eax,eax
+stored-instrument-and-part-descriptions	0x1353017	test   ebx,ebx
+stored-instrument-and-part-descriptions	0x135308d	cmp    DWORD PTR [rax+0x40],0xffffffff
+stored-instrument-and-part-descriptions	0x135309c	cmp    DWORD PTR [r13+0x44],0xffffffff
+stored-instrument-and-part-descriptions	0x13530ee	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x135333f	cmp    DWORD PTR [rbp+0x40],0xffffffff
+stored-instrument-and-part-descriptions	0x135338f	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x13533aa	cmp    DWORD PTR [rbp+0x44],0xffffffff
+stored-instrument-and-part-descriptions	0x13533fa	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x13535e6	cmp    DWORD PTR [r13+0x40],0xffffffff
+stored-instrument-and-part-descriptions	0x1353640	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x135365b	cmp    DWORD PTR [rbp+0x44],0xffffffff
+stored-instrument-and-part-descriptions	0x13536ab	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x1353897	cmp    DWORD PTR [r13+0x40],0xffffffff
+stored-instrument-and-part-descriptions	0x13538f1	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x135390c	cmp    DWORD PTR [rbp+0x44],0xffffffff
+stored-instrument-and-part-descriptions	0x135395c	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x13539d0	cmp    DWORD PTR [rsp+0x60],0x1
+stored-instrument-and-part-descriptions	0x1353af3	cmp    DWORD PTR [rsp+0x60],0x1
+stored-instrument-and-part-descriptions	0x1353bc9	cmp    DWORD PTR [rsp+0xc0],0x9c3f
+stored-instrument-and-part-descriptions	0x1353d6d	cmp    DWORD PTR [r13+0x40],0xffffffff
+stored-instrument-and-part-descriptions	0x1353dc7	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x1353de2	cmp    DWORD PTR [rbp+0x44],0xffffffff
+stored-instrument-and-part-descriptions	0x1353e32	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x135407f	cmp    DWORD PTR [r13+0x40],0xffffffff
+stored-instrument-and-part-descriptions	0x13540d9	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x13540f4	cmp    DWORD PTR [rbp+0x44],0xffffffff
+stored-instrument-and-part-descriptions	0x1354144	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x1354330	cmp    DWORD PTR [r13+0x40],0xffffffff
+stored-instrument-and-part-descriptions	0x135438a	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x13543a5	cmp    DWORD PTR [rbp+0x44],0xffffffff
+stored-instrument-and-part-descriptions	0x13543f5	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x1354640	test   eax,eax
+stored-instrument-and-part-descriptions	0x13546b3	cmp    BYTE PTR [rsp+0x78],0x0
+stored-instrument-and-part-descriptions	0x13548cf	test   BYTE PTR [rax],0x2
+stored-instrument-and-part-descriptions	0x13548ee	test   ecx,ecx
+stored-instrument-and-part-descriptions	0x13548fd	test   BYTE PTR [rax],0x40
+stored-instrument-and-part-descriptions	0x1354907	cmp    DWORD PTR [rcx+0xf8],0xf9f
+stored-instrument-and-part-descriptions	0x135491c	cmp    DWORD PTR [rcx+0xb0],0x1
+stored-instrument-and-part-descriptions	0x1354929	test   BYTE PTR [rax+0x1],0x40
+stored-instrument-and-part-descriptions	0x1354933	test   BYTE PTR [rax],0x40
+stored-instrument-and-part-descriptions	0x135493d	cmp    DWORD PTR [rax+0xf8],0xf9f
+stored-instrument-and-part-descriptions	0x1354952	cmp    DWORD PTR [rax+0xb0],0x1
+stored-instrument-and-part-descriptions	0x1354966	test   BYTE PTR [rax+0x1],0x40
+stored-instrument-and-part-descriptions	0x1354971	cmp    DWORD PTR [rcx+0xf8],0xf9f
+stored-instrument-and-part-descriptions	0x1354981	test   BYTE PTR [rax+0x1],0x4
+stored-instrument-and-part-descriptions	0x135499b	cmp    DWORD PTR [rax+0xb0],0x1
+stored-instrument-and-part-descriptions	0x13549af	test   BYTE PTR [rax+0x1],0x8
+stored-instrument-and-part-descriptions	0x13549c9	cmp    DWORD PTR [rax+0xb0],0x1
+stored-instrument-and-part-descriptions	0x13549dd	test   BYTE PTR [rax+0x1],0x80
+stored-instrument-and-part-descriptions	0x1354a46	cmp    rax,0x1a
+stored-instrument-and-part-descriptions	0x1354a5d	cmp    rax,QWORD PTR [rsp+0x18]
+stored-instrument-and-part-descriptions	0x1354a70	cmp    r15,rdx
+stored-instrument-and-part-descriptions	0x1354ae0	cmp    rax,0x5
+stored-instrument-and-part-descriptions	0x1354af7	cmp    rax,QWORD PTR [rsp+0x18]
+stored-instrument-and-part-descriptions	0x1354b0a	cmp    r15,rdx
+stored-instrument-and-part-descriptions	0x1354b7a	cmp    rsi,QWORD PTR [rsp+0x220]
+stored-instrument-and-part-descriptions	0x1354b97	cmp    QWORD PTR [rsp+0x28],rbx
+stored-instrument-and-part-descriptions	0x1354bfe	cmp    DWORD PTR [rdi],0x6c776f62
+stored-instrument-and-part-descriptions	0x1354c0a	cmp    BYTE PTR [rdi+0x4],0x73
+stored-instrument-and-part-descriptions	0x1354c18	cmp    rbx,0x7fffffff
+stored-instrument-and-part-descriptions	0x1354c25	cmp    rbx,0xffffffff80000000
+stored-instrument-and-part-descriptions	0x1354cd7	test   esi,esi
+stored-instrument-and-part-descriptions	0x1354ce3	test   ecx,ecx
+stored-instrument-and-part-descriptions	0x1354d02	cmp    rdi,QWORD PTR [rsp+0x40]
+stored-instrument-and-part-descriptions	0x1354db1	test   r8d,r8d
+stored-instrument-and-part-descriptions	0x1354dbe	test   edi,edi
+stored-instrument-and-part-descriptions	0x1354ddd	cmp    rdi,QWORD PTR [rsp+0x40]
+stored-instrument-and-part-descriptions	0x1354e64	test   r10d,r10d
+stored-instrument-and-part-descriptions	0x1354e72	test   r9d,r9d
+stored-instrument-and-part-descriptions	0x1354e92	cmp    rdi,QWORD PTR [rsp+0x40]
+stored-instrument-and-part-descriptions	0x1354f64	cmp    r12d,0x9
+stored-instrument-and-part-descriptions	0x1354fce	cmp    DWORD PTR [rsp+0x28],0x5
+stored-instrument-and-part-descriptions	0x1354ffb	cmp    BYTE PTR [rsp+0x78],0x0
+stored-instrument-and-part-descriptions	0x1355006	cmp    BYTE PTR [rsp+0x48],0x0
+stored-instrument-and-part-descriptions	0x1355169	cmp    DWORD PTR [rsp+0x50],0x1
+stored-instrument-and-part-descriptions	0x135519c	cmp    DWORD PTR [rsp+0x50],0x1
+stored-instrument-and-part-descriptions	0x13551bb	cmp    DWORD PTR [rsp+0x50],0x1
+stored-instrument-and-part-descriptions	0x13552bb	test   eax,eax
+stored-instrument-and-part-descriptions	0x13552de	test   eax,eax
+stored-instrument-and-part-descriptions	0x13552f0	cmp    eax,0x1
+stored-instrument-and-part-descriptions	0x13552f9	cmp    eax,0x2
+stored-instrument-and-part-descriptions	0x1355302	test   eax,eax
+stored-instrument-and-part-descriptions	0x1355360	cmp    DWORD PTR [rsp+0x60],0x1387
+stored-instrument-and-part-descriptions	0x135537b	cmp    ecx,eax
+stored-instrument-and-part-descriptions	0x1355380	cmp    DWORD PTR [rsp+0x60],0x2710
+stored-instrument-and-part-descriptions	0x135539d	cmp    ecx,eax
+stored-instrument-and-part-descriptions	0x13553a2	cmp    DWORD PTR [rsp+0x60],0x2710
+stored-instrument-and-part-descriptions	0x13553d2	test   r14d,r14d
+stored-instrument-and-part-descriptions	0x13553e2	test   r13d,r13d
+stored-instrument-and-part-descriptions	0x13553f2	test   r12d,r12d
+stored-instrument-and-part-descriptions	0x1355409	cmp    ecx,eax
+stored-instrument-and-part-descriptions	0x135540e	cmp    DWORD PTR [rsp+0x60],0x2710
+stored-instrument-and-part-descriptions	0x135542c	cmp    eax,0x1
+stored-instrument-and-part-descriptions	0x1355440	cmp    BYTE PTR [rsp+0x48],0x0
+stored-instrument-and-part-descriptions	0x13554c4	test   edx,edx
+stored-instrument-and-part-descriptions	0x13554d0	test   eax,eax
+stored-instrument-and-part-descriptions	0x13554ef	cmp    rdi,QWORD PTR [rsp+0x40]
+stored-instrument-and-part-descriptions	0x1355569	cmp    ecx,eax
+stored-instrument-and-part-descriptions	0x135556e	cmp    DWORD PTR [rsp+0x60],0x2710
+stored-instrument-and-part-descriptions	0x13555a2	cmp    eax,0x1
+stored-instrument-and-part-descriptions	0x13555fc	cmp    QWORD PTR [rsp+0x130],0x0
+stored-instrument-and-part-descriptions	0x1355633	cmp    BYTE PTR [rsp+0x90],0x0
+stored-instrument-and-part-descriptions	0x135566c	cmp    r12d,0x1
+stored-instrument-and-part-descriptions	0x13556be	cmp    QWORD PTR [rsp+0x130],0x0
+stored-instrument-and-part-descriptions	0x135570f	cmp    edx,0x2aaaaaaa
+stored-instrument-and-part-descriptions	0x135575c	cmp    edx,0x2aaaaaaa
+stored-instrument-and-part-descriptions	0x1355799	cmp    eax,0x2aaaaaaa
+stored-instrument-and-part-descriptions	0x13557f1	cmp    eax,0x2aaaaaaa
+stored-instrument-and-part-descriptions	0x13557f8	test   bl,bl
+stored-instrument-and-part-descriptions	0x13558e1	cmp    DWORD PTR [rbx+0xb0],0x1
+stored-instrument-and-part-descriptions	0x1355933	test   eax,eax
+stored-instrument-and-part-descriptions	0x13559c7	cmp    DWORD PTR [rax+0x40],0xffffffff
+stored-instrument-and-part-descriptions	0x13559d6	cmp    DWORD PTR [r13+0x44],0xffffffff
+stored-instrument-and-part-descriptions	0x1355a28	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x1355cad	test   r10d,r10d
+stored-instrument-and-part-descriptions	0x1355ccf	cmp    DWORD PTR [rsp+0xe8],0x2aaaaaaa
+stored-instrument-and-part-descriptions	0x1355d5a	cmp    QWORD PTR [rdi],rax
+stored-instrument-and-part-descriptions	0x1355d63	cmp    BYTE PTR [rdi+0x8],0x73
+stored-instrument-and-part-descriptions	0x1355d71	cmp    rax,0x7fffffff
+stored-instrument-and-part-descriptions	0x1355d7d	cmp    rax,0xffffffff80000000
+stored-instrument-and-part-descriptions	0x1355d89	test   eax,eax
+stored-instrument-and-part-descriptions	0x1355daa	cmp    DWORD PTR [rcx+0xf8],0xf9f
+stored-instrument-and-part-descriptions	0x1355dba	test   BYTE PTR [rax],0x40
+stored-instrument-and-part-descriptions	0x1355e09	test   eax,eax
+stored-instrument-and-part-descriptions	0x1355e36	cmp    r12d,0x1
+stored-instrument-and-part-descriptions	0x1355e69	cmp    r12d,0x1
+stored-instrument-and-part-descriptions	0x1355eeb	cmp    DWORD PTR [rsp+0x50],0x1
+stored-instrument-and-part-descriptions	0x1355f91	test   eax,eax
+stored-instrument-and-part-descriptions	0x1355f9d	test   ebx,ebx
+stored-instrument-and-part-descriptions	0x1355faf	test   eax,eax
+stored-instrument-and-part-descriptions	0x13560b8	cmp    r12d,0x5
+stored-instrument-and-part-descriptions	0x13561b5	cmp    BYTE PTR [rdx+rcx*1],0x74
+stored-instrument-and-part-descriptions	0x13561c5	cmp    BYTE PTR [rdx+rcx*1],0x72
+stored-instrument-and-part-descriptions	0x13561d5	cmp    BYTE PTR [rdx+rcx*1],0x69
+stored-instrument-and-part-descriptions	0x13561e5	cmp    BYTE PTR [rdx+rcx*1],0x6e
+stored-instrument-and-part-descriptions	0x13561f5	cmp    BYTE PTR [rdx+rcx*1],0x67
+stored-instrument-and-part-descriptions	0x1356204	cmp    BYTE PTR [rdx+rax*1],0x73
+stored-instrument-and-part-descriptions	0x1356288	cmp    BYTE PTR [rdx+rcx*1],0x74
+stored-instrument-and-part-descriptions	0x1356298	cmp    BYTE PTR [rdx+rcx*1],0x72
+stored-instrument-and-part-descriptions	0x13562a8	cmp    BYTE PTR [rdx+rcx*1],0x69
+stored-instrument-and-part-descriptions	0x13562b8	cmp    BYTE PTR [rdx+rcx*1],0x6e
+stored-instrument-and-part-descriptions	0x13562c8	cmp    BYTE PTR [rdx+rcx*1],0x67
+stored-instrument-and-part-descriptions	0x13562d7	cmp    BYTE PTR [rdx+rax*1],0x73
+stored-instrument-and-part-descriptions	0x135637e	cmp    edx,0x2aaaaaaa
+stored-instrument-and-part-descriptions	0x13563cb	cmp    edx,0x2aaaaaaa
+stored-instrument-and-part-descriptions	0x1356408	cmp    eax,0x2aaaaaaa
+stored-instrument-and-part-descriptions	0x1356467	cmp    eax,0x2aaaaaaa
+stored-instrument-and-part-descriptions	0x135646e	test   bl,bl
+stored-instrument-and-part-descriptions	0x135663a	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x13566ee	cmp    rdi,rax
+stored-instrument-and-part-descriptions	0x1356806	test   r10d,r10d
+stored-instrument-and-part-descriptions	0x1356816	test   BYTE PTR [rax],0x10
+stored-instrument-and-part-descriptions	0x13568d9	test   eax,eax
+stored-instrument-and-part-descriptions	0x135697b	test   eax,eax
+stored-instrument-and-part-descriptions	0x1356acb	test   ebx,ebx
+stored-instrument-and-part-descriptions	0x1356ada	test   BYTE PTR [rax],0x8
+stored-instrument-and-part-descriptions	0x1356b33	test   eax,eax
+stored-instrument-and-part-descriptions	0x1356b58	test   eax,eax
+stored-instrument-and-part-descriptions	0x1356b74	cmp    BYTE PTR [rsp+0x48],0x0
+stored-instrument-and-part-descriptions	0x1356bbb	cmp    DWORD PTR [rax+0xb0],0x1
+stored-instrument-and-part-descriptions	0x1356bd4	test   BYTE PTR [rax],0x40
+stored-instrument-and-part-descriptions	0x1356bfc	test   edx,edx
+stored-instrument-and-part-descriptions	0x1356caf	cmp    DWORD PTR [rsp+0xf8],0x9c3f
+stored-instrument-and-part-descriptions	0x1356ccc	cmp    r12d,0x2
+stored-instrument-and-part-descriptions	0x1356da8	cmp    DWORD PTR [rsp+0x120],0x9c3f
+complete-item-description	0xe76d37	test   cl,cl
+complete-item-description	0xe76d4b	cmp    ax,0x36
+complete-item-description	0xe76d69	cmp    ax,0x5
+complete-item-description	0xe76d9c	cmp    ax,0x3
+complete-item-description	0xe76db1	cmp    ax,0x1
+complete-item-description	0xe76dbf	cmp    ax,0x2
+complete-item-description	0xe76dcd	cmp    ax,0x3f
+complete-item-description	0xe76ddb	cmp    ax,0x5c
+complete-item-description	0xe76de9	cmp    ax,0x43
+complete-item-description	0xe76df7	cmp    ax,0x40
+complete-item-description	0xe76e05	cmp    ax,0x2f
+complete-item-description	0xe76e13	cmp    ax,0x35
+complete-item-description	0xe76e37	cmp    ax,0x39
+complete-item-description	0xe76e50	cmp    ax,0x3a
+complete-item-description	0xe76e5e	cmp    ax,0x4b
+complete-item-description	0xe76e6c	cmp    ax,0x49
+complete-item-description	0xe76e7a	cmp    ax,0x46
+complete-item-description	0xe76e88	cmp    ax,0x47
+complete-item-description	0xe76e96	cmp    ax,0x30
+complete-item-description	0xe76eb2	cmp    ax,0x4
+complete-item-description	0xe76ecb	test   ax,ax
+complete-item-description	0xe76edf	cmp    ax,0x7
+complete-item-description	0xe76ef9	test   al,al
+complete-item-description	0xe76efd	cmp    BYTE PTR [r14+0x12a],0x0
+complete-item-description	0xe76f1a	cmp    ax,0x37
+complete-item-description	0xe76f2d	cmp    eax,0xffffffff
+complete-item-description	0xe76f44	cmp    eax,0x1
+complete-item-description	0xe76f4d	test   r13b,r13b
+complete-item-description	0xe76f69	cmp    eax,0x1
+complete-item-description	0xe76ff4	test   BYTE PTR [rbx+0x13],0x8
+complete-item-description	0xe77017	cmp    ax,0x48
+complete-item-description	0xe77023	cmp    ax,0x5
+complete-item-description	0xe7706a	cmp    eax,0x1
+complete-item-description	0xe770fc	test   BYTE PTR [rdi+0x13],0x8
+complete-item-description	0xe7710b	cmp    ax,0x5
+complete-item-description	0xe7712b	test   BYTE PTR [rax+0x13],0x8
+complete-item-description	0xe77147	cmp    ax,0x3c
+complete-item-description	0xe77157	bt     rdx,rax
+complete-item-description	0xe77183	test   rsi,rsi
+complete-item-description	0xe7718c	cmp    DWORD PTR [rsi],0xffffffff
+complete-item-description	0xe771ae	test   rax,rax
+complete-item-description	0xe7721e	cmp    rdx,0x4f
+complete-item-description	0xe77224	test   bl,bl
+complete-item-description	0xe77242	cmp    rdi,r14
+complete-item-description	0xe7726c	cmp    ax,0x48
+complete-item-description	0xe77289	test   al,al
+complete-item-description	0xe7729d	cmp    ax,0x59
+complete-item-description	0xe772b3	cmp    ax,0x39
+complete-item-description	0xe772c9	cmp    ax,0x37
+complete-item-description	0xe772df	cmp    ax,0x4a
+complete-item-description	0xe772fb	cmp    ax,0x46
+complete-item-description	0xe7730e	cmp    ax,0x57
+complete-item-description	0xe77330	test   ax,ax
+complete-item-description	0xe77346	test   al,al
+complete-item-description	0xe7737d	test   al,al
+complete-item-description	0xe773b4	test   al,al
+complete-item-description	0xe773e4	test   al,al
+complete-item-description	0xe773f0	cmp    bx,0x2
+complete-item-description	0xe773fa	cmp    bx,0x3
+complete-item-description	0xe77404	cmp    bx,0x1
+complete-item-description	0xe7742b	test   al,al
+complete-item-description	0xe77445	cmp    ax,0x4b
+complete-item-description	0xe77451	cmp    ax,0x49
+complete-item-description	0xe77469	test   rax,rax
+complete-item-description	0xe7747e	cmp    QWORD PTR [rax+0x8],rcx
+complete-item-description	0xe77539	cmp    rdi,r14
+complete-item-description	0xe7756b	cmp    rax,rbx
+complete-item-description	0xe7759c	cmp    DWORD PTR [rax+0x10],0x63
+complete-item-description	0xe775c0	cmp    bx,0x2
+complete-item-description	0xe775ca	cmp    bx,0x3
+complete-item-description	0xe77607	test   rax,rax
+complete-item-description	0xe77613	cmp    r12,rbx
+complete-item-description	0xe77626	test   edx,edx
+complete-item-description	0xe7763f	cmp    edx,eax
+complete-item-description	0xe7765c	cmp    ax,0xa
+complete-item-description	0xe7766a	cmp    r12,rbx
+complete-item-description	0xe7767b	cmp    ax,0x56
+complete-item-description	0xe77691	cmp    ax,0xd
+complete-item-description	0xe7769b	cmp    BYTE PTR [rbp-0x1fc],0x0
+complete-item-description	0xe776af	cmp    rdi,QWORD PTR [rbp-0x1f8]
+complete-item-description	0xe77718	cmp    bx,0xffff
+complete-item-description	0xe7771e	cmp    WORD PTR [rbp-0x190],bx
+complete-item-description	0xe7774e	cmp    QWORD PTR [rax+0x190],0x0
+complete-item-description	0xe7775c	cmp    BYTE PTR [rbp-0x1c8],0x0
+complete-item-description	0xe7779c	cmp    BYTE PTR [rbp-0x1c8],0x0
+complete-item-description	0xe777c7	cmp    QWORD PTR [rax+0xe8],0x0
+complete-item-description	0xe777d5	cmp    DWORD PTR [rip+0x1611bd8],0x1        # 24893b4
+complete-item-description	0xe777e2	cmp    BYTE PTR [rbp-0x1c8],0x0
+complete-item-description	0xe77839	cmp    BYTE PTR [rbp-0x1c8],0x0
+complete-item-description	0xe77855	cmp    DWORD PTR [rip+0x1611b58],0x1        # 24893b4
+complete-item-description	0xe77869	test   rdi,rdi
+complete-item-description	0xe77879	cmp    WORD PTR [rax+0x104],0x1a
+complete-item-description	0xe77887	cmp    DWORD PTR [rax+0x100],0xffffffff
+complete-item-description	0xe778ad	test   r13,r13
+complete-item-description	0xe778b6	test   rax,rax
+complete-item-description	0xe778c6	test   rax,rax
+complete-item-description	0xe778d3	test   rax,rax
+complete-item-description	0xe778eb	cmp    rax,r12
+complete-item-description	0xe77912	test   ecx,ecx
+complete-item-description	0xe77923	cmp    ecx,0x40
+complete-item-description	0xe77936	cmp    edi,DWORD PTR [r8]
+complete-item-description	0xe7793e	cmp    edx,0x40
+complete-item-description	0xe7794d	cmp    ecx,0xffffffff
+complete-item-description	0xe77956	cmp    ecx,eax
+complete-item-description	0xe7797d	cmp    rdx,rax
+complete-item-description	0xe77989	cmp    edi,DWORD PTR [rbx]
+complete-item-description	0xe7798d	cmp    DWORD PTR [rbx+0x90],0x2
+complete-item-description	0xe779a4	cmp    DWORD PTR [rbx+0x8c],eax
+complete-item-description	0xe779b3	test   rdx,rdx
+complete-item-description	0xe779bc	cmp    QWORD PTR [rdx+0x40],0x0
+complete-item-description	0xe779da	cmp    QWORD PTR [rbp-0x1b0],r12
+complete-item-description	0xe779fe	cmp    QWORD PTR [rax+0x280],0x0
+complete-item-description	0xe77a0c	cmp    BYTE PTR [rbp-0x1c8],0x0
+complete-item-description	0xe77a4c	cmp    BYTE PTR [rbp-0x1c8],0x0
+complete-item-description	0xe77a70	test   r13b,r13b
+complete-item-description	0xe77a79	test   bl,bl
+complete-item-description	0xe77a90	test   r12b,r12b
+complete-item-description	0xe77ab8	cmp    ax,0x4
+complete-item-description	0xe77ac9	test   BYTE PTR [rax+0x12],0x4
+complete-item-description	0xe77b00	test   ax,ax
+complete-item-description	0xe77b18	cmp    eax,0xffffffff
+complete-item-description	0xe77b5e	test   al,al
+complete-item-description	0xe77b62	test   BYTE PTR [r14+0x11],0x2
+complete-item-description	0xe77ba2	test   al,al
+complete-item-description	0xe77bcd	test   eax,eax
+complete-item-description	0xe77bec	cmp    rax,rdx
+complete-item-description	0xe77bfc	test   ecx,ecx
+complete-item-description	0xe77c0e	test   BYTE PTR [rax],0x10
+complete-item-description	0xe77c4f	cmp    bx,0xffff
+complete-item-description	0xe77c77	test   ax,ax
+complete-item-description	0xe77c95	cmp    rax,rdx
+complete-item-description	0xe77cdb	cmp    BYTE PTR [rbp-0x1c8],0x0
+complete-item-description	0xe77d0d	cmp    BYTE PTR [rbp-0x1c8],0x0
+complete-item-description	0xe77d30	cmp    rdi,r14
+complete-item-description	0xe77d57	cmp    WORD PTR [rax+0xb8],0xffff
+complete-item-description	0xe77d65	cmp    DWORD PTR [rax+0xd0],0xffffffff
+complete-item-description	0xe77d81	test   ebx,ebx
+complete-item-description	0xe77d9b	cmp    ebx,eax
+complete-item-description	0xe77ddc	cmp    BYTE PTR [rbp-0x1c8],0x0
+complete-item-description	0xe77e3b	cmp    eax,0xffffffff
+complete-item-description	0xe77e42	cmp    ax,0xffff
+complete-item-description	0xe77e72	cmp    WORD PTR [rbx+0xc4],0x0
+complete-item-description	0xe77e95	cmp    rdx,rax
+complete-item-description	0xe77ecd	test   edx,edx
+complete-item-description	0xe77f31	cmp    QWORD PTR [rbp-0x1b0],rbx
+complete-item-description	0xe77f8a	cmp    rbx,0x4
+complete-item-description	0xe77f9e	test   ebx,ebx
+complete-item-description	0xe77ffc	cmp    QWORD PTR [rbp-0x1e0],rbx
+complete-item-description	0xe78070	cmp    DWORD PTR [rbp-0x1d8],ebx
+complete-item-description	0xe78078	cmp    DWORD PTR [rbp-0x1e8],0x2
+complete-item-description	0xe78094	cmp    DWORD PTR [rbp-0x1f0],ebx
+complete-item-description	0xe780a7	cmp    rdi,r14
+complete-item-description	0xe780b4	cmp    QWORD PTR [rbp-0x1e0],rbx
+complete-item-description	0xe780d4	test   r13,r13
+complete-item-description	0xe780ef	cmp    WORD PTR [rax+0xc4],0x5
+complete-item-description	0xe7810b	test   rax,rax
+complete-item-description	0xe78164	test   rax,rax
+complete-item-description	0xe78169	cmp    BYTE PTR [rax+0x72],0x0
+complete-item-description	0xe78189	test   ebx,ebx
+complete-item-description	0xe781b7	cmp    WORD PTR [rax+0xb4],0xffff
+complete-item-description	0xe781c5	cmp    DWORD PTR [rax+0xc8],0xffffffff
+complete-item-description	0xe781e1	test   ebx,ebx
+complete-item-description	0xe781fb	cmp    ebx,eax
+complete-item-description	0xe7823c	cmp    BYTE PTR [rbp-0x1c8],0x0
+complete-item-description	0xe7829b	cmp    eax,0xffffffff
+complete-item-description	0xe782a2	cmp    ax,0xffff
+complete-item-description	0xe782d2	cmp    WORD PTR [rbx+0xc0],0x0
+complete-item-description	0xe782f5	cmp    rdx,rax
+complete-item-description	0xe7832d	test   edx,edx
+complete-item-description	0xe78391	cmp    QWORD PTR [rbp-0x1b0],rbx
+complete-item-description	0xe783ea	cmp    rbx,0x4
+complete-item-description	0xe783fe	test   ebx,ebx
+complete-item-description	0xe7845c	cmp    QWORD PTR [rbp-0x1e0],rbx
+complete-item-description	0xe784ce	cmp    DWORD PTR [rbp-0x1d8],ebx
+complete-item-description	0xe784d6	cmp    DWORD PTR [rbp-0x1e8],0x2
+complete-item-description	0xe784f2	cmp    DWORD PTR [rbp-0x1f0],ebx
+complete-item-description	0xe78507	cmp    rdi,r14
+complete-item-description	0xe78514	cmp    QWORD PTR [rbp-0x1e0],rbx
+complete-item-description	0xe78534	test   r13,r13
+complete-item-description	0xe7854f	cmp    WORD PTR [rax+0xc0],0x5
+complete-item-description	0xe7856b	test   rax,rax
+complete-item-description	0xe785c4	test   rax,rax
+complete-item-description	0xe785c9	cmp    BYTE PTR [rax+0x72],0x0
+complete-item-description	0xe785e9	test   ebx,ebx
+complete-item-description	0xe7861e	cmp    rcx,QWORD PTR [rax+0xd0]
+complete-item-description	0xe78660	cmp    rax,rbx
+complete-item-description	0xe78689	cmp    eax,0x9
+complete-item-description	0xe78697	cmp    QWORD PTR [r12+0x30],rax
+complete-item-description	0xe786a2	cmp    DWORD PTR [rip+0x1610d0b],0x1        # 24893b4
+complete-item-description	0xe786af	cmp    BYTE PTR [rbp-0x1c0],0x0
+complete-item-description	0xe786e6	cmp    BYTE PTR [rbp-0x1c0],0x0
+complete-item-description	0xe78792	cmp    rbx,QWORD PTR [r15+0x8]
+complete-item-description	0xe7881a	test   ax,ax
+complete-item-description	0xe7883c	cmp    rdx,rax
+complete-item-description	0xe78845	cmp    QWORD PTR [rax+0x548],0x0
+complete-item-description	0xe7885b	test   ax,ax
+complete-item-description	0xe78879	cmp    rax,rdx
+complete-item-description	0xe788e2	cmp    rdi,r14
+complete-item-description	0xe78900	cmp    BYTE PTR [rbp-0x1c0],0x0
+complete-item-description	0xe7892b	cmp    BYTE PTR [rbp-0x1c0],0x0
+complete-item-description	0xe78976	cmp    rdx,QWORD PTR [rax+0xd0]
+complete-item-description	0xe789d3	cmp    rax,rbx
+complete-item-description	0xe789f8	cmp    eax,0x1
+complete-item-description	0xe789fd	test   BYTE PTR [r12+0x24],0x1
+complete-item-description	0xe78a10	cmp    WORD PTR [r12+0x8],0x0
+complete-item-description	0xe78a3f	cmp    WORD PTR [rbp-0x78],0x0
+complete-item-description	0xe78a58	cmp    rcx,QWORD PTR [rax+0xd0]
+complete-item-description	0xe78a90	cmp    rax,rbx
+complete-item-description	0xe78ab9	cmp    eax,0x7
+complete-item-description	0xe78b47	cmp    rdi,r14
+complete-item-description	0xe78b78	cmp    WORD PTR [rbp-0x80],0x0
+complete-item-description	0xe78b91	cmp    rcx,QWORD PTR [rax+0xd0]
+complete-item-description	0xe78bd0	cmp    rax,rbx
+complete-item-description	0xe78bf9	cmp    eax,0x6
+complete-item-description	0xe78c7a	cmp    WORD PTR [r12+0x24],0xffff
+complete-item-description	0xe78c96	cmp    rdi,r14
+complete-item-description	0xe78cc7	cmp    WORD PTR [rbp-0xa8],0x0
+complete-item-description	0xe78cf1	test   cx,cx
+complete-item-description	0xe78d03	test   dx,dx
+complete-item-description	0xe78d0f	test   ax,ax
+complete-item-description	0xe78d1d	cmp    WORD PTR [rbp-0x210],0x0
+complete-item-description	0xe78d4f	cmp    WORD PTR [rsi+r14*2+0x8],0x0
+complete-item-description	0xe78d5c	test   al,al
+complete-item-description	0xe78d64	cmp    r14,0x2
+complete-item-description	0xe78d6e	cmp    ebx,0x3
+complete-item-description	0xe78d77	cmp    ebx,0x1
+complete-item-description	0xe78db5	cmp    rcx,QWORD PTR [rax+0xd0]
+complete-item-description	0xe78de8	cmp    rax,rbx
+complete-item-description	0xe78e11	cmp    eax,0x1
+complete-item-description	0xe78e24	test   BYTE PTR [rsi+0x24],0x1
+complete-item-description	0xe78e2e	cmp    DWORD PTR [rbp-0x1e0],0x3
+complete-item-description	0xe78e3e	test   BYTE PTR [rsi+0x13],0x8
+complete-item-description	0xe78e8f	cmp    r8d,0xffffffff
+complete-item-description	0xe78ec5	test   al,al
+complete-item-description	0xe78f24	test   BYTE PTR [rax+0x13],0x8
+complete-item-description	0xe78f35	cmp    WORD PTR [rax+0x18],0x5
+complete-item-description	0xe78f5d	cmp    ax,0x1
+complete-item-description	0xe78f74	cmp    rdi,QWORD PTR [rbp-0x1b0]
+complete-item-description	0xe78fba	test   rax,rax
+complete-item-description	0xe79013	test   rax,rax
+complete-item-description	0xe79018	cmp    BYTE PTR [rax+0x72],0x0
+complete-item-description	0xe79038	test   ebx,ebx
+complete-item-description	0xe7905a	cmp    ax,0x5
+complete-item-description	0xe79087	test   r11,r11
+complete-item-description	0xe79097	test   rsi,rsi
+complete-item-description	0xe790bb	cmp    BYTE PTR [rbp-0x160],0x0
+complete-item-description	0xe790cf	test   rax,rax
+complete-item-description	0xe790db	test   ecx,ecx
+complete-item-description	0xe790eb	test   rax,rax
+complete-item-description	0xe790f7	test   rax,rax
+complete-item-description	0xe79100	test   rax,rax
+complete-item-description	0xe79122	test   dl,dl
+complete-item-description	0xe79126	cmp    DWORD PTR [rbp-0x170],0xffffffff
+complete-item-description	0xe79138	cmp    BYTE PTR [rbp-0x1c0],0x0
+complete-item-description	0xe791dc	cmp    WORD PTR [rax+0x10],0x5
+complete-item-description	0xe79219	cmp    WORD PTR [rax],0x0
+complete-item-description	0xe79290	cmp    r12d,0x1
+complete-item-description	0xe792b8	cmp    r12d,0xffffffff
+complete-item-description	0xe79379	cmp    BYTE PTR [rbp-0x1c8],0x0
+complete-item-description	0xe7941c	cmp    rdi,r14
+complete-item-description	0xe7946f	cmp    WORD PTR [rbp-0x40],0x0
+complete-item-description	0xe79488	cmp    QWORD PTR [rax+0xd0],rcx
+complete-item-description	0xe794c0	cmp    rax,rbx
+complete-item-description	0xe794e9	cmp    eax,0xe
+complete-item-description	0xe7956a	cmp    WORD PTR [r12+0x24],0xffff
+complete-item-description	0xe79587	cmp    rdi,r14
+complete-item-description	0xe7964a	test   cx,cx
+complete-item-description	0xe7965d	test   dx,dx
+complete-item-description	0xe79666	test   ax,ax
+complete-item-description	0xe7966f	test   si,si
+complete-item-description	0xe796b0	cmp    BYTE PTR [rbp-0x1c0],0x0
+complete-item-description	0xe796f5	cmp    r14,0x4
+complete-item-description	0xe796ff	cmp    WORD PTR [rbp-0x210],0x0
+complete-item-description	0xe7970d	test   al,al
+complete-item-description	0xe79749	cmp    rcx,QWORD PTR [rax+0xd0]
+complete-item-description	0xe79780	cmp    rax,rbx
+complete-item-description	0xe797a9	cmp    eax,0x3
+complete-item-description	0xe797bb	test   BYTE PTR [rax+0x13],0x8
+complete-item-description	0xe797c5	cmp    WORD PTR [r12+0x18],0x5
+complete-item-description	0xe79828	cmp    DWORD PTR [rbp-0x1e0],0x3
+complete-item-description	0xe79839	test   dx,dx
+complete-item-description	0xe79842	cmp    DWORD PTR [rbp-0x1e0],0x2
+complete-item-description	0xe7984f	test   dx,dx
+complete-item-description	0xe7985f	test   BYTE PTR [rcx+0x13],0x8
+complete-item-description	0xe7986c	cmp    WORD PTR [rdx+0x18],0x5
+complete-item-description	0xe7989d	cmp    eax,0x1
+complete-item-description	0xe79923	cmp    r8d,0xffffffff
+complete-item-description	0xe79957	test   al,al
+complete-item-description	0xe799b6	test   BYTE PTR [rax+0x13],0x8
+complete-item-description	0xe799c7	cmp    WORD PTR [rax+0x18],0x5
+complete-item-description	0xe799e3	cmp    ax,0x1
+complete-item-description	0xe799fa	cmp    rdi,QWORD PTR [rbp-0x1b0]
+complete-item-description	0xe79a36	test   edx,edx
+complete-item-description	0xe79a6e	test   eax,eax
+complete-item-description	0xe79ad2	test   r8b,r8b
+complete-item-description	0xe79ae6	test   dx,dx
+complete-item-description	0xe79b1a	test   r8b,r8b
+complete-item-description	0xe79b2e	test   dx,dx
+complete-item-description	0xe79b5e	cmp    r8b,0x1
+complete-item-description	0xe79b64	cmp    DWORD PTR [rbp-0x1e0],0x1
+complete-item-description	0xe79b98	cmp    WORD PTR [rbp-0x58],0x0
+complete-item-description	0xe79bb1	cmp    rdx,QWORD PTR [rax+0xd0]
+complete-item-description	0xe79bff	cmp    rax,rbx
+complete-item-description	0xe79c1a	cmp    eax,0xb
+complete-item-description	0xe79c48	cmp    ax,0xd
+complete-item-description	0xe79c52	cmp    WORD PTR [r12+0x18],0x5
+complete-item-description	0xe79c76	cmp    WORD PTR [rbp-0x58],0x0
+complete-item-description	0xe79c88	cmp    WORD PTR [rbp-0xa0],0x0
+complete-item-description	0xe79ca0	test   r13w,r13w
+complete-item-description	0xe79cf1	cmp    rcx,QWORD PTR [rax+0xd0]
+complete-item-description	0xe79d20	cmp    rbx,rax
+complete-item-description	0xe79d49	cmp    eax,0x2
+complete-item-description	0xe79d52	test   BYTE PTR [rsi+0x13],0x8
+complete-item-description	0xe79d5c	cmp    WORD PTR [rax+0x18],0x5
+complete-item-description	0xe79de8	test   BYTE PTR [rax+0x13],0x8
+complete-item-description	0xe79df9	cmp    WORD PTR [rax+0x18],0x5
+complete-item-description	0xe79e7a	test   BYTE PTR [rax+0x13],0x8
+complete-item-description	0xe79e8b	cmp    WORD PTR [rax+0x18],0x5
+complete-item-description	0xe79ea7	cmp    ax,0x1
+complete-item-description	0xe79ed0	cmp    WORD PTR [rbp-0x88],0x0
+complete-item-description	0xe79eec	cmp    QWORD PTR [rax+0xd0],rcx
+complete-item-description	0xe79f40	cmp    rbx,rax
+complete-item-description	0xe79f69	cmp    eax,0x5
+complete-item-description	0xe79f75	cmp    edx,0x2
+complete-item-description	0xe79f80	test   edx,edx
+complete-item-description	0xe79f88	cmp    edx,0x1
+complete-item-description	0xe79fb5	test   BYTE PTR [rdx+0x13],0x8
+complete-item-description	0xe79fbb	cmp    WORD PTR [rax+0x18],0x5
+complete-item-description	0xe79fe0	cmp    edx,0x3
+complete-item-description	0xe7a059	test   BYTE PTR [rax+0x13],0x8
+complete-item-description	0xe7a06a	cmp    WORD PTR [rax+0x18],0x5
+complete-item-description	0xe7a097	cmp    WORD PTR [rbp-0x48],0x0
+complete-item-description	0xe7a0ba	cmp    ax,0x3a
+complete-item-description	0xe7a0c4	cmp    BYTE PTR [rbp-0x1b8],0x0
+complete-item-description	0xe7a0e4	test   ebx,ebx
+complete-item-description	0xe7a0fe	cmp    ebx,eax
+complete-item-description	0xe7a132	cmp    r14,0x2
+complete-item-description	0xe7a1b1	cmp    eax,0x1
+complete-item-description	0xe7a22e	cmp    DWORD PTR [rbx+0x50],0xffffffff
+complete-item-description	0xe7a251	cmp    DWORD PTR [rsi],0xffffffff
+complete-item-description	0xe7a294	test   al,al
+complete-item-description	0xe7a2df	cmp    WORD PTR [rbx+0xc4],0x5
+complete-item-description	0xe7a317	cmp    WORD PTR [rbx+0xc0],0x5
+complete-item-description	0xe7a38b	test   rax,rax
+complete-item-description	0xe7a3a9	test   edi,edi
+complete-item-description	0xe7a3e3	test   rax,rax
+complete-item-description	0xe7a3e8	cmp    BYTE PTR [rax+0x72],0x0
+complete-item-description	0xe7a40e	test   esi,esi
+complete-item-description	0xe7a430	test   r13w,r13w
+complete-item-description	0xe7a466	cmp    QWORD PTR [rax+0xd0],rcx
+complete-item-description	0xe7a4b8	cmp    rbx,rax
+complete-item-description	0xe7a4e1	cmp    eax,0x4
+complete-item-description	0xe7a4f1	test   BYTE PTR [rsi+0x13],0x8
+complete-item-description	0xe7a4f7	cmp    WORD PTR [rax+0x18],0x5
+complete-item-description	0xe7a577	test   BYTE PTR [rax+0x13],0x8
+complete-item-description	0xe7a588	cmp    WORD PTR [rax+0x18],0x5
+complete-item-description	0xe7a5a4	cmp    ax,0x1
+complete-item-description	0xe7a5df	cmp    WORD PTR [rbp-0xb0],0x0
+complete-item-description	0xe7a5fb	cmp    rcx,QWORD PTR [rax+0xd0]
+complete-item-description	0xe7a64d	cmp    DWORD PTR [r13+0xb0],0x18
+complete-item-description	0xe7a662	cmp    rdx,0x4f
+complete-item-description	0xe7a668	cmp    BYTE PTR [rbp-0x1c0],0x0
+complete-item-description	0xe7a68b	cmp    rdi,QWORD PTR [rbp-0x1b0]
+complete-item-description	0xe7a6d2	cmp    rbx,rax
+complete-item-description	0xe7a6fb	test   eax,eax
+complete-item-description	0xe7a70b	test   rax,rax
+complete-item-description	0xe7a710	cmp    DWORD PTR [rip+0x160ec9d],0x1        # 24893b4
+complete-item-description	0xe7a719	cmp    DWORD PTR [rip+0x18411e0],0x1        # 26bb900
+complete-item-description	0xe7a729	test   BYTE PTR [rax+0x1],0x80
+complete-item-description	0xe7a789	test   BYTE PTR [rcx+0x13],0x8
+complete-item-description	0xe7a7d0	cmp    WORD PTR [rbp-0x70],0x0
+complete-item-description	0xe7a7e9	cmp    rcx,QWORD PTR [rax+0xd0]
+complete-item-description	0xe7a830	cmp    rbx,rax
+complete-item-description	0xe7a859	cmp    eax,0x8
+complete-item-description	0xe7a86d	test   rax,rax
+complete-item-description	0xe7a876	cmp    DWORD PTR [rip+0x160eb37],0x1        # 24893b4
+complete-item-description	0xe7a87f	cmp    DWORD PTR [rip+0x184107a],0x1        # 26bb900
+complete-item-description	0xe7a88f	test   BYTE PTR [rax+0x1],0x80
+complete-item-description	0xe7a8ef	test   BYTE PTR [rsi+0x13],0x8
+complete-item-description	0xe7a94e	test   al,al
+complete-item-description	0xe7a968	test   al,al
+complete-item-description	0xe7aa05	cmp    cx,0xffff
+complete-item-description	0xe7aa7e	cmp    rdi,QWORD PTR [rbp-0x1b0]
+complete-item-description	0xe7aa9e	cmp    rdi,QWORD PTR [rbp-0x1e0]
+complete-item-description	0xe7aabe	cmp    rdx,0x4f
+complete-item-description	0xe7aac4	cmp    BYTE PTR [rbp-0x1c0],0x0
+complete-item-description	0xe7aae7	cmp    rdi,QWORD PTR [rbp-0x1f0]
+complete-item-description	0xe7ab18	cmp    WORD PTR [rbp-0x48],0x0
+complete-item-description	0xe7ab31	cmp    QWORD PTR [rax+0xd0],rcx
+complete-item-description	0xe7ab68	cmp    r14,rax
+complete-item-description	0xe7ab91	cmp    eax,0xd
+complete-item-description	0xe7abb4	test   edx,edx
+complete-item-description	0xe7abbe	cmp    edx,0x40
+complete-item-description	0xe7abdf	cmp    esi,DWORD PTR [r9]
+complete-item-description	0xe7abe8	cmp    eax,0x40
+complete-item-description	0xe7abf6	cmp    eax,0xffffffff
+complete-item-description	0xe7abff	cmp    ecx,eax
+complete-item-description	0xe7ac2c	cmp    rax,rdx
+complete-item-description	0xe7ac38	cmp    esi,DWORD PTR [rbx]
+complete-item-description	0xe7ac4b	cmp    rdi,rax
+complete-item-description	0xe7ac78	cmp    DWORD PTR [rip+0x160e735],0x1        # 24893b4
+complete-item-description	0xe7acfd	test   r8d,r8d
+complete-item-description	0xe7ad06	cmp    BYTE PTR [rbp-0x1e0],0x1
+complete-item-description	0xe7ad13	cmp    DWORD PTR [rbp-0x1b0],0xffffffff
+complete-item-description	0xe7ad26	cmp    eax,0x4
+complete-item-description	0xe7ad50	cmp    WORD PTR [rbp-0x50],0x0
+complete-item-description	0xe7ad69	cmp    rdx,QWORD PTR [rax+0xd0]
+complete-item-description	0xe7ada8	cmp    rax,rbx
+complete-item-description	0xe7add1	cmp    eax,0xc
+complete-item-description	0xe7addf	cmp    QWORD PTR [r12+0x30],rax
+complete-item-description	0xe7ade6	cmp    DWORD PTR [rip+0x160e5c7],0x1        # 24893b4
+complete-item-description	0xe7adf3	cmp    BYTE PTR [rbp-0x1c0],0x0
+complete-item-description	0xe7ae1c	cmp    BYTE PTR [rbp-0x1c0],0x0
+complete-item-description	0xe7aeb7	test   r11,r11
+complete-item-description	0xe7aec7	test   rax,rax
+complete-item-description	0xe7aeeb	cmp    BYTE PTR [rbp-0x160],0x0
+complete-item-description	0xe7aeff	test   rax,rax
+complete-item-description	0xe7af0b	test   esi,esi
+complete-item-description	0xe7af1b	test   rax,rax
+complete-item-description	0xe7af27	test   rax,rax
+complete-item-description	0xe7af30	test   rax,rax
+complete-item-description	0xe7af52	test   dl,dl
+complete-item-description	0xe7af56	cmp    DWORD PTR [rbp-0x170],0xffffffff
+complete-item-description	0xe7af63	cmp    BYTE PTR [rbp-0x1c0],0x0
+complete-item-description	0xe7af90	cmp    BYTE PTR [rbp-0x1c0],0x0
+complete-item-description	0xe7b001	test   r8b,r8b
+complete-item-description	0xe7b02e	test   edx,edx
+complete-item-description	0xe7b036	test   al,al
+complete-item-description	0xe7b06e	test   al,al
+complete-item-description	0xe7b076	cmp    DWORD PTR [rbp-0x1e0],0x2
+complete-item-description	0xe7b08a	cmp    WORD PTR [rsi+0x8],0x0
+complete-item-description	0xe7b11b	test   edi,edi
+complete-item-description	0xe7b11f	cmp    BYTE PTR [rbp-0x208],0x0
+complete-item-description	0xe7b133	cmp    rdi,QWORD PTR [rbp-0x1f0]
+complete-item-description	0xe7b153	cmp    rdi,r13
+complete-item-description	0xe7b1cb	test   rax,rax
+complete-item-description	0xe7b1e5	test   esi,esi
+complete-item-description	0xe7b21f	test   rax,rax
+complete-item-description	0xe7b224	cmp    BYTE PTR [rax+0x72],0x0
+complete-item-description	0xe7b255	test   ecx,ecx
+complete-item-description	0xe7b293	cmp    QWORD PTR [rbp-0x1c0],0x0
+complete-item-description	0xe7b2b0	cmp    QWORD PTR [rbp-0x1c0],0x0
+complete-item-description	0xe7b2c8	cmp    DWORD PTR [rbp-0x1d8],0x1
+complete-item-description	0xe7b2e4	test   r13w,r13w
+complete-item-description	0xe7b41f	cmp    WORD PTR [rbx+0xb8],0xffff
+complete-item-description	0xe7b48f	cmp    WORD PTR [rbx+0xb4],0xffff
+complete-item-description	0xe7b547	cmp    WORD PTR [rsi+0x18],0x5
+complete-item-description	0xe7b57b	test   rax,rax
+complete-item-description	0xe7b59a	test   r10d,r10d
+complete-item-description	0xe7b5d5	test   rax,rax
+complete-item-description	0xe7b5da	cmp    BYTE PTR [rax+0x72],0x0
+complete-item-description	0xe7b601	test   r9d,r9d
+complete-item-description	0xe7b6df	test   rax,rax
+complete-item-description	0xe7b6fe	test   r8d,r8d
+complete-item-description	0xe7b739	test   rax,rax
+complete-item-description	0xe7b73e	cmp    BYTE PTR [rax+0x72],0x0
+complete-item-description	0xe7b764	test   edi,edi
+complete-item-description	0xe7b787	test   rax,rax
+complete-item-description	0xe7b7af	cmp    BYTE PTR [rbp-0x160],0x0
+complete-item-description	0xe7b7bf	test   rax,rax
+complete-item-description	0xe7b7c7	test   edi,edi
+complete-item-description	0xe7b7cf	cmp    BYTE PTR [rbp-0x1c8],0x0
+complete-item-description	0xe7b7fa	cmp    BYTE PTR [rbp-0x1c8],0x0
+complete-item-description	0xe7b826	test   rax,rax
+complete-item-description	0xe7b845	test   r10d,r10d
+complete-item-description	0xe7b880	test   rax,rax
+complete-item-description	0xe7b885	cmp    BYTE PTR [rax+0x72],0x0
+complete-item-description	0xe7b8ac	test   r9d,r9d
+complete-item-description	0xe7bb78	test   eax,eax
+complete-item-description	0xe7bb8c	cmp    r12d,eax
+complete-item-description	0xe7bb9c	test   BYTE PTR [rsi+0x10],0x21
+complete-item-description	0xe7bc2e	cmp    rdi,QWORD PTR [rbp-0x1b0]
+complete-item-description	0xe7bddb	cmp    BYTE PTR [rbp-0x208],0x0
+complete-item-description	0xe7be59	cmp    eax,0xffffffff
+complete-item-description	0xe7be62	cmp    eax,r12d
+complete-item-description	0xe7bf3b	cmp    rdi,QWORD PTR [rbp-0x1b0]
+complete-item-description	0xe7bf5b	cmp    rdi,QWORD PTR [rbp-0x1e0]
+complete-item-description	0xe7bf96	cmp    eax,0xffffffff
+complete-item-description	0xe7bf9f	cmp    eax,r12d
+complete-item-description	0xe7c0cc	test   al,al
+complete-item-description	0xe7c0d4	cmp    DWORD PTR [r14+0xb0],0x18
+complete-item-description	0xe7c169	test   rax,rax
+complete-item-description	0xe7c187	test   eax,eax
+complete-item-description	0xe7c1c1	test   rax,rax
+complete-item-description	0xe7c1c6	cmp    BYTE PTR [rax+0x72],0x0
+complete-item-description	0xe7c1ed	test   r11d,r11d
+complete-item-description	0xe7c28d	cmp    rax,r14
+complete-item-description	0xe7c2a7	cmp    rdx,QWORD PTR [r12+0x30]
+complete-item-description	0xe7c2b2	cmp    QWORD PTR [rbp-0x1b0],r14
+complete-item-description	0xe7c2e0	test   rdx,rdx
+complete-item-description	0xe7c2f8	test   eax,eax
+complete-item-description	0xe7c30f	test   BYTE PTR [rax+0x88],0x2
+complete-item-description	0xe7c355	test   al,al
+complete-item-description	0xe7c396	cmp    esi,r12d
+complete-item-description	0xe7c3a0	cmp    esi,0xffffffff
+complete-item-description	0xe7c3ad	cmp    r12d,edx
+complete-item-description	0xe7c3b4	cmp    edx,0xffffffff
+complete-item-description	0xe7c3bb	cmp    r9d,0xffffffff
+complete-item-description	0xe7c3d9	cmp    r9d,DWORD PTR [rcx]
+complete-item-description	0xe7c3e5	cmp    rdi,rax
+complete-item-description	0xe7c417	cmp    rdi,rax
+complete-item-description	0xe7c447	cmp    rdi,rax
+complete-item-description	0xe7c478	test   al,al
+complete-item-description	0xe7c4ae	test   rax,rax
+complete-item-description	0xe7c4be	test   rax,rax
+complete-item-description	0xe7c4ef	test   al,al
+complete-item-description	0xe7c4fe	test   rax,rax
+complete-item-description	0xe7c50b	test   r9d,r9d
+complete-item-description	0xe7c658	test   al,al
+complete-item-description	0xe7c6d4	cmp    BYTE PTR [rbp-0x1c8],0x0
+complete-item-description	0xe7c774	cmp    QWORD PTR [rbp-0x1b0],r12

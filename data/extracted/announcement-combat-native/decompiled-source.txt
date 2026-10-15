@@ -1,20 +1,70 @@
 Native combat report construction, DF 53.16 configured Windows PEs
 ================================================================
 
-Source extraction: tools/extract_combat_announcement_sources.py.
-The configured reference and classic images were read and disassembled locally.
+Source extraction: tools/extract_combat_announcement_sources.py and
+tools/DecompileCombatAnnouncements.java.
+The configured reference and classic images were read and disassembled locally;
+the manifest owners were then decompiled from those same original PE bytes by
+Ghidra 12.1.4 into real per-owner C. There are 35 logical native owners per image,
+70 .c files in total, each beside its corresponding .asm. This document describes
+their production grammar; it is not a substitute for the original-PE C exports.
 Image identities: reference PE:6a70a6d9:02711000; classic PE:6a70b91c:0270a000.
-This is static reconstructed source, not observed game output. The extractor
+This is static source extraction, not observed game output. The extractor
 never executes the game, a translation, a generator, or a build. Addresses below
 are reference native VAs; native-owners.tsv retains the independent classic VAs.
 PE CHAININFO merges unwind pieces into complete logical native functions.
-Each per-owner .asm retains every instruction, including non-text calculations;
+Each .c header retains edition, PE identity, role and logical owner boundaries.
+The C keeps Ghidra's original diagnostics and inferred types; these are recovered
+source expressions, not original developer variable names or complete C++ types.
+Native selector destinations are supplied from native-switches.tsv, and complete
+unwind owner boundaries prevent tail transfers from swallowing unrelated owners.
+The std::basic_string overflow throw is nonreturning at reference 0x140065890 and
+classic 0x140065820; the selector bytes following that call are data, not extra
+English productions or reachable x86 instruction branches.
+Each per-owner .asm retains the decoded owner bytes, including non-text operations
+and embedded selector data that linear disassembly can render as instructions;
 native-control-flow.tsv retains conditions and branches; native-calls.tsv retains
 direct calls/tail transfers; native-switches.tsv retains decoded case/default
 paths; native-literals.tsv retains RIP strings, vector operands, inline stores.
 Printable numeric immediates such as division constants gfff/VUUU and integer
 argument 0x32 are source operands, not caption vocabulary. Text production below
 is reconstructed by following string assign/append calls and string stores.
+
+Announcement transport and display consumers
+-------------------------------------------
+Reference / classic pairs, both with real PE C and assembly in this directory:
+  announcement submit:       0x1400e3c20 / 0x1400e3bb0
+  popup render:              0x1400e9f40 / 0x1400e9ed0
+  adventure row construction:0x1408a40e0 / 0x1408a1960
+
+The submit function takes the complete text as its second argument, validates the
+announcement type (0..0x163), applies native visibility and per-type routing flags,
+and copies that complete string together with color and announcement metadata.
+It does not choose a finite vocabulary for the names, body parts, items or speech
+inside the string. Existing report matching may increment its repeat count and
+refresh its lifetime; otherwise a new report receives the full submitted text.
+Its local Empty announcement diagnostic is error-log text, not a normal message
+to translate into the battle panel. Sound, location and ownership bookkeeping
+are preserved in C but are not additional English caption fragments.
+
+The popup renderer consumes already constructed entries at object+0x48..+0x50,
+copies each entry's three color bytes (+0x20..+0x22), and uses its native x/y
+coordinates (+0x28/+0x2c). The portrait-present branch shifts the text origin
+from +2 to +0xe and widens the frame. Its only direct English control labels are
+Okay (one queued page) and More (multiple queued pages), stored as immediates.
+The renderer neither reconstructs actor names nor translates report contents.
+The adventure row builder consumes report.text at +8: strings shorter than 0x60
+are used whole; longer strings are passed to the existing 0x5f-width splitter.
+Each resulting row retains its originating report pointer. Color, wrapping,
+portrait layout and report lifetime are display branches, not alternative combat
+verbs. Complete sentence translation must therefore happen before the native
+wrapped fragments lose their full sentence and dynamic-field ownership context.
+
+The rendered panel accepts other producers using the same announcement transport.
+The 35-owner combat/source manifest is a scoped construction tree and includes
+its display consumers; it is not a claim that this UI admits only 35 producers.
+The broader announcement-popup-native transport/catalog extraction and existing
+status/death/speech source extractions retain those additional producer families.
 
 Complete typed dynamic input fields
 ----------------------------------
@@ -27,8 +77,90 @@ ITEM = complete native item caption (0x140c65450), preserving inner title,
        material, subtype, artwork subject and outer native quality/wear markers.
 MATERIAL = complete native material/state name, optionally native creature owner.
 Generated and authored identity/name fields are not finite English word lists.
-The screenshot's +larch figurine of blood gnats+ is one ITEM with quality markers,
+They remain open dynamic fields even after every finite branch is decompiled;
+the installed RAW rows describe available inputs, not all future world/mod text.
+Authored names must retain their source identity and original spelling. A field's
+spelling alone cannot classify it as authored, generated, a creature descriptor,
+a profession, an item title or a custom squad alias.
+A caption such as +larch figurine of blood gnats+ is one ITEM with quality markers,
 wood material and figure subject, not an English word substituted in isolation.
+
+Recovered identity and speech field suppliers
+--------------------------------------------
+UNIT: reference-132e430.c / classic-13293a0.c. Branches include adventure-player
+You/you, identity/name selection, complete creature/caste and profession fields,
+appearance, articles, slave/prisoner, agitated/fierce/stray, corpse/ghost and the
+native force/deity fallbacks. These complete fields cannot be split into a final
+word guessed to be the profession. The screenshot's multiword creature identity
+and worshipper-of-change profession remain separate native input components.
+ROLE: reference-132f980.c / classic-132a8f0.c, with independently decoded PE unwind
+ranges 0x14132f980..0x14133025e and 0x14132a8f0..0x14132b1ce. This is the direct
+speaker role/description formatter. It calls the complete creature/profession
+description supplier and appends native office, affiliation and curse identity
+fields; the explicit curse-name append is reference 0x14133019d / classic
+0x14132b10d. Its curse-name data is a typed world field, not an arbitrary tail
+guessed to be a profession from its English spelling.
+CREATURE/PROFESSION DESCRIPTION: reference-132e0c0.c / classic-1329030.c, independent
+owners 0x14132e0c0..0x14132e428 and 0x141329030..0x141329398. These compose complete
+creature/caste and profession strings and call the native profession-label
+supplier at reference 0x14132cc10 / classic 0x141327b80, also exported here as
+reference-132cc10.c / classic-1327b80.c. Native dispatch and complete RAW/custom
+profession data select the role phrase; dynamically supplied role names remain
+open fields, not a finite suffix spelling heuristic.
+ALTERNATE UNIT CAPTION: reference-1331500.c / classic-132c470.c retain another
+complete unit-reference constructor. The earlier unit-profession-caption label
+for this owner was imprecise; it is not the direct role formatter above.
+APPEARANCE: reference-717d30.c / classic-715750.c, with size construction in
+reference-716b70.c / classic-714590.c. These supply the creature's complete native
+descriptive phrase before the battle sentence is assembled.
+SPEAKER: reference-1330c30.c / classic-132bba0.c. Native identity visibility and
+name/profession formatting select the complete speaker caption.
+SPEECH WRAPPER: reference-684a10.c / classic-682430.c. Complete speaker is replaced
+by You for the adventure player; an addressed unit can add " (to " + SPEAKER +
+")". A nonempty speaker caption adds ": ", then the complete supplied speech
+body is appended. Missing speaker permits the speech body without that prefix.
+One companion direct production is UNIT + " stops and pays attention to you.".
+SPEECH TRANSFORM: reference-67b6c0.c / classic-6790e0.c. A caste-selected speech
+branch processes S/s through temporary ([LIP])/([lip]) markers, then expands the
+marked sounds; the body can consequently differ from its original literal text.
+The speech body itself is an input to the wrapper, not a closed list of English
+literals inside that wrapper. All finite upstream dialogue productions belong
+to their native producer sources; world names, authored speech and future RAW
+content within them remain open fields and must not be represented as an
+exhaustive literal word list.
+
+Complete adjacent producer trees and source correspondence
+---------------------------------------------------------
+data/extracted/announcement-conversation/decompiled-spoken-popup-source.txt
+documents the complete speech wrapper, topic dispatcher, incident/memory types
+and dynamic suppliers. Its native-role-correspondence.tsv links all 42 existing
+ELF Ghidra C owner sources to the current reference and classic PE ranges and
+their full original instruction bodies. reference-functions.tsv and
+classic-functions.tsv retain 58 PE owners per image, including small leaf
+suppliers without unwind metadata. PE instruction/source reconstructions in
+that directory must not be mislabeled as Ghidra PE C: the 42 elf-<role>.c files
+are actual ELF decompiler exports, while this combat directory now additionally
+retains actual current-PE C for the shared speech wrapper and its field suppliers.
+
+This task reran tools/extract_announcement_memory_pe.py against both configured
+PEs. The conversation directory's reference-switches.tsv and classic-switches.tsv
+each retain 5,102 native selector/target entries, including aliases, remaps and
+default paths from the full retained source owners. reference-topic-dispatch.tsv
+and classic-topic-dispatch.tsv retain every main conversation topic 0..253.
+Those are source selector records, not a count of distinct sentences or a claim
+that arbitrary generated text has been reduced to a finite list.
+
+data/extracted/adventure-announcement-native/native-functions.tsv and its
+elf-source-<VA>.c files retain the full existing adventure producer and queue
+tree; elf-producers.asm, elf-queue-submission.asm, native-submissions.tsv,
+native-calls.tsv and native-switches.tsv preserve its direct submission sites,
+typed suppliers and routing branches. Its decompiled-source.cpp explains the
+whole-string queue and actor/recipient/body ownership of those sources. The
+broader data/extracted/announcement-popup-native/decompiled-popup-source.txt
+and native-production-catalog.tsv connect the Windows popup transport, report
+storage, fixed producers and complete report renderer to that shared universe.
+Together with combat/status/death sources, these cover the source families that
+can coexist in this panel, rather than extracting only the two screenshot lines.
 
 Attack-record producer 0x14064a350..0x1406536b2
 ----------------------------------------------
