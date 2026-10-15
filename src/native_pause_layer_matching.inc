@@ -99,8 +99,8 @@ std::vector<Match> Overlay::find_native_pause_matches() const {
         std::fill_n(screen_rows[mate].begin() + span.x, span.length, ' ');
     };
 
-    // These grammars translate only the status prefix and finite soundtrack
-    // names. Unknown TITLE/AUTHOR values and folder identifiers stay opaque.
+    // Translate status prefixes while all soundtrack TITLE/AUTHOR values
+    // and folder identifiers remain authored metadata.
 #include "pause_menu_fields.inc"
     for (const auto &match : result)
         if (match.source.starts_with("Save to timeline folder: ") ||

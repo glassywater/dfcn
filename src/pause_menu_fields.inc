@@ -3,11 +3,11 @@
 // repeated spaces, and music metadata can even have an empty title/artist.
 const auto has_pause_dynamic_field = [](const std::string &row) {
     return row.find("Save to timeline folder: ") != std::string::npos ||
-        row.find("Track playing: ") != std::string::npos ||
-        row.find("Last track: ") != std::string::npos ||
-        row.find("Interlude playing: ") != std::string::npos ||
-        row.find("Last interlude: ") != std::string::npos ||
-        row.find("Combat music: ") != std::string::npos;
+        row.find("Track playing:") != std::string::npos ||
+        row.find("Last track:") != std::string::npos ||
+        row.find("Interlude playing:") != std::string::npos ||
+        row.find("Last interlude:") != std::string::npos ||
+        row.find("Combat music:") != std::string::npos;
 };
 if (only_y >= 0 ? has_pause_dynamic_field(screen_rows[static_cast<size_t>(only_y)])
         : std::any_of(screen_rows.begin(), screen_rows.end(), has_pause_dynamic_field)) {
@@ -30,10 +30,22 @@ for (const bool top_layer : {true, false}) {
         if (x < 0 || end <= x) continue;
         auto &row = screen_rows[static_cast<size_t>(draw.y)];
         if (row.compare(x, end - x, source, 0, end - x) != 0) continue;
-        const auto target = translate_procedural_fragment(std::string(source));
+        const bool soundtrack = is_embark_pause_soundtrack(source);
+        std::string complete(source);
+        if (soundtrack) {
+            // Native music emits the label, title, separator and credit in
+            // separate addst calls. The label's trailing space was trimmed
+            // above; its draw/clip owns only that label, not the whole row.
+            // Claim its panel row before ordinary words can translate songs.
+            while (end < gps_->dimx && !is_cp437_box_separator(row, end)) ++end;
+            complete = std::string(trim_view(std::string_view(row).substr(x, end - x)));
+            end = x + static_cast<int>(complete.size());
+        }
+        const auto target = soundtrack ? translate_soundtrack_status(complete)
+            : translate_procedural_fragment(complete);
         if (!target || target->empty()) continue;
         Match match{x, draw.y, end - x, -2, *target,
-            std::string(source.substr(0, end - x))};
+            std::move(complete)};
         result.push_back(std::move(match));
         std::fill_n(row.begin() + x, end - x, ' ');
     }

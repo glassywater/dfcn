@@ -1128,12 +1128,21 @@ static bool is_embark_pause_action(std::string_view source) {
     return source == "Return to title menu" || source == "Continue";
 }
 
+static constexpr std::array<std::pair<std::string_view, std::string_view>, 5>
+    soundtrack_status_prefixes = {{
+        {"Track playing:", "正在播放曲目："},
+        {"Last track:", "上一首曲目："},
+        {"Interlude playing:", "正在播放间奏："},
+        {"Last interlude:", "上一首间奏："},
+        {"Combat music:", "战斗音乐："},
+    }};
+
 static bool is_embark_pause_soundtrack(std::string_view source) {
-    return source.starts_with("Track playing: ") ||
-        source.starts_with("Last track: ") ||
-        source.starts_with("Interlude playing: ") ||
-        source.starts_with("Last interlude: ") ||
-        source.starts_with("Combat music: ");
+    return std::any_of(soundtrack_status_prefixes.begin(), soundtrack_status_prefixes.end(),
+        [source](const auto &prefix) {
+            return source.starts_with(prefix.first) &&
+                (source.size() == prefix.first.size() || source[prefix.first.size()] == ' ');
+        });
 }
 
 static bool is_embark_pause_foreground(const Match &match) {
@@ -8057,6 +8066,28 @@ static std::string native_text_to_utf8(std::string_view input) {
     return output;
 }
 
+// Soundtrack titles and credits are authored metadata, including built-in
+// songs. Translate only the status; never send the metadata to word/name rules.
+static std::optional<std::string> translate_soundtrack_status(std::string_view text) {
+    if (!is_embark_pause_soundtrack(text)) return std::nullopt;
+    for (const auto &[source_prefix, target_prefix] : soundtrack_status_prefixes) {
+        if (!text.starts_with(source_prefix)) continue;
+        std::string_view details = text.substr(source_prefix.size());
+        if (details.starts_with(' ')) details.remove_prefix(1);
+        const size_t separator = details.rfind(" - ");
+        std::string result(target_prefix);
+        if (separator == std::string_view::npos) {
+            result += native_text_to_utf8(details);
+        } else {
+            result += native_text_to_utf8(details.substr(0, separator));
+            result += " — ";
+            result += native_text_to_utf8(details.substr(separator + 3));
+        }
+        return result;
+    }
+    return std::nullopt;
+}
+
 static std::optional<std::string> utf8_to_cp437(std::string_view source,
         bool preserve_authored_cjk) {
     // Recursive rules operate on UTF-8, while captured names and the native
@@ -9754,6 +9785,10 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
     const bool name_only = phonetic_only || personal_name || non_entity_name || native_name_groups || book_title || civilization_name ||
         figure_record || generated_identity;
 
+    // Music metadata stays opaque even when procedural-name tables are absent.
+    if (!name_only)
+        if (auto soundtrack = translate_soundtrack_status(screen_text)) return soundtrack;
+
     // A profession is a separate native row for long names and part of the
     // comma-delimited identity for short names. Both use the same complete
     // role/name grammar, before individual dictionary words can claim it.
@@ -10081,127 +10116,6 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
             return label->second + native_text_to_utf8(
                 std::string_view(screen_text).substr(timeline_folder_prefix.size()));
     }
-
-    // Music status rows are assembled dynamically from a finite title table
-    // and an artist table. Whole-row translation prevents the ordinary word
-    // matcher from producing hybrids such as `打击 the Earth!`, and covers
-    // current/previous tracks, interludes and combat cues with one grammar.
-    auto translate_soundtrack_status = [](std::string_view text)
-        -> std::optional<std::string> {
-        static constexpr std::array<std::pair<std::string_view, std::string_view>, 5>
-            prefixes = {{
-                {"Track playing: ", "正在播放曲目："},
-                {"Last track: ", "上一首曲目："},
-                {"Interlude playing: ", "正在播放间奏："},
-                {"Last interlude: ", "上一首间奏："},
-                {"Combat music: ", "战斗音乐："},
-            }};
-        static constexpr std::array<std::pair<std::string_view, std::string_view>, 54>
-            titles = {{
-                {"Dwarf Fortress", "矮人要塞"},
-                {"Koganusan", "科加努桑"},
-                {"Expansive Cavern", "广阔洞穴"},
-                {"Death Spiral", "死亡螺旋"},
-                {"Hill Dwarf", "山丘矮人"},
-                {"Forgotten Beast", "遗忘之兽"},
-                {"Drink & Industry", "酒饮与工业"},
-                {"Vile Force of Darkness", "黑暗邪军"},
-                {"First Year", "元年"},
-                {"Another Year", "又一年"},
-                {"Strike the Earth!", "开山掘地！"},
-                {"Strange Moods", "奇异情绪"},
-                {"Winter Entombs You", "冬日将你埋葬"},
-                {"Craftsdwarfship", "矮人工艺"},
-                {"Classic DF Title Theme", "经典《矮人要塞》标题曲"},
-                {"Classic DF Main Theme", "经典《矮人要塞》主题曲"},
-                {"Strike It Again", "再次开山掘地"},
-                {"The Capital", "都城"},
-                {"Bruising The Fat", "痛击肥硕者"},
-                {"Life of Adventure", "冒险人生"},
-                {"Beyond The Gates", "门扉之外"},
-                {"Hamlet Memoirs", "村庄回忆录"},
-                {"Night Creature", "夜行生物"},
-                {"Into The Pits", "深入坑穴"},
-                {"Sisters of War", "战争姐妹"},
-                {"Cannibal", "食人者"},
-                {"Pony Rider", "小马骑手"},
-                {"Two Coins", "两枚硬币"},
-                {"Losing is Fun", "失败即乐趣"},
-                {"Danger Room", "危险室"},
-                {"Nabidas", "纳比达斯"},
-                {"The Tavern Part I", "酒馆·第一部"},
-                {"The Tavern Part II", "酒馆·第二部"},
-                {"Toady One", "托迪一号"},
-                {"Toady Two", "托迪二号"},
-                {"Toady Three", "托迪三号"},
-                {"Roldeth", "罗尔德斯"},
-                {"Dolomite", "白云石"},
-                {"Suite Espagnole Part I", "西班牙组曲·第一部"},
-                {"Suite Espagnole Part II", "西班牙组曲·第二部"},
-                {"Suite Espagnole Part III", "西班牙组曲·第三部"},
-                {"Toady Four", "托迪四号"},
-                {"Obsidian", "黑曜石"},
-                {"Toady Five", "托迪五号"},
-                {"Toady Six", "托迪六号"},
-                {"Haunted Lands", "闹鬼之地"},
-                {"Cages & Chains", "笼与链"},
-                {"Mountainhome", "山之家"},
-                {"df9", "战斗曲 9"},
-                {"df3", "战斗曲 3"},
-                {"df15", "战斗曲 15"},
-                {"stia", "再次开山掘地"},
-                {"SoW", "战争姐妹"},
-                {"nabidas", "纳比达斯"},
-            }};
-        static constexpr std::array<std::pair<std::string_view, std::string_view>, 5>
-            artists = {{
-                {"Dabu & Simon Swerwer", "达布与西蒙·斯沃沃"},
-                {"Dabu & Agueda Macias", "达布与阿格达·马西亚斯"},
-                {"Dabu & rcab", "达布与阿尔卡布"},
-                {"Tarn Adams", "塔恩·亚当斯"},
-                {"Dabu", "达布"},
-            }};
-        auto lookup = [](std::string_view value, const auto &table)
-            -> std::optional<std::string_view> {
-            const auto found = std::find_if(table.begin(), table.end(),
-                [value](const auto &entry) { return entry.first == value; });
-            if (found == table.end()) return std::nullopt;
-            return found->second;
-        };
-        for (const auto &[source_prefix, target_prefix] : prefixes) {
-            if (!text.starts_with(source_prefix)) continue;
-            std::string_view details = text.substr(source_prefix.size());
-            std::string_view title = details;
-            std::string_view artist;
-            const size_t separator = details.rfind(" - ");
-            if (separator != std::string_view::npos) {
-                title = details.substr(0, separator);
-                artist = details.substr(separator + 3);
-            } else if (details.ends_with(" -")) {
-                // Native custom metadata can have an empty artist. Row
-                // trimming removes the last space of its " - " separator.
-                title = details.substr(0, details.size() - 2);
-            }
-            const auto translated_title = lookup(title, titles);
-            std::string result(target_prefix);
-            // The native fallback reads arbitrary music-pack metadata.
-            // Keep authored titles/credits intact while translating status;
-            // unknown metadata must not send the whole row to word matching.
-            result += translated_title ? std::string(*translated_title)
-                : native_text_to_utf8(title);
-            if (!artist.empty()) {
-                const auto translated_artist = lookup(artist, artists);
-                result += " — ";
-                result += translated_artist ? std::string(*translated_artist)
-                    : native_text_to_utf8(artist);
-            }
-            return result;
-        }
-        return std::nullopt;
-    };
-
-    if (!name_only)
-        if (auto soundtrack = translate_soundtrack_status(screen_text)) return soundtrack;
 
     auto transliterate = transliterate_native_history_name;
 
@@ -16181,12 +16095,9 @@ std::vector<Match> Overlay::embark_pause_menu_matches() const {
                 if (x == std::string::npos) continue;
                 size_t end = x + prefix.size();
                 while (end < row.size() &&
-                       !is_cp437_box_separator(row, end) &&
-                       !(row[end] == ' ' && end + 1 < row.size() &&
-                         row[end + 1] == ' ')) ++end;
+                       !is_cp437_box_separator(row, end)) ++end;
                 const std::string source = trim(row.substr(x, end - x));
-                auto translated = exact_literal_translation(source);
-                if (!translated) translated = translate_procedural_fragment(source);
+                auto translated = translate_soundtrack_status(source);
                 // A new/unknown track must still remain owned by the modal,
                 // never by the knowledge paragraph behind it.
                 result.push_back({static_cast<int>(x), y,
