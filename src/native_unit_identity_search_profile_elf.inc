@@ -160,6 +160,16 @@ static bool install_native_unit_identity_hooks() {
         {0xfd8418,0xebfe90,reinterpret_cast<const void *>(&capture_native_unit_header_creation_name),{}},
         {0xff1430,0xebfe90,reinterpret_cast<const void *>(&capture_native_unit_header_creation_name),{}},
         {0xd24181,0x24f90,reinterpret_cast<const void *>(&capture_native_conversation_portrait_capitalization),{}},
+        // Barter capitalizes the same reference before appending ': '.
+        // These are RVAs; the extracted native call VAs include 0x400000.
+        {0x11d2ba3,0x24f90,reinterpret_cast<const void *>(&capture_native_conversation_portrait_capitalization),{}},
+        {0x11d38e2,0x24f90,reinterpret_cast<const void *>(&capture_native_conversation_portrait_capitalization),{}},
+        {0x11d3a7c,0x24f90,reinterpret_cast<const void *>(&capture_native_conversation_portrait_capitalization),{}},
+        {0x11d3aa4,0x24f90,reinterpret_cast<const void *>(&capture_native_conversation_portrait_capitalization),{}},
+        {0x11cf4a8,0x24f90,reinterpret_cast<const void *>(&capture_native_conversation_portrait_capitalization),{}},
+        {0x11cf5ed,0x24f90,reinterpret_cast<const void *>(&capture_native_conversation_portrait_capitalization),{}},
+        {0x11cf7ce,0x24f90,reinterpret_cast<const void *>(&capture_native_conversation_portrait_capitalization),{}},
+        {0x11cf977,0x24f90,reinterpret_cast<const void *>(&capture_native_conversation_portrait_capitalization),{}},
         {0x76d81b,0x24f90,reinterpret_cast<const void *>(&capture_native_unit_reference_capitalization),{}},
         {0x76e32f,0x24f90,reinterpret_cast<const void *>(&capture_native_unit_reference_capitalization),{}},
     };

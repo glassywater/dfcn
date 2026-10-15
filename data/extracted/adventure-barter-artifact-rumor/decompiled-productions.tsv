@@ -1,0 +1,59 @@
+edition	branch	begin_rva	end_rva	condition	production	dynamic_fields
+steam	silent-invalid-input	0x65a250	0x65a371	speaker/unit-or-HF/artifact lookup fails		no output
+steam	return-to-speaker	0x65a4c1	0x65a62e	personal claim exists and claim+0x10 == -1	I desire that {object} be returned to me.	object
+steam	return-to-family	0x65a62e	0x65a776	output empty; family claim exists and claim+0x10 == -1	I desire that {object} be returned to my family.	object
+steam	primordial-remnant	0x65a776	0x65a9ae	output empty; link type 10/13; entity type 5; inorganic material flagged primordial	{entity} believes that primordial remnants such as {object} belong back in their rightful home.	entity,object
+steam	primordial-destination	0x65a9ae	0x65aa6c	primordial branch; entity destination site exists	  Any should be brought to {destination}, or given to one of us.	destination=[building in ]site
+steam	entity-representative	0x65aa71	0x65adc5	output empty; entity artifact claim exists and claim+0x14 == -1	Speaking as a representative of {entity}, it is important that {object} be returned.	entity,object
+steam	valuable-treasure	0x65ad98	0x65adad	representative branch; no position assignment	  It is a valuable treasure to us.	
+steam	speaker-position-symbol	0x65abc5	0x65adad	position resolves; assigned HF equals speaker HF	  I require it as a symbol of the {position}.	gender-selected position name
+steam	other-position-symbol	0x65abc5	0x65adad	position resolves; assignment HF == -1	  It is the symbol of the {position}.	gender-selected position name
+steam	holder-qualification	0x65ac86	0x65adad	position resolves; assigned HF differs from speaker and is not -1	  {holder} requires it to be a proper {position}.	historical-holder,gender-selected position name
+steam	entity-destination	0x65adad	0x65ae6b	representative branch; entity destination site exists	  It should be brought to {destination}.	destination=[building in ]site
+steam	lasting-home	0x65ae89	0x65b012	output empty; collection destination found; item tool-use 0x14 or item type 0x59	It would be wonderful if {reversed-object} found a lasting home within {building}.	reversed-object=[item ]artifact,building-reference
+steam	local-requester	0x65b014	0x65b399	output empty; speaker location matches subject site; active artifact request	{holder} wants {object}[ returned].	holder=[HF[ of ]]entity; returned only when request.site != -1; no destination appended
+steam	related-requester	0x65b399	0x65b899	output empty; related entity/site active artifact request	{holder} wants {object}[ returned to {destination}].	holder=[HF[ of ]]entity; destination=[building in ]site; return clause only when request.site != -1
+steam	artifact-ellipsis	0x65b899	0x65b998	all request branches produced empty output	{object}...	object
+steam	location-separator	0x65b998	0x65b9ad	artifact and speaker resolved	  	two ASCII spaces before location branch
+steam	speaker-held-firsthand	0x65baa4	0x65baf4	holder == speaker HF; no active impersonation; firsthand source exists	Last I remember, I had it.	
+steam	speaker-held-hearsay	0x65baa4	0x65baf4	holder == speaker HF; no active impersonation; no firsthand source	Last I heard, I had it.	
+steam	recipient-held-hearsay	0x65baf4	0x65bb25	holder == recipient HF; no firsthand source	Last I heard, you held it.	
+steam	recipient-held-firsthand	0x65baf4	0x65bb25	holder == recipient HF; firsthand source exists		native silent branch; no invented Last-I-saw-you sentence
+steam	other-held-firsthand	0x65bb25	0x65bc44	holder != -1 and not self/recipient; firsthand source exists	Last I saw, it was held by {holder}.	historical-holder
+steam	other-held-hearsay	0x65bb25	0x65bc44	holder != -1 and not self/recipient; no firsthand source	Last I heard, it was held by {holder}.	historical-holder
+steam	site-location-firsthand	0x65bc44	0x65bd1b	holder == -1; site != -1; firsthand source exists	Last I saw, it was in {destination}.	destination=[building in ]site
+steam	site-location-hearsay	0x65bc44	0x65bd1b	holder == -1; site != -1; no firsthand source	Last I heard, it was in {destination}.	destination=[building in ]site
+steam	region-location-firsthand	0x65bd1b	0x65bd8b	holder/site == -1; region != -1; firsthand source exists	Last I saw, it was in {region}.	region-reference
+steam	region-location-hearsay	0x65bd1b	0x65bd8b	holder/site == -1; region != -1; no firsthand source	Last I heard, it was in {region}.	region-reference
+steam	underground-location-firsthand	0x65bd8b	0x65be03	holder/site/region == -1; underground != -1; firsthand source exists	Last I saw, it was in {underground}.	underground-reference
+steam	underground-location-hearsay	0x65bd8b	0x65be03	holder/site/region == -1; underground != -1; no firsthand source	Last I heard, it was in {underground}.	underground-reference
+steam	unknown-location	0x65bf5b	0x65bf70	holder/site/region/underground == -1	I have no idea where it is.	
+classic	silent-invalid-input	0x657c70	0x657d91	speaker/unit-or-HF/artifact lookup fails		no output
+classic	return-to-speaker	0x657ee1	0x65804e	personal claim exists and claim+0x10 == -1	I desire that {object} be returned to me.	object
+classic	return-to-family	0x65804e	0x658196	output empty; family claim exists and claim+0x10 == -1	I desire that {object} be returned to my family.	object
+classic	primordial-remnant	0x658196	0x6583ce	output empty; link type 10/13; entity type 5; inorganic material flagged primordial	{entity} believes that primordial remnants such as {object} belong back in their rightful home.	entity,object
+classic	primordial-destination	0x6583ce	0x65848c	primordial branch; entity destination site exists	  Any should be brought to {destination}, or given to one of us.	destination=[building in ]site
+classic	entity-representative	0x658491	0x6587e5	output empty; entity artifact claim exists and claim+0x14 == -1	Speaking as a representative of {entity}, it is important that {object} be returned.	entity,object
+classic	valuable-treasure	0x6587b8	0x6587cd	representative branch; no position assignment	  It is a valuable treasure to us.	
+classic	speaker-position-symbol	0x6585e5	0x6587cd	position resolves; assigned HF equals speaker HF	  I require it as a symbol of the {position}.	gender-selected position name
+classic	other-position-symbol	0x6585e5	0x6587cd	position resolves; assignment HF == -1	  It is the symbol of the {position}.	gender-selected position name
+classic	holder-qualification	0x6586a6	0x6587cd	position resolves; assigned HF differs from speaker and is not -1	  {holder} requires it to be a proper {position}.	historical-holder,gender-selected position name
+classic	entity-destination	0x6587cd	0x65888b	representative branch; entity destination site exists	  It should be brought to {destination}.	destination=[building in ]site
+classic	lasting-home	0x6588a9	0x658a32	output empty; collection destination found; item tool-use 0x14 or item type 0x59	It would be wonderful if {reversed-object} found a lasting home within {building}.	reversed-object=[item ]artifact,building-reference
+classic	local-requester	0x658a34	0x658db9	output empty; speaker location matches subject site; active artifact request	{holder} wants {object}[ returned].	holder=[HF[ of ]]entity; returned only when request.site != -1; no destination appended
+classic	related-requester	0x658db9	0x6592b9	output empty; related entity/site active artifact request	{holder} wants {object}[ returned to {destination}].	holder=[HF[ of ]]entity; destination=[building in ]site; return clause only when request.site != -1
+classic	artifact-ellipsis	0x6592b9	0x6593b8	all request branches produced empty output	{object}...	object
+classic	location-separator	0x6593b8	0x6593cd	artifact and speaker resolved	  	two ASCII spaces before location branch
+classic	speaker-held-firsthand	0x6594c4	0x659514	holder == speaker HF; no active impersonation; firsthand source exists	Last I remember, I had it.	
+classic	speaker-held-hearsay	0x6594c4	0x659514	holder == speaker HF; no active impersonation; no firsthand source	Last I heard, I had it.	
+classic	recipient-held-hearsay	0x659514	0x659545	holder == recipient HF; no firsthand source	Last I heard, you held it.	
+classic	recipient-held-firsthand	0x659514	0x659545	holder == recipient HF; firsthand source exists		native silent branch; no invented Last-I-saw-you sentence
+classic	other-held-firsthand	0x659545	0x659664	holder != -1 and not self/recipient; firsthand source exists	Last I saw, it was held by {holder}.	historical-holder
+classic	other-held-hearsay	0x659545	0x659664	holder != -1 and not self/recipient; no firsthand source	Last I heard, it was held by {holder}.	historical-holder
+classic	site-location-firsthand	0x659664	0x65973b	holder == -1; site != -1; firsthand source exists	Last I saw, it was in {destination}.	destination=[building in ]site
+classic	site-location-hearsay	0x659664	0x65973b	holder == -1; site != -1; no firsthand source	Last I heard, it was in {destination}.	destination=[building in ]site
+classic	region-location-firsthand	0x65973b	0x6597ab	holder/site == -1; region != -1; firsthand source exists	Last I saw, it was in {region}.	region-reference
+classic	region-location-hearsay	0x65973b	0x6597ab	holder/site == -1; region != -1; no firsthand source	Last I heard, it was in {region}.	region-reference
+classic	underground-location-firsthand	0x6597ab	0x659823	holder/site/region == -1; underground != -1; firsthand source exists	Last I saw, it was in {underground}.	underground-reference
+classic	underground-location-hearsay	0x6597ab	0x659823	holder/site/region == -1; underground != -1; no firsthand source	Last I heard, it was in {underground}.	underground-reference
+classic	unknown-location	0x65997b	0x659990	holder/site/region/underground == -1	I have no idea where it is.	

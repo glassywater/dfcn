@@ -2337,6 +2337,7 @@ the bestowal of the title of {s} in {p} after attaining sufficient skill with {s
 {a} received the title of {s} in {p} after attaining sufficient skill with {s}, participating in {d} battles, slaying {d} enemies, and {d} years of membership in {p}.	{a1}在{p2}在{s2}方面达到足够的技艺水平、参加{d1}场战斗、杀死{d2}名敌人及拥有{d3}年会龄后，获得了{p1}的{s1}头衔。	ht
 {b} is sought by {s}, and I aim to return it home. My epic journey began {s}. I've already searched in {e}. I can only rest when I've brought the prize safely to {e}.	{s1}正在寻找{b1}，而我打算将它送回故乡。我的史诗之旅始于{s2}。我已经搜寻过{e1}。只有将宝物安全带回{e2}，我才能安心。	hPt
 Announcement combat conversation-conflict-death [conversation-conflict-person,conversation-conflict-caste,conversation-conflict-entity]: {s} was slainby a {s} of {s}	{s1}被{s3}的一只{s2}杀死了	l
+Announcement combat quest-sentence [conversation-conflict-entity,quest-object]: {s} believes that primordial remnants such as {s} belong back in their rightful home.	{s1}认为，像{s2}这样的远古遗存应当回到它们原本的归属之地。	l
 DFHack help: "--list <table name>" Show the raw data tables that "dwarf-op" uses to make decisions. See the Data tables section below for which tables are available.	"--list <table name>" 显示"dwarf-op" 用于决策的原始数据表。请参阅下面的数据表部分，了解哪些表可用。	l
 DFHack help: "-o", "--aquifers-only" Don't reveal any map tiles, but continue to display markers to identify aquifers and damp tiles as per the dig.warmdamp overlay.	"-o"、"--aquifers-only" 不要显示任何地图图块，但继续显示标记以根据 dig.warmdamp 叠加层识别含水层和潮湿图块。	l
 DFHack help: "color-schemes register <directory> [-f] [-q]" Register the directory (relative to the main DF game directory) where your color scheme files are stored.	"color-schemes register <directory> [-f] [-q]" 注册存储配色方案文件的目录（相对于主 DF 游戏目录）。	l
@@ -2950,6 +2951,7 @@ A {s} caravan from {e} has arrived. Your status as a minor land has attracted a 
 A {s} caravan from {e} has arrived. Your status as a minor land has attracted a bit more trade than usual. However, overall trade sentiments are lukewarm.	来自{e1}的{s1}商队已抵达。你作为小领地的地位吸引来了比平时略多的贸易。不过，总体贸易意愿不冷不热。	hPt
 A {s} caravan from {e} has arrived. Your status as a minor land has attracted a bit more trade than usual. However, overall trade sentiments are terrible.	来自{e1}的{s1}商队已抵达。你作为小领地的地位吸引来了比平时略多的贸易。不过，总体贸易意愿极差。	hPt
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list,$name]: the agreement between {s} and {s} and become a resident of {s}	{s1}与{s2}达成的居留协议：成为{s3}的居民	l
+Announcement combat quest-sentence [conversation-conflict-entity,quest-object]: Speaking as a representative of {s}, it is important that {s} be returned.	我代表{s1}郑重说明，必须归还{s2}。	l
 Announcement combat rumor-event [$name,$travel-site,$name]: I hear that a group calling itself {s} founded {s} after a long journey from the lands of {s}.	听说一个自称{s1}的势力从{s3}的领地长途跋涉而来，建立了{s2}。	l
 Announcement combat rumor-event [rumor-person,rumor-owner,$name,$name]: {s} refused an offer of peace from {s} regarding the conflict between {s} and {s}.	{s1}拒绝了{s2}为平息{s3}和{s4}的冲突而提出的议和。	l
 DFHack help: "-p", "--pregnancy" If specified, and if the historical figure is pregnant, terminate the pregnancy instead of killing the historical figure.	"-p", "--pregnancy" 如果指定，并且历史人物怀孕了，则终止怀孕而不是杀死历史人物。	l
@@ -3371,6 +3373,7 @@ Announcement combat dialogue-judgement [dialogue-judgement-achiever]: {s} protec
 Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} also {s}, but those acts bring no forgiveness.	{s1}也是{s2}，可这些事迹无法让你得到宽恕。	l
 Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} {s}, but you can't argue your way out of this.	{s1}是{s2}，可你靠争辩摆脱不了这件事。	l
 Announcement combat diplomatic-event-core [diplomatic-meeting-topic,$name,$name]: {s} between {s} and {s} concluded, cementing bonds of mutual trust	{s2}与{s3}之间的{s1}结束了，并巩固了相互信任的纽带	l
+Announcement combat quest-sentence [conversation-conflict-entity]: {s} believes that primordial remnants such as belong back in their rightful home.	{s1}认为，这件神器这样的远古遗存应当回到它们原本的归属之地。	l
 DFHack help: "--duration <ticks>" Set how long the transformation should last, or "forever". If not specified, then the transformation is permanent.	"--duration <ticks>" 设置变换应持续多长时间，或 "forever"。如果未指定，则转换是永久性的。	l
 DFHack help: "--step <amount>" Modify current trait tier up/down by given amount. Negative values need a "\\\\" before the negative symbol e.g. "\\\\-1"	"--step <amount>" 将当前特质等级 up/down 修改给定量。负值需要在负号前加一个"\\\\\\\\"，例如"\\\\\\\\-1"	l
 DFHack help: "--synclass <class>" Any syndrome with the specified SYN_CLASS will act as a trigger. Enclose in quotation marks if it includes spaces.	"--synclass <class>" 任何具有指定 SYN_CLASS 的综合症都将作为触发器。如果包含空格，请用引号引起来。	l
@@ -3865,7 +3868,6 @@ Announcement combat agreement-core [agreement-party-list,agreement-party-list]: 
 Announcement combat conversation-conflict-death [conversation-conflict-person,conversation-conflict-entity]: {s} was slainby the forces of {s}	{s1}被{s2}的部队杀死了	l
 Announcement combat dialogue-judgement [dialogue-judgement-achiever]: {s} sought out and returned our treasures, though it doesn't much matter	{s1}曾寻获并归还我们的宝物，可如今这已经没有多少意义了。	l
 Announcement combat diplomatic-event-core [diplomatic-meeting-topic,$name,$name,$travel-site]: {s} between {s} and {s} at {s} concluded fairly	{s2}与{s3}在{s4}达成的{s1}顺利结束了	l
-Announcement combat quest-sentence [$name,quest-object]: {s} believes that primordial remnants such as {s} belong back in their rightful home.	{s1}认为，像{s2}这样的远古遗存应当回到它们原本的归属之地。	l
 Announcement combat sentence []: Maybe after you've improved. Prove you have what it takes. The life of the traveling performer is a hard one.	等你的本领长进些再说吧。先证明你能胜任，巡回艺人的日子可不好过。	l
 DFHack help: "--applyjobs <job>[,<job>...]" Applies the listed jobs to the selected dwarves. Run "dwarf-op --list jobs" to see available jobs.	"--applyjobs <job>[,<job>...]" 将列出的作业应用于选定的矮人。运行 "dwarf-op --list jobs" 查看可用作业。	l
 DFHack help: "--severity <severity>" If the thought is the name of a syndrome, then the severity will be used as the severity of the syndrome.	"--severity <severity>" 如果思想是综合症的名称，那么严重程度将被用作综合症的严重程度。	l
@@ -4383,6 +4385,7 @@ Announcement combat fortress-arrival []: Some migrants have decided to brave thi
 Announcement combat historical-event-title [$memorial-actor,$travel-site]: the general suspicion of {s} in {s} after appearing not to age	因看起来不会衰老，{s1}在{s2}受到普遍怀疑	l
 Announcement combat journal-event-title [journal-event-object,journal-event-place,journal-event-place]: The absence of {s} from {s}'s {s}	{s1}从{s2}的{s3}消失	l
 Announcement combat journal-event-title [journal-event-object,journal-event-place,journal-event-place]: The presence of {s} in {s} in {s}	{s1}出现在{s2}的{s3}	l
+Announcement combat quest-sentence [conversation-conflict-entity]: Speaking as a representative of {s}, it is important that be returned.	我代表{s1}郑重说明，必须归还这件神器。	l
 Announcement combat rumor-event [rumor-time,rumor-person,$travel-site,rumor-person]: I heard that {s}, {s} was kidnapped from {s} by {s}.	听说{s1}，{s4}从{s3}绑走了{s2}。	l
 Announcement combat sentence [$person]: Not that it matters, as the seat of {s} is here, and the blood-drinker allows no chattel to rise.	不过这也没什么要紧，{s1}的统治中心就在这里，那吸血者可不会让奴隶有出头之日。	l
 DFHack GUI Sitemap: Click on a name or hit Enter to zoom to the selected target. Shift-click or Shift-Enter to zoom and follow unit/item.	点击名称或按下 Enter，定位至选中的目标。按住 Shift 点击，或按下 Shift-Enter，定位并跟随生物或物品。	l
@@ -4978,6 +4981,8 @@ Announcement combat agreement-core [agreement-party-list,agreement-party-list]: 
 Announcement combat agreement-core [agreement-party-list,agreement-party-list]: {s} made an agreement with {s} to eradicate monsters	{s1}与{s2}达成协议，以便消灭怪物	l
 Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} {s}, but it means nothing now.	{s1}是{s2}，可如今这已经没有意义了。	l
 Announcement combat negotiation-sentence []: The task was made much more difficult by the relative populations of the civilizations.	双方政权的人口差距让这项任务困难了许多。	l
+Announcement combat quest-sentence [quest-home-object,quest-building]: It would be wonderful if {s} found a lasting home within {s}.	若能让{s1}长久地留在{s2}，那就再好不过了。	l
+Announcement combat quest-sentence [quest-object]: believes that primordial remnants such as {s} belong back in their rightful home.	该组织认为，像{s1}这样的远古遗存应当回到它们原本的归属之地。	l
 Announcement combat sentence [$kinship]: It pains me all the more, for the foul villain is my own {s}, now twisted into monstrosity.	更让我痛心的是，这个恶徒竟是我的{s1}，如今却已扭曲成怪物。	l
 Announcement combat sentence [$unit,diplomacy-possessor,dialogue-family]: It does not help matters that their leader {s} is {s} {s}.	再说，他们的领袖{s1}还是{s2}{s3}，事情就更难办了。	l
 As you dig deeper and more citizens take up residence in your outpost, your doings will attract attention, both wanted and unwanted.	随着挖掘不断深入，越来越多居民在前哨站定居，你的事业也将引来各方关注，其中既有善意，也有恶意。	hq
@@ -5098,7 +5103,6 @@ Announcement combat agreement-title-core [agreement-party-list,agreement-party-l
 Announcement combat agreement-title-core [agreement-party-list,agreement-target]: the plot of {s} to sabotage the activities of {s}	{s1}破坏{s2}活动的阴谋	l
 Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: It is my misfortune that {s} {s}.	不幸的是，{s1}是{s2}。	l
 Announcement combat fortress-arrival []: No one even considered making the journey to such a cursed unhappy death-trap this season.	本季无人有意前往这样一个受诅咒、不幸的死亡陷阱。	l
-Announcement combat quest-sentence [$name,quest-object]: Speaking as a representative of {s}, it is important that {s} be returned.	我代表{s1}郑重说明，必须归还{s2}。	l
 Announcement combat site-rumor-event [site-rumor-person,site-rumor-position,site-rumor-predecessor]: {s} became {s}, replacing {s}.	{s1}取代{s3}，成为了{s2}。	l
 DFHack help: "-m", "--min-milk" Set the minimum number of milk items in a barrel for the barrel to be considered for cheese making.	"-m"、"--min-milk" 设置桶中考虑用于奶酪制作的桶中牛奶项目的最小数量。	l
 DFHack help: "autofarm threshold 150 MUSHROOM_HELMET_PLUMP GRASS_TAIL_PIG" Set the threshold for Plump Helmets and Pig Tails to 150	"autofarm threshold 150 MUSHROOM_HELMET_PLUMP GRASS_TAIL_PIG" 将丰满头盔和猪尾巴的阈值设置为150	l
@@ -6263,6 +6267,7 @@ Announcement combat justice-interrogation-factors [justice-interrogation-factor,
 Announcement combat justice-intrigue-recruitment [justice-intrigue-predicate,justice-intrigue-motive]: {s} in order to {s}	{s1}，目的是{s2}	l
 Announcement combat merchant-hawk-origin [merchant-genuine-item,merchant-advert-origin]: get your {s} all the way from {s}	快来买你的一路从{s2}运来的{s1}	l
 Announcement combat negotiation-response []: attempted to read their opposite's underlying motivations but was swept along	试图看透对方的深层动机，却被对方牵着走	l
+Announcement combat quest-sentence [quest-object]: Speaking as a representative of , it is important that {s} be returned.	作为该组织的代表，我郑重说明，必须归还{s1}。	l
 Announcement combat rumor-event [rumor-person,rumor-owner,$name,$name]: {s} refused {s} demand of tribute from {s} to {s}.	{s1}拒绝了{s2}要求：让{s3}向{s4}进贡。	l
 Announcement combat sentence [actor,unit,$person]: {s} misses {s} badly, blocked by the divine intervention of mighty {s}!	{s1}远远偏离了{s2}，攻击被强大的{s3}以神力阻止了！	l
 Announcement combat sentence [diplomacy-group]: {s} accepts our tribute, and there is no hard feeling between our peoples.	{s1}接受我们的贡品，双方百姓也没什么芥蒂。	l
@@ -6805,7 +6810,6 @@ Announcement combat agreement-title-core [agreement-party-list,$travel-site]: th
 Announcement combat conversation-conflict-group [conversation-conflict-caste,conversation-conflict-entity]: {s} of {s}	{s2}的{s1}	l
 Announcement combat inscription [$person,$person]: I am {s}, {s}, once of the Underworld. I bind myself to this place.	我是{s1}，又名{s2}，曾来自地下世界。我将自身束缚于此地。	l
 Announcement combat memory-possession-core [memory-person,agreement-item,memory-person]: {s} would not give {s} to {s}	{s1}不肯把{s2}交给{s3}	l
-Announcement combat quest-sentence [quest-object,$name]: It would be wonderful if {s} found a lasting home within {s}.	若能让{s1}长久地留在{s2}，那就再好不过了。	l
 Announcement combat sentence [$name,dialogue-family,$unit]: I'm going to {s} to move into my new home with my {s} {s}.	我正前往{s1}，与我的{s2}{s3}搬入我们的新家。	l
 Announcement combat sentence [$travel-site]: The village {s} is the only other settlement to utilize the market there.	只有{s1}这座村庄也去那里赶集。	l
 Announcement combat sentence [diplomacy-group]: {s} is paying us tribute, and there is friendship between our peoples.	{s1}正在向我们进贡，双方百姓也相处和睦。	l
@@ -7080,6 +7084,7 @@ Announcement combat justice-intrigue-predicate [justice-intrigue-actor,justice-i
 Announcement combat memory-possession-core [memory-person,memory-transfer-object,memory-person]: {s} gave {s} to {s}	{s1}把{s2}给了{s3}	l
 Announcement combat merchant-hawk-origin [merchant-genuine-item,merchant-advert-origin]: get your {s} clear from {s}	快来买你的远从{s2}运来的{s1}	l
 Announcement combat negotiation-response []: made several jokes but came to see the seriousness of the issue at hand	讲了几个笑话，但随后意识到了当前问题的严重性	l
+Announcement combat quest-sentence []: believes that primordial remnants such as belong back in their rightful home.	该组织认为，这样的远古遗存应当回到它们原本的归属之地。	l
 Announcement combat rumor-event [$name,$travel-site]: I hear that a group from {s} left to reclaim the ruins of {s}.	听说一群来自{s1}的人出发去重建{s2}的废墟了。	l
 Announcement combat sentence [dialogue-object]: Fortune has favored you, and {s} is yours. Please consider my offer.	你走运了，{s1}归你了。请考虑我的提议。	l
 Announcement combat sentence [diplomacy-group]: {s} is paying us tribute, but there is ill-will between our peoples.	{s1}正在向我们进贡，可双方百姓却互有敌意。	l
@@ -7386,6 +7391,7 @@ Announcement combat justice-interrogation-response []: could not accept the unce
 Announcement combat negotiation-response []: attempted to put their opposite at ease as well and ultimately agreed	也试着让对方放松下来，最终同意了	l
 Announcement combat negotiation-response []: intimidated their opposite but grew meeker throughout the proceedings	威吓了对方，却在会谈过程中渐渐软下了态度	l
 Announcement combat negotiation-response []: joined in the discussion of history and past griefs but did not agree	一起谈起了往事与旧日伤痛，但仍未同意	l
+Announcement combat quest-sentence [quest-home-object]: It would be wonderful if {s} found a lasting home within .	若能让{s1}找到长久的归宿，那就再好不过了。	l
 Announcement combat rumor-event [$name,$name]: I hear that a group from {s} left to found a new settlement in {s}.	听说一群来自{s1}的人出发去{s2}建立新的定居点了。	l
 Announcement combat rumor-event []: Demons from the underworld must not be permitted to walk freely upon the land.	绝不能让地下世界的恶魔在地上横行！	l
 Announcement combat sentence [$kinship]: It pains me all the more, for the foul villain is my own {s}, now cursed.	更让我痛心的是，这个恶徒竟是我的{s1}，如今已遭到诅咒。	l
@@ -8031,6 +8037,7 @@ Announcement combat justice-intrigue-paragraph [justice-intrigue-sentence,justic
 Announcement combat merchant-hawk-origin [merchant-genuine-item,merchant-advert-origin]: get your {s} from {s}	快来买你的来自{s2}的{s1}	l
 Announcement combat merchant-hawk-origin [merchant-hawk-item,merchant-advert-origin]: {s} all the way from {s}	一路从{s2}运来的{s1}	l
 Announcement combat negotiation-response []: made a persuasive argument of their own but was ultimately swayed	也提出了有说服力的论点，但最终被说动了	l
+Announcement combat quest-sentence [quest-building]: It would be wonderful if found a lasting home within {s}.	若能让这件神器长久地留在{s1}，那就再好不过了。	l
 Announcement combat rumor-event []: A night creature has infiltrated our communities and now makes prey of us.	有只夜行生物混进了我们的聚落，如今把我们当成了猎物。	l
 Announcement combat sentence [unit,owned-object,owned-object]: {s} are unable to break the grip of {s} on {s}!	{s1}无法挣脱{s2}对{s3}的抓握！	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} appearing {s}.	{s1}正在出现在{s2}。	l
@@ -8671,6 +8678,7 @@ Announcement combat memory-sentence [$name,memory-location]: The forces of {s} h
 Announcement combat memory-sentence [$name]: The agreement to establish a guildhall for {s} was abandoned.	说好为{s1}建公会大厅，后来却没建。	l
 Announcement combat negotiation-response []: attempted to put their opposite at ease and ultimately agreed	试着让对方放松下来，最终同意了	l
 Announcement combat negotiation-response []: made a great show of flattery but left the matter unaddressed	大献殷勤，却避而不谈正事	l
+Announcement combat quest-sentence []: Speaking as a representative of , it is important that be returned.	作为该组织的代表，我郑重说明，必须归还这件神器。	l
 Announcement combat rumor-event []: Vanquishing a great beast on our behalf would bring us all much glory.	若能替我们打败一头巨兽，我们所有人都将引以为荣。	l
 Announcement combat rumor-event [rumor-person,rumor-position,rumor-person]: {s} became {s}, replacing {s}.	{s1}取代{s3}，成为了{s2}。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-emotion]: {s} were {s}.	{s1}曾{s2}。	l
@@ -10841,6 +10849,8 @@ Announcement combat merchant-origin [merchant-nation,merchant-people]: {s}, {s} 
 Announcement combat merchant-origin [merchant-nation,merchant-people]: {s}, {s} out to the west	西方的{s2}，也就是{s1}	l
 Announcement combat negotiation-paragraph [negotiation-sentence,negotiation-paragraph]: {s} {s}	{s1}{s2}	l
 Announcement combat negotiation-response []: negotiated deceptively in turn and had the mastery	也用欺骗手段谈判，并占据了上风	l
+Announcement combat quest-sentence [quest-holder,quest-destination]: {s} wants returned to {s}.	{s1}希望能把这件神器归还至{s2}。	l
+Announcement combat quest-sentence [quest-object,quest-destination]: wants {s} returned to {s}.	有人希望能把{s1}归还至{s2}。	l
 Announcement combat rumor-event []: It is time to send our cursed enemy back to the underworld.	该把那个该死的敌人送回地下世界了。	l
 Announcement combat rumor-event [rumor-identity]: Seek this place if you wish to confront {s} .	想对付{s1}，就去找这个地方。	l
 Announcement combat rumor-event [rumor-time,rumor-person]: I heard that {s}, {s} was kidnapped.	听说{s1}，{s2}被人绑走了。	l
@@ -11100,6 +11110,8 @@ Announcement combat negotiation-response []: negotiated eloquently in turn and h
 Announcement combat negotiation-response []: negotiated forcefully in turn and had the mastery	也强硬地谈判，并占据了上风	l
 Announcement combat negotiation-response []: negotiated with discernment but was outmaneuvered	审时度势地谈判，却被对方胜过一筹	l
 Announcement combat negotiation-response []: negotiated with humor in turn and had the mastery	也以幽默的方式谈判，并占据了上风	l
+Announcement combat quest-destination [quest-building,conversation-conflict-place]: {s} in {s}	{s2}的{s1}	l
+Announcement combat quest-sentence [quest-holder,$office]: {s} requires it to be a proper {s}.	{s1}需要它，才能成为名副其实的{s2}。	l
 Announcement combat quest-sentence [quest-object]: I desire that {s} be returned to my family.	我希望能把{s1}归还给我的家族。	l
 Announcement combat rumor-event [rumor-identity]: Seek this place if you wish to confront {s}.	想对付{s1}，就去找这个地方。	l
 Announcement combat sentence [$creature]: ... and the {s} saw the sun and vomited on the spot!	……然后那个{s1}看见太阳，当场吐了！	l
@@ -11320,6 +11332,8 @@ Announcement combat memory-possession [memory-possession-core,memory-location]: 
 Announcement combat memory-possession [memory-possession-core,memory-location]: {s} in {s} in	在{s2}，{s1}	l
 Announcement combat negotiation-recipient [$historical-actor,$office,$name]: {s}, {s} of {s},	{s3}的{s2}{s1}	l
 Announcement combat negotiation-response []: negotiated lightly in turn but was outmaneuvered	也轻松地谈判，却被对方胜过一筹	l
+Announcement combat quest-holder [$historical-actor,conversation-conflict-entity]: {s} of {s}	{s2}的{s1}	l
+Announcement combat quest-sentence []: It would be wonderful if found a lasting home within .	若能让这件神器找到长久的归宿，那就再好不过了。	l
 Announcement combat rumor-event [$book,$name,$travel-site]: I hear that {s} is in {s} in {s}.	听说{s1}在{s2}的{s3}里。	l
 Announcement combat rumor-event []: Not far from here, a fearsome creature has made its home.	离这里不远，盘踞着一只可怕的生物。	l
 Announcement combat sentence [$number]: There are {s} villages which utilize the market here.	有{s1}座村庄来这里赶集。	l
@@ -11597,7 +11611,6 @@ Announcement combat memorial-weapon-death [memorial-weapon-verb,$memorial-actor]
 Announcement combat memory-sentence [memory-person]: The body of {s} decayed without burial.	{s1}的尸体没人埋，都烂了。	l
 Announcement combat negotiation-response []: negotiated calmly in turn but was outmaneuvered	也冷静地谈判，却被对方胜过一筹	l
 Announcement combat negotiation-response []: negotiated with discernment and had the mastery	审时度势地谈判，并占据了上风	l
-Announcement combat quest-sentence [quest-holder,$term]: {s} requires it to be a proper {s}.	{s1}需要它，才能成为名副其实的{s2}。	l
 Announcement combat rumor-event [$person]: Seek this place if you wish to confront {s} the .	想对付{s1}，就去找这个地方。	l
 Announcement combat rumor-event []: A creature of the night has our people cowering in fear.	一只夜行生物把我们的族人吓得瑟瑟发抖。	l
 Announcement combat rumor-event []: At times, creeping things slither out from below ground.	时不时会有爬行的东西从地下钻出来。	l
@@ -11900,6 +11913,7 @@ Announcement combat memory-sentence [$person]: I have communed with {s} in this 
 Announcement combat negotiation-response []: negotiated lightly in turn and had the mastery	也轻松地谈判，并占据了上风	l
 Announcement combat negotiation-response []: negotiated with flattery but was outmaneuvered	用奉承话谈判，却被对方胜过一筹	l
 Announcement combat negotiation-sentence [$historical-actor,negotiation-response]: {s} {s}.	{s1}{s2}。	l
+Announcement combat quest-sentence [quest-holder,quest-object]: {s} wants {s} returned to .	{s1}希望能归还{s2}（目的地未记载）。	l
 Announcement combat rumor-event []: Malicious outlaws have brought terror to our doorsteps.	凶恶的亡命之徒欺上门来，闹得人心惶惶。	l
 Announcement combat rumor-event []: We have been under siege by an ancient force of nature.	一股古老的自然之力一直在围攻我们。	l
 Announcement combat sentence [boast-victim,boast-slain-clause]: I am the death of {s}, {s}!	给{s1}带来死亡的正是我，{s2}！	l
@@ -12478,7 +12492,7 @@ Announcement combat memory-sentence [memory-relation]: I was attacked by my own 
 Announcement combat negotiation-response []: negotiated deceptively but was outmaneuvered	用欺骗手段谈判，却被对方胜过一筹	l
 Announcement combat negotiation-response []: negotiated with flattery and had the mastery	用奉承话谈判，并占据了上风	l
 Announcement combat negotiation-response []: read their opposite's underlying motivations	看透了对方的深层动机	l
-Announcement combat quest-sentence [rumor-position]: I require it as a symbol of the {s}.	我需要它作为{s1}的象征。	l
+Announcement combat quest-sentence [quest-position]: I require it as a symbol of the {s}.	我需要它作为{s1}的象征。	l
 Announcement combat rumor-event [$book,$name,$name]: I hear that {s} is not in {s}'s {s}.	听说{s1}不在{s2}的{s3}里。	l
 Announcement combat rumor-event [$name,$travel-site]: The army of {s} is marching on {s}!	{s1}的军队正向{s2}进军！	l
 Announcement combat rumor-event []: A beast from the wilds has been harassing our people.	有头野兽从荒野而来，一直侵扰我们的族人。	l
@@ -12772,6 +12786,7 @@ Announcement combat negotiation-response []: negotiated forcefully but was outma
 Announcement combat negotiation-response []: negotiated persuasively and had the mastery	凭说服力谈判，并占据了上风	l
 Announcement combat negotiation-response []: negotiated with empathy and had the mastery	体谅对方的处境，展开谈判，并占据了上风	l
 Announcement combat negotiation-response []: negotiated with humor but was outmaneuvered	以幽默的方式谈判，却被对方胜过一筹	l
+Announcement combat quest-sentence []: Any should be brought to , or given to one of us.	发现任何这类遗存，都应将其送至指定地点，或交给我们中的一员。	l
 Announcement combat rumor-event [$travel-site,$name]: We reclaimed {s} on behalf of {s}.	我们代表{s2}收复了{s1}。	l
 Announcement combat sentence [$item,merchant-address]: Might I interest you in {s}, {s}?	{s2}，我能让你对{s1}感兴趣吗？	l
 Announcement combat sentence [$sphere]: There is also the issue of their worship of {s}.	还有，他们崇拜{s1}，这也是个问题。	l
@@ -13651,6 +13666,7 @@ Announcement combat memory-sentence [memory-person]: I got into an argument with
 Announcement combat negotiation-opening []: appeal to shared history and show empathy	回顾共同的历史，向对方表达同情	l
 Announcement combat negotiation-response []: negotiated in turn but was outmaneuvered	也展开谈判，却被对方胜过一筹	l
 Announcement combat negotiation-response []: negotiated lightly but was outmaneuvered	轻松地谈判，却被对方胜过一筹	l
+Announcement combat quest-position [$office,conversation-conflict-entity]: {s} of {s}	{s2}的{s1}	l
 Announcement combat rumor-event []: A vile beast from the caverns now walks the land.	一头洞穴里的恶兽跑到了地上，如今正在四处游荡。	l
 Announcement combat rumor-event []: Creatures grow mighty out in the wildest regions.	越是荒蛮之地，生灵就越强悍。	l
 Announcement combat rumor-event []: Our people have been tormented by a fearsome foe.	我们的族人饱受一个可怕敌人的折磨。	l
@@ -14327,6 +14343,7 @@ Announcement combat negotiation-opening []: negotiate, mixing in a dose of flatt
 Announcement combat negotiation-response []: negotiated in turn and had the mastery	也展开谈判，并占据了上风	l
 Announcement combat negotiation-response []: negotiated lightly and had the mastery	轻松地谈判，并占据了上风	l
 Announcement combat negotiation-sentence []: The proposal was a resounding failure.	这项提案彻底失败了。	l
+Announcement combat quest-sentence [quest-holder]: {s} requires it to be a proper .	{s1}需要它，才能名副其实地担任这一职位。	l
 Announcement combat reference-building [reference-building-type,$name]: the {s} {s}	{s1}{s2}	l
 Announcement combat rumor-event [$travel-site]: I hear that {s} has been conquered.	听说{s1}已经被征服了。	l
 Announcement combat rumor-event []: A beast from underground has been assailing us.	有头野兽从地下而来，一直袭击我们。	l
@@ -15016,7 +15033,7 @@ Announcement combat memory-sentence [memory-relation]: I am reunited with my {s}
 Announcement combat memory-sentence [memory-relation]: I am together with my {s}.	跟我的{s1}在一起了。	l
 Announcement combat memory-value-insight [memory-value]: the worthlessness of {s}	{s1}毫无价值	l
 Announcement combat merchant-hawk-item [merchant-genuine-item]: your very own {s}	专属于你的{s1}	l
-Announcement combat quest-sentence [rumor-position]: It is the symbol of the {s}.	它是{s1}的象征。	l
+Announcement combat quest-sentence [quest-position]: It is the symbol of the {s}.	它是{s1}的象征。	l
 Announcement combat rumor-event []: Seek this place if you wish to confront the .	想对付这个身份不明的恶徒，就去找这个地方。	l
 Announcement combat rumor-event [rumor-person]: The army of {s} is marching here!	{s1}的军队正向这里进军！	l
 Announcement combat rumor-flight []: just before an army descended upon the place	了那里，随后一支军队便袭击了那里	l
@@ -16050,6 +16067,9 @@ Announcement combat memory-sentence []: Somebody refused to name themself to .	�
 Announcement combat negotiation-opening []: use humor to disarm their opponent	用幽默打消对方的戒心	l
 Announcement combat negotiation-response []: spun a web of deceit of their own	也编织了一张谎言之网	l
 Announcement combat negotiation-sentence []: The proposal was a great success.	这项提案大获成功。	l
+Announcement combat quest-sentence []: I desire that be returned to my family.	我希望能把这件神器归还给我的家族。	l
+Announcement combat quest-sentence [quest-destination]: wants returned to {s}.	有人希望能把这件神器归还至{s1}。	l
+Announcement combat quest-sentence [quest-holder,quest-object]: {s} wants {s}.	{s1}想要{s2}。	l
 Announcement combat rumor-event []: Sometimes animals just get out of control.	动物有时候就是会失控。	l
 Announcement combat rumor-event [rumor-identity]: This insidious evil is {s} .	这个阴险的恶徒就是{s1}。	l
 Announcement combat rumor-event [rumor-person,rumor-position]: {s} became {s}.	{s1}成为了{s2}。	l
@@ -16412,6 +16432,7 @@ Announcement combat memory-sentence [memory-person]: {s} self-identified to .	{s
 Announcement combat negotiation-response []: negotiated but was outmaneuvered	展开谈判，却被对方胜过一筹	l
 Announcement combat negotiation-sentence []: The proposal was not successful.	这项提案未能成功。	l
 Announcement combat negotiation-speaker [$historical-actor,$name]: {s} of {s}	{s2}的{s1}	l
+Announcement combat quest-sentence [$office]: requires it to be a proper {s}.	有人需要它，才能成为名副其实的{s1}。	l
 Announcement combat rumor-event []: Seek this place if you wish to confront .	想对付这个身份不明的恶徒，就去找这个地方。	l
 Announcement combat rumor-event [rumor-identity]: This insidious evil is {s}.	这个阴险的恶徒就是{s1}。	l
 Announcement combat sentence [$distance]: There is a long-ranging patrol {s}.	有一支远程巡逻队在{s1}。	l
@@ -17178,7 +17199,7 @@ Announcement combat merchant-origin [merchant-nation]: {s}, out to the east	东�
 Announcement combat merchant-origin [merchant-nation]: {s}, out to the west	西方的{s1}	l
 Announcement combat negotiation-opening []: make conversation to set a mood	通过闲谈调节气氛	l
 Announcement combat negotiation-response []: negotiated and had the mastery	展开谈判，并占据了上风	l
-Announcement combat quest-destination [quest-place,quest-place]: {s} in {s}	{s2}的{s1}	l
+Announcement combat quest-destination [conversation-conflict-place]: in {s}	{s1}（建筑未记载）	l
 Announcement combat rumor-event [$person]: This insidious evil is {s} the .	这个阴险的恶徒就是{s1}。	l
 Announcement combat sentence [$item,merchant-address]: Good {s} there, {s}.	{s2}，那里的优质的{s1}。	l
 Announcement combat sentence [$name]: I rule {s} from this capital as well.	我也在这座首都统治着{s1}。	l
@@ -17571,6 +17592,8 @@ Announcement combat memory-performance-core [memory-poem]: {s} was recited	有�
 Announcement combat memory-sentence [memory-object]: I saw {s} on display.	看到了展出的{s1}。	l
 Announcement combat memory-sentence [memory-person,memory-death]: {s} {s}.	{s1}{s2}。	l
 Announcement combat negotiation-purpose []: demand unconditional surrender	要求对方无条件投降	l
+Announcement combat quest-sentence [quest-holder]: {s} wants returned to .	{s1}希望能归还这件神器（目的地未记载）。	l
+Announcement combat quest-sentence [quest-object]: wants {s} returned to .	有人希望能归还{s1}（目的地未记载）。	l
 Announcement combat reference-population [$creature]: animated {s} corpses	复活的{s1}尸体	l
 Announcement combat rumor-event [$name]: The army of {s} is marching here!	{s1}的军队正向这里进军！	l
 Announcement combat rumor-event [$travel-site]: We had to pull out of {s}.	我们不得不撤出{s1}。	l
@@ -17980,6 +18003,8 @@ Announcement combat memory-possession [memory-possession-core]: {s} in in	{s1}�
 Announcement combat memory-sentence []: You refused to name yourself to .	你不肯向名称未记载的一方透露自己的名字。	l
 Announcement combat memory-sentence [agreement-item]: {s} was given away.	{s1}被送人了。	l
 Announcement combat memory-value-insight [memory-value]: the value of {s}	{s1}的价值	l
+Announcement combat quest-home-object [$announcement-item,$book]: {s} {s}	{s2}{s1}	l
+Announcement combat quest-position [conversation-conflict-entity]: of {s}	{s1}的职位	l
 Announcement combat reference-building [reference-building-type]: the {s}	{s1}	l
 Announcement combat sentence [$item,merchant-address]: Splendid {s}, {s}.	{s2}，出色的{s1}。	l
 Announcement combat sentence [$name]: The surrounding area is called {s}.	周边地区叫做{s1}。	l
@@ -18393,6 +18418,7 @@ Announcement combat merchant-origin []: the settlements out to the north	北方�
 Announcement combat merchant-origin []: the settlements out to the south	南方的那些定居点	l
 Announcement combat negotiation-response []: replied with a fiery speech	发表了慷慨激昂的演说作为回应	l
 Announcement combat negotiation-sentence []: The proposal was a failure.	这项提案失败了。	l
+Announcement combat quest-sentence []: I require it as a symbol of the .	我需要它作为这一职位的象征。	l
 Announcement combat rumor-identity-descriptor [rumor-identity-role]: {s}	{s1}	l
 Announcement combat sentence [$book]: I cannot give up my quest for {s}.	我不能放弃寻找{s1}。	l
 Announcement combat sentence []: An ambush! Curse all friends of nature!	有埋伏！诅咒所有自然之友！	l
@@ -18791,6 +18817,8 @@ Announcement combat merchant-origin []: the settlements out to the west	西方�
 Announcement combat negotiation-purpose []: make contact and open trade	建立联系并开展贸易	l
 Announcement combat negotiation-response []: intimidated their opposite	威吓了对方	l
 Announcement combat negotiation-response []: made a persuasive argument	提出了有说服力的论点	l
+Announcement combat quest-holder [conversation-conflict-entity]: of {s}	{s1}的一员	l
+Announcement combat quest-sentence []: I desire that be returned to me.	我希望能把这件神器归还给我。	l
 Announcement combat quest-sentence []: It is a valuable treasure to us.	它是我们珍贵的宝物。	l
 Announcement combat reference-building [reference-building-type]: a {s}	{s1}	l
 Announcement combat rumor-event [$book]: I hear that {s} was destroyed.	听说{s1}被毁掉了。	l
@@ -19259,7 +19287,8 @@ Announcement combat merchant-origin [$name]: {s}, out to the southeast	东南方
 Announcement combat merchant-origin [$name]: {s}, out to the southwest	西南方的{s1}	l
 Announcement combat negotiation-opening []: intimidate their adversary	威吓对手	l
 Announcement combat negotiation-opening []: negotiate with discernment	审时度势地谈判	l
-Announcement combat quest-holder [$historical-actor,$name]: {s} of {s}	{s2}的{s1}	l
+Announcement combat quest-sentence [quest-holder]: {s} wants returned.	{s1}希望能归还这件神器。	l
+Announcement combat quest-sentence [quest-object]: wants {s} returned.	有人希望能归还{s1}。	l
 Announcement combat rumor-army [$name,rumor-person]: of {s} led by {s}	（隶属{s1}，由{s2}率领）	l
 Announcement combat rumor-event [rumor-identity]: The creature is {s}.	这只生物就是{s1}。	l
 Announcement combat sentence [$item,merchant-address]: Great {s}, {s}.	{s2}，很棒的{s1}。	l
@@ -19765,6 +19794,7 @@ Announcement combat memory-sentence [memory-knowledge]: I taught {s}.	教了教{
 Announcement combat memory-setting []: a horribly substandard setting	差得实在不像样	l
 Announcement combat negotiation-opening []: flatter their counterpart	奉承对方	l
 Announcement combat negotiation-paragraph [negotiation-sentence]: {s}	{s1}	l
+Announcement combat quest-sentence []: Last I heard, it was held by .	我最后听说，它由身份未记载的人保管。	l
 Announcement combat rumor-event []: Seek this place if you hunt the .	想猎杀这只身份不明的生物，就去找这个地方。	l
 Announcement combat sentence [$item,merchant-address]: Good {s}, {s}.	{s2}，优质的{s1}。	l
 Announcement combat sentence [$term]: {s} destroyed by battering ram.	{s1}被攻城锤摧毁了。	l
@@ -20232,6 +20262,7 @@ Announcement combat memory-sentence [memory-person]: I murdered {s}.	我杀害�
 Announcement combat memory-sentence [memory-person]: {s} has killed.	{s1}杀人了。	l
 Announcement combat negotiation-recipient [negotiation-speaker]: {s}	{s1}	l
 Announcement combat negotiation-sentence []: The proposal succeeded.	这项提案成功了。	l
+Announcement combat quest-holder [conversation-conflict-entity]: {s}	{s1}	l
 Announcement combat quest-object [$book,$announcement-item]: {s} {s}	{s1}{s2}	l
 Announcement combat rumor-event [$person]: The creature is {s} the .	这只生物就是{s1}。	l
 Announcement combat sentence [$book,$item]: I have obtained {s} {s}.	我已取得{s1}{s2}。	l
@@ -20700,6 +20731,8 @@ Announcement combat memory-sermon-topic [memory-value-insight]: {s}	{s1}	l
 Announcement combat merchant-hawk-item [merchant-genuine-item]: {s}	{s1}	l
 Announcement combat negotiation-purpose []: improve trade relations	改善贸易关系	l
 Announcement combat negotiation-sentence [$historical-actor]: {s} .	{s1}……。	l
+Announcement combat quest-sentence []: Last I saw, it was held by .	我最后见到它时，它由身份未记载的人保管。	l
+Announcement combat quest-sentence []: requires it to be a proper .	有人需要它，才能名副其实地担任这一职位。	l
 Announcement combat sentence [$term]: A {s} has sprung from ambush!	一只{s1}从埋伏中跳了出来！	l
 Announcement combat sentence [$term]: {s} toppled by battering ram.	{s1}被攻城锤撞倒了。	l
 Announcement combat sentence []: I'd love to travel and create art.	我很想一边旅行，一边从事艺术创作。	l
@@ -22225,6 +22258,9 @@ Announcement combat merchant-genuine-item [$item]: authentic {s}	正宗的{s1}	l
 Announcement combat negotiation-opening []: negotiate eloquently	凭口才谈判	l
 Announcement combat negotiation-opening []: negotiate forcefully	强硬地谈判	l
 Announcement combat negotiation-speaker [$historical-actor]: {s}	{s1}	l
+Announcement combat quest-sentence []: It is the symbol of the .	它是这一职位的象征。	l
+Announcement combat quest-sentence []: It should be brought to .	应当将它送至指定地点。	l
+Announcement combat quest-sentence []: Last I heard, it was in .	我最后听说，它在某处（地点未记载）。	l
 Announcement combat rumor-event []: This insidious evil is the .	这个阴险的恶徒身份不明。	l
 Announcement combat sentence [$item]: Are you interested in {s}?	你对{s1}感兴趣吗？	l
 Announcement combat sentence [$item]: Excellent {s} right there.	就那里的上等的{s1}。	l
@@ -23454,7 +23490,10 @@ Announcement combat memory-sentence [memory-made]: I made {s}.	交到了{s1}。	
 Announcement combat memory-sentence [memory-performance]: {s}.	{s1}。	l
 Announcement combat memory-sentence [memory-work]: I read {s}.	读了{s1}。	l
 Announcement combat negotiation-opening []: argue persuasively	据理说服对方	l
+Announcement combat quest-destination [quest-building]: {s} in	{s1}（地点未记载）	l
 Announcement combat quest-sentence []: Last I heard, I had it.	我最后听说，它由我保管。	l
+Announcement combat quest-sentence []: Last I saw, it was in .	我最后见到它时，它在某处（地点未记载）。	l
+Announcement combat quest-sentence [quest-holder]: {s} wants .	{s1}想要这件神器。	l
 Announcement combat read-announcement [$read-description]: {s}	{s1}	l
 Announcement combat read-announcement []: The pages are blank.	书页是空白的。	l
 Announcement combat reference-building-type []: counting house	账房	l
@@ -24149,6 +24188,7 @@ Announcement combat merchant-address [$creature]: my good {s}	我亲爱的{s1}	l
 Announcement combat merchant-hawk [merchant-hawk-origin]: {s}	{s1}	l
 Announcement combat merchant-nation [$name,$name]: {s}, "{s}"	{s1}（“{s2}”）	l
 Announcement combat merchant-origin [$name,$name]: {s}, "{s}"	{s1}（“{s2}”）	l
+Announcement combat quest-sentence [quest-object]: wants {s}.	有人想要{s1}。	l
 Announcement combat reference-population []: animated corpses	种类未注明的复活尸体	l
 Announcement combat rumor-event []: Best keep your head down.	最好还是低调些。	l
 Announcement combat sentence [$item]: Decent {s} right there.	就那里的不错的{s1}。	l
@@ -24802,6 +24842,7 @@ Announcement combat merchant-advert-origin [$name]: fair {s}	美丽的{s1}	l
 Announcement combat merchant-origin []: the surrounding area	周边地区	l
 Announcement combat negotiation-opening []: negotiate calmly	冷静地谈判	l
 Announcement combat negotiation-purpose []: seek an alliance	寻求结盟	l
+Announcement combat quest-holder [$historical-actor]: {s} of	{s1}	l
 Announcement combat read-announcement []: It has no writing.	上面没有文字。	l
 Announcement combat rumor-event []: This insidious evil is .	这个阴险的恶徒身份不明。	l
 Announcement combat rumor-person [$term,$person]: my {s} {s}	我的{s1}{s2}	l
@@ -26433,7 +26474,10 @@ Announcement combat memory-sentence [memory-reunion]: {s}.	{s1}。	l
 Announcement combat memory-setting []: a fantastic setting	好极了	l
 Announcement combat memory-setting []: a very good setting	相当好	l
 Announcement combat memory-setting []: a very poor setting	很差	l
+Announcement combat quest-building []: an underworld spire	地下世界尖塔	l
+Announcement combat quest-building []: an unknown building	未知建筑	l
 Announcement combat quest-object [$announcement-item]: {s}	{s1}	l
+Announcement combat quest-sentence []: wants returned to .	有人希望能归还这件神器（目的地未记载）。	l
 Announcement combat read-announcement []: It has no pages.	它没有书页。	l
 Announcement combat read-announcement []: You cannot read.	你无法阅读。	l
 Announcement combat sentence [$item]: Excellent {s} there.	那里的上等的{s1}。	l
@@ -27321,7 +27365,10 @@ Announcement combat memory-person []: an unknown creature	不明生物	l
 Announcement combat memory-sentence [$event]: It was {s}.	那是{s1}。	l
 Announcement combat memory-setting []: a horrible setting	差极了	l
 Announcement combat merchant-origin []: just outside town	镇外不远处	l
+Announcement combat quest-building [$conflict-place]: {s}	{s1}	l
 Announcement combat quest-holder [$historical-actor]: {s}	{s1}	l
+Announcement combat quest-home-object [quest-object]: {s}	{s1}	l
+Announcement combat quest-sentence [quest-object]: {s}...	{s1}……	l
 Announcement combat read-announcement []: You cannot see.	你看不见。	l
 Announcement combat reference-building-type []: catacombs	地下墓穴	l
 Announcement combat reference-building-type []: guildhall	行会大厅	l
@@ -29341,6 +29388,7 @@ Announcement combat merchant-address []: my good person	好心人	l
 Announcement combat merchant-advert-origin [$name]: {s}	{s1}	l
 Announcement combat merchant-origin []: the settlements	那些定居点	l
 Announcement combat merchant-people []: some of my kind	我的一些同族	l
+Announcement combat quest-building []: a counting house	账房	l
 Announcement combat reference-building-type []: dungeon	地牢	l
 Announcement combat reference-building-type []: library	图书馆	l
 Announcement combat reference-value []: martial prowess	武艺	l
@@ -30368,6 +30416,7 @@ Announcement combat merchant-address []: my good woman	好女士	l
 Announcement combat merchant-genuine-item [$item]: {s}	{s1}	l
 Announcement combat negotiation-purpose []: make peace	议和	l
 Announcement combat owned-layer [owner,layer]: {s} {s}	{s1}{s2}	l
+Announcement combat quest-sentence []: wants returned.	有人希望能归还这件神器。	l
 Announcement combat reference-building-type []: market	市场	l
 Announcement combat reference-building-type []: sewers	下水道	l
 Announcement combat reference-building-type []: tavern	酒馆	l
@@ -31455,6 +31504,7 @@ Announcement combat memory-performance-work []: music	音乐	l
 Announcement combat memory-setting []: a good setting	挺好	l
 Announcement combat memory-setting []: a poor setting	不太好	l
 Announcement combat negotiation-opening []: negotiate	谈判	l
+Announcement combat quest-place [quest-building]: {s}	{s1}	l
 Announcement combat reference-building-type []: spire	地下尖塔	l
 Announcement combat reference-building-type []: tower	高塔	l
 Announcement combat reference-kind []: forest retreat	森林聚落	l
@@ -32614,6 +32664,8 @@ Announcement combat memory-relation []: acquaintance	熟人	l
 Announcement combat memory-value []: martial prowess	武艺	l
 Announcement combat merchant-address []: my good man	好先生	l
 Announcement combat merchant-people [$creature]: {s}	{s1}	l
+Announcement combat quest-building []: the catacombs	地下墓穴	l
+Announcement combat quest-position [$office]: {s} of	{s1}	l
 Announcement combat read-announcement []: You read .	你进行了阅读。	l
 Announcement combat reference-building-type []: keep	城堡主楼	l
 Announcement combat reference-building-type []: tomb	陵墓	l
@@ -33859,6 +33911,7 @@ Announcement combat memory-death []: froze to death	被冻死了	l
 Announcement combat memory-ghost-action []: haunted	缠上了	l
 Announcement combat memory-offspring []: septuplets	七胞胎	l
 Announcement combat memory-offspring []: sextuplets	六胞胎	l
+Announcement combat quest-building []: a dark tower	黑暗高塔	l
 Announcement combat reference-kind [$creature]: {s}	{s1}	l
 Announcement combat reference-value []: competition	竞争	l
 Announcement combat reference-value []: cooperation	合作	l
@@ -35118,6 +35171,8 @@ Announcement combat memory-offspring []: octuplets	八胞胎	l
 Announcement combat memory-value []: craftsmanship	工艺	l
 Announcement combat memory-value []: introspection	自省	l
 Announcement combat merchant-address []: my friend	朋友	l
+Announcement combat quest-building []: a guildhall	行会大厅	l
+Announcement combat quest-building []: a mead hall	蜜酒大厅	l
 Announcement combat reference-value []: friendship	友情	l
 Announcement combat rumor-time []: a few hours ago	几小时前	l
 Announcement combat rumor-time []: a few weeks ago	几周前	l
@@ -36453,7 +36508,9 @@ Announcement combat memory-value []: independence	独立	l
 Announcement combat memory-value []: leisure time	闲暇	l
 Announcement combat memory-value []: perseverance	坚韧	l
 Announcement combat memory-value []: self-control	自律	l
-Announcement combat quest-place [$reference]: {s}	{s1}	l
+Announcement combat quest-building []: a hospital	医院	l
+Announcement combat quest-building []: the sewers	下水道	l
+Announcement combat quest-position [$office]: {s}	{s1}	l
 Announcement combat reference-value []: eloquence	口才	l
 Announcement combat reference-value []: hard work	勤劳	l
 Announcement combat reference-value []: knowledge	知识	l
@@ -37853,6 +37910,8 @@ Announcement combat memory-value []: cooperation	合作	l
 Announcement combat memory-value []: tranquility	宁静	l
 Announcement combat merchant-nation [$name]: {s}	{s1}	l
 Announcement combat merchant-origin [$name]: {s}	{s1}	l
+Announcement combat quest-building []: a dungeon	地牢	l
+Announcement combat quest-building []: a library	图书馆	l
 Announcement combat reference-kind []: dark pits	黑暗深坑	l
 Announcement combat reference-kind []: labyrinth	迷宫	l
 Announcement combat reference-kind []: monastery	修道院	l
@@ -39347,6 +39406,9 @@ Announcement combat memory-relation []: sibling	兄弟姐妹	l
 Announcement combat memory-sentence []: I died.	我死了。	l
 Announcement combat memory-sentence []: It was.	就是那样。	l
 Announcement combat memory-value []: friendship	友情	l
+Announcement combat quest-building []: a market	市场	l
+Announcement combat quest-building []: a tavern	酒馆	l
+Announcement combat quest-building []: a temple	神殿	l
 Announcement combat reference-kind []: fortress	要塞	l
 Announcement combat reference-kind []: hillocks	丘堡	l
 Announcement combat reference-kind []: monument	纪念碑	l
@@ -40808,6 +40870,8 @@ Announcement combat memory-value []: merriment	欢庆	l
 Announcement combat memory-value []: sacrifice	牺牲	l
 Announcement combat memory-value []: tradition	传统	l
 Announcement combat merchant-town [$name]: {s}	{s1}	l
+Announcement combat quest-building []: a tower	高塔	l
+Announcement combat quest-sentence []: wants .	有人想要这件神器。	l
 Announcement combat reference-building []: the	类型和名称未注明的建筑	l
 Announcement combat reference-kind []: dungeon	地牢	l
 Announcement combat reference-kind []: ghostly	种类未注明的幽灵	l
@@ -42361,7 +42425,8 @@ Announcement combat memory-relation []: lover	恋人	l
 Announcement combat memory-value []: commerce	商业	l
 Announcement combat memory-value []: fairness	公平	l
 Announcement combat memory-value []: stoicism	克制	l
-Announcement combat quest-holder [$name]: {s}	{s1}	l
+Announcement combat quest-building []: a keep	城堡主楼	l
+Announcement combat quest-building []: a tomb	陵墓	l
 Announcement combat quest-object [$book]: {s}	{s1}	l
 Announcement combat quest-object []: Untitled	无题	l
 Announcement combat reference-kind []: castle	城堡	l
@@ -43892,6 +43957,7 @@ Announcement combat memory-value []: harmony	和谐	l
 Announcement combat memory-value []: loyalty	忠诚	l
 Announcement combat memory-value []: romance	浪漫	l
 Announcement combat memory-work [$book]: {s}	{s1}	l
+Announcement combat quest-destination []: in	地点未记载	l
 Announcement combat reference-building []: a	类型未注明的建筑	l
 Announcement combat reference-kind []: deity	神祇	l
 Announcement combat reference-kind []: force	自然之灵	l
@@ -47205,6 +47271,7 @@ Announcement combat memory-value []: power	权势	l
 Announcement combat memory-value []: skill	技艺	l
 Announcement combat memory-value []: truth	诚实	l
 Announcement combat merchant-town []: town	本镇	l
+Announcement combat quest-sentence []: ...	……	l
 Announcement combat weapon-part []: handle	柄	l
 Announcement combat weapon-part []: pommel	圆头	l
 Announcement combat work-ordinal []: fifth	5	l
@@ -49087,6 +49154,7 @@ Announcement combat decay []: decomposing	正在腐烂的	l
 Announcement combat material [$term]: {s}	{s1}	l
 Announcement combat memory-death []: died	死了	l
 Announcement combat memory-person []: you	你	l
+Announcement combat quest-position []: of	职位	l
 Announcement combat sentence [head]: {s}!	{s1}！	l
 Announcement combat threat-crimes []: and	犯下了两项罪行（细节不明）	l
 Announcement combat threat-fiend []: vile	卑劣的	l
@@ -52740,6 +52808,7 @@ Announcement combat memory-person []: I	我	l
 Announcement combat object [$body]: {s}	{s1}	l
 Announcement combat object [$item]: {s}	{s1}	l
 Announcement combat owner [unit]: {s}'s	{s1}的	l
+Announcement combat quest-holder []: of	身份未记载的请求者	l
 Announcement combat rumor-person []: me	我	l
 Announcement combat sentence []: Where?	哪里？	l
 Announcement distance: far to the north	远在北方	l

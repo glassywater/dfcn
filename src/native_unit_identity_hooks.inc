@@ -1022,6 +1022,25 @@ static bool install_native_unit_identity_hooks() {
         // Classic CALL 0x866512 is mapped with this real supplier site.
         {0x868c92, 0x52d650,
             reinterpret_cast<const void *>(&capture_native_conversation_portrait_capitalization)},
+        // Barter capitalizes the captured speaker before appending ': ' to
+        // Show, refusal and treasure-return reports. Keep that exact source
+        // bound to its native species, office and personal-name fields.
+        {0x273c3c, 0x52d650,
+            reinterpret_cast<const void *>(&capture_native_conversation_portrait_capitalization)},
+        {0x274372, 0x52d650,
+            reinterpret_cast<const void *>(&capture_native_conversation_portrait_capitalization)},
+        {0x27445b, 0x52d650,
+            reinterpret_cast<const void *>(&capture_native_conversation_portrait_capitalization)},
+        {0x2745ef, 0x52d650,
+            reinterpret_cast<const void *>(&capture_native_conversation_portrait_capitalization)},
+        {0x277c5e, 0x52d650,
+            reinterpret_cast<const void *>(&capture_native_conversation_portrait_capitalization)},
+        {0x277e9d, 0x52d650,
+            reinterpret_cast<const void *>(&capture_native_conversation_portrait_capitalization)},
+        {0x2786a6, 0x52d650,
+            reinterpret_cast<const void *>(&capture_native_conversation_portrait_capitalization)},
+        {0x278fa6, 0x52d650,
+            reinterpret_cast<const void *>(&capture_native_conversation_portrait_capitalization)},
         // Sheet header: output [rsp+0x3da0] goes unchanged to addst at
         // 0x15c1f8. The quotes at 0x15c1de/0x15c209 are separate glyphs.
         // Caller [rsp+0xa8] is its unit. CALL places the return address
