@@ -69,6 +69,8 @@ static uint64_t native_dfhack_text_capture_key(const graphicst *gps);
 static void clear_native_dfhack_text_buffer(const graphicst *gps);
 static std::optional<std::string> lookup_native_dfhack_animal_assignment_text(
     const graphicst *gps, int x, int y, std::string_view visible);
+static std::optional<std::string> lookup_native_dfhack_trade_goods_text(
+    const graphicst *gps, int x, int y, std::string_view visible);
 static bool install_native_dfhack_messagebox_hook();
 static bool install_native_dfhack_prompt_hook();
 static bool install_native_dfhack_stonesense_hook();

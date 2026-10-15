@@ -1,6 +1,7 @@
 // internal/caravan/movegoods.lua owns fixed filter widgets around an item
-// list. Keep the list's item grammar, quantities and selection icons native
-// to their existing readers; GUI captions must not use generic word senses.
+// list. Its foreground layer needs its own complete item-caption reader;
+// the native DF item-panel reader does not run on this layer. Quantities,
+// values and selection icons stay in their independently authored columns.
 {
     constexpr std::string_view trade_scope = "DFHack GUI Trade goods: ";
     constexpr std::string_view trade_title = "Move goods to/from depot";
@@ -153,9 +154,53 @@
                 std::pair{0, 7}, std::pair{12, 6}, std::pair{21, 4}, std::pair{26, 5}})
             trade_sort(left + offset, header_y, left + offset + width);
         // A five-cell distance field can instead say that goods are at depot.
-        for (int y = header_y + 2; y < bottom - 8; ++y)
+        const int name_left = left + 26, name_right = right - 2;
+        for (int y = header_y + 2; y < bottom - 8; ++y) {
             if (dfhack_context_rows[y].compare(left + 1, 5, "depot") == 0)
                 trade_literal(left + 1, y, "depot", left + 6);
+            const auto &row = dfhack_context_rows[y];
+            const auto distance = trim_view(std::string_view(row).substr(left + 1, 5));
+            const auto quantity = trim_view(std::string_view(row).substr(left + 19, 5));
+            const auto digits = [](std::string_view source) {
+                return !source.empty() && std::all_of(source.begin(), source.end(),
+                    [](unsigned char ch) { return ch >= '0' && ch <= '9'; });
+            };
+            if ((distance != "depot" && !digits(distance)) || !digits(quantity) ||
+                    row.compare(left + 24, 2, "  ") != 0 || name_right <= name_left)
+                continue;
+            const auto band = std::string_view(row).substr(name_left, name_right - name_left);
+            const auto visible = trim_view(band);
+            if (visible.empty()) continue;
+            const int x = name_left + static_cast<int>(visible.data() - band.data());
+            if (read_row(y).compare(x, visible.size(), visible) != 0) continue;
+            // Painter:string retains the actual row's data.desc before the
+            // scrollbar clips it. Without that binding, trailing padding is
+            // required so an incomplete English prefix cannot become a name.
+            const auto captured = lookup_native_dfhack_trade_goods_text(gps_, x, y, visible);
+            if (!captured && band.back() != ' ') continue;
+            const std::string complete = captured.value_or(std::string(visible));
+            auto translation = translate_fortress_item_caption_display(complete);
+            if (!translation.usable() || translation.target.empty() ||
+                    !contains_cjk_utf8(translation.target) ||
+                    translation.target.find_first_of("\r\n") != std::string::npos) continue;
+            dfhack_auxiliary_regions.push_back({x, y, static_cast<int>(visible.size()), 1});
+            if (only_y >= 0 && only_y != y) continue;
+            Match match{x, y, static_cast<int>(visible.size()), kFortressItemCaptionRule,
+                translation.target, std::string(visible)};
+            match.translation_result = std::make_shared<const TranslationResult>(
+                std::move(translation));
+            match.native_item_caption_source = complete;
+            match.native_hover_untranslated = match.translation_result->has_untranslated();
+            match.layout_x = x;
+            match.layout_y = y;
+            match.layout_length = name_right - x;
+            match.layout_left = true;
+            match.layout_clip_right = name_right;
+            match.layout_font_pixels = unified_font_pixels();
+            match.layout_lock_font_pixels = true;
+            match.layout_line_height_pixels = gps_->tile_pixel_y;
+            dfhack_auxiliary_matches.push_back(std::move(match));
+        }
 
         constexpr std::string_view total = "Total value of items marked for trade:";
         trade_literal(left, footer_y, total, left + static_cast<int>(total.size()));

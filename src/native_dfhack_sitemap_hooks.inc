@@ -1,6 +1,6 @@
 // Painter:string clips its argument before screen.paintString sees it. The
 // exported CheckPen boundary still owns that Lua call and its complete text.
-// Observe the installed Sitemap, NotifyOverlay and AssignAnimal List renderers
+// Observe the installed Sitemap, NotifyOverlay, AssignAnimal and MoveGoods List renderers
 // and actual Label controls. Copy strings before returning to DFHack; no Lua
 // state, widget, callback, or table reference leaves this call.
 struct NativeDfhackSitemapLuaApi {
@@ -18,13 +18,13 @@ struct NativeDfhackSitemapLuaApi {
     std::string painter_source, list_source, filtered_source, sitemap_source, notify_source, zone_source;
     std::string label_source, cycle_source, overlay_source, asyncexport_source, prioritize_source;
     std::string filterselection_source, planner_source;
-    std::string wrapped_source, control_panel_source;
+    std::string wrapped_source, control_panel_source, movegoods_source;
 };
 static NativeDfhackSitemapLuaApi g_native_dfhack_sitemap_lua_api;
 static std::atomic_bool g_native_dfhack_sitemap_lua_bound{false};
 
 enum class NativeDfhackChoiceTextOwner : unsigned char {
-    Sitemap, Notification, AnimalAssignment, OverlayLabel
+    Sitemap, Notification, AnimalAssignment, OverlayLabel, TradeGoods
 };
 
 struct NativeDfhackSitemapText {
@@ -222,7 +222,8 @@ static std::optional<std::string> lookup_native_dfhack_choice_text(
     NativeDfhackTextReadAccess access;
     if (page_revision != access.revision()) return std::nullopt;
     const bool scrollbar_clipped = owner == NativeDfhackChoiceTextOwner::Notification ||
-        owner == NativeDfhackChoiceTextOwner::AnimalAssignment;
+        owner == NativeDfhackChoiceTextOwner::AnimalAssignment ||
+        owner == NativeDfhackChoiceTextOwner::TradeGoods;
     for (auto it = access.sitemap().rbegin();
             it != access.sitemap().rend(); ++it) {
         const auto &text = *it;
@@ -235,7 +236,7 @@ static std::optional<std::string> lookup_native_dfhack_choice_text(
                 (scrollbar_clipped && !text.full.starts_with(visible))) continue;
         // Popup snapshots retain each cell's native origin. A still-matching
         // first cell cannot authorize text now overwritten on another layer.
-        // Notify and AssignAnimal scrollbars are painted after List text and can cover
+        // List scrollbars are painted after their text and can cover
         // the native draw's last two cells. Its caller has already excluded
         // those columns; require the full current prefix it actually owns.
         const size_t current_length = scrollbar_clipped
@@ -441,6 +442,12 @@ static std::optional<std::string> lookup_native_dfhack_animal_assignment_text(
         const graphicst *gps, int x, int y, std::string_view visible) {
     return lookup_native_dfhack_choice_text(gps, x, y, visible,
         NativeDfhackChoiceTextOwner::AnimalAssignment);
+}
+
+static std::optional<std::string> lookup_native_dfhack_trade_goods_text(
+        const graphicst *gps, int x, int y, std::string_view visible) {
+    return lookup_native_dfhack_choice_text(gps, x, y, visible,
+        NativeDfhackChoiceTextOwner::TradeGoods);
 }
 
 struct alignas(8) NativeDfhackSitemapContext {
@@ -969,7 +976,7 @@ static std::optional<NativeDfhackOverlayText> native_dfhack_buildingplan_list_te
 }
 
 static std::optional<NativeDfhackChoiceTextOwner> native_dfhack_filtered_list_owner(NativeDfhackLuaState *state,
-        const NativeDfhackLuaDebug &frame) {
+        const NativeDfhackLuaDebug &frame, std::string_view painted_full) {
     const auto &api = g_native_dfhack_sitemap_lua_api;
     const auto &stack = api.stack;
     const int top = stack.gettop(state);
@@ -1018,7 +1025,7 @@ static std::optional<NativeDfhackChoiceTextOwner> native_dfhack_filtered_list_ow
         if (!source || native_dfhack_lua_source_key(*source) != api.sitemap_source)
             return std::nullopt;
     } else {
-        // AssignAnimal's callback is dfhack.curry(toggle_item, self), not a
+        // These submit callbacks are dfhack.curry(toggle_item, self), not a
         // direct Lua closure. Its native curry captures count, function, self
         // as the first three upvalues. Inspect the original authored method
         // and retain the bound window to compare with the real parent chain.
@@ -1030,19 +1037,38 @@ static std::optional<NativeDfhackChoiceTextOwner> native_dfhack_filtered_list_ow
         stack.settop(state, curried);
         if (!api.getupvalue(state, curried, 2) || stack.type(state, -1) != 6 ||
                 !stack.getinfo(state, ">Su", &producer) || producer.isvararg ||
-                producer.nparams != 3 || producer.linedefined != 835 ||
-                producer.lastlinedefined != 837) return std::nullopt;
+                producer.nparams != 3) return std::nullopt;
         const auto source = native_dfhack_lua_text(producer.source, 32768);
-        if (!source || native_dfhack_lua_source_key(*source) != api.zone_source)
-            return std::nullopt;
+        if (!source) return std::nullopt;
+        const auto key = native_dfhack_lua_source_key(*source);
+        if (key == api.zone_source && producer.linedefined == 835 &&
+                producer.lastlinedefined == 837) {
+            owner = NativeDfhackChoiceTextOwner::AnimalAssignment;
+            window_title = "Animal and prisoner assignment";
+            focus_path = "zone/assign";
+        } else if (key == api.movegoods_source && producer.linedefined == 727 &&
+                producer.lastlinedefined == 729) {
+            owner = NativeDfhackChoiceTextOwner::TradeGoods;
+            window_title = "Move goods to/from depot";
+            focus_path = "caravan/movegoods";
+        } else return std::nullopt;
         stack.settop(state, curried);
         if (!api.getupvalue(state, curried, 3) || stack.type(state, -1) != 5)
             return std::nullopt;
         bound_window = stack.gettop(state);
         if (api.getupvalue(state, curried, 4)) return std::nullopt;
-        owner = NativeDfhackChoiceTextOwner::AnimalAssignment;
-        window_title = "Animal and prisoner assignment";
-        focus_path = "zone/assign";
+    }
+    if (owner == NativeDfhackChoiceTextOwner::TradeGoods) {
+        // make_choice_text draws four independent tokens. Only the actual
+        // row's data.desc is an item name; distance, value and quantity never
+        // acquire an item-caption source merely by sharing its List.
+        if (!native_dfhack_overlay_local(state, frame, "obj") ||
+                stack.type(state, -1) != 5 ||
+                !native_dfhack_sitemap_raw_field(state, -1, "data") ||
+                stack.type(state, -1) != 5 ||
+                !native_dfhack_sitemap_raw_field(state, -1, "desc") ||
+                native_dfhack_overlay_lua_string(state, -1) !=
+                    std::optional<std::string>(std::string(painted_full))) return std::nullopt;
     }
     // The inner List's on_submit is a generic FilteredList wrapper. Require
     // its producer plus owning window/root; a copied callback cannot claim
@@ -1204,7 +1230,8 @@ static void capture_native_dfhack_sitemap_text(NativeDfhackLuaState *state) noex
             if (!list_source || native_dfhack_lua_source_key(*list_source) != api.list_source ||
                     list.linedefined != 236 || list.lastlinedefined != 293 ||
                     list.currentline != 277 || list.nparams != 2 || list.isvararg) continue;
-            if (const auto filtered_owner = native_dfhack_filtered_list_owner(state, list)) {
+            if (const auto filtered_owner = native_dfhack_filtered_list_owner(
+                    state, list, std::string_view(full, full_length))) {
                 owned = true;
                 owner = *filtered_owner;
             }
@@ -1374,6 +1401,7 @@ static bool bind_native_dfhack_sitemap_lua(HMODULE module) {
     api.sitemap_source = key(hack / L"scripts" / L"gui" / L"sitemap.lua");
     api.notify_source = key(hack / L"scripts" / L"gui" / L"notify.lua");
     api.zone_source = key(hack / L"lua" / L"plugins" / L"zone.lua");
+    api.movegoods_source = key(hack / L"scripts" / L"internal" / L"caravan" / L"movegoods.lua");
     api.label_source = key(hack / L"lua" / L"gui" / L"widgets" / L"labels" / L"label.lua");
     api.wrapped_source = key(hack / L"lua" / L"gui" / L"widgets" / L"labels" / L"wrapped_label.lua");
     api.control_panel_source = key(hack / L"scripts" / L"gui" / L"control-panel.lua");
