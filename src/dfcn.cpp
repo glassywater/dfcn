@@ -5332,8 +5332,10 @@ private:
     std::optional<std::string> translate_announcement_date(std::string_view source) const;
     std::optional<std::string> translate_announcement_dialogue(std::string_view source) const;
     std::optional<std::string> translate_announcement_items(std::string_view source) const;
+    TranslationResult translate_adventure_barter_artifact_report_result(std::string_view source) const;
     std::optional<std::string> translate_complete_announcement(std::string_view source,
-        const std::vector<int> &source_colors, std::vector<int> &target_colors) const;
+        const std::vector<int> &source_colors, std::vector<int> &target_colors,
+        bool barter_reply = false) const;
     std::shared_ptr<const TranslationResult> announcement_result_metadata(std::string_view source) const;
     std::optional<std::string> translate_adventure_travel_status(std::string_view source,
         const std::vector<int> &source_colors, std::vector<int> &target_colors) const;
@@ -16651,6 +16653,7 @@ static NativeKeybindingScope capture_native_keybinding_scope(const graphicst &gp
 #include "announcement_performance.inc"
 #include "announcement_dialogue.inc"
 #include "announcement_combat.inc"
+#include "adventure_barter_reply.inc"
 #include "announcement_translation.inc"
 #include "fortress_item_captions.inc"
 #include "fortress_written_content.inc"
@@ -17651,6 +17654,11 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     std::vector<Match> hover_matches;
     append_toolbar_tooltip_matches(screen_rows, hover_matches, only_y, screen_override != nullptr);
     append_fortress_justice_tabs(screen_rows, hover_matches, only_y);
+    // The barter producer owns its complete dialogue and independent fields
+    // before caption recovery can reinterpret a wrapped reply as names/items.
+    std::vector<Match> untranslated_help_rows;
+    append_adventure_barter_fields(screen_rows, result, untranslated_help_rows,
+        only_y, screen_override);
     // Likewise claim complete covered captions before their exposed tails
     // can become independent item names or dictionary words.
     if (!NativeUiReadScope::background_view(gps_) &&
@@ -17680,9 +17688,6 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     // for that whole frame. Use the same gate for raw-layer and final scans.
     if (gps_->display_background == -1 &&
         is_transient_startup_loading_grid(screen_rows)) return result;
-    std::vector<Match> untranslated_help_rows;
-    append_adventure_barter_fields(screen_rows, result, untranslated_help_rows,
-        only_y, screen_override);
     append_activity_detail_matches(screen_rows, result, untranslated_help_rows,
         only_y, screen_override);
     // This renderer owns RAW directory/recipe fields and their descriptions

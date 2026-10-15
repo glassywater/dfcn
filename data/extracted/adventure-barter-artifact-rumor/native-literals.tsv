@@ -138,6 +138,7 @@ steam	underground-reference	0xb94940	0xb949ef	0x1416df690	cstring	the depths of 
 steam	underground-reference	0xb94940	0xb94a08	0x1415fda88	cstring	[/LPAGE]
 steam	underground-reference	0xb94940	0xb94a17	0x1416df648	cstring	an unknown underground region
 steam	item-description	0xc65450	0xc656f4	0x1416ee318	cstring	 (copy)
+steam	paragraph-vector-wrap	0x8e7440	0x8e7567	0x1415e873c	cstring	 
 classic	artifact-rumor	0x657c70	0x657f23	0x14165e448	cstring	I desire that 
 classic	artifact-rumor	0x657c70	0x657fc8	0x1415e3720	cstring	 
 classic	artifact-rumor	0x657c70	0x65803f	0x14165e160	cstring	 be returned to me.
@@ -277,3 +278,4 @@ classic	underground-reference	0xb91980	0xb91a2f	0x1416da4f8	cstring	the depths o
 classic	underground-reference	0xb91980	0xb91a48	0x1415f8b50	cstring	[/LPAGE]
 classic	underground-reference	0xb91980	0xb91a57	0x1416da4b0	cstring	an unknown underground region
 classic	item-description	0xc62490	0xc62734	0x1416e8e38	cstring	 (copy)
+classic	paragraph-vector-wrap	0x8e4cb0	0x8e4dd7	0x1415e3720	cstring	 

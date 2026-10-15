@@ -34,6 +34,46 @@ each already wrapped line with 0xad9960; its draw return is 0x2700a0. This is th
 same complete message visible in the screenshot. Translating an individual
 wrapped draw line cannot recover every complete production and typed field.
 
+The complete downstream ownership functions are extracted here as well:
+  Steam string -> vector wrapper: 0x8e7310 .. 0x8e7431
+  Steam vector -> wrapped rows:   0x8e7440 .. 0x8e7716
+  Steam reply string drawing:    0xad9960 .. 0xad9a33
+  Classic counterparts:          0x8e4b80 .. 0x8e4ca1,
+                                 0x8e4cb0 .. 0x8e4f86,
+                                 0xad69a0 .. 0xad6a73
+All boundaries are RVAs with exclusive ends. The string wrapper copies the
+complete input into one owned string pointer, calls the vector wrapper with
+the original output vector and width, then destroys only its temporary input.
+The output vector retains the allocated wrapped strings used by the renderer.
+That retained ownership permits recovery after an earlier pre-wrap call is no
+longer available: the original reply array, row-string addresses and contents
+establish one complete report, independently of how its words happen to look.
+
+The vector wrapper wraps only after the accumulated byte length exceeds width
+(Steam 0x8e74ff..0x8e750a). It backtracks in the input to ASCII space 0x20 or
+the start (0x8e7530..0x8e7550). A normal break at source index k retains that
+space at the end of the emitted row: if the overflowing byte is at index i,
+the backtracked count is i-k, so new_length = old_length-(i-k), including k
+(0x8e7578..0x8e7599). The next pass advances beyond k and skips additional
+ASCII spaces while the new-row flag is set (0x8e7617, 0x8e7636 and
+0x8e74c6..0x8e74e2). Concatenating the retained raw rows therefore preserves
+the ordinary word separator without inserting another space. Repeated spaces
+after a break can be discarded by the native wrapper; their original count
+cannot be recovered from the retained rows. The native special branch where
+the backtracked count equals the entire accumulated length instead inserts
+one ASCII space into the source at saved_index-1 (0x8e7552..0x8e7573).
+It does not establish a generic whitespace or punctuation break rule.
+
+The drawing wrapper has a materially different ABI from a function that reads
+all four integer argument registers. At entry, 0xad9977 saves R9d as an optional
+length limit, 0xad997a saves RCX as the drawing owner and RDX supplies the native
+string. No instruction consumes the incoming R8. The wrapper later writes
+R8b=1 itself at 0xad99f6 for the individual-byte drawing call. Consequently a
+capture bridge must preserve the unused incoming R8 slot and forward the
+fourth argument in R9; treating the wrapper as a three-argument function would
+move the length limit into the unused slot. An uncaptured or retained draw is
+still the complete native row, not a new sentence or standalone name field.
+
 The caller has no nonempty-body guard between 0x273c8c and 0x273cb3. The
 speaker header is already present when the producer's missing speaker/HF/
 artifact paths return without a body (0x65a2ab/0x65a2d6/0x65a31a/0x65a368 to

@@ -119,7 +119,22 @@ void barter_show_artifact(Barter *b, Artifact *a)
 void barter_treasure_return(Barter *b, Artifact *a, ReturnClaims claims)
 {
     string source = first_reply(b) ? capitalize(full_speaker(b->merchant)) + ": " : "";
-    source += full_memory_reaction(/* PE 673bc0; */ 19, claims.incident_id);
+    int evaluation = native_treasure_evaluation(/* Steam 13b31e0 */
+        b->merchant, claims.incident, &claims.evaluation_data, &claims.evaluation_aux);
+    source += full_memory_reaction(/* Steam 673bc0 / Classic 6715e0 */
+        evaluation, b->merchant, b->player_trader,
+        /* memory event selector */ 19, claims.incident_id,
+        claims.evaluation_data, nullptr);
+    /* The reaction's EDX is evaluation, not the fixed memory event 19.
+     * Its complete 0..61 evaluation switch is preserved in
+     * announcement-conversation/reference-dialogue-10226b0.asm and the
+     * paired classic-dialogue-10226b0.asm. The prior memory-events call
+     * (Steam 66fe50 / Classic 66d870) dispatches event 19 to the incident
+     * branch: Steam 672a3c / Classic 67045c. A missing incident contributes
+     * "There was an incident."; a valid incident calls complete
+     * memory-source (Steam 66ba00 / Classic 669420). The evaluation can
+     * still append its own opinion after the incident description.
+     */
     if (claims.personal) append_two_spaces_if_nonempty(source), source += "Thank you for returning my treasure.";
     if (claims.family) append_two_spaces_if_nonempty(source), source += "Thank you for returning my family's treasure.";
     if (claims.entity) append_two_spaces_if_nonempty(source), source += "Thank you for returning this treasure to " + full_entity(claims.entity) + ".";

@@ -25,9 +25,11 @@ void Overlay::append_adventure_barter_fields(std::vector<std::string> &rows,
         for (size_t at = 0; at < draw.source.size(); ++at) {
             bool top = false;
             const auto *cell = cell_at(draw.x + static_cast<int>(at), draw.y, &top);
+            const bool ink = draw.source[at] != ' ';
             if (!cell || (cell[0] ? cell[0] : ' ') !=
-                    static_cast<unsigned char>(draw.source[at]) || top != draw.top_layer ||
-                    (screen_override && screen_override !=
+                    static_cast<unsigned char>(draw.source[at]) ||
+                    (ink && top != draw.top_layer) ||
+                    (ink && screen_override && screen_override !=
                         (top ? gps_->screen_top : gps_->screen))) {
                 current = false;
                 break;
@@ -36,6 +38,8 @@ void Overlay::append_adventure_barter_fields(std::vector<std::string> &rows,
         if (current) {
             // A graphical copy can hide part of the logical caption from
             // visible_char_at. Its proven native draw still owns these bytes.
+            // Transparent padding can resolve to the other layer; only ink
+            // must retain this producer's visible layer and screen identity.
             rows[draw.y].replace(draw.x, draw.source.size(), draw.source);
             draws.push_back(&draw);
         }
@@ -50,7 +54,7 @@ void Overlay::append_adventure_barter_fields(std::vector<std::string> &rows,
         untranslated.push_back(std::move(row));
     };
     const auto translate_message = [&](std::string_view source, int foreground,
-            std::vector<int> &target_colors, bool dialogue = false) {
+            std::vector<int> &target_colors, bool dialogue = false, bool barter_reply = false) {
         const std::vector<int> colors(source.size(), foreground);
         // Show submits 65a250's complete artifact request/location report at
         // 273cb3, including its speaker. Return replies can likewise combine
@@ -73,7 +77,7 @@ void Overlay::append_adventure_barter_fields(std::vector<std::string> &rows,
                     return speaker;
                 }
             }
-            return translate_complete_announcement(source, colors, target_colors);
+            return translate_complete_announcement(source, colors, target_colors, barter_reply);
         }
         return translate_help_paragraph(std::string(source), colors, target_colors, true);
     };
@@ -122,7 +126,8 @@ void Overlay::append_adventure_barter_fields(std::vector<std::string> &rows,
             if (!intact || right <= origin.first) continue;
             std::vector<int> target_colors;
             const auto target = translate_message(paragraph.source,
-                group.front().second->foreground_rgb, target_colors, true);
+                group.front().second->foreground_rgb, target_colors, true,
+                group.front().second->adventure_barter_field == NativeAdventureBarterField::Reply);
             if (!target) {
                 for (const auto &[line, draw] : group) {
                     reserve(*draw, paragraph.source);
@@ -166,6 +171,7 @@ void Overlay::append_adventure_barter_fields(std::vector<std::string> &rows,
                 draw->unit_identity_target && !draw->unit_identity_target->empty()
             ? draw->unit_identity_target : translate_message(source, draw->foreground_rgb, target_colors,
                 field == NativeAdventureBarterField::Talkline ||
+                field == NativeAdventureBarterField::Reply,
                 field == NativeAdventureBarterField::Reply);
         if (!target && field == NativeAdventureBarterField::Merchant && source == "You")
             target = exact_literal_translation("Adventure barter: You");

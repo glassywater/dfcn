@@ -548,6 +548,50 @@ steam	item-description	0xc65450	0xc65ea8	test   DWORD PTR [r13+0x10],0x400000
 steam	item-description	0xc65450	0xc65ebc	cmp    DWORD PTR [rip+0xc363d5],0x1        # 0x14189c298
 steam	item-description	0xc65450	0xc65ed0	cmp    rbx,rdi
 steam	item-description	0xc65450	0xc65ede	cmp    eax,0x1f
+steam	paragraph-string-wrap	0x8e7310	0x8e7310	test   r8d,r8d
+steam	paragraph-string-wrap	0x8e7310	0x8e7368	cmp    rax,rbx
+steam	paragraph-string-wrap	0x8e7310	0x8e7371	cmp    QWORD PTR [rbx+0x18],0xf
+steam	paragraph-string-wrap	0x8e7310	0x8e73bc	test   rax,rax
+steam	paragraph-string-wrap	0x8e7310	0x8e73d3	test   rbx,rbx
+steam	paragraph-string-wrap	0x8e7310	0x8e740a	test   rax,rax
+steam	paragraph-vector-wrap	0x8e7440	0x8e7440	test   r8d,r8d
+steam	paragraph-vector-wrap	0x8e7440	0x8e74a7	test   rax,rax
+steam	paragraph-vector-wrap	0x8e7440	0x8e74bc	cmp    QWORD PTR [rax+0x10],rdi
+steam	paragraph-vector-wrap	0x8e7440	0x8e74c6	test   bl,bl
+steam	paragraph-vector-wrap	0x8e7440	0x8e74ce	cmp    QWORD PTR [rax+0x18],0xf
+steam	paragraph-vector-wrap	0x8e7440	0x8e74d8	cmp    BYTE PTR [rdi+rax*1],0x20
+steam	paragraph-vector-wrap	0x8e7440	0x8e74e8	cmp    QWORD PTR [rdx+0x18],0xf
+steam	paragraph-vector-wrap	0x8e7440	0x8e7507	cmp    rsi,rax
+steam	paragraph-vector-wrap	0x8e7440	0x8e753e	cmp    r9,0xf
+steam	paragraph-vector-wrap	0x8e7440	0x8e7547	cmp    BYTE PTR [rdi+rax*1],0x20
+steam	paragraph-vector-wrap	0x8e7440	0x8e754d	test   rdi,rdi
+steam	paragraph-vector-wrap	0x8e7440	0x8e7555	cmp    rax,rsi
+steam	paragraph-vector-wrap	0x8e7440	0x8e757e	cmp    rdx,rsi
+steam	paragraph-vector-wrap	0x8e7440	0x8e758b	cmp    QWORD PTR [rbp-0x18],0xf
+steam	paragraph-vector-wrap	0x8e7440	0x8e7590	cmova  rax,QWORD PTR [rbp-0x30]
+steam	paragraph-vector-wrap	0x8e7440	0x8e75d8	cmp    rbx,rax
+steam	paragraph-vector-wrap	0x8e7440	0x8e75e1	cmp    QWORD PTR [rbp-0x18],0xf
+steam	paragraph-vector-wrap	0x8e7440	0x8e75e6	cmova  rdx,QWORD PTR [rbp-0x30]
+steam	paragraph-vector-wrap	0x8e7440	0x8e75fb	cmp    rdx,QWORD PTR [r15+0x10]
+steam	paragraph-vector-wrap	0x8e7440	0x8e7625	cmp    QWORD PTR [rbp-0x18],0xf
+steam	paragraph-vector-wrap	0x8e7440	0x8e762a	cmova  rax,QWORD PTR [rbp-0x30]
+steam	paragraph-vector-wrap	0x8e7440	0x8e7647	cmp    rax,QWORD PTR [rcx+0x10]
+steam	paragraph-vector-wrap	0x8e7440	0x8e766e	cmp    rax,rcx
+steam	paragraph-vector-wrap	0x8e7440	0x8e7677	test   rsi,rsi
+steam	paragraph-vector-wrap	0x8e7440	0x8e76aa	cmp    rbx,rax
+steam	paragraph-vector-wrap	0x8e7440	0x8e76b3	cmp    QWORD PTR [rbp-0x18],0xf
+steam	paragraph-vector-wrap	0x8e7440	0x8e76b8	cmova  rdx,QWORD PTR [rbp-0x30]
+steam	paragraph-vector-wrap	0x8e7440	0x8e76cc	cmp    rdx,QWORD PTR [r15+0x10]
+steam	reply-addst	0xad9960	0xad997d	cmp    QWORD PTR [rdx+0x10],0x0
+steam	reply-addst	0xad9960	0xad9998	test   ebx,ebx
+steam	reply-addst	0xad9960	0xad999c	cmp    rcx,rbx
+steam	reply-addst	0xad9960	0xad99b6	test   rcx,rcx
+steam	reply-addst	0xad9960	0xad99c6	cmp    eax,DWORD PTR [rip+0x18f3db8]        # 0x1423cd784
+steam	reply-addst	0xad9960	0xad99ce	test   eax,eax
+steam	reply-addst	0xad9960	0xad99dd	cmp    rax,rcx
+steam	reply-addst	0xad9960	0xad99e7	cmp    QWORD PTR [rsp+0x38],0xf
+steam	reply-addst	0xad9960	0xad99ed	cmova  rax,QWORD PTR [rsp+0x20]
+steam	reply-addst	0xad9960	0xad9a0f	cmp    rax,rcx
 classic	artifact-rumor	0x657c70	0x657ccb	test   r8,r8
 classic	artifact-rumor	0x657c70	0x657cf6	test   rax,rax
 classic	artifact-rumor	0x657c70	0x657d0a	test   rdi,rdi
@@ -1097,3 +1141,47 @@ classic	item-description	0xc62490	0xc62ee8	test   DWORD PTR [r13+0x10],0x400000
 classic	item-description	0xc62490	0xc62efc	cmp    DWORD PTR [rip+0xc33365],0x1        # 0x141896268
 classic	item-description	0xc62490	0xc62f10	cmp    rbx,rdi
 classic	item-description	0xc62490	0xc62f1e	cmp    eax,0x1f
+classic	paragraph-string-wrap	0x8e4b80	0x8e4b80	test   r8d,r8d
+classic	paragraph-string-wrap	0x8e4b80	0x8e4bd8	cmp    rax,rbx
+classic	paragraph-string-wrap	0x8e4b80	0x8e4be1	cmp    QWORD PTR [rbx+0x18],0xf
+classic	paragraph-string-wrap	0x8e4b80	0x8e4c2c	test   rax,rax
+classic	paragraph-string-wrap	0x8e4b80	0x8e4c43	test   rbx,rbx
+classic	paragraph-string-wrap	0x8e4b80	0x8e4c7a	test   rax,rax
+classic	paragraph-vector-wrap	0x8e4cb0	0x8e4cb0	test   r8d,r8d
+classic	paragraph-vector-wrap	0x8e4cb0	0x8e4d17	test   rax,rax
+classic	paragraph-vector-wrap	0x8e4cb0	0x8e4d2c	cmp    QWORD PTR [rax+0x10],rdi
+classic	paragraph-vector-wrap	0x8e4cb0	0x8e4d36	test   bl,bl
+classic	paragraph-vector-wrap	0x8e4cb0	0x8e4d3e	cmp    QWORD PTR [rax+0x18],0xf
+classic	paragraph-vector-wrap	0x8e4cb0	0x8e4d48	cmp    BYTE PTR [rdi+rax*1],0x20
+classic	paragraph-vector-wrap	0x8e4cb0	0x8e4d58	cmp    QWORD PTR [rdx+0x18],0xf
+classic	paragraph-vector-wrap	0x8e4cb0	0x8e4d77	cmp    rsi,rax
+classic	paragraph-vector-wrap	0x8e4cb0	0x8e4dae	cmp    r9,0xf
+classic	paragraph-vector-wrap	0x8e4cb0	0x8e4db7	cmp    BYTE PTR [rdi+rax*1],0x20
+classic	paragraph-vector-wrap	0x8e4cb0	0x8e4dbd	test   rdi,rdi
+classic	paragraph-vector-wrap	0x8e4cb0	0x8e4dc5	cmp    rax,rsi
+classic	paragraph-vector-wrap	0x8e4cb0	0x8e4dee	cmp    rdx,rsi
+classic	paragraph-vector-wrap	0x8e4cb0	0x8e4dfb	cmp    QWORD PTR [rbp-0x18],0xf
+classic	paragraph-vector-wrap	0x8e4cb0	0x8e4e00	cmova  rax,QWORD PTR [rbp-0x30]
+classic	paragraph-vector-wrap	0x8e4cb0	0x8e4e48	cmp    rbx,rax
+classic	paragraph-vector-wrap	0x8e4cb0	0x8e4e51	cmp    QWORD PTR [rbp-0x18],0xf
+classic	paragraph-vector-wrap	0x8e4cb0	0x8e4e56	cmova  rdx,QWORD PTR [rbp-0x30]
+classic	paragraph-vector-wrap	0x8e4cb0	0x8e4e6b	cmp    rdx,QWORD PTR [r15+0x10]
+classic	paragraph-vector-wrap	0x8e4cb0	0x8e4e95	cmp    QWORD PTR [rbp-0x18],0xf
+classic	paragraph-vector-wrap	0x8e4cb0	0x8e4e9a	cmova  rax,QWORD PTR [rbp-0x30]
+classic	paragraph-vector-wrap	0x8e4cb0	0x8e4eb7	cmp    rax,QWORD PTR [rcx+0x10]
+classic	paragraph-vector-wrap	0x8e4cb0	0x8e4ede	cmp    rax,rcx
+classic	paragraph-vector-wrap	0x8e4cb0	0x8e4ee7	test   rsi,rsi
+classic	paragraph-vector-wrap	0x8e4cb0	0x8e4f1a	cmp    rbx,rax
+classic	paragraph-vector-wrap	0x8e4cb0	0x8e4f23	cmp    QWORD PTR [rbp-0x18],0xf
+classic	paragraph-vector-wrap	0x8e4cb0	0x8e4f28	cmova  rdx,QWORD PTR [rbp-0x30]
+classic	paragraph-vector-wrap	0x8e4cb0	0x8e4f3c	cmp    rdx,QWORD PTR [r15+0x10]
+classic	reply-addst	0xad69a0	0xad69bd	cmp    QWORD PTR [rdx+0x10],0x0
+classic	reply-addst	0xad69a0	0xad69d8	test   ebx,ebx
+classic	reply-addst	0xad69a0	0xad69dc	cmp    rcx,rbx
+classic	reply-addst	0xad69a0	0xad69f6	test   rcx,rcx
+classic	reply-addst	0xad69a0	0xad6a06	cmp    eax,DWORD PTR [rip+0x18f0c68]        # 0x1423c7674
+classic	reply-addst	0xad69a0	0xad6a0e	test   eax,eax
+classic	reply-addst	0xad69a0	0xad6a1d	cmp    rax,rcx
+classic	reply-addst	0xad69a0	0xad6a27	cmp    QWORD PTR [rsp+0x38],0xf
+classic	reply-addst	0xad69a0	0xad6a2d	cmova  rax,QWORD PTR [rsp+0x20]
+classic	reply-addst	0xad69a0	0xad6a4f	cmp    rax,rcx

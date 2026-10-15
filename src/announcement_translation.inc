@@ -27,7 +27,7 @@ int Overlay::native_report_layout_rows(std::string_view source, int width,
 
 std::optional<std::string> Overlay::translate_complete_announcement(
         std::string_view source, const std::vector<int> &source_colors,
-        std::vector<int> &target_colors) const {
+        std::vector<int> &target_colors, bool barter_reply) const {
     refresh_native_display_translation_context();
     // A stored reveal report no longer owns this frame's temporary formatter
     // strings. Recover its two proven unit fields before choosing a cache key.
@@ -44,13 +44,14 @@ std::optional<std::string> Overlay::translate_complete_announcement(
         native_colors.reserve(native->size());
         for (const size_t origin : kinship_origins)
             native_colors.push_back(source_colors[std::min(origin, source.size() - 1)]);
-        return translate_complete_announcement(*native, native_colors, target_colors);
+        return translate_complete_announcement(*native, native_colors, target_colors, barter_reply);
     }
     const auto context = native_identity_translation_context();
     const std::string key = std::to_string(context) + '\x1f' + std::string(source);
     if (const auto found = announcement_translation_cache_.find(key);
             found != announcement_translation_cache_.end() &&
             found->second.result.resource_revision == RULESETS.resource_revision() &&
+            (!barter_reply || found->second.result.owner == "native-adventure-barter-record") &&
             found->second.source_colors == source_colors) {
         announcement_translation_order_.splice(announcement_translation_order_.end(),
             announcement_translation_order_, found->second.use);
@@ -208,7 +209,20 @@ std::optional<std::string> Overlay::translate_complete_announcement(
     dfcn::TranslationResult document_result;
     bool work_limited = false;
     std::optional<std::string> target;
-    try { target = translate_block(source, source_colors, target_colors); }
+    try {
+        // The native Show reply owns the complete speaker and the artifact
+        // report's sentence chain. Resolve those production fields before
+        // broad announcement/name alternatives can consume a longer span.
+        if (barter_reply) {
+            document_result = translate_adventure_barter_artifact_report_result(source);
+            if (document_result.usable()) {
+                target = document_result.target;
+                for (unsigned char ch : *target)
+                    if ((ch & 0xc0) != 0x80) target_colors.push_back(source_colors.front());
+            }
+        }
+        if (!target) target = translate_block(source, source_colors, target_colors);
+    }
     catch (const dfcn::TranslationWorkLimit &) {
         if (!budget.owns_budget()) throw;
         work_limited = true;
@@ -400,7 +414,8 @@ std::optional<std::string> Overlay::translate_complete_announcement(
     document_result.source.assign(source);
     document_result.consumed = source.size();
     document_result.policy = dfcn::TranslationPolicy::Display;
-    document_result.owner = "native-announcement-record";
+    document_result.owner = barter_reply
+        ? "native-adventure-barter-record" : "native-announcement-record";
     document_result.resource_revision = RULESETS.resource_revision();
     // Scroll through long histories without periodically discarding every
     // visible record. Retain failures too; repeated unsupported prose must

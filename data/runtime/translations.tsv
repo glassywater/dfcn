@@ -13336,6 +13336,7 @@ Announcement combat embark-revisit-heading []: A Outpost Revisited: You have ret
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Getting food.	{s1}取消了{s2}：正在取食物。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Going to bed.	{s1}取消了{s2}：正在就寝。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Path blocked.	{s1}取消了{s2}：路径受阻。	l
+Announcement combat fortress-arrival [$unit,$memory-entity]: {s} from {s} has arrived.	来自{s2}的{s1}已经到达。	l
 Announcement combat historical-event-title [artwork-artifact-destruction-subject]: {s}	{s1}	l
 Announcement combat journal-entity-event [journal-event-place]: withdrawal from of {s}	撤离{s1}	l
 Announcement combat journal-event-title [journal-event-object]: The destruction of {s}	{s1}的毁坏	l
@@ -18003,6 +18004,7 @@ Announcement combat memory-possession [memory-possession-core]: {s} in in	{s1}�
 Announcement combat memory-sentence []: You refused to name yourself to .	你不肯向名称未记载的一方透露自己的名字。	l
 Announcement combat memory-sentence [agreement-item]: {s} was given away.	{s1}被送人了。	l
 Announcement combat memory-value-insight [memory-value]: the value of {s}	{s1}的价值	l
+Announcement combat quest-holder [conversation-conflict-entity]: I of {s}	{s1}的我	l
 Announcement combat quest-home-object [$announcement-item,$book]: {s} {s}	{s2}{s1}	l
 Announcement combat quest-position [conversation-conflict-entity]: of {s}	{s1}的职位	l
 Announcement combat reference-building [reference-building-type]: the {s}	{s1}	l
@@ -23462,7 +23464,6 @@ Announcement combat dialogue-judgement-predicate []: an animal	一只动物	l
 Announcement combat dialogue-judgement-predicate []: my master	我的师父	l
 Announcement combat dialogue-trouble []: the army on the march	那支正在行军的军队	l
 Announcement combat diplomacy-cause []: a dispute over torture	对酷刑存在争议	l
-Announcement combat fortress-arrival [$unit,$memory-entity]: {s} from {s} has arrived.	来自{s2}的{s1}已经到达。	l
 Announcement combat fortress-arrival [$unit]: {s} has arrived.	{s1}已经到达。	l
 Announcement combat fortress-arrival [$unit]: {s} is visiting.	{s1}来访了。	l
 Announcement combat guard-building []: a general imports store	进口杂货店	l
@@ -49154,6 +49155,7 @@ Announcement combat decay []: decomposing	正在腐烂的	l
 Announcement combat material [$term]: {s}	{s1}	l
 Announcement combat memory-death []: died	死了	l
 Announcement combat memory-person []: you	你	l
+Announcement combat quest-holder []: I of	我	l
 Announcement combat quest-position []: of	职位	l
 Announcement combat sentence [head]: {s}!	{s1}！	l
 Announcement combat threat-crimes []: and	犯下了两项罪行（细节不明）	l
@@ -52809,6 +52811,7 @@ Announcement combat memory-person []: I	我	l
 Announcement combat object [$body]: {s}	{s1}	l
 Announcement combat object [$item]: {s}	{s1}	l
 Announcement combat owner [unit]: {s}'s	{s1}的	l
+Announcement combat quest-holder []: me	我	l
 Announcement combat quest-holder []: of	身份未记载的请求者	l
 Announcement combat rumor-person []: me	我	l
 Announcement combat sentence []: Where?	哪里？	l
@@ -54747,6 +54750,7 @@ Announcement combat decay []: stinking	发臭的	l
 Announcement combat fluid [$term]: {s}	{s1}	l
 Announcement combat layer [$body]: {s}	{s1}	l
 Announcement combat layer [$term]: {s}	{s1}	l
+Announcement combat quest-holder []: I	我	l
 Announcement combat rumor-owner []: my	我的	l
 Announcement combat rumor-person []: I	我	l
 Announcement distance: far to the east	远在东方	l

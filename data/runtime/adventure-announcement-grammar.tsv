@@ -32,6 +32,10 @@ quest-holder	{s}	{s1}	conversation-conflict-entity	ELF 10128ad/1012a51; PE b9290
 quest-holder	of {s}	{s1}的一员	conversation-conflict-entity	PE 65b1db+65b1ef+65b232/65b67b+65b68f+65b6d4; historical caption empty, entity nonempty
 quest-holder	{s} of	{s1}	$historical-actor	PE 65b1db+65b1ef+65b232/65b67b+65b68f+65b6d4; historical caption present, entity caption empty
 quest-holder	of	身份未记载的请求者		PE 65b1db+65b1ef+65b232/65b67b+65b68f+65b6d4; both supplied captions empty
+quest-holder	I	我		PE b93232..b932e5; requester HF equals speaker context; 65b1c1+65b1c7/65b663+65b668 pass grammar mode 0
+quest-holder	me	我		PE b93232..b932c7; holder HF equals speaker context after active-impersonation branch; 65bbf2+65bc0a pass grammar mode 1
+quest-holder	I of {s}	{s1}的我	conversation-conflict-entity	PE b93232..b932e5 plus 65b1db+65b1ef+65b232/65b67b+65b68f+65b6d4; self requester with owning entity
+quest-holder	I of	我		PE b93232..b932e5 plus 65b1db+65b1ef+65b232/65b67b+65b68f+65b6d4; self requester and empty entity caption
 quest-place	{s}	{s1}	conversation-conflict-place	ELF a27cd0/a0ffc0/a10160; site/subregion/underground location suppliers
 quest-place	{s}	{s1}	quest-building	PE b94090; abstract building name or finite unnamed building label
 quest-building	{s}	{s1}	$conflict-place	PE b94090->a946e0; complete building EnglishName, not an entity name

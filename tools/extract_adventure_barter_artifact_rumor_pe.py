@@ -1,4 +1,4 @@
-"""Reconstruct the complete native Show-artifact reply and its typed suppliers.
+"""Reconstruct native Show-artifact replies, typed suppliers and text ownership.
 
 This reads the two configured Windows executables without loading either image.
 The outputs are maintained reverse-engineering source material, not translation
@@ -30,6 +30,9 @@ ROOTS = {
     "region-reference": (0xb94a40, 0xb91a80),
     "underground-reference": (0xb94940, 0xb91980),
     "item-description": (0xc65450, 0xc62490),
+    "paragraph-string-wrap": (0x8e7310, 0x8e4b80),
+    "paragraph-vector-wrap": (0x8e7440, 0x8e4cb0),
+    "reply-addst": (0xad9960, 0xad69a0),
 }
 
 # Native branch spans are relative to the artifact-rumor entry, whose two PE
@@ -135,7 +138,8 @@ def main():
     emit("native-conditions.tsv", ("edition","role","entry_rva","instruction_rva","condition"), conditions)
     emit("native-switches.tsv", ("edition","role","dispatch_rva","table_rva","remap_rva","selector","native_slot","target_rva"), switches)
     emit("decompiled-productions.tsv", ("edition","branch","begin_rva","end_rva","condition","production","dynamic_fields"), productions)
-    print(f"Extracted the two native Show-artifact reply producers and {len(ROOTS)-1} typed suppliers into {OUT}")
+    print(f"Extracted both native Show-artifact reply producers, their typed suppliers "
+          f"and paragraph wrapping/drawing functions ({len(ROOTS)} roles per image) into {OUT}")
 
 
 if __name__ == "__main__":
