@@ -135,7 +135,18 @@ static NativeInfoCapturedText g_native_info_text;
 struct NativeInfoCapturedTextScope {
     NativeInfoCapturedText &text;
     explicit NativeInfoCapturedTextScope(NativeInfoCapturedText &value = g_native_info_text)
-        : text(value) { text.swap_current(); }
+        : text(value) {
+        text.swap_current();
+        // Present can reuse this component after the background capture epoch
+        // advances. These sources belong to its retained grid, and clear()
+        // retires both together when the native producer starts a new frame.
+        // Renew only the selected component; the exit swap must restore the
+        // background registry with its original lifetime unchanged.
+        std::scoped_lock lock(g_clipped_caption_mutex, g_native_unit_chooser_record_mutex);
+        const auto epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
+        if (g_clipped_caption_epoch) g_clipped_caption_epoch = epoch;
+        if (g_native_unit_chooser_record_epoch) g_native_unit_chooser_record_epoch = epoch;
+    }
     ~NativeInfoCapturedTextScope() { text.swap_current(); }
     NativeInfoCapturedTextScope(const NativeInfoCapturedTextScope &) = delete;
     NativeInfoCapturedTextScope &operator=(const NativeInfoCapturedTextScope &) = delete;
