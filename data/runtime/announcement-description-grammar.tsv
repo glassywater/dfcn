@@ -516,6 +516,19 @@ visitor-statement	{s} were will be rewarding .	{s1}当时将正在施予奖赏�
 visitor-statement	were will be rewarding.	当时将正在施予奖赏。		PE reference 0x140659090; classic 0x140656ab0..0x14065799c; visitor +0x1970 prophet quotation
 visitor-statement	were will be rewarding {s}.	当时将正在奖赏{s1}。	visitor-statement-object	PE reference 0x140659090; classic 0x140656ab0..0x14065799c; visitor +0x1970 prophet quotation
 visitor-statement	were will be rewarding .	当时将正在施予奖赏。		PE reference 0x140659090; classic 0x140656ab0..0x14065799c; visitor +0x1970 prophet quotation
+# Prefer the native finite emotion switch (classic 0x1406570ac) to identical generic subject/object productions.
+visitor-statement	{s} am {s}.	{s1}{s2}。	visitor-statement-subject,visitor-statement-emotion	PE reference 0x140659090; classic 0x140656ab0..0x14065799c; visitor +0x1970 prophet quotation
+visitor-statement	am {s}.	{s1}。	visitor-statement-emotion	PE reference 0x140659090; classic 0x140656ab0..0x14065799c; visitor +0x1970 prophet quotation
+visitor-statement	{s} are {s}.	{s1}{s2}。	visitor-statement-subject,visitor-statement-emotion	PE reference 0x140659090; classic 0x140656ab0..0x14065799c; visitor +0x1970 prophet quotation
+visitor-statement	are {s}.	{s1}。	visitor-statement-emotion	PE reference 0x140659090; classic 0x140656ab0..0x14065799c; visitor +0x1970 prophet quotation
+visitor-statement	{s} is {s}.	{s1}{s2}。	visitor-statement-subject,visitor-statement-emotion	PE reference 0x140659090; classic 0x140656ab0..0x14065799c; visitor +0x1970 prophet quotation
+visitor-statement	is {s}.	{s1}。	visitor-statement-emotion	PE reference 0x140659090; classic 0x140656ab0..0x14065799c; visitor +0x1970 prophet quotation
+visitor-statement	{s} was {s}.	{s1}曾{s2}。	visitor-statement-subject,visitor-statement-emotion	PE reference 0x140659090; classic 0x140656ab0..0x14065799c; visitor +0x1970 prophet quotation
+visitor-statement	was {s}.	曾{s1}。	visitor-statement-emotion	PE reference 0x140659090; classic 0x140656ab0..0x14065799c; visitor +0x1970 prophet quotation
+visitor-statement	{s} were {s}.	{s1}曾{s2}。	visitor-statement-subject,visitor-statement-emotion	PE reference 0x140659090; classic 0x140656ab0..0x14065799c; visitor +0x1970 prophet quotation
+visitor-statement	were {s}.	曾{s1}。	visitor-statement-emotion	PE reference 0x140659090; classic 0x140656ab0..0x14065799c; visitor +0x1970 prophet quotation
+visitor-statement	{s} will be {s}.	{s1}将{s2}。	visitor-statement-subject,visitor-statement-emotion	PE reference 0x140659090; classic 0x140656ab0..0x14065799c; visitor +0x1970 prophet quotation
+visitor-statement	will be {s}.	将{s1}。	visitor-statement-emotion	PE reference 0x140659090; classic 0x140656ab0..0x14065799c; visitor +0x1970 prophet quotation
 visitor-statement	{s} {s}.	{s1}……{s2}。	visitor-statement-subject,visitor-statement-object	PE reference 0x140659090; classic 0x140656ab0..0x14065799c; visitor +0x1970 prophet quotation
 visitor-statement	{s} .	{s1}……。	visitor-statement-subject	PE reference 0x140659090; classic 0x140656ab0..0x14065799c; visitor +0x1970 prophet quotation
 visitor-statement	{s}.	……{s1}。	visitor-statement-object	PE reference 0x140659090; classic 0x140656ab0..0x14065799c; visitor +0x1970 prophet quotation
@@ -556,18 +569,6 @@ visitor-statement	{s} were will be {s}.	{s1}曾将……{s2}。	visitor-statemen
 visitor-statement	{s} were will be .	{s1}曾将……。	visitor-statement-subject	PE reference 0x140659090; classic 0x140656ab0..0x14065799c; visitor +0x1970 prophet quotation
 visitor-statement	were will be {s}.	曾将……{s1}。	visitor-statement-object	PE reference 0x140659090; classic 0x140656ab0..0x14065799c; visitor +0x1970 prophet quotation
 visitor-statement	were will be .	曾将……。		PE reference 0x140659090; classic 0x140656ab0..0x14065799c; visitor +0x1970 prophet quotation
-visitor-statement	{s} am {s}.	{s1}{s2}。	visitor-statement-subject,visitor-statement-emotion	PE reference 0x140659090; classic 0x140656ab0..0x14065799c; visitor +0x1970 prophet quotation
-visitor-statement	am {s}.	{s1}。	visitor-statement-emotion	PE reference 0x140659090; classic 0x140656ab0..0x14065799c; visitor +0x1970 prophet quotation
-visitor-statement	{s} are {s}.	{s1}{s2}。	visitor-statement-subject,visitor-statement-emotion	PE reference 0x140659090; classic 0x140656ab0..0x14065799c; visitor +0x1970 prophet quotation
-visitor-statement	are {s}.	{s1}。	visitor-statement-emotion	PE reference 0x140659090; classic 0x140656ab0..0x14065799c; visitor +0x1970 prophet quotation
-visitor-statement	{s} is {s}.	{s1}{s2}。	visitor-statement-subject,visitor-statement-emotion	PE reference 0x140659090; classic 0x140656ab0..0x14065799c; visitor +0x1970 prophet quotation
-visitor-statement	is {s}.	{s1}。	visitor-statement-emotion	PE reference 0x140659090; classic 0x140656ab0..0x14065799c; visitor +0x1970 prophet quotation
-visitor-statement	{s} was {s}.	{s1}曾{s2}。	visitor-statement-subject,visitor-statement-emotion	PE reference 0x140659090; classic 0x140656ab0..0x14065799c; visitor +0x1970 prophet quotation
-visitor-statement	was {s}.	曾{s1}。	visitor-statement-emotion	PE reference 0x140659090; classic 0x140656ab0..0x14065799c; visitor +0x1970 prophet quotation
-visitor-statement	{s} were {s}.	{s1}曾{s2}。	visitor-statement-subject,visitor-statement-emotion	PE reference 0x140659090; classic 0x140656ab0..0x14065799c; visitor +0x1970 prophet quotation
-visitor-statement	were {s}.	曾{s1}。	visitor-statement-emotion	PE reference 0x140659090; classic 0x140656ab0..0x14065799c; visitor +0x1970 prophet quotation
-visitor-statement	{s} will be {s}.	{s1}将{s2}。	visitor-statement-subject,visitor-statement-emotion	PE reference 0x140659090; classic 0x140656ab0..0x14065799c; visitor +0x1970 prophet quotation
-visitor-statement	will be {s}.	将{s1}。	visitor-statement-emotion	PE reference 0x140659090; classic 0x140656ab0..0x14065799c; visitor +0x1970 prophet quotation
 # Indirect adventure dialogue helpers. Sources are reconstructed through complete native control flow, including shared tails before return.
 # Full names, directions, regions, institutions and historical descriptions reuse the shared dictionaries.
 # ELF 53.16 event-memory formatter: death switch 0x10182a0..0x10187d9,

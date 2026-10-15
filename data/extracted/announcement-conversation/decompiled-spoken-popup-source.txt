@@ -26,8 +26,9 @@ The speech wrapper is Steam 0x140684a10..0x1406858fc and official
 0x140682430..0x14068331c. It is the same complete production for every topic,
 rather than a prefix inferred from the screenshot. Its ELF C source is
 elf-speech-wrapper.c. The complete 42-owner C reconstruction remains available
-as elf-<role>.c; the new PE material is decoded instructions and manually
-reconstructed source productions, not a claimed new Ghidra C export.
+as elf-<role>.c. The full PE inventory contains decoded instructions and manual
+source productions; the focused current-PE Ghidra C exports for the
+mental-picture formatter and element supplier are listed in the final section.
 
 Normalized wrapper production (storage/allocation mechanics are omitted;
 all native branches remain in its full source bodies):
@@ -85,7 +86,7 @@ temporary construction controls, not additional dialogue topics or names.
 
 Incident/memory source
 ----------------------
-The screenshot body originates in incident type 10, but this reconstruction
+The refusal-to-identify body originates in incident type 10; this reconstruction
 includes the complete type 0..10 source, not only the refusal branch.
 Steam source: 0x14066ba00..0x14066fe48.
 Official source: 0x140669420..0x14066d868.
@@ -214,8 +215,9 @@ instructions and native literal operands preserve the original source bytes.
 Catalog connection
 -------------------
 The finite body/source productions belong to the existing complete
-announcement spoken corpus, announcement-spoken-grammar,
-announcement-description-grammar and announcement-memory-grammar data.
+announcement spoken corpus and the actual runtime data files
+announcement-dialogue-grammar.tsv, announcement-dialogue-extra-grammar.tsv,
+announcement-description-grammar.tsv and announcement-reference-grammar.tsv.
 The 42-owner full decompiled source and native topic/call inventories describe
 the popup's body universe; announcement-popup-native retains submission,
 report storage, alert routing and complete report-text renderer ownership.
@@ -223,3 +225,108 @@ The new current-PE material establishes branch and supplier provenance for
 these catalogs, including finite silent/empty supplier branches. It does not
 claim that arbitrary generated names, authored content or RAW descriptions
 form a finite list of all possible complete strings.
+
+Mental-picture speech in the adventure announcement popup
+---------------------------------------------------------
+The speech "The prophet <speaker>: <historical figure> is displeased."
+is an additional source path through this SAME popup. It is the mental-picture
+formatter, not the visitor overview renderer, and its source is not limited to
+the DISPLEASURE adjective visible in the supplied image.
+
+The current Windows Steam and official images were actually decompiled with
+Ghidra 12.1.4, using their decoded function bounds and native jump-table
+destinations. These C files are direct Ghidra output rather than a manual
+semantic reconstruction or compiled project code:
+
+  reference-dialogue-1014100.c     0x140659090..0x14065a250
+  classic-dialogue-1014100.c       0x140656ab0..0x140657c70
+  reference-mental-picture-element.c  0x140658e20..0x14065908a
+  classic-mental-picture-element.c    0x140656840..0x140656aaa
+
+Their image identities remain PE:6a70a6d9:02711000 and
+PE:6a70b91c:0270a000 respectively. Ghidra's "Switch is manually overridden"
+annotation records explicit switch destinations supplied from the actual PE
+jump-table bytes. The six-action and 170-entry emotion destinations are also
+preserved individually in reference-switches.tsv and classic-switches.tsv.
+The main formatter's code ends at Steam ret 0x140659f8c / official ret
+0x1406579ac; the remaining unwind extent includes its native embedded tables.
+The element decompilation retains UNK references for tiny shared pronoun
+literals; their exact address/text mappings are preserved in
+../visitor-overview/<edition>-prophet-quote-subject-helper-literals.tsv.
+
+Direct spoken dispatch, topic 220 ShoutBeliefStoryFrame:
+
+  Steam case entry 0x1404cd82a, body call 0x1404cd8e8,
+        capitalization 0x1404cd91f, speech wrapper call 0x1404cd97c.
+  Official case entry 0x1404cb3ea, body call 0x1404cb4a8,
+        capitalization 0x1404cb4df, speech wrapper call 0x1404cb53c.
+
+  body = "";
+  belief = find_belief_by_id(talk_choice.field_0x58);
+  if (belief != null) {
+      story = belief.stories[talk_choice.field_0x5c];
+      picture = story.frames[talk_choice.field_0x60];
+      body = format_picture(picture, speaker_context, listener_context);
+  }
+  if (body.empty()) body = "I don't remember what I believe...";
+  capitalize_initial(body);
+  spoken_announcement(speaker_context, listener_context, body, ...);
+
+The two story/frame indices are selected stored fields in this topic. This
+case contains no random selection; the helper's visitor-overview caller and
+the greeting supplier are separate callers. The direct topic's speaker and
+listener contexts are forwarded unchanged, so I/me and you remain possible,
+in addition to actual historical-figure, site and world names. Its final
+speaker/profession header uses the complete shared wrapper described above.
+
+The greeting supplier also calls the same formatter at Steam 0x14067f872 /
+official 0x14067d292. It selects a belief story/frame, appends nonempty output
+to its existing greeting using the native double-space separator, and follows
+its other native greeting branches when no picture text was produced. The
+complete supplier is reference-dialogue-1048a40.asm and its official/ELF
+counterparts. Consequently the mental-picture grammar must be reachable for
+both an entire speech body and a sentence embedded in a longer speech body.
+
+Complete bounded formatter productions
+--------------------------------------
+The semantic reconstruction in ../visitor-overview/decompiled-grammar.txt
+describes the SAME formatter and element helper, including all native field
+offsets, subject suppliers, temporal flags and silent/default paths. The
+current PE C above independently retains those same branches. Its full scope:
+
+  * First TIME property (type 8), first ACTION property (type 1); ACTION wins
+    over EMOTION even if its actor is -1 and therefore returns empty.
+  * Six ACTION values: APPEAR, DESTROY, SPOKE, BURN, FLOOD and REWARD, with
+    base / third-person / past / continuous forms. Unknown action values
+    preserve the already-assembled subject, copula, object and period.
+  * Continuous / non-continuous and no TIME / TIME flags 0, 1, 2 or both;
+    first / second / third person. Both TIME bits retain the source's exact
+    concatenation and precedence rather than an inferred corrected tense.
+  * Optional indexed target with role 1 (object), plus "to " for SPOKE.
+    Missing target (-1), unnamed elements and unknown element types retain
+    native whitespace/punctuation behavior rather than inventing a name.
+  * First EMOTION property (type 3) when no ACTION exists, with the same
+    complete subject and person suppliers, past/future/present copulas and
+    final period. A missing emotion element (-1) returns empty.
+  * All 170 EMOTION selectors for values -1..168: 130 different emitted
+    strings, 40 aliases of the empty adjective branch, plus out-of-range
+    default. -1 emits "emotionless"; DISPLEASURE is value 45 and emits
+    "displeased" (Steam case 0x140659a53 -> literal 0x1416634e8;
+    official case 0x140657473 -> literal 0x14165e388).
+  * No ACTION/EMOTION returns empty; other picture-property kinds do not
+    produce text. Direct topic 220 then uses its remembered-belief fallback.
+
+The indexed emotion rows are now retained for BOTH Windows editions in
+../visitor-overview/reference-prophet-emotion-branches.tsv and its classic
+counterpart. All six verb families and object separators are already in
+../visitor-overview/classic-prophet-action-branches.tsv and each edition's
+complete source/literal/switch material.
+
+Open fields are intentionally typed rather than enumerated as literal text:
+the historical-figure language name (or its unknown/unnamed creature forms),
+site language name (or unknown site), world language name, the speaker's
+generated name and profession/creature caption. The element supplier also
+contains grammatical roles 2 and 3; this sentence formatter only requests
+roles 0 and 1. Authored names cannot be exhausted as a finite English string
+list. This source inventory exhausts the native finite selector/text branches
+and preserves those dynamic suppliers without claiming otherwise.

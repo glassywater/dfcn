@@ -169,6 +169,15 @@ std::optional<std::string> Overlay::translate_complete_announcement(
             return found->second;
         }
         translated = translate_announcement_combat(block);
+        if (!translated) {
+            // The conversation dispatcher and dialogue-1048a40 submit the
+            // same complete mental-picture statement as the visitor quote.
+            // Its six actions, time flags, 170-slot emotion switch and empty
+            // defaults belong here too, before display-only partial rules.
+            // Reuse the whole typed production for each native sentence;
+            // no speaker name or individual emotion is a special case.
+            translated = translate_announcement_combat(block, "visitor-statement");
+        }
         if (translated) {
             // Combat and speech builders emit one native announcement color.
             for (unsigned char ch : *translated)
