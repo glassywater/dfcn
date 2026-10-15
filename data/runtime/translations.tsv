@@ -23462,6 +23462,7 @@ Announcement combat dialogue-judgement-predicate []: an animal	一只动物	l
 Announcement combat dialogue-judgement-predicate []: my master	我的师父	l
 Announcement combat dialogue-trouble []: the army on the march	那支正在行军的军队	l
 Announcement combat diplomacy-cause []: a dispute over torture	对酷刑存在争议	l
+Announcement combat fortress-arrival [$unit,$memory-entity]: {s} from {s} has arrived.	来自{s2}的{s1}已经到达。	l
 Announcement combat fortress-arrival [$unit]: {s} has arrived.	{s1}已经到达。	l
 Announcement combat fortress-arrival [$unit]: {s} is visiting.	{s1}来访了。	l
 Announcement combat guard-building []: a general imports store	进口杂货店	l
