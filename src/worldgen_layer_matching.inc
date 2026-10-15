@@ -29,9 +29,20 @@ std::vector<Match> Overlay::find_native_worldgen_matches() const {
         return inside_panel(row) ? panel_clip : pixels({row.x, row.y,
             std::min(gps_->dimx - row.x, static_cast<int>(row.source.size())), 1});
     };
+    enum class Geography { None, Region, Landform };
+    uintptr_t region_return = 0, landform_return = 0;
+#ifdef _WIN32
+    // These addst writers render the hovered region and its containing
+    // landmass on rows 1/2. Bind meaning to their native source, not spelling
+    // or a panel's position beside the progress/parameter controls.
+    const auto base = native_history_profile_base();
+    region_return = native_reference_address(base, 0xdfc756);
+    landform_return = native_reference_address(base, 0xdfc7c6);
+#endif
     struct Field {
         NativeTextCardRow row;
         bool editable = false;
+        Geography geography = Geography::None;
     };
     std::map<int, std::vector<Field>> fields;
     // The paragraph fitter only mutates its owned source spans. Uncaptured
@@ -83,7 +94,10 @@ std::vector<Match> Overlay::find_native_worldgen_matches() const {
         row.source = draw.source.substr(first - draw.x, end - first);
         row.complete_source = draw.complete_source;
         for (int x = first; x < end; ++x) row.foregrounds.push_back(source_color(x, draw.y));
-        fields[draw.y].push_back({std::move(row), draw.editable_text});
+        const auto geography = draw.native_caller && draw.native_caller == region_return
+            ? Geography::Region : draw.native_caller && draw.native_caller == landform_return
+            ? Geography::Landform : Geography::None;
+        fields[draw.y].push_back({std::move(row), draw.editable_text, geography});
     }
     // Native labels, names and counters may be emitted by several addst
     // calls. Join adjacent writes without merging a distant right-side key
@@ -95,6 +109,7 @@ std::vector<Match> Overlay::find_native_worldgen_matches() const {
         std::vector<Field> joined;
         for (auto &field : rows) {
             if (joined.empty() || field.editable || joined.back().editable ||
+                    field.geography != Geography::None || joined.back().geography != Geography::None ||
                     field.row.x > joined.back().row.x +
                         static_cast<int>(joined.back().row.source.size()) + 2) {
                 joined.push_back(std::move(field));
@@ -148,6 +163,7 @@ std::vector<Match> Overlay::find_native_worldgen_matches() const {
             reserved_fields.emplace(y, row.x);
             continue;
         }
+        if (field.geography != Geography::None) continue;
         const auto button = settings ? native_intro_button_text_rect(*gps_, row.x,
             row.x + static_cast<int>(row.source.size()), y, *settings, true) : std::nullopt;
         if (!button) continue;
@@ -386,17 +402,22 @@ std::vector<Match> Overlay::find_native_worldgen_matches() const {
         const auto &row = field.row;
         if (reserved_fields.contains({y, row.x}) || (heading_y >= 0 && y >= prose_top && y < prose_bottom))
             continue;
-        const auto source = normalize_utterance(row.source);
+        const bool geography = field.geography != Geography::None;
+        const auto source = normalize_utterance(geography && !row.complete_source.empty()
+            ? row.complete_source : row.source);
         const bool summary_row = inside_panel(row) && row.x == left && (heading_y < 0 || y <= heading_y);
         const bool identity = summary_row && (source.starts_with("Creating ") ||
             source.find(", year ") != std::string::npos);
-        if (identity) {
-            const auto target = source.starts_with("Creating ") ? translate_worldgen_creation(source)
+        if (identity || geography) {
+            const auto target = field.geography == Geography::Region
+                ? translate_world_region_heading(source)
+                : field.geography == Geography::Landform ? translate_world_landform_heading(source)
+                : source.starts_with("Creating ") ? translate_worldgen_creation(source)
                 : translate_procedural_fragment(source);
             if (target && !target->empty()) {
                 Match match{row.x, y, static_cast<int>(row.source.size()), kWorldgenSummaryRule,
                     *target, row.source};
-                match.layout_native_clip = panel_clip;
+                match.layout_native_clip = field_clip(row);
                 result.push_back(std::move(match));
             } else { retain_source(row, kWorldgenSummaryRule); continue; }
         } else {
