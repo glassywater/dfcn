@@ -457,6 +457,14 @@ std::optional<std::string> Overlay::translate_announcement_combat(
             if (!is_written_work_description(normalized)) return finish(std::nullopt);
             return finish(translate_written_work_paragraph(input));
         }
+        if (scope == "$announcement-building") {
+            // 1168910 obtains a discovered building's entire caption from
+            // virtual +0x188. Reuse that exact hover-caption grammar, keeping
+            // its materials, mechanism states and contained items together.
+            std::vector<size_t> building_origins;
+            return finish(RULESETS.translate_with_origins(native_text_to_utf8(input),
+                "::map_hover::building", building_origins));
+        }
         if (scope == "$item" || scope == "$announcement-item") {
             // A complete equipment/material production has its own proven
             // item kind. Keep it ahead of broad title conjunctions such as

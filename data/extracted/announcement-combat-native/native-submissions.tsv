@@ -63,6 +63,8 @@ reference	charge	0x140654d20	0x14065719c	announcement-submit
 reference	charge	0x140654d20	0x140657497	announcement-submit
 reference	charge	0x140654d20	0x140657597	announcement-submit
 reference	charge	0x140654d20	0x14065779b	announcement-submit
+reference	speech-wrapper	0x140684a10	0x140684eb9	announcement-submit
+reference	speech-wrapper	0x140684a10	0x14068588b	announcement-submit
 reference	projectile-motion-announcements	0x140ea8fb0	0x140eabb6e	announcement-submit
 reference	collision	0x140eadea0	0x140eaeb5a	announcement-submit
 reference	collision	0x140eadea0	0x140eaf534	announcement-submit
@@ -151,6 +153,8 @@ classic	charge	0x140652740	0x140654bbc	announcement-submit
 classic	charge	0x140652740	0x140654eb7	announcement-submit
 classic	charge	0x140652740	0x140654fb7	announcement-submit
 classic	charge	0x140652740	0x1406551bb	announcement-submit
+classic	speech-wrapper	0x140682430	0x1406828d9	announcement-submit
+classic	speech-wrapper	0x140682430	0x1406832ab	announcement-submit
 classic	projectile-motion-announcements	0x140ea3f20	0x140ea6ade	announcement-submit
 classic	collision	0x140ea8e10	0x140ea9aca	announcement-submit
 classic	collision	0x140ea8e10	0x140eaa4a4	announcement-submit

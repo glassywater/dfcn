@@ -4969,6 +4969,8 @@ the bestowal of the title of {s} in {p} after participating in {d} battles, slay
 {a} received the title of {s} in {p} after participating in {d} battles, slaying {d} enemies, and {d} years of membership within {p}.	{a1}在{p2}参加{d1}场战斗、杀死{d2}名敌人及拥有{d3}年会龄后，获得了{p1}的{s1}头衔。	ht
 A caravan from {e} has arrived. The presence of your ruler has attracted great riches. Overall trade sentiments are tenuous at best.	来自{e1}的商队已抵达。你的统治者在此坐镇，吸引来了巨额财富。总体贸易意愿至多只能算勉强。	hPt
 A large, pale rodent with loose, hanging, hairless skin. It has long teeth and an incredibly powerful bite. It is found underground.	一种大型、苍白的啮齿动物，皮肤松弛、下垂、无毛。它有很长的牙齿，咬起来非常有力。它是在地底发现的。	lP
+Announcement combat adventure-announcement [$announcement-building,announcement-bearing]: You've located a {s} above and to the {s}!	你发现上方的{s2}有一处{s1}！	l
+Announcement combat adventure-announcement [$announcement-building,announcement-bearing]: You've located a {s} below and to the {s}!	你发现下方的{s2}有一处{s1}！	l
 Announcement combat adventure-announcement []: Certainly. It would be terrible to leave someone to fend for themselves after sunset.	当然。日落之后，让人独自在外面自生自灭就太糟了。	l
 Announcement combat adventure-announcement []: Migrants were too nervous to make the journey this season to this miserable fortress.	本季移民因太过害怕，未敢踏上前往这座悲惨要塞的旅途。	l
 Announcement combat agreement-core [agreement-party-list,agreement-party-list,$name,$name]: {s} joined with {s} to oust {s} from {s}	{s1}与{s2}同行，将{s3}逐出{s4}	l
@@ -6245,6 +6247,7 @@ A caravan from {e} has arrived. The presence of your ruler has attracted great r
 A huge monster with an enormous tail, covered with thick fur. They run on four legs and can be found deep under the earth.	一个巨大的怪物，有一条巨大的尾巴，覆盖着厚厚的毛皮。它们用四条腿跑步，可以在地底深处找到。	lP
 A tiny arthropod that walks tilted upright on two large legs. Six spined projections radiate outward from its head shield.	一种微小的节肢动物，靠两条粗大的腿斜立行走。六根带刺的突起从它的头甲向四周伸展。	lP
 Although this location is relatively safe, it is recommended that you prepare a squad and get them training at some point.	虽然这里比较安全，仍然建议你在适当时候组建小队并开始训练。	hq
+Announcement combat adventure-announcement [$announcement-building,announcement-bearing]: You've located a {s} to the {s}!	你发现{s2}有一处{s1}！	l
 Announcement combat agreement-core [$name]: made an agreement with , becoming a resident of {s} to entertain the citizenry	与达成协议，成为{s1}的居民，以便为居民表演	l
 Announcement combat agreement-core [$office,$name]: began passing a portion of corruptly-obtained funds as a {s} of {s} to	以{s2}的{s1}身份开始将部分非法所得转交给	l
 Announcement combat agreement-core [agreement-party-list,agreement-party-list,$name]: {s} joined with {s} to oust {s} from	{s1}与{s2}同行，协助驱逐{s3}	l
@@ -8329,6 +8332,8 @@ A huge, predatory reptile with pale, colorless scales and red eyes. It lives in 
 Affects all spoken performances, from poetry recitals to preaching to storytelling to certain musical forms.	影响所有口头表演，包括诗歌朗诵、布道、讲故事和某些音乐形式。	w
 An evil monster from the swamp. It resembles a knot of waterlogged weeds but will strike the unaware victim.	一个来自沼泽地的邪恶怪物。它就像一结积水的杂草，会袭击不知情的受害者。	lP
 Announcement combat activity-detail-position [activity-detail-section,activity-detail-position]: {s} and {s}	{s1}和{s2}	l
+Announcement combat adventure-announcement [$announcement-building]: You've located a {s} above and to the !	你发现正上方有一处{s1}！	l
+Announcement combat adventure-announcement [$announcement-building]: You've located a {s} below and to the !	你发现正下方有一处{s1}！	l
 Announcement combat adventure-announcement []: A dark, menacing cloud towers above you, crowned by an anvil.	一团阴暗而险恶的云高耸在你头顶，顶部呈铁砧状。	l
 Announcement combat adventure-announcement []: A migrant has decided to brave this terrifying unhappy place.	一名移民决定勇闯这个恐怖而不幸的地方。	l
 Announcement combat adventure-announcement []: I'd just as soon not have anything too exciting happen today.	我倒希望今天别发生什么太刺激的事。	l
@@ -8638,6 +8643,7 @@ the bestowal of the title of {s} in {p} after slaying {d} enemies and {d} years 
 A huge emaciated-looking bear with great drooping ears and many sharp teeth. It is found deep underground.	一种长着大垂耳和许多尖牙的，体形消瘦的巨熊。被发现于深层地底。	lP
 A small carnivorous animal found in temperate climates. It has orange fur and is known for its cleverness.	一种生活在温带的小型食肉动物。它有橙色的皮毛，以聪明著称。	lP
 Although my own insignificant beliefs lie elsewhere, we can both agree you are by far the most persuasive!	虽说我有点不值一提的不同看法，但我们都承认，你的说服力远胜众人！	hP
+Announcement combat adventure-announcement [$announcement-building]: You've located a {s} right under you!	你发现脚下就有一处{s1}！	l
 Announcement combat adventure-announcement [$announcement-item]: {s} has been moved from its proper place!	{s1}被移离了原本的位置！	l
 Announcement combat adventure-announcement []: I'll need to see something impressive before I consider it.	你得先拿出点真本事，我才会考虑。	l
 Announcement combat adventure-announcement []: Sometimes I think I need a drink, but I can control myself.	有时我觉得该喝一杯，但我能克制自己。	l
@@ -30318,6 +30324,10 @@ Announcement combat adventure-announcement []: Really.	真是的。	l
 Announcement combat agreement-crime []: blood-drinking	吸血	l
 Announcement combat agreement-goals []: instill terror	制造恐慌	l
 Announcement combat agreement-goals []: prepare a coup	筹备政变	l
+Announcement combat announcement-bearing []: northeast	东北方	l
+Announcement combat announcement-bearing []: northwest	西北方	l
+Announcement combat announcement-bearing []: southeast	东南方	l
+Announcement combat announcement-bearing []: southwest	西南方	l
 Announcement combat attack [attack]: {s} from the side	从侧面{s1}	l
 Announcement combat damage-list [damage-list]: {s} and	{s1}	l
 Announcement combat description-institution []: a tomb	陵墓	l
@@ -35071,6 +35081,8 @@ Announcement combat adventure-announcement []: No.	不。	l
 Announcement combat agreement-core []: joined with	与同行	l
 Announcement combat agreement-crime []: kidnapping	绑架	l
 Announcement combat agreement-party-list []: , and	和	l
+Announcement combat announcement-bearing []: north	北方	l
+Announcement combat announcement-bearing []: south	南方	l
 Announcement combat artifact-ancestor [$unit]: {s}	{s1}	l
 Announcement combat artifact-ancestor []: Nameless	无名者	l
 Announcement combat attack-site-kind []: labyrinth	迷宫	l
@@ -36396,6 +36408,8 @@ Announcement combat actor [$item]: the flying {s}	飞来的{s1}	l
 Announcement combat agreement-crime []: espionage	间谍活动	l
 Announcement combat agreement-crime []: vandalism	破坏公物	l
 Announcement combat agreement-target [$name]: {s}	{s1}	l
+Announcement combat announcement-bearing []: east	东方	l
+Announcement combat announcement-bearing []: west	西方	l
 Announcement combat attack-site-kind []: fortress	要塞	l
 Announcement combat attack-site-kind []: hillocks	丘堡	l
 Announcement combat attack-site-kind []: monument	纪念碑	l

@@ -17,6 +17,7 @@ ROOT = Path(__file__).resolve().parents[1]
 GAME = native_game_directory(ROOT)
 SOURCE = ROOT / "data/runtime/creature-name-vocabulary.tsv"
 STATUS_SOURCE = ROOT / "data/runtime/legends-creature-descriptions.tsv"
+MAGICAL_VOCABULARY = ROOT / "data/runtime/magical-material-vocabulary.tsv"
 MYTHICAL = GAME / "data/vanilla/vanilla_procedural/scripts/generators/interactions/mythical.lua"
 PROFILES = GAME / "data/vanilla/vanilla_procedural/scripts/generators/creatures/rcp.lua"
 CREATURES = PROFILES.parent.parent / "creatures.lua"
@@ -142,6 +143,7 @@ def main() -> None:
     # Experiment origins concatenate the race adjective with these complete
     # interaction display names. Keep that split bounded by native identities.
     display_names = tables["display_name"] = {}
+    display_adjectives = tables["display_adjective"] = {}
     interaction_sources = {
         path.stem: path.read_text(encoding="utf-8")
         for path in sorted(INTERACTIONS.glob("*.lua"))
@@ -159,6 +161,7 @@ def main() -> None:
             identity_forms(*forms)
             for form in forms[:2]:
                 display_name(form, tables["kind"][forms[0]])
+            display_adjectives[forms[2].lower()] = tables["kind"][forms[0]]
 
     # Resurrection, ghoul and ghost names use native adjective/noun families;
     # their wording comes from the same reviewed creature vocabulary.
@@ -175,6 +178,7 @@ def main() -> None:
                 target = tables["modifier"][adjective] + tables["kind"][singular]
                 for noun in (singular, plural):
                     display_name(adjective + " " + noun, target)
+                display_adjectives[adjective + " " + singular] = target
     for name in ("night_troll_wife_names", "night_troll_husband_names"):
         for singular, plural in re.findall(r'\{"([^"]+)","([^"]+)"\}',
                                            lua_table(creature_lua, name)):
@@ -182,9 +186,35 @@ def main() -> None:
     for singular, plural in re.findall(r'\{"([^"]+)","([^"]+)"\}',
                                        lua_table(creature_lua, "experiment_nouns")):
         tables["kind"].setdefault(plural, tables["kind"][singular])
-    for singular, plural in re.findall(r'\{"([^"]+)","([^"]+)"\}',
-                                       lua_table(EVIL.read_text(encoding="utf-8"), "cloud_zombie_names")):
+    evil_lua = EVIL.read_text(encoding="utf-8")
+    cloud_zombies = re.findall(r'\{"([^"]+)","([^"]+)"\}',
+                               lua_table(evil_lua, "cloud_zombie_names"))
+    for singular, plural in cloud_zombies:
         tables["kind"].setdefault(plural, tables["kind"][singular])
+
+    # evil.lua's CE_DISPLAY_NAME uses the full generated cloud name before
+    # husk/zombie/thrall, in both native number forms. These are interaction
+    # display names too, including after a complete occupation in reports.
+    # A transformed creature is not made from mist/dust: use the material's
+    # noun here, rather than its item-material attributive form ending in 制.
+    cloud_terms = {}
+    for line in MAGICAL_VOCABULARY.read_text(encoding="utf-8").splitlines():
+        if not line or line.startswith("#"):
+            continue
+        family, source, noun, _ = line.split("\t")
+        if family in ("cloud-adjective", "cloud-material"):
+            cloud_terms[family, source] = noun
+    cloud_adjectives = re.findall(r'"([^"]+)"', lua_table(evil_lua, "cloud_adjs"))
+    cloud_materials = re.findall(r'\{"([^"]+)","[^"]+"\}', lua_table(evil_lua, "cloud_names"))
+    for adjective in cloud_adjectives:
+        adjective_target = cloud_terms["cloud-adjective", adjective]
+        for material in cloud_materials:
+            cloud_target = adjective_target + cloud_terms["cloud-material", material]
+            for singular, plural in cloud_zombies:
+                target = cloud_target + tables["kind"][singular]
+                for noun in (singular, plural):
+                    display_name(adjective + " " + material + " " + noun, target)
+                display_adjectives[adjective + " " + material + " " + singular] = target
 
     region_names = re.findall(r'(?:return|and|or)\s+"([^"]+)"',
                               lua_table(creature_lua, "regiontypes"))
@@ -215,7 +245,8 @@ def main() -> None:
     lua = MYTHICAL.read_text(encoding="utf-8")
     names = lua.split("mythical_names={", 1)[1].split("interactions.mythical.default", 1)[0]
     roles = {}
-    for word in re.findall(r'"([a-z]+)"', names):
+    singular_roles = set(re.findall(r'"([a-z]+)"', names))
+    for word in singular_roles:
         # The vanilla generator pluralizes these particular roles with -s.
         roles[word] = roles[word + "s"] = tables["role"][word]
     tables["role"] = roles
@@ -231,8 +262,12 @@ def main() -> None:
     for role, role_target in roles.items():
         for adjective, target in tables["mythical_prefix"].items():
             display_name(adjective + " " + role, target + role_target)
+            if role in singular_roles:
+                display_adjectives[adjective + " " + role] = target + role_target
         for adjective, target in tables["mythical_suffix"].items():
             display_name(role + " " + adjective, target + role_target)
+            if role in singular_roles:
+                display_adjectives[role + " " + adjective] = target + role_target
 
     # Angels use the complete installed sphere vocabulary, not a few names
     # observed in a particular world. Keep parts of speech: global UI `dead`

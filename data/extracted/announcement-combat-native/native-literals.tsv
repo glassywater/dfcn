@@ -1,4 +1,10 @@
 edition	role	owner	instruction	operand	encoding	source
+reference	announcement-submit	0x1400e3c20	0x1400e3cd7	0x1415ee4c0/16	vector	Empty announceme
+reference	announcement-submit	0x1400e3c20	0x1400e3ce1	0x1415ee4d0	cstring	nt 
+reference	announcement-submit	0x1400e3c20	0x1400e3cec	0x1415ee4d2	cstring	 
+reference	announcement-submit	0x1400e3c20	0x1400e3d64	0x1416516f8	cstring	errorlog.txt
+reference	announcement-submit	0x1400e3c20	0x1400e46cc	0x64	inline-store	d
+reference	announcement-submit	0x1400e3c20	0x1400e47ea	0x64	inline-store	d
 reference	shared-damage	0x1400e56a0	0x1400e57a8	0x1415ee4d4	cstring	it
 reference	shared-damage	0x1400e56a0	0x1400e57bb	0x1415ee528	cstring	its
 reference	shared-damage	0x1400e56a0	0x1400e57ce	0x1415ee4d4	cstring	it
@@ -262,6 +268,8 @@ reference	shared-damage	0x1400e56a0	0x1400e9bee	0x1415eed98	cstring	 splatters o
 reference	shared-damage	0x1400e56a0	0x1400e9bf7	0x1415eed80	cstring	 crumbles over the 
 reference	shared-damage	0x1400e56a0	0x1400e9c39	0x1415ee438	cstring	!
 reference	shared-damage	0x1400e56a0	0x1400e9d49	0x1415eed40	cstring	 is sucked out of the wound!
+reference	adventure-announcement-popup-render	0x1400e9f40	0x1400ea417	0x65726f4d	inline	More
+reference	adventure-announcement-popup-render	0x1400e9f40	0x1400ea440	0x79616b4f	inline	Okay
 reference	embedded-item-removal	0x140643f70	0x140644b93	0x55555556	inline	VUUU
 reference	embedded-item-removal	0x140643f70	0x140644eec	0x55555556	inline	VUUU
 reference	embedded-item-removal	0x140643f70	0x140645253	0x1416627a4	cstring	 pull
@@ -665,6 +673,147 @@ reference	charge	0x140654d20	0x140657532	0x141662b38	cstring	You tangle together
 reference	charge	0x140654d20	0x14065753b	0x141662b60	cstring	They tangle together and tumble forward!
 reference	charge	0x140654d20	0x1406576f8	0x141662ae8	cstring	You tangle together and fall over!
 reference	charge	0x140654d20	0x140657701	0x141662b10	cstring	They tangle together and fall over!
+reference	speech-transform	0x14067b6c0	0x14067b70b	0x53	inline-store	S
+reference	speech-transform	0x14067b6c0	0x14067b762	0x141670cb8	cstring	([LIP])
+reference	speech-transform	0x14067b6c0	0x14067b76c	0x141670cbc	cstring	P])
+reference	speech-transform	0x14067b6c0	0x14067b777	0x141670cbe	cstring	)
+reference	speech-transform	0x14067b6c0	0x14067b7e9	0x73	inline-store	s
+reference	speech-transform	0x14067b6c0	0x14067b832	0x141670cc0	cstring	([lip])
+reference	speech-transform	0x14067b6c0	0x14067b83c	0x141670cc4	cstring	p])
+reference	speech-transform	0x14067b6c0	0x14067b847	0x141670cc6	cstring	)
+reference	speech-transform	0x14067b6c0	0x14067b8b5	0x141670cb8	cstring	([LIP])
+reference	speech-transform	0x14067b6c0	0x14067b8bf	0x141670cbc	cstring	P])
+reference	speech-transform	0x14067b6c0	0x14067b8ca	0x141670cbe	cstring	)
+reference	speech-transform	0x14067b6c0	0x14067b92f	0x53	inline-store	S
+reference	speech-transform	0x14067b6c0	0x14067ba07	0x141670cc0	cstring	([lip])
+reference	speech-transform	0x14067b6c0	0x14067ba6e	0x141670cc0	cstring	([lip])
+reference	speech-transform	0x14067b6c0	0x14067ba77	0x141670cc4	cstring	p])
+reference	speech-transform	0x14067b6c0	0x14067ba82	0x141670cc6	cstring	)
+reference	speech-transform	0x14067b6c0	0x14067bb20	0x73	inline-store	s
+reference	speech-wrapper	0x140684a10	0x140684e28	0x141671e40	cstring	 stops and pays attention to you.
+reference	speech-wrapper	0x140684a10	0x140684f4d	0x1415e8ca0	cstring	You
+reference	speech-wrapper	0x140684a10	0x140684fa7	0x1415e8ca0	cstring	You
+reference	speech-wrapper	0x140684a10	0x140684fb0	0x1415e8ca2	cstring	u
+reference	speech-wrapper	0x140684a10	0x1406851b9	0x141671e64	cstring	 (to 
+reference	speech-wrapper	0x140684a10	0x1406851ea	0x141615580	cstring	)
+reference	speech-wrapper	0x140684a10	0x1406852ce	0x141603460	cstring	: 
+reference	body-size-caption	0x140716b70	0x140716ccb	0x141686278	cstring	gigantic
+reference	body-size-caption	0x140716b70	0x140716cda	0x141686268	cstring	very large
+reference	body-size-caption	0x140716b70	0x140716d11	0x141686258	cstring	muscular
+reference	body-size-caption	0x140716b70	0x140716d2f	0x141686250	cstring	frail
+reference	body-size-caption	0x140716b70	0x140716d42	0x141686248	cstring	obese
+reference	body-size-caption	0x140716b70	0x140716d57	0x141686244	cstring	fat
+reference	body-size-caption	0x140716b70	0x140716d6d	0x14168623c	cstring	chubby
+reference	body-size-caption	0x140716b70	0x140716da3	0x141649d9c	cstring	large
+reference	body-size-caption	0x140716b70	0x140716e46	0x141686384	cstring	lanky
+reference	body-size-caption	0x140716b70	0x140716e55	0x14168638c	cstring	big
+reference	body-size-caption	0x140716b70	0x140716ee9	0x14168637c	cstring	stout
+reference	body-size-caption	0x140716b70	0x140716f7d	0x141684e40	cstring	broad
+reference	body-size-caption	0x140716b70	0x140717009	0x141686390	cstring	slim
+reference	body-size-caption	0x140716b70	0x14071708e	0x141685560	cstring	thin
+reference	body-size-caption	0x140716b70	0x140717134	0x141684e38	cstring	narrow
+reference	body-size-caption	0x140716b70	0x1407171d6	0x141686398	cstring	skinny
+reference	body-size-caption	0x140716b70	0x140717278	0x141685560	cstring	thin
+reference	body-size-caption	0x140716b70	0x140717323	0x141686390	cstring	slim
+reference	body-size-caption	0x140716b70	0x1407173c9	0x141684e50	cstring	tall
+reference	body-size-caption	0x140716b70	0x1407173d8	0x141686370	cstring	towering
+reference	body-size-caption	0x140716b70	0x14071745e	0x141686398	cstring	skinny
+reference	body-size-caption	0x140716b70	0x1407174ec	0x141686398	cstring	skinny
+reference	body-size-caption	0x140716b70	0x140717592	0x141684e30	cstring	long
+reference	body-size-caption	0x140716b70	0x140717618	0x141686398	cstring	skinny
+reference	body-size-caption	0x140716b70	0x1407176a6	0x141686398	cstring	skinny
+reference	body-size-caption	0x140716b70	0x140717749	0x141684e48	cstring	short
+reference	body-size-caption	0x140716b70	0x1407177e4	0x141686390	cstring	slim
+reference	body-size-caption	0x140716b70	0x140717872	0x141686398	cstring	skinny
+reference	body-size-caption	0x140716b70	0x140717900	0x141686398	cstring	skinny
+reference	body-size-caption	0x140716b70	0x14071798e	0x141686398	cstring	skinny
+reference	body-size-caption	0x140716b70	0x140717a1c	0x141686398	cstring	skinny
+reference	body-size-caption	0x140716b70	0x140717a45	0x141686360	cstring	scrawny
+reference	body-size-caption	0x140716b70	0x140717b5d	0x141686358	cstring	small
+reference	body-size-caption	0x140716b70	0x140717be3	0x141686398	cstring	skinny
+reference	body-size-caption	0x140716b70	0x140717c85	0x141686350	cstring	tiny
+reference	body-size-caption	0x140716b70	0x140717c8e	0x141686368	cstring	squat
+reference	creature-appearance	0x140717d30	0x140717e6a	0x66666667	inline	gfff
+reference	creature-appearance	0x140717d30	0x140717e99	0x66666667	inline	gfff
+reference	creature-appearance	0x140717d30	0x140719035	0x141686208	cstring	high-cheekbones
+reference	creature-appearance	0x140717d30	0x140719049	0x1416861f8	cstring	low-cheekbones
+reference	creature-appearance	0x140717d30	0x14071908e	0x1416861e8	cstring	square-chin
+reference	creature-appearance	0x140717d30	0x1407190a2	0x1416861d8	cstring	round-chin
+reference	creature-appearance	0x140717d30	0x140719103	0x1416861c8	cstring	massive-chin
+reference	creature-appearance	0x140717d30	0x140719131	0x1416861b8	cstring	recessed-chin
+reference	creature-appearance	0x140717d30	0x140719155	0x1416861a8	cstring	jutting-chin
+reference	creature-appearance	0x140717d30	0x140719177	0x141686198	cstring	prominent-chin
+reference	creature-appearance	0x140717d30	0x1407191b1	0x141686188	cstring	broad-chin
+reference	creature-appearance	0x140717d30	0x1407191cf	0x141686178	cstring	narrow-chin
+reference	creature-appearance	0x140717d30	0x1407191ea	0x1416861a8	cstring	jutting-chin
+reference	creature-appearance	0x140717d30	0x14071922b	0x141686198	cstring	prominent-chin
+reference	creature-appearance	0x140717d30	0x14071923a	0x1416861b8	cstring	recessed-chin
+reference	creature-appearance	0x140717d30	0x14071941c	0x141685420	cstring	high-voiced
+reference	creature-appearance	0x140717d30	0x14071957c	0x141686330	cstring	guttural-voiced
+reference	creature-appearance	0x140717d30	0x1407195bb	0x141686320	cstring	grating-voiced
+reference	creature-appearance	0x140717d30	0x1407195f4	0x141685400	cstring	clear-voiced
+reference	creature-appearance	0x140717d30	0x140719613	0x141685430	cstring	deep-voiced
+reference	creature-appearance	0x140717d30	0x140719655	0x141685410	cstring	raspy-voiced
+reference	creature-appearance	0x140717d30	0x14071966d	0x141686310	cstring	squeaky-voiced
+reference	creature-appearance	0x140717d30	0x14071968f	0x141685400	cstring	clear-voiced
+reference	creature-appearance	0x140717d30	0x1407196ca	0x141686320	cstring	grating-voiced
+reference	creature-appearance	0x140717d30	0x1407196dd	0x141686300	cstring	scratchy-voiced
+reference	creature-appearance	0x140717d30	0x1407196ec	0x141685420	cstring	high-voiced
+reference	creature-appearance	0x140717d30	0x140719717	0x141685430	cstring	deep-voiced
+reference	creature-appearance	0x140717d30	0x14071972d	0x141686218	cstring	low-voiced
+reference	creature-appearance	0x140717d30	0x14071997d	0x141681050	cstring	body part
+reference	creature-appearance	0x140717d30	0x1407199e1	0x73	inline-store	s
+reference	creature-appearance	0x140717d30	0x140719a72	0x73	inline-store	s
+reference	creature-appearance	0x140717d30	0x140719ace	0x73	inline-store	s
+reference	creature-appearance	0x140717d30	0x140719b15	0x141681050	cstring	body part
+reference	creature-appearance	0x140717d30	0x140719b7c	0x141681050	cstring	body part
+reference	creature-appearance	0x140717d30	0x140719b89	0x141681058	cstring	t
+reference	creature-appearance	0x140717d30	0x140719c1b	0x1415edb24	cstring	's 
+reference	creature-appearance	0x140717d30	0x140719dd2	0x141684e50	cstring	tall
+reference	creature-appearance	0x140717d30	0x140719de9	0x141684e40	cstring	broad
+reference	creature-appearance	0x140717d30	0x140719dfb	0x141684e38	cstring	narrow
+reference	creature-appearance	0x140717d30	0x140719e0b	0x141684e30	cstring	long
+reference	creature-appearance	0x140717d30	0x140719e1d	0x141684e48	cstring	short
+reference	creature-appearance	0x140717d30	0x140719e2d	0x141649e00	cstring	high
+reference	creature-appearance	0x140717d30	0x140719e3f	0x141649e08	cstring	low
+reference	creature-appearance	0x140717d30	0x140719e4f	0x141685608	cstring	close-set
+reference	creature-appearance	0x140717d30	0x140719e61	0x1416855f8	cstring	wide-set
+reference	creature-appearance	0x140717d30	0x140719e71	0x1416855cc	cstring	sunken
+reference	creature-appearance	0x140717d30	0x140719e82	0x141685450	cstring	bulging
+reference	creature-appearance	0x140717d30	0x140719e96	0x1416855c0	cstring	protruding
+reference	creature-appearance	0x140717d30	0x140719ea6	0x1416855b0	cstring	wrinkled
+reference	creature-appearance	0x140717d30	0x140719eb8	0x1416855a8	cstring	smooth
+reference	creature-appearance	0x140717d30	0x140719ec9	0x141685bc4	cstring	coiled
+reference	creature-appearance	0x140717d30	0x140719eda	0x14168558c	cstring	curly
+reference	creature-appearance	0x140717d30	0x140719eeb	0x141685bbc	cstring	wavy
+reference	creature-appearance	0x140717d30	0x140719eff	0x141685580	cstring	straight
+reference	creature-appearance	0x140717d30	0x140719f0f	0x1416855a0	cstring	convex
+reference	creature-appearance	0x140717d30	0x140719f21	0x141685598	cstring	concave
+reference	creature-appearance	0x140717d30	0x140719f31	0x141685578	cstring	dense
+reference	creature-appearance	0x140717d30	0x140719f43	0x141685570	cstring	sparse
+reference	creature-appearance	0x140717d30	0x140719f53	0x141685568	cstring	thick
+reference	creature-appearance	0x140717d30	0x140719f65	0x141685560	cstring	thin
+reference	creature-appearance	0x140717d30	0x140719f75	0x1416856f0	cstring	upturned
+reference	creature-appearance	0x140717d30	0x140719f87	0x1416856e4	cstring	hooked
+reference	creature-appearance	0x140717d30	0x140719f97	0x141686340	cstring	splayed
+reference	creature-appearance	0x140717d30	0x140719fa9	0x1416856c8	cstring	flattened
+reference	creature-appearance	0x140717d30	0x140719fba	0x1416856b8	cstring	great-lobed
+reference	creature-appearance	0x140717d30	0x140719fca	0x141685938	cstring	free-lobed
+reference	creature-appearance	0x140717d30	0x140719fdb	0x1416856a8	cstring	fuse-lobed
+reference	creature-appearance	0x140717d30	0x140719ff0	0x141685910	cstring	small-lobed
+reference	creature-appearance	0x140717d30	0x14071a001	0x141685900	cstring	widely-spaced
+reference	creature-appearance	0x140717d30	0x14071a012	0x1416856a0	cstring	gapped
+reference	creature-appearance	0x140717d30	0x14071a020	0x1416858f8	cstring	tangled
+reference	creature-appearance	0x140717d30	0x14071a032	0x141685698	cstring	crowded
+reference	creature-appearance	0x140717d30	0x14071a03f	0x141685448	cstring	round
+reference	creature-appearance	0x140717d30	0x14071a04d	0x1416858c8	cstring	slit
+reference	creature-appearance	0x140717d30	0x14071a05e	0x141684e38	cstring	narrow
+reference	creature-appearance	0x140717d30	0x14071a06c	0x141685440	cstring	greasy
+reference	creature-appearance	0x140717d30	0x14071a07a	0x1416858b0	cstring	crinkly
+reference	creature-appearance	0x140717d30	0x14071a088	0x14168543c	cstring	dry
+reference	creature-appearance	0x140717d30	0x14071a09e	0x14164b74c	cstring	-
+reference	creature-appearance	0x140717d30	0x14071a16a	0x141686348	cstring	average
+reference	creature-appearance	0x140717d30	0x14071a212	0x141686348	cstring	average
 reference	complete-item-caption	0x140c65450	0x140c656f4	0x1416ee318	cstring	 (copy)
 reference	complete-item-caption	0x140c65450	0x140c657e2	0x58	inline-store	X
 reference	complete-item-caption	0x140c65450	0x140c65822	0x58	inline-store	X
@@ -746,6 +895,402 @@ reference	collision	0x140eadea0	0x140eb3711	0x141731ff0	cstring	 apart!
 reference	collision	0x140eadea0	0x140eb38a9	0x141731f68	cstring	 slam
 reference	collision	0x140eadea0	0x140eb38b7	0x141731f60	cstring	 slams
 reference	collision	0x140eadea0	0x140eb38d6	0x141731f98	cstring	 into an obstacle!
+reference	profession-label-supplier	0x14132cc10	0x14132cceb	0x141782060	cstring	miner
+reference	profession-label-supplier	0x14132cc10	0x14132cd05	0x141782080	cstring	woodworker
+reference	profession-label-supplier	0x14132cc10	0x14132cd1f	0x141782070	cstring	carpenter
+reference	profession-label-supplier	0x14132cc10	0x14132cd39	0x1417821f4	cstring	bowyer
+reference	profession-label-supplier	0x14132cc10	0x14132cd53	0x1417821e8	cstring	woodcutter
+reference	profession-label-supplier	0x14132cc10	0x14132cd6d	0x141782210	cstring	stoneworker
+reference	profession-label-supplier	0x14132cc10	0x14132cd87	0x141782200	cstring	engraver
+reference	profession-label-supplier	0x14132cc10	0x14132cda1	0x141782230	cstring	stonecutter
+reference	profession-label-supplier	0x14132cc10	0x14132cdbb	0x141782220	cstring	stone carver
+reference	profession-label-supplier	0x14132cc10	0x14132cdd5	0x141782244	cstring	mason
+reference	profession-label-supplier	0x14132cc10	0x14132cdef	0x14178223c	cstring	ranger
+reference	profession-label-supplier	0x14132cc10	0x14132ce09	0x141782170	cstring	animal caretaker
+reference	profession-label-supplier	0x14132cc10	0x14132ce23	0x141782160	cstring	animal trainer
+reference	profession-label-supplier	0x14132cc10	0x14132ce3d	0x1416a642c	cstring	hunter
+reference	profession-label-supplier	0x14132cc10	0x14132ce57	0x1417821a0	cstring	trapper
+reference	profession-label-supplier	0x14132cc10	0x14132ce71	0x141782188	cstring	animal dissector
+reference	profession-label-supplier	0x14132cc10	0x14132ce8b	0x1417821c0	cstring	metalsmith
+reference	profession-label-supplier	0x14132cc10	0x14132cea5	0x1417821a8	cstring	furnace operator
+reference	profession-label-supplier	0x14132cc10	0x14132cebf	0x1417821d8	cstring	weaponsmith
+reference	profession-label-supplier	0x14132cc10	0x14132ced9	0x1417821d0	cstring	armorer
+reference	profession-label-supplier	0x14132cc10	0x14132cef3	0x1417822c8	cstring	blacksmith
+reference	profession-label-supplier	0x14132cc10	0x14132cf0d	0x1417822b8	cstring	metalcrafter
+reference	profession-label-supplier	0x14132cc10	0x14132cf27	0x1417822e8	cstring	jeweler
+reference	profession-label-supplier	0x14132cc10	0x14132cf41	0x1417822d8	cstring	gem cutter
+reference	profession-label-supplier	0x14132cc10	0x14132cf5b	0x141782300	cstring	gem setter
+reference	profession-label-supplier	0x14132cc10	0x14132cf6f	0x14162a8a8	cstring	craftsman
+reference	profession-label-supplier	0x14132cc10	0x14132cf76	0x14172e188	cstring	craftsmen
+reference	profession-label-supplier	0x14132cc10	0x14132cf95	0x1417822f0	cstring	woodcrafter
+reference	profession-label-supplier	0x14132cc10	0x14132cfaf	0x141782320	cstring	papermaker
+reference	profession-label-supplier	0x14132cc10	0x14132cfc9	0x141782310	cstring	bookbinder
+reference	profession-label-supplier	0x14132cc10	0x14132cfe3	0x141782254	cstring	potter
+reference	profession-label-supplier	0x14132cc10	0x14132cffd	0x14178224c	cstring	glazer
+reference	profession-label-supplier	0x14132cc10	0x14132d017	0x141782270	cstring	wax worker
+reference	profession-label-supplier	0x14132cc10	0x14132d031	0x141782260	cstring	stonecrafter
+reference	profession-label-supplier	0x14132cc10	0x14132d04b	0x141782290	cstring	leatherworker
+reference	profession-label-supplier	0x14132cc10	0x14132d065	0x141782280	cstring	bone carver
+reference	profession-label-supplier	0x14132cc10	0x14132d07f	0x1417822ac	cstring	weaver
+reference	profession-label-supplier	0x14132cc10	0x14132d099	0x1417822a0	cstring	clothier
+reference	profession-label-supplier	0x14132cc10	0x14132d0b3	0x141782398	cstring	glassmaker
+reference	profession-label-supplier	0x14132cc10	0x14132d0cd	0x141782380	cstring	strand extractor
+reference	profession-label-supplier	0x14132cc10	0x14132d0e7	0x1417823b8	cstring	fishery worker
+reference	profession-label-supplier	0x14132cc10	0x14132d0fb	0x1417823d8	cstring	fisherman
+reference	profession-label-supplier	0x14132cc10	0x14132d102	0x1417823a8	cstring	fishermen
+reference	profession-label-supplier	0x14132cc10	0x14132d121	0x1417823c8	cstring	fish dissector
+reference	profession-label-supplier	0x14132cc10	0x14132d13b	0x1417823f0	cstring	fish cleaner
+reference	profession-label-supplier	0x14132cc10	0x14132d155	0x1417823e4	cstring	farmer
+reference	profession-label-supplier	0x14132cc10	0x14132d16f	0x141782338	cstring	cheesemaker
+reference	profession-label-supplier	0x14132cc10	0x14132d189	0x14178232c	cstring	milker
+reference	profession-label-supplier	0x14132cc10	0x14132d1a3	0x141782350	cstring	gelder
+reference	profession-label-supplier	0x14132cc10	0x14132d1bd	0x141782348	cstring	shearer
+reference	profession-label-supplier	0x14132cc10	0x14132d1d7	0x141782360	cstring	spinner
+reference	profession-label-supplier	0x14132cc10	0x14132d1f1	0x141782358	cstring	cook
+reference	profession-label-supplier	0x14132cc10	0x14132d20b	0x141782370	cstring	thresher
+reference	profession-label-supplier	0x14132cc10	0x14132d225	0x141782368	cstring	miller
+reference	profession-label-supplier	0x14132cc10	0x14132d23f	0x141736468	cstring	butcher
+reference	profession-label-supplier	0x14132cc10	0x14132d259	0x141781d10	cstring	tanner
+reference	profession-label-supplier	0x14132cc10	0x14132d273	0x141781d08	cstring	dyer
+reference	profession-label-supplier	0x14132cc10	0x14132d28d	0x141781d28	cstring	presser
+reference	profession-label-supplier	0x14132cc10	0x14132d2a7	0x141781d18	cstring	beekeeper
+reference	profession-label-supplier	0x14132cc10	0x14132d2c1	0x141781d40	cstring	planter
+reference	profession-label-supplier	0x14132cc10	0x14132d2db	0x141781d30	cstring	herbalist
+reference	profession-label-supplier	0x14132cc10	0x14132d2f5	0x141781d54	cstring	brewer
+reference	profession-label-supplier	0x14132cc10	0x14132d30f	0x141781d48	cstring	soap maker
+reference	profession-label-supplier	0x14132cc10	0x14132d329	0x141781c98	cstring	potash maker
+reference	profession-label-supplier	0x14132cc10	0x14132d343	0x141781c88	cstring	lye maker
+reference	profession-label-supplier	0x14132cc10	0x14132d35d	0x141781cb8	cstring	wood burner
+reference	profession-label-supplier	0x14132cc10	0x14132d377	0x141781ca8	cstring	engineer
+reference	profession-label-supplier	0x14132cc10	0x14132d391	0x141781cd8	cstring	mechanic
+reference	profession-label-supplier	0x14132cc10	0x14132d3ab	0x141781cc8	cstring	siege engineer
+reference	profession-label-supplier	0x14132cc10	0x14132d3c5	0x141781cf8	cstring	siege operator
+reference	profession-label-supplier	0x14132cc10	0x14132d3df	0x141781ce8	cstring	pump operator
+reference	profession-label-supplier	0x14132cc10	0x14132d3f9	0x1416c1e74	cstring	clerk
+reference	profession-label-supplier	0x14132cc10	0x14132d413	0x14165fbf8	cstring	administrator
+reference	profession-label-supplier	0x14132cc10	0x14132d42d	0x141781df8	cstring	trader
+reference	profession-label-supplier	0x14132cc10	0x14132d447	0x1416a65bc	cstring	poet
+reference	profession-label-supplier	0x14132cc10	0x14132d461	0x1416a6404	cstring	bard
+reference	profession-label-supplier	0x14132cc10	0x14132d47b	0x1416a640c	cstring	dancer
+reference	profession-label-supplier	0x14132cc10	0x14132d495	0x141642440	cstring	performer
+reference	profession-label-supplier	0x14132cc10	0x14132d4af	0x1416423b4	cstring	scribe
+reference	profession-label-supplier	0x14132cc10	0x14132d4c9	0x141642430	cstring	tavern keeper
+reference	profession-label-supplier	0x14132cc10	0x14132d4e3	0x141642458	cstring	doctor
+reference	profession-label-supplier	0x14132cc10	0x14132d4fd	0x1416423f8	cstring	diagnostician
+reference	profession-label-supplier	0x14132cc10	0x14132d517	0x141642410	cstring	bone doctor
+reference	profession-label-supplier	0x14132cc10	0x14132d531	0x141781df0	cstring	suturer
+reference	profession-label-supplier	0x14132cc10	0x14132d54b	0x141642408	cstring	surgeon
+reference	profession-label-supplier	0x14132cc10	0x14132d565	0x141781e08	cstring	merchant
+reference	profession-label-supplier	0x14132cc10	0x14132d57f	0x141781e00	cstring	drunk
+reference	profession-label-supplier	0x14132cc10	0x14132d593	0x141781e18	cstring	hammerman
+reference	profession-label-supplier	0x14132cc10	0x14132d59a	0x141781e28	cstring	hammermen
+reference	profession-label-supplier	0x14132cc10	0x14132d5b9	0x141781e48	cstring	Hammer Lord
+reference	profession-label-supplier	0x14132cc10	0x14132d5d0	0x141781d70	cstring	spearman
+reference	profession-label-supplier	0x14132cc10	0x14132d5d7	0x141781e38	cstring	spearmen
+reference	profession-label-supplier	0x14132cc10	0x14132d5f3	0x141781d60	cstring	Spearmaster
+reference	profession-label-supplier	0x14132cc10	0x14132d60a	0x141781d80	cstring	crossbowman
+reference	profession-label-supplier	0x14132cc10	0x14132d611	0x141781d90	cstring	crossbowmen
+reference	profession-label-supplier	0x14132cc10	0x14132d62a	0x141781da0	cstring	Elite Crossbowmen
+reference	profession-label-supplier	0x14132cc10	0x14132d631	0x141781db8	cstring	Elite Crossbowman
+reference	profession-label-supplier	0x14132cc10	0x14132d64d	0x141781de0	cstring	wrestler
+reference	profession-label-supplier	0x14132cc10	0x14132d667	0x141781dd0	cstring	Elite Wrestler
+reference	profession-label-supplier	0x14132cc10	0x14132d67b	0x141781eb8	cstring	axeman
+reference	profession-label-supplier	0x14132cc10	0x14132d682	0x141781ec0	cstring	axemen
+reference	profession-label-supplier	0x14132cc10	0x14132d6a1	0x141781ed8	cstring	Axe Lord
+reference	profession-label-supplier	0x14132cc10	0x14132d6b5	0x141781ef8	cstring	swordsman
+reference	profession-label-supplier	0x14132cc10	0x14132d6bc	0x141781ec8	cstring	swordsmen
+reference	profession-label-supplier	0x14132cc10	0x14132d6db	0x141781ee8	cstring	Swordmaster
+reference	profession-label-supplier	0x14132cc10	0x14132d6ef	0x141781f08	cstring	maceman
+reference	profession-label-supplier	0x14132cc10	0x14132d6f6	0x141781f10	cstring	macemen
+reference	profession-label-supplier	0x14132cc10	0x14132d715	0x141781e60	cstring	Mace Lord
+reference	profession-label-supplier	0x14132cc10	0x14132d729	0x141781e80	cstring	pikeman
+reference	profession-label-supplier	0x14132cc10	0x14132d730	0x141781e58	cstring	pikemen
+reference	profession-label-supplier	0x14132cc10	0x14132d74f	0x141781e70	cstring	Pikemaster
+reference	profession-label-supplier	0x14132cc10	0x14132d763	0x141781e88	cstring	bowman
+reference	profession-label-supplier	0x14132cc10	0x14132d76a	0x141781e90	cstring	bowmen
+reference	profession-label-supplier	0x14132cc10	0x14132d786	0x141781e98	cstring	Elite Bowman
+reference	profession-label-supplier	0x14132cc10	0x14132d78d	0x141781ea8	cstring	Elite Bowmen
+reference	profession-label-supplier	0x14132cc10	0x14132d7a9	0x141781fa0	cstring	blowgunner
+reference	profession-label-supplier	0x14132cc10	0x14132d7c3	0x141781f88	cstring	Master Blowgunner
+reference	profession-label-supplier	0x14132cc10	0x14132d7dd	0x141781fc0	cstring	lasher
+reference	profession-label-supplier	0x14132cc10	0x14132d7f7	0x141781fb0	cstring	Master Lasher
+reference	profession-label-supplier	0x14132cc10	0x14132d811	0x141781fd8	cstring	recruit
+reference	profession-label-supplier	0x14132cc10	0x14132d82b	0x1416a1210	cstring	hunting
+reference	profession-label-supplier	0x14132cc10	0x14132d840	0x141649be4	cstring	war
+reference	profession-label-supplier	0x14132cc10	0x14132d855	0x141781fc8	cstring	Master Thief
+reference	profession-label-supplier	0x14132cc10	0x14132d86f	0x1416a6990	cstring	thief
+reference	profession-label-supplier	0x14132cc10	0x14132d889	0x141642420	cstring	monster slayer
+reference	profession-label-supplier	0x14132cc10	0x14132d8a3	0x141674d10	cstring	scout
+reference	profession-label-supplier	0x14132cc10	0x14132d8bd	0x141781fe8	cstring	beast hunter
+reference	profession-label-supplier	0x14132cc10	0x14132d8d7	0x1416e67a8	cstring	snatcher
+reference	profession-label-supplier	0x14132cc10	0x14132d8ee	0x141675290	cstring	mercenaries
+reference	profession-label-supplier	0x14132cc10	0x14132d8fb	0x1415ec9f0	cstring	mercenary
+reference	profession-label-supplier	0x14132cc10	0x14132d91d	0x141781fe0	cstring	sage
+reference	profession-label-supplier	0x14132cc10	0x14132d937	0x141642450	cstring	scholar
+reference	profession-label-supplier	0x14132cc10	0x14132d951	0x141781f28	cstring	philosopher
+reference	profession-label-supplier	0x14132cc10	0x14132d96b	0x141781f18	cstring	mathematician
+reference	profession-label-supplier	0x14132cc10	0x14132d985	0x141781f48	cstring	historian
+reference	profession-label-supplier	0x14132cc10	0x14132d99f	0x141781f38	cstring	astronomer
+reference	profession-label-supplier	0x14132cc10	0x14132d9b9	0x141781f60	cstring	naturalist
+reference	profession-label-supplier	0x14132cc10	0x14132d9d3	0x141781f58	cstring	chemist
+reference	profession-label-supplier	0x14132cc10	0x14132d9ed	0x141781f78	cstring	geographer
+reference	profession-label-supplier	0x14132cc10	0x14132da07	0x141673f48	cstring	criminal
+reference	profession-label-supplier	0x14132cc10	0x14132da21	0x141781f70	cstring	peddler
+reference	profession-label-supplier	0x14132cc10	0x14132da3b	0x141782ba0	cstring	prophet
+reference	profession-label-supplier	0x14132cc10	0x14132da55	0x141782b98	cstring	pilgrim
+reference	profession-label-supplier	0x14132cc10	0x14132da6f	0x141782bb4	cstring	monk
+reference	profession-label-supplier	0x14132cc10	0x14132da89	0x141782ba8	cstring	messenger
+reference	profession-label-supplier	0x14132cc10	0x14132db26	0x1416a12a8	cstring	children
+reference	profession-label-supplier	0x14132cc10	0x14132dc5b	0x141646ac0	cstring	child
+reference	profession-label-supplier	0x14132cc10	0x14132dcb8	0x141782bc8	cstring	babies
+reference	profession-label-supplier	0x14132cc10	0x14132dcca	0x14167ff14	cstring	baby
+reference	profession-label-supplier	0x14132cc10	0x14132de26	0x141782bc8	cstring	babies
+reference	profession-label-supplier	0x14132cc10	0x14132de35	0x14167ff14	cstring	baby
+reference	profession-label-supplier	0x14132cc10	0x14132de57	0x1415e9298	cstring	s
+reference	creature-profession-description	0x14132e0c0	0x14132e1e3	0x1415e9298	cstring	s
+reference	creature-profession-description	0x14132e0c0	0x14132e334	0x141782be0	cstring	peasant
+reference	creature-profession-description	0x14132e0c0	0x14132e33b	0x141782bc0	cstring	Peasant
+reference	creature-profession-description	0x14132e0c0	0x14132e363	0x1415e9298	cstring	s
+reference	combat-unit-caption	0x14132e430	0x14132e4af	0x1415ec550	cstring	you
+reference	combat-unit-caption	0x14132e430	0x14132e4b6	0x1415e8ca0	cstring	You
+reference	combat-unit-caption	0x14132e430	0x14132e9a0	0x1415ec9fc	cstring	 slave
+reference	combat-unit-caption	0x14132e430	0x14132e9da	0x1415eca28	cstring	slave
+reference	combat-unit-caption	0x14132e430	0x14132ea35	0x1415eca28	cstring	slave
+reference	combat-unit-caption	0x14132e430	0x14132ea3d	0x1415eca2c	cstring	e
+reference	combat-unit-caption	0x14132e430	0x14132eb1b	0x141782bd0	cstring	 prisoner
+reference	combat-unit-caption	0x14132e430	0x14132eb4f	0x72656e6f73697270	inline	prisoner
+reference	combat-unit-caption	0x14132e430	0x14132ebad	0x72656e6f73697270	inline	prisoner
+reference	combat-unit-caption	0x14132e430	0x14132ed76	0x1415e8e48	cstring	the 
+reference	combat-unit-caption	0x14132e430	0x14132ed7d	0x1415ed9bc	cstring	The 
+reference	combat-unit-caption	0x14132e430	0x14132edc2	0x1415e873c	cstring	 
+reference	combat-unit-caption	0x14132e430	0x14132ef95	0x1415e8e48	cstring	the 
+reference	combat-unit-caption	0x14132e430	0x14132efa9	0x1415ed620	cstring	a 
+reference	combat-unit-caption	0x14132e430	0x14132efbe	0x1416757e4	cstring	force
+reference	combat-unit-caption	0x14132e430	0x14132efe3	0x1415e8e48	cstring	the 
+reference	combat-unit-caption	0x14132e430	0x14132eff7	0x1415ed620	cstring	a 
+reference	combat-unit-caption	0x14132e430	0x14132f00c	0x141661fa4	cstring	deity
+reference	combat-unit-caption	0x14132e430	0x14132f254	0x1415ec9fc	cstring	 slave
+reference	combat-unit-caption	0x14132e430	0x14132f28e	0x1415eca28	cstring	slave
+reference	combat-unit-caption	0x14132e430	0x14132f2ee	0x1415eca28	cstring	slave
+reference	combat-unit-caption	0x14132e430	0x14132f2f6	0x1415eca2c	cstring	e
+reference	combat-unit-caption	0x14132e430	0x14132f3cb	0x141782bd0	cstring	 prisoner
+reference	combat-unit-caption	0x14132e430	0x14132f3ff	0x72656e6f73697270	inline	prisoner
+reference	combat-unit-caption	0x14132e430	0x14132f459	0x72656e6f73697270	inline	prisoner
+reference	combat-unit-caption	0x14132e430	0x14132f513	0x1415e8e48	cstring	the 
+reference	combat-unit-caption	0x14132e430	0x14132f569	0x1415ed620	cstring	a 
+reference	combat-unit-caption	0x14132e430	0x14132f5d3	0x141782b3c	cstring	stray 
+reference	combat-unit-caption	0x14132e430	0x14132f5da	0x141782b48	cstring	fierce 
+reference	combat-unit-caption	0x14132e430	0x14132f61e	0x1415ed620	cstring	a 
+reference	combat-unit-caption	0x14132e430	0x14132f633	0x141782b58	cstring	agitated 
+reference	combat-unit-caption	0x14132e430	0x14132f67b	0x1415ed620	cstring	a 
+reference	combat-unit-caption	0x14132e430	0x14132f690	0x1416a5e5c	cstring	ghost
+reference	combat-unit-caption	0x14132e430	0x14132f6bf	0x1415ed620	cstring	a 
+reference	combat-unit-caption	0x14132e430	0x14132f6d4	0x1415fdbb8	cstring	ghostly 
+reference	combat-unit-caption	0x14132e430	0x14132f706	0x1415ed620	cstring	a 
+reference	combat-unit-caption	0x14132e430	0x14132f754	0x141686348	cstring	average
+reference	combat-unit-caption	0x14132e430	0x14132f783	0x1415e873c	cstring	 
+reference	combat-unit-caption	0x14132e430	0x14132f7d7	0x1415e873c	cstring	 
+reference	combat-unit-caption	0x14132e430	0x14132f81e	0x1415e873c	cstring	 
+reference	combat-unit-caption	0x14132e430	0x14132f843	0x1415ed620	cstring	a 
+reference	combat-unit-caption	0x14132e430	0x14132f89c	0x1415ed620	cstring	a 
+reference	combat-unit-caption	0x14132e430	0x14132f8b1	0x1416cf03c	cstring	corpse
+reference	combat-unit-caption	0x14132e430	0x14132f8c0	0x14173e8e0	cstring	 corpse
+reference	unit-role-description	0x14132f980	0x14132fade	0x141661fa4	cstring	deity
+reference	unit-role-description	0x14132f980	0x14132faf5	0x1416757e4	cstring	force
+reference	unit-role-description	0x14132f980	0x14132fd3c	0x141782b50	cstring	 Slave
+reference	unit-role-description	0x14132f980	0x14132fd76	0x141600c30	cstring	Slave
+reference	unit-role-description	0x14132f980	0x14132fdcc	0x141600c30	cstring	Slave
+reference	unit-role-description	0x14132f980	0x14132fdd4	0x141600c34	cstring	e
+reference	unit-role-description	0x14132f980	0x14132feb3	0x141782b70	cstring	 Prisoner
+reference	unit-role-description	0x14132f980	0x14132fee7	0x72656e6f73697250	inline	Prisoner
+reference	unit-role-description	0x14132f980	0x14132ff37	0x72656e6f73697250	inline	Prisoner
+reference	unit-role-description	0x14132f980	0x141330066	0x141782b8c	cstring	Stray 
+reference	unit-role-description	0x14132f980	0x14133006d	0x141782b68	cstring	Fierce 
+reference	unit-role-description	0x14132f980	0x14133008e	0x141782b80	cstring	Agitated 
+reference	unit-role-description	0x14132f980	0x1413300c4	0x1416bec90	cstring	Ghost
+reference	unit-role-description	0x14132f980	0x1413300de	0x141629b50	cstring	Ghostly 
+reference	unit-role-description	0x14132f980	0x14133012d	0x1415e873c	cstring	 
+reference	unit-role-description	0x14132f980	0x141330176	0x1415e873c	cstring	 
+reference	unit-role-description	0x14132f980	0x1413301bc	0x141782c60	cstring	Corpse
+reference	unit-role-description	0x14132f980	0x1413301cb	0x141629b48	cstring	 Corpse
+reference	speaker-caption	0x141330c30	0x141330e5d	0x1415e90d8	cstring	, 
+reference	speaker-caption	0x141330c30	0x141330f58	0x1415e9718	cstring	""""
+reference	speaker-caption	0x141330c30	0x141330fad	0x1415e9718	cstring	""""
+reference	speaker-caption	0x141330c30	0x141330fc2	0x1415e90d8	cstring	, 
+reference	speaker-caption	0x141330c30	0x141331001	0x1415e90d8	cstring	, 
+reference	speaker-caption	0x141330c30	0x14133105d	0x1415e90d8	cstring	, 
+reference	speaker-caption	0x141330c30	0x1413310b8	0x141615540	cstring	 (
+reference	speaker-caption	0x141330c30	0x1413310f4	0x141782c58	cstring	Trained
+reference	speaker-caption	0x141330c30	0x141331100	0x141782c78	cstring	-Trained-
+reference	speaker-caption	0x141330c30	0x14133110c	0x141782c68	cstring	+Trained+
+reference	speaker-caption	0x141330c30	0x141331118	0x141782c90	cstring	*Trained*
+reference	speaker-caption	0x141330c30	0x14133114c	0x141782c58	cstring	Trained
+reference	speaker-caption	0x141330c30	0x14133119c	0x141782c58	cstring	Trained
+reference	speaker-caption	0x141330c30	0x1413311c8	0x141782c84	cstring	Tame
+reference	speaker-caption	0x141330c30	0x1413311d1	0x141782cb0	cstring	Semi-Wild
+reference	speaker-caption	0x141330c30	0x1413311e9	0x141615580	cstring	)
+reference	alternate-unit-caption	0x141331500	0x141331674	0x141782bf8	cstring	the force
+reference	alternate-unit-caption	0x141331500	0x141331873	0x141782ca0	cstring	the deity
+reference	alternate-unit-caption	0x141331500	0x141331b08	0x1415e8e48	cstring	the 
+reference	alternate-unit-caption	0x141331500	0x141331e1a	0x141608940	cstring	Miner
+reference	alternate-unit-caption	0x141331500	0x141331e23	0x141608944	cstring	r
+reference	alternate-unit-caption	0x141331500	0x141331e3e	0x141782be8	cstring	Woodworker
+reference	alternate-unit-caption	0x141331500	0x141331e4b	0x141782bf0	cstring	er
+reference	alternate-unit-caption	0x141331500	0x141331e67	0x14162c9e0	cstring	Carpenter
+reference	alternate-unit-caption	0x141331500	0x141331e74	0x14162c9e8	cstring	r
+reference	alternate-unit-caption	0x141331500	0x141331e8f	0x14162c9c8	cstring	Bowyer
+reference	alternate-unit-caption	0x141331500	0x141331e98	0x14162c9cc	cstring	er
+reference	alternate-unit-caption	0x141331500	0x141331eb4	0x141608960	cstring	Woodcutter
+reference	alternate-unit-caption	0x141331500	0x141331ec1	0x141608968	cstring	er
+reference	alternate-unit-caption	0x141331500	0x141331edd	0x14162c958	cstring	Stoneworker
+reference	alternate-unit-caption	0x141331500	0x141331eea	0x14162c960	cstring	ker
+reference	alternate-unit-caption	0x141331500	0x141331ef5	0x14162c962	cstring	r
+reference	alternate-unit-caption	0x141331500	0x141331f10	0x7265766172676e45	inline	Engraver
+reference	alternate-unit-caption	0x141331500	0x141331f27	0x1416a5848	cstring	Stonecutter
+reference	alternate-unit-caption	0x141331500	0x141331f3c	0x1416a5838	cstring	Stone Carver
+reference	alternate-unit-caption	0x141331500	0x141331f51	0x1416a5864	cstring	Mason
+reference	alternate-unit-caption	0x141331500	0x141331f66	0x141782c10	cstring	Ranger
+reference	alternate-unit-caption	0x141331500	0x141331f7b	0x1416a5880	cstring	Animal Caretaker
+reference	alternate-unit-caption	0x141331500	0x141331f90	0x1416a5870	cstring	Animal Trainer
+reference	alternate-unit-caption	0x141331500	0x141331fa5	0x141600378	cstring	Hunter
+reference	alternate-unit-caption	0x141331500	0x141331fba	0x1416a56f8	cstring	Trapper
+reference	alternate-unit-caption	0x141331500	0x141331fcf	0x1416a56d0	cstring	Animal Dissector
+reference	alternate-unit-caption	0x141331500	0x141331fe4	0x14162c938	cstring	Metalsmith
+reference	alternate-unit-caption	0x141331500	0x141331ff9	0x1416a5628	cstring	Furnace Operator
+reference	alternate-unit-caption	0x141331500	0x14133200e	0x1416a5690	cstring	Weaponsmith
+reference	alternate-unit-caption	0x141331500	0x141332023	0x141782c08	cstring	Armorer
+reference	alternate-unit-caption	0x141331500	0x141332040	0x1416a56b0	cstring	Blacksmith
+reference	alternate-unit-caption	0x141331500	0x14133204d	0x1416a56b8	cstring	th
+reference	alternate-unit-caption	0x141331500	0x141332069	0x141782c28	cstring	Metalcrafter
+reference	alternate-unit-caption	0x141331500	0x141332076	0x141782c30	cstring	fter
+reference	alternate-unit-caption	0x141331500	0x141332088	0x14162c930	cstring	Jeweler
+reference	alternate-unit-caption	0x141331500	0x14133209d	0x1416a54e0	cstring	Gem Cutter
+reference	alternate-unit-caption	0x141331500	0x1413320b2	0x1416a54f0	cstring	Gem Setter
+reference	alternate-unit-caption	0x141331500	0x1413320c7	0x141651c38	cstring	Craftsman
+reference	alternate-unit-caption	0x141331500	0x1413320dc	0x1416a5500	cstring	Woodcrafter
+reference	alternate-unit-caption	0x141331500	0x1413320f1	0x1416a5510	cstring	Papermaker
+reference	alternate-unit-caption	0x141331500	0x141332106	0x1416a5520	cstring	Bookbinder
+reference	alternate-unit-caption	0x141331500	0x14133211b	0x1416a552c	cstring	Potter
+reference	alternate-unit-caption	0x141331500	0x141332130	0x1416a59c4	cstring	Glazer
+reference	alternate-unit-caption	0x141331500	0x141332145	0x1416a5538	cstring	Wax Worker
+reference	alternate-unit-caption	0x141331500	0x14133215a	0x141782c18	cstring	Stonecrafter
+reference	alternate-unit-caption	0x141331500	0x14133216f	0x1416a59a0	cstring	Leatherworker
+reference	alternate-unit-caption	0x141331500	0x141332184	0x1416a59d0	cstring	Bone Carver
+reference	alternate-unit-caption	0x141331500	0x141332199	0x1416a59dc	cstring	Weaver
+reference	alternate-unit-caption	0x141331500	0x1413321ae	0x141651cd0	cstring	Clothier
+reference	alternate-unit-caption	0x141331500	0x1413321c3	0x1416a5568	cstring	Glassmaker
+reference	alternate-unit-caption	0x141331500	0x1413321d8	0x1416a5640	cstring	Strand Extractor
+reference	alternate-unit-caption	0x141331500	0x1413321ed	0x141782c48	cstring	Fishery Worker
+reference	alternate-unit-caption	0x141331500	0x141332202	0x1416a5618	cstring	Fisherman
+reference	alternate-unit-caption	0x141331500	0x141332217	0x1416a56c0	cstring	Fish Dissector
+reference	alternate-unit-caption	0x141331500	0x14133222c	0x1416a56e8	cstring	Fish Cleaner
+reference	alternate-unit-caption	0x141331500	0x141332241	0x14162cb88	cstring	Farmer
+reference	alternate-unit-caption	0x141331500	0x141332256	0x1416a58c0	cstring	Cheesemaker
+reference	alternate-unit-caption	0x141331500	0x14133226b	0x1416a58cc	cstring	Milker
+reference	alternate-unit-caption	0x141331500	0x141332280	0x1416a58d4	cstring	Gelder
+reference	alternate-unit-caption	0x141331500	0x141332295	0x1416a58e0	cstring	Shearer
+reference	alternate-unit-caption	0x141331500	0x1413322aa	0x1416a58e8	cstring	Spinner
+reference	alternate-unit-caption	0x141331500	0x1413322bf	0x14163cf84	cstring	Cook
+reference	alternate-unit-caption	0x141331500	0x1413322d4	0x1416a59f8	cstring	Thresher
+reference	alternate-unit-caption	0x141331500	0x1413322e9	0x1416a59ec	cstring	Miller
+reference	alternate-unit-caption	0x141331500	0x1413322fe	0x14161be28	cstring	Butcher
+reference	alternate-unit-caption	0x141331500	0x141332313	0x14162cb80	cstring	Tanner
+reference	alternate-unit-caption	0x141331500	0x141332328	0x14162c910	cstring	Dyer
+reference	alternate-unit-caption	0x141331500	0x14133233d	0x1416a59b0	cstring	Presser
+reference	alternate-unit-caption	0x141331500	0x141332352	0x1416a59b8	cstring	Beekeeper
+reference	alternate-unit-caption	0x141331500	0x141332367	0x1416a5700	cstring	Planter
+reference	alternate-unit-caption	0x141331500	0x14133237c	0x1416a5708	cstring	Herbalist
+reference	alternate-unit-caption	0x141331500	0x141332391	0x1416a59e4	cstring	Brewer
+reference	alternate-unit-caption	0x141331500	0x1413323a6	0x141782c38	cstring	Soap Maker
+reference	alternate-unit-caption	0x141331500	0x1413323bb	0x1416a5660	cstring	Potash Maker
+reference	alternate-unit-caption	0x141331500	0x1413323d0	0x1416a5670	cstring	Lye Maker
+reference	alternate-unit-caption	0x141331500	0x1413323e5	0x1416a5680	cstring	Wood Burner
+reference	alternate-unit-caption	0x141331500	0x1413323fa	0x141782d20	cstring	Engineer
+reference	alternate-unit-caption	0x141331500	0x14133240f	0x14162c948	cstring	Mechanic
+reference	alternate-unit-caption	0x141331500	0x141332424	0x1416a5970	cstring	Siege Engineer
+reference	alternate-unit-caption	0x141331500	0x141332439	0x1416a5980	cstring	Siege Operator
+reference	alternate-unit-caption	0x141331500	0x14133244e	0x1416a5990	cstring	Pump Operator
+reference	alternate-unit-caption	0x141331500	0x141332463	0x141782d18	cstring	Clerk
+reference	alternate-unit-caption	0x141331500	0x141332478	0x141782d38	cstring	Administrator
+reference	alternate-unit-caption	0x141331500	0x14133248d	0x141782d2c	cstring	Trader
+reference	alternate-unit-caption	0x141331500	0x1413324a2	0x1416a55a4	cstring	Poet
+reference	alternate-unit-caption	0x141331500	0x1413324b7	0x141782d50	cstring	Bard
+reference	alternate-unit-caption	0x141331500	0x1413324cc	0x1416a5ad8	cstring	Dancer
+reference	alternate-unit-caption	0x141331500	0x1413324e1	0x1415ffd30	cstring	Performer
+reference	alternate-unit-caption	0x141331500	0x1413324f6	0x1415ffd1c	cstring	Scribe
+reference	alternate-unit-caption	0x141331500	0x14133250b	0x14162c890	cstring	Tavern Keeper
+reference	alternate-unit-caption	0x141331500	0x141332520	0x141782d48	cstring	Sage
+reference	alternate-unit-caption	0x141331500	0x141332535	0x1415ffd28	cstring	Scholar
+reference	alternate-unit-caption	0x141331500	0x14133254a	0x141782d68	cstring	Philosopher
+reference	alternate-unit-caption	0x141331500	0x14133255f	0x1416a5b78	cstring	Mathematician
+reference	alternate-unit-caption	0x141331500	0x141332574	0x141782d58	cstring	Historian
+reference	alternate-unit-caption	0x141331500	0x141332589	0x1416a5b88	cstring	Astronomer
+reference	alternate-unit-caption	0x141331500	0x14133259e	0x141782cd0	cstring	Naturalist
+reference	alternate-unit-caption	0x141331500	0x1413325b3	0x1416a5b98	cstring	Chemist
+reference	alternate-unit-caption	0x141331500	0x1413325c8	0x1416a5ba0	cstring	Geographer
+reference	alternate-unit-caption	0x141331500	0x1413325dd	0x1415ffcf8	cstring	Doctor
+reference	alternate-unit-caption	0x141331500	0x1413325f2	0x1415ffce8	cstring	Diagnostician
+reference	alternate-unit-caption	0x141331500	0x141332607	0x14162c8a8	cstring	Bone Doctor
+reference	alternate-unit-caption	0x141331500	0x14133261c	0x1416a5918	cstring	Suturer
+reference	alternate-unit-caption	0x141331500	0x141332631	0x1415fff10	cstring	Surgeon
+reference	alternate-unit-caption	0x141331500	0x141332646	0x141782cc0	cstring	Merchant
+reference	alternate-unit-caption	0x141331500	0x14133265b	0x141782ce4	cstring	Drunk
+reference	alternate-unit-caption	0x141331500	0x141332670	0x14162c880	cstring	Monster Slayer
+reference	alternate-unit-caption	0x141331500	0x141332685	0x141782cdc	cstring	Scout
+reference	alternate-unit-caption	0x141331500	0x14133269a	0x141782cf8	cstring	Beast Hunter
+reference	alternate-unit-caption	0x141331500	0x1413326af	0x14169e2f0	cstring	Snatcher
+reference	alternate-unit-caption	0x141331500	0x1413326c4	0x1415ffd10	cstring	Mercenary
+reference	alternate-unit-caption	0x141331500	0x1413326d9	0x1416a5a90	cstring	Hammerman
+reference	alternate-unit-caption	0x141331500	0x1413326ee	0x141781e48	cstring	Hammer Lord
+reference	alternate-unit-caption	0x141331500	0x141332703	0x1416a5aa0	cstring	Spearman
+reference	alternate-unit-caption	0x141331500	0x141332718	0x141781d60	cstring	Spearmaster
+reference	alternate-unit-caption	0x141331500	0x14133272d	0x1416a5ab0	cstring	Crossbowman
+reference	alternate-unit-caption	0x141331500	0x141332742	0x141781db8	cstring	Elite Crossbowman
+reference	alternate-unit-caption	0x141331500	0x141332757	0x1416a5a40	cstring	Wrestler
+reference	alternate-unit-caption	0x141331500	0x14133276c	0x141781dd0	cstring	Elite Wrestler
+reference	alternate-unit-caption	0x141331500	0x141332781	0x1416a5a70	cstring	Axeman
+reference	alternate-unit-caption	0x141331500	0x141332796	0x141781ed8	cstring	Axe Lord
+reference	alternate-unit-caption	0x141331500	0x1413327ab	0x1416a5a78	cstring	Swordsman
+reference	alternate-unit-caption	0x141331500	0x1413327c0	0x141781ee8	cstring	Swordmaster
+reference	alternate-unit-caption	0x141331500	0x1413327d5	0x1416a5a88	cstring	Maceman
+reference	alternate-unit-caption	0x141331500	0x1413327ea	0x141781e60	cstring	Mace Lord
+reference	alternate-unit-caption	0x141331500	0x1413327ff	0x1416a5ac0	cstring	Pikeman
+reference	alternate-unit-caption	0x141331500	0x141332814	0x141781e70	cstring	Pikemaster
+reference	alternate-unit-caption	0x141331500	0x141332829	0x1416a5948	cstring	Bowman
+reference	alternate-unit-caption	0x141331500	0x14133283e	0x141781e98	cstring	Elite Bowman
+reference	alternate-unit-caption	0x141331500	0x141332853	0x1416a5a08	cstring	Blowgunner
+reference	alternate-unit-caption	0x141331500	0x141332868	0x141781f88	cstring	Master Blowgunner
+reference	alternate-unit-caption	0x141331500	0x14133287d	0x1416a58b4	cstring	Lasher
+reference	alternate-unit-caption	0x141331500	0x141332892	0x141781fb0	cstring	Master Lasher
+reference	alternate-unit-caption	0x141331500	0x1413328a7	0x141782cf0	cstring	Recruit
+reference	alternate-unit-caption	0x141331500	0x1413328bc	0x1415f7148	cstring	Hunting
+reference	alternate-unit-caption	0x141331500	0x1413328d1	0x1416036fc	cstring	War
+reference	alternate-unit-caption	0x141331500	0x1413328e6	0x141781fc8	cstring	Master Thief
+reference	alternate-unit-caption	0x141331500	0x1413328fb	0x14160032c	cstring	Thief
+reference	alternate-unit-caption	0x141331500	0x141332910	0x1415ec960	cstring	Criminal
+reference	alternate-unit-caption	0x141331500	0x141332925	0x141782d10	cstring	Peddler
+reference	alternate-unit-caption	0x141331500	0x14133293a	0x141782d08	cstring	Prophet
+reference	alternate-unit-caption	0x141331500	0x14133294f	0x141782df8	cstring	Pilgrim
+reference	alternate-unit-caption	0x141331500	0x141332964	0x141782dec	cstring	Monk
+reference	alternate-unit-caption	0x141331500	0x141332979	0x141782e08	cstring	Messenger
+reference	alternate-unit-caption	0x141331500	0x141332a17	0x1415ffe64	cstring	Child
+reference	alternate-unit-caption	0x141331500	0x141332a80	0x141782e00	cstring	Baby
+reference	alternate-unit-caption	0x141331500	0x141332aa8	0x141782bc0	cstring	Peasant
+reference	alternate-unit-caption	0x141331500	0x141332ab2	0x141782bc4	cstring	ant
+reference	alternate-unit-caption	0x141331500	0x141332abd	0x141782bc6	cstring	t
+reference	alternate-unit-caption	0x141331500	0x141332c76	0x141782b50	cstring	 Slave
+reference	alternate-unit-caption	0x141331500	0x141332cb0	0x141600c30	cstring	Slave
+reference	alternate-unit-caption	0x141331500	0x141332d06	0x141600c30	cstring	Slave
+reference	alternate-unit-caption	0x141331500	0x141332d0e	0x141600c34	cstring	e
+reference	alternate-unit-caption	0x141331500	0x141332de9	0x141782b70	cstring	 Prisoner
+reference	alternate-unit-caption	0x141331500	0x141332e1d	0x72656e6f73697250	inline	Prisoner
+reference	alternate-unit-caption	0x141331500	0x141332e6c	0x72656e6f73697250	inline	Prisoner
+reference	alternate-unit-caption	0x141331500	0x141332ef4	0x1415e8e48	cstring	the 
+reference	alternate-unit-caption	0x141331500	0x141332f25	0x1415e873c	cstring	 
+reference	alternate-unit-caption	0x141331500	0x141332f8d	0x1416bec90	cstring	Ghost
+reference	alternate-unit-caption	0x141331500	0x141332f9c	0x141629b50	cstring	Ghostly 
+reference	alternate-unit-caption	0x141331500	0x141332fe9	0x1415e873c	cstring	 
+reference	alternate-unit-caption	0x141331500	0x14133300c	0x141782e38	cstring	One
 reference	grip-state-announcements	0x141361370	0x141361570	0x32	inline-store	2
 reference	grip-state-announcements	0x141361370	0x1413615bd	0x32	inline-store	2
 reference	grip-state-announcements	0x141361370	0x1413616f9	0x1415e9248	cstring	Your
@@ -910,6 +1455,12 @@ reference	cloud-emission	0x1413ca1d0	0x1413ca340	0x1417838b8	cstring	 breathes
 reference	cloud-emission	0x1413ca1d0	0x1413ca35c	0x141784fe8	cstring	 a cloud of 
 reference	cloud-emission	0x1413ca1d0	0x1413ca3c1	0x1415ee438	cstring	!
 reference	cloud-emission	0x1413ca1d0	0x1413ca6b4	0x64	inline-store	d
+classic	announcement-submit	0x1400e3bb0	0x1400e3c67	0x1415e9470/16	vector	Empty announceme
+classic	announcement-submit	0x1400e3bb0	0x1400e3c71	0x1415e9480	cstring	nt 
+classic	announcement-submit	0x1400e3bb0	0x1400e3c7c	0x1415e9482	cstring	 
+classic	announcement-submit	0x1400e3bb0	0x1400e3cf4	0x14164c4a0	cstring	errorlog.txt
+classic	announcement-submit	0x1400e3bb0	0x1400e465c	0x64	inline-store	d
+classic	announcement-submit	0x1400e3bb0	0x1400e477a	0x64	inline-store	d
 classic	shared-damage	0x1400e5630	0x1400e5738	0x1415e9484	cstring	it
 classic	shared-damage	0x1400e5630	0x1400e574b	0x1415e94d8	cstring	its
 classic	shared-damage	0x1400e5630	0x1400e575e	0x1415e9484	cstring	it
@@ -1173,6 +1724,8 @@ classic	shared-damage	0x1400e5630	0x1400e9b7e	0x1415e9d48	cstring	 splatters ove
 classic	shared-damage	0x1400e5630	0x1400e9b87	0x1415e9d30	cstring	 crumbles over the 
 classic	shared-damage	0x1400e5630	0x1400e9bc9	0x1415e942c	cstring	!
 classic	shared-damage	0x1400e5630	0x1400e9cd9	0x1415e9cf0	cstring	 is sucked out of the wound!
+classic	adventure-announcement-popup-render	0x1400e9ed0	0x1400ea3a7	0x65726f4d	inline	More
+classic	adventure-announcement-popup-render	0x1400e9ed0	0x1400ea3d0	0x79616b4f	inline	Okay
 classic	embedded-item-removal	0x140641990	0x1406425b3	0x55555556	inline	VUUU
 classic	embedded-item-removal	0x140641990	0x14064290c	0x55555556	inline	VUUU
 classic	embedded-item-removal	0x140641990	0x140642c73	0x14165d654	cstring	 pull
@@ -1576,6 +2129,147 @@ classic	charge	0x140652740	0x140654f52	0x14165dc08	cstring	You tangle together a
 classic	charge	0x140652740	0x140654f5b	0x14165dc30	cstring	They tangle together and tumble forward!
 classic	charge	0x140652740	0x140655118	0x14165dbb8	cstring	You tangle together and fall over!
 classic	charge	0x140652740	0x140655121	0x14165dbe0	cstring	They tangle together and fall over!
+classic	speech-transform	0x1406790e0	0x14067912b	0x53	inline-store	S
+classic	speech-transform	0x1406790e0	0x140679182	0x14166c090	cstring	([LIP])
+classic	speech-transform	0x1406790e0	0x14067918c	0x14166c094	cstring	P])
+classic	speech-transform	0x1406790e0	0x140679197	0x14166c096	cstring	)
+classic	speech-transform	0x1406790e0	0x140679209	0x73	inline-store	s
+classic	speech-transform	0x1406790e0	0x140679252	0x14166bdd0	cstring	([lip])
+classic	speech-transform	0x1406790e0	0x14067925c	0x14166bdd4	cstring	p])
+classic	speech-transform	0x1406790e0	0x140679267	0x14166bdd6	cstring	)
+classic	speech-transform	0x1406790e0	0x1406792d5	0x14166c090	cstring	([LIP])
+classic	speech-transform	0x1406790e0	0x1406792df	0x14166c094	cstring	P])
+classic	speech-transform	0x1406790e0	0x1406792ea	0x14166c096	cstring	)
+classic	speech-transform	0x1406790e0	0x14067934f	0x53	inline-store	S
+classic	speech-transform	0x1406790e0	0x140679427	0x14166bdd0	cstring	([lip])
+classic	speech-transform	0x1406790e0	0x14067948e	0x14166bdd0	cstring	([lip])
+classic	speech-transform	0x1406790e0	0x140679497	0x14166bdd4	cstring	p])
+classic	speech-transform	0x1406790e0	0x1406794a2	0x14166bdd6	cstring	)
+classic	speech-transform	0x1406790e0	0x140679540	0x73	inline-store	s
+classic	speech-wrapper	0x140682430	0x140682848	0x14166ce48	cstring	 stops and pays attention to you.
+classic	speech-wrapper	0x140682430	0x14068296d	0x1415e3c40	cstring	You
+classic	speech-wrapper	0x140682430	0x1406829c7	0x1415e3c40	cstring	You
+classic	speech-wrapper	0x140682430	0x1406829d0	0x1415e3c42	cstring	u
+classic	speech-wrapper	0x140682430	0x140682bd9	0x14166ce20	cstring	 (to 
+classic	speech-wrapper	0x140682430	0x140682c0a	0x1416102d8	cstring	)
+classic	speech-wrapper	0x140682430	0x140682cee	0x1415fe430	cstring	: 
+classic	body-size-caption	0x140714590	0x1407146eb	0x141680d28	cstring	gigantic
+classic	body-size-caption	0x140714590	0x1407146fa	0x141680d18	cstring	very large
+classic	body-size-caption	0x140714590	0x140714731	0x141680d08	cstring	muscular
+classic	body-size-caption	0x140714590	0x14071474f	0x141681164	cstring	frail
+classic	body-size-caption	0x140714590	0x140714762	0x14168115c	cstring	obese
+classic	body-size-caption	0x140714590	0x140714777	0x141681158	cstring	fat
+classic	body-size-caption	0x140714590	0x14071478d	0x141681150	cstring	chubby
+classic	body-size-caption	0x140714590	0x1407147c3	0x14164517c	cstring	large
+classic	body-size-caption	0x140714590	0x140714866	0x141681134	cstring	lanky
+classic	body-size-caption	0x140714590	0x140714875	0x14168113c	cstring	big
+classic	body-size-caption	0x140714590	0x140714909	0x14168112c	cstring	stout
+classic	body-size-caption	0x140714590	0x14071499d	0x14167ff0c	cstring	broad
+classic	body-size-caption	0x140714590	0x140714a29	0x141681140	cstring	slim
+classic	body-size-caption	0x140714590	0x140714aae	0x1416805ec	cstring	thin
+classic	body-size-caption	0x140714590	0x140714b54	0x14167ff04	cstring	narrow
+classic	body-size-caption	0x140714590	0x140714bf6	0x141681148	cstring	skinny
+classic	body-size-caption	0x140714590	0x140714c98	0x1416805ec	cstring	thin
+classic	body-size-caption	0x140714590	0x140714d43	0x141681140	cstring	slim
+classic	body-size-caption	0x140714590	0x140714de9	0x14167fd90	cstring	tall
+classic	body-size-caption	0x140714590	0x140714df8	0x141681120	cstring	towering
+classic	body-size-caption	0x140714590	0x140714e7e	0x141681148	cstring	skinny
+classic	body-size-caption	0x140714590	0x140714f0c	0x141681148	cstring	skinny
+classic	body-size-caption	0x140714590	0x140714fb2	0x14167fefc	cstring	long
+classic	body-size-caption	0x140714590	0x140715038	0x141681148	cstring	skinny
+classic	body-size-caption	0x140714590	0x1407150c6	0x141681148	cstring	skinny
+classic	body-size-caption	0x140714590	0x140715169	0x14167ff14	cstring	short
+classic	body-size-caption	0x140714590	0x140715204	0x141681140	cstring	slim
+classic	body-size-caption	0x140714590	0x140715292	0x141681148	cstring	skinny
+classic	body-size-caption	0x140714590	0x140715320	0x141681148	cstring	skinny
+classic	body-size-caption	0x140714590	0x1407153ae	0x141681148	cstring	skinny
+classic	body-size-caption	0x140714590	0x14071543c	0x141681148	cstring	skinny
+classic	body-size-caption	0x140714590	0x140715465	0x141681110	cstring	scrawny
+classic	body-size-caption	0x140714590	0x14071557d	0x141681108	cstring	small
+classic	body-size-caption	0x140714590	0x140715603	0x141681148	cstring	skinny
+classic	body-size-caption	0x140714590	0x1407156a5	0x141681100	cstring	tiny
+classic	body-size-caption	0x140714590	0x1407156ae	0x141681118	cstring	squat
+classic	creature-appearance	0x140715750	0x14071588a	0x66666667	inline	gfff
+classic	creature-appearance	0x140715750	0x1407158b9	0x66666667	inline	gfff
+classic	creature-appearance	0x140715750	0x140716a55	0x141681210	cstring	high-cheekbones
+classic	creature-appearance	0x140715750	0x140716a69	0x141681200	cstring	low-cheekbones
+classic	creature-appearance	0x140715750	0x140716aae	0x1416811f0	cstring	square-chin
+classic	creature-appearance	0x140715750	0x140716ac2	0x1416811e0	cstring	round-chin
+classic	creature-appearance	0x140715750	0x140716b23	0x1416811d0	cstring	massive-chin
+classic	creature-appearance	0x140715750	0x140716b51	0x1416811c0	cstring	recessed-chin
+classic	creature-appearance	0x140715750	0x140716b75	0x1416811b0	cstring	jutting-chin
+classic	creature-appearance	0x140715750	0x140716b97	0x1416811a0	cstring	prominent-chin
+classic	creature-appearance	0x140715750	0x140716bd1	0x141681190	cstring	broad-chin
+classic	creature-appearance	0x140715750	0x140716bef	0x141681180	cstring	narrow-chin
+classic	creature-appearance	0x140715750	0x140716c0a	0x1416811b0	cstring	jutting-chin
+classic	creature-appearance	0x140715750	0x140716c4b	0x1416811a0	cstring	prominent-chin
+classic	creature-appearance	0x140715750	0x140716c5a	0x1416811c0	cstring	recessed-chin
+classic	creature-appearance	0x140715750	0x140716e3c	0x141680680	cstring	high-voiced
+classic	creature-appearance	0x140715750	0x140716f9c	0x141681260	cstring	guttural-voiced
+classic	creature-appearance	0x140715750	0x140716fdb	0x141681250	cstring	grating-voiced
+classic	creature-appearance	0x140715750	0x140717014	0x141680660	cstring	clear-voiced
+classic	creature-appearance	0x140715750	0x140717033	0x141680690	cstring	deep-voiced
+classic	creature-appearance	0x140715750	0x140717075	0x141680670	cstring	raspy-voiced
+classic	creature-appearance	0x140715750	0x14071708d	0x141681240	cstring	squeaky-voiced
+classic	creature-appearance	0x140715750	0x1407170af	0x141680660	cstring	clear-voiced
+classic	creature-appearance	0x140715750	0x1407170ea	0x141681250	cstring	grating-voiced
+classic	creature-appearance	0x140715750	0x1407170fd	0x141681230	cstring	scratchy-voiced
+classic	creature-appearance	0x140715750	0x14071710c	0x141680680	cstring	high-voiced
+classic	creature-appearance	0x140715750	0x140717137	0x141680690	cstring	deep-voiced
+classic	creature-appearance	0x140715750	0x14071714d	0x141681220	cstring	low-voiced
+classic	creature-appearance	0x140715750	0x14071739d	0x14167bdf0	cstring	body part
+classic	creature-appearance	0x140715750	0x140717401	0x73	inline-store	s
+classic	creature-appearance	0x140715750	0x140717492	0x73	inline-store	s
+classic	creature-appearance	0x140715750	0x1407174ee	0x73	inline-store	s
+classic	creature-appearance	0x140715750	0x140717535	0x14167bdf0	cstring	body part
+classic	creature-appearance	0x140715750	0x14071759c	0x14167bdf0	cstring	body part
+classic	creature-appearance	0x140715750	0x1407175a9	0x14167bdf8	cstring	t
+classic	creature-appearance	0x140715750	0x14071763b	0x1415e8b58	cstring	's 
+classic	creature-appearance	0x140715750	0x1407177f2	0x14167fd90	cstring	tall
+classic	creature-appearance	0x140715750	0x140717809	0x14167ff0c	cstring	broad
+classic	creature-appearance	0x140715750	0x14071781b	0x14167ff04	cstring	narrow
+classic	creature-appearance	0x140715750	0x14071782b	0x14167fefc	cstring	long
+classic	creature-appearance	0x140715750	0x14071783d	0x14167ff14	cstring	short
+classic	creature-appearance	0x140715750	0x14071784d	0x1416451e0	cstring	high
+classic	creature-appearance	0x140715750	0x14071785f	0x1416451e8	cstring	low
+classic	creature-appearance	0x140715750	0x14071786f	0x14167fef0	cstring	close-set
+classic	creature-appearance	0x140715750	0x140717881	0x14167fee0	cstring	wide-set
+classic	creature-appearance	0x140715750	0x140717891	0x14167feb4	cstring	sunken
+classic	creature-appearance	0x140715750	0x1407178a2	0x141680508	cstring	bulging
+classic	creature-appearance	0x140715750	0x1407178b6	0x14167fea8	cstring	protruding
+classic	creature-appearance	0x140715750	0x1407178c6	0x14167fe98	cstring	wrinkled
+classic	creature-appearance	0x140715750	0x1407178d8	0x14167fe90	cstring	smooth
+classic	creature-appearance	0x140715750	0x1407178e9	0x141680a3c	cstring	coiled
+classic	creature-appearance	0x140715750	0x1407178fa	0x14167fe74	cstring	curly
+classic	creature-appearance	0x140715750	0x14071790b	0x141680a34	cstring	wavy
+classic	creature-appearance	0x140715750	0x14071791f	0x14167fe68	cstring	straight
+classic	creature-appearance	0x140715750	0x14071792f	0x14167fe88	cstring	convex
+classic	creature-appearance	0x140715750	0x140717941	0x14167fe80	cstring	concave
+classic	creature-appearance	0x140715750	0x140717951	0x141680604	cstring	dense
+classic	creature-appearance	0x140715750	0x140717963	0x1416805fc	cstring	sparse
+classic	creature-appearance	0x140715750	0x140717973	0x1416805f4	cstring	thick
+classic	creature-appearance	0x140715750	0x140717985	0x1416805ec	cstring	thin
+classic	creature-appearance	0x140715750	0x140717995	0x1416805e0	cstring	upturned
+classic	creature-appearance	0x140715750	0x1407179a7	0x1416805d4	cstring	hooked
+classic	creature-appearance	0x140715750	0x1407179b7	0x1416810f0	cstring	splayed
+classic	creature-appearance	0x140715750	0x1407179c9	0x1416805b8	cstring	flattened
+classic	creature-appearance	0x140715750	0x1407179da	0x1416805a8	cstring	great-lobed
+classic	creature-appearance	0x140715750	0x1407179ea	0x141680798	cstring	free-lobed
+classic	creature-appearance	0x140715750	0x1407179fb	0x141680598	cstring	fuse-lobed
+classic	creature-appearance	0x140715750	0x140717a10	0x141680770	cstring	small-lobed
+classic	creature-appearance	0x140715750	0x140717a21	0x141680760	cstring	widely-spaced
+classic	creature-appearance	0x140715750	0x140717a32	0x141680590	cstring	gapped
+classic	creature-appearance	0x140715750	0x140717a40	0x141680758	cstring	tangled
+classic	creature-appearance	0x140715750	0x140717a52	0x141680588	cstring	crowded
+classic	creature-appearance	0x140715750	0x140717a5f	0x1416806a8	cstring	round
+classic	creature-appearance	0x140715750	0x140717a6d	0x141680728	cstring	slit
+classic	creature-appearance	0x140715750	0x140717a7e	0x14167ff04	cstring	narrow
+classic	creature-appearance	0x140715750	0x140717a8c	0x1416806a0	cstring	greasy
+classic	creature-appearance	0x140715750	0x140717a9a	0x141680710	cstring	crinkly
+classic	creature-appearance	0x140715750	0x140717aa8	0x14168069c	cstring	dry
+classic	creature-appearance	0x140715750	0x140717abe	0x14164667c	cstring	-
+classic	creature-appearance	0x140715750	0x140717b8a	0x1416810f8	cstring	average
+classic	creature-appearance	0x140715750	0x140717c32	0x1416810f8	cstring	average
 classic	complete-item-caption	0x140c62490	0x140c62734	0x1416e8e38	cstring	 (copy)
 classic	complete-item-caption	0x140c62490	0x140c62822	0x58	inline-store	X
 classic	complete-item-caption	0x140c62490	0x140c62862	0x58	inline-store	X
@@ -1657,6 +2351,402 @@ classic	collision	0x140ea8e10	0x140eae681	0x14172c8d8	cstring	 apart!
 classic	collision	0x140ea8e10	0x140eae819	0x14172c908	cstring	 slam
 classic	collision	0x140ea8e10	0x140eae827	0x14172c900	cstring	 slams
 classic	collision	0x140ea8e10	0x140eae846	0x14172c920	cstring	 into an obstacle!
+classic	profession-label-supplier	0x141327b80	0x141327c5b	0x14177c1f4	cstring	miner
+classic	profession-label-supplier	0x141327b80	0x141327c75	0x14177c1e8	cstring	woodworker
+classic	profession-label-supplier	0x141327b80	0x141327c8f	0x14177c208	cstring	carpenter
+classic	profession-label-supplier	0x141327b80	0x141327ca9	0x14177c1fc	cstring	bowyer
+classic	profession-label-supplier	0x141327b80	0x141327cc3	0x14177c228	cstring	woodcutter
+classic	profession-label-supplier	0x141327b80	0x141327cdd	0x14177c218	cstring	stoneworker
+classic	profession-label-supplier	0x141327b80	0x141327cf7	0x14177c170	cstring	engraver
+classic	profession-label-supplier	0x141327b80	0x141327d11	0x14177c160	cstring	stonecutter
+classic	profession-label-supplier	0x141327b80	0x141327d2b	0x14177c188	cstring	stone carver
+classic	profession-label-supplier	0x141327b80	0x141327d45	0x14177c17c	cstring	mason
+classic	profession-label-supplier	0x141327b80	0x141327d5f	0x14177c1ac	cstring	ranger
+classic	profession-label-supplier	0x141327b80	0x141327d79	0x14177c198	cstring	animal caretaker
+classic	profession-label-supplier	0x141327b80	0x141327d93	0x14177c1c0	cstring	animal trainer
+classic	profession-label-supplier	0x141327b80	0x141327dad	0x1416a1484	cstring	hunter
+classic	profession-label-supplier	0x141327b80	0x141327dc7	0x14177c1b8	cstring	trapper
+classic	profession-label-supplier	0x141327b80	0x141327de1	0x14177c2b8	cstring	animal dissector
+classic	profession-label-supplier	0x141327b80	0x141327dfb	0x14177c2a8	cstring	metalsmith
+classic	profession-label-supplier	0x141327b80	0x141327e15	0x14177c2e0	cstring	furnace operator
+classic	profession-label-supplier	0x141327b80	0x141327e2f	0x14177c2d0	cstring	weaponsmith
+classic	profession-label-supplier	0x141327b80	0x141327e49	0x14177c308	cstring	armorer
+classic	profession-label-supplier	0x141327b80	0x141327e63	0x14177c2f8	cstring	blacksmith
+classic	profession-label-supplier	0x141327b80	0x141327e7d	0x14177c318	cstring	metalcrafter
+classic	profession-label-supplier	0x141327b80	0x141327e97	0x14177c310	cstring	jeweler
+classic	profession-label-supplier	0x141327b80	0x141327eb1	0x14177c248	cstring	gem cutter
+classic	profession-label-supplier	0x141327b80	0x141327ecb	0x14177c238	cstring	gem setter
+classic	profession-label-supplier	0x141327b80	0x141327edf	0x141625fe8	cstring	craftsman
+classic	profession-label-supplier	0x141327b80	0x141327ee6	0x141729eb8	cstring	craftsmen
+classic	profession-label-supplier	0x141327b80	0x141327f05	0x14177c268	cstring	woodcrafter
+classic	profession-label-supplier	0x141327b80	0x141327f1f	0x14177c258	cstring	papermaker
+classic	profession-label-supplier	0x141327b80	0x141327f39	0x14177c280	cstring	bookbinder
+classic	profession-label-supplier	0x141327b80	0x141327f53	0x14177c274	cstring	potter
+classic	profession-label-supplier	0x141327b80	0x141327f6d	0x14177c29c	cstring	glazer
+classic	profession-label-supplier	0x141327b80	0x141327f87	0x14177c290	cstring	wax worker
+classic	profession-label-supplier	0x141327b80	0x141327fa1	0x14177c3a0	cstring	stonecrafter
+classic	profession-label-supplier	0x141327b80	0x141327fbb	0x14177c390	cstring	leatherworker
+classic	profession-label-supplier	0x141327b80	0x141327fd5	0x14177c3b8	cstring	bone carver
+classic	profession-label-supplier	0x141327b80	0x141327fef	0x14177c3b0	cstring	weaver
+classic	profession-label-supplier	0x141327b80	0x141328009	0x14177c3d8	cstring	clothier
+classic	profession-label-supplier	0x141327b80	0x141328023	0x14177c3c8	cstring	glassmaker
+classic	profession-label-supplier	0x141327b80	0x14132803d	0x14177c3f8	cstring	strand extractor
+classic	profession-label-supplier	0x141327b80	0x141328057	0x14177c3e8	cstring	fishery worker
+classic	profession-label-supplier	0x141327b80	0x14132806b	0x14177c328	cstring	fisherman
+classic	profession-label-supplier	0x141327b80	0x141328072	0x14177c338	cstring	fishermen
+classic	profession-label-supplier	0x141327b80	0x141328091	0x14177c358	cstring	fish dissector
+classic	profession-label-supplier	0x141327b80	0x1413280ab	0x14177c348	cstring	fish cleaner
+classic	profession-label-supplier	0x141327b80	0x1413280c5	0x14177c374	cstring	farmer
+classic	profession-label-supplier	0x141327b80	0x1413280df	0x14177c368	cstring	cheesemaker
+classic	profession-label-supplier	0x141327b80	0x1413280f9	0x14177c384	cstring	milker
+classic	profession-label-supplier	0x141327b80	0x141328113	0x14177c37c	cstring	gelder
+classic	profession-label-supplier	0x141327b80	0x14132812d	0x14177ccc8	cstring	shearer
+classic	profession-label-supplier	0x141327b80	0x141328147	0x14177ccc0	cstring	spinner
+classic	profession-label-supplier	0x141327b80	0x141328161	0x14177ccdc	cstring	cook
+classic	profession-label-supplier	0x141327b80	0x14132817b	0x14177ccd0	cstring	thresher
+classic	profession-label-supplier	0x141327b80	0x141328195	0x14177ccec	cstring	miller
+classic	profession-label-supplier	0x141327b80	0x1413281af	0x141730600	cstring	butcher
+classic	profession-label-supplier	0x141327b80	0x1413281c9	0x14177cce4	cstring	tanner
+classic	profession-label-supplier	0x141327b80	0x1413281e3	0x14177cd00	cstring	dyer
+classic	profession-label-supplier	0x141327b80	0x1413281fd	0x14177ccf8	cstring	presser
+classic	profession-label-supplier	0x141327b80	0x141328217	0x14177cc58	cstring	beekeeper
+classic	profession-label-supplier	0x141327b80	0x141328231	0x14177cc50	cstring	planter
+classic	profession-label-supplier	0x141327b80	0x14132824b	0x14177cc70	cstring	herbalist
+classic	profession-label-supplier	0x141327b80	0x141328265	0x14177cc64	cstring	brewer
+classic	profession-label-supplier	0x141327b80	0x14132827f	0x14177cc90	cstring	soap maker
+classic	profession-label-supplier	0x141327b80	0x141328299	0x14177cc80	cstring	potash maker
+classic	profession-label-supplier	0x141327b80	0x1413282b3	0x14177ccb0	cstring	lye maker
+classic	profession-label-supplier	0x141327b80	0x1413282cd	0x14177cca0	cstring	wood burner
+classic	profession-label-supplier	0x141327b80	0x1413282e7	0x14177cd90	cstring	engineer
+classic	profession-label-supplier	0x141327b80	0x141328301	0x14177cd80	cstring	mechanic
+classic	profession-label-supplier	0x141327b80	0x14132831b	0x14177cdb0	cstring	siege engineer
+classic	profession-label-supplier	0x141327b80	0x141328335	0x14177cda0	cstring	siege operator
+classic	profession-label-supplier	0x141327b80	0x14132834f	0x14177cdc8	cstring	pump operator
+classic	profession-label-supplier	0x141327b80	0x141328369	0x1416bc644	cstring	clerk
+classic	profession-label-supplier	0x141327b80	0x141328383	0x14165ae68	cstring	administrator
+classic	profession-label-supplier	0x141327b80	0x14132839d	0x14177cdc0	cstring	trader
+classic	profession-label-supplier	0x141327b80	0x1413283b7	0x1416a1454	cstring	poet
+classic	profession-label-supplier	0x141327b80	0x1413283d1	0x1416a145c	cstring	bard
+classic	profession-label-supplier	0x141327b80	0x1413283eb	0x1416a1464	cstring	dancer
+classic	profession-label-supplier	0x141327b80	0x141328405	0x14163cf38	cstring	performer
+classic	profession-label-supplier	0x141327b80	0x14132841f	0x14163cf30	cstring	scribe
+classic	profession-label-supplier	0x141327b80	0x141328439	0x14163cfd8	cstring	tavern keeper
+classic	profession-label-supplier	0x141327b80	0x141328453	0x14163cf50	cstring	doctor
+classic	profession-label-supplier	0x141327b80	0x14132846d	0x14163cf58	cstring	diagnostician
+classic	profession-label-supplier	0x141327b80	0x141328487	0x14163cf10	cstring	bone doctor
+classic	profession-label-supplier	0x141327b80	0x1413284a1	0x14177cde8	cstring	suturer
+classic	profession-label-supplier	0x141327b80	0x1413284bb	0x14163cf08	cstring	surgeon
+classic	profession-label-supplier	0x141327b80	0x1413284d5	0x14177cdd8	cstring	merchant
+classic	profession-label-supplier	0x141327b80	0x1413284ef	0x14177cd14	cstring	drunk
+classic	profession-label-supplier	0x141327b80	0x141328503	0x14177cd30	cstring	hammerman
+classic	profession-label-supplier	0x141327b80	0x14132850a	0x14177cd08	cstring	hammermen
+classic	profession-label-supplier	0x141327b80	0x141328529	0x14177cd20	cstring	Hammer Lord
+classic	profession-label-supplier	0x141327b80	0x141328540	0x14177cd40	cstring	spearman
+classic	profession-label-supplier	0x141327b80	0x141328547	0x14177cd50	cstring	spearmen
+classic	profession-label-supplier	0x141327b80	0x141328563	0x14177cd70	cstring	Spearmaster
+classic	profession-label-supplier	0x141327b80	0x14132857a	0x14177ce68	cstring	crossbowman
+classic	profession-label-supplier	0x141327b80	0x141328581	0x14177cd60	cstring	crossbowmen
+classic	profession-label-supplier	0x141327b80	0x14132859a	0x14177ce88	cstring	Elite Crossbowmen
+classic	profession-label-supplier	0x141327b80	0x1413285a1	0x14177ce50	cstring	Elite Crossbowman
+classic	profession-label-supplier	0x141327b80	0x1413285bd	0x14177ce78	cstring	wrestler
+classic	profession-label-supplier	0x141327b80	0x1413285d7	0x14177cea8	cstring	Elite Wrestler
+classic	profession-label-supplier	0x141327b80	0x1413285eb	0x14177cec4	cstring	axeman
+classic	profession-label-supplier	0x141327b80	0x1413285f2	0x14177ce9c	cstring	axemen
+classic	profession-label-supplier	0x141327b80	0x141328611	0x14177ceb8	cstring	Axe Lord
+classic	profession-label-supplier	0x141327b80	0x141328625	0x14177cdf0	cstring	swordsman
+classic	profession-label-supplier	0x141327b80	0x14132862c	0x14177ce00	cstring	swordsmen
+classic	profession-label-supplier	0x141327b80	0x14132864b	0x14177ce18	cstring	Swordmaster
+classic	profession-label-supplier	0x141327b80	0x14132865f	0x14177ce38	cstring	maceman
+classic	profession-label-supplier	0x141327b80	0x141328666	0x14177ce10	cstring	macemen
+classic	profession-label-supplier	0x141327b80	0x141328685	0x14177ce28	cstring	Mace Lord
+classic	profession-label-supplier	0x141327b80	0x141328699	0x14177ce40	cstring	pikeman
+classic	profession-label-supplier	0x141327b80	0x1413286a0	0x14177ce48	cstring	pikemen
+classic	profession-label-supplier	0x141327b80	0x1413286bf	0x14177cf48	cstring	Pikemaster
+classic	profession-label-supplier	0x141327b80	0x1413286d3	0x14177cf68	cstring	bowman
+classic	profession-label-supplier	0x141327b80	0x1413286da	0x14177cf40	cstring	bowmen
+classic	profession-label-supplier	0x141327b80	0x1413286f6	0x14177cf80	cstring	Elite Bowman
+classic	profession-label-supplier	0x141327b80	0x1413286fd	0x14177cf58	cstring	Elite Bowmen
+classic	profession-label-supplier	0x141327b80	0x141328719	0x14177cf70	cstring	blowgunner
+classic	profession-label-supplier	0x141327b80	0x141328733	0x14177cf98	cstring	Master Blowgunner
+classic	profession-label-supplier	0x141327b80	0x14132874d	0x14177cf90	cstring	lasher
+classic	profession-label-supplier	0x141327b80	0x141328767	0x14177ced8	cstring	Master Lasher
+classic	profession-label-supplier	0x141327b80	0x141328781	0x14177ced0	cstring	recruit
+classic	profession-label-supplier	0x141327b80	0x14132879b	0x14169c108	cstring	hunting
+classic	profession-label-supplier	0x141327b80	0x1413287b0	0x141644b7c	cstring	war
+classic	profession-label-supplier	0x141327b80	0x1413287c5	0x14177cef8	cstring	Master Thief
+classic	profession-label-supplier	0x141327b80	0x1413287df	0x1416a13d0	cstring	thief
+classic	profession-label-supplier	0x141327b80	0x1413287f9	0x14163cf20	cstring	monster slayer
+classic	profession-label-supplier	0x141327b80	0x141328813	0x14166fe1c	cstring	scout
+classic	profession-label-supplier	0x141327b80	0x14132882d	0x14177cee8	cstring	beast hunter
+classic	profession-label-supplier	0x141327b80	0x141328847	0x1416e1598	cstring	snatcher
+classic	profession-label-supplier	0x141327b80	0x14132885e	0x141670360	cstring	mercenaries
+classic	profession-label-supplier	0x141327b80	0x14132886b	0x1415e79d0	cstring	mercenary
+classic	profession-label-supplier	0x141327b80	0x14132888d	0x14177cf14	cstring	sage
+classic	profession-label-supplier	0x141327b80	0x1413288a7	0x14163cf48	cstring	scholar
+classic	profession-label-supplier	0x141327b80	0x1413288c1	0x14177cf08	cstring	philosopher
+classic	profession-label-supplier	0x141327b80	0x1413288db	0x14177cf30	cstring	mathematician
+classic	profession-label-supplier	0x141327b80	0x1413288f5	0x14177cf20	cstring	historian
+classic	profession-label-supplier	0x141327b80	0x14132890f	0x14177c988	cstring	astronomer
+classic	profession-label-supplier	0x141327b80	0x141328929	0x14177c978	cstring	naturalist
+classic	profession-label-supplier	0x141327b80	0x141328943	0x14177c9a8	cstring	chemist
+classic	profession-label-supplier	0x141327b80	0x14132895d	0x14177c998	cstring	geographer
+classic	profession-label-supplier	0x141327b80	0x141328977	0x14166ee18	cstring	criminal
+classic	profession-label-supplier	0x141327b80	0x141328991	0x14177c9b8	cstring	peddler
+classic	profession-label-supplier	0x141327b80	0x1413289ab	0x14177c9b0	cstring	prophet
+classic	profession-label-supplier	0x141327b80	0x1413289c5	0x14177c9c8	cstring	pilgrim
+classic	profession-label-supplier	0x141327b80	0x1413289df	0x14177c9c0	cstring	monk
+classic	profession-label-supplier	0x141327b80	0x1413289f9	0x14177c928	cstring	messenger
+classic	profession-label-supplier	0x141327b80	0x141328a96	0x14169c248	cstring	children
+classic	profession-label-supplier	0x141327b80	0x141328bcb	0x1416416fc	cstring	child
+classic	profession-label-supplier	0x141327b80	0x141328c28	0x14177c920	cstring	babies
+classic	profession-label-supplier	0x141327b80	0x141328c3a	0x14167b1e4	cstring	baby
+classic	profession-label-supplier	0x141327b80	0x141328d96	0x14177c920	cstring	babies
+classic	profession-label-supplier	0x141327b80	0x141328da5	0x14167b1e4	cstring	baby
+classic	profession-label-supplier	0x141327b80	0x141328dc7	0x1415e4220	cstring	s
+classic	creature-profession-description	0x141329030	0x141329153	0x1415e4220	cstring	s
+classic	creature-profession-description	0x141329030	0x1413292a4	0x14177c938	cstring	peasant
+classic	creature-profession-description	0x141329030	0x1413292ab	0x14177c940	cstring	Peasant
+classic	creature-profession-description	0x141329030	0x1413292d3	0x1415e4220	cstring	s
+classic	combat-unit-caption	0x1413293a0	0x14132941f	0x1415e74b8	cstring	you
+classic	combat-unit-caption	0x1413293a0	0x141329426	0x1415e3c40	cstring	You
+classic	combat-unit-caption	0x1413293a0	0x141329910	0x1415e7988	cstring	 slave
+classic	combat-unit-caption	0x1413293a0	0x14132994a	0x1415e79ac	cstring	slave
+classic	combat-unit-caption	0x1413293a0	0x1413299a5	0x1415e79ac	cstring	slave
+classic	combat-unit-caption	0x1413293a0	0x1413299ad	0x1415e79b0	cstring	e
+classic	combat-unit-caption	0x1413293a0	0x141329a8b	0x14177c950	cstring	 prisoner
+classic	combat-unit-caption	0x1413293a0	0x141329abf	0x72656e6f73697270	inline	prisoner
+classic	combat-unit-caption	0x1413293a0	0x141329b1d	0x72656e6f73697270	inline	prisoner
+classic	combat-unit-caption	0x1413293a0	0x141329ce6	0x1415e3e34	cstring	the 
+classic	combat-unit-caption	0x1413293a0	0x141329ced	0x1415e89c4	cstring	The 
+classic	combat-unit-caption	0x1413293a0	0x141329d32	0x1415e3720	cstring	 
+classic	combat-unit-caption	0x1413293a0	0x141329f05	0x1415e3e34	cstring	the 
+classic	combat-unit-caption	0x1413293a0	0x141329f19	0x1415e8618	cstring	a 
+classic	combat-unit-caption	0x1413293a0	0x141329f2e	0x14167095c	cstring	force
+classic	combat-unit-caption	0x1413293a0	0x141329f53	0x1415e3e34	cstring	the 
+classic	combat-unit-caption	0x1413293a0	0x141329f67	0x1415e8618	cstring	a 
+classic	combat-unit-caption	0x1413293a0	0x141329f7c	0x14165d508	cstring	deity
+classic	combat-unit-caption	0x1413293a0	0x14132a1c4	0x1415e7988	cstring	 slave
+classic	combat-unit-caption	0x1413293a0	0x14132a1fe	0x1415e79ac	cstring	slave
+classic	combat-unit-caption	0x1413293a0	0x14132a25e	0x1415e79ac	cstring	slave
+classic	combat-unit-caption	0x1413293a0	0x14132a266	0x1415e79b0	cstring	e
+classic	combat-unit-caption	0x1413293a0	0x14132a33b	0x14177c950	cstring	 prisoner
+classic	combat-unit-caption	0x1413293a0	0x14132a36f	0x72656e6f73697270	inline	prisoner
+classic	combat-unit-caption	0x1413293a0	0x14132a3c9	0x72656e6f73697270	inline	prisoner
+classic	combat-unit-caption	0x1413293a0	0x14132a483	0x1415e3e34	cstring	the 
+classic	combat-unit-caption	0x1413293a0	0x14132a4d9	0x1415e8618	cstring	a 
+classic	combat-unit-caption	0x1413293a0	0x14132a543	0x14177c96c	cstring	stray 
+classic	combat-unit-caption	0x1413293a0	0x14132a54a	0x14177c948	cstring	fierce 
+classic	combat-unit-caption	0x1413293a0	0x14132a58e	0x1415e8618	cstring	a 
+classic	combat-unit-caption	0x1413293a0	0x14132a5a3	0x14177c960	cstring	agitated 
+classic	combat-unit-caption	0x1413293a0	0x14132a5eb	0x1415e8618	cstring	a 
+classic	combat-unit-caption	0x1413293a0	0x14132a600	0x1416a0d38	cstring	ghost
+classic	combat-unit-caption	0x1413293a0	0x14132a62f	0x1415e8618	cstring	a 
+classic	combat-unit-caption	0x1413293a0	0x14132a644	0x1415f8b70	cstring	ghostly 
+classic	combat-unit-caption	0x1413293a0	0x14132a676	0x1415e8618	cstring	a 
+classic	combat-unit-caption	0x1413293a0	0x14132a6c4	0x1416810f8	cstring	average
+classic	combat-unit-caption	0x1413293a0	0x14132a6f3	0x1415e3720	cstring	 
+classic	combat-unit-caption	0x1413293a0	0x14132a747	0x1415e3720	cstring	 
+classic	combat-unit-caption	0x1413293a0	0x14132a78e	0x1415e3720	cstring	 
+classic	combat-unit-caption	0x1413293a0	0x14132a7b3	0x1415e8618	cstring	a 
+classic	combat-unit-caption	0x1413293a0	0x14132a80c	0x1415e8618	cstring	a 
+classic	combat-unit-caption	0x1413293a0	0x14132a821	0x1416cac84	cstring	corpse
+classic	combat-unit-caption	0x1413293a0	0x14132a830	0x141739ff8	cstring	 corpse
+classic	unit-role-description	0x14132a8f0	0x14132aa4e	0x14165d508	cstring	deity
+classic	unit-role-description	0x14132a8f0	0x14132aa65	0x14167095c	cstring	force
+classic	unit-role-description	0x14132a8f0	0x14132acac	0x14177ca4c	cstring	 Slave
+classic	unit-role-description	0x14132a8f0	0x14132ace6	0x1415fbcc8	cstring	Slave
+classic	unit-role-description	0x14132a8f0	0x14132ad3c	0x1415fbcc8	cstring	Slave
+classic	unit-role-description	0x14132a8f0	0x14132ad44	0x1415fbccc	cstring	e
+classic	unit-role-description	0x14132a8f0	0x14132ae23	0x14177ca40	cstring	 Prisoner
+classic	unit-role-description	0x14132a8f0	0x14132ae57	0x72656e6f73697250	inline	Prisoner
+classic	unit-role-description	0x14132a8f0	0x14132aea7	0x72656e6f73697250	inline	Prisoner
+classic	unit-role-description	0x14132a8f0	0x14132afd6	0x14177ca54	cstring	Stray 
+classic	unit-role-description	0x14132a8f0	0x14132afdd	0x14177ca60	cstring	Fierce 
+classic	unit-role-description	0x14132a8f0	0x14132affe	0x14177ca70	cstring	Agitated 
+classic	unit-role-description	0x14132a8f0	0x14132b034	0x1416b9d2c	cstring	Ghost
+classic	unit-role-description	0x14132a8f0	0x14132b04e	0x141625190	cstring	Ghostly 
+classic	unit-role-description	0x14132a8f0	0x14132b09d	0x1415e3720	cstring	 
+classic	unit-role-description	0x14132a8f0	0x14132b0e6	0x1415e3720	cstring	 
+classic	unit-role-description	0x14132a8f0	0x14132b12c	0x14177ca68	cstring	Corpse
+classic	unit-role-description	0x14132a8f0	0x14132b13b	0x1416250d0	cstring	 Corpse
+classic	speaker-caption	0x14132bba0	0x14132bdcd	0x1415e40c4	cstring	, 
+classic	speaker-caption	0x14132bba0	0x14132bec8	0x1415e46fc	cstring	""""
+classic	speaker-caption	0x14132bba0	0x14132bf1d	0x1415e46fc	cstring	""""
+classic	speaker-caption	0x14132bba0	0x14132bf32	0x1415e40c4	cstring	, 
+classic	speaker-caption	0x14132bba0	0x14132bf71	0x1415e40c4	cstring	, 
+classic	speaker-caption	0x14132bba0	0x14132bfcd	0x1415e40c4	cstring	, 
+classic	speaker-caption	0x14132bba0	0x14132c028	0x141610298	cstring	 (
+classic	speaker-caption	0x14132bba0	0x14132c064	0x14177ca90	cstring	Trained
+classic	speaker-caption	0x14132bba0	0x14132c070	0x14177ca80	cstring	-Trained-
+classic	speaker-caption	0x14132bba0	0x14132c07c	0x14177c9e0	cstring	+Trained+
+classic	speaker-caption	0x14132bba0	0x14132c088	0x14177c9d0	cstring	*Trained*
+classic	speaker-caption	0x14132bba0	0x14132c0bc	0x14177ca90	cstring	Trained
+classic	speaker-caption	0x14132bba0	0x14132c10c	0x14177ca90	cstring	Trained
+classic	speaker-caption	0x14132bba0	0x14132c138	0x14177c9fc	cstring	Tame
+classic	speaker-caption	0x14132bba0	0x14132c141	0x14177c9f0	cstring	Semi-Wild
+classic	speaker-caption	0x14132bba0	0x14132c159	0x1416102d8	cstring	)
+classic	alternate-unit-caption	0x14132c470	0x14132c5e4	0x14177ca08	cstring	the force
+classic	alternate-unit-caption	0x14132c470	0x14132c7e3	0x14177ca18	cstring	the deity
+classic	alternate-unit-caption	0x14132c470	0x14132ca78	0x1415e3e34	cstring	the 
+classic	alternate-unit-caption	0x14132c470	0x14132cd8a	0x1416038f0	cstring	Miner
+classic	alternate-unit-caption	0x14132c470	0x14132cd93	0x1416038f4	cstring	r
+classic	alternate-unit-caption	0x14132c470	0x14132cdae	0x14177ca30	cstring	Woodworker
+classic	alternate-unit-caption	0x14132c470	0x14132cdbb	0x14177ca38	cstring	er
+classic	alternate-unit-caption	0x14132c470	0x14132cdd7	0x141628000	cstring	Carpenter
+classic	alternate-unit-caption	0x14132c470	0x14132cde4	0x141628008	cstring	r
+classic	alternate-unit-caption	0x14132c470	0x14132cdff	0x14162800c	cstring	Bowyer
+classic	alternate-unit-caption	0x14132c470	0x14132ce08	0x141628010	cstring	er
+classic	alternate-unit-caption	0x14132c470	0x14132ce24	0x141603910	cstring	Woodcutter
+classic	alternate-unit-caption	0x14132c470	0x14132ce31	0x141603918	cstring	er
+classic	alternate-unit-caption	0x14132c470	0x14132ce4d	0x141627f98	cstring	Stoneworker
+classic	alternate-unit-caption	0x14132c470	0x14132ce5a	0x141627fa0	cstring	ker
+classic	alternate-unit-caption	0x14132c470	0x14132ce65	0x141627fa2	cstring	r
+classic	alternate-unit-caption	0x14132c470	0x14132ce80	0x7265766172676e45	inline	Engraver
+classic	alternate-unit-caption	0x14132c470	0x14132ce97	0x1416a0200	cstring	Stonecutter
+classic	alternate-unit-caption	0x14132c470	0x14132ceac	0x1416a01f0	cstring	Stone Carver
+classic	alternate-unit-caption	0x14132c470	0x14132cec1	0x1416a0754	cstring	Mason
+classic	alternate-unit-caption	0x14132c470	0x14132ced6	0x14177ca24	cstring	Ranger
+classic	alternate-unit-caption	0x14132c470	0x14132ceeb	0x1416a0770	cstring	Animal Caretaker
+classic	alternate-unit-caption	0x14132c470	0x14132cf00	0x1416a0760	cstring	Animal Trainer
+classic	alternate-unit-caption	0x14132c470	0x14132cf15	0x1415fb1e8	cstring	Hunter
+classic	alternate-unit-caption	0x14132c470	0x14132cf2a	0x1416a07c0	cstring	Trapper
+classic	alternate-unit-caption	0x14132c470	0x14132cf3f	0x1416a0798	cstring	Animal Dissector
+classic	alternate-unit-caption	0x14132c470	0x14132cf54	0x141628050	cstring	Metalsmith
+classic	alternate-unit-caption	0x14132c470	0x14132cf69	0x1416a06f0	cstring	Furnace Operator
+classic	alternate-unit-caption	0x14132c470	0x14132cf7e	0x1416a0568	cstring	Weaponsmith
+classic	alternate-unit-caption	0x14132c470	0x14132cf93	0x14177cb08	cstring	Armorer
+classic	alternate-unit-caption	0x14132c470	0x14132cfb0	0x1416a0588	cstring	Blacksmith
+classic	alternate-unit-caption	0x14132c470	0x14132cfbd	0x1416a0590	cstring	th
+classic	alternate-unit-caption	0x14132c470	0x14132cfd9	0x14177caf8	cstring	Metalcrafter
+classic	alternate-unit-caption	0x14132c470	0x14132cfe6	0x14177cb00	cstring	fter
+classic	alternate-unit-caption	0x14132c470	0x14132cff8	0x141628018	cstring	Jeweler
+classic	alternate-unit-caption	0x14132c470	0x14132d00d	0x1416a0598	cstring	Gem Cutter
+classic	alternate-unit-caption	0x14132c470	0x14132d022	0x1416a05a8	cstring	Gem Setter
+classic	alternate-unit-caption	0x14132c470	0x14132d037	0x14164cbe8	cstring	Craftsman
+classic	alternate-unit-caption	0x14132c470	0x14132d04c	0x1416a05b8	cstring	Woodcrafter
+classic	alternate-unit-caption	0x14132c470	0x14132d061	0x1416a05c8	cstring	Papermaker
+classic	alternate-unit-caption	0x14132c470	0x14132d076	0x1416a05d8	cstring	Bookbinder
+classic	alternate-unit-caption	0x14132c470	0x14132d08b	0x1416a05e4	cstring	Potter
+classic	alternate-unit-caption	0x14132c470	0x14132d0a0	0x1416a0a6c	cstring	Glazer
+classic	alternate-unit-caption	0x14132c470	0x14132d0b5	0x1416a05f0	cstring	Wax Worker
+classic	alternate-unit-caption	0x14132c470	0x14132d0ca	0x14177cb20	cstring	Stonecrafter
+classic	alternate-unit-caption	0x14132c470	0x14132d0df	0x1416a0a48	cstring	Leatherworker
+classic	alternate-unit-caption	0x14132c470	0x14132d0f4	0x1416a0a78	cstring	Bone Carver
+classic	alternate-unit-caption	0x14132c470	0x14132d109	0x1416a0a84	cstring	Weaver
+classic	alternate-unit-caption	0x14132c470	0x14132d11e	0x14164cc80	cstring	Clothier
+classic	alternate-unit-caption	0x14132c470	0x14132d133	0x1416a0620	cstring	Glassmaker
+classic	alternate-unit-caption	0x14132c470	0x14132d148	0x1416a0708	cstring	Strand Extractor
+classic	alternate-unit-caption	0x14132c470	0x14132d15d	0x14177cb10	cstring	Fishery Worker
+classic	alternate-unit-caption	0x14132c470	0x14132d172	0x1416a06e0	cstring	Fisherman
+classic	alternate-unit-caption	0x14132c470	0x14132d187	0x1416a0788	cstring	Fish Dissector
+classic	alternate-unit-caption	0x14132c470	0x14132d19c	0x1416a07b0	cstring	Fish Cleaner
+classic	alternate-unit-caption	0x14132c470	0x14132d1b1	0x141627ef0	cstring	Farmer
+classic	alternate-unit-caption	0x14132c470	0x14132d1c6	0x1416a0958	cstring	Cheesemaker
+classic	alternate-unit-caption	0x14132c470	0x14132d1db	0x1416a0964	cstring	Milker
+classic	alternate-unit-caption	0x14132c470	0x14132d1f0	0x1416a096c	cstring	Gelder
+classic	alternate-unit-caption	0x14132c470	0x14132d205	0x1416a0978	cstring	Shearer
+classic	alternate-unit-caption	0x14132c470	0x14132d21a	0x1416a0980	cstring	Spinner
+classic	alternate-unit-caption	0x14132c470	0x14132d22f	0x141638128	cstring	Cook
+classic	alternate-unit-caption	0x14132c470	0x14132d244	0x1416a0910	cstring	Thresher
+classic	alternate-unit-caption	0x14132c470	0x14132d259	0x1416a0904	cstring	Miller
+classic	alternate-unit-caption	0x14132c470	0x14132d26e	0x141616fc8	cstring	Butcher
+classic	alternate-unit-caption	0x14132c470	0x14132d283	0x141627f64	cstring	Tanner
+classic	alternate-unit-caption	0x14132c470	0x14132d298	0x141627f5c	cstring	Dyer
+classic	alternate-unit-caption	0x14132c470	0x14132d2ad	0x1416a0a58	cstring	Presser
+classic	alternate-unit-caption	0x14132c470	0x14132d2c2	0x1416a0a60	cstring	Beekeeper
+classic	alternate-unit-caption	0x14132c470	0x14132d2d7	0x1416a07c8	cstring	Planter
+classic	alternate-unit-caption	0x14132c470	0x14132d2ec	0x1416a07d0	cstring	Herbalist
+classic	alternate-unit-caption	0x14132c470	0x14132d301	0x1416a0a8c	cstring	Brewer
+classic	alternate-unit-caption	0x14132c470	0x14132d316	0x14177cb40	cstring	Soap Maker
+classic	alternate-unit-caption	0x14132c470	0x14132d32b	0x1416a0728	cstring	Potash Maker
+classic	alternate-unit-caption	0x14132c470	0x14132d340	0x1416a0738	cstring	Lye Maker
+classic	alternate-unit-caption	0x14132c470	0x14132d355	0x1416a0748	cstring	Wood Burner
+classic	alternate-unit-caption	0x14132c470	0x14132d36a	0x14177cb30	cstring	Engineer
+classic	alternate-unit-caption	0x14132c470	0x14132d37f	0x141628028	cstring	Mechanic
+classic	alternate-unit-caption	0x14132c470	0x14132d394	0x1416a0a18	cstring	Siege Engineer
+classic	alternate-unit-caption	0x14132c470	0x14132d3a9	0x1416a0a28	cstring	Siege Operator
+classic	alternate-unit-caption	0x14132c470	0x14132d3be	0x1416a0a38	cstring	Pump Operator
+classic	alternate-unit-caption	0x14132c470	0x14132d3d3	0x14177cb60	cstring	Clerk
+classic	alternate-unit-caption	0x14132c470	0x14132d3e8	0x14177cb50	cstring	Administrator
+classic	alternate-unit-caption	0x14132c470	0x14132d3fd	0x14177caa0	cstring	Trader
+classic	alternate-unit-caption	0x14132c470	0x14132d412	0x1416a0484	cstring	Poet
+classic	alternate-unit-caption	0x14132c470	0x14132d427	0x14177ca98	cstring	Bard
+classic	alternate-unit-caption	0x14132c470	0x14132d43c	0x1416a04a8	cstring	Dancer
+classic	alternate-unit-caption	0x14132c470	0x14132d451	0x1415fae10	cstring	Performer
+classic	alternate-unit-caption	0x14132c470	0x14132d466	0x1415fadfc	cstring	Scribe
+classic	alternate-unit-caption	0x14132c470	0x14132d47b	0x141627a38	cstring	Tavern Keeper
+classic	alternate-unit-caption	0x14132c470	0x14132d490	0x14177cab4	cstring	Sage
+classic	alternate-unit-caption	0x14132c470	0x14132d4a5	0x1415fae08	cstring	Scholar
+classic	alternate-unit-caption	0x14132c470	0x14132d4ba	0x14177caa8	cstring	Philosopher
+classic	alternate-unit-caption	0x14132c470	0x14132d4cf	0x1416a0548	cstring	Mathematician
+classic	alternate-unit-caption	0x14132c470	0x14132d4e4	0x14177cad0	cstring	Historian
+classic	alternate-unit-caption	0x14132c470	0x14132d4f9	0x1416a0558	cstring	Astronomer
+classic	alternate-unit-caption	0x14132c470	0x14132d50e	0x14177cac0	cstring	Naturalist
+classic	alternate-unit-caption	0x14132c470	0x14132d523	0x1416a0a98	cstring	Chemist
+classic	alternate-unit-caption	0x14132c470	0x14132d538	0x1416a0aa0	cstring	Geographer
+classic	alternate-unit-caption	0x14132c470	0x14132d54d	0x1415fadd8	cstring	Doctor
+classic	alternate-unit-caption	0x14132c470	0x14132d562	0x1415fadc8	cstring	Diagnostician
+classic	alternate-unit-caption	0x14132c470	0x14132d577	0x141627938	cstring	Bone Doctor
+classic	alternate-unit-caption	0x14132c470	0x14132d58c	0x1416a09b0	cstring	Suturer
+classic	alternate-unit-caption	0x14132c470	0x14132d5a1	0x1415fadc0	cstring	Surgeon
+classic	alternate-unit-caption	0x14132c470	0x14132d5b6	0x14177cae8	cstring	Merchant
+classic	alternate-unit-caption	0x14132c470	0x14132d5cb	0x14177cadc	cstring	Drunk
+classic	alternate-unit-caption	0x14132c470	0x14132d5e0	0x141627948	cstring	Monster Slayer
+classic	alternate-unit-caption	0x14132c470	0x14132d5f5	0x14177cc10	cstring	Scout
+classic	alternate-unit-caption	0x14132c470	0x14132d60a	0x14177cc00	cstring	Beast Hunter
+classic	alternate-unit-caption	0x14132c470	0x14132d61f	0x141699490	cstring	Snatcher
+classic	alternate-unit-caption	0x14132c470	0x14132d634	0x1415fadf0	cstring	Mercenary
+classic	alternate-unit-caption	0x14132c470	0x14132d649	0x1416a0b30	cstring	Hammerman
+classic	alternate-unit-caption	0x14132c470	0x14132d65e	0x14177cd20	cstring	Hammer Lord
+classic	alternate-unit-caption	0x14132c470	0x14132d673	0x1416a09c8	cstring	Spearman
+classic	alternate-unit-caption	0x14132c470	0x14132d688	0x14177cd70	cstring	Spearmaster
+classic	alternate-unit-caption	0x14132c470	0x14132d69d	0x1416a09d8	cstring	Crossbowman
+classic	alternate-unit-caption	0x14132c470	0x14132d6b2	0x14177ce50	cstring	Elite Crossbowman
+classic	alternate-unit-caption	0x14132c470	0x14132d6c7	0x1416a0ae0	cstring	Wrestler
+classic	alternate-unit-caption	0x14132c470	0x14132d6dc	0x14177cea8	cstring	Elite Wrestler
+classic	alternate-unit-caption	0x14132c470	0x14132d6f1	0x1416a0b10	cstring	Axeman
+classic	alternate-unit-caption	0x14132c470	0x14132d706	0x14177ceb8	cstring	Axe Lord
+classic	alternate-unit-caption	0x14132c470	0x14132d71b	0x1416a0b18	cstring	Swordsman
+classic	alternate-unit-caption	0x14132c470	0x14132d730	0x14177ce18	cstring	Swordmaster
+classic	alternate-unit-caption	0x14132c470	0x14132d745	0x1416a0b28	cstring	Maceman
+classic	alternate-unit-caption	0x14132c470	0x14132d75a	0x14177ce28	cstring	Mace Lord
+classic	alternate-unit-caption	0x14132c470	0x14132d76f	0x1416a09e8	cstring	Pikeman
+classic	alternate-unit-caption	0x14132c470	0x14132d784	0x14177cf48	cstring	Pikemaster
+classic	alternate-unit-caption	0x14132c470	0x14132d799	0x1416a09f0	cstring	Bowman
+classic	alternate-unit-caption	0x14132c470	0x14132d7ae	0x14177cf80	cstring	Elite Bowman
+classic	alternate-unit-caption	0x14132c470	0x14132d7c3	0x1416a0920	cstring	Blowgunner
+classic	alternate-unit-caption	0x14132c470	0x14132d7d8	0x14177cf98	cstring	Master Blowgunner
+classic	alternate-unit-caption	0x14132c470	0x14132d7ed	0x1416a094c	cstring	Lasher
+classic	alternate-unit-caption	0x14132c470	0x14132d802	0x14177ced8	cstring	Master Lasher
+classic	alternate-unit-caption	0x14132c470	0x14132d817	0x14177cc20	cstring	Recruit
+classic	alternate-unit-caption	0x14132c470	0x14132d82c	0x1415f2160	cstring	Hunting
+classic	alternate-unit-caption	0x14132c470	0x14132d841	0x1415fe6cc	cstring	War
+classic	alternate-unit-caption	0x14132c470	0x14132d856	0x14177cef8	cstring	Master Thief
+classic	alternate-unit-caption	0x14132c470	0x14132d86b	0x1415fb19c	cstring	Thief
+classic	alternate-unit-caption	0x14132c470	0x14132d880	0x1415e7948	cstring	Criminal
+classic	alternate-unit-caption	0x14132c470	0x14132d895	0x14177cc18	cstring	Peddler
+classic	alternate-unit-caption	0x14132c470	0x14132d8aa	0x14177cc30	cstring	Prophet
+classic	alternate-unit-caption	0x14132c470	0x14132d8bf	0x14177cc28	cstring	Pilgrim
+classic	alternate-unit-caption	0x14132c470	0x14132d8d4	0x14177cc44	cstring	Monk
+classic	alternate-unit-caption	0x14132c470	0x14132d8e9	0x14177cc38	cstring	Messenger
+classic	alternate-unit-caption	0x14132c470	0x14132d987	0x1415faf04	cstring	Child
+classic	alternate-unit-caption	0x14132c470	0x14132d9f0	0x14177cb6c	cstring	Baby
+classic	alternate-unit-caption	0x14132c470	0x14132da18	0x14177c940	cstring	Peasant
+classic	alternate-unit-caption	0x14132c470	0x14132da22	0x14177c944	cstring	ant
+classic	alternate-unit-caption	0x14132c470	0x14132da2d	0x14177c946	cstring	t
+classic	alternate-unit-caption	0x14132c470	0x14132dbe6	0x14177ca4c	cstring	 Slave
+classic	alternate-unit-caption	0x14132c470	0x14132dc20	0x1415fbcc8	cstring	Slave
+classic	alternate-unit-caption	0x14132c470	0x14132dc76	0x1415fbcc8	cstring	Slave
+classic	alternate-unit-caption	0x14132c470	0x14132dc7e	0x1415fbccc	cstring	e
+classic	alternate-unit-caption	0x14132c470	0x14132dd59	0x14177ca40	cstring	 Prisoner
+classic	alternate-unit-caption	0x14132c470	0x14132dd8d	0x72656e6f73697250	inline	Prisoner
+classic	alternate-unit-caption	0x14132c470	0x14132dddc	0x72656e6f73697250	inline	Prisoner
+classic	alternate-unit-caption	0x14132c470	0x14132de64	0x1415e3e34	cstring	the 
+classic	alternate-unit-caption	0x14132c470	0x14132de95	0x1415e3720	cstring	 
+classic	alternate-unit-caption	0x14132c470	0x14132defd	0x1416b9d2c	cstring	Ghost
+classic	alternate-unit-caption	0x14132c470	0x14132df0c	0x141625190	cstring	Ghostly 
+classic	alternate-unit-caption	0x14132c470	0x14132df59	0x1415e3720	cstring	 
+classic	alternate-unit-caption	0x14132c470	0x14132df7c	0x14177cb68	cstring	One
 classic	grip-state-announcements	0x14135c2e0	0x14135c4e0	0x32	inline-store	2
 classic	grip-state-announcements	0x14135c2e0	0x14135c52d	0x32	inline-store	2
 classic	grip-state-announcements	0x14135c2e0	0x14135c669	0x1415e4218	cstring	Your
