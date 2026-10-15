@@ -19,18 +19,26 @@ std::vector<Match> Overlay::find_native_worldgen_matches() const {
     };
     const int panel_bottom = std::clamp(g_native_worldgen_panel.y +
         g_native_worldgen_panel.h, 0, gps_->dimy);
-    const SDL_Rect panel_clip = pixels({left, 0, right - left, panel_bottom});
     const auto inside_panel = [&](const NativeTextCardRow &row) {
         return row.x >= left && row.x < right && row.y >= 0 && row.y < panel_bottom;
     };
-    const auto field_clip = [&](const NativeTextCardRow &row) {
+    const NativePanelBorders borders(*gps_);
+    const auto field_bounds = [&](int x, int y, int length) {
         // Footer/hover writers have their own captured spans. Their text
         // must not borrow the progress panel's rectangle over the map.
-        return inside_panel(row) ? panel_clip : pixels({row.x, row.y,
-            std::min(gps_->dimx - row.x, static_cast<int>(row.source.size())), 1});
+        if (x >= left && x < right && y >= 0 && y < panel_bottom)
+            return SDL_Rect{left, 0, right - left, panel_bottom};
+        const int end = std::min(gps_->dimx, x + length);
+        const auto panel = native_panel_interior(borders, *gps_, x, end, y);
+        return SDL_Rect{x, y, panel ? panel->x + panel->w - x : end - x, 1};
     };
-    enum class Geography { None, Region, Landform };
-    uintptr_t region_return = 0, landform_return = 0;
+    const auto field_clip = [&](const NativeTextCardRow &row) {
+        return pixels(field_bounds(row.x, row.y, static_cast<int>(row.source.size())));
+    };
+    enum class Geography { None, Region, Landform, RiverLabel, River, SiteName, SiteGloss };
+    uintptr_t region_return = 0, landform_return = 0, river_return = 0, site_return = 0;
+    std::array<uintptr_t, 5> river_label_returns{};
+    std::array<uintptr_t, 3> site_gloss_returns{};
 #ifdef _WIN32
     // These addst writers render the hovered region and its containing
     // landmass on rows 1/2. Bind meaning to their native source, not spelling
@@ -38,11 +46,23 @@ std::vector<Match> Overlay::find_native_worldgen_matches() const {
     const auto base = native_history_profile_base();
     region_return = native_reference_address(base, 0xdfc756);
     landform_return = native_reference_address(base, 0xdfc7c6);
+    // The river label is a separate writer. This common name writer follows
+    // all five river-size labels and may receive an abbreviated native name.
+    river_return = native_reference_address(base, 0xdfe5dd);
+    river_label_returns = {native_reference_address(base, 0xdfe3a2),
+        native_reference_address(base, 0xdfe3fd), native_reference_address(base, 0xdfe44c),
+        native_reference_address(base, 0xdfe4af), native_reference_address(base, 0xdfe4f2)};
+    // The site loop draws its native name, then quotes around EnglishName.
+    // Its following type/species description remains an independent field.
+    site_return = native_reference_address(base, 0xdfde74);
+    site_gloss_returns = {native_reference_address(base, 0xdfdece),
+        native_reference_address(base, 0xdfdef4), native_reference_address(base, 0xdfdf21)};
 #endif
     struct Field {
         NativeTextCardRow row;
         bool editable = false;
         Geography geography = Geography::None;
+        std::shared_ptr<const NativeHistoryName> site_name;
     };
     std::map<int, std::vector<Field>> fields;
     // The paragraph fitter only mutates its owned source spans. Uncaptured
@@ -96,8 +116,14 @@ std::vector<Match> Overlay::find_native_worldgen_matches() const {
         for (int x = first; x < end; ++x) row.foregrounds.push_back(source_color(x, draw.y));
         const auto geography = draw.native_caller && draw.native_caller == region_return
             ? Geography::Region : draw.native_caller && draw.native_caller == landform_return
-            ? Geography::Landform : Geography::None;
-        fields[draw.y].push_back({std::move(row), draw.editable_text, geography});
+            ? Geography::Landform : draw.native_caller && draw.native_caller == river_return
+            ? Geography::River : draw.native_caller && std::find(river_label_returns.begin(),
+                river_label_returns.end(), draw.native_caller) != river_label_returns.end()
+            ? Geography::RiverLabel : draw.native_caller && draw.native_caller == site_return
+            ? Geography::SiteName : draw.native_caller && std::find(site_gloss_returns.begin(),
+                site_gloss_returns.end(), draw.native_caller) != site_gloss_returns.end()
+            ? Geography::SiteGloss : Geography::None;
+        fields[draw.y].push_back({std::move(row), draw.editable_text, geography, draw.site_name});
     }
     // Native labels, names and counters may be emitted by several addst
     // calls. Join adjacent writes without merging a distant right-side key
@@ -108,8 +134,13 @@ std::vector<Match> Overlay::find_native_worldgen_matches() const {
         });
         std::vector<Field> joined;
         for (auto &field : rows) {
+            const bool name_parts = !joined.empty() &&
+                field.row.x >= joined.back().row.x + static_cast<int>(joined.back().row.source.size()) &&
+                ((joined.back().geography == Geography::RiverLabel && field.geography == Geography::River) ||
+                 (joined.back().geography == Geography::SiteGloss && field.geography == Geography::SiteGloss));
             if (joined.empty() || field.editable || joined.back().editable ||
-                    field.geography != Geography::None || joined.back().geography != Geography::None ||
+                    (!name_parts && (field.geography != Geography::None ||
+                        joined.back().geography != Geography::None)) ||
                     field.row.x > joined.back().row.x +
                         static_cast<int>(joined.back().row.source.size()) + 2) {
                 joined.push_back(std::move(field));
@@ -119,6 +150,18 @@ std::vector<Match> Overlay::find_native_worldgen_matches() const {
             const int previous_end = row.x + static_cast<int>(row.source.size());
             const int next_end = field.row.x + static_cast<int>(field.row.source.size());
             if (next_end <= previous_end) continue;
+            // Keep complete names while combining their visible suppression
+            // spans. Their translated label/quotes and name share one layout.
+            std::string complete;
+            if (name_parts) {
+                complete = row.complete_source.empty() ? row.source : row.complete_source;
+                complete.append(static_cast<size_t>(field.row.x - previous_end), ' ');
+                complete += field.row.complete_source.empty() ? field.row.source : field.row.complete_source;
+                joined.back().geography = field.geography;
+                // Quote writers have no site object. Keep the snapshot owned
+                // by the English-name writer when the three runs are joined.
+                if (field.site_name) joined.back().site_name = field.site_name;
+            }
             for (int x = previous_end; x < field.row.x; ++x) {
                 const auto ch = visible_char_at(x, y);
                 row.source.push_back(ch ? static_cast<char>(ch) : ' ');
@@ -128,7 +171,7 @@ std::vector<Match> Overlay::find_native_worldgen_matches() const {
             row.source += field.row.source.substr(skip);
             row.foregrounds.insert(row.foregrounds.end(), field.row.foregrounds.begin() + skip,
                 field.row.foregrounds.end());
-            row.complete_source.clear();
+            row.complete_source = std::move(complete);
         }
         rows = std::move(joined);
         for (const auto &field : rows) remember_span(field.row.x, y, field.row.source);
@@ -395,12 +438,41 @@ std::vector<Match> Overlay::find_native_worldgen_matches() const {
             result.push_back(std::move(match));
         }
     };
+    const auto translate_geography = [&](const Field &field, std::string_view source)
+            -> std::optional<std::string> {
+        const auto kind = field.geography;
+        if (kind == Geography::Region) return translate_world_region_heading(source);
+        if (kind == Geography::Landform) return translate_world_landform_heading(source);
+        if (kind == Geography::SiteName)
+            return field.site_name ? translate_site_display(*field.site_name, source) : std::nullopt;
+        if (kind == Geography::SiteGloss) {
+            // These three writers own the quotes even if clipping hides one.
+            if (source.starts_with('"')) source.remove_prefix(1);
+            if (source.ends_with('"')) source.remove_suffix(1);
+            // The shared site compositor owns WORD/POS, reviewed whole names,
+            // phonetic fallback and the suffix from this site's real class.
+            return field.site_name ? translate_site_display(*field.site_name,
+                "\"" + std::string(trim_view(source)) + "\"") : std::nullopt;
+        }
+        if (kind == Geography::RiverLabel) return exact_literal_translation(source);
+        if (kind == Geography::River) {
+            for (std::string_view prefix : {"Major River:", "Minor River:", "River:", "Stream:", "Brook:"}) {
+                if (!source.starts_with(prefix)) continue;
+                const auto label = exact_literal_translation(prefix);
+                const auto name = translate_english_site_name(trim_view(source.substr(prefix.size())));
+                return label && name ? std::optional(*label + *name) : std::nullopt;
+            }
+            return translate_english_site_name(source);
+        }
+        return std::nullopt;
+    };
     NativeTextCard summary;
     summary.interior = {left, 0, right - left,
         heading_y < 0 ? panel_bottom : std::min(panel_bottom, heading_y + 1)};
     for (const auto &[y, rows] : fields) for (const auto &field : rows) {
         const auto &row = field.row;
-        if (reserved_fields.contains({y, row.x}) || (heading_y >= 0 && y >= prose_top && y < prose_bottom))
+        if (reserved_fields.contains({y, row.x}) || (inside_panel(row) &&
+                heading_y >= 0 && y >= prose_top && y < prose_bottom))
             continue;
         const bool geography = field.geography != Geography::None;
         const auto source = normalize_utterance(geography && !row.complete_source.empty()
@@ -409,9 +481,7 @@ std::vector<Match> Overlay::find_native_worldgen_matches() const {
         const bool identity = summary_row && (source.starts_with("Creating ") ||
             source.find(", year ") != std::string::npos);
         if (identity || geography) {
-            const auto target = field.geography == Geography::Region
-                ? translate_world_region_heading(source)
-                : field.geography == Geography::Landform ? translate_world_landform_heading(source)
+            const auto target = geography ? translate_geography(field, source)
                 : source.starts_with("Creating ") ? translate_worldgen_creation(source)
                 : translate_procedural_fragment(source);
             if (target && !target->empty()) {
@@ -427,15 +497,19 @@ std::vector<Match> Overlay::find_native_worldgen_matches() const {
         }
         if (summary_row) summary.rows.push_back(row);
         else {
-            const int field_right = inside_panel(row) ? right : gps_->dimx;
+            const auto bounds = field_bounds(row.x, y, static_cast<int>(row.source.size()));
+            const int field_right = bounds.x + bounds.w;
             NativeTextCard field_card{{row.x, y,
-                std::min(field_right, row.x + static_cast<int>(row.source.size())) - row.x, 1}, {row}};
+                field_right - row.x, 1}, {row}};
             if (field_card.interior.w > 0)
                 compose_native_text_rows(field_card, result, -1, kWorldgenSummaryRule);
         }
     }
     compose_native_text_rows(summary, result, -1, kWorldgenSummaryRule);
-    for (auto &match : result) if (!match.layout_native_clip) match.layout_native_clip = panel_clip;
+    // Row composition replaces the input matches. Reattach the field's own
+    // clip so composed sidebar rows cannot inherit the left chronicle clip.
+    for (auto &match : result) if (!match.layout_native_clip)
+        match.layout_native_clip = pixels(field_bounds(match.x, match.y, match.length));
 
     if (heading_y < 0 || prose_top >= prose_bottom) return result;
     const SDL_Rect prose_clip = pixels({left, prose_top, right - left, prose_bottom - prose_top});

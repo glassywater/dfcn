@@ -1700,12 +1700,18 @@ struct NativeClippedPending {
 static NativeClippedPending &native_squads_clipped_pending() {
     return reloadable_thread_state<NativeClippedPending, struct SquadsClippedCaptionTag>();
 }
+static NativeClippedPending &native_worldgen_clipped_pending() {
+    return reloadable_thread_state<NativeClippedPending, struct WorldgenClippedCaptionTag>();
+}
 static NativeClippedPending &native_clipped_pending() {
     // Native temporary strings from the sidebar must never consume or
     // replace a pending resize belonging to the background page.
     if (g_native_squads_write_graphics &&
             native_graphics() == g_native_squads_write_graphics)
         return native_squads_clipped_pending();
+    if (g_native_worldgen_write_graphics &&
+            native_graphics() == g_native_worldgen_write_graphics)
+        return native_worldgen_clipped_pending();
     return reloadable_thread_state<NativeClippedPending, struct ClippedCaptionTag>();
 }
 
@@ -1769,7 +1775,8 @@ static void capture_native_roster_shorten(NativeString *source, int width) {
 
 static void remember_native_clipped_resize(NativeString *source, size_t width, char fill,
         bool zero_pad_one = false, bool plain_shrink = false) {
-    if (native_private_ui_write_active(native_graphics()) ||
+    if ((native_private_ui_write_active(native_graphics()) &&
+            native_graphics() != g_native_worldgen_write_graphics) ||
             native_caption_separate_output(native_graphics())) return;
     auto &state = native_clipped_pending();
     if (!state.busy) {
@@ -2013,12 +2020,28 @@ static void capture_native_worldgen_caption(graphicst *graphics,
                 text.find_first_of("\r\n") == std::string_view::npos &&
                 text.find('\0') == std::string_view::npos) {
             complete.assign(text);
+            // Worldgen shortens river names before addst. Consume only the
+            // same string's exact abbreviation from this producer's epoch.
+            auto &pending = native_worldgen_clipped_pending();
+            epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
+            if (pending.epoch != epoch) {
+                pending.fields.clear(); pending.epoch = epoch;
+            }
+            if (!pending.busy) {
+                const auto found = pending.fields.find(source);
+                if (found != pending.fields.end()) {
+                    auto shortened = std::move(found->second);
+                    pending.fields.erase(found);
+                    if (shortened.owner == source && shortened.epoch == epoch &&
+                            shortened.visible == text && !shortened.complete.empty())
+                        complete = std::move(shortened.complete);
+                }
+            }
             grid = top_layer ? graphics->screen_top : graphics->screen;
             x = graphics->screenx; y = graphics->screeny;
             dimx = graphics->dimx; dimy = graphics->dimy;
             clip = {graphics->clipx[0], graphics->clipx[1],
                 graphics->clipy[0], graphics->clipy[1]};
-            epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
             if (graphics->use_old_16_colors) {
                 const int palette = static_cast<int8_t>(graphics->screenf) +
                     (graphics->screenbright ? 8 : 0);
@@ -2058,6 +2081,8 @@ static void capture_native_worldgen_caption(graphicst *graphics,
         row.draw_grid = grid; row.draw_dimx = dimx; row.draw_dimy = dimy;
         row.draw_epoch = epoch;
         row.native_caller = native_caller;
+        if (g_native_site_name_fact)
+            row.site_name = std::make_shared<NativeHistoryName>(*g_native_site_name_fact);
         row.editable_text = NativeEditableTextScope::active ||
             NativeEditableTextScope::owns(native_caller) ||
             native_worldgen_caption_editable(native_caller);
@@ -3168,6 +3193,7 @@ static void reset_native_caption_capture() {
     }
     native_clipped_pending() = {};
     native_squads_clipped_pending() = {};
+    native_worldgen_clipped_pending() = {};
     clear_clipped_captions();
     clear_native_unit_chooser_records();
     clear_native_drawn_text_rows();
