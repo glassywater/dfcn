@@ -2214,7 +2214,7 @@ static std::optional<NativeWorkOrderShopCaption> capture_native_work_order_shop_
     uintptr_t caller, uintptr_t source);
 struct NativeFortressZoneCaption {
     enum class Kind { Type, Location, LocationName, LocationDescription, Unit,
-        Squad, SquadCount, Assigned, Present, Imprisoned, Patients, Fixed };
+        Squad, SquadCount, Assigned, Present, Imprisoned, Patients, Occupancy, Fixed };
     Kind kind = Kind::Type;
     bool authored = true;
     std::shared_ptr<const NativeHistoryName> location_name;
