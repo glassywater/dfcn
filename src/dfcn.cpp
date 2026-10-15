@@ -1038,6 +1038,7 @@ struct NativeTextCard {
     bool character_group_civilization = false;
     std::optional<std::pair<int, int>> civilization_official_columns{};
     bool workshop_task_detail = false;
+    bool trade_request_commodity = false;
 };
 struct WorkshopTaskCard : NativeTextCard {
     bool category = false;
@@ -4655,6 +4656,9 @@ private:
     void append_settings_toggle_labels(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y) const;
     std::vector<NativeTextCard> capture_fortress_trade_request_rows() const;
+    void append_fortress_trade_request_translations(
+        const std::vector<NativeTextCard> &fields, std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y) const;
     void layout_fortress_trade_requests(SDL_Renderer *renderer);
     std::optional<NativeTextCard> capture_map_hover_card(
         std::vector<std::string> &rows, const unsigned char *screen_override) const;
@@ -17542,6 +17546,11 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     // them before paragraph/item readers or generic word translations.
     append_fortress_caravan_picker_fields(screen_rows, result, only_y, screen_override != nullptr);
     append_fortress_trade_fields(screen_rows, result, only_y, screen_override != nullptr);
+    // Commodity captions own their whole source before UI action templates
+    // can reinterpret Lead as a verb or split short material/item names.
+    const auto trade_request_rows = local_fortress_hud
+        ? std::vector<NativeTextCard>{} : capture_fortress_trade_request_rows();
+    append_fortress_trade_request_translations(trade_request_rows, screen_rows, result, only_y);
     // Task-detail material controls are independent native fields. Capture
     // their complete current frame before tooltip prose or the classic map
     // mask can consume the title and the individual Specify captions.
@@ -17827,8 +17836,6 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     }
 
     context_detail.checkpoint(RenderTimingStage::Workshops);
-    const auto trade_request_rows = local_fortress_hud
-        ? std::vector<NativeTextCard>{} : capture_fortress_trade_request_rows();
 
     context_detail.checkpoint(RenderTimingStage::Sites);
     // Capture the native widget BEFORE generic matching consumes its text.

@@ -34,7 +34,8 @@ std::vector<NativeTextCard> Overlay::capture_fortress_trade_request_rows() const
         }
         if (footer_y == bottom) continue;
         std::vector<NativeTextCard> cards;
-        const auto append = [&](SDL_Rect source, int text_left, int text_right) {
+        const auto append = [&](SDL_Rect source, int text_left, int text_right,
+                                bool commodity) {
             if (source.x < panel->x || source.x + source.w > right ||
                 source.y <= heading_y || source.y + source.h > footer_y ||
                 text_left >= text_right) return;
@@ -45,6 +46,7 @@ std::vector<NativeTextCard> Overlay::capture_fortress_trade_request_rows() const
             if (!card) return;
             card->interior.x = text_left;
             card->interior.w = text_right - text_left;
+            card->trade_request_commodity = commodity;
             cards.push_back(std::move(*card));
         };
 
@@ -58,7 +60,7 @@ std::vector<NativeTextCard> Overlay::capture_fortress_trade_request_rows() const
                     *gps_, field.start, field.start + 1, y);
                 if (!button || button->toggle) continue;
                 const SDL_Rect box = button->interior;
-                append(box, box.x + 1, box.x + box.w - 1);
+                append(box, box.x + 1, box.x + box.w - 1, false);
             }
         }
 
@@ -88,13 +90,49 @@ std::vector<NativeTextCard> Overlay::capture_fortress_trade_request_rows() const
                             break;
                         }
                 }
-                if (complete) append({left, top, checkbox - left, 3}, left + 1, checkbox - 1);
+                if (complete) append({left, top, checkbox - left, 3}, left + 1, checkbox - 1, true);
                 checkbox += 3;
             }
         }
         return cards;
     }
     return {};
+}
+
+void Overlay::append_fortress_trade_request_translations(
+        const std::vector<NativeTextCard> &fields, std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y) const {
+    if (!config_.compositional_rules) return;
+    for (const auto &field : fields) {
+        if (!field.trade_request_commodity) continue;
+        for (const auto &row : field.rows) {
+            if (row.foregrounds.empty() || row.y < 0 ||
+                    row.y >= static_cast<int>(rows.size()) || row.x < 0 ||
+                    row.x + row.source.size() > rows[row.y].size() ||
+                    rows[row.y].compare(row.x, row.source.size(), row.source) != 0) continue;
+            TranslationWorkScope work;
+            std::vector<size_t> origins;
+            std::optional<std::string> target;
+            try {
+                target = RULESETS.translate_with_origins(native_text_to_utf8(row.source),
+                    "::fortress::trade_requests", origins);
+            } catch (const TranslationWorkLimit &) {
+                if (!work.owns_budget()) throw;
+            }
+            if (!target || !item_display_target_valid(*target)) continue;
+            Match match{row.x, row.y, static_cast<int>(row.source.size()),
+                kFortressTradeRequestRowRule, *target, row.source};
+            match.layout_foreground_rgb = row.foregrounds.front();
+            for (size_t at = 0; at < target->size(); ++at) {
+                if ((static_cast<unsigned char>((*target)[at]) & 0xc0) == 0x80) continue;
+                const size_t source_at = at < origins.size() ? origins[at] : 0;
+                match.layout_glyph_foreground_rgb.push_back(row.foregrounds[
+                    source_at < row.foregrounds.size() ? source_at : 0]);
+            }
+            if (only_y < 0 || only_y == row.y) matches.push_back(std::move(match));
+            std::fill_n(rows[row.y].begin() + row.x, row.source.size(), ' ');
+        }
+    }
 }
 
 void Overlay::layout_fortress_trade_requests(SDL_Renderer *renderer) {

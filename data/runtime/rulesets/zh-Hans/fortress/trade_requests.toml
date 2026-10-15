@@ -1,0 +1,10 @@
+base = "fortress::trade_requests"
+
+# The native request checkbox owns a complete commodity name. Resolve it
+# within goods/material namespaces so calendar months and UI verbs cannot
+# claim homonyms such as Sandstone and Lead.
+[[rulesets]]
+[rulesets.rules]
+"{::items}" = "{::items}"
+"{::materials}" = "{::materials}"
+"{::materials::item_qualifier} crafts" = "{::materials::item_qualifier}工艺品"
