@@ -4830,7 +4830,7 @@ private:
     void layout_fortress_location_list(SDL_Renderer *renderer);
     std::optional<SDL_Rect> capture_fortress_location_picker(int &prompt_y) const;
     void append_fortress_zone_drawing_matches(std::vector<std::string> &rows,
-        std::vector<Match> &matches, int only_y, bool raw_layer) const;
+        std::vector<Match> &matches, int only_y) const;
     void append_fortress_zone_holder_matches(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y) const;
     std::optional<SDL_Rect> capture_fortress_places_panel(
@@ -17908,8 +17908,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                 screen_override != nullptr);
             append_fortress_zone_types(screen_rows, result, only_y,
                 screen_override != nullptr);
-            append_fortress_zone_drawing_matches(screen_rows, result, only_y,
-                screen_override != nullptr);
+            append_fortress_zone_drawing_matches(screen_rows, result, only_y);
             append_fortress_zone_holder_matches(screen_rows, result, only_y);
         }
     }

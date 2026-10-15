@@ -748,35 +748,32 @@ void Overlay::append_fortress_zone_types(std::vector<std::string> &rows,
 }
 
 // Multi/Paint are zone-drawing modes. Resolve them before generic dictionary
-// and proper-name matching, using the current prompt, frame and button skins.
+// and proper-name matching, using their shared frame and complete button skins.
 // Both the ordinary paint dialog and the multiple-rectangle dialog use them.
 void Overlay::append_fortress_zone_drawing_matches(std::vector<std::string> &rows,
-        std::vector<Match> &matches, int only_y, bool raw_layer) const {
+        std::vector<Match> &matches, int only_y) const {
     if (!gps_ || rows.size() != static_cast<size_t>(gps_->dimy)) return;
     auto context = rows;
-    if (raw_layer) {
-        // Immediate suppression can inspect only one native text layer. Use
-        // the same visible panel as the final pass, then project exact bytes
-        // back to that layer instead of borrowing hidden background labels.
-        for (int y = 0; y < gps_->dimy; ++y)
-            for (int x = 0; x < gps_->dimx; ++x) {
-                const auto ch = visible_char_at(x, y);
-                context[y][x] = ch ? static_cast<char>(ch) : ' ';
-            }
-    }
+    // Discover the same current visible controls in every pass, independently
+    // of consumed rows; only exact button bytes are projected back to rows.
+    for (int y = 0; y < gps_->dimy; ++y)
+        for (int x = 0; x < gps_->dimx; ++x) {
+            const auto ch = visible_char_at(x, y);
+            context[y][x] = ch ? static_cast<char>(ch) : ' ';
+        }
     const NativePanelBorders borders(*gps_);
     std::vector<SDL_Rect> panels;
     for (int y = 0; y < gps_->dimy; ++y) {
-        // Prompts are issued as separate native lines. Multi starts with
-        // "Select a rectangle", then switches to "Select another rectangle"
-        // after creating rooms. Use the mode-specific native lines before
-        // paragraph reflow in both states.
-        for (const std::string_view prompt : {
-                "to paint the zone.", "Select a rectangle", "Select another rectangle"}) {
-            const auto start = context[y].find(prompt);
-            if (start == std::string::npos) continue;
+        if (context[y].find("Multi") == std::string::npos &&
+                context[y].find("Paint") == std::string::npos) continue;
+        // The native modes share a column even when the instruction wraps,
+        // changes after creating rooms, or is already owned by a prose reader.
+        // Locate their panel through a complete control, not a prompt fragment.
+        for (const auto &field : split_text_fields(context[y])) {
+            if ((field.text != "Multi" && field.text != "Paint") ||
+                    !native_button_text_rect(*gps_, field.start, field.end, y)) continue;
             const auto panel = native_panel_interior(borders, *gps_,
-                static_cast<int>(start), static_cast<int>(start + prompt.size()), y);
+                field.start, field.end, y);
             if (!panel || std::any_of(panels.begin(), panels.end(),
                     [&](const SDL_Rect &other) {
                         return other.x == panel->x && other.y == panel->y &&
@@ -788,7 +785,6 @@ void Overlay::append_fortress_zone_drawing_matches(std::vector<std::string> &row
     for (const SDL_Rect &panel : panels) {
         struct Caption { int x, y; std::string source; SDL_Rect button; };
         std::vector<Caption> captions;
-        bool has_multi = false, has_paint = false;
         for (int y = panel.y; y < panel.y + panel.h; ++y) {
             for (const auto &field : split_text_fields(context[y])) {
                 if ((field.text != "Multi" && field.text != "Paint") ||
@@ -809,13 +805,21 @@ void Overlay::append_fortress_zone_drawing_matches(std::vector<std::string> &row
                     if ((x < field.start || x >= field.end) && context[y][x] != ' ')
                         complete = false;
                 if (!complete) continue;
-                has_multi |= field.text == "Multi";
-                has_paint |= field.text == "Paint";
                 captions.push_back({field.start, y, field.text, *button});
             }
         }
-        if (!has_multi || !has_paint) continue;
         for (const Caption &caption : captions) {
+            // Native zone drawing puts Multi above Paint with identical left
+            // and right edges. Both complete controls establish the mode;
+            // Cancel can become Done or be absent after creating rooms.
+            const bool paired = std::any_of(captions.begin(), captions.end(),
+                [&](const Caption &other) {
+                    return caption.source != other.source &&
+                        caption.button.x == other.button.x &&
+                        caption.button.w == other.button.w &&
+                        (caption.source == "Multi" ? caption.y < other.y : other.y < caption.y);
+                });
+            if (!paired) continue;
             const int length = static_cast<int>(caption.source.size());
             if ((only_y >= 0 && only_y != caption.y) ||
                 rows[caption.y].compare(caption.x, length, caption.source) != 0) continue;
