@@ -68861,7 +68861,7 @@ and ruled from {p} of {p} at {p}	并在{p3}以{p2}的{p1}为统治中心	ht
 and ruled from {p} of {p} in {p}	并在{p3}以{p2}的{p1}为统治中心	ht
 and sabotaged activities at {p}.	并在{p1}破坏了活动。	ht
 and sabotaged activities in {p}.	并在{p1}破坏了活动。	ht
-and settled in {p} in the wilds.	并在荒野中定居在{p1}。	ht
+and settled in {p} in the wilds.	并在荒野中在{p1}安顿下来。	ht
 and several people were expelled	，数人遭到驱逐	h
 and slaughtered {a} in the wilds	并在荒野中屠杀了{a1}	ht
 and slipped into {p} during {e}.	并在{e1}期间潜入了{p1}。	ht
@@ -69679,7 +69679,7 @@ wrongfully convicted {n} of {s}.	错误地判定{n1}犯有{s1}。	ht
 {a} ruled from {p} of {p} in {p}	{a1}在{p3}以{p2}的{p1}为统治中心	ht
 {a} sabotaged activities at {p}.	{a1}在{p1}破坏了活动。	ht
 {a} sabotaged activities in {p}.	{a1}在{p1}破坏了活动。	ht
-{a} settled in {p} in the wilds.	{a1}在荒野中定居在{p1}。	ht
+{a} settled in {p} in the wilds.	{a1}在荒野中在{p1}安顿下来。	ht
 {a} slaughtered {a} in the wilds	{a1}在荒野中屠杀了{a2}	ht
 {a} slipped into {p} during {e}.	{a1}在{e1}期间潜入了{p1}。	ht
 {a} slipped into {p} within {p}.	{a1}在{p2}潜入了{p1}。	ht
@@ -71130,7 +71130,7 @@ and sabotaged activities at {p}	并在{p1}破坏了活动	ht
 and sabotaged activities in {p}	并在{p1}破坏了活动	ht
 and scared {a} to death at {p}.	并在{p1}吓死了{a1}。	ht
 and scared {a} to death in {p}.	并在{p1}吓死了{a1}。	ht
-and settled in {p} in the wilds	并在荒野中定居在{p1}	ht
+and settled in {p} in the wilds	并在荒野中在{p1}安顿下来	ht
 and shot and killed {a} at {p}.	并在{p1}射杀了{a1}。	ht
 and shot and killed {a} in {p}.	并在{p1}射杀了{a1}。	ht
 and slaughtered {a} during {e}.	并在{e1}期间屠杀了{a1}。	ht
@@ -72048,7 +72048,7 @@ wrongfully convicted {n} of {s}	错误地判定{n1}犯有{s1}	ht
 {a} sabotaged activities in {p}	{a1}在{p1}破坏了活动	ht
 {a} scared {a} to death at {p}.	{a1}在{p1}吓死了{a2}。	ht
 {a} scared {a} to death in {p}.	{a1}在{p1}吓死了{a2}。	ht
-{a} settled in {p} in the wilds	{a1}在荒野中定居在{p1}	ht
+{a} settled in {p} in the wilds	{a1}在荒野中在{p1}安顿下来	ht
 {a} shot and killed {a} at {p}.	{a1}在{p1}射杀了{a2}。	ht
 {a} shot and killed {a} in {p}.	{a1}在{p1}射杀了{a2}。	ht
 {a} slaughtered {a} during {e}.	{a1}在{e1}期间屠杀了{a2}。	ht
@@ -73684,8 +73684,8 @@ and scared {a} to death at {p}	并在{p1}吓死了{a1}	ht
 and scared {a} to death in {p}	并在{p1}吓死了{a1}	ht
 and searched {p} in the wilds.	并在荒野中搜寻了{p1}。	ht
 and seized livestock from {p}.	并从{p1}夺走了牲畜。	ht
-and settled in {p} during {e}.	并在{e1}期间定居在{p1}。	ht
-and settled in {p} within {p}.	并在{p2}定居在{p1}。	ht
+and settled in {p} during {e}.	并在{e1}期间在{p1}安顿下来。	ht
+and settled in {p} within {p}.	并在{p2}在{p1}安顿下来。	ht
 and shot and killed {a} at {p}	并在{p1}射杀了{a1}	ht
 and shot and killed {a} in {p}	并在{p1}射杀了{a1}	ht
 and slaughtered {a} during {e}	并在{e1}期间屠杀了{a1}	ht
@@ -74554,8 +74554,8 @@ with the hall designated for a	并将大厅指定给以下行会：	hP
 {a} scared {a} to death in {p}	{a1}在{p1}吓死了{a2}	ht
 {a} searched {p} in the wilds.	{a1}在荒野中搜寻了{p1}。	ht
 {a} seized livestock from {p}.	{a1}从{p1}夺走了牲畜。	ht
-{a} settled in {p} during {e}.	{a1}在{e1}期间定居在{p1}。	ht
-{a} settled in {p} within {p}.	{a1}在{p2}定居在{p1}。	ht
+{a} settled in {p} during {e}.	{a1}在{e1}期间在{p1}安顿下来。	ht
+{a} settled in {p} within {p}.	{a1}在{p2}在{p1}安顿下来。	ht
 {a} shot and killed {a} at {p}	{a1}在{p1}射杀了{a2}	ht
 {a} shot and killed {a} in {p}	{a1}在{p1}射杀了{a2}	ht
 {a} slaughtered {a} during {e}	{a1}在{e1}期间屠杀了{a2}	ht
@@ -76141,8 +76141,8 @@ and searched {p} in the wilds	并在荒野中搜寻了{p1}	ht
 and secured tribute from {a}.	并迫使{a1}进贡。	ht
 and secured tribute from {p}.	并迫使{p1}进贡。	ht
 and seized livestock from {p}	并从{p1}夺走了牲畜	ht
-and settled in {p} during {e}	并在{e1}期间定居在{p1}	ht
-and settled in {p} within {p}	并在{p2}定居在{p1}	ht
+and settled in {p} during {e}	并在{e1}期间在{p1}安顿下来	ht
+and settled in {p} within {p}	并在{p2}在{p1}安顿下来	ht
 and stole livestock from {p}.	并从{p1}偷走了牲畜。	ht
 and subdued {a} in the wilds.	并在荒野中制服了{a1}。	ht
 and surprised {a} during {e}.	并在{e1}期间突袭了{a1}。	ht
@@ -76941,8 +76941,8 @@ you can succumb to invasions.	入侵就可能让你覆灭。	hq
 {a} secured tribute from {a}.	{a1}迫使{a2}进贡。	ht
 {a} secured tribute from {p}.	{a1}迫使{p1}进贡。	ht
 {a} seized livestock from {p}	{a1}从{p1}夺走了牲畜	ht
-{a} settled in {p} during {e}	{a1}在{e1}期间定居在{p1}	ht
-{a} settled in {p} within {p}	{a1}在{p2}定居在{p1}	ht
+{a} settled in {p} during {e}	{a1}在{e1}期间在{p1}安顿下来	ht
+{a} settled in {p} within {p}	{a1}在{p2}在{p1}安顿下来	ht
 {a} stole livestock from {p}.	{a1}从{p1}偷走了牲畜。	ht
 {a} subdued {a} in the wilds.	{a1}在荒野中制服了{a2}。	ht
 {a} surprised {a} during {e}.	{a1}在{e1}期间突袭了{a2}。	ht
@@ -78751,7 +78751,7 @@ ruled from {p} of {p} at {p}	在{p3}以{p2}的{p1}为统治中心	ht
 ruled from {p} of {p} in {p}	在{p3}以{p2}的{p1}为统治中心	ht
 sabotaged activities at {p}.	在{p1}破坏了活动。	ht
 sabotaged activities in {p}.	在{p1}破坏了活动。	ht
-settled in {p} in the wilds.	在荒野中定居在{p1}。	ht
+settled in {p} in the wilds.	在荒野中在{p1}安顿下来。	ht
 settlement of {p} during {e}	在{e1}期间，在{p1}的定居	htEi
 settlement of {p} within {p}	在{p2}，在{p1}的定居	htEi
 several people were expelled	数人遭到驱逐	h
@@ -81076,7 +81076,7 @@ scared {a} to death in {p}.	在{p1}吓死了{a1}。	ht
 second lower right premolar	右下第二前臼齿	h
 second upper right premolar	右上第二前臼齿	h
 seeing somebody's dead body	看到某人的尸体	wi
-settled in {p} in the wilds	在荒野中定居在{p1}	ht
+settled in {p} in the wilds	在荒野中在{p1}安顿下来	ht
 shot and killed {a} at {p}.	在{p1}射杀了{a1}。	ht
 shot and killed {a} in {p}.	在{p1}射杀了{a1}。	ht
 slaughtered {a} during {e}.	在{e1}期间屠杀了{a1}。	ht
@@ -83033,8 +83033,8 @@ and routed {a} within {p}.	并在{p1}击溃了{a1}。	ht
 and ruled from {p} at {p}.	并在{p2}以{p1}为统治中心。	ht
 and ruled from {p} in {p}.	并在{p2}以{p1}为统治中心。	ht
 and ruled from {p} of {p}.	并以{p2}的{p1}为统治中心。	ht
-and settled in {p} at {p}.	并在{p2}定居在{p1}。	ht
-and settled in {p} in {p}.	并在{p2}定居在{p1}。	ht
+and settled in {p} at {p}.	并在{p2}在{p1}安顿下来。	ht
+and settled in {p} in {p}.	并在{p2}在{p1}安顿下来。	ht
 and sired {n} in the wilds	并在荒野中成为了{n1}的生父	ht
 and slaughtered {a} at {p}	并在{p1}屠杀了{a1}	ht
 and slaughtered {a} in {p}	并在{p1}屠杀了{a1}	ht
@@ -83379,8 +83379,8 @@ second lower right incisor	第二右下门牙	h
 second upper left premolar	左上第二前臼齿	h
 second upper right incisor	第二右上门牙	h
 seized livestock from {p}.	从{p1}夺走了牲畜。	ht
-settled in {p} during {e}.	在{e1}期间定居在{p1}。	ht
-settled in {p} within {p}.	在{p2}定居在{p1}。	ht
+settled in {p} during {e}.	在{e1}期间在{p1}安顿下来。	ht
+settled in {p} within {p}.	在{p2}在{p1}安顿下来。	ht
 shot and killed {a} at {p}	在{p1}射杀了{a1}	ht
 shot and killed {a} in {p}	在{p1}射杀了{a1}	ht
 shows a hint of tenderness	稍带温柔	hv
@@ -83818,8 +83818,8 @@ were expelled in the wilds	在荒野中遭到了驱逐	h
 {a} ruled from {p} at {p}.	{a1}在{p2}以{p1}为统治中心。	ht
 {a} ruled from {p} in {p}.	{a1}在{p2}以{p1}为统治中心。	ht
 {a} ruled from {p} of {p}.	{a1}以{p2}的{p1}为统治中心。	ht
-{a} settled in {p} at {p}.	{a1}在{p2}定居在{p1}。	ht
-{a} settled in {p} in {p}.	{a1}在{p2}定居在{p1}。	ht
+{a} settled in {p} at {p}.	{a1}在{p2}在{p1}安顿下来。	ht
+{a} settled in {p} in {p}.	{a1}在{p2}在{p1}安顿下来。	ht
 {a} sired {n} in the wilds	{a1}在荒野中成为了{n1}的生父	ht
 {a} slaughtered {a} at {p}	{a1}在{p1}屠杀了{a2}	ht
 {a} slaughtered {a} in {p}	{a1}在{p1}屠杀了{a2}	ht
@@ -85049,8 +85049,8 @@ and ruled from {p} at {p}	并在{p2}以{p1}为统治中心	ht
 and ruled from {p} in {p}	并在{p2}以{p1}为统治中心	ht
 and ruled from {p} of {p}	并以{p2}的{p1}为统治中心	ht
 and sabotaged activities.	并破坏了活动。	h
-and settled in {p} at {p}	并在{p2}定居在{p1}	ht
-and settled in {p} in {p}	并在{p2}定居在{p1}	ht
+and settled in {p} at {p}	并在{p2}在{p1}安顿下来	ht
+and settled in {p} in {p}	并在{p2}在{p1}安顿下来	ht
 and sired {n} during {e}.	并在{e1}期间成为了{n1}的生父。	ht
 and sired {n} within {p}.	并在{p1}成为了{n1}的生父。	ht
 and solidified during {e}	并在{e1}期间凝固而死	ht
@@ -85429,8 +85429,8 @@ second upper left incisor	第二左上门牙	h
 secured tribute from {a}.	迫使{a1}进贡。	ht
 secured tribute from {p}.	迫使{p1}进贡。	ht
 seized livestock from {p}	从{p1}夺走了牲畜	ht
-settled in {p} during {e}	在{e1}期间定居在{p1}	ht
-settled in {p} within {p}	在{p2}定居在{p1}	ht
+settled in {p} during {e}	在{e1}期间在{p1}安顿下来	ht
+settled in {p} within {p}	在{p2}在{p1}安顿下来	ht
 settlement of {p} at {p}.	在{p2}，在{p1}的定居。	htEi
 settlement of {p} in {d}.	{d1}年的在{p1}的定居。	htEi
 settlement of {p} in {p}.	在{p2}，在{p1}的定居。	htEi
@@ -85804,8 +85804,8 @@ writing of a masterpiece.	书写杰作。	hEi
 {a} ruled from {p} in {p}	{a1}在{p2}以{p1}为统治中心	ht
 {a} ruled from {p} of {p}	{a1}以{p2}的{p1}为统治中心	ht
 {a} sabotaged activities.	{a1}破坏了活动。	ht
-{a} settled in {p} at {p}	{a1}在{p2}定居在{p1}	ht
-{a} settled in {p} in {p}	{a1}在{p2}定居在{p1}	ht
+{a} settled in {p} at {p}	{a1}在{p2}在{p1}安顿下来	ht
+{a} settled in {p} in {p}	{a1}在{p2}在{p1}安顿下来	ht
 {a} sired {n} during {e}.	{a1}在{e1}期间成为了{n1}的生父。	ht
 {a} sired {n} within {p}.	{a1}在{p1}成为了{n1}的生父。	ht
 {a} solidified during {e}	{a1}在{e1}期间凝固而死	ht
@@ -91923,8 +91923,8 @@ second right upper arm	第二右上臂	h
 sentenced to one month	被判处一个月监禁	h
 sentenced to {c} years	被判处{c1}年监禁	ht
 sentenced to {d} years	被判处{d1}年监禁	ht
-settled in {p} at {p}.	在{p2}定居在{p1}。	ht
-settled in {p} in {p}.	在{p2}定居在{p1}。	ht
+settled in {p} at {p}.	在{p2}在{p1}安顿下来。	ht
+settled in {p} in {p}.	在{p2}在{p1}安顿下来。	ht
 sired {n} in the wilds	在荒野中成为了{n1}的生父	ht
 skin is pale chestnut.	皮肤呈淡栗色。	l
 slaughtered {a} at {p}	在{p1}屠杀了{a1}	ht
@@ -94328,8 +94328,8 @@ second right rear toe	右后脚食趾	h
 secretive poltergeist	隐秘的骚灵	wi
 seeing a 's dead body	看到某个生物的尸体	wi
 sentenced to one year	被判处一年监禁	h
-settled in {p} at {p}	在{p2}定居在{p1}	ht
-settled in {p} in {p}	在{p2}定居在{p1}	ht
+settled in {p} at {p}	在{p2}在{p1}安顿下来	ht
+settled in {p} in {p}	在{p2}在{p1}安顿下来	ht
 sinopterus hatchlings	小型冠翼龙幼崽	wi
 sired {n} during {e}.	在{e1}期间成为了{n1}的生父。	ht
 sired {n} within {p}.	在{p1}成为了{n1}的生父。	ht
@@ -98367,7 +98367,7 @@ and persecuted {a}.	并迫害了{a1}。	ht
 and preached to {a}	并向{a1}布道	ht
 and returned to {p}	并返回了{p1}	ht
 and ruled from {p}.	并以{p1}为统治中心。	ht
-and settled in {p}.	并定居在{p1}。	ht
+and settled in {p}.	并在{p1}安顿下来。	ht
 and slaughtered {a}	并屠杀了{a1}	ht
 and sold {n} to {p}	并将{n1}卖给了{p1}	ht
 and struck down {a}	并击杀了{a1}	ht
@@ -100789,7 +100789,7 @@ younger half-sister	同父异母或同母异父的妹妹	wi
 {a} preached to {a}	{a1}向{a2}布道	ht
 {a} returned to {p}	{a1}返回了{p1}	ht
 {a} ruled from {p}.	{a1}以{p1}为统治中心。	ht
-{a} settled in {p}.	{a1}定居在{p1}。	ht
+{a} settled in {p}.	{a1}在{p1}安顿下来。	ht
 {a} slaughtered {a}	{a1}屠杀了{a2}	ht
 {a} sold {n} to {p}	{a1}将{n1}卖给了{p1}	ht
 {a} struck down {a}	{a1}击杀了{a2}	ht
@@ -100879,7 +100879,7 @@ younger half-sister	同父异母或同母异父的妹妹	wi
 {n} looks horrible!	{n1}看起来糟透了！	hPt
 {n} ruled from {p}.	{n}以{p}为统治中心。	ht
 {n} scrambles away!	{n1}连滚带爬地躲开了！	hPt
-{n} settled in {p}.	{n}定居在{p}。	ht
+{n} settled in {p}.	{n}在{p}安顿下来。	ht
 {n} sings sloppily.	{n1}唱得敷衍潦草。	hPt
 {n} struck down the	{n}击杀了	ht
 {n} was the victor.	{n1}获得了胜利。	ht
@@ -101761,7 +101761,7 @@ and purchased {p}.	并买下了{p1}。	ht
 and recruited {a}.	并招募了{a1}。	ht
 and respected {a}.	并尊重{a1}。	ht
 and ruled from {p}	并以{p1}为统治中心	ht
-and settled in {p}	并定居在{p1}	ht
+and settled in {p}	并在{p1}安顿下来	ht
 and surprised {a}.	并突袭了{a1}。	ht
 and tamed the {s}.	并驯服了{s1}。	ht
 and taught {a} {s}	并向{a1}传授了{s1}	ht
@@ -104732,7 +104732,7 @@ yellow spessartine	橙榴石	wi
 {a} recruited {a}.	{a1}招募了{a2}。	ht
 {a} respected {a}.	{a1}尊重{a2}。	ht
 {a} ruled from {p}	{a1}以{p1}为统治中心	ht
-{a} settled in {p}	{a1}定居在{p1}	ht
+{a} settled in {p}	{a1}在{p1}安顿下来	ht
 {a} surprised {a}.	{a1}突袭了{a2}。	ht
 {a} tamed the {s}.	{a1}驯服了{s1}。	ht
 {a} taught {a} {s}	{a1}向{a2}传授了{s1}	ht
@@ -118396,7 +118396,7 @@ sand pear trees	沙梨树	wi
 sandy clay loam	砂质黏壤土	wi
 scratchy-voiced	嗓音粗哑	wi
 second left toe	左脚食趾	h
-settled in {p}.	定居在{p1}。	ht
+settled in {p}.	在{p1}安顿下来。	ht
 sewer caretaker	下水道管护员	hi
 sewer officials	下水道官员	hi
 shifting colors	变换的颜色	wi
@@ -123304,7 +123304,7 @@ seeing the die	看到某人死亡	wi
 selections to 	蓝图模式。	w
 self-awareness	自我意识	wi
 sense of smell	有气味	wi
-settled in {p}	定居在{p1}	ht
+settled in {p}	在{p1}安顿下来	ht
 seven thousand	七千	wi
 seventh eldest	第七大的	wi
 several groups	数个势力	h
