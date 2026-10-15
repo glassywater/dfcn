@@ -1132,23 +1132,33 @@ TranslationResult Overlay::translate_item_description_source_display(
             // boundaries before display fallback, whose preserved fields must
             // not let the first noun swallow all later independent sentences.
             std::vector<size_t> boundaries{0};
-            if (source.find('`') == std::string::npos) {
-                bool quoted = false;
-                for (size_t at = 0; at + 1 < source.size(); ++at) {
-                    if (source[at] == '"' || source[at] == '\x10' || source[at] == '\x11') quoted = !quoted;
-                    if (quoted || (source[at] != '.' && source[at] != '!' && source[at] != '?') ||
-                        source[at + 1] != ' ') continue;
-                    const auto next = trim_view(std::string_view(source).substr(at + 1));
-                    const auto previous = trim_view(std::string_view(source).substr(
-                        boundaries.back(), at + 1 - boundaries.back()));
-                    // A complete existing production also proves its end,
-                    // even when the following independent sentence is new.
-                    // Unknown text alone never grants punctuation that role.
-                    if (anchored(next) || translate_item_description_source(previous, true))
-                        boundaries.push_back(at + 1);
+            bool quoted = false, native_nickname = false;
+            for (size_t at = 0; at + 1 < source.size(); ++at) {
+                if (source[at] == '`') native_nickname = true;
+                // Authored nicknames can contain apostrophes, backticks and
+                // unmatched double quotes. Only a complete typed production
+                // may prove the end of a sentence containing one. Keep that
+                // restriction local so a later nickname cannot suppress all
+                // earlier independent item/material/quality sentences.
+                if (!native_nickname && (source[at] == '"' ||
+                        source[at] == '\x10' || source[at] == '\x11')) quoted = !quoted;
+                if ((!native_nickname && quoted) ||
+                    (source[at] != '.' && source[at] != '!' && source[at] != '?') ||
+                    source[at + 1] != ' ') continue;
+                const auto next = trim_view(std::string_view(source).substr(at + 1));
+                const auto previous = trim_view(std::string_view(source).substr(
+                    boundaries.back(), at + 1 - boundaries.back()));
+                // A complete existing production also proves its end,
+                // even when the following independent sentence is new.
+                // Unknown text alone never grants punctuation that role.
+                if ((!native_nickname && anchored(next)) ||
+                        translate_item_description_source(previous, true)) {
+                    boundaries.push_back(at + 1);
+                    quoted = native_nickname = false;
                 }
-                if (quoted) boundaries.resize(1);
             }
+            // An unmatched quoted title invalidates only its current unit;
+            // boundaries already established before it remain independent.
             boundaries.push_back(source.size());
             if (boundaries.size() > 2) {
                 result = {};
