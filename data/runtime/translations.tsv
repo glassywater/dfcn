@@ -31024,7 +31024,7 @@ hated {a} and agreed, despite being unafraid of death.	虽然不惧死亡，但�
 hated {a} and agreed, despite lack of fear toward {a}.	虽然不惧怕{a2}，但憎恨{a1}，答应了。	ht
 hated {a} and refused, despite a desire for vengeance.	虽然渴望复仇，但憎恨{a1}，拒绝了对方。	ht
 hated {a} and refused, despite lack of respect of {a}.	虽然不尊重{a2}，但憎恨{a1}，拒绝了对方。	ht
-having an intellectual discussion with an acquaintance	与熟人探讨知识后	wi
+having an intellectual discussion with an acquaintance	与熟人探讨知识	wi
 having to conduct an official meeting in a dining room	不得不在餐厅进行官方会议	wi
 lacked a desire for vengeance and refused in the wilds	在荒野中无意复仇，拒绝了对方	h
 laid a series of oppressive edicts upon {p} during {e}	在{e1}期间对{p1}颁布了一系列苛政	ht
@@ -35696,7 +35696,6 @@ You will learn something you did not want to know.	你将得知某件你不愿�
 Your bookkeeper has done enough work to attain {s}	簿记员已完成足够的工作，达到{s}	wtl
 Your room is up the stairs, the door on your left.	你的房间在楼上左手边的门内。	hP
 a work was authored by {n} in order to glorify {a}	{n1}为了颂扬{a1}而撰写了一部作品	ht
-about not having a tomb after gaining another year	关于获得另一个生日后没有陵墓	wi
 after being exiled following a criminal conviction	在被定罪并流放后	h
 agreed for love of {a}, despite feelings of greed.	虽然有贪念，但爱着{a1}，因此答应了。	ht
 an agreement to retrieve {p} for {a} in the wilds.	在荒野中，为{a1}找回{p1}的协议。	htEi
@@ -43165,7 +43164,7 @@ began dreaming of falling in love during {e}.	在{e1}期间开始梦想坠入爱
 began dreaming of falling in love within {p}.	在{p1}开始梦想坠入爱河。	ht
 began hunting great beasts in {p} {p} at {p}.	在{p3}开始在{p2}的{p1}猎杀巨兽。	ht
 began hunting great beasts in {p} {p} in {p}.	在{p3}开始在{p2}的{p1}猎杀巨兽。	ht
-being unable to practice a craft for too long	在长时间无法练习手艺后	wi
+being unable to practice a craft for too long	长时间无法练习手艺	wi
 being unable to practice a skill for too long	太久未能练习技能	wi
 breaks sharply between topics with regularity	频繁生硬地转换话题	hv
 broke even trading {s} from {p} to {p} at {p}	在{p3}将{s1}从{p1}运往{p2}交易，不盈不亏	ht
@@ -48228,7 +48227,7 @@ began wandering around {p} {p} during {e}.	在{e1}期间开始在{p2}的{p1}周�
 began wandering around {p} {p} within {p}.	在{p3}开始在{p2}的{p1}周边游荡。	ht
 began wandering the area around {p} at {p}	在{p2}开始在{p1}周边游荡	ht
 began wandering the area around {p} in {p}	在{p2}开始在{p1}周边游荡	ht
-being unable to be extravagant for so long	在长时间无法奢侈后	wi
+being unable to be extravagant for so long	长时间无法过奢侈的生活	wi
 bit {a}, passing on the ghoulish condition	咬了{a1}，将食尸鬼病症传给了对方	ht
 burned up in {n}'s dragon fire during {e}.	在{e1}期间被{n1}的龙焰烧死了。	ht
 burned up in {n}'s dragon fire within {p}.	在{p1}被{n1}的龙焰烧死了。	ht
@@ -49730,6 +49729,7 @@ You must think you're really frightening.	你肯定觉得自己很吓人。	hP
 You prepare to shoot {n} with {s} in {s}.	你准备朝{n1}发射装在{s2}里的{s1}。	hPt
 You will sleep as necessary for {u} hour.	你将在接下来的{u1}小时内按需睡觉。	hPt
 a competition involving {b} in the wilds.	在荒野中，以《{b1}》为内容的比赛。	htEi
+a criminal could not be properly punished	罪犯没有得到适当的惩罚	wi
 a petition for a temple for being ignored	建立神庙的请愿被忽视	wi
 a scuffle between {a} and {a} during {e}.	在{e1}期间，{a1}与{a2}的扭打。	htEi
 a scuffle between {a} and {a} within {p}.	在{p1}，{a1}与{a2}的扭打。	htEi
@@ -53829,7 +53829,7 @@ ill-fated visit of merchants within {p}	在{p1}，遭遇厄运的商人来访	ht
 independently discovered {s} during {e}	在{e1}期间独立发现了{s1}	ht
 independently discovered {s} within {p}	在{p1}独立发现了{s1}	ht
 leapt from a great height in the wilds.	在荒野中从高处跳下身亡。	h
-loud noises made it impossible to sleep	在嘈杂的声音使其无法入睡	wi
+loud noises made it impossible to sleep	嘈杂的声音使其无法入睡	wi
 lured {a} to a meeting with {a} at {p}.	在{p1}诱使{a1}与{a2}会面。	ht
 lured {a} to a meeting with {a} in {p}.	在{p1}诱使{a1}与{a2}会面。	ht
 made a copy of the original {b} at {p}.	在{p1}抄写了《{b1}》的原本。	ht
@@ -55928,6 +55928,7 @@ masterful trading of {s} in the wilds.	在荒野中，{s1}的精湛交易。	htE
 masterfully wrote to a {i} during {e}.	在{e1}期间以精湛笔法在{i1}上写下了文字。	ht
 masterfully wrote to a {i} within {p}.	在{p1}以精湛笔法在{i1}上写下了文字。	ht
 no longer imprisoned {a} in the wilds.	在荒野中不再囚禁{a1}。	ht
+nobody could be punished for a failure	无人能因这次失败受到惩罚	wi
 offered revenge upon {a} in the wilds.	在荒野中许诺帮忙报复{a1}。	ht
 performed horrible experiments at {p}.	在{p1}进行了可怕的实验。	ht
 performed horrible experiments in {p}.	在{p1}进行了可怕的实验。	ht
@@ -62195,7 +62196,6 @@ as a symbol of authority within {p}	作为{p1}内部权威的象征	ht
 as the latter prefers to work alone	因为后者更喜欢独自工作	h
 assumed the identity {n} during {e}	在{e1}期间冒用了{n1}的身份	ht
 assumed the identity {n} within {p}	在{p1}冒用了{n1}的身份	ht
-at being separated from a loved one	与挚爱分离	wi
 attaining sufficient skill with {s}	在{s1}方面达到足够的技艺水平	ht
 attempted to corrupt {a} during {e}	在{e1}期间试图拉拢{a1}	ht
 attempted to corrupt {a} within {p}	在{p1}试图拉拢{a1}	ht
@@ -64538,8 +64538,6 @@ and {n}'s property was confiscated	，{n1}的财产被没收	ht
 as the target was no longer in {p}	因为目标已不在{p1}	ht
 assumed the identity "{p}" at {p}.	在{p2}化名为“{p1}”。	ht
 assumed the identity "{p}" in {p}.	在{p2}化名为“{p1}”。	ht
-at being out in the sunshine again	再次沐浴在阳光下	wi
-at being separated from loved ones	与挚爱们分离	wi
 attempted to frame {n} during {e}.	在{e1}期间试图诬陷{n1}。	ht
 attempted to frame {n} within {p}.	在{p1}试图诬陷{n1}。	ht
 became a member of {p} during {e}.	在{e1}期间加入了{p1}。	ht
@@ -66917,7 +66915,7 @@ masterfully wrote {b} within {p}.	在{p1}以精湛笔法写下了《{b1}》。	h
 mortally wounded {a} in the wilds	在荒野中使{a1}受了致命伤	ht
 moved to study in {p} during {e}.	在{e1}期间搬到{p1}求学。	ht
 moved to study in {p} within {p}.	在{p2}搬到{p1}求学。	ht
-not learning anything for so long	在长时间没有学到任何东西后	wi
+not learning anything for so long	长时间没有学到任何东西	wi
 offered immortality in the wilds.	在荒野中许诺赐予永生。	h
 placed {a} in power in the wilds.	在荒野中扶植{a1}掌权。	ht
 played for sympathy in the wilds.	在荒野中试图博取同情。	h
@@ -68983,6 +68981,7 @@ began wandering the wilds in {p}	在{p1}开始在荒野中游荡	ht
 began wandering {p} in the wilds	在荒野中开始在{p1}游荡	ht
 began worshipping {n} during {e}	在{e1}期间开始崇拜{n1}	ht
 began worshipping {n} within {p}	在{p1}开始崇拜{n1}	ht
+being separated from a loved one	与挚爱分离	wi
 being unaffected by the comments	没把这番话放在心上	h
 blundered terribly in the wilds.	在荒野中犯下了严重失误。	h
 bringing somebody to rest in bed	将某人带到床上休息	wi
@@ -71272,6 +71271,7 @@ began wandering {p} within {p}.	在{p2}开始在{p1}游荡。	ht
 being out in the sunshine again	再次沐浴阳光	wi
 being released from confinement	从监禁中获释	wi
 being reunited with a loved one	与挚爱重逢	wi
+being separated from loved ones	与挚爱们分离	wi
 blundered terribly in the wilds	在荒野中犯下了严重失误	h
 broke even gambling during {e}.	在{e1}期间赌博不输不赢。	ht
 broke even gambling within {p}.	在{p1}赌博不输不赢。	ht
@@ -76267,7 +76267,7 @@ died in the dark in the wilds	在荒野中死在了黑暗中	h
 died in the heat in the wilds	在荒野中热死了	h
 died of old age in the wilds.	在荒野中寿终正寝。	h
 discourse on the value of art	关于艺术价值的论述	h
-drinking water without a well	没有水井的情况下喝水	wi
+drinking water without a well	在没有水井的情况下喝水	wi
 drowned oneself in the wilds.	在荒野中投水自尽。	h
 due to a lack of performances	由于缺少表演	h
 elephant-head amaranth leaves	象头苋叶	wi
@@ -78546,7 +78546,6 @@ as a former mercenary of {p}	以{p1}前佣兵的身份	ht
 as {n} prefers to work alone	因为{n1}更喜欢独自工作	ht
 asked about {p} in the wilds	在荒野中询问了关于{p1}的事情	ht
 assumed control in the wilds	在荒野中掌握了统治权	h
-at the lack of dining tables	没有餐桌可用	wi
 became a former slave of {p}	不再是{p1}的奴隶	ht
 became the pet of {n} at {p}	在{p1}成为了{n1}的宠物	ht
 became the pet of {n} in {p}	在{p1}成为了{n1}的宠物	ht
@@ -84657,6 +84656,7 @@ Select or create a route.	选择或创建一条路线。	hP
 Set tree chopping orders.	设置树木砍伐命令。	hj
 Set tree chopping orders.	设定树木砍伐命令.	w
 Show rectangle dimensions	显示矩形尺寸	w
+Show tunnels on world map	在世界地图上显示隧道	hP
 Show tunnels on world map	在世界地图上显示隧道	w
 Skill name: Crutch-walker	拄拐行走	li
 Skill rating: High Master	宗师	li
@@ -85126,7 +85126,7 @@ beheaded {a} in the wilds	在荒野中将{a1}斩首了	ht
 being a member for a year	入会满一年	h
 being granted citizenship	获准成为公民	wi
 being near to a in a cage	靠近笼中的生物	wi
-being near to a waterfall	靠近瀑布后	wi
+being near to a waterfall	靠近瀑布	wi
 being unnaturally ageless	由于以超自然方式长生不老	h
 being unnaturally ageless	以超自然方式永葆青春	wi
 bled to death during {e}.	在{e1}期间失血而死。	ht
@@ -86832,7 +86832,7 @@ a procession within {p}.	在{p1}，游行。	htEi
 a recital of {b} at {p}.	在{p1}，《{b1}》的朗诵。	htEi
 a recital of {b} in {d}.	{d1}年的《{b1}》的朗诵。	htEi
 a recital of {b} in {p}.	在{p1}，《{b1}》的朗诵。	htEi
-a satisfying acquisition	在拿到满意的东西	wi
+a satisfying acquisition	拿到满意的东西	wi
 a symbol for nothingness	表示零的符号	h
 a wrestling competition.	摔跤比赛。	hEi
 a {i} race in the wilds.	在荒野中，{i1}竞速比赛。	htEi
@@ -88447,6 +88447,7 @@ Do not automate kitchen	厨房不自动加工	wi
 Do not automate smelter	熔炉不自动加工	wi
 Do not automate tannery	制革工坊不自动加工	wi
 Eat or drink this item.	食用或饮用此物品。	hj
+Embark finder: Platinum	铂	w
 Emotionally overloaded!	情绪不堪重负！	hP
 Engrave artwork into a 	将艺术作品雕刻在平滑的墙面上。	w
 Enraged at all enemies!	对所有敌人怒不可遏！	hP
@@ -89220,7 +89221,6 @@ drowned oneself at {p}.	在{p1}投水自尽。	ht
 drowned oneself in {p}.	在{p1}投水自尽。	ht
 drowned {a} during {e}.	在{e1}期间溺死了{a1}。	ht
 drowned {a} within {p}.	在{p1}溺死了{a1}。	ht
-during long patrol duty	长时间巡逻期间	wi
 edible food here.  Raw 	未加工的生鱼不会被食用。	w
 elephant-head amaranths	象头苋	wi
 entirely outwitted {a}.	以计谋彻底挫败了{a1}。	ht
@@ -92617,6 +92617,9 @@ Do We Understand {b}?	我们理解{b}吗？	hbti
 Do not install colony	不要安装蜂巢	wli
 Dwarvemon Entity Type	Dwarvemon 实体类型	w
 Eat or drink an item.	食用或饮用一件物品。	hj
+Embark finder: Copper	铜	w
+Embark finder: Nickel	镍	w
+Embark finder: Silver	银	w
 Enable artifact moods	启用奇异心境	w
 Enable multithreading	启用多线程	w
 Engrave memorial slab	雕刻纪念石板	wi
@@ -93168,7 +93171,6 @@ arose from {p} at {p}	在{p2}从{p1}出现了	ht
 arose from {p} in {p}	在{p2}从{p1}出现了	ht
 as a matter of course	顺理成章	h
 as a means of torture	以此施加酷刑	h
-at the lack of chairs	没有椅子可用	wi
 attack on {a} at {p}.	在{p1}，对{a1}的攻击。	htEi
 attack on {a} in {d}.	{d1}年的对{a1}的攻击。	htEi
 attack on {a} in {p}.	在{p1}，对{a1}的攻击。	htEi
@@ -94908,17 +94910,6 @@ Elevation X-Variance	海拔 X 轴差异
 Elevation Y-Variance	海拔 Y 轴差异
 Elven forest retreat	精灵森林聚落	wi
 Embark finder: Begin	开始	w
-Embark finder: Clay	黏土	w
-Embark finder: Sand	沙	w
-Embark finder: Iron	铁	w
-Embark finder: Gold	金	w
-Embark finder: Silver	银	w
-Embark finder: Copper	铜	w
-Embark finder: Nickel	镍	w
-Embark finder: Zinc	锌	w
-Embark finder: Platinum	铂	w
-Embark finder: Tin	锡	w
-Embark finder: Lead	铅	w
 Exotic Clothing Shop	异域服装店	wi
 Famous loyal soldier	名声显赫的忠诚军人	w
 Feared as a murderer	令人恐惧的屠夫	w
@@ -97782,7 +97773,13 @@ Drainage Y-Variance	排水度 Y 轴差异
 Duel of {a} and {a}	{a1}与{a2}的决斗	htEi
 Eighth eldest child	第八个孩子	w
 Elevation Mesh Size	海拔网格尺寸
+Embark finder: Clay	黏土	w
+Embark finder: Gold	金	w
+Embark finder: Iron	铁	w
+Embark finder: Lead	铅	w
+Embark finder: Sand	沙	w
 Embark finder: Stop	停止	w
+Embark finder: Zinc	锌	w
 Emotional obsessive	感情执着	w
 Emotionally distant	感情淡漠	w
 Engraving blueprint	雕刻蓝图	wo
@@ -101153,6 +101150,7 @@ Does the expelling	负责执行驱逐	hP
 Dormitory created.	公共宿舍已创建。	hP
 Drainage Mesh Size	排水度网格尺寸
 Elite Marksdwarves	精英矮人弩手	wi
+Embark finder: Tin	锡	w
 Empty animal traps	空动物陷阱	wi
 Enable temperature	启用温度	w
 Endgame event {d}B	终局事件 {d}B	wt
@@ -101907,7 +101905,6 @@ drowned within {p}	在{p1}溺水而死	ht
 drowned {a} at {p}	在{p1}溺死了{a1}	ht
 drowned {a} in {p}	在{p1}溺死了{a1}	ht
 dubious worshipper	心存疑虑的信徒	wi
-due to inebriation	因为醉酒	wi
 due to persecution	由于受到迫害	h
 dunkleosteus woman	邓氏鱼人	wi
 dunkleosteus women	邓氏鱼人	wi
@@ -105232,7 +105229,6 @@ Set high and low 	设置高、低优先级通行区域。	w
 Severe blood loss	严重失血	w
 She tries to keep	她会努力保持
 Show cliffs/grade	显示峭壁/坡度
-cliffs/grade	峭壁/坡度	wi
 Show overlay help	显示帮助悬浮层	w
 Showing important	显示重要记录	wl
 Showing type,date	显示类型及日期	wl
@@ -111254,7 +111250,7 @@ joined with {p}.	与{p1}联合了。	ht
 kelenken leather	窃鹤皮革
 kentrosaurus man	钉状龙人	wi
 kentrosaurus men	钉状龙人	wi
-killing somebody	杀死某人时	wi
+killing somebody	杀死某人	wi
 king cobra venom	眼镜王蛇毒素	wi
 king cobra woman	眼镜王蛇人	wi
 king cobra women	眼镜王蛇人	wi
@@ -128827,6 +128823,7 @@ clean-shaven	剃得干净	wi
 clear garnet	透明榴石	wi
 clear zircon	透明锆石	wi
 clear-voiced	嗓音清亮	wi
+cliffs/grade	峭壁/坡度	wi
 cloudberries	云莓	wi
 coffee beans	咖啡豆	wi
 coffee trees	咖啡树	wi
@@ -135345,7 +135342,6 @@ hyena women	鬣狗人	wi
 icosahedral	二十面的	wi
 icosahedron	二十面体	wi
 impala fawn	高角羚幼崽	wi
-in conflict	处于冲突	wi
 inebriation	醉酒	wi
 inspiration	灵感	r
 is forceful	有力	hv
@@ -139871,7 +139867,7 @@ agitated 	躁动的	wi
 alabaster	雪花石膏	wi
 albatross	信天翁	wi
 alder log	桤树原木	wi
-alienated	被疏离	wi
+alienated	疏离	wi
 alligator	短吻鳄	wi
 almandine	殷榴石	wi
 aloofness	冷漠	wi
@@ -141965,7 +141961,7 @@ ammonite	菊石	wi
 anaconda	水蟒	wi
 andesite	安山岩	wi
 animated	复活了	h
-anything	任何感觉	wi
+anything	没什么感觉	wi
 apricots	杏	wi
 aquarium	水族缸	wi
 archelon	古巨龟	wi
@@ -142042,6 +142038,7 @@ clucking	咯	wi
 cob swan	天鹅	wi
 coconuts	椰子	wi
 commerce	商业	wi
+conflict	身处冲突	wi
 confused	困惑	w
 costumes	服装	h
 cow calf	奶牛幼崽	wi
@@ -144323,9 +144320,7 @@ dreams	梦境	r
 drinks	饮料	wi
 drowsy	昏昏欲睡	wi
 druids	德鲁伊	wi
-due to	受某种症状影响	wi
 durian	榴梿	wi
-during	某事件期间	wi
 eagles	鹰	wi
 eaglet	鹰幼崽	wi
 eating	进食	wi
@@ -146301,7 +146296,6 @@ Shis	希斯	wi
 Shop	商店	wi
 Shos	肖斯	wi
 Show	显示	hP
-Show tunnels on world map	在世界地图上显示隧道	hP
 Shuk	舒克	wi
 Sing	歌唱	hP
 Site	地点
