@@ -699,21 +699,76 @@ void Overlay::layout_fortress_building_status(SDL_Renderer *renderer) {
     }
 }
 
-// Farm season tabs centre within their own skins. The footer's two checkbox
-// captions and soil hint keep three independent columns and native rows; the
-// generic prose pass would otherwise concatenate all three columns and move
-// the amount into the first row. Own each complete dictionary field before
-// that pass, without moving the checkboxes or enlarging source suppression.
+// Farm choices share a caption inset inside their picture/checkbox rows.
+// The footer keeps three independent columns, but its English continuation
+// draws form complete translated labels. Source spans still own suppression;
+// only the Chinese display is composed inside the current native allocation.
 void Overlay::layout_fortress_farm_plot(SDL_Renderer *renderer) {
     if (!gps_ || !face_ || !renderer ||
         gps_->tile_pixel_x <= 0 || gps_->tile_pixel_y <= 0) return;
     const NativePanelBorders borders(*gps_);
+    const auto current_field = [&](const Match &match) {
+        if (match.target.empty() || match.native_split_duplicate || match.legends_flow ||
+            match.x < 0 || match.x >= gps_->dimx || match.y < 0 || match.y >= gps_->dimy ||
+            match.length <= 0 || match.length > gps_->dimx - match.x ||
+            match.source.size() != static_cast<size_t>(match.length)) return false;
+        const bool fold = match.rule >= 0 && static_cast<size_t>(match.rule) < rules_.size() &&
+            rules_[static_cast<size_t>(match.rule)].case_insensitive;
+        std::string visible;
+        for (int x = match.x; x < match.x + match.length; ++x)
+            visible.push_back(visible_char_at(x, match.y));
+        return template_literal_at(visible, 0, match.source, fold);
+    };
+    std::set<std::pair<int, int>> crop_rows;
+    for (Match &caption : prepared_matches_) {
+        if (!current_field(caption)) continue;
+        const auto box = native_picture_caption_rect(*gps_, caption.x, caption.y,
+            false, nullptr, false, nullptr, false, false, -1, false, true);
+        if (!box ||
+            (!native_main_button_at(*gps_, box->x + box->w, caption.y,
+                INTERFACE_BUTTON_MAIN_FARM_ACTIVE_OPTION) &&
+             !native_main_button_at(*gps_, box->x + box->w, caption.y,
+                INTERFACE_BUTTON_MAIN_FARM_INACTIVE_OPTION)) ||
+            !crop_rows.emplace(box->x, caption.y).second) continue;
+        const int right = box->x + box->w;
+        int left = box->x, end = right;
+        const auto blank = [&](int x) {
+            const auto ch = visible_char_at(x, caption.y);
+            return ch == 0 || ch == ' ';
+        };
+        while (left < end && blank(left)) ++left;
+        while (end > left && blank(end - 1)) --end;
+        std::vector<Match *> parts;
+        for (Match &part : prepared_matches_)
+            if (part.y == caption.y && part.x >= box->x &&
+                part.x + part.length <= right && current_field(part))
+                parts.push_back(&part);
+        std::sort(parts.begin(), parts.end(), [](const Match *a, const Match *b) {
+            return a->x < b->x;
+        });
+        int cursor = left;
+        bool complete = !parts.empty();
+        for (const Match *part : parts) {
+            const auto text = trim_view(part->source);
+            const int first = part->x + static_cast<int>(text.data() - part->source.data());
+            while (cursor < first && blank(cursor)) ++cursor;
+            if (text.empty() || first != cursor) { complete = false; break; }
+            cursor = first + static_cast<int>(text.size());
+        }
+        if (!complete || cursor != end) continue;
+        // The native crop writer uses the same inset for every option.
+        // Include dictionary and composed plant matches alike, rather than
+        // leaving a partially recognized generic build field at its old X.
+        for (Match *part : parts) part->native_picture_caption_box = box;
+        layout_fortress_text_rows(renderer, {parts}, left, right);
+    }
     static constexpr std::string_view fields[] = {
         "Not set to fertilize", "Set to fertilize",
         "Current amount: {d}/{d}",
         "Fertilize", "every season", "Fertilize every season",
         "Poor soil", "(Cavern soil", "is best)", "(Cavern soil is best)",
     };
+    std::vector<Match *> footer;
     for (Match &match : prepared_matches_) {
         if (match.rule < 0 || static_cast<size_t>(match.rule) >= rules_.size() ||
             match.target.empty() || match.native_split_duplicate || match.legends_flow ||
@@ -749,6 +804,7 @@ void Overlay::layout_fortress_farm_plot(SDL_Renderer *renderer) {
             continue;
         }
 
+        footer.push_back(&match);
         if (!match.native_split_text) {
             match.layout_y = match.y;
             match.layout_pixel_y = 0;
@@ -771,6 +827,87 @@ void Overlay::layout_fortress_farm_plot(SDL_Renderer *renderer) {
             match.layout_lock_font_pixels = true;
             match.layout_visual_height_pixels = 0;
             match.layout_line_height_pixels = gps_->tile_pixel_y;
+        }
+    }
+
+    const auto continuation = [&](const Match &head, std::string_view source) -> Match * {
+        for (Match *part : footer)
+            if (part->x == head.x && part->y == head.y + 1 &&
+                rules_[static_cast<size_t>(part->rule)].source == source)
+                return part;
+        return nullptr;
+    };
+    const auto fits = [&](std::string_view target, int left, int right) {
+        const int width = (right - left) * gps_->tile_pixel_x - 2 * config_.horizontal_padding;
+        if (width <= 0) return false;
+        const auto *glyph = get_glyph_texture(renderer, std::string(target), width,
+            gps_->tile_pixel_y, unified_font_pixels(), 0, true);
+        return glyph && glyph->texture && glyph->width <= width;
+    };
+    for (Match *head : footer) {
+        const auto &source = rules_[static_cast<size_t>(head->rule)].source;
+        if (source == "Fertilize") {
+            Match *tail = continuation(*head, "every season");
+            const auto target = exact_literal_translation("Fertilize every season");
+            if (!tail || !target || !fits(*target, head->x, head->layout_clip_right)) continue;
+            head->target = *target;
+            head->layout_glyph_foreground_rgb.clear();
+            tail->target.clear();
+            layout_fortress_text_rows(renderer, {{head}}, head->x, head->layout_clip_right);
+        } else if (source == "(Cavern soil") {
+            Match *tail = continuation(*head, "is best)");
+            const auto target = exact_literal_translation("(Cavern soil is best)");
+            if (!tail || !target) continue;
+            Match *soil = nullptr;
+            for (Match *part : footer)
+                if (part->x == head->x && part->y + 1 == head->y &&
+                    rules_[static_cast<size_t>(part->rule)].source == "Poor soil") soil = part;
+            std::vector<Match> native_rows{*head, *tail};
+            if (soil) native_rows.insert(native_rows.begin(), *soil);
+            for (Match &row : native_rows) {
+                row.layout_native_clip.reset();
+                row.layout_clip_right = -1;
+            }
+            // Combine the actual source writers before moving display rows;
+            // an individual addst clip would otherwise hide the moved title.
+            SDL_Rect viewport = native_paragraph_draw_region(native_rows);
+            const int tile_w = gps_->tile_pixel_x, tile_h = gps_->tile_pixel_y;
+            const int origin_x = (gps_->screen_pixel_x - gps_->dimx * tile_w) / 2;
+            const int origin_y = (gps_->screen_pixel_y - gps_->dimy * tile_h) / 2;
+            const int right = std::min(gps_->dimx, (viewport.x + viewport.w - origin_x) / tile_w);
+            if (!fits(*target, head->x, right)) continue;
+            const int top = soil ? soil->y : head->y;
+            const SDL_Rect column{origin_x + head->x * tile_w, origin_y + top * tile_h,
+                (right - head->x) * tile_w, (tail->y + 1 - top) * tile_h};
+            SDL_Rect clipped{};
+            if (!SDL_IntersectRect(&viewport, &column, &clipped)) continue;
+            viewport = clipped;
+            head->target = *target;
+            head->layout_glyph_foreground_rgb.clear();
+            tail->target.clear();
+            bool title_only = soil != nullptr;
+            // A partially poor plot can append a native percentage. Keep
+            // that complete title row in place until all of it can move.
+            for (int x = soil ? soil->x + soil->length : right; x < right; ++x) {
+                const auto ch = visible_char_at(x, soil->y);
+                if (ch && ch != ' ') { title_only = false; break; }
+            }
+            std::vector<std::vector<Match *>> display{{head}};
+            if (title_only) {
+                soil->layout_y = head->y;
+                soil->layout_pixel_y = 0;
+                soil->layout_fixed_baseline = true;
+                head->layout_y = tail->y;
+                head->layout_pixel_y = 0;
+                head->layout_fixed_baseline = true;
+                display.insert(display.begin(), {soil});
+            }
+            layout_fortress_text_rows(renderer, display, head->x, right);
+            for (const auto &row : display)
+                for (Match *part : row) {
+                    part->layout_reflowed_paragraph = true;
+                    part->layout_native_clip = viewport;
+                }
         }
     }
 }

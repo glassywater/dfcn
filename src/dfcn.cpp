@@ -41915,10 +41915,12 @@ std::shared_ptr<NativeTooltipPage> Overlay::prepare_frame_layout(SDL_Renderer *r
         layout_fortress_build_materials(renderer);
         layout_fortress_building_status(renderer);
         layout_fortress_depot(renderer);
-        layout_fortress_farm_plot(renderer);
         layout_fortress_economy(renderer);
         layout_fortress_stocks(renderer);
         layout_fortress_item_captions(renderer);
+        // Crop names can also enter through the typed item-caption reader.
+        // Their farm row owns the final inset after both generic passes.
+        layout_fortress_farm_plot(renderer);
         layout_fortress_ammunition_choices(renderer);
         layout_adventure_compass(renderer);
         layout_fortress_sort_captions();
