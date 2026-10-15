@@ -747,92 +747,82 @@ void Overlay::append_fortress_zone_types(std::vector<std::string> &rows,
     }
 }
 
-// Multi/Paint are zone-drawing modes. Resolve them before generic dictionary
-// and proper-name matching, using their shared frame and complete button skins.
-// Both the ordinary paint dialog and the multiple-rectangle dialog use them.
+// The two zone-drawing branches issue these fixed captions through addst.
+// Bind their native callers before dictionary/name matching: enabled and
+// disabled controls have different skins, but retain the same semantic role.
 void Overlay::append_fortress_zone_drawing_matches(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y) const {
     if (!gps_ || rows.size() != static_cast<size_t>(gps_->dimy)) return;
-    auto context = rows;
-    // Discover the same current visible controls in every pass, independently
-    // of consumed rows; only exact button bytes are projected back to rows.
-    for (int y = 0; y < gps_->dimy; ++y)
-        for (int x = 0; x < gps_->dimx; ++x) {
-            const auto ch = visible_char_at(x, y);
-            context[y][x] = ch ? static_cast<char>(ch) : ' ';
-        }
-    const NativePanelBorders borders(*gps_);
-    std::vector<SDL_Rect> panels;
-    for (int y = 0; y < gps_->dimy; ++y) {
-        if (context[y].find("Multi") == std::string::npos &&
-                context[y].find("Paint") == std::string::npos) continue;
-        // The native modes share a column even when the instruction wraps,
-        // changes after creating rooms, or is already owned by a prose reader.
-        // Locate their panel through a complete control, not a prompt fragment.
-        for (const auto &field : split_text_fields(context[y])) {
-            if ((field.text != "Multi" && field.text != "Paint") ||
-                    !native_button_text_rect(*gps_, field.start, field.end, y)) continue;
-            const auto panel = native_panel_interior(borders, *gps_,
-                field.start, field.end, y);
-            if (!panel || std::any_of(panels.begin(), panels.end(),
-                    [&](const SDL_Rect &other) {
-                        return other.x == panel->x && other.y == panel->y &&
-                            other.w == panel->w && other.h == panel->h;
-                    })) continue;
-            panels.push_back(*panel);
-        }
-    }
-    for (const SDL_Rect &panel : panels) {
-        struct Caption { int x, y; std::string source; SDL_Rect button; };
-        std::vector<Caption> captions;
-        for (int y = panel.y; y < panel.y + panel.h; ++y) {
-            for (const auto &field : split_text_fields(context[y])) {
-                if ((field.text != "Multi" && field.text != "Paint") ||
-                    field.start < panel.x || field.end > panel.x + panel.w) continue;
-                auto button = native_button_text_rect(*gps_, field.start, field.end, y);
-                if (!button) {
-                    if (const auto span = native_button_text_span(*gps_,
-                            field.start, field.end, y))
-                        button = SDL_Rect{span->first, y, span->second - span->first, 1};
-                }
-                if (!button || button->x < panel.x ||
-                    button->x + button->w > panel.x + panel.w ||
-                    button->y < panel.y || button->y + button->h > panel.y + panel.h) continue;
-                // The entire native button caption must be this mode name;
-                // a longer phrase containing either word is a different UI.
-                bool complete = true;
-                for (int x = button->x; x < button->x + button->w; ++x)
-                    if ((x < field.start || x >= field.end) && context[y][x] != ' ')
-                        complete = false;
-                if (!complete) continue;
-                captions.push_back({field.start, y, field.text, *button});
-            }
-        }
-        for (const Caption &caption : captions) {
-            // Native zone drawing puts Multi above Paint with identical left
-            // and right edges. Both complete controls establish the mode;
-            // Cancel can become Done or be absent after creating rooms.
-            const bool paired = std::any_of(captions.begin(), captions.end(),
-                [&](const Caption &other) {
-                    return caption.source != other.source &&
-                        caption.button.x == other.button.x &&
-                        caption.button.w == other.button.w &&
-                        (caption.source == "Multi" ? caption.y < other.y : other.y < caption.y);
-                });
-            if (!paired) continue;
-            const int length = static_cast<int>(caption.source.size());
-            if ((only_y >= 0 && only_y != caption.y) ||
-                rows[caption.y].compare(caption.x, length, caption.source) != 0) continue;
-            const auto target = exact_literal_translation("Zone drawing: " + caption.source);
+    const uintptr_t base = native_history_profile_base();
+    if (!base) return;
+#ifdef _WIN32
+    const uintptr_t multi_returns[]{native_reference_address(base, 0x3ecdb2),
+        native_reference_address(base, 0x3edac3)};
+    const uintptr_t paint_returns[]{native_reference_address(base, 0x3ece8d),
+        native_reference_address(base, 0x3edbac)};
+#else
+    const uintptr_t multi_returns[]{native_reference_address(base, 0x129bd5d),
+        native_reference_address(base, 0x129e5ae)};
+    const uintptr_t paint_returns[]{native_reference_address(base, 0x129be20),
+        native_reference_address(base, 0x129e67d)};
+#endif
+    const auto owns = [&](const NativeDrawnTextRow &draw) {
+        if (!draw.native_caller) return false;
+        const auto caller_is = [&](uintptr_t caller) {
+            return draw.native_caller == caller;
+        };
+        return (draw.source == "Multi" &&
+                std::any_of(std::begin(multi_returns), std::end(multi_returns), caller_is)) ||
+            (draw.source == "Paint" &&
+                std::any_of(std::begin(paint_returns), std::end(paint_returns), caller_is));
+    };
+    constexpr uint32_t upper = 1u << 3, lower = 1u << 4;
+    for (const bool top_layer : {false, true}) {
+        const auto draws = captured_native_drawn_text_snapshot(top_layer);
+        for (const auto &draw : *draws) {
+            if (!owns(draw) || draw.editable_text ||
+                    draw.draw_dimx != gps_->dimx || draw.draw_dimy != gps_->dimy ||
+                    draw.x < 1 || draw.x > gps_->dimx - 7 ||
+                    draw.y < 0 || draw.y >= gps_->dimy) continue;
+            const auto target = exact_literal_translation("Zone drawing: " + draw.source);
             if (!target || target->empty()) continue;
-            Match match{caption.x, caption.y, length, kFortressZoneDrawingRule,
-                *target, caption.source};
-            match.layout_x = caption.button.x;
-            match.layout_y = caption.y;
-            match.layout_length = caption.button.w;
-            match.layout_clip_right = caption.button.x + caption.button.w;
-            matches.push_back(std::move(match));
-            std::fill_n(rows[caption.y].begin() + caption.x, length, ' ');
+            const auto *flags = draw.top_layer ? gps_->screentexpos_top_flag : gps_->screentexpos_flag;
+            const int length = static_cast<int>(draw.source.size());
+            const auto claim = [&](int y, bool mirror) {
+                if (y < 0 || y >= gps_->dimy || (only_y >= 0 && only_y != y) ||
+                        rows[y].compare(draw.x, length, draw.source) != 0) return;
+                for (int offset = 0; offset < length; ++offset) {
+                    const int x = draw.x + offset;
+                    const size_t at = static_cast<size_t>(x) * gps_->dimy + y;
+                    const auto origin = native_text_grid_origin(*gps_, at,
+                        native_ui_top_layer_at(*gps_, at));
+                    if (origin.grid != draw.draw_grid || origin.top_layer != draw.top_layer ||
+                            visible_char_at(x, y) != static_cast<unsigned char>(draw.source[offset]))
+                        return;
+                    if (mirror) {
+                        const size_t original = static_cast<size_t>(x) * gps_->dimy + draw.y;
+                        if (!flags ||
+                                (flags[original] & (upper | lower)) != (y > draw.y ? upper : lower) ||
+                                (flags[at] & (upper | lower)) != (y > draw.y ? lower : upper)) return;
+                    }
+                }
+                Match match{draw.x, y, length, kFortressZoneDrawingRule, *target, draw.source};
+                // Both native branches draw a ten-column frame and start
+                // addst at left+2. The eight interior columns own centring.
+                match.layout_x = draw.x - 1;
+                match.layout_y = y;
+                match.layout_length = 8;
+                match.layout_clip_right = draw.x + 7;
+                matches.push_back(std::move(match));
+                std::fill_n(rows[y].begin() + draw.x, length, ' ');
+            };
+            claim(draw.y, false);
+            if (flags) {
+                const size_t at = static_cast<size_t>(draw.x) * gps_->dimy + draw.y;
+                const uint32_t half = flags[at] & (upper | lower);
+                if (half == upper) claim(draw.y + 1, true);
+                else if (half == lower) claim(draw.y - 1, true);
+            }
         }
     }
 }

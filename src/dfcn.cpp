@@ -17895,6 +17895,9 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     if (!announcement_panel_only) {
         append_fortress_site_name(screen_rows, result, only_y,
             screen_override != nullptr);
+        // Zone drawing can retain the ordinary map HUD state. Its fixed
+        // addst callers own these controls independently of that page gate.
+        append_fortress_zone_drawing_matches(screen_rows, result, only_y);
         if (!local_fortress_hud) {
             append_fortress_petition_site_names(screen_rows, result, only_y,
                 screen_override != nullptr);
@@ -17908,7 +17911,6 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                 screen_override != nullptr);
             append_fortress_zone_types(screen_rows, result, only_y,
                 screen_override != nullptr);
-            append_fortress_zone_drawing_matches(screen_rows, result, only_y);
             append_fortress_zone_holder_matches(screen_rows, result, only_y);
         }
     }
