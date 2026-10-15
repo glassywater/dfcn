@@ -984,6 +984,76 @@ void Overlay::layout_fortress_creatures(SDL_Renderer *renderer) {
             if (header.source == "Prof") profession = &header;
         }
         if (category && profession && category->x + category->length < profession->x) {
+            const auto settings = native_ui_settings();
+            const int header_y = display_y(name);
+            const auto sorts = settings
+                ? native_sort_columns(*gps_, header_y, *settings) : std::vector<int>{};
+            if (sorts.size() >= 3 && name.x == sorts[0] + 5 &&
+                    category->x == sorts[1] + 5 && profession->x == sorts[2] + 5) {
+                const int left = sorts[0];
+                // Animal assignment rows end in a selection box rather than
+                // Recenter/Inspect or a worker-policy button. A long native
+                // identity can use the lower row and cross the stress icon,
+                // so its caption skin and English span cannot own placement.
+                // The current portrait and complete selection control still
+                // prove the same three-row record and its name origin.
+                for (int middle = header_y + 2; middle + 1 < gps_->dimy; ++middle) {
+                    bool portrait = false;
+                    for (int x = std::max(0, left - 6); x < left; ++x) {
+                        const int right = native_picture_box_right(*gps_, x, middle);
+                        if (right == left || right == left - 1) { portrait = true; break; }
+                    }
+                    if (!portrait) continue;
+                    int selection = -1;
+                    for (int x = left; x + 4 <= gps_->dimx; ++x)
+                        if (native_selection_box_at(*gps_, x, middle - 1, settings->classic)) {
+                            selection = x;
+                            break;
+                        }
+                    if (selection <= left) continue;
+                    int right = selection;
+                    for (int x = left; x < right; ++x)
+                        for (int row = middle - 1; row <= middle + 1; ++row)
+                            if (native_foreground_picture_at(*gps_, x, row)) {
+                                right = x;
+                                break;
+                            }
+                    if (right <= left) continue;
+                    std::vector<Match *> identities;
+                    for (Match &part : prepared_matches_) {
+                        if ((part.rule != kCreatureNameRule && !part.native_fortress_creature_field) ||
+                                part.target.empty() || part.native_split_duplicate ||
+                                part.legends_flow || part.x != left || part.y < middle - 1 ||
+                                part.y > middle + 1 || part.length <= 0 ||
+                                part.length > selection - left ||
+                                part.source.size() != static_cast<size_t>(part.length)) continue;
+                        bool current = true;
+                        for (int offset = 0; offset < part.length; ++offset) {
+                            const auto ch = visible_char_at(left + offset, part.y);
+                            if ((ch ? ch : ' ') != static_cast<unsigned char>(part.source[offset])) {
+                                current = false;
+                                break;
+                            }
+                        }
+                        if (current) identities.push_back(&part);
+                    }
+                    std::sort(identities.begin(), identities.end(),
+                        [](const Match *a, const Match *b) { return a->y < b->y; });
+                    for (size_t i = 0; i < identities.size(); ++i) {
+                        Match &part = *identities[i];
+                        part.native_fortress_creature_field = std::pair{left, right};
+                        part.native_picture_caption_box = SDL_Rect{
+                            left, middle - 1, selection - left, 3};
+                        part.layout_y = identities.size() == 2 ? middle - 1 + static_cast<int>(i) : middle;
+                        part.layout_pixel_y = identities.size() == 2 ? gps_->tile_pixel_y / 2 : 0;
+                        part.layout_fixed_baseline = true;
+                        part.layout_reflowed_control = true;
+                        part.layout_right = false;
+                        part.layout_ellipsize = true;
+                        layout_fortress_text_rows(renderer, {{&part}}, left, right);
+                    }
+                }
+            }
             const NativePanelBorders borders(*gps_);
             const auto panel = native_panel_interior(borders, *gps_, name.x,
                 profession->x + profession->length, display_y(name));
