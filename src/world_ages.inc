@@ -87,9 +87,16 @@ std::optional<std::string> Overlay::translate_world_age(std::string_view value,
     };
     const auto apply = [&](std::string_view key, const std::vector<std::string> &fields)
             -> std::optional<std::string> {
-        const auto found = history_semantic_templates_.find(std::string(key));
-        if (found == history_semantic_templates_.end()) return std::nullopt;
-        const auto &rule = rules_[static_cast<size_t>(found->second)];
+        // Era productions are title rules; shared wrappers such as the
+        // numbered-age prefix remain ordinary semantic templates.
+        const std::string source(key);
+        const auto title = history_event_title_templates_.find(source);
+        const auto semantic = history_semantic_templates_.find(source);
+        if (title == history_event_title_templates_.end() &&
+                semantic == history_semantic_templates_.end()) return std::nullopt;
+        const int index = title != history_event_title_templates_.end()
+            ? title->second : semantic->second;
+        const auto &rule = rules_[static_cast<size_t>(index)];
         if (rule.template_kinds.size() != fields.size()) return std::nullopt;
         std::vector<std::optional<std::string>> resolved;
         for (const auto &part : fields) resolved.emplace_back(part);
