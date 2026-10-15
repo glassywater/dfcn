@@ -3448,7 +3448,8 @@ Value of grand guildhall	大行会大厅价值要求
 Guild unit count	行会成员人数要求
 Grand guild unit count	大行会成员人数要求
 Mandate period (more = fewer)	法令间隔（越高越少）
-Demand period (more = fewer)	贵族要求间隔（越高越少）
+# Match the complete caption before the barter button's UI-message literal Demand.
+Demand period (more = fewer)	贵族要求间隔（越高越少）	P
 Citizen/resident dig speed (more = faster)	公民/居民挖掘速度（越高越快）
 Prepare for the journey carefully	仔细准备旅程	l
 Choose your own skills, equipment, and animals.	自行选择技能、装备和动物。	l
