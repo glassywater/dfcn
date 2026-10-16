@@ -111,6 +111,13 @@ try {
         $relative = $file.Substring($projectRoot.Length + 1).Replace('\', '/')
         Add-RuntimeFile $file ('dfcn/' + $relative)
     }
+    # OpenCC loads its text dictionaries at runtime; retain the complete tree,
+    # including the upstream configuration, source attribution and license.
+    $openccRoot = Join-Path $projectRoot 'data\runtime\opencc'
+    foreach ($file in ([IO.Directory]::GetFiles($openccRoot, '*', [IO.SearchOption]::AllDirectories) | Sort-Object)) {
+        $relative = $file.Substring($projectRoot.Length + 1).Replace('\', '/')
+        Add-RuntimeFile $file ('dfcn/' + $relative)
+    }
     # Use the same first bundled-font preference as the runtime, if present.
     foreach ($name in @('font.ttf', 'font.otf', 'font.ttc')) {
         $fontPath = Join-Path $projectRoot ('data\runtime\' + $name)
@@ -136,7 +143,8 @@ try {
         'third_party/dfhack-help.LICENSE', 'third_party/lua-output.LICENSE',
         'third_party/pinyin-data/LICENSE', 'data/runtime/phrase-pinyin-data/LICENSE',
         'data/runtime/english-pronunciation/britfone.LICENSE',
-        'data/runtime/english-pronunciation/MFA-LICENSE.txt'
+        'data/runtime/english-pronunciation/MFA-LICENSE.txt',
+        'third_party/opencc/LICENSE', 'third_party/opencc/SOURCE'
     )) {
         [void]$notices.AppendLine()
         [void]$notices.AppendLine('## ' + $relative)

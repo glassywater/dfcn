@@ -52,6 +52,7 @@ LICENSE_FILES = (
     "third_party/pinyin-data/LICENSE", "data/runtime/phrase-pinyin-data/LICENSE",
     "data/runtime/english-pronunciation/britfone.LICENSE",
     "data/runtime/english-pronunciation/MFA-LICENSE.txt",
+    "third_party/opencc/LICENSE", "third_party/opencc/SOURCE",
 )
 INSTALLATION = """DFCN Linux x64 / Dwarf Fortress 53.16
 
@@ -109,6 +110,9 @@ def package() -> None:
                 archive.write(libraries.get(relative, ROOT / relative), "dfcn/" + relative)
             for source in sorted((ROOT / "data/runtime/rulesets").rglob("*.toml")):
                 archive.write(source, "dfcn/" + source.relative_to(ROOT).as_posix())
+            for source in sorted((ROOT / "data/runtime/opencc").rglob("*")):
+                if source.is_file():
+                    archive.write(source, "dfcn/" + source.relative_to(ROOT).as_posix())
             for name in ("font.ttf", "font.otf", "font.ttc"):
                 source = ROOT / "data/runtime" / name
                 if source.is_file():

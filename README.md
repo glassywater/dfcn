@@ -8,7 +8,7 @@ DFCN 是 **Byayoi 同人社区**的《Dwarf Fortress（矮人要塞）》汉化�
 
 项目在游戏渲染阶段捕获英文文本，通过词表与语法规则生成中文，再进行字形测量、换行和覆盖绘制，不修改游戏 RAW 或存档。提供 Windows 与 Linux 原生适配，当前适配版本为 **53.16**；Windows 支持 Steam 版与官网免费版。
 
-语言由配置中的 BCP 47 标签 `language` 控制：默认 `zh-Hans` 为简体中文，`zh-Hant` 将全部译文通过离线 OpenCC 转为台湾正体及常用词汇，也接受 `zh-CN` / `zh-TW`、`zh-Hans-CN` / `zh-Hant-TW`。自定义小队名称保持原样。配置模板位于 `data/runtime/config.ini`，已安装游戏优先读取游戏根目录的 `dfcn_config.ini`。
+Windows 本版的显示语言由配置中的 BCP 47 标签 `language` 控制：默认 `zh-Hans` 为简体中文，`zh-Hant` 将全部译文通过离线 OpenCC 转为台湾正体及常用词汇，也接受 `zh-CN` / `zh-TW`、`zh-Hans-CN` / `zh-Hant-TW`。自定义小队名称保持原样。配置模板位于 `data/runtime/config.ini`，已安装游戏优先读取游戏根目录的 `dfcn_config.ini`。
 
 **Shift+F8** 在简体与台湾正体之间切换，并刷新字体与译文排版；左右 Shift 均可，长按不重复触发。语言选择在本次运行及核心重载后保留，不改写配置文件，也不改变汉化显示开关。
 
@@ -30,7 +30,7 @@ Windows 与 Linux 共用汉化数据载入优化：TOML 规则图按节点及引
 
 如果位于不同 Steam 库，将第一行改为该 DLL 的实际绝对路径；只写路径，不加引号或 `key=value`，保存为 UTF-8 无 BOM。汉化启动时优先读取游戏根目录的 `dfcn_config.ini`；文件不存在时，从订阅目录的 `DFCN/dfcn/data/runtime/config.ini` 复制生成，已有文件不会覆盖。订阅目录中的 `config.ini` 保留为默认模板，复制失败时作为回退配置。完整路径示例、旧版迁移与卸载方法见 [工坊详细说明](https://steamcommunity.com/sharedfiles/filedetails/?id=3811193379)。
 
-**GitHub Release：**从 [v53.16-20261016](https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261016) 下载 `DFCN-Windows-x64-minimal.zip`，解压后将全部内容按原有目录结构复制到游戏根目录，包括 `dfhooks.dll`、`dfhooks_dfcn.ini` 和整个 `dfcn` 文件夹。汉化设置同样使用游戏根目录的 `dfcn_config.ini`，首次启动时由 `dfcn/data/runtime/config.ini` 复制生成，已有文件不会覆盖；复制失败时读取默认模板。完整变化见 Release 更新日志。
+**GitHub Release：**从 [v53.16-20261016.2](https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261016.2) 下载 `DFCN-Windows-x64-minimal.zip`，解压后将全部内容按原有目录结构复制到游戏根目录，包括 `dfhooks.dll`、`dfhooks_dfcn.ini` 和整个 `dfcn` 文件夹。汉化设置同样使用游戏根目录的 `dfcn_config.ini`，首次启动时由 `dfcn/data/runtime/config.ini` 复制生成，已有文件不会覆盖；复制失败时读取默认模板。完整变化见 Release 更新日志。
 
 Windows 汉化核心与翻译数据按汉化模块所在目录定位，支持将运行文件保留在工坊目录；用户配置统一使用游戏根目录的 `dfcn_config.ini`。游戏中按 **Shift+F10** 开启或关闭汉化，保留当前核心与数据；按 **Shift+F5** 关闭再开启汉化时，重新加载核心与数据。数据仅在启动、**Shift+F5** 重新开启或 **Ctrl+Shift+F10** 显式刷新时加载，不自动检查文件变化。安装仅添加汉化自身文件，不改写磁盘上的游戏本体、RAW 或存档；取消订阅不会删除已复制的入口文件和 `dfcn_config.ini`，卸载时需手动移除自己安装的汉化文件。
 
@@ -44,11 +44,11 @@ Windows 同时安装 **DFHack 53.16-r2** 时，可按 **Shift+F11** 关闭 DFHac
 
 **GitHub Release：**从 [v53.16-20261008-linux](https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261008-linux) 下载 `DFCN-Linux-x64-minimal.zip`，将全部内容按原有目录结构解压到包含 `dwarfort` 的游戏根目录，包括 `libdfhooks.so` 和完整 `dfcn` 文件夹。
 
-Linux 汉化设置位于**游戏根目录**的 `dfcn_config.ini`。汉化启动时若文件不存在，从 `dfcn/data/runtime/config.ini` 复制生成；已有文件不会覆盖，复制失败时读取该默认模板。更新时按原有目录结构解压完整运行包，保留自己修改过的 `dfcn_config.ini`。Linux 包同时提供 Steam 版与官网免费版的地址绑定，依赖系统的 SDL2、FreeType、Fontconfig、libstdc++ 和 glibc；这些系统库及游戏程序不包含在运行包中。系统没有可用中文字体时，需安装系统中文字体，供 Fontconfig 选择。纯汉化数据无需在创建世界时启用，也无需 DFHack。
+上述 Linux 已发布运行包的汉化设置位于**游戏目录**的 `dfcn/data/runtime/config.ini`。更新时按原有目录结构解压完整运行包，可先保留自己修改过的配置。Linux 包同时提供 Steam 版与官网免费版的地址绑定，依赖系统的 SDL2、FreeType、Fontconfig、libstdc++ 和 glibc；这些系统库及游戏程序不包含在运行包中。系统没有可用中文字体时，需安装系统中文字体，供 Fontconfig 选择。纯汉化数据无需在创建世界时启用，也无需 DFHack。
 
-Linux 已发布核心同样使用 **Shift+F10** 切换汉化并保留核心与数据；**Shift+F5** 关闭再开启时重新读取核心与数据；**Ctrl+Shift+F10** 显式刷新数据。卸载时移除自己安装的 `libdfhooks.so`、`dfcn` 汉化目录和生成的 `dfcn_config.ini`；无需删除游戏或存档。
+Linux 已发布核心同样使用 **Shift+F10** 切换汉化并保留核心与数据；**Shift+F5** 关闭再开启时重新读取核心与数据；**Ctrl+Shift+F10** 显式刷新数据。卸载时移除自己安装的 `libdfhooks.so` 和 `dfcn` 汉化目录；无需删除游戏或存档。
 
-Linux 源码已实现 **Shift+F6**，当前 Linux 发布包尚未包含此快捷键及本版 Windows 的后续修复。
+Linux 源码已实现 **Shift+F6**、**Shift+F8** 和游戏根目录 `dfcn_config.ini` 配置，当前 Linux 发布包尚未包含这些功能及本版 Windows 的后续修复。
 
 ## Mod 汉化数据扩展
 
