@@ -206,25 +206,63 @@ void Overlay::append_fortress_noble_rows(std::vector<std::string> &rows,
         append(holder, holder_end, y, kFortressNobleHolderRule, holder, holder_right, target);
     }
 
-    // Room hover summaries are independent fields in two native columns,
-    // not prose and not part of the appointment table's position column.
-    // Reuse the character Rooms vocabulary and the existing TSV meanings,
-    // including every populated grade, instead of recognizing only No ... .
+    // Each room summary owns current grade / Needs: / required grade. The
+    // English writer spaces those pieces independently; keep their source
+    // spans and colors, but give the Chinese pieces one shared column.
+    struct RoomSummary {
+        int y;
+        size_t column;
+        std::vector<LogicalTextField> fields;
+        std::vector<std::string> targets;
+    };
+    std::vector<RoomSummary> summaries;
+    std::vector<int> room_lefts;
+    const auto room_target = [&](const std::string &source) {
+        auto target = exact_literal_translation("Character room grade: " + source);
+        if (!target) target = exact_literal_translation(source);
+        return target;
+    };
     for (int y = band->tabs_y + 1; y + 1 < first_record_y; ++y) {
-        if (only_y >= 0 && y != only_y) continue;
         std::string header(rows[y].size(), ' ');
         std::copy(rows[y].begin() + band->panel.x, rows[y].begin() + panel_right,
             header.begin() + band->panel.x);
         const auto fields = split_text_fields(header);
+        size_t column = 0;
         for (size_t i = 0; i < fields.size(); ++i) {
             const auto &field = fields[i];
             if (!is_character_room_status(field.text) || !current(field.start, field.end, y)) continue;
-            auto target = exact_literal_translation("Character room grade: " + field.text);
-            if (!target) target = exact_literal_translation(field.text);
+            const auto target = room_target(field.text);
             if (!target) continue;
-            const int right = i + 1 < fields.size() ? fields[i + 1].start : panel_right;
-            append(field.start, field.end, y, kFortressNobleRoomRule,
-                field.start, right, target);
+            RoomSummary summary{y, column, {field}, {*target}};
+            if (i + 2 < fields.size() && fields[i + 1].text == "Needs:" &&
+                    is_character_room_status(fields[i + 2].text) &&
+                    current(fields[i + 1].start, fields[i + 1].end, y) &&
+                    current(fields[i + 2].start, fields[i + 2].end, y)) {
+                const auto label = exact_literal_translation(fields[i + 1].text);
+                const auto required = room_target(fields[i + 2].text);
+                if (label && required) {
+                    summary.fields.push_back(fields[i + 1]);
+                    summary.fields.push_back(fields[i + 2]);
+                    summary.targets.push_back(*label);
+                    summary.targets.push_back(*required);
+                    i += 2;
+                }
+            }
+            if (column == room_lefts.size()) room_lefts.push_back(field.start);
+            else room_lefts[column] = std::min(room_lefts[column], field.start);
+            summaries.push_back(std::move(summary));
+            ++column;
+        }
+    }
+    for (const auto &summary : summaries) {
+        if (only_y >= 0 && summary.y != only_y) continue;
+        const int left = room_lefts[summary.column];
+        const int right = summary.column + 1 < room_lefts.size()
+            ? room_lefts[summary.column + 1] : panel_right;
+        for (size_t i = 0; i < summary.fields.size(); ++i) {
+            const auto &field = summary.fields[i];
+            append(field.start, field.end, summary.y, kFortressNobleRoomRule,
+                left, right, summary.targets[i]);
         }
     }
 }
@@ -341,7 +379,7 @@ void Overlay::layout_fortress_nobles(SDL_Renderer *renderer) {
             layout_fortress_text_rows(renderer, {{&match}}, left, right);
         }
     }
-    std::map<int, std::vector<std::vector<Match *>>> room_columns;
+    std::map<int, std::map<int, std::vector<Match *>>> room_columns;
     std::map<int, int> room_right;
     for (const Match &field : fields) {
         if (field.rule != kFortressNobleRoomRule) continue;
@@ -351,16 +389,38 @@ void Overlay::layout_fortress_nobles(SDL_Renderer *renderer) {
             match.target = field.target;
             match.layout_box_pixel_x = -1;
             match.layout_box_pixel_width = 0;
+            match.layout_glyph_foreground_rgb.clear();
             match.layout_clip_right = field.layout_clip_right;
             const int left = field.layout_x;
             if (!room_right.contains(left)) room_right[left] = field.layout_clip_right;
             else room_right[left] = std::min(room_right[left], field.layout_clip_right);
-            room_columns[left].push_back({&match});
+            room_columns[left][field.y].push_back(&match);
             break;
         }
     }
-    for (const auto &[left, column] : room_columns)
-        layout_fortress_text_rows(renderer, column, left, room_right[left]);
+    for (const auto &[left, column] : room_columns) {
+        const int right = room_right[left];
+        const int tile_w = gps_->tile_pixel_x;
+        const int width = (right - left) * tile_w - 2 * config_.horizontal_padding;
+        int current_width = 0;
+        std::vector<std::vector<Match *>> grades, requirements;
+        for (const auto &[y, parts] : column) {
+            grades.push_back({parts.front()});
+            if (const auto *glyph = get_glyph_texture(renderer, parts.front()->target,
+                    width, gps_->tile_pixel_y, unified_font_pixels(), 0, true))
+                current_width = std::max(current_width, glyph->width);
+            if (parts.size() > 1)
+                requirements.emplace_back(parts.begin() + 1, parts.end());
+        }
+        // Align the label after the widest translated current grade, then
+        // pack label and required grade by glyph advances. The required
+        // English string's original X is only a source-suppression span.
+        const int required_left = left + (current_width +
+            2 * config_.horizontal_padding + 2 * tile_w - 1) / tile_w;
+        layout_fortress_text_rows(renderer, grades, left,
+            requirements.empty() ? right : std::min(required_left, right));
+        layout_fortress_text_rows(renderer, requirements, required_left, right);
+    }
     prepared_matches_.insert(prepared_matches_.end(),
         std::make_move_iterator(continuations.begin()),
         std::make_move_iterator(continuations.end()));
