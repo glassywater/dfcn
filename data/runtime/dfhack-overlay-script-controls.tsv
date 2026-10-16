@@ -272,9 +272,9 @@ DFHack GUI Overlay control: Track||I|0|-1|0	轨道|	l
 DFHack GUI Overlay control: Creatures||I|0|-1|0	生物|	l
 # prioritize.lua:881 EnRouteOverlay get_builder_name(): no assigned builder returns fixed N/A; assigned builder returns a readable/custom name protected by the existing * branch.
 DFHack GUI Overlay control: Job taken by:|N/A|I|1|-1|0	任务执行者：|未分配	l
-# internal/unit-info-viewer/skills-progress.lua:138-151 SkillProgressOverlay annotations: max(0,rating-rusty)<100 renders Lv plus an integer; >=100 renders Lv++. The next experience/threshold numeric field is independent, and all numbers/progress glyphs remain unchanged.
-DFHack GUI Overlay control: Lv|{d}|I|0|-1|0	等级|{d}	l
-DFHack GUI Overlay control: Lv|++|I|0|-1|0	等级|++	l
+# internal/unit-info-viewer/skills-progress.lua:138-151 SkillProgressOverlay annotations: max(0,rating-rusty)<100 renders Lv plus an integer; >=100 renders Lv++. The next experience/threshold numeric field is independent. Keep Lv, all numbers and progress glyphs unchanged.
+DFHack GUI Overlay control: Lv|{d}|I|0|-1|0	Lv|{d}	l
+DFHack GUI Overlay control: Lv|++|I|0|-1|0	Lv|++	l
 # internal/exportlegends/asyncexport.lua:48-57 LegendsOverlay progress; exportlegends.lua:61-77 sets progress_item from the complete per-vector descriptors below, and :1296 starts with basic info. The descriptor token has width=27 (right padding, truncation beyond 27); percentage uses %.2f and retains its exact number. The two relationship descriptors share a visible 27-byte prefix but retain their complete source branches here.
 DFHack GUI Overlay control: Exporting |basic info|I|0|-1|0	正在导出 |基本信息	l
 DFHack GUI Overlay control: Exporting |landmasses|I|0|-1|0	正在导出 |大陆	l
