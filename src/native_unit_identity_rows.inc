@@ -119,6 +119,11 @@ for (bool top_layer : {false, true}) {
                 break;
             }
             match.target = arena_target ? *arena_target : *draw.unit_identity_target;
+            if (match.layout_x < 0) {
+                match.layout_x = draw.x;
+                match.layout_length = match.length;
+                match.layout_left = true;
+            }
             match.native_hover_untranslated = false;
             match.native_help_review_source.clear();
             claimed = true;
@@ -130,6 +135,11 @@ for (bool top_layer : {false, true}) {
         Match match{draw.x, draw.y, static_cast<int>(draw.source.size()),
             kCreatureNameRule, arena_target ? *arena_target : *draw.unit_identity_target,
             draw.source};
+        // Formatter-owned names start at the actual addst cursor, including
+        // animation labels without the ordinary name/gloss/species syntax.
+        match.layout_x = draw.x;
+        match.layout_length = match.length;
+        match.layout_left = true;
         result.push_back(std::move(match));
         std::fill_n(row.begin() + draw.x, draw.source.size(), ' ');
     }

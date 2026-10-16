@@ -18300,6 +18300,33 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                 std::make_move_iterator(announcement_popup_matches.begin()),
                 std::make_move_iterator(announcement_popup_matches.end()));
         }
+        // A stored animation name is a complete body caption even when it
+        // has no quoted gloss/species record or closed button skin. Bind its
+        // native cursor before page-specific layout can bypass the generic
+        // panel pass. The body grammar proves the whole source; no translated
+        // suffix or name spelling is used to infer ownership.
+        if (gps_->tile_pixel_x > 0) {
+            const int tile_w = gps_->tile_pixel_x;
+            const int origin_x = (gps_->screen_pixel_x - tile_w * gps_->dimx) / 2;
+            for (Match &match : result) {
+                if (match.target.empty() || match.length <= 0 ||
+                        match.source.size() != static_cast<size_t>(match.length) ||
+                        match.source.find("'s ") == std::string::npos ||
+                        !translate_native_animation_label(match.source)) continue;
+                const SDL_Rect region = native_text_draw_region(match);
+                const int right = std::min(gps_->dimx,
+                    (region.x + region.w - origin_x) / tile_w);
+                match.layout_x = match.x;
+                match.layout_length = std::max(1, right - match.x);
+                match.layout_box_pixel_x = -1;
+                match.layout_box_pixel_width = 0;
+                match.layout_left = true;
+                match.layout_right = false;
+                match.layout_ellipsize = true;
+                match.layout_font_pixels = unified_font_pixels();
+                match.layout_lock_font_pixels = true;
+            }
+        }
         return std::move(result);
     };
 
