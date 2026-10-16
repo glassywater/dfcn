@@ -3,6 +3,7 @@
 // rebuild them through the ordinary producer and composition paths.
 static void native_reset_render_resources() {
     TranslationStateScope translation;
+    native_settings_menu_release();
     g_overlay.invalidate_render_resources();
     g_native_squads_overlay.release_native_squads_resources();
 

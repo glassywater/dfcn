@@ -1,0 +1,408 @@
+// Shift+F1 owns a small modal component, independently of translated-page
+// matching. The game constructs and renders its own nineslice/text widgets;
+// the existing native tile painter and Chinese font finish their private grid.
+struct NativeSettingsMenuBindings {
+    using Construct = void *(*)(void *);
+    using Destroy = void (*)(void *);
+    using Render = void (*)(void *, uint32_t);
+    Construct construct = nullptr;
+    Destroy destroy = nullptr;
+    uintptr_t nineslice_table = 0, text_table = 0;
+    Render nineslice_render = nullptr, text_render = nullptr;
+
+    bool ready() const {
+        return construct && destroy && nineslice_table && text_table &&
+            nineslice_render && text_render;
+    }
+};
+
+static const NativeSettingsMenuBindings &native_settings_menu_bindings() {
+    static const NativeSettingsMenuBindings bindings = [] {
+        NativeSettingsMenuBindings value;
+#ifdef _WIN32
+        const auto base = native_history_profile_base();
+        // 53.16 widget's default constructor and non-deleting base destructor.
+        // Native allocation owns the base strings, variant and hotkey set.
+        value.construct = reinterpret_cast<NativeSettingsMenuBindings::Construct>(
+            native_reference_address(base, 0x140ff20));
+        value.destroy = reinterpret_cast<NativeSettingsMenuBindings::Destroy>(
+            native_reference_address(base, 0x1412c70));
+        value.nineslice_table = native_reference_address(base, 0x15eef60);
+        value.text_table = native_reference_address(base, 0x1618aa0);
+#else
+        value.construct = reinterpret_cast<NativeSettingsMenuBindings::Construct>(
+            dlsym(RTLD_DEFAULT, "_ZN7widgets6widgetC2Ev"));
+        value.destroy = reinterpret_cast<NativeSettingsMenuBindings::Destroy>(
+            dlsym(RTLD_DEFAULT, "_ZN7widgets6widgetD2Ev"));
+        const auto slices = reinterpret_cast<uintptr_t>(
+            dlsym(RTLD_DEFAULT, "_ZTVN7widgets9ninesliceE"));
+        const auto text = reinterpret_cast<uintptr_t>(
+            dlsym(RTLD_DEFAULT, "_ZTVN7widgets4textE"));
+        value.nineslice_table = slices ? slices + 2 * sizeof(void *) : 0;
+        value.text_table = text ? text + 2 * sizeof(void *) : 0;
+#endif
+        if (value.nineslice_table)
+            native_history_copy(value.nineslice_table + 3 * sizeof(void *), value.nineslice_render);
+        if (value.text_table)
+            native_history_copy(value.text_table + 3 * sizeof(void *), value.text_render);
+        return value;
+    }();
+    return bindings;
+}
+
+// Both verified ABIs use widget size 0x150, rect+0x10, and text::str+0x150.
+// Only the game-constructed base is destroyed here. The borrowed text field
+// and nineslice texture pointer never transfer allocation ownership to it.
+class NativeSettingsMenuWidget {
+    alignas(16) std::array<unsigned char, 0x180> storage_{};
+    const NativeSettingsMenuBindings &bindings_;
+    uintptr_t base_table_ = 0;
+public:
+    explicit NativeSettingsMenuWidget(const NativeSettingsMenuBindings &bindings)
+        : bindings_(bindings) {
+        bindings_.construct(storage_.data());
+        std::memcpy(&base_table_, storage_.data(), sizeof(base_table_));
+        // These drawing-only components have no activation or tooltip owner.
+        // They receive modal input through settings_menu_event instead.
+        storage_[0xa0] = 0;
+    }
+    ~NativeSettingsMenuWidget() {
+        std::fill(storage_.begin() + 0x150, storage_.end(), 0);
+        std::memcpy(storage_.data(), &base_table_, sizeof(base_table_));
+        bindings_.destroy(storage_.data());
+    }
+    template<typename Value> void set(size_t offset, const Value &value) {
+        std::memcpy(storage_.data() + offset, &value, sizeof(value));
+    }
+    void rect(const SDL_Rect &box) {
+        const std::array<int32_t, 4> bounds{
+            box.x, box.y, box.x + box.w - 1, box.y + box.h - 1};
+        set(0x10, bounds);
+    }
+    void nineslice(const SDL_Rect &box, const int32_t *skin) {
+        set(0, bindings_.nineslice_table);
+        rect(box);
+        set(0x150, skin);
+        const uint8_t replace_character = 1;
+        set(0x158, replace_character);
+        bindings_.nineslice_render(storage_.data(), 0);
+    }
+    void text(int x, int y, std::string_view source) {
+        set(0, bindings_.text_table);
+        rect({x, y, static_cast<int>(source.size()), 1});
+#ifdef _WIN32
+        auto borrowed = native_empty_string();
+        if (source.size() <= 15) {
+            std::memcpy(borrowed.storage.small, source.data(), source.size());
+        } else {
+            borrowed.storage.heap = const_cast<char *>(source.data());
+            borrowed.capacity = source.size();
+        }
+        borrowed.size = source.size();
+#else
+        NativeString borrowed(source);
+#endif
+        set(0x150, borrowed);
+        const int16_t foreground = 7, background = 0;
+        const uint8_t bright = 1, left = 0;
+        const uint32_t zero = 0;
+        set(0x170, foreground); set(0x172, background);
+        set(0x174, bright); set(0x175, left);
+        set(0x178, zero); set(0x17c, zero);
+        bindings_.text_render(storage_.data(), 0);
+        // The temporary owns any host string storage; the native base does not.
+        std::fill(storage_.begin() + 0x150, storage_.end(), 0);
+    }
+};
+
+static constexpr size_t kNativeSettingsMenuOptionCount = 5;
+static constexpr int kNativeSettingsMenuHeight =
+    4 + 3 * static_cast<int>(kNativeSettingsMenuOptionCount);
+
+struct NativeSettingsMenuState {
+    bool open = false, f1_consumed = false, hits_ready = false;
+    uint32_t consumed_buttons = 0;
+    std::array<bool, SDL_NUM_SCANCODES> consumed_keys{};
+    int hovered = -1;
+    SDL_Rect panel{};
+    std::array<SDL_Rect, kNativeSettingsMenuOptionCount> rows{}, pixel_rows{};
+    double input_scale_x = 1, input_scale_y = 1;
+    double input_offset_x = 0, input_offset_y = 0;
+};
+static NativeSettingsMenuState g_native_settings_menu;
+static NativeUiLayerStorage g_native_settings_menu_layer;
+static NativeInfoCapturedText g_native_settings_menu_text;
+static constexpr std::array<std::string_view, kNativeSettingsMenuOptionCount + 1> kNativeSettingsMenuSources{
+    "Chinese translation", "Toggle Chinese / English", "Toggle simplified / traditional",
+    "Toggle language transliteration", "Toggle DFHack (installed only)", "Reload Chinese translation"};
+static constexpr std::array<std::string_view, kNativeSettingsMenuOptionCount + 1> kNativeSettingsMenuLabels{
+    "汉化设置", "切换中英文", "切换繁简体", "切换四族语言音译",
+    "开关 DFHack（需已安装 DFHack）", "重载汉化"};
+
+static void native_settings_menu_close() {
+    auto &menu = g_native_settings_menu;
+    menu.open = false;
+    menu.hovered = -1;
+    menu.hits_ready = false;
+    g_native_settings_menu_layer.ready = false;
+}
+
+static void native_settings_menu_release() {
+    TranslationStateScope translation;
+    native_settings_menu_close();
+    g_native_settings_menu_layer = {};
+    g_native_settings_menu_text.clear();
+}
+
+// Called on the native producer thread after render_things. Present never
+// redirects the real gps while DFHack or the native producer can be writing.
+static void native_settings_menu_prepare() try {
+    TranslationStateScope translation;
+    auto &menu = g_native_settings_menu;
+    if (!menu.open) return;
+    // Windows DFHack writers can hold M without T. Never wait for M while T
+    // is held: retain the previous complete component if another writer owns it.
+    std::unique_lock<std::recursive_mutex> writer(g_native_dfhack_layer_mutex, std::try_to_lock);
+    if (!writer.owns_lock()) return;
+    auto *owner = native_graphics_owner();
+    const auto &bindings = native_settings_menu_bindings();
+    const auto ui = native_ui_settings();
+    if (!owner || !owner->screen || !owner->screen_top ||
+            owner->dimx < 36 || owner->dimx > 1000 ||
+            owner->dimy < kNativeSettingsMenuHeight || owner->dimy > 1000 ||
+            !bindings.ready() || !ui || !g_native_help_layer.native_renderer ||
+            !g_native_help_layer.renderer || native_dfhack_layer_write_active(owner)) return;
+
+    auto &layer = g_native_settings_menu_layer;
+    layer.ready = false;
+    layer.foreground.prepare(*owner);
+    native_ui_detach_map_output(*layer.foreground.graphics());
+    layer.foreground.clear();
+    auto *grid = layer.foreground.graphics();
+    grid->clipx[0] = grid->clipy[0] = 0;
+    grid->clipx[1] = grid->dimx - 1; grid->clipy[1] = grid->dimy - 1;
+    grid->screenf = 7; grid->screenb = 0; grid->screenbright = false;
+    grid->use_old_16_colors = true;
+    const int width = std::min(44, owner->dimx - 2), height = kNativeSettingsMenuHeight;
+    menu.panel = {(owner->dimx - width) / 2, (owner->dimy - height) / 2, width, height};
+    for (size_t i = 0; i < menu.rows.size(); ++i)
+        menu.rows[i] = {menu.panel.x + 2, menu.panel.y + 3 + static_cast<int>(i) * 3,
+            menu.panel.w - 4, 3};
+    layer.frames = {menu.panel};
+    layer.native_renderer = g_native_help_layer.native_renderer;
+    layer.renderer = g_native_help_layer.renderer;
+    g_native_settings_menu_text.clear();
+    NativeInfoCapturedTextScope captions(g_native_settings_menu_text);
+    struct WriterView {
+        graphicst *previous_view = g_native_graphics_read_view;
+        const graphicst *previous_help = g_native_help_write_graphics;
+        explicit WriterView(graphicst *value) {
+            g_native_graphics_read_view = value;
+            g_native_help_write_graphics = value;
+        }
+        ~WriterView() {
+            g_native_graphics_read_view = previous_view;
+            g_native_help_write_graphics = previous_help;
+        }
+    } view(owner);
+    NativeUiGridBinding output(owner, *grid);
+    NativeSettingsMenuWidget skin(bindings), text(bindings);
+    const std::array<int32_t, 9> border{
+        ui->texpos_border_nw, ui->texpos_border_n, ui->texpos_border_ne,
+        ui->texpos_border_w, ui->texpos_border_interior, ui->texpos_border_e,
+        ui->texpos_border_sw, ui->texpos_border_s, ui->texpos_border_se};
+    skin.nineslice(menu.panel, border.data());
+    const auto title = kNativeSettingsMenuSources[0];
+    text.text(menu.panel.x + (menu.panel.w - static_cast<int>(title.size())) / 2,
+        menu.panel.y + 1, title);
+    for (size_t i = 0; i < menu.rows.size(); ++i) {
+        const auto &row = menu.rows[i];
+        const auto &button = menu.hovered == static_cast<int>(i)
+            ? ui->texpos_selected_intro_button : ui->texpos_unselected_intro_button;
+        skin.nineslice(row, button.data());
+        const auto label = kNativeSettingsMenuSources[i + 1];
+        text.text(row.x + (row.w - static_cast<int>(label.size())) / 2, row.y + 1, label);
+    }
+    grid->top_in_use = owner->top_in_use;
+    layer.ready = true;
+} catch (...) {
+    TranslationStateScope translation;
+    native_settings_menu_close();
+    log_line("ERROR", "Could not construct the native translation settings menu");
+}
+
+bool Overlay::settings_menu_event(const SDL_Event &event) {
+    TranslationStateScope translation;
+    auto &menu = g_native_settings_menu;
+    if (event.type == SDL_WINDOWEVENT && event.window.event == SDL_WINDOWEVENT_FOCUS_LOST) {
+        native_settings_menu_close();
+        menu.f1_consumed = false;
+        menu.consumed_buttons = 0;
+        menu.consumed_keys.fill(false);
+        return false;
+    }
+    if (event.type == SDL_KEYUP) {
+        if (event.key.keysym.sym == SDLK_F1 && menu.f1_consumed) {
+            menu.f1_consumed = false;
+            return true;
+        }
+        const auto scan = event.key.keysym.scancode;
+        if (scan >= 0 && scan < SDL_NUM_SCANCODES && menu.consumed_keys[scan]) {
+            menu.consumed_keys[scan] = false;
+            return true;
+        }
+        // Releases whose presses predate the menu still clear game key state.
+        return false;
+    }
+    if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_F1) {
+        if (menu.f1_consumed) return true;
+        const auto mods = static_cast<SDL_Keymod>(event.key.keysym.mod);
+        if ((mods & KMOD_SHIFT) && !(mods & (KMOD_CTRL | KMOD_ALT | KMOD_GUI))) {
+            menu.f1_consumed = true;
+            if (!event.key.repeat) {
+                if (menu.open) native_settings_menu_close();
+                else {
+                    menu.open = true; menu.hovered = -1; menu.hits_ready = false;
+                    g_native_settings_menu_layer.ready = false;
+                }
+            }
+            return true;
+        }
+    }
+    if (event.type == SDL_MOUSEBUTTONUP && event.button.button > 0 && event.button.button <= 32) {
+        const uint32_t bit = uint32_t{1} << (event.button.button - 1);
+        if (menu.consumed_buttons & bit) {
+            menu.consumed_buttons &= ~bit;
+            return true;
+        }
+        return false;
+    }
+    if (!menu.open) return false;
+    const auto hovered = [&](int x, int y) {
+        if (!menu.hits_ready) return -1;
+        const SDL_Point point{
+            static_cast<int>(std::floor(x * menu.input_scale_x + menu.input_offset_x)),
+            static_cast<int>(std::floor(y * menu.input_scale_y + menu.input_offset_y))};
+        for (size_t i = 0; i < menu.pixel_rows.size(); ++i)
+            if (SDL_PointInRect(&point, &menu.pixel_rows[i])) return static_cast<int>(i);
+        return -1;
+    };
+    if (event.type == SDL_MOUSEMOTION) {
+        menu.hovered = hovered(event.motion.x, event.motion.y);
+        return true;
+    }
+    if (event.type == SDL_MOUSEBUTTONDOWN) {
+        if (event.button.button > 0 && event.button.button <= 32)
+            menu.consumed_buttons |= uint32_t{1} << (event.button.button - 1);
+        if (event.button.button == SDL_BUTTON_RIGHT) native_settings_menu_close();
+        else if (event.button.button == SDL_BUTTON_LEFT) {
+            const int action = hovered(event.button.x, event.button.y);
+            // Close before an action can invalidate a font or reload resources.
+            // Keep the matching mouse release consumed after this modal ends.
+            native_settings_menu_close();
+            if (action >= 0) run_settings_menu_action(action);
+        }
+        return true;
+    }
+    if (event.type == SDL_KEYDOWN) {
+        const auto scan = event.key.keysym.scancode;
+        if (scan >= 0 && scan < SDL_NUM_SCANCODES) menu.consumed_keys[scan] = true;
+        if (event.key.keysym.sym == SDLK_ESCAPE && !event.key.repeat)
+            native_settings_menu_close();
+        return true;
+    }
+    if (event.type == SDL_MOUSEWHEEL || event.type == SDL_TEXTINPUT || event.type == SDL_TEXTEDITING)
+        return true;
+    if (event.type == SDL_WINDOWEVENT &&
+            (event.window.event == SDL_WINDOWEVENT_SIZE_CHANGED ||
+             event.window.event == SDL_WINDOWEVENT_RESIZED)) menu.hits_ready = false;
+    return false;
+}
+
+void Overlay::render_settings_menu(SDL_Renderer *renderer) {
+    TranslationStateScope translation;
+    auto &menu = g_native_settings_menu;
+    auto &layer = g_native_settings_menu_layer;
+    if (!menu.open || !renderer || !layer.ready || layer.renderer != renderer) return;
+    std::unique_lock<std::recursive_mutex> writer(g_native_dfhack_layer_mutex, std::try_to_lock);
+    if (!writer.owns_lock()) return;
+    auto *grid = layer.foreground.graphics();
+    if (!grid || grid->tile_pixel_x <= 0 || grid->tile_pixel_y <= 0) return;
+    const int origin_x = (grid->screen_pixel_x - grid->dimx * grid->tile_pixel_x) / 2;
+    const int origin_y = (grid->screen_pixel_y - grid->dimy * grid->tile_pixel_y) / 2;
+    for (size_t i = 0; i < menu.rows.size(); ++i) {
+        const auto &row = menu.rows[i];
+        menu.pixel_rows[i] = {origin_x + row.x * grid->tile_pixel_x,
+            origin_y + row.y * grid->tile_pixel_y,
+            row.w * grid->tile_pixel_x, row.h * grid->tile_pixel_y};
+    }
+    NativeUiLayerSdlState sdl(renderer);
+    // SDL already scales queued mouse events to the game's current logical
+    // size. First recover that event space's window endpoints, then map them
+    // to this component's complete-screen logical size. This also handles an
+    // unscaled game renderer and high-DPI window/output differences.
+    int window_x0 = 0, window_y0 = 0, window_x1 = 4096, window_y1 = 4096;
+    const bool logical_events = sdl.logical_width > 0 && sdl.logical_height > 0;
+    const int event_width = logical_events ? sdl.logical_width : 4096;
+    const int event_height = logical_events ? sdl.logical_height : 4096;
+    if (logical_events) {
+        SDL_RenderLogicalToWindow(renderer, 0, 0, &window_x0, &window_y0);
+        SDL_RenderLogicalToWindow(renderer, static_cast<float>(event_width),
+            static_cast<float>(event_height), &window_x1, &window_y1);
+    }
+    if (!sdl.bind_composite(grid->screen_pixel_x, grid->screen_pixel_y)) return;
+    float input_x0 = 0, input_y0 = 0, input_x1 = 0, input_y1 = 0;
+    SDL_RenderWindowToLogical(renderer, window_x0, window_y0, &input_x0, &input_y0);
+    SDL_RenderWindowToLogical(renderer, window_x1, window_y1, &input_x1, &input_y1);
+    menu.input_scale_x = (input_x1 - input_x0) / event_width;
+    menu.input_scale_y = (input_y1 - input_y0) / event_height;
+    menu.input_offset_x = input_x0; menu.input_offset_y = input_y0;
+    menu.hits_ready = true;
+    struct DrawingScope {
+        bool previous = g_drawing_overlay;
+        DrawingScope() { g_drawing_overlay = true; }
+        ~DrawingScope() { g_drawing_overlay = previous; }
+    } drawing;
+    struct ViewScope {
+        Overlay &overlay;
+        graphicst *previous_graphics;
+        GraphicalClearReadback *previous_readback;
+        explicit ViewScope(Overlay &value, graphicst *graphics)
+            : overlay(value), previous_graphics(value.gps_),
+              previous_readback(value.graphical_clear_readback_) {
+            value.gps_ = graphics;
+            value.graphical_clear_readback_ = nullptr;
+        }
+        ~ViewScope() {
+            overlay.gps_ = previous_graphics;
+            overlay.graphical_clear_readback_ = previous_readback;
+        }
+    } view(*this, grid);
+    NativeUiReadScope component(grid, nullptr);
+    CellReadCacheScope cells(*this);
+    std::vector<Match> labels;
+    if (face_) for (size_t i = 0; i < kNativeSettingsMenuLabels.size(); ++i) {
+        const SDL_Rect box = i == 0
+            ? SDL_Rect{menu.panel.x + 1, menu.panel.y + 1, menu.panel.w - 2, 1}
+            : SDL_Rect{menu.rows[i - 1].x + 1, menu.rows[i - 1].y + 1,
+                menu.rows[i - 1].w - 2, 1};
+        const auto source = kNativeSettingsMenuSources[i];
+        const int source_x = box.x + (box.w - static_cast<int>(source.size())) / 2;
+        Match match{source_x, box.y, static_cast<int>(source.size()), -2,
+            std::string(kNativeSettingsMenuLabels[i]), std::string(source)};
+        match.layout_x = box.x; match.layout_y = box.y; match.layout_length = box.w;
+        match.layout_box_pixel_x = origin_x + box.x * grid->tile_pixel_x;
+        match.layout_box_pixel_width = box.w * grid->tile_pixel_x;
+        match.layout_clip_right = box.x + box.w;
+        match.layout_native_clip = SDL_Rect{match.layout_box_pixel_x,
+            origin_y + box.y * grid->tile_pixel_y, match.layout_box_pixel_width, grid->tile_pixel_y};
+        match.layout_fixed_baseline = true;
+        match.layout_font_pixels = unified_font_pixels();
+        match.layout_lock_font_pixels = true;
+        match.layout_foreground_rgb = 0xffffff;
+        match.graphical_auto_foreground = false;
+        labels.push_back(std::move(match));
+    }
+    native_ui_paint_grid(layer, renderer, labels);
+    for (const auto &label : labels) draw_match(renderer, label);
+}

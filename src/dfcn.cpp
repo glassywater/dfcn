@@ -348,6 +348,7 @@ static void log_translation_state_timing(const TranslationStateTiming &sample) {
 }
 
 static constexpr const char *kDisplayLanguageHint = "DFCN_DISPLAY_LANGUAGE";
+static constexpr const char *kNativeLanguageOriginalHint = "DFCN_NATIVE_LANGUAGE_ORIGINAL";
 
 struct Config {
     static constexpr double default_font_scale = 1.1;
@@ -3622,6 +3623,10 @@ public:
     void set_translation_enabled(bool enabled);
     void toggle_translation();
     void toggle_display_language();
+    void toggle_native_language();
+    void render_settings_menu(SDL_Renderer *renderer);
+    bool settings_menu_event(const SDL_Event &event);
+    void run_settings_menu_action(int action);
     void toggle_translation_extensions();
     void remap_legends_mouse(int *x, int *y) const;
     void request_reload() { reload_requested_.store(true); }
@@ -6047,6 +6052,8 @@ bool Overlay::load_config() {
     if (const char *choice = SDL_GetHint(kDisplayLanguageHint);
             choice && (std::strcmp(choice, "zh-Hans") == 0 || std::strcmp(choice, "zh-Hant") == 0))
         next.language = choice;
+    if (const char *choice = SDL_GetHint(kNativeLanguageOriginalHint))
+        next.native_language_original = parse_bool(choice, next.native_language_original);
     const auto language = lower(next.language);
     if (language == "zh-hant" || language == "zh-tw" || language == "zh-hant-tw")
         next.language = "zh-Hant";
@@ -7772,6 +7779,71 @@ bool Overlay::apply_requested_reload() {
     load_generated_instrument_names();
     load_procedural_terms();
     return load_compositional_rules();
+}
+
+void Overlay::toggle_native_language() {
+    TranslationStateScope translation;
+    const bool previous = config_.native_language_original;
+    const bool enabled = config_.enabled;
+    const auto retain_choice = [](bool original) {
+        return SDL_SetHintWithPriority(kNativeLanguageOriginalHint,
+            original ? "1" : "0", SDL_HINT_OVERRIDE) == SDL_TRUE;
+    };
+    if (!retain_choice(!previous)) {
+        log_line("ERROR", "Settings menu: cannot retain native-language choice");
+        return;
+    }
+    invalidate_render_resources();
+    try {
+        request_reload();
+        if (!apply_requested_reload()) {
+            retain_choice(previous);
+            request_reload();
+            const bool restored = apply_requested_reload();
+            set_translation_enabled(enabled && restored);
+            log_line("ERROR", restored
+                ? "Settings menu: native-language reload failed; previous choice restored"
+                : "Settings menu: native-language reload and recovery failed; translation disabled");
+        } else {
+            set_translation_enabled(enabled);
+            log_line("INFO", config_.native_language_original
+                ? "Settings menu: four-race names use original spelling"
+                : "Settings menu: four-race names use Chinese transliteration");
+        }
+    } catch (...) {
+        retain_choice(previous);
+        request_reload();
+        set_translation_enabled(false);
+        throw;
+    }
+    {
+        std::lock_guard<std::mutex> lock(dfhack_translation_mutex_);
+        dfhack_translation_completed_frame_.store({}, std::memory_order_release);
+        dfhack_translation_cache_.clear();
+        dfhack_translation_blocked_keys_.clear();
+    }
+    queue_dfhack_layer_translation();
+}
+
+#include "dfhack_menu_dispatch.inc"
+
+void Overlay::run_settings_menu_action(int action) {
+    switch (action) {
+    case 0: toggle_translation(); break;
+    case 1: toggle_display_language(); break;
+    case 2: toggle_native_language(); break;
+    case 3:
+        if (!request_native_dfhack_toggle())
+            log_line("ERROR", "Settings menu: DFHack switch is unavailable or could not accept the request");
+        break;
+    case 4:
+        // The resident loader consumes this after the core's event callback
+        // has returned; no callback may unload the image on its own stack.
+        if (SDL_SetHintWithPriority("DFCN_SETTINGS_MENU_RELOAD_CORE", "1",
+                SDL_HINT_OVERRIDE) != SDL_TRUE)
+            log_line("ERROR", "Settings menu: cannot request core reload");
+        break;
+    }
 }
 
 const unsigned char *Overlay::cell_at(int x, int y, bool *top) const {
@@ -43131,6 +43203,7 @@ extern "C" void dfcn_render_present(SDL_Renderer *renderer) {
         boundary.checkpoint("name_search");
         g_overlay.render_ime_popup(renderer);
         boundary.checkpoint("ime_popup");
+        g_overlay.render_settings_menu(renderer);
         // Only a newly drawn native frame consumes the caption generation.
         // Repeated Present calls retain the last actual native writer evidence.
         if (g_overlay.native_frame_submitted()) advance_embark_item_capture_epoch();
@@ -43169,7 +43242,10 @@ extern "C" int dfcn_render_copy(SDL_Renderer *renderer, SDL_Texture *texture,
     return result;
 }
 
+static void native_settings_menu_prepare();
+static void native_settings_menu_release();
 #include "native_hooks.inc"
+#include "native_settings_menu.inc"
 #include "civilization_names.inc"
 #include "site_references.inc"
 #include "native_save_names.inc"
@@ -43237,6 +43313,7 @@ DFCN_EXPORT bool dfhooks_sdl_event(void *raw_event) {
         // Keep the event visible to the game's own renderer recovery.
         return false;
     }
+    if (dfcn::g_overlay.settings_menu_event(*event)) return true;
     static bool f6_consumed = false;
     if (event->type == SDL_WINDOWEVENT &&
         event->window.event == SDL_WINDOWEVENT_FOCUS_LOST) f6_consumed = false;

@@ -239,6 +239,20 @@ DFCN_EXPORT int dfcn_is_dfhack_disabled_v1() noexcept {
     return dfhack_toggle.disabled() ? 1 : 0;
 }
 
+// Explicit menu action on the SDL event thread. No key event or core ABI
+// ownership crosses this boundary; the native suspension callback applies it.
+DFCN_EXPORT int dfcn_toggle_dfhack_v1() noexcept {
+    if (!initialized) return 0;
+    try {
+        dfhack_toggle.initialize(log);
+        if (dfhack_toggle.toggle()) return 1;
+        log("WARN", "DFHack switch is unavailable: DFHack is absent or its native interface is not ready");
+    } catch (...) {
+        log("ERROR", "Could not request the DFHack switch");
+    }
+    return 0;
+}
+
 // Optional read-only command context lives independently of DfcnCoreApi.
 // It touches only the resident loader's calling-thread POD frame, never the
 // current core image, native strings, render state or game synchronization.
@@ -303,6 +317,11 @@ DFCN_EXPORT bool dfhooks_sdl_event(void *raw_event) {
         }
         return true;
     }
+    if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_F11 && !event.key.repeat) {
+        const auto mods = static_cast<SDL_Keymod>(event.key.keysym.mod);
+        if ((mods & KMOD_SHIFT) && !(mods & (KMOD_CTRL | KMOD_ALT | KMOD_GUI)))
+            dfhack_toggle.initialize(log);
+    }
     if (dfhack_toggle.event(raw_event)) return true;
     if (event.type == SDL_WINDOWEVENT && event.window.event == SDL_WINDOWEVENT_FOCUS_LOST) {
         f5_consumed = false;
@@ -355,10 +374,41 @@ DFCN_EXPORT bool dfhooks_sdl_event(void *raw_event) {
             return true;
         }
     }
+    bool consumed = false;
     try {
-        return core && core->ready ? core->api->event(raw_event) : false;
+        consumed = core && core->ready ? core->api->event(raw_event) : false;
     } catch (...) {
         log("ERROR", "Core event handler threw an exception");
         return false;
     }
+    // A menu action runs inside the core callback. Consume its data-only
+    // request only after that callback has returned, so unloading can never
+    // retire an image while its event handler is still on this thread's stack.
+    constexpr const char *menu_dfhack_hint = "DFCN_SETTINGS_MENU_TOGGLE_DFHACK";
+    if (SDL_GetHintBoolean(menu_dfhack_hint, SDL_FALSE) == SDL_TRUE) {
+        if (SDL_SetHintWithPriority(menu_dfhack_hint, "0", SDL_HINT_OVERRIDE) != SDL_TRUE) {
+            log("ERROR", "Cannot consume settings menu DFHack toggle request");
+            return true;
+        }
+        dfcn_toggle_dfhack_v1();
+        consumed = true;
+    }
+    constexpr const char *menu_reload_hint = "DFCN_SETTINGS_MENU_RELOAD_CORE";
+    if (SDL_GetHintBoolean(menu_reload_hint, SDL_FALSE) != SDL_TRUE) return consumed;
+    if (SDL_SetHintWithPriority(menu_reload_hint, "0", SDL_HINT_OVERRIDE) != SDL_TRUE) {
+        log("ERROR", "Cannot consume settings menu core reload request");
+        return true;
+    }
+    try {
+        if (reload_requested.load(std::memory_order_acquire)) {
+            reload_enable = true;
+            retry_core_load();
+        } else {
+            finish_reload_request(load_core(true), true);
+        }
+    } catch (...) {
+        cancel_reload_request();
+        log("ERROR", "Settings menu core reload failed; Shift+F5 can retry loading the deployed core");
+    }
+    return true;
 }
