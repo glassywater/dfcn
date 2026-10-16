@@ -776,21 +776,14 @@ case 30: { // created_building
     if (!actor || !building || !site) return std::nullopt;
     const bool underworld_spire = structure_type(number("site"), number("structure")) == 7;
     const char *key = underworld_spire ?
-        "thrust a spire of slade up from the underworld, naming it {p}, and established a gateway between worlds" :
+        "thrust a spire of slade up from the underworld, naming it {p}, and established a gateway between worlds in {p}" :
         (number("flags") & 1) ? "rebuilt {p} in {p}" : "constructed {p} in {p}";
     // Keep the location inside the predicate so the Chinese template can
     // place it before the verb while retaining the building/site links.
-    std::vector<Pieces> arguments{*building};
-    if (!underworld_spire) arguments.push_back(*site);
-    auto creation = apply(key, arguments);
+    auto creation = apply(key, {*building, *site});
     if (!creation) return std::nullopt;
     join(result, *actor);
     join(result, *creation);
-    if (underworld_spire) {
-        auto place = apply("in {p}", {*site});
-        if (!place) return std::nullopt;
-        append_clause(result, *place);
-    }
     translated = true;
     break;
 }
