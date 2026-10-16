@@ -36,9 +36,11 @@ name = "part"
 [[rulesets]]
 name = "animated_body"
 [rulesets.rules]
-# The unit animation field retains a corpse producer's complete body suffix
-# after its typed owner. That owner may be an authored name absent from the
-# person lexicon; keep the body grammar independent of the owner vocabulary.
+# ELF e67280 (full) and e66970 (short) supply this complete body suffix
+# after a separately resolved owner, including unit animation labels. An
+# authored owner need not occur in the person lexicon. Keep all body outcomes
+# independent of that vocabulary: part, tissue STATE_NAME, part + STATE_NAME,
+# skeleton, partial skeleton, mutilated corpse and partial remains.
 "{::items::corpse}{::items::$number}" = "{::items::corpse}{::items::$number}"
 "{^0}{::items::corpse::mangled}{part}{::items::$number}" = "{^0}{::items::corpse::mangled}{part}{::items::$number}"
 

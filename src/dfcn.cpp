@@ -5473,6 +5473,8 @@ private:
         std::string_view source) const;
     std::optional<std::string> translate_material_name(
         std::string_view source, bool adjective = false) const;
+    std::optional<std::string> translate_corpsepiece_item_name(
+        std::string_view source) const;
     std::optional<std::string> translate_coin_item_name(
         std::string_view complete_source) const;
     std::optional<std::string> translate_coin_native_identity(
@@ -8489,14 +8491,60 @@ static std::optional<std::string> translate_plant_seed_item_name(
         "::items::seeds::caption", origins);
 }
 
-static std::optional<std::string> translate_corpsepiece_item_name(
-        std::string_view source) {
-    // The complete body-component grammar owns both the animal label and
-    // the noun. Keep its native designation/count wrappers intact, and never
-    // send its result through the finished-equipment material qualifier.
-    std::vector<size_t> origins;
-    return RULESETS.translate_with_origins(native_text_to_utf8(source),
-        "::items::corpsepiece::caption", origins);
+static std::string_view item_number_suffix(std::string_view source);
+
+std::optional<std::string> Overlay::translate_corpsepiece_item_name(
+        std::string_view source) const {
+    TranslationStateScope translation_scope;
+    if (!config_.compositional_rules) return std::nullopt;
+    const auto scoped = [](std::string_view value, const char *context) {
+        std::vector<size_t> origins;
+        return RULESETS.translate_with_origins(native_text_to_utf8(value), context, origins);
+    };
+    const auto body = [&](auto &&self, std::string_view value) -> std::optional<std::string> {
+        value = trim_view(value);
+        if (value.empty() || value.ends_with("...")) return std::nullopt;
+        // ELF e67280 appends [amount] after the body noun; e68020 wraps the
+        // complete designation. Counts and marks may therefore nest in either
+        // order. Strip only their shared, digit-validated native productions.
+        if (const auto suffix = item_number_suffix(value); !suffix.empty()) {
+            const auto noun = self(self, value.substr(0, value.size() - suffix.size()));
+            return noun ? std::optional<std::string>(*noun + std::string(suffix)) : std::nullopt;
+        }
+        const auto designation = split_item_designation(value);
+        if (!designation.prefix.empty()) {
+            const auto noun = self(self, designation.item);
+            return noun ? std::optional<std::string>(designation.prefix + *noun +
+                designation.suffix) : std::nullopt;
+        }
+        // The shared full/short producers select a unit or historical name
+        // before the body outcome. Resolve these independently, as materials
+        // already do, rather than routing the owner back through a recursive
+        // external-person callback. A nickname can itself contain "'s ".
+        for (size_t at = value.rfind("'s "); at != std::string_view::npos;
+             at = at == 0 ? std::string_view::npos : value.rfind("'s ", at - 1)) {
+            const auto owner_source = trim_view(value.substr(0, at));
+            const auto body_source = trim_view(value.substr(at + 3));
+            if (owner_source.empty() || body_source.empty()) continue;
+            const auto noun = scoped(body_source, "::items::corpsepiece::animated_body");
+            if (!noun) continue;
+            auto owner = native_unit_identity_source_target(owner_source);
+            if (!owner) owner = translate_legends_actor(owner_source);
+            if (!owner) owner = translate_english_character_name(owner_source);
+            // This complete possessive/body production owns a personal-name
+            // field, including an authored spelling absent from the lexicon.
+            // Preserve that spelling just as the native animation-label path
+            // does; it must not prevent translation of the independent noun.
+            if (!owner) owner = native_text_to_utf8(owner_source);
+            if (owner->empty() || owner->find("[C:") != std::string::npos ||
+                    owner->find_first_of("\r\n") != std::string::npos) continue;
+            return *owner + "的" + *noun;
+        }
+        // Unnamed species, your, rotten/mangled bodies, generic material
+        // classes and remains retain their existing complete scoped grammar.
+        return scoped(value, "::items::corpsepiece::caption");
+    };
+    return body(body, source);
 }
 
 static bool is_manufacturing_activity_caption(std::string_view source) {

@@ -1,0 +1,63 @@
+function	branch	production	dynamic_supplier	translation_path
+0x1669dd0	look selector 0: item	{complete_item}	item ID -> e68020 with article mode -1	map_hover Item -> fortress item caption
+0x1669dd0	look selector 1: terrain	{tile_description}	tile material, shape, features, construction	map_hover Terrain -> tile-description grammar
+0x1669dd0	look selector 2: unit	{unit_designation}	unit ID -> complete identity/species/profession	map_hover Unit -> native identity / legends actor / unit identity
+0x1669dd0	look selector 3: building	{building_designation}	building ID -> virtual complete name	map_hover Building -> info-panel building title
+0x1669dd0	look selector 4: vermin	{item_or_species}	item ID if available; otherwise count/colony and RAW species	map_hover Vermin -> item or creature name
+0x1669dd0	vermin count/colony predicates	a colony of {plural_species} / a swarm of {plural_species} / many {plural_species} / {species}	colony flag; count >=50, >=10 or below 10	map_hover.toml
+0x1669dd0	look selector 5: flow	{flow_caption}	flow type switch 0..13	map_hover Flow
+0x1669dd0	flow types 0,1,2,4,5	Miasma / Steam / Mist / Magma Mist or Lava Mist / Smoke	native flow type and lava/magma state	local-overrides.tsv
+0x1669dd0	flow types 3,9,10	{material} vapor	material name plus native vapor suffix	map_hover.toml + materials
+0x1669dd0	flow types 6,7,8,11,12	Dragonfire / Fire / A Web / An Ocean Wave / Sea Foam	native flow type	local-overrides.tsv
+0x1669dd0	flow type 13	Item Cloud / {complete_item}	item cloud material/item payload	map_hover Flow -> literal or item caption
+0x1669dd0	look selector 6: campfire	A Campfire	fixed native text	local-overrides.tsv
+0x1669dd0	look selector 7: spatter	{amount}{material} / {complete_item}	spatter item ID or material tuple plus amount category	map_hover Spatter -> health::contaminant / material / item
+0x1669dd0	spatter amount prefixes	A spattering of / A smear of / A pool of / A dusting of / A small pile of / A pile of	state and native amount category	health::contaminant.toml
+0x1669dd0	look selector 8: building item	{complete_item}	building-contained item ID -> e68020	map_hover BuildingItem -> fortress item caption
+0x1669dd0	look selector 9: fire	A Fire	fixed native text	local-overrides.tsv
+0x1669dd0	look selector 10: water	Water [{n}/7] / Stagnant water [{n}/7] / Salt water [{n}/7] / Stagnant salt water [{n}/7]	native stagnation/salt flags and amount 0..7	map_hover Water -> translated liquid + original measurement
+0x1669dd0	look selector 11: magma	Lava [{n}/7] / Magma [{n}/7]	native magma flag and amount 0..7	map_hover Magma -> translated liquid + original measurement
+0x1669dd0	look selector 12: spoor	Track/Spoor / Track/Spoor: {track}	track detail bit and root spoor record	map_hover Spoor -> complete track grammar
+0x1669dd0	track description	{owner}'s {right_or_left}{item_or_body_part} print / {material} imprint / broken vegetation / unintelligible	owner unit/caste; full item/material/body-part data; native shortening retained separately	Overlay::translate_map_track
+0x1669dd0	track direction/ownership annotations	/N / /NE / /E / /SE / /S / /SW / /W / /NW / /yours or companion's	native spoor direction and party ownership flags	complete track grammar and local-overrides.tsv
+0x1669dd0	look selector 13: sound	{sound} (heard) / {sound} (heard recently)	native sound selector, quiet/loud flag and age	local-overrides.tsv
+0x1669dd0	sound finite vocabulary	Quiet movement / Loud movement / Light combat / Heavy combat / Quiet vocalization / Loud vocalization / Quiet grinding / Loud grinding / Storytelling / Preaching / Poem recitation / Musical voice / Dancing	native sound table and quiet/loud decisions	local-overrides.tsv (both heard and heard recently forms)
+0x1669dd0	look selector 14: remembered	Creature / Object / Structure / Wall / Upward stair / Downward stair / Updown stair / Upward ramp / Downward ramp / Floor / Open air + (remembered)	native memory selector table 0..10	local-overrides.tsv
+0x1669dd0	look selector 15: extra sense	Blood of the living (sensed)	fixed native text	local-overrides.tsv
+0xe67280	adventurer historical figure is the player	your {body}	historical figure identity	items::corpse::owner + corpsepiece::animated_body
+0xe67280	named historical figure	{owner}'s {body}	12bfe90(figure+8)	Overlay::translate_corpsepiece_item_name
+0xe67280	named unit without named historical figure	{owner}'s {body}	12bfe90(unit+0x38)	Overlay::translate_corpsepiece_item_name
+0xe67280	unnamed body	{rotten}{species} {body}	b6c100 creature/caste or b6ca30 unit description	items::corpsepiece::named / items::corpse::named
+0xe67280	item rotten flag	rotten 	item+0x11 bit 0	items::corpsepiece::^0 / items::corpse::^0
+0xe67280	mangled body predicate	mangled 	body part status and 19c9050	items::corpse::mangled
+0xe67280	one complete surviving body part	{body_part}	BODY/BP or INDIVIDUAL_NAME, body_part+0x90	items::corpsepiece::part / health::bodypart::bodypart_main
+0xe67280	one material, mixed tissues/parts	{material_state}	tissue material type/index/phase -> 6cbc80 -> STATE_NAME	items::corpsepiece::material
+0xe67280	one material on a detached body part	{body_part} {material_state}	root surviving body part + tissue material STATE_NAME	items::corpsepiece::part
+0xe67280	material lookup unavailable	material	6cbc80 returns null	items::corpsepiece::material
+0xe67280	skeletal body	skeleton	surviving bone/tissue/body flags	items::corpse::main
+0xe67280	whole corpse	corpse	surviving body root	items::corpse::main
+0xe67280	damaged whole corpse	mutilated corpse	missing body parts / mutilation flag	items::corpse::mutilated + main
+0xe67280	missing body or unresolved composite remains	partial remains	body-info null or mixed surviving roots	items::corpse::main
+0xe67280	quantity greater than one	{body} [{amount}]	maximum material amount; excludes slot 10; item flags 0x1001 suppress count	shared item_number_suffix / items::$number
+0xe66970	named unit	{owner}'s {rotten}{mangled}{body}	12bfe90 unit name; same complete body outcomes	Overlay::translate_corpsepiece_item_name
+0xe66970	unnamed short description	{rotten}{species} {mangled}{body}	b6c100 creature/caste; same body-part/material outcomes	items::corpsepiece::named / items::corpse::named
+0xe66970	partial skeletal short description	partial skeleton	short-description surviving skeletal/body flags	items::corpse::partial + main
+0xe6ece0	article mode	{a_or_the}{full_body_description}	native article predicates -> virtual +0x5e8	shared item description article grammar
+0x12b6a70	item type 23	{rotten}corpse / {rotten}corpses	type flags + number mode	items::corpse
+0x12b6a70	item type 46; flag 0x200	{rotten}tooth / {rotten}teeth	material flags; dental branch takes precedence	items::corpsepiece::main
+0x12b6a70	item type 46; flags 0x20,0x40	{rotten}bone(s) / {rotten}shell(s)	material flags in native priority order	items::corpsepiece::main
+0x12b6a70	item type 46; flags 0x1,0x8,0x10	{rotten}plant part(s) / silk body part(s) / leather body part(s)	material flags in native priority order	items::corpsepiece::main
+0x12b6a70	item type 46; flags 0x80,0x100,0x400,0x800	{rotten}wooden body part(s) / soap body part(s) / horn(s) / pearl(s)	material flags in native priority order	items::corpsepiece::main
+0x12b6a70	item type 46; flags 0x1000,0x2000 or default	{rotten}yarn body part(s) / strand body part(s) / body part(s)	material flags in native priority order	items::corpsepiece::main
+0x12b6a70	item type 47; missing race	{Rotten}remains	item rotten flag	items::remains
+0x12b6a70	item type 47; race/caste available	{Rotten}{species} {remains_name}	12ae800 species + 1324c20 caste slots 15/16 by number mode	items::remains
+0xe3bf80,0xe6efb0,0xeb2bb0	remains virtual descriptions	{article}{generic_remains}	12b6a70 with actual item type/material/caste	items::remains + shared article grammar
+0xe68020	native item wrapper	{quality}{ownership}{wear}{complete_item}{wear}{ownership}{quality}	actual virtual +0x5e8; quality and wear switch tables	item_designation.h / items::corpsepiece::caption
+0x12bfe90	owner language-name variants	{first_name} {surname} {title} {of_group}	language_name fields, native word groups and optional authored nickname	native identity / legends actor / character-name resolver; unknown authored bytes retained
+0x74ca90	material noun/phase variants	{owner_or_species}{material_state}	material type/index/phase and material templates	Overlay::translate_material_name
+0x19bded0	powder amount below 25,25..49,50+	{material} specks / dusting / coating	material state 3 and amount thresholds	health::contaminant
+0x19bded0	other state amount below 25,25..49,50+	{material} spatter / smear / covering	material state and amount thresholds	health::contaminant
+0x19bded0	material types 219..418	{amount_phrase} of {material}	same six amount/state branches with native word order	health::contaminant
+RAW	body-part vocabulary	{body_part}	396 distinct BP/INDIVIDUAL_NAME spellings; raw-fields.tsv	health::bodypart::bodypart_main + raw_names
+RAW	material phase vocabulary	{material_state}	1025 distinct installed STATE_NAME/STATE_NAME_ADJ spellings; raw-fields.tsv	materials::state and complete material resolver
+shared item graph	other items on the same map tile	{complete_item_designation}	adventure-inventory/elf-owners.tsv and elf-decompiled.c enumerate all item title virtuals	Overlay::translate_fortress_item_caption

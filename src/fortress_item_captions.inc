@@ -65,6 +65,11 @@ std::optional<std::string> Overlay::translate_written_item_caption(
 std::optional<std::string> Overlay::translate_item_caption_grammar(
         std::string_view source) const {
     if (!config_.compositional_rules) return std::nullopt;
+    // Body owners are complete typed fields, including authored spellings.
+    // Resolve them before equipment/material recursion enters the generic
+    // item namespace and obscures the independently known anatomy suffix.
+    if (source.find("'s ") != std::string_view::npos)
+        if (auto body = translate_corpsepiece_item_name(source)) return body;
     // Complete equipment keeps its material and specification in the same
     // order as split native rows, including materials supplied by extensions.
     if (auto equipment = translate_arena_equipment_source_phrase(source))
