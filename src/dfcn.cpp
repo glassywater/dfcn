@@ -2253,6 +2253,9 @@ struct NativeDrawnTextRow {
     bool unit_identity_header = false;
     bool unit_identity_ready = true;
     std::string unit_identity_semantic_key;
+    // List renderers reuse their NativeString for later rows. A pending draw
+    // owns its exact identity even after that address names somebody else.
+    std::shared_ptr<const NativeUnitIdentitySource> unit_identity_pending{};
     // The native squad alias branch owns this exact string, independently
     // of identically spelled generated names and ordinary UI labels.
     std::optional<std::string> squad_alias_target{};
@@ -2913,6 +2916,8 @@ static void remember_native_drawn_text_row(int x, int y, std::string_view source
             row.unit_identity_header = identity->character_header;
             row.unit_identity_ready = identity->ready;
             row.unit_identity_semantic_key = identity->semantic_key;
+            if (!identity->ready)
+                row.unit_identity_pending = std::make_shared<const NativeUnitIdentitySource>(*identity);
         }
         if (row.unit_identity_target) row.caption_source = true;
         row.squad_alias_target = squad_alias_target ? std::move(squad_alias_target)
@@ -2946,14 +2951,15 @@ static void refresh_native_unit_identity_draw(NativeDrawnTextRow &row) {
         : std::string_view(row.complete_source);
     const auto identity = g_native_graphics_read_view && !DfhackTranslationThreadScope::active
         ? prepare_native_unit_identity_source_binding(source, row.address,
-            row.unit_identity_semantic_key)
+            row.unit_identity_semantic_key, row.unit_identity_pending.get())
         : native_unit_identity_source_binding(source, row.address,
             row.unit_identity_semantic_key);
     if (!identity) return;
-    // A reused NativeString with the same spelling can belong to another
-    // unit. Only the full captured semantic binding may complete this row.
+    // Complete only this draw's full semantic binding. Its captured pending
+    // snapshot outlives the temporary NativeString used by subsequent rows.
     row.unit_identity_ready = identity->ready;
     row.unit_identity_target = identity->ready ? identity->target : std::string{};
+    if (identity->ready) row.unit_identity_pending.reset();
 }
 
 #include "native_captured_text_snapshot.inc"

@@ -2161,6 +2161,8 @@ static void capture_native_squads_caption(graphicst *graphics,
                 row.unit_identity_header = identity->character_header;
                 row.unit_identity_ready = identity->ready;
                 row.unit_identity_semantic_key = identity->semantic_key;
+                if (!identity->ready)
+                    row.unit_identity_pending = std::make_shared<const NativeUnitIdentitySource>(*identity);
             }
             x = graphics->screenx; y = graphics->screeny;
             dimx = graphics->dimx; dimy = graphics->dimy;
