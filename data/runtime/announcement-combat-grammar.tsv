@@ -421,7 +421,7 @@ sentence	An ambush! Skulking vermin!	有埋伏！鬼鬼祟祟的害虫！		0x141
 sentence	An ambush! Curse all friends of nature!	有埋伏！诅咒所有自然之友！		0x1413625b0..0x1413640b1; complete native static branch
 sentence	An ambush! Curse them!	有埋伏！诅咒他们！		0x1413625b0..0x1413640b1; complete native static branch
 sentence	Thief! Protect the hoard from skulking filth!	小偷！保护财宝，别让鬼祟的败类得手！		0x1413625b0..0x1413640b1; complete native static branch
-sentence	Snatcher! Protect the children!	拐子！保护孩子们！		0x1413625b0..0x1413640b1; complete native static branch
+sentence	Snatcher! Protect the children!	有人抢孩子！快保护孩子们！		0x1413625b0..0x1413640b1; complete native static branch
 sentence	An ambush! Drive them out!	有埋伏！把他们赶出去！		0x1413625b0..0x1413640b1; complete native static branch
 sentence	{s} has come!	{s1}来了！	unit	0x1413627bb+0x141362a43
 sentence	{s} has come! {s}	{s1}来了！{s2}	unit,$description	0x1413627bb+0x1413628e6+0x14136290a; full appended RAW description

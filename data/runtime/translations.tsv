@@ -11962,7 +11962,7 @@ A tiny striped rodent found scurrying through the bushes and trees of the temper
 After harvesting plants like the Pigtail, first process them at the Farmer's Workshop, then	[C:7:0:0]收获[C:6:0:1]猪尾草[C:7:0:0]等植物后，先在[C:6:0:0]农夫工坊[C:7:0:0]加工，接着	hq
 Alternatively, you can reduce the number of high, medium or low volcanism squares required.	也可以减少所需的高、中或低火山活动度方格数量。	l
 Announcement combat activity-detail-section [work-ordinal,activity-detail-section]: {s} {s}	第{s1}{s2}	l
-Announcement combat adventure-announcement [$announcement-item]: {s} was seen being stolen!	{s1}被人看见遭到偷窃！	l
+Announcement combat adventure-announcement [$announcement-item]: {s} was seen being stolen!	有人看见{s1}被偷走了！	l
 Announcement combat adventure-announcement []: A migrant has arrived at this unhappy place.	一名移民来到了这个不幸的地方。	l
 Announcement combat adventure-announcement []: A true Mountainhome must have a true throne!	真正的山国都城，必须拥有真正的王座！	l
 Announcement combat adventure-announcement []: An honor as always. How can I be of service?	每次见到你都深感荣幸。有什么需要我效劳的？	l
@@ -16199,7 +16199,7 @@ Announcement combat adventure-announcement []: I'm concentrating on something.	�
 Announcement combat adventure-announcement []: I'm going to visit the library.	我正要去图书馆。	l
 Announcement combat adventure-announcement []: It is good to finally meet you!	终于见到你了，真高兴！	l
 Announcement combat adventure-announcement []: Oh, I don't usually think much.	我平时不怎么多想。	l
-Announcement combat adventure-announcement []: Snatcher! Protect the children!	拐子！保护孩子们！	l
+Announcement combat adventure-announcement []: Snatcher! Protect the children!	有人抢孩子！快保护孩子们！	l
 Announcement combat adventure-announcement []: Take care you are not deceived.	小心受骗。	l
 Announcement combat adventure-announcement []: The burden will be lifted soon.	重担很快就会卸下。	l
 Announcement combat adventure-announcement []: The situation cannot get worse.	情况不会更糟了。	l
@@ -22563,7 +22563,7 @@ Announcement combat sentence [$name]: Search first in {s}, here.	先在这里的
 Announcement combat sentence [$unit]: {s} regains consciousness.	{s1}恢复了意识。	l
 Announcement combat sentence []: I cannot abandon my pilgrimage.	我不能放弃朝圣之旅。	l
 Announcement combat sentence []: I'm sorry. I can't go with you.	抱歉。我不能跟你走。	l
-Announcement combat sentence []: Snatcher! Protect the children!	拐子！保护孩子们！	l
+Announcement combat sentence []: Snatcher! Protect the children!	有人抢孩子！快保护孩子们！	l
 Announcement combat sentence []: The performances will be great.	演出一定会很精彩。	l
 Announcement combat sentence []: There's nothing organized here.	这里的买卖没人组织。	l
 Announcement combat sentence []: You failed to compose anything.	你什么作品也没创作出来。	l
@@ -84380,7 +84380,7 @@ were expelled in the wilds	在荒野中遭到了驱逐	h
 {s} was made to {a} at {p}	在{p1}，向{a1}提出了{s1}	ht
 {s} was made to {a} by {a}	{a2}向{a1}提出了{s1}	ht
 {s} was made to {a} in {p}	在{p1}，向{a1}提出了{s1}	ht
-{s} was seen being stolen!	{s1}被人看见遭到偷窃！	hPt
+{s} was seen being stolen!	有人看见{s1}被偷走了！	hPt
 {s} with {a} in the wilds.	在荒野中，与{a1}的{s1}。	htEi
 {s} {s} sideburns are {s}.	{s}的{s}鬓角{s}。	wtlx
 {t} was {s} by {a} at {p}.	在{p1}，{t1}被{a1}{s1}。	ht

@@ -404,7 +404,7 @@ You have bestowed the name {b} upon {s}.	你将{s}命名为{b}。
 {s} has been moved from its proper place!	{s}被移离了原本的位置！
 {s} is missing from its proper place!	{s}从原本的位置不见了！
 {s} was seen being passed to a thief!	{s}被人看见交给了一个窃贼！
-{s} was seen being stolen!	{s}被人看见遭到偷窃！
+{s} was seen being stolen!	有人看见{s}被偷走了！
 {n} drinks the {s}.	{n}喝下了{s}。
 {n} eats the {s}.	{n}吃下了{s}。
 It makes them look even more sick.	这使其看起来更加恶心了。
