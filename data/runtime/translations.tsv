@@ -8198,7 +8198,7 @@ A large, muscular, spotted feline found in tropical jungles. It is solitary and 
 A small creature found in both salt and fresh water that lives in an asymmetrical shell rooted to the bottom.	一种在盐水和淡水中都能找到的小生物，生活在一个不对称的外壳中，外壳底部有根。	lP
 A small forest bird known for the distinctive flaps of skin hanging from its face. It is prized for its meat.	一种小型森林鸟类，以其脸上垂下的独特皮瓣二闻名。它的肉享誉于世。	lP
 A small ground-dwelling bird. It has a featherless head and eats seeds and insects. It moves about in groups.	一种住在地上的小鸟。它有一个没有羽毛的头，吃种子和昆虫。它成群结队地活动.	lP
-Announcement combat adventure-announcement []: Hopefully your friends can dissuade you from this foolishness.	希望你的朋友能劝你别再做这种傻事。	l
+Announcement combat adventure-announcement []: Hopefully your friends can dissuade you from this foolishness.	希望你的朋友能劝你别去冒这个险。	l
 Announcement combat adventure-announcement []: Probably on the move or deep underground, but I can't be sure.	可能正在途中，也可能在地下深处，但我不能确定。	l
 Announcement combat adventure-announcement []: Reveal what you have been scheming or suffer the consequences.	交代你的阴谋，否则后果自负。	l
 Announcement combat adventure-announcement []: Try building a butcher's shop and slaughtering some livestock.	试着建造屠宰场，宰杀一些牲畜。	l
@@ -23976,7 +23976,7 @@ DFHack hotkeys hint: Export displayed text to a Markdown file.	将当前文本�
 DFHack hotkeys hint: Invoke hotkeys from the interactive menu.	从交互菜单执行快捷键命令。	l
 Explore and investigate the history of the world as it stands.	探索并研究这个世界迄今为止的历史。	hP
 Explore and investigate the history of the world as it stands.	探索并探寻这个世界现存的历史原貌。	w
-Hopefully your friends can dissuade you from this foolishness.	希望你的朋友能劝你别再做这种傻事。	hPD
+Hopefully your friends can dissuade you from this foolishness.	希望你的朋友能劝你别去冒这个险。	hPD
 I am {n}, once of the Underworld. I bind myself to this place.	我是{n1}，曾来自地下世界。我将自身束缚于此地。	hHt
 I decided to frame {n} for job order violation by fooling {n}.	我决定通过欺骗{n2}，诬陷{n1}犯下违反工作命令罪。	hPtD
 I engaged {n} to frame {n} for attempted theft by fooling {n}.	我雇{n1}通过欺骗{n3}，诬陷{n2}犯下盗窃未遂罪。	hPtD
