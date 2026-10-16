@@ -250,7 +250,7 @@ std::optional<std::string> Overlay::translate_announcement_combat(
         }
         if (scope == "$memorial-preference") {
             auto result = translate_character_preference_term(input);
-            return finish(item_description_translation_complete(result)
+            return finish(translation_complete_with_native_nicknames(result, input)
                 ? std::move(result) : std::nullopt);
         }
         if (scope == "$memorial-material") {
@@ -262,7 +262,7 @@ std::optional<std::string> Overlay::translate_announcement_combat(
         }
         if (scope == "$memorial-form") {
             auto result = translate_character_preference_term(input, true);
-            return finish(item_description_translation_complete(result)
+            return finish(translation_complete_with_native_nicknames(result, input)
                 ? std::move(result) : std::nullopt);
         }
         if (scope == "$unit") {

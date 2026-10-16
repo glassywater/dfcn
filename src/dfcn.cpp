@@ -1,6 +1,7 @@
 #include <SDL2/SDL.h>
 
 #include "native_runtime.h"
+#include "runtime_config.h"
 #include "native_font_metrics.h"
 #include "native_graphics.h"
 #include "byayoi_sprite.inc"
@@ -353,6 +354,7 @@ struct Config {
     static constexpr double font_scale_baseline = 0.92;
     bool enabled = true;
     std::string language = "zh-Hans";
+    bool native_language_original = false;
     bool clear_background = true;
     bool log_matches = false;
     bool trace_render_timing = false;
@@ -3911,6 +3913,9 @@ private:
         std::string_view english, const NativeHistoryName *identity = nullptr) const;
     std::string transliterate_english_name(std::string_view english,
         const NativeHistoryName *identity = nullptr) const;
+    std::string native_language_word_display(std::string_view original) const;
+    std::string transliterate_native_language_word(std::string_view original) const;
+    std::string transliterate_site_spelling(std::string_view original) const;
     std::optional<std::string> translate_site_display(
         const NativeHistoryName &name, std::string_view source) const;
     std::string site_name_core(const NativeHistoryName &name) const;
@@ -4641,6 +4646,7 @@ private:
 
     bool load_config();
     bool load_rules();
+    bool load_native_language_vocabulary();
     void build_trie(std::function<void()> *catalog_publication = nullptr);
     bool load_font();
     bool load_compositional_rules();
@@ -5408,7 +5414,8 @@ private:
         const std::string &screen_text, bool phonetic_only = false,
         bool character_name_gloss = false,
         ProceduralNameHead name_head = {},
-        ProceduralFragmentContext context = ProceduralFragmentContext::general_text) const;
+        ProceduralFragmentContext context = ProceduralFragmentContext::general_text,
+        bool allow_native_original = true) const;
     std::optional<std::string> translate_worldgen_creation(
         const std::string &source) const;
     std::optional<std::string> translate_adventure_origin_source(
@@ -5935,6 +5942,9 @@ static std::optional<std::string> utf8_to_cp437(std::string_view source,
     bool preserve_authored_cjk = false);
 static bool translation_complete_with_native_nicknames(
     const std::optional<std::string> &target, std::string_view source);
+static std::string preserve_native_language_original(
+    std::string_view source_utf8, std::string original_utf8);
+static void clear_native_language_originals();
 static bool item_term_contains_sentence_punctuation(std::string_view source);
 
 #include "display_language.inc"
@@ -5954,6 +5964,7 @@ bool Overlay::load_config() {
         size_t line_no = 0;
         while (std::getline(in, line)) {
             ++line_no;
+            if (line_no == 1 && line.starts_with("\xef\xbb\xbf")) line.erase(0, 3);
             if (!line.empty() && line.back() == '\r') line.pop_back();
             const std::string stripped = trim(line);
             if (stripped.empty() || stripped[0] == '#' || stripped[0] == ';' ||
@@ -5970,6 +5981,8 @@ bool Overlay::load_config() {
             const std::string value = trim(stripped.substr(eq + 1));
             if (key == "enabled") next.enabled = parse_bool(value, next.enabled);
             else if (key == "language") next.language = value;
+            else if (key == "native_language_original")
+                next.native_language_original = parse_bool(value, next.native_language_original);
             else if (key == "clear_background") next.clear_background = parse_bool(value, next.clear_background);
             else if (key == "log_matches") next.log_matches = parse_bool(value, next.log_matches);
             else if (key == "trace_render_timing") next.trace_render_timing = parse_bool(value, next.trace_render_timing);
@@ -6514,6 +6527,7 @@ bool Overlay::load_compositional_rules() {
     settings_announcement_toggle_x_ = -1;
     settings_announcement_columns_valid_ = false;
     settings_announcement_column_centres_twice_.fill(0);
+    RULESETS.set_native_language_original(config_.native_language_original);
     const bool loaded = RULESETS.init();
     if (loaded) {
         RULESETS.set_context_revision_provider([] {
@@ -6533,6 +6547,8 @@ bool Overlay::load_compositional_rules() {
         // supplies a fully translated noun/title, never untranslated captures.
         RULESETS.set_phrase_resolver([this](std::string_view source, std::string_view kind)
                 -> std::optional<std::string> {
+            if (kind == "native_language_original")
+                return preserve_native_language_original(source, std::string(source));
             // Animal labels are unit identities, not bare species. Tasks and
             // roster captions must share ownership, numbering and state parsing,
             // including an authored UTF-8 name inside native CP437 text.
@@ -6695,6 +6711,39 @@ bool Overlay::load_generated_instrument_names() {
     identity_record_translation_cache_.clear();
     identity_record_translation_order_.clear();
     load_instrument_translations();
+    const bool loaded_languages = load_native_language_vocabulary();
+    native_name_reviewed_transliterations_.clear();
+
+    // The exact table retains its pronunciations even in original mode;
+    // only display selection changes, never the name/WORD vocabulary.
+    size_t reviewed = 0;
+    constexpr std::string_view pronunciation_scope = "Native name pronunciation: ";
+    for (const Rule &rule : rules_) {
+        if (rule.numeric_template || rule.string_template ||
+            rule.source.empty() || rule.target.empty()) continue;
+        std::string folded;
+        if (rule.legends_prose && rule.source.starts_with(pronunciation_scope)) {
+            folded = lower_native_name(trim(rule.source.substr(pronunciation_scope.size())));
+        } else {
+            if (!rule.word_boundary || !rule.case_insensitive) continue;
+            folded = lower_native_name(trim(rule.source));
+            if (folded.empty() || folded.front() == rule.source.front()) continue;
+        }
+        if (native_name_language_masks_.contains(folded))
+            native_name_reviewed_transliterations_[folded] = rule.target;
+        const auto native = generated_instrument_name_transliterations_.find(folded);
+        if (native == generated_instrument_name_transliterations_.end()) continue;
+        if (native->second.empty()) ++reviewed;
+        native->second = rule.target;
+    }
+    log_line("INFO", "Loaded " +
+        std::to_string(generated_instrument_name_transliterations_.size()) +
+        " Dwarven native instrument-name forms (" +
+        std::to_string(reviewed) + " reviewed transliterations)");
+    return loaded_languages;
+}
+
+bool Overlay::load_native_language_vocabulary() {
     generated_instrument_name_transliterations_.clear();
     native_name_language_masks_.clear();
     native_name_word_languages_.clear();
@@ -6765,42 +6814,6 @@ bool Overlay::load_generated_instrument_names() {
         }
     }
 
-    // The existing exact table contains reviewed phonetic forms for most
-    // Dwarven words. Import only its title-cased, case-insensitive word rules;
-    // ordinary semantic UI entries such as `Mat` deliberately do not have the
-    // `i` flag and therefore cannot leak into this phonetic-only namespace.
-    // Short roots omitted from global literals use the same vocabulary via a
-    // scoped entry generated from the existing native-language TOML tables.
-    size_t reviewed = 0;
-    constexpr std::string_view pronunciation_scope = "Native name pronunciation: ";
-    for (const Rule &rule : rules_) {
-        if (rule.numeric_template || rule.string_template ||
-            rule.source.empty() || rule.target.empty()) {
-            continue;
-        }
-        std::string folded;
-        if (rule.legends_prose && rule.source.starts_with(pronunciation_scope)) {
-            folded = lower_native_name(trim(rule.source.substr(pronunciation_scope.size())));
-        } else {
-            if (!rule.word_boundary || !rule.case_insensitive) continue;
-            folded = lower_native_name(trim(rule.source));
-            if (folded.empty() || folded.front() == rule.source.front()) continue;
-        }
-        if (native_name_language_masks_.contains(folded)) {
-            native_name_reviewed_transliterations_[folded] = rule.target;
-        }
-        const auto native =
-            generated_instrument_name_transliterations_.find(folded);
-        if (native == generated_instrument_name_transliterations_.end())
-            continue;
-        if (native->second.empty()) ++reviewed;
-        native->second = rule.target;
-    }
-
-    log_line("INFO", "Loaded " +
-        std::to_string(generated_instrument_name_transliterations_.size()) +
-        " Dwarven native instrument-name forms (" +
-        std::to_string(reviewed) + " reviewed transliterations)");
     log_line("INFO", "Loaded " +
         std::to_string(native_name_language_masks_.size()) +
         " native personal-name forms across " +
@@ -8194,6 +8207,7 @@ static std::string native_text_to_utf8(std::string_view input) {
     return output;
 }
 
+#include "native_language_display.inc"
 #include "native_file_errors.inc"
 
 // Soundtrack titles and credits are authored metadata, including built-in
@@ -9569,6 +9583,23 @@ std::optional<std::string> Overlay::translate_world_region_heading(std::string_v
 
 static std::string transliterate_native_history_name(std::string_view raw);
 
+std::string Overlay::native_language_word_display(std::string_view original) const {
+    const std::string display = native_text_to_utf8(original);
+    if (config_.native_language_original)
+        return preserve_native_language_original(display, display);
+    return transliterate_native_language_word(original);
+}
+
+std::string Overlay::transliterate_native_language_word(std::string_view original) const {
+    const std::string display = native_text_to_utf8(original);
+    if (contains_cjk_utf8(original)) return display;
+    const auto reviewed = native_name_reviewed_transliterations_.find(
+        lower_native_name(std::string(original)));
+    if (reviewed != native_name_reviewed_transliterations_.end() && !reviewed->second.empty())
+        return reviewed->second;
+    return transliterate_native_history_name(original);
+}
+
 std::optional<std::string> Overlay::translate_english_character_name(
         std::string_view raw, std::string_view native_given,
         std::string_view native_given_target) const {
@@ -9615,7 +9646,9 @@ std::optional<std::string> Overlay::translate_english_character_name(
                 // the phonetics even when the two spellings differ.
                 const bool proven_first = !proven_given.empty() &&
                     (given == proven_given || given == first);
-                if (proven_first && !proven_target.empty()) return proven_target;
+                if (proven_first && !proven_target.empty()) {
+                    return proven_target;
+                }
                 if (contains_cjk_utf8(given)) return native_text_to_utf8(given);
                 const std::string_view phonetic_source = proven_first ?
                     std::string_view(proven_given) : given;
@@ -9626,10 +9659,7 @@ std::optional<std::string> Overlay::translate_english_character_name(
                         !proven_first &&
                         !(generated_suffix && given == first &&
                           !english_character_names_.known_component(given))) return std::nullopt;
-                const auto reviewed = native_name_reviewed_transliterations_.find(key);
-                if (reviewed != native_name_reviewed_transliterations_.end() &&
-                        !reviewed->second.empty()) return reviewed->second;
-                return transliterate_native_history_name(spelling);
+                return transliterate_native_language_word(spelling);
             },
             [&](std::string_view nickname) {
                 auto target = exact_literal_translation(
@@ -9891,7 +9921,7 @@ std::optional<std::string> Overlay::translate_worldgen_creation(
 std::optional<std::string> Overlay::translate_procedural_fragment(
     const std::string &screen_text, bool phonetic_only,
     bool character_name_gloss, ProceduralNameHead name_head,
-    ProceduralFragmentContext context) const {
+    ProceduralFragmentContext context, bool allow_native_original) const {
     TranslationWorkFrame work_frame("generated name", screen_text);
     if (screen_text.empty()) return std::nullopt;
 
@@ -9899,6 +9929,14 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
     // graphical logo. It is not a native-language name: the single-token
     // phonetic fallback below would turn it into a fictitious Chinese name.
     if (trim_view(screen_text) == "DFHack") return std::nullopt;
+
+    // This entry is explicitly a native-language field. Keep the complete
+    // spelling before root folding or phonetic separators can change it.
+    const bool original_native = config_.native_language_original && allow_native_original;
+    if (phonetic_only && original_native) {
+        const auto original = native_text_to_utf8(screen_text);
+        return preserve_native_language_original(original, original);
+    }
 
     if (!phonetic_only && context == ProceduralFragmentContext::general_text &&
             screen_text.starts_with("Creating "))
@@ -10296,13 +10334,12 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
     auto transliterate = transliterate_native_history_name;
 
     auto render_native_word = [&](std::string_view raw) {
-        const std::string folded = lower_native_name(std::string(raw));
-        const auto reviewed = native_name_reviewed_transliterations_.find(folded);
-        if (reviewed != native_name_reviewed_transliterations_.end() &&
-            !reviewed->second.empty()) {
-            return reviewed->second;
-        }
-        return transliterate(folded);
+        return transliterate_native_language_word(raw);
+    };
+    const auto native_display = [&](std::string_view raw, std::string phonetic) {
+        if (!original_native) return phonetic;
+        const auto original = native_text_to_utf8(raw);
+        return preserve_native_language_original(original, original);
     };
     auto resolve_native_given_word = [&](std::string_view raw)
             -> std::optional<NativeNameWord> {
@@ -10310,7 +10347,7 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
         const auto found = native_name_language_masks_.find(folded);
         if (found == native_name_language_masks_.end()) return std::nullopt;
         return NativeNameWord{
-            render_native_word(folded), found->second, 1,
+            native_display(raw, render_native_word(folded)), found->second, 1,
         };
     };
     auto resolve_native_compound_word = [&](std::string_view raw,
@@ -10322,7 +10359,11 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
         cache_key.push_back(require_compound_grammar ? '\1' : '\0');
         cache_key += folded;
         if (const auto found = native_compound_cache_.find(cache_key);
-                found != native_compound_cache_.end()) return found->second;
+                found != native_compound_cache_.end()) {
+            auto result = found->second;
+            if (result) result->translated = native_display(raw, std::move(result->translated));
+            return result;
+        }
         std::optional<NativeNameWord> best;
         int best_score = -1;
         size_t best_shorter_part = 0;
@@ -10370,6 +10411,7 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
         }
         if (native_compound_cache_.size() < 32768 && folded.size() <= 512)
             native_compound_cache_.emplace(std::move(cache_key), best);
+        if (best) best->translated = native_display(raw, std::move(best->translated));
         return best;
     };
     auto native_name_word_shape = [](std::string_view word) {
@@ -10394,6 +10436,7 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
         if (auto root = resolve_native_given_word(folded);
                 root && (root->language_mask & languages)) {
             root->language_mask &= languages;
+            root->translated = native_display(raw, std::move(root->translated));
             return root;
         }
         std::optional<NativeNameWord> best;
@@ -10421,6 +10464,7 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
                     suffixes.front()->translated == best->translated)
                 best->language_mask |= mask;
         }
+        if (best) best->translated = native_display(raw, std::move(best->translated));
         return best;
     };
     if (native_name_groups) {
@@ -10474,7 +10518,7 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
                 }
                 translated += "·" + group->translated;
             }
-            if (complete) return translated;
+            if (complete) return native_display(screen_text, std::move(translated));
         }
         return std::nullopt;
     }
@@ -10538,7 +10582,7 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
                 if (!language_mask) return std::nullopt;
                 translated += "·" + suffix->translated;
             }
-            return translated;
+            return native_display(raw, std::move(translated));
         };
         if (const auto person = with_given_name()) return person;
 
@@ -10576,7 +10620,7 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
                 if (!suffix) { complete = false; break; }
                 translated += "·" + suffix->translated;
             }
-            if (complete) return translated;
+            if (complete) return native_display(raw, std::move(translated));
         }
         return std::nullopt;
     };
@@ -10754,7 +10798,7 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
         const auto surname = english_character_names_.compound(
             native_text_to_utf8(surname_source));
         if (!surname) return std::nullopt;
-        return given->translated + "·" + *surname;
+        return transliterate_native_language_word(given_source) + "·" + *surname;
     };
 
     // A chooser can contain both actions and people. Validate the generated
@@ -11235,11 +11279,16 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
         const auto native = translate_procedural_fragment(
             std::string(native_name), true);
         if (!native) return std::nullopt;
+        // The left field is native spelling; the quoted English gloss owns
+        // its Chinese name rendering, including a phonetic given name.
+        const auto phonetic = original_native ? translate_procedural_fragment(
+            std::string(native_name), true, false, {},
+            ProceduralFragmentContext::general_text, false) : native;
+        if (!phonetic) return std::nullopt;
         const auto given = native_name.substr(0, native_name.find(' '));
         if (character && source_gloss != native_name) {
-            const auto given_target = trim_view(
-                std::string_view(*native).substr(0,
-                    std::min(native->find("·"), native->find("“"))));
+            const auto given_target = trim_view(std::string_view(*phonetic).substr(0,
+                std::min(phonetic->find("·"), phonetic->find("“"))));
             const auto translated = translate_english_character_name(
                 source_gloss, given, given_target);
             return *native + "，“" + (translated ? *translated :
@@ -11249,7 +11298,7 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
         if (source_gloss == native_name) {
             // A single-name creature repeats its untranslated given name
             // inside quotes. It is not an English dictionary word.
-            gloss = *native;
+            gloss = *phonetic;
         } else if (source_gloss.starts_with(given) &&
                    source_gloss.size() > given.size() &&
                    source_gloss[given.size()] == ' ') {
@@ -11257,7 +11306,7 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
             // identity. In isolation the same word can also segment as a
             // compound, so resolving it again can produce two different
             // transliterations for one person on the same row.
-            gloss = native->substr(0, native->find("·"));
+            gloss = phonetic->substr(0, phonetic->find("·"));
             auto rest = trim_view(source_gloss.substr(given.size()));
             std::string_view surname, title;
             if (rest.starts_with("the ")) {
@@ -11676,7 +11725,7 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
             }
             if (const auto compound = resolve_native_compound_word(screen_text))
                 return complete_generated_name(compound->translated);
-            return complete_generated_name(transliterate(screen_text));
+            return complete_generated_name(native_display(screen_text, transliterate(screen_text)));
         }
     }
 
@@ -12567,13 +12616,11 @@ std::optional<std::string> Overlay::translate_ui_message_capture(
         if (const auto identity = exact_literal_translation("Announcement unit: " + lower(source)))
             return identity;
     }
-    const auto complete = [](const std::optional<std::string> &target) {
+    const auto complete = [&](const std::optional<std::string> &target) {
         if (!target || target->empty()) return false;
         const auto designation = split_item_designation(*target);
         return !designation.item.empty() &&
-            std::none_of(designation.item.begin(), designation.item.end(), [](unsigned char ch) {
-                return (ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z');
-            });
+            translation_complete_with_native_nicknames(std::string(designation.item), source);
     };
     std::optional<std::string> target;
     if (unit_label) {
@@ -43146,19 +43193,8 @@ DFCN_EXPORT void dfhooks_init() {
     dfcn::reset_native_dfhack_console_lifecycle();
     dfcn::g_native_hook_thread = std::this_thread::get_id();
     dfcn::log_line("INFO", "========== DFCN loaded ==========");
-    const auto user_config = dfcn::runtime::game_config_path();
-    std::error_code config_error;
-    if (!fs::exists(user_config, config_error) && !config_error) {
-        // Copy the installed defaults byte-for-byte only on first use. Never
-        // replace an existing user file, including one created concurrently.
-        fs::copy_file(dfcn::runtime::default_config_path(), user_config,
-                      fs::copy_options::skip_existing, config_error);
-    }
-    if (config_error) {
-        dfcn::log_line("WARN", "Cannot initialize " + dfcn::runtime::utf8(user_config) +
-            ": " + config_error.message() + "; falling back to " +
-            dfcn::runtime::utf8(dfcn::runtime::default_config_path()));
-    }
+    if (auto error = dfcn::runtime::sync_game_config_defaults())
+        dfcn::log_line("WARN", *error);
     const SDL_bool native_ui = SDL_SetHintWithPriority(
         SDL_HINT_IME_SHOW_UI, "1", SDL_HINT_OVERRIDE);
     const SDL_bool internal_editing = SDL_SetHintWithPriority(

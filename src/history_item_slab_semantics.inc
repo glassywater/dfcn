@@ -21,9 +21,7 @@ const auto item_slab_description = [&]() -> std::optional<Pieces> {
         std::istringstream words(text("slab.native_name"));
         std::string word, rendered;
         while (words >> word) {
-            const auto reviewed = native_name_reviewed_transliterations_.find(lower_native_name(word));
-            const std::string part = reviewed != native_name_reviewed_transliterations_.end()
-                && !reviewed->second.empty() ? reviewed->second : transliterate_native_history_name(word);
+            const std::string part = native_language_word_display(word);
             if (part.empty()) return std::nullopt;
             if (!rendered.empty()) rendered += "·";
             rendered += part;

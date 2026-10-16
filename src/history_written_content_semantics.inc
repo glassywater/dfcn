@@ -190,9 +190,7 @@ const auto written_content = [&](const std::string &prefix, int carrier) -> std:
                 if (!author) {
                     std::istringstream words(raw); std::string word, value;
                     while (words >> word) {
-                        const auto found = native_name_reviewed_transliterations_.find(lower_native_name(word));
-                        const std::string part = found != native_name_reviewed_transliterations_.end() && !found->second.empty() ?
-                            found->second : transliterate_native_history_name(word);
+                        const std::string part = native_language_word_display(word);
                         if (part.empty()) return std::nullopt;
                         if (!value.empty()) value += "·";
                         value += part;

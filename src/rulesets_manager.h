@@ -49,6 +49,9 @@ namespace Hooks {
         // resource change; installing/removing a package needs no UI action.
         bool resources_changed() const;
         std::uint64_t resource_revision() const;
+        // Keep recognized native-language names in their exact source spelling
+        // instead of applying the shared four-race transliteration grammar.
+        void set_native_language_original(bool original);
 
         std::optional<std::string> translate(const std::string& text) const;
         // Local command callbacks can own DFHack's Console lock. Give their
@@ -447,6 +450,7 @@ namespace Hooks {
         // 3. 成员变量
         // =====================================================================
         bool initialized = false;
+        bool native_language_original_ = false;
         std::string last_load_error_;
         std::filesystem::path ruleset_directory_;
         std::vector<ResourceDependency> loaded_dependencies_;

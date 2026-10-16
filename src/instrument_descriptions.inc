@@ -99,6 +99,10 @@ std::optional<std::string> Overlay::translate_instrument_native_name(
         }
     }
     if (result.empty()) return std::nullopt;
+    if (config_.native_language_original) {
+        const auto original = native_text_to_utf8(source);
+        return preserve_native_language_original(original, original);
+    }
     return result;
 }
 

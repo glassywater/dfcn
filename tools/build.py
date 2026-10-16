@@ -116,26 +116,23 @@ def package_translation_extensions() -> None:
         print(f"Independent translation data mod packaged: {archive}", flush=True)
 
 
-def deploy_language_setting(game: Path) -> None:
-    """Add the new default to existing user preferences without replacing them."""
-    path = game / "dfcn_config.ini"
-    if not path.is_file():
-        return
-    if path.is_symlink():
-        raise RuntimeError(f"Refusing configuration publication through a symlink: {path}")
-    content = path.read_bytes()
-    if re.search(r"(?mi)^\s*language\s*=", content.decode("utf-8-sig")):
-        return
+def add_missing_language_settings(content: bytes) -> bytes:
+    """Append language defaults while preserving existing user preferences."""
+    config = content.decode("utf-8-sig")
     newline = b"\r\n" if b"\r\n" in content else b"\n"
-    addition = newline + b"# BCP 47: zh-Hans (default) / zh-Hant (Taiwan wording)." + newline + b"language=zh-Hans" + newline
-    candidate = path.with_name(path.name + ".publish")
-    if candidate.is_symlink():
-        raise RuntimeError(f"Refusing configuration staging through a symlink: {candidate}")
-    try:
-        candidate.write_bytes(content + addition)
-        os.replace(candidate, path)
-    finally:
-        candidate.unlink(missing_ok=True)
+    additions = []
+    for key, value, comment in (
+        ("language", "zh-Hans", "# BCP 47: zh-Hans (default) / zh-Hant (Taiwan wording)."),
+        ("native_language_original", "0",
+         "# 四族语言（矮人、精灵、哥布林、人类）：1 显示原文，0 显示音译（默认）。\n"
+         "# 中文释义中的人名首名仍按原有逻辑音译，不受此选项影响。"),
+    ):
+        if not re.search(rf"(?mi)^\s*{key}\s*=", config):
+            additions.extend(line.encode("utf-8") for line in comment.splitlines())
+            additions.append(f"{key}={value}".encode("utf-8"))
+    if not additions:
+        return content
+    return content + newline + newline.join(additions) + newline
 
 
 def deploy_runtime_data(directory: Path) -> None:
@@ -225,8 +222,6 @@ def deploy_runtime_data(directory: Path) -> None:
     config_source = next(path for path in (runtime / "config.ini", directory / "config.ini",
                                           RUNTIME / "config.ini") if path.is_file())
     config = config_source.read_text(encoding="utf-8")
-    if not re.search(r"(?mi)^\s*language\s*=", config):
-        config += "\n# BCP 47: zh-Hans (default) / zh-Hant (Taiwan wording).\nlanguage=zh-Hans\n"
     relocations = {
         **{f"dfcn/{name}": f"dfcn/data/runtime/{name}"
            for name in ("translations.tsv", "untranslated.tsv", "font.ttf", "font.otf", "font.ttc")},
@@ -235,7 +230,7 @@ def deploy_runtime_data(directory: Path) -> None:
     }
     for old, new in relocations.items():
         config = config.replace(old, new).replace(old.replace("/", "\\"), new.replace("/", "\\"))
-    install(runtime / "config.ini", config.encode("utf-8"))
+    install(runtime / "config.ini", add_missing_language_settings(config.encode("utf-8")))
     for name in ("untranslated.tsv", "font.ttf", "font.otf", "font.ttc"):
         destination = runtime / name
         if destination.exists():
@@ -830,7 +825,6 @@ def main() -> int:
         for directory in edition_destinations():
             deploy_runtime_data(directory)
         for directory in native_game_directories():
-            deploy_language_setting(directory)
             deploy_translation_extensions(directory)
         package_translation_extensions()
         if rebuild_core:

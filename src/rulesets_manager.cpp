@@ -82,6 +82,7 @@ namespace Hooks {
         parser->rulesets_ = rulesets_;
         parser->cyclic_rule_signatures_ = cyclic_rule_signatures_;
         parser->static_creature_names_ = static_creature_names_;
+        parser->native_language_original_ = native_language_original_;
         // Leaf indexes contain views into token storage, so rebuild them in
         // the copied graph. Memoized trees, Overlay resolvers and the game
         // context-revision provider stay empty in this detached publication.
@@ -233,6 +234,23 @@ namespace Hooks {
     std::uint64_t RulesetsManager::resource_revision() const {
         dfcn::TranslationStateScope translation_scope;
         return resource_revision_;
+    }
+
+    void RulesetsManager::set_native_language_original(bool original) {
+        dfcn::TranslationStateScope translation_scope;
+        if (native_language_original_ == original) return;
+        native_language_original_ = original;
+        // Parent productions retain their children's rendered names too.
+        memo_cache_.clear();
+        if (active_resolution_session_) {
+            active_resolution_session_->memo.clear();
+            active_resolution_session_->callbacks.clear();
+            ++active_resolution_session_->cycle_revision;
+        }
+        if (dfcn::active_translation_work) {
+            dfcn::active_translation_work->parser_sessions.erase(this);
+            ++dfcn::active_translation_work->cycle_revision;
+        }
     }
 
     bool RulesetsManager::init() {
@@ -1737,6 +1755,9 @@ namespace Hooks {
         size_t level
     ) const {
         dfcn::TranslationWorkFrame translation_work_frame(identifier, text);
+        const bool preserve_native_language = native_language_original_ &&
+            (identifier == "::dwarf_language" ||
+             identifier.starts_with("::dwarf_language::"));
         ResolutionSession local_session;
         std::shared_ptr<ResolutionSession> shared_session;
         auto* previous_session = active_resolution_session_;
@@ -2023,7 +2044,16 @@ namespace Hooks {
                 // but do not let an older literal sense win on equal length.
                 if (resolved_external_lengths.contains(matched.size())) continue;
 
-                std::string translated_str = build_translated(trans_tokens, candidate.results);
+                // Resolve the usual grammar first, then retain the actual
+                // matched bytes, including case and accents. The identity
+                // origin path also preserves each byte's original styling.
+                std::string translated_str = preserve_native_language ? matched :
+                    build_translated(trans_tokens, candidate.results);
+                // The owner records this recognized raw span as a complete
+                // native-language field. Its return value never changes the
+                // preserved spelling; detached caption parsers have no owner.
+                if (preserve_native_language && !matched.empty() && phrase_resolver_)
+                    phrase_resolver_(matched, "native_language_original");
 
                 auto result = std::make_shared<const ResultTree>(
                     identifier,

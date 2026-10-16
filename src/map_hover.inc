@@ -1154,7 +1154,9 @@ void Overlay::append_map_hover_phrases(const NativeTextCard &card,
                 (static_cast<uint32_t>(row.map_hover.data[0]) & 0xffffu) == 13u &&
                 row.map_hover.data[2] >= 0);
         const bool untranslated = !target || target->empty() ||
-            (!authored_field && !item_description_translation_complete(target));
+            (!authored_field && !translation_complete_with_native_nicknames(target,
+                row.map_hover.kind == NativeMapHoverKind::None
+                    ? std::string_view(row.source) : std::string_view(normalized)));
         if (untranslated) {
             // Every native caption owns the complete row, even when a mod
             // introduces unknown vocabulary. Preserve it visibly as one noun

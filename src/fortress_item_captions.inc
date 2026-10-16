@@ -47,13 +47,13 @@ std::optional<std::string> Overlay::translate_written_item_caption(
             for (int index : legends_book_rules_) {
                 const auto title = translate_legends_nested(
                     rules_[static_cast<size_t>(index)], value, depth);
-                if (item_description_translation_complete(title))
+                if (translation_complete_with_native_nicknames(title, value))
                     return title_marks ? "《" + *title + "》" : *title;
             }
             return std::nullopt;
         }
         const auto title = translate_legends_book(value);
-        if (!item_description_translation_complete(title)) return std::nullopt;
+        if (!translation_complete_with_native_nicknames(title, value)) return std::nullopt;
         return title_marks ? "《" + *title + "》" : *title;
     };
     return written(written, source, 0, book_context);
@@ -172,7 +172,7 @@ std::optional<std::string> Overlay::translate_fortress_item_caption(
                 false, false, {}, ProceduralFragmentContext::native_item_name);
             if (!target) target = translate_compositional(std::string(source));
         }
-        if ((!typed_description_complete && !item_description_translation_complete(target)) ||
+        if ((!typed_description_complete && !translation_complete_with_native_nicknames(target, source)) ||
             target->find("[C:") != std::string::npos ||
             target->find_first_of("\r\n") != std::string::npos) target.reset();
     } catch (const TranslationWorkLimit &limit) {
