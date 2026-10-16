@@ -39,7 +39,8 @@
                 uintptr_t address = 0, parent = 0;
                 std::array<int32_t, 4> rect{};
             };
-            const auto read_widget = [&](uintptr_t address, uintptr_t reference, Widget &widget) {
+            const auto read_widget = [&](uintptr_t address, uintptr_t reference, Widget &widget,
+                                         bool empty_width = false) {
                 uintptr_t vtable = 0;
                 uint8_t flags = 0;
                 if (!base || !address || !native_history_copy(address, vtable) ||
@@ -50,7 +51,8 @@
                     return false;
                 widget.address = address;
                 return widget.rect[0] >= 0 && widget.rect[1] >= 0 &&
-                    widget.rect[2] >= widget.rect[0] &&
+                    (widget.rect[2] >= widget.rect[0] ||
+                     (empty_width && widget.rect[2] == widget.rect[0] - 1)) &&
                     (widget.rect[3] >= widget.rect[1] ||
                      (reference == 0x162eaf8 && widget.rect[3] == widget.rect[1] - 1));
             };
@@ -79,18 +81,24 @@
                         draw.draw_dimy != gps_->dimy) continue;
                 Widget text, extra, row, scroll, table, list;
                 if (!read_widget(draw.address - 0x150, 0x1618aa0, text) ||
-                        !read_widget(text.parent, 0x15eb4a8, extra) || !contains(extra, text) ||
+                        // This child-bearing container has no minimum width:
+                        // native layout leaves x2 == x1 - 1 while its Text draws.
+                        !read_widget(text.parent, 0x15eb4a8, extra, true) || !contains(extra, text) ||
                         !read_widget(extra.parent, 0x15eb4a8, row) || !contains(row, extra) ||
                         !read_widget(row.parent, 0x15eef08, scroll) || !contains(scroll, row) ||
                         !read_widget(scroll.parent, 0x1785bd0, table) || !contains(table, scroll) ||
                         !read_widget(table.parent, 0x17868d0, list) || !contains(list, table)) continue;
                 std::array<uintptr_t, 3> options{};
-                std::array<int32_t, 3> values{};
                 if (!native_history_copy_bytes(list.address + 0x2c0, options.data(), sizeof(options)) ||
-                        !options[0] || options[1] - options[0] != sizeof(values) ||
-                        options[1] > options[2] ||
-                        !native_history_copy_bytes(options[0], values.data(), sizeof(values)) ||
-                        values != std::array<int32_t, 3>{1, 2, 12}) continue;
+                        !options[0] || options[0] > options[1] || options[1] > options[2]) continue;
+                const auto option_bytes = options[1] - options[0];
+                std::array<int32_t, 4> values{};
+                // PORTRAIT, NAME_PROF, SHOW_GENDER; SELECTED adds the native
+                // interrogation checkbox. Both are the same owned row layout.
+                if ((option_bytes != 3 * sizeof(int32_t) && option_bytes != sizeof(values)) ||
+                        !native_history_copy_bytes(options[0], values.data(), option_bytes) ||
+                        values[0] != 1 || values[1] != 2 || values[2] != 12 ||
+                        (option_bytes == sizeof(values) && values[3] != 11)) continue;
                 std::string source;
                 if (!native_history_copy_string(draw.address, source) || source != draw.source) continue;
                 std::vector<uintptr_t> members;
@@ -132,7 +140,7 @@
                     NativeTextCardRow row;
                     std::string complete;
                     std::optional<std::string> identity;
-                    bool witness = false, status = false;
+                    bool witness = false, status = false, grazer = false;
                 };
                 std::vector<Field> fields;
                 const auto add = [&](int x, int y, const std::string &visible,
@@ -146,7 +154,10 @@
                                 x < field.row.x + static_cast<int>(field.row.source.size())) return;
                     fields.push_back({{x, y, visible, {foreground}}, complete, identity,
                         (!identity || identity->empty()) && witness_count(complete),
-                        (!identity || identity->empty()) && interview_status(complete)});
+                        (!identity || identity->empty()) && (interview_status(complete) ||
+                            (x >= witness_box.x && complete == "Deceased")),
+                        (!identity || identity->empty()) && x == identity_box.x + 1 &&
+                            complete == "Grazer: requires pasture"});
                 };
                 for (int y = middle - 1; y <= middle + 1; ++y) {
                     for (const auto &draw : draws) {
@@ -210,9 +221,15 @@
                     }
                 }
                 for (const auto &field : fields) {
-                    auto target = field.witness || field.status
-                        ? translate_justice_case_text(field.complete) : field.identity;
-                    if ((!target || target->empty()) && !field.witness && !field.status) {
+                    // The callback's Deceased Text belongs below the witness
+                    // count. The unit_name renderer owns the indented grazer
+                    // continuation; neither caption is a personal identity.
+                    const bool literal_status = field.grazer ||
+                        (field.status && field.complete == "Deceased");
+                    auto target = literal_status ? exact_literal_translation(field.complete)
+                        : field.witness || field.status
+                            ? translate_justice_case_text(field.complete) : field.identity;
+                    if ((!target || target->empty()) && !field.witness && !field.status && !field.grazer) {
                         // The native Name widget reuses one output string for
                         // every person. A pending publication is not a blank
                         // identity: this owned full caption can use the same
@@ -227,7 +244,14 @@
                             std::any_of(fields.begin(), fields.end(), [&](const Field &other) {
                                 return other.witness && other.row.x >= witness_box.x;
                             })) target = std::string{};
-                    const auto &box = field.witness ? witness_box : identity_box;
+                    // Retain the native column for every auxiliary Text,
+                    // including statuses with a baseline shared by the name.
+                    auto box = field.witness || field.row.x >= witness_box.x
+                        ? witness_box : identity_box;
+                    if (field.grazer) {
+                        box.w -= field.row.x - box.x;
+                        box.x = field.row.x;
+                    }
                     append(field.row, kFortressJusticeActorRule,
                         target.value_or(native_text_to_utf8(field.complete)), !target, box, field.complete);
                 }
