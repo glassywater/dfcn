@@ -273,10 +273,12 @@ std::optional<std::string> Overlay::translate_announcement_combat(
             // body suffix together before treating it as a bare person name.
             if (!result) result = translate_native_animation_label(input);
             if (!result) result = translate_ui_message_capture(input, true);
-            if (!result && (initial_scope == "fortress-announcement" ||
-                    initial_scope == "fortress-job" || initial_scope == "fortress-arrival" ||
-                    initial_scope == "fortress-attack"))
-                result = translate_unit_identity(input, true);
+            // The complete native production establishes this unit slot in
+            // combat and adventure records too. b6ca30 may return an authored
+            // name alone; it need not exist in the generated-name lexicon.
+            // Resolve known identities first, then preserve the owned name
+            // through the same typed path used by fortress announcements.
+            if (!result) result = translate_unit_identity(input, true);
             return finish(std::move(result));
         }
         if (scope == "$historical-actor") {

@@ -10932,6 +10932,7 @@ Announcement combat rumor-event [rumor-time,rumor-person]: I heard that {s}, {s}
 Announcement combat rumor-flight [rumor-army]: just before an army {s} descended upon the place	了那里，随后一支军队{s1}便袭击了那里	l
 Announcement combat sentence [$person,threat-possessive]: [{s} pauses to regain {s} composure.]	【{s1}稍作停顿，{s2}正努力恢复镇定。】	l
 Announcement combat sentence [$travel-site,$travel-site]: The people of {s} go to {s} to trade.	{s1}的人会去{s2}做买卖。	l
+Announcement combat sentence [$unit]: {s} collapses and falls to the ground from over-exertion.	{s1}因过度劳累而瘫倒在地。	l
 Announcement combat sentence [boast-victim,boast-slain-clause]: I am the conqueror of {s}, {s}!	我就是{s1}的征服者，{s2}！	l
 Announcement combat sentence [boast-victim,boast-slain-clause]: I am the strangler of {s}, {s}!	绞杀{s1}的正是我，{s2}！	l
 Announcement combat spoken-sentence [$item,merchant-address]: Might I interest you in {s}, {s}?	{s2}，我能让你对{s1}感兴趣吗？	l
@@ -13800,6 +13801,7 @@ Announcement combat rumor-event []: Our people have been tormented by a fearsome
 Announcement combat rumor-event [rumor-person]: This place has been conquered by {s}.	这个地方已经被{s1}征服了。	l
 Announcement combat sentence [$item,merchant-address]: Splendid {s} right there, {s}.	{s2}，就那里的出色的{s1}。	l
 Announcement combat sentence [$item,merchant-town]: {s} was tanned right here in {s}.	{s1}就是在{s2}鞣制的。	l
+Announcement combat sentence [$unit]: {s} vomits and bits of it get stuck in the web.	{s1}呕吐了，一些呕吐物粘在了网上。	l
 Announcement combat sentence [dialogue-query-person]: What can you tell me about {s}?	能跟我说说{s1}吗？	l
 Announcement combat sentence [guard-building,$distance]: There are guards in {s} {s}.	{s2}的{s1}里有卫兵。	l
 Announcement combat sentence [threat-name,threat-crimes]: Knowing no mercy, {s} {s} !	{s1}毫不留情，{s2}！	l
@@ -15889,6 +15891,7 @@ Announcement combat negotiation-opening []: negotiate, keeping a sense of humor	
 Announcement combat rumor-event [rumor-person,$book]: {s} does not possess {s}.	{s2}不在{s1}手里。	l
 Announcement combat sentence [$item,merchant-address]: Splendid {s} there, {s}.	{s2}，那里的出色的{s1}。	l
 Announcement combat sentence [$person]: {s}. How do you like the sound of that?	{s1}。你觉得这个名字怎么样？	l
+Announcement combat sentence [$unit]: {s} has partially overcome the paralysis.	{s1}的麻痹消退了一些。	l
 Announcement combat sentence []: Ha! Such enthusiasm from one such as yourself.	哈！就凭你，也这么热心？	l
 Announcement combat sentence []: I've always dreamed of seeing far-away places.	我一直梦想着去看看遥远的地方。	l
 Announcement combat sentence [head,equipment]: {s}, but it is deflected by {s}!	{s1}，却被{s2}挡开了！	l
@@ -16610,6 +16613,9 @@ Announcement combat sentence [$item,merchant-address]: Decent {s} there, {s}.	{s
 Announcement combat sentence [$item]: The {s} has lodged firmly in the wound!	{s1}牢牢嵌在了伤口中！	l
 Announcement combat sentence [$person]: The seat of {s} is also located here.	{s1}的统治中心也在这里。	l
 Announcement combat sentence [$term]: You have struck {s}! Praise the miners!	你挖到了{s1}！赞美矿工们！	l
+Announcement combat sentence [$unit]: {s} is aware of her surroundings again.	{s1}重新感知到了周围的环境。	l
+Announcement combat sentence [$unit]: {s} is aware of his surroundings again.	{s1}重新感知到了周围的环境。	l
+Announcement combat sentence [$unit]: {s} is aware of its surroundings again.	{s1}重新感知到了周围的环境。	l
 Announcement combat sentence []: How I long for some excitement in my life...	我真想让日子过得刺激些……	l
 Announcement combat sentence [dialogue-family,$person]: My {s} was named {s}.	我已故的{s1}名叫{s2}。	l
 Announcement combat sentence [dialogue-query-person]: Please guide me to {s}.	请带我去找{s1}。	l
@@ -17390,6 +17396,7 @@ Announcement combat quest-destination [conversation-conflict-place]: in {s}	{s1}
 Announcement combat rumor-event [$person]: This insidious evil is {s} the .	这个阴险的恶徒就是{s1}。	l
 Announcement combat sentence [$item,merchant-address]: Good {s} there, {s}.	{s2}，那里的优质的{s1}。	l
 Announcement combat sentence [$name]: I rule {s} from this capital as well.	我也在这座首都统治着{s1}。	l
+Announcement combat sentence [$unit]: {s} has fully overcome the paralysis.	{s1}的麻痹完全消退了。	l
 Announcement combat sentence [description-institution]: There is {s} there.	那里有一座{s1}。	l
 Announcement combat sentence [dialogue-recognition]: {s}, is it really you?	{s1}，真的是你吗？	l
 Announcement combat sentence [diplomacy-group]: {s} is skirmishing with us.	{s1}正在与我们发生小规模冲突。	l
@@ -18645,6 +18652,8 @@ Announcement combat negotiation-sentence []: The proposal was a failure.	这项�
 Announcement combat quest-sentence []: I require it as a symbol of the .	我需要它作为这一职位的象征。	l
 Announcement combat rumor-identity-descriptor [rumor-identity-role]: {s}	{s1}	l
 Announcement combat sentence [$book]: I cannot give up my quest for {s}.	我不能放弃寻找{s1}。	l
+Announcement combat sentence [$unit]: {s} has climbed out of depression.	{s1}摆脱了抑郁。	l
+Announcement combat sentence [$unit]: {s} is completely free of the web.	{s1}完全挣脱了蛛网。	l
 Announcement combat sentence []: An ambush! Curse all friends of nature!	有埋伏！诅咒所有自然之友！	l
 Announcement combat sentence []: You have discovered a downward passage.	你发现了一条向下的通道。	l
 Announcement combat sentence [boast-victim]: I am the vanquisher of {s}!	战胜{s1}的正是我！	l
@@ -19031,6 +19040,7 @@ Announcement combat journal-transfer-event [journal-transfer-core]: {s}	{s1}	l
 Announcement combat justice-interrogation-factor []: feeling no avarice	毫无贪欲	l
 Announcement combat justice-interrogation-factor []: feelings of vanity	怀有虚荣心	l
 Announcement combat justice-interrogation-factor []: spurning the truth	轻视真相	l
+Announcement combat justice-intrigue-actor []: an unidentified creature	身份不明的生物	l
 Announcement combat justice-intrigue-method []: made flattering remarks	说了些奉承的话	l
 Announcement combat justice-plot-core [$historical-actor]: Sabotage {s}	破坏{s1}的活动	l
 Announcement combat memorial-clause [memorial-death,$event]: {s} in {s}	在{s2}中{s1}	l
@@ -19059,6 +19069,8 @@ Announcement combat rumor-identity [rumor-identity-descriptor]: the {s}	{s1}	l
 Announcement combat sentence [$book,$item]: I am searching for {s} {s}.	我正在寻找{s1}{s2}。	l
 Announcement combat sentence [$item,merchant-address]: Decent {s}, {s}.	{s2}，不错的{s1}。	l
 Announcement combat sentence [$item,merchant-origin]: {s} are from {s}.	{s1}来自{s2}。	l
+Announcement combat sentence [$unit]: {s} has reverted to a wild state!	{s1}恢复了野性！	l
+Announcement combat sentence [$unit]: {s} is partially free of the web.	{s1}已经挣开了部分蛛网。	l
 Announcement combat sentence []: I have no interest in your objectives.	我对你的目标毫无兴趣。	l
 Announcement combat sentence []: I've defeated many fearsome opponents!	我击败过许多可怕的对手！	l
 Announcement combat sentence []: You have discovered a great magma sea.	你发现了一片广阔的岩浆海。	l
@@ -19536,6 +19548,7 @@ Announcement combat sentence [$item,merchant-origin]: {s} is from {s}.	{s1}来�
 Announcement combat sentence [$name,$creature]: {s} is a group of {s}.	{s1}是一个由{s2}组成的势力。	l
 Announcement combat sentence [$number]: No fewer than {s} groups fled.	至少有{s1}个势力逃走了。	l
 Announcement combat sentence [$term]: There is a {s} hidden away here.	这里藏着一只{s1}。	l
+Announcement combat sentence [$unit]: {s} has left the martial trance.	{s1}脱离了战斗专注状态。	l
 Announcement combat sentence []: Hey... that sounds like a great idea!	嘿……这听起来真是个好主意！	l
 Announcement combat sentence []: [You receive a detailed description.]	【你听到了一番详细的介绍。】	l
 Announcement combat sentence [boast-victim]: I am the murderer of {s}!	谋杀{s1}的正是我！	l
@@ -20044,6 +20057,12 @@ Announcement combat quest-sentence []: Last I heard, it was held by .	我最后�
 Announcement combat rumor-event []: Seek this place if you hunt the .	想猎杀这只身份不明的生物，就去找这个地方。	l
 Announcement combat sentence [$item,merchant-address]: Good {s}, {s}.	{s2}，优质的{s1}。	l
 Announcement combat sentence [$term]: {s} destroyed by battering ram.	{s1}被攻城锤摧毁了。	l
+Announcement combat sentence [$unit]: {s} has forgotten her training!	{s1}忘掉了所受的训练！	l
+Announcement combat sentence [$unit]: {s} has forgotten his training!	{s1}忘掉了所受的训练！	l
+Announcement combat sentence [$unit]: {s} has forgotten its training!	{s1}忘掉了所受的训练！	l
+Announcement combat sentence [$unit]: {s} passes out from exhaustion.	{s1}精疲力竭，昏倒了。	l
+Announcement combat sentence [$unit]: {s} vomits into the dragonfire.	{s1}吐进了龙焰里。	l
+Announcement combat sentence [$unit]: {s} vomits into the ocean wave.	{s1}吐进了海浪里。	l
 Announcement combat sentence []: I am unfit to brave danger with you.	我不适合与你一同冒险。	l
 Announcement combat sentence []: You have discovered a cave entrance.	你发现了一个洞穴入口。	l
 Announcement combat sentence [boast-victim]: I am the crusher of {s}!	碾碎{s1}的正是我！	l
@@ -20516,6 +20535,7 @@ Announcement combat rumor-event [$person]: The creature is {s} the .	这只生�
 Announcement combat sentence [$book,$item]: I have obtained {s} {s}.	我已取得{s1}{s2}。	l
 Announcement combat sentence [$creature]: {s} roam freely out there.	{s1}在那里自由游荡。	l
 Announcement combat sentence [$person,biography-office]: {s} is {s}.	{s1}是{s2}。	l
+Announcement combat sentence [$unit]: {s} vomits into the lava mist.	{s1}吐进了熔岩雾里。	l
 Announcement combat sentence []: I'm not sure exactly where to look.	我不确定究竟该去哪里找。	l
 Announcement combat sentence []: This is a cause worthy of struggle.	这件事值得为之奋斗。	l
 Announcement combat sentence [boast-victim]: I am the killer of {s}!	杀死{s1}的正是我！	l
@@ -20973,6 +20993,7 @@ Announcement combat journal-event-title []: The failed insurrection	起义失败
 Announcement combat justice-interrogation-crime []: attempted theft	盗窃未遂	l
 Announcement combat justice-interrogation-crime []: multiple crimes	多项罪行	l
 Announcement combat justice-interrogation-factor []: being unafraid	毫不畏惧	l
+Announcement combat justice-intrigue-actor [$historical-actor]: {s}	{s1}	l
 Announcement combat justice-intrigue-factor []: admiration of power	崇拜权力	l
 Announcement combat justice-intrigue-method []: offered immortality	许诺赐予永生	l
 Announcement combat justice-intrigue-method []: played for sympathy	博取同情	l
@@ -20988,6 +21009,7 @@ Announcement combat quest-sentence []: Last I saw, it was held by .	我最后见
 Announcement combat quest-sentence []: requires it to be a proper .	有人需要它，才能名副其实地担任这一职位。	l
 Announcement combat sentence [$term]: A {s} has sprung from ambush!	一只{s1}从埋伏中跳了出来！	l
 Announcement combat sentence [$term]: {s} toppled by battering ram.	{s1}被攻城锤撞倒了。	l
+Announcement combat sentence [$unit]: {s} vomits into the sea foam.	{s1}吐进了海沫里。	l
 Announcement combat sentence []: I'd love to travel and create art.	我很想一边旅行，一边从事艺术创作。	l
 Announcement combat sentence []: The geldables have been torn away!	生殖器被撕掉了！	l
 Announcement combat sentence []: What happened to bring us to this?	究竟发生了什么，让我们走到了这一步？	l
@@ -21542,6 +21564,7 @@ Announcement combat rumor-event []: This place has been conquered.	这个地方�
 Announcement combat rumor-event [rumor-person,$book]: {s} has {s}.	{s2}在{s1}手里。	l
 Announcement combat sentence [$distance]: There are guards in {s}.	{s1}有卫兵。	l
 Announcement combat sentence [$item]: Might I interest you in {s}?	我能让你对{s1}感兴趣吗？	l
+Announcement combat sentence [$unit]: {s} is completely paralyzed!	{s1}完全麻痹了！	l
 Announcement combat sentence []: Can you manage a troupe so large?	这么大的剧团，你管得过来吗？	l
 Announcement combat sentence []: Let us leave as soon as possible.	我们尽快离开吧。	l
 Announcement combat sentence []: Many are stunned by divine power!	许多生物被神力震慑了！	l
@@ -22061,6 +22084,8 @@ Announcement combat rumor-event []: Seek this place if you hunt .	想猎杀这�
 Announcement combat sentence [$name,$name]: {s} has occupied {s}.	{s1}占领了{s2}。	l
 Announcement combat sentence [$name]: Search first in {s}, there.	先在那里的{s1}找找。	l
 Announcement combat sentence [$unit,memory-person]: {s} pets {s}.	{s1}摸了摸{s2}。	l
+Announcement combat sentence [$unit]: {s} is partially paralyzed!	{s1}部分麻痹了！	l
+Announcement combat sentence [$unit]: {s} vomits into the flames.	{s1}吐进了火焰里。	l
 Announcement combat sentence []: But mostly I just like to drink.	不过，我最喜欢的还是喝酒。	l
 Announcement combat sentence []: I don't know very much about it.	我对那里了解不多。	l
 Announcement combat sentence []: The trouble started because of .	冲突起因不详。	l
@@ -22495,6 +22520,7 @@ Announcement combat adventure-announcement []: You are forgiven.	你得到了原
 Announcement combat adventure-announcement []: You make nothing.	你什么也没做出来。	l
 Announcement combat adventure-announcement [quest-sentence]: {s}	{s1}	l
 Announcement combat agreement-conclusion-title []: bound service	被迫效力的关系	l
+Announcement combat agreement-party []: an unidentified creature	身份不明的生物	l
 Announcement combat agreement-party-list [agreement-party]: {s},	{s1}、	l
 Announcement combat agreement-record [agreement-record]: {s} via	{s1}，由居中联络	l
 Announcement combat agreement-title-core []: the embezzlement of	进行的挪用资金	l
@@ -22534,6 +22560,7 @@ Announcement combat sentence [$item]: Are you interested in {s}?	你对{s1}感�
 Announcement combat sentence [$item]: Excellent {s} right there.	就那里的上等的{s1}。	l
 Announcement combat sentence [$item]: Fantastic {s} right there.	就那里的绝妙的{s1}。	l
 Announcement combat sentence [$name]: Search first in {s}, here.	先在这里的{s1}找找。	l
+Announcement combat sentence [$unit]: {s} regains consciousness.	{s1}恢复了意识。	l
 Announcement combat sentence []: I cannot abandon my pilgrimage.	我不能放弃朝圣之旅。	l
 Announcement combat sentence []: I'm sorry. I can't go with you.	抱歉。我不能跟你走。	l
 Announcement combat sentence []: Snatcher! Protect the children!	拐子！保护孩子们！	l
@@ -23119,6 +23146,8 @@ Announcement combat merchant-advert-origin [$name]: faraway {s}	远方的{s1}	l
 Announcement combat sentence [$creature]: {s}! It's terrifying.	{s1}！太可怕了。	l
 Announcement combat sentence [$item]: Splendid {s} right there.	就那里的出色的{s1}。	l
 Announcement combat sentence [$unit,$person]: {s} STRANGUS {s}!	{s1} STRANGUS {s2}！	l
+Announcement combat sentence [$unit]: {s} is no longer enraged.	{s1}不再暴怒了。	l
+Announcement combat sentence [$unit]: {s} is no longer stunned.	{s1}不再眩晕了。	l
 Announcement combat sentence []: I've heard of a place called .	我听说过一个地方，但不知道它的名字。	l
 Announcement combat sentence []: There is also a family matter.	另外还牵涉到家族的事。	l
 Announcement combat sentence []: You have discovered a volcano.	你发现了一座火山。	l
@@ -23773,6 +23802,7 @@ Announcement combat reference-building-type []: counting house	账房	l
 Announcement combat rumor-identity-descriptor [$creature]: {s}	{s1}	l
 Announcement combat sentence [$announcement,$digits]: {s} x{s}	{s1} ×{s2}	l
 Announcement combat sentence [$unit,$person]: {s} STORKIS {s}!	{s1} STORKIS {s2}！	l
+Announcement combat sentence [$unit]: {s} is feeling sluggish!	{s1}感觉行动迟缓！	l
 Announcement combat sentence []: You failed to write anything.	你什么也没写出来。	l
 Announcement combat sentence [head]: {s}, but it glances away!	{s1}，却擦过弹开了！	l
 Announcement combat sentence [merchant-hawk]: {s}! Today only!	{s1}！仅限今天！	l
@@ -25887,6 +25917,7 @@ Announcement combat reference-kind [$creature]: ghostly {s}	幽灵形态的{s1}	
 Announcement combat rumor-event [$book]: I do not have {s}.	{s1}不在我手里。	l
 Announcement combat sentence [$item]: Good {s} right there.	就那里的优质的{s1}。	l
 Announcement combat sentence [$name,$distance]: {s} is {s}.	{s1}位于{s2}。	l
+Announcement combat sentence [$unit]: {s} gives in to pain.	{s1}痛得支撑不住了。	l
 Announcement combat sentence []: An ambush! Drive them out!	有埋伏！把他们赶出去！	l
 Announcement combat sentence []: Save us from this traitor!	救救我们，消灭这个叛徒吧！	l
 Announcement combat sentence [dialogue-stock]: We have {s}.	我们有{s1}。	l
@@ -26772,6 +26803,7 @@ Announcement combat sentence [$name,$name]: {s} is in {s}.	{s1}位于{s2}。	l
 Announcement combat sentence [$name,$name]: {s} rules {s}.	{s1}统治着{s2}。	l
 Announcement combat sentence [$name]: I am a slave of {s}.	我是{s1}的奴隶。	l
 Announcement combat sentence [$term]: You have struck {s}!	你挖到了{s1}！	l
+Announcement combat sentence [$unit]: {s} has calmed down.	{s1}平静下来了。	l
 Announcement combat sentence []: Save us from this horror!	救救我们，消灭这个怪物吧！	l
 Announcement combat sentence [actor,unit]: {s} misses {s}!	{s1}未能击中{s2}！	l
 Announcement combat sentence [biography-office]: I am {s}.	我是{s1}。	l
@@ -29656,7 +29688,6 @@ Announcement combat diplomacy-cause []: an act of theft	一次盗窃	l
 Announcement combat embark-outpost-label []: A Outpost:	一座前哨：	l
 Announcement combat journal-entity-event []: foundation	的建城行动	l
 Announcement combat journal-entity-event []: harassment	的骚扰	l
-Announcement combat justice-intrigue-actor [$historical-actor]: {s}	{s1}	l
 Announcement combat justice-intrigue-place [$name]: {s}	{s1}	l
 Announcement combat memorial-clause [$digits]: Born {s}	生于{s1}年	l
 Announcement combat memorial-clause [$digits]: Died {s}	卒于{s1}年	l
@@ -30693,9 +30724,6 @@ Announcement combat journal-event-actor []: A creature	不明生物	l
 Announcement combat journal-event-title []: Your death	你的死亡	l
 Announcement combat journal-person-event []: ascension	的就任	l
 Announcement combat justice-intrigue-actor []: subject	受审者	l
-Announcement combat justice-intrigue-actor []: an unidentified creature	身份不明的生物	l
-Announcement combat agreement-party []: subject	受审者	l
-Announcement combat agreement-party []: an unidentified creature	身份不明的生物	l
 Announcement combat memorial-death []: Burned to death	被烧死	l
 Announcement combat memorial-death []: Died peacefully	安详离世	l
 Announcement combat memorial-killer-verb []: Crucified	钉死在十字架上	l
@@ -31812,6 +31840,8 @@ Announcement combat reference-value []: introspection	自省	l
 Announcement combat rumor-event []: The creature is .	这只生物身份不明。	l
 Announcement combat rumor-owner [rumor-person]: {s}'s	{s1}的	l
 Announcement combat sentence [$item]: Good {s} there.	那里的优质的{s1}。	l
+Announcement combat sentence [$unit]: {s} falls over.	{s1}摔倒了。	l
+Announcement combat sentence [$unit]: {s} looks numb!	{s1}看起来麻木了！	l
 Announcement combat sentence []: I found myself dead.	我发现自己已经死了。	l
 Announcement combat sentence [equipment]: {s} breaks!	{s1}断裂了！	l
 Announcement combat threat-building []: the catacombs	地下墓穴	l
@@ -34218,6 +34248,7 @@ Announcement combat rumor-time []: a few months ago	几个月前	l
 Announcement combat rumor-time []: not one hour ago	不到一小时前	l
 Announcement combat rumor-time []: several days ago	数天前	l
 Announcement combat sentence [$item]: Splendid {s}.	出色的{s1}。	l
+Announcement combat sentence [$unit]: {s} has come!	{s1}来了！	l
 Announcement combat sentence [fluid,$body]: {s}{s}!	{s1}{s2}！	l
 Announcement combat sentence [memory-sentence]: {s}	{s1}	l
 Announcement combat sentence [unit]: {s} feel sick!	{s1}觉得恶心！	l
@@ -35477,6 +35508,7 @@ Announcement combat rumor-time []: a few hours ago	几小时前	l
 Announcement combat rumor-time []: a few weeks ago	几周前	l
 Announcement combat rumor-time []: a few years ago	几年前	l
 Announcement combat rumor-time []: not one day ago	不到一天前	l
+Announcement combat sentence [$unit]: {s} retches.	{s1}干呕起来。	l
 Announcement combat sentence []: I worship no one.	我不崇拜任何神祇。	l
 Announcement combat sentence [merchant-hawk]: {s}!	{s1}！	l
 Announcement combat sentence [unit]: {s} has come!	{s1}来了！	l
@@ -36821,6 +36853,7 @@ Announcement combat rumor-time []: a few days ago	几天前	l
 Announcement combat rumor-time []: long, long ago	很久很久以前	l
 Announcement combat rumor-time []: many years ago	很多年前	l
 Announcement combat sentence [$item]: Decent {s}.	不错的{s1}。	l
+Announcement combat sentence [$unit]: {s} vomits.	{s1}呕吐了。	l
 Announcement combat sentence []: Keep practicing!	继续练习吧！	l
 Announcement combat sentence []: Night creatures!	夜行生物！	l
 Announcement combat sentence []: You feel uneasy.	你感到不安。	l
@@ -39675,6 +39708,7 @@ Announcement combat agreement-crime []: robbery	抢劫	l
 Announcement combat agreement-crime []: treason	叛国	l
 Announcement combat agreement-item [$book]: {s}	{s1}	l
 Announcement combat agreement-item [$item]: {s}	{s1}	l
+Announcement combat agreement-party []: subject	受审者	l
 Announcement combat attack-site-kind []: castle	城堡	l
 Announcement combat attack-site-kind []: hamlet	村庄	l
 Announcement combat attack-site-kind []: shrine	圣地	l
