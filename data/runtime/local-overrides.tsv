@@ -1611,6 +1611,7 @@ Vermin Catcher's Shop	害虫捕坊	wi
 Vermin Catcher's Workshop	害虫捕坊	wi
 # Machine names use title case in map captions and sentence case in menus.
 Gear assembly	齿轮组	wi
+Track	轨道	w
 Track stop	轨道站点	wi
 Millstone	机械石磨	w
 Quern	手推磨	w
@@ -8329,7 +8330,7 @@ by	由	h
 {c} {s} (\x0C) in {p}	在{p}的{c}只{s}（♀）	ht
 {c} {s} (\x0C)	{c} {s}（♀）	ht
 {c} {s} in {p}	在{p}的{c}只{s}	ht
-{n} settled in {p}.	{n}定居在{p}。	ht
+{n} settled in {p}.	{n}在{p}安顿下来。	ht
 {n} attacked {p} at {p}.	在{p2}，{n}攻击了{p1}。	ht
 {n} struck down {n} in {p}.	在{p}，{n1}击杀了{n2}。	ht
 {n} routed {p} and destroyed {p}.	{n}击溃了{p}，并摧毁了{p}。	ht
@@ -12569,3 +12570,7 @@ Adventurer log agreement field: Centered on commander	已定位到指挥官	h
 Adventurer log agreement field: Centered on target	已定位到目标	h
 Adventurer log agreement field: Centered on first heard	已定位到最初获悉处	h
 Adventurer log agreement field: Centered on last heard	已定位到最近获悉处	h
+
+# Complete branches from the ELF/PE building material picker.
+Amount needed: {d} to {d}	所需数量：{d1}～{d2}	wt
+Build material: Null	物品不存在	h

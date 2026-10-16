@@ -1,0 +1,281 @@
+edition	role	entry_rva	instruction_rva	operand	encoding	text
+steam	artifact-rumor	0x65a250	0x65a503	0x141663008	cstring	I desire that 
+steam	artifact-rumor	0x65a250	0x65a5a8	0x1415e873c	cstring	 
+steam	artifact-rumor	0x65a250	0x65a61f	0x141663018	cstring	 be returned to me.
+steam	artifact-rumor	0x65a250	0x65a683	0x141663008	cstring	I desire that 
+steam	artifact-rumor	0x65a250	0x65a724	0x1415e873c	cstring	 
+steam	artifact-rumor	0x65a250	0x65a763	0x141662fb8	cstring	 be returned to my family.
+steam	artifact-rumor	0x65a250	0x65a88d	0x141662fd8	cstring	 believes that primordial remnants such as 
+steam	artifact-rumor	0x65a250	0x65a930	0x1415e873c	cstring	 
+steam	artifact-rumor	0x65a250	0x65a9a4	0x141663298	cstring	 belong back in their rightful home.
+steam	artifact-rumor	0x65a250	0x65a9f9	0x1416632c0	cstring	  Any should be brought to 
+steam	artifact-rumor	0x65a250	0x65aa36	0x1415ecfb4	cstring	 in 
+steam	artifact-rumor	0x65a250	0x65aa5d	0x141663258	cstring	, or given to one of us
+steam	artifact-rumor	0x65a250	0x65aab6	0x141663270	cstring	Speaking as a representative of 
+steam	artifact-rumor	0x65a250	0x65aada	0x141663230	cstring	, it is important that 
+steam	artifact-rumor	0x65a250	0x65ab77	0x1415e873c	cstring	 
+steam	artifact-rumor	0x65a250	0x65abb6	0x141663248	cstring	 be returned.
+steam	artifact-rumor	0x65a250	0x65ac03	0x1416631e8	cstring	  I require it as a symbol of the 
+steam	artifact-rumor	0x65a250	0x65ac7a	0x1415e85b4	cstring	.
+steam	artifact-rumor	0x65a250	0x65ac95	0x1415fcfe8	cstring	  
+steam	artifact-rumor	0x65a250	0x65ace1	0x141663210	cstring	 requires it to be a proper 
+steam	artifact-rumor	0x65a250	0x65ad5b	0x1415e85b4	cstring	.
+steam	artifact-rumor	0x65a250	0x65ad8c	0x1416631a0	cstring	  It is the symbol of the 
+steam	artifact-rumor	0x65a250	0x65ad9e	0x1416631c0	cstring	  It is a valuable treasure to us.
+steam	artifact-rumor	0x65a250	0x65adf9	0x141663160	cstring	  It should be brought to 
+steam	artifact-rumor	0x65a250	0x65ae35	0x1415ecfb4	cstring	 in 
+steam	artifact-rumor	0x65a250	0x65ae5c	0x1415e85b4	cstring	.
+steam	artifact-rumor	0x65a250	0x65aeea	0x141663180	cstring	It would be wonderful if 
+steam	artifact-rumor	0x65a250	0x65af9c	0x1415e873c	cstring	 
+steam	artifact-rumor	0x65a250	0x65afd3	0x141663138	cstring	 found a lasting home within 
+steam	artifact-rumor	0x65a250	0x65b001	0x1415e85b4	cstring	.
+steam	artifact-rumor	0x65a250	0x65b1ef	0x1415eb518	cstring	 of 
+steam	artifact-rumor	0x65a250	0x65b23d	0x141663158	cstring	 wants 
+steam	artifact-rumor	0x65a250	0x65b2df	0x1415e873c	cstring	 
+steam	artifact-rumor	0x65a250	0x65b360	0x141663118	cstring	 returned
+steam	artifact-rumor	0x65a250	0x65b372	0x1415e85b4	cstring	.
+steam	artifact-rumor	0x65a250	0x65b68f	0x1415eb518	cstring	 of 
+steam	artifact-rumor	0x65a250	0x65b6df	0x141663158	cstring	 wants 
+steam	artifact-rumor	0x65a250	0x65b78c	0x1415e873c	cstring	 
+steam	artifact-rumor	0x65a250	0x65b7dd	0x141663128	cstring	 returned to 
+steam	artifact-rumor	0x65a250	0x65b816	0x1415ecfb4	cstring	 in 
+steam	artifact-rumor	0x65a250	0x65b854	0x1415e85b4	cstring	.
+steam	artifact-rumor	0x65a250	0x65b941	0x1415e873c	cstring	 
+steam	artifact-rumor	0x65a250	0x65b989	0x1415ec860	cstring	...
+steam	artifact-rumor	0x65a250	0x65b99e	0x1415fcfe8	cstring	  
+steam	artifact-rumor	0x65a250	0x65bab6	0x141663918	cstring	Last I remember, I had it.
+steam	artifact-rumor	0x65a250	0x65bac4	0x141663938	cstring	Last I heard, I had it.
+steam	artifact-rumor	0x65a250	0x65bb19	0x1416638d8	cstring	Last I heard, you held it.
+steam	artifact-rumor	0x65a250	0x65bb38	0x1416638f8	cstring	Last I saw, it was held by 
+steam	artifact-rumor	0x65a250	0x65bb46	0x1416638a0	cstring	Last I heard, it was held by 
+steam	artifact-rumor	0x65a250	0x65bc12	0x1415e85b4	cstring	.
+steam	artifact-rumor	0x65a250	0x65bc59	0x1416638c0	cstring	Last I saw, it was in 
+steam	artifact-rumor	0x65a250	0x65bc68	0x141663860	cstring	Last I heard, it was in 
+steam	artifact-rumor	0x65a250	0x65bca1	0x1415ecfb4	cstring	 in 
+steam	artifact-rumor	0x65a250	0x65bce0	0x1415e85b4	cstring	.
+steam	artifact-rumor	0x65a250	0x65bd2c	0x1416638c0	cstring	Last I saw, it was in 
+steam	artifact-rumor	0x65a250	0x65bd3b	0x141663860	cstring	Last I heard, it was in 
+steam	artifact-rumor	0x65a250	0x65bd63	0x1415e85b4	cstring	.
+steam	artifact-rumor	0x65a250	0x65bda0	0x1416638c0	cstring	Last I saw, it was in 
+steam	artifact-rumor	0x65a250	0x65bdaf	0x141663860	cstring	Last I heard, it was in 
+steam	artifact-rumor	0x65a250	0x65bdd7	0x1415e85b4	cstring	.
+steam	artifact-rumor	0x65a250	0x65bf61	0x141663880	cstring	I have no idea where it is.
+steam	artifact-identity	0xb94400	0xb944bf	0x1415fdaa8	cstring	[LPAGE:ARTIFACT:
+steam	artifact-identity	0xb94400	0xb944ce	0x1416df718	cstring	[LPAGE:BOOK:
+steam	artifact-identity	0xb94400	0xb944f3	0x1415fd690	cstring	]
+steam	artifact-identity	0xb94400	0xb945b0	0x64656c7469746e55	inline	Untitled
+steam	artifact-identity	0xb94400	0xb9460b	0x64656c7469746e55	inline	Untitled
+steam	artifact-identity	0xb94400	0xb94686	0x1415fda88	cstring	[/LPAGE]
+steam	artifact-identity	0xb94400	0xb946de	0x1416df700	cstring	an unknown artifact
+steam	entity-identity	0xb92900	0xb9296a	0x14165e438	cstring	[LPAGE:ENT:
+steam	entity-identity	0xb92900	0xb9298a	0x1415fd690	cstring	]
+steam	entity-identity	0xb92900	0xb929f4	0x1415fda88	cstring	[/LPAGE]
+steam	entity-identity	0xb92900	0xb92a4c	0x1416df940	cstring	an unknown civilization
+steam	historical-holder	0xb92f10	0xb92f8a	0x1416df900	cstring	interrogator
+steam	historical-holder	0xb92f10	0xb92fa1	0x141674d08	cstring	subject
+steam	historical-holder	0xb92f10	0xb93073	0x1416290f0	cstring	Nameless
+steam	historical-holder	0xb92f10	0xb9310e	0x1416df8e0	cstring	an unidentified creature
+steam	historical-holder	0xb92f10	0xb93133	0x1415fdb08	cstring	[LPAGE:HF:
+steam	historical-holder	0xb92f10	0xb93153	0x1415fd690	cstring	]
+steam	historical-holder	0xb92f10	0xb9325d	0x141662ef8	fixed4	myse
+steam	historical-holder	0xb92f10	0xb93266	0x141662efc	fixed2	lf
+steam	historical-holder	0xb92f10	0xb9327e	0x796d	inline	my
+steam	historical-holder	0xb92f10	0xb932ab	0x656d	inline	me
+steam	historical-holder	0xb92f10	0xb9331b	0x1415e8e48	cstring	the 
+steam	historical-holder	0xb92f10	0xb9333f	0x14167db90	cstring	zombie 
+steam	historical-holder	0xb92f10	0xb93377	0x1415fdbb8	cstring	ghostly 
+steam	historical-holder	0xb92f10	0xb93499	0x1415e873c	cstring	 
+steam	historical-holder	0xb92f10	0xb934c8	0x1415e873c	cstring	 
+steam	historical-holder	0xb92f10	0xb93551	0x1415e956c	cstring	 the 
+steam	historical-holder	0xb92f10	0xb93575	0x14167db90	cstring	zombie 
+steam	historical-holder	0xb92f10	0xb935ad	0x1415fdbb8	cstring	ghostly 
+steam	historical-holder	0xb92f10	0xb936cd	0x1415e873c	cstring	 
+steam	historical-holder	0xb92f10	0xb9374e	0x1415ed620	cstring	a 
+steam	historical-holder	0xb92f10	0xb93755	0x1415e8e48	cstring	the 
+steam	historical-holder	0xb92f10	0xb9377d	0x14167db90	cstring	zombie 
+steam	historical-holder	0xb92f10	0xb937b5	0x1415fdbb8	cstring	ghostly 
+steam	historical-holder	0xb92f10	0xb9381c	0x1415e873c	cstring	 
+steam	historical-holder	0xb92f10	0xb93867	0x1415e9260	cstring	's
+steam	historical-holder	0xb92f10	0xb93886	0x1415fda88	cstring	[/LPAGE]
+steam	historical-holder	0xb92f10	0xb938dc	0x141663cd8	cstring	an unknown creature
+steam	historical-holder	0xb92f10	0xb938f2	0x1415e9260	cstring	's
+steam	building-reference	0xb94090	0xb940f8	0x1416df6d8	cstring	[LPAGE:AB:
+steam	building-reference	0xb94090	0xb9411b	0x141618434	cstring	:
+steam	building-reference	0xb94090	0xb9413b	0x1415fd690	cstring	]
+steam	building-reference	0xb94090	0xb941ce	0x1415fda88	cstring	[/LPAGE]
+steam	building-reference	0xb94090	0xb94255	0x1416637c8	cstring	a counting house
+steam	building-reference	0xb94090	0xb94267	0x1416637e0	cstring	a hospital
+steam	building-reference	0xb94090	0xb94279	0x141628b50	cstring	a guildhall
+steam	building-reference	0xb94090	0xb9428b	0x141663a38	cstring	a mead hall
+steam	building-reference	0xb94090	0xb9429d	0x141663a44	cstring	a keep
+steam	building-reference	0xb94090	0xb942af	0x141628b28	cstring	a temple
+steam	building-reference	0xb94090	0xb942c1	0x141663a18	cstring	a library
+steam	building-reference	0xb94090	0xb942d3	0x141663a28	cstring	a tavern
+steam	building-reference	0xb94090	0xb942e5	0x141672dc0	cstring	a dark tower
+steam	building-reference	0xb94090	0xb942f1	0x1416639e8	cstring	an underworld spire
+steam	building-reference	0xb94090	0xb94300	0x141663a08	cstring	a market
+steam	building-reference	0xb94090	0xb9430f	0x1416639dc	cstring	a tomb
+steam	building-reference	0xb94090	0xb94333	0x141663998	cstring	the catacombs
+steam	building-reference	0xb94090	0xb94342	0x1416639d0	cstring	the sewers
+steam	building-reference	0xb94090	0xb94351	0x1416639c0	cstring	a dungeon
+steam	building-reference	0xb94090	0xb94360	0x141663a00	cstring	a tower
+steam	building-reference	0xb94090	0xb94369	0x1416df6e8	cstring	an unknown building
+steam	building-reference	0xb94090	0xb94388	0x1415fda88	cstring	[/LPAGE]
+steam	building-reference	0xb94090	0xb94397	0x1416df6e8	cstring	an unknown building
+steam	site-reference	0xb93930	0xb9397a	0x1416df920	cstring	[LPAGE:SITE:
+steam	site-reference	0xb93930	0xb9399d	0x1415fd690	cstring	]
+steam	site-reference	0xb93930	0xb93a06	0x1415fda88	cstring	[/LPAGE]
+steam	site-reference	0xb93930	0xb93a5e	0x1416df910	cstring	an unknown site
+steam	region-reference	0xb94a40	0xb94a8a	0x1416df638	cstring	[LPAGE:SR:
+steam	region-reference	0xb94a40	0xb94aaa	0x1415fd690	cstring	]
+steam	region-reference	0xb94a40	0xb94b13	0x1415fda88	cstring	[/LPAGE]
+steam	region-reference	0xb94a40	0xb94b6b	0x1416df678	cstring	an unknown region
+steam	underground-reference	0xb94940	0xb94982	0x1416df6a8	cstring	[LPAGE:FL:
+steam	underground-reference	0xb94940	0xb949a5	0x1415fd690	cstring	]
+steam	underground-reference	0xb94940	0xb949d1	0x1416df6b8	cstring	the Underworld
+steam	underground-reference	0xb94940	0xb949e0	0x1416df6c8	cstring	the magma sea
+steam	underground-reference	0xb94940	0xb949ef	0x1416df690	cstring	the depths of the world
+steam	underground-reference	0xb94940	0xb94a08	0x1415fda88	cstring	[/LPAGE]
+steam	underground-reference	0xb94940	0xb94a17	0x1416df648	cstring	an unknown underground region
+steam	item-description	0xc65450	0xc656f4	0x1416ee318	cstring	 (copy)
+steam	paragraph-vector-wrap	0x8e7440	0x8e7567	0x1415e873c	cstring	 
+classic	artifact-rumor	0x657c70	0x657f23	0x14165e448	cstring	I desire that 
+classic	artifact-rumor	0x657c70	0x657fc8	0x1415e3720	cstring	 
+classic	artifact-rumor	0x657c70	0x65803f	0x14165e160	cstring	 be returned to me.
+classic	artifact-rumor	0x657c70	0x6580a3	0x14165e448	cstring	I desire that 
+classic	artifact-rumor	0x657c70	0x658144	0x1415e3720	cstring	 
+classic	artifact-rumor	0x657c70	0x658183	0x14165e178	cstring	 be returned to my family.
+classic	artifact-rumor	0x657c70	0x6582ad	0x14165e108	cstring	 believes that primordial remnants such as 
+classic	artifact-rumor	0x657c70	0x658350	0x1415e3720	cstring	 
+classic	artifact-rumor	0x657c70	0x6583c4	0x14165e138	cstring	 belong back in their rightful home.
+classic	artifact-rumor	0x657c70	0x658419	0x14165e0d0	cstring	  Any should be brought to 
+classic	artifact-rumor	0x657c70	0x658456	0x1415e7f2c	cstring	 in 
+classic	artifact-rumor	0x657c70	0x65847d	0x14165e0f0	cstring	, or given to one of us
+classic	artifact-rumor	0x657c70	0x6584d6	0x14165e090	cstring	Speaking as a representative of 
+classic	artifact-rumor	0x657c70	0x6584fa	0x14165e0b8	cstring	, it is important that 
+classic	artifact-rumor	0x657c70	0x658597	0x1415e3720	cstring	 
+classic	artifact-rumor	0x657c70	0x6585d6	0x14165e058	cstring	 be returned.
+classic	artifact-rumor	0x657c70	0x658623	0x14165e068	cstring	  I require it as a symbol of the 
+classic	artifact-rumor	0x657c70	0x65869a	0x1415e3574	cstring	.
+classic	artifact-rumor	0x657c70	0x6586b5	0x1415f7ff8	cstring	  
+classic	artifact-rumor	0x657c70	0x658701	0x14165e018	cstring	 requires it to be a proper 
+classic	artifact-rumor	0x657c70	0x65877b	0x1415e3574	cstring	.
+classic	artifact-rumor	0x657c70	0x6587ac	0x14165e038	cstring	  It is the symbol of the 
+classic	artifact-rumor	0x657c70	0x6587be	0x14165dfd0	cstring	  It is a valuable treasure to us.
+classic	artifact-rumor	0x657c70	0x658819	0x14165dff8	cstring	  It should be brought to 
+classic	artifact-rumor	0x657c70	0x658855	0x1415e7f2c	cstring	 in 
+classic	artifact-rumor	0x657c70	0x65887c	0x1415e3574	cstring	.
+classic	artifact-rumor	0x657c70	0x65890a	0x14165df90	cstring	It would be wonderful if 
+classic	artifact-rumor	0x657c70	0x6589bc	0x1415e3720	cstring	 
+classic	artifact-rumor	0x657c70	0x6589f3	0x14165dfb0	cstring	 found a lasting home within 
+classic	artifact-rumor	0x657c70	0x658a21	0x1415e3574	cstring	.
+classic	artifact-rumor	0x657c70	0x658c0f	0x1415e64d0	cstring	 of 
+classic	artifact-rumor	0x657c70	0x658c5d	0x14165e2f8	cstring	 wants 
+classic	artifact-rumor	0x657c70	0x658cff	0x1415e3720	cstring	 
+classic	artifact-rumor	0x657c70	0x658d80	0x14165e300	cstring	 returned
+classic	artifact-rumor	0x657c70	0x658d92	0x1415e3574	cstring	.
+classic	artifact-rumor	0x657c70	0x6590af	0x1415e64d0	cstring	 of 
+classic	artifact-rumor	0x657c70	0x6590ff	0x14165e2f8	cstring	 wants 
+classic	artifact-rumor	0x657c70	0x6591ac	0x1415e3720	cstring	 
+classic	artifact-rumor	0x657c70	0x6591fd	0x14165e2c8	cstring	 returned to 
+classic	artifact-rumor	0x657c70	0x659236	0x1415e7f2c	cstring	 in 
+classic	artifact-rumor	0x657c70	0x659274	0x1415e3574	cstring	.
+classic	artifact-rumor	0x657c70	0x659361	0x1415e3720	cstring	 
+classic	artifact-rumor	0x657c70	0x6593a9	0x1415e77d0	cstring	...
+classic	artifact-rumor	0x657c70	0x6593be	0x1415f7ff8	cstring	  
+classic	artifact-rumor	0x657c70	0x6594d6	0x14165e2d8	cstring	Last I remember, I had it.
+classic	artifact-rumor	0x657c70	0x6594e4	0x14165e290	cstring	Last I heard, I had it.
+classic	artifact-rumor	0x657c70	0x659539	0x14165e2a8	cstring	Last I heard, you held it.
+classic	artifact-rumor	0x657c70	0x659558	0x14165e250	cstring	Last I saw, it was held by 
+classic	artifact-rumor	0x657c70	0x659566	0x14165e270	cstring	Last I heard, it was held by 
+classic	artifact-rumor	0x657c70	0x659632	0x1415e3574	cstring	.
+classic	artifact-rumor	0x657c70	0x659679	0x14165e218	cstring	Last I saw, it was in 
+classic	artifact-rumor	0x657c70	0x659688	0x14165e230	cstring	Last I heard, it was in 
+classic	artifact-rumor	0x657c70	0x6596c1	0x1415e7f2c	cstring	 in 
+classic	artifact-rumor	0x657c70	0x659700	0x1415e3574	cstring	.
+classic	artifact-rumor	0x657c70	0x65974c	0x14165e218	cstring	Last I saw, it was in 
+classic	artifact-rumor	0x657c70	0x65975b	0x14165e230	cstring	Last I heard, it was in 
+classic	artifact-rumor	0x657c70	0x659783	0x1415e3574	cstring	.
+classic	artifact-rumor	0x657c70	0x6597c0	0x14165e218	cstring	Last I saw, it was in 
+classic	artifact-rumor	0x657c70	0x6597cf	0x14165e230	cstring	Last I heard, it was in 
+classic	artifact-rumor	0x657c70	0x6597f7	0x1415e3574	cstring	.
+classic	artifact-rumor	0x657c70	0x659981	0x14165e1e0	cstring	I have no idea where it is.
+classic	artifact-identity	0xb91440	0xb914ff	0x1415f8a20	cstring	[LPAGE:ARTIFACT:
+classic	artifact-identity	0xb91440	0xb9150e	0x1416da4e8	cstring	[LPAGE:BOOK:
+classic	artifact-identity	0xb91440	0xb91533	0x1415f8664	cstring	]
+classic	artifact-identity	0xb91440	0xb915f0	0x64656c7469746e55	inline	Untitled
+classic	artifact-identity	0xb91440	0xb9164b	0x64656c7469746e55	inline	Untitled
+classic	artifact-identity	0xb91440	0xb916c6	0x1415f8b50	cstring	[/LPAGE]
+classic	artifact-identity	0xb91440	0xb9171e	0x1416da4d0	cstring	an unknown artifact
+classic	entity-identity	0xb8f940	0xb8f9aa	0x1416592f8	cstring	[LPAGE:ENT:
+classic	entity-identity	0xb8f940	0xb8f9ca	0x1415f8664	cstring	]
+classic	entity-identity	0xb8f940	0xb8fa34	0x1415f8b50	cstring	[/LPAGE]
+classic	entity-identity	0xb8f940	0xb8fa8c	0x1416da720	cstring	an unknown civilization
+classic	historical-holder	0xb8ff50	0xb8ffca	0x1416da770	cstring	interrogator
+classic	historical-holder	0xb8ff50	0xb8ffe1	0x14166fb90	cstring	subject
+classic	historical-holder	0xb8ff50	0xb900b3	0x141623ec0	cstring	Nameless
+classic	historical-holder	0xb8ff50	0xb9014e	0x1416da750	cstring	an unidentified creature
+classic	historical-holder	0xb8ff50	0xb90173	0x1415f8b40	cstring	[LPAGE:HF:
+classic	historical-holder	0xb8ff50	0xb90193	0x1415f8664	cstring	]
+classic	historical-holder	0xb8ff50	0xb9029d	0x14165df6c	fixed4	myse
+classic	historical-holder	0xb8ff50	0xb902a6	0x14165df70	fixed2	lf
+classic	historical-holder	0xb8ff50	0xb902be	0x796d	inline	my
+classic	historical-holder	0xb8ff50	0xb902eb	0x656d	inline	me
+classic	historical-holder	0xb8ff50	0xb9035b	0x1415e3e34	cstring	the 
+classic	historical-holder	0xb8ff50	0xb9037f	0x1416789f8	cstring	zombie 
+classic	historical-holder	0xb8ff50	0xb903b7	0x1415f8b70	cstring	ghostly 
+classic	historical-holder	0xb8ff50	0xb904d9	0x1415e3720	cstring	 
+classic	historical-holder	0xb8ff50	0xb90508	0x1415e3720	cstring	 
+classic	historical-holder	0xb8ff50	0xb90591	0x1415e4548	cstring	 the 
+classic	historical-holder	0xb8ff50	0xb905b5	0x1416789f8	cstring	zombie 
+classic	historical-holder	0xb8ff50	0xb905ed	0x1415f8b70	cstring	ghostly 
+classic	historical-holder	0xb8ff50	0xb9070d	0x1415e3720	cstring	 
+classic	historical-holder	0xb8ff50	0xb9078e	0x1415e8618	cstring	a 
+classic	historical-holder	0xb8ff50	0xb90795	0x1415e3e34	cstring	the 
+classic	historical-holder	0xb8ff50	0xb907bd	0x1416789f8	cstring	zombie 
+classic	historical-holder	0xb8ff50	0xb907f5	0x1415f8b70	cstring	ghostly 
+classic	historical-holder	0xb8ff50	0xb9085c	0x1415e3720	cstring	 
+classic	historical-holder	0xb8ff50	0xb908a7	0x1415e4214	cstring	's
+classic	historical-holder	0xb8ff50	0xb908c6	0x1415f8b50	cstring	[/LPAGE]
+classic	historical-holder	0xb8ff50	0xb9091c	0x14165ed98	cstring	an unknown creature
+classic	historical-holder	0xb8ff50	0xb90932	0x1415e4214	cstring	's
+classic	building-reference	0xb910d0	0xb91138	0x1416da548	cstring	[LPAGE:AB:
+classic	building-reference	0xb910d0	0xb9115b	0x141613404	cstring	:
+classic	building-reference	0xb910d0	0xb9117b	0x1415f8664	cstring	]
+classic	building-reference	0xb910d0	0xb9120e	0x1415f8b50	cstring	[/LPAGE]
+classic	building-reference	0xb910d0	0xb91295	0x14165e8a8	cstring	a counting house
+classic	building-reference	0xb910d0	0xb912a7	0x14165e878	cstring	a hospital
+classic	building-reference	0xb910d0	0xb912b9	0x141623cc0	cstring	a guildhall
+classic	building-reference	0xb910d0	0xb912cb	0x14165e888	cstring	a mead hall
+classic	building-reference	0xb910d0	0xb912dd	0x14165e860	cstring	a keep
+classic	building-reference	0xb910d0	0xb912ef	0x141623c98	cstring	a temple
+classic	building-reference	0xb910d0	0xb91301	0x14165e868	cstring	a library
+classic	building-reference	0xb910d0	0xb91313	0x14165e848	cstring	a tavern
+classic	building-reference	0xb910d0	0xb91325	0x14166dc18	cstring	a dark tower
+classic	building-reference	0xb910d0	0xb91331	0x14165e808	cstring	an underworld spire
+classic	building-reference	0xb910d0	0xb91340	0x14165e830	cstring	a market
+classic	building-reference	0xb910d0	0xb9134f	0x14165e83c	cstring	a tomb
+classic	building-reference	0xb910d0	0xb91373	0x14165e7f8	cstring	the catacombs
+classic	building-reference	0xb910d0	0xb91382	0x14165e7e8	cstring	the sewers
+classic	building-reference	0xb910d0	0xb91391	0x14165e820	cstring	a dungeon
+classic	building-reference	0xb910d0	0xb913a0	0x14165e858	cstring	a tower
+classic	building-reference	0xb910d0	0xb913a9	0x1416da558	cstring	an unknown building
+classic	building-reference	0xb910d0	0xb913c8	0x1415f8b50	cstring	[/LPAGE]
+classic	building-reference	0xb910d0	0xb913d7	0x1416da558	cstring	an unknown building
+classic	site-reference	0xb90970	0xb909ba	0x1416da6f8	cstring	[LPAGE:SITE:
+classic	site-reference	0xb90970	0xb909dd	0x1415f8664	cstring	]
+classic	site-reference	0xb90970	0xb90a46	0x1415f8b50	cstring	[/LPAGE]
+classic	site-reference	0xb90970	0xb90a9e	0x1416da6e8	cstring	an unknown site
+classic	region-reference	0xb91a80	0xb91aca	0x1416da4a0	cstring	[LPAGE:SR:
+classic	region-reference	0xb91a80	0xb91aea	0x1415f8664	cstring	]
+classic	region-reference	0xb91a80	0xb91b53	0x1415f8b50	cstring	[/LPAGE]
+classic	region-reference	0xb91a80	0xb91bab	0x1416daec8	cstring	an unknown region
+classic	underground-reference	0xb91980	0xb919c2	0x1416da510	cstring	[LPAGE:FL:
+classic	underground-reference	0xb91980	0xb919e5	0x1415f8664	cstring	]
+classic	underground-reference	0xb91980	0xb91a11	0x1416da480	cstring	the Underworld
+classic	underground-reference	0xb91980	0xb91a20	0x1416da490	cstring	the magma sea
+classic	underground-reference	0xb91980	0xb91a2f	0x1416da4f8	cstring	the depths of the world
+classic	underground-reference	0xb91980	0xb91a48	0x1415f8b50	cstring	[/LPAGE]
+classic	underground-reference	0xb91980	0xb91a57	0x1416da4b0	cstring	an unknown underground region
+classic	item-description	0xc62490	0xc62734	0x1416e8e38	cstring	 (copy)
+classic	paragraph-vector-wrap	0x8e4cb0	0x8e4dd7	0x1415e3720	cstring	 

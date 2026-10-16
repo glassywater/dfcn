@@ -127,8 +127,14 @@ Input/refusal productions:
   Show may produce a complete artifact-rumor reply at 273c8c -> 65a250,
   then speaker prefix and wrap(68) at 273cb3. Its shared full source is
   ../announcement-conversation/reference-artifact-rumor.asm (same PE identity)
-  and corresponding classic-artifact-rumor.asm; existing complete artifact
-  rumor/event grammar owns its branches, rather than invented fixed labels.
+  and corresponding classic-artifact-rumor.asm. The dedicated current PE
+  reconstruction ../adventure-barter-artifact-rumor/decompiled-source.txt and
+  decompiled-productions.tsv retain every request, destination, possession,
+  location and native silent alternative, with all eight typed suppliers.
+  The native renderer loads each NativeString pointer from barter+340 at
+  270086..270090, sets R9D=0, and calls addst at 27009b, returning to
+  2700a0. RCX is graphicst and RDX is the original wrapped NativeString;
+  the source is not copied into a different formatter at that draw.
 
 Artifact field b94400:
   unresolved ID -> an unknown artifact;
@@ -142,7 +148,8 @@ caste, curse and role semantics from their existing complete shared grammars.
 
 Transfer/return productions:
   optionally prepend first capitalized merchant speaker;
-  prepend complete reaction from 673bc0 with topic=19 and incident ID;
+  prepend complete reaction from 673bc0 with evaluation in EDX, event=19
+  in the fifth argument, and the incident ID in the sixth argument;
   personal claim -> Thank you for returning my treasure.;
   family claim -> Thank you for returning my family's treasure.;
   entity claim -> Thank you for returning this treasure to ENTITY.;
@@ -155,6 +162,14 @@ native source, separated by two spaces. Reaction may be empty. Complete
 reaction/memory source is already retained under ../announcement-conversation/
 reference-dialogue-10226b0.asm, reference-memory-events.asm, and
 reference-memory-source.asm (and Classic equivalents, same image identities).
+The evaluation is returned by Steam 13b31e0 / Classic 13ae150 and is not
+hardcoded to 19. The complete reaction switches over evaluation 0..61;
+out-of-range appends no evaluation text. Before that switch, event != -1
+invokes the memory-events producer. Event 19 dispatches to Steam 672a3c /
+Classic 67045c: absent incident => There was an incident.; present incident
+=> complete memory-source (66ba00 / 669420). A nonempty incident description
+is followed by two spaces before the evaluation text. Both the incident
+and the evaluation therefore precede any independent treasure acknowledgement.
 
 Primordial/remnant and rescue call wrap(68) at 277d88 and 2787f8.
 The personal/family/entity combination and copy acknowledgement use native

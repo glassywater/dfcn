@@ -108,6 +108,24 @@ std::optional<std::string> Overlay::translate_native_justice_organization_initia
     return result.empty() ? std::nullopt : std::optional<std::string>(std::move(result));
 }
 
+static bool native_unit_identity_requires_world(const NativeUnitIdentity &unit) {
+    if (unit.form == NativeUnitIdentityForm::Reference)
+        return std::any_of(unit.reference_parts.begin(), unit.reference_parts.end(),
+            [](const NativeUnitReferencePart &part) {
+                return part.kind == NativeUnitReferencePartKind::Title || part.entity_present;
+            });
+    if (unit.form == NativeUnitIdentityForm::NameOnly ||
+            (unit.form == NativeUnitIdentityForm::Name && !unit.native_name.empty()) ||
+            unit.native_role_authored || !unit.animated_name.empty() ||
+            (unit.use_custom && !unit.custom_profession.empty())) return false;
+    // Ordinary role/full-name formatters append noble territories too. Their
+    // typed role grammar resolves "of <territory>" against the live world,
+    // just like the separately captured entity parts of a reference. Keep
+    // the owned snapshot for SDL instead of abandoning a rejected worker job.
+    // A fixed title such as captain of the guard can use the same safe path.
+    return unit.native_role.find(" of ") != std::string::npos;
+}
+
 // Length-prefixed strings and fixed-width scalars retain the complete typed
 // identity. Equal display text alone cannot distinguish authored fields,
 // selected languages, hidden identities or the formatter's semantic mode.
@@ -187,11 +205,7 @@ std::optional<std::string> Overlay::translate_native_unit_identity(
     // Live government/title references still resolve under the shared lock.
     // Complete owned snapshots can reuse this thread's exact result before
     // waiting for an unrelated SDL translation pass.
-    const bool live_entity = unit.form == NativeUnitIdentityForm::Reference &&
-        std::any_of(unit.reference_parts.begin(), unit.reference_parts.end(),
-            [](const NativeUnitReferencePart &part) {
-                return part.kind == NativeUnitReferencePartKind::Title || part.entity_present;
-            });
+    const bool live_entity = native_unit_identity_requires_world(unit);
     const std::string key = live_entity ? std::string{} : native_unit_identity_cache_key(unit);
     struct ThreadCache {
         const Overlay *owner = nullptr;

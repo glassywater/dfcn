@@ -409,6 +409,7 @@ struct Rule {
     bool help_objective = false;
     bool tooltip_prose = false;
     bool ui_message = false;
+    bool spoken_dialogue = false;
     // Per Unicode codepoint, not per source row. -1 inherits the native
     // fragment's base color; other values index the game's 16-color palette.
     std::vector<int> help_target_palettes;
@@ -1038,6 +1039,7 @@ struct NativeTextCard {
     bool character_group_civilization = false;
     std::optional<std::pair<int, int>> civilization_official_columns{};
     bool workshop_task_detail = false;
+    bool trade_request_commodity = false;
 };
 struct WorkshopTaskCard : NativeTextCard {
     bool category = false;
@@ -2214,7 +2216,7 @@ static std::optional<NativeWorkOrderShopCaption> capture_native_work_order_shop_
     uintptr_t caller, uintptr_t source);
 struct NativeFortressZoneCaption {
     enum class Kind { Type, Location, LocationName, LocationDescription, Unit,
-        Squad, SquadCount, Assigned, Present, Imprisoned, Patients, Fixed };
+        Squad, SquadCount, Assigned, Present, Imprisoned, Patients, Occupancy, Fixed };
     Kind kind = Kind::Type;
     bool authored = true;
     std::shared_ptr<const NativeHistoryName> location_name;
@@ -2251,6 +2253,9 @@ struct NativeDrawnTextRow {
     bool unit_identity_header = false;
     bool unit_identity_ready = true;
     std::string unit_identity_semantic_key;
+    // List renderers reuse their NativeString for later rows. A pending draw
+    // owns its exact identity even after that address names somebody else.
+    std::shared_ptr<const NativeUnitIdentitySource> unit_identity_pending{};
     // The native squad alias branch owns this exact string, independently
     // of identically spelled generated names and ordinary UI labels.
     std::optional<std::string> squad_alias_target{};
@@ -2911,6 +2916,8 @@ static void remember_native_drawn_text_row(int x, int y, std::string_view source
             row.unit_identity_header = identity->character_header;
             row.unit_identity_ready = identity->ready;
             row.unit_identity_semantic_key = identity->semantic_key;
+            if (!identity->ready)
+                row.unit_identity_pending = std::make_shared<const NativeUnitIdentitySource>(*identity);
         }
         if (row.unit_identity_target) row.caption_source = true;
         row.squad_alias_target = squad_alias_target ? std::move(squad_alias_target)
@@ -2944,14 +2951,15 @@ static void refresh_native_unit_identity_draw(NativeDrawnTextRow &row) {
         : std::string_view(row.complete_source);
     const auto identity = g_native_graphics_read_view && !DfhackTranslationThreadScope::active
         ? prepare_native_unit_identity_source_binding(source, row.address,
-            row.unit_identity_semantic_key)
+            row.unit_identity_semantic_key, row.unit_identity_pending.get())
         : native_unit_identity_source_binding(source, row.address,
             row.unit_identity_semantic_key);
     if (!identity) return;
-    // A reused NativeString with the same spelling can belong to another
-    // unit. Only the full captured semantic binding may complete this row.
+    // Complete only this draw's full semantic binding. Its captured pending
+    // snapshot outlives the temporary NativeString used by subsequent rows.
     row.unit_identity_ready = identity->ready;
     row.unit_identity_target = identity->ready ? identity->target : std::string{};
+    if (identity->ready) row.unit_identity_pending.reset();
 }
 
 #include "native_captured_text_snapshot.inc"
@@ -4655,6 +4663,9 @@ private:
     void append_settings_toggle_labels(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y) const;
     std::vector<NativeTextCard> capture_fortress_trade_request_rows() const;
+    void append_fortress_trade_request_translations(
+        const std::vector<NativeTextCard> &fields, std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y) const;
     void layout_fortress_trade_requests(SDL_Renderer *renderer);
     std::optional<NativeTextCard> capture_map_hover_card(
         std::vector<std::string> &rows, const unsigned char *screen_override) const;
@@ -4868,6 +4879,8 @@ private:
         std::vector<Match> &matches, int only_y, bool raw_layer) const;
     void layout_fortress_build_placement(SDL_Renderer *renderer);
     void layout_fortress_build_materials(SDL_Renderer *renderer);
+    void append_fortress_build_material_fields(std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y) const;
     void append_fortress_build_placement_fields(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y) const;
     void append_fortress_remembered_material(std::vector<std::string> &rows,
@@ -5327,9 +5340,12 @@ private:
     std::optional<std::string> translate_announcement_number(std::string_view source) const;
     std::optional<std::string> translate_announcement_date(std::string_view source) const;
     std::optional<std::string> translate_announcement_dialogue(std::string_view source) const;
+    std::optional<std::string> translate_spoken_dialogue_body(std::string_view source) const;
     std::optional<std::string> translate_announcement_items(std::string_view source) const;
+    TranslationResult translate_adventure_barter_artifact_report_result(std::string_view source) const;
     std::optional<std::string> translate_complete_announcement(std::string_view source,
-        const std::vector<int> &source_colors, std::vector<int> &target_colors) const;
+        const std::vector<int> &source_colors, std::vector<int> &target_colors,
+        bool barter_reply = false) const;
     std::shared_ptr<const TranslationResult> announcement_result_metadata(std::string_view source) const;
     std::optional<std::string> translate_adventure_travel_status(std::string_view source,
         const std::vector<int> &source_colors, std::vector<int> &target_colors) const;
@@ -5467,6 +5483,8 @@ private:
         std::string_view source) const;
     std::optional<std::string> translate_material_name(
         std::string_view source, bool adjective = false) const;
+    std::optional<std::string> translate_corpsepiece_item_name(
+        std::string_view source) const;
     std::optional<std::string> translate_coin_item_name(
         std::string_view complete_source) const;
     std::optional<std::string> translate_coin_native_identity(
@@ -8066,6 +8084,8 @@ static std::string native_text_to_utf8(std::string_view input) {
     return output;
 }
 
+#include "native_file_errors.inc"
+
 // Soundtrack titles and credits are authored metadata, including built-in
 // songs. Translate only the status; never send the metadata to word/name rules.
 static std::optional<std::string> translate_soundtrack_status(std::string_view text) {
@@ -8481,14 +8501,60 @@ static std::optional<std::string> translate_plant_seed_item_name(
         "::items::seeds::caption", origins);
 }
 
-static std::optional<std::string> translate_corpsepiece_item_name(
-        std::string_view source) {
-    // The complete body-component grammar owns both the animal label and
-    // the noun. Keep its native designation/count wrappers intact, and never
-    // send its result through the finished-equipment material qualifier.
-    std::vector<size_t> origins;
-    return RULESETS.translate_with_origins(native_text_to_utf8(source),
-        "::items::corpsepiece::caption", origins);
+static std::string_view item_number_suffix(std::string_view source);
+
+std::optional<std::string> Overlay::translate_corpsepiece_item_name(
+        std::string_view source) const {
+    TranslationStateScope translation_scope;
+    if (!config_.compositional_rules) return std::nullopt;
+    const auto scoped = [](std::string_view value, const char *context) {
+        std::vector<size_t> origins;
+        return RULESETS.translate_with_origins(native_text_to_utf8(value), context, origins);
+    };
+    const auto body = [&](auto &&self, std::string_view value) -> std::optional<std::string> {
+        value = trim_view(value);
+        if (value.empty() || value.ends_with("...")) return std::nullopt;
+        // ELF e67280 appends [amount] after the body noun; e68020 wraps the
+        // complete designation. Counts and marks may therefore nest in either
+        // order. Strip only their shared, digit-validated native productions.
+        if (const auto suffix = item_number_suffix(value); !suffix.empty()) {
+            const auto noun = self(self, value.substr(0, value.size() - suffix.size()));
+            return noun ? std::optional<std::string>(*noun + std::string(suffix)) : std::nullopt;
+        }
+        const auto designation = split_item_designation(value);
+        if (!designation.prefix.empty()) {
+            const auto noun = self(self, designation.item);
+            return noun ? std::optional<std::string>(designation.prefix + *noun +
+                designation.suffix) : std::nullopt;
+        }
+        // The shared full/short producers select a unit or historical name
+        // before the body outcome. Resolve these independently, as materials
+        // already do, rather than routing the owner back through a recursive
+        // external-person callback. A nickname can itself contain "'s ".
+        for (size_t at = value.rfind("'s "); at != std::string_view::npos;
+             at = at == 0 ? std::string_view::npos : value.rfind("'s ", at - 1)) {
+            const auto owner_source = trim_view(value.substr(0, at));
+            const auto body_source = trim_view(value.substr(at + 3));
+            if (owner_source.empty() || body_source.empty()) continue;
+            const auto noun = scoped(body_source, "::items::corpsepiece::animated_body");
+            if (!noun) continue;
+            auto owner = native_unit_identity_source_target(owner_source);
+            if (!owner) owner = translate_legends_actor(owner_source);
+            if (!owner) owner = translate_english_character_name(owner_source);
+            // This complete possessive/body production owns a personal-name
+            // field, including an authored spelling absent from the lexicon.
+            // Preserve that spelling just as the native animation-label path
+            // does; it must not prevent translation of the independent noun.
+            if (!owner) owner = native_text_to_utf8(owner_source);
+            if (owner->empty() || owner->find("[C:") != std::string::npos ||
+                    owner->find_first_of("\r\n") != std::string::npos) continue;
+            return *owner + "的" + *noun;
+        }
+        // Unnamed species, your, rotten/mangled bodies, generic material
+        // classes and remains retain their existing complete scoped grammar.
+        return scoped(value, "::items::corpsepiece::caption");
+    };
+    return body(body, source);
 }
 
 static bool is_manufacturing_activity_caption(std::string_view source) {
@@ -16647,6 +16713,7 @@ static NativeKeybindingScope capture_native_keybinding_scope(const graphicst &gp
 #include "announcement_performance.inc"
 #include "announcement_dialogue.inc"
 #include "announcement_combat.inc"
+#include "adventure_barter_reply.inc"
 #include "announcement_translation.inc"
 #include "fortress_item_captions.inc"
 #include "fortress_written_content.inc"
@@ -17392,6 +17459,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     // The native placement status/header owns its whole source before room,
     // location, item and generic caption readers can consume an inner word.
     append_fortress_build_placement_fields(screen_rows, result, only_y);
+    append_fortress_build_material_fields(screen_rows, result, only_y);
     // The Rooms renderer writes editable names and grades as independent
     // fields, and its requirement prefix/suffix as two adjacent draws. Own
     // these complete fields before generic words, names or picture captions.
@@ -17542,6 +17610,11 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     // them before paragraph/item readers or generic word translations.
     append_fortress_caravan_picker_fields(screen_rows, result, only_y, screen_override != nullptr);
     append_fortress_trade_fields(screen_rows, result, only_y, screen_override != nullptr);
+    // Commodity captions own their whole source before UI action templates
+    // can reinterpret Lead as a verb or split short material/item names.
+    const auto trade_request_rows = local_fortress_hud
+        ? std::vector<NativeTextCard>{} : capture_fortress_trade_request_rows();
+    append_fortress_trade_request_translations(trade_request_rows, screen_rows, result, only_y);
     // Task-detail material controls are independent native fields. Capture
     // their complete current frame before tooltip prose or the classic map
     // mask can consume the title and the individual Specify captions.
@@ -17642,6 +17715,11 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     std::vector<Match> hover_matches;
     append_toolbar_tooltip_matches(screen_rows, hover_matches, only_y, screen_override != nullptr);
     append_fortress_justice_tabs(screen_rows, hover_matches, only_y);
+    // The barter producer owns its complete dialogue and independent fields
+    // before caption recovery can reinterpret a wrapped reply as names/items.
+    std::vector<Match> untranslated_help_rows;
+    append_adventure_barter_fields(screen_rows, result, untranslated_help_rows,
+        only_y, screen_override);
     // Likewise claim complete covered captions before their exposed tails
     // can become independent item names or dictionary words.
     if (!NativeUiReadScope::background_view(gps_) &&
@@ -17671,9 +17749,6 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     // for that whole frame. Use the same gate for raw-layer and final scans.
     if (gps_->display_background == -1 &&
         is_transient_startup_loading_grid(screen_rows)) return result;
-    std::vector<Match> untranslated_help_rows;
-    append_adventure_barter_fields(screen_rows, result, untranslated_help_rows,
-        only_y, screen_override);
     append_activity_detail_matches(screen_rows, result, untranslated_help_rows,
         only_y, screen_override);
     // This renderer owns RAW directory/recipe fields and their descriptions
@@ -17827,8 +17902,6 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     }
 
     context_detail.checkpoint(RenderTimingStage::Workshops);
-    const auto trade_request_rows = local_fortress_hud
-        ? std::vector<NativeTextCard>{} : capture_fortress_trade_request_rows();
 
     context_detail.checkpoint(RenderTimingStage::Sites);
     // Capture the native widget BEFORE generic matching consumes its text.
@@ -18226,6 +18299,33 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
             result.insert(result.end(),
                 std::make_move_iterator(announcement_popup_matches.begin()),
                 std::make_move_iterator(announcement_popup_matches.end()));
+        }
+        // A stored animation name is a complete body caption even when it
+        // has no quoted gloss/species record or closed button skin. Bind its
+        // native cursor before page-specific layout can bypass the generic
+        // panel pass. The body grammar proves the whole source; no translated
+        // suffix or name spelling is used to infer ownership.
+        if (gps_->tile_pixel_x > 0) {
+            const int tile_w = gps_->tile_pixel_x;
+            const int origin_x = (gps_->screen_pixel_x - tile_w * gps_->dimx) / 2;
+            for (Match &match : result) {
+                if (match.target.empty() || match.length <= 0 ||
+                        match.source.size() != static_cast<size_t>(match.length) ||
+                        match.source.find("'s ") == std::string::npos ||
+                        !translate_native_animation_label(match.source)) continue;
+                const SDL_Rect region = native_text_draw_region(match);
+                const int right = std::min(gps_->dimx,
+                    (region.x + region.w - origin_x) / tile_w);
+                match.layout_x = match.x;
+                match.layout_length = std::max(1, right - match.x);
+                match.layout_box_pixel_x = -1;
+                match.layout_box_pixel_width = 0;
+                match.layout_left = true;
+                match.layout_right = false;
+                match.layout_ellipsize = true;
+                match.layout_font_pixels = unified_font_pixels();
+                match.layout_lock_font_pixels = true;
+            }
         }
         return std::move(result);
     };
@@ -41915,10 +42015,12 @@ std::shared_ptr<NativeTooltipPage> Overlay::prepare_frame_layout(SDL_Renderer *r
         layout_fortress_build_materials(renderer);
         layout_fortress_building_status(renderer);
         layout_fortress_depot(renderer);
-        layout_fortress_farm_plot(renderer);
         layout_fortress_economy(renderer);
         layout_fortress_stocks(renderer);
         layout_fortress_item_captions(renderer);
+        // Crop names can also enter through the typed item-caption reader.
+        // Their farm row owns the final inset after both generic passes.
+        layout_fortress_farm_plot(renderer);
         layout_fortress_ammunition_choices(renderer);
         layout_adventure_compass(renderer);
         layout_fortress_sort_captions();

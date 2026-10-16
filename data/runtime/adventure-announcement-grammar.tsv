@@ -1,4 +1,4 @@
-# Complete Linux native adventure records, before generic personal-name templates.
+# Complete native adventure records, before generic personal-name templates.
 # scope / source / target / typed fields / native construction
 # The complete reading productions share one semantic entry for native
 # report parents and unabridged captured captions. Original PE instructions,
@@ -24,25 +24,62 @@ quest-object	{s}	{s1}	$announcement-item	ELF 10108c0; physical item field when a
 quest-object	{s}	{s1}	$book	ELF 1011144/10124cd ->a0d8c0; written work/abstract artifact without physical caption
 quest-object	an unknown artifact	一件未知神器		ELF a0d944; invalid artifact ID
 quest-object	Untitled	无题		ELF a0d9fb; written work without a title
-quest-holder	{s} of {s}	{s2}的{s1}	$historical-actor,$name	ELF 1013398/1013997; historical person plus owning entity
+quest-home-object	{s} {s}	{s2}{s1}	$announcement-item,$book	PE 65aeea..65afc8; lasting-home branch appends optional physical item before artifact title, opposite other request branches
+quest-home-object	{s}	{s1}	quest-object	PE 65aeea..65afc8; lasting-home with either physical caption or title omitted
+quest-holder	{s} of {s}	{s2}的{s1}	$historical-actor,conversation-conflict-entity	ELF 1013398/1013997; PE 65b1db+65b1ef+65b232/65b67b+65b68f+65b6d4; historical person plus owning entity, including missing-entity fallback
 quest-holder	{s}	{s1}	$historical-actor	ELF 10108c0; complete historical person caption
-quest-holder	{s}	{s1}	$name	ELF 10128ad/1012a51; entity/position owner branch
+quest-holder	{s}	{s1}	conversation-conflict-entity	ELF 10128ad/1012a51; PE b92900 entity owner, including missing-entity fallback
+quest-holder	of {s}	{s1}的一员	conversation-conflict-entity	PE 65b1db+65b1ef+65b232/65b67b+65b68f+65b6d4; historical caption empty, entity nonempty
+quest-holder	{s} of	{s1}	$historical-actor	PE 65b1db+65b1ef+65b232/65b67b+65b68f+65b6d4; historical caption present, entity caption empty
+quest-holder	of	身份未记载的请求者		PE 65b1db+65b1ef+65b232/65b67b+65b68f+65b6d4; both supplied captions empty
+quest-holder	I	我		PE b93232..b932e5; requester HF equals speaker context; 65b1c1+65b1c7/65b663+65b668 pass grammar mode 0
+quest-holder	me	我		PE b93232..b932c7; holder HF equals speaker context after active-impersonation branch; 65bbf2+65bc0a pass grammar mode 1
+quest-holder	I of {s}	{s1}的我	conversation-conflict-entity	PE b93232..b932e5 plus 65b1db+65b1ef+65b232/65b67b+65b68f+65b6d4; self requester with owning entity
+quest-holder	I of	我		PE b93232..b932e5 plus 65b1db+65b1ef+65b232/65b67b+65b68f+65b6d4; self requester and empty entity caption
 quest-place	{s}	{s1}	conversation-conflict-place	ELF a27cd0/a0ffc0/a10160; site/subregion/underground location suppliers
-quest-place	{s}	{s1}	$reference	ELF a10320; building/location reference supplier
-quest-destination	{s} in {s}	{s2}的{s1}	quest-place,quest-place	ELF 10115d8/1011d82/10122b1/10135a8/1013895; building plus site
+quest-place	{s}	{s1}	quest-building	PE b94090; abstract building name or finite unnamed building label
+quest-building	{s}	{s1}	$conflict-place	PE b94090->a946e0; complete building EnglishName, not an entity name
+quest-building	an unknown building	未知建筑		PE b94090 missing site/building or default virtual type
+quest-building	a mead hall	蜜酒大厅		PE b94233 building type 0
+quest-building	a keep	城堡主楼		PE b94233 building type 1
+quest-building	a temple	神殿		PE b94233 building type 2
+quest-building	a dark tower	黑暗高塔		PE b94233 building type 3
+quest-building	a market	市场		PE b94233 building type 4
+quest-building	a tomb	陵墓		PE b94233 building type 5
+quest-building	a dungeon	地牢		PE b94233 building type 6, subtype 0
+quest-building	the sewers	下水道		PE b94233 building type 6, subtype 1
+quest-building	the catacombs	地下墓穴		PE b94233 building type 6, subtype 2
+quest-building	an underworld spire	地下世界尖塔		PE b94233 building type 7
+quest-building	a tavern	酒馆		PE b94233 building type 8
+quest-building	a library	图书馆		PE b94233 building type 9
+quest-building	a counting house	账房		PE b94233 building type 10
+quest-building	a guildhall	行会大厅		PE b94233 building type 11
+quest-building	a tower	高塔		PE b94233 building type 12
+quest-building	a hospital	医院		PE b94233 building type 13
+quest-destination	{s} in {s}	{s2}的{s1}	quest-building,conversation-conflict-place	ELF 10115d8/1011d82/10122b1/10135a8/1013895; PE 65aa2b+65aa52/65ae2a+65ae51/65b80b+65b832/65bc96+65bcbb; building plus site
 quest-destination	{s}	{s1}	quest-place	ELF 10108c0; destination without a separate site
+quest-destination	in {s}	{s1}（建筑未记载）	conversation-conflict-place	PE 65aa2b+65aa36+65aa52/65ae2a+65ae35+65ae51/65b80b+65b816+65b832/65bc96+65bca1+65bcbb; building helper supplied empty text
+quest-destination	{s} in	{s1}（地点未记载）	quest-building	PE b94090 building nonempty, b93930 valid site with empty language name
+quest-destination	in	地点未记载		PE b94090 empty building and b93930 empty site retain native in separator
+quest-position	{s} of {s}	{s2}的{s1}	$office,conversation-conflict-entity	PE 65ac03..65ac7a/65ad8c..65adf9; raw position title with entity supplier
+quest-position	{s}	{s1}	$office	PE 65ac03..65ac7a/65ad8c..65adf9; raw position title without separate entity
+quest-position	of {s}	{s1}的职位	conversation-conflict-entity	PE symbol-position helper: empty raw position title, nonempty entity caption
+quest-position	{s} of	{s1}	$office	PE symbol-position helper: nonempty raw position title, empty entity caption
+quest-position	of	职位		PE symbol-position helper: raw position title and entity caption both empty
 quest-sentence	I desire that {s} be returned to me.	我希望能把{s1}归还给我。	quest-object	ELF 1011122..10111a1/1012b13; self ownership
 quest-sentence	I desire that {s} be returned to my family.	我希望能把{s1}归还给我的家族。	quest-object	ELF 1011122..10111a1; family ownership
 quest-sentence	{s} wants {s} returned.	{s1}希望能归还{s2}。	quest-holder,quest-object	ELF 10124a0..101257e; requester +artifact title +optional physical item +returned
+quest-sentence	{s} wants {s}.	{s1}想要{s2}。	quest-holder,quest-object	PE 65b354..65b372/65b7cc..65b854; absent destination leaves out the native returned literal
 quest-sentence	{s} wants {s} returned to {s}.	{s1}希望能把{s2}归还至{s3}。	quest-holder,quest-object,quest-destination	ELF 101343d..1013635/101384e; destination and optional site
-quest-sentence	Speaking as a representative of {s}, it is important that {s} be returned.	我代表{s1}郑重说明，必须归还{s2}。	$name,quest-object	ELF 1011eaf..10120f3/1012f9f..1012fdd
-quest-sentence	{s} believes that primordial remnants such as {s} belong back in their rightful home.	{s1}认为，像{s2}这样的远古遗存应当回到它们原本的归属之地。	$name,quest-object	ELF 1011b74..1011c82/1012a75/10139e8
+quest-sentence	Speaking as a representative of {s}, it is important that {s} be returned.	我代表{s1}郑重说明，必须归还{s2}。	conversation-conflict-entity,quest-object	ELF 1011eaf..10120f3/1012f9f..1012fdd; PE 65aacf b92900 entity field
+quest-sentence	{s} believes that primordial remnants such as {s} belong back in their rightful home.	{s1}认为，像{s2}这样的远古遗存应当回到它们原本的归属之地。	conversation-conflict-entity,quest-object	ELF 1011b74..1011c82/1012a75/10139e8; PE 65a882 b92900 entity field
 quest-sentence	Any should be brought to {s}, or given to one of us.	发现任何这类遗存，都应将其送至{s1}，或交给我们中的一员。	quest-destination	ELF 1011d2c..1011e06/1013bab..1013bca
 quest-sentence	It should be brought to {s}.	应当将它送至{s1}。	quest-destination	ELF 1012224..101231f/10138e0
-quest-sentence	It would be wonderful if {s} found a lasting home within {s}.	若能让{s1}长久地留在{s2}，那就再好不过了。	quest-object,$name	ELF 1011922..1011a81/1013b25/1013b8c
-quest-sentence	I require it as a symbol of the {s}.	我需要它作为{s1}的象征。	rumor-position	ELF 1013c37; symbol-owner position
-quest-sentence	It is the symbol of the {s}.	它是{s1}的象征。	rumor-position	ELF 1013a4b; symbol-owner position
-quest-sentence	{s} requires it to be a proper {s}.	{s1}需要它，才能成为名副其实的{s2}。	quest-holder,$term	ELF 1012d45..1012d96/1013ca6; ruler/office qualification
+quest-sentence	It would be wonderful if {s} found a lasting home within {s}.	若能让{s1}长久地留在{s2}，那就再好不过了。	quest-home-object,quest-building	ELF 1011922..1011a81/1013b25/1013b8c; PE 65aff9 b94090 building field
+quest-sentence	{s}...	{s1}……	quest-object	PE 65b899..65b993; no claim/request produced: complete artifact and optional item caption followed by ellipsis
+quest-sentence	I require it as a symbol of the {s}.	我需要它作为{s1}的象征。	quest-position	ELF 1013c37; symbol-owner position
+quest-sentence	It is the symbol of the {s}.	它是{s1}的象征。	quest-position	ELF 1013a4b; symbol-owner position
+quest-sentence	{s} requires it to be a proper {s}.	{s1}需要它，才能成为名副其实的{s2}。	quest-holder,$office	ELF 1012d45..1012d96/1013ca6; PE 65acd6..65ad5b; historical figure and raw position title
 quest-sentence	It is a valuable treasure to us.	它是我们珍贵的宝物。		ELF 10130fa..101311d/1013c51
 quest-sentence	Last I remember, I had it.	我记得最后是由我保管的。		ELF 1012617
 quest-sentence	Last I heard, I had it.	我最后听说，它由我保管。		ELF 1013c84
@@ -52,6 +89,44 @@ quest-sentence	Last I saw, it was held by {s}.	我最后见到它时，它由{s1
 quest-sentence	Last I heard, it was in {s}.	我最后听说，它在{s1}。	quest-destination	ELF 1012b27/1013f30/1013fdc; all three location branches
 quest-sentence	Last I saw, it was in {s}.	我最后见到它时，它在{s1}。	quest-destination	ELF 1011586..1011655/1013922/1013c26/1013d80
 quest-sentence	I have no idea where it is.	我不知道它在哪里。		ELF 1013ff0; unknown location
+# The same native suppliers can return empty captions. Keep every surviving
+# request/location production explicit; empty fields are not generated names.
+quest-sentence	I desire that be returned to me.	我希望能把这件神器归还给我。		PE b94400/c65450 both empty, 65a503..65a61f
+quest-sentence	I desire that be returned to my family.	我希望能把这件神器归还给我的家族。		PE b94400/c65450 both empty, 65a683..65a763
+quest-sentence	{s} wants returned.	{s1}希望能归还这件神器。	quest-holder	PE 65b23d..65b372; artifact caption empty
+quest-sentence	wants {s} returned.	有人希望能归还{s1}。	quest-object	PE 65b23d..65b372; both claimant IDs absent or claimant caption empty
+quest-sentence	wants returned.	有人希望能归还这件神器。		PE 65b23d..65b372; claimant and artifact captions empty
+quest-sentence	{s} wants .	{s1}想要这件神器。	quest-holder	PE 65b354..65b372/65b7cc..65b854; absent destination, artifact caption empty
+quest-sentence	wants {s}.	有人想要{s1}。	quest-object	PE 65b354..65b372/65b7cc..65b854; absent destination, claimant caption empty
+quest-sentence	wants .	有人想要这件神器。		PE 65b354..65b372/65b7cc..65b854; absent destination, claimant and artifact captions empty
+quest-sentence	{s} wants returned to {s}.	{s1}希望能把这件神器归还至{s2}。	quest-holder,quest-destination	PE 65b6df..65b854; artifact caption empty
+quest-sentence	wants {s} returned to {s}.	有人希望能把{s1}归还至{s2}。	quest-object,quest-destination	PE 65b6df..65b854; claimant caption empty
+quest-sentence	wants returned to {s}.	有人希望能把这件神器归还至{s1}。	quest-destination	PE 65b6df..65b854; claimant and artifact captions empty
+quest-sentence	{s} wants {s} returned to .	{s1}希望能归还{s2}（目的地未记载）。	quest-holder,quest-object	PE 65b7dd..65b854; destination caption empty
+quest-sentence	{s} wants returned to .	{s1}希望能归还这件神器（目的地未记载）。	quest-holder	PE 65b7dd..65b854; artifact and destination captions empty
+quest-sentence	wants {s} returned to .	有人希望能归还{s1}（目的地未记载）。	quest-object	PE 65b7dd..65b854; claimant and destination captions empty
+quest-sentence	wants returned to .	有人希望能归还这件神器（目的地未记载）。		PE 65b7dd..65b854; claimant, artifact and destination captions empty
+quest-sentence	Speaking as a representative of , it is important that {s} be returned.	作为该组织的代表，我郑重说明，必须归还{s1}。	quest-object	PE 65aacf entity exists with empty language name
+quest-sentence	Speaking as a representative of {s}, it is important that be returned.	我代表{s1}郑重说明，必须归还这件神器。	conversation-conflict-entity	PE 65aaf3 artifact and optional item captions empty
+quest-sentence	Speaking as a representative of , it is important that be returned.	作为该组织的代表，我郑重说明，必须归还这件神器。		PE 65aacf+65aaf3; entity and artifact captions empty
+quest-sentence	believes that primordial remnants such as {s} belong back in their rightful home.	该组织认为，像{s1}这样的远古遗存应当回到它们原本的归属之地。	quest-object	PE 65a882 entity exists with empty language name
+quest-sentence	{s} believes that primordial remnants such as belong back in their rightful home.	{s1}认为，这件神器这样的远古遗存应当回到它们原本的归属之地。	conversation-conflict-entity	PE 65a8a6 artifact and optional item captions empty
+quest-sentence	believes that primordial remnants such as belong back in their rightful home.	该组织认为，这样的远古遗存应当回到它们原本的归属之地。		PE 65a882+65a8a6; entity and artifact captions empty
+quest-sentence	Any should be brought to , or given to one of us.	发现任何这类遗存，都应将其送至指定地点，或交给我们中的一员。		PE 65aa2b/65aa52 destination supplier empty
+quest-sentence	It should be brought to .	应当将它送至指定地点。		PE 65ae2a/65ae51 destination supplier empty
+quest-sentence	It would be wonderful if found a lasting home within {s}.	若能让这件神器长久地留在{s1}，那就再好不过了。	quest-building	PE 65afc8 artifact and optional item captions empty
+quest-sentence	It would be wonderful if {s} found a lasting home within .	若能让{s1}找到长久的归宿，那就再好不过了。	quest-home-object	PE 65aff9 building supplier empty
+quest-sentence	It would be wonderful if found a lasting home within .	若能让这件神器找到长久的归宿，那就再好不过了。		PE 65afc8+65aff9; artifact and building captions empty
+quest-sentence	I require it as a symbol of the .	我需要它作为这一职位的象征。		PE 65ac03..65ac7a; position supplier empty
+quest-sentence	It is the symbol of the .	它是这一职位的象征。		PE 65ad8c..65adf9; position supplier empty
+quest-sentence	requires it to be a proper {s}.	有人需要它，才能成为名副其实的{s1}。	$office	PE 65acd6 historical figure caption empty
+quest-sentence	{s} requires it to be a proper .	{s1}需要它，才能名副其实地担任这一职位。	quest-holder	PE 65ad09 raw position title empty
+quest-sentence	requires it to be a proper .	有人需要它，才能名副其实地担任这一职位。		PE 65acd6+65ad09; figure and position captions empty
+quest-sentence	...	……		PE 65b899..65b993; no claim/request and empty artifact/item captions
+quest-sentence	Last I heard, it was held by .	我最后听说，它由身份未记载的人保管。		PE 65bc0a b92f10 valid historical figure with empty caption
+quest-sentence	Last I saw, it was held by .	我最后见到它时，它由身份未记载的人保管。		PE 65bc0a b92f10 valid historical figure with empty caption
+quest-sentence	Last I heard, it was in .	我最后听说，它在某处（地点未记载）。		PE 65bcbb/65bd58/65bdcc; valid site/region/underground with empty caption
+quest-sentence	Last I saw, it was in .	我最后见到它时，它在某处（地点未记载）。		PE 65bcbb/65bd58/65bdcc; valid site/region/underground with empty caption
 adventure-announcement	I'm doing {s}.	我过得{s1}。	greeting-state	ELF 102f751 ->102e11f..102e17d; random suffix selection
 adventure-announcement	I've been {s}.	我最近过得{s1}。	greeting-state	ELF 102e118 ->102e11f..102e17d
 adventure-announcement	I'm {s}.	我{s1}。	greeting-state	ELF 102f628..102f689
@@ -226,7 +301,7 @@ adventure-announcement	Have no fear.	不必畏惧。		ELF 0x102eec3
 adventure-announcement	Have they gone on adventures or moved on to richer delving at new frontier settlements?	他们是去冒险了，还是迁往新的边疆定居点，追寻更丰厚的矿藏？		ELF 0x137b17e
 adventure-announcement	Have you written a new poem?	你写新诗了吗？		ELF 0x104b823
 adventure-announcement	Hold to hope when all else is lost.	即使失去一切，也要坚守希望。		ELF 0x11e19f2
-adventure-announcement	Hopefully your friends can dissuade you from this foolishness.	希望你的朋友能劝你别再做这种傻事。		ELF 0x104cb49
+adventure-announcement	Hopefully your friends can dissuade you from this foolishness.	希望你的朋友能劝你别去冒这个险。		ELF 0x104cb49
 adventure-announcement	How I long for civilization...	我多么怀念文明世界……		ELF 0x18b3d6d
 adventure-announcement	How are you enjoying the adventure?	这趟冒险还过得愉快吗？		ELF 0x18bc483
 adventure-announcement	How can people be so glum?	人为什么会这么不快乐？		ELF 0x102fa63

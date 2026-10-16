@@ -5,7 +5,8 @@ justice-interrogation-paragraph	{s}	{s1}	justice-interrogation-unit	0x1402c0c20.
 justice-interrogation-unit	{s}	{s1}	justice-interrogation-sentence	0x1402c0c20..0x1402c1768;0x1402c1770..0x1402c2c36;native report constructors
 justice-interrogation-unit	{s}	{s1}	historical-event-paragraph	0x1402c1582 history event lookup;0x1402c166f virtual describe +0xd0;upstream types75/128/129
 justice-interrogation-unit	{s}	{s1}	justice-intrigue-paragraph	0x1402c1582 history event lookup;0x1402c166f virtual describe +0xd0;types128/129
-justice-interrogation-unit	{s}	{s1}	$description	0x1402c166f;revealed history event virtual description +0xd0
+# The report event vector admits only agreement_formed (75) and intrigue relationships (128/129).
+# Keep their typed owners: a generic description can swallow several sentences before the report partitions them.
 justice-interrogation-sentence	Subject {s}.	受审者{s1}。	justice-interrogation-response	0x1402c0c20..0x1402c1768;0x1402c1770..0x1402c2c36;native report constructors
 justice-interrogation-sentence	Subject {s}, despite {s}.	尽管{s2}，受审者仍{s1}。	justice-interrogation-response,justice-interrogation-factors	0x1402c0c20..0x1402c1768;0x1402c1770..0x1402c2c36;native report constructors
 justice-interrogation-factors	{s}	{s1}	justice-interrogation-factor	0x1402c0c20..0x1402c1768;0x1402c1770..0x1402c2c36;native report constructors
@@ -158,28 +159,29 @@ justice-intrigue-predicate	{s} corrupted {s}	{s1}拉拢了{s2}	justice-intrigue-
 justice-intrigue-predicate	{s} attempted to corrupt {s}	{s1}试图拉拢{s2}	justice-intrigue-actor,justice-intrigue-actor	0x1402a9f73;0x1402aa811
 justice-intrigue-predicate	{s} subordinated {s}	{s1}使{s2}成为部下	justice-intrigue-actor,justice-intrigue-actor	0x1402a9f84..0x1402a9fa2;support circumstance=257
 justice-intrigue-actor	subject	受审者		0x140b92f10;report context figure substitution
+justice-intrigue-actor	an unidentified creature	身份不明的生物		0x140b92f10;unresolved historical figure;also capitalized at sentence start
 justice-intrigue-actor	{s}, as "{s}",	{s1}以“{s2}”的身份	justice-intrigue-actor,$unit	0x1402a9f03..0x1402a9f46;0x1402aa1c1..0x1402aa208;identity formatter 0x140c3a590
 justice-intrigue-actor	{s}, as {s},	{s1}以{s2}的身份	justice-intrigue-actor,$unit	0x1402aa7c3..0x1402aa806;0x1402aaa27..0x1402aaa6e;unquoted contextual identity branch
-justice-intrigue-actor	spouse {s}	配偶{s1}	justice-intrigue-actor	0x1402a9ffb;0x1402aa861;relationship=17
-justice-intrigue-actor	lover {s}	爱人{s1}	justice-intrigue-actor	0x1402aa00d;0x1402aa873;relationship=4
-justice-intrigue-actor	childhood friend {s}	童年好友{s1}	justice-intrigue-actor	0x1402aa01f;0x1402aa885;relationship=0
-justice-intrigue-actor	comrade-in-arms {s}	战友{s1}	justice-intrigue-actor	0x1402aa031;0x1402aa897;relationship=1
-justice-intrigue-actor	fellow scholar {s}	学者同侪{s1}	justice-intrigue-actor	0x1402aa043;0x1402aa8a9;relationship=6
-justice-intrigue-actor	fellow artist {s}	艺术家同侪{s1}	justice-intrigue-actor	0x1402aa055;0x1402aa8bb;relationship=7
-justice-intrigue-actor	fellow athlete {s}	运动员同侪{s1}	justice-intrigue-actor	0x1402aa067;0x1402aa8cd;relationship=8
-justice-intrigue-actor	mother {s}	母亲{s1}	justice-intrigue-actor	0x1402aa079;0x1402aa8df;relationship=18
-justice-intrigue-actor	father {s}	父亲{s1}	justice-intrigue-actor	0x1402aa08b;0x1402aa8f1;relationship=19
-justice-intrigue-actor	master {s}	师父{s1}	justice-intrigue-actor	0x1402aa09d;0x1402aa903;relationship=20
-justice-intrigue-actor	apprentice {s}	学徒{s1}	justice-intrigue-actor	0x1402aa0af;0x1402aa915;relationship=21
-justice-intrigue-actor	companion {s}	伙伴{s1}	justice-intrigue-actor	0x1402aa0c1;0x1402aa927;relationship=22
-justice-intrigue-actor	ex-spouse {s}	前配偶{s1}	justice-intrigue-actor	0x1402aa0d3;0x1402aa939;relationship=23
-justice-intrigue-actor	neighbor {s}	邻居{s1}	justice-intrigue-actor	0x1402aa183;0x1402aa9e9;relationship=24
-justice-intrigue-actor	fellow believer {s}	教友{s1}	justice-intrigue-actor	0x1402aa174;0x1402aa9da;relationship=25;entity_type=5
-justice-intrigue-actor	fellow order member {s}	同一教团的成员{s1}	justice-intrigue-actor	0x1402aa165;0x1402aa9cb;relationship=25;entity_type=6
-justice-intrigue-actor	troupemate {s}	剧团同伴{s1}	justice-intrigue-actor	0x1402aa156;0x1402aa9bc;relationship=25;entity_type=8
-justice-intrigue-actor	fellow company member {s}	同一公司的成员{s1}	justice-intrigue-actor	0x1402aa147;0x1402aa9ad;relationship=25;entity_type=9
-justice-intrigue-actor	guildmate {s}	行会同伴{s1}	justice-intrigue-actor	0x1402aa138;0x1402aa99e;relationship=25;entity_type=10
-justice-intrigue-actor	{s}	{s1}	$unit	0x140b92f10;complete contextual figure identity
+justice-intrigue-actor	spouse {s}	配偶（{s1}）	justice-intrigue-actor	0x1402a9ffb;0x1402aa861;relationship=17
+justice-intrigue-actor	lover {s}	爱人（{s1}）	justice-intrigue-actor	0x1402aa00d;0x1402aa873;relationship=4
+justice-intrigue-actor	childhood friend {s}	童年好友（{s1}）	justice-intrigue-actor	0x1402aa01f;0x1402aa885;relationship=0
+justice-intrigue-actor	comrade-in-arms {s}	战友（{s1}）	justice-intrigue-actor	0x1402aa031;0x1402aa897;relationship=1
+justice-intrigue-actor	fellow scholar {s}	学者同侪（{s1}）	justice-intrigue-actor	0x1402aa043;0x1402aa8a9;relationship=6
+justice-intrigue-actor	fellow artist {s}	艺术家同侪（{s1}）	justice-intrigue-actor	0x1402aa055;0x1402aa8bb;relationship=7
+justice-intrigue-actor	fellow athlete {s}	运动员同侪（{s1}）	justice-intrigue-actor	0x1402aa067;0x1402aa8cd;relationship=8
+justice-intrigue-actor	mother {s}	母亲（{s1}）	justice-intrigue-actor	0x1402aa079;0x1402aa8df;relationship=18
+justice-intrigue-actor	father {s}	父亲（{s1}）	justice-intrigue-actor	0x1402aa08b;0x1402aa8f1;relationship=19
+justice-intrigue-actor	master {s}	师父（{s1}）	justice-intrigue-actor	0x1402aa09d;0x1402aa903;relationship=20
+justice-intrigue-actor	apprentice {s}	学徒（{s1}）	justice-intrigue-actor	0x1402aa0af;0x1402aa915;relationship=21
+justice-intrigue-actor	companion {s}	伙伴（{s1}）	justice-intrigue-actor	0x1402aa0c1;0x1402aa927;relationship=22
+justice-intrigue-actor	ex-spouse {s}	前配偶（{s1}）	justice-intrigue-actor	0x1402aa0d3;0x1402aa939;relationship=23
+justice-intrigue-actor	neighbor {s}	邻居（{s1}）	justice-intrigue-actor	0x1402aa183;0x1402aa9e9;relationship=24
+justice-intrigue-actor	fellow believer {s}	教友（{s1}）	justice-intrigue-actor	0x1402aa174;0x1402aa9da;relationship=25;entity_type=5
+justice-intrigue-actor	fellow order member {s}	同一教团的成员（{s1}）	justice-intrigue-actor	0x1402aa165;0x1402aa9cb;relationship=25;entity_type=6
+justice-intrigue-actor	troupemate {s}	剧团同伴（{s1}）	justice-intrigue-actor	0x1402aa156;0x1402aa9bc;relationship=25;entity_type=8
+justice-intrigue-actor	fellow company member {s}	同一公司的成员（{s1}）	justice-intrigue-actor	0x1402aa147;0x1402aa9ad;relationship=25;entity_type=9
+justice-intrigue-actor	guildmate {s}	行会同伴（{s1}）	justice-intrigue-actor	0x1402aa138;0x1402aa99e;relationship=25;entity_type=10
+justice-intrigue-actor	{s}	{s1}	$historical-actor	0x140b92f10;complete contextual figure identity
 justice-intrigue-motive	have someone to act on plots and schemes in {s}	让对方在{s1}为自己的阴谋效力	justice-intrigue-place	0x1402aa260;0x1402aaac6;action=1
 justice-intrigue-motive	have an agent in {s}	在{s1}安插代理人	justice-intrigue-place	0x1402aa251;0x1402aa463;0x1402aaab7;0x1402aacc9;action=2 or absent support
 justice-intrigue-motive	have law enforcement look the other way in {s}	让{s1}的执法者睁一只眼闭一只眼	justice-intrigue-place	0x1402aa26f;0x1402aaad5;action=0

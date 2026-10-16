@@ -326,7 +326,10 @@ def parse_ui_messages(path: Path, inventory: Path, *, documented_provenance: boo
                 target, _ = index_template_target(source, target)
             elif "{" in target or "}" in target:
                 raise ValueError(f"{path}:{line_no}: target capture without source capture")
-            entry = Entry(source, target, "hPt" if template else "hP", "DFCN UI messages", 400)
+            dialogue = path.name in {"announcement-dialogue-translations.tsv",
+                                     "announcement-dialogue-extra-translations.tsv"}
+            flags = ("hPt" if template else "hP") + ("D" if dialogue else "")
+            entry = Entry(source, target, flags, "DFCN UI messages", 400)
             identity = "".join(source.split())
             if previous := compiled_identities.get(identity):
                 # Only identical omitted productions may converge. Authored
@@ -2056,6 +2059,14 @@ def build(args: argparse.Namespace) -> tuple[list[Entry], collections.Counter[st
             entry.origin, entry.priority,
         )
 
+    # Speech ownership survives another catalogue/override selecting the same
+    # sentence's wording. It changes parser precedence, not its translation.
+    dialogue_sources = {screen_bytes(entry.source) for entry in candidates if "D" in entry.flags}
+    for encoded in dialogue_sources:
+        if (entry := ui_entries.get(encoded)) is not None and "D" not in entry.flags:
+            ui_entries[encoded] = Entry(entry.source, entry.target, entry.flags + "D",
+                                       entry.origin, entry.priority)
+
     entries = sorted(
         [*chosen.values(), *spheres.values(), *legends.values(), *help_entries.values(),
          *tooltip_entries.values(), *ui_entries.values()],
@@ -2232,7 +2243,7 @@ def main() -> int:
         output.write("# Help templates (hqt): {p}=person/deity, {e}=place/entity/name, {r}=deity spheres, {d}=number, {k}=current native key sequence; every capture is retained once, with indexed targets for Chinese word order.\n")
         output.write("# UI key templates (hPt): complete messages with contextual {k} slots; preserve current bindings and native colors.\n")
         output.write("# Help objective controls (O with hq): complete independent fields, retaining native columns, progress numbers and checkmarks.\n")
-        output.write("# Format: source<TAB>replacement UTF-8<TAB>flags (w=word boundary, p=literal prefix requires a following word, t=template, i=ASCII case-fold, l=left-align prose, o=operation title layout, x=strict semantic captures (display may preserve whole fields after unique fixed-boundary proof), a=adventure prose only, h=Legends detail only, b=Legends book title grammar (with h/t), u=Legends participant relations (with h/t), v=Legends description noun phrases (with h), r=deity sphere vocabulary only, q=complete help/tutorial prose only, j=complete hover/hotkey prose only (with h), P=complete UI prose/message (h=lookup-scoped; without h also available to exact lookup), m=magical material noun, M=material qualifier (with h, excluded from prose); {d}=number, {s}=term, a/h {n}=name/{r}=spheres, a {p}=clause, h {p}=place/{a}=participant/{t}=anatomy/{c}=spelled count/{i}=item/{e}=event/{b}=book title/{q}=color; h targets allow indexed occurrences such as {n2}/{p3})\n")
+        output.write("# Format: source<TAB>replacement UTF-8<TAB>flags (w=word boundary, p=literal prefix requires a following word, t=template, i=ASCII case-fold, l=left-align prose, o=operation title layout, x=strict semantic captures (display may preserve whole fields after unique fixed-boundary proof), a=adventure prose only, h=Legends detail only, b=Legends book title grammar (with h/t), u=Legends participant relations (with h/t), v=Legends description noun phrases (with h), r=deity sphere vocabulary only, q=complete help/tutorial prose only, j=complete hover/hotkey prose only (with h), D=reviewed spoken dialogue (with hP), P=complete UI prose/message (h=lookup-scoped; without h also available to exact lookup), m=magical material noun, M=material qualifier (with h, excluded from prose); {d}=number, {s}=term, a/h {n}=name/{r}=spheres, a {p}=clause, h {p}=place/{a}=participant/{t}=anatomy/{c}=spelled count/{i}=item/{e}=event/{b}=book title/{q}=color; h targets allow indexed occurrences such as {n2}/{p3})\n")
         output.write("# Community translation attribution and licenses: THIRD_PARTY_NOTICES.md\n")
         for entry in entries:
             encoded = screen_bytes(entry.source)

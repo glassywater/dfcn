@@ -124,8 +124,8 @@ bool Overlay::append_ui_message_paragraph(std::vector<std::string> &screen_rows,
     return false;
 }
 
-// Native announcements claim their complete original paragraphs before
-// map filtering, names and item captions can consume individual fields.
+// Native announcements and filesystem errors claim their complete original
+// paragraphs before names and item captions can consume individual fields.
 // Other native catalog paragraphs retain their later specialized precedence.
 void Overlay::append_native_message_paragraphs(std::vector<std::string> &screen_rows,
         std::vector<Match> &result, std::vector<Match> &untranslated_help_rows,
@@ -439,6 +439,7 @@ void Overlay::append_native_message_paragraphs(std::vector<std::string> &screen_
             int64_t(y) + int64_t(end) > gps_->dimy ||
             (addressed && capture.row_addresses.size() != capture.wrapped_lines.size()))
             return std::nullopt;
+        const bool file_error = is_native_save_file_error(capture.source);
         std::vector<Match> rows;
         for (size_t line = begin; line < end; ++line) {
             const auto &native_source = capture.wrapped_lines[line];
@@ -462,7 +463,11 @@ void Overlay::append_native_message_paragraphs(std::vector<std::string> &screen_
                 const bool source_cell = at >= row_x &&
                     at < row_x + static_cast<int>(source.size());
                 if (source_cell && visible[at] != ' ') {
-                    if (!visible_layer(at, row_y) || is_cp437_box_separator(visible, at))
+                    // FormatMessageA bytes can equal CP437 frame glyphs.
+                    // Exact retained wrap bytes and layer ownership still
+                    // prove this error; those bytes are not panel edges.
+                    if (!visible_layer(at, row_y) ||
+                            (!file_error && is_cp437_box_separator(visible, at)))
                         return std::nullopt;
                 } else if (!source_cell && visible[at] != ' ') return std::nullopt;
             }
@@ -637,7 +642,8 @@ void Overlay::append_native_message_paragraphs(std::vector<std::string> &screen_
             const bool announcement = capture->display_source
                 ? announcements->originals.contains(*capture->display_source)
                 : announcements->originals.contains(native_announcement_display_source(capture->source));
-            if (announcement != announcements_only) continue;
+            const bool file_error = is_native_save_file_error(capture->source);
+            if ((announcement || file_error) != announcements_only) continue;
             // A native row address can prove a catalog paragraph's visible
             // continuation as well as an announcement's. The full captured
             // source still selects its rule; screen suffixes never do so.
@@ -710,6 +716,7 @@ void Overlay::append_native_message_paragraphs(std::vector<std::string> &screen_
             std::vector<int> rule_indices;
             bool template_candidates = false;
             if (announcement) rule_indices.push_back(-1);
+            else if (file_error) rule_indices.push_back(-2);
             else {
                 int node = 0;
                 for (unsigned char ch : capture->source) {
@@ -758,7 +765,8 @@ void Overlay::append_native_message_paragraphs(std::vector<std::string> &screen_
         });
     for (const auto &message : native_messages) {
         const auto &capture = message.capture;
-        const bool announcement = message.rules.front() < 0;
+        const bool announcement = message.rules.front() == -1;
+        const bool file_error = message.rules.front() == -2;
         for (const auto &span : message.spans) {
             if (span.date_occluded) {
                 auto recovered = date_occluded_message(capture, span.x, span.y);
@@ -789,9 +797,59 @@ void Overlay::append_native_message_paragraphs(std::vector<std::string> &screen_
             auto paragraph = native_message_rows(capture, span.x, span.y,
                 span.begin, span.end, span.addressed, announcement);
             if (!paragraph) continue;
+            if (file_error) {
+                // This notification's confirmation is a real native button,
+                // not a generated name. Use its drawn caption and skin even
+                // when a foreground sidebar obscures the modal's right edge.
+                const int body_bottom = span.y + static_cast<int>(capture.wrapped_lines.size());
+                const int right = span.x + capture.paragraph_width;
+                int button_y = gps_->dimy;
+                for (const auto &draw : native_draws) {
+                    const auto text = trim_view(draw.source);
+                    if ((text != "OK" && text != "Ok") || draw.y < body_bottom ||
+                            draw.y > button_y || draw.y >= gps_->dimy) continue;
+                    const int x = draw.x + static_cast<int>(text.data() - draw.source.data());
+                    if (x < span.x || x + static_cast<int>(text.size()) > right ||
+                            screen_rows[draw.y].compare(x, text.size(), text) != 0 ||
+                            !visible_layer(x, draw.y)) continue;
+                    const auto button = native_button_text_rect(*gps_, x,
+                        x + static_cast<int>(text.size()), draw.y);
+                    if (!button || button->x < span.x || button->x + button->w > right)
+                        continue;
+                    button_y = draw.y;
+                }
+                if (button_y < gps_->dimy) {
+                    for (const auto &draw : native_draws) {
+                        const auto text = trim_view(draw.source);
+                        if (draw.y != button_y || (text != "OK" && text != "Ok")) continue;
+                        const int x = draw.x + static_cast<int>(text.data() - draw.source.data());
+                        if (x < span.x || x + static_cast<int>(text.size()) > right ||
+                                screen_rows[draw.y].compare(x, text.size(), text) != 0 ||
+                                !visible_layer(x, draw.y)) continue;
+                        const auto button = native_button_text_rect(*gps_, x,
+                            x + static_cast<int>(text.size()), draw.y);
+                        if (!button || button->x < span.x || button->x + button->w > right)
+                            continue;
+                        Match caption{x, draw.y, static_cast<int>(text.size()),
+                            kUiMessageRule, "确定", std::string(text)};
+                        caption.layout_x = button->x;
+                        caption.layout_length = button->w;
+                        caption.layout_foreground_rgb = message_foreground(x, draw.y);
+                        if (only_y < 0 || only_y == draw.y) result.push_back(std::move(caption));
+                        std::fill_n(screen_rows[draw.y].begin() + x, text.size(), ' ');
+                    }
+                }
+            }
             std::string message_source;
             std::vector<int> source_colors;
-            if (announcement) {
+            if (file_error) {
+                // Native wrapping can split a long filesystem component.
+                // The original constructor owns every path byte and space;
+                // never reconstruct this field from its physical rows.
+                message_source = capture.source;
+                source_colors.assign(message_source.size(),
+                    message_foreground(paragraph->front().x, paragraph->front().y));
+            } else if (announcement) {
                 // Native widgets can draw markup such as [B] literally, and
                 // can split a long word across rows. Those raw rows prove
                 // ownership only; the complete normalized record is always
@@ -864,7 +922,8 @@ void Overlay::append_native_message_paragraphs(std::vector<std::string> &screen_
                 std::vector<int> target_colors;
                 TranslationResult translated;
                 std::optional<std::string> target;
-                if (announcement) target = translate_complete_announcement(message_source, source_colors, target_colors);
+                if (file_error) target = translate_native_save_file_error(message_source);
+                else if (announcement) target = translate_complete_announcement(message_source, source_colors, target_colors);
                 else if (pass == 0)
                     target = translate_help_paragraph(message_source, source_colors, target_colors, true, rule_index);
                 else {
@@ -878,8 +937,8 @@ void Overlay::append_native_message_paragraphs(std::vector<std::string> &screen_
                 }
                 append_message(std::move(*paragraph), span.x + capture.paragraph_width,
                     target ? std::string_view(*target) : std::string_view{}, target_colors,
-                    viewport, message_source, announcement || span.addressed ? span.x : -1, false,
-                    announcement || span.addressed ? static_cast<int>(capture.wrapped_lines.size()) : 0);
+                    viewport, message_source, announcement || file_error || span.addressed ? span.x : -1, false,
+                    announcement || file_error || span.addressed ? static_cast<int>(capture.wrapped_lines.size()) : 0);
                 submitted = true;
                 break;
             }

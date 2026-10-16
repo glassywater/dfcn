@@ -1,11 +1,34 @@
 Spoken popup native source reconstruction
 
 This is maintained binary source material, not a display/acceptance report.
-The executable images are the configured Steam and official Windows PE files.
+The executable images include the configured Linux Steam ELF and the retained
+Steam and official Windows PE source inventories.
 No game process, window, translator, or translation check executes here.
 
 Full source ownership
 ---------------------
+The current Linux extraction also retains two complete bottom-level functions:
+elf-speech-person-parameter.c (1030670..1030d6a) and
+elf-speech-transform.c (1031350..1031b45). Together with the existing 42 owners,
+elf-functions.tsv now contains 44 complete source functions. Their complete
+instructions, conditional branches, text operands and call targets are retained
+beside the C exports. elf-text-sets.tsv retains every installed vanilla TEXT_SET
+alternative before 10338c0 parameter expansion; the dispatcher, not a screenshot
+word, selects its native data set. Generated and authored names are fields and
+are not a finite list of sentences to enumerate.
+
+Speech catalogue entries carry D alongside hP/hPt. After the native wrapper
+has established speaker/recipient ownership, the body resolves these complete
+productions and the spoken-sentence aliases of the existing typed dialogue
+grammars before generic prose. Appended sentences must all resolve; a shorter
+match cannot discard a surname, epithet, site, event or subsequent clause.
+The visitor-statement production also owns the greeting's mental-picture tail.
+The spoken-greeting productions bind GREET/REPLY/AFTER_HERO names as persons,
+DIFF_LANGUAGE's AUDIENCE:RACE as a creature and SPEAKER:TRANS_NAME as a person,
+the "true ... of ..." claim as profession plus entity, and the family greeting
+as FAMILY_RELATIONSHIP. The legendary reaction retains the actual enclosing
+brackets at 104c9bd..104ca32 instead of matching only its inner sentence.
+
 native-role-correspondence.tsv pairs every one of the 42 complete ELF
 decompiled source owners with its current decoded PE source. It retains the
 ELF C path, both PE ranges and both original instruction bodies. The literal

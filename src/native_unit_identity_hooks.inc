@@ -101,11 +101,7 @@ static void remember_completed_native_unit_identity_translation(const std::strin
 }
 
 static bool native_unit_identity_snapshot_worker_safe(const NativeUnitIdentity &snapshot) {
-    return snapshot.form != NativeUnitIdentityForm::Reference ||
-        std::none_of(snapshot.reference_parts.begin(), snapshot.reference_parts.end(),
-            [](const NativeUnitReferencePart &part) {
-                return part.kind == NativeUnitReferencePartKind::Title || part.entity_present;
-            });
+    return !native_unit_identity_requires_world(snapshot);
 }
 
 static std::optional<std::string> publish_native_unit_identity_snapshot(
@@ -174,25 +170,46 @@ static std::optional<std::string> publish_native_unit_identity_snapshot(
 }
 
 static std::optional<NativeUnitIdentitySource> prepare_native_unit_identity_source_binding(
-        std::string_view source, uintptr_t owner, std::string_view semantic_key) {
+        std::string_view source, uintptr_t owner, std::string_view semantic_key,
+        const NativeUnitIdentitySource *captured) {
+    if (native_unit_identity_rendering()) return std::nullopt;
     auto binding = native_unit_identity_source_binding(source, owner, semantic_key);
-    if (!binding || binding->ready || !binding->deferred_snapshot) return binding;
+    if (!binding && captured && captured->source == source &&
+            captured->semantic_key == semantic_key) binding = *captured;
+    if (!binding || binding->ready) return binding;
+    if (binding->catalog != g_overlay.native_identity_translation_catalog_generation()) return binding;
     const NativeUnitIdentityPublication token{
         owner, binding->publication_epoch, binding->pending_witness, binding->catalog};
-    // This entry belongs only to SDL before drawing. The registry mutex has
-    // already been released; live title lookup uses the existing UI renderer.
+    std::optional<std::string> target;
+    bool completed = false;
+    {
+        auto &cache = g_native_unit_identity_completed;
+        std::lock_guard<std::mutex> lock(cache.mutex);
+        const auto found = cache.results.find(binding->semantic_key);
+        if (found != cache.results.end()) { target = found->second; completed = true; }
+    }
+    // The draw owns this result even when the native producer has reused or
+    // destroyed its string. The complete semantic key also recovers worker
+    // results whose original publication token no longer owns that address.
     try {
-        auto target = g_overlay.translate_native_unit_identity(*binding->deferred_snapshot);
+        if (!completed) {
+            if (!binding->deferred_snapshot) return binding;
+            target = g_overlay.translate_native_unit_identity(*binding->deferred_snapshot);
+        }
         if (target && target->empty()) target.reset();
         if (token.catalog == g_overlay.native_identity_translation_catalog_generation()) {
-            // SDL actually resolved the owned deferred snapshot. A legal
-            // untranslated result is complete too, unlike a rejected worker.
-            remember_completed_native_unit_identity_translation(binding->semantic_key, target);
+            if (!completed)
+                remember_completed_native_unit_identity_translation(binding->semantic_key, target);
             finish_native_unit_identity_publication(token, binding->semantic_source,
                 target ? *target : native_text_to_utf8(binding->semantic_source));
+            binding->target = !target || *target == native_text_to_utf8(binding->semantic_source)
+                ? native_text_to_utf8(binding->source) : *target;
+            binding->ready = true;
+            binding->pending_witness = 0;
+            binding->deferred_snapshot.reset();
         }
     } catch (const DfhackTranslationNeedsWorld &) {}
-    return native_unit_identity_source_binding(source, owner, semantic_key);
+    return binding;
 }
 
 static void capture_native_unit_identity_name_fields(const void *name,
@@ -1021,6 +1038,25 @@ static bool install_native_unit_identity_hooks() {
         // Conversation portrait: capitalize the same captured reference.
         // Classic CALL 0x866512 is mapped with this real supplier site.
         {0x868c92, 0x52d650,
+            reinterpret_cast<const void *>(&capture_native_conversation_portrait_capitalization)},
+        // Barter capitalizes the captured speaker before appending ': ' to
+        // Show, refusal and treasure-return reports. Keep that exact source
+        // bound to its native species, office and personal-name fields.
+        {0x273c3c, 0x52d650,
+            reinterpret_cast<const void *>(&capture_native_conversation_portrait_capitalization)},
+        {0x274372, 0x52d650,
+            reinterpret_cast<const void *>(&capture_native_conversation_portrait_capitalization)},
+        {0x27445b, 0x52d650,
+            reinterpret_cast<const void *>(&capture_native_conversation_portrait_capitalization)},
+        {0x2745ef, 0x52d650,
+            reinterpret_cast<const void *>(&capture_native_conversation_portrait_capitalization)},
+        {0x277c5e, 0x52d650,
+            reinterpret_cast<const void *>(&capture_native_conversation_portrait_capitalization)},
+        {0x277e9d, 0x52d650,
+            reinterpret_cast<const void *>(&capture_native_conversation_portrait_capitalization)},
+        {0x2786a6, 0x52d650,
+            reinterpret_cast<const void *>(&capture_native_conversation_portrait_capitalization)},
+        {0x278fa6, 0x52d650,
             reinterpret_cast<const void *>(&capture_native_conversation_portrait_capitalization)},
         // Sheet header: output [rsp+0x3da0] goes unchanged to addst at
         // 0x15c1f8. The quotes at 0x15c1de/0x15c209 are separate glyphs.

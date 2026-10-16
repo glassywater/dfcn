@@ -1,0 +1,121 @@
+Native building material picker and statue captions, DF 53.16
+
+Source images:
+  ELF Steam: bcc6789e6fb477b785a2b02be80b8b1b054ff88c
+  PE Classic: 6a70b91c / image size 0270a000
+  native-image.tsv retains each file path and SHA-256.
+  native-functions/calls/branches/switches/literals/data/virtuals.tsv retain
+  complete procedures and operands. native-*.c is Ghidra decompilation;
+  native-*.asm retains original instruction boundaries. PE jump/selector
+  tables are data even where they lie inside a chained unwind extent.
+
+The PE Classic renderer 37f1f0 corresponds to Steam RVA 381630 in the existing
+native_pe_build_bindings.inc edition map. No Steam executable was present on
+this Linux host. Steam title ca0b40 and item getter sources are also retained
+in the existing item-info-title-sources.tsv and statue-art-sources.tsv. This
+extraction reads the installed ELF and the locally available real Classic PE;
+it does not label mapped addresses as a separately decompiled Steam image.
+
+Picker renderer: ELF d84fd0..d87fb2 / PE Classic 37f1f0..38091d
+  heading := "Select materials for the " BUILDING "."
+  requirement := "Amount needed: " LOW (" to " HIGH)?
+  search := native editable item filter and its empty/in-progress text
+  footer := "Done"
+  item row := NAME (SELECTED "/" AVAILABLE)? "Dist: " DISTANCE
+  expandable group := GROUP_NAME (" [" GROUP_COUNT "]")? "Dist: " DISTANCE
+  group children := complete item rows
+  bulk selection action := "All"
+  expand/collapse, selected ticks, +/- controls and quality/designation
+  marks are native glyphs; they are not English words to translate.
+  Availability determines enabled/disabled and highlight colors. Numeric
+  amounts, names, distance and controls have independent native positions.
+  Name clipping reserves columns according to the presence of a selection
+  amount. The original complete string is the translation input, not "...".
+
+Entry virtual dispatch:
+  ELF +18 / PE +10 getName:
+    build_req_choice_genst: actual item type/subtype/material, plural when
+      number of candidates > 1; shared item-noun constructor supplies its
+      optional bracketed group count.
+    build_req_choice_specst: complete-item-name(item, article=false,
+      count=-1); missing item gives literal "Null".
+    build_req_choicest base: empty.
+  Header BUILDING uses the existing complete building-name constructor,
+  extracted in fortress-build-placement and the building-name source tables.
+
+Complete item names: ELF e68020 / PE Classic c62490 (Steam c65450)
+  Named artifacts select their native generated name, otherwise the item
+  description remains. Book and writing branches can use TITLE " (copy)".
+  Item flags select paired foreign/forbidden markers, sale designation,
+  artifact markers, decoration quality and construction quality. Quality
+  values select none, -, +, *, CP437 f0 (equivalent sign), CP437 0f (sun).
+  Wear selects x, X or XX; these are case-sensitive. Article and quantity
+  options are native arguments, not inferred from the capitalization.
+  The item-specific description slot provides the complete material/item
+  noun. Its existing runtime grammar handles every type, including nested
+  statue and figurine subjects, corpse parts, containers and written titles.
+  item-noun-constructor.c and its switch/literal source tables retain the
+  complete type dispatch and default branches, not a statue-only subset.
+
+Statue/figurine title: ELF e82910 / PE Classic c9db80 (Steam ca0b40)
+  title := BASE_ITEM_NAME (" of " SAVED_SHORT_SUBJECT)?
+  Empty saved subject omits " of ". An absent art reference invokes native
+  initialization before the getter appends the saved string; translation
+  reads the result and never invokes art-generation functions itself.
+  Short subject generation uses only elements[0], if present:
+    ELF 1857740 calls first element +48, definite=false.
+    PE cc5510 inlines the equivalent first element +40 call, definite=false.
+  This is separate from the full-art prose element formatter:
+    ELF +40 / PE +38 getName;
+    ELF +48 / PE +40 getShortName.
+  Art properties/actions, historical events, design quality, artist and
+  deity domains are not appended to the short subject by this operation.
+
+All short subject types:
+  Creature: if historical figure resolves and has a valid name, native name
+    alone; otherwise singular/plural caste/species from that figure when
+    available, or the element's own race/caste. Singular has "a "; definite
+    mode has "the ". No numeric count or "NAME the SPECIES" in short mode.
+  Item: linked named artifact returns its name alone. An unnamed artifact
+    uses complete item description; applicable unnamed written items return
+    "Untitled". Otherwise singular/plural material/item noun, with the same
+    article convention. Inner item descriptions can include another statue.
+  Plant and tree: singular/plural plant RAW NAME, with the article convention.
+    The tree and plant functions differ in ELF and share a function in PE.
+  Shape: singular/plural shape RAW noun, with the article convention. The
+    short formatter overwrites the earlier adjective temporary with the noun;
+    full-art prose owns the adjective. Invalid RAW indices preserve the
+    native empty/article-only output rather than inventing a figure name.
+  Base element: empty text. Empty first element does not advance to another
+    element; no visible subject suffix is generated.
+
+The long element routines are retained alongside these short routines to
+preserve their distinct branches: named species, deity depiction and domains,
+artifacts/items, shapes, plants, singular/plural and definite articles. Their
+dynamic RAW/name/material/event sources already belong to the shared runtime
+vocabularies and statue-description-grammar.md; they are not finite screenshot
+spellings. Multiple-subject grammar remains supported for stored/custom art
+strings, while the native short producer above selects one first element.
+
+Translation ownership:
+  native-display-fields.tsv identifies the actual name, selected amount,
+  distance label and distance number call sites. Dist: and its numeric value
+  are separate addst calls; a combined draw is not the native contract.
+  fortress_build_placement.inc reads the name draw by its original return
+  address before word matching, restores the complete pre-clipping name, and
+  reserves the amount and distance columns. Header/panel/texture recognition
+  and a shared logical layer are not prerequisites for this native role.
+  native_caption_hooks.inc retains the actual visible draw even for width=0,
+  preserving its original caller, clipping and unabridged source together.
+  Unknown authored fields remain one complete field.
+  item_descriptions.inc lets statue/figurine + subject productions run before
+  the base-only ::items grammar. Shared material qualifiers and symbol/name
+  resolvers translate the subject without introducing screenshot name aliases.
+  local-overrides.tsv retains the requirement-range and missing-item texts.
+  ELF name/amount/Dist returns are d87191, d87271, d874d6 and d8751d;
+  PE Classic returns are 3802cf, 3803df, 38047e and 3804be. The existing PE
+  edition map places them at Steam 38270f, 38281f, 3828be and 3828fe.
+  Source coordinates are passed through each host's existing native address
+  resolver; field ownership and translation remain shared by ELF and PE.
+
+This is offline source reconstruction. No game window was operated or observed.

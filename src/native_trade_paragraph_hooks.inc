@@ -23,6 +23,128 @@ static bool native_trade_reply_rows(uintptr_t owner,
     return native_history_copy(owner, rows) && rows.valid(16384);
 }
 
+// big_announce survives its producer, so a page that was already open can
+// redraw without invoking add_paragraph again. Read the whole retained vector
+// at the first actual reply draw, including rows outside the scroll viewport.
+static void capture_native_adventure_barter_retained_reply(
+        uintptr_t screen, const NativeString *draw_source) {
+    if (!screen || screen > UINTPTR_MAX - 0x35c) return;
+    const uintptr_t owner = screen + 0x340;
+    NativeBorrowedVector<NativeString *> native_rows;
+    int32_t scroll = -1;
+    if (!native_trade_reply_rows(owner, native_rows) || native_rows.size() == 0 ||
+            !native_history_copy(screen + 0x358, scroll) || scroll < 0 ||
+            static_cast<size_t>(scroll) >= native_rows.size()) return;
+    NativeString *first_draw_source = nullptr;
+    if (!native_history_copy(reinterpret_cast<uintptr_t>(native_rows.begin) +
+            static_cast<size_t>(scroll) * sizeof(NativeString *), first_draw_source) ||
+            first_draw_source != draw_source) return;
+    std::vector<NativeString *> pointers(native_rows.size());
+    if (!native_history_copy_bytes(reinterpret_cast<uintptr_t>(native_rows.begin),
+            pointers.data(), pointers.size() * sizeof(NativeString *)) ||
+            pointers[static_cast<size_t>(scroll)] != draw_source) return;
+    std::vector<std::string> rows;
+    rows.reserve(pointers.size());
+    size_t bytes = 0;
+    for (const auto *pointer : pointers) {
+        std::string row;
+        if (!native_history_copy_string(reinterpret_cast<uintptr_t>(pointer), row) ||
+                row.size() > 4096 || row.find_first_of("\r\n") != std::string::npos ||
+                row.find('\0') != std::string::npos || row.size() > 262144 - bytes) return;
+        bytes += row.size();
+        rows.push_back(std::move(row));
+    }
+    NativeBorrowedVector<NativeString *> current_rows;
+    if (!native_trade_reply_rows(owner, current_rows) ||
+            current_rows.begin != native_rows.begin || current_rows.end != native_rows.end)
+        return;
+    std::vector<NativeParagraphCapture> retained;
+    std::vector<bool> boundaries(rows.size() + 1, false);
+    boundaries.front() = boundaries.back() = true;
+    {
+        std::lock_guard<std::mutex> lock(g_native_paragraph_mutex);
+        auto at = g_native_paragraph_index.lower_bound({owner, 0, 0});
+        for (; at != g_native_paragraph_index.end() && std::get<0>(at->first) == owner; ++at) {
+            const auto &paragraph = *at->second;
+            const size_t first = paragraph.first_line;
+            const size_t count = paragraph.wrapped_lines.size();
+            if (paragraph.paragraph_width != 68 || !count || first > rows.size() ||
+                    count > rows.size() - first || paragraph.row_addresses.size() != count)
+                continue;
+            bool current = true;
+            for (size_t line = 0; line < count; ++line)
+                if (paragraph.row_addresses[line] !=
+                        reinterpret_cast<uintptr_t>(pointers[first + line]) ||
+                        paragraph.wrapped_lines[line] != rows[first + line]) {
+                    current = false;
+                    break;
+                }
+            if (!current) continue;
+            boundaries[first] = boundaries[first + count] = true;
+            retained.push_back(paragraph);
+        }
+    }
+    bool rebuilt_owner = false;
+    for (size_t first = 0; first < rows.size();) {
+        if (rows[first].empty()) { ++first; continue; }
+        size_t last = first + 1;
+        while (last < rows.size() && !boundaries[last] && !rows[last].empty()) ++last;
+        // Native Show/return calls can append consecutive complete wraps
+        // without a blank separator. Existing exact row intervals retain
+        // those producer boundaries and their pristine pre-wrap sources.
+        const bool captured = std::any_of(retained.begin(), retained.end(), [&](const auto &paragraph) {
+            return paragraph.first_line <= first &&
+                paragraph.first_line + paragraph.wrapped_lines.size() >= last;
+        });
+        if (captured) { first = last; continue; }
+        std::vector<std::string> paragraph_rows(rows.begin() + first, rows.begin() + last);
+        std::vector<uintptr_t> addresses;
+        addresses.reserve(last - first);
+        for (size_t line = first; line < last; ++line)
+            addresses.push_back(reinterpret_cast<uintptr_t>(pointers[line]));
+        std::string source;
+        // 8e7310 delegates to 8e7440. At 8e7578..7599 the ordinary
+        // wrap keeps its break-space in the outgoing row; 8e74c6..74dc
+        // skips only following leading spaces. A forced word fragment
+        // has no delimiter. Append original bytes, never trim-and-space.
+        for (const auto &row : paragraph_rows) source.append(row);
+        const bool replaces_owner = first == 0 && is_native_prose_source(source);
+        remember_native_paragraph(owner, 68, std::move(source),
+            std::move(paragraph_rows), first, std::move(addresses));
+        rebuilt_owner = rebuilt_owner || replaces_owner;
+        first = last;
+    }
+    // A missing first interval causes the shared registry to rebuild this
+    // owner. Restore every still-current later producer capture verbatim;
+    // its authored spacing must not be replaced by reconstructed wrap bytes.
+    if (rebuilt_owner)
+        for (auto &paragraph : retained)
+            remember_native_paragraph(owner, paragraph.paragraph_width,
+                std::move(paragraph.source), std::move(paragraph.wrapped_lines),
+                paragraph.first_line, std::move(paragraph.row_addresses));
+}
+
+static void capture_native_adventure_barter_reply_draw(graphicst *graphics,
+        const NativeString *source, void *screen, int width) {
+    NativeInputCallbackScope callback;
+    const auto caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
+    try {
+        capture_native_adventure_barter_retained_reply(
+            reinterpret_cast<uintptr_t>(screen), source);
+    } catch (...) {}
+    // Both PE addst bodies (ad9960/ad69a0) consume RCX/RDX/R9D only.
+    // R8 is unused on entry, then overwritten before addchar. The relay can
+    // carry R13 here without changing any native argument or stack slot.
+    // Use the existing addst trampoline and explicitly retain its real call
+    // identity; calling the hooked entry here would bind our return address.
+    capture_native_limited_caption_draw(graphics, source, NativeJustification{}, width, [&] {
+        if (const auto original = g_native_clipped_caption_hooks.draw)
+            callback.call_native([&] { original(graphics, source, NativeJustification{}, width); });
+    }, false, NativeInfoTitleKind::None, false, {}, false,
+        NativeCivilizationField::None, false, {}, NativeLocationPickerField::None,
+        NativeTravelBuildingField::None, caller);
+}
+
 template<size_t OwnerOffset>
 static uintptr_t capture_native_trade_reply_copy(NativeString *destination,
         const char *source, size_t size, void *screen) {
@@ -117,6 +239,11 @@ static bool install_native_trade_paragraph_hooks() {
     // Pass that preserved register as an extra callback argument; the original
     // functions retain all their own arguments and exact native return values.
     std::vector<NativeCall> calls{
+        // The retained reply loop owns the real barter object in R13.
+        // R9D remains its original width (zero), and no fifth argument is
+        // written into the caller's live stack locals.
+        {0x27009b, 0xad9960, reinterpret_cast<const void *>(&capture_native_adventure_barter_reply_draw),
+            {0x4d, 0x89, 0xe8}}, // mov r8,r13
         {0x36ad21, 0x6f8d0, reinterpret_cast<const void *>(&capture_native_trade_reply_copy<0x3c0>),
             {0x4d, 0x89, 0xe1}}, // mov r9,r12
         {0x36b007, 0x66b70, reinterpret_cast<const void *>(&capture_native_trade_reply_rows_release<0x3c0>),

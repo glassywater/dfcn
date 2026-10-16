@@ -26,8 +26,14 @@ static std::optional<NativeFortressZoneCaption> capture_native_fortress_zone_cap
         return variable_row_caption(Kind::Present, 1);
     if (caller == native_reference_address(base, 0x39cd4f))
         return variable_row_caption(Kind::Imprisoned);
-    if (caller == native_reference_address(base, 0x39db64))
-        return variable_row_caption(Kind::Patients);
+    if (caller == native_reference_address(base, 0x39db64)) {
+        // Patient counts and stockpile occupancy join the same addst call.
+        // Keep the complete field's native role before its bytes are claimed.
+        std::string complete;
+        const bool occupancy = native_history_copy_string(source, complete) &&
+            complete.ends_with("% occupied");
+        return variable_row_caption(occupancy ? Kind::Occupancy : Kind::Patients);
+    }
     if (caller == native_reference_address(base, 0x39db94))
         return NativeFortressZoneCaption{Kind::Fixed, false};
     const bool type = caller == native_reference_address(base, 0x39c809);

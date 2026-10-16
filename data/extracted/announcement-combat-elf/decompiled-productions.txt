@@ -1,0 +1,145 @@
+Combat announcements and target actions: installed Linux ELF 53.16
+
+Image: ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c
+Input: native-elf-images.json reference dwarfort, original disk bytes only.
+Extraction: tools/extract_combat_announcement_elf.py.
+C decompilation: tools/DecompileAdventureAnnouncements.java, Ghidra 12.1.2.
+Every native-functions.tsv row has a full elf-source-<start>.c export and
+an elf-<role>.asm listing. native-branches.tsv contains all comparisons,
+tests and direct branch operands; native-switches.tsv contains 568 decoded
+selector destinations across these 33 full unwind owners. Inferred C types
+and Ghidra warnings are retained; assembly is authoritative for original
+instruction boundaries and cold paths. This is recovered source, not game
+output. No game process, desktop, translator sample or test was executed.
+
+The popup, announcement history and timed banner share report.text. Their
+wrap/render functions 1160090, 11b2e40 and 1154220 retain report ownership;
+the 95-column wrap is a display operation, not a new sentence production.
+The same queue also admits dialogue, weather and other reports. Those
+producer families remain in adventure-announcement-native and the existing
+announcement grammar catalogs; they are not additional combat verbs.
+
+1. Complete unit fields
+
+b6ca30 and b676a0 select native names/identities or appearance/caste/role
+captions. A selected name can be authored Latin text, digits or UTF-8; it
+need not occur in a procedural-name word list. The complete report's $unit
+slot and the target panel's {n} slot first use captured native identity,
+then the complete role/name parser, then the existing typed unit resolver.
+This handles every such field in attack/defense, damage, wrestling, charge,
+collision, item removal, item possession and action/state reports. It adds
+no name-specific dictionary entry. $squad retains its separate alias-aware
+resolver. Dynamic identities are fields, not finite English literals.
+
+2. Shared damage: 17ebfc0..17f5f78
+
+The actor is a unit, or The [flying |spinning ] ITEM. A normal head consists
+of ACTOR, RAW_ATTACK_VERB, TARGET, in the/by the BODY_OR_ITEM, optional from
+behind/from the side, optional with EQUIPMENT. A prebuilt head instead
+comes from wrestling, collision or bodily impact. Equipment may include a
+possessive and an item or anatomical instrument. Unit, body, item, tissue
+and material leaves are resolved in their own namespaces.
+
+The complete main outcomes share this head:
+  , but it is deflected by EQUIPMENT!
+  , but the attack is deflected by EQUIPMENT!
+  , lightly tapping the target!
+  , but there is no force!
+  , but it passes right through!
+  , but the attack passes right through!
+  , but it glances away!
+  , but the attack glances away!
+   and the severed part sails off in an arc!
+   and LAYER BODY_RESULT!
+   and it is mostly cut away from the rest of the torso!
+  , DAMAGE_LIST!
+   and DAMAGE_LIST!
+  !
+Failed item/tissue lookups retain the native empty-object productions.
+Damage lists compose tearing/tearing apart/shattering/chipping/fracturing/
+denting/bruising with complete tissue/body/material fields, comma/and
+lists, through-equipment clauses, holes, jamming and breaking-away results.
+Auxiliary selector branches retain arteries, nerves, tendons, ligaments,
+lodged/latching items, force, interrupted attacks, broken equipment,
+stunning, unconsciousness, rage, breathing difficulty, nausea and vomiting.
+The finite productions and Chinese wording are the existing scoped rows in
+announcement-combat-grammar.tsv, including its empty-field alternatives.
+The new typed unit resolution applies throughout that recursive grammar.
+
+3. Other combat producers
+
+199d360: leap/charge, surprise, dodge/scramble/roll/jump, collisions, knockdown,
+         tangle/fall and the independent direction/ownership alternatives.
+19a1ff0: embedded item pull/twist, possession and stuck-item outcomes.
+19a5370: grabs/grips, pinching, gouging, bending, locks, chokeholds, shaking,
+         strangling, release and failed escape; shared damage calls retained.
+19ad8d0: melee/projectile attack, misses, movement/range, dodge, parry, block,
+         deflection and shared hit outcomes; RAW attack verbs and equipment.
+1eb5eb0: projectile motion/collision and its typed item/unit destinations.
+be81b0/be91f0: force and ground-skid prefixes passed to shared damage.
+b8c690: pull out/drop embedded item job.
+b92f40/b93fe0: webbing and fireball.
+bd1050/bd1780/bd1ff0: breath defense and both fire-breath source owners.
+bd2860/bd3550/bd4030/bd4a90/b94a80: cloud/glob/material emissions.
+e69120: gain/maintain/lose possession, remains stuck, is torn from anatomy.
+78be30: all unit-action report branches, including stands up, mounting,
+        dismounting, pushing, struggling in liquids, ammunition loading.
+
+These use the existing combat, adventure-announcement, system and RAW
+grammar families. No fixed list of personal names is substituted.
+raw-attack-fields.tsv retains current vanilla/installed/available RAW
+ATTACK and ATTACK_VERB inputs; raw-procedural-attacks.tsv retains Lua
+construction expressions. An available mod file is not evidence that a
+world loaded that mod. Body/tissue/item/material suppliers remain typed
+dynamic inputs, as in the existing adventure-target-panel RAW inventories.
+
+4. Unit state: c1a160..c2a07d
+
+The producer emits a complete b6ca30 subject, then independently selects
+fall/falls + over, regain/regains + consciousness, partial/complete web
+freedom, paralysis/sluggishness/numbness/recovery, retching, vomiting with
+each medium/destination branch, stun recovery, exhaustion/overexertion,
+pain collapse, training changes and five recovered mood states. Arrival,
+growth, birth and resident naming use their existing typed grammar paths.
+announcement-status-grammar.tsv now gives 34 existing single-unit state
+productions the same $unit ownership as combat, including falls over.
+Player-only exact sentences keep their existing catalog translations.
+
+5. Target summary and action status: 116e110 and 116bb90
+
+The summary draws an identity, then at most six independent action rows.
+Action type selects 0..27; out-of-range/default emits no text:
+  0 movement/charging       1 attacking/recovering  2 jumping
+  3 holding terrain        4 releasing terrain    5 climbing
+  6 working                7 talking              8 regaining balance
+  9 parrying              10 blocking             11 dodging
+ 12 deflection recovery   13 standing up          14 lying down
+ 15 working               16 pushing object      17 sucking blood
+ 18 holding item          19 releasing item       20 mounting
+ 21 dismounting           22 leading animal       23 stop leading animal
+ 24 loading/nocking ammo  25 shooting weapon      26 throwing item
+ 27 recovering after shooting
+
+Movement/dodge direction has all eight horizontal directions, upward,
+downward and the independently appended above/below qualifiers.
+An attack's active timer chooses Attacking versus Recovering from attacking.
+A missing target yields that prefix alone. Otherwise the target is you or
+the complete b676a0 caption. Reveal flags independently add timing stage
+(Remote/Distant/Starting/Incoming/IMMINENT), method (wrestling/grab), an
+item or natural attack, attack style and an aiming part. Style bits append
+quick/heavy/wild/precise in order, including all combinations. A weapon's
+RAW subpart may precede its attack name; NO_SUB omits that subpart. Failed
+item lookup emits no instrument. All methods rejoin the common aiming
+suffix for active, revealed, valid body targets; explicit wrestling/grab
+aiming templates preserve those alternatives before generic unit templates.
+Deflection optionally adds a full item; loading selects nocking/loading
+and its ammunition field. Exact Chinese wording and typed compositions are
+in adventure-target-translations.tsv. The full captured status draw enters
+that parser before independent grid fragments; authored unit names remain
+valid captures, including when a status has no shortened-source companion.
+
+The combat chooser's prompts, stages, confirmation choices, ratings,
+attack styles, wrestling actions and complete dynamic helpers are retained
+in adventure-target-panel/elf-decompiled.c and helper-decompiled.txt, plus
+this extraction's complete 1182410 owner. Existing panel geometry owns the
+whole caption field and removes overlapping generic fragment matches.

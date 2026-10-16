@@ -492,6 +492,11 @@ std::optional<std::string> Overlay::translate_legends_name(
     });
 }
 
+static bool written_work_form_rule(const Rule &rule) {
+    return rule.source == "It is an example of {p}." ||
+        rule.source == "{b} is an example of {p}.";
+}
+
 static bool journal_habitat_rule(const Rule &rule) {
     return rule.source == "This creature can be found in {p}." ||
         rule.source == "This creature lives in {p}.";
@@ -932,7 +937,9 @@ std::optional<std::string> Overlay::translate_legends_nested(
             if (rule.legends_identity && rule.source == "\"{n}\"") mode += ":identity";
             break;
         case 'p':
-            if (field > 0 && legends_office_capture(rule, field - 1))
+            if (written_work_form_rule(rule))
+                mode += ":art-form";
+            else if (field > 0 && legends_office_capture(rule, field - 1))
                 mode += ":office-owner";
             else if (journal_site_entity_capture(rule, field))
                 mode += ":entity-owner";
@@ -1016,7 +1023,12 @@ std::optional<std::string> Overlay::translate_legends_nested(
                     mode == "n:identity");
                 break;
             case 'p':
-                if (mode == "p:reference" || mode == "p:office-owner" ||
+                if (mode == "p:art-form") {
+                    // Written works name poetry, music or dance forms here.
+                    // Share their semantic title grammar with preferences;
+                    // a place field can legitimately preserve English text.
+                    target = translate_character_preference_term(part, true);
+                } else if (mode == "p:reference" || mode == "p:office-owner" ||
                         mode == "p:entity-owner") {
                     // Native +d8 subjects share this reference slot across
                     // sites, entities, buildings, geography and artifacts.

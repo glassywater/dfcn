@@ -2161,6 +2161,8 @@ static void capture_native_squads_caption(graphicst *graphics,
                 row.unit_identity_header = identity->character_header;
                 row.unit_identity_ready = identity->ready;
                 row.unit_identity_semantic_key = identity->semantic_key;
+                if (!identity->ready)
+                    row.unit_identity_pending = std::make_shared<const NativeUnitIdentitySource>(*identity);
             }
             x = graphics->screenx; y = graphics->screeny;
             dimx = graphics->dimx; dimy = graphics->dimy;
@@ -2375,6 +2377,7 @@ static void capture_native_limited_caption_draw(graphicst *graphics, const Nativ
             (width > 0 || graphics->screenx < graphics->clipx[0] ||
              int64_t(graphics->screenx) + static_cast<int64_t>(text.size()) >
                  int64_t(graphics->clipx[1]) + 1 ||
+             native_build_material_field(native_caller) != NativeBuildMaterialField::None ||
              native_adventure_crafting_role(native_caller) != NativeAdventureCraftingRole::None ||
              inventory_role != NativeAdventureInventoryRole::None ||
              barter_field != NativeAdventureBarterField::None)) {
@@ -2452,6 +2455,7 @@ static void capture_native_limited_caption_draw(graphicst *graphics, const Nativ
         // paragraph recovery; the clipped-caption registry independently
         // proves the visible prefix to the map text filter.
         if (width > 0 || first != x || info_title_kind != NativeInfoTitleKind::None ||
+                native_build_material_field(native_caller) != NativeBuildMaterialField::None ||
 #ifndef _WIN32
                 (native_caller &&
                  (native_caller == native_reference_address(native_history_profile_base(), 0xfd11ed) ||

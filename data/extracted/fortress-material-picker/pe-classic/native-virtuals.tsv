@@ -1,0 +1,118 @@
+role	instruction	dispatch
+material-picker	0x14037f8c9	call   QWORD PTR [rip+0x12611d1]        # 0x1415e0aa0
+material-picker	0x14037f961	call   QWORD PTR [rip+0x1261139]        # 0x1415e0aa0
+material-picker	0x14037f9af	call   QWORD PTR [rip+0x12610eb]        # 0x1415e0aa0
+material-picker	0x14037fb01	call   QWORD PTR [rip+0x1260f99]        # 0x1415e0aa0
+material-picker	0x14037fc77	call   QWORD PTR [rip+0x126056b]        # 0x1415e01e8
+material-picker	0x14037fec3	call   QWORD PTR [rax+0x40]
+material-picker	0x14037fed4	call   QWORD PTR [rax+0x48]
+material-picker	0x14038002f	call   QWORD PTR [rax+0x8]
+material-picker	0x14038011a	call   QWORD PTR [rax+0x10]
+material-picker	0x14038012e	call   QWORD PTR [rax+0x30]
+material-picker	0x140380183	call   QWORD PTR [rax+0x8]
+material-picker	0x1403802fa	call   QWORD PTR [rax+0x30]
+material-picker	0x140380326	call   QWORD PTR [rax+0x30]
+material-picker	0x140380533	call   QWORD PTR [rax+0x30]
+material-picker	0x140380702	call   QWORD PTR [rax+0x40]
+material-picker	0x140380725	call   QWORD PTR [rax+0x38]
+material-picker	0x140380731	call   QWORD PTR [rdx+0x30]
+material-picker	0x1403807ab	call   QWORD PTR [rax+0x40]
+material-picker	0x1403807d2	call   QWORD PTR [rax+0x30]
+material-picker	0x14038086c	call   QWORD PTR [rip+0x126022e]        # 0x1415e0aa0
+material-picker	0x140380873	call   QWORD PTR [rip+0x1260227]        # 0x1415e0aa0
+material-picker	0x14038087a	call   QWORD PTR [rip+0x1260220]        # 0x1415e0aa0
+item-base-title	0x140ca2c23	call   QWORD PTR [rax+0x10]
+item-base-title	0x140ca2c37	call   QWORD PTR [rax+0x40]
+item-base-title	0x140ca2c53	call   QWORD PTR [rax+0x590]
+item-base-title	0x140ca2c71	call   QWORD PTR [rdx+0x18]
+item-base-title	0x140ca2c7d	call   QWORD PTR [rdx+0x10]
+item-base-title	0x140ca2c8a	call   QWORD PTR [rdx+0x8]
+item-base-title	0x140ca2c97	call   QWORD PTR [rdx]
+item-base-title	0x140ca2ccb	call   QWORD PTR [rax+0x18]
+item-base-title	0x140ca2cd7	call   QWORD PTR [rax+0x10]
+item-base-title	0x140ca2ce4	call   QWORD PTR [rax+0x8]
+item-base-title	0x140ca2cf1	call   QWORD PTR [rax]
+item-base-title	0x140ca2cfb	call   QWORD PTR [rax+0x478]
+item-base-title	0x140ca2d0a	call   QWORD PTR [rdx+0x18]
+item-base-title	0x140ca2d16	call   QWORD PTR [rdx+0x10]
+item-base-title	0x140ca2d23	call   QWORD PTR [rdx+0x8]
+item-base-title	0x140ca2d30	call   QWORD PTR [rdx]
+statue-art-initialize	0x140cc5531	call   QWORD PTR [rax+0x230]
+statue-art-initialize	0x140cc5564	call   QWORD PTR [rax+0x238]
+statue-art-initialize	0x140cc5611	call   QWORD PTR [rdx+0x508]
+statue-art-initialize	0x140cc56b4	call   QWORD PTR [rax+0x38]
+statue-art-initialize	0x140cc56c5	call   QWORD PTR [rax+0x40]
+statue-art-initialize	0x140cc56d5	call   QWORD PTR [rax+0x508]
+statue-art-initialize	0x140cc571b	call   QWORD PTR [rax+0x10]
+statue-art-initialize	0x140cc572f	call   QWORD PTR [rax+0x40]
+statue-art-initialize	0x140cc5775	call   QWORD PTR [rax]
+statue-art-initialize	0x140cc5783	call   QWORD PTR [rax+0x8]
+statue-art-initialize	0x140cc5792	call   QWORD PTR [rax+0x10]
+statue-art-initialize	0x140cc579f	call   QWORD PTR [rax+0x18]
+statue-art-initialize	0x140cc57b8	call   QWORD PTR [rax+0x210]
+statue-art-initialize	0x140cc57c7	call   QWORD PTR [rdx+0x218]
+statue-art-initialize	0x140cc57d6	call   QWORD PTR [rdx+0x220]
+statue-art-initialize	0x140cc581b	call   QWORD PTR [rax+0x40]
+statue-art-update	0x140cc548b	call   QWORD PTR [rax+0x10]
+statue-art-update	0x140cc54a3	call   QWORD PTR [rax+0x30]
+statue-art-update	0x140cc54bd	call   QWORD PTR [rdx+0x20]
+statue-art-update	0x140cc54d0	call   QWORD PTR [rax+0x18]
+material-group-name	0x140e7f7b3	call   QWORD PTR [rax+0x38]
+complete-item-name	0x140c624dd	call   QWORD PTR [rax+0x10]
+complete-item-name	0x140c624f1	call   QWORD PTR [rax+0x40]
+complete-item-name	0x140c6253a	call   QWORD PTR [rax]
+complete-item-name	0x140c6255f	call   QWORD PTR [rax]
+complete-item-name	0x140c6258f	call   QWORD PTR [rax+0x28]
+complete-item-name	0x140c62649	call   QWORD PTR [rax+0x28]
+complete-item-name	0x140c62767	call   QWORD PTR [rax+0x508]
+complete-item-name	0x140c62778	call   QWORD PTR [rdx+0x518]
+complete-item-name	0x140c62789	call   QWORD PTR [rdx+0x5d8]
+complete-item-name	0x140c627a9	call   QWORD PTR [rax+0x5f0]
+complete-item-name	0x140c627db	call   QWORD PTR [rax+0x10]
+complete-item-name	0x140c62812	call   QWORD PTR [rax+0x1d8]
+complete-item-name	0x140c6290d	call   QWORD PTR [rax+0x5d8]
+complete-item-name	0x140c62a0e	call   QWORD PTR [rax+0x5e0]
+complete-item-name	0x140c62a74	call   QWORD PTR [rax+0x5e8]
+complete-item-name	0x140c62a85	call   QWORD PTR [rax+0x1d8]
+complete-item-name	0x140c62ac9	call   QWORD PTR [rax+0x5e8]
+complete-item-name	0x140c62ada	call   QWORD PTR [rax+0x1d8]
+complete-item-name	0x140c62b24	call   QWORD PTR [rax+0x5e8]
+complete-item-name	0x140c62b35	call   QWORD PTR [rax+0x1d8]
+complete-item-name	0x140c62b79	call   QWORD PTR [rax+0x5e8]
+complete-item-name	0x140c62b8a	call   QWORD PTR [rax+0x1d8]
+complete-item-name	0x140c62bd4	call   QWORD PTR [rax+0x5e8]
+complete-item-name	0x140c62be5	call   QWORD PTR [rax+0x1d8]
+complete-item-name	0x140c62c01	call   QWORD PTR [rax+0x5e8]
+complete-item-name	0x140c62c16	call   QWORD PTR [rax+0x1d8]
+complete-item-name	0x140c62ccd	call   QWORD PTR [rax+0x5e0]
+complete-item-name	0x140c62d00	call   QWORD PTR [rax+0x5d8]
+complete-item-name	0x140c62f1b	call   QWORD PTR [rax+0x10]
+item-noun-constructor	0x140a804c8	call   QWORD PTR [rax+0x748]
+item-noun-constructor	0x140a81551	call   QWORD PTR [rdx+0x728]
+item-noun-constructor	0x140a81625	call   QWORD PTR [rax+0x748]
+item-noun-constructor	0x140a83265	call   QWORD PTR [rax+0x748]
+item-noun-constructor	0x140a838ac	call   QWORD PTR [rax+0x718]
+item-noun-constructor	0x140a83d7e	call   QWORD PTR [rip+0xb5cd1c]        # 0x1415e0aa0
+item-noun-constructor	0x140a849f9	call   QWORD PTR [rdx+0x208]
+art_image_element_creaturest-long	0x140148739	call   QWORD PTR [rip+0x1498361]        # 0x1415e0aa0
+art_image_element_creaturest-long	0x140148811	call   QWORD PTR [rip+0x1498289]        # 0x1415e0aa0
+art_image_element_creaturest-long	0x140148b51	call   QWORD PTR [rip+0x1497f49]        # 0x1415e0aa0
+art_image_element_creaturest-long	0x140148baf	call   QWORD PTR [rip+0x1497eeb]        # 0x1415e0aa0
+art_image_element_creaturest-long	0x140148d3c	call   QWORD PTR [rip+0x1497d5e]        # 0x1415e0aa0
+art_image_element_creaturest-short	0x140149082	call   QWORD PTR [rip+0x1497a18]        # 0x1415e0aa0
+art_image_element_itemst-long	0x140147d0c	call   QWORD PTR [rax]
+art_image_element_itemst-long	0x140147d23	call   QWORD PTR [rax+0xe0]
+art_image_element_itemst-long	0x140147d37	call   QWORD PTR [rax]
+art_image_element_itemst-long	0x140147df8	call   QWORD PTR [rip+0x1498ca2]        # 0x1415e0aa0
+art_image_element_itemst-long	0x140147ede	call   QWORD PTR [rip+0x1498bbc]        # 0x1415e0aa0
+art_image_element_itemst-long	0x140147f3b	call   QWORD PTR [rip+0x1498b5f]        # 0x1415e0aa0
+art_image_element_itemst-long	0x14014801a	call   QWORD PTR [rip+0x1498a80]        # 0x1415e0aa0
+art_image_element_itemst-short	0x1401481b7	call   QWORD PTR [rax]
+art_image_element_itemst-short	0x1401481ce	call   QWORD PTR [rax+0xe0]
+art_image_element_itemst-short	0x1401481e2	call   QWORD PTR [rax]
+art_image_element_plantst-long	0x1401491d5	call   QWORD PTR [rip+0x14978c5]        # 0x1415e0aa0
+art_image_element_plantst-long	0x140149286	call   QWORD PTR [rip+0x1497814]        # 0x1415e0aa0
+art_image_element_plantst-short	0x14014940e	call   QWORD PTR [rip+0x149768c]        # 0x1415e0aa0
+art_image_element_shapest-long	0x1401476f2	call   QWORD PTR [rip+0x14993a8]        # 0x1415e0aa0
+art_image_element_shapest-long	0x14014786e	call   QWORD PTR [rip+0x149922c]        # 0x1415e0aa0
+art_image_element_shapest-short	0x140147ab3	call   QWORD PTR [rip+0x1498fe7]        # 0x1415e0aa0

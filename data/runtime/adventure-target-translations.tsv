@@ -405,3 +405,7 @@ handle {s}	用握柄{s1}
 helve {s}	用斧柄{s1}
 pommel {s}	用柄头{s1}
 shaft {s}	用杆身{s1}
+
+# ELF 116bb90: method 0/1 rejoins the common active aiming suffix at 116cfb8.
+Attacking {n} with wrestling, aiming for {t}	正在用摔跤攻击{n1}，瞄准{t1}
+Attacking {n} with grab, aiming for {t}	正在抓住{n1}，瞄准{t1}

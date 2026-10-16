@@ -164,7 +164,10 @@ std::optional<std::string> Overlay::translate_unit_profession(
         const auto role = translate_unit_profession(role_source);
         if (!translation_complete_with_native_nicknames(role, role_source)) continue;
         const auto place_source = std::string_view(source).substr(at + 4);
-        const auto place = translate_legends_place(place_source);
+        // Native noble territories name the governing entity. Resolve its
+        // complete WORD/POS identity before the independent site fallback.
+        auto place = translate_civilization_reference(place_source, false, true);
+        if (!place) place = translate_legends_place(place_source);
         if (translation_complete_with_native_nicknames(place, place_source))
             return *place + "的" + *role;
     }

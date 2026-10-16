@@ -1,0 +1,14 @@
+image	role	start	end	source
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	complete-material-name	0x74ca90	0x74d6c3	elf-74ca90.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	item_remainsst+0x5e8	0xe3bf80	0xe3c1d7	elf-e3bf80.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	item_corpsepiecest+0x5f8 | item_corpsest+0x5f8	0xe66970	0xe6727d	elf-e66970.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	item_corpsepiecest+0x5e8 | item_corpsest+0x5e8	0xe67280	0xe68016	elf-e67280.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	complete-item-designation	0xe68020	0xe689cb	elf-e68020.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	item_corpsepiecest+0x5f0 | item_corpsest+0x5f0	0xe6ece0	0xe6efa4	elf-e6ece0.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	item_remainsst+0x5f0	0xe6efb0	0xe6f07b	elf-e6efb0.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	item_remainsst+0x5f8	0xeb2bb0	0xeb2caf	elf-eb2bb0.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	shared-item-type-material-noun	0x12b6a70	0x12bdd2f	elf-12b6a70.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	body-owner-language-name	0x12bfe90	0x12c0b46	elf-12bfe90.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	map-look-caption-sixteen-way-dispatch	0x1669dd0	0x166b728	elf-1669dd0.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	contaminant-deposit-name	0x19bded0	0x19befd8	elf-19bded0.asm
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	mangled-body-predicate	0x19c9050	0x19c923a	elf-19c9050.asm

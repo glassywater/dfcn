@@ -381,6 +381,94 @@ void Overlay::append_fortress_remembered_material(std::vector<std::string> &rows
     }
 }
 
+enum class NativeBuildMaterialField { None, Name, Amount, Distance };
+
+// These are the original addst return addresses, extracted from d84fd0 and
+// 381630. PE Classic uses the existing edition map for the same procedure.
+// The renderer draws "Dist: " and its number separately; neither a combined
+// distance draw nor a complete enclosing picture frame is required.
+static NativeBuildMaterialField native_build_material_field(uintptr_t caller) {
+    const uintptr_t base = native_history_profile_base();
+    if (!base || !caller) return NativeBuildMaterialField::None;
+#ifdef _WIN32
+    if (caller == native_reference_address(base, 0x38270f)) return NativeBuildMaterialField::Name;
+    if (caller == native_reference_address(base, 0x38281f)) return NativeBuildMaterialField::Amount;
+    if (caller == native_reference_address(base, 0x3828be) ||
+            caller == native_reference_address(base, 0x3828fe)) return NativeBuildMaterialField::Distance;
+#else
+    if (caller == native_reference_address(base, 0x987191)) return NativeBuildMaterialField::Name;
+    if (caller == native_reference_address(base, 0x987271)) return NativeBuildMaterialField::Amount;
+    if (caller == native_reference_address(base, 0x9874d6) ||
+            caller == native_reference_address(base, 0x98751d)) return NativeBuildMaterialField::Distance;
+#endif
+    return NativeBuildMaterialField::None;
+}
+
+// ELF d84fd0 and PE 381630 build one complete name via the material entry's
+// name formatter (ELF +18 / PE +10), then draw amounts and Dist independently.
+// Own that name before generic words and native-name recovery inspect it.
+void Overlay::append_fortress_build_material_fields(std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y) const {
+    if (!gps_ || rows.size() != static_cast<size_t>(gps_->dimy)) return;
+    auto draws = captured_native_drawn_text_rows();
+    auto top_draws = captured_native_drawn_text_rows(true);
+    draws.insert(draws.end(), std::make_move_iterator(top_draws.begin()),
+        std::make_move_iterator(top_draws.end()));
+    const auto current = [&](const NativeDrawnTextRow &draw) {
+        if (draw.x < 0 || draw.y < 0 || draw.y >= gps_->dimy || draw.source.empty() ||
+                draw.x >= gps_->dimx || draw.source.size() > static_cast<size_t>(gps_->dimx - draw.x) ||
+                (draw.draw_dimx && draw.draw_dimx != gps_->dimx) ||
+                (draw.draw_dimy && draw.draw_dimy != gps_->dimy)) return false;
+        // A background texture can belong to another logical layer. The
+        // actual submitted bytes, rather than that texture's layer flag or
+        // a retained frame's backing-buffer address, establish the live text.
+        return rows[draw.y].compare(draw.x, draw.source.size(), draw.source) == 0;
+    };
+    const auto clipped = captured_clipped_captions();
+    for (const auto &draw : draws) {
+        if (native_build_material_field(draw.native_caller) != NativeBuildMaterialField::Name ||
+                (only_y >= 0 && only_y != draw.y) || !current(draw)) continue;
+        const int left = draw.x;
+        const int end = left + static_cast<int>(draw.source.size());
+        int right = gps_->dimx;
+        if (draw.draw_clip) right = std::min(right, draw.draw_clip->x + draw.draw_clip->w);
+        for (const auto &next : draws) {
+            if (next.y != draw.y || next.x < end || !current(next)) continue;
+            const auto kind = native_build_material_field(next.native_caller);
+            if (kind == NativeBuildMaterialField::Amount || kind == NativeBuildMaterialField::Distance)
+                right = std::min(right, next.x);
+        }
+        if (right < end) continue;
+        std::string complete = draw.complete_source.empty() ? draw.source : draw.complete_source;
+        if (complete == draw.source)
+            for (const auto &caption : clipped)
+                if (caption.x == left && caption.y == draw.y && caption.visible == draw.source) {
+                    complete = caption.complete;
+                    break;
+                }
+        auto result = translate_fortress_item_caption_display(complete);
+        if (complete == "Null")
+            if (auto target = exact_literal_translation("Build material: Null"))
+                result = TranslationResult::translated(complete, *target, "building-material-item");
+        if (!result.usable()) result = preserved_item_field(complete, "building-material-item");
+        if (result.target.empty()) continue;
+        Match name{left, draw.y, end - left, kFortressItemCaptionRule, result.target, draw.source};
+        name.translation_result = std::make_shared<const TranslationResult>(std::move(result));
+        name.native_item_caption_source = complete;
+        name.native_hover_untranslated = name.translation_result->has_untranslated();
+        name.layout_x = left;
+        name.layout_length = right - left - (right > end ? 1 : 0);
+        name.layout_clip_right = left + name.layout_length;
+        name.native_picture_caption_box = SDL_Rect{left, draw.y, name.layout_length, 1};
+        name.layout_foreground_rgb = draw.foreground_rgb;
+        name.layout_left = true;
+        name.layout_font_pixels = unified_font_pixels();
+        name.layout_lock_font_pixels = true;
+        matches.push_back(std::move(name));
+        std::fill(rows[draw.y].begin() + left, rows[draw.y].begin() + end, ' ');
+    }
+}
+
 // Material selection is a label/value header and a name/count/distance table.
 // The item rows reuse the build menu's picture skin, NOT its single-caption
 // contract. Resolve the complete name inside its own native column.
@@ -405,7 +493,8 @@ void Overlay::layout_fortress_build_materials(SDL_Renderer *renderer) {
         if (field.rule < 0 || static_cast<size_t>(field.rule) >= rules_.size()) continue;
         const Rule &rule = rules_[static_cast<size_t>(field.rule)];
         if (!rule.numeric_template ||
-            (rule.source != "Amount needed: {d}" && rule.source != "Dist: {d}") ||
+            (rule.source != "Amount needed: {d}" &&
+             rule.source != "Amount needed: {d} to {d}" && rule.source != "Dist: {d}") ||
             !current_field(field)) continue;
 
         const int end = field.x + field.length;
@@ -699,21 +788,76 @@ void Overlay::layout_fortress_building_status(SDL_Renderer *renderer) {
     }
 }
 
-// Farm season tabs centre within their own skins. The footer's two checkbox
-// captions and soil hint keep three independent columns and native rows; the
-// generic prose pass would otherwise concatenate all three columns and move
-// the amount into the first row. Own each complete dictionary field before
-// that pass, without moving the checkboxes or enlarging source suppression.
+// Farm choices share a caption inset inside their picture/checkbox rows.
+// The footer keeps three independent columns, but its English continuation
+// draws form complete translated labels. Source spans still own suppression;
+// only the Chinese display is composed inside the current native allocation.
 void Overlay::layout_fortress_farm_plot(SDL_Renderer *renderer) {
     if (!gps_ || !face_ || !renderer ||
         gps_->tile_pixel_x <= 0 || gps_->tile_pixel_y <= 0) return;
     const NativePanelBorders borders(*gps_);
+    const auto current_field = [&](const Match &match) {
+        if (match.target.empty() || match.native_split_duplicate || match.legends_flow ||
+            match.x < 0 || match.x >= gps_->dimx || match.y < 0 || match.y >= gps_->dimy ||
+            match.length <= 0 || match.length > gps_->dimx - match.x ||
+            match.source.size() != static_cast<size_t>(match.length)) return false;
+        const bool fold = match.rule >= 0 && static_cast<size_t>(match.rule) < rules_.size() &&
+            rules_[static_cast<size_t>(match.rule)].case_insensitive;
+        std::string visible;
+        for (int x = match.x; x < match.x + match.length; ++x)
+            visible.push_back(visible_char_at(x, match.y));
+        return template_literal_at(visible, 0, match.source, fold);
+    };
+    std::set<std::pair<int, int>> crop_rows;
+    for (Match &caption : prepared_matches_) {
+        if (!current_field(caption)) continue;
+        const auto box = native_picture_caption_rect(*gps_, caption.x, caption.y,
+            false, nullptr, false, nullptr, false, false, -1, false, true);
+        if (!box ||
+            (!native_main_button_at(*gps_, box->x + box->w, caption.y,
+                INTERFACE_BUTTON_MAIN_FARM_ACTIVE_OPTION) &&
+             !native_main_button_at(*gps_, box->x + box->w, caption.y,
+                INTERFACE_BUTTON_MAIN_FARM_INACTIVE_OPTION)) ||
+            !crop_rows.emplace(box->x, caption.y).second) continue;
+        const int right = box->x + box->w;
+        int left = box->x, end = right;
+        const auto blank = [&](int x) {
+            const auto ch = visible_char_at(x, caption.y);
+            return ch == 0 || ch == ' ';
+        };
+        while (left < end && blank(left)) ++left;
+        while (end > left && blank(end - 1)) --end;
+        std::vector<Match *> parts;
+        for (Match &part : prepared_matches_)
+            if (part.y == caption.y && part.x >= box->x &&
+                part.x + part.length <= right && current_field(part))
+                parts.push_back(&part);
+        std::sort(parts.begin(), parts.end(), [](const Match *a, const Match *b) {
+            return a->x < b->x;
+        });
+        int cursor = left;
+        bool complete = !parts.empty();
+        for (const Match *part : parts) {
+            const auto text = trim_view(part->source);
+            const int first = part->x + static_cast<int>(text.data() - part->source.data());
+            while (cursor < first && blank(cursor)) ++cursor;
+            if (text.empty() || first != cursor) { complete = false; break; }
+            cursor = first + static_cast<int>(text.size());
+        }
+        if (!complete || cursor != end) continue;
+        // The native crop writer uses the same inset for every option.
+        // Include dictionary and composed plant matches alike, rather than
+        // leaving a partially recognized generic build field at its old X.
+        for (Match *part : parts) part->native_picture_caption_box = box;
+        layout_fortress_text_rows(renderer, {parts}, left, right);
+    }
     static constexpr std::string_view fields[] = {
         "Not set to fertilize", "Set to fertilize",
         "Current amount: {d}/{d}",
         "Fertilize", "every season", "Fertilize every season",
         "Poor soil", "(Cavern soil", "is best)", "(Cavern soil is best)",
     };
+    std::vector<Match *> footer;
     for (Match &match : prepared_matches_) {
         if (match.rule < 0 || static_cast<size_t>(match.rule) >= rules_.size() ||
             match.target.empty() || match.native_split_duplicate || match.legends_flow ||
@@ -749,6 +893,7 @@ void Overlay::layout_fortress_farm_plot(SDL_Renderer *renderer) {
             continue;
         }
 
+        footer.push_back(&match);
         if (!match.native_split_text) {
             match.layout_y = match.y;
             match.layout_pixel_y = 0;
@@ -771,6 +916,87 @@ void Overlay::layout_fortress_farm_plot(SDL_Renderer *renderer) {
             match.layout_lock_font_pixels = true;
             match.layout_visual_height_pixels = 0;
             match.layout_line_height_pixels = gps_->tile_pixel_y;
+        }
+    }
+
+    const auto continuation = [&](const Match &head, std::string_view source) -> Match * {
+        for (Match *part : footer)
+            if (part->x == head.x && part->y == head.y + 1 &&
+                rules_[static_cast<size_t>(part->rule)].source == source)
+                return part;
+        return nullptr;
+    };
+    const auto fits = [&](std::string_view target, int left, int right) {
+        const int width = (right - left) * gps_->tile_pixel_x - 2 * config_.horizontal_padding;
+        if (width <= 0) return false;
+        const auto *glyph = get_glyph_texture(renderer, std::string(target), width,
+            gps_->tile_pixel_y, unified_font_pixels(), 0, true);
+        return glyph && glyph->texture && glyph->width <= width;
+    };
+    for (Match *head : footer) {
+        const auto &source = rules_[static_cast<size_t>(head->rule)].source;
+        if (source == "Fertilize") {
+            Match *tail = continuation(*head, "every season");
+            const auto target = exact_literal_translation("Fertilize every season");
+            if (!tail || !target || !fits(*target, head->x, head->layout_clip_right)) continue;
+            head->target = *target;
+            head->layout_glyph_foreground_rgb.clear();
+            tail->target.clear();
+            layout_fortress_text_rows(renderer, {{head}}, head->x, head->layout_clip_right);
+        } else if (source == "(Cavern soil") {
+            Match *tail = continuation(*head, "is best)");
+            const auto target = exact_literal_translation("(Cavern soil is best)");
+            if (!tail || !target) continue;
+            Match *soil = nullptr;
+            for (Match *part : footer)
+                if (part->x == head->x && part->y + 1 == head->y &&
+                    rules_[static_cast<size_t>(part->rule)].source == "Poor soil") soil = part;
+            std::vector<Match> native_rows{*head, *tail};
+            if (soil) native_rows.insert(native_rows.begin(), *soil);
+            for (Match &row : native_rows) {
+                row.layout_native_clip.reset();
+                row.layout_clip_right = -1;
+            }
+            // Combine the actual source writers before moving display rows;
+            // an individual addst clip would otherwise hide the moved title.
+            SDL_Rect viewport = native_paragraph_draw_region(native_rows);
+            const int tile_w = gps_->tile_pixel_x, tile_h = gps_->tile_pixel_y;
+            const int origin_x = (gps_->screen_pixel_x - gps_->dimx * tile_w) / 2;
+            const int origin_y = (gps_->screen_pixel_y - gps_->dimy * tile_h) / 2;
+            const int right = std::min(gps_->dimx, (viewport.x + viewport.w - origin_x) / tile_w);
+            if (!fits(*target, head->x, right)) continue;
+            const int top = soil ? soil->y : head->y;
+            const SDL_Rect column{origin_x + head->x * tile_w, origin_y + top * tile_h,
+                (right - head->x) * tile_w, (tail->y + 1 - top) * tile_h};
+            SDL_Rect clipped{};
+            if (!SDL_IntersectRect(&viewport, &column, &clipped)) continue;
+            viewport = clipped;
+            head->target = *target;
+            head->layout_glyph_foreground_rgb.clear();
+            tail->target.clear();
+            bool title_only = soil != nullptr;
+            // A partially poor plot can append a native percentage. Keep
+            // that complete title row in place until all of it can move.
+            for (int x = soil ? soil->x + soil->length : right; x < right; ++x) {
+                const auto ch = visible_char_at(x, soil->y);
+                if (ch && ch != ' ') { title_only = false; break; }
+            }
+            std::vector<std::vector<Match *>> display{{head}};
+            if (title_only) {
+                soil->layout_y = head->y;
+                soil->layout_pixel_y = 0;
+                soil->layout_fixed_baseline = true;
+                head->layout_y = tail->y;
+                head->layout_pixel_y = 0;
+                head->layout_fixed_baseline = true;
+                display.insert(display.begin(), {soil});
+            }
+            layout_fortress_text_rows(renderer, display, head->x, right);
+            for (const auto &row : display)
+                for (Match *part : row) {
+                    part->layout_reflowed_paragraph = true;
+                    part->layout_native_clip = viewport;
+                }
         }
     }
 }

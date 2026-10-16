@@ -155,7 +155,9 @@ void Overlay::append_activity_detail_matches(std::vector<std::string> &screen_ro
         if (left < 0 || left >= right) { index = last; continue; }
         std::vector<Match> rows;
         for (const auto &[y, span] : spans) {
-            if (span.first < left || span.second > right) continue;
+            // Native [P] adds four columns of indentation without reducing
+            // its first-line wrap budget. Keep every proven visible byte for
+            // suppression, even beyond the separate Chinese layout edge.
             rows.push_back({span.first, y, span.second - span.first, kUiMessageRule, {},
                 screen_rows[y].substr(span.first, span.second - span.first)});
         }
@@ -172,7 +174,11 @@ void Overlay::append_activity_detail_matches(std::vector<std::string> &screen_ro
         }
         if (!translated.usable()) translated = preserve_native_translation(source, "activity detail");
         rows.front().translation_result = std::make_shared<TranslationResult>(translated);
-        const std::vector<int> colors(translated.target.size(), token.color);
+        // Paragraph foregrounds are indexed by decoded characters, not by
+        // UTF-8 bytes. A byte-sized array rejects every translated CJK row.
+        std::vector<uint32_t> codepoints;
+        const std::vector<int> colors(decode_utf8(translated.target, codepoints)
+            ? codepoints.size() : 0, token.color);
         const NativeParagraphViewport viewport{rows.front().y - origin_y - first_line,
             last_line - first_line + 1};
         append_ui_message_paragraph(screen_rows, matches, untranslated, only_y,

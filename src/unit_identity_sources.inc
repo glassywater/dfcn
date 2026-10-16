@@ -280,7 +280,8 @@ static std::optional<NativeUnitIdentitySource> native_unit_identity_source_bindi
 // Only SDL's pre-draw path may resolve a deferred live title. Ordinary owned
 // names keep their nonblocking worker path and return their current readiness.
 static std::optional<NativeUnitIdentitySource> prepare_native_unit_identity_source_binding(
-    std::string_view source, uintptr_t owner, std::string_view semantic_key = {});
+    std::string_view source, uintptr_t owner, std::string_view semantic_key = {},
+    const NativeUnitIdentitySource *captured = nullptr);
 
 static std::optional<std::string> native_unit_identity_source_target(
         std::string_view source, uintptr_t owner = 0) {

@@ -335,15 +335,20 @@ static bool copy_native_history_tokens(const NativeHistoryRichBox *box, size_t b
 
 static std::optional<NativeActivityDetailDocument> native_activity_detail_document(
         const std::unordered_set<uintptr_t> &visible_words) {
-#ifdef _WIN32
-    return std::nullopt;
-#else
-    // The two native resident/pet activity selectors clear this exact markup
-    // box and pass it as RCX to 0x15c1200 (0x204e655 and 0x204f1e5).
-    // Reading retained words also covers an already-open cached popup.
+    // Read the resident/pet selectors' retained markup, including a popup
+    // that was already open before capture. Visible word identities below
+    // tie this shared box to the current draws instead of a guessed frame.
     if (visible_words.empty()) return std::nullopt;
     const uintptr_t base = native_history_profile_base();
+#ifdef _WIN32
+    // PE 53.16: creatures_interfacest+0x180. Both selectors clear this box
+    // at 0x1427fb1/0x14287f9, then pass it in R9 to 0x26b800. The existing
+    // edition binding maps the Steam global to Classic RVA 0x18a04d0.
+    const uintptr_t address = native_reference_address(base, 0x18a6500);
+#else
+    // ELF selectors pass this box to 0x15c1200 at 0x204e655/0x204f1e5.
     const uintptr_t address = base ? native_reference_address(base, 0x26fb2f8 - 0x400000) : 0;
+#endif
     NativeHistoryRichBox box{};
     if (!address || !native_history_copy(address, box) ||
             !box.words.valid(16384) || box.words.size() == 0 ||
@@ -394,7 +399,6 @@ static std::optional<NativeActivityDetailDocument> native_activity_detail_docume
     flush();
     return document.paragraphs.size() >= 2
         ? std::optional<NativeActivityDetailDocument>(std::move(document)) : std::nullopt;
-#endif
 }
 
 static void capture_native_history_sentence_range(void *event, NativeString *source,

@@ -249,8 +249,10 @@ void Overlay::append_fortress_place_names(std::vector<std::string> &rows,
         case Kind::Present:
         case Kind::Imprisoned:
         case Kind::SquadCount:
+        case Kind::Occupancy:
         case Kind::Patients: {
-            const std::string suffix = caption.kind == Kind::Assigned ? " assigned"
+            const std::string suffix = caption.kind == Kind::Occupancy ? "% occupied"
+                : caption.kind == Kind::Assigned ? " assigned"
                 : caption.kind == Kind::Imprisoned ? " imprisoned"
                 : caption.kind == Kind::SquadCount ? " squads assigned"
                 : caption.kind == Kind::Patients ? (complete.ends_with(" patients")

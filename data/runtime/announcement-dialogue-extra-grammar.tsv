@@ -370,3 +370,12 @@ dialogue-judgement	{s} brought back an unknown artifact.	{s1}曾带回一件不�
 # The native unit formatter emits this literal when its reference is missing.
 dialogue-query-person	a secret identity	秘密身份		ELF 1c42a9f..1c42b56: missing unit reference
 adventure-announcement	{s}	{s1}	dialogue-judgement	ELF 103b5f0..1042785: resolve typed opinion before generic paragraph parsing
+# Greeting TEXT_SET fields and native appended reactions, before generic name prose.
+spoken-greeting	Greetings. My name is {s}.	你好，我叫{s1}。	$person	ELF 1048a40 ->203d220 set 6 ->10338c0 SPEAKER:TRANS_NAME; elf-text-sets.tsv GREET
+spoken-greeting	Ah, hello. I'm {s}.	啊，你好。我叫{s1}。	$person	ELF 1048a40 ->203d220 ->10338c0 SPEAKER:TRANS_NAME; elf-text-sets.tsv GREET_REPLY
+spoken-greeting	I am {s}. Can I be of some help?	我是{s1}。需要帮忙吗？	$person	ELF 1048a40 ->203d220 set 0x3b ->10338c0; elf-text-sets.tsv GREET_REPLY_AFTER_HERO alternative 1
+spoken-greeting	I am {s}. How can I be of service?	我是{s1}。有什么可以为你效劳？	$person	ELF 1048a40 ->203d220 set 0x3b ->10338c0; elf-text-sets.tsv GREET_REPLY_AFTER_HERO alternative 2
+spoken-greeting	Hello, {s}. I am {s}.	你好，{s1}。我是{s2}。	$creature,$person	ELF 104b1f5 ->203d220 set 8 ->10338c0 AUDIENCE:RACE/SPEAKER:TRANS_NAME; elf-text-sets.tsv GREET_REPLY_DIFF_LANGUAGE
+spoken-greeting	I'm a true {s} of {s}.	我才是{s2}的真正{s1}。	$term,$name	ELF 104a842..104a9eb: profession call b6c100 at 104a8ce, entity call a278f0 at 104a971; alternate allocation path 104c1c2
+spoken-greeting	[{s} is dumbstruck for a moment.]	【{s1}一时惊得说不出话来。】	$person	ELF 104c9bd..104ca32: opening bracket, EnglishName 12bfe90 at 104c9fe, suffix 104ca19 and closing bracket
+spoken-greeting	How are you, my {s}?	你好吗，我的{s1}？	dialogue-family	ELF 1049e0e..1049eb0 and 104b671: native greeting relationship append; FAMILY_RELATIONSHIP call 1503cd0 at 1049e5e

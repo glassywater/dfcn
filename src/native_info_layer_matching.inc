@@ -19,6 +19,14 @@ std::vector<Match> Overlay::find_native_info_matches() const {
     std::vector<std::string> screen_rows;
     screen_rows.reserve(gps_->dimy);
     for (int y = 0; y < gps_->dimy; ++y) screen_rows.push_back(read_row(y));
+    std::vector<Match> untranslated_help_rows;
+
+    // Resident/pet activity popups belong to this private management grid.
+    // Claim their retained markup words before activity columns and generic
+    // fragments; the main-page matcher never sees this component's text.
+    if (g_native_info_page == NativeInfoPage::Creatures)
+        append_activity_detail_matches(screen_rows, result, untranslated_help_rows,
+            only_y, screen_override);
 
     // The workquota producer owns the complete workshop assignment/limit
     // column, including an editor whose native bytes remain untouched.
@@ -121,7 +129,6 @@ std::vector<Match> Overlay::find_native_info_matches() const {
     // omit these rules; allowing noun matches first leaves mixed-language
     // empty-list and Intelligence instructions. Run the shared reader only
     // on this component's private grid and its scoped text captures.
-    std::vector<Match> untranslated_help_rows;
     const auto append_setup_paragraph = [&](std::vector<Match> rows,
             std::string_view target, int clip_right = -1, int box_right = -1,
             const std::vector<int> &foregrounds = std::vector<int>{}) {

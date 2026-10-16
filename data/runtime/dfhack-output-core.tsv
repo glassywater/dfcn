@@ -2147,6 +2147,9 @@ DFHack GUI Notification banner: {d} mins ago	{d} 分钟前	l
 # gui/sitemap.lua: complete two-row toolbar hint, separate from its hotkey.
 DFHack GUI Toolbar hint: Open the general search and zoom interface.	打开通用搜索与定位界面。	l
 
+# plugins/dig.lua: complete three-row warm/damp toolbar hint, separate from its hotkey.
+DFHack GUI Toolbar hint: Mark for uninterrupted digging through damp or warm tiles.	标记挖掘区域，遇到潮湿或温热地块时仍继续挖掘。	l
+
 # internal/caravan/movegoods.lua and common.lua: authored trade-goods captions and options.
 DFHack GUI Trade goods: Move goods to/from depot	搬运货物进出贸易站	l
 DFHack GUI Trade goods: DFHack move trade goods	DFHack 搬运贸易货物	l

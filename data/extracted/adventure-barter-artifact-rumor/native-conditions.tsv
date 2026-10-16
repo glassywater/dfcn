@@ -1,0 +1,1187 @@
+edition	role	entry_rva	instruction_rva	condition
+steam	artifact-rumor	0x65a250	0x65a2ab	test   r8,r8
+steam	artifact-rumor	0x65a250	0x65a2d6	test   rax,rax
+steam	artifact-rumor	0x65a250	0x65a2ea	test   rdi,rdi
+steam	artifact-rumor	0x65a250	0x65a2ef	cmp    rdi,r13
+steam	artifact-rumor	0x65a250	0x65a2f7	cmp    rdi,QWORD PTR [rip+0x1d8ae12]        # 0x1423e5110
+steam	artifact-rumor	0x65a250	0x65a2fe	cmove  eax,ecx
+steam	artifact-rumor	0x65a250	0x65a31a	test   eax,eax
+steam	artifact-rumor	0x65a250	0x65a322	cmp    ebx,0xffffffff
+steam	artifact-rumor	0x65a250	0x65a34f	cmp    DWORD PTR [r15],ebx
+steam	artifact-rumor	0x65a250	0x65a357	cmovle edx,eax
+steam	artifact-rumor	0x65a250	0x65a35d	cmovle eax,r9d
+steam	artifact-rumor	0x65a250	0x65a361	cmp    edx,eax
+steam	artifact-rumor	0x65a250	0x65a368	test   r15,r15
+steam	artifact-rumor	0x65a250	0x65a3d3	cmp    edx,0xffffffff
+steam	artifact-rumor	0x65a250	0x65a3e4	test   rax,rax
+steam	artifact-rumor	0x65a250	0x65a408	cmp    rbx,rdi
+steam	artifact-rumor	0x65a250	0x65a415	test   ax,ax
+steam	artifact-rumor	0x65a250	0x65a42e	test   rax,0xfffffffffffffff8
+steam	artifact-rumor	0x65a250	0x65a436	cmp    ecx,0xffffffff
+steam	artifact-rumor	0x65a250	0x65a447	test   rax,rax
+steam	artifact-rumor	0x65a250	0x65a48c	test   rdx,rdx
+steam	artifact-rumor	0x65a250	0x65a495	test   rdx,rdx
+steam	artifact-rumor	0x65a250	0x65a4c8	test   rax,rax
+steam	artifact-rumor	0x65a250	0x65a4d5	test   rdx,rdx
+steam	artifact-rumor	0x65a250	0x65a4ea	test   rax,rax
+steam	artifact-rumor	0x65a250	0x65a4f3	cmp    DWORD PTR [rax+0x10],0xffffffff
+steam	artifact-rumor	0x65a250	0x65a520	cmp    BYTE PTR [r15+0x7a],0x0
+steam	artifact-rumor	0x65a250	0x65a533	cmp    ax,0x59
+steam	artifact-rumor	0x65a250	0x65a54e	test   al,al
+steam	artifact-rumor	0x65a250	0x65a55e	cmp    ax,0x57
+steam	artifact-rumor	0x65a250	0x65a5bb	cmp    QWORD PTR [rbp+0x88],0xf
+steam	artifact-rumor	0x65a250	0x65a5c3	cmova  rdx,QWORD PTR [rbp+0x70]
+steam	artifact-rumor	0x65a250	0x65a5df	cmp    rdx,0xf
+steam	artifact-rumor	0x65a250	0x65a5ef	cmp    rdx,0x1000
+steam	artifact-rumor	0x65a250	0x65a607	cmp    rax,0x1f
+steam	artifact-rumor	0x65a250	0x65a634	cmp    ecx,0xffffffff
+steam	artifact-rumor	0x65a250	0x65a63d	cmp    QWORD PTR [r12+0x10],0x0
+steam	artifact-rumor	0x65a250	0x65a655	test   rax,rax
+steam	artifact-rumor	0x65a250	0x65a66a	test   rax,rax
+steam	artifact-rumor	0x65a250	0x65a673	cmp    DWORD PTR [rax+0x10],0xffffffff
+steam	artifact-rumor	0x65a250	0x65a6a0	cmp    BYTE PTR [r15+0x7a],0x0
+steam	artifact-rumor	0x65a250	0x65a6b3	cmp    ax,0x59
+steam	artifact-rumor	0x65a250	0x65a6ce	test   al,al
+steam	artifact-rumor	0x65a250	0x65a6de	cmp    ax,0x57
+steam	artifact-rumor	0x65a250	0x65a737	cmp    QWORD PTR [rbp+0x88],0xf
+steam	artifact-rumor	0x65a250	0x65a73f	cmova  rdx,QWORD PTR [rbp+0x70]
+steam	artifact-rumor	0x65a250	0x65a772	cmp    QWORD PTR [r12+0x10],0x0
+steam	artifact-rumor	0x65a250	0x65a793	cmp    rbx,rdi
+steam	artifact-rumor	0x65a250	0x65a7a4	cmp    ax,0xa
+steam	artifact-rumor	0x65a250	0x65a7b2	cmp    ax,0xd
+steam	artifact-rumor	0x65a250	0x65a7d0	test   rax,0xfffffffffffffff8
+steam	artifact-rumor	0x65a250	0x65a7dc	cmp    ecx,0xffffffff
+steam	artifact-rumor	0x65a250	0x65a7f4	test   rax,rax
+steam	artifact-rumor	0x65a250	0x65a7fd	cmp    WORD PTR [rax],0x5
+steam	artifact-rumor	0x65a250	0x65a824	test   si,si
+steam	artifact-rumor	0x65a250	0x65a82d	test   eax,eax
+steam	artifact-rumor	0x65a250	0x65a84d	cmp    rcx,rax
+steam	artifact-rumor	0x65a250	0x65a85a	cmp    DWORD PTR [rax+0x40],0x2
+steam	artifact-rumor	0x65a250	0x65a864	test   BYTE PTR [rax+0x2],0x20
+steam	artifact-rumor	0x65a250	0x65a870	test   al,al
+steam	artifact-rumor	0x65a250	0x65a8ab	cmp    BYTE PTR [r13+0x7a],0x0
+steam	artifact-rumor	0x65a250	0x65a8be	cmp    ax,0x59
+steam	artifact-rumor	0x65a250	0x65a8d9	test   al,al
+steam	artifact-rumor	0x65a250	0x65a8e9	cmp    ax,0x57
+steam	artifact-rumor	0x65a250	0x65a943	cmp    QWORD PTR [rbp+0x88],0xf
+steam	artifact-rumor	0x65a250	0x65a94b	cmova  rdx,QWORD PTR [rbp+0x70]
+steam	artifact-rumor	0x65a250	0x65a967	cmp    rdx,0xf
+steam	artifact-rumor	0x65a250	0x65a977	cmp    rdx,0x1000
+steam	artifact-rumor	0x65a250	0x65a98f	cmp    rax,0x1f
+steam	artifact-rumor	0x65a250	0x65a9d3	test   rsi,rsi
+steam	artifact-rumor	0x65a250	0x65a9dc	test   r14,r14
+steam	artifact-rumor	0x65a250	0x65aa0d	test   r9,r9
+steam	artifact-rumor	0x65a250	0x65aa81	test   rax,rax
+steam	artifact-rumor	0x65a250	0x65aa8a	cmp    DWORD PTR [rax+0x14],0xffffffff
+steam	artifact-rumor	0x65a250	0x65aa99	cmp    DWORD PTR [rax+0x4],esi
+steam	artifact-rumor	0x65a250	0x65aaf8	cmp    BYTE PTR [r13+0x7a],sil
+steam	artifact-rumor	0x65a250	0x65ab0a	cmp    ax,0x59
+steam	artifact-rumor	0x65a250	0x65ab25	test   al,al
+steam	artifact-rumor	0x65a250	0x65ab35	cmp    ax,0x57
+steam	artifact-rumor	0x65a250	0x65ab8a	cmp    QWORD PTR [rbp+0x88],0xf
+steam	artifact-rumor	0x65a250	0x65ab92	cmova  rdx,QWORD PTR [rbp+0x70]
+steam	artifact-rumor	0x65a250	0x65abc5	test   r14,r14
+steam	artifact-rumor	0x65a250	0x65abdc	test   rax,rax
+steam	artifact-rumor	0x65a250	0x65abee	cmp    eax,DWORD PTR [rcx+0xe0]
+steam	artifact-rumor	0x65a250	0x65ac18	test   ecx,ecx
+steam	artifact-rumor	0x65a250	0x65ac1c	cmp    ecx,0x1
+steam	artifact-rumor	0x65a250	0x65ac2a	cmp    QWORD PTR [rsi+0x128],0x0
+steam	artifact-rumor	0x65a250	0x65ac4d	cmp    QWORD PTR [rsi+0xe8],0x0
+steam	artifact-rumor	0x65a250	0x65ac5e	cmp    QWORD PTR [rdx+0x18],0xf
+steam	artifact-rumor	0x65a250	0x65ac86	cmp    eax,0xffffffff
+steam	artifact-rumor	0x65a250	0x65acf9	test   ecx,ecx
+steam	artifact-rumor	0x65a250	0x65acfd	cmp    ecx,0x1
+steam	artifact-rumor	0x65a250	0x65ad0b	cmp    QWORD PTR [rsi+0x128],0x0
+steam	artifact-rumor	0x65a250	0x65ad27	cmp    QWORD PTR [rsi+0xe8],0x0
+steam	artifact-rumor	0x65a250	0x65ad43	cmp    QWORD PTR [rdx+0x18],0xf
+steam	artifact-rumor	0x65a250	0x65ad6f	test   rdx,rdx
+steam	artifact-rumor	0x65a250	0x65add3	test   rsi,rsi
+steam	artifact-rumor	0x65a250	0x65addc	test   r14,r14
+steam	artifact-rumor	0x65a250	0x65ae0c	test   r9,r9
+steam	artifact-rumor	0x65a250	0x65ae6e	cmp    QWORD PTR [r12+0x10],0x0
+steam	artifact-rumor	0x65a250	0x65ae8e	cmp    QWORD PTR [r12+0x10],0x0
+steam	artifact-rumor	0x65a250	0x65aea5	test   rax,rax
+steam	artifact-rumor	0x65a250	0x65aeca	test   al,al
+steam	artifact-rumor	0x65a250	0x65aeda	cmp    ax,0x59
+steam	artifact-rumor	0x65a250	0x65aef9	cmp    BYTE PTR [r15+0x7a],0x0
+steam	artifact-rumor	0x65a250	0x65af0c	cmp    ax,0x59
+steam	artifact-rumor	0x65a250	0x65af27	test   al,al
+steam	artifact-rumor	0x65a250	0x65af37	cmp    ax,0x57
+steam	artifact-rumor	0x65a250	0x65af7d	cmp    QWORD PTR [rbp+0x88],0xf
+steam	artifact-rumor	0x65a250	0x65af85	cmova  rdx,QWORD PTR [rbp+0x70]
+steam	artifact-rumor	0x65a250	0x65b014	cmp    QWORD PTR [r12+0x10],0x0
+steam	artifact-rumor	0x65a250	0x65b037	cmp    rbx,rdi
+steam	artifact-rumor	0x65a250	0x65b05b	cmp    ecx,0x1
+steam	artifact-rumor	0x65a250	0x65b067	cmp    r14d,0xffffffff
+steam	artifact-rumor	0x65a250	0x65b090	cmp    rbx,rdi
+steam	artifact-rumor	0x65a250	0x65b09d	test   ax,ax
+steam	artifact-rumor	0x65a250	0x65b0b6	test   rax,0xfffffffffffffff8
+steam	artifact-rumor	0x65a250	0x65b0be	cmp    ecx,0xffffffff
+steam	artifact-rumor	0x65a250	0x65b0cf	test   rax,rax
+steam	artifact-rumor	0x65a250	0x65b0e2	cmp    rcx,rax
+steam	artifact-rumor	0x65a250	0x65b0ea	test   BYTE PTR [rdx+0x1c],0x1
+steam	artifact-rumor	0x65a250	0x65b0f9	cmp    r14d,0xffffffff
+steam	artifact-rumor	0x65a250	0x65b114	cmp    r14d,0xffffffff
+steam	artifact-rumor	0x65a250	0x65b135	cmp    rax,r13
+steam	artifact-rumor	0x65a250	0x65b13e	test   rax,rax
+steam	artifact-rumor	0x65a250	0x65b14e	test   rbx,rbx
+steam	artifact-rumor	0x65a250	0x65b168	test   rax,rax
+steam	artifact-rumor	0x65a250	0x65b171	cmp    rbx,rdi
+steam	artifact-rumor	0x65a250	0x65b17d	test   BYTE PTR [rcx+0x8],0x1
+steam	artifact-rumor	0x65a250	0x65b187	cmp    DWORD PTR [rcx+0x4],0x0
+steam	artifact-rumor	0x65a250	0x65b194	cmp    DWORD PTR [rcx+0x1c],eax
+steam	artifact-rumor	0x65a250	0x65b1a1	cmp    r8d,0xffffffff
+steam	artifact-rumor	0x65a250	0x65b1e3	cmp    DWORD PTR [rax+0x14],0xffffffff
+steam	artifact-rumor	0x65a250	0x65b203	test   rax,rax
+steam	artifact-rumor	0x65a250	0x65b226	cmp    r8d,0xffffffff
+steam	artifact-rumor	0x65a250	0x65b25a	cmp    BYTE PTR [r15+0x7a],0x0
+steam	artifact-rumor	0x65a250	0x65b26d	cmp    ax,0x59
+steam	artifact-rumor	0x65a250	0x65b288	test   al,al
+steam	artifact-rumor	0x65a250	0x65b298	cmp    ax,0x57
+steam	artifact-rumor	0x65a250	0x65b2f2	cmp    QWORD PTR [rbp+0x88],0xf
+steam	artifact-rumor	0x65a250	0x65b2fa	cmova  rdx,QWORD PTR [rbp+0x70]
+steam	artifact-rumor	0x65a250	0x65b316	cmp    rdx,0xf
+steam	artifact-rumor	0x65a250	0x65b326	cmp    rdx,0x1000
+steam	artifact-rumor	0x65a250	0x65b33e	cmp    rax,0x1f
+steam	artifact-rumor	0x65a250	0x65b354	cmp    DWORD PTR [rax+0x20],0xffffffff
+steam	artifact-rumor	0x65a250	0x65b381	cmp    QWORD PTR [r12+0x10],0x0
+steam	artifact-rumor	0x65a250	0x65b3a6	cmp    QWORD PTR [r12+0x10],0x0
+steam	artifact-rumor	0x65a250	0x65b3c6	test   rax,0xfffffffffffffff8
+steam	artifact-rumor	0x65a250	0x65b3ce	cmp    ecx,0xffffffff
+steam	artifact-rumor	0x65a250	0x65b3e7	test   rax,rax
+steam	artifact-rumor	0x65a250	0x65b420	cmp    rbx,rdi
+steam	artifact-rumor	0x65a250	0x65b428	test   BYTE PTR [rdx+0x1c],0x25
+steam	artifact-rumor	0x65a250	0x65b433	cmp    ax,0x1
+steam	artifact-rumor	0x65a250	0x65b439	test   ax,ax
+steam	artifact-rumor	0x65a250	0x65b43e	cmp    DWORD PTR [rdx+0x10],0x0
+steam	artifact-rumor	0x65a250	0x65b444	cmp    DWORD PTR [rdx+0x14],0xffffffff
+steam	artifact-rumor	0x65a250	0x65b458	test   rax,rax
+steam	artifact-rumor	0x65a250	0x65b483	cmp    rsi,r14
+steam	artifact-rumor	0x65a250	0x65b48f	cmp    WORD PTR [rax],0x1
+steam	artifact-rumor	0x65a250	0x65b4aa	test   rax,0xfffffffffffffff8
+steam	artifact-rumor	0x65a250	0x65b4b6	cmp    ecx,0xffffffff
+steam	artifact-rumor	0x65a250	0x65b4cb	test   rax,rax
+steam	artifact-rumor	0x65a250	0x65b4d0	cmp    WORD PTR [rax],0x1
+steam	artifact-rumor	0x65a250	0x65b4f0	cmp    rbx,rdi
+steam	artifact-rumor	0x65a250	0x65b4f8	test   BYTE PTR [rdx+0x1c],0x1
+steam	artifact-rumor	0x65a250	0x65b503	cmp    ax,0x1
+steam	artifact-rumor	0x65a250	0x65b509	test   ax,ax
+steam	artifact-rumor	0x65a250	0x65b50e	cmp    DWORD PTR [rdx+0x10],0x0
+steam	artifact-rumor	0x65a250	0x65b514	cmp    DWORD PTR [rdx+0x14],0xffffffff
+steam	artifact-rumor	0x65a250	0x65b528	test   rax,rax
+steam	artifact-rumor	0x65a250	0x65b554	cmp    rsi,r14
+steam	artifact-rumor	0x65a250	0x65b567	test   rbx,rbx
+steam	artifact-rumor	0x65a250	0x65b581	test   rax,rax
+steam	artifact-rumor	0x65a250	0x65b593	cmp    rbx,rdi
+steam	artifact-rumor	0x65a250	0x65b59f	test   BYTE PTR [rcx+0x8],0x1
+steam	artifact-rumor	0x65a250	0x65b5a9	cmp    DWORD PTR [rcx+0x4],0x0
+steam	artifact-rumor	0x65a250	0x65b5b6	cmp    DWORD PTR [rcx+0x1c],eax
+steam	artifact-rumor	0x65a250	0x65b5c3	cmp    r8d,0xffffffff
+steam	artifact-rumor	0x65a250	0x65b683	cmp    DWORD PTR [rax+0x14],0xffffffff
+steam	artifact-rumor	0x65a250	0x65b6a3	test   r15,r15
+steam	artifact-rumor	0x65a250	0x65b6c8	cmp    r8d,0xffffffff
+steam	artifact-rumor	0x65a250	0x65b6fd	cmp    BYTE PTR [r13+0x7a],0x0
+steam	artifact-rumor	0x65a250	0x65b710	cmp    ax,0x59
+steam	artifact-rumor	0x65a250	0x65b72b	test   al,al
+steam	artifact-rumor	0x65a250	0x65b73b	cmp    ax,0x57
+steam	artifact-rumor	0x65a250	0x65b7a2	cmp    QWORD PTR [rbp+0xa8],0xf
+steam	artifact-rumor	0x65a250	0x65b7aa	cmova  rdx,QWORD PTR [rbp+0x90]
+steam	artifact-rumor	0x65a250	0x65b7d1	cmp    DWORD PTR [rax+0x20],0xffffffff
+steam	artifact-rumor	0x65a250	0x65b7f3	cmp    r9d,0xffffffff
+steam	artifact-rumor	0x65a250	0x65b837	test   r15,r15
+steam	artifact-rumor	0x65a250	0x65b866	cmp    QWORD PTR [r12+0x10],0x0
+steam	artifact-rumor	0x65a250	0x65b87a	cmp    QWORD PTR [r12+0x10],0x0
+steam	artifact-rumor	0x65a250	0x65b899	cmp    QWORD PTR [r12+0x10],0x0
+steam	artifact-rumor	0x65a250	0x65b8b3	cmp    BYTE PTR [r15+0x7a],0x0
+steam	artifact-rumor	0x65a250	0x65b8c6	cmp    ax,0x59
+steam	artifact-rumor	0x65a250	0x65b8e1	test   al,al
+steam	artifact-rumor	0x65a250	0x65b8f1	cmp    ax,0x57
+steam	artifact-rumor	0x65a250	0x65b957	cmp    QWORD PTR [rbp+0xa8],0xf
+steam	artifact-rumor	0x65a250	0x65b95f	cmova  rdx,QWORD PTR [rbp+0x90]
+steam	artifact-rumor	0x65a250	0x65b9f4	test   rsi,rsi
+steam	artifact-rumor	0x65a250	0x65ba00	cmp    r9d,r14d
+steam	artifact-rumor	0x65a250	0x65ba1a	test   rax,rax
+steam	artifact-rumor	0x65a250	0x65ba3f	cmp    DWORD PTR [r10+0xe0],r9d
+steam	artifact-rumor	0x65a250	0x65ba4b	cmovle edx,eax
+steam	artifact-rumor	0x65a250	0x65ba51	cmovle eax,r11d
+steam	artifact-rumor	0x65a250	0x65ba55	cmp    edx,eax
+steam	artifact-rumor	0x65a250	0x65ba7d	test   rax,rax
+steam	artifact-rumor	0x65a250	0x65ba86	test   rcx,rcx
+steam	artifact-rumor	0x65a250	0x65ba8e	cmp    edx,r14d
+steam	artifact-rumor	0x65a250	0x65ba9f	test   rax,rax
+steam	artifact-rumor	0x65a250	0x65baa4	cmp    DWORD PTR [rdi+0xe0],ebx
+steam	artifact-rumor	0x65a250	0x65baaf	cmp    QWORD PTR [rsp+0x70],r13
+steam	artifact-rumor	0x65a250	0x65bafb	test   rax,rax
+steam	artifact-rumor	0x65a250	0x65bb00	cmp    ebx,DWORD PTR [rax+0xe0]
+steam	artifact-rumor	0x65a250	0x65bb08	cmp    QWORD PTR [rsp+0x70],r13
+steam	artifact-rumor	0x65a250	0x65bb25	cmp    ebx,r14d
+steam	artifact-rumor	0x65a250	0x65bb31	cmp    QWORD PTR [rsp+0x70],r13
+steam	artifact-rumor	0x65a250	0x65bc26	test   rdx,rdx
+steam	artifact-rumor	0x65a250	0x65bc44	cmp    DWORD PTR [rsp+0x50],r14d
+steam	artifact-rumor	0x65a250	0x65bc52	cmp    QWORD PTR [rsp+0x70],r13
+steam	artifact-rumor	0x65a250	0x65bc7f	cmp    r9d,r14d
+steam	artifact-rumor	0x65a250	0x65bcc5	test   rdx,rdx
+steam	artifact-rumor	0x65a250	0x65bd1b	cmp    DWORD PTR [rsp+0x5c],r14d
+steam	artifact-rumor	0x65a250	0x65bd25	cmp    QWORD PTR [rsp+0x70],r13
+steam	artifact-rumor	0x65a250	0x65bd8b	cmp    DWORD PTR [rsp+0x60],r14d
+steam	artifact-rumor	0x65a250	0x65bd99	cmp    QWORD PTR [rsp+0x70],r13
+steam	artifact-rumor	0x65a250	0x65be1e	cmp    BYTE PTR [rsp+0x78],r13b
+steam	artifact-rumor	0x65a250	0x65be29	test   rsi,rsi
+steam	artifact-rumor	0x65a250	0x65be4e	test   rax,rax
+steam	artifact-rumor	0x65a250	0x65be5e	test   rax,rax
+steam	artifact-rumor	0x65a250	0x65beab	cmp    QWORD PTR [rax+0x40],r13
+steam	artifact-rumor	0x65a250	0x65bf21	cmp    eax,0x1f3
+steam	artifact-identity	0xb94400	0xb9443c	test   r9d,r9d
+steam	artifact-identity	0xb94400	0xb94441	cmp    r8d,0xffffffff
+steam	artifact-identity	0xb94400	0xb9445d	cmp    DWORD PTR [rbx],r8d
+steam	artifact-identity	0xb94400	0xb94465	cmovle edx,eax
+steam	artifact-identity	0xb94400	0xb9446b	cmovle eax,r9d
+steam	artifact-identity	0xb94400	0xb94472	cmp    edx,eax
+steam	artifact-identity	0xb94400	0xb94478	test   rbx,rbx
+steam	artifact-identity	0xb94400	0xb94496	cmp    ax,0x59
+steam	artifact-identity	0xb94400	0xb944ad	test   al,al
+steam	artifact-identity	0xb94400	0xb944b9	cmp    ax,0x57
+steam	artifact-identity	0xb94400	0xb94535	cmp    QWORD PTR [rsp+0x30],0x0
+steam	artifact-identity	0xb94400	0xb94549	cmp    ax,0x59
+steam	artifact-identity	0xb94400	0xb94560	test   al,al
+steam	artifact-identity	0xb94400	0xb9456c	cmp    ax,0x57
+steam	artifact-identity	0xb94400	0xb94592	cmp    rbx,0x8
+steam	artifact-identity	0xb94400	0xb9459d	cmp    rbx,0xf
+steam	artifact-identity	0xb94400	0xb945a1	cmova  rax,QWORD PTR [rsp+0x20]
+steam	artifact-identity	0xb94400	0xb945dc	cmp    rbx,rax
+steam	artifact-identity	0xb94400	0xb945ea	cmp    rax,rdi
+steam	artifact-identity	0xb94400	0xb945ed	cmova  rdi,rax
+steam	artifact-identity	0xb94400	0xb9461c	cmp    rbx,0xf
+steam	artifact-identity	0xb94400	0xb9462e	cmp    rdx,0x1000
+steam	artifact-identity	0xb94400	0xb94646	cmp    rax,0x1f
+steam	artifact-identity	0xb94400	0xb94662	cmp    QWORD PTR [rsp+0x38],0xf
+steam	artifact-identity	0xb94400	0xb94668	cmova  rdx,QWORD PTR [rsp+0x20]
+steam	artifact-identity	0xb94400	0xb9467b	test   r14d,r14d
+steam	artifact-identity	0xb94400	0xb9469b	cmp    rdx,0xf
+steam	artifact-identity	0xb94400	0xb946ac	cmp    rdx,0x1000
+steam	artifact-identity	0xb94400	0xb946c4	cmp    rax,0x1f
+steam	entity-identity	0xb92900	0xb92932	test   rax,0xfffffffffffffff8
+steam	entity-identity	0xb92900	0xb9293a	cmp    r8d,0xffffffff
+steam	entity-identity	0xb92900	0xb92956	test   rdi,rdi
+steam	entity-identity	0xb92900	0xb929d1	cmp    QWORD PTR [rsp+0x38],0xf
+steam	entity-identity	0xb92900	0xb929d7	cmova  rdx,QWORD PTR [rsp+0x20]
+steam	entity-identity	0xb92900	0xb929ea	test   esi,esi
+steam	entity-identity	0xb92900	0xb92a09	cmp    rdx,0xf
+steam	entity-identity	0xb92900	0xb92a1a	cmp    rdx,0x1000
+steam	entity-identity	0xb92900	0xb92a32	cmp    rax,0x1f
+steam	historical-holder	0xb92f10	0xb92f5a	test   rax,rax
+steam	historical-holder	0xb92f10	0xb92f67	test   rdx,rdx
+steam	historical-holder	0xb92f10	0xb92f74	test   rax,rax
+steam	historical-holder	0xb92f10	0xb92f7f	cmp    DWORD PTR [rax+0x20],ecx
+steam	historical-holder	0xb92f10	0xb92f96	cmp    DWORD PTR [rax+0x24],ecx
+steam	historical-holder	0xb92f10	0xb92fb8	test   rax,rax
+steam	historical-holder	0xb92f10	0xb92fc1	test   BYTE PTR [rax+0x4],0x8
+steam	historical-holder	0xb92f10	0xb92fcb	cmp    BYTE PTR [rdi+0xaa],0x0
+steam	historical-holder	0xb92f10	0xb9300d	cmp    QWORD PTR [rbp-0x71],0xf
+steam	historical-holder	0xb92f10	0xb93012	cmova  rdx,QWORD PTR [rsp+0x30]
+steam	historical-holder	0xb92f10	0xb93029	cmp    rdx,0xf
+steam	historical-holder	0xb92f10	0xb9303e	cmp    rdx,0x1000
+steam	historical-holder	0xb92f10	0xb93056	cmp    rax,0x1f
+steam	historical-holder	0xb92f10	0xb93094	test   rax,rax
+steam	historical-holder	0xb92f10	0xb930a7	test   rax,rax
+steam	historical-holder	0xb92f10	0xb930ac	cmp    BYTE PTR [rax+0x7a],0x0
+steam	historical-holder	0xb92f10	0xb930e7	cmp    QWORD PTR [rbp-0x71],0xf
+steam	historical-holder	0xb92f10	0xb930ec	cmova  rdx,QWORD PTR [rsp+0x30]
+steam	historical-holder	0xb92f10	0xb93126	test   BYTE PTR [r13+0x0],0x2
+steam	historical-holder	0xb92f10	0xb93166	cmp    DWORD PTR [rdi+0xd0],0x0
+steam	historical-holder	0xb92f10	0xb93176	test   BYTE PTR [rax],0x4
+steam	historical-holder	0xb92f10	0xb9317b	test   BYTE PTR [rax],0x8
+steam	historical-holder	0xb92f10	0xb931a1	test   rax,rax
+steam	historical-holder	0xb92f10	0xb931a9	test   rsi,rsi
+steam	historical-holder	0xb92f10	0xb931b6	cmp    WORD PTR [rdi+0x2],ax
+steam	historical-holder	0xb92f10	0xb931ba	cmove  r12d,r15d
+steam	historical-holder	0xb92f10	0xb931c5	test   rsi,rsi
+steam	historical-holder	0xb92f10	0xb931ce	test   rsi,rsi
+steam	historical-holder	0xb92f10	0xb931d7	cmp    QWORD PTR [rsi+0x160],r15
+steam	historical-holder	0xb92f10	0xb931de	cmovne eax,r14d
+steam	historical-holder	0xb92f10	0xb931e6	cmp    BYTE PTR [rsi+0x88],r15b
+steam	historical-holder	0xb92f10	0xb931ed	cmovne r12d,r14d
+steam	historical-holder	0xb92f10	0xb931fa	cmp    WORD PTR [rdi+0x2],0xffff
+steam	historical-holder	0xb92f10	0xb93201	cmp    cx,r14w
+steam	historical-holder	0xb92f10	0xb93232	cmp    DWORD PTR [rax+0x24],r9d
+steam	historical-holder	0xb92f10	0xb93240	test   ecx,ecx
+steam	historical-holder	0xb92f10	0xb93252	cmp    ecx,0x1
+steam	historical-holder	0xb92f10	0xb932ed	cmp    BYTE PTR [rdi+0xaa],0x0
+steam	historical-holder	0xb92f10	0xb932fa	cmp    eax,r9d
+steam	historical-holder	0xb92f10	0xb93303	test   r12b,r12b
+steam	historical-holder	0xb92f10	0xb9330c	test   cx,cx
+steam	historical-holder	0xb92f10	0xb9332a	test   rsi,rsi
+steam	historical-holder	0xb92f10	0xb9332f	cmp    QWORD PTR [rsi+0x160],0x0
+steam	historical-holder	0xb92f10	0xb9334e	cmp    DWORD PTR [rdi+0xd0],0x0
+steam	historical-holder	0xb92f10	0xb9335e	cmp    BYTE PTR [rax],0x0
+steam	historical-holder	0xb92f10	0xb93363	test   rsi,rsi
+steam	historical-holder	0xb92f10	0xb93368	cmp    BYTE PTR [rsi+0x88],0x0
+steam	historical-holder	0xb92f10	0xb933a6	cmp    cx,0xffff
+steam	historical-holder	0xb92f10	0xb933ac	test   r13w,r13w
+steam	historical-holder	0xb92f10	0xb933cb	cmp    r13,rax
+steam	historical-holder	0xb92f10	0xb933d0	test   cx,cx
+steam	historical-holder	0xb92f10	0xb933ee	cmp    rcx,rax
+steam	historical-holder	0xb92f10	0xb933ff	cmp    rax,rdx
+steam	historical-holder	0xb92f10	0xb93408	cmp    QWORD PTR [rdx+0x18],0xf
+steam	historical-holder	0xb92f10	0xb9341f	test   r8,r8
+steam	historical-holder	0xb92f10	0xb93426	test   r13w,r13w
+steam	historical-holder	0xb92f10	0xb93441	cmp    r13,rax
+steam	historical-holder	0xb92f10	0xb93452	cmp    rax,rdx
+steam	historical-holder	0xb92f10	0xb9345b	cmp    QWORD PTR [rdx+0x18],0xf
+steam	historical-holder	0xb92f10	0xb93476	cmp    QWORD PTR [rbp-0x11],0xf
+steam	historical-holder	0xb92f10	0xb9347b	cmova  rdx,QWORD PTR [rbp-0x29]
+steam	historical-holder	0xb92f10	0xb93488	test   rsi,rsi
+steam	historical-holder	0xb92f10	0xb9348d	cmp    BYTE PTR [rsi+0x88],0x0
+steam	historical-holder	0xb92f10	0xb934b3	cmp    QWORD PTR [rdx+0x18],0xf
+steam	historical-holder	0xb92f10	0xb934f1	cmp    DWORD PTR [rax+0x20],r9d
+steam	historical-holder	0xb92f10	0xb9350d	cmp    QWORD PTR [rbp-0x51],0xf
+steam	historical-holder	0xb92f10	0xb93512	cmova  rdx,QWORD PTR [rbp-0x69]
+steam	historical-holder	0xb92f10	0xb9352d	cmp    DWORD PTR [rax+0x20],r8d
+steam	historical-holder	0xb92f10	0xb93537	test   r12b,r12b
+steam	historical-holder	0xb92f10	0xb93540	cmp    WORD PTR [rbp+0x7f],0x2
+steam	historical-holder	0xb92f10	0xb93560	test   rsi,rsi
+steam	historical-holder	0xb92f10	0xb93565	cmp    QWORD PTR [rsi+0x160],0x0
+steam	historical-holder	0xb92f10	0xb93584	cmp    DWORD PTR [rdi+0xd0],0x0
+steam	historical-holder	0xb92f10	0xb93594	cmp    BYTE PTR [rax],0x0
+steam	historical-holder	0xb92f10	0xb93599	test   rsi,rsi
+steam	historical-holder	0xb92f10	0xb9359e	cmp    BYTE PTR [rsi+0x88],0x0
+steam	historical-holder	0xb92f10	0xb935d9	cmp    cx,0xffff
+steam	historical-holder	0xb92f10	0xb935df	test   di,di
+steam	historical-holder	0xb92f10	0xb935fd	cmp    rdi,rax
+steam	historical-holder	0xb92f10	0xb93602	test   cx,cx
+steam	historical-holder	0xb92f10	0xb93620	cmp    rcx,rax
+steam	historical-holder	0xb92f10	0xb93631	cmp    rax,rdx
+steam	historical-holder	0xb92f10	0xb9363a	cmp    QWORD PTR [rdx+0x18],0xf
+steam	historical-holder	0xb92f10	0xb93651	test   r15,r15
+steam	historical-holder	0xb92f10	0xb93658	test   di,di
+steam	historical-holder	0xb92f10	0xb93672	cmp    rdi,rax
+steam	historical-holder	0xb92f10	0xb93683	cmp    rax,rdx
+steam	historical-holder	0xb92f10	0xb9368c	cmp    QWORD PTR [rdx+0x18],0xf
+steam	historical-holder	0xb92f10	0xb936a7	cmp    QWORD PTR [rbp-0x31],0xf
+steam	historical-holder	0xb92f10	0xb936ac	cmova  rdx,QWORD PTR [rbp-0x49]
+steam	historical-holder	0xb92f10	0xb936bc	test   rsi,rsi
+steam	historical-holder	0xb92f10	0xb936c1	cmp    BYTE PTR [rsi+0x88],0x0
+steam	historical-holder	0xb92f10	0xb936e7	cmp    QWORD PTR [rdx+0x18],0xf
+steam	historical-holder	0xb92f10	0xb936fe	cmp    rdx,0xf
+steam	historical-holder	0xb92f10	0xb93712	cmp    rdx,0x1000
+steam	historical-holder	0xb92f10	0xb9372a	cmp    rax,0x1f
+steam	historical-holder	0xb92f10	0xb93747	cmp    eax,r9d
+steam	historical-holder	0xb92f10	0xb9374a	cmovne r8,rdx
+steam	historical-holder	0xb92f10	0xb9375c	cmovne rdx,rcx
+steam	historical-holder	0xb92f10	0xb93768	test   rsi,rsi
+steam	historical-holder	0xb92f10	0xb9376d	cmp    QWORD PTR [rsi+0x160],0x0
+steam	historical-holder	0xb92f10	0xb9378c	cmp    DWORD PTR [rdi+0xd0],0x0
+steam	historical-holder	0xb92f10	0xb9379c	cmp    BYTE PTR [rax],0x0
+steam	historical-holder	0xb92f10	0xb937a1	test   rsi,rsi
+steam	historical-holder	0xb92f10	0xb937a6	cmp    BYTE PTR [rsi+0x88],0x0
+steam	historical-holder	0xb92f10	0xb937f4	cmp    QWORD PTR [rbp-0x71],0xf
+steam	historical-holder	0xb92f10	0xb937f9	cmova  rdx,QWORD PTR [rsp+0x30]
+steam	historical-holder	0xb92f10	0xb9380b	test   rsi,rsi
+steam	historical-holder	0xb92f10	0xb93810	cmp    BYTE PTR [rsi+0x88],0x0
+steam	historical-holder	0xb92f10	0xb93836	cmp    QWORD PTR [rdx+0x18],0xf
+steam	historical-holder	0xb92f10	0xb93853	cmp    WORD PTR [rbp+0x77],0x2
+steam	historical-holder	0xb92f10	0xb9385a	cmp    BYTE PTR [rsp+0x20],0x0
+steam	historical-holder	0xb92f10	0xb9387b	test   BYTE PTR [rax],0x2
+steam	historical-holder	0xb92f10	0xb9389a	cmp    rdx,0xf
+steam	historical-holder	0xb92f10	0xb938aa	cmp    rdx,0x1000
+steam	historical-holder	0xb92f10	0xb938c2	cmp    rax,0x1f
+steam	historical-holder	0xb92f10	0xb938eb	cmp    WORD PTR [rbp+0x77],0x2
+steam	building-reference	0xb94090	0xb940c3	test   rax,rax
+steam	building-reference	0xb94090	0xb940dd	test   rax,rax
+steam	building-reference	0xb94090	0xb9414a	cmp    BYTE PTR [rsp+0x90],0x0
+steam	building-reference	0xb94090	0xb94161	test   rax,rax
+steam	building-reference	0xb94090	0xb9416a	cmp    BYTE PTR [rax+0x72],0x0
+steam	building-reference	0xb94090	0xb941ab	cmp    QWORD PTR [rsp+0x38],0xf
+steam	building-reference	0xb94090	0xb941b1	cmova  rdx,QWORD PTR [rsp+0x20]
+steam	building-reference	0xb94090	0xb941c4	test   esi,esi
+steam	building-reference	0xb94090	0xb941e3	cmp    rdx,0xf
+steam	building-reference	0xb94090	0xb941f8	cmp    rdx,0x1000
+steam	building-reference	0xb94090	0xb94210	cmp    rax,0x1f
+steam	building-reference	0xb94090	0xb94233	cmp    ecx,0xd
+steam	building-reference	0xb94090	0xb9431f	test   ecx,ecx
+steam	building-reference	0xb94090	0xb94328	cmp    ecx,0x1
+steam	building-reference	0xb94090	0xb9437e	test   esi,esi
+steam	site-reference	0xb93930	0xb93966	test   rax,rax
+steam	site-reference	0xb93930	0xb939e3	cmp    QWORD PTR [rsp+0x38],0xf
+steam	site-reference	0xb93930	0xb939e9	cmova  rdx,QWORD PTR [rsp+0x20]
+steam	site-reference	0xb93930	0xb939fc	test   edi,edi
+steam	site-reference	0xb93930	0xb93a1b	cmp    rdx,0xf
+steam	site-reference	0xb93930	0xb93a2c	cmp    rdx,0x1000
+steam	site-reference	0xb93930	0xb93a44	cmp    rax,0x1f
+steam	region-reference	0xb94a40	0xb94a76	test   rax,rax
+steam	region-reference	0xb94a40	0xb94af0	cmp    QWORD PTR [rsp+0x38],0xf
+steam	region-reference	0xb94a40	0xb94af6	cmova  rdx,QWORD PTR [rsp+0x20]
+steam	region-reference	0xb94a40	0xb94b09	test   edi,edi
+steam	region-reference	0xb94a40	0xb94b28	cmp    rdx,0xf
+steam	region-reference	0xb94a40	0xb94b39	cmp    rdx,0x1000
+steam	region-reference	0xb94a40	0xb94b51	cmp    rax,0x1f
+steam	underground-reference	0xb94940	0xb9496e	test   rax,rax
+steam	underground-reference	0xb94940	0xb949b4	cmp    BYTE PTR [rdi+0x7a],0x0
+steam	underground-reference	0xb94940	0xb949bd	test   ecx,ecx
+steam	underground-reference	0xb94940	0xb949c6	cmp    ecx,0x1
+steam	underground-reference	0xb94940	0xb949fe	test   esi,esi
+steam	item-description	0xc65450	0xc65474	cmp    QWORD PTR [rdx+0x18],0xf
+steam	item-description	0xc65450	0xc65492	cmp    rbx,rdi
+steam	item-description	0xc65450	0xc654a0	cmp    eax,0x1
+steam	item-description	0xc65450	0xc654b4	test   rax,rax
+steam	item-description	0xc65450	0xc654b9	cmp    BYTE PTR [rax+0x7a],0x0
+steam	item-description	0xc65450	0xc654c7	test   bl,bl
+steam	item-description	0xc65450	0xc654eb	test   bl,bl
+steam	item-description	0xc65450	0xc654fc	cmp    ax,0x59
+steam	item-description	0xc65450	0xc65502	cmp    QWORD PTR [r13+0xf8],0x0
+steam	item-description	0xc65450	0xc65521	cmp    ax,0x56
+steam	item-description	0xc65450	0xc65540	cmp    rbx,rdi
+steam	item-description	0xc65450	0xc65552	cmp    eax,0xc
+steam	item-description	0xc65450	0xc6556d	test   rcx,rcx
+steam	item-description	0xc65450	0xc6558d	test   r10d,r10d
+steam	item-description	0xc65450	0xc65595	cmp    r10d,0x40
+steam	item-description	0xc65450	0xc655b1	cmp    esi,DWORD PTR [rcx]
+steam	item-description	0xc65450	0xc655b3	cmovl  edx,r9d
+steam	item-description	0xc65450	0xc655bd	cmp    r10d,0x40
+steam	item-description	0xc65450	0xc655c7	cmp    eax,0xffffffff
+steam	item-description	0xc65450	0xc655cc	cmp    r9d,eax
+steam	item-description	0xc65450	0xc655db	cmp    esi,DWORD PTR [rax]
+steam	item-description	0xc65450	0xc655e5	cmp    rcx,rdx
+steam	item-description	0xc65450	0xc655f3	test   rdx,rdx
+steam	item-description	0xc65450	0xc655f8	cmp    QWORD PTR [rdx+0x18],0x0
+steam	item-description	0xc65450	0xc6560c	cmp    eax,0x9
+steam	item-description	0xc65450	0xc65627	test   rcx,rcx
+steam	item-description	0xc65450	0xc65647	test   r10d,r10d
+steam	item-description	0xc65450	0xc6564f	cmp    r10d,0x40
+steam	item-description	0xc65450	0xc65671	cmp    esi,DWORD PTR [rcx]
+steam	item-description	0xc65450	0xc65673	cmovl  edx,r9d
+steam	item-description	0xc65450	0xc6567d	cmp    r10d,0x40
+steam	item-description	0xc65450	0xc65687	cmp    eax,0xffffffff
+steam	item-description	0xc65450	0xc6568c	cmp    r9d,eax
+steam	item-description	0xc65450	0xc6569b	cmp    esi,DWORD PTR [rax]
+steam	item-description	0xc65450	0xc656a5	cmp    rcx,rdx
+steam	item-description	0xc65450	0xc656ba	test   rdx,rdx
+steam	item-description	0xc65450	0xc656bf	cmp    QWORD PTR [rdx+0x18],0x0
+steam	item-description	0xc65450	0xc656d3	cmp    r15,rdx
+steam	item-description	0xc65450	0xc656d8	cmp    QWORD PTR [rdx+0x18],0xf
+steam	item-description	0xc65450	0xc6574f	test   al,al
+steam	item-description	0xc65450	0xc65753	cmp    r14w,r12w
+steam	item-description	0xc65450	0xc65757	cmovl  r14w,r12w
+steam	item-description	0xc65450	0xc65776	test   bl,bl
+steam	item-description	0xc65450	0xc6577e	cmp    DWORD PTR [rip+0xc36b13],0x1        # 0x14189c298
+steam	item-description	0xc65450	0xc65790	cmp    rbx,rdi
+steam	item-description	0xc65450	0xc6579e	cmp    eax,0x1f
+steam	item-description	0xc65450	0xc657b7	test   DWORD PTR [r13+0x10],0x400000
+steam	item-description	0xc65450	0xc657dc	cmp    ax,0x3
+steam	item-description	0xc65450	0xc657f3	cmp    BYTE PTR [rax+r8*1],0x0
+steam	item-description	0xc65450	0xc65813	cmp    BYTE PTR [rax+r8*1],0x0
+steam	item-description	0xc65450	0xc6581c	cmp    ax,0x2
+steam	item-description	0xc65450	0xc65833	cmp    BYTE PTR [rax+r8*1],0x0
+steam	item-description	0xc65450	0xc6583c	cmp    ax,0x1
+steam	item-description	0xc65450	0xc65853	cmp    BYTE PTR [rax+r8*1],0x0
+steam	item-description	0xc65450	0xc65866	cmp    DWORD PTR [rip+0xc36a2b],0x0        # 0x14189c298
+steam	item-description	0xc65450	0xc6586f	test   DWORD PTR [r13+0x10],0x4000
+steam	item-description	0xc65450	0xc65887	cmp    BYTE PTR [rax+r8*1],0x0
+steam	item-description	0xc65450	0xc6589a	test   DWORD PTR [r13+0x10],0x80000
+steam	item-description	0xc65450	0xc658b3	cmp    BYTE PTR [rax+r8*1],0x0
+steam	item-description	0xc65450	0xc658d3	test   al,al
+steam	item-description	0xc65450	0xc658db	cmp    DWORD PTR [rip+0x172b1f6],0x0        # 0x142390ad8
+steam	item-description	0xc65450	0xc658ef	test   BYTE PTR [rax],0x4
+steam	item-description	0xc65450	0xc658f8	cmp    r12w,0x5
+steam	item-description	0xc65450	0xc65913	cmp    BYTE PTR [rax+r8*1],0x0
+steam	item-description	0xc65450	0xc6591c	cmp    r12w,0x4
+steam	item-description	0xc65450	0xc65933	cmp    BYTE PTR [rax+r8*1],0x0
+steam	item-description	0xc65450	0xc6593c	cmp    r12w,0x3
+steam	item-description	0xc65450	0xc65953	cmp    BYTE PTR [rax+r8*1],0x0
+steam	item-description	0xc65450	0xc6595c	cmp    r12w,0x2
+steam	item-description	0xc65450	0xc65973	cmp    BYTE PTR [rax+r8*1],0x0
+steam	item-description	0xc65450	0xc6597c	cmp    r12w,0x1
+steam	item-description	0xc65450	0xc65993	cmp    BYTE PTR [rax+r8*1],0x0
+steam	item-description	0xc65450	0xc659b4	cmp    BYTE PTR [rax+r8*1],0x0
+steam	item-description	0xc65450	0xc659d4	test   rax,rax
+steam	item-description	0xc65450	0xc659e7	cmp    BYTE PTR [rax+r8*1],0x0
+steam	item-description	0xc65450	0xc659fa	cmp    r14w,0x5
+steam	item-description	0xc65450	0xc65a13	cmp    BYTE PTR [rax+r8*1],0x0
+steam	item-description	0xc65450	0xc65a53	cmp    r14w,0x4
+steam	item-description	0xc65450	0xc65a68	cmp    BYTE PTR [rax+r8*1],0x0
+steam	item-description	0xc65450	0xc65aa8	cmp    r14w,0x3
+steam	item-description	0xc65450	0xc65ac3	cmp    BYTE PTR [rax+r8*1],0x0
+steam	item-description	0xc65450	0xc65b03	cmp    r14w,0x2
+steam	item-description	0xc65450	0xc65b18	cmp    BYTE PTR [rax+r8*1],0x0
+steam	item-description	0xc65450	0xc65b58	cmp    r14w,0x1
+steam	item-description	0xc65450	0xc65b73	cmp    BYTE PTR [rax+r8*1],0x0
+steam	item-description	0xc65450	0xc65bc7	test   bl,bl
+steam	item-description	0xc65450	0xc65be3	cmp    r14w,0x5
+steam	item-description	0xc65450	0xc65bf8	cmp    BYTE PTR [rax+r8*1],0x0
+steam	item-description	0xc65450	0xc65c01	cmp    r14w,0x4
+steam	item-description	0xc65450	0xc65c16	cmp    BYTE PTR [rax+r8*1],0x0
+steam	item-description	0xc65450	0xc65c1f	cmp    r14w,0x3
+steam	item-description	0xc65450	0xc65c34	cmp    BYTE PTR [rax+r8*1],0x0
+steam	item-description	0xc65450	0xc65c3d	cmp    r14w,0x2
+steam	item-description	0xc65450	0xc65c53	cmp    BYTE PTR [rax+r8*1],0x0
+steam	item-description	0xc65450	0xc65c5c	cmp    r14w,0x1
+steam	item-description	0xc65450	0xc65c73	cmp    BYTE PTR [rax+r8*1],0x0
+steam	item-description	0xc65450	0xc65c93	test   rax,rax
+steam	item-description	0xc65450	0xc65ca6	cmp    BYTE PTR [rax+r8*1],0x0
+steam	item-description	0xc65450	0xc65cc6	test   al,al
+steam	item-description	0xc65450	0xc65ce3	cmp    BYTE PTR [rax+r8*1],0x0
+steam	item-description	0xc65450	0xc65cf6	cmp    DWORD PTR [rip+0x172addb],0x0        # 0x142390ad8
+steam	item-description	0xc65450	0xc65d0a	test   BYTE PTR [rax],0x4
+steam	item-description	0xc65450	0xc65d13	cmp    r12w,0x5
+steam	item-description	0xc65450	0xc65d28	cmp    BYTE PTR [rax+r8*1],0x0
+steam	item-description	0xc65450	0xc65d31	cmp    r12w,0x4
+steam	item-description	0xc65450	0xc65d46	cmp    BYTE PTR [rax+r8*1],0x0
+steam	item-description	0xc65450	0xc65d4f	cmp    r12w,0x3
+steam	item-description	0xc65450	0xc65d64	cmp    BYTE PTR [rax+r8*1],0x0
+steam	item-description	0xc65450	0xc65d6d	cmp    r12w,0x2
+steam	item-description	0xc65450	0xc65d83	cmp    BYTE PTR [rax+r8*1],0x0
+steam	item-description	0xc65450	0xc65d8c	cmp    r12w,0x1
+steam	item-description	0xc65450	0xc65da3	cmp    BYTE PTR [rax+r8*1],0x0
+steam	item-description	0xc65450	0xc65db6	cmp    DWORD PTR [rip+0xc364db],0x0        # 0x14189c298
+steam	item-description	0xc65450	0xc65dbf	test   DWORD PTR [r13+0x10],0x80000
+steam	item-description	0xc65450	0xc65dd7	cmp    BYTE PTR [rax+r8*1],0x0
+steam	item-description	0xc65450	0xc65dea	test   DWORD PTR [r13+0x10],0x4000
+steam	item-description	0xc65450	0xc65e03	cmp    BYTE PTR [rax+r8*1],0x0
+steam	item-description	0xc65450	0xc65e16	cmp    bx,0x3
+steam	item-description	0xc65450	0xc65e33	cmp    BYTE PTR [rax+r8*1],0x0
+steam	item-description	0xc65450	0xc65e53	cmp    BYTE PTR [rax+rsi*1],0x0
+steam	item-description	0xc65450	0xc65e5b	cmp    bx,0x2
+steam	item-description	0xc65450	0xc65e73	cmp    BYTE PTR [rax+rsi*1],0x0
+steam	item-description	0xc65450	0xc65e7b	cmp    bx,0x1
+steam	item-description	0xc65450	0xc65e93	cmp    BYTE PTR [rax+rsi*1],0x0
+steam	item-description	0xc65450	0xc65ea8	test   DWORD PTR [r13+0x10],0x400000
+steam	item-description	0xc65450	0xc65ebc	cmp    DWORD PTR [rip+0xc363d5],0x1        # 0x14189c298
+steam	item-description	0xc65450	0xc65ed0	cmp    rbx,rdi
+steam	item-description	0xc65450	0xc65ede	cmp    eax,0x1f
+steam	paragraph-string-wrap	0x8e7310	0x8e7310	test   r8d,r8d
+steam	paragraph-string-wrap	0x8e7310	0x8e7368	cmp    rax,rbx
+steam	paragraph-string-wrap	0x8e7310	0x8e7371	cmp    QWORD PTR [rbx+0x18],0xf
+steam	paragraph-string-wrap	0x8e7310	0x8e73bc	test   rax,rax
+steam	paragraph-string-wrap	0x8e7310	0x8e73d3	test   rbx,rbx
+steam	paragraph-string-wrap	0x8e7310	0x8e740a	test   rax,rax
+steam	paragraph-vector-wrap	0x8e7440	0x8e7440	test   r8d,r8d
+steam	paragraph-vector-wrap	0x8e7440	0x8e74a7	test   rax,rax
+steam	paragraph-vector-wrap	0x8e7440	0x8e74bc	cmp    QWORD PTR [rax+0x10],rdi
+steam	paragraph-vector-wrap	0x8e7440	0x8e74c6	test   bl,bl
+steam	paragraph-vector-wrap	0x8e7440	0x8e74ce	cmp    QWORD PTR [rax+0x18],0xf
+steam	paragraph-vector-wrap	0x8e7440	0x8e74d8	cmp    BYTE PTR [rdi+rax*1],0x20
+steam	paragraph-vector-wrap	0x8e7440	0x8e74e8	cmp    QWORD PTR [rdx+0x18],0xf
+steam	paragraph-vector-wrap	0x8e7440	0x8e7507	cmp    rsi,rax
+steam	paragraph-vector-wrap	0x8e7440	0x8e753e	cmp    r9,0xf
+steam	paragraph-vector-wrap	0x8e7440	0x8e7547	cmp    BYTE PTR [rdi+rax*1],0x20
+steam	paragraph-vector-wrap	0x8e7440	0x8e754d	test   rdi,rdi
+steam	paragraph-vector-wrap	0x8e7440	0x8e7555	cmp    rax,rsi
+steam	paragraph-vector-wrap	0x8e7440	0x8e757e	cmp    rdx,rsi
+steam	paragraph-vector-wrap	0x8e7440	0x8e758b	cmp    QWORD PTR [rbp-0x18],0xf
+steam	paragraph-vector-wrap	0x8e7440	0x8e7590	cmova  rax,QWORD PTR [rbp-0x30]
+steam	paragraph-vector-wrap	0x8e7440	0x8e75d8	cmp    rbx,rax
+steam	paragraph-vector-wrap	0x8e7440	0x8e75e1	cmp    QWORD PTR [rbp-0x18],0xf
+steam	paragraph-vector-wrap	0x8e7440	0x8e75e6	cmova  rdx,QWORD PTR [rbp-0x30]
+steam	paragraph-vector-wrap	0x8e7440	0x8e75fb	cmp    rdx,QWORD PTR [r15+0x10]
+steam	paragraph-vector-wrap	0x8e7440	0x8e7625	cmp    QWORD PTR [rbp-0x18],0xf
+steam	paragraph-vector-wrap	0x8e7440	0x8e762a	cmova  rax,QWORD PTR [rbp-0x30]
+steam	paragraph-vector-wrap	0x8e7440	0x8e7647	cmp    rax,QWORD PTR [rcx+0x10]
+steam	paragraph-vector-wrap	0x8e7440	0x8e766e	cmp    rax,rcx
+steam	paragraph-vector-wrap	0x8e7440	0x8e7677	test   rsi,rsi
+steam	paragraph-vector-wrap	0x8e7440	0x8e76aa	cmp    rbx,rax
+steam	paragraph-vector-wrap	0x8e7440	0x8e76b3	cmp    QWORD PTR [rbp-0x18],0xf
+steam	paragraph-vector-wrap	0x8e7440	0x8e76b8	cmova  rdx,QWORD PTR [rbp-0x30]
+steam	paragraph-vector-wrap	0x8e7440	0x8e76cc	cmp    rdx,QWORD PTR [r15+0x10]
+steam	reply-addst	0xad9960	0xad997d	cmp    QWORD PTR [rdx+0x10],0x0
+steam	reply-addst	0xad9960	0xad9998	test   ebx,ebx
+steam	reply-addst	0xad9960	0xad999c	cmp    rcx,rbx
+steam	reply-addst	0xad9960	0xad99b6	test   rcx,rcx
+steam	reply-addst	0xad9960	0xad99c6	cmp    eax,DWORD PTR [rip+0x18f3db8]        # 0x1423cd784
+steam	reply-addst	0xad9960	0xad99ce	test   eax,eax
+steam	reply-addst	0xad9960	0xad99dd	cmp    rax,rcx
+steam	reply-addst	0xad9960	0xad99e7	cmp    QWORD PTR [rsp+0x38],0xf
+steam	reply-addst	0xad9960	0xad99ed	cmova  rax,QWORD PTR [rsp+0x20]
+steam	reply-addst	0xad9960	0xad9a0f	cmp    rax,rcx
+classic	artifact-rumor	0x657c70	0x657ccb	test   r8,r8
+classic	artifact-rumor	0x657c70	0x657cf6	test   rax,rax
+classic	artifact-rumor	0x657c70	0x657d0a	test   rdi,rdi
+classic	artifact-rumor	0x657c70	0x657d0f	cmp    rdi,r13
+classic	artifact-rumor	0x657c70	0x657d17	cmp    rdi,QWORD PTR [rip+0x1d872e2]        # 0x1423df000
+classic	artifact-rumor	0x657c70	0x657d1e	cmove  eax,ecx
+classic	artifact-rumor	0x657c70	0x657d3a	test   eax,eax
+classic	artifact-rumor	0x657c70	0x657d42	cmp    ebx,0xffffffff
+classic	artifact-rumor	0x657c70	0x657d6f	cmp    DWORD PTR [r15],ebx
+classic	artifact-rumor	0x657c70	0x657d77	cmovle edx,eax
+classic	artifact-rumor	0x657c70	0x657d7d	cmovle eax,r9d
+classic	artifact-rumor	0x657c70	0x657d81	cmp    edx,eax
+classic	artifact-rumor	0x657c70	0x657d88	test   r15,r15
+classic	artifact-rumor	0x657c70	0x657df3	cmp    edx,0xffffffff
+classic	artifact-rumor	0x657c70	0x657e04	test   rax,rax
+classic	artifact-rumor	0x657c70	0x657e28	cmp    rbx,rdi
+classic	artifact-rumor	0x657c70	0x657e35	test   ax,ax
+classic	artifact-rumor	0x657c70	0x657e4e	test   rax,0xfffffffffffffff8
+classic	artifact-rumor	0x657c70	0x657e56	cmp    ecx,0xffffffff
+classic	artifact-rumor	0x657c70	0x657e67	test   rax,rax
+classic	artifact-rumor	0x657c70	0x657eac	test   rdx,rdx
+classic	artifact-rumor	0x657c70	0x657eb5	test   rdx,rdx
+classic	artifact-rumor	0x657c70	0x657ee8	test   rax,rax
+classic	artifact-rumor	0x657c70	0x657ef5	test   rdx,rdx
+classic	artifact-rumor	0x657c70	0x657f0a	test   rax,rax
+classic	artifact-rumor	0x657c70	0x657f13	cmp    DWORD PTR [rax+0x10],0xffffffff
+classic	artifact-rumor	0x657c70	0x657f40	cmp    BYTE PTR [r15+0x7a],0x0
+classic	artifact-rumor	0x657c70	0x657f53	cmp    ax,0x59
+classic	artifact-rumor	0x657c70	0x657f6e	test   al,al
+classic	artifact-rumor	0x657c70	0x657f7e	cmp    ax,0x57
+classic	artifact-rumor	0x657c70	0x657fdb	cmp    QWORD PTR [rbp+0x88],0xf
+classic	artifact-rumor	0x657c70	0x657fe3	cmova  rdx,QWORD PTR [rbp+0x70]
+classic	artifact-rumor	0x657c70	0x657fff	cmp    rdx,0xf
+classic	artifact-rumor	0x657c70	0x65800f	cmp    rdx,0x1000
+classic	artifact-rumor	0x657c70	0x658027	cmp    rax,0x1f
+classic	artifact-rumor	0x657c70	0x658054	cmp    ecx,0xffffffff
+classic	artifact-rumor	0x657c70	0x65805d	cmp    QWORD PTR [r12+0x10],0x0
+classic	artifact-rumor	0x657c70	0x658075	test   rax,rax
+classic	artifact-rumor	0x657c70	0x65808a	test   rax,rax
+classic	artifact-rumor	0x657c70	0x658093	cmp    DWORD PTR [rax+0x10],0xffffffff
+classic	artifact-rumor	0x657c70	0x6580c0	cmp    BYTE PTR [r15+0x7a],0x0
+classic	artifact-rumor	0x657c70	0x6580d3	cmp    ax,0x59
+classic	artifact-rumor	0x657c70	0x6580ee	test   al,al
+classic	artifact-rumor	0x657c70	0x6580fe	cmp    ax,0x57
+classic	artifact-rumor	0x657c70	0x658157	cmp    QWORD PTR [rbp+0x88],0xf
+classic	artifact-rumor	0x657c70	0x65815f	cmova  rdx,QWORD PTR [rbp+0x70]
+classic	artifact-rumor	0x657c70	0x658192	cmp    QWORD PTR [r12+0x10],0x0
+classic	artifact-rumor	0x657c70	0x6581b3	cmp    rbx,rdi
+classic	artifact-rumor	0x657c70	0x6581c4	cmp    ax,0xa
+classic	artifact-rumor	0x657c70	0x6581d2	cmp    ax,0xd
+classic	artifact-rumor	0x657c70	0x6581f0	test   rax,0xfffffffffffffff8
+classic	artifact-rumor	0x657c70	0x6581fc	cmp    ecx,0xffffffff
+classic	artifact-rumor	0x657c70	0x658214	test   rax,rax
+classic	artifact-rumor	0x657c70	0x65821d	cmp    WORD PTR [rax],0x5
+classic	artifact-rumor	0x657c70	0x658244	test   si,si
+classic	artifact-rumor	0x657c70	0x65824d	test   eax,eax
+classic	artifact-rumor	0x657c70	0x65826d	cmp    rcx,rax
+classic	artifact-rumor	0x657c70	0x65827a	cmp    DWORD PTR [rax+0x40],0x2
+classic	artifact-rumor	0x657c70	0x658284	test   BYTE PTR [rax+0x2],0x20
+classic	artifact-rumor	0x657c70	0x658290	test   al,al
+classic	artifact-rumor	0x657c70	0x6582cb	cmp    BYTE PTR [r13+0x7a],0x0
+classic	artifact-rumor	0x657c70	0x6582de	cmp    ax,0x59
+classic	artifact-rumor	0x657c70	0x6582f9	test   al,al
+classic	artifact-rumor	0x657c70	0x658309	cmp    ax,0x57
+classic	artifact-rumor	0x657c70	0x658363	cmp    QWORD PTR [rbp+0x88],0xf
+classic	artifact-rumor	0x657c70	0x65836b	cmova  rdx,QWORD PTR [rbp+0x70]
+classic	artifact-rumor	0x657c70	0x658387	cmp    rdx,0xf
+classic	artifact-rumor	0x657c70	0x658397	cmp    rdx,0x1000
+classic	artifact-rumor	0x657c70	0x6583af	cmp    rax,0x1f
+classic	artifact-rumor	0x657c70	0x6583f3	test   rsi,rsi
+classic	artifact-rumor	0x657c70	0x6583fc	test   r14,r14
+classic	artifact-rumor	0x657c70	0x65842d	test   r9,r9
+classic	artifact-rumor	0x657c70	0x6584a1	test   rax,rax
+classic	artifact-rumor	0x657c70	0x6584aa	cmp    DWORD PTR [rax+0x14],0xffffffff
+classic	artifact-rumor	0x657c70	0x6584b9	cmp    DWORD PTR [rax+0x4],esi
+classic	artifact-rumor	0x657c70	0x658518	cmp    BYTE PTR [r13+0x7a],sil
+classic	artifact-rumor	0x657c70	0x65852a	cmp    ax,0x59
+classic	artifact-rumor	0x657c70	0x658545	test   al,al
+classic	artifact-rumor	0x657c70	0x658555	cmp    ax,0x57
+classic	artifact-rumor	0x657c70	0x6585aa	cmp    QWORD PTR [rbp+0x88],0xf
+classic	artifact-rumor	0x657c70	0x6585b2	cmova  rdx,QWORD PTR [rbp+0x70]
+classic	artifact-rumor	0x657c70	0x6585e5	test   r14,r14
+classic	artifact-rumor	0x657c70	0x6585fc	test   rax,rax
+classic	artifact-rumor	0x657c70	0x65860e	cmp    eax,DWORD PTR [rcx+0xe0]
+classic	artifact-rumor	0x657c70	0x658638	test   ecx,ecx
+classic	artifact-rumor	0x657c70	0x65863c	cmp    ecx,0x1
+classic	artifact-rumor	0x657c70	0x65864a	cmp    QWORD PTR [rsi+0x128],0x0
+classic	artifact-rumor	0x657c70	0x65866d	cmp    QWORD PTR [rsi+0xe8],0x0
+classic	artifact-rumor	0x657c70	0x65867e	cmp    QWORD PTR [rdx+0x18],0xf
+classic	artifact-rumor	0x657c70	0x6586a6	cmp    eax,0xffffffff
+classic	artifact-rumor	0x657c70	0x658719	test   ecx,ecx
+classic	artifact-rumor	0x657c70	0x65871d	cmp    ecx,0x1
+classic	artifact-rumor	0x657c70	0x65872b	cmp    QWORD PTR [rsi+0x128],0x0
+classic	artifact-rumor	0x657c70	0x658747	cmp    QWORD PTR [rsi+0xe8],0x0
+classic	artifact-rumor	0x657c70	0x658763	cmp    QWORD PTR [rdx+0x18],0xf
+classic	artifact-rumor	0x657c70	0x65878f	test   rdx,rdx
+classic	artifact-rumor	0x657c70	0x6587f3	test   rsi,rsi
+classic	artifact-rumor	0x657c70	0x6587fc	test   r14,r14
+classic	artifact-rumor	0x657c70	0x65882c	test   r9,r9
+classic	artifact-rumor	0x657c70	0x65888e	cmp    QWORD PTR [r12+0x10],0x0
+classic	artifact-rumor	0x657c70	0x6588ae	cmp    QWORD PTR [r12+0x10],0x0
+classic	artifact-rumor	0x657c70	0x6588c5	test   rax,rax
+classic	artifact-rumor	0x657c70	0x6588ea	test   al,al
+classic	artifact-rumor	0x657c70	0x6588fa	cmp    ax,0x59
+classic	artifact-rumor	0x657c70	0x658919	cmp    BYTE PTR [r15+0x7a],0x0
+classic	artifact-rumor	0x657c70	0x65892c	cmp    ax,0x59
+classic	artifact-rumor	0x657c70	0x658947	test   al,al
+classic	artifact-rumor	0x657c70	0x658957	cmp    ax,0x57
+classic	artifact-rumor	0x657c70	0x65899d	cmp    QWORD PTR [rbp+0x88],0xf
+classic	artifact-rumor	0x657c70	0x6589a5	cmova  rdx,QWORD PTR [rbp+0x70]
+classic	artifact-rumor	0x657c70	0x658a34	cmp    QWORD PTR [r12+0x10],0x0
+classic	artifact-rumor	0x657c70	0x658a57	cmp    rbx,rdi
+classic	artifact-rumor	0x657c70	0x658a7b	cmp    ecx,0x1
+classic	artifact-rumor	0x657c70	0x658a87	cmp    r14d,0xffffffff
+classic	artifact-rumor	0x657c70	0x658ab0	cmp    rbx,rdi
+classic	artifact-rumor	0x657c70	0x658abd	test   ax,ax
+classic	artifact-rumor	0x657c70	0x658ad6	test   rax,0xfffffffffffffff8
+classic	artifact-rumor	0x657c70	0x658ade	cmp    ecx,0xffffffff
+classic	artifact-rumor	0x657c70	0x658aef	test   rax,rax
+classic	artifact-rumor	0x657c70	0x658b02	cmp    rcx,rax
+classic	artifact-rumor	0x657c70	0x658b0a	test   BYTE PTR [rdx+0x1c],0x1
+classic	artifact-rumor	0x657c70	0x658b19	cmp    r14d,0xffffffff
+classic	artifact-rumor	0x657c70	0x658b34	cmp    r14d,0xffffffff
+classic	artifact-rumor	0x657c70	0x658b55	cmp    rax,r13
+classic	artifact-rumor	0x657c70	0x658b5e	test   rax,rax
+classic	artifact-rumor	0x657c70	0x658b6e	test   rbx,rbx
+classic	artifact-rumor	0x657c70	0x658b88	test   rax,rax
+classic	artifact-rumor	0x657c70	0x658b91	cmp    rbx,rdi
+classic	artifact-rumor	0x657c70	0x658b9d	test   BYTE PTR [rcx+0x8],0x1
+classic	artifact-rumor	0x657c70	0x658ba7	cmp    DWORD PTR [rcx+0x4],0x0
+classic	artifact-rumor	0x657c70	0x658bb4	cmp    DWORD PTR [rcx+0x1c],eax
+classic	artifact-rumor	0x657c70	0x658bc1	cmp    r8d,0xffffffff
+classic	artifact-rumor	0x657c70	0x658c03	cmp    DWORD PTR [rax+0x14],0xffffffff
+classic	artifact-rumor	0x657c70	0x658c23	test   rax,rax
+classic	artifact-rumor	0x657c70	0x658c46	cmp    r8d,0xffffffff
+classic	artifact-rumor	0x657c70	0x658c7a	cmp    BYTE PTR [r15+0x7a],0x0
+classic	artifact-rumor	0x657c70	0x658c8d	cmp    ax,0x59
+classic	artifact-rumor	0x657c70	0x658ca8	test   al,al
+classic	artifact-rumor	0x657c70	0x658cb8	cmp    ax,0x57
+classic	artifact-rumor	0x657c70	0x658d12	cmp    QWORD PTR [rbp+0x88],0xf
+classic	artifact-rumor	0x657c70	0x658d1a	cmova  rdx,QWORD PTR [rbp+0x70]
+classic	artifact-rumor	0x657c70	0x658d36	cmp    rdx,0xf
+classic	artifact-rumor	0x657c70	0x658d46	cmp    rdx,0x1000
+classic	artifact-rumor	0x657c70	0x658d5e	cmp    rax,0x1f
+classic	artifact-rumor	0x657c70	0x658d74	cmp    DWORD PTR [rax+0x20],0xffffffff
+classic	artifact-rumor	0x657c70	0x658da1	cmp    QWORD PTR [r12+0x10],0x0
+classic	artifact-rumor	0x657c70	0x658dc6	cmp    QWORD PTR [r12+0x10],0x0
+classic	artifact-rumor	0x657c70	0x658de6	test   rax,0xfffffffffffffff8
+classic	artifact-rumor	0x657c70	0x658dee	cmp    ecx,0xffffffff
+classic	artifact-rumor	0x657c70	0x658e07	test   rax,rax
+classic	artifact-rumor	0x657c70	0x658e40	cmp    rbx,rdi
+classic	artifact-rumor	0x657c70	0x658e48	test   BYTE PTR [rdx+0x1c],0x25
+classic	artifact-rumor	0x657c70	0x658e53	cmp    ax,0x1
+classic	artifact-rumor	0x657c70	0x658e59	test   ax,ax
+classic	artifact-rumor	0x657c70	0x658e5e	cmp    DWORD PTR [rdx+0x10],0x0
+classic	artifact-rumor	0x657c70	0x658e64	cmp    DWORD PTR [rdx+0x14],0xffffffff
+classic	artifact-rumor	0x657c70	0x658e78	test   rax,rax
+classic	artifact-rumor	0x657c70	0x658ea3	cmp    rsi,r14
+classic	artifact-rumor	0x657c70	0x658eaf	cmp    WORD PTR [rax],0x1
+classic	artifact-rumor	0x657c70	0x658eca	test   rax,0xfffffffffffffff8
+classic	artifact-rumor	0x657c70	0x658ed6	cmp    ecx,0xffffffff
+classic	artifact-rumor	0x657c70	0x658eeb	test   rax,rax
+classic	artifact-rumor	0x657c70	0x658ef0	cmp    WORD PTR [rax],0x1
+classic	artifact-rumor	0x657c70	0x658f10	cmp    rbx,rdi
+classic	artifact-rumor	0x657c70	0x658f18	test   BYTE PTR [rdx+0x1c],0x1
+classic	artifact-rumor	0x657c70	0x658f23	cmp    ax,0x1
+classic	artifact-rumor	0x657c70	0x658f29	test   ax,ax
+classic	artifact-rumor	0x657c70	0x658f2e	cmp    DWORD PTR [rdx+0x10],0x0
+classic	artifact-rumor	0x657c70	0x658f34	cmp    DWORD PTR [rdx+0x14],0xffffffff
+classic	artifact-rumor	0x657c70	0x658f48	test   rax,rax
+classic	artifact-rumor	0x657c70	0x658f74	cmp    rsi,r14
+classic	artifact-rumor	0x657c70	0x658f87	test   rbx,rbx
+classic	artifact-rumor	0x657c70	0x658fa1	test   rax,rax
+classic	artifact-rumor	0x657c70	0x658fb3	cmp    rbx,rdi
+classic	artifact-rumor	0x657c70	0x658fbf	test   BYTE PTR [rcx+0x8],0x1
+classic	artifact-rumor	0x657c70	0x658fc9	cmp    DWORD PTR [rcx+0x4],0x0
+classic	artifact-rumor	0x657c70	0x658fd6	cmp    DWORD PTR [rcx+0x1c],eax
+classic	artifact-rumor	0x657c70	0x658fe3	cmp    r8d,0xffffffff
+classic	artifact-rumor	0x657c70	0x6590a3	cmp    DWORD PTR [rax+0x14],0xffffffff
+classic	artifact-rumor	0x657c70	0x6590c3	test   r15,r15
+classic	artifact-rumor	0x657c70	0x6590e8	cmp    r8d,0xffffffff
+classic	artifact-rumor	0x657c70	0x65911d	cmp    BYTE PTR [r13+0x7a],0x0
+classic	artifact-rumor	0x657c70	0x659130	cmp    ax,0x59
+classic	artifact-rumor	0x657c70	0x65914b	test   al,al
+classic	artifact-rumor	0x657c70	0x65915b	cmp    ax,0x57
+classic	artifact-rumor	0x657c70	0x6591c2	cmp    QWORD PTR [rbp+0xa8],0xf
+classic	artifact-rumor	0x657c70	0x6591ca	cmova  rdx,QWORD PTR [rbp+0x90]
+classic	artifact-rumor	0x657c70	0x6591f1	cmp    DWORD PTR [rax+0x20],0xffffffff
+classic	artifact-rumor	0x657c70	0x659213	cmp    r9d,0xffffffff
+classic	artifact-rumor	0x657c70	0x659257	test   r15,r15
+classic	artifact-rumor	0x657c70	0x659286	cmp    QWORD PTR [r12+0x10],0x0
+classic	artifact-rumor	0x657c70	0x65929a	cmp    QWORD PTR [r12+0x10],0x0
+classic	artifact-rumor	0x657c70	0x6592b9	cmp    QWORD PTR [r12+0x10],0x0
+classic	artifact-rumor	0x657c70	0x6592d3	cmp    BYTE PTR [r15+0x7a],0x0
+classic	artifact-rumor	0x657c70	0x6592e6	cmp    ax,0x59
+classic	artifact-rumor	0x657c70	0x659301	test   al,al
+classic	artifact-rumor	0x657c70	0x659311	cmp    ax,0x57
+classic	artifact-rumor	0x657c70	0x659377	cmp    QWORD PTR [rbp+0xa8],0xf
+classic	artifact-rumor	0x657c70	0x65937f	cmova  rdx,QWORD PTR [rbp+0x90]
+classic	artifact-rumor	0x657c70	0x659414	test   rsi,rsi
+classic	artifact-rumor	0x657c70	0x659420	cmp    r9d,r14d
+classic	artifact-rumor	0x657c70	0x65943a	test   rax,rax
+classic	artifact-rumor	0x657c70	0x65945f	cmp    DWORD PTR [r10+0xe0],r9d
+classic	artifact-rumor	0x657c70	0x65946b	cmovle edx,eax
+classic	artifact-rumor	0x657c70	0x659471	cmovle eax,r11d
+classic	artifact-rumor	0x657c70	0x659475	cmp    edx,eax
+classic	artifact-rumor	0x657c70	0x65949d	test   rax,rax
+classic	artifact-rumor	0x657c70	0x6594a6	test   rcx,rcx
+classic	artifact-rumor	0x657c70	0x6594ae	cmp    edx,r14d
+classic	artifact-rumor	0x657c70	0x6594bf	test   rax,rax
+classic	artifact-rumor	0x657c70	0x6594c4	cmp    DWORD PTR [rdi+0xe0],ebx
+classic	artifact-rumor	0x657c70	0x6594cf	cmp    QWORD PTR [rsp+0x70],r13
+classic	artifact-rumor	0x657c70	0x65951b	test   rax,rax
+classic	artifact-rumor	0x657c70	0x659520	cmp    ebx,DWORD PTR [rax+0xe0]
+classic	artifact-rumor	0x657c70	0x659528	cmp    QWORD PTR [rsp+0x70],r13
+classic	artifact-rumor	0x657c70	0x659545	cmp    ebx,r14d
+classic	artifact-rumor	0x657c70	0x659551	cmp    QWORD PTR [rsp+0x70],r13
+classic	artifact-rumor	0x657c70	0x659646	test   rdx,rdx
+classic	artifact-rumor	0x657c70	0x659664	cmp    DWORD PTR [rsp+0x50],r14d
+classic	artifact-rumor	0x657c70	0x659672	cmp    QWORD PTR [rsp+0x70],r13
+classic	artifact-rumor	0x657c70	0x65969f	cmp    r9d,r14d
+classic	artifact-rumor	0x657c70	0x6596e5	test   rdx,rdx
+classic	artifact-rumor	0x657c70	0x65973b	cmp    DWORD PTR [rsp+0x5c],r14d
+classic	artifact-rumor	0x657c70	0x659745	cmp    QWORD PTR [rsp+0x70],r13
+classic	artifact-rumor	0x657c70	0x6597ab	cmp    DWORD PTR [rsp+0x60],r14d
+classic	artifact-rumor	0x657c70	0x6597b9	cmp    QWORD PTR [rsp+0x70],r13
+classic	artifact-rumor	0x657c70	0x65983e	cmp    BYTE PTR [rsp+0x78],r13b
+classic	artifact-rumor	0x657c70	0x659849	test   rsi,rsi
+classic	artifact-rumor	0x657c70	0x65986e	test   rax,rax
+classic	artifact-rumor	0x657c70	0x65987e	test   rax,rax
+classic	artifact-rumor	0x657c70	0x6598cb	cmp    QWORD PTR [rax+0x40],r13
+classic	artifact-rumor	0x657c70	0x659941	cmp    eax,0x1f3
+classic	artifact-identity	0xb91440	0xb9147c	test   r9d,r9d
+classic	artifact-identity	0xb91440	0xb91481	cmp    r8d,0xffffffff
+classic	artifact-identity	0xb91440	0xb9149d	cmp    DWORD PTR [rbx],r8d
+classic	artifact-identity	0xb91440	0xb914a5	cmovle edx,eax
+classic	artifact-identity	0xb91440	0xb914ab	cmovle eax,r9d
+classic	artifact-identity	0xb91440	0xb914b2	cmp    edx,eax
+classic	artifact-identity	0xb91440	0xb914b8	test   rbx,rbx
+classic	artifact-identity	0xb91440	0xb914d6	cmp    ax,0x59
+classic	artifact-identity	0xb91440	0xb914ed	test   al,al
+classic	artifact-identity	0xb91440	0xb914f9	cmp    ax,0x57
+classic	artifact-identity	0xb91440	0xb91575	cmp    QWORD PTR [rsp+0x30],0x0
+classic	artifact-identity	0xb91440	0xb91589	cmp    ax,0x59
+classic	artifact-identity	0xb91440	0xb915a0	test   al,al
+classic	artifact-identity	0xb91440	0xb915ac	cmp    ax,0x57
+classic	artifact-identity	0xb91440	0xb915d2	cmp    rbx,0x8
+classic	artifact-identity	0xb91440	0xb915dd	cmp    rbx,0xf
+classic	artifact-identity	0xb91440	0xb915e1	cmova  rax,QWORD PTR [rsp+0x20]
+classic	artifact-identity	0xb91440	0xb9161c	cmp    rbx,rax
+classic	artifact-identity	0xb91440	0xb9162a	cmp    rax,rdi
+classic	artifact-identity	0xb91440	0xb9162d	cmova  rdi,rax
+classic	artifact-identity	0xb91440	0xb9165c	cmp    rbx,0xf
+classic	artifact-identity	0xb91440	0xb9166e	cmp    rdx,0x1000
+classic	artifact-identity	0xb91440	0xb91686	cmp    rax,0x1f
+classic	artifact-identity	0xb91440	0xb916a2	cmp    QWORD PTR [rsp+0x38],0xf
+classic	artifact-identity	0xb91440	0xb916a8	cmova  rdx,QWORD PTR [rsp+0x20]
+classic	artifact-identity	0xb91440	0xb916bb	test   r14d,r14d
+classic	artifact-identity	0xb91440	0xb916db	cmp    rdx,0xf
+classic	artifact-identity	0xb91440	0xb916ec	cmp    rdx,0x1000
+classic	artifact-identity	0xb91440	0xb91704	cmp    rax,0x1f
+classic	entity-identity	0xb8f940	0xb8f972	test   rax,0xfffffffffffffff8
+classic	entity-identity	0xb8f940	0xb8f97a	cmp    r8d,0xffffffff
+classic	entity-identity	0xb8f940	0xb8f996	test   rdi,rdi
+classic	entity-identity	0xb8f940	0xb8fa11	cmp    QWORD PTR [rsp+0x38],0xf
+classic	entity-identity	0xb8f940	0xb8fa17	cmova  rdx,QWORD PTR [rsp+0x20]
+classic	entity-identity	0xb8f940	0xb8fa2a	test   esi,esi
+classic	entity-identity	0xb8f940	0xb8fa49	cmp    rdx,0xf
+classic	entity-identity	0xb8f940	0xb8fa5a	cmp    rdx,0x1000
+classic	entity-identity	0xb8f940	0xb8fa72	cmp    rax,0x1f
+classic	historical-holder	0xb8ff50	0xb8ff9a	test   rax,rax
+classic	historical-holder	0xb8ff50	0xb8ffa7	test   rdx,rdx
+classic	historical-holder	0xb8ff50	0xb8ffb4	test   rax,rax
+classic	historical-holder	0xb8ff50	0xb8ffbf	cmp    DWORD PTR [rax+0x20],ecx
+classic	historical-holder	0xb8ff50	0xb8ffd6	cmp    DWORD PTR [rax+0x24],ecx
+classic	historical-holder	0xb8ff50	0xb8fff8	test   rax,rax
+classic	historical-holder	0xb8ff50	0xb90001	test   BYTE PTR [rax+0x4],0x8
+classic	historical-holder	0xb8ff50	0xb9000b	cmp    BYTE PTR [rdi+0xaa],0x0
+classic	historical-holder	0xb8ff50	0xb9004d	cmp    QWORD PTR [rbp-0x71],0xf
+classic	historical-holder	0xb8ff50	0xb90052	cmova  rdx,QWORD PTR [rsp+0x30]
+classic	historical-holder	0xb8ff50	0xb90069	cmp    rdx,0xf
+classic	historical-holder	0xb8ff50	0xb9007e	cmp    rdx,0x1000
+classic	historical-holder	0xb8ff50	0xb90096	cmp    rax,0x1f
+classic	historical-holder	0xb8ff50	0xb900d4	test   rax,rax
+classic	historical-holder	0xb8ff50	0xb900e7	test   rax,rax
+classic	historical-holder	0xb8ff50	0xb900ec	cmp    BYTE PTR [rax+0x7a],0x0
+classic	historical-holder	0xb8ff50	0xb90127	cmp    QWORD PTR [rbp-0x71],0xf
+classic	historical-holder	0xb8ff50	0xb9012c	cmova  rdx,QWORD PTR [rsp+0x30]
+classic	historical-holder	0xb8ff50	0xb90166	test   BYTE PTR [r13+0x0],0x2
+classic	historical-holder	0xb8ff50	0xb901a6	cmp    DWORD PTR [rdi+0xd0],0x0
+classic	historical-holder	0xb8ff50	0xb901b6	test   BYTE PTR [rax],0x4
+classic	historical-holder	0xb8ff50	0xb901bb	test   BYTE PTR [rax],0x8
+classic	historical-holder	0xb8ff50	0xb901e1	test   rax,rax
+classic	historical-holder	0xb8ff50	0xb901e9	test   rsi,rsi
+classic	historical-holder	0xb8ff50	0xb901f6	cmp    WORD PTR [rdi+0x2],ax
+classic	historical-holder	0xb8ff50	0xb901fa	cmove  r12d,r15d
+classic	historical-holder	0xb8ff50	0xb90205	test   rsi,rsi
+classic	historical-holder	0xb8ff50	0xb9020e	test   rsi,rsi
+classic	historical-holder	0xb8ff50	0xb90217	cmp    QWORD PTR [rsi+0x160],r15
+classic	historical-holder	0xb8ff50	0xb9021e	cmovne eax,r14d
+classic	historical-holder	0xb8ff50	0xb90226	cmp    BYTE PTR [rsi+0x88],r15b
+classic	historical-holder	0xb8ff50	0xb9022d	cmovne r12d,r14d
+classic	historical-holder	0xb8ff50	0xb9023a	cmp    WORD PTR [rdi+0x2],0xffff
+classic	historical-holder	0xb8ff50	0xb90241	cmp    cx,r14w
+classic	historical-holder	0xb8ff50	0xb90272	cmp    DWORD PTR [rax+0x24],r9d
+classic	historical-holder	0xb8ff50	0xb90280	test   ecx,ecx
+classic	historical-holder	0xb8ff50	0xb90292	cmp    ecx,0x1
+classic	historical-holder	0xb8ff50	0xb9032d	cmp    BYTE PTR [rdi+0xaa],0x0
+classic	historical-holder	0xb8ff50	0xb9033a	cmp    eax,r9d
+classic	historical-holder	0xb8ff50	0xb90343	test   r12b,r12b
+classic	historical-holder	0xb8ff50	0xb9034c	test   cx,cx
+classic	historical-holder	0xb8ff50	0xb9036a	test   rsi,rsi
+classic	historical-holder	0xb8ff50	0xb9036f	cmp    QWORD PTR [rsi+0x160],0x0
+classic	historical-holder	0xb8ff50	0xb9038e	cmp    DWORD PTR [rdi+0xd0],0x0
+classic	historical-holder	0xb8ff50	0xb9039e	cmp    BYTE PTR [rax],0x0
+classic	historical-holder	0xb8ff50	0xb903a3	test   rsi,rsi
+classic	historical-holder	0xb8ff50	0xb903a8	cmp    BYTE PTR [rsi+0x88],0x0
+classic	historical-holder	0xb8ff50	0xb903e6	cmp    cx,0xffff
+classic	historical-holder	0xb8ff50	0xb903ec	test   r13w,r13w
+classic	historical-holder	0xb8ff50	0xb9040b	cmp    r13,rax
+classic	historical-holder	0xb8ff50	0xb90410	test   cx,cx
+classic	historical-holder	0xb8ff50	0xb9042e	cmp    rcx,rax
+classic	historical-holder	0xb8ff50	0xb9043f	cmp    rax,rdx
+classic	historical-holder	0xb8ff50	0xb90448	cmp    QWORD PTR [rdx+0x18],0xf
+classic	historical-holder	0xb8ff50	0xb9045f	test   r8,r8
+classic	historical-holder	0xb8ff50	0xb90466	test   r13w,r13w
+classic	historical-holder	0xb8ff50	0xb90481	cmp    r13,rax
+classic	historical-holder	0xb8ff50	0xb90492	cmp    rax,rdx
+classic	historical-holder	0xb8ff50	0xb9049b	cmp    QWORD PTR [rdx+0x18],0xf
+classic	historical-holder	0xb8ff50	0xb904b6	cmp    QWORD PTR [rbp-0x11],0xf
+classic	historical-holder	0xb8ff50	0xb904bb	cmova  rdx,QWORD PTR [rbp-0x29]
+classic	historical-holder	0xb8ff50	0xb904c8	test   rsi,rsi
+classic	historical-holder	0xb8ff50	0xb904cd	cmp    BYTE PTR [rsi+0x88],0x0
+classic	historical-holder	0xb8ff50	0xb904f3	cmp    QWORD PTR [rdx+0x18],0xf
+classic	historical-holder	0xb8ff50	0xb90531	cmp    DWORD PTR [rax+0x20],r9d
+classic	historical-holder	0xb8ff50	0xb9054d	cmp    QWORD PTR [rbp-0x51],0xf
+classic	historical-holder	0xb8ff50	0xb90552	cmova  rdx,QWORD PTR [rbp-0x69]
+classic	historical-holder	0xb8ff50	0xb9056d	cmp    DWORD PTR [rax+0x20],r8d
+classic	historical-holder	0xb8ff50	0xb90577	test   r12b,r12b
+classic	historical-holder	0xb8ff50	0xb90580	cmp    WORD PTR [rbp+0x7f],0x2
+classic	historical-holder	0xb8ff50	0xb905a0	test   rsi,rsi
+classic	historical-holder	0xb8ff50	0xb905a5	cmp    QWORD PTR [rsi+0x160],0x0
+classic	historical-holder	0xb8ff50	0xb905c4	cmp    DWORD PTR [rdi+0xd0],0x0
+classic	historical-holder	0xb8ff50	0xb905d4	cmp    BYTE PTR [rax],0x0
+classic	historical-holder	0xb8ff50	0xb905d9	test   rsi,rsi
+classic	historical-holder	0xb8ff50	0xb905de	cmp    BYTE PTR [rsi+0x88],0x0
+classic	historical-holder	0xb8ff50	0xb90619	cmp    cx,0xffff
+classic	historical-holder	0xb8ff50	0xb9061f	test   di,di
+classic	historical-holder	0xb8ff50	0xb9063d	cmp    rdi,rax
+classic	historical-holder	0xb8ff50	0xb90642	test   cx,cx
+classic	historical-holder	0xb8ff50	0xb90660	cmp    rcx,rax
+classic	historical-holder	0xb8ff50	0xb90671	cmp    rax,rdx
+classic	historical-holder	0xb8ff50	0xb9067a	cmp    QWORD PTR [rdx+0x18],0xf
+classic	historical-holder	0xb8ff50	0xb90691	test   r15,r15
+classic	historical-holder	0xb8ff50	0xb90698	test   di,di
+classic	historical-holder	0xb8ff50	0xb906b2	cmp    rdi,rax
+classic	historical-holder	0xb8ff50	0xb906c3	cmp    rax,rdx
+classic	historical-holder	0xb8ff50	0xb906cc	cmp    QWORD PTR [rdx+0x18],0xf
+classic	historical-holder	0xb8ff50	0xb906e7	cmp    QWORD PTR [rbp-0x31],0xf
+classic	historical-holder	0xb8ff50	0xb906ec	cmova  rdx,QWORD PTR [rbp-0x49]
+classic	historical-holder	0xb8ff50	0xb906fc	test   rsi,rsi
+classic	historical-holder	0xb8ff50	0xb90701	cmp    BYTE PTR [rsi+0x88],0x0
+classic	historical-holder	0xb8ff50	0xb90727	cmp    QWORD PTR [rdx+0x18],0xf
+classic	historical-holder	0xb8ff50	0xb9073e	cmp    rdx,0xf
+classic	historical-holder	0xb8ff50	0xb90752	cmp    rdx,0x1000
+classic	historical-holder	0xb8ff50	0xb9076a	cmp    rax,0x1f
+classic	historical-holder	0xb8ff50	0xb90787	cmp    eax,r9d
+classic	historical-holder	0xb8ff50	0xb9078a	cmovne r8,rdx
+classic	historical-holder	0xb8ff50	0xb9079c	cmovne rdx,rcx
+classic	historical-holder	0xb8ff50	0xb907a8	test   rsi,rsi
+classic	historical-holder	0xb8ff50	0xb907ad	cmp    QWORD PTR [rsi+0x160],0x0
+classic	historical-holder	0xb8ff50	0xb907cc	cmp    DWORD PTR [rdi+0xd0],0x0
+classic	historical-holder	0xb8ff50	0xb907dc	cmp    BYTE PTR [rax],0x0
+classic	historical-holder	0xb8ff50	0xb907e1	test   rsi,rsi
+classic	historical-holder	0xb8ff50	0xb907e6	cmp    BYTE PTR [rsi+0x88],0x0
+classic	historical-holder	0xb8ff50	0xb90834	cmp    QWORD PTR [rbp-0x71],0xf
+classic	historical-holder	0xb8ff50	0xb90839	cmova  rdx,QWORD PTR [rsp+0x30]
+classic	historical-holder	0xb8ff50	0xb9084b	test   rsi,rsi
+classic	historical-holder	0xb8ff50	0xb90850	cmp    BYTE PTR [rsi+0x88],0x0
+classic	historical-holder	0xb8ff50	0xb90876	cmp    QWORD PTR [rdx+0x18],0xf
+classic	historical-holder	0xb8ff50	0xb90893	cmp    WORD PTR [rbp+0x77],0x2
+classic	historical-holder	0xb8ff50	0xb9089a	cmp    BYTE PTR [rsp+0x20],0x0
+classic	historical-holder	0xb8ff50	0xb908bb	test   BYTE PTR [rax],0x2
+classic	historical-holder	0xb8ff50	0xb908da	cmp    rdx,0xf
+classic	historical-holder	0xb8ff50	0xb908ea	cmp    rdx,0x1000
+classic	historical-holder	0xb8ff50	0xb90902	cmp    rax,0x1f
+classic	historical-holder	0xb8ff50	0xb9092b	cmp    WORD PTR [rbp+0x77],0x2
+classic	building-reference	0xb910d0	0xb91103	test   rax,rax
+classic	building-reference	0xb910d0	0xb9111d	test   rax,rax
+classic	building-reference	0xb910d0	0xb9118a	cmp    BYTE PTR [rsp+0x90],0x0
+classic	building-reference	0xb910d0	0xb911a1	test   rax,rax
+classic	building-reference	0xb910d0	0xb911aa	cmp    BYTE PTR [rax+0x72],0x0
+classic	building-reference	0xb910d0	0xb911eb	cmp    QWORD PTR [rsp+0x38],0xf
+classic	building-reference	0xb910d0	0xb911f1	cmova  rdx,QWORD PTR [rsp+0x20]
+classic	building-reference	0xb910d0	0xb91204	test   esi,esi
+classic	building-reference	0xb910d0	0xb91223	cmp    rdx,0xf
+classic	building-reference	0xb910d0	0xb91238	cmp    rdx,0x1000
+classic	building-reference	0xb910d0	0xb91250	cmp    rax,0x1f
+classic	building-reference	0xb910d0	0xb91273	cmp    ecx,0xd
+classic	building-reference	0xb910d0	0xb9135f	test   ecx,ecx
+classic	building-reference	0xb910d0	0xb91368	cmp    ecx,0x1
+classic	building-reference	0xb910d0	0xb913be	test   esi,esi
+classic	site-reference	0xb90970	0xb909a6	test   rax,rax
+classic	site-reference	0xb90970	0xb90a23	cmp    QWORD PTR [rsp+0x38],0xf
+classic	site-reference	0xb90970	0xb90a29	cmova  rdx,QWORD PTR [rsp+0x20]
+classic	site-reference	0xb90970	0xb90a3c	test   edi,edi
+classic	site-reference	0xb90970	0xb90a5b	cmp    rdx,0xf
+classic	site-reference	0xb90970	0xb90a6c	cmp    rdx,0x1000
+classic	site-reference	0xb90970	0xb90a84	cmp    rax,0x1f
+classic	region-reference	0xb91a80	0xb91ab6	test   rax,rax
+classic	region-reference	0xb91a80	0xb91b30	cmp    QWORD PTR [rsp+0x38],0xf
+classic	region-reference	0xb91a80	0xb91b36	cmova  rdx,QWORD PTR [rsp+0x20]
+classic	region-reference	0xb91a80	0xb91b49	test   edi,edi
+classic	region-reference	0xb91a80	0xb91b68	cmp    rdx,0xf
+classic	region-reference	0xb91a80	0xb91b79	cmp    rdx,0x1000
+classic	region-reference	0xb91a80	0xb91b91	cmp    rax,0x1f
+classic	underground-reference	0xb91980	0xb919ae	test   rax,rax
+classic	underground-reference	0xb91980	0xb919f4	cmp    BYTE PTR [rdi+0x7a],0x0
+classic	underground-reference	0xb91980	0xb919fd	test   ecx,ecx
+classic	underground-reference	0xb91980	0xb91a06	cmp    ecx,0x1
+classic	underground-reference	0xb91980	0xb91a3e	test   esi,esi
+classic	item-description	0xc62490	0xc624b4	cmp    QWORD PTR [rdx+0x18],0xf
+classic	item-description	0xc62490	0xc624d2	cmp    rbx,rdi
+classic	item-description	0xc62490	0xc624e0	cmp    eax,0x1
+classic	item-description	0xc62490	0xc624f4	test   rax,rax
+classic	item-description	0xc62490	0xc624f9	cmp    BYTE PTR [rax+0x7a],0x0
+classic	item-description	0xc62490	0xc62507	test   bl,bl
+classic	item-description	0xc62490	0xc6252b	test   bl,bl
+classic	item-description	0xc62490	0xc6253c	cmp    ax,0x59
+classic	item-description	0xc62490	0xc62542	cmp    QWORD PTR [r13+0xf8],0x0
+classic	item-description	0xc62490	0xc62561	cmp    ax,0x56
+classic	item-description	0xc62490	0xc62580	cmp    rbx,rdi
+classic	item-description	0xc62490	0xc62592	cmp    eax,0xc
+classic	item-description	0xc62490	0xc625ad	test   rcx,rcx
+classic	item-description	0xc62490	0xc625cd	test   r10d,r10d
+classic	item-description	0xc62490	0xc625d5	cmp    r10d,0x40
+classic	item-description	0xc62490	0xc625f1	cmp    esi,DWORD PTR [rcx]
+classic	item-description	0xc62490	0xc625f3	cmovl  edx,r9d
+classic	item-description	0xc62490	0xc625fd	cmp    r10d,0x40
+classic	item-description	0xc62490	0xc62607	cmp    eax,0xffffffff
+classic	item-description	0xc62490	0xc6260c	cmp    r9d,eax
+classic	item-description	0xc62490	0xc6261b	cmp    esi,DWORD PTR [rax]
+classic	item-description	0xc62490	0xc62625	cmp    rcx,rdx
+classic	item-description	0xc62490	0xc62633	test   rdx,rdx
+classic	item-description	0xc62490	0xc62638	cmp    QWORD PTR [rdx+0x18],0x0
+classic	item-description	0xc62490	0xc6264c	cmp    eax,0x9
+classic	item-description	0xc62490	0xc62667	test   rcx,rcx
+classic	item-description	0xc62490	0xc62687	test   r10d,r10d
+classic	item-description	0xc62490	0xc6268f	cmp    r10d,0x40
+classic	item-description	0xc62490	0xc626b1	cmp    esi,DWORD PTR [rcx]
+classic	item-description	0xc62490	0xc626b3	cmovl  edx,r9d
+classic	item-description	0xc62490	0xc626bd	cmp    r10d,0x40
+classic	item-description	0xc62490	0xc626c7	cmp    eax,0xffffffff
+classic	item-description	0xc62490	0xc626cc	cmp    r9d,eax
+classic	item-description	0xc62490	0xc626db	cmp    esi,DWORD PTR [rax]
+classic	item-description	0xc62490	0xc626e5	cmp    rcx,rdx
+classic	item-description	0xc62490	0xc626fa	test   rdx,rdx
+classic	item-description	0xc62490	0xc626ff	cmp    QWORD PTR [rdx+0x18],0x0
+classic	item-description	0xc62490	0xc62713	cmp    r15,rdx
+classic	item-description	0xc62490	0xc62718	cmp    QWORD PTR [rdx+0x18],0xf
+classic	item-description	0xc62490	0xc6278f	test   al,al
+classic	item-description	0xc62490	0xc62793	cmp    r14w,r12w
+classic	item-description	0xc62490	0xc62797	cmovl  r14w,r12w
+classic	item-description	0xc62490	0xc627b6	test   bl,bl
+classic	item-description	0xc62490	0xc627be	cmp    DWORD PTR [rip+0xc33aa3],0x1        # 0x141896268
+classic	item-description	0xc62490	0xc627d0	cmp    rbx,rdi
+classic	item-description	0xc62490	0xc627de	cmp    eax,0x1f
+classic	item-description	0xc62490	0xc627f7	test   DWORD PTR [r13+0x10],0x400000
+classic	item-description	0xc62490	0xc6281c	cmp    ax,0x3
+classic	item-description	0xc62490	0xc62833	cmp    BYTE PTR [rax+r8*1],0x0
+classic	item-description	0xc62490	0xc62853	cmp    BYTE PTR [rax+r8*1],0x0
+classic	item-description	0xc62490	0xc6285c	cmp    ax,0x2
+classic	item-description	0xc62490	0xc62873	cmp    BYTE PTR [rax+r8*1],0x0
+classic	item-description	0xc62490	0xc6287c	cmp    ax,0x1
+classic	item-description	0xc62490	0xc62893	cmp    BYTE PTR [rax+r8*1],0x0
+classic	item-description	0xc62490	0xc628a6	cmp    DWORD PTR [rip+0xc339bb],0x0        # 0x141896268
+classic	item-description	0xc62490	0xc628af	test   DWORD PTR [r13+0x10],0x4000
+classic	item-description	0xc62490	0xc628c7	cmp    BYTE PTR [rax+r8*1],0x0
+classic	item-description	0xc62490	0xc628da	test   DWORD PTR [r13+0x10],0x80000
+classic	item-description	0xc62490	0xc628f3	cmp    BYTE PTR [rax+r8*1],0x0
+classic	item-description	0xc62490	0xc62913	test   al,al
+classic	item-description	0xc62490	0xc6291b	cmp    DWORD PTR [rip+0x17280a6],0x0        # 0x14238a9c8
+classic	item-description	0xc62490	0xc6292f	test   BYTE PTR [rax],0x4
+classic	item-description	0xc62490	0xc62938	cmp    r12w,0x5
+classic	item-description	0xc62490	0xc62953	cmp    BYTE PTR [rax+r8*1],0x0
+classic	item-description	0xc62490	0xc6295c	cmp    r12w,0x4
+classic	item-description	0xc62490	0xc62973	cmp    BYTE PTR [rax+r8*1],0x0
+classic	item-description	0xc62490	0xc6297c	cmp    r12w,0x3
+classic	item-description	0xc62490	0xc62993	cmp    BYTE PTR [rax+r8*1],0x0
+classic	item-description	0xc62490	0xc6299c	cmp    r12w,0x2
+classic	item-description	0xc62490	0xc629b3	cmp    BYTE PTR [rax+r8*1],0x0
+classic	item-description	0xc62490	0xc629bc	cmp    r12w,0x1
+classic	item-description	0xc62490	0xc629d3	cmp    BYTE PTR [rax+r8*1],0x0
+classic	item-description	0xc62490	0xc629f4	cmp    BYTE PTR [rax+r8*1],0x0
+classic	item-description	0xc62490	0xc62a14	test   rax,rax
+classic	item-description	0xc62490	0xc62a27	cmp    BYTE PTR [rax+r8*1],0x0
+classic	item-description	0xc62490	0xc62a3a	cmp    r14w,0x5
+classic	item-description	0xc62490	0xc62a53	cmp    BYTE PTR [rax+r8*1],0x0
+classic	item-description	0xc62490	0xc62a93	cmp    r14w,0x4
+classic	item-description	0xc62490	0xc62aa8	cmp    BYTE PTR [rax+r8*1],0x0
+classic	item-description	0xc62490	0xc62ae8	cmp    r14w,0x3
+classic	item-description	0xc62490	0xc62b03	cmp    BYTE PTR [rax+r8*1],0x0
+classic	item-description	0xc62490	0xc62b43	cmp    r14w,0x2
+classic	item-description	0xc62490	0xc62b58	cmp    BYTE PTR [rax+r8*1],0x0
+classic	item-description	0xc62490	0xc62b98	cmp    r14w,0x1
+classic	item-description	0xc62490	0xc62bb3	cmp    BYTE PTR [rax+r8*1],0x0
+classic	item-description	0xc62490	0xc62c07	test   bl,bl
+classic	item-description	0xc62490	0xc62c23	cmp    r14w,0x5
+classic	item-description	0xc62490	0xc62c38	cmp    BYTE PTR [rax+r8*1],0x0
+classic	item-description	0xc62490	0xc62c41	cmp    r14w,0x4
+classic	item-description	0xc62490	0xc62c56	cmp    BYTE PTR [rax+r8*1],0x0
+classic	item-description	0xc62490	0xc62c5f	cmp    r14w,0x3
+classic	item-description	0xc62490	0xc62c74	cmp    BYTE PTR [rax+r8*1],0x0
+classic	item-description	0xc62490	0xc62c7d	cmp    r14w,0x2
+classic	item-description	0xc62490	0xc62c93	cmp    BYTE PTR [rax+r8*1],0x0
+classic	item-description	0xc62490	0xc62c9c	cmp    r14w,0x1
+classic	item-description	0xc62490	0xc62cb3	cmp    BYTE PTR [rax+r8*1],0x0
+classic	item-description	0xc62490	0xc62cd3	test   rax,rax
+classic	item-description	0xc62490	0xc62ce6	cmp    BYTE PTR [rax+r8*1],0x0
+classic	item-description	0xc62490	0xc62d06	test   al,al
+classic	item-description	0xc62490	0xc62d23	cmp    BYTE PTR [rax+r8*1],0x0
+classic	item-description	0xc62490	0xc62d36	cmp    DWORD PTR [rip+0x1727c8b],0x0        # 0x14238a9c8
+classic	item-description	0xc62490	0xc62d4a	test   BYTE PTR [rax],0x4
+classic	item-description	0xc62490	0xc62d53	cmp    r12w,0x5
+classic	item-description	0xc62490	0xc62d68	cmp    BYTE PTR [rax+r8*1],0x0
+classic	item-description	0xc62490	0xc62d71	cmp    r12w,0x4
+classic	item-description	0xc62490	0xc62d86	cmp    BYTE PTR [rax+r8*1],0x0
+classic	item-description	0xc62490	0xc62d8f	cmp    r12w,0x3
+classic	item-description	0xc62490	0xc62da4	cmp    BYTE PTR [rax+r8*1],0x0
+classic	item-description	0xc62490	0xc62dad	cmp    r12w,0x2
+classic	item-description	0xc62490	0xc62dc3	cmp    BYTE PTR [rax+r8*1],0x0
+classic	item-description	0xc62490	0xc62dcc	cmp    r12w,0x1
+classic	item-description	0xc62490	0xc62de3	cmp    BYTE PTR [rax+r8*1],0x0
+classic	item-description	0xc62490	0xc62df6	cmp    DWORD PTR [rip+0xc3346b],0x0        # 0x141896268
+classic	item-description	0xc62490	0xc62dff	test   DWORD PTR [r13+0x10],0x80000
+classic	item-description	0xc62490	0xc62e17	cmp    BYTE PTR [rax+r8*1],0x0
+classic	item-description	0xc62490	0xc62e2a	test   DWORD PTR [r13+0x10],0x4000
+classic	item-description	0xc62490	0xc62e43	cmp    BYTE PTR [rax+r8*1],0x0
+classic	item-description	0xc62490	0xc62e56	cmp    bx,0x3
+classic	item-description	0xc62490	0xc62e73	cmp    BYTE PTR [rax+r8*1],0x0
+classic	item-description	0xc62490	0xc62e93	cmp    BYTE PTR [rax+rsi*1],0x0
+classic	item-description	0xc62490	0xc62e9b	cmp    bx,0x2
+classic	item-description	0xc62490	0xc62eb3	cmp    BYTE PTR [rax+rsi*1],0x0
+classic	item-description	0xc62490	0xc62ebb	cmp    bx,0x1
+classic	item-description	0xc62490	0xc62ed3	cmp    BYTE PTR [rax+rsi*1],0x0
+classic	item-description	0xc62490	0xc62ee8	test   DWORD PTR [r13+0x10],0x400000
+classic	item-description	0xc62490	0xc62efc	cmp    DWORD PTR [rip+0xc33365],0x1        # 0x141896268
+classic	item-description	0xc62490	0xc62f10	cmp    rbx,rdi
+classic	item-description	0xc62490	0xc62f1e	cmp    eax,0x1f
+classic	paragraph-string-wrap	0x8e4b80	0x8e4b80	test   r8d,r8d
+classic	paragraph-string-wrap	0x8e4b80	0x8e4bd8	cmp    rax,rbx
+classic	paragraph-string-wrap	0x8e4b80	0x8e4be1	cmp    QWORD PTR [rbx+0x18],0xf
+classic	paragraph-string-wrap	0x8e4b80	0x8e4c2c	test   rax,rax
+classic	paragraph-string-wrap	0x8e4b80	0x8e4c43	test   rbx,rbx
+classic	paragraph-string-wrap	0x8e4b80	0x8e4c7a	test   rax,rax
+classic	paragraph-vector-wrap	0x8e4cb0	0x8e4cb0	test   r8d,r8d
+classic	paragraph-vector-wrap	0x8e4cb0	0x8e4d17	test   rax,rax
+classic	paragraph-vector-wrap	0x8e4cb0	0x8e4d2c	cmp    QWORD PTR [rax+0x10],rdi
+classic	paragraph-vector-wrap	0x8e4cb0	0x8e4d36	test   bl,bl
+classic	paragraph-vector-wrap	0x8e4cb0	0x8e4d3e	cmp    QWORD PTR [rax+0x18],0xf
+classic	paragraph-vector-wrap	0x8e4cb0	0x8e4d48	cmp    BYTE PTR [rdi+rax*1],0x20
+classic	paragraph-vector-wrap	0x8e4cb0	0x8e4d58	cmp    QWORD PTR [rdx+0x18],0xf
+classic	paragraph-vector-wrap	0x8e4cb0	0x8e4d77	cmp    rsi,rax
+classic	paragraph-vector-wrap	0x8e4cb0	0x8e4dae	cmp    r9,0xf
+classic	paragraph-vector-wrap	0x8e4cb0	0x8e4db7	cmp    BYTE PTR [rdi+rax*1],0x20
+classic	paragraph-vector-wrap	0x8e4cb0	0x8e4dbd	test   rdi,rdi
+classic	paragraph-vector-wrap	0x8e4cb0	0x8e4dc5	cmp    rax,rsi
+classic	paragraph-vector-wrap	0x8e4cb0	0x8e4dee	cmp    rdx,rsi
+classic	paragraph-vector-wrap	0x8e4cb0	0x8e4dfb	cmp    QWORD PTR [rbp-0x18],0xf
+classic	paragraph-vector-wrap	0x8e4cb0	0x8e4e00	cmova  rax,QWORD PTR [rbp-0x30]
+classic	paragraph-vector-wrap	0x8e4cb0	0x8e4e48	cmp    rbx,rax
+classic	paragraph-vector-wrap	0x8e4cb0	0x8e4e51	cmp    QWORD PTR [rbp-0x18],0xf
+classic	paragraph-vector-wrap	0x8e4cb0	0x8e4e56	cmova  rdx,QWORD PTR [rbp-0x30]
+classic	paragraph-vector-wrap	0x8e4cb0	0x8e4e6b	cmp    rdx,QWORD PTR [r15+0x10]
+classic	paragraph-vector-wrap	0x8e4cb0	0x8e4e95	cmp    QWORD PTR [rbp-0x18],0xf
+classic	paragraph-vector-wrap	0x8e4cb0	0x8e4e9a	cmova  rax,QWORD PTR [rbp-0x30]
+classic	paragraph-vector-wrap	0x8e4cb0	0x8e4eb7	cmp    rax,QWORD PTR [rcx+0x10]
+classic	paragraph-vector-wrap	0x8e4cb0	0x8e4ede	cmp    rax,rcx
+classic	paragraph-vector-wrap	0x8e4cb0	0x8e4ee7	test   rsi,rsi
+classic	paragraph-vector-wrap	0x8e4cb0	0x8e4f1a	cmp    rbx,rax
+classic	paragraph-vector-wrap	0x8e4cb0	0x8e4f23	cmp    QWORD PTR [rbp-0x18],0xf
+classic	paragraph-vector-wrap	0x8e4cb0	0x8e4f28	cmova  rdx,QWORD PTR [rbp-0x30]
+classic	paragraph-vector-wrap	0x8e4cb0	0x8e4f3c	cmp    rdx,QWORD PTR [r15+0x10]
+classic	reply-addst	0xad69a0	0xad69bd	cmp    QWORD PTR [rdx+0x10],0x0
+classic	reply-addst	0xad69a0	0xad69d8	test   ebx,ebx
+classic	reply-addst	0xad69a0	0xad69dc	cmp    rcx,rbx
+classic	reply-addst	0xad69a0	0xad69f6	test   rcx,rcx
+classic	reply-addst	0xad69a0	0xad6a06	cmp    eax,DWORD PTR [rip+0x18f0c68]        # 0x1423c7674
+classic	reply-addst	0xad69a0	0xad6a0e	test   eax,eax
+classic	reply-addst	0xad69a0	0xad6a1d	cmp    rax,rcx
+classic	reply-addst	0xad69a0	0xad6a27	cmp    QWORD PTR [rsp+0x38],0xf
+classic	reply-addst	0xad69a0	0xad6a2d	cmova  rax,QWORD PTR [rsp+0x20]
+classic	reply-addst	0xad69a0	0xad6a4f	cmp    rax,rcx

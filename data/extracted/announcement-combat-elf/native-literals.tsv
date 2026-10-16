@@ -1,0 +1,1872 @@
+role	owner	instruction	operand	kind	text
+unit-actions	0x78be30	0x78c396	0x7374	inline	ts
+unit-actions	0x78be30	0x78c39b	0x6e756f6d73696420	inline	 dismoun
+unit-actions	0x78be30	0x78c994	0x20cefc0/16	vector	 lies on the gro
+unit-actions	0x78be30	0x78c99c	0x2e646e75	inline	und.
+unit-actions	0x78be30	0x78d9f7	0x6465656620756f59	inline	You feed
+unit-actions	0x78be30	0x78da1e	0x206e6f20	inline	 on 
+unit-actions	0x78be30	0x78e01f	0x20cabc9	cstring	 stands up.
+unit-actions	0x78be30	0x78e5b5	0x20cefa0/16	vector	You fail to moun
+unit-actions	0x78be30	0x78e5bd	0x2074	inline	t 
+unit-actions	0x78be30	0x78e63c	0x656d6974206e6920	inline	 in time
+unit-actions	0x78be30	0x78e805	0x20cabd5	cstring	You lie on the ground.
+unit-actions	0x78be30	0x78eb00	0x20cac01	cstring	 is already 
+unit-actions	0x78be30	0x78eb24	0x20cac0e	cstring	nocked
+unit-actions	0x78be30	0x78eb33	0x20e2a73	cstring	 with 
+unit-actions	0x78be30	0x78eb66	0x20cac15	cstring	 and you prepared to shoot.
+unit-actions	0x78be30	0x78f2d9	0x20cab8b	cstring	 mounts 
+unit-actions	0x78be30	0x78f2fc	0x2107edc	cstring	.
+unit-actions	0x78be30	0x78f480	0x20cefa0/16	vector	You fail to moun
+unit-actions	0x78be30	0x78f488	0x2074	inline	t 
+unit-actions	0x78be30	0x78f507	0x656d6974206e6920	inline	 in time
+unit-actions	0x78be30	0x78f732	0x2107edc	cstring	.
+unit-actions	0x78be30	0x78f810	0x20cabec	cstring	 lies on the ground.
+unit-actions	0x78be30	0x78f833	0x20cabb0	cstring	 dismounts
+unit-actions	0x78be30	0x78fa72	0x20cab94	cstring	You cannot mount 
+unit-actions	0x78be30	0x78fa9b	0x20cbbd0	cstring	 due to the presence of an existing rider.
+unit-actions	0x78be30	0x78fb99	0x20cefb0/16	vector	You fail to dism
+unit-actions	0x78be30	0x78fba5	0x206e6920746e756f	inline	ount in 
+unit-actions	0x78be30	0x78fbba	0x656d6974	inline	time
+unit-actions	0x78be30	0x78fe39	0x20cac01	cstring	 is already 
+unit-actions	0x78be30	0x78fe5d	0x20cac0e	cstring	nocked
+unit-actions	0x78be30	0x78fe6c	0x20e2a73	cstring	 with 
+unit-actions	0x78be30	0x78fe9f	0x2107edc	cstring	.
+unit-actions	0x78be30	0x78ffa5	0x6e756f6d73696420	inline	 dismoun
+unit-actions	0x78be30	0x78fff1	0x20caba6	cstring	 in time.
+unit-actions	0x78be30	0x79061b	0x20cab77	cstring	 loses hold of the 
+unit-actions	0x78be30	0x790675	0x2107edc	cstring	.
+unit-actions	0x78be30	0x790c1c	0x20cab77	cstring	 loses hold of the 
+unit-actions	0x78be30	0x790c76	0x210eb84	cstring	!
+unit-actions	0x78be30	0x7912b2	0x20cab20	cstring	 flounders
+unit-actions	0x78be30	0x7913af	0x20cab2b	cstring	 in the water
+unit-actions	0x78be30	0x7913be	0x210eb84	cstring	!
+unit-actions	0x78be30	0x791520	0x20caba6	cstring	 in time.
+unit-actions	0x78be30	0x7915d5	0x217430f	cstring	 dismount
+unit-actions	0x78be30	0x791709	0x20cab64	cstring	 lose hold of the 
+unit-actions	0x78be30	0x79186d	0x20cac31	cstring	You finish 
+unit-actions	0x78be30	0x7918bb	0x21388b4	cstring	nocking
+unit-actions	0x78be30	0x7918ca	0x20f7379	cstring	 
+unit-actions	0x78be30	0x79193c	0x20e35c4	cstring	in
+unit-actions	0x78be30	0x79197c	0x20cac3d	cstring	 and prepare to shoot.
+unit-actions	0x78be30	0x791a4e	0x212ff03	cstring	into
+unit-actions	0x78be30	0x791a62	0x2193d76	cstring	loading
+unit-actions	0x78be30	0x791aba	0x20cac31	cstring	You finish 
+unit-actions	0x78be30	0x791b08	0x21388b4	cstring	nocking
+unit-actions	0x78be30	0x791b17	0x20f7379	cstring	 
+unit-actions	0x78be30	0x791b89	0x20e35c4	cstring	in
+unit-actions	0x78be30	0x791bc9	0x2107edc	cstring	.
+unit-actions	0x78be30	0x791c9b	0x212ff03	cstring	into
+unit-actions	0x78be30	0x791caf	0x2193d76	cstring	loading
+unit-actions	0x78be30	0x791d30	0x21d7968	cstring	loaded
+unit-actions	0x78be30	0x791db5	0x21d7968	cstring	loaded
+unit-actions	0x78be30	0x791e63	0x20cab46	cstring	 in the magma
+unit-actions	0x78be30	0x791ecc	0x20cabbb	cstring	You stand up.
+unit-actions	0x78be30	0x791fc5	0x20cab5b	cstring	 pushes 
+unit-actions	0x78be30	0x792012	0x2107edc	cstring	.
+unit-actions	0x78be30	0x79215b	0x20cab54	cstring	 push 
+unit-actions	0x78be30	0x792196	0x20cab9e	cstring	 mount 
+unit-actions	0x78be30	0x792233	0x20cab64	cstring	 lose hold of the 
+unit-actions	0x78be30	0x792480	0x20cab16	cstring	 flounder
+unit-actions	0x78be30	0x79252c	0x20cab39	cstring	 in the lava
+body-part-name	0xb602d0	0xb6032a	0x213bcb1	cstring	body part
+body-part-name	0xb602d0	0xb603ee	0x213bcb1	cstring	body part
+body-part-name	0xb602d0	0xb60428	0x7261702079646f62	inline	body par
+body-part-name	0xb602d0	0xb60594	0x7261702079646f62	inline	body par
+body-part-name	0xb602d0	0xb6085e	0x213bcb1	cstring	body part
+unit-base-name	0xb676a0	0xb679f5	0x21ba050	cstring	the 
+unit-base-name	0xb676a0	0xb67a0e	0x20656874	inline	the 
+unit-base-name	0xb676a0	0xb67a9c	0x20796c74736f6847	inline	Ghostly 
+unit-base-name	0xb676a0	0xb67e3d	0x21606ea	cstring	One
+unit-base-name	0xb676a0	0xb67f14	0x21ba050	cstring	the 
+unit-base-name	0xb676a0	0xb67f24	0x20656874	inline	the 
+unit-base-name	0xb676a0	0xb68156	0x21ba050	cstring	the 
+unit-base-name	0xb676a0	0xb68280	0x20f3365	cstring	the deity
+unit-base-name	0xb676a0	0xb68486	0x21ba050	cstring	the 
+unit-base-name	0xb676a0	0xb685ce	0x20f3798	cstring	Messenger
+unit-base-name	0xb676a0	0xb686d5	0x20f37b0	cstring	Slave
+unit-base-name	0xb676a0	0xb68795	0x221ccdc	cstring	Prisoner
+unit-base-name	0xb676a0	0xb687fd	0x20f3793	cstring	Monk
+unit-base-name	0xb676a0	0xb68811	0x20f378b	cstring	Pilgrim
+unit-base-name	0xb676a0	0xb68825	0x20f3659	cstring	Scribe
+unit-base-name	0xb676a0	0xb68839	0x20f36bd	cstring	Geographer
+unit-base-name	0xb676a0	0xb6884d	0x20f36b5	cstring	Chemist
+unit-base-name	0xb676a0	0xb68861	0x20f36aa	cstring	Naturalist
+unit-base-name	0xb676a0	0xb68875	0x20f369f	cstring	Astronomer
+unit-base-name	0xb676a0	0xb68889	0x20f3695	cstring	Historian
+unit-base-name	0xb676a0	0xb6889d	0x20f3687	cstring	Mathematician
+unit-base-name	0xb676a0	0xb688b1	0x20f367b	cstring	Philosopher
+unit-base-name	0xb676a0	0xb688c5	0x20f3772	cstring	Criminal
+unit-base-name	0xb676a0	0xb688d9	0x20f3660	cstring	Tavern Keeper
+unit-base-name	0xb676a0	0xb688ed	0x20f3497	cstring	Bookbinder
+unit-base-name	0xb676a0	0xb68901	0x20f348c	cstring	Papermaker
+unit-base-name	0xb676a0	0xb68915	0x20f3783	cstring	Prophet
+unit-base-name	0xb676a0	0xb68929	0x20f377b	cstring	Peddler
+unit-base-name	0xb676a0	0xb6893d	0x20f336f	cstring	Miner
+unit-base-name	0xb676a0	0xb68951	0x20f3391	cstring	Woodcutter
+unit-base-name	0xb676a0	0xb68965	0x20f338a	cstring	Bowyer
+unit-base-name	0xb676a0	0xb68979	0x20f3380	cstring	Carpenter
+unit-base-name	0xb676a0	0xb6898d	0x20f3375	cstring	Woodworker
+unit-base-name	0xb676a0	0xb689a1	0x20f3440	cstring	Blacksmith
+unit-base-name	0xb676a0	0xb689b5	0x20f3438	cstring	Armorer
+unit-base-name	0xb676a0	0xb689c9	0x20f342c	cstring	Weaponsmith
+unit-base-name	0xb676a0	0xb689dd	0x20f341b	cstring	Furnace Operator
+unit-base-name	0xb676a0	0xb689f1	0x20f3410	cstring	Metalsmith
+unit-base-name	0xb676a0	0xb68a05	0x20f33ff	cstring	Animal Dissector
+unit-base-name	0xb676a0	0xb68a19	0x20f33f7	cstring	Trapper
+unit-base-name	0xb676a0	0xb68a2d	0x217605a	cstring	Hunter
+unit-base-name	0xb676a0	0xb68a41	0x20f33e8	cstring	Animal Trainer
+unit-base-name	0xb676a0	0xb68a55	0x20f33d7	cstring	Animal Caretaker
+unit-base-name	0xb676a0	0xb68a69	0x20f33d0	cstring	Ranger
+unit-base-name	0xb676a0	0xb68a7d	0x20f33ca	cstring	Mason
+unit-base-name	0xb676a0	0xb68a91	0x20f33a8	cstring	Engraver
+unit-base-name	0xb676a0	0xb68aa5	0x20f33bd	cstring	Stone Carver
+unit-base-name	0xb676a0	0xb68ab9	0x20f33b1	cstring	Stonecutter
+unit-base-name	0xb676a0	0xb68acd	0x20f339c	cstring	Stoneworker
+unit-base-name	0xb676a0	0xb68ae1	0x20f35b9	cstring	Brewer
+unit-base-name	0xb676a0	0xb68af5	0x20f35af	cstring	Herbalist
+unit-base-name	0xb676a0	0xb68b09	0x20f35a7	cstring	Planter
+unit-base-name	0xb676a0	0xb68b1d	0x20f3590	cstring	Dyer
+unit-base-name	0xb676a0	0xb68b31	0x20f3589	cstring	Tanner
+unit-base-name	0xb676a0	0xb68b45	0x21751c0	cstring	Butcher
+unit-base-name	0xb676a0	0xb68b59	0x20f3582	cstring	Miller
+unit-base-name	0xb676a0	0xb68b6d	0x20f3579	cstring	Thresher
+unit-base-name	0xb676a0	0xb68b81	0x20f3574	cstring	Cook
+unit-base-name	0xb676a0	0xb68b95	0x20f3556	cstring	Milker
+unit-base-name	0xb676a0	0xb68ba9	0x20f354a	cstring	Cheesemaker
+unit-base-name	0xb676a0	0xb68bbd	0x20f3543	cstring	Farmer
+unit-base-name	0xb676a0	0xb68bd1	0x20f3536	cstring	Fish Cleaner
+unit-base-name	0xb676a0	0xb68be5	0x20f3527	cstring	Fish Dissector
+unit-base-name	0xb676a0	0xb68bf9	0x20f351d	cstring	Fisherman
+unit-base-name	0xb676a0	0xb68c0d	0x20f350e	cstring	Fishery Worker
+unit-base-name	0xb676a0	0xb68c21	0x20f34fd	cstring	Strand Extractor
+unit-base-name	0xb676a0	0xb68c35	0x20f34b0	cstring	Wax Worker
+unit-base-name	0xb676a0	0xb68c49	0x20f34a9	cstring	Glazer
+unit-base-name	0xb676a0	0xb68c5d	0x20f34a2	cstring	Potter
+unit-base-name	0xb676a0	0xb68c71	0x20f34f2	cstring	Glassmaker
+unit-base-name	0xb676a0	0xb68c85	0x20f34e9	cstring	Clothier
+unit-base-name	0xb676a0	0xb68c99	0x20f34e2	cstring	Weaver
+unit-base-name	0xb676a0	0xb68cad	0x20f34d6	cstring	Bone Carver
+unit-base-name	0xb676a0	0xb68cc1	0x20f34c8	cstring	Leatherworker
+unit-base-name	0xb676a0	0xb68cd5	0x20f34bb	cstring	Stonecrafter
+unit-base-name	0xb676a0	0xb68ce9	0x20f3480	cstring	Woodcrafter
+unit-base-name	0xb676a0	0xb68cfd	0x20f3476	cstring	Craftsman
+unit-base-name	0xb676a0	0xb68d11	0x20f346b	cstring	Gem Setter
+unit-base-name	0xb676a0	0xb68d25	0x20f3460	cstring	Gem Cutter
+unit-base-name	0xb676a0	0xb68d39	0x20f3458	cstring	Jeweler
+unit-base-name	0xb676a0	0xb68d4d	0x20f344b	cstring	Metalcrafter
+unit-base-name	0xb676a0	0xb68d61	0x20f3673	cstring	Scholar
+unit-base-name	0xb676a0	0xb68d75	0x20f366e	cstring	Sage
+unit-base-name	0xb676a0	0xb68d89	0x20f3648	cstring	Dancer
+unit-base-name	0xb676a0	0xb68d9d	0x20f3643	cstring	Bard
+unit-base-name	0xb676a0	0xb68db1	0x20f363e	cstring	Poet
+unit-base-name	0xb676a0	0xb68dc5	0x20f364f	cstring	Performer
+unit-base-name	0xb676a0	0xb68dd9	0x20f355d	cstring	Gelder
+unit-base-name	0xb676a0	0xb68ded	0x20f372c	cstring	Mercenary
+unit-base-name	0xb676a0	0xb68e01	0x20f3723	cstring	Snatcher
+unit-base-name	0xb676a0	0xb68e15	0x20f3716	cstring	Beast Hunter
+unit-base-name	0xb676a0	0xb68e29	0x20f3710	cstring	Scout
+unit-base-name	0xb676a0	0xb68e3d	0x20f3701	cstring	Monster Slayer
+unit-base-name	0xb676a0	0xb68e51	0x20f36fb	cstring	Drunk
+unit-base-name	0xb676a0	0xb68fa4	0x20f320f	cstring	Axe Lord
+unit-base-name	0xb676a0	0xb68fb8	0x20f31f2	cstring	Elite Wrestler
+unit-base-name	0xb676a0	0xb68fcc	0x20f31f8	cstring	Wrestler
+unit-base-name	0xb676a0	0xb68fe0	0x20f32c1	cstring	Master Thief
+unit-base-name	0xb676a0	0xb68ffc	0x2211d49	cstring	War
+unit-base-name	0xb676a0	0xb69015	0x2175f9d	cstring	Hunting
+unit-base-name	0xb676a0	0xb69026	0x20f376a	cstring	Recruit
+unit-base-name	0xb676a0	0xb6903a	0x20f32ab	cstring	Master Lasher
+unit-base-name	0xb676a0	0xb6904e	0x20f32b2	cstring	Lasher
+unit-base-name	0xb676a0	0xb69062	0x20f3292	cstring	Master Blowgunner
+unit-base-name	0xb676a0	0xb69076	0x20f3299	cstring	Blowgunner
+unit-base-name	0xb676a0	0xb6908a	0x20f327a	cstring	Elite Bowman
+unit-base-name	0xb676a0	0xb6909e	0x20f3280	cstring	Bowman
+unit-base-name	0xb676a0	0xb690b2	0x20f3262	cstring	Pikemaster
+unit-base-name	0xb676a0	0xb690c6	0x20f3762	cstring	Pikeman
+unit-base-name	0xb676a0	0xb690da	0x20f3248	cstring	Mace Lord
+unit-base-name	0xb676a0	0xb690ee	0x20f375a	cstring	Maceman
+unit-base-name	0xb676a0	0xb69102	0x20f322c	cstring	Swordmaster
+unit-base-name	0xb676a0	0xb69116	0x20f3750	cstring	Swordsman
+unit-base-name	0xb676a0	0xb6912a	0x2213168	cstring	Thief
+unit-base-name	0xb676a0	0xb6913e	0x20f3637	cstring	Trader
+unit-base-name	0xb676a0	0xb69152	0x20f3629	cstring	Administrator
+unit-base-name	0xb676a0	0xb69166	0x20f3623	cstring	Clerk
+unit-base-name	0xb676a0	0xb6917a	0x20f3615	cstring	Pump Operator
+unit-base-name	0xb676a0	0xb6918e	0x20f3606	cstring	Siege Operator
+unit-base-name	0xb676a0	0xb691a2	0x20f35f7	cstring	Siege Engineer
+unit-base-name	0xb676a0	0xb691b6	0x20f35ee	cstring	Mechanic
+unit-base-name	0xb676a0	0xb691ca	0x21748c6	cstring	Engineer
+unit-base-name	0xb676a0	0xb691de	0x20f359d	cstring	Beekeeper
+unit-base-name	0xb676a0	0xb691f2	0x20f3595	cstring	Presser
+unit-base-name	0xb676a0	0xb69206	0x20f356c	cstring	Spinner
+unit-base-name	0xb676a0	0xb6921a	0x20f3564	cstring	Shearer
+unit-base-name	0xb676a0	0xb6922e	0x20f35e2	cstring	Wood Burner
+unit-base-name	0xb676a0	0xb69242	0x20f35d8	cstring	Lye Maker
+unit-base-name	0xb676a0	0xb69256	0x20f35cb	cstring	Potash Maker
+unit-base-name	0xb676a0	0xb6926a	0x20f35c0	cstring	Soap Maker
+unit-base-name	0xb676a0	0xb6927e	0x20f3183	cstring	Hammer Lord
+unit-base-name	0xb676a0	0xb69292	0x20f3736	cstring	Hammerman
+unit-base-name	0xb676a0	0xb692a6	0x20f36f2	cstring	Merchant
+unit-base-name	0xb676a0	0xb692ba	0x20f36ea	cstring	Surgeon
+unit-base-name	0xb676a0	0xb692ce	0x20f36e2	cstring	Suturer
+unit-base-name	0xb676a0	0xb692e2	0x20f36d6	cstring	Bone Doctor
+unit-base-name	0xb676a0	0xb692f6	0x20f36c8	cstring	Diagnostician
+unit-base-name	0xb676a0	0xb6930a	0x20f36db	cstring	Doctor
+unit-base-name	0xb676a0	0xb6931e	0x20f31c5	cstring	Elite Crossbowman
+unit-base-name	0xb676a0	0xb69332	0x20f31cb	cstring	Crossbowman
+unit-base-name	0xb676a0	0xb69346	0x20f31a1	cstring	Spearmaster
+unit-base-name	0xb676a0	0xb6935a	0x20f3740	cstring	Spearman
+unit-base-name	0xb676a0	0xb6936e	0x20f3749	cstring	Axeman
+unit-base-name	0xb676a0	0xb69390	0x20f37a7	cstring	Peasant
+unit-base-name	0xb676a0	0xb693d0	0x72656e6f73697250	inline	Prisoner
+unit-base-name	0xb676a0	0xb693e8	0x76616c53	inline	Slav
+unit-base-name	0xb676a0	0xb695be	0x20f7379	cstring	 
+unit-base-name	0xb676a0	0xb695f6	0x221ccdc	cstring	Prisoner
+unit-base-name	0xb676a0	0xb69615	0x20f37b0	cstring	Slave
+unit-base-name	0xb676a0	0xb69674	0x656e6f7369725020	inline	 Prisone
+unit-base-name	0xb676a0	0xb696e2	0x212bccd	cstring	the force
+unit-base-name	0xb676a0	0xb69824	0x20cafdc	cstring	Ghostly 
+unit-base-name	0xb676a0	0xb6988b	0x6576	inline	ve
+unit-base-name	0xb676a0	0xb69890	0x616c5320	inline	 Sla
+unit-base-name	0xb676a0	0xb69bc8	0x2212884	cstring	Ghost
+unit-base-name	0xb676a0	0xb69c1d	0x20f7379	cstring	 
+unit-base-name	0xb676a0	0xb69ca6	0x221ccdb	cstring	 Prisoner
+unit-base-name	0xb676a0	0xb69cd3	0x20f37af	cstring	 Slave
+unit-base-name	0xb676a0	0xb6a082	0x20f37a2	cstring	Baby
+unit-base-name	0xb676a0	0xb6a139	0x20f7337	cstring	Child
+unit-base-name	0xb676a0	0xb6a1a1	0x20f7337	cstring	Child
+unit-base-name	0xb676a0	0xb6a1b5	0x20f37a2	cstring	Baby
+unit-caption	0xb6ca30	0xb6cee4	0x6465746174696761	inline	agitated
+unit-caption	0xb6ca30	0xb6cf61	0x20796c74736f6867	inline	ghostly 
+unit-caption	0xb6ca30	0xb6d100	0x6573	inline	se
+unit-caption	0xb6ca30	0xb6d105	0x70726f63	inline	corp
+unit-caption	0xb6ca30	0xb6d1cd	0x216056a	cstring	You
+unit-caption	0xb6ca30	0xb6d2c0	0x21f69f2	cstring	slave
+unit-caption	0xb6ca30	0xb6d308	0x76616c73	inline	slav
+unit-caption	0xb6ca30	0xb6d375	0x21f6a09	cstring	prisoner
+unit-caption	0xb6ca30	0xb6d5a8	0x736f6867	inline	ghos
+unit-caption	0xb6ca30	0xb6d699	0x6563	inline	ce
+unit-caption	0xb6ca30	0xb6d69e	0x72656966	inline	fier
+unit-caption	0xb6ca30	0xb6d6d8	0x2061	inline	a 
+unit-caption	0xb6ca30	0xb6d747	0x2061	inline	a 
+unit-caption	0xb6ca30	0xb6d778	0x20656874	inline	the 
+unit-caption	0xb6ca30	0xb6d7c8	0x72656e6f73697270	inline	prisoner
+unit-caption	0xb6ca30	0xb6d930	0x2061	inline	a 
+unit-caption	0xb6ca30	0xb6da37	0x7370	inline	ps
+unit-caption	0xb6ca30	0xb6da3c	0x726f6320	inline	 cor
+unit-caption	0xb6ca30	0xb6dadc	0x63726f66	inline	forc
+unit-caption	0xb6ca30	0xb6db2e	0x20f37f8	cstring	agitated 
+unit-caption	0xb6ca30	0xb6db4e	0x214dd31	cstring	corpse
+unit-caption	0xb6ca30	0xb6db6e	0x20df374	cstring	ghostly 
+unit-caption	0xb6ca30	0xb6dbc0	0x2061	inline	a 
+unit-caption	0xb6ca30	0xb6dbee	0x21f6a09	cstring	prisoner
+unit-caption	0xb6ca30	0xb6dc46	0x20f3802	cstring	average
+unit-caption	0xb6ca30	0xb6dc9e	0x21f69f2	cstring	slave
+unit-caption	0xb6ca30	0xb6dcc7	0x20656874	inline	the 
+unit-caption	0xb6ca30	0xb6dd74	0x74696564	inline	deit
+unit-caption	0xb6ca30	0xb6ddf5	0x2079	inline	y 
+unit-caption	0xb6ca30	0xb6ddfa	0x61727473	inline	stra
+unit-caption	0xb6ca30	0xb6de19	0x2061	inline	a 
+unit-caption	0xb6ca30	0xb6de52	0x22182d4	cstring	a 
+unit-caption	0xb6ca30	0xb6de70	0x22182d4	cstring	a 
+unit-caption	0xb6ca30	0xb6de91	0x2061	inline	a 
+unit-caption	0xb6ca30	0xb6df4a	0x656e6f7369727020	inline	 prisone
+unit-caption	0xb6ca30	0xb6dfe1	0x214dd30	cstring	 corpse
+unit-caption	0xb6ca30	0xb6e034	0x6576	inline	ve
+unit-caption	0xb6ca30	0xb6e03a	0x616c7320	inline	 sla
+unit-caption	0xb6ca30	0xb6e0a4	0x20656874	inline	the 
+unit-caption	0xb6ca30	0xb6e18a	0x20656874	inline	the 
+unit-caption	0xb6ca30	0xb6e1e6	0x210fe62	cstring	ghost
+unit-caption	0xb6ca30	0xb6e249	0x20fc8f7	cstring	The 
+unit-caption	0xb6ca30	0xb6e2ba	0x20f7379	cstring	 
+unit-caption	0xb6ca30	0xb6e2d9	0x20f7379	cstring	 
+unit-caption	0xb6ca30	0xb6e349	0x20656874	inline	the 
+unit-caption	0xb6ca30	0xb6e3a5	0x21ba050	cstring	the 
+unit-caption	0xb6ca30	0xb6e455	0x21f69f2	cstring	slave
+unit-caption	0xb6ca30	0xb6e49f	0x21f6a09	cstring	prisoner
+unit-caption	0xb6ca30	0xb6e4bd	0x21ba050	cstring	the 
+unit-caption	0xb6ca30	0xb6e4db	0x22182d4	cstring	a 
+unit-caption	0xb6ca30	0xb6e4fa	0x21f6a08	cstring	 prisoner
+unit-caption	0xb6ca30	0xb6e51e	0x21b5bc3	cstring	you
+unit-caption	0xb6ca30	0xb6e53a	0x20656874	inline	the 
+unit-caption	0xb6ca30	0xb6e568	0x20f7379	cstring	 
+unit-caption	0xb6ca30	0xb6e621	0x21f69f1	cstring	 slave
+unit-caption	0xb6ca30	0xb6e63f	0x22182d4	cstring	a 
+unit-caption	0xb6ca30	0xb6e65e	0x20f37f1	cstring	stray 
+unit-caption	0xb6ca30	0xb6e67c	0x21ba050	cstring	the 
+unit-caption	0xb6ca30	0xb6e69d	0x21ba050	cstring	the 
+unit-caption	0xb6ca30	0xb6e6d2	0x21ba050	cstring	the 
+unit-caption	0xb6ca30	0xb6e6f1	0x20df441	cstring	deity
+unit-caption	0xb6ca30	0xb6e731	0x22182d4	cstring	a 
+unit-caption	0xb6ca30	0xb6e742	0x20f7379	cstring	 
+unit-caption	0xb6ca30	0xb6e766	0x22182d4	cstring	a 
+unit-caption	0xb6ca30	0xb6e788	0x21e2b47	cstring	force
+unit-caption	0xb6ca30	0xb6e7b0	0x22182d4	cstring	a 
+unit-caption	0xb6ca30	0xb6e7d5	0x22182d4	cstring	a 
+unit-caption	0xb6ca30	0xb6e7e9	0x22182d4	cstring	a 
+unit-caption	0xb6ca30	0xb6e80a	0x21ba050	cstring	the 
+unit-caption	0xb6ca30	0xb6e81b	0x21ba050	cstring	the 
+unit-caption	0xb6ca30	0xb6e922	0x21ba050	cstring	the 
+unit-caption	0xb6ca30	0xb6e943	0x21ba050	cstring	the 
+unit-caption	0xb6ca30	0xb6e9ed	0x21ba050	cstring	the 
+unit-caption	0xb6ca30	0xb6ea39	0x20f37e9	cstring	fierce 
+unit-caption	0xb6ca30	0xb6eaa5	0x21f6a08	cstring	 prisoner
+unit-caption	0xb6ca30	0xb6eaf5	0x21f69f1	cstring	 slave
+combat-item-removal-job-b8c690	0xb8c690	0xb8c879	0x6f20736c6c757020	inline	 pulls o
+combat-item-removal-job-b8c690	0xb8c690	0xb8c889	0x646e	inline	nd
+combat-item-removal-job-b8c690	0xb8c690	0xb8c88e	0x61207475	inline	ut a
+combat-item-removal-job-b8c690	0xb8c690	0xb8c963	0x73657361656c6572	inline	releases
+combat-item-removal-job-b8c690	0xb8c690	0xb8cd10	0x706f7264	inline	drop
+combat-item-removal-job-b8c690	0xb8c690	0xb8cd3e	0x20f3e43	cstring	 pulls out and 
+combat-item-removal-job-b8c690	0xb8c690	0xb8cd5e	0x20f7379	cstring	 
+combat-item-removal-job-b8c690	0xb8c690	0xb8cd7e	0x2107edc	cstring	.
+combat-item-removal-job-b8c690	0xb8c690	0xb8cdb2	0x20f3ecf	cstring	releases
+combat-item-removal-job-b8c690	0xb8c690	0xb8cdd1	0x20f3e53	cstring	drops
+webbing	0xb92f40	0xb932c4	0x7327	inline	's
+webbing	0xb92f40	0xb93465	0x7327	inline	's
+webbing	0xb92f40	0xb93551	0x20f3ece	cstring	 releases
+webbing	0xb92f40	0xb93562	0x21c485e	cstring	 the grip of 
+webbing	0xb92f40	0xb93588	0x20f7379	cstring	 
+webbing	0xb92f40	0xb935c0	0x20e2431	cstring	 from 
+webbing	0xb92f40	0xb93614	0x2107edc	cstring	.
+webbing	0xb92f40	0xb9384d	0x6165	inline	ea
+webbing	0xb92f40	0xb93852	0x20f58d0/16	vector	 is unable to br
+webbing	0xb92f40	0xb938da	0x6972672065687420	inline	 the gri
+webbing	0xb92f40	0xb938ea	0x666f2070	inline	p of
+webbing	0xb92f40	0xb93a11	0x206e6f20	inline	 on 
+webbing	0xb92f40	0xb93c0f	0x2131973	cstring	's
+webbing	0xb92f40	0xb93c46	0x2131973	cstring	's
+webbing	0xb92f40	0xb93cfd	0x20f3ec5	cstring	 release
+webbing	0xb92f40	0xb93d1b	0x20f3ec0	cstring	Your
+webbing	0xb92f40	0xb93d37	0x210eb84	cstring	!
+webbing	0xb92f40	0xb93d6b	0x20f7379	cstring	 
+webbing	0xb92f40	0xb93d9e	0x20f3ec0	cstring	Your
+webbing	0xb92f40	0xb93df6	0x20f3ee0	cstring	 are unable to break
+webbing	0xb92f40	0xb93e2f	0x20f3ed8	cstring	 breaks
+webbing	0xb92f40	0xb93e40	0x21c485e	cstring	 the grip of 
+webbing	0xb92f40	0xb93e66	0x20f7379	cstring	 
+webbing	0xb92f40	0xb93e9e	0x20e2431	cstring	 from 
+webbing	0xb92f40	0xb93ef2	0x210eb84	cstring	!
+webbing	0xb92f40	0xb93f08	0x21dfb58	cstring	 break
+webbing	0xb92f40	0xb93f24	0x215fffc	cstring	 on 
+webbing	0xb92f40	0xb93f53	0x20f7379	cstring	 
+webbing	0xb92f40	0xb93f83	0x21c485e	cstring	 the grip of 
+webbing	0xb92f40	0xb93fb3	0x20f3ef5	cstring	 is unable to break
+fireball	0xb93fe0	0xb9414c	0x736c	inline	ls
+fireball	0xb93fe0	0xb94151	0x72756820	inline	 hur
+fireball	0xb93fe0	0xb941cc	0x7269	inline	ir
+fireball	0xb93fe0	0xb941d1	0x206c6c6162206120	inline	 a ball 
+fireball	0xb93fe0	0xb941de	0x6620666f	inline	of f
+fireball	0xb93fe0	0xb9482e	0x210eb84	cstring	!
+fireball	0xb93fe0	0xb94856	0x20f3f16	cstring	 a ball of fire
+fireball	0xb93fe0	0xb94876	0x20f3f0f	cstring	 hurls
+fireball	0xb93fe0	0xb94896	0x20f7379	cstring	 
+fireball	0xb93fe0	0xb948ed	0x72756820	inline	 hur
+fireball	0xb93fe0	0xb949d8	0x20f3f09	cstring	 hurl
+combat-glob-emission-b94a80	0xb94a80	0xb94c48	0x6568746165726220	inline	 breathe
+combat-glob-emission-b94a80	0xb94a80	0xb94cb7	0x666f	inline	of
+combat-glob-emission-b94a80	0xb94a80	0xb94cbd	0x20626f6c67206120	inline	 a glob 
+combat-glob-emission-b94a80	0xb94a80	0xb94f20	0x2742	inline	B'
+combat-glob-emission-b94a80	0xb94a80	0xb95004	0x2742	inline	B'
+combat-glob-emission-b94a80	0xb94a80	0xb953ee	0x2742	inline	B'
+combat-glob-emission-b94a80	0xb94a80	0xb956d2	0x210eb84	cstring	!
+combat-glob-emission-b94a80	0xb94a80	0xb95852	0x20f3f30	cstring	 a glob of 
+combat-glob-emission-b94a80	0xb94a80	0xb9589a	0x20f3f26	cstring	 breathes
+combat-glob-emission-b94a80	0xb94a80	0xb958c2	0x20f7379	cstring	 
+combat-glob-emission-b94a80	0xb94a80	0xb9590b	0x6568746165726220	inline	 breathe
+combat-glob-emission-b94a80	0xb94a80	0xb95a19	0x21b0a54	cstring	 breathe
+breath-defense	0xbd1050	0xbd1342	0x6b63	inline	ck
+breath-defense	0xbd1050	0xbd1347	0x6f6c6220	inline	 blo
+breath-defense	0xbd1050	0xbd14b4	0x214de53	cstring	 blocks
+breath-defense	0xbd1050	0xbd150b	0x20f5c30/16	vector	 the dragonfire.
+breath-defense	0xbd1050	0xbd1579	0x6572622065687420	inline	 the bre
+breath-defense	0xbd1050	0xbd1589	0x2e687461	inline	ath.
+breath-defense	0xbd1050	0xbd15f1	0x7269662065687420	inline	 the fir
+breath-defense	0xbd1050	0xbd1601	0x2e65	inline	e.
+breath-defense	0xbd1050	0xbd165d	0x6b63	inline	ck
+breath-defense	0xbd1050	0xbd1662	0x6f6c6220	inline	 blo
+breath-defense	0xbd1050	0xbd169a	0x20f44c3	cstring	 the dragonfire.
+breath-defense	0xbd1050	0xbd16b9	0x20f44d4	cstring	 the fire.
+breath-defense	0xbd1050	0xbd16d8	0x20f44df	cstring	 the breath.
+breath-defense	0xbd1050	0xbd16f7	0x20f44bc	cstring	 block
+breath-fire	0xbd1780	0xbd1ab1	0x6568746165726220	inline	 breathe
+breath-fire	0xbd1780	0xbd1b24	0x72696620	inline	 fir
+breath-fire	0xbd1780	0xbd1e76	0x210eb84	cstring	!
+breath-fire	0xbd1780	0xbd1e9e	0x212ffc4	cstring	 fire
+breath-fire	0xbd1780	0xbd1ebe	0x20f3f26	cstring	 breathes
+breath-fire	0xbd1780	0xbd1edd	0x20f7379	cstring	 
+breath-fire	0xbd1780	0xbd1f34	0x6568746165726220	inline	 breathe
+breath-fire	0xbd1780	0xbd1f7e	0x21b0a54	cstring	 breathe
+breath-fire-alternate	0xbd1ff0	0xbd2321	0x6568746165726220	inline	 breathe
+breath-fire-alternate	0xbd1ff0	0xbd2394	0x72696620	inline	 fir
+breath-fire-alternate	0xbd1ff0	0xbd26e6	0x210eb84	cstring	!
+breath-fire-alternate	0xbd1ff0	0xbd270e	0x212ffc4	cstring	 fire
+breath-fire-alternate	0xbd1ff0	0xbd272e	0x20f3f26	cstring	 breathes
+breath-fire-alternate	0xbd1ff0	0xbd274d	0x20f7379	cstring	 
+breath-fire-alternate	0xbd1ff0	0xbd27a4	0x6568746165726220	inline	 breathe
+breath-fire-alternate	0xbd1ff0	0xbd27ee	0x21b0a54	cstring	 breathe
+combat-cloud-emission-bd2860	0xbd2860	0xbd29ce	0x6568746165726220	inline	 breathe
+combat-cloud-emission-bd2860	0xbd2860	0xbd2a2e	0x64756f6c63206120	inline	 a cloud
+combat-cloud-emission-bd2860	0xbd2860	0xbd2a3e	0x20666f20	inline	 of 
+combat-cloud-emission-bd2860	0xbd2860	0xbd2f1e	0x210eb84	cstring	!
+combat-cloud-emission-bd2860	0xbd2860	0xbd324e	0x20f4ddb	cstring	 a cloud of 
+combat-cloud-emission-bd2860	0xbd2860	0xbd328e	0x20f3f26	cstring	 breathes
+combat-cloud-emission-bd2860	0xbd2860	0xbd334e	0x726f	inline	or
+combat-cloud-emission-bd2860	0xbd2860	0xbd3354	0x70617620	inline	 vap
+combat-cloud-emission-bd2860	0xbd2860	0xbd33a8	0x20f7379	cstring	 
+combat-cloud-emission-bd2860	0xbd2860	0xbd33e6	0x6568746165726220	inline	 breathe
+combat-cloud-emission-bd2860	0xbd2860	0xbd3448	0x20f44ec	cstring	 vapor
+combat-cloud-emission-bd2860	0xbd2860	0xbd34be	0x21b0a54	cstring	 breathe
+combat-cloud-emission-bd3550	0xbd3550	0xbd36a5	0x6568746165726220	inline	 breathe
+combat-cloud-emission-bd3550	0xbd3550	0xbd3705	0x64756f6c63206120	inline	 a cloud
+combat-cloud-emission-bd3550	0xbd3550	0xbd3715	0x20666f20	inline	 of 
+combat-cloud-emission-bd3550	0xbd3550	0xbd3bee	0x210eb84	cstring	!
+combat-cloud-emission-bd3550	0xbd3550	0xbd3d2e	0x20f4ddb	cstring	 a cloud of 
+combat-cloud-emission-bd3550	0xbd3550	0xbd3d6e	0x20f3f26	cstring	 breathes
+combat-cloud-emission-bd3550	0xbd3550	0xbd3e2d	0x726f	inline	or
+combat-cloud-emission-bd3550	0xbd3550	0xbd3e32	0x70617620	inline	 vap
+combat-cloud-emission-bd3550	0xbd3550	0xbd3e80	0x20f7379	cstring	 
+combat-cloud-emission-bd3550	0xbd3550	0xbd3ebe	0x6568746165726220	inline	 breathe
+combat-cloud-emission-bd3550	0xbd3550	0xbd3f20	0x20f44ec	cstring	 vapor
+combat-cloud-emission-bd3550	0xbd3550	0xbd3f96	0x21b0a54	cstring	 breathe
+combat-cloud-emission-bd4030	0xbd4030	0xbd4187	0x6568746165726220	inline	 breathe
+combat-cloud-emission-bd4030	0xbd4030	0xbd41e6	0x64756f6c63206120	inline	 a cloud
+combat-cloud-emission-bd4030	0xbd4030	0xbd41f6	0x20666f20	inline	 of 
+combat-cloud-emission-bd4030	0xbd4030	0xbd48ce	0x210eb84	cstring	!
+combat-cloud-emission-bd4030	0xbd4030	0xbd48ee	0x20f4ddb	cstring	 a cloud of 
+combat-cloud-emission-bd4030	0xbd4030	0xbd490e	0x20f3f26	cstring	 breathes
+combat-cloud-emission-bd4030	0xbd4030	0xbd492d	0x20f7379	cstring	 
+combat-cloud-emission-bd4030	0xbd4030	0xbd496a	0x6568746165726220	inline	 breathe
+combat-cloud-emission-bd4030	0xbd4030	0xbd4a15	0x21b0a54	cstring	 breathe
+combat-cloud-emission-bd4a90	0xbd4a90	0xbd4be3	0x6568746165726220	inline	 breathe
+combat-cloud-emission-bd4a90	0xbd4a90	0xbd4c42	0x64756f6c63206120	inline	 a cloud
+combat-cloud-emission-bd4a90	0xbd4a90	0xbd4c52	0x20666f20	inline	 of 
+combat-cloud-emission-bd4a90	0xbd4a90	0xbd51f2	0x210eb84	cstring	!
+combat-cloud-emission-bd4a90	0xbd4a90	0xbd5215	0x20f4ddb	cstring	 a cloud of 
+combat-cloud-emission-bd4a90	0xbd4a90	0xbd5238	0x20f3f26	cstring	 breathes
+combat-cloud-emission-bd4a90	0xbd4a90	0xbd525b	0x20f7379	cstring	 
+combat-cloud-emission-bd4a90	0xbd4a90	0xbd5298	0x6568746165726220	inline	 breathe
+combat-cloud-emission-bd4a90	0xbd4a90	0xbd534b	0x21b0a54	cstring	 breathe
+combat-bodily-impact-damage-caller-be81b0	0xbe81b0	0xbe8582	0x7327	inline	's
+combat-bodily-impact-damage-caller-be81b0	0xbe81b0	0xbe8732	0x20f5c90/16	vector	 takes the full 
+combat-bodily-impact-damage-caller-be81b0	0xbe81b0	0xbe873d	0x6361	inline	ac
+combat-bodily-impact-damage-caller-be81b0	0xbe81b0	0xbe8749	0x20f5ca0/16	vector	force of the imp
+combat-bodily-impact-damage-caller-be81b0	0xbe81b0	0xbe8df9	0x20f7379	cstring	 
+combat-bodily-impact-damage-caller-be81b0	0xbe81b0	0xbe8e18	0x20f21f0	cstring	 takes the full force of the impact
+combat-bodily-impact-damage-caller-be81b0	0xbe81b0	0xbe8f44	0x2131973	cstring	's
+combat-bodily-impact-damage-caller-be81b0	0xbe81b0	0xbe9101	0x20f3ec0	cstring	Your
+combat-damage-caller-be91f0	0xbe91f0	0xbe951c	0x7327	inline	's
+combat-damage-caller-be91f0	0xbe91f0	0xbe96e0	0x6e75	inline	un
+combat-damage-caller-be91f0	0xbe91f0	0xbe96e5	0x20f5cb0/16	vector	 skids along the
+combat-damage-caller-be91f0	0xbe91f0	0xbe96ed	0x6f726720	inline	 gro
+combat-damage-caller-be91f0	0xbe91f0	0xbe9e74	0x2131973	cstring	's
+combat-damage-caller-be91f0	0xbe91f0	0xbe9eb6	0x20f3ec0	cstring	Your
+combat-damage-caller-be91f0	0xbe91f0	0xbe9f8c	0x20f7379	cstring	 
+combat-damage-caller-be91f0	0xbe91f0	0xbea0c1	0x20f4d49	cstring	 skids along the ground
+combat-damage-caller-be91f0	0xbe91f0	0xbea0e4	0x72756f59	inline	Your
+combat-damage-caller-be91f0	0xbe91f0	0xbea0f5	0x20f3ec0	cstring	Your
+unit-state	0xc1a160	0xc1a439	0x2742	inline	B'
+unit-state	0xc1a160	0xc1a59a	0x20d54e0	cstring	d
+unit-state	0xc1a160	0xc1a630	0x20f5b90	cstring	d
+unit-state	0xc1a160	0xc1bd10	0x20f51cc	cstring	 falls
+unit-state	0xc1a160	0xc1bd1f	0x2110343	cstring	 over.
+unit-state	0xc1a160	0xc1bfeb	0x2142337	cstring	 is
+unit-state	0xc1a160	0xc1bffa	0x20f5073	cstring	 partially free of the web.
+unit-state	0xc1a160	0xc1d44b	0x4e20	inline	 N
+unit-state	0xc1a160	0xc1f5b1	0x2142337	cstring	 is
+unit-state	0xc1a160	0xc1f5c0	0x20f508f	cstring	 completely free of the web.
+unit-state	0xc1a160	0xc20a72	0x20f5231	cstring	An animal
+unit-state	0xc1a160	0xc20a81	0x20f523b	cstring	 has grown to become a 
+unit-state	0xc1a160	0xc20ada	0x2107edc	cstring	.
+unit-state	0xc1a160	0xc2128b	0x2165	inline	e!
+unit-state	0xc1a160	0xc21290	0x6d6f632073616820	inline	 has com
+unit-state	0xc1a160	0xc2136c	0x20f7378	cstring	  
+unit-state	0xc1a160	0xc21957	0x2142337	cstring	 is
+unit-state	0xc1a160	0xc21966	0x20f5173	cstring	 no longer stunned.
+unit-state	0xc1a160	0xc223e0	0x20f51d3	cstring	 gives
+unit-state	0xc1a160	0xc223ef	0x20f51da	cstring	 in to pain.
+unit-state	0xc1a160	0xc2362b	0x20f5288	cstring	 has calmed down.
+unit-state	0xc1a160	0xc237bb	0x20f526a	cstring	 has left the martial trance.
+unit-state	0xc1a160	0xc237cf	0x20f529a	cstring	 is aware of 
+unit-state	0xc1a160	0xc2382a	0x20f52a8	cstring	 surroundings again.
+unit-state	0xc1a160	0xc2385e	0x20f5253	cstring	 is no longer enraged.
+unit-state	0xc1a160	0xc23872	0x20f26f0	cstring	 has climbed out of depression.
+unit-state	0xc1a160	0xc23935	0x214dc4f	cstring	 has
+unit-state	0xc1a160	0xc23944	0x20f2400	cstring	 fully overcome the paralysis.
+unit-state	0xc1a160	0xc23ec2	0x20f505a	cstring	 regains
+unit-state	0xc1a160	0xc23ed1	0x20f5063	cstring	 consciousness.
+unit-state	0xc1a160	0xc2411c	0x20f518d	cstring	 passes
+unit-state	0xc1a160	0xc2412b	0x20f5195	cstring	 out from exhaustion.
+unit-state	0xc1a160	0xc2456e	0x20f5100	cstring	 vomits
+unit-state	0xc1a160	0xc245a1	0x20f5157	cstring	 into the sea foam
+unit-state	0xc1a160	0xc245b0	0x2107edc	cstring	.
+unit-state	0xc1a160	0xc2488b	0x20f24f8	cstring	The vomit burns away in the magma.
+unit-state	0xc1a160	0xc24981	0x20f2558	cstring	The vomit disappears into the water.
+unit-state	0xc1a160	0xc24a97	0x2742	inline	B'
+unit-state	0xc1a160	0xc24f23	0x20f3d3d	cstring	 has come!
+unit-state	0xc1a160	0xc25650	0x20f51be	cstring	 collapses and falls
+unit-state	0xc1a160	0xc2565f	0x20f26c8	cstring	 to the ground from over-exertion.
+unit-state	0xc1a160	0xc25d8c	0x2142337	cstring	 is
+unit-state	0xc1a160	0xc25d9b	0x20f50ac	cstring	 completely paralyzed!
+unit-state	0xc1a160	0xc2609b	0x20f50f2	cstring	 looks
+unit-state	0xc1a160	0xc260aa	0x20f50f9	cstring	 numb!
+unit-state	0xc1a160	0xc263b6	0x20f516a	cstring	 retches
+unit-state	0xc1a160	0xc263c5	0x2107edc	cstring	.
+unit-state	0xc1a160	0xc2658b	0x2142337	cstring	 is
+unit-state	0xc1a160	0xc2659a	0x20f50c3	cstring	 partially paralyzed!
+unit-state	0xc1a160	0xc26705	0x20fc8f7	cstring	The 
+unit-state	0xc1a160	0xc26795	0x20f5219	cstring	 have given a resident 
+unit-state	0xc1a160	0xc267d1	0x2191502	cstring	 the name 
+unit-state	0xc1a160	0xc26810	0x2107edc	cstring	.
+unit-state	0xc1a160	0xc26d37	0x214dc4f	cstring	 has
+unit-state	0xc1a160	0xc26d46	0x20f2420	cstring	 partially overcome the paralysis.
+unit-state	0xc1a160	0xc2715a	0x20f2618	cstring	The vomit falls away into the underworld.
+unit-state	0xc1a160	0xc271d4	0x20f25b8	cstring	The vomit falls away into the chasm.
+unit-state	0xc1a160	0xc27270	0x20f5131	cstring	 into the dragonfire
+unit-state	0xc1a160	0xc27284	0x20f511d	cstring	 into the lava mist
+unit-state	0xc1a160	0xc27298	0x20f5108	cstring	 into the ocean wave
+unit-state	0xc1a160	0xc272ac	0x21b77b9	cstring	 into the 
+unit-state	0xc1a160	0xc27346	0x20f2448	cstring	 and bits of it get stuck in the web
+unit-state	0xc1a160	0xc27440	0x2142337	cstring	 is
+unit-state	0xc1a160	0xc2744f	0x20f50d9	cstring	 feeling sluggish!
+unit-state	0xc1a160	0xc276ec	0x20f5f80	cstring	6
+unit-state	0xc1a160	0xc277b4	0x20f2690	cstring	The vomit splatters into the shallow puddle of water.
+unit-state	0xc1a160	0xc278c5	0x20f5146	cstring	 into the flames
+unit-state	0xc1a160	0xc27a3a	0x20f24a0	cstring	The vomit burns away in the lava.
+unit-state	0xc1a160	0xc27a4b	0x20f24c8	cstring	The rest of the vomit burns away in the magma.
+unit-state	0xc1a160	0xc27a77	0x20f2470	cstring	The rest of the vomit burns away in the lava.
+unit-state	0xc1a160	0xc27a88	0x2107bca	cstring	 are
+unit-state	0xc1a160	0xc27e70	0x20f5052	cstring	 regain
+unit-state	0xc1a160	0xc27e84	0x20f50ec	cstring	 feel
+unit-state	0xc1a160	0xc280e3	0x20f7379	cstring	 
+unit-state	0xc1a160	0xc28108	0x214dc50	cstring	has
+unit-state	0xc1a160	0xc28117	0x20f51e7	cstring	 reverted to a wild state!
+unit-state	0xc1a160	0xc28335	0x20f7379	cstring	 
+unit-state	0xc1a160	0xc2835a	0x214dc50	cstring	has
+unit-state	0xc1a160	0xc28369	0x20f5202	cstring	 forgotten 
+unit-state	0xc1a160	0xc283f6	0x20f520e	cstring	 training!
+unit-state	0xc1a160	0xc2856b	0x21ba429	cstring	your
+unit-state	0xc1a160	0xc28591	0x21138b9	cstring	have
+unit-state	0xc1a160	0xc285e9	0x21138b9	cstring	have
+unit-state	0xc1a160	0xc285fd	0x210f4ce	cstring	 give
+unit-state	0xc1a160	0xc28636	0x20f51b8	cstring	 fall
+unit-state	0xc1a160	0xc28669	0x20f5187	cstring	 pass
+unit-state	0xc1a160	0xc2867d	0x20f4fd4	cstring	 retch
+unit-state	0xc1a160	0xc2930f	0x20f52bd	cstring	 has given birth to 
+unit-state	0xc1a160	0xc2936c	0x2107edc	cstring	.
+unit-state	0xc1a160	0xc295ff	0x20f51ab	cstring	 collapse and fall
+unit-state	0xc1a160	0xc296cf	0x21138b8	cstring	 have
+unit-state	0xc1a160	0xc296e3	0x20c920e	cstring	vector::_M_default_append
+unit-state	0xc1a160	0xc2981a	0x2107bca	cstring	 are
+unit-state	0xc1a160	0xc298a8	0x21e535c	cstring	 vomit
+unit-state	0xc1a160	0xc298bc	0x20f2520	cstring	The rest of the vomit disappears into the water.
+unit-state	0xc1a160	0xc298cd	0x20f25e0	cstring	The rest of the vomit falls away into the underworld.
+unit-state	0xc1a160	0xc29913	0x21138b8	cstring	 have
+unit-state	0xc1a160	0xc29927	0x2107bca	cstring	 are
+unit-state	0xc1a160	0xc29982	0x20f2580	cstring	The rest of the vomit falls away into the chasm.
+unit-state	0xc1a160	0xc29ac1	0x20f2648	cstring	The rest of the vomit splatters into the shallow puddle of water.
+unit-state	0xc1a160	0xc29b0b	0x2107bca	cstring	 are
+unit-state	0xc1a160	0xc29b53	0x2107bca	cstring	 are
+unit-state	0xc1a160	0xc29d99	0x2107bca	cstring	 are
+unit-state	0xc1a160	0xc29ddc	0x2760	inline	`'
+unit-state	0xc1a160	0xc29dec	0x20f5ff8	cstring	+
+item-caption	0xe68020	0xe68438	0x210784d	cstring	 (copy)
+item-possession	0xe69120	0xe69663	0x20fc8f7	cstring	The 
+item-possession	0xe69120	0xe696a3	0x21078ac	cstring	 remains stuck in 
+item-possession	0xe69120	0xe696f2	0x21c05aa	cstring	's 
+item-possession	0xe69120	0xe6972f	0x2107edc	cstring	.
+item-possession	0xe69120	0xe69807	0x20fc8f7	cstring	The 
+item-possession	0xe69120	0xe69840	0x2107911	cstring	 is torn from your 
+item-possession	0xe69120	0xe6987d	0x2107edc	cstring	.
+item-possession	0xe69120	0xe699d6	0x21078bf	cstring	 maintains possession of the 
+item-possession	0xe69120	0xe69a0c	0x2107edc	cstring	.
+item-possession	0xe69120	0xe69a37	0x2106ab8	cstring	You've lost possession of the 
+item-possession	0xe69120	0xe69aa9	0x2107892	cstring	 gains possession of the 
+item-possession	0xe69120	0xe69adf	0x2107edc	cstring	.
+item-possession	0xe69120	0xe69b03	0x21078dd	cstring	You gain possession of the 
+item-possession	0xe69120	0xe69b1e	0x2106a98	cstring	You maintain possession of the 
+item-possession	0xe69120	0xe69b42	0x20fc8f7	cstring	The 
+item-possession	0xe69120	0xe69b7b	0x21078f9	cstring	 remains stuck in your 
+announcement-log	0x1154220	0x1154700	0x656e6f44	inline	Done
+announcement-log	0x1154220	0x1154754	0x746e656d	inline	ment
+announcement-log	0x1154220	0x1154763	0x65636e756f6e6e41	inline	Announce
+announcement-log	0x1154220	0x1154b1d	0x2e73746e656d6563	inline	cements.
+announcement-log	0x1154220	0x1154b27	0x213a160/16	vector	No recent announ
+unit-action-status	0x116bb90	0x116bbe0	0x6e69	inline	in
+unit-action-status	0x116bb90	0x116bc12	0x6b726f57	inline	Work
+unit-action-status	0x116bb90	0x116bcc3	0x676e69626d696c43	inline	Climbing
+unit-action-status	0x116bb90	0x116bd2c	0x213a440/16	vector	Releasing hold o
+unit-action-status	0x116bb90	0x116bd36	0x696172726574206e	inline	n terrai
+unit-action-status	0x116bb90	0x116bd88	0x20676e69646c6f48	inline	Holding 
+unit-action-status	0x116bb90	0x116bda6	0x6961	inline	ai
+unit-action-status	0x116bb90	0x116bdcc	0x72726574	inline	terr
+unit-action-status	0x116bb90	0x116be34	0x213a460/16	vector	Recovering after
+unit-action-status	0x116bb90	0x116be3e	0x6e69746f6f687320	inline	 shootin
+unit-action-status	0x116bb90	0x116bf17	0x212eea0	cstring	Attacking
+unit-action-status	0x116bb90	0x116bf80	0x676e69746f6f6853	inline	Shooting
+unit-action-status	0x116bb90	0x116bf9e	0x6f70	inline	po
+unit-action-status	0x116bb90	0x116bfc4	0x61657720	inline	 wea
+unit-action-status	0x116bb90	0x116c023	0x676e69776f726854	inline	Throwing
+unit-action-status	0x116bb90	0x116c03f	0x65746920	inline	 ite
+unit-action-status	0x116bb90	0x116c070	0x6e69	inline	in
+unit-action-status	0x116bb90	0x116c0a2	0x706d754a	inline	Jump
+unit-action-status	0x116bb90	0x116c15b	0x212eee8	cstring	Loading
+unit-action-status	0x116bb90	0x116c1ba	0x6d6d6120	inline	 amm
+unit-action-status	0x116bb90	0x116c25a	0x676e696772616843	inline	Charging
+unit-action-status	0x116bb90	0x116c386	0x214e012	cstring	south
+unit-action-status	0x116bb90	0x116c3f2	0x212ee39	cstring	 (below)
+unit-action-status	0x116bb90	0x116c42f	0x616d	inline	ma
+unit-action-status	0x116bb90	0x116c451	0x213a450/16	vector	Stop leading ani
+unit-action-status	0x116bb90	0x116c4a8	0x6e69	inline	in
+unit-action-status	0x116bb90	0x116c4ba	0x746e756f6d736944	inline	Dismount
+unit-action-status	0x116bb90	0x116c53b	0x676e69746e756f4d	inline	Mounting
+unit-action-status	0x116bb90	0x116c578	0x6e77	inline	wn
+unit-action-status	0x116bb90	0x116c585	0x6f4420676e69794c	inline	Lying Do
+unit-action-status	0x116bb90	0x116c5ff	0x6d65	inline	em
+unit-action-status	0x116bb90	0x116c621	0x213a440/16	vector	Releasing hold o
+unit-action-status	0x116bb90	0x116c635	0x7469206e	inline	n it
+unit-action-status	0x116bb90	0x116c693	0x676e696b636f6c42	inline	Blocking
+unit-action-status	0x116bb90	0x116c6d8	0x6c61	inline	al
+unit-action-status	0x116bb90	0x116c6ea	0x20676e696461654c	inline	Leading 
+unit-action-status	0x116bb90	0x116c715	0x6d696e61	inline	anim
+unit-action-status	0x116bb90	0x116c764	0x697463656c666564	inline	deflecti
+unit-action-status	0x116bb90	0x116c780	0x213a480/16	vector	Recovering from 
+unit-action-status	0x116bb90	0x116c788	0x6e6f	inline	on
+unit-action-status	0x116bb90	0x116c863	0x20676e696b637553	inline	Sucking 
+unit-action-status	0x116bb90	0x116c87f	0x6f6f6c42	inline	Bloo
+unit-action-status	0x116bb90	0x116c8d3	0x20676e69646c6f48	inline	Holding 
+unit-action-status	0x116bb90	0x116c8ef	0x6d657469	inline	item
+unit-action-status	0x116bb90	0x116c953	0x213a470/16	vector	Regaining balanc
+unit-action-status	0x116bb90	0x116c9a0	0x20676e6968737550	inline	Pushing 
+unit-action-status	0x116bb90	0x116c9be	0x7463	inline	ct
+unit-action-status	0x116bb90	0x116c9e4	0x656a624f	inline	Obje
+unit-action-status	0x116bb90	0x116ca18	0x5520	inline	 U
+unit-action-status	0x116bb90	0x116ca21	0x676e69646e617453	inline	Standing
+unit-action-status	0x116bb90	0x116cab3	0x676e697972726150	inline	Parrying
+unit-action-status	0x116bb90	0x116caff	0x6e69	inline	in
+unit-action-status	0x116bb90	0x116cb2c	0x67646f44	inline	Dodg
+unit-action-status	0x116bb90	0x116cc3f	0x21dc7ca	cstring	southeast
+unit-action-status	0x116bb90	0x116cc9d	0x214dffe	cstring	east
+unit-action-status	0x116bb90	0x116ccec	0x212ee39	cstring	 (below)
+unit-action-status	0x116bb90	0x116cd18	0x6e69	inline	in
+unit-action-status	0x116bb90	0x116cd43	0x6b6c6154	inline	Talk
+unit-action-status	0x116bb90	0x116ceaf	0x6e696b6361747441	inline	Attackin
+unit-action-status	0x116bb90	0x116cfdb	0x212eeda	cstring	, aiming for 
+unit-action-status	0x116bb90	0x116d0c0	0x21dc7b9	cstring	southwest
+unit-action-status	0x116bb90	0x116d110	0x676e	inline	ng
+unit-action-status	0x116bb90	0x116d11a	0x69766f4d	inline	Movi
+unit-action-status	0x116bb90	0x116d17a	0x212ee49	cstring	downward
+unit-action-status	0x116bb90	0x116d19d	0x21dc7b9	cstring	southwest
+unit-action-status	0x116bb90	0x116d202	0x21dc797	cstring	northwest
+unit-action-status	0x116bb90	0x116d266	0x20fc320	cstring	 ammo
+unit-action-status	0x116bb90	0x116d306	0x21b5bc3	cstring	you
+unit-action-status	0x116bb90	0x116d33a	0x21dc7a8	cstring	northeast
+unit-action-status	0x116bb90	0x116d39a	0x214e027	cstring	west
+unit-action-status	0x116bb90	0x116d3d2	0x20e2a73	cstring	 with 
+unit-action-status	0x116bb90	0x116d475	0x212ee52	cstring	Recovering from attacking
+unit-action-status	0x116bb90	0x116d4a6	0x212eef0	cstring	Nocking
+unit-action-status	0x116bb90	0x116d4ba	0x212eeaa	cstring	 with wrestling
+unit-action-status	0x116bb90	0x116d4de	0x20f7379	cstring	 
+unit-action-status	0x116bb90	0x116d4f2	0x214dfe9	cstring	north
+unit-action-status	0x116bb90	0x116d575	0x212ee49	cstring	downward
+unit-action-status	0x116bb90	0x116d5a0	0x212ee42	cstring	upward
+unit-action-status	0x116bb90	0x116d5c3	0x212ee30	cstring	 (above)
+unit-action-status	0x116bb90	0x116d5e6	0x212ee30	cstring	 (above)
+unit-action-status	0x116bb90	0x116d619	0x212eea0	cstring	Attacking
+unit-action-status	0x116bb90	0x116d62d	0x20e2a73	cstring	 with 
+unit-action-status	0x116bb90	0x116d71d	0x20e2a73	cstring	 with 
+unit-action-status	0x116bb90	0x116d766	0x20f7379	cstring	 
+unit-action-status	0x116bb90	0x116d7cf	0x20f7379	cstring	 
+unit-action-status	0x116bb90	0x116d7f3	0x212ee52	cstring	Recovering from attacking
+unit-action-status	0x116bb90	0x116d920	0x212eeba	cstring	 with grab
+unit-action-status	0x116bb90	0x116d950	0x21dc7a8	cstring	northeast
+unit-action-status	0x116bb90	0x116d9a6	0x21dc7ca	cstring	southeast
+unit-action-status	0x116bb90	0x116da01	0x212ee6c	cstring	Remote: 
+unit-action-status	0x116bb90	0x116da19	0x214e027	cstring	west
+unit-action-status	0x116bb90	0x116da6f	0x214dffe	cstring	east
+unit-action-status	0x116bb90	0x116daca	0x212ee8a	cstring	Incoming: 
+unit-action-status	0x116bb90	0x116dae7	0x212ee7f	cstring	Starting: 
+unit-action-status	0x116bb90	0x116db04	0x212ee95	cstring	IMMINENT: 
+unit-action-status	0x116bb90	0x116db21	0x212ee75	cstring	Distant: 
+unit-action-status	0x116bb90	0x116db39	0x21737d3	cstring	wild
+unit-action-status	0x116bb90	0x116db4f	0x212eecb	cstring	precise
+unit-action-status	0x116bb90	0x116db5e	0x20f7379	cstring	 
+unit-action-status	0x116bb90	0x116db72	0x20f7379	cstring	 
+unit-action-status	0x116bb90	0x116dbae	0x212eed3	cstring	NO_SUB
+unit-action-status	0x116bb90	0x116dc2b	0x212ee42	cstring	upward
+unit-action-status	0x116bb90	0x116dc4e	0x21ecafe	cstring	heavy
+unit-action-status	0x116bb90	0x116dc77	0x212eec5	cstring	quick
+unit-action-status	0x116bb90	0x116dc99	0x21de5e7	cstring	strike
+unit-action-status	0x116bb90	0x116dcba	0x21dc797	cstring	northwest
+unit-action-status	0x116bb90	0x116dd15	0x214e012	cstring	south
+unit-action-status	0x116bb90	0x116dd49	0x214dfe9	cstring	north
+unit-action-status	0x116bb90	0x116dd9b	0x21e9451	cstring	push
+unit-action-status	0x116bb90	0x116ddaf	0x212eecb	cstring	precise
+unit-action-status	0x116bb90	0x116ddc3	0x21737d3	cstring	wild
+unit-action-status	0x116bb90	0x116dde0	0x21ecafe	cstring	heavy
+unit-action-status	0x116bb90	0x116ddfd	0x212eec5	cstring	quick
+combat-renderer	0x1182410	0x11829ad	0x656e6f44	inline	Done
+combat-renderer	0x1182410	0x1182a43	0x20656c7473657257	inline	Wrestle 
+combat-renderer	0x1182410	0x11832d5	0x212f64f	cstring	Attack 
+combat-renderer	0x1182410	0x1183449	0x213a710/16	vector	 has yielded.  A
+combat-renderer	0x1182410	0x1183459	0x6e61206b63617474	inline	ttack an
+combat-renderer	0x1182410	0x1183463	0x79617779	inline	yway
+combat-renderer	0x1182410	0x11834f2	0x213a700/16	vector	Who will you att
+combat-renderer	0x1182410	0x11834fa	0x3f6b6361	inline	ack?
+combat-renderer	0x1182410	0x118356e	0x206d6961206f7420	inline	 to aim 
+combat-renderer	0x1182410	0x1183578	0x213a3c0/16	vector	What do you want
+combat-renderer	0x1182410	0x1183580	0x3f726f66	inline	for?
+combat-renderer	0x1182410	0x1183760	0x7269	inline	ir
+combat-renderer	0x1182410	0x1183770	0x666e6f43	inline	Conf
+combat-renderer	0x1182410	0x11839cd	0x6c65	inline	el
+combat-renderer	0x1182410	0x11839f5	0x636e6143	inline	Canc
+combat-renderer	0x1182410	0x1184bbf	0x2079	inline	y 
+combat-renderer	0x1182410	0x1184bca	0x72726150	inline	Parr
+combat-renderer	0x1182410	0x1184c85	0x2068	inline	h 
+combat-renderer	0x1182410	0x1184c8a	0x74697720	inline	 wit
+combat-renderer	0x1182410	0x1184d94	0x2820	inline	 (
+combat-renderer	0x1182410	0x11854cc	0x62617247	inline	Grab
+combat-renderer	0x1182410	0x118550c	0x2068	inline	h 
+combat-renderer	0x1182410	0x1185511	0x74697720	inline	 wit
+combat-renderer	0x1182410	0x1185ca8	0x73206c616d726f4e	inline	Normal s
+combat-renderer	0x1182410	0x1185cc8	0x6b697274	inline	trik
+combat-renderer	0x1182410	0x1185cfc	0x202c	inline	, 
+combat-renderer	0x1182410	0x1186119	0x212f677	cstring	slash
+combat-renderer	0x1182410	0x1186551	0x2065	inline	e 
+combat-renderer	0x1182410	0x1186570	0x67646f44	inline	Dodg
+combat-renderer	0x1182410	0x11874f6	0x6c61	inline	al
+combat-renderer	0x1182410	0x118750e	0x6d726f4e	inline	Norm
+combat-renderer	0x1182410	0x118759b	0x74736146	inline	Fast
+combat-renderer	0x1182410	0x11875ec	0x202c	inline	, 
+combat-renderer	0x1182410	0x118844b	0x213a770/16	vector	Quick attack: fa
+combat-renderer	0x1182410	0x1188453	0x6c756672	inline	rful
+combat-renderer	0x1182410	0x118845a	0x65776f7020746f6e	inline	not powe
+combat-renderer	0x1182410	0x118846e	0x213a780/16	vector	ster to strike a
+combat-renderer	0x1182410	0x118847e	0x213a790/16	vector	nd recover, but 
+combat-renderer	0x1182410	0x11885ea	0x6564	inline	de
+combat-renderer	0x1182410	0x11885f4	0x213a7a0/16	vector	Heavy attack: sl
+combat-renderer	0x1182410	0x1188604	0x7261682073746968	inline	hits har
+combat-renderer	0x1182410	0x1188618	0x213a7b0/16	vector	ower to strike a
+combat-renderer	0x1182410	0x1188628	0x213a790/16	vector	nd recover, but 
+combat-renderer	0x1182410	0x11887ab	0x213a7c0/16	vector	Wild attack: fas
+combat-renderer	0x1182410	0x11887b7	0x6574617275636361	inline	accurate
+combat-renderer	0x1182410	0x11887cb	0x213a7d0/16	vector	t strike, slow r
+combat-renderer	0x1182410	0x11887db	0x213a7e0/16	vector	ecovery, hard bu
+combat-renderer	0x1182410	0x11887ef	0x213a7f0/16	vector	t unbalancing/in
+combat-renderer	0x1182410	0x118894d	0x7963	inline	cy
+combat-renderer	0x1182410	0x1188956	0x213a800/16	vector	Precise attack: 
+combat-renderer	0x1182410	0x1188968	0x61727563	inline	cura
+combat-renderer	0x1182410	0x1188972	0x213a810/16	vector	very slow to str
+combat-renderer	0x1182410	0x1188982	0x213a820/16	vector	ike, improved ac
+combat-renderer	0x1182410	0x1188ad0	0x212f737	cstring	Sharing 
+combat-renderer	0x1182410	0x1188ed8	0x206b	inline	k 
+combat-renderer	0x1182410	0x1188edd	0x636f6c42	inline	Bloc
+combat-renderer	0x1182410	0x1188fa5	0x2068	inline	h 
+combat-renderer	0x1182410	0x1188faa	0x74697720	inline	 wit
+combat-renderer	0x1182410	0x11890b4	0x2820	inline	 (
+combat-renderer	0x1182410	0x11891dc	0x219edb7	cstring	)
+combat-renderer	0x1182410	0x118971e	0x21c0223	cstring	kick
+combat-renderer	0x1182410	0x1189748	0x2173d89	cstring	bite
+combat-renderer	0x1182410	0x118976b	0x2142915	cstring	sting
+combat-renderer	0x1182410	0x118978e	0x212f699	cstring	snatch
+combat-renderer	0x1182410	0x11897c3	0x6b69	inline	ik
+combat-renderer	0x1182410	0x11897d2	0x72747320	inline	 str
+combat-renderer	0x1182410	0x11898d3	0x212f70c	cstring	Both holding 
+combat-renderer	0x1182410	0x118990c	0x21de5e7	cstring	strike
+combat-renderer	0x1182410	0x1189950	0x656b	inline	ke
+combat-renderer	0x1182410	0x1189955	0x69727473	inline	stri
+combat-renderer	0x1182410	0x11899cc	0x666f	inline	of
+combat-renderer	0x1182410	0x11899e2	0x213a860/16	vector	Gain possession 
+combat-renderer	0x1182410	0x1189a94	0x213a720/16	vector	Impossible strik
+combat-renderer	0x1182410	0x1189af8	0x7320726569736145	inline	Easier s
+combat-renderer	0x1182410	0x1189b18	0x6b697274	inline	trik
+combat-renderer	0x1182410	0x1189b50	0x7320656c706d6953	inline	Simple s
+combat-renderer	0x1182410	0x1189b70	0x6b697274	inline	trik
+combat-renderer	0x1182410	0x1189bd2	0x626973736f706d49	inline	Impossib
+combat-renderer	0x1182410	0x1189bf3	0x656c	inline	le
+combat-renderer	0x1182410	0x1189c51	0x7265	inline	er
+combat-renderer	0x1182410	0x1189c69	0x69736145	inline	Easi
+combat-renderer	0x1182410	0x1189f62	0x6820746365726964	inline	direct h
+combat-renderer	0x1182410	0x1189f80	0x7469	inline	it
+combat-renderer	0x1182410	0x1189fc8	0x7320796c72696166	inline	fairly s
+combat-renderer	0x1182410	0x1189fe6	0x64696c6f	inline	olid
+combat-renderer	0x1182410	0x118a025	0x657a	inline	ze
+combat-renderer	0x1182410	0x118a02e	0x796c6e6f206e6163	inline	can only
+combat-renderer	0x1182410	0x118a054	0x61726720	inline	 gra
+combat-renderer	0x1182410	0x118a100	0x776f	inline	ow
+combat-renderer	0x1182410	0x118a119	0x6c535656	inline	VVSl
+combat-renderer	0x1182410	0x118a14f	0x656c	inline	le
+combat-renderer	0x1182410	0x118a167	0x706d6953	inline	Simp
+combat-renderer	0x1182410	0x118a30d	0x657a	inline	ze
+combat-renderer	0x1182410	0x118a316	0x796c6e6f206e6163	inline	can only
+combat-renderer	0x1182410	0x118a33b	0x61726720	inline	 gra
+combat-renderer	0x1182410	0x118a380	0x7320796c72696166	inline	fairly s
+combat-renderer	0x1182410	0x118a39e	0x64696c6f	inline	olid
+combat-renderer	0x1182410	0x118a3f9	0x68737570	inline	push
+combat-renderer	0x1182410	0x118a483	0x6820746365726964	inline	direct h
+combat-renderer	0x1182410	0x118a48d	0x7469	inline	it
+combat-renderer	0x1182410	0x118a646	0x20f7379	cstring	 
+combat-renderer	0x1182410	0x118a67a	0x212eed3	cstring	NO_SUB
+combat-renderer	0x1182410	0x118a732	0x21f0cfa	cstring	/
+combat-renderer	0x1182410	0x118a7df	0x20f7379	cstring	 
+combat-renderer	0x1182410	0x118a813	0x212eed3	cstring	NO_SUB
+combat-renderer	0x1182410	0x118a8e9	0x7320796b63697254	inline	Tricky s
+combat-renderer	0x1182410	0x118a909	0x6b697274	inline	trik
+combat-renderer	0x1182410	0x118a94b	0x213a730/16	vector	Difficult strike
+combat-renderer	0x1182410	0x118a9a1	0x7473	inline	st
+combat-renderer	0x1182410	0x118a9ba	0x61462056	inline	V Fa
+combat-renderer	0x1182410	0x118aaa3	0x20e2a73	cstring	 with 
+combat-renderer	0x1182410	0x118ab35	0x7274732079736145	inline	Easy str
+combat-renderer	0x1182410	0x118ab3f	0x6b69	inline	ik
+combat-renderer	0x1182410	0x118ab9a	0x6c65	inline	el
+combat-renderer	0x1182410	0x118abac	0x213a740/16	vector	can't land squar
+combat-renderer	0x1182410	0x118ac17	0x6365	inline	ec
+combat-renderer	0x1182410	0x118ac29	0x213a750/16	vector	can't quite conn
+combat-renderer	0x1182410	0x118ac7c	0x6572	inline	re
+combat-renderer	0x1182410	0x118ac99	0x61757173	inline	squa
+combat-renderer	0x1182410	0x118ace7	0x21f118a	cstring	 (
+combat-renderer	0x1182410	0x118ad1f	0x20e2a73	cstring	 with 
+combat-renderer	0x1182410	0x118b1ce	0x6e697375	inline	usin
+combat-renderer	0x1182410	0x118b1d5	0x20656c7473657257	inline	Wrestle 
+combat-renderer	0x1182410	0x118b1e7	0x2067	inline	g 
+combat-renderer	0x1182410	0x118b2f9	0x21f118a	cstring	 (
+combat-renderer	0x1182410	0x118b389	0x219edb7	cstring	)
+combat-renderer	0x1182410	0x118b5d3	0x20e2a73	cstring	 with 
+combat-renderer	0x1182410	0x118b611	0x79736145	inline	Easy
+combat-renderer	0x1182410	0x118b661	0x796b	inline	ky
+combat-renderer	0x1182410	0x118b679	0x63697254	inline	Tric
+combat-renderer	0x1182410	0x118b6f7	0x6c75636966666944	inline	Difficul
+combat-renderer	0x1182410	0x118b73c	0x212f71a	cstring	Grabbed their 
+combat-renderer	0x1182410	0x118b75e	0x7571732079726576	inline	very squ
+combat-renderer	0x1182410	0x118b77c	0x7261	inline	ar
+combat-renderer	0x1182410	0x118b7d3	0x776f	inline	ow
+combat-renderer	0x1182410	0x118b7ec	0x6c532056	inline	V Sl
+combat-renderer	0x1182410	0x118b82f	0x776f6c53	inline	Slow
+combat-renderer	0x1182410	0x118b86e	0x212f640	cstring	Really attack 
+combat-renderer	0x1182410	0x118b908	0x20f7241	cstring	?
+combat-renderer	0x1182410	0x118b998	0x6365	inline	ec
+combat-renderer	0x1182410	0x118b9aa	0x213a750/16	vector	can't quite conn
+combat-renderer	0x1182410	0x118ba15	0x6c65	inline	el
+combat-renderer	0x1182410	0x118ba27	0x213a740/16	vector	can't land squar
+combat-renderer	0x1182410	0x118ba81	0x6572	inline	re
+combat-renderer	0x1182410	0x118ba98	0x61757173	inline	squa
+combat-renderer	0x1182410	0x118bb60	0x7571732079726576	inline	very squ
+combat-renderer	0x1182410	0x118bb6a	0x7261	inline	ar
+combat-renderer	0x1182410	0x118bd65	0x212f65f	cstring	Parry (
+combat-renderer	0x1182410	0x118bdcd	0x219edb7	cstring	)
+combat-renderer	0x1182410	0x118c057	0x212f667	cstring	Block (
+combat-renderer	0x1182410	0x118c0ad	0x219edb7	cstring	)
+combat-renderer	0x1182410	0x118c0c8	0x21730c2	cstring	Strike
+combat-renderer	0x1182410	0x118c0e0	0x212f657	cstring	Wrestle
+combat-renderer	0x1182410	0x118c0f8	0x212f66f	cstring	Dodge (
+combat-renderer	0x1182410	0x118c14e	0x219edb7	cstring	)
+combat-renderer	0x1182410	0x118c169	0x212f67d	cstring	slap
+combat-renderer	0x1182410	0x118c18c	0x212f682	cstring	hack
+combat-renderer	0x1182410	0x118c1af	0x212f687	cstring	bash
+combat-renderer	0x1182410	0x118c1d2	0x22130f0	cstring	lash
+combat-renderer	0x1182410	0x118c376	0x212f622	cstring	Really start a conflict with 
+combat-renderer	0x1182410	0x118c410	0x20f7241	cstring	?
+combat-renderer	0x1182410	0x118c76c	0x212f7f1	cstring	Strangle 
+combat-renderer	0x1182410	0x118c7a4	0x20e2a73	cstring	 with 
+combat-renderer	0x1182410	0x118c9d2	0x212f7ea	cstring	Shake 
+combat-renderer	0x1182410	0x118cc33	0x212f7a3	cstring	Release grip of 
+combat-renderer	0x1182410	0x118cc58	0x215fffc	cstring	 on 
+combat-renderer	0x1182410	0x118ce89	0x212f75b	cstring	Throw by 
+combat-renderer	0x1182410	0x118d0a9	0x212f74d	cstring	Take-down by 
+combat-renderer	0x1182410	0x118d2ce	0x212f746	cstring	Choke 
+combat-renderer	0x1182410	0x118d521	0x212f740	cstring	Lock 
+combat-renderer	0x1182410	0x118d745	0x212f76c	cstring	Gouge 
+combat-renderer	0x1182410	0x118d962	0x212f773	cstring	Break 
+combat-renderer	0x1182410	0x118db8a	0x212f765	cstring	Pinch 
+combat-renderer	0x1182410	0x118dc22	0x21f11d0	cstring	:
+combat-renderer	0x1182410	0x118de62	0x21de5e7	cstring	strike
+combat-renderer	0x1182410	0x118deaf	0x212f60c	cstring	Who will you wrestle?
+combat-renderer	0x1182410	0x118dfc4	0x64656761726e6520	inline	 enraged
+combat-renderer	0x1182410	0x118e003	0x213a760/16	vector	No quick attack:
+combat-renderer	0x1182410	0x118e055	0x212f6a0	cstring	No heavy attack: enraged
+combat-renderer	0x1182410	0x118e0b2	0x212f6b9	cstring	Forced wild attack: enraged
+combat-renderer	0x1182410	0x118e10f	0x212f6d5	cstring	No precise attack: enraged
+combat-renderer	0x1182410	0x118e2a7	0x212f7fb	cstring	stab
+combat-renderer	0x1182410	0x118e2d8	0x212f68c	cstring	pommel
+combat-renderer	0x1182410	0x118e318	0x212eed3	cstring	NO_SUB
+combat-renderer	0x1182410	0x118e3ba	0x21f0cfa	cstring	/
+combat-renderer	0x1182410	0x118e3d9	0x212f693	cstring	punch
+combat-renderer	0x1182410	0x118e404	0x212f729	cstring	Grabbed your 
+combat-renderer	0x1182410	0x118f36d	0x21f0cfa	cstring	/
+combat-renderer	0x1182410	0x118f388	0x212f791	cstring	Release choke of 
+combat-renderer	0x1182410	0x118f3b6	0x212f7db	cstring	Break grip of 
+combat-renderer	0x1182410	0x118f3db	0x215fffc	cstring	 on 
+combat-renderer	0x1182410	0x118f4bb	0x212f7ca	cstring	Loosen choke of 
+combat-renderer	0x1182410	0x118f671	0x212f77a	cstring	Release joint lock of 
+combat-renderer	0x1182410	0x118f685	0x212f7b4	cstring	Loosen joint lock of 
+combat-renderer	0x1182410	0x118f6de	0x2132a48	cstring	No charge attack: target's location inaccessible
+combat-renderer	0x1182410	0x118f866	0x6472	inline	rd
+combat-renderer	0x1182410	0x118f870	0x213a830/16	vector	Multi-attack: ch
+combat-renderer	0x1182410	0x118f87e	0x6177726574666120	inline	 afterwa
+combat-renderer	0x1182410	0x118f892	0x213a840/16	vector	oose another sim
+combat-renderer	0x1182410	0x118f8a2	0x213a850/16	vector	ultaneous action
+combat-renderer	0x1182410	0x118f90a	0x2132a18	cstring	No charge attack: target shares your location
+combat-renderer	0x1182410	0x118f937	0x21329f0	cstring	No charge attack: target is climbing
+combat-renderer	0x1182410	0x118f9cf	0x21329c0	cstring	No charge attack: target is on a projectile
+combat-renderer	0x1182410	0x118fa18	0x2132990	cstring	No charge attack: target is on a vehicle
+combat-renderer	0x1182410	0x118fa45	0x2132958	cstring	No charge attack: target is in uncontrolled flight
+combat-renderer	0x1182410	0x118fb60	0x2132820	cstring	No charge attack: you are in uncontrolled flight
+combat-renderer	0x1182410	0x118fb8d	0x21327f8	cstring	No charge attack: you are chained
+combat-renderer	0x1182410	0x118fbba	0x21327d0	cstring	No charge attack: you are mounted
+combat-renderer	0x1182410	0x118fbe7	0x21327a8	cstring	No charge attack: you are on the ground
+combat-renderer	0x1182410	0x118fc14	0x212f6f0	cstring	No charge attack: no target
+combat-renderer	0x1182410	0x118fc41	0x2132a80	cstring	No charge attack: target too far away
+combat-renderer	0x1182410	0x118fd4c	0x20f7379	cstring	 
+combat-renderer	0x1182410	0x118fd87	0x2132aa8	cstring	Charge attack: move toward your opponent
+combat-renderer	0x1182410	0x118fe00	0x21328d8	cstring	No charge attack: target is on the ground
+combat-renderer	0x1182410	0x118fe2d	0x21328b0	cstring	No charge attack: you are climbing
+combat-renderer	0x1182410	0x118fe5a	0x2132880	cstring	No charge attack: you are on a projectile
+combat-renderer	0x1182410	0x118fe87	0x2132858	cstring	No charge attack: you are on a vehicle
+combat-renderer	0x1182410	0x118feb4	0x2132930	cstring	No charge attack: target is chained
+combat-renderer	0x1182410	0x118fee1	0x2132908	cstring	No charge attack: target is mounted
+announcement-render	0x11b2e40	0x11b30a7	0x79616b4f	inline	Okay
+announcement-render	0x11b2e40	0x11b3beb	0x212ff08	cstring	@:
+announcement-render	0x11b2e40	0x11b3c2f	0x65726f4d	inline	More
+queue-submission	0x17ea070	0x17eaddc	0x746e	inline	nt
+queue-submission	0x17ea070	0x17eade5	0x21b7a20/16	vector	Empty announceme
+shared-damage	0x17ebfc0	0x17ec1e8	0x20656854	inline	The 
+shared-damage	0x17ebfc0	0x17ec31c	0x2160643	cstring	its
+shared-damage	0x17ebfc0	0x17ec335	0x7469	inline	it
+shared-damage	0x17ebfc0	0x17ec39f	0x2107b48	cstring	It
+shared-damage	0x17ebfc0	0x17ec3af	0x7449	inline	It
+shared-damage	0x17ebfc0	0x17ec468	0x7327	inline	's
+shared-damage	0x17ebfc0	0x17ec63e	0x21c4882	cstring	 by the 
+shared-damage	0x17ebfc0	0x17ec72e	0x20e2a73	cstring	 with 
+shared-damage	0x17ebfc0	0x17ec7a2	0x21b7a40/16	vector	, but the attack
+shared-damage	0x17ebfc0	0x17ec7b4	0x21b7a50/16	vector	 is deflected by
+shared-damage	0x17ebfc0	0x17ec874	0x6465	inline	ed
+shared-damage	0x17ebfc0	0x17ec87a	0x21b7ac0/16	vector	 attack is inter
+shared-damage	0x17ebfc0	0x17ec882	0x74707572	inline	rupt
+shared-damage	0x17ebfc0	0x17ecb23	0x21b747f	cstring	, but it glances away!
+shared-damage	0x17ebfc0	0x17eccdd	0x21b762b	cstring	It is a gelding strike!
+shared-damage	0x17ebfc0	0x17ed0f1	0x20726f6a616d2061	inline	a major 
+shared-damage	0x17ebfc0	0x17ed0fb	0x7972	inline	ry
+shared-damage	0x17ebfc0	0x17ed100	0x65747261	inline	arte
+shared-damage	0x17ebfc0	0x17ed1aa	0x20656874206e6920	inline	 in the 
+shared-damage	0x17ebfc0	0x17ed280	0x6b63	inline	ck
+shared-damage	0x17ebfc0	0x17ed285	0x2065687420796220	inline	 by the 
+shared-damage	0x17ebfc0	0x17ed28f	0x21b7aa0/16	vector	 has been opened
+shared-damage	0x17ebfc0	0x17ed29b	0x61747461	inline	atta
+shared-damage	0x17ebfc0	0x17ed33f	0x20726f746f6d2061	inline	a motor 
+shared-damage	0x17ebfc0	0x17ed34f	0x7672656e	inline	nerv
+shared-damage	0x17ebfc0	0x17ed3f9	0x20656874206e6920	inline	 in the 
+shared-damage	0x17ebfc0	0x17ed525	0x65766168	inline	have
+shared-damage	0x17ebfc0	0x17ed578	0x6573206e65656220	inline	 been se
+shared-damage	0x17ebfc0	0x17ed588	0x65726576	inline	vere
+shared-damage	0x17ebfc0	0x17ed618	0x6e6f646e65742061	inline	a tendon
+shared-damage	0x17ebfc0	0x17ed6bf	0x20656874206e6920	inline	 in the 
+shared-damage	0x17ebfc0	0x17ed78f	0x206e	inline	n 
+shared-damage	0x17ebfc0	0x17ed794	0x6565622073616820	inline	 has bee
+shared-damage	0x17ebfc0	0x17edb6c	0x746e	inline	nt
+shared-damage	0x17ebfc0	0x17edb72	0x656d6167696c2061	inline	a ligame
+shared-damage	0x17ebfc0	0x17edc1c	0x20656874206e6920	inline	 in the 
+shared-damage	0x17ebfc0	0x17edcf2	0x206e	inline	n 
+shared-damage	0x17ebfc0	0x17edcf8	0x6565622073616820	inline	 has bee
+shared-damage	0x17ebfc0	0x17edd92	0x646e6120	inline	 and
+shared-damage	0x17ebfc0	0x17eddb2	0x210eb84	cstring	!
+shared-damage	0x17ebfc0	0x17ede37	0x6168	inline	ha
+shared-damage	0x17ebfc0	0x17ede60	0x7265747261206e61	inline	an arter
+shared-damage	0x17ebfc0	0x17edea7	0x21b7368	cstring	 has been opened by the attack
+shared-damage	0x17ebfc0	0x17edf9a	0x736b	inline	ks
+shared-damage	0x17ebfc0	0x17edf9f	0x6f6f6c20	inline	 loo
+shared-damage	0x17ebfc0	0x17ee002	0x216b	inline	k!
+shared-damage	0x17ebfc0	0x17ee008	0x63697320	inline	 sic
+shared-damage	0x17ebfc0	0x17ee189	0x6920	inline	 i
+shared-damage	0x17ebfc0	0x17ee1ee	0x21b7b50/16	vector	 having trouble 
+shared-damage	0x17ebfc0	0x17ee1f6	0x6e69687461657262	inline	breathin
+shared-damage	0x17ebfc0	0x17ee204	0x2167	inline	g!
+shared-damage	0x17ebfc0	0x17ee37d	0x73616820	inline	 has
+shared-damage	0x17ebfc0	0x17ee3dd	0x2164	inline	d!
+shared-damage	0x17ebfc0	0x17ee3e2	0x7473206e65656220	inline	 been st
+shared-damage	0x17ebfc0	0x17ee3ef	0x656e6e75	inline	unne
+shared-damage	0x17ebfc0	0x17ee56d	0x73616820	inline	 has
+shared-damage	0x17ebfc0	0x17ee5be	0x20ced40/16	vector	 become enraged!
+shared-damage	0x17ebfc0	0x17ee735	0x796c	inline	ly
+shared-damage	0x17ebfc0	0x17ee73b	0x21b7af0/16	vector	 latches on firm
+shared-damage	0x17ebfc0	0x17ee8bc	0x796c	inline	ly
+shared-damage	0x17ebfc0	0x17ee8c2	0x21b7af0/16	vector	 latches on firm
+shared-damage	0x17ebfc0	0x17ee92e	0x206f7420	inline	 to 
+shared-damage	0x17ebfc0	0x17eecc9	0x6920	inline	 i
+shared-damage	0x17ebfc0	0x17eed33	0x21b7b00/16	vector	 propelled away 
+shared-damage	0x17ebfc0	0x17eed3e	0x776f6c6220656874	inline	the blow
+shared-damage	0x17ebfc0	0x17eed4f	0x21b7b10/16	vector	by the force of 
+shared-damage	0x17ebfc0	0x17eee53	0x21b7bc0/16	vector	 is sucked out o
+shared-damage	0x17ebfc0	0x17eee5b	0x6f77206568742066	inline	f the wo
+shared-damage	0x17ebfc0	0x17eee69	0x21646e75	inline	und!
+shared-damage	0x17ebfc0	0x17eefe6	0x73616820	inline	 has
+shared-damage	0x17ebfc0	0x17ef03a	0x2173	inline	s!
+shared-damage	0x17ebfc0	0x17ef03f	0x756f6963736e6f63	inline	consciou
+shared-damage	0x17ebfc0	0x17ef049	0x21b7b20/16	vector	 been knocked un
+shared-damage	0x17ebfc0	0x17ef1f6	0x21b7b90/16	vector	 splatters over 
+shared-damage	0x17ebfc0	0x17ef1fe	0x20656874	inline	the 
+shared-damage	0x17ebfc0	0x17ef48c	0x2065	inline	e 
+shared-damage	0x17ebfc0	0x17ef492	0x21b7b70/16	vector	 is injected int
+shared-damage	0x17ebfc0	0x17ef49a	0x6874206f	inline	o th
+shared-damage	0x17ebfc0	0x17ef86e	0x21b7ab0/16	vector	 is ripped to sh
+shared-damage	0x17ebfc0	0x17ef876	0x73646572	inline	reds
+shared-damage	0x17ebfc0	0x17ef9d9	0x202c	inline	, 
+shared-damage	0x17ebfc0	0x17efa3d	0x202c	inline	, 
+shared-damage	0x17ebfc0	0x17efaa4	0x202c	inline	, 
+shared-damage	0x17ebfc0	0x17efafc	0x726f736e65732061	inline	a sensor
+shared-damage	0x17ebfc0	0x17efb0c	0x7672	inline	rv
+shared-damage	0x17ebfc0	0x17efb11	0x656e2079	inline	y ne
+shared-damage	0x17ebfc0	0x17efb77	0x20f7379	cstring	 
+shared-damage	0x17ebfc0	0x17efb97	0x21b7683	cstring	 been severed
+shared-damage	0x17ebfc0	0x17efbb2	0x21b76b8	cstring	a tendon
+shared-damage	0x17ebfc0	0x17efc02	0x6e726f74	inline	torn
+shared-damage	0x17ebfc0	0x17efc2e	0x21b769c	cstring	 has been 
+shared-damage	0x17ebfc0	0x17efc89	0x21b7bb0/16	vector	 pours over the 
+shared-damage	0x17ebfc0	0x17efce0	0x202c	inline	, 
+shared-damage	0x17ebfc0	0x17efd3a	0x64656e6961727473	inline	strained
+shared-damage	0x17ebfc0	0x17efd9a	0x6e726f74	inline	torn
+shared-damage	0x17ebfc0	0x17efdda	0x21b7691	cstring	a ligament
+shared-damage	0x17ebfc0	0x17efdfc	0x21b769c	cstring	 has been 
+shared-damage	0x17ebfc0	0x17efe1c	0x21b75d5	cstring	 in the 
+shared-damage	0x17ebfc0	0x17efe59	0x21736b6165726220	inline	 breaks!
+shared-damage	0x17ebfc0	0x17efef4	0x72656e20796e616d	inline	many ner
+shared-damage	0x17ebfc0	0x17eff04	0x6576	inline	ve
+shared-damage	0x17ebfc0	0x17f00af	0x21c4882	cstring	 by the 
+shared-damage	0x17ebfc0	0x17f024c	0x676e	inline	ng
+shared-damage	0x17ebfc0	0x17f0252	0x69796c66	inline	flyi
+shared-damage	0x17ebfc0	0x17f0279	0x7469	inline	it
+shared-damage	0x17ebfc0	0x17f0286	0x2160643	cstring	its
+shared-damage	0x17ebfc0	0x17f02af	0x7469	inline	it
+shared-damage	0x17ebfc0	0x17f0304	0x21f5cb3	cstring	it
+shared-damage	0x17ebfc0	0x17f0360	0x7469	inline	it
+shared-damage	0x17ebfc0	0x17f0395	0x21b75d5	cstring	 in the 
+shared-damage	0x17ebfc0	0x17f03cc	0x21b75d5	cstring	 in the 
+shared-damage	0x17ebfc0	0x17f03ec	0x214dc50	cstring	has
+shared-damage	0x17ebfc0	0x17f040c	0x21138b9	cstring	have
+shared-damage	0x17ebfc0	0x17f042b	0x2131973	cstring	's
+shared-damage	0x17ebfc0	0x17f049f	0x20fc8f7	cstring	The 
+shared-damage	0x17ebfc0	0x17f04af	0x20656854	inline	The 
+shared-damage	0x17ebfc0	0x17f0524	0x21b7ad0/16	vector	 has lodged firm
+shared-damage	0x17ebfc0	0x17f0532	0x21b7ae0/16	vector	ly in the wound!
+shared-damage	0x17ebfc0	0x17f070c	0x6573	inline	se
+shared-damage	0x17ebfc0	0x17f0711	0x69757262	inline	brui
+shared-damage	0x17ebfc0	0x17f075d	0x64656e6961727073	inline	sprained
+shared-damage	0x17ebfc0	0x17f08d1	0x21c4882	cstring	 by the 
+shared-damage	0x17ebfc0	0x17f09c1	0x20e2a73	cstring	 with 
+shared-damage	0x17ebfc0	0x17f0a35	0x21b7a40/16	vector	, but the attack
+shared-damage	0x17ebfc0	0x17f0a40	0x2168	inline	h!
+shared-damage	0x17ebfc0	0x17f0a45	0x67756f72	inline	roug
+shared-damage	0x17ebfc0	0x17f0a4f	0x21b7a90/16	vector	 passes right th
+shared-damage	0x17ebfc0	0x17f0aa4	0x20f3aea	cstring	, 
+shared-damage	0x17ebfc0	0x17f0ac4	0x20f3aea	cstring	, 
+shared-damage	0x17ebfc0	0x17f0adf	0x20f3aea	cstring	, 
+shared-damage	0x17ebfc0	0x17f0afc	0x21b7665	cstring	a motor nerve
+shared-damage	0x17ebfc0	0x17f0b19	0x21b7673	cstring	a sensory nerve
+shared-damage	0x17ebfc0	0x17f0b68	0x646e6120	inline	 and
+shared-damage	0x17ebfc0	0x17f0bc4	0x646e6120	inline	 and
+shared-damage	0x17ebfc0	0x17f0c20	0x646e6120	inline	 and
+shared-damage	0x17ebfc0	0x17f0c55	0x21b75d5	cstring	 in the 
+shared-damage	0x17ebfc0	0x17f0c75	0x21b0b8a	cstring	torn
+shared-damage	0x17ebfc0	0x17f0cce	0x21b7260	cstring	 and the severed part sails off in an arc!
+shared-damage	0x17ebfc0	0x17f0d21	0x20f3ec0	cstring	Your
+shared-damage	0x17ebfc0	0x17f0d8f	0x7327	inline	's
+shared-damage	0x17ebfc0	0x17f0e1a	0x21b7b60/16	vector	 even more sick!
+shared-damage	0x17ebfc0	0x17f0e67	0x21b7b30/16	vector	 been stunned ag
+shared-damage	0x17ebfc0	0x17f0e6f	0x216e6961	inline	ain!
+shared-damage	0x17ebfc0	0x17f0eba	0x676e	inline	ng
+shared-damage	0x17ebfc0	0x17f0ebf	0x65726220656c6275	inline	uble bre
+shared-damage	0x17ebfc0	0x17f0ec9	0x21b7b40/16	vector	 having more tro
+shared-damage	0x17ebfc0	0x17f0ed5	0x69687461	inline	athi
+shared-damage	0x17ebfc0	0x17f0f35	0x6573	inline	se
+shared-damage	0x17ebfc0	0x17f0f3b	0x69757262	inline	brui
+shared-damage	0x17ebfc0	0x17f0f5f	0x21b7340	cstring	The geldables have been torn away!
+shared-damage	0x17ebfc0	0x17f0f70	0x21b7643	cstring	It is a gelding blow!
+shared-damage	0x17ebfc0	0x17f0f93	0x21b7742	cstring	 been knocked unconscious!
+shared-damage	0x17ebfc0	0x17f0fcc	0x21b780f	cstring	 is sucked out of the wound!
+shared-damage	0x17ebfc0	0x17f0feb	0x210eb84	cstring	!
+shared-damage	0x17ebfc0	0x17f1020	0x21b77ad	cstring	 is injected into the 
+shared-damage	0x17ebfc0	0x17f1058	0x20f7379	cstring	 
+shared-damage	0x17ebfc0	0x17f1077	0x210eb84	cstring	!
+shared-damage	0x17ebfc0	0x17f10ac	0x20f7379	cstring	 
+shared-damage	0x17ebfc0	0x17f10cf	0x20ca975	cstring	 become enraged!
+shared-damage	0x17ebfc0	0x17f10ee	0x21b73b0	cstring	 propelled away by the force of the blow!
+shared-damage	0x17ebfc0	0x17f1111	0x21b76e0	cstring	 attack is interrupted!
+shared-damage	0x17ebfc0	0x17f1130	0x210eb84	cstring	!
+shared-damage	0x17ebfc0	0x17f1168	0x21cef94	cstring	 to 
+shared-damage	0x17ebfc0	0x17f1183	0x20f3aea	cstring	, 
+shared-damage	0x17ebfc0	0x17f11a8	0x214dc4f	cstring	 has
+shared-damage	0x17ebfc0	0x17f11cb	0x214dc4f	cstring	 has
+shared-damage	0x17ebfc0	0x17f11ea	0x21b7709	cstring	 latches on firmly
+shared-damage	0x17ebfc0	0x17f1209	0x21b772e	cstring	 latches on firmly!
+shared-damage	0x17ebfc0	0x17f122c	0x2142337	cstring	 is
+shared-damage	0x17ebfc0	0x17f124b	0x2142337	cstring	 is
+shared-damage	0x17ebfc0	0x17f126e	0x20f50f2	cstring	 looks
+shared-damage	0x17ebfc0	0x17f1291	0x214dc4f	cstring	 has
+shared-damage	0x17ebfc0	0x17f12c5	0x2160643	cstring	its
+shared-damage	0x17ebfc0	0x17f12f6	0x20f484f	cstring	strained
+shared-damage	0x17ebfc0	0x17f1319	0x21b76d7	cstring	 breaks!
+shared-damage	0x17ebfc0	0x17f1339	0x21b0b8a	cstring	torn
+shared-damage	0x17ebfc0	0x17f135c	0x21b76c1	cstring	 is ripped to shreds!
+shared-damage	0x17ebfc0	0x17f1377	0x21b7659	cstring	many nerves
+shared-damage	0x17ebfc0	0x17f13f2	0x21b7a30/16	vector	, but it is defl
+shared-damage	0x17ebfc0	0x17f13fa	0x7962206465746365	inline	ected by
+shared-damage	0x17ebfc0	0x17f1638	0x21b7a60/16	vector	, lightly tappin
+shared-damage	0x17ebfc0	0x17f1640	0x6174206568742067	inline	g the ta
+shared-damage	0x17ebfc0	0x17f164e	0x74656772	inline	rget
+shared-damage	0x17ebfc0	0x17f1861	0x21b7a80/16	vector	, but it passes 
+shared-damage	0x17ebfc0	0x17f1869	0x6874207468676972	inline	right th
+shared-damage	0x17ebfc0	0x17f1877	0x2168	inline	h!
+shared-damage	0x17ebfc0	0x17f187c	0x67756f72	inline	roug
+shared-damage	0x17ebfc0	0x17f18d5	0x21b73e0	cstring	 having more trouble breathing!
+shared-damage	0x17ebfc0	0x17f1916	0x21b779c	cstring	 even more sick!
+shared-damage	0x17ebfc0	0x17f1939	0x21b775d	cstring	 been stunned again!
+shared-damage	0x17ebfc0	0x17f196a	0x2131973	cstring	's
+shared-damage	0x17ebfc0	0x17f19d8	0x219eeb1	cstring	 and 
+shared-damage	0x17ebfc0	0x17f19f2	0x21b7408	cstring	spinning 
+shared-damage	0x17ebfc0	0x17f1d6e	0x21b7772	cstring	 been stunned!
+shared-damage	0x17ebfc0	0x17f1d91	0x21b77a6	cstring	 sick!
+shared-damage	0x17ebfc0	0x17f1db4	0x21b7781	cstring	 having trouble breathing!
+shared-damage	0x17ebfc0	0x17f1e08	0x6568	inline	he
+shared-damage	0x17ebfc0	0x17f1e0d	0x21b7b80/16	vector	 crumbles over t
+shared-damage	0x17ebfc0	0x17f1eb6	0x2107b48	cstring	It
+shared-damage	0x17ebfc0	0x17f1f0c	0x21b7ba0/16	vector	 flows over the 
+shared-damage	0x17ebfc0	0x17f1f23	0x21f5cb3	cstring	it
+shared-damage	0x17ebfc0	0x17f1f4b	0x21b7400	cstring	flying 
+shared-damage	0x17ebfc0	0x17f1f6a	0x20fc8f7	cstring	The 
+shared-damage	0x17ebfc0	0x17f1f89	0x21b7388	cstring	 has lodged firmly in the wound!
+shared-damage	0x17ebfc0	0x17f1fc1	0x21b76a7	cstring	sprained
+shared-damage	0x17ebfc0	0x17f1fe1	0x21b76b0	cstring	bruised
+shared-damage	0x17ebfc0	0x17f1ff9	0x20f3ec0	cstring	Your
+shared-damage	0x17ebfc0	0x17f2011	0x216056a	cstring	You
+shared-damage	0x17ebfc0	0x17f202c	0x219eeb1	cstring	 and 
+shared-damage	0x17ebfc0	0x17f204d	0x210eb84	cstring	!
+shared-damage	0x17ebfc0	0x17f2068	0x219eeb1	cstring	 and 
+shared-damage	0x17ebfc0	0x17f2085	0x219eeb1	cstring	 and 
+shared-damage	0x17ebfc0	0x17f20f4	0x21b7a70/16	vector	, but there is n
+shared-damage	0x17ebfc0	0x17f20fc	0x216563726f66206f	inline	o force!
+shared-damage	0x17ebfc0	0x17f2125	0x210eb84	cstring	!
+shared-damage	0x17ebfc0	0x17f2139	0x21b75d5	cstring	 in the 
+shared-damage	0x17ebfc0	0x17f215c	0x21b76b0	cstring	bruised
+shared-damage	0x17ebfc0	0x17f22e6	0x21ba050	cstring	the 
+shared-damage	0x17ebfc0	0x17f23a3	0x219eeb1	cstring	 and 
+shared-damage	0x17ebfc0	0x17f23c2	0x21b749f	cstring	 splits in gore!
+shared-damage	0x17ebfc0	0x17f2403	0x20f7379	cstring	 
+shared-damage	0x17ebfc0	0x17f2432	0x2107bca	cstring	 are
+shared-damage	0x17ebfc0	0x17f244d	0x21138b8	cstring	 have
+shared-damage	0x17ebfc0	0x17f245e	0x21b76f8	cstring	 latch on firmly
+shared-damage	0x17ebfc0	0x17f2472	0x21b771c	cstring	 latch on firmly!
+shared-damage	0x17ebfc0	0x17f248d	0x21138b8	cstring	 have
+shared-damage	0x17ebfc0	0x17f24b4	0x20f7379	cstring	 
+shared-damage	0x17ebfc0	0x17f2527	0x21c4882	cstring	 by the 
+shared-damage	0x17ebfc0	0x17f2617	0x20e2a73	cstring	 with 
+shared-damage	0x17ebfc0	0x17f2642	0x21b7240	cstring	, but the attack glances away!
+shared-damage	0x17ebfc0	0x17f268b	0x20f50ec	cstring	 feel
+shared-damage	0x17ebfc0	0x17f26a3	0x2107bca	cstring	 are
+shared-damage	0x17ebfc0	0x17f26bb	0x21138b8	cstring	 have
+shared-damage	0x17ebfc0	0x17f26cc	0x21b75d5	cstring	 in the 
+shared-damage	0x17ebfc0	0x17f26ee	0x21b742c	cstring	 from behind
+shared-damage	0x17ebfc0	0x17f2710	0x20f7379	cstring	 
+shared-damage	0x17ebfc0	0x17f2727	0x20f7379	cstring	 
+shared-damage	0x17ebfc0	0x17f2767	0x21b71d0	cstring	, but the attack is deflected by 
+shared-damage	0x17ebfc0	0x17f27a3	0x20f7379	cstring	 
+shared-damage	0x17ebfc0	0x17f2816	0x21c4882	cstring	 by the 
+shared-damage	0x17ebfc0	0x17f2906	0x20e2a73	cstring	 with 
+shared-damage	0x17ebfc0	0x17f2931	0x21b7240	cstring	, but the attack glances away!
+shared-damage	0x17ebfc0	0x17f2963	0x21b7412	cstring	, but it is deflected by 
+shared-damage	0x17ebfc0	0x17f29ba	0x21b77fe	cstring	 pours over the 
+shared-damage	0x17ebfc0	0x17f29cb	0x21b75d5	cstring	 in the 
+shared-damage	0x17ebfc0	0x17f29ed	0x21b77ed	cstring	 flows over the 
+shared-damage	0x17ebfc0	0x17f2a0c	0x21b77d8	cstring	 splatters over the 
+shared-damage	0x17ebfc0	0x17f2a2b	0x21b77c4	cstring	 crumbles over the 
+shared-damage	0x17ebfc0	0x17f2a3c	0x20e2a73	cstring	 with 
+shared-damage	0x17ebfc0	0x17f2a73	0x21b742c	cstring	 from behind
+shared-damage	0x17ebfc0	0x17f2a87	0x21b7439	cstring	 from the side
+shared-damage	0x17ebfc0	0x17f2ac3	0x216056a	cstring	You
+shared-damage	0x17ebfc0	0x17f2c16	0x219eeb1	cstring	 and 
+shared-damage	0x17ebfc0	0x17f2c92	0x20e2366	cstring	breaking away
+shared-damage	0x17ebfc0	0x17f2cc5	0x21b75a4	cstring	 half of
+shared-damage	0x17ebfc0	0x17f2cd4	0x21ba04f	cstring	 the 
+shared-damage	0x17ebfc0	0x17f2d53	0x21c05aa	cstring	's 
+shared-damage	0x17ebfc0	0x17f2dd2	0x21b75c6	cstring	 through a hole in the 
+shared-damage	0x17ebfc0	0x17f2e6b	0x21c05aa	cstring	's 
+shared-damage	0x17ebfc0	0x17f2fc8	0x20f7379	cstring	 
+shared-damage	0x17ebfc0	0x17f303b	0x21c4882	cstring	 by the 
+shared-damage	0x17ebfc0	0x17f3103	0x20e2a73	cstring	 with 
+shared-damage	0x17ebfc0	0x17f312e	0x21b7260	cstring	 and the severed part sails off in an arc!
+shared-damage	0x17ebfc0	0x17f3142	0x21b75d5	cstring	 in the 
+shared-damage	0x17ebfc0	0x17f3178	0x20f7379	cstring	 
+shared-damage	0x17ebfc0	0x17f3194	0x20f7379	cstring	 
+shared-damage	0x17ebfc0	0x17f31c6	0x21b7439	cstring	 from the side
+shared-damage	0x17ebfc0	0x17f31e0	0x20f7379	cstring	 
+shared-damage	0x17ebfc0	0x17f31fc	0x20f7379	cstring	 
+shared-damage	0x17ebfc0	0x17f3220	0x21b7466	cstring	, but there is no force!
+shared-damage	0x17ebfc0	0x17f3231	0x21b742c	cstring	 from behind
+shared-damage	0x17ebfc0	0x17f3245	0x21b75d5	cstring	 in the 
+shared-damage	0x17ebfc0	0x17f3267	0x21b7448	cstring	, lightly tapping the target!
+shared-damage	0x17ebfc0	0x17f3286	0x21b7218	cstring	, but the attack passes right through!
+shared-damage	0x17ebfc0	0x17f32d0	0x21b71f8	cstring	, but it passes right through!
+shared-damage	0x17ebfc0	0x17f338b	0x219eeb1	cstring	 and 
+shared-damage	0x17ebfc0	0x17f34e6	0x21b7574	cstring	tearing
+shared-damage	0x17ebfc0	0x17f3566	0x21ba04f	cstring	 the 
+shared-damage	0x17ebfc0	0x17f3625	0x20e2590	cstring	 and
+shared-damage	0x17ebfc0	0x17f3678	0x21ba04f	cstring	 the 
+shared-damage	0x17ebfc0	0x17f36fd	0x21c05aa	cstring	's 
+shared-damage	0x17ebfc0	0x17f3780	0x21b75d5	cstring	 in the 
+shared-damage	0x17ebfc0	0x17f37da	0x210eb84	cstring	!
+shared-damage	0x17ebfc0	0x17f3803	0x21b7496	cstring	the part
+shared-damage	0x17ebfc0	0x17f3817	0x21b7439	cstring	 from the side
+shared-damage	0x17ebfc0	0x17f382b	0x21b7439	cstring	 from the side
+shared-damage	0x17ebfc0	0x17f383f	0x21b742c	cstring	 from behind
+shared-damage	0x17ebfc0	0x17f38a8	0x21b75de	cstring	 through the 
+shared-damage	0x17ebfc0	0x17f392a	0x20f7379	cstring	 
+shared-damage	0x17ebfc0	0x17f3970	0x21b75ec	cstring	 and spilling 
+shared-damage	0x17ebfc0	0x17f3a81	0x21b760e	cstring	stinking
+shared-damage	0x17ebfc0	0x17f3b28	0x20f3aea	cstring	, 
+shared-damage	0x17ebfc0	0x17f3b3c	0x210eb84	cstring	!
+shared-damage	0x17ebfc0	0x17f3cde	0x21b742c	cstring	 from behind
+shared-damage	0x17ebfc0	0x17f3d28	0x21b7439	cstring	 from the side
+shared-damage	0x17ebfc0	0x17f3d3c	0x21b742c	cstring	 from behind
+shared-damage	0x17ebfc0	0x17f3e34	0x21428db	cstring	fetid
+shared-damage	0x17ebfc0	0x17f3e48	0x219eeb1	cstring	 and 
+shared-damage	0x17ebfc0	0x17f3e67	0x21b74b0	cstring	 collapses!
+shared-damage	0x17ebfc0	0x17f3ea8	0x219eeb1	cstring	 and 
+shared-damage	0x17ebfc0	0x17f3ec7	0x21b7290	cstring	 is smashed into the body, an unrecognizable mass!
+shared-damage	0x17ebfc0	0x17f3f99	0x21b75ad	cstring	 a piece of
+shared-damage	0x17ebfc0	0x17f3fad	0x21b759b	cstring	 most of
+shared-damage	0x17ebfc0	0x17f3fd7	0x20f7379	cstring	 
+shared-damage	0x17ebfc0	0x17f404a	0x21c4882	cstring	 by the 
+shared-damage	0x17ebfc0	0x17f410b	0x20e2a73	cstring	 with 
+shared-damage	0x17ebfc0	0x17f4136	0x210eb84	cstring	!
+shared-damage	0x17ebfc0	0x17f42a3	0x21b75d5	cstring	 in the 
+shared-damage	0x17ebfc0	0x17f42cd	0x20f7379	cstring	 
+shared-damage	0x17ebfc0	0x17f4340	0x21c4882	cstring	 by the 
+shared-damage	0x17ebfc0	0x17f4428	0x21b75d5	cstring	 in the 
+shared-damage	0x17ebfc0	0x17f4472	0x21b7439	cstring	 from the side
+shared-damage	0x17ebfc0	0x17f45b7	0x20f7379	cstring	 
+shared-damage	0x17ebfc0	0x17f462a	0x21c4882	cstring	 by the 
+shared-damage	0x17ebfc0	0x17f475c	0x21ba050	cstring	the 
+shared-damage	0x17ebfc0	0x17f4831	0x219eeb1	cstring	 and 
+shared-damage	0x17ebfc0	0x17f4850	0x21b74eb	cstring	 is torn apart!
+shared-damage	0x17ebfc0	0x17f48af	0x21b72c8	cstring	 and it is mostly cut away from the rest of the torso!
+shared-damage	0x17ebfc0	0x17f491c	0x219eeb1	cstring	 and 
+shared-damage	0x17ebfc0	0x17f493b	0x21b74b0	cstring	 collapses!
+shared-damage	0x17ebfc0	0x17f494f	0x21b74bc	cstring	the injured part
+shared-damage	0x17ebfc0	0x17f4963	0x21b75d5	cstring	 in the 
+shared-damage	0x17ebfc0	0x17f4977	0x21b75b9	cstring	 the rest of
+shared-damage	0x17ebfc0	0x17f49e0	0x219eeb1	cstring	 and 
+shared-damage	0x17ebfc0	0x17f49ff	0x21b7524	cstring	 is crushed!
+shared-damage	0x17ebfc0	0x17f4a2d	0x219eeb1	cstring	 and 
+shared-damage	0x17ebfc0	0x17f4a4c	0x21b750f	cstring	 explodes into gore!
+shared-damage	0x17ebfc0	0x17f4a7a	0x219eeb1	cstring	 and 
+shared-damage	0x17ebfc0	0x17f4a99	0x21b7290	cstring	 is smashed into the body, an unrecognizable mass!
+shared-damage	0x17ebfc0	0x17f4aad	0x219eeb1	cstring	 and 
+shared-damage	0x17ebfc0	0x17f4acc	0x21b7300	cstring	 collapses into a lump of gore!
+shared-damage	0x17ebfc0	0x17f4ae0	0x219eeb1	cstring	 and 
+shared-damage	0x17ebfc0	0x17f4aff	0x21b74cd	cstring	 is ripped into loose shreds!
+shared-damage	0x17ebfc0	0x17f4b13	0x219eeb1	cstring	 and 
+shared-damage	0x17ebfc0	0x17f4b32	0x21b74fb	cstring	 is cloven asunder!
+shared-damage	0x17ebfc0	0x17f4bdd	0x20e2a73	cstring	 with 
+shared-damage	0x17ebfc0	0x17f4c0f	0x21b7439	cstring	 from the side
+shared-damage	0x17ebfc0	0x17f4c23	0x21b742c	cstring	 from behind
+shared-damage	0x17ebfc0	0x17f4c37	0x21b7439	cstring	 from the side
+shared-damage	0x17ebfc0	0x17f4c4b	0x21b742c	cstring	 from behind
+shared-damage	0x17ebfc0	0x17f4d9c	0x21f5cb2	cstring	 it
+shared-damage	0x17ebfc0	0x17f4dd8	0x21b0cca	cstring	 apart
+shared-damage	0x17ebfc0	0x17f4f3b	0x21b7531	cstring	main part
+shared-damage	0x17ebfc0	0x17f4f90	0x20e2a73	cstring	 with 
+shared-damage	0x17ebfc0	0x17f50fc	0x21b7439	cstring	 from the side
+shared-damage	0x17ebfc0	0x17f5110	0x21b742c	cstring	 from behind
+shared-damage	0x17ebfc0	0x17f5220	0x21ba429	cstring	your
+shared-damage	0x17ebfc0	0x17f5234	0x20db835	cstring	rotten
+shared-damage	0x17ebfc0	0x17f5248	0x21b7607	cstring	rancid
+shared-damage	0x17ebfc0	0x17f525c	0x21b75fb	cstring	decomposing
+shared-damage	0x17ebfc0	0x17f5324	0x21b7320	cstring	passing through a hole in the 
+shared-damage	0x17ebfc0	0x17f53b3	0x21c05aa	cstring	's 
+shared-damage	0x17ebfc0	0x17f5434	0x219eeb1	cstring	 and 
+shared-damage	0x17ebfc0	0x17f5443	0x21b753b	cstring	jamming the
+shared-damage	0x17ebfc0	0x17f5464	0x20f7379	cstring	 
+shared-damage	0x17ebfc0	0x17f54c5	0x2131973	cstring	's
+shared-damage	0x17ebfc0	0x17f555f	0x21b7547	cstring	out of the wound
+shared-damage	0x17ebfc0	0x17f558e	0x21b75df	cstring	through the 
+shared-damage	0x17ebfc0	0x17f55f7	0x2131973	cstring	's
+shared-damage	0x17ebfc0	0x17f56d2	0x20f7379	cstring	 
+shared-damage	0x17ebfc0	0x17f56ee	0x21b74c7	cstring	 part
+shared-damage	0x17ebfc0	0x17f56fd	0x20f7379	cstring	 
+shared-damage	0x17ebfc0	0x17f57b1	0x21b7531	cstring	main part
+shared-damage	0x17ebfc0	0x17f57c5	0x20f3aea	cstring	, 
+shared-damage	0x17ebfc0	0x17f580a	0x21b7531	cstring	main part
+shared-damage	0x17ebfc0	0x17f582b	0x21b7558	cstring	 tearing apart
+shared-damage	0x17ebfc0	0x17f58a5	0x21b7586	cstring	 fracturing
+shared-damage	0x17ebfc0	0x17f58b9	0x21b7573	cstring	 tearing
+shared-damage	0x17ebfc0	0x17f58cd	0x21b757c	cstring	 chipping
+shared-damage	0x17ebfc0	0x17f5901	0x21b7592	cstring	 denting
+shared-damage	0x17ebfc0	0x17f5955	0x21b7567	cstring	 shattering
+shared-damage	0x17ebfc0	0x17f5977	0x21b0d8d	cstring	 bruising
+shared-damage	0x17ebfc0	0x17f59ad	0x21ba04f	cstring	 the 
+shared-damage	0x17ebfc0	0x17f59db	0x21c05aa	cstring	's 
+shared-damage	0x17ebfc0	0x17f5a3c	0x21b7587	cstring	fracturing
+shared-damage	0x17ebfc0	0x17f5a6f	0x21b7593	cstring	denting
+shared-damage	0x17ebfc0	0x17f5a8c	0x21b757d	cstring	chipping
+shared-damage	0x17ebfc0	0x17f5aa6	0x21b7574	cstring	tearing
+shared-damage	0x17ebfc0	0x17f5b38	0x21b0d8e	cstring	bruising
+shared-damage	0x17ebfc0	0x17f5b73	0x21b7559	cstring	tearing apart
+shared-damage	0x17ebfc0	0x17f5b87	0x21b7568	cstring	shattering
+shared-damage	0x17ebfc0	0x17f5bf0	0x21b7617	cstring	filthy
+shared-damage	0x17ebfc0	0x17f5c04	0x21b7626	cstring	foul
+shared-damage	0x17ebfc0	0x17f5c18	0x21b761e	cstring	reeking
+combat-charge-199d360	0x199d360	0x199d599	0x7327	inline	's
+combat-charge-199d360	0x199d360	0x199d686	0x7327	inline	's
+combat-charge-199d360	0x199d360	0x199d9c6	0x7365677261686320	inline	 charges
+combat-charge-199d360	0x199d360	0x199d9d6	0x20746120	inline	 at 
+combat-charge-199d360	0x199d360	0x199dc3c	0x736b	inline	ks
+combat-charge-199d360	0x199d360	0x199dc41	0x6f6f6c20	inline	 loo
+combat-charge-199d360	0x199d360	0x199dc9c	0x21c4e90/16	vector	surprised by the
+combat-charge-199d360	0x199d360	0x199dca4	0x7469636f72656620	inline	 ferocit
+combat-charge-199d360	0x199d360	0x199dcb2	0x666f2079	inline	y of
+combat-charge-199d360	0x199d360	0x199dd4f	0x6775616c736e6f20	inline	 onslaug
+combat-charge-199d360	0x199d360	0x199dd5f	0x7468	inline	ht
+combat-charge-199d360	0x199d360	0x199e381	0x6562206d6f726620	inline	 from be
+combat-charge-199d360	0x199d360	0x199e391	0x646e6968	inline	hind
+combat-charge-199d360	0x199d360	0x199e4e2	0x6564696c6c6f6320	inline	 collide
+combat-charge-199d360	0x199d360	0x199e543	0x2068	inline	h 
+combat-charge-199d360	0x199d360	0x199e548	0x74697720	inline	 wit
+combat-charge-199d360	0x199d360	0x199e83f	0x6920	inline	 i
+combat-charge-199d360	0x199d360	0x199e895	0x64656b636f6e6b20	inline	 knocked
+combat-charge-199d360	0x199d360	0x199e8a5	0x65766f20	inline	 ove
+combat-charge-199d360	0x199d360	0x199e94d	0x6d757420646e6120	inline	 and tum
+combat-charge-199d360	0x199d360	0x199e95d	0x73656c62	inline	bles
+combat-charge-199d360	0x199d360	0x199e9ae	0x7261776b63616220	inline	 backwar
+combat-charge-199d360	0x199d360	0x199ecd9	0x6874206d6f726620	inline	 from th
+combat-charge-199d360	0x199d360	0x199ece9	0x6564	inline	de
+combat-charge-199d360	0x199d360	0x199ecee	0x69732065	inline	e si
+combat-charge-199d360	0x199d360	0x199ee81	0x2074	inline	t 
+combat-charge-199d360	0x199d360	0x199ee87	0x6120737061656c20	inline	 leaps a
+combat-charge-199d360	0x199d360	0x199eebe	0x210eb84	cstring	!
+combat-charge-199d360	0x199d360	0x199ef4e	0x20e2a73	cstring	 with 
+combat-charge-199d360	0x199d360	0x199f032	0x6920	inline	 i
+combat-charge-199d360	0x199d360	0x199f08a	0x64656b636f6e6b20	inline	 knocked
+combat-charge-199d360	0x199d360	0x199f09a	0x65766f20	inline	 ove
+combat-charge-199d360	0x199d360	0x199f11c	0x6d757420646e6120	inline	 and tum
+combat-charge-199d360	0x199d360	0x199f12c	0x73656c62	inline	bles
+combat-charge-199d360	0x199d360	0x199f17d	0x7261776b63616220	inline	 backwar
+combat-charge-199d360	0x199d360	0x199f396	0x210eb84	cstring	!
+combat-charge-199d360	0x199d360	0x199f3be	0x2131973	cstring	's
+combat-charge-199d360	0x199d360	0x199f3de	0x2131973	cstring	's
+combat-charge-199d360	0x199d360	0x199f3fe	0x21c471a	cstring	 collides
+combat-charge-199d360	0x199d360	0x199f4a2	0x7365636e756f6220	inline	 bounces
+combat-charge-199d360	0x199d360	0x199f4fa	0x7261776b63616220	inline	 backwar
+combat-charge-199d360	0x199d360	0x199f804	0x6920	inline	 i
+combat-charge-199d360	0x199d360	0x199f85a	0x64656b636f6e6b20	inline	 knocked
+combat-charge-199d360	0x199d360	0x199f86a	0x65766f20	inline	 ove
+combat-charge-199d360	0x199d360	0x199fc23	0x21c4590	cstring	You tangle together and fall over!
+combat-charge-199d360	0x199d360	0x199fc45	0x2142337	cstring	 is
+combat-charge-199d360	0x199d360	0x199fc82	0x20f3ec0	cstring	Your
+combat-charge-199d360	0x199d360	0x199fcfc	0x216056a	cstring	You
+combat-charge-199d360	0x199d360	0x199fd78	0x216056a	cstring	You
+combat-charge-199d360	0x199d360	0x199fdfc	0x20f3ec0	cstring	Your
+combat-charge-199d360	0x199d360	0x199fe5e	0x2142337	cstring	 is
+combat-charge-199d360	0x199d360	0x199fed1	0x21b7439	cstring	 from the side
+combat-charge-199d360	0x199d360	0x199ff81	0x72756f59	inline	Your
+combat-charge-199d360	0x199d360	0x199ffa2	0x72756f59	inline	Your
+combat-charge-199d360	0x199d360	0x199ffc3	0x6f59	inline	Yo
+combat-charge-199d360	0x199d360	0x199ffe6	0x6f59	inline	Yo
+combat-charge-199d360	0x199d360	0x19a013e	0x21c46af	cstring	 charges at 
+combat-charge-199d360	0x199d360	0x19a0283	0x21c470a	cstring	 jumps
+combat-charge-199d360	0x199d360	0x19a0292	0x20e2323	cstring	 away
+combat-charge-199d360	0x199d360	0x19a02a1	0x210eb84	cstring	!
+combat-charge-199d360	0x199d360	0x19a059e	0x21c46c4	cstring	surprised by the ferocity of 
+combat-charge-199d360	0x199d360	0x19a05be	0x21c46e2	cstring	 onslaught!
+combat-charge-199d360	0x199d360	0x19a05ee	0x21c46bc	cstring	 looks 
+combat-charge-199d360	0x199d360	0x19a063e	0x21c4698	cstring	 leaps at 
+combat-charge-199d360	0x199d360	0x19a081c	0x210eb84	cstring	!
+combat-charge-199d360	0x199d360	0x19a08b5	0x21c4724	cstring	 knocked over
+combat-charge-199d360	0x199d360	0x19a08d4	0x21c4724	cstring	 knocked over
+combat-charge-199d360	0x199d360	0x19a08f3	0x210eb84	cstring	!
+combat-charge-199d360	0x199d360	0x19a0924	0x21c45b8	cstring	They tangle together and fall over!
+combat-charge-199d360	0x199d360	0x19a0934	0x21c4ea0/16	vector	They tangle toge
+combat-charge-199d360	0x199d360	0x19a093c	0x7265	inline	er
+combat-charge-199d360	0x199d360	0x19a094c	0x21c4eb0/16	vector	ther and fall ov
+combat-charge-199d360	0x199d360	0x19a0ca2	0x6564696c6c6f6320	inline	 collide
+combat-charge-199d360	0x199d360	0x19a0d16	0x21c474b	cstring	 backward
+combat-charge-199d360	0x199d360	0x19a0e41	0x21c473e	cstring	 and tumbles
+combat-charge-199d360	0x199d360	0x19a0e90	0x7461	inline	at
+combat-charge-199d360	0x199d360	0x19a0e95	0x2065677261686320	inline	 charge 
+combat-charge-199d360	0x199d360	0x19a104e	0x7461207061656c20	inline	 leap at
+combat-charge-199d360	0x199d360	0x19a10d6	0x20f3ec0	cstring	Your
+combat-charge-199d360	0x199d360	0x19a10ef	0x216056a	cstring	You
+combat-charge-199d360	0x199d360	0x19a1108	0x20f3ec0	cstring	Your
+combat-charge-199d360	0x199d360	0x19a1121	0x216056a	cstring	You
+combat-charge-199d360	0x199d360	0x19a1134	0x2107bca	cstring	 are
+combat-charge-199d360	0x199d360	0x19a1174	0x65726120	inline	 are
+combat-charge-199d360	0x199d360	0x19a119b	0x21c46a3	cstring	 charge at 
+combat-charge-199d360	0x199d360	0x19a11ac	0x2107bca	cstring	 are
+combat-charge-199d360	0x199d360	0x19a11c0	0x21c4732	cstring	 and tumble
+combat-charge-199d360	0x199d360	0x19a127c	0x21c4608	cstring	They tangle together and tumble forward!
+combat-charge-199d360	0x199d360	0x19a155f	0x21c474b	cstring	 backward
+combat-charge-199d360	0x199d360	0x19a157e	0x210eb84	cstring	!
+combat-charge-199d360	0x199d360	0x19a1617	0x21c475d	cstring	 bounces
+combat-charge-199d360	0x199d360	0x19a1657	0x65726120	inline	 are
+combat-charge-199d360	0x199d360	0x19a175a	0x21c474b	cstring	 backward
+combat-charge-199d360	0x199d360	0x19a1779	0x210eb84	cstring	!
+combat-charge-199d360	0x199d360	0x19a1798	0x21b742c	cstring	 from behind
+combat-charge-199d360	0x199d360	0x19a17b7	0x21c4724	cstring	 knocked over
+combat-charge-199d360	0x199d360	0x19a17d6	0x21c473e	cstring	 and tumbles
+combat-charge-199d360	0x199d360	0x19a17f5	0x2142337	cstring	 is
+combat-charge-199d360	0x199d360	0x19a180c	0x21c45b8	cstring	They tangle together and fall over!
+combat-charge-199d360	0x199d360	0x19a1830	0x21c4711	cstring	 collide
+combat-charge-199d360	0x199d360	0x19a1848	0x21c4732	cstring	 and tumble
+combat-charge-199d360	0x199d360	0x19a186a	0x21ba388	cstring	 are 
+combat-charge-199d360	0x199d360	0x19a187b	0x21c4755	cstring	 bounce
+combat-charge-199d360	0x199d360	0x19a18ba	0x21c468e	cstring	 leap at 
+combat-charge-199d360	0x199d360	0x19a19fc	0x2107bca	cstring	 are
+combat-charge-199d360	0x199d360	0x19a1a82	0x21c45e0	cstring	You tangle together and tumble forward!
+combat-charge-199d360	0x199d360	0x19a1aed	0x21c46f8	cstring	 scrambles
+combat-charge-199d360	0x199d360	0x19a1bb3	0x21c4703	cstring	 rolls
+combat-charge-199d360	0x199d360	0x19a1d0a	0x21739b9	cstring	 jump
+combat-charge-199d360	0x199d360	0x19a1ece	0x21c46ee	cstring	 scramble
+combat-charge-199d360	0x199d360	0x19a1f17	0x213014a	cstring	 roll
+combat-embedded-item-removal-19a1ff0	0x19a1ff0	0x19a3374	0x20ce7fc	cstring	Empty biased index vector
+combat-embedded-item-removal-19a1ff0	0x19a1ff0	0x19a356c	0x6c757020	inline	 pul
+combat-embedded-item-removal-19a1ff0	0x19a1ff0	0x19a3572	0x736c	inline	ls
+combat-embedded-item-removal-19a1ff0	0x19a1ff0	0x19a35df	0x21c4ec0/16	vector	 on the embedded
+combat-embedded-item-removal-19a1ff0	0x19a1ff0	0x19a45ab	0x21c478a	cstring	 tries
+combat-embedded-item-removal-19a1ff0	0x19a1ff0	0x19a45ba	0x21c4791	cstring	 to remove 
+combat-embedded-item-removal-19a1ff0	0x19a1ff0	0x19a497c	0x20ce818	cstring	Biased index vector computation error
+combat-embedded-item-removal-19a1ff0	0x19a1ff0	0x19a4c12	0x21c4773	cstring	 on the embedded 
+combat-embedded-item-removal-19a1ff0	0x19a1ff0	0x19a4c43	0x21c476c	cstring	 pulls
+combat-embedded-item-removal-19a1ff0	0x19a1ff0	0x19a4e59	0x21c4766	cstring	 pull
+combat-embedded-item-removal-19a1ff0	0x19a1ff0	0x19a500f	0x21c4785	cstring	 try
+combat-embedded-item-removal-19a1ff0	0x19a1ff0	0x19a52bf	0x20c920e	cstring	vector::_M_default_append
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a55ef	0x21c48ac	cstring	grabs
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a57ce	0x2073	inline	s 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a57d3	0x73696d20	inline	 mis
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a583c	0x2073657373696d20	inline	 misses 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a5c68	0x62617267	inline	grab
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a5ff1	0x7327	inline	's
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a60fa	0x7327	inline	's
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a6571	0x737473756a646120	inline	 adjusts
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a65e6	0x6972672065687420	inline	 the gri
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a65f6	0x666f2070	inline	p of
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a67a7	0x206e6f20	inline	 on 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a6cd6	0x21c48ac	cstring	grabs
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a6f68	0x21c4873	cstring	 shakes
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a6f77	0x20f7379	cstring	 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a6f9c	0x21c487b	cstring	 around by the 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a72e0	0x20fc8f7	cstring	The 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a7355	0x6e69	inline	in
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a735a	0x616d657220646e61	inline	and rema
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a7364	0x21c4ed0/16	vector	 is ripped away 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a7370	0x20736e69	inline	ins 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a7455	0x6874	inline	th
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a745a	0x756f6d20	inline	 mou
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a7741	0x20f3ece	cstring	 releases
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a7750	0x21c485e	cstring	 the grip of 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a7786	0x20f7379	cstring	 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a77b1	0x215fffc	cstring	 on 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a77f7	0x2107edc	cstring	.
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a79c6	0x21c47e8	cstring	 pinches
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a79d5	0x20f7379	cstring	 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a7aa1	0x20e2a73	cstring	 with 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a7e36	0x21c47d9	cstring	 throws
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a7ec2	0x21c4882	cstring	 by the 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a7f37	0x2068	inline	h 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a7f3c	0x74697720	inline	 wit
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a7f76	0x20f7379	cstring	 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a7f9b	0x210eb84	cstring	!
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a8464	0x7364	inline	ds
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a8469	0x6e656220	inline	 ben
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a85f9	0x2068	inline	h 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a85ff	0x74697720	inline	 wit
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a89c7	0x21c47c4	cstring	 takes
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a89d6	0x20f7379	cstring	 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a8a05	0x21c47cb	cstring	 down by the 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a8a7a	0x2068	inline	h 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a8a7f	0x74697720	inline	 wit
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a8dd6	0x21c47f8	cstring	 gouges
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a8e62	0x20f7379	cstring	 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a8eb1	0x20e2a73	cstring	 with 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a92a4	0x22109b9	cstring	 locks
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a92b3	0x20f7379	cstring	 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a937c	0x20e2a73	cstring	 with 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a950a	0x210780f	cstring	 places
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a9519	0x21c47ad	cstring	 a chokehold on 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a95bb	0x20e2a73	cstring	 with 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a95e0	0x20f7379	cstring	 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a98c3	0x656c676e61727473	inline	strangle
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a9d35	0x21ba429	cstring	your
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a9d49	0x212eec0	cstring	grab
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a9dbd	0x2131973	cstring	's
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a9ddd	0x2131973	cstring	's
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19a9fe2	0x210eb84	cstring	!
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19aa0dd	0x21c47a4	cstring	 misses 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19aa13e	0x20f7379	cstring	 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19aa17e	0x215fffc	cstring	 on 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19aa1be	0x20f7379	cstring	 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19aa1fe	0x21c485e	cstring	 the grip of 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19aa21e	0x2107edc	cstring	.
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19aa23e	0x21c48a3	cstring	 adjusts
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19aa2bc	0x216056a	cstring	You
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19aa35c	0x20f3ec0	cstring	Your
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19aa3f4	0x20f3ec0	cstring	Your
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19aa48c	0x216056a	cstring	You
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19aa5d9	0x20f3ece	cstring	 releases
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19aa5e8	0x21c4825	cstring	 the choke hold of 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19aa61e	0x20f7379	cstring	 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19aa649	0x215fffc	cstring	 on 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19aa68f	0x2107edc	cstring	.
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19aa7a0	0x6f59	inline	Yo
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19aa7b3	0x6f59	inline	Yo
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19aa7c4	0x72756f59	inline	Your
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19aa7cf	0x72756f59	inline	Your
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19aa816	0x7375	inline	us
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19aa81b	0x6a646120	inline	 adj
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19aa960	0x657361656c657220	inline	 release
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19aa9db	0x6972672065687420	inline	 the gri
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19aa9eb	0x666f2070	inline	p of
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19aaaf0	0x206e6f20	inline	 on 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19aada6	0x20f3ec0	cstring	Your
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19aadbf	0x216056a	cstring	You
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19aadd8	0x216056a	cstring	You
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19aadf1	0x20f3ec0	cstring	Your
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19aae87	0x21c4843	cstring	 struggles
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19aae96	0x21c484e	cstring	 in vain against the grip of 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19aaebb	0x20f7379	cstring	 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19aaee6	0x215fffc	cstring	 on 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19aaf2c	0x2107edc	cstring	.
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ab013	0x69726720	inline	 gri
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ab0c0	0x6b61	inline	ak
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ab0c5	0x65726220	inline	 bre
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ab13a	0x6972672065687420	inline	 the gri
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ab14a	0x666f2070	inline	p of
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ab24f	0x206e6f20	inline	 on 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ab4c3	0x20f7379	cstring	 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ab4e2	0x20e2a73	cstring	 with 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ab66a	0x21c4892	cstring	strangle
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ab689	0x20f7379	cstring	 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ab6a8	0x20f7379	cstring	 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ab6c7	0x20f7379	cstring	 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ab6e6	0x20f7379	cstring	 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ab705	0x20f7379	cstring	 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ab78f	0x21c07fa	cstring	 bends
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ab8c1	0x210eb84	cstring	!
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ab8e0	0x21c4638	cstring	 is ripped away and remains in 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ab8ff	0x21c489b	cstring	 adjust
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ab91e	0x2131974	cstring	s
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ab93c	0x21c479d	cstring	 miss 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ab95d	0x2107edc	cstring	.
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ab9a5	0x20f4d42	cstring	 loses
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ab9b4	0x20cab69	cstring	 hold of the 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ab9d9	0x210eb84	cstring	!
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19abb7f	0x20f3ece	cstring	 releases
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19abb8e	0x21c4811	cstring	 the joint lock of 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19abbc4	0x20f7379	cstring	 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19abbef	0x215fffc	cstring	 on 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19abc35	0x2107edc	cstring	.
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ac5fd	0x21735f3	cstring	 grip
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ac632	0x21c488b	cstring	 mouth
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ac683	0x20f7379	cstring	 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ac6a2	0x21c485e	cstring	 the grip of 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ac6c1	0x20f7379	cstring	 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ac6e0	0x215fffc	cstring	 on 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ac72a	0x215fffc	cstring	 on 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ac749	0x20f7379	cstring	 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ac768	0x21c485e	cstring	 the grip of 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ac787	0x20f7379	cstring	 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ac7a6	0x20f3ed8	cstring	 breaks
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ac7c5	0x20f3ece	cstring	 releases
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ac7d6	0x21c02ed	cstring	 bend
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ac82a	0x210eb84	cstring	!
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ac849	0x20f7379	cstring	 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ac868	0x20f7379	cstring	 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ac887	0x20e2a73	cstring	 with 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ac8a6	0x20f7379	cstring	 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ac8c5	0x210eb84	cstring	!
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ac8e4	0x20e2a73	cstring	 with 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ac903	0x210eb84	cstring	!
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ac968	0x20f7379	cstring	 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ac993	0x215fffc	cstring	 on 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ac9f4	0x20f7379	cstring	 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19aca1f	0x215fffc	cstring	 on 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19aca80	0x20f7379	cstring	 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19acaab	0x215fffc	cstring	 on 
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19acb08	0x21c4808	cstring	 loosens
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19acb2e	0x21c4808	cstring	 loosens
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19acb54	0x20f3ed8	cstring	 breaks
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19acf7f	0x20f518d	cstring	 passes
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19acf8e	0x21d0f15	cstring	 out.
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ad11a	0x21c47f1	cstring	 gouge
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ad12e	0x2204d02	cstring	 place
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ad142	0x21c47be	cstring	 take
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ad156	0x21c47e1	cstring	 pinch
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ad16a	0x2210906	cstring	 lock
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ad199	0x20f3ec5	cstring	 release
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ad1ad	0x21dfb58	cstring	 break
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ad2d1	0x2160277	cstring	 throw
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ad2e5	0x20f5187	cstring	 pass
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ad33b	0x21c486c	cstring	 shake
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ad46f	0x20f3ec5	cstring	 release
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ad483	0x20f3ec5	cstring	 release
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ad4c9	0x21dfb58	cstring	 break
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ad4f5	0x20f3ec5	cstring	 release
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ad509	0x21c4800	cstring	 loosen
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ad536	0x21c4800	cstring	 loosen
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ad54a	0x21c4839	cstring	 struggle
+combat-damage-caller-wrestling-19a5370	0x19a5370	0x19ad60c	0x20f4d3c	cstring	 lose
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19adb00	0x21c4f00/16	vector	 has moved out o
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19adb08	0x2165676e61722066	inline	f range!
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19adf6c	0x20656854	inline	The 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19ae012	0x676e696e6e697073	inline	spinning
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19ae089	0x676e	inline	ng
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19ae08e	0x69796c66	inline	flyi
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19ae164	0x2160643	cstring	its
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19ae21a	0x2107b48	cstring	It
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19ae33d	0x7327	inline	's
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19ae41d	0x20e3e44	cstring	strikes
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19af141	0x2073657373696d20	inline	 misses 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19af692	0x21b7400	cstring	flying 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19afac1	0x7370	inline	ps
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19afac6	0x6d756a20	inline	 jum
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19afb29	0x7266207961776120	inline	 away fr
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19afb39	0x6d6f	inline	om
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19afef0	0x7469	inline	it
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19aff08	0x656b	inline	ke
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19aff0d	0x69727473	inline	stri
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b029c	0x20736b636f6c6220	inline	 blocks 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b0337	0x2068	inline	h 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b033c	0x74697720	inline	 wit
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b09c8	0x7449	inline	It
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b09ed	0x2131973	cstring	's
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b0af4	0x7327	inline	's
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b12de	0x2160643	cstring	its
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b130e	0x20e3e44	cstring	strikes
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b1342	0x2107b48	cstring	It
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b1886	0x21c4902	cstring	 strikes at 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b18af	0x21c490f	cstring	 but the shot is 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b190d	0x21c493e	cstring	parried
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b191c	0x21ed222	cstring	 by 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b19a5	0x210eb84	cstring	!
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b2476	0x21c4999	cstring	silently 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b3114	0x2073	inline	s 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b3119	0x74616220	inline	 bat
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b31b2	0x6564	inline	de
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b31b7	0x69736120	inline	 asi
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b3234	0x2068	inline	h 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b3239	0x74697720	inline	 wit
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b3961	0x210eb84	cstring	!
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b3a4c	0x736b636174746120	inline	 attacks
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b3ad6	0x74756220	inline	 but
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b3b80	0x7370	inline	ps
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b3b85	0x6d756a20	inline	 jum
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b3beb	0x61776120	inline	 awa
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b3d8a	0x2131973	cstring	's
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b3db0	0x20f3ec0	cstring	Your
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b3dd6	0x216056a	cstring	You
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b3e6c	0x21c47a4	cstring	 misses 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b44d6	0x20666f2074756f20	inline	 out of 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b44e6	0x6961	inline	ai
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b44eb	0x20656874	inline	the 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b47e8	0x73656b6972747320	inline	 strikes
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b47f8	0x20746120	inline	 at 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b4883	0x21c4f10/16	vector	 but the shot is
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b4950	0x657463656c666564	inline	deflecte
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b49d4	0x20796220	inline	 by 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b4d47	0x212eed3	cstring	NO_SUB
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b4d6c	0x21ba050	cstring	the 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b4d91	0x21138f2	cstring	 of 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b51b4	0x21c48ed	cstring	 catches
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b51c3	0x20f7379	cstring	 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b520c	0x20e2a73	cstring	 with 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b5252	0x210eb84	cstring	!
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b53da	0x21b7408	cstring	spinning 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b590c	0x736b636174746120	inline	 attacks
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b5996	0x74756220	inline	 but
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b59fe	0x21c470a	cstring	 jumps
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b5a53	0x61776120	inline	 awa
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b5bcc	0x216056a	cstring	You
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b5bf6	0x210eb84	cstring	!
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b6325	0x21de5e7	cstring	strike
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b6342	0x20e3e44	cstring	strikes
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b64fe	0x214dc4f	cstring	 has
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b650d	0x20ca975	cstring	 become enraged!
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b6648	0x21c4a35	cstring	 bats 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b68ec	0x210eb84	cstring	!
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b69b8	0x21c46f8	cstring	 scrambles
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b69db	0x21c496a	cstring	 away from 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b69fe	0x20e2a73	cstring	 with 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b6a42	0x21c4902	cstring	 strikes at 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b6a6b	0x21c49e3	cstring	 but the shot is blocked
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b6a83	0x20e2a73	cstring	 with 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b6b0c	0x210eb84	cstring	!
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b6b2f	0x210eb84	cstring	!
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b6b52	0x20e2323	cstring	 away
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b6bb7	0x21c46f8	cstring	 scrambles
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b6c3a	0x21ba9f5	cstring	 but 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b6c71	0x20f3ec0	cstring	Your
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b6cbb	0x21c4960	cstring	 attacks 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b6cd3	0x21c479d	cstring	 miss 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b6dbe	0x21c47a4	cstring	 misses 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b6de7	0x21c4658	cstring	 badly, blocked by the divine intervention of mighty 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b6f1b	0x210eb84	cstring	!
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b725e	0x21c4980	cstring	stunned by divine power!
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b766e	0x21c4902	cstring	 strikes at 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b7697	0x21c4946	cstring	 but the shot is blocked!
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b79a2	0x210eb84	cstring	!
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b7a09	0x21c48b2	cstring	 has moved out of range!
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b7a2c	0x21c4a43	cstring	 out of the air
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b7a4f	0x21c4a3c	cstring	 aside
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b7a95	0x21c470a	cstring	 jumps
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b7ab8	0x21c4a04	cstring	 blocks 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b7d23	0x21c470a	cstring	 jumps
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b7d46	0x21c4a25	cstring	deflected
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b7d5e	0x21c4a0d	cstring	effortlessly 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b7d81	0x21c490f	cstring	 but the shot is 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b7da4	0x210eb84	cstring	!
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b7dc7	0x21c4902	cstring	 strikes at 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b7f30	0x20e2a73	cstring	 with 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b7fac	0x21c4703	cstring	 rolls
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b8014	0x21c4703	cstring	 rolls
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b8118	0x210eb84	cstring	!
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b817d	0x21c46f8	cstring	 scrambles
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b87b9	0x21c48d0	cstring	 lets
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b8816	0x65687420	inline	 the
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b88ca	0x2073	inline	s 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b88cf	0x776120706f726420	inline	 drop aw
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b88dc	0x61207961	inline	ay a
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b89a3	0x21c48e5	cstring	attacks
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b8d6f	0x21e9457	cstring	pushes
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b8d99	0x21ba9f5	cstring	 but 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b8de9	0x20e2323	cstring	 away
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b8e0c	0x21ed222	cstring	 by 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b8e50	0x21c4a1b	cstring	narrowly 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b8fac	0x21c4960	cstring	 attacks 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b8fff	0x2107edc	cstring	.
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b902f	0x21c4a2f	cstring	 bat 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b905f	0x20f7379	cstring	 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b9082	0x21c48d6	cstring	 drop away as 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b90a5	0x21ba04f	cstring	 the 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b9314	0x21c48ed	cstring	 catches
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b9323	0x20f7379	cstring	 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b936c	0x20e2a73	cstring	 with 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b93b2	0x210eb84	cstring	!
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b97cf	0x212f646	cstring	 attack 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b9911	0x21c4936	cstring	easily 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b9946	0x21c4703	cstring	 rolls
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b9a00	0x21c49fc	cstring	 block 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b9aa3	0x21739b9	cstring	 jump
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b9ae2	0x212eed3	cstring	NO_SUB
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b9b4e	0x21739b9	cstring	 jump
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b9b78	0x21c48f6	cstring	 strike at 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b9ba3	0x212f646	cstring	 attack 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19b9db6	0x21ba429	cstring	your
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19ba2b1	0x21c4921	cstring	deftly 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19ba329	0x217376a	cstring	attack
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19ba34d	0x21739b9	cstring	 jump
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19ba49f	0x21c48f6	cstring	 strike at 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19ba4b3	0x212eed3	cstring	NO_SUB
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19ba816	0x21c48cb	cstring	 let
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19bacdb	0x21c46ee	cstring	 scramble
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19bacf3	0x213014a	cstring	 roll
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19bad7f	0x213014a	cstring	 roll
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19bad97	0x21c46ee	cstring	 scramble
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19bb8bb	0x21c4929	cstring	just barely 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19bb8d3	0x21c4936	cstring	easily 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19bbb49	0x20c920e	cstring	vector::_M_default_append
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19bbb9a	0x20c920e	cstring	vector::_M_default_append
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19bbc81	0x21138b8	cstring	 have
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19bbcc3	0x21c48f6	cstring	 strike at 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19bbd0a	0x21e9451	cstring	push
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19bbd95	0x21079b4	cstring	 is 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19bbdad	0x21ba388	cstring	 are 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19bbdd0	0x219eeb1	cstring	 and 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19bbdf5	0x21ba388	cstring	 are 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19bbec3	0x21c4976	cstring	Many are 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19bbee6	0x20f3aea	cstring	, 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19bbf0b	0x21b9beb	cstring	, and 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19bbfd0	0x21c46ee	cstring	 scramble
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19bbfe8	0x213014a	cstring	 roll
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19bc005	0x21ba429	cstring	your
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19bc08c	0x21c479d	cstring	 miss 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19bc5c2	0x20f46d8	cstring	 catch
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19bc8d2	0x20f46d8	cstring	 catch
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19bc937	0x21c48f6	cstring	 strike at 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19bca05	0x20c920e	cstring	vector::_M_default_append
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19bcae4	0x20c920e	cstring	vector::_M_default_append
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19bcb4b	0x20c920e	cstring	vector::_M_default_append
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19bcbdc	0x20c920e	cstring	vector::_M_default_append
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19bcf3a	0x21c49ce	cstring	The force bends the 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19bcf96	0x21c49b8	cstring	The force twists the 
+combat-damage-caller-melee-projectile-defense-19ad8d0	0x19ad8d0	0x19bd037	0x21c49a3	cstring	The force pulls the 
+combat-collision-1eb5eb0	0x1eb5eb0	0x1eb6630	0x2204efb	cstring	 into 
+combat-collision-1eb5eb0	0x1eb5eb0	0x1eb6637	0x210eb84	cstring	!
+combat-collision-1eb5eb0	0x1eb5eb0	0x1eb6dd4	0x736d	inline	ms
+combat-collision-1eb5eb0	0x1eb5eb0	0x1eb6dda	0x616c7320	inline	 sla
+combat-collision-1eb5eb0	0x1eb5eb0	0x1eb6e2c	0x2208950/16	vector	 into an obstacl
+combat-collision-1eb5eb0	0x1eb5eb0	0x1eb6e38	0x2064	inline	d 
+combat-collision-1eb5eb0	0x1eb5eb0	0x1eb6e3d	0x6e612065	inline	e an
+combat-collision-1eb5eb0	0x1eb5eb0	0x1eb6eb9	0x776f6c62	inline	blow
+combat-collision-1eb5eb0	0x1eb5eb0	0x1eb6f0e	0x7472	inline	rt
+combat-collision-1eb5eb0	0x1eb5eb0	0x1eb6f13	0x61706120	inline	 apa
+combat-collision-1eb5eb0	0x1eb5eb0	0x1eb81f6	0x736d	inline	ms
+combat-collision-1eb5eb0	0x1eb5eb0	0x1eb81fb	0x616c7320	inline	 sla
+combat-collision-1eb5eb0	0x1eb5eb0	0x1eb8252	0x206f	inline	o 
+combat-collision-1eb5eb0	0x1eb5eb0	0x1eb8257	0x746e6920	inline	 int
+combat-collision-1eb5eb0	0x1eb5eb0	0x1eb8713	0x21c470a	cstring	 jumps
+combat-collision-1eb5eb0	0x1eb5eb0	0x1eb8722	0x20e1f80	cstring	 out of 
+combat-collision-1eb5eb0	0x1eb5eb0	0x1eb878f	0x2131973	cstring	's
+combat-collision-1eb5eb0	0x1eb5eb0	0x1eb87b4	0x2208634	cstring	 flight path!
+combat-collision-1eb5eb0	0x1eb5eb0	0x1eb8d5e	0x220860a	cstring	 slam
+combat-collision-1eb5eb0	0x1eb5eb0	0x1eb8db6	0x736d	inline	ms
+combat-collision-1eb5eb0	0x1eb5eb0	0x1eb8dbb	0x616c7320	inline	 sla
+combat-collision-1eb5eb0	0x1eb5eb0	0x1eb8e1d	0x2208950/16	vector	 into an obstacl
+combat-collision-1eb5eb0	0x1eb5eb0	0x1eb8e28	0x2165	inline	e!
+combat-collision-1eb5eb0	0x1eb5eb0	0x1eb95c6	0x22085f6	cstring	 skips
+combat-collision-1eb5eb0	0x1eb5eb0	0x1eb95d9	0x22085fd	cstring	 across the 
+combat-collision-1eb5eb0	0x1eb5eb0	0x1eb967b	0x22105ff	cstring	water
+combat-collision-1eb5eb0	0x1eb5eb0	0x1eb968e	0x210eb84	cstring	!
+combat-collision-1eb5eb0	0x1eb5eb0	0x1eba48e	0x2208610	cstring	 slams
+combat-collision-1eb5eb0	0x1eb5eb0	0x1eba4a1	0x2208617	cstring	 into an obstacle and 
+combat-collision-1eb5eb0	0x1eb5eb0	0x1eba4d8	0x220862e	cstring	blows
+combat-collision-1eb5eb0	0x1eb5eb0	0x1eba4eb	0x211179f	cstring	 apart!
+combat-collision-1eb5eb0	0x1eb5eb0	0x1ebac99	0x2208610	cstring	 slams
+combat-collision-1eb5eb0	0x1eb5eb0	0x1ebacac	0x2204efb	cstring	 into 
+combat-collision-1eb5eb0	0x1eb5eb0	0x1ebad03	0x210eb84	cstring	!
+combat-collision-1eb5eb0	0x1eb5eb0	0x1ebaebf	0x220860a	cstring	 slam
+combat-collision-1eb5eb0	0x1eb5eb0	0x1ebaf9f	0x736d	inline	ms
+combat-collision-1eb5eb0	0x1eb5eb0	0x1ebafa5	0x616c7320	inline	 sla
+combat-collision-1eb5eb0	0x1eb5eb0	0x1ebaff7	0x2208950/16	vector	 into an obstacl
+combat-collision-1eb5eb0	0x1eb5eb0	0x1ebb002	0x2165	inline	e!
+combat-collision-1eb5eb0	0x1eb5eb0	0x1ebb250	0x206f	inline	o 
+combat-collision-1eb5eb0	0x1eb5eb0	0x1ebb255	0x746e6920	inline	 int
+combat-collision-1eb5eb0	0x1eb5eb0	0x1ebb5b3	0x2208610	cstring	 slams
+combat-collision-1eb5eb0	0x1eb5eb0	0x1ebb911	0x736d	inline	ms
+combat-collision-1eb5eb0	0x1eb5eb0	0x1ebb916	0x616c7320	inline	 sla
+combat-collision-1eb5eb0	0x1eb5eb0	0x1ebbda0	0x2208950/16	vector	 into an obstacl
+combat-collision-1eb5eb0	0x1eb5eb0	0x1ebbdac	0x2165	inline	e!
+combat-collision-1eb5eb0	0x1eb5eb0	0x1ebbf47	0x736d	inline	ms
+combat-collision-1eb5eb0	0x1eb5eb0	0x1ebbf4c	0x616c7320	inline	 sla
+combat-collision-1eb5eb0	0x1eb5eb0	0x1ebc0d6	0x7472	inline	rt
+combat-collision-1eb5eb0	0x1eb5eb0	0x1ebc0db	0x61706120	inline	 apa
+combat-collision-1eb5eb0	0x1eb5eb0	0x1ebc17d	0x2208950/16	vector	 into an obstacl
+combat-collision-1eb5eb0	0x1eb5eb0	0x1ebc189	0x2064	inline	d 
+combat-collision-1eb5eb0	0x1eb5eb0	0x1ebc18e	0x6e612065	inline	e an
+combat-collision-1eb5eb0	0x1eb5eb0	0x1ebc234	0x736d	inline	ms
+combat-collision-1eb5eb0	0x1eb5eb0	0x1ebc23a	0x616c7320	inline	 sla
+combat-collision-1eb5eb0	0x1eb5eb0	0x1ebc300	0x2208950/16	vector	 into an obstacl
+combat-collision-1eb5eb0	0x1eb5eb0	0x1ebc30c	0x2165	inline	e!
+combat-collision-1eb5eb0	0x1eb5eb0	0x1ebc3c3	0x736d	inline	ms
+combat-collision-1eb5eb0	0x1eb5eb0	0x1ebc3c9	0x616c7320	inline	 sla
+combat-collision-1eb5eb0	0x1eb5eb0	0x1ebc500	0x776f6c62	inline	blow
+combat-collision-1eb5eb0	0x1eb5eb0	0x1ebc9d7	0x217312f	cstring	blow
+combat-collision-1eb5eb0	0x1eb5eb0	0x1ebc9ef	0x220860a	cstring	 slam
+combat-collision-1eb5eb0	0x1eb5eb0	0x1ebca07	0x220860a	cstring	 slam
+combat-collision-1eb5eb0	0x1eb5eb0	0x1ebcca3	0x220860a	cstring	 slam
+combat-collision-1eb5eb0	0x1eb5eb0	0x1ebcd6f	0x217312f	cstring	blow
+combat-collision-1eb5eb0	0x1eb5eb0	0x1ebcee3	0x22085f0	cstring	 skip
+combat-collision-1eb5eb0	0x1eb5eb0	0x1ebd15a	0x220860a	cstring	 slam
+combat-collision-1eb5eb0	0x1eb5eb0	0x1ebd274	0x220860a	cstring	 slam
+combat-collision-1eb5eb0	0x1eb5eb0	0x1ebd2df	0x21ba429	cstring	your
+combat-collision-1eb5eb0	0x1eb5eb0	0x1ebd319	0x21c46f8	cstring	 scrambles
+combat-collision-1eb5eb0	0x1eb5eb0	0x1ebd33b	0x21c4703	cstring	 rolls
+combat-collision-1eb5eb0	0x1eb5eb0	0x1ebd34f	0x213014a	cstring	 roll
+combat-collision-1eb5eb0	0x1eb5eb0	0x1ebd363	0x21c46ee	cstring	 scramble
+combat-collision-1eb5eb0	0x1eb5eb0	0x1ebd4b9	0x20cab4e	cstring	magma
+combat-collision-1eb5eb0	0x1eb5eb0	0x1ebd4ca	0x21739b9	cstring	 jump
+combat-collision-1eb5eb0	0x1eb5eb0	0x1ebd545	0x20cab41	cstring	lava

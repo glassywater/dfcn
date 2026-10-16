@@ -97,7 +97,12 @@ std::optional<std::string> Overlay::translate_adventure_target_text(
                 const auto found = adventure_target_literals_.find(source);
                 if (found != adventure_target_literals_.end()) return finish(found->second);
             }
-            return finish(translate_ui_message_capture(trim_view(original), true));
+            auto identity = translate_ui_message_capture(trim_view(original), true);
+            // The status helper and summary renderer supply a complete unit
+            // field, including a bare player-authored name. Keep that name
+            // valid when no procedural-name dictionary entry exists.
+            if (!identity) identity = translate_unit_identity(trim_view(original), true);
+            return finish(std::move(identity));
         }
         if (kind == 'i') {
             if (source.ends_with(" (copy)")) {
@@ -493,8 +498,15 @@ void Overlay::append_adventure_combat_fields(std::vector<std::string> &screen_ro
                         !std::string_view(draw->source).starts_with(lookup_source)) continue;
                 if ((kind == 'n' || kind == 's') && draw->unit_identity_target)
                     target = draw->unit_identity_target;
-                if (!target && !draw->complete_source.empty())
-                    target = translate_adventure_target_text(draw->complete_source, kind);
+                if (!target) {
+                    // 116bb90 builds an entire attack/recovery status before
+                    // one addst. Resolve that captured string even when no
+                    // truncation occurred; the grid may contain its padding
+                    // or the independently formatted item/name fields.
+                    const auto &complete = draw->complete_source.empty()
+                        ? draw->source : draw->complete_source;
+                    target = translate_adventure_target_text(complete, kind);
+                }
                 break;
             }
             if (!target && kind == 's') {

@@ -160,6 +160,16 @@ static bool install_native_unit_identity_hooks() {
         {0xfd8418,0xebfe90,reinterpret_cast<const void *>(&capture_native_unit_header_creation_name),{}},
         {0xff1430,0xebfe90,reinterpret_cast<const void *>(&capture_native_unit_header_creation_name),{}},
         {0xd24181,0x24f90,reinterpret_cast<const void *>(&capture_native_conversation_portrait_capitalization),{}},
+        // Barter capitalizes the same reference before appending ': '.
+        // These are RVAs; the extracted native call VAs include 0x400000.
+        {0x11d2ba3,0x24f90,reinterpret_cast<const void *>(&capture_native_conversation_portrait_capitalization),{}},
+        {0x11d38e2,0x24f90,reinterpret_cast<const void *>(&capture_native_conversation_portrait_capitalization),{}},
+        {0x11d3a7c,0x24f90,reinterpret_cast<const void *>(&capture_native_conversation_portrait_capitalization),{}},
+        {0x11d3aa4,0x24f90,reinterpret_cast<const void *>(&capture_native_conversation_portrait_capitalization),{}},
+        {0x11cf4a8,0x24f90,reinterpret_cast<const void *>(&capture_native_conversation_portrait_capitalization),{}},
+        {0x11cf5ed,0x24f90,reinterpret_cast<const void *>(&capture_native_conversation_portrait_capitalization),{}},
+        {0x11cf7ce,0x24f90,reinterpret_cast<const void *>(&capture_native_conversation_portrait_capitalization),{}},
+        {0x11cf977,0x24f90,reinterpret_cast<const void *>(&capture_native_conversation_portrait_capitalization),{}},
         {0x76d81b,0x24f90,reinterpret_cast<const void *>(&capture_native_unit_reference_capitalization),{}},
         {0x76e32f,0x24f90,reinterpret_cast<const void *>(&capture_native_unit_reference_capitalization),{}},
     };
@@ -169,7 +179,10 @@ static bool install_native_unit_identity_hooks() {
     const Observation observations[]{
         {0x76805d,{0x48,0x8b,0xbc,0x24,0xc0,0,0,0,0x4c,0x39,0xef},&observe_native_unit_reference_name},
         {0x767a24,{0x4c,0x8b,0x84,0x24,0xa8,0,0,0,0x4d,0x85,0xc0},&observe_native_unit_reference_species},
-        {0x767b61,{0x48,0x8b,0x7d,0,0x48,0x8b,0x8c,0x24,0x80,0,0,0},&observe_native_unit_reference_role},
+        // The no-curse branch at 0x767da8 enters at 0x767b65, after
+        // the output-buffer load. Observe the shared role load so neither
+        // native path lands inside the replacement jump.
+        {0x767b65,{0x48,0x8b,0x8c,0x24,0x80,0,0,0},&observe_native_unit_reference_role},
         {0x767b16,{0x48,0x8b,0x8b,0x40,0x08,0,0,0x4d,0x8d,0x2c,0x30},&observe_native_unit_reference_curse},
         {0x76cd18,{0x48,0x8b,0x7d,0x80,0x4c,0x39,0xe7},&observe_native_unit_movement_role},
         {0x76ccea,{0x48,0x83,0x7d,0xa8,0,0x48,0x8b,0x45,0x88},&observe_native_unit_movement_name},

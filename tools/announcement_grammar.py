@@ -95,4 +95,18 @@ def combat_entries(path: Path, entry_type):
                 continue
             seen[key] = variant_target
             entries.append(entry_type(key, variant_target, "l", "DFCN announcement combat", 410))
+    # These files own complete native speech productions. Keep the original
+    # shared sentence entry and also publish an explicit speech entry, so a
+    # speaker's body reaches its typed grammar before generic prose/name rules.
+    if path.name in {
+            "announcement-rumor-grammar.tsv", "announcement-dialogue-grammar.tsv",
+            "announcement-description-grammar.tsv",
+            "announcement-biography-grammar.tsv", "announcement-boast-grammar.tsv",
+            "announcement-diplomacy-grammar.tsv", "announcement-trade-grammar.tsv",
+            "announcement-dialogue-extra-grammar.tsv"}:
+        prefix = "Announcement combat sentence ["
+        entries += [entry_type(
+            "Announcement combat spoken-sentence [" + entry.source[len(prefix):],
+            entry.target, entry.flags, entry.origin, entry.priority)
+            for entry in entries if entry.source.startswith(prefix)]
     return entries
