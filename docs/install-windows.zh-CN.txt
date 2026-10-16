@@ -2,7 +2,7 @@ DFCN · 矮人要塞简体中文汉化 / Windows x64
 适用游戏版本：Dwarf Fortress 53.16，支持 Steam 版与官网免费版。
 Byayoi 同人社区：https://byayoi.org/
 GitHub：https://github.com/pokemonchw/dfcn
-Release：https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261016.2
+Release：https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261017
 本版更新说明见压缩包根目录 CHANGELOG.txt。
 
 一、GitHub 整包安装
@@ -32,6 +32,11 @@ https://steamcommunity.com/sharedfiles/filedetails/?id=3811193379
 
 二、开关与数据刷新
 
+Shift+F1：打开或关闭汉化设置菜单，可切换中英文、繁简体、四族语言音译，
+开关已安装的 DFHack，或重新载入核心与数据并开启汉化。
+英文模式下仍可打开。点击选项后自动关闭，也可按 Esc、右键或点击菜单外空白处关闭。
+四族语言默认采用中文音译，可切换为原文拼写，选择在本次运行及核心重载后保留。
+DFHack 选项需已安装 DFHack 且接口可用。
 Shift+F10：开启或关闭汉化，保留当前核心与已加载数据。
 Shift+F5：关闭汉化；再按一次开启时重新读取核心与数据。
 Shift+F6：临时停用或恢复全部扩展 TSV 词表和 TOML 规则，立即重新载入汉化并开启显示。

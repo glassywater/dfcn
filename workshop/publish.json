@@ -10,8 +10,8 @@
     "Chinese"
   ],
   "visibility": 0,
-  "changelog": "DFCN v53.16-20261016.2 · 2026-10-16 · Windows x64\n\n- 汉化设置优先读取游戏根目录的 dfcn_config.ini。首次启动时从汉化模块内的默认配置复制生成，已有配置不会覆盖；模块内 config.ini 保留为默认模板和复制失败时的回退配置。\n- 新增台湾正体中文显示，使用随包提供的离线 OpenCC 转换，采用台湾字形及常用词汇。转换保留文字颜色，自定义小队名称和用户输入保持原样。\n- 新增 Shift+F8 简繁切换，同步刷新字体、换行和译文排版。左右 Shift 均可，长按不会重复触发；语言选择在本次运行及核心重载后保留，不改写配置文件，也不改变汉化开关状态。\n- 新增 language 配置：默认 zh-Hans 为简体中文，zh-Hant 为台湾正体；同时兼容 zh-CN、zh-TW、zh-Hans-CN、zh-Hant-TW。\n",
-  "release_tag": "v53.16-20261016.2",
-  "release_url": "https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261016.2",
+  "changelog": "DFCN v53.16-20261017 · 2026-10-17 · Windows x64\n\n- 新增 Shift+F1 汉化设置菜单，可切换中英文、简体／繁体、四族语言原文／音译，开关已安装的 DFHack，以及重新载入汉化。英文模式下也可打开；选择后自动关闭，右键或点击空白处可关闭。\n- 新增矮人、精灵、哥布林、人类四族语言的原文显示选项，默认使用中文音译，人物、地点、乐器及物品等名称同步适用。中文释义中的人物首名仍使用音译；本次游戏的选择跨核心重载保留。默认值可在 dfcn_config.ini 中设置：native_language_original=1 显示原文，0 显示音译。\n- 自动补齐用户配置中新增的设置，保留已有设置值、注释和文件内容。\n- 修正笼内生物状态被误作姓名音译的问题，正确显示“笼内生物”和“未分配的笼内生物”。\n- DFHack 技能进度保留原生 Lv／Lv++ 标记。\n",
+  "release_tag": "v53.16-20261017",
+  "release_url": "https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261017",
   "github_url": "https://github.com/pokemonchw/dfcn"
 }

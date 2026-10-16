@@ -30,13 +30,13 @@ Windows 与 Linux 共用汉化数据载入优化：TOML 规则图按节点及引
 
 如果位于不同 Steam 库，将第一行改为该 DLL 的实际绝对路径；只写路径，不加引号或 `key=value`，保存为 UTF-8 无 BOM。汉化启动时优先读取游戏根目录的 `dfcn_config.ini`；文件不存在时，从订阅目录的 `DFCN/dfcn/data/runtime/config.ini` 复制生成，已有文件不会覆盖。订阅目录中的 `config.ini` 保留为默认模板，复制失败时作为回退配置。完整路径示例、旧版迁移与卸载方法见 [工坊详细说明](https://steamcommunity.com/sharedfiles/filedetails/?id=3811193379)。
 
-**GitHub Release：**从 [v53.16-20261016.2](https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261016.2) 下载 `DFCN-Windows-x64-minimal.zip`，解压后将全部内容按原有目录结构复制到游戏根目录，包括 `dfhooks.dll`、`dfhooks_dfcn.ini` 和整个 `dfcn` 文件夹。汉化设置同样使用游戏根目录的 `dfcn_config.ini`，首次启动时由 `dfcn/data/runtime/config.ini` 复制生成，已有文件不会覆盖；复制失败时读取默认模板。完整变化见 Release 更新日志。
+**GitHub Release：**从 [v53.16-20261017](https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261017) 下载 `DFCN-Windows-x64-minimal.zip`，解压后将全部内容按原有目录结构复制到游戏根目录，包括 `dfhooks.dll`、`dfhooks_dfcn.ini` 和整个 `dfcn` 文件夹。汉化设置同样使用游戏根目录的 `dfcn_config.ini`，首次启动时由 `dfcn/data/runtime/config.ini` 复制生成，已有文件不会覆盖；复制失败时读取默认模板。完整变化见 Release 更新日志。
 
 Windows 汉化核心与翻译数据按汉化模块所在目录定位，支持将运行文件保留在工坊目录；用户配置统一使用游戏根目录的 `dfcn_config.ini`。游戏中按 **Shift+F10** 开启或关闭汉化，保留当前核心与数据；按 **Shift+F5** 关闭再开启汉化时，重新加载核心与数据。数据仅在启动、**Shift+F5** 重新开启或 **Ctrl+Shift+F10** 显式刷新时加载，不自动检查文件变化。安装仅添加汉化自身文件，不改写磁盘上的游戏本体、RAW 或存档；取消订阅不会删除已复制的入口文件和 `dfcn_config.ini`，卸载时需手动移除自己安装的汉化文件。
 
 Windows 本版提供 **Shift+F6**：扩展默认启用，首次按下停用全部扩展 TSV 词表与 TOML 规则，立即重新载入本体汉化并开启显示；再次按下恢复扩展并重新载入汉化。左右 Shift 均可，长按不重复切换。扩展开关只影响本次运行，跨 **Shift+F5** 核心重载保留，不写入配置文件。
 
-源码新增 **Shift+F1** 原生组件菜单，依次提供切换中英文、切换繁简体、切换四族语言音译、开关 DFHack（需已安装 DFHack）、重载汉化五项。点击选项执行后自动关闭，右键或左键点击空白处也会关闭；英文模式下仍可打开。四族语言在原文拼写与中文音译之间切换，选择保留到本次游戏结束，并跨核心重载保留。DFHack 选项复用现有 Shift+F11 开关，未安装或接口未就绪时不执行。重载汉化会重新载入已部署的核心与数据并开启汉化。
+**Shift+F1** 打开或关闭汉化设置菜单，提供切换中英文、切换繁简体、切换四族语言音译、开关 DFHack（需已安装 DFHack）、重载汉化五项。点击选项执行后自动关闭，也可按 Esc、右键或点击菜单外空白处关闭；英文模式下仍可打开。四族语言默认采用中文音译，可切换为原文拼写，选择保留到本次游戏结束，并跨核心重载保留。DFHack 选项与 Shift+F11 相同，未安装或接口未就绪时不执行。重载汉化会重新载入核心与数据并开启汉化。
 
 Windows 同时安装 **DFHack 53.16-r2** 时，可按 **Shift+F11** 关闭 DFHack，再按一次恢复。开关独立于汉化：关闭时暂停插件更新、界面 hook、热键、命令与 Lua 定时回调，保留驻留核心、插件配置、存档数据和世界卸载清理。已打开的 DFHack 界面会关闭；已执行的游戏或存档修改不会回滚。
 
