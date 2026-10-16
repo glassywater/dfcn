@@ -16,6 +16,11 @@ Deep underground, the promise of treasure and the thrill of overcoming danger ha
 On display	展出中
 Assigned	已指定
 
+# Cage occupant states, native ELF 53.16: 0x13de5bd / 0x13de6ff.
+# These are complete status captions below a unit, not personal names.
+Occupant	笼内生物
+Unassigned occupant	未分配的笼内生物
+
 # Legends initialization: the era, both counters and status are one addst
 # record. {v} reuses the historical-title grammar, including named/numbered
 # ages; never let the whole status become a procedural name.
