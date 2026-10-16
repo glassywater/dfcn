@@ -409,6 +409,7 @@ struct Rule {
     bool help_objective = false;
     bool tooltip_prose = false;
     bool ui_message = false;
+    bool spoken_dialogue = false;
     // Per Unicode codepoint, not per source row. -1 inherits the native
     // fragment's base color; other values index the game's 16-color palette.
     std::vector<int> help_target_palettes;
@@ -5331,6 +5332,7 @@ private:
     std::optional<std::string> translate_announcement_number(std::string_view source) const;
     std::optional<std::string> translate_announcement_date(std::string_view source) const;
     std::optional<std::string> translate_announcement_dialogue(std::string_view source) const;
+    std::optional<std::string> translate_spoken_dialogue_body(std::string_view source) const;
     std::optional<std::string> translate_announcement_items(std::string_view source) const;
     TranslationResult translate_adventure_barter_artifact_report_result(std::string_view source) const;
     std::optional<std::string> translate_complete_announcement(std::string_view source,

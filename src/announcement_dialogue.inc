@@ -138,6 +138,81 @@ std::optional<std::string> Overlay::translate_announcement_date(
     return *result + season;
 }
 
+// The complete 254-topic dispatcher, TEXT_SET parameter expansion and native
+// append branches share this body parser. D marks the reviewed speech catalogue;
+// spoken-sentence aliases retain the native field types of delegated builders.
+std::optional<std::string> Overlay::translate_spoken_dialogue_body(
+        std::string_view source) const {
+    if (source.empty()) return std::nullopt;
+    const auto sentence = [&](std::string_view part) -> std::optional<std::string> {
+        const std::vector<int> colors(part.size(), 0xffffff);
+        std::vector<int> targets;
+        // Fixed wording must precede name-bearing rumor alternatives.
+        if (auto literal = translate_help_paragraph(part, colors, targets, true, -1, true))
+            return literal;
+        if (auto native = translate_announcement_combat(part, "spoken-greeting"))
+            return native;
+        const auto compact = compact_ui_message_literal(part);
+        for (int probe : ui_message_anchors_.candidates(compact)) {
+            const int index = ui_message_template_probes_[static_cast<size_t>(probe)].index;
+            if (!rules_[static_cast<size_t>(index)].spoken_dialogue) continue;
+            if (auto translated = translate_help_paragraph(part, colors, targets, true, index))
+                return translated;
+        }
+        if (auto native = translate_announcement_combat(part, "spoken-sentence"))
+            return native;
+        // The greeting can append the same complete mental-picture statement
+        // as the visitor quote, including all native emotion/action switches.
+        if (auto statement = translate_announcement_combat(part, "visitor-statement"))
+            return statement;
+        return std::nullopt;
+    };
+    if (auto complete = sentence(source)) return complete;
+
+    // Native speech appends independently complete sentences. A split is valid
+    // only when every resulting span resolves through the owned speech grammar.
+    // Try the longest spans first; punctuation in a generated title or authored
+    // nickname never becomes a reason to consume only part of that name.
+    std::vector<size_t> starts{0};
+    char quote = 0;
+    int brackets = 0, parentheses = 0;
+    for (size_t at = 0; at < source.size(); ++at) {
+        const char ch = source[at];
+        if (!quote && (ch == '"' || ch == '`')) quote = ch;
+        else if ((quote == '"' && ch == '"') ||
+                (quote == '`' && (ch == '\'' || ch == '`'))) quote = 0;
+        else if (!quote) {
+            if (ch == '[') ++brackets;
+            else if (ch == ']' && brackets) --brackets;
+            if (ch == '(') ++parentheses;
+            else if (ch == ')' && parentheses) --parentheses;
+        }
+        if (quote || brackets || parentheses || at == 0 ||
+                !std::isspace(static_cast<unsigned char>(ch))) continue;
+        size_t end = at - 1;
+        if (source[end] == ']' && end) --end;
+        if (std::string_view(".!?").find(source[end]) == std::string_view::npos) continue;
+        while (at < source.size() && std::isspace(static_cast<unsigned char>(source[at]))) ++at;
+        if (at < source.size()) starts.push_back(at);
+    }
+    if (starts.size() == 1) return std::nullopt;
+    starts.push_back(source.size());
+    std::vector<std::optional<std::string>> tails(starts.size());
+    tails.back() = std::string{};
+    for (size_t part = starts.size() - 1; part-- > 0;) {
+        for (size_t next = starts.size() - 1; next > part; --next) {
+            if (!tails[next] || (part == 0 && next + 1 == starts.size())) continue;
+            const auto text = trim_view(source.substr(starts[part], starts[next] - starts[part]));
+            if (text.empty()) continue;
+            if (auto translated = sentence(text)) {
+                tails[part] = *translated + *tails[next];
+                break;
+            }
+        }
+    }
+    return tails.front();
+}
+
 // 0x140684a10 submits either ACTOR: BODY or ACTOR (to RECIPIENT): BODY.
 // BODY is passed intact through 0x140685d00 before submission, so translate it
 // against the complete reviewed paragraph catalog, never as an arbitrary name.
@@ -180,7 +255,8 @@ std::optional<std::string> Overlay::translate_announcement_dialogue(
         const std::vector<int> source_colors(body.size(), 0xffffff);
         std::vector<int> target_colors;
         NativeAnnouncementUnitBodyScope semantic_body(source, body);
-        const auto translated = translate_complete_announcement(
+        auto translated = translate_spoken_dialogue_body(body);
+        if (!translated) translated = translate_complete_announcement(
             body, source_colors, target_colors);
         if (!translated || translated->empty()) continue;
         return *speaker + (recipient ? "（对" + *recipient + "）" : "") +

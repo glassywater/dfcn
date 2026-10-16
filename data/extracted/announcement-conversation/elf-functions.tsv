@@ -41,3 +41,5 @@ ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	object-pronoun	0x12ca8a0	0x12ca929
 ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	family-relation	0x1503cd0	0x1505947
 ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	unit-reference	0x1c428e0	0x1c445c2
 ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	conversation-dispatch	0x187c510	0x18be0a7
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	speech-person-parameter	0x1030670	0x1030d6a
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	speech-transform	0x1031350	0x1031b45

@@ -171,6 +171,12 @@ std::optional<std::string> Overlay::translate_complete_announcement(
         }
         translated = translate_announcement_combat(block);
         if (!translated) {
+            // 103a1d0 also submits BODY alone when neither live unit nor
+            // historical figure supplies a speaker caption. Keep the same
+            // complete speech grammar for that native empty-header branch.
+            translated = translate_spoken_dialogue_body(block);
+        }
+        if (!translated) {
             // The conversation dispatcher and dialogue-1048a40 submit the
             // same complete mental-picture statement as the visitor quote.
             // Its six actions, time flags, 170-slot emotion switch and empty

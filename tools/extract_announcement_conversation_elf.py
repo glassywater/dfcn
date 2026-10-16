@@ -39,6 +39,8 @@ ROOTS = {
     0x12ca8a0: "object-pronoun", 0x1503cd0: "family-relation",
     0x1c428e0: "unit-reference",
     0x187c510: "conversation-dispatch",
+    0x1030670: "speech-person-parameter",
+    0x1031350: "speech-transform",
 }
 
 
@@ -115,6 +117,20 @@ def main():
         writer.writerows((selector, labels.get(selector, ""), target)
                          for function, role, dispatch, table, selector, target in switches
                          if dispatch == "0x187c6df")
+    # TEXT_SET is a data-driven source below the decompiled 203d220 selector
+    # and 10338c0 expander. Retain every actual alternative, including nested
+    # parameters, rather than inferring one greeting from a displayed example.
+    raw_root = image.path.parent / "data/vanilla/vanilla_text/objects"
+    with (OUT / "elf-text-sets.tsv").open("w", encoding="utf-8", newline="") as stream:
+        writer = csv.writer(stream, delimiter="\t", lineterminator="\n")
+        writer.writerow(("text_set", "source_file", "line", "raw_text"))
+        for path in sorted(raw_root.glob("*.txt")):
+            text_set = None
+            for line, text in enumerate(path.read_text(encoding="cp437").splitlines(), 1):
+                if match := re.fullmatch(r"\[TEXT_SET:([^]]+)\]", text):
+                    text_set = match[1]
+                elif text_set and text.strip() and not text.startswith("[TEXT_SET_FLAG:"):
+                    writer.writerow((text_set, str(path.relative_to(image.path.parent)), line, text))
     print(f"{image.identity}: extracted {len(functions)} dialogue functions")
 
 

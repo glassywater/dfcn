@@ -87,6 +87,7 @@ bool Overlay::load_rules() {
             rule.help_objective = rule.help_prose && flags.find('O') != std::string::npos;
             rule.tooltip_prose = flags.find('j') != std::string::npos;
             rule.ui_message = flags.find('P') != std::string::npos;
+            rule.spoken_dialogue = rule.ui_message && flags.find('D') != std::string::npos;
             if ((rule.help_prose || rule.ui_message) && rule.target.find("[C:") != std::string::npos) {
                 std::string plain;
                 int palette = -1;
@@ -310,9 +311,15 @@ bool Overlay::load_rules() {
         if (package.translations.empty()) continue;
         std::vector<Rule> extension_rules;
         if (!read_mapping(package.translations, extension_rules)) return false;
+        std::unordered_set<std::string> speech_sources;
+        for (const auto &rule : loaded)
+            if (rule.spoken_dialogue) speech_sources.insert(translation_rule_scope_key(rule));
         std::unordered_set<std::string> overridden;
-        for (const auto& rule : extension_rules)
-            overridden.insert(translation_rule_scope_key(rule));
+        for (auto& rule : extension_rules) {
+            const auto key = translation_rule_scope_key(rule);
+            if (speech_sources.contains(key)) rule.spoken_dialogue = true;
+            overridden.insert(key);
+        }
         loaded.erase(std::remove_if(loaded.begin(), loaded.end(), [&](const Rule& rule) {
             return overridden.contains(translation_rule_scope_key(rule));
         }), loaded.end());
