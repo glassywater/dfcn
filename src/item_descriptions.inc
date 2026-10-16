@@ -844,7 +844,10 @@ std::optional<std::string> Overlay::translate_item_description_source(
                     switch (kind) {
                     case 'a': return translate_legends_participant(part);
                     case 'n': return translate_legends_actor(part);
-                    case 'p': return translate_legends_place(part);
+                    case 'p':
+                        return written_work_form_rule(rule)
+                            ? translate_character_preference_term(part, true)
+                            : translate_legends_place(part);
                     case 's': return translate_legends_term(part, true);
                     case 'q': return translate_legends_color(part);
                     case 't': return translate_legends_anatomy(part);
