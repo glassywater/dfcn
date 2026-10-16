@@ -1,0 +1,5 @@
+edition	source	start	end
+reference	world-report-render	0x1401c17e0	0x1401d3abc
+reference	world-report-input	0x1401bf520	0x1401c17dc
+reference	mission-goal	0x140075110	0x140075120
+reference	proposal-title	0x1401bb400	0x1401bb570

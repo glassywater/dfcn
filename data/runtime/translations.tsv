@@ -44730,7 +44730,7 @@ Fortress activity: Make red spinach leaf dye	制作红菠菜叶染料	li
 Fortress activity: Make sterling silver bars	制作标准银锭	li
 Fortress activity: suffix (invalid location)	（地点无效）	li
 Fortress schedule editor: soldiers to follow	所需的最少	l
-Free captives belonging to your civilization	解救本政权的俘虏	wli
+Free captives belonging to your civilization	解救本政权的俘虏	wliP
 Guide {s} immediately when full of any items	矿车满载时，立即引导矿车向{s1}行驶	hPt
 Guide {s} in {d} day when empty of any items	等待{d1}天且矿车空载时，引导矿车向{s1}行驶	hPt
 Guide {s} in {d} days when full of any items	等待{d1}天且矿车满载时，引导矿车向{s1}行驶	hPt
@@ -49942,7 +49942,7 @@ Overview sentence: This is a masterpiece.	这是一件杰作。	l
 Overview sentence: This is disappointing.	唉，白期待了。	l
 Overview sentence: This isn't irritating.	这没什么可烦的。	l
 Please let me shelter here for the night.	请让我在这里借宿一晚。	hPD
-Raid (squads will try to avoid detection)	突袭（小队会尽量避免被发现）	wli
+Raid (squads will try to avoid detection)	突袭（小队会尽量避免被发现）	wliP
 Recenter on the surface at this location.	将视图重新居中到此位置的地表。	hj
 Recenter on the surface at this location.	将视图重新居中到此位置的地表。	wl
 Refuse to have {e} accept homage from {e}	拒绝让{e1}接受{e2}的臣服	hPt
@@ -57696,7 +57696,7 @@ Overview sentence: What has happened?	发生了什么？	l
 Prepare carefully embark confirmation	仔细准备启程确认	w
 Prepare using a saved embark profile:	使用已保存的出发配置进行准备：	wl
 Rampage of {n} in in {p} in the wilds	在荒野中，{n1}在{p1}的肆虐事件	htEi
-Raze (openly attack and destroy site)	夷平（公开进攻并摧毁地点）	wli
+Raze (openly attack and destroy site)	夷平（公开进攻并摧毁地点）	wliP
 Rely on willpower to see you through.	依靠意志力度过难关。	hP
 Restarts if completed, checked yearly	完成后重新开始，每年检查。	hP
 Select another rectangle to continue.	选择另一个矩形以继续。	hP
@@ -68630,7 +68630,7 @@ Dance Competition of within {p}.	在{p1}，舞蹈比赛。	htEi
 Dance Performance of during {e}.	在{e1}期间，舞蹈表演。	htEi
 Dance Performance of within {p}.	在{p1}，舞蹈表演。	htEi
 Default normal traffic path cost	默认正常交通路径成本	w
-Demander unconditional surrender	要求对方无条件投降	wli
+Demander unconditional surrender	要求对方无条件投降	wliP
 Designate, Blueprint to Standard	指定：蓝图转标准	w
 Designate, Standard to Blueprint	指定：标准转蓝图	w
 Destruction of {p} in the wilds.	在荒野中，{p1}毁灭事件。	htEi
@@ -80428,7 +80428,7 @@ Dance Performance of at {p}	在{p1}，舞蹈表演	htEi
 Dance Performance of in {d}	{d1}年的舞蹈表演	htEi
 Dance Performance of in {p}	在{p1}，舞蹈表演	htEi
 Dance floor in common area:	公共区域的舞池：	wl
-Demand surrender and occupy	要求投降并占领	wli
+Demand surrender and occupy	要求投降并占领	wliP
 Designate, Toggle Blueprint	指定：切换蓝图	w
 Dismiss the large red alert	关闭大型红色警报	hqO
 Dismiss the large red alert	解除大范围红色警戒	w
@@ -86986,7 +86986,7 @@ Surrender of {p} in {p}.	在{p2}，{p1}的投降。	htEi
 Surroundings: Terrifying	环境：恐怖
 Surroundings: Wilderness	周围环境: 荒野	w
 Tables are required for 	桌子是用餐所必需的。应在桌子	w
-Take important treasures	夺取重要珍宝	wli
+Take important treasures	夺取重要珍宝	wliP
 Tell me about the beast.	跟我说说那头凶兽。	hPD
 Tell me about the death.	跟我说说那人的死因。	hPD
 Tell me about this area.	说说这片地区。	hPD
@@ -88778,7 +88778,7 @@ Date: {d}st Galena, {d}	日期：第{d2}年方铅矿月{d1}日	hPt
 Date: {d}st Timber, {d}	日期：第{d2}年林木月{d1}日	hPt
 Date: {d}th Galena, {d}	日期：第{d2}年方铅矿月{d1}日	hPt
 Date: {d}th Timber, {d}	日期：第{d2}年林木月{d1}日	hPt
-Demand one-time tribute	索取一次性贡品	wli
+Demand one-time tribute	索取一次性贡品	wliP
 Designate, High Traffic	指定：高通行区	w
 Dig only gems selected.	仅挖掘选中的宝石。	hj
 Do not automate kitchen	厨房不自动加工	wi
@@ -88948,7 +88948,7 @@ Overview sentence: Eek!	呀！	l
 Peculiarly secretive...	变得异常诡秘……	hP
 Performance during {e}.	在{e1}期间，表演。	htEi
 Performance within {p}.	在{p1}，表演。	htEi
-Pillage (openly attack)	劫掠（公开进攻）	wli
+Pillage (openly attack)	劫掠（公开进攻）	wliP
 Pillaging of {p} at {p}	在{p2}，{p1}劫掠事件	htEi
 Pillaging of {p} in {d}	{d1}年的{p1}劫掠事件	htEi
 Pillaging of {p} in {p}	在{p2}，{p1}劫掠事件	htEi
@@ -88976,7 +88976,7 @@ Raid of {p} during {e}.	在{e1}期间，{p1}袭击事件。	htEi
 Raid of {p} within {p}.	在{p2}，{p1}袭击事件。	htEi
 Raised sepulcher zombie	复生墓穴僵尸	w
 Region name: bluenesses	碧水	hi
-Release other prisoners	释放其他囚犯	wli
+Release other prisoners	释放其他囚犯	wliP
 Remove this work order.	移除此工单。	hj
 Repaint this stockpile.	重新涂画此储物堆。	hj
 Respond to join request	回应加入请求	hP
@@ -90844,7 +90844,7 @@ Date: {d}nd Slate, {d}	日期：第{d2}年板岩月{d1}日	hPt
 Date: {d}rd Slate, {d}	日期：第{d2}年板岩月{d1}日	hPt
 Date: {d}st Slate, {d}	日期：第{d2}年板岩月{d1}日	hPt
 Date: {d}th Slate, {d}	日期：第{d2}年板岩月{d1}日	hPt
-Demand ongoing tribute	要求持续进贡	wli
+Demand ongoing tribute	要求持续进贡	wliP
 Designate constructed 	指定已建造的墙壁、地板及其他	w
 Designate, Carve Track	指定：开凿轨道	w
 Designate, Low Traffic	指定：低通行区	w
@@ -95328,7 +95328,7 @@ Maternal grandfather	外祖父	w
 Maternal grandmother	外祖母	w
 Melee, leather armor	近战（皮甲）	wli
 Merchants need depot	商人需要贸易站	w
-Messenger (unfilled)	信使（空缺）	wli
+Messenger (unfilled)	信使（空缺）	wliP
 Mountain name: barbs	倒刺山	hi
 Mountain name: beaks	鸟嘴山	hi
 Mountain name: crest	顶	hi
@@ -101358,7 +101358,7 @@ Competition at {p}	在{p1}，比赛	htEi
 Competition in {d}	{d1}年的比赛	htEi
 Competition in {p}	在{p1}，比赛	htEi
 Composition failed	作品创作失败	w
-Conquer and occupy	征服并占领	wli
+Conquer and occupy	征服并占领	wliP
 Considered a bully	被认为是恶霸	w
 Considered a thief	被认为是小偷	w
 Considers murderer	谋杀犯	w
@@ -101596,7 +101596,7 @@ No item to pick up	没有可拾取的物品	w
 No macros created.	尚未创建宏。
 No medical history	没有病史	w
 No relevant skills	无相关技能	wi
-No specific orders	无具体命令	wli
+No specific orders	无具体命令	wliP
 Nobles action: NEW	新增任命	w
 Nobody I remember.	我不记得有谁。	hPD
 Nobody lives there	那里没有居民	al
@@ -105488,7 +105488,7 @@ No assigned rooms	未分配房间	wl
 No cumulus clouds	无积云
 No item to remove	没有可移除的物品	w
 No longer stunned	不再眩晕	w
-No notable skills	无显著技能	wli
+No notable skills	无显著技能	wliP
 No outdoor access	没有通向户外的路径	w
 No special orders	无特殊命令	wl
 No squad assigned	未指定小队	w
@@ -109799,7 +109799,7 @@ Liquid container	液体容器	wi
 Load weapon trap	装填武器陷阱	wi
 Loading items...	加载物品......	w
 Loading units...	装载单位......	w
-Loot other items	掠夺其他物品	wli
+Loot other items	掠夺其他物品	wliP
 Lost in despair!	陷入了绝望！	hP
 Low recuperation	恢复能力低	wil
 Lower {s} bucket	放下{s1}的水桶	hPt
@@ -114403,7 +114403,7 @@ OCEAN REJECTION	海洋不符合要求	hP
 Occasion at {p}	在{p1}，庆典	htEi
 Occasion in {d}	{d1}年的庆典	htEi
 Occasion in {p}	在{p1}，庆典	htEi
-On this mission	已加入此任务	wli
+On this mission	已加入此任务	wliP
 Open Combat Log	打开战斗日志	w
 Open the place 	打开地点信息目录。	w
 Opening file...	正在打开文件……	w
@@ -114481,7 +114481,7 @@ Soap (Desired):	肥皂（期望数量）：	wl
 Specific person	特定人物	wi
 Specify leather	指定皮革	wli
 Standing orders	劳动规则	wi
-Steal livestock	偷走牲畜	wli
+Steal livestock	偷走牲畜	wliP
 Stone Engraving	石刻	wi
 Stone Furniture	石制家具	hH
 Stone-Fall Trap	落石陷阱	wi
@@ -119078,7 +119078,7 @@ Disdains power	轻视权势	w
 Disdains skill	轻视技艺	w
 Disdains truth	轻视诚实	w
 Disturbed dead	受扰亡者	w
-Done assigning	完成指派	wli
+Done assigning	完成指派	wliP
 Downward Slope	下坡	w
 Drain aquarium	排空水族箱	wi
 Drink (animal)	饮料（动物）	wi
@@ -119210,7 +119210,7 @@ No worshippers	没有信徒	wi
 No, I mean it.	不，我是认真的。	hPD
 North or South	北极或南极
 Not altruistic	不愿助人	w
-Not in contact	尚未建立联系	wli
+Not in contact	尚未建立联系	wliP
 Noted murderer	著名的谋杀犯	w
 Offer currency	提供货币	hP
 Offering Place	供奉处	wi
@@ -124053,7 +124053,7 @@ I wander {e}.	我在{e1}游历。	hPtD
 I'm appalled.	我感到震惊。	hPD
 I'm not sure.	我不确定。	hPD
 Imported Food	进口食物	hH
-Improve trade	改善贸易关系	wli
+Improve trade	改善贸易关系	wliP
 In Vegetation	身处植被中	hP
 Insufferable!	简直忍无可忍！	hPD
 It was great.	那很棒。	hPD
@@ -124117,8 +124117,8 @@ Name yourself	为自己命名	w
 Named objects	被命名的物品	w
 Nearest site:	最近地点：	w
 New guildhall	新建行会大厅	wi
-No commanders	没有指挥官	wli
-No messengers	没有信使	wli
+No commanders	没有指挥官	wliP
+No messengers	没有信使	wliP
 Nomadic group	游牧势力	wi
 Not ambitious	缺乏进取心	w
 Noted brigand	著名的强盗	w
@@ -124174,7 +124174,7 @@ Royal Bedroom	皇家卧室	w
 Ruined houses	房屋废墟
 Sandstone {d}	第{d}年 砂岩月	wt
 Second finger	中指	w
-Seek alliance	寻求结盟	wli
+Seek alliance	寻求结盟	wliP
 Seek artifact	寻找造物	wi
 Seeks harmony	追求和睦	w
 Select color.	选择颜色。	hP
@@ -128673,7 +128673,7 @@ Main: Nobles	主界面：贵族	w
 Main: Squads	主界面：小队	w
 Main: Stocks	主界面：库存	w
 Major River:	大河：	w
-Make contact	建立联系	wli
+Make contact	建立联系	wliP
 Make pair of	制作一对	wi
 Make romance	恋爱	w
 Make the bed	制作床	hqO
@@ -132850,7 +132850,7 @@ Craft guild	工艺行会	wi
 Crossbowman	弩手	wi
 Crossbowmen	弩手	wi
 Crow man, \x0B	乌鸦人，♂
-Declare war	宣战	wli
+Declare war	宣战	wliP
 Description	描述	w
 Detail wall	雕刻墙壁	wi
 Diagnostics	诊断	wi
@@ -136856,7 +136856,7 @@ Magma kiln	岩浆黏土窑	wi
 Magma-safe	耐岩浆	wi
 Make eight	制作八个	wi
 Make merry	欢庆	w
-Make peace	议和	wli
+Make peace	议和	wliP
 Make quire	制作稿纸	wi
 Make three	制作三个	wi
 Make totem	制作图腾	wi

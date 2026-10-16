@@ -1,0 +1,20 @@
+[
+  {
+    "edition": "reference",
+    "path": "D:\\program\\steam\\steamapps\\common\\Dwarf Fortress\\Dwarf Fortress.exe",
+    "image_base": "0x140000000",
+    "selected_panel_rva": [
+      "0x1c8c13",
+      "0x1ce18c"
+    ]
+  },
+  {
+    "edition": "classic",
+    "path": "C:\\Users\\WIN11\\Downloads\\df_53_16_win\\Dwarf Fortress.exe",
+    "image_base": "0x140000000",
+    "selected_panel_rva": [
+      "0x1c8ba3",
+      "0x1ce11c"
+    ]
+  }
+]

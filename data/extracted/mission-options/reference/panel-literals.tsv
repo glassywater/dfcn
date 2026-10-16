@@ -1,0 +1,126 @@
+scope	instruction	address	kind	literal
+selected-mission-panel	0x1401c8ddb	0x14160205c	cstring	 at 
+selected-mission-panel	0x1401c8df3	0x141603a28	cstring	Request workers from 
+selected-mission-panel	0x1401c8dff	0x1415ee320	cstring	Rescue 
+selected-mission-panel	0x1401c8e51	0x141603db0	cstring	Recover 
+selected-mission-panel	0x1401c8eab	0x141603a40	cstring	Explore 
+selected-mission-panel	0x1401c8eb4	0x141603a50	cstring	Pillage 
+selected-mission-panel	0x1401c8ebd	0x141603a60	cstring	Demand tribute from 
+selected-mission-panel	0x1401c8ec6	0x141603a78	cstring	Raze 
+selected-mission-panel	0x1401c8ecf	0x141603d90	cstring	Take over 
+selected-mission-panel	0x1401c8ed8	0x141603d9c	cstring	Seize 
+selected-mission-panel	0x1401c8ee1	0x141603da4	cstring	Raid 
+selected-mission-panel	0x1401c90a7	0x141603e00	cstring	No commanders
+selected-mission-panel	0x1401c90f2	0x141603dd0	cstring	no
+selected-mission-panel	0x1401c9105	0x141603e10	cstring	 commander
+selected-mission-panel	0x1401c9128	0x141603e10	cstring	 commander
+selected-mission-panel	0x1401c9140	0x1415e9298	cstring	s
+selected-mission-panel	0x1401c9153	0x141603de4	cstring	 here
+selected-mission-panel	0x1401c9166	0x1415e90d8	cstring	, 
+selected-mission-panel	0x1401c917d	0x141603dd0	cstring	no
+selected-mission-panel	0x1401c9190	0x141603e10	cstring	 commander
+selected-mission-panel	0x1401c91b3	0x141603e10	cstring	 commander
+selected-mission-panel	0x1401c91cb	0x1415e9298	cstring	s
+selected-mission-panel	0x1401c91de	0x141603df0	cstring	 traveling
+selected-mission-panel	0x1401c9395	0x141603dc0	cstring	No messengers
+selected-mission-panel	0x1401c93e0	0x141603dd0	cstring	no
+selected-mission-panel	0x1401c93f3	0x141603dd8	cstring	 messenger
+selected-mission-panel	0x1401c9416	0x141603dd8	cstring	 messenger
+selected-mission-panel	0x1401c942e	0x1415e9298	cstring	s
+selected-mission-panel	0x1401c9441	0x141603de4	cstring	 here
+selected-mission-panel	0x1401c9454	0x1415e90d8	cstring	, 
+selected-mission-panel	0x1401c946b	0x141603dd0	cstring	no
+selected-mission-panel	0x1401c947e	0x141603dd8	cstring	 messenger
+selected-mission-panel	0x1401c94a1	0x141603dd8	cstring	 messenger
+selected-mission-panel	0x1401c94b9	0x1415e9298	cstring	s
+selected-mission-panel	0x1401c94cc	0x141603df0	cstring	 traveling
+selected-mission-panel	0x1401c95cf	0x14160408c	cstring	Remove
+selected-mission-panel	0x1401c98da	0x1416034b0	cstring	Make peace
+selected-mission-panel	0x1401c9914	0x141604098	cstring	Demander unconditional surrender
+selected-mission-panel	0x1401c994e	0x1416034c0	cstring	Declare war
+selected-mission-panel	0x1401c9988	0x1416034d0	cstring	Seek alliance
+selected-mission-panel	0x1401c99bf	0x1416034e0	cstring	Make contact
+selected-mission-panel	0x1401c99f6	0x1416034f0	cstring	Improve trade
+selected-mission-panel	0x1401c9a7f	0x141603c40	cstring	Belongs to your civilization
+selected-mission-panel	0x1401c9ab9	0x141603c60	cstring	Not under your control
+selected-mission-panel	0x1401c9af3	0x141603c78	cstring	No civilized inhabitants
+selected-mission-panel	0x1401c9b2d	0x141603c98	cstring	No requestable workers
+selected-mission-panel	0x1401c9b67	0x141603cb0	cstring	Inaccessible
+selected-mission-panel	0x1401c9ba1	0x141603cc0	cstring	Need civilization military leader
+selected-mission-panel	0x1401c9bdb	0x141603ce8	cstring	Need military leader
+selected-mission-panel	0x1401c9c15	0x141603d00	cstring	Need leader
+selected-mission-panel	0x1401c9c4f	0x141603d10	cstring	Not trading
+selected-mission-panel	0x1401c9c89	0x141603d20	cstring	Already trading
+selected-mission-panel	0x1401c9cc3	0x141603d30	cstring	Already at war
+selected-mission-panel	0x1401c9cfd	0x141603d40	cstring	Already have peace
+selected-mission-panel	0x1401c9d37	0x141603d58	cstring	Already have alliance
+selected-mission-panel	0x1401c9d71	0x141603d70	cstring	At war
+selected-mission-panel	0x1401c9dab	0x141603d78	cstring	Cannot communicate
+selected-mission-panel	0x1401c9de2	0x141604070	cstring	Not in contact
+selected-mission-panel	0x1401c9e19	0x141604080	cstring	Too hostile
+selected-mission-panel	0x1401ca41e	0x1415e873c	cstring	 
+selected-mission-panel	0x1401ca5b3	0x1416040c0	cstring	No notable skills
+selected-mission-panel	0x1401ca61e	0x141603aa8	cstring	No workers available
+selected-mission-panel	0x1401ca81b	0x1416040d8	cstring	Free captives belonging to your civilization
+selected-mission-panel	0x1401ca9e9	0x141604108	cstring	Release other prisoners
+selected-mission-panel	0x1401cabc7	0x141604120	cstring	Take important treasures
+selected-mission-panel	0x1401cad99	0x141604140	cstring	Loot other items
+selected-mission-panel	0x1401caf69	0x141604158	cstring	Steal livestock
+selected-mission-panel	0x1401cb148	0x141604168	cstring	Raid (squads will try to avoid detection)
+selected-mission-panel	0x1401cb316	0x141604198	cstring	Pillage (openly attack)
+selected-mission-panel	0x1401cb4f4	0x1416041b0	cstring	Raze (openly attack and destroy site)
+selected-mission-panel	0x1401cb6c9	0x1416041d8	cstring	Demand one-time tribute
+selected-mission-panel	0x1401cb899	0x1416041f0	cstring	Demand ongoing tribute
+selected-mission-panel	0x1401cba8f	0x141604208	cstring	Conquer and occupy
+selected-mission-panel	0x1401cbc81	0x141603ea8	cstring	Demand surrender and occupy
+selected-mission-panel	0x1401cbe79	0x1416040d8	cstring	Free captives belonging to your civilization
+selected-mission-panel	0x1401cc04d	0x141604108	cstring	Release other prisoners
+selected-mission-panel	0x1401cc21a	0x141604120	cstring	Take important treasures
+selected-mission-panel	0x1401cc3e9	0x141604140	cstring	Loot other items
+selected-mission-panel	0x1401cc5b9	0x141604158	cstring	Steal livestock
+selected-mission-panel	0x1401cc624	0x141603ec8	cstring	WARNING:  If successful, your soldiers will join the
+selected-mission-panel	0x1401cc673	0x141603f00	cstring	occupation and not return.  Your new holdings will
+selected-mission-panel	0x1401cc6c2	0x141603f38	cstring	be manageable from this screen.
+selected-mission-panel	0x1401cca65	0x141603e20	cstring	Messenger (unfilled)
+selected-mission-panel	0x1401ccb4f	0x141603f58	cstring	On this mission
+selected-mission-panel	0x1401ccc19	0x14160205c	cstring	 at 
+selected-mission-panel	0x1401cccce	0x141603a28	cstring	Request workers from 
+selected-mission-panel	0x1401ccd84	0x1415ee320	cstring	Rescue 
+selected-mission-panel	0x1401cce68	0x141603db0	cstring	Recover 
+selected-mission-panel	0x1401ccf53	0x141603a40	cstring	Explore 
+selected-mission-panel	0x1401ccf5c	0x141603a50	cstring	Pillage 
+selected-mission-panel	0x1401ccf65	0x141603a60	cstring	Demand tribute from 
+selected-mission-panel	0x1401ccf6e	0x141603a78	cstring	Raze 
+selected-mission-panel	0x1401ccf77	0x141603d90	cstring	Take over 
+selected-mission-panel	0x1401ccf80	0x141603d9c	cstring	Seize 
+selected-mission-panel	0x1401ccf89	0x141603da4	cstring	Raid 
+selected-mission-panel	0x1401cd055	0x141603f68	cstring	No specific orders
+selected-mission-panel	0x1401cd0a3	0x141603f68	cstring	No specific orders
+selected-mission-panel	0x1401cd26f	0x141603f80	cstring	No messengers available
+selected-mission-panel	0x1401cd71b	0x141603f58	cstring	On this mission
+selected-mission-panel	0x1401cd7db	0x14160205c	cstring	 at 
+selected-mission-panel	0x1401cd890	0x141603a28	cstring	Request workers from 
+selected-mission-panel	0x1401cd946	0x1415ee320	cstring	Rescue 
+selected-mission-panel	0x1401cda2a	0x141603db0	cstring	Recover 
+selected-mission-panel	0x1401cdb15	0x141603a40	cstring	Explore 
+selected-mission-panel	0x1401cdb1e	0x141603a50	cstring	Pillage 
+selected-mission-panel	0x1401cdb27	0x141603a60	cstring	Demand tribute from 
+selected-mission-panel	0x1401cdb30	0x141603a78	cstring	Raze 
+selected-mission-panel	0x1401cdb39	0x141603d90	cstring	Take over 
+selected-mission-panel	0x1401cdb42	0x141603d9c	cstring	Seize 
+selected-mission-panel	0x1401cdb4b	0x141603da4	cstring	Raid 
+selected-mission-panel	0x1401cdc17	0x141603f68	cstring	No specific orders
+selected-mission-panel	0x1401cdd2a	0x141603f68	cstring	No specific orders
+selected-mission-panel	0x1401cdf9f	0x141603fb0	cstring	Done assigning
+selected-mission-panel	0x1401ce012	0x141603fc0	cstring	Choose a proposal.
+selected-mission-panel	0x1401ce04c	0x141603fd8	cstring	Assign messengers.
+selected-mission-panel	0x1401ce094	0x141603fc0	cstring	Choose a proposal.
+selected-mission-panel	0x1401ce0d7	0x141603ff0	cstring	Assign squads.
+selected-mission-panel	0x1401ce13a	0x141603f98	cstring	No squads available
+proposal-title	0x1401bb42e	0x141603498	cstring	Demand surrender
+proposal-title	0x1401bb462	0x1416034b0	cstring	Make peace
+proposal-title	0x1401bb49c	0x1416034c0	cstring	Declare war
+proposal-title	0x1401bb4d0	0x1416034d0	cstring	Seek alliance
+proposal-title	0x1401bb504	0x1416034e0	cstring	Make contact
+proposal-title	0x1401bb53e	0x1416034f0	cstring	Improve trade
+proposal-title	0x1401bb553	0x141603500	cstring	Diplomacy
