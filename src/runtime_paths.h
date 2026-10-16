@@ -45,6 +45,23 @@ inline std::filesystem::path find_directory() {
     return std::filesystem::current_path() / "dfcn";
 }
 
+inline std::filesystem::path find_game_directory() {
+#if defined(_WIN32)
+    std::vector<wchar_t> filename(32768);
+    const DWORD length = GetModuleFileNameW(
+        nullptr, filename.data(), static_cast<DWORD>(filename.size()));
+    if (length && length < filename.size())
+        return std::filesystem::path(
+            std::wstring(filename.data(), length)).parent_path();
+#else
+    std::error_code link_error;
+    const auto executable = std::filesystem::read_symlink("/proc/self/exe", link_error);
+    if (!link_error && !executable.empty()) return executable.parent_path();
+#endif
+    std::error_code error;
+    return std::filesystem::current_path(error);
+}
+
 } // namespace detail
 
 inline std::filesystem::path directory() {
@@ -60,8 +77,24 @@ inline std::filesystem::path data_path() {
     return path("data/runtime");
 }
 
-inline std::filesystem::path config_path() {
+inline std::filesystem::path game_directory() {
+    static const std::filesystem::path game = detail::find_game_directory();
+    return game;
+}
+
+inline std::filesystem::path default_config_path() {
     return path("data/runtime/config.ini");
+}
+
+inline std::filesystem::path game_config_path() {
+    return game_directory() / "dfcn_config.ini";
+}
+
+inline std::filesystem::path config_path() {
+    const auto user_config = game_config_path();
+    std::error_code error;
+    if (std::filesystem::is_regular_file(user_config, error)) return user_config;
+    return default_config_path();
 }
 
 inline std::filesystem::path resolve_path(std::string_view configured) {

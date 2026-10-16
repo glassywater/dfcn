@@ -5906,7 +5906,8 @@ bool Overlay::load_config() {
     embark_knowledge_list_matches_.clear();
     embark_knowledge_list_identity_.clear();
     Config next;
-    std::ifstream in(runtime::config_path());
+    const auto config_path = runtime::config_path();
+    std::ifstream in(config_path);
     if (in) {
         std::string line;
         size_t line_no = 0;
@@ -5920,7 +5921,7 @@ bool Overlay::load_config() {
             }
             const size_t eq = stripped.find('=');
             if (eq == std::string::npos) {
-                log_line("WARN", "config.ini:" + std::to_string(line_no) +
+                log_line("WARN", runtime::utf8(config_path) + ":" + std::to_string(line_no) +
                                      " missing '='; ignored");
                 continue;
             }
@@ -42972,6 +42973,19 @@ DFCN_EXPORT void dfhooks_init() {
     dfcn::reset_native_dfhack_console_lifecycle();
     dfcn::g_native_hook_thread = std::this_thread::get_id();
     dfcn::log_line("INFO", "========== DFCN loaded ==========");
+    const auto user_config = dfcn::runtime::game_config_path();
+    std::error_code config_error;
+    if (!fs::exists(user_config, config_error) && !config_error) {
+        // Copy the installed defaults byte-for-byte only on first use. Never
+        // replace an existing user file, including one created concurrently.
+        fs::copy_file(dfcn::runtime::default_config_path(), user_config,
+                      fs::copy_options::skip_existing, config_error);
+    }
+    if (config_error) {
+        dfcn::log_line("WARN", "Cannot initialize " + dfcn::runtime::utf8(user_config) +
+            ": " + config_error.message() + "; falling back to " +
+            dfcn::runtime::utf8(dfcn::runtime::default_config_path()));
+    }
     const SDL_bool native_ui = SDL_SetHintWithPriority(
         SDL_HINT_IME_SHOW_UI, "1", SDL_HINT_OVERRIDE);
     const SDL_bool internal_editing = SDL_SetHintWithPriority(

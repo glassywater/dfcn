@@ -1,10 +1,12 @@
 # DFCN：渲染阶段文本映射
 
-Windows 运行配置、词表、TOML 规则、内置字体与汉化日志按实际加载的 DLL
-目录定位。工坊安装可以让完整运行文件留在订阅目录，只将 `dfhooks.dll` 和
+Windows 词表、TOML 规则、内置字体与汉化日志按实际加载的 DLL
+目录定位，用户配置优先读取游戏根目录的 `dfcn_config.ini`。工坊安装可以让完整运行文件留在订阅目录，只将 `dfhooks.dll` 和
 `dfhooks_dfcn.ini` 复制到游戏根目录；引导 INI 的第一行填写订阅目录内
 `dfhooks_dfcn.dll` 的路径。该加载器读取同目录的 `dfcn_core.dll`，核心使用
-自身目录下的 `data/runtime/config.ini` 和配套数据。配置中的旧 `dfcn/...`
+自身目录下的配套数据。游戏根目录缺少 `dfcn_config.ini` 时，核心从自身目录下的
+`data/runtime/config.ini` 复制生成后读取，已有文件不会覆盖；该文件同时保留为
+默认模板和复制失败时的回退配置。配置中的旧 `dfcn/...`
 运行路径随模块目录解析，绝对自定义路径保持不变，游戏 RAW 和素材仍从
 游戏目录读取。详细路径示例与卸载说明见 [README.md](README.md) 和
 [创意工坊项目](https://steamcommunity.com/sharedfiles/filedetails/?id=3811193379)。
@@ -546,7 +548,7 @@ python tools/build_native_image_bindings.py --reference ../dwarfort --image /opt
 
 汉化已经关闭时，按一次 `Shift+F5` 即可重新加载核心与数据并开启；按一次
 `Shift+F10` 则直接开启，保留当前核心与数据。左右 Shift 均可，
-长按不会重复切换。开关只影响本次运行，不改写配置文件；初始状态由 `data/runtime/config.ini`
+长按不会重复切换。开关只影响本次运行，不改写配置文件；初始状态由游戏根目录 `dfcn_config.ini`
 的 `enabled` 或 `DFCN_ENABLED` 决定。扩展默认启用，`Shift+F6` 切换时立即
 重新载入数据并开启汉化显示；扩展开关在本次运行中保留，包括 `Shift+F5`
 核心重载，不写入配置文件。数据仅在启动、`Shift+F5` 重新开启、`Shift+F6`
@@ -574,7 +576,7 @@ ABI 4 跨核心传递完整段落、知识与人物文档的原文、行内容�
 活动代码或重复安装 Hook。日志中的
 `[loader] Core hot-reloaded; generation=…; build=…` 记录成功加载的代数与编译时间。
 
-常用配置位于 `data/runtime/config.ini`：
+常用配置位于游戏根目录的 `dfcn_config.ini`：
 
 | 配置 | 用途 |
 | --- | --- |
@@ -593,9 +595,12 @@ ABI 4 跨核心传递完整段落、知识与人物文档的原文、行内容�
 | `max_untranslated_entries` | 漏译队列容量，默认 50000 项；满额会明确写入日志 |
 | `max_cached_textures` | 字形纹理缓存数量上限 |
 
-运行时读取已安装核心所在目录的 `data/runtime/config.ini`。源码工作区与游戏安装
-分开时，游戏使用安装目录中的配置；编译部署保留各安装现有配置，不用源码配置
-覆盖用户设置。
+Windows 工坊、GitHub 安装和 Linux 均优先读取游戏根目录的 `dfcn_config.ini`。
+启动初始化时若文件不存在，从已安装核心所在目录的 `data/runtime/config.ini`
+复制生成后读取，已有文件不会覆盖；复制失败时读取该默认模板。源码工作区与游戏安装
+分开时，使用游戏根目录的用户配置和已安装模块的模板、词表与规则；编译部署保留
+各安装现有配置，不用源码配置覆盖用户设置。配置中以 `dfcn/` 开头的数据路径继续按模块
+目录解析，其他自定义相对路径仍以游戏目录为基准。
 
 字体可以指定路径，也可以放置为 `dfcn/data/runtime/font.ttf`、`dfcn/data/runtime/font.otf` 或 `dfcn/data/runtime/font.ttc`；
 Windows 未指定字体时沿用默认的 `Noto Sans SC`；Linux 由本机字体接口选择可用的
