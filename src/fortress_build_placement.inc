@@ -381,6 +381,94 @@ void Overlay::append_fortress_remembered_material(std::vector<std::string> &rows
     }
 }
 
+enum class NativeBuildMaterialField { None, Name, Amount, Distance };
+
+// These are the original addst return addresses, extracted from d84fd0 and
+// 381630. PE Classic uses the existing edition map for the same procedure.
+// The renderer draws "Dist: " and its number separately; neither a combined
+// distance draw nor a complete enclosing picture frame is required.
+static NativeBuildMaterialField native_build_material_field(uintptr_t caller) {
+    const uintptr_t base = native_history_profile_base();
+    if (!base || !caller) return NativeBuildMaterialField::None;
+#ifdef _WIN32
+    if (caller == native_reference_address(base, 0x38270f)) return NativeBuildMaterialField::Name;
+    if (caller == native_reference_address(base, 0x38281f)) return NativeBuildMaterialField::Amount;
+    if (caller == native_reference_address(base, 0x3828be) ||
+            caller == native_reference_address(base, 0x3828fe)) return NativeBuildMaterialField::Distance;
+#else
+    if (caller == native_reference_address(base, 0x987191)) return NativeBuildMaterialField::Name;
+    if (caller == native_reference_address(base, 0x987271)) return NativeBuildMaterialField::Amount;
+    if (caller == native_reference_address(base, 0x9874d6) ||
+            caller == native_reference_address(base, 0x98751d)) return NativeBuildMaterialField::Distance;
+#endif
+    return NativeBuildMaterialField::None;
+}
+
+// ELF d84fd0 and PE 381630 build one complete name via the material entry's
+// name formatter (ELF +18 / PE +10), then draw amounts and Dist independently.
+// Own that name before generic words and native-name recovery inspect it.
+void Overlay::append_fortress_build_material_fields(std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y) const {
+    if (!gps_ || rows.size() != static_cast<size_t>(gps_->dimy)) return;
+    auto draws = captured_native_drawn_text_rows();
+    auto top_draws = captured_native_drawn_text_rows(true);
+    draws.insert(draws.end(), std::make_move_iterator(top_draws.begin()),
+        std::make_move_iterator(top_draws.end()));
+    const auto current = [&](const NativeDrawnTextRow &draw) {
+        if (draw.x < 0 || draw.y < 0 || draw.y >= gps_->dimy || draw.source.empty() ||
+                draw.x >= gps_->dimx || draw.source.size() > static_cast<size_t>(gps_->dimx - draw.x) ||
+                (draw.draw_dimx && draw.draw_dimx != gps_->dimx) ||
+                (draw.draw_dimy && draw.draw_dimy != gps_->dimy)) return false;
+        // A background texture can belong to another logical layer. The
+        // actual submitted bytes, rather than that texture's layer flag or
+        // a retained frame's backing-buffer address, establish the live text.
+        return rows[draw.y].compare(draw.x, draw.source.size(), draw.source) == 0;
+    };
+    const auto clipped = captured_clipped_captions();
+    for (const auto &draw : draws) {
+        if (native_build_material_field(draw.native_caller) != NativeBuildMaterialField::Name ||
+                (only_y >= 0 && only_y != draw.y) || !current(draw)) continue;
+        const int left = draw.x;
+        const int end = left + static_cast<int>(draw.source.size());
+        int right = gps_->dimx;
+        if (draw.draw_clip) right = std::min(right, draw.draw_clip->x + draw.draw_clip->w);
+        for (const auto &next : draws) {
+            if (next.y != draw.y || next.x < end || !current(next)) continue;
+            const auto kind = native_build_material_field(next.native_caller);
+            if (kind == NativeBuildMaterialField::Amount || kind == NativeBuildMaterialField::Distance)
+                right = std::min(right, next.x);
+        }
+        if (right < end) continue;
+        std::string complete = draw.complete_source.empty() ? draw.source : draw.complete_source;
+        if (complete == draw.source)
+            for (const auto &caption : clipped)
+                if (caption.x == left && caption.y == draw.y && caption.visible == draw.source) {
+                    complete = caption.complete;
+                    break;
+                }
+        auto result = translate_fortress_item_caption_display(complete);
+        if (complete == "Null")
+            if (auto target = exact_literal_translation("Build material: Null"))
+                result = TranslationResult::translated(complete, *target, "building-material-item");
+        if (!result.usable()) result = preserved_item_field(complete, "building-material-item");
+        if (result.target.empty()) continue;
+        Match name{left, draw.y, end - left, kFortressItemCaptionRule, result.target, draw.source};
+        name.translation_result = std::make_shared<const TranslationResult>(std::move(result));
+        name.native_item_caption_source = complete;
+        name.native_hover_untranslated = name.translation_result->has_untranslated();
+        name.layout_x = left;
+        name.layout_length = right - left - (right > end ? 1 : 0);
+        name.layout_clip_right = left + name.layout_length;
+        name.native_picture_caption_box = SDL_Rect{left, draw.y, name.layout_length, 1};
+        name.layout_foreground_rgb = draw.foreground_rgb;
+        name.layout_left = true;
+        name.layout_font_pixels = unified_font_pixels();
+        name.layout_lock_font_pixels = true;
+        matches.push_back(std::move(name));
+        std::fill(rows[draw.y].begin() + left, rows[draw.y].begin() + end, ' ');
+    }
+}
+
 // Material selection is a label/value header and a name/count/distance table.
 // The item rows reuse the build menu's picture skin, NOT its single-caption
 // contract. Resolve the complete name inside its own native column.
@@ -405,7 +493,8 @@ void Overlay::layout_fortress_build_materials(SDL_Renderer *renderer) {
         if (field.rule < 0 || static_cast<size_t>(field.rule) >= rules_.size()) continue;
         const Rule &rule = rules_[static_cast<size_t>(field.rule)];
         if (!rule.numeric_template ||
-            (rule.source != "Amount needed: {d}" && rule.source != "Dist: {d}") ||
+            (rule.source != "Amount needed: {d}" &&
+             rule.source != "Amount needed: {d} to {d}" && rule.source != "Dist: {d}") ||
             !current_field(field)) continue;
 
         const int end = field.x + field.length;

@@ -1,0 +1,33 @@
+; PE:6a70b91c:0270a000; statue-title; complete procedure 0x140c9db80..0x140c9dc02
+0x140c9db80: mov    QWORD PTR [rsp+0x8],rbx
+0x140c9db85: push   rdi
+0x140c9db86: sub    rsp,0x20
+0x140c9db8a: mov    rdi,rdx
+0x140c9db8d: mov    rbx,rcx
+0x140c9db90: call   0x140ca2bf0
+0x140c9db95: cmp    DWORD PTR [rbx+0xe8],0xffffffff
+0x140c9db9c: jne    0x140c9dbbb
+0x140c9db9e: mov    rcx,rbx
+0x140c9dba1: call   0x140cc5510
+0x140c9dba6: cmp    DWORD PTR [rbx+0x50],0xffffffff
+0x140c9dbaa: je     0x140c9dbb4
+0x140c9dbac: mov    rcx,rbx
+0x140c9dbaf: call   0x140cc5420
+0x140c9dbb4: and    DWORD PTR [rbx+0x10],0x7fffffff
+0x140c9dbbb: cmp    QWORD PTR [rbx+0x108],0x0
+0x140c9dbc3: je     0x140c9dbf7
+0x140c9dbc5: mov    r8d,0x4
+0x140c9dbcb: lea    rdx,[rip+0x9488fe]        # 0x1415e64d0 ; cstring=' of '
+0x140c9dbd2: mov    rcx,rdi
+0x140c9dbd5: call   0x14006f9a0
+0x140c9dbda: lea    rdx,[rbx+0xf8]
+0x140c9dbe1: cmp    QWORD PTR [rdx+0x18],0xf
+0x140c9dbe6: mov    r8,QWORD PTR [rdx+0x10]
+0x140c9dbea: jbe    0x140c9dbef
+0x140c9dbec: mov    rdx,QWORD PTR [rdx]
+0x140c9dbef: mov    rcx,rdi
+0x140c9dbf2: call   0x14006f9a0
+0x140c9dbf7: mov    rbx,QWORD PTR [rsp+0x30]
+0x140c9dbfc: add    rsp,0x20
+0x140c9dc00: pop    rdi
+0x140c9dc01: ret

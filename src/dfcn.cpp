@@ -4873,6 +4873,8 @@ private:
         std::vector<Match> &matches, int only_y, bool raw_layer) const;
     void layout_fortress_build_placement(SDL_Renderer *renderer);
     void layout_fortress_build_materials(SDL_Renderer *renderer);
+    void append_fortress_build_material_fields(std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y) const;
     void append_fortress_build_placement_fields(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y) const;
     void append_fortress_remembered_material(std::vector<std::string> &rows,
@@ -17451,6 +17453,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     // The native placement status/header owns its whole source before room,
     // location, item and generic caption readers can consume an inner word.
     append_fortress_build_placement_fields(screen_rows, result, only_y);
+    append_fortress_build_material_fields(screen_rows, result, only_y);
     // The Rooms renderer writes editable names and grades as independent
     // fields, and its requirement prefix/suffix as two adjacent draws. Own
     // these complete fields before generic words, names or picture captions.

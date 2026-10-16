@@ -1,0 +1,5 @@
+field	instruction	return-address	native-call
+name	0xd8718c	0xd87191	call   425170
+selected-amount	0xd8726c	0xd87271	call   425170
+distance-label	0xd874d1	0xd874d6	call   425170
+distance-number	0xd87518	0xd8751d	call   425170

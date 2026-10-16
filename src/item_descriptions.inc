@@ -52,6 +52,20 @@ static bool item_term_contains_sentence_punctuation(std::string_view source) {
     return false;
 }
 
+// The statue/figurine getter appends its saved short subject after the base
+// item noun (ELF e82910, PE ca0b40). The generic ::items grammar owns only
+// that base noun; let the complete artwork production consume the subject.
+static bool item_caption_has_art_subject(std::string_view source) {
+    for (std::string_view noun : {"statue of ", "statues of ",
+            "figurine of ", "figurines of "}) {
+        for (size_t at = find_template_literal(source, noun, 0, true);
+                at != std::string_view::npos;
+                at = find_template_literal(source, noun, at + 1, true))
+            if (at == 0 || !ascii_word_byte(source[at - 1])) return true;
+    }
+    return false;
+}
+
 static bool item_description_translation_complete(
         const std::optional<std::string> &target) {
     if (!target || target->empty()) return false;
@@ -434,7 +448,8 @@ std::optional<std::string> Overlay::translate_item_description_term(
             // Grown wood names identify their plant before the object. Resolve
             // those two typed slots before the generic grown-{s} prose wrapper
             // can prepend its adjective to an already translated timber name.
-            if (!predicate && template_literal_at(value, 0, "grown ", true))
+            if (!predicate && template_literal_at(value, 0, "grown ", true) &&
+                    !item_caption_has_art_subject(value))
                 if (auto target = translate_item_caption_grammar(value);
                     translation_complete_with_native_nicknames(target, value)) return target;
             // The native copy branch (PE 53.16 0xc656d3..0xc6570a) emits a
@@ -450,11 +465,12 @@ std::optional<std::string> Overlay::translate_item_description_term(
             // and named-artifact productions have had a chance to own it;
             // ordinary noun/material fallback must still reject prose.
             const bool punctuated = item_term_contains_sentence_punctuation(value);
+            const bool artwork_subject = item_caption_has_art_subject(value);
             // Descriptions and headings own the same complete item noun.
             // Resolve its material/type with the caption grammar before art
             // or anatomy rules can select a homonym such as chest -> body part.
             // Quality and article wrappers recurse into this same entry.
-            if (!predicate && !punctuated)
+            if (!predicate && !punctuated && !artwork_subject)
                 if (auto target = translate_item_caption_grammar(value);
                     translation_complete_with_native_nicknames(target, value)) return target;
             // Body components share the complete caption grammar with Stocks
@@ -971,7 +987,8 @@ TranslationResult Overlay::translate_item_description_term_display(
                 // book/artifact paragraph to equipment and material callbacks,
                 // retaining millions of unrelated substring queries. Typed
                 // title/inscription rules still own punctuation below.
-                if (!item_term_contains_sentence_punctuation(source)) {
+                if (!item_term_contains_sentence_punctuation(source) &&
+                        !item_caption_has_art_subject(source)) {
                     complete = translate_item_caption_grammar(source);
                     if (!complete) complete = translate_material_name(source);
                 }

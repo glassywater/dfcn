@@ -1,0 +1,5 @@
+field	instruction	return-address	native-call
+name	0x1403802ca	0x1403802cf	call   0x140ad69a0
+selected-amount	0x1403803da	0x1403803df	call   0x140ad69a0
+distance-label	0x140380479	0x14038047e	call   0x140ad69a0
+distance-number	0x1403804b9	0x1403804be	call   0x140ad69a0

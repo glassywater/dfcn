@@ -12570,3 +12570,7 @@ Adventurer log agreement field: Centered on commander	已定位到指挥官	h
 Adventurer log agreement field: Centered on target	已定位到目标	h
 Adventurer log agreement field: Centered on first heard	已定位到最初获悉处	h
 Adventurer log agreement field: Centered on last heard	已定位到最近获悉处	h
+
+# Complete branches from the ELF/PE building material picker.
+Amount needed: {d} to {d}	所需数量：{d1}～{d2}	wt
+Build material: Null	物品不存在	h

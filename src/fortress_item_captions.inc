@@ -105,7 +105,13 @@ std::optional<std::string> Overlay::translate_fortress_item_caption(
     bool typed_description_complete = false;
     try {
         TranslationWorkFrame work_frame("complete item caption", source);
-        if (!relationship && config_.compositional_rules) {
+        const bool artwork_subject = !relationship && item_caption_has_art_subject(source);
+        if (artwork_subject && config_.compositional_rules) {
+            target = translate_item_description_term(source);
+            typed_description_complete =
+                translation_complete_with_native_nicknames(target, source);
+        }
+        if (!target && !relationship && config_.compositional_rules) {
             target = translate_plant_seed_item_name(source);
             typed_description_complete = target.has_value();
         }
@@ -132,7 +138,7 @@ std::optional<std::string> Overlay::translate_fortress_item_caption(
         // and generated sword/knife types are objects rather than skills).
         // Decode native designation glyphs at the grammar boundary as well;
         // a knapped rock can mark only "sharp", inside the complete caption.
-        if (!target && !relationship) {
+        if (!target && !relationship && !artwork_subject) {
             target = translate_item_caption_grammar(source);
             typed_description_complete = target.has_value();
         }
@@ -151,7 +157,7 @@ std::optional<std::string> Overlay::translate_fortress_item_caption(
             // boundary; literal and generic fallbacks retain the strict check.
             typed_description_complete =
                 translation_complete_with_native_nicknames(target, source);
-            if (!target) {
+            if (!target && !artwork_subject) {
                 target = translate_item_caption_grammar(source);
                 typed_description_complete = target.has_value();
             }

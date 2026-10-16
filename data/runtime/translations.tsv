@@ -84410,6 +84410,7 @@ Allow Demonic Experiments	允许恶魔实验
 Allow Necromancer Summons	允许死灵法师召唤物
 Allow floor/wall cleaning	允许清洁地面和墙壁	wi
 Ambush (injured creature)	伏击：受伤生物	w
+Amount needed: {d} to {d}	所需数量：{d1}～{d2}	wt
 An energetic poltergeist.	一个活跃的骚灵。	lP
 Announcement speech: lisp	（话音带着嘶嘶声）	l
 Anyone requested at depot	请求任意居民前往贸易站	wi
@@ -95031,6 +95032,7 @@ Brook: Paintmirthful	溪流:涂漆欢乐	w
 Brook: Scorncontrols	溪流:蔑视控制	w
 Brook: Tongueswaddle	溪流:舌包裹	w
 Brook: Tribegladness	小溪：欢欣部落
+Build material: Null	物品不存在	h
 Build menu: Clothier	裁缝工坊	wi
 Build menu: Mechanic	机械师工坊	wi
 Build. (coming soon)	建造。（即将推出）	hj
