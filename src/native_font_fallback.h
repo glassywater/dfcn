@@ -37,8 +37,9 @@ inline int CALLBACK native_fallback_font_candidate(const LOGFONTW *font,
 #endif
 
 inline FT_Face native_open_fallback_font(FT_Library library,
-        uint32_t codepoint, int pixel_size, bool bold = false) {
+        uint32_t codepoint, int pixel_size, bool bold = false, bool traditional = false) {
 #ifdef _WIN32
+    (void)traditional;
     if (codepoint > 0xffff) return nullptr;
     HDC dc = CreateCompatibleDC(nullptr);
     if (!dc) return nullptr;
@@ -64,7 +65,7 @@ inline FT_Face native_open_fallback_font(FT_Library library,
     FcPatternAddString(pattern, FC_FAMILY,
         reinterpret_cast<const FcChar8 *>("sans-serif"));
     FcPatternAddString(pattern, FC_LANG,
-        reinterpret_cast<const FcChar8 *>("zh-cn"));
+        reinterpret_cast<const FcChar8 *>(traditional ? "zh-tw" : "zh-cn"));
     FcPatternAddInteger(pattern, FC_WEIGHT, bold ? FC_WEIGHT_BOLD : FC_WEIGHT_MEDIUM);
     FcPatternAddBool(pattern, FC_SCALABLE, FcTrue);
     FcConfigSubstitute(nullptr, pattern, FcMatchPattern);

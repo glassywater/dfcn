@@ -50,14 +50,18 @@ static std::optional<std::string> native_source_for_rows(
 // Pure glyph measurement shared by native allocation and bounded drawing.
 // The full layout depends on text, colors, semantic words, width and font;
 // source rows, scroll offsets and suppression ownership do not enter its cache.
-bool Overlay::measure_paragraph_layout(std::string_view target, int width,
-        const std::vector<int> &foregrounds,
-        const std::vector<std::pair<size_t, size_t>> &word_ranges,
+bool Overlay::measure_paragraph_layout(std::string_view input_target, int width,
+        const std::vector<int> &input_foregrounds,
+        const std::vector<std::pair<size_t, size_t>> &input_word_ranges,
         std::vector<std::string> &lines,
         std::vector<std::vector<int>> &line_foregrounds, int &font_pixels) const {
     lines.clear();
     line_foregrounds.clear();
     font_pixels = 0;
+    const auto converted = localize_display(input_target);
+    const std::string_view target = converted.text;
+    const auto foregrounds = remap_display_colors(input_target, converted, input_foregrounds);
+    const auto word_ranges = remap_display_ranges(input_target, converted, input_word_ranges);
     std::vector<uint32_t> codepoints;
     if (!face_ || !gps_ || gps_->tile_pixel_x <= 0 || gps_->tile_pixel_y <= 0 ||
         width <= 0 || !decode_utf8(target, codepoints) || codepoints.empty())
@@ -321,6 +325,30 @@ bool Overlay::append_bounded_paragraph(std::vector<Match> rows,
     std::vector<std::string> lines;
     std::vector<std::vector<int>> line_foregrounds;
     int font_pixels = 0;
+    auto metadata = rows.front().translation_result;
+    std::string joined_source;
+    const auto joined_rows = [&]() -> const std::string & {
+        if (!joined_source.empty()) return joined_source;
+        for (const auto &row : rows) {
+            if (!joined_source.empty()) joined_source.push_back(' ');
+            joined_source += row.source;
+        }
+        return joined_source;
+    };
+    auto complete_source = native_source_for_rows(rows, clip_right);
+    if (!complete_source) complete_source = joined_rows();
+    if (!metadata && (rows.front().rule == kUiMessageRule ||
+            rows.front().rule == kAnnouncementListRule)) {
+        metadata = announcement_result_metadata(*complete_source);
+        if (!metadata) metadata = announcement_result_metadata(joined_rows());
+    }
+    Match display_source = rows.front();
+    display_source.source = metadata && !metadata->source.empty()
+        ? metadata->source : *complete_source;
+    display_source.native_source.reset();
+    display_source.target = target;
+    display_source.translation_result = metadata;
+    const DisplayLanguageScope source_scope(&display_source);
     if (!measure_paragraph_layout(target, width, foregrounds, word_ranges,
             lines, line_foregrounds, font_pixels)) return false;
     // Native row spacing belongs to the widget. A taller font bitmap can
@@ -346,20 +374,6 @@ bool Overlay::append_bounded_paragraph(std::vector<Match> rows,
     }
 
     Match continuation = rows.front();
-    auto metadata = rows.front().translation_result;
-    if (!metadata && (rows.front().rule == kUiMessageRule ||
-            rows.front().rule == kAnnouncementListRule)) {
-        auto complete_source = native_source_for_rows(rows, clip_right);
-        if (complete_source) metadata = announcement_result_metadata(*complete_source);
-        if (!metadata) {
-            std::string source;
-            for (const auto &row : rows) {
-                if (!source.empty()) source.push_back(' ');
-                source += row.source;
-            }
-            metadata = announcement_result_metadata(source);
-        }
-    }
     continuation.length = 0;
     continuation.source.clear();
     continuation.target.clear();
@@ -390,6 +404,7 @@ bool Overlay::append_bounded_paragraph(std::vector<Match> rows,
             std::fill_n(screen_rows[static_cast<size_t>(row.y)].begin() + row.x,
                 row.length, ' ');
         row.target = line < lines.size() ? std::move(lines[line]) : std::string{};
+        row.language_converted = config_.language == "zh-Hant";
         if (line < line_foregrounds.size() && !line_foregrounds[line].empty()) {
             row.layout_foreground_rgb = line_foregrounds[line].front();
             row.layout_glyph_foreground_rgb = std::move(line_foregrounds[line]);

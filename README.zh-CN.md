@@ -541,6 +541,7 @@ python tools/build_native_image_bindings.py --reference ../dwarfort --image /opt
 | --- | --- |
 | `Shift+F5` | 关闭汉化；再次按下时重新加载核心与数据并开启 |
 | `Shift+F6` | 停用全部扩展 TSV 词表与 TOML 规则，立即重载本体汉化并开启显示；再次按下恢复扩展并重载汉化 |
+| `Shift+F8` | 简体／台湾正体互相切换，刷新字体和译文排版；左右 Shift 均可，长按不重复触发。保留本次运行的选择，跨核心重载保留，不改写 `language` 配置及汉化显示开关 |
 | `Shift+F10` | 开启或关闭汉化，保留当前核心与数据，不触发重载 |
 | `Ctrl+Shift+F10` | 强制更新配置与词表 |
 | `Ctrl+F9` | 将当前字符网格与漏译片段导出到 `dfcn/data/extracted/dumps/` |
@@ -581,6 +582,7 @@ ABI 4 跨核心传递完整段落、知识与人物文档的原文、行内容�
 | 配置 | 用途 |
 | --- | --- |
 | `enabled` | 游戏启动时是否启用汉化 |
+| `language` | BCP 47 语言标签，默认 `zh-Hans`（简体中文）；`zh-Hant` 将全部译文经离线 OpenCC 转为台湾正体及常用词汇；也接受 `zh-CN` / `zh-TW`、`zh-Hans-CN` / `zh-Hant-TW`。自定义小队名称保持原样 |
 | `mapping` | 运行时映射文件路径 |
 | `compositional_rules` | 是否启用递归 TOML 组合翻译 |
 | `font`、`font_index` | 字体文件及字体集合中的字面索引 |

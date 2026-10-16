@@ -1,0 +1,17 @@
+OpenCC (Open Chinese Convert)
+Upstream: https://github.com/BYVoid/OpenCC
+Release: ver.1.1.9
+Commit: 556ed22496d650bd0b13b6c163be9814637970ae
+Source: https://github.com/BYVoid/OpenCC/tree/556ed22496d650bd0b13b6c163be9814637970ae
+License: Apache-2.0; see LICENSE.
+
+This directory contains the upstream C++ text-dictionary, segmentation and
+conversion subset, without Config, SimpleConverter or binary dictionary
+backends. SerializedValues.hpp explicitly includes <cstdint> for C++20
+toolchains that no longer expose integer types through transitive includes;
+all other upstream source files are unmodified. The local opencc_config.h
+selects the upstream template's configuration with Darts disabled.
+
+The DFCN core compiles these sources directly as C++20 with
+Opencc_BUILT_AS_STATIC defined. No additional runtime library, alternate
+toolchain, CMake build or dictionary generator is required.

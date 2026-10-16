@@ -70,6 +70,7 @@
 #include "translation_extensions.h"
 #include "english_character_names.h"
 #include "english_name_transliteration.h"
+#include "chinese_conversion.h"
 
 namespace fs = std::filesystem;
 
@@ -77,6 +78,8 @@ namespace dfcn {
 
 static std::atomic_bool g_native_process_exiting{false};
 static void request_native_process_exit() noexcept;
+static void release_native_squads_language_resources();
+static void release_native_dfhack_layer_target() noexcept;
 
 #include "history_event_clauses.inc"
 
@@ -343,10 +346,13 @@ static void log_translation_state_timing(const TranslationStateTiming &sample) {
     log_line("WARN", line.str());
 }
 
+static constexpr const char *kDisplayLanguageHint = "DFCN_DISPLAY_LANGUAGE";
+
 struct Config {
     static constexpr double default_font_scale = 1.1;
     static constexpr double font_scale_baseline = 0.92;
     bool enabled = true;
+    std::string language = "zh-Hans";
     bool clear_background = true;
     bool log_matches = false;
     bool trace_render_timing = false;
@@ -735,7 +741,30 @@ struct Match {
     // Recovered semantic text may join wrapped rows or collapse field gaps.
     // Raster input ownership instead follows the exact bytes of this row.
     std::optional<std::string> native_source{};
+    // Reflowed lines already passed through the display-language converter.
+    bool language_converted = false;
 };
+
+static thread_local const Match *g_display_language_match = nullptr;
+static thread_local bool g_display_language_converted = false;
+class DisplayLanguageScope {
+    const Match *previous_match_ = g_display_language_match;
+    bool previous_converted_ = g_display_language_converted;
+public:
+    explicit DisplayLanguageScope(const Match *match, bool already_localized = false) {
+        g_display_language_match = match;
+        g_display_language_converted = already_localized || (match && match->language_converted);
+    }
+    ~DisplayLanguageScope() {
+        g_display_language_match = previous_match_;
+        g_display_language_converted = previous_converted_;
+    }
+};
+
+static std::vector<int> remap_display_colors(std::string_view input,
+    const ConvertedText &converted, const std::vector<int> &colors);
+static std::vector<std::pair<size_t, size_t>> remap_display_ranges(std::string_view input,
+    const ConvertedText &converted, const std::vector<std::pair<size_t, size_t>> &ranges);
 
 static std::string_view native_match_source(const Match &match) {
     return match.native_source ? std::string_view(*match.native_source)
@@ -3590,6 +3619,7 @@ public:
         bool date = false) const;
     void set_translation_enabled(bool enabled);
     void toggle_translation();
+    void toggle_display_language();
     void toggle_translation_extensions();
     void remap_legends_mouse(int *x, int *y) const;
     void request_reload() { reload_requested_.store(true); }
@@ -3761,6 +3791,15 @@ private:
         bool has_ink = false;
     };
     Config config_;
+    ChineseConversion chinese_conversion_;
+    // Component drawers borrow the main converter and its authored-name context.
+    const Overlay *display_language_source_ = nullptr;
+    mutable std::mutex display_conversion_mutex_;
+    mutable std::unordered_map<std::string, ConvertedText> display_conversion_cache_;
+    ConvertedText localize_display(std::string_view text, std::string_view source = {},
+        const TranslationResult *result = nullptr) const;
+    std::vector<std::pair<size_t, size_t>> authored_squad_display_spans(
+        std::string_view source, std::string_view target) const;
     // Native formatters only need the on/off decision here. Actual translation
     // still takes TranslationStateScope; this read must not queue behind a
     // whole render pass merely to discover that translation is disabled.
@@ -5898,6 +5937,8 @@ static bool translation_complete_with_native_nicknames(
     const std::optional<std::string> &target, std::string_view source);
 static bool item_term_contains_sentence_punctuation(std::string_view source);
 
+#include "display_language.inc"
+
 bool Overlay::load_config() {
     native_knowledge_layouts_.clear();
     written_work_paragraph_cache_.clear();
@@ -5928,6 +5969,7 @@ bool Overlay::load_config() {
             const std::string key = lower(trim(stripped.substr(0, eq)));
             const std::string value = trim(stripped.substr(eq + 1));
             if (key == "enabled") next.enabled = parse_bool(value, next.enabled);
+            else if (key == "language") next.language = value;
             else if (key == "clear_background") next.clear_background = parse_bool(value, next.clear_background);
             else if (key == "log_matches") next.log_matches = parse_bool(value, next.log_matches);
             else if (key == "trace_render_timing") next.trace_render_timing = parse_bool(value, next.trace_render_timing);
@@ -5989,13 +6031,37 @@ bool Overlay::load_config() {
     next.collect_interval_seconds = std::clamp(next.collect_interval_seconds, 1, 60);
     next.max_untranslated_entries = std::clamp(next.max_untranslated_entries, 100, 50000);
 
+    if (const char *choice = SDL_GetHint(kDisplayLanguageHint);
+            choice && (std::strcmp(choice, "zh-Hans") == 0 || std::strcmp(choice, "zh-Hant") == 0))
+        next.language = choice;
+    const auto language = lower(next.language);
+    if (language == "zh-hant" || language == "zh-tw" || language == "zh-hant-tw")
+        next.language = "zh-Hant";
+    else {
+        if (language != "zh-hans" && language != "zh-cn" && language != "zh-hans-cn")
+            log_line("WARN", "Unsupported language tag: " + next.language + "; using zh-Hans");
+        next.language = "zh-Hans";
+    }
+    if (next.language == "zh-Hant" && !chinese_conversion_.loaded()) {
+        try {
+            chinese_conversion_.load(runtime::data_path() / "opencc");
+        } catch (const std::exception &error) {
+            log_line("ERROR", std::string("Cannot load OpenCC conversion dictionaries: ") + error.what());
+            return false;
+        }
+    }
+    {
+        std::lock_guard<std::mutex> lock(display_conversion_mutex_);
+        display_conversion_cache_.clear();
+    }
     const bool font_changed = next.font_path != config_.font_path ||
                               next.font_index != config_.font_index ||
                               next.font_bold != config_.font_bold ||
                               next.font_pixels != config_.font_pixels ||
                               next.font_pixel_grid != config_.font_pixel_grid ||
                               next.font_scale != config_.font_scale ||
-                              next.min_font_pixels != config_.min_font_pixels;
+                              next.min_font_pixels != config_.min_font_pixels ||
+                              next.language != config_.language;
     if (runtime_enabled_override_) next.enabled = *runtime_enabled_override_;
     config_ = std::move(next);
     translation_enabled_snapshot_.store(config_.enabled, std::memory_order_release);
@@ -6242,7 +6308,8 @@ Overlay::FontGlyph Overlay::resolve_font_glyph_at_size(uint32_t codepoint, int p
         }
     }
     if (!selected.index) {
-        if (FT_Face face = native_open_fallback_font(ft_, codepoint, pixels, config_.font_bold)) {
+        if (FT_Face face = native_open_fallback_font(ft_, codepoint, pixels, config_.font_bold,
+                config_.language == "zh-Hant")) {
             fallback_fonts_.push_back(face);
             selected = {face, FT_Get_Char_Index(face, codepoint)};
         }
@@ -6384,7 +6451,7 @@ bool Overlay::load_font() {
 #ifdef _WIN32
     const bool use_default_font = path.empty();
 #endif
-    if (path.empty()) native_find_font(path, index, config_.font_bold);
+    if (path.empty()) native_find_font(path, index, config_.font_bold, config_.language == "zh-Hant");
     if (path.empty()) {
         log_line("ERROR", "No CJK font found. Set font= in " + runtime::utf8(runtime::config_path()));
         return false;
@@ -6397,7 +6464,7 @@ bool Overlay::load_font() {
         return false;
     }
 #ifdef _WIN32
-    if (use_default_font) {
+    if (use_default_font && config_.language != "zh-Hant") {
         // Keep the established default family and medium weight when the
         // user has not supplied a font. The discovered file is still
         // registered so a private/default font remains available to GDI.
@@ -7547,6 +7614,48 @@ void Overlay::invalidate_render_resources() {
 void Overlay::toggle_translation() {
     TranslationStateScope translation_scope;
     set_translation_enabled(!config_.enabled);
+}
+
+void Overlay::toggle_display_language() {
+    TranslationStateScope translation_scope;
+    const std::string previous = config_.language;
+    const std::string next = previous == "zh-Hant" ? "zh-Hans" : "zh-Hant";
+    if (next == "zh-Hant" && !chinese_conversion_.loaded()) {
+        try {
+            chinese_conversion_.load(runtime::data_path() / "opencc");
+        } catch (const std::exception &error) {
+            log_line("ERROR", std::string("Shift+F8: cannot load OpenCC dictionaries: ") + error.what());
+            return;
+        }
+    }
+    // Use the existing render reset while the SDL event loop owns the render
+    // thread. Retire borrowed component faces before replacing the main font.
+    invalidate_render_resources();
+    release_native_squads_language_resources();
+    release_native_dfhack_layer_target();
+    {
+        std::lock_guard<std::mutex> lock(dfhack_translation_mutex_);
+        dfhack_translation_completed_frame_.store({}, std::memory_order_release);
+        dfhack_translation_cache_.clear();
+        dfhack_translation_blocked_keys_.clear();
+    }
+    config_.language = next;
+    if (ft_ && !load_font()) {
+        config_.language = previous;
+        load_font();
+        log_line("ERROR", "Shift+F8: cannot load language font; restored " + previous);
+        return;
+    }
+    // SDL retains the session choice across core image reloads, just as it
+    // does for Shift+F6. The user's initial language setting stays on disk.
+    if (SDL_SetHintWithPriority(kDisplayLanguageHint, next.c_str(), SDL_HINT_OVERRIDE) != SDL_TRUE) {
+        config_.language = previous;
+        if (ft_) load_font();
+        log_line("ERROR", "Shift+F8: cannot retain language choice; restored " + previous);
+        return;
+    }
+    queue_dfhack_layer_translation();
+    log_line("INFO", "Shift+F8: display language switched to " + next);
 }
 
 void Overlay::toggle_translation_extensions() {
@@ -15946,6 +16055,24 @@ const NativeKnowledgeLayout &Overlay::prepare_native_knowledge_layout(
             if (document_result->usable()) next.translation_result = document_result;
         }
 
+        if (config_.language == "zh-Hant") {
+            for (size_t index = 0; index < targets.size(); ++index) {
+                auto converted = localize_display(targets[index], source, next.translation_result.get());
+                if (index < target_foregrounds.size() && !target_foregrounds[index].empty() &&
+                        converted.text != targets[index]) {
+                    const auto &colors = target_foregrounds[index];
+                    std::vector<int> mapped;
+                    mapped.reserve(converted.text.size());
+                    for (size_t at = 0; at < converted.text.size(); ++at) {
+                        const size_t origin = converted.origins.empty() ? at : converted.origins[at];
+                        mapped.push_back(colors[std::min(origin, colors.size() - 1)]);
+                    }
+                    target_foregrounds[index] = std::move(mapped);
+                }
+                targets[index] = std::move(converted.text);
+            }
+        }
+        const DisplayLanguageScope localized_scope(nullptr, config_.language == "zh-Hant");
         const int max_pixels = std::max(1,
             width * gps_->tile_pixel_x - 2 * config_.horizontal_padding - 2);
         auto nonstarter = [](uint32_t cp) {
@@ -16514,6 +16641,7 @@ std::vector<Match> Overlay::resolve_native_knowledge_matches(
             owns_line ? layout.lines[static_cast<size_t>(target_line)] : std::string{},
             source_row ? document.rows[static_cast<size_t>(first_native_line + row)] : std::string{}};
         match.translation_result = layout.translation_result;
+        match.language_converted = config_.language == "zh-Hant";
         match.layout_x = left;
         match.layout_y = y;
         match.layout_length = width;
@@ -24489,8 +24617,15 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
             }
 
             if (only_y < 0) {
+                std::string localized_target;
+                std::string_view target = *translated;
+                if (config_.language == "zh-Hant") {
+                    localized_target = localize_display(target, poetic_description_source).text;
+                    target = localized_target;
+                }
+                const DisplayLanguageScope localized_scope(nullptr, config_.language == "zh-Hant");
                 std::vector<uint32_t> codepoints;
-                if (decode_utf8(*translated, codepoints) &&
+                if (decode_utf8(target, codepoints) &&
                     !codepoints.empty()) {
                     auto units = [](uint32_t cp) { return cp < 0x80 ? 1 : 2; };
                     auto nonstarter = [](uint32_t cp) {
@@ -24601,6 +24736,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                             rendered_lines[static_cast<size_t>(target_line)],
                             owns_source ? source_row.source : std::string{},
                         };
+                        visible.language_converted = config_.language == "zh-Hant";
                         visible.layout_x = paragraph_x;
                         const int pixel_y = display_top + visible_line * line_height;
                         visible.layout_y = pixel_y / gps_->tile_pixel_y;
@@ -25166,8 +25302,15 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
         const int paragraph_width = std::max(
             8, std::min(gps_->dimx - paragraph_x - 4,
                         paragraph_right - paragraph_x));
+        std::string localized_target;
+        std::string_view target = paragraph.target;
+        if (config_.language == "zh-Hant") {
+            localized_target = localize_display(target, paragraph.source).text;
+            target = localized_target;
+        }
+        const DisplayLanguageScope localized_scope(nullptr, config_.language == "zh-Hant");
         std::vector<uint32_t> codepoints;
-        if (!decode_utf8(paragraph.target, codepoints) || codepoints.empty())
+        if (!decode_utf8(target, codepoints) || codepoints.empty())
             continue;
         auto units = [](uint32_t cp) { return cp < 0x80 ? 1 : 2; };
         auto nonstarter = [](uint32_t cp) {
@@ -25260,6 +25403,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                 rendered_lines[static_cast<size_t>(target_line)],
                 owns_source ? source_row.source : std::string{},
             };
+            visible.language_converted = config_.language == "zh-Hant";
             visible.layout_x = paragraph_x;
             const int pixel_y = display_top + visible_line * line_height;
             visible.layout_y = pixel_y / gps_->tile_pixel_y;
@@ -25754,6 +25898,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                             static_cast<int>(i) * line_height;
                         Match match{anchor.x, anchor.y, 0, description_rule, layout.lines[i], {}};
                         match.translation_result = layout.translation_result;
+                        match.language_converted = config_.language == "zh-Hant";
                         match.layout_x = left;
                         match.layout_y = pixel_y / gps_->tile_pixel_y;
                         match.layout_pixel_y = pixel_y % gps_->tile_pixel_y;
@@ -26056,6 +26201,9 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                 combined_target += target;
             for (const std::string &target : personality_target->cave_adaptation)
                 combined_target += target;
+            if (config_.language == "zh-Hant")
+                combined_target = localize_display(combined_target, block.source).text;
+            const DisplayLanguageScope localized_scope(nullptr, config_.language == "zh-Hant");
             std::vector<uint32_t> codepoints;
             if (!decode_utf8(combined_target, codepoints) || codepoints.empty())
                 continue;
@@ -26114,6 +26262,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                 const PersonalityRow &row = block.rows[std::min(
                     static_cast<size_t>(line), block.rows.size() - 1)];
                 Match visible{row.x, row.y, 0, -10, std::move(rendered), {}};
+                visible.language_converted = config_.language == "zh-Hant";
                 visible.layout_x = paragraph_x;
                 const int display_y = display_top + line * line_height;
                 visible.layout_y = display_y / gps_->tile_pixel_y;
@@ -39832,7 +39981,10 @@ static std::string texture_key(const std::string &text, int max_width, int tile_
 }
 
 std::optional<Overlay::EllipsizedText> Overlay::ellipsize_text(
-        const std::string &text, int max_width) const {
+        const std::string &input_text, int max_width) const {
+    const auto converted = config_.language == "zh-Hant" && !g_display_language_converted
+        ? std::optional<ConvertedText>(localize_display(input_text)) : std::nullopt;
+    const auto &text = converted ? converted->text : input_text;
     const int pixels = unified_font_pixels();
     const std::string key = text + '\0' + std::to_string(pixels) + ':' +
         std::to_string(max_width);
@@ -39908,12 +40060,18 @@ std::optional<Overlay::EllipsizedText> Overlay::ellipsize_text(
     return result;
 }
 
-GlyphTexture *Overlay::get_glyph_texture(SDL_Renderer *renderer, const std::string &text,
+GlyphTexture *Overlay::get_glyph_texture(SDL_Renderer *renderer, const std::string &input_text,
                                          int max_width, int tile_height,
                                          int forced_pixel_size,
                                          int target_visual_height,
                                          bool lock_pixel_size,
-                                         const std::vector<int> &foregrounds, int wrap_width) {
+                                         const std::vector<int> &input_foregrounds, int wrap_width) {
+    const auto converted = config_.language == "zh-Hant" && !g_display_language_converted
+        ? std::optional<ConvertedText>(localize_display(input_text)) : std::nullopt;
+    const auto &text = converted ? converted->text : input_text;
+    const auto converted_foregrounds = converted
+        ? remap_display_colors(input_text, *converted, input_foregrounds) : std::vector<int>{};
+    const auto &foregrounds = converted ? converted_foregrounds : input_foregrounds;
     if (!face_ || max_width <= 0 || tile_height <= 0 || text.empty()) return nullptr;
     // All callers share one immutable size; available area affects layout,
     // never font metrics or glyph bitmaps.
@@ -39961,6 +40119,7 @@ GlyphTexture *Overlay::get_glyph_texture(SDL_Renderer *renderer, const std::stri
 }
 
 void Overlay::render_ime_popup(SDL_Renderer *renderer) {
+    DisplayLanguageScope authored_input(nullptr, true);
     TranslationStateScope translation_scope;
     if (!config_.enabled || !renderer || !face_ || SDL_IsTextInputActive() != SDL_TRUE) return;
     const ImePopupSnapshot snapshot = current_ime_popup_snapshot();
@@ -40632,12 +40791,14 @@ void Overlay::note_graphical_clear_write(SDL_Renderer *renderer, const SDL_Rect 
 }
 
 void Overlay::draw_match(SDL_Renderer *renderer, const Match &match) {
+    DisplayLanguageScope language_scope(&match);
     if (match.native_help_source_only) return;
     if (match.native_split_duplicate) return;
     if (match.legends_flow && match.legends_flow->laid_out) {
         if (!match.legends_flow_owner) return;
         const auto &flow = *match.legends_flow;
         Match part = match;
+        part.language_converted = true;
         part.legends_flow.reset();
         part.legends_flow_owner = false;
         // The source may carry native half-font caption flags. Each measured
@@ -41136,11 +41297,20 @@ void Overlay::draw_match(SDL_Renderer *renderer, const Match &match) {
     RenderTimingScope texture_timing(render_timings_, config_.trace_render_timing,
         RenderTimingStage::DrawTexture);
     auto foregrounds = colored_match_foregrounds(match, (fg_r << 16) | (fg_g << 8) | fg_b);
+    const bool needs_conversion = config_.language == "zh-Hant" && !g_display_language_converted;
+    const auto converted = needs_conversion
+        ? std::optional<ConvertedText>(localize_display(match.target)) : std::nullopt;
+    if (converted) foregrounds = remap_display_colors(match.target, *converted, foregrounds);
+    std::vector<std::string> converted_parts;
+    if (needs_conversion) for (const auto &part : match.layout_justified_parts)
+        converted_parts.push_back(localize_display(part).text);
+    const auto &justified_parts = needs_conversion ? converted_parts : match.layout_justified_parts;
+    const DisplayLanguageScope converted_scope(&match, true);
     std::string ellipsized;
-    const std::string *display_text = &match.target;
+    const std::string *display_text = converted ? &converted->text : &match.target;
     if (match.layout_ellipsize) {
         display_text = &ellipsized;
-        if (const auto fitted = ellipsize_text(match.target, span_width)) {
+        if (const auto fitted = ellipsize_text(converted ? converted->text : match.target, span_width)) {
             ellipsized = fitted->text;
             if (fitted->shortened && !foregrounds.empty()) {
                 const size_t kept = std::min(fitted->kept_codepoints, foregrounds.size());
@@ -41151,21 +41321,21 @@ void Overlay::draw_match(SDL_Renderer *renderer, const Match &match) {
         }
     }
     bool justified = false;
-    if (match.layout_justified_parts.size() >= 3 && foregrounds.empty()) {
+    if (justified_parts.size() >= 3 && foregrounds.empty()) {
         std::vector<int> widths;
         int total_width = 0;
-        for (const auto &part : match.layout_justified_parts) {
+        for (const auto &part : justified_parts) {
             const auto *glyph = get_glyph_texture(renderer, part, span_width, line_height,
                 match.layout_font_pixels, match.layout_visual_height_pixels, true);
             if (!glyph || !glyph->texture) break;
             widths.push_back(glyph->width);
             total_width += glyph->width;
         }
-        if (widths.size() == match.layout_justified_parts.size() && total_width <= span_width) {
+        if (widths.size() == justified_parts.size() && total_width <= span_width) {
             const int free_width = span_width - total_width;
             int preceding_width = 0;
             for (size_t index = 0; index < widths.size(); ++index) {
-                auto *glyph = get_glyph_texture(renderer, match.layout_justified_parts[index],
+                auto *glyph = get_glyph_texture(renderer, justified_parts[index],
                     span_width, line_height, match.layout_font_pixels,
                     match.layout_visual_height_pixels, true);
                 if (!glyph || !glyph->texture) continue;
@@ -42633,6 +42803,9 @@ static Overlay g_overlay;
 // The squad component borrows immutable catalog/font resources only. Its
 // graphics, matches, font caches and GPU text resources belong to this object.
 static Overlay g_native_squads_overlay;
+static void release_native_squads_language_resources() {
+    g_native_squads_overlay.release_native_squads_resources();
+}
 static void native_squads_prepare_text() {
     try { g_overlay.prepare_native_squads_text(); }
     catch (...) {
@@ -43041,6 +43214,23 @@ DFCN_EXPORT bool dfhooks_sdl_event(void *raw_event) {
         if ((mods & KMOD_SHIFT) && !(mods & (KMOD_CTRL | KMOD_ALT | KMOD_GUI))) {
             f6_consumed = true;
             if (!event->key.repeat) dfcn::g_overlay.toggle_translation_extensions();
+            return true;
+        }
+    }
+    static bool f8_consumed = false;
+    if (event->type == SDL_WINDOWEVENT &&
+        event->window.event == SDL_WINDOWEVENT_FOCUS_LOST) f8_consumed = false;
+    if (event->type == SDL_KEYUP && event->key.keysym.sym == SDLK_F8 && f8_consumed) {
+        f8_consumed = false;
+        return true;
+    }
+    if (event->type == SDL_KEYDOWN && event->key.keysym.sym == SDLK_F8) {
+        if (!event->key.repeat) f8_consumed = false;
+        if (f8_consumed) return true;
+        const auto mods = static_cast<SDL_Keymod>(event->key.keysym.mod);
+        if ((mods & KMOD_SHIFT) && !(mods & (KMOD_CTRL | KMOD_ALT | KMOD_GUI))) {
+            f8_consumed = true;
+            if (!event->key.repeat) dfcn::g_overlay.toggle_display_language();
             return true;
         }
     }

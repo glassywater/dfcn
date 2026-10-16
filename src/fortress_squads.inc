@@ -235,6 +235,86 @@ std::optional<std::string> Overlay::translate_fortress_squad_reference(
     return name ? std::optional<std::string>(*label + "：" + *name) : std::nullopt;
 }
 
+std::vector<std::pair<size_t, size_t>> Overlay::authored_squad_display_spans(
+        std::string_view source, std::string_view target) const {
+    std::vector<std::pair<size_t, size_t>> spans;
+    source = trim_view(source);
+    if (source.empty() || target.empty()) return spans;
+    // A caption with the same spelling is not an alias. Require a
+    // squad-bearing source constructor before consulting its existing name
+    // resolver or the captured native squad.alias owners.
+    const auto captured_alias = [&](std::string_view name) -> std::optional<std::string> {
+        for (bool top : {false, true})
+            for (const auto &draw : captured_native_drawn_text_rows(top)) {
+                if (!draw.squad_alias_target) continue;
+                const auto complete = draw.complete_source.empty()
+                    ? std::string_view(draw.source) : std::string_view(draw.complete_source);
+                if (name == complete) return draw.squad_alias_target;
+            }
+        return std::nullopt;
+    };
+    constexpr std::string_view label_prefix = "Squad:";
+    if (source.starts_with(label_prefix)) {
+        const auto name = trim_view(source.substr(label_prefix.size()));
+        const auto alias = captured_alias(name);
+        const auto label = exact_literal_translation("Character overview: Squad");
+        if (alias && label) {
+            const std::string prefix = *label + "：";
+            if (target == prefix + *alias)
+                spans.emplace_back(prefix.size(), target.size());
+        }
+        return spans;
+    }
+    const bool assignment_source = source.ends_with(" assigned") ||
+        source.starts_with("Will be assigned to ") || source.starts_with("Assigned to ");
+    if (assignment_source) for (const Rule &rule : rules_) {
+        if (!fortress_squad_reference_template(rule.source)) continue;
+        size_t end = 0;
+        std::vector<std::string> captures;
+        if (!match_template(rule, source, 0, &end, &captures) ||
+                end != source.size() || captures.empty()) continue;
+        const auto name = translate_fortress_squad_name(captures.front());
+        if (!name) continue;
+        // Text-only squad references already preserve an unresolved name.
+        // Keep that semantic field intact without inferring authorship from
+        // spelling; a resolved generated-name translation remains eligible
+        // for the selected display language.
+        const bool preserved_name = *name == native_text_to_utf8(captures.front());
+        Rule compiled = rule;
+        if (compiled.target_capture_order.empty() && !compile_template_target(compiled)) continue;
+        if (compiled.target_template_literals.size() != compiled.target_capture_order.size() + 1)
+            continue;
+        std::string expected;
+        std::vector<std::pair<size_t, size_t>> field_spans;
+        bool complete = true;
+        for (size_t output = 0; output < compiled.target_capture_order.size(); ++output) {
+            expected += compiled.target_template_literals[output];
+            const size_t capture = compiled.target_capture_order[output];
+            if (capture >= captures.size()) { complete = false; break; }
+            const size_t begin = expected.size();
+            expected += capture == 0 ? *name : native_text_to_utf8(captures[capture]);
+            if (capture == 0 && preserved_name) field_spans.emplace_back(begin, expected.size());
+        }
+        if (!complete) continue;
+        expected += compiled.target_template_literals.back();
+        if (target == expected) return field_spans;
+    }
+    // Returning-party ownership is retained with the complete native
+    // announcement, independently of whichever page displays its text.
+    if (const auto party = source.find(" returned.") != std::string_view::npos
+                ? native_mission_return_party(source) : std::nullopt;
+            party && party->kind == NativeMissionReturnKind::Alias) {
+        const std::string alias = native_text_to_utf8(party->prefix);
+        if (!alias.empty()) {
+            const size_t at = target.find(alias);
+            if (at != std::string_view::npos &&
+                    target.find(alias, at + alias.size()) == std::string_view::npos)
+                spans.emplace_back(at, at + alias.size());
+        }
+    }
+    return spans;
+}
+
 // Apply the proven alias-copy owner before generic caption/name matching.
 // Its original text also owns clipped and double-height native glyphs.
 void Overlay::append_fortress_squad_alias_rows(std::vector<std::string> &rows,
