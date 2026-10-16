@@ -127,6 +127,8 @@ agreement-followup	{s} {s}	{s1}{s2}	negotiation-paragraph,justice-intrigue-parag
 historical-event-title	{s}	{s1}	agreement-title	0x1402aaf70..0x1402ad7eb / 0x1402ad7f0..0x1402afec3
 historical-event-title	{s} in {s}	{s2}的{s1}	agreement-title,$date	0x1402ad8c5..0x1402ad8e3 common date tail
 agreement-party	an unknown party	身份不明的一方		0x1402ab210 and analogous absent participant branches
+agreement-party	subject	受审者		0x140b92f10;interrogation context figure substitution
+agreement-party	an unidentified creature	身份不明的生物		0x140b92f10;unresolved historical figure
 agreement-party-list	an unknown party	身份不明的一方		0x1402ab210 and analogous absent participant branches
 agreement-party	{s}	{s1}	$historical-actor	0x1400e2b80..0x1400e2cb1; first HF vector -> 0x140b92f10
 agreement-party	{s}	{s1}	$name	0x1400e2b80..0x1400e2cb1; second entity vector -> 0x140b92900
@@ -296,11 +298,11 @@ agreement-core	{s} began embezzling funds as a {s} of {s}	{s1}以{s3}的{s2}身�
 agreement-title-core	the embezzlement of{s} as a {s} of {s}	{s1}以{s3}的{s2}身份进行的挪用资金	agreement-party-list,$office,$name	0x1402aeedc..0x1402af20b; missing native space before participant is intentional
 agreement-core	{s} began embezzling funds as the {s} of {s}	{s1}以{s3}的{s2}身份开始挪用资金	agreement-party-list,$office,$name	0x1402ac7cb..0x1402ac970
 agreement-title-core	the embezzlement of{s} as the {s} of {s}	{s1}以{s3}的{s2}身份进行的挪用资金	agreement-party-list,$office,$name	0x1402aeedc..0x1402af20b; missing native space before participant is intentional
-agreement-core	{s} began accepting bribes in exchange for leniency	{s1}开始收受贿赂以换取宽大处理	agreement-party-list	0x1402ac7cb..0x1402ac970
+agreement-core	{s} began accepting bribes in exchange for leniency	{s1}开始收受贿赂、徇私宽纵	agreement-party-list	0x1402ac7cb..0x1402ac970
 agreement-title-core	the bribery of{s}	{s1}进行的受贿	agreement-party-list	0x1402aeedc..0x1402af20b; missing native space before participant is intentional
-agreement-core	{s} began accepting bribes in exchange for leniency as a {s} of {s}	{s1}以{s3}的{s2}身份开始收受贿赂以换取宽大处理	agreement-party-list,$office,$name	0x1402ac7cb..0x1402ac970
+agreement-core	{s} began accepting bribes in exchange for leniency as a {s} of {s}	{s1}以{s3}的{s2}身份开始收受贿赂、徇私宽纵	agreement-party-list,$office,$name	0x1402ac7cb..0x1402ac970
 agreement-title-core	the bribery of{s} as a {s} of {s}	{s1}以{s3}的{s2}身份进行的受贿	agreement-party-list,$office,$name	0x1402aeedc..0x1402af20b; missing native space before participant is intentional
-agreement-core	{s} began accepting bribes in exchange for leniency as the {s} of {s}	{s1}以{s3}的{s2}身份开始收受贿赂以换取宽大处理	agreement-party-list,$office,$name	0x1402ac7cb..0x1402ac970
+agreement-core	{s} began accepting bribes in exchange for leniency as the {s} of {s}	{s1}以{s3}的{s2}身份开始收受贿赂、徇私宽纵	agreement-party-list,$office,$name	0x1402ac7cb..0x1402ac970
 agreement-title-core	the bribery of{s} as the {s} of {s}	{s1}以{s3}的{s2}身份进行的受贿	agreement-party-list,$office,$name	0x1402aeedc..0x1402af20b; missing native space before participant is intentional
 agreement-core	{s} aided {s} in becoming a permanent part of the living world	{s1}帮助{s2}永远留在生者的世界	agreement-party-list,agreement-party-list	0x1402aaf70..0x1402ad7eb / 0x1402ad7f0..0x1402afec3
 agreement-core	{s} aided {s} in becoming a permanent part of the living world {s}	{s1}帮助{s2}永远留在生者的世界，{s3}	agreement-party-list,agreement-party-list,$description	0x1402aca3f..0x1402aca79; complete native motive from 0x140b5a6c0

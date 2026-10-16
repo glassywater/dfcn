@@ -3865,7 +3865,7 @@ A {s} caravan from {e} has arrived. Your status as a middling land has attracted
 A {s} caravan from {e} has arrived. Your status as a minor land has attracted a bit more trade than usual. Overall trade sentiments are great.	来自{e1}的{s1}商队已抵达。你作为小领地的地位吸引来了比平时略多的贸易。总体贸易意愿很高。	hPt
 Announcement combat agreement-core [agreement-party-list,$name]: made an agreement with {s}, becoming a resident of {s} to work as a mercenary	与{s1}达成协议，成为{s2}的居民，以便从事雇佣兵工作	l
 Announcement combat agreement-core [agreement-party-list,$name]: {s} made an agreement with , becoming a resident of {s} to eradicate monsters	{s1}与达成协议，成为{s2}的居民，以便消灭怪物	l
-Announcement combat agreement-core [agreement-party-list,$office,$name]: {s} began accepting bribes in exchange for leniency as the {s} of {s}	{s1}以{s3}的{s2}身份开始收受贿赂以换取宽大处理	l
+Announcement combat agreement-core [agreement-party-list,$office,$name]: {s} began accepting bribes in exchange for leniency as the {s} of {s}	{s1}以{s3}的{s2}身份开始收受贿赂、徇私宽纵	l
 Announcement combat agreement-core [agreement-party-list,agreement-party-list]: {s} aided {s} in becoming a permanent part of the living world	{s1}帮助{s2}永远留在生者的世界	l
 Announcement combat agreement-core [agreement-party-list,agreement-party-list]: {s} began passing a portion of corruptly-obtained funds to {s}	{s1}开始将部分非法所得转交给{s2}	l
 Announcement combat conversation-conflict-death [conversation-conflict-person,conversation-conflict-entity]: {s} was slainby the forces of {s}	{s1}被{s2}的部队杀死了	l
@@ -4064,7 +4064,7 @@ A caravan from {e} has arrived. Your status as a major land has attracted much m
 A caravan from {e} has arrived. Your status as a major land has attracted much more trade than usual. Overall trade sentiments are lukewarm.	来自{e1}的商队已抵达。你作为大领地的地位吸引来了比平时多得多的贸易。总体贸易意愿不冷不热。	hPt
 A caravan from {e} has arrived. Your status as a major land has attracted much more trade than usual. Overall trade sentiments are terrible.	来自{e1}的商队已抵达。你作为大领地的地位吸引来了比平时多得多的贸易。总体贸易意愿极差。	hPt
 A {s} caravan from {e} has arrived. Your status as a major land has attracted much more trade than usual. Overall trade sentiments are good.	来自{e1}的{s1}商队已抵达。你作为大领地的地位吸引来了比平时多得多的贸易。总体贸易意愿良好。	hPt
-Announcement combat agreement-core [agreement-party-list,$office,$name]: {s} began accepting bribes in exchange for leniency as a {s} of {s}	{s1}以{s3}的{s2}身份开始收受贿赂以换取宽大处理	l
+Announcement combat agreement-core [agreement-party-list,$office,$name]: {s} began accepting bribes in exchange for leniency as a {s} of {s}	{s1}以{s3}的{s2}身份开始收受贿赂、徇私宽纵	l
 Announcement combat agreement-core [agreement-party-list,agreement-party-list,$historical-actor]: {s} joined with {s} as a guide to find {s}	{s1}与{s2}同行，担任向导寻找{s3}	l
 Announcement combat agreement-core [agreement-party-list,agreement-party-list,$name]: {s} requested that {s} make an offer of service to {s}	{s1}要求{s2}向{s3}表示愿意效力	l
 Announcement combat agreement-core [agreement-party-list,agreement-party-list,agreement-item,$name]: {s} asked that {s} retrieve {s} for {s}	{s1}请{s2}为{s4}取回{s3}	l
@@ -6957,7 +6957,7 @@ A tiny amphibian with a long prehensile tail. It lives in underground swamps and
 Administrators handle various aspects of your fortress and can be reassigned. Many administrators also require rooms.	管理员负责要塞的各项事务，可以重新指派。许多管理员也需要配备房间。	hP
 Announcement combat adventure-announcement []: Your status as a minor land has attracted a bit more trade than usual.	作为小型领地，你们吸引了比平时略多的贸易。	l
 Announcement combat agreement-core [$name]: made an agreement with , becoming a resident of {s} to eradicate monsters	与达成协议，成为{s1}的居民，以便消灭怪物	l
-Announcement combat agreement-core [$office,$name]: began accepting bribes in exchange for leniency as the {s} of {s}	以{s2}的{s1}身份开始收受贿赂以换取宽大处理	l
+Announcement combat agreement-core [$office,$name]: began accepting bribes in exchange for leniency as the {s} of {s}	以{s2}的{s1}身份开始收受贿赂、徇私宽纵	l
 Announcement combat agreement-core [agreement-core,$name,agreement-item]: {s}. The ritual took place in {s} using {s}	{s1}。仪式在{s2}举行，使用了{s3}	l
 Announcement combat agreement-core [agreement-party-list,$office,$name]: {s} began embezzling funds as the {s} of {s}	{s1}以{s3}的{s2}身份开始挪用资金	l
 Announcement combat agreement-core [agreement-party-list,agreement-party-list,$name]: {s} joined with {s} to find {s}	{s1}与{s2}同行，寻找{s3}	l
@@ -7240,7 +7240,7 @@ Announcement combat adventure-announcement [$announcement-item,$announcement-ite
 Announcement combat adventure-announcement []: The bond is broken! Return to the Underworld and trouble us no more!	束缚已被打破！回到地下世界去，别再纠缠我们！	l
 Announcement combat adventure-announcement []: The sun will set soon. Be careful that the bogeyman doesn't get you.	太阳就快落山了。小心别被夜魔抓走。	l
 Announcement combat adventure-announcement []: Your wanderings have brought you to this place after a long journey.	经过漫长的旅途，你一路漫游来到此地。	l
-Announcement combat agreement-core [$office,$name]: began accepting bribes in exchange for leniency as a {s} of {s}	以{s2}的{s1}身份开始收受贿赂以换取宽大处理	l
+Announcement combat agreement-core [$office,$name]: began accepting bribes in exchange for leniency as a {s} of {s}	以{s2}的{s1}身份开始收受贿赂、徇私宽纵	l
 Announcement combat agreement-core [agreement-party-list,$historical-actor]: joined with {s} as a guide to find {s}	与{s1}同行，担任向导寻找{s2}	l
 Announcement combat agreement-core [agreement-party-list,$historical-actor]: {s} joined with as a guide to find {s}	{s1}与同行，担任向导寻找{s2}	l
 Announcement combat agreement-core [agreement-party-list,$name]: requested that {s} make an offer of service to {s}	要求{s1}向{s2}表示愿意效力	l
@@ -8051,7 +8051,7 @@ Announcement combat adventure-announcement []: A migrant has decided to brave th
 Announcement combat agreement-conclusion-core [agreement-conclusion-core,agreement-conclusion-reason]: {s} {s}	{s1}，{s2}	l
 Announcement combat agreement-core [agreement-party-list,agreement-party-list]: {s} joined with {s} as a guide	{s1}与{s2}同行，担任向导	l
 Announcement combat agreement-core [agreement-party-list,agreement-party-list]: {s} made an agreement with {s}	{s1}与{s2}达成协议	l
-Announcement combat agreement-core [agreement-party-list]: {s} began accepting bribes in exchange for leniency	{s1}开始收受贿赂以换取宽大处理	l
+Announcement combat agreement-core [agreement-party-list]: {s} began accepting bribes in exchange for leniency	{s1}开始收受贿赂、徇私宽纵	l
 Announcement combat agreement-goals []: prepare a coup, instill terror, initiate sabotage, and steal treasures	筹备政变、制造恐慌、展开破坏行动、盗取财宝	l
 Announcement combat agreement-title-core [agreement-party-list]: the plot of {s} to sabotage the activities of	{s1}破坏活动的阴谋	l
 Announcement combat attack-notice []: Forms twisted from their nature, legion of the night. What hope remains?	万物扭曲变形，化作暗夜大军。我们还能指望什么？	l
@@ -11176,7 +11176,7 @@ Announcement combat journal-event-title [journal-event-place]: The insurrection 
 Announcement combat journal-performance-core [memory-performance-work]: The performance of {s}	{s1}的表演	l
 Announcement combat justice-interrogation-response []: accepted out of loyalty to interrogator	出于对审讯者的忠诚而接受了	l
 Announcement combat justice-interrogation-response []: was too vain to accept death and agreed	虚荣心太强，无法接受死亡，因而答应了	l
-Announcement combat justice-intrigue-actor [justice-intrigue-actor]: fellow company member {s}	同一公司的成员{s1}	l
+Announcement combat justice-intrigue-actor [justice-intrigue-actor]: fellow company member {s}	同一公司的成员（{s1}）	l
 Announcement combat justice-intrigue-relationship-factor [justice-intrigue-actor]: fear of {s}	惧怕{s1}	l
 Announcement combat justice-intrigue-relationship-factor [justice-intrigue-actor]: love of {s}	爱着{s1}	l
 Announcement combat justice-intrigue-response [justice-intrigue-actor]: agreed for love of {s}	出于对{s1}的爱而答应了	l
@@ -11696,7 +11696,7 @@ Announcement combat journal-event-title [journal-event-entity]: The insurrection
 Announcement combat journal-performance-core [memory-story]: The telling of the story of {s}	讲述{s1}的故事	l
 Announcement combat justice-interrogation-response []: spurned harmony and refused to listen	轻视和谐，拒绝听取劝说	l
 Announcement combat justice-interrogation-response []: spurned the law and refused to listen	轻视法律，拒绝听取劝说	l
-Announcement combat justice-intrigue-actor [justice-intrigue-actor]: fellow order member {s}	同一教团的成员{s1}	l
+Announcement combat justice-intrigue-actor [justice-intrigue-actor]: fellow order member {s}	同一教团的成员（{s1}）	l
 Announcement combat justice-intrigue-method []: made a blackmail threat, due to embezzlement	以侵吞公款的把柄进行勒索	l
 Announcement combat memorial-killer-death [memorial-killer-verb,$memorial-actor]: {s} by {s}	被{s2}{s1}	l
 Announcement combat memorial-weapon-death [memorial-weapon-verb,$memorial-actor]: {s} by {s}	被{s2}{s1}	l
@@ -12589,7 +12589,7 @@ Announcement combat justice-interrogation-factor []: being swayed by the emotion
 Announcement combat justice-interrogation-relationship-factor []: respect of interrogator	尊重审讯者	l
 Announcement combat justice-interrogation-response []: was swayed by the emotional appeal	被情感上的劝说打动了	l
 Announcement combat justice-intrigue-actor [justice-intrigue-actor,$unit]: {s}, as "{s}",	{s1}以“{s2}”的身份	l
-Announcement combat justice-intrigue-actor [justice-intrigue-actor]: childhood friend {s}	童年好友{s1}	l
+Announcement combat justice-intrigue-actor [justice-intrigue-actor]: childhood friend {s}	童年好友（{s1}）	l
 Announcement combat memory-sentence [$name]: The guildhall petition for {s} was rejected.	为{s1}建公会大厅的申请被拒绝了。	l
 Announcement combat memory-sentence [memory-entity]: You refused to name yourself to {s}.	你不肯向{s1}透露自己的名字。	l
 Announcement combat memory-sentence [memory-ghost-action,memory-ghost]: I was {s} by {s}.	我被{s2}{s1}。	l
@@ -12877,8 +12877,8 @@ Announcement combat journal-calendar-date [$digits,$digits]: {s}st Slate in the 
 Announcement combat journal-calendar-date [$digits,$digits]: {s}th Slate in the year {s}	第{s2}年板岩月{s1}日	l
 Announcement combat justice-interrogation-relationship-factor []: hatred of interrogator	憎恨审讯者	l
 Announcement combat justice-interrogation-response []: respected interrogator and agreed	出于对审讯者的尊重而答应了	l
-Announcement combat justice-intrigue-actor [justice-intrigue-actor]: comrade-in-arms {s}	战友{s1}	l
-Announcement combat justice-intrigue-actor [justice-intrigue-actor]: fellow believer {s}	教友{s1}	l
+Announcement combat justice-intrigue-actor [justice-intrigue-actor]: comrade-in-arms {s}	战友（{s1}）	l
+Announcement combat justice-intrigue-actor [justice-intrigue-actor]: fellow believer {s}	教友（{s1}）	l
 Announcement combat memorial-clause [$memorial-preference]: The color {s} made her happy	{s1}令她快乐	l
 Announcement combat memorial-clause [$memorial-preference]: The color {s} made him happy	{s1}令他快乐	l
 Announcement combat memorial-death [memorial-weapon-death,memorial-weapon]: {s} with {s}	{s1}，凶器为{s2}	l
@@ -13186,8 +13186,8 @@ Announcement combat justice-interrogation-relationship-factor []: trust of inter
 Announcement combat justice-interrogation-response []: had a trusting nature and agreed	天性轻信，因而答应了	l
 Announcement combat justice-interrogation-sentence [$unit]: Subject's true name is {s}.	受审者的真名是{s1}。	l
 Announcement combat justice-intrigue-actor [justice-intrigue-actor,$unit]: {s}, as {s},	{s1}以{s2}的身份	l
-Announcement combat justice-intrigue-actor [justice-intrigue-actor]: fellow athlete {s}	运动员同侪{s1}	l
-Announcement combat justice-intrigue-actor [justice-intrigue-actor]: fellow scholar {s}	学者同侪{s1}	l
+Announcement combat justice-intrigue-actor [justice-intrigue-actor]: fellow athlete {s}	运动员同侪（{s1}）	l
+Announcement combat justice-intrigue-actor [justice-intrigue-actor]: fellow scholar {s}	学者同侪（{s1}）	l
 Announcement combat memorial-clause [$memorial-preference]: The color {s} made it happy	{s1}令它快乐	l
 Announcement combat memory-sentence [memory-person]: I am forming a grudge against {s}.	我开始记恨{s1}了。	l
 Announcement combat negotiation-opening []: feel out intentions and argue with subtlety	试探对方的意图，委婉地展开争辩	l
@@ -13435,7 +13435,7 @@ Announcement combat adventure-announcement []: I'm giving up on this hopeless ve
 Announcement combat adventure-announcement []: Persevere though it may be for nothing.	即使可能徒劳，也要坚持。	l
 Announcement combat adventure-announcement []: You tangle together and tumble forward!	你们纠缠在一起，向前翻滚！	l
 Announcement combat agreement-core [$historical-actor]: joined with to help rescue {s}	与同行，协助营救{s1}	l
-Announcement combat agreement-core []: began accepting bribes in exchange for leniency	开始收受贿赂以换取宽大处理	l
+Announcement combat agreement-core []: began accepting bribes in exchange for leniency	开始收受贿赂、徇私宽纵	l
 Announcement combat agreement-core [agreement-party-list]: agreed to a parley with {s}	同意与{s1}谈判	l
 Announcement combat agreement-core [agreement-party-list]: agreed to establish for {s}	同意为{s1}建造……	l
 Announcement combat agreement-core [agreement-party-list]: {s} agreed to a parley with	{s1}同意与谈判	l
@@ -13469,7 +13469,7 @@ Announcement combat justice-interrogation-relationship-factor []: love of interr
 Announcement combat justice-interrogation-response []: agreed for love of interrogator	出于对审讯者的爱而答应了	l
 Announcement combat justice-interrogation-response []: trusted interrogator and agreed	信任审讯者，因而答应了	l
 Announcement combat justice-interrogation-response []: was naturally inclined to speak	天性健谈	l
-Announcement combat justice-intrigue-actor [justice-intrigue-actor]: fellow artist {s}	艺术家同侪{s1}	l
+Announcement combat justice-intrigue-actor [justice-intrigue-actor]: fellow artist {s}	艺术家同侪（{s1}）	l
 Announcement combat justice-intrigue-method [$office,$name]: pulled rank as {s} of {s}	以担任{s2}{s1}的权势压人	l
 Announcement combat justice-intrigue-response []: spurned the law and agreed willingly	不把法律放在眼里，欣然答应了	l
 Announcement combat memorial-clause [$creature,$memorial-actor]: Slayer of the {s} {s}	斩杀{s1}·{s2}者	l
@@ -14467,8 +14467,8 @@ Announcement combat journal-event-title [journal-event-place]: The overthrow in 
 Announcement combat journal-transfer-core [journal-event-object]: possession of {s}	持有{s1}	l
 Announcement combat justice-interrogation-factor []: a lack of desire for vengeance	没有复仇的欲望	l
 Announcement combat justice-interrogation-response []: was too afraid not to comply	过于恐惧，不敢不从	l
-Announcement combat justice-intrigue-actor [justice-intrigue-actor]: apprentice {s}	学徒{s1}	l
-Announcement combat justice-intrigue-actor [justice-intrigue-actor]: troupemate {s}	剧团同伴{s1}	l
+Announcement combat justice-intrigue-actor [justice-intrigue-actor]: apprentice {s}	学徒（{s1}）	l
+Announcement combat justice-intrigue-actor [justice-intrigue-actor]: troupemate {s}	剧团同伴（{s1}）	l
 Announcement combat justice-intrigue-response [justice-interrogation-response]: {s}	{s1}	l
 Announcement combat memory-performance-core [memory-story]: I told the story of {s}	我讲了{s1}的故事	l
 Announcement combat memory-reunion-core [memory-person]: You were reunited with {s}	你跟{s1}重逢了	l
@@ -14788,9 +14788,9 @@ Announcement combat justice-interrogation-factor []: being willing to accept dea
 Announcement combat justice-interrogation-factor []: spurning the value of harmony	轻视和谐的价值	l
 Announcement combat justice-interrogation-factor []: spurning the value of honesty	轻视诚实的价值	l
 Announcement combat justice-interrogation-response []: felt no avarice and refused	毫无贪欲，因而拒绝了	l
-Announcement combat justice-intrigue-actor [justice-intrigue-actor]: companion {s}	伙伴{s1}	l
-Announcement combat justice-intrigue-actor [justice-intrigue-actor]: ex-spouse {s}	前配偶{s1}	l
-Announcement combat justice-intrigue-actor [justice-intrigue-actor]: guildmate {s}	行会同伴{s1}	l
+Announcement combat justice-intrigue-actor [justice-intrigue-actor]: companion {s}	伙伴（{s1}）	l
+Announcement combat justice-intrigue-actor [justice-intrigue-actor]: ex-spouse {s}	前配偶（{s1}）	l
+Announcement combat justice-intrigue-actor [justice-intrigue-actor]: guildmate {s}	行会同伴（{s1}）	l
 Announcement combat justice-intrigue-recruitment [justice-intrigue-predicate]: {s}	{s1}	l
 Announcement combat justice-plot-core [$name,$name]: Start War between {s} and {s}	挑起{s1}与{s2}之间的战争	l
 Announcement combat memorial-clauses [memorial-clause,memorial-clauses]: {s} / {s}	{s1}／{s2}	l
@@ -15169,7 +15169,7 @@ Announcement combat justice-interrogation-factor []: being unafraid in the momen
 Announcement combat justice-interrogation-response []: acquiesced to the argument	接受了这番论证	l
 Announcement combat justice-interrogation-response []: was not afraid and refused	毫不畏惧，因而拒绝了	l
 Announcement combat justice-interrogation-response []: was unafraid in the moment	当时毫不畏惧	l
-Announcement combat justice-intrigue-actor [justice-intrigue-actor]: neighbor {s}	邻居{s1}	l
+Announcement combat justice-intrigue-actor [justice-intrigue-actor]: neighbor {s}	邻居（{s1}）	l
 Announcement combat justice-intrigue-response []: accepted in admiration of power	因崇拜权力而接受了	l
 Announcement combat justice-intrigue-revenge-target [justice-intrigue-actor]: {s}	{s1}	l
 Announcement combat memorial-clause [memorial-death,$digits]: {s} in the year {s}	于{s2}年{s1}	l
@@ -15875,10 +15875,10 @@ Announcement combat journal-incident-event [journal-event-actor]: attack on {s}	
 Announcement combat journal-person-event [journal-event-place]: presence in {s}	在{s1}的出现	l
 Announcement combat justice-interrogation-factor []: being inclined to converse	天性健谈	l
 Announcement combat justice-interrogation-response []: gave in to fear of death	因惧怕死亡而屈服	l
-Announcement combat justice-intrigue-actor [justice-intrigue-actor]: father {s}	父亲{s1}	l
-Announcement combat justice-intrigue-actor [justice-intrigue-actor]: master {s}	师父{s1}	l
-Announcement combat justice-intrigue-actor [justice-intrigue-actor]: mother {s}	母亲{s1}	l
-Announcement combat justice-intrigue-actor [justice-intrigue-actor]: spouse {s}	配偶{s1}	l
+Announcement combat justice-intrigue-actor [justice-intrigue-actor]: father {s}	父亲（{s1}）	l
+Announcement combat justice-intrigue-actor [justice-intrigue-actor]: master {s}	师父（{s1}）	l
+Announcement combat justice-intrigue-actor [justice-intrigue-actor]: mother {s}	母亲（{s1}）	l
+Announcement combat justice-intrigue-actor [justice-intrigue-actor]: spouse {s}	配偶（{s1}）	l
 Announcement combat justice-intrigue-factor [justice-interrogation-factor]: {s}	{s1}	l
 Announcement combat justice-intrigue-paragraph [justice-intrigue-sentence]: {s}	{s1}	l
 Announcement combat memory-sentence [$name]: I have performed the rites of {s}.	参加了{s1}的仪式。	l
@@ -16222,7 +16222,7 @@ Announcement combat historical-event-title [agreement-title,$date]: {s} in {s}	{
 Announcement combat injury [injury-subject,injury-condition]: {s} has been {s}	{s1}遭到{s2}	l
 Announcement combat injury [injury-subject]: {s} has been opened by the attack	{s1}被攻击撕开了	l
 Announcement combat journal-event-title [journal-person-event]: Somebody's {s}	某人{s1}	l
-Announcement combat justice-intrigue-actor [justice-intrigue-actor]: lover {s}	爱人{s1}	l
+Announcement combat justice-intrigue-actor [justice-intrigue-actor]: lover {s}	爱人（{s1}）	l
 Announcement combat memorial-clause [$office,$name,$digits]: {s} of {s} in {s}	{s3}年担任{s2}的{s1}	l
 Announcement combat memory-possession-core [agreement-item]: {s} was destroyed	{s1}被毁掉了	l
 Announcement combat memory-sentence []: Somebody refused to name themself to .	有人不肯向名称未记载的一方透露自己的名字。	l
@@ -21516,7 +21516,6 @@ Announcement combat journal-incident-event []: escalated attack on	对某人加�
 Announcement combat journal-person [$digits]: Died in the year {s}	卒于第{s1}年	l
 Announcement combat justice-interrogation-crime []: blood-drinking	吸血	l
 Announcement combat justice-interrogation-crime []: the kidnapping	绑架	l
-Announcement combat justice-interrogation-unit [$description]: {s}	{s1}	l
 Announcement combat justice-intrigue-factor []: disdaining the law	蔑视法律	l
 Announcement combat justice-intrigue-sentence []: The plan failed.	计划失败了。	l
 Announcement combat justice-intrigue-sentence []: The plan worked.	计划成功了。	l
@@ -29657,7 +29656,7 @@ Announcement combat diplomacy-cause []: an act of theft	一次盗窃	l
 Announcement combat embark-outpost-label []: A Outpost:	一座前哨：	l
 Announcement combat journal-entity-event []: foundation	的建城行动	l
 Announcement combat journal-entity-event []: harassment	的骚扰	l
-Announcement combat justice-intrigue-actor [$unit]: {s}	{s1}	l
+Announcement combat justice-intrigue-actor [$historical-actor]: {s}	{s1}	l
 Announcement combat justice-intrigue-place [$name]: {s}	{s1}	l
 Announcement combat memorial-clause [$digits]: Born {s}	生于{s1}年	l
 Announcement combat memorial-clause [$digits]: Died {s}	卒于{s1}年	l
@@ -30694,6 +30693,9 @@ Announcement combat journal-event-actor []: A creature	不明生物	l
 Announcement combat journal-event-title []: Your death	你的死亡	l
 Announcement combat journal-person-event []: ascension	的就任	l
 Announcement combat justice-intrigue-actor []: subject	受审者	l
+Announcement combat justice-intrigue-actor []: an unidentified creature	身份不明的生物	l
+Announcement combat agreement-party []: subject	受审者	l
+Announcement combat agreement-party []: an unidentified creature	身份不明的生物	l
 Announcement combat memorial-death []: Burned to death	被烧死	l
 Announcement combat memorial-death []: Died peacefully	安详离世	l
 Announcement combat memorial-killer-verb []: Crucified	钉死在十字架上	l
@@ -50037,7 +50039,7 @@ a work was authored by {n} in {p} at {p}.	在{p2}，{n1}在{p1}撰写了一部�
 a work was authored by {n} in {p} in {p}.	在{p2}，{n1}在{p1}撰写了一部作品。	ht
 accepted out of loyalty to {a} during {e}	在{e1}期间忠于{a1}，因此答应了	ht
 accepted out of loyalty to {a} within {p}	在{p1}忠于{a1}，因此答应了	ht
-accepting bribes in exchange for leniency	收受贿赂以换取从轻处置	wi
+accepting bribes in exchange for leniency	收受贿赂、徇私宽纵	wi
 added a masterful handle to a {i} at {p}.	在{p1}为{i1}添加了杰作级的把手。	ht
 added a masterful handle to a {i} in {p}.	在{p1}为{i1}添加了杰作级的把手。	ht
 added masterful bands to a {i} during {e}	在{e1}期间为{i1}添加了杰作级的镶条	ht
@@ -82213,7 +82215,7 @@ Age of {s} and {s} in {p}.	在{p1}，{s1}与{s2}的时代。	htEi
 Agree to cease hostilities	同意停止敌对行动	hP
 Agree to drop the argument	同意停止争论	hP
 Analytical Ability (minor)	分析能力（次要）	wi
-Announcement unit: subject	审讯对象	l
+Announcement unit: subject	受审者	l
 Arena: Conflict state down	竞技场：降低冲突状态	w
 Argue nuances of eloquence	争辩口才的复杂之处	hP
 Argue nuances of hard work	争辩勤勉的复杂之处	hP
