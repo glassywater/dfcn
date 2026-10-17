@@ -282,7 +282,7 @@ std::vector<SDL_Rect> Overlay::append_adventure_crafting_matches(
     };
     std::vector<FieldRow> fields;
     for (bool top : {false, true}) {
-        const auto draws = captured_native_drawn_text_rows(top);
+        const auto draws = captured_native_drawn_text_view(top);
         for (const auto &draw : draws) {
             const auto role = draw.adventure_crafting_role;
             // Present advances the capture epoch without requiring another

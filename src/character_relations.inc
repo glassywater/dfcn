@@ -137,8 +137,8 @@ void Overlay::append_character_relation_rows(std::vector<std::string> &rows,
     // on the lower edge establishes the record even when no identity exists.
     // Keep source spans separate from the inset one- or two-line display.
     const auto captures = captured_clipped_captions();
-    const std::array<std::vector<NativeDrawnTextRow>, 2> identity_draws{
-        captured_native_drawn_text_rows(true), captured_native_drawn_text_rows(false)};
+    const std::array<NativeDrawnTextView, 2> identity_draws{
+        captured_native_drawn_text_view(true), captured_native_drawn_text_view(false)};
     for (int y = tabs_y + 1; y + 1 < gps_->dimy; ++y) {
         const auto identities = split_text_fields(context[y]);
         for (const auto &detail : split_text_fields(context[y + 1])) {

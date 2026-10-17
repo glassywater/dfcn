@@ -2,8 +2,8 @@
 // actual addst callers prove the roles; words and button fill do not.
 void Overlay::append_fortress_noble_symbol_rows(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y) const {
-    const std::array planes{captured_native_drawn_text_rows(false),
-        captured_native_drawn_text_rows(true)};
+    const std::array planes{captured_native_drawn_text_view(false),
+        captured_native_drawn_text_view(true)};
     for (const auto &draws : planes) {
         const auto current = [&](const NativeDrawnTextRow &draw) {
             if (draw.source.empty() || draw.x < 0 || draw.x >= gps_->dimx ||

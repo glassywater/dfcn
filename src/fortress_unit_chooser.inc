@@ -43,8 +43,8 @@ static std::optional<FortressUnitChooser> fortress_appointment_chooser(
         const uintptr_t name_writer = native_reference_address(base, 0x426807);
         const uintptr_t skill_writer = native_reference_address(base, 0x426a12);
         const uintptr_t empty_skill_writer = native_reference_address(base, 0x426adf);
-        const std::array batches{captured_native_drawn_text_rows(false),
-            captured_native_drawn_text_rows(true)};
+        const std::array batches{captured_native_drawn_text_view(false),
+            captured_native_drawn_text_view(true)};
         for (const auto &batch : batches) {
             native_appointment = std::any_of(batch.begin(), batch.end(),
                 [&](const NativeDrawnTextRow &draw) {
@@ -139,7 +139,7 @@ static std::optional<FortressUnitChooser> fortress_trainer_chooser(
             // border. The actual prompt writer's clip owns the visible page;
             // every candidate still requires its complete portrait strip.
             for (bool top_layer : {false, true}) {
-                for (const auto &draw : captured_native_drawn_text_rows(top_layer)) {
+                for (const auto &draw : captured_native_drawn_text_view(top_layer)) {
                     if (draw.x != static_cast<int>(at) || draw.y != y ||
                             !draw.source.starts_with(prompt) || !draw.draw_clip) continue;
                     const auto &clip = *draw.draw_clip;

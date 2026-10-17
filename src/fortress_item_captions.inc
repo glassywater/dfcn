@@ -426,8 +426,8 @@ std::optional<std::string> Overlay::translate_info_panel_title(
 // complete fields before location, stockpile and item-row readers see them.
 void Overlay::append_native_info_panel_titles(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y) const {
-    const auto drawn = captured_native_drawn_text_rows();
-    const auto top_drawn = captured_native_drawn_text_rows(true);
+    const auto drawn = captured_native_drawn_text_view();
+    const auto top_drawn = captured_native_drawn_text_view(true);
     // These fields are proven by their actual native draw callers, including
     // headings without Weight or an item-action strip. Match every displayed
     // byte and the current layer; a retained draw cannot own a newer popup.
@@ -515,8 +515,8 @@ void Overlay::append_native_info_panel_titles(std::vector<std::string> &rows,
 void Overlay::append_fortress_item_captions(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y) const {
     if (!native_item_anchors_in(*gps_, {0, 0, gps_->dimx, gps_->dimy})) return;
-    const auto drawn = captured_native_drawn_text_rows();
-    const auto top_drawn = captured_native_drawn_text_rows(true);
+    const auto drawn = captured_native_drawn_text_view();
+    const auto top_drawn = captured_native_drawn_text_view(true);
     const auto captures = captured_clipped_captions();
     const NativePanelBorders borders(*gps_);
     const auto settings = native_ui_settings();

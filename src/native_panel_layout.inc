@@ -2843,7 +2843,7 @@ static std::optional<CharacterSummaryGrid> find_character_summary_grid(
         return border_at(x, y, horizontal) || border_at(x, y, crossing) ||
             border_at(x, y, footer);
     };
-    std::array<std::optional<std::vector<NativeDrawnTextRow>>, 2> drawn_rows;
+    std::array<std::optional<NativeDrawnTextView>, 2> drawn_rows;
     const auto text_overwrites_space = [&](int left, int divider, int y) {
         // addst also erases tiles for spaces inside a long skill caption.
         // The blank is evidence only when its current draw still agrees
@@ -2852,7 +2852,7 @@ static std::optional<CharacterSummaryGrid> find_character_summary_grid(
         for (size_t layer = 0; layer < drawn_rows.size(); ++layer) {
             const bool top = layer != 0;
             if (!native_item_row_layer_at(gps, divider, y, top)) continue;
-            if (!drawn_rows[layer]) drawn_rows[layer] = captured_native_drawn_text_rows(top);
+            if (!drawn_rows[layer]) drawn_rows[layer] = captured_native_drawn_text_view(top);
             const auto *screen = top ? gps.screen_top : gps.screen;
             const auto *flags = top ? gps.screentexpos_top_flag : gps.screentexpos_flag;
             if (!screen) continue;

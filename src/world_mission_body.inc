@@ -4,8 +4,8 @@
     {
         const auto paragraphs = native_mission_report_paragraphs();
         if (!paragraphs.empty()) {
-            const std::array draw_layers{captured_native_drawn_text_rows(false),
-                captured_native_drawn_text_rows(true)};
+            const std::array draw_layers{captured_native_drawn_text_view(false),
+                captured_native_drawn_text_view(true)};
             std::unordered_multimap<uintptr_t, const NativeDrawnTextRow *> by_address;
             for (const auto &draws : draw_layers)
                 for (const auto &draw : draws)

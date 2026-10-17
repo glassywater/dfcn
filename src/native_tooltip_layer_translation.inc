@@ -86,7 +86,7 @@ void Overlay::render_native_tooltip_layer(SDL_Renderer *renderer) {
         append_toolbar_tooltip_matches(rows, prepared_matches_, -1, false);
         layout_toolbar_tooltip(renderer);
         for (bool top_layer : {false, true})
-            for (const auto &draw : captured_native_drawn_text_rows(top_layer)) {
+            for (const auto &draw : captured_native_drawn_text_view(top_layer)) {
                 if (!draw.unit_identity_target || draw.unit_identity_ready ||
                         draw.squad_alias_target || draw.editable_text || draw.source.empty() ||
                         draw.draw_grid != (top_layer ? gps_->screen_top : gps_->screen) ||

@@ -5,7 +5,7 @@
 std::vector<Match> Overlay::find_native_stocks_matches() const {
     std::vector<Match> result;
     if (!gps_ || !gps_->screen || !g_native_stocks_layer.ready) return result;
-    const std::array draws{captured_native_drawn_text_rows(), captured_native_drawn_text_rows(true)};
+    const std::array draws{captured_native_drawn_text_view(), captured_native_drawn_text_view(true)};
     std::map<int, std::vector<bool>> occupied;
     const auto settings = native_ui_settings();
     const bool classic = settings && settings->classic;

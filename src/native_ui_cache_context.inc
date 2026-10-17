@@ -1,0 +1,594 @@
+// A grid's bytes do not identify its meaning: authored names, formatter
+// ownership and complete clipped paragraphs can change independently. Keep
+// those inputs in an exact key; native draw counters are deliberately absent.
+// Call layer_context before installing that layer's captured-text scope.
+class NativeUiCacheContextWriter {
+    std::string key_;
+    const graphicst *graphics_ = nullptr;
+    std::vector<uint64_t> row_sequence_ranks_;
+    std::vector<uint64_t> paragraph_sequence_ranks_, paragraph_order_ranks_;
+    static void order_ranks(std::vector<uint64_t> &values) {
+        std::sort(values.begin(), values.end());
+        values.erase(std::unique(values.begin(), values.end()), values.end());
+    }
+    static size_t rank(const std::vector<uint64_t> &values, uint64_t value) {
+        return static_cast<size_t>(std::lower_bound(values.begin(), values.end(), value) - values.begin());
+    }
+    static std::optional<bool> active_mod_screen(uintptr_t screen) {
+        const native_history_layout::ModScreenFields *fields = nullptr;
+        if (native_history_object_is(screen, "viewscreen_titlest"))
+            fields = &native_history_layout::mod_title_fields;
+        else if (native_history_object_is(screen, "viewscreen_new_regionst"))
+            fields = &native_history_layout::mod_newregion_fields;
+        else if (native_history_object_is(screen, "viewscreen_new_arenast"))
+            fields = &native_history_layout::mod_newarena_fields;
+        if (!fields) return false;
+        uint8_t active = 0;
+        if (!native_history_copy(native_mod_field_address(screen, fields->active), active))
+            return std::nullopt;
+        return active == 1;
+    }
+    bool fps_counter_row(const NativeDrawnTextRow &input) const {
+        if (!graphics_ || graphics_->dimx <= 0 || graphics_->dimx > 1000 ||
+                graphics_->dimy <= 0 || graphics_->dimy > 1000 ||
+                input.draw_dimx != graphics_->dimx || input.draw_dimy != graphics_->dimy ||
+                !input.draw_grid ||
+                (input.draw_grid != graphics_->screen && input.draw_grid != graphics_->screen_top) ||
+                input.y < std::max(0, graphics_->dimy - 2) || input.y >= graphics_->dimy ||
+                input.x < 0 || input.x >= graphics_->dimx ||
+                input.source.size() > static_cast<size_t>(graphics_->dimx - input.x) ||
+                (!input.complete_source.empty() && input.complete_source != input.source))
+            return false;
+        const auto span = native_fps_counter_span(input.source);
+        if (!span || span->first != 0 || span->second != input.source.size()) return false;
+        for (size_t offset = 0; offset < input.source.size(); ++offset) {
+            const size_t tile = (static_cast<size_t>(input.x) + offset) * graphics_->dimy + input.y;
+            if (input.draw_grid[tile * 8] != static_cast<unsigned char>(input.source[offset]))
+                return false;
+        }
+        return true;
+    }
+public:
+    NativeUiCacheContextWriter() { key_.reserve(4096); }
+    bool complete = true;
+    void graphics(const graphicst *input) { graphics_ = input; }
+    template<typename T> void value(T input) {
+        if (!complete) return;
+        if (key_.size() > 1024 * 1024 - 8) { complete = false; return; }
+        const uint64_t bits = static_cast<uint64_t>(input);
+        // Keys live only in this process. One fixed-width append preserves
+        // exact equality without eight string capacity checks per scalar.
+        key_.append(reinterpret_cast<const char *>(&bits), sizeof(bits));
+    }
+    template<typename T> void pointer(const T *input) {
+        value(reinterpret_cast<uintptr_t>(input));
+    }
+    void text(std::string_view input) {
+        if (!complete) return;
+        if (key_.size() > 1024 * 1024 - 8 ||
+                input.size() > 1024 * 1024 - 8 - key_.size()) {
+            complete = false; return;
+        }
+        value(input.size());
+        key_.append(input);
+    }
+    void rect(const SDL_Rect &input) {
+        value(input.x); value(input.y); value(input.w); value(input.h);
+    }
+    template<typename T, typename F> void optional(const T &input, F append) {
+        value(bool(input));
+        if (input) append(*input);
+    }
+    template<typename T, typename F> void range(const T &input, F append) {
+        value(input.size());
+        for (const auto &item : input) {
+            if (!complete) break;
+            append(item);
+        }
+    }
+    void grid(const unsigned char *input) {
+        if (!input) { value(0); return; }
+        if (!graphics_) { complete = false; return; }
+        if (input == graphics_->screen) value(1);
+        else if (input == graphics_->screen_top) value(2);
+        else complete = false;
+    }
+    void name(const NativeHistoryName &input) {
+        text(input.first_name); text(input.nickname);
+        for (const auto &word : input.words) {
+            text(word.id); value(word.part_of_speech); value(word.has_form);
+            text(word.english_form);
+        }
+        value(input.language); value(input.nickname_mode); value(input.type);
+        value(input.has_name); value(input.entity_type); value(input.entity_id);
+        value(input.entity_name_current); text(input.parent_word_id);
+        value(input.parent_word_pos); value(input.site_id); value(input.site_type);
+        value(input.site_subtype); text(input.site_label); text(input.native_name);
+    }
+    void widget(const NativeTooltipWidgetFrame &input, uint64_t epoch) {
+        // Snapshot composition reads another full grid with its own origins.
+        // It is intentionally left on the ordinary path until that dependency
+        // can be compared alongside the layer's input grid.
+        if (input.page || input.document) { complete = false; return; }
+        rect(input.bounds); value(input.dimx); value(input.dimy);
+        value(input.epoch == epoch); value(input.top_layer); value(input.isolated);
+        grid(input.grid_identity); text(input.body_source);
+        range(input.rows, [&](const auto &row) { text(row); });
+        range(input.occlusions, [&](const auto &box) { rect(box); });
+    }
+    void toolbar(const NativeToolbarTooltip &input) {
+        value(input.left); value(input.top); value(input.right); value(input.bottom);
+        value(input.text_x); value(input.text_y); value(input.text_right);
+        value(input.body_x); value(input.keys_y);
+        range(input.key_rows, [&](int row) { value(row); });
+        value(input.native_frame); value(input.whole_frame); value(input.widget_frame);
+        value(input.widget_top_layer); text(input.source);
+        range(input.rows, [&](const auto &row) { text(row); });
+        range(input.occlusions, [&](const auto &box) { rect(box); });
+        range(input.deity_fields, [&](const auto &field) {
+            text(field.target); value(field.pixel_y);
+        });
+    }
+    bool row_cacheable(const NativeDrawnTextRow &input) const {
+        return !input.trade_item_caption && !input.reclaim_history &&
+            !input.world_site_entity_fact && !input.justice_organization &&
+            !input.justice_plot && !input.fortress_zone_caption &&
+            (!input.unit_identity_pending || !input.unit_identity_pending->deferred_snapshot) &&
+            (!input.draw_grid || (graphics_ &&
+                (input.draw_grid == graphics_->screen || input.draw_grid == graphics_->screen_top)));
+    }
+    void row(const NativeDrawnTextRow &input, uint64_t epoch) {
+        // These records contain further typed object graphs, not just a
+        // visible spelling. A normal redraw is safer than an incomplete key.
+        if (input.trade_item_caption ||
+                input.reclaim_history || input.world_site_entity_fact ||
+                input.justice_organization || input.justice_plot ||
+                input.fortress_zone_caption) {
+            complete = false; return;
+        }
+        // The native footer counter remains on the game's renderer. Ignore
+        // only a complete, byte-proven counter in its actual bottom-row grid;
+        // adjacent footer text and split/partially clipped strings stay exact.
+        const bool fps = fps_counter_row(input);
+        constexpr std::string_view fps_marker = "native FPS counter";
+        value(input.x); value(input.y); value(fps);
+        text(fps ? fps_marker : std::string_view(input.source)); value(input.address);
+        value(input.caption_source);
+        text(fps && !input.complete_source.empty()
+            ? fps_marker : std::string_view(input.complete_source));
+        optional(input.performance_choice, [&](const auto &choice) {
+            value(choice.type); value(choice.id); value(choice.unnamed);
+            text(choice.source); text(choice.species);
+        });
+        optional(input.picture_frame, [&](const auto &frame) {
+            rect(frame.text); rect(frame.proof); value(frame.dimx); value(frame.dimy);
+            value(frame.classic);
+            range(frame.lower, [&](auto item) { value(item); });
+            range(frame.cells, [&](const auto &cell) {
+                for (auto item : cell) value(item);
+            });
+            range(frame.anchors, [&](auto item) { value(item); });
+        });
+        optional(input.unit_identity_target, [&](const auto &target) { text(target); });
+        value(input.unit_identity_owner); value(input.unit_identity_english);
+        value(input.unit_identity_header); value(input.unit_identity_ready);
+        text(input.unit_identity_semantic_key);
+        optional(input.unit_identity_pending, [&](const auto &pending) {
+            if (pending.deferred_snapshot) { complete = false; return; }
+            text(pending.source); text(pending.target); value(pending.unit_owner);
+            value(pending.english_name); value(pending.character_header);
+            value(pending.ready); text(pending.semantic_key); value(pending.catalog);
+            text(pending.semantic_source);
+            value(pending.publication_epoch == epoch);
+            // pending_witness is only the async job's scheduling identity.
+        });
+        // Keep authored and generated names as different productions even
+        // when their visible English bytes happen to be identical.
+        optional(input.squad_alias_target, [&](const auto &target) { text(target); });
+        optional(input.squad_generated_name, [&](const auto &generated) { name(generated); });
+        value(input.info_title_kind); value(input.info_title_authored);
+        value(input.info_title_right); value(input.civilization_field);
+        optional(input.caravan_entity_name, [&](const auto &entity) { name(entity); });
+        value(input.location_picker_field);
+        optional(input.location_picker_box, [&](const auto &box) { rect(box); });
+        optional(input.fortress_labor_caption, [&](const auto &caption) {
+            value(caption.kind); value(caption.owner); value(caption.authored);
+            rect(caption.box); text(caption.source);
+        });
+        value(input.mission_title); value(input.mission_title_right);
+        value(rank(row_sequence_ranks_, input.sequence));
+        value(input.top_layer); value(input.foreground_rgb);
+        optional(input.draw_clip, [&](const auto &box) { rect(box); });
+        grid(input.draw_grid); value(input.draw_dimx); value(input.draw_dimy);
+        value(input.draw_epoch == epoch);
+        value(input.map_hover.kind); value(input.map_hover.fragment);
+        for (auto item : input.map_hover.data) value(item);
+        value(input.editable_text); value(input.travel_building_field);
+        optional(input.site_name, [&](const auto &site) { name(site); });
+        value(input.native_caller); value(input.adventure_crafting_role);
+        value(input.adventure_inventory_role); value(input.adventure_barter_field);
+        optional(input.work_order_shop_caption, [&](const auto &caption) {
+            value(caption.kind); value(caption.right); value(caption.authored);
+            text(caption.complete_source);
+        });
+        // Vector traversal preserves relative native draw order. Absolute
+        // sequence/epoch numbers are scheduling, not semantic content.
+    }
+    void chooser(const NativeUnitChooserRecord &input) {
+        rect(input.box); rect(input.viewport); rect(input.panel);
+        value(input.skill_x); value(input.search_y);
+        text(input.squad_name_source); text(input.squad_caption_source);
+        text(input.squad_caption_complete_source);
+        optional(input.generated_squad_name, [&](const auto &generated) { name(generated); });
+        optional(input.squad_alias, [&](const auto &alias) { text(alias); });
+        value(input.squad_position); value(input.squad_caption_x);
+        value(input.squad_caption_y); value(input.unit_identity_x);
+        value(input.unit_identity_y); text(input.unit_identity_source);
+        text(input.unit_identity_complete_source); text(input.unit_identity_split_source);
+        optional(input.unit_identity_target, [&](const auto &target) { text(target); });
+    }
+    void paragraph(const NativeParagraphCapture &input) {
+        value(input.owner); value(input.paragraph_width); text(input.source);
+        range(input.wrapped_lines, [&](const auto &line) { text(line); });
+        value(input.first_line);
+        value(rank(paragraph_sequence_ranks_, input.sequence));
+        value(rank(paragraph_order_ranks_, input.registry_order));
+        range(input.row_addresses, [&](auto address) { value(address); });
+        optional(input.display_source, [&](const auto &source) { text(source); });
+    }
+    template<typename Paragraphs> void paragraph_range(const Paragraphs &input) {
+        paragraph_sequence_ranks_.clear(); paragraph_order_ranks_.clear();
+        for (const auto &capture : input) {
+            paragraph_sequence_ranks_.push_back(capture.sequence);
+            paragraph_order_ranks_.push_back(capture.registry_order);
+        }
+        order_ranks(paragraph_sequence_ranks_); order_ranks(paragraph_order_ranks_);
+        range(input, [&](const auto &capture) { paragraph(capture); });
+    }
+    template<typename Rows, typename Dates, typename Clipped, typename Choosers,
+            typename Sources, typename Fields, typename Paragraphs>
+    void captures(const Rows &rows, const std::vector<NativeDrawnTextRow> &overwritten,
+            const Dates &dates, const std::optional<NativeTooltipWidgetFrame> &tooltip,
+            const std::optional<NativeToolbarTooltip> &tooltip_toolbar,
+            uint64_t epoch, const Clipped &clipped, bool clipped_current,
+            const Choosers &choosers, bool chooser_current, const Sources &sources,
+            const Fields &fields, const Paragraphs &paragraphs) {
+        if (!complete) return;
+        if (tooltip && (tooltip->page || tooltip->document)) { complete = false; return; }
+        row_sequence_ranks_.clear();
+        const auto inspect_rows = [&](const std::vector<NativeDrawnTextRow> &plane) {
+            if (!complete) return;
+            for (const auto &draw : plane) {
+                if (!row_cacheable(draw)) { complete = false; return; }
+                row_sequence_ranks_.push_back(draw.sequence);
+            }
+        };
+        for (const auto &plane : rows) inspect_rows(plane);
+        inspect_rows(overwritten);
+        if (!complete) return;
+        order_ranks(row_sequence_ranks_);
+        for (const auto &plane : rows) row_vector(plane, epoch);
+        range(overwritten, [&](const auto &draw) { row(draw, epoch); });
+        for (const auto &plane : dates)
+            range(plane, [&](const auto &draw) {
+                value(draw.x); value(draw.y); text(draw.source); value(draw.address);
+            });
+        optional(tooltip, [&](const auto &frame) { widget(frame, epoch); });
+        optional(tooltip_toolbar, [&](const auto &frame) { toolbar(frame); });
+        value(clipped_current);
+        range(clipped, [&](const auto &caption) {
+            value(caption.x); value(caption.y); text(caption.visible); text(caption.complete);
+        });
+        value(chooser_current);
+        range(choosers, [&](const auto &record) { chooser(record); });
+        // Position maps have no intrinsic iteration order. Sort identities
+        // before serializing. Timestamp order and expiry affect selection;
+        // the absolute steady-clock counter does not.
+        std::vector<uint64_t> positions;
+        positions.reserve(sources.size());
+        for (const auto &entry : sources) positions.push_back(entry.first);
+        std::sort(positions.begin(), positions.end());
+        value(positions.size());
+        const uint64_t current = g_embark_item_capture_epoch.load(std::memory_order_acquire);
+        std::vector<std::chrono::steady_clock::time_point> time_order;
+        time_order.reserve(sources.size() + fields.size());
+        for (const auto &entry : sources) time_order.push_back(entry.second.captured_at);
+        for (const auto &capture : fields) time_order.push_back(capture.captured_at);
+        std::sort(time_order.begin(), time_order.end());
+        time_order.erase(std::unique(time_order.begin(), time_order.end()), time_order.end());
+        const auto deadline = std::chrono::steady_clock::now() - std::chrono::seconds(2);
+        const auto item = [&](const auto &capture) {
+            value(capture.screen_x); value(capture.screen_y);
+            text(capture.visible); text(capture.complete);
+            value(capture.capture_epoch == current);
+            value(capture.captured_at >= deadline);
+            value(static_cast<size_t>(std::lower_bound(time_order.begin(), time_order.end(),
+                capture.captured_at) - time_order.begin()));
+        };
+        for (auto position : positions) { value(position); item(sources.at(position)); }
+        range(fields, item);
+        paragraph_range(paragraphs);
+    }
+    void bundle(const NativeInfoCapturedText &input) {
+        // A retained component renews these two registries when its capture
+        // scope is installed; nonzero validity is what its readers observe.
+        captures(input.rows, input.overwritten, input.dates, input.tooltip_widget,
+            input.toolbar_tooltip, input.epoch, input.clipped, input.clipped_epoch != 0,
+            input.choosers, input.chooser_epoch != 0, input.item_sources,
+            input.item_fields, input.paragraphs);
+    }
+    void current() {
+        std::scoped_lock lock(g_native_drawn_text_mutex, g_clipped_caption_mutex,
+            g_native_unit_chooser_record_mutex, g_embark_item_source_mutex,
+            g_native_paragraph_mutex);
+        // A saved background has another full origin-bearing grid. Detect
+        // that unsupported dependency before allocating and serializing rows.
+        if (g_native_help_page && g_native_help_page_epoch == g_native_drawn_text_epoch) {
+            complete = false; return;
+        }
+        // Reference wrappers preserve capture order without duplicating all
+        // owned strings just to compute this key.
+        const std::array<std::reference_wrapper<const std::vector<NativeDrawnTextRow>>, 2>
+            rows{{std::cref(g_native_drawn_text_rows), std::cref(g_native_drawn_top_text_rows)}};
+        const uint64_t epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
+        value(g_native_drawn_text_epoch == epoch);
+        captures(rows, g_native_overwritten_text_rows, g_native_date_occluded_text_rows,
+            g_native_tooltip_widget_frame, g_native_toolbar_tooltip, g_native_drawn_text_epoch,
+            g_clipped_captions, g_clipped_caption_epoch == epoch,
+            g_native_unit_chooser_records, g_native_unit_chooser_record_epoch == epoch,
+            g_embark_item_sources_by_position, g_embark_item_fields_this_frame,
+            g_native_paragraph_captures);
+        // Recovering a saved background entails comparing another complete
+        // page and its origin map, which the foreground grid comparator does
+        // not own. Continue through the existing renderer for that case.
+    }
+    void row_vector(const std::vector<NativeDrawnTextRow> &rows, uint64_t epoch) {
+        range(rows, [&](const auto &draw) { row(draw, epoch); });
+    }
+    void layer(const NativeUiLayerStorage &input) {
+        value(input.ready);
+        if (!input.ready) return;
+        pointer(input.native_renderer); pointer(input.renderer);
+        range(input.frames, [&](const auto &box) { rect(box); });
+        range(input.collapsed_titles, [&](const auto &title) {
+            rect(title.box); value(title.source_x); text(title.source);
+        });
+        range(input.index_panels, [&](const auto &panel) {
+            rect(panel.frame); value(panel.heading_y); value(panel.caption_left);
+            value(panel.caption_right); value(panel.first_caption_y); value(panel.visible_entries);
+        });
+        optional(input.index_intro, [&](const auto &box) { rect(box); });
+    }
+    bool common() {
+        value(g_native_ui_render_generation);
+        value(g_overlay.translation_enabled());
+        value(RULESETS.resource_revision()); value(native_identity_translation_context());
+        value(g_overlay.native_identity_translation_catalog_generation());
+        const uintptr_t screen = native_current_viewscreen();
+        if (!screen) return false;
+        value(screen); value(native_dfhack_layer_page_revision());
+        const auto classic = native_ui_classic();
+        if (!classic) return false;
+        value(*classic);
+        value(g_native_info_page); value(g_native_info_labor_page);
+        value(g_native_stocks_current_type); value(g_native_stocks_category_right);
+        rect(g_native_info_panel); rect(g_native_stocks_panel); rect(g_native_reports_panel);
+        rect(g_native_squads_panel); rect(g_native_notification_bounds);
+        rect(g_native_worldgen_panel);
+        value(g_native_worldgen_owner); value(g_native_worldgen_parameter_name_editing);
+        // Rich history consumers have additional native token/object graphs.
+        if (g_native_history_frame) return false;
+        // Only the selector's active bit is needed to decline its uncaptured
+        // live headers. Do not copy every mod header/description here, or
+        // resolve the same native viewscreen chain a second time.
+        const auto mod_active = active_mod_screen(screen);
+        if (!mod_active || *mod_active) return false;
+        return true;
+    }
+    void announcement_snapshot(const NativeAnnouncementSnapshot &snapshot) {
+        // The caller holds g_native_announcement_mutex. A globally unique
+        // content ID changes before every records mutation, including a
+        // rebuild or allocator address reuse. Cache bytes, not the snapshot:
+        // holding another shared_ptr would force a full copy on every append.
+        struct SerializedSnapshot {
+            uint64_t revision = 0;
+            std::optional<std::string> bytes;
+        };
+        static SerializedSnapshot cached;
+        if (snapshot.content_revision == UINT64_MAX) { complete = false; return; }
+        if (cached.revision != snapshot.content_revision) {
+            NativeUiCacheContextWriter serialized;
+            serialized.range(snapshot.records, [&](const auto &record) {
+                serialized.text(record.source); serialized.value(record.original_length);
+                serialized.value(record.order.first); serialized.value(record.order.second);
+                serialized.range(record.references, [&](const auto &reference) {
+                    serialized.value(reference.first.first); serialized.value(reference.first.second);
+                    serialized.value(reference.second);
+                });
+                serialized.range(record.lengths, [&](const auto &length) {
+                    serialized.value(length.first); serialized.value(length.second);
+                });
+            });
+            cached.bytes = serialized.finish();
+            cached.revision = snapshot.content_revision;
+        }
+        if (!cached.bytes) { complete = false; return; }
+        text(*cached.bytes);
+    }
+    void other_sources() {
+        if (!complete) return;
+        {
+            std::lock_guard<std::mutex> lock(g_native_overview_event_mutex);
+            // Reject recursive typed documents before walking other global
+            // registries: no key will be retained for this dependency graph.
+            for (const auto &source : g_native_overview_event_sources)
+                if (!source.source.empty() || source.document) { complete = false; return; }
+        }
+#ifdef _WIN32
+        {
+            std::lock_guard<std::mutex> lock(g_native_justice_actor_capture_mutex);
+            if (!g_native_justice_actor_sources.empty()) { complete = false; return; }
+        }
+#endif
+        const uint64_t epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
+        {
+            std::lock_guard<std::mutex> lock(g_origin_caption_mutex);
+            value(g_origin_caption_epoch == epoch);
+            range(g_origin_captions, [&](const auto &caption) {
+                value(caption.x); value(caption.y); text(caption.visible); text(caption.complete);
+            });
+        }
+        {
+            std::lock_guard<std::mutex> lock(g_legends_book_mutex);
+            value(g_legends_book_epoch == epoch);
+            range(g_legends_book_fields, [&](const auto &field) {
+                value(field.x); value(field.y); value(field.item_type);
+                text(field.visible); text(field.complete);
+            });
+        }
+        {
+            std::lock_guard<std::mutex> lock(g_native_character_relation_mutex);
+            range(g_native_character_relations, [&](const auto &relation) {
+                // Other pages' relations cannot influence this grid. Keeping
+                // their scalar/text data is harmless; do not retain their
+                // transient native grid pointer as a cache dependency.
+                const bool current = graphics_ && relation.screen == graphics_->screen &&
+                    relation.dimx == graphics_->dimx && relation.dimy == graphics_->dimy;
+                value(current);
+                if (current) {
+                    value(relation.x); value(relation.y); value(relation.dimx);
+                    value(relation.dimy); text(relation.source); text(relation.target);
+                }
+            });
+        }
+        {
+            std::lock_guard<std::mutex> lock(g_native_squad_alias_mutex);
+            value(g_native_squad_alias_epoch == epoch);
+            std::vector<uintptr_t> owners;
+            for (const auto &entry : g_native_squad_alias_owners) owners.push_back(entry.first);
+            std::sort(owners.begin(), owners.end());
+            value(owners.size());
+            for (auto owner : owners) {
+                const auto &binding = g_native_squad_alias_owners.at(owner);
+                value(owner); text(binding.source); text(binding.target);
+            }
+            owners.clear();
+            for (const auto &entry : g_native_squad_generated_owners) owners.push_back(entry.first);
+            std::sort(owners.begin(), owners.end());
+            value(owners.size());
+            for (auto owner : owners) {
+                const auto &binding = g_native_squad_generated_owners.at(owner);
+                value(owner); text(binding.source);
+                optional(binding.name, [&](const auto &generated) { name(generated); });
+            }
+        }
+        {
+            std::lock_guard<std::mutex> lock(g_native_map_track_caption_mutex);
+            range(g_native_map_track_captions, [&](const auto &caption) {
+                pointer(caption.owner); text(caption.shortened); text(caption.complete);
+            });
+        }
+        {
+            std::lock_guard<std::mutex> lock(g_native_workshop_requirement_mutex);
+            value(native_workshop_recipe_paragraph_width());
+            paragraph_range(g_native_workshop_requirements);
+        }
+        {
+            std::lock_guard<std::mutex> lock(g_native_announcement_mutex);
+            value(g_native_announcement_log_owner); value(g_native_announcement_log_epoch == epoch);
+            range(g_native_announcement_sources, [&](const auto &source) {
+                value(source.type); text(source.source);
+            });
+            range(g_native_speech_sources, [&](const auto &source) {
+                text(source.rendered); text(source.original);
+            });
+            optional(g_native_announcement_snapshot, [&](const auto &snapshot) {
+                announcement_snapshot(snapshot);
+            });
+        }
+    }
+    std::optional<std::string> finish() {
+        // Oversized historical registries retain the ordinary path rather
+        // than growing an unbounded cache key on the SDL thread.
+        if (!complete || key_.size() > 1024 * 1024) return std::nullopt;
+        return std::move(key_);
+    }
+};
+
+static std::optional<std::string> native_ui_layer_cache_context(
+        const NativeUiLayerStorage &layer) {
+    if (&layer == &g_native_map_layer) return std::nullopt;
+    // These already-translated Match graphs keep the ordinary path. Avoid
+    // constructing a semantic key only to reject it after all serialization.
+    if (&layer == &g_native_squads_layer &&
+            (!g_native_squads_footer_rows.empty() || !g_native_squads_footer_target.empty() ||
+             !g_native_squads_paragraphs.empty())) return std::nullopt;
+    NativeUiCacheContextWriter key;
+    if (!key.common()) return std::nullopt;
+    key.graphics(const_cast<NativeUiLayerStorage &>(layer).foreground.graphics());
+    // NativeUiLayerFrameCache compares renderer ownership, frames, collapsed
+    // titles and index panels exactly already. The semantic key needs only
+    // the layer identity here, not a second serialized copy of that metadata.
+    key.pointer(&layer);
+    const NativeInfoCapturedText *captured = nullptr;
+    if (&layer == &g_native_info_layer) captured = &g_native_info_text;
+    else if (&layer == &g_native_stocks_layer) captured = &g_native_stocks_text;
+    else if (&layer == &g_native_squads_layer) captured = &g_native_squads_text;
+    else if (&layer == &g_native_reports_layer) captured = &g_native_reports_text;
+    else if (&layer == &g_native_notification_layer) captured = &g_native_notification_text;
+    else if (&layer == &g_native_pause_layer) captured = &g_native_pause_text;
+    else if (&layer == &g_native_tooltip_layer) captured = &g_native_tooltip_text;
+    else if (&layer == &g_native_worldgen_layer) captured = &g_native_worldgen_text;
+    else if (&layer != &g_native_help_layer && &layer != &g_native_resolution_layer)
+        return std::nullopt;
+    if (captured) key.bundle(*captured);
+    else key.current();
+    if (!key.complete) return std::nullopt;
+    key.other_sources();
+    if (&layer == &g_native_tooltip_layer)
+        key.range(g_native_tooltip_frames, [&](const auto &frame) {
+            key.widget(frame, g_native_tooltip_text.epoch);
+        });
+    if (&layer == &g_native_squads_layer) {
+        // Extra producer geometry is independent of the submitted glyphs.
+        key.range(g_native_squads_member_columns, [&](const auto &box) { key.rect(box); });
+        for (auto caller : g_native_squads_footer_callers) key.value(caller);
+        key.value(g_native_squads_member_name_caller);
+        key.value(g_native_squads_member_order_caller);
+    }
+    return key.finish();
+}
+
+static std::optional<std::string> native_main_ui_cache_context() {
+    // These independently owned records can recover text absent from the
+    // current grid. Their complete rich semantic graphs have no comparator
+    // here, so they keep the existing rendering path.
+    {
+        std::lock_guard<std::mutex> lock(g_native_knowledge_mutex);
+        if (!g_native_knowledge_draws.empty() || !g_native_knowledge_previous_draws.empty())
+            return std::nullopt;
+    }
+    {
+        std::lock_guard<std::mutex> lock(g_native_overview_quote_mutex);
+        if (g_native_overview_quote_draw) return std::nullopt;
+    }
+    {
+        std::lock_guard<std::mutex> lock(g_native_embark_reclaim_history_mutex);
+        if (!g_native_embark_reclaim_history_draws.rows.empty() ||
+                !g_native_embark_reclaim_history_previous_draws.rows.empty()) return std::nullopt;
+    }
+    NativeUiCacheContextWriter key;
+    if (!key.common()) return std::nullopt;
+    key.graphics(native_graphics());
+    key.text("main"); key.current();
+    if (!key.complete) return std::nullopt;
+    key.other_sources();
+    // The base layer's character reader changes when another component
+    // covers its cells, even if every byte in the base arrays is identical.
+    key.layer(g_native_info_layer); key.layer(g_native_stocks_layer);
+    key.layer(g_native_squads_layer); key.layer(g_native_reports_layer);
+    key.layer(g_native_notification_layer); key.layer(g_native_pause_layer);
+    key.layer(g_native_tooltip_layer); key.layer(g_native_help_layer);
+    key.layer(g_native_resolution_layer); key.layer(g_native_worldgen_layer);
+    return key.finish();
+}

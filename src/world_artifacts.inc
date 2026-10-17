@@ -266,7 +266,7 @@ std::optional<NativeTextCard> Overlay::capture_world_artifact_description_card(
         return std::nullopt;
     const auto settings = native_ui_settings();
     if (!settings) return std::nullopt;
-    const auto claim_draws = captured_native_drawn_text_rows();
+    const auto claim_draws = captured_native_drawn_text_view();
     const auto &skin = native_texture_hover_rectangle(*gps_);
     const auto edge = [&](int x, int y, int column, int row) {
         return native_ui_skin_at(*gps_, x, y, skin[column][row], settings->classic);

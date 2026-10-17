@@ -161,7 +161,7 @@ void Overlay::append_character_overview_identities(
     // actual draw, not a guessed completion of that prefix. The cards still
     // own layout; each surviving physical span separately owns suppression.
     if (cards.empty()) return;
-    const auto draws = captured_native_drawn_text_rows();
+    const auto draws = captured_native_drawn_text_view();
     const auto settings = native_ui_settings();
     const bool classic = settings && settings->classic;
     const long vertical = native_texture_interior_border_n_s(*gps_);

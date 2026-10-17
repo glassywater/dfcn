@@ -44,8 +44,8 @@ void Overlay::layout_character_header(SDL_Renderer *renderer) {
         // Portraits and action buttons can interrupt the outer frame. The
         // sheet formatter and its matching unit still own the text column;
         // bind their current source bytes instead of requiring that frame.
-        const std::array draws{captured_native_drawn_text_rows(false),
-            captured_native_drawn_text_rows(true)};
+        const std::array draws{captured_native_drawn_text_view(false),
+            captured_native_drawn_text_view(true)};
         const auto clipped = captured_clipped_captions();
         for (size_t layer = 0; layer < draws.size() && first_y < 0; ++layer) {
             for (const auto &gloss : draws[layer]) {

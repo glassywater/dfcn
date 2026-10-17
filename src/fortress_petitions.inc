@@ -33,8 +33,8 @@ void Overlay::append_accepted_petition_matches(std::vector<std::string> &rows,
         }
         return std::nullopt;
     };
-    const auto drawn = captured_native_drawn_text_rows();
-    const auto top_drawn = captured_native_drawn_text_rows(true);
+    const auto drawn = captured_native_drawn_text_view();
+    const auto top_drawn = captured_native_drawn_text_view(true);
     for (const auto *layer : {&drawn, &top_drawn}) {
         for (const auto &draw : *layer) {
             if (!native_accepted_petition_field(draw.location_picker_field) ||

@@ -12,8 +12,8 @@
 #endif
         );
         const auto &belief_cache = adventure_belief_cache;
-        const auto belief_draws = belief_cache ? captured_native_drawn_text_rows()
-            : std::vector<NativeDrawnTextRow>{};
+        const auto belief_draws = belief_cache ? captured_native_drawn_text_view()
+            : NativeDrawnTextView{};
         const NativePanelBorders belief_borders(*gps_);
         std::vector<SDL_Rect> belief_panels;
         const auto belief_cache_row = [&](const NativeDrawnTextRow &draw) {

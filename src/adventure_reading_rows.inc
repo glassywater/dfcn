@@ -4,8 +4,8 @@
 // Long carrier/work bodies remain owned by their complete report parents.
     {
         const NativePanelBorders reading_borders(*gps_);
-        const std::array reading_draws{captured_native_drawn_text_rows(),
-            captured_native_drawn_text_rows(true)};
+        const std::array reading_draws{captured_native_drawn_text_view(),
+            captured_native_drawn_text_view(true)};
         for (const auto &plane : reading_draws) for (const auto &draw : plane) {
             const auto &source = draw.source;
             if (!draw.address || source.empty() || source.find_first_of("\r\n") != std::string::npos ||

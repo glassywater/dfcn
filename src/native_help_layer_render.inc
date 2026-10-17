@@ -274,11 +274,15 @@ struct NativeUiLayerSdlState {
     ~NativeUiLayerSdlState() { restore(); }
 };
 
+#include "native_ui_frame_cache.inc"
+
 struct NativeUiLayerTarget {
     SDL_Renderer *renderer = nullptr;
     SDL_Texture *texture = nullptr;
     int width = 0, height = 0;
+    NativeUiLayerFrameCache frame_cache;
     void release() {
+        frame_cache.clear();
         if (texture) SDL_DestroyTexture(texture);
         texture = nullptr; renderer = nullptr; width = height = 0;
     }
@@ -333,7 +337,9 @@ static void native_ui_paint_grid(NativeUiLayerStorage &layer, SDL_Renderer *rend
                 const size_t cell = static_cast<size_t>(x) * gps->dimy + y;
                 const size_t at = cell * 8;
                 const auto expected = static_cast<unsigned char>(source[i]);
-                for (auto &plane : layer.foreground.planes) {
+                for (size_t index = 0; index < layer.foreground.planes.size(); ++index) {
+                    if (index && !gps->top_in_use) continue;
+                    auto &plane = layer.foreground.planes[index];
                     const auto character = plane.screen[at];
                     if (character != expected && character != 0 && character != ' ') continue;
                     // Font glyphs can occupy any drawable texture slot.
@@ -350,19 +356,25 @@ static void native_ui_paint_grid(NativeUiLayerStorage &layer, SDL_Renderer *rend
     void **methods = nullptr;
     std::memcpy(&methods, layer.native_renderer, sizeof(methods));
     using TileFn = void (*)(void *, int, int);
-    for (size_t pass = 0; pass < 4; ++pass) {
-        const size_t plane = pass / 2;
+    std::vector<SDL_Point> anchored_cells;
+    for (size_t plane = 0; plane < layer.foreground.planes.size(); ++plane) {
         if (plane && !gps->top_in_use) continue;
-        const auto draw = reinterpret_cast<TileFn>(methods[pass]);
+        anchored_cells.clear();
+        const auto draw = reinterpret_cast<TileFn>(methods[plane * 2]);
         const auto &source = layer.foreground.planes[plane];
         for (const auto &frame : layer.frames)
             for (int x = frame.x; x < frame.x + frame.w; ++x)
                 for (int y = frame.y; y < frame.y + frame.h; ++y) {
                     const size_t at = static_cast<size_t>(x) * gps->dimy + y;
-                    const bool content = pass & 1 ? source.textures[2][at] != 0 :
+                    // Anchored pictures must stay after every ordinary tile
+                    // in this plane. Collect only their occupied coordinates
+                    // during that first pass instead of scanning the entire
+                    // component again merely to rediscover its sparse icons.
+                    if (source.textures[2][at]) anchored_cells.push_back({x, y});
+                    const bool content =
                         source.screen[at * 8] || source.textures[0][at] || source.textures[1][at] || source.flags[at];
                     if (!content) continue;
-                    if (opaque_frame && !(pass & 1) &&
+                    if (opaque_frame &&
                             (x < opaque_frame->x || x >= opaque_frame->x + opaque_frame->w ||
                              y < opaque_frame->y || y >= opaque_frame->y + opaque_frame->h)) {
                         uint64_t cell = 0;
@@ -376,6 +388,9 @@ static void native_ui_paint_grid(NativeUiLayerStorage &layer, SDL_Renderer *rend
                     }
                     draw(layer.native_renderer, x, y);
                 }
+        const auto draw_anchored = reinterpret_cast<TileFn>(methods[plane * 2 + 1]);
+        for (const auto &cell : anchored_cells)
+            draw_anchored(layer.native_renderer, cell.x, cell.y);
     }
 }
 
@@ -383,6 +398,9 @@ static void native_ui_present_layer(NativeUiLayerStorage &layer, NativeUiLayerTa
         SDL_Renderer *renderer, void (*draw_layer)(SDL_Renderer *)) {
     TranslationStateScope translation;
     if (!renderer || !draw_layer || !layer.ready || layer.renderer != renderer) return;
+    // Discovery and layout share the same owned caption snapshot. A private
+    // text-scope swap advances its revision, so another layer cannot borrow it.
+    NativeCapturedTextReadScope captured_text_reads;
     int width = 0, height = 0;
     SDL_RenderGetLogicalSize(renderer, &width, &height);
     if (width <= 0 || height <= 0) {
@@ -395,16 +413,46 @@ static void native_ui_present_layer(NativeUiLayerStorage &layer, NativeUiLayerTa
         DrawingScope() { g_drawing_overlay = true; }
         ~DrawingScope() { g_drawing_overlay = previous; }
     } drawing;
-    if (!target.prepare(renderer, width, height) || !state.bind(target.texture, width, height)) {
+    if (!target.prepare(renderer, width, height)) {
         if (state.bind_composite(width, height)) draw_layer(renderer);
         return;
     }
-    // This is a render destination, refreshed for every submitted native
-    // frame. The native component has already drawn into its own UI arrays.
+    std::optional<std::string> context;
+    try { context = native_ui_layer_cache_context(layer); }
+    catch (...) { /* Rendering remains available without a retained source. */ }
+    if (context && target.frame_cache.matches(layer, renderer, width, height, draw_layer, *context)) {
+        // Only this private UI is retained. Composite it on the current native
+        // map/background every time, preserving animation beneath the panel.
+        if (!state.bind_composite(width, height)) return;
+        const SDL_Rect destination{0, 0, width, height};
+        SDL_RenderCopy(renderer, target.texture, nullptr, &destination);
+        return;
+    }
+    target.frame_cache.invalidate();
+    bool captured = false;
+    if (context) {
+        try {
+            target.frame_cache.capture(layer, renderer, width, height, draw_layer, *context);
+            captured = true;
+        } catch (...) { /* An allocation failure must not prevent native painting. */ }
+    }
+    if (!state.bind(target.texture, width, height)) {
+        if (state.bind_composite(width, height)) draw_layer(renderer);
+        return;
+    }
+    // Native production owns the source arrays. Repaint their private target
+    // only after source content, layout or translation context changes.
     SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_NONE);
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
     if (SDL_RenderClear(renderer) != 0) return;
     draw_layer(renderer);
+    if (captured) {
+        try {
+            const auto completed_context = native_ui_layer_cache_context(layer);
+            if (completed_context && *completed_context == *context)
+                target.frame_cache.publish();
+        } catch (...) { /* Leave the source invalid until a stable draw succeeds. */ }
+    }
     if (!state.bind_composite(width, height)) return;
     const SDL_Rect destination{0, 0, width, height};
     SDL_RenderCopy(renderer, target.texture, nullptr, &destination);

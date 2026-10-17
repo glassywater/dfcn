@@ -850,7 +850,7 @@ std::vector<WorkshopTaskCard> Overlay::capture_workshop_task_rows(
         return card;
     };
     const auto clipped = captured_clipped_captions();
-    const auto drawn = captured_native_drawn_text_rows();
+    const auto drawn = captured_native_drawn_text_view();
     const uintptr_t native_base = native_history_profile_base();
     const auto task_choice_draw = [&](const NativeDrawnTextRow &draw) {
 #ifndef _WIN32

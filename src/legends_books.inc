@@ -248,7 +248,7 @@ bool Overlay::append_legends_typed_list_matches(std::vector<std::string> &rows,
         // game's title spans the type column and the later type draw
         // overwrites it. The same paired-field ownership below handles
         // surviving prefixes/tails for books, artifacts and buildings.
-        for (const auto &draw : captured_native_drawn_text_rows()) {
+        for (const auto &draw : captured_native_drawn_text_view()) {
             if (draw.y <= heading_y || draw.y >= static_cast<int>(context.size()) ||
                     draw.x < 0 || draw.x >= static_cast<int>(context[draw.y].size())) continue;
             auto complete = complete_source(draw.x, draw.y, draw.source);

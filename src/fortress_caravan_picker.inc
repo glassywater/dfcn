@@ -17,7 +17,7 @@ void Overlay::append_fortress_caravan_picker_fields(std::vector<std::string> &ro
     const uintptr_t from_return = native_reference_address(base, 0x9d0d35);
     const uintptr_t name_return = native_reference_address(base, 0x9d0d6d);
 #endif
-    const auto draws = captured_native_drawn_text_rows();
+    const auto draws = captured_native_drawn_text_view();
     constexpr std::string_view heading = "Select a merchant group to trade with:";
     const auto title = std::find_if(draws.begin(), draws.end(), [&](const auto &draw) {
         return draw.native_caller == heading_return && draw.source == heading;

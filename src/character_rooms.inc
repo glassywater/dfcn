@@ -62,8 +62,8 @@ void Overlay::append_character_room_fields(const std::vector<std::string> &conte
     const uintptr_t empty_writer = native_reference_address(base, 0x170529);
     if (!name_writer || !grade_writer || !needs_writer ||
             !required_grade_writer || !empty_writer) { fallback(); return; }
-    const std::array batches{captured_native_drawn_text_rows(false),
-        captured_native_drawn_text_rows(true)};
+    const std::array batches{captured_native_drawn_text_view(false),
+        captured_native_drawn_text_view(true)};
     bool captured_fields = false;
     constexpr uint32_t upper = 1u << 3, lower = 1u << 4;
     for (const auto &batch : batches) for (const auto &draw : batch) {

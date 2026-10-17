@@ -145,8 +145,8 @@ static std::optional<AsciiPanelFrame> find_character_header_frame(
         }
     };
 
-    const std::array identity_draws{captured_native_drawn_text_rows(false),
-        captured_native_drawn_text_rows(true)};
+    const std::array identity_draws{captured_native_drawn_text_view(false),
+        captured_native_drawn_text_view(true)};
     const auto clipped_captions = captured_clipped_captions();
     // The quoted gloss and matching native name establish the header's text
     // column even when the gloss or a later activity overwrites the frame.

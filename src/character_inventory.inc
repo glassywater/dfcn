@@ -383,8 +383,8 @@ std::vector<Match> Overlay::capture_adventure_item_modal(
     }
     if (!frame) return matches;
     const auto captures = captured_clipped_captions();
-    const std::array drawn_batches{captured_native_drawn_text_rows(),
-        captured_native_drawn_text_rows(true)};
+    const std::array drawn_batches{captured_native_drawn_text_view(),
+        captured_native_drawn_text_view(true)};
     std::vector<std::vector<int>> record_keys(static_cast<size_t>(gps_->dimy));
     std::vector<std::unordered_map<int, NativeAdventureInventoryRole>> record_roles(
         static_cast<size_t>(gps_->dimy));
@@ -1002,8 +1002,8 @@ std::vector<Match> Overlay::capture_inventory_rows(
     const auto captures = captured_clipped_captions();
     std::vector<NativeDrawnTextRow> inventory_sources;
     if (shortcuts) {
-        const std::array batches{captured_native_drawn_text_rows(),
-            captured_native_drawn_text_rows(true)};
+        const std::array batches{captured_native_drawn_text_view(),
+            captured_native_drawn_text_view(true)};
         for (const auto &batch : batches) for (const auto &draw : batch) {
             if (draw.adventure_inventory_role == NativeAdventureInventoryRole::None ||
                 draw.x <= frame->left || draw.x >= frame->right ||

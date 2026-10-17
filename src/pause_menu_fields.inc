@@ -14,7 +14,7 @@ if (only_y >= 0 ? has_pause_dynamic_field(screen_rows[static_cast<size_t>(only_y
 for (const bool top_layer : {true, false}) {
     const auto *grid = top_layer ? gps_->screen_top : gps_->screen;
     if (!grid || (screen_override && screen_override != grid)) continue;
-    const auto draws = captured_native_drawn_text_rows(top_layer);
+    const auto draws = captured_native_drawn_text_view(top_layer);
     for (auto it = draws.rbegin(); it != draws.rend(); ++it) {
         const auto &draw = *it;
         if (draw.draw_grid != grid || draw.draw_dimx != gps_->dimx ||

@@ -61,7 +61,7 @@ void Overlay::append_fortress_squad_messages(std::vector<std::string> &rows,
     for (bool top : {false, true}) {
         const auto *grid = top ? gps_->screen_top : gps_->screen;
         if (!grid || (raw && raw != grid)) continue;
-        const auto draws = captured_native_drawn_text_rows(top);
+        const auto draws = captured_native_drawn_text_view(top);
         std::map<std::pair<int, int>, const NativeDrawnTextRow *> positions;
         for (const auto &draw : draws)
             if (native_squad_sidebar_caller(draw.native_caller))
@@ -154,7 +154,7 @@ std::optional<std::string> Overlay::translate_fortress_squad_name(
     // their name verbatim rather than infer authorship from its spelling.
     if (x < 0 || y < 0) return native_text_to_utf8(source);
     for (bool top : {false, true})
-        for (const auto &draw : captured_native_drawn_text_rows(top)) {
+        for (const auto &draw : captured_native_drawn_text_view(top)) {
             if (!draw.squad_alias_target || draw.x != x ||
                     draw.draw_dimx != gps_->dimx || draw.draw_dimy != gps_->dimy ||
                     draw.draw_grid != (top ? gps_->screen_top : gps_->screen) ||
@@ -206,7 +206,7 @@ std::optional<std::string> Overlay::translate_fortress_squad_reference(
     // is literally "None" or the grid has shortened it inside a UTF-8 byte.
     if (x >= 0 && y >= 0) {
         for (bool top : {false, true})
-            for (const auto &draw : captured_native_drawn_text_rows(top)) {
+            for (const auto &draw : captured_native_drawn_text_view(top)) {
                 if (!draw.squad_alias_target || draw.y < 0 || draw.y >= gps_->dimy ||
                         draw.x < x + static_cast<int>(prefix.size()) ||
                         draw.x >= x + static_cast<int>(source.size())) continue;
@@ -245,7 +245,7 @@ std::vector<std::pair<size_t, size_t>> Overlay::authored_squad_display_spans(
     // resolver or the captured native squad.alias owners.
     const auto captured_alias = [&](std::string_view name) -> std::optional<std::string> {
         for (bool top : {false, true})
-            for (const auto &draw : captured_native_drawn_text_rows(top)) {
+            for (const auto &draw : captured_native_drawn_text_view(top)) {
                 if (!draw.squad_alias_target) continue;
                 const auto complete = draw.complete_source.empty()
                     ? std::string_view(draw.source) : std::string_view(draw.complete_source);
@@ -322,7 +322,7 @@ void Overlay::append_fortress_squad_alias_rows(std::vector<std::string> &rows,
     if (!gps_ || rows.size() != static_cast<size_t>(gps_->dimy)) return;
     for (bool top : {false, true}) {
         if (raw && raw != (top ? gps_->screen_top : gps_->screen)) continue;
-        for (const auto &draw : captured_native_drawn_text_rows(top)) {
+        for (const auto &draw : captured_native_drawn_text_view(top)) {
             if (!draw.squad_alias_target || draw.source.empty() || draw.x < 0 ||
                     draw.x >= gps_->dimx || draw.y < 0 || draw.y >= gps_->dimy ||
                     draw.draw_dimx != gps_->dimx || draw.draw_dimy != gps_->dimy ||
@@ -425,8 +425,8 @@ void Overlay::append_fortress_squad_creation(std::vector<std::string> &rows,
         if (panel) heading_y = y;
     }
     if (!panel) return;
-    const std::array draws{captured_native_drawn_text_rows(false),
-        captured_native_drawn_text_rows(true)};
+    const std::array draws{captured_native_drawn_text_view(false),
+        captured_native_drawn_text_view(true)};
     const auto clipped = captured_clipped_captions();
     struct Caption {
         int x, y;
@@ -631,8 +631,8 @@ void Overlay::append_fortress_squad_rows(std::vector<std::string> &rows,
             if (field.start == x) return logical_field(field, y);
         return std::nullopt;
     };
-    const std::array draws{captured_native_drawn_text_rows(false),
-        captured_native_drawn_text_rows(true)};
+    const std::array draws{captured_native_drawn_text_view(false),
+        captured_native_drawn_text_view(true)};
     const auto complete_routine = [&](const Field &field, std::string complete) {
         // The label and routine value can be separate addst draws. Their
         // visible combined row therefore differs from either clipping key.
@@ -760,8 +760,8 @@ void Overlay::layout_fortress_squads(SDL_Renderer *renderer) {
     const NativePanelBorders borders(*gps_);
     const bool classic = native_ui_classic().value_or(false);
     const auto &buttons = native_texture_button_main(*gps_);
-    const std::array identities{captured_native_drawn_text_rows(false),
-        captured_native_drawn_text_rows(true)};
+    const std::array identities{captured_native_drawn_text_view(false),
+        captured_native_drawn_text_view(true)};
     for (const Match &back : prepared_matches_) {
         if (back.source != "Back to squads" || back.native_split_duplicate) continue;
         const auto control = native_button_text_rect(*gps_, back.x,

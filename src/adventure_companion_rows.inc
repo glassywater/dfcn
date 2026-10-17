@@ -88,7 +88,7 @@ if (native_gameplay_map_screen()) {
     site(native_reference_address(base, 0xdc2182), 'd'); // N
 #endif
     for (bool top_layer : {false, true}) {
-        for (const auto &draw : captured_native_drawn_text_rows(top_layer)) {
+        for (const auto &draw : captured_native_drawn_text_view(top_layer)) {
             const auto owned = companion_sites.find(draw.native_caller);
             if (!base || owned == companion_sites.end() || draw.editable_text ||
                     draw.source.empty() || draw.x < 0 || draw.x >= gps_->dimx ||

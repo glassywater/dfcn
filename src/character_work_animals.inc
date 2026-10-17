@@ -58,8 +58,8 @@ void Overlay::append_character_work_animal_rows(std::vector<std::string> &rows,
         }
         if (animals_y < 0) continue;
         const auto captures = captured_clipped_captions();
-        const std::array draws{captured_native_drawn_text_rows(false),
-            captured_native_drawn_text_rows(true)};
+        const std::array draws{captured_native_drawn_text_view(false),
+            captured_native_drawn_text_view(true)};
         for (int middle = animals_y + 2; middle + 1 < gps_->dimy; ++middle) {
             for (int picture = 0; picture + 5 < gps_->dimx; ++picture) {
                 const int left = native_picture_box_right(*gps_, picture, middle);

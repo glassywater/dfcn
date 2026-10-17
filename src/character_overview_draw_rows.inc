@@ -11,8 +11,8 @@ if (!cards.empty()) {
         }
         right = std::max(right, card.interior.x + card.interior.w);
     }
-    const std::array draw_layers{captured_native_drawn_text_rows(false),
-        captured_native_drawn_text_rows(true)};
+    const std::array draw_layers{captured_native_drawn_text_view(false),
+        captured_native_drawn_text_view(true)};
     const auto captions = captured_clipped_captions();
     const auto settings = native_ui_settings();
     const bool classic = settings && settings->classic;

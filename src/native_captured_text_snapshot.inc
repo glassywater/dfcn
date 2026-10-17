@@ -95,6 +95,39 @@ static std::shared_ptr<const std::vector<NativeClippedCaption>>
     return result;
 }
 
+// Read-only consumers keep the snapshot alive without copying every captured
+// string and typed caption again. In particular, a range-for over a temporary
+// view owns its rows for the full loop, including nested capture refreshes.
+class NativeDrawnTextView {
+    using Rows = std::vector<NativeDrawnTextRow>;
+    std::shared_ptr<const Rows> rows_;
+    const Rows &rows() const noexcept {
+        if (rows_) return *rows_;
+        static const Rows empty;
+        return empty;
+    }
+public:
+    NativeDrawnTextView() = default;
+    explicit NativeDrawnTextView(std::shared_ptr<const Rows> rows) noexcept
+        : rows_(std::move(rows)) {}
+    Rows::const_iterator begin() const noexcept { return rows().begin(); }
+    Rows::const_iterator end() const noexcept { return rows().end(); }
+    Rows::const_iterator cbegin() const noexcept { return rows().cbegin(); }
+    Rows::const_iterator cend() const noexcept { return rows().cend(); }
+    Rows::const_reverse_iterator rbegin() const noexcept { return rows().rbegin(); }
+    Rows::const_reverse_iterator rend() const noexcept { return rows().rend(); }
+    size_t size() const noexcept { return rows().size(); }
+    bool empty() const noexcept { return rows().empty(); }
+    const NativeDrawnTextRow &operator[](size_t index) const noexcept { return rows()[index]; }
+    const NativeDrawnTextRow &front() const noexcept { return rows().front(); }
+    const NativeDrawnTextRow &back() const noexcept { return rows().back(); }
+    operator const Rows &() const noexcept { return rows(); }
+};
+
+static NativeDrawnTextView captured_native_drawn_text_view(bool top_layer = false) {
+    return NativeDrawnTextView(captured_native_drawn_text_snapshot(top_layer));
+}
+
 // Some consumers merge/filter their local vectors. Keep that interface and
 // obtain their writable copy from the same refreshed, owned frame snapshot.
 static std::vector<NativeDrawnTextRow> captured_native_drawn_text_rows(bool top_layer = false) {

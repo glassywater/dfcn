@@ -86,6 +86,7 @@ static bool native_history_war_selection(uintptr_t collection, int32_t &category
 #include "native_adventure_hover_hooks.inc"
 #include "native_announcement_hooks.inc"
 #include "native_dfhack_layer_present.inc"
+#include "native_ui_cache_context.inc"
 #include "native_help_layer_render.inc"
 #include "native_resolution_layer_render.inc"
 #include "native_tooltip_layer_render.inc"
@@ -335,6 +336,7 @@ static void request_native_process_exit() noexcept {
     // console/plugins. Stop accepting work without joining or freeing any
     // callback-owned arrays, catalogs, fonts, textures or native interposes.
     g_native_identity_translation_jobs.request_stop();
+    g_render_workers.request_stop();
     try { g_overlay.request_dfhack_translation_stop(); } catch (...) {}
 }
 
@@ -347,6 +349,7 @@ static bool stop_reloadable_core() {
     // Join without the translation lock and retain catalogs/fonts until every
     // native callback has detached. Retiring captures reject new queued jobs.
     stop_native_identity_translation_jobs();
+    g_render_workers.shutdown();
     g_overlay.stop_dfhack_translation_worker();
     // Process exit has no future DFHack suspension context for retiring links.
     // Native shutdown still owns cleanup callbacks and renderer arrays. Leave

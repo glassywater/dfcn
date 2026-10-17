@@ -96,6 +96,15 @@ static bool g_native_announcement_history_full_refresh = true;
 // Display matching needs normalized records and their indexes, not a fresh
 // copy of the whole world's report history for each screen layer. Publish
 // immutable snapshots so readers can keep using them after the lock is freed.
+// Construction and mutation run under g_native_announcement_mutex. Never
+// reset this counter when clearing a world: IDs also distinguish a new
+// snapshot allocated at the same address as an earlier one.
+static uint64_t g_native_announcement_snapshot_content_revision = 0;
+static uint64_t next_native_announcement_snapshot_content_revision() noexcept {
+    if (g_native_announcement_snapshot_content_revision != UINT64_MAX)
+        ++g_native_announcement_snapshot_content_revision;
+    return g_native_announcement_snapshot_content_revision;
+}
 struct NativeAnnouncementSnapshot {
     struct Record {
         std::string source;
@@ -108,6 +117,7 @@ struct NativeAnnouncementSnapshot {
         std::unordered_map<unsigned char, size_t> next;
         std::vector<size_t> records;
     };
+    uint64_t content_revision = 0;
     std::deque<Record> records;
     std::unordered_map<std::string, size_t> originals;
     std::set<std::string_view, std::less<>> sorted_originals;
@@ -115,9 +125,11 @@ struct NativeAnnouncementSnapshot {
     std::vector<size_t> free_records;
     size_t removed_anchors = 0;
 
-    NativeAnnouncementSnapshot() = default;
+    NativeAnnouncementSnapshot()
+        : content_revision(next_native_announcement_snapshot_content_revision()) {}
     NativeAnnouncementSnapshot(const NativeAnnouncementSnapshot &other)
-        : records(other.records), originals(other.originals), anchors(other.anchors),
+        : content_revision(other.content_revision), records(other.records),
+          originals(other.originals), anchors(other.anchors),
           free_records(other.free_records), removed_anchors(other.removed_anchors) {
         // Views must refer to the new owner's strings when an existing reader
         // requires copy-on-write. deque also keeps them stable on later append.
@@ -215,6 +227,17 @@ static void native_announcement_snapshot_change(NativeAnnouncementSnapshot &snap
     auto found = snapshot.originals.find(std::string(source));
     if (found == snapshot.originals.end()) {
         if (!add) return;
+    } else {
+        const auto &references = snapshot.records[found->second].references;
+        const auto previous = references.find(order);
+        if ((!add && previous == references.end()) ||
+                (add && previous != references.end() && previous->second == length))
+            return;
+    }
+    // Stamp before the first write, including partial mutation if allocation
+    // throws. Copy-on-write keeps the old ID only until its contents change.
+    snapshot.content_revision = next_native_announcement_snapshot_content_revision();
+    if (found == snapshot.originals.end()) {
         size_t index = snapshot.records.size();
         if (!snapshot.free_records.empty()) {
             index = snapshot.free_records.back();

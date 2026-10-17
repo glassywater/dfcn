@@ -53,6 +53,7 @@
 #include "item_designation.h"
 #include "item_material_qualifier.h"
 #include "reloadable_thread_state.h"
+#include "render_workers.h"
 #include "dfhack_translation_thread.h"
 #include "translation_work.h"
 #include "translation_state.h"
@@ -78,6 +79,12 @@ namespace fs = std::filesystem;
 namespace dfcn {
 
 static std::atomic_bool g_native_process_exiting{false};
+// CPU jobs only borrow immutable glyphs and disjoint pixel ranges. No worker
+// enters the translation lock, font engine or SDL renderer.
+static RenderWorkers g_render_workers;
+static uint64_t g_native_ui_render_generation = 1;
+struct NativePreparedUiFrame;
+static std::optional<std::string> native_main_ui_cache_context();
 static void request_native_process_exit() noexcept;
 static void release_native_squads_language_resources();
 static void release_native_dfhack_layer_target() noexcept;
@@ -1213,7 +1220,7 @@ struct GlyphTexture {
     int line_height = 0;
     int font_reference_height = 0;
     int line_offset_y = 0;
-    uint64_t last_used = 0;
+    std::list<std::string>::iterator use;
 
     SDL_Rect destination(const SDL_Rect &line, bool left, bool /*locked*/) const {
         // The full glyph run owns its drawing area. Font size and bitmap
@@ -3581,8 +3588,15 @@ public:
     void invalidate_render_resources();
     void render(SDL_Renderer *renderer);
     bool prepare_native_ui_input(NativeUiLayerGrid &input, SDL_Renderer *renderer);
-    bool native_ui_hud_copy_passthrough() const noexcept {
-        return native_ui_frame_ready_ && native_ui_hud_copy_passthrough_;
+    bool native_ui_copy_passthrough() const noexcept {
+        return native_ui_frame_ready_ && native_ui_copy_passthrough_;
+    }
+    void note_native_ui_passthrough_copy(SDL_Renderer *renderer,
+            SDL_Texture *texture, const SDL_Rect *dest) {
+        // Pre-masked input needs no per-cell copy evidence. The title's
+        // developer badge still supplies the community badge's live placement.
+        if (main_menu_frame_ && dest)
+            note_main_menu_developer_copy(renderer, texture, *dest);
     }
     void render_dfhack_layer(SDL_Renderer *renderer, const NativeDfhackTranslatedFrame &frame);
     std::shared_ptr<const NativeDfhackTranslatedFrame> completed_dfhack_layer_frame(
@@ -4187,6 +4201,7 @@ private:
     std::unordered_map<std::string, std::string>
         native_name_reviewed_transliterations_;
     std::unordered_map<std::string, GlyphTexture> texture_cache_;
+    std::list<std::string> texture_use_order_;
     SDL_Renderer *texture_retry_renderer_ = nullptr;
     std::chrono::steady_clock::time_point texture_retry_after_{};
     mutable std::unordered_map<std::string, TranslationResult> compositional_cache_;
@@ -4418,7 +4433,6 @@ private:
     uint64_t frame_count_ = 0;
     uint64_t total_match_count_ = 0;
     uint64_t total_compositional_match_count_ = 0;
-    uint64_t texture_use_clock_ = 0;
     bool logged_first_compositional_match_ = false;
     std::unordered_set<std::string> collected_untranslated_;
     size_t newly_collected_untranslated_ = 0;
@@ -4427,10 +4441,11 @@ private:
     // The main UI owns one match/layout result from raster entry to Present.
     bool native_ui_input_read_ = false;
     bool native_ui_frame_ready_ = false;
+    std::shared_ptr<NativePreparedUiFrame> native_prepared_ui_frame_;
     std::shared_ptr<NativeTooltipPage> native_ui_layout_page_;
     std::optional<NativeToolbarTooltip> native_ui_toolbar_tooltip_;
     bool fortress_map_frame_ = false;
-    bool native_ui_hud_copy_passthrough_ = false;
+    bool native_ui_copy_passthrough_ = false;
     bool main_menu_frame_ = false;
     bool settings_video_frame_ = false;
     std::vector<Match> prepared_matches_;
@@ -7474,6 +7489,7 @@ bool Overlay::initialize() {
 }
 
 void Overlay::destroy_textures() {
+    ++g_native_ui_render_generation;
     texture_retry_renderer_ = nullptr;
     texture_retry_after_ = {};
     for (auto &[key, value] : texture_cache_) {
@@ -7481,6 +7497,7 @@ void Overlay::destroy_textures() {
         value.destroy();
     }
     texture_cache_.clear();
+    texture_use_order_.clear();
     if (embark_pre_pause_snapshot_) {
         SDL_DestroyTexture(embark_pre_pause_snapshot_);
         embark_pre_pause_snapshot_ = nullptr;
@@ -7525,6 +7542,7 @@ void Overlay::reset_render_state() {
     destroy_textures();
     frame_prepared_ = false;
     native_ui_frame_ready_ = false;
+    native_prepared_ui_frame_.reset();
     native_ui_layout_page_.reset();
     native_ui_toolbar_tooltip_.reset();
     fortress_map_frame_ = false;
@@ -7733,6 +7751,7 @@ void Overlay::set_translation_enabled(bool enabled) {
 
 void Overlay::shutdown() {
     // Join before taking the translation lock or releasing fonts/catalogs.
+    g_render_workers.shutdown();
     stop_dfhack_translation_worker();
     clear_legends_search_cache();
     clear_stockpile_setting_cache();
@@ -7892,7 +7911,8 @@ unsigned char Overlay::visible_char_at(int x, int y) const {
     // an SDL texture (the resolution menu does exactly this). If
     // the later graphical copy wins the cell, the hidden glyph must not be
     // returned merely because screen_top still contains its byte.
-    if (!native_ui_input_read_ && !NativeDfhackForegroundScope::active && !g_native_info_foreground &&
+    if (!native_ui_input_read_ && !native_ui_copy_passthrough() &&
+        !NativeDfhackForegroundScope::active && !g_native_info_foreground &&
         tile < cell_composite_state_.size() &&
         tile < cell_composite_epoch_.size() &&
         graphically_occluded(cell_composite_state_[tile],
@@ -9914,7 +9934,7 @@ void Overlay::append_limited_skill_matches(std::vector<std::string> &rows,
     // and the complete rating/title; a new native draw replaces that batch.
     for (bool top_layer : {false, true}) {
         const auto *grid = top_layer ? gps_->screen_top : gps_->screen;
-        for (const auto &draw : captured_native_drawn_text_rows(top_layer)) {
+        for (const auto &draw : captured_native_drawn_text_view(top_layer)) {
             if (draw.draw_grid != grid || draw.draw_dimx != gps_->dimx ||
                     draw.draw_dimy != gps_->dimy || draw.complete_source.empty() ||
                     draw.editable_text || draw.squad_alias_target || draw.unit_identity_target ||
@@ -16817,6 +16837,8 @@ std::vector<Match> Overlay::resolve_native_knowledge_matches(
 #include "native_pause_layers.inc"
 #include "native_worldgen_layers.inc"
 
+#include "native_prepared_ui_frame.inc"
+
 struct NativeKeybindingScope {
     SDL_Rect table{};
     std::vector<SDL_Rect> choosers;
@@ -17126,7 +17148,7 @@ static std::optional<AsciiPanelFrame> find_character_overview_frame(
         }
         return true;
     };
-    const auto draws = captured_native_drawn_text_rows();
+    const auto draws = captured_native_drawn_text_view();
     const auto side = [&](int x, int y) {
         const unsigned char ch = read_char(x, y);
         if (vertical(ch) || ch == 0xc3 || ch == 0xb4 || ch == 0xcc || ch == 0xb9)
@@ -17946,7 +17968,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     // Native chooser callers own these whole fields even when the map has
     // replaced the live outer frame by the time SDL presents its captions.
     const bool classic_location_fields = native_ui_classic().value_or(false);
-    const auto location_draws = captured_native_drawn_text_rows();
+    const auto location_draws = captured_native_drawn_text_view();
     const bool location_subpage_fields = std::any_of(location_draws.begin(), location_draws.end(),
         [](const auto &draw) { return native_location_picker_subpage_field(draw.location_picker_field); });
     if (classic_location_fields || location_subpage_fields)
@@ -18595,7 +18617,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
             0xd17ecc
 #endif
         );
-        const auto draws = captured_native_drawn_text_rows();
+        const auto draws = captured_native_drawn_text_view();
         std::vector<const NativeDrawnTextRow *> origin_rows;
         for (const auto &draw : draws) {
             if (draw.native_caller == origin_return && draw.draw_grid == gps_->screen &&
@@ -19316,8 +19338,8 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                 }
                 continue;
             }
-            const auto action_draws = captured_native_drawn_text_rows();
-            const auto top_action_draws = captured_native_drawn_text_rows(true);
+            const auto action_draws = captured_native_drawn_text_view();
+            const auto top_action_draws = captured_native_drawn_text_view(true);
             std::set<std::pair<int, int>> owned_action_captions;
             for (int y = title_y + 1; y < panel->y + panel->h; ++y) {
                 const auto &visible = context[y];
@@ -19860,7 +19882,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     if (legends_context) {
         const auto *identity_grid = screen_override ? screen_override : gps_->screen;
         const bool top_layer = identity_grid == gps_->screen_top;
-        const auto draws = captured_native_drawn_text_rows(top_layer);
+        const auto draws = captured_native_drawn_text_view(top_layer);
         const auto claim_civilization = [&](int x, int y, std::string_view visible,
                                             std::string_view complete, int right) {
             if (x < 0 || y < 0 || y >= gps_->dimy || x >= gps_->dimx ||
@@ -20415,8 +20437,8 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
             int footer_right = editor_interior ? editor_right : hint_right;
             uint64_t footer_sequence = 0;
             const auto paragraphs = captured_native_paragraphs();
-            const std::array draws{captured_native_drawn_text_rows(false),
-                captured_native_drawn_text_rows(true)};
+            const std::array draws{captured_native_drawn_text_view(false),
+                captured_native_drawn_text_view(true)};
             const uint64_t draw_epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
             std::unordered_map<uintptr_t, std::vector<const NativeDrawnTextRow *>> footer_draws;
             for (const auto &batch : draws) {
@@ -21379,7 +21401,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
             // the COMPLETE TSV source before accepting any clipped prefix.
             // Reuse the captured-paragraph visibility and layout bounds so
             // neither map bytes nor a stale/changed English tail are claimed.
-            const auto draws = captured_native_drawn_text_rows();
+            const auto draws = captured_native_drawn_text_view();
             for (const Rule &rule : rules_) {
                 if (rule.numeric_template || rule.string_template ||
                     !is_adventure_species_distribution(rule.source)) continue;
@@ -40208,34 +40230,51 @@ GlyphTexture *Overlay::get_glyph_texture(SDL_Renderer *renderer, const std::stri
     if (it != texture_cache_.end()) {
         if (it->second.renderer == renderer && it->second.texture) {
             if (config_.trace_render_timing) ++render_timings_.current.texture_hits;
-            it->second.last_used = ++texture_use_clock_;
+            texture_use_order_.splice(texture_use_order_.end(),
+                texture_use_order_, it->second.use);
             return &it->second;
         }
         it->second.destroy();
+        texture_use_order_.erase(it->second.use);
         texture_cache_.erase(it);
     }
     if (config_.trace_render_timing) ++render_timings_.current.texture_misses;
     if (texture_retry_renderer_ == renderer &&
             std::chrono::steady_clock::now() < texture_retry_after_) return nullptr;
     if (texture_cache_.size() >= static_cast<size_t>(config_.max_cached_textures)) {
-        auto oldest = std::min_element(texture_cache_.begin(), texture_cache_.end(),
-            [](const auto &left, const auto &right) {
-                return left.second.last_used < right.second.last_used;
-            });
+        // Stable hash-map values plus a use-order list make eviction constant
+        // time even while a scrolling list continuously introduces new text.
+        auto oldest = texture_cache_.find(texture_use_order_.front());
         if (oldest != texture_cache_.end()) {
             oldest->second.destroy();
             texture_cache_.erase(oldest);
         }
+        texture_use_order_.pop_front();
     }
     GlyphTexture made = rasterize(renderer, text, max_width, tile_height, forced_pixel_size,
                                   target_visual_height, lock_pixel_size, foregrounds, wrap_width);
     // Device loss can make allocation fail temporarily. Do not cache that
     // failure: the same text must retry after recovery.
     if (!made.texture) return nullptr;
-    made.last_used = ++texture_use_clock_;
-    auto [inserted, ok] = texture_cache_.emplace(key, made);
-    (void)ok;
-    return inserted->second.texture ? &inserted->second : nullptr;
+    try {
+        auto [inserted, ok] = texture_cache_.try_emplace(key);
+        if (!ok) {
+            made.destroy();
+            return inserted->second.texture ? &inserted->second : nullptr;
+        }
+        try {
+            texture_use_order_.push_back(key);
+        } catch (...) {
+            texture_cache_.erase(inserted);
+            throw;
+        }
+        made.use = std::prev(texture_use_order_.end());
+        inserted->second = std::move(made);
+        return &inserted->second;
+    } catch (...) {
+        made.destroy();
+        throw;
+    }
 }
 
 void Overlay::render_ime_popup(SDL_Renderer *renderer) {
@@ -40493,37 +40532,71 @@ GlyphTexture Overlay::rasterize(SDL_Renderer *renderer, const std::string &text,
         result.destroy();
         return result;
     }
-    SDL_FillRect(surface, nullptr, SDL_MapRGBA(surface->format, 255, 255, 255, 0));
+    const Uint32 clear_pixel = SDL_MapRGBA(surface->format, 255, 255, 255, 0);
 
-    if (SDL_MUSTLOCK(surface)) SDL_LockSurface(surface);
+    struct PaintGlyph {
+        const FontGlyphBitmap *bitmap;
+        int x, y, left, right, top, bottom;
+        Uint32 rgb;
+    };
+    std::vector<PaintGlyph> paint;
+    paint.reserve(positioned.size());
     for (const PositionedGlyph &entry : positioned) {
         if (!entry.bitmap || entry.bitmap->coverage.empty()) continue;
         const FontGlyphBitmap &bitmap = *entry.bitmap;
         const int dst_x0 = entry.pen_x + bitmap.left - logical_min_x + 1 - tile_x;
         const int dst_y0 = entry.pen_y - bitmap.top - ink_min_y + 1 - tile_y;
-        if (dst_x0 >= surface_width || dst_y0 >= surface_height ||
-            dst_x0 + static_cast<int>(bitmap.width) <= 0 ||
-            dst_y0 + static_cast<int>(bitmap.rows) <= 0) continue;
-        for (unsigned int by = 0; by < bitmap.rows; ++by) {
-            const int dst_y = dst_y0 + static_cast<int>(by);
-            if (dst_y < 0 || dst_y >= surface_height) continue;
-            const unsigned char *src_row = bitmap.coverage.data() +
-                static_cast<size_t>(by) * bitmap.width;
-            auto *dst_row = reinterpret_cast<uint32_t *>(
-                static_cast<unsigned char *>(surface->pixels) + dst_y * surface->pitch);
-            for (unsigned int bx = 0; bx < bitmap.width; ++bx) {
-                const int dst_x = dst_x0 + static_cast<int>(bx);
-                if (dst_x < 0 || dst_x >= surface_width) continue;
-                const unsigned char alpha = src_row[bx];
-                if (alpha == 0) continue;
-                dst_row[dst_x] = SDL_MapRGBA(surface->format,
-                    static_cast<Uint8>(entry.foreground_rgb >> 16),
-                    static_cast<Uint8>(entry.foreground_rgb >> 8),
-                    static_cast<Uint8>(entry.foreground_rgb), alpha);
+        const int left = std::max(0, dst_x0);
+        const int right = std::min(surface_width, dst_x0 + static_cast<int>(bitmap.width));
+        const int top = std::max(0, dst_y0);
+        const int bottom = std::min(surface_height, dst_y0 + static_cast<int>(bitmap.rows));
+        if (left >= right || top >= bottom) continue;
+        // RGBA32 has one full byte per component on either endian. Map the
+        // constant RGB once, then insert coverage without SDL calls per pixel.
+        const Uint32 rgb = SDL_MapRGBA(surface->format,
+            static_cast<Uint8>(entry.foreground_rgb >> 16),
+            static_cast<Uint8>(entry.foreground_rgb >> 8),
+            static_cast<Uint8>(entry.foreground_rgb), 0);
+        paint.push_back({&bitmap, dst_x0, dst_y0, left, right, top, bottom, rgb});
+    }
+    const bool locked = SDL_MUSTLOCK(surface);
+    if (locked && SDL_LockSurface(surface) != 0) {
+        log_line("ERROR", std::string("SDL_LockSurface failed: ") + SDL_GetError());
+        SDL_FreeSurface(surface);
+        result.destroy();
+        return result;
+    }
+    auto *pixels = static_cast<unsigned char *>(surface->pixels);
+    const int pitch = surface->pitch;
+    const unsigned alpha_shift = surface->format->Ashift;
+    // Partition the destination, not the glyph list: kerning/combining marks
+    // can overlap. Each row keeps the original last-nonzero-coverage order.
+    // A batch must contain enough pixels to amortize waking persistent workers.
+    const size_t minimum_rows = std::max<size_t>(1,
+        (32768u + static_cast<size_t>(surface_width) - 1) / surface_width);
+    g_render_workers.parallel_for(static_cast<size_t>(surface_height), minimum_rows,
+        [&](size_t begin, size_t end) {
+        for (size_t y = begin; y < end; ++y) {
+            auto *row = reinterpret_cast<Uint32 *>(pixels + y * pitch);
+            std::fill_n(row, surface_width, clear_pixel);
+        }
+        for (const PaintGlyph &entry : paint) {
+            const FontGlyphBitmap &bitmap = *entry.bitmap;
+            const int first = std::max(entry.top, static_cast<int>(begin));
+            const int last = std::min(entry.bottom, static_cast<int>(end));
+            for (int dst_y = first; dst_y < last; ++dst_y) {
+                const unsigned char *src_row = bitmap.coverage.data() +
+                    static_cast<size_t>(dst_y - entry.y) * bitmap.width;
+                auto *dst_row = reinterpret_cast<Uint32 *>(pixels + dst_y * pitch);
+                for (int dst_x = entry.left; dst_x < entry.right; ++dst_x) {
+                    const unsigned char alpha = src_row[dst_x - entry.x];
+                    if (alpha) dst_row[dst_x] = entry.rgb |
+                        (static_cast<Uint32>(alpha) << alpha_shift);
+                }
             }
         }
-    }
-    if (SDL_MUSTLOCK(surface)) SDL_UnlockSurface(surface);
+    });
+    if (locked) SDL_UnlockSurface(surface);
     SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surface);
     SDL_FreeSurface(surface);
     if (!texture) {
@@ -42473,7 +42546,7 @@ void Overlay::mask_native_ui_matches(NativeUiLayerGrid &input) {
 bool Overlay::prepare_native_ui_input(NativeUiLayerGrid &input, SDL_Renderer *renderer) {
     NativeCapturedTextReadScope captured_text_reads;
     native_ui_frame_ready_ = false;
-    native_ui_hud_copy_passthrough_ = false;
+    native_ui_copy_passthrough_ = false;
     native_ui_layout_page_.reset();
     native_ui_toolbar_tooltip_.reset();
     apply_requested_reload();
@@ -42503,6 +42576,33 @@ bool Overlay::prepare_native_ui_input(NativeUiLayerGrid &input, SDL_Renderer *re
     native_knowledge_frame_matches_.reset();
     native_knowledge_frame_transition_ = false;
     native_border_repairs_.clear();
+    const auto read_cache_context = []() -> std::optional<std::string> {
+        try { return native_main_ui_cache_context(); }
+        catch (...) { return std::nullopt; }
+    };
+    const auto cache_context = read_cache_context();
+    if (cache_context && native_prepared_ui_frame_ &&
+            native_prepared_ui_frame_->matches_source(*gps_, renderer, *cache_context)) {
+        const auto &cached = *native_prepared_ui_frame_;
+        // Restore the immutable prepared result, never last Present's edited
+        // clear decisions, pixel readbacks or copy/suppression observations.
+        prepared_matches_ = cached.matches;
+        suppress_base_ = cached.suppress_base;
+        suppress_top_ = cached.suppress_top;
+        main_menu_frame_ = cached.main_menu;
+        settings_video_frame_ = cached.settings_video;
+        fortress_map_frame_ = cached.fortress_map;
+        captured_embark_item_suppress_.clear();
+        cached.restore_input(input, *gps_);
+        frame_prepared_ = true;
+        native_ui_frame_ready_ = true;
+        native_ui_copy_passthrough_ = true;
+        native_frame_drawn_ = true;
+        return true;
+    }
+    native_prepared_ui_frame_.reset();
+    // Retained frames exclude overview documents in their semantic key.
+    // Discover quote ownership only when this frame needs fresh matching.
     refresh_character_overview_context(true);
     frame_prepared_ = false;
     prepare_frame();
@@ -42519,18 +42619,42 @@ bool Overlay::prepare_native_ui_input(NativeUiLayerGrid &input, SDL_Renderer *re
     mask_native_ui_matches(input);
     native_ui_toolbar_tooltip_ = g_native_toolbar_tooltip;
     native_ui_frame_ready_ = true;
-    // This HUD has already resolved and masked its complete native text.
-    // It owns no document/border recovery, so collecting every glyph and
-    // painting its background again cannot contribute to the final draw.
-    // Input widgets and pixel-clear fallbacks still need the normal copy
-    // evidence; keep their original path even within a recognized HUD.
-    native_ui_hud_copy_passthrough_ = fortress_map_frame_ &&
-        native_border_repairs_.empty() &&
+    // Every page has now resolved layout and masked its exact source glyphs.
+    // Copy interception is only needed when recovery owns additional pixels,
+    // a border needs its live atlas sample, or an input needs sampled clearing.
+    // Captured spans and document transitions can suppress bytes that do not
+    // equal the matched source, so retain their original interception path.
+    native_ui_copy_passthrough_ = native_border_repairs_.empty() &&
+        !native_knowledge_frame_transition_ &&
+        std::none_of(captured_embark_item_suppress_.begin(),
+            captured_embark_item_suppress_.end(), [](uint8_t value) { return value != 0; }) &&
         std::none_of(prepared_matches_.begin(), prepared_matches_.end(),
             [](const Match &match) {
                 return match.rule == -8 ||
                     (match.graphical_clear_width > 0 && match.graphical_clear_height > 0);
             });
+    // One content cache serves the shared input boundary. Ordinary stable
+    // pages keep their prepared translation/layout and masked native arrays;
+    // dynamic ownership or pixel recovery continues through the full path.
+    const bool retain_prepared = cache_context && native_ui_copy_passthrough_ &&
+        cells <= 262144 && !native_ui_layout_page_ && !native_ui_toolbar_tooltip_ &&
+        !embark_pause_menu_active_ && !embark_pause_snapshot_active_ &&
+        !embark_pre_pause_capture_pending_ &&
+        std::none_of(prepared_matches_.begin(), prepared_matches_.end(), [](const Match &match) {
+            return match.legends_flow || match.native_help_background_frames;
+        });
+    if (retain_prepared) {
+        try {
+            const auto completed_context = read_cache_context();
+            if (completed_context && *completed_context == *cache_context) {
+                auto cached = std::make_shared<NativePreparedUiFrame>();
+                cached->capture_source(*gps_, renderer, *completed_context);
+                cached->capture_result(input, prepared_matches_, suppress_base_, suppress_top_,
+                    main_menu_frame_, settings_video_frame_, fortress_map_frame_);
+                native_prepared_ui_frame_ = std::move(cached);
+            }
+        } catch (...) { /* Keep the normal current-frame rendering result. */ }
+    }
     // Even a retained UI with no changed glyph copies is a new raster input.
     // Its masked bytes participate in the renderer's native dirty comparison.
     native_frame_drawn_ = true;
@@ -42539,6 +42663,7 @@ bool Overlay::prepare_native_ui_input(NativeUiLayerGrid &input, SDL_Renderer *re
 
 void Overlay::render(SDL_Renderer *renderer) {
     TranslationStateScope translation_scope;
+    NativeCapturedTextReadScope captured_text_reads;
     const bool map_artwork = native_map_mixed_view(gps_);
     if (map_artwork || native_worldgen_main_view(gps_)
 #ifdef _WIN32
@@ -42557,7 +42682,7 @@ void Overlay::render(SDL_Renderer *renderer) {
         if (native_frame_submitted_ && ++draw_epoch_ == 0) draw_epoch_ = 1;
         frame_prepared_ = false;
         native_ui_frame_ready_ = false;
-        native_ui_hud_copy_passthrough_ = false;
+        native_ui_copy_passthrough_ = false;
         native_ui_layout_page_.reset();
         native_ui_toolbar_tooltip_.reset();
         return;
@@ -43217,8 +43342,11 @@ extern "C" void dfcn_render_present(SDL_Renderer *renderer) {
 extern "C" int dfcn_render_copy(SDL_Renderer *renderer, SDL_Texture *texture,
                                  const SDL_Rect *source, const SDL_Rect *dest) {
     if (g_native_process_exiting.load(std::memory_order_acquire) ||
-            g_drawing_overlay || g_native_resolution_write_graphics ||
-            (g_native_ui_input_masked && g_overlay.native_ui_hud_copy_passthrough())) {
+            g_drawing_overlay || g_native_resolution_write_graphics) {
+        return g_real_copy ? g_real_copy(renderer, texture, source, dest) : -1;
+    }
+    if (g_native_ui_input_masked && g_overlay.native_ui_copy_passthrough()) {
+        g_overlay.note_native_ui_passthrough_copy(renderer, texture, dest);
         return g_real_copy ? g_real_copy(renderer, texture, source, dest) : -1;
     }
     TranslationStateScope translation;

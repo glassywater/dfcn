@@ -336,8 +336,8 @@
         // then translate the complete caption before generic word matching.
         // The hidden suffix is evidence from the draw, never a catalog guess.
         if (!help_panels.empty() && !NativeHelpForegroundScope::active) {
-            const std::array background_draws{captured_native_drawn_text_rows(false),
-                captured_native_drawn_text_rows(true)};
+            const std::array background_draws{captured_native_drawn_text_view(false),
+                captured_native_drawn_text_view(true)};
             for (const SDL_Rect &panel : help_panels) {
                 const SDL_Rect frame{panel.x - 1, panel.y - 1, panel.w + 2, panel.h + 2};
                 for (size_t layer = 0; layer < background_draws.size(); ++layer) {

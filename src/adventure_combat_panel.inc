@@ -215,8 +215,8 @@ void Overlay::append_adventure_combat_fields(std::vector<std::string> &screen_ro
         std::vector<Match> &matches, int only_y, const unsigned char *raw) const {
     if (!gps_ || !native_gameplay_map_screen() || adventure_target_literals_.empty()) return;
     const bool classic = native_ui_classic().value_or(false);
-    const auto draws = captured_native_drawn_text_rows();
-    const auto top_draws = captured_native_drawn_text_rows(true);
+    const auto draws = captured_native_drawn_text_view();
+    const auto top_draws = captured_native_drawn_text_view(true);
     struct PictureRow {
         int name_x, y, right;
         char kind;

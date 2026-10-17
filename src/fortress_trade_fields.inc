@@ -67,8 +67,8 @@ void Overlay::append_fortress_trade_fields(std::vector<std::string> &rows,
     }
     if (!panel) return;
     const int right = panel->x + panel->w, bottom = panel->y + panel->h;
-    const std::array draw_layers{captured_native_drawn_text_rows(false),
-        captured_native_drawn_text_rows(true)};
+    const std::array draw_layers{captured_native_drawn_text_view(false),
+        captured_native_drawn_text_view(true)};
     const auto clipped = captured_clipped_captions();
     const auto current_draw = [&](const NativeDrawnTextRow &draw,
             int x, int y, int end) {

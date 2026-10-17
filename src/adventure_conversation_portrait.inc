@@ -13,8 +13,8 @@ struct ConversationPortraitPanel {
 };
 const std::array<std::string_view, 3> portrait_labels{
     "Toward you:", "Relationship:", "General Mood:"};
-const auto portrait_draws = captured_native_drawn_text_rows();
-const auto portrait_top_draws = captured_native_drawn_text_rows(true);
+const auto portrait_draws = captured_native_drawn_text_view();
+const auto portrait_top_draws = captured_native_drawn_text_view(true);
 std::vector<ConversationPortraitPanel> portrait_panels;
 #ifdef _WIN32
 // Direct addst return intervals extracted from both configured PE images.
