@@ -11250,6 +11250,35 @@ Unloaded	未装填	wi
 Loading	装填中	wi
 
 # Military uniform chooser: translate each complete preset as one label.
+# The complete native equipment chooser also offers one concrete item in
+# each of its seven category branches; keep these captions as whole labels.
+specific armor	指定躯干装备	wli
+specific helm	指定头部装备	wli
+specific pants	指定腿部装备	wli
+specific gloves	指定手部装备	wli
+specific shoes	指定足部装备	wli
+specific shield	指定盾牌	wli
+specific weapon	指定武器	wli
+missing item	物品不存在	wli
+Custom uniform	自定义制式服装	wli
+{d} assigned items	已指定{d}件物品	wlt
+# Native material category switch, including the invalid-category fallback.
+Uniform material: leather	皮革	l
+Uniform material: cloth	布匹	l
+Uniform material: silk	丝布	l
+Uniform material: yarn	纱线	l
+Uniform material: plant fiber	植物纤维	l
+Uniform material: metal	金属	l
+Uniform material: wood	木材	l
+Uniform material: stone	石材	l
+Uniform material: gem	宝石	l
+Uniform material: bone	骨	l
+Uniform material: shell	甲壳	l
+Uniform material: pearl	珍珠	l
+Uniform material: tooth	牙齿	l
+Uniform material: horn	角	l
+Uniform material: BROKEN	无效材料	l
+Uniform material: any material	不限材料	l
 individual choice, weapon	自行选择武器	wli
 indiv choice, melee	自行选择近战武器	wli
 indiv choice, ranged	自行选择远程武器	wli

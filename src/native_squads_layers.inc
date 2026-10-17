@@ -16,6 +16,10 @@ static std::array<uintptr_t, 4> g_native_squads_footer_callers{};
 static std::vector<SDL_Rect> g_native_squads_member_columns;
 static uintptr_t g_native_squads_member_name_caller = 0;
 static uintptr_t g_native_squads_member_order_caller = 0;
+enum class NativeSquadsEquipmentField { None, Type, Material, Color, Item };
+// Complete fields submitted by the equipment chooser, in enum order.
+// Their native constructors are retained in fortress-weapon-picker/.
+static std::array<uintptr_t, 4> g_native_squads_equipment_callers{};
 static const unsigned char *g_native_squads_background_grid = nullptr;
 static const unsigned char *g_native_squads_background_top_grid = nullptr;
 static SDL_Rect g_native_squads_panel{};

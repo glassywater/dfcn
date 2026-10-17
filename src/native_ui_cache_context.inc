@@ -698,6 +698,7 @@ static std::optional<std::string> native_ui_layer_cache_context(
         for (auto caller : g_native_squads_footer_callers) key.value(caller);
         key.value(g_native_squads_member_name_caller);
         key.value(g_native_squads_member_order_caller);
+        for (auto caller : g_native_squads_equipment_callers) key.value(caller);
     }
     return key.finish();
 }

@@ -73883,6 +73883,7 @@ Travel building: Ruined houses	住宅群废墟	wi
 Travel building: Shrine of {p}	{p1}神龛	ht
 Travel building: Shrine to {n}	供奉{n1}的神龛	ht
 Travel building: The Home Tree	家园树	wi
+Uniform material: any material	不限材料	l
 Vanilla Items Graphics {d}.{d}	原版物品图像 {d}.{d}	wt
 Verbally struggle against fear	说出你与恐惧的抗争	hP
 Verbally struggle against rage	说出你与狂怒的抗争	hP
@@ -76362,6 +76363,7 @@ Travel building: Ruined house	住宅废墟	wi
 Travel building: Sewer Access	下水道入口	wi
 Travel building: Shaping Tree	塑形树	wi
 Tropical Dry Broadleaf Forest	热带干燥阔叶林
+Uniform material: plant fiber	植物纤维	l
 Unit lists: Sort by happiness	单位列表：按幸福度排序	w
 Unit nickname: Of Many Faiths	多信仰者	l
 Unknown creature in the wilds	荒野中的未知生物	h
@@ -85337,6 +85339,7 @@ Tropical Dry Brdlf Forest	热带干燥阔叶林	l
 Tropical Freshwater Marsh	热带淡水湿地
 Tropical Freshwater River	热带淡水河
 Tropical Freshwater Swamp	热带淡水沼泽
+Uniform material: leather	皮革	l
 Uniform replaces clothing	制式服装替代衣物	w
 Unit list: Sort by skills	单位列表：按技能排序	w
 Unit nickname: the sickly	体弱者	l
@@ -87268,6 +87271,7 @@ Tropical Saltwater Marsh	热带咸水湿地
 Tropical Saltwater River	热带咸水河
 Tropical Saltwater Swamp	热带咸水沼泽
 Try to calm the listener	尝试安抚对方	hP
+Uniform material: BROKEN	无效材料	l
 Uniform name: Flex Melee	灵活近战	l
 Uninterested in an owner	不愿认主	w
 Unit lists: Sort by name	单位列表：按名称排序	w
@@ -89301,6 +89305,12 @@ Tropical Brackish River	热带半咸水河
 Tropical Conifer Forest	热带针叶林
 Tropical Saltwater Lake	热带咸水湖
 Tropical Saltwater Pool	热带咸水池
+Uniform material: cloth	布匹	l
+Uniform material: metal	金属	l
+Uniform material: pearl	珍珠	l
+Uniform material: shell	甲壳	l
+Uniform material: stone	石材	l
+Uniform material: tooth	牙齿	l
 Unit lists: Sort by job	单位列表：按工作排序	w
 Unit nickname: the Wise	智者	l
 Unit nickname: the wise	智者	l
@@ -91343,6 +91353,11 @@ Travel building: House	住宅	wi
 Travel building: Tower	高塔	wi
 Tropical Brackish Lake	热带半咸水湖
 Tropical Brackish Pool	热带半咸水池
+Uniform material: bone	骨	l
+Uniform material: horn	角	l
+Uniform material: silk	丝布	l
+Uniform material: wood	木材	l
+Uniform material: yarn	纱线	l
 Unit profession: adept	精熟者	li
 Unit profession: medic	医护员	li
 Unnamed magma sea area	未命名岩浆海区域	wi
@@ -93457,6 +93472,7 @@ This singer is lousy.	这位歌手很差劲。	hPD
 Trade or settle debts	交易或清偿债务	hP
 Travel building: Well	水井	wi
 Tropical Conif Forest	热带针叶林
+Uniform material: gem	宝石	l
 Unit profession: head	首领	li
 Unnamed archery range	未命名射箭场	wi
 Upper left back teeth	左上臼齿	w
@@ -105256,6 +105272,7 @@ yellow spessartine	橙榴石	wi
 {c} bundles of {s}	{c1}捆{s1}	hIit
 {c} {s} (\x0B) in {p}	在{p}的{c}只{s}（♂）	ht
 {c} {s} (\x0C) in {p}	在{p}的{c}只{s}（♀）	ht
+{d} assigned items	已指定{d}件物品	wlt
 {d} pig tail cloth	{d} 块猪尾草布	wtl
 {d} pig tail seeds	{d} 份猪尾草种子	wtl
 {d} points remain!	还有 {d} 点未使用！	wt
@@ -118928,6 +118945,9 @@ soldier termite	白蚁兵蚁	wi
 somewhat narrow	略窄	wi
 somewhat short.	略矮。	wil
 soybean flowers	黄豆花	wi
+specific gloves	指定手部装备	wli
+specific shield	指定盾牌	wli
+specific weapon	指定武器	wli
 sperm whale man	抹香鲸人	wi
 sperm whale men	抹香鲸人	wi
 spinach flowers	菠菜花	wi
@@ -119237,6 +119257,7 @@ Count's Office	伯爵办公室	wli
 Creature sound	生物发出声音	w
 Creature stuck	生物被困	w
 Crutch-walking	拄拐行走	wi
+Custom uniform	自定义制式服装	wli
 C\x8Athuthaethera	塞图瑟拉
 DFHack help: s	s	l
 Delayed repeat	延迟重复	w
@@ -123855,6 +123876,9 @@ sorghum leaves	高粱叶	wi
 soybean flower	黄豆花	wi
 soybean leaves	黄豆叶	wi
 soybean plants	黄豆植株	wi
+specific armor	指定躯干装备	wli
+specific pants	指定腿部装备	wli
+specific shoes	指定足部装备	wli
 spider monkeys	蜘蛛猴	wi
 spinach flower	菠菜花	wi
 spinach leaves	菠菜叶	wi
@@ -128499,6 +128523,7 @@ sorghum seeds	高粱种子	wi
 soybean plant	黄豆植株	wi
 sparrow woman	麻雀人	wi
 sparrow women	麻雀人	wi
+specific helm	指定头部装备	wli
 spider monkey	蜘蛛猴	wi
 spinach seeds	菠菜种子	wi
 spiny dogfish	白斑角鲨	wi
@@ -131819,6 +131844,7 @@ middle spine	背部脊柱	wi
 mighty leaps	强大的跳跃能力	wi
 milk of lime	石灰乳	wi
 milkfish fry	遮目鱼幼崽	wi
+missing item	物品不存在	wli
 moist fabric	湿润的丝	hMi
 moist fabric	湿润的丝绸	wim
 mongoose man	獴人	wi

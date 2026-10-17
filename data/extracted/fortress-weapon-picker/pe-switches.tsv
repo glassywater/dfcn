@@ -1,0 +1,891 @@
+edition	role	dispatch_rva	table_rva	remap_rva	selector	table_index	target_rva
+reference	uniform-equipment-selector-renderer	0x450339	0x4590fc		0	0	0x45033b
+reference	uniform-equipment-selector-renderer	0x450339	0x4590fc		1	1	0x450371
+reference	uniform-equipment-selector-renderer	0x450339	0x4590fc		2	2	0x4503a7
+reference	uniform-equipment-selector-renderer	0x450339	0x4590fc		3	3	0x4503dd
+reference	uniform-equipment-selector-renderer	0x450339	0x4590fc		4	4	0x450413
+reference	uniform-equipment-selector-renderer	0x450339	0x4590fc		5	5	0x450446
+reference	uniform-equipment-selector-renderer	0x450339	0x4590fc		6	6	0x450479
+reference	uniform-equipment-selector-renderer	0x450675	0x459118		0	0	0x450677
+reference	uniform-equipment-selector-renderer	0x450675	0x459118		1	1	0x450689
+reference	uniform-equipment-selector-renderer	0x450675	0x459118		2	2	0x45069b
+reference	uniform-equipment-selector-renderer	0x450675	0x459118		3	3	0x4506ad
+reference	uniform-equipment-selector-renderer	0x450675	0x459118		4	4	0x4506bf
+reference	uniform-equipment-selector-renderer	0x450675	0x459118		5	5	0x4506d1
+reference	uniform-equipment-selector-renderer	0x450675	0x459118		6	6	0x4506e3
+reference	uniform-equipment-selector-renderer	0x45082c	0x459134		0	0	0x45082e
+reference	uniform-equipment-selector-renderer	0x45082c	0x459134		1	1	0x45083a
+reference	uniform-equipment-selector-renderer	0x45082c	0x459134		2	2	0x450846
+reference	uniform-equipment-selector-renderer	0x45082c	0x459134		3	3	0x450852
+reference	uniform-equipment-selector-renderer	0x45082c	0x459134		4	4	0x45085e
+reference	uniform-equipment-selector-renderer	0x45082c	0x459134		5	5	0x45086a
+reference	uniform-equipment-selector-renderer	0x45082c	0x459134		6	6	0x450876
+reference	uniform-equipment-selector-renderer	0x450da7	0x459150		0	0	0x450da9
+reference	uniform-equipment-selector-renderer	0x450da7	0x459150		1	1	0x450db5
+reference	uniform-equipment-selector-renderer	0x450da7	0x459150		2	2	0x450de2
+reference	uniform-equipment-selector-renderer	0x450da7	0x459150		3	3	0x450e2a
+reference	uniform-equipment-selector-renderer	0x450da7	0x459150		4	4	0x450deb
+reference	uniform-equipment-selector-renderer	0x450da7	0x459150		5	5	0x450e2a
+reference	uniform-equipment-selector-renderer	0x450da7	0x459150		6	6	0x450e2a
+reference	uniform-equipment-selector-renderer	0x450da7	0x459150		7	7	0x450e2a
+reference	uniform-equipment-selector-renderer	0x450da7	0x459150		8	8	0x450e2a
+reference	uniform-equipment-selector-renderer	0x450da7	0x459150		9	9	0x450e2a
+reference	uniform-equipment-selector-renderer	0x450da7	0x459150		10	10	0x450e2a
+reference	uniform-equipment-selector-renderer	0x450da7	0x459150		11	11	0x450e2a
+reference	uniform-equipment-selector-renderer	0x450da7	0x459150		12	12	0x450e2a
+reference	uniform-equipment-selector-renderer	0x450da7	0x459150		13	13	0x450dd9
+reference	uniform-equipment-selector-renderer	0x450da7	0x459150		14	14	0x450e2a
+reference	uniform-equipment-selector-renderer	0x450da7	0x459150		15	15	0x450dd9
+reference	uniform-equipment-selector-renderer	0x450da7	0x459150		16	16	0x450df4
+reference	uniform-equipment-selector-renderer	0x450da7	0x459150		17	17	0x450dfd
+reference	uniform-equipment-selector-renderer	0x450da7	0x459150		18	18	0x450e06
+reference	uniform-equipment-selector-renderer	0x450da7	0x459150		19	19	0x450e0f
+reference	uniform-equipment-selector-renderer	0x450da7	0x459150		20	20	0x450e18
+reference	uniform-equipment-selector-renderer	0x450da7	0x459150		21	21	0x450e21
+reference	uniform-equipment-selector-renderer	0x450da7	0x459150		22	22	0x450e2a
+reference	uniform-equipment-selector-renderer	0x450da7	0x459150		23	23	0x450e2a
+reference	uniform-equipment-selector-renderer	0x450da7	0x459150		24	24	0x450e2a
+reference	uniform-equipment-selector-renderer	0x450da7	0x459150		25	25	0x450e2a
+reference	uniform-equipment-selector-renderer	0x450da7	0x459150		26	26	0x450dd0
+reference	uniform-equipment-selector-renderer	0x450da7	0x459150		27	27	0x450dbe
+reference	uniform-equipment-selector-renderer	0x450da7	0x459150		28	28	0x450dc7
+reference	uniform-equipment-selector-renderer	0x451733	0x4591c4	0x4591e4	0	0	0x451735
+reference	uniform-equipment-selector-renderer	0x451733	0x4591c4	0x4591e4	1	1	0x45173d
+reference	uniform-equipment-selector-renderer	0x451733	0x4591c4	0x4591e4	2	2	0x45175d
+reference	uniform-equipment-selector-renderer	0x451733	0x4591c4	0x4591e4	3	3	0x451765
+reference	uniform-equipment-selector-renderer	0x451733	0x4591c4	0x4591e4	4	4	0x451755
+reference	uniform-equipment-selector-renderer	0x451733	0x4591c4	0x4591e4	5	5	0x45174d
+reference	uniform-equipment-selector-renderer	0x451733	0x4591c4	0x4591e4	6	7	0x45176b
+reference	uniform-equipment-selector-renderer	0x451733	0x4591c4	0x4591e4	7	7	0x45176b
+reference	uniform-equipment-selector-renderer	0x451733	0x4591c4	0x4591e4	8	7	0x45176b
+reference	uniform-equipment-selector-renderer	0x451733	0x4591c4	0x4591e4	9	7	0x45176b
+reference	uniform-equipment-selector-renderer	0x451733	0x4591c4	0x4591e4	10	7	0x45176b
+reference	uniform-equipment-selector-renderer	0x451733	0x4591c4	0x4591e4	11	7	0x45176b
+reference	uniform-equipment-selector-renderer	0x451733	0x4591c4	0x4591e4	12	7	0x45176b
+reference	uniform-equipment-selector-renderer	0x451733	0x4591c4	0x4591e4	13	7	0x45176b
+reference	uniform-equipment-selector-renderer	0x451733	0x4591c4	0x4591e4	14	7	0x45176b
+reference	uniform-equipment-selector-renderer	0x451733	0x4591c4	0x4591e4	15	7	0x45176b
+reference	uniform-equipment-selector-renderer	0x451733	0x4591c4	0x4591e4	16	7	0x45176b
+reference	uniform-equipment-selector-renderer	0x451733	0x4591c4	0x4591e4	17	7	0x45176b
+reference	uniform-equipment-selector-renderer	0x451733	0x4591c4	0x4591e4	18	7	0x45176b
+reference	uniform-equipment-selector-renderer	0x451733	0x4591c4	0x4591e4	19	7	0x45176b
+reference	uniform-equipment-selector-renderer	0x451733	0x4591c4	0x4591e4	20	7	0x45176b
+reference	uniform-equipment-selector-renderer	0x451733	0x4591c4	0x4591e4	21	7	0x45176b
+reference	uniform-equipment-selector-renderer	0x451733	0x4591c4	0x4591e4	22	7	0x45176b
+reference	uniform-equipment-selector-renderer	0x451733	0x4591c4	0x4591e4	23	7	0x45176b
+reference	uniform-equipment-selector-renderer	0x451733	0x4591c4	0x4591e4	24	7	0x45176b
+reference	uniform-equipment-selector-renderer	0x451733	0x4591c4	0x4591e4	25	7	0x45176b
+reference	uniform-equipment-selector-renderer	0x451733	0x4591c4	0x4591e4	26	7	0x45176b
+reference	uniform-equipment-selector-renderer	0x451733	0x4591c4	0x4591e4	27	7	0x45176b
+reference	uniform-equipment-selector-renderer	0x451733	0x4591c4	0x4591e4	28	7	0x45176b
+reference	uniform-equipment-selector-renderer	0x451733	0x4591c4	0x4591e4	29	7	0x45176b
+reference	uniform-equipment-selector-renderer	0x451733	0x4591c4	0x4591e4	30	7	0x45176b
+reference	uniform-equipment-selector-renderer	0x451733	0x4591c4	0x4591e4	31	7	0x45176b
+reference	uniform-equipment-selector-renderer	0x451733	0x4591c4	0x4591e4	32	7	0x45176b
+reference	uniform-equipment-selector-renderer	0x451733	0x4591c4	0x4591e4	33	7	0x45176b
+reference	uniform-equipment-selector-renderer	0x451733	0x4591c4	0x4591e4	34	7	0x45176b
+reference	uniform-equipment-selector-renderer	0x451733	0x4591c4	0x4591e4	35	7	0x45176b
+reference	uniform-equipment-selector-renderer	0x451733	0x4591c4	0x4591e4	36	6	0x451745
+reference	uniform-equipment-selector-renderer	0x45330c	0x45920c		0	0	0x45330e
+reference	uniform-equipment-selector-renderer	0x45330c	0x45920c		1	1	0x453317
+reference	uniform-equipment-selector-renderer	0x45330c	0x45920c		2	2	0x453344
+reference	uniform-equipment-selector-renderer	0x45330c	0x45920c		3	3	0x45338c
+reference	uniform-equipment-selector-renderer	0x45330c	0x45920c		4	4	0x45334d
+reference	uniform-equipment-selector-renderer	0x45330c	0x45920c		5	5	0x45338c
+reference	uniform-equipment-selector-renderer	0x45330c	0x45920c		6	6	0x45338c
+reference	uniform-equipment-selector-renderer	0x45330c	0x45920c		7	7	0x45338c
+reference	uniform-equipment-selector-renderer	0x45330c	0x45920c		8	8	0x45338c
+reference	uniform-equipment-selector-renderer	0x45330c	0x45920c		9	9	0x45338c
+reference	uniform-equipment-selector-renderer	0x45330c	0x45920c		10	10	0x45338c
+reference	uniform-equipment-selector-renderer	0x45330c	0x45920c		11	11	0x45338c
+reference	uniform-equipment-selector-renderer	0x45330c	0x45920c		12	12	0x45338c
+reference	uniform-equipment-selector-renderer	0x45330c	0x45920c		13	13	0x45333b
+reference	uniform-equipment-selector-renderer	0x45330c	0x45920c		14	14	0x45338c
+reference	uniform-equipment-selector-renderer	0x45330c	0x45920c		15	15	0x45333b
+reference	uniform-equipment-selector-renderer	0x45330c	0x45920c		16	16	0x453356
+reference	uniform-equipment-selector-renderer	0x45330c	0x45920c		17	17	0x45335f
+reference	uniform-equipment-selector-renderer	0x45330c	0x45920c		18	18	0x453368
+reference	uniform-equipment-selector-renderer	0x45330c	0x45920c		19	19	0x453371
+reference	uniform-equipment-selector-renderer	0x45330c	0x45920c		20	20	0x45337a
+reference	uniform-equipment-selector-renderer	0x45330c	0x45920c		21	21	0x453383
+reference	uniform-equipment-selector-renderer	0x45330c	0x45920c		22	22	0x45338c
+reference	uniform-equipment-selector-renderer	0x45330c	0x45920c		23	23	0x45338c
+reference	uniform-equipment-selector-renderer	0x45330c	0x45920c		24	24	0x45338c
+reference	uniform-equipment-selector-renderer	0x45330c	0x45920c		25	25	0x45338c
+reference	uniform-equipment-selector-renderer	0x45330c	0x45920c		26	26	0x453332
+reference	uniform-equipment-selector-renderer	0x45330c	0x45920c		27	27	0x453320
+reference	uniform-equipment-selector-renderer	0x45330c	0x45920c		28	28	0x453329
+reference	uniform-equipment-selector-renderer	0x453fbe	0x459280		0	0	0x453fc0
+reference	uniform-equipment-selector-renderer	0x453fbe	0x459280		1	1	0x453fcc
+reference	uniform-equipment-selector-renderer	0x453fbe	0x459280		2	2	0x45400b
+reference	uniform-equipment-selector-renderer	0x453fbe	0x459280		3	3	0x45405f
+reference	uniform-equipment-selector-renderer	0x453fbe	0x459280		4	4	0x454014
+reference	uniform-equipment-selector-renderer	0x453fbe	0x459280		5	5	0x45405f
+reference	uniform-equipment-selector-renderer	0x453fbe	0x459280		6	6	0x45405f
+reference	uniform-equipment-selector-renderer	0x453fbe	0x459280		7	7	0x45405f
+reference	uniform-equipment-selector-renderer	0x453fbe	0x459280		8	8	0x45405f
+reference	uniform-equipment-selector-renderer	0x453fbe	0x459280		9	9	0x45405f
+reference	uniform-equipment-selector-renderer	0x453fbe	0x459280		10	10	0x45405f
+reference	uniform-equipment-selector-renderer	0x453fbe	0x459280		11	11	0x45405f
+reference	uniform-equipment-selector-renderer	0x453fbe	0x459280		12	12	0x45405f
+reference	uniform-equipment-selector-renderer	0x453fbe	0x459280		13	13	0x454002
+reference	uniform-equipment-selector-renderer	0x453fbe	0x459280		14	14	0x45405f
+reference	uniform-equipment-selector-renderer	0x453fbe	0x459280		15	15	0x454002
+reference	uniform-equipment-selector-renderer	0x453fbe	0x459280		16	16	0x45401d
+reference	uniform-equipment-selector-renderer	0x453fbe	0x459280		17	17	0x454026
+reference	uniform-equipment-selector-renderer	0x453fbe	0x459280		18	18	0x45402f
+reference	uniform-equipment-selector-renderer	0x453fbe	0x459280		19	19	0x454038
+reference	uniform-equipment-selector-renderer	0x453fbe	0x459280		20	20	0x454041
+reference	uniform-equipment-selector-renderer	0x453fbe	0x459280		21	21	0x454056
+reference	uniform-equipment-selector-renderer	0x453fbe	0x459280		22	22	0x45405f
+reference	uniform-equipment-selector-renderer	0x453fbe	0x459280		23	23	0x45405f
+reference	uniform-equipment-selector-renderer	0x453fbe	0x459280		24	24	0x45405f
+reference	uniform-equipment-selector-renderer	0x453fbe	0x459280		25	25	0x45405f
+reference	uniform-equipment-selector-renderer	0x453fbe	0x459280		26	26	0x453ff9
+reference	uniform-equipment-selector-renderer	0x453fbe	0x459280		27	27	0x453fd8
+reference	uniform-equipment-selector-renderer	0x453fbe	0x459280		28	28	0x453fe4
+reference	uniform-equipment-selector-renderer	0x454c2b	0x4592f4		0	0	0x454c2d
+reference	uniform-equipment-selector-renderer	0x454c2b	0x4592f4		1	1	0x454c39
+reference	uniform-equipment-selector-renderer	0x454c2b	0x4592f4		2	2	0x454c78
+reference	uniform-equipment-selector-renderer	0x454c2b	0x4592f4		3	3	0x454ccc
+reference	uniform-equipment-selector-renderer	0x454c2b	0x4592f4		4	4	0x454c81
+reference	uniform-equipment-selector-renderer	0x454c2b	0x4592f4		5	5	0x454ccc
+reference	uniform-equipment-selector-renderer	0x454c2b	0x4592f4		6	6	0x454ccc
+reference	uniform-equipment-selector-renderer	0x454c2b	0x4592f4		7	7	0x454ccc
+reference	uniform-equipment-selector-renderer	0x454c2b	0x4592f4		8	8	0x454ccc
+reference	uniform-equipment-selector-renderer	0x454c2b	0x4592f4		9	9	0x454ccc
+reference	uniform-equipment-selector-renderer	0x454c2b	0x4592f4		10	10	0x454ccc
+reference	uniform-equipment-selector-renderer	0x454c2b	0x4592f4		11	11	0x454ccc
+reference	uniform-equipment-selector-renderer	0x454c2b	0x4592f4		12	12	0x454ccc
+reference	uniform-equipment-selector-renderer	0x454c2b	0x4592f4		13	13	0x454c6f
+reference	uniform-equipment-selector-renderer	0x454c2b	0x4592f4		14	14	0x454ccc
+reference	uniform-equipment-selector-renderer	0x454c2b	0x4592f4		15	15	0x454c6f
+reference	uniform-equipment-selector-renderer	0x454c2b	0x4592f4		16	16	0x454c8a
+reference	uniform-equipment-selector-renderer	0x454c2b	0x4592f4		17	17	0x454c93
+reference	uniform-equipment-selector-renderer	0x454c2b	0x4592f4		18	18	0x454c9c
+reference	uniform-equipment-selector-renderer	0x454c2b	0x4592f4		19	19	0x454ca5
+reference	uniform-equipment-selector-renderer	0x454c2b	0x4592f4		20	20	0x454cae
+reference	uniform-equipment-selector-renderer	0x454c2b	0x4592f4		21	21	0x454cc3
+reference	uniform-equipment-selector-renderer	0x454c2b	0x4592f4		22	22	0x454ccc
+reference	uniform-equipment-selector-renderer	0x454c2b	0x4592f4		23	23	0x454ccc
+reference	uniform-equipment-selector-renderer	0x454c2b	0x4592f4		24	24	0x454ccc
+reference	uniform-equipment-selector-renderer	0x454c2b	0x4592f4		25	25	0x454ccc
+reference	uniform-equipment-selector-renderer	0x454c2b	0x4592f4		26	26	0x454c66
+reference	uniform-equipment-selector-renderer	0x454c2b	0x4592f4		27	27	0x454c45
+reference	uniform-equipment-selector-renderer	0x454c2b	0x4592f4		28	28	0x454c51
+reference	uniform-equipment-selector-renderer	0x45733e	0x459368		0	0	0x457360
+reference	uniform-equipment-selector-renderer	0x45733e	0x459368		1	1	0x4575c0
+reference	uniform-equipment-selector-renderer	0x45733e	0x459368		2	2	0x457810
+reference	uniform-equipment-selector-renderer	0x45733e	0x459368		3	3	0x457a60
+reference	uniform-equipment-selector-renderer	0x45733e	0x459368		4	4	0x457cb0
+reference	uniform-equipment-selector-renderer	0x45733e	0x459368		5	5	0x457f00
+reference	uniform-equipment-selector-renderer	0x45733e	0x459368		6	6	0x458150
+reference	uniform-equipment-selector-renderer	0x45733e	0x459368		7	7	0x4583a0
+reference	uniform-equipment-selector-renderer	0x45733e	0x459368		8	8	0x4585d0
+reference	uniform-equipment-selector-renderer	0x45733e	0x459368		9	9	0x458b96
+reference	uniform-equipment-selector-renderer	0x45733e	0x459368		10	10	0x458d17
+reference	uniform-equipment-selector-pointer-input	0x45986b	0x45dd9c		0	0	0x45986d
+reference	uniform-equipment-selector-pointer-input	0x45986b	0x45dd9c		1	1	0x459877
+reference	uniform-equipment-selector-pointer-input	0x45986b	0x45dd9c		2	2	0x459881
+reference	uniform-equipment-selector-pointer-input	0x45986b	0x45dd9c		3	3	0x45988b
+reference	uniform-equipment-selector-pointer-input	0x45986b	0x45dd9c		4	4	0x459895
+reference	uniform-equipment-selector-pointer-input	0x45986b	0x45dd9c		5	5	0x45989f
+reference	uniform-equipment-selector-pointer-input	0x45986b	0x45dd9c		6	6	0x4598a9
+reference	uniform-equipment-selector-pointer-input	0x45ad4c	0x45ddb8	0x45ddd8	0	0	0x45ad4e
+reference	uniform-equipment-selector-pointer-input	0x45ad4c	0x45ddb8	0x45ddd8	1	1	0x45ad5e
+reference	uniform-equipment-selector-pointer-input	0x45ad4c	0x45ddb8	0x45ddd8	2	2	0x45ad9f
+reference	uniform-equipment-selector-pointer-input	0x45ad4c	0x45ddb8	0x45ddd8	3	3	0x45adaf
+reference	uniform-equipment-selector-pointer-input	0x45ad4c	0x45ddb8	0x45ddd8	4	4	0x45ad8f
+reference	uniform-equipment-selector-pointer-input	0x45ad4c	0x45ddb8	0x45ddd8	5	5	0x45ad7f
+reference	uniform-equipment-selector-pointer-input	0x45ad4c	0x45ddb8	0x45ddd8	6	7	0x45b167
+reference	uniform-equipment-selector-pointer-input	0x45ad4c	0x45ddb8	0x45ddd8	7	7	0x45b167
+reference	uniform-equipment-selector-pointer-input	0x45ad4c	0x45ddb8	0x45ddd8	8	7	0x45b167
+reference	uniform-equipment-selector-pointer-input	0x45ad4c	0x45ddb8	0x45ddd8	9	7	0x45b167
+reference	uniform-equipment-selector-pointer-input	0x45ad4c	0x45ddb8	0x45ddd8	10	7	0x45b167
+reference	uniform-equipment-selector-pointer-input	0x45ad4c	0x45ddb8	0x45ddd8	11	7	0x45b167
+reference	uniform-equipment-selector-pointer-input	0x45ad4c	0x45ddb8	0x45ddd8	12	7	0x45b167
+reference	uniform-equipment-selector-pointer-input	0x45ad4c	0x45ddb8	0x45ddd8	13	7	0x45b167
+reference	uniform-equipment-selector-pointer-input	0x45ad4c	0x45ddb8	0x45ddd8	14	7	0x45b167
+reference	uniform-equipment-selector-pointer-input	0x45ad4c	0x45ddb8	0x45ddd8	15	7	0x45b167
+reference	uniform-equipment-selector-pointer-input	0x45ad4c	0x45ddb8	0x45ddd8	16	7	0x45b167
+reference	uniform-equipment-selector-pointer-input	0x45ad4c	0x45ddb8	0x45ddd8	17	7	0x45b167
+reference	uniform-equipment-selector-pointer-input	0x45ad4c	0x45ddb8	0x45ddd8	18	7	0x45b167
+reference	uniform-equipment-selector-pointer-input	0x45ad4c	0x45ddb8	0x45ddd8	19	7	0x45b167
+reference	uniform-equipment-selector-pointer-input	0x45ad4c	0x45ddb8	0x45ddd8	20	7	0x45b167
+reference	uniform-equipment-selector-pointer-input	0x45ad4c	0x45ddb8	0x45ddd8	21	7	0x45b167
+reference	uniform-equipment-selector-pointer-input	0x45ad4c	0x45ddb8	0x45ddd8	22	7	0x45b167
+reference	uniform-equipment-selector-pointer-input	0x45ad4c	0x45ddb8	0x45ddd8	23	7	0x45b167
+reference	uniform-equipment-selector-pointer-input	0x45ad4c	0x45ddb8	0x45ddd8	24	7	0x45b167
+reference	uniform-equipment-selector-pointer-input	0x45ad4c	0x45ddb8	0x45ddd8	25	7	0x45b167
+reference	uniform-equipment-selector-pointer-input	0x45ad4c	0x45ddb8	0x45ddd8	26	7	0x45b167
+reference	uniform-equipment-selector-pointer-input	0x45ad4c	0x45ddb8	0x45ddd8	27	7	0x45b167
+reference	uniform-equipment-selector-pointer-input	0x45ad4c	0x45ddb8	0x45ddd8	28	7	0x45b167
+reference	uniform-equipment-selector-pointer-input	0x45ad4c	0x45ddb8	0x45ddd8	29	7	0x45b167
+reference	uniform-equipment-selector-pointer-input	0x45ad4c	0x45ddb8	0x45ddd8	30	7	0x45b167
+reference	uniform-equipment-selector-pointer-input	0x45ad4c	0x45ddb8	0x45ddd8	31	7	0x45b167
+reference	uniform-equipment-selector-pointer-input	0x45ad4c	0x45ddb8	0x45ddd8	32	7	0x45b167
+reference	uniform-equipment-selector-pointer-input	0x45ad4c	0x45ddb8	0x45ddd8	33	7	0x45b167
+reference	uniform-equipment-selector-pointer-input	0x45ad4c	0x45ddb8	0x45ddd8	34	7	0x45b167
+reference	uniform-equipment-selector-pointer-input	0x45ad4c	0x45ddb8	0x45ddd8	35	7	0x45b167
+reference	uniform-equipment-selector-pointer-input	0x45ad4c	0x45ddb8	0x45ddd8	36	6	0x45ad6e
+reference	uniform-equipment-all-selector-choice-population	0x45f6ee	0x4633ec		0	0	0x45f6f0
+reference	uniform-equipment-all-selector-choice-population	0x45f6ee	0x4633ec		1	1	0x45fa8c
+reference	uniform-equipment-all-selector-choice-population	0x45f6ee	0x4633ec		2	2	0x45fda5
+reference	uniform-equipment-all-selector-choice-population	0x45f6ee	0x4633ec		3	3	0x4600b4
+reference	uniform-equipment-all-selector-choice-population	0x45f6ee	0x4633ec		4	4	0x4603c5
+reference	uniform-equipment-all-selector-choice-population	0x45f6ee	0x4633ec		5	5	0x460734
+reference	uniform-equipment-all-selector-choice-population	0x45f6ee	0x4633ec		6	6	0x460a45
+reference	uniform-equipment-all-selector-choice-population	0x45f6ee	0x4633ec		7	7	0x460f68
+reference	uniform-equipment-all-selector-choice-population	0x45f6ee	0x4633ec		8	8	0x461eaf
+reference	uniform-equipment-all-selector-choice-population	0x45f6ee	0x4633ec		9	9	0x4620ab
+reference	uniform-equipment-all-selector-choice-population	0x45f6ee	0x4633ec		10	10	0x46236b
+reference	uniform-equipment-all-selector-choice-population	0x45f6ee	0x4633ec		11	11	0x46262b
+reference	uniform-equipment-all-selector-choice-population	0x45f6ee	0x4633ec		12	12	0x4628eb
+reference	uniform-equipment-all-selector-choice-population	0x45f6ee	0x4633ec		13	13	0x462bab
+reference	uniform-equipment-all-selector-choice-population	0x45f6ee	0x4633ec		14	14	0x462e6b
+reference	uniform-equipment-all-selector-choice-population	0x45f6ee	0x4633ec		15	15	0x46312b
+reference	uniform-equipment-all-selector-choice-population	0x460fd1	0x46342c	0x463438	0	0	0x460fd3
+reference	uniform-equipment-all-selector-choice-population	0x460fd1	0x46342c	0x463438	1	0	0x460fd3
+reference	uniform-equipment-all-selector-choice-population	0x460fd1	0x46342c	0x463438	2	1	0x461164
+reference	uniform-equipment-all-selector-choice-population	0x460fd1	0x46342c	0x463438	3	0	0x460fd3
+reference	uniform-equipment-all-selector-choice-population	0x460fd1	0x46342c	0x463438	4	0	0x460fd3
+reference	uniform-equipment-all-selector-choice-population	0x460fd1	0x46342c	0x463438	5	2	0x46118c
+reference	uniform-equipment-all-selector-choice-population	0x460fd1	0x46342c	0x463438	6	2	0x46118c
+reference	uniform-equipment-all-selector-choice-population	0x460fd1	0x46342c	0x463438	7	2	0x46118c
+reference	uniform-equipment-all-selector-choice-population	0x460fd1	0x46342c	0x463438	8	2	0x46118c
+reference	uniform-equipment-all-selector-choice-population	0x460fd1	0x46342c	0x463438	9	2	0x46118c
+reference	uniform-equipment-all-selector-choice-population	0x460fd1	0x46342c	0x463438	10	2	0x46118c
+reference	uniform-equipment-all-selector-choice-population	0x460fd1	0x46342c	0x463438	11	2	0x46118c
+reference	uniform-equipment-all-selector-choice-population	0x460fd1	0x46342c	0x463438	12	2	0x46118c
+reference	uniform-equipment-all-selector-choice-population	0x460fd1	0x46342c	0x463438	13	2	0x46118c
+reference	uniform-equipment-all-selector-choice-population	0x460fd1	0x46342c	0x463438	14	2	0x46118c
+reference	uniform-equipment-all-selector-choice-population	0x460fd1	0x46342c	0x463438	15	2	0x46118c
+reference	uniform-equipment-all-selector-choice-population	0x460fd1	0x46342c	0x463438	16	2	0x46118c
+reference	uniform-equipment-all-selector-choice-population	0x460fd1	0x46342c	0x463438	17	2	0x46118c
+reference	uniform-equipment-all-selector-choice-population	0x460fd1	0x46342c	0x463438	18	2	0x46118c
+reference	uniform-equipment-all-selector-choice-population	0x460fd1	0x46342c	0x463438	19	2	0x46118c
+reference	uniform-equipment-all-selector-choice-population	0x460fd1	0x46342c	0x463438	20	2	0x46118c
+reference	uniform-equipment-all-selector-choice-population	0x460fd1	0x46342c	0x463438	21	2	0x46118c
+reference	uniform-equipment-all-selector-choice-population	0x460fd1	0x46342c	0x463438	22	2	0x46118c
+reference	uniform-equipment-all-selector-choice-population	0x460fd1	0x46342c	0x463438	23	2	0x46118c
+reference	uniform-equipment-all-selector-choice-population	0x460fd1	0x46342c	0x463438	24	2	0x46118c
+reference	uniform-equipment-all-selector-choice-population	0x460fd1	0x46342c	0x463438	25	2	0x46118c
+reference	uniform-equipment-all-selector-choice-population	0x460fd1	0x46342c	0x463438	26	2	0x46118c
+reference	uniform-equipment-all-selector-choice-population	0x460fd1	0x46342c	0x463438	27	2	0x46118c
+reference	uniform-equipment-all-selector-choice-population	0x460fd1	0x46342c	0x463438	28	2	0x46118c
+reference	uniform-equipment-all-selector-choice-population	0x460fd1	0x46342c	0x463438	29	2	0x46118c
+reference	uniform-equipment-all-selector-choice-population	0x460fd1	0x46342c	0x463438	30	2	0x46118c
+reference	uniform-equipment-all-selector-choice-population	0x460fd1	0x46342c	0x463438	31	2	0x46118c
+reference	uniform-equipment-all-selector-choice-population	0x460fd1	0x46342c	0x463438	32	2	0x46118c
+reference	uniform-equipment-all-selector-choice-population	0x460fd1	0x46342c	0x463438	33	2	0x46118c
+reference	uniform-equipment-all-selector-choice-population	0x460fd1	0x46342c	0x463438	34	2	0x46118c
+reference	uniform-equipment-all-selector-choice-population	0x460fd1	0x46342c	0x463438	35	0	0x460fd3
+reference	uniform-equipment-all-selector-choice-population	0x4612b9	0x46345c	0x463478	0	0	0x461433
+reference	uniform-equipment-all-selector-choice-population	0x4612b9	0x46345c	0x463478	1	6	0x461601
+reference	uniform-equipment-all-selector-choice-population	0x4612b9	0x46345c	0x463478	2	1	0x4614b3
+reference	uniform-equipment-all-selector-choice-population	0x4612b9	0x46345c	0x463478	3	6	0x461601
+reference	uniform-equipment-all-selector-choice-population	0x4612b9	0x46345c	0x463478	4	6	0x461601
+reference	uniform-equipment-all-selector-choice-population	0x4612b9	0x46345c	0x463478	5	6	0x461601
+reference	uniform-equipment-all-selector-choice-population	0x4612b9	0x46345c	0x463478	6	6	0x461601
+reference	uniform-equipment-all-selector-choice-population	0x4612b9	0x46345c	0x463478	7	6	0x461601
+reference	uniform-equipment-all-selector-choice-population	0x4612b9	0x46345c	0x463478	8	6	0x461601
+reference	uniform-equipment-all-selector-choice-population	0x4612b9	0x46345c	0x463478	9	6	0x461601
+reference	uniform-equipment-all-selector-choice-population	0x4612b9	0x46345c	0x463478	10	6	0x461601
+reference	uniform-equipment-all-selector-choice-population	0x4612b9	0x46345c	0x463478	11	6	0x461601
+reference	uniform-equipment-all-selector-choice-population	0x4612b9	0x46345c	0x463478	12	6	0x461601
+reference	uniform-equipment-all-selector-choice-population	0x4612b9	0x46345c	0x463478	13	6	0x461601
+reference	uniform-equipment-all-selector-choice-population	0x4612b9	0x46345c	0x463478	14	6	0x461601
+reference	uniform-equipment-all-selector-choice-population	0x4612b9	0x46345c	0x463478	15	2	0x461533
+reference	uniform-equipment-all-selector-choice-population	0x4612b9	0x46345c	0x463478	16	6	0x461601
+reference	uniform-equipment-all-selector-choice-population	0x4612b9	0x46345c	0x463478	17	6	0x461601
+reference	uniform-equipment-all-selector-choice-population	0x4612b9	0x46345c	0x463478	18	6	0x461601
+reference	uniform-equipment-all-selector-choice-population	0x4612b9	0x46345c	0x463478	19	6	0x461601
+reference	uniform-equipment-all-selector-choice-population	0x4612b9	0x46345c	0x463478	20	6	0x461601
+reference	uniform-equipment-all-selector-choice-population	0x4612b9	0x46345c	0x463478	21	6	0x461601
+reference	uniform-equipment-all-selector-choice-population	0x4612b9	0x46345c	0x463478	22	6	0x461601
+reference	uniform-equipment-all-selector-choice-population	0x4612b9	0x46345c	0x463478	23	6	0x461601
+reference	uniform-equipment-all-selector-choice-population	0x4612b9	0x46345c	0x463478	24	6	0x461601
+reference	uniform-equipment-all-selector-choice-population	0x4612b9	0x46345c	0x463478	25	6	0x461601
+reference	uniform-equipment-all-selector-choice-population	0x4612b9	0x46345c	0x463478	26	3	0x4612bb
+reference	uniform-equipment-all-selector-choice-population	0x4612b9	0x46345c	0x463478	27	4	0x461336
+reference	uniform-equipment-all-selector-choice-population	0x4612b9	0x46345c	0x463478	28	5	0x4613b3
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		0	0	0xa83249
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		1	1	0xa833de
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		2	2	0xa835c5
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		3	3	0xa82f11
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		4	4	0xa83172
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		5	5	0xa82de5
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		6	6	0xa83680
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		7	7	0xa83736
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		8	8	0xa86522
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		9	9	0xa84a81
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		10	10	0xa840cb
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		11	11	0xa841f4
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		12	12	0xa84736
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		13	13	0xa8435c
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		14	14	0xa84669
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		15	15	0xa84807
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		16	16	0xa84877
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		17	17	0xa84931
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		18	18	0xa849a1
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		19	19	0xa84a11
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		20	20	0xa83886
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		21	21	0xa83fc7
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		22	22	0xa866e2
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		23	23	0xa86a02
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		24	24	0xa87584
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		25	25	0xa876bd
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		26	26	0xa87b5b
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		27	27	0xa87a87
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		28	28	0xa87ccb
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		29	29	0xa8789a
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		30	30	0xa83ab6
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		31	31	0xa83c00
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		32	32	0xa83a46
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		33	33	0xa839d6
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		34	34	0xa83966
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		35	35	0xa838f6
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		36	36	0xa84efc
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		37	37	0xa85d2e
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		38	38	0xa86007
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		39	39	0xa85eea
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		40	40	0xa86077
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		41	41	0xa863d8
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		42	42	0xa86442
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		43	43	0xa864b2
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		44	44	0xa86151
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		45	45	0xa85cbe
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		46	46	0xa86a35
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		47	47	0xa86ba6
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		48	48	0xa87427
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		49	49	0xa8727a
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		50	50	0xa86f2a
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		51	51	0xa8739f
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		52	52	0xa873f2
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		53	53	0xa86d36
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		54	54	0xa86e98
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		55	55	0xa84de3
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		56	56	0xa86de0
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		57	57	0xa84b17
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		58	58	0xa84c61
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		59	59	0xa84e4f
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		60	60	0xa87e00
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		61	61	0xa83c70
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		62	62	0xa83f2c
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		63	63	0xa858dc
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		64	64	0xa85c46
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		65	65	0xa85e0e
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		66	66	0xa85d9e
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		67	67	0xa859cc
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		68	68	0xa85b0d
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		69	69	0xa84f6c
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		70	70	0xa85769
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		71	71	0xa8588a
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		72	72	0xa87415
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		73	73	0xa84fc7
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		74	74	0xa860e7
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		75	75	0xa84fc7
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		76	76	0xa82fee
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		77	77	0xa85a44
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		78	78	0xa837a6
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		79	79	0xa83816
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		80	80	0xa86602
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		81	81	0xa86672
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		82	82	0xa83e52
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		83	83	0xa83ec2
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		84	84	0xa86592
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		85	85	0xa83d0b
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		86	86	0xa84432
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		87	87	0xa86752
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		88	88	0xa87118
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		89	89	0xa84e61
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		90	90	0xa84cd9
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		91	91	0xa82e7a
+reference	equipment-generic-item-type-caption	0xa82de3	0xa880e0		92	92	0xa85954
+reference	equipment-generic-item-type-caption	0xa8514b	0xa88254		0	0	0xa85155
+reference	equipment-generic-item-type-caption	0xa8514b	0xa88254		1	1	0xa85162
+reference	equipment-generic-item-type-caption	0xa8514b	0xa88254		2	2	0xa8516f
+reference	equipment-generic-item-type-caption	0xa8514b	0xa88254		3	3	0xa8530e
+reference	equipment-generic-item-type-caption	0xa8514b	0xa88254		4	4	0xa8531e
+reference	equipment-generic-item-type-caption	0xa8514b	0xa88254		5	5	0xa8532e
+reference	equipment-generic-item-type-caption	0xa8514b	0xa88254		6	6	0xa8533e
+reference	equipment-generic-item-type-caption	0xa8514b	0xa88254		7	7	0xa8534e
+reference	equipment-generic-item-type-caption	0xa8568b	0xa88274		0	0	0xa85735
+reference	equipment-generic-item-type-caption	0xa8568b	0xa88274		1	1	0xa85735
+reference	equipment-generic-item-type-caption	0xa8568b	0xa88274		2	2	0xa85735
+reference	equipment-generic-item-type-caption	0xa8568b	0xa88274		3	3	0xa85735
+reference	equipment-generic-item-type-caption	0xa8568b	0xa88274		4	4	0xa85735
+reference	equipment-generic-item-type-caption	0xa8568b	0xa88274		5	5	0xa85735
+reference	equipment-generic-item-type-caption	0xa8568b	0xa88274		6	6	0xa85735
+reference	equipment-generic-item-type-caption	0xa8568b	0xa88274		7	7	0xa85735
+reference	equipment-generic-item-type-caption	0xa86850	0xa88294		0	0	0xa86852
+reference	equipment-generic-item-type-caption	0xa86850	0xa88294		1	1	0xa869e2
+reference	equipment-generic-item-type-caption	0xa86850	0xa88294		2	2	0xa869e2
+reference	equipment-generic-item-type-caption	0xa86850	0xa88294		3	3	0xa869e2
+reference	equipment-generic-item-type-caption	0xa86850	0xa88294		4	4	0xa869e2
+reference	equipment-generic-item-type-caption	0xa86850	0xa88294		5	5	0xa869e2
+reference	equipment-generic-item-type-caption	0xa86850	0xa88294		6	6	0xa869e2
+reference	equipment-generic-item-type-caption	0xa86850	0xa88294		7	7	0xa86866
+reference	equipment-generic-item-type-caption	0xa86850	0xa88294		8	8	0xa8687a
+reference	equipment-generic-item-type-caption	0xa86850	0xa88294		9	9	0xa8688e
+reference	equipment-generic-item-type-caption	0xa86850	0xa88294		10	10	0xa868a2
+reference	equipment-generic-item-type-caption	0xa86850	0xa88294		11	11	0xa868b6
+reference	equipment-generic-item-type-caption	0xa86850	0xa88294		12	12	0xa868ca
+reference	equipment-generic-item-type-caption	0xa86850	0xa88294		13	13	0xa868de
+reference	equipment-generic-item-type-caption	0xa86850	0xa88294		14	14	0xa868f2
+reference	equipment-generic-item-type-caption	0xa86850	0xa88294		15	15	0xa86906
+reference	equipment-generic-item-type-caption	0xa86850	0xa88294		16	16	0xa8691a
+reference	equipment-generic-item-type-caption	0xa86850	0xa88294		17	17	0xa8692e
+reference	equipment-generic-item-type-caption	0xa86850	0xa88294		18	18	0xa86942
+reference	equipment-generic-item-type-caption	0xa86850	0xa88294		19	19	0xa86956
+reference	equipment-generic-item-type-caption	0xa86850	0xa88294		20	20	0xa8696a
+reference	equipment-generic-item-type-caption	0xa86850	0xa88294		21	21	0xa8697e
+reference	equipment-generic-item-type-caption	0xa86850	0xa88294		22	22	0xa86992
+reference	equipment-generic-item-type-caption	0xa86850	0xa88294		23	23	0xa869a6
+reference	equipment-generic-item-type-caption	0xa86850	0xa88294		24	24	0xa869ba
+reference	equipment-generic-item-type-caption	0xa86850	0xa88294		25	25	0xa869ce
+classic	uniform-equipment-selector-renderer	0x44def9	0x456cbc		0	0	0x44defb
+classic	uniform-equipment-selector-renderer	0x44def9	0x456cbc		1	1	0x44df31
+classic	uniform-equipment-selector-renderer	0x44def9	0x456cbc		2	2	0x44df67
+classic	uniform-equipment-selector-renderer	0x44def9	0x456cbc		3	3	0x44df9d
+classic	uniform-equipment-selector-renderer	0x44def9	0x456cbc		4	4	0x44dfd3
+classic	uniform-equipment-selector-renderer	0x44def9	0x456cbc		5	5	0x44e006
+classic	uniform-equipment-selector-renderer	0x44def9	0x456cbc		6	6	0x44e039
+classic	uniform-equipment-selector-renderer	0x44e235	0x456cd8		0	0	0x44e237
+classic	uniform-equipment-selector-renderer	0x44e235	0x456cd8		1	1	0x44e249
+classic	uniform-equipment-selector-renderer	0x44e235	0x456cd8		2	2	0x44e25b
+classic	uniform-equipment-selector-renderer	0x44e235	0x456cd8		3	3	0x44e26d
+classic	uniform-equipment-selector-renderer	0x44e235	0x456cd8		4	4	0x44e27f
+classic	uniform-equipment-selector-renderer	0x44e235	0x456cd8		5	5	0x44e291
+classic	uniform-equipment-selector-renderer	0x44e235	0x456cd8		6	6	0x44e2a3
+classic	uniform-equipment-selector-renderer	0x44e3ec	0x456cf4		0	0	0x44e3ee
+classic	uniform-equipment-selector-renderer	0x44e3ec	0x456cf4		1	1	0x44e3fa
+classic	uniform-equipment-selector-renderer	0x44e3ec	0x456cf4		2	2	0x44e406
+classic	uniform-equipment-selector-renderer	0x44e3ec	0x456cf4		3	3	0x44e412
+classic	uniform-equipment-selector-renderer	0x44e3ec	0x456cf4		4	4	0x44e41e
+classic	uniform-equipment-selector-renderer	0x44e3ec	0x456cf4		5	5	0x44e42a
+classic	uniform-equipment-selector-renderer	0x44e3ec	0x456cf4		6	6	0x44e436
+classic	uniform-equipment-selector-renderer	0x44e967	0x456d10		0	0	0x44e969
+classic	uniform-equipment-selector-renderer	0x44e967	0x456d10		1	1	0x44e975
+classic	uniform-equipment-selector-renderer	0x44e967	0x456d10		2	2	0x44e9a2
+classic	uniform-equipment-selector-renderer	0x44e967	0x456d10		3	3	0x44e9ea
+classic	uniform-equipment-selector-renderer	0x44e967	0x456d10		4	4	0x44e9ab
+classic	uniform-equipment-selector-renderer	0x44e967	0x456d10		5	5	0x44e9ea
+classic	uniform-equipment-selector-renderer	0x44e967	0x456d10		6	6	0x44e9ea
+classic	uniform-equipment-selector-renderer	0x44e967	0x456d10		7	7	0x44e9ea
+classic	uniform-equipment-selector-renderer	0x44e967	0x456d10		8	8	0x44e9ea
+classic	uniform-equipment-selector-renderer	0x44e967	0x456d10		9	9	0x44e9ea
+classic	uniform-equipment-selector-renderer	0x44e967	0x456d10		10	10	0x44e9ea
+classic	uniform-equipment-selector-renderer	0x44e967	0x456d10		11	11	0x44e9ea
+classic	uniform-equipment-selector-renderer	0x44e967	0x456d10		12	12	0x44e9ea
+classic	uniform-equipment-selector-renderer	0x44e967	0x456d10		13	13	0x44e999
+classic	uniform-equipment-selector-renderer	0x44e967	0x456d10		14	14	0x44e9ea
+classic	uniform-equipment-selector-renderer	0x44e967	0x456d10		15	15	0x44e999
+classic	uniform-equipment-selector-renderer	0x44e967	0x456d10		16	16	0x44e9b4
+classic	uniform-equipment-selector-renderer	0x44e967	0x456d10		17	17	0x44e9bd
+classic	uniform-equipment-selector-renderer	0x44e967	0x456d10		18	18	0x44e9c6
+classic	uniform-equipment-selector-renderer	0x44e967	0x456d10		19	19	0x44e9cf
+classic	uniform-equipment-selector-renderer	0x44e967	0x456d10		20	20	0x44e9d8
+classic	uniform-equipment-selector-renderer	0x44e967	0x456d10		21	21	0x44e9e1
+classic	uniform-equipment-selector-renderer	0x44e967	0x456d10		22	22	0x44e9ea
+classic	uniform-equipment-selector-renderer	0x44e967	0x456d10		23	23	0x44e9ea
+classic	uniform-equipment-selector-renderer	0x44e967	0x456d10		24	24	0x44e9ea
+classic	uniform-equipment-selector-renderer	0x44e967	0x456d10		25	25	0x44e9ea
+classic	uniform-equipment-selector-renderer	0x44e967	0x456d10		26	26	0x44e990
+classic	uniform-equipment-selector-renderer	0x44e967	0x456d10		27	27	0x44e97e
+classic	uniform-equipment-selector-renderer	0x44e967	0x456d10		28	28	0x44e987
+classic	uniform-equipment-selector-renderer	0x44f2f3	0x456d84	0x456da4	0	0	0x44f2f5
+classic	uniform-equipment-selector-renderer	0x44f2f3	0x456d84	0x456da4	1	1	0x44f2fd
+classic	uniform-equipment-selector-renderer	0x44f2f3	0x456d84	0x456da4	2	2	0x44f31d
+classic	uniform-equipment-selector-renderer	0x44f2f3	0x456d84	0x456da4	3	3	0x44f325
+classic	uniform-equipment-selector-renderer	0x44f2f3	0x456d84	0x456da4	4	4	0x44f315
+classic	uniform-equipment-selector-renderer	0x44f2f3	0x456d84	0x456da4	5	5	0x44f30d
+classic	uniform-equipment-selector-renderer	0x44f2f3	0x456d84	0x456da4	6	7	0x44f32b
+classic	uniform-equipment-selector-renderer	0x44f2f3	0x456d84	0x456da4	7	7	0x44f32b
+classic	uniform-equipment-selector-renderer	0x44f2f3	0x456d84	0x456da4	8	7	0x44f32b
+classic	uniform-equipment-selector-renderer	0x44f2f3	0x456d84	0x456da4	9	7	0x44f32b
+classic	uniform-equipment-selector-renderer	0x44f2f3	0x456d84	0x456da4	10	7	0x44f32b
+classic	uniform-equipment-selector-renderer	0x44f2f3	0x456d84	0x456da4	11	7	0x44f32b
+classic	uniform-equipment-selector-renderer	0x44f2f3	0x456d84	0x456da4	12	7	0x44f32b
+classic	uniform-equipment-selector-renderer	0x44f2f3	0x456d84	0x456da4	13	7	0x44f32b
+classic	uniform-equipment-selector-renderer	0x44f2f3	0x456d84	0x456da4	14	7	0x44f32b
+classic	uniform-equipment-selector-renderer	0x44f2f3	0x456d84	0x456da4	15	7	0x44f32b
+classic	uniform-equipment-selector-renderer	0x44f2f3	0x456d84	0x456da4	16	7	0x44f32b
+classic	uniform-equipment-selector-renderer	0x44f2f3	0x456d84	0x456da4	17	7	0x44f32b
+classic	uniform-equipment-selector-renderer	0x44f2f3	0x456d84	0x456da4	18	7	0x44f32b
+classic	uniform-equipment-selector-renderer	0x44f2f3	0x456d84	0x456da4	19	7	0x44f32b
+classic	uniform-equipment-selector-renderer	0x44f2f3	0x456d84	0x456da4	20	7	0x44f32b
+classic	uniform-equipment-selector-renderer	0x44f2f3	0x456d84	0x456da4	21	7	0x44f32b
+classic	uniform-equipment-selector-renderer	0x44f2f3	0x456d84	0x456da4	22	7	0x44f32b
+classic	uniform-equipment-selector-renderer	0x44f2f3	0x456d84	0x456da4	23	7	0x44f32b
+classic	uniform-equipment-selector-renderer	0x44f2f3	0x456d84	0x456da4	24	7	0x44f32b
+classic	uniform-equipment-selector-renderer	0x44f2f3	0x456d84	0x456da4	25	7	0x44f32b
+classic	uniform-equipment-selector-renderer	0x44f2f3	0x456d84	0x456da4	26	7	0x44f32b
+classic	uniform-equipment-selector-renderer	0x44f2f3	0x456d84	0x456da4	27	7	0x44f32b
+classic	uniform-equipment-selector-renderer	0x44f2f3	0x456d84	0x456da4	28	7	0x44f32b
+classic	uniform-equipment-selector-renderer	0x44f2f3	0x456d84	0x456da4	29	7	0x44f32b
+classic	uniform-equipment-selector-renderer	0x44f2f3	0x456d84	0x456da4	30	7	0x44f32b
+classic	uniform-equipment-selector-renderer	0x44f2f3	0x456d84	0x456da4	31	7	0x44f32b
+classic	uniform-equipment-selector-renderer	0x44f2f3	0x456d84	0x456da4	32	7	0x44f32b
+classic	uniform-equipment-selector-renderer	0x44f2f3	0x456d84	0x456da4	33	7	0x44f32b
+classic	uniform-equipment-selector-renderer	0x44f2f3	0x456d84	0x456da4	34	7	0x44f32b
+classic	uniform-equipment-selector-renderer	0x44f2f3	0x456d84	0x456da4	35	7	0x44f32b
+classic	uniform-equipment-selector-renderer	0x44f2f3	0x456d84	0x456da4	36	6	0x44f305
+classic	uniform-equipment-selector-renderer	0x450ecc	0x456dcc		0	0	0x450ece
+classic	uniform-equipment-selector-renderer	0x450ecc	0x456dcc		1	1	0x450ed7
+classic	uniform-equipment-selector-renderer	0x450ecc	0x456dcc		2	2	0x450f04
+classic	uniform-equipment-selector-renderer	0x450ecc	0x456dcc		3	3	0x450f4c
+classic	uniform-equipment-selector-renderer	0x450ecc	0x456dcc		4	4	0x450f0d
+classic	uniform-equipment-selector-renderer	0x450ecc	0x456dcc		5	5	0x450f4c
+classic	uniform-equipment-selector-renderer	0x450ecc	0x456dcc		6	6	0x450f4c
+classic	uniform-equipment-selector-renderer	0x450ecc	0x456dcc		7	7	0x450f4c
+classic	uniform-equipment-selector-renderer	0x450ecc	0x456dcc		8	8	0x450f4c
+classic	uniform-equipment-selector-renderer	0x450ecc	0x456dcc		9	9	0x450f4c
+classic	uniform-equipment-selector-renderer	0x450ecc	0x456dcc		10	10	0x450f4c
+classic	uniform-equipment-selector-renderer	0x450ecc	0x456dcc		11	11	0x450f4c
+classic	uniform-equipment-selector-renderer	0x450ecc	0x456dcc		12	12	0x450f4c
+classic	uniform-equipment-selector-renderer	0x450ecc	0x456dcc		13	13	0x450efb
+classic	uniform-equipment-selector-renderer	0x450ecc	0x456dcc		14	14	0x450f4c
+classic	uniform-equipment-selector-renderer	0x450ecc	0x456dcc		15	15	0x450efb
+classic	uniform-equipment-selector-renderer	0x450ecc	0x456dcc		16	16	0x450f16
+classic	uniform-equipment-selector-renderer	0x450ecc	0x456dcc		17	17	0x450f1f
+classic	uniform-equipment-selector-renderer	0x450ecc	0x456dcc		18	18	0x450f28
+classic	uniform-equipment-selector-renderer	0x450ecc	0x456dcc		19	19	0x450f31
+classic	uniform-equipment-selector-renderer	0x450ecc	0x456dcc		20	20	0x450f3a
+classic	uniform-equipment-selector-renderer	0x450ecc	0x456dcc		21	21	0x450f43
+classic	uniform-equipment-selector-renderer	0x450ecc	0x456dcc		22	22	0x450f4c
+classic	uniform-equipment-selector-renderer	0x450ecc	0x456dcc		23	23	0x450f4c
+classic	uniform-equipment-selector-renderer	0x450ecc	0x456dcc		24	24	0x450f4c
+classic	uniform-equipment-selector-renderer	0x450ecc	0x456dcc		25	25	0x450f4c
+classic	uniform-equipment-selector-renderer	0x450ecc	0x456dcc		26	26	0x450ef2
+classic	uniform-equipment-selector-renderer	0x450ecc	0x456dcc		27	27	0x450ee0
+classic	uniform-equipment-selector-renderer	0x450ecc	0x456dcc		28	28	0x450ee9
+classic	uniform-equipment-selector-renderer	0x451b7e	0x456e40		0	0	0x451b80
+classic	uniform-equipment-selector-renderer	0x451b7e	0x456e40		1	1	0x451b8c
+classic	uniform-equipment-selector-renderer	0x451b7e	0x456e40		2	2	0x451bcb
+classic	uniform-equipment-selector-renderer	0x451b7e	0x456e40		3	3	0x451c1f
+classic	uniform-equipment-selector-renderer	0x451b7e	0x456e40		4	4	0x451bd4
+classic	uniform-equipment-selector-renderer	0x451b7e	0x456e40		5	5	0x451c1f
+classic	uniform-equipment-selector-renderer	0x451b7e	0x456e40		6	6	0x451c1f
+classic	uniform-equipment-selector-renderer	0x451b7e	0x456e40		7	7	0x451c1f
+classic	uniform-equipment-selector-renderer	0x451b7e	0x456e40		8	8	0x451c1f
+classic	uniform-equipment-selector-renderer	0x451b7e	0x456e40		9	9	0x451c1f
+classic	uniform-equipment-selector-renderer	0x451b7e	0x456e40		10	10	0x451c1f
+classic	uniform-equipment-selector-renderer	0x451b7e	0x456e40		11	11	0x451c1f
+classic	uniform-equipment-selector-renderer	0x451b7e	0x456e40		12	12	0x451c1f
+classic	uniform-equipment-selector-renderer	0x451b7e	0x456e40		13	13	0x451bc2
+classic	uniform-equipment-selector-renderer	0x451b7e	0x456e40		14	14	0x451c1f
+classic	uniform-equipment-selector-renderer	0x451b7e	0x456e40		15	15	0x451bc2
+classic	uniform-equipment-selector-renderer	0x451b7e	0x456e40		16	16	0x451bdd
+classic	uniform-equipment-selector-renderer	0x451b7e	0x456e40		17	17	0x451be6
+classic	uniform-equipment-selector-renderer	0x451b7e	0x456e40		18	18	0x451bef
+classic	uniform-equipment-selector-renderer	0x451b7e	0x456e40		19	19	0x451bf8
+classic	uniform-equipment-selector-renderer	0x451b7e	0x456e40		20	20	0x451c01
+classic	uniform-equipment-selector-renderer	0x451b7e	0x456e40		21	21	0x451c16
+classic	uniform-equipment-selector-renderer	0x451b7e	0x456e40		22	22	0x451c1f
+classic	uniform-equipment-selector-renderer	0x451b7e	0x456e40		23	23	0x451c1f
+classic	uniform-equipment-selector-renderer	0x451b7e	0x456e40		24	24	0x451c1f
+classic	uniform-equipment-selector-renderer	0x451b7e	0x456e40		25	25	0x451c1f
+classic	uniform-equipment-selector-renderer	0x451b7e	0x456e40		26	26	0x451bb9
+classic	uniform-equipment-selector-renderer	0x451b7e	0x456e40		27	27	0x451b98
+classic	uniform-equipment-selector-renderer	0x451b7e	0x456e40		28	28	0x451ba4
+classic	uniform-equipment-selector-renderer	0x4527eb	0x456eb4		0	0	0x4527ed
+classic	uniform-equipment-selector-renderer	0x4527eb	0x456eb4		1	1	0x4527f9
+classic	uniform-equipment-selector-renderer	0x4527eb	0x456eb4		2	2	0x452838
+classic	uniform-equipment-selector-renderer	0x4527eb	0x456eb4		3	3	0x45288c
+classic	uniform-equipment-selector-renderer	0x4527eb	0x456eb4		4	4	0x452841
+classic	uniform-equipment-selector-renderer	0x4527eb	0x456eb4		5	5	0x45288c
+classic	uniform-equipment-selector-renderer	0x4527eb	0x456eb4		6	6	0x45288c
+classic	uniform-equipment-selector-renderer	0x4527eb	0x456eb4		7	7	0x45288c
+classic	uniform-equipment-selector-renderer	0x4527eb	0x456eb4		8	8	0x45288c
+classic	uniform-equipment-selector-renderer	0x4527eb	0x456eb4		9	9	0x45288c
+classic	uniform-equipment-selector-renderer	0x4527eb	0x456eb4		10	10	0x45288c
+classic	uniform-equipment-selector-renderer	0x4527eb	0x456eb4		11	11	0x45288c
+classic	uniform-equipment-selector-renderer	0x4527eb	0x456eb4		12	12	0x45288c
+classic	uniform-equipment-selector-renderer	0x4527eb	0x456eb4		13	13	0x45282f
+classic	uniform-equipment-selector-renderer	0x4527eb	0x456eb4		14	14	0x45288c
+classic	uniform-equipment-selector-renderer	0x4527eb	0x456eb4		15	15	0x45282f
+classic	uniform-equipment-selector-renderer	0x4527eb	0x456eb4		16	16	0x45284a
+classic	uniform-equipment-selector-renderer	0x4527eb	0x456eb4		17	17	0x452853
+classic	uniform-equipment-selector-renderer	0x4527eb	0x456eb4		18	18	0x45285c
+classic	uniform-equipment-selector-renderer	0x4527eb	0x456eb4		19	19	0x452865
+classic	uniform-equipment-selector-renderer	0x4527eb	0x456eb4		20	20	0x45286e
+classic	uniform-equipment-selector-renderer	0x4527eb	0x456eb4		21	21	0x452883
+classic	uniform-equipment-selector-renderer	0x4527eb	0x456eb4		22	22	0x45288c
+classic	uniform-equipment-selector-renderer	0x4527eb	0x456eb4		23	23	0x45288c
+classic	uniform-equipment-selector-renderer	0x4527eb	0x456eb4		24	24	0x45288c
+classic	uniform-equipment-selector-renderer	0x4527eb	0x456eb4		25	25	0x45288c
+classic	uniform-equipment-selector-renderer	0x4527eb	0x456eb4		26	26	0x452826
+classic	uniform-equipment-selector-renderer	0x4527eb	0x456eb4		27	27	0x452805
+classic	uniform-equipment-selector-renderer	0x4527eb	0x456eb4		28	28	0x452811
+classic	uniform-equipment-selector-renderer	0x454efe	0x456f28		0	0	0x454f20
+classic	uniform-equipment-selector-renderer	0x454efe	0x456f28		1	1	0x455180
+classic	uniform-equipment-selector-renderer	0x454efe	0x456f28		2	2	0x4553d0
+classic	uniform-equipment-selector-renderer	0x454efe	0x456f28		3	3	0x455620
+classic	uniform-equipment-selector-renderer	0x454efe	0x456f28		4	4	0x455870
+classic	uniform-equipment-selector-renderer	0x454efe	0x456f28		5	5	0x455ac0
+classic	uniform-equipment-selector-renderer	0x454efe	0x456f28		6	6	0x455d10
+classic	uniform-equipment-selector-renderer	0x454efe	0x456f28		7	7	0x455f60
+classic	uniform-equipment-selector-renderer	0x454efe	0x456f28		8	8	0x456190
+classic	uniform-equipment-selector-renderer	0x454efe	0x456f28		9	9	0x456756
+classic	uniform-equipment-selector-renderer	0x454efe	0x456f28		10	10	0x4568d7
+classic	uniform-equipment-selector-pointer-input	0x45742b	0x45b95c		0	0	0x45742d
+classic	uniform-equipment-selector-pointer-input	0x45742b	0x45b95c		1	1	0x457437
+classic	uniform-equipment-selector-pointer-input	0x45742b	0x45b95c		2	2	0x457441
+classic	uniform-equipment-selector-pointer-input	0x45742b	0x45b95c		3	3	0x45744b
+classic	uniform-equipment-selector-pointer-input	0x45742b	0x45b95c		4	4	0x457455
+classic	uniform-equipment-selector-pointer-input	0x45742b	0x45b95c		5	5	0x45745f
+classic	uniform-equipment-selector-pointer-input	0x45742b	0x45b95c		6	6	0x457469
+classic	uniform-equipment-selector-pointer-input	0x45890c	0x45b978	0x45b998	0	0	0x45890e
+classic	uniform-equipment-selector-pointer-input	0x45890c	0x45b978	0x45b998	1	1	0x45891e
+classic	uniform-equipment-selector-pointer-input	0x45890c	0x45b978	0x45b998	2	2	0x45895f
+classic	uniform-equipment-selector-pointer-input	0x45890c	0x45b978	0x45b998	3	3	0x45896f
+classic	uniform-equipment-selector-pointer-input	0x45890c	0x45b978	0x45b998	4	4	0x45894f
+classic	uniform-equipment-selector-pointer-input	0x45890c	0x45b978	0x45b998	5	5	0x45893f
+classic	uniform-equipment-selector-pointer-input	0x45890c	0x45b978	0x45b998	6	7	0x458d27
+classic	uniform-equipment-selector-pointer-input	0x45890c	0x45b978	0x45b998	7	7	0x458d27
+classic	uniform-equipment-selector-pointer-input	0x45890c	0x45b978	0x45b998	8	7	0x458d27
+classic	uniform-equipment-selector-pointer-input	0x45890c	0x45b978	0x45b998	9	7	0x458d27
+classic	uniform-equipment-selector-pointer-input	0x45890c	0x45b978	0x45b998	10	7	0x458d27
+classic	uniform-equipment-selector-pointer-input	0x45890c	0x45b978	0x45b998	11	7	0x458d27
+classic	uniform-equipment-selector-pointer-input	0x45890c	0x45b978	0x45b998	12	7	0x458d27
+classic	uniform-equipment-selector-pointer-input	0x45890c	0x45b978	0x45b998	13	7	0x458d27
+classic	uniform-equipment-selector-pointer-input	0x45890c	0x45b978	0x45b998	14	7	0x458d27
+classic	uniform-equipment-selector-pointer-input	0x45890c	0x45b978	0x45b998	15	7	0x458d27
+classic	uniform-equipment-selector-pointer-input	0x45890c	0x45b978	0x45b998	16	7	0x458d27
+classic	uniform-equipment-selector-pointer-input	0x45890c	0x45b978	0x45b998	17	7	0x458d27
+classic	uniform-equipment-selector-pointer-input	0x45890c	0x45b978	0x45b998	18	7	0x458d27
+classic	uniform-equipment-selector-pointer-input	0x45890c	0x45b978	0x45b998	19	7	0x458d27
+classic	uniform-equipment-selector-pointer-input	0x45890c	0x45b978	0x45b998	20	7	0x458d27
+classic	uniform-equipment-selector-pointer-input	0x45890c	0x45b978	0x45b998	21	7	0x458d27
+classic	uniform-equipment-selector-pointer-input	0x45890c	0x45b978	0x45b998	22	7	0x458d27
+classic	uniform-equipment-selector-pointer-input	0x45890c	0x45b978	0x45b998	23	7	0x458d27
+classic	uniform-equipment-selector-pointer-input	0x45890c	0x45b978	0x45b998	24	7	0x458d27
+classic	uniform-equipment-selector-pointer-input	0x45890c	0x45b978	0x45b998	25	7	0x458d27
+classic	uniform-equipment-selector-pointer-input	0x45890c	0x45b978	0x45b998	26	7	0x458d27
+classic	uniform-equipment-selector-pointer-input	0x45890c	0x45b978	0x45b998	27	7	0x458d27
+classic	uniform-equipment-selector-pointer-input	0x45890c	0x45b978	0x45b998	28	7	0x458d27
+classic	uniform-equipment-selector-pointer-input	0x45890c	0x45b978	0x45b998	29	7	0x458d27
+classic	uniform-equipment-selector-pointer-input	0x45890c	0x45b978	0x45b998	30	7	0x458d27
+classic	uniform-equipment-selector-pointer-input	0x45890c	0x45b978	0x45b998	31	7	0x458d27
+classic	uniform-equipment-selector-pointer-input	0x45890c	0x45b978	0x45b998	32	7	0x458d27
+classic	uniform-equipment-selector-pointer-input	0x45890c	0x45b978	0x45b998	33	7	0x458d27
+classic	uniform-equipment-selector-pointer-input	0x45890c	0x45b978	0x45b998	34	7	0x458d27
+classic	uniform-equipment-selector-pointer-input	0x45890c	0x45b978	0x45b998	35	7	0x458d27
+classic	uniform-equipment-selector-pointer-input	0x45890c	0x45b978	0x45b998	36	6	0x45892e
+classic	uniform-equipment-all-selector-choice-population	0x45d2ae	0x460fac		0	0	0x45d2b0
+classic	uniform-equipment-all-selector-choice-population	0x45d2ae	0x460fac		1	1	0x45d64c
+classic	uniform-equipment-all-selector-choice-population	0x45d2ae	0x460fac		2	2	0x45d965
+classic	uniform-equipment-all-selector-choice-population	0x45d2ae	0x460fac		3	3	0x45dc74
+classic	uniform-equipment-all-selector-choice-population	0x45d2ae	0x460fac		4	4	0x45df85
+classic	uniform-equipment-all-selector-choice-population	0x45d2ae	0x460fac		5	5	0x45e2f4
+classic	uniform-equipment-all-selector-choice-population	0x45d2ae	0x460fac		6	6	0x45e605
+classic	uniform-equipment-all-selector-choice-population	0x45d2ae	0x460fac		7	7	0x45eb28
+classic	uniform-equipment-all-selector-choice-population	0x45d2ae	0x460fac		8	8	0x45fa6f
+classic	uniform-equipment-all-selector-choice-population	0x45d2ae	0x460fac		9	9	0x45fc6b
+classic	uniform-equipment-all-selector-choice-population	0x45d2ae	0x460fac		10	10	0x45ff2b
+classic	uniform-equipment-all-selector-choice-population	0x45d2ae	0x460fac		11	11	0x4601eb
+classic	uniform-equipment-all-selector-choice-population	0x45d2ae	0x460fac		12	12	0x4604ab
+classic	uniform-equipment-all-selector-choice-population	0x45d2ae	0x460fac		13	13	0x46076b
+classic	uniform-equipment-all-selector-choice-population	0x45d2ae	0x460fac		14	14	0x460a2b
+classic	uniform-equipment-all-selector-choice-population	0x45d2ae	0x460fac		15	15	0x460ceb
+classic	uniform-equipment-all-selector-choice-population	0x45eb91	0x460fec	0x460ff8	0	0	0x45eb93
+classic	uniform-equipment-all-selector-choice-population	0x45eb91	0x460fec	0x460ff8	1	0	0x45eb93
+classic	uniform-equipment-all-selector-choice-population	0x45eb91	0x460fec	0x460ff8	2	1	0x45ed24
+classic	uniform-equipment-all-selector-choice-population	0x45eb91	0x460fec	0x460ff8	3	0	0x45eb93
+classic	uniform-equipment-all-selector-choice-population	0x45eb91	0x460fec	0x460ff8	4	0	0x45eb93
+classic	uniform-equipment-all-selector-choice-population	0x45eb91	0x460fec	0x460ff8	5	2	0x45ed4c
+classic	uniform-equipment-all-selector-choice-population	0x45eb91	0x460fec	0x460ff8	6	2	0x45ed4c
+classic	uniform-equipment-all-selector-choice-population	0x45eb91	0x460fec	0x460ff8	7	2	0x45ed4c
+classic	uniform-equipment-all-selector-choice-population	0x45eb91	0x460fec	0x460ff8	8	2	0x45ed4c
+classic	uniform-equipment-all-selector-choice-population	0x45eb91	0x460fec	0x460ff8	9	2	0x45ed4c
+classic	uniform-equipment-all-selector-choice-population	0x45eb91	0x460fec	0x460ff8	10	2	0x45ed4c
+classic	uniform-equipment-all-selector-choice-population	0x45eb91	0x460fec	0x460ff8	11	2	0x45ed4c
+classic	uniform-equipment-all-selector-choice-population	0x45eb91	0x460fec	0x460ff8	12	2	0x45ed4c
+classic	uniform-equipment-all-selector-choice-population	0x45eb91	0x460fec	0x460ff8	13	2	0x45ed4c
+classic	uniform-equipment-all-selector-choice-population	0x45eb91	0x460fec	0x460ff8	14	2	0x45ed4c
+classic	uniform-equipment-all-selector-choice-population	0x45eb91	0x460fec	0x460ff8	15	2	0x45ed4c
+classic	uniform-equipment-all-selector-choice-population	0x45eb91	0x460fec	0x460ff8	16	2	0x45ed4c
+classic	uniform-equipment-all-selector-choice-population	0x45eb91	0x460fec	0x460ff8	17	2	0x45ed4c
+classic	uniform-equipment-all-selector-choice-population	0x45eb91	0x460fec	0x460ff8	18	2	0x45ed4c
+classic	uniform-equipment-all-selector-choice-population	0x45eb91	0x460fec	0x460ff8	19	2	0x45ed4c
+classic	uniform-equipment-all-selector-choice-population	0x45eb91	0x460fec	0x460ff8	20	2	0x45ed4c
+classic	uniform-equipment-all-selector-choice-population	0x45eb91	0x460fec	0x460ff8	21	2	0x45ed4c
+classic	uniform-equipment-all-selector-choice-population	0x45eb91	0x460fec	0x460ff8	22	2	0x45ed4c
+classic	uniform-equipment-all-selector-choice-population	0x45eb91	0x460fec	0x460ff8	23	2	0x45ed4c
+classic	uniform-equipment-all-selector-choice-population	0x45eb91	0x460fec	0x460ff8	24	2	0x45ed4c
+classic	uniform-equipment-all-selector-choice-population	0x45eb91	0x460fec	0x460ff8	25	2	0x45ed4c
+classic	uniform-equipment-all-selector-choice-population	0x45eb91	0x460fec	0x460ff8	26	2	0x45ed4c
+classic	uniform-equipment-all-selector-choice-population	0x45eb91	0x460fec	0x460ff8	27	2	0x45ed4c
+classic	uniform-equipment-all-selector-choice-population	0x45eb91	0x460fec	0x460ff8	28	2	0x45ed4c
+classic	uniform-equipment-all-selector-choice-population	0x45eb91	0x460fec	0x460ff8	29	2	0x45ed4c
+classic	uniform-equipment-all-selector-choice-population	0x45eb91	0x460fec	0x460ff8	30	2	0x45ed4c
+classic	uniform-equipment-all-selector-choice-population	0x45eb91	0x460fec	0x460ff8	31	2	0x45ed4c
+classic	uniform-equipment-all-selector-choice-population	0x45eb91	0x460fec	0x460ff8	32	2	0x45ed4c
+classic	uniform-equipment-all-selector-choice-population	0x45eb91	0x460fec	0x460ff8	33	2	0x45ed4c
+classic	uniform-equipment-all-selector-choice-population	0x45eb91	0x460fec	0x460ff8	34	2	0x45ed4c
+classic	uniform-equipment-all-selector-choice-population	0x45eb91	0x460fec	0x460ff8	35	0	0x45eb93
+classic	uniform-equipment-all-selector-choice-population	0x45ee79	0x46101c	0x461038	0	0	0x45eff3
+classic	uniform-equipment-all-selector-choice-population	0x45ee79	0x46101c	0x461038	1	6	0x45f1c1
+classic	uniform-equipment-all-selector-choice-population	0x45ee79	0x46101c	0x461038	2	1	0x45f073
+classic	uniform-equipment-all-selector-choice-population	0x45ee79	0x46101c	0x461038	3	6	0x45f1c1
+classic	uniform-equipment-all-selector-choice-population	0x45ee79	0x46101c	0x461038	4	6	0x45f1c1
+classic	uniform-equipment-all-selector-choice-population	0x45ee79	0x46101c	0x461038	5	6	0x45f1c1
+classic	uniform-equipment-all-selector-choice-population	0x45ee79	0x46101c	0x461038	6	6	0x45f1c1
+classic	uniform-equipment-all-selector-choice-population	0x45ee79	0x46101c	0x461038	7	6	0x45f1c1
+classic	uniform-equipment-all-selector-choice-population	0x45ee79	0x46101c	0x461038	8	6	0x45f1c1
+classic	uniform-equipment-all-selector-choice-population	0x45ee79	0x46101c	0x461038	9	6	0x45f1c1
+classic	uniform-equipment-all-selector-choice-population	0x45ee79	0x46101c	0x461038	10	6	0x45f1c1
+classic	uniform-equipment-all-selector-choice-population	0x45ee79	0x46101c	0x461038	11	6	0x45f1c1
+classic	uniform-equipment-all-selector-choice-population	0x45ee79	0x46101c	0x461038	12	6	0x45f1c1
+classic	uniform-equipment-all-selector-choice-population	0x45ee79	0x46101c	0x461038	13	6	0x45f1c1
+classic	uniform-equipment-all-selector-choice-population	0x45ee79	0x46101c	0x461038	14	6	0x45f1c1
+classic	uniform-equipment-all-selector-choice-population	0x45ee79	0x46101c	0x461038	15	2	0x45f0f3
+classic	uniform-equipment-all-selector-choice-population	0x45ee79	0x46101c	0x461038	16	6	0x45f1c1
+classic	uniform-equipment-all-selector-choice-population	0x45ee79	0x46101c	0x461038	17	6	0x45f1c1
+classic	uniform-equipment-all-selector-choice-population	0x45ee79	0x46101c	0x461038	18	6	0x45f1c1
+classic	uniform-equipment-all-selector-choice-population	0x45ee79	0x46101c	0x461038	19	6	0x45f1c1
+classic	uniform-equipment-all-selector-choice-population	0x45ee79	0x46101c	0x461038	20	6	0x45f1c1
+classic	uniform-equipment-all-selector-choice-population	0x45ee79	0x46101c	0x461038	21	6	0x45f1c1
+classic	uniform-equipment-all-selector-choice-population	0x45ee79	0x46101c	0x461038	22	6	0x45f1c1
+classic	uniform-equipment-all-selector-choice-population	0x45ee79	0x46101c	0x461038	23	6	0x45f1c1
+classic	uniform-equipment-all-selector-choice-population	0x45ee79	0x46101c	0x461038	24	6	0x45f1c1
+classic	uniform-equipment-all-selector-choice-population	0x45ee79	0x46101c	0x461038	25	6	0x45f1c1
+classic	uniform-equipment-all-selector-choice-population	0x45ee79	0x46101c	0x461038	26	3	0x45ee7b
+classic	uniform-equipment-all-selector-choice-population	0x45ee79	0x46101c	0x461038	27	4	0x45eef6
+classic	uniform-equipment-all-selector-choice-population	0x45ee79	0x46101c	0x461038	28	5	0x45ef73
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		0	0	0xa802c9
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		1	1	0xa8045e
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		2	2	0xa80645
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		3	3	0xa7ff91
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		4	4	0xa801f2
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		5	5	0xa7fe65
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		6	6	0xa80700
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		7	7	0xa807b6
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		8	8	0xa835a2
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		9	9	0xa81b01
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		10	10	0xa8114b
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		11	11	0xa81274
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		12	12	0xa817b6
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		13	13	0xa813dc
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		14	14	0xa816e9
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		15	15	0xa81887
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		16	16	0xa818f7
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		17	17	0xa819b1
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		18	18	0xa81a21
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		19	19	0xa81a91
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		20	20	0xa80906
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		21	21	0xa81047
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		22	22	0xa83762
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		23	23	0xa83a82
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		24	24	0xa84604
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		25	25	0xa8473d
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		26	26	0xa84bdb
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		27	27	0xa84b07
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		28	28	0xa84d4b
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		29	29	0xa8491a
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		30	30	0xa80b36
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		31	31	0xa80c80
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		32	32	0xa80ac6
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		33	33	0xa80a56
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		34	34	0xa809e6
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		35	35	0xa80976
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		36	36	0xa81f7c
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		37	37	0xa82dae
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		38	38	0xa83087
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		39	39	0xa82f6a
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		40	40	0xa830f7
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		41	41	0xa83458
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		42	42	0xa834c2
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		43	43	0xa83532
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		44	44	0xa831d1
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		45	45	0xa82d3e
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		46	46	0xa83ab5
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		47	47	0xa83c26
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		48	48	0xa844a7
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		49	49	0xa842fa
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		50	50	0xa83faa
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		51	51	0xa8441f
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		52	52	0xa84472
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		53	53	0xa83db6
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		54	54	0xa83f18
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		55	55	0xa81e63
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		56	56	0xa83e60
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		57	57	0xa81b97
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		58	58	0xa81ce1
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		59	59	0xa81ecf
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		60	60	0xa84e80
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		61	61	0xa80cf0
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		62	62	0xa80fac
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		63	63	0xa8295c
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		64	64	0xa82cc6
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		65	65	0xa82e8e
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		66	66	0xa82e1e
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		67	67	0xa82a4c
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		68	68	0xa82b8d
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		69	69	0xa81fec
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		70	70	0xa827e9
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		71	71	0xa8290a
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		72	72	0xa84495
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		73	73	0xa82047
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		74	74	0xa83167
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		75	75	0xa82047
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		76	76	0xa8006e
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		77	77	0xa82ac4
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		78	78	0xa80826
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		79	79	0xa80896
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		80	80	0xa83682
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		81	81	0xa836f2
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		82	82	0xa80ed2
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		83	83	0xa80f42
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		84	84	0xa83612
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		85	85	0xa80d8b
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		86	86	0xa814b2
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		87	87	0xa837d2
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		88	88	0xa84198
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		89	89	0xa81ee1
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		90	90	0xa81d59
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		91	91	0xa7fefa
+classic	equipment-generic-item-type-caption	0xa7fe63	0xa85160		92	92	0xa829d4
+classic	equipment-generic-item-type-caption	0xa821cb	0xa852d4		0	0	0xa821d5
+classic	equipment-generic-item-type-caption	0xa821cb	0xa852d4		1	1	0xa821e2
+classic	equipment-generic-item-type-caption	0xa821cb	0xa852d4		2	2	0xa821ef
+classic	equipment-generic-item-type-caption	0xa821cb	0xa852d4		3	3	0xa8238e
+classic	equipment-generic-item-type-caption	0xa821cb	0xa852d4		4	4	0xa8239e
+classic	equipment-generic-item-type-caption	0xa821cb	0xa852d4		5	5	0xa823ae
+classic	equipment-generic-item-type-caption	0xa821cb	0xa852d4		6	6	0xa823be
+classic	equipment-generic-item-type-caption	0xa821cb	0xa852d4		7	7	0xa823ce
+classic	equipment-generic-item-type-caption	0xa8270b	0xa852f4		0	0	0xa827b5
+classic	equipment-generic-item-type-caption	0xa8270b	0xa852f4		1	1	0xa827b5
+classic	equipment-generic-item-type-caption	0xa8270b	0xa852f4		2	2	0xa827b5
+classic	equipment-generic-item-type-caption	0xa8270b	0xa852f4		3	3	0xa827b5
+classic	equipment-generic-item-type-caption	0xa8270b	0xa852f4		4	4	0xa827b5
+classic	equipment-generic-item-type-caption	0xa8270b	0xa852f4		5	5	0xa827b5
+classic	equipment-generic-item-type-caption	0xa8270b	0xa852f4		6	6	0xa827b5
+classic	equipment-generic-item-type-caption	0xa8270b	0xa852f4		7	7	0xa827b5
+classic	equipment-generic-item-type-caption	0xa838d0	0xa85314		0	0	0xa838d2
+classic	equipment-generic-item-type-caption	0xa838d0	0xa85314		1	1	0xa83a62
+classic	equipment-generic-item-type-caption	0xa838d0	0xa85314		2	2	0xa83a62
+classic	equipment-generic-item-type-caption	0xa838d0	0xa85314		3	3	0xa83a62
+classic	equipment-generic-item-type-caption	0xa838d0	0xa85314		4	4	0xa83a62
+classic	equipment-generic-item-type-caption	0xa838d0	0xa85314		5	5	0xa83a62
+classic	equipment-generic-item-type-caption	0xa838d0	0xa85314		6	6	0xa83a62
+classic	equipment-generic-item-type-caption	0xa838d0	0xa85314		7	7	0xa838e6
+classic	equipment-generic-item-type-caption	0xa838d0	0xa85314		8	8	0xa838fa
+classic	equipment-generic-item-type-caption	0xa838d0	0xa85314		9	9	0xa8390e
+classic	equipment-generic-item-type-caption	0xa838d0	0xa85314		10	10	0xa83922
+classic	equipment-generic-item-type-caption	0xa838d0	0xa85314		11	11	0xa83936
+classic	equipment-generic-item-type-caption	0xa838d0	0xa85314		12	12	0xa8394a
+classic	equipment-generic-item-type-caption	0xa838d0	0xa85314		13	13	0xa8395e
+classic	equipment-generic-item-type-caption	0xa838d0	0xa85314		14	14	0xa83972
+classic	equipment-generic-item-type-caption	0xa838d0	0xa85314		15	15	0xa83986
+classic	equipment-generic-item-type-caption	0xa838d0	0xa85314		16	16	0xa8399a
+classic	equipment-generic-item-type-caption	0xa838d0	0xa85314		17	17	0xa839ae
+classic	equipment-generic-item-type-caption	0xa838d0	0xa85314		18	18	0xa839c2
+classic	equipment-generic-item-type-caption	0xa838d0	0xa85314		19	19	0xa839d6
+classic	equipment-generic-item-type-caption	0xa838d0	0xa85314		20	20	0xa839ea
+classic	equipment-generic-item-type-caption	0xa838d0	0xa85314		21	21	0xa839fe
+classic	equipment-generic-item-type-caption	0xa838d0	0xa85314		22	22	0xa83a12
+classic	equipment-generic-item-type-caption	0xa838d0	0xa85314		23	23	0xa83a26
+classic	equipment-generic-item-type-caption	0xa838d0	0xa85314		24	24	0xa83a3a
+classic	equipment-generic-item-type-caption	0xa838d0	0xa85314		25	25	0xa83a4e

@@ -52,6 +52,7 @@ std::vector<Match> Overlay::find_native_squads_matches() const {
         Match match;
         std::string complete;
         bool generated_name = false;
+        NativeSquadsEquipmentField equipment = NativeSquadsEquipmentField::None;
         int footer = -1;
         bool paragraph = false;
     };
@@ -127,6 +128,12 @@ std::vector<Match> Overlay::find_native_squads_matches() const {
         Field field{&draw, std::move(match),
             trim(draw.complete_source.empty() ? draw.source : draw.complete_source)};
         field.generated_name = static_cast<bool>(draw.squad_generated_name);
+        for (size_t index = 0; index < g_native_squads_equipment_callers.size(); ++index)
+            if (g_native_squads_equipment_callers[index] &&
+                    draw.native_caller == g_native_squads_equipment_callers[index])
+                field.equipment = static_cast<NativeSquadsEquipmentField>(index + 1);
+        if (field.equipment != NativeSquadsEquipmentField::None)
+            field.match.layout_ellipsize = true;
         // Routine list rows stop before the producer's scrollbar column.
         // Its complete source may legitimately extend across that column.
         if (field.complete.starts_with("Routine:")) {
@@ -287,6 +294,8 @@ std::vector<Match> Overlay::find_native_squads_matches() const {
             if (contains_cjk_utf8(field.complete)) target = native_text_to_utf8(field.complete);
         } else {
             std::string key = (field.generated_name ? "n" : "t") + field.complete;
+            key += static_cast<char>(field.equipment);
+            key += std::to_string(RULESETS.resource_revision());
             if (draw.squad_generated_name) {
                 // Identically spelled generated names can use different WORD
                 // roots. Cache their owned semantic fields, never a pointer to
@@ -313,7 +322,52 @@ std::vector<Match> Overlay::find_native_squads_matches() const {
                 match.translation_result = found->second.result;
                 match.layout_glyph_foreground_rgb = found->second.foregrounds;
             } else {
-                target = exact_literal_translation(field.complete);
+                // The original caller establishes the entire field's type.
+                // RAW sword/knife/color names must not inherit homonymous
+                // skill, creature or material meanings from UI literals.
+                if (!field.generated_name &&
+                        (field.equipment == NativeSquadsEquipmentField::Type ||
+                         field.equipment == NativeSquadsEquipmentField::Item)) {
+                    const std::string_view source = field.complete;
+                    constexpr std::array<std::string_view, 11> choices{
+                        "specific armor", "specific helm", "specific pants",
+                        "specific gloves", "specific shoes", "specific shield",
+                        "specific weapon", "individual choice", "individual choice, weapon",
+                        "indiv choice, melee", "indiv choice, ranged"};
+                    const bool fixed_choice = source == "missing item" ||
+                        (field.equipment == NativeSquadsEquipmentField::Type &&
+                            std::find(choices.begin(), choices.end(), source) != choices.end());
+                    if (fixed_choice) target = exact_literal_translation(source);
+                    else {
+                        constexpr std::string_view foreign = " (foreign)";
+                        const bool foreign_type = field.equipment == NativeSquadsEquipmentField::Type &&
+                            source.ends_with(foreign);
+                        const auto noun = foreign_type
+                            ? source.substr(0, source.size() - foreign.size()) : source;
+                        auto translated = translate_fortress_item_caption_display(noun);
+                        if (foreign_type) {
+                            const auto marker = exact_literal_translation(trim_view(foreign));
+                            translated.append(marker
+                                ? TranslationResult::translated(foreign, *marker, "item-origin")
+                                : preserved_item_field(foreign, "item-origin"), noun.size());
+                            finish_item_display_result(translated, source, "uniform-equipment");
+                        }
+                        if (translated.usable() && translated.changed()) {
+                            target = translated.target;
+                            match.translation_result = std::make_shared<const TranslationResult>(
+                                std::move(translated));
+                        }
+                    }
+                } else if (!field.generated_name &&
+                        field.equipment == NativeSquadsEquipmentField::Material) {
+                    target = exact_literal_translation("Uniform material: " + field.complete);
+                    if (!target && config_.compositional_rules)
+                        target = translate_material_name(field.complete);
+                } else if (!field.generated_name &&
+                        field.equipment == NativeSquadsEquipmentField::Color) {
+                    target = translate_color_picker_caption(field.complete);
+                }
+                if (!target) target = exact_literal_translation(field.complete);
                 if (field.generated_name) {
                     if (!target && draw.squad_generated_name)
                         target = translate_history_name(*draw.squad_generated_name);
@@ -357,6 +411,10 @@ std::vector<Match> Overlay::find_native_squads_matches() const {
             }
         }
         if (!target || target->empty()) continue;
+        if (match.translation_result && match.translation_result->has_untranslated()) {
+            match.native_hover_untranslated = true;
+            match.native_help_review_source = field.complete;
+        }
         match.target = std::move(*target);
         result.push_back(std::move(match));
     }

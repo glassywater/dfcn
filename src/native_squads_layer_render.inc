@@ -144,6 +144,12 @@ static bool install_native_squads_layer_hook() {
     };
     g_native_squads_member_name_caller = native_reference_address(base, 0x444605) + 5;
     g_native_squads_member_order_caller = native_reference_address(base, 0x44475b) + 5;
+    g_native_squads_equipment_callers = {
+        native_reference_address(base, 0x450a50) + 5,
+        native_reference_address(base, 0x450ed6) + 5,
+        native_reference_address(base, 0x4512ab) + 5,
+        native_reference_address(base, 0x4516ec) + 5,
+    };
     // Occupied members in graphical and classic mode share this 4x3
     // selection-control loop. The native cursor signature is (gps, y, x).
     std::vector<NativeCall> calls{
@@ -167,6 +173,7 @@ static void uninstall_native_squads_layer_hook() {
         g_native_squads_member_cursor_original = nullptr;
         g_native_squads_member_name_caller = 0;
         g_native_squads_member_order_caller = 0;
+        g_native_squads_equipment_callers = {};
         g_native_squads_target.release();
         native_squads_begin_frame();
         g_native_squads_layer = {};

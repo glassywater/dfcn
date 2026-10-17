@@ -1,0 +1,166 @@
+Fortress uniform/equipment selector — native PE source grammar
+
+Source: data/runtime/native-pe-images.json reference and classic files. This
+inventory reads the binaries on disk; it does not attach to a game process.
+pe-functions.tsv records each source path, PE identity, SHA-256, complete owner
+extent, executable extent, and assembly filename. pe-unwind-fragments.tsv
+retains the original CHAININFO splits. pe-*-ghidra-decompiled.c and the per-role
+.c files contain actual Ghidra C generated from these native instruction bodies.
+
+Native entry points (RVAs)
+reference renderer: 450140..459394 (executable end 4590fc)
+classic renderer:   44dd00..456f54 (executable end 456cbc)
+reference population: 45f570..463495 (executable end 4633ec)
+classic population:   45d130..461055 (executable end 460fac)
+reference pointer input: 4593a0..45ddfd
+classic pointer input:   456f60..45b9bd
+The original table bytes remain part of each unwind extent and are represented
+as selector aliases in pe-switches.tsv; they are not decoded as instructions.
+
+Selector modes
+0 bodywear type (item_type 19 hex)
+1 headwear type (1c)
+2 legwear type (3c)
+3 handwear type (1d)
+4 footwear type (1a)
+5 shield type (1b)
+6 weapon type (18)
+7 material for selected equipment entry
+8 color and dye
+9 specific bodywear item
+10 specific headwear item
+11 specific legwear item
+12 specific handwear item
+13 specific footwear item
+14 specific shield item
+15 specific weapon item
+pe-modes.tsv associates every mode with both editions' original dispatch and
+case target. Values above 15 follow the native cleanup/default path.
+
+Native panel state
+The renderer first requires panel+145 != 0. A panel+294 category other than -1
+selects the type list; otherwise panel+300 selects material, panel+350 color,
+and panel+390 specific items. The remaining branch is the uniform editor.
+The list initializer clears all four sets of vectors and resets row scroll and
+hover state before the mode switch. No spelling-based category inference occurs.
+
+Type list text and construction
+A row whose item_type is -1 renders one of:
+specific armor | specific helm | specific pants | specific gloves |
+specific shoes | specific shield | specific weapon
+This sentinel row is populated when panel+148 != -1.
+Otherwise flags bit 0 renders individual choice, adding ', weapon' for type 18;
+bit 1 renders indiv choice, melee; bit 2 renders indiv choice, ranged.
+All other rows call the complete generic item-type caption supplier using the
+actual item_type/subtype. A separate native bit vector appends ' (foreign)'.
+The population takes civilization-specific subtype vectors first, then appends
+raw item definitions not already present and marks those appended rows foreign.
+The weapon mode reads both native weapon subtype vectors. The complete native
+loops, duplicate decisions, vector guards and every flag write are retained in
+uniform-equipment-all-selector-choice-population.c/.asm for each edition.
+The generic supplier is a82c10..a882fc reference / a7fc90..a8537c classic;
+its complete switch includes all game item types, while this selector supplies
+the seven equipment types listed above.
+
+Material list text and filtering
+A concrete material type/index calls 14d1920 reference / 14cc890 classic.
+Otherwise category -1 produces any material. The category switch includes
+leather, cloth, silk, yarn, plant fiber, metal, wood, stone, gem, bone, shell,
+pearl, tooth, horn; unmapped values use BROKEN.
+Mode 7 reads the selected equipment type/subtype from panel+1b8/+1d0.
+A selected type -1 returns without filling a material list.
+For body/head/leg/hand/foot types, an unspecified subtype allows material
+categories 10,1,1b,1c,1d (hex). A defined subtype reads its raw definition flags:
+bit index 0 adds 1b/1c/1d, index 2 adds 10, index 5 adds 1.
+Shield adds categories 3/10. The original remap table also records all default
+aliases for the item_type switch (type minus 19 hex).
+The list always begins with (-1,-1,-1), the any-material tuple. Category rows
+follow, then concrete native material vectors. The category-to-vector remap
+covers leather, metal, wood, plant fiber, silk and yarn; metal enumeration
+requires both native material flags 2f and 38. Weapon material handling has
+additional raw subtype fields e8, d2, 108/110 and material fields 284, 290/298:
+material flag byte 5 must exist and be negative; flag byte 6 bits 08 or 10 are
+alternate candidates; material field 284 > 9999 is the other candidate. A
+defined weapon subtype further gates these branches with subtype d2 != -1 or
+with a nonempty subtype field 108/110 and its first flag bit. An e8 weapon
+field enables wood/bone category rows and the accompanying native organic
+material vectors. An unspecified weapon subtype permits the general versions
+of these candidates. These compound AND/OR expressions are retained literally
+in Ghidra mode case 7, including all NULL/length conditions and default edges.
+pe-conditions.tsv and pe-branches.tsv preserve each original comparison/test
+and taken/fallthrough address without replacing these native bit meanings with
+guessed item/material flag names.
+
+Color list text and filtering
+Mode 8 begins with color id -1 (any color), dye flag false. It converts the
+native dye-material vectors to color ids, skips -1 and duplicates, and marks
+those rows as dyes. It then adds remaining descriptor patterns whose short
+field +38 equals 0, skipping any already inserted color id. The renderer
+resolves the pattern's first color id and calls a frameless color-name leaf:
+reference 420fc0..42101f / classic 41eb80..41ebdf. It copies descriptor+50.
+Dye rows append ' (Dye)'. The leaf's range is decoded directly; it has no
+exception-unwind record of its own.
+
+Specific-item list filtering and sort (modes 9..15)
+Each mode iterates its type-specific native item-id vector and the native
+second item-id vector. Stale ids are removed by the original native code.
+A candidate is retained only if all conditions below hold:
+- item pointer resolves;
+- (DWORD item+10 & 20) == 0;
+- (BYTE item+14 & 08) == 0;
+- (DWORD item+10 & e90c10) == 0;
+- item id is absent from the native global exclusion vector at 142399860
+  reference (the classic address is retained in that edition's native body);
+- the complete delegated eligibility predicate c93160 returns false;
+- item id is absent from panel+1a0, the current selection vector.
+The delegated predicate is also fully decompiled, with its CHAININFO fragments:
+c93160..c93373 reference. It rejects item flag 20000 or its delegated location
+predicate. For the remaining item, it obtains effective coordinates from direct
+position or native contained/unit/building references; invalid coordinates,
+missing map/block data and flag-10 cases return false, while a resolved map
+block returns bit 9 of the tile value at block+2a0. The location predicate at
+c93060..c93152 traverses container references or delegates a unit predicate and
+can read a type-7 reference's byte +a. Both predicates and their exact native
+conditions/callees are preserved as source rather than assigned guessed names.
+For each retained candidate, virtual method +6d8 supplies its sort key, stored
+at item+5c. The native comparator sorts larger keys first, with pointer/null
+special cases, then the list stores the sorted item ids in panel+398.
+
+Specific-item text supplier
+Missing pointers render missing item. Existing items call the complete native
+caption supplier c65450..c65f0a reference / c62490..c62f4a classic.
+The original owner is split after c6571d reference / c6275d classic by native
+CHAININFO; those fragments are joined for actual C decompilation, including
+the post-split virtual +5f0 description and all quality, wear, ownership and
+special glyph branches. Named artifacts and native copy/name branches precede
+the ordinary virtual description. Literal ' (copy)' and every fixed operand
+are indexed in pe-literals.tsv. Native glyph character writes remain visible
+in both complete assembly and actual Ghidra C.
+
+Assignment text and custom squad names
+The item-assignment row can be:
+Will be assigned to {squad}, position {one-based position}
+Assigned to {squad}, position {one-based position}
+Assigned
+A nonempty squad+80 is copied directly. Only an empty alias calls the existing
+native generated-name supplier on squad+8. A custom squad alias is data and
+must be preserved exactly; it is never an untranslated interface branch.
+
+Display writers and native clipping
+pe-display-fields.tsv records both editions' five addst call/return sites:
+EquipmentType, Material, Color, Item, Assignment. The first four fields use
+native width clipping before addst and may end in three literal dots. This is
+part of the original text production, rather than an independent text branch.
+
+Source index
+pe-functions.tsv: complete source body extent, identity and digest
+pe-unwind-fragments.tsv: original unwind fragments and parent ownership
+pe-modes.tsv: all 0..15 original selector cases
+pe-switches.tsv: complete native selector aliases and jump destinations
+pe-conditions.tsv: every original cmp/test/bt operand
+pe-branches.tsv: conditional/unconditional taken and fallthrough addresses
+pe-calls.tsv: direct native calls/tail calls
+pe-literals.tsv: literal operands, including the uniform editor adjacent states
+pe-display-fields.tsv: native writer sites and dynamic field origins
+pe-{edition}-{role}.asm/.c: complete original bodies and actual Ghidra C
+pe-{edition}-ghidra-decompiled.c: complete edition C source aggregate

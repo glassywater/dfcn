@@ -1,0 +1,43 @@
+edition	role	owner_rva	fragment_start_rva	fragment_end_rva	body_basis
+reference	uniform-equipment-selector-renderer	0x450140	0x450140	0x459394	complete native exception-unwind owner and CHAININFO fragments
+reference	squad-uniform-parent-input	0x44d8a0	0x44d8a0	0x44fc91	complete native exception-unwind owner and CHAININFO fragments
+reference	uniform-equipment-selector-lifetime	0x44fca0	0x44fca0	0x44fdb0	complete native exception-unwind owner and CHAININFO fragments
+reference	uniform-equipment-selector-lifetime	0x44fca0	0x44fdb0	0x44fdda	complete native exception-unwind owner and CHAININFO fragments
+reference	uniform-equipment-selector-lifetime	0x44fca0	0x44fdda	0x44fec3	complete native exception-unwind owner and CHAININFO fragments
+reference	uniform-equipment-selector-lifetime	0x44fca0	0x44fec3	0x44fecd	complete native exception-unwind owner and CHAININFO fragments
+reference	uniform-equipment-selector-lifetime	0x44fca0	0x44fecd	0x44ff5c	complete native exception-unwind owner and CHAININFO fragments
+reference	uniform-equipment-selector-panel-layout	0x44ff60	0x44ff60	0x45013d	complete native exception-unwind owner and CHAININFO fragments
+reference	uniform-equipment-selector-pointer-input	0x4593a0	0x4593a0	0x45ddfd	complete native exception-unwind owner and CHAININFO fragments
+reference	uniform-equipment-auxiliary-choice-population	0x45e390	0x45e390	0x45eb5c	complete native exception-unwind owner and CHAININFO fragments
+reference	uniform-equipment-all-selector-choice-population	0x45f570	0x45f570	0x463495	complete native exception-unwind owner and CHAININFO fragments
+reference	equipment-generic-item-type-caption	0xa82c10	0xa82c10	0xa882fc	complete native exception-unwind owner and CHAININFO fragments
+reference	equipment-specific-item-caption	0xc65450	0xc65450	0xc6571d	complete native exception-unwind owner and CHAININFO fragments
+reference	equipment-specific-item-caption	0xc65450	0xc6571d	0xc65f0a	complete native exception-unwind owner and CHAININFO fragments
+reference	equipment-material-caption	0x14d1920	0x14d1920	0x14d1d79	complete native exception-unwind owner and CHAININFO fragments
+reference	equipment-color-caption	0x420fc0	0x420fc0	0x42101f	decoded frameless native leaf
+reference	equipment-specific-item-eligibility	0xc93160	0xc93160	0xc93198	complete native exception-unwind owner and CHAININFO fragments
+reference	equipment-specific-item-eligibility	0xc93160	0xc93198	0xc932b6	complete native exception-unwind owner and CHAININFO fragments
+reference	equipment-specific-item-eligibility	0xc93160	0xc932b6	0xc93373	complete native exception-unwind owner and CHAININFO fragments
+reference	equipment-specific-item-location-eligibility	0xc93060	0xc93060	0xc93152	complete native exception-unwind owner and CHAININFO fragments
+reference	equipment-specific-item-value-sort	0x45f530	0x45f530	0x45f569	decoded frameless native leaf
+classic	uniform-equipment-selector-renderer	0x44dd00	0x44dd00	0x456f54	complete native exception-unwind owner and CHAININFO fragments
+classic	squad-uniform-parent-input	0x44b460	0x44b460	0x44d851	complete native exception-unwind owner and CHAININFO fragments
+classic	uniform-equipment-selector-lifetime	0x44d860	0x44d860	0x44d970	complete native exception-unwind owner and CHAININFO fragments
+classic	uniform-equipment-selector-lifetime	0x44d860	0x44d970	0x44d99a	complete native exception-unwind owner and CHAININFO fragments
+classic	uniform-equipment-selector-lifetime	0x44d860	0x44d99a	0x44da83	complete native exception-unwind owner and CHAININFO fragments
+classic	uniform-equipment-selector-lifetime	0x44d860	0x44da83	0x44da8d	complete native exception-unwind owner and CHAININFO fragments
+classic	uniform-equipment-selector-lifetime	0x44d860	0x44da8d	0x44db1c	complete native exception-unwind owner and CHAININFO fragments
+classic	uniform-equipment-selector-panel-layout	0x44db20	0x44db20	0x44dcfd	complete native exception-unwind owner and CHAININFO fragments
+classic	uniform-equipment-selector-pointer-input	0x456f60	0x456f60	0x45b9bd	complete native exception-unwind owner and CHAININFO fragments
+classic	uniform-equipment-auxiliary-choice-population	0x45bf50	0x45bf50	0x45c71c	complete native exception-unwind owner and CHAININFO fragments
+classic	uniform-equipment-all-selector-choice-population	0x45d130	0x45d130	0x461055	complete native exception-unwind owner and CHAININFO fragments
+classic	equipment-generic-item-type-caption	0xa7fc90	0xa7fc90	0xa8537c	complete native exception-unwind owner and CHAININFO fragments
+classic	equipment-specific-item-caption	0xc62490	0xc62490	0xc6275d	complete native exception-unwind owner and CHAININFO fragments
+classic	equipment-specific-item-caption	0xc62490	0xc6275d	0xc62f4a	complete native exception-unwind owner and CHAININFO fragments
+classic	equipment-material-caption	0x14cc890	0x14cc890	0x14ccce9	complete native exception-unwind owner and CHAININFO fragments
+classic	equipment-color-caption	0x41eb80	0x41eb80	0x41ebdf	decoded frameless native leaf
+classic	equipment-specific-item-eligibility	0xc901a0	0xc901a0	0xc901d8	complete native exception-unwind owner and CHAININFO fragments
+classic	equipment-specific-item-eligibility	0xc901a0	0xc901d8	0xc902f6	complete native exception-unwind owner and CHAININFO fragments
+classic	equipment-specific-item-eligibility	0xc901a0	0xc902f6	0xc903b3	complete native exception-unwind owner and CHAININFO fragments
+classic	equipment-specific-item-location-eligibility	0xc900a0	0xc900a0	0xc90192	complete native exception-unwind owner and CHAININFO fragments
+classic	equipment-specific-item-value-sort	0x45d0f0	0x45d0f0	0x45d129	decoded frameless native leaf
