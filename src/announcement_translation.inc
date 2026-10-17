@@ -64,30 +64,6 @@ std::optional<std::string> Overlay::translate_complete_announcement(
     const auto translate_block = [&](std::string_view block, const std::vector<int> &colors,
             std::vector<int> &translated_colors) -> std::optional<std::string> {
         translated_colors.clear();
-        // Native fortress constructors and returned historical reports own
-        // complete typed productions. The latter include an agreement's
-        // independently appended negotiation/intrigue narratives. Resolve
-        // those before the general catalogue can consume the opening while
-        // leaving the subsequent native report outside its field grammar.
-        for (const std::string_view scope : {
-                "read-announcement", "adventure-announcement", "fortress-attack", "fortress-arrival", "fortress-announcement", "fortress-embark", "historical-event-paragraph"}) {
-            // The attack producer joins commander, warning and reinforcement
-            // paragraphs with native [B] controls. Match their visible whole
-            // record, using the same control normalization as report capture.
-            const std::string attack_source = scope == "fortress-attack" || scope == "fortress-embark"
-                ? native_announcement_display_source(block) : std::string{};
-            if (const auto native = translate_announcement_combat(
-                    scope == "fortress-attack" ? std::string_view(attack_source) : block, scope)) {
-                for (unsigned char ch : *native)
-                    if ((ch & 0xc0) != 0x80) translated_colors.push_back(colors.front());
-                return native;
-            }
-        }
-        // The native growth constructor has a single typed result field.
-        // An unresolved caste/name must retain its whole report, never enter
-        // the unrelated rumor production "{person} has {book}.".
-        if (block.find(" has grown to become a ") != std::string_view::npos &&
-                block.ends_with('.')) return std::nullopt;
         if (!colors.empty() && std::all_of(colors.begin(), colors.end(),
                 [&](int color) { return color == colors.front(); })) {
             if (const auto siren = translate_dfhack_siren_announcement(block)) {
@@ -118,6 +94,30 @@ std::optional<std::string> Overlay::translate_complete_announcement(
                 if ((ch & 0xc0) != 0x80) translated_colors.push_back(colors.front());
             return speech;
         }
+        // The speech wrapper owns its colon and entire body before the
+        // adventure opinion grammar. Otherwise its incident rule can consume
+        // "You: <elapsed time> I" as a unit and swallow the following reaction
+        // into the other participant, producing a partly translated record.
+        // Other native constructors still precede the generic prose catalogue.
+        for (const std::string_view scope : {
+                "read-announcement", "adventure-announcement", "fortress-attack", "fortress-arrival", "fortress-announcement", "fortress-embark", "historical-event-paragraph"}) {
+            // The attack producer joins commander, warning and reinforcement
+            // paragraphs with native [B] controls. Match their visible whole
+            // record, using the same control normalization as report capture.
+            const std::string attack_source = scope == "fortress-attack" || scope == "fortress-embark"
+                ? native_announcement_display_source(block) : std::string{};
+            if (const auto native = translate_announcement_combat(
+                    scope == "fortress-attack" ? std::string_view(attack_source) : block, scope)) {
+                for (unsigned char ch : *native)
+                    if ((ch & 0xc0) != 0x80) translated_colors.push_back(colors.front());
+                return native;
+            }
+        }
+        // The native growth constructor has a single typed result field.
+        // An unresolved caste/name must retain its whole report, never enter
+        // the unrelated rumor production "{person} has {book}.".
+        if (block.find(" has grown to become a ") != std::string_view::npos &&
+                block.ends_with('.')) return std::nullopt;
         // Spoken memories share the overview's authored wording. Resolve a
         // complete memory chain before generic paragraph literals, which can
         // contain older versions of the same reactions. The quote resolver

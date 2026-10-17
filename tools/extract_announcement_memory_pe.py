@@ -25,6 +25,7 @@ OBJDUMP = ("C:/Users/WIN11/AppData/Local/Programs/dfcn-toolchains/"
            "w64devkit-2.9.1/w64devkit/bin/objdump.exe")
 
 SUPPLIERS = {
+    0x65890: "string-length-error",
     0x52d650: "initial-capitalization", 0x756690: "sermon-sphere",
     0xa946e0: "language-name", 0xaa4800: "reflexive-pronoun",
     0xb530b0: "historical-figure-lookup", 0xb92900: "entity-name",
@@ -36,6 +37,114 @@ SUPPLIERS = {
     0x13ee040: "speaker-view-knowledge", 0xbabe0: "incident-party-is-you",
 }
 
+# These parameter producers sit below SPEAKER/AUDIENCE and nested HF_LINK.
+# They are not interchangeable with the display-name functions: they own
+# missing-name literals, possessives and a recursive deity/sphere expansion.
+# Discover the official-edition addresses through their actual corresponding
+# call edges, rather than assuming a constant edition-wide address offset.
+PARAMETER_SUPPLIERS = {
+    0x685900: "speech-person-parameter",
+    0x13a0bd0: "speech-unit-parameters",
+    0xf9cce0: "speech-place-parameters",
+    0x9913a0: "speech-entity-parameters",
+    0x6de1a0: "speech-race-parameters",
+    0x6a900: "speech-building-parameters",
+    0xbb1c80: "speech-historical-link-parameters",
+    0xbb13e0: "speech-historical-parameters",
+    0x756500: "definite-sphere",
+    0x131e4c0: "text-set-selector",
+    0x52cc90: "speech-token-replacement",
+    # Retain the text-producing callees of the complete dialogue owners.
+    # In particular the adventure caption delegates its appearance and
+    # profession branches rather than embedding their words in the wrapper.
+    0xe31a0: "companion-task-feedback",
+    0xdf540: "agreement-description",
+    0xe2b80: "agreement-party-list",
+    0xe3c20: "announcement-submit",
+    0x4df190: "argument-reaction",
+    0x52e360: "english-cardinal",
+    0x52eb70: "english-ordinal",
+    0x54d320: "building-type-name",
+    0x658e20: "mental-picture-element",
+    0x65efa0: "location-direction",
+    0x6878f0: "quest-monster-threat",
+    0x688fb0: "quest-group-threat",
+    0x689500: "quest-bandit-threat",
+    0x6896f0: "quest-invasion",
+    0x690b40: "surrounding-location",
+    0x6dd860: "birth-multiplicity",
+    0x716b70: "body-size-adjective",
+    0x717d30: "appearance-caption",
+    0x73ef80: "historical-link-selector",
+    0x773990: "skill-label",
+    0x9bdfb0: "position-entity-suffix",
+    0xa82c10: "item-type-name",
+    0xa94030: "unit-personal-name",
+    0xaa3770: "race-name",
+    0xaa3bd0: "caste-name",
+    0xaa4850: "possessive-pronoun",
+    0xb92640: "season-date",
+    0xb94ed0: "historical-race-name",
+    0xbeb620: "historical-position-title",
+    0xbeb780: "entity-position-title",
+    0xc65450: "artifact-item-description",
+    0xee0ca0: "knowledge-description",
+    0xef8fb0: "knowledge-short-name",
+    0x10cbe50: "site-type-name",
+    0x132cc10: "profession-name",
+    0x1325080: "cancellation-source",
+    0x132e0c0: "race-profession-caption",
+    0x132e430: "anonymous-speaker-caption",
+    0x132f980: "professional-speaker-caption",
+    0x13312c0: "anonymous-animal-caption",
+    0x13345d0: "body-part-name",
+    0x1352f20: "learned-power-announcement",
+    0x147c4a0: "travel-direction",
+    0x14d1920: "material-name",
+    0x14e1ec0: "gem-description",
+}
+
+
+def direct_calls(image, start, spans):
+    return [int(match[1], 16) for _, text in source_body(image, start, spans)[0]
+            if (match := re.match(r"call\s+(?:0x)?([0-9a-f]+)$", text))]
+
+
+def parameter_supplier_roots(image, spans, roots, reference_sources=None):
+    if reference_sources is None:
+        selected = {image.base + rva: role for rva, role in PARAMETER_SUPPLIERS.items()}
+        callers = {**roots, **selected}
+        # Retain the observed direct-call order from each complete owner. Both
+        # editions contain these same source branches; addresses are rebound
+        # through the decoded call operands in the other image below.
+        source_calls = {role: direct_calls(image, start, spans)
+                        for start, role in callers.items()}
+        return selected, (selected, source_calls)
+    reference_targets, reference_calls = reference_sources
+    selected = {}
+    seen_roles = set()
+    pending = dict(roots)
+    while pending:
+        following = {}
+        for start, role in pending.items():
+            if role in seen_roles or role not in reference_calls:
+                continue
+            seen_roles.add(role)
+            calls = direct_calls(image, start, spans)
+            for prior, current in zip(reference_calls[role], calls):
+                if prior not in reference_targets:
+                    continue
+                child_role = reference_targets[prior]
+                if current in selected and selected[current] != child_role:
+                    raise ValueError(f"Conflicting native parameter supplier at {current:#x}")
+                selected[current] = child_role
+                following[current] = child_role
+        pending = following
+    unresolved = set(reference_targets.values()) - set(selected.values())
+    if unresolved:
+        raise ValueError("Missing decoded official parameter suppliers: " + ", ".join(sorted(unresolved)))
+    return selected, reference_sources
+
 
 def source_body(image, start, spans):
     """Also retain unoptimized PE switches whose bounds live on the stack.
@@ -44,22 +153,43 @@ def source_body(image, start, spans):
     movsxd of the same local, unlike register-bounded optimized suppliers.
     Tables are data even when they sit inside a chained unwind region.
     """
+    # This leaf has no unwind entry. Its final inline remap ends before a
+    # distinct bool-returning helper; the next unwind record would swallow
+    # that helper and another unrelated switch, corrupting decompilation.
+    leaf_ends = {0xef8fb0: 0xefb710, 0xef3f20: 0xef6680}
+    if start - image.base in leaf_ends:
+        spans = {**spans, start: [(start, image.base + leaf_ends[start - image.base])]}
     body, tables, edges, regions, end = supplier_body(image, start, spans)
+    # A preceding switch's byte remap can still be inside the next switch's
+    # instruction window. Discard a whole incorrectly rebound table before
+    # decoding it again from its own bound, rather than retaining some valid
+    # entries mixed with data interpreted as out-of-image branch targets.
+    invalid = {row[0] for row in tables
+               if not any(begin <= row[3] < stop for begin, stop in regions)}
+    tables = [row for row in tables if row[0] not in invalid]
     seen = {row[0] for row in tables}
     data = []
     for index, (pc, text) in enumerate(body):
         load = re.match(r"mov\s+\w+,DWORD PTR \[(\w+)\+\w+\*4\+0x([0-9a-f]+)\]$", text)
         if not load or pc in seen:
             continue
-        if load[1] in ("rsp", "rbp"):
+        # MSVC can keep the image base in RBP (the family formatter does).
+        # A candidate table is accepted only when all decoded targets belong
+        # to this native owner, so RBP must not be mistaken for a stack base.
+        if load[1] == "rsp":
             continue
         window = body[max(0, index - 16):index]
-        bound = next((int(match[1], 16) for _, prior in reversed(window)
-                      if (match := re.match(r"cmp\s+.+,0x([0-9a-f]+)$", prior))), None)
+        bound_at = next(((at, int(match[1], 16))
+                         for at, (_, prior) in reversed(list(enumerate(window)))
+                         if (match := re.match(r"cmp\s+.+,0x([0-9a-f]+)$", prior))), None)
+        bound = bound_at[1] if bound_at else None
         jump = next((at for at, prior in body[index + 1:index + 5]
                      if re.fullmatch(r"jmp\s+\w+", prior)), None)
         if bound is None or bound > 2048 or jump is None:
             continue
+        # The remap must follow THIS switch's bound. A remap before it
+        # belongs to an earlier dispatch (notably FAMILY_RELATIONSHIP).
+        window = window[bound_at[0] + 1:]
         table = image.base + int(load[2], 16)
         permutation = next((image.base + int(match[1], 16) for _, prior in reversed(window)
                             if (match := re.match(
@@ -80,6 +210,9 @@ def source_body(image, start, spans):
             data.append((permutation, permutation + bound + 1))
         edges.setdefault(jump, set()).update(targets)
     body = [(pc, text) for pc, text in body if not any(begin <= pc < stop for begin, stop in data)]
+    edges = {}
+    for load, selector, table, target, jump in tables:
+        edges.setdefault(jump, set()).add(target)
     return body, tables, edges, regions, end
 
 
@@ -168,10 +301,33 @@ def conversation_roots(image, spans):
     return roots, mappings
 
 
+def extract_text_sets(config):
+    """Retain every installed Windows text-set file and every alternative."""
+    with (OUT / "pe-text-sets.tsv").open("w", encoding="utf-8", newline="") as alternatives, \
+         (OUT / "pe-text-set-source-files.tsv").open("w", encoding="utf-8", newline="") as sources:
+        rows = csv.writer(alternatives, delimiter="\t", lineterminator="\n")
+        rows.writerow(("edition", "text_set", "source_file", "line", "raw_text"))
+        files = csv.writer(sources, delimiter="\t", lineterminator="\n")
+        files.writerow(("edition", "source_file", "encoding", "raw_source"))
+        for edition in ("reference", "classic"):
+            game = Path(config[edition]).parent
+            for path in sorted((game / "data/vanilla/vanilla_text/objects").glob("text_*.txt")):
+                raw = path.read_bytes().decode("cp437")
+                relative = path.relative_to(game).as_posix()
+                files.writerow((edition, relative, "cp437", raw))
+                text_set = None
+                for line, text in enumerate(raw.splitlines(), 1):
+                    if match := re.fullmatch(r"\[TEXT_SET:([^]]+)\]", text):
+                        text_set = match[1]
+                    elif text_set and text.strip() and not text.startswith("[TEXT_SET_FLAG:"):
+                        rows.writerow((edition, text_set, relative, line, text))
+
+
 def main():
     config = json.loads((ROOT / "data/runtime/native-pe-images.json").read_text())
     OUT.mkdir(parents=True, exist_ok=True)
     reference_calls = None
+    parameter_reference_sources = None
     for edition in ("reference", "classic"):
         image = CaptionImage(Path(config[edition]), OBJDUMP)
         spans = unwind_spans(image)
@@ -180,6 +336,8 @@ def main():
         roots.update({owner: "memory-source" for owner in candidates})
         roots.update({owner: "speech-wrapper" for owner in
                       set(owners_of(image, b" stops and pays attention to you.\0").values())})
+        roots.update({owner: "string-length-error" for owner in
+                      set(owners_of(image, b"string too long\0").values())})
         memory_owner = next(iter(candidates))
         memory_body = source_body(image, memory_owner, spans)[0]
         memory_calls = [int(match[1], 16) for _, instruction in memory_body
@@ -228,6 +386,19 @@ def main():
         roots.update({image.base + target: role for target, role in gender_sources})
         object_start = image.base + (0xaa47b0 if edition == "reference" else 0xaa1830)
         spans[object_start] = [(object_start, object_start + 0x50)]
+        parameters, parameter_reference_sources = parameter_supplier_roots(
+            image, spans, roots, parameter_reference_sources)
+        roots.update(parameters)
+        # These are the actual UI consumers of every routed speech record.
+        # They are reached from the native renderer, not a speech producer's
+        # direct-call chain. Keep the edition-specific unwind owners.
+        display = ((0x8020c0, "spoken-popup-render"),
+                   (0x802a60, "spoken-popup-input"),
+                   (0x8a40e0, "spoken-popup-wrap")) if edition == "reference" else (
+                   (0x7ff940, "spoken-popup-render"),
+                   (0x8002e0, "spoken-popup-input"),
+                   (0x8a1960, "spoken-popup-wrap"))
+        roots.update({image.base + rva: role for rva, role in display})
         functions, literals, calls, branches, switches, regions = [], [], [], [], [], []
         for start, role in sorted(roots.items()):
             body, tables, edges, source_regions, end = source_body(image, start, spans)
@@ -308,6 +479,7 @@ def main():
                              classic.get("start", ""), classic.get("end", ""),
                              f"reference-{role}.asm;classic-{role}.asm" if reference and classic else
                              "complete ELF decompilation; PE correspondence unresolved"))
+    extract_text_sets(config)
 
 
 if __name__ == "__main__":

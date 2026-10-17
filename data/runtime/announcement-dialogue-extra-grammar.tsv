@@ -138,6 +138,7 @@ sentence	Please guide me to {s}.	请带我去找{s1}。	dialogue-query-person	EL
 sentence	What can you tell me about {s}?	能跟我说说{s1}吗？	dialogue-query-person	ELF 189f926..189fb03 -> a10320 / b6ca30
 dialogue-query-person	{s}	{s1}	$historical-actor	ELF a10320: named/unnamed caste, ghost, zombie, unknown and animated identity
 dialogue-query-person	{s}	{s1}	$unit	ELF 187c510..18be0a7 ->1c428e0: live-unit fallback
+dialogue-query-person	{s}	{s1}	speech-person	PE 0x140b92f10 historical EnglishName fallback; UTTERANCES given name has no WORD mask; resolve full historical/unit captions first
 dialogue-query-person	myself	我自己		ELF a10320 reflexive role
 dialogue-query-person	you	你		ELF 1889a91 / 1889dc2
 dialogue-query-person	yourself	你自己		ELF 1888f0a
@@ -145,7 +146,7 @@ sentence	I worship no one.	我不崇拜任何神祇。		ELF 103b6cc
 sentence	I worship {s}.	我崇拜{s1}。	dialogue-query-person	ELF 103c609 / 103d457 -> a10320
 sentence	I found myself dead.	我发现自己已经死了。		ELF 101a3d4
 sentence	I'm in charge of {s} now. Make way for {s}!	现在由我掌管{s1}。给{s2}让路！	$name,$name	ELF 18a94cd..18a98dc: leadership with no position title
-sentence	I'm in charge of {s} now. Make way for {s} {s} and {s}!	现在由我掌管{s1}。给{s2}{s3}和{s4}让路！	$name,$term,$person,$name	ELF 18a94cd..18a98dc ->858b80/12c58d0: position, leader and entity
+sentence	I'm in charge of {s} now. Make way for {s} {s} and {s}!	现在由我掌管{s1}。给{s2}{s3}和{s4}让路！	$name,$term,speech-person,$name	ELF 18a94cd..18a98dc ->858b80/12c58d0: position, leader and entity
 sentence	{s}	{s1}	dialogue-judgement	ELF 103b5f0..1042785: complete opinion and reputation production
 dialogue-judgement-subject	You are	你		ELF 103c3xx: addressee is the subject
 dialogue-judgement-subject	He is	他		ELF 103bdda ->12ca700, male historical subject
@@ -371,11 +372,107 @@ dialogue-judgement	{s} brought back an unknown artifact.	{s1}曾带回一件不�
 dialogue-query-person	a secret identity	秘密身份		ELF 1c42a9f..1c42b56: missing unit reference
 adventure-announcement	{s}	{s1}	dialogue-judgement	ELF 103b5f0..1042785: resolve typed opinion before generic paragraph parsing
 # Greeting TEXT_SET fields and native appended reactions, before generic name prose.
-spoken-greeting	Greetings. My name is {s}.	你好，我叫{s1}。	$person	ELF 1048a40 ->203d220 set 6 ->10338c0 SPEAKER:TRANS_NAME; elf-text-sets.tsv GREET
-spoken-greeting	Ah, hello. I'm {s}.	啊，你好。我叫{s1}。	$person	ELF 1048a40 ->203d220 ->10338c0 SPEAKER:TRANS_NAME; elf-text-sets.tsv GREET_REPLY
-spoken-greeting	I am {s}. Can I be of some help?	我是{s1}。需要帮忙吗？	$person	ELF 1048a40 ->203d220 set 0x3b ->10338c0; elf-text-sets.tsv GREET_REPLY_AFTER_HERO alternative 1
-spoken-greeting	I am {s}. How can I be of service?	我是{s1}。有什么可以为你效劳？	$person	ELF 1048a40 ->203d220 set 0x3b ->10338c0; elf-text-sets.tsv GREET_REPLY_AFTER_HERO alternative 2
-spoken-greeting	Hello, {s}. I am {s}.	你好，{s1}。我是{s2}。	$creature,$person	ELF 104b1f5 ->203d220 set 8 ->10338c0 AUDIENCE:RACE/SPEAKER:TRANS_NAME; elf-text-sets.tsv GREET_REPLY_DIFF_LANGUAGE
+spoken-greeting	Greetings. My name is {s}.	你好，我叫{s1}。	speech-person	ELF 1048a40 ->203d220 set 6 ->10338c0 SPEAKER:TRANS_NAME; elf-text-sets.tsv GREET
+spoken-greeting	Ah, hello. I'm {s}.	啊，你好。我叫{s1}。	speech-person	ELF 1048a40 ->203d220 ->10338c0 SPEAKER:TRANS_NAME; elf-text-sets.tsv GREET_REPLY
+spoken-greeting	I am {s}. Can I be of some help?	我是{s1}。需要帮忙吗？	speech-person	ELF 1048a40 ->203d220 set 0x3b ->10338c0; elf-text-sets.tsv GREET_REPLY_AFTER_HERO alternative 1
+spoken-greeting	I am {s}. How can I be of service?	我是{s1}。有什么可以为你效劳？	speech-person	ELF 1048a40 ->203d220 set 0x3b ->10338c0; elf-text-sets.tsv GREET_REPLY_AFTER_HERO alternative 2
+spoken-greeting	Hello, {s}. I am {s}.	你好，{s1}。我是{s2}。	speech-race,speech-person	ELF 104b1f5 ->203d220 set 8 ->10338c0 AUDIENCE:RACE/SPEAKER:TRANS_NAME; elf-text-sets.tsv GREET_REPLY_DIFF_LANGUAGE
 spoken-greeting	I'm a true {s} of {s}.	我才是{s2}的真正{s1}。	$term,$name	ELF 104a842..104a9eb: profession call b6c100 at 104a8ce, entity call a278f0 at 104a971; alternate allocation path 104c1c2
-spoken-greeting	[{s} is dumbstruck for a moment.]	【{s1}一时惊得说不出话来。】	$person	ELF 104c9bd..104ca32: opening bracket, EnglishName 12bfe90 at 104c9fe, suffix 104ca19 and closing bracket
+spoken-greeting	[{s} is dumbstruck for a moment.]	【{s1}一时惊得说不出话来。】	speech-person	ELF 104c9bd..104ca32: opening bracket, EnglishName 12bfe90 at 104c9fe, suffix 104ca19 and closing bracket
 spoken-greeting	How are you, my {s}?	你好吗，我的{s1}？	dialogue-family	ELF 1049e0e..1049eb0 and 104b671: native greeting relationship append; FAMILY_RELATIONSHIP call 1503cd0 at 1049e5e
+# The same native greeting owner selects all five unusual-FIRST_NAME alternatives;
+# FIRST_NAME remains a person field even when its spelling is also an English noun.
+spoken-greeting	{s}... your parents must have been interesting!	{s1}……你的父母一定很有意思！	speech-first-name	PE 67d390/67adb0 ->131e4c0/1319430 set 9 ->685d00/683720 AUDIENCE:FIRST_NAME; GREET_REPLY_UNUSUAL_FIRST alternative 1
+spoken-greeting	You know, you don't meet many people with the name {s}.	说起来，叫{s1}的人还真不多见。	speech-first-name	PE 67d390/67adb0 -> TEXT_SET 9; GREET_REPLY_UNUSUAL_FIRST alternative 2, AUDIENCE:FIRST_NAME
+spoken-greeting	So, {s}... {s}, was it?	那么，{s1}……是叫{s2}，对吗？	speech-first-name,speech-first-name	PE 67d390/67adb0 -> TEXT_SET 9; GREET_REPLY_UNUSUAL_FIRST alternative 3, repeated AUDIENCE:FIRST_NAME
+spoken-greeting	{s}. Does that mean something?	{s1}。这个名字有什么含义吗？	speech-first-name	PE 67d390/67adb0 -> TEXT_SET 9; GREET_REPLY_UNUSUAL_FIRST alternative 4, AUDIENCE:FIRST_NAME
+spoken-greeting	{s}. I can't say I've heard that before.	{s1}。这个名字我以前还真没听过。	speech-first-name	PE 67d390/67adb0 -> TEXT_SET 9; GREET_REPLY_UNUSUAL_FIRST alternative 5, AUDIENCE:FIRST_NAME
+spoken-greeting	Salutations {s}.	{s1}，向你致意。	speech-person	PE 67d8ac..67d9b5 and corresponding classic 67b2cc..67b3d5: personality selects greeting, then historical FIRST_NAME or EnglishName
+spoken-greeting	Greetings {s}.	你好，{s1}。	speech-person	PE 67d8c5..67d9b5 and corresponding classic: personality selects greeting, then historical FIRST_NAME or EnglishName
+spoken-greeting	Hello {s}.	你好，{s1}。	speech-person	PE 67d8e5/67d8f7..67d9b5 and corresponding classic: personality selects greeting, then historical FIRST_NAME or EnglishName
+spoken-greeting	Hey {s}.	嘿，{s1}。	speech-person	PE 67d8ee..67d9b5 and corresponding classic: personality selects greeting, then historical FIRST_NAME or EnglishName
+spoken-greeting	I thought you called yourself {s}.	我以为你自称{s1}。	speech-person	PE 67eb2b..67ec03 and corresponding classic: remembered EnglishName 0x140a946e0, not arbitrary prose
+spoken-greeting	Praise be to {s}.	愿赞美归于{s1}。	speech-person	PE 67d390/67adb0 -> TEXT_SET 10 ->685d00/683720 SPEAKER:HF_LINK:DEITY:TRANS_NAME; GREET_WORSHIP alternative 1
+spoken-greeting	Praise {s}.	赞美{s1}。	speech-sphere	PE 67d390/67adb0 -> TEXT_SET 10; GREET_WORSHIP alternative 2, SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE
+spoken-greeting	Life is, in a word, {s}.	一言以蔽之，生命就是{s1}。	speech-sphere	PE 67d390/67adb0 -> TEXT_SET 10; GREET_WORSHIP alternative 3, SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE
+spoken-greeting	This servant of {s} greets you.	我以{s1}仆人的身份，向你问好。	speech-person	PE 67d390/67adb0 -> TEXT_SET 10; GREET_WORSHIP alternative 4, SPEAKER:HF_LINK:DEITY:TRANS_NAME
+spoken-greeting	This servant of {s} greets you.	我以{s1}仆人的身份，向你问好。	speech-sphere	PE 67d390/67adb0 -> TEXT_SET 10; GREET_WORSHIP alternative 5, SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE
+spoken-greeting	Welcome to {s}.	欢迎来到{s1}。	speech-place	PE 67f254..67f2a0 and corresponding classic: native temple/site language_name
+spoken-greeting	You are welcome at {s}. Please be respectful of the materials.	欢迎来到{s1}。请爱惜这里的资料。	speech-place	PE 67f477..67f4c0 and corresponding classic: library language_name
+spoken-greeting	This is {s}. What can I do for you?	这里是{s1}。有什么可以帮你？	speech-place	PE 67f53b..67f584 and corresponding classic: native location language_name
+# Parameter leaves from both current PE images, including native missing-name arms.
+speech-person	nameless	无名		PE 13a0da7/139bd17 and bb182f/bae86f: TRANS_NAME empty output
+speech-person	something	某个存在		PE 685a69/683489: absent ANY:TRANS_NAME/FIRST_NAME parameter
+speech-person	{s}	{s1}	$speech-person	PE language_name parameter output; complete native/English personal identity
+speech-first-name	nameless	无名		PE 13a0e43/139bdb3 and bb18b8/bae8f8: FIRST_NAME empty output
+speech-first-name	something	某个存在		PE 685a69/683489: absent ANY:FIRST_NAME parameter
+speech-first-name	{s}	{s1}	$speech-first-name	PE 13a0e18..13a0e6b and corresponding classic: literal language_name.first_name
+speech-place	nameless	无名之地		PE f9ce24/f97d94 and 6aa5c/6a9ec: empty TRANS_NAME
+speech-place	something	某个地方		PE 685a69/683489: absent ANY place-like reference
+speech-place	the wilds	荒野		PE 685a70/683490: PLACE parameter with no concrete object
+speech-place	{s}	{s1}	$name	PE 685d00/683720 -> site/subregion/building/entity name parameter
+speech-sphere	some vague concept	某种模糊的概念		PE bb179a/bae7da: RANDOM_DEF_SPHERE with no usable sphere
+speech-sphere	{s}	{s1}	$sphere	PE bb1697/bb176c ->756500 and classic corresponding definite-sphere source
+speech-race	creature	生物		PE 6de473/6dbe93: invalid creature raw source
+speech-race	zombie {s}	僵尸{s1}	speech-race	PE 6de311/6dbd31: NUMBERED_NAME zombie status before native race
+speech-race	ghostly {s}	幽灵般的{s1}	speech-race	PE 6de32d/6dbd4d: NUMBERED_NAME ghost status before native race
+speech-race	{s}	{s1}	$creature	PE 13a0e8f..13a0f22 or 6de1a0/6dbbc0: creature raw name singular/plural
+# Complete dynamic productions from native talk selectors 0..126. Their fields
+# retain the source builder's person/place/office types when paragraphs append.
+sentence	Behold, mortal. I am {s}. I know why you have come.	看吧，凡人。我是{s1}。我知道你为何而来。	speech-person	ELF 187c510 selector 16 at 1894adc; historical deity language_name 12c58d0
+sentence	I serve {s}.	我为{s1}效力。	speech-service-person	ELF 187c510 selector16 shared source at 18b8e02 ->10095d0; named/unknown employer
+sentence	I do not know! My instructions come from {s}.	我不知道！我的指令来自{s1}。	speech-service-person	ELF 187c510 selector16 shared source ->10095d0, instruction source subtype13
+sentence	I have no master, but {s} sometimes has need for my services.	我没有主人，但{s1}有时需要我效劳。	speech-service-person	ELF 187c510 selector16 shared source ->10095d0, freelance employer subtype9
+speech-service-person	somebody whose name I don't know	一个我不知道名字的人		ELF 10095d0 missing named knowledge; PE 6b6e80/6b48a0 complete source
+speech-service-person	{s}	{s1}	dialogue-query-person	ELF 10095d0 ->1c428e0, actual employer unit/historical reference
+sentence	Join me and we'll bring {s} back home!	加入我，我们一起把{s1}带回家！	dialogue-query-person	ELF 187c510 selector25 at1884462: historical FIRST_NAME or EnglishName; missing HF uses this poor soul
+sentence	Join me and we can shake off the yoke of {s} from this place forever!	加入我，我们就能让这里永远摆脱{s1}的枷锁！	$name	ELF 187c510 selector24 at1884161 -> journal_entity_name
+sentence	Join me and we can shake off the yoke of {s} from the weary shoulders of the people of {s} forever!	加入我，我们就能让{s2}饱受压迫的人民永远摆脱{s1}的枷锁！	$name,speech-place	ELF 187c510 selector24 entity/site branches at1884161 and18bac76
+sentence	Join me and we can shake off the yoke of the oppressors from the weary shoulders of the people of {s} forever!	加入我，我们就能让{s1}饱受压迫的人民永远摆脱压迫者的枷锁！	speech-place	ELF 187c510 selector24: entity absent, site present
+sentence	You should travel to {s}.	你应该前往{s1}。	speech-place	ELF 187c510 selector38 at1895883 -> site name
+sentence	You should talk to {s}.	你应该找{s1}谈谈。	dialogue-query-person	ELF 187c510 selector39 at1888a0e -> historical reference
+sentence	If you want to find a relative, you should travel to {s}.	想找亲人的话，你该去一趟{s1}。	speech-place	ELF 187c510 selector38: Family topic prefix plus site
+sentence	If you want to offer your condolences, you should travel to {s}.	想去吊唁的话，你该去一趟{s1}。	speech-place	ELF 187c510 selector38: OfferCondolences prefix plus site
+sentence	If you want to find a relative, you should talk to {s}.	想找亲人的话，你该去问问{s1}。	dialogue-query-person	ELF 187c510 selector39: Family prefix plus historical reference
+sentence	If you want to offer your condolences, you should talk to {s}.	想去吊唁的话，你该找{s1}谈谈。	dialogue-query-person	ELF 187c510 selector39: OfferCondolences prefix plus historical reference
+sentence	Can you tell me the way to {s}?	你能告诉我去{s1}的路吗？	speech-place	ELF 187c510 selector77 at1889809 -> site name
+sentence	{s} is dead.	{s1}已经死了。	dialogue-query-person	ELF 187c510 selector84 at18925c9 -> historical reference or live-unit caption
+sentence	{s} is well-traveled and would probably have that information.	{s1}走过不少地方，应该知道这方面的消息。	dialogue-query-person	ELF 187c510 selector85 at188cf34 -> historical reference or live-unit caption
+sentence	I am your loyal {s}. What do you command?	我是你忠诚的{s1}。你有何吩咐？	speech-office	ELF 187c510 selector106 at1895f58 -> position.name and 89fdc0 religious suffix
+sentence	I would be honored to serve as a {s}. Will you have me?	能担任{s1}将是我的荣幸。你愿意接纳我吗？	speech-office	ELF 187c510 selector107 at18852e4 ->858b80 gendered position.name
+speech-office	{s}	{s1}	$office	ELF 858b80: exact gendered/generic position RAW name
+speech-office	{s} of {s}	{s2}的{s1}	$office,speech-person	ELF 89fdc0 journal_religious_office_suffix: title plus deity EnglishName
+sentence	I'm preparing to travel to {s}.	我正准备前往{s1}。	speech-place	ELF 187c510 selector114 at188e1e5; piVar91 flags bit2, site branch
+sentence	I'm preparing to travel to {s} in {s}.	我正准备前往{s2}的{s1}。	speech-place,speech-place	ELF selector114: abstract-building + site branch
+sentence	I'm preparing to travel to {s} to view {s}.	我正准备前往{s1}瞻仰{s2}。	speech-place,$book	ELF selector114: site + journal_artifact_name
+sentence	I'm preparing to travel to {s} in {s} to view {s}.	我正准备前往{s2}的{s1}瞻仰{s3}。	speech-place,speech-place,$book	ELF selector114: building + site + artifact
+sentence	I'm traveling to {s}.	我正在前往{s1}。	speech-place	ELF selector114: current pilgrimage site
+sentence	I'm traveling to {s} in {s}.	我正在前往{s2}的{s1}。	speech-place,speech-place	ELF selector114: current pilgrimage building + site
+sentence	I'm traveling to {s} to view {s}.	我正在前往{s1}瞻仰{s2}。	speech-place,$book	ELF selector114: current pilgrimage site + artifact
+sentence	I'm traveling to {s} in {s} to view {s}.	我正在前往{s2}的{s1}瞻仰{s3}。	speech-place,speech-place,$book	ELF selector114: current pilgrimage building + site + artifact
+sentence	I started my pilgrimage in {s} in {s}.	我于{s2}在{s1}开始朝圣。	speech-place,$date	ELF selector114: pilgrimage history subtype0 -> a603a0 native date
+sentence	I visited {s} in {s}.	我于{s2}到访了{s1}。	speech-place,$date	ELF selector114: pilgrimage history subtype2 -> a603a0 date
+sentence	I visited {s} in {s} in {s}.	我于{s3}到访了{s2}的{s1}。	speech-place,speech-place,$date	ELF selector114: history subtype2 building/site/date
+sentence	I visited {s} in {s} to view {s}.	我于{s2}到访{s1}，瞻仰了{s3}。	speech-place,$date,$book	ELF selector114: pilgrimage history subtype1 site/date/artifact
+sentence	I visited {s} in {s} in {s} to view {s}.	我于{s3}到访{s2}的{s1}，瞻仰了{s4}。	speech-place,speech-place,$date,$book	ELF selector114: history subtype1 building/site/date/artifact
+# The native migration builder chooses one purpose and an independent reward
+# suffix, so keep their product compositional instead of treating it as a name.
+sentence	I'm going to {s}.	我正前往{s1}。	speech-place	ELF selector114 migration event12; site-name supplier
+sentence	I'm returning to my home in {s}.	我正返回{s1}的家。	speech-place	ELF selector114 migration event12; return flag bit2
+sentence	I'm going to {s} {s}.	我正前往{s1}{s2}。	speech-place,speech-journey-purpose	ELF selector114 migration event12: purpose then terminal period
+sentence	I'm returning to my home in {s} {s}.	我正返回{s1}的家{s2}。	speech-place,speech-journey-purpose	ELF selector114 migration event12: return flag, purpose, terminal period
+sentence	I'm going to {s} {s}!	我正前往{s1}{s2}！	speech-place,speech-journey-reward	ELF selector114: independent personality-selected wealth/drink reward suffix
+sentence	I'm returning to my home in {s} {s}!	我正返回{s1}的家{s2}！	speech-place,speech-journey-reward	ELF selector114: return flag plus personality-selected reward suffix
+sentence	I'm going to {s} {s}. Perhaps I'll finally make my fortune!	我正前往{s1}{s2}。说不定这回我总算能发财了！	speech-place,speech-journey-purpose	ELF selector114: personality wealth>60 and drink<=60 emits period plus Perhaps
+sentence	I'm returning to my home in {s} {s}. Perhaps I'll finally make my fortune!	我正返回{s1}的家{s2}。说不定这回我总算能发财了！	speech-place,speech-journey-purpose	ELF selector114: return flag plus period/Perhaps wealth suffix
+speech-journey-purpose	in search of work	寻找工作		ELF selector114 at18af601: default/no personality
+speech-journey-purpose	in search of excitement	寻求刺激		ELF selector114: excitement>60, adventure<=60
+speech-journey-purpose	in search of adventure	寻找冒险的机会		ELF selector114: adventure>60, excitement<=60
+speech-journey-purpose	in search of a thrilling adventure	寻一场惊险刺激的冒险		ELF selector114: adventure>60, excitement>60
+speech-journey-purpose	to start a new life	开始新的生活		ELF selector114 migration flags bit1, no spouse/employer reference
+speech-journey-purpose	to take up my position	就任		ELF selector114 migration position entity exists, title lookup missing
+speech-journey-purpose	to take up my position as {s}	就任{s1}	speech-office	ELF selector114 migration position lookup ->858b80 +89fdc0 deity suffix
+speech-journey-purpose	to move into my new home with {s}	，与{s1}搬入我们的新家	dialogue-query-person	ELF selector114 migration partner historical reference ->a10320
+speech-journey-purpose	to move into my new home with my {s} {s}	，与我的{s1}{s2}搬入我们的新家	dialogue-family,dialogue-query-person	ELF selector114: partner relation -> spouse/wife/husband then a10320
+speech-journey-reward	{s}, and wealth and pleasures beyond measure	{s1}，还想挣下数不尽的钱财，享尽人间的乐趣	speech-journey-purpose	ELF selector114: wealth>60, drink>60
+speech-journey-reward	{s} and maybe something to drink as well	{s1}，也许还能找点酒喝	speech-journey-purpose	ELF selector114: drink>60, wealth<=60

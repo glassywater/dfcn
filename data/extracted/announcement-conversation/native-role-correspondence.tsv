@@ -41,3 +41,5 @@ object-pronoun	0x12ca8a0	0x12ca929	elf-object-pronoun.c	0x140aa47b0	0x140aa4800	
 family-relation	0x1503cd0	0x1505947	elf-family-relation.c	0x14075a580	0x14075ad31	0x140757fa0	0x140758751	reference-family-relation.asm;classic-family-relation.asm
 unit-reference	0x1c428e0	0x1c445c2	elf-unit-reference.c	0x140c3a590	0x140c3b24f	0x140c375d0	0x140c3828f	reference-unit-reference.asm;classic-unit-reference.asm
 conversation-dispatch	0x187c510	0x18be0a7	elf-conversation-dispatch.c	0x1404988b0	0x1404df174	0x140496470	0x1404dcd34	reference-conversation-dispatch.asm;classic-conversation-dispatch.asm
+speech-person-parameter	0x1030670	0x1030d6a	elf-speech-person-parameter.c	0x140685900	0x140685cf2	0x140683320	0x140683712	reference-speech-person-parameter.asm;classic-speech-person-parameter.asm
+speech-transform	0x1031350	0x1031b45	elf-speech-transform.c	0x14067b6c0	0x14067bc4d	0x1406790e0	0x14067966d	reference-speech-transform.asm;classic-speech-transform.asm

@@ -1,4 +1,69 @@
 function	instruction	operand	kind	text
+0x140065820	0x140065824	0x1415e30a0	cstring	string too long
+0x14006a890	0x14006a994	0x1415e3208	cstring	TRANS_NAME
+0x14006a890	0x14006a9ec	0x1415e3218	cstring	nameless
+0x14006a890	0x14006aa3b	0x1415e3228	cstring	FIRST_NAME
+0x14006a890	0x14006aaa8	0x1415e3218	cstring	nameless
+0x14006a890	0x14006aaf3	0x1415e3238	cstring	PRO_POS
+0x14006a890	0x14006ab09	0x1415e94d8	cstring	its
+0x14006a890	0x14006ab54	0x1415e3240	cstring	PRO_OBJ
+0x14006a890	0x14006ab6a	0x1415e9484	cstring	it
+0x14006a890	0x14006abb5	0x1415e3248	cstring	PRO_SUB
+0x14006a890	0x14006abcb	0x1415e9484	cstring	it
+0x14006a890	0x14006ac16	0x1415e3250	cstring	PRO_REF
+0x14006a890	0x14006ac2c	0x1415f9318	cstring	itself
+0x1400df4d0	0x1400df972	0x1415e9260	cstring	Done: 
+0x1400df4d0	0x1400dfb22	0x1415e92a8	cstring	Insurrection with 
+0x1400df4d0	0x1400dfb2b	0x1415e92c0	cstring	Guided by 
+0x1400df4d0	0x1400dfb34	0x1415e9288	cstring	Rescue 
+0x1400df4d0	0x1400dfb3d	0x1415e9290	cstring	Aid rescue with 
+0x1400df4d0	0x1400dfb46	0x1415e92f8	cstring	Adventure with 
+0x1400df4d0	0x1400dfb4f	0x1415e9308	cstring	The bound service of
+0x1400df4d0	0x1400dfb58	0x1415e92d0	cstring	Entertain people with 
+0x1400df4d0	0x1400dfc14	0x1415e7300	cstring	World Joining Agreement
+0x1400df4d0	0x1400dfc26	0x1415e7368	cstring	Residency Agreement
+0x1400df4d0	0x1400dfc38	0x1415e7380	cstring	Grant of Citizenship
+0x1400df4d0	0x1400dfc4a	0x1415e7340	cstring	Parley Arrangement
+0x1400df4d0	0x1400dfc5c	0x1415e7358	cstring	Corruption
+0x1400df4d0	0x1400dfc6e	0x1415e73c0	cstring	Artifact Theft
+0x1400df4d0	0x1400dfc80	0x1415e73d0	cstring	Promise of Position
+0x1400df4d0	0x1400dfc92	0x1415e7398	cstring	Assassination Plot
+0x1400df4d0	0x1400dfca4	0x1415e73b0	cstring	Abduction Plot
+0x1400df4d0	0x1400dfcb6	0x1415e7410	cstring	Sabotage Plot
+0x1400df4d0	0x1400dfcc2	0x1415e7420	cstring	Infiltration Plot
+0x1400df4d0	0x1400dfcd1	0x1415e73e8	cstring	Framing Plot
+0x1400df4d0	0x1400dfcda	0x1415e73f8	cstring	War Starting Plot
+0x1400df4d0	0x1400dfcfe	0x1415e7438	cstring	Foiled Embezzlement Conspiracy
+0x1400df4d0	0x1400dfd0d	0x1415e7488	cstring	Foiled Corruption Conspiracy
+0x1400df4d0	0x1400dfd1c	0x1415e7468	cstring	Foiled Bribery Conspiracy
+0x1400df4d0	0x1400dfd2b	0x1415e7458	cstring	Build Structure
+0x1400df4d0	0x1400dfd3a	0x1415e74c0	cstring	Offer Service
+0x1400df4d0	0x1400dfd43	0x1415e74d0	cstring	Retrieve Artifact
+0x1400df4d0	0x1400dfeeb	0x1415e9320	cstring	Order: Drive off 
+0x1400df4d0	0x1400dff18	0x1415e8984	cstring	 from 
+0x1400df4d0	0x1400dffb1	0x55555556	inline	VUUU
+0x1400df4d0	0x1400dffc7	0x55555556	inline	VUUU
+0x1400df4d0	0x1400e0115	0x1415e92e8	cstring	Order: Kill 
+0x1400df4d0	0x1400e034a	0x1415e9338	cstring	Order: Cause trouble for 
+0x1400df4d0	0x1400e0c5c	0x1415e9320	cstring	Order: Drive off 
+0x1400df4d0	0x1400e0c84	0x1415e8984	cstring	 from 
+0x1400e2b10	0x1400e2b93	0x1415e40c4	cstring	, 
+0x1400e2b10	0x1400e2bb3	0x1415e40bc	cstring	 and 
+0x1400e2b10	0x1400e2bf0	0x1415e40c4	cstring	, 
+0x1400e2b10	0x1400e2c10	0x1415e40bc	cstring	 and 
+0x1400e3130	0x1400e3222	0x1415e9358	cstring	We should have made it there by now.
+0x1400e3130	0x1400e3234	0x1415e93f0	cstring	We should be making better progress.
+0x1400e3130	0x1400e3246	0x1415e93d0	cstring	We are going the wrong way.
+0x1400e3130	0x1400e3258	0x1415e93a8	cstring	We haven't performed for some time.
+0x1400e3130	0x1400e326a	0x1415e9380	cstring	We have arrived at our destination.
+0x1400e3130	0x1400e327c	0x1415e9448	cstring	The oppressor has been overthrown!
+0x1400e3130	0x1400e32c9	0x1415e9430	cstring	We must not abandon 
+0x1400e3130	0x1400e332e	0x1415e942c	cstring	!
+0x1400e3130	0x1400e3386	0x1415e9418	cstring	We must go back.
+0x1400e3bb0	0x1400e3c67	0x1415e9470/16	vector	Empty announceme
+0x1400e3bb0	0x1400e3c71	0x1415e9480	cstring	nt 
+0x1400e3bb0	0x1400e3c7c	0x1415e9482	cstring	 
+0x1400e3bb0	0x1400e3cf4	0x14164c4a0	cstring	errorlog.txt
 0x140496470	0x14049788c	0x1415e3c80	cstring	is
 0x140496470	0x1404978a3	0x14163d170	cstring	us
 0x140496470	0x1404978ba	0x14163d174	cstring	er
@@ -1409,6 +1474,240 @@ function	instruction	operand	kind	text
 0x140496470	0x1404da98e	0x141642c68	cstring	I have nothing to say to you.
 0x140496470	0x1404db221	0x141642c88	cstring	Fool!
 0x140496470	0x1404db81a	0x141642b90	cstring	What is this madness?  Calm yourself!
+0x1404dcd50	0x1404dcf6b	0x141642ee8	cstring	You flinch.
+0x1404dcd50	0x1404dcf78	0x141642ef0	cstring	ch.
+0x1404dcd50	0x1404dcf83	0x141642ef2	cstring	.
+0x1404dcd50	0x1404dcfe5	0x141642ef8	cstring	 flinches.
+0x1404dcd50	0x1404dd207	0x141642f08/16	vector	You are unpertur
+0x1404dcd50	0x1404dd211	0x141642f18	cstring	bed.
+0x1404dcd50	0x1404dd276	0x141642eb8	cstring	 appears unperturbed.
+0x1404dcd50	0x1404dd663	0x141642bb8/16	vector	That was compell
+0x1404dcd50	0x1404dd66d	0x141642bc8	cstring	ing!
+0x1404dcd50	0x1404dd6d2	0x141642bd0	cstring	 appears to acquiesce.
+0x1404dcd50	0x1404dd931	0x141642be8/16	vector	It is not convin
+0x1404dcd50	0x1404dd93b	0x141642bf8	cstring	cing.
+0x1404dcd50	0x1404dd944	0x141642bfc	cstring	.
+0x1404dcd50	0x1404dd9aa	0x141642ed0	cstring	 appears unconvinced.
+0x14052bd80	0x14052bdcb	0x14164c5d8	cstring	negative 
+0x14052bd80	0x14052be00	0x14164c5c8	cstring	zero
+0x14052bd80	0x14052be1a	0x14164c5d0	cstring	one
+0x14052bd80	0x14052be34	0x14164c5bc	cstring	two
+0x14052bd80	0x14052be4e	0x14164c5c0	cstring	three
+0x14052bd80	0x14052be68	0x14164c61c	cstring	four
+0x14052bd80	0x14052be82	0x14164c624	cstring	five
+0x14052bd80	0x14052be9c	0x14164c610	cstring	six
+0x14052bd80	0x14052beb6	0x14164c614	cstring	seven
+0x14052bd80	0x14052bed0	0x14164c600	cstring	eight
+0x14052bd80	0x14052beea	0x14164c608	cstring	nine
+0x14052bd80	0x14052bf04	0x14164c5f4	cstring	ten
+0x14052bd80	0x14052bf1e	0x14164c5f8	cstring	eleven
+0x14052bd80	0x14052bf38	0x14164c680	cstring	twelve
+0x14052bd80	0x14052bf52	0x14164c688	cstring	thirteen
+0x14052bd80	0x14052bf6c	0x14164c668	cstring	fourteen
+0x14052bd80	0x14052bf86	0x14164c678	cstring	fifteen
+0x14052bd80	0x14052bfa0	0x14164c650	cstring	sixteen
+0x14052bd80	0x14052bfba	0x14164c658	cstring	seventeen
+0x14052bd80	0x14052bfd4	0x14164c630	cstring	eighteen
+0x14052bd80	0x14052bfee	0x14164c640	cstring	nineteen
+0x14052bd80	0x14052c063	0x14164c6d8	cstring	 billion
+0x14052bd80	0x14052c082	0x1415e3720	cstring	 
+0x14052bd80	0x14052c126	0x14164c6e8	cstring	 million
+0x14052bd80	0x14052c145	0x1415e3720	cstring	 
+0x14052bd80	0x14052c222	0x14164c6b8	cstring	 thousand
+0x14052bd80	0x14052c241	0x1415e3720	cstring	 
+0x14052bd80	0x14052c319	0x14164c6c8	cstring	 hundred
+0x14052bd80	0x14052c335	0x1415e3720	cstring	 
+0x14052bd80	0x14052c3bb	0x66666667	inline	gfff
+0x14052bd80	0x14052c3e5	0x14164c6a4	cstring	twenty
+0x14052bd80	0x14052c3ee	0x14164c6ac	cstring	thirty
+0x14052bd80	0x14052c3fd	0x14164c694	cstring	forty
+0x14052bd80	0x14052c40c	0x14164c69c	cstring	fifty
+0x14052bd80	0x14052c41b	0x14164c4e4	cstring	sixty
+0x14052bd80	0x14052c42a	0x14164c4f0	cstring	seventy
+0x14052bd80	0x14052c433	0x14164c4d4	cstring	eighty
+0x14052bd80	0x14052c43c	0x14164c4dc	cstring	ninety
+0x14052bd80	0x14052c464	0x14164667c	cstring	-
+0x14052c590	0x14052c5c6	0x14164667c	cstring	-
+0x14052c590	0x14052c5e5	0x66666667	inline	gfff
+0x14052c590	0x14052c60e	0x1415e7680	cstring	th
+0x14052c590	0x14052c62e	0x1415e7680	cstring	th
+0x14052c590	0x14052c637	0x1415e767c	cstring	rd
+0x14052c590	0x14052c65e	0x1415e7680	cstring	th
+0x14052c590	0x14052c667	0x1415e7618	cstring	nd
+0x14052c590	0x14052c68e	0x1415e7680	cstring	th
+0x14052c590	0x14052c697	0x1415e7614	cstring	st
+0x14052c590	0x14052c6b0	0x14164c4c0	cstring	Negative 
+0x14052c590	0x14052c6ea	0x14164c4cc	cstring	Zeroth
+0x14052c590	0x14052c709	0x14164c4b0	cstring	First
+0x14052c590	0x14052c728	0x14164c4b8	cstring	Second
+0x14052c590	0x14052c747	0x14164c528	cstring	Third
+0x14052c590	0x14052c766	0x14164c530	cstring	Fourth
+0x14052c590	0x14052c785	0x14164c518	cstring	Fifth
+0x14052c590	0x14052c7a4	0x14164c520	cstring	Sixth
+0x14052c590	0x14052c7c3	0x14164c508	cstring	Seventh
+0x14052c590	0x14052c7e2	0x14164c510	cstring	Eighth
+0x14052c590	0x14052c801	0x14164c4f8	cstring	Ninth
+0x14052c590	0x14052c820	0x14164c500	cstring	Tenth
+0x14052c590	0x14052c83f	0x14164c598	cstring	Eleventh
+0x14052c590	0x14052c85e	0x14164c5a8	cstring	Twelfth
+0x14052c590	0x14052c87d	0x14164c578	cstring	Thirteenth
+0x14052c590	0x14052c89c	0x14164c588	cstring	Fourteenth
+0x14052c590	0x14052c8bb	0x14164c558	cstring	Fifteenth
+0x14052c590	0x14052c8da	0x14164c568	cstring	Sixteenth
+0x14052c590	0x14052c8f9	0x14164c538	cstring	Seventeenth
+0x14052c590	0x14052c918	0x14164c548	cstring	Eighteenth
+0x14052c590	0x14052c937	0x14164c5b0	cstring	Nineteenth
+0x14052c590	0x14052c95a	0x66666667	inline	gfff
+0x14052c590	0x14052c990	0x1415e7680	cstring	th
+0x14052c590	0x14052c9ba	0x1415e7680	cstring	th
+0x14052c590	0x14052c9c3	0x1415e767c	cstring	rd
+0x14052c590	0x14052c9f7	0x1415e7680	cstring	th
+0x14052c590	0x14052ca00	0x1415e7618	cstring	nd
+0x14052c590	0x14052ca31	0x1415e7680	cstring	th
+0x14052c590	0x14052ca3f	0x1415e7614	cstring	st
+0x14054ad40	0x14054ad8b	0x14164cb94	cstring	Shop
+0x14054ad40	0x14054ada7	0x14164cb88	cstring	Trade Depot
+0x14054ad40	0x14054adc3	0x14164cb7c	cstring	Nest
+0x14054ad40	0x14054addf	0x14164cb70	cstring	Nest Box
+0x14054ad40	0x14054adfb	0x1416281c8	cstring	Bookcase
+0x14054ad40	0x14054ae17	0x14164cb60	cstring	Offering Place
+0x14054ad40	0x14054ae33	0x141627f24	cstring	Hive
+0x14054ad40	0x14054ae4f	0x14164cb58	cstring	Wagon
+0x14054ad40	0x14054ae84	0x14164cb40	cstring	Carpenter's Workshop
+0x14054ad40	0x14054ae9d	0x14164cc08	cstring	Farmer's Workshop
+0x14054ad40	0x14054aeb2	0x141627cb8	cstring	Ashery
+0x14054ad40	0x14054af0e	0x141627f98	cstring	Stoneworker
+0x14054ad40	0x14054af5d	0x14164cbe8	cstring	Craftsman
+0x14054ad40	0x14054afac	0x141628018	cstring	Jeweler
+0x14054ad40	0x14054b053	0x141628050	cstring	Metalsmith
+0x14054ad40	0x14054b068	0x14164cbd8	cstring	's Forge
+0x14054ad40	0x14054b087	0x14164cbc8	cstring	Magma Forge
+0x14054ad40	0x14054b0e0	0x14162800c	cstring	Bowyer
+0x14054ad40	0x14054b187	0x141628028	cstring	Mechanic
+0x14054ad40	0x14054b19c	0x14164cbf8	cstring	's Workshop
+0x14054ad40	0x14054b1bb	0x14164cbb8	cstring	Siege Workshop
+0x14054ad40	0x14054b217	0x141616fc8	cstring	Butcher
+0x14054ad40	0x14054b229	0x14164cba0	cstring	Leather Works
+0x14054ad40	0x14054b285	0x141627f64	cstring	Tanner
+0x14054ad40	0x14054b2d1	0x141627f5c	cstring	Dyer
+0x14054ad40	0x14054b378	0x14164cc80	cstring	Clothier
+0x14054ad40	0x14054b38d	0x14164cbb0	cstring	's Shop
+0x14054ad40	0x14054b3ac	0x141627f80	cstring	Fishery
+0x14054ad40	0x14054b3cb	0x141627f6c	cstring	Still
+0x14054ad40	0x14054b3ea	0x141627f48	cstring	Loom
+0x14054ad40	0x14054b409	0x141627ee8	cstring	Quern
+0x14054ad40	0x14054b428	0x141628410	cstring	Millstone
+0x14054ad40	0x14054b447	0x141627f08	cstring	Vermin Catcher's Shop
+0x14054ad40	0x14054b466	0x141627f78	cstring	Kitchen
+0x14054ad40	0x14054b485	0x14164cc74	cstring	Tool
+0x14054ad40	0x14054b51a	0x14164cc68	cstring	Workshop
+0x14054ad40	0x14054b572	0x14164cc5c	cstring	Zone
+0x14054ad40	0x14054b58e	0x14164cc50	cstring	Farm Plot
+0x14054ad40	0x14054b5c3	0x141627ff8	cstring	Smelter
+0x14054ad40	0x14054b5e2	0x14164cc40	cstring	Glass Furnace
+0x14054ad40	0x14054b601	0x14164cc30	cstring	Wood Furnace
+0x14054ad40	0x14054b620	0x141627fbc	cstring	Kiln
+0x14054ad40	0x14054b63f	0x14164cc20	cstring	Magma Smelter
+0x14054ad40	0x14054b65e	0x14164ccf8	cstring	Magma Glass Furnace
+0x14054ad40	0x14054b67d	0x14164cce8	cstring	Magma Kiln
+0x14054ad40	0x14054b72c	0x14164cce0	cstring	Furnace
+0x14054ad40	0x14054b75e	0x1416280b4	cstring	Lever
+0x14054ad40	0x14054b77d	0x14164ccd0	cstring	Pressure Plate
+0x14054ad40	0x14054b79c	0x14164ccc0	cstring	Cage Trap
+0x14054ad40	0x14054b7bb	0x14164ccb0	cstring	Stone-Fall Trap
+0x14054ad40	0x14054b7da	0x14164cca0	cstring	Weapon Trap
+0x14054ad40	0x14054b7f9	0x14164cc90	cstring	Track Stop
+0x14054ad40	0x14054b818	0x14164cfb0	cstring	Trap
+0x14054ad40	0x14054b84f	0x14164cf90	cstring	Siege Engine
+0x14054ad40	0x14054b868	0x14164cfa0	cstring	Bolt Thrower
+0x14054ad40	0x14054b881	0x1416282d8	cstring	Ballista
+0x14054ad40	0x14054b8a0	0x141628308	cstring	Catapult
+0x14054ad40	0x14054b8c5	0x141628158	cstring	Door
+0x14054ad40	0x14054b8e1	0x14164cf80	cstring	Floor Hatch
+0x14054ad40	0x14054b8fd	0x14164cf70	cstring	Wall Grate
+0x14054ad40	0x14054b919	0x14164cf60	cstring	Floor Grate
+0x14054ad40	0x14054b935	0x14164cf50	cstring	Vertical Bars
+0x14054ad40	0x14054b951	0x14164cf40	cstring	Floor Bars
+0x14054ad40	0x14054b96d	0x1416283c0	cstring	Floodgate
+0x14054ad40	0x14054b989	0x14164d030	cstring	Restraint
+0x14054ad40	0x14054b9a5	0x141628364	cstring	Cage
+0x14054ad40	0x14054b9c1	0x141628080	cstring	Support
+0x14054ad40	0x14054b9dd	0x14164d020	cstring	Gear Assembly
+0x14054ad40	0x14054b9f9	0x141628350	cstring	Rollers
+0x14054ad40	0x14054ba15	0x14164d010	cstring	Horizontal Axle
+0x14054ad40	0x14054ba31	0x14164d000	cstring	Vertical Axle
+0x14054ad40	0x14054ba4d	0x14164cfe8	cstring	Upright Spear/Spike
+0x14054ad40	0x14054ba69	0x141628130	cstring	Instrument
+0x14054ad40	0x14054ba85	0x14164cfd8	cstring	Archery Target
+0x14054ad40	0x14054baa1	0x14164cfc8	cstring	Screw Pump
+0x14054ad40	0x14054babd	0x14164cfb8	cstring	Water Wheel
+0x14054ad40	0x14054bad9	0x1416283d0	cstring	Windmill
+0x14054ad40	0x14054baef	0x14164d0a8	cstring	Burial Receptacle
+0x14054ad40	0x14054bb01	0x14164d09c	cstring	Seat
+0x14054ad40	0x14054bb1d	0x14164d090	cstring	Animal Trap
+0x14054ad40	0x14054bb39	0x141627f2c	cstring	Table
+0x14054ad40	0x14054bb55	0x141628188	cstring	Cabinet
+0x14054ad40	0x14054bb71	0x14164d080	cstring	Weapon Rack
+0x14054ad40	0x14054bb8d	0x14164d070	cstring	Armor Stand
+0x14054ad40	0x14054bba9	0x14164d060	cstring	Container
+0x14054ad40	0x14054bbc5	0x141627f20	cstring	Bed
+0x14054ad40	0x14054bbe1	0x14164d050	cstring	Traction Bench
+0x14054ad40	0x14054bbfd	0x14164d040	cstring	Dirt Road
+0x14054ad40	0x14054bc19	0x14164d130	cstring	Paved Road
+0x14054ad40	0x14054bc35	0x1416280bc	cstring	Bridge
+0x14054ad40	0x14054bc51	0x1416280ac	cstring	Well
+0x14054ad40	0x14054bc6d	0x1416281b8	cstring	Statue
+0x14054ad40	0x14054bc89	0x141628198	cstring	Slab
+0x14054ad40	0x14054bca5	0x14164d120	cstring	Glass Window
+0x14054ad40	0x14054bcc1	0x14164d110	cstring	Gem Window
+0x14054ad40	0x14054bcdd	0x14164d100	cstring	Stockpile
+0x14054ad40	0x14054bd0c	0x141628170	cstring	Wall
+0x14054ad40	0x14054bd2b	0x141628160	cstring	Reinforced Wall
+0x14054ad40	0x14054bd4a	0x141628180	cstring	Floor
+0x14054ad40	0x14054bd69	0x14164d0f0	cstring	Up Stair
+0x14054ad40	0x14054bd88	0x14164d0e0	cstring	Down Stair
+0x14054ad40	0x14054bda7	0x14164d0d0	cstring	Up/Down Stair
+0x14054ad40	0x14054bdc6	0x141628178	cstring	Ramp
+0x14054ad40	0x14054bde5	0x141628100	cstring	Fortification
+0x14054ad40	0x14054be04	0x14164d0c0	cstring	Track (N)
+0x14054ad40	0x14054be23	0x14164cd80	cstring	Track (S)
+0x14054ad40	0x14054be42	0x14164cd70	cstring	Track (E)
+0x14054ad40	0x14054be61	0x14164cd60	cstring	Track (W)
+0x14054ad40	0x14054be80	0x14164cd50	cstring	Track (NS)
+0x14054ad40	0x14054be9f	0x14164cd40	cstring	Track (NE)
+0x14054ad40	0x14054bebe	0x14164cd30	cstring	Track (NW)
+0x14054ad40	0x14054bedd	0x14164cd20	cstring	Track (SE)
+0x14054ad40	0x14054befc	0x14164cd10	cstring	Track (SW)
+0x14054ad40	0x14054bf1b	0x14164ce00	cstring	Track (EW)
+0x14054ad40	0x14054bf3a	0x14164cdf0	cstring	Track (NSE)
+0x14054ad40	0x14054bf59	0x14164cde0	cstring	Track (NSW)
+0x14054ad40	0x14054bf78	0x14164cdd0	cstring	Track (NEW)
+0x14054ad40	0x14054bf97	0x14164cdc0	cstring	Track (SEW)
+0x14054ad40	0x14054bfb6	0x14164cdb0	cstring	Track (NSEW)
+0x14054ad40	0x14054bfd5	0x14164cda0	cstring	Track/Ramp (N)
+0x14054ad40	0x14054bff4	0x14164cd90	cstring	Track/Ramp (S)
+0x14054ad40	0x14054c013	0x14164ce80	cstring	Track/Ramp (E)
+0x14054ad40	0x14054c032	0x14164ce70	cstring	Track/Ramp (W)
+0x14054ad40	0x14054c051	0x14164ce60	cstring	Track/Ramp (NS)
+0x14054ad40	0x14054c070	0x14164ce50	cstring	Track/Ramp (NE)
+0x14054ad40	0x14054c08f	0x14164ce40	cstring	Track/Ramp (NW)
+0x14054ad40	0x14054c0ae	0x14164ce30	cstring	Track/Ramp (SE)
+0x14054ad40	0x14054c0cd	0x14164ce20	cstring	Track/Ramp (SW)
+0x14054ad40	0x14054c0ec	0x14164ce10	cstring	Track/Ramp (EW)
+0x14054ad40	0x14054c10b	0x14164cf28	cstring	Track/Ramp (NSE)
+0x14054ad40	0x14054c12a	0x14164cf10	cstring	Track/Ramp (NSW)
+0x14054ad40	0x14054c149	0x14164cef8	cstring	Track/Ramp (NEW)
+0x14054ad40	0x14054c168	0x14164cee0	cstring	Track/Ramp (SEW)
+0x14054ad40	0x14054c187	0x14164cec8	cstring	Track/Ramp (NSEW)
+0x14054ad40	0x14054c1a6	0x14164ceb8	cstring	Construction
+0x14054ad40	0x14054c1c5	0x14164cea0	cstring	Display Furniture
+0x140656840	0x140656993	0x14165df6c	cstring	myself
+0x140656840	0x1406569ad	0x14165df88	cstring	my
+0x140656840	0x1406569c7	0x1415e8ce4	cstring	me
+0x140656840	0x1406569e1	0x14165df84	cstring	I
+0x140656840	0x140656a1c	0x14165df78	cstring	yourself
+0x140656840	0x140656a33	0x1415e9910	cstring	your
+0x140656840	0x140656a4a	0x1415e74b8	cstring	you
 0x140656ab0	0x140656b73	0x1415e3720	cstring	 
 0x140656ab0	0x140656c08	0x14165df58	cstring	were 
 0x140656ab0	0x140656c17	0x1415fd1ec	cstring	was 
@@ -1786,6 +2085,21 @@ function	instruction	operand	kind	text
 0x14065c350	0x14065c7f1	0x14165e740/16	vector	right around her
 0x14065c350	0x14065c7fb	0x14165e750	cstring	e
 0x14065c350	0x14065c867	0x1415e3574	cstring	.
+0x14065c9c0	0x14065caee	0x141640ac0	cstring	This is 
+0x14065c9c0	0x14065cb26	0x1415e3574	cstring	.
+0x14065c9c0	0x14065cb9d	0x1415f2120	cstring	 is 
+0x14065c9c0	0x14065ccac	0x74736577	inline	west
+0x14065c9c0	0x14065ccca	0x74736165	inline	east
+0x14065c9c0	0x14065ccf0	0x141636a3c	cstring	north
+0x14065c9c0	0x14065ccf9	0x141636a40	cstring	h
+0x14065c9c0	0x14065cd24	0x141636a44	cstring	south
+0x14065c9c0	0x14065cd4b	0x141641c58	cstring	northwest
+0x14065c9c0	0x14065cd58	0x141641c60	cstring	t
+0x14065c9c0	0x14065cd6a	0x141641c78	cstring	southwest
+0x14065c9c0	0x14065cd7a	0x141641c68	cstring	northeast
+0x14065c9c0	0x14065cd85	0x141641bf8	cstring	southeast
+0x14065c9c0	0x14065cdbb	0x14165e740	cstring	right around here
+0x14065c9c0	0x14065cdee	0x1415e3574	cstring	.
 0x14065e290	0x14065e338	0x14165edb8	cstring	I worship 
 0x14065e290	0x14065e3a0	0x1415e3574	cstring	.
 0x14065e290	0x14065e456	0x14165edb8	cstring	I worship 
@@ -4450,6 +4764,19 @@ function	instruction	operand	kind	text
 0x140682430	0x140682bd9	0x14166ce20	cstring	 (to 
 0x140682430	0x140682c0a	0x1416102d8	cstring	)
 0x140682430	0x140682cee	0x1415fe430	cstring	: 
+0x140683320	0x140683422	0x1415e3208	cstring	TRANS_NAME
+0x140683320	0x14068344b	0x1415e3228	cstring	FIRST_NAME
+0x140683320	0x140683473	0x14166ce28	cstring	PLACE
+0x140683320	0x140683489	0x14166ce08	cstring	something
+0x140683320	0x140683490	0x141623700	cstring	the wilds
+0x140683320	0x1406834ea	0x1415e3238	cstring	PRO_POS
+0x140683320	0x140683500	0x1415e94d8	cstring	its
+0x140683320	0x14068354e	0x1415e3240	cstring	PRO_OBJ
+0x140683320	0x140683564	0x1415e9484	cstring	it
+0x140683320	0x1406835b2	0x1415e3248	cstring	PRO_SUB
+0x140683320	0x1406835c8	0x1415e9484	cstring	it
+0x140683320	0x140683616	0x1415e3250	cstring	PRO_REF
+0x140683320	0x14068362c	0x1415f9318	cstring	itself
 0x140683720	0x140683920	0x14166ce18	cstring	CONTEXT
 0x140683720	0x140683a2a	0x14166cdfc	cstring	ANY
 0x140683720	0x140683a45	0x14166ce00	cstring	ENTITY
@@ -4535,6 +4862,99 @@ function	instruction	operand	kind	text
 0x140683720	0x140685023	0x14166cd70	cstring	DIVINATION_SET
 0x140683720	0x1406850f1	0x14166cd80	cstring	SPEAKER
 0x140683720	0x1406851c8	0x14166cd08	cstring	AUDIENCE
+0x140685310	0x1406856e2	0x1415f7ff8	cstring	  
+0x140685310	0x1406857d7	0x14166cc80	cstring	An evil lurks within.
+0x140685310	0x1406857de	0x14166cd20	cstring	A night creature has infiltrated our communities and now makes prey of us.
+0x140685310	0x14068580b	0x1415f7ff8	cstring	  
+0x140685310	0x140685820	0x14166cca0	cstring	As you know, we are at war.  You might be able to strike our enemies where our armies cannot reach.
+0x140685310	0x140685858	0x1415f7ff8	cstring	  
+0x140685310	0x1406858f0	0x14166d510	cstring	Vanquishing a great beast on our behalf would bring us all much glory.
+0x140685310	0x14068596c	0x14166d560	cstring	Mastering the forces of nature would glorify us in the eyes of the world.
+0x140685310	0x1406859a9	0x14166d480	cstring	Demons from the underworld must not be permitted to walk freely upon the land.
+0x140685310	0x1406859d2	0x14166d4d0	cstring	Not far from here, a fearsome creature has made its home.
+0x140685310	0x1406859fb	0x14166db88	cstring	Terrible monstrosities live deep under the ground.
+0x140685310	0x140685a6e	0x14166daf8	cstring	A force of evil has arisen in the world.
+0x140685310	0x140685b44	0x14166da30	cstring	At the end of the world dwell the fiercest beasts of legend.
+0x140685310	0x140685b5c	0x14166d970	cstring	Creatures grow mighty out in the wildest regions.
+0x140685310	0x140685b74	0x14166d9b0	cstring	You might win fame by putting down a wild beast of great renown.
+0x140685310	0x140685b85	0x14166d910	cstring	Sometimes animals just get out of control.
+0x140685310	0x140685b9d	0x14166db30	cstring	Something truly horrifying has vomited itself forth from the depths of the world.
+0x140685310	0x140685bb8	0x14166da70	cstring	A great monster from the underground is said to have emerged from the darkness.
+0x140685310	0x140685bd1	0x14166dac0	cstring	A vile beast from the caverns now walks the land.
+0x140685310	0x140685bda	0x14166d9f8	cstring	A lurking pest has come up from the underground.
+0x140685310	0x140685bee	0x14166dbc0	cstring	The world is safer for travelers when night creatures no longer stalk the darkness.
+0x140685310	0x140685c0a	0x1415f7ff8	cstring	  
+0x140685310	0x140685ca2	0x14166cc10	cstring	A great beast threatens to bring ruin upon our people.
+0x140685310	0x140685d23	0x14166cc48	cstring	We have been under siege by an ancient force of nature.
+0x140685310	0x140685dad	0x14166cb98	cstring	It is time to send our cursed enemy back to the underworld.
+0x140685310	0x140685e25	0x14166cbd8	cstring	Our people have been tormented by a fearsome foe.
+0x140685310	0x140685e62	0x14166d828	cstring	A beast horrible beyond imagining threatens us.
+0x140685310	0x140685ed5	0x14166d7b0	cstring	The forces of darkness have descended upon us.
+0x140685310	0x140685fa9	0x14166d6e0	cstring	We are besieged by a terrifying monster from the harshest wilderness.
+0x140685310	0x140685fc9	0x14166d628	cstring	A savage beast from the thick of the wilds hunts us at will.
+0x140685310	0x140686004	0x14166d5b0	cstring	A ferocious unnatural beast has become the bane of our people.
+0x140685310	0x14068600b	0x14166d668	cstring	A ferocious wild animal has been set on us by nature.
+0x140685310	0x14068602a	0x14166d5f0	cstring	A beast from the wilds has been harassing our people.
+0x140685310	0x140686047	0x14166d7e0	cstring	A terror most foul from the evil depths nigh the underworld plagues us.
+0x140685310	0x140686064	0x14166d730	cstring	A vile monster from the bowels of the earth has been preying on our people.
+0x140685310	0x14068607f	0x14166d780	cstring	A beast from underground has been assailing us.
+0x140685310	0x140686088	0x14166d6a0	cstring	At times, creeping things slither out from below ground.
+0x140685310	0x14068609e	0x14166d858	cstring	A creature of the night has our people cowering in fear.
+0x140685310	0x140686128	0x1415f7ff8	cstring	  
+0x140685310	0x140686146	0x14166d940	cstring	Seek this place if you wish to confront 
+0x140685310	0x140686155	0x14166d8d8	cstring	This insidious evil is 
+0x140685310	0x14068616e	0x14166d8f0	cstring	Seek this place if you hunt 
+0x140685310	0x14068617d	0x14166d898	cstring	The creature is 
+0x140685310	0x1406861ef	0x1415e4548	cstring	 the 
+0x140685310	0x140686357	0x1415e3720	cstring	 
+0x140685310	0x1406863ae	0x1415e3720	cstring	 
+0x140685310	0x140686588	0x1415fbcc8	cstring	Slave
+0x140685310	0x1406865df	0x1415fbcc8	cstring	Slave
+0x140685310	0x1406865e7	0x1415fbccc	cstring	e
+0x140685310	0x1406866ca	0x72656e6f73697250	inline	Prisoner
+0x140685310	0x14068671a	0x72656e6f73697250	inline	Prisoner
+0x140685310	0x1406867ce	0x1415e3574	cstring	.
+0x140685310	0x14068682e	0x14166d8b0	cstring	  Body corrupted beyond reckoning, 
+0x140685310	0x140686865	0x1416cb15c	cstring	he
+0x140685310	0x140686872	0x1416cb158	cstring	she
+0x140685310	0x140686880	0x1415e9484	cstring	it
+0x140685310	0x1406868b8	0x14166d268	cstring	 assumes a beastly form to terrorize us.
+0x1406869d0	0x140686b05	0x14166d298	cstring	Our people have been pestered by skulking villains.
+0x1406869d0	0x140686b23	0x14166cfc8	cstring	  They have a 
+0x1406869d0	0x140686b88	0x14166cf98	cstring	 called 
+0x1406869d0	0x140686baf	0x14166cfa8	cstring	 somewhere 
+0x1406869d0	0x140686c58	0x1415e7fac	cstring	in 
+0x1406869d0	0x140686c8a	0x14166d1e0	cstring	A highly-organized military order is threatening our people.
+0x1406869d0	0x140686ca1	0x14166d220	cstring	An organized military order have brought terror to our doorsteps.
+0x1406869d0	0x140686cb3	0x14166d160	cstring	A small but organized military order have been causing us much hardship.
+0x1406869d0	0x140686cd0	0x14166d1b0	cstring	A marauding warband is threatening our people.
+0x1406869d0	0x140686ce7	0x14166d0e8	cstring	Malicious outlaws have brought terror to our doorsteps.
+0x1406869d0	0x140686cf9	0x14166d120	cstring	Particular outlaws have been causing us much hardship.
+0x1406869d0	0x140686d16	0x14166d060	cstring	A sprawling criminal organization has left our people living in fear.
+0x1406869d0	0x140686d2d	0x14166d0a8	cstring	A scheming criminal gang has eluded capture for far too long.
+0x1406869d0	0x140686d3f	0x14166cfe0	cstring	A lowly group of outcasts have perpetrated enough crimes against our community to gain notice.
+0x1406869d0	0x140686d6c	0x14166d040	cstring	There are foul goings-on 
+0x1406869d0	0x140686d8b	0x141641950	cstring	here
+0x1406869d0	0x140686da5	0x14166cfb8	cstring	over at 
+0x1406869d0	0x140686dc3	0x1415e3e34	cstring	the 
+0x1406869d0	0x140686e22	0x1415e64d0	cstring	 of 
+0x1406869d0	0x140686e87	0x1415e3574	cstring	.
+0x1406869d0	0x140686e9e	0x14166d450	cstring	around here
+0x1406869d0	0x140686eb3	0x1415e3574	cstring	.
+0x140686f20	0x140686fc9	0x1415f7ff8	cstring	  
+0x140686f20	0x140686fde	0x14166d460	cstring	A bandit gang calling itself 
+0x140686f20	0x14068700c	0x14166d408	cstring	, led by 
+0x140686f20	0x14068704a	0x1415f8584	cstring	,
+0x140686f20	0x14068705c	0x1415e3720	cstring	 
+0x140686f20	0x140687095	0x14166d418	cstring	has been harassing people right here on the streets of 
+0x140686f20	0x1406870b2	0x1415e942c	cstring	!
+0x140686f20	0x1406870c1	0x14166d3d0	cstring	has been harassing people over in 
+0x140686f20	0x1406870de	0x1415e3574	cstring	.
+0x140687110	0x1406871ba	0x1415f7ff8	cstring	  
+0x140687110	0x1406871cf	0x14166d3f8	cstring	The army of 
+0x140687110	0x140687253	0x14166d3a0	cstring	 is marching here!
+0x140687110	0x140687268	0x14166d3b8	cstring	 is marching on 
+0x140687110	0x140687285	0x1415e942c	cstring	!
 0x1406872b0	0x140687778	0x1415f7ff8	cstring	  
 0x1406872b0	0x14068778d	0x14166d360	cstring	There's absolutely nothing interesting around here.
 0x140687800	0x14068794c	0x7531	inline	1u
@@ -4683,6 +5103,11 @@ function	instruction	operand	kind	text
 0x14068da80	0x14068e05a	0x1415f7ff8	cstring	  
 0x14068da80	0x14068e06f	0x14166dc98	cstring	I've heard of a place called 
 0x14068da80	0x14068e090	0x1415e3574	cstring	.
+0x14068e560	0x14068e75c	0x1415f7ff8	cstring	  
+0x14068e560	0x14068e771	0x14166dc38	cstring	The surrounding area is called 
+0x14068e560	0x14068e7fc	0x1415f7ff8	cstring	  
+0x14068e560	0x14068e843	0x1415f2120	cstring	 is 
+0x14068e560	0x14068e8c5	0x1415e3574	cstring	.
 0x140692330	0x1406924b4	0x1415f7ff8	cstring	  
 0x140692330	0x1406924c9	0x14166dea8	cstring	I'm not sure exactly where to look.
 0x140692330	0x140692554	0x1415f7ff8	cstring	  
@@ -4743,6 +5168,166 @@ function	instruction	operand	kind	text
 0x1406927e0	0x140692d93	0x14166e938	cstring	I am unfit to brave danger with you.
 0x1406927e0	0x140692d9c	0x14166e960	cstring	I would...  rather not.
 0x1406b48a0	0x1406b4a77	0x141675cf0	cstring	somebody whose name I don't know
+0x1406db280	0x1406db2ec	0x1415e8618	cstring	a 
+0x1406db280	0x1406db5b5	0x1415e8618	cstring	a 
+0x1406db280	0x1406db765	0x141678d08	cstring	a girl
+0x1406db280	0x1406db77c	0x141678d00	cstring	a boy
+0x1406db280	0x1406db78e	0x141678cf8	cstring	a child
+0x1406db280	0x1406db7ab	0x141678cec	cstring	twins
+0x1406db280	0x1406db7c2	0x141678ce0	cstring	triplets
+0x1406db280	0x1406db7d3	0x141678ad8	cstring	quadruplets
+0x1406db280	0x1406db7e4	0x141678ac8	cstring	quintuplets
+0x1406db280	0x1406db7fb	0x141678ab8	cstring	sextuplets
+0x1406db280	0x1406db812	0x141678aa8	cstring	septuplets
+0x1406db280	0x1406db829	0x141678a98	cstring	octuplets
+0x1406db280	0x1406db840	0x141678a88	cstring	nonuplets
+0x1406db280	0x1406db854	0x141678a78	cstring	decaplets
+0x1406db280	0x1406db862	0x141678a68	cstring	undecaplets
+0x1406db280	0x1406db876	0x141678a58	cstring	duodecaplets
+0x1406db280	0x1406db88a	0x141678a48	cstring	tredecaplets
+0x1406db280	0x1406db89e	0x141678a30	cstring	quattuordecaplets
+0x1406db280	0x1406db8b2	0x141678a20	cstring	quindecaplets
+0x1406db280	0x1406db8bb	0x141678a10	cstring	many babies
+0x1406dbbc0	0x1406dbceb	0x141678a00	cstring	NUMBERED_NAME
+0x1406dbbc0	0x1406dbd31	0x1416789f8	cstring	zombie 
+0x1406dbbc0	0x1406dbd4d	0x1415f8b70	cstring	ghostly 
+0x1406dbbc0	0x1406dbe93	0x14165dd38	cstring	creature
+0x140714590	0x1407146eb	0x141680d28	cstring	gigantic
+0x140714590	0x1407146fa	0x141680d18	cstring	very large
+0x140714590	0x140714731	0x141680d08	cstring	muscular
+0x140714590	0x14071474f	0x141681164	cstring	frail
+0x140714590	0x140714762	0x14168115c	cstring	obese
+0x140714590	0x140714777	0x141681158	cstring	fat
+0x140714590	0x14071478d	0x141681150	cstring	chubby
+0x140714590	0x1407147c3	0x14164517c	cstring	large
+0x140714590	0x140714866	0x141681134	cstring	lanky
+0x140714590	0x140714875	0x14168113c	cstring	big
+0x140714590	0x140714909	0x14168112c	cstring	stout
+0x140714590	0x14071499d	0x14167ff0c	cstring	broad
+0x140714590	0x140714a29	0x141681140	cstring	slim
+0x140714590	0x140714aae	0x1416805ec	cstring	thin
+0x140714590	0x140714b54	0x14167ff04	cstring	narrow
+0x140714590	0x140714bf6	0x141681148	cstring	skinny
+0x140714590	0x140714c98	0x1416805ec	cstring	thin
+0x140714590	0x140714d43	0x141681140	cstring	slim
+0x140714590	0x140714de9	0x14167fd90	cstring	tall
+0x140714590	0x140714df8	0x141681120	cstring	towering
+0x140714590	0x140714e7e	0x141681148	cstring	skinny
+0x140714590	0x140714f0c	0x141681148	cstring	skinny
+0x140714590	0x140714fb2	0x14167fefc	cstring	long
+0x140714590	0x140715038	0x141681148	cstring	skinny
+0x140714590	0x1407150c6	0x141681148	cstring	skinny
+0x140714590	0x140715169	0x14167ff14	cstring	short
+0x140714590	0x140715204	0x141681140	cstring	slim
+0x140714590	0x140715292	0x141681148	cstring	skinny
+0x140714590	0x140715320	0x141681148	cstring	skinny
+0x140714590	0x1407153ae	0x141681148	cstring	skinny
+0x140714590	0x14071543c	0x141681148	cstring	skinny
+0x140714590	0x140715465	0x141681110	cstring	scrawny
+0x140714590	0x14071557d	0x141681108	cstring	small
+0x140714590	0x140715603	0x141681148	cstring	skinny
+0x140714590	0x1407156a5	0x141681100	cstring	tiny
+0x140714590	0x1407156ae	0x141681118	cstring	squat
+0x140715750	0x14071588a	0x66666667	inline	gfff
+0x140715750	0x1407158b9	0x66666667	inline	gfff
+0x140715750	0x140716a55	0x141681210	cstring	high-cheekbones
+0x140715750	0x140716a69	0x141681200	cstring	low-cheekbones
+0x140715750	0x140716aae	0x1416811f0	cstring	square-chin
+0x140715750	0x140716ac2	0x1416811e0	cstring	round-chin
+0x140715750	0x140716b23	0x1416811d0	cstring	massive-chin
+0x140715750	0x140716b51	0x1416811c0	cstring	recessed-chin
+0x140715750	0x140716b75	0x1416811b0	cstring	jutting-chin
+0x140715750	0x140716b97	0x1416811a0	cstring	prominent-chin
+0x140715750	0x140716bd1	0x141681190	cstring	broad-chin
+0x140715750	0x140716bef	0x141681180	cstring	narrow-chin
+0x140715750	0x140716c0a	0x1416811b0	cstring	jutting-chin
+0x140715750	0x140716c4b	0x1416811a0	cstring	prominent-chin
+0x140715750	0x140716c5a	0x1416811c0	cstring	recessed-chin
+0x140715750	0x140716e3c	0x141680680	cstring	high-voiced
+0x140715750	0x140716f9c	0x141681260	cstring	guttural-voiced
+0x140715750	0x140716fdb	0x141681250	cstring	grating-voiced
+0x140715750	0x140717014	0x141680660	cstring	clear-voiced
+0x140715750	0x140717033	0x141680690	cstring	deep-voiced
+0x140715750	0x140717075	0x141680670	cstring	raspy-voiced
+0x140715750	0x14071708d	0x141681240	cstring	squeaky-voiced
+0x140715750	0x1407170af	0x141680660	cstring	clear-voiced
+0x140715750	0x1407170ea	0x141681250	cstring	grating-voiced
+0x140715750	0x1407170fd	0x141681230	cstring	scratchy-voiced
+0x140715750	0x14071710c	0x141680680	cstring	high-voiced
+0x140715750	0x140717137	0x141680690	cstring	deep-voiced
+0x140715750	0x14071714d	0x141681220	cstring	low-voiced
+0x140715750	0x14071739d	0x14167bdf0	cstring	body part
+0x140715750	0x140717535	0x14167bdf0	cstring	body part
+0x140715750	0x14071759c	0x14167bdf0	cstring	body part
+0x140715750	0x1407175a9	0x14167bdf8	cstring	t
+0x140715750	0x14071763b	0x1415e8b58	cstring	's 
+0x140715750	0x1407177f2	0x14167fd90	cstring	tall
+0x140715750	0x140717809	0x14167ff0c	cstring	broad
+0x140715750	0x14071781b	0x14167ff04	cstring	narrow
+0x140715750	0x14071782b	0x14167fefc	cstring	long
+0x140715750	0x14071783d	0x14167ff14	cstring	short
+0x140715750	0x14071784d	0x1416451e0	cstring	high
+0x140715750	0x14071785f	0x1416451e8	cstring	low
+0x140715750	0x14071786f	0x14167fef0	cstring	close-set
+0x140715750	0x140717881	0x14167fee0	cstring	wide-set
+0x140715750	0x140717891	0x14167feb4	cstring	sunken
+0x140715750	0x1407178a2	0x141680508	cstring	bulging
+0x140715750	0x1407178b6	0x14167fea8	cstring	protruding
+0x140715750	0x1407178c6	0x14167fe98	cstring	wrinkled
+0x140715750	0x1407178d8	0x14167fe90	cstring	smooth
+0x140715750	0x1407178e9	0x141680a3c	cstring	coiled
+0x140715750	0x1407178fa	0x14167fe74	cstring	curly
+0x140715750	0x14071790b	0x141680a34	cstring	wavy
+0x140715750	0x14071791f	0x14167fe68	cstring	straight
+0x140715750	0x14071792f	0x14167fe88	cstring	convex
+0x140715750	0x140717941	0x14167fe80	cstring	concave
+0x140715750	0x140717951	0x141680604	cstring	dense
+0x140715750	0x140717963	0x1416805fc	cstring	sparse
+0x140715750	0x140717973	0x1416805f4	cstring	thick
+0x140715750	0x140717985	0x1416805ec	cstring	thin
+0x140715750	0x140717995	0x1416805e0	cstring	upturned
+0x140715750	0x1407179a7	0x1416805d4	cstring	hooked
+0x140715750	0x1407179b7	0x1416810f0	cstring	splayed
+0x140715750	0x1407179c9	0x1416805b8	cstring	flattened
+0x140715750	0x1407179da	0x1416805a8	cstring	great-lobed
+0x140715750	0x1407179ea	0x141680798	cstring	free-lobed
+0x140715750	0x1407179fb	0x141680598	cstring	fuse-lobed
+0x140715750	0x140717a10	0x141680770	cstring	small-lobed
+0x140715750	0x140717a21	0x141680760	cstring	widely-spaced
+0x140715750	0x140717a32	0x141680590	cstring	gapped
+0x140715750	0x140717a40	0x141680758	cstring	tangled
+0x140715750	0x140717a52	0x141680588	cstring	crowded
+0x140715750	0x140717a5f	0x1416806a8	cstring	round
+0x140715750	0x140717a6d	0x141680728	cstring	slit
+0x140715750	0x140717a7e	0x14167ff04	cstring	narrow
+0x140715750	0x140717a8c	0x1416806a0	cstring	greasy
+0x140715750	0x140717a9a	0x141680710	cstring	crinkly
+0x140715750	0x140717aa8	0x14168069c	cstring	dry
+0x140715750	0x140717abe	0x14164667c	cstring	-
+0x140715750	0x140717b8a	0x1416810f8	cstring	average
+0x140715750	0x140717c32	0x1416810f8	cstring	average
+0x14073c9a0	0x14073c9f5	0x141697588	cstring	MOTHER
+0x14073c9a0	0x14073ca24	0x141697590	cstring	FATHER
+0x14073c9a0	0x14073ca53	0x141697598	cstring	SPOUSE
+0x14073c9a0	0x14073ca82	0x141679348	cstring	CHILD
+0x14073c9a0	0x14073cab1	0x1416975a0	cstring	DEITY
+0x14073c9a0	0x14073cae0	0x1416975a8	cstring	LOVER
+0x14073c9a0	0x14073cb0c	0x1416975b0	cstring	PRISONER
+0x14073c9a0	0x14073cb3b	0x1416975c0	cstring	IMPRISONER
+0x14073c9a0	0x14073cb6a	0x1416975cc	cstring	MASTER
+0x14073c9a0	0x14073cb99	0x1416975d8	cstring	APPRENTICE
+0x14073c9a0	0x14073cbc8	0x1416975e8	cstring	COMPANION
+0x14073c9a0	0x14073cbf7	0x1416975f8	cstring	FORMER_MASTER
+0x14073c9a0	0x14073cc26	0x141697608	cstring	FORMER_APPRENTICE
+0x14073c9a0	0x14073cc55	0x141697620	cstring	PET_OWNER
+0x14073c9a0	0x14073cc84	0x141697630	cstring	FORMER_SPOUSE
+0x14073c9a0	0x14073ccb3	0x1416973f8	cstring	DECEASED_SPOUSE
+0x14073c9a0	0x14073cd0e	0x141697408/16	vector	Unrecognized His
+0x14073c9a0	0x14073cd18	0x141697418/16	vector	torical Figure H
+0x14073c9a0	0x14073cd23	0x141697428/16	vector	ist Fig Link Tok
+0x14073c9a0	0x14073cd2e	0x141697438	cstring	en: 
+0x14073c9a0	0x14073cdb8	0x14164c4a0	cstring	errorlog.txt
+0x140753f20	0x140753f88	0x1415e3e34	cstring	the 
 0x1407540b0	0x1407540d5	0x14169c320	cstring	agriculture
 0x1407540b0	0x1407540ea	0x14169c1f0	cstring	animals
 0x1407540b0	0x1407540ff	0x14169c1f8	cstring	art
@@ -4952,6 +5537,264 @@ function	instruction	operand	kind	text
 0x140757fa0	0x14075852c	0x14169d3c0	cstring	no relationship
 0x140757fa0	0x14075856a	0x14169d3d0	cstring	ren
 0x140757fa0	0x140758579	0x1415e4220	cstring	s
+0x1407ff940	0x1407ffd2a	0x3a40	inline	@:
+0x1407ff940	0x140800211	0x65726f4d	inline	More
+0x1407ff940	0x14080028a	0x79616b4f	inline	Okay
+0x1408002e0	0x140800836	0x232a	inline	*#
+0x14098ebd0	0x14098ecd4	0x1416bc970	cstring	WORSHIP_HF
+0x14098ebd0	0x14098ee03	0x1415e3208	cstring	TRANS_NAME
+0x14098ebd0	0x14098ee62	0x14166cf1c	cstring	RACE
+0x1409bb7e0	0x1409bb86a	0x1415e64d0	cstring	 of 
+0x140a7fc90	0x140a7fda7	0x14164517c	cstring	large
+0x140a7fc90	0x140a7fdb0	0x141645180	cstring	e
+0x140a7fc90	0x140a7fdb9	0x141681108	cstring	small
+0x140a7fc90	0x140a7fdc2	0x14168110c	cstring	l
+0x140a7fc90	0x140a7fe0c	0x1416c6848	cstring	grown 
+0x140a7fc90	0x140a7fee6	0x141677d30	cstring	logs
+0x140a7fc90	0x140a7ff58	0x1416ca230	cstring	branch
+0x140a7fc90	0x140a7ff7d	0x1416ca2d0	cstring	es
+0x140a7fc90	0x140a7ff9d	0x1415fc0c8	cstring	rough gems
+0x140a7fc90	0x140a7ffb6	0x1416ca2c0	cstring	raw green glass
+0x140a7fc90	0x140a7ffcf	0x1416ca2b0	cstring	raw clear glass
+0x140a7fc90	0x140a7ffe8	0x1416ca298	cstring	raw crystal glass
+0x140a7fc90	0x140a8000a	0x1415fc0c8	cstring	rough gems
+0x140a7fc90	0x140a80028	0x1416c70a4	cstring	rough 
+0x140a7fc90	0x140a800c7	0x141680d5c	cstring	small 
+0x140a7fc90	0x140a800de	0x141680d5c	cstring	small 
+0x140a7fc90	0x140a801be	0x1416ca1fc	cstring	rock
+0x140a7fc90	0x140a801de	0x1416ca1f0	cstring	small rock
+0x140a7fc90	0x140a80237	0x1416ca1e0	cstring	stone boulders
+0x140a7fc90	0x140a8025d	0x1416ca1d0	cstring	boulders
+0x140a7fc90	0x140a8033a	0x1416ca188	cstring	bars
+0x140a7fc90	0x140a80353	0x1416ca210	cstring	charcoal
+0x140a7fc90	0x140a80369	0x1416ca204	cstring	coke
+0x140a7fc90	0x140a80372	0x1416ca190	cstring	refined coal
+0x140a7fc90	0x140a8038b	0x1416396f8	cstring	metal
+0x140a7fc90	0x140a8039a	0x1416ca21c	cstring	 bars
+0x140a7fc90	0x140a8044a	0x1416ca228	cstring	 wafers
+0x140a7fc90	0x140a80538	0x1415fc088	cstring	cut gems
+0x140a7fc90	0x140a80551	0x1416ca170	cstring	cut green glass gems
+0x140a7fc90	0x140a8056a	0x1416ca158	cstring	cut clear glass gems
+0x140a7fc90	0x140a80580	0x1416ca1b8	cstring	cut crystal glass gems
+0x140a7fc90	0x140a8059b	0x1416ca1b0	cstring	gems
+0x140a7fc90	0x140a806d8	0x1416ca1a8	cstring	blocks
+0x140a7fc90	0x140a806ef	0x1416ca1a8	cstring	blocks
+0x140a7fc90	0x140a8079d	0x1416ca13c	cstring	door
+0x140a7fc90	0x140a807a4	0x1416ca1a0	cstring	portal
+0x140a7fc90	0x140a8081a	0x1416ca130	cstring	floodgate
+0x140a7fc90	0x140a8088a	0x1416ca120	cstring	hatch cover
+0x140a7fc90	0x140a808fa	0x1416ca118	cstring	grate
+0x140a7fc90	0x140a8096a	0x14162aa9c	cstring	table
+0x140a7fc90	0x140a809da	0x141637a60	cstring	cabinet
+0x140a7fc90	0x140a80a4a	0x141637a50	cstring	weapon rack
+0x140a7fc90	0x140a80aba	0x141637a40	cstring	armor stand
+0x140a7fc90	0x140a80b2a	0x1416ca154	cstring	bin
+0x140a7fc90	0x140a80bd1	0x1416ca150	cstring	box
+0x140a7fc90	0x140a80bea	0x1416ca14c	cstring	e
+0x140a7fc90	0x140a80c13	0x1416ca144	cstring	coffer
+0x140a7fc90	0x140a80c22	0x141637a68	cstring	chest
+0x140a7fc90	0x140a80c43	0x1416caa88	cstring	boxe
+0x140a7fc90	0x140a80c58	0x1415e4220	cstring	s
+0x140a7fc90	0x140a80c6c	0x1416ca150	cstring	box
+0x140a7fc90	0x140a80ce4	0x1416caa84	cstring	bag
+0x140a7fc90	0x140a80d7f	0x1416caa78	cstring	backpack
+0x140a7fc90	0x140a80e3c	0x1416caaa8	cstring	cast
+0x140a7fc90	0x140a80e48	0x1416caa68	cstring	limb/body 
+0x140a7fc90	0x140a80e57	0x1416caaa8	cstring	cast
+0x140a7fc90	0x140a80eb7	0x1416caa68	cstring	limb/body 
+0x140a7fc90	0x140a80ec6	0x1416caaa8	cstring	cast
+0x140a7fc90	0x140a80f36	0x1416caaa0	cstring	splint
+0x140a7fc90	0x140a80fa0	0x1416caa98	cstring	crutch
+0x140a7fc90	0x140a8103b	0x1416caa90	cstring	quiver
+0x140a7fc90	0x140a810ba	0x1416caa24	cstring	casket
+0x140a7fc90	0x140a81105	0x1416caa18	cstring	sarcophag
+0x140a7fc90	0x140a81114	0x14163d170	cstring	us
+0x140a7fc90	0x140a8111b	0x1416bafec	cstring	i
+0x140a7fc90	0x140a81137	0x14162a9ec	cstring	coffin
+0x140a7fc90	0x140a81254	0x1416caa04	cstring	chain
+0x140a7fc90	0x140a81268	0x1416caa0c	cstring	rope
+0x140a7fc90	0x140a813a8	0x1416caa4c	cstring	vial
+0x140a7fc90	0x140a813b9	0x1416caa44	cstring	flask
+0x140a7fc90	0x140a813d0	0x1416caa58	cstring	waterskin
+0x140a7fc90	0x140a81479	0x1416caa30	cstring	musical instrument
+0x140a7fc90	0x140a8155b	0x1416ca9d0	cstring	unglazed 
+0x140a7fc90	0x140a816c3	0x1415e3720	cstring	 
+0x140a7fc90	0x140a816dd	0x1416bcee4	cstring	tool
+0x140a7fc90	0x140a8177d	0x1416bcefc	cstring	toy
+0x140a7fc90	0x140a8182d	0x1416ca9cc	cstring	cup
+0x140a7fc90	0x140a81861	0x1416ca9c8	cstring	mug
+0x140a7fc90	0x140a8187b	0x1416ca9c0	cstring	goblet
+0x140a7fc90	0x140a818eb	0x1416ca9fc	cstring	window
+0x140a7fc90	0x140a8199a	0x1416ca9e4	cstring	cage
+0x140a7fc90	0x140a819a1	0x1416ca9f0	cstring	terrarium
+0x140a7fc90	0x140a81a15	0x1416ca9dc	cstring	barrel
+0x140a7fc90	0x140a81a85	0x1416ca98c	cstring	bucket
+0x140a7fc90	0x140a81af5	0x1416ca980	cstring	animal trap
+0x140a7fc90	0x140a81b71	0x14162aaa4	cstring	chair
+0x140a7fc90	0x140a81b8b	0x1416ca974	cstring	throne
+0x140a7fc90	0x140a81c41	0x1416ca970	cstring	web
+0x140a7fc90	0x140a81c8c	0x1416ca9b8	cstring	strands
+0x140a7fc90	0x140a81cbf	0x1416106b8	cstring	yarn
+0x140a7fc90	0x140a81cd0	0x1416106a0	cstring	thread
+0x140a7fc90	0x140a81d45	0x1416106a8	cstring	cloth
+0x140a7fc90	0x140a81e4f	0x1416ca9ac	cstring	sheet
+0x140a7fc90	0x140a81e72	0x1416ca9a0	cstring	tanned hide
+0x140a7fc90	0x140a81ed5	0x1416ca994	cstring	totem
+0x140a7fc90	0x140a81f3e	0x1416ca940	cstring	-bound 
+0x140a7fc90	0x140a81f5a	0x1416ca92c	cstring	codex
+0x140a7fc90	0x140a81f61	0x1416ca938	cstring	codices
+0x140a7fc90	0x140a81fe0	0x1416ca920	cstring	figurine
+0x140a7fc90	0x140a81ffe	0x1416ca968	cstring	rotten 
+0x140a7fc90	0x140a82023	0x14164aac0	cstring	drink
+0x140a7fc90	0x140a82066	0x1416ca968	cstring	rotten 
+0x140a7fc90	0x140a8224b	0x1416ca960	cstring	filthy 
+0x140a7fc90	0x140a82264	0x1416ca958	cstring	sticky 
+0x140a7fc90	0x140a82283	0x1416ca948	cstring	vomitous 
+0x140a7fc90	0x140a8229f	0x1416ca8ec	cstring	slimy 
+0x140a7fc90	0x140a822b8	0x1416ab578	cstring	stagnant 
+0x140a7fc90	0x140a822d4	0x1416ca8e4	cstring	dirty 
+0x140a7fc90	0x140a822f0	0x1416ca8dc	cstring	gooey 
+0x140a7fc90	0x140a82309	0x1416ca8d0	cstring	purulent 
+0x140a7fc90	0x140a82322	0x1416ca910	cstring	ichorous 
+0x140a7fc90	0x140a8233b	0x1416ca908	cstring	bloody 
+0x140a7fc90	0x140a8237a	0x1416a1240	cstring	liquid
+0x140a7fc90	0x140a824bc	0x1416ca8fc	cstring	 paste
+0x140a7fc90	0x140a82511	0x1416ca8f4	cstring	glob
+0x140a7fc90	0x140a82712	0x1416ca880	cstring	 laced with 
+0x140a7fc90	0x140a82786	0x1415e40c4	cstring	, 
+0x140a7fc90	0x140a82796	0x1415e40bc	cstring	 and 
+0x140a7fc90	0x140a827fb	0x1416ca968	cstring	rotten 
+0x140a7fc90	0x140a82898	0x1416ca870	cstring	 dye mix
+0x140a7fc90	0x140a828bc	0x1416ca864	cstring	powder
+0x140a7fc90	0x140a82916	0x1416ca968	cstring	rotten 
+0x140a7fc90	0x140a82938	0x1416ca85c	cstring	cheese
+0x140a7fc90	0x140a829c0	0x1416ca8c0	cstring	catapult parts
+0x140a7fc90	0x140a82a38	0x1416ca8a8	cstring	bolt thrower parts
+0x140a7fc90	0x140a82ab0	0x1416ca898	cstring	mechanisms
+0x140a7fc90	0x140a82b5f	0x1416ca890	cstring	tube
+0x140a7fc90	0x140a82b79	0x1416ca810	cstring	pipe section
+0x140a7fc90	0x140a82c17	0x1416ca800	cstring	trap component
+0x140a7fc90	0x140a82c48	0x1415e3720	cstring	 
+0x140a7fc90	0x140a82d2a	0x1416ca7f0	cstring	ballista parts
+0x140a7fc90	0x140a82da2	0x1416ca7e4	cstring	anvil
+0x140a7fc90	0x140a82e12	0x1416ca854	cstring	amulet
+0x140a7fc90	0x140a82e82	0x1416ca840	cstring	ballista arrow head
+0x140a7fc90	0x140a82f29	0x1416ca830	cstring	siege ammo
+0x140a7fc90	0x140a83073	0x1416ca820	cstring	ammunition
+0x140a7fc90	0x140a830eb	0x1416cae98	cstring	scepter
+0x140a7fc90	0x140a8315b	0x1416cae8c	cstring	crown
+0x140a7fc90	0x140a831c5	0x1416cae84	cstring	coin
+0x140a7fc90	0x140a831e4	0x1416cae78	cstring	perfect 
+0x140a7fc90	0x140a831f3	0x1416455a8	cstring	large 
+0x140a7fc90	0x140a832db	0x1416caec8	cstring	green glass 
+0x140a7fc90	0x140a832f1	0x1416caeb8	cstring	clear glass 
+0x140a7fc90	0x140a83307	0x1416caea8	cstring	crystal glass 
+0x140a7fc90	0x140a83323	0x1416106fc	cstring	gem
+0x140a7fc90	0x140a833db	0x1416caea0	cstring	 gem
+0x140a7fc90	0x140a834b6	0x1416cae40	cstring	ring
+0x140a7fc90	0x140a83526	0x1416cae38	cstring	earring
+0x140a7fc90	0x140a83596	0x1416cae28	cstring	bracelet
+0x140a7fc90	0x140a83606	0x14162aab0	cstring	bed
+0x140a7fc90	0x140a83676	0x1416cae18	cstring	traction bench
+0x140a7fc90	0x140a836e6	0x1416cae6c	cstring	quern
+0x140a7fc90	0x140a83756	0x1416cae60	cstring	millstone
+0x140a7fc90	0x140a837c6	0x1416cae54	cstring	statue
+0x140a7fc90	0x140a838d2	0x1416cae48	cstring	memorial
+0x140a7fc90	0x140a838e6	0x1416cad90	cstring	food imports sign
+0x140a7fc90	0x140a838fa	0x1416cad78	cstring	clothing imports sign
+0x140a7fc90	0x140a8390e	0x1416cad60	cstring	general imports sign
+0x140a7fc90	0x140a83922	0x1416cad50	cstring	cloth shop sign
+0x140a7fc90	0x140a83936	0x1416cae00	cstring	leather shop sign
+0x140a7fc90	0x140a8394a	0x1416cade0	cstring	woven clothing shop sign
+0x140a7fc90	0x140a8395e	0x1416cadc0	cstring	leather clothing shop sign
+0x140a7fc90	0x140a83972	0x1416cada8	cstring	bone carver's shop sign
+0x140a7fc90	0x140a83986	0x1416cacd8	cstring	gem cutter's shop sign
+0x140a7fc90	0x140a8399a	0x1416cacc0	cstring	weaponsmith's shop sign
+0x140a7fc90	0x140a839ae	0x1416caca8	cstring	bowyer's shop sign
+0x140a7fc90	0x140a839c2	0x1416cac90	cstring	blacksmith's shop sign
+0x140a7fc90	0x140a839d6	0x1416cad38	cstring	armorsmith's shop sign
+0x140a7fc90	0x140a839ea	0x1416cad20	cstring	metal craft shop sign
+0x140a7fc90	0x140a839fe	0x1416cad08	cstring	leather goods shop sign
+0x140a7fc90	0x140a83a12	0x1416cacf0	cstring	carpenter's shop sign
+0x140a7fc90	0x140a83a26	0x1416cac40	cstring	stone furniture shop sign
+0x140a7fc90	0x140a83a3a	0x1416cac20	cstring	metal furniture shop sign
+0x140a7fc90	0x140a83a4e	0x1416cac10	cstring	tavern sign
+0x140a7fc90	0x140a83a62	0x1416cac04	cstring	slab
+0x140a7fc90	0x140a83a76	0x1416cac04	cstring	slab
+0x140a7fc90	0x140a83a94	0x1416ca968	cstring	rotten 
+0x140a7fc90	0x140a83aa9	0x1416cac84	cstring	corpse
+0x140a7fc90	0x140a83ac7	0x1416ca968	cstring	rotten 
+0x140a7fc90	0x140a83aeb	0x1416106d0	cstring	tooth
+0x140a7fc90	0x140a83afc	0x1416cac7c	cstring	teeth
+0x140a7fc90	0x140a83b11	0x1416106c8	cstring	bone
+0x140a7fc90	0x140a83b29	0x1416106c0	cstring	shell
+0x140a7fc90	0x140a83b41	0x1416cac70	cstring	plant part
+0x140a7fc90	0x140a83b59	0x1416cac60	cstring	silk body part
+0x140a7fc90	0x140a83b71	0x1416cabb8	cstring	leather body part
+0x140a7fc90	0x140a83b89	0x1416caba0	cstring	wooden body part
+0x140a7fc90	0x140a83ba3	0x1416cab90	cstring	soap body part
+0x140a7fc90	0x140a83bbd	0x1416106e8	cstring	horn
+0x140a7fc90	0x140a83bd7	0x1416106e0	cstring	pearl
+0x140a7fc90	0x140a83bf1	0x1416cab80	cstring	yarn body part
+0x140a7fc90	0x140a83c09	0x1416cabf0	cstring	strand body part
+0x140a7fc90	0x140a83c12	0x14167bdf0	cstring	body part
+0x140a7fc90	0x140a83c3b	0x1416cabe8	cstring	Rotten 
+0x140a7fc90	0x140a83da2	0x141679ef8	cstring	remains
+0x140a7fc90	0x140a83e01	0x1416cabdc	cstring	seeds
+0x140a7fc90	0x140a83e72	0x1416cabd0	cstring	withered 
+0x140a7fc90	0x140a83ee6	0x1416cab28	cstring	leaves and fruit
+0x140a7fc90	0x140a83ef7	0x1416cab18	cstring	leaf or fruit
+0x140a7fc90	0x140a83f2a	0x1416cabd0	cstring	withered 
+0x140a7fc90	0x140a83f7d	0x14160fd14	cstring	plant
+0x140a7fc90	0x140a83f96	0x1415e4220	cstring	s
+0x140a7fc90	0x140a83fbc	0x1416ca968	cstring	rotten 
+0x140a7fc90	0x140a83fd4	0x1416cab10	cstring	raw 
+0x140a7fc90	0x140a84155	0x1415e40c4	cstring	, 
+0x140a7fc90	0x140a8416b	0x1415e40c4	cstring	, 
+0x140a7fc90	0x140a84184	0x14169c0e8	cstring	fish
+0x140a7fc90	0x140a841aa	0x1416ca968	cstring	rotten 
+0x140a7fc90	0x140a842d1	0x1415e3720	cstring	 
+0x140a7fc90	0x140a842e6	0x1416cab0c	cstring	egg
+0x140a7fc90	0x140a8430c	0x1416ca968	cstring	rotten 
+0x140a7fc90	0x140a8440b	0x14169c0e8	cstring	fish
+0x140a7fc90	0x140a84428	0x1416cab74	cstring	live 
+0x140a7fc90	0x140a84461	0x1416cab60	cstring	small live animal
+0x140a7fc90	0x140a8447b	0x1416cab54	cstring	tame 
+0x140a7fc90	0x140a84484	0x1416cab40	cstring	small tame animal
+0x140a7fc90	0x140a8449b	0x1416caad0	cstring	prepared meal
+0x140a7fc90	0x140a844b5	0x1416ca968	cstring	rotten 
+0x140a7fc90	0x140a844ca	0x1416caac0	cstring	preserved 
+0x140a7fc90	0x140a8458c	0x1416caab8	cstring	 chops
+0x140a7fc90	0x140a8459d	0x1416caab0	cstring	 chop
+0x140a7fc90	0x140a845d6	0x1416cab04	cstring	meat
+0x140a7fc90	0x140a845f0	0x1416cab04	cstring	meat
+0x140a7fc90	0x140a84682	0x1416bce90	cstring	weapon
+0x140a7fc90	0x140a846bb	0x1415e3720	cstring	 
+0x140a7fc90	0x140a847e7	0x1416caaf0	cstring	suits of 
+0x140a7fc90	0x140a847f6	0x1416bce88	cstring	armor
+0x140a7fc90	0x140a8485c	0x1415e3720	cstring	 
+0x140a7fc90	0x140a84906	0x1416caafc	cstring	chain 
+0x140a7fc90	0x140a84a15	0x141635604	cstring	right 
+0x140a7fc90	0x140a84a35	0x14163560c	cstring	left 
+0x140a7fc90	0x140a84a7e	0x1416caafc	cstring	chain 
+0x140a7fc90	0x140a84adf	0x1415e3720	cstring	 
+0x140a7fc90	0x140a84af3	0x1416caae0	cstring	handwear
+0x140a7fc90	0x140a84b97	0x1416bce58	cstring	shield
+0x140a7fc90	0x140a84bb6	0x1416cb2a0	cstring	/buckler
+0x140a7fc90	0x140a84bca	0x1416cb2a0	cstring	/buckler
+0x140a7fc90	0x140a84d07	0x1415e3720	cstring	 
+0x140a7fc90	0x140a84d37	0x1416cb290	cstring	footwear
+0x140a7fc90	0x140a84e28	0x1416cb280	cstring	headwear
+0x140a7fc90	0x140a84e6c	0x1415e3720	cstring	 
+0x140a7fc90	0x140a84f28	0x1416cb278	cstring	legwear
+0x140a7fc90	0x140a84fac	0x1415e3720	cstring	 
+0x140a7fc90	0x140a850c6	0x1415f7fb0	cstring	item
+0x140a7fc90	0x140a850f7	0x141616f6c	cstring	 [
+0x140a7fc90	0x140a85117	0x1415f8664	cstring	]
+0x140a910b0	0x140a911bd	0x1415e3720	cstring	 
+0x140a910b0	0x140a91333	0x1415e3720	cstring	 
+0x140a910b0	0x140a9158f	0x1415e3720	cstring	 
+0x140a910b0	0x140a916bb	0x1415e3720	cstring	 
 0x140a91760	0x140a91923	0x1415e3720	cstring	 
 0x140a91760	0x140a919de	0x1415e3720	cstring	 
 0x140a91760	0x140a91abb	0x1415e3720	cstring	 
@@ -4978,6 +5821,19 @@ function	instruction	operand	kind	text
 0x140aa1880	0x140aa1888	0x1415f9320	cstring	himself
 0x140aa1880	0x140aa18a1	0x1415f9328	cstring	herself
 0x140aa1880	0x140aa18b6	0x1415f9318	cstring	itself
+0x140aa18d0	0x140aa18e6	0x1416cb1a8	cstring	his
+0x140aa18d0	0x140aa18f1	0x1416cb150	cstring	her
+0x140aa18d0	0x140aa18f8	0x1415e94d8	cstring	its
+0x140b8f680	0x140b8f6ed	0x1415e3e34	cstring	the 
+0x140b8f680	0x140b8f71f	0x14161458c	cstring	late 
+0x140b8f680	0x140b8f737	0x141614594	cstring	early 
+0x140b8f680	0x140b8f746	0x14161459c	cstring	mid
+0x140b8f680	0x140b8f76e	0x14161434c	cstring	winter
+0x140b8f680	0x140b8f777	0x141614344	cstring	autumn
+0x140b8f680	0x140b8f780	0x14161433c	cstring	summer
+0x140b8f680	0x140b8f789	0x141614334	cstring	spring
+0x140b8f680	0x140b8f822	0x20666f20	inline	 of 
+0x140b8f680	0x140b8f8fb	0x1416da738	cstring	a time before time
 0x140b8f940	0x140b8f9aa	0x1416592f8	cstring	[LPAGE:ENT:
 0x140b8f940	0x140b8f9ca	0x1415f8664	cstring	]
 0x140b8f940	0x140b8fa34	0x1415f8b50	cstring	[/LPAGE]
@@ -5062,6 +5918,33 @@ function	instruction	operand	kind	text
 0x140b91a80	0x140b91aea	0x1415f8664	cstring	]
 0x140b91a80	0x140b91b53	0x1415f8b50	cstring	[/LPAGE]
 0x140b91a80	0x140b91bab	0x1416daec8	cstring	an unknown region
+0x140b91f10	0x140b9201b	0x14165dd38	cstring	creature
+0x140b91f10	0x140b9203a	0x1415e4220	cstring	s
+0x140bae420	0x140bae5db	0x1416dac10	cstring	HF_LINK
+0x140bae420	0x140bae64d	0x1416dabf8	cstring	RANDOM_DEF_SPHERE
+0x140bae420	0x140bae7da	0x1416dab88	cstring	some vague concept
+0x140bae420	0x140bae826	0x1415e3208	cstring	TRANS_NAME
+0x140bae420	0x140bae86f	0x1415e3218	cstring	nameless
+0x140bae420	0x140bae8b7	0x1415e3228	cstring	FIRST_NAME
+0x140bae420	0x140bae8f8	0x1415e3218	cstring	nameless
+0x140bae420	0x140bae944	0x14166cf1c	cstring	RACE
+0x140bae420	0x140bae9f8	0x1415e3238	cstring	PRO_POS
+0x140bae420	0x140baea11	0x1416cb1a8	cstring	his
+0x140bae420	0x140baea1a	0x1416cb150	cstring	her
+0x140bae420	0x140baea23	0x1415e94d8	cstring	its
+0x140bae420	0x140baea75	0x1415e3240	cstring	PRO_OBJ
+0x140bae420	0x140baea8e	0x1416cb154	cstring	him
+0x140bae420	0x140baeaa1	0x1416cb150	cstring	her
+0x140bae420	0x140baeab0	0x1415e9484	cstring	it
+0x140bae420	0x140baeafe	0x1415e3248	cstring	PRO_SUB
+0x140bae420	0x140baeb17	0x1416cb15c	cstring	he
+0x140bae420	0x140baeb24	0x1416cb158	cstring	she
+0x140bae420	0x140baeb33	0x1415e9484	cstring	it
+0x140bae420	0x140baeb81	0x1415e3250	cstring	PRO_REF
+0x140bae420	0x140baeb9a	0x1415f9320	cstring	himself
+0x140bae420	0x140baebaa	0x1415f9328	cstring	herself
+0x140bae420	0x140baebb9	0x1415f9318	cstring	itself
+0x140be87c0	0x140be87e7	0x7531	inline	1u
 0x140c375d0	0x140c37796	0x14165df6c	cstring	myself
 0x140c375d0	0x140c377a0	0x14165df70	cstring	lf
 0x140c375d0	0x140c377bb	0x796d	inline	my
@@ -5085,6 +5968,7 @@ function	instruction	operand	kind	text
 0x140c375d0	0x140c38201	0x1415e64d0	cstring	 of 
 0x140c375d0	0x140c38244	0x1416e7200	cstring	a secret identity
 0x140c375d0	0x140c38260	0x1415e4214	cstring	's
+0x140c62490	0x140c62734	0x1416e8e38	cstring	 (copy)
 0x140edb2f0	0x140edb308	0x141731e70	cstring	the worthlessness
 0x140edb2f0	0x140edb31c	0x141732fd8	cstring	the value
 0x140edb2f0	0x140edb32b	0x14166b5b0	cstring	nuances
@@ -5122,6 +6006,470 @@ function	instruction	operand	kind	text
 0x140edb2f0	0x140edb6be	0x14163c4d0	cstring	nature
 0x140edb2f0	0x140edb6dd	0x1415e904c	cstring	peace
 0x140edb2f0	0x140edb6f6	0x14163c500	cstring	knowledge
+0x140f97c50	0x140f97d50	0x1415e3208	cstring	TRANS_NAME
+0x140f97c50	0x140f97d94	0x1415e3218	cstring	nameless
+0x140f97c50	0x140f97ddf	0x1415e3228	cstring	FIRST_NAME
+0x140f97c50	0x140f97e1f	0x1415e3218	cstring	nameless
+0x140f97c50	0x140f97e6a	0x1415e3238	cstring	PRO_POS
+0x140f97c50	0x140f97e80	0x1415e94d8	cstring	its
+0x140f97c50	0x140f97ecb	0x1415e3240	cstring	PRO_OBJ
+0x140f97c50	0x140f97ee1	0x1415e9484	cstring	it
+0x140f97c50	0x140f97f2c	0x1415e3248	cstring	PRO_SUB
+0x140f97c50	0x140f97f42	0x1415e9484	cstring	it
+0x140f97c50	0x140f97f8d	0x1415e3250	cstring	PRO_REF
+0x140f97c50	0x140f97fa3	0x1415f9318	cstring	itself
+0x1410c6dc0	0x1410c6e15	0x141647468	cstring	fortress
+0x1410c6dc0	0x1410c6e2c	0x1417441c0	cstring	mountain halls
+0x1410c6dc0	0x1410c6e41	0x141744308	cstring	hillocks
+0x1410c6dc0	0x1410c6e73	0x141744300	cstring	pits
+0x1410c6dc0	0x1410c6e7d	0x141647468	cstring	fortress
+0x1410c6dc0	0x1410c6e98	0x141647414	cstring	cave
+0x1410c6dc0	0x1410c6ead	0x1417442f0	cstring	forest retreat
+0x1410c6dc0	0x1410c6edf	0x1417442e4	cstring	hamlet
+0x1410c6dc0	0x1410c6ee9	0x141641918	cstring	town
+0x1410c6dc0	0x1410c6f2b	0x141627ebc	cstring	shrine
+0x1410c6dc0	0x1410c6f40	0x1417442d8	cstring	labyrinth
+0x1410c6dc0	0x1410c6f55	0x141671674	cstring	lair
+0x1410c6dc0	0x1410c6f8c	0x1417442bc	cstring	castle
+0x1410c6dc0	0x1410c6fa1	0x1416148bc	cstring	fort
+0x1410c6dc0	0x1410c6fb6	0x1417442c8	cstring	monastery
+0x1410c6dc0	0x1410c6fcb	0x14170d454	cstring	tower
+0x1410c6dc0	0x1410c700d	0x1417442a8	cstring	mysterious palace
+0x1410c6dc0	0x1410c7027	0x1417443c0	cstring	mysterious dungeon
+0x1410c6dc0	0x1410c703c	0x1417443b0	cstring	mysterious lair
+0x1410c6dc0	0x1410c7051	0x141742290	cstring	vault
+0x1410c6dc0	0x1410c7066	0x14162aa88	cstring	tomb
+0x1410c6dc0	0x1410c7081	0x1417443a0	cstring	monument
+0x1410c6dc0	0x1410c7090	0x141744394	cstring	camp
+0x1410c6dc0	0x1410c70a5	0x141744380	cstring	important location
+0x1410c6dc0	0x1410c70ba	0x141670168	cstring	site
+0x141319430	0x1413194b6	0x14177b628	cstring	BOOK_INSTRUCTION
+0x141319430	0x1413194dd	0x14177b618	cstring	BOOK_ART
+0x141319430	0x141319504	0x14177b648	cstring	SECRET_DEATH
+0x141319430	0x14131952b	0x14169db88	cstring	GENERAL
+0x141319430	0x141319552	0x14177b63c	cstring	SLAYER
+0x141319430	0x141319579	0x14177b660	cstring	THREAT
+0x141319430	0x1413195a0	0x14177b658	cstring	GREET
+0x141319430	0x1413195c7	0x14177b748	cstring	GREET_REPLY
+0x141319430	0x1413195ee	0x14177b728	cstring	GREET_REPLY_DIFF_LANGUAGE
+0x141319430	0x141319615	0x14177b768	cstring	GREET_REPLY_UNUSUAL_FIRST
+0x141319430	0x14131963c	0x14177b758	cstring	GREET_WORSHIP
+0x141319430	0x141319663	0x14177b7a0	cstring	GREET_BABY
+0x141319430	0x14131968a	0x14177b788	cstring	GOODBYE_WORSHIP_1
+0x141319430	0x1413196b1	0x14177b7c8	cstring	GOODBYE_WORSHIP_2
+0x141319430	0x1413196d8	0x14177b7b0	cstring	GOODBYE_WORSHIP_3
+0x141319430	0x1413196ff	0x14177b680	cstring	TEMPLE_ALREADY_MEMBER
+0x141319430	0x141319726	0x14177b668	cstring	TEMPLE_BECOME_MEMBER
+0x141319430	0x14131974d	0x14177b6b0	cstring	POSITIVE
+0x141319430	0x141319774	0x14177b698	cstring	TASK_RECOMMENDATION
+0x141319430	0x14131979b	0x14177b6d8	cstring	UNKNOWN_HF_SEEKER
+0x141319430	0x1413197c2	0x14177b6c0	cstring	AB_SPECIFIC_HF_SEEKER
+0x141319430	0x1413197e9	0x14177b710	cstring	SITE_SPECIFIC_HF_SEEKER
+0x141319430	0x141319810	0x14177b6f0	cstring	SAME_SITE_AB_SPECIFIC_HF_SEEKER
+0x141319430	0x141319837	0x14177b8f8	cstring	SAME_SITE_SPECIFIC_HF_SEEKER
+0x141319430	0x14131985e	0x14177b8e0	cstring	ARCH_INFO_JUSTIFICATION
+0x141319430	0x141319885	0x14177b930	cstring	JUSTIFICATION_REPRESENTATION
+0x141319430	0x1413198ac	0x14177b918	cstring	JUSTIFICATION_PROXIMITY
+0x141319430	0x1413198d3	0x14177b968	cstring	JUSTIFICATION_EXPERIENCE
+0x141319430	0x1413198fa	0x14177b950	cstring	JUSTIFICATION_REMINDER
+0x141319430	0x141319921	0x14177b998	cstring	JUSTIFICATION_ANTITHETICAL
+0x141319430	0x141319948	0x14177b988	cstring	NO_FAMILY
+0x141319430	0x14131996f	0x14177b800	cstring	FAMILY_RELATIONSHIP_SPEC
+0x141319430	0x141319996	0x14177b7e0	cstring	FAMILY_RELATIONSHIP_NO_SPEC
+0x141319430	0x1413199bd	0x14177b840	cstring	FAMILY_RELATIONSHIP_ADDITIONAL
+0x141319430	0x1413199e4	0x14177b820	cstring	FAMILY_RELATIONSHIP_SPEC_DEAD
+0x141319430	0x141319a0b	0x14177b888	cstring	FAMILY_RELATIONSHIP_NO_SPEC_DEAD
+0x141319430	0x141319a32	0x14177b860	cstring	FAMILY_RELATIONSHIP_ADDITIONAL_DEAD
+0x141319430	0x141319a59	0x14177b8c8	cstring	CHILD_AGE_PROCLAMATION
+0x141319430	0x141319a80	0x14177b8b0	cstring	WANDERING_PROFESSION
+0x141319430	0x141319aa7	0x14177ba98	cstring	HUNTING_PROFESSION
+0x141319430	0x141319ace	0x14177ba80	cstring	THIEF_PROFESSION
+0x141319430	0x141319af5	0x14177bac8	cstring	SNATCHER_PROFESSION
+0x141319430	0x141319b1c	0x14177bab0	cstring	GUARD_PROFESSION
+0x141319430	0x141319b43	0x14177baf8	cstring	GUARD_WARNING
+0x141319430	0x141319b6a	0x14177bae0	cstring	SOLDIER_PROFESSION
+0x141319430	0x141319b91	0x14177bb20	cstring	PAST_PROFESSION_NO_YEAR
+0x141319430	0x141319bb8	0x14177bb08	cstring	PAST_PROFESSION_YEAR
+0x141319430	0x141319bdf	0x14177b9d0	cstring	CURRENT_PROFESSION_NO_YEAR
+0x141319430	0x141319c06	0x14177b9b8	cstring	CURRENT_PROFESSION_YEAR
+0x141319430	0x141319c2d	0x14177ba00	cstring	HIST_FIG_SLAYER
+0x141319430	0x141319c54	0x14177b9f0	cstring	ANIMAL_SLAYER
+0x141319430	0x141319c7b	0x14177ba28	cstring	WANDERING_PROFESSION_YEAR
+0x141319430	0x141319ca2	0x14177ba10	cstring	HUNTING_PROFESSION_YEAR
+0x141319430	0x141319cc9	0x14177ba60	cstring	SNATCHER_PROFESSION_YEAR
+0x141319430	0x141319cf0	0x14177ba48	cstring	THIEF_PROFESSION_YEAR
+0x141319430	0x141319d17	0x14177bb50	cstring	PAST_WANDERING_PROFESSION
+0x141319430	0x141319d3e	0x14177bb38	cstring	PAST_HUNTING_PROFESSION
+0x141319430	0x141319d65	0x14177bb88	cstring	PAST_SNATCHER_PROFESSION
+0x141319430	0x141319d88	0x14177bb70	cstring	PAST_THIEF_PROFESSION
+0x141319430	0x141319da8	0x14177bbc0	cstring	GREET_REPLY_AFTER_HERO
+0x141319430	0x141319dc8	0x14177bba8	cstring	MERCENARY_PROFESSION
+0x141319430	0x141319de8	0x14177bbf8	cstring	MERCENARY_PROFESSION_YEAR
+0x141319430	0x141319e4e	0x14177bbd8	cstring	PAST_MERCENARY_PROFESSION
+0x14131fff0	0x141320305	0x14177bcc0	cstring	 cancels 
+0x14131fff0	0x141320346	0x1415fe430	cstring	: 
+0x14131fff0	0x14132037b	0x14177bcb0	cstring	Unscheduled
+0x14131fff0	0x141320387	0x14177bce0	cstring	Cannot reach site
+0x14131fff0	0x141320393	0x14177bcd0	cstring	Getting married
+0x14131fff0	0x14132039f	0x14177bc20	cstring	Interrupted by 
+0x14131fff0	0x1413203f1	0x14177bc14	cstring	combat
+0x14131fff0	0x1413203fd	0x14177bc50	cstring	Inappropriate dig square
+0x14131fff0	0x141320409	0x14177bc30	cstring	Area became inappropriate
+0x14131fff0	0x141320415	0x14177bc84	cstring	Moved
+0x14131fff0	0x141320421	0x14177bc70	cstring	Need empty bucket
+0x14131fff0	0x14132042d	0x14177bca0	cstring	Need empty trap
+0x14131fff0	0x141320439	0x14177bc90	cstring	Need empty bag
+0x14131fff0	0x141320445	0x14177bdd0	cstring	Need empty cage
+0x14131fff0	0x141320451	0x14177bda8	cstring	Need valid, active sand collection zone
+0x14131fff0	0x14132045d	0x14177bdf8	cstring	Need valid, active clay collection zone
+0x14131fff0	0x141320469	0x14177bde0	cstring	No available colony
+0x14131fff0	0x141320475	0x14177be30	cstring	Sand vanished
+0x14131fff0	0x141320481	0x14177be20	cstring	Clay vanished
+0x14131fff0	0x14132048d	0x14177be50	cstring	Incapable of carrying
+0x14131fff0	0x141320499	0x14177be40	cstring	Too injured
+0x14131fff0	0x1413204a5	0x1415fa5d0	cstring	Exhausted
+0x14131fff0	0x1413204b1	0x14177bd10	cstring	Resting injury
+0x14131fff0	0x1413204bd	0x14177bcf8	cstring	Animal inaccessible
+0x14131fff0	0x1413204c9	0x14177bd38	cstring	Patient inaccessible
+0x14131fff0	0x1413204d5	0x14177bd20	cstring	Infant inaccessible
+0x14131fff0	0x1413204e1	0x14177bd68	cstring	No partner
+0x14131fff0	0x1413204ed	0x14177bd50	cstring	Item inaccessible
+0x14131fff0	0x1413204f9	0x14177bd90	cstring	Drop-off inaccessible
+0x14131fff0	0x141320505	0x14177bd78	cstring	Building inaccessible
+0x14131fff0	0x141320511	0x14177bf40	cstring	Area inaccessible
+0x14131fff0	0x14132051d	0x14177bf30	cstring	Nothing in cage
+0x14131fff0	0x141320529	0x14177bf70	cstring	Nothing to cage
+0x14131fff0	0x141320535	0x14177bf58	cstring	Nothing to catch
+0x14131fff0	0x141320541	0x14177bf98	cstring	No patient
+0x14131fff0	0x14132054d	0x14177bf80	cstring	Patient not resting
+0x14131fff0	0x141320559	0x14177bfc8	cstring	No infant
+0x14131fff0	0x141320565	0x14177bfa8	cstring	Already leading creature
+0x14131fff0	0x141320571	0x14177be80	cstring	No food available
+0x14131fff0	0x14132057d	0x14177be68	cstring	Water source vanished
+0x14131fff0	0x141320589	0x14177beb8	cstring	No water source
+0x14131fff0	0x141320595	0x14177be98	cstring	Water source contaminated
+0x14131fff0	0x1413205a1	0x14177bee0	cstring	Creature occupying site
+0x14131fff0	0x1413205ad	0x14177bec8	cstring	No bucket at well
+0x14131fff0	0x1413205b9	0x14177bf08	cstring	Bucket full of extraneous material
+0x14131fff0	0x1413205c5	0x14177bef8	cstring	Well dry
+0x14131fff0	0x1413205d1	0x14177c4c8	cstring	Need office
+0x14131fff0	0x141320705	0x1415fa688	cstring	Needs 
+0x14131fff0	0x14132072a	0x14177c4b0	cstring	 in linked stockpile
+0x14131fff0	0x141320759	0x14177c4d8	cstring	Wrong ammunition
+0x14131fff0	0x141320765	0x14177c510	cstring	Ammunition inaccessible
+0x14131fff0	0x141320771	0x14177c500	cstring	No ammunition
+0x14131fff0	0x14132077d	0x14177c540	cstring	No item
+0x14131fff0	0x141320789	0x14177c4f0	cstring	No weapon
+0x14131fff0	0x141320795	0x14177c528	cstring	Item blocking site
+0x14131fff0	0x1413207a1	0x14177c428	cstring	Building site submerged
+0x14131fff0	0x1413207ad	0x14177c410	cstring	Animal not restrained
+0x14131fff0	0x1413207b9	0x14177c458	cstring	No creature
+0x14131fff0	0x1413207c5	0x14177c440	cstring	Inappropriate building
+0x14131fff0	0x1413207d1	0x14177c478	cstring	No building
+0x14131fff0	0x1413207dd	0x14177c468	cstring	No floor space
+0x14131fff0	0x1413207e9	0x14177c498	cstring	No designated area
+0x14131fff0	0x1413207f5	0x14177c488	cstring	No party
+0x14131fff0	0x141320801	0x14177c5e8	cstring	Wrong justice state
+0x14131fff0	0x14132080d	0x14177c5d0	cstring	Nothing in building
+0x14131fff0	0x141320819	0x1416ad3e8	cstring	Relieved
+0x14131fff0	0x141320825	0x14177c610	cstring	Water is frozen
+0x14131fff0	0x141320831	0x1416ad318	cstring	Terrified
+0x14131fff0	0x14132083d	0x14177c600	cstring	Mortally afraid
+0x14131fff0	0x141320849	0x14177c628	cstring	Experiencing emotional shock
+0x14131fff0	0x141320855	0x1416ad2a8	cstring	Horrified
+0x14131fff0	0x141320861	0x1416ad158	cstring	Grieving
+0x14131fff0	0x14132086d	0x14177c620	cstring	Too sad
+0x14131fff0	0x141320879	0x14177c658	cstring	In agony
+0x14131fff0	0x141320885	0x14177c648	cstring	Anguished
+0x14131fff0	0x141320891	0x14177c560	cstring	Despairing
+0x14131fff0	0x14132089d	0x1416ad058	cstring	Dismayed
+0x14131fff0	0x1413208a9	0x1416ad070	cstring	Distressed
+0x14131fff0	0x1413208b5	0x1416ad5c8	cstring	Frightened
+0x14131fff0	0x1413208c1	0x1416ad570	cstring	Miserable
+0x14131fff0	0x1413208cd	0x1416ad590	cstring	Mortified
+0x14131fff0	0x1413208d9	0x1416ad454	cstring	Shaken
+0x14131fff0	0x1413208e5	0x14177c548	cstring	In existential crisis
+0x14131fff0	0x1413208f1	0x14177c580	cstring	Too insane
+0x14131fff0	0x1413208fd	0x14177c570	cstring	Too depressed
+0x14131fff0	0x141320909	0x14177c5a0	cstring	Oblivious
+0x14131fff0	0x141320915	0x14177c590	cstring	Catatonic
+0x14131fff0	0x141320921	0x14177c5c0	cstring	Taken by mood
+0x14131fff0	0x14132092d	0x14177c5b0	cstring	Went insane
+0x14131fff0	0x141320939	0x14177c730	cstring	Throwing tantrum
+0x14131fff0	0x141320945	0x14177c718	cstring	Could not find path
+0x14131fff0	0x141320951	0x14177c760	cstring	Path blocked
+0x14131fff0	0x14132095d	0x14177c748	cstring	Seeking artifact
+0x14131fff0	0x141320969	0x14177c780	cstring	Handling dangerous creature
+0x14131fff0	0x141320975	0x14177c770	cstring	Going to bed
+0x14131fff0	0x141320981	0x14177c7b8	cstring	Seeking Infant
+0x14131fff0	0x14132098d	0x14177c7a0	cstring	Dangerous terrain
+0x14131fff0	0x141320999	0x14177c680	cstring	Forbidden area
+0x14131fff0	0x1413209a5	0x14177c6a0	cstring	Job item lost or destroyed
+0x14131fff0	0x1413209ac	0x14177c668	cstring	Job item misplaced
+0x14131fff0	0x1413209be	0x14177c690	cstring	Getting food
+0x14131fff0	0x1413209ca	0x14177c6d8	cstring	Getting water
+0x14131fff0	0x1413209d6	0x14177c6c0	cstring	Hunting vermin for food
+0x14131fff0	0x1413209e2	0x14177c700	cstring	Target inaccessible
+0x14131fff0	0x1413209ee	0x14177c6e8	cstring	Target too injured
+0x14131fff0	0x1413209fa	0x1416390c8	cstring	No target
+0x14131fff0	0x141320a06	0x14177c888	cstring	No mechanism for target
+0x14131fff0	0x141320a12	0x14177c870	cstring	No target building
+0x14131fff0	0x141320a1e	0x14177c8b0	cstring	No mechanism for trigger
+0x14131fff0	0x141320a2a	0x14177c8a0	cstring	No trigger
+0x14131fff0	0x141320a36	0x14177c8e0	cstring	Attacking building
+0x14131fff0	0x141320a42	0x14177c8d0	cstring	Lost pick
+0x14131fff0	0x141320a4e	0x14177c910	cstring	Invalid officer
+0x14131fff0	0x141320a5a	0x14177c8f8	cstring	"""Farewell!""  Leaving"
+0x14131fff0	0x141320a66	0x14177c7e0	cstring	Removed from guard
+0x14131fff0	0x141320a72	0x14177c7c8	cstring	Equipment mismatch
+0x14131fff0	0x141320a7e	0x1415fa628	cstring	Unconscious
+0x14131fff0	0x141320a8a	0x1415fa6cc	cstring	Webbed
+0x14131fff0	0x141320a96	0x1415fa618	cstring	Paralyzed
+0x14131fff0	0x141320aa2	0x14177c804	cstring	Caged
+0x14131fff0	0x141320aae	0x14177c7f8	cstring	In Custody
+0x14131fff0	0x141320aba	0x14177c820	cstring	Getting something to drink
+0x14131fff0	0x141320ac6	0x14177c810	cstring	Using well
+0x14131fff0	0x141320ad2	0x14177c860	cstring	Lost axe
+0x14131fff0	0x141320adb	0x14177c840	cstring	Not responsible for trade
+0x14131fff0	0x141320ae4	0x14177c0e0	cstring	No available traction bench
+0x14131fff0	0x141320aed	0x14177c0d0	cstring	Need splint
+0x14131fff0	0x141320af6	0x14177c110	cstring	Need thread
+0x14131fff0	0x141320aff	0x14177c100	cstring	Need cloth
+0x14131fff0	0x141320b08	0x14177c130	cstring	Need crutch
+0x14131fff0	0x141320b11	0x14177c120	cstring	Bad script! #1
+0x14131fff0	0x141320b1a	0x14177c150	cstring	Bad script! #2
+0x14131fff0	0x141320b23	0x14177c140	cstring	Bad script! #3
+0x14131fff0	0x141320b2c	0x14177bff0	cstring	Need bag containing powder suitable for cast application
+0x14131fff0	0x141320b35	0x14177bfd8	cstring	No weapon for execution
+0x14131fff0	0x141320b3e	0x14177c040	cstring	No appropriate ammunition
+0x14131fff0	0x141320b47	0x14177c030	cstring	Not appointed
+0x14131fff0	0x141320b50	0x14177c080	cstring	No longer requested
+0x14131fff0	0x141320dbd	0x1415e89c4	cstring	The 
+0x14131fff0	0x141320e26	0x14177c060	cstring	 suspended the construction of 
+0x14131fff0	0x141320e67	0x1415e3574	cstring	.
+0x14131fff0	0x141321050	0x1415e89c4	cstring	The 
+0x14131fff0	0x1413210e8	0x14177c0b0	cstring	 suspended a linkage from 
+0x14131fff0	0x141321129	0x1415e3574	cstring	.
+0x14131fff0	0x141322b69	0x141610298	cstring	 (
+0x14131fff0	0x141322b9b	0x14177c098	cstring	) has been completed.
+0x141327b80	0x141327c5b	0x14177c1f4	cstring	miner
+0x141327b80	0x141327c75	0x14177c1e8	cstring	woodworker
+0x141327b80	0x141327c8f	0x14177c208	cstring	carpenter
+0x141327b80	0x141327ca9	0x14177c1fc	cstring	bowyer
+0x141327b80	0x141327cc3	0x14177c228	cstring	woodcutter
+0x141327b80	0x141327cdd	0x14177c218	cstring	stoneworker
+0x141327b80	0x141327cf7	0x14177c170	cstring	engraver
+0x141327b80	0x141327d11	0x14177c160	cstring	stonecutter
+0x141327b80	0x141327d2b	0x14177c188	cstring	stone carver
+0x141327b80	0x141327d45	0x14177c17c	cstring	mason
+0x141327b80	0x141327d5f	0x14177c1ac	cstring	ranger
+0x141327b80	0x141327d79	0x14177c198	cstring	animal caretaker
+0x141327b80	0x141327d93	0x14177c1c0	cstring	animal trainer
+0x141327b80	0x141327dad	0x1416a1484	cstring	hunter
+0x141327b80	0x141327dc7	0x14177c1b8	cstring	trapper
+0x141327b80	0x141327de1	0x14177c2b8	cstring	animal dissector
+0x141327b80	0x141327dfb	0x14177c2a8	cstring	metalsmith
+0x141327b80	0x141327e15	0x14177c2e0	cstring	furnace operator
+0x141327b80	0x141327e2f	0x14177c2d0	cstring	weaponsmith
+0x141327b80	0x141327e49	0x14177c308	cstring	armorer
+0x141327b80	0x141327e63	0x14177c2f8	cstring	blacksmith
+0x141327b80	0x141327e7d	0x14177c318	cstring	metalcrafter
+0x141327b80	0x141327e97	0x14177c310	cstring	jeweler
+0x141327b80	0x141327eb1	0x14177c248	cstring	gem cutter
+0x141327b80	0x141327ecb	0x14177c238	cstring	gem setter
+0x141327b80	0x141327edf	0x141625fe8	cstring	craftsman
+0x141327b80	0x141327ee6	0x141729eb8	cstring	craftsmen
+0x141327b80	0x141327f05	0x14177c268	cstring	woodcrafter
+0x141327b80	0x141327f1f	0x14177c258	cstring	papermaker
+0x141327b80	0x141327f39	0x14177c280	cstring	bookbinder
+0x141327b80	0x141327f53	0x14177c274	cstring	potter
+0x141327b80	0x141327f6d	0x14177c29c	cstring	glazer
+0x141327b80	0x141327f87	0x14177c290	cstring	wax worker
+0x141327b80	0x141327fa1	0x14177c3a0	cstring	stonecrafter
+0x141327b80	0x141327fbb	0x14177c390	cstring	leatherworker
+0x141327b80	0x141327fd5	0x14177c3b8	cstring	bone carver
+0x141327b80	0x141327fef	0x14177c3b0	cstring	weaver
+0x141327b80	0x141328009	0x14177c3d8	cstring	clothier
+0x141327b80	0x141328023	0x14177c3c8	cstring	glassmaker
+0x141327b80	0x14132803d	0x14177c3f8	cstring	strand extractor
+0x141327b80	0x141328057	0x14177c3e8	cstring	fishery worker
+0x141327b80	0x14132806b	0x14177c328	cstring	fisherman
+0x141327b80	0x141328072	0x14177c338	cstring	fishermen
+0x141327b80	0x141328091	0x14177c358	cstring	fish dissector
+0x141327b80	0x1413280ab	0x14177c348	cstring	fish cleaner
+0x141327b80	0x1413280c5	0x14177c374	cstring	farmer
+0x141327b80	0x1413280df	0x14177c368	cstring	cheesemaker
+0x141327b80	0x1413280f9	0x14177c384	cstring	milker
+0x141327b80	0x141328113	0x14177c37c	cstring	gelder
+0x141327b80	0x14132812d	0x14177ccc8	cstring	shearer
+0x141327b80	0x141328147	0x14177ccc0	cstring	spinner
+0x141327b80	0x141328161	0x14177ccdc	cstring	cook
+0x141327b80	0x14132817b	0x14177ccd0	cstring	thresher
+0x141327b80	0x141328195	0x14177ccec	cstring	miller
+0x141327b80	0x1413281af	0x141730600	cstring	butcher
+0x141327b80	0x1413281c9	0x14177cce4	cstring	tanner
+0x141327b80	0x1413281e3	0x14177cd00	cstring	dyer
+0x141327b80	0x1413281fd	0x14177ccf8	cstring	presser
+0x141327b80	0x141328217	0x14177cc58	cstring	beekeeper
+0x141327b80	0x141328231	0x14177cc50	cstring	planter
+0x141327b80	0x14132824b	0x14177cc70	cstring	herbalist
+0x141327b80	0x141328265	0x14177cc64	cstring	brewer
+0x141327b80	0x14132827f	0x14177cc90	cstring	soap maker
+0x141327b80	0x141328299	0x14177cc80	cstring	potash maker
+0x141327b80	0x1413282b3	0x14177ccb0	cstring	lye maker
+0x141327b80	0x1413282cd	0x14177cca0	cstring	wood burner
+0x141327b80	0x1413282e7	0x14177cd90	cstring	engineer
+0x141327b80	0x141328301	0x14177cd80	cstring	mechanic
+0x141327b80	0x14132831b	0x14177cdb0	cstring	siege engineer
+0x141327b80	0x141328335	0x14177cda0	cstring	siege operator
+0x141327b80	0x14132834f	0x14177cdc8	cstring	pump operator
+0x141327b80	0x141328369	0x1416bc644	cstring	clerk
+0x141327b80	0x141328383	0x14165ae68	cstring	administrator
+0x141327b80	0x14132839d	0x14177cdc0	cstring	trader
+0x141327b80	0x1413283b7	0x1416a1454	cstring	poet
+0x141327b80	0x1413283d1	0x1416a145c	cstring	bard
+0x141327b80	0x1413283eb	0x1416a1464	cstring	dancer
+0x141327b80	0x141328405	0x14163cf38	cstring	performer
+0x141327b80	0x14132841f	0x14163cf30	cstring	scribe
+0x141327b80	0x141328439	0x14163cfd8	cstring	tavern keeper
+0x141327b80	0x141328453	0x14163cf50	cstring	doctor
+0x141327b80	0x14132846d	0x14163cf58	cstring	diagnostician
+0x141327b80	0x141328487	0x14163cf10	cstring	bone doctor
+0x141327b80	0x1413284a1	0x14177cde8	cstring	suturer
+0x141327b80	0x1413284bb	0x14163cf08	cstring	surgeon
+0x141327b80	0x1413284d5	0x14177cdd8	cstring	merchant
+0x141327b80	0x1413284ef	0x14177cd14	cstring	drunk
+0x141327b80	0x141328503	0x14177cd30	cstring	hammerman
+0x141327b80	0x14132850a	0x14177cd08	cstring	hammermen
+0x141327b80	0x141328529	0x14177cd20	cstring	Hammer Lord
+0x141327b80	0x141328540	0x14177cd40	cstring	spearman
+0x141327b80	0x141328547	0x14177cd50	cstring	spearmen
+0x141327b80	0x141328563	0x14177cd70	cstring	Spearmaster
+0x141327b80	0x14132857a	0x14177ce68	cstring	crossbowman
+0x141327b80	0x141328581	0x14177cd60	cstring	crossbowmen
+0x141327b80	0x14132859a	0x14177ce88	cstring	Elite Crossbowmen
+0x141327b80	0x1413285a1	0x14177ce50	cstring	Elite Crossbowman
+0x141327b80	0x1413285bd	0x14177ce78	cstring	wrestler
+0x141327b80	0x1413285d7	0x14177cea8	cstring	Elite Wrestler
+0x141327b80	0x1413285eb	0x14177cec4	cstring	axeman
+0x141327b80	0x1413285f2	0x14177ce9c	cstring	axemen
+0x141327b80	0x141328611	0x14177ceb8	cstring	Axe Lord
+0x141327b80	0x141328625	0x14177cdf0	cstring	swordsman
+0x141327b80	0x14132862c	0x14177ce00	cstring	swordsmen
+0x141327b80	0x14132864b	0x14177ce18	cstring	Swordmaster
+0x141327b80	0x14132865f	0x14177ce38	cstring	maceman
+0x141327b80	0x141328666	0x14177ce10	cstring	macemen
+0x141327b80	0x141328685	0x14177ce28	cstring	Mace Lord
+0x141327b80	0x141328699	0x14177ce40	cstring	pikeman
+0x141327b80	0x1413286a0	0x14177ce48	cstring	pikemen
+0x141327b80	0x1413286bf	0x14177cf48	cstring	Pikemaster
+0x141327b80	0x1413286d3	0x14177cf68	cstring	bowman
+0x141327b80	0x1413286da	0x14177cf40	cstring	bowmen
+0x141327b80	0x1413286f6	0x14177cf80	cstring	Elite Bowman
+0x141327b80	0x1413286fd	0x14177cf58	cstring	Elite Bowmen
+0x141327b80	0x141328719	0x14177cf70	cstring	blowgunner
+0x141327b80	0x141328733	0x14177cf98	cstring	Master Blowgunner
+0x141327b80	0x14132874d	0x14177cf90	cstring	lasher
+0x141327b80	0x141328767	0x14177ced8	cstring	Master Lasher
+0x141327b80	0x141328781	0x14177ced0	cstring	recruit
+0x141327b80	0x14132879b	0x14169c108	cstring	hunting
+0x141327b80	0x1413287b0	0x141644b7c	cstring	war
+0x141327b80	0x1413287c5	0x14177cef8	cstring	Master Thief
+0x141327b80	0x1413287df	0x1416a13d0	cstring	thief
+0x141327b80	0x1413287f9	0x14163cf20	cstring	monster slayer
+0x141327b80	0x141328813	0x14166fe1c	cstring	scout
+0x141327b80	0x14132882d	0x14177cee8	cstring	beast hunter
+0x141327b80	0x141328847	0x1416e1598	cstring	snatcher
+0x141327b80	0x14132885e	0x141670360	cstring	mercenaries
+0x141327b80	0x14132886b	0x1415e79d0	cstring	mercenary
+0x141327b80	0x14132888d	0x14177cf14	cstring	sage
+0x141327b80	0x1413288a7	0x14163cf48	cstring	scholar
+0x141327b80	0x1413288c1	0x14177cf08	cstring	philosopher
+0x141327b80	0x1413288db	0x14177cf30	cstring	mathematician
+0x141327b80	0x1413288f5	0x14177cf20	cstring	historian
+0x141327b80	0x14132890f	0x14177c988	cstring	astronomer
+0x141327b80	0x141328929	0x14177c978	cstring	naturalist
+0x141327b80	0x141328943	0x14177c9a8	cstring	chemist
+0x141327b80	0x14132895d	0x14177c998	cstring	geographer
+0x141327b80	0x141328977	0x14166ee18	cstring	criminal
+0x141327b80	0x141328991	0x14177c9b8	cstring	peddler
+0x141327b80	0x1413289ab	0x14177c9b0	cstring	prophet
+0x141327b80	0x1413289c5	0x14177c9c8	cstring	pilgrim
+0x141327b80	0x1413289df	0x14177c9c0	cstring	monk
+0x141327b80	0x1413289f9	0x14177c928	cstring	messenger
+0x141327b80	0x141328a96	0x14169c248	cstring	children
+0x141327b80	0x141328bcb	0x1416416fc	cstring	child
+0x141327b80	0x141328c28	0x14177c920	cstring	babies
+0x141327b80	0x141328c3a	0x14167b1e4	cstring	baby
+0x141327b80	0x141328d96	0x14177c920	cstring	babies
+0x141327b80	0x141328da5	0x14167b1e4	cstring	baby
+0x141327b80	0x141328dc7	0x1415e4220	cstring	s
+0x141329030	0x141329153	0x1415e4220	cstring	s
+0x141329030	0x1413292a4	0x14177c938	cstring	peasant
+0x141329030	0x1413292ab	0x14177c940	cstring	Peasant
+0x141329030	0x1413292d3	0x1415e4220	cstring	s
+0x1413293a0	0x14132941f	0x1415e74b8	cstring	you
+0x1413293a0	0x141329426	0x1415e3c40	cstring	You
+0x1413293a0	0x141329910	0x1415e7988	cstring	 slave
+0x1413293a0	0x14132994a	0x1415e79ac	cstring	slave
+0x1413293a0	0x1413299a5	0x1415e79ac	cstring	slave
+0x1413293a0	0x1413299ad	0x1415e79b0	cstring	e
+0x1413293a0	0x141329a8b	0x14177c950	cstring	 prisoner
+0x1413293a0	0x141329abf	0x72656e6f73697270	inline	prisoner
+0x1413293a0	0x141329b1d	0x72656e6f73697270	inline	prisoner
+0x1413293a0	0x141329ce6	0x1415e3e34	cstring	the 
+0x1413293a0	0x141329ced	0x1415e89c4	cstring	The 
+0x1413293a0	0x141329d32	0x1415e3720	cstring	 
+0x1413293a0	0x141329f05	0x1415e3e34	cstring	the 
+0x1413293a0	0x141329f19	0x1415e8618	cstring	a 
+0x1413293a0	0x141329f2e	0x14167095c	cstring	force
+0x1413293a0	0x141329f53	0x1415e3e34	cstring	the 
+0x1413293a0	0x141329f67	0x1415e8618	cstring	a 
+0x1413293a0	0x141329f7c	0x14165d508	cstring	deity
+0x1413293a0	0x14132a1c4	0x1415e7988	cstring	 slave
+0x1413293a0	0x14132a1fe	0x1415e79ac	cstring	slave
+0x1413293a0	0x14132a25e	0x1415e79ac	cstring	slave
+0x1413293a0	0x14132a266	0x1415e79b0	cstring	e
+0x1413293a0	0x14132a33b	0x14177c950	cstring	 prisoner
+0x1413293a0	0x14132a36f	0x72656e6f73697270	inline	prisoner
+0x1413293a0	0x14132a3c9	0x72656e6f73697270	inline	prisoner
+0x1413293a0	0x14132a483	0x1415e3e34	cstring	the 
+0x1413293a0	0x14132a4d9	0x1415e8618	cstring	a 
+0x1413293a0	0x14132a543	0x14177c96c	cstring	stray 
+0x1413293a0	0x14132a54a	0x14177c948	cstring	fierce 
+0x1413293a0	0x14132a58e	0x1415e8618	cstring	a 
+0x1413293a0	0x14132a5a3	0x14177c960	cstring	agitated 
+0x1413293a0	0x14132a5eb	0x1415e8618	cstring	a 
+0x1413293a0	0x14132a600	0x1416a0d38	cstring	ghost
+0x1413293a0	0x14132a62f	0x1415e8618	cstring	a 
+0x1413293a0	0x14132a644	0x1415f8b70	cstring	ghostly 
+0x1413293a0	0x14132a676	0x1415e8618	cstring	a 
+0x1413293a0	0x14132a6c4	0x1416810f8	cstring	average
+0x1413293a0	0x14132a6f3	0x1415e3720	cstring	 
+0x1413293a0	0x14132a747	0x1415e3720	cstring	 
+0x1413293a0	0x14132a78e	0x1415e3720	cstring	 
+0x1413293a0	0x14132a7b3	0x1415e8618	cstring	a 
+0x1413293a0	0x14132a80c	0x1415e8618	cstring	a 
+0x1413293a0	0x14132a821	0x1416cac84	cstring	corpse
+0x1413293a0	0x14132a830	0x141739ff8	cstring	 corpse
+0x14132a8f0	0x14132aa4e	0x14165d508	cstring	deity
+0x14132a8f0	0x14132aa65	0x14167095c	cstring	force
+0x14132a8f0	0x14132acac	0x14177ca4c	cstring	 Slave
+0x14132a8f0	0x14132ace6	0x1415fbcc8	cstring	Slave
+0x14132a8f0	0x14132ad3c	0x1415fbcc8	cstring	Slave
+0x14132a8f0	0x14132ad44	0x1415fbccc	cstring	e
+0x14132a8f0	0x14132ae23	0x14177ca40	cstring	 Prisoner
+0x14132a8f0	0x14132ae57	0x72656e6f73697250	inline	Prisoner
+0x14132a8f0	0x14132aea7	0x72656e6f73697250	inline	Prisoner
+0x14132a8f0	0x14132afd6	0x14177ca54	cstring	Stray 
+0x14132a8f0	0x14132afdd	0x14177ca60	cstring	Fierce 
+0x14132a8f0	0x14132affe	0x14177ca70	cstring	Agitated 
+0x14132a8f0	0x14132b034	0x1416b9d2c	cstring	Ghost
+0x14132a8f0	0x14132b04e	0x141625190	cstring	Ghostly 
+0x14132a8f0	0x14132b09d	0x1415e3720	cstring	 
+0x14132a8f0	0x14132b0e6	0x1415e3720	cstring	 
+0x14132a8f0	0x14132b12c	0x14177ca68	cstring	Corpse
+0x14132a8f0	0x14132b13b	0x1416250d0	cstring	 Corpse
 0x14132bba0	0x14132bdcd	0x1415e40c4	cstring	, 
 0x14132bba0	0x14132bec8	0x1415e46fc	cstring	""""
 0x14132bba0	0x14132bf1d	0x1415e46fc	cstring	""""
@@ -5138,3 +6486,837 @@ function	instruction	operand	kind	text
 0x14132bba0	0x14132c138	0x14177c9fc	cstring	Tame
 0x14132bba0	0x14132c141	0x14177c9f0	cstring	Semi-Wild
 0x14132bba0	0x14132c159	0x1416102d8	cstring	)
+0x14132c230	0x14132c2df	0x1415e46fc	cstring	""""
+0x14132c230	0x14132c344	0x1416aaa60	cstring	""", "
+0x14132c230	0x14132c3f3	0x1415f21b8	cstring	 (Tame)
+0x14132f540	0x14132f711	0x14167bdf0	cstring	body part
+0x14132f540	0x14132f753	0x14167bdf0	cstring	body part
+0x14134de90	0x14134e675	0x14177d828	cstring	"You have learned the power """
+0x14134de90	0x14134e6a9	0x14177d874	cstring	"""!"
+0x14139bb40	0x14139bc40	0x1416dac10	cstring	HF_LINK
+0x14139bb40	0x14139bcc0	0x1415e3208	cstring	TRANS_NAME
+0x14139bb40	0x14139bd17	0x1415e3218	cstring	nameless
+0x14139bb40	0x14139bd63	0x1415e3228	cstring	FIRST_NAME
+0x14139bb40	0x14139bdb3	0x1415e3218	cstring	nameless
+0x14139bb40	0x14139bdff	0x14166cf1c	cstring	RACE
+0x14139bb40	0x14139bea9	0x1416cb150	cstring	her
+0x14139bb40	0x14139beb9	0x1415e3238	cstring	PRO_POS
+0x14139bb40	0x14139bed5	0x1416cb1a8	cstring	his
+0x14139bb40	0x14139bee1	0x1415e94d8	cstring	its
+0x14139bb40	0x14139bf2c	0x1415e9484	cstring	it
+0x14139bb40	0x14139bf41	0x1415e3240	cstring	PRO_OBJ
+0x14139bb40	0x14139bf5d	0x1416cb154	cstring	him
+0x14139bb40	0x14139bfc2	0x1415e3248	cstring	PRO_SUB
+0x14139bb40	0x14139bfde	0x1416cb15c	cstring	he
+0x14139bb40	0x14139bfeb	0x1416cb158	cstring	she
+0x14139bb40	0x14139c03e	0x1415e3250	cstring	PRO_REF
+0x14139bb40	0x14139c05a	0x1415f9320	cstring	himself
+0x14139bb40	0x14139c06a	0x1415f9328	cstring	herself
+0x14139bb40	0x14139c079	0x1415f9318	cstring	itself
+0x141477410	0x141477471	0x141782f58	cstring	very near
+0x141477410	0x14147748b	0x14169c0d8	cstring	just
+0x141477410	0x141477532	0x141646aec	cstring	far
+0x141477410	0x141477546	0x1416a9b08	cstring	a day's travel
+0x141477410	0x14147755a	0x1416a9af0	cstring	nearly a day's travel
+0x141477410	0x14147756e	0x1416a9a70	cstring	a half day's travel
+0x141477410	0x141477585	0x1416a9a60	cstring	a short walk
+0x141477410	0x1414775a0	0x14166def8	cstring	 to the 
+0x141477410	0x1414775c9	0x141636a34	cstring	west
+0x141477410	0x1414775e1	0x141636a2c	cstring	east
+0x141477410	0x1414775fe	0x141636a3c	cstring	north
+0x141477410	0x141477616	0x141636a44	cstring	south
+0x141477410	0x141477631	0x141641c58	cstring	northwest
+0x141477410	0x141477649	0x141641c78	cstring	southwest
+0x141477410	0x14147765e	0x141641c68	cstring	northeast
+0x141477410	0x14147766f	0x141641bf8	cstring	southeast
+0x141477410	0x141477698	0x141783018	cstring	aboveground
+0x141477410	0x1414776a7	0x141782fd0	cstring	inaccessible from here
+0x141477410	0x1414776b6	0x141783008	cstring	in the depths
+0x1414cc890	0x1414cc8f7	0x14160fd14	cstring	plant
+0x1414cc890	0x1414cc919	0x1416106b8	cstring	yarn
+0x1414cc890	0x1414cc941	0x1416106a8	cstring	cloth
+0x1414cc890	0x1414cc961	0x1416106b0	cstring	silk
+0x1414cc890	0x1414cc981	0x1416106c8	cstring	bone
+0x1414cc890	0x1414cc9a1	0x141610690	cstring	leather
+0x1414cc890	0x1414cc9c1	0x1416106c0	cstring	shell
+0x1414cc890	0x1414cc9e3	0x1416106d8	cstring	soap
+0x1414cc890	0x1414cca05	0x141782aa0	cstring	ivory/tooth
+0x1414cc890	0x1414cca27	0x1416106e8	cstring	horn
+0x1414cc890	0x1414cca49	0x1416106e0	cstring	pearl
+0x1414cc890	0x1414cca78	0x141610698	cstring	wood
+0x1414cc890	0x1414cca7f	0x14169c26c	cstring	wooden
+0x1414cc890	0x1414ccbd5	0x1415e8b58	cstring	's 
+0x1414cc890	0x1414ccc69	0x1415e3720	cstring	 
+0x1414cc890	0x1414cccba	0x141782ab0	cstring	unknown material
+0x1414dce30	0x1414dced4	0x1416caec8	cstring	green glass 
+0x1414dce30	0x1414dcef4	0x1416caeb8	cstring	clear glass 
+0x1414dce30	0x1414dcf14	0x1416caea8	cstring	crystal glass 
+0x1414dce30	0x1414dcfdd	0x1415e3720	cstring	 
+0x1414dce30	0x1414dd08d	0x1415e3720	cstring	 
+0x1414dce30	0x1414dd0a8	0x1416caec8	cstring	green glass 
+0x1414dce30	0x1414dd0c8	0x1416caeb8	cstring	clear glass 
+0x1414dce30	0x1414dd0e8	0x1416caea8	cstring	crystal glass 
+0x1414dce30	0x1414dd1b1	0x1415e3720	cstring	 
+0x1414dce30	0x1414dd22c	0x1415e3720	cstring	 
+0x1414dce30	0x1414dd247	0x141784830	cstring	green glass gems
+0x1414dce30	0x1414dd269	0x141784700	cstring	clear glass gems
+0x1414dce30	0x1414dd28b	0x141784718	cstring	crystal glass gems
+0x1414dce30	0x1414dd358	0x1416ca1b0	cstring	gems
+0x1414dce30	0x1414dd382	0x1416caec8	cstring	green glass 
+0x1414dce30	0x1414dd3a2	0x1416caeb8	cstring	clear glass 
+0x1414dce30	0x1414dd3c2	0x1416caea8	cstring	crystal glass 
+0x1414dce30	0x1414dd48b	0x1415e3720	cstring	 
+0x1414dce30	0x1414dd545	0x1415e3720	cstring	 
+0x1414dce30	0x1414dd560	0x1416caec8	cstring	green glass 
+0x1414dce30	0x1414dd580	0x1416caeb8	cstring	clear glass 
+0x1414dce30	0x1414dd5a0	0x1416caea8	cstring	crystal glass 
+0x1414dce30	0x1414dd669	0x1415e3720	cstring	 
+0x1414dce30	0x1414dd723	0x1415e3720	cstring	 
+0x1414dce30	0x1414dd73e	0x1416caec8	cstring	green glass 
+0x1414dce30	0x1414dd75b	0x1416caeb8	cstring	clear glass 
+0x1414dce30	0x1414dd778	0x1416caea8	cstring	crystal glass 
+0x1414dce30	0x1414dd7a3	0x1416106fc	cstring	gem
+0x1414dce30	0x1414dd94a	0x1416caea0	cstring	 gem
+0x1407713b0	0x1407713f3	0x1415ffd88	cstring	Mining
+0x1407713b0	0x140771408	0x1415ffda0	cstring	Woodcutting
+0x1407713b0	0x14077141d	0x1416a0068	cstring	Carpentry
+0x1407713b0	0x140771432	0x1416a0078	cstring	Bowmaking
+0x1407713b0	0x140771447	0x1416a0088	cstring	Stone Carving
+0x1407713b0	0x14077145c	0x1416a0098	cstring	Stonecutting
+0x1407713b0	0x140771471	0x1416a00a8	cstring	Engraving
+0x1407713b0	0x140771486	0x1416a00b8	cstring	Masonry
+0x1407713b0	0x14077149b	0x14162a858	cstring	Animal Training
+0x1407713b0	0x1407714b0	0x1416a00c0	cstring	Animal Caretaking
+0x1407713b0	0x1407714c5	0x1416a00d8	cstring	Fish Dissection
+0x1407713b0	0x1407714da	0x1416a00e8	cstring	Animal Dissection
+0x1407713b0	0x1407714ef	0x1416a0100	cstring	Fish Cleaning
+0x1407713b0	0x1407714fe	0x1416a0110	cstring	Butchery
+0x1407713b0	0x140771513	0x1416a0120	cstring	Trapping
+0x1407713b0	0x14077152e	0x1416a0130	cstring	Growing
+0x1407713b0	0x140771543	0x14169ff50	cstring	Herbalism
+0x1407713b0	0x140771558	0x1416994c8	cstring	Ambush
+0x1407713b0	0x140771567	0x14169ff60	cstring	Swimming
+0x1407713b0	0x140771582	0x14169ff6c	cstring	Riding
+0x1407713b0	0x140771597	0x14169ff78	cstring	Persuasion
+0x1407713b0	0x1407715ac	0x14169ff88	cstring	Negotiation
+0x1407713b0	0x1407715c1	0x14169ff98	cstring	Judging Intent
+0x1407713b0	0x1407715d6	0x14169ffa8	cstring	Appraisal
+0x1407713b0	0x1407715eb	0x14169ffb8	cstring	Organization
+0x1407713b0	0x140771600	0x14169ffc8	cstring	Record Keeping
+0x1407713b0	0x140771615	0x14169ffd8	cstring	Lying
+0x1407713b0	0x14077162a	0x14169ffe0	cstring	Intimidation
+0x1407713b0	0x14077163f	0x141699770	cstring	Conversation
+0x1407713b0	0x140771654	0x14169fff0	cstring	Comedy
+0x1407713b0	0x140771663	0x14169fff8	cstring	Flattery
+0x1407713b0	0x14077167e	0x1416a0008	cstring	Consoling
+0x1407713b0	0x140771693	0x1416a0018	cstring	Pacification
+0x1407713b0	0x1407716a2	0x1416a0028	cstring	Tracking
+0x1407713b0	0x1407716bd	0x141626ad8	cstring	Fishing
+0x1407713b0	0x1407716d2	0x14169fe48	cstring	Furnace Operation
+0x1407713b0	0x1407716e7	0x14169fe60	cstring	Strand Extraction
+0x1407713b0	0x1407716fc	0x14169fe78	cstring	Soap Making
+0x1407713b0	0x140771711	0x14169fe88	cstring	Potash Making
+0x1407713b0	0x140771726	0x14169fe98	cstring	Lye Making
+0x1407713b0	0x14077173b	0x14169fea8	cstring	Wood Burning
+0x1407713b0	0x140771750	0x14169feb8	cstring	Weaponsmithing
+0x1407713b0	0x140771765	0x14169fec8	cstring	Armorsmithing
+0x1407713b0	0x14077177a	0x14169fed8	cstring	Metalsmithing
+0x1407713b0	0x14077178f	0x14169fee8	cstring	Gem Cutting
+0x1407713b0	0x1407717a4	0x14169fef8	cstring	Gem Setting
+0x1407713b0	0x1407717b9	0x14169ff08	cstring	Woodcrafting
+0x1407713b0	0x1407717ce	0x14169ff18	cstring	Papermaking
+0x1407713b0	0x1407717e3	0x14169ff28	cstring	Bookbinding
+0x1407713b0	0x1407717f8	0x14169ff38	cstring	Pottery
+0x1407713b0	0x14077180d	0x14169ff40	cstring	Wax Working
+0x1407713b0	0x140771822	0x14169fd68	cstring	Stone Crafting
+0x1407713b0	0x140771837	0x14169fd78	cstring	Metal Crafting
+0x1407713b0	0x14077184c	0x14169fd88	cstring	Glassmaking
+0x1407713b0	0x14077185b	0x14169fd98	cstring	Studying
+0x1407713b0	0x140771876	0x14169fda8	cstring	Concentration
+0x1407713b0	0x14077188b	0x14169fdb8	cstring	Discipline
+0x1407713b0	0x1407718a0	0x14169fdc8	cstring	Observation
+0x1407713b0	0x1407718b5	0x1415e8cc8	cstring	Writing
+0x1407713b0	0x1407718ca	0x14169fdd4	cstring	Prose
+0x1407713b0	0x1407718df	0x14169fddc	cstring	Poetry
+0x1407713b0	0x1407718f4	0x14169fde8	cstring	Reading
+0x1407713b0	0x140771903	0x14169fdf0	cstring	Speaking
+0x1407713b0	0x14077191e	0x14169fdfc	cstring	Dance
+0x1407713b0	0x140771933	0x14169fe04	cstring	Music
+0x1407713b0	0x140771948	0x14169fe10	cstring	Singing
+0x1407713b0	0x14077195d	0x14169fe18	cstring	Keyboard Instrument
+0x1407713b0	0x140771972	0x14169fe30	cstring	Stringed Instrument
+0x1407713b0	0x140771987	0x1416a0388	cstring	Wind Instrument
+0x1407713b0	0x14077199c	0x1416a0398	cstring	Percussion Instrument
+0x1407713b0	0x1407719b1	0x1416a03b0	cstring	Critical Thinking
+0x1407713b0	0x1407719c6	0x1416a03c4	cstring	Logic
+0x1407713b0	0x1407719db	0x1415faab0	cstring	Mathematics
+0x1407713b0	0x1407719f0	0x1415faaa0	cstring	Astronomy
+0x1407713b0	0x140771a05	0x1415faa80	cstring	Chemistry
+0x1407713b0	0x140771a1a	0x1415faa70	cstring	Geography
+0x1407713b0	0x140771a2f	0x1416a03d0	cstring	Optics Engineer
+0x1407713b0	0x140771a44	0x1416a03e0	cstring	Fluid Engineer
+0x1407713b0	0x140771a59	0x1416a03f0	cstring	Coordination
+0x1407713b0	0x140771a6e	0x1416a0400	cstring	Balance
+0x1407713b0	0x140771a83	0x1416a0408	cstring	Leadership
+0x1407713b0	0x140771a98	0x1416a0418	cstring	Military Tactics
+0x1407713b0	0x140771aa7	0x1416a0430	cstring	Teaching
+0x1407713b0	0x140771abc	0x1416a0440	cstring	Fighting
+0x1407713b0	0x140771ad7	0x1416a0450	cstring	Archery
+0x1407713b0	0x140771aec	0x1416a0458	cstring	Wrestling
+0x1407713b0	0x140771b01	0x1416a0464	cstring	Biting
+0x1407713b0	0x140771b10	0x1416a0470	cstring	Striking
+0x1407713b0	0x140771b2b	0x1416a02e0	cstring	Kicking
+0x1407713b0	0x140771b40	0x1416a02e8	cstring	Dodging
+0x1407713b0	0x140771b55	0x1416a02f0	cstring	Axe
+0x1407713b0	0x140771b6a	0x1416a02f4	cstring	Sword
+0x1407713b0	0x140771b7f	0x1416a02fc	cstring	Mace
+0x1407713b0	0x140771b94	0x1416a0304	cstring	Hammer
+0x1407713b0	0x140771ba9	0x1416a030c	cstring	Spear
+0x1407713b0	0x140771bb8	0x1416a0318	cstring	Crossbow
+0x1407713b0	0x140771bd3	0x1416a0324	cstring	Pike
+0x1407713b0	0x140771be8	0x1416a032c	cstring	Bow
+0x1407713b0	0x140771bfd	0x141625a00	cstring	Shield
+0x1407713b0	0x140771c12	0x1416257b4	cstring	Armor
+0x1407713b0	0x140771c27	0x1416a0330	cstring	Siege Engineering
+0x1407713b0	0x140771c3c	0x1416a0348	cstring	Siege Operation
+0x1407713b0	0x140771c51	0x1416a0358	cstring	Pump Operation
+0x1407713b0	0x140771c66	0x1416a0368	cstring	Leatherworking
+0x1407713b0	0x140771c7b	0x1416a0378	cstring	Tanning
+0x1407713b0	0x140771c90	0x1416a0380	cstring	Dyeing
+0x1407713b0	0x140771c9f	0x1416a0220	cstring	Pressing
+0x1407713b0	0x140771cba	0x1416a0230	cstring	Beekeeping
+0x1407713b0	0x140771ccf	0x1416a0240	cstring	Glazing
+0x1407713b0	0x140771ce4	0x1416a0248	cstring	Bone Carving
+0x1407713b0	0x140771cf9	0x1416a0258	cstring	Weaving
+0x1407713b0	0x140771d0e	0x1416a0260	cstring	Brewing
+0x1407713b0	0x140771d23	0x1416a0268	cstring	Clothes Making
+0x1407713b0	0x140771d38	0x1416a0278	cstring	Milling
+0x1407713b0	0x140771d4d	0x1416a0280	cstring	Threshing
+0x1407713b0	0x140771d62	0x1416a0290	cstring	Blowgun
+0x1407713b0	0x140771d71	0x1416a0298	cstring	Throwing
+0x1407713b0	0x140771d8c	0x1416a02a8	cstring	Machinery
+0x1407713b0	0x140771da1	0x1415e39b4	cstring	Nature
+0x1407713b0	0x140771db6	0x1416a02b4	cstring	Knife
+0x1407713b0	0x140771dcb	0x1416a02bc	cstring	Lash
+0x1407713b0	0x140771de0	0x1416a02c8	cstring	Cooking
+0x1407713b0	0x140771df5	0x1416a02d0	cstring	Cheesemaking
+0x1407713b0	0x140771e0a	0x1416a0138	cstring	Milking
+0x1407713b0	0x140771e1f	0x1416a0140	cstring	Gelding
+0x1407713b0	0x140771e2e	0x1416a0148	cstring	Shearing
+0x1407713b0	0x140771e43	0x1416a0158	cstring	Spinning
+0x1407713b0	0x140771e5e	0x1416a0168	cstring	Misc. Object
+0x1407713b0	0x140771e73	0x1416a0178	cstring	Wound Dressing
+0x1407713b0	0x140771e88	0x1416a0188	cstring	Diagnostics
+0x1407713b0	0x140771e9d	0x1416a0198	cstring	Surgery
+0x1407713b0	0x140771eb2	0x1416a01a0	cstring	Bone Setting
+0x1407713b0	0x140771ec1	0x1416a01b0	cstring	Suturing
+0x1407713b0	0x140771edc	0x1416a01c0	cstring	Crutch-walking
+0x1407713b0	0x140771eeb	0x1416a01d0	cstring	Knapping
+0x1407713b0	0x140771f00	0x1416a01e0	cstring	Climbing
+0x1407713b0	0x140771f15	0x1415e71d0	cstring	Intrigue
+0x140edbc10	0x140edbc95	0x141733500	cstring	formal reasoning
+0x140edbc10	0x140edbcaa	0x1417334e8	cstring	deductive reasoning
+0x140edbc10	0x140edbcbf	0x141733430	cstring	syllogistic logic
+0x140edbc10	0x140edbcd4	0x141733418	cstring	hypothetical syllogisms
+0x140edbc10	0x140edbce9	0x141733460	cstring	propositional logic
+0x140edbc10	0x140edbcfe	0x141733448	cstring	dialectic reasoning
+0x140edbc10	0x140edbd13	0x141733598	cstring	analogical inference
+0x140edbc10	0x140edbd28	0x141733588	cstring	medical ethics
+0x140edbc10	0x140edbd3d	0x1417335e0	cstring	the meaning of individual happiness
+0x140edbc10	0x140edbd74	0x141733518	cstring	the nature of perception
+0x140edbc10	0x140edbd89	0x141733538	cstring	the nature of truth
+0x140edbc10	0x140edbd9e	0x1417335b0	cstring	ethics as it regards the benefit of the state
+0x140edbc10	0x140edbdb3	0x141733568	cstring	the nature of justification
+0x140edbc10	0x140edbde1	0x141733680	cstring	the nature of time
+0x140edbc10	0x140edbdf6	0x141733698	cstring	the nature of existence
+0x140edbc10	0x140edbe0b	0x141733550	cstring	the nature of belief
+0x140edbc10	0x140edbe20	0x1417336e8	cstring	the nature of mind and body
+0x140edbc10	0x140edbe68	0x141733608	cstring	the nature of events
+0x140edbc10	0x140edbe7d	0x141733620	cstring	the relationship between wholes and parts
+0x140edbc10	0x140edbe92	0x1417336b0	cstring	the relationship between objects and their properties
+0x140edbc10	0x140edbea7	0x141733668	cstring	the nature of processes
+0x140edbc10	0x140edbed5	0x141733780	cstring	ethics as applied to interpersonal conduct
+0x140edbc10	0x140edbeea	0x1417337b0	cstring	ethics as applied to war
+0x140edbc10	0x140edbeff	0x141733650	cstring	the nature of causation
+0x140edbc10	0x140edbf14	0x141733800	cstring	law, its forms and recommendations
+0x140edbc10	0x140edbf4b	0x141733708	cstring	etymology
+0x140edbc10	0x140edbf60	0x141733718	cstring	grammar
+0x140edbc10	0x140edbf75	0x1417337d0	cstring	education, its forms and recommendations
+0x140edbc10	0x140edbf8a	0x141733750	cstring	diplomacy, its forms and recommendations
+0x140edbc10	0x140edbfb8	0x141731f18	cstring	social welfare, its forms and recommendations
+0x140edbc10	0x140edbfcd	0x141731f48	cstring	economic policy, its forms and recommendations
+0x140edbc10	0x140edbfe2	0x141733720	cstring	government, its forms and recommendations
+0x140edbc10	0x140edc017	0x141731f08	cstring	dictionaries
+0x140edbc10	0x140edc02c	0x141731eb0	cstring	the value of art
+0x140edbc10	0x140edc041	0x141731ec8	cstring	the nature of beauty
+0x140edbc10	0x140edc056	0x141731f78	cstring	direct inference
+0x140edbc10	0x140edc06b	0x141731f90	cstring	inductive reasoning
+0x140edbc10	0x140edc0c4	0x141731ee0	cstring	the method of proof by contradiction
+0x140edbc10	0x140edc0d9	0x141732110	cstring	a symbol for nothingness
+0x140edbc10	0x140edc0ee	0x1417320e8	cstring	notation for negative quantities
+0x140edbc10	0x140edc103	0x141732148	cstring	notation for very large numbers
+0x140edbc10	0x140edc118	0x141732130	cstring	positional notation
+0x140edbc10	0x140edc12d	0x141731fd0	cstring	geometric objects:  points, lines, circles, triangles, and so on
+0x140edbc10	0x140edc142	0x141731fa8	cstring	the method of exhaustion
+0x140edbc10	0x140edc157	0x1417320b0	cstring	the properties of similar and congruent triangles
+0x140edbc10	0x140edc16c	0x141732020	cstring	the relationship between the length of the altitude of a right triangle and the lengths of the segments into which it divides the hypotenuse
+0x140edbc10	0x140edc1a3	0x1417323c0	cstring	the relationship between the lengths of the hypotenuse of a right triangle and the other two sides
+0x140edbc10	0x140edc1b8	0x1417322b0	cstring	the angles of triangles inscribed in a circle with one edge on the diameter
+0x140edbc10	0x140edc1cd	0x141732300	cstring	the equality of the base angle of isosceles triangles
+0x140edbc10	0x140edc1e2	0x141732340	cstring	examples of triples of small whole numbers which, when taken together, are the lengths of the sides of a right triangle
+0x140edbc10	0x140edc210	0x141732280	cstring	the existence of incommensurable ratios
+0x140edbc10	0x140edc225	0x141732170	cstring	examples of triples of very large whole numbers which, when taken together, are the lengths of the sides of a right triangle
+0x140edbc10	0x140edc23a	0x1417321f0	cstring	examples of triples of large whole numbers which, when taken together, are the lengths of the sides of a right triangle
+0x140edbc10	0x140edc24f	0x141732268	cstring	axiomatic reasoning
+0x140edbc10	0x140edc297	0x141732658	cstring	the computation of the volume of different pyramids
+0x140edbc10	0x140edc2ac	0x141732590	cstring	an algorithm for computing the greatest common divisor of two numbers
+0x140edbc10	0x140edc2c1	0x1417325e0	cstring	the unique decomposition of a number into products of its prime divisors
+0x140edbc10	0x140edc2d6	0x141732630	cstring	the computation of the volume of a cone
+0x140edbc10	0x140edc304	0x141732530	cstring	an algorithm for dividing one number into another, possibly yielding a remainder
+0x140edbc10	0x140edc319	0x141732430	cstring	an approximate value of the ratio of the circumference of a circle to its diameter, using the circumference of polygons and the method of exhaustion
+0x140edbc10	0x140edc32e	0x1417324c8	cstring	the computation of the volume of a sphere
+0x140edbc10	0x140edc343	0x1417324f8	cstring	a table of chord lengths indexed by angle
+0x140edbc10	0x140edc37a	0x1417328c0	cstring	an approximation of the ratio of the circumference of a circle to its diameter, using the area of polygons and the method of exhaustion
+0x140edbc10	0x140edc38f	0x1417327a0	cstring	the relationship between the area of a circle and its radius, involving the ratio of the circumference of the circle to its diameter
+0x140edbc10	0x140edc3a4	0x141732830	cstring	the computation of the area of a triangle from its three side lengths alone
+0x140edbc10	0x140edc3b9	0x141732880	cstring	the categorization and properties of conic sections
+0x140edbc10	0x140edc3e7	0x141732768	cstring	an algorithm for calculating prime numbers
+0x140edbc10	0x140edc3fc	0x141732690	cstring	the area enclosed by a parabola and a line
+0x140edbc10	0x140edc411	0x1417326c0	cstring	an algorithm for computing a number which has given remainders when divided by several given primes
+0x140edbc10	0x140edc459	0x141732728	cstring	an approximation for the length of the diagonal of a square
+0x140edbc10	0x140edc46e	0x141732a98	cstring	a proof that there are infinitely many prime numbers
+0x140edbc10	0x140edc483	0x141732a40	cstring	a proof that the length of the diagonal of a square is incommensurable with its edge
+0x140edbc10	0x140edc498	0x141732b08	cstring	the computation of the surface area of a sphere
+0x140edbc10	0x140edc4ad	0x141732ad0	cstring	simple formulas for certain arbitrarily large sums
+0x140edbc10	0x140edc4c2	0x141732998	cstring	methods for solving systems of equations
+0x140edbc10	0x140edc4d7	0x141732950	cstring	the techniques of balancing and completion for solving equations
+0x140edbc10	0x140edc4ec	0x1417329f8	cstring	the solving of quadratic equations by completion of the square
+0x140edbc10	0x140edc501	0x1417329c8	cstring	a formula which solves quadratic equations
+0x140edbc10	0x140edc543	0x141732d20	cstring	a triangular configuration of numbers relating to the successive powers of any sum
+0x140edbc10	0x140edc558	0x141732d80	cstring	trigonometric identities relating to the sums and differences of angles
+0x140edbc10	0x140edc56d	0x141732c10	cstring	the relationship between the half chords of a triangle's angles, the opposite side lengths, and the diameter of the triangle's circumscribed circle
+0x140edbc10	0x140edc582	0x141732cb0	cstring	notation for abbreviating the unknown and other elements of an equation in a systematic and useful fashion
+0x140edbc10	0x140edc597	0x141732b70	cstring	methods for solving certain equations involving powers higher than the quadratic
+0x140edbc10	0x140edc5c5	0x141732bc8	cstring	the properties of chords
+0x140edbc10	0x140edc5da	0x141732be8	cstring	the divergence of the harmonic series
+0x140edbc10	0x140edc5ef	0x141732b38	cstring	experiments with symbolic notation for addition
+0x140edbc10	0x140edc644	0x141732df8	cstring	the causes of historical events
+0x140edbc10	0x140edc659	0x141732eb0	cstring	using personal interviews as sources
+0x140edbc10	0x140edc66e	0x141732ed8	cstring	the role of state bias and propaganda in sources
+0x140edbc10	0x140edc683	0x141732e68	cstring	the role of systemic bias in sources
+0x140edbc10	0x140edc698	0x141732e90	cstring	the reliability of sources
+0x140edbc10	0x140edc6ad	0x141732dc8	cstring	historical, governmental and social cycles
+0x140edbc10	0x140edc6de	0x1417343d0	cstring	the method of compiling several biographies to compare and contrast the subjects' character and to gain insight into history
+0x140edbc10	0x140edc6f3	0x141734450	cstring	the method of writing the history of a single individual
+0x140edbc10	0x140edc708	0x141732e18	cstring	conflict between members of a community
+0x140edbc10	0x140edc71d	0x141732e40	cstring	bonds between members of a community
+0x140edbc10	0x140edc732	0x141734500	cstring	the compilation of brief biographies into one large collection
+0x140edbc10	0x140edc774	0x141734370	cstring	the method of accurately and comprehensively describing cultures and civilizations
+0x140edbc10	0x140edc789	0x1417342a0	cstring	the compilation of many summaries into a single text
+0x140edbc10	0x140edc79e	0x1417342e0	cstring	the compilation of family lineages and methods of displaying them artfully
+0x140edbc10	0x140edc7b3	0x141734490	cstring	the method of writing a biography of oneself, particularly as it concerns a military campaign or adventure
+0x140edbc10	0x140edc7c8	0x141734330	cstring	the method of comparing and contrasting different cultures
+0x140edbc10	0x140edc7fd	0x141734690	cstring	the method of examining artifacts to determine how techniques have changed over time
+0x140edbc10	0x140edc812	0x1417346f0	cstring	the method of collecting and evaluating artifacts to learn about history and culture
+0x140edbc10	0x140edc827	0x1417345d0	cstring	the exploration of how history would be different if some key past events had transpired differently
+0x140edbc10	0x140edc83c	0x141734640	cstring	the role of cultural differences in source reliability and interpretation
+0x140edbc10	0x140edc891	0x141734820	cstring	the height of the tides, the moon and the sun
+0x140edbc10	0x140edc8a6	0x141734588	cstring	the relationship between the moon and the tides
+0x140edbc10	0x140edc8bb	0x1417345b8	cstring	the path of the moon
+0x140edbc10	0x140edc8d0	0x141734540	cstring	the rise of the moon according to the season
+0x140edbc10	0x140edc8e5	0x141734570	cstring	the phases of the moon
+0x140edbc10	0x140edc8f4	0x1417347f0	cstring	the rise of the sun according to the season
+0x140edbc10	0x140edc92b	0x141734748	cstring	the theory that the world moves around the sun
+0x140edbc10	0x140edc940	0x141734778	cstring	the theory that the sun moves around the world
+0x140edbc10	0x140edc955	0x141734850	cstring	the variation of daylight with the season
+0x140edbc10	0x140edc96a	0x141734880	cstring	the relationship between the lunar and solar year
+0x140edbc10	0x140edc97f	0x1417347c8	cstring	the dates of lunar and solar eclipses
+0x140edbc10	0x140edc9c1	0x141734a30	cstring	the classification of stars according to color
+0x140edbc10	0x140edc9d6	0x141734990	cstring	the precise compilation of information about stars
+0x140edbc10	0x140edc9eb	0x1417349c8	cstring	the compilation of information about stars
+0x140edbc10	0x140edca00	0x1417347a8	cstring	the creation of star charts
+0x140edbc10	0x140edca15	0x1417349f8	cstring	the classification of stars according to brightness
+0x140edbc10	0x140edca4a	0x141734910	cstring	the method of forming precise models for the paths of astronomical objects
+0x140edbc10	0x140edca5f	0x141734960	cstring	methods of empirical observation in astronomy
+0x140edbc10	0x140edca74	0x1417348b8	cstring	the precession of the equinoxes over great periods of time
+0x140edbc10	0x140edca89	0x1417348f8	cstring	the shape of the world
+0x140edbc10	0x140edcacf	0x141734b40	cstring	the dissection of creatures
+0x140edbc10	0x140edcae4	0x141734b18	cstring	the anatomical study of creatures
+0x140edbc10	0x140edcaf9	0x141734ba0	cstring	the comparison of the anatomy of creatures
+0x140edbc10	0x140edcb0e	0x141734b60	cstring	the classification of creatures by their physical features
+0x140edbc10	0x140edcb23	0x141734a88	cstring	the migratory patterns of creatures
+0x140edbc10	0x140edcb38	0x141734a60	cstring	the reproductive behavior of creatures
+0x140edbc10	0x140edcb47	0x141734ae8	cstring	the foraging behavior and diet of creatures
+0x140edbc10	0x140edcb84	0x141734c78	cstring	the diseases of creatures
+0x140edbc10	0x140edcb99	0x141734c98	cstring	the social behavior of creatures
+0x140edbc10	0x140edcbae	0x141734ab0	cstring	the links between the diets of different creatures
+0x140edbc10	0x140edcbc3	0x141734cf0	cstring	the ways that creatures are suited to the climates in which they live
+0x140edbc10	0x140edcbea	0x141734c00	cstring	the struggle for survival among creatures
+0x140edbc10	0x140edcbff	0x141734cc0	cstring	the embriological development of creatures
+0x140edbc10	0x140edcc50	0x141734bd0	cstring	the classification of combustible materials
+0x140edbc10	0x140edcc6b	0x141734c58	cstring	the classification of ores
+0x140edbc10	0x140edcc80	0x141734c30	cstring	the mixture of metals to produce alloys
+0x140edbc10	0x140edcc95	0x141734e90	cstring	a method of classify the hardness of materials by scratching them against each other
+0x140edbc10	0x140edccaa	0x141734e30	cstring	the classification of materials based on which elemental materials might form them
+0x140edbc10	0x140edccbf	0x141734f18	cstring	the preparation and use of adhesive materials
+0x140edbc10	0x140edccd4	0x141734ee8	cstring	the construction and use of the blast furnace
+0x140edbc10	0x140edcd10	0x141735038	cstring	the classification of alkali and acids
+0x140edbc10	0x140edcd25	0x141734dd0	cstring	the theory and methods involved in evaporation
+0x140edbc10	0x140edcd3a	0x141734e00	cstring	the theory and methods involved in distillation
+0x140edbc10	0x140edcd4f	0x141734d40	cstring	the theory and methods involved in the extraction of a constituent liquid from one solution to another
+0x140edbc10	0x140edcd64	0x141734da8	cstring	the construction and use of the alembic
+0x140edbc10	0x140edcd79	0x141734ff0	cstring	methods for performing experiments systematically in the laboratory
+0x140edbc10	0x140edcdc6	0x141734fc0	cstring	the construction and use of the crucible
+0x140edbc10	0x140edcddb	0x141734f48	cstring	the construction and use of the funnel
+0x140edbc10	0x140edcdf0	0x141734f70	cstring	the construction and use of the vial
+0x140edbc10	0x140edce05	0x141735060	cstring	the construction and use of the beaker
+0x140edbc10	0x140edce1a	0x141735088	cstring	the construction and use of the flask
+0x140edbc10	0x140edce2f	0x141734f98	cstring	the preparation of spirit of niter
+0x140edbc10	0x140edce6b	0x141733848	cstring	the construction and use of laboratory ovens
+0x140edbc10	0x140edce80	0x141733918	cstring	the construction and use of the retort
+0x140edbc10	0x140edce95	0x141733940	cstring	the construction and use of the ampoule
+0x140edbc10	0x140edceaa	0x1417338d0	cstring	the preparation of aqua regia
+0x140edbc10	0x140edcebf	0x1417338f0	cstring	the preparation of oil of vitriol
+0x140edbc10	0x140edcf14	0x141733a40	cstring	surveying by triangulation for the purpose of creating maps
+0x140edbc10	0x140edcf29	0x141733a80	cstring	surveying by triangulation
+0x140edbc10	0x140edcf3e	0x141733878	cstring	the process involved in creating maps
+0x140edbc10	0x140edcf53	0x1417338a0	cstring	the construction and use of the surveying staff
+0x140edbc10	0x140edcf68	0x141733828	cstring	the process of surveying land
+0x140edbc10	0x140edcf7d	0x141733ad8	cstring	surveying by triangulation for the purpose of allocating land
+0x140edbc10	0x140edcfb5	0x1417339d0	cstring	the use of a distance scale in the creation of maps
+0x140edbc10	0x140edcfca	0x141733a08	cstring	the use of a grid system in the creation of maps
+0x140edbc10	0x140edcfdf	0x141733968	cstring	the placement of geological information on maps
+0x140edbc10	0x140edcff4	0x141733998	cstring	surveying by triangulation for engineering projects
+0x140edbc10	0x140edd009	0x141733aa0	cstring	surveying by triangulation for military purposes
+0x140edbc10	0x140edd01e	0x141733c40	cstring	the measurement of the heights of land features
+0x140edbc10	0x140edd06b	0x141733b18	cstring	the forces that govern wind patterns
+0x140edbc10	0x140edd080	0x141733b40	cstring	the process of the formation of deltas at the mouths of rivers
+0x140edbc10	0x140edd095	0x141733c70	cstring	the collection of maps and other information into a single text
+0x140edbc10	0x140edd0aa	0x141733cb0	cstring	the placement of economic information on maps
+0x140edbc10	0x140edd0bf	0x141733c18	cstring	the process of economic data collection
+0x140edbc10	0x140edd0d4	0x141733bd8	cstring	the origin of rainfall through evaporation and condensation
+0x140edbc10	0x140edd109	0x141733e10	cstring	methods of adjusting maps to account for the shape of the world
+0x140edbc10	0x140edd11e	0x141733d90	cstring	the creation of accurate maps
+0x140edbc10	0x140edd133	0x141733db0	cstring	the division of the world into climate zones
+0x140edbc10	0x140edd148	0x141733b80	cstring	a world-wide cycle involving precipitation, oceans, rivers and other forms of water
+0x140edbc10	0x140edd1a1	0x141733de0	cstring	the connection between disease and fouled water
+0x140edbc10	0x140edd1b6	0x141733cf8	cstring	the method of physical examination in diagnosing illness
+0x140edbc10	0x140edd1cb	0x141733ce0	cstring	the method of autopsy
+0x140edbc10	0x140edd1e0	0x141733d50	cstring	determining the likely outcome given a patient's current status
+0x140edbc10	0x140edd1f5	0x141733d38	cstring	herbal remedies
+0x140edbc10	0x140edd20a	0x141733f08	cstring	remedies prepared from animals
+0x140edbc10	0x140edd21f	0x141733ef0	cstring	mineral remedies
+0x140edbc10	0x140edd234	0x141733f48	cstring	the method of bandaging wounds
+0x140edbc10	0x140edd249	0x141733f28	cstring	the classification of disease
+0x140edbc10	0x140edd280	0x141733ed0	cstring	the theory of endemic disease
+0x140edbc10	0x140edd295	0x141733e50	cstring	the distinction between acute and chronic conditions
+0x140edbc10	0x140edd2aa	0x141733e88	cstring	the classification of toxic substances
+0x140edbc10	0x140edd2bf	0x141733eb0	cstring	the theory of epidemic disease
+0x140edbc10	0x140edd2ed	0x141734070	cstring	the notion of relapse
+0x140edbc10	0x140edd302	0x141734000	cstring	the notion of paroxysm
+0x140edbc10	0x140edd317	0x141734018	cstring	the notion of the exacerbation of a patient's condition
+0x140edbc10	0x140edd32c	0x141734050	cstring	the theory of convalescence
+0x140edbc10	0x140edd374	0x141733fe0	cstring	the classification of fractures
+0x140edbc10	0x140edd389	0x141733f68	cstring	the treatment of fractures
+0x140edbc10	0x140edd39e	0x141733f88	cstring	the treatment of traumatic injuries
+0x140edbc10	0x140edd3b3	0x141733fb0	cstring	the construction and use of the traction bench
+0x140edbc10	0x140edd3e1	0x141734160	cstring	the surgical method of excision
+0x140edbc10	0x140edd3f0	0x1417340e8	cstring	the creation and use of the orthopedic cast
+0x140edbc10	0x140edd40b	0x141734118	cstring	the method of fracture immobilization
+0x140edbc10	0x140edd420	0x141734140	cstring	the surgical method of incision
+0x140edbc10	0x140edd457	0x1417340d0	cstring	the lithotomy surgery
+0x140edbc10	0x140edd46c	0x141734088	cstring	the tracheotomy surgery
+0x140edbc10	0x140edd481	0x1417340a0	cstring	hernia surgery
+0x140edbc10	0x140edd496	0x1417340b0	cstring	the surgical method of scraping
+0x140edbc10	0x140edd4c4	0x141734280	cstring	the surgical method of suturing
+0x140edbc10	0x140edd4d9	0x141734220	cstring	the surgical method of probing
+0x140edbc10	0x140edd4ee	0x141734240	cstring	the surgical method of draining
+0x140edbc10	0x140edd547	0x141734260	cstring	the surgical method of ligature
+0x140edbc10	0x140edd55c	0x1417341a8	cstring	the use of practice models in surgery
+0x140edbc10	0x140edd571	0x141734180	cstring	the use of mud bags as surgical models
+0x140edbc10	0x140edd586	0x1417341f8	cstring	the use of plants as surgical models
+0x140edbc10	0x140edd59b	0x1417341d0	cstring	the use of animals as surgical models
+0x140edbc10	0x140edd5aa	0x141735800	cstring	the use of specialized surgical instruments
+0x140edbc10	0x140edd5c5	0x1417357d8	cstring	the construction and use of forceps
+0x140edbc10	0x140edd5da	0x141735860	cstring	the construction and use of the scalpel
+0x140edbc10	0x140edd5ef	0x141735830	cstring	the construction and use of surgical scissors
+0x140edbc10	0x140edd626	0x1417357c8	cstring	cauterization
+0x140edbc10	0x140edd63b	0x141735770	cstring	cataract surgery
+0x140edbc10	0x140edd650	0x141735788	cstring	the construction and use of surgical needles
+0x140edbc10	0x140edd665	0x1417357b8	cstring	anesthesia
+0x140edbc10	0x140edd693	0x141735998	cstring	the classification of bodily fluids
+0x140edbc10	0x140edd6a8	0x141735938	cstring	anatomical studies for medical edification
+0x140edbc10	0x140edd6bd	0x141735968	cstring	pulmonary medicine
+0x140edbc10	0x140edd6d2	0x141735980	cstring	the anatomy of the eye
+0x140edbc10	0x140edd71a	0x141735918	cstring	the study of reaction time
+0x140edbc10	0x140edd72f	0x141735888	cstring	the function of the nervous system
+0x140edbc10	0x140edd744	0x1417358b0	cstring	the distinction between motor and sensory nerves
+0x140edbc10	0x140edd759	0x1417358e8	cstring	the distinction between veins and arteries
+0x140edbc10	0x140edd787	0x141735ad8	cstring	the source of the voice
+0x140edbc10	0x140edd79c	0x141735a68	cstring	comparative anatomical studies for use in medicine
+0x140edbc10	0x140edd7b1	0x141735aa0	cstring	pulmonary circulation
+0x140edbc10	0x140edd7c6	0x141735ab8	cstring	the classification of muscles
+0x140edbc10	0x140edd7fd	0x141735a38	cstring	the preparation and use of dedicated hospitals
+0x140edbc10	0x140edd812	0x1417359c0	cstring	the treatment of mental illnesses
+0x140edbc10	0x140edd827	0x1417359e8	cstring	the classification of mental illnesses
+0x140edbc10	0x140edd83c	0x141735a10	cstring	the use of professional hospital staff
+0x140edbc10	0x140edd86a	0x141735c98	cstring	schools of medicine
+0x140edbc10	0x140edd87f	0x141735bf0	cstring	the use of a laboratory for preparation of remedies in a hospital
+0x140edbc10	0x140edd894	0x141735c38	cstring	the use of specialized wards in hospitals
+0x140edbc10	0x140edd8b3	0x141735c68	cstring	the creation of asylums for the mentally ill
+0x140edbc10	0x140edd90c	0x141735b20	cstring	the use of shadows to tell direction and time
+0x140edbc10	0x140edd91b	0x141735af0	cstring	the use of water-based devices to tell time
+0x140edbc10	0x140edd936	0x141735ba0	cstring	the use of conical shapes in water-based clocks to improve their accuracy
+0x140edbc10	0x140edd94b	0x141735b50	cstring	the use of reservoirs in water-based clocks to improve their accuracy
+0x140edbc10	0x140edd960	0x141735d98	cstring	the construction and use of the astrarium
+0x140edbc10	0x140edd975	0x141735d68	cstring	the construction and use of the hourglass
+0x140edbc10	0x140edd98a	0x141735df0	cstring	the construction and use of mechanical clocks
+0x140edbc10	0x140edd99f	0x141735dc8	cstring	the reasons why pulleys are effective
+0x140edbc10	0x140edd9b4	0x141735cd8	cstring	the construction and use of the pulley
+0x140edbc10	0x140edd9eb	0x141735d00	cstring	the reasons why the wheel-and-axle construction is effective
+0x140edbc10	0x140edda00	0x141735d40	cstring	the construction and use of the screw
+0x140edbc10	0x140edda15	0x141735cb0	cstring	the reasons why screws are effective
+0x140edbc10	0x140edda2a	0x141735f08	cstring	the construction and use of the windlass
+0x140edbc10	0x140edda58	0x141735f38	cstring	the construction and use of the lever
+0x140edbc10	0x140edda6d	0x141735f60	cstring	the reasons why the lever is effective
+0x140edbc10	0x140edda82	0x141735ee0	cstring	the reasons why the wedge is effective
+0x140edbc10	0x140edda97	0x141735e48	cstring	the construction and use of the straight-beam balance
+0x140edbc10	0x140eddadf	0x141735e80	cstring	the construction and use of the tumbler lock
+0x140edbc10	0x140eddaee	0x141735eb0	cstring	the construction and use of the warded lock
+0x140edbc10	0x140eddb09	0x141735e20	cstring	the reasons why gears are effective
+0x140edbc10	0x140eddb1e	0x141736090	cstring	the construction and use of the padlock
+0x140edbc10	0x140eddb4c	0x1417360b8	cstring	the construction and use of the water-powered sawmill
+0x140edbc10	0x140eddb61	0x1417360f0	cstring	the construction and use of the crankshaft
+0x140edbc10	0x140eddb76	0x141736060	cstring	the construction and use of the camshaft
+0x140edbc10	0x140eddb8b	0x141735fb8	cstring	the construction and use of the chariot odometer
+0x140edbc10	0x140eddbc2	0x141735ff0	cstring	the construction and use of the differential gear
+0x140edbc10	0x140eddbd7	0x141736028	cstring	the construction and use of the mechanical compass
+0x140edbc10	0x140eddbec	0x141735f88	cstring	the construction and use of chain drives
+0x140edbc10	0x140eddc01	0x141736220	cstring	the construction and use of combination locks
+0x140edbc10	0x140eddc2f	0x141736250	cstring	the action of the siphon
+0x140edbc10	0x140eddc44	0x141736270	cstring	the construction and use of the balance wheel
+0x140edbc10	0x140eddc59	0x1417361e8	cstring	the construction and use of the verge escapement
+0x140edbc10	0x140eddcb2	0x141736150	cstring	the construction and use of valves
+0x140edbc10	0x140eddcc7	0x141736120	cstring	the construction and use of the force pump
+0x140edbc10	0x140eddcdc	0x1417361b8	cstring	the construction and use of the crystal lens
+0x140edbc10	0x140eddcf1	0x141736178	cstring	the construction and use of water-filled sphere as a lens
+0x140edbc10	0x140eddd06	0x141735198	cstring	the construction and use of the glass lens
+0x140edbc10	0x140eddd1b	0x141735168	cstring	the construction and use of the camera obscura
+0x140edbc10	0x140eddd30	0x1417351e8	cstring	the construction and use of the parabolic mirror
+0x140edbc10	0x140eddd45	0x1417351c8	cstring	the theory of light and color
+0x140edbc10	0x140eddd7c	0x141735138	cstring	the use of models and templates in engineering
+0x140edbc10	0x140eddd91	0x1417350b0	cstring	the relation between refraction and the half chord
+0x140edbc10	0x140eddda6	0x1417350e8	cstring	the appearance of rainbows based on optical theories
+0x140edbc10	0x140edddbb	0x141735120	cstring	the use of lamination
+0x140edbc10	0x140eddde9	0x141735388	cstring	the construction and use of the armillary sphere
+0x140edbc10	0x140edddfe	0x1417352f8	cstring	the construction and use of the astrolabe
+0x140edbc10	0x140edde13	0x141735328	cstring	the construction and use of the dioptra
+0x140edbc10	0x140edde28	0x141735350	cstring	the construction and use of the spherical astrolabe
+0x140edbc10	0x140edde70	0x1417352b8	cstring	the construction and use of the water-powered trip hammer
+0x140edbc10	0x140edde85	0x141735220	cstring	the construction and use of the orrery
+0x140edbc10	0x140edde9a	0x141735248	cstring	the construction and use of mural instruments
+0x140edbc10	0x140eddeaf	0x141735278	cstring	the construction and use of double-acting piston bellows
+0x140edbc10	0x140eddedd	0x141735520	cstring	a precise explanation of the cause of twilight involving atmospheric refraction
+0x140edbc10	0x140eddef2	0x141735478	cstring	atmospheric refraction
+0x140edbc10	0x140eddf07	0x141735490	cstring	a precise description of buoyancy and water displacement
+0x140edbc10	0x140eddf1c	0x1417354d0	cstring	the calculation of the height of the atmosphere based on atmospheric refraction
+0x140edbc10	0x140eddf53	0x141735450	cstring	the construction and use of the bellows
+0x140edbc10	0x140eddf68	0x1417353c0	cstring	the construction and use of the crank
+0x140edbc10	0x140eddf7d	0x1417353e8	cstring	the construction and use of the piston
+0x140edbc10	0x140eddf92	0x141735410	cstring	the construction and use of the water-powered piston bellows
+0x140edbc10	0x140eddfaf	0x141735588	cstring	the construction and use of the trip hammer
+0x140edbc10	0x140eddfc4	0x1417355b8	cstring	the construction and use of the water wheel
+0x140ef3f20	0x140ef3f8d	0x141733500	cstring	formal reasoning
+0x140ef3f20	0x140ef3fa2	0x1417334e8	cstring	deductive reasoning
+0x140ef3f20	0x140ef3fb7	0x141733430	cstring	syllogistic logic
+0x140ef3f20	0x140ef3fcc	0x141733418	cstring	hypothetical syllogisms
+0x140ef3f20	0x140ef3fe1	0x141733460	cstring	propositional logic
+0x140ef3f20	0x140ef3ff6	0x141733448	cstring	dialectic reasoning
+0x140ef3f20	0x140ef400b	0x141733598	cstring	analogical inference
+0x140ef3f20	0x140ef4020	0x141733588	cstring	medical ethics
+0x140ef3f20	0x140ef4035	0x14173bea8	cstring	individual happiness
+0x140ef3f20	0x140ef406c	0x14173be10	cstring	perception
+0x140ef3f20	0x140ef4081	0x14163c600	cstring	truth
+0x140ef3f20	0x140ef4096	0x14173be20	cstring	ethics and the state
+0x140ef3f20	0x140ef40ab	0x14173be40	cstring	justification
+0x140ef3f20	0x140ef40d9	0x1416ce234	cstring	time
+0x140ef3f20	0x140ef40ee	0x14173cda8	cstring	existence
+0x140ef3f20	0x140ef4103	0x14173be38	cstring	belief
+0x140ef3f20	0x140ef4118	0x14173cd98	cstring	mind and body
+0x140ef3f20	0x140ef4160	0x14173cd6c	cstring	events
+0x140ef3f20	0x140ef4175	0x14173cdb8	cstring	wholes and parts
+0x140ef3f20	0x140ef418a	0x14173cdd0	cstring	objects and properties
+0x140ef3f20	0x140ef419f	0x14173cd60	cstring	processes
+0x140ef3f20	0x140ef41cd	0x14173ce50	cstring	interpersonal ethics
+0x140ef3f20	0x140ef41dc	0x14173cd78	cstring	military ethics
+0x140ef3f20	0x140ef41f7	0x14173cd88	cstring	causation
+0x140ef3f20	0x140ef420c	0x14163c2c0	cstring	law
+0x140ef3f20	0x140ef4243	0x141733708	cstring	etymology
+0x140ef3f20	0x140ef4258	0x141733718	cstring	grammar
+0x140ef3f20	0x140ef426d	0x14173ce40	cstring	education
+0x140ef3f20	0x140ef4282	0x14166eb50	cstring	diplomacy
+0x140ef3f20	0x140ef42b0	0x14173ce68	cstring	social welfare
+0x140ef3f20	0x140ef42bf	0x14173ce78	cstring	economic policy
+0x140ef3f20	0x140ef42da	0x141610788	cstring	government
+0x140ef3f20	0x140ef430f	0x141731f08	cstring	dictionaries
+0x140ef3f20	0x140ef4324	0x14169c1f8	cstring	art
+0x140ef3f20	0x140ef4339	0x14169c208	cstring	beauty
+0x140ef3f20	0x140ef434e	0x141731f78	cstring	direct inference
+0x140ef3f20	0x140ef4363	0x141731f90	cstring	inductive reasoning
+0x140ef3f20	0x140ef43be	0x14173cdf8	cstring	proof by contradiction
+0x140ef3f20	0x140ef43d3	0x14173cde8	cstring	nothingness
+0x140ef3f20	0x140ef43e8	0x14173ce28	cstring	negative quantities
+0x140ef3f20	0x140ef43fd	0x14173ce10	cstring	very large numbers
+0x140ef3f20	0x140ef4412	0x141732130	cstring	positional notation
+0x140ef3f20	0x140ef4427	0x14173cef0	cstring	geometric objects
+0x140ef3f20	0x140ef443c	0x14173cee0	cstring	exhaustion
+0x140ef3f20	0x140ef4451	0x14173cf18	cstring	congruent triangles
+0x140ef3f20	0x140ef4486	0x14173cf08	cstring	right triangles
+0x140ef3f20	0x140ef44a1	0x14173ce88	cstring	inscribed triangles
+0x140ef3f20	0x140ef44b6	0x14173cea0	cstring	isosceles triangles
+0x140ef3f20	0x140ef44e4	0x14173cec8	cstring	incommensurable ratios
+0x140ef3f20	0x140ef44f9	0x141732268	cstring	axiomatic reasoning
+0x140ef3f20	0x140ef4546	0x14173cf70	cstring	pyramids
+0x140ef3f20	0x140ef4555	0x14173cf80	cstring	common divisors
+0x140ef3f20	0x140ef4570	0x14173ceb8	cstring	prime divisors
+0x140ef3f20	0x140ef4585	0x14173cf98	cstring	cones
+0x140ef3f20	0x140ef45b6	0x14173cf40	cstring	division
+0x140ef3f20	0x140ef45cb	0x1416bcc80	cstring	spheres
+0x140ef3f20	0x140ef45e0	0x14173cf30	cstring	chord lengths
+0x140ef3f20	0x140ef4618	0x14173cf90	cstring	circles
+0x140ef3f20	0x140ef462d	0x14172f6f8	cstring	triangles
+0x140ef3f20	0x140ef4642	0x14173cf60	cstring	conic sections
+0x140ef3f20	0x140ef4673	0x14173cff0	cstring	prime numbers
+0x140ef3f20	0x140ef4688	0x14173d000	cstring	parabolas
+0x140ef3f20	0x140ef469d	0x14173cf50	cstring	remainders
+0x140ef3f20	0x140ef46dd	0x14173d020	cstring	diagonals
+0x140ef3f20	0x140ef46f2	0x14173d010	cstring	large sums
+0x140ef3f20	0x140ef4707	0x14173cfb0	cstring	systems of equations
+0x140ef3f20	0x140ef471c	0x14173cfd8	cstring	quadratic equations
+0x140ef3f20	0x140ef4762	0x14173d07c	cstring	powers
+0x140ef3f20	0x140ef4777	0x14173d088	cstring	triangle and circles
+0x140ef3f20	0x140ef478c	0x14173cfa0	cstring	equations
+0x140ef3f20	0x140ef47ba	0x14173d0a0	cstring	chords
+0x140ef3f20	0x140ef47cf	0x14173d0a8	cstring	the harmonic series
+0x140ef3f20	0x140ef47e4	0x14173cfc8	cstring	notation
+0x140ef3f20	0x140ef4839	0x14173d138	cstring	historical causation
+0x140ef3f20	0x140ef484e	0x14173d058	cstring	personal interviews
+0x140ef3f20	0x140ef4863	0x14173d070	cstring	state bias
+0x140ef3f20	0x140ef4878	0x14173d030	cstring	systemic bias
+0x140ef3f20	0x140ef488d	0x14173d040	cstring	source reliability
+0x140ef3f20	0x140ef48a2	0x14173d12c	cstring	cycles
+0x140ef3f20	0x140ef48d3	0x1415fdd58	cstring	comparative biography
+0x140ef3f20	0x140ef48e8	0x1415fddd0	cstring	biography
+0x140ef3f20	0x140ef48fd	0x14173d150	cstring	community conflict
+0x140ef3f20	0x140ef490c	0x14173d168	cstring	community bonds
+0x140ef3f20	0x140ef4927	0x14173d0e0	cstring	biographical dictionaries
+0x140ef3f20	0x140ef4969	0x1415fdec0	cstring	cultural history
+0x140ef3f20	0x140ef497e	0x14173d118	cstring	the encyclopedia
+0x140ef3f20	0x140ef4993	0x1415fdd30	cstring	genealogy
+0x140ef3f20	0x140ef49a8	0x14173d0c0	cstring	autobiographical adventures
+0x140ef3f20	0x140ef49bd	0x1415fdea8	cstring	cultural comparison
+0x140ef3f20	0x140ef49f2	0x14173d1c8	cstring	technological evolution
+0x140ef3f20	0x140ef4a07	0x14173d1e0	cstring	archaeology
+0x140ef3f20	0x140ef4a1c	0x1415fde90	cstring	alternate history
+0x140ef3f20	0x140ef4a31	0x14173d100	cstring	cultural differences
+0x140ef3f20	0x140ef4a86	0x14173d1b8	cstring	tidal height
+0x140ef3f20	0x140ef4a9b	0x14173d178	cstring	the moon and tides
+0x140ef3f20	0x140ef4aaa	0x14173d190	cstring	the moon's path
+0x140ef3f20	0x140ef4ac5	0x14173d1f0	cstring	the moon and seasons
+0x140ef3f20	0x140ef4ada	0x14173d208	cstring	moon phases
+0x140ef3f20	0x140ef4aef	0x14173d1a0	cstring	the sun and seasons
+0x140ef3f20	0x140ef4b20	0x14173c8d0	cstring	the heliocentric model
+0x140ef3f20	0x140ef4b35	0x14173c8e8	cstring	the geocentric model
+0x140ef3f20	0x140ef4b4a	0x14173c8a0	cstring	daylight and seasons
+0x140ef3f20	0x140ef4b5f	0x14173c8b8	cstring	lunar and solar years
+0x140ef3f20	0x140ef4b74	0x14173c860	cstring	eclipses
+0x140ef3f20	0x140ef4bb6	0x14173c960	cstring	the color of stars
+0x140ef3f20	0x140ef4bcb	0x14173c870	cstring	extensive star catalogues
+0x140ef3f20	0x140ef4bda	0x14173c890	cstring	star catalogues
+0x140ef3f20	0x140ef4bf5	0x14173c850	cstring	star charts
+0x140ef3f20	0x140ef4c0a	0x14173c948	cstring	the brightness of stars
+0x140ef3f20	0x140ef4c3f	0x14173c910	cstring	astronomical models
+0x140ef3f20	0x140ef4c54	0x14173c978	cstring	empirical observation
+0x140ef3f20	0x140ef4c69	0x14173c990	cstring	equinoxes
+0x140ef3f20	0x140ef4c7e	0x1417348f8	cstring	the shape of the world
+0x140ef3f20	0x140ef4cc4	0x14173c900	cstring	dissection
+0x140ef3f20	0x140ef4cd9	0x14173c940	cstring	anatomy
+0x140ef3f20	0x140ef4cee	0x14173c928	cstring	comparative anatomy
+0x140ef3f20	0x140ef4d03	0x14173ca08	cstring	physical features
+0x140ef3f20	0x140ef4d18	0x14173c9f0	cstring	migratory patterns
+0x140ef3f20	0x140ef4d2d	0x14173ca38	cstring	reproductive behavior
+0x140ef3f20	0x140ef4d42	0x14173ca20	cstring	foraging behavior
+0x140ef3f20	0x140ef4d79	0x14173c9e0	cstring	diseases
+0x140ef3f20	0x140ef4d88	0x14173c9a0	cstring	social behavior
+0x140ef3f20	0x140ef4da3	0x14173c9b0	cstring	dietary relationships
+0x140ef3f20	0x140ef4db8	0x14173c9c8	cstring	climatic adaptation
+0x140ef3f20	0x140ef4ddf	0x14173ca98	cstring	the struggle for survival
+0x140ef3f20	0x140ef4df4	0x14173cab8	cstring	embriological development
+0x140ef3f20	0x140ef4e4b	0x14173cae0	cstring	combustible materials
+0x140ef3f20	0x140ef4e60	0x14173cad4	cstring	ores
+0x140ef3f20	0x140ef4e75	0x14173ca64	cstring	alloys
+0x140ef3f20	0x140ef4e8a	0x1417274d0	cstring	hardness
+0x140ef3f20	0x140ef4e9f	0x14173ca50	cstring	elemental materials
+0x140ef3f20	0x140ef4eb4	0x14173ca88	cstring	adhesives
+0x140ef3f20	0x140ef4ec9	0x14173ca70	cstring	the blast furnace
+0x140ef3f20	0x140ef4f05	0x14173cb10	cstring	alkali and acids
+0x140ef3f20	0x140ef4f1a	0x14173cb70	cstring	evaporation
+0x140ef3f20	0x140ef4f2f	0x14173cb80	cstring	distillation
+0x140ef3f20	0x140ef4f44	0x14173cb48	cstring	liquid extraction
+0x140ef3f20	0x140ef4f59	0x14173cb60	cstring	the alembic
+0x140ef3f20	0x140ef4f6e	0x14173caf8	cstring	systematic experiments
+0x140ef3f20	0x140ef4fbb	0x14173cc00	cstring	the crucible
+0x140ef3f20	0x140ef4fd0	0x14173cbd0	cstring	the funnel
+0x140ef3f20	0x140ef4fe5	0x14173cbe0	cstring	the vial
+0x140ef3f20	0x140ef4ffa	0x14173cb28	cstring	the beaker
+0x140ef3f20	0x140ef500f	0x14173cb38	cstring	the flask
+0x140ef3f20	0x140ef501e	0x14173cbf0	cstring	spirit of niter
+0x140ef3f20	0x140ef5060	0x14173cc78	cstring	laboratory ovens
+0x140ef3f20	0x140ef5075	0x14173cbb0	cstring	the retort
+0x140ef3f20	0x140ef508a	0x14173cbc0	cstring	the ampoule
+0x140ef3f20	0x140ef509f	0x14173cb90	cstring	aqua regia
+0x140ef3f20	0x140ef50b4	0x14173cba0	cstring	oil of vitriol
+0x140ef3f20	0x140ef5109	0x14173cc10	cstring	cartographical surveying
+0x140ef3f20	0x140ef511e	0x14173cc30	cstring	triangulation
+0x140ef3f20	0x140ef5133	0x14173cc90	cstring	cartography
+0x140ef3f20	0x140ef5148	0x14173cca0	cstring	the surveying staff
+0x140ef3f20	0x140ef515d	0x14173cc68	cstring	surveying
+0x140ef3f20	0x140ef5172	0x14173cc58	cstring	land surveying
+0x140ef3f20	0x140ef51a4	0x14173cd40	cstring	distance scales
+0x140ef3f20	0x140ef51bf	0x14173cd50	cstring	map grids
+0x140ef3f20	0x140ef51d4	0x14173cd08	cstring	geological cartography
+0x140ef3f20	0x140ef51e9	0x14173cd20	cstring	surveying for engineering
+0x140ef3f20	0x140ef51fe	0x14173cc40	cstring	military surveying
+0x140ef3f20	0x140ef5213	0x14173ccc8	cstring	height measurements
+0x140ef3f20	0x140ef5260	0x14173d6c0	cstring	wind patterns
+0x140ef3f20	0x140ef526f	0x14173d6d0	cstring	delta formation
+0x140ef3f20	0x140ef528a	0x14173cce0	cstring	the atlas
+0x140ef3f20	0x140ef529f	0x14173ccf0	cstring	economic cartography
+0x140ef3f20	0x140ef52b4	0x14173ccb8	cstring	economic data
+0x140ef3f20	0x140ef52c9	0x14173d6f0	cstring	rainfall
+0x140ef3f20	0x140ef52f8	0x14173d6b0	cstring	map projections
+0x140ef3f20	0x140ef5313	0x14173d670	cstring	map accuracy
+0x140ef3f20	0x140ef5328	0x14173d680	cstring	climate zones
+0x140ef3f20	0x140ef5337	0x14173d6e0	cstring	the water cycle
+0x140ef3f20	0x140ef5396	0x14173d690	cstring	disease and fouled water
+0x140ef3f20	0x140ef53ab	0x14173d760	cstring	physical examination
+0x140ef3f20	0x140ef53c0	0x14173d758	cstring	autopsy
+0x140ef3f20	0x140ef53d5	0x14173d788	cstring	prognosis
+0x140ef3f20	0x140ef53e4	0x141733d38	cstring	herbal remedies
+0x140ef3f20	0x140ef53f9	0x14173d778	cstring	animal remedies
+0x140ef3f20	0x140ef5414	0x141733ef0	cstring	mineral remedies
+0x140ef3f20	0x140ef5429	0x14173d718	cstring	bandages
+0x140ef3f20	0x140ef543e	0x14173d700	cstring	disease classification
+0x140ef3f20	0x140ef546f	0x14173d7f8	cstring	endemic disease
+0x140ef3f20	0x140ef548a	0x14173d728	cstring	acute and chronic conditions
+0x140ef3f20	0x140ef549f	0x14173d748	cstring	toxicology
+0x140ef3f20	0x140ef54b4	0x14173d7e0	cstring	epidemic disease
+0x140ef3f20	0x140ef54e2	0x14173d7a8	cstring	relapse
+0x140ef3f20	0x140ef54f7	0x14173d808	cstring	paroxysm
+0x140ef3f20	0x140ef550c	0x14173d818	cstring	exacerbation
+0x140ef3f20	0x140ef5521	0x14173d798	cstring	convalescence
+0x140ef3f20	0x140ef5569	0x14173d890	cstring	fracture classification
+0x140ef3f20	0x140ef557e	0x14173d7b0	cstring	fracture treatment
+0x140ef3f20	0x140ef5593	0x14173d7c8	cstring	traumatic injuries
+0x140ef3f20	0x140ef55a8	0x14173d878	cstring	the traction bench
+0x140ef3f20	0x140ef55d6	0x14173d838	cstring	excision
+0x140ef3f20	0x140ef55eb	0x14173d8a8	cstring	the orthopedic cast
+0x140ef3f20	0x140ef5600	0x14173d8c0	cstring	fracture immobilization
+0x140ef3f20	0x140ef5615	0x14173d828	cstring	incision
+0x140ef3f20	0x140ef564c	0x14173d848	cstring	lithotomy surgery
+0x140ef3f20	0x140ef5661	0x14173d860	cstring	tracheotomy surgery
+0x140ef3f20	0x140ef5676	0x1417340a0	cstring	hernia surgery
+0x140ef3f20	0x140ef568b	0x14173d948	cstring	scraping
+0x140ef3f20	0x140ef56b9	0x14173d958	cstring	suturing
+0x140ef3f20	0x140ef56ce	0x14173d968	cstring	probing
+0x140ef3f20	0x140ef56e3	0x14173d938	cstring	draining
+0x140ef3f20	0x140ef573e	0x14173d8e8	cstring	ligature
+0x140ef3f20	0x140ef574d	0x14173d8d8	cstring	surgical models
+0x140ef3f20	0x140ef5768	0x14173d918	cstring	mud bags as surgical models
+0x140ef3f20	0x140ef577d	0x14173d8f8	cstring	plants as surgical models
+0x140ef3f20	0x140ef5792	0x14173d9f0	cstring	animals as surgical models
+0x140ef3f20	0x140ef57a7	0x14173d9c8	cstring	specialized surgical instruments
+0x140ef3f20	0x140ef57bc	0x14173da20	cstring	forceps
+0x140ef3f20	0x140ef57d1	0x14173da10	cstring	the scalpel
+0x140ef3f20	0x140ef57e6	0x14173d988	cstring	surgical scissors
+0x140ef3f20	0x140ef5821	0x1417357c8	cstring	cauterization
+0x140ef3f20	0x140ef5836	0x141735770	cstring	cataract surgery
+0x140ef3f20	0x140ef584b	0x14173d970	cstring	surgical needles
+0x140ef3f20	0x140ef5860	0x1417357b8	cstring	anesthesia
+0x140ef3f20	0x140ef5891	0x14173d9a0	cstring	bodily fluids
+0x140ef3f20	0x140ef58a6	0x14173d9b0	cstring	anatomical studies
+0x140ef3f20	0x140ef58bb	0x141735968	cstring	pulmonary medicine
+0x140ef3f20	0x140ef58d0	0x14173da70	cstring	eye anatomy
+0x140ef3f20	0x140ef591d	0x14173da80	cstring	reaction time
+0x140ef3f20	0x140ef5932	0x14173da90	cstring	the nervous system
+0x140ef3f20	0x140ef5947	0x14173da68	cstring	nerves
+0x140ef3f20	0x140ef595c	0x14173da38	cstring	blood vessels
+0x140ef3f20	0x140ef5991	0x14173da28	cstring	the voice
+0x140ef3f20	0x140ef59a6	0x141735aa0	cstring	pulmonary circulation
+0x140ef3f20	0x140ef59bb	0x14173da60	cstring	muscles
+0x140ef3f20	0x140ef59f3	0x14173daf0	cstring	hospitals
+0x140ef3f20	0x140ef5a08	0x14173da48	cstring	mental illnesses
+0x140ef3f20	0x140ef5a1d	0x14173dae0	cstring	hospital staff
+0x140ef3f20	0x140ef5a48	0x14173dab0	cstring	medical schools
+0x140ef3f20	0x140ef5a63	0x14173db00	cstring	hospital laboratories
+0x140ef3f20	0x140ef5a78	0x14173db18	cstring	hospital wards
+0x140ef3f20	0x140ef5a97	0x14173daa8	cstring	asylums
+0x140ef3f20	0x140ef5af2	0x14173dad0	cstring	shadow clocks
+0x140ef3f20	0x140ef5b07	0x14173dac0	cstring	water clocks
+0x140ef3f20	0x140ef5b1c	0x14173d280	cstring	conical water clocks
+0x140ef3f20	0x140ef5b31	0x14173d268	cstring	water clock reservoirs
+0x140ef3f20	0x140ef5b46	0x14173d2a8	cstring	the astrarium
+0x140ef3f20	0x140ef5b5b	0x14173d298	cstring	the hourglass
+0x140ef3f20	0x140ef5b70	0x14173d228	cstring	mechanical clocks
+0x140ef3f20	0x140ef5b85	0x14173d218	cstring	the pulley
+0x140ef3f20	0x140ef5bbd	0x14173d240	cstring	the wheel-and-axle
+0x140ef3f20	0x140ef5bd2	0x14173d258	cstring	the screw
+0x140ef3f20	0x140ef5be7	0x14173d308	cstring	the windlass
+0x140ef3f20	0x140ef5c15	0x14173d338	cstring	the lever
+0x140ef3f20	0x140ef5c2a	0x14173d2f8	cstring	the wedge
+0x140ef3f20	0x140ef5c3f	0x14173d318	cstring	the straight-beam balance
+0x140ef3f20	0x140ef5c8c	0x14173d2e0	cstring	the tumbler lock
+0x140ef3f20	0x140ef5c9b	0x14173d2b8	cstring	the warded lock
+0x140ef3f20	0x140ef5cb6	0x14173d2c8	cstring	gears
+0x140ef3f20	0x140ef5ccb	0x14173d2d0	cstring	the padlock
+0x140ef3f20	0x140ef5cfc	0x14173d3d8	cstring	the water-powered sawmill
+0x140ef3f20	0x140ef5d11	0x14173d3a0	cstring	the crankshaft
+0x140ef3f20	0x140ef5d26	0x14173d3b0	cstring	the camshaft
+0x140ef3f20	0x140ef5d3b	0x14173d3c0	cstring	the chariot odometer
+0x140ef3f20	0x140ef5d76	0x14173d388	cstring	the differential gear
+0x140ef3f20	0x140ef5d8b	0x14173d348	cstring	the mechanical compass
+0x140ef3f20	0x140ef5da0	0x14173d360	cstring	chain drives
+0x140ef3f20	0x140ef5db5	0x14173d370	cstring	combination locks
+0x140ef3f20	0x140ef5de6	0x14173d480	cstring	the siphon
+0x140ef3f20	0x140ef5dfb	0x14173d448	cstring	the balance wheel
+0x140ef3f20	0x140ef5e10	0x14173d460	cstring	the verge escapement
+0x140ef3f20	0x140ef5e69	0x14173d478	cstring	valves
+0x140ef3f20	0x140ef5e7e	0x14173d410	cstring	the force pump
+0x140ef3f20	0x140ef5e93	0x14173d3f8	cstring	the crystal lens
+0x140ef3f20	0x140ef5ea8	0x14173d430	cstring	water-filled spheres
+0x140ef3f20	0x140ef5ebd	0x14173d420	cstring	the glass lens
+0x140ef3f20	0x140ef5ed2	0x14173d4f0	cstring	the camera obscura
+0x140ef3f20	0x140ef5ee7	0x14173d4d8	cstring	the parabolic mirror
+0x140ef3f20	0x140ef5ef6	0x14173d518	cstring	light and color
+0x140ef3f20	0x140ef5f33	0x14173d4a0	cstring	models and templates
+0x140ef3f20	0x140ef5f48	0x14173d508	cstring	refraction
+0x140ef3f20	0x140ef5f5d	0x14169c358	cstring	rainbows
+0x140ef3f20	0x140ef5f72	0x14173d490	cstring	lamination
+0x140ef3f20	0x140ef5fa0	0x14173d5b8	cstring	the armillary sphere
+0x140ef3f20	0x140ef5fb5	0x14173d4b8	cstring	the astrolabe
+0x140ef3f20	0x140ef5fca	0x14173d4c8	cstring	the dioptra
+0x140ef3f20	0x140ef5fdf	0x14173d5a0	cstring	the spherical astrolabe
+0x140ef3f20	0x140ef6027	0x14173d548	cstring	the water-powered trip hammer
+0x140ef3f20	0x140ef603c	0x14173d5d0	cstring	the orrery
+0x140ef3f20	0x140ef6051	0x14173d5e0	cstring	mural instruments
+0x140ef3f20	0x140ef6066	0x14173d528	cstring	double-acting piston bellows
+0x140ef3f20	0x140ef6094	0x14169c278	cstring	twilight
+0x140ef3f20	0x140ef60a9	0x141735478	cstring	atmospheric refraction
+0x140ef3f20	0x140ef60be	0x14173d588	cstring	water displacement
+0x140ef3f20	0x140ef60d3	0x14173d568	cstring	the height of the atmosphere
+0x140ef3f20	0x140ef610a	0x14173d660	cstring	the bellows
+0x140ef3f20	0x140ef611f	0x14173d618	cstring	the crank
+0x140ef3f20	0x140ef6134	0x14173d628	cstring	the piston
+0x140ef3f20	0x140ef6149	0x14173d638	cstring	the water-powered piston bellows
+0x140ef3f20	0x140ef6166	0x14173d5f8	cstring	the trip hammer
+0x140ef3f20	0x140ef617b	0x14173d608	cstring	the water wheel

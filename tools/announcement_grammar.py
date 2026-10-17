@@ -9,8 +9,83 @@ from pathlib import Path
 import re
 
 
-def native_empty_party_variants(scope, source, target, kinds):
-    """Lower only e2b80's proven empty agreement-party output.
+def native_empty_speech_fields(filename, scope, source, kinds, provenance):
+    """Name suppliers proved nullable by the retained native speech owners.
+
+    These are producer scopes, not a general permission for $unit, $person or
+    SPEAKER:TRANS_NAME to disappear. b92f10 with flags=1/mode=0 can return an
+    empty EnglishName for an existing named figure; b92900/b93930/b94940 do
+    the same for an existing object, and b94a40 also has silent underground
+    selector branches. Invalid references still use their ordinary literals.
+    """
+    nullable = {}
+    person = "未具名者"
+    entity = "未具名势力"
+    place = "某处"
+    if filename == "announcement-dialogue-grammar.tsv":
+        if scope.startswith("dialogue-battle"):
+            # 675910: a946e0 supplies all named participants. A single
+            # unnamed slain record can empty the whole I-slew list. A comma
+            # list's remaining suffix cannot be empty: at least two records
+            # remain and the native final 'and' survives their empty names.
+            nullable.update({kind: person for kind in {
+                "dialogue-battle-person", "dialogue-battle-attacker",
+                "dialogue-battle-target", "dialogue-battle-slain"}})
+            nullable["conversation-conflict-entity"] = entity
+            if source == "I slew {s}":
+                nullable["dialogue-battle-slain-list"] = person
+        if scope.startswith("conversation-conflict"):
+            # 10763xx/10796xx/1079axx delegate to the same EnglishName,
+            # entity and geographic suppliers in the conflict chooser.
+            nullable.update({kind: person for kind in {
+                "conversation-conflict-person", "conversation-conflict-attacker",
+                "conversation-conflict-target", "conversation-conflict-slain"}})
+            nullable["conversation-conflict-entity"] = entity
+            nullable["conversation-conflict-place"] = place
+            if source == "you slew {s}":
+                nullable["conversation-conflict-slain-list"] = person
+        if kinds[:2] == ["rumor-time", "dialogue-battle"]:
+            nullable["conversation-conflict-place"] = place
+        # These direct a946e0 calls differ from TRANS_NAME's nameless
+        # substitution. Do not make the shared speech-person scope nullable.
+        if "a946e0" in provenance:
+            nullable["speech-person"] = person
+        if source == "{s}, is it really you?":
+            nullable["dialogue-recognition"] = person
+        if source == "{s}!":
+            # An empty name leaves only punctuation. Keep the existing
+            # complete "!" translation instead of inventing an addressee.
+            nullable["dialogue-recognition"] = ""
+    elif filename == "announcement-description-grammar.tsv":
+        # 66ba00/66fe50: incident and event-memory participants use b92af0
+        # or b92f10; the location/recipient tails use the suppliers above.
+        # RAW pet actions retain their independent complete live-unit fields.
+        if scope.startswith("memory-") or (scope == "sentence" and "$unit" not in kinds):
+            nullable.update({"memory-person": person, "memory-entity": entity,
+                             "memory-location": place})
+        if scope == "memory-person" and source == "my {s} {s}":
+            nullable["speech-person"] = person
+    elif filename == "announcement-dialogue-extra-grammar.tsv":
+        # 660870 opinions use b92af0/b92f10 for their complete subjects and
+        # objects. Guide/information/service branches use b92f10 as well.
+        nullable["dialogue-query-person"] = person
+        nullable["speech-service-person"] = person
+        if scope.startswith("dialogue-judgement"):
+            nullable["dialogue-judgement-person"] = person
+    elif filename == "announcement-rumor-grammar.tsv":
+        # 680970..684a04 and 6878xx..689887: personal references, named
+        # entities and sites stay distinct even when their text is empty.
+        nullable.update({"rumor-person": person,
+                         "conversation-conflict-entity": entity,
+                         "conversation-conflict-place": place,
+                         "$travel-site": "未具名地点"})
+        if scope == "rumor-person" and source == "my {s} {s}":
+            nullable["speech-person"] = person
+    return {index: nullable[kind] for index, kind in enumerate(kinds) if kind in nullable}
+
+
+def native_empty_party_variants(scope, source, target, kinds, empty_fields=None):
+    """Lower proven empty agreement parties and native speech-name fields.
 
     An existing party with empty figure/entity vectors emits no text. Each
     typed party field can independently take that branch, including parties
@@ -18,8 +93,10 @@ def native_empty_party_variants(scope, source, target, kinds):
     build import, retaining connectors and every other field's strict type.
     """
     yield scope, source, target, kinds
-    optional = [index for index, kind in enumerate(kinds)
-                if kind in {"agreement-party", "agreement-party-list"}]
+    replacements = {index: "" for index, kind in enumerate(kinds)
+                    if kind in {"agreement-party", "agreement-party-list"}}
+    replacements.update(empty_fields or {})
+    optional = list(replacements)
     literals = source.split("{s}")
     for mask in range(1, 1 << len(optional)):
         removed = {index for bit, index in enumerate(optional) if mask & (1 << bit)}
@@ -38,7 +115,7 @@ def native_empty_party_variants(scope, source, target, kinds):
         variant_target = re.sub(
             r"\{s([1-9][0-9]*)\}",
             lambda match: ("{s" + str(numbers[int(match[1])]) + "}")
-            if int(match[1]) in numbers else "", target)
+            if int(match[1]) in numbers else replacements[int(match[1]) - 1], target)
         # A wholly empty party itself has no visible production. Its parent
         # receives the corresponding concrete empty-field form above.
         if variant_source and variant_target:
@@ -76,7 +153,7 @@ def combat_entries(path: Path, entry_type):
                 raise ValueError(f"{path}:{line_no}: conflicting combat grammar target")
             continue
         seen[key] = target
-        rows.append((scope, source, target, kinds))
+        rows.append((scope, source, target, kinds, provenance))
         # Parsing is scoped and performed by announcement_combat.inc. Ordinary
         # lt only knows its own capture semantics and must not compile this key.
         entries.append(entry_type(key, target, "l", "DFCN announcement combat", 410))
@@ -85,8 +162,9 @@ def combat_entries(path: Path, entry_type):
     # explicitly authored concrete production over a dropped-field wording.
     # Distinct empty subsets can likewise converge on the same complete text;
     # their typed event snapshots retain the original semantic distinction.
-    for scope, source, target, kinds in rows:
-        variants = native_empty_party_variants(scope, source, target, kinds)
+    for scope, source, target, kinds, provenance in rows:
+        variants = native_empty_party_variants(scope, source, target, kinds,
+            native_empty_speech_fields(path.name, scope, source, kinds, provenance))
         next(variants)
         for variant_scope, variant_source, variant_target, variant_kinds in variants:
             variant_signature = ",".join(variant_kinds)

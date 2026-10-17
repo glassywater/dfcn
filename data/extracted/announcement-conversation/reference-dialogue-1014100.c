@@ -1,4 +1,3 @@
-/* Actual Ghidra 12.1.4 PE decompilation: PE:6a70a6d9:02711000; 0x140659090..0x14065a250. */
 
 void FUN_140659090(undefined8 *param_1,longlong *param_2,longlong param_3,longlong param_4)
 

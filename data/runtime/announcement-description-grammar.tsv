@@ -11,7 +11,8 @@ visitor-statement-subject	{s}	{s1}	visitor-statement-reference	PE reference 0x14
 visitor-statement-object	{s}	{s1}	visitor-statement-reference	PE reference 0x140659090; classic 0x140656ab0..0x14065799c; visitor +0x1970 prophet quotation
 visitor-statement-reference	a {s}	一个{s1}	$creature	PE classic 0x140b8ff50; unnamed HF: a + zombie/ghostly + caste + optional animated name
 visitor-statement-reference	{s}	{s1}	$memorial-actor	PE classic 0x140656840; complete HF name, nickname, or unnamed caste identity
-visitor-statement-reference	{s}	{s1}	$name	PE classic 0x140b90970 SITE; 0x140a91760 world_data.name
+visitor-statement-reference	{s}	{s1}	$visitor-place-name	PE classic 0x140b90970 SITE; 0x140a91760 world_data.name; require a complete reference, never a verbatim mixed-language speech prefix
+visitor-statement-reference	{s}	{s1}	$speech-person	PE 658e20/656840 -> b92f10/b8ff50 HF language_name; after complete actor/place alternatives, preserve an UTTERANCES given name without a WORD mask
 visitor-statement	{s} appear.	{s1}出现。	visitor-statement-subject	PE reference 0x140659090; classic 0x140656ab0..0x14065799c; visitor +0x1970 prophet quotation
 visitor-statement	{s} appear {s}.	{s1}出现在{s2}。	visitor-statement-subject,visitor-statement-object	PE reference 0x140659090; classic 0x140656ab0..0x14065799c; visitor +0x1970 prophet quotation
 visitor-statement	{s} appear .	{s1}出现。	visitor-statement-subject	PE reference 0x140659090; classic 0x140656ab0..0x14065799c; visitor +0x1970 prophet quotation
@@ -682,17 +683,17 @@ description-institution	a library	图书馆		0x14068d62f; shared a library term
 description-institution	a tavern	酒馆		0x14068d778; shared a tavern term
 description-institution	a great keep	雄伟的城堡主楼		0x14068de4c; shared a keep term
 description-institution	a tomb	陵墓		0x14068d88e; shared a tomb term
-description-institution	a tomb housing {s}	安葬着{s1}的陵墓	$person	0x14068d88e+0x14068d93e+0x14068d981
+description-institution	a tomb housing {s}	安葬着{s1}的陵墓	speech-person	0x14068d88e+0x14068d93e+0x14068d981
 description-institution	a temple	神殿		0x14068db05; shared a temple term
-description-institution	a temple to {s}	供奉{s1}的神殿	$person	0x14068db05+0x14068dbae+0x14068dbf1; deity field
+description-institution	a temple to {s}	供奉{s1}的神殿	speech-person	0x14068db05+0x14068dbae+0x14068dbf1; deity field
 description-institution	a temple of {s}	属于{s1}的神殿	$name	0x14068db05+0x14068dcb4+0x14068dcf7; religious-entity field
 sentence	There is {s} there.	那里有一座{s1}。	description-institution	0x14068d62f/0x14068d778/0x14068d88e/0x14068db05/0x14068de4c -> 0x14068d726/0x14068dab3
 sentence	There is {s} there named {s}.	那里有一座名为{s2}的{s1}。	description-institution,$name	0x14068d66b/0x14068d7b0/0x14068da33/0x14068dd71/0x14068de88; complete generated institution name
-description-resident	{s} the {s}	{s2}{s1}	$person,$term	0x14068e00f..0x14068e247; profession helper 0x14132cc10 or creature caste from RAW
-description-resident	{s}	{s1}	$person	0x14068e00f+0x14068e252; absent profession/caste branch
+description-resident	{s} the {s}	{s2}{s1}	speech-person,$term	0x14068e00f..0x14068e247; profession helper 0x14132cc10 or creature caste from RAW
+description-resident	{s}	{s1}	speech-person	0x14068e00f+0x14068e252; absent profession/caste branch
 sentence	{s} is there.	{s1}在那里。	description-resident	0x14068e252; full person/profession-or-caste field
 sentence	It is a place of great evil.	那是个极其邪恶的地方。		0x14068e38a
-sentence	[{s} looks around nervously and leans forward, speaking quietly.]	【{s1}紧张地四下张望，探过身来压低了声音。】	$person	0x14068e64b+0x14068e689+0x14068e6ba+0x14068e6cf
+sentence	[{s} looks around nervously and leans forward, speaking quietly.]	【{s1}紧张地四下张望，探过身来压低了声音。】	speech-person	0x14068e64b+0x14068e689+0x14068e6ba+0x14068e6cf
 sentence	It is rumored that the dead rise and stalk the living!	据说死人会在那里复活，暗中追踪活人！		0x14068e731
 sentence	That place is blessed.	那里是受祝福之地。		0x14068e85a
 sentence	Savage beasts call it their home.	那里栖息着凶猛的野兽。		0x14068ea4e
@@ -705,7 +706,7 @@ sentence	I don't know very much about it.	我对那里了解不多。		0x14068f2
 # Dynamic first-person memories from the same native formatter as fixed Overview sentences.
 sentence	{s}	{s1}	memory-sentence	Shared first-person event constructor; overview and announcement entry
 memory-person	{s}	{s1}	$unit	Native unit labels before bare historical figure names
-memory-person	{s}	{s1}	$person	Native historical figure field retains generated English surname
+memory-person	{s}	{s1}	speech-person	Native historical figure field retains generated English surname
 memory-person	an unknown creature	不明生物		ELF 53.16 0x101b7f0..0x1020794 event-memory constructor
 memory-person	somebody	有人		ELF 53.16 0x101b7f0..0x1020794 event-memory constructor
 memory-person	someone	有人		ELF 53.16 0x101b7f0..0x1020794 event-memory constructor
@@ -759,7 +760,7 @@ memory-sentence	I am reunited with my {s}.	跟我的{s1}重逢了。	memory-rela
 memory-sentence	I was reunited with {s}.	我跟{s1}重逢了。	memory-person	ELF 53.16 0x101b7f0..0x1020794 event-memory constructor
 memory-sentence	I gave birth to {s}.	我生下了{s1}。	memory-offspring	PE 0x1406728df..0x140672926 -> 0x1406dd860 with human-count mode; sex and litter size, not a personal name
 memory-sentence	I have become a parent of {s}.	我有{s1}了。	memory-offspring	PE 0x14067295d..0x1406729d1 -> 0x1406dd860 with human-count mode; litter size, not a personal name
-memory-sentence	I shall name you {s}.	就给你起名叫{s1}吧。	$person	ELF 53.16 0x101b7f0..0x1020794 event-memory constructor
+memory-sentence	I shall name you {s}.	就给你起名叫{s1}吧。	speech-person	ELF 53.16 0x101b7f0..0x1020794 event-memory constructor
 memory-sentence	The body of {s} decayed without burial.	{s1}的尸体没人埋，都烂了。	memory-person	ELF 53.16 0x101b7f0..0x1020794 event-memory constructor
 memory-sentence	I was attacked by my own dead {s}.	我死去的{s1}竟然袭击了我。	memory-relation	ELF 53.16 0x101b7f0..0x1020794 event-memory constructor
 memory-sentence	My {s} was expelled.	我的{s1}被赶走了。	memory-relation	ELF 53.16 0x101b7f0..0x1020794 event-memory constructor
@@ -783,14 +784,14 @@ memory-sentence	I can now reside in {s}.	现在能住在{s1}了。	$name	ELF 53.
 memory-sentence	I was denied residency in {s}.	没获准住在{s1}。	$name	ELF 53.16 0x101b7f0..0x1020794 event-memory constructor
 memory-sentence	There was a performance in {s}.	{s1}办了场表演。	$name	ELF 53.16 0x101b7f0..0x1020794 event-memory constructor
 memory-sentence	There was a scholarly lecture in {s}.	{s1}办了场学术讲座。	$name	ELF 53.16 0x101b7f0..0x1020794 event-memory constructor
-memory-sentence	I must pray to {s}.	得向{s1}祈祷了。	$person	ELF 53.16 0x101b7f0..0x1020794 event-memory constructor
-memory-sentence	I have communed with {s}.	跟{s1}沟通过了。	$person	ELF 53.16 0x101b7f0..0x1020794 event-memory constructor
-memory-sentence	I have communed with {s} in this holy place.	在这圣地跟{s1}沟通过了。	$person	ELF 53.16 0x101b7f0..0x1020794 event-memory constructor
-memory-sentence	I have communed with {s} in this dubious place.	在这不太像样的地方跟{s1}沟通过了。	$person	ELF 53.16 0x101b7f0..0x1020794 event-memory constructor
+memory-sentence	I must pray to {s}.	得向{s1}祈祷了。	speech-person	ELF 53.16 0x101b7f0..0x1020794 event-memory constructor
+memory-sentence	I have communed with {s}.	跟{s1}沟通过了。	speech-person	ELF 53.16 0x101b7f0..0x1020794 event-memory constructor
+memory-sentence	I have communed with {s} in this holy place.	在这圣地跟{s1}沟通过了。	speech-person	ELF 53.16 0x101b7f0..0x1020794 event-memory constructor
+memory-sentence	I have communed with {s} in this dubious place.	在这不太像样的地方跟{s1}沟通过了。	speech-person	ELF 53.16 0x101b7f0..0x1020794 event-memory constructor
 memory-sentence	I have performed the rites of {s}.	参加了{s1}的仪式。	$name	ELF 53.16 0x101b7f0..0x1020794 event-memory constructor
 memory-sentence	I have performed the rites of {s} in this holy place.	在这圣地参加了{s1}的仪式。	$name	ELF 53.16 0x101b7f0..0x1020794 event-memory constructor
 memory-sentence	I have performed the rites of {s} in this dubious place.	在这不太像样的地方参加了{s1}的仪式。	$name	ELF 53.16 0x101b7f0..0x1020794 event-memory constructor
-memory-sentence	I am awoken to {s}.	我领会了{s1}。	$sphere	ELF 53.16 0x101b7f0..0x1020794 event-memory constructor
+memory-sentence	I am awoken to {s}.	我领会了{s1}。	speech-sphere	ELF 53.16 0x101b7f0..0x1020794 event-memory constructor
 memory-sentence	I read {s}.	读了{s1}。	memory-work	ELF 53.16 0x101b7f0..0x1020794 event-memory constructor
 memory-sentence	I wrote {s}.	写了{s1}。	memory-work	ELF 53.16 0x101b7f0..0x1020794 event-memory constructor
 memory-sentence	I learned {s}.	学会了{s1}。	memory-knowledge	ELF 53.16 0x101b7f0..0x1020794 event-memory constructor
@@ -855,7 +856,7 @@ memory-sentence	I put on a truly splendid item.	穿上了一件品质好极了�
 memory-sentence	I am together with my {s} {s}.	跟我的{s1}{s2}在一起了。	memory-relation,memory-person	ELF 53.16 0x101b7f0..0x1020794 dynamic memory branches
 memory-sentence	I am reunited with my {s} {s}.	跟我的{s1}{s2}重逢了。	memory-relation,memory-person	ELF 53.16 0x101b7f0..0x1020794 dynamic memory branches
 memory-sentence	I got into an argument with {s} {s}.	跟{s1}{s2}吵了一架。	memory-relation,memory-person	ELF 53.16 0x101b7f0..0x1020794 dynamic memory branches
-memory-person	my {s} {s}	我的{s1}{s2}	memory-relation,$person	ELF 53.16 0x101b7f0..0x1020794 dynamic memory branches
+memory-person	my {s} {s}	我的{s1}{s2}	memory-relation,speech-person	ELF 53.16 0x101b7f0..0x1020794 dynamic memory branches
 memory-sentence	{s} was slain by {s}.	{s1}被{s2}杀死了。	memory-person,memory-person	ELF native event and battle-account death branches
 memory-sentence	The temple petition for {s} was ignored.	为{s1}建神殿的申请没人理。	$name	ELF 53.16 0x101b7f0..0x1020794 dynamic memory branches
 memory-sentence	The guildhall petition for {s} was ignored.	为{s1}建公会大厅的申请没人理。	$name	ELF 53.16 0x101b7f0..0x1020794 dynamic memory branches
@@ -957,7 +958,7 @@ memory-performance-core	{s} preached on {s}	{s1}讲了关于{s2}的道理	memory
 memory-performance-core	A sermon on {s} was preached	有人做了一场关于{s1}的布道	memory-sermon-topic	0x14066dc54..0x14066dc9d
 memory-sermon-topic	{s}	{s1}	memory-value-insight	0x14066d91f -> general reference virtual 0x140ee0380
 memory-sermon-topic	{s}	{s1}	work-reference	0x14066d91f..0x14066da4d; value, sphere or historical figure reference
-memory-sermon-topic	{s}	{s1}	$sphere	0x14066d9af -> 0x140756690
+memory-sermon-topic	{s}	{s1}	speech-sphere	0x14066d9af -> 0x140756690
 memory-sermon-topic	{s}	{s1}	memory-person	0x14066da08 -> 0x140b92f10
 memory-performance-core	I told the story of {s}	我讲了{s1}的故事	memory-story	0x14066dd70..0x14066dd89
 memory-performance-core	I saw {s} tell the story of {s}	我听{s1}讲了{s2}的故事	memory-person,memory-story	0x14066dd9c..0x14066de59

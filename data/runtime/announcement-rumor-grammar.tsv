@@ -4,9 +4,9 @@ sentence	{s}	{s1}	rumor-event	0x140680970
 sentence	{s}, {s}	{s1}，{s2}	rumor-time,rumor-event	0x140680c15;0x140675670..0x140675907
 rumor-person	I	我		0x140680c6d
 rumor-person	me	我		0x140682519
-rumor-person	my {s} {s}	我的{s1}{s2}	$term,$person	0x140680cc2;0x14075a580;0x140b92f10
+rumor-person	my {s} {s}	我的{s1}{s2}	$term,speech-person	0x140680cc2;0x14075a580;0x140b92f10
 rumor-person	{s}	{s1}	$unit	0x140b92f10 via 0x140680970
-rumor-person	{s}	{s1}	$person	0x140b92f10 via 0x140680970
+rumor-person	{s}	{s1}	speech-person	0x140b92f10 via 0x140680970
 rumor-owner	my	我的		0x140680d5c
 rumor-owner	{s}'s	{s1}的	rumor-person	0x140680e24
 rumor-position	{s} of {s}	{s2}的{s1}	$term,$name	0x140682b83;0x140b92900
@@ -129,10 +129,10 @@ rumor-event	A creature of the night has our people cowering in fear.	一只夜�
 # Slave and Prisoner replace the occupation, whereas a visible curse title
 # takes precedence over that entire role selection. Empty personal names
 # retain the native "the" before whichever descriptor remains.
-rumor-identity	{s} the {s}	{s2}{s1}	$person,rumor-identity-descriptor	0x14068879f..0x140688dae; name plus independently constructed caste/role fields
+rumor-identity	{s} the {s}	{s2}{s1}	speech-person,rumor-identity-descriptor	0x14068879f..0x140688dae; name plus independently constructed caste/role fields
 rumor-identity	the {s}	{s1}	rumor-identity-descriptor	0x14068879f;0x1406887e2/0x140688927/0x140688986; empty name plus descriptor article
 rumor-identity	{s}	{s1}	$unit	0x14068879f..0x140688dae
-rumor-identity	{s}	{s1}	$person	0x14068879f..0x140688dae; omitted caste and profession 97/102
+rumor-identity	{s}	{s1}	speech-person	0x14068879f..0x140688dae; omitted caste and profession 97/102
 rumor-identity-descriptor	{s} {s}	{s1}{s2}	$creature,rumor-identity-role	0x1406887e2..0x1406888fa;0x140688927..0x140688d5f; different race then curse/occupation/office
 rumor-identity-descriptor	{s}	{s1}	$creature	0x1406887e2..0x1406888fa;0x14068896f..0x140688980; caste only with profession 97/102
 rumor-identity-descriptor	{s}	{s1}	rumor-identity-role	0x1406887d6..0x1406887dc;0x140688927..0x140688d5f; speaker and target share race
@@ -144,10 +144,10 @@ rumor-identity-role	{s}	{s1}	$term	0x14068891e..0x14068896a; visible curse title
 # The native append keeps its separator when a RAW caste, visible curse or
 # profession/office field is empty. Own the pre-period space in the complete
 # introduction, outside its nonempty identity capture.
-rumor-event	Seek this place if you wish to confront {s} the .	想对付{s1}，就去找这个地方。	$person	0x140688726;0x1406887e2/0x140688927/0x140688986..0x140688dae; empty descriptor after named target
-rumor-event	This insidious evil is {s} the .	这个阴险的恶徒就是{s1}。	$person	0x140688735;0x1406887e2/0x140688927/0x140688986..0x140688dae; empty descriptor after named target
-rumor-event	Seek this place if you hunt {s} the .	想猎杀{s1}，就去找这个地方。	$person	0x14068874e;0x1406887e2/0x140688927/0x140688986..0x140688dae; empty descriptor after named target
-rumor-event	The creature is {s} the .	这只生物就是{s1}。	$person	0x14068875d;0x1406887e2/0x140688927/0x140688986..0x140688dae; empty descriptor after named target
+rumor-event	Seek this place if you wish to confront {s} the .	想对付{s1}，就去找这个地方。	speech-person	0x140688726;0x1406887e2/0x140688927/0x140688986..0x140688dae; empty descriptor after named target
+rumor-event	This insidious evil is {s} the .	这个阴险的恶徒就是{s1}。	speech-person	0x140688735;0x1406887e2/0x140688927/0x140688986..0x140688dae; empty descriptor after named target
+rumor-event	Seek this place if you hunt {s} the .	想猎杀{s1}，就去找这个地方。	speech-person	0x14068874e;0x1406887e2/0x140688927/0x140688986..0x140688dae; empty descriptor after named target
+rumor-event	The creature is {s} the .	这只生物就是{s1}。	speech-person	0x14068875d;0x1406887e2/0x140688927/0x140688986..0x140688dae; empty descriptor after named target
 rumor-event	Seek this place if you wish to confront {s} .	想对付{s1}，就去找这个地方。	rumor-identity	0x140688726;0x140688937/0x14068898e..0x140688dae; caste followed by empty role
 rumor-event	This insidious evil is {s} .	这个阴险的恶徒就是{s1}。	rumor-identity	0x140688735;0x140688937/0x14068898e..0x140688dae; caste followed by empty role
 rumor-event	Seek this place if you hunt {s} .	想猎杀{s1}，就去找这个地方。	rumor-identity	0x14068874e;0x140688937/0x14068898e..0x140688dae; caste followed by empty role
@@ -168,7 +168,7 @@ rumor-event	Body corrupted beyond reckoning, he assumes a beastly form to terror
 rumor-event	Body corrupted beyond reckoning, she assumes a beastly form to terrorize us.	她的身体已经彻底腐化，还会变成野兽来吓唬我们。		0x140688e0e..0x140688ea3
 rumor-event	Body corrupted beyond reckoning, it assumes a beastly form to terrorize us.	它的身体已经彻底腐化，还会变成野兽来吓唬我们。		0x140688e0e..0x140688ea3
 rumor-event	Our people have been pestered by skulking villains.	一伙鬼鬼祟祟的恶徒一直在骚扰我们的族人。		0x1406890e5
-rumor-event	They have a {s} called {s} somewhere in {s}.	他们在{s3}的某处有一座名为{s2}的{s1}。	$term,$travel-site,$name	0x140689103..0x140689256; b93930 complete site field, b94a40 region field
+rumor-event	They have a {s} called {s} somewhere in {s}.	他们在{s3}的某处有一座名为{s2}的{s1}。	$term,$travel-site,conversation-conflict-place	0x140689103..0x140689256; b93930 complete site field, b94a40 region field
 rumor-event	They have a {s} called {s} somewhere around here.	他们在这附近的某处有一座名为{s2}的{s1}。	$term,$travel-site	0x140689103..0x140689498; b93930 complete site field
 rumor-event	A highly-organized military order is threatening our people.	一个组织严密的军事修会正威胁着我们的人民。		0x14068926a
 rumor-event	An organized military order have brought terror to our doorsteps.	一个组织严密的军事修会欺上门来，闹得人心惶惶。		0x140689281
@@ -181,28 +181,54 @@ rumor-event	A scheming criminal gang has eluded capture for far too long.	有个
 rumor-event	A lowly group of outcasts have perpetrated enough crimes against our community to gain notice.	一群落魄的流亡者在我们的聚落作恶，犯下的罪行已让人无法忽视。		0x14068931f
 rumor-event	There are foul goings-on here.	这里有人在干见不得人的勾当。		0x14068934c..0x140689467
 rumor-event	There are foul goings-on over at the {s} of {s}.	{s2}的{s1}那里有人在干见不得人的勾当。	$term,$travel-site	0x14068934c..0x140689467; b93930 complete site field
-rumor-event	A bandit gang calling itself {s} has been harassing people right here on the streets of {s}!	有伙土匪自称{s1}，就在{s2}这里的街上骚扰百姓！	$name,$travel-site	0x1406895be..0x1406896c9
-rumor-event	A bandit gang calling itself {s}, led by {s}, has been harassing people right here on the streets of {s}!	有伙土匪自称{s1}，头目是{s2}，就在{s3}这里的街上骚扰百姓！	$name,rumor-person,$travel-site	0x1406895be..0x1406896c9
-rumor-event	A bandit gang calling itself {s} has been harassing people over in {s}.	有伙土匪自称{s1}，一直在{s2}那边骚扰百姓。	$name,$travel-site	0x1406895be..0x1406896c9
-rumor-event	A bandit gang calling itself {s}, led by {s}, has been harassing people over in {s}.	有伙土匪自称{s1}，头目是{s2}，一直在{s3}那边骚扰百姓。	$name,rumor-person,$travel-site	0x1406895be..0x1406896c9
+rumor-event	A bandit gang calling itself {s} has been harassing people right here on the streets of {s}!	有伙土匪自称{s1}，就在{s2}这里的街上骚扰百姓！	conversation-conflict-entity,$travel-site	0x1406895be..0x1406896c9
+rumor-event	A bandit gang calling itself {s}, led by {s}, has been harassing people right here on the streets of {s}!	有伙土匪自称{s1}，头目是{s2}，就在{s3}这里的街上骚扰百姓！	conversation-conflict-entity,rumor-person,$travel-site	0x1406895be..0x1406896c9
+rumor-event	A bandit gang calling itself {s} has been harassing people over in {s}.	有伙土匪自称{s1}，一直在{s2}那边骚扰百姓。	conversation-conflict-entity,$travel-site	0x1406895be..0x1406896c9
+rumor-event	A bandit gang calling itself {s}, led by {s}, has been harassing people over in {s}.	有伙土匪自称{s1}，头目是{s2}，一直在{s3}那边骚扰百姓。	conversation-conflict-entity,rumor-person,$travel-site	0x1406895be..0x1406896c9
 rumor-event	The army of {s} is marching here!	{s1}的军队正向这里进军！	rumor-person	0x1406897af..0x140689887
-rumor-event	The army of {s} is marching here!	{s1}的军队正向这里进军！	$name	0x1406897af..0x140689887
+rumor-event	The army of {s} is marching here!	{s1}的军队正向这里进军！	conversation-conflict-entity	0x1406897af..0x140689887
 rumor-event	The army of {s} is marching on {s}!	{s1}的军队正向{s2}进军！	rumor-person,$travel-site	0x1406897af..0x140689887
-rumor-event	The army of {s} is marching on {s}!	{s1}的军队正向{s2}进军！	$name,$travel-site	0x1406897af..0x140689887
+rumor-event	The army of {s} is marching on {s}!	{s1}的军队正向{s2}进军！	conversation-conflict-entity,$travel-site	0x1406897af..0x140689887
+
+# Complete quest suppliers retain called/of/in and punctuation when an
+# existing site's or entity's EnglishName is empty. The group supplier also
+# has an ordinary unnamed-site branch which omits called altogether.
+rumor-event	They have a {s} somewhere in {s}.	他们在{s2}的某处有一座{s1}。	$term,conversation-conflict-place	PE 0x14068915c..0x140689256; language_name.has_name false skips called/name, not the site type or region
+rumor-event	They have a {s} somewhere around here.	他们在这附近的某处有一座{s1}。	$term	PE 0x14068915c..0x140689498; unnamed-site branch and no usable region
+rumor-event	They have a {s} somewhere in .	他们在某处有一座{s1}。	$term	PE 0x14068915c/0x140689251 ->b94a40; omitted called branch and empty region name
+rumor-event	They have a {s} called {s} somewhere in .	他们在某处有一座名为{s2}的{s1}。	$term,$travel-site	PE 0x140689184/0x140689251; named site, empty region EnglishName
+rumor-event	They have a {s} called somewhere in {s}.	他们在{s2}的某处有一座未具名的{s1}。	$term,conversation-conflict-place	PE 0x140689168/0x140689184; has_name true with empty EnglishName retains called
+rumor-event	They have a {s} called somewhere around here.	他们在这附近的某处有一座未具名的{s1}。	$term	PE 0x140689168/0x140689184/0x14068947e; empty site name and no usable region
+rumor-event	They have a {s} called somewhere in .	他们在某处有一座未具名的{s1}。	$term	PE 0x140689184/0x140689251; empty site and region EnglishName
+rumor-event	There are foul goings-on over at the {s} of .	一处未具名地点的{s1}那里有人在干见不得人的勾当。	$term	PE 0x140689402..0x140689467 ->b93930; present site with empty EnglishName retains of
+rumor-event	{s} has been harassing people {s}	{s1}一直{s2}骚扰百姓。	rumor-bandit-subject,rumor-bandit-location	PE 0x1406895be..0x1406896e4; independent entity/leader and current-site/location branches
+rumor-bandit-subject	A bandit gang calling itself {s}, led by {s},	一伙自称{s1}、由{s2}率领的土匪	conversation-conflict-entity,rumor-person	PE 0x1406895be/0x1406895d6/0x140689622/0x14068962a; complete entity and optional historical leader
+rumor-bandit-subject	A bandit gang calling itself {s}	一伙自称{s1}的土匪	conversation-conflict-entity	PE 0x1406895be/0x1406895d6/0x1406895e4; no historical leader
+rumor-bandit-subject	A bandit gang calling itself , led by {s},	一伙未具名、由{s1}率领的土匪	rumor-person	PE 0x1406895d6 ->b92900 empty EnglishName, optional historical leader at0x140689622
+rumor-bandit-subject	A bandit gang calling itself	一伙未具名的土匪		PE 0x1406895d6 ->b92900 empty EnglishName and 0x1406895e4 absent leader
+rumor-bandit-location	right here on the streets of {s}!	在{s1}这里的街上	$travel-site	PE 0x140689675/0x14068968d/0x140689692; current-site branch includes its own terminal exclamation
+rumor-bandit-location	right here on the streets of !	在这里的街上		PE 0x14068968d ->b93930; present site with empty EnglishName
+rumor-bandit-location	over in {s}.	在{s1}那边	$travel-site	PE 0x1406896a1/0x1406896b9/0x1406896be; remote-site branch includes its own terminal period
+rumor-bandit-location	over in .	在别处		PE 0x1406896b9 ->b93930; present site with empty EnglishName
+rumor-event	The army of is marching here!	一支所属方未具名的军队正向这里进军！		PE 0x140689808 ->b92900 empty EnglishName and0x140689833 current-site branch
+rumor-event	The army of {s} is marching on !	{s1}的军队正向一处未具名地点进军！	rumor-person	PE 0x1406897f8/0x140689860; historical army owner, empty target-site EnglishName
+rumor-event	The army of {s} is marching on !	{s1}的军队正向一处未具名地点进军！	conversation-conflict-entity	PE 0x140689808/0x140689860; entity army owner, empty target-site EnglishName
+rumor-event	The army of is marching on {s}!	一支所属方未具名的军队正向{s1}进军！	$travel-site	PE 0x140689808 ->b92900 empty EnglishName, remote target-site branch at0x140689860
+rumor-event	The army of is marching on !	一支所属方未具名的军队正向一处未具名地点进军！		PE 0x140689808/0x140689860; empty entity and target-site EnglishName
 
 # Delegated threat history: Steam 0x14065bfb0..0x14065e928 and classic
 # 0x1406599d0..0x14065c348. These clauses are appended to the same speech
 # record as the threat and location above. Full native bodies, literal
 # operands and branch targets are in data/extracted/adventure-threat-rumors.
 sentence	Knowing no mercy, {s} {s}!	{s1}毫不留情，{s2}！	threat-name,threat-crimes	0x14065c4ea..0x14065cef2
-threat-name	{s}	{s1}	$person	0x14065c4fa..0x14065c65b; native English name 0x140a946e0 or translated native name string
+threat-name	{s}	{s1}	speech-person	0x14065c4fa..0x14065c65b; native English name 0x140a946e0 or translated native name string
 threat-name	{s}	{s1}	$name	0x14065c4fa..0x14065c65b; unnamed-language English generated name
 threat-crimes	{s}, {s}	{s1}、{s2}	threat-crime,threat-crimes	0x14065c7bf/0x14065c9dc/0x14065cc3f/0x14065ceca; three or four crime categories
 threat-crimes	{s} and {s}	{s1}，还{s2}	threat-crime,threat-crime	0x14065c7d6/0x14065c9f3/0x14065cc56/0x14065cedd; final two crime categories
 threat-crimes	{s}	{s1}	threat-crime	0x14065c670..0x14065ceec; a single crime category
 threat-crime	devoured {s}	吞食了{s1}	threat-livestock	0x14065c6af..0x14065c798; single devoured creature
 threat-crime	devoured our livestock	吞食了我们的牲畜		0x14065c79e; more than one devoured creature
-threat-livestock	{s}	{s1}	$person	0x14065c6f1; identified historical figure, English name from 0x140a946e0
+threat-livestock	{s}	{s1}	speech-person	0x14065c6f1; identified historical figure, English name from 0x140a946e0
 threat-livestock	a {s}	一只{s1}	$creature	0x14065c71b..0x14065c783; unnamed victim, caste name from 0x140aa3bd0
 threat-crime	stole {s}	偷走了{s1}	threat-stolen-item	0x14065c830..0x14065c9bb; single item or named artifact
 threat-crime	stole our treasures	偷走了我们的宝物		0x14065c9c1; more than one stolen item
@@ -235,8 +261,8 @@ threat-fiend	vile	卑劣的		0x14065d078
 threat-fiend	bloodsucking	吸血的		0x14065d07f; vampire flags select this wording
 threat-killing	murdered {s}	杀害了{s1}	threat-victim	0x14065d10a..0x14065d38e; a single identified victim
 threat-killing	even murdered {s}	甚至杀害了{s1}	threat-victim	0x14065d0f5..0x14065d38e; other crime categories also present
-threat-victim	my {s} {s}	我的{s1}{s2}	$kinship,$person	0x14065d268..0x14065d2e9; victim is related to the speaker
-threat-victim	{s}	{s1}	$person	0x14065d2b2..0x14065d2e9; complete native victim name from 0x140a946e0
+threat-victim	my {s} {s}	我的{s1}{s2}	$kinship,speech-person	0x14065d268..0x14065d2e9; victim is related to the speaker
+threat-victim	{s}	{s1}	speech-person	0x14065d2b2..0x14065d2e9; complete native victim name from 0x140a946e0
 threat-victim	{s}	{s1}	$kinship	0x14065d268..0x14065d2e9; related unnamed victim retains the native family buffer, resolved from actual HF links
 threat-killing	has killed {s} in {s} lust for murder	{s2}嗜杀成性，已经杀害了{s1}	threat-kill-count,threat-possessive	0x14065d3d2..0x14065d5be
 threat-killing	has even killed {s} in {s} lust for murder	{s2}嗜杀成性，甚至杀害了{s1}	threat-kill-count,threat-possessive	0x14065d3e9..0x14065d5be
@@ -252,7 +278,7 @@ threat-family-list	{s} and {s}	{s1}和{s2}	threat-family-group,threat-family-gro
 threat-family-list	{s}	{s1}	threat-family-group	0x14065d902..0x14065d9c5; a single relationship group
 threat-family-group	{s}	{s1}	$kinship	0x14065d919..0x14065d97e; actual victim HF links use the existing social kinship resolver
 # Every native relationship enum and its plural is recorded in family-relations.tsv.
-sentence	[{s} pauses to regain {s} composure.]	【{s1}稍作停顿，{s2}正努力恢复镇定。】	$person,threat-possessive	0x14065db79..0x14065dd22; complete bracketed action, period precedes closing bracket
+sentence	[{s} pauses to regain {s} composure.]	【{s1}稍作停顿，{s2}正努力恢复镇定。】	speech-person,threat-possessive	0x14065db79..0x14065dd22; complete bracketed action, period precedes closing bracket
 sentence	[ pauses to regain {s} composure.]	【{s1}稍作停顿，努力恢复镇定。】	threat-possessive	0x14065db88..0x14065dd22 ->0x140a94030; speaker name has_name=false
 sentence	It pains me all the more, for the foul villain is my own {s}.	更让我痛心的是，这个恶徒竟是我的{s1}。	$kinship	0x14065dfa4..0x14065e0da; relationship, no curse suffix
 sentence	It pains me all the more, for the foul villain was once my own {s}.	更让我痛心的是，这个恶徒曾是我的{s1}。	$kinship	0x14065df96..0x14065e0da; relationship, no curse suffix
@@ -267,7 +293,7 @@ sentence	Beware! It it said that only {s} harms the creature.	当心！据说只
 sentence	Other arms may not cut so deeply.	其他武器可能伤不了它这么深。		0x14065e7d5
 threat-material	unknown material	未知材料		0x14065e77c; native invalid material type
 threat-material	{s}	{s1}	$memorial-material	0x14065e548..0x14065e77c; complete material name with optional historical-figure possessive
-threat-material	{s}'s {s}	{s1}的{s2}	$person,threat-material	0x14065e655..0x14065e77c; named historical-figure material owner, including unknown-material fallback
+threat-material	{s}'s {s}	{s1}的{s2}	speech-person,threat-material	0x14065e655..0x14065e77c; named historical-figure material owner, including unknown-material fallback
 threat-material	's {s}	无名者的{s1}	threat-material	0x14065e655..0x14065e77c; existing owner with empty native name still appends possessive
 
 # Native dangling fields and empty crime slots are actual default branches,

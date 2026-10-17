@@ -96,9 +96,16 @@ static std::vector<NativeAnnouncementParagraph> native_owned_announcement_paragr
 
 static std::vector<NativeAnnouncementParagraph> native_adventure_announcement_paragraphs() {
     uint32_t flags = 0;
-    NativeBorrowedVector<uintptr_t> native;
+    NativeBorrowedVector<uintptr_t> reports, native;
+    // PE 8020f2..80210d / ELF 11b2e6d..11b2e82 hide the box only
+    // for temp_flag bit 0 or an empty recent-report vector. Bit 0x10 is
+    // the wrap producer's "rebuilt rows" flag, not visibility: 8a40fd
+    // clears it before the no-new-timed-report branch retains these same
+    // adv_announcementst rows. Their complete parents still own every draw.
     if (!native_history_copy(native_history_global(0x23d14f0 + 0x116720), flags) ||
-        !(flags & 0x10) ||
+        (flags & 1) ||
+        !native_history_read_vector(native_history_global(0x23d14f0 + 0x112378), reports) ||
+        !reports.size() ||
         !native_history_read_vector(native_history_global(0x23d14f0 + 0x116730), native))
         return {};
     return native_owned_announcement_paragraphs(native, true);

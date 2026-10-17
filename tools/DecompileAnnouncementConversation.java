@@ -55,22 +55,41 @@ public class DecompileAnnouncementConversation extends GhidraScript {
                     ClearOptions.ClearType.DEFAULT_REFERENCES})
                 clear.setShouldClear(type, true);
             new ClearCmd(body, clear).applyTo(currentProgram, monitor);
-            new DisassembleCommand(start, body, true).applyTo(currentProgram, monitor);
-            Address cursor = start;
-            while (cursor.compareTo(end) <= 0) {
-                Instruction instruction = currentProgram.getListing().getInstructionAt(cursor);
+            // PE unwind owners can end in inline switch/remap data. Decode
+            // only the actual instructions retained by the native extractor;
+            // a linear sweep invents code in those tables, particularly after
+            // a throwing string helper whose no-return type is not imported.
+            AddressSet instructions = new AddressSet();
+            for (String line : Files.readAllLines(
+                    manifest.resolveSibling(prefix + "-" + fields[1] + ".asm"))) {
+                if (!line.startsWith("0x")) continue;
+                int colon = line.indexOf(':');
+                if (colon < 3) continue;
+                // Objdump can retain undecodable bytes of an embedded table
+                // alongside a chained unwind range; these are not opcodes.
+                if (line.contains("(bad)") || line.contains(".byte")) continue;
+                Address cursor = toAddr(line.substring(2, colon));
+                Instruction instruction = getInstructionAt(cursor);
                 if (instruction == null) {
+                    Instruction overlap = getInstructionContaining(cursor);
+                    if (overlap != null)
+                        clearListing(overlap.getMinAddress(), overlap.getMaxAddress());
                     new DisassembleCommand(cursor, body, false).applyTo(currentProgram, monitor);
-                    instruction = currentProgram.getListing().getInstructionAt(cursor);
+                    instruction = getInstructionAt(cursor);
                 }
-                cursor = cursor.add(instruction == null ? 1 : instruction.getLength());
+                // Remaining undecodable entries are retained verbatim in
+                // the assembly source. Do not turn their embedded data into
+                // a fabricated instruction or extend a neighboring opcode.
+                if (instruction == null) continue;
+                instructions.add(cursor, instruction.getMaxAddress());
             }
             Function function = getFunctionAt(start);
             if (function == null)
                 function = currentProgram.getFunctionManager().createFunction(
-                    "dialogue_source_" + fields[1].replace('-', '_'), start, body,
+                    "dialogue_source_" + fields[1].replace('-', '_'), start, instructions,
                     SourceType.USER_DEFINED);
-            else function.setBody(body);
+            else function.setBody(instructions);
+            if (fields[1].equals("string-length-error")) function.setNoReturn(true);
         }
         List<String> switches = Files.readAllLines(manifest.resolveSibling(prefix + "-switches.tsv"));
         Map<Address, ArrayList<Address>> destinations = new LinkedHashMap<>();
@@ -123,7 +142,7 @@ public class DecompileAnnouncementConversation extends GhidraScript {
                     throw new IOException("Native decompilation failed at " + fields[2] + ": " +
                         result.getErrorMessage());
                 output.println(result.getDecompiledFunction().getC());
-                Files.writeString(manifest.resolveSibling("elf-" + fields[1] + ".c"),
+                Files.writeString(manifest.resolveSibling(prefix + "-" + fields[1] + ".c"),
                     result.getDecompiledFunction().getC(), StandardCharsets.UTF_8);
                 output.flush();
                 println("Decompiled " + fields[1] + " at " + fields[2]);

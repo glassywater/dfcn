@@ -76,7 +76,35 @@ static bool announcement_combat_field_edges_fit(
     // require their original nonempty field boundaries.
     return scope == "head" || scope == "attack" || scope == "damage" ||
         scope == "damage-list" || scope == "layer" ||
-        scope == "work-reference" || scope == "work-reference-list";
+        scope == "work-reference" || scope == "work-reference-list" ||
+        // The slain-foe builder always appends " of " after a held office,
+        // even when the entity's language_name is empty. The whole victim
+        // field owns that final space; its concrete empty-name grammar is
+        // resolved after trimming, without relaxing any person/office leaf.
+        scope == "boast-victim";
+}
+
+static bool spoken_identity_has_prose_boundary(std::string_view value) {
+    // A speaker's nickname is an authored field, including its punctuation.
+    // The enclosing person/role must still end before the next utterance;
+    // otherwise the permissive authored-unit fallback can swallow a complete
+    // reaction after the incident that precedes it.
+    const size_t nickname = value.find('`');
+    const size_t nickname_end = value.rfind('\'');
+    const bool quoted_identity = value.size() >= 2 &&
+        value.front() == '"' && value.back() == '"' &&
+        std::count(value.begin(), value.end(), '"') == 2;
+    if (quoted_identity) return false;
+    for (size_t at = 0; at < value.size(); ++at) {
+        if (nickname != std::string_view::npos && nickname_end != std::string_view::npos &&
+                nickname_end > nickname && at == nickname) {
+            at = nickname_end;
+            continue;
+        }
+        if (std::string_view(".!?:[]\r\n").find(value[at]) != std::string_view::npos)
+            return true;
+    }
+    return false;
 }
 
 std::optional<std::string> Overlay::translate_announcement_combat(
@@ -85,6 +113,8 @@ std::optional<std::string> Overlay::translate_announcement_combat(
     const auto parse = [&]() -> std::optional<std::string> {
     TranslationWorkFrame work_frame("announcement grammar", raw_source);
     if (announcement_combat_rules_.empty()) return std::nullopt;
+    const bool spoken_scope = initial_scope == "spoken-sentence" ||
+        initial_scope == "spoken-greeting" || initial_scope == "adventure-announcement";
     // Match native prose in a canonical view, but give typed leaves their
     // original bytes. Memorial death clauses can contain doubled spaces while
     // an authored nickname in the same inscription owns its exact whitespace.
@@ -272,13 +302,23 @@ std::optional<std::string> Overlay::translate_announcement_combat(
             // label into a proved unit field. Resolve its owner and native
             // body suffix together before treating it as a bare person name.
             if (!result) result = translate_native_animation_label(input);
+            if (!result && spoken_scope && spoken_identity_has_prose_boundary(input))
+                return finish(std::nullopt);
             if (!result) result = translate_ui_message_capture(input, true);
             // The complete native production establishes this unit slot in
             // combat and adventure records too. b6ca30 may return an authored
             // name alone; it need not exist in the generated-name lexicon.
             // Resolve known identities first, then preserve the owned name
             // through the same typed path used by fortress announcements.
-            if (!result) result = translate_unit_identity(input, true);
+            // Speech first resolves the whole native body, then partitions
+            // appended complete sentences. An unbound authored-name fallback
+            // here would preserve an arbitrary body prefix or a later reaction
+            // as if it were a unit. Native identity bindings above still own
+            // real authored captions; unbound personal names use the speech
+            // producer's complete EnglishName/FIRST_NAME grammar instead.
+            if (!result && spoken_scope)
+                result = translate_announcement_combat(input, "$speech-person");
+            if (!result && !spoken_scope) result = translate_unit_identity(input, true);
             return finish(std::move(result));
         }
         if (scope == "$historical-actor") {
@@ -288,6 +328,8 @@ std::optional<std::string> Overlay::translate_announcement_combat(
             // live unit's profession caption or a bare generated name.
             if (const auto identity = native_unit_identity_source_target(input))
                 return finish(identity);
+            if (spoken_scope && spoken_identity_has_prose_boundary(input))
+                return finish(std::nullopt);
             auto result = translate_legends_actor(input, 0, true);
             if (translation_complete_with_native_nicknames(result, input))
                 return finish(std::move(result));
@@ -588,8 +630,47 @@ std::optional<std::string> Overlay::translate_announcement_combat(
         if (scope == "$term") return finish(translate_ui_message_capture(input, false));
         if (scope == "$person") {
             auto result = native_announcement_unit_identity_target(raw_source, input);
+            if (!result && spoken_scope && spoken_identity_has_prose_boundary(input))
+                return finish(std::nullopt);
             if (!result) result = translate_legends_name(input, true);
+            if (!result && spoken_scope)
+                result = translate_announcement_combat(input, "$speech-person");
             return finish(std::move(result));
+        }
+        if (scope == "$speech-person" || scope == "$speech-first-name") {
+            // The decompiled SPEAKER/AUDIENCE/HF parameter producers own
+            // these personal fields. FIRST_NAME can come from UTTERANCES,
+            // without a native WORD mask; TRANS_NAME can pair that same
+            // given name with a complete English surname/title. Keep this
+            // proof scoped to speech rather than widening ordinary names.
+            auto result = native_announcement_unit_identity_target(raw_source, input);
+            if (!result) result = native_unit_identity_source_target(input);
+            if (!translation_complete_with_native_nicknames(result, input))
+                result = translate_legends_name(input, true);
+            if (translation_complete_with_native_nicknames(result, input))
+                return finish(std::move(result));
+            // FIRST_NAME is copied directly from the native string, so an
+            // authored Chinese name needs neither Latin letters nor WORD
+            // roots. Do not let this name span cross a prose sentence: the
+            // greeting may append several independently complete messages.
+            if (scope == "$speech-first-name" && contains_cjk_utf8(input)) {
+                if (input.find_first_of(".!?,;:\"`[]()\r\n") != std::string_view::npos)
+                    return finish(std::nullopt);
+                return finish(native_text_to_utf8(input));
+            }
+            const auto letter = [](unsigned char ch) {
+                return (ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z') ||
+                    is_cp437_latin_letter_byte(ch);
+            };
+            const auto given = input.substr(0, input.find(' '));
+            if (given.empty() || !letter(static_cast<unsigned char>(given.front())) ||
+                    !std::all_of(given.begin(), given.end(), [&](unsigned char ch) {
+                        return letter(ch) || ch == '-' || ch == '\'';
+                    }) || (scope == "$speech-first-name" && given.size() != input.size()))
+                return finish(std::nullopt);
+            result = translate_english_character_name(input, given);
+            return finish(translation_complete_with_native_nicknames(result, input)
+                ? std::move(result) : std::nullopt);
         }
         if (scope == "$memory-entity") {
             // The incident-memory name/refusal tail calls b92900, whose
@@ -599,6 +680,25 @@ std::optional<std::string> Overlay::translate_announcement_combat(
             return finish(translate_legends_name(input, false, true));
         }
         if (scope == "$name") return finish(translate_legends_name(input, false));
+        if (scope == "$visitor-place-name") {
+            // A mental-picture element can name a site or the world. The
+            // general name renderer may preserve authored CJK verbatim; a
+            // successful result there does not prove that a mixed-language
+            // greeting prefix is one name. Only a complete name translation
+            // may finish this branch, leaving personal references to their
+            // dedicated alternative and compound speech to its partitioner.
+            // Keep authored CJK place names, including their Latin/digit
+            // components, when the field contains no prose delimiters. A
+            // greeting prefix necessarily includes its complete sentences.
+            if (contains_cjk_utf8(input) &&
+                    input.find_first_of(".!?,;:\"`[]()\r\n") == std::string_view::npos)
+                return finish(native_text_to_utf8(input));
+            auto result = translate_legends_name(input, false);
+            return finish(translation_complete_with_native_nicknames(result, input)
+                ? std::move(result) : std::nullopt);
+        }
+        if (scope == "$native-site-name") return finish(translate_legends_place(input, false));
+        if (scope == "$announcement-site-type") return finish(translate_world_site_type(input));
         if (scope == "$event") return finish(translate_legends_event(input, 0));
         if (scope == "$number") return finish(translate_announcement_number(input));
         if (scope == "$kinship") return finish(native_announcement_kinship_target(input));

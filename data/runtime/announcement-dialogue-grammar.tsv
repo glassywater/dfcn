@@ -87,10 +87,10 @@ dialogue-family	half-sibling	同父异母或同母异父的兄弟姐妹		0x14075
 dialogue-family	no relationship	无亲属关系		0x14075a580..0x14075ab7c;native FAMILY_RELATIONSHIP enum;existing terms retained where present
 dialogue-family-indef	a {s}	一位{s1}	dialogue-family	0x14075a5f6
 dialogue-family-indef	an {s}	一位{s1}	dialogue-family	0x14075a5e7
-sentence	I have {s} named {s}.	我有{s1}，名叫{s2}。	dialogue-family-indef,$person	0x14068c230/0x14068c9b0 RAW family sentence via0x140685d00
-sentence	I had {s} named {s}.	我曾有{s1}，名叫{s2}。	dialogue-family-indef,$person	0x14068c230/0x14068c9b0 RAW family sentence via0x140685d00
-sentence	My {s} is named {s}.	我的{s1}名叫{s2}。	dialogue-family,$person	0x14068c230/0x14068c9b0 RAW family sentence via0x140685d00
-sentence	My {s} was named {s}.	我已故的{s1}名叫{s2}。	dialogue-family,$person	0x14068c230/0x14068c9b0 RAW family sentence via0x140685d00
+sentence	I have {s} named {s}.	我有{s1}，名叫{s2}。	dialogue-family-indef,speech-person	0x14068c230/0x14068c9b0 RAW family sentence via0x140685d00; HIST_FIG TRANS_NAME ->0x140bb13e0, nameless fallback at0x140bb182f
+sentence	I had {s} named {s}.	我曾有{s1}，名叫{s2}。	dialogue-family-indef,speech-person	0x14068c230/0x14068c9b0 RAW family sentence via0x140685d00; HIST_FIG TRANS_NAME ->0x140bb13e0, nameless fallback at0x140bb182f
+sentence	My {s} is named {s}.	我的{s1}名叫{s2}。	dialogue-family,speech-person	0x14068c230/0x14068c9b0 RAW family sentence via0x140685d00; HIST_FIG TRANS_NAME ->0x140bb13e0, nameless fallback at0x140bb182f
+sentence	My {s} was named {s}.	我已故的{s1}名叫{s2}。	dialogue-family,speech-person	0x14068c230/0x14068c9b0 RAW family sentence via0x140685d00; HIST_FIG TRANS_NAME ->0x140bb13e0, nameless fallback at0x140bb182f
 sentence	He is also my {s}.	他也是我的{s1}。	dialogue-family	0x14068ce40..0x14068cf86 RAW ADDITIONAL/_DEAD
 sentence	He was also my {s}.	他也是我已故的{s1}。	dialogue-family	0x14068ce40..0x14068cf86 RAW ADDITIONAL/_DEAD
 sentence	She is also my {s}.	她也是我的{s1}。	dialogue-family	0x14068ce40..0x14068cf86 RAW ADDITIONAL/_DEAD
@@ -101,7 +101,8 @@ sentence	I have taken down {s} {s} while stalking {s}.	我在{s3}潜行猎杀过
 sentence	I'm returning to my home in {s} to move into my new home with my {s} {s}.	我正返回{s1}的家，与我的{s2}{s3}搬入我们的新家。	$name,dialogue-family,$unit	0x1404c8f75..0x1404ca77a ->0x140684a10;date 0x140b92640;site 0x140b93930;building 0x140b94090;artifact 0x140b94400;item description 0x140c65450;histfig 0x140b92f10
 sentence	I'm going to {s} to move into my new home with my {s} {s}.	我正前往{s1}，与我的{s2}{s3}搬入我们的新家。	$name,dialogue-family,$unit	0x1404c8f75..0x1404ca77a ->0x140684a10;date 0x140b92640;site 0x140b93930;building 0x140b94090;artifact 0x140b94400;item description 0x140c65450;histfig 0x140b92f10
 sentence	{s} {s}.	{s1}，{s2}。	rumor-time,dialogue-battle	0x140675910..0x14067667c;NPC battle account via0x14049cb1a/0x1404af702;date0x140675670;person0x140a946e0;race0x140b94ed0
-sentence	{s} {s} in {s}.	{s1}，在{s3}，{s2}。	rumor-time,dialogue-battle,$name	0x140675910..0x14067667c;NPC battle account via0x14049cb1a/0x1404af702;date0x140675670;person0x140a946e0;race0x140b94ed0;0x14067624f/0x1406765d3 site/region/underground;omitcurrent-site
+sentence	{s} {s} in {s}.	{s1}，在{s3}，{s2}。	rumor-time,dialogue-battle,conversation-conflict-place	0x140675910..0x14067667c;NPC battle account via0x14049cb1a/0x1404af702;date0x140675670;person0x140a946e0;race0x140b94ed0;0x14067624f/0x1406765d3 site/region/underground;omitcurrent-site
+sentence	{s} {s} in .	{s1}，在某处，{s2}。	rumor-time,dialogue-battle	PE 0x14067624f/0x1406765d3 ->b93930/b94a40/b94940; present site/region with empty EnglishName or suppressed/invalid underground name retains native in and period
 dialogue-battle	{s} attacked {s}	{s1}袭击了{s2}	dialogue-battle-attacker,dialogue-battle-target	0x140675910..0x14067667c;NPC battle account via0x14049cb1a/0x1404af702;date0x140675670;person0x140a946e0;race0x140b94ed0;0x140675a27..0x140675d7b
 dialogue-battle	I slew {s}	我杀死了{s1}	dialogue-battle-slain-list	0x140675910..0x14067667c;NPC battle account via0x14049cb1a/0x1404af702;date0x140675670;person0x140a946e0;race0x140b94ed0;0x1406762c0..0x1406765ce
 dialogue-battle	many died	许多人丧生		0x140675910..0x14067667c;NPC battle account via0x14049cb1a/0x1404af702;date0x140675670;person0x140a946e0;race0x140b94ed0;0x1406762a9
@@ -109,21 +110,28 @@ dialogue-battle	{s}	{s1}	dialogue-battle-deaths	0x140675910..0x14067667c;NPC bat
 dialogue-battle-attacker	I	我		0x140675910..0x14067667c;NPC battle account via0x14049cb1a/0x1404af702;date0x140675670;person0x140a946e0;race0x140b94ed0
 dialogue-battle-target	me	我		0x140675910..0x14067667c;NPC battle account via0x14049cb1a/0x1404af702;date0x140675670;person0x140a946e0;race0x140b94ed0
 dialogue-battle-person	somebody	某人		0x140675910..0x14067667c;NPC battle account via0x14049cb1a/0x1404af702;date0x140675670;person0x140a946e0;race0x140b94ed0
-dialogue-battle-person	{s}	{s1}	$person	0x140675910..0x14067667c;NPC battle account via0x14049cb1a/0x1404af702;date0x140675670;person0x140a946e0;race0x140b94ed0
+dialogue-battle-person	{s}	{s1}	speech-person	0x140675910..0x14067667c;NPC battle account via0x14049cb1a/0x1404af702;date0x140675670;person0x140a946e0;race0x140b94ed0;EnglishName retains UTTERANCES given names without a WORD mask
 dialogue-battle-attacker	{s}	{s1}	dialogue-battle-person	0x140675910..0x14067667c;NPC battle account via0x14049cb1a/0x1404af702;date0x140675670;person0x140a946e0;race0x140b94ed0
 dialogue-battle-attacker	a {s}	一只{s1}	$creature	0x140675910..0x14067667c;NPC battle account via0x14049cb1a/0x1404af702;date0x140675670;person0x140a946e0;race0x140b94ed0
-dialogue-battle-attacker	a {s} of {s}	{s2}的一只{s1}	$creature,$name	0x140675910..0x14067667c;NPC battle account via0x14049cb1a/0x1404af702;date0x140675670;person0x140a946e0;race0x140b94ed0
-dialogue-battle-attacker	the forces of {s}	{s1}的部队	$name	0x140675910..0x14067667c;NPC battle account via0x14049cb1a/0x1404af702;date0x140675670;person0x140a946e0;race0x140b94ed0
+dialogue-battle-attacker	a {s} of {s}	{s2}的一只{s1}	$creature,conversation-conflict-entity	0x140675910..0x14067667c;NPC battle account via0x14049cb1a/0x1404af702;date0x140675670;person0x140a946e0;race0x140b94ed0
+dialogue-battle-attacker	the forces of {s}	{s1}的部队	conversation-conflict-entity	0x140675910..0x14067667c;NPC battle account via0x14049cb1a/0x1404af702;date0x140675670;person0x140a946e0;race0x140b94ed0
+dialogue-battle-attacker	a {s} of	未具名势力的一只{s1}	$creature	PE 0x140675b80 ->b92900; a present entity with empty EnglishName retains of
+dialogue-battle-attacker	the forces of	未具名势力的部队		PE 0x140675b80 ->b92900; a present entity with empty EnglishName retains forces of
 dialogue-battle-target	{s}	{s1}	dialogue-battle-person	0x140675910..0x14067667c;NPC battle account via0x14049cb1a/0x1404af702;date0x140675670;person0x140a946e0;race0x140b94ed0
 dialogue-battle-target	a {s}	一只{s1}	$creature	0x140675910..0x14067667c;NPC battle account via0x14049cb1a/0x1404af702;date0x140675670;person0x140a946e0;race0x140b94ed0
-dialogue-battle-target	a {s} of {s}	{s2}的一只{s1}	$creature,$name	0x140675910..0x14067667c;NPC battle account via0x14049cb1a/0x1404af702;date0x140675670;person0x140a946e0;race0x140b94ed0
-dialogue-battle-target	the forces of {s}	{s1}的部队	$name	0x140675910..0x14067667c;NPC battle account via0x14049cb1a/0x1404af702;date0x140675670;person0x140a946e0;race0x140b94ed0
+dialogue-battle-target	a {s} of {s}	{s2}的一只{s1}	$creature,conversation-conflict-entity	0x140675910..0x14067667c;NPC battle account via0x14049cb1a/0x1404af702;date0x140675670;person0x140a946e0;race0x140b94ed0
+dialogue-battle-target	the forces of {s}	{s1}的部队	conversation-conflict-entity	0x140675910..0x14067667c;NPC battle account via0x14049cb1a/0x1404af702;date0x140675670;person0x140a946e0;race0x140b94ed0
+dialogue-battle-target	a {s} of	未具名势力的一只{s1}	$creature	PE 0x140675d5f ->b92900; a present entity with empty EnglishName retains of
+dialogue-battle-target	the forces of	未具名势力的部队		PE 0x140675d5f ->b92900; a present entity with empty EnglishName retains forces of
 dialogue-battle-group	a creature	一只生物		0x140675910..0x14067667c;NPC battle account via0x14049cb1a/0x1404af702;date0x140675670;person0x140a946e0;race0x140b94ed0;0x14067613a/0x1406764c1
 dialogue-battle-group	creatures	一些生物		0x140675910..0x14067667c;NPC battle account via0x14049cb1a/0x1404af702;date0x140675670;person0x140a946e0;race0x140b94ed0;0x14067613a/0x1406764c1
-dialogue-battle-group	a member of {s}	{s1}的一名成员	$name	0x140675910..0x14067667c;NPC battle account via0x14049cb1a/0x1404af702;date0x140675670;person0x140a946e0;race0x140b94ed0;0x14067616f
-dialogue-battle-group	the forces of {s}	{s1}的部队	$name	0x140675910..0x14067667c;NPC battle account via0x14049cb1a/0x1404af702;date0x140675670;person0x140a946e0;race0x140b94ed0;0x140676189
+dialogue-battle-group	a member of {s}	{s1}的一名成员	conversation-conflict-entity	0x140675910..0x14067667c;NPC battle account via0x14049cb1a/0x1404af702;date0x140675670;person0x140a946e0;race0x140b94ed0;0x14067616f
+dialogue-battle-group	the forces of {s}	{s1}的部队	conversation-conflict-entity	0x140675910..0x14067667c;NPC battle account via0x14049cb1a/0x1404af702;date0x140675670;person0x140a946e0;race0x140b94ed0;0x140676189
 dialogue-battle-group	{s}	{s1}	$creature	0x140675910..0x14067667c;NPC battle account via0x14049cb1a/0x1404af702;date0x140675670;person0x140a946e0;race0x140b94ed0;0x1406761b8/0x140676538 singular/plural no cardinal appended
-dialogue-battle-group	{s} of {s}	{s2}的{s1}	$creature,$name	0x140675910..0x14067667c;NPC battle account via0x14049cb1a/0x1404af702;date0x140675670;person0x140a946e0;race0x140b94ed0;0x1406761bd/0x14067653d
+dialogue-battle-group	{s} of {s}	{s2}的{s1}	$creature,conversation-conflict-entity	0x140675910..0x14067667c;NPC battle account via0x14049cb1a/0x1404af702;date0x140675670;person0x140a946e0;race0x140b94ed0;0x1406761bd/0x14067653d
+dialogue-battle-group	a member of	未具名势力的一名成员		PE 0x14067616f/0x14067653d ->b92900; a present entity with empty EnglishName retains member of
+dialogue-battle-group	the forces of	未具名势力的部队		PE 0x140676189/0x14067653d ->b92900; a present entity with empty EnglishName retains forces of
+dialogue-battle-group	{s} of	未具名势力的{s1}	$creature	PE 0x1406761bd/0x14067653d ->b92900; a present entity with empty EnglishName retains of
 dialogue-battle-slain	{s}	{s1}	dialogue-battle-person	0x140675910..0x14067667c;NPC battle account via0x14049cb1a/0x1404af702;date0x140675670;person0x140a946e0;race0x140b94ed0
 dialogue-battle-slain	{s}	{s1}	dialogue-battle-group	0x140675910..0x14067667c;NPC battle account via0x14049cb1a/0x1404af702;date0x140675670;person0x140a946e0;race0x140b94ed0
 dialogue-battle-slain-list	many foes	许多敌人		0x140675910..0x14067667c;NPC battle account via0x14049cb1a/0x1404af702;date0x140675670;person0x140a946e0;race0x140b94ed0;0x1406765b9
@@ -136,8 +144,10 @@ dialogue-battle-deaths	{s} and {s}	{s1}和{s2}	dialogue-battle-death,dialogue-ba
 dialogue-battle-death	{s} was slain	{s1}被杀死了	dialogue-battle-person	0x140675910..0x14067667c;NPC battle account via0x14049cb1a/0x1404af702;date0x140675670;person0x140a946e0;race0x140b94ed0;0x140675e44
 dialogue-battle-death	{s} was slain by {s}	{s1}被{s2}杀死了	dialogue-battle-person,dialogue-battle-person	0x140675910..0x14067667c;NPC battle account via0x14049cb1a/0x1404af702;date0x140675670;person0x140a946e0;race0x140b94ed0;0x140675e70 includes leading space
 dialogue-battle-death	{s} was slainby a {s}	{s1}被一只{s2}杀死了	dialogue-battle-person,$creature	0x140675910..0x14067667c;NPC battle account via0x14049cb1a/0x1404af702;date0x140675670;person0x140a946e0;race0x140b94ed0;0x140675ff9 native literal 'by a ' has no leading space
-dialogue-battle-death	{s} was slainby a {s} of {s}	{s1}被{s3}的一只{s2}杀死了	dialogue-battle-person,$creature,$name	0x140675910..0x14067667c;NPC battle account via0x14049cb1a/0x1404af702;date0x140675670;person0x140a946e0;race0x140b94ed0;0x140675ff9/0x140676046
-dialogue-battle-death	{s} was slainby the forces of {s}	{s1}被{s2}的部队杀死了	dialogue-battle-person,$name	0x140675910..0x14067667c;NPC battle account via0x14049cb1a/0x1404af702;date0x140675670;person0x140a946e0;race0x140b94ed0;0x140676062 native literal 'by the forces of ' no leading space
+dialogue-battle-death	{s} was slainby a {s} of {s}	{s1}被{s3}的一只{s2}杀死了	dialogue-battle-person,$creature,conversation-conflict-entity	0x140675910..0x14067667c;NPC battle account via0x14049cb1a/0x1404af702;date0x140675670;person0x140a946e0;race0x140b94ed0;0x140675ff9/0x140676046
+dialogue-battle-death	{s} was slainby the forces of {s}	{s1}被{s2}的部队杀死了	dialogue-battle-person,conversation-conflict-entity	0x140675910..0x14067667c;NPC battle account via0x14049cb1a/0x1404af702;date0x140675670;person0x140a946e0;race0x140b94ed0;0x140676062 native literal 'by the forces of ' no leading space
+dialogue-battle-death	{s} was slainby a {s} of	{s1}被未具名势力的一只{s2}杀死了	dialogue-battle-person,$creature	PE 0x140675ff9/0x140676046 ->b92900; empty EnglishName retains native slainby and of
+dialogue-battle-death	{s} was slainby the forces of	{s1}被未具名势力的部队杀死了	dialogue-battle-person	PE 0x140676062 ->b92900; empty EnglishName retains native slainby the forces of
 dialogue-battle-death	{s} died	{s1}丧生了	dialogue-battle-group	0x140675910..0x14067667c;NPC battle account via0x14049cb1a/0x1404af702;date0x140675670;person0x140a946e0;race0x140b94ed0;0x1406761eb
 # Conflict chooser: native type 118, complete caption plus occurrence paragraph.
 # ELF sources and all conditional edges: data/extracted/adventure-conversation-conflicts/.
@@ -160,7 +170,7 @@ conversation-conflict-caste	creature	生物		ELF a0d64b; invalid race/caste fall
 conversation-conflict-caste	creatures	一些生物		ELF a0d64b/a0d6f7; plural fallback
 conversation-conflict-caste	{s}	{s1}	$conflict-caste	ELF a0d5f0 ->12ae800; RAW caste_name singular/plural
 conversation-conflict-person	somebody	某人		ELF 10763de/1079805/1079849/1079cf4/1079d0c; missing historical figure
-conversation-conflict-person	{s}	{s1}	$person	ELF 107648d/107966c/107970c/1079a0c/1079aa2 ->12c58d0; personal EnglishName
+conversation-conflict-person	{s}	{s1}	speech-person	ELF 107648d/107966c/107970c/1079a0c/1079aa2 ->12c58d0; personal EnglishName including UTTERANCES given names
 conversation-conflict-attacker	you	你		ELF 1079bf2; attacker historical figure equals player
 conversation-conflict-attacker	a {s} of {s}	{s2}的一只{s1}	conversation-conflict-caste,conversation-conflict-entity	ELF 1079af5/1079b3f ->a0d5f0/a278f0; caste plus organization
 conversation-conflict-attacker	a {s}	一只{s1}	conversation-conflict-caste	ELF 1079af5 ->a0d5f0; attacker caste
@@ -196,8 +206,8 @@ conversation-conflict-account	{s} attacked {s}	{s1}袭击了{s2}	conversation-co
 conversation-conflict-account	you slew {s}	你杀死了{s1}	conversation-conflict-slain-list	ELF 1069409..1069473; player kills have priority
 conversation-conflict-account	many died	许多生灵丧生		ELF 1075f05..1075f22; more than five personal/group casualty records
 conversation-conflict-account	{s}	{s1}	conversation-conflict-deaths	ELF 10795f0..10799b1; named deaths followed by grouped deaths
-sentence	Make way for {s} {s} and {s}!	给{s1}{s2}和{s3}让路！	$term,$person,$name	0x1404b604a..0x1404b617a;office99a3c0 +personname0x140a946e0 +groupname0x140a946e0
-sentence	My {s} {s} lives in {s}.	我的{s1}{s2}住在{s3}。	dialogue-family,$person,$name	0x1404b10cf..0x1404b122c;family75a580 +person/site a946e0
+sentence	Make way for {s} {s} and {s}!	给{s1}{s2}和{s3}让路！	$term,speech-person,$name	0x1404b604a..0x1404b617a;office99a3c0 +personname0x140a946e0 +groupname0x140a946e0
+sentence	My {s} {s} lives in {s}.	我的{s1}{s2}住在{s3}。	dialogue-family,speech-person,$name	0x1404b10cf..0x1404b122c;family75a580 +person/site a946e0
 dialogue-object	the object I can't remember	我记不起来的那件东西		0x1404bf98c..0x1404c1665 missing objectfallback
 dialogue-object	{s}	{s1}	$book	0x1404bf9ea artifactref vtable metadata nonzero ->a94030 artifactname
 dialogue-object	{s}	{s1}	$item	0x1404bfa4b..0x1404bfa61 itemdesc c65450;also4c126e/4c1449/4c1624
@@ -235,6 +245,28 @@ dialogue-trouble-list	{s} and {s}	{s1}和{s2}	dialogue-trouble,dialogue-trouble	
 sentence	{s}!	{s1}！	dialogue-recognition	0x1404cd3cb..0x1404cd419;0x1404cd4b6..0x1404cd54b
 sentence	{s}, is it really you?	{s1}，真的是你吗？	dialogue-recognition	0x1404cd3cb..0x1404cd419;0x1404cd4b6..0x1404cd54b
 dialogue-recognition	{s}	{s1}	dialogue-family	0x1404cd130..0x1404cd37d;native relative enum vocabulary
-dialogue-recognition	{s}	{s1}	$person	0x1404cd456..0x1404cd492;given name or complete name
+dialogue-recognition	{s}	{s1}	speech-person	0x1404cd456..0x1404cd492;given name or complete name
 dialogue-recognition	Dear	亲爱的		0x1404cd512;replaces name
-sentence	{s}. How do you like the sound of that?	{s1}。你觉得这个名字怎么样？	$person	reference 0x1401fe5c0:0x1401ff0ea name formatter 0x140a946e0 -> 0x1401ff186 suffix -> 0x1401ff1dd speech wrapper 0x140684a10; classic 0x1401fe550:0x1401ff07a -> 0x1401ff116 -> 0x1401ff16d; name_creator context +4=7 ADVENTURER_PET and non-null conversation +0x228/named_unit +0x240
+sentence	{s}. How do you like the sound of that?	{s1}。你觉得这个名字怎么样？	speech-person	reference 0x1401fe5c0:0x1401ff0ea name formatter 0x140a946e0 -> 0x1401ff186 suffix -> 0x1401ff1dd speech wrapper 0x140684a10; classic 0x1401fe550:0x1401ff07a -> 0x1401ff116 -> 0x1401ff16d; name_creator context +4=7 ADVENTURER_PET and non-null conversation +0x228/named_unit +0x240
+# Service dispatch 175/176/191 uses the complete item/material supplier. An empty caption leaves its original connectors and punctuation; consume those concrete forms without an empty generic field.
+sentence	We have {s} .	我们有{s1}。	dialogue-stock	reference 0x1404b759d..0x1404b782e; classic 0x1404b515d..0x1404b53ee; empty final drink caption retains preceding and/comma whitespace before period
+sentence	We have .	我们这里有酒水。		reference 0x1404b759d/0x1404b7734/0x1404b781f; classic 0x1404b515d/0x1404b52f4/0x1404b53df; one empty drink caption
+dialogue-stock	, {s}	{s1}	dialogue-stock	reference 0x1404b7734/0x1404b77c6; classic 0x1404b52f4/0x1404b5386; empty current drink, comma before remaining drink list
+dialogue-stock	and {s}	{s1}	dialogue-stock-item	reference 0x1404b7734/0x1404b77e7; classic 0x1404b52f4/0x1404b53a7; empty penultimate drink, nonempty final drink
+dialogue-stock	{s} and	{s1}	dialogue-stock-item	reference 0x1404b7734/0x1404b77e7; classic 0x1404b52f4/0x1404b53a7; nonempty penultimate drink, empty final drink
+dialogue-stock	and	酒水		reference 0x1404b7734/0x1404b77e7; classic 0x1404b52f4/0x1404b53a7; two empty final drink captions leave literal and
+dialogue-stock-item	for {s}	每杯{s1}的酒水	$digits	reference 0x1404b7734..0x1404b779f; classic 0x1404b52f4..0x1404b535f; empty drink caption, nonzero numeric price remains
+dialogue-stock-item	for free	免费酒水		reference 0x1404b7734..0x1404b77b6; classic 0x1404b52f4..0x1404b5376; empty drink caption, free price remains
+sentence	I'd like the {s}.	我要{s1}。	$term	reference 0x1404b806a..0x1404b8136; classic 0x1404b5c2a..0x1404b5cf6; OrderDrinkOfStateServices, complete item/material caption via a82c10
+sentence	I'd like the .	我想点一杯酒。		reference 0x1404b806a/0x1404b810d/0x1404b8127; classic 0x1404b5c2a/0x1404b5ccd/0x1404b5ce7; empty selected drink caption
+sentence	Tavern keeper! One {s}!	酒馆老板！来一杯{s1}！	$term	reference 0x1404b7e62..0x1404b7f51; classic 0x1404b5a22..0x1404b5b11; YellOutServiceOrder, existing service -> One + complete item/material caption
+sentence	Tavern keeper! One !	酒馆老板！来一杯酒！		reference 0x1404b7e62/0x1404b7f28/0x1404b7f42; classic 0x1404b5a22/0x1404b5ae8/0x1404b5b02; empty selected drink caption
+sentence	Tavern keeper! Uhh... nevermind.	酒馆老板！呃……算了。		reference 0x1404b7e62/0x1404b7e77..0x1404b7f76; classic 0x1404b5a22/0x1404b5a37..0x1404b5b36; no service group or missing service order
+# Troupe 182/183/185/188/189/190 owns a language_name; its empty branch retains the surrounding sentence. These are troupe fields, not squad aliases.
+sentence	I would love to join . Can I perform with you?	我很想加入剧团。我能和你们一起表演吗？		reference 0x14049e9ed/0x14049ea2c/0x14049ea46; classic 0x14049c5ad/0x14049c5ec/0x14049c606; AskToJoinTroupe, empty entity language_name
+sentence	Welcome to !	欢迎加入剧团！		reference 0x14049ebee/0x14049ec2d/0x14049ec47; classic 0x14049c7ae/0x14049c7ed/0x14049c807; AcceptIntoTroupe, empty entity language_name
+sentence	Would you like to join ? The troupe could use your talent.	你愿意加入剧团吗？剧团需要你的才华。		reference 0x14049ef34/0x14049ef73/0x14049ef8d; classic 0x14049caf4/0x14049cb33/0x14049cb4d; InviteToJoinTroupe, empty entity language_name
+sentence	I'm kicking you out of .	我要把你赶出剧团。		reference 0x14049f42d/0x14049f46c/0x14049f486; classic 0x14049cfed/0x14049d02c/0x14049d046; KickOutOfTroupe, empty entity language_name
+sentence	I'm leaving .	我要离开剧团。		reference 0x14049fc8d/0x14049fccc/0x14049fce6; classic 0x14049d84d/0x14049d88c/0x14049d8a6; LeaveTroupe, empty entity language_name
+sentence	I've decided. Let's call our troupe !	我决定了。我们的剧团就叫这个名字吧！		reference 0x1404b5b33/0x1404b5b73/0x1404b5b8d; classic 0x1404b36f3/0x1404b3733/0x1404b374d; CreateTroupe, empty created language_name
+sentence	This is .	这个场所未注明名称。		reference 0x1404c75e0/0x1404c769e/0x1404c76c7; classic 0x1404c51a0/0x1404c525e/0x1404c5287; MentionServices, empty abstract-building language_name before description supplier 68d170

@@ -1,0 +1,681 @@
+edition	text_set	source_file	line	raw_text
+reference	AB_SPECIFIC_HF_SEEKER	data/vanilla/vanilla_text/objects/text_ab_specific_hf_seeker.txt	7	seek out [CONTEXT:HIST_FIG:TRANS_NAME] at [CONTEXT:ABSTRACT_BUILDING:TRANS_NAME] over in [CONTEXT:SITE:TRANS_NAME]
+reference	ANIMAL_SLAYER	data/vanilla/vanilla_text/objects/text_animal_slayer.txt	7	I have taken down [CONTEXT:NUMBER] [CONTEXT:RACE:NUMBERED_NAME] while stalking [CONTEXT:PLACE:TRANS_NAME].
+reference	ARCH_INFO_JUSTIFICATION	data/vanilla/vanilla_text/objects/text_arch_info_justification.txt	7	It is said that the [CONTEXT:ARCH_ELEMENT] of [CONTEXT:ABSTRACT_BUILDING:TRANS_NAME] [CONTEXT:JUSTIFICATION] [CONTEXT:DEF_SPHERE] for the glory of [CONTEXT:HIST_FIG:TRANS_NAME].
+reference	BOOK_ART	data/vanilla/vanilla_text/objects/text_book_art.txt	7	[NAME]
+reference	BOOK_ART	data/vanilla/vanilla_text/objects/text_book_art.txt	8	[PHRASE]
+reference	BOOK_ART	data/vanilla/vanilla_text/objects/text_book_art.txt	9	[ADJ] [NO_ART_NAME]
+reference	BOOK_ART	data/vanilla/vanilla_text/objects/text_book_art.txt	10	The [ADJ] [NO_ART_NAME]
+reference	BOOK_ART	data/vanilla/vanilla_text/objects/text_book_art.txt	11	[NAME] [ADJ]
+reference	BOOK_ART	data/vanilla/vanilla_text/objects/text_book_art.txt	12	[NAME] and the [NOUN]
+reference	BOOK_ART	data/vanilla/vanilla_text/objects/text_book_art.txt	13	[NAME] and the [ADJ] [NOUN]
+reference	BOOK_ART	data/vanilla/vanilla_text/objects/text_book_art.txt	14	The [NOUN] and [NAME]
+reference	BOOK_ART	data/vanilla/vanilla_text/objects/text_book_art.txt	15	The [ADJ] [NOUN] and [NAME]
+reference	BOOK_ART	data/vanilla/vanilla_text/objects/text_book_art.txt	16	[NAME]: [PHRASE]
+reference	BOOK_ART	data/vanilla/vanilla_text/objects/text_book_art.txt	17	It Must Have Been [NAME]
+reference	BOOK_ART	data/vanilla/vanilla_text/objects/text_book_art.txt	18	My Friend [NAME]
+reference	BOOK_ART	data/vanilla/vanilla_text/objects/text_book_art.txt	19	The Birth of [NAME]
+reference	BOOK_ART	data/vanilla/vanilla_text/objects/text_book_art.txt	20	The Sun Sets on [NAME]
+reference	BOOK_ART	data/vanilla/vanilla_text/objects/text_book_art.txt	21	We See [NAME]
+reference	BOOK_ART	data/vanilla/vanilla_text/objects/text_book_art.txt	22	[NAME] Ever Onward
+reference	BOOK_ART	data/vanilla/vanilla_text/objects/text_book_art.txt	23	[NAME] and Nothing More
+reference	BOOK_ART	data/vanilla/vanilla_text/objects/text_book_art.txt	24	And [ANY_PRONOUN] Sang '[NAME]!'
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	7	[NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	8	A Course on [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	9	A Humble Offering to [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	10	A Meditation on [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	11	A Record of [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	12	A Treatise on [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	13	A World of [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	14	About [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	15	After [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	16	Against [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	17	An Exploration of [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	18	An Introduction to [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	19	An Offering to [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	20	At One With [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	21	Before [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	22	Better [NO_ART_NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	23	Beyond [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	24	Book of [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	25	Captivated by [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	26	Choose [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	27	Classic [NO_ART_NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	28	Commentary on [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	29	Common Sense [NO_ART_NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	30	Concerning [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	31	Discourse on [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	32	Discovering [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	33	Doubts About [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	34	Dreams of [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	35	Elements of [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	36	Errors In [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	37	Exploring [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	38	Explorations of [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	39	Factual [NO_ART_NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	40	For the Love of [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	41	Foundations of [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	42	Give Me [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	43	Great [NO_ART_NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	44	In Pursuit of [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	45	Inquiries on [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	46	Interpretations of [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	47	Introduction to [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	48	It All Begins With [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	49	It Is [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	50	Journey to [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	51	Life With [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	52	Master of [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	53	Mastering [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	54	Meditations on [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	55	Misconceptions About [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	56	More [NO_ART_NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	57	Musings on [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	58	My Thoughts on [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	59	Mysteries of [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	60	Never Underestimate [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	61	New [NO_ART_NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	62	Of [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	63	On [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	64	Pathways to [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	65	Principles of [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	66	Question [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	67	Questions About [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	68	Records of [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	69	Reflections on [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	70	Secret [NO_ART_NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	71	Start Your Day With [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	72	Strange [NO_ART_NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	73	The Art of [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	74	The Book of [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	75	The Future of [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	76	The Great [NO_ART_NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	77	The Hidden Meaning of [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	78	The History of [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	79	The Interpretation of [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	80	The Journey into [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	81	The Knowledge of [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	82	The Meaning of [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	83	The Mysteries of [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	84	The Mystery of [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	85	The Nuanced [NO_ART_NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	86	The Possibilities of [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	87	The Pursuit of [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	88	The Secret of [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	89	The Student's [NO_ART_NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	90	The Study of [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	91	The True [NO_ART_NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	92	The Truth About [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	93	The Unabridged [NO_ART_NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	94	The Way With [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	95	The Wizard's Guide to [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	96	The World of [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	97	The World Without [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	98	Thoughts on [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	99	Time Spent With [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	100	Traditional [NO_ART_NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	101	Treatise on [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	102	True [NO_ART_NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	103	Uncanny [NO_ART_NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	104	Uncovering [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	105	Understanding [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	106	Unknown [NO_ART_NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	107	Unusual [NO_ART_NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	108	Useful [NO_ART_NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	109	Victory By [NAME]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	110	[NAME] After The End
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	111	[NAME] and Beyond
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	112	[NAME] and More
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	113	[NAME] and Other Topics
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	114	[NAME] and Other Travesties
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	115	[NAME] and The Coming Troubles
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	116	[NAME] and The Universe
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	117	[NAME] Came Full Circle
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	118	[NAME] Explained
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	119	[NAME] Exposed
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	120	[NAME] For Everyone
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	121	[NAME] For Students
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	122	[NAME] For The Beginning Practitioner
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	123	[NAME] In Practice
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	124	[NAME] In The Modern Era
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	125	[NAME] In The Time of My Ancestors
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	126	[NAME] In Theory
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	127	[NAME] In [ANY_AGE]
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	128	[NAME] Interpreted
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	129	[NAME] Might Help
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	130	[NAME] Questioned
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	131	[NAME] The Easy Way
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	132	[NAME] Uncovered
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	133	[NAME] Understood
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	134	[NAME] When It Counts
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	135	[NAME] Within Reason
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	136	[NAME] Without Limits
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	137	[NAME], Abridged
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	138	[NAME], My Life
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	139	[NAME], My Love
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	140	[NAME]: A Brief History
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	141	[NAME]: A Brief Introduction
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	142	[NAME]: A New Approach
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	143	[NAME]: A Quandary
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	144	[NAME]: Before and After
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	145	[NAME]: Common Practice
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	146	[NAME]: Fact or Fiction?
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	147	[NAME]: Further Musings
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	148	[NAME]: My Only Mistake
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	149	[NAME]: Natural or Supernatural?
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	150	[NAME]: Principles and Practice
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	151	[NAME]: Problems And Solutions
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	152	[NAME]: The Definitive Guide
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	153	[NAME]: The Truth
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	154	Can [NAME] Save The World?
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	155	Could It Be [NAME]?
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	156	Did [NAME] Falter?
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	157	Do We Understand [NAME]?
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	158	Do You Know [NAME]?
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	159	First [NAME], Then The World!
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	160	The [NO_ART_NAME] Book
+reference	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	161	To [NAME] and Glory!
+reference	CHILD_AGE_PROCLAMATION	data/vanilla/vanilla_text/objects/text_child_age_proclamation.txt	7	I'm [CONTEXT:NUMBER]!
+reference	CURRENT_PROFESSION_NO_YEAR	data/vanilla/vanilla_text/objects/text_current_profession_no_year.txt	7	I am a [CONTEXT:UNIT_NAME].
+reference	CURRENT_PROFESSION_YEAR	data/vanilla/vanilla_text/objects/text_current_profession_year.txt	7	This is my [CONTEXT:ORDINAL] year as a [CONTEXT:UNIT_NAME].
+reference	CURSE	data/vanilla/vanilla_text/objects/text_curse.txt	7	Who dares to enter my house?  I curse you!
+reference	FAMILY_RELATIONSHIP_ADDITIONAL	data/vanilla/vanilla_text/objects/text_family_relationship_additional.txt	7	[CONTEXT:HIST_FIG:PRO_SUB] is also my [CONTEXT:FAMILY_RELATIONSHIP]
+reference	FAMILY_RELATIONSHIP_ADDITIONAL_DEAD	data/vanilla/vanilla_text/objects/text_family_relationship_additional_dead.txt	7	[CONTEXT:HIST_FIG:PRO_SUB] was also my [CONTEXT:FAMILY_RELATIONSHIP]
+reference	FAMILY_RELATIONSHIP_NO_SPEC	data/vanilla/vanilla_text/objects/text_family_relationship_no_spec.txt	7	I have [CONTEXT:INDEF_FAMILY_RELATIONSHIP] named [CONTEXT:HIST_FIG:TRANS_NAME]
+reference	FAMILY_RELATIONSHIP_NO_SPEC_DEAD	data/vanilla/vanilla_text/objects/text_family_relationship_no_spec_dead.txt	7	I had [CONTEXT:INDEF_FAMILY_RELATIONSHIP] named [CONTEXT:HIST_FIG:TRANS_NAME]
+reference	FAMILY_RELATIONSHIP_SPEC	data/vanilla/vanilla_text/objects/text_family_relationship_spec.txt	7	my [CONTEXT:FAMILY_RELATIONSHIP] is named [CONTEXT:HIST_FIG:TRANS_NAME]
+reference	FAMILY_RELATIONSHIP_SPEC_DEAD	data/vanilla/vanilla_text/objects/text_family_relationship_spec_dead.txt	7	my [CONTEXT:FAMILY_RELATIONSHIP] was named [CONTEXT:HIST_FIG:TRANS_NAME]
+reference	GENERAL	data/vanilla/vanilla_text/objects/text_general.txt	7	whose cries for mercy went unheeded by my wrath
+reference	GENERAL	data/vanilla/vanilla_text/objects/text_general.txt	8	whose insignificant name I struggle to recall
+reference	GENERAL	data/vanilla/vanilla_text/objects/text_general.txt	9	a spineless slug who was crushed under my might
+reference	GENERAL	data/vanilla/vanilla_text/objects/text_general.txt	10	whom I buried alive under a mountain of hatred
+reference	GENERAL	data/vanilla/vanilla_text/objects/text_general.txt	11	who lies dead, now only an embarrassing memory
+reference	GENERAL	data/vanilla/vanilla_text/objects/text_general.txt	12	who sought my praise, only to be rejected in death
+reference	GENERAL	data/vanilla/vanilla_text/objects/text_general.txt	13	once revered by those who didn't know any better
+reference	GOODBYE_WORSHIP_1	data/vanilla/vanilla_text/objects/text_goodbye_worship_1.txt	7	upon arising in the mornings,
+reference	GOODBYE_WORSHIP_1	data/vanilla/vanilla_text/objects/text_goodbye_worship_1.txt	8	when going on a long journey,
+reference	GOODBYE_WORSHIP_1	data/vanilla/vanilla_text/objects/text_goodbye_worship_1.txt	9	before retiring in the evening,
+reference	GOODBYE_WORSHIP_1	data/vanilla/vanilla_text/objects/text_goodbye_worship_1.txt	10	as sure as I am here now,
+reference	GOODBYE_WORSHIP_1	data/vanilla/vanilla_text/objects/text_goodbye_worship_1.txt	11	and lo,
+reference	GOODBYE_WORSHIP_1	data/vanilla/vanilla_text/objects/text_goodbye_worship_1.txt	12	it cannot be said enough;
+reference	GOODBYE_WORSHIP_1	data/vanilla/vanilla_text/objects/text_goodbye_worship_1.txt	13	these are dangerous times, so
+reference	GOODBYE_WORSHIP_1	data/vanilla/vanilla_text/objects/text_goodbye_worship_1.txt	14	I say again
+reference	GOODBYE_WORSHIP_1	data/vanilla/vanilla_text/objects/text_goodbye_worship_1.txt	15	yes,
+reference	GOODBYE_WORSHIP_1	data/vanilla/vanilla_text/objects/text_goodbye_worship_1.txt	16	before every meal,
+reference	GOODBYE_WORSHIP_1	data/vanilla/vanilla_text/objects/text_goodbye_worship_1.txt	17	whenever the tide turns,
+reference	GOODBYE_WORSHIP_1	data/vanilla/vanilla_text/objects/text_goodbye_worship_1.txt	18	when you return to this place,
+reference	GOODBYE_WORSHIP_1	data/vanilla/vanilla_text/objects/text_goodbye_worship_1.txt	19	when you arrive at your destination,
+reference	GOODBYE_WORSHIP_1	data/vanilla/vanilla_text/objects/text_goodbye_worship_1.txt	20	at this juncture in your life,
+reference	GOODBYE_WORSHIP_2	data/vanilla/vanilla_text/objects/text_goodbye_worship_2.txt	7	don't forget to
+reference	GOODBYE_WORSHIP_2	data/vanilla/vanilla_text/objects/text_goodbye_worship_2.txt	8	always remember to
+reference	GOODBYE_WORSHIP_2	data/vanilla/vanilla_text/objects/text_goodbye_worship_2.txt	9	it would be wise to
+reference	GOODBYE_WORSHIP_2	data/vanilla/vanilla_text/objects/text_goodbye_worship_2.txt	10	you should
+reference	GOODBYE_WORSHIP_2	data/vanilla/vanilla_text/objects/text_goodbye_worship_2.txt	11	you must
+reference	GOODBYE_WORSHIP_2	data/vanilla/vanilla_text/objects/text_goodbye_worship_2.txt	12	prudence demands that you
+reference	GOODBYE_WORSHIP_2	data/vanilla/vanilla_text/objects/text_goodbye_worship_2.txt	13	even for a moment
+reference	GOODBYE_WORSHIP_2	data/vanilla/vanilla_text/objects/text_goodbye_worship_2.txt	14	follow my advice and
+reference	GOODBYE_WORSHIP_2	data/vanilla/vanilla_text/objects/text_goodbye_worship_2.txt	15	heed my words and
+reference	GOODBYE_WORSHIP_2	data/vanilla/vanilla_text/objects/text_goodbye_worship_2.txt	16	remember to
+reference	GOODBYE_WORSHIP_2	data/vanilla/vanilla_text/objects/text_goodbye_worship_2.txt	17	show devotion and
+reference	GOODBYE_WORSHIP_3	data/vanilla/vanilla_text/objects/text_goodbye_worship_3.txt	7	speak the praises of [SPEAKER:HF_LINK:DEITY:TRANS_NAME]
+reference	GOODBYE_WORSHIP_3	data/vanilla/vanilla_text/objects/text_goodbye_worship_3.txt	8	speak the praises of [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE]
+reference	GOODBYE_WORSHIP_3	data/vanilla/vanilla_text/objects/text_goodbye_worship_3.txt	9	go with [SPEAKER:HF_LINK:DEITY:TRANS_NAME]
+reference	GOODBYE_WORSHIP_3	data/vanilla/vanilla_text/objects/text_goodbye_worship_3.txt	10	go with [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE]
+reference	GOODBYE_WORSHIP_3	data/vanilla/vanilla_text/objects/text_goodbye_worship_3.txt	11	put your faith in [SPEAKER:HF_LINK:DEITY:TRANS_NAME]
+reference	GOODBYE_WORSHIP_3	data/vanilla/vanilla_text/objects/text_goodbye_worship_3.txt	12	put your faith in [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE]
+reference	GOODBYE_WORSHIP_3	data/vanilla/vanilla_text/objects/text_goodbye_worship_3.txt	13	experience [SPEAKER:HF_LINK:DEITY:TRANS_NAME]
+reference	GOODBYE_WORSHIP_3	data/vanilla/vanilla_text/objects/text_goodbye_worship_3.txt	14	experience [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE]
+reference	GOODBYE_WORSHIP_3	data/vanilla/vanilla_text/objects/text_goodbye_worship_3.txt	15	consider [SPEAKER:HF_LINK:DEITY:TRANS_NAME]
+reference	GOODBYE_WORSHIP_3	data/vanilla/vanilla_text/objects/text_goodbye_worship_3.txt	16	consider [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE]
+reference	GOODBYE_WORSHIP_3	data/vanilla/vanilla_text/objects/text_goodbye_worship_3.txt	17	give yourself to [SPEAKER:HF_LINK:DEITY:TRANS_NAME]
+reference	GOODBYE_WORSHIP_3	data/vanilla/vanilla_text/objects/text_goodbye_worship_3.txt	18	give yourself to [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE]
+reference	GREET	data/vanilla/vanilla_text/objects/text_greet.txt	7	Greetings.  My name is [SPEAKER:TRANS_NAME].
+reference	GREET_BABY	data/vanilla/vanilla_text/objects/text_greet_baby.txt	7	Hellooo!
+reference	GREET_BABY	data/vanilla/vanilla_text/objects/text_greet_baby.txt	8	Look at you!
+reference	GREET_BABY	data/vanilla/vanilla_text/objects/text_greet_baby.txt	9	A baby!  How adorable!
+reference	GREET_REPLY	data/vanilla/vanilla_text/objects/text_greet_reply.txt	7	Ah, hello.  I'm [SPEAKER:TRANS_NAME].
+reference	GREET_REPLY_AFTER_HERO	data/vanilla/vanilla_text/objects/text_greet_reply_after_hero.txt	7	I am [SPEAKER:TRANS_NAME].  Can I be of some help?
+reference	GREET_REPLY_AFTER_HERO	data/vanilla/vanilla_text/objects/text_greet_reply_after_hero.txt	8	I am [SPEAKER:TRANS_NAME].  How can I be of service?
+reference	GREET_REPLY_DIFF_LANGUAGE	data/vanilla/vanilla_text/objects/text_greet_reply_diff_language.txt	7	Hello, [AUDIENCE:RACE].  I am [SPEAKER:TRANS_NAME].
+reference	GREET_REPLY_UNUSUAL_FIRST	data/vanilla/vanilla_text/objects/text_greet_reply_unusual_first.txt	7	[AUDIENCE:FIRST_NAME]...  your parents must have been interesting!
+reference	GREET_REPLY_UNUSUAL_FIRST	data/vanilla/vanilla_text/objects/text_greet_reply_unusual_first.txt	8	You know, you don't meet many people with the name [AUDIENCE:FIRST_NAME].
+reference	GREET_REPLY_UNUSUAL_FIRST	data/vanilla/vanilla_text/objects/text_greet_reply_unusual_first.txt	9	So, [AUDIENCE:FIRST_NAME]...   [AUDIENCE:FIRST_NAME], was it?
+reference	GREET_REPLY_UNUSUAL_FIRST	data/vanilla/vanilla_text/objects/text_greet_reply_unusual_first.txt	10	[AUDIENCE:FIRST_NAME].  Does that mean something?
+reference	GREET_REPLY_UNUSUAL_FIRST	data/vanilla/vanilla_text/objects/text_greet_reply_unusual_first.txt	11	[AUDIENCE:FIRST_NAME].  I can't say I've heard that before.
+reference	GREET_WORSHIP	data/vanilla/vanilla_text/objects/text_greet_worship.txt	7	Praise be to [SPEAKER:HF_LINK:DEITY:TRANS_NAME].
+reference	GREET_WORSHIP	data/vanilla/vanilla_text/objects/text_greet_worship.txt	8	Praise [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE].
+reference	GREET_WORSHIP	data/vanilla/vanilla_text/objects/text_greet_worship.txt	9	Life is, in a word, [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE].
+reference	GREET_WORSHIP	data/vanilla/vanilla_text/objects/text_greet_worship.txt	10	This servant of [SPEAKER:HF_LINK:DEITY:TRANS_NAME] greets you.
+reference	GREET_WORSHIP	data/vanilla/vanilla_text/objects/text_greet_worship.txt	11	This servant of [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE] greets you.
+reference	GUARD_PROFESSION	data/vanilla/vanilla_text/objects/text_guard_profession.txt	7	I am a guard.
+reference	GUARD_WARNING	data/vanilla/vanilla_text/objects/text_guard_warning.txt	7	Don't start any trouble.
+reference	HIST_FIG_SLAYER	data/vanilla/vanilla_text/objects/text_hist_fig_slayer.txt	7	It is I that felled [CONTEXT:HIST_FIG:TRANS_NAME] the [CONTEXT:HIST_FIG:RACE].
+reference	HUNTING_PROFESSION	data/vanilla/vanilla_text/objects/text_hunting_profession.txt	7	I hunt great beasts in [CONTEXT:PLACE:TRANS_NAME].
+reference	HUNTING_PROFESSION_YEAR	data/vanilla/vanilla_text/objects/text_hunting_profession_year.txt	7	I have hunted great beasts in [CONTEXT:PLACE:TRANS_NAME] for [CONTEXT:NUMBER] of my years.
+reference	JUSTIFICATION_ANTITHETICAL	data/vanilla/vanilla_text/objects/text_justification_antithetical.txt	7	can be thought of as the antithesis of
+reference	JUSTIFICATION_EXPERIENCE	data/vanilla/vanilla_text/objects/text_justification_experience.txt	7	can allow one to experience
+reference	JUSTIFICATION_PROXIMITY	data/vanilla/vanilla_text/objects/text_justification_proximity.txt	7	can bring one near to
+reference	JUSTIFICATION_REMINDER	data/vanilla/vanilla_text/objects/text_justification_reminder.txt	7	can remind one of
+reference	JUSTIFICATION_REPRESENTATION	data/vanilla/vanilla_text/objects/text_justification_representation.txt	7	can be thought of as a representation of
+reference	MERCENARY_PROFESSION	data/vanilla/vanilla_text/objects/text_mercenary_profession.txt	7	I seek fortune and glory by offering my skill at arms in [CONTEXT:PLACE:TRANS_NAME].
+reference	MERCENARY_PROFESSION_YEAR	data/vanilla/vanilla_text/objects/text_mercenary_profession_year.txt	7	I have sought fortune and glory by offering my skill at arms in [CONTEXT:PLACE:TRANS_NAME] for [CONTEXT:NUMBER] of my years.
+reference	NO_FAMILY	data/vanilla/vanilla_text/objects/text_no_family.txt	7	I have no family to speak of
+reference	PAST_HUNTING_PROFESSION	data/vanilla/vanilla_text/objects/text_past_hunting_profession.txt	7	In the past, I hunted great beasts.
+reference	PAST_HUNTING_PROFESSION	data/vanilla/vanilla_text/objects/text_past_hunting_profession.txt	8	I was a hunter of mighty beasts for [CONTEXT:NUMBER] of my years.
+reference	PAST_MERCENARY_PROFESSION	data/vanilla/vanilla_text/objects/text_past_mercenary_profession.txt	7	In the past, I sought fortune and glory by offering my skill at arms.
+reference	PAST_MERCENARY_PROFESSION	data/vanilla/vanilla_text/objects/text_past_mercenary_profession.txt	8	I sought fortune and glory by offering my skill at arms for [CONTEXT:NUMBER] of my years.
+reference	PAST_PROFESSION_NO_YEAR	data/vanilla/vanilla_text/objects/text_past_profession_no_year.txt	7	I was once a [CONTEXT:UNIT_NAME].
+reference	PAST_PROFESSION_YEAR	data/vanilla/vanilla_text/objects/text_past_profession_year.txt	7	I was a [CONTEXT:UNIT_NAME] for [CONTEXT:NUMBER] of the years of my life.
+reference	PAST_SNATCHER_PROFESSION	data/vanilla/vanilla_text/objects/text_past_snatcher_profession.txt	7	Once it was my calling to rescue lost children.
+reference	PAST_SNATCHER_PROFESSION	data/vanilla/vanilla_text/objects/text_past_snatcher_profession.txt	8	For [CONTEXT:NUMBER] of my years, I rescued lost children.
+reference	PAST_THIEF_PROFESSION	data/vanilla/vanilla_text/objects/text_past_thief_profession.txt	7	I once sought great treasures.
+reference	PAST_THIEF_PROFESSION	data/vanilla/vanilla_text/objects/text_past_thief_profession.txt	8	I sought great treasures for [CONTEXT:NUMBER] of my years.
+reference	PAST_WANDERING_PROFESSION	data/vanilla/vanilla_text/objects/text_past_wandering_profession.txt	7	I once wandered the wilds.
+reference	PAST_WANDERING_PROFESSION	data/vanilla/vanilla_text/objects/text_past_wandering_profession.txt	8	For [CONTEXT:NUMBER] of my years, I wandered the wilds.
+reference	POSITIVE	data/vanilla/vanilla_text/objects/text_positive.txt	7	fantastic!
+reference	POSITIVE	data/vanilla/vanilla_text/objects/text_positive.txt	8	wonderful!
+reference	POSITIVE	data/vanilla/vanilla_text/objects/text_positive.txt	9	I'm thrilled to hear that.
+reference	POSITIVE	data/vanilla/vanilla_text/objects/text_positive.txt	10	I'm pleased to hear that.
+reference	POSITIVE	data/vanilla/vanilla_text/objects/text_positive.txt	11	that is good news.
+reference	POSITIVE	data/vanilla/vanilla_text/objects/text_positive.txt	12	that is wonderful news.
+reference	POSITIVE	data/vanilla/vanilla_text/objects/text_positive.txt	13	this is encouraging.
+reference	POSITIVE	data/vanilla/vanilla_text/objects/text_positive.txt	14	very good.
+reference	POSITIVE	data/vanilla/vanilla_text/objects/text_positive.txt	15	I'm proud of you.
+reference	POSITIVE	data/vanilla/vanilla_text/objects/text_positive.txt	16	that is a good turn of affairs.
+reference	SAME_SITE_AB_SPECIFIC_HF_SEEKER	data/vanilla/vanilla_text/objects/text_same_site_ab_specific_hf_seeker.txt	7	seek out [CONTEXT:HIST_FIG:TRANS_NAME] here in [CONTEXT:SITE:TRANS_NAME] at [CONTEXT:ABSTRACT_BUILDING:TRANS_NAME]
+reference	SAME_SITE_SPECIFIC_HF_SEEKER	data/vanilla/vanilla_text/objects/text_same_site_specific_hf_seeker.txt	7	seek out [CONTEXT:HIST_FIG:TRANS_NAME] here in [CONTEXT:SITE:TRANS_NAME]
+reference	SECRET_DEATH	data/vanilla/vanilla_text/objects/text_secret_death.txt	7	Annihilation
+reference	SECRET_DEATH	data/vanilla/vanilla_text/objects/text_secret_death.txt	8	Bereavement
+reference	SECRET_DEATH	data/vanilla/vanilla_text/objects/text_secret_death.txt	9	Death
+reference	SECRET_DEATH	data/vanilla/vanilla_text/objects/text_secret_death.txt	10	Demise
+reference	SECRET_DEATH	data/vanilla/vanilla_text/objects/text_secret_death.txt	11	Departure
+reference	SECRET_DEATH	data/vanilla/vanilla_text/objects/text_secret_death.txt	12	Doom
+reference	SECRET_DEATH	data/vanilla/vanilla_text/objects/text_secret_death.txt	13	Dying
+reference	SECRET_DEATH	data/vanilla/vanilla_text/objects/text_secret_death.txt	14	Eternal Rest
+reference	SECRET_DEATH	data/vanilla/vanilla_text/objects/text_secret_death.txt	15	Expiration
+reference	SECRET_DEATH	data/vanilla/vanilla_text/objects/text_secret_death.txt	16	Extinction
+reference	SECRET_DEATH	data/vanilla/vanilla_text/objects/text_secret_death.txt	17	Mortality
+reference	SECRET_DEATH	data/vanilla/vanilla_text/objects/text_secret_death.txt	18	Immortality
+reference	SECRET_DEATH	data/vanilla/vanilla_text/objects/text_secret_death.txt	19	Loss
+reference	SECRET_DEATH	data/vanilla/vanilla_text/objects/text_secret_death.txt	20	Oblivion
+reference	SECRET_DEATH	data/vanilla/vanilla_text/objects/text_secret_death.txt	21	Parting
+reference	SECRET_DEATH	data/vanilla/vanilla_text/objects/text_secret_death.txt	22	Ruin
+reference	SECRET_DEATH	data/vanilla/vanilla_text/objects/text_secret_death.txt	23	Ruination
+reference	SECRET_DEATH	data/vanilla/vanilla_text/objects/text_secret_death.txt	24	Sleep
+reference	SECRET_DEATH	data/vanilla/vanilla_text/objects/text_secret_death.txt	25	the Afterlife
+reference	SECRET_DEATH	data/vanilla/vanilla_text/objects/text_secret_death.txt	26	the End
+reference	SECRET_DEATH	data/vanilla/vanilla_text/objects/text_secret_death.txt	27	the Grave
+reference	SITE_SPECIFIC_HF_SEEKER	data/vanilla/vanilla_text/objects/text_site_specific_hf_seeker.txt	7	seek out [CONTEXT:HIST_FIG:TRANS_NAME] over in [CONTEXT:SITE:TRANS_NAME]
+reference	SLAYER	data/vanilla/vanilla_text/objects/text_slayer.txt	7	bane
+reference	SLAYER	data/vanilla/vanilla_text/objects/text_slayer.txt	8	conqueror
+reference	SLAYER	data/vanilla/vanilla_text/objects/text_slayer.txt	9	death
+reference	SLAYER	data/vanilla/vanilla_text/objects/text_slayer.txt	10	foe
+reference	SLAYER	data/vanilla/vanilla_text/objects/text_slayer.txt	11	killer
+reference	SLAYER	data/vanilla/vanilla_text/objects/text_slayer.txt	12	lord
+reference	SLAYER	data/vanilla/vanilla_text/objects/text_slayer.txt	13	master
+reference	SLAYER	data/vanilla/vanilla_text/objects/text_slayer.txt	14	nemesis
+reference	SLAYER	data/vanilla/vanilla_text/objects/text_slayer.txt	15	slayer
+reference	SLAYER	data/vanilla/vanilla_text/objects/text_slayer.txt	16	vanquisher
+reference	SLAYER	data/vanilla/vanilla_text/objects/text_slayer.txt	17	murderer
+reference	SLAYER	data/vanilla/vanilla_text/objects/text_slayer.txt	18	crusher
+reference	SLAYER	data/vanilla/vanilla_text/objects/text_slayer.txt	19	extinguisher
+reference	SLAYER	data/vanilla/vanilla_text/objects/text_slayer.txt	20	strangler
+reference	SNATCHER_PROFESSION	data/vanilla/vanilla_text/objects/text_snatcher_profession.txt	7	I rescue lost children and bring them back to [CONTEXT:PLACE:TRANS_NAME].
+reference	SNATCHER_PROFESSION_YEAR	data/vanilla/vanilla_text/objects/text_snatcher_profession_year.txt	7	For [CONTEXT:NUMBER] of my years, I have been rescuing lost children and bringing them back to [CONTEXT:PLACE:TRANS_NAME].
+reference	SOLDIER_PROFESSION	data/vanilla/vanilla_text/objects/text_soldier_profession.txt	7	I am a soldier.
+reference	TASK_RECOMMENDATION	data/vanilla/vanilla_text/objects/text_task_recommendation.txt	7	[CONTEXT:ANY:TRANS_NAME] might have a task for you
+reference	TEMPLE_ALREADY_MEMBER	data/vanilla/vanilla_text/objects/text_temple_already_member.txt	7	simply
+reference	TEMPLE_ALREADY_MEMBER	data/vanilla/vanilla_text/objects/text_temple_already_member.txt	8	it is enough to
+reference	TEMPLE_ALREADY_MEMBER	data/vanilla/vanilla_text/objects/text_temple_already_member.txt	9	your task is simple;
+reference	TEMPLE_ALREADY_MEMBER	data/vanilla/vanilla_text/objects/text_temple_already_member.txt	10	just
+reference	TEMPLE_ALREADY_MEMBER	data/vanilla/vanilla_text/objects/text_temple_already_member.txt	11	all you need is to
+reference	TEMPLE_BECOME_MEMBER	data/vanilla/vanilla_text/objects/text_temple_become_member.txt	7	Welcome to [CONTEXT:ENTITY:TRANS_NAME].  Praise be to [CONTEXT:ENTITY:WORSHIP_HF:TRANS_NAME]!
+reference	TEMPLE_BECOME_MEMBER	data/vanilla/vanilla_text/objects/text_temple_become_member.txt	8	Welcome to [CONTEXT:ENTITY:TRANS_NAME].  Praise be to [CONTEXT:ENTITY:WORSHIP_HF:RANDOM_DEF_SPHERE]!
+reference	TEMPLE_BECOME_MEMBER	data/vanilla/vanilla_text/objects/text_temple_become_member.txt	9	As a member of [CONTEXT:ENTITY:TRANS_NAME], you can now seek the higher mysteries of [CONTEXT:ENTITY:WORSHIP_HF:TRANS_NAME].
+reference	TEMPLE_BECOME_MEMBER	data/vanilla/vanilla_text/objects/text_temple_become_member.txt	10	As a member of [CONTEXT:ENTITY:TRANS_NAME], you can now seek the higher mysteries of [CONTEXT:ENTITY:WORSHIP_HF:RANDOM_DEF_SPHERE].
+reference	THIEF_PROFESSION	data/vanilla/vanilla_text/objects/text_thief_profession.txt	7	I seek treasures and bring them back to [CONTEXT:PLACE:TRANS_NAME].
+reference	THIEF_PROFESSION_YEAR	data/vanilla/vanilla_text/objects/text_thief_profession_year.txt	7	I seek treasures and bring them back to [CONTEXT:PLACE:TRANS_NAME] and have done so for [CONTEXT:NUMBER] of the years of my life.
+reference	THREAT	data/vanilla/vanilla_text/objects/text_threat.txt	7	Prepare to die!
+reference	UNKNOWN_HF_SEEKER	data/vanilla/vanilla_text/objects/text_unknown_hf_seeker.txt	7	seek out [CONTEXT:HIST_FIG:TRANS_NAME], wherever [CONTEXT:HIST_FIG:PRO_SUB] might be
+reference	WANDERING_PROFESSION	data/vanilla/vanilla_text/objects/text_wandering_profession.txt	7	I wander [CONTEXT:PLACE:TRANS_NAME].
+reference	WANDERING_PROFESSION_YEAR	data/vanilla/vanilla_text/objects/text_wandering_profession_year.txt	7	I have wandered [CONTEXT:PLACE:TRANS_NAME] for [CONTEXT:NUMBER] of my years.
+classic	AB_SPECIFIC_HF_SEEKER	data/vanilla/vanilla_text/objects/text_ab_specific_hf_seeker.txt	7	seek out [CONTEXT:HIST_FIG:TRANS_NAME] at [CONTEXT:ABSTRACT_BUILDING:TRANS_NAME] over in [CONTEXT:SITE:TRANS_NAME]
+classic	ANIMAL_SLAYER	data/vanilla/vanilla_text/objects/text_animal_slayer.txt	7	I have taken down [CONTEXT:NUMBER] [CONTEXT:RACE:NUMBERED_NAME] while stalking [CONTEXT:PLACE:TRANS_NAME].
+classic	ARCH_INFO_JUSTIFICATION	data/vanilla/vanilla_text/objects/text_arch_info_justification.txt	7	It is said that the [CONTEXT:ARCH_ELEMENT] of [CONTEXT:ABSTRACT_BUILDING:TRANS_NAME] [CONTEXT:JUSTIFICATION] [CONTEXT:DEF_SPHERE] for the glory of [CONTEXT:HIST_FIG:TRANS_NAME].
+classic	BOOK_ART	data/vanilla/vanilla_text/objects/text_book_art.txt	7	[NAME]
+classic	BOOK_ART	data/vanilla/vanilla_text/objects/text_book_art.txt	8	[PHRASE]
+classic	BOOK_ART	data/vanilla/vanilla_text/objects/text_book_art.txt	9	[ADJ] [NO_ART_NAME]
+classic	BOOK_ART	data/vanilla/vanilla_text/objects/text_book_art.txt	10	The [ADJ] [NO_ART_NAME]
+classic	BOOK_ART	data/vanilla/vanilla_text/objects/text_book_art.txt	11	[NAME] [ADJ]
+classic	BOOK_ART	data/vanilla/vanilla_text/objects/text_book_art.txt	12	[NAME] and the [NOUN]
+classic	BOOK_ART	data/vanilla/vanilla_text/objects/text_book_art.txt	13	[NAME] and the [ADJ] [NOUN]
+classic	BOOK_ART	data/vanilla/vanilla_text/objects/text_book_art.txt	14	The [NOUN] and [NAME]
+classic	BOOK_ART	data/vanilla/vanilla_text/objects/text_book_art.txt	15	The [ADJ] [NOUN] and [NAME]
+classic	BOOK_ART	data/vanilla/vanilla_text/objects/text_book_art.txt	16	[NAME]: [PHRASE]
+classic	BOOK_ART	data/vanilla/vanilla_text/objects/text_book_art.txt	17	It Must Have Been [NAME]
+classic	BOOK_ART	data/vanilla/vanilla_text/objects/text_book_art.txt	18	My Friend [NAME]
+classic	BOOK_ART	data/vanilla/vanilla_text/objects/text_book_art.txt	19	The Birth of [NAME]
+classic	BOOK_ART	data/vanilla/vanilla_text/objects/text_book_art.txt	20	The Sun Sets on [NAME]
+classic	BOOK_ART	data/vanilla/vanilla_text/objects/text_book_art.txt	21	We See [NAME]
+classic	BOOK_ART	data/vanilla/vanilla_text/objects/text_book_art.txt	22	[NAME] Ever Onward
+classic	BOOK_ART	data/vanilla/vanilla_text/objects/text_book_art.txt	23	[NAME] and Nothing More
+classic	BOOK_ART	data/vanilla/vanilla_text/objects/text_book_art.txt	24	And [ANY_PRONOUN] Sang '[NAME]!'
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	7	[NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	8	A Course on [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	9	A Humble Offering to [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	10	A Meditation on [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	11	A Record of [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	12	A Treatise on [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	13	A World of [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	14	About [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	15	After [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	16	Against [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	17	An Exploration of [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	18	An Introduction to [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	19	An Offering to [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	20	At One With [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	21	Before [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	22	Better [NO_ART_NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	23	Beyond [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	24	Book of [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	25	Captivated by [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	26	Choose [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	27	Classic [NO_ART_NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	28	Commentary on [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	29	Common Sense [NO_ART_NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	30	Concerning [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	31	Discourse on [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	32	Discovering [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	33	Doubts About [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	34	Dreams of [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	35	Elements of [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	36	Errors In [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	37	Exploring [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	38	Explorations of [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	39	Factual [NO_ART_NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	40	For the Love of [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	41	Foundations of [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	42	Give Me [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	43	Great [NO_ART_NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	44	In Pursuit of [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	45	Inquiries on [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	46	Interpretations of [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	47	Introduction to [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	48	It All Begins With [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	49	It Is [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	50	Journey to [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	51	Life With [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	52	Master of [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	53	Mastering [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	54	Meditations on [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	55	Misconceptions About [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	56	More [NO_ART_NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	57	Musings on [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	58	My Thoughts on [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	59	Mysteries of [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	60	Never Underestimate [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	61	New [NO_ART_NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	62	Of [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	63	On [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	64	Pathways to [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	65	Principles of [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	66	Question [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	67	Questions About [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	68	Records of [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	69	Reflections on [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	70	Secret [NO_ART_NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	71	Start Your Day With [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	72	Strange [NO_ART_NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	73	The Art of [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	74	The Book of [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	75	The Future of [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	76	The Great [NO_ART_NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	77	The Hidden Meaning of [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	78	The History of [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	79	The Interpretation of [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	80	The Journey into [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	81	The Knowledge of [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	82	The Meaning of [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	83	The Mysteries of [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	84	The Mystery of [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	85	The Nuanced [NO_ART_NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	86	The Possibilities of [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	87	The Pursuit of [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	88	The Secret of [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	89	The Student's [NO_ART_NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	90	The Study of [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	91	The True [NO_ART_NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	92	The Truth About [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	93	The Unabridged [NO_ART_NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	94	The Way With [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	95	The Wizard's Guide to [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	96	The World of [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	97	The World Without [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	98	Thoughts on [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	99	Time Spent With [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	100	Traditional [NO_ART_NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	101	Treatise on [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	102	True [NO_ART_NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	103	Uncanny [NO_ART_NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	104	Uncovering [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	105	Understanding [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	106	Unknown [NO_ART_NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	107	Unusual [NO_ART_NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	108	Useful [NO_ART_NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	109	Victory By [NAME]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	110	[NAME] After The End
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	111	[NAME] and Beyond
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	112	[NAME] and More
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	113	[NAME] and Other Topics
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	114	[NAME] and Other Travesties
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	115	[NAME] and The Coming Troubles
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	116	[NAME] and The Universe
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	117	[NAME] Came Full Circle
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	118	[NAME] Explained
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	119	[NAME] Exposed
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	120	[NAME] For Everyone
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	121	[NAME] For Students
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	122	[NAME] For The Beginning Practitioner
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	123	[NAME] In Practice
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	124	[NAME] In The Modern Era
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	125	[NAME] In The Time of My Ancestors
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	126	[NAME] In Theory
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	127	[NAME] In [ANY_AGE]
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	128	[NAME] Interpreted
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	129	[NAME] Might Help
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	130	[NAME] Questioned
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	131	[NAME] The Easy Way
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	132	[NAME] Uncovered
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	133	[NAME] Understood
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	134	[NAME] When It Counts
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	135	[NAME] Within Reason
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	136	[NAME] Without Limits
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	137	[NAME], Abridged
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	138	[NAME], My Life
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	139	[NAME], My Love
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	140	[NAME]: A Brief History
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	141	[NAME]: A Brief Introduction
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	142	[NAME]: A New Approach
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	143	[NAME]: A Quandary
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	144	[NAME]: Before and After
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	145	[NAME]: Common Practice
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	146	[NAME]: Fact or Fiction?
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	147	[NAME]: Further Musings
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	148	[NAME]: My Only Mistake
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	149	[NAME]: Natural or Supernatural?
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	150	[NAME]: Principles and Practice
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	151	[NAME]: Problems And Solutions
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	152	[NAME]: The Definitive Guide
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	153	[NAME]: The Truth
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	154	Can [NAME] Save The World?
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	155	Could It Be [NAME]?
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	156	Did [NAME] Falter?
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	157	Do We Understand [NAME]?
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	158	Do You Know [NAME]?
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	159	First [NAME], Then The World!
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	160	The [NO_ART_NAME] Book
+classic	BOOK_INSTRUCTION	data/vanilla/vanilla_text/objects/text_book_instruction.txt	161	To [NAME] and Glory!
+classic	CHILD_AGE_PROCLAMATION	data/vanilla/vanilla_text/objects/text_child_age_proclamation.txt	7	I'm [CONTEXT:NUMBER]!
+classic	CURRENT_PROFESSION_NO_YEAR	data/vanilla/vanilla_text/objects/text_current_profession_no_year.txt	7	I am a [CONTEXT:UNIT_NAME].
+classic	CURRENT_PROFESSION_YEAR	data/vanilla/vanilla_text/objects/text_current_profession_year.txt	7	This is my [CONTEXT:ORDINAL] year as a [CONTEXT:UNIT_NAME].
+classic	CURSE	data/vanilla/vanilla_text/objects/text_curse.txt	7	Who dares to enter my house?  I curse you!
+classic	FAMILY_RELATIONSHIP_ADDITIONAL	data/vanilla/vanilla_text/objects/text_family_relationship_additional.txt	7	[CONTEXT:HIST_FIG:PRO_SUB] is also my [CONTEXT:FAMILY_RELATIONSHIP]
+classic	FAMILY_RELATIONSHIP_ADDITIONAL_DEAD	data/vanilla/vanilla_text/objects/text_family_relationship_additional_dead.txt	7	[CONTEXT:HIST_FIG:PRO_SUB] was also my [CONTEXT:FAMILY_RELATIONSHIP]
+classic	FAMILY_RELATIONSHIP_NO_SPEC	data/vanilla/vanilla_text/objects/text_family_relationship_no_spec.txt	7	I have [CONTEXT:INDEF_FAMILY_RELATIONSHIP] named [CONTEXT:HIST_FIG:TRANS_NAME]
+classic	FAMILY_RELATIONSHIP_NO_SPEC_DEAD	data/vanilla/vanilla_text/objects/text_family_relationship_no_spec_dead.txt	7	I had [CONTEXT:INDEF_FAMILY_RELATIONSHIP] named [CONTEXT:HIST_FIG:TRANS_NAME]
+classic	FAMILY_RELATIONSHIP_SPEC	data/vanilla/vanilla_text/objects/text_family_relationship_spec.txt	7	my [CONTEXT:FAMILY_RELATIONSHIP] is named [CONTEXT:HIST_FIG:TRANS_NAME]
+classic	FAMILY_RELATIONSHIP_SPEC_DEAD	data/vanilla/vanilla_text/objects/text_family_relationship_spec_dead.txt	7	my [CONTEXT:FAMILY_RELATIONSHIP] was named [CONTEXT:HIST_FIG:TRANS_NAME]
+classic	GENERAL	data/vanilla/vanilla_text/objects/text_general.txt	7	whose cries for mercy went unheeded by my wrath
+classic	GENERAL	data/vanilla/vanilla_text/objects/text_general.txt	8	whose insignificant name I struggle to recall
+classic	GENERAL	data/vanilla/vanilla_text/objects/text_general.txt	9	a spineless slug who was crushed under my might
+classic	GENERAL	data/vanilla/vanilla_text/objects/text_general.txt	10	whom I buried alive under a mountain of hatred
+classic	GENERAL	data/vanilla/vanilla_text/objects/text_general.txt	11	who lies dead, now only an embarrassing memory
+classic	GENERAL	data/vanilla/vanilla_text/objects/text_general.txt	12	who sought my praise, only to be rejected in death
+classic	GENERAL	data/vanilla/vanilla_text/objects/text_general.txt	13	once revered by those who didn't know any better
+classic	GOODBYE_WORSHIP_1	data/vanilla/vanilla_text/objects/text_goodbye_worship_1.txt	7	upon arising in the mornings,
+classic	GOODBYE_WORSHIP_1	data/vanilla/vanilla_text/objects/text_goodbye_worship_1.txt	8	when going on a long journey,
+classic	GOODBYE_WORSHIP_1	data/vanilla/vanilla_text/objects/text_goodbye_worship_1.txt	9	before retiring in the evening,
+classic	GOODBYE_WORSHIP_1	data/vanilla/vanilla_text/objects/text_goodbye_worship_1.txt	10	as sure as I am here now,
+classic	GOODBYE_WORSHIP_1	data/vanilla/vanilla_text/objects/text_goodbye_worship_1.txt	11	and lo,
+classic	GOODBYE_WORSHIP_1	data/vanilla/vanilla_text/objects/text_goodbye_worship_1.txt	12	it cannot be said enough;
+classic	GOODBYE_WORSHIP_1	data/vanilla/vanilla_text/objects/text_goodbye_worship_1.txt	13	these are dangerous times, so
+classic	GOODBYE_WORSHIP_1	data/vanilla/vanilla_text/objects/text_goodbye_worship_1.txt	14	I say again
+classic	GOODBYE_WORSHIP_1	data/vanilla/vanilla_text/objects/text_goodbye_worship_1.txt	15	yes,
+classic	GOODBYE_WORSHIP_1	data/vanilla/vanilla_text/objects/text_goodbye_worship_1.txt	16	before every meal,
+classic	GOODBYE_WORSHIP_1	data/vanilla/vanilla_text/objects/text_goodbye_worship_1.txt	17	whenever the tide turns,
+classic	GOODBYE_WORSHIP_1	data/vanilla/vanilla_text/objects/text_goodbye_worship_1.txt	18	when you return to this place,
+classic	GOODBYE_WORSHIP_1	data/vanilla/vanilla_text/objects/text_goodbye_worship_1.txt	19	when you arrive at your destination,
+classic	GOODBYE_WORSHIP_1	data/vanilla/vanilla_text/objects/text_goodbye_worship_1.txt	20	at this juncture in your life,
+classic	GOODBYE_WORSHIP_2	data/vanilla/vanilla_text/objects/text_goodbye_worship_2.txt	7	don't forget to
+classic	GOODBYE_WORSHIP_2	data/vanilla/vanilla_text/objects/text_goodbye_worship_2.txt	8	always remember to
+classic	GOODBYE_WORSHIP_2	data/vanilla/vanilla_text/objects/text_goodbye_worship_2.txt	9	it would be wise to
+classic	GOODBYE_WORSHIP_2	data/vanilla/vanilla_text/objects/text_goodbye_worship_2.txt	10	you should
+classic	GOODBYE_WORSHIP_2	data/vanilla/vanilla_text/objects/text_goodbye_worship_2.txt	11	you must
+classic	GOODBYE_WORSHIP_2	data/vanilla/vanilla_text/objects/text_goodbye_worship_2.txt	12	prudence demands that you
+classic	GOODBYE_WORSHIP_2	data/vanilla/vanilla_text/objects/text_goodbye_worship_2.txt	13	even for a moment
+classic	GOODBYE_WORSHIP_2	data/vanilla/vanilla_text/objects/text_goodbye_worship_2.txt	14	follow my advice and
+classic	GOODBYE_WORSHIP_2	data/vanilla/vanilla_text/objects/text_goodbye_worship_2.txt	15	heed my words and
+classic	GOODBYE_WORSHIP_2	data/vanilla/vanilla_text/objects/text_goodbye_worship_2.txt	16	remember to
+classic	GOODBYE_WORSHIP_2	data/vanilla/vanilla_text/objects/text_goodbye_worship_2.txt	17	show devotion and
+classic	GOODBYE_WORSHIP_3	data/vanilla/vanilla_text/objects/text_goodbye_worship_3.txt	7	speak the praises of [SPEAKER:HF_LINK:DEITY:TRANS_NAME]
+classic	GOODBYE_WORSHIP_3	data/vanilla/vanilla_text/objects/text_goodbye_worship_3.txt	8	speak the praises of [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE]
+classic	GOODBYE_WORSHIP_3	data/vanilla/vanilla_text/objects/text_goodbye_worship_3.txt	9	go with [SPEAKER:HF_LINK:DEITY:TRANS_NAME]
+classic	GOODBYE_WORSHIP_3	data/vanilla/vanilla_text/objects/text_goodbye_worship_3.txt	10	go with [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE]
+classic	GOODBYE_WORSHIP_3	data/vanilla/vanilla_text/objects/text_goodbye_worship_3.txt	11	put your faith in [SPEAKER:HF_LINK:DEITY:TRANS_NAME]
+classic	GOODBYE_WORSHIP_3	data/vanilla/vanilla_text/objects/text_goodbye_worship_3.txt	12	put your faith in [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE]
+classic	GOODBYE_WORSHIP_3	data/vanilla/vanilla_text/objects/text_goodbye_worship_3.txt	13	experience [SPEAKER:HF_LINK:DEITY:TRANS_NAME]
+classic	GOODBYE_WORSHIP_3	data/vanilla/vanilla_text/objects/text_goodbye_worship_3.txt	14	experience [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE]
+classic	GOODBYE_WORSHIP_3	data/vanilla/vanilla_text/objects/text_goodbye_worship_3.txt	15	consider [SPEAKER:HF_LINK:DEITY:TRANS_NAME]
+classic	GOODBYE_WORSHIP_3	data/vanilla/vanilla_text/objects/text_goodbye_worship_3.txt	16	consider [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE]
+classic	GOODBYE_WORSHIP_3	data/vanilla/vanilla_text/objects/text_goodbye_worship_3.txt	17	give yourself to [SPEAKER:HF_LINK:DEITY:TRANS_NAME]
+classic	GOODBYE_WORSHIP_3	data/vanilla/vanilla_text/objects/text_goodbye_worship_3.txt	18	give yourself to [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE]
+classic	GREET	data/vanilla/vanilla_text/objects/text_greet.txt	7	Greetings.  My name is [SPEAKER:TRANS_NAME].
+classic	GREET_BABY	data/vanilla/vanilla_text/objects/text_greet_baby.txt	7	Hellooo!
+classic	GREET_BABY	data/vanilla/vanilla_text/objects/text_greet_baby.txt	8	Look at you!
+classic	GREET_BABY	data/vanilla/vanilla_text/objects/text_greet_baby.txt	9	A baby!  How adorable!
+classic	GREET_REPLY	data/vanilla/vanilla_text/objects/text_greet_reply.txt	7	Ah, hello.  I'm [SPEAKER:TRANS_NAME].
+classic	GREET_REPLY_AFTER_HERO	data/vanilla/vanilla_text/objects/text_greet_reply_after_hero.txt	7	I am [SPEAKER:TRANS_NAME].  Can I be of some help?
+classic	GREET_REPLY_AFTER_HERO	data/vanilla/vanilla_text/objects/text_greet_reply_after_hero.txt	8	I am [SPEAKER:TRANS_NAME].  How can I be of service?
+classic	GREET_REPLY_DIFF_LANGUAGE	data/vanilla/vanilla_text/objects/text_greet_reply_diff_language.txt	7	Hello, [AUDIENCE:RACE].  I am [SPEAKER:TRANS_NAME].
+classic	GREET_REPLY_UNUSUAL_FIRST	data/vanilla/vanilla_text/objects/text_greet_reply_unusual_first.txt	7	[AUDIENCE:FIRST_NAME]...  your parents must have been interesting!
+classic	GREET_REPLY_UNUSUAL_FIRST	data/vanilla/vanilla_text/objects/text_greet_reply_unusual_first.txt	8	You know, you don't meet many people with the name [AUDIENCE:FIRST_NAME].
+classic	GREET_REPLY_UNUSUAL_FIRST	data/vanilla/vanilla_text/objects/text_greet_reply_unusual_first.txt	9	So, [AUDIENCE:FIRST_NAME]...   [AUDIENCE:FIRST_NAME], was it?
+classic	GREET_REPLY_UNUSUAL_FIRST	data/vanilla/vanilla_text/objects/text_greet_reply_unusual_first.txt	10	[AUDIENCE:FIRST_NAME].  Does that mean something?
+classic	GREET_REPLY_UNUSUAL_FIRST	data/vanilla/vanilla_text/objects/text_greet_reply_unusual_first.txt	11	[AUDIENCE:FIRST_NAME].  I can't say I've heard that before.
+classic	GREET_WORSHIP	data/vanilla/vanilla_text/objects/text_greet_worship.txt	7	Praise be to [SPEAKER:HF_LINK:DEITY:TRANS_NAME].
+classic	GREET_WORSHIP	data/vanilla/vanilla_text/objects/text_greet_worship.txt	8	Praise [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE].
+classic	GREET_WORSHIP	data/vanilla/vanilla_text/objects/text_greet_worship.txt	9	Life is, in a word, [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE].
+classic	GREET_WORSHIP	data/vanilla/vanilla_text/objects/text_greet_worship.txt	10	This servant of [SPEAKER:HF_LINK:DEITY:TRANS_NAME] greets you.
+classic	GREET_WORSHIP	data/vanilla/vanilla_text/objects/text_greet_worship.txt	11	This servant of [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE] greets you.
+classic	GUARD_PROFESSION	data/vanilla/vanilla_text/objects/text_guard_profession.txt	7	I am a guard.
+classic	GUARD_WARNING	data/vanilla/vanilla_text/objects/text_guard_warning.txt	7	Don't start any trouble.
+classic	HIST_FIG_SLAYER	data/vanilla/vanilla_text/objects/text_hist_fig_slayer.txt	7	It is I that felled [CONTEXT:HIST_FIG:TRANS_NAME] the [CONTEXT:HIST_FIG:RACE].
+classic	HUNTING_PROFESSION	data/vanilla/vanilla_text/objects/text_hunting_profession.txt	7	I hunt great beasts in [CONTEXT:PLACE:TRANS_NAME].
+classic	HUNTING_PROFESSION_YEAR	data/vanilla/vanilla_text/objects/text_hunting_profession_year.txt	7	I have hunted great beasts in [CONTEXT:PLACE:TRANS_NAME] for [CONTEXT:NUMBER] of my years.
+classic	JUSTIFICATION_ANTITHETICAL	data/vanilla/vanilla_text/objects/text_justification_antithetical.txt	7	can be thought of as the antithesis of
+classic	JUSTIFICATION_EXPERIENCE	data/vanilla/vanilla_text/objects/text_justification_experience.txt	7	can allow one to experience
+classic	JUSTIFICATION_PROXIMITY	data/vanilla/vanilla_text/objects/text_justification_proximity.txt	7	can bring one near to
+classic	JUSTIFICATION_REMINDER	data/vanilla/vanilla_text/objects/text_justification_reminder.txt	7	can remind one of
+classic	JUSTIFICATION_REPRESENTATION	data/vanilla/vanilla_text/objects/text_justification_representation.txt	7	can be thought of as a representation of
+classic	MERCENARY_PROFESSION	data/vanilla/vanilla_text/objects/text_mercenary_profession.txt	7	I seek fortune and glory by offering my skill at arms in [CONTEXT:PLACE:TRANS_NAME].
+classic	MERCENARY_PROFESSION_YEAR	data/vanilla/vanilla_text/objects/text_mercenary_profession_year.txt	7	I have sought fortune and glory by offering my skill at arms in [CONTEXT:PLACE:TRANS_NAME] for [CONTEXT:NUMBER] of my years.
+classic	NO_FAMILY	data/vanilla/vanilla_text/objects/text_no_family.txt	7	I have no family to speak of
+classic	PAST_HUNTING_PROFESSION	data/vanilla/vanilla_text/objects/text_past_hunting_profession.txt	7	In the past, I hunted great beasts.
+classic	PAST_HUNTING_PROFESSION	data/vanilla/vanilla_text/objects/text_past_hunting_profession.txt	8	I was a hunter of mighty beasts for [CONTEXT:NUMBER] of my years.
+classic	PAST_MERCENARY_PROFESSION	data/vanilla/vanilla_text/objects/text_past_mercenary_profession.txt	7	In the past, I sought fortune and glory by offering my skill at arms.
+classic	PAST_MERCENARY_PROFESSION	data/vanilla/vanilla_text/objects/text_past_mercenary_profession.txt	8	I sought fortune and glory by offering my skill at arms for [CONTEXT:NUMBER] of my years.
+classic	PAST_PROFESSION_NO_YEAR	data/vanilla/vanilla_text/objects/text_past_profession_no_year.txt	7	I was once a [CONTEXT:UNIT_NAME].
+classic	PAST_PROFESSION_YEAR	data/vanilla/vanilla_text/objects/text_past_profession_year.txt	7	I was a [CONTEXT:UNIT_NAME] for [CONTEXT:NUMBER] of the years of my life.
+classic	PAST_SNATCHER_PROFESSION	data/vanilla/vanilla_text/objects/text_past_snatcher_profession.txt	7	Once it was my calling to rescue lost children.
+classic	PAST_SNATCHER_PROFESSION	data/vanilla/vanilla_text/objects/text_past_snatcher_profession.txt	8	For [CONTEXT:NUMBER] of my years, I rescued lost children.
+classic	PAST_THIEF_PROFESSION	data/vanilla/vanilla_text/objects/text_past_thief_profession.txt	7	I once sought great treasures.
+classic	PAST_THIEF_PROFESSION	data/vanilla/vanilla_text/objects/text_past_thief_profession.txt	8	I sought great treasures for [CONTEXT:NUMBER] of my years.
+classic	PAST_WANDERING_PROFESSION	data/vanilla/vanilla_text/objects/text_past_wandering_profession.txt	7	I once wandered the wilds.
+classic	PAST_WANDERING_PROFESSION	data/vanilla/vanilla_text/objects/text_past_wandering_profession.txt	8	For [CONTEXT:NUMBER] of my years, I wandered the wilds.
+classic	POSITIVE	data/vanilla/vanilla_text/objects/text_positive.txt	7	fantastic!
+classic	POSITIVE	data/vanilla/vanilla_text/objects/text_positive.txt	8	wonderful!
+classic	POSITIVE	data/vanilla/vanilla_text/objects/text_positive.txt	9	I'm thrilled to hear that.
+classic	POSITIVE	data/vanilla/vanilla_text/objects/text_positive.txt	10	I'm pleased to hear that.
+classic	POSITIVE	data/vanilla/vanilla_text/objects/text_positive.txt	11	that is good news.
+classic	POSITIVE	data/vanilla/vanilla_text/objects/text_positive.txt	12	that is wonderful news.
+classic	POSITIVE	data/vanilla/vanilla_text/objects/text_positive.txt	13	this is encouraging.
+classic	POSITIVE	data/vanilla/vanilla_text/objects/text_positive.txt	14	very good.
+classic	POSITIVE	data/vanilla/vanilla_text/objects/text_positive.txt	15	I'm proud of you.
+classic	POSITIVE	data/vanilla/vanilla_text/objects/text_positive.txt	16	that is a good turn of affairs.
+classic	SAME_SITE_AB_SPECIFIC_HF_SEEKER	data/vanilla/vanilla_text/objects/text_same_site_ab_specific_hf_seeker.txt	7	seek out [CONTEXT:HIST_FIG:TRANS_NAME] here in [CONTEXT:SITE:TRANS_NAME] at [CONTEXT:ABSTRACT_BUILDING:TRANS_NAME]
+classic	SAME_SITE_SPECIFIC_HF_SEEKER	data/vanilla/vanilla_text/objects/text_same_site_specific_hf_seeker.txt	7	seek out [CONTEXT:HIST_FIG:TRANS_NAME] here in [CONTEXT:SITE:TRANS_NAME]
+classic	SECRET_DEATH	data/vanilla/vanilla_text/objects/text_secret_death.txt	7	Annihilation
+classic	SECRET_DEATH	data/vanilla/vanilla_text/objects/text_secret_death.txt	8	Bereavement
+classic	SECRET_DEATH	data/vanilla/vanilla_text/objects/text_secret_death.txt	9	Death
+classic	SECRET_DEATH	data/vanilla/vanilla_text/objects/text_secret_death.txt	10	Demise
+classic	SECRET_DEATH	data/vanilla/vanilla_text/objects/text_secret_death.txt	11	Departure
+classic	SECRET_DEATH	data/vanilla/vanilla_text/objects/text_secret_death.txt	12	Doom
+classic	SECRET_DEATH	data/vanilla/vanilla_text/objects/text_secret_death.txt	13	Dying
+classic	SECRET_DEATH	data/vanilla/vanilla_text/objects/text_secret_death.txt	14	Eternal Rest
+classic	SECRET_DEATH	data/vanilla/vanilla_text/objects/text_secret_death.txt	15	Expiration
+classic	SECRET_DEATH	data/vanilla/vanilla_text/objects/text_secret_death.txt	16	Extinction
+classic	SECRET_DEATH	data/vanilla/vanilla_text/objects/text_secret_death.txt	17	Mortality
+classic	SECRET_DEATH	data/vanilla/vanilla_text/objects/text_secret_death.txt	18	Immortality
+classic	SECRET_DEATH	data/vanilla/vanilla_text/objects/text_secret_death.txt	19	Loss
+classic	SECRET_DEATH	data/vanilla/vanilla_text/objects/text_secret_death.txt	20	Oblivion
+classic	SECRET_DEATH	data/vanilla/vanilla_text/objects/text_secret_death.txt	21	Parting
+classic	SECRET_DEATH	data/vanilla/vanilla_text/objects/text_secret_death.txt	22	Ruin
+classic	SECRET_DEATH	data/vanilla/vanilla_text/objects/text_secret_death.txt	23	Ruination
+classic	SECRET_DEATH	data/vanilla/vanilla_text/objects/text_secret_death.txt	24	Sleep
+classic	SECRET_DEATH	data/vanilla/vanilla_text/objects/text_secret_death.txt	25	the Afterlife
+classic	SECRET_DEATH	data/vanilla/vanilla_text/objects/text_secret_death.txt	26	the End
+classic	SECRET_DEATH	data/vanilla/vanilla_text/objects/text_secret_death.txt	27	the Grave
+classic	SITE_SPECIFIC_HF_SEEKER	data/vanilla/vanilla_text/objects/text_site_specific_hf_seeker.txt	7	seek out [CONTEXT:HIST_FIG:TRANS_NAME] over in [CONTEXT:SITE:TRANS_NAME]
+classic	SLAYER	data/vanilla/vanilla_text/objects/text_slayer.txt	7	bane
+classic	SLAYER	data/vanilla/vanilla_text/objects/text_slayer.txt	8	conqueror
+classic	SLAYER	data/vanilla/vanilla_text/objects/text_slayer.txt	9	death
+classic	SLAYER	data/vanilla/vanilla_text/objects/text_slayer.txt	10	foe
+classic	SLAYER	data/vanilla/vanilla_text/objects/text_slayer.txt	11	killer
+classic	SLAYER	data/vanilla/vanilla_text/objects/text_slayer.txt	12	lord
+classic	SLAYER	data/vanilla/vanilla_text/objects/text_slayer.txt	13	master
+classic	SLAYER	data/vanilla/vanilla_text/objects/text_slayer.txt	14	nemesis
+classic	SLAYER	data/vanilla/vanilla_text/objects/text_slayer.txt	15	slayer
+classic	SLAYER	data/vanilla/vanilla_text/objects/text_slayer.txt	16	vanquisher
+classic	SLAYER	data/vanilla/vanilla_text/objects/text_slayer.txt	17	murderer
+classic	SLAYER	data/vanilla/vanilla_text/objects/text_slayer.txt	18	crusher
+classic	SLAYER	data/vanilla/vanilla_text/objects/text_slayer.txt	19	extinguisher
+classic	SLAYER	data/vanilla/vanilla_text/objects/text_slayer.txt	20	strangler
+classic	SNATCHER_PROFESSION	data/vanilla/vanilla_text/objects/text_snatcher_profession.txt	7	I rescue lost children and bring them back to [CONTEXT:PLACE:TRANS_NAME].
+classic	SNATCHER_PROFESSION_YEAR	data/vanilla/vanilla_text/objects/text_snatcher_profession_year.txt	7	For [CONTEXT:NUMBER] of my years, I have been rescuing lost children and bringing them back to [CONTEXT:PLACE:TRANS_NAME].
+classic	SOLDIER_PROFESSION	data/vanilla/vanilla_text/objects/text_soldier_profession.txt	7	I am a soldier.
+classic	TASK_RECOMMENDATION	data/vanilla/vanilla_text/objects/text_task_recommendation.txt	7	[CONTEXT:ANY:TRANS_NAME] might have a task for you
+classic	TEMPLE_ALREADY_MEMBER	data/vanilla/vanilla_text/objects/text_temple_already_member.txt	7	simply
+classic	TEMPLE_ALREADY_MEMBER	data/vanilla/vanilla_text/objects/text_temple_already_member.txt	8	it is enough to
+classic	TEMPLE_ALREADY_MEMBER	data/vanilla/vanilla_text/objects/text_temple_already_member.txt	9	your task is simple;
+classic	TEMPLE_ALREADY_MEMBER	data/vanilla/vanilla_text/objects/text_temple_already_member.txt	10	just
+classic	TEMPLE_ALREADY_MEMBER	data/vanilla/vanilla_text/objects/text_temple_already_member.txt	11	all you need is to
+classic	TEMPLE_BECOME_MEMBER	data/vanilla/vanilla_text/objects/text_temple_become_member.txt	7	Welcome to [CONTEXT:ENTITY:TRANS_NAME].  Praise be to [CONTEXT:ENTITY:WORSHIP_HF:TRANS_NAME]!
+classic	TEMPLE_BECOME_MEMBER	data/vanilla/vanilla_text/objects/text_temple_become_member.txt	8	Welcome to [CONTEXT:ENTITY:TRANS_NAME].  Praise be to [CONTEXT:ENTITY:WORSHIP_HF:RANDOM_DEF_SPHERE]!
+classic	TEMPLE_BECOME_MEMBER	data/vanilla/vanilla_text/objects/text_temple_become_member.txt	9	As a member of [CONTEXT:ENTITY:TRANS_NAME], you can now seek the higher mysteries of [CONTEXT:ENTITY:WORSHIP_HF:TRANS_NAME].
+classic	TEMPLE_BECOME_MEMBER	data/vanilla/vanilla_text/objects/text_temple_become_member.txt	10	As a member of [CONTEXT:ENTITY:TRANS_NAME], you can now seek the higher mysteries of [CONTEXT:ENTITY:WORSHIP_HF:RANDOM_DEF_SPHERE].
+classic	THIEF_PROFESSION	data/vanilla/vanilla_text/objects/text_thief_profession.txt	7	I seek treasures and bring them back to [CONTEXT:PLACE:TRANS_NAME].
+classic	THIEF_PROFESSION_YEAR	data/vanilla/vanilla_text/objects/text_thief_profession_year.txt	7	I seek treasures and bring them back to [CONTEXT:PLACE:TRANS_NAME] and have done so for [CONTEXT:NUMBER] of the years of my life.
+classic	THREAT	data/vanilla/vanilla_text/objects/text_threat.txt	7	Prepare to die!
+classic	UNKNOWN_HF_SEEKER	data/vanilla/vanilla_text/objects/text_unknown_hf_seeker.txt	7	seek out [CONTEXT:HIST_FIG:TRANS_NAME], wherever [CONTEXT:HIST_FIG:PRO_SUB] might be
+classic	WANDERING_PROFESSION	data/vanilla/vanilla_text/objects/text_wandering_profession.txt	7	I wander [CONTEXT:PLACE:TRANS_NAME].
+classic	WANDERING_PROFESSION_YEAR	data/vanilla/vanilla_text/objects/text_wandering_profession_year.txt	7	I have wandered [CONTEXT:PLACE:TRANS_NAME] for [CONTEXT:NUMBER] of my years.

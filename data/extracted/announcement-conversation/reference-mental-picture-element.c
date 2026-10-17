@@ -1,4 +1,3 @@
-/* Actual Ghidra 12.1.4 PE decompilation: PE:6a70a6d9:02711000; 0x140658e20..0x14065908a. */
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
@@ -25,34 +24,34 @@ void FUN_140658e20(undefined8 param_1,undefined8 *param_2,longlong param_3,longl
   if (iVar2 == 0) {
     if (*(int *)(param_3 + 4) == *(int *)(param_2 + 2)) {
       if (param_5 == 0) {
-        FUN_14006fa10(param_1,&UNK_141662fb4,1);
+        FUN_14006fa10(param_1,"I",1);
       }
       else if (param_5 == 1) {
-        FUN_14006fa10(param_1,&UNK_1415edcf8,2);
+        FUN_14006fa10(param_1,"me",2);
       }
       else if (param_5 == 2) {
-        FUN_14006fa10(param_1,&UNK_141662ef4,2);
+        FUN_14006fa10(param_1,"my",2);
       }
       else if (param_5 == 3) {
-        FUN_14006fa10(param_1,&UNK_141662ef8,6);
+        FUN_14006fa10(param_1,"myself",6);
       }
     }
     else if (*(int *)(param_4 + 4) == *(int *)(param_2 + 2)) {
       if ((param_5 == 0) || (param_5 == 1)) {
-        FUN_14006fa10(param_1,&UNK_1415ec550,3);
+        FUN_14006fa10(param_1,"you",3);
       }
       else if (param_5 == 2) {
-        FUN_14006fa10(param_1,&UNK_1415ee960,4);
+        FUN_14006fa10(param_1,"your",4);
       }
       else if (param_5 == 3) {
-        FUN_14006fa10(param_1,&UNK_141662ee0,8);
+        FUN_14006fa10(param_1,"yourself",8);
       }
     }
     else {
-      func_0x000140072080();
+      native_supplier_0x140072080();
       uStack_120 = 1;
       uStack_128 = 0;
-      FUN_140b92f10(0x1424f9cb8,param_1);
+      FUN_140b92f10(&DAT_1424f9cb8,param_1);
     }
   }
   else if (iVar2 == 1) {
@@ -82,7 +81,7 @@ void FUN_140658e20(undefined8 param_1,undefined8 *param_2,longlong param_3,longl
           return;
         }
       }
-      func_0x000141539680(ppppuVar3,uVar4);
+      native_supplier_0x141539680(ppppuVar3,uVar4);
     }
   }
   FUN_141539660(uStack_28 ^ (ulonglong)auStack_148);

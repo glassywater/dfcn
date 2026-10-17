@@ -152,6 +152,16 @@ std::optional<std::string> Overlay::translate_spoken_dialogue_body(
             return literal;
         if (auto native = translate_announcement_combat(part, "spoken-greeting"))
             return native;
+        // The dispatcher proves each native field's type. Its complete
+        // productions must precede legacy speech templates: a person,
+        // first-name, item or location cannot become generic prose merely
+        // because that template has the same visible wording.
+        if (auto native = translate_announcement_combat(part, "spoken-sentence"))
+            return native;
+        // Greetings can append a complete memory statement using the same
+        // event/emotion/action switches as visitor quotes.
+        if (auto statement = translate_announcement_combat(part, "visitor-statement"))
+            return statement;
         const auto compact = compact_ui_message_literal(part);
         for (int probe : ui_message_anchors_.candidates(compact)) {
             const int index = ui_message_template_probes_[static_cast<size_t>(probe)].index;
@@ -159,12 +169,6 @@ std::optional<std::string> Overlay::translate_spoken_dialogue_body(
             if (auto translated = translate_help_paragraph(part, colors, targets, true, index))
                 return translated;
         }
-        if (auto native = translate_announcement_combat(part, "spoken-sentence"))
-            return native;
-        // The greeting can append the same complete mental-picture statement
-        // as the visitor quote, including all native emotion/action switches.
-        if (auto statement = translate_announcement_combat(part, "visitor-statement"))
-            return statement;
         return std::nullopt;
     };
     if (auto complete = sentence(source)) return complete;
@@ -234,24 +238,40 @@ std::optional<std::string> Overlay::translate_announcement_dialogue(
         // native given-word mask, so it needs the same typed person renderer
         // used by the body's historical-figure fields.
         const auto figure = translate_legends_actor(value, 0, true);
-        return translation_complete_with_native_nicknames(figure, value)
-            ? figure : std::nullopt;
+        if (translation_complete_with_native_nicknames(figure, value)) return figure;
+        // EnglishName copies FIRST_NAME from UTTERANCES as well as WORD
+        // names. A stored speech record can outlive its live formatter's
+        // identity binding, so the historical-header branch needs the same
+        // complete personal-name renderer as SPEAKER:TRANS_NAME.
+        return translate_announcement_combat(value, "$speech-person");
     };
-    for (size_t colon = source.find(": "); colon != std::string_view::npos;
-         colon = source.find(": ", colon + 2)) {
+    for (size_t colon = source.find(':'); colon != std::string_view::npos;
+         colon = source.find(':', colon + 1)) {
+        if (colon + 1 < source.size() && source[colon + 1] != ' ') continue;
         std::string_view prefix = source.substr(0, colon);
-        const std::string_view body = source.substr(colon + 2);
-        if (prefix.empty() || body.empty()) continue;
+        const std::string_view body = trim_view(source.substr(colon + 1));
+        if (prefix.empty()) continue;
         std::optional<std::string> recipient;
         const size_t to = prefix.find(" (to ");
         if (to != std::string_view::npos) {
             if (!prefix.ends_with(')')) continue;
-            recipient = actor(prefix.substr(to + 5, prefix.size() - to - 6));
+            const auto caption = prefix.substr(to + 5, prefix.size() - to - 6);
+            // 685006 follows a resolved recipient unit, even when that
+            // unit's caption is empty: the native " (to )" still survives.
+            recipient = caption.empty()
+                ? exact_literal_translation("Announcement speech: unnamed recipient")
+                : actor(caption);
             if (!recipient || recipient->empty()) continue;
             prefix = prefix.substr(0, to);
         }
         const auto speaker = actor(prefix);
         if (!speaker || speaker->empty()) continue;
+        const std::string heading = *speaker +
+            (recipient ? "（对" + *recipient + "）" : "") + "：";
+        // 6852ce appends the colon before the expanded body, with no
+        // nonempty-body condition. Display normalization trims its final
+        // space, leaving a real header-only record when TEXT_SET is empty.
+        if (body.empty()) return heading;
         const std::vector<int> source_colors(body.size(), 0xffffff);
         std::vector<int> target_colors;
         NativeAnnouncementUnitBodyScope semantic_body(source, body);
@@ -259,8 +279,7 @@ std::optional<std::string> Overlay::translate_announcement_dialogue(
         if (!translated) translated = translate_complete_announcement(
             body, source_colors, target_colors);
         if (!translated || translated->empty()) continue;
-        return *speaker + (recipient ? "（对" + *recipient + "）" : "") +
-               "：" + *translated;
+        return heading + *translated;
     }
     return std::nullopt;
 }
