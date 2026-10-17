@@ -40472,8 +40472,10 @@ void Overlay::render_ime_popup(SDL_Renderer *renderer) {
     }
     for (size_t index = 0; index < snapshot.candidates.size(); ++index) {
         if (snapshot.candidates[index].empty()) continue;
+        // SDL already includes the IME's selection key in each candidate.
+        // Preserve it, including input methods whose numbering starts at zero.
         lines.push_back({
-            std::to_string(index + 1) + ". " + snapshot.candidates[index],
+            snapshot.candidates[index],
             static_cast<int>(index) == snapshot.selected, false, nullptr});
     }
     if (lines.empty()) return;
