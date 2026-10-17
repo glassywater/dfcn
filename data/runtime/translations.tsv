@@ -98478,6 +98478,7 @@ This singer? Awful.	这位歌手？糟透了。	hPD
 Throwing a tantrum!	正在大发脾气！	hP
 Time Spent With {b}	与{b}共度的时光	hbti
 Toggle/edit setting	切换/编辑设置	w
+Unassigned occupant	未分配的笼内生物	hP
 Underground regions	地下区域
 Unknown interaction	未知能力	hP
 Unnamed dining hall	未命名餐厅	wi
@@ -136936,8 +136937,6 @@ Not in use	暂不使用	wi
 Occupation	职业
 Of course.	当然。	hPD
 On display	展出中	hP
-Occupant	笼内生物	hP
-Unassigned occupant	未分配的笼内生物	hP
 Only child	唯一的孩子	w
 Open Space	开放空间	w
 Open cases	未结案件	w
@@ -142183,6 +142182,7 @@ Noshtath	诺石塔	wi
 Not vain	不慕虚荣	w
 Observer	观察者	wi
 Occasion	庆典	hEi
+Occupant	笼内生物	hP
 Off duty	休息	wl
 One save	1 个存档	wi
 One {s}!	来一份{s1}！	hPtD
