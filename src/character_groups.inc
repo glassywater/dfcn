@@ -124,6 +124,8 @@ std::vector<NativeTextCard> Overlay::capture_character_group_rows() const {
                     card.interior = {left, record.fields[index].y, end - left, 1};
                     card.button_box = record.box;
                     card.character_group_role = index == 2;
+                    card.character_group_name = index == 0;
+                    card.character_group_type = index == 1;
                     card.character_group_civilization = index == 0 &&
                         lower(normalize_utterance(record.fields[1].source)) == "civilization";
                     card.rows.push_back(record.fields[index]);
@@ -261,6 +263,8 @@ std::vector<NativeTextCard> Overlay::capture_character_group_rows() const {
             if (!name || !type || !role) continue;
             name->character_group_civilization =
                 lower(normalize_utterance(type->rows.front().source)) == "civilization";
+            name->character_group_name = true;
+            type->character_group_type = true;
             role->character_group_role = true;
             cards.push_back(std::move(*name));
             cards.push_back(std::move(*type));
@@ -271,10 +275,10 @@ std::vector<NativeTextCard> Overlay::capture_character_group_rows() const {
     return {};
 }
 
-void Overlay::append_character_group_civilization(const NativeTextCard &card,
+void Overlay::append_character_group_field(const NativeTextCard &card,
         std::vector<Match> &matches, int only_y) const {
     if (!native_character_translation_active(gps_)) return;
-    if (!card.character_group_civilization) return;
+    if (!card.character_group_name && !card.character_group_type) return;
     const auto captions = captured_clipped_captions();
     for (const auto &row : card.rows) {
         if (only_y >= 0 && row.y != only_y) continue;
@@ -284,11 +288,23 @@ void Overlay::append_character_group_civilization(const NativeTextCard &card,
                 source = caption.complete;
                 break;
             }
-        // The adjacent native type establishes a civilization name. Resolve
-        // its WORD/POS identity and political name senses as one field before
-        // row composition can preserve the generic noun/ownership fragments.
-        const auto target = translate_procedural_fragment(normalize_utterance(source),
-            false, false, {}, ProceduralFragmentContext::civilization_name);
+        source = normalize_utterance(source);
+        std::optional<std::string> target;
+        if (card.character_group_type) {
+            // The typed column is a complete UI label, independent of any
+            // generic name/prose classification applied to its spelling.
+            target = exact_literal_translation(source);
+        } else {
+            // Every organization owns a complete entity name. Use its real
+            // WORD/POS and entity kind before generic words can split titles
+            // or ownership phrases into translated and English fragments.
+            target = translate_civilization_reference(source, true);
+            // Only the native Civilization label admits political surface
+            // vocabulary when the live identity cannot be recovered.
+            if (!target && card.character_group_civilization)
+                target = translate_procedural_fragment(source,
+                    false, false, {}, ProceduralFragmentContext::civilization_name);
+        }
         if (!target || target->empty()) continue;
         std::erase_if(matches, [&](const Match &match) {
             return match.y == row.y && match.x < row.x + static_cast<int>(row.source.size()) &&

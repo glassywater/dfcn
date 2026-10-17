@@ -60,7 +60,7 @@ std::vector<Match> Overlay::find_native_character_matches() const {
         for (const auto &row : character_overview_rows)
             compose_native_text_rows(row, result, only_y, kCharacterOverviewRowRule);
         for (const auto &row : character_group_rows) {
-            append_character_group_civilization(row, result, only_y);
+            append_character_group_field(row, result, only_y);
             append_character_group_role(row, result, only_y);
             compose_native_text_rows(row, result, only_y, kCharacterGroupRowRule);
         }
