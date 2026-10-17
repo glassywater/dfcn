@@ -2483,10 +2483,48 @@ static void capture_native_limited_caption_draw(graphicst *graphics, const Nativ
     } catch (...) {}
 }
 
+#ifdef _WIN32
+static bool prepare_native_journal_search_draw(const NativeString *source,
+        std::string_view query) {
+    std::string_view display;
+    if (!native_string_view(source, &display, 4096) ||
+            (display != query &&
+             !(display.size() == query.size() + 1 && display.back() == '_' &&
+               display.substr(0, query.size()) == query) &&
+             !(query.empty() && display == "..."))) return false;
+    constexpr size_t visible_bytes = 20;
+    if (display.size() <= visible_bytes) return true;
+    size_t first = 0;
+    while (display.size() - first > visible_bytes) {
+        const auto decoded = decode_utf8_at(display, first);
+        first += decoded ? decoded->second : 1;
+    }
+    // ca24a copies the owned query into this disposable native string before
+    // adding its cursor. Only that proven copy is shortened for the textbox.
+    auto *temporary = const_cast<NativeString *>(source);
+    const size_t length = display.size() - first;
+    std::memmove(native_string_data(temporary), display.data() + first, length);
+    return native_string_set_length(temporary, length);
+}
+#endif
+
 static bool native_legacy_editable_draw(uintptr_t caller, const NativeString *source) {
 #ifdef _WIN32
     const uintptr_t base = native_history_profile_base();
     if (!base) return false;
+    if (caller == native_pe_address(base, 0xca2f6)) {
+        const uintptr_t screen = native_current_viewscreen();
+        if (!screen || screen > UINTPTR_MAX - 0x2a8 ||
+                !native_history_object_is(screen, "viewscreen_adventure_logst")) return false;
+        uint8_t entering = 0;
+        std::string text;
+        // The journal copies filter_str before adding its cursor. Its owned
+        // query remains editable while focused and while displaying results.
+        return reinterpret_cast<uintptr_t>(source) != screen + 0x288 &&
+            native_history_copy(screen + 0x2a8, entering) && entering <= 1 &&
+            native_history_copy_string(screen + 0x288, text) &&
+            prepare_native_journal_search_draw(source, text);
+    }
     // The stockpile and zone name boxes draw building.name (+0xd0)
     // directly, with separate calls while unfocused and while editing.
     // These stored input bytes stay authored even when they spell a UI

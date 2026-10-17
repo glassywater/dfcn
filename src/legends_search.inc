@@ -79,6 +79,18 @@ std::optional<std::string> Overlay::translate_journal_title(std::string_view sou
     return target;
 }
 
+bool Overlay::translated_journal_agreement_field_matches(std::string_view source,
+        std::string_view query, NativeJournalAgreementField kind) const {
+    TranslationStateScope translation_scope;
+    if (!config_.enabled || source.empty() || source.size() > 65536 ||
+            query.size() > 4096 || translated_search_query(query).literal.empty()) return false;
+    if (translated_search_text_matches(native_text_to_utf8(source), query)) return true;
+    // Independent card fields use the same typed grammar as their display;
+    // a person's name must not inherit an agreement title's interpretation.
+    const auto target = translate_journal_agreement_field(source, kind);
+    return target && translated_search_text_matches(*target, query);
+}
+
 bool Overlay::translated_journal_search_matches(std::string_view source,
         std::string_view query, JournalSearchKind kind,
         const NativeJusticePlotCaption *native_plot) const {

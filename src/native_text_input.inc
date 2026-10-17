@@ -11,6 +11,7 @@ static bool native_arena_filter_assign(const std::vector<NativeArenaCandidate> &
 static bool g_arena_translated_search_dirty = false;
 static void capture_name_editor_search_input(NativeString *, int, unsigned int);
 static void clear_name_editor_search();
+static bool native_journal_search_input(const NativeString *);
 
 static bool contains_non_ascii_codepoint(std::string_view text) {
     std::vector<uint32_t> codepoints;
@@ -73,6 +74,11 @@ static char capture_native_text_input(NativeString *target, int maximum,
     int forwarded_maximum = maximum;
     unsigned int forwarded_flags = flags;
     try {
+    // A complete Chinese name can need far more than the journal's native
+    // twenty letters when entered in pinyin. Only this owned filter expands;
+    // the journal renderer keeps its disposable display copy inside the box.
+    if (g_overlay.translation_enabled() && native_journal_search_input(target))
+        forwarded_maximum = maximum = 120;
     safe_target = native_string_view(target, &current, (1u << 20) - 1);
     if (safe_target) before.assign(current);
     const size_t input_length = bounded_text_input_length(input_text);

@@ -3734,6 +3734,8 @@ public:
     bool translated_journal_search_matches(std::string_view source,
         std::string_view query, JournalSearchKind kind,
         const NativeJusticePlotCaption *native_plot = nullptr) const;
+    bool translated_journal_agreement_field_matches(std::string_view source,
+        std::string_view query, NativeJournalAgreementField kind) const;
     bool name_editor_visible() const;
     uint64_t name_editor_search_revision() const { return name_editor_search_revision_; }
     bool translated_name_editor_search_matches(std::string_view word_id,
