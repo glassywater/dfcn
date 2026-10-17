@@ -1,12 +1,13 @@
 // Included in dfhack_auxiliary_help.inc's connected-frame loop after the
 // footer roles are known. confirm.lua:142 supplies a 45-column prewrapped
 // string to DialogWindow's plain Label, not a WrappedLabel. specs.lua's
-// conviction prompt contains the selected unit's actual visible name.
+// conviction prompt contains the selected unit's actual visible name, while
+// order removal appends a separately wrapped material/job description.
 {
     const auto confirm_dialog = [&]() -> bool {
         if (!confirm_action || action != "Yes, proceed") return false;
         using ConfirmPair = std::pair<std::string_view, std::string_view>;
-        static constexpr std::array<ConfirmPair, 13> questions{{
+        static constexpr std::array<ConfirmPair, 15> questions{{
             {"Cancel trade",
                 "Are you sure you want leave this screen? Selected items will not be saved."},
             {"Mark all fortress goods",
@@ -31,12 +32,18 @@
                 "Are you sure you want to remove this depot? Merchants are present and will lose profits."},
             {"Delete uniform",
                 "Are you sure you want to delete this uniform?"},
+            {"Remove manger order",
+                "Are you sure you want to remove this manager order?"},
+            {"Remove manager order",
+                "Are you sure you want to remove this manager order?"},
             {"Re-run finder",
                 "Are you sure you want to re-run the site finder? Your current map highlights will be lost."},
         }};
         const auto question = std::find_if(questions.begin(), questions.end(),
             [&](const ConfirmPair &pair) { return pair.first == title; });
         const bool conviction = title == "Confirm conviction";
+        const bool manager_order = title == "Remove manger order" ||
+            title == "Remove manager order";
         if (question == questions.end() && !conviction) return false;
 
         // showYesNoPrompt always receives on_settings from confirm.lua.
@@ -158,6 +165,71 @@
                 return false;
         }
 
+        std::optional<GuiPrompt> order_prompt;
+        if (manager_order) {
+            const auto order_description = [&]() -> std::optional<GuiPrompt> {
+                std::vector<Match> order_rows;
+                std::vector<std::string> native_lines;
+                std::string source;
+                for (int y = question_last + 2; y <= label_last; ++y) {
+                    const auto band = std::string_view(dfhack_context_rows[y]).substr(left, body_width);
+                    const auto ink = trim_view(band);
+                    if (ink.empty()) {
+                        for (int tail = y + 1; tail <= label_last; ++tail)
+                            if (!trim_view(std::string_view(dfhack_context_rows[tail]).substr(
+                                    left, body_width)).empty()) return std::nullopt;
+                        break;
+                    }
+                    const size_t indent = static_cast<size_t>(ink.data() - band.data());
+                    // make_order_material_desc starts with a space; RAW
+                    // reactions do not. Retain that actual Label indentation.
+                    const auto line = band.substr(0, indent + ink.size());
+                    if (line.size() > 45 || read_row(y).compare(left, line.size(), line) != 0)
+                        return std::nullopt;
+                    if (!source.empty()) source += ' ';
+                    source += line;
+                    native_lines.emplace_back(line);
+                    order_rows.push_back({left + static_cast<int>(indent), y,
+                        static_cast<int>(ink.size()), kDfhackHotkeysHintRule, {}, std::string(ink)});
+                }
+                if (order_rows.empty() || dfhack_item_native_wrap(source, 45) != native_lines)
+                    return std::nullopt;
+                const std::string name(trim_view(source));
+                const auto job_caption = [&](std::string_view job) -> std::optional<std::string> {
+                    if (auto target = exact_literal_translation(
+                            "DFHack GUI Notification job: " + std::string(job))) return target;
+                    if (auto target = translate_fortress_activity(std::string(job), true)) return target;
+                    return translate_dfhack_caption("job", job);
+                };
+                auto target = job_caption(name);
+                // Equipment orders use the RAW item name in place of a job
+                // caption. The complete item grammar already owns materials.
+                if (!target) target = translate_fortress_item_caption(name);
+                for (size_t split = name.find(' '); !target && split != std::string::npos;
+                        split = name.find(' ', split + 1)) {
+                    const auto material = translate_material_name(std::string_view(name).substr(0, split));
+                    if (!material) continue;
+                    const auto job = job_caption(std::string_view(name).substr(split + 1));
+                    if (!job) continue;
+                    auto composed = exact_literal_translation("DFHack GUI Confirmation order: {m} {j}");
+                    if (!composed) continue;
+                    const auto material_at = composed->find("{m}"), job_at = composed->find("{j}");
+                    if (material_at == std::string::npos || job_at == std::string::npos) continue;
+                    if (material_at < job_at) {
+                        composed->replace(job_at, 3, *job);
+                        composed->replace(material_at, 3, *material);
+                    } else {
+                        composed->replace(material_at, 3, *material);
+                        composed->replace(job_at, 3, *job);
+                    }
+                    target = std::move(composed);
+                }
+                if (!target || !contains_cjk_utf8(*target)) return std::nullopt;
+                return GuiPrompt{std::move(order_rows), std::move(*target)};
+            };
+            order_prompt = order_description();
+        }
+
         // The optional left-anchored pause control is a separate HotkeyLabel.
         // Never translate its key, or infer a partially overwritten control.
         constexpr std::string_view pause = "Pause this confirmation";
@@ -184,6 +256,7 @@
         dfhack_auxiliary_regions.push_back(*frame);
         auxiliary_literal(at, title_y, title, title_end, true, title_scope);
         append_gui_prompt(GuiPrompt{std::move(rows), *body_target}, left, body_right);
+        if (order_prompt) append_gui_prompt(*order_prompt, left, body_right);
         gui_literal(action_x, footer_y, action, body_right, "Confirmation action");
         gui_literal(left + static_cast<int>(settings_at), controls_y, settings,
             body_right, "Confirmation control");
