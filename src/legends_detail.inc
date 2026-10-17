@@ -497,6 +497,30 @@ static bool written_work_form_rule(const Rule &rule) {
         rule.source == "{b} is an example of {p}.";
 }
 
+static bool written_work_description_capture(const Rule &rule, size_t field) {
+    if (field >= rule.template_kinds.size() || rule.template_kinds[field] != 's')
+        return false;
+    // Native Knowledge and written-item carriers share the same 26-way
+    // genre selector. Its labels, and all 18 styles' strength/quality
+    // predicates, belong to the reviewed hv description namespace. An
+    // ordinary term lookup cannot see that namespace (and can read play as
+    // the UI action instead of the literary genre).
+    const std::string_view source = rule.source;
+    if (source.starts_with("{b} is a {s}") ||
+            source.starts_with("{b} is an {s}") ||
+            source.starts_with("This is an untitled {s}") ||
+            source.starts_with("The written portion consists of a {d} page ") ||
+            source.starts_with("Written on the item is "))
+        return true;
+    return source == "The writing {s}." ||
+        source == "The writing {s} and it {s}." ||
+        source == "The writing {s} yet it {s}." ||
+        source == "The writing and it {s}." ||
+        source == "The writing yet it {s}." ||
+        source == "The writing {s} and it ." ||
+        source == "The writing {s} yet it .";
+}
+
 static bool journal_habitat_rule(const Rule &rule) {
     return rule.source == "This creature can be found in {p}." ||
         rule.source == "This creature lives in {p}.";
@@ -949,7 +973,9 @@ std::optional<std::string> Overlay::translate_legends_nested(
             else mode += journal_habitat_rule(rule) ? ":habitat" : ":place";
             break;
         case 's':
-            if (rule.legends_identity && field == 0 &&
+            if (written_work_description_capture(rule, field))
+                mode += ":written-description";
+            else if (rule.legends_identity && field == 0 &&
                     (rule.source.starts_with("the {s} the {s}") ||
                      rule.source.starts_with("the {s} {s}") ||
                      rule.source.starts_with("a {s}") || rule.source.starts_with("an {s}")))
@@ -1095,7 +1121,8 @@ std::optional<std::string> Overlay::translate_legends_nested(
                     // phrase an office or dropping the existing noun grammar.
                     if (mode == "s:office-term")
                         target = translate_legends_office(part);
-                    if (!target) target = translate_legends_term(part);
+                    if (!target) target = translate_legends_term(part,
+                        mode == "s:written-description");
                 }
                 break;
             case 'e': {
@@ -1681,7 +1708,8 @@ std::optional<std::string> Overlay::translate_legends_text(
                             }
                         }
                         break;
-                    case 's': translated[i] = translate_legends_term(captures[i]); break;
+                    case 's': translated[i] = translate_legends_term(captures[i],
+                        written_work_description_capture(rule, i)); break;
                     case 'q': translated[i] = translate_legends_color(captures[i]); break;
                     case 't': translated[i] = translate_legends_anatomy(captures[i]); break;
                     case 'i': translated[i] = translate_legends_item(captures[i]); break;

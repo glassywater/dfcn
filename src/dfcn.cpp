@@ -3874,6 +3874,7 @@ private:
     }
     void clear_fallback_fonts();
     int unified_font_pixels() const;
+    int knowledge_text_row_height() const;
     bool set_font_pixel_size(int pixels) const;
     std::optional<FontLineMetrics> font_line_metrics(int pixels) const;
     std::optional<FontSizeMetrics> font_size_metrics(int pixels) const;
@@ -6287,6 +6288,16 @@ bool Overlay::set_font_pixel_size(int pixels) const {
 std::optional<Overlay::FontLineMetrics> Overlay::font_line_metrics(int /*pixels*/) const {
     const auto metrics = font_size_metrics(unified_font_pixels());
     return metrics ? std::optional<FontLineMetrics>(metrics->line) : std::nullopt;
+}
+
+int Overlay::knowledge_text_row_height() const {
+    const int native_height = native_text_row_height(gps_);
+    const auto metrics = font_line_metrics(unified_font_pixels());
+    // A reading document allocates its own wrapped lines. The shared font
+    // can be taller than DF's grid after UI scaling; advancing only one
+    // grid row then draws consecutive prose lines through one another.
+    return metrics ? std::max(native_height, metrics->bottom - metrics->top + 2)
+        : native_height;
 }
 
 std::optional<Overlay::FontSizeMetrics> Overlay::font_size_metrics(int pixels) const {
@@ -9435,8 +9446,8 @@ std::optional<std::string> Overlay::translate_overview_quote(
     return std::nullopt;
 }
 
-// Inverse of g_src/basics.cpp's get_number(), used only in the civilization
-// sentence's location-count field (including hyphenated tens and scales).
+// Inverse of g_src/basics.cpp's get_number(), shared by native civilization
+// location counts and art-form counts (including hyphenated tens and scales).
 static std::optional<int64_t> adventure_location_count(std::string_view source) {
     static constexpr std::string_view small[] = {
         "zero", "one", "two", "three", "four", "five", "six", "seven",
@@ -16271,6 +16282,7 @@ const NativeKnowledgeLayout &Overlay::prepare_native_knowledge_layout(
         bool font_ready = false;
         if (!targets.empty() && set_font_pixel_size(next.font_pixels)) {
             int ink_top = INT32_MAX;
+            int ink_bottom = INT32_MIN;
             int widest_glyph = 0;
             for (auto &[cp, metrics] : glyphs) {
                 metrics = {};
@@ -16284,12 +16296,16 @@ const NativeKnowledgeLayout &Overlay::prepare_native_knowledge_layout(
                     metrics.left = bitmap->left;
                     metrics.right = metrics.left + static_cast<int>(bitmap->width);
                     ink_top = std::min(ink_top, -bitmap->top);
+                    ink_bottom = std::max(ink_bottom,
+                        static_cast<int>(bitmap->rows) - bitmap->top);
                 }
                 widest_glyph = std::max(widest_glyph,
                     std::max(metrics.advance, metrics.right) - std::min(0, metrics.left));
             }
             if (ink_top != INT32_MAX && widest_glyph <= max_pixels) {
-                next.line_height_pixels = native_text_row_height(gps_);
+                next.line_height_pixels = personality || health || thoughts
+                    ? native_text_row_height(gps_)
+                    : std::max(knowledge_text_row_height(), ink_bottom - ink_top + 2);
                 font_ready = true;
             }
         }
@@ -24873,11 +24889,18 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                             static_cast<int>(rendered_lines.size()));
                     }
                     const int visible_target_lines = last_target_line - first_target_line;
-                    const int line_height = native_text_row_height(gps_);
-                    const int display_top = std::clamp(
-                        poetic_description_rows.front().y * gps_->tile_pixel_y, 0,
-                        std::max(0, gps_->dimy * gps_->tile_pixel_y -
-                            visible_target_lines * line_height));
+                    const int line_height = knowledge_text_row_height();
+                    const int display_top =
+                        poetic_description_rows.front().y * gps_->tile_pixel_y;
+                    const int origin_x = (gps_->screen_pixel_x -
+                        gps_->dimx * gps_->tile_pixel_x) / 2;
+                    const int origin_y = (gps_->screen_pixel_y -
+                        gps_->dimy * gps_->tile_pixel_y) / 2;
+                    const SDL_Rect prose_clip{
+                        origin_x + paragraph_x * gps_->tile_pixel_x,
+                        origin_y + display_top,
+                        paragraph_width * gps_->tile_pixel_x,
+                        gps_->dimy * gps_->tile_pixel_y - display_top};
                     for (int visible_line = 0;
                          visible_line < visible_target_lines;
                          ++visible_line) {
@@ -24902,6 +24925,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                         visible.layout_pixel_y = pixel_y % gps_->tile_pixel_y;
                         visible.layout_line_height_pixels = line_height;
                         visible.layout_fixed_baseline = true;
+                        visible.layout_native_clip = prose_clip;
                         visible.layout_length = paragraph_width;
                         visible.layout_left = true;
                         visible.layout_font_pixels = font_pixels;
@@ -25544,11 +25568,8 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                 static_cast<int>(rendered_lines.size()));
         }
         const int visible_target_lines = last_target_line - first_target_line;
-        const int line_height = native_text_row_height(gps_);
-        const int display_top = std::clamp(
-            paragraph.rows.front().y * gps_->tile_pixel_y, 0,
-            std::max(0, gps_->dimy * gps_->tile_pixel_y -
-                visible_target_lines * line_height));
+        const int line_height = knowledge_text_row_height();
+        const int display_top = paragraph.rows.front().y * gps_->tile_pixel_y;
         const size_t first_visible_line = musical_visible_lines.size();
         for (int visible_line = 0;
              visible_line < visible_target_lines; ++visible_line) {
@@ -25666,19 +25687,8 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                const MusicalLayoutBlock &right) {
                 return left.source_y < right.source_y;
             });
-        int document_height = 0;
-        bool measure_first_block = true;
-        for (const MusicalLayoutBlock &block : musical_layout_blocks) {
-            if (!measure_first_block && !block.notation) document_height += gps_->tile_pixel_y;
-            measure_first_block = false;
-            for (size_t line = 0; line < block.line_count; ++line) {
-                const Match &match = musical_visible_lines[block.first_line + line];
-                document_height += std::max(gps_->tile_pixel_y, match.layout_line_height_pixels);
-            }
-        }
-        int compact_pixel_y = std::clamp(
-            musical_layout_blocks.front().source_y * gps_->tile_pixel_y, 0,
-            std::max(0, gps_->dimy * gps_->tile_pixel_y - document_height));
+        int compact_pixel_y =
+            musical_layout_blocks.front().source_y * gps_->tile_pixel_y;
         bool first_block = true;
         for (const MusicalLayoutBlock &block : musical_layout_blocks) {
             if (!first_block && !block.notation) compact_pixel_y += gps_->tile_pixel_y;
@@ -25691,6 +25701,23 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                 match.layout_fixed_baseline = true;
                 compact_pixel_y += std::max(gps_->tile_pixel_y, match.layout_line_height_pixels);
             }
+        }
+    }
+    if (!musical_layout_blocks.empty()) {
+        const int document_top = std::min_element(musical_layout_blocks.begin(),
+            musical_layout_blocks.end(), [](const auto &a, const auto &b) {
+                return a.source_y < b.source_y;
+            })->source_y;
+        const int origin_x = (gps_->screen_pixel_x -
+            gps_->dimx * gps_->tile_pixel_x) / 2;
+        const int origin_y = (gps_->screen_pixel_y -
+            gps_->dimy * gps_->tile_pixel_y) / 2;
+        for (auto &line : musical_visible_lines) {
+            line.layout_native_clip = SDL_Rect{
+                origin_x + line.layout_x * gps_->tile_pixel_x,
+                origin_y + document_top * gps_->tile_pixel_y,
+                line.layout_length * gps_->tile_pixel_x,
+                (gps_->dimy - document_top) * gps_->tile_pixel_y};
         }
     }
     result.insert(result.end(),

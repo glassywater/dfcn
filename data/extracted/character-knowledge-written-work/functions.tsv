@@ -2,6 +2,7 @@ edition	image	role	start_rva	unwind_end_rva	code_end_rva	source
 reference	PE:6a70a6d9:02711000	reference-description:general_refst	0x72280	0x722a0	0x722a0	reference-72280.asm
 reference	PE:6a70a6d9:02711000	written-work-content-caller	0x1aa060	0x1b9a18	0x1b9780	reference-1aa060.asm
 reference	PE:6a70a6d9:02711000	written-work-content-caller	0x26b800	0x26d85c	0x26d7cc	reference-26b800.asm
+reference	PE:6a70a6d9:02711000	dance-movement-description	0x4e99f0	0x4ea814	0x4ea6d4	reference-4e99f0.asm
 reference	PE:6a70a6d9:02711000	knowledge-dance-form	0x4ea820	0x4eeb08	0x4ee5d4	reference-4ea820.asm
 reference	PE:6a70a6d9:02711000	chapter-cardinal	0x52e360	0x52eb6c	0x52eafc	reference-52e360.asm
 reference	PE:6a70a6d9:02711000	chapter-ordinal	0x52eb70	0x52f090	0x52f040	reference-52eb70.asm
@@ -12,7 +13,9 @@ reference	PE:6a70a6d9:02711000	written-work-style	0xcc5520	0xcc5d50	0xcc5d08	ref
 reference	PE:6a70a6d9:02711000	written-work-content	0xcc5d50	0xcc6a0e	0xcc69a0	reference-cc5d50.asm
 reference	PE:6a70a6d9:02711000	written-work-content-caller	0xcc6a10	0xcc7020	0xcc6f94	reference-cc6a10.asm
 reference	PE:6a70a6d9:02711000	written-work-content-caller	0xcc7020	0xcc75f8	0xcc7590	reference-cc7020.asm
+reference	PE:6a70a6d9:02711000	musical-register-selector	0xdd4db0	0xdd4ec0	0xdd4e6c	reference-dd4db0.asm
 reference	PE:6a70a6d9:02711000	knowledge-musical-form	0xdd5ce0	0xddd464	0xddcd04	reference-dd5ce0.asm
+reference	PE:6a70a6d9:02711000	poetic-topic	0xe76080	0xe763fc	0xe763a8	reference-e76080.asm
 reference	PE:6a70a6d9:02711000	knowledge-poetic-form	0xe76400	0xe7cec8	0xe7c860	reference-e76400.asm
 reference	PE:6a70a6d9:02711000	reference-description:general_ref_poetic_formst	0xedfd50	0xedfe44	0xedfe44	reference-edfd50.asm
 reference	PE:6a70a6d9:02711000	reference-description:general_ref_musical_formst	0xedfe50	0xedffd1	0xedffd1	reference-edfe50.asm
@@ -38,6 +41,7 @@ reference	PE:6a70a6d9:02711000	written-work-content-caller	0x148da20	0x148fc08	0
 classic	PE:6a70b91c:0270a000	reference-description:general_refst	0x72210	0x72230	0x72230	classic-72210.asm
 classic	PE:6a70b91c:0270a000	written-work-content-caller	0x1a9ff0	0x1b99a8	0x1b9710	classic-1a9ff0.asm
 classic	PE:6a70b91c:0270a000	written-work-content-caller	0x2693c0	0x26b41c	0x26b38c	classic-2693c0.asm
+classic	PE:6a70b91c:0270a000	dance-movement-description	0x4e75b0	0x4e83d4	0x4e8294	classic-4e75b0.asm
 classic	PE:6a70b91c:0270a000	knowledge-dance-form	0x4e83e0	0x4ec6c8	0x4ec194	classic-4e83e0.asm
 classic	PE:6a70b91c:0270a000	chapter-cardinal	0x52bd80	0x52c58c	0x52c51c	classic-52bd80.asm
 classic	PE:6a70b91c:0270a000	chapter-ordinal	0x52c590	0x52cab0	0x52ca60	classic-52c590.asm
@@ -48,7 +52,9 @@ classic	PE:6a70b91c:0270a000	written-work-style	0xcc2560	0xcc2d90	0xcc2d48	class
 classic	PE:6a70b91c:0270a000	written-work-content	0xcc2d90	0xcc3a4e	0xcc39e0	classic-cc2d90.asm
 classic	PE:6a70b91c:0270a000	written-work-content-caller	0xcc3a50	0xcc4060	0xcc3fd4	classic-cc3a50.asm
 classic	PE:6a70b91c:0270a000	written-work-content-caller	0xcc4060	0xcc4638	0xcc45d0	classic-cc4060.asm
+classic	PE:6a70b91c:0270a000	musical-register-selector	0xdcfd20	0xdcfe30	0xdcfddc	classic-dcfd20.asm
 classic	PE:6a70b91c:0270a000	knowledge-musical-form	0xdd0c50	0xdd83d4	0xdd7c74	classic-dd0c50.asm
+classic	PE:6a70b91c:0270a000	poetic-topic	0xe70ff0	0xe7136c	0xe71318	classic-e70ff0.asm
 classic	PE:6a70b91c:0270a000	knowledge-poetic-form	0xe71370	0xe77e38	0xe777d0	classic-e71370.asm
 classic	PE:6a70b91c:0270a000	reference-description:general_ref_poetic_formst	0xedacc0	0xedadb4	0xedadb4	classic-edacc0.asm
 classic	PE:6a70b91c:0270a000	reference-description:general_ref_musical_formst	0xedadc0	0xedaf41	0xedaf41	classic-edadc0.asm

@@ -2054,6 +2054,72 @@ reference	written-work-content-caller	0x26b800	0x26d507	test   rax,rax
 reference	written-work-content-caller	0x26b800	0x26d525	test   rax,rax
 reference	written-work-content-caller	0x26b800	0x26d53b	cmp    DWORD PTR [rip+0x162ed56],0x1        # 0x14189c298
 reference	written-work-content-caller	0x26b800	0x26d555	test   al,al
+reference	dance-movement-description	0x4e99f0	0x4e9a2b	test   al,0x1
+reference	dance-movement-description	0x4e99f0	0x4e9a44	cmp    QWORD PTR [r14+0x18],0xf
+reference	dance-movement-description	0x4e99f0	0x4e9a6c	test   al,0x4
+reference	dance-movement-description	0x4e99f0	0x4e9a85	cmp    QWORD PTR [r14+0x18],0xf
+reference	dance-movement-description	0x4e99f0	0x4e9aa6	cmp    ebx,0x1
+reference	dance-movement-description	0x4e99f0	0x4e9ac1	test   al,0x2
+reference	dance-movement-description	0x4e99f0	0x4e9ada	cmp    QWORD PTR [r14+0x18],0xf
+reference	dance-movement-description	0x4e99f0	0x4e9af0	cmp    edi,0x1
+reference	dance-movement-description	0x4e99f0	0x4e9b35	cmp    rax,rcx
+reference	dance-movement-description	0x4e99f0	0x4e9b3a	test   BYTE PTR [rax],0x2
+reference	dance-movement-description	0x4e99f0	0x4e9b65	test   r13,r13
+reference	dance-movement-description	0x4e99f0	0x4e9b80	cmp    r13,0x2
+reference	dance-movement-description	0x4e99f0	0x4e9b86	test   rbx,rbx
+reference	dance-movement-description	0x4e99f0	0x4e9b9a	cmp    r13,0x2
+reference	dance-movement-description	0x4e99f0	0x4e9ba4	cmp    ecx,eax
+reference	dance-movement-description	0x4e99f0	0x4e9c08	cmp    rdx,rdi
+reference	dance-movement-description	0x4e99f0	0x4e9c13	cmp    r15,rax
+reference	dance-movement-description	0x4e99f0	0x4e9c1f	cmp    r13,0x1
+reference	dance-movement-description	0x4e99f0	0x4e9c38	test   BYTE PTR [r14+0x80],0x2
+reference	dance-movement-description	0x4e99f0	0x4e9c6b	cmp    ecx,0x21
+reference	dance-movement-description	0x4e99f0	0x4e9c7a	bt     rax,rcx
+reference	dance-movement-description	0x4e99f0	0x4e9c9f	test   edx,edx
+reference	dance-movement-description	0x4e99f0	0x4e9cb2	cmp    edx,0x1
+reference	dance-movement-description	0x4e99f0	0x4e9d02	cmp    QWORD PTR [rsp+0x60],0xf
+reference	dance-movement-description	0x4e99f0	0x4e9d36	cmp    ecx,0x2d
+reference	dance-movement-description	0x4e99f0	0x4e9db1	test   bl,bl
+reference	dance-movement-description	0x4e99f0	0x4e9dee	test   bl,bl
+reference	dance-movement-description	0x4e99f0	0x4e9e19	test   bl,bl
+reference	dance-movement-description	0x4e99f0	0x4e9e8c	test   bl,bl
+reference	dance-movement-description	0x4e99f0	0x4e9f41	test   bl,bl
+reference	dance-movement-description	0x4e99f0	0x4e9f78	test   bl,bl
+reference	dance-movement-description	0x4e99f0	0x4ea033	test   bl,bl
+reference	dance-movement-description	0x4e99f0	0x4ea058	test   bl,bl
+reference	dance-movement-description	0x4e99f0	0x4ea115	cmp    DWORD PTR [rax+r15*4],0xffffffff
+reference	dance-movement-description	0x4e99f0	0x4ea13a	cmp    edx,0x1
+reference	dance-movement-description	0x4e99f0	0x4ea147	cmp    DWORD PTR [rax+r15*4],0x2
+reference	dance-movement-description	0x4e99f0	0x4ea168	cmp    DWORD PTR [rax+r15*4],ebx
+reference	dance-movement-description	0x4e99f0	0x4ea18a	cmp    DWORD PTR [rax+r15*4],ebx
+reference	dance-movement-description	0x4e99f0	0x4ea1b7	cmp    ecx,0x2d
+reference	dance-movement-description	0x4e99f0	0x4ea1bc	test   r8b,r8b
+reference	dance-movement-description	0x4e99f0	0x4ea1fa	cmp    ecx,0x5a
+reference	dance-movement-description	0x4e99f0	0x4ea223	cmp    ecx,0xb4
+reference	dance-movement-description	0x4e99f0	0x4ea248	cmp    ecx,0x21
+reference	dance-movement-description	0x4e99f0	0x4ea4bc	test   dl,0x8
+reference	dance-movement-description	0x4e99f0	0x4ea4c5	test   dl,0x10
+reference	dance-movement-description	0x4e99f0	0x4ea4ce	test   dl,0x20
+reference	dance-movement-description	0x4e99f0	0x4ea4d7	test   edi,edi
+reference	dance-movement-description	0x4e99f0	0x4ea4e2	test   ebx,ebx
+reference	dance-movement-description	0x4e99f0	0x4ea4f0	cmp    eax,0x1
+reference	dance-movement-description	0x4e99f0	0x4ea513	test   DWORD PTR [rax+r15*4],ebp
+reference	dance-movement-description	0x4e99f0	0x4ea51f	cmp    ebp,0x4
+reference	dance-movement-description	0x4e99f0	0x4ea524	cmp    ebp,0x8
+reference	dance-movement-description	0x4e99f0	0x4ea529	cmp    ebp,0x10
+reference	dance-movement-description	0x4e99f0	0x4ea52e	cmp    ebp,0x20
+reference	dance-movement-description	0x4e99f0	0x4ea56f	cmp    edi,0x2
+reference	dance-movement-description	0x4e99f0	0x4ea583	cmp    edi,0x1
+reference	dance-movement-description	0x4e99f0	0x4ea59f	cmp    ebx,0x4
+reference	dance-movement-description	0x4e99f0	0x4ea5c5	test   cl,0x40
+reference	dance-movement-description	0x4e99f0	0x4ea5d9	test   cl,cl
+reference	dance-movement-description	0x4e99f0	0x4ea5f7	cmp    r15,QWORD PTR [rsp+0x38]
+reference	dance-movement-description	0x4e99f0	0x4ea5fe	cmp    r15,rdi
+reference	dance-movement-description	0x4e99f0	0x4ea618	cmp    r12d,eax
+reference	dance-movement-description	0x4e99f0	0x4ea624	cmp    r12d,eax
+reference	dance-movement-description	0x4e99f0	0x4ea63b	cmp    r12d,eax
+reference	dance-movement-description	0x4e99f0	0x4ea65b	cmp    r15,rdi
+reference	dance-movement-description	0x4e99f0	0x4ea694	cmp    rbx,r13
 reference	knowledge-dance-form	0x4ea820	0x4ea8b3	cmp    eax,0x5
 reference	knowledge-dance-form	0x4ea820	0x4ea8e0	test   eax,eax
 reference	knowledge-dance-form	0x4ea820	0x4ea8e4	cmp    eax,0x2
@@ -3044,6 +3110,14 @@ reference	written-work-content-caller	0xcc7020	0xcc750c	test   esi,esi
 reference	written-work-content-caller	0xcc7020	0xcc752b	cmp    rdx,0xf
 reference	written-work-content-caller	0xcc7020	0xcc753c	cmp    rdx,0x1000
 reference	written-work-content-caller	0xcc7020	0xcc7554	cmp    rax,0x1f
+reference	musical-register-selector	0xdd4db0	0xdd4dc5	cmp    rax,rcx
+reference	musical-register-selector	0xdd4db0	0xdd4dd1	cmp    r9d,0x3e
+reference	musical-register-selector	0xdd4db0	0xdd4df7	test   edx,edx
+reference	musical-register-selector	0xdd4db0	0xdd4e0b	test   edx,edx
+reference	musical-register-selector	0xdd4db0	0xdd4e1f	test   edx,edx
+reference	musical-register-selector	0xdd4db0	0xdd4e32	test   edx,edx
+reference	musical-register-selector	0xdd4db0	0xdd4e46	test   edx,edx
+reference	musical-register-selector	0xdd4db0	0xdd4e5a	test   edx,edx
 reference	knowledge-musical-form	0xdd5ce0	0xdd5d6d	test   ecx,ecx
 reference	knowledge-musical-form	0xdd5ce0	0xdd5d79	cmp    ecx,esi
 reference	knowledge-musical-form	0xdd5ce0	0xdd5d95	cmp    DWORD PTR [r13+0x11c],0xffffffff
@@ -3740,6 +3814,18 @@ reference	knowledge-musical-form	0xdd5ce0	0xddcbea	cmp    BYTE PTR [rsp+0x34],0x
 reference	knowledge-musical-form	0xdd5ce0	0xddcc36	test   al,al
 reference	knowledge-musical-form	0xdd5ce0	0xddcc6c	cmp    r14d,eax
 reference	knowledge-musical-form	0xdd5ce0	0xddcca1	cmp    r13d,eax
+reference	poetic-topic	0xe76080	0xe76080	cmp    edx,0x14
+reference	poetic-topic	0xe76080	0xe76128	cmp    r8d,0xffffffff
+reference	poetic-topic	0xe76080	0xe76132	cmp    r8d,0x15
+reference	poetic-topic	0xe76080	0xe7613c	cmp    r8d,0x1e
+reference	poetic-topic	0xe76080	0xe76146	cmp    r8d,0x30
+reference	poetic-topic	0xe76080	0xe76150	cmp    r8d,0x4b
+reference	poetic-topic	0xe76080	0xe7615a	cmp    r8d,0x7a
+reference	poetic-topic	0xe76080	0xe761a5	cmp    QWORD PTR [rsp+0x118],0xf
+reference	poetic-topic	0xe76080	0xe761d0	cmp    rdx,0xf
+reference	poetic-topic	0xe76080	0xe761e8	cmp    rdx,0x1000
+reference	poetic-topic	0xe76080	0xe76200	cmp    rax,0x1f
+reference	poetic-topic	0xe76080	0xe7627d	cmp    r8d,0xffffffff
 reference	knowledge-poetic-form	0xe76400	0xe764a5	cmp    ecx,0x1
 reference	knowledge-poetic-form	0xe76400	0xe764ff	cmp    eax,0x3
 reference	knowledge-poetic-form	0xe76400	0xe7651b	test   eax,eax
@@ -6927,6 +7013,72 @@ classic	written-work-content-caller	0x2693c0	0x26b0c7	test   rax,rax
 classic	written-work-content-caller	0x2693c0	0x26b0e5	test   rax,rax
 classic	written-work-content-caller	0x2693c0	0x26b0fb	cmp    DWORD PTR [rip+0x162b166],0x1        # 0x141896268
 classic	written-work-content-caller	0x2693c0	0x26b115	test   al,al
+classic	dance-movement-description	0x4e75b0	0x4e75eb	test   al,0x1
+classic	dance-movement-description	0x4e75b0	0x4e7604	cmp    QWORD PTR [r14+0x18],0xf
+classic	dance-movement-description	0x4e75b0	0x4e762c	test   al,0x4
+classic	dance-movement-description	0x4e75b0	0x4e7645	cmp    QWORD PTR [r14+0x18],0xf
+classic	dance-movement-description	0x4e75b0	0x4e7666	cmp    ebx,0x1
+classic	dance-movement-description	0x4e75b0	0x4e7681	test   al,0x2
+classic	dance-movement-description	0x4e75b0	0x4e769a	cmp    QWORD PTR [r14+0x18],0xf
+classic	dance-movement-description	0x4e75b0	0x4e76b0	cmp    edi,0x1
+classic	dance-movement-description	0x4e75b0	0x4e76f5	cmp    rax,rcx
+classic	dance-movement-description	0x4e75b0	0x4e76fa	test   BYTE PTR [rax],0x2
+classic	dance-movement-description	0x4e75b0	0x4e7725	test   r13,r13
+classic	dance-movement-description	0x4e75b0	0x4e7740	cmp    r13,0x2
+classic	dance-movement-description	0x4e75b0	0x4e7746	test   rbx,rbx
+classic	dance-movement-description	0x4e75b0	0x4e775a	cmp    r13,0x2
+classic	dance-movement-description	0x4e75b0	0x4e7764	cmp    ecx,eax
+classic	dance-movement-description	0x4e75b0	0x4e77c8	cmp    rdx,rdi
+classic	dance-movement-description	0x4e75b0	0x4e77d3	cmp    r15,rax
+classic	dance-movement-description	0x4e75b0	0x4e77df	cmp    r13,0x1
+classic	dance-movement-description	0x4e75b0	0x4e77f8	test   BYTE PTR [r14+0x80],0x2
+classic	dance-movement-description	0x4e75b0	0x4e782b	cmp    ecx,0x21
+classic	dance-movement-description	0x4e75b0	0x4e783a	bt     rax,rcx
+classic	dance-movement-description	0x4e75b0	0x4e785f	test   edx,edx
+classic	dance-movement-description	0x4e75b0	0x4e7872	cmp    edx,0x1
+classic	dance-movement-description	0x4e75b0	0x4e78c2	cmp    QWORD PTR [rsp+0x60],0xf
+classic	dance-movement-description	0x4e75b0	0x4e78f6	cmp    ecx,0x2d
+classic	dance-movement-description	0x4e75b0	0x4e7971	test   bl,bl
+classic	dance-movement-description	0x4e75b0	0x4e79ae	test   bl,bl
+classic	dance-movement-description	0x4e75b0	0x4e79d9	test   bl,bl
+classic	dance-movement-description	0x4e75b0	0x4e7a4c	test   bl,bl
+classic	dance-movement-description	0x4e75b0	0x4e7b01	test   bl,bl
+classic	dance-movement-description	0x4e75b0	0x4e7b38	test   bl,bl
+classic	dance-movement-description	0x4e75b0	0x4e7bf3	test   bl,bl
+classic	dance-movement-description	0x4e75b0	0x4e7c18	test   bl,bl
+classic	dance-movement-description	0x4e75b0	0x4e7cd5	cmp    DWORD PTR [rax+r15*4],0xffffffff
+classic	dance-movement-description	0x4e75b0	0x4e7cfa	cmp    edx,0x1
+classic	dance-movement-description	0x4e75b0	0x4e7d07	cmp    DWORD PTR [rax+r15*4],0x2
+classic	dance-movement-description	0x4e75b0	0x4e7d28	cmp    DWORD PTR [rax+r15*4],ebx
+classic	dance-movement-description	0x4e75b0	0x4e7d4a	cmp    DWORD PTR [rax+r15*4],ebx
+classic	dance-movement-description	0x4e75b0	0x4e7d77	cmp    ecx,0x2d
+classic	dance-movement-description	0x4e75b0	0x4e7d7c	test   r8b,r8b
+classic	dance-movement-description	0x4e75b0	0x4e7dba	cmp    ecx,0x5a
+classic	dance-movement-description	0x4e75b0	0x4e7de3	cmp    ecx,0xb4
+classic	dance-movement-description	0x4e75b0	0x4e7e08	cmp    ecx,0x21
+classic	dance-movement-description	0x4e75b0	0x4e807c	test   dl,0x8
+classic	dance-movement-description	0x4e75b0	0x4e8085	test   dl,0x10
+classic	dance-movement-description	0x4e75b0	0x4e808e	test   dl,0x20
+classic	dance-movement-description	0x4e75b0	0x4e8097	test   edi,edi
+classic	dance-movement-description	0x4e75b0	0x4e80a2	test   ebx,ebx
+classic	dance-movement-description	0x4e75b0	0x4e80b0	cmp    eax,0x1
+classic	dance-movement-description	0x4e75b0	0x4e80d3	test   DWORD PTR [rax+r15*4],ebp
+classic	dance-movement-description	0x4e75b0	0x4e80df	cmp    ebp,0x4
+classic	dance-movement-description	0x4e75b0	0x4e80e4	cmp    ebp,0x8
+classic	dance-movement-description	0x4e75b0	0x4e80e9	cmp    ebp,0x10
+classic	dance-movement-description	0x4e75b0	0x4e80ee	cmp    ebp,0x20
+classic	dance-movement-description	0x4e75b0	0x4e812f	cmp    edi,0x2
+classic	dance-movement-description	0x4e75b0	0x4e8143	cmp    edi,0x1
+classic	dance-movement-description	0x4e75b0	0x4e815f	cmp    ebx,0x4
+classic	dance-movement-description	0x4e75b0	0x4e8185	test   cl,0x40
+classic	dance-movement-description	0x4e75b0	0x4e8199	test   cl,cl
+classic	dance-movement-description	0x4e75b0	0x4e81b7	cmp    r15,QWORD PTR [rsp+0x38]
+classic	dance-movement-description	0x4e75b0	0x4e81be	cmp    r15,rdi
+classic	dance-movement-description	0x4e75b0	0x4e81d8	cmp    r12d,eax
+classic	dance-movement-description	0x4e75b0	0x4e81e4	cmp    r12d,eax
+classic	dance-movement-description	0x4e75b0	0x4e81fb	cmp    r12d,eax
+classic	dance-movement-description	0x4e75b0	0x4e821b	cmp    r15,rdi
+classic	dance-movement-description	0x4e75b0	0x4e8254	cmp    rbx,r13
 classic	knowledge-dance-form	0x4e83e0	0x4e8473	cmp    eax,0x5
 classic	knowledge-dance-form	0x4e83e0	0x4e84a0	test   eax,eax
 classic	knowledge-dance-form	0x4e83e0	0x4e84a4	cmp    eax,0x2
@@ -7917,6 +8069,14 @@ classic	written-work-content-caller	0xcc4060	0xcc454c	test   esi,esi
 classic	written-work-content-caller	0xcc4060	0xcc456b	cmp    rdx,0xf
 classic	written-work-content-caller	0xcc4060	0xcc457c	cmp    rdx,0x1000
 classic	written-work-content-caller	0xcc4060	0xcc4594	cmp    rax,0x1f
+classic	musical-register-selector	0xdcfd20	0xdcfd35	cmp    rax,rcx
+classic	musical-register-selector	0xdcfd20	0xdcfd41	cmp    r9d,0x3e
+classic	musical-register-selector	0xdcfd20	0xdcfd67	test   edx,edx
+classic	musical-register-selector	0xdcfd20	0xdcfd7b	test   edx,edx
+classic	musical-register-selector	0xdcfd20	0xdcfd8f	test   edx,edx
+classic	musical-register-selector	0xdcfd20	0xdcfda2	test   edx,edx
+classic	musical-register-selector	0xdcfd20	0xdcfdb6	test   edx,edx
+classic	musical-register-selector	0xdcfd20	0xdcfdca	test   edx,edx
 classic	knowledge-musical-form	0xdd0c50	0xdd0cdd	test   ecx,ecx
 classic	knowledge-musical-form	0xdd0c50	0xdd0ce9	cmp    ecx,esi
 classic	knowledge-musical-form	0xdd0c50	0xdd0d05	cmp    DWORD PTR [r13+0x11c],0xffffffff
@@ -8613,6 +8773,18 @@ classic	knowledge-musical-form	0xdd0c50	0xdd7b5a	cmp    BYTE PTR [rsp+0x34],0x0
 classic	knowledge-musical-form	0xdd0c50	0xdd7ba6	test   al,al
 classic	knowledge-musical-form	0xdd0c50	0xdd7bdc	cmp    r14d,eax
 classic	knowledge-musical-form	0xdd0c50	0xdd7c11	cmp    r13d,eax
+classic	poetic-topic	0xe70ff0	0xe70ff0	cmp    edx,0x14
+classic	poetic-topic	0xe70ff0	0xe71098	cmp    r8d,0xffffffff
+classic	poetic-topic	0xe70ff0	0xe710a2	cmp    r8d,0x15
+classic	poetic-topic	0xe70ff0	0xe710ac	cmp    r8d,0x1e
+classic	poetic-topic	0xe70ff0	0xe710b6	cmp    r8d,0x30
+classic	poetic-topic	0xe70ff0	0xe710c0	cmp    r8d,0x4b
+classic	poetic-topic	0xe70ff0	0xe710ca	cmp    r8d,0x7a
+classic	poetic-topic	0xe70ff0	0xe71115	cmp    QWORD PTR [rsp+0x118],0xf
+classic	poetic-topic	0xe70ff0	0xe71140	cmp    rdx,0xf
+classic	poetic-topic	0xe70ff0	0xe71158	cmp    rdx,0x1000
+classic	poetic-topic	0xe70ff0	0xe71170	cmp    rax,0x1f
+classic	poetic-topic	0xe70ff0	0xe711ed	cmp    r8d,0xffffffff
 classic	knowledge-poetic-form	0xe71370	0xe71415	cmp    ecx,0x1
 classic	knowledge-poetic-form	0xe71370	0xe7146f	cmp    eax,0x3
 classic	knowledge-poetic-form	0xe71370	0xe7148b	test   eax,eax

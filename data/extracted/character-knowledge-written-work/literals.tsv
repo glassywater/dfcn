@@ -186,6 +186,134 @@ reference	written-work-content-caller	0x26b800	0x26d6b4	0x161b7a0	rip-relative	T
 reference	written-work-content-caller	0x26b800	0x26d6c8	0x15fd258	rip-relative	[B]
 reference	written-work-content-caller	0x26b800	0x26d71a	0x161b7f0	rip-relative	This organizational activity will branch into specific play events.
 reference	written-work-content-caller	0x26b800	0x26d72e	0x15fd258	rip-relative	[B]
+reference	dance-movement-description	0x4e99f0	0x4e9a35	0x16493c8	rip-relative	called the 
+reference	dance-movement-description	0x4e99f0	0x4e9a60	0x15fd968	rip-relative	.  
+reference	dance-movement-description	0x4e99f0	0x4e9a76	0x15ed9bc	rip-relative	The 
+reference	dance-movement-description	0x4e99f0	0x4e9aad	0x16491f0	rip-relative	 is one of the fundamental dance moves.  
+reference	dance-movement-description	0x4e99f0	0x4e9ab4	0x16493d8	rip-relative	 the fundamental dance move.  
+reference	dance-movement-description	0x4e99f0	0x4e9acb	0x15ed9bc	rip-relative	The 
+reference	dance-movement-description	0x4e99f0	0x4e9afb	0x1649220	rip-relative	 the fundamental dance position.  
+reference	dance-movement-description	0x4e99f0	0x4e9b0a	0x1649248	rip-relative	 is one of the fundamental dance positions.  
+reference	dance-movement-description	0x4e99f0	0x4e9b71	0x164702c	rip-relative	there
+reference	dance-movement-description	0x4e99f0	0x4e9b91	0x1649278	rip-relative	First, 
+reference	dance-movement-description	0x4e99f0	0x4e9bae	0x1649288	rip-relative	Finally, 
+reference	dance-movement-description	0x4e99f0	0x4e9bbd	0x1649280	rip-relative	Then 
+reference	dance-movement-description	0x4e99f0	0x4e9bcc	0x164702c	rip-relative	there
+reference	dance-movement-description	0x4e99f0	0x4e9c18	0x1649294	rip-relative	There
+reference	dance-movement-description	0x4e99f0	0x4e9c48	0x16492a0	rip-relative	 should be
+reference	dance-movement-description	0x4e99f0	0x4e9c57	0x15eebd8	rip-relative	 is
+reference	dance-movement-description	0x4e99f0	0x4e9c86	0x16492ac	rip-relative	 a
+reference	dance-movement-description	0x4e99f0	0x4e9cbd	0x16492b0	rip-relative	 a series of 
+reference	dance-movement-description	0x4e99f0	0x4e9d51	0x16492c0	rip-relative	 graceful
+reference	dance-movement-description	0x4e99f0	0x4e9d63	0x16492d0	rip-relative	 serene
+reference	dance-movement-description	0x4e99f0	0x4e9d75	0x16492d8	rip-relative	 calm
+reference	dance-movement-description	0x4e99f0	0x4e9d87	0x16492e0	rip-relative	 grotesque
+reference	dance-movement-description	0x4e99f0	0x4e9d99	0x16492ec	rip-relative	 crude
+reference	dance-movement-description	0x4e99f0	0x4e9da5	0x16492f8	rip-relative	 refined
+reference	dance-movement-description	0x4e99f0	0x4e9dbb	0x1649304	rip-relative	n
+reference	dance-movement-description	0x4e99f0	0x4e9dd0	0x1649308	rip-relative	 understated
+reference	dance-movement-description	0x4e99f0	0x4e9de2	0x1649318	rip-relative	 delicate
+reference	dance-movement-description	0x4e99f0	0x4e9df8	0x1649304	rip-relative	n
+reference	dance-movement-description	0x4e99f0	0x4e9e0d	0x1649328	rip-relative	 elaborate
+reference	dance-movement-description	0x4e99f0	0x4e9e23	0x1649304	rip-relative	n
+reference	dance-movement-description	0x4e99f0	0x4e9e38	0x1649338	rip-relative	 expressive
+reference	dance-movement-description	0x4e99f0	0x4e9e4a	0x1649348	rip-relative	 strong
+reference	dance-movement-description	0x4e99f0	0x4e9e5c	0x1649350	rip-relative	 large
+reference	dance-movement-description	0x4e99f0	0x4e9e6e	0x1649358	rip-relative	 weightless
+reference	dance-movement-description	0x4e99f0	0x4e9e80	0x1649364	rip-relative	 fluid
+reference	dance-movement-description	0x4e99f0	0x4e9e96	0x1649304	rip-relative	n
+reference	dance-movement-description	0x4e99f0	0x4e9eab	0x1649370	rip-relative	 undulating
+reference	dance-movement-description	0x4e99f0	0x4e9ebd	0x164937c	rip-relative	 soft
+reference	dance-movement-description	0x4e99f0	0x4e9ec9	0x1649388	rip-relative	 jerking
+reference	dance-movement-description	0x4e99f0	0x4e9edb	0x1649398	rip-relative	 sharp-edged
+reference	dance-movement-description	0x4e99f0	0x4e9eed	0x16493a8	rip-relative	 straight-lined
+reference	dance-movement-description	0x4e99f0	0x4e9eff	0x16493b8	rip-relative	 high
+reference	dance-movement-description	0x4e99f0	0x4e9f11	0x16493c0	rip-relative	 low
+reference	dance-movement-description	0x4e99f0	0x4e9f23	0x1649638	rip-relative	 loudly percussive
+reference	dance-movement-description	0x4e99f0	0x4e9f35	0x1649650	rip-relative	 softly percussive
+reference	dance-movement-description	0x4e99f0	0x4e9f4b	0x1649304	rip-relative	n
+reference	dance-movement-description	0x4e99f0	0x4e9f5a	0x1649668	rip-relative	 aborted
+reference	dance-movement-description	0x4e99f0	0x4e9f6c	0x1649678	rip-relative	 partially realized
+reference	dance-movement-description	0x4e99f0	0x4e9f82	0x1649304	rip-relative	n
+reference	dance-movement-description	0x4e99f0	0x4e9f97	0x1649690	rip-relative	 energetic
+reference	dance-movement-description	0x4e99f0	0x4e9fa9	0x16496a0	rip-relative	 passionate
+reference	dance-movement-description	0x4e99f0	0x4e9fbb	0x16496b0	rip-relative	 vivacious
+reference	dance-movement-description	0x4e99f0	0x4e9fcd	0x16496c0	rip-relative	 joyous
+reference	dance-movement-description	0x4e99f0	0x4e9fdf	0x16496c8	rip-relative	 proud
+reference	dance-movement-description	0x4e99f0	0x4e9ff1	0x16496d0	rip-relative	 flamboyant
+reference	dance-movement-description	0x4e99f0	0x4ea003	0x16496e0	rip-relative	 lively
+reference	dance-movement-description	0x4e99f0	0x4ea015	0x16496e8	rip-relative	 spirited
+reference	dance-movement-description	0x4e99f0	0x4ea027	0x16496f8	rip-relative	 vigorous
+reference	dance-movement-description	0x4e99f0	0x4ea03d	0x1649304	rip-relative	n
+reference	dance-movement-description	0x4e99f0	0x4ea04c	0x1649708	rip-relative	 intense
+reference	dance-movement-description	0x4e99f0	0x4ea062	0x1649304	rip-relative	n
+reference	dance-movement-description	0x4e99f0	0x4ea077	0x1649718	rip-relative	 aggressive
+reference	dance-movement-description	0x4e99f0	0x4ea089	0x1649728	rip-relative	 powerful
+reference	dance-movement-description	0x4e99f0	0x4ea098	0x1649738	rip-relative	 sluggish
+reference	dance-movement-description	0x4e99f0	0x4ea0a1	0x1649748	rip-relative	 relaxed
+reference	dance-movement-description	0x4e99f0	0x4ea0aa	0x1649758	rip-relative	 passive
+reference	dance-movement-description	0x4e99f0	0x4ea0b9	0x1649768	rip-relative	 subtle
+reference	dance-movement-description	0x4e99f0	0x4ea0c2	0x1649770	rip-relative	 sensual
+reference	dance-movement-description	0x4e99f0	0x4ea0d1	0x1649780	rip-relative	 debauched
+reference	dance-movement-description	0x4e99f0	0x4ea0e0	0x1649790	rip-relative	 twisting
+reference	dance-movement-description	0x4e99f0	0x4ea0ef	0x16497a0	rip-relative	 sprightly
+reference	dance-movement-description	0x4e99f0	0x4ea0f8	0x16497b0	rip-relative	 sinuous
+reference	dance-movement-description	0x4e99f0	0x4ea158	0x1649808	rip-relative	 repeated
+reference	dance-movement-description	0x4e99f0	0x4ea174	0x16497c0	rip-relative	 counterclockwise
+reference	dance-movement-description	0x4e99f0	0x4ea196	0x16497d8	rip-relative	 clockwise
+reference	dance-movement-description	0x4e99f0	0x4ea1c7	0x1649304	rip-relative	n
+reference	dance-movement-description	0x4e99f0	0x4ea1dc	0x16497e8	rip-relative	 eighth
+reference	dance-movement-description	0x4e99f0	0x4ea205	0x16497f0	rip-relative	 quarter
+reference	dance-movement-description	0x4e99f0	0x4ea231	0x16497fc	rip-relative	 half
+reference	dance-movement-description	0x4e99f0	0x4ea263	0x1649818	rip-relative	 steps in a square pattern
+reference	dance-movement-description	0x4e99f0	0x4ea275	0x16493f8	rip-relative	 steps in a circular pattern
+reference	dance-movement-description	0x4e99f0	0x4ea287	0x1649418	rip-relative	 steps in a triangle pattern
+reference	dance-movement-description	0x4e99f0	0x4ea299	0x1649438	rip-relative	 steps in a figure-eight pattern
+reference	dance-movement-description	0x4e99f0	0x4ea2ab	0x1649460	rip-relative	 steps in an intricate pattern
+reference	dance-movement-description	0x4e99f0	0x4ea2bd	0x1649480	rip-relative	 move
+reference	dance-movement-description	0x4e99f0	0x4ea2cf	0x1649488	rip-relative	 turn
+reference	dance-movement-description	0x4e99f0	0x4ea2e1	0x1649490	rip-relative	 facial expression
+reference	dance-movement-description	0x4e99f0	0x4ea2f3	0x16494a8	rip-relative	 hand gesture
+reference	dance-movement-description	0x4e99f0	0x4ea305	0x16494b8	rip-relative	 straight walk
+reference	dance-movement-description	0x4e99f0	0x4ea317	0x16494c8	rip-relative	 curved walk
+reference	dance-movement-description	0x4e99f0	0x4ea329	0x16494d8	rip-relative	 run
+reference	dance-movement-description	0x4e99f0	0x4ea33b	0x16494e0	rip-relative	 leap
+reference	dance-movement-description	0x4e99f0	0x4ea34d	0x16494e8	rip-relative	 kick
+reference	dance-movement-description	0x4e99f0	0x4ea35f	0x16494f0	rip-relative	 left kick
+reference	dance-movement-description	0x4e99f0	0x4ea371	0x1649500	rip-relative	 right kick
+reference	dance-movement-description	0x4e99f0	0x4ea383	0x1649510	rip-relative	 leg lift
+reference	dance-movement-description	0x4e99f0	0x4ea395	0x1649520	rip-relative	 left leg lift
+reference	dance-movement-description	0x4e99f0	0x4ea3a7	0x1649530	rip-relative	 right leg lift
+reference	dance-movement-description	0x4e99f0	0x4ea3b9	0x1649540	rip-relative	 body level
+reference	dance-movement-description	0x4e99f0	0x4ea3cb	0x1649550	rip-relative	 body level change
+reference	dance-movement-description	0x4e99f0	0x4ea3dd	0x1649568	rip-relative	 arm carriage
+reference	dance-movement-description	0x4e99f0	0x4ea3ef	0x1649578	rip-relative	 raised left arm
+reference	dance-movement-description	0x4e99f0	0x4ea401	0x1649590	rip-relative	 raised right arm
+reference	dance-movement-description	0x4e99f0	0x4ea413	0x16495a8	rip-relative	 raised arm
+reference	dance-movement-description	0x4e99f0	0x4ea425	0x16495b4	rip-relative	 spin
+reference	dance-movement-description	0x4e99f0	0x4ea434	0x16495c0	rip-relative	 independent body movement
+reference	dance-movement-description	0x4e99f0	0x4ea443	0x16495dc	rip-relative	 sway
+reference	dance-movement-description	0x4e99f0	0x4ea452	0x16495e8	rip-relative	 forward bend
+reference	dance-movement-description	0x4e99f0	0x4ea461	0x16495f8	rip-relative	 backward bend
+reference	dance-movement-description	0x4e99f0	0x4ea470	0x1649608	rip-relative	 leftward bend
+reference	dance-movement-description	0x4e99f0	0x4ea47f	0x1649618	rip-relative	 rightward bend
+reference	dance-movement-description	0x4e99f0	0x4ea48e	0x1649628	rip-relative	 footwork
+reference	dance-movement-description	0x4e99f0	0x4ea49d	0x1649ab0	rip-relative	 movement along the line of dance
+reference	dance-movement-description	0x4e99f0	0x4ea533	0x1649b28	rip-relative	 shadowed
+reference	dance-movement-description	0x4e99f0	0x4ea542	0x1649b08	rip-relative	 performed in succession
+reference	dance-movement-description	0x4e99f0	0x4ea551	0x1649ae8	rip-relative	 performed in retrograde
+reference	dance-movement-description	0x4e99f0	0x4ea55a	0x1649ad8	rip-relative	 mirrored
+reference	dance-movement-description	0x4e99f0	0x4ea57a	0x15fd504	rip-relative	,
+reference	dance-movement-description	0x4e99f0	0x4ea58e	0x15ee880	rip-relative	 and
+reference	dance-movement-description	0x4e99f0	0x4ea5ae	0x1649b38	rip-relative	 by group members
+reference	dance-movement-description	0x4e99f0	0x4ea5d0	0x1649b50	rip-relative	 from the lead
+reference	dance-movement-description	0x4e99f0	0x4ea5e3	0x1649b60	rip-relative	 from the follower
+reference	dance-movement-description	0x4e99f0	0x4ea609	0x1649b74	rip-relative	 with
+reference	dance-movement-description	0x4e99f0	0x4ea62f	0x15fd504	rip-relative	,
+reference	dance-movement-description	0x4e99f0	0x4ea646	0x15ee880	rip-relative	 and
+reference	dance-movement-description	0x4e99f0	0x4ea663	0x164702c	rip-relative	there
+reference	dance-movement-description	0x4e99f0	0x4ea67b	0x15fd968	rip-relative	.  
+reference	dance-movement-description	0x4e99f0	0x4ea69c	0x164702c	rip-relative	there
 reference	knowledge-dance-form	0x4ea820	0x4ea895	0x1649b7c	rip-relative	 is a 
 reference	knowledge-dance-form	0x4ea820	0x4ea8c9	0x1649b84	rip-relative	sacred
 reference	knowledge-dance-form	0x4ea820	0x4ea8ed	0x1649b94	rip-relative	 group
@@ -2053,6 +2181,32 @@ reference	knowledge-musical-form	0xdd5ce0	0xddcbcc	0x171c7b8	rip-relative	' mark
 reference	knowledge-musical-form	0xdd5ce0	0xddcbdb	0x171c7a8	rip-relative	x is a beat
 reference	knowledge-musical-form	0xdd5ce0	0xddcbf1	0x171c798	rip-relative	, - is silent
 reference	knowledge-musical-form	0xdd5ce0	0xddcc00	0x171c7f8	rip-relative	 and | indicates a bar.  
+reference	poetic-topic	0xe76080	0xe760c2	0x172f9c0	rip-relative	the past
+reference	poetic-topic	0xe76080	0xe760d4	0x172f9d0	rip-relative	current events
+reference	poetic-topic	0xe76080	0xe760e6	0x172f9e0	rip-relative	the future
+reference	poetic-topic	0xe76080	0xe760f8	0x172f9f0	rip-relative	someone recently deceased
+reference	poetic-topic	0xe76080	0xe7610a	0x172fa70	rip-relative	someone recently retired
+reference	poetic-topic	0xe76080	0xe7611c	0x1615678	rip-relative	religion
+reference	poetic-topic	0xe76080	0xe7621d	0x172fa28	rip-relative	the concept of war
+reference	poetic-topic	0xe76080	0xe7622f	0x172fa10	rip-relative	the concept of nature
+reference	poetic-topic	0xe76080	0xe76241	0x172fac0	rip-relative	the concept of hunting
+reference	poetic-topic	0xe76080	0xe76253	0x172faa8	rip-relative	the concept of family
+reference	poetic-topic	0xe76080	0xe76265	0x172fa90	rip-relative	the concept of death
+reference	poetic-topic	0xe76080	0xe76271	0x172fa40	rip-relative	an abstract concept
+reference	poetic-topic	0xe76080	0xe762b4	0x172fa58	rip-relative	a historical figure
+reference	poetic-topic	0xe76080	0xe762c6	0x1730130	rip-relative	a specific place
+reference	poetic-topic	0xe76080	0xe762d8	0x1730148	rip-relative	a specific wilderness region
+reference	poetic-topic	0xe76080	0xe762ea	0x16416ec	rip-relative	nature
+reference	poetic-topic	0xe76080	0xe762fc	0x172bef0	rip-relative	a lover
+reference	poetic-topic	0xe76080	0xe7630b	0x16415fc	rip-relative	family
+reference	poetic-topic	0xe76080	0xe76314	0x1730168	rip-relative	alcoholic beverages
+reference	poetic-topic	0xe76080	0xe76323	0x1643e90	rip-relative	a journey
+reference	poetic-topic	0xe76080	0xe76332	0x1649be4	rip-relative	war
+reference	poetic-topic	0xe76080	0xe76341	0x1730180	rip-relative	the hunt
+reference	poetic-topic	0xe76080	0xe76350	0x17300ec	rip-relative	mining
+reference	poetic-topic	0xe76080	0xe7635f	0x15eddb4	rip-relative	death
+reference	poetic-topic	0xe76080	0xe7636e	0x16e1960	rip-relative	immortality
+reference	poetic-topic	0xe76080	0xe76377	0x17300f8	rip-relative	someone's character
 reference	knowledge-poetic-form	0xe76400	0xe76478	0x15eebd8	rip-relative	 is
 reference	knowledge-poetic-form	0xe76400	0xe764aa	0x16492ac	rip-relative	 a
 reference	knowledge-poetic-form	0xe76400	0xe764b3	0x17301e8	rip-relative	 a solemn
@@ -3523,6 +3677,134 @@ classic	written-work-content-caller	0x2693c0	0x26b274	0x1616120	rip-relative	Thi
 classic	written-work-content-caller	0x2693c0	0x26b288	0x15f8388	rip-relative	[B]
 classic	written-work-content-caller	0x2693c0	0x26b2da	0x1616170	rip-relative	This organizational activity will branch into specific play events.
 classic	written-work-content-caller	0x2693c0	0x26b2ee	0x15f8388	rip-relative	[B]
+classic	dance-movement-description	0x4e75b0	0x4e75f5	0x16442c0	rip-relative	called the 
+classic	dance-movement-description	0x4e75b0	0x4e7620	0x15f8850	rip-relative	.  
+classic	dance-movement-description	0x4e75b0	0x4e7636	0x15e89c4	rip-relative	The 
+classic	dance-movement-description	0x4e75b0	0x4e766d	0x16442f0	rip-relative	 is one of the fundamental dance moves.  
+classic	dance-movement-description	0x4e75b0	0x4e7674	0x16442d0	rip-relative	 the fundamental dance move.  
+classic	dance-movement-description	0x4e75b0	0x4e768b	0x15e89c4	rip-relative	The 
+classic	dance-movement-description	0x4e75b0	0x4e76bb	0x1644320	rip-relative	 the fundamental dance position.  
+classic	dance-movement-description	0x4e75b0	0x4e76ca	0x1644348	rip-relative	 is one of the fundamental dance positions.  
+classic	dance-movement-description	0x4e75b0	0x4e7731	0x1641b40	rip-relative	there
+classic	dance-movement-description	0x4e75b0	0x4e7751	0x1644378	rip-relative	First, 
+classic	dance-movement-description	0x4e75b0	0x4e776e	0x1644388	rip-relative	Finally, 
+classic	dance-movement-description	0x4e75b0	0x4e777d	0x1644380	rip-relative	Then 
+classic	dance-movement-description	0x4e75b0	0x4e778c	0x1641b40	rip-relative	there
+classic	dance-movement-description	0x4e75b0	0x4e77d8	0x1644394	rip-relative	There
+classic	dance-movement-description	0x4e75b0	0x4e7808	0x16443a0	rip-relative	 should be
+classic	dance-movement-description	0x4e75b0	0x4e7817	0x15e9b88	rip-relative	 is
+classic	dance-movement-description	0x4e75b0	0x4e7846	0x16443ac	rip-relative	 a
+classic	dance-movement-description	0x4e75b0	0x4e787d	0x16443b0	rip-relative	 a series of 
+classic	dance-movement-description	0x4e75b0	0x4e7911	0x16443c0	rip-relative	 graceful
+classic	dance-movement-description	0x4e75b0	0x4e7923	0x16443d0	rip-relative	 serene
+classic	dance-movement-description	0x4e75b0	0x4e7935	0x16443d8	rip-relative	 calm
+classic	dance-movement-description	0x4e75b0	0x4e7947	0x1644108	rip-relative	 grotesque
+classic	dance-movement-description	0x4e75b0	0x4e7959	0x1644114	rip-relative	 crude
+classic	dance-movement-description	0x4e75b0	0x4e7965	0x1644120	rip-relative	 refined
+classic	dance-movement-description	0x4e75b0	0x4e797b	0x164412c	rip-relative	n
+classic	dance-movement-description	0x4e75b0	0x4e7990	0x1644130	rip-relative	 understated
+classic	dance-movement-description	0x4e75b0	0x4e79a2	0x1644140	rip-relative	 delicate
+classic	dance-movement-description	0x4e75b0	0x4e79b8	0x164412c	rip-relative	n
+classic	dance-movement-description	0x4e75b0	0x4e79cd	0x1644150	rip-relative	 elaborate
+classic	dance-movement-description	0x4e75b0	0x4e79e3	0x164412c	rip-relative	n
+classic	dance-movement-description	0x4e75b0	0x4e79f8	0x1644160	rip-relative	 expressive
+classic	dance-movement-description	0x4e75b0	0x4e7a0a	0x1644170	rip-relative	 strong
+classic	dance-movement-description	0x4e75b0	0x4e7a1c	0x1644178	rip-relative	 large
+classic	dance-movement-description	0x4e75b0	0x4e7a2e	0x1644180	rip-relative	 weightless
+classic	dance-movement-description	0x4e75b0	0x4e7a40	0x164418c	rip-relative	 fluid
+classic	dance-movement-description	0x4e75b0	0x4e7a56	0x164412c	rip-relative	n
+classic	dance-movement-description	0x4e75b0	0x4e7a6b	0x1644198	rip-relative	 undulating
+classic	dance-movement-description	0x4e75b0	0x4e7a7d	0x16441a4	rip-relative	 soft
+classic	dance-movement-description	0x4e75b0	0x4e7a89	0x16441b0	rip-relative	 jerking
+classic	dance-movement-description	0x4e75b0	0x4e7a9b	0x16441c0	rip-relative	 sharp-edged
+classic	dance-movement-description	0x4e75b0	0x4e7aad	0x16441d0	rip-relative	 straight-lined
+classic	dance-movement-description	0x4e75b0	0x4e7abf	0x16441e0	rip-relative	 high
+classic	dance-movement-description	0x4e75b0	0x4e7ad1	0x16441e8	rip-relative	 low
+classic	dance-movement-description	0x4e75b0	0x4e7ae3	0x16441f0	rip-relative	 loudly percussive
+classic	dance-movement-description	0x4e75b0	0x4e7af5	0x1644208	rip-relative	 softly percussive
+classic	dance-movement-description	0x4e75b0	0x4e7b0b	0x164412c	rip-relative	n
+classic	dance-movement-description	0x4e75b0	0x4e7b1a	0x1644220	rip-relative	 aborted
+classic	dance-movement-description	0x4e75b0	0x4e7b2c	0x1644230	rip-relative	 partially realized
+classic	dance-movement-description	0x4e75b0	0x4e7b42	0x164412c	rip-relative	n
+classic	dance-movement-description	0x4e75b0	0x4e7b57	0x1644248	rip-relative	 energetic
+classic	dance-movement-description	0x4e75b0	0x4e7b69	0x1644258	rip-relative	 passionate
+classic	dance-movement-description	0x4e75b0	0x4e7b7b	0x1644268	rip-relative	 vivacious
+classic	dance-movement-description	0x4e75b0	0x4e7b8d	0x1644278	rip-relative	 joyous
+classic	dance-movement-description	0x4e75b0	0x4e7b9f	0x1644280	rip-relative	 proud
+classic	dance-movement-description	0x4e75b0	0x4e7bb1	0x1644288	rip-relative	 flamboyant
+classic	dance-movement-description	0x4e75b0	0x4e7bc3	0x1644298	rip-relative	 lively
+classic	dance-movement-description	0x4e75b0	0x4e7bd5	0x16442a0	rip-relative	 spirited
+classic	dance-movement-description	0x4e75b0	0x4e7be7	0x16442b0	rip-relative	 vigorous
+classic	dance-movement-description	0x4e75b0	0x4e7bfd	0x164412c	rip-relative	n
+classic	dance-movement-description	0x4e75b0	0x4e7c0c	0x1644618	rip-relative	 intense
+classic	dance-movement-description	0x4e75b0	0x4e7c22	0x164412c	rip-relative	n
+classic	dance-movement-description	0x4e75b0	0x4e7c37	0x1644628	rip-relative	 aggressive
+classic	dance-movement-description	0x4e75b0	0x4e7c49	0x1644638	rip-relative	 powerful
+classic	dance-movement-description	0x4e75b0	0x4e7c58	0x1644648	rip-relative	 sluggish
+classic	dance-movement-description	0x4e75b0	0x4e7c61	0x1644658	rip-relative	 relaxed
+classic	dance-movement-description	0x4e75b0	0x4e7c6a	0x1644668	rip-relative	 passive
+classic	dance-movement-description	0x4e75b0	0x4e7c79	0x1644678	rip-relative	 subtle
+classic	dance-movement-description	0x4e75b0	0x4e7c82	0x1644680	rip-relative	 sensual
+classic	dance-movement-description	0x4e75b0	0x4e7c91	0x1644690	rip-relative	 debauched
+classic	dance-movement-description	0x4e75b0	0x4e7ca0	0x16446a0	rip-relative	 twisting
+classic	dance-movement-description	0x4e75b0	0x4e7caf	0x16446b0	rip-relative	 sprightly
+classic	dance-movement-description	0x4e75b0	0x4e7cb8	0x16446c0	rip-relative	 sinuous
+classic	dance-movement-description	0x4e75b0	0x4e7d18	0x1644718	rip-relative	 repeated
+classic	dance-movement-description	0x4e75b0	0x4e7d34	0x16446d0	rip-relative	 counterclockwise
+classic	dance-movement-description	0x4e75b0	0x4e7d56	0x16446e8	rip-relative	 clockwise
+classic	dance-movement-description	0x4e75b0	0x4e7d87	0x164412c	rip-relative	n
+classic	dance-movement-description	0x4e75b0	0x4e7d9c	0x16446f8	rip-relative	 eighth
+classic	dance-movement-description	0x4e75b0	0x4e7dc5	0x1644700	rip-relative	 quarter
+classic	dance-movement-description	0x4e75b0	0x4e7df1	0x164470c	rip-relative	 half
+classic	dance-movement-description	0x4e75b0	0x4e7e23	0x1644728	rip-relative	 steps in a square pattern
+classic	dance-movement-description	0x4e75b0	0x4e7e35	0x1644748	rip-relative	 steps in a circular pattern
+classic	dance-movement-description	0x4e75b0	0x4e7e47	0x1644768	rip-relative	 steps in a triangle pattern
+classic	dance-movement-description	0x4e75b0	0x4e7e59	0x1644788	rip-relative	 steps in a figure-eight pattern
+classic	dance-movement-description	0x4e75b0	0x4e7e6b	0x16447b0	rip-relative	 steps in an intricate pattern
+classic	dance-movement-description	0x4e75b0	0x4e7e7d	0x16447d0	rip-relative	 move
+classic	dance-movement-description	0x4e75b0	0x4e7e8f	0x16447d8	rip-relative	 turn
+classic	dance-movement-description	0x4e75b0	0x4e7ea1	0x16447e0	rip-relative	 facial expression
+classic	dance-movement-description	0x4e75b0	0x4e7eb3	0x16447f8	rip-relative	 hand gesture
+classic	dance-movement-description	0x4e75b0	0x4e7ec5	0x1644808	rip-relative	 straight walk
+classic	dance-movement-description	0x4e75b0	0x4e7ed7	0x1644818	rip-relative	 curved walk
+classic	dance-movement-description	0x4e75b0	0x4e7ee9	0x1644828	rip-relative	 run
+classic	dance-movement-description	0x4e75b0	0x4e7efb	0x1644830	rip-relative	 leap
+classic	dance-movement-description	0x4e75b0	0x4e7f0d	0x1644838	rip-relative	 kick
+classic	dance-movement-description	0x4e75b0	0x4e7f1f	0x16443e0	rip-relative	 left kick
+classic	dance-movement-description	0x4e75b0	0x4e7f31	0x16443f0	rip-relative	 right kick
+classic	dance-movement-description	0x4e75b0	0x4e7f43	0x1644400	rip-relative	 leg lift
+classic	dance-movement-description	0x4e75b0	0x4e7f55	0x1644410	rip-relative	 left leg lift
+classic	dance-movement-description	0x4e75b0	0x4e7f67	0x1644420	rip-relative	 right leg lift
+classic	dance-movement-description	0x4e75b0	0x4e7f79	0x1644430	rip-relative	 body level
+classic	dance-movement-description	0x4e75b0	0x4e7f8b	0x1644440	rip-relative	 body level change
+classic	dance-movement-description	0x4e75b0	0x4e7f9d	0x1644458	rip-relative	 arm carriage
+classic	dance-movement-description	0x4e75b0	0x4e7faf	0x1644468	rip-relative	 raised left arm
+classic	dance-movement-description	0x4e75b0	0x4e7fc1	0x1644480	rip-relative	 raised right arm
+classic	dance-movement-description	0x4e75b0	0x4e7fd3	0x1644498	rip-relative	 raised arm
+classic	dance-movement-description	0x4e75b0	0x4e7fe5	0x16444a4	rip-relative	 spin
+classic	dance-movement-description	0x4e75b0	0x4e7ff4	0x16444b0	rip-relative	 independent body movement
+classic	dance-movement-description	0x4e75b0	0x4e8003	0x16444cc	rip-relative	 sway
+classic	dance-movement-description	0x4e75b0	0x4e8012	0x16444d8	rip-relative	 forward bend
+classic	dance-movement-description	0x4e75b0	0x4e8021	0x16444e8	rip-relative	 backward bend
+classic	dance-movement-description	0x4e75b0	0x4e8030	0x16444f8	rip-relative	 leftward bend
+classic	dance-movement-description	0x4e75b0	0x4e803f	0x1644508	rip-relative	 rightward bend
+classic	dance-movement-description	0x4e75b0	0x4e804e	0x1644518	rip-relative	 footwork
+classic	dance-movement-description	0x4e75b0	0x4e805d	0x1644528	rip-relative	 movement along the line of dance
+classic	dance-movement-description	0x4e75b0	0x4e80f3	0x16445a0	rip-relative	 shadowed
+classic	dance-movement-description	0x4e75b0	0x4e8102	0x1644580	rip-relative	 performed in succession
+classic	dance-movement-description	0x4e75b0	0x4e8111	0x1644560	rip-relative	 performed in retrograde
+classic	dance-movement-description	0x4e75b0	0x4e811a	0x1644550	rip-relative	 mirrored
+classic	dance-movement-description	0x4e75b0	0x4e813a	0x15f8584	rip-relative	,
+classic	dance-movement-description	0x4e75b0	0x4e814e	0x15e9830	rip-relative	 and
+classic	dance-movement-description	0x4e75b0	0x4e816e	0x16445b0	rip-relative	 by group members
+classic	dance-movement-description	0x4e75b0	0x4e8190	0x16445c8	rip-relative	 from the lead
+classic	dance-movement-description	0x4e75b0	0x4e81a3	0x16445d8	rip-relative	 from the follower
+classic	dance-movement-description	0x4e75b0	0x4e81c9	0x16445ec	rip-relative	 with
+classic	dance-movement-description	0x4e75b0	0x4e81ef	0x15f8584	rip-relative	,
+classic	dance-movement-description	0x4e75b0	0x4e8206	0x15e9830	rip-relative	 and
+classic	dance-movement-description	0x4e75b0	0x4e8223	0x1641b40	rip-relative	there
+classic	dance-movement-description	0x4e75b0	0x4e823b	0x15f8850	rip-relative	.  
+classic	dance-movement-description	0x4e75b0	0x4e825c	0x1641b40	rip-relative	there
 classic	knowledge-dance-form	0x4e83e0	0x4e8455	0x16445f4	rip-relative	 is a 
 classic	knowledge-dance-form	0x4e83e0	0x4e8489	0x16445fc	rip-relative	sacred
 classic	knowledge-dance-form	0x4e83e0	0x4e84ad	0x164460c	rip-relative	 group
@@ -5390,6 +5672,32 @@ classic	knowledge-musical-form	0xdd0c50	0xdd7b3c	0x1717090	rip-relative	' marks 
 classic	knowledge-musical-form	0xdd0c50	0xdd7b4b	0x1717080	rip-relative	x is a beat
 classic	knowledge-musical-form	0xdd0c50	0xdd7b61	0x1717110	rip-relative	, - is silent
 classic	knowledge-musical-form	0xdd0c50	0xdd7b70	0x17170f0	rip-relative	 and | indicates a bar.  
+classic	poetic-topic	0xe70ff0	0xe71032	0x172a368	rip-relative	the past
+classic	poetic-topic	0xe70ff0	0xe71044	0x172a308	rip-relative	current events
+classic	poetic-topic	0xe70ff0	0xe71056	0x172a318	rip-relative	the future
+classic	poetic-topic	0xe70ff0	0xe71068	0x172a328	rip-relative	someone recently deceased
+classic	poetic-topic	0xe70ff0	0xe7107a	0x172a348	rip-relative	someone recently retired
+classic	poetic-topic	0xe70ff0	0xe7108c	0x16107b0	rip-relative	religion
+classic	poetic-topic	0xe70ff0	0xe7118d	0x172a378	rip-relative	the concept of war
+classic	poetic-topic	0xe70ff0	0xe7119f	0x172a420	rip-relative	the concept of nature
+classic	poetic-topic	0xe70ff0	0xe711b1	0x172a408	rip-relative	the concept of hunting
+classic	poetic-topic	0xe70ff0	0xe711c3	0x172a3f0	rip-relative	the concept of family
+classic	poetic-topic	0xe70ff0	0xe711d5	0x172a3d8	rip-relative	the concept of death
+classic	poetic-topic	0xe70ff0	0xe711e1	0x172a390	rip-relative	an abstract concept
+classic	poetic-topic	0xe70ff0	0xe71224	0x172a3a8	rip-relative	a historical figure
+classic	poetic-topic	0xe70ff0	0xe71236	0x172a3c0	rip-relative	a specific place
+classic	poetic-topic	0xe70ff0	0xe71248	0x172a480	rip-relative	a specific wilderness region
+classic	poetic-topic	0xe70ff0	0xe7125a	0x163c4d0	rip-relative	nature
+classic	poetic-topic	0xe70ff0	0xe7126c	0x1726830	rip-relative	a lover
+classic	poetic-topic	0xe70ff0	0xe7127b	0x163c2ac	rip-relative	family
+classic	poetic-topic	0xe70ff0	0xe71284	0x172a4a0	rip-relative	alcoholic beverages
+classic	poetic-topic	0xe70ff0	0xe71293	0x163e878	rip-relative	a journey
+classic	poetic-topic	0xe70ff0	0xe712a2	0x1644b7c	rip-relative	war
+classic	poetic-topic	0xe70ff0	0xe712b1	0x172a4b8	rip-relative	the hunt
+classic	poetic-topic	0xe70ff0	0xe712c0	0x172a4c4	rip-relative	mining
+classic	poetic-topic	0xe70ff0	0xe712cf	0x15e8d48	rip-relative	death
+classic	poetic-topic	0xe70ff0	0xe712de	0x16dc738	rip-relative	immortality
+classic	poetic-topic	0xe70ff0	0xe712e7	0x172a438	rip-relative	someone's character
 classic	knowledge-poetic-form	0xe71370	0xe713e8	0x15e9b88	rip-relative	 is
 classic	knowledge-poetic-form	0xe71370	0xe7141a	0x16443ac	rip-relative	 a
 classic	knowledge-poetic-form	0xe71370	0xe71423	0x172a518	rip-relative	 a solemn
