@@ -18,7 +18,11 @@ adventure-announcement	You put the {s} on the {s}.	你将{s1}放在{s2}上。	$a
 adventure-announcement	You put the {s} on display.	你将{s1}摆出来展示。	$announcement-item	ELF 11e2acb..11e2af4/11e2cb7..11e2cc3 ->11e2bf5 ->11e2a4d ->17ea070
 adventure-announcement	{s} {s}.	{s1}，{s2}。	rumor-time,dialogue-battle	ELF 1044d60; elapsed-time 10448d0; complete battle account
 adventure-announcement	{s} {s} in {s}.	{s1}，在{s3}，{s2}。	rumor-time,dialogue-battle,$conflict-place	ELF 1044d60; site/subregion/underground suppliers
-adventure-announcement	{s}	{s1}	quest-sentence	ELF 10108c0..10140f1; complete artifact request/location branches
+# The artifact builder appends complete request and location sentences. Compose
+# that chain before the single-sentence fallback can consume later prose as a name.
+adventure-announcement	{s}	{s1}	quest-report	ELF 10108c0..10140f1; PE 65a250; complete artifact request/location report
+quest-report	{s} {s}	{s1}{s2}	quest-sentence,quest-report	ELF 10108c0..10140f1; PE 65a250; independently appended complete request/location sentences
+quest-report	{s}	{s1}	quest-sentence	ELF 10108c0..10140f1; PE 65a250; single complete request/location sentence
 quest-object	{s} {s}	{s1}{s2}	$book,$announcement-item	ELF 10124cd ->a0d8c0; optional item description 1012513..101252a ->e68020
 quest-object	{s}	{s1}	$announcement-item	ELF 10108c0; physical item field when artifact name is omitted
 quest-object	{s}	{s1}	$book	ELF 1011144/10124cd ->a0d8c0; written work/abstract artifact without physical caption

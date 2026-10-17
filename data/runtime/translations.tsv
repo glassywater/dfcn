@@ -22518,7 +22518,9 @@ Announcement combat adventure-announcement []: Uhh... nevermind.	呃……算了
 Announcement combat adventure-announcement []: What an odd glow!	多么奇怪的光芒！	l
 Announcement combat adventure-announcement []: You are forgiven.	你得到了原谅。	l
 Announcement combat adventure-announcement []: You make nothing.	你什么也没做出来。	l
-Announcement combat adventure-announcement [quest-sentence]: {s}	{s1}	l
+Announcement combat adventure-announcement [quest-report]: {s}	{s1}	l
+Announcement combat quest-report [quest-sentence,quest-report]: {s} {s}	{s1}{s2}	l
+Announcement combat quest-report [quest-sentence]: {s}	{s1}	l
 Announcement combat agreement-conclusion-title []: bound service	被迫效力的关系	l
 Announcement combat agreement-party []: an unidentified creature	身份不明的生物	l
 Announcement combat agreement-party-list [agreement-party]: {s},	{s1}、	l
