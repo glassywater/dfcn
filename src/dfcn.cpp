@@ -9196,8 +9196,10 @@ std::optional<std::string> Overlay::translate_overview_quote(
     // paragraph spacing, NOT a column boundary. Translate the entire chain
     // through the reviewed sentence glossary before any generic word matcher.
     // A glossary entry can itself contain several sentences ("Yes! It is
-    // done."). Resolve complete coverage, longest entries first, and publish
-    // nothing unless every byte belongs to a translated entry. In particular,
+    // done."). Prefer the longest exact entries, then the shortest dynamic
+    // event with a fully translated suffix. An authored-name fallback must
+    // not absorb the independently translated reaction into the event's name.
+    // Publish nothing unless every byte belongs to a translated entry. In particular,
     // never replace the first-person remark with the third-person summary.
     // One native reaction, "Things usually don't work out", has no final
     // punctuation. The closing quote already bounds it; the same complete
@@ -9214,15 +9216,26 @@ std::optional<std::string> Overlay::translate_overview_quote(
         std::vector<std::vector<size_t>> suffix_origins(origins ? boundaries.size() : 0);
         suffixes.back() = std::string{};
         for (size_t begin = boundaries.size() - 1; begin-- > 0;) {
+            const auto sentence_at = [&](size_t end) {
+                return trim_view(std::string_view(body).substr(
+                    boundaries[begin], boundaries[end] - boundaries[begin]));
+            };
+            const auto publish = [&](size_t end, const std::string &translated) {
+                suffixes[begin] = translated + *suffixes[end];
+                if (origins) {
+                    // Event and reaction are independent native clauses.
+                    // Retain each clause's own color, not the opening quote's.
+                    auto &mapped = suffix_origins[begin];
+                    mapped.assign(translated.size(), boundaries[begin]);
+                    mapped.insert(mapped.end(), suffix_origins[end].begin(), suffix_origins[end].end());
+                }
+            };
+            // Exact glossary entries and captured event identities prove their
+            // entire span, including any punctuation inside a native title.
             for (size_t end = boundaries.size() - 1; end > begin; --end) {
                 if (!suffixes[end]) continue;
-                const auto sentence = trim_view(std::string_view(body).substr(
-                    boundaries[begin], boundaries[end] - boundaries[begin]));
+                const auto sentence = sentence_at(end);
                 const auto found = overview_sentence_translations_.find(std::string(sentence));
-                // The native event formatter also inserts names, places,
-                // objects and knowledge subjects. Use the same typed memory
-                // grammar as spoken announcements, without treating arbitrary
-                // quote prose as a generated name or a third-person summary.
                 std::optional<std::string> translated;
                 // Collection-title memories retain a native collection ID.
                 // Reuse all eighteen typed title families (including ordinal
@@ -9235,19 +9248,23 @@ std::optional<std::string> Overlay::translate_overview_quote(
                         if (!text.empty()) translated = std::move(text);
                     }
                 }
-                if (!translated)
-                    translated = found != overview_sentence_translations_.end()
-                        ? std::optional<std::string>(found->second)
-                        : translate_announcement_combat(sentence, "memory-sentence");
+                if (!translated && found != overview_sentence_translations_.end())
+                    translated = found->second;
                 if (!translated) continue;
-                suffixes[begin] = *translated + *suffixes[end];
-                if (origins) {
-                    // Event and reaction are independent native clauses.
-                    // Retain each clause's own color, not the opening quote's.
-                    auto &mapped = suffix_origins[begin];
-                    mapped.assign(translated->size(), boundaries[begin]);
-                    mapped.insert(mapped.end(), suffix_origins[end].begin(), suffix_origins[end].end());
-                }
+                publish(end, *translated);
+                break;
+            }
+            if (suffixes[begin]) continue;
+            // The native event formatter also inserts names, places, objects
+            // and knowledge subjects. Resolve the first complete typed event
+            // whose remainder is already translated, before an opaque authored
+            // name can claim both the event and its following reaction.
+            for (size_t end = begin + 1; end < boundaries.size(); ++end) {
+                if (!suffixes[end]) continue;
+                const auto translated = translate_announcement_combat(
+                    sentence_at(end), "memory-sentence");
+                if (!translated) continue;
+                publish(end, *translated);
                 break;
             }
         }
