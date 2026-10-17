@@ -2,6 +2,13 @@
 # Event hearing paragraphs share the occurrence date's ordinal/month fields.
 # Native Steam 53.16 appends an optional complete informant and a final period.
 # journal-calendar-date is generated from reviewed day/month and year fields.
+# PE calendar 0x773390 / Classic 0x770db0 appends nothing outside month0..11.
+# Occurrence/hearing producers still render that date; normalized double
+# spaces leave these four explicit monthless ordinal forms.
+journal-calendar-date	{s}st in the year {s}	第{s2}年某月{s1}日	$digits,$digits	PE 0xd50d8..0xd519c/0xd8d61..0xd8e08/0xd92b5..0xd935c; calendar default appends no month
+journal-calendar-date	{s}nd in the year {s}	第{s2}年某月{s1}日	$digits,$digits	PE 0x773393 ja 0x7734ae; month outside0..11
+journal-calendar-date	{s}rd in the year {s}	第{s2}年某月{s1}日	$digits,$digits	PE 0x773393 ja 0x7734ae; month outside0..11
+journal-calendar-date	{s}th in the year {s}	第{s2}年某月{s1}日	$digits,$digits	PE 0x773393 ja 0x7734ae; month outside0..11
 journal-event	You last heard this on the {s}.	你上次在{s1}听说了这件事。	journal-calendar-date	PE 0x1400d8c78..0x1400d90be; You last + heard this + on the + day/month + year + period
 journal-event	You last heard this on the {s} from {s}.	你上次在{s1}从{s2}那里听说了这件事。	journal-calendar-date,$person	PE 0x1400d8faf..0x1400d9030; optional from + 0x140a946e0 native figure name
 journal-event	You heard this on the {s}.	你在{s1}听说了这件事。	journal-calendar-date	PE 0x1400d8c89..0x1400d90be; unrepeated hearing uses You

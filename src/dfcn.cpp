@@ -96,6 +96,7 @@ static std::vector<NativeHistoryUnboundDraw> captured_native_history_unbound_dra
 static std::optional<NativeActivityDetailDocument> native_activity_detail_document(
     const std::unordered_set<uintptr_t> &visible_words);
 static uintptr_t native_history_profile_base();
+static bool refresh_native_journal_event_sources(const graphicst *graphics);
 static bool native_history_copy_bytes(uintptr_t address, void *destination, size_t size);
 template<typename T>
 static bool native_history_copy(uintptr_t address, T &value);
@@ -3287,9 +3288,13 @@ static void clear_native_character_relations() {
 static void remember_native_paragraph(
         uintptr_t owner, int paragraph_width, std::string source,
         std::vector<std::string> wrapped_lines, size_t first_line,
-        std::vector<uintptr_t> row_addresses) {
+        std::vector<uintptr_t> row_addresses, bool structured_source = false) {
+    // Typed native titles can be shorter than ordinary prose ("Your death",
+    // or the default "The"). Their producer supplies the complete source.
     if (!owner || paragraph_width <= 0 ||
-        !is_native_prose_source(source) || wrapped_lines.empty() ||
+        (structured_source ? source.empty() || source.size() > 262144 ||
+            source.find('\0') != std::string::npos : !is_native_prose_source(source)) ||
+        wrapped_lines.empty() ||
         row_addresses.size() != wrapped_lines.size()) {
         return;
     }

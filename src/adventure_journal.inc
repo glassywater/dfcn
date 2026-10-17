@@ -3,6 +3,7 @@
 // event/person/site/group/region/bestiary fields. The counter and live sides delimit the record, including
 // the ASCII skin whose title can occupy its upper border row.
     {
+        const bool native_events_view = refresh_native_journal_event_sources(gps_);
         std::vector<std::string> context(gps_->dimy, std::string(gps_->dimx, ' '));
         for (int y = 0; y < gps_->dimy; ++y)
             for (int x = 0; x < gps_->dimx; ++x) {
@@ -27,12 +28,74 @@
                 tabs_y = y;
                 break;
             }
-        if (tabs_y >= 0) {
+        if (tabs_y >= 0 || native_events_view) {
+            if (tabs_y < 0) tabs_y = 0;
             auto journal_draws = captured_native_drawn_text_rows();
             auto journal_upper_draws = captured_native_drawn_text_rows(true);
             journal_draws.insert(journal_draws.end(),
                 std::make_move_iterator(journal_upper_draws.begin()),
                 std::make_move_iterator(journal_upper_draws.end()));
+            const auto journal_paragraphs = captured_native_paragraphs();
+            // Several cards can show the same first hearing row but retain
+            // different informants on an unseen continuation. Only the actual
+            // native string address binds that row to its complete paragraph.
+            const auto event_source_for_rows = [&](const std::vector<Match> &rows,
+                    const std::vector<int> &clips, NativeParagraphViewport *viewport)
+                    -> std::optional<std::string> {
+                if (viewport) *viewport = {};
+                if (rows.empty() || rows.size() != clips.size()) return std::nullopt;
+                const NativeParagraphCapture *complete = nullptr;
+                size_t first = 0;
+                for (const auto &paragraph : journal_paragraphs) {
+                    if (paragraph.wrapped_lines.size() < rows.size() ||
+                            paragraph.row_addresses.size() != paragraph.wrapped_lines.size() ||
+                            (complete && complete->sequence >= paragraph.sequence)) continue;
+                    for (size_t begin = 0; begin + rows.size() <= paragraph.wrapped_lines.size(); ++begin) {
+                        bool same = true;
+                        for (size_t line = 0; same && line < rows.size(); ++line) {
+                            const Match &row = rows[line];
+                            const auto &native = paragraph.wrapped_lines[begin + line];
+                            const auto address = paragraph.row_addresses[begin + line];
+                            bool bound = false;
+                            for (auto it = journal_draws.rbegin(); it != journal_draws.rend(); ++it) {
+                                if (!address || it->address != address || it->source != native ||
+                                        it->draw_dimx != gps_->dimx || it->draw_dimy != gps_->dimy ||
+                                        it->y != row.y || it->x > row.x || clips[line] <= row.x) continue;
+                                const size_t offset = static_cast<size_t>(row.x - it->x);
+                                if (offset > native.size() ||
+                                        std::any_of(native.begin(), native.begin() + offset,
+                                            [](unsigned char ch) { return ch != ' '; }) ||
+                                        trim_view(std::string_view(native).substr(offset,
+                                            static_cast<size_t>(clips[line] - row.x))) != row.source) continue;
+                                bool current = true;
+                                for (int byte = 0; byte < row.length; ++byte) {
+                                    bool top = false;
+                                    const auto *cell = cell_at(row.x + byte, row.y, &top);
+                                    const auto origin = native_text_grid_origin(*gps_,
+                                        static_cast<size_t>(row.x + byte) * gps_->dimy + row.y, top);
+                                    if (!cell || cell[0] != static_cast<unsigned char>(row.source[byte]) ||
+                                            it->draw_grid != origin.grid || it->top_layer != origin.top_layer ||
+                                            (screen_override && screen_override !=
+                                                (top ? gps_->screen_top : gps_->screen))) {
+                                        current = false;
+                                        break;
+                                    }
+                                }
+                                if (current) { bound = true; break; }
+                            }
+                            same = bound;
+                        }
+                        if (!same) continue;
+                        complete = &paragraph;
+                        first = begin;
+                        break;
+                    }
+                }
+                if (!complete) return std::nullopt;
+                if (viewport) *viewport = {static_cast<int>(first),
+                    static_cast<int>(complete->wrapped_lines.size())};
+                return complete->source;
+            };
             // DF can present a retained log without drawing its strings again.
             // Current bytes, dimensions, grid and layer prove each saved draw;
             // a later SDL presentation epoch does not invalidate that source.
@@ -60,6 +123,28 @@
                 }
                 return nullptr;
             };
+            const auto event_counter_draw = [&](const NativeDrawnTextRow *draw) {
+                const auto base = native_history_profile_base();
+                return draw && base && draw->native_caller == native_reference_address(base,
+#ifdef _WIN32
+                    0xc3263
+#else
+                    0x17cfa9b
+#endif
+                );
+            };
+            const auto event_title_draw = [&](const NativeDrawnTextRow *draw) {
+                const auto base = native_history_profile_base();
+                if (!draw || !base) return false;
+#ifdef _WIN32
+                return draw->native_caller == native_reference_address(base, 0xc3197) ||
+                    draw->native_caller == native_reference_address(base, 0xc31d9);
+#else
+                return draw->native_caller == native_reference_address(base, 0x17cf93a) ||
+                    draw->native_caller == native_reference_address(base, 0x17cf972) ||
+                    draw->native_caller == native_reference_address(base, 0x17cfd0e);
+#endif
+            };
             // Own complete log captions before generic words or procedural
             // names can claim them. In particular, intrigue's Plots are not
             // parcels of land, and the green Tab shortcut is not a caption.
@@ -75,7 +160,7 @@
             // word, to retain ownership of such People cards. Typed metadata
             // below still takes precedence for pinned cards of other kinds.
             bool people_selected = false;
-            bool events_selected = false;
+            bool events_selected = native_events_view;
             bool agreements_selected = false;
             for (int y = tabs_y; y <= tabs_y + 1 && y < gps_->dimy; ++y) {
                 int people_color = -1;
@@ -280,6 +365,10 @@
             // Resolve complete native paragraphs before generic names/words
             // see them; a scrolled continuation need not repeat This person.
             std::unordered_set<int> placed_header_rows;
+            std::unordered_set<int> placed_event_date_rows;
+            std::unordered_set<int> placed_event_title_headers;
+            struct EventOccurrenceRow { int y, left, right; };
+            std::vector<EventOccurrenceRow> event_occurrence_rows;
             for (int title_y = tabs_y + 1; title_y < gps_->dimy; ++title_y) {
                 if (placed_header_rows.contains(title_y)) continue;
                 const auto counter = counter_start(title_y);
@@ -370,12 +459,12 @@
                     }
                     return half;
                 };
-                const auto field_rows = [&](Match field) {
+                const auto field_rows = [&](Match field, int row_limit = -1) {
                     std::vector<Match> rows{field};
                     const uint32_t half = field_half(field);
                     if (half != top_half && half != bottom_half) return rows;
                     const int y = field.y + (half == top_half ? 1 : -1);
-                    if (y < frame_top || y >= bottom ||
+                    if (y < frame_top || y >= (row_limit >= 0 ? row_limit : bottom) ||
                         context[y].compare(field.x, field.length, field.source) != 0) return rows;
                     field.y = y;
                     if (field_half(field) != (half == top_half ? bottom_half : top_half)) return rows;
@@ -404,6 +493,23 @@
                     kAdventureJournalRule, {},
                     context[title_y].substr(*counter, counter_end - *counter)};
                 const auto *counter_draw = agreement_draw(counter_field, counter_end);
+                // The native event counter owns this card even when scrolling,
+                // wrapping or the card's three-row preview hides its date prefix.
+                // Pinned cards retain their own producer instead of inheriting
+                // whichever journal tab is currently selected.
+                event = event || event_counter_draw(counter_draw);
+                if (!event) {
+                    for (const Match &row : field_rows(counter_field))
+                        if (event_counter_draw(agreement_draw(row, counter_end))) {
+                            event = true;
+                            break;
+                        }
+                    for (const Match &row : title_rows)
+                        if (event_title_draw(agreement_draw(row, *counter))) {
+                            event = true;
+                            break;
+                        }
+                }
                 const bool native_agreement_counter = counter_draw &&
                     native_journal_agreement_field(counter_draw->native_caller) ==
                         NativeJournalAgreementField::Counter;
@@ -412,6 +518,127 @@
                 // Pinned agreement cards can remain visible on the Events tab.
                 // Their native header owns the kind ahead of tab/date guesses.
                 if (native_agreement_title || native_agreement_counter) event = false;
+                std::unordered_set<int> event_title_rows;
+                std::vector<Match> event_title_logical;
+                std::vector<Match> event_title_halves;
+                std::vector<int> event_title_clips;
+                if (event && title) {
+                    event_title_logical.push_back(*title);
+                    event_title_halves = title_rows;
+                    event_title_clips.push_back(*counter);
+                    for (const Match &row : title_rows) event_title_rows.insert(row.y);
+                    for (int y = title_rows.back().y + 1; !collapsed && y < bottom; ++y) {
+                        const int edge = text_right(y);
+                        const auto field = field_at(y, edge);
+                        if (!field || !event_title_draw(agreement_draw(*field, edge))) break;
+                        event_title_logical.push_back(*field);
+                        event_title_clips.push_back(edge);
+                        const auto halves = field_rows(*field);
+                        event_title_halves.insert(event_title_halves.end(), halves.begin(), halves.end());
+                        for (const Match &row : halves) event_title_rows.insert(row.y);
+                        y = halves.back().y;
+                    }
+                }
+                int event_date_end_y = event_date_y;
+                if (event && !collapsed) {
+                    for (int y = title_y + 1; y < bottom; ++y) {
+                        if (event_title_rows.contains(y)) continue;
+                        const int edge = text_right(y);
+                        const auto field = field_at(y, edge);
+                        if (!field) continue;
+                        NativeParagraphViewport date_viewport;
+                        const auto complete = event_source_for_rows({*field}, {edge}, &date_viewport);
+                        const std::string source = normalize_utterance(
+                            complete.value_or(field->source));
+                        if (!source.starts_with(date_prefix)) continue;
+                        std::vector<Match> logical{*field};
+                        std::vector<Match> halves = field_rows(*field);
+                        std::vector<int> clips{edge};
+                        int date_right = edge;
+                        for (int next = halves.back().y + 1; complete && next < bottom; ++next) {
+                            const int next_edge = text_right(next);
+                            const auto continuation = field_at(next, next_edge);
+                            if (!continuation) break;
+                            auto next_logical = logical;
+                            next_logical.push_back(*continuation);
+                            auto next_clips = clips;
+                            next_clips.push_back(next_edge);
+                            NativeParagraphViewport next_viewport;
+                            const auto next_source = event_source_for_rows(next_logical,
+                                next_clips, &next_viewport);
+                            if (!next_source || normalize_utterance(*next_source) != source) break;
+                            logical = std::move(next_logical);
+                            clips = std::move(next_clips);
+                            date_viewport = next_viewport;
+                            const auto next_halves = field_rows(*continuation);
+                            halves.insert(halves.end(), next_halves.begin(), next_halves.end());
+                            next = next_halves.back().y;
+                            date_right = std::min(date_right, next_edge);
+                        }
+                        event_date_y = y;
+                        event_date_end_y = halves.back().y;
+                        event_occurrence_rows.push_back({y, left, right});
+                        std::optional<std::string> target;
+                        for (int index : candidate_template_rules(source)) {
+                            const Rule &rule = rules_[static_cast<size_t>(index)];
+                            if (!rule.source.starts_with(date_prefix)) continue;
+                            size_t end = 0;
+                            std::vector<std::string> captures;
+                            if (match_template(rule, source, 0, &end, &captures) && end == source.size()) {
+                                target = fill_template(rule, captures, &capture_translations_);
+                                break;
+                            }
+                        }
+                        if (target && append_bounded_paragraph(logical, *target, screen_rows,
+                                result, only_y, date_right, date_right, {}, false, left,
+                                complete ? std::optional(date_viewport) : std::nullopt)) {
+                            for (Match row : halves) {
+                                placed_event_date_rows.insert(row.y);
+                                if (std::any_of(logical.begin(), logical.end(),
+                                        [&](const Match &line) { return line.y == row.y; })) continue;
+                                row.native_split_duplicate = true;
+                                std::fill_n(screen_rows[row.y].begin() + row.x, row.length, ' ');
+                                if (only_y < 0 || only_y == row.y) result.push_back(std::move(row));
+                            }
+                        } else {
+                            halves.front().native_help_review_source = source;
+                            for (Match row : halves) {
+                                row.native_help_source_only = true;
+                                std::fill_n(screen_rows[row.y].begin() + row.x, row.length, ' ');
+                                untranslated_help_rows.push_back(std::move(row));
+                            }
+                        }
+                        break;
+                    }
+                }
+                // The retained title owns its logical wraps and both physical
+                // font halves, including when its occurrence date scrolls away.
+                if (event && !collapsed && !event_title_logical.empty()) {
+                    NativeParagraphViewport title_viewport;
+                    const auto complete = event_source_for_rows(event_title_logical,
+                        event_title_clips, &title_viewport);
+                    const auto target = complete
+                        ? translate_journal_title(*complete, JournalSearchKind::Event) : std::nullopt;
+                    if (target && append_bounded_paragraph(event_title_logical, *target,
+                            screen_rows, result, only_y, *counter, *counter, {}, false, left,
+                            title_viewport)) {
+                        for (Match row : event_title_halves) {
+                            if (std::any_of(event_title_logical.begin(), event_title_logical.end(),
+                                    [&](const Match &line) { return line.y == row.y; })) continue;
+                            row.native_split_duplicate = true;
+                            std::fill_n(screen_rows[row.y].begin() + row.x, row.length, ' ');
+                            if (only_y < 0 || only_y == row.y) result.push_back(std::move(row));
+                        }
+                    } else {
+                        if (complete) event_title_halves.front().native_help_review_source = *complete;
+                        for (Match row : event_title_halves) {
+                            row.native_help_source_only = true;
+                            std::fill_n(screen_rows[row.y].begin() + row.x, row.length, ' ');
+                            untranslated_help_rows.push_back(std::move(row));
+                        }
+                    }
+                    placed_event_title_headers.insert(title_y);
+                }
                 if (event)
                     for (const Match &row : title_rows) placed_header_rows.insert(row.y);
                 // Bestiary records put the species/caste in the title, with
@@ -429,7 +656,8 @@
                 // supplies their kind; retain the same bounded title grammar
                 // and reserve both font halves against generic word matching.
                 if (event && collapsed && title) {
-                    const auto complete = native_drawn_text_for_row(*title, *counter);
+                    NativeParagraphViewport viewport;
+                    const auto complete = event_source_for_rows({*title}, {*counter}, &viewport);
                     const std::string source = complete.value_or(title->source);
                     const auto target = complete || title->x + title->length < *counter
                         ? translate_journal_title(source, JournalSearchKind::Event) : std::nullopt;
@@ -550,7 +778,8 @@
                     }
                 }
                 const auto header_row = [&](int y) {
-                    return title_row(y) || std::any_of(metadata.begin(), metadata.end(),
+                    return title_row(y) || event_title_rows.contains(y) ||
+                        std::any_of(metadata.begin(), metadata.end(),
                         [&](const HeaderField &field) {
                             return std::any_of(field.rows.begin(), field.rows.end(),
                                 [&](const Match &row) { return row.y == y; });
@@ -883,12 +1112,18 @@
                 // Its expanded hearing/mission paragraphs still need the same
                 // complete native-source and split-font handling as People.
                 int body_top = title_y + 1;
-                if (event) {
-                    body_top = event_date_y + 1;
+                if (event && event_date_y >= 0) {
+                    body_top = event_date_end_y + 1;
                     if (const auto date = field_at(event_date_y, text_right(event_date_y)))
-                        body_top = field_rows(*date).back().y + 1;
+                        body_top = std::max(body_top, field_rows(*date).back().y + 1);
                 }
-                for (int y = body_top; y < bottom;) {
+                // The native Events writer at c3325 / 17d2d1c accepts
+                // y <= its lower card boundary. A two-row title puts the
+                // hearing preview on that bottom-skin row itself. Metadata
+                // still uses the ordinary interior; only a proven native
+                // event paragraph may own the extra body row below.
+                const int body_bottom = event ? std::min(gps_->dimy, bottom + 1) : bottom;
+                for (int y = body_top; y < body_bottom;) {
                     // Scroll controls are foreground pictures inside the
                     // card. Lower-layer card shading still belongs to prose.
                     std::vector<Match> rows;
@@ -896,7 +1131,7 @@
                     std::vector<int> clips;
                     std::string visible;
                     int body_right = right;
-                    for (; y < bottom; ++y) {
+                    for (; y < body_bottom; ++y) {
                         // Headers and prose can touch without a blank row.
                         // Keep both physical halves of a name/type out of
                         // the paragraph, including before native recapture.
@@ -912,13 +1147,54 @@
                         // even when they touch the hearing paragraph without
                         // a blank row. Leave their existing label/layout owner.
                         if (event && (source == "Centered on location" ||
+                                source == "Centered on first heard" ||
                                 source == "Centered on last heard")) {
+                            if (!rows.empty()) break;
+                            const int first = left + static_cast<int>(source.data() - band.data());
+                            Match field{first, y, static_cast<int>(source.size()),
+                                kAdventureJournalRule, {}, std::string(source)};
+                            if (y >= bottom) {
+                                const auto *draw = agreement_draw(field, edge);
+                                const auto base = native_history_profile_base();
+                                const bool native_location = draw && base && (
+#ifdef _WIN32
+                                    draw->native_caller == native_reference_address(base, 0xc34ff) ||
+                                    draw->native_caller == native_reference_address(base, 0xc356d) ||
+                                    draw->native_caller == native_reference_address(base, 0xc35d8)
+#else
+                                    draw->native_caller == native_reference_address(base, 0x17d2e21) ||
+                                    draw->native_caller == native_reference_address(base, 0x17d383b) ||
+                                    draw->native_caller == native_reference_address(base, 0x17d3891)
+#endif
+                                );
+                                if (!native_location) continue;
+                            }
+                            const auto halves = field_rows(field, body_bottom);
+                            const auto target = translate_journal_agreement_field(source,
+                                NativeJournalAgreementField::None);
+                            std::vector<Match> centered_matches;
+                            if (!target || !place_field(halves, *target, y, edge, left,
+                                    false, screen_rows, centered_matches)) {
+                                for (Match row : halves) {
+                                    row.native_help_source_only = true;
+                                    std::fill_n(screen_rows[row.y].begin() + row.x, row.length, ' ');
+                                    untranslated_help_rows.push_back(std::move(row));
+                                }
+                            } else
+                                for (Match &match : centered_matches)
+                                    if (only_y < 0 || only_y == match.y) result.push_back(std::move(match));
+                            y = halves.back().y;
+                            continue;
+                        }
+                        const int first = left + static_cast<int>(source.data() - band.data());
+                        Match source_row{first, y, static_cast<int>(source.size()),
+                            kAdventureJournalRule, {}, std::string(source)};
+                        if (event && y >= bottom &&
+                                !event_source_for_rows({source_row}, {edge}, nullptr)) {
                             if (rows.empty()) continue;
                             break;
                         }
-                        const int first = left + static_cast<int>(source.data() - band.data());
-                        rows.push_back({first, y, static_cast<int>(source.size()),
-                            kAdventureJournalRule, {}, std::string(source)});
+                        rows.push_back(std::move(source_row));
                         bool top = false;
                         if (const auto *cell = cell_at(first, y, &top))
                             rows.back().layout_foreground_rgb =
@@ -928,7 +1204,7 @@
                         if (!visible.empty()) visible += ' ';
                         visible += source;
                         if (field_half(rows.back()) == top_half) {
-                            const auto halves = field_rows(rows.back());
+                            const auto halves = field_rows(rows.back(), body_bottom);
                             if (halves.size() == 2) {
                                 // Match native wraps as logical lines while
                                 // retaining both physical suppression spans.
@@ -940,13 +1216,49 @@
                     }
                     if (rows.empty()) continue;
                     NativeParagraphViewport viewport;
-                    auto native = native_source_for_rows(rows, -1, nullptr, &viewport, clips);
+                    auto native = event ? event_source_for_rows(rows, clips, &viewport)
+                        : native_source_for_rows(rows, -1, nullptr, &viewport, clips);
+                    if (event && native) {
+                        // The paragraph's actual address/bytes own every
+                        // visible source span, including a preview written on
+                        // the lower skin. Retire earlier fragment claims only
+                        // where they share those proven native ink bytes.
+                        const auto overlaps_source = [&](const Match &claim) {
+                            const auto overlaps_row = [&](const Match &row) {
+                                if (claim.y != row.y || claim.length <= 0) return false;
+                                const int first = std::max(claim.x, row.x);
+                                const int end = std::min(claim.x + claim.length, row.x + row.length);
+                                for (int x = first; x < end; ++x) {
+                                    const size_t owned = static_cast<size_t>(x - row.x);
+                                    const size_t previous = static_cast<size_t>(x - claim.x);
+                                    if (owned < row.source.size() && previous < claim.source.size() &&
+                                            row.source[owned] != ' ' &&
+                                            claim.source[previous] == row.source[owned]) return true;
+                                }
+                                return false;
+                            };
+                            return std::any_of(rows.begin(), rows.end(), overlaps_row) ||
+                                std::any_of(body_halves.begin(), body_halves.end(), overlaps_row);
+                        };
+                        std::erase_if(result, overlaps_source);
+                        std::erase_if(untranslated_help_rows, overlaps_source);
+                        // Generic panel interiors exclude the lower skin.
+                        // This native event writer deliberately uses it, so
+                        // preserve the proven inclusive card viewport in pixels.
+                        const int tile_w = gps_->tile_pixel_x, tile_h = gps_->tile_pixel_y;
+                        const int origin_x = (gps_->screen_pixel_x - gps_->dimx * tile_w) / 2;
+                        const int origin_y = (gps_->screen_pixel_y - gps_->dimy * tile_h) / 2;
+                        const SDL_Rect body_clip{origin_x + left * tile_w,
+                            origin_y + body_top * tile_h, (body_right - left) * tile_w,
+                            (body_bottom - body_top) * tile_h};
+                        for (Match &row : rows) row.layout_native_clip = body_clip;
+                    }
                     // A hot reload can occur after DF has built this card.
                     // Recover each wrapped row from its actual draw call:
                     // the card edge can clip the final letters on more than
                     // one row. Every position and visible byte must match;
                     // no dictionary-prefix guessing supplies hidden text.
-                    if (!native) {
+                    if (!native && !event) {
                         std::string drawn_source;
                         bool complete = true;
                         for (size_t line = 0; line < rows.size(); ++line) {
@@ -1053,10 +1365,17 @@
             }
             for (int date_y = tabs_y + 1; date_y < gps_->dimy; ++date_y) {
                 const size_t at = context[date_y].find(date_prefix);
-                if (at == std::string::npos || at == 0) continue;
-                const int left = static_cast<int>(at);
+                const auto occurrence = std::find_if(event_occurrence_rows.begin(),
+                    event_occurrence_rows.end(), [&](const EventOccurrenceRow &row) {
+                        return row.y == date_y;
+                    });
+                if (occurrence == event_occurrence_rows.end() &&
+                        (at == std::string::npos || at == 0)) continue;
+                const int left = occurrence != event_occurrence_rows.end()
+                    ? occurrence->left : static_cast<int>(at);
                 if (!journal_border_at(left - 1, date_y, 3)) continue;
-                int right = left + static_cast<int>(date_prefix.size());
+                int right = occurrence != event_occurrence_rows.end()
+                    ? occurrence->right : left + static_cast<int>(date_prefix.size());
                 while (right < gps_->dimx && !journal_border_at(right, date_y, 5)) ++right;
                 if (right >= gps_->dimx) continue;
 
@@ -1066,7 +1385,8 @@
                 while (date_end > left && context[date_y][date_end - 1] == ' ') --date_end;
                 const std::string date_source = context[date_y].substr(left, date_end - left);
                 const std::string date = normalize_utterance(date_source);
-                for (int index : candidate_template_rules(date)) {
+                for (int index : placed_event_date_rows.contains(date_y)
+                        ? std::vector<int>{} : candidate_template_rules(date)) {
                     const Rule &rule = rules_[static_cast<size_t>(index)];
                     if (!rule.source.starts_with(date_prefix)) continue;
                     size_t end = 0;
@@ -1105,6 +1425,7 @@
                     if (!journal_border_at(left - 1, y, 3) || !journal_border_at(right, y, 5)) break;
                 }
                 if (first_y < 0 || counter_x <= left) continue;
+                if (placed_event_title_headers.contains(first_y)) continue;
                 std::vector<Match> title;
                 std::vector<int> clips;
                 std::string visible;
@@ -1142,7 +1463,7 @@
                 }
                 if (!intact || title.empty()) continue;
                 NativeParagraphViewport viewport;
-                auto complete = native_source_for_rows(title, -1, nullptr, &viewport, clips);
+                auto complete = event_source_for_rows(title, clips, &viewport);
                 // The journal draws two rows whenever its title wraps. A
                 // single title row is therefore complete in the native draw
                 // even when the subsequent counter covers its final letters.

@@ -12578,3 +12578,10 @@ Adventurer log agreement field: Centered on last heard	已定位到最近获悉�
 # Complete branches from the ELF/PE building material picker.
 Amount needed: {d} to {d}	所需数量：{d1}～{d2}	wt
 Build material: Null	物品不存在	h
+
+# Adventure Events: the native calendar omits invalid/out-of-range months.
+# Preserve the signed day/year and translate the entire occurrence sentence.
+This event occurred on the {d}st in the year {d}.	第{d2}年某月{d1}日发生了这件事。	wtl
+This event occurred on the {d}nd in the year {d}.	第{d2}年某月{d1}日发生了这件事。	wtl
+This event occurred on the {d}rd in the year {d}.	第{d2}年某月{d1}日发生了这件事。	wtl
+This event occurred on the {d}th in the year {d}.	第{d2}年某月{d1}日发生了这件事。	wtl

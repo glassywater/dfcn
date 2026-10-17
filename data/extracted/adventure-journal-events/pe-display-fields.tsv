@@ -1,0 +1,15 @@
+edition	instruction_rva	return_site_rva	source_kind	native_origin
+steam	0xc3192	0xc3197	Title	card+0xc0 title-lines[0]
+steam	0xc31d4	0xc31d9	Title	title-lines[1] if >=2 title lines; otherwise card+0xa0 full title
+steam	0xc325e	0xc3263	Counter	one-based card index / total
+steam	0xc3356	0xc335b	Paragraph	card+0xd8 native wrapped paragraph-lines[card-scroll+line]
+steam	0xc34fa	0xc34ff	CenterFirst	Centered on first heard
+steam	0xc3568	0xc356d	CenterLast	Centered on last heard
+steam	0xc35d3	0xc35d8	CenterLocation	Centered on location
+classic	0xc3122	0xc3127	Title	card+0xc0 title-lines[0]
+classic	0xc3164	0xc3169	Title	title-lines[1] if >=2 title lines; otherwise card+0xa0 full title
+classic	0xc31ee	0xc31f3	Counter	one-based card index / total
+classic	0xc32e6	0xc32eb	Paragraph	card+0xd8 native wrapped paragraph-lines[card-scroll+line]
+classic	0xc348a	0xc348f	CenterFirst	Centered on first heard
+classic	0xc34f8	0xc34fd	CenterLast	Centered on last heard
+classic	0xc3563	0xc3568	CenterLocation	Centered on location

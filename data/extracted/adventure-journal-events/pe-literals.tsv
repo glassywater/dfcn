@@ -1,0 +1,1427 @@
+edition	role	instruction_rva	operand	kind	text
+steam	journal-renderer-and-card-fields	0xc2999	0x1415ec1e8	cstring	Agreements
+steam	journal-renderer-and-card-fields	0xc29cb	0x1415ec1d0	cstring	Events
+steam	journal-renderer-and-card-fields	0xc29fd	0x1415ec1d8	cstring	People
+steam	journal-renderer-and-card-fields	0xc2a2f	0x1415ec20c	cstring	Sites
+steam	journal-renderer-and-card-fields	0xc2a61	0x1415ec214	cstring	Groups
+steam	journal-renderer-and-card-fields	0xc2a93	0x1415ec1f8	cstring	Regions
+steam	journal-renderer-and-card-fields	0xc2ac5	0x1415ec200	cstring	Bestiary
+steam	journal-renderer-and-card-fields	0xc2af4	0x1415ec238	cstring	Artifacts
+steam	journal-renderer-and-card-fields	0xc2b23	0x1415ec248	cstring	Intrigue
+steam	journal-renderer-and-card-fields	0xc2e66	0x1415ec288	cstring	Plots
+steam	journal-renderer-and-card-fields	0xc2e94	0x1415ec228	cstring	Organizations
+steam	journal-renderer-and-card-fields	0xc2ec2	0x1415ec21c	cstring	Actors
+steam	journal-renderer-and-card-fields	0xc320e	0x1415eb514	cstring	/
+steam	journal-renderer-and-card-fields	0xc34d8	0x1415ec270	cstring	Centered on first heard
+steam	journal-renderer-and-card-fields	0xc3546	0x1415ec258	cstring	Centered on last heard
+steam	journal-renderer-and-card-fields	0xc35b1	0x1415ec290	cstring	Centered on location
+steam	journal-renderer-and-card-fields	0xc3808	0x1415ec2e8	cstring	 Showing type,date
+steam	journal-renderer-and-card-fields	0xc3832	0x1415ec2d0	cstring	 Showing pin,last
+steam	journal-renderer-and-card-fields	0xc39fb	0x1415eb514	cstring	/
+steam	journal-renderer-and-card-fields	0xc3b8b	0x1415ec2a8	cstring	Overthrow Agreement
+steam	journal-renderer-and-card-fields	0xc3b97	0x1415ec2c0	cstring	Guide Agreement
+steam	journal-renderer-and-card-fields	0xc3ba3	0x1415ec328	cstring	Rescue Agreement
+steam	journal-renderer-and-card-fields	0xc3baf	0x1415ec340	cstring	Aid Rescue Agreement
+steam	journal-renderer-and-card-fields	0xc3bbb	0x1415ec300	cstring	Adventuring Agreement
+steam	journal-renderer-and-card-fields	0xc3bc7	0x1415ec318	cstring	Bound Servitude
+steam	journal-renderer-and-card-fields	0xc3bd3	0x1415ec388	cstring	Entertainment Agreement
+steam	journal-renderer-and-card-fields	0xc3bdf	0x1415ec3a0	cstring	World Joining Agreement
+steam	journal-renderer-and-card-fields	0xc3beb	0x1415ec358	cstring	Residency Agreement
+steam	journal-renderer-and-card-fields	0xc3bf7	0x1415ec370	cstring	Grant of Citizenship
+steam	journal-renderer-and-card-fields	0xc3c03	0x1415ec3e0	cstring	Parley Arrangement
+steam	journal-renderer-and-card-fields	0xc3c0f	0x1415ec3f8	cstring	Corruption
+steam	journal-renderer-and-card-fields	0xc3c1b	0x1415ec3b8	cstring	Artifact Theft
+steam	journal-renderer-and-card-fields	0xc3c27	0x1415ec3c8	cstring	Promise of Position
+steam	journal-renderer-and-card-fields	0xc3c33	0x1415ec430	cstring	Assassination Plot
+steam	journal-renderer-and-card-fields	0xc3c3f	0x1415ec448	cstring	Abduction Plot
+steam	journal-renderer-and-card-fields	0xc3c48	0x1415ec408	cstring	Sabotage Plot
+steam	journal-renderer-and-card-fields	0xc3c51	0x1415ec418	cstring	Infiltration Plot
+steam	journal-renderer-and-card-fields	0xc3c5a	0x1415ec498	cstring	Framing Plot
+steam	journal-renderer-and-card-fields	0xc3c63	0x1415ec4a8	cstring	War Starting Plot
+steam	journal-renderer-and-card-fields	0xc3c90	0x1415ec4e8	cstring	Foiled Embezzlement Conspiracy
+steam	journal-renderer-and-card-fields	0xc3c99	0x1415ec478	cstring	Foiled Corruption Conspiracy
+steam	journal-renderer-and-card-fields	0xc3ca2	0x1415ec458	cstring	Foiled Bribery Conspiracy
+steam	journal-renderer-and-card-fields	0xc3cab	0x1415ec508	cstring	Build Structure
+steam	journal-renderer-and-card-fields	0xc3cb4	0x1415ec4c0	cstring	Offer Service
+steam	journal-renderer-and-card-fields	0xc3cbd	0x1415ec4d0	cstring	Retrieve Artifact
+steam	journal-renderer-and-card-fields	0xc3e17	0x1415e8ca0	cstring	You
+steam	journal-renderer-and-card-fields	0xc3ec4	0x1415ec6a0	cstring	asked that
+steam	journal-renderer-and-card-fields	0xc3f25	0x1415ec550	cstring	you
+steam	journal-renderer-and-card-fields	0xc3fcc	0x1415ec6b0	cstring	retrieve
+steam	journal-renderer-and-card-fields	0xc40c2	0x1415ec70c	cstring	from
+steam	journal-renderer-and-card-fields	0xc41be	0x1415ec714	cstring	for
+steam	journal-renderer-and-card-fields	0xc4311	0x1415ec6f8	cstring	Drive members of
+steam	journal-renderer-and-card-fields	0xc43d4	0x1415ec740	cstring	out of
+steam	journal-renderer-and-card-fields	0xc456a	0x1415e8ca0	cstring	You
+steam	journal-renderer-and-card-fields	0xc4617	0x1415ec6c0	cstring	requested that
+steam	journal-renderer-and-card-fields	0xc4678	0x1415ec550	cstring	you
+steam	journal-renderer-and-card-fields	0xc471b	0x1415ec6d0	cstring	make an offer of service to
+steam	journal-renderer-and-card-fields	0xc490c	0x1415e8ca0	cstring	You
+steam	journal-renderer-and-card-fields	0xc49b9	0x1415ec540	cstring	agreed to join
+steam	journal-renderer-and-card-fields	0xc4a1a	0x1415ec550	cstring	you
+steam	journal-renderer-and-card-fields	0xc4abf	0x1415ec518	cstring	in insurrection against
+steam	journal-renderer-and-card-fields	0xc4b97	0x1415ec530	cstring	thereby freeing
+steam	journal-renderer-and-card-fields	0xc4c88	0x1415e8ca0	cstring	You
+steam	journal-renderer-and-card-fields	0xc4d35	0x1415ec598	cstring	agreed to guide
+steam	journal-renderer-and-card-fields	0xc4d96	0x1415ec550	cstring	you
+steam	journal-renderer-and-card-fields	0xc4e3b	0x1415ec5a8	cstring	to
+steam	journal-renderer-and-card-fields	0xc5043	0x1415ec558	cstring	somebody unknown
+steam	journal-renderer-and-card-fields	0xc50b8	0x1415e8ca0	cstring	You
+steam	journal-renderer-and-card-fields	0xc5165	0x1415ec540	cstring	agreed to join
+steam	journal-renderer-and-card-fields	0xc51c6	0x1415ec550	cstring	you
+steam	journal-renderer-and-card-fields	0xc5267	0x1415ec570	cstring	in order to be brought safely away from
+steam	journal-renderer-and-card-fields	0xc535c	0x1415e8ca0	cstring	You
+steam	journal-renderer-and-card-fields	0xc5409	0x1415ec540	cstring	agreed to join
+steam	journal-renderer-and-card-fields	0xc546a	0x1415ec550	cstring	you
+steam	journal-renderer-and-card-fields	0xc550b	0x1415ec5e8	cstring	in order to rescue
+steam	journal-renderer-and-card-fields	0xc5686	0x1415ec558	cstring	somebody unknown
+steam	journal-renderer-and-card-fields	0xc56fb	0x1415e8ca0	cstring	You
+steam	journal-renderer-and-card-fields	0xc57a8	0x1415ec600	cstring	agreed to adventure with
+steam	journal-renderer-and-card-fields	0xc5809	0x1415ec550	cstring	you
+steam	journal-renderer-and-card-fields	0xc58aa	0x1415ec5b0	cstring	wherever the journey might lead
+steam	journal-renderer-and-card-fields	0xc5919	0x1415e8ca0	cstring	You
+steam	journal-renderer-and-card-fields	0xc59c6	0x1415ec5d0	cstring	was bound to serve
+steam	journal-renderer-and-card-fields	0xc5a27	0x1415ec550	cstring	you
+steam	journal-renderer-and-card-fields	0xc5ac8	0x1415ec650	cstring	by invocation of True Name
+steam	journal-renderer-and-card-fields	0xc5b37	0x1415e8ca0	cstring	You
+steam	journal-renderer-and-card-fields	0xc5be4	0x1415ec670	cstring	agreed to entertain people with
+steam	journal-renderer-and-card-fields	0xc5c45	0x1415ec550	cstring	you
+steam	journal-renderer-and-card-fields	0xc5ce6	0x1415ec620	cstring	throughout the world
+steam	journal-renderer-and-card-fields	0xc5d6d	0x1415ec638	cstring	Agreement concluded
+steam	journal-renderer-and-card-fields	0xc5e40	0x1415ec698	cstring	st
+steam	journal-renderer-and-card-fields	0xc5e49	0x1415ec69c	cstring	nd
+steam	journal-renderer-and-card-fields	0xc5e52	0x1415ec690	cstring	rd
+steam	journal-renderer-and-card-fields	0xc5e5b	0x1415ec694	cstring	th
+steam	journal-renderer-and-card-fields	0xc5e6b	0x1415e873c	cstring	 
+steam	journal-renderer-and-card-fields	0xc5e9d	0x1415e90d8	cstring	, 
+steam	journal-renderer-and-card-fields	0xc5f25	0x1415ec6ec	cstring	Kill
+steam	journal-renderer-and-card-fields	0xc6006	0x1415ec718	cstring	Cause trouble for
+steam	journal-renderer-and-card-fields	0xc60ca	0x1415ec748	cstring	Drive
+steam	journal-renderer-and-card-fields	0xc618d	0x1415ec70c	cstring	from
+steam	journal-renderer-and-card-fields	0xc6253	0x1415ec730	cstring	An order from
+steam	journal-renderer-and-card-fields	0xc633d	0x1415ec770	cstring	Finish reporting in
+steam	journal-renderer-and-card-fields	0xc63ae	0x1415ec788	cstring	Complete: report back
+steam	journal-renderer-and-card-fields	0xc63fb	0x1415ec750	cstring	Not yet completed
+steam	journal-renderer-and-card-fields	0xc6574	0x1415e8ca0	cstring	You
+steam	journal-renderer-and-card-fields	0xc6621	0x1415ec6a0	cstring	asked that
+steam	journal-renderer-and-card-fields	0xc6682	0x1415ec550	cstring	you
+steam	journal-renderer-and-card-fields	0xc6725	0x1415ec7c8	cstring	retrieve 
+steam	journal-renderer-and-card-fields	0xc68bf	0x1415e8ca0	cstring	You
+steam	journal-renderer-and-card-fields	0xc696c	0x1415ec6c0	cstring	requested that
+steam	journal-renderer-and-card-fields	0xc69cd	0x1415ec550	cstring	you
+steam	journal-renderer-and-card-fields	0xc6a70	0x1415ec764	cstring	serve 
+steam	journal-renderer-and-card-fields	0xc6b55	0x1415ec638	cstring	Agreement concluded
+steam	journal-renderer-and-card-fields	0xc6bf6	0x1415ec730	cstring	An order from
+steam	journal-renderer-and-card-fields	0xc6cdd	0x1415ec770	cstring	Finish reporting in
+steam	journal-renderer-and-card-fields	0xc6d4b	0x1415ec788	cstring	Complete: report back
+steam	journal-renderer-and-card-fields	0xc6d95	0x1415ec750	cstring	Not yet completed
+steam	journal-renderer-and-card-fields	0xc6f67	0x1415ec7d8	cstring	Centered on commander
+steam	journal-renderer-and-card-fields	0xc6fd1	0x1415ec7a0	cstring	Centered on target
+steam	journal-renderer-and-card-fields	0xc7251	0x1415ec824	cstring	Org: 
+steam	journal-renderer-and-card-fields	0xc72db	0x1415eb514	cstring	/
+steam	journal-renderer-and-card-fields	0xc7542	0x1415eb514	cstring	/
+steam	journal-renderer-and-card-fields	0xc7f39	0x1415ec7b8	cstring	One member
+steam	journal-renderer-and-card-fields	0xc7f85	0x1415ec818	cstring	 members
+steam	journal-renderer-and-card-fields	0xc8275	0x1415eb514	cstring	/
+steam	journal-renderer-and-card-fields	0xc8660	0x1415eb514	cstring	/
+steam	journal-renderer-and-card-fields	0xc8a50	0x1415eb514	cstring	/
+steam	journal-renderer-and-card-fields	0xc8d9c	0x1415ec7f0	cstring	 Showing important
+steam	journal-renderer-and-card-fields	0xc8dd7	0x1415ec808	cstring	 Showing all
+steam	journal-renderer-and-card-fields	0xc8fa2	0x1415eb514	cstring	/
+steam	journal-renderer-and-card-fields	0xc92ec	0x1415ec7f0	cstring	 Showing important
+steam	journal-renderer-and-card-fields	0xc9327	0x1415ec808	cstring	 Showing all
+steam	journal-renderer-and-card-fields	0xc94e0	0x1415eb514	cstring	/
+steam	journal-renderer-and-card-fields	0xc982c	0x1415ec7f0	cstring	 Showing important
+steam	journal-renderer-and-card-fields	0xc9867	0x1415ec808	cstring	 Showing all
+steam	journal-renderer-and-card-fields	0xc9a20	0x1415eb514	cstring	/
+steam	journal-renderer-and-card-fields	0xc9e10	0x1415eb514	cstring	/
+steam	journal-renderer-and-card-fields	0xca12c	0x1415ec850	cstring	: Toggle line
+steam	journal-renderer-and-card-fields	0xca286	0x1415ec860	cstring	...
+steam	journal-renderer-and-card-fields	0xca2ca	0x1415ec82c	cstring	_
+steam	journal-event-occurrence-and-card-construction	0xd506f	0x1415ed4e0/16	vector	This event occur
+steam	journal-event-occurrence-and-card-construction	0xd5079	0x1415ed4f0	cstring	red on the 
+steam	journal-event-occurrence-and-card-construction	0xd5086	0x1415ed4f8	cstring	he 
+steam	journal-event-occurrence-and-card-construction	0xd5091	0x1415ed4fa	cstring	 
+steam	journal-event-occurrence-and-card-construction	0xd50fb	0x1415ec698	cstring	st
+steam	journal-event-occurrence-and-card-construction	0xd5104	0x1415ec69c	cstring	nd
+steam	journal-event-occurrence-and-card-construction	0xd510d	0x1415ec690	cstring	rd
+steam	journal-event-occurrence-and-card-construction	0xd5116	0x1415ec694	cstring	th
+steam	journal-event-occurrence-and-card-construction	0xd5132	0x1415e873c	cstring	 
+steam	journal-event-occurrence-and-card-construction	0xd5185	0x1415ed558	cstring	 in the year 
+steam	journal-event-occurrence-and-card-construction	0xd51a7	0x1415e85b4	cstring	.
+steam	journal-event-title	0xd5439	0x1415e9248	cstring	Your
+steam	journal-event-title	0xd550c	0x1415ed568	cstring	Somebody
+steam	journal-event-title	0xd5521	0x1415e9260	cstring	's
+steam	journal-event-title	0xd5548	0x1415ed538	cstring	 giving of 
+steam	journal-event-title	0xd5557	0x1415ed548	cstring	 placement of 
+steam	journal-event-title	0xd55f4	0x1415ed5a0	cstring	an untitled work
+steam	journal-event-title	0xd561f	0x1415ed5b4	cstring	 to 
+steam	journal-event-title	0xd565c	0x1415ec550	cstring	you
+steam	journal-event-title	0xd5744	0x1415ed578	cstring	somebody
+steam	journal-event-title	0xd5766	0x1415ecfb4	cstring	 in 
+steam	journal-event-title	0xd57a1	0x1415ecfb4	cstring	 in 
+steam	journal-event-title	0xd57d7	0x1415ecfb4	cstring	 in 
+steam	journal-event-title	0xd5811	0x1415ecfb4	cstring	 in 
+steam	journal-event-title	0xd5861	0x1415ed588	cstring	The destruction of
+steam	journal-event-title	0xd58ba	0x1415e9248	cstring	Your
+steam	journal-event-title	0xd59c6	0x1415ed568	cstring	Somebody
+steam	journal-event-title	0xd59db	0x1415e9260	cstring	's
+steam	journal-event-title	0xd5a11	0x1415ed5c0	cstring	 refusal to give 
+steam	journal-event-title	0xd5a20	0x1415ed538	cstring	 giving of 
+steam	journal-event-title	0xd5a2f	0x1415ed5f0	cstring	 gaining of 
+steam	journal-event-title	0xd5a3e	0x1415ed548	cstring	 placement of 
+steam	journal-event-title	0xd5a4d	0x1415ed600	cstring	 possession of 
+steam	journal-event-title	0xd5a8f	0x1415ed5b4	cstring	 to 
+steam	journal-event-title	0xd5bb8	0x1415ed628	cstring	The reunion of 
+steam	journal-event-title	0xd5cb2	0x1415e9110	cstring	 and 
+steam	journal-event-title	0xd5db6	0x1415ed5d8	cstring	Your reunion with 
+steam	journal-event-title	0xd5f8d	0x1415ed578	cstring	somebody
+steam	journal-event-title	0xd5fd0	0x1415ed638	cstring	Your death
+steam	journal-event-title	0xd5fe7	0x1415ed610	cstring	The death of 
+steam	journal-event-title	0xd60a8	0x1415ed620	cstring	a 
+steam	journal-event-title	0xd60ed	0x1415e9248	cstring	Your
+steam	journal-event-title	0xd61bc	0x1415ed67c	cstring	A 
+steam	journal-event-title	0xd61f3	0x1415e9260	cstring	's
+steam	journal-event-title	0xd629e	0x1415e873c	cstring	 
+steam	journal-event-title	0xd62ce	0x1415ed680	cstring	production order violation
+steam	journal-event-title	0xd62e9	0x1415ed648	cstring	export prohibition violation
+steam	journal-event-title	0xd6304	0x1415ed668	cstring	job order violation
+steam	journal-event-title	0xd631f	0x1415ed6d0	cstring	conspiracy to slow labor
+steam	journal-event-title	0xd633a	0x1415ed6f0	cstring	crime of murder
+steam	journal-event-title	0xd6355	0x1415ed6a0	cstring	disorderly conduct
+steam	journal-event-title	0xd6370	0x1415ed6b8	cstring	building destruction
+steam	journal-event-title	0xd638b	0x1415ed720	cstring	bribery
+steam	journal-event-title	0xd63a6	0x1415ed728	cstring	embezzlement
+steam	journal-event-title	0xd63c1	0x1415ed700	cstring	vandalism
+steam	journal-event-title	0xd63dc	0x1415ed710	cstring	crime of theft
+steam	journal-event-title	0xd63f7	0x1415ed768	cstring	crime of robbery
+steam	journal-event-title	0xd6412	0x1415ed780	cstring	crime of espionage
+steam	journal-event-title	0xd642d	0x1415ed738	cstring	crime of treason
+steam	journal-event-title	0xd6448	0x1415ed750	cstring	crime of blood-drinking
+steam	journal-event-title	0xd6463	0x1415ed7d0	cstring	crime of attempted theft
+steam	journal-event-title	0xd647e	0x1415ed7f0	cstring	crime of attempted murder
+steam	journal-event-title	0xd6499	0x1415ed798	cstring	crime of kidnapping
+steam	journal-event-title	0xd64b4	0x1415ed7b0	cstring	crime of attempted kidnapping
+steam	journal-event-title	0xd6545	0x1415e9248	cstring	Your
+steam	journal-event-title	0xd664a	0x1415ed568	cstring	Somebody
+steam	journal-event-title	0xd665f	0x1415e9260	cstring	's
+steam	journal-event-title	0xd6674	0x1415ed840	cstring	 self-identification to 
+steam	journal-event-title	0xd66e5	0x1415e9248	cstring	Your
+steam	journal-event-title	0xd67b1	0x1415ed568	cstring	Somebody
+steam	journal-event-title	0xd67c6	0x1415e9260	cstring	's
+steam	journal-event-title	0xd67db	0x1415ed860	cstring	 refusal to identify to 
+steam	journal-event-title	0xd682d	0x1415e9248	cstring	Your
+steam	journal-event-title	0xd6938	0x1415ed67c	cstring	A 
+steam	journal-event-title	0xd696f	0x1415e9260	cstring	's
+steam	journal-event-title	0xd6984	0x1415ed810	cstring	 demand of submission from 
+steam	journal-event-title	0xd6a9a	0x1415e9248	cstring	Your
+steam	journal-event-title	0xd6ba5	0x1415ed67c	cstring	A 
+steam	journal-event-title	0xd6bdc	0x1415e9260	cstring	's
+steam	journal-event-title	0xd6bf1	0x1415ed830	cstring	 attack on 
+steam	journal-event-title	0xd6d07	0x1415e9248	cstring	Your
+steam	journal-event-title	0xd6e12	0x1415ed620	cstring	a 
+steam	journal-event-title	0xd6e49	0x1415e9260	cstring	's
+steam	journal-event-title	0xd6e5e	0x1415ed8a0	cstring	 escalated attack on 
+steam	journal-event-title	0xd6e95	0x1415ec550	cstring	you
+steam	journal-event-title	0xd6f95	0x1415ed620	cstring	a 
+steam	journal-historical-event-title	0xd7100	0x1415e9248	cstring	Your
+steam	journal-historical-event-title	0xd71d8	0x1415e9260	cstring	's
+steam	journal-historical-event-title	0xd722c	0x1415ed8b8	cstring	 ascension
+steam	journal-historical-event-title	0xd72b5	0x1415ed5b4	cstring	 to 
+steam	journal-historical-event-title	0xd7398	0x1415eb518	cstring	 of 
+steam	journal-historical-event-title	0xd73e7	0x1415e9248	cstring	Your
+steam	journal-historical-event-title	0xd74b8	0x1415e9260	cstring	's
+steam	journal-historical-event-title	0xd750c	0x1415ed880	cstring	 presence
+steam	journal-historical-event-title	0xd752b	0x1415ecfb4	cstring	 in 
+steam	journal-historical-event-title	0xd7562	0x1415ecfb4	cstring	 in 
+steam	journal-historical-event-title	0xd759e	0x1415ed890	cstring	's presence
+steam	journal-historical-event-title	0xd75c2	0x1415ecfb4	cstring	 in 
+steam	journal-historical-event-title	0xd7607	0x1415ed8f0	cstring	's acceptance of 
+steam	journal-historical-event-title	0xd762a	0x1415ed908	cstring	's offer of tribute
+steam	journal-historical-event-title	0xd765a	0x1415ed8c8	cstring	's refusal of 
+steam	journal-historical-event-title	0xd767f	0x1415ed8f0	cstring	's acceptance of 
+steam	journal-historical-event-title	0xd76a2	0x1415ed8d8	cstring	's demand for tribute
+steam	journal-historical-event-title	0xd76d2	0x1415ed8c8	cstring	's refusal of 
+steam	journal-historical-event-title	0xd76f7	0x1415ed8f0	cstring	's acceptance of 
+steam	journal-historical-event-title	0xd771a	0x1415ed938	cstring	's offer of peace
+steam	journal-historical-event-title	0xd774a	0x1415ed8c8	cstring	's refusal of 
+steam	journal-historical-event-title	0xd776f	0x1415ed950	cstring	's cessation of tribute to 
+steam	journal-historical-event-title	0xd77a6	0x1415ed920	cstring	's claim
+steam	journal-historical-event-title	0xd77ca	0x1415ed92c	cstring	 on 
+steam	journal-historical-event-title	0xd7802	0x1415ed988	cstring	's harassment
+steam	journal-historical-event-title	0xd782c	0x1415eb518	cstring	 of 
+steam	journal-historical-event-title	0xd786a	0x1415ed998	cstring	's withdrawal from 
+steam	journal-historical-event-title	0xd7888	0x1415ed970	cstring	's flight
+steam	journal-historical-event-title	0xd78ac	0x1415ed97c	cstring	 from 
+steam	journal-historical-event-title	0xd78cd	0x1415ed9c8	cstring	's abandonment
+steam	journal-historical-event-title	0xd78df	0x1415ed9d8	cstring	The insurrection
+steam	journal-historical-event-title	0xd78fe	0x1415ecfb4	cstring	 in 
+steam	journal-historical-event-title	0xd7935	0x1415ed9b0	cstring	 against 
+steam	journal-historical-event-title	0xd7964	0x1415ed9bc	cstring	The 
+steam	journal-historical-event-title	0xd799b	0x1415ed9f0	cstring	insurrection crushed
+steam	journal-historical-event-title	0xd79bb	0x1415eda08	cstring	 by 
+steam	journal-historical-event-title	0xd79f2	0x1415ecfb4	cstring	 in 
+steam	journal-historical-event-title	0xd7a20	0x1415eda20	cstring	failed insurrection 
+steam	journal-historical-event-title	0xd7a40	0x1415ed9b0	cstring	 against 
+steam	journal-historical-event-title	0xd7a77	0x1415ecfb4	cstring	 in 
+steam	journal-historical-event-title	0xd7aa5	0x1415eda10	cstring	overthrow 
+steam	journal-historical-event-title	0xd7ac5	0x1415eb518	cstring	 of 
+steam	journal-historical-event-title	0xd7afc	0x1415ecfb4	cstring	 in 
+steam	journal-historical-event-title	0xd7b39	0x1415eda58	cstring	's reclamation
+steam	journal-historical-event-title	0xd7b54	0x1415eda68	cstring	's foundation
+steam	journal-historical-event-title	0xd7b75	0x1415eda38	cstring	's march
+steam	journal-historical-event-title	0xd7b99	0x1415eda48	cstring	 to reclaim 
+steam	journal-historical-event-title	0xd7bba	0x1415eda38	cstring	's march
+steam	journal-historical-event-title	0xd7bde	0x1415edaa0	cstring	 to found a site in 
+steam	journal-historical-event-title	0xd7c1c	0x1415eda38	cstring	's march
+steam	journal-historical-event-title	0xd7c40	0x1415edab8	cstring	 toward 
+steam	journal-historical-event-title	0xd7c52	0x1415eda78	cstring	The occupation of 
+steam	journal-historical-event-title	0xd7cc4	0x1415eda08	cstring	 by 
+steam	journal-historical-event-title	0xd7e49	0x1415eda90	cstring	Your abduction
+steam	journal-historical-event-title	0xd7e60	0x1415edaf8	cstring	The abduction of 
+steam	journal-historical-event-title	0xd7f35	0x1415edb10	cstring	The destruction of 
+steam	journal-historical-event-title	0xd7f50	0x1415edac8	cstring	The presence of 
+steam	journal-historical-event-title	0xd7f79	0x1415ecfb4	cstring	 in 
+steam	journal-historical-event-title	0xd7fb1	0x1415ecfb4	cstring	 in 
+steam	journal-historical-event-title	0xd7fec	0x1415edac8	cstring	The presence of 
+steam	journal-historical-event-title	0xd803d	0x1415edae0	cstring	Your possession of 
+steam	journal-historical-event-title	0xd8108	0x1415edb48	cstring	's possession of 
+steam	journal-historical-event-title	0xd8175	0x1415edb60	cstring	The absence of 
+steam	journal-historical-event-title	0xd819e	0x1415ed97c	cstring	 from 
+steam	journal-historical-event-title	0xd81d6	0x1415edb24	cstring	's 
+steam	journal-historical-event-title	0xd8211	0x1415edb60	cstring	The absence of 
+steam	journal-historical-event-title	0xd823a	0x1415ed97c	cstring	 from 
+steam	journal-historical-event-title	0xd826f	0x1415edb28	cstring	Your lack of possession of 
+steam	journal-historical-event-title	0xd8358	0x1415edbe8	cstring	's lack of possession of 
+steam	journal-event-hearing-and-mission-paragraphs	0xd863e	0x1415edb70/16	vector	You have been or
+steam	journal-event-hearing-and-mission-paragraphs	0xd8648	0x1415edb80/16	vector	dered to drive t
+steam	journal-event-hearing-and-mission-paragraphs	0xd8653	0x1415edb90/16	vector	hese forces out.
+steam	journal-event-hearing-and-mission-paragraphs	0xd8805	0x1415edc08/16	vector	You have been or
+steam	journal-event-hearing-and-mission-paragraphs	0xd880f	0x1415edc18/16	vector	dered to slay th
+steam	journal-event-hearing-and-mission-paragraphs	0xd881a	0x1415edc28	cstring	is creature.
+steam	journal-event-hearing-and-mission-paragraphs	0xd8827	0x1415edc30	cstring	ure.
+steam	journal-event-hearing-and-mission-paragraphs	0xd8900	0x1415edc50/16	vector	You have been or
+steam	journal-event-hearing-and-mission-paragraphs	0xd890a	0x1415edc60/16	vector	dered to cause t
+steam	journal-event-hearing-and-mission-paragraphs	0xd8915	0x1415edc70/16	vector	rouble for these
+steam	journal-event-hearing-and-mission-paragraphs	0xd8920	0x1415edc80	cstring	 forces.
+steam	journal-event-hearing-and-mission-paragraphs	0xd8a00	0x1415edba8/16	vector	You have been or
+steam	journal-event-hearing-and-mission-paragraphs	0xd8a0a	0x1415edbb8/16	vector	dered to clear t
+steam	journal-event-hearing-and-mission-paragraphs	0xd8a15	0x1415edbc8/16	vector	he forces from t
+steam	journal-event-hearing-and-mission-paragraphs	0xd8a20	0x1415edbd8	cstring	his site.
+steam	journal-event-hearing-and-mission-paragraphs	0xd8a2d	0x1415edbe0	cstring	.
+steam	journal-event-hearing-and-mission-paragraphs	0xd8c78	0x1415edc90	cstring	You last
+steam	journal-event-hearing-and-mission-paragraphs	0xd8c91	0x1415e8ca0	cstring	You
+steam	journal-event-hearing-and-mission-paragraphs	0xd8c9b	0x1415e8ca2	cstring	u
+steam	journal-event-hearing-and-mission-paragraphs	0xd8caf	0x1415edc38	cstring	 heard this 
+steam	journal-event-hearing-and-mission-paragraphs	0xd8cd7	0x1415edc48	cstring	on the 
+steam	journal-event-hearing-and-mission-paragraphs	0xd8ce2	0x1415edc4c	cstring	he 
+steam	journal-event-hearing-and-mission-paragraphs	0xd8cee	0x1415edc4e	cstring	 
+steam	journal-event-hearing-and-mission-paragraphs	0xd8d61	0x1415ec698	cstring	st
+steam	journal-event-hearing-and-mission-paragraphs	0xd8d6a	0x1415ec69c	cstring	nd
+steam	journal-event-hearing-and-mission-paragraphs	0xd8d73	0x1415ec690	cstring	rd
+steam	journal-event-hearing-and-mission-paragraphs	0xd8d7c	0x1415ec694	cstring	th
+steam	journal-event-hearing-and-mission-paragraphs	0xd8d96	0x1415e873c	cstring	 
+steam	journal-event-hearing-and-mission-paragraphs	0xd8deb	0x1415ed558	cstring	 in the year 
+steam	journal-event-hearing-and-mission-paragraphs	0xd8fbd	0x1415ed97c	cstring	 from 
+steam	journal-event-hearing-and-mission-paragraphs	0xd9036	0x1415e85b4	cstring	.
+steam	journal-event-hearing-and-mission-paragraphs	0xd9205	0x1415edcb0	cstring	You first heard this 
+steam	journal-event-hearing-and-mission-paragraphs	0xd922d	0x1415edc48	cstring	on the 
+steam	journal-event-hearing-and-mission-paragraphs	0xd9238	0x1415edc4c	cstring	he 
+steam	journal-event-hearing-and-mission-paragraphs	0xd9244	0x1415edc4e	cstring	 
+steam	journal-event-hearing-and-mission-paragraphs	0xd92b5	0x1415ec698	cstring	st
+steam	journal-event-hearing-and-mission-paragraphs	0xd92be	0x1415ec69c	cstring	nd
+steam	journal-event-hearing-and-mission-paragraphs	0xd92c7	0x1415ec690	cstring	rd
+steam	journal-event-hearing-and-mission-paragraphs	0xd92d0	0x1415ec694	cstring	th
+steam	journal-event-hearing-and-mission-paragraphs	0xd92ea	0x1415e873c	cstring	 
+steam	journal-event-hearing-and-mission-paragraphs	0xd933f	0x1415ed558	cstring	 in the year 
+steam	journal-event-hearing-and-mission-paragraphs	0xd9528	0x1415ed97c	cstring	 from 
+steam	journal-event-hearing-and-mission-paragraphs	0xd95a1	0x1415e85b4	cstring	.
+steam	journal-event-hearing-and-mission-paragraphs	0xd979d	0x1415edcc8/16	vector	This is common k
+steam	journal-event-hearing-and-mission-paragraphs	0xd97a7	0x1415edcd8/16	vector	nowledge where y
+steam	journal-event-hearing-and-mission-paragraphs	0xd97b2	0x1415edce8	cstring	ou are from.
+steam	journal-event-hearing-and-mission-paragraphs	0xd97bf	0x1415edcf0	cstring	rom.
+steam	journal-incident-summary-and-search-index-initializer	0xd99b8	0x1415edca0	cstring	writing
+steam	journal-incident-summary-and-search-index-initializer	0xd99c2	0x1415edca4	cstring	ing
+steam	journal-incident-summary-and-search-index-initializer	0xd99cd	0x1415edca6	cstring	g
+steam	journal-incident-summary-and-search-index-initializer	0xd9a2d	0x1415edca8	cstring	Writing
+steam	journal-incident-summary-and-search-index-initializer	0xd9a4e	0x1415edd14	cstring	 Given
+steam	journal-incident-summary-and-search-index-initializer	0xd9a57	0x1415edd08	cstring	 Dropped
+steam	journal-incident-summary-and-search-index-initializer	0xd9a69	0x1415eb514	cstring	/
+steam	journal-incident-summary-and-search-index-initializer	0xd9b07	0x1415ed5a0	cstring	an untitled work
+steam	journal-incident-summary-and-search-index-initializer	0xd9b5a	0x1415edcf8	cstring	me
+steam	journal-incident-summary-and-search-index-initializer	0xd9b81	0x1415edcfc	cstring	/You
+steam	journal-incident-summary-and-search-index-initializer	0xd9bf0	0x1415eb514	cstring	/
+steam	journal-incident-summary-and-search-index-initializer	0xd9c20	0x1415ed5b4	cstring	 to 
+steam	journal-incident-summary-and-search-index-initializer	0xd9c5a	0x1415edcf8	cstring	me
+steam	journal-incident-summary-and-search-index-initializer	0xd9c81	0x1415edd3c	cstring	 you
+steam	journal-incident-summary-and-search-index-initializer	0xd9cc9	0x1415eb514	cstring	/
+steam	journal-incident-summary-and-search-index-initializer	0xd9d1f	0x1415edcf8	cstring	me
+steam	journal-incident-summary-and-search-index-initializer	0xd9d46	0x1415edcfc	cstring	/You
+steam	journal-incident-summary-and-search-index-initializer	0xd9d8b	0x1415eb514	cstring	/
+steam	journal-incident-summary-and-search-index-initializer	0xd9dc8	0x1415eb514	cstring	/
+steam	journal-incident-summary-and-search-index-initializer	0xd9e15	0x1415eb514	cstring	/
+steam	journal-incident-summary-and-search-index-initializer	0xd9e49	0x1415eb514	cstring	/
+steam	journal-incident-summary-and-search-index-initializer	0xd9e8e	0x7463616669747261	inline	artifact
+steam	journal-incident-summary-and-search-index-initializer	0xd9ef2	0x1415edd20	cstring	Artifact
+steam	journal-incident-summary-and-search-index-initializer	0xd9f1d	0x1415edd30	cstring	 Destroyed
+steam	journal-incident-summary-and-search-index-initializer	0xd9f26	0x1415edd68	cstring	 Held
+steam	journal-incident-summary-and-search-index-initializer	0xd9f2f	0x1415edd08	cstring	 Dropped
+steam	journal-incident-summary-and-search-index-initializer	0xd9f38	0x1415edd70	cstring	 Gained
+steam	journal-incident-summary-and-search-index-initializer	0xd9f41	0x1415edd14	cstring	 Given
+steam	journal-incident-summary-and-search-index-initializer	0xd9f4a	0x1415edd58	cstring	 Denied
+steam	journal-incident-summary-and-search-index-initializer	0xd9feb	0x1415eb514	cstring	/
+steam	journal-incident-summary-and-search-index-initializer	0xda07f	0x1415edcf8	cstring	me
+steam	journal-incident-summary-and-search-index-initializer	0xda0a6	0x1415edcfc	cstring	/You
+steam	journal-incident-summary-and-search-index-initializer	0xda0e7	0x1415eb514	cstring	/
+steam	journal-incident-summary-and-search-index-initializer	0xda117	0x1415ed5b4	cstring	 to 
+steam	journal-incident-summary-and-search-index-initializer	0xda151	0x1415edcf8	cstring	me
+steam	journal-incident-summary-and-search-index-initializer	0xda1a8	0x1415eb514	cstring	/
+steam	journal-incident-summary-and-search-index-initializer	0xda201	0x1415edcf8	cstring	me
+steam	journal-incident-summary-and-search-index-initializer	0xda258	0x1415eb514	cstring	/
+steam	journal-incident-summary-and-search-index-initializer	0xda2a8	0x1415edcf8	cstring	me
+steam	journal-incident-summary-and-search-index-initializer	0xda2ff	0x1415eb514	cstring	/
+steam	journal-incident-summary-and-search-index-initializer	0xda34f	0x1415edcf8	cstring	me
+steam	journal-incident-summary-and-search-index-initializer	0xda376	0x1415edcfc	cstring	/You
+steam	journal-incident-summary-and-search-index-initializer	0xda3c1	0x1415eb514	cstring	/
+steam	journal-incident-summary-and-search-index-initializer	0xda411	0x1415edd60	cstring	rescue
+steam	journal-incident-summary-and-search-index-initializer	0xda41a	0x1415edd64	cstring	ue
+steam	journal-incident-summary-and-search-index-initializer	0xda453	0x1415edd90	cstring	reunion
+steam	journal-incident-summary-and-search-index-initializer	0xda45d	0x1415edd94	cstring	ion
+steam	journal-incident-summary-and-search-index-initializer	0xda468	0x1415edd96	cstring	n
+steam	journal-incident-summary-and-search-index-initializer	0xda4a0	0x646574696e756572	inline	reunited
+steam	journal-incident-summary-and-search-index-initializer	0xda4fc	0x1415edd88	cstring	Reunion
+steam	journal-incident-summary-and-search-index-initializer	0xda53f	0x1415eb514	cstring	/
+steam	journal-incident-summary-and-search-index-initializer	0xda5a7	0x1415eb514	cstring	/
+steam	journal-incident-summary-and-search-index-initializer	0xda64b	0x1415edd78	cstring	Reunion/
+steam	journal-incident-summary-and-search-index-initializer	0xda750	0x1415eddb4	cstring	death
+steam	journal-incident-summary-and-search-index-initializer	0xda759	0x1415eddb8	cstring	h
+steam	journal-incident-summary-and-search-index-initializer	0xda7da	0x1415eddc0	cstring	Death/You
+steam	journal-incident-summary-and-search-index-initializer	0xda7e6	0x1415edcf8	cstring	me
+steam	journal-incident-summary-and-search-index-initializer	0xda816	0x1415edda4	cstring	Death/
+steam	journal-incident-summary-and-search-index-initializer	0xda8b9	0x1415eddac	cstring	crime
+steam	journal-incident-summary-and-search-index-initializer	0xda8c2	0x1415eddb0	cstring	e
+steam	journal-incident-summary-and-search-index-initializer	0xda9c6	0x1415edde8	cstring	ProdViol
+steam	journal-incident-summary-and-search-index-initializer	0xda9d2	0x1415eddf8	cstring	production
+steam	journal-incident-summary-and-search-index-initializer	0xda9fd	0x1415eddcc	cstring	order
+steam	journal-incident-summary-and-search-index-initializer	0xdaa28	0x1415eddd8	cstring	violation
+steam	journal-incident-summary-and-search-index-initializer	0xdaa53	0x1415ede20	cstring	ExpViol
+steam	journal-incident-summary-and-search-index-initializer	0xdaa5f	0x1415ede28	cstring	export
+steam	journal-incident-summary-and-search-index-initializer	0xdaa8a	0x1415ede08	cstring	prohibition
+steam	journal-incident-summary-and-search-index-initializer	0xdaab5	0x1415eddd8	cstring	violation
+steam	journal-incident-summary-and-search-index-initializer	0xdaae0	0x1415ede18	cstring	JobViol
+steam	journal-incident-summary-and-search-index-initializer	0xdaaec	0x1415ede44	cstring	job
+steam	journal-incident-summary-and-search-index-initializer	0xdab17	0x1415eddcc	cstring	order
+steam	journal-incident-summary-and-search-index-initializer	0xdab42	0x1415eddd8	cstring	violation
+steam	journal-incident-summary-and-search-index-initializer	0xdab6d	0x1415ede48	cstring	SlowLabor
+steam	journal-incident-summary-and-search-index-initializer	0xdab79	0x1415ede30	cstring	conspiracy
+steam	journal-incident-summary-and-search-index-initializer	0xdaba4	0x1415ede3c	cstring	slow
+steam	journal-incident-summary-and-search-index-initializer	0xdabcf	0x1415ede6c	cstring	labor
+steam	journal-incident-summary-and-search-index-initializer	0xdabfa	0x1415ede74	cstring	Murder
+steam	journal-incident-summary-and-search-index-initializer	0xdac06	0x1415ede54	cstring	murder
+steam	journal-incident-summary-and-search-index-initializer	0xdac31	0x1415ede60	cstring	Disorder
+steam	journal-incident-summary-and-search-index-initializer	0xdac3d	0x1415edea0	cstring	disorderly
+steam	journal-incident-summary-and-search-index-initializer	0xdac68	0x1415edeb0	cstring	conduct
+steam	journal-incident-summary-and-search-index-initializer	0xdac93	0x1415ede80	cstring	BuildDest
+steam	journal-incident-summary-and-search-index-initializer	0xdac9f	0x1415eb500	cstring	building
+steam	journal-incident-summary-and-search-index-initializer	0xdacca	0x1415ede90	cstring	destruction
+steam	journal-incident-summary-and-search-index-initializer	0xdacf5	0x1415eded0	cstring	Bribery
+steam	journal-incident-summary-and-search-index-initializer	0xdad01	0x1415ed720	cstring	bribery
+steam	journal-incident-summary-and-search-index-initializer	0xdad2c	0x1415eded8	cstring	Embezzlement
+steam	journal-incident-summary-and-search-index-initializer	0xdad38	0x1415ed728	cstring	embezzlement
+steam	journal-incident-summary-and-search-index-initializer	0xdad63	0x1415edeb8	cstring	Vandalism
+steam	journal-incident-summary-and-search-index-initializer	0xdad6f	0x1415ed700	cstring	vandalism
+steam	journal-incident-summary-and-search-index-initializer	0xdad9a	0x1415edec4	cstring	Theft
+steam	journal-incident-summary-and-search-index-initializer	0xdada6	0x1415edefc	cstring	theft
+steam	journal-incident-summary-and-search-index-initializer	0xdadd1	0x1415edf08	cstring	Robbery
+steam	journal-incident-summary-and-search-index-initializer	0xdaddd	0x1415edee8	cstring	robbery
+steam	journal-incident-summary-and-search-index-initializer	0xdae08	0x1415edef0	cstring	Espionage
+steam	journal-incident-summary-and-search-index-initializer	0xdae14	0x1415edf28	cstring	espionage
+steam	journal-incident-summary-and-search-index-initializer	0xdae3f	0x1415edf38	cstring	Treason
+steam	journal-incident-summary-and-search-index-initializer	0xdae4b	0x1415edf10	cstring	treason
+steam	journal-incident-summary-and-search-index-initializer	0xdae76	0x1415edf18	cstring	Blood-drinking
+steam	journal-incident-summary-and-search-index-initializer	0xdae82	0x1415edf5c	cstring	blood
+steam	journal-incident-summary-and-search-index-initializer	0xdaead	0x1415edf68	cstring	drinking
+steam	journal-incident-summary-and-search-index-initializer	0xdaed8	0x1415ed7d0	cstring	crime of attempted theft
+steam	journal-incident-summary-and-search-index-initializer	0xdaee4	0x1415edefc	cstring	theft
+steam	journal-incident-summary-and-search-index-initializer	0xdaf0f	0x1415ed7f0	cstring	crime of attempted murder
+steam	journal-incident-summary-and-search-index-initializer	0xdaf1b	0x1415ede54	cstring	murder
+steam	journal-incident-summary-and-search-index-initializer	0xdaf46	0x1415ed798	cstring	crime of kidnapping
+steam	journal-incident-summary-and-search-index-initializer	0xdaf52	0x1415edf40	cstring	kidnapping
+steam	journal-incident-summary-and-search-index-initializer	0xdaf7d	0x1415edf50	cstring	snatching
+steam	journal-incident-summary-and-search-index-initializer	0xdafa5	0x1415ed7b0	cstring	crime of attempted kidnapping
+steam	journal-incident-summary-and-search-index-initializer	0xdafb1	0x1415edf40	cstring	kidnapping
+steam	journal-incident-summary-and-search-index-initializer	0xdafdc	0x1415edf50	cstring	snatching
+steam	journal-incident-summary-and-search-index-initializer	0xdb00b	0x1415eb514	cstring	/
+steam	journal-incident-summary-and-search-index-initializer	0xdb03d	0x1415e8ca0	cstring	You
+steam	journal-incident-summary-and-search-index-initializer	0xdb0fd	0x1415ed620	cstring	a 
+steam	journal-incident-summary-and-search-index-initializer	0xdb13c	0x1415edf90	cstring	performance
+steam	journal-incident-summary-and-search-index-initializer	0xdb149	0x1415edf98	cstring	nce
+steam	journal-incident-summary-and-search-index-initializer	0xdb154	0x1415edf9a	cstring	e
+steam	journal-incident-summary-and-search-index-initializer	0xdb1b7	0x1415edfa0	cstring	Performance
+steam	journal-incident-summary-and-search-index-initializer	0xdb1e1	0x1415edf78	cstring	Sermon/
+steam	journal-incident-summary-and-search-index-initializer	0xdb25b	0x1415edf78	cstring	Sermon/
+steam	journal-incident-summary-and-search-index-initializer	0xdb2bd	0x1415edf78	cstring	Sermon/
+steam	journal-incident-summary-and-search-index-initializer	0xdb2db	0x1415e8828	cstring	Promote 
+steam	journal-incident-summary-and-search-index-initializer	0xdb2e4	0x1415e8848	cstring	Inveigh Against 
+steam	journal-incident-summary-and-search-index-initializer	0xdb311	0x1415e8844	cstring	Law
+steam	journal-incident-summary-and-search-index-initializer	0xdb31d	0x1415e8868	cstring	Loyalty
+steam	journal-incident-summary-and-search-index-initializer	0xdb329	0x1415e885c	cstring	Family
+steam	journal-incident-summary-and-search-index-initializer	0xdb335	0x1415e8878	cstring	Friendship
+steam	journal-incident-summary-and-search-index-initializer	0xdb341	0x1415e8870	cstring	Power
+steam	journal-incident-summary-and-search-index-initializer	0xdb34d	0x1415e8890	cstring	Truth
+steam	journal-incident-summary-and-search-index-initializer	0xdb359	0x1415e8888	cstring	Cunning
+steam	journal-incident-summary-and-search-index-initializer	0xdb365	0x1415e88a8	cstring	Eloquence
+steam	journal-incident-summary-and-search-index-initializer	0xdb371	0x1415e8898	cstring	Fairness
+steam	journal-incident-summary-and-search-index-initializer	0xdb37d	0x1415e88c8	cstring	Decorum
+steam	journal-incident-summary-and-search-index-initializer	0xdb389	0x1415e88b8	cstring	Tradition
+steam	journal-incident-summary-and-search-index-initializer	0xdb395	0x1415e88e0	cstring	Artwork
+steam	journal-incident-summary-and-search-index-initializer	0xdb3a1	0x1415e88d0	cstring	Cooperation
+steam	journal-incident-summary-and-search-index-initializer	0xdb3ad	0x1415e88f8	cstring	Independence
+steam	journal-incident-summary-and-search-index-initializer	0xdb3b9	0x1415e88e8	cstring	Stoicism
+steam	journal-incident-summary-and-search-index-initializer	0xdb3c5	0x1415e8918	cstring	Introspection
+steam	journal-incident-summary-and-search-index-initializer	0xdb3d1	0x1415e8908	cstring	Self-Control
+steam	journal-incident-summary-and-search-index-initializer	0xdb3dd	0x1415e8930	cstring	Tranquility
+steam	journal-incident-summary-and-search-index-initializer	0xdb3e9	0x1415e8928	cstring	Harmony
+steam	journal-incident-summary-and-search-index-initializer	0xdb3f5	0x1415e8950	cstring	Merriment
+steam	journal-incident-summary-and-search-index-initializer	0xdb3fe	0x1415e8940	cstring	Craftsmanship
+steam	journal-incident-summary-and-search-index-initializer	0xdb407	0x1415e8968	cstring	Martial Prowess
+steam	journal-incident-summary-and-search-index-initializer	0xdb410	0x1415e895c	cstring	Skill
+steam	journal-incident-summary-and-search-index-initializer	0xdb419	0x1415e8988	cstring	Hard Work
+steam	journal-incident-summary-and-search-index-initializer	0xdb422	0x1415e8978	cstring	Sacrifice
+steam	journal-incident-summary-and-search-index-initializer	0xdb42b	0x1415e89a8	cstring	Competition
+steam	journal-incident-summary-and-search-index-initializer	0xdb434	0x1415e8998	cstring	Perseverance
+steam	journal-incident-summary-and-search-index-initializer	0xdb43d	0x1415e89c8	cstring	Leisure Time
+steam	journal-incident-summary-and-search-index-initializer	0xdb446	0x1415e89b8	cstring	Commerce
+steam	journal-incident-summary-and-search-index-initializer	0xdb44f	0x1415e89e0	cstring	Romance
+steam	journal-incident-summary-and-search-index-initializer	0xdb458	0x1415e89d8	cstring	Nature
+steam	journal-incident-summary-and-search-index-initializer	0xdb461	0x1415e89f4	cstring	Peace
+steam	journal-incident-summary-and-search-index-initializer	0xdb46a	0x1415e89e8	cstring	Knowledge
+steam	journal-incident-summary-and-search-index-initializer	0xdb49b	0x1415edf80	cstring	Performance/
+steam	journal-incident-summary-and-search-index-initializer	0xdb529	0x1415edf80	cstring	Performance/
+steam	journal-incident-summary-and-search-index-initializer	0xdb5a7	0x1415edfb8	cstring	a poem
+steam	journal-incident-summary-and-search-index-initializer	0xdb5ca	0x1415edf80	cstring	Performance/
+steam	journal-incident-summary-and-search-index-initializer	0xdb648	0x1415eb50c	cstring	music
+steam	journal-incident-summary-and-search-index-initializer	0xdb66b	0x1415edf80	cstring	Performance/
+steam	journal-incident-summary-and-search-index-initializer	0xdb6e9	0x1415edfc0	cstring	dance
+steam	journal-incident-summary-and-search-index-initializer	0xdb72d	0x1415edfac	cstring	+
+steam	journal-incident-summary-and-search-index-initializer	0xdb76d	0x1415e8ca0	cstring	You
+steam	journal-incident-summary-and-search-index-initializer	0xdb77d	0x1415edcf8	cstring	me
+steam	journal-incident-summary-and-search-index-initializer	0xdb824	0x65766967	inline	give
+steam	journal-incident-summary-and-search-index-initializer	0xdb88f	0x656d616e	inline	name
+steam	journal-incident-summary-and-search-index-initializer	0xdb901	0x797469746e656469	inline	identity
+steam	journal-incident-summary-and-search-index-initializer	0xdb95e	0x1415edfc8	cstring	SelfID/
+steam	journal-incident-summary-and-search-index-initializer	0xdb9b1	0x1415e8ca0	cstring	You
+steam	journal-incident-summary-and-search-index-initializer	0xdb9c1	0x1415edcf8	cstring	me
+steam	journal-incident-summary-and-search-index-initializer	0xdba49	0x1415ed568	cstring	Somebody
+steam	journal-incident-summary-and-search-index-initializer	0xdba5c	0x1415edfac	cstring	+
+steam	journal-incident-summary-and-search-index-initializer	0xdba95	0x1415edfd0	cstring	refuse
+steam	journal-incident-summary-and-search-index-initializer	0xdba9e	0x1415edfd4	cstring	se
+steam	journal-incident-summary-and-search-index-initializer	0xdbb0d	0x656d616e	inline	name
+steam	journal-incident-summary-and-search-index-initializer	0xdbb7f	0x797469746e656469	inline	identity
+steam	journal-incident-summary-and-search-index-initializer	0xdbbdc	0x1415ee010	cstring	RefusedID/
+steam	journal-incident-summary-and-search-index-initializer	0xdbc2f	0x1415e8ca0	cstring	You
+steam	journal-incident-summary-and-search-index-initializer	0xdbc3f	0x1415edcf8	cstring	me
+steam	journal-incident-summary-and-search-index-initializer	0xdbce5	0x1415ee01c	cstring	demand
+steam	journal-incident-summary-and-search-index-initializer	0xdbcee	0x1415ee020	cstring	nd
+steam	journal-incident-summary-and-search-index-initializer	0xdbd5d	0x1415edff0	cstring	submission
+steam	journal-incident-summary-and-search-index-initializer	0xdbd6a	0x1415edff8	cstring	on
+steam	journal-incident-summary-and-search-index-initializer	0xdbdcb	0x1415ee000	cstring	YieldDemand/
+steam	journal-incident-summary-and-search-index-initializer	0xdbdfd	0x1415e8ca0	cstring	You
+steam	journal-incident-summary-and-search-index-initializer	0xdbe0d	0x1415edcf8	cstring	me
+steam	journal-incident-summary-and-search-index-initializer	0xdbeaa	0x1415ed67c	cstring	A 
+steam	journal-incident-summary-and-search-index-initializer	0xdbee2	0x1415edfac	cstring	+
+steam	journal-incident-summary-and-search-index-initializer	0xdbf1f	0x1415ec550	cstring	you
+steam	journal-incident-summary-and-search-index-initializer	0xdbffb	0x1415ed620	cstring	a 
+steam	journal-incident-summary-and-search-index-initializer	0xdc0cf	0x1415ee03c	cstring	fight
+steam	journal-incident-summary-and-search-index-initializer	0xdc0d8	0x1415ee040	cstring	t
+steam	journal-incident-summary-and-search-index-initializer	0xdc114	0x7463696c666e6f63	inline	conflict
+steam	journal-incident-summary-and-search-index-initializer	0xdc146	0x1415ee028	cstring	Attack/
+steam	journal-incident-summary-and-search-index-initializer	0xdc183	0x1415e8ca0	cstring	You
+steam	journal-incident-summary-and-search-index-initializer	0xdc274	0x1415ed67c	cstring	A 
+steam	journal-incident-summary-and-search-index-initializer	0xdc2ac	0x1415edfac	cstring	+
+steam	journal-incident-summary-and-search-index-initializer	0xdc2e9	0x1415ec550	cstring	you
+steam	journal-incident-summary-and-search-index-initializer	0xdc2f5	0x1415edcf8	cstring	me
+steam	journal-incident-summary-and-search-index-initializer	0xdc467	0x1415ee03c	cstring	fight
+steam	journal-incident-summary-and-search-index-initializer	0xdc470	0x1415ee040	cstring	t
+steam	journal-incident-summary-and-search-index-initializer	0xdc4ac	0x7463696c666e6f63	inline	conflict
+steam	journal-incident-summary-and-search-index-initializer	0xdc4de	0x1415ee030	cstring	Escalation/
+steam	journal-incident-summary-and-search-index-initializer	0xdc510	0x1415e8ca0	cstring	You
+steam	journal-incident-summary-and-search-index-initializer	0xdc520	0x1415edcf8	cstring	me
+steam	journal-incident-summary-and-search-index-initializer	0xdc5bd	0x1415ed620	cstring	a 
+steam	journal-incident-summary-and-search-index-initializer	0xdc5f5	0x1415edfac	cstring	+
+steam	journal-incident-summary-and-search-index-initializer	0xdc628	0x1415ec550	cstring	you
+steam	journal-incident-summary-and-search-index-initializer	0xdc638	0x1415edcf8	cstring	me
+steam	journal-performance-title	0x65f4d3	0x1415ee960	cstring	your
+steam	journal-performance-title	0x65f4da	0x1415e9248	cstring	Your
+steam	journal-performance-title	0x65f4f7	0x14164a188	cstring	The
+steam	journal-performance-title	0x65f500	0x141663d84	cstring	the
+steam	journal-performance-title	0x65f518	0x141663d58	cstring	 sermon on 
+steam	journal-performance-title	0x65f56f	0x1415ee960	cstring	your
+steam	journal-performance-title	0x65f576	0x1415e9248	cstring	Your
+steam	journal-performance-title	0x65f593	0x14164a188	cstring	The
+steam	journal-performance-title	0x65f59c	0x141663d84	cstring	the
+steam	journal-performance-title	0x65f5b4	0x141663d58	cstring	 sermon on 
+steam	journal-performance-title	0x65f62b	0x1415ee960	cstring	your
+steam	journal-performance-title	0x65f632	0x1415e9248	cstring	Your
+steam	journal-performance-title	0x65f64e	0x14164a188	cstring	The
+steam	journal-performance-title	0x65f657	0x141663d84	cstring	the
+steam	journal-performance-title	0x65f66c	0x141663d58	cstring	 sermon on 
+steam	journal-performance-title	0x65f6eb	0x141737550/16	vector	the worthlessnes
+steam	journal-performance-title	0x65f6f5	0x141737560	cstring	s
+steam	journal-performance-title	0x65f716	0x141737540	cstring	the value
+steam	journal-performance-title	0x65f723	0x141737548	cstring	e
+steam	journal-performance-title	0x65f737	0x141670b50	cstring	nuances
+steam	journal-performance-title	0x65f741	0x141670b54	cstring	ces
+steam	journal-performance-title	0x65f74c	0x141670b56	cstring	s
+steam	journal-performance-title	0x65f760	0x1415eb518	cstring	 of 
+steam	journal-performance-title	0x65f78f	0x1416415b8	cstring	law
+steam	journal-performance-title	0x65f79e	0x1416415b0	cstring	loyalty
+steam	journal-performance-title	0x65f7b0	0x1416415fc	cstring	family
+steam	journal-performance-title	0x65f7c2	0x1416415f0	cstring	friendship
+steam	journal-performance-title	0x65f7d4	0x1416415e4	cstring	power
+steam	journal-performance-title	0x65f7e6	0x1416415dc	cstring	truth
+steam	journal-performance-title	0x65f7f5	0x141641570	cstring	cunning
+steam	journal-performance-title	0x65f801	0x141641560	cstring	eloquence
+steam	journal-performance-title	0x65f813	0x141641550	cstring	fairness
+steam	journal-performance-title	0x65f822	0x141641548	cstring	decorum
+steam	journal-performance-title	0x65f82e	0x1416415a0	cstring	tradition
+steam	journal-performance-title	0x65f83d	0x141641598	cstring	artwork
+steam	journal-performance-title	0x65f84f	0x141641588	cstring	cooperation
+steam	journal-performance-title	0x65f861	0x141641578	cstring	independence
+steam	journal-performance-title	0x65f873	0x141641500	cstring	stoicism
+steam	journal-performance-title	0x65f885	0x1416414f0	cstring	introspection
+steam	journal-performance-title	0x65f897	0x1416414e0	cstring	self-control
+steam	journal-performance-title	0x65f8a9	0x1416414d0	cstring	tranquility
+steam	journal-performance-title	0x65f8b8	0x141641540	cstring	harmony
+steam	journal-performance-title	0x65f8c4	0x141641530	cstring	merriment
+steam	journal-performance-title	0x65f8d6	0x141641520	cstring	craftsmanship
+steam	journal-performance-title	0x65f8e8	0x141641510	cstring	martial prowess
+steam	journal-performance-title	0x65f8fa	0x141641724	cstring	skill
+steam	journal-performance-title	0x65f906	0x141641718	cstring	hard work
+steam	journal-performance-title	0x65f90f	0x141641708	cstring	sacrifice
+steam	journal-performance-title	0x65f91e	0x1416416f8	cstring	competition
+steam	journal-performance-title	0x65f92d	0x141641758	cstring	perseverance
+steam	journal-performance-title	0x65f93c	0x141641748	cstring	leisure time
+steam	journal-performance-title	0x65f94b	0x141641738	cstring	commerce
+steam	journal-performance-title	0x65f957	0x141641730	cstring	romance
+steam	journal-performance-title	0x65f966	0x1416416ec	cstring	nature
+steam	journal-performance-title	0x65f975	0x1415ee0cc	cstring	peace
+steam	journal-performance-title	0x65f97e	0x1416416e0	cstring	knowledge
+steam	journal-performance-title	0x65fa5e	0x141663d68	cstring	history
+steam	journal-performance-title	0x65fa77	0x1415ee960	cstring	your
+steam	journal-performance-title	0x65fa7e	0x1415e9248	cstring	Your
+steam	journal-performance-title	0x65fa8d	0x141663d84	cstring	the
+steam	journal-performance-title	0x65fa94	0x14164a188	cstring	The
+steam	journal-performance-title	0x65fab3	0x141663d28	cstring	 telling of the story of 
+steam	journal-performance-title	0x65fc09	0x1415edfb8	cstring	a poem
+steam	journal-performance-title	0x65fc22	0x1415ee960	cstring	your
+steam	journal-performance-title	0x65fc29	0x1415e9248	cstring	Your
+steam	journal-performance-title	0x65fc38	0x141663d84	cstring	the
+steam	journal-performance-title	0x65fc3f	0x14164a188	cstring	The
+steam	journal-performance-title	0x65fc5e	0x141663d48	cstring	 recitation of 
+steam	journal-performance-title	0x65fe4e	0x1415eb50c	cstring	music
+steam	journal-performance-title	0x65fe6b	0x1415ee960	cstring	your
+steam	journal-performance-title	0x65fe72	0x1415e9248	cstring	Your
+steam	journal-performance-title	0x65fe93	0x1415e873c	cstring	 
+steam	journal-performance-title	0x65feeb	0x141663d08	cstring	playing
+steam	journal-performance-title	0x65fff6	0x1415e95e0	cstring	singing
+steam	journal-performance-title	0x660010	0x1415e95e8	cstring	chanting
+steam	journal-performance-title	0x660019	0x141662f90	cstring	speaking
+steam	journal-performance-title	0x660022	0x1415edf90	cstring	performance
+steam	journal-performance-title	0x66003f	0x1415eb518	cstring	 of 
+steam	journal-performance-title	0x660048	0x141663d84	cstring	the
+steam	journal-performance-title	0x66004f	0x14164a188	cstring	The
+steam	journal-performance-title	0x66006e	0x141663d10	cstring	 performance of 
+steam	journal-performance-title	0x66022e	0x1415edfc0	cstring	dance
+steam	journal-performance-title	0x6602f6	0x1415ee960	cstring	your
+steam	journal-performance-title	0x6602fd	0x1415e9248	cstring	Your
+steam	journal-performance-title	0x66031e	0x1415e873c	cstring	 
+steam	journal-performance-title	0x660337	0x141663cf0	cstring	dancing
+steam	journal-performance-title	0x6605b2	0x141663d08	cstring	playing
+steam	journal-performance-title	0x6605c7	0x1415e95e0	cstring	singing
+steam	journal-performance-title	0x6605e1	0x1415e95e8	cstring	chanting
+steam	journal-performance-title	0x6605ea	0x141662f90	cstring	speaking
+steam	journal-performance-title	0x6605f3	0x1415edf90	cstring	performance
+steam	journal-performance-title	0x660610	0x1415eb518	cstring	 of 
+steam	journal-performance-title	0x660619	0x141663d84	cstring	the
+steam	journal-performance-title	0x660620	0x14164a188	cstring	The
+steam	journal-performance-title	0x66063f	0x141663d10	cstring	 performance of 
+steam	journal-performance-title	0x660725	0x14160205c	cstring	 at 
+steam	journal-unnamed-caste	0xb94fdb	0x141662fa8	cstring	creature
+steam	journal-unnamed-caste	0xb94ffa	0x1415e9298	cstring	s
+steam	journal-region-name	0xb94a8a	0x1416df638	cstring	[LPAGE:SR:
+steam	journal-region-name	0xb94aaa	0x1415fd690	cstring	]
+steam	journal-region-name	0xb94b13	0x1415fda88	cstring	[/LPAGE]
+steam	journal-region-name	0xb94b6b	0x1416df678	cstring	an unknown region
+steam	journal-underground-region-name	0xb94982	0x1416df6a8	cstring	[LPAGE:FL:
+steam	journal-underground-region-name	0xb949a5	0x1415fd690	cstring	]
+steam	journal-underground-region-name	0xb949d1	0x1416df6b8	cstring	the Underworld
+steam	journal-underground-region-name	0xb949e0	0x1416df6c8	cstring	the magma sea
+steam	journal-underground-region-name	0xb949ef	0x1416df690	cstring	the depths of the world
+steam	journal-underground-region-name	0xb94a08	0x1415fda88	cstring	[/LPAGE]
+steam	journal-underground-region-name	0xb94a17	0x1416df648	cstring	an unknown underground region
+steam	journal-entity-name	0xb9296a	0x14165e438	cstring	[LPAGE:ENT:
+steam	journal-entity-name	0xb9298a	0x1415fd690	cstring	]
+steam	journal-entity-name	0xb929f4	0x1415fda88	cstring	[/LPAGE]
+steam	journal-entity-name	0xb92a4c	0x1416df940	cstring	an unknown civilization
+steam	journal-site-name	0xb9397a	0x1416df920	cstring	[LPAGE:SITE:
+steam	journal-site-name	0xb9399d	0x1415fd690	cstring	]
+steam	journal-site-name	0xb93a06	0x1415fda88	cstring	[/LPAGE]
+steam	journal-site-name	0xb93a5e	0x1416df910	cstring	an unknown site
+steam	journal-building-name	0xb940f8	0x1416df6d8	cstring	[LPAGE:AB:
+steam	journal-building-name	0xb9411b	0x141618434	cstring	:
+steam	journal-building-name	0xb9413b	0x1415fd690	cstring	]
+steam	journal-building-name	0xb941ce	0x1415fda88	cstring	[/LPAGE]
+steam	journal-building-name	0xb94255	0x1416637c8	cstring	a counting house
+steam	journal-building-name	0xb94267	0x1416637e0	cstring	a hospital
+steam	journal-building-name	0xb94279	0x141628b50	cstring	a guildhall
+steam	journal-building-name	0xb9428b	0x141663a38	cstring	a mead hall
+steam	journal-building-name	0xb9429d	0x141663a44	cstring	a keep
+steam	journal-building-name	0xb942af	0x141628b28	cstring	a temple
+steam	journal-building-name	0xb942c1	0x141663a18	cstring	a library
+steam	journal-building-name	0xb942d3	0x141663a28	cstring	a tavern
+steam	journal-building-name	0xb942e5	0x141672dc0	cstring	a dark tower
+steam	journal-building-name	0xb942f1	0x1416639e8	cstring	an underworld spire
+steam	journal-building-name	0xb94300	0x141663a08	cstring	a market
+steam	journal-building-name	0xb9430f	0x1416639dc	cstring	a tomb
+steam	journal-building-name	0xb94333	0x141663998	cstring	the catacombs
+steam	journal-building-name	0xb94342	0x1416639d0	cstring	the sewers
+steam	journal-building-name	0xb94351	0x1416639c0	cstring	a dungeon
+steam	journal-building-name	0xb94360	0x141663a00	cstring	a tower
+steam	journal-building-name	0xb94369	0x1416df6e8	cstring	an unknown building
+steam	journal-building-name	0xb94388	0x1415fda88	cstring	[/LPAGE]
+steam	journal-building-name	0xb94397	0x1416df6e8	cstring	an unknown building
+steam	journal-artifact-name	0xb944bf	0x1415fdaa8	cstring	[LPAGE:ARTIFACT:
+steam	journal-artifact-name	0xb944ce	0x1416df718	cstring	[LPAGE:BOOK:
+steam	journal-artifact-name	0xb944f3	0x1415fd690	cstring	]
+steam	journal-artifact-name	0xb945b0	0x64656c7469746e55	inline	Untitled
+steam	journal-artifact-name	0xb9460b	0x64656c7469746e55	inline	Untitled
+steam	journal-artifact-name	0xb94686	0x1415fda88	cstring	[/LPAGE]
+steam	journal-artifact-name	0xb946de	0x1416df700	cstring	an unknown artifact
+steam	journal-religious-office-suffix	0x9be03a	0x1415eb518	cstring	 of 
+steam	journal-paragraph-vector-wrap	0x8e7567	0x1415e873c	cstring	 
+steam	journal-calendar-month	0x7733b8	0x1416a4968	cstring	Granite
+steam	journal-calendar-month	0x7733cd	0x1416a4970	cstring	Slate
+steam	journal-calendar-month	0x7733e2	0x1416a4978	cstring	Felsite
+steam	journal-calendar-month	0x7733f1	0x1416a4980	cstring	Hematite
+steam	journal-calendar-month	0x77340c	0x1416a4990	cstring	Malachite
+steam	journal-calendar-month	0x773421	0x1416a499c	cstring	Galena
+steam	journal-calendar-month	0x773436	0x1416a49a8	cstring	Limestone
+steam	journal-calendar-month	0x77344b	0x1416a49b8	cstring	Sandstone
+steam	journal-calendar-month	0x773460	0x1416a50d4	cstring	Timber
+steam	journal-calendar-month	0x773475	0x1416a50e0	cstring	Moonstone
+steam	journal-calendar-month	0x77348a	0x1416a50ec	cstring	Opal
+steam	journal-calendar-month	0x773499	0x141605b78	cstring	Obsidian
+classic	journal-renderer-and-card-fields	0xc2929	0x1415e7168	cstring	Agreements
+classic	journal-renderer-and-card-fields	0xc295b	0x1415e71ac	cstring	Events
+classic	journal-renderer-and-card-fields	0xc298d	0x1415e71b4	cstring	People
+classic	journal-renderer-and-card-fields	0xc29bf	0x1415e719c	cstring	Sites
+classic	journal-renderer-and-card-fields	0xc29f1	0x1415e71a4	cstring	Groups
+classic	journal-renderer-and-card-fields	0xc2a23	0x1415e71e0	cstring	Regions
+classic	journal-renderer-and-card-fields	0xc2a55	0x1415e71e8	cstring	Bestiary
+classic	journal-renderer-and-card-fields	0xc2a84	0x1415e71c0	cstring	Artifacts
+classic	journal-renderer-and-card-fields	0xc2ab3	0x1415e71d0	cstring	Intrigue
+classic	journal-renderer-and-card-fields	0xc2df6	0x1415e71f4	cstring	Plots
+classic	journal-renderer-and-card-fields	0xc2e24	0x1415e7220	cstring	Organizations
+classic	journal-renderer-and-card-fields	0xc2e52	0x1415e7218	cstring	Actors
+classic	journal-renderer-and-card-fields	0xc319e	0x1415e64cc	cstring	/
+classic	journal-renderer-and-card-fields	0xc3468	0x1415e7278	cstring	Centered on first heard
+classic	journal-renderer-and-card-fields	0xc34d6	0x1415e7260	cstring	Centered on last heard
+classic	journal-renderer-and-card-fields	0xc3541	0x1415e7200	cstring	Centered on location
+classic	journal-renderer-and-card-fields	0xc3798	0x1415e7248	cstring	 Showing type,date
+classic	journal-renderer-and-card-fields	0xc37c2	0x1415e7230	cstring	 Showing pin,last
+classic	journal-renderer-and-card-fields	0xc398b	0x1415e64cc	cstring	/
+classic	journal-renderer-and-card-fields	0xc3b1b	0x1415e72c0	cstring	Overthrow Agreement
+classic	journal-renderer-and-card-fields	0xc3b27	0x1415e72d8	cstring	Guide Agreement
+classic	journal-renderer-and-card-fields	0xc3b33	0x1415e7290	cstring	Rescue Agreement
+classic	journal-renderer-and-card-fields	0xc3b3f	0x1415e72a8	cstring	Aid Rescue Agreement
+classic	journal-renderer-and-card-fields	0xc3b4b	0x1415e7318	cstring	Adventuring Agreement
+classic	journal-renderer-and-card-fields	0xc3b57	0x1415e7330	cstring	Bound Servitude
+classic	journal-renderer-and-card-fields	0xc3b63	0x1415e72e8	cstring	Entertainment Agreement
+classic	journal-renderer-and-card-fields	0xc3b6f	0x1415e7300	cstring	World Joining Agreement
+classic	journal-renderer-and-card-fields	0xc3b7b	0x1415e7368	cstring	Residency Agreement
+classic	journal-renderer-and-card-fields	0xc3b87	0x1415e7380	cstring	Grant of Citizenship
+classic	journal-renderer-and-card-fields	0xc3b93	0x1415e7340	cstring	Parley Arrangement
+classic	journal-renderer-and-card-fields	0xc3b9f	0x1415e7358	cstring	Corruption
+classic	journal-renderer-and-card-fields	0xc3bab	0x1415e73c0	cstring	Artifact Theft
+classic	journal-renderer-and-card-fields	0xc3bb7	0x1415e73d0	cstring	Promise of Position
+classic	journal-renderer-and-card-fields	0xc3bc3	0x1415e7398	cstring	Assassination Plot
+classic	journal-renderer-and-card-fields	0xc3bcf	0x1415e73b0	cstring	Abduction Plot
+classic	journal-renderer-and-card-fields	0xc3bd8	0x1415e7410	cstring	Sabotage Plot
+classic	journal-renderer-and-card-fields	0xc3be1	0x1415e7420	cstring	Infiltration Plot
+classic	journal-renderer-and-card-fields	0xc3bea	0x1415e73e8	cstring	Framing Plot
+classic	journal-renderer-and-card-fields	0xc3bf3	0x1415e73f8	cstring	War Starting Plot
+classic	journal-renderer-and-card-fields	0xc3c20	0x1415e7438	cstring	Foiled Embezzlement Conspiracy
+classic	journal-renderer-and-card-fields	0xc3c29	0x1415e7488	cstring	Foiled Corruption Conspiracy
+classic	journal-renderer-and-card-fields	0xc3c32	0x1415e7468	cstring	Foiled Bribery Conspiracy
+classic	journal-renderer-and-card-fields	0xc3c3b	0x1415e7458	cstring	Build Structure
+classic	journal-renderer-and-card-fields	0xc3c44	0x1415e74c0	cstring	Offer Service
+classic	journal-renderer-and-card-fields	0xc3c4d	0x1415e74d0	cstring	Retrieve Artifact
+classic	journal-renderer-and-card-fields	0xc3da7	0x1415e3c40	cstring	You
+classic	journal-renderer-and-card-fields	0xc3e54	0x1415e7690	cstring	asked that
+classic	journal-renderer-and-card-fields	0xc3eb5	0x1415e74b8	cstring	you
+classic	journal-renderer-and-card-fields	0xc3f5c	0x1415e76a0	cstring	retrieve
+classic	journal-renderer-and-card-fields	0xc4052	0x1415e7684	cstring	from
+classic	journal-renderer-and-card-fields	0xc414e	0x1415e768c	cstring	for
+classic	journal-renderer-and-card-fields	0xc42a1	0x1415e76c8	cstring	Drive members of
+classic	journal-renderer-and-card-fields	0xc4364	0x1415e76ac	cstring	out of
+classic	journal-renderer-and-card-fields	0xc44fa	0x1415e3c40	cstring	You
+classic	journal-renderer-and-card-fields	0xc45a7	0x1415e7650	cstring	requested that
+classic	journal-renderer-and-card-fields	0xc4608	0x1415e74b8	cstring	you
+classic	journal-renderer-and-card-fields	0xc46ab	0x1415e7660	cstring	make an offer of service to
+classic	journal-renderer-and-card-fields	0xc489c	0x1415e3c40	cstring	You
+classic	journal-renderer-and-card-fields	0xc4949	0x1415e74a8	cstring	agreed to join
+classic	journal-renderer-and-card-fields	0xc49aa	0x1415e74b8	cstring	you
+classic	journal-renderer-and-card-fields	0xc4a4f	0x1415e7500	cstring	in insurrection against
+classic	journal-renderer-and-card-fields	0xc4b27	0x1415e7518	cstring	thereby freeing
+classic	journal-renderer-and-card-fields	0xc4c18	0x1415e3c40	cstring	You
+classic	journal-renderer-and-card-fields	0xc4cc5	0x1415e74e8	cstring	agreed to guide
+classic	journal-renderer-and-card-fields	0xc4d26	0x1415e74b8	cstring	you
+classic	journal-renderer-and-card-fields	0xc4dcb	0x1415e74f8	cstring	to
+classic	journal-renderer-and-card-fields	0xc4fd3	0x1415e7560	cstring	somebody unknown
+classic	journal-renderer-and-card-fields	0xc5048	0x1415e3c40	cstring	You
+classic	journal-renderer-and-card-fields	0xc50f5	0x1415e74a8	cstring	agreed to join
+classic	journal-renderer-and-card-fields	0xc5156	0x1415e74b8	cstring	you
+classic	journal-renderer-and-card-fields	0xc51f7	0x1415e7578	cstring	in order to be brought safely away from
+classic	journal-renderer-and-card-fields	0xc52ec	0x1415e3c40	cstring	You
+classic	journal-renderer-and-card-fields	0xc5399	0x1415e74a8	cstring	agreed to join
+classic	journal-renderer-and-card-fields	0xc53fa	0x1415e74b8	cstring	you
+classic	journal-renderer-and-card-fields	0xc549b	0x1415e7528	cstring	in order to rescue
+classic	journal-renderer-and-card-fields	0xc5616	0x1415e7560	cstring	somebody unknown
+classic	journal-renderer-and-card-fields	0xc568b	0x1415e3c40	cstring	You
+classic	journal-renderer-and-card-fields	0xc5738	0x1415e7540	cstring	agreed to adventure with
+classic	journal-renderer-and-card-fields	0xc5799	0x1415e74b8	cstring	you
+classic	journal-renderer-and-card-fields	0xc583a	0x1415e75e0	cstring	wherever the journey might lead
+classic	journal-renderer-and-card-fields	0xc58a9	0x1415e3c40	cstring	You
+classic	journal-renderer-and-card-fields	0xc5956	0x1415e7600	cstring	was bound to serve
+classic	journal-renderer-and-card-fields	0xc59b7	0x1415e74b8	cstring	you
+classic	journal-renderer-and-card-fields	0xc5a58	0x1415e75a0	cstring	by invocation of True Name
+classic	journal-renderer-and-card-fields	0xc5ac7	0x1415e3c40	cstring	You
+classic	journal-renderer-and-card-fields	0xc5b74	0x1415e75c0	cstring	agreed to entertain people with
+classic	journal-renderer-and-card-fields	0xc5bd5	0x1415e74b8	cstring	you
+classic	journal-renderer-and-card-fields	0xc5c76	0x1415e7620	cstring	throughout the world
+classic	journal-renderer-and-card-fields	0xc5cfd	0x1415e7638	cstring	Agreement concluded
+classic	journal-renderer-and-card-fields	0xc5dd0	0x1415e7614	cstring	st
+classic	journal-renderer-and-card-fields	0xc5dd9	0x1415e7618	cstring	nd
+classic	journal-renderer-and-card-fields	0xc5de2	0x1415e767c	cstring	rd
+classic	journal-renderer-and-card-fields	0xc5deb	0x1415e7680	cstring	th
+classic	journal-renderer-and-card-fields	0xc5dfb	0x1415e3720	cstring	 
+classic	journal-renderer-and-card-fields	0xc5e2d	0x1415e40c4	cstring	, 
+classic	journal-renderer-and-card-fields	0xc5eb5	0x1415e76bc	cstring	Kill
+classic	journal-renderer-and-card-fields	0xc5f96	0x1415e7710	cstring	Cause trouble for
+classic	journal-renderer-and-card-fields	0xc605a	0x1415e76b4	cstring	Drive
+classic	journal-renderer-and-card-fields	0xc611d	0x1415e7684	cstring	from
+classic	journal-renderer-and-card-fields	0xc61e3	0x1415e7728	cstring	An order from
+classic	journal-renderer-and-card-fields	0xc62cd	0x1415e76e0	cstring	Finish reporting in
+classic	journal-renderer-and-card-fields	0xc633e	0x1415e76f8	cstring	Complete: report back
+classic	journal-renderer-and-card-fields	0xc638b	0x1415e7760	cstring	Not yet completed
+classic	journal-renderer-and-card-fields	0xc6504	0x1415e3c40	cstring	You
+classic	journal-renderer-and-card-fields	0xc65b1	0x1415e7690	cstring	asked that
+classic	journal-renderer-and-card-fields	0xc6612	0x1415e74b8	cstring	you
+classic	journal-renderer-and-card-fields	0xc66b5	0x1415e7738	cstring	retrieve 
+classic	journal-renderer-and-card-fields	0xc684f	0x1415e3c40	cstring	You
+classic	journal-renderer-and-card-fields	0xc68fc	0x1415e7650	cstring	requested that
+classic	journal-renderer-and-card-fields	0xc695d	0x1415e74b8	cstring	you
+classic	journal-renderer-and-card-fields	0xc6a00	0x1415e7774	cstring	serve 
+classic	journal-renderer-and-card-fields	0xc6ae5	0x1415e7638	cstring	Agreement concluded
+classic	journal-renderer-and-card-fields	0xc6b86	0x1415e7728	cstring	An order from
+classic	journal-renderer-and-card-fields	0xc6c6d	0x1415e76e0	cstring	Finish reporting in
+classic	journal-renderer-and-card-fields	0xc6cdb	0x1415e76f8	cstring	Complete: report back
+classic	journal-renderer-and-card-fields	0xc6d25	0x1415e7760	cstring	Not yet completed
+classic	journal-renderer-and-card-fields	0xc6ef7	0x1415e7748	cstring	Centered on commander
+classic	journal-renderer-and-card-fields	0xc6f61	0x1415e7798	cstring	Centered on target
+classic	journal-renderer-and-card-fields	0xc71e1	0x1415e778c	cstring	Org: 
+classic	journal-renderer-and-card-fields	0xc726b	0x1415e64cc	cstring	/
+classic	journal-renderer-and-card-fields	0xc74d2	0x1415e64cc	cstring	/
+classic	journal-renderer-and-card-fields	0xc7ec9	0x1415e77b0	cstring	One member
+classic	journal-renderer-and-card-fields	0xc7f15	0x1415e7780	cstring	 members
+classic	journal-renderer-and-card-fields	0xc8205	0x1415e64cc	cstring	/
+classic	journal-renderer-and-card-fields	0xc85f0	0x1415e64cc	cstring	/
+classic	journal-renderer-and-card-fields	0xc89e0	0x1415e64cc	cstring	/
+classic	journal-renderer-and-card-fields	0xc8d2c	0x1415e77d8	cstring	 Showing important
+classic	journal-renderer-and-card-fields	0xc8d67	0x1415e77f0	cstring	 Showing all
+classic	journal-renderer-and-card-fields	0xc8f32	0x1415e64cc	cstring	/
+classic	journal-renderer-and-card-fields	0xc927c	0x1415e77d8	cstring	 Showing important
+classic	journal-renderer-and-card-fields	0xc92b7	0x1415e77f0	cstring	 Showing all
+classic	journal-renderer-and-card-fields	0xc9470	0x1415e64cc	cstring	/
+classic	journal-renderer-and-card-fields	0xc97bc	0x1415e77d8	cstring	 Showing important
+classic	journal-renderer-and-card-fields	0xc97f7	0x1415e77f0	cstring	 Showing all
+classic	journal-renderer-and-card-fields	0xc99b0	0x1415e64cc	cstring	/
+classic	journal-renderer-and-card-fields	0xc9da0	0x1415e64cc	cstring	/
+classic	journal-renderer-and-card-fields	0xca0bc	0x1415e77c0	cstring	: Toggle line
+classic	journal-renderer-and-card-fields	0xca216	0x1415e77d0	cstring	...
+classic	journal-renderer-and-card-fields	0xca25a	0x1415e783c	cstring	_
+classic	journal-event-occurrence-and-card-construction	0xd4fff	0x1415e84f0/16	vector	This event occur
+classic	journal-event-occurrence-and-card-construction	0xd5009	0x1415e8500	cstring	red on the 
+classic	journal-event-occurrence-and-card-construction	0xd5016	0x1415e8508	cstring	he 
+classic	journal-event-occurrence-and-card-construction	0xd5021	0x1415e850a	cstring	 
+classic	journal-event-occurrence-and-card-construction	0xd508b	0x1415e7614	cstring	st
+classic	journal-event-occurrence-and-card-construction	0xd5094	0x1415e7618	cstring	nd
+classic	journal-event-occurrence-and-card-construction	0xd509d	0x1415e767c	cstring	rd
+classic	journal-event-occurrence-and-card-construction	0xd50a6	0x1415e7680	cstring	th
+classic	journal-event-occurrence-and-card-construction	0xd50c2	0x1415e3720	cstring	 
+classic	journal-event-occurrence-and-card-construction	0xd5115	0x1415e84a8	cstring	 in the year 
+classic	journal-event-occurrence-and-card-construction	0xd5137	0x1415e3574	cstring	.
+classic	journal-event-title	0xd53c9	0x1415e4218	cstring	Your
+classic	journal-event-title	0xd549c	0x1415e84b8	cstring	Somebody
+classic	journal-event-title	0xd54b1	0x1415e4214	cstring	's
+classic	journal-event-title	0xd54d8	0x1415e8530	cstring	 giving of 
+classic	journal-event-title	0xd54e7	0x1415e8540	cstring	 placement of 
+classic	journal-event-title	0xd5584	0x1415e8510	cstring	an untitled work
+classic	journal-event-title	0xd55af	0x1415e8524	cstring	 to 
+classic	journal-event-title	0xd55ec	0x1415e74b8	cstring	you
+classic	journal-event-title	0xd56d4	0x1415e8570	cstring	somebody
+classic	journal-event-title	0xd56f6	0x1415e7f2c	cstring	 in 
+classic	journal-event-title	0xd5731	0x1415e7f2c	cstring	 in 
+classic	journal-event-title	0xd5767	0x1415e7f2c	cstring	 in 
+classic	journal-event-title	0xd57a1	0x1415e7f2c	cstring	 in 
+classic	journal-event-title	0xd57f1	0x1415e8580	cstring	The destruction of
+classic	journal-event-title	0xd584a	0x1415e4218	cstring	Your
+classic	journal-event-title	0xd5956	0x1415e84b8	cstring	Somebody
+classic	journal-event-title	0xd596b	0x1415e4214	cstring	's
+classic	journal-event-title	0xd59a1	0x1415e85b8	cstring	 refusal to give 
+classic	journal-event-title	0xd59b0	0x1415e8530	cstring	 giving of 
+classic	journal-event-title	0xd59bf	0x1415e8550	cstring	 gaining of 
+classic	journal-event-title	0xd59ce	0x1415e8540	cstring	 placement of 
+classic	journal-event-title	0xd59dd	0x1415e8560	cstring	 possession of 
+classic	journal-event-title	0xd5a1f	0x1415e8524	cstring	 to 
+classic	journal-event-title	0xd5b48	0x1415e8598	cstring	The reunion of 
+classic	journal-event-title	0xd5c42	0x1415e40bc	cstring	 and 
+classic	journal-event-title	0xd5d46	0x1415e85d0	cstring	Your reunion with 
+classic	journal-event-title	0xd5f1d	0x1415e8570	cstring	somebody
+classic	journal-event-title	0xd5f60	0x1415e85a8	cstring	Your death
+classic	journal-event-title	0xd5f77	0x1415e8608	cstring	The death of 
+classic	journal-event-title	0xd6038	0x1415e8618	cstring	a 
+classic	journal-event-title	0xd607d	0x1415e4218	cstring	Your
+classic	journal-event-title	0xd614c	0x1415e85e4	cstring	A 
+classic	journal-event-title	0xd6183	0x1415e4214	cstring	's
+classic	journal-event-title	0xd622e	0x1415e3720	cstring	 
+classic	journal-event-title	0xd625e	0x1415e85e8	cstring	production order violation
+classic	journal-event-title	0xd6279	0x1415e8650	cstring	export prohibition violation
+classic	journal-event-title	0xd6294	0x1415e8670	cstring	job order violation
+classic	journal-event-title	0xd62af	0x1415e8620	cstring	conspiracy to slow labor
+classic	journal-event-title	0xd62ca	0x1415e8640	cstring	crime of murder
+classic	journal-event-title	0xd62e5	0x1415e86a0	cstring	disorderly conduct
+classic	journal-event-title	0xd6300	0x1415e86b8	cstring	building destruction
+classic	journal-event-title	0xd631b	0x1415e8688	cstring	bribery
+classic	journal-event-title	0xd6336	0x1415e8690	cstring	embezzlement
+classic	journal-event-title	0xd6351	0x1415e8700	cstring	vandalism
+classic	journal-event-title	0xd636c	0x1415e8710	cstring	crime of theft
+classic	journal-event-title	0xd6387	0x1415e86d0	cstring	crime of robbery
+classic	journal-event-title	0xd63a2	0x1415e86e8	cstring	crime of espionage
+classic	journal-event-title	0xd63bd	0x1415e8760	cstring	crime of treason
+classic	journal-event-title	0xd63d8	0x1415e8778	cstring	crime of blood-drinking
+classic	journal-event-title	0xd63f3	0x1415e8720	cstring	crime of attempted theft
+classic	journal-event-title	0xd640e	0x1415e8740	cstring	crime of attempted murder
+classic	journal-event-title	0xd6429	0x1415e87d0	cstring	crime of kidnapping
+classic	journal-event-title	0xd6444	0x1415e87e8	cstring	crime of attempted kidnapping
+classic	journal-event-title	0xd64d5	0x1415e4218	cstring	Your
+classic	journal-event-title	0xd65da	0x1415e84b8	cstring	Somebody
+classic	journal-event-title	0xd65ef	0x1415e4214	cstring	's
+classic	journal-event-title	0xd6604	0x1415e8790	cstring	 self-identification to 
+classic	journal-event-title	0xd6675	0x1415e4218	cstring	Your
+classic	journal-event-title	0xd6741	0x1415e84b8	cstring	Somebody
+classic	journal-event-title	0xd6756	0x1415e4214	cstring	's
+classic	journal-event-title	0xd676b	0x1415e87b0	cstring	 refusal to identify to 
+classic	journal-event-title	0xd67bd	0x1415e4218	cstring	Your
+classic	journal-event-title	0xd68c8	0x1415e85e4	cstring	A 
+classic	journal-event-title	0xd68ff	0x1415e4214	cstring	's
+classic	journal-event-title	0xd6914	0x1415e8830	cstring	 demand of submission from 
+classic	journal-event-title	0xd6a2a	0x1415e4218	cstring	Your
+classic	journal-event-title	0xd6b35	0x1415e85e4	cstring	A 
+classic	journal-event-title	0xd6b6c	0x1415e4214	cstring	's
+classic	journal-event-title	0xd6b81	0x1415e8850	cstring	 attack on 
+classic	journal-event-title	0xd6c97	0x1415e4218	cstring	Your
+classic	journal-event-title	0xd6da2	0x1415e8618	cstring	a 
+classic	journal-event-title	0xd6dd9	0x1415e4214	cstring	's
+classic	journal-event-title	0xd6dee	0x1415e8808	cstring	 escalated attack on 
+classic	journal-event-title	0xd6e25	0x1415e74b8	cstring	you
+classic	journal-event-title	0xd6f25	0x1415e8618	cstring	a 
+classic	journal-historical-event-title	0xd7090	0x1415e4218	cstring	Your
+classic	journal-historical-event-title	0xd7168	0x1415e4214	cstring	's
+classic	journal-historical-event-title	0xd71bc	0x1415e8820	cstring	 ascension
+classic	journal-historical-event-title	0xd7245	0x1415e8524	cstring	 to 
+classic	journal-historical-event-title	0xd7328	0x1415e64d0	cstring	 of 
+classic	journal-historical-event-title	0xd7377	0x1415e4218	cstring	Your
+classic	journal-historical-event-title	0xd7448	0x1415e4214	cstring	's
+classic	journal-historical-event-title	0xd749c	0x1415e8890	cstring	 presence
+classic	journal-historical-event-title	0xd74bb	0x1415e7f2c	cstring	 in 
+classic	journal-historical-event-title	0xd74f2	0x1415e7f2c	cstring	 in 
+classic	journal-historical-event-title	0xd752e	0x1415e88a0	cstring	's presence
+classic	journal-historical-event-title	0xd7552	0x1415e7f2c	cstring	 in 
+classic	journal-historical-event-title	0xd7597	0x1415e8860	cstring	's acceptance of 
+classic	journal-historical-event-title	0xd75ba	0x1415e8878	cstring	's offer of tribute
+classic	journal-historical-event-title	0xd75ea	0x1415e88e8	cstring	's refusal of 
+classic	journal-historical-event-title	0xd760f	0x1415e8860	cstring	's acceptance of 
+classic	journal-historical-event-title	0xd7632	0x1415e88f8	cstring	's demand for tribute
+classic	journal-historical-event-title	0xd7662	0x1415e88e8	cstring	's refusal of 
+classic	journal-historical-event-title	0xd7687	0x1415e8860	cstring	's acceptance of 
+classic	journal-historical-event-title	0xd76aa	0x1415e88b0	cstring	's offer of peace
+classic	journal-historical-event-title	0xd76da	0x1415e88e8	cstring	's refusal of 
+classic	journal-historical-event-title	0xd76ff	0x1415e88c8	cstring	's cessation of tribute to 
+classic	journal-historical-event-title	0xd7736	0x1415e8938	cstring	's claim
+classic	journal-historical-event-title	0xd775a	0x1415e8944	cstring	 on 
+classic	journal-historical-event-title	0xd7792	0x1415e8910	cstring	's harassment
+classic	journal-historical-event-title	0xd77bc	0x1415e64d0	cstring	 of 
+classic	journal-historical-event-title	0xd77fa	0x1415e8920	cstring	's withdrawal from 
+classic	journal-historical-event-title	0xd7818	0x1415e8978	cstring	's flight
+classic	journal-historical-event-title	0xd783c	0x1415e8984	cstring	 from 
+classic	journal-historical-event-title	0xd785d	0x1415e8950	cstring	's abandonment
+classic	journal-historical-event-title	0xd786f	0x1415e8960	cstring	The insurrection
+classic	journal-historical-event-title	0xd788e	0x1415e7f2c	cstring	 in 
+classic	journal-historical-event-title	0xd78c5	0x1415e89b8	cstring	 against 
+classic	journal-historical-event-title	0xd78f4	0x1415e89c4	cstring	The 
+classic	journal-historical-event-title	0xd792b	0x1415e89f0	cstring	insurrection crushed
+classic	journal-historical-event-title	0xd794b	0x1415e8a08	cstring	 by 
+classic	journal-historical-event-title	0xd7982	0x1415e7f2c	cstring	 in 
+classic	journal-historical-event-title	0xd79b0	0x1415e89a0	cstring	failed insurrection 
+classic	journal-historical-event-title	0xd79d0	0x1415e89b8	cstring	 against 
+classic	journal-historical-event-title	0xd7a07	0x1415e7f2c	cstring	 in 
+classic	journal-historical-event-title	0xd7a35	0x1415e8990	cstring	overthrow 
+classic	journal-historical-event-title	0xd7a55	0x1415e64d0	cstring	 of 
+classic	journal-historical-event-title	0xd7a8c	0x1415e7f2c	cstring	 in 
+classic	journal-historical-event-title	0xd7ac9	0x1415e89d0	cstring	's reclamation
+classic	journal-historical-event-title	0xd7ae4	0x1415e89e0	cstring	's foundation
+classic	journal-historical-event-title	0xd7b05	0x1415e8a38	cstring	's march
+classic	journal-historical-event-title	0xd7b29	0x1415e8a48	cstring	 to reclaim 
+classic	journal-historical-event-title	0xd7b4a	0x1415e8a38	cstring	's march
+classic	journal-historical-event-title	0xd7b6e	0x1415e8a10	cstring	 to found a site in 
+classic	journal-historical-event-title	0xd7bac	0x1415e8a38	cstring	's march
+classic	journal-historical-event-title	0xd7bd0	0x1415e8a28	cstring	 toward 
+classic	journal-historical-event-title	0xd7be2	0x1415e8a88	cstring	The occupation of 
+classic	journal-historical-event-title	0xd7c54	0x1415e8a08	cstring	 by 
+classic	journal-historical-event-title	0xd7dd9	0x1415e8aa0	cstring	Your abduction
+classic	journal-historical-event-title	0xd7df0	0x1415e8a58	cstring	The abduction of 
+classic	journal-historical-event-title	0xd7ec5	0x1415e8a70	cstring	The destruction of 
+classic	journal-historical-event-title	0xd7ee0	0x1415e8ad8	cstring	The presence of 
+classic	journal-historical-event-title	0xd7f09	0x1415e7f2c	cstring	 in 
+classic	journal-historical-event-title	0xd7f41	0x1415e7f2c	cstring	 in 
+classic	journal-historical-event-title	0xd7f7c	0x1415e8ad8	cstring	The presence of 
+classic	journal-historical-event-title	0xd7fcd	0x1415e8af0	cstring	Your possession of 
+classic	journal-historical-event-title	0xd8098	0x1415e8ab0	cstring	's possession of 
+classic	journal-historical-event-title	0xd8105	0x1415e8ac8	cstring	The absence of 
+classic	journal-historical-event-title	0xd812e	0x1415e8984	cstring	 from 
+classic	journal-historical-event-title	0xd8166	0x1415e8b58	cstring	's 
+classic	journal-historical-event-title	0xd81a1	0x1415e8ac8	cstring	The absence of 
+classic	journal-historical-event-title	0xd81ca	0x1415e8984	cstring	 from 
+classic	journal-historical-event-title	0xd81ff	0x1415e8b60	cstring	Your lack of possession of 
+classic	journal-historical-event-title	0xd82e8	0x1415e8b08	cstring	's lack of possession of 
+classic	journal-event-hearing-and-mission-paragraphs	0xd85ce	0x1415e8bd0/16	vector	You have been or
+classic	journal-event-hearing-and-mission-paragraphs	0xd85d8	0x1415e8be0/16	vector	dered to drive t
+classic	journal-event-hearing-and-mission-paragraphs	0xd85e3	0x1415e8bf0/16	vector	hese forces out.
+classic	journal-event-hearing-and-mission-paragraphs	0xd8795	0x1415e8b28/16	vector	You have been or
+classic	journal-event-hearing-and-mission-paragraphs	0xd879f	0x1415e8b38/16	vector	dered to slay th
+classic	journal-event-hearing-and-mission-paragraphs	0xd87aa	0x1415e8b48	cstring	is creature.
+classic	journal-event-hearing-and-mission-paragraphs	0xd87b7	0x1415e8b50	cstring	ure.
+classic	journal-event-hearing-and-mission-paragraphs	0xd8890	0x1415e8b80/16	vector	You have been or
+classic	journal-event-hearing-and-mission-paragraphs	0xd889a	0x1415e8b90/16	vector	dered to cause t
+classic	journal-event-hearing-and-mission-paragraphs	0xd88a5	0x1415e8ba0/16	vector	rouble for these
+classic	journal-event-hearing-and-mission-paragraphs	0xd88b0	0x1415e8bb0	cstring	 forces.
+classic	journal-event-hearing-and-mission-paragraphs	0xd8990	0x1415e8c08/16	vector	You have been or
+classic	journal-event-hearing-and-mission-paragraphs	0xd899a	0x1415e8c18/16	vector	dered to clear t
+classic	journal-event-hearing-and-mission-paragraphs	0xd89a5	0x1415e8c28/16	vector	he forces from t
+classic	journal-event-hearing-and-mission-paragraphs	0xd89b0	0x1415e8c38	cstring	his site.
+classic	journal-event-hearing-and-mission-paragraphs	0xd89bd	0x1415e8c40	cstring	.
+classic	journal-event-hearing-and-mission-paragraphs	0xd8c08	0x1415e8bc0	cstring	You last
+classic	journal-event-hearing-and-mission-paragraphs	0xd8c21	0x1415e3c40	cstring	You
+classic	journal-event-hearing-and-mission-paragraphs	0xd8c2b	0x1415e3c42	cstring	u
+classic	journal-event-hearing-and-mission-paragraphs	0xd8c3f	0x1415e8c90	cstring	 heard this 
+classic	journal-event-hearing-and-mission-paragraphs	0xd8c67	0x1415e8ca0	cstring	on the 
+classic	journal-event-hearing-and-mission-paragraphs	0xd8c72	0x1415e8ca4	cstring	he 
+classic	journal-event-hearing-and-mission-paragraphs	0xd8c7e	0x1415e8ca6	cstring	 
+classic	journal-event-hearing-and-mission-paragraphs	0xd8cf1	0x1415e7614	cstring	st
+classic	journal-event-hearing-and-mission-paragraphs	0xd8cfa	0x1415e7618	cstring	nd
+classic	journal-event-hearing-and-mission-paragraphs	0xd8d03	0x1415e767c	cstring	rd
+classic	journal-event-hearing-and-mission-paragraphs	0xd8d0c	0x1415e7680	cstring	th
+classic	journal-event-hearing-and-mission-paragraphs	0xd8d26	0x1415e3720	cstring	 
+classic	journal-event-hearing-and-mission-paragraphs	0xd8d7b	0x1415e84a8	cstring	 in the year 
+classic	journal-event-hearing-and-mission-paragraphs	0xd8f4d	0x1415e8984	cstring	 from 
+classic	journal-event-hearing-and-mission-paragraphs	0xd8fc6	0x1415e3574	cstring	.
+classic	journal-event-hearing-and-mission-paragraphs	0xd9195	0x1415e8c48	cstring	You first heard this 
+classic	journal-event-hearing-and-mission-paragraphs	0xd91bd	0x1415e8ca0	cstring	on the 
+classic	journal-event-hearing-and-mission-paragraphs	0xd91c8	0x1415e8ca4	cstring	he 
+classic	journal-event-hearing-and-mission-paragraphs	0xd91d4	0x1415e8ca6	cstring	 
+classic	journal-event-hearing-and-mission-paragraphs	0xd9245	0x1415e7614	cstring	st
+classic	journal-event-hearing-and-mission-paragraphs	0xd924e	0x1415e7618	cstring	nd
+classic	journal-event-hearing-and-mission-paragraphs	0xd9257	0x1415e767c	cstring	rd
+classic	journal-event-hearing-and-mission-paragraphs	0xd9260	0x1415e7680	cstring	th
+classic	journal-event-hearing-and-mission-paragraphs	0xd927a	0x1415e3720	cstring	 
+classic	journal-event-hearing-and-mission-paragraphs	0xd92cf	0x1415e84a8	cstring	 in the year 
+classic	journal-event-hearing-and-mission-paragraphs	0xd94b8	0x1415e8984	cstring	 from 
+classic	journal-event-hearing-and-mission-paragraphs	0xd9531	0x1415e3574	cstring	.
+classic	journal-event-hearing-and-mission-paragraphs	0xd972d	0x1415e8c60/16	vector	This is common k
+classic	journal-event-hearing-and-mission-paragraphs	0xd9737	0x1415e8c70/16	vector	nowledge where y
+classic	journal-event-hearing-and-mission-paragraphs	0xd9742	0x1415e8c80	cstring	ou are from.
+classic	journal-event-hearing-and-mission-paragraphs	0xd974f	0x1415e8c88	cstring	rom.
+classic	journal-incident-summary-and-search-index-initializer	0xd9948	0x1415e8cc0	cstring	writing
+classic	journal-incident-summary-and-search-index-initializer	0xd9952	0x1415e8cc4	cstring	ing
+classic	journal-incident-summary-and-search-index-initializer	0xd995d	0x1415e8cc6	cstring	g
+classic	journal-incident-summary-and-search-index-initializer	0xd99bd	0x1415e8cc8	cstring	Writing
+classic	journal-incident-summary-and-search-index-initializer	0xd99de	0x1415e8cb4	cstring	 Given
+classic	journal-incident-summary-and-search-index-initializer	0xd99e7	0x1415e8ca8	cstring	 Dropped
+classic	journal-incident-summary-and-search-index-initializer	0xd99f9	0x1415e64cc	cstring	/
+classic	journal-incident-summary-and-search-index-initializer	0xd9a97	0x1415e8510	cstring	an untitled work
+classic	journal-incident-summary-and-search-index-initializer	0xd9aea	0x1415e8ce4	cstring	me
+classic	journal-incident-summary-and-search-index-initializer	0xd9b11	0x1415e8ce8	cstring	/You
+classic	journal-incident-summary-and-search-index-initializer	0xd9b80	0x1415e64cc	cstring	/
+classic	journal-incident-summary-and-search-index-initializer	0xd9bb0	0x1415e8524	cstring	 to 
+classic	journal-incident-summary-and-search-index-initializer	0xd9bea	0x1415e8ce4	cstring	me
+classic	journal-incident-summary-and-search-index-initializer	0xd9c11	0x1415e8cd0	cstring	 you
+classic	journal-incident-summary-and-search-index-initializer	0xd9c59	0x1415e64cc	cstring	/
+classic	journal-incident-summary-and-search-index-initializer	0xd9caf	0x1415e8ce4	cstring	me
+classic	journal-incident-summary-and-search-index-initializer	0xd9cd6	0x1415e8ce8	cstring	/You
+classic	journal-incident-summary-and-search-index-initializer	0xd9d1b	0x1415e64cc	cstring	/
+classic	journal-incident-summary-and-search-index-initializer	0xd9d58	0x1415e64cc	cstring	/
+classic	journal-incident-summary-and-search-index-initializer	0xd9da5	0x1415e64cc	cstring	/
+classic	journal-incident-summary-and-search-index-initializer	0xd9dd9	0x1415e64cc	cstring	/
+classic	journal-incident-summary-and-search-index-initializer	0xd9e1e	0x7463616669747261	inline	artifact
+classic	journal-incident-summary-and-search-index-initializer	0xd9e82	0x1415e8d00	cstring	Artifact
+classic	journal-incident-summary-and-search-index-initializer	0xd9ead	0x1415e8d10	cstring	 Destroyed
+classic	journal-incident-summary-and-search-index-initializer	0xd9eb6	0x1415e8cf0	cstring	 Held
+classic	journal-incident-summary-and-search-index-initializer	0xd9ebf	0x1415e8ca8	cstring	 Dropped
+classic	journal-incident-summary-and-search-index-initializer	0xd9ec8	0x1415e8cf8	cstring	 Gained
+classic	journal-incident-summary-and-search-index-initializer	0xd9ed1	0x1415e8cb4	cstring	 Given
+classic	journal-incident-summary-and-search-index-initializer	0xd9eda	0x1415e8d38	cstring	 Denied
+classic	journal-incident-summary-and-search-index-initializer	0xd9f7b	0x1415e64cc	cstring	/
+classic	journal-incident-summary-and-search-index-initializer	0xda00f	0x1415e8ce4	cstring	me
+classic	journal-incident-summary-and-search-index-initializer	0xda036	0x1415e8ce8	cstring	/You
+classic	journal-incident-summary-and-search-index-initializer	0xda077	0x1415e64cc	cstring	/
+classic	journal-incident-summary-and-search-index-initializer	0xda0a7	0x1415e8524	cstring	 to 
+classic	journal-incident-summary-and-search-index-initializer	0xda0e1	0x1415e8ce4	cstring	me
+classic	journal-incident-summary-and-search-index-initializer	0xda138	0x1415e64cc	cstring	/
+classic	journal-incident-summary-and-search-index-initializer	0xda191	0x1415e8ce4	cstring	me
+classic	journal-incident-summary-and-search-index-initializer	0xda1e8	0x1415e64cc	cstring	/
+classic	journal-incident-summary-and-search-index-initializer	0xda238	0x1415e8ce4	cstring	me
+classic	journal-incident-summary-and-search-index-initializer	0xda28f	0x1415e64cc	cstring	/
+classic	journal-incident-summary-and-search-index-initializer	0xda2df	0x1415e8ce4	cstring	me
+classic	journal-incident-summary-and-search-index-initializer	0xda306	0x1415e8ce8	cstring	/You
+classic	journal-incident-summary-and-search-index-initializer	0xda351	0x1415e64cc	cstring	/
+classic	journal-incident-summary-and-search-index-initializer	0xda3a1	0x1415e8d40	cstring	rescue
+classic	journal-incident-summary-and-search-index-initializer	0xda3aa	0x1415e8d44	cstring	ue
+classic	journal-incident-summary-and-search-index-initializer	0xda3e3	0x1415e8d20	cstring	reunion
+classic	journal-incident-summary-and-search-index-initializer	0xda3ed	0x1415e8d24	cstring	ion
+classic	journal-incident-summary-and-search-index-initializer	0xda3f8	0x1415e8d26	cstring	n
+classic	journal-incident-summary-and-search-index-initializer	0xda430	0x646574696e756572	inline	reunited
+classic	journal-incident-summary-and-search-index-initializer	0xda48c	0x1415e8d70	cstring	Reunion
+classic	journal-incident-summary-and-search-index-initializer	0xda4cf	0x1415e64cc	cstring	/
+classic	journal-incident-summary-and-search-index-initializer	0xda537	0x1415e64cc	cstring	/
+classic	journal-incident-summary-and-search-index-initializer	0xda5db	0x1415e8d60	cstring	Reunion/
+classic	journal-incident-summary-and-search-index-initializer	0xda6e0	0x1415e8d48	cstring	death
+classic	journal-incident-summary-and-search-index-initializer	0xda6e9	0x1415e8d4c	cstring	h
+classic	journal-incident-summary-and-search-index-initializer	0xda76a	0x1415e8d50	cstring	Death/You
+classic	journal-incident-summary-and-search-index-initializer	0xda776	0x1415e8ce4	cstring	me
+classic	journal-incident-summary-and-search-index-initializer	0xda7a6	0x1415e8d94	cstring	Death/
+classic	journal-incident-summary-and-search-index-initializer	0xda849	0x1415e8d9c	cstring	crime
+classic	journal-incident-summary-and-search-index-initializer	0xda852	0x1415e8da0	cstring	e
+classic	journal-incident-summary-and-search-index-initializer	0xda956	0x1415e8d78	cstring	ProdViol
+classic	journal-incident-summary-and-search-index-initializer	0xda962	0x1415e8d88	cstring	production
+classic	journal-incident-summary-and-search-index-initializer	0xda98d	0x1415e8db8	cstring	order
+classic	journal-incident-summary-and-search-index-initializer	0xda9b8	0x1415e8dc0	cstring	violation
+classic	journal-incident-summary-and-search-index-initializer	0xda9e3	0x1415e8da8	cstring	ExpViol
+classic	journal-incident-summary-and-search-index-initializer	0xda9ef	0x1415e8db0	cstring	export
+classic	journal-incident-summary-and-search-index-initializer	0xdaa1a	0x1415e8de0	cstring	prohibition
+classic	journal-incident-summary-and-search-index-initializer	0xdaa45	0x1415e8dc0	cstring	violation
+classic	journal-incident-summary-and-search-index-initializer	0xdaa70	0x1415e8df0	cstring	JobViol
+classic	journal-incident-summary-and-search-index-initializer	0xdaa7c	0x1415e8dcc	cstring	job
+classic	journal-incident-summary-and-search-index-initializer	0xdaaa7	0x1415e8db8	cstring	order
+classic	journal-incident-summary-and-search-index-initializer	0xdaad2	0x1415e8dc0	cstring	violation
+classic	journal-incident-summary-and-search-index-initializer	0xdaafd	0x1415e8dd0	cstring	SlowLabor
+classic	journal-incident-summary-and-search-index-initializer	0xdab09	0x1415e8e08	cstring	conspiracy
+classic	journal-incident-summary-and-search-index-initializer	0xdab34	0x1415e8e14	cstring	slow
+classic	journal-incident-summary-and-search-index-initializer	0xdab5f	0x1415e8df8	cstring	labor
+classic	journal-incident-summary-and-search-index-initializer	0xdab8a	0x1415e8e00	cstring	Murder
+classic	journal-incident-summary-and-search-index-initializer	0xdab96	0x1415e8e38	cstring	murder
+classic	journal-incident-summary-and-search-index-initializer	0xdabc1	0x1415e8e40	cstring	Disorder
+classic	journal-incident-summary-and-search-index-initializer	0xdabcd	0x1415e8e20	cstring	disorderly
+classic	journal-incident-summary-and-search-index-initializer	0xdabf8	0x1415e8e30	cstring	conduct
+classic	journal-incident-summary-and-search-index-initializer	0xdac23	0x1415e8e68	cstring	BuildDest
+classic	journal-incident-summary-and-search-index-initializer	0xdac2f	0x1415e64b8	cstring	building
+classic	journal-incident-summary-and-search-index-initializer	0xdac5a	0x1415e8e78	cstring	destruction
+classic	journal-incident-summary-and-search-index-initializer	0xdac85	0x1415e8e50	cstring	Bribery
+classic	journal-incident-summary-and-search-index-initializer	0xdac91	0x1415e8688	cstring	bribery
+classic	journal-incident-summary-and-search-index-initializer	0xdacbc	0x1415e8e58	cstring	Embezzlement
+classic	journal-incident-summary-and-search-index-initializer	0xdacc8	0x1415e8690	cstring	embezzlement
+classic	journal-incident-summary-and-search-index-initializer	0xdacf3	0x1415e8e98	cstring	Vandalism
+classic	journal-incident-summary-and-search-index-initializer	0xdacff	0x1415e8700	cstring	vandalism
+classic	journal-incident-summary-and-search-index-initializer	0xdad2a	0x1415e8ea4	cstring	Theft
+classic	journal-incident-summary-and-search-index-initializer	0xdad36	0x1415e8e84	cstring	theft
+classic	journal-incident-summary-and-search-index-initializer	0xdad61	0x1415e8e90	cstring	Robbery
+classic	journal-incident-summary-and-search-index-initializer	0xdad6d	0x1415e8ec8	cstring	robbery
+classic	journal-incident-summary-and-search-index-initializer	0xdad98	0x1415e8ed0	cstring	Espionage
+classic	journal-incident-summary-and-search-index-initializer	0xdada4	0x1415e8eb0	cstring	espionage
+classic	journal-incident-summary-and-search-index-initializer	0xdadcf	0x1415e8ec0	cstring	Treason
+classic	journal-incident-summary-and-search-index-initializer	0xdaddb	0x1415e8ef8	cstring	treason
+classic	journal-incident-summary-and-search-index-initializer	0xdae06	0x1415e8f00	cstring	Blood-drinking
+classic	journal-incident-summary-and-search-index-initializer	0xdae12	0x1415e8edc	cstring	blood
+classic	journal-incident-summary-and-search-index-initializer	0xdae3d	0x1415e8ee8	cstring	drinking
+classic	journal-incident-summary-and-search-index-initializer	0xdae68	0x1415e8720	cstring	crime of attempted theft
+classic	journal-incident-summary-and-search-index-initializer	0xdae74	0x1415e8e84	cstring	theft
+classic	journal-incident-summary-and-search-index-initializer	0xdae9f	0x1415e8740	cstring	crime of attempted murder
+classic	journal-incident-summary-and-search-index-initializer	0xdaeab	0x1415e8e38	cstring	murder
+classic	journal-incident-summary-and-search-index-initializer	0xdaed6	0x1415e87d0	cstring	crime of kidnapping
+classic	journal-incident-summary-and-search-index-initializer	0xdaee2	0x1415e8f30	cstring	kidnapping
+classic	journal-incident-summary-and-search-index-initializer	0xdaf0d	0x1415e8f40	cstring	snatching
+classic	journal-incident-summary-and-search-index-initializer	0xdaf35	0x1415e87e8	cstring	crime of attempted kidnapping
+classic	journal-incident-summary-and-search-index-initializer	0xdaf41	0x1415e8f30	cstring	kidnapping
+classic	journal-incident-summary-and-search-index-initializer	0xdaf6c	0x1415e8f40	cstring	snatching
+classic	journal-incident-summary-and-search-index-initializer	0xdaf9b	0x1415e64cc	cstring	/
+classic	journal-incident-summary-and-search-index-initializer	0xdafcd	0x1415e3c40	cstring	You
+classic	journal-incident-summary-and-search-index-initializer	0xdb08d	0x1415e8618	cstring	a 
+classic	journal-incident-summary-and-search-index-initializer	0xdb0cc	0x1415e8f10	cstring	performance
+classic	journal-incident-summary-and-search-index-initializer	0xdb0d9	0x1415e8f18	cstring	nce
+classic	journal-incident-summary-and-search-index-initializer	0xdb0e4	0x1415e8f1a	cstring	e
+classic	journal-incident-summary-and-search-index-initializer	0xdb147	0x1415e8f20	cstring	Performance
+classic	journal-incident-summary-and-search-index-initializer	0xdb171	0x1415e8f60	cstring	Sermon/
+classic	journal-incident-summary-and-search-index-initializer	0xdb1eb	0x1415e8f60	cstring	Sermon/
+classic	journal-incident-summary-and-search-index-initializer	0xdb24d	0x1415e8f60	cstring	Sermon/
+classic	journal-incident-summary-and-search-index-initializer	0xdb26b	0x1415e3818	cstring	Promote 
+classic	journal-incident-summary-and-search-index-initializer	0xdb274	0x1415e3800	cstring	Inveigh Against 
+classic	journal-incident-summary-and-search-index-initializer	0xdb2a1	0x1415e3830	cstring	Law
+classic	journal-incident-summary-and-search-index-initializer	0xdb2ad	0x1415e3828	cstring	Loyalty
+classic	journal-incident-summary-and-search-index-initializer	0xdb2b9	0x1415e3844	cstring	Family
+classic	journal-incident-summary-and-search-index-initializer	0xdb2c5	0x1415e3838	cstring	Friendship
+classic	journal-incident-summary-and-search-index-initializer	0xdb2d1	0x1415e3854	cstring	Power
+classic	journal-incident-summary-and-search-index-initializer	0xdb2dd	0x1415e384c	cstring	Truth
+classic	journal-incident-summary-and-search-index-initializer	0xdb2e9	0x1415e3870	cstring	Cunning
+classic	journal-incident-summary-and-search-index-initializer	0xdb2f5	0x1415e3860	cstring	Eloquence
+classic	journal-incident-summary-and-search-index-initializer	0xdb301	0x1415e3880	cstring	Fairness
+classic	journal-incident-summary-and-search-index-initializer	0xdb30d	0x1415e3878	cstring	Decorum
+classic	journal-incident-summary-and-search-index-initializer	0xdb319	0x1415e3898	cstring	Tradition
+classic	journal-incident-summary-and-search-index-initializer	0xdb325	0x1415e3890	cstring	Artwork
+classic	journal-incident-summary-and-search-index-initializer	0xdb331	0x1415e38b8	cstring	Cooperation
+classic	journal-incident-summary-and-search-index-initializer	0xdb33d	0x1415e38a8	cstring	Independence
+classic	journal-incident-summary-and-search-index-initializer	0xdb349	0x1415e38d8	cstring	Stoicism
+classic	journal-incident-summary-and-search-index-initializer	0xdb355	0x1415e38c8	cstring	Introspection
+classic	journal-incident-summary-and-search-index-initializer	0xdb361	0x1415e38f8	cstring	Self-Control
+classic	journal-incident-summary-and-search-index-initializer	0xdb36d	0x1415e38e8	cstring	Tranquility
+classic	journal-incident-summary-and-search-index-initializer	0xdb379	0x1415e3918	cstring	Harmony
+classic	journal-incident-summary-and-search-index-initializer	0xdb385	0x1415e3908	cstring	Merriment
+classic	journal-incident-summary-and-search-index-initializer	0xdb38e	0x1415e3930	cstring	Craftsmanship
+classic	journal-incident-summary-and-search-index-initializer	0xdb397	0x1415e3920	cstring	Martial Prowess
+classic	journal-incident-summary-and-search-index-initializer	0xdb3a0	0x1415e394c	cstring	Skill
+classic	journal-incident-summary-and-search-index-initializer	0xdb3a9	0x1415e3940	cstring	Hard Work
+classic	journal-incident-summary-and-search-index-initializer	0xdb3b2	0x1415e3968	cstring	Sacrifice
+classic	journal-incident-summary-and-search-index-initializer	0xdb3bb	0x1415e3958	cstring	Competition
+classic	journal-incident-summary-and-search-index-initializer	0xdb3c4	0x1415e3988	cstring	Perseverance
+classic	journal-incident-summary-and-search-index-initializer	0xdb3cd	0x1415e3978	cstring	Leisure Time
+classic	journal-incident-summary-and-search-index-initializer	0xdb3d6	0x1415e39a0	cstring	Commerce
+classic	journal-incident-summary-and-search-index-initializer	0xdb3df	0x1415e3998	cstring	Romance
+classic	journal-incident-summary-and-search-index-initializer	0xdb3e8	0x1415e39b4	cstring	Nature
+classic	journal-incident-summary-and-search-index-initializer	0xdb3f1	0x1415e39ac	cstring	Peace
+classic	journal-incident-summary-and-search-index-initializer	0xdb3fa	0x1415e39d8	cstring	Knowledge
+classic	journal-incident-summary-and-search-index-initializer	0xdb42b	0x1415e8f68	cstring	Performance/
+classic	journal-incident-summary-and-search-index-initializer	0xdb4b9	0x1415e8f68	cstring	Performance/
+classic	journal-incident-summary-and-search-index-initializer	0xdb537	0x1415e8f4c	cstring	a poem
+classic	journal-incident-summary-and-search-index-initializer	0xdb55a	0x1415e8f68	cstring	Performance/
+classic	journal-incident-summary-and-search-index-initializer	0xdb5d8	0x1415e64c4	cstring	music
+classic	journal-incident-summary-and-search-index-initializer	0xdb5fb	0x1415e8f68	cstring	Performance/
+classic	journal-incident-summary-and-search-index-initializer	0xdb679	0x1415e8f54	cstring	dance
+classic	journal-incident-summary-and-search-index-initializer	0xdb6bd	0x1415e8f8c	cstring	+
+classic	journal-incident-summary-and-search-index-initializer	0xdb6fd	0x1415e3c40	cstring	You
+classic	journal-incident-summary-and-search-index-initializer	0xdb70d	0x1415e8ce4	cstring	me
+classic	journal-incident-summary-and-search-index-initializer	0xdb7b4	0x65766967	inline	give
+classic	journal-incident-summary-and-search-index-initializer	0xdb81f	0x656d616e	inline	name
+classic	journal-incident-summary-and-search-index-initializer	0xdb891	0x797469746e656469	inline	identity
+classic	journal-incident-summary-and-search-index-initializer	0xdb8ee	0x1415e8fb0	cstring	SelfID/
+classic	journal-incident-summary-and-search-index-initializer	0xdb941	0x1415e3c40	cstring	You
+classic	journal-incident-summary-and-search-index-initializer	0xdb951	0x1415e8ce4	cstring	me
+classic	journal-incident-summary-and-search-index-initializer	0xdb9d9	0x1415e84b8	cstring	Somebody
+classic	journal-incident-summary-and-search-index-initializer	0xdb9ec	0x1415e8f8c	cstring	+
+classic	journal-incident-summary-and-search-index-initializer	0xdba25	0x1415e8fb8	cstring	refuse
+classic	journal-incident-summary-and-search-index-initializer	0xdba2e	0x1415e8fbc	cstring	se
+classic	journal-incident-summary-and-search-index-initializer	0xdba9d	0x656d616e	inline	name
+classic	journal-incident-summary-and-search-index-initializer	0xdbb0f	0x797469746e656469	inline	identity
+classic	journal-incident-summary-and-search-index-initializer	0xdbb6c	0x1415e8f98	cstring	RefusedID/
+classic	journal-incident-summary-and-search-index-initializer	0xdbbbf	0x1415e3c40	cstring	You
+classic	journal-incident-summary-and-search-index-initializer	0xdbbcf	0x1415e8ce4	cstring	me
+classic	journal-incident-summary-and-search-index-initializer	0xdbc75	0x1415e8fa4	cstring	demand
+classic	journal-incident-summary-and-search-index-initializer	0xdbc7e	0x1415e8fa8	cstring	nd
+classic	journal-incident-summary-and-search-index-initializer	0xdbced	0x1415e8fd8	cstring	submission
+classic	journal-incident-summary-and-search-index-initializer	0xdbcfa	0x1415e8fe0	cstring	on
+classic	journal-incident-summary-and-search-index-initializer	0xdbd5b	0x1415e8fe8	cstring	YieldDemand/
+classic	journal-incident-summary-and-search-index-initializer	0xdbd8d	0x1415e3c40	cstring	You
+classic	journal-incident-summary-and-search-index-initializer	0xdbd9d	0x1415e8ce4	cstring	me
+classic	journal-incident-summary-and-search-index-initializer	0xdbe3a	0x1415e85e4	cstring	A 
+classic	journal-incident-summary-and-search-index-initializer	0xdbe72	0x1415e8f8c	cstring	+
+classic	journal-incident-summary-and-search-index-initializer	0xdbeaf	0x1415e74b8	cstring	you
+classic	journal-incident-summary-and-search-index-initializer	0xdbf8b	0x1415e8618	cstring	a 
+classic	journal-incident-summary-and-search-index-initializer	0xdc05f	0x1415e8fc0	cstring	fight
+classic	journal-incident-summary-and-search-index-initializer	0xdc068	0x1415e8fc4	cstring	t
+classic	journal-incident-summary-and-search-index-initializer	0xdc0a4	0x7463696c666e6f63	inline	conflict
+classic	journal-incident-summary-and-search-index-initializer	0xdc0d6	0x1415e9010	cstring	Attack/
+classic	journal-incident-summary-and-search-index-initializer	0xdc113	0x1415e3c40	cstring	You
+classic	journal-incident-summary-and-search-index-initializer	0xdc204	0x1415e85e4	cstring	A 
+classic	journal-incident-summary-and-search-index-initializer	0xdc23c	0x1415e8f8c	cstring	+
+classic	journal-incident-summary-and-search-index-initializer	0xdc279	0x1415e74b8	cstring	you
+classic	journal-incident-summary-and-search-index-initializer	0xdc285	0x1415e8ce4	cstring	me
+classic	journal-incident-summary-and-search-index-initializer	0xdc3f7	0x1415e8fc0	cstring	fight
+classic	journal-incident-summary-and-search-index-initializer	0xdc400	0x1415e8fc4	cstring	t
+classic	journal-incident-summary-and-search-index-initializer	0xdc43c	0x7463696c666e6f63	inline	conflict
+classic	journal-incident-summary-and-search-index-initializer	0xdc46e	0x1415e9018	cstring	Escalation/
+classic	journal-incident-summary-and-search-index-initializer	0xdc4a0	0x1415e3c40	cstring	You
+classic	journal-incident-summary-and-search-index-initializer	0xdc4b0	0x1415e8ce4	cstring	me
+classic	journal-incident-summary-and-search-index-initializer	0xdc54d	0x1415e8618	cstring	a 
+classic	journal-incident-summary-and-search-index-initializer	0xdc585	0x1415e8f8c	cstring	+
+classic	journal-incident-summary-and-search-index-initializer	0xdc5b8	0x1415e74b8	cstring	you
+classic	journal-incident-summary-and-search-index-initializer	0xdc5c8	0x1415e8ce4	cstring	me
+classic	journal-performance-title	0x65cef3	0x1415e9910	cstring	your
+classic	journal-performance-title	0x65cefa	0x1415e4218	cstring	Your
+classic	journal-performance-title	0x65cf17	0x1416450c0	cstring	The
+classic	journal-performance-title	0x65cf20	0x14165e71c	cstring	the
+classic	journal-performance-title	0x65cf38	0x14165e720	cstring	 sermon on 
+classic	journal-performance-title	0x65cf8f	0x1415e9910	cstring	your
+classic	journal-performance-title	0x65cf96	0x1415e4218	cstring	Your
+classic	journal-performance-title	0x65cfb3	0x1416450c0	cstring	The
+classic	journal-performance-title	0x65cfbc	0x14165e71c	cstring	the
+classic	journal-performance-title	0x65cfd4	0x14165e720	cstring	 sermon on 
+classic	journal-performance-title	0x65d04b	0x1415e9910	cstring	your
+classic	journal-performance-title	0x65d052	0x1415e4218	cstring	Your
+classic	journal-performance-title	0x65d06e	0x1416450c0	cstring	The
+classic	journal-performance-title	0x65d077	0x14165e71c	cstring	the
+classic	journal-performance-title	0x65d08c	0x14165e720	cstring	 sermon on 
+classic	journal-performance-title	0x65d10b	0x141731e70/16	vector	the worthlessnes
+classic	journal-performance-title	0x65d115	0x141731e80	cstring	s
+classic	journal-performance-title	0x65d136	0x141732fd8	cstring	the value
+classic	journal-performance-title	0x65d143	0x141732fe0	cstring	e
+classic	journal-performance-title	0x65d157	0x14166b5b0	cstring	nuances
+classic	journal-performance-title	0x65d161	0x14166b5b4	cstring	ces
+classic	journal-performance-title	0x65d16c	0x14166b5b6	cstring	s
+classic	journal-performance-title	0x65d180	0x1415e64d0	cstring	 of 
+classic	journal-performance-title	0x65d1af	0x14163c2c0	cstring	law
+classic	journal-performance-title	0x65d1be	0x14163c2b8	cstring	loyalty
+classic	journal-performance-title	0x65d1d0	0x14163c2ac	cstring	family
+classic	journal-performance-title	0x65d1e2	0x14163c610	cstring	friendship
+classic	journal-performance-title	0x65d1f4	0x14163c608	cstring	power
+classic	journal-performance-title	0x65d206	0x14163c600	cstring	truth
+classic	journal-performance-title	0x65d215	0x14163c5f8	cstring	cunning
+classic	journal-performance-title	0x65d221	0x14163c648	cstring	eloquence
+classic	journal-performance-title	0x65d233	0x14163c638	cstring	fairness
+classic	journal-performance-title	0x65d242	0x14163c630	cstring	decorum
+classic	journal-performance-title	0x65d24e	0x14163c620	cstring	tradition
+classic	journal-performance-title	0x65d25d	0x14163c5b8	cstring	artwork
+classic	journal-performance-title	0x65d26f	0x14163c5a8	cstring	cooperation
+classic	journal-performance-title	0x65d281	0x14163c598	cstring	independence
+classic	journal-performance-title	0x65d293	0x14163c588	cstring	stoicism
+classic	journal-performance-title	0x65d2a5	0x14163c5e8	cstring	introspection
+classic	journal-performance-title	0x65d2b7	0x14163c5d8	cstring	self-control
+classic	journal-performance-title	0x65d2c9	0x14163c5c8	cstring	tranquility
+classic	journal-performance-title	0x65d2d8	0x14163c5c0	cstring	harmony
+classic	journal-performance-title	0x65d2e4	0x14163c538	cstring	merriment
+classic	journal-performance-title	0x65d2f6	0x14163c528	cstring	craftsmanship
+classic	journal-performance-title	0x65d308	0x14163c518	cstring	martial prowess
+classic	journal-performance-title	0x65d31a	0x14163c50c	cstring	skill
+classic	journal-performance-title	0x65d326	0x14163c578	cstring	hard work
+classic	journal-performance-title	0x65d32f	0x14163c568	cstring	sacrifice
+classic	journal-performance-title	0x65d33e	0x14163c558	cstring	competition
+classic	journal-performance-title	0x65d34d	0x14163c548	cstring	perseverance
+classic	journal-performance-title	0x65d35c	0x14163c4f0	cstring	leisure time
+classic	journal-performance-title	0x65d36b	0x14163c4e0	cstring	commerce
+classic	journal-performance-title	0x65d377	0x14163c4d8	cstring	romance
+classic	journal-performance-title	0x65d386	0x14163c4d0	cstring	nature
+classic	journal-performance-title	0x65d395	0x1415e904c	cstring	peace
+classic	journal-performance-title	0x65d39e	0x14163c500	cstring	knowledge
+classic	journal-performance-title	0x65d47e	0x14165e6f8	cstring	history
+classic	journal-performance-title	0x65d497	0x1415e9910	cstring	your
+classic	journal-performance-title	0x65d49e	0x1415e4218	cstring	Your
+classic	journal-performance-title	0x65d4ad	0x14165e71c	cstring	the
+classic	journal-performance-title	0x65d4b4	0x1416450c0	cstring	The
+classic	journal-performance-title	0x65d4d3	0x14165e700	cstring	 telling of the story of 
+classic	journal-performance-title	0x65d629	0x1415e8f4c	cstring	a poem
+classic	journal-performance-title	0x65d642	0x1415e9910	cstring	your
+classic	journal-performance-title	0x65d649	0x1415e4218	cstring	Your
+classic	journal-performance-title	0x65d658	0x14165e71c	cstring	the
+classic	journal-performance-title	0x65d65f	0x1416450c0	cstring	The
+classic	journal-performance-title	0x65d67e	0x14165e6e0	cstring	 recitation of 
+classic	journal-performance-title	0x65d86e	0x1415e64c4	cstring	music
+classic	journal-performance-title	0x65d88b	0x1415e9910	cstring	your
+classic	journal-performance-title	0x65d892	0x1415e4218	cstring	Your
+classic	journal-performance-title	0x65d8b3	0x1415e3720	cstring	 
+classic	journal-performance-title	0x65d90b	0x14165e6f0	cstring	playing
+classic	journal-performance-title	0x65da16	0x1415e45b8	cstring	singing
+classic	journal-performance-title	0x65da30	0x1415e4590	cstring	chanting
+classic	journal-performance-title	0x65da39	0x14165ddd0	cstring	speaking
+classic	journal-performance-title	0x65da42	0x1415e8f10	cstring	performance
+classic	journal-performance-title	0x65da5f	0x1415e64d0	cstring	 of 
+classic	journal-performance-title	0x65da68	0x14165e71c	cstring	the
+classic	journal-performance-title	0x65da6f	0x1416450c0	cstring	The
+classic	journal-performance-title	0x65da8e	0x14165e6c0	cstring	 performance of 
+classic	journal-performance-title	0x65dc4e	0x1415e8f54	cstring	dance
+classic	journal-performance-title	0x65dd16	0x1415e9910	cstring	your
+classic	journal-performance-title	0x65dd1d	0x1415e4218	cstring	Your
+classic	journal-performance-title	0x65dd3e	0x1415e3720	cstring	 
+classic	journal-performance-title	0x65dd57	0x14165e6d8	cstring	dancing
+classic	journal-performance-title	0x65dfd2	0x14165e6f0	cstring	playing
+classic	journal-performance-title	0x65dfe7	0x1415e45b8	cstring	singing
+classic	journal-performance-title	0x65e001	0x1415e4590	cstring	chanting
+classic	journal-performance-title	0x65e00a	0x14165ddd0	cstring	speaking
+classic	journal-performance-title	0x65e013	0x1415e8f10	cstring	performance
+classic	journal-performance-title	0x65e030	0x1415e64d0	cstring	 of 
+classic	journal-performance-title	0x65e039	0x14165e71c	cstring	the
+classic	journal-performance-title	0x65e040	0x1416450c0	cstring	The
+classic	journal-performance-title	0x65e05f	0x14165e6c0	cstring	 performance of 
+classic	journal-performance-title	0x65e145	0x1415fd12c	cstring	 at 
+classic	journal-unnamed-caste	0xb9201b	0x14165dd38	cstring	creature
+classic	journal-unnamed-caste	0xb9203a	0x1415e4220	cstring	s
+classic	journal-region-name	0xb91aca	0x1416da4a0	cstring	[LPAGE:SR:
+classic	journal-region-name	0xb91aea	0x1415f8664	cstring	]
+classic	journal-region-name	0xb91b53	0x1415f8b50	cstring	[/LPAGE]
+classic	journal-region-name	0xb91bab	0x1416daec8	cstring	an unknown region
+classic	journal-underground-region-name	0xb919c2	0x1416da510	cstring	[LPAGE:FL:
+classic	journal-underground-region-name	0xb919e5	0x1415f8664	cstring	]
+classic	journal-underground-region-name	0xb91a11	0x1416da480	cstring	the Underworld
+classic	journal-underground-region-name	0xb91a20	0x1416da490	cstring	the magma sea
+classic	journal-underground-region-name	0xb91a2f	0x1416da4f8	cstring	the depths of the world
+classic	journal-underground-region-name	0xb91a48	0x1415f8b50	cstring	[/LPAGE]
+classic	journal-underground-region-name	0xb91a57	0x1416da4b0	cstring	an unknown underground region
+classic	journal-entity-name	0xb8f9aa	0x1416592f8	cstring	[LPAGE:ENT:
+classic	journal-entity-name	0xb8f9ca	0x1415f8664	cstring	]
+classic	journal-entity-name	0xb8fa34	0x1415f8b50	cstring	[/LPAGE]
+classic	journal-entity-name	0xb8fa8c	0x1416da720	cstring	an unknown civilization
+classic	journal-site-name	0xb909ba	0x1416da6f8	cstring	[LPAGE:SITE:
+classic	journal-site-name	0xb909dd	0x1415f8664	cstring	]
+classic	journal-site-name	0xb90a46	0x1415f8b50	cstring	[/LPAGE]
+classic	journal-site-name	0xb90a9e	0x1416da6e8	cstring	an unknown site
+classic	journal-building-name	0xb91138	0x1416da548	cstring	[LPAGE:AB:
+classic	journal-building-name	0xb9115b	0x141613404	cstring	:
+classic	journal-building-name	0xb9117b	0x1415f8664	cstring	]
+classic	journal-building-name	0xb9120e	0x1415f8b50	cstring	[/LPAGE]
+classic	journal-building-name	0xb91295	0x14165e8a8	cstring	a counting house
+classic	journal-building-name	0xb912a7	0x14165e878	cstring	a hospital
+classic	journal-building-name	0xb912b9	0x141623cc0	cstring	a guildhall
+classic	journal-building-name	0xb912cb	0x14165e888	cstring	a mead hall
+classic	journal-building-name	0xb912dd	0x14165e860	cstring	a keep
+classic	journal-building-name	0xb912ef	0x141623c98	cstring	a temple
+classic	journal-building-name	0xb91301	0x14165e868	cstring	a library
+classic	journal-building-name	0xb91313	0x14165e848	cstring	a tavern
+classic	journal-building-name	0xb91325	0x14166dc18	cstring	a dark tower
+classic	journal-building-name	0xb91331	0x14165e808	cstring	an underworld spire
+classic	journal-building-name	0xb91340	0x14165e830	cstring	a market
+classic	journal-building-name	0xb9134f	0x14165e83c	cstring	a tomb
+classic	journal-building-name	0xb91373	0x14165e7f8	cstring	the catacombs
+classic	journal-building-name	0xb91382	0x14165e7e8	cstring	the sewers
+classic	journal-building-name	0xb91391	0x14165e820	cstring	a dungeon
+classic	journal-building-name	0xb913a0	0x14165e858	cstring	a tower
+classic	journal-building-name	0xb913a9	0x1416da558	cstring	an unknown building
+classic	journal-building-name	0xb913c8	0x1415f8b50	cstring	[/LPAGE]
+classic	journal-building-name	0xb913d7	0x1416da558	cstring	an unknown building
+classic	journal-artifact-name	0xb914ff	0x1415f8a20	cstring	[LPAGE:ARTIFACT:
+classic	journal-artifact-name	0xb9150e	0x1416da4e8	cstring	[LPAGE:BOOK:
+classic	journal-artifact-name	0xb91533	0x1415f8664	cstring	]
+classic	journal-artifact-name	0xb915f0	0x64656c7469746e55	inline	Untitled
+classic	journal-artifact-name	0xb9164b	0x64656c7469746e55	inline	Untitled
+classic	journal-artifact-name	0xb916c6	0x1415f8b50	cstring	[/LPAGE]
+classic	journal-artifact-name	0xb9171e	0x1416da4d0	cstring	an unknown artifact
+classic	journal-religious-office-suffix	0x9bb86a	0x1415e64d0	cstring	 of 
+classic	journal-paragraph-vector-wrap	0x8e4dd7	0x1415e3720	cstring	 
+classic	journal-calendar-month	0x770dd8	0x14169fa78	cstring	Granite
+classic	journal-calendar-month	0x770ded	0x14169fa80	cstring	Slate
+classic	journal-calendar-month	0x770e02	0x14169fa88	cstring	Felsite
+classic	journal-calendar-month	0x770e11	0x14169fa90	cstring	Hematite
+classic	journal-calendar-month	0x770e2c	0x14169faa0	cstring	Malachite
+classic	journal-calendar-month	0x770e41	0x14169f898	cstring	Galena
+classic	journal-calendar-month	0x770e56	0x14169f8a0	cstring	Limestone
+classic	journal-calendar-month	0x770e6b	0x14169f8b0	cstring	Sandstone
+classic	journal-calendar-month	0x770e80	0x14169f8bc	cstring	Timber
+classic	journal-calendar-month	0x770e95	0x14169f8c8	cstring	Moonstone
+classic	journal-calendar-month	0x770eaa	0x14169f8d4	cstring	Opal
+classic	journal-calendar-month	0x770eb9	0x141600b40	cstring	Obsidian

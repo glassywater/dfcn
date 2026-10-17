@@ -1,0 +1,214 @@
+Adventure journal / Events, native Windows Steam + Classic 53.16
+
+Source images are data/runtime/native-pe-images.json reference and classic.
+Steam: PE:6a70a6d9:02711000
+  SHA256 205770918fd54c96cbbcf89223ebd449e2e113c7c873ed81177c4511a3450db7
+Classic: PE:6a70b91c:0270a000
+  SHA256 f35bbaf37aa96f93f95f8a35a9341e6649da46bc29a8650316bfdc2dfc57f3e4
+
+These are source reconstructions from the configured original PE images, not
+runtime observations or translator simulations. pe-*-ghidra-decompiled.c and
+individual pe-*-journal-*.c files are actual Ghidra 12.1.4 decompiler output.
+The existing DecompileJournalAgreementsPE.java generic PE-manifest interface
+was reused; its assigned agreement_ symbol prefix is a tool label, not a claim
+that Events uses the Agreements title constructors. No inferred C replaces
+the decompiler output. Inferred field names below are paired with actual RVAs.
+
+pe-functions.tsv retains the original unwind extent, executable-code extent,
+image identity, image path and digest. pe-ghidra-functions.tsv feeds exact
+executable extents to Ghidra. MSVC's trailing embedded switch/remap bytes are
+retained as pe-switches.tsv, not decoded as instructions. The ASM, branches,
+conditions, calls and literal operands retain aliases, omitted-field exits,
+packed stores and native fallbacks. There are 18 owners/leaves per edition:
+renderer; card construction; incident/history titles; hearing/mission;
+incident index; performance; calendar; caste/entity/site/building/region/
+underground/artifact/religious-office suppliers; both native wrap functions.
+
+Native producer correspondence (RVA, Steam / Classic)
+  c2110 / c20a0  complete journal renderer
+  d4f50 / d4ee0  event card construction and event occurrence date
+  d53a0 / d5330  incident title
+  d7080 / d7010  historical title
+  d8440 / d83d0  hearing, common knowledge and mission paragraphs
+  d9880 / d9810  incident index/search terms (not whole display titles)
+  65f420 / 65ce40  performance title
+  773390 / 770db0  calendar month leaf
+  8e7310 / 8e4b80  single-string wrapper into vector wrapper
+  8e7440 / 8e4cb0  complete paragraph vector -> native wrapped row vector
+
+Complete title selector families
+  Incident: 11 values, 0..10, dispatch d53f4 / d5384.
+    0 death; 1 crime; 2 attack; 3 escalated attack; 4 reunion;
+    5 demand of submission; 6 performance; 7 artifact action;
+    8 written-work action; 9 self-identification; 10 refusal to identify.
+    Unsupported values exit without a title. Participant ownership uses the
+    native adventurer ID. Names and RAW caste words remain dynamic fields.
+  Crime: 19 values, 0..18, dispatch d62c6 / d6256.
+    production order violation; export prohibition violation; job order
+    violation; conspiracy to slow labor; crime of murder; disorderly conduct;
+    building destruction; vandalism; crime of theft; crime of robbery;
+    crime of blood-drinking; embezzlement; crime of attempted murder;
+    crime of kidnapping; crime of attempted kidnapping; crime of attempted
+    theft; crime of treason; crime of espionage; bribery.
+    Absent/unsupported crime retains the ownership prefix alone.
+  Artifact: 6 actions, 0..5, dispatch d5859 / d57e9.
+    possession of; placement of; gaining of; giving of OBJECT to RECIPIENT;
+    refusal to give OBJECT to RECIPIENT; The destruction ofOBJECT.
+    The native incident destruction string has no space after "of".
+    Actions 0..4 keep location precedence: building-in-site / site, otherwise
+    surface region, otherwise underground region. Empty formatted fields do
+    not remove their independently appended possessives/connectives.
+  Written work: 2 actions, 0/1: placement / giving; reuse recipient/location
+    handling. Missing work record gives "an untitled work"; an existing work
+    with an empty title can still contribute no bytes.
+  Historical: 34 values, 0..33, dispatch d70d1 / d7061.
+    0 march toward; 1 abduction; 2 incident-index initialization;
+    3 occupation; 4 person presence; 5 entity presence; 6 harassment;
+    7 flight; 8 abandonment; 9 reclamation; 10 foundation;
+    11 march to reclaim; 12 march to found a site; 13 withdrawal;
+    14 insurrection; 15 overthrow / failed insurrection / insurrection crushed;
+    16 ascension to office; 17 claim; 18/19 accept/refuse offer of tribute;
+    20/21 accept/refuse demand for tribute; 22/23 accept/refuse offer of peace;
+    24 cessation of tribute; 25 presence in site and optional building;
+    26/27 presence in site; 28 possession; 29 absence from site and optional
+    building; 30/31 absence from site; 32 lack of possession; 33 destruction.
+    Ghidra's inner default label for presence is the 26/27 alias, not support
+    for arbitrary enum values: the original unsigned <=33 guard comes first.
+    Outcome 0/1/2 branches retain independently optional entity/site IDs;
+    unsupported outcome retains "The ". Office suffix distinguishes entity
+    office and religious site. Fixed connectives can survive empty names.
+  Performance: 8 values, 0..7, dispatch 65f4cb / 65ceeb.
+    story/history; poem/poetic form/written work; music/form/composition;
+    dance/form/work; sermon on person; sermon on sphere; sermon on value;
+    sermon on worthlessness of value. Values 6/7 share a block and differ by
+    signed value strength. The subordinate value switch has 33 values 0..32.
+    Musical roles select playing/singing/chanting/speaking/performance; dance
+    role 3 selects dancing. Native venue handling is independent of core
+    topic validity, so a venue-only title is reachable. Existing memory-story,
+    memory-poem, memory-performance-work and memory-sermon-topic grammars own
+    the nested topic fields. Native names remain complete dynamic fields.
+
+Paragraph families
+  One occurrence-date production:
+    This event occurred on the DAY+ORDINAL MONTH in the year SIGNED_YEAR.
+  Six hearing productions (3 lead-ins x optional informant):
+    You heard this on the DATE[ from INFORMANT].
+    You last heard this on the DATE[ from INFORMANT].
+    You first heard this on the DATE[ from INFORMANT].
+  Five fixed paragraphs:
+    This is common knowledge where you are from.
+    You have been ordered to slay this creature.
+    You have been ordered to drive these forces out.
+    You have been ordered to clear the forces from this site.
+    You have been ordered to cause trouble for these forces.
+  Three location-state captions:
+    Centered on first heard; Centered on last heard; Centered on location.
+  Calendar: 12 month values 0..11 and four native ordinal endings st/nd/rd/th.
+    Granite, Slate, Felsite, Hematite, Malachite, Galena, Limestone, Sandstone,
+    Timber, Moonstone, Opal, Obsidian. Year values are signed decimal.
+    An additional native default path (773393 unsigned cmp ecx,11; ja
+    7734ae ret; Classic 770db3/770ece) appends NO month bytes. Occurrence
+    always constructs its date; hearing only checks report/first/last IDs,
+    not the validity/range of tick or year. Month is (tick/1200)/28 without
+    modulo 12, and day is (tick/1200)%28 + 1. Thus tick 403200 reaches month
+    12 and can visibly produce "This event occurred on the 1st  in the year
+    250." or "You heard this on the 1st  in the year 250." with the same
+    optional last/first and informant branches. The missing month leaves
+    the two independently appended spaces. Negative tick division is signed
+    and can also yield day zero/negative values; the out-of-range ordinal
+    selector takes "th". These default/empty-date shapes have no extra text.
+
+Hearing predicates in the original PE
+  card+18 points to the native report. Compare report integers +2c/+30/+34/
+  +38 with +48/+4c/+50/+54 to derive whether first and last records coincide.
+  If report+2c != -1, emit the current/last paragraph: choose "You last" if
+  the records differ and report+48 != -1, or if report flags at +28 have bit1;
+  otherwise choose "You". Date uses year +30 and tick +34.
+  If the records differ and report+48 != -1, emit "You first heard this" with
+  year +4c and tick +50. Informant resolution is independently conditional;
+  " from " is appended only after successful resolution to a nonempty name.
+  The common-knowledge path also uses mask 2 at report+28 (bit1); report bit0
+  supplies the separate card pin/display marker. All four mission paths remain
+  distinct.
+  Absent report/card payload branches append nothing; no text is fabricated.
+
+Retained source, native blank separators and the cropped-card problem
+  Event summary/card fields, byte offsets:
+    +00 kind (0 incident, 1 historical)
+    +68 complete title std::string (preserved)
+    +a0 display fallback title std::string, shortened to 50 bytes
+    +c0/+c8/+d0 vector<std::string*> of ALL native 50-column title rows
+    +d8/+e0/+e8 vector<std::string*> of ALL native 58-column paragraph rows
+  Occurrence text is wrapped at d5229 / d51b9. Current/last hearing text is
+  wrapped at d90be / d904e; first hearing text at d9629 / d95b9. These calls
+  receive the complete local paragraph as temporary source vector[0], append
+  all rows to card+d8, then destroy the temporary. There is no persistent
+  complete-body std::string field on the card.
+  d8440 inserts a real zero-length string into card+d8 before each separate
+  mission, hearing and common-knowledge paragraph. These native empty rows
+  distinguish paragraph boundaries. They must not be merged across.
+  The vector wrapper 8e7440 scans back to the word-break space, shrinks its
+  outgoing row to INCLUDE that space, and skips only subsequent leading
+  spaces. Concatenate retained row bytes within one native paragraph; do not
+  insert a new space between rows or strip their original break spaces.
+  This also preserves forced splits inside very long tokens.
+
+  The normal compact renderer fixes card body height at 3 (c3077 / c3007).
+  Expanded selected height derives from screen rows - upper margin - 6;
+  unselected cards in that mode are skipped. Selected paragraph scrolling
+  reads journal+25c. Other compact cards start at paragraph row 0.
+  One/two title rows and single-line paragraph cases set the body starting
+  row independently. The loop c3320..c3362 checks both the retained vector
+  length and drawable bottom; when row > bottom it never calls addst for
+  the hidden row. Thus the initial English row may lack the informant/end of
+  date even though that text still exists in card+d8. A draw-only frame
+  collector cannot reconstruct it by waiting for invisible addst calls.
+  The comparison is strictly greater (c3325 cmp / c3328 jg): row == bottom
+  is a real text row, even when that row carries the skin's lower border.
+  A two-line title moves the first hearing row onto that inclusive edge.
+  Stopping a consumer at y < border_bottom loses that entire hearing row;
+  preserve the native inclusive text viewport rather than the skin interior.
+
+  Display addst return sites are pe-display-fields.tsv:
+    c3197 first title row; c31d9 next/full title; c3263 card counter;
+    c335b native paragraph row; c34ff/c356d/c35d8 centered-state captions.
+    Classic equivalents are c3127/c3169/c31f3/c32eb/c348f/c34fd/c3568.
+  The actual card builder call c3072->d4f50 (Classic c3002->d4ee0) executes
+  for each displayed card, including cards whose cached rows cause an early
+  constructor return. src/native_journal_event_hooks.inc calls that original
+  constructor first, retains complete +68 and ALL +c0 rows, and segments +d8
+  using its real empty separators. Each retained source carries the vector
+  owner, first row index, row text and native row-string addresses. Existing
+  captures are reused only when these still agree. The display association
+  uses native row addresses, so a visible first row can recover the complete
+  already-retained paragraph even if its continuation is clipped by DF.
+
+Dynamic suppliers and omitted values
+  Missing entity/site/surface/underground/artifact records have explicit
+  "an unknown civilization/site/region/underground region/artifact" fallbacks.
+  Invalid race gives "creature" (and optional plural s). Existing language
+  names and RAW words can be empty; appended connecting words remain native.
+  Artifact unnamed-writing fallback is "Untitled"; other unnamed artifacts
+  use the original complete item caption. Religious-office lookup appends
+  " of " and the site's actual name only on the actual native success path.
+  Underground unnamed type 0/1/2 supplies "the depths of the world", "the
+  magma sea", or "the Underworld"; an unsupported existing type or the
+  existing named-flag path can append no bytes. The outer title still keeps
+  any already-appended " in ".
+  Building formatter has 14 native type selectors, subtype 0/1/2 for dungeon/
+  sewers/catacombs, an optional complete proper name and unknown-building
+  fallback. Its fixed captions include counting house, hospital, guildhall,
+  mead hall, keep, temple, library, tavern, dark tower, underworld spire,
+  market, tomb, dungeon, sewers, catacombs and tower. Existing quest-building
+  and journal-event-place/legends vocabulary own these dynamic fields.
+  No text-constructor differences were found between these PE editions and
+  the existing ELF title-family reconstruction. The PE source independently
+  demonstrates why omitted existing names retain connectives and why the
+  pre-existing six hearing templates need whole-paragraph recovery.
+
+Reproduction uses the fixed Python to run tools/extract_adventure_journal_events_pe.py,
+then Ghidra's analyzeHeadless.bat with -noanalysis -scriptPath tools
+-postScript DecompileJournalAgreementsPE.java SOURCE_DIRECTORY EDITION.
+EDITION is steam or classic and the imported file is that configured PE image.
+Only the offline source manifests and decompiled source are written here.
+This extraction does not claim that the final in-game appearance was observed.
