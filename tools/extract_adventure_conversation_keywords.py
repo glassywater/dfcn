@@ -339,12 +339,52 @@ def supplier_flow(image, edition, role, instructions):
     return rows, guards
 
 
+def renderer_switches(image, edition, instructions):
+    """Keep renderer state, rumor and emotion selectors as native tables."""
+    addresses = {address for address, _ in instructions}
+    rows, guards = [], []
+    for index, (address, text) in enumerate(instructions):
+        if not re.match(r"jmp\s+r\w+$", text):
+            continue
+        before = instructions[max(0, index-30):index]
+        table = next((re.search(r"DWORD PTR \[\w+\+\w+\*4\+0x([0-9a-f]+)\]", part)
+                      for _, part in reversed(before)
+                      if re.search(r"DWORD PTR \[\w+\+\w+\*4\+0x([0-9a-f]+)\]", part)), None)
+        guard = next(((at, part, match) for at, part in reversed(before)
+                      if (match := re.match(r"cmp\s+\w+,0x([0-9a-f]+)$", part))
+                      and int(match[1],16) < 1024), None)
+        if table is None or guard is None:
+            continue
+        guard_pc, guard_text, maximum_match = guard
+        table_rva, maximum = int(table[1],16), int(maximum_match[1],16)
+        remap = next((re.search(r"BYTE PTR \[\w+\+\w+\*1\+0x([0-9a-f]+)\]", part)
+                      for at, part in reversed(before)
+                      if at > guard_pc and part.startswith("movzx")
+                      and re.search(r"BYTE PTR \[\w+\+\w+\*1\+0x([0-9a-f]+)\]", part)), None)
+        remap_rva = int(remap[1],16) if remap else None
+        native_slots = list(range(maximum+1)) if remap_rva is None else list(
+            image.raw[image.offset(image.base+remap_rva):image.offset(image.base+remap_rva)+maximum+1])
+        targets = struct.unpack_from(f"<{max(native_slots)+1}I", image.raw, image.offset(image.base+table_rva))
+        if any(image.base+targets[slot] not in addresses for slot in native_slots):
+            raise ValueError(f"{edition}: renderer table {table_rva:#x} leaves its original instruction body")
+        branch_pc, branch_text = next((at, part) for at, part in before
+                                     if at > guard_pc and re.match(r"j\w+\s+0x[0-9a-f]+$",part))
+        outside = int(re.search(r"0x([0-9a-f]+)$",branch_text)[1],16)
+        guards.append((edition,hex(address-image.base),hex(table_rva),maximum,
+                       hex(guard_pc-image.base),guard_text,hex(branch_pc-image.base),branch_text,hex(outside-image.base)))
+        for selector, slot in enumerate(native_slots):
+            rows.append((edition,hex(instructions[0][0]-image.base),hex(address-image.base),hex(table_rva),
+                         hex(remap_rva) if remap_rva is not None else "",selector,slot,hex(targets[slot])))
+    return rows, guards
+
+
 def main():
     DEST.mkdir(parents=True, exist_ok=True)
     config = json.loads((ROOT / "data/runtime/native-pe-images.json").read_text(encoding="utf-8"))
     literal_rows, call_rows, function_rows, token_rows, fold_rows = [], [], [], [], []
     selectors, switches, conditions, blocks, guards = [], [], [], [], []
     supplier_selectors, supplier_guards = [], []
+    renderer_selectors, renderer_guards = [], []
     for edition, key in (("steam", "reference"), ("classic", "classic")):
         image = CaptionImage(Path(config[key]), OBJDUMP)
         roots = {}
@@ -390,6 +430,11 @@ def main():
                 roots[owner] = "native-name-keyword-tokenizer"
         roots[image.base+append_rva] = "unique-keyword-append"
         roots[image.base+fold_rva] = "search-fold"
+        # entity_event::getType() is a leaf getter without its own unwind
+        # record. The caller reads choice+8 and uses this exact field before
+        # selecting the artifact-location union member.
+        rumor_type_rva = 0xbbb20 if edition == "steam" else 0xbbab0
+        roots[image.base+rumor_type_rva] = "rumor-type-getter"
         # Preserve neighboring lifecycle bodies separately from the actual
         # query ranking body. No caption-token append is inferred from them.
         for start in image.functions:
@@ -398,6 +443,8 @@ def main():
         asm = []
         for start, role in sorted(roots.items()):
             end = image.functions.get(start)
+            if role == "rumor-type-getter":
+                end = start+4
             if end is None:
                 starts = sorted(image.functions)
                 end = min(start+0x200, starts[bisect.bisect_right(starts, start)])
@@ -424,6 +471,10 @@ def main():
                 native_selectors, native_guards = supplier_flow(image, edition, role, instructions)
                 supplier_selectors.extend(native_selectors)
                 supplier_guards.extend(native_guards)
+            elif role == "keyword-renderer":
+                native_selectors, native_guards = renderer_switches(image,edition,instructions)
+                renderer_selectors.extend(native_selectors)
+                renderer_guards.extend(native_guards)
             for address, instruction in instructions:
                 note = ""
                 ref = re.search(r"# (?:0x)?([0-9a-f]+)", instruction)
@@ -467,6 +518,8 @@ def main():
     write_tsv("main-basic-blocks.tsv", ("edition","function_rva","block_rva","end_rva","outgoing_rvas","source_operands","native_calls"),blocks)
     write_tsv("supplier-selector-branches.tsv", ("edition","role","function_rva","instruction_rva","table_rva","selector_table_rva","selector","native_slot","branch_rva","reachable_instruction_rvas","source_operands","native_calls"),supplier_selectors)
     write_tsv("supplier-switch-guards.tsv", ("edition","role","function_rva","instruction_rva","table_rva","maximum_selector","guard_compare_rva","guard_compare","guard_branch_rva","guard_branch","outside_table_branch_rva"),supplier_guards)
+    write_tsv("renderer-switches.tsv", ("edition","function_rva","instruction_rva","table_rva","selector_table_rva","selector","native_slot","branch_rva"),renderer_selectors)
+    write_tsv("renderer-switch-guards.tsv", ("edition","instruction_rva","table_rva","maximum_selector","guard_compare_rva","guard_compare","guard_branch_rva","guard_branch","outside_table_branch_rva"),renderer_guards)
 
 
 if __name__ == "__main__":

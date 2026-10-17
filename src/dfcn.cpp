@@ -3743,7 +3743,8 @@ public:
         std::string_view source, std::string_view native_word, int32_t part,
         std::string_view query) const;
     void capture_conversation_choices(
-        const std::vector<std::pair<std::string, std::string>> &choices);
+        const std::vector<std::pair<std::string, std::string>> &choices,
+        const std::vector<std::pair<std::string, std::string>> &artifact_names = {});
     void clear_conversation_choices() { capture_conversation_choices({}); }
     int native_knowledge_required_rows(const std::string &source, int width,
         bool personality = false, bool health = false, bool thoughts = false) const;
@@ -3794,6 +3795,7 @@ private:
     mutable std::mutex conversation_choices_mutex_;
     using ConversationChoices = std::vector<std::pair<std::string, std::string>>;
     std::shared_ptr<const ConversationChoices> conversation_choices_;
+    std::shared_ptr<const ConversationChoices> conversation_artifact_names_;
     ConversationChoices conversation_choice_content_;
     struct ConversationKeywordTranslation {
         std::optional<std::string> target;
@@ -5961,11 +5963,22 @@ bool Overlay::translated_stocks_search_matches(std::string_view source,
 }
 
 void Overlay::capture_conversation_choices(
-        const std::vector<std::pair<std::string, std::string>> &choices) {
+        const std::vector<std::pair<std::string, std::string>> &choices,
+        const std::vector<std::pair<std::string, std::string>> &artifact_names) {
     TranslationStateScope translation_scope;
     std::lock_guard<std::mutex> lock(conversation_choices_mutex_);
-    if ((!conversation_choices_ && choices.empty()) ||
-            (conversation_choices_ && *conversation_choices_ == choices)) return;
+    ConversationChoices names = artifact_names;
+    std::sort(names.begin(), names.end());
+    names.erase(std::unique(names.begin(), names.end()), names.end());
+    const bool same_names = conversation_artifact_names_
+        ? *conversation_artifact_names_ == names : names.empty();
+    if (same_names && ((!conversation_choices_ && choices.empty()) ||
+            (conversation_choices_ && *conversation_choices_ == choices))) return;
+    if (!same_names) {
+        conversation_artifact_names_ = names.empty() ? nullptr :
+            std::make_shared<const ConversationChoices>(std::move(names));
+        conversation_keyword_cache_.clear();
+    }
     // Searching only changes native order. The same complete records provide
     // the same name evidence, so keep their expensive translations cached.
     // Compare actual content rather than a hash; ambiguous duplicate keyword

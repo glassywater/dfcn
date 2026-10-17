@@ -57,6 +57,10 @@
 0x000bb85e: mov    eax,ebx
 0x000bb860: jmp    0x1400bb83f
 
+# classic PE:6a70b91c:0270a000; rumor-type-getter; RVA 0xbbab0..0xbbab4
+0x000bbab0: mov    eax,DWORD PTR [rcx+0x24]
+0x000bbab3: ret
+
 # classic PE:6a70b91c:0270a000; search-fold; RVA 0x52a900..0x52aa53
 0x0052a900: xor    r10d,r10d
 0x0052a903: cmp    QWORD PTR [rcx+0x10],r10

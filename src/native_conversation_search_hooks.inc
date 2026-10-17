@@ -105,6 +105,47 @@ static bool join_native_conversation_strings(const unsigned char *entry,
 }
 
 #ifdef _WIN32
+static std::optional<std::string> capture_native_conversation_artifact_name(
+        const unsigned char *entry) {
+    // SPREAD_RUMOR: both PE dispatchers use choice+8 as entity_event*.
+    // Its type getter (reference bbb20) reads +24; rumor 25..33 all
+    // carry their artifact ID at +0. Missing destination objects can leave
+    // only keywords, so preserve the original name before unique-word loss.
+    uintptr_t choice = 0, rumor = 0;
+    int32_t type = -1, rumor_type = -1, artifact_id = -1;
+    if (!native_history_copy(reinterpret_cast<uintptr_t>(entry), choice) ||
+            !choice || choice > UINTPTR_MAX - 0x10 ||
+            !native_history_copy(choice, type) || type != 13 ||
+            !native_history_copy(choice + 8, rumor) ||
+            !rumor || rumor > UINTPTR_MAX - 0x28 ||
+            !native_history_copy(rumor + 0x24, rumor_type) ||
+            rumor_type < 25 || rumor_type > 33 ||
+            !native_history_copy(rumor, artifact_id) || artifact_id < 0) return std::nullopt;
+    const uintptr_t base = native_history_profile_base();
+    const uintptr_t artifact = native_history_find_subject(
+        base, NativeHistoryObjectKind::Artifact, artifact_id);
+    NativeHistoryName snapshot;
+    if (!artifact || artifact > UINTPTR_MAX - 8 ||
+            !capture_native_history_name(base, artifact + 8, snapshot) ||
+            !snapshot.has_name) return std::nullopt;
+    std::string original;
+    if (!capture_native_history_original_name(base, artifact + 8, original)) return std::nullopt;
+    const auto formatter = native_history_page_address(NativeHistoryPageSymbol::Name);
+    if (!formatter) return std::nullopt;
+    NativeInputCallbackScope callback;
+    NativeHistoryPageString english;
+    callback.call_native([&] {
+        reinterpret_cast<void (*)(const void *, NativeString *, bool, bool)>(formatter)(
+            reinterpret_cast<const void *>(artifact + 8), &english.value, false, false);
+    });
+    std::string_view translated_name;
+    if (!native_string_view(&english.value, &translated_name, 65536) ||
+            translated_name.empty()) return std::nullopt;
+    // Match the tokenizer's original-language then English order exactly.
+    if (original.empty() || original == translated_name) return std::string(translated_name);
+    return original + ", \"" + std::string(translated_name) + "\"";
+}
+
 static bool capture_native_existing_conversation_collection(
         const unsigned char *entry, std::string_view caption) {
     // Both configured PE constructors store talk_choice* at outer entry+0.
@@ -140,6 +181,7 @@ static bool capture_native_conversation_choices(void *raw_entries, size_t count)
     const auto &layout = g_native_conversation_search_layout;
     const auto *entries = static_cast<unsigned char *const *>(raw_entries);
     std::vector<std::pair<std::string, std::string>> choices;
+    std::vector<std::pair<std::string, std::string>> artifact_names;
     choices.reserve(count);
     size_t total_bytes = 0;
     bool collection_changed = false;
@@ -153,13 +195,15 @@ static bool capture_native_conversation_choices(void *raw_entries, size_t count)
         if (total_bytes > (1u << 22)) return invalid();
 #ifdef _WIN32
         collection_changed |= capture_native_existing_conversation_collection(entry, caption);
+        if (const auto artifact = capture_native_conversation_artifact_name(entry))
+            artifact_names.emplace_back(keywords, *artifact);
 #endif
         choices.emplace_back(std::move(caption), std::move(keywords));
     }
     // Equal displayed text can acquire a different typed collection binding.
     // Clear the existing semantic cache before recapturing that same content.
     if (collection_changed) g_overlay.clear_conversation_choices();
-    g_overlay.capture_conversation_choices(choices);
+    g_overlay.capture_conversation_choices(choices, artifact_names);
     return true;
 }
 

@@ -73,6 +73,11 @@ std::optional<std::string> Overlay::translate_conversation_choice(
         }
         return std::nullopt;
     }
+    // Every remaining authored talk-choice production has its own typed
+    // participant, office, item, artifact and location fields. Keep conflict
+    // and emotion constructors above on their complete native grammars.
+    if (const auto target = translate_announcement_combat(raw_source, "conversation-choice");
+            complete_native(target)) return target;
     if (const auto target = translate_creature_label(source); complete_native(target)) return target;
     if (const auto target = translate_item_description_term(source); complete_native(target)) return target;
     if (const auto target = translate_legends_event(source); complete_native(target)) return target;
@@ -394,10 +399,12 @@ std::optional<std::string> Overlay::translate_conversation_keywords(
     const std::string cache_key = selected_caption.empty()
         ? source : source + '\n' + selected_caption;
     std::shared_ptr<const ConversationChoices> snapshot;
+    std::shared_ptr<const ConversationChoices> artifact_names;
     std::shared_ptr<const ConversationKeywordLexicon> lexicon;
     {
         std::lock_guard<std::mutex> lock(conversation_choices_mutex_);
         snapshot = conversation_choices_;
+        artifact_names = conversation_artifact_names_;
         lexicon = conversation_keyword_lexicon_;
         if (const auto found = conversation_keyword_cache_.find(cache_key);
                 found != conversation_keyword_cache_.end() &&
@@ -409,7 +416,8 @@ std::optional<std::string> Overlay::translate_conversation_keywords(
         std::lock_guard<std::mutex> lock(conversation_choices_mutex_);
         // No grammar runs under this mutex, and an older menu/dictionary
         // calculation must not fill the replacement snapshot's cache.
-        if (conversation_choices_ != snapshot || conversation_keyword_lexicon_ != lexicon)
+        if (conversation_choices_ != snapshot || conversation_artifact_names_ != artifact_names ||
+                conversation_keyword_lexicon_ != lexicon)
             return target;
         if (conversation_keyword_cache_.size() >= 4096) conversation_keyword_cache_.clear();
         conversation_keyword_cache_.insert_or_assign(cache_key,
@@ -458,6 +466,55 @@ std::optional<std::string> Overlay::translate_conversation_keywords(
     if (const auto target = exact_literal_translation("Conversation keyword: " + source);
             complete_target(target)) return remember(target);
 
+    // SPREAD_RUMOR's artifact branches first append artifact plus their
+    // location/absence/destroyed word and the two native name spellings.
+    // A missing holder/site/region can leave the caption vector empty. Read
+    // that complete
+    // bound artifact identity: the globally deduplicated keyword stream
+    // cannot recover repeated title words or words equal to the fixed heads.
+    // Both PE control flows and formatter calls are retained in the chooser
+    // extraction. No title or participant is inferred from a clipped row.
+    const std::array<std::string_view, 3> artifact_heads{
+        "artifact location", "artifact absence", "artifact destroyed"};
+    const auto artifact_head = std::find_if(artifact_heads.begin(), artifact_heads.end(),
+        [&](std::string_view head) {
+            return source == head || (source.starts_with(head) && source[head.size()] == ' ');
+        });
+    if (artifact_names && artifact_head != artifact_heads.end()) {
+        std::optional<std::string> artifact_target;
+        bool ambiguous = false;
+        for (const auto &[native_keywords, identity] : *artifact_names) {
+            if (lower(normalize_utterance(native_keywords)) != source || identity.empty()) continue;
+            const std::string_view kind = artifact_head->substr(9);
+            std::unordered_set<std::string_view> seen{"artifact", kind};
+            std::string expected(*artifact_head);
+            const std::string folded = ConversationKeywordLexicon::search_spelling(identity);
+            for (size_t at = 0; at < folded.size();) {
+                const size_t space = folded.find(' ', at);
+                const size_t end = space == std::string::npos ? folded.size() : space;
+                const std::string_view word(folded.data() + at, end - at);
+                if (seen.emplace(word).second) {
+                    expected.push_back(' ');
+                    expected += word;
+                }
+                at = end == folded.size() ? end : end + 1;
+            }
+            if (expected != source) continue;
+            const auto name = translate_legends_artifact_identity(identity);
+            if (!complete_name_target(name, identity)) continue;
+            const auto artifact = exact_literal_translation("Conversation keyword: artifact");
+            const auto relation = exact_literal_translation("Conversation keyword: " + std::string(kind));
+            if (!complete_target(artifact) || !complete_target(relation)) continue;
+            const std::string target = *artifact + " " + *relation + " " + *name;
+            if (artifact_target && *artifact_target != target) ambiguous = true;
+            else if (!artifact_target) artifact_target = target;
+        }
+        if (artifact_target) {
+            live_caption = true;
+            return remember(ambiguous ? std::nullopt : std::move(artifact_target));
+        }
+    }
+
     if (!lexicon) {
         auto built = std::make_shared<ConversationKeywordLexicon>();
         constexpr std::string_view prefix = "conversation keyword: ";
@@ -492,7 +549,8 @@ std::optional<std::string> Overlay::translate_conversation_keywords(
             const Rule &rule = rules_[static_cast<size_t>(index)];
             if (rule.template_literals.empty() ||
                 std::none_of(rule.template_kinds.begin(), rule.template_kinds.end(),
-                    [](char kind) { return kind == 'p' || kind == 'e' || kind == 'n'; })) continue;
+                    [](char kind) { return kind == 'p' || kind == 'e' || kind == 'n' ||
+                        kind == 'b' || kind == 'i' || kind == 'r'; })) continue;
             std::string anchor;
             for (const auto &literal : rule.template_literals) {
                 auto compact = ConversationKeywordLexicon::compact_literal(literal);
@@ -735,20 +793,29 @@ std::optional<std::string> Overlay::translate_conversation_keywords(
                 if (!complete_target(slot->second)) return;
             }
             // The complete authored template supplies the name type. Resolve
-            // that exact field once through the existing p/e/n semantics;
+            // that exact field once through the existing typed semantics;
             // never infer an unknown name from the keyword stream itself.
             for (size_t i = 0; i < captures.size(); ++i) {
                 const char kind = rule.template_kinds[i];
-                if (kind != 'p' && kind != 'e' && kind != 'n') continue;
+                if (kind != 'p' && kind != 'e' && kind != 'n' &&
+                        kind != 'b' && kind != 'i' && kind != 'r') continue;
                 const std::string slot_key = std::string(1, kind) + captures[i];
                 auto [slot, inserted] = caption_slots.try_emplace(slot_key);
                 if (inserted) {
                     if (kind == 'p') slot->second = translate_legends_name(captures[i], true);
                     else if (kind == 'e') slot->second = translate_legends_name(captures[i], false);
+                    else if (kind == 'b') {
+                        slot->second = translate_legends_artifact_identity(captures[i]);
+                        if (!slot->second) slot->second = translate_legends_book(captures[i]);
+                    } else if (kind == 'i') slot->second = translate_announcement_items(captures[i]);
+                    else if (kind == 'r') slot->second = translate_deity_spheres(captures[i]);
                     else slot->second = translate_ui_message_capture(captures[i], true);
                 }
                 if (!complete_name_target(slot->second, captures[i])) continue;
                 add_caption_name(captures[i], slot->second, true);
+                // A complete book, item or sphere is one semantic field.
+                // Its component nouns cannot acquire personal-name rules.
+                if (kind == 'b' || kind == 'i' || kind == 'r') continue;
                 // Global native deduplication can remove a repeated given
                 // name from a later field. Its surviving components remain
                 // proven only by this successfully translated whole slot.
