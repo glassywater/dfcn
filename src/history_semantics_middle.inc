@@ -243,6 +243,8 @@ case 88: { // hf_relationship_denied
         std::string key = plural ? "the bodies of {a} were " : "the body of {a} was ";
         std::vector<Pieces> values{*people};
         const int32_t type = number("abuse_type");
+        const bool has_location = number("site") >= 0 || number("region") >= 0 || number("layer") >= 0;
+        const bool located_animation = type == 5 && has_location;
         bool generic = false;
         if (type == 0) {
             const auto spikes = item("item");
@@ -268,20 +270,32 @@ case 88: { // hf_relationship_denied
             else if (type == 4) description = "horribly mutilated";
             else if (type == 5) description = "animated";
             if (!description) return std::nullopt;
-            const auto action = term(description);
-            if (!action) return std::nullopt;
-            key += "{s}";
-            values.push_back(*action);
-            generic = true;
+            if (located_animation) key += description;
+            else {
+                const auto action = term(description);
+                if (!action) return std::nullopt;
+                key += "{s}";
+                values.push_back(*action);
+                generic = true;
+            }
         }
         if (number("histfig") >= 0 || number("civ") >= 0) {
             const auto actor = number("histfig") >= 0 ?
                 subject(NativeHistoryObjectKind::Figure, number("histfig")) :
                 subject(NativeHistoryObjectKind::Entity, number("civ"));
             if (!actor) return std::nullopt;
-            if (generic && !plural) key = "the body of {n} was {s}";
+            if (!plural && (generic || located_animation))
+                key = located_animation ? "the body of {n} was animated" : "the body of {n} was {s}";
             key += " by {a}";
             values.push_back(*actor);
+        }
+        // Keep the revival's location inside its predicate so the template
+        // can place it after the corpse while preserving every native link.
+        if (located_animation) {
+            const auto location = place();
+            if (!location) return std::nullopt;
+            key += " in {p}";
+            values.push_back(*location);
         }
         const auto body = apply(key, values);
         if (!body) return std::nullopt;
@@ -290,7 +304,7 @@ case 88: { // hf_relationship_denied
             const auto civ = subject(NativeHistoryObjectKind::Entity, number("civ"));
             if (!civ || !clause(apply("on behalf of {a}", {*civ}))) return std::nullopt;
         }
-        if (number("site") >= 0 || number("region") >= 0 || number("layer") >= 0) {
+        if (has_location && !located_animation) {
             const auto location = place();
             if (!location || !clause(apply("in {p}", {*location}))) return std::nullopt;
         }

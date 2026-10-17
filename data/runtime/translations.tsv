@@ -26429,6 +26429,7 @@ the appointment of {a} to the position of {s} of {p} in {p}	在{p2}，{a1}被任
 the ascension of {a} to the position of of {p} in the wilds	在荒野中，{a1}晋升至{p1}的职位	htEi
 the audacious creation of the position of {s} in the wilds.	在荒野中，大胆设立{s1}一职。	htEi
 the bestowal of the title of {s} after slaying {d} enemies.	杀死{d1}名敌人后授予{s1}头衔。	htEi
+the bodies of {a} were animated by {a} in {p} in the wilds.	在荒野中，{a1}的尸体在{p1}被{a2}复活了。	ht
 the bodies of {a} were hung from a {s} by {a} in the wilds.	在荒野中，{a2}将{a1}的尸体悬挂在{s1}上。	ht
 the bodies of {a} were hung from a {s} on {i} by {a} at {p}	在{p1}，{a2}用{i1}将{a1}的尸体悬挂在{s1}上	ht
 the bodies of {a} were hung from a {s} on {i} by {a} in {p}	在{p1}，{a2}用{i1}将{a1}的尸体悬挂在{s1}上	ht
@@ -27310,6 +27311,7 @@ the ascension of {a} to the position of {s} of {p} in {p}.	在{p2}，{a1}就任{
 the audacious creation of the position of {s} in the wilds	在荒野中，大胆设立{s1}一职	htEi
 the bestowal of the title of {s} after slaying {d} enemies	杀死{d1}名敌人后授予{s1}头衔	htEi
 the bestowal of the title of {s} given to all new members.	授予{s1}头衔，该头衔授予每一位新成员。	htEi
+the bodies of {a} were animated by {a} in {p} in the wilds	在荒野中，{a1}的尸体在{p1}被{a2}复活了	ht
 the bodies of {a} were hung from a {s} by {a} in the wilds	在荒野中，{a2}将{a1}的尸体悬挂在{s1}上	ht
 the bodies of {a} were hung from a {s} on {i} in the wilds	在荒野中，{a1}的尸体被用{i1}悬挂在{s1}上	ht
 the bodies of {a} were impaled on {i} by {a} in the wilds.	在荒野中，{a2}将{a1}的尸体刺穿在{i1}上。	ht
@@ -28243,6 +28245,8 @@ the audacious creation of the position of {s} during {e}.	在{e1}期间，大胆
 the audacious creation of the position of {s} within {p}.	在{p1}，大胆设立{s1}一职。	htEi
 the bestowal of the title of {s} after serving in combat.	在战斗中效力后授予{s1}头衔。	htEi
 the bestowal of the title of {s} given to all new members	授予{s1}头衔，该头衔授予每一位新成员	htEi
+the bodies of {a} were animated by {a} in {p} during {e}.	在{e1}期间，{a1}的尸体在{p1}被{a2}复活了。	ht
+the bodies of {a} were animated by {a} in {p} within {p}.	在{p2}，{a1}的尸体在{p1}被{a2}复活了。	ht
 the bodies of {a} were hung from a {s} by {a} during {e}.	在{e1}期间，{a2}将{a1}的尸体悬挂在{s1}上。	ht
 the bodies of {a} were hung from a {s} by {a} within {p}.	在{p1}，{a2}将{a1}的尸体悬挂在{s1}上。	ht
 the bodies of {a} were hung from a {s} on {i} during {e}.	在{e1}期间，{a1}的尸体被用{i1}悬挂在{s1}上。	ht
@@ -29301,6 +29305,8 @@ the audacious creation of the position of {s} during {e}	在{e1}期间，大胆�
 the audacious creation of the position of {s} within {p}	在{p1}，大胆设立{s1}一职	htEi
 the bestowal of the title of {s} after serving in combat	在战斗中效力后授予{s1}头衔	htEi
 the bestowal of the title of {s} after slaying an enemy.	杀死一名敌人后授予{s1}头衔。	htEi
+the bodies of {a} were animated by {a} in {p} during {e}	在{e1}期间，{a1}的尸体在{p1}被{a2}复活了	ht
+the bodies of {a} were animated by {a} in {p} within {p}	在{p2}，{a1}的尸体在{p1}被{a2}复活了	ht
 the bodies of {a} were hung from a {s} by {a} during {e}	在{e1}期间，{a2}将{a1}的尸体悬挂在{s1}上	ht
 the bodies of {a} were hung from a {s} by {a} within {p}	在{p1}，{a2}将{a1}的尸体悬挂在{s1}上	ht
 the bodies of {a} were hung from a {s} on {i} during {e}	在{e1}期间，{a1}的尸体被用{i1}悬挂在{s1}上	ht
@@ -29311,6 +29317,7 @@ the body of {a} was hung from a {s} by {a} in the wilds.	在荒野中，{a2}将{
 the body of {a} was hung from a {s} on {i} by {a} at {p}	在{p1}，{a2}用{i1}将{a1}的尸体悬挂在{s1}上	ht
 the body of {a} was hung from a {s} on {i} by {a} in {p}	在{p1}，{a2}用{i1}将{a1}的尸体悬挂在{s1}上	ht
 the body of {a} was hung from a {s} on {i} in the wilds.	在荒野中，{a1}的尸体被用{i1}悬挂在{s1}上。	ht
+the body of {n} was animated by {a} in {p} in the wilds.	在荒野中，{n1}的尸体在{p1}被{a1}复活了。	ht
 the claim of {a} to the position of of {p} in the wilds.	在荒野中，{a1}宣称担任{p1}的职位。	htEi
 the collaborative creation of the position of {s} at {p}	在{p1}，共同设立{s1}一职	htEi
 the collaborative creation of the position of {s} in {d}	{d1}年的共同设立{s1}一职	htEi
@@ -30308,6 +30315,7 @@ the bodies of {a} were impaled on {i} by {a} within {p}	在{p1}，{a2}将{a1}的
 the body of {a} was hung from a {s} by {a} in the wilds	在荒野中，{a2}将{a1}的尸体悬挂在{s1}上	ht
 the body of {a} was hung from a {s} on {i} in the wilds	在荒野中，{a1}的尸体被用{i1}悬挂在{s1}上	ht
 the body of {a} was impaled on {i} by {a} in the wilds.	在荒野中，{a2}将{a1}的尸体刺穿在{i1}上。	ht
+the body of {n} was animated by {a} in {p} in the wilds	在荒野中，{n1}的尸体在{p1}被{a1}复活了	ht
 the claim of {a} to the position of of {p} in the wilds	在荒野中，{a1}宣称担任{p1}的职位	htEi
 the corruption conspiracy concocted by {a} in the wilds	在荒野中，{a1}策划的腐败阴谋	htEi
 the crushing of the insurrection against {p} during {e}	在{e1}期间，镇压反抗{p1}的起义	htEi
@@ -31386,6 +31394,8 @@ the body of {a} was hung from a {s} by {a} within {p}.	在{p1}，{a2}将{a1}的�
 the body of {a} was hung from a {s} on {i} during {e}.	在{e1}期间，{a1}的尸体被用{i1}悬挂在{s1}上。	ht
 the body of {a} was hung from a {s} on {i} within {p}.	在{p1}，{a1}的尸体被用{i1}悬挂在{s1}上。	ht
 the body of {a} was impaled on {i} by {a} in the wilds	在荒野中，{a2}将{a1}的尸体刺穿在{i1}上	ht
+the body of {n} was animated by {a} in {p} during {e}.	在{e1}期间，{n1}的尸体在{p1}被{a1}复活了。	ht
+the body of {n} was animated by {a} in {p} within {p}.	在{p2}，{n1}的尸体在{p1}被{a1}复活了。	ht
 the career change from {s} to {s} of {a} in the wilds.	在荒野中，{a1}从{s1}转为{s2}的职业变更。	htEi
 the claim of {a} to the position of of {p} during {e}.	在{e1}期间，{a1}宣称担任{p1}的职位。	htEi
 the claim of {a} to the position of of {p} within {p}.	在{p2}，{a1}宣称担任{p1}的职位。	htEi
@@ -32498,6 +32508,8 @@ the ascension of {a} to the position of of {p} in {p}	在{p2}，{a1}晋升至{p1
 the audacious creation of the position of {s} at {p}.	在{p1}，大胆设立{s1}一职。	htEi
 the audacious creation of the position of {s} in {d}.	{d1}年的大胆设立{s1}一职。	htEi
 the audacious creation of the position of {s} in {p}.	在{p1}，大胆设立{s1}一职。	htEi
+the bodies of {a} were animated by {a} in {p} at {p}.	在{p2}，{a1}的尸体在{p1}被{a2}复活了。	ht
+the bodies of {a} were animated by {a} in {p} in {p}.	在{p2}，{a1}的尸体在{p1}被{a2}复活了。	ht
 the bodies of {a} were discarded in {p} in the wilds.	在荒野中，{a1}的遗体被弃置在了{p1}。	ht
 the bodies of {a} were hung from a {s} by {a} at {p}.	在{p1}，{a2}将{a1}的尸体悬挂在{s1}上。	ht
 the bodies of {a} were hung from a {s} by {a} in {p}.	在{p1}，{a2}将{a1}的尸体悬挂在{s1}上。	ht
@@ -32510,6 +32522,8 @@ the body of {a} was hung from a {s} on {i} during {e}	在{e1}期间，{a1}的尸
 the body of {a} was hung from a {s} on {i} within {p}	在{p1}，{a1}的尸体被用{i1}悬挂在{s1}上	ht
 the body of {a} was impaled on {i} by {a} during {e}.	在{e1}期间，{a2}将{a1}的尸体刺穿在{i1}上。	ht
 the body of {a} was impaled on {i} by {a} within {p}.	在{p1}，{a2}将{a1}的尸体刺穿在{i1}上。	ht
+the body of {n} was animated by {a} in {p} during {e}	在{e1}期间，{n1}的尸体在{p1}被{a1}复活了	ht
+the body of {n} was animated by {a} in {p} within {p}	在{p2}，{n1}的尸体在{p1}被{a1}复活了	ht
 the bribery conspiracy concocted by {a} in the wilds.	在荒野中，{a1}策划的贿赂阴谋。	htEi
 the burning of {a} in {n}'s dragon fire in the wilds.	在荒野中，{a1}被{n1}的龙焰烧死。	htEi
 the career change from {s} to {s} of {a} in the wilds	在荒野中，{a1}从{s1}转为{s2}的职业变更	htEi
@@ -33772,6 +33786,9 @@ the appointment of {a} to the position of {s} of {p}	{a1}被任命为「{p1}」�
 the audacious creation of the position of {s} at {p}	在{p1}，大胆设立{s1}一职	htEi
 the audacious creation of the position of {s} in {d}	{d1}年的大胆设立{s1}一职	htEi
 the audacious creation of the position of {s} in {p}	在{p1}，大胆设立{s1}一职	htEi
+the bodies of {a} were animated by {a} in {p} at {p}	在{p2}，{a1}的尸体在{p1}被{a2}复活了	ht
+the bodies of {a} were animated by {a} in {p} in {p}	在{p2}，{a1}的尸体在{p1}被{a2}复活了	ht
+the bodies of {a} were animated in {p} in the wilds.	在荒野中，{a1}的尸体在{p1}被复活了。	ht
 the bodies of {a} were discarded in {p} in the wilds	在荒野中，{a1}的遗体被弃置在了{p1}	ht
 the bodies of {a} were entombed in {p} in the wilds.	在荒野中，{a1}的遗体被安葬在了{p1}的墓中。	ht
 the bodies of {a} were hung from a {s} by {a} at {p}	在{p1}，{a2}将{a1}的尸体悬挂在{s1}上	ht
@@ -34985,6 +35002,7 @@ the addition of improved fortifications during {e}.	在{e1}期间，防御工事
 the addition of improved fortifications within {p}.	在{p1}，防御工事的改善。	htEi
 the agreement by {a} to establish a temple for {a}.	{a1}为{a2}建立神殿的协议。	htEi
 the ascension of {a} to the position of {s} of {p}.	{a1}就任{p1}的{s1}。	htEi
+the bodies of {a} were animated in {p} in the wilds	在荒野中，{a1}的尸体在{p1}被复活了	ht
 the bodies of {a} were discarded in {p} during {e}.	在{e1}期间，{a1}的遗体被弃置在了{p1}。	ht
 the bodies of {a} were discarded in {p} within {p}.	在{p2}，{a1}的遗体被弃置在了{p1}。	ht
 the bodies of {a} were entombed in {p} in the wilds	在荒野中，{a1}的遗体被安葬在了{p1}的墓中	ht
@@ -36305,6 +36323,8 @@ the agreement between {a} and {a} to study in {d}.	{d1}年的{a1}与{a2}达成�
 the agreement between {a} and {a} to study in {p}.	在{p1}，{a1}与{a2}达成的求学协议。	htEi
 the agreement by {a} to establish a temple for {a}	{a1}为{a2}建立神殿的协议	htEi
 the ascension of {a} to the position of {s} of {p}	{a1}就任{p1}的{s1}	htEi
+the bodies of {a} were animated in {p} during {e}.	在{e1}期间，{a1}的尸体在{p1}被复活了。	ht
+the bodies of {a} were animated in {p} within {p}.	在{p2}，{a1}的尸体在{p1}被复活了。	ht
 the bodies of {a} were buried in {p} in the wilds.	在荒野中，{a1}的遗体被埋葬在了{p1}。	ht
 the bodies of {a} were discarded in {p} during {e}	在{e1}期间，{a1}的遗体被弃置在了{p1}	ht
 the bodies of {a} were discarded in {p} within {p}	在{p2}，{a1}的遗体被弃置在了{p1}	ht
@@ -36316,6 +36336,8 @@ the body of {a} was hung from a {s} by {a} in {p}.	在{p1}，{a2}将{a1}的尸�
 the body of {a} was hung from a {s} on {i} at {p}.	在{p1}，{a1}的尸体被用{i1}悬挂在{s1}上。	ht
 the body of {a} was hung from a {s} on {i} by {a}.	{a2}用{i1}将{a1}的尸体悬挂在{s1}上。	ht
 the body of {a} was hung from a {s} on {i} in {p}.	在{p1}，{a1}的尸体被用{i1}悬挂在{s1}上。	ht
+the body of {n} was animated by {a} in {p} at {p}.	在{p2}，{n1}的尸体在{p1}被{a1}复活了。	ht
+the body of {n} was animated by {a} in {p} in {p}.	在{p2}，{n1}的尸体在{p1}被{a1}复活了。	ht
 the body of {n} was discarded in {p} in the wilds.	在荒野中，{n1}的遗体被弃置在了{p1}。	ht
 the bribery conspiracy concocted by {a} during {e}	在{e1}期间，{a1}策划的贿赂阴谋	htEi
 the bribery conspiracy concocted by {a} within {p}	在{p1}，{a1}策划的贿赂阴谋	htEi
@@ -37664,11 +37686,14 @@ the agreement by {a} to establish for {a} in {p}.	在{p1}，{a1}为{a2}建设设
 the appointment of {a} to the position of of {p}.	{a1}获任{p1}的职位。	htEi
 the apprenticeship of {a} under {a} in the wilds.	在荒野中，{a1}师从{a2}。	htEi
 the arrest and interrogation of {a} in the wilds.	在荒野中，对{a1}的逮捕和审讯。	htEi
+the bodies of {a} were animated in {p} during {e}	在{e1}期间，{a1}的尸体在{p1}被复活了	ht
+the bodies of {a} were animated in {p} within {p}	在{p2}，{a1}的尸体在{p1}被复活了	ht
 the bodies of {a} were buried in {p} in the wilds	在荒野中，{a1}的遗体被埋葬在了{p1}	ht
 the bodies of {a} were entombed in {p} during {e}	在{e1}期间，{a1}的遗体被安葬在了{p1}的墓中	ht
 the bodies of {a} were entombed in {p} within {p}	在{p2}，{a1}的遗体被安葬在了{p1}的墓中	ht
 the bodies of {a} were impaled on {i} during {e}.	在{e1}期间，{a1}的尸体被刺穿在{i1}上。	ht
 the bodies of {a} were impaled on {i} within {p}.	在{p1}，{a1}的尸体被刺穿在{i1}上。	ht
+the body of {a} was animated in {p} in the wilds.	在荒野中，{a1}的尸体在{p1}被复活了。	ht
 the body of {a} was hung from a {s} by {a} at {p}	在{p1}，{a2}将{a1}的尸体悬挂在{s1}上	ht
 the body of {a} was hung from a {s} by {a} in {p}	在{p1}，{a2}将{a1}的尸体悬挂在{s1}上	ht
 the body of {a} was hung from a {s} on {i} at {p}	在{p1}，{a1}的尸体被用{i1}悬挂在{s1}上	ht
@@ -37676,6 +37701,8 @@ the body of {a} was hung from a {s} on {i} by {a}	{a2}用{i1}将{a1}的尸体悬
 the body of {a} was hung from a {s} on {i} in {p}	在{p1}，{a1}的尸体被用{i1}悬挂在{s1}上	ht
 the body of {a} was impaled on {i} by {a} at {p}.	在{p1}，{a2}将{a1}的尸体刺穿在{i1}上。	ht
 the body of {a} was impaled on {i} by {a} in {p}.	在{p1}，{a2}将{a1}的尸体刺穿在{i1}上。	ht
+the body of {n} was animated by {a} in {p} at {p}	在{p2}，{n1}的尸体在{p1}被{a1}复活了	ht
+the body of {n} was animated by {a} in {p} in {p}	在{p2}，{n1}的尸体在{p1}被{a1}复活了	ht
 the body of {n} was discarded in {p} in the wilds	在荒野中，{n1}的遗体被弃置在了{p1}	ht
 the body of {n} was entombed in {p} in the wilds.	在荒野中，{n1}的遗体被安葬在了{p1}的墓中。	ht
 the burning of {a} in {s} dragon fire during {e}.	在{e1}期间，{a1}被{s1}的龙焰烧死。	htEi
@@ -39165,6 +39192,7 @@ the bodies of {a} were buried in {p} during {e}.	在{e1}期间，{a1}的遗体�
 the bodies of {a} were buried in {p} within {p}.	在{p2}，{a1}的遗体被埋葬在了{p1}。	ht
 the bodies of {a} were impaled on {i} during {e}	在{e1}期间，{a1}的尸体被刺穿在{i1}上	ht
 the bodies of {a} were impaled on {i} within {p}	在{p1}，{a1}的尸体被刺穿在{i1}上	ht
+the body of {a} was animated in {p} in the wilds	在荒野中，{a1}的尸体在{p1}被复活了	ht
 the body of {a} was impaled on {i} by {a} at {p}	在{p1}，{a2}将{a1}的尸体刺穿在{i1}上	ht
 the body of {a} was impaled on {i} by {a} in {p}	在{p1}，{a2}将{a1}的尸体刺穿在{i1}上	ht
 the body of {a} was impaled on {i} in the wilds.	在荒野中，{a1}的尸体被刺穿在{i1}上。	ht
@@ -40572,6 +40600,8 @@ the bodies of {a} were buried in {p} within {p}	在{p2}，{a1}的遗体被埋葬
 the bodies of {a} were discarded in {p} at {p}.	在{p2}，{a1}的遗体被弃置在了{p1}。	ht
 the bodies of {a} were discarded in {p} in {p}.	在{p2}，{a1}的遗体被弃置在了{p1}。	ht
 the bodies of {a} were {s} by {a} in the wilds.	在荒野中，{a1}的尸体被{a2}{s1}。	ht
+the body of {a} was animated in {p} during {e}.	在{e1}期间，{a1}的尸体在{p1}被复活了。	ht
+the body of {a} was animated in {p} within {p}.	在{p2}，{a1}的尸体在{p1}被复活了。	ht
 the body of {a} was impaled on {i} in the wilds	在荒野中，{a1}的尸体被刺穿在{i1}上	ht
 the body of {n} was buried in {p} in the wilds.	在荒野中，{n1}的遗体被埋葬在了{p1}。	ht
 the body of {n} was discarded in {p} during {e}	在{e1}期间，{n1}的遗体被弃置在了{p1}	ht
@@ -42095,6 +42125,9 @@ the arrest and interrogation of {a} within {p}	在{p1}，对{a1}的逮捕和审�
 the ascension of {a} to the position of of {p}	{a1}晋升至{p1}的职位	htEi
 the audacious creation of the position of {s}.	大胆设立{s1}一职。	htEi
 the bestowal of the title of {s} in the wilds.	在荒野中，{s1}头衔的授予。	htEi
+the bodies of {a} were animated by {a} in {p}.	{a1}的尸体在{p1}被{a2}复活了。	ht
+the bodies of {a} were animated in {p} at {p}.	在{p2}，{a1}的尸体在{p1}被复活了。	ht
+the bodies of {a} were animated in {p} in {p}.	在{p2}，{a1}的尸体在{p1}被复活了。	ht
 the bodies of {a} were discarded in {p} at {p}	在{p2}，{a1}的遗体被弃置在了{p1}	ht
 the bodies of {a} were discarded in {p} in {p}	在{p2}，{a1}的遗体被弃置在了{p1}	ht
 the bodies of {a} were entombed in {p} at {p}.	在{p2}，{a1}的遗体被安葬在了{p1}的墓中。	ht
@@ -42102,6 +42135,8 @@ the bodies of {a} were entombed in {p} in {p}.	在{p2}，{a1}的遗体被安葬�
 the bodies of {a} were hung from a {s} by {a}.	{a2}将{a1}的尸体悬挂在{s1}上。	ht
 the bodies of {a} were hung from a {s} on {i}.	{a1}的尸体被用{i1}悬挂在{s1}上。	ht
 the bodies of {a} were {s} by {a} in the wilds	在荒野中，{a1}的尸体被{a2}{s1}	ht
+the body of {a} was animated in {p} during {e}	在{e1}期间，{a1}的尸体在{p1}被复活了	ht
+the body of {a} was animated in {p} within {p}	在{p2}，{a1}的尸体在{p1}被复活了	ht
 the body of {a} was impaled on {i} during {e}.	在{e1}期间，{a1}的尸体被刺穿在{i1}上。	ht
 the body of {a} was impaled on {i} within {p}.	在{p1}，{a1}的尸体被刺穿在{i1}上。	ht
 the body of {n} was buried in {p} in the wilds	在荒野中，{n1}的遗体被埋葬在了{p1}	ht
@@ -43633,6 +43668,9 @@ the agreement between {a} and {a} within {p}.	在{p1}，{a1}与{a2}的协议。	
 the alliance between {p} and {p} in the wilds	在荒野中，{p1}与{p2}之间的联盟	htEi
 the audacious creation of the position of {s}	大胆设立{s1}一职	htEi
 the bestowal of the title of {s} in the wilds	在荒野中，{s1}头衔的授予	htEi
+the bodies of {a} were animated by {a} in {p}	{a1}的尸体在{p1}被{a2}复活了	ht
+the bodies of {a} were animated in {p} at {p}	在{p2}，{a1}的尸体在{p1}被复活了	ht
+the bodies of {a} were animated in {p} in {p}	在{p2}，{a1}的尸体在{p1}被复活了	ht
 the bodies of {a} were entombed in {p} at {p}	在{p2}，{a1}的遗体被安葬在了{p1}的墓中	ht
 the bodies of {a} were entombed in {p} in {p}	在{p2}，{a1}的遗体被安葬在了{p1}的墓中	ht
 the bodies of {a} were hung from a {s} by {a}	{a2}将{a1}的尸体悬挂在{s1}上	ht
@@ -46918,8 +46956,11 @@ the bestowal of the title of {s} during {e}	在{e1}期间，{s1}头衔的授予	
 the bestowal of the title of {s} within {p}	在{p1}，{s1}头衔的授予	htEi
 the bodies of {a} were buried in {p} at {p}	在{p2}，{a1}的遗体被埋葬在了{p1}	ht
 the bodies of {a} were buried in {p} in {p}	在{p2}，{a1}的遗体被埋葬在了{p1}	ht
+the body of {a} was animated in {p} at {p}.	在{p2}，{a1}的尸体在{p1}被复活了。	ht
+the body of {a} was animated in {p} in {p}.	在{p2}，{a1}的尸体在{p1}被复活了。	ht
 the body of {a} was hung from a {s} by {a}.	{a2}将{a1}的尸体悬挂在{s1}上。	ht
 the body of {a} was hung from a {s} on {i}.	{a1}的尸体被用{i1}悬挂在{s1}上。	ht
+the body of {n} was animated by {a} in {p}.	{n1}的尸体在{p1}被{a1}复活了。	ht
 the body of {n} was discarded in {p} at {p}	在{p2}，{n1}的遗体被弃置在了{p1}	ht
 the body of {n} was discarded in {p} in {p}	在{p2}，{n1}的遗体被弃置在了{p1}	ht
 the body of {n} was entombed in {p} at {p}.	在{p2}，{n1}的遗体被安葬在了{p1}的墓中。	ht
@@ -48710,11 +48751,14 @@ the area enclosed by a parabola and a line	抛物线与直线围成的面积	h
 the arrest and interrogation of {a} at {p}	在{p1}，对{a1}的逮捕和审讯	htEi
 the arrest and interrogation of {a} in {d}	{d1}年的对{a1}的逮捕和审讯	htEi
 the arrest and interrogation of {a} in {p}	在{p1}，对{a1}的逮捕和审讯	htEi
+the body of {a} was animated in {p} at {p}	在{p2}，{a1}的尸体在{p1}被复活了	ht
+the body of {a} was animated in {p} in {p}	在{p2}，{a1}的尸体在{p1}被复活了	ht
 the body of {a} was hung from a {s} by {a}	{a2}将{a1}的尸体悬挂在{s1}上	ht
 the body of {a} was hung from a {s} on {i}	{a1}的尸体被用{i1}悬挂在{s1}上	ht
 the body of {a} was impaled on {i} at {p}.	在{p1}，{a1}的尸体被刺穿在{i1}上。	ht
 the body of {a} was impaled on {i} by {a}.	{a2}将{a1}的尸体刺穿在{i1}上。	ht
 the body of {a} was impaled on {i} in {p}.	在{p1}，{a1}的尸体被刺穿在{i1}上。	ht
+the body of {n} was animated by {a} in {p}	{n1}的尸体在{p1}被{a1}复活了	ht
 the body of {n} was entombed in {p} at {p}	在{p2}，{n1}的遗体被安葬在了{p1}的墓中	ht
 the body of {n} was entombed in {p} in {p}	在{p2}，{n1}的遗体被安葬在了{p1}的墓中	ht
 the body of {n} was {s} by {a} during {e}.	在{e1}期间，{n1}的尸体被{a1}{s1}。	ht
@@ -54235,6 +54279,7 @@ the baby-snatching of {a} in the wilds.	在荒野中，{a1}的劫婴活动。	ht
 the bestowal of the title of {s} at {p}	在{p1}，{s1}头衔的授予	htEi
 the bestowal of the title of {s} in {d}	{d1}年的{s1}头衔的授予	htEi
 the bestowal of the title of {s} in {p}	在{p1}，{s1}头衔的授予	htEi
+the bodies of {a} were animated in {p}.	{a1}的尸体在{p1}被复活了。	ht
 the bodies of {a} were discarded in {p}	{a1}的遗体被弃置在了{p1}	ht
 the bodies of {a} were entombed in {p}.	{a1}的遗体被安葬在了{p1}的墓中。	ht
 the bodies of {a} were {s} in the wilds	在荒野中，{a1}的尸体被{s1}	ht
@@ -56322,6 +56367,7 @@ the appointment of {a} {p} within {p}.	在{p2}，{p1}对{a1}的任命。	htEi
 the ascension of {a} {p} in the wilds.	在荒野中，{a1}在{p1}的晋升。	htEi
 the baby-snatching of {a} in the wilds	在荒野中，{a1}的劫婴活动	htEi
 the belief of {a} in {a} in the wilds.	在荒野中，{a1}对{a2}的信仰。	htEi
+the bodies of {a} were animated in {p}	{a1}的尸体在{p1}被复活了	ht
 the bodies of {a} were entombed in {p}	{a1}的遗体被安葬在了{p1}的墓中	ht
 the bodies of {a} were impaled on {i}.	{a1}的尸体被刺穿在{i1}上。	ht
 the bodies of {a} were {s} during {e}.	在{e1}期间，{a1}的尸体被{s1}。	ht
@@ -60629,6 +60675,7 @@ the baby-snatching of {a} within {p}	在{p1}，{a1}的劫婴活动	htEi
 the belief of {a} in {a} during {e}.	在{e1}期间，{a1}对{a2}的信仰。	htEi
 the belief of {a} in {a} within {p}.	在{p1}，{a1}对{a2}的信仰。	htEi
 the bodies of {a} were buried in {p}	{a1}的遗体被埋葬在了{p1}	ht
+the body of {a} was animated in {p}.	{a1}的尸体在{p1}被复活了。	ht
 the body of {a} was {s} in the wilds	在荒野中，{a1}的尸体被{s1}	ht
 the body of {n} was discarded in {p}	{n1}的遗体被弃置在了{p1}	ht
 the body of {n} was entombed in {p}.	{n1}的遗体被安葬在了{p1}的墓中。	ht
@@ -62785,6 +62832,7 @@ the authoring of a work during {e}.	在{e1}期间，一部作品的撰写。	htE
 the authoring of a work within {p}.	在{p1}，一部作品的撰写。	htEi
 the belief of {a} in {a} during {e}	在{e1}期间，{a1}对{a2}的信仰	htEi
 the belief of {a} in {a} within {p}	在{p1}，{a1}对{a2}的信仰	htEi
+the body of {a} was animated in {p}	{a1}的尸体在{p1}被复活了	ht
 the body of {a} was impaled on {i}.	{a1}的尸体被刺穿在{i1}上。	ht
 the body of {a} was {s} during {e}.	在{e1}期间，{a1}的尸体被{s1}。	ht
 the body of {a} was {s} within {p}.	在{p1}，{a1}的尸体被{s1}。	ht

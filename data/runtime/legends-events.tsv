@@ -1309,6 +1309,10 @@ the body of {n} was {s} by {a}	{n}的尸体被{a}{s}	event
 The body of {n} was {s} by {a}	{n}的尸体被{a}{s}	event
 the bodies of {a} were {s} by {a}	{a1}的尸体被{a2}{s}	event
 The bodies of {a} were {s} by {a}	{a1}的尸体被{a2}{s}	event
+the body of {n} was animated by {a} in {p}	{n}的尸体在{p}被{a}复活了	event
+the bodies of {a} were animated by {a} in {p}	{a1}的尸体在{p}被{a2}复活了	event
+the body of {a} was animated in {p}	{a}的尸体在{p}被复活了	event
+the bodies of {a} were animated in {p}	{a}的尸体在{p}被复活了	event
 added to a grisly mound	堆成了可怖的尸丘	term
 added to a grotesque pillar	堆成了怪诞的尸柱	term
 added to a gruesome sculpture	拼成了骇人的雕塑	term
