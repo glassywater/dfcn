@@ -1,9 +1,11 @@
-Agreement journal: Windows PE 53.16, offline manual decompilation
+Agreement journal: Windows PE 53.16, offline decompilation sources
 ================================================================
 
-This file and pe-manual-decompiled.c are manually reconstructed from the actual
-native instructions and jump tables. They are not automatic Ghidra output and
-are not game execution observations. Existing ELF output is retained separately.
+This file and pe-manual-decompiled.c describe the actual native instructions
+and jump tables. Actual Ghidra output for both configured Windows images is in
+pe-steam-ghidra-decompiled.c and pe-classic-ghidra-decompiled.c, with independent
+pe-<edition>-<role>.c files for each complete owner. Existing ELF output is
+retained separately. These are offline binary sources, not game observations.
 
 Binary sources (configured data/runtime/native-pe-images.json):
   Steam: D:/program/steam/steamapps/common/Dwarf Fortress/Dwarf Fortress.exe
@@ -19,6 +21,8 @@ Complete retained source ranges, RVAs (end exclusive):
   Retained title clip    cdf30..cdfb3         cdec0..cdf43
   Calendar month leaf    773390..7734af       770db0..770ecf
   Journal card border    dec60..dee12         debf0..deda2
+  Entity-name supplier   b92900..b92a78       b8f940..b8fab8
+  Artifact-name supplier b94400..b94710       b91440..b91750
 
 Original asm is saved separately for each image and role. pe-branches.tsv,
 pe-conditions.tsv, pe-calls.tsv and pe-literals.tsv preserve the original
@@ -28,6 +32,22 @@ neighboring journal tabs of the full renderer. PE unwind metadata splits some
 small functions into chained chunks: clipping and border ranges include their
 entire native body rather than only the first short unwind entry. The month
 supplier is a leaf without an unwind entry; its decoded body ends at its ret.
+
+Actual PE Ghidra reconstruction
+------------------------------
+  tools/DecompileJournalAgreementsPE.java reconstructs all seven owners from
+  each configured image, using pe-ghidra-functions.tsv as the executable-body
+  source. The journal executable code ends at ca358 (Classic ca2e8); constructor
+  code ends at e0ed4 (Classic e0e64). The rest of those unwind ranges consists
+  of native jump-table/remap bytes, which stay in the raw source and TSV but
+  must not be interpreted as executable instructions in the C decompiler.
+  Every executable instruction is supplied from the original image, external
+  supplier boundaries are explicit, and pe-switches.tsv restores the exact
+  native indirect-jump targets. Ghidra may express a byte-remapped switch as
+  a switch over remap-table values; original 0..42 / 0..32 selector aliases
+  remain explicitly preserved in pe-switches.tsv rather than inferred from C.
+  The seven owners are renderer, list/title/orders, border, retained clipping,
+  month, entity-name supplier and artifact-name supplier.
 
 Agreement panel and rendering modes
 ----------------------------------
@@ -211,6 +231,32 @@ use Person-name fields.
     "retrieve " and Artifact are separate adjacent writes on one native row;
     compact prose does not draw the Site or receiving Group fields.
 
+  Exact Steam addst return sites for these four forms:
+    Expanded service: requested that c463e; make an offer of service to c4742;
+                      Group c47c4.
+    Compact service:  requested that c6993; serve<space> c6a97; Group c6b06.
+    Expanded retrieval: asked that c3eeb; retrieve c3ff3; Artifact c4071;
+                        from c40e9, Site c4168; for c41e5, Group c425f.
+    Compact retrieval: asked that c6648; retrieve<space> c674c; Artifact c67b7.
+    Classic return sites above equal Steam minus 0x70.
+  No fixed 'retrieve the' or 'serve The' literal exists in these branches.
+  The following 'the'/'The' belongs to the typed Artifact/Group name source.
+  Treating the combined screen row as a single dictionary sentence therefore
+  loses the independent name source and its original color boundary.
+
+  Group supplier b92900:
+    missing entity -> an unknown civilization;
+    resolved entity -> EnglishName(entity+20), including all name fragments.
+  Artifact supplier b94400:
+    missing artifact -> an unknown artifact;
+    nonempty EnglishName(artifact+8) -> use that name;
+    empty name and book/tool-0x14/item-kind-0x57-or-0x59 -> Untitled;
+    other empty name -> c65450 native item description.
+  Both suppliers additionally support LPAGE wrappers when flags&2 is set.
+  This journal passes flags=0, so it emits none of those wrappers.
+  These are the actual supplier branches, independently decompiled from each
+  image; pe-name-supplier-decompiled.c retains their semantic reconstruction.
+
 All native order-kind, issuer and progress branches
 -------------------------------------------------
 Actual Windows PE virtual kind values are 5, 6, 7 and 8, from calls through
@@ -295,9 +341,11 @@ Native typed display field sources
   identified by their proven native source. Classic journal returns are -70.
   Counter has its own runtime field classification and can supply card identity
   even when its title has no native operation text in the order-kind default.
-  Remaining addst fields within the agreement section are Literal unless their
-  exact return site identifies a typed supplier. You/you/somebody unknown are
-  fixed literal branches, not guessed Person/Group/Site tokens.
+  Fixed literal addst writers also retain explicit return-site classification;
+  an unlisted caller has no agreement-field ownership. You/you/somebody unknown
+  are fixed literal branches, not guessed Person/Group/Site tokens. The native
+  title writer is separately classified as Title, independently of the skin,
+  counter detection and visible journal tabs.
   pe-typed-field-return-sites.inc lists exact Steam source-call classification
   expressions using native_reference_address for runtime address mapping.
 
@@ -334,3 +382,13 @@ cover native 58-byte clipping and Done:; compact adjacent prefix/name fields
 share a row without losing their original colors; default/no-text branches
 preserve the absence of native text. The files here provide binary source
 evidence, not evidence of observed game-screen results.
+
+The original addst fields are consumed before geometric journal-card matching.
+Their current bytes, grid, layer and writer clip retain ownership even when a
+tab or frame is hidden. A current counter supplies the card's native right edge
+before comparing a long name, so overwritten title suffixes do not invalidate
+the visible source. Adjacent compact fields share one measured line while each
+keeps its own translator, color and original span. A failed name translation
+preserves that name alone and does not abandon the neighboring fixed clause.
+The artifact field also accepts b94400's complete item-description fallback;
+quality/wear glyphs inside that field are text, not paragraph separators.

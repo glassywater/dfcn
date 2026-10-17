@@ -1,0 +1,15 @@
+edition	image	role	start_rva	code_end_rva	assembly_file
+steam	PE:6a70a6d9:02711000	journal-agreement-details-and-card-fields	0xc2110	0xca358	pe-steam-journal-agreement-details-and-card-fields.asm
+steam	PE:6a70a6d9:02711000	journal-agreement-title-and-orders	0xdf540	0xe0ed4	pe-steam-journal-agreement-title-and-orders.asm
+steam	PE:6a70a6d9:02711000	journal-agreement-entity-name	0xb92900	0xb92a78	pe-steam-journal-agreement-entity-name.asm
+steam	PE:6a70a6d9:02711000	journal-agreement-artifact-name	0xb94400	0xb94710	pe-steam-journal-agreement-artifact-name.asm
+steam	PE:6a70a6d9:02711000	journal-card-border	0xdec60	0xdee12	pe-steam-journal-card-border.asm
+steam	PE:6a70a6d9:02711000	journal-agreement-retained-title-clipping	0xcdf30	0xcdfb3	pe-steam-journal-agreement-retained-title-clipping.asm
+steam	PE:6a70a6d9:02711000	journal-agreement-calendar-month	0x773390	0x7734af	pe-steam-journal-agreement-calendar-month.asm
+classic	PE:6a70b91c:0270a000	journal-agreement-details-and-card-fields	0xc20a0	0xca2e8	pe-classic-journal-agreement-details-and-card-fields.asm
+classic	PE:6a70b91c:0270a000	journal-agreement-title-and-orders	0xdf4d0	0xe0e64	pe-classic-journal-agreement-title-and-orders.asm
+classic	PE:6a70b91c:0270a000	journal-agreement-entity-name	0xb8f940	0xb8fab8	pe-classic-journal-agreement-entity-name.asm
+classic	PE:6a70b91c:0270a000	journal-agreement-artifact-name	0xb91440	0xb91750	pe-classic-journal-agreement-artifact-name.asm
+classic	PE:6a70b91c:0270a000	journal-card-border	0xdebf0	0xdeda2	pe-classic-journal-card-border.asm
+classic	PE:6a70b91c:0270a000	journal-agreement-retained-title-clipping	0xcdec0	0xcdf43	pe-classic-journal-agreement-retained-title-clipping.asm
+classic	PE:6a70b91c:0270a000	journal-agreement-calendar-month	0x770db0	0x770ecf	pe-classic-journal-agreement-calendar-month.asm

@@ -22,9 +22,12 @@ std::optional<std::string> Overlay::translate_journal_title(std::string_view sou
         break;
     case JournalSearchKind::Artifact:
         // Artifact headings can be paired native/gloss identities or book
-        // titles; neither is a personal name, even when it contains one.
+        // titles. b94400 falls back to the complete item description when
+        // its language_name is empty, including the article and CP437
+        // quality/wear wrappers; none of these fields is a personal name.
         target = translate_legends_artifact_identity(source);
         if (!target) target = translate_legends_book(source);
+        if (!target) target = translate_legends_item(source);
         if (!target) target = translate_legends_name(source, false);
         break;
     case JournalSearchKind::Site:

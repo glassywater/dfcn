@@ -10,6 +10,14 @@
                 const auto *cell = cell_at(x, y, &top);
                 if (cell && cell[0]) context[y][x] = static_cast<char>(cell[0]);
             }
+#include "adventure_journal_native_fields.inc"
+        const auto journal_native_field_owned = [&](const Match &field) {
+            return std::any_of(journal_native_owned_fields.begin(), journal_native_owned_fields.end(),
+                [&](const Match &owned) {
+                    return owned.y == field.y && owned.x < field.x + field.length &&
+                        owned.x + owned.length > field.x;
+                });
+        };
         int tabs_y = -1;
         for (int y = 0; y < gps_->dimy; ++y)
             if (context[y].find("Agreements") != std::string::npos &&
@@ -595,7 +603,7 @@
                 std::unordered_set<int> owned_body_rows;
                 if (agreement) {
                     std::vector<Match> agreement_matches;
-                    if (title) {
+                    if (title && !journal_native_field_owned(*title)) {
                         const auto complete = native_drawn_text_for_row(*title, *counter);
                         const std::string source = native_agreement_title
                             ? native_agreement_title->source : complete.value_or(title->source);
@@ -615,7 +623,7 @@
                         if (title_row(y)) continue;
                         const int edge = text_right(y);
                         const auto field = field_at(y, edge);
-                        if (!field) continue;
+                        if (!field || journal_native_field_owned(*field)) continue;
                         const auto rows = field_rows(*field);
                         std::optional<std::string> target;
                         std::vector<int> colors;
