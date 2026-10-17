@@ -3455,6 +3455,10 @@ struct NativeKnowledgeDraw {
     std::array<long, 4> clip{};
 };
 
+static std::shared_ptr<const NativeKnowledgeDocument>
+captured_native_character_personality_document(const graphicst *graphics,
+    const SDL_Rect &pane, std::vector<NativeKnowledgeDraw> *visible_draws);
+
 static bool native_knowledge_draw_owns_base(
         const NativeKnowledgeDraw &draw, const graphicst &gps) {
     // The colored native writer writes screen, not the composited top layer.
@@ -15229,7 +15233,7 @@ std::optional<std::string> Overlay::translate_character_preference_term(
         // resolved through the complete exact/compositional/procedural
         // vocabularies, which covers arbitrary newly generated titles.
         static constexpr std::array<std::pair<std::string_view,
-                                               std::string_view>, 12>
+                                               std::string_view>, 17>
             cultural_words = {{
                 {"poetic", "诗意"}, {"poetry", "诗歌"},
                 {"play", "戏剧"}, {"plays", "戏剧"},
@@ -15237,6 +15241,9 @@ std::optional<std::string> Overlay::translate_character_preference_term(
                 {"music", "乐曲"}, {"musical", "乐曲"},
                 {"dance", "舞蹈"}, {"dances", "舞蹈"},
                 {"chant", "吟唱"}, {"chants", "吟唱"},
+                {"pantomime", "哑剧"}, {"pantomimes", "哑剧"},
+                {"fountain", "喷泉"}, {"fountains", "喷泉"},
+                {"trotting", "小跑"},
             }};
         std::string translated;
         std::istringstream words(title);
@@ -15920,7 +15927,6 @@ const NativeKnowledgeLayout &Overlay::prepare_native_knowledge_layout(
         std::string paragraph;
         std::vector<int> paragraph_colors;
         int current_foreground = -1;
-        bool supported_markup = true;
         auto flush = [&] {
             const size_t first = static_cast<size_t>(std::find_if(
                 paragraph.begin(), paragraph.end(), [](unsigned char c) {
@@ -15936,53 +15942,73 @@ const NativeKnowledgeLayout &Overlay::prepare_native_knowledge_layout(
             paragraph.clear();
             paragraph_colors.clear();
         };
+        const auto append_source_byte = [&](char ch) {
+            paragraph.push_back(ch);
+            paragraph_colors.push_back(current_foreground);
+        };
+        const auto native_number = [](std::string_view field) {
+            // Native tags use atoi: a numeric prefix is enough, and an
+            // empty/nonnumeric field is zero. Configuration parsing is stricter.
+            const std::string terminated(field);
+            return std::strtol(terminated.c_str(), nullptr, 10);
+        };
         for (size_t i = 0; i < source.size();) {
             const char ch = source[i];
             if (i + 1 < source.size() &&
                 ((ch == '[' && source[i + 1] == '[') ||
                  (ch == ']' && source[i + 1] == ']'))) {
-                paragraph.push_back(ch);
-                paragraph_colors.push_back(current_foreground);
+                append_source_byte(ch);
                 i += 2;
                 continue;
             }
+            // The native reader consumes an unescaped closing bracket.
+            if (ch == ']') { ++i; continue; }
             if (ch != '[') {
-                paragraph.push_back(ch);
-                paragraph_colors.push_back(current_foreground);
+                append_source_byte(ch);
                 ++i;
                 continue;
             }
-            const size_t end = source.find(']', i + 1);
-            if (end == std::string::npos) { supported_markup = false; break; }
-            const std::string_view tag(source.data() + i + 1, end - i - 1);
+            ++i;
+            if (i == source.size()) break;
+            if (std::string_view(".:? !").find(source[i]) != std::string_view::npos) {
+                append_source_byte(source[i++]);
+                continue;
+            }
+            const auto field = [&]() {
+                const size_t begin = i;
+                while (i < source.size() && source[i] != ':' && source[i] != ']') ++i;
+                const auto value = std::string_view(source).substr(begin, i - begin);
+                if (i < source.size()) ++i;
+                return value;
+            };
+            const std::string_view tag = field();
             if (tag == "B" || tag == "P") {
                 flush();
-            } else if (tag.starts_with("C:") && std::all_of(
-                    tag.begin() + 2, tag.end(), [](unsigned char c) {
-                        return (c >= '0' && c <= '9') || c == ':';
-                    })) {
+            } else if (tag == "R") {
+                // R ends a native physical row, not a prose paragraph.
+                // Its semantic whitespace must not split a preference sentence.
+                append_source_byte(' ');
+            } else if (tag == "CHAR") {
+                const auto value = field();
+                const unsigned char byte = value.size() >= 2 && value.front() == '~'
+                    ? static_cast<unsigned char>(value[1])
+                    : static_cast<unsigned char>(native_number(value));
+                if (byte) append_source_byte(static_cast<char>(byte));
+            } else if (tag == "C") {
+                const auto foreground = static_cast<unsigned char>(native_number(field()));
+                const auto background = static_cast<unsigned char>(native_number(field()));
+                const bool bright = native_number(field()) != 0;
                 if (personality || health || thoughts) {
-                    const size_t first = tag.find(':', 2);
-                    const size_t second = first == std::string_view::npos
-                        ? first : tag.find(':', first + 1);
-                    if (first == std::string_view::npos ||
-                        second == std::string_view::npos) {
-                        supported_markup = false;
-                        break;
-                    }
-                    const int color = parse_int(std::string(tag.substr(2, first - 2)), -1);
-                    const int bright = parse_int(std::string(tag.substr(second + 1)), -1);
-                    if (color < 0 || color > 7 || bright < 0 || bright > 1) {
-                        supported_markup = false;
-                        break;
-                    }
-                    current_foreground = color | (bright ? 64 : 0);
+                    current_foreground = static_cast<unsigned char>(
+                        foreground + 8 * background + (bright ? 64 : 0));
                 }
-            } else {
-                supported_markup = false;
-                break;
             }
-            i = end + 1;
+            // Follow the game's case-sensitive tag reader, including unknown
+            // names. Live FONIO NAME:PLURAL contains "fonio plants [brew]":
+            // native wrap hides [brew], so rejecting it here discarded the
+            // whole captured document and reintroduced screen-row guessing.
+            // An unknown tag consumes only its name and first delimiter;
+            // subsequent fields, if any, remain ordinary native text.
         }
         flush();
 
@@ -15993,7 +16019,7 @@ const NativeKnowledgeLayout &Overlay::prepare_native_knowledge_layout(
         document_result->resource_revision = RULESETS.resource_revision();
         // UTF-8 byte colors here; converted to codepoint colors for wrapping.
         std::vector<std::vector<int>> target_foregrounds;
-        if (supported_markup) {
+        {
             std::string whole;
             for (const auto &part : paragraphs) {
                 if (!whole.empty()) whole.push_back(' ');
@@ -16014,9 +16040,12 @@ const NativeKnowledgeLayout &Overlay::prepare_native_knowledge_layout(
                     }
                     if (auto need = translate_character_need_sentence(part))
                         return TranslationResult::translated(part, *need, "need");
-                    auto translated = translate_personality_facet_paragraph(part);
+                    // Preferences has its own native sentence/list boundaries.
+                    // A period inside a RAW field or generated form name must
+                    // never send this document through the facet splitter.
+                    auto translated = translate_character_preference_paragraph(part);
                     if (!translated || translated->translated_sentence_count < 1)
-                        translated = translate_character_preference_paragraph(part);
+                        translated = translate_personality_facet_paragraph(part);
                     if (translated && translated->translated_sentence_count > 0) {
                         if (translated->passthrough_sentence_count > 0) {
                             log_line("WARN", "Native personality sentence not translated: " +
@@ -16584,6 +16613,33 @@ std::vector<Match> Overlay::native_knowledge_matches(
                 native_knowledge_frame_transition_ = true;
             }
         }
+        if (matches.empty() && pause_menu.empty() &&
+                native_character_foreground_view(gps_)) {
+            // A page can already have native boxes when no complete draw
+            // batch survived. Read its complete live source, proving its
+            // native rows against this character grid before using it.
+            // Physical wraps (including a split word) are never prose input.
+            for (int y = 0; y + 1 < gps_->dimy; ++y) {
+                std::string tabs(static_cast<size_t>(gps_->dimx), ' ');
+                for (int x = 0; x < gps_->dimx; ++x) {
+                    const auto *cell = gps_->screen +
+                        (static_cast<size_t>(x) * gps_->dimy + y) * 8;
+                    if (cell[0]) tabs[static_cast<size_t>(x)] =
+                        static_cast<char>(cell[0]);
+                }
+                if ((tabs.find("Traits") == std::string::npos &&
+                     tabs.find("Personality") == std::string::npos) ||
+                    tabs.find("Values") == std::string::npos ||
+                    tabs.find("Preferences") == std::string::npos ||
+                    tabs.find("Needs") == std::string::npos) continue;
+                std::vector<NativeKnowledgeDraw> recovered;
+                const SDL_Rect pane{0, y + 1, gps_->dimx, gps_->dimy - y - 1};
+                if (captured_native_character_personality_document(gps_, pane, &recovered))
+                    matches = resolve_native_knowledge_matches(
+                        std::move(recovered), true, pause_menu);
+                break;
+            }
+        }
         native_knowledge_frame_matches_ = std::move(matches);
     }
     auto result = *native_knowledge_frame_matches_;
@@ -16636,6 +16692,22 @@ std::vector<Match> Overlay::resolve_native_knowledge_matches(
         if (draw.document != draws.front().document || draw.x != left ||
             draw.y != top + i || draw.line != first_native_line + i) return result;
     }
+    // The native token flusher compares row+word lengths before adding its
+    // separating space, so a valid row can be width+1. An individual long
+    // word on an empty row can be longer still. Preserve the box's reading
+    // width while claiming every source byte that its writer actually drew.
+    std::vector<int> source_lengths(static_cast<size_t>(height), width);
+    int source_right = left + width;
+    for (int i = 0; i < height; ++i) {
+        const auto &draw = draws[std::min(static_cast<size_t>(i), draws.size() - 1)];
+        const auto &source = document.rows[static_cast<size_t>(first_native_line + i)];
+        const int clipped_right = static_cast<int>(std::clamp<int64_t>(
+            int64_t(draw.clip[1]) + 1, left, gps_->dimx));
+        source_lengths[static_cast<size_t>(i)] = std::max(width,
+            std::min(static_cast<int>(source.size()), clipped_right - left));
+        source_right = std::max(source_right,
+            left + source_lengths[static_cast<size_t>(i)]);
+    }
     // A fresh capture belongs to the actual base writer. Thoughts and Overview
     // also prove retained rows against the current base after buffer rotation.
     // Top artwork does not change which source document was written.
@@ -16665,7 +16737,7 @@ std::vector<Match> Overlay::resolve_native_knowledge_matches(
         const bool present = data != nullptr;
         hash_bytes(&present, sizeof(present));
         if (!data) return;
-        for (int x = left; x < left + width; ++x) {
+        for (int x = left; x < source_right; ++x) {
             const size_t tile = static_cast<size_t>(x) * gps_->dimy + top;
             hash_bytes(data + tile * stride,
                 static_cast<size_t>(height) * stride * sizeof(*data));
@@ -16706,7 +16778,8 @@ std::vector<Match> Overlay::resolve_native_knowledge_matches(
             bool intact = true;
             for (int i = 0; intact && i < height; ++i) {
                 const auto &source = document.rows[static_cast<size_t>(first_native_line + i)];
-                for (size_t x = 0; x < source.size() && x < static_cast<size_t>(width); ++x) {
+                for (size_t x = 0; x < source.size() &&
+                        x < static_cast<size_t>(source_lengths[static_cast<size_t>(i)]); ++x) {
                     const unsigned char expected = static_cast<unsigned char>(source[x]);
                     if (expected == ' ') continue;
                     const int screen_x = left + static_cast<int>(x);
@@ -16735,7 +16808,8 @@ std::vector<Match> Overlay::resolve_native_knowledge_matches(
     int visible_bytes = 0;
     for (int i = 0; !retained_frame && !paused_document && i < height; ++i) {
         const auto &source = document.rows[static_cast<size_t>(first_native_line + i)];
-        for (size_t x = 0; x < source.size() && x < static_cast<size_t>(width); ++x) {
+        for (size_t x = 0; x < source.size() &&
+                x < static_cast<size_t>(source_lengths[static_cast<size_t>(i)]); ++x) {
             const unsigned char expected = static_cast<unsigned char>(source[x]);
             // Native black-background spaces are transparent; the string
             // terminator also does not clear the remainder of its box. Only
@@ -16833,7 +16907,8 @@ std::vector<Match> Overlay::resolve_native_knowledge_matches(
         // Extra Chinese slots own placement only. They must never suppress
         // a source byte or pretend that DF drew a longer native document.
         const bool source_row = row < height;
-        Match match{left, y, source_row ? width : 0, kNativeKnowledgeDocumentRule,
+        Match match{left, y, source_row ? source_lengths[static_cast<size_t>(row)] : 0,
+            kNativeKnowledgeDocumentRule,
             owns_line ? layout.lines[static_cast<size_t>(target_line)] : std::string{},
             source_row ? document.rows[static_cast<size_t>(first_native_line + row)] : std::string{}};
         match.translation_result = layout.translation_result;
@@ -25839,9 +25914,9 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
         if (!personality_creation)
             return translate_health_description_block(paragraph).has_value();
         if (translate_character_need_sentence(paragraph)) return true;
-        auto translated = translate_personality_facet_paragraph(paragraph);
+        auto translated = translate_character_preference_paragraph(paragraph);
         if (!translated || translated->translated_sentence_count < 1)
-            translated = translate_character_preference_paragraph(paragraph);
+            translated = translate_personality_facet_paragraph(paragraph);
         return translated && translated->translated_sentence_count > 0 &&
             translated->passthrough_sentence_count == 0;
     };
@@ -26314,11 +26389,10 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     std::string first_failed_personality_source;
     size_t passthrough_personality_sentences = 0;
     for (const PersonalityBlock &block : personality_blocks) {
-        auto target = translate_personality_facet_paragraph(block.source);
-        bool preference = false;
+        auto target = translate_character_preference_paragraph(block.source);
+        const bool preference = target && target->translated_sentence_count >= 1;
         if (!target || target->translated_sentence_count < 1) {
-            target = translate_character_preference_paragraph(block.source);
-            preference = target && target->translated_sentence_count >= 1;
+            target = translate_personality_facet_paragraph(block.source);
         }
         personality_targets.push_back(std::move(target));
         preference_targets.push_back(preference);

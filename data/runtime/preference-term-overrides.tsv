@@ -18,3 +18,74 @@ miohippus cheese	中新马奶酪
 miohippus cheese powder	中新马奶酪粉
 melted miohippus cheese	熔融的中新马奶酪
 boiling miohippus cheese	沸腾的中新马奶酪
+# Installed plant STATE_NAME_ADJ:ALL_SOLID fields whose upstream gettext
+# translations are empty. These are complete native material-state names,
+# used by material preferences and the shared item-name supplier.
+sorghum leaf dye	高粱叶染料
+rice husk dye	稻壳染料
+red spinach leaf dye	红菠菜叶染料
+cabbage leaf dye	卷心菜叶染料
+carrot dye	胡萝卜染料
+eggplant dye	茄子染料
+onion skin dye	洋葱皮染料
+peanut shell dye	花生壳染料
+potato skin dye	马铃薯皮染料
+radish dye	萝卜染料
+rhubarb leaf dye	大黄叶染料
+spinach leaf dye	菠菜叶染料
+sweet potato skin dye	甘薯皮染料
+tomato skin dye	番茄皮染料
+turnip skin dye	芜菁皮染料
+watermelon dye	西瓜染料
+grape dye	葡萄染料
+cranberry dye	蔓越莓染料
+bilberry dye	越橘染料
+blueberry dye	蓝莓染料
+blackberry dye	黑莓染料
+raspberry dye	树莓染料
+pineapple leaf dye	菠萝叶染料
+banana leaf dye	香蕉叶染料
+banana peel dye	香蕉皮染料
+coffee bean dye	咖啡豆染料
+guava bark dye	番石榴树皮染料
+guava leaf dye	番石榴叶染料
+tea leaf dye	茶叶染料
+avocado skin dye	鳄梨皮染料
+olive bark dye	橄榄树皮染料
+olive leaf dye	橄榄叶染料
+pomegranate leaf dye	石榴叶染料
+pomegranate rind dye	石榴皮染料
+pomegranate bark dye	石榴树皮染料
+almond shell dye	扁桃壳染料
+apple bark dye	苹果树皮染料
+apple leaf dye	苹果叶染料
+apricot bark dye	杏树皮染料
+bayberry leaf dye	杨梅叶染料
+bayberry dye	杨梅染料
+cherry bark dye	樱桃树皮染料
+cherry leaf dye	樱桃叶染料
+ginkgo leaf dye	银杏叶染料
+hazel bark dye	榛树皮染料
+hazel leaf dye	榛叶染料
+peach bark dye	桃树皮染料
+pear bark dye	白梨树皮染料
+pear leaf dye	白梨叶染料
+persimmon dye	柿染料
+plum bark dye	李树皮染料
+mangrove bark dye	红树皮染料
+mangrove leaf dye	红树叶染料
+pine bark dye	针松树皮染料
+oak bark dye	橡树皮染料
+mahogany bark dye	褐芯树皮染料
+acacia bark dye	刺槐树皮染料
+maple bark dye	枫树皮染料
+willow bark dye	柳树皮染料
+willow leaf dye	柳叶染料
+larch bark dye	落叶松树皮染料
+chestnut bark dye	板栗树皮染料
+chestnut leaf dye	板栗叶染料
+chestnut hull dye	板栗外壳染料
+alder bark dye	桤树皮染料
+alder cone dye	桤树球果染料
+birch bark dye	桦树皮染料
+ash bark dye	白蜡树皮染料

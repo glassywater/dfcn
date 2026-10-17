@@ -476,3 +476,65 @@ PERSONALITY DRAW SOURCE RELAY, CURRENT WINDOWS IMAGE EVIDENCE
   This evidence applies to the two configured Windows PE images. No current
   ELF executable is configured in this Windows workspace, so it does not
   establish a Linux draw call's sheet register or frame slot.
+
+MACHINE-DECOMPILED C AND COMPLETE CURRENT PAGE REFLOW SOURCES
+  DecompileUnitPreferences.java feeds the original instruction boundaries,
+  native switch targets and literal RVAs into Ghidra 12.1.4's decompiler.
+  reference-ghidra-decompiled.c and classic-ghidra-decompiled.c contain its
+  actual C output for each configured PE. Per-function .decompiled.c files
+  retain the same original image identity and RVA header. Native assembler,
+  branches and switch operands remain authoritative where stripped compiler
+  types force Ghidra to infer a calling convention or optimize an expression.
+  The C files are source material, not recovered original C++ source.
+
+  Current native page sources are selected independently from each PE's
+  actual sheet-field-load bytes, and all call targets come from that image.
+  reference-personality-page-flow.asm: 17eec0..17f5d7.
+  classic-personality-page-flow.asm: 17ee50..17f567.
+  The page width is right-left-7; only a changed sheet+1ac0 width rebuilds
+  boxes. Parallel iteration selects sheet+1a90 raw strings and sheet+1aa8
+  text boxes. For each pair, clear the box, write width to box+18, then pass
+  the WHOLE raw string into textbox-wrap. The raw string is not replaced by
+  rendered rows. Cache the width after the whole vector has been reflowed.
+  The input path repeats the same process at reference 1b7900..1b7a18,
+  classic 1b7890..1b79a8. It changes no preference sentence grammar.
+
+  textbox-wrap: reference 858550..859883; classic 855dd0..857103.
+  Empty source allocates one empty row. Nonempty source parses ordinary
+  bytes, spaces, escaped brackets and native [CHAR:...], [C:...], [P], [R],
+  [B] markup. Word/paragraph/line operations are formatting operations;
+  no "When possible", pronoun, likes, consume, or detests literal is present.
+  The producer's [C:7:0:1] tag selects colors and does not create a sentence.
+
+  textbox-flush-token: reference 8599f0..859db2;
+                       classic 857270..857632.
+  MSVC splits this one function into multiple contiguous unwind ranges.
+  Its full original body includes both the sole return and the failure tail;
+  stopping at the first unwind boundary 859a38 would omit the wrap algorithm.
+  state+008 current row, state+309 pending word,
+  state+60a row colors, state+90b word colors, state+c32 current color.
+  If pending word is nonempty:
+    if row.length+word.length <= box.width OR row is empty:
+      insert one space if row nonempty; append whole word and its colors;
+      clear pending word and word colors.
+    else:
+      candidate = row + " " + word, with corresponding color bytes;
+      search backward from box.width for a space;
+      if none found: emit current row and stop this token-flush invocation;
+      else emit candidate before that space, retain suffix as pending word,
+           and repeat while pending word is nonempty.
+  The comparison deliberately omits the optional inserted space. A long
+  individual word on an empty row is appended whole rather than split into
+  arbitrary character fragments. This native function supplies no independent
+  "e" / "arrings" preference-name grammar or "When possible" position.
+
+  textbox-flush-row: reference 8598a0..8599e9;
+                     classic 857120..857269.
+  Remove leading and trailing spaces with their color bytes. A remaining
+  nonempty row allocates 0x602 bytes: 0x301 text bytes followed by 0x301
+  color bytes. Append row pointer to the text box's vector and clear buffers.
+  colored-row-draw: reference ad9790..ad9861; classic ad67d0..ad68a1.
+  The page iterates these allocated rows, clips using scroll/viewport y,
+  passes each row's complete text and color arrays, and increments y.
+  Recovering a preference paragraph therefore means reading its sheet+1a90
+  source string, not adding guessed spaces between physical rendered rows.

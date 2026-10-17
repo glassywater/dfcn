@@ -2399,9 +2399,9 @@ std::vector<Match> Overlay::find_native_character_matches() const {
         if (!personality_creation)
             return translate_health_description_block(paragraph).has_value();
         if (translate_character_need_sentence(paragraph)) return true;
-        auto translated = translate_personality_facet_paragraph(paragraph);
+        auto translated = translate_character_preference_paragraph(paragraph);
         if (!translated || translated->translated_sentence_count < 1)
-            translated = translate_character_preference_paragraph(paragraph);
+            translated = translate_personality_facet_paragraph(paragraph);
         return translated && translated->translated_sentence_count > 0 &&
             translated->passthrough_sentence_count == 0;
     };
@@ -2874,11 +2874,10 @@ std::vector<Match> Overlay::find_native_character_matches() const {
     std::string first_failed_personality_source;
     size_t passthrough_personality_sentences = 0;
     for (const PersonalityBlock &block : personality_blocks) {
-        auto target = translate_personality_facet_paragraph(block.source);
-        bool preference = false;
+        auto target = translate_character_preference_paragraph(block.source);
+        const bool preference = target && target->translated_sentence_count >= 1;
         if (!target || target->translated_sentence_count < 1) {
-            target = translate_character_preference_paragraph(block.source);
-            preference = target && target->translated_sentence_count >= 1;
+            target = translate_personality_facet_paragraph(block.source);
         }
         personality_targets.push_back(std::move(target));
         preference_targets.push_back(preference);

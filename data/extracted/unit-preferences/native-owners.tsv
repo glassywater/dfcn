@@ -21,6 +21,13 @@ reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\
 reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	generated-art-form-name	0xa946e0	0xa94ea2
 reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	english-word-form	0xd2cb50	0xd2cc1c
 reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	titlecase-field	0x52d3c0	0x52d5fe
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	personality-page-flow	0x17eec0	0x17f5d7
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	textbox-wrap	0x858550	0x859883
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	textbox-flush-token	0x8599f0	0x859db2
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	textbox-flush-row	0x8598a0	0x8599e9
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	textbox-clear	0x14e330	0x14e385
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	colored-row-draw	0xad9790	0xad9861
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	personality-input-reflow	0x1b7900	0x1b7a18
 classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47fabe
 classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	unit-name	0xa910b0	0xa91751
 classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	material-state-name	0x14cc890	0x14ccce9
@@ -43,3 +50,10 @@ classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortres
 classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	generated-art-form-name	0xa91760	0xa91f22
 classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	english-word-form	0xd29b90	0xd29c5c
 classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	titlecase-field	0x52ade0	0x52b01e
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	personality-page-flow	0x17ee50	0x17f567
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	textbox-wrap	0x855dd0	0x857103
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	textbox-flush-token	0x857270	0x857632
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	textbox-flush-row	0x857120	0x857269
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	textbox-clear	0x14e2c0	0x14e315
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	colored-row-draw	0xad67d0	0xad68a1
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	personality-input-reflow	0x1b7890	0x1b79a8

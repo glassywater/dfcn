@@ -119,3 +119,121 @@ tubers	块茎
 waxy berries	带蜡质的浆果
 wicked thorns	凶险的尖刺
 wine	果酒
+# Native creature-prefstring (reference RVA e35c70, classic e30be0) copies
+# these complete RAW fields. Keep animal anatomy, sounds and behavior in
+# this scoped namespace instead of importing unrelated UI/dictionary senses.
+ability to annoy	惹人烦恼的本领
+ability to burrow	挖洞能力
+ability to conceal themselves	隐藏自己的能力
+ability to devour wood	啃食木头的能力
+ability to disgust	令人作呕的本领
+ability to expand	膨胀能力
+ability to feast on blood	吸食鲜血的能力
+ability to infest	侵扰能力
+ability to inflate	鼓胀身体的能力
+ability to leap	跳跃能力
+ability to speak	说话能力
+ability to spray ink	喷墨能力
+ability to suck blood	吸血能力
+ability to take down large prey	制服大型猎物的能力
+ability to tie themselves in knots	将身体打结的能力
+aggression	好斗性
+aggressive nature	好斗的天性
+aggressive sparring	激烈的较量
+agility	敏捷身手
+attractive scale patterns	漂亮的鳞片花纹
+beauty	美丽的外表
+beyond enormous rodentness	超乎想象的巨大啮齿动物体态
+big fluffy heads and bellies	毛茸茸的大脑袋和大肚子
+broad antlers	宽大的鹿角
+buzzing	嗡嗡的鸣声
+calming roundness	令人安心的圆润体态
+chatters and clicks	喋喋声和咔嗒声
+chirping	啾啾的鸣声
+chittering	吱吱的叫声
+clucking	咯咯的叫声
+coat patterns	皮毛上的花纹
+comforting whirs	令人安心的呼呼声
+crackles and pops	噼啪作响的声音
+creepiness	诡异的气息
+cunning	狡黠
+deadly bite	致命的咬击
+deafening buzz	震耳欲聋的嗡鸣
+dedication to their young	对幼崽的呵护
+diabolical hunger for the food of others	恶魔般抢食他人食物的欲望
+distinct markings	鲜明的斑纹
+distinct mating call	独特的求偶叫声
+distinct snout	独特的吻部
+distinctive laugh	独特的笑声
+ear tufts	耳簇
+enormous rodentness	巨大的啮齿动物体态
+ferocious charges	凶猛的冲撞
+flightlessness	无法飞行的特性
+flowing movement	流畅的动作
+fondness of shiny objects	对闪亮物件的喜爱
+frilled gill slits	带褶边的鳃裂
+fur	毛皮
+giant eggs	巨大的卵
+gobble	咯咯的叫声
+great jumps	出色的跳跃能力
+great leaps	出色的跳跃能力
+grunts	咕哝的叫声
+haunting cries	瘆人的鸣叫
+head bobs	点头的动作
+high-pitched buzz	尖细的嗡嗡声
+knobs and angles	疙瘩和棱角
+large herds	庞大的兽群
+large stripes, of course	硕大的条纹，当然啦
+licks of fire	跳动的火舌
+long limbs	修长的四肢
+loving nature	充满关爱的天性
+massive schools	庞大的鱼群
+overlapping scales	层层叠叠的鳞片
+pincers	螯
+pouches	育儿袋
+powerful bites	强有力的咬击
+predatory nature	捕食的天性
+prehensile tails	能抓握的尾巴
+prolific breeding	旺盛的繁殖力
+propensity to dig	挖掘的习性
+protective shells	起保护作用的甲壳
+quacks	嘎嘎的叫声
+resonant barking	洪亮的吠叫
+resounding hoots	响亮的呜呜叫声
+rippling fin	波浪般摆动的鳍
+rockiness	岩石般的身躯
+scratching	抓挠的动作
+sense of smell	嗅觉
+shaggy hair	蓬松的毛发
+sharp snout	尖细的吻部
+short tempers	暴躁的脾气
+simple tool use	使用简单工具的本领
+size	体型
+slithering nature	蜿蜒爬行的习性
+slow movement	缓慢的动作
+snorts	哼哼的鼻息声
+snout	吻部
+spines	尖刺
+stinging tail	带刺的尾巴
+stripes, of course	条纹，当然啦
+tendency to flock	结群的习性
+thick, bony armor plates	厚实的骨质甲片
+thirst for blood	嗜血的天性
+tool use	使用工具的本领
+toothy maw	长满利齿的巨口
+tree-felling habits	啃倒树木的习性
+trumpeting	喇叭般的吼叫
+twittering groups	成群叽喳的叫声
+uprooting of trees	将树木连根拔起的本领
+vengeful nature	记仇的天性
+venomous bite	带毒的咬击
+venomous spurs	带毒的距刺
+vicious bites	凶狠的咬击
+waddle	摇摆的步姿
+warning rattle	尾部发出的警告响声
+water wallowing	在水中打滚的习性
+way of flying through the water	在水中滑翔的姿态
+weedy bodies	草蔓般的身体
+whistles	口哨般的叫声
+woolly legs	毛茸茸的腿
+wriggling	蠕动的姿态

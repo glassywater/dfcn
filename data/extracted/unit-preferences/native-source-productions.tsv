@@ -23,15 +23,25 @@ Preferences/likes	11	visible; form found and named	0x480814	0x47e3d4	the sight o
 Preferences/likes	9..11	visible; form missing or unnamed	0x480724	0x47e2e4	{empty body; list separator still appended}
 Preferences/likes	default/outside 0..11	visible; not type 2 or 3	0x48025e	0x47de1e	{empty body; list separator still appended}
 Preferences/food	48	visible; MEAT creature name absent	0x480b63	0x47e723	unknown meat
+Preferences/food	48	visible; MEAT creature name present	0x480af2	0x47e6b2	{creature_raw_NAME:SINGULAR selected by material_index}
 Preferences/food	49	visible; FISH creature name absent	0x480bec	0x47e7ac	unknown fish
+Preferences/food	49	visible; FISH creature name present	0x480b7b	0x47e73b	{creature_raw_NAME:SINGULAR selected by material_type}
 Preferences/food	54	visible; PLANT plural absent	0x480c65	0x47e825	unknown plants
+Preferences/food	54	visible; PLANT plural present	0x480c04	0x47e7c4	{plant_raw_NAME:PLURAL}
 Preferences/food	69	visible; DRINK item name absent	0x480cd7	0x47e897	unknown drink
+Preferences/food	69	visible; DRINK item name present	0x480c7d	0x47e83d	{material_STATE_NAME:LIQUID via shared item formatter}
 Preferences/food	73	visible; LIQUID_MISC item name absent	0x480d49	0x47e909	unknown liquid
+Preferences/food	73	visible; LIQUID_MISC item name present	0x480cef	0x47e8af	{shared item formatter LIQUID_MISC field}
 Preferences/food	53	visible; SEEDS item name absent	0x480dbb	0x47e97b	unknown seeds
+Preferences/food	53	visible; SEEDS item name present	0x480d61	0x47e921	{plant seed plural or material solid-state seed item field}
 Preferences/food	56	visible; PLANT_GROWTH item name absent	0x480e2e	0x47e9ee	unknown leaves
+Preferences/food	56	visible; PLANT_GROWTH item name present	0x480dd3	0x47e993	{plant growth plural or shared generic leaves and fruit field}
 Preferences/food	70	visible; POWDER_MISC item name absent	0x480ea0	0x47ea60	unknown powder
+Preferences/food	70	visible; POWDER_MISC item name present	0x480e46	0x47ea06	{material_STATE_NAME:POWDER via shared item formatter}
 Preferences/food	71	visible; CHEESE item name absent	0x480f12	0x47ead2	unknown cheese
+Preferences/food	71	visible; CHEESE item name present	0x480eb8	0x47ea78	{material_STATE_NAME:SOLID via shared item formatter}
 Preferences/food	default	visible; all other item types; item name absent	0x480fb2	0x47eb72	unknown item
+Preferences/food	default	visible; all other item types; item name present	0x480f2a	0x47eaea	{shared item formatter plural field}
 Preferences/all-lists	remaining>1	after current visible preference	0x480871	0x47e431	, 
 Preferences/all-lists	remaining==1	after current visible preference	0x48087c	0x47e43c	 and 
 Preferences/all-lists	remaining==0	after last visible preference	0x480885	0x47e445	.  

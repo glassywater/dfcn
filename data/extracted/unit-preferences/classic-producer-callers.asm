@@ -1,6 +1,4 @@
-0x001a521e: pop    rdi
-0x001a521f: or     BYTE PTR [rax-0x75],cl
-0x001a5222: ja     0x1401a5234
+0x001a5220: mov    rsi,QWORD PTR [rdi+0x10]
 0x001a5224: mov    rdi,QWORD PTR [rdi+0x20]
 0x001a5228: mov    r15,QWORD PTR [rbp+0x50]
 0x001a522c: nop    DWORD PTR [rax+0x0]
@@ -96,9 +94,11 @@
 0x001a53b6: je     0x1401a598f
 0x001a53bc: mov    DWORD PTR [rsi+0x1cfc],r14d
 0x001a53c3: mov    BYTE PTR [rsi+0x1d00],r14b
-0x001a53ca: rex.R
-0x001a53cb: .byte 0x89
-0x001a53cc: mov    dh,0x4
+0x001a53ca: mov    DWORD PTR [rsi+0x1d04],r14d
+0x001a53d1: mov    BYTE PTR [rsi+0x1d08],r14b
+0x001a53d8: mov    BYTE PTR [rsi+0x1d30],r14b
+0x001a53df: mov    DWORD PTR [rsi+0x1d34],r14d
+0x001a53e6: mov    BYTE PTR [rsi+0x1d38],r14b
 
 0x001b7a82: cmp    r15d,DWORD PTR [rsp+0x44]
 0x001b7a87: jg     0x1401b7b00
@@ -190,4 +190,14 @@
 0x001b7c26: call   0x1400bb2f0
 0x001b7c2b: mov    eax,DWORD PTR [rbp-0x80]
 0x001b7c2e: add    eax,0xfffffffe
-0x001b7c31: .byte 0x8b
+0x001b7c31: mov    ecx,edi
+0x001b7c33: inc    ecx
+0x001b7c35: lea    r9d,[r12-0x1]
+0x001b7c3a: mov    DWORD PTR [rsp+0x30],eax
+0x001b7c3e: mov    DWORD PTR [rsp+0x28],ecx
+0x001b7c42: mov    DWORD PTR [rsp+0x20],esi
+0x001b7c46: xor    r8d,r8d
+0x001b7c49: mov    edx,DWORD PTR [r13+0x1a84]
+0x001b7c50: lea    rcx,[rbp+0x1078]
+0x001b7c57: call   0x1400bb310
+0x001b7c5c: lea    r9,[r13+0x1a88]
