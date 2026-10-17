@@ -3,6 +3,7 @@
 // literal words can split a name, purpose, species and sex into separate runs.
 void Overlay::append_character_work_animal_rows(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y) const {
+    if (!native_character_translation_active(gps_)) return;
     if (!gps_ || gps_->dimx <= 0 || gps_->dimy <= 0 ||
         rows.size() != static_cast<size_t>(gps_->dimy)) return;
     std::vector<std::string> context(gps_->dimy);
@@ -166,6 +167,7 @@ void Overlay::append_character_work_animal_rows(std::vector<std::string> &rows,
 }
 
 void Overlay::layout_character_work_animal_rows(SDL_Renderer *renderer) {
+    if (!native_character_translation_active(gps_)) return;
     if (!renderer || !face_ || !gps_ || gps_->tile_pixel_x <= 0 || gps_->tile_pixel_y <= 0) return;
     for (Match &match : prepared_matches_) {
         if (match.rule != kCharacterWorkAnimalRowRule || !match.native_picture_caption_box ||

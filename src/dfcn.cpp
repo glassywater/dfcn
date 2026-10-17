@@ -1904,6 +1904,17 @@ struct NativeOverviewQuoteDraw {
 };
 static std::mutex g_native_overview_quote_mutex;
 static std::optional<NativeOverviewQuoteDraw> g_native_overview_quote_draw;
+struct NativeOverviewEventSource {
+    std::string source;
+    int32_t collection_id = -1;
+    bool ambiguous = false;
+    std::shared_ptr<const NativeHistoryDocument> document;
+};
+
+static std::mutex g_native_overview_event_mutex;
+static std::array<NativeOverviewEventSource, 256> g_native_overview_event_sources;
+static size_t g_native_overview_event_next = 0;
+static uint64_t g_native_overview_event_revision = 0;
 static std::atomic_uint64_t g_native_overview_quote_revision{1};
 static std::vector<NativeParagraphCapture> captured_native_workshop_requirements();
 static int native_workshop_recipe_paragraph_width();
@@ -2428,6 +2439,13 @@ static NativeTextGridOrigin native_text_grid_origin(
 static thread_local const graphicst *g_native_help_write_graphics = nullptr;
 static thread_local const graphicst *g_native_resolution_write_graphics = nullptr;
 static thread_local const graphicst *g_native_info_write_graphics = nullptr;
+static thread_local const graphicst *g_native_character_write_graphics = nullptr;
+static thread_local bool g_native_character_foreground = false;
+static bool native_character_foreground_view(const graphicst *) noexcept;
+static bool native_character_translation_active(const graphicst *) noexcept;
+static bool native_character_background_view(const graphicst *) noexcept;
+static bool native_character_background_cell_hidden(const graphicst *, int, int) noexcept;
+static bool native_character_background_copy_hidden(SDL_Renderer *, const SDL_Rect *) noexcept;
 static thread_local const graphicst *g_native_stocks_write_graphics = nullptr;
 static thread_local const graphicst *g_native_squads_write_graphics = nullptr;
 static thread_local const graphicst *g_native_reports_write_graphics = nullptr;
@@ -3610,6 +3628,9 @@ public:
     void render_native_reports_layer(SDL_Renderer *renderer);
     void render_native_announcement_layer(SDL_Renderer *renderer, bool reports);
     void render_native_info_layer(SDL_Renderer *renderer);
+    void render_native_character_layer(SDL_Renderer *renderer);
+    void layout_character_panels(SDL_Renderer *renderer);
+    std::vector<Match> find_native_character_matches() const;
     void render_native_stocks_layer(SDL_Renderer *renderer);
     void prepare_native_squads_text();
     void render_native_squads_layer(SDL_Renderer *renderer, const Overlay &source);
@@ -16862,6 +16883,7 @@ std::vector<Match> Overlay::resolve_native_knowledge_matches(
 #include "native_resolution_layers.inc"
 #include "native_map_layers.inc"
 #include "native_info_layers.inc"
+#include "native_character_layers.inc"
 #include "native_stocks_layers.inc"
 #include "native_tooltip_layers.inc"
 #include "native_notification_layers.inc"
@@ -17401,12 +17423,14 @@ static void native_ui_paint_grid(NativeUiLayerStorage &layer, SDL_Renderer *rend
 #include "native_resolution_layer_translation.inc"
 #include "native_help_layer_translation.inc"
 #include "native_info_layer_matching.inc"
+#include "native_character_layer_matching.inc"
 #include "fortress_map_matching.inc"
 #include "native_notification_layer_matching.inc"
 #include "native_pause_layer_matching.inc"
 #include "native_stocks_layer_translation.inc"
 #include "native_squads_layer_matching.inc"
 #include "native_info_layer_translation.inc"
+#include "native_character_layer_translation.inc"
 #include "native_squads_layer_translation.inc"
 #include "native_tooltip_layer_translation.inc"
 #include "native_notification_layer_translation.inc"
@@ -17475,6 +17499,11 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     }
     NativeUiTextReadView ui_text_read(const_cast<Overlay &>(*this), gps_,
         native_map_background_view(gps_));
+    // The native sheet owner supplies the entire private input. Never probe
+    // the world, management pages or map from this component's captions.
+    if (native_character_foreground_view(gps_))
+        return find_native_character_matches();
+    const bool character_page = native_character_translation_active(gps_);
     NativeHistoryFrameScope history_frame(gps_);
     // Title captions have no item, character or history semantics. Establish
     // the complete current menu before entering the shared page pipeline.
@@ -17769,7 +17798,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     // these complete fields before generic words, names or picture captions.
     // Immediate raw-layer scans need the same current logical composite as
     // the final overlay; source-byte masks project ownership back per layer.
-    if (!local_fortress_hud) {
+    if (character_page && !local_fortress_hud) {
         auto room_context = screen_rows;
         int room_tabs_y = -1;
         for (int y = 0; y < gps_->dimy; ++y) {
@@ -18144,13 +18173,13 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     // Authored credits are complete records, never generated person names.
     // Claim their original bytes (including CR) in both suppression and draw.
     append_credits_rows(screen_rows, result, only_y);
-    append_character_kill_rows(screen_rows, result, only_y);
+    if (character_page) append_character_kill_rows(screen_rows, result, only_y);
     append_health_history_rows(screen_rows, result, only_y);
     // Relations own both native rows before clipped identity recovery can
     // consume only the name of a living relative. Keep the same record
     // layout for shortened portrait captions and plain historical names.
-    append_character_relation_rows(screen_rows, result, only_y);
-    append_character_work_animal_rows(screen_rows, result, only_y);
+    if (character_page) append_character_relation_rows(screen_rows, result, only_y);
+    if (character_page) append_character_work_animal_rows(screen_rows, result, only_y);
     append_color_picker_rows(screen_rows, result, only_y, screen_override != nullptr);
     }
 
@@ -18449,8 +18478,10 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
             std::fill_n(screen_rows[y].begin() + x, length, ' ');
         }
     }
-    const auto character_overview_rows = capture_character_overview_rows();
-    const auto character_group_rows = capture_character_group_rows();
+    const auto character_overview_rows = character_page
+        ? capture_character_overview_rows() : std::vector<NativeTextCard>{};
+    const auto character_group_rows = character_page
+        ? capture_character_group_rows() : std::vector<NativeTextCard>{};
     std::optional<NativeTextCard> worldgen_summary;
     const auto finish_matches = [&]() {
         if (worldgen_summary) compose_native_text_rows(
@@ -19877,7 +19908,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     if (native_knowledge.empty())
         append_character_knowledge_matches(screen_rows, result, only_y, screen_override);
 
-    append_character_skill_tab_matches(screen_rows, result, only_y);
+    if (character_page) append_character_skill_tab_matches(screen_rows, result, only_y);
 
     context_detail.checkpoint(RenderTimingStage::Legends);
     // Legends owns complete colored names, relationship annotations and
@@ -21709,7 +21740,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     };
     int character_health_tabs_y = -1;
     std::string character_health_tabs;
-    for (int row_y = 0; row_y < gps_->dimy; ++row_y) {
+    for (int row_y = 0; character_page && row_y < gps_->dimy; ++row_y) {
         if (is_character_health_tabs_row(
                 screen_rows[static_cast<size_t>(row_y)])) {
             character_health_tabs_y = row_y;
@@ -21722,7 +21753,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     // raw-layer scan can otherwise draw the reconstructed Chinese body part
     // without hiding every independently rendered source fragment.
     if (character_health_tabs_y < 0 && screen_override) {
-        for (int row_y = 0; row_y < gps_->dimy; ++row_y) {
+        for (int row_y = 0; character_page && row_y < gps_->dimy; ++row_y) {
             std::string composed(static_cast<size_t>(gps_->dimx), ' ');
             for (int x = 0; x < gps_->dimx; ++x) {
                 const unsigned char ch = visible_char_at(x, row_y);
@@ -21741,7 +21772,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
         return !character_information_tab_fields(probe).empty();
     };
     auto find_character_information_tabs = [&](auto read_character) {
-        for (int row_y = 0; row_y < gps_->dimy; ++row_y) {
+        for (int row_y = 0; character_page && row_y < gps_->dimy; ++row_y) {
             std::string probe(static_cast<size_t>(gps_->dimx), ' ');
             for (int x = 0; x < gps_->dimx; ++x) {
                 const unsigned char ch = read_character(x, row_y);
@@ -21843,7 +21874,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     int character_quote_tabs_y = -1;
     int character_footer_tabs_y = -1;
     const auto quote_settings = native_ui_settings();
-    for (int y = 0; y < gps_->dimy; ++y) {
+    for (int y = 0; character_page && y < gps_->dimy; ++y) {
         std::string &row = quote_rows[static_cast<size_t>(y)];
         for (int x = 0; x < gps_->dimx; ++x) {
             bool top = false;
@@ -21873,7 +21904,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     // Keep the same layer/occlusion policy as header layout: immediate glyph
     // suppression and classic atlas text use the current logical composite;
     // graphical Present still respects actual foreground occlusion.
-    for (int y = 0; y < gps_->dimy; ++y) {
+    for (int y = 0; character_page && y < gps_->dimy; ++y) {
         for (int x = 0; x < gps_->dimx; ++x) {
             unsigned char ch = 0;
             if (screen_override || (header_settings && header_settings->classic)) {
@@ -21905,7 +21936,8 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
         static_cast<size_t>(gps_->dimy));
     if (config_.compositional_rules) {
         for (Match &match : capture_inventory_rows(
-                 screen_rows, quote_rows, character_quote_tabs_y)) {
+                 screen_rows, character_page ? quote_rows : background_rows,
+                 character_quote_tabs_y)) {
             inventory_rows[static_cast<size_t>(match.y)].push_back(std::move(match));
         }
     }
@@ -24075,7 +24107,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
 
     rows_timing.stop();
     RenderTimingScope post_timing(render_timings_, config_.trace_render_timing, RenderTimingStage::PostMatch);
-    if (native_knowledge.empty()) {
+    if (character_page && native_knowledge.empty()) {
     // Character information -> Skills -> Knowledge shows generated art-form
     // prose through a scrolling grid. The five-tab band identifies that
     // viewport; its visible rows locate the native draw, while the complete
@@ -26119,7 +26151,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     // puts outdoor adaptation and similar stable notes below the main facets.
     int personality_subtabs_y = -1;
     std::optional<AsciiPanelFrame> personality_frame;
-    for (int y = 0; y < gps_->dimy; ++y) {
+    for (int y = 0; character_page && y < gps_->dimy; ++y) {
         const std::string &row = screen_rows[static_cast<size_t>(y)];
         if ((row.find("Traits") != std::string::npos ||
              row.find("Personality") != std::string::npos) &&
@@ -26533,6 +26565,9 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
 }
 
 bool Overlay::character_overview_context_current() const {
+    // Independent sheet captures cannot invalidate the background's
+    // same-frame glyph cache after their source registry is swapped out.
+    if (!native_character_translation_active(gps_)) return true;
     return gps_ && character_overview_context_epoch_ == draw_epoch_ &&
         character_overview_context_revision_ ==
             g_native_overview_quote_revision.load(std::memory_order_acquire) &&
@@ -26542,7 +26577,7 @@ bool Overlay::character_overview_context_current() const {
 }
 
 void Overlay::refresh_character_overview_context(bool force) {
-    if (!gps_) return;
+    if (!gps_ || !native_character_translation_active(gps_)) return;
     const auto revision = g_native_overview_quote_revision.load(std::memory_order_acquire);
     if (!force && character_overview_context_epoch_ == draw_epoch_ &&
             character_overview_context_revision_ == revision &&
@@ -37278,541 +37313,12 @@ void Overlay::layout_fortress_header(SDL_Renderer *renderer) {
 
 #include "settings_layout.inc"
 
-void Overlay::layout_structured_panels(SDL_Renderer *renderer) {
-    if (!gps_) return;
-    // All fields in a character sheet share the same unchanged native grid.
-    // Reuse its border/frame reads while fitting the header and tab content;
-    // discard them on return so another page never inherits their geometry.
+void Overlay::layout_character_panels(SDL_Renderer *renderer) {
+    if (!gps_ || !native_character_translation_active(gps_)) return;
     NativePanelReadScope panel_reads(gps_);
-
     const int arena_font_pixels = std::max(
         config_.min_font_pixels,
         static_cast<int>(gps_->tile_pixel_y * config_.font_scale));
-
-    // Each clickable figure or site/entity identity stays on its native row.
-    // Commas, species and generated "the/of" titles are not prose evidence.
-    // Use the list/button's width, reserving adjacent date/type columns, and
-    // exclude all records from both multiline grouping passes.
-    std::vector<Match *> figure_records;
-    int figure_left = gps_->dimx;
-    for (Match &match : prepared_matches_) {
-        if (match.rule != kLegendsIdentityRecordRule) continue;
-        figure_records.push_back(&match);
-        figure_left = std::min(figure_left, match.x);
-    }
-    if (!figure_records.empty() && gps_->tile_pixel_x > 0 && gps_->tile_pixel_y > 0) {
-        const int tile_w = gps_->tile_pixel_x;
-        const int tile_h = gps_->tile_pixel_y;
-        const int origin_x = (gps_->screen_pixel_x - tile_w * gps_->dimx) / 2;
-        const int origin_y = (gps_->screen_pixel_y - tile_h * gps_->dimy) / 2;
-        int list_right = gps_->dimx - 3; // keep the outer frame and scrollbar clear
-        for (const Match *record : figure_records) {
-            const auto frame = find_ascii_panel_frame(
-                record->x, record->x + record->length, record->y,
-                gps_->dimx, gps_->dimy,
-                [this](int x, int y) { return visible_char_at(x, y); });
-            if (frame) {
-                list_right = std::min(list_right, frame->right);
-            } else if (const auto rect = graphical_button_rect(graphical_rects_,
-                    origin_x + (record->x * 2 + record->length) * tile_w / 2,
-                    origin_y + record->y * tile_h + tile_h / 2,
-                    record->length * tile_w, tile_h, gps_->screen_pixel_x, true)) {
-                list_right = std::min(list_right,
-                    (rect->x + rect->w - origin_x) / tile_w - 1);
-            }
-        }
-        auto is_figure_year = [this](const Match &match) {
-            if (match.rule < 0 || static_cast<size_t>(match.rule) >= rules_.size())
-                return false;
-            // These are the reviewed numeric TSV templates. Reuse their
-            // translated targets, including signed/multi-digit years, instead
-            // of maintaining separate birth/death wording in the renderer.
-            const Rule &rule = rules_[static_cast<size_t>(match.rule)];
-            return rule.numeric_template &&
-                (rule.source == "b. {d}" || rule.source == "d. {d}" ||
-                 rule.source == "b. {d} d. {d}");
-        };
-
-        // Sites is a name/type table. Centering each translated type inside
-        // its English span makes Town, Fortress and Mysterious lair drift to
-        // different horizontal positions. Use one shared column, not a list
-        // of type-specific translations or offsets. The complete identity
-        // and single trailing field keep this out of detail prose/date rows;
-        // no minimum row count is needed for a filtered one-site result.
-        const bool sites_list = std::any_of(prepared_matches_.begin(),
-            prepared_matches_.end(), [](const Match &match) {
-                return legends_export_control_present(match.source);
-            }) && std::any_of(prepared_matches_.begin(),
-            prepared_matches_.end(), [](const Match &match) {
-                return match.source == "Sites";
-            });
-        std::vector<Match *> site_types;
-        int type_left = list_right;
-        int right = list_right;
-        if (sites_list) {
-            auto native_row = [](const Match &match) {
-                return match.native_split_text ? match.native_split_top_y : match.y;
-            };
-            for (const Match *record : figure_records) {
-                if (record->target.empty() || record->native_split_duplicate ||
-                    !split_generated_name_identity(record->source)) continue;
-                Match *type = nullptr;
-                int fields = 0;
-                for (Match &other : prepared_matches_) {
-                    if (other.target.empty() || other.native_split_duplicate ||
-                        native_row(other) != native_row(*record) ||
-                        other.x < record->x + record->length ||
-                        other.x >= list_right) continue;
-                    type = &other;
-                    ++fields;
-                }
-                if (fields != 1 || is_figure_year(*type)) continue;
-                site_types.push_back(type);
-                type_left = std::min(type_left, type->x);
-            }
-        }
-        if (!site_types.empty() && type_left > figure_left && type_left < list_right) {
-            right = type_left - 1;
-            const int width = std::max(1,
-                (list_right - type_left) * tile_w - 2 * config_.horizontal_padding);
-            const int pixels = unified_font_pixels();
-            for (Match *type : site_types) {
-                type->layout_x = type_left;
-                type->layout_y = type->y;
-                type->layout_length = list_right - type_left;
-                type->layout_clip_right = list_right;
-                type->layout_left = true;
-                type->layout_font_pixels = pixels;
-                type->layout_lock_font_pixels = true;
-                type->layout_line_height_pixels = tile_h;
-                preserve_fixed_font_text_box(*type, get_glyph_texture(renderer,
-                    type->target, width, tile_h, pixels, 0, true),
-                    pixels, *gps_, config_.horizontal_padding);
-            }
-        }
-        for (const Match *record : figure_records) {
-            std::vector<Match *> columns;
-            for (Match &other : prepared_matches_) {
-                if (other.y == record->y && !other.target.empty() &&
-                    other.x >= record->x + record->length)
-                    columns.push_back(&other);
-            }
-            // Allocate from the right so separately drawn b./d. fields never
-            // overlap. A combined TSV match is measured as a single field.
-            std::sort(columns.begin(), columns.end(), [](const Match *a, const Match *b) {
-                return a->x > b->x;
-            });
-            int column_right = list_right;
-            for (Match *column : columns) {
-                int column_left = column->layout_x >= 0 ? column->layout_x : column->x;
-                if (is_figure_year(*column) && column_right > figure_left + 1) {
-                    const GlyphTexture *glyph = get_glyph_texture(renderer,
-                        column->target, std::max(1, (list_right - figure_left) * tile_w),
-                        tile_h, arena_font_pixels, 0, true);
-                    if (glyph && glyph->texture) {
-                        const int needed_columns = (glyph->width +
-                            2 * config_.horizontal_padding + tile_w - 1) / tile_w;
-                        // Use the list's spare space, shifting left only when
-                        // the normal-size translation would hit the scrollbar
-                        // or the next date. Never squeeze it into `d. 2`'s
-                        // four original cells. Keep x/y/length unchanged for
-                        // native glyph suppression, colors and click targets.
-                        column_left = std::max(figure_left + 1,
-                            std::min(column->x, column_right - needed_columns));
-                        column->layout_x = column_left;
-                        column->layout_y = column->y;
-                        column->layout_length = column_right - column_left;
-                        column->layout_clip_right = column_right;
-                        column->layout_left = true;
-                        column->layout_font_pixels = arena_font_pixels;
-                        column->layout_lock_font_pixels = true;
-                        column->layout_visual_height_pixels = 0;
-                        column->layout_line_height_pixels = tile_h;
-                    }
-                }
-                column_right = std::min(column_right, column_left - 1);
-                right = std::min(right, column_right);
-            }
-        }
-        if (right > figure_left) {
-            for (Match *record : figure_records) {
-                const int record_right = record->layout_clip_right >= 0
-                    ? std::min(right, record->layout_clip_right) : right;
-                record->layout_x = figure_left;
-                record->layout_y = record->y;
-                record->layout_length = std::max(0, record_right - figure_left);
-                record->layout_clip_right = record_right;
-                record->layout_left = true;
-                record->layout_font_pixels = arena_font_pixels;
-            }
-        }
-    }
-
-    layout_legends_typed_lists(renderer);
-    layout_legends_details(renderer);
-
-    // Legends' category index is a label/count table. The English labels
-    // share a left inset, but centering each shorter translation inside its
-    // individual source span gives all nine rows different left edges.
-    // Require the index prompt as well as its categories so these common
-    // words do not change the layout of browser tabs or other game screens.
-    const auto legends_prompt = std::find_if(
-        prepared_matches_.begin(), prepared_matches_.end(), [](const Match &match) {
-            return match.source == "Select a category below to begin.";
-        });
-    if (legends_prompt != prepared_matches_.end()) {
-        std::vector<Match *> labels;
-        int left = gps_->dimx, right = 0;
-        for (Match &match : prepared_matches_) {
-            if (match.target.empty() || match.y <= legends_prompt->y ||
-                std::find(kLegendsCategories.begin(), kLegendsCategories.end(),
-                          match.source) == kLegendsCategories.end()) continue;
-            labels.push_back(&match);
-            left = std::min(left, match.x);
-            right = std::max(right, match.x + match.length);
-        }
-        if (labels.size() >= 3 && right > left) {
-            // Reuse only the union of the native label spans: it is already
-            // inside the buttons and stops before the right-aligned counts.
-            // Source coordinates, rows, colors and native hitboxes stay intact.
-            for (Match *label : labels) {
-                label->layout_x = left;
-                label->layout_length = right - left;
-                label->layout_left = true;
-                label->layout_font_pixels = arena_font_pixels;
-            }
-
-            // These two sentences are centered headings, not left-aligned
-            // prose. Override the dictionary's l flag only on this screen.
-            // Use a symmetric screen box to avoid source-length/parity drift,
-            // reserving room for Export XML and Done on the title's row.
-            for (Match &match : prepared_matches_) {
-                if (&match != &*legends_prompt &&
-                    !(match.y < legends_prompt->y &&
-                      match.source.starts_with("Explore the history of "))) continue;
-                int margin = 2;
-                for (const Match &control : prepared_matches_) {
-                    if (control.y != match.y) continue;
-                    if (legends_export_control_present(control.source)) {
-                        margin = std::max(margin, control.x + control.length + 2);
-                    } else if (control.source == "Done") {
-                        margin = std::max(margin, gps_->dimx - control.x + 2);
-                    }
-                }
-                if (gps_->dimx <= margin * 2) continue;
-                match.layout_x = margin;
-                match.layout_length = gps_->dimx - margin * 2;
-                match.layout_left = false;
-                // Exclude both headings and category labels from subsequent
-                // prose regrouping, including the punctuated Codices caption.
-                match.layout_font_pixels = arena_font_pixels;
-            }
-            return;
-        }
-    }
-
-    if (gps_->tile_pixel_x > 0 && gps_->tile_pixel_y > 0) {
-        std::vector<Match *> labels;
-        int left = gps_->dimx, right = 0;
-        for (Match &match : prepared_matches_) {
-            if (match.rule != kAdventureBackgroundLabelRule) continue;
-            labels.push_back(&match);
-            left = std::min(left, match.layout_x);
-            right = std::max(right, match.layout_x + match.layout_length);
-        }
-        if (!labels.empty()) {
-            const int tile_w = gps_->tile_pixel_x;
-            const int tile_h = gps_->tile_pixel_y;
-            const int origin_x = (gps_->screen_pixel_x - tile_w * gps_->dimx) / 2;
-            const int origin_y = (gps_->screen_pixel_y - tile_h * gps_->dimy) / 2;
-            int widget_right = gps_->dimx;
-            bool has_widget = false;
-            for (const Match *label : labels) {
-                if (const auto box = native_button_text_rect(*gps_, label->x,
-                        label->x + label->length, label->y, true)) {
-                    widget_right = std::min(widget_right, box->x + box->w);
-                    has_widget = true;
-                    continue;
-                }
-                const auto frame = find_ascii_panel_frame(
-                    label->x, label->x + label->length, label->y,
-                    gps_->dimx, gps_->dimy,
-                    [this](int x, int y) { return visible_char_at(x, y); });
-                if (frame && frame->bottom - frame->top <= 6) {
-                    widget_right = std::min(widget_right, frame->right);
-                    has_widget = true;
-                } else if (const auto rect = graphical_button_rect(
-                        graphical_rects_,
-                        origin_x + (label->x * 2 + label->length) * tile_w / 2,
-                        origin_y + label->y * tile_h + tile_h / 2,
-                        (right - left) * tile_w, tile_h, gps_->screen_pixel_x)) {
-                    const int edge = (rect->x + rect->w - origin_x) / tile_w - 1;
-                    if (edge > left) {
-                        widget_right = std::min(widget_right, edge);
-                        has_widget = true;
-                    }
-                }
-            }
-            if (has_widget) right = widget_right;
-            int shared_font = std::min(arena_font_pixels, std::max(1, tile_h - 2));
-            for (const Match *label : labels) {
-                const int available_pixels = std::max(1,
-                    (right - label->x) * tile_w - 2 * config_.horizontal_padding - 2);
-                std::vector<uint32_t> cps;
-                if (decode_utf8(label->target, cps) && !cps.empty())
-                    shared_font = std::min(shared_font,
-                        std::max(1, available_pixels / static_cast<int>(cps.size())));
-            }
-            for (Match *label : labels) {
-                // Keep the native title/subtitle insets with a shared font.
-                // Reserving the full button width also prevents long names
-                // from shrinking independently or crossing into the map.
-                label->layout_x = label->x;
-                label->layout_length = std::max(1, right - label->x);
-                label->layout_clip_right = right;
-                label->layout_left = true;
-                label->layout_font_pixels = shared_font;
-            }
-        }
-    }
-    const bool adventure_destiny_screen = std::any_of(
-        prepared_matches_.begin(), prepared_matches_.end(), [](const Match &match) {
-            return match.source == "Adventurer, choose your destiny!";
-        }) && std::any_of(
-        prepared_matches_.begin(), prepared_matches_.end(), [](const Match &match) {
-            return match.source == "Onward to character creation";
-        });
-    if (adventure_destiny_screen) {
-        // These are independent captions, not prose. In particular the title,
-        // footer and onward button formerly inherited an l flag and drifted
-        // left of their native centres. The four description boxes already
-        // have complete translations and locked layout from find_matches().
-        for (Match &match : prepared_matches_) {
-            if (match.source != "Adventurer, choose your destiny!" &&
-                match.source != "Chosen" && match.source != "Hero" &&
-                match.source != "Ordinary" && match.source != "Include tutorial" &&
-                match.source != "Easy difficulty" && match.source != "Normal difficulty" &&
-                match.source != "Hard difficulty" &&
-                match.source != "(Any unretired characters in your party will be unaffected.)" &&
-                match.source != "Onward to character creation") continue;
-            match.layout_x = match.x;
-            match.layout_length = match.length;
-            match.layout_left = false;
-            match.layout_font_pixels = arena_font_pixels;
-        }
-
-        // The difficulty summary is a table, not three independent labels.
-        // Whole numeric templates own each row (including its changing value),
-        // so Equipment/pet can no longer become separately centred fragments.
-        // Keep source x/y/length and foreground intact for glyph suppression
-        // and the native green/cyan/yellow row colors; only share the text box.
-        static constexpr std::array<std::string_view, 3> point_templates = {{
-            "Attribute points: {d}",
-            "Skill points: {d}",
-            "Equipment/pet points: {d}",
-        }};
-        std::array<Match *, 3> point_rows{};
-        for (Match &match : prepared_matches_) {
-            if (match.target.empty() || match.rule < 0 ||
-                static_cast<size_t>(match.rule) >= rules_.size()) continue;
-            const auto &source = rules_[static_cast<size_t>(match.rule)].source;
-            const auto found = std::find(point_templates.begin(), point_templates.end(), source);
-            if (found != point_templates.end())
-                point_rows[static_cast<size_t>(found - point_templates.begin())] = &match;
-        }
-        if (std::all_of(point_rows.begin(), point_rows.end(),
-                        [](const Match *row) { return row != nullptr; }) &&
-            point_rows[1]->y == point_rows[0]->y + 1 &&
-            point_rows[2]->y == point_rows[1]->y + 1 &&
-            std::abs(point_rows[1]->x - point_rows[0]->x) <= 2 &&
-            std::abs(point_rows[2]->x - point_rows[0]->x) <= 2) {
-            int left = gps_->dimx, right = 0;
-            for (const Match *row : point_rows) {
-                left = std::min(left, row->x);
-                right = std::max(right, row->x + row->length);
-            }
-            for (Match *row : point_rows) {
-                row->layout_x = left;
-                row->layout_length = right - left;
-                row->layout_left = true;
-                row->layout_font_pixels = arena_font_pixels;
-            }
-            // The selected difficulty is repeated immediately above the
-            // points. Centre that heading in this card, not the shorter
-            // English heading span; leave the three difficulty buttons alone.
-            for (Match &match : prepared_matches_) {
-                if (match.y != point_rows[0]->y - 1 || match.x < left ||
-                    match.x + match.length > right ||
-                    (match.source != "Easy difficulty" &&
-                     match.source != "Normal difficulty" &&
-                     match.source != "Hard difficulty")) continue;
-                match.layout_x = left;
-                match.layout_length = right - left;
-            }
-        }
-        return;
-    }
-    layout_embark_named_item_rows(
-        prepared_matches_, gps_->dimx, gps_->tile_pixel_y,
-        arena_font_pixels);
-    layout_embark_item_category_rows(renderer, arena_font_pixels);
-    layout_embark_item_cost_rows(
-        prepared_matches_, gps_->dimx, gps_->tile_pixel_y,
-        arena_font_pixels);
-    layout_embark_skill_rows(
-        prepared_matches_, gps_->dimx, gps_->tile_pixel_y,
-        arena_font_pixels);
-    layout_arena_equipment_list(
-        prepared_matches_, gps_->dimx, gps_->tile_pixel_y,
-        arena_font_pixels);
-    layout_arena_tree_list(
-        prepared_matches_, gps_->dimx, gps_->tile_pixel_y,
-        arena_font_pixels);
-    const bool arena_environment_panel = layout_arena_environment_panel(
-        prepared_matches_, gps_->dimx, gps_->tile_pixel_y,
-        arena_font_pixels);
-    if (!arena_environment_panel && !layout_arena_creature_conditions(
-            prepared_matches_, gps_->dimx, gps_->tile_pixel_y,
-            arena_font_pixels)) {
-        layout_arena_creature_list(
-            prepared_matches_, gps_->dimx, gps_->tile_pixel_y,
-            arena_font_pixels);
-    }
-
-    // Prepare-for-embark shares its footer across all three pages. Resident
-    // names share one column, while each action owns its current button skin.
-    // Skills drops the numeric suffix when no picks remain; that state must
-    // not disable the entire roster layout. Compare displayed rows because
-    // each native half-font caption can retain a different source half.
-    int embark_residents_heading_y = -1;
-    int embark_footer_y = gps_->dimy;
-    bool embark_body = false, embark_group_name = false, embark_group_symbol = false;
-    std::vector<Match *> embark_resident_names;
-    std::vector<Match *> embark_skill_buttons;
-    std::vector<Match *> embark_buttons;
-    auto is_embark_skill_button = [](std::string_view source) {
-        if (source == "Skills") return true;
-        static constexpr std::string_view prefix = "Skills (";
-        if (!source.starts_with(prefix) || !source.ends_with(')') ||
-            source.size() <= prefix.size() + 1) {
-            return false;
-        }
-        return std::all_of(source.begin() + static_cast<std::ptrdiff_t>(prefix.size()),
-                           source.end() - 1,
-                           [](unsigned char ch) { return ch >= '0' && ch <= '9'; });
-    };
-    for (Match &match : prepared_matches_) {
-        if (match.target.empty() || match.native_split_duplicate) continue;
-        if (match.source == "Your Citizens") {
-            embark_residents_heading_y = item_picker_text_row(match);
-        } else if (is_embark_skill_button(match.source)) {
-            embark_skill_buttons.push_back(&match);
-        }
-        embark_body = embark_body || match.source == "Your Citizens" ||
-            match.source == "Your Items" || match.source == "Your Animals";
-        embark_group_name = embark_group_name || match.source == "Group Name";
-        embark_group_symbol = embark_group_symbol || match.source == "Group Symbol";
-        if (match.source == "Group Name" || match.source == "Group Symbol" ||
-            match.source == "Save Profile" || match.source == "Embark!")
-            embark_footer_y = std::min(embark_footer_y, item_picker_text_row(match));
-    }
-    if (embark_body && embark_group_name && embark_group_symbol) {
-        for (Match &match : prepared_matches_) {
-            if (match.target.empty() || match.native_split_duplicate ||
-                item_picker_text_row(match) != embark_footer_y) continue;
-            if (match.source == "Fortress Name" || match.source == "Group Name" ||
-                match.source == "Group Symbol" || match.source == "Problems" ||
-                match.source == "Save Profile" || match.source == "Embark!")
-                embark_buttons.push_back(&match);
-        }
-    }
-    if (embark_residents_heading_y >= 0) {
-        for (Match &match : prepared_matches_) {
-            const int row = item_picker_text_row(match);
-            if (match.target.empty() || match.native_split_duplicate ||
-                row <= embark_residents_heading_y || row >= embark_footer_y ||
-                match.source.find(',') == std::string::npos ||
-                match.target.find("，") == std::string::npos) {
-                continue;
-            }
-            const auto paired_skill = std::find_if(
-                embark_skill_buttons.begin(), embark_skill_buttons.end(),
-                [&](const Match *skill) {
-                    return item_picker_text_row(*skill) == row &&
-                        skill->x >= match.x + match.length;
-                });
-            if (paired_skill == embark_skill_buttons.end()) continue;
-            const auto view = std::find_if(prepared_matches_.begin(), prepared_matches_.end(),
-                [&](const Match &button) {
-                    return !button.target.empty() && !button.native_split_duplicate &&
-                        button.source == "View" && item_picker_text_row(button) == row &&
-                        button.x > (*paired_skill)->x;
-                });
-            if (view == prepared_matches_.end()) continue;
-            embark_resident_names.push_back(&match);
-            embark_buttons.push_back(*paired_skill);
-            embark_buttons.push_back(&*view);
-        }
-    }
-
-    // A generic occupied-texture run can include the patterned resident row
-    // behind the button. Require a closed native skin for every caption.
-    std::vector<Match *> embark_resolved_buttons;
-    for (Match *button : embark_buttons) {
-        std::optional<std::pair<int, int>> span;
-        if (const auto rect = native_button_text_rect(*gps_, button->x,
-                button->x + button->length, button->y)) {
-            span = {{rect->x, rect->x + rect->w}};
-        } else {
-            span = native_button_text_span(*gps_, button->x,
-                button->x + button->length, button->y);
-            if (!span && button->native_split_text)
-                span = native_button_text_span(*gps_, button->x,
-                    button->x + button->length,
-                    button->native_split_top_y + (button->y == button->native_split_top_y));
-        }
-        if (!span || span->second <= span->first) continue;
-        button->layout_x = span->first;
-        button->layout_length = span->second - span->first;
-        button->layout_left = false;
-        embark_resolved_buttons.push_back(button);
-    }
-    if (!embark_resident_names.empty()) {
-        int common_x = gps_->dimx;
-        int skills_x = gps_->dimx;
-        for (const Match *name : embark_resident_names) {
-            common_x = std::min(common_x, name->x);
-            for (const Match *skill : embark_skill_buttons) {
-                if (item_picker_text_row(*skill) == item_picker_text_row(*name) &&
-                    skill->x >= name->x + name->length) {
-                    const bool resolved = std::find(embark_resolved_buttons.begin(),
-                        embark_resolved_buttons.end(), skill) != embark_resolved_buttons.end();
-                    skills_x = std::min(skills_x,
-                        resolved ? skill->layout_x - 1 : skill->x - 3);
-                }
-            }
-        }
-        for (Match *name : embark_resident_names) {
-            name->layout_x = common_x;
-            name->layout_length = std::max(1, skills_x - common_x - 1);
-            name->layout_left = true;
-        }
-    }
-    // Complete resident names and buttons retain the fixed UI font. Grow
-    // their measured boxes before placing adjacent fields in source order.
-    std::vector<Match *> embark_expanded_fields;
-    for (const auto *group : {&embark_resident_names, &embark_resolved_buttons}) {
-        if (group->empty()) continue;
-        const int pixels = unified_font_pixels();
-        for (Match *label : *group) {
-            const int width = std::max(1, label->layout_length * gps_->tile_pixel_x -
-                2 * config_.horizontal_padding);
-            preserve_fixed_font_text_box(*label, get_glyph_texture(renderer, label->target,
-                width, gps_->tile_pixel_y, pixels, 0, true),
-                pixels, *gps_, config_.horizontal_padding);
-            embark_expanded_fields.push_back(label);
-        }
-    }
 
     // Use the shared three/four/six-tab band, including its actual horizontal
     // origin in an adventure popup or beside the embark citizen list.
@@ -38856,6 +38362,628 @@ void Overlay::layout_structured_panels(SDL_Renderer *renderer) {
         }
     }
 
+    // Legacy fallback when native rich-text capture is unavailable:
+    // Character information -> Personality -> Needs is a list, not a prose
+    // paragraph. Every generated sentence describes one distinct need and DF
+    // already assigns it its own native row. The generic multiline pass used
+    // to concatenate those sentences and reflow the denser Chinese text into
+    // fewer rows, which put two needs on many translated lines. Recognize the
+    // complete Needs grammar together with the four-subtab strip, then keep
+    // every summary/need sentence as one item in a shared text box while
+    // preserving DF's original one-row-text/one-row-gap rhythm. Once the page
+    // is scrolled far enough, the summary and tab strip both leave the logical
+    // grid; several simultaneous need sentences are therefore also a valid
+    // page signature. A fixed normal UI font size keeps the later prose pass
+    // from regrouping them into dense paragraph lines.
+    int personality_tabs_y = -1;
+    for (int y = 0; y < gps_->dimy && personality_tabs_y < 0; ++y) {
+        bool traits = false;
+        bool values = false;
+        bool preferences = false;
+        bool needs = false;
+        for (const Match &match : prepared_matches_) {
+            if (match.y != y) continue;
+            traits = traits || match.source == "Traits" ||
+                match.source == "Personality";
+            values = values || match.source == "Values";
+            preferences = preferences || match.source == "Preferences";
+            needs = needs || match.source == "Needs";
+        }
+        if (traits && values && preferences && needs)
+            personality_tabs_y = y;
+    }
+    {
+        std::vector<size_t> need_lines;
+        bool has_summary = false;
+        size_t need_entry_count = 0;
+        for (size_t index = 0; index < prepared_matches_.size(); ++index) {
+            const Match &match = prepared_matches_[index];
+            if (match.rule == kNativeKnowledgeDocumentRule || match.target.empty() ||
+                (personality_tabs_y >= 0 && match.y <= personality_tabs_y)) {
+                continue;
+            }
+            const bool summary = is_character_needs_summary_source(match.source);
+            const bool entry = is_character_need_entry_source(match.source);
+            if (!summary && !entry) continue;
+            has_summary = has_summary || summary;
+            if (entry) ++need_entry_count;
+            need_lines.push_back(index);
+        }
+        const bool character_needs_page =
+            (personality_tabs_y >= 0 && has_summary && need_entry_count >= 1) ||
+            need_entry_count >= 3;
+        if (character_needs_page) {
+            std::stable_sort(need_lines.begin(), need_lines.end(),
+                [this](size_t left, size_t right) {
+                    const Match &a = prepared_matches_[left];
+                    const Match &b = prepared_matches_[right];
+                    return a.y != b.y ? a.y < b.y : a.x < b.x;
+                });
+            int paragraph_x = gps_->dimx;
+            int paragraph_right = 0;
+            for (size_t index : need_lines) {
+                const Match &match = prepared_matches_[index];
+                paragraph_x = std::min(paragraph_x, match.x);
+                paragraph_right = std::max(
+                    paragraph_right, match.x + match.length);
+            }
+            const int paragraph_width = std::max(
+                8, paragraph_right - paragraph_x);
+            const int font_pixels = std::max(
+                config_.min_font_pixels,
+                static_cast<int>(gps_->tile_pixel_y * config_.font_scale));
+            for (size_t index : need_lines) {
+                Match &match = prepared_matches_[index];
+                match.layout_x = paragraph_x;
+                match.layout_y = match.y;
+                match.layout_length = paragraph_width;
+                match.layout_left = true;
+                match.layout_font_pixels = font_pixels;
+            }
+        }
+    }
+
+}
+
+void Overlay::layout_structured_panels(SDL_Renderer *renderer) {
+    if (!gps_) return;
+    // All fields in a character sheet share the same unchanged native grid.
+    // Reuse its border/frame reads while fitting the header and tab content;
+    // discard them on return so another page never inherits their geometry.
+    NativePanelReadScope panel_reads(gps_);
+
+    const int arena_font_pixels = std::max(
+        config_.min_font_pixels,
+        static_cast<int>(gps_->tile_pixel_y * config_.font_scale));
+
+    // Each clickable figure or site/entity identity stays on its native row.
+    // Commas, species and generated "the/of" titles are not prose evidence.
+    // Use the list/button's width, reserving adjacent date/type columns, and
+    // exclude all records from both multiline grouping passes.
+    std::vector<Match *> figure_records;
+    int figure_left = gps_->dimx;
+    for (Match &match : prepared_matches_) {
+        if (match.rule != kLegendsIdentityRecordRule) continue;
+        figure_records.push_back(&match);
+        figure_left = std::min(figure_left, match.x);
+    }
+    if (!figure_records.empty() && gps_->tile_pixel_x > 0 && gps_->tile_pixel_y > 0) {
+        const int tile_w = gps_->tile_pixel_x;
+        const int tile_h = gps_->tile_pixel_y;
+        const int origin_x = (gps_->screen_pixel_x - tile_w * gps_->dimx) / 2;
+        const int origin_y = (gps_->screen_pixel_y - tile_h * gps_->dimy) / 2;
+        int list_right = gps_->dimx - 3; // keep the outer frame and scrollbar clear
+        for (const Match *record : figure_records) {
+            const auto frame = find_ascii_panel_frame(
+                record->x, record->x + record->length, record->y,
+                gps_->dimx, gps_->dimy,
+                [this](int x, int y) { return visible_char_at(x, y); });
+            if (frame) {
+                list_right = std::min(list_right, frame->right);
+            } else if (const auto rect = graphical_button_rect(graphical_rects_,
+                    origin_x + (record->x * 2 + record->length) * tile_w / 2,
+                    origin_y + record->y * tile_h + tile_h / 2,
+                    record->length * tile_w, tile_h, gps_->screen_pixel_x, true)) {
+                list_right = std::min(list_right,
+                    (rect->x + rect->w - origin_x) / tile_w - 1);
+            }
+        }
+        auto is_figure_year = [this](const Match &match) {
+            if (match.rule < 0 || static_cast<size_t>(match.rule) >= rules_.size())
+                return false;
+            // These are the reviewed numeric TSV templates. Reuse their
+            // translated targets, including signed/multi-digit years, instead
+            // of maintaining separate birth/death wording in the renderer.
+            const Rule &rule = rules_[static_cast<size_t>(match.rule)];
+            return rule.numeric_template &&
+                (rule.source == "b. {d}" || rule.source == "d. {d}" ||
+                 rule.source == "b. {d} d. {d}");
+        };
+
+        // Sites is a name/type table. Centering each translated type inside
+        // its English span makes Town, Fortress and Mysterious lair drift to
+        // different horizontal positions. Use one shared column, not a list
+        // of type-specific translations or offsets. The complete identity
+        // and single trailing field keep this out of detail prose/date rows;
+        // no minimum row count is needed for a filtered one-site result.
+        const bool sites_list = std::any_of(prepared_matches_.begin(),
+            prepared_matches_.end(), [](const Match &match) {
+                return legends_export_control_present(match.source);
+            }) && std::any_of(prepared_matches_.begin(),
+            prepared_matches_.end(), [](const Match &match) {
+                return match.source == "Sites";
+            });
+        std::vector<Match *> site_types;
+        int type_left = list_right;
+        int right = list_right;
+        if (sites_list) {
+            auto native_row = [](const Match &match) {
+                return match.native_split_text ? match.native_split_top_y : match.y;
+            };
+            for (const Match *record : figure_records) {
+                if (record->target.empty() || record->native_split_duplicate ||
+                    !split_generated_name_identity(record->source)) continue;
+                Match *type = nullptr;
+                int fields = 0;
+                for (Match &other : prepared_matches_) {
+                    if (other.target.empty() || other.native_split_duplicate ||
+                        native_row(other) != native_row(*record) ||
+                        other.x < record->x + record->length ||
+                        other.x >= list_right) continue;
+                    type = &other;
+                    ++fields;
+                }
+                if (fields != 1 || is_figure_year(*type)) continue;
+                site_types.push_back(type);
+                type_left = std::min(type_left, type->x);
+            }
+        }
+        if (!site_types.empty() && type_left > figure_left && type_left < list_right) {
+            right = type_left - 1;
+            const int width = std::max(1,
+                (list_right - type_left) * tile_w - 2 * config_.horizontal_padding);
+            const int pixels = unified_font_pixels();
+            for (Match *type : site_types) {
+                type->layout_x = type_left;
+                type->layout_y = type->y;
+                type->layout_length = list_right - type_left;
+                type->layout_clip_right = list_right;
+                type->layout_left = true;
+                type->layout_font_pixels = pixels;
+                type->layout_lock_font_pixels = true;
+                type->layout_line_height_pixels = tile_h;
+                preserve_fixed_font_text_box(*type, get_glyph_texture(renderer,
+                    type->target, width, tile_h, pixels, 0, true),
+                    pixels, *gps_, config_.horizontal_padding);
+            }
+        }
+        for (const Match *record : figure_records) {
+            std::vector<Match *> columns;
+            for (Match &other : prepared_matches_) {
+                if (other.y == record->y && !other.target.empty() &&
+                    other.x >= record->x + record->length)
+                    columns.push_back(&other);
+            }
+            // Allocate from the right so separately drawn b./d. fields never
+            // overlap. A combined TSV match is measured as a single field.
+            std::sort(columns.begin(), columns.end(), [](const Match *a, const Match *b) {
+                return a->x > b->x;
+            });
+            int column_right = list_right;
+            for (Match *column : columns) {
+                int column_left = column->layout_x >= 0 ? column->layout_x : column->x;
+                if (is_figure_year(*column) && column_right > figure_left + 1) {
+                    const GlyphTexture *glyph = get_glyph_texture(renderer,
+                        column->target, std::max(1, (list_right - figure_left) * tile_w),
+                        tile_h, arena_font_pixels, 0, true);
+                    if (glyph && glyph->texture) {
+                        const int needed_columns = (glyph->width +
+                            2 * config_.horizontal_padding + tile_w - 1) / tile_w;
+                        // Use the list's spare space, shifting left only when
+                        // the normal-size translation would hit the scrollbar
+                        // or the next date. Never squeeze it into `d. 2`'s
+                        // four original cells. Keep x/y/length unchanged for
+                        // native glyph suppression, colors and click targets.
+                        column_left = std::max(figure_left + 1,
+                            std::min(column->x, column_right - needed_columns));
+                        column->layout_x = column_left;
+                        column->layout_y = column->y;
+                        column->layout_length = column_right - column_left;
+                        column->layout_clip_right = column_right;
+                        column->layout_left = true;
+                        column->layout_font_pixels = arena_font_pixels;
+                        column->layout_lock_font_pixels = true;
+                        column->layout_visual_height_pixels = 0;
+                        column->layout_line_height_pixels = tile_h;
+                    }
+                }
+                column_right = std::min(column_right, column_left - 1);
+                right = std::min(right, column_right);
+            }
+        }
+        if (right > figure_left) {
+            for (Match *record : figure_records) {
+                const int record_right = record->layout_clip_right >= 0
+                    ? std::min(right, record->layout_clip_right) : right;
+                record->layout_x = figure_left;
+                record->layout_y = record->y;
+                record->layout_length = std::max(0, record_right - figure_left);
+                record->layout_clip_right = record_right;
+                record->layout_left = true;
+                record->layout_font_pixels = arena_font_pixels;
+            }
+        }
+    }
+
+    layout_legends_typed_lists(renderer);
+    layout_legends_details(renderer);
+
+    // Legends' category index is a label/count table. The English labels
+    // share a left inset, but centering each shorter translation inside its
+    // individual source span gives all nine rows different left edges.
+    // Require the index prompt as well as its categories so these common
+    // words do not change the layout of browser tabs or other game screens.
+    const auto legends_prompt = std::find_if(
+        prepared_matches_.begin(), prepared_matches_.end(), [](const Match &match) {
+            return match.source == "Select a category below to begin.";
+        });
+    if (legends_prompt != prepared_matches_.end()) {
+        std::vector<Match *> labels;
+        int left = gps_->dimx, right = 0;
+        for (Match &match : prepared_matches_) {
+            if (match.target.empty() || match.y <= legends_prompt->y ||
+                std::find(kLegendsCategories.begin(), kLegendsCategories.end(),
+                          match.source) == kLegendsCategories.end()) continue;
+            labels.push_back(&match);
+            left = std::min(left, match.x);
+            right = std::max(right, match.x + match.length);
+        }
+        if (labels.size() >= 3 && right > left) {
+            // Reuse only the union of the native label spans: it is already
+            // inside the buttons and stops before the right-aligned counts.
+            // Source coordinates, rows, colors and native hitboxes stay intact.
+            for (Match *label : labels) {
+                label->layout_x = left;
+                label->layout_length = right - left;
+                label->layout_left = true;
+                label->layout_font_pixels = arena_font_pixels;
+            }
+
+            // These two sentences are centered headings, not left-aligned
+            // prose. Override the dictionary's l flag only on this screen.
+            // Use a symmetric screen box to avoid source-length/parity drift,
+            // reserving room for Export XML and Done on the title's row.
+            for (Match &match : prepared_matches_) {
+                if (&match != &*legends_prompt &&
+                    !(match.y < legends_prompt->y &&
+                      match.source.starts_with("Explore the history of "))) continue;
+                int margin = 2;
+                for (const Match &control : prepared_matches_) {
+                    if (control.y != match.y) continue;
+                    if (legends_export_control_present(control.source)) {
+                        margin = std::max(margin, control.x + control.length + 2);
+                    } else if (control.source == "Done") {
+                        margin = std::max(margin, gps_->dimx - control.x + 2);
+                    }
+                }
+                if (gps_->dimx <= margin * 2) continue;
+                match.layout_x = margin;
+                match.layout_length = gps_->dimx - margin * 2;
+                match.layout_left = false;
+                // Exclude both headings and category labels from subsequent
+                // prose regrouping, including the punctuated Codices caption.
+                match.layout_font_pixels = arena_font_pixels;
+            }
+            return;
+        }
+    }
+
+    if (gps_->tile_pixel_x > 0 && gps_->tile_pixel_y > 0) {
+        std::vector<Match *> labels;
+        int left = gps_->dimx, right = 0;
+        for (Match &match : prepared_matches_) {
+            if (match.rule != kAdventureBackgroundLabelRule) continue;
+            labels.push_back(&match);
+            left = std::min(left, match.layout_x);
+            right = std::max(right, match.layout_x + match.layout_length);
+        }
+        if (!labels.empty()) {
+            const int tile_w = gps_->tile_pixel_x;
+            const int tile_h = gps_->tile_pixel_y;
+            const int origin_x = (gps_->screen_pixel_x - tile_w * gps_->dimx) / 2;
+            const int origin_y = (gps_->screen_pixel_y - tile_h * gps_->dimy) / 2;
+            int widget_right = gps_->dimx;
+            bool has_widget = false;
+            for (const Match *label : labels) {
+                if (const auto box = native_button_text_rect(*gps_, label->x,
+                        label->x + label->length, label->y, true)) {
+                    widget_right = std::min(widget_right, box->x + box->w);
+                    has_widget = true;
+                    continue;
+                }
+                const auto frame = find_ascii_panel_frame(
+                    label->x, label->x + label->length, label->y,
+                    gps_->dimx, gps_->dimy,
+                    [this](int x, int y) { return visible_char_at(x, y); });
+                if (frame && frame->bottom - frame->top <= 6) {
+                    widget_right = std::min(widget_right, frame->right);
+                    has_widget = true;
+                } else if (const auto rect = graphical_button_rect(
+                        graphical_rects_,
+                        origin_x + (label->x * 2 + label->length) * tile_w / 2,
+                        origin_y + label->y * tile_h + tile_h / 2,
+                        (right - left) * tile_w, tile_h, gps_->screen_pixel_x)) {
+                    const int edge = (rect->x + rect->w - origin_x) / tile_w - 1;
+                    if (edge > left) {
+                        widget_right = std::min(widget_right, edge);
+                        has_widget = true;
+                    }
+                }
+            }
+            if (has_widget) right = widget_right;
+            int shared_font = std::min(arena_font_pixels, std::max(1, tile_h - 2));
+            for (const Match *label : labels) {
+                const int available_pixels = std::max(1,
+                    (right - label->x) * tile_w - 2 * config_.horizontal_padding - 2);
+                std::vector<uint32_t> cps;
+                if (decode_utf8(label->target, cps) && !cps.empty())
+                    shared_font = std::min(shared_font,
+                        std::max(1, available_pixels / static_cast<int>(cps.size())));
+            }
+            for (Match *label : labels) {
+                // Keep the native title/subtitle insets with a shared font.
+                // Reserving the full button width also prevents long names
+                // from shrinking independently or crossing into the map.
+                label->layout_x = label->x;
+                label->layout_length = std::max(1, right - label->x);
+                label->layout_clip_right = right;
+                label->layout_left = true;
+                label->layout_font_pixels = shared_font;
+            }
+        }
+    }
+    const bool adventure_destiny_screen = std::any_of(
+        prepared_matches_.begin(), prepared_matches_.end(), [](const Match &match) {
+            return match.source == "Adventurer, choose your destiny!";
+        }) && std::any_of(
+        prepared_matches_.begin(), prepared_matches_.end(), [](const Match &match) {
+            return match.source == "Onward to character creation";
+        });
+    if (adventure_destiny_screen) {
+        // These are independent captions, not prose. In particular the title,
+        // footer and onward button formerly inherited an l flag and drifted
+        // left of their native centres. The four description boxes already
+        // have complete translations and locked layout from find_matches().
+        for (Match &match : prepared_matches_) {
+            if (match.source != "Adventurer, choose your destiny!" &&
+                match.source != "Chosen" && match.source != "Hero" &&
+                match.source != "Ordinary" && match.source != "Include tutorial" &&
+                match.source != "Easy difficulty" && match.source != "Normal difficulty" &&
+                match.source != "Hard difficulty" &&
+                match.source != "(Any unretired characters in your party will be unaffected.)" &&
+                match.source != "Onward to character creation") continue;
+            match.layout_x = match.x;
+            match.layout_length = match.length;
+            match.layout_left = false;
+            match.layout_font_pixels = arena_font_pixels;
+        }
+
+        // The difficulty summary is a table, not three independent labels.
+        // Whole numeric templates own each row (including its changing value),
+        // so Equipment/pet can no longer become separately centred fragments.
+        // Keep source x/y/length and foreground intact for glyph suppression
+        // and the native green/cyan/yellow row colors; only share the text box.
+        static constexpr std::array<std::string_view, 3> point_templates = {{
+            "Attribute points: {d}",
+            "Skill points: {d}",
+            "Equipment/pet points: {d}",
+        }};
+        std::array<Match *, 3> point_rows{};
+        for (Match &match : prepared_matches_) {
+            if (match.target.empty() || match.rule < 0 ||
+                static_cast<size_t>(match.rule) >= rules_.size()) continue;
+            const auto &source = rules_[static_cast<size_t>(match.rule)].source;
+            const auto found = std::find(point_templates.begin(), point_templates.end(), source);
+            if (found != point_templates.end())
+                point_rows[static_cast<size_t>(found - point_templates.begin())] = &match;
+        }
+        if (std::all_of(point_rows.begin(), point_rows.end(),
+                        [](const Match *row) { return row != nullptr; }) &&
+            point_rows[1]->y == point_rows[0]->y + 1 &&
+            point_rows[2]->y == point_rows[1]->y + 1 &&
+            std::abs(point_rows[1]->x - point_rows[0]->x) <= 2 &&
+            std::abs(point_rows[2]->x - point_rows[0]->x) <= 2) {
+            int left = gps_->dimx, right = 0;
+            for (const Match *row : point_rows) {
+                left = std::min(left, row->x);
+                right = std::max(right, row->x + row->length);
+            }
+            for (Match *row : point_rows) {
+                row->layout_x = left;
+                row->layout_length = right - left;
+                row->layout_left = true;
+                row->layout_font_pixels = arena_font_pixels;
+            }
+            // The selected difficulty is repeated immediately above the
+            // points. Centre that heading in this card, not the shorter
+            // English heading span; leave the three difficulty buttons alone.
+            for (Match &match : prepared_matches_) {
+                if (match.y != point_rows[0]->y - 1 || match.x < left ||
+                    match.x + match.length > right ||
+                    (match.source != "Easy difficulty" &&
+                     match.source != "Normal difficulty" &&
+                     match.source != "Hard difficulty")) continue;
+                match.layout_x = left;
+                match.layout_length = right - left;
+            }
+        }
+        return;
+    }
+    layout_embark_named_item_rows(
+        prepared_matches_, gps_->dimx, gps_->tile_pixel_y,
+        arena_font_pixels);
+    layout_embark_item_category_rows(renderer, arena_font_pixels);
+    layout_embark_item_cost_rows(
+        prepared_matches_, gps_->dimx, gps_->tile_pixel_y,
+        arena_font_pixels);
+    layout_embark_skill_rows(
+        prepared_matches_, gps_->dimx, gps_->tile_pixel_y,
+        arena_font_pixels);
+    layout_arena_equipment_list(
+        prepared_matches_, gps_->dimx, gps_->tile_pixel_y,
+        arena_font_pixels);
+    layout_arena_tree_list(
+        prepared_matches_, gps_->dimx, gps_->tile_pixel_y,
+        arena_font_pixels);
+    const bool arena_environment_panel = layout_arena_environment_panel(
+        prepared_matches_, gps_->dimx, gps_->tile_pixel_y,
+        arena_font_pixels);
+    if (!arena_environment_panel && !layout_arena_creature_conditions(
+            prepared_matches_, gps_->dimx, gps_->tile_pixel_y,
+            arena_font_pixels)) {
+        layout_arena_creature_list(
+            prepared_matches_, gps_->dimx, gps_->tile_pixel_y,
+            arena_font_pixels);
+    }
+
+    // Prepare-for-embark shares its footer across all three pages. Resident
+    // names share one column, while each action owns its current button skin.
+    // Skills drops the numeric suffix when no picks remain; that state must
+    // not disable the entire roster layout. Compare displayed rows because
+    // each native half-font caption can retain a different source half.
+    int embark_residents_heading_y = -1;
+    int embark_footer_y = gps_->dimy;
+    bool embark_body = false, embark_group_name = false, embark_group_symbol = false;
+    std::vector<Match *> embark_resident_names;
+    std::vector<Match *> embark_skill_buttons;
+    std::vector<Match *> embark_buttons;
+    auto is_embark_skill_button = [](std::string_view source) {
+        if (source == "Skills") return true;
+        static constexpr std::string_view prefix = "Skills (";
+        if (!source.starts_with(prefix) || !source.ends_with(')') ||
+            source.size() <= prefix.size() + 1) {
+            return false;
+        }
+        return std::all_of(source.begin() + static_cast<std::ptrdiff_t>(prefix.size()),
+                           source.end() - 1,
+                           [](unsigned char ch) { return ch >= '0' && ch <= '9'; });
+    };
+    for (Match &match : prepared_matches_) {
+        if (match.target.empty() || match.native_split_duplicate) continue;
+        if (match.source == "Your Citizens") {
+            embark_residents_heading_y = item_picker_text_row(match);
+        } else if (is_embark_skill_button(match.source)) {
+            embark_skill_buttons.push_back(&match);
+        }
+        embark_body = embark_body || match.source == "Your Citizens" ||
+            match.source == "Your Items" || match.source == "Your Animals";
+        embark_group_name = embark_group_name || match.source == "Group Name";
+        embark_group_symbol = embark_group_symbol || match.source == "Group Symbol";
+        if (match.source == "Group Name" || match.source == "Group Symbol" ||
+            match.source == "Save Profile" || match.source == "Embark!")
+            embark_footer_y = std::min(embark_footer_y, item_picker_text_row(match));
+    }
+    if (embark_body && embark_group_name && embark_group_symbol) {
+        for (Match &match : prepared_matches_) {
+            if (match.target.empty() || match.native_split_duplicate ||
+                item_picker_text_row(match) != embark_footer_y) continue;
+            if (match.source == "Fortress Name" || match.source == "Group Name" ||
+                match.source == "Group Symbol" || match.source == "Problems" ||
+                match.source == "Save Profile" || match.source == "Embark!")
+                embark_buttons.push_back(&match);
+        }
+    }
+    if (embark_residents_heading_y >= 0) {
+        for (Match &match : prepared_matches_) {
+            const int row = item_picker_text_row(match);
+            if (match.target.empty() || match.native_split_duplicate ||
+                row <= embark_residents_heading_y || row >= embark_footer_y ||
+                match.source.find(',') == std::string::npos ||
+                match.target.find("，") == std::string::npos) {
+                continue;
+            }
+            const auto paired_skill = std::find_if(
+                embark_skill_buttons.begin(), embark_skill_buttons.end(),
+                [&](const Match *skill) {
+                    return item_picker_text_row(*skill) == row &&
+                        skill->x >= match.x + match.length;
+                });
+            if (paired_skill == embark_skill_buttons.end()) continue;
+            const auto view = std::find_if(prepared_matches_.begin(), prepared_matches_.end(),
+                [&](const Match &button) {
+                    return !button.target.empty() && !button.native_split_duplicate &&
+                        button.source == "View" && item_picker_text_row(button) == row &&
+                        button.x > (*paired_skill)->x;
+                });
+            if (view == prepared_matches_.end()) continue;
+            embark_resident_names.push_back(&match);
+            embark_buttons.push_back(*paired_skill);
+            embark_buttons.push_back(&*view);
+        }
+    }
+
+    // A generic occupied-texture run can include the patterned resident row
+    // behind the button. Require a closed native skin for every caption.
+    std::vector<Match *> embark_resolved_buttons;
+    for (Match *button : embark_buttons) {
+        std::optional<std::pair<int, int>> span;
+        if (const auto rect = native_button_text_rect(*gps_, button->x,
+                button->x + button->length, button->y)) {
+            span = {{rect->x, rect->x + rect->w}};
+        } else {
+            span = native_button_text_span(*gps_, button->x,
+                button->x + button->length, button->y);
+            if (!span && button->native_split_text)
+                span = native_button_text_span(*gps_, button->x,
+                    button->x + button->length,
+                    button->native_split_top_y + (button->y == button->native_split_top_y));
+        }
+        if (!span || span->second <= span->first) continue;
+        button->layout_x = span->first;
+        button->layout_length = span->second - span->first;
+        button->layout_left = false;
+        embark_resolved_buttons.push_back(button);
+    }
+    if (!embark_resident_names.empty()) {
+        int common_x = gps_->dimx;
+        int skills_x = gps_->dimx;
+        for (const Match *name : embark_resident_names) {
+            common_x = std::min(common_x, name->x);
+            for (const Match *skill : embark_skill_buttons) {
+                if (item_picker_text_row(*skill) == item_picker_text_row(*name) &&
+                    skill->x >= name->x + name->length) {
+                    const bool resolved = std::find(embark_resolved_buttons.begin(),
+                        embark_resolved_buttons.end(), skill) != embark_resolved_buttons.end();
+                    skills_x = std::min(skills_x,
+                        resolved ? skill->layout_x - 1 : skill->x - 3);
+                }
+            }
+        }
+        for (Match *name : embark_resident_names) {
+            name->layout_x = common_x;
+            name->layout_length = std::max(1, skills_x - common_x - 1);
+            name->layout_left = true;
+        }
+    }
+    // Complete resident names and buttons retain the fixed UI font. Grow
+    // their measured boxes before placing adjacent fields in source order.
+    std::vector<Match *> embark_expanded_fields;
+    for (const auto *group : {&embark_resident_names, &embark_resolved_buttons}) {
+        if (group->empty()) continue;
+        const int pixels = unified_font_pixels();
+        for (Match *label : *group) {
+            const int width = std::max(1, label->layout_length * gps_->tile_pixel_x -
+                2 * config_.horizontal_padding);
+            preserve_fixed_font_text_box(*label, get_glyph_texture(renderer, label->target,
+                width, gps_->tile_pixel_y, pixels, 0, true),
+                pixels, *gps_, config_.horizontal_padding);
+            embark_expanded_fields.push_back(label);
+        }
+    }
+
+    if (native_character_translation_active(gps_))
+        layout_character_panels(renderer);
+
     layout_settings_panels(renderer);
     if (prepared_matches_.empty()) return;
 
@@ -39307,87 +39435,6 @@ void Overlay::layout_structured_panels(SDL_Renderer *renderer) {
             match.layout_x = anchor_x;
             match.layout_length = detail_width;
             match.layout_left = true;
-        }
-    }
-
-    // Legacy fallback when native rich-text capture is unavailable:
-    // Character information -> Personality -> Needs is a list, not a prose
-    // paragraph. Every generated sentence describes one distinct need and DF
-    // already assigns it its own native row. The generic multiline pass used
-    // to concatenate those sentences and reflow the denser Chinese text into
-    // fewer rows, which put two needs on many translated lines. Recognize the
-    // complete Needs grammar together with the four-subtab strip, then keep
-    // every summary/need sentence as one item in a shared text box while
-    // preserving DF's original one-row-text/one-row-gap rhythm. Once the page
-    // is scrolled far enough, the summary and tab strip both leave the logical
-    // grid; several simultaneous need sentences are therefore also a valid
-    // page signature. A fixed normal UI font size keeps the later prose pass
-    // from regrouping them into dense paragraph lines.
-    int personality_tabs_y = -1;
-    for (int y = 0; y < gps_->dimy && personality_tabs_y < 0; ++y) {
-        bool traits = false;
-        bool values = false;
-        bool preferences = false;
-        bool needs = false;
-        for (const Match &match : prepared_matches_) {
-            if (match.y != y) continue;
-            traits = traits || match.source == "Traits" ||
-                match.source == "Personality";
-            values = values || match.source == "Values";
-            preferences = preferences || match.source == "Preferences";
-            needs = needs || match.source == "Needs";
-        }
-        if (traits && values && preferences && needs)
-            personality_tabs_y = y;
-    }
-    {
-        std::vector<size_t> need_lines;
-        bool has_summary = false;
-        size_t need_entry_count = 0;
-        for (size_t index = 0; index < prepared_matches_.size(); ++index) {
-            const Match &match = prepared_matches_[index];
-            if (match.rule == kNativeKnowledgeDocumentRule || match.target.empty() ||
-                (personality_tabs_y >= 0 && match.y <= personality_tabs_y)) {
-                continue;
-            }
-            const bool summary = is_character_needs_summary_source(match.source);
-            const bool entry = is_character_need_entry_source(match.source);
-            if (!summary && !entry) continue;
-            has_summary = has_summary || summary;
-            if (entry) ++need_entry_count;
-            need_lines.push_back(index);
-        }
-        const bool character_needs_page =
-            (personality_tabs_y >= 0 && has_summary && need_entry_count >= 1) ||
-            need_entry_count >= 3;
-        if (character_needs_page) {
-            std::stable_sort(need_lines.begin(), need_lines.end(),
-                [this](size_t left, size_t right) {
-                    const Match &a = prepared_matches_[left];
-                    const Match &b = prepared_matches_[right];
-                    return a.y != b.y ? a.y < b.y : a.x < b.x;
-                });
-            int paragraph_x = gps_->dimx;
-            int paragraph_right = 0;
-            for (size_t index : need_lines) {
-                const Match &match = prepared_matches_[index];
-                paragraph_x = std::min(paragraph_x, match.x);
-                paragraph_right = std::max(
-                    paragraph_right, match.x + match.length);
-            }
-            const int paragraph_width = std::max(
-                8, paragraph_right - paragraph_x);
-            const int font_pixels = std::max(
-                config_.min_font_pixels,
-                static_cast<int>(gps_->tile_pixel_y * config_.font_scale));
-            for (size_t index : need_lines) {
-                Match &match = prepared_matches_[index];
-                match.layout_x = paragraph_x;
-                match.layout_y = match.y;
-                match.layout_length = paragraph_width;
-                match.layout_left = true;
-                match.layout_font_pixels = font_pixels;
-            }
         }
     }
 
@@ -42114,6 +42161,7 @@ SDL_Rect Overlay::native_text_draw_region(const Match &match, bool *owner_bounds
     // shared viewport. Complete multiline controls also move their captions
     // off the source rows, while retaining the writer's horizontal limits.
     if (!match.native_dfhack_foreground && !match.native_squads_foreground &&
+            !native_character_foreground_view(gps_) &&
             !match.layout_reflowed_paragraph) {
         if (const auto draw_clip = native_captured_text_clip(*gps_, match)) {
             SDL_Rect writer_clip = pixels(*draw_clip);
@@ -42211,6 +42259,38 @@ SDL_Rect Overlay::native_paragraph_draw_region(const std::vector<Match> &rows) c
     return region;
 }
 std::shared_ptr<NativeTooltipPage> Overlay::prepare_frame_layout(SDL_Renderer *renderer) {
+    if (native_character_foreground_view(gps_)) {
+        NativePanelReadScope panels(gps_);
+        normalize_native_split_text();
+        // Complete native paragraphs already carry their measured viewport,
+        // colors and baselines. Relations and groups have independent record
+        // layouts. Keep all of them out of the generic field/prose pass.
+        const auto independent = [](const Match &match) {
+            return match.layout_reflowed_paragraph ||
+                match.rule == kNativeKnowledgeDocumentRule ||
+                match.rule == kCharacterOverviewQuoteRule ||
+                match.rule == kCharacterRelationRowRule ||
+                match.rule == kCharacterGroupRowRule ||
+                match.rule == kHelpDocumentRule || match.rule == kUiMessageRule ||
+                match.rule == kToolbarTooltipBodyRule || match.rule == kToolbarTooltipKeyRule;
+        };
+        std::vector<Match> records;
+        for (const auto &match : prepared_matches_)
+            if (independent(match)) records.push_back(match);
+        std::erase_if(prepared_matches_, independent);
+        layout_character_panels(renderer);
+        layout_multiline_matches();
+        prepared_matches_.insert(prepared_matches_.end(),
+            std::make_move_iterator(records.begin()), std::make_move_iterator(records.end()));
+        layout_character_relation_rows(renderer);
+        layout_character_group_rows(renderer);
+        layout_character_work_animal_rows(renderer);
+        layout_character_room_rows(renderer);
+        layout_inventory(renderer);
+        layout_character_header(renderer);
+        normalize_native_split_text();
+        return nullptr;
+    }
     const bool isolated_management_background = native_info_background_view(gps_);
     NativePanelReadScope panel_reads(gps_);
     std::shared_ptr<NativeTooltipPage> layout_page;
@@ -43265,6 +43345,8 @@ static void native_help_present_layers(SDL_Renderer *renderer,
     void (*draw_help)(SDL_Renderer *));
 static void native_info_present_layer(SDL_Renderer *renderer,
     void (*draw_info)(SDL_Renderer *));
+static void native_character_present_layer(SDL_Renderer *renderer,
+    void (*draw_character)(SDL_Renderer *));
 static void native_stocks_present_layer(SDL_Renderer *renderer,
     void (*draw_stocks)(SDL_Renderer *));
 static void native_squads_present_layer(SDL_Renderer *renderer,
@@ -43344,6 +43426,9 @@ extern "C" void dfcn_render_present(SDL_Renderer *renderer) {
             });
             native_reports_present_layer(renderer, [](SDL_Renderer *reports_renderer) {
                 g_overlay.render_native_reports_layer(reports_renderer);
+            });
+            native_character_present_layer(renderer, [](SDL_Renderer *character_renderer) {
+                g_overlay.render_native_character_layer(character_renderer);
             });
             native_notification_present_layer(renderer, [](SDL_Renderer *notification_renderer) {
                 g_overlay.render_native_notification_layer(notification_renderer);

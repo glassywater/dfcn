@@ -2,6 +2,7 @@
 // physical cell before generic matching so an English name, an age/sex pair
 // and independently positioned badges can share one compact translated row.
 std::vector<NativeTextCard> Overlay::capture_character_overview_rows() const {
+    if (!native_character_translation_active(gps_)) return {};
     if (!gps_ || gps_->dimx <= 0 || gps_->dimy <= 0) return {};
 
     const auto settings = native_ui_settings();
@@ -96,6 +97,7 @@ void Overlay::append_character_overview_identities(
         const std::vector<NativeTextCard> &cards,
         std::vector<std::string> &screen_rows, std::vector<Match> &matches,
         int only_y) const {
+    if (!native_character_translation_active(gps_)) return;
 #include "character_overview_draw_rows.inc"
     for (const auto &card : cards) {
         for (const auto &row : card.rows) {

@@ -2,6 +2,7 @@
 // produced a field. Generic names, quoted glosses, literal professions and
 // typed activities must all participate in the same native text column.
 void Overlay::layout_character_header(SDL_Renderer *renderer) {
+    if (!native_character_translation_active(gps_)) return;
     if (!gps_ || !renderer || !face_ || gps_->tile_pixel_x <= 0 ||
         gps_->tile_pixel_y <= 0) return;
 

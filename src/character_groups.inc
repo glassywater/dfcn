@@ -29,6 +29,7 @@ static std::optional<std::array<int32_t, 9>> character_group_classic_skin(
 // Whole physical fields retain their source spans for glyph suppression;
 // translated names, types and roles share the current record's text bounds.
 std::vector<NativeTextCard> Overlay::capture_character_group_rows() const {
+    if (!native_character_translation_active(gps_)) return {};
     if (!gps_ || gps_->dimx <= 0 || gps_->dimy <= 0) return {};
     std::vector<std::string> context(gps_->dimy);
     const auto read_row = [&](int y) -> const std::string & {
@@ -272,6 +273,7 @@ std::vector<NativeTextCard> Overlay::capture_character_group_rows() const {
 
 void Overlay::append_character_group_civilization(const NativeTextCard &card,
         std::vector<Match> &matches, int only_y) const {
+    if (!native_character_translation_active(gps_)) return;
     if (!card.character_group_civilization) return;
     const auto captions = captured_clipped_captions();
     for (const auto &row : card.rows) {
@@ -299,6 +301,7 @@ void Overlay::append_character_group_civilization(const NativeTextCard &card,
 
 void Overlay::append_character_group_role(const NativeTextCard &card,
         std::vector<Match> &matches, int only_y) const {
+    if (!native_character_translation_active(gps_)) return;
     if (!card.character_group_role) return;
     for (const auto &row : card.rows) {
         if (only_y >= 0 && row.y != only_y) continue;
@@ -348,6 +351,7 @@ void Overlay::append_character_group_role(const NativeTextCard &card,
 }
 
 void Overlay::layout_character_group_rows(SDL_Renderer *renderer) {
+    if (!native_character_translation_active(gps_)) return;
     if (!renderer || !face_ || !gps_ || gps_->tile_pixel_x <= 0 ||
         gps_->tile_pixel_y <= 0) return;
     std::vector<Match *> fields;

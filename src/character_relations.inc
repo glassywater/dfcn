@@ -2,6 +2,7 @@
 // early source owner and final layout read the same native caption band.
 bool Overlay::character_social_tab_selected(int main_tabs_y,
         std::string_view selected) const {
+    if (!native_character_translation_active(gps_)) return false;
     for (int y = main_tabs_y - 1; y >= 0; --y) {
         std::string row(gps_->dimx, ' ');
         for (int x = 0; x < gps_->dimx; ++x) {
@@ -83,6 +84,7 @@ static std::optional<SDL_Rect> character_relation_button(const graphicst &gps,
 
 void Overlay::append_character_relation_rows(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y) const {
+    if (!native_character_translation_active(gps_)) return;
     const auto settings = native_ui_settings();
     const bool classic = settings && settings->classic;
     const auto kinship = captured_native_character_relations(gps_);
@@ -232,6 +234,7 @@ void Overlay::append_character_relation_rows(std::vector<std::string> &rows,
 }
 
 void Overlay::layout_character_relation_rows(SDL_Renderer *renderer) {
+    if (!native_character_translation_active(gps_)) return;
     if (!renderer || !face_ || !gps_ || gps_->tile_pixel_y <= 0 || gps_->tile_pixel_x <= 0) return;
     std::vector<Match *> fields;
     int pixels = gps_->tile_pixel_y;

@@ -7,6 +7,10 @@ class NativeUiCacheContextWriter {
     const graphicst *graphics_ = nullptr;
     std::vector<uint64_t> row_sequence_ranks_;
     std::vector<uint64_t> paragraph_sequence_ranks_, paragraph_order_ranks_;
+    std::unordered_map<const NativeKnowledgeDocument *, size_t> knowledge_documents_;
+    std::unordered_map<const NativeHistoryDocument *, size_t> history_documents_;
+    std::unordered_map<const NativeDrawnTextRow *, NativeDrawnTextRow> resolved_rows_;
+    bool character_ = false;
     static void order_ranks(std::vector<uint64_t> &values) {
         std::sort(values.begin(), values.end());
         values.erase(std::unique(values.begin(), values.end()), values.end());
@@ -47,6 +51,40 @@ class NativeUiCacheContextWriter {
                 return false;
         }
         return true;
+    }
+    const NativeDrawnTextRow &resolved_row(const NativeDrawnTextRow &input) {
+        if (!character_ || !input.unit_identity_pending ||
+                !input.unit_identity_pending->deferred_snapshot ||
+                input.unit_identity_semantic_key.empty()) return input;
+        const auto saved = resolved_rows_.find(&input);
+        if (saved != resolved_rows_.end()) return saved->second;
+        const auto &pending = *input.unit_identity_pending;
+        if (pending.catalog != g_overlay.native_identity_translation_catalog_generation()) return input;
+        const auto source = input.complete_source.empty() ? std::string_view(input.source)
+            : std::string_view(input.complete_source);
+        auto binding = native_unit_identity_source_binding(source, input.address,
+            input.unit_identity_semantic_key);
+        std::optional<std::string> target;
+        if (binding && binding->ready) target = binding->target;
+        else {
+            // Discovery resolves a copy of the captured row. A retained
+            // native frame may therefore still hold its original deferred
+            // snapshot after SDL has completed it. Read only the exact typed
+            // result here; never run translation while computing a cache key.
+            if (pending.source != source || pending.semantic_key != input.unit_identity_semantic_key)
+                return input;
+            auto &cache = g_native_unit_identity_completed;
+            std::lock_guard<std::mutex> lock(cache.mutex);
+            const auto found = cache.results.find(pending.semantic_key);
+            if (found == cache.results.end()) return input;
+            target = !found->second || *found->second == native_text_to_utf8(pending.semantic_source)
+                ? native_text_to_utf8(pending.source) : *found->second;
+        }
+        auto row = input;
+        row.unit_identity_target = std::move(target);
+        row.unit_identity_ready = true;
+        row.unit_identity_pending.reset();
+        return resolved_rows_.emplace(&input, std::move(row)).first->second;
     }
 public:
     NativeUiCacheContextWriter() { key_.reserve(4096); }
@@ -129,7 +167,8 @@ public:
             text(field.target); value(field.pixel_y);
         });
     }
-    bool row_cacheable(const NativeDrawnTextRow &input) const {
+    bool row_cacheable(const NativeDrawnTextRow &captured) {
+        const auto &input = resolved_row(captured);
         return !input.trade_item_caption && !input.reclaim_history &&
             !input.world_site_entity_fact && !input.justice_organization &&
             !input.justice_plot && !input.fortress_zone_caption &&
@@ -137,7 +176,8 @@ public:
             (!input.draw_grid || (graphics_ &&
                 (input.draw_grid == graphics_->screen || input.draw_grid == graphics_->screen_top)));
     }
-    void row(const NativeDrawnTextRow &input, uint64_t epoch) {
+    void row(const NativeDrawnTextRow &captured, uint64_t epoch) {
+        const auto &input = resolved_row(captured);
         // These records contain further typed object graphs, not just a
         // visible spelling. A normal redraw is safer than an incomplete key.
         if (input.trade_item_caption ||
@@ -359,7 +399,8 @@ public:
         });
         optional(input.index_intro, [&](const auto &box) { rect(box); });
     }
-    bool common() {
+    bool common(bool character = false) {
+        character_ = character;
         value(g_native_ui_render_generation);
         value(g_overlay.translation_enabled());
         value(RULESETS.resource_revision()); value(native_identity_translation_context());
@@ -370,6 +411,15 @@ public:
         const auto classic = native_ui_classic();
         if (!classic) return false;
         value(*classic);
+        if (character) {
+            // The sheet is a native component with its own sources and grid.
+            // Hidden management, history and world-generation state cannot
+            // affect it and must not decline its retained translation cache.
+            rect(g_native_character_panel);
+            value(g_native_character_owner); value(g_native_character_context);
+            value(g_native_character_active_id); value(g_native_character_active_sub_tab);
+            return true;
+        }
         value(g_native_info_page); value(g_native_info_labor_page);
         value(g_native_stocks_current_type); value(g_native_stocks_category_right);
         rect(g_native_info_panel); rect(g_native_stocks_panel); rect(g_native_reports_panel);
@@ -384,6 +434,96 @@ public:
         const auto mod_active = active_mod_screen(screen);
         if (!mod_active || *mod_active) return false;
         return true;
+    }
+    void history_event(const NativeHistoryEventData &input, size_t depth = 0) {
+        if (!complete) return;
+        if (depth >= kNativeHistoryTreeDepth) { complete = false; return; }
+        value(input.kind); value(input.native_type); value(input.id);
+        value(input.year); value(input.seconds); value(input.goal);
+        value(input.artifact_id); value(input.creator_unit_id); value(input.actor_id);
+        value(input.entity_id); value(input.site_id); value(input.site_entity_id);
+        value(input.position_id); value(input.flags);
+        value(input.circumstance); value(input.circumstance_data);
+        value(input.reason); value(input.reason_data); text(input.position);
+        range(input.fields, [&](const auto &field) {
+            text(field.first);
+            range(field.second, [&](auto item) { value(item); });
+        });
+        range(input.context, [&](const auto &field) { text(field.first); value(field.second); });
+        range(input.texts, [&](const auto &field) { text(field.first); text(field.second); });
+        range(input.references, [&](const auto &reference) {
+            value(reference.first); value(reference.second);
+        });
+        range(input.subjects, [&](const auto &subject) {
+            value(subject.kind); value(subject.id); value(subject.subid);
+            value(subject.native_type); name(subject.name);
+            text(subject.species); text(subject.label_key); text(subject.raw_title);
+        });
+        range(input.children, [&](const auto &child) {
+            value(child.first);
+            optional(child.second, [&](const auto &event) { history_event(event, depth + 1); });
+        });
+    }
+    void history_document(const std::shared_ptr<const NativeHistoryDocument> &input) {
+        value(bool(input));
+        if (!input || !complete) return;
+        const auto [known, inserted] = history_documents_.emplace(input.get(), history_documents_.size());
+        // A shared immutable document is encoded once, with exact references
+        // thereafter. Native allocation addresses are not semantic content.
+        value(known->second); value(inserted);
+        if (!inserted) return;
+        value(input->owner); history_event(input->event);
+        optional(input->page, [&](const auto &page) {
+            value(page.kind); history_event(page.data);
+        });
+        text(input->native_source);
+        range(input->tokens, [&](const auto &token) {
+            value(token.identity); text(token.source); value(token.x); value(token.y);
+            value(token.color); value(token.link_type); value(token.link_id); value(token.link_subid);
+        });
+    }
+    void knowledge_document(const std::shared_ptr<const NativeKnowledgeDocument> &input) {
+        value(bool(input));
+        if (!input || !complete) return;
+        const auto [known, inserted] = knowledge_documents_.emplace(input.get(), knowledge_documents_.size());
+        value(known->second); value(inserted);
+        if (!inserted) return;
+        text(input->source); value(input->width); value(input->personality);
+        value(input->health); value(input->thoughts); value(input->overview_footer);
+        value(input->foreground);
+        range(input->rows, [&](const auto &line) { text(line); });
+        range(input->row_addresses, [&](auto address) { value(address); });
+        range(input->box_boundaries, [&](const auto &boundary) {
+            value(boundary.source_end); value(boundary.native_row_end);
+        });
+    }
+    void character_sources(const NativeCharacterCapturedText &input) {
+        optional(input.quote, [&](const auto &quote) {
+            value(quote.owner); grid(quote.grid); value(quote.dimx); value(quote.dimy);
+            value(quote.left); value(quote.right); value(quote.top); value(quote.bottom);
+            value(quote.thoughts_bottom); text(quote.source);
+            range(quote.wrapped_lines, [&](const auto &line) { text(line); });
+        });
+        value(input.relation_epoch != 0);
+        range(input.relations, [&](const auto &relation) {
+            value(relation.x); value(relation.y); value(relation.dimx); value(relation.dimy);
+            grid(relation.screen); text(relation.source); text(relation.target);
+        });
+        const auto draws = [&](const auto &batch) {
+            range(batch, [&](const auto &draw) {
+                knowledge_document(draw.document);
+                value(draw.line); value(draw.x); value(draw.y);
+                grid(reinterpret_cast<const unsigned char *>(draw.screen));
+                value(draw.dimx); value(draw.dimy);
+                for (auto item : draw.clip) value(item);
+            });
+        };
+        value(input.knowledge_epoch != 0); draws(input.knowledge_draws);
+        value(input.knowledge_previous_epoch != 0); draws(input.knowledge_previous_draws);
+        range(input.events, [&](const auto &event) {
+            text(event.source); value(event.collection_id); value(event.ambiguous);
+            history_document(event.document);
+        });
     }
     void announcement_snapshot(const NativeAnnouncementSnapshot &snapshot) {
         // The caller holds g_native_announcement_mutex. A globally unique
@@ -524,14 +664,16 @@ static std::optional<std::string> native_ui_layer_cache_context(
             (!g_native_squads_footer_rows.empty() || !g_native_squads_footer_target.empty() ||
              !g_native_squads_paragraphs.empty())) return std::nullopt;
     NativeUiCacheContextWriter key;
-    if (!key.common()) return std::nullopt;
+    const bool character = &layer == &g_native_character_layer;
+    if (!key.common(character)) return std::nullopt;
     key.graphics(const_cast<NativeUiLayerStorage &>(layer).foreground.graphics());
     // NativeUiLayerFrameCache compares renderer ownership, frames, collapsed
     // titles and index panels exactly already. The semantic key needs only
     // the layer identity here, not a second serialized copy of that metadata.
     key.pointer(&layer);
     const NativeInfoCapturedText *captured = nullptr;
-    if (&layer == &g_native_info_layer) captured = &g_native_info_text;
+    if (character) captured = &g_native_character_text;
+    else if (&layer == &g_native_info_layer) captured = &g_native_info_text;
     else if (&layer == &g_native_stocks_layer) captured = &g_native_stocks_text;
     else if (&layer == &g_native_squads_layer) captured = &g_native_squads_text;
     else if (&layer == &g_native_reports_layer) captured = &g_native_reports_text;
@@ -544,7 +686,8 @@ static std::optional<std::string> native_ui_layer_cache_context(
     if (captured) key.bundle(*captured);
     else key.current();
     if (!key.complete) return std::nullopt;
-    key.other_sources();
+    if (character) key.character_sources(g_native_character_sources);
+    else key.other_sources();
     if (&layer == &g_native_tooltip_layer)
         key.range(g_native_tooltip_frames, [&](const auto &frame) {
             key.widget(frame, g_native_tooltip_text.epoch);
@@ -590,5 +733,6 @@ static std::optional<std::string> native_main_ui_cache_context() {
     key.layer(g_native_notification_layer); key.layer(g_native_pause_layer);
     key.layer(g_native_tooltip_layer); key.layer(g_native_help_layer);
     key.layer(g_native_resolution_layer); key.layer(g_native_worldgen_layer);
+    key.layer(g_native_character_layer);
     return key.finish();
 }

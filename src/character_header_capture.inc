@@ -5,6 +5,7 @@ void Overlay::append_character_header(
         const std::vector<std::string> &header_rows,
         std::vector<std::string> &screen_rows, std::vector<Match> &result,
         int header_tabs_y, int only_y) const {
+    if (!native_character_translation_active(gps_)) return;
     if (!gps_) return;
     const auto clipped_captions = captured_clipped_captions();
     const auto base_draws = captured_native_drawn_text_view();

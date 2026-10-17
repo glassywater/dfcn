@@ -292,9 +292,17 @@ static void dfcn_capture_native_knowledge_wrap(
     }
 }
 
+static bool native_character_capture_enabled(const void *sheet) noexcept {
+    // Platforms without this component hook retain their existing capture
+    // path. On the supported owner, only its memory-open UNIT sheet may
+    // build translated documents or adjust its cached native text boxes.
+    return !g_native_character_owner ||
+        (reinterpret_cast<uintptr_t>(sheet) == g_native_character_owner && native_character_open());
+}
+
 static void prepare_native_overview_thoughts_cache(const void *sheet,
         bool overview = true, const char *current_row = nullptr) {
-    if (!sheet) return;
+    if (!sheet || !native_character_capture_enabled(sheet)) return;
     const auto [source_offset, box_offset] = native_character_layout.thought_vectors.front();
     const auto *bytes = static_cast<const unsigned char *>(sheet);
     const auto sources = NativeBorrowedVector<const NativeString *>::read(bytes + source_offset);
@@ -383,6 +391,7 @@ static void capture_native_character_document(
         NativeKnowledgeTextBox *box, const NativeString *source, const void *sheet,
         bool health, bool thoughts, NativeWrapTiming &timing,
         const char *current_row = nullptr, bool grow_rows = true) {
+    if (!native_character_capture_enabled(sheet)) return;
     try {
         auto translation_wait = timing.phase(NativeWrapTiming::Stage::TranslationLock);
         dfcn::TranslationStateScope translation_scope;
@@ -657,6 +666,10 @@ static void capture_native_character_wrap(
 
 static void dfcn_capture_native_thoughts_draw(graphicst *graphics,
         const char *text, const char *colors, const void *sheet) {
+    if (!native_character_capture_enabled(sheet)) {
+        if (g_real_native_knowledge_draw) g_real_native_knowledge_draw(graphics, text, colors);
+        return;
+    }
     // The native renderer can reuse every box without calling wrap after a
     // core reload. Bind its complete source page before publishing this draw.
     // Recovery only reads rows: the native loop already holds vector iterators,
@@ -671,6 +684,10 @@ static void dfcn_capture_native_thoughts_draw(graphicst *graphics,
 
 static void dfcn_capture_native_personality_draw(graphicst *graphics,
         const char *text, const char *colors, const void *sheet) {
+    if (!native_character_capture_enabled(sheet)) {
+        if (g_real_native_knowledge_draw) g_real_native_knowledge_draw(graphics, text, colors);
+        return;
+    }
     // The native Traits/Values/Preferences/Needs renderer retains the complete
     // source vector even when its cached width skips wrapping. Bind that live
     // page before the generic row writer publishes this draw. The draw loop
@@ -685,6 +702,10 @@ static void dfcn_capture_native_personality_draw(graphicst *graphics,
 
 static void dfcn_capture_native_overview_thoughts_draw(graphicst *graphics,
         const char *text, const char *colors, const void *sheet) {
+    if (!native_character_capture_enabled(sheet)) {
+        if (g_real_native_knowledge_draw) g_real_native_knowledge_draw(graphics, text, colors);
+        return;
+    }
     if (graphics && text && sheet) {
         prepare_native_overview_thoughts_cache(sheet);
         NativeWrapTiming timing("overview-thoughts-draw", nullptr, nullptr, false, false, true);

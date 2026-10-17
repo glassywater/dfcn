@@ -4,6 +4,7 @@
 void Overlay::append_character_room_fields(const std::vector<std::string> &context,
         std::vector<std::string> &rows, std::vector<Match> &matches,
         int tabs_y, int only_y) const {
+    if (!native_character_translation_active(gps_)) return;
     if (!gps_ || tabs_y < 0 || tabs_y >= gps_->dimy ||
             context.size() != static_cast<size_t>(gps_->dimy) ||
             rows.size() != context.size()) return;
@@ -215,6 +216,7 @@ void Overlay::append_character_room_fields(const std::vector<std::string> &conte
 // left-align empty rooms while an occupied room's action breaks its frame
 // lookup and leaves that grade centered inside its English source width.
 void Overlay::layout_character_room_rows(SDL_Renderer *renderer) {
+    if (!native_character_translation_active(gps_)) return;
     if (!gps_ || !renderer || !face_ || gps_->tile_pixel_x <= 0 ||
         gps_->tile_pixel_y <= 0) return;
 
