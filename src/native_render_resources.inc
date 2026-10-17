@@ -6,6 +6,7 @@ static void native_reset_render_resources() {
     native_settings_menu_release();
     g_overlay.invalidate_render_resources();
     g_native_squads_overlay.release_native_squads_resources();
+    release_native_character_language_resources();
 
     const auto reset_layer = [](NativeUiLayerTarget &target,
             NativeUiLayerStorage &layer) {

@@ -1,6 +1,10 @@
 // The character producer owns this grid and its caption registries. Reuse
-// the character readers with a fresh drawing view; only content-keyed text
-// and font caches are shared with the main Overlay.
+// the character readers with a retained drawing state. Its mutable text,
+// layout and font caches belong to the component's lifetime.
+static Overlay &native_character_drawing_state();
+static void native_character_paint_grid(NativeUiLayerStorage &layer,
+    SDL_Renderer *renderer, const std::vector<Match> &matches, const SDL_Rect *panel);
+
 void Overlay::render_native_character_layer(SDL_Renderer *renderer) {
     TranslationStateScope translation;
     auto &layer = g_native_character_layer;
@@ -10,24 +14,8 @@ void Overlay::render_native_character_layer(SDL_Renderer *renderer) {
             graphics->screen_pixel_x <= 0 || graphics->screen_pixel_y <= 0) return;
 
     const auto &panel = g_native_character_panel;
-    // Present's selected native input is the header consumed by the tile
-    // methods. Translation later borrows the character header, but the
-    // painter must bind its output onto this original raster input instead
-    // of binding the character header onto itself.
-    auto *native_paint_input = native_graphics();
     const auto paint_native = [&](const std::vector<Match> &matches) {
-        struct RasterReadScope {
-            graphicst *previous = g_native_graphics_read_view;
-            explicit RasterReadScope(graphicst *input) {
-                g_native_graphics_read_view = input;
-                NativeUiReadScope::invalidate_reads();
-            }
-            ~RasterReadScope() {
-                g_native_graphics_read_view = previous;
-                NativeUiReadScope::invalidate_reads();
-            }
-        } raster(native_paint_input);
-        native_ui_paint_grid(layer, renderer, matches, &panel);
+        native_character_paint_grid(layer, renderer, matches, &panel);
     };
     if (panel.w <= 0 || panel.h <= 0) return;
     const int64_t tile_x = graphics->tile_pixel_x, tile_y = graphics->tile_pixel_y;
@@ -66,12 +54,16 @@ void Overlay::render_native_character_layer(SDL_Renderer *renderer) {
         return;
     }
 
-    // A private pass must not inherit main-page flags, retained matches,
-    // suppression masks, glyph-copy evidence or knowledge-frame recovery.
-    // Moves preserve the background allocations and restore them on every
-    // exit, including an exception from translation or paragraph layout.
+    // The dictionary and primary font stay on the main Overlay. Swap only
+    // mutable drawing state with the component's retained owner, restoring
+    // the background on every exit, including translation/layout exceptions.
+    // Maps carrying list iterators move with their corresponding use lists.
 #define DFCN_CHARACTER_DRAWING_FIELDS(X) \
     X(gps_) \
+    X(draw_epoch_) \
+    X(cell_read_cache_) \
+    X(cell_read_cache_scratch_) \
+    X(cell_read_cache_depth_) \
     X(prepared_matches_) \
     X(frame_prepared_) \
     X(native_ui_input_read_) \
@@ -86,6 +78,37 @@ void Overlay::render_native_character_layer(SDL_Renderer *renderer) {
     X(native_knowledge_frame_) \
     X(native_knowledge_frame_matches_) \
     X(native_knowledge_frame_transition_) \
+    X(native_knowledge_layouts_) \
+    X(written_work_paragraph_cache_) \
+    X(native_display_translation_cache_) \
+    X(native_display_translation_cache_bytes_) \
+    X(native_display_translation_context_) \
+    X(announcement_translation_cache_) \
+    X(announcement_translation_order_) \
+    X(announcement_translation_bytes_) \
+    X(tooltip_translation_cache_source_) \
+    X(tooltip_translation_cache_target_) \
+    X(tooltip_translation_cache_result_) \
+    X(tooltip_translation_cache_valid_) \
+    X(tooltip_translation_cache_catalog_only_) \
+    X(paragraph_layout_cache_) \
+    X(paragraph_layout_cache_order_) \
+    X(paragraph_layout_cache_bytes_) \
+    X(paragraph_glyph_metrics_) \
+    X(fallback_fonts_) \
+    X(fallback_glyphs_) \
+    X(glyph_bitmap_cache_) \
+    X(glyph_bitmap_use_order_) \
+    X(glyph_bitmap_bytes_) \
+    X(font_size_metrics_) \
+    X(ellipsized_text_cache_) \
+    X(texture_cache_) \
+    X(texture_use_order_) \
+    X(texture_retry_renderer_) \
+    X(texture_retry_after_) \
+    X(calibrated_row_height_) \
+    X(calibrated_ink_height_) \
+    X(calibrated_font_pixels_) \
     X(suppress_base_) \
     X(suppress_top_) \
     X(captured_embark_item_suppress_) \
@@ -127,22 +150,65 @@ void Overlay::render_native_character_layer(SDL_Renderer *renderer) {
     X(graphical_clear_readback_)
     struct ViewScope {
         Overlay &overlay;
+        Overlay &retained;
         graphicst *previous_read = g_native_graphics_read_view;
-#define DFCN_CHARACTER_SAVE_FIELD(name) \
-        decltype(Overlay::name) name = std::exchange(overlay.name, {});
-        DFCN_CHARACTER_DRAWING_FIELDS(DFCN_CHARACTER_SAVE_FIELD)
-#undef DFCN_CHARACTER_SAVE_FIELD
-        ViewScope(Overlay &value, graphicst *foreground) : overlay(value) {
+        void swap_fields() noexcept {
+#define DFCN_CHARACTER_SWAP_FIELD(name) std::swap(overlay.name, retained.name);
+            DFCN_CHARACTER_DRAWING_FIELDS(DFCN_CHARACTER_SWAP_FIELD)
+#undef DFCN_CHARACTER_SWAP_FIELD
+        }
+        ViewScope(Overlay &value, graphicst *foreground)
+            : overlay(value), retained(native_character_drawing_state()) {
+            swap_fields();
             overlay.gps_ = foreground;
+            if (++overlay.draw_epoch_ == 0) overlay.draw_epoch_ = 1;
+            overlay.prepared_matches_.clear();
+            overlay.frame_prepared_ = false;
             overlay.native_ui_input_read_ = true;
+            overlay.native_ui_frame_ready_ = false;
+            overlay.native_prepared_ui_frame_.reset();
+            overlay.native_ui_layout_page_.reset();
+            overlay.native_ui_toolbar_tooltip_.reset();
+            overlay.native_ui_copy_passthrough_ = false;
+            overlay.native_knowledge_frame_matches_.reset();
+            overlay.native_knowledge_frame_transition_ = false;
+            overlay.suppress_base_.clear();
+            overlay.suppress_top_.clear();
+            overlay.captured_embark_item_suppress_.clear();
+            overlay.immediate_suppress_base_.clear();
+            overlay.immediate_suppress_top_.clear();
+            overlay.immediate_base_row_hash_.clear();
+            overlay.immediate_top_row_hash_.clear();
+            overlay.immediate_base_row_epoch_.clear();
+            overlay.immediate_top_row_epoch_.clear();
+            overlay.immediate_base_full_scan_epoch_ = 0;
+            overlay.immediate_top_full_scan_epoch_ = 0;
+            overlay.immediate_base_matches_.clear();
+            overlay.immediate_base_matches_epoch_ = 0;
+            overlay.immediate_base_matches_screen_ = nullptr;
+            overlay.immediate_context_epoch_ = 0;
+            overlay.immediate_context_screen_ = nullptr;
+            overlay.immediate_mod_list_.reset();
+            overlay.native_border_glyphs_.clear();
+            overlay.native_border_glyph_epoch_ = 0;
+            overlay.native_border_repairs_.clear();
+            overlay.native_frame_drawn_ = false;
+            overlay.native_frame_submitted_ = false;
+            overlay.cell_composite_state_.clear();
+            overlay.cell_composite_epoch_.clear();
+            overlay.composite_read_epoch_ = overlay.draw_epoch_;
+            overlay.observed_glyph_chars_.clear();
+            overlay.observed_glyph_epoch_.clear();
+            overlay.suppressed_glyphs_.clear();
+            overlay.graphical_rects_.clear();
+            overlay.graphical_rect_epoch_ = 0;
+            overlay.graphical_clear_readback_ = nullptr;
             g_native_graphics_read_view = foreground;
             NativeUiReadScope::invalidate_reads();
         }
         ~ViewScope() {
             g_native_graphics_read_view = previous_read;
-#define DFCN_CHARACTER_RESTORE_FIELD(name) overlay.name = std::move(name);
-            DFCN_CHARACTER_DRAWING_FIELDS(DFCN_CHARACTER_RESTORE_FIELD)
-#undef DFCN_CHARACTER_RESTORE_FIELD
+            swap_fields();
             NativeUiReadScope::invalidate_reads();
         }
     } view(*this, graphics);
@@ -157,7 +223,7 @@ void Overlay::render_native_character_layer(SDL_Renderer *renderer) {
     NativeUiReadScope component(gps_, nullptr);
     NativePanelReadScope panels(gps_);
     CellReadCacheScope cells(*this);
-    prepared_matches_ = find_native_matches(-1, nullptr);
+    prepared_matches_ = find_native_character_matches();
     normalize_native_split_text();
     (void)prepare_frame_layout(renderer);
     normalize_native_split_text();
@@ -257,4 +323,33 @@ void Overlay::render_native_character_layer(SDL_Renderer *renderer) {
         if (text.rule == -8) text.rule = -13;
         draw_match(renderer, text);
     }
+}
+
+void Overlay::release_native_character_resources() {
+    TranslationStateScope translation;
+    destroy_textures();
+    clear_fallback_fonts();
+    paragraph_glyph_metrics_.clear();
+    clear_paragraph_layout_cache();
+    ellipsized_text_cache_.clear();
+    native_knowledge_layouts_.clear();
+    written_work_paragraph_cache_.clear();
+    native_knowledge_frame_ = {};
+    native_knowledge_frame_matches_.reset();
+    native_knowledge_frame_transition_ = false;
+    native_display_translation_cache_.clear();
+    native_display_translation_cache_bytes_ = native_display_translation_context_ = 0;
+    announcement_translation_cache_.clear();
+    announcement_translation_order_.clear();
+    announcement_translation_bytes_ = 0;
+    tooltip_translation_cache_valid_ = false;
+    prepared_matches_.clear();
+    native_border_glyphs_.clear();
+    native_border_repairs_.clear();
+    graphical_rects_.clear();
+    graphical_clear_readback_ = nullptr;
+    cell_read_cache_ = nullptr;
+    cell_read_cache_scratch_.clear();
+    cell_read_cache_depth_ = 0;
+    gps_ = nullptr;
 }

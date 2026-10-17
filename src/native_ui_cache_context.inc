@@ -403,11 +403,11 @@ public:
         character_ = character;
         value(g_native_ui_render_generation);
         value(g_overlay.translation_enabled());
-        value(RULESETS.resource_revision()); value(native_identity_translation_context());
+        value(RULESETS.resource_revision());
         value(g_overlay.native_identity_translation_catalog_generation());
         const uintptr_t screen = native_current_viewscreen();
         if (!screen) return false;
-        value(screen); value(native_dfhack_layer_page_revision());
+        value(screen);
         const auto classic = native_ui_classic();
         if (!classic) return false;
         value(*classic);
@@ -415,11 +415,15 @@ public:
             // The sheet is a native component with its own sources and grid.
             // Hidden management, history and world-generation state cannot
             // affect it and must not decline its retained translation cache.
+            // Its typed rows/documents carry their frozen identity results;
+            // background alias registries are not a dependency of this key.
             rect(g_native_character_panel);
             value(g_native_character_owner); value(g_native_character_context);
             value(g_native_character_active_id); value(g_native_character_active_sub_tab);
             return true;
         }
+        value(native_identity_translation_context());
+        value(native_dfhack_layer_page_revision());
         value(g_native_info_page); value(g_native_info_labor_page);
         value(g_native_stocks_current_type); value(g_native_stocks_category_right);
         rect(g_native_info_panel); rect(g_native_stocks_panel); rect(g_native_reports_panel);

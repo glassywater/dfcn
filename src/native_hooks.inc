@@ -373,6 +373,7 @@ static bool stop_reloadable_core() {
     native_settings_menu_release();
     if (g_plugin_active.load()) {
         g_native_squads_overlay.release_native_squads_resources();
+        release_native_character_language_resources();
         g_overlay.shutdown();
         g_plugin_active.store(false);
     }

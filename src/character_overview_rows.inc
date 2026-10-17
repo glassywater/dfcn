@@ -7,6 +7,7 @@ std::vector<NativeTextCard> Overlay::capture_character_overview_rows() const {
 
     const auto settings = native_ui_settings();
     const bool classic = settings && settings->classic;
+    const auto bounds = native_character_read_bounds(*gps_);
 
     const auto texture_at = [&](int x, int y) -> long {
         bool top = false;
@@ -31,12 +32,12 @@ std::vector<NativeTextCard> Overlay::capture_character_overview_rows() const {
         return false;
     };
 
-    for (int tabs_y = 0; tabs_y < gps_->dimy; ++tabs_y) {
+    for (int tabs_y = bounds.y; tabs_y < bounds.y + bounds.h; ++tabs_y) {
         // A per-layer suppression scan must see the same current tab band as
         // final composition, even when captions and content use different
         // logical layers. Do not borrow a preceding frame's occlusion state.
         std::string tabs(static_cast<size_t>(gps_->dimx), ' ');
-        for (int x = 0; x < gps_->dimx; ++x) {
+        for (int x = bounds.x; x < bounds.x + bounds.w; ++x) {
             bool top = false;
             const auto *cell = cell_at(x, tabs_y, &top);
             if (cell && cell[0]) tabs[static_cast<size_t>(x)] = cell[0];

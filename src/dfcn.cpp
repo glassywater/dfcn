@@ -87,6 +87,7 @@ struct NativePreparedUiFrame;
 static std::optional<std::string> native_main_ui_cache_context();
 static void request_native_process_exit() noexcept;
 static void release_native_squads_language_resources();
+static void release_native_character_language_resources();
 static void release_native_dfhack_layer_target() noexcept;
 
 #include "history_event_clauses.inc"
@@ -2820,14 +2821,18 @@ static void remember_native_drawn_text_row(int x, int y, std::string_view source
         std::optional<std::string> squad_alias_target = std::nullopt,
         std::optional<NativeTradeItemCaption> trade_item_caption = std::nullopt) {
     if (native_private_ui_write_active(graphics)) return;
+    const bool character = graphics && graphics == g_native_character_write_graphics;
     // Copy the producer's frame and unshortened building name while the
     // actual addst caller is live, before acquiring the draw registry lock.
-    auto work_order_shop_caption = capture_native_work_order_shop_caption(native_caller, address);
-    auto fortress_zone_caption = capture_native_fortress_zone_caption(native_caller, address);
-    auto caravan_entity_name = capture_native_caravan_entity_name(native_caller, address);
+    auto work_order_shop_caption = character ? std::nullopt :
+        capture_native_work_order_shop_caption(native_caller, address);
+    auto fortress_zone_caption = character ? std::nullopt :
+        capture_native_fortress_zone_caption(native_caller, address);
+    auto caravan_entity_name = character ? std::shared_ptr<const NativeHistoryName>{} :
+        capture_native_caravan_entity_name(native_caller, address);
     // Identity translation acquires TranslationStateScope before any native
     // registry mutex. Freeze organization evidence in that same lock order.
-    auto justice_organization = top_layer ? std::nullopt :
+    auto justice_organization = top_layer || character ? std::nullopt :
         capture_native_justice_organization_caption(native_caller, address, x, y);
     std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
     const auto epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
@@ -2927,7 +2932,7 @@ static void remember_native_drawn_text_row(int x, int y, std::string_view source
         }
         // Freeze the native performance enum and complete caption with this
         // draw, before scrolling or input can replace the menu entry.
-        row.performance_choice = capture_native_performance_choice(address);
+        if (!character) row.performance_choice = capture_native_performance_choice(address);
         row.info_title_kind = info_title_kind;
         row.info_title_authored = info_title_authored;
         row.info_title_right = info_title_right;
@@ -2937,20 +2942,22 @@ static void remember_native_drawn_text_row(int x, int y, std::string_view source
         row.location_picker_field = location_picker_field;
         row.location_picker_box = location_picker_box;
         row.travel_building_field = travel_building_field;
-        if (g_native_world_site_entity_fact)
+        if (!character && g_native_world_site_entity_fact)
             row.world_site_entity_fact =
                 std::make_shared<const NativeWorldSiteEntityFact>(*g_native_world_site_entity_fact);
-        if (g_native_site_name_fact)
+        if (!character && g_native_site_name_fact)
             row.site_name = std::make_shared<NativeHistoryName>(*g_native_site_name_fact);
         row.native_caller = native_caller;
         row.justice_organization = std::move(justice_organization);
         if (row.justice_organization) row.caption_source = true;
-        if (native_caller)
+        if (!character && native_caller)
             row.justice_plot = native_justice_plot_caption(native_caller, address, source);
         if (row.justice_plot) row.caption_source = true;
-        row.adventure_crafting_role = native_adventure_crafting_role(native_caller, address);
-        row.adventure_inventory_role = native_adventure_inventory_role(native_caller, address);
-        row.adventure_barter_field = native_adventure_barter_field(native_caller);
+        if (!character) {
+            row.adventure_crafting_role = native_adventure_crafting_role(native_caller, address);
+            row.adventure_inventory_role = native_adventure_inventory_role(native_caller, address);
+            row.adventure_barter_field = native_adventure_barter_field(native_caller);
+        }
         if (row.adventure_crafting_role != NativeAdventureCraftingRole::None ||
                 row.adventure_inventory_role != NativeAdventureInventoryRole::None ||
                 row.adventure_barter_field != NativeAdventureBarterField::None)
@@ -2991,7 +2998,7 @@ static void remember_native_drawn_text_row(int x, int y, std::string_view source
             complete_source.find('\0') == std::string_view::npos &&
             complete_source.find_first_of("\r\n") == std::string_view::npos)
             row.complete_source.assign(complete_source);
-        if (row.caption_source && graphics && !top_layer)
+        if (row.caption_source && graphics && !top_layer && !character)
             row.picture_frame = capture_native_picture_caption_frame(*graphics, x, y);
         positions.insert(position);
         try {
@@ -3641,6 +3648,7 @@ public:
     void render_native_announcement_layer(SDL_Renderer *renderer, bool reports);
     void render_native_info_layer(SDL_Renderer *renderer);
     void render_native_character_layer(SDL_Renderer *renderer);
+    void release_native_character_resources();
     void layout_character_panels(SDL_Renderer *renderer);
     std::vector<Match> find_native_character_matches() const;
     void render_native_stocks_layer(SDL_Renderer *renderer);
@@ -6512,6 +6520,7 @@ std::shared_ptr<const Overlay::FontGlyphBitmap> Overlay::font_glyph_bitmap_at_si
 }
 
 bool Overlay::load_font() {
+    release_native_character_language_resources();
     ++dfhack_translation_catalog_revision_;
     native_knowledge_layouts_.clear();
     written_work_paragraph_cache_.clear();
@@ -37413,6 +37422,7 @@ void Overlay::layout_fortress_header(SDL_Renderer *renderer) {
 void Overlay::layout_character_panels(SDL_Renderer *renderer) {
     if (!gps_ || !native_character_translation_active(gps_)) return;
     NativePanelReadScope panel_reads(gps_);
+    const auto bounds = native_character_read_bounds(*gps_);
     const int arena_font_pixels = std::max(
         config_.min_font_pixels,
         static_cast<int>(gps_->tile_pixel_y * config_.font_scale));
@@ -37421,6 +37431,8 @@ void Overlay::layout_character_panels(SDL_Renderer *renderer) {
     // origin in an adventure popup or beside the embark citizen list.
     const auto character_settings = native_ui_settings();
     const auto character_header_char = [&](int x, int y) -> unsigned char {
+        if (x < bounds.x || x >= bounds.x + bounds.w ||
+                y < bounds.y || y >= bounds.y + bounds.h) return 0;
         if (!character_settings || !character_settings->classic)
             return visible_char_at(x, y);
         bool top = false;
@@ -37429,9 +37441,9 @@ void Overlay::layout_character_panels(SDL_Renderer *renderer) {
     };
     int character_info_tabs_y = -1;
     std::vector<const Match *> character_info_tab_matches;
-    for (int y = 0; y < gps_->dimy; ++y) {
+    for (int y = bounds.y; y < bounds.y + bounds.h; ++y) {
         std::string row(static_cast<size_t>(gps_->dimx), ' ');
-        for (int x = 0; x < gps_->dimx; ++x) {
+        for (int x = bounds.x; x < bounds.x + bounds.w; ++x) {
             const unsigned char ch = character_header_char(x, y);
             row[static_cast<size_t>(x)] = ch ? ch : ' ';
         }
@@ -37464,7 +37476,7 @@ void Overlay::layout_character_panels(SDL_Renderer *renderer) {
             first.x, last.x + last.length, character_info_tabs_y,
             [&](int x, int y) { return character_header_char(x, y); });
         std::string row(static_cast<size_t>(gps_->dimx), ' ');
-        for (int x = 0; x < gps_->dimx; ++x)
+        for (int x = bounds.x; x < bounds.x + bounds.w; ++x)
             row[static_cast<size_t>(x)] = character_header_char(x, first.y);
         character_ascii_tabs = is_ascii_tab_caption(
             row, first.x, first.x + first.length) ||
@@ -43268,6 +43280,23 @@ void Overlay::render(SDL_Renderer *renderer) {
 }
 
 static Overlay g_overlay;
+// The character component retains its own mutable drawing/paragraph/GPU
+// state. The common algorithms borrow the main immutable rule catalog and
+// primary font only while this state is bound to their renderer view.
+static Overlay g_native_character_drawing_state;
+static uint64_t g_native_character_catalog_generation = 0;
+static void release_native_character_language_resources() {
+    g_native_character_drawing_state.release_native_character_resources();
+    g_native_character_catalog_generation = 0;
+}
+static Overlay &native_character_drawing_state() {
+    const auto generation = g_overlay.native_identity_translation_catalog_generation();
+    if (generation != g_native_character_catalog_generation) {
+        g_native_character_drawing_state.release_native_character_resources();
+        g_native_character_catalog_generation = generation;
+    }
+    return g_native_character_drawing_state;
+}
 // The squad component borrows immutable catalog/font resources only. Its
 // graphics, matches, font caches and GPU text resources belong to this object.
 static Overlay g_native_squads_overlay;

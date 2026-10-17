@@ -31,12 +31,13 @@ static std::optional<std::array<int32_t, 9>> character_group_classic_skin(
 std::vector<NativeTextCard> Overlay::capture_character_group_rows() const {
     if (!native_character_translation_active(gps_)) return {};
     if (!gps_ || gps_->dimx <= 0 || gps_->dimy <= 0) return {};
+    const auto bounds = native_character_read_bounds(*gps_);
     std::vector<std::string> context(gps_->dimy);
     const auto read_row = [&](int y) -> const std::string & {
         auto &row = context[y];
         if (row.empty()) {
             row.assign(gps_->dimx, ' ');
-            for (int x = 0; x < gps_->dimx; ++x) {
+            for (int x = bounds.x; x < bounds.x + bounds.w; ++x) {
                 bool top = false;
                 const auto *cell = cell_at(x, y, &top);
                 if (cell && cell[0]) row[x] = cell[0];
@@ -44,7 +45,7 @@ std::vector<NativeTextCard> Overlay::capture_character_group_rows() const {
         }
         return row;
     };
-    for (int tabs_y = 0; tabs_y < gps_->dimy; ++tabs_y) {
+    for (int tabs_y = bounds.y; tabs_y < bounds.y + bounds.h; ++tabs_y) {
         const auto tabs = character_information_tab_fields(read_row(tabs_y));
         if (tabs.empty() || !character_social_tab_selected(tabs_y, "Groups")) continue;
         if (native_ui_classic().value_or(false)) {
@@ -73,12 +74,12 @@ std::vector<NativeTextCard> Overlay::capture_character_group_rows() const {
             };
             // The list's native strip is its own geometry. An off-screen
             // outer side/bottom must not veto these complete visible rows.
-            for (int y = tabs_y + 1; y + 2 < gps_->dimy; ++y) {
-                for (int x = 1; x + 3 < gps_->dimx; ++x) {
+            for (int y = tabs_y + 1; y + 2 < bounds.y + bounds.h; ++y) {
+                for (int x = std::max(1, bounds.x); x + 3 < bounds.x + bounds.w; ++x) {
                     if (!native_ui_skin_at(*gps_, x, y, rectangle[1][0], true)) continue;
                     const int left = x - 1;
                     int right = x;
-                    while (right < gps_->dimx &&
+                    while (right < bounds.x + bounds.w &&
                         native_ui_skin_at(*gps_, right, y, rectangle[1][0], true)) ++right;
                     x = right;
                     const auto skin = character_group_classic_skin(*gps_, left, right, y);
@@ -150,7 +151,7 @@ std::vector<NativeTextCard> Overlay::capture_character_group_rows() const {
             // Stop at the first missing side, so another pane cannot join.
             const NativePanelBorders borders(*gps_);
             frame->bottom = tabs_y + 1;
-            while (frame->bottom < gps_->dimy &&
+            while (frame->bottom < bounds.y + bounds.h &&
                     borders.at(frame->left, frame->bottom, 3) &&
                     borders.at(frame->right, frame->bottom, 5)) ++frame->bottom;
         }

@@ -15,7 +15,7 @@ class NativeUiLayerFrameCache {
     void *native_renderer_ = nullptr;
     DrawLayer draw_layer_ = nullptr;
     int width_ = 0, height_ = 0, dimx_ = 0, dimy_ = 0;
-    bool top_in_use_ = false, valid_ = false;
+    bool top_in_use_ = false, owned_frames_ = false, valid_ = false;
 
     static const graphicst &graphics(const NativeUiLayerGrid &grid) noexcept {
         return *reinterpret_cast<const graphicst *>(grid.view.data());
@@ -79,6 +79,68 @@ class NativeUiLayerFrameCache {
             if (!same_bytes(left.textures[slot], right.textures[slot])) return false;
         return true;
     }
+    static bool owned_tile_count(const NativeUiLayerGrid &grid,
+            const std::vector<SDL_Rect> &frames, size_t &count) noexcept {
+        count = 0;
+        if (grid.dimx <= 0 || grid.dimy <= 0) return false;
+        constexpr size_t maximum = static_cast<size_t>(-1) / 8;
+        for (const auto &frame : frames) {
+            if (frame.x < 0 || frame.y < 0 || frame.w < 0 || frame.h < 0 ||
+                    int64_t(frame.x) + frame.w > grid.dimx ||
+                    int64_t(frame.y) + frame.h > grid.dimy) return false;
+            const size_t tiles = static_cast<size_t>(frame.w) * frame.h;
+            if (tiles > maximum - count) return false;
+            count += tiles;
+        }
+        return true;
+    }
+    static void capture_owned_plane(NativeUiLayerGrid::Plane &packed,
+            const NativeUiLayerGrid::Plane &source, int stride,
+            const std::vector<SDL_Rect> &frames, size_t count) {
+        packed.screen.resize(count * 8);
+        packed.flags.resize(count);
+        for (auto &texture : packed.textures) texture.resize(count);
+        size_t at = 0;
+        // The producer keeps absolute column-major coordinates. Pack only
+        // each owned column's consecutive rows, retaining that source stride
+        // without copying any unused private-grid cells between its frames.
+        for (const auto &frame : frames) {
+            if (!frame.h) continue;
+            const size_t rows = static_cast<size_t>(frame.h);
+            for (int x = frame.x; x < frame.x + frame.w; ++x) {
+                const size_t first = static_cast<size_t>(x) * stride + frame.y;
+                std::copy_n(source.screen.data() + first * 8, rows * 8,
+                    packed.screen.data() + at * 8);
+                std::copy_n(source.flags.data() + first, rows, packed.flags.data() + at);
+                for (size_t slot = 0; slot < packed.textures.size(); ++slot)
+                    std::copy_n(source.textures[slot].data() + first, rows,
+                        packed.textures[slot].data() + at);
+                at += rows;
+            }
+        }
+    }
+    bool same_owned_plane(const NativeUiLayerGrid::Plane &packed,
+            const NativeUiLayerGrid::Plane &source) const noexcept {
+        size_t at = 0;
+        for (const auto &frame : frames_) {
+            if (!frame.h) continue;
+            const size_t rows = static_cast<size_t>(frame.h);
+            for (int x = frame.x; x < frame.x + frame.w; ++x) {
+                const size_t first = static_cast<size_t>(x) * dimy_ + frame.y;
+                if (std::memcmp(packed.screen.data() + at * 8,
+                        source.screen.data() + first * 8, rows * 8) != 0 ||
+                        std::memcmp(packed.flags.data() + at,
+                        source.flags.data() + first, rows * sizeof(uint32_t)) != 0)
+                    return false;
+                for (size_t slot = 0; slot < packed.textures.size(); ++slot)
+                    if (std::memcmp(packed.textures[slot].data() + at,
+                            source.textures[slot].data() + first,
+                            rows * sizeof(NativeUiLayerGrid::Texture)) != 0) return false;
+                at += rows;
+            }
+        }
+        return true;
+    }
     bool same_metadata(const NativeUiLayerStorage &layer) const noexcept {
         if (frames_.size() != layer.frames.size() ||
                 collapsed_titles_.size() != layer.collapsed_titles.size() ||
@@ -107,26 +169,40 @@ public:
     void invalidate() noexcept { valid_ = false; }
     bool matches(const NativeUiLayerStorage &layer, SDL_Renderer *renderer,
             int width, int height, DrawLayer draw_layer,
-            const std::string &context) const noexcept {
+            const std::string &context, bool owned_frames = false) const noexcept {
         const auto &grid = layer.foreground;
         const auto &gps = graphics(grid);
         if (!valid_ || renderer_ != renderer || native_renderer_ != layer.native_renderer ||
                 draw_layer_ != draw_layer || width_ != width || height_ != height ||
                 dimx_ != grid.dimx || dimy_ != grid.dimy || top_in_use_ != gps.top_in_use ||
-                context_ != context || !same_metadata(layer)) return false;
+                owned_frames_ != owned_frames || context_ != context || !same_metadata(layer)) return false;
         if (!same_header(grid)) return false;
+        if (owned_frames_)
+            return same_owned_plane(planes_[0], grid.planes[0]) &&
+                (!top_in_use_ || same_owned_plane(planes_[1], grid.planes[1]));
         return same_plane(planes_[0], grid.planes[0]) &&
             (!top_in_use_ || same_plane(planes_[1], grid.planes[1]));
     }
     void capture(const NativeUiLayerStorage &layer, SDL_Renderer *renderer,
-            int width, int height, DrawLayer draw_layer, const std::string &context) {
+            int width, int height, DrawLayer draw_layer, const std::string &context,
+            bool owned_frames = false) {
         valid_ = false;
         const auto &grid = layer.foreground;
         top_in_use_ = graphics(grid).top_in_use;
         if (!header_) header_ = std::make_unique<Header>();
         std::memcpy(header_->data(), grid.view.data(), header_->size());
-        planes_[0] = grid.planes[0];
-        if (top_in_use_) planes_[1] = grid.planes[1];
+        owned_frames_ = owned_frames;
+        if (owned_frames_) {
+            size_t count = 0;
+            if (!owned_tile_count(grid, layer.frames, count))
+                throw std::length_error("Invalid private UI cache frames");
+            capture_owned_plane(planes_[0], grid.planes[0], grid.dimy, layer.frames, count);
+            if (top_in_use_)
+                capture_owned_plane(planes_[1], grid.planes[1], grid.dimy, layer.frames, count);
+        } else {
+            planes_[0] = grid.planes[0];
+            if (top_in_use_) planes_[1] = grid.planes[1];
+        }
         frames_ = layer.frames;
         collapsed_titles_ = layer.collapsed_titles;
         index_panels_ = layer.index_panels;

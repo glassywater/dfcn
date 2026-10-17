@@ -111,12 +111,13 @@ static std::optional<AsciiPanelFrame> find_character_header_frame(
         tab_y <= 0 || tab_y >= gps.dimy) return std::nullopt;
 
     const NativePanelBorders borders(gps);
+    const auto bounds = native_character_read_bounds(gps);
     std::vector<std::string> rows(static_cast<size_t>(tab_y + 1));
     const auto row_at = [&](int y) -> const std::string & {
         auto &row = rows[static_cast<size_t>(y)];
         if (row.empty()) {
             row.assign(static_cast<size_t>(gps.dimx), ' ');
-            for (int x = 0; x < gps.dimx; ++x) {
+            for (int x = bounds.x; x < bounds.x + bounds.w; ++x) {
                 const auto ch = read_char(x, y);
                 row[static_cast<size_t>(x)] = ch ? static_cast<char>(ch) : ' ';
             }
@@ -170,7 +171,7 @@ static std::optional<AsciiPanelFrame> find_character_header_frame(
                     continue;
                 }
                 if (crosses_right && quoted->end <= right) continue;
-                for (int above = y - 1; above >= 0; --above) {
+                for (int above = y - 1; above >= bounds.y; --above) {
                     if (edge(left, above, 0, left, right)) break;
                     for (size_t native_layer = 0; native_layer < identity_draws.size(); ++native_layer) {
                         for (const auto &native : identity_draws[native_layer]) {
@@ -196,7 +197,7 @@ static std::optional<AsciiPanelFrame> find_character_header_frame(
             opening + 1, closing - opening - 1));
         const auto prefix = character_header_name_prefix(body);
         if (!prefix || !generated_title_shape(body)) return std::nullopt;
-        for (int above = y - 1; above >= 0; --above) {
+        for (int above = y - 1; above >= bounds.y; --above) {
             if (edge(left, above, 0, left, right)) break;
             for (const auto &field : split_text_fields(row_at(above))) {
                 if (field.start > left && field.end <= right &&
@@ -210,7 +211,7 @@ static std::optional<AsciiPanelFrame> find_character_header_frame(
         for (const auto &field : split_text_fields(row_at(y))) {
             if (field.start <= left || field.start >= right || field.end <= right)
                 continue;
-            for (int above = y - 1; above >= 0; --above) {
+            for (int above = y - 1; above >= bounds.y; --above) {
                 if (edge(left, above, 0, left, right)) break;
                 const auto identity = identity_field(left, right, above, false);
                 if (!identity || field.start < identity->start - 2 ||
@@ -238,11 +239,11 @@ static std::optional<AsciiPanelFrame> find_character_header_frame(
     // A nearby tab shoulder or portrait cannot enclose the entire band.
     // Keep continuous sides except for proven identity/activity text, all the
     // way to matching top corners and a complete horizontal edge between them.
-    for (int left = first_x - 1; left >= 0; --left) {
+    for (int left = first_x - 1; left >= bounds.x; --left) {
         if (!edge(left, tab_y, 3, left, gps.dimx - 1)) continue;
-        for (int right = last_x; right < gps.dimx; ++right) {
+        for (int right = last_x; right < bounds.x + bounds.w; ++right) {
             if (!edge(right, tab_y, 5, left, right)) continue;
-            for (int top = tab_y - 1; top >= 0; --top) {
+            for (int top = tab_y - 1; top >= bounds.y; --top) {
                 if (edge(left, top, 0, left, right) &&
                     edge(right, top, 2, left, right)) {
                     bool complete = true;
@@ -278,7 +279,7 @@ static std::optional<AsciiPanelFrame> find_character_header_frame(
         return start < gps.dimx;
     };
     bool right_clipped = false;
-    for (int top = tab_y - 1; top >= 0; --top) {
+    for (int top = tab_y - 1; top >= bounds.y; --top) {
         if (right_clipped && edge(left, top, 0, left, gps.dimx - 1)) {
             if (horizontal_to_screen_edge(left + 1, top))
                 return AsciiPanelFrame{left, top, right, tab_y};

@@ -14,7 +14,9 @@ enum class NativeInfoLaborPage : int32_t {
 static NativeInfoLaborPage g_native_info_labor_page = NativeInfoLaborPage::None;
 
 static bool native_info_background_view(const graphicst *graphics) noexcept {
-    if (native_character_background_view(graphics)) return true;
+    // A character sheet can cover Adventure as well as Fortress. Its
+    // occlusion is handled below; it cannot select the management-only
+    // matcher/layout for the uncovered HUD and other independent panels.
     if (native_reports_background_view(graphics)) return true;
     if (native_stocks_background_view(graphics)) return true;
     return graphics && g_native_info_layer.ready && !g_native_info_foreground &&

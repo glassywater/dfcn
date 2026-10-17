@@ -6,6 +6,21 @@ std::vector<Match> Overlay::find_native_character_matches() const {
     if (!gps_ || !gps_->screen || !native_character_foreground_view(gps_) ||
             gps_->dimx <= 0 || gps_->dimx > 1000 ||
             gps_->dimy <= 0 || gps_->dimy > 1000 || trie_.empty()) return result;
+    const auto &panel = g_native_character_panel;
+    const int sheet_left = static_cast<int>(std::clamp<int64_t>(panel.x, 0, gps_->dimx));
+    const int sheet_top = static_cast<int>(std::clamp<int64_t>(panel.y, 0, gps_->dimy));
+    const int sheet_right = static_cast<int>(std::clamp<int64_t>(
+        int64_t(panel.x) + panel.w, sheet_left, gps_->dimx));
+    const int sheet_bottom = static_cast<int>(std::clamp<int64_t>(
+        int64_t(panel.y) + panel.h, sheet_top, gps_->dimy));
+    if (sheet_left == sheet_right || sheet_top == sheet_bottom) return result;
+    // Preserve native absolute coordinates and column stride. Only the
+    // producer-owned pane supplies source cells or row-discovery candidates;
+    // the surrounding full-size strings remain blank addressable storage.
+    const auto read_sheet_char = [&](int x, int y) -> unsigned char {
+        return x >= sheet_left && x < sheet_right && y >= sheet_top && y < sheet_bottom
+            ? visible_char_at(x, y) : 0;
+    };
     constexpr int only_y = -1;
     const unsigned char *screen_override = nullptr;
     const std::optional<NativeTextCard> map_hover;
@@ -14,15 +29,15 @@ std::vector<Match> Overlay::find_native_character_matches() const {
     FortressRosterTranslationScope roster_translations(gps_);
     std::vector<std::string> screen_rows(static_cast<size_t>(gps_->dimy),
         std::string(static_cast<size_t>(gps_->dimx), ' '));
-    for (int y = 0; y < gps_->dimy; ++y)
-        for (int x = 0; x < gps_->dimx; ++x) {
+    for (int y = sheet_top; y < sheet_bottom; ++y)
+        for (int x = sheet_left; x < sheet_right; ++x) {
             bool top = false;
             const auto *cell = cell_at(x, y, &top);
             if (cell && cell[0]) screen_rows[y][x] = static_cast<char>(cell[0]);
         }
     const auto background_rows = screen_rows;
     const auto read_row = [&](int y) {
-        return y >= 0 && y < gps_->dimy ? background_rows[y]
+        return y >= sheet_top && y < sheet_bottom ? background_rows[y]
             : std::string(static_cast<size_t>(gps_->dimx), ' ');
     };
     const auto character_overview_rows = capture_character_overview_rows();
@@ -31,8 +46,8 @@ std::vector<Match> Overlay::find_native_character_matches() const {
     const auto clipped_template_captions = captured_clipped_captions();
     const std::vector<Match> native_knowledge = native_knowledge_matches(-1, {});
     for (const auto &match : native_knowledge) {
-        if (match.x >= 0 && match.y >= 0 && match.y < gps_->dimy &&
-                match.length >= 0 && match.length <= gps_->dimx - match.x)
+        if (match.x >= sheet_left && match.y >= sheet_top && match.y < sheet_bottom &&
+                match.length >= 0 && match.length <= sheet_right - match.x)
             std::fill_n(screen_rows[match.y].begin() + match.x, match.length, ' ');
     }
     const auto text_input_regions = native_text_input_regions(*gps_, screen_rows, nullptr);
@@ -48,7 +63,7 @@ std::vector<Match> Overlay::find_native_character_matches() const {
     // English, digits and Chinese. This reads only this layer's draw records.
     append_fortress_squad_alias_rows(screen_rows, result, only_y, nullptr);
     int room_tabs_y = -1;
-    for (int y = 0; y < gps_->dimy && room_tabs_y < 0; ++y)
+    for (int y = sheet_top; y < sheet_bottom && room_tabs_y < 0; ++y)
         if (!character_information_tab_fields(background_rows[y]).empty()) room_tabs_y = y;
     append_character_room_fields(background_rows, screen_rows, result, room_tabs_y, only_y);
     append_character_kill_rows(screen_rows, result, only_y);
@@ -129,7 +144,7 @@ std::vector<Match> Overlay::find_native_character_matches() const {
     };
     int character_health_tabs_y = -1;
     std::string character_health_tabs;
-    for (int row_y = 0; row_y < gps_->dimy; ++row_y) {
+    for (int row_y = sheet_top; row_y < sheet_bottom; ++row_y) {
         if (is_character_health_tabs_row(
                 screen_rows[static_cast<size_t>(row_y)])) {
             character_health_tabs_y = row_y;
@@ -142,9 +157,9 @@ std::vector<Match> Overlay::find_native_character_matches() const {
     // raw-layer scan can otherwise draw the reconstructed Chinese body part
     // without hiding every independently rendered source fragment.
     if (character_health_tabs_y < 0 && screen_override) {
-        for (int row_y = 0; row_y < gps_->dimy; ++row_y) {
+        for (int row_y = sheet_top; row_y < sheet_bottom; ++row_y) {
             std::string composed(static_cast<size_t>(gps_->dimx), ' ');
-            for (int x = 0; x < gps_->dimx; ++x) {
+            for (int x = sheet_left; x < sheet_right; ++x) {
                 const unsigned char ch = visible_char_at(x, row_y);
                 composed[static_cast<size_t>(x)] = ch ? static_cast<char>(ch) : ' ';
             }
@@ -161,9 +176,9 @@ std::vector<Match> Overlay::find_native_character_matches() const {
         return !character_information_tab_fields(probe).empty();
     };
     auto find_character_information_tabs = [&](auto read_character) {
-        for (int row_y = 0; row_y < gps_->dimy; ++row_y) {
+        for (int row_y = sheet_top; row_y < sheet_bottom; ++row_y) {
             std::string probe(static_cast<size_t>(gps_->dimx), ' ');
-            for (int x = 0; x < gps_->dimx; ++x) {
+            for (int x = sheet_left; x < sheet_right; ++x) {
                 const unsigned char ch = read_character(x, row_y);
                 probe[static_cast<size_t>(x)] = ch ? static_cast<char>(ch) : ' ';
             }
@@ -194,7 +209,7 @@ std::vector<Match> Overlay::find_native_character_matches() const {
     if (character_items_tabs_y >= 0) {
         int relations_x = -1;
         if (character_social_tab_selected(character_items_tabs_y, "Relations")) {
-            for (int y = character_items_tabs_y - 1; y >= 0; --y) {
+            for (int y = character_items_tabs_y - 1; y >= sheet_top; --y) {
                 const auto fields = character_social_tab_fields(background_rows[static_cast<size_t>(y)]);
                 if (!fields.empty()) { relations_x = fields.front().start; break; }
             }
@@ -202,11 +217,10 @@ std::vector<Match> Overlay::find_native_character_matches() const {
         if (relations_x >= 0) {
             const auto frame = find_ascii_panel_frame(
                 relations_x, relations_x + static_cast<int>(std::string_view("Relations").size()),
-                character_items_tabs_y, gps_->dimx, gps_->dimy,
-                [this](int x, int y) { return visible_char_at(x, y); });
-            const int left = frame ? frame->left + 1 : relations_x;
-            const int right = frame ? frame->right : gps_->dimx;
-            const int bottom = frame ? frame->bottom : gps_->dimy;
+                character_items_tabs_y, sheet_right, sheet_bottom, read_sheet_char);
+            const int left = frame ? std::max(sheet_left, frame->left + 1) : relations_x;
+            const int right = frame ? std::min(sheet_right, frame->right) : sheet_right;
+            const int bottom = frame ? std::min(sheet_bottom, frame->bottom) : sheet_bottom;
             for (int y = character_items_tabs_y + 1; y < bottom; ++y) {
                 for (const LogicalTextField &field : split_text_fields(
                         screen_rows[static_cast<size_t>(y)])) {
@@ -263,9 +277,9 @@ std::vector<Match> Overlay::find_native_character_matches() const {
     int character_quote_tabs_y = -1;
     int character_footer_tabs_y = -1;
     const auto quote_settings = native_ui_settings();
-    for (int y = 0; y < gps_->dimy; ++y) {
+    for (int y = sheet_top; y < sheet_bottom; ++y) {
         std::string &row = quote_rows[static_cast<size_t>(y)];
-        for (int x = 0; x < gps_->dimx; ++x) {
+        for (int x = sheet_left; x < sheet_right; ++x) {
             bool top = false;
             const unsigned char *cell = cell_at(x, y, &top);
             const unsigned char native = cell ? cell[0] : 0;
@@ -293,8 +307,8 @@ std::vector<Match> Overlay::find_native_character_matches() const {
     // Keep the same layer/occlusion policy as header layout: immediate glyph
     // suppression and classic atlas text use the current logical composite;
     // graphical Present still respects actual foreground occlusion.
-    for (int y = 0; y < gps_->dimy; ++y) {
-        for (int x = 0; x < gps_->dimx; ++x) {
+    for (int y = sheet_top; y < sheet_bottom; ++y) {
+        for (int x = sheet_left; x < sheet_right; ++x) {
             unsigned char ch = 0;
             if (screen_override || (header_settings && header_settings->classic)) {
                 bool top = false;
@@ -339,21 +353,23 @@ std::vector<Match> Overlay::find_native_character_matches() const {
                 inventory_tabs.back().end, character_quote_tabs_y);
         if (!inventory_frame && !inventory_tabs.empty()) {
             inventory_frame = find_ascii_panel_frame(inventory_tabs.front().start,
-                inventory_tabs.back().end, character_quote_tabs_y, gps_->dimx, gps_->dimy,
+                inventory_tabs.back().end, character_quote_tabs_y, sheet_right, sheet_bottom,
                 [&](int x, int y) {
                     return static_cast<unsigned char>(quote_rows[y][x]);
                 });
         }
-        const int inventory_right = inventory_frame ? inventory_frame->right : gps_->dimx;
-        const int inventory_bottom = inventory_frame ? inventory_frame->bottom : gps_->dimy;
+        const int inventory_right = inventory_frame
+            ? std::min(sheet_right, inventory_frame->right) : sheet_right;
+        const int inventory_bottom = inventory_frame
+            ? std::min(sheet_bottom, inventory_frame->bottom) : sheet_bottom;
         const size_t overview_at = tabs.find("Overview");
         const size_t items_at = tabs.find("Items");
-        int panel_left = gps_->dimx;
+        int panel_left = sheet_right;
         if (overview_at != std::string::npos && items_at != std::string::npos &&
             items_at > overview_at) {
             const int overview_centre = static_cast<int>(overview_at) * 2 + 8;
             const int items_centre = static_cast<int>(items_at) * 2 + 5;
-            panel_left = std::max(0,
+            panel_left = std::max(sheet_left,
                 (overview_centre * 3 - items_centre) / 4);
         }
         auto location_source = [](std::string_view source) {
@@ -470,7 +486,7 @@ std::vector<Match> Overlay::find_native_character_matches() const {
     // the game is issuing the individual character copies.
     std::vector<std::vector<Match>> reconstructed_need_rows(
         static_cast<size_t>(gps_->dimy));
-    for (int start_y = 0; start_y < gps_->dimy; ++start_y) {
+    for (int start_y = sheet_top; start_y < sheet_bottom; ++start_y) {
         const std::vector<LogicalTextField> first_fields =
             split_text_fields(screen_rows[static_cast<size_t>(start_y)]);
         for (size_t begin = 0; begin < first_fields.size(); ++begin) {
@@ -496,7 +512,7 @@ std::vector<Match> Overlay::find_native_character_matches() const {
             // names fit within at most three physical rows.  Keeping this
             // bound small prevents an incomplete/redrawing row from claiming
             // unrelated prose farther down the panel.
-            const int final_y = std::min(gps_->dimy - 1, start_y + 2);
+            const int final_y = std::min(sheet_bottom - 1, start_y + 2);
             for (int row_y = start_y; row_y <= final_y && !finished; ++row_y) {
                 const std::vector<LogicalTextField> fields = row_y == start_y
                     ? first_fields
@@ -539,7 +555,7 @@ std::vector<Match> Overlay::find_native_character_matches() const {
                 auto translated = translate_character_need_sentence(assembled);
                 if (!translated || translated->empty()) break;
 
-                int clear_left = gps_->dimx;
+                int clear_left = sheet_right;
                 int clear_right = 0;
                 for (const NeedPhysicalSpan &span : spans) {
                     clear_left = std::min(clear_left, span.start);
@@ -578,8 +594,9 @@ std::vector<Match> Overlay::find_native_character_matches() const {
     // before generic UI words. Their source-only continuations stay attached
     // to the same record and cannot be interpreted as independent captions.
     const auto claim = [&](const Match &match) {
-        if (match.x < 0 || match.y < 0 || match.y >= gps_->dimy || match.length <= 0 ||
-                match.x > gps_->dimx || match.length > gps_->dimx - match.x) return;
+        if (match.x < sheet_left || match.y < sheet_top || match.y >= sheet_bottom ||
+                match.length <= 0 || match.x > sheet_right ||
+                match.length > sheet_right - match.x) return;
         auto &row = screen_rows[match.y];
         std::fill_n(row.begin() + match.x, match.length, ' ');
         result.push_back(match);
@@ -596,7 +613,7 @@ std::vector<Match> Overlay::find_native_character_matches() const {
     // Wound rows can split direction, anatomy and tissue into separate native
     // fields. Prefer the longest complete grammar, then claim remaining exact
     // fields, using the same anatomy translations as the shared matcher.
-    for (int y = 0; y < gps_->dimy; ++y) {
+    for (int y = sheet_top; y < sheet_bottom; ++y) {
         const auto row = screen_rows[y];
         std::vector<Match> candidates;
         if (character_health_tabs_y >= 0 && y > character_health_tabs_y) {
@@ -663,8 +680,8 @@ std::vector<Match> Overlay::find_native_character_matches() const {
             return left.length != right.length ? left.length > right.length : left.x < right.x;
         });
         for (const auto &candidate : candidates) {
-            if (candidate.x < 0 || candidate.length <= 0 ||
-                    candidate.length > gps_->dimx - candidate.x) continue;
+            if (candidate.x < sheet_left || candidate.length <= 0 ||
+                    candidate.length > sheet_right - candidate.x) continue;
             const auto &physical = candidate.native_source ? *candidate.native_source : candidate.source;
             if (physical.size() != static_cast<size_t>(candidate.length) ||
                     screen_rows[y].compare(candidate.x, physical.size(), physical) != 0) continue;
@@ -719,11 +736,11 @@ std::vector<Match> Overlay::find_native_character_matches() const {
                            [](bool value) { return value; });
     };
     if (only_y < 0) {
-        for (int row_y = 0; row_y < gps_->dimy; ++row_y) {
+        for (int row_y = sheet_top; row_y < sheet_bottom; ++row_y) {
             if (!matches_have_character_skill_tabs(row_y)) continue;
             character_skill_tabs_y = row_y;
             character_skill_tabs_bottom_y = row_y;
-            while (character_skill_tabs_bottom_y + 1 < gps_->dimy &&
+            while (character_skill_tabs_bottom_y + 1 < sheet_bottom &&
                    matches_have_character_skill_tabs(
                        character_skill_tabs_bottom_y + 1)) {
                 ++character_skill_tabs_bottom_y;
@@ -731,13 +748,13 @@ std::vector<Match> Overlay::find_native_character_matches() const {
             break;
         }
     }
-    for (int row_y = 0; row_y < gps_->dimy; ++row_y) {
+    for (int row_y = sheet_top; row_y < sheet_bottom; ++row_y) {
         if (character_skill_tabs_y >= 0) break;
         if (is_character_skill_tabs_row(
                 screen_rows[static_cast<size_t>(row_y)])) {
             character_skill_tabs_y = row_y;
             character_skill_tabs_bottom_y = row_y;
-            while (character_skill_tabs_bottom_y + 1 < gps_->dimy &&
+            while (character_skill_tabs_bottom_y + 1 < sheet_bottom &&
                    is_character_skill_tabs_row(screen_rows[
                        static_cast<size_t>(character_skill_tabs_bottom_y + 1)])) {
                 ++character_skill_tabs_bottom_y;
@@ -746,9 +763,9 @@ std::vector<Match> Overlay::find_native_character_matches() const {
         }
     }
     if (character_skill_tabs_y < 0 && screen_override) {
-        for (int row_y = 0; row_y < gps_->dimy; ++row_y) {
+        for (int row_y = sheet_top; row_y < sheet_bottom; ++row_y) {
             std::string composed(static_cast<size_t>(gps_->dimx), ' ');
-            for (int x = 0; x < gps_->dimx; ++x) {
+            for (int x = sheet_left; x < sheet_right; ++x) {
                 const unsigned char ch = visible_char_at(x, row_y);
                 composed[static_cast<size_t>(x)] =
                     ch ? static_cast<char>(ch) : ' ';
@@ -896,7 +913,7 @@ std::vector<Match> Overlay::find_native_character_matches() const {
     {
         const int first_candidate_row = character_skill_tabs_bottom_y >= 0
             ? character_skill_tabs_bottom_y + 1
-            : 0;
+            : sheet_top;
         // Paragraph prose legitimately contains two spaces between generated
         // sentences. The general UI-field splitter treats such spacing as a
         // column boundary, which used to discard one half of a physical row.
@@ -920,10 +937,10 @@ std::vector<Match> Overlay::find_native_character_matches() const {
                                static_cast<size_t>(end - start)),
                 });
             };
-            int segment_start = 0;
-            int cursor = 0;
-            while (cursor <= static_cast<int>(row.size())) {
-                if (cursor == static_cast<int>(row.size())) {
+            int segment_start = sheet_left;
+            int cursor = sheet_left;
+            while (cursor <= sheet_right) {
+                if (cursor == sheet_right) {
                     append_segment(segment_start, cursor);
                     break;
                 }
@@ -933,7 +950,7 @@ std::vector<Match> Overlay::find_native_character_matches() const {
                     separator_end = cursor + 1;
                 } else if (row[static_cast<size_t>(cursor)] == ' ') {
                     int gap_end = cursor + 1;
-                    while (gap_end < static_cast<int>(row.size()) &&
+                    while (gap_end < sheet_right &&
                            row[static_cast<size_t>(gap_end)] == ' ') {
                         ++gap_end;
                     }
@@ -1004,8 +1021,8 @@ std::vector<Match> Overlay::find_native_character_matches() const {
                 static_cast<size_t>(gps_->dimy),
                 std::string(static_cast<size_t>(gps_->dimx), ' '));
             if (!raw) return rows;
-            for (int y = 0; y < gps_->dimy; ++y) {
-                for (int x = 0; x < gps_->dimx; ++x) {
+            for (int y = sheet_top; y < sheet_bottom; ++y) {
+                for (int x = sheet_left; x < sheet_right; ++x) {
                     const size_t tile = static_cast<size_t>(x) * gps_->dimy + y;
                     const unsigned char ch = raw[tile * 8];
                     rows[static_cast<size_t>(y)][static_cast<size_t>(x)] =
@@ -1024,15 +1041,15 @@ std::vector<Match> Overlay::find_native_character_matches() const {
         paragraph_sources.push_back(screen_rows);
         std::vector<std::string> restored_rows = screen_rows;
         for (const Match &match : result) {
-            if (match.y < first_candidate_row || match.y >= gps_->dimy ||
-                match.x < 0 || match.x >= gps_->dimx || match.length <= 0 ||
+            if (match.y < first_candidate_row || match.y >= sheet_bottom ||
+                match.x < sheet_left || match.x >= sheet_right || match.length <= 0 ||
                 match.source.empty()) {
                 continue;
             }
             const int writable = std::min({
                 match.length,
                 static_cast<int>(match.source.size()),
-                gps_->dimx - match.x,
+                sheet_right - match.x,
             });
             for (int index = 0; index < writable; ++index) {
                 restored_rows[static_cast<size_t>(match.y)]
@@ -1050,8 +1067,8 @@ std::vector<Match> Overlay::find_native_character_matches() const {
                 static_cast<size_t>(gps_->dimy),
                 std::string(static_cast<size_t>(gps_->dimx), ' '));
             bool observed_any = false;
-            for (int y = first_candidate_row; y < gps_->dimy; ++y) {
-                for (int x = 0; x < gps_->dimx; ++x) {
+            for (int y = first_candidate_row; y < sheet_bottom; ++y) {
+                for (int x = sheet_left; x < sheet_right; ++x) {
                     const size_t tile =
                         static_cast<size_t>(x) * gps_->dimy + y;
                     if (observed_glyph_epoch_[tile] != composite_read_epoch_)
@@ -1073,8 +1090,8 @@ std::vector<Match> Overlay::find_native_character_matches() const {
 
         if (gps_->screen && gps_->top_in_use && gps_->screen_top) {
             std::vector<std::string> merged = screen_rows;
-            for (int y = first_candidate_row; y < gps_->dimy; ++y) {
-                for (int x = 0; x < gps_->dimx; ++x) {
+            for (int y = first_candidate_row; y < sheet_bottom; ++y) {
+                for (int x = sheet_left; x < sheet_right; ++x) {
                     char &cell = merged[static_cast<size_t>(y)]
                                        [static_cast<size_t>(x)];
                     if (cell != ' ') continue;
@@ -1101,15 +1118,15 @@ std::vector<Match> Overlay::find_native_character_matches() const {
             // so it cannot manufacture that word from separate native rows.
             // Reject an impossible source layer before growing a paragraph
             // from every list row: otherwise a long catalog costs O(rows^2).
-            if (std::none_of(rows.begin(), rows.end(), [](const std::string &row) {
-                    return row.find("poetic") != std::string::npos;
+            if (std::none_of(rows.begin() + sheet_top, rows.begin() + sheet_bottom,
+                    [](const std::string &row) {
+                        return row.find("poetic") != std::string::npos;
                 })) continue;
-            std::vector<std::vector<LogicalTextField>> fields;
-            fields.reserve(rows.size());
-            for (int y = 0; y < gps_->dimy; ++y)
-                fields.push_back(paragraph_fields_at(rows, y));
+            std::vector<std::vector<LogicalTextField>> fields(rows.size());
+            for (int y = sheet_top; y < sheet_bottom; ++y)
+                fields[static_cast<size_t>(y)] = paragraph_fields_at(rows, y);
             for (int run_start = first_candidate_row;
-                 run_start < gps_->dimy; ++run_start) {
+                 run_start < sheet_bottom; ++run_start) {
                 const auto first = prose_field_at(fields, run_start, -1);
                 if (!first) continue;
                 std::vector<PoeticDescriptionRow> candidate_rows;
@@ -1120,7 +1137,8 @@ std::vector<Match> Overlay::find_native_character_matches() const {
                 // places its prompt and choices just below this prose frame.
                 const auto panel = native_panel_interior(poetic_borders, *gps_,
                     first->start, first->end, run_start);
-                const int paragraph_bottom = panel ? panel->y + panel->h : gps_->dimy;
+                const int paragraph_bottom = panel
+                    ? std::min(sheet_bottom, panel->y + panel->h) : sheet_bottom;
                 int empty_rows = 0;
                 for (int y = run_start; y < paragraph_bottom; ++y) {
                     // Poetic form details can place each logical part in its
@@ -1368,7 +1386,7 @@ std::vector<Match> Overlay::find_native_character_matches() const {
             });
         };
         if (translated && !translated->empty()) {
-            int paragraph_x = gps_->dimx;
+            int paragraph_x = sheet_right;
             int paragraph_right = 0;
             for (const PoeticDescriptionRow &row : poetic_description_rows) {
                 paragraph_x = std::min(paragraph_x, row.x);
@@ -1379,7 +1397,7 @@ std::vector<Match> Overlay::find_native_character_matches() const {
             // that observed bound, but allow short final/section rows to share
             // the same complete text box established by the longest row.
             const int paragraph_width = std::max(
-                8, std::min(gps_->dimx - paragraph_x - 4,
+                8, std::min(sheet_right - paragraph_x - 4,
                             paragraph_right - paragraph_x));
             erase_row_fragments();
             for (const PoeticDescriptionRow &row : poetic_description_rows) {
@@ -1499,7 +1517,7 @@ std::vector<Match> Overlay::find_native_character_matches() const {
                         origin_x + paragraph_x * gps_->tile_pixel_x,
                         origin_y + display_top,
                         paragraph_width * gps_->tile_pixel_x,
-                        gps_->dimy * gps_->tile_pixel_y - display_top};
+                        sheet_bottom * gps_->tile_pixel_y - display_top};
                     for (int visible_line = 0;
                          visible_line < visible_target_lines;
                          ++visible_line) {
@@ -1612,14 +1630,14 @@ std::vector<Match> Overlay::find_native_character_matches() const {
     musical_row_sources.push_back(screen_rows);
     std::vector<std::string> restored_musical_rows = screen_rows;
     for (const Match &match : result) {
-        if (match.y < 0 || match.y >= gps_->dimy || match.x < 0 ||
-            match.x >= gps_->dimx || match.length <= 0 ||
+        if (match.y < sheet_top || match.y >= sheet_bottom || match.x < sheet_left ||
+            match.x >= sheet_right || match.length <= 0 ||
             match.source.empty()) {
             continue;
         }
         const int writable = std::min({
             match.length, static_cast<int>(match.source.size()),
-            gps_->dimx - match.x,
+            sheet_right - match.x,
         });
         for (int index = 0; index < writable; ++index) {
             restored_musical_rows[static_cast<size_t>(match.y)]
@@ -1637,8 +1655,8 @@ std::vector<Match> Overlay::find_native_character_matches() const {
             static_cast<size_t>(gps_->dimy),
             std::string(static_cast<size_t>(gps_->dimx), ' '));
         bool any = false;
-        for (int y = 0; y < gps_->dimy; ++y) {
-            for (int x = 0; x < gps_->dimx; ++x) {
+        for (int y = sheet_top; y < sheet_bottom; ++y) {
+            for (int x = sheet_left; x < sheet_right; ++x) {
                 const size_t tile = static_cast<size_t>(x) * gps_->dimy + y;
                 if (observed_glyph_epoch_[tile] != composite_read_epoch_)
                     continue;
@@ -1661,8 +1679,8 @@ std::vector<Match> Overlay::find_native_character_matches() const {
             static_cast<size_t>(gps_->dimy),
             std::string(static_cast<size_t>(gps_->dimx), ' '));
         if (!raw) return rows;
-        for (int y = 0; y < gps_->dimy; ++y) {
-            for (int x = 0; x < gps_->dimx; ++x) {
+        for (int y = sheet_top; y < sheet_bottom; ++y) {
+            for (int x = sheet_left; x < sheet_right; ++x) {
                 const size_t tile = static_cast<size_t>(x) * gps_->dimy + y;
                 const unsigned char ch = raw[tile * 8];
                 rows[static_cast<size_t>(y)][static_cast<size_t>(x)] =
@@ -1693,10 +1711,10 @@ std::vector<Match> Overlay::find_native_character_matches() const {
                            static_cast<size_t>(raw_end - raw_start)),
             });
         };
-        int segment_start = 0;
-        int cursor = 0;
-        while (cursor <= static_cast<int>(row.size())) {
-            if (cursor == static_cast<int>(row.size())) {
+        int segment_start = sheet_left;
+        int cursor = sheet_left;
+        while (cursor <= sheet_right) {
+            if (cursor == sheet_right) {
                 append(segment_start, cursor);
                 break;
             }
@@ -1705,7 +1723,7 @@ std::vector<Match> Overlay::find_native_character_matches() const {
                 separator_end = cursor + 1;
             } else if (row[static_cast<size_t>(cursor)] == ' ') {
                 int gap_end = cursor + 1;
-                while (gap_end < static_cast<int>(row.size()) &&
+                while (gap_end < sheet_right &&
                        row[static_cast<size_t>(gap_end)] == ' ') ++gap_end;
                 if (gap_end - cursor >= 8) separator_end = gap_end;
                 else {
@@ -1752,7 +1770,7 @@ std::vector<Match> Overlay::find_native_character_matches() const {
     std::vector<MusicalDescriptionParagraph> musical_candidates;
     std::vector<MusicalDescriptionParagraph> failed_musical_candidates;
     const int musical_first_row = character_skill_tabs_bottom_y >= 0
-        ? character_skill_tabs_bottom_y + 1 : 0;
+        ? character_skill_tabs_bottom_y + 1 : sheet_top;
     auto looks_generated_performance = [](std::string_view value) {
         if (is_written_work_description(value)) return true;
         if (value.find(" poetic ") != std::string_view::npos) return false;
@@ -1807,13 +1825,13 @@ std::vector<Match> Overlay::find_native_character_matches() const {
     };
     for (const std::vector<std::string> &rows : musical_row_sources) {
         for (int run_start = musical_first_row;
-             run_start < gps_->dimy; ++run_start) {
+             run_start < sheet_bottom; ++run_start) {
             const auto first = musical_field_at(rows, run_start, -1);
             if (!first) continue;
             MusicalDescriptionParagraph paragraph;
             const int paragraph_x = first->start;
             int run_end = run_start;
-            for (; run_end < gps_->dimy; ++run_end) {
+            for (; run_end < sheet_bottom; ++run_end) {
                 // DF justifies generated prose by centering short first/last
                 // lines while full wrapped lines begin at the panel margin.
                 // Requiring every row to share the opening x coordinate cuts
@@ -2063,7 +2081,7 @@ std::vector<Match> Overlay::find_native_character_matches() const {
                         match.x + match.length > row.x;
                 });
         });
-        int paragraph_x = gps_->dimx;
+        int paragraph_x = sheet_right;
         int paragraph_right = 0;
         for (const MusicalDescriptionRow &row : paragraph.rows) {
             paragraph_x = std::min(paragraph_x, row.x);
@@ -2077,7 +2095,7 @@ std::vector<Match> Overlay::find_native_character_matches() const {
         }
         if (only_y >= 0) continue;
         const int paragraph_width = std::max(
-            8, std::min(gps_->dimx - paragraph_x - 4,
+            8, std::min(sheet_right - paragraph_x - 4,
                         paragraph_right - paragraph_x));
         std::string localized_target;
         std::string_view target = paragraph.target;
@@ -2210,7 +2228,7 @@ std::vector<Match> Overlay::find_native_character_matches() const {
     // with the prose header so it cannot be stranded at the old English row.
     if (only_y < 0 && character_skill_tabs_y >= 0 && !uncovered_failure &&
         !musical_layout_blocks.empty()) {
-        int notation_left = gps_->dimx;
+        int notation_left = sheet_right;
         int notation_right = 0;
         std::unordered_set<int> translated_source_rows;
         for (const MusicalDescriptionParagraph &paragraph : musical_paragraphs) {
@@ -2242,11 +2260,11 @@ std::vector<Match> Overlay::find_native_character_matches() const {
             }
             return has_bar && has_beat;
         };
-        if (notation_left < gps_->dimx) {
+        if (notation_left < sheet_right) {
             const int notation_font_pixels = std::max(
                 config_.min_font_pixels,
                 static_cast<int>(gps_->tile_pixel_y * config_.font_scale));
-            for (int y = musical_first_row; y < gps_->dimy; ++y) {
+            for (int y = musical_first_row; y < sheet_bottom; ++y) {
                 if (translated_source_rows.contains(y)) continue;
                 for (const LogicalTextField &field :
                      musical_fields_at(screen_rows, y)) {
@@ -2311,7 +2329,7 @@ std::vector<Match> Overlay::find_native_character_matches() const {
                 origin_x + line.layout_x * gps_->tile_pixel_x,
                 origin_y + document_top * gps_->tile_pixel_y,
                 line.layout_length * gps_->tile_pixel_x,
-                (gps_->dimy - document_top) * gps_->tile_pixel_y};
+                (sheet_bottom - document_top) * gps_->tile_pixel_y};
         }
     }
     result.insert(result.end(),
@@ -2351,7 +2369,7 @@ std::vector<Match> Overlay::find_native_character_matches() const {
     // the closed description frame. Read context across layers; source ink
     // below still belongs exclusively to the layer being matched.
     int creation_tabs_y = -1, appearance_accept_y = -1, personality_accept_y = -1;
-    for (int y = 0; y < gps_->dimy; ++y) {
+    for (int y = sheet_top; y < sheet_bottom; ++y) {
         auto inspect_context = [&](const std::string &context) {
             if (context.find("Background") != std::string::npos &&
                 context.find("Skills") != std::string::npos &&
@@ -2366,7 +2384,7 @@ std::vector<Match> Overlay::find_native_character_matches() const {
         inspect_context(screen_rows[static_cast<size_t>(y)]);
         if (!screen_override) continue;
         std::string context(static_cast<size_t>(gps_->dimx), ' ');
-        for (int x = 0; x < gps_->dimx; ++x) {
+        for (int x = sheet_left; x < sheet_right; ++x) {
             const unsigned char ch = visible_char_at(x, y);
             context[static_cast<size_t>(x)] = ch ? static_cast<char>(ch) : ' ';
         }
@@ -2412,7 +2430,8 @@ std::vector<Match> Overlay::find_native_character_matches() const {
             for (const auto &field : split_text_fields(screen_rows[static_cast<size_t>(y)])) {
                 const auto panel = native_panel_interior(
                     borders, *gps_, field.start, field.end, y);
-                if (!panel || panel->y <= creation_tabs_y ||
+                if (!panel || panel->x < sheet_left || panel->x + panel->w > sheet_right ||
+                    panel->y <= creation_tabs_y ||
                     panel->y + panel->h > creation_accept_y) continue;
                 if (std::none_of(candidates.begin(), candidates.end(), [&](const SDL_Rect &seen) {
                         return seen.x == panel->x && seen.y == panel->y &&
@@ -2463,8 +2482,7 @@ std::vector<Match> Overlay::find_native_character_matches() const {
             *gps_, first_tab, last_tab, character_health_tabs_y);
         if (!frame) {
             frame = find_ascii_panel_frame(first_tab, last_tab,
-                character_health_tabs_y, gps_->dimx, gps_->dimy,
-                [&](int x, int y) { return visible_char_at(x, y); });
+                character_health_tabs_y, sheet_right, sheet_bottom, read_sheet_char);
         }
         if (frame) {
             character_description_bounds = CharacterDescriptionBounds{
@@ -2478,10 +2496,10 @@ std::vector<Match> Overlay::find_native_character_matches() const {
         bool current_draw = false;
         for (const auto &draw : captured_native_knowledge_draws(&current_draw)) {
             if (!draw.document || draw.y <= character_health_tabs_y ||
-                draw.y >= gps_->dimy || draw.x < 0 || draw.line < 0 ||
+                draw.y >= sheet_bottom || draw.x < sheet_left || draw.line < 0 ||
                 draw.line >= static_cast<int>(draw.document->rows.size())) continue;
             const int width = draw.document->width;
-            if (width <= 0 || width > gps_->dimx - draw.x) continue;
+            if (width <= 0 || width > sheet_right - draw.x) continue;
             const auto &source = draw.document->rows[static_cast<size_t>(draw.line)];
             if (source.size() > static_cast<size_t>(width)) continue;
             const auto &row = screen_rows[static_cast<size_t>(draw.y)];
@@ -2504,10 +2522,17 @@ std::vector<Match> Overlay::find_native_character_matches() const {
                 character_description_bounds->right = draw.x + width;
             } else {
                 character_description_bounds = CharacterDescriptionBounds{
-                    draw.x, draw.x + width, character_health_tabs_y + 1, gps_->dimy - 2};
+                    draw.x, draw.x + width, character_health_tabs_y + 1, sheet_bottom};
             }
             break;
         }
+    }
+    if (character_description_bounds) {
+        auto &bounds = *character_description_bounds;
+        bounds.left = std::max(sheet_left, bounds.left);
+        bounds.right = std::min(sheet_right, bounds.right);
+        bounds.top = std::max(sheet_top, bounds.top);
+        bounds.bottom = std::min(sheet_bottom, bounds.bottom);
     }
     if (character_description_bounds &&
         character_description_bounds->left < character_description_bounds->right) {
@@ -2527,7 +2552,7 @@ std::vector<Match> Overlay::find_native_character_matches() const {
             if (fields.empty()) { finish(); continue; }
             // Description occupies a single pane. Exclude decorative glyphs,
             // not the short English clauses or punctuation-only final field.
-            int left = gps_->dimx, right = 0;
+            int left = sheet_right, right = 0;
             std::string plain;
             for (const auto &field : fields) {
                 if (std::any_of(field.text.begin(), field.text.end(),
@@ -2635,7 +2660,7 @@ std::vector<Match> Overlay::find_native_character_matches() const {
     }
     if (!character_description_blocks.empty()) {
         std::string document;
-        int left = gps_->dimx;
+        int left = sheet_right;
         for (const auto &block : character_description_blocks) {
             if (!document.empty()) document += "[B]";
             document += block.source;
@@ -2669,9 +2694,10 @@ std::vector<Match> Overlay::find_native_character_matches() const {
                 if (only_y < 0) {
                     const auto &anchor = character_description_blocks.front().rows.front();
                     const int64_t display_height = static_cast<int64_t>(layout.lines.size()) * line_height;
+                    const int64_t pane_top = int64_t(sheet_top) * gps_->tile_pixel_y;
                     const int display_top = static_cast<int>(std::clamp<int64_t>(
-                        static_cast<int64_t>(anchor.y) * gps_->tile_pixel_y, 0,
-                        std::max<int64_t>(0, static_cast<int64_t>(gps_->dimy) *
+                        static_cast<int64_t>(anchor.y) * gps_->tile_pixel_y, pane_top,
+                        std::max<int64_t>(pane_top, static_cast<int64_t>(sheet_bottom) *
                             gps_->tile_pixel_y - display_height)));
                     for (size_t i = 0; i < layout.lines.size(); ++i) {
                         const int pixel_y = display_top +
@@ -2713,7 +2739,7 @@ std::vector<Match> Overlay::find_native_character_matches() const {
     // puts outdoor adaptation and similar stable notes below the main facets.
     int personality_subtabs_y = -1;
     std::optional<AsciiPanelFrame> personality_frame;
-    for (int y = 0; y < gps_->dimy; ++y) {
+    for (int y = sheet_top; y < sheet_bottom; ++y) {
         const std::string &row = screen_rows[static_cast<size_t>(y)];
         if ((row.find("Traits") != std::string::npos ||
              row.find("Personality") != std::string::npos) &&
@@ -2729,8 +2755,7 @@ std::vector<Match> Overlay::find_native_character_matches() const {
                 *gps_, first_tab, last_tab, y);
             if (!personality_frame) {
                 personality_frame = find_ascii_panel_frame(
-                    first_tab, last_tab, y, gps_->dimx, gps_->dimy,
-                    [&](int x, int row_y) { return visible_char_at(x, row_y); });
+                    first_tab, last_tab, y, sheet_right, sheet_bottom, read_sheet_char);
             }
             break;
         }
@@ -2759,11 +2784,11 @@ std::vector<Match> Overlay::find_native_character_matches() const {
         bool current_draw = false;
         for (const auto &draw : captured_native_knowledge_draws(&current_draw)) {
             if (!draw.document || !draw.document->personality ||
-                draw.y <= personality_subtabs_y || draw.y >= gps_->dimy ||
-                draw.x < 0 || draw.line < 0 ||
+                draw.y <= personality_subtabs_y || draw.y >= sheet_bottom ||
+                draw.x < sheet_left || draw.line < 0 ||
                 draw.line >= static_cast<int>(draw.document->rows.size())) continue;
             const int width = draw.document->width;
-            if (width <= 0 || width > gps_->dimx - draw.x) continue;
+            if (width <= 0 || width > sheet_right - draw.x) continue;
             const auto &source = draw.document->rows[static_cast<size_t>(draw.line)];
             if (source.size() > static_cast<size_t>(width)) continue;
             const auto &row = screen_rows[static_cast<size_t>(draw.y)];
@@ -2780,9 +2805,18 @@ std::vector<Match> Overlay::find_native_character_matches() const {
             if (!intact || verified < 12) continue;
             personality_bounds = CharacterDescriptionBounds{
                 draw.x, draw.x + width, personality_subtabs_y + 1,
-                gps_->dimy - 2};
+                sheet_bottom};
             break;
         }
+    }
+    if (personality_bounds) {
+        auto &bounds = *personality_bounds;
+        bounds.left = std::max(sheet_left, bounds.left);
+        bounds.right = std::min(sheet_right, bounds.right);
+        bounds.top = std::max(sheet_top, bounds.top);
+        bounds.bottom = std::min(sheet_bottom, bounds.bottom);
+        if (bounds.left >= bounds.right || bounds.top >= bounds.bottom)
+            personality_bounds.reset();
     }
     if (personality_subtabs_y >= 0) {
         PersonalityBlock current;
@@ -2809,7 +2843,8 @@ std::vector<Match> Overlay::find_native_character_matches() const {
                 target.push_back(' ');
             target.append(source);
         };
-        const int bottom = personality_bounds ? personality_bounds->bottom : gps_->dimy;
+        const int bottom = personality_bounds
+            ? std::min(sheet_bottom, personality_bounds->bottom) : sheet_bottom;
         for (int y = personality_subtabs_y + 1; y < bottom; ++y) {
             const auto &row = screen_rows[static_cast<size_t>(y)];
             if (!personality_bounds) {

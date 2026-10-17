@@ -38,6 +38,14 @@ static bool native_character_translation_active(const graphicst *graphics) noexc
 #endif
 }
 
+static SDL_Rect native_character_read_bounds(const graphicst &graphics) noexcept {
+    const SDL_Rect canvas{0, 0, graphics.dimx, graphics.dimy};
+    if (!native_character_foreground_view(&graphics)) return canvas;
+    SDL_Rect bounds{};
+    SDL_IntersectRect(&canvas, &g_native_character_panel, &bounds);
+    return bounds;
+}
+
 static bool native_character_background_view(const graphicst *graphics) noexcept {
     return graphics && g_native_character_layer.ready &&
         !g_native_character_foreground && !g_native_character_write_graphics &&

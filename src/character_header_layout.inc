@@ -7,6 +7,7 @@ void Overlay::layout_character_header(SDL_Renderer *renderer) {
         gps_->tile_pixel_y <= 0) return;
 
     const auto settings = native_ui_settings();
+    const auto bounds = native_character_read_bounds(*gps_);
     const auto read_char = [&](int x, int y) -> unsigned char {
         if (!settings || !settings->classic) return visible_char_at(x, y);
         bool top = false;
@@ -15,14 +16,14 @@ void Overlay::layout_character_header(SDL_Renderer *renderer) {
     };
     const auto read_row = [&](int y) {
         std::string row(static_cast<size_t>(gps_->dimx), ' ');
-        for (int x = 0; x < gps_->dimx; ++x) {
+        for (int x = bounds.x; x < bounds.x + bounds.w; ++x) {
             const auto ch = read_char(x, y);
             row[static_cast<size_t>(x)] = ch ? ch : ' ';
         }
         return row;
     };
     std::optional<AsciiPanelFrame> header;
-    for (int y = 0; y < gps_->dimy && !header; ++y) {
+    for (int y = bounds.y; y < bounds.y + bounds.h && !header; ++y) {
         const auto tabs = character_information_tab_fields(read_row(y));
         if (tabs.empty()) continue;
         header = find_character_header_frame(*gps_, tabs.front().start,
@@ -99,7 +100,7 @@ void Overlay::layout_character_header(SDL_Renderer *renderer) {
                 }
                 if (name_top < 0) continue;
                 int tabs_y = -1;
-                for (int y = quote_bottom + 1; y < gps_->dimy; ++y) {
+                for (int y = quote_bottom + 1; y < bounds.y + bounds.h; ++y) {
                     const auto row = read_row(y);
                     auto tabs = character_social_tab_fields(row);
                     if (tabs.empty()) tabs = character_information_tab_fields(row);

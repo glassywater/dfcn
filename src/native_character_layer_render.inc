@@ -1,6 +1,21 @@
 // The direct view_sheets render owns its frame, header, tabs and selected
 // page. Intercept it before any native store reaches another component.
 static NativeUiLayerTarget g_native_character_target;
+
+static void native_character_paint_grid(NativeUiLayerStorage &layer,
+        SDL_Renderer *renderer, const std::vector<Match> &matches, const SDL_Rect *panel) {
+#ifdef _WIN32
+    // Select the character header for every native SDL input, including
+    // RIP-relative helpers; the main page's selected header stays untouched.
+    struct ReadCacheScope {
+        ReadCacheScope() { NativeUiReadScope::invalidate_reads(); }
+        ~ReadCacheScope() { NativeUiReadScope::invalidate_reads(); }
+    } reads;
+    NativeDfhackLayerRendererGrid input(layer.native_renderer, *layer.foreground.graphics());
+#endif
+    native_ui_paint_grid(layer, renderer, matches, panel);
+}
+
 #ifdef _WIN32
 static NativeEntryHook g_native_character_draw_hook;
 using NativeCharacterDrawFn = void (*)(void *, uint32_t, int32_t, int32_t);
@@ -72,17 +87,14 @@ static void native_character_draw(void *sheet, uint32_t tick, int32_t screen_lef
     const auto original = reinterpret_cast<NativeCharacterDrawFn>(g_native_character_draw_hook.original);
     if (!original) return;
     TranslationStateScope translation;
-    auto *gps = native_graphics();
+    // Native sheet helpers and inlined stores address the executable's gps.
+    // Bind that exact writer even when a parent owns another private layer.
+    auto *gps = native_graphics_owner();
     auto &layer = g_native_character_layer;
     bool isolate = reinterpret_cast<uintptr_t>(sheet) == g_native_character_owner &&
         native_character_open() && gps && gps->screen && gps->screen_top &&
         gps->dimx > 0 && gps->dimx <= 1000 && gps->dimy > 0 && gps->dimy <= 1000 &&
-        g_native_help_layer.native_renderer && g_native_help_layer.renderer &&
-        !g_native_character_write_graphics && !g_native_info_write_graphics &&
-        !g_native_stocks_write_graphics && !g_native_squads_write_graphics &&
-        !g_native_reports_write_graphics && !g_native_pause_write_graphics &&
-        !native_notification_write_active(gps) && !native_private_ui_write_active(gps) &&
-        !g_native_tooltip_output;
+        !g_native_character_write_graphics;
     std::vector<SDL_Rect> frames;
     SDL_Rect panel{};
     if (isolate) {
@@ -92,6 +104,7 @@ static void native_character_draw(void *sheet, uint32_t tick, int32_t screen_lef
                 const bool resized = layer.foreground.dimx != gps->dimx ||
                     layer.foreground.dimy != gps->dimy;
                 layer.foreground.prepare(*gps);
+                native_ui_detach_map_output(*layer.foreground.graphics());
                 if (resized) layer.foreground.clear();
                 else {
                     for (const auto &frame : g_native_character_previous_frames)
@@ -114,8 +127,6 @@ static void native_character_draw(void *sheet, uint32_t tick, int32_t screen_lef
     g_native_character_sources.adopt_pending_events();
     g_native_character_background_grid = gps->screen;
     g_native_character_background_top_grid = gps->screen_top;
-    layer.native_renderer = g_native_help_layer.native_renderer;
-    layer.renderer = g_native_help_layer.renderer;
     {
         NativeUiGridBinding output(gps, *layer.foreground.graphics());
         NativeInfoCapturedTextScope captions(g_native_character_text);
@@ -174,8 +185,17 @@ static void native_character_present_layer(SDL_Renderer *renderer,
         void (*draw_character)(SDL_Renderer *)) {
     TranslationStateScope translation;
     auto &layer = g_native_character_layer;
-    if (!renderer || !draw_character || !layer.ready || layer.renderer != renderer ||
-            !native_character_open()) return;
+    if (!renderer || !draw_character || !layer.ready || !native_character_open()) return;
+#ifdef _WIN32
+    // The producer owns only its source grid. Resolve the live raster owner
+    // on the SDL thread instead of depending on another component's frame.
+    const auto native = NativeDfhackLayerNativeRenderer::current();
+    if (!native.object || native.sdl != renderer) return;
+    layer.native_renderer = native.object;
+    layer.renderer = renderer;
+#else
+    if (layer.renderer != renderer) return;
+#endif
     const auto *gps = layer.foreground.graphics();
     const int width = gps->screen_pixel_x, height = gps->screen_pixel_y;
     if (width <= 0 || height <= 0 || gps->tile_pixel_x <= 0 || gps->tile_pixel_y <= 0) return;
@@ -204,12 +224,12 @@ static void native_character_present_layer(SDL_Renderer *renderer,
     try { context = native_ui_layer_cache_context(layer); } catch (...) {}
     auto &cache = g_native_character_target.frame_cache;
     const bool retained = context && cache.matches(layer, renderer, width, height,
-        draw_character, *context);
+        draw_character, *context, true);
     if (!retained) {
         cache.invalidate();
         bool captured = false;
         if (context) {
-            try { cache.capture(layer, renderer, width, height, draw_character, *context); captured = true; }
+            try { cache.capture(layer, renderer, width, height, draw_character, *context, true); captured = true; }
             catch (...) {}
         }
         if (!state.bind(g_native_character_target.texture, width, height)) return;
