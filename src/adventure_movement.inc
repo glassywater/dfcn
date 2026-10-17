@@ -1,7 +1,86 @@
 // Included inside find_matches before complete UI messages and word rules.
-// Movement gaits and visibility grades have meanings local to this modal.
-// The glossary owns their wording; native headings and the closed frame own
-// the fields, including immediate glyph suppression on either screen layer.
+// RAW gaits share their glossary between the live HUD and movement modal.
+// Each native writer owns its complete field before personal-name inference.
+#ifdef _WIN32
+    {
+        // AF1190's HUD uses the rider or mount, chooses WALK/SWIM/FLY/CRAWL/
+        // CLIMB, and draws either the RAW gait, fixed Climb, or fallback Move
+        // through this one addst call. The numeric and direction branches use
+        // separate calls. See data/extracted/adventure-movement-hud.
+        const auto base = native_history_profile_base();
+        const uintptr_t writer = native_reference_address(base, 0xafab97);
+        const std::array batches{captured_native_drawn_text_view(),
+            captured_native_drawn_text_view(true)};
+        for (const auto &batch : batches) for (const auto &draw : batch) {
+            const auto *grid = draw.top_layer ? gps_->screen_top : gps_->screen;
+            if (!writer || draw.native_caller != writer || !grid ||
+                    draw.draw_grid != grid || draw.draw_dimx != gps_->dimx ||
+                    draw.draw_dimy != gps_->dimy || draw.x < 0 || draw.y < 0 ||
+                    draw.x >= gps_->dimx || draw.y >= gps_->dimy || draw.source.empty() ||
+                    draw.source.size() > static_cast<size_t>(gps_->dimx - draw.x) ||
+                    (screen_override && screen_override != grid)) continue;
+            // The existing resize-entry capture freezes the RAW string before
+            // AFA9ED shrinks >=20 bytes to 19 and writes its final three dots.
+            // In particular Maximum Flight Speed must keep its full meaning.
+            const auto &complete = draw.complete_source.empty()
+                ? draw.source : draw.complete_source;
+            const auto translated = exact_literal_translation(
+                "Adventure movement: " + normalize_utterance(complete));
+            // An unknown/modded RAW label still owns this field. Keep its
+            // native spelling and clipping instead of treating it as a name.
+            const std::string target = translated ? *translated
+                : native_text_to_utf8(draw.source);
+            int right = std::min(gps_->dimx,
+                draw.x + std::max(8, static_cast<int>(draw.source.size())));
+            if (draw.draw_clip)
+                right = std::min(right, draw.draw_clip->x + draw.draw_clip->w);
+            if (right < draw.x + static_cast<int>(draw.source.size())) continue;
+            const auto *flags = draw.top_layer
+                ? gps_->screentexpos_top_flag : gps_->screentexpos_flag;
+            constexpr uint32_t upper = 1u << 3, lower = 1u << 4;
+            const uint32_t half = flags
+                ? flags[static_cast<size_t>(draw.x) * gps_->dimy + draw.y] & (upper | lower)
+                : 0;
+            const int mate = half == upper ? draw.y + 1 : half == lower ? draw.y - 1 : -1;
+            for (const int y : {draw.y, mate}) {
+                if (y < 0 || y >= gps_->dimy || (only_y >= 0 && y != only_y) ||
+                        screen_rows[y].compare(draw.x, draw.source.size(), draw.source) != 0)
+                    continue;
+                bool intact = true;
+                for (size_t i = 0; i < draw.source.size(); ++i) {
+                    const int x = draw.x + static_cast<int>(i);
+                    bool top = false;
+                    cell_at(x, y, &top);
+                    const size_t tile = static_cast<size_t>(x) * gps_->dimy + y;
+                    if (top != draw.top_layer ||
+                            (grid[tile * 8] ? grid[tile * 8] : ' ') !=
+                                static_cast<unsigned char>(draw.source[i]) ||
+                            (y != draw.y && (!flags ||
+                                (flags[tile] & (upper | lower)) !=
+                                    (half == upper ? lower : upper)))) {
+                        intact = false;
+                        break;
+                    }
+                }
+                if (!intact) continue;
+                const int end = draw.x + static_cast<int>(draw.source.size());
+                std::erase_if(result, [&](const Match &match) {
+                    return match.y == y && match.x < end && draw.x < match.x + match.length;
+                });
+                Match match{draw.x, y, end - draw.x, kUiMessageRule, target, draw.source};
+                match.layout_x = draw.x;
+                match.layout_length = right - draw.x;
+                match.layout_clip_right = right;
+                match.layout_left = true;
+                match.layout_ellipsize = true;
+                result.push_back(std::move(match));
+                std::fill(screen_rows[y].begin() + draw.x, screen_rows[y].begin() + end, ' ');
+            }
+        }
+    }
+#endif
+// Native headings and the closed frame own the modal's fields, including
+// immediate glyph suppression on either screen layer.
     {
         std::vector<std::string> context = screen_rows;
         // Shortcut protection has already removed keys from the work buffer.

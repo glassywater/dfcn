@@ -1,0 +1,763 @@
+edition	role	instruction_rva	operand_va	storage	source
+reference	adventure-global-renderer	0xaf1887	0x1415ec698	cstring	st
+reference	adventure-global-renderer	0xaf1890	0x1415ec69c	cstring	nd
+reference	adventure-global-renderer	0xaf1899	0x1415ec690	cstring	rd
+reference	adventure-global-renderer	0xaf18a2	0x1415ec694	cstring	th
+reference	adventure-global-renderer	0xaf18b5	0x1415e873c	cstring	 
+reference	adventure-global-renderer	0xaf18f7	0x1415e90d8	cstring	, 
+reference	adventure-global-renderer	0xaf1a69	0x1415edf5c	cstring	blood
+reference	adventure-global-renderer	0xaf1a84	0x1416d12bc	cstring	smoke
+reference	adventure-global-renderer	0xaf1aa2	0x14164b81c	cstring	mud
+reference	adventure-global-renderer	0xaf1ac0	0x1416d12c8	cstring	bug innards
+reference	adventure-global-renderer	0xaf1ade	0x1416d12d8	cstring	cooked flesh
+reference	adventure-global-renderer	0xaf1afc	0x1415eddb4	cstring	death
+reference	adventure-global-renderer	0xaf1b1a	0x1416d129c	cstring	filth
+reference	adventure-global-renderer	0xaf1b38	0x1416d12a4	cstring	soot
+reference	adventure-global-renderer	0xaf1b53	0x1416d12ac	cstring	vomit
+reference	adventure-global-renderer	0xaf1b6b	0x1416d12b4	cstring	soil
+reference	adventure-global-renderer	0xaf1b86	0x1416d1268	cstring	freshly-baked goods
+reference	adventure-global-renderer	0xaf1ba1	0x1416d1280	cstring	brimstone
+reference	adventure-global-renderer	0xaf1c29	0x1416d1290	cstring	You smell 
+reference	adventure-global-renderer	0xaf1c46	0x1415eddb4	cstring	death
+reference	adventure-global-renderer	0xaf1d31	0x1415e85b4	cstring	.
+reference	adventure-global-renderer	0xaf285b	0x1416d1228	cstring	There is a thin mist here.
+reference	adventure-global-renderer	0xaf2bb1	0x1416d1210	cstring	Fog enshrouds the area.
+reference	adventure-global-renderer	0xaf2beb	0x1416d11d8	cstring	There is a heavy blanket of fog enveloping everything.
+reference	adventure-global-renderer	0xaf2c38	0x1416d1178	cstring	There is a thin mist outside.
+reference	adventure-global-renderer	0xaf2c6f	0x141670440	cstring	There is fog outside.
+reference	adventure-global-renderer	0xaf2ca6	0x1416d1248	cstring	There is thick fog outside.
+reference	adventure-global-renderer	0xaf2f17	0x1416d11c8	cstring	 is falling 
+reference	adventure-global-renderer	0xaf2f2a	0x14164c1b0	cstring	outside
+reference	adventure-global-renderer	0xaf2f31	0x1416d1078	cstring	from the sky
+reference	adventure-global-renderer	0xaf2f4b	0x1415e85b4	cstring	.
+reference	adventure-global-renderer	0xaf2f89	0x141670688	cstring	It is raining.
+reference	adventure-global-renderer	0xaf2fc3	0x1416d1198	cstring	It is raining outside.
+reference	adventure-global-renderer	0xaf2fff	0x141670698	cstring	It is snowing.
+reference	adventure-global-renderer	0xaf3036	0x1416d11b0	cstring	It is snowing outside.
+reference	adventure-global-renderer	0xaf3242	0x1416d1090	cstring	The sky above you is nearly black, ripped through with towering clouds.
+reference	adventure-global-renderer	0xaf3255	0x1416d10e0	cstring	The sky above you is completely gray, with dark cloud pillars pressing through it.
+reference	adventure-global-renderer	0xaf326c	0x1416d1138	cstring	A towering gray cloud descends from the white sky above you.
+reference	adventure-global-renderer	0xaf327f	0x1416d0fc8	cstring	The sky above you is a uniform and dark gray.
+reference	adventure-global-renderer	0xaf3292	0x1416d0ff8	cstring	The sky above you is gray.
+reference	adventure-global-renderer	0xaf32a2	0x1416d1018	cstring	The sky above you is hazy and white.
+reference	adventure-global-renderer	0xaf32b6	0x1416d1040	cstring	A dark, towering cloud rises into a striped sky.
+reference	adventure-global-renderer	0xaf32c5	0x1416d19e8	cstring	Mounds of clouds are clustered through a striped sky.
+reference	adventure-global-renderer	0xaf32ce	0x1416d1a20	cstring	There are scattered clouds underneath a striped sky.
+reference	adventure-global-renderer	0xaf32d5	0x1416d1a58	cstring	The sky is striped with thin clouds.
+reference	adventure-global-renderer	0xaf32ec	0x1416d1a80	cstring	A dark, menacing cloud towers above you, crowned by an anvil.
+reference	adventure-global-renderer	0xaf32fb	0x1416d1930	cstring	There are mounds of clouds above you, smooth on the bottom with prominent upward bulges.
+reference	adventure-global-renderer	0xaf330a	0x1416d1990	cstring	There are scattered puffy clouds above you.
+reference	adventure-global-renderer	0xaf34a2	0x1416d19c0	cstring	There is no wind here.
+reference	adventure-global-renderer	0xaf34b3	0x1416d19d8	cstring	There is a 
+reference	adventure-global-renderer	0xaf34d6	0x1416d1918	cstring	mighty wind
+reference	adventure-global-renderer	0xaf34df	0x1416d1908	cstring	heavy wind
+reference	adventure-global-renderer	0xaf34e8	0x1416d18f8	cstring	strong breeze
+reference	adventure-global-renderer	0xaf34f1	0x1416d18e8	cstring	gentle breeze
+reference	adventure-global-renderer	0xaf3504	0x1416d1898	cstring	 blowing from the 
+reference	adventure-global-renderer	0xaf3534	0x14163b8fc	cstring	north
+reference	adventure-global-renderer	0xaf353d	0x141646be8	cstring	northwest
+reference	adventure-global-renderer	0xaf3546	0x141646bf8	cstring	northeast
+reference	adventure-global-renderer	0xaf354f	0x14163b8ec	cstring	south
+reference	adventure-global-renderer	0xaf3558	0x141646b78	cstring	southwest
+reference	adventure-global-renderer	0xaf3561	0x141646b88	cstring	southeast
+reference	adventure-global-renderer	0xaf356a	0x14163b834	cstring	west
+reference	adventure-global-renderer	0xaf3573	0x14163b8f4	cstring	east
+reference	adventure-global-renderer	0xaf3586	0x1415e85b4	cstring	.
+reference	adventure-global-renderer	0xaf36cc	0x1416d18d8	cstring	 in the east
+reference	adventure-global-renderer	0xaf36d3	0x1416d1888	cstring	eastern
+reference	adventure-global-renderer	0xaf36da	0x1416d1880	cstring	western
+reference	adventure-global-renderer	0xaf3783	0x1416d18b0	cstring	The sun is rising
+reference	adventure-global-renderer	0xaf3796	0x1416d18c8	cstring	 in the west
+reference	adventure-global-renderer	0xaf37ab	0x1416d1868	cstring	The sun is low in the 
+reference	adventure-global-renderer	0xaf37d6	0x1416d1890	cstring	 sky
+reference	adventure-global-renderer	0xaf37e2	0x1416d17f8	cstring	The sun is in the 
+reference	adventure-global-renderer	0xaf380d	0x1416d1890	cstring	 sky
+reference	adventure-global-renderer	0xaf3819	0x1416d1810	cstring	The sun is high in the 
+reference	adventure-global-renderer	0xaf3844	0x1416d1890	cstring	 sky
+reference	adventure-global-renderer	0xaf3850	0x1416d1828	cstring	The sun is directly above you
+reference	adventure-global-renderer	0xaf3868	0x1416d1810	cstring	The sun is high in the 
+reference	adventure-global-renderer	0xaf388c	0x1416d17f8	cstring	The sun is in the 
+reference	adventure-global-renderer	0xaf38b0	0x1416d1868	cstring	The sun is low in the 
+reference	adventure-global-renderer	0xaf38d4	0x1416d1848	cstring	The sun is setting to the 
+reference	adventure-global-renderer	0xaf38ec	0x14163b8f4	cstring	east
+reference	adventure-global-renderer	0xaf38f3	0x14163b834	cstring	west
+reference	adventure-global-renderer	0xaf3910	0x1416d16b0	cstring	 behind the clouds
+reference	adventure-global-renderer	0xaf3925	0x1416d16c8	cstring	The stars are out
+reference	adventure-global-renderer	0xaf392e	0x1416d16e0	cstring	You cannot see the sky clearly from here, but the available sunlight indicates the night
+reference	adventure-global-renderer	0xaf3937	0x1416d1740	cstring	You cannot see the sky clearly from here, but the available sunlight indicates the dawn
+reference	adventure-global-renderer	0xaf3940	0x1416d17a0	cstring	You cannot see the sky clearly from here, but the available sunlight indicates the day
+reference	adventure-global-renderer	0xaf3949	0x1416d15e0	cstring	You cannot see the sky clearly from here, but the available sunlight indicates the sunset
+reference	adventure-global-renderer	0xaf3952	0x1416d1640	cstring	The sky is alive with vortices of purple light and dark, boiling clouds
+reference	adventure-global-renderer	0xaf395b	0x1416d1688	cstring	The area gives off a sickly light
+reference	adventure-global-renderer	0xaf396e	0x1415e85b4	cstring	.
+reference	adventure-global-renderer	0xaf3a76	0x1416d1888	cstring	eastern
+reference	adventure-global-renderer	0xaf3a7d	0x1416d1880	cstring	western
+reference	adventure-global-renderer	0xaf3a84	0x1416d18d8	cstring	 in the east
+reference	adventure-global-renderer	0xaf3aff	0x1415ed9bc	cstring	The 
+reference	adventure-global-renderer	0xaf3b38	0x1416d1588	cstring	full moon
+reference	adventure-global-renderer	0xaf3b41	0x1416d1598	cstring	waxing gibbous moon
+reference	adventure-global-renderer	0xaf3b4a	0x1416d15b0	cstring	waxing half moon
+reference	adventure-global-renderer	0xaf3b53	0x1416d15c8	cstring	waxing crescent moon
+reference	adventure-global-renderer	0xaf3b5c	0x1416d1530	cstring	waning gibbous moon
+reference	adventure-global-renderer	0xaf3b65	0x1416d1548	cstring	waning half moon
+reference	adventure-global-renderer	0xaf3b6e	0x1416d1560	cstring	waning crescent moon
+reference	adventure-global-renderer	0xaf3b77	0x1416d1578	cstring	new moon
+reference	adventure-global-renderer	0xaf3b80	0x1416a13e4	cstring	moon
+reference	adventure-global-renderer	0xaf3b9d	0x1416d14e8	cstring	 is rising
+reference	adventure-global-renderer	0xaf3bbe	0x1416d18c8	cstring	 in the west
+reference	adventure-global-renderer	0xaf3bd9	0x1415eebd8	cstring	 is
+reference	adventure-global-renderer	0xaf3bf2	0x1416493c0	cstring	 low
+reference	adventure-global-renderer	0xaf3c01	0x1416493b8	cstring	 high
+reference	adventure-global-renderer	0xaf3c14	0x1415ee508	cstring	 in the 
+reference	adventure-global-renderer	0xaf3c40	0x1416d1890	cstring	 sky
+reference	adventure-global-renderer	0xaf3c5e	0x1416d14f8	cstring	 is directly above you
+reference	adventure-global-renderer	0xaf3c78	0x1415eebd8	cstring	 is
+reference	adventure-global-renderer	0xaf3c91	0x1416493b8	cstring	 high
+reference	adventure-global-renderer	0xaf3ca0	0x1416493c0	cstring	 low
+reference	adventure-global-renderer	0xaf3cb3	0x1415ee508	cstring	 in the 
+reference	adventure-global-renderer	0xaf3cdf	0x1416d1890	cstring	 sky
+reference	adventure-global-renderer	0xaf3cee	0x1416d1510	cstring	 is setting
+reference	adventure-global-renderer	0xaf3d06	0x1416d1520	cstring	 to the east
+reference	adventure-global-renderer	0xaf3d0f	0x1416d1478	cstring	 to the west
+reference	adventure-global-renderer	0xaf3d27	0x1416d1488	cstring	 bright behind the clouds
+reference	adventure-global-renderer	0xaf3d35	0x1416d14a8	cstring	 pale behind the clouds
+reference	adventure-global-renderer	0xaf3d43	0x1416d14c0	cstring	 hardly visible behind the clouds
+reference	adventure-global-renderer	0xaf3d56	0x1415e85b4	cstring	.
+reference	adventure-global-renderer	0xaf3efc	0x1416d13e8	cstring	Being dead is cold and clammy.
+reference	adventure-global-renderer	0xaf4337	0x1416d1408	cstring	The temperature is as it has been and always will be.
+reference	adventure-global-renderer	0xaf4349	0x1416d1440	cstring	The temperature cannot be judged.
+reference	adventure-global-renderer	0xaf4361	0x1416d1468	cstring	It is burning.
+reference	adventure-global-renderer	0xaf4379	0x1416d1388	cstring	It is deathly cold.
+reference	adventure-global-renderer	0xaf438b	0x1416d13a0	cstring	The temperature is pleasant.
+reference	adventure-global-renderer	0xaf43b1	0x1416d13c0	cstring	It is scorching.
+reference	adventure-global-renderer	0xaf43c3	0x141670bb0	cstring	It is hot.
+reference	adventure-global-renderer	0xaf43dc	0x1416d13d8	cstring	It is warm.
+reference	adventure-global-renderer	0xaf4404	0x141670bc0	cstring	It is cold.
+reference	adventure-global-renderer	0xaf441e	0x1416d1328	cstring	It is cool.
+reference	adventure-global-renderer	0xaf4446	0x1416d13c0	cstring	It is scorching.
+reference	adventure-global-renderer	0xaf4457	0x141670bb0	cstring	It is hot.
+reference	adventure-global-renderer	0xaf4468	0x1416d13d8	cstring	It is warm.
+reference	adventure-global-renderer	0xaf4476	0x1416d1328	cstring	It is cool.
+reference	adventure-global-renderer	0xaf448b	0x141670bc0	cstring	It is cold.
+reference	adventure-global-renderer	0xaf4494	0x1416d1338	cstring	It is freezing.
+reference	adventure-global-renderer	0xaf44a2	0x1416d13c0	cstring	It is scorching.
+reference	adventure-global-renderer	0xaf44b0	0x141670bb0	cstring	It is hot.
+reference	adventure-global-renderer	0xaf44be	0x1416d13d8	cstring	It is warm.
+reference	adventure-global-renderer	0xaf44cc	0x1416d1328	cstring	It is cool.
+reference	adventure-global-renderer	0xaf44d8	0x141670bc0	cstring	It is cold.
+reference	adventure-global-renderer	0xaf44e1	0x1416d1338	cstring	It is freezing.
+reference	adventure-global-renderer	0xaf5033	0x1416d1348	cstring	HUMANOID_TRACKING_SYMBOL
+reference	adventure-global-renderer	0xaf50b6	0x1416d1368	cstring	FOOTWEAR_TRACKING_SYMBOL
+reference	adventure-global-renderer	0xaf51dd	0x1416d12e8	cstring	Freshest track
+reference	adventure-global-renderer	0xaf52cc	0x1416d12f8	cstring	To the west
+reference	adventure-global-renderer	0xaf52d7	0x1416d1308	cstring	To the east
+reference	adventure-global-renderer	0xaf52ed	0x1416d1318	cstring	To the north
+reference	adventure-global-renderer	0xaf52f8	0x1416d1cf0	cstring	To the south
+reference	adventure-global-renderer	0xaf530b	0x1416d1d00	cstring	To the northwest
+reference	adventure-global-renderer	0xaf5316	0x1416d1d30	cstring	To the southwest
+reference	adventure-global-renderer	0xaf5326	0x1416d1d18	cstring	To the northeast
+reference	adventure-global-renderer	0xaf5331	0x1416d1c80	cstring	To the southeast
+reference	adventure-global-renderer	0xaf5354	0x1416d1c98	cstring	At your location
+reference	adventure-global-renderer	0xaf5367	0x141618434	cstring	:
+reference	adventure-global-renderer	0xaf53ea	0x1416d1c40	cstring	There is an unintelligible mess.
+reference	adventure-global-renderer	0xaf543c	0x1416d19d8	cstring	There is a 
+reference	adventure-global-renderer	0xaf54ce	0x1416aebfc	cstring	thick 
+reference	adventure-global-renderer	0xaf54e2	0x1416aebf4	cstring	light 
+reference	adventure-global-renderer	0xaf54f6	0x1416aec0c	cstring	faint 
+reference	adventure-global-renderer	0xaf5561	0x1415e873c	cstring	 
+reference	adventure-global-renderer	0xaf558e	0x1416aec04	cstring	deep 
+reference	adventure-global-renderer	0xaf55a2	0x1416ae980	cstring	shallow 
+reference	adventure-global-renderer	0xaf55b6	0x1416ae978	cstring	vague 
+reference	adventure-global-renderer	0xaf55d6	0x14163a34c	cstring	right 
+reference	adventure-global-renderer	0xaf55e4	0x14163a324	cstring	left 
+reference	adventure-global-renderer	0xaf5674	0x14163a39c	cstring	 print
+reference	adventure-global-renderer	0xaf5685	0x1416ae9a0	cstring	 imprint in the 
+reference	adventure-global-renderer	0xaf5796	0x1415e85b4	cstring	.
+reference	adventure-global-renderer	0xaf5831	0x1416d19d8	cstring	There is a 
+reference	adventure-global-renderer	0xaf58e7	0x1415edb24	cstring	's 
+reference	adventure-global-renderer	0xaf5905	0x1416aebfc	cstring	thick 
+reference	adventure-global-renderer	0xaf5919	0x1416aebf4	cstring	light 
+reference	adventure-global-renderer	0xaf592d	0x1416aec0c	cstring	faint 
+reference	adventure-global-renderer	0xaf59fc	0x1415edb24	cstring	's 
+reference	adventure-global-renderer	0xaf5a13	0x1416aec04	cstring	deep 
+reference	adventure-global-renderer	0xaf5a2e	0x1416ae980	cstring	shallow 
+reference	adventure-global-renderer	0xaf5a49	0x1416ae978	cstring	vague 
+reference	adventure-global-renderer	0xaf5a59	0x1415e873c	cstring	 
+reference	adventure-global-renderer	0xaf5ab2	0x14163a39c	cstring	 print
+reference	adventure-global-renderer	0xaf5ac3	0x1416ae9a0	cstring	 imprint in the 
+reference	adventure-global-renderer	0xaf5bd3	0x1415e85b4	cstring	.
+reference	adventure-global-renderer	0xaf5c28	0x1416d1cb0	cstring	The vegetation is heavily damaged.
+reference	adventure-global-renderer	0xaf5c68	0x1416d1cd8	cstring	The vegetation is bent.
+reference	adventure-global-renderer	0xaf5caa	0x1416d1bf0	cstring	The vegetation has been slightly perturbed.
+reference	adventure-global-renderer	0xaf5ce1	0x1416d1c20	cstring	The vegetation is broken.
+reference	adventure-global-renderer	0xaf5d49	0x1416ae910	cstring	The signs lead north.
+reference	adventure-global-renderer	0xaf5d83	0x1416ae960	cstring	The signs lead south.
+reference	adventure-global-renderer	0xaf5dbd	0x1416ae948	cstring	The signs lead east.
+reference	adventure-global-renderer	0xaf5df7	0x1416aea48	cstring	The signs lead west.
+reference	adventure-global-renderer	0xaf5e31	0x1416aea28	cstring	The signs lead northeast.
+reference	adventure-global-renderer	0xaf5e6b	0x1416aea80	cstring	The signs lead northwest.
+reference	adventure-global-renderer	0xaf5ea2	0x1416aea60	cstring	The signs lead southeast.
+reference	adventure-global-renderer	0xaf5ed9	0x1416ae9e0	cstring	The signs lead southwest.
+reference	adventure-global-renderer	0xaf5f1b	0x1416ae9b8	cstring	They belong to you or a companion.
+reference	adventure-global-renderer	0xaf612a	0x14178ae08	cstring	z
+reference	adventure-global-renderer	0xaf6133	0x14178abe0	cstring	z
+reference	adventure-global-renderer	0xaf6436	0x1416d1bd8	cstring	Bring
+reference	adventure-global-renderer	0xaf650a	0x1415ec5a8	cstring	to
+reference	adventure-global-renderer	0xaf68bb	0x1416b11dc	cstring	***
+reference	adventure-global-renderer	0xaf6925	0x1416b11ec	cstring	WSW
+reference	adventure-global-renderer	0xaf6961	0x14169f52c	cstring	SW
+reference	adventure-global-renderer	0xaf699e	0x1416b11e0	cstring	SSW
+reference	adventure-global-renderer	0xaf69db	0x141670cd4	cstring	S
+reference	adventure-global-renderer	0xaf6a18	0x1416b11e4	cstring	SSE
+reference	adventure-global-renderer	0xaf6a55	0x14169f530	cstring	SE
+reference	adventure-global-renderer	0xaf6a92	0x1416b1148	cstring	ESE
+reference	adventure-global-renderer	0xaf6acf	0x1416b114c	cstring	E
+reference	adventure-global-renderer	0xaf6b0c	0x1416b1140	cstring	ENE
+reference	adventure-global-renderer	0xaf6b49	0x14169f528	cstring	NE
+reference	adventure-global-renderer	0xaf6b8d	0x1416b1144	cstring	NNE
+reference	adventure-global-renderer	0xaf6bd1	0x1416b11b0	cstring	N
+reference	adventure-global-renderer	0xaf6c15	0x1416b11d0	cstring	NNW
+reference	adventure-global-renderer	0xaf6c59	0x14169f524	cstring	NW
+reference	adventure-global-renderer	0xaf6c9a	0x1416b11d4	cstring	WNW
+reference	adventure-global-renderer	0xaf6ccd	0x1416b11e8	cstring	W
+reference	adventure-global-renderer	0xaf6d99	0x1415ec730	cstring	An order from
+reference	adventure-global-renderer	0xaf6e82	0x1415ec770	cstring	Finish reporting in
+reference	adventure-global-renderer	0xaf73da	0x1416b11b0	cstring	N
+reference	adventure-global-renderer	0xaf7415	0x1416b1144	cstring	NNE
+reference	adventure-global-renderer	0xaf7450	0x14169f528	cstring	NE
+reference	adventure-global-renderer	0xaf748b	0x1416b1140	cstring	ENE
+reference	adventure-global-renderer	0xaf74c6	0x1416b114c	cstring	E
+reference	adventure-global-renderer	0xaf7501	0x1416b1148	cstring	ESE
+reference	adventure-global-renderer	0xaf753c	0x14169f530	cstring	SE
+reference	adventure-global-renderer	0xaf7577	0x1416b11e4	cstring	SSE
+reference	adventure-global-renderer	0xaf75b2	0x141670cd4	cstring	S
+reference	adventure-global-renderer	0xaf75ed	0x1416b11e0	cstring	SSW
+reference	adventure-global-renderer	0xaf7628	0x14169f52c	cstring	SW
+reference	adventure-global-renderer	0xaf7663	0x1416b11ec	cstring	WSW
+reference	adventure-global-renderer	0xaf769e	0x1416b11e8	cstring	W
+reference	adventure-global-renderer	0xaf76d9	0x1416b11d4	cstring	WNW
+reference	adventure-global-renderer	0xaf7714	0x14169f524	cstring	NW
+reference	adventure-global-renderer	0xaf774f	0x1416b11d0	cstring	NNW
+reference	adventure-global-renderer	0xaf778a	0x1416b11dc	cstring	***
+reference	adventure-global-renderer	0xaf77f9	0x1415e8ca0	cstring	You
+reference	adventure-global-renderer	0xaf78a1	0x1416d1bc8	cstring	asked that you
+reference	adventure-global-renderer	0xaf78f9	0x1415ec6b0	cstring	retrieve
+reference	adventure-global-renderer	0xaf7d26	0x1416b11dc	cstring	***
+reference	adventure-global-renderer	0xaf7d97	0x1416b11ec	cstring	WSW
+reference	adventure-global-renderer	0xaf7dda	0x14169f52c	cstring	SW
+reference	adventure-global-renderer	0xaf7e1e	0x1416b11e0	cstring	SSW
+reference	adventure-global-renderer	0xaf7e62	0x141670cd4	cstring	S
+reference	adventure-global-renderer	0xaf7ea6	0x1416b11e4	cstring	SSE
+reference	adventure-global-renderer	0xaf7eea	0x14169f530	cstring	SE
+reference	adventure-global-renderer	0xaf7f2e	0x1416b1148	cstring	ESE
+reference	adventure-global-renderer	0xaf7f72	0x1416b114c	cstring	E
+reference	adventure-global-renderer	0xaf7fb6	0x1416b1140	cstring	ENE
+reference	adventure-global-renderer	0xaf7ffa	0x14169f528	cstring	NE
+reference	adventure-global-renderer	0xaf8045	0x1416b1144	cstring	NNE
+reference	adventure-global-renderer	0xaf8090	0x1416b11b0	cstring	N
+reference	adventure-global-renderer	0xaf80db	0x1416b11d0	cstring	NNW
+reference	adventure-global-renderer	0xaf8126	0x14169f524	cstring	NW
+reference	adventure-global-renderer	0xaf8171	0x1416b11d4	cstring	WNW
+reference	adventure-global-renderer	0xaf81ab	0x1416b11e8	cstring	W
+reference	adventure-global-renderer	0xaf835a	0x1416d1c68	cstring	requested that you
+reference	adventure-global-renderer	0xaf83b2	0x1416d1bb0	cstring	offer your services to
+reference	adventure-global-renderer	0xaf877d	0x1416b11dc	cstring	***
+reference	adventure-global-renderer	0xaf87e7	0x1416b11ec	cstring	WSW
+reference	adventure-global-renderer	0xaf8823	0x14169f52c	cstring	SW
+reference	adventure-global-renderer	0xaf8860	0x1416b11e0	cstring	SSW
+reference	adventure-global-renderer	0xaf889d	0x141670cd4	cstring	S
+reference	adventure-global-renderer	0xaf88da	0x1416b11e4	cstring	SSE
+reference	adventure-global-renderer	0xaf8917	0x14169f530	cstring	SE
+reference	adventure-global-renderer	0xaf8954	0x1416b1148	cstring	ESE
+reference	adventure-global-renderer	0xaf8991	0x1416b114c	cstring	E
+reference	adventure-global-renderer	0xaf89ce	0x1416b1140	cstring	ENE
+reference	adventure-global-renderer	0xaf8a0b	0x14169f528	cstring	NE
+reference	adventure-global-renderer	0xaf8a4f	0x1416b1144	cstring	NNE
+reference	adventure-global-renderer	0xaf8a93	0x1416b11b0	cstring	N
+reference	adventure-global-renderer	0xaf8ad7	0x1416b11d0	cstring	NNW
+reference	adventure-global-renderer	0xaf8b1b	0x14169f524	cstring	NW
+reference	adventure-global-renderer	0xaf8b5c	0x1416b11d4	cstring	WNW
+reference	adventure-global-renderer	0xaf8b8f	0x1416b11e8	cstring	W
+reference	adventure-global-renderer	0xaf912a	0x1416b11b0	cstring	N
+reference	adventure-global-renderer	0xaf9165	0x1416b1144	cstring	NNE
+reference	adventure-global-renderer	0xaf91a0	0x14169f528	cstring	NE
+reference	adventure-global-renderer	0xaf91db	0x1416b1140	cstring	ENE
+reference	adventure-global-renderer	0xaf9216	0x1416b114c	cstring	E
+reference	adventure-global-renderer	0xaf9251	0x1416b1148	cstring	ESE
+reference	adventure-global-renderer	0xaf928c	0x14169f530	cstring	SE
+reference	adventure-global-renderer	0xaf92c7	0x1416b11e4	cstring	SSE
+reference	adventure-global-renderer	0xaf9302	0x141670cd4	cstring	S
+reference	adventure-global-renderer	0xaf933d	0x1416b11e0	cstring	SSW
+reference	adventure-global-renderer	0xaf9378	0x14169f52c	cstring	SW
+reference	adventure-global-renderer	0xaf93b3	0x1416b11ec	cstring	WSW
+reference	adventure-global-renderer	0xaf93ee	0x1416b11e8	cstring	W
+reference	adventure-global-renderer	0xaf9429	0x1416b11d4	cstring	WNW
+reference	adventure-global-renderer	0xaf9464	0x14169f524	cstring	NW
+reference	adventure-global-renderer	0xaf949c	0x1416b11d0	cstring	NNW
+reference	adventure-global-renderer	0xaf94d4	0x1416b11dc	cstring	***
+reference	adventure-global-renderer	0xaf9568	0x1415ec638	cstring	Agreement concluded
+reference	adventure-global-renderer	0xaf95d7	0x1415ec788	cstring	Complete: report back
+reference	adventure-global-renderer	0xaf962b	0x1415ec750	cstring	Not yet completed
+reference	adventure-global-renderer	0xafa958	0x14167d254	cstring	Climb
+reference	adventure-global-renderer	0xafa9b9	0x1416ae908	cstring	Move
+reference	adventure-global-renderer	0xafac19	0x1415e85b4	cstring	.
+reference	adventure-global-renderer	0xafac61	0x14161708c	cstring	0
+reference	adventure-global-renderer	0xafac86	0x14161708c	cstring	0
+reference	adventure-global-renderer	0xafaffd	0x1415e85b4	cstring	.
+reference	adventure-global-renderer	0xafb071	0x1415eb514	cstring	/
+reference	adventure-global-renderer	0xafb0d7	0x1415e85b4	cstring	.
+reference	adventure-global-renderer	0xafb1c3	0x1415e85b4	cstring	.
+reference	adventure-global-renderer	0xafb20b	0x14161708c	cstring	0
+reference	adventure-global-renderer	0xafb230	0x14161708c	cstring	0
+reference	adventure-global-renderer	0xafb52d	0x1416d1be0	cstring	Continue action
+reference	adventure-global-renderer	0xafb5da	0x1416d1b70	cstring	Stop action
+reference	adventure-global-renderer	0xafb679	0x1416d1b90	cstring	In conflict! 
+reference	adventure-global-renderer	0xafb6c2	0x1416d1ba0	cstring	Finish anyway
+reference	adventure-global-renderer	0xafb746	0x1416d1af0	cstring	Finishing up...
+reference	adventure-global-renderer	0xafb7e1	0x1416d1b70	cstring	Stop action
+reference	adventure-global-renderer	0xafb896	0x1416d1be0	cstring	Continue action
+reference	adventure-global-renderer	0xafb943	0x1416d1b70	cstring	Stop action
+reference	adventure-global-renderer	0xafb9e2	0x1416d1b80	cstring	Finish action
+reference	adventure-global-renderer	0xafd6f2	0x1416d1b00	cstring	Return to arena
+reference	adventure-global-renderer	0xafe6b0	0x1416b11dc	cstring	***
+reference	adventure-global-renderer	0xafe723	0x1416b11d8	cstring	Gui
+reference	adventure-global-renderer	0xafe775	0x1416b11b0	cstring	N
+reference	adventure-global-renderer	0xafe7ab	0x1416b1144	cstring	NNE
+reference	adventure-global-renderer	0xafe7e1	0x14169f528	cstring	NE
+reference	adventure-global-renderer	0xafe817	0x1416b1140	cstring	ENE
+reference	adventure-global-renderer	0xafe84d	0x1416b114c	cstring	E
+reference	adventure-global-renderer	0xafe883	0x1416b1148	cstring	ESE
+reference	adventure-global-renderer	0xafe8b9	0x14169f530	cstring	SE
+reference	adventure-global-renderer	0xafe8ef	0x1416b11e4	cstring	SSE
+reference	adventure-global-renderer	0xafe925	0x141670cd4	cstring	S
+reference	adventure-global-renderer	0xafe95b	0x1416b11e0	cstring	SSW
+reference	adventure-global-renderer	0xafe991	0x14169f52c	cstring	SW
+reference	adventure-global-renderer	0xafe9c7	0x1416b11ec	cstring	WSW
+reference	adventure-global-renderer	0xafe9fd	0x1416b11e8	cstring	W
+reference	adventure-global-renderer	0xafea33	0x1416b11d4	cstring	WNW
+reference	adventure-global-renderer	0xafea69	0x14169f524	cstring	NW
+reference	adventure-global-renderer	0xafea9f	0x1416b11d0	cstring	NNW
+reference	adventure-global-renderer	0xafeb0e	0x1416b10c0	cstring	Qst
+reference	adventure-global-renderer	0xafef46	0x14169ddcc	cstring	Charge
+reference	adventure-global-renderer	0xafef79	0x1416ae908	cstring	Move
+reference	adventure-global-renderer	0xaff183	0x1416b17c0	cstring	 to act
+reference	adventure-global-renderer	0xaff1dc	0x141603c38	cstring	Attack
+reference	adventure-global-renderer	0xaff352	0x1416b10b8	cstring	Jump
+reference	adventure-global-renderer	0xaff3a0	0x1416b10d0	cstring	Push Object
+reference	adventure-global-renderer	0xaff3ee	0x1416b10c4	cstring	Hold
+reference	adventure-global-renderer	0xaff43c	0x14169f808	cstring	Mount
+reference	adventure-global-renderer	0xaff48a	0x14169f840	cstring	Dismount
+reference	adventure-global-renderer	0xaff4d8	0x1416b10a0	cstring	Lead animal
+reference	adventure-global-renderer	0xaff526	0x1416b1088	cstring	Stop leading animal
+reference	adventure-global-renderer	0xaff574	0x1416b10b0	cstring	Release
+reference	adventure-global-renderer	0xaff5c2	0x1416b1118	cstring	Unsteady
+reference	adventure-global-renderer	0xaff610	0x1416b1630	cstring	Regaining balance
+reference	adventure-global-renderer	0xaff65e	0x14167d254	cstring	Climb
+reference	adventure-global-renderer	0xaff6ac	0x1416b1108	cstring	Suck Blood
+reference	adventure-global-renderer	0xaff6fa	0x141629d5c	cstring	Job
+reference	adventure-global-renderer	0xaff748	0x141613464	cstring	Talk
+reference	adventure-global-renderer	0xaff796	0x14169dbb8	cstring	Parry
+reference	adventure-global-renderer	0xaff7e4	0x14169de30	cstring	Block
+reference	adventure-global-renderer	0xaff832	0x14169de14	cstring	Dodge
+reference	adventure-global-renderer	0xaff904	0x1416b1138	cstring	Recover
+reference	adventure-global-renderer	0xaff952	0x1416b1128	cstring	Stand Up
+reference	adventure-global-renderer	0xaff9a0	0x1416b10e8	cstring	Lie Down
+reference	adventure-global-renderer	0xaffa1d	0x1416b10dc	cstring	Nock
+reference	adventure-global-renderer	0xaffa40	0x1416b10fc	cstring	Load
+reference	adventure-global-renderer	0xaffa53	0x1416b10f4	cstring	 ammo
+reference	adventure-global-renderer	0xaffb25	0x1416b17b0	cstring	Shoot weapon
+reference	adventure-global-renderer	0xaffb73	0x1416b17a0	cstring	Throw item
+reference	adventure-global-renderer	0xaffbe5	0x1416b17c8	cstring	and more
+reference	adventure-global-renderer	0xaffede	0x14169f524	cstring	NW
+reference	adventure-global-renderer	0xafff18	0x14169f528	cstring	NE
+reference	adventure-global-renderer	0xafff4f	0x14169f52c	cstring	SW
+reference	adventure-global-renderer	0xafff86	0x14169f530	cstring	SE
+reference	adventure-global-renderer	0xb00063	0x1416b1738	cstring	Tracks Visible: 
+reference	adventure-global-renderer	0xb0012d	0x1416afa68	cstring	Strongest Odor: 
+reference	adventure-global-renderer	0xb00182	0x1415f70e4	cstring	Death
+reference	adventure-global-renderer	0xb001ed	0x1415ff764	cstring	None
+reference	adventure-global-renderer	0xb036cd	0x1416d1b10	cstring	You haven't been able to act for a while.
+reference	adventure-global-renderer	0xb03727	0x1416d1b40	cstring	You can continue waiting, or save/quit from
+reference	adventure-global-renderer	0xb03781	0x1416d1ac0	cstring	the settings menu.
+reference	adventure-global-renderer	0xb03834	0x1416d1ad8	cstring	Continue waiting
+classic	adventure-global-renderer	0xaee8c7	0x1415e7614	cstring	st
+classic	adventure-global-renderer	0xaee8d0	0x1415e7618	cstring	nd
+classic	adventure-global-renderer	0xaee8d9	0x1415e767c	cstring	rd
+classic	adventure-global-renderer	0xaee8e2	0x1415e7680	cstring	th
+classic	adventure-global-renderer	0xaee8f5	0x1415e3720	cstring	 
+classic	adventure-global-renderer	0xaee937	0x1415e40c4	cstring	, 
+classic	adventure-global-renderer	0xaeeaa9	0x1415e8edc	cstring	blood
+classic	adventure-global-renderer	0xaeeac4	0x1416cc2fc	cstring	smoke
+classic	adventure-global-renderer	0xaeeae2	0x1416466d4	cstring	mud
+classic	adventure-global-renderer	0xaeeb00	0x1416cc308	cstring	bug innards
+classic	adventure-global-renderer	0xaeeb1e	0x1416cc318	cstring	cooked flesh
+classic	adventure-global-renderer	0xaeeb3c	0x1415e8d48	cstring	death
+classic	adventure-global-renderer	0xaeeb5a	0x1416cc2dc	cstring	filth
+classic	adventure-global-renderer	0xaeeb78	0x1416cc2e4	cstring	soot
+classic	adventure-global-renderer	0xaeeb93	0x1416cc2ec	cstring	vomit
+classic	adventure-global-renderer	0xaeebab	0x1416cc2f4	cstring	soil
+classic	adventure-global-renderer	0xaeebc6	0x1416cc2a8	cstring	freshly-baked goods
+classic	adventure-global-renderer	0xaeebe1	0x1416cc2c0	cstring	brimstone
+classic	adventure-global-renderer	0xaeec69	0x1416cc2d0	cstring	You smell 
+classic	adventure-global-renderer	0xaeec86	0x1415e8d48	cstring	death
+classic	adventure-global-renderer	0xaeed71	0x1415e3574	cstring	.
+classic	adventure-global-renderer	0xaef89b	0x1416cc268	cstring	There is a thin mist here.
+classic	adventure-global-renderer	0xaefbf1	0x1416cc250	cstring	Fog enshrouds the area.
+classic	adventure-global-renderer	0xaefc2b	0x1416cc218	cstring	There is a heavy blanket of fog enveloping everything.
+classic	adventure-global-renderer	0xaefc78	0x1416cc1b8	cstring	There is a thin mist outside.
+classic	adventure-global-renderer	0xaefcaf	0x14166b7d0	cstring	There is fog outside.
+classic	adventure-global-renderer	0xaefce6	0x1416cc288	cstring	There is thick fog outside.
+classic	adventure-global-renderer	0xaeff57	0x1416cc208	cstring	 is falling 
+classic	adventure-global-renderer	0xaeff6a	0x141646f58	cstring	outside
+classic	adventure-global-renderer	0xaeff71	0x1416cc0c0	cstring	from the sky
+classic	adventure-global-renderer	0xaeff8b	0x1415e3574	cstring	.
+classic	adventure-global-renderer	0xaeffc9	0x14166b4e0	cstring	It is raining.
+classic	adventure-global-renderer	0xaf0003	0x1416cc1d8	cstring	It is raining outside.
+classic	adventure-global-renderer	0xaf003f	0x14166b498	cstring	It is snowing.
+classic	adventure-global-renderer	0xaf0076	0x1416cc1f0	cstring	It is snowing outside.
+classic	adventure-global-renderer	0xaf0282	0x1416cc0d0	cstring	The sky above you is nearly black, ripped through with towering clouds.
+classic	adventure-global-renderer	0xaf0295	0x1416cc120	cstring	The sky above you is completely gray, with dark cloud pillars pressing through it.
+classic	adventure-global-renderer	0xaf02ac	0x1416cc178	cstring	A towering gray cloud descends from the white sky above you.
+classic	adventure-global-renderer	0xaf02bf	0x1416cc010	cstring	The sky above you is a uniform and dark gray.
+classic	adventure-global-renderer	0xaf02d2	0x1416cc040	cstring	The sky above you is gray.
+classic	adventure-global-renderer	0xaf02e2	0x1416cc060	cstring	The sky above you is hazy and white.
+classic	adventure-global-renderer	0xaf02f6	0x1416cc088	cstring	A dark, towering cloud rises into a striped sky.
+classic	adventure-global-renderer	0xaf0305	0x1416cbf38	cstring	Mounds of clouds are clustered through a striped sky.
+classic	adventure-global-renderer	0xaf030e	0x1416cbf70	cstring	There are scattered clouds underneath a striped sky.
+classic	adventure-global-renderer	0xaf0315	0x1416cbfa8	cstring	The sky is striped with thin clouds.
+classic	adventure-global-renderer	0xaf032c	0x1416cbfd0	cstring	A dark, menacing cloud towers above you, crowned by an anvil.
+classic	adventure-global-renderer	0xaf033b	0x1416cbe80	cstring	There are mounds of clouds above you, smooth on the bottom with prominent upward bulges.
+classic	adventure-global-renderer	0xaf034a	0x1416cbee0	cstring	There are scattered puffy clouds above you.
+classic	adventure-global-renderer	0xaf04e2	0x1416cbf10	cstring	There is no wind here.
+classic	adventure-global-renderer	0xaf04f3	0x1416cbf28	cstring	There is a 
+classic	adventure-global-renderer	0xaf0516	0x1416cbe70	cstring	mighty wind
+classic	adventure-global-renderer	0xaf051f	0x1416cbe60	cstring	heavy wind
+classic	adventure-global-renderer	0xaf0528	0x1416cbe50	cstring	strong breeze
+classic	adventure-global-renderer	0xaf0531	0x1416cbe40	cstring	gentle breeze
+classic	adventure-global-renderer	0xaf0544	0x1416cca38	cstring	 blowing from the 
+classic	adventure-global-renderer	0xaf0574	0x141636a3c	cstring	north
+classic	adventure-global-renderer	0xaf057d	0x141641c58	cstring	northwest
+classic	adventure-global-renderer	0xaf0586	0x141641c68	cstring	northeast
+classic	adventure-global-renderer	0xaf058f	0x141636a44	cstring	south
+classic	adventure-global-renderer	0xaf0598	0x141641c78	cstring	southwest
+classic	adventure-global-renderer	0xaf05a1	0x141641bf8	cstring	southeast
+classic	adventure-global-renderer	0xaf05aa	0x141636a34	cstring	west
+classic	adventure-global-renderer	0xaf05b3	0x141636a2c	cstring	east
+classic	adventure-global-renderer	0xaf05c6	0x1415e3574	cstring	.
+classic	adventure-global-renderer	0xaf070c	0x1416cca78	cstring	 in the east
+classic	adventure-global-renderer	0xaf0713	0x1416cca28	cstring	eastern
+classic	adventure-global-renderer	0xaf071a	0x1416cca20	cstring	western
+classic	adventure-global-renderer	0xaf07c3	0x1416cca50	cstring	The sun is rising
+classic	adventure-global-renderer	0xaf07d6	0x1416cca68	cstring	 in the west
+classic	adventure-global-renderer	0xaf07eb	0x1416cca08	cstring	The sun is low in the 
+classic	adventure-global-renderer	0xaf0816	0x1416cca30	cstring	 sky
+classic	adventure-global-renderer	0xaf0822	0x1416cc998	cstring	The sun is in the 
+classic	adventure-global-renderer	0xaf084d	0x1416cca30	cstring	 sky
+classic	adventure-global-renderer	0xaf0859	0x1416cc9b0	cstring	The sun is high in the 
+classic	adventure-global-renderer	0xaf0884	0x1416cca30	cstring	 sky
+classic	adventure-global-renderer	0xaf0890	0x1416cc9c8	cstring	The sun is directly above you
+classic	adventure-global-renderer	0xaf08a8	0x1416cc9b0	cstring	The sun is high in the 
+classic	adventure-global-renderer	0xaf08cc	0x1416cc998	cstring	The sun is in the 
+classic	adventure-global-renderer	0xaf08f0	0x1416cca08	cstring	The sun is low in the 
+classic	adventure-global-renderer	0xaf0914	0x1416cc9e8	cstring	The sun is setting to the 
+classic	adventure-global-renderer	0xaf092c	0x141636a2c	cstring	east
+classic	adventure-global-renderer	0xaf0933	0x141636a34	cstring	west
+classic	adventure-global-renderer	0xaf0950	0x1416cc850	cstring	 behind the clouds
+classic	adventure-global-renderer	0xaf0965	0x1416cc868	cstring	The stars are out
+classic	adventure-global-renderer	0xaf096e	0x1416cc880	cstring	You cannot see the sky clearly from here, but the available sunlight indicates the night
+classic	adventure-global-renderer	0xaf0977	0x1416cc8e0	cstring	You cannot see the sky clearly from here, but the available sunlight indicates the dawn
+classic	adventure-global-renderer	0xaf0980	0x1416cc940	cstring	You cannot see the sky clearly from here, but the available sunlight indicates the day
+classic	adventure-global-renderer	0xaf0989	0x1416cc780	cstring	You cannot see the sky clearly from here, but the available sunlight indicates the sunset
+classic	adventure-global-renderer	0xaf0992	0x1416cc7e0	cstring	The sky is alive with vortices of purple light and dark, boiling clouds
+classic	adventure-global-renderer	0xaf099b	0x1416cc828	cstring	The area gives off a sickly light
+classic	adventure-global-renderer	0xaf09ae	0x1415e3574	cstring	.
+classic	adventure-global-renderer	0xaf0ab6	0x1416cca28	cstring	eastern
+classic	adventure-global-renderer	0xaf0abd	0x1416cca20	cstring	western
+classic	adventure-global-renderer	0xaf0ac4	0x1416cca78	cstring	 in the east
+classic	adventure-global-renderer	0xaf0b3f	0x1415e89c4	cstring	The 
+classic	adventure-global-renderer	0xaf0b78	0x1416cc720	cstring	full moon
+classic	adventure-global-renderer	0xaf0b81	0x1416cc730	cstring	waxing gibbous moon
+classic	adventure-global-renderer	0xaf0b8a	0x1416cc748	cstring	waxing half moon
+classic	adventure-global-renderer	0xaf0b93	0x1416cc760	cstring	waxing crescent moon
+classic	adventure-global-renderer	0xaf0b9c	0x1416cc6c8	cstring	waning gibbous moon
+classic	adventure-global-renderer	0xaf0ba5	0x1416cc6e0	cstring	waning half moon
+classic	adventure-global-renderer	0xaf0bae	0x1416cc6f8	cstring	waning crescent moon
+classic	adventure-global-renderer	0xaf0bb7	0x1416cc710	cstring	new moon
+classic	adventure-global-renderer	0xaf0bc0	0x14169c43c	cstring	moon
+classic	adventure-global-renderer	0xaf0bdd	0x1416cc680	cstring	 is rising
+classic	adventure-global-renderer	0xaf0bfe	0x1416cca68	cstring	 in the west
+classic	adventure-global-renderer	0xaf0c19	0x1415e9b88	cstring	 is
+classic	adventure-global-renderer	0xaf0c32	0x1416441e8	cstring	 low
+classic	adventure-global-renderer	0xaf0c41	0x1416441e0	cstring	 high
+classic	adventure-global-renderer	0xaf0c54	0x1415e94b8	cstring	 in the 
+classic	adventure-global-renderer	0xaf0c80	0x1416cca30	cstring	 sky
+classic	adventure-global-renderer	0xaf0c9e	0x1416cc690	cstring	 is directly above you
+classic	adventure-global-renderer	0xaf0cb8	0x1415e9b88	cstring	 is
+classic	adventure-global-renderer	0xaf0cd1	0x1416441e0	cstring	 high
+classic	adventure-global-renderer	0xaf0ce0	0x1416441e8	cstring	 low
+classic	adventure-global-renderer	0xaf0cf3	0x1415e94b8	cstring	 in the 
+classic	adventure-global-renderer	0xaf0d1f	0x1416cca30	cstring	 sky
+classic	adventure-global-renderer	0xaf0d2e	0x1416cc6a8	cstring	 is setting
+classic	adventure-global-renderer	0xaf0d46	0x1416cc6b8	cstring	 to the east
+classic	adventure-global-renderer	0xaf0d4f	0x1416cc610	cstring	 to the west
+classic	adventure-global-renderer	0xaf0d67	0x1416cc620	cstring	 bright behind the clouds
+classic	adventure-global-renderer	0xaf0d75	0x1416cc640	cstring	 pale behind the clouds
+classic	adventure-global-renderer	0xaf0d83	0x1416cc658	cstring	 hardly visible behind the clouds
+classic	adventure-global-renderer	0xaf0d96	0x1415e3574	cstring	.
+classic	adventure-global-renderer	0xaf0f3c	0x1416cc580	cstring	Being dead is cold and clammy.
+classic	adventure-global-renderer	0xaf1377	0x1416cc5a0	cstring	The temperature is as it has been and always will be.
+classic	adventure-global-renderer	0xaf1389	0x1416cc5d8	cstring	The temperature cannot be judged.
+classic	adventure-global-renderer	0xaf13a1	0x1416cc600	cstring	It is burning.
+classic	adventure-global-renderer	0xaf13b9	0x1416cc520	cstring	It is deathly cold.
+classic	adventure-global-renderer	0xaf13cb	0x1416cc538	cstring	The temperature is pleasant.
+classic	adventure-global-renderer	0xaf13f1	0x1416cc558	cstring	It is scorching.
+classic	adventure-global-renderer	0xaf1403	0x14166b648	cstring	It is hot.
+classic	adventure-global-renderer	0xaf141c	0x1416cc570	cstring	It is warm.
+classic	adventure-global-renderer	0xaf1444	0x14166b610	cstring	It is cold.
+classic	adventure-global-renderer	0xaf145e	0x1416cc4c0	cstring	It is cool.
+classic	adventure-global-renderer	0xaf1486	0x1416cc558	cstring	It is scorching.
+classic	adventure-global-renderer	0xaf1497	0x14166b648	cstring	It is hot.
+classic	adventure-global-renderer	0xaf14a8	0x1416cc570	cstring	It is warm.
+classic	adventure-global-renderer	0xaf14b6	0x1416cc4c0	cstring	It is cool.
+classic	adventure-global-renderer	0xaf14cb	0x14166b610	cstring	It is cold.
+classic	adventure-global-renderer	0xaf14d4	0x1416cc4d0	cstring	It is freezing.
+classic	adventure-global-renderer	0xaf14e2	0x1416cc558	cstring	It is scorching.
+classic	adventure-global-renderer	0xaf14f0	0x14166b648	cstring	It is hot.
+classic	adventure-global-renderer	0xaf14fe	0x1416cc570	cstring	It is warm.
+classic	adventure-global-renderer	0xaf150c	0x1416cc4c0	cstring	It is cool.
+classic	adventure-global-renderer	0xaf1518	0x14166b610	cstring	It is cold.
+classic	adventure-global-renderer	0xaf1521	0x1416cc4d0	cstring	It is freezing.
+classic	adventure-global-renderer	0xaf2073	0x1416cc4e0	cstring	HUMANOID_TRACKING_SYMBOL
+classic	adventure-global-renderer	0xaf20f6	0x1416cc500	cstring	FOOTWEAR_TRACKING_SYMBOL
+classic	adventure-global-renderer	0xaf221d	0x1416cc480	cstring	Freshest track
+classic	adventure-global-renderer	0xaf230c	0x1416cc490	cstring	To the west
+classic	adventure-global-renderer	0xaf2317	0x1416cc4a0	cstring	To the east
+classic	adventure-global-renderer	0xaf232d	0x1416cc4b0	cstring	To the north
+classic	adventure-global-renderer	0xaf2338	0x1416cc428	cstring	To the south
+classic	adventure-global-renderer	0xaf234b	0x1416cc438	cstring	To the northwest
+classic	adventure-global-renderer	0xaf2356	0x1416cc468	cstring	To the southwest
+classic	adventure-global-renderer	0xaf2366	0x1416cc450	cstring	To the northeast
+classic	adventure-global-renderer	0xaf2371	0x1416cc3b8	cstring	To the southeast
+classic	adventure-global-renderer	0xaf2394	0x1416cc3d0	cstring	At your location
+classic	adventure-global-renderer	0xaf23a7	0x141613404	cstring	:
+classic	adventure-global-renderer	0xaf242a	0x1416cc378	cstring	There is an unintelligible mess.
+classic	adventure-global-renderer	0xaf247c	0x1416cbf28	cstring	There is a 
+classic	adventure-global-renderer	0xaf250e	0x1416a9c14	cstring	thick 
+classic	adventure-global-renderer	0xaf2522	0x1416a9c0c	cstring	light 
+classic	adventure-global-renderer	0xaf2536	0x1416a9c24	cstring	faint 
+classic	adventure-global-renderer	0xaf25a1	0x1415e3720	cstring	 
+classic	adventure-global-renderer	0xaf25ce	0x1416a9c1c	cstring	deep 
+classic	adventure-global-renderer	0xaf25e2	0x1416a9bd8	cstring	shallow 
+classic	adventure-global-renderer	0xaf25f6	0x1416a9bd0	cstring	vague 
+classic	adventure-global-renderer	0xaf2616	0x141635604	cstring	right 
+classic	adventure-global-renderer	0xaf2624	0x14163560c	cstring	left 
+classic	adventure-global-renderer	0xaf26b4	0x1416355b0	cstring	 print
+classic	adventure-global-renderer	0xaf26c5	0x1416a9bf8	cstring	 imprint in the 
+classic	adventure-global-renderer	0xaf27d6	0x1415e3574	cstring	.
+classic	adventure-global-renderer	0xaf2871	0x1416cbf28	cstring	There is a 
+classic	adventure-global-renderer	0xaf2927	0x1415e8b58	cstring	's 
+classic	adventure-global-renderer	0xaf2945	0x1416a9c14	cstring	thick 
+classic	adventure-global-renderer	0xaf2959	0x1416a9c0c	cstring	light 
+classic	adventure-global-renderer	0xaf296d	0x1416a9c24	cstring	faint 
+classic	adventure-global-renderer	0xaf2a3c	0x1415e8b58	cstring	's 
+classic	adventure-global-renderer	0xaf2a53	0x1416a9c1c	cstring	deep 
+classic	adventure-global-renderer	0xaf2a6e	0x1416a9bd8	cstring	shallow 
+classic	adventure-global-renderer	0xaf2a89	0x1416a9bd0	cstring	vague 
+classic	adventure-global-renderer	0xaf2a99	0x1415e3720	cstring	 
+classic	adventure-global-renderer	0xaf2af2	0x1416355b0	cstring	 print
+classic	adventure-global-renderer	0xaf2b03	0x1416a9bf8	cstring	 imprint in the 
+classic	adventure-global-renderer	0xaf2c13	0x1415e3574	cstring	.
+classic	adventure-global-renderer	0xaf2c68	0x1416cc3e8	cstring	The vegetation is heavily damaged.
+classic	adventure-global-renderer	0xaf2ca8	0x1416cc410	cstring	The vegetation is bent.
+classic	adventure-global-renderer	0xaf2cea	0x1416cc328	cstring	The vegetation has been slightly perturbed.
+classic	adventure-global-renderer	0xaf2d21	0x1416cc358	cstring	The vegetation is broken.
+classic	adventure-global-renderer	0xaf2d89	0x1416a9ca8	cstring	The signs lead north.
+classic	adventure-global-renderer	0xaf2dc3	0x1416a9cf8	cstring	The signs lead south.
+classic	adventure-global-renderer	0xaf2dfd	0x1416a9ce0	cstring	The signs lead east.
+classic	adventure-global-renderer	0xaf2e37	0x1416a9c50	cstring	The signs lead west.
+classic	adventure-global-renderer	0xaf2e71	0x1416a9c30	cstring	The signs lead northeast.
+classic	adventure-global-renderer	0xaf2eab	0x1416a9c88	cstring	The signs lead northwest.
+classic	adventure-global-renderer	0xaf2ee2	0x1416a9c68	cstring	The signs lead southeast.
+classic	adventure-global-renderer	0xaf2f19	0x1416a9ad0	cstring	The signs lead southwest.
+classic	adventure-global-renderer	0xaf2f5b	0x1416a9aa8	cstring	They belong to you or a companion.
+classic	adventure-global-renderer	0xaf316a	0x141785700	cstring	z
+classic	adventure-global-renderer	0xaf3173	0x1417854d8	cstring	z
+classic	adventure-global-renderer	0xaf3476	0x1416ccba0	cstring	Bring
+classic	adventure-global-renderer	0xaf354a	0x1415e74f8	cstring	to
+classic	adventure-global-renderer	0xaf38fb	0x1416ac140	cstring	***
+classic	adventure-global-renderer	0xaf3965	0x1416ac2d0	cstring	WSW
+classic	adventure-global-renderer	0xaf39a1	0x14169a664	cstring	SW
+classic	adventure-global-renderer	0xaf39de	0x1416ac2c4	cstring	SSW
+classic	adventure-global-renderer	0xaf3a1b	0x14166c08c	cstring	S
+classic	adventure-global-renderer	0xaf3a58	0x1416ac2c8	cstring	SSE
+classic	adventure-global-renderer	0xaf3a95	0x14169a668	cstring	SE
+classic	adventure-global-renderer	0xaf3ad2	0x1416ac2dc	cstring	ESE
+classic	adventure-global-renderer	0xaf3b0f	0x1416ac2e0	cstring	E
+classic	adventure-global-renderer	0xaf3b4c	0x1416ac2d4	cstring	ENE
+classic	adventure-global-renderer	0xaf3b89	0x14169a660	cstring	NE
+classic	adventure-global-renderer	0xaf3bcd	0x1416ac2d8	cstring	NNE
+classic	adventure-global-renderer	0xaf3c11	0x1416ac210	cstring	N
+classic	adventure-global-renderer	0xaf3c55	0x1416ac134	cstring	NNW
+classic	adventure-global-renderer	0xaf3c99	0x14169a65c	cstring	NW
+classic	adventure-global-renderer	0xaf3cda	0x1416ac138	cstring	WNW
+classic	adventure-global-renderer	0xaf3d0d	0x1416ac2cc	cstring	W
+classic	adventure-global-renderer	0xaf3dd9	0x1415e7728	cstring	An order from
+classic	adventure-global-renderer	0xaf3ec2	0x1415e76e0	cstring	Finish reporting in
+classic	adventure-global-renderer	0xaf441a	0x1416ac210	cstring	N
+classic	adventure-global-renderer	0xaf4455	0x1416ac2d8	cstring	NNE
+classic	adventure-global-renderer	0xaf4490	0x14169a660	cstring	NE
+classic	adventure-global-renderer	0xaf44cb	0x1416ac2d4	cstring	ENE
+classic	adventure-global-renderer	0xaf4506	0x1416ac2e0	cstring	E
+classic	adventure-global-renderer	0xaf4541	0x1416ac2dc	cstring	ESE
+classic	adventure-global-renderer	0xaf457c	0x14169a668	cstring	SE
+classic	adventure-global-renderer	0xaf45b7	0x1416ac2c8	cstring	SSE
+classic	adventure-global-renderer	0xaf45f2	0x14166c08c	cstring	S
+classic	adventure-global-renderer	0xaf462d	0x1416ac2c4	cstring	SSW
+classic	adventure-global-renderer	0xaf4668	0x14169a664	cstring	SW
+classic	adventure-global-renderer	0xaf46a3	0x1416ac2d0	cstring	WSW
+classic	adventure-global-renderer	0xaf46de	0x1416ac2cc	cstring	W
+classic	adventure-global-renderer	0xaf4719	0x1416ac138	cstring	WNW
+classic	adventure-global-renderer	0xaf4754	0x14169a65c	cstring	NW
+classic	adventure-global-renderer	0xaf478f	0x1416ac134	cstring	NNW
+classic	adventure-global-renderer	0xaf47ca	0x1416ac140	cstring	***
+classic	adventure-global-renderer	0xaf4839	0x1415e3c40	cstring	You
+classic	adventure-global-renderer	0xaf48e1	0x1416ccb90	cstring	asked that you
+classic	adventure-global-renderer	0xaf4939	0x1415e76a0	cstring	retrieve
+classic	adventure-global-renderer	0xaf4d66	0x1416ac140	cstring	***
+classic	adventure-global-renderer	0xaf4dd7	0x1416ac2d0	cstring	WSW
+classic	adventure-global-renderer	0xaf4e1a	0x14169a664	cstring	SW
+classic	adventure-global-renderer	0xaf4e5e	0x1416ac2c4	cstring	SSW
+classic	adventure-global-renderer	0xaf4ea2	0x14166c08c	cstring	S
+classic	adventure-global-renderer	0xaf4ee6	0x1416ac2c8	cstring	SSE
+classic	adventure-global-renderer	0xaf4f2a	0x14169a668	cstring	SE
+classic	adventure-global-renderer	0xaf4f6e	0x1416ac2dc	cstring	ESE
+classic	adventure-global-renderer	0xaf4fb2	0x1416ac2e0	cstring	E
+classic	adventure-global-renderer	0xaf4ff6	0x1416ac2d4	cstring	ENE
+classic	adventure-global-renderer	0xaf503a	0x14169a660	cstring	NE
+classic	adventure-global-renderer	0xaf5085	0x1416ac2d8	cstring	NNE
+classic	adventure-global-renderer	0xaf50d0	0x1416ac210	cstring	N
+classic	adventure-global-renderer	0xaf511b	0x1416ac134	cstring	NNW
+classic	adventure-global-renderer	0xaf5166	0x14169a65c	cstring	NW
+classic	adventure-global-renderer	0xaf51b1	0x1416ac138	cstring	WNW
+classic	adventure-global-renderer	0xaf51eb	0x1416ac2cc	cstring	W
+classic	adventure-global-renderer	0xaf539a	0x1416cc3a0	cstring	requested that you
+classic	adventure-global-renderer	0xaf53f2	0x1416ccb78	cstring	offer your services to
+classic	adventure-global-renderer	0xaf57bd	0x1416ac140	cstring	***
+classic	adventure-global-renderer	0xaf5827	0x1416ac2d0	cstring	WSW
+classic	adventure-global-renderer	0xaf5863	0x14169a664	cstring	SW
+classic	adventure-global-renderer	0xaf58a0	0x1416ac2c4	cstring	SSW
+classic	adventure-global-renderer	0xaf58dd	0x14166c08c	cstring	S
+classic	adventure-global-renderer	0xaf591a	0x1416ac2c8	cstring	SSE
+classic	adventure-global-renderer	0xaf5957	0x14169a668	cstring	SE
+classic	adventure-global-renderer	0xaf5994	0x1416ac2dc	cstring	ESE
+classic	adventure-global-renderer	0xaf59d1	0x1416ac2e0	cstring	E
+classic	adventure-global-renderer	0xaf5a0e	0x1416ac2d4	cstring	ENE
+classic	adventure-global-renderer	0xaf5a4b	0x14169a660	cstring	NE
+classic	adventure-global-renderer	0xaf5a8f	0x1416ac2d8	cstring	NNE
+classic	adventure-global-renderer	0xaf5ad3	0x1416ac210	cstring	N
+classic	adventure-global-renderer	0xaf5b17	0x1416ac134	cstring	NNW
+classic	adventure-global-renderer	0xaf5b5b	0x14169a65c	cstring	NW
+classic	adventure-global-renderer	0xaf5b9c	0x1416ac138	cstring	WNW
+classic	adventure-global-renderer	0xaf5bcf	0x1416ac2cc	cstring	W
+classic	adventure-global-renderer	0xaf616a	0x1416ac210	cstring	N
+classic	adventure-global-renderer	0xaf61a5	0x1416ac2d8	cstring	NNE
+classic	adventure-global-renderer	0xaf61e0	0x14169a660	cstring	NE
+classic	adventure-global-renderer	0xaf621b	0x1416ac2d4	cstring	ENE
+classic	adventure-global-renderer	0xaf6256	0x1416ac2e0	cstring	E
+classic	adventure-global-renderer	0xaf6291	0x1416ac2dc	cstring	ESE
+classic	adventure-global-renderer	0xaf62cc	0x14169a668	cstring	SE
+classic	adventure-global-renderer	0xaf6307	0x1416ac2c8	cstring	SSE
+classic	adventure-global-renderer	0xaf6342	0x14166c08c	cstring	S
+classic	adventure-global-renderer	0xaf637d	0x1416ac2c4	cstring	SSW
+classic	adventure-global-renderer	0xaf63b8	0x14169a664	cstring	SW
+classic	adventure-global-renderer	0xaf63f3	0x1416ac2d0	cstring	WSW
+classic	adventure-global-renderer	0xaf642e	0x1416ac2cc	cstring	W
+classic	adventure-global-renderer	0xaf6469	0x1416ac138	cstring	WNW
+classic	adventure-global-renderer	0xaf64a4	0x14169a65c	cstring	NW
+classic	adventure-global-renderer	0xaf64dc	0x1416ac134	cstring	NNW
+classic	adventure-global-renderer	0xaf6514	0x1416ac140	cstring	***
+classic	adventure-global-renderer	0xaf65a8	0x1415e7638	cstring	Agreement concluded
+classic	adventure-global-renderer	0xaf6617	0x1415e76f8	cstring	Complete: report back
+classic	adventure-global-renderer	0xaf666b	0x1415e7760	cstring	Not yet completed
+classic	adventure-global-renderer	0xaf7998	0x14167798c	cstring	Climb
+classic	adventure-global-renderer	0xaf79f9	0x1416a9b88	cstring	Move
+classic	adventure-global-renderer	0xaf7c59	0x1415e3574	cstring	.
+classic	adventure-global-renderer	0xaf7ca1	0x141611fa4	cstring	0
+classic	adventure-global-renderer	0xaf7cc6	0x141611fa4	cstring	0
+classic	adventure-global-renderer	0xaf803d	0x1415e3574	cstring	.
+classic	adventure-global-renderer	0xaf80b1	0x1415e64cc	cstring	/
+classic	adventure-global-renderer	0xaf8117	0x1415e3574	cstring	.
+classic	adventure-global-renderer	0xaf8203	0x1415e3574	cstring	.
+classic	adventure-global-renderer	0xaf824b	0x141611fa4	cstring	0
+classic	adventure-global-renderer	0xaf8270	0x141611fa4	cstring	0
+classic	adventure-global-renderer	0xaf856d	0x1416ccba8	cstring	Continue action
+classic	adventure-global-renderer	0xaf861a	0x1416ccb38	cstring	Stop action
+classic	adventure-global-renderer	0xaf86b9	0x1416ccb58	cstring	In conflict! 
+classic	adventure-global-renderer	0xaf8702	0x1416ccb68	cstring	Finish anyway
+classic	adventure-global-renderer	0xaf8786	0x1416ccab8	cstring	Finishing up...
+classic	adventure-global-renderer	0xaf8821	0x1416ccb38	cstring	Stop action
+classic	adventure-global-renderer	0xaf88d6	0x1416ccba8	cstring	Continue action
+classic	adventure-global-renderer	0xaf8983	0x1416ccb38	cstring	Stop action
+classic	adventure-global-renderer	0xaf8a22	0x1416ccb48	cstring	Finish action
+classic	adventure-global-renderer	0xafa732	0x1416ccac8	cstring	Return to arena
+classic	adventure-global-renderer	0xafb6f0	0x1416ac140	cstring	***
+classic	adventure-global-renderer	0xafb763	0x1416ac13c	cstring	Gui
+classic	adventure-global-renderer	0xafb7b5	0x1416ac210	cstring	N
+classic	adventure-global-renderer	0xafb7eb	0x1416ac2d8	cstring	NNE
+classic	adventure-global-renderer	0xafb821	0x14169a660	cstring	NE
+classic	adventure-global-renderer	0xafb857	0x1416ac2d4	cstring	ENE
+classic	adventure-global-renderer	0xafb88d	0x1416ac2e0	cstring	E
+classic	adventure-global-renderer	0xafb8c3	0x1416ac2dc	cstring	ESE
+classic	adventure-global-renderer	0xafb8f9	0x14169a668	cstring	SE
+classic	adventure-global-renderer	0xafb92f	0x1416ac2c8	cstring	SSE
+classic	adventure-global-renderer	0xafb965	0x14166c08c	cstring	S
+classic	adventure-global-renderer	0xafb99b	0x1416ac2c4	cstring	SSW
+classic	adventure-global-renderer	0xafb9d1	0x14169a664	cstring	SW
+classic	adventure-global-renderer	0xafba07	0x1416ac2d0	cstring	WSW
+classic	adventure-global-renderer	0xafba3d	0x1416ac2cc	cstring	W
+classic	adventure-global-renderer	0xafba73	0x1416ac138	cstring	WNW
+classic	adventure-global-renderer	0xafbaa9	0x14169a65c	cstring	NW
+classic	adventure-global-renderer	0xafbadf	0x1416ac134	cstring	NNW
+classic	adventure-global-renderer	0xafbb4e	0x1416ac11c	cstring	Qst
+classic	adventure-global-renderer	0xafbf86	0x141698f04	cstring	Charge
+classic	adventure-global-renderer	0xafbfb9	0x1416a9b88	cstring	Move
+classic	adventure-global-renderer	0xafc1c3	0x1416ac038	cstring	 to act
+classic	adventure-global-renderer	0xafc21c	0x1415fee80	cstring	Attack
+classic	adventure-global-renderer	0xafc392	0x1416ac114	cstring	Jump
+classic	adventure-global-renderer	0xafc3e0	0x1416ac128	cstring	Push Object
+classic	adventure-global-renderer	0xafc42e	0x1416ac120	cstring	Hold
+classic	adventure-global-renderer	0xafc47c	0x14169a958	cstring	Mount
+classic	adventure-global-renderer	0xafc4ca	0x14169a6c8	cstring	Dismount
+classic	adventure-global-renderer	0xafc518	0x1416ac198	cstring	Lead animal
+classic	adventure-global-renderer	0xafc566	0x1416ac180	cstring	Stop leading animal
+classic	adventure-global-renderer	0xafc5b4	0x1416ac1a8	cstring	Release
+classic	adventure-global-renderer	0xafc602	0x1416ac158	cstring	Unsteady
+classic	adventure-global-renderer	0xafc650	0x1416ac710	cstring	Regaining balance
+classic	adventure-global-renderer	0xafc69e	0x14167798c	cstring	Climb
+classic	adventure-global-renderer	0xafc6ec	0x1416ac148	cstring	Suck Blood
+classic	adventure-global-renderer	0xafc73a	0x14162559c	cstring	Job
+classic	adventure-global-renderer	0xafc788	0x14160e3c4	cstring	Talk
+classic	adventure-global-renderer	0xafc7d6	0x141698d00	cstring	Parry
+classic	adventure-global-renderer	0xafc824	0x141698cf8	cstring	Block
+classic	adventure-global-renderer	0xafc872	0x141698cdc	cstring	Dodge
+classic	adventure-global-renderer	0xafc944	0x1416ac178	cstring	Recover
+classic	adventure-global-renderer	0xafc992	0x1416ac168	cstring	Stand Up
+classic	adventure-global-renderer	0xafc9e0	0x1416ac058	cstring	Lie Down
+classic	adventure-global-renderer	0xafca5d	0x1416ac04c	cstring	Nock
+classic	adventure-global-renderer	0xafca80	0x1416ac06c	cstring	Load
+classic	adventure-global-renderer	0xafca93	0x1416ac064	cstring	 ammo
+classic	adventure-global-renderer	0xafcb65	0x1416ac028	cstring	Shoot weapon
+classic	adventure-global-renderer	0xafcbb3	0x1416ac018	cstring	Throw item
+classic	adventure-global-renderer	0xafcc25	0x1416ac040	cstring	and more
+classic	adventure-global-renderer	0xafcf1e	0x14169a65c	cstring	NW
+classic	adventure-global-renderer	0xafcf58	0x14169a660	cstring	NE
+classic	adventure-global-renderer	0xafcf8f	0x14169a664	cstring	SW
+classic	adventure-global-renderer	0xafcfc6	0x14169a668	cstring	SE
+classic	adventure-global-renderer	0xafd0a3	0x1416ac0b0	cstring	Tracks Visible: 
+classic	adventure-global-renderer	0xafd16d	0x1416aaa20	cstring	Strongest Odor: 
+classic	adventure-global-renderer	0xafd1c2	0x1415f2118	cstring	Death
+classic	adventure-global-renderer	0xafd22d	0x1415fa7dc	cstring	None
+classic	adventure-global-renderer	0xb0070d	0x1416ccad8	cstring	You haven't been able to act for a while.
+classic	adventure-global-renderer	0xb00767	0x1416ccb08	cstring	You can continue waiting, or save/quit from
+classic	adventure-global-renderer	0xb007c1	0x1416cca88	cstring	the settings menu.
+classic	adventure-global-renderer	0xb00874	0x1416ccaa0	cstring	Continue waiting

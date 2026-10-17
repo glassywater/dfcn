@@ -1,0 +1,443 @@
+edition	role	instruction_rva	table_rva	remap_rva	input	slot	target_rva
+reference	adventure-global-renderer	0xaf1885	0xb03910	0xb03920	0	0	0xaf1887
+reference	adventure-global-renderer	0xaf1885	0xb03910	0xb03920	1	1	0xaf1890
+reference	adventure-global-renderer	0xaf1885	0xb03910	0xb03920	2	2	0xaf1899
+reference	adventure-global-renderer	0xaf1885	0xb03910	0xb03920	3	3	0xaf18a2
+reference	adventure-global-renderer	0xaf1885	0xb03910	0xb03920	4	3	0xaf18a2
+reference	adventure-global-renderer	0xaf1885	0xb03910	0xb03920	5	3	0xaf18a2
+reference	adventure-global-renderer	0xaf1885	0xb03910	0xb03920	6	3	0xaf18a2
+reference	adventure-global-renderer	0xaf1885	0xb03910	0xb03920	7	3	0xaf18a2
+reference	adventure-global-renderer	0xaf1885	0xb03910	0xb03920	8	3	0xaf18a2
+reference	adventure-global-renderer	0xaf1885	0xb03910	0xb03920	9	3	0xaf18a2
+reference	adventure-global-renderer	0xaf1885	0xb03910	0xb03920	10	3	0xaf18a2
+reference	adventure-global-renderer	0xaf1885	0xb03910	0xb03920	11	3	0xaf18a2
+reference	adventure-global-renderer	0xaf1885	0xb03910	0xb03920	12	3	0xaf18a2
+reference	adventure-global-renderer	0xaf1885	0xb03910	0xb03920	13	3	0xaf18a2
+reference	adventure-global-renderer	0xaf1885	0xb03910	0xb03920	14	3	0xaf18a2
+reference	adventure-global-renderer	0xaf1885	0xb03910	0xb03920	15	3	0xaf18a2
+reference	adventure-global-renderer	0xaf1885	0xb03910	0xb03920	16	3	0xaf18a2
+reference	adventure-global-renderer	0xaf1885	0xb03910	0xb03920	17	3	0xaf18a2
+reference	adventure-global-renderer	0xaf1885	0xb03910	0xb03920	18	3	0xaf18a2
+reference	adventure-global-renderer	0xaf1885	0xb03910	0xb03920	19	3	0xaf18a2
+reference	adventure-global-renderer	0xaf1885	0xb03910	0xb03920	20	0	0xaf1887
+reference	adventure-global-renderer	0xaf1885	0xb03910	0xb03920	21	1	0xaf1890
+reference	adventure-global-renderer	0xaf1885	0xb03910	0xb03920	22	2	0xaf1899
+reference	adventure-global-renderer	0xaf1885	0xb03910	0xb03920	23	3	0xaf18a2
+reference	adventure-global-renderer	0xaf1885	0xb03910	0xb03920	24	3	0xaf18a2
+reference	adventure-global-renderer	0xaf1885	0xb03910	0xb03920	25	3	0xaf18a2
+reference	adventure-global-renderer	0xaf1885	0xb03910	0xb03920	26	3	0xaf18a2
+reference	adventure-global-renderer	0xaf1885	0xb03910	0xb03920	27	3	0xaf18a2
+reference	adventure-global-renderer	0xaf1885	0xb03910	0xb03920	28	3	0xaf18a2
+reference	adventure-global-renderer	0xaf1885	0xb03910	0xb03920	29	3	0xaf18a2
+reference	adventure-global-renderer	0xaf1885	0xb03910	0xb03920	30	0	0xaf1887
+reference	adventure-global-renderer	0xaf1885	0xb03910	0xb03920	31	1	0xaf1890
+reference	adventure-global-renderer	0xaf1885	0xb03910	0xb03920	32	2	0xaf1899
+reference	adventure-global-renderer	0xaf3532	0xb03944		0	0	0xaf3534
+reference	adventure-global-renderer	0xaf3532	0xb03944		1	1	0xaf3546
+reference	adventure-global-renderer	0xaf3532	0xb03944		2	2	0xaf3573
+reference	adventure-global-renderer	0xaf3532	0xb03944		3	3	0xaf3561
+reference	adventure-global-renderer	0xaf3532	0xb03944		4	4	0xaf354f
+reference	adventure-global-renderer	0xaf3532	0xb03944		5	5	0xaf3558
+reference	adventure-global-renderer	0xaf3532	0xb03944		6	6	0xaf356a
+reference	adventure-global-renderer	0xaf3532	0xb03944		7	7	0xaf353d
+reference	adventure-global-renderer	0xaf3781	0xb03964	0xb039a8	0	0	0xaf3937
+reference	adventure-global-renderer	0xaf3781	0xb03964	0xb039a8	1	1	0xaf3940
+reference	adventure-global-renderer	0xaf3781	0xb03964	0xb039a8	2	2	0xaf3949
+reference	adventure-global-renderer	0xaf3781	0xb03964	0xb039a8	3	3	0xaf392e
+reference	adventure-global-renderer	0xaf3781	0xb03964	0xb039a8	4	16	0xaf396e
+reference	adventure-global-renderer	0xaf3781	0xb03964	0xb039a8	5	16	0xaf396e
+reference	adventure-global-renderer	0xaf3781	0xb03964	0xb039a8	6	16	0xaf396e
+reference	adventure-global-renderer	0xaf3781	0xb03964	0xb039a8	7	16	0xaf396e
+reference	adventure-global-renderer	0xaf3781	0xb03964	0xb039a8	8	16	0xaf396e
+reference	adventure-global-renderer	0xaf3781	0xb03964	0xb039a8	9	16	0xaf396e
+reference	adventure-global-renderer	0xaf3781	0xb03964	0xb039a8	10	16	0xaf396e
+reference	adventure-global-renderer	0xaf3781	0xb03964	0xb039a8	11	16	0xaf396e
+reference	adventure-global-renderer	0xaf3781	0xb03964	0xb039a8	12	16	0xaf396e
+reference	adventure-global-renderer	0xaf3781	0xb03964	0xb039a8	13	16	0xaf396e
+reference	adventure-global-renderer	0xaf3781	0xb03964	0xb039a8	14	16	0xaf396e
+reference	adventure-global-renderer	0xaf3781	0xb03964	0xb039a8	15	16	0xaf396e
+reference	adventure-global-renderer	0xaf3781	0xb03964	0xb039a8	16	16	0xaf396e
+reference	adventure-global-renderer	0xaf3781	0xb03964	0xb039a8	17	16	0xaf396e
+reference	adventure-global-renderer	0xaf3781	0xb03964	0xb039a8	18	16	0xaf396e
+reference	adventure-global-renderer	0xaf3781	0xb03964	0xb039a8	19	16	0xaf396e
+reference	adventure-global-renderer	0xaf3781	0xb03964	0xb039a8	20	16	0xaf396e
+reference	adventure-global-renderer	0xaf3781	0xb03964	0xb039a8	21	16	0xaf396e
+reference	adventure-global-renderer	0xaf3781	0xb03964	0xb039a8	22	16	0xaf396e
+reference	adventure-global-renderer	0xaf3781	0xb03964	0xb039a8	23	16	0xaf396e
+reference	adventure-global-renderer	0xaf3781	0xb03964	0xb039a8	24	16	0xaf396e
+reference	adventure-global-renderer	0xaf3781	0xb03964	0xb039a8	25	16	0xaf396e
+reference	adventure-global-renderer	0xaf3781	0xb03964	0xb039a8	26	16	0xaf396e
+reference	adventure-global-renderer	0xaf3781	0xb03964	0xb039a8	27	4	0xaf3783
+reference	adventure-global-renderer	0xaf3781	0xb03964	0xb039a8	28	5	0xaf37ab
+reference	adventure-global-renderer	0xaf3781	0xb03964	0xb039a8	29	6	0xaf37e2
+reference	adventure-global-renderer	0xaf3781	0xb03964	0xb039a8	30	7	0xaf3819
+reference	adventure-global-renderer	0xaf3781	0xb03964	0xb039a8	31	8	0xaf3850
+reference	adventure-global-renderer	0xaf3781	0xb03964	0xb039a8	32	9	0xaf3868
+reference	adventure-global-renderer	0xaf3781	0xb03964	0xb039a8	33	10	0xaf388c
+reference	adventure-global-renderer	0xaf3781	0xb03964	0xb039a8	34	11	0xaf38b0
+reference	adventure-global-renderer	0xaf3781	0xb03964	0xb039a8	35	12	0xaf38d4
+reference	adventure-global-renderer	0xaf3781	0xb03964	0xb039a8	36	16	0xaf396e
+reference	adventure-global-renderer	0xaf3781	0xb03964	0xb039a8	37	16	0xaf396e
+reference	adventure-global-renderer	0xaf3781	0xb03964	0xb039a8	38	16	0xaf396e
+reference	adventure-global-renderer	0xaf3781	0xb03964	0xb039a8	39	16	0xaf396e
+reference	adventure-global-renderer	0xaf3781	0xb03964	0xb039a8	40	16	0xaf396e
+reference	adventure-global-renderer	0xaf3781	0xb03964	0xb039a8	41	16	0xaf396e
+reference	adventure-global-renderer	0xaf3781	0xb03964	0xb039a8	42	16	0xaf396e
+reference	adventure-global-renderer	0xaf3781	0xb03964	0xb039a8	43	16	0xaf396e
+reference	adventure-global-renderer	0xaf3781	0xb03964	0xb039a8	44	13	0xaf3925
+reference	adventure-global-renderer	0xaf3781	0xb03964	0xb039a8	45	14	0xaf3952
+reference	adventure-global-renderer	0xaf3781	0xb03964	0xb039a8	46	15	0xaf395b
+reference	adventure-global-renderer	0xaf3b36	0xb039d8		0	0	0xaf3b53
+reference	adventure-global-renderer	0xaf3b36	0xb039d8		1	1	0xaf3b4a
+reference	adventure-global-renderer	0xaf3b36	0xb039d8		2	2	0xaf3b41
+reference	adventure-global-renderer	0xaf3b36	0xb039d8		3	3	0xaf3b38
+reference	adventure-global-renderer	0xaf3b36	0xb039d8		4	4	0xaf3b5c
+reference	adventure-global-renderer	0xaf3b36	0xb039d8		5	5	0xaf3b65
+reference	adventure-global-renderer	0xaf3b36	0xb039d8		6	6	0xaf3b6e
+reference	adventure-global-renderer	0xaf3b36	0xb039d8		7	7	0xaf3b77
+reference	adventure-global-renderer	0xaf73d8	0xb03a80		0	0	0xaf73da
+reference	adventure-global-renderer	0xaf73d8	0xb03a80		1	1	0xaf7415
+reference	adventure-global-renderer	0xaf73d8	0xb03a80		2	2	0xaf7450
+reference	adventure-global-renderer	0xaf73d8	0xb03a80		3	3	0xaf748b
+reference	adventure-global-renderer	0xaf73d8	0xb03a80		4	4	0xaf74c6
+reference	adventure-global-renderer	0xaf73d8	0xb03a80		5	5	0xaf7501
+reference	adventure-global-renderer	0xaf73d8	0xb03a80		6	6	0xaf753c
+reference	adventure-global-renderer	0xaf73d8	0xb03a80		7	7	0xaf7577
+reference	adventure-global-renderer	0xaf73d8	0xb03a80		8	8	0xaf75b2
+reference	adventure-global-renderer	0xaf73d8	0xb03a80		9	9	0xaf75ed
+reference	adventure-global-renderer	0xaf73d8	0xb03a80		10	10	0xaf7628
+reference	adventure-global-renderer	0xaf73d8	0xb03a80		11	11	0xaf7663
+reference	adventure-global-renderer	0xaf73d8	0xb03a80		12	12	0xaf769e
+reference	adventure-global-renderer	0xaf73d8	0xb03a80		13	13	0xaf76d9
+reference	adventure-global-renderer	0xaf73d8	0xb03a80		14	14	0xaf7714
+reference	adventure-global-renderer	0xaf73d8	0xb03a80		15	15	0xaf774f
+reference	adventure-global-renderer	0xaf7c2c	0xb03ac0		0	0	0xaf7c2e
+reference	adventure-global-renderer	0xaf7c2c	0xb03ac0		1	1	0xaf7c2e
+reference	adventure-global-renderer	0xaf7c2c	0xb03ac0		2	2	0xaf7c2e
+reference	adventure-global-renderer	0xaf7c2c	0xb03ac0		3	3	0xaf7c8a
+reference	adventure-global-renderer	0xaf7c2c	0xb03ac0		4	4	0xaf7c8a
+reference	adventure-global-renderer	0xaf7c2c	0xb03ac0		5	5	0xaf7c2e
+reference	adventure-global-renderer	0xaf9128	0xb03ad8		0	0	0xaf912a
+reference	adventure-global-renderer	0xaf9128	0xb03ad8		1	1	0xaf9165
+reference	adventure-global-renderer	0xaf9128	0xb03ad8		2	2	0xaf91a0
+reference	adventure-global-renderer	0xaf9128	0xb03ad8		3	3	0xaf91db
+reference	adventure-global-renderer	0xaf9128	0xb03ad8		4	4	0xaf9216
+reference	adventure-global-renderer	0xaf9128	0xb03ad8		5	5	0xaf9251
+reference	adventure-global-renderer	0xaf9128	0xb03ad8		6	6	0xaf928c
+reference	adventure-global-renderer	0xaf9128	0xb03ad8		7	7	0xaf92c7
+reference	adventure-global-renderer	0xaf9128	0xb03ad8		8	8	0xaf9302
+reference	adventure-global-renderer	0xaf9128	0xb03ad8		9	9	0xaf933d
+reference	adventure-global-renderer	0xaf9128	0xb03ad8		10	10	0xaf9378
+reference	adventure-global-renderer	0xaf9128	0xb03ad8		11	11	0xaf93b3
+reference	adventure-global-renderer	0xaf9128	0xb03ad8		12	12	0xaf93ee
+reference	adventure-global-renderer	0xaf9128	0xb03ad8		13	13	0xaf9429
+reference	adventure-global-renderer	0xaf9128	0xb03ad8		14	14	0xaf9464
+reference	adventure-global-renderer	0xaf9128	0xb03ad8		15	15	0xaf949c
+reference	adventure-global-renderer	0xafae37	0xb03b18		0	0	0xafae39
+reference	adventure-global-renderer	0xafae37	0xb03b18		1	1	0xafae3d
+reference	adventure-global-renderer	0xafae37	0xb03b18		2	2	0xafae62
+reference	adventure-global-renderer	0xafae37	0xb03b18		3	3	0xafae41
+reference	adventure-global-renderer	0xafae37	0xb03b18		4	4	0xafae49
+reference	adventure-global-renderer	0xafae37	0xb03b18		5	5	0xafae51
+reference	adventure-global-renderer	0xafae37	0xb03b18		6	6	0xafae62
+reference	adventure-global-renderer	0xafae37	0xb03b18		7	7	0xafae45
+reference	adventure-global-renderer	0xafae37	0xb03b18		8	8	0xafae4d
+reference	adventure-global-renderer	0xafae37	0xb03b18		9	9	0xafae55
+reference	adventure-global-renderer	0xafb342	0xb03b40		0	0	0xafb344
+reference	adventure-global-renderer	0xafb342	0xb03b40		1	1	0xafb348
+reference	adventure-global-renderer	0xafb342	0xb03b40		2	2	0xafb36d
+reference	adventure-global-renderer	0xafb342	0xb03b40		3	3	0xafb34c
+reference	adventure-global-renderer	0xafb342	0xb03b40		4	4	0xafb354
+reference	adventure-global-renderer	0xafb342	0xb03b40		5	5	0xafb35c
+reference	adventure-global-renderer	0xafb342	0xb03b40		6	6	0xafb36d
+reference	adventure-global-renderer	0xafb342	0xb03b40		7	7	0xafb350
+reference	adventure-global-renderer	0xafb342	0xb03b40		8	8	0xafb358
+reference	adventure-global-renderer	0xafb342	0xb03b40		9	9	0xafb360
+reference	adventure-global-renderer	0xafe773	0xb03b68		0	0	0xafe775
+reference	adventure-global-renderer	0xafe773	0xb03b68		1	1	0xafe7ab
+reference	adventure-global-renderer	0xafe773	0xb03b68		2	2	0xafe7e1
+reference	adventure-global-renderer	0xafe773	0xb03b68		3	3	0xafe817
+reference	adventure-global-renderer	0xafe773	0xb03b68		4	4	0xafe84d
+reference	adventure-global-renderer	0xafe773	0xb03b68		5	5	0xafe883
+reference	adventure-global-renderer	0xafe773	0xb03b68		6	6	0xafe8b9
+reference	adventure-global-renderer	0xafe773	0xb03b68		7	7	0xafe8ef
+reference	adventure-global-renderer	0xafe773	0xb03b68		8	8	0xafe925
+reference	adventure-global-renderer	0xafe773	0xb03b68		9	9	0xafe95b
+reference	adventure-global-renderer	0xafe773	0xb03b68		10	10	0xafe991
+reference	adventure-global-renderer	0xafe773	0xb03b68		11	11	0xafe9c7
+reference	adventure-global-renderer	0xafe773	0xb03b68		12	12	0xafe9fd
+reference	adventure-global-renderer	0xafe773	0xb03b68		13	13	0xafea33
+reference	adventure-global-renderer	0xafe773	0xb03b68		14	14	0xafea69
+reference	adventure-global-renderer	0xafe773	0xb03b68		15	15	0xafea9f
+reference	adventure-global-renderer	0xafef2b	0xb03ba8		0	0	0xafef2d
+reference	adventure-global-renderer	0xafef2b	0xb03ba8		1	1	0xaff1c9
+reference	adventure-global-renderer	0xafef2b	0xb03ba8		2	2	0xaff33f
+reference	adventure-global-renderer	0xafef2b	0xb03ba8		3	3	0xaff3db
+reference	adventure-global-renderer	0xafef2b	0xb03ba8		4	4	0xaff561
+reference	adventure-global-renderer	0xafef2b	0xb03ba8		5	5	0xaff64b
+reference	adventure-global-renderer	0xafef2b	0xb03ba8		6	6	0xaff6e7
+reference	adventure-global-renderer	0xafef2b	0xb03ba8		7	7	0xaff735
+reference	adventure-global-renderer	0xafef2b	0xb03ba8		8	8	0xaff5af
+reference	adventure-global-renderer	0xafef2b	0xb03ba8		9	9	0xaff783
+reference	adventure-global-renderer	0xafef2b	0xb03ba8		10	10	0xaff7d1
+reference	adventure-global-renderer	0xafef2b	0xb03ba8		11	11	0xaff81f
+reference	adventure-global-renderer	0xafef2b	0xb03ba8		12	12	0xaff8f1
+reference	adventure-global-renderer	0xafef2b	0xb03ba8		13	13	0xaff93f
+reference	adventure-global-renderer	0xafef2b	0xb03ba8		14	14	0xaff98d
+reference	adventure-global-renderer	0xafef2b	0xb03ba8		15	15	0xaff6e7
+reference	adventure-global-renderer	0xafef2b	0xb03ba8		16	16	0xaff38d
+reference	adventure-global-renderer	0xafef2b	0xb03ba8		17	17	0xaff699
+reference	adventure-global-renderer	0xafef2b	0xb03ba8		18	18	0xaff3db
+reference	adventure-global-renderer	0xafef2b	0xb03ba8		19	19	0xaff561
+reference	adventure-global-renderer	0xafef2b	0xb03ba8		20	20	0xaff429
+reference	adventure-global-renderer	0xafef2b	0xb03ba8		21	21	0xaff477
+reference	adventure-global-renderer	0xafef2b	0xb03ba8		22	22	0xaff4c5
+reference	adventure-global-renderer	0xafef2b	0xb03ba8		23	23	0xaff513
+reference	adventure-global-renderer	0xafef2b	0xb03ba8		24	24	0xaff9db
+reference	adventure-global-renderer	0xafef2b	0xb03ba8		25	25	0xaffb12
+reference	adventure-global-renderer	0xafef2b	0xb03ba8		26	26	0xaffb60
+reference	adventure-global-renderer	0xafef2b	0xb03ba8		27	27	0xaff5fd
+reference	adventure-global-renderer	0xb00e82	0xb03c18		0	0	0xb00f4e
+reference	adventure-global-renderer	0xb00e82	0xb03c18		1	1	0xb00fb3
+reference	adventure-global-renderer	0xb00e82	0xb03c18		2	2	0xb01018
+reference	adventure-global-renderer	0xb00e82	0xb03c18		3	3	0xb00ee9
+reference	adventure-global-renderer	0xb00e82	0xb03c18		4	4	0xb00e84
+reference	adventure-global-renderer	0xb00e82	0xb03c18		5	5	0xb0107d
+reference	adventure-global-renderer	0xb00e82	0xb03c18		6	6	0xb010e2
+reference	adventure-global-renderer	0xb00e82	0xb03c18		7	7	0xb01147
+reference	adventure-global-renderer	0xb00e82	0xb03c18		8	8	0xb011f7
+reference	adventure-global-renderer	0xb00e82	0xb03c18		9	9	0xb011ad
+reference	effective-movement-speed	0x1334dc9	0x13356bc		0	0	0x1334dcb
+reference	effective-movement-speed	0x1334dc9	0x13356bc		1	1	0x1334dd0
+reference	effective-movement-speed	0x1334dc9	0x13356bc		2	2	0x1334dd5
+reference	effective-movement-speed	0x1334dc9	0x13356bc		3	3	0x1334dda
+reference	effective-movement-speed	0x1334dc9	0x13356bc		4	4	0x1334de6
+reference	effective-movement-speed	0x1334dc9	0x13356bc		5	5	0x1334deb
+reference	effective-movement-speed	0x1334dc9	0x13356bc		6	6	0x1334df0
+reference	effective-movement-speed	0x1334dc9	0x13356bc		7	7	0x1334df5
+reference	effective-movement-speed	0x1334dc9	0x13356bc		8	8	0x1334dfd
+reference	effective-movement-speed	0x1334dc9	0x13356bc		9	9	0x1334e02
+reference	effective-movement-speed	0x1334dc9	0x13356bc		10	10	0x1334e07
+reference	effective-movement-speed	0x1334dc9	0x13356bc		11	11	0x1334e0c
+reference	effective-movement-speed	0x1334dc9	0x13356bc		12	12	0x1334e15
+classic	adventure-global-renderer	0xaee8c5	0xb00950	0xb00960	0	0	0xaee8c7
+classic	adventure-global-renderer	0xaee8c5	0xb00950	0xb00960	1	1	0xaee8d0
+classic	adventure-global-renderer	0xaee8c5	0xb00950	0xb00960	2	2	0xaee8d9
+classic	adventure-global-renderer	0xaee8c5	0xb00950	0xb00960	3	3	0xaee8e2
+classic	adventure-global-renderer	0xaee8c5	0xb00950	0xb00960	4	3	0xaee8e2
+classic	adventure-global-renderer	0xaee8c5	0xb00950	0xb00960	5	3	0xaee8e2
+classic	adventure-global-renderer	0xaee8c5	0xb00950	0xb00960	6	3	0xaee8e2
+classic	adventure-global-renderer	0xaee8c5	0xb00950	0xb00960	7	3	0xaee8e2
+classic	adventure-global-renderer	0xaee8c5	0xb00950	0xb00960	8	3	0xaee8e2
+classic	adventure-global-renderer	0xaee8c5	0xb00950	0xb00960	9	3	0xaee8e2
+classic	adventure-global-renderer	0xaee8c5	0xb00950	0xb00960	10	3	0xaee8e2
+classic	adventure-global-renderer	0xaee8c5	0xb00950	0xb00960	11	3	0xaee8e2
+classic	adventure-global-renderer	0xaee8c5	0xb00950	0xb00960	12	3	0xaee8e2
+classic	adventure-global-renderer	0xaee8c5	0xb00950	0xb00960	13	3	0xaee8e2
+classic	adventure-global-renderer	0xaee8c5	0xb00950	0xb00960	14	3	0xaee8e2
+classic	adventure-global-renderer	0xaee8c5	0xb00950	0xb00960	15	3	0xaee8e2
+classic	adventure-global-renderer	0xaee8c5	0xb00950	0xb00960	16	3	0xaee8e2
+classic	adventure-global-renderer	0xaee8c5	0xb00950	0xb00960	17	3	0xaee8e2
+classic	adventure-global-renderer	0xaee8c5	0xb00950	0xb00960	18	3	0xaee8e2
+classic	adventure-global-renderer	0xaee8c5	0xb00950	0xb00960	19	3	0xaee8e2
+classic	adventure-global-renderer	0xaee8c5	0xb00950	0xb00960	20	0	0xaee8c7
+classic	adventure-global-renderer	0xaee8c5	0xb00950	0xb00960	21	1	0xaee8d0
+classic	adventure-global-renderer	0xaee8c5	0xb00950	0xb00960	22	2	0xaee8d9
+classic	adventure-global-renderer	0xaee8c5	0xb00950	0xb00960	23	3	0xaee8e2
+classic	adventure-global-renderer	0xaee8c5	0xb00950	0xb00960	24	3	0xaee8e2
+classic	adventure-global-renderer	0xaee8c5	0xb00950	0xb00960	25	3	0xaee8e2
+classic	adventure-global-renderer	0xaee8c5	0xb00950	0xb00960	26	3	0xaee8e2
+classic	adventure-global-renderer	0xaee8c5	0xb00950	0xb00960	27	3	0xaee8e2
+classic	adventure-global-renderer	0xaee8c5	0xb00950	0xb00960	28	3	0xaee8e2
+classic	adventure-global-renderer	0xaee8c5	0xb00950	0xb00960	29	3	0xaee8e2
+classic	adventure-global-renderer	0xaee8c5	0xb00950	0xb00960	30	0	0xaee8c7
+classic	adventure-global-renderer	0xaee8c5	0xb00950	0xb00960	31	1	0xaee8d0
+classic	adventure-global-renderer	0xaee8c5	0xb00950	0xb00960	32	2	0xaee8d9
+classic	adventure-global-renderer	0xaf0572	0xb00984		0	0	0xaf0574
+classic	adventure-global-renderer	0xaf0572	0xb00984		1	1	0xaf0586
+classic	adventure-global-renderer	0xaf0572	0xb00984		2	2	0xaf05b3
+classic	adventure-global-renderer	0xaf0572	0xb00984		3	3	0xaf05a1
+classic	adventure-global-renderer	0xaf0572	0xb00984		4	4	0xaf058f
+classic	adventure-global-renderer	0xaf0572	0xb00984		5	5	0xaf0598
+classic	adventure-global-renderer	0xaf0572	0xb00984		6	6	0xaf05aa
+classic	adventure-global-renderer	0xaf0572	0xb00984		7	7	0xaf057d
+classic	adventure-global-renderer	0xaf07c1	0xb009a4	0xb009e8	0	0	0xaf0977
+classic	adventure-global-renderer	0xaf07c1	0xb009a4	0xb009e8	1	1	0xaf0980
+classic	adventure-global-renderer	0xaf07c1	0xb009a4	0xb009e8	2	2	0xaf0989
+classic	adventure-global-renderer	0xaf07c1	0xb009a4	0xb009e8	3	3	0xaf096e
+classic	adventure-global-renderer	0xaf07c1	0xb009a4	0xb009e8	4	16	0xaf09ae
+classic	adventure-global-renderer	0xaf07c1	0xb009a4	0xb009e8	5	16	0xaf09ae
+classic	adventure-global-renderer	0xaf07c1	0xb009a4	0xb009e8	6	16	0xaf09ae
+classic	adventure-global-renderer	0xaf07c1	0xb009a4	0xb009e8	7	16	0xaf09ae
+classic	adventure-global-renderer	0xaf07c1	0xb009a4	0xb009e8	8	16	0xaf09ae
+classic	adventure-global-renderer	0xaf07c1	0xb009a4	0xb009e8	9	16	0xaf09ae
+classic	adventure-global-renderer	0xaf07c1	0xb009a4	0xb009e8	10	16	0xaf09ae
+classic	adventure-global-renderer	0xaf07c1	0xb009a4	0xb009e8	11	16	0xaf09ae
+classic	adventure-global-renderer	0xaf07c1	0xb009a4	0xb009e8	12	16	0xaf09ae
+classic	adventure-global-renderer	0xaf07c1	0xb009a4	0xb009e8	13	16	0xaf09ae
+classic	adventure-global-renderer	0xaf07c1	0xb009a4	0xb009e8	14	16	0xaf09ae
+classic	adventure-global-renderer	0xaf07c1	0xb009a4	0xb009e8	15	16	0xaf09ae
+classic	adventure-global-renderer	0xaf07c1	0xb009a4	0xb009e8	16	16	0xaf09ae
+classic	adventure-global-renderer	0xaf07c1	0xb009a4	0xb009e8	17	16	0xaf09ae
+classic	adventure-global-renderer	0xaf07c1	0xb009a4	0xb009e8	18	16	0xaf09ae
+classic	adventure-global-renderer	0xaf07c1	0xb009a4	0xb009e8	19	16	0xaf09ae
+classic	adventure-global-renderer	0xaf07c1	0xb009a4	0xb009e8	20	16	0xaf09ae
+classic	adventure-global-renderer	0xaf07c1	0xb009a4	0xb009e8	21	16	0xaf09ae
+classic	adventure-global-renderer	0xaf07c1	0xb009a4	0xb009e8	22	16	0xaf09ae
+classic	adventure-global-renderer	0xaf07c1	0xb009a4	0xb009e8	23	16	0xaf09ae
+classic	adventure-global-renderer	0xaf07c1	0xb009a4	0xb009e8	24	16	0xaf09ae
+classic	adventure-global-renderer	0xaf07c1	0xb009a4	0xb009e8	25	16	0xaf09ae
+classic	adventure-global-renderer	0xaf07c1	0xb009a4	0xb009e8	26	16	0xaf09ae
+classic	adventure-global-renderer	0xaf07c1	0xb009a4	0xb009e8	27	4	0xaf07c3
+classic	adventure-global-renderer	0xaf07c1	0xb009a4	0xb009e8	28	5	0xaf07eb
+classic	adventure-global-renderer	0xaf07c1	0xb009a4	0xb009e8	29	6	0xaf0822
+classic	adventure-global-renderer	0xaf07c1	0xb009a4	0xb009e8	30	7	0xaf0859
+classic	adventure-global-renderer	0xaf07c1	0xb009a4	0xb009e8	31	8	0xaf0890
+classic	adventure-global-renderer	0xaf07c1	0xb009a4	0xb009e8	32	9	0xaf08a8
+classic	adventure-global-renderer	0xaf07c1	0xb009a4	0xb009e8	33	10	0xaf08cc
+classic	adventure-global-renderer	0xaf07c1	0xb009a4	0xb009e8	34	11	0xaf08f0
+classic	adventure-global-renderer	0xaf07c1	0xb009a4	0xb009e8	35	12	0xaf0914
+classic	adventure-global-renderer	0xaf07c1	0xb009a4	0xb009e8	36	16	0xaf09ae
+classic	adventure-global-renderer	0xaf07c1	0xb009a4	0xb009e8	37	16	0xaf09ae
+classic	adventure-global-renderer	0xaf07c1	0xb009a4	0xb009e8	38	16	0xaf09ae
+classic	adventure-global-renderer	0xaf07c1	0xb009a4	0xb009e8	39	16	0xaf09ae
+classic	adventure-global-renderer	0xaf07c1	0xb009a4	0xb009e8	40	16	0xaf09ae
+classic	adventure-global-renderer	0xaf07c1	0xb009a4	0xb009e8	41	16	0xaf09ae
+classic	adventure-global-renderer	0xaf07c1	0xb009a4	0xb009e8	42	16	0xaf09ae
+classic	adventure-global-renderer	0xaf07c1	0xb009a4	0xb009e8	43	16	0xaf09ae
+classic	adventure-global-renderer	0xaf07c1	0xb009a4	0xb009e8	44	13	0xaf0965
+classic	adventure-global-renderer	0xaf07c1	0xb009a4	0xb009e8	45	14	0xaf0992
+classic	adventure-global-renderer	0xaf07c1	0xb009a4	0xb009e8	46	15	0xaf099b
+classic	adventure-global-renderer	0xaf0b76	0xb00a18		0	0	0xaf0b93
+classic	adventure-global-renderer	0xaf0b76	0xb00a18		1	1	0xaf0b8a
+classic	adventure-global-renderer	0xaf0b76	0xb00a18		2	2	0xaf0b81
+classic	adventure-global-renderer	0xaf0b76	0xb00a18		3	3	0xaf0b78
+classic	adventure-global-renderer	0xaf0b76	0xb00a18		4	4	0xaf0b9c
+classic	adventure-global-renderer	0xaf0b76	0xb00a18		5	5	0xaf0ba5
+classic	adventure-global-renderer	0xaf0b76	0xb00a18		6	6	0xaf0bae
+classic	adventure-global-renderer	0xaf0b76	0xb00a18		7	7	0xaf0bb7
+classic	adventure-global-renderer	0xaf4418	0xb00ac0		0	0	0xaf441a
+classic	adventure-global-renderer	0xaf4418	0xb00ac0		1	1	0xaf4455
+classic	adventure-global-renderer	0xaf4418	0xb00ac0		2	2	0xaf4490
+classic	adventure-global-renderer	0xaf4418	0xb00ac0		3	3	0xaf44cb
+classic	adventure-global-renderer	0xaf4418	0xb00ac0		4	4	0xaf4506
+classic	adventure-global-renderer	0xaf4418	0xb00ac0		5	5	0xaf4541
+classic	adventure-global-renderer	0xaf4418	0xb00ac0		6	6	0xaf457c
+classic	adventure-global-renderer	0xaf4418	0xb00ac0		7	7	0xaf45b7
+classic	adventure-global-renderer	0xaf4418	0xb00ac0		8	8	0xaf45f2
+classic	adventure-global-renderer	0xaf4418	0xb00ac0		9	9	0xaf462d
+classic	adventure-global-renderer	0xaf4418	0xb00ac0		10	10	0xaf4668
+classic	adventure-global-renderer	0xaf4418	0xb00ac0		11	11	0xaf46a3
+classic	adventure-global-renderer	0xaf4418	0xb00ac0		12	12	0xaf46de
+classic	adventure-global-renderer	0xaf4418	0xb00ac0		13	13	0xaf4719
+classic	adventure-global-renderer	0xaf4418	0xb00ac0		14	14	0xaf4754
+classic	adventure-global-renderer	0xaf4418	0xb00ac0		15	15	0xaf478f
+classic	adventure-global-renderer	0xaf4c6c	0xb00b00		0	0	0xaf4c6e
+classic	adventure-global-renderer	0xaf4c6c	0xb00b00		1	1	0xaf4c6e
+classic	adventure-global-renderer	0xaf4c6c	0xb00b00		2	2	0xaf4c6e
+classic	adventure-global-renderer	0xaf4c6c	0xb00b00		3	3	0xaf4cca
+classic	adventure-global-renderer	0xaf4c6c	0xb00b00		4	4	0xaf4cca
+classic	adventure-global-renderer	0xaf4c6c	0xb00b00		5	5	0xaf4c6e
+classic	adventure-global-renderer	0xaf6168	0xb00b18		0	0	0xaf616a
+classic	adventure-global-renderer	0xaf6168	0xb00b18		1	1	0xaf61a5
+classic	adventure-global-renderer	0xaf6168	0xb00b18		2	2	0xaf61e0
+classic	adventure-global-renderer	0xaf6168	0xb00b18		3	3	0xaf621b
+classic	adventure-global-renderer	0xaf6168	0xb00b18		4	4	0xaf6256
+classic	adventure-global-renderer	0xaf6168	0xb00b18		5	5	0xaf6291
+classic	adventure-global-renderer	0xaf6168	0xb00b18		6	6	0xaf62cc
+classic	adventure-global-renderer	0xaf6168	0xb00b18		7	7	0xaf6307
+classic	adventure-global-renderer	0xaf6168	0xb00b18		8	8	0xaf6342
+classic	adventure-global-renderer	0xaf6168	0xb00b18		9	9	0xaf637d
+classic	adventure-global-renderer	0xaf6168	0xb00b18		10	10	0xaf63b8
+classic	adventure-global-renderer	0xaf6168	0xb00b18		11	11	0xaf63f3
+classic	adventure-global-renderer	0xaf6168	0xb00b18		12	12	0xaf642e
+classic	adventure-global-renderer	0xaf6168	0xb00b18		13	13	0xaf6469
+classic	adventure-global-renderer	0xaf6168	0xb00b18		14	14	0xaf64a4
+classic	adventure-global-renderer	0xaf6168	0xb00b18		15	15	0xaf64dc
+classic	adventure-global-renderer	0xaf7e77	0xb00b58		0	0	0xaf7e79
+classic	adventure-global-renderer	0xaf7e77	0xb00b58		1	1	0xaf7e7d
+classic	adventure-global-renderer	0xaf7e77	0xb00b58		2	2	0xaf7ea2
+classic	adventure-global-renderer	0xaf7e77	0xb00b58		3	3	0xaf7e81
+classic	adventure-global-renderer	0xaf7e77	0xb00b58		4	4	0xaf7e89
+classic	adventure-global-renderer	0xaf7e77	0xb00b58		5	5	0xaf7e91
+classic	adventure-global-renderer	0xaf7e77	0xb00b58		6	6	0xaf7ea2
+classic	adventure-global-renderer	0xaf7e77	0xb00b58		7	7	0xaf7e85
+classic	adventure-global-renderer	0xaf7e77	0xb00b58		8	8	0xaf7e8d
+classic	adventure-global-renderer	0xaf7e77	0xb00b58		9	9	0xaf7e95
+classic	adventure-global-renderer	0xaf8382	0xb00b80		0	0	0xaf8384
+classic	adventure-global-renderer	0xaf8382	0xb00b80		1	1	0xaf8388
+classic	adventure-global-renderer	0xaf8382	0xb00b80		2	2	0xaf83ad
+classic	adventure-global-renderer	0xaf8382	0xb00b80		3	3	0xaf838c
+classic	adventure-global-renderer	0xaf8382	0xb00b80		4	4	0xaf8394
+classic	adventure-global-renderer	0xaf8382	0xb00b80		5	5	0xaf839c
+classic	adventure-global-renderer	0xaf8382	0xb00b80		6	6	0xaf83ad
+classic	adventure-global-renderer	0xaf8382	0xb00b80		7	7	0xaf8390
+classic	adventure-global-renderer	0xaf8382	0xb00b80		8	8	0xaf8398
+classic	adventure-global-renderer	0xaf8382	0xb00b80		9	9	0xaf83a0
+classic	adventure-global-renderer	0xafb7b3	0xb00ba8		0	0	0xafb7b5
+classic	adventure-global-renderer	0xafb7b3	0xb00ba8		1	1	0xafb7eb
+classic	adventure-global-renderer	0xafb7b3	0xb00ba8		2	2	0xafb821
+classic	adventure-global-renderer	0xafb7b3	0xb00ba8		3	3	0xafb857
+classic	adventure-global-renderer	0xafb7b3	0xb00ba8		4	4	0xafb88d
+classic	adventure-global-renderer	0xafb7b3	0xb00ba8		5	5	0xafb8c3
+classic	adventure-global-renderer	0xafb7b3	0xb00ba8		6	6	0xafb8f9
+classic	adventure-global-renderer	0xafb7b3	0xb00ba8		7	7	0xafb92f
+classic	adventure-global-renderer	0xafb7b3	0xb00ba8		8	8	0xafb965
+classic	adventure-global-renderer	0xafb7b3	0xb00ba8		9	9	0xafb99b
+classic	adventure-global-renderer	0xafb7b3	0xb00ba8		10	10	0xafb9d1
+classic	adventure-global-renderer	0xafb7b3	0xb00ba8		11	11	0xafba07
+classic	adventure-global-renderer	0xafb7b3	0xb00ba8		12	12	0xafba3d
+classic	adventure-global-renderer	0xafb7b3	0xb00ba8		13	13	0xafba73
+classic	adventure-global-renderer	0xafb7b3	0xb00ba8		14	14	0xafbaa9
+classic	adventure-global-renderer	0xafb7b3	0xb00ba8		15	15	0xafbadf
+classic	adventure-global-renderer	0xafbf6b	0xb00be8		0	0	0xafbf6d
+classic	adventure-global-renderer	0xafbf6b	0xb00be8		1	1	0xafc209
+classic	adventure-global-renderer	0xafbf6b	0xb00be8		2	2	0xafc37f
+classic	adventure-global-renderer	0xafbf6b	0xb00be8		3	3	0xafc41b
+classic	adventure-global-renderer	0xafbf6b	0xb00be8		4	4	0xafc5a1
+classic	adventure-global-renderer	0xafbf6b	0xb00be8		5	5	0xafc68b
+classic	adventure-global-renderer	0xafbf6b	0xb00be8		6	6	0xafc727
+classic	adventure-global-renderer	0xafbf6b	0xb00be8		7	7	0xafc775
+classic	adventure-global-renderer	0xafbf6b	0xb00be8		8	8	0xafc5ef
+classic	adventure-global-renderer	0xafbf6b	0xb00be8		9	9	0xafc7c3
+classic	adventure-global-renderer	0xafbf6b	0xb00be8		10	10	0xafc811
+classic	adventure-global-renderer	0xafbf6b	0xb00be8		11	11	0xafc85f
+classic	adventure-global-renderer	0xafbf6b	0xb00be8		12	12	0xafc931
+classic	adventure-global-renderer	0xafbf6b	0xb00be8		13	13	0xafc97f
+classic	adventure-global-renderer	0xafbf6b	0xb00be8		14	14	0xafc9cd
+classic	adventure-global-renderer	0xafbf6b	0xb00be8		15	15	0xafc727
+classic	adventure-global-renderer	0xafbf6b	0xb00be8		16	16	0xafc3cd
+classic	adventure-global-renderer	0xafbf6b	0xb00be8		17	17	0xafc6d9
+classic	adventure-global-renderer	0xafbf6b	0xb00be8		18	18	0xafc41b
+classic	adventure-global-renderer	0xafbf6b	0xb00be8		19	19	0xafc5a1
+classic	adventure-global-renderer	0xafbf6b	0xb00be8		20	20	0xafc469
+classic	adventure-global-renderer	0xafbf6b	0xb00be8		21	21	0xafc4b7
+classic	adventure-global-renderer	0xafbf6b	0xb00be8		22	22	0xafc505
+classic	adventure-global-renderer	0xafbf6b	0xb00be8		23	23	0xafc553
+classic	adventure-global-renderer	0xafbf6b	0xb00be8		24	24	0xafca1b
+classic	adventure-global-renderer	0xafbf6b	0xb00be8		25	25	0xafcb52
+classic	adventure-global-renderer	0xafbf6b	0xb00be8		26	26	0xafcba0
+classic	adventure-global-renderer	0xafbf6b	0xb00be8		27	27	0xafc63d
+classic	adventure-global-renderer	0xafdec2	0xb00c58		0	0	0xafdf8e
+classic	adventure-global-renderer	0xafdec2	0xb00c58		1	1	0xafdff3
+classic	adventure-global-renderer	0xafdec2	0xb00c58		2	2	0xafe058
+classic	adventure-global-renderer	0xafdec2	0xb00c58		3	3	0xafdf29
+classic	adventure-global-renderer	0xafdec2	0xb00c58		4	4	0xafdec4
+classic	adventure-global-renderer	0xafdec2	0xb00c58		5	5	0xafe0bd
+classic	adventure-global-renderer	0xafdec2	0xb00c58		6	6	0xafe122
+classic	adventure-global-renderer	0xafdec2	0xb00c58		7	7	0xafe187
+classic	adventure-global-renderer	0xafdec2	0xb00c58		8	8	0xafe237
+classic	adventure-global-renderer	0xafdec2	0xb00c58		9	9	0xafe1ed
+classic	effective-movement-speed	0x132fd39	0x133062c		0	0	0x132fd3b
+classic	effective-movement-speed	0x132fd39	0x133062c		1	1	0x132fd40
+classic	effective-movement-speed	0x132fd39	0x133062c		2	2	0x132fd45
+classic	effective-movement-speed	0x132fd39	0x133062c		3	3	0x132fd4a
+classic	effective-movement-speed	0x132fd39	0x133062c		4	4	0x132fd56
+classic	effective-movement-speed	0x132fd39	0x133062c		5	5	0x132fd5b
+classic	effective-movement-speed	0x132fd39	0x133062c		6	6	0x132fd60
+classic	effective-movement-speed	0x132fd39	0x133062c		7	7	0x132fd65
+classic	effective-movement-speed	0x132fd39	0x133062c		8	8	0x132fd6d
+classic	effective-movement-speed	0x132fd39	0x133062c		9	9	0x132fd72
+classic	effective-movement-speed	0x132fd39	0x133062c		10	10	0x132fd77
+classic	effective-movement-speed	0x132fd39	0x133062c		11	11	0x132fd7c
+classic	effective-movement-speed	0x132fd39	0x133062c		12	12	0x132fd85

@@ -1,0 +1,7 @@
+edition	image	role	start_rva	code_end_rva	assembly_file
+reference	PE:6a70a6d9:02711000	adventure-global-renderer	0xaf1190	0xb0390e	pe-reference-adventure-global-renderer.asm
+reference	PE:6a70a6d9:02711000	swimming-gait-predicate	0x7e0610	0x7e069b	pe-reference-swimming-gait-predicate.asm
+reference	PE:6a70a6d9:02711000	effective-movement-speed	0x1334c10	0x13356ba	pe-reference-effective-movement-speed.asm
+classic	PE:6a70b91c:0270a000	adventure-global-renderer	0xaee1d0	0xb0094e	pe-classic-adventure-global-renderer.asm
+classic	PE:6a70b91c:0270a000	swimming-gait-predicate	0x7dde90	0x7ddf1b	pe-classic-swimming-gait-predicate.asm
+classic	PE:6a70b91c:0270a000	effective-movement-speed	0x132fb80	0x133062a	pe-classic-effective-movement-speed.asm
