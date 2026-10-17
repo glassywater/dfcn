@@ -97,6 +97,7 @@ static std::optional<NativeActivityDetailDocument> native_activity_detail_docume
     const std::unordered_set<uintptr_t> &visible_words);
 static uintptr_t native_history_profile_base();
 static bool refresh_native_journal_event_sources(const graphicst *graphics);
+static bool refresh_native_journal_artifact_sources(const graphicst *graphics);
 static bool native_history_copy_bytes(uintptr_t address, void *destination, size_t size);
 template<typename T>
 static bool native_history_copy(uintptr_t address, T &value);

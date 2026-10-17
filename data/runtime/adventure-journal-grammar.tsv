@@ -9,6 +9,26 @@ journal-calendar-date	{s}st in the year {s}	第{s2}年某月{s1}日	$digits,$dig
 journal-calendar-date	{s}nd in the year {s}	第{s2}年某月{s1}日	$digits,$digits	PE 0x773393 ja 0x7734ae; month outside0..11
 journal-calendar-date	{s}rd in the year {s}	第{s2}年某月{s1}日	$digits,$digits	PE 0x773393 ja 0x7734ae; month outside0..11
 journal-calendar-date	{s}th in the year {s}	第{s2}年某月{s1}日	$digits,$digits	PE 0x773393 ja 0x7734ae; month outside0..11
+# Artifact record body is a complete c75000 description followed by this
+# independent location paragraph. Steam d09e0 / Classic d0970 choose the
+# provenance prefix, location owner and optional date independently. The
+# shared site-rumor-date namespace owns b92640's year/season/before-time.
+journal-artifact	It is traditionally thought to be {s}.	传统记载：{s1}。	journal-artifact-state	PE Steam 0xd0c7d..0xd0cc4; year=-1 selects traditional provenance
+journal-artifact	It was last seen {s}.	上次目击记录：{s1}。	journal-artifact-state	PE Steam 0xd0cc6..0xd0d02; nonzero first-hand stamp selects seen
+journal-artifact	It was last rumored to be {s}.	最近传闻：{s1}。	journal-artifact-state	PE Steam 0xd0d04..0xd0d3f; dated location without first-hand stamp
+journal-artifact-state	{s} in {s}	于{s2}{s1}	journal-artifact-location,site-rumor-date	PE Steam 0xd0e08..0xd0e3e; date added only if year!=-1
+journal-artifact-state	{s}	{s1}	journal-artifact-location	PE Steam 0xd0e08..0xd0e3e; no date suffix
+journal-artifact-location	held by {s}	由{s1}持有	travel-actor	PE Steam 0xd0d48..0xd0d97; complete b92f10 contextual figure
+journal-artifact-location	held by	由未注明的持有者保管		PE Steam 0xd0d5b; empty native figure field leaves its own prefix
+# The native site/building path appends BUILDING + " in " + "in " +
+# b94a40 output. Retain its duplicate preposition in the source grammar;
+# silently repairing the native source would miss this reachable branch.
+journal-artifact-location	{s} in in {s}	位于{s2}的{s1}	$journal-artifact-building,$journal-artifact-place	PE Steam 0xd0f39..0xd0f93; building present, then duplicate native in
+journal-artifact-location	{s} in in	位于未注明地区的{s1}	$journal-artifact-building	PE Steam 0xd0f39..0xd0f93; region name formatter returns empty
+journal-artifact-location	in in {s}	位于{s1}的一处建筑内	$journal-artifact-place	PE Steam 0xd0f39..0xd0f93; empty building field with retained region
+journal-artifact-location	in in	位于未注明地区的一处建筑内		PE Steam 0xd0f39..0xd0f93; both dynamic fields empty
+journal-artifact-location	in {s}	位于{s1}	$journal-artifact-place	PE Steam 0xd0f6f/0xd11d7/0xd1257; complete region or finite underground label
+journal-artifact-location	in	位于未注明的地点		PE Steam 0xd1298..0xd12af; named or unsupported underground kind emits no label
 journal-event	You last heard this on the {s}.	你上次在{s1}听说了这件事。	journal-calendar-date	PE 0x1400d8c78..0x1400d90be; You last + heard this + on the + day/month + year + period
 journal-event	You last heard this on the {s} from {s}.	你上次在{s1}从{s2}那里听说了这件事。	journal-calendar-date,$person	PE 0x1400d8faf..0x1400d9030; optional from + 0x140a946e0 native figure name
 journal-event	You heard this on the {s}.	你在{s1}听说了这件事。	journal-calendar-date	PE 0x1400d8c89..0x1400d90be; unrepeated hearing uses You

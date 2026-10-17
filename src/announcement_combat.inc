@@ -422,6 +422,25 @@ std::optional<std::string> Overlay::translate_announcement_combat(
             return finish(translation_complete_with_native_nicknames(result, input)
                 ? std::move(result) : std::nullopt);
         }
+        if (scope == "$journal-artifact-place") {
+            // d09e0 appends the complete English location supplier, including
+            // unnamed region/underground fallbacks. Its first site branch
+            // actually calls b94a40 too; preserve that native geographic
+            // field instead of inferring a site from the stored ID alone.
+            auto result = translate_world_artifact_location(input);
+            return finish(translation_complete_with_native_nicknames(result, input)
+                ? std::move(result) : std::nullopt);
+        }
+        if (scope == "$journal-artifact-building") {
+            // b94090 selects either a complete generated English building
+            // name or one of its finite unnamed/type labels. Resolve those
+            // labels before entering the generated-name grammar.
+            auto result = translate_legends_term(input);
+            if (!translation_complete_with_native_nicknames(result, input))
+                result = translate_legends_name(input, false, false);
+            return finish(translation_complete_with_native_nicknames(result, input)
+                ? std::move(result) : std::nullopt);
+        }
         if (scope == "$resident-assigned-name") {
             // 135c28c..135c2e6 reuses the resident role's NativeString. A
             // null getter or has_name=false leaves that complete role in the

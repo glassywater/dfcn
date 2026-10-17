@@ -1,0 +1,30 @@
+source_kind	steam_source_rva	condition	native_production	dynamic_fields_or_graph
+title	0xbeb3b	artifact.name.has_name	English generated name	artifact+8 via a946e0; full card title+8
+title	0xbeb91	!artifact.name.has_name	Unknown	literal; full card title+8
+title-display	0xd0a15	clipped_title.size==0	copy full title and resize to at most 58 source bytes	card+8 -> card+48
+description	0xd0ab7	description_rows.empty	complete_item_description(item,true,true,false,0)	../item-description-sources.tsv; artifact.item+90; full document
+description-layout	0xd0b31	description_rows.empty	wrap complete document at 58 source bytes	8e7440; card+68 retains all rows
+location-none	0xd0c3e	holder==site==region==layer==-1		no appended separator or location paragraph
+location-prefix	0xd0c7d	year==-1	It is traditionally thought to be 	all nonempty location states
+location-prefix	0xd0ccb	year!=-1 && firsthand_record!=null	It was last seen 	all nonempty location states
+location-prefix	0xd0d04	year!=-1 && firsthand_record==null	It was last rumored to be 	all nonempty location states
+location	0xd0d48	holder!=-1	held by {historical_figure}	b92f10(context=default,word_mode1,suffix_mode0); holder+90
+location	0xd0f39	holder==-1 && site!=-1 && building!=-1	{building} in in {surface_region}	b94090(site,building,true,0); b94a40(site,0); exact original double-in shape
+location	0xd0f6f	holder==-1 && site!=-1 && building==-1	in {surface_region}	b94a40(site,0); exact original helper and field
+location	0xd11d7	holder==site==-1 && region!=-1	in {surface_region}	b94a40(region,0)
+location	0xd1257	holder==site==region==-1 && layer!=-1	in {underground_label}	layer record via e1560
+underground-label	0xd1293	layer record absent	an unknown underground region	literal
+underground-label	0xd1298	layer.name.has_name		exact original empty branch
+underground-label	0xd12a2	!layer.name.has_name && type==0	the depths of the world	literal
+underground-label	0xd12a2	!layer.name.has_name && type==1	the magma sea	literal
+underground-label	0xd12a2	!layer.name.has_name && type==2	the Underworld	literal
+underground-label	0xd12a2	!layer.name.has_name && type outside 0..2		exact original empty branch
+location-date	0xd0e08	year!=-1	 in {calendar_date}	b92640(year+9c,tick+a0)
+location-end	0xd0e3e	location paragraph exists	.	one final period
+location-layout	0xd0e51	location paragraph exists	{blank separator}\n{wrap(full location,58)}	appended to existing card+68 native rows
+calendar-date	0xb92640	year<1	a time before time	literal
+calendar-date	0xb9269d	year>=1 && tick==-1	{year}	decimal year
+calendar-date	0xb926a7	year>=1 && tick!=-1	the {phase}{season} of {year}	phase early / mid / late; season spring/summer/autumn/winter or empty
+shared-body-graph	0xc75000	all item variants passed by this caller	{all item description productions}	../item-description-sources.tsv; all virtual material/type/improvement/reference owners and linked art/history/memorial/raw/instrument graphs
+shared-writing-style	0xcc5520	writing-content stylistic attributes	{all 18 native style selector values and value-dependent variants}	pe-*-writing-style-selector.c; pe-switches.tsv
+shared-adventure-literacy	0xc77dfd	game_mode1 && active adventurer	{read/unread/cannot-read branches}	pe-*-complete-item-description.c; not excluded in adventure journal

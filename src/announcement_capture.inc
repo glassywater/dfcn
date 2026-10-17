@@ -66,6 +66,16 @@ static std::optional<NativeAdventureQuestTitle> native_adventure_quest_original_
     uintptr_t address, std::string_view displayed, uintptr_t caller);
 enum class NativeJournalAgreementField { None, Literal, Title, Type, Person, Actor, Group, Site, Artifact, Date, Counter };
 static NativeJournalAgreementField native_journal_agreement_field(uintptr_t caller);
+enum class NativeJournalArtifactField { None, Title, Counter, Body };
+static NativeJournalArtifactField native_journal_artifact_field(uintptr_t caller);
+struct NativeJournalArtifactCardSource {
+    std::string title;
+    std::string displayed;
+    std::vector<std::string> rows;
+    int first_line = 0;
+};
+static std::optional<NativeJournalArtifactCardSource> native_journal_artifact_card_source(
+    size_t one_based_index, size_t total);
 static bool native_announcement_history_index(std::vector<uintptr_t> &records,
     int32_t &next_id, uintptr_t &world);
 static bool native_announcement_history_row(uintptr_t record, NativeAnnouncementHistoryRow &row);

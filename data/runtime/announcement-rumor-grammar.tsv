@@ -316,6 +316,11 @@ site-rumor-date	the late autumn of {s}	第{s1}年晚秋	$digits	0x140b92640
 site-rumor-date	the early winter of {s}	第{s1}年初冬	$digits	0x140b92640
 site-rumor-date	the midwinter of {s}	第{s1}年仲冬	$digits	0x140b92640
 site-rumor-date	the late winter of {s}	第{s1}年晚冬	$digits	0x140b92640
+# The signed tick quotient has no modulo-four reduction. An unsupported
+# season appends no season word, while its early/mid/late and year remain.
+site-rumor-date	the early of {s}	第{s1}年某季之初	$digits	PE 0xb926d6..0xb9275e; season quotient outside 0..3, early remainder
+site-rumor-date	the mid of {s}	第{s1}年某季之中	$digits	PE 0xb926d6..0xb9275e; season quotient outside 0..3, middle remainder
+site-rumor-date	the late of {s}	第{s1}年某季之末	$digits	PE 0xb926d6..0xb9275e; season quotient outside 0..3, late remainder
 # Type 0: either the historical figure or the entity owning the army.
 site-rumor-event	the army of {s} marched on {s}.	{s1}的军队向{s2}进军了。	site-rumor-person,$travel-site	0x1401da280..0x1401dbcec; rumor type 0, figure owner
 site-rumor-event	the army of {s} marched on {s}.	{s1}的军队向{s2}进军了。	$name,$travel-site	0x1401da280..0x1401dbcec; rumor type 0, entity owner

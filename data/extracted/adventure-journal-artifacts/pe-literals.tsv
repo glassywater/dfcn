@@ -1,0 +1,1575 @@
+edition	role	instruction_rva	operand	kind	text
+steam	journal-renderer-and-card-fields	0xc2999	0x1415ec1e8	cstring	Agreements
+steam	journal-renderer-and-card-fields	0xc29cb	0x1415ec1d0	cstring	Events
+steam	journal-renderer-and-card-fields	0xc29fd	0x1415ec1d8	cstring	People
+steam	journal-renderer-and-card-fields	0xc2a2f	0x1415ec20c	cstring	Sites
+steam	journal-renderer-and-card-fields	0xc2a61	0x1415ec214	cstring	Groups
+steam	journal-renderer-and-card-fields	0xc2a93	0x1415ec1f8	cstring	Regions
+steam	journal-renderer-and-card-fields	0xc2ac5	0x1415ec200	cstring	Bestiary
+steam	journal-renderer-and-card-fields	0xc2af4	0x1415ec238	cstring	Artifacts
+steam	journal-renderer-and-card-fields	0xc2b23	0x1415ec248	cstring	Intrigue
+steam	journal-renderer-and-card-fields	0xc2e66	0x1415ec288	cstring	Plots
+steam	journal-renderer-and-card-fields	0xc2e94	0x1415ec228	cstring	Organizations
+steam	journal-renderer-and-card-fields	0xc2ec2	0x1415ec21c	cstring	Actors
+steam	journal-renderer-and-card-fields	0xc320e	0x1415eb514	cstring	/
+steam	journal-renderer-and-card-fields	0xc34d8	0x1415ec270	cstring	Centered on first heard
+steam	journal-renderer-and-card-fields	0xc3546	0x1415ec258	cstring	Centered on last heard
+steam	journal-renderer-and-card-fields	0xc35b1	0x1415ec290	cstring	Centered on location
+steam	journal-renderer-and-card-fields	0xc3808	0x1415ec2e8	cstring	 Showing type,date
+steam	journal-renderer-and-card-fields	0xc3832	0x1415ec2d0	cstring	 Showing pin,last
+steam	journal-renderer-and-card-fields	0xc39fb	0x1415eb514	cstring	/
+steam	journal-renderer-and-card-fields	0xc3b8b	0x1415ec2a8	cstring	Overthrow Agreement
+steam	journal-renderer-and-card-fields	0xc3b97	0x1415ec2c0	cstring	Guide Agreement
+steam	journal-renderer-and-card-fields	0xc3ba3	0x1415ec328	cstring	Rescue Agreement
+steam	journal-renderer-and-card-fields	0xc3baf	0x1415ec340	cstring	Aid Rescue Agreement
+steam	journal-renderer-and-card-fields	0xc3bbb	0x1415ec300	cstring	Adventuring Agreement
+steam	journal-renderer-and-card-fields	0xc3bc7	0x1415ec318	cstring	Bound Servitude
+steam	journal-renderer-and-card-fields	0xc3bd3	0x1415ec388	cstring	Entertainment Agreement
+steam	journal-renderer-and-card-fields	0xc3bdf	0x1415ec3a0	cstring	World Joining Agreement
+steam	journal-renderer-and-card-fields	0xc3beb	0x1415ec358	cstring	Residency Agreement
+steam	journal-renderer-and-card-fields	0xc3bf7	0x1415ec370	cstring	Grant of Citizenship
+steam	journal-renderer-and-card-fields	0xc3c03	0x1415ec3e0	cstring	Parley Arrangement
+steam	journal-renderer-and-card-fields	0xc3c0f	0x1415ec3f8	cstring	Corruption
+steam	journal-renderer-and-card-fields	0xc3c1b	0x1415ec3b8	cstring	Artifact Theft
+steam	journal-renderer-and-card-fields	0xc3c27	0x1415ec3c8	cstring	Promise of Position
+steam	journal-renderer-and-card-fields	0xc3c33	0x1415ec430	cstring	Assassination Plot
+steam	journal-renderer-and-card-fields	0xc3c3f	0x1415ec448	cstring	Abduction Plot
+steam	journal-renderer-and-card-fields	0xc3c48	0x1415ec408	cstring	Sabotage Plot
+steam	journal-renderer-and-card-fields	0xc3c51	0x1415ec418	cstring	Infiltration Plot
+steam	journal-renderer-and-card-fields	0xc3c5a	0x1415ec498	cstring	Framing Plot
+steam	journal-renderer-and-card-fields	0xc3c63	0x1415ec4a8	cstring	War Starting Plot
+steam	journal-renderer-and-card-fields	0xc3c90	0x1415ec4e8	cstring	Foiled Embezzlement Conspiracy
+steam	journal-renderer-and-card-fields	0xc3c99	0x1415ec478	cstring	Foiled Corruption Conspiracy
+steam	journal-renderer-and-card-fields	0xc3ca2	0x1415ec458	cstring	Foiled Bribery Conspiracy
+steam	journal-renderer-and-card-fields	0xc3cab	0x1415ec508	cstring	Build Structure
+steam	journal-renderer-and-card-fields	0xc3cb4	0x1415ec4c0	cstring	Offer Service
+steam	journal-renderer-and-card-fields	0xc3cbd	0x1415ec4d0	cstring	Retrieve Artifact
+steam	journal-renderer-and-card-fields	0xc3e17	0x1415e8ca0	cstring	You
+steam	journal-renderer-and-card-fields	0xc3ec4	0x1415ec6a0	cstring	asked that
+steam	journal-renderer-and-card-fields	0xc3f25	0x1415ec550	cstring	you
+steam	journal-renderer-and-card-fields	0xc3fcc	0x1415ec6b0	cstring	retrieve
+steam	journal-renderer-and-card-fields	0xc40c2	0x1415ec70c	cstring	from
+steam	journal-renderer-and-card-fields	0xc41be	0x1415ec714	cstring	for
+steam	journal-renderer-and-card-fields	0xc4311	0x1415ec6f8	cstring	Drive members of
+steam	journal-renderer-and-card-fields	0xc43d4	0x1415ec740	cstring	out of
+steam	journal-renderer-and-card-fields	0xc456a	0x1415e8ca0	cstring	You
+steam	journal-renderer-and-card-fields	0xc4617	0x1415ec6c0	cstring	requested that
+steam	journal-renderer-and-card-fields	0xc4678	0x1415ec550	cstring	you
+steam	journal-renderer-and-card-fields	0xc471b	0x1415ec6d0	cstring	make an offer of service to
+steam	journal-renderer-and-card-fields	0xc490c	0x1415e8ca0	cstring	You
+steam	journal-renderer-and-card-fields	0xc49b9	0x1415ec540	cstring	agreed to join
+steam	journal-renderer-and-card-fields	0xc4a1a	0x1415ec550	cstring	you
+steam	journal-renderer-and-card-fields	0xc4abf	0x1415ec518	cstring	in insurrection against
+steam	journal-renderer-and-card-fields	0xc4b97	0x1415ec530	cstring	thereby freeing
+steam	journal-renderer-and-card-fields	0xc4c88	0x1415e8ca0	cstring	You
+steam	journal-renderer-and-card-fields	0xc4d35	0x1415ec598	cstring	agreed to guide
+steam	journal-renderer-and-card-fields	0xc4d96	0x1415ec550	cstring	you
+steam	journal-renderer-and-card-fields	0xc4e3b	0x1415ec5a8	cstring	to
+steam	journal-renderer-and-card-fields	0xc5043	0x1415ec558	cstring	somebody unknown
+steam	journal-renderer-and-card-fields	0xc50b8	0x1415e8ca0	cstring	You
+steam	journal-renderer-and-card-fields	0xc5165	0x1415ec540	cstring	agreed to join
+steam	journal-renderer-and-card-fields	0xc51c6	0x1415ec550	cstring	you
+steam	journal-renderer-and-card-fields	0xc5267	0x1415ec570	cstring	in order to be brought safely away from
+steam	journal-renderer-and-card-fields	0xc535c	0x1415e8ca0	cstring	You
+steam	journal-renderer-and-card-fields	0xc5409	0x1415ec540	cstring	agreed to join
+steam	journal-renderer-and-card-fields	0xc546a	0x1415ec550	cstring	you
+steam	journal-renderer-and-card-fields	0xc550b	0x1415ec5e8	cstring	in order to rescue
+steam	journal-renderer-and-card-fields	0xc5686	0x1415ec558	cstring	somebody unknown
+steam	journal-renderer-and-card-fields	0xc56fb	0x1415e8ca0	cstring	You
+steam	journal-renderer-and-card-fields	0xc57a8	0x1415ec600	cstring	agreed to adventure with
+steam	journal-renderer-and-card-fields	0xc5809	0x1415ec550	cstring	you
+steam	journal-renderer-and-card-fields	0xc58aa	0x1415ec5b0	cstring	wherever the journey might lead
+steam	journal-renderer-and-card-fields	0xc5919	0x1415e8ca0	cstring	You
+steam	journal-renderer-and-card-fields	0xc59c6	0x1415ec5d0	cstring	was bound to serve
+steam	journal-renderer-and-card-fields	0xc5a27	0x1415ec550	cstring	you
+steam	journal-renderer-and-card-fields	0xc5ac8	0x1415ec650	cstring	by invocation of True Name
+steam	journal-renderer-and-card-fields	0xc5b37	0x1415e8ca0	cstring	You
+steam	journal-renderer-and-card-fields	0xc5be4	0x1415ec670	cstring	agreed to entertain people with
+steam	journal-renderer-and-card-fields	0xc5c45	0x1415ec550	cstring	you
+steam	journal-renderer-and-card-fields	0xc5ce6	0x1415ec620	cstring	throughout the world
+steam	journal-renderer-and-card-fields	0xc5d6d	0x1415ec638	cstring	Agreement concluded
+steam	journal-renderer-and-card-fields	0xc5e40	0x1415ec698	cstring	st
+steam	journal-renderer-and-card-fields	0xc5e49	0x1415ec69c	cstring	nd
+steam	journal-renderer-and-card-fields	0xc5e52	0x1415ec690	cstring	rd
+steam	journal-renderer-and-card-fields	0xc5e5b	0x1415ec694	cstring	th
+steam	journal-renderer-and-card-fields	0xc5e6b	0x1415e873c	cstring	 
+steam	journal-renderer-and-card-fields	0xc5e9d	0x1415e90d8	cstring	, 
+steam	journal-renderer-and-card-fields	0xc5f25	0x1415ec6ec	cstring	Kill
+steam	journal-renderer-and-card-fields	0xc6006	0x1415ec718	cstring	Cause trouble for
+steam	journal-renderer-and-card-fields	0xc60ca	0x1415ec748	cstring	Drive
+steam	journal-renderer-and-card-fields	0xc618d	0x1415ec70c	cstring	from
+steam	journal-renderer-and-card-fields	0xc6253	0x1415ec730	cstring	An order from
+steam	journal-renderer-and-card-fields	0xc633d	0x1415ec770	cstring	Finish reporting in
+steam	journal-renderer-and-card-fields	0xc63ae	0x1415ec788	cstring	Complete: report back
+steam	journal-renderer-and-card-fields	0xc63fb	0x1415ec750	cstring	Not yet completed
+steam	journal-renderer-and-card-fields	0xc6574	0x1415e8ca0	cstring	You
+steam	journal-renderer-and-card-fields	0xc6621	0x1415ec6a0	cstring	asked that
+steam	journal-renderer-and-card-fields	0xc6682	0x1415ec550	cstring	you
+steam	journal-renderer-and-card-fields	0xc6725	0x1415ec7c8	cstring	retrieve 
+steam	journal-renderer-and-card-fields	0xc68bf	0x1415e8ca0	cstring	You
+steam	journal-renderer-and-card-fields	0xc696c	0x1415ec6c0	cstring	requested that
+steam	journal-renderer-and-card-fields	0xc69cd	0x1415ec550	cstring	you
+steam	journal-renderer-and-card-fields	0xc6a70	0x1415ec764	cstring	serve 
+steam	journal-renderer-and-card-fields	0xc6b55	0x1415ec638	cstring	Agreement concluded
+steam	journal-renderer-and-card-fields	0xc6bf6	0x1415ec730	cstring	An order from
+steam	journal-renderer-and-card-fields	0xc6cdd	0x1415ec770	cstring	Finish reporting in
+steam	journal-renderer-and-card-fields	0xc6d4b	0x1415ec788	cstring	Complete: report back
+steam	journal-renderer-and-card-fields	0xc6d95	0x1415ec750	cstring	Not yet completed
+steam	journal-renderer-and-card-fields	0xc6f67	0x1415ec7d8	cstring	Centered on commander
+steam	journal-renderer-and-card-fields	0xc6fd1	0x1415ec7a0	cstring	Centered on target
+steam	journal-renderer-and-card-fields	0xc7251	0x1415ec824	cstring	Org: 
+steam	journal-renderer-and-card-fields	0xc72db	0x1415eb514	cstring	/
+steam	journal-renderer-and-card-fields	0xc7542	0x1415eb514	cstring	/
+steam	journal-renderer-and-card-fields	0xc7f39	0x1415ec7b8	cstring	One member
+steam	journal-renderer-and-card-fields	0xc7f85	0x1415ec818	cstring	 members
+steam	journal-renderer-and-card-fields	0xc8275	0x1415eb514	cstring	/
+steam	journal-renderer-and-card-fields	0xc8660	0x1415eb514	cstring	/
+steam	journal-renderer-and-card-fields	0xc8a50	0x1415eb514	cstring	/
+steam	journal-renderer-and-card-fields	0xc8d9c	0x1415ec7f0	cstring	 Showing important
+steam	journal-renderer-and-card-fields	0xc8dd7	0x1415ec808	cstring	 Showing all
+steam	journal-renderer-and-card-fields	0xc8fa2	0x1415eb514	cstring	/
+steam	journal-renderer-and-card-fields	0xc92ec	0x1415ec7f0	cstring	 Showing important
+steam	journal-renderer-and-card-fields	0xc9327	0x1415ec808	cstring	 Showing all
+steam	journal-renderer-and-card-fields	0xc94e0	0x1415eb514	cstring	/
+steam	journal-renderer-and-card-fields	0xc982c	0x1415ec7f0	cstring	 Showing important
+steam	journal-renderer-and-card-fields	0xc9867	0x1415ec808	cstring	 Showing all
+steam	journal-renderer-and-card-fields	0xc9a20	0x1415eb514	cstring	/
+steam	journal-renderer-and-card-fields	0xc9e10	0x1415eb514	cstring	/
+steam	journal-renderer-and-card-fields	0xca12c	0x1415ec850	cstring	: Toggle line
+steam	journal-renderer-and-card-fields	0xca286	0x1415ec860	cstring	...
+steam	journal-renderer-and-card-fields	0xca2ca	0x1415ec82c	cstring	_
+steam	journal-record-initializer-and-artifact-full-title	0xbeb97	0x1415ec1e0	cstring	Unknown
+steam	journal-record-initializer-and-artifact-full-title	0xbf2a6	0x1415ec1e0	cstring	Unknown
+steam	journal-record-initializer-and-artifact-full-title	0xbf458	0x1415ec1e0	cstring	Unknown
+steam	journal-record-initializer-and-artifact-full-title	0xbf693	0x1415ec1e0	cstring	Unknown
+steam	journal-record-initializer-and-artifact-full-title	0xbfc90	0x1415e90d8	cstring	, 
+steam	journal-record-initializer-and-artifact-full-title	0xbfcb9	0x1415e90d8	cstring	, 
+steam	journal-record-initializer-and-artifact-full-title	0xbfd2f	0x1415ec1e0	cstring	Unknown
+steam	journal-artifact-description-and-location	0xd0ca0	0x1415ecf78/16	vector	It is traditiona
+steam	journal-artifact-description-and-location	0xd0caa	0x1415ecf88/16	vector	lly thought to b
+steam	journal-artifact-description-and-location	0xd0cb5	0x1415ecf98	cstring	e 
+steam	journal-artifact-description-and-location	0xd0cea	0x1415ecf28/16	vector	It was last seen
+steam	journal-artifact-description-and-location	0xd0cf4	0x1415ecf38	cstring	 
+steam	journal-artifact-description-and-location	0xd0d19	0x1415ecf40/16	vector	It was last rumo
+steam	journal-artifact-description-and-location	0xd0d23	0x1415ecf50	cstring	red to be 
+steam	journal-artifact-description-and-location	0xd0d30	0x1415ecf58	cstring	e 
+steam	journal-artifact-description-and-location	0xd0d5b	0x1415ecfa8	cstring	held by 
+steam	journal-artifact-description-and-location	0xd0e17	0x1415ecfb4	cstring	 in 
+steam	journal-artifact-description-and-location	0xd0e41	0x1415e85b4	cstring	.
+steam	journal-artifact-description-and-location	0xd0f5f	0x1415ecfb4	cstring	 in 
+steam	journal-artifact-description-and-location	0xd0f75	0x1415ecf9c	cstring	in 
+steam	journal-artifact-description-and-location	0xd11e6	0x1415ecf9c	cstring	in 
+steam	journal-artifact-description-and-location	0xd126a	0x1415ecf9c	cstring	in 
+steam	journal-artifact-description-and-location	0xd12bb	0x1416df6b8	cstring	the Underworld
+steam	journal-artifact-description-and-location	0xd12d6	0x1416df6c8	cstring	the magma sea
+steam	journal-artifact-description-and-location	0xd12f1	0x1416df690	cstring	the depths of the world
+steam	journal-artifact-description-and-location	0xd130c	0x1416df648	cstring	an unknown underground region
+steam	complete-item-description	0xc75053	0x141684e58	cstring	[P]
+steam	complete-item-description	0xc752f6	0x1416ee300	cstring	This is
+steam	complete-item-description	0xc752fd	0x1416ee308	cstring	These are
+steam	complete-item-description	0xc75318	0x1416492ac	cstring	 a
+steam	complete-item-description	0xc7534d	0x141649304	cstring	n
+steam	complete-item-description	0xc75359	0x1416ee2e8	cstring	This is a stack of
+steam	complete-item-description	0xc75377	0x1415e873c	cstring	 
+steam	complete-item-description	0xc753b1	0x1416157c0	cstring	These are 
+steam	complete-item-description	0xc753d7	0x1416ee2d8	cstring	 bundles of
+steam	complete-item-description	0xc753e0	0x1416ee2c0	cstring	This is a bundle of
+steam	complete-item-description	0xc7545a	0x1416ee250	cstring	 masterfully prepared
+steam	complete-item-description	0xc75463	0x1416ee268	cstring	 exceptional prepared
+steam	complete-item-description	0xc7546c	0x1416ee280	cstring	 superiorly prepared
+steam	complete-item-description	0xc75475	0x1416ee298	cstring	 finely-prepared
+steam	complete-item-description	0xc7547e	0x1416ee2b0	cstring	 well-prepared
+steam	complete-item-description	0xc754a5	0x1416ee218	cstring	 masterful
+steam	complete-item-description	0xc754ae	0x1416ee228	cstring	 exceptional
+steam	complete-item-description	0xc754b7	0x1416ee238	cstring	 superior quality
+steam	complete-item-description	0xc754c0	0x14166d810	cstring	 finely-crafted
+steam	complete-item-description	0xc754c9	0x14166d800	cstring	 well-crafted
+steam	complete-item-description	0xc754d8	0x1415e873c	cstring	 
+steam	complete-item-description	0xc75543	0x1416d8e28	cstring	 created by 
+steam	complete-item-description	0xc7555e	0x1415fdb08	cstring	[LPAGE:HF:
+steam	complete-item-description	0xc7557b	0x1415fd690	cstring	]
+steam	complete-item-description	0xc755b9	0x1415fda88	cstring	[/LPAGE]
+steam	complete-item-description	0xc755cd	0x1415fd968	cstring	.  
+steam	complete-item-description	0xc755f0	0x1416ee1ec	cstring	All 
+steam	complete-item-description	0xc7565e	0x1416ee1f8	cstring	 created by an unknown artisan
+steam	complete-item-description	0xc75676	0x14162a8a8	cstring	craftsman
+steam	complete-item-description	0xc75692	0x1416ee1c8	cstring	ship is of the highest quality.  
+steam	complete-item-description	0xc756f9	0x1416ee1b0	cstring	It is sized for 
+steam	complete-item-description	0xc75730	0x1415fd968	cstring	.  
+steam	complete-item-description	0xc75822	0x14163fca4	cstring	[R]
+steam	complete-item-description	0xc7583d	0x14163fca4	cstring	[R]
+steam	complete-item-description	0xc75879	0x1416ee198	cstring	The ingredients are 
+steam	complete-item-description	0xc758a5	0x1416ee150	cstring	minced 
+steam	complete-item-description	0xc758de	0x1416ee158	cstring	masterfully 
+steam	complete-item-description	0xc758e7	0x1416ee168	cstring	exceptionally 
+steam	complete-item-description	0xc758f0	0x1416ee178	cstring	superiorly 
+steam	complete-item-description	0xc758f9	0x1416ee188	cstring	finely 
+steam	complete-item-description	0xc75902	0x1416ee190	cstring	well-
+steam	complete-item-description	0xc7591f	0x1416ee148	cstring	cooked 
+steam	complete-item-description	0xc759da	0x1415e90d8	cstring	, 
+steam	complete-item-description	0xc759e9	0x1415e9110	cstring	 and 
+steam	complete-item-description	0xc75a00	0x1415fd968	cstring	.  
+steam	complete-item-description	0xc75a13	0x1416ee150	cstring	minced 
+steam	complete-item-description	0xc75ab8	0x14163fca4	cstring	[R]
+steam	complete-item-description	0xc75ac4	0x1415e9730	cstring	The pages are blank.
+steam	complete-item-description	0xc75cf4	0x1416ee140	cstring	It is 
+steam	complete-item-description	0xc75d1f	0x1416ee100	cstring	glazed with
+steam	complete-item-description	0xc75d28	0x1416ee110	cstring	decorated with
+steam	complete-item-description	0xc75d31	0x1416ee120	cstring	studded with
+steam	complete-item-description	0xc75d3a	0x1416ee130	cstring	encrusted with
+steam	complete-item-description	0xc75d49	0x1415e873c	cstring	 
+steam	complete-item-description	0xc76020	0x1416ee090	cstring	masterfully prepared 
+steam	complete-item-description	0xc76029	0x1416ee0a8	cstring	exceptionally prepared 
+steam	complete-item-description	0xc76032	0x1416ee0c0	cstring	superior quality 
+steam	complete-item-description	0xc7603b	0x1416ee0d8	cstring	finely-prepared 
+steam	complete-item-description	0xc76044	0x1416ee0f0	cstring	well-prepared 
+steam	complete-item-description	0xc76066	0x1416ee040	cstring	masterfully worked 
+steam	complete-item-description	0xc7606f	0x1416ee058	cstring	exceptionally worked 
+steam	complete-item-description	0xc76078	0x1416ee070	cstring	finely-crafted 
+steam	complete-item-description	0xc76081	0x1416ee080	cstring	well-crafted 
+steam	complete-item-description	0xc761a1	0x1415eda08	cstring	 by 
+steam	complete-item-description	0xc761b8	0x1415fdb08	cstring	[LPAGE:HF:
+steam	complete-item-description	0xc761d5	0x1415fd690	cstring	]
+steam	complete-item-description	0xc76213	0x1415fda88	cstring	[/LPAGE]
+steam	complete-item-description	0xc7621f	0x1416ee028	cstring	 by an unknown artist
+steam	complete-item-description	0xc76243	0x1415e90d8	cstring	, 
+steam	complete-item-description	0xc76251	0x1415e9110	cstring	 and 
+steam	complete-item-description	0xc7629c	0x1415e90d8	cstring	, 
+steam	complete-item-description	0xc762a7	0x1415e9110	cstring	 and 
+steam	complete-item-description	0xc762b0	0x1415fd968	cstring	.  
+steam	complete-item-description	0xc762ef	0x1416ee140	cstring	It is 
+steam	complete-item-description	0xc762fe	0x1416ee008	cstring	encircled with bands of 
+steam	complete-item-description	0xc76390	0x1416ee040	cstring	masterfully worked 
+steam	complete-item-description	0xc76399	0x1416ee058	cstring	exceptionally worked 
+steam	complete-item-description	0xc763a2	0x1416ee0c0	cstring	superior quality 
+steam	complete-item-description	0xc763ab	0x1416ee070	cstring	finely-crafted 
+steam	complete-item-description	0xc763b4	0x1416ee080	cstring	well-crafted 
+steam	complete-item-description	0xc764cb	0x1415eda08	cstring	 by 
+steam	complete-item-description	0xc764e5	0x1415fdb08	cstring	[LPAGE:HF:
+steam	complete-item-description	0xc76502	0x1415fd690	cstring	]
+steam	complete-item-description	0xc76540	0x1415fda88	cstring	[/LPAGE]
+steam	complete-item-description	0xc7655f	0x1415e90d8	cstring	, 
+steam	complete-item-description	0xc7656e	0x1415e9110	cstring	 and 
+steam	complete-item-description	0xc765a8	0x1415e90d8	cstring	, 
+steam	complete-item-description	0xc765b3	0x1415e9110	cstring	 and 
+steam	complete-item-description	0xc765bc	0x1415fd968	cstring	.  
+steam	complete-item-description	0xc768fd	0x1415ed9bc	cstring	The 
+steam	complete-item-description	0xc769c7	0x1416edff8	cstring	 are made from 
+steam	complete-item-description	0xc769d0	0x1416edfe8	cstring	 is made from 
+steam	complete-item-description	0xc76a36	0x1416ee040	cstring	masterfully worked 
+steam	complete-item-description	0xc76a3f	0x1416ee058	cstring	exceptionally worked 
+steam	complete-item-description	0xc76a48	0x1416ee0c0	cstring	superior quality 
+steam	complete-item-description	0xc76a51	0x1416ee070	cstring	finely-crafted 
+steam	complete-item-description	0xc76a5a	0x1416ee080	cstring	well-crafted 
+steam	complete-item-description	0xc76b0a	0x1415eda08	cstring	 by 
+steam	complete-item-description	0xc76b24	0x1415fdb08	cstring	[LPAGE:HF:
+steam	complete-item-description	0xc76b41	0x1415fd690	cstring	]
+steam	complete-item-description	0xc76b7f	0x1415fda88	cstring	[/LPAGE]
+steam	complete-item-description	0xc76b90	0x1415fd968	cstring	.  
+steam	complete-item-description	0xc76c26	0x1416edf88	cstring	The chain is 
+steam	complete-item-description	0xc76c2f	0x1416edf98	cstring	The rope is 
+steam	complete-item-description	0xc76c38	0x1416edfa8	cstring	The rollers are made from 
+steam	complete-item-description	0xc76c41	0x1416edfc8	cstring	The handle is made from 
+steam	complete-item-description	0xc76c85	0x1416ee040	cstring	masterfully worked 
+steam	complete-item-description	0xc76c8e	0x1416ee058	cstring	exceptionally worked 
+steam	complete-item-description	0xc76c97	0x1416ee0c0	cstring	superior quality 
+steam	complete-item-description	0xc76ca0	0x1416ee070	cstring	finely-crafted 
+steam	complete-item-description	0xc76ca9	0x1416ee080	cstring	well-crafted 
+steam	complete-item-description	0xc76d5b	0x1415eda08	cstring	 by 
+steam	complete-item-description	0xc76d75	0x1415fdb08	cstring	[LPAGE:HF:
+steam	complete-item-description	0xc76d92	0x1415fd690	cstring	]
+steam	complete-item-description	0xc76dd0	0x1415fda88	cstring	[/LPAGE]
+steam	complete-item-description	0xc76ddf	0x1415fd968	cstring	.  
+steam	complete-item-description	0xc76e50	0x1416ee850	cstring	This object 
+steam	complete-item-description	0xc76e65	0x1416ee828	cstring	is adorned with hanging rings of 
+steam	complete-item-description	0xc76ef2	0x1416ee040	cstring	masterfully worked 
+steam	complete-item-description	0xc76efb	0x1416ee058	cstring	exceptionally worked 
+steam	complete-item-description	0xc76f04	0x1416ee0c0	cstring	superior quality 
+steam	complete-item-description	0xc76f0d	0x1416ee070	cstring	finely-crafted 
+steam	complete-item-description	0xc76f16	0x1416ee080	cstring	well-crafted 
+steam	complete-item-description	0xc76fc7	0x1415eda08	cstring	 by 
+steam	complete-item-description	0xc76fe1	0x1415fdb08	cstring	[LPAGE:HF:
+steam	complete-item-description	0xc76ffe	0x1415fd690	cstring	]
+steam	complete-item-description	0xc7703c	0x1415fda88	cstring	[/LPAGE]
+steam	complete-item-description	0xc77056	0x1415e90d8	cstring	, 
+steam	complete-item-description	0xc77065	0x1415e9110	cstring	 and 
+steam	complete-item-description	0xc770a9	0x1415e90d8	cstring	, 
+steam	complete-item-description	0xc770b5	0x1415e9110	cstring	 and 
+steam	complete-item-description	0xc770be	0x1415fd968	cstring	.  
+steam	complete-item-description	0xc770db	0x1416ee850	cstring	This object 
+steam	complete-item-description	0xc770ea	0x1416ee810	cstring	menaces with spikes of 
+steam	complete-item-description	0xc77173	0x1416ee040	cstring	masterfully worked 
+steam	complete-item-description	0xc7717c	0x1416ee058	cstring	exceptionally worked 
+steam	complete-item-description	0xc77185	0x1416ee0c0	cstring	superior quality 
+steam	complete-item-description	0xc7718e	0x1416ee070	cstring	finely-crafted 
+steam	complete-item-description	0xc77197	0x1416ee080	cstring	well-crafted 
+steam	complete-item-description	0xc7724c	0x1415eda08	cstring	 by 
+steam	complete-item-description	0xc77263	0x1415fdb08	cstring	[LPAGE:HF:
+steam	complete-item-description	0xc77280	0x1415fd690	cstring	]
+steam	complete-item-description	0xc772be	0x1415fda88	cstring	[/LPAGE]
+steam	complete-item-description	0xc772dd	0x1415e90d8	cstring	, 
+steam	complete-item-description	0xc772ec	0x1415e9110	cstring	 and 
+steam	complete-item-description	0xc7731f	0x1415e90d8	cstring	, 
+steam	complete-item-description	0xc7732b	0x1415e9110	cstring	 and 
+steam	complete-item-description	0xc77334	0x1415fd968	cstring	.  
+steam	complete-item-description	0xc77455	0x1416ee7f8	cstring	It is made from 
+steam	complete-item-description	0xc774b8	0x1415fd968	cstring	.  
+steam	complete-item-description	0xc774dc	0x14163fca4	cstring	[R]
+steam	complete-item-description	0xc774f7	0x14163fca4	cstring	[R]
+steam	complete-item-description	0xc776d7	0x1416ee7f8	cstring	It is made from 
+steam	complete-item-description	0xc7771d	0x1415fd968	cstring	.  
+steam	complete-item-description	0xc7780a	0x14163fca4	cstring	[R]
+steam	complete-item-description	0xc77825	0x14163fca4	cstring	[R]
+steam	complete-item-description	0xc77a48	0x1416ee7d8	cstring	On the faces of the object are 
+steam	complete-item-description	0xc77a96	0x1416ee758	cstring	numbers
+steam	complete-item-description	0xc77ab9	0x1416ee760	cstring	, ranging from 
+steam	complete-item-description	0xc77aec	0x1415ed5b4	cstring	 to 
+steam	complete-item-description	0xc77b38	0x1416ee770	cstring	dots
+steam	complete-item-description	0xc77b5b	0x1416ee760	cstring	, ranging from 
+steam	complete-item-description	0xc77b8e	0x1415ed5b4	cstring	 to 
+steam	complete-item-description	0xc77bda	0x1416ee7c8	cstring	a series of 
+steam	complete-item-description	0xc77bf7	0x1416ee778	cstring	 symbols
+steam	complete-item-description	0xc77c03	0x1416ee7c8	cstring	a series of 
+steam	complete-item-description	0xc77c20	0x1416ee7a0	cstring	 words
+steam	complete-item-description	0xc77c34	0x1416ee788	cstring	 which you cannot read
+steam	complete-item-description	0xc77c3d	0x1416ee7c8	cstring	a series of 
+steam	complete-item-description	0xc77c5a	0x1416ee7a8	cstring	 images
+steam	complete-item-description	0xc77c63	0x1416ee7c8	cstring	a series of 
+steam	complete-item-description	0xc77c80	0x1416ee7b0	cstring	 images and symbols
+steam	complete-item-description	0xc77c90	0x1415e85b4	cstring	.
+steam	complete-item-description	0xc77cf1	0x1415fcfe8	cstring	  
+steam	complete-item-description	0xc77d00	0x1416ee740	cstring	The upward face is 
+steam	complete-item-description	0xc77d3d	0x1415e85b4	cstring	.
+steam	complete-item-description	0xc77eab	0x14163fca4	cstring	[R]
+steam	complete-item-description	0xc77ec5	0x14163fca4	cstring	[R]
+steam	complete-item-description	0xc77edb	0x14163fca4	cstring	[R]
+steam	complete-item-description	0xc77ee7	0x1416ee708	cstring	There is writing on this item which you have not read.
+steam	complete-item-description	0xc77ef6	0x14163fca4	cstring	[R]
+steam	complete-item-description	0xc77f02	0x1415fcfe8	cstring	  
+steam	complete-item-description	0xc77f0e	0x1416ee708	cstring	There is writing on this item which you have not read.
+steam	complete-item-description	0xc77f29	0x14163fca4	cstring	[R]
+steam	complete-item-description	0xc77f35	0x1416ee6d0	cstring	There is writing on this item, but you cannot read.
+steam	complete-item-description	0xc77f44	0x14163fca4	cstring	[R]
+steam	complete-item-description	0xc77f4d	0x1415fcfe8	cstring	  
+steam	complete-item-description	0xc77f59	0x1416ee6d0	cstring	There is writing on this item, but you cannot read.
+steam	complete-item-description	0xc77f6a	0x1415fcfe8	cstring	  
+steam	complete-item-description	0xc77f84	0x1415fcfe8	cstring	  
+steam	complete-item-description	0xc77ffa	0x1416ee6b8	cstring	The material is 
+steam	complete-item-description	0xc78027	0x1415e85b4	cstring	.
+steam	complete-item-description	0xc78043	0x14163fca4	cstring	[R]
+steam	complete-item-description	0xc78054	0x1415fcfe8	cstring	  
+steam	complete-item-description	0xc7806f	0x1415fcfe8	cstring	  
+steam	complete-item-description	0xc7807b	0x1415e9730	cstring	The pages are blank.
+steam	complete-item-description	0xc7808a	0x1415fcfe8	cstring	  
+steam	complete-item-description	0xc7814c	0x14163fca4	cstring	[R]
+steam	complete-item-description	0xc78171	0x14163fca4	cstring	[R]
+steam	complete-item-description	0xc7818a	0x14163fca4	cstring	[R]
+steam	complete-item-description	0xc78196	0x1416ee698	cstring	You have not read this book.
+steam	complete-item-description	0xc7819f	0x1415fcfe8	cstring	  
+steam	complete-item-description	0xc781ab	0x1416ee698	cstring	You have not read this book.
+steam	complete-item-description	0xc781c4	0x14163fca4	cstring	[R]
+steam	complete-item-description	0xc781d0	0x1416ee660	cstring	There is writing in the book, but you cannot read.
+steam	complete-item-description	0xc781df	0x14163fca4	cstring	[R]
+steam	complete-item-description	0xc781f0	0x1415fcfe8	cstring	  
+steam	complete-item-description	0xc781fc	0x1416ee660	cstring	There is writing in the book, but you cannot read.
+steam	complete-item-description	0xc78208	0x1415fcfe8	cstring	  
+steam	complete-item-description	0xc7822d	0x1415fcfe8	cstring	  
+steam	complete-item-description	0xc782d0	0x1416ee6b8	cstring	The material is 
+steam	complete-item-description	0xc782fd	0x1415e85b4	cstring	.
+steam	complete-item-description	0xc78314	0x14163fca4	cstring	[R]
+steam	complete-item-description	0xc78325	0x1415fcfe8	cstring	  
+steam	complete-item-description	0xc78336	0x1416ee650	cstring	The thread is 
+steam	complete-item-description	0xc78398	0x1416ee644	cstring	gray
+steam	complete-item-description	0xc783b3	0x1415e90d8	cstring	, 
+steam	complete-item-description	0xc783e4	0x1416ee158	cstring	masterfully 
+steam	complete-item-description	0xc783ed	0x1416ee168	cstring	exceptionally 
+steam	complete-item-description	0xc783f6	0x1416ee638	cstring	superbly 
+steam	complete-item-description	0xc783ff	0x1416ee188	cstring	finely 
+steam	complete-item-description	0xc78408	0x1416ee190	cstring	well-
+steam	complete-item-description	0xc78417	0x1416ee630	cstring	colored
+steam	complete-item-description	0xc784a1	0x1415ee5e0	cstring	 with 
+steam	complete-item-description	0xc784c8	0x1416ee620	cstring	a mixture of 
+steam	complete-item-description	0xc7856a	0x1415e90d8	cstring	, 
+steam	complete-item-description	0xc7858e	0x1415e873c	cstring	 
+steam	complete-item-description	0xc785a3	0x1416ee614	cstring	and 
+steam	complete-item-description	0xc785f6	0x1415ee5e0	cstring	 with 
+steam	complete-item-description	0xc78679	0x1415eda08	cstring	 by 
+steam	complete-item-description	0xc78699	0x1415fdb08	cstring	[LPAGE:HF:
+steam	complete-item-description	0xc786df	0x1415fd690	cstring	]
+steam	complete-item-description	0xc7873d	0x1415fda88	cstring	[/LPAGE]
+steam	complete-item-description	0xc7874f	0x1415fd968	cstring	.  
+steam	complete-item-description	0xc787bc	0x1416ee6b8	cstring	The material is 
+steam	complete-item-description	0xc787e9	0x1415e85b4	cstring	.
+steam	complete-item-description	0xc78802	0x14163fca4	cstring	[R]
+steam	complete-item-description	0xc78813	0x1415fcfe8	cstring	  
+steam	complete-item-description	0xc7882a	0x1416ee6b8	cstring	The material is 
+steam	complete-item-description	0xc7888e	0x1416ee644	cstring	gray
+steam	complete-item-description	0xc788b3	0x1415e90d8	cstring	, 
+steam	complete-item-description	0xc788e4	0x1416ee158	cstring	masterfully 
+steam	complete-item-description	0xc788ed	0x1416ee168	cstring	exceptionally 
+steam	complete-item-description	0xc788f6	0x1416ee638	cstring	superbly 
+steam	complete-item-description	0xc788ff	0x1416ee188	cstring	finely 
+steam	complete-item-description	0xc78908	0x1416ee190	cstring	well-
+steam	complete-item-description	0xc7891d	0x1416ee630	cstring	colored
+steam	complete-item-description	0xc789b1	0x1415ee5e0	cstring	 with 
+steam	complete-item-description	0xc789de	0x1416ee620	cstring	a mixture of 
+steam	complete-item-description	0xc78a88	0x1415e90d8	cstring	, 
+steam	complete-item-description	0xc78aac	0x1415e873c	cstring	 
+steam	complete-item-description	0xc78ac1	0x1416ee614	cstring	and 
+steam	complete-item-description	0xc78b14	0x1415ee5e0	cstring	 with 
+steam	complete-item-description	0xc78b97	0x1415eda08	cstring	 by 
+steam	complete-item-description	0xc78bb7	0x1415fdb08	cstring	[LPAGE:HF:
+steam	complete-item-description	0xc78bfd	0x1415fd690	cstring	]
+steam	complete-item-description	0xc78c5b	0x1415fda88	cstring	[/LPAGE]
+steam	complete-item-description	0xc78c6d	0x1415fd968	cstring	.  
+steam	complete-item-description	0xc78d08	0x14163fca4	cstring	[R]
+steam	complete-item-description	0xc78d23	0x14163fca4	cstring	[R]
+steam	complete-item-description	0xc78d32	0x1415fcfe8	cstring	  
+steam	complete-item-description	0xc78d50	0x1415fcfe8	cstring	  
+steam	complete-item-description	0xc78dbc	0x1416ee5f0	cstring	When used as a dye, it produces 
+steam	complete-item-description	0xc78de8	0x1415e85b4	cstring	.
+steam	complete-item-description	0xc78e02	0x14163fca4	cstring	[R]
+steam	complete-item-description	0xc78e11	0x1415fcfe8	cstring	  
+steam	complete-item-description	0xc78e8e	0x14163fca4	cstring	[R]
+steam	complete-item-description	0xc78ea0	0x1416ee5a0	cstring	There is writing on the slab, but you cannot read.
+steam	complete-item-description	0xc78eb2	0x14163fca4	cstring	[R]
+steam	complete-item-description	0xc78ecc	0x1415fcfe8	cstring	  
+steam	complete-item-description	0xc78ede	0x1416ee5a0	cstring	There is writing on the slab, but you cannot read.
+steam	complete-item-description	0xc78ef3	0x1415fcfe8	cstring	  
+steam	complete-item-description	0xc78f12	0x14163fca4	cstring	[R]
+steam	complete-item-description	0xc78f21	0x1415fcfe8	cstring	  
+steam	complete-item-description	0xc78f33	0x1416ee5d8	cstring	"The slab reads """
+steam	complete-item-description	0xc78f58	0x1416ee5d4	cstring	"""."
+steam	complete-item-description	0xc78f72	0x14163fca4	cstring	[R]
+steam	complete-item-description	0xc78f81	0x1415fcfe8	cstring	  
+steam	complete-item-description	0xc79264	0x1416ee538	cstring	This object is in tatters.  
+steam	complete-item-description	0xc79273	0x1416ee558	cstring	This object is threadbare.  
+steam	complete-item-description	0xc79293	0x1416ee4f8	cstring	This object is mangled.  
+steam	complete-item-description	0xc792a2	0x1416ee518	cstring	This object is heavily worn.  
+steam	complete-item-description	0xc792ab	0x1416ee578	cstring	This object is showing some wear.  
+steam	complete-item-description	0xc79336	0x1416ee140	cstring	It is 
+steam	complete-item-description	0xc79363	0x1416ee4ec	cstring	coated
+steam	complete-item-description	0xc79372	0x1416ee4e0	cstring	spattered
+steam	complete-item-description	0xc79384	0x1415ee5e0	cstring	 with 
+steam	complete-item-description	0xc793f6	0x1415fd968	cstring	.  
+steam	complete-item-description	0xc794d6	0x1415fcfe8	cstring	  
+steam	complete-item-description	0xc79529	0x1415fd258	cstring	[B]
+steam	complete-item-description	0xc7954f	0x1415fd258	cstring	[B]
+steam	complete-item-description	0xc7955e	0x1415fcfe8	cstring	  
+steam	complete-item-description	0xc79587	0x1415fcfe8	cstring	  
+steam	complete-item-description	0xc795c6	0x1415fd258	cstring	[B]
+steam	complete-item-description	0xc795ec	0x1415fd258	cstring	[B]
+steam	complete-item-description	0xc795fb	0x1415fcfe8	cstring	  
+steam	complete-item-description	0xc79624	0x1415fcfe8	cstring	  
+steam	item-identity-and-quality	0xc656f4	0x1416ee318	cstring	 (copy)
+steam	writing-on-item	0xcc6ae1	0x1416efc60	cstring	There used to be writing on the item.  
+steam	writing-on-item	0xcc6b38	0x1416efc48	cstring	Written on the item is 
+steam	writing-on-item	0xcc6b55	0x1416efc38	cstring	an untitled
+steam	writing-on-item	0xcc6b81	0x141602db8	cstring	an
+steam	writing-on-item	0xcc6b90	0x141602db4	cstring	a
+steam	writing-on-item	0xcc6bab	0x1415e873c	cstring	 
+steam	writing-on-item	0xcc6be3	0x141602d94	cstring	manual
+steam	writing-on-item	0xcc6bef	0x141602d8c	cstring	guide
+steam	writing-on-item	0xcc6c01	0x141602d80	cstring	chronicle
+steam	writing-on-item	0xcc6c13	0x141602d70	cstring	short story
+steam	writing-on-item	0xcc6c1f	0x141602d64	cstring	novel
+steam	writing-on-item	0xcc6c31	0x141602d58	cstring	biography
+steam	writing-on-item	0xcc6c43	0x141602d48	cstring	autobiography
+steam	writing-on-item	0xcc6c55	0x141602d3c	cstring	poem
+steam	writing-on-item	0xcc6c67	0x141602d34	cstring	play
+steam	writing-on-item	0xcc6c79	0x141602d2c	cstring	letter
+steam	writing-on-item	0xcc6c85	0x141602d24	cstring	essay
+steam	writing-on-item	0xcc6c97	0x141602d1c	cstring	dialog
+steam	writing-on-item	0xcc6ca9	0x141602ef0	cstring	musical composition
+steam	writing-on-item	0xcc6cbb	0x141602ee0	cstring	choreography
+steam	writing-on-item	0xcc6ccd	0x141602ec8	cstring	comparative biography
+steam	writing-on-item	0xcc6cdf	0x141602eb0	cstring	biographical dictionary
+steam	writing-on-item	0xcc6cf1	0x141602ea0	cstring	genealogy
+steam	writing-on-item	0xcc6d03	0x141602e90	cstring	encyclopedia
+steam	writing-on-item	0xcc6d12	0x141602e78	cstring	cultural history
+steam	writing-on-item	0xcc6d21	0x141602e60	cstring	cultural comparison
+steam	writing-on-item	0xcc6d30	0x141602e48	cstring	alternate history
+steam	writing-on-item	0xcc6d3f	0x141602e20	cstring	treatise on technological evolution
+steam	writing-on-item	0xcc6d4e	0x141602e10	cstring	dictionary
+steam	writing-on-item	0xcc6d5d	0x141602e00	cstring	star chart
+steam	writing-on-item	0xcc6d6c	0x141602df0	cstring	star catalogue
+steam	writing-on-item	0xcc6d75	0x141602de8	cstring	atlas
+steam	writing-on-item	0xcc6d97	0x1416efc28	cstring	 entitled 
+steam	writing-on-item	0xcc6e2f	0x141602dd8	cstring	, authored by 
+steam	writing-on-item	0xcc6e6b	0x1415fdb08	cstring	[LPAGE:HF:
+steam	writing-on-item	0xcc6e8e	0x1415fd690	cstring	]
+steam	writing-on-item	0xcc6f19	0x1415fda88	cstring	[/LPAGE]
+steam	writing-on-item	0xcc6f6f	0x1415fd968	cstring	.  
+steam	writing-in-pages	0xcc7050	0x1416efc00	cstring	The written portion consists of 
+steam	writing-in-pages	0xcc7101	0x14161be38	cstring	nothing.
+steam	writing-in-pages	0xcc715a	0x1415ed620	cstring	a 
+steam	writing-in-pages	0xcc717f	0x1416efbf4	cstring	 page 
+steam	writing-in-pages	0xcc719b	0x1416efbe8	cstring	untitled 
+steam	writing-in-pages	0xcc71d0	0x141602d94	cstring	manual
+steam	writing-in-pages	0xcc71dc	0x141602d8c	cstring	guide
+steam	writing-in-pages	0xcc71ee	0x141602d80	cstring	chronicle
+steam	writing-in-pages	0xcc7200	0x141602d70	cstring	short story
+steam	writing-in-pages	0xcc720c	0x141602d64	cstring	novel
+steam	writing-in-pages	0xcc721e	0x141602d58	cstring	biography
+steam	writing-in-pages	0xcc7230	0x141602d48	cstring	autobiography
+steam	writing-in-pages	0xcc7242	0x141602d3c	cstring	poem
+steam	writing-in-pages	0xcc7254	0x141602d34	cstring	play
+steam	writing-in-pages	0xcc7266	0x141602d2c	cstring	letter
+steam	writing-in-pages	0xcc7272	0x141602d24	cstring	essay
+steam	writing-in-pages	0xcc7284	0x141602d1c	cstring	dialog
+steam	writing-in-pages	0xcc7296	0x141602ef0	cstring	musical composition
+steam	writing-in-pages	0xcc72a8	0x141602ee0	cstring	choreography
+steam	writing-in-pages	0xcc72ba	0x141602ec8	cstring	comparative biography
+steam	writing-in-pages	0xcc72cc	0x141602eb0	cstring	biographical dictionary
+steam	writing-in-pages	0xcc72de	0x141602ea0	cstring	genealogy
+steam	writing-in-pages	0xcc72f0	0x141602e90	cstring	encyclopedia
+steam	writing-in-pages	0xcc72ff	0x141602e78	cstring	cultural history
+steam	writing-in-pages	0xcc730e	0x141602e60	cstring	cultural comparison
+steam	writing-in-pages	0xcc731d	0x141602e48	cstring	alternate history
+steam	writing-in-pages	0xcc732c	0x141602e20	cstring	treatise on technological evolution
+steam	writing-in-pages	0xcc733b	0x141602e10	cstring	dictionary
+steam	writing-in-pages	0xcc734a	0x141602e00	cstring	star chart
+steam	writing-in-pages	0xcc7359	0x141602df0	cstring	star catalogue
+steam	writing-in-pages	0xcc7362	0x141602de8	cstring	atlas
+steam	writing-in-pages	0xcc7389	0x1416efc28	cstring	 entitled 
+steam	writing-in-pages	0xcc742c	0x141602dd8	cstring	, authored by 
+steam	writing-in-pages	0xcc7468	0x1415fdb08	cstring	[LPAGE:HF:
+steam	writing-in-pages	0xcc748b	0x1415fd690	cstring	]
+steam	writing-in-pages	0xcc7516	0x1415fda88	cstring	[/LPAGE]
+steam	writing-in-pages	0xcc756c	0x1415fd968	cstring	.  
+steam	writing-content-and-style	0xcc5e0d	0x1416ef3b8	cstring	"It asks the question, ""What if "
+steam	writing-content-and-style	0xcc5e66	0x1416ef398	cstring	" had unfolded differently?""  "
+steam	writing-content-and-style	0xcc5eb4	0x1416ef378	cstring	It concerns the lineage of 
+steam	writing-content-and-style	0xcc5f0d	0x1415fd968	cstring	.  
+steam	writing-content-and-style	0xcc5f31	0x1416ef368	cstring	It concerns 
+steam	writing-content-and-style	0xcc5fba	0x1415e90d8	cstring	, 
+steam	writing-content-and-style	0xcc5fcf	0x1415e9110	cstring	 and 
+steam	writing-content-and-style	0xcc5fde	0x1415fd968	cstring	.  
+steam	writing-content-and-style	0xcc600a	0x1416ef340	cstring	The work has no particular subject.  
+steam	writing-content-and-style	0xcc6045	0x1416ef310	cstring	The writing conveys a moral lesson regarding 
+steam	writing-content-and-style	0xcc60a3	0x1415fd968	cstring	.  
+steam	writing-content-and-style	0xcc60fd	0x1416f02c0	cstring	The overall text emphasizes 
+steam	writing-content-and-style	0xcc615b	0x1415fd968	cstring	.  
+steam	writing-content-and-style	0xcc61b5	0x1416f0298	cstring	For lyrics, the composer has selected 
+steam	writing-content-and-style	0xcc6213	0x1415fd968	cstring	.  
+steam	writing-content-and-style	0xcc626d	0x1416f0258	cstring	For musical accompaniment, the choreographer has selected 
+steam	writing-content-and-style	0xcc62cb	0x1415fd968	cstring	.  
+steam	writing-content-and-style	0xcc635d	0x1416f0248	cstring	The writing 
+steam	writing-content-and-style	0xcc6417	0x1416f0228	cstring	 and it 
+steam	writing-content-and-style	0xcc641e	0x1416f0238	cstring	 yet it 
+steam	writing-content-and-style	0xcc645b	0x1415fd968	cstring	.  
+steam	writing-content-and-style	0xcc6497	0x1416f01f0	cstring	Overall, the information is compiled masterfully
+steam	writing-content-and-style	0xcc64ae	0x1416f01c0	cstring	Overall, the splendid source of information
+steam	writing-content-and-style	0xcc64c5	0x1416f0190	cstring	Overall, this is a great source of information
+steam	writing-content-and-style	0xcc64dc	0x1416f0160	cstring	Overall, this is a good source of information
+steam	writing-content-and-style	0xcc64f0	0x1416f0128	cstring	Overall, the information is not compiled very well
+steam	writing-content-and-style	0xcc6502	0x1416f00f0	cstring	Overall, this is a terrible compilation of information
+steam	writing-content-and-style	0xcc6520	0x1416f00c8	cstring	Overall, the poetry is masterful
+steam	writing-content-and-style	0xcc6537	0x1416f00a8	cstring	Overall, the poetry is inspired
+steam	writing-content-and-style	0xcc654e	0x1416f0088	cstring	Overall, the poetry is great
+steam	writing-content-and-style	0xcc6565	0x1416f0068	cstring	Overall, the poetry is passable
+steam	writing-content-and-style	0xcc657f	0x1416f0028	cstring	Overall, the poetry is not awful, but not very good either
+steam	writing-content-and-style	0xcc6591	0x1416f0000	cstring	Overall, the poetry is very, very bad
+steam	writing-content-and-style	0xcc65af	0x1416effd8	cstring	Overall, the composition is masterful
+steam	writing-content-and-style	0xcc65c6	0x1416effb0	cstring	Overall, the composition is inspired
+steam	writing-content-and-style	0xcc65dd	0x1416eff88	cstring	Overall, the composition is great
+steam	writing-content-and-style	0xcc65f4	0x1416eff60	cstring	Overall, the composition is passable
+steam	writing-content-and-style	0xcc660e	0x1416eff20	cstring	Overall, the composition is not awful, but not very good either
+steam	writing-content-and-style	0xcc6620	0x1416efef8	cstring	Overall, the composition is atrocious
+steam	writing-content-and-style	0xcc663e	0x1416efed0	cstring	Overall, the choreography is masterful
+steam	writing-content-and-style	0xcc6655	0x1416efea8	cstring	Overall, the choreography is inspired
+steam	writing-content-and-style	0xcc666c	0x1416efe80	cstring	Overall, the choreography is great
+steam	writing-content-and-style	0xcc6683	0x1416efe58	cstring	Overall, the choreography is passable
+steam	writing-content-and-style	0xcc669d	0x1416efe10	cstring	Overall, the choreography is not awful, but not very good either
+steam	writing-content-and-style	0xcc66af	0x1416efde0	cstring	Overall, the choreography is just terrible
+steam	writing-content-and-style	0xcc66ca	0x1416efdc0	cstring	Overall, the prose is masterful
+steam	writing-content-and-style	0xcc66de	0x1416efda0	cstring	Overall, the prose is splendid
+steam	writing-content-and-style	0xcc66f2	0x1416efd80	cstring	Overall, the prose is great
+steam	writing-content-and-style	0xcc6706	0x1416efd60	cstring	Overall, the prose is passable
+steam	writing-content-and-style	0xcc671a	0x1416efd20	cstring	Overall, the prose is not awful, but not very good either
+steam	writing-content-and-style	0xcc6729	0x1416efcf0	cstring	Overall, the prose is amateurish at best
+steam	writing-content-and-style	0xcc6747	0x1415fd968	cstring	.  
+steam	writing-content-and-style	0xcc676e	0x1416efcc8	cstring	The work has a single chapter.  
+steam	writing-content-and-style	0xcc6785	0x1416efcb8	cstring	The work has 
+steam	writing-content-and-style	0xcc67d8	0x1416efca8	cstring	 chapters.  
+steam	writing-content-and-style	0xcc6861	0x1415ee548	cstring	It
+steam	writing-content-and-style	0xcc6875	0x1415ed9bc	cstring	The 
+steam	writing-content-and-style	0xcc68d4	0x1416efc98	cstring	 chapter
+steam	writing-content-and-style	0xcc68f3	0x1416efc88	cstring	 covers 
+steam	writing-content-and-style	0xcc6954	0x1415fd968	cstring	.  
+steam	writing-style-selector	0xcc5551	0x1416ef000	cstring	rapidly shifts between topics
+steam	writing-style-selector	0xcc5569	0x1416eefd8	cstring	moves quickly from subject to subject
+steam	writing-style-selector	0xcc5585	0x1416eefb0	cstring	takes frequent interesting tangents
+steam	writing-style-selector	0xcc559c	0x1416eef98	cstring	hopelessly meanders
+steam	writing-style-selector	0xcc55b4	0x1416eef80	cstring	meanders somewhat
+steam	writing-style-selector	0xcc55d0	0x1416eef58	cstring	gets off track from time to time
+steam	writing-style-selector	0xcc55e7	0x1416eef38	cstring	bubbles over with cheerfulness
+steam	writing-style-selector	0xcc55ff	0x1416eef20	cstring	is quite cheerful
+steam	writing-style-selector	0xcc561b	0x1416eef08	cstring	is fairly cheerful
+steam	writing-style-selector	0xcc5632	0x1416eeef0	cstring	overflows with sadness
+steam	writing-style-selector	0xcc564a	0x1416eeee0	cstring	is depressing
+steam	writing-style-selector	0xcc5666	0x1416eeec0	cstring	has a touch of melancholy
+steam	writing-style-selector	0xcc5683	0x1416eeea8	cstring	is thoroughly organized
+steam	writing-style-selector	0xcc569b	0x1416eee90	cstring	is clearly organized
+steam	writing-style-selector	0xcc56b7	0x1416eee80	cstring	is organized
+steam	writing-style-selector	0xcc56ce	0x1416eee60	cstring	is thoroughly mechanical
+steam	writing-style-selector	0xcc56e6	0x1416eee50	cstring	is very rigid
+steam	writing-style-selector	0xcc5702	0x1416eee40	cstring	is a bit stiff
+steam	writing-style-selector	0xcc5719	0x1416eee28	cstring	is completely serious
+steam	writing-style-selector	0xcc5731	0x1416eee10	cstring	has a very serious tone
+steam	writing-style-selector	0xcc574d	0x1416efbd0	cstring	is reasonably serious
+steam	writing-style-selector	0xcc576a	0x1416efb98	cstring	artfully flashes through seemingly disjoint topics
+steam	writing-style-selector	0xcc5782	0x1416efb68	cstring	breaks sharply between topics with regularity
+steam	writing-style-selector	0xcc579e	0x1416efb38	cstring	has some particularly crisp changes in topic
+steam	writing-style-selector	0xcc57b5	0x1416efb20	cstring	is utterly disjointed
+steam	writing-style-selector	0xcc57cd	0x1416efb08	cstring	skips around a lot
+steam	writing-style-selector	0xcc57e9	0x1416efae0	cstring	occasionally changes topic abruptly
+steam	writing-style-selector	0xcc5806	0x1416efaa8	cstring	uses only artful words and phrases selected with care
+steam	writing-style-selector	0xcc581e	0x1416efa80	cstring	is throughout ornate and refined
+steam	writing-style-selector	0xcc583a	0x1416efa48	cstring	has rare but particularly exquisite turns of phrase
+steam	writing-style-selector	0xcc5851	0x1416efa30	cstring	is excessively ornate
+steam	writing-style-selector	0xcc5869	0x1416efa20	cstring	is quite florid
+steam	writing-style-selector	0xcc5885	0x1416efa08	cstring	is somewhat showy
+steam	writing-style-selector	0xcc589c	0x1416ef9e8	cstring	drives forward relentlessly
+steam	writing-style-selector	0xcc58b4	0x1416ef9d0	cstring	is full of force
+steam	writing-style-selector	0xcc58d0	0x1416ef9c0	cstring	is forceful
+steam	writing-style-selector	0xcc58ed	0x1416ef9a0	cstring	is a comedy treasure trove
+steam	writing-style-selector	0xcc5905	0x1416ef988	cstring	is quite humorous
+steam	writing-style-selector	0xcc5921	0x1416ef970	cstring	has a touch of humor
+steam	writing-style-selector	0xcc5938	0x1416ef940	cstring	is littered with terrible jokes inartfully told
+steam	writing-style-selector	0xcc5950	0x1416ef920	cstring	has poorly-executed humor
+steam	writing-style-selector	0xcc596c	0x1416ef8f8	cstring	tries and fails to be funny at times
+steam	writing-style-selector	0xcc5989	0x1416ef8a0	cstring	is artfully suffused with what would otherwise be childish and immature material
+steam	writing-style-selector	0xcc59a1	0x1416ef850	cstring	contains a deft use throughout of what might be considered immature material
+steam	writing-style-selector	0xcc59bd	0x1416ef810	cstring	manages an artful inclusion here and there of childish material
+steam	writing-style-selector	0xcc59d4	0x1416ef7f0	cstring	is absolutely puerile
+steam	writing-style-selector	0xcc59ec	0x1416ef7d8	cstring	is very childish
+steam	writing-style-selector	0xcc5a08	0x1416ef7c0	cstring	is a bit immature
+steam	writing-style-selector	0xcc5a25	0x1416ef798	cstring	indulges the author's every whim
+steam	writing-style-selector	0xcc5a3d	0x1416ef770	cstring	artfully indulges the author's fancies
+steam	writing-style-selector	0xcc5a59	0x1416ef730	cstring	contains some asides related to the author's preferences
+steam	writing-style-selector	0xcc5a6a	0x1416ef710	cstring	is stunningly self-indulgent
+steam	writing-style-selector	0xcc5a88	0x1416ef6f8	cstring	is quite self-indulgent
+steam	writing-style-selector	0xcc5aa4	0x1416ef6d8	cstring	is somewhat self-indulgent
+steam	writing-style-selector	0xcc5abb	0x1416ef6a0	cstring	could only have been produced by a merciful spirit
+steam	writing-style-selector	0xcc5ad3	0x1416ef688	cstring	is quite touching
+steam	writing-style-selector	0xcc5aef	0x1416ef668	cstring	shows a hint of tenderness
+steam	writing-style-selector	0xcc5b06	0x1416ef638	cstring	is clear evidence of a compassionate being
+steam	writing-style-selector	0xcc5b1e	0x1416ef620	cstring	is very compassionate
+steam	writing-style-selector	0xcc5b3a	0x1416ef5f0	cstring	gives a feeling of compassion here and there
+steam	writing-style-selector	0xcc5b51	0x1416ef5d8	cstring	is as vicious as can be
+steam	writing-style-selector	0xcc5b69	0x1416ef5c8	cstring	is quite cruel
+steam	writing-style-selector	0xcc5b85	0x1416ef5a8	cstring	has a hint of viciousness to it
+steam	writing-style-selector	0xcc5b9c	0x1416ef588	cstring	is a monument to concision
+steam	writing-style-selector	0xcc5bb4	0x1416ef578	cstring	is very concise
+steam	writing-style-selector	0xcc5bd0	0x1416ef568	cstring	is fairly crisp
+steam	writing-style-selector	0xcc5be7	0x1416ef548	cstring	is a pit of bitter scorn
+steam	writing-style-selector	0xcc5bff	0x1416ef528	cstring	is quite mocking in tone
+steam	writing-style-selector	0xcc5c1b	0x1416ef500	cstring	contains the occasional biting remark
+steam	writing-style-selector	0xcc5c32	0x1416ef4d0	cstring	is a reservoir of amusingly clever quips
+steam	writing-style-selector	0xcc5c4a	0x1416ef4b8	cstring	is refreshingly witty
+steam	writing-style-selector	0xcc5c66	0x1416ef498	cstring	has its moments of cleverness
+steam	writing-style-selector	0xcc5c83	0x1416ef478	cstring	is an awe-inspiring wild rant
+steam	writing-style-selector	0xcc5c9b	0x1416ef458	cstring	careens forward as a rant
+steam	writing-style-selector	0xcc5cb3	0x1416ef430	cstring	tumbles out almost as a rant at times
+steam	writing-style-selector	0xcc5cca	0x1416ef410	cstring	is a completely unhinged rant
+steam	writing-style-selector	0xcc5ce2	0x1416ef3f8	cstring	is a rant more or less
+steam	writing-style-selector	0xcc5cf4	0x1416ef3d8	cstring	descends to a rant in places
+steam	artifact-title	0xb944bf	0x1415fdaa8	cstring	[LPAGE:ARTIFACT:
+steam	artifact-title	0xb944ce	0x1416df718	cstring	[LPAGE:BOOK:
+steam	artifact-title	0xb944f3	0x1415fd690	cstring	]
+steam	artifact-title	0xb945b0	0x64656c7469746e55	inline	Untitled
+steam	artifact-title	0xb9460b	0x64656c7469746e55	inline	Untitled
+steam	artifact-title	0xb94686	0x1415fda88	cstring	[/LPAGE]
+steam	artifact-title	0xb946de	0x1416df700	cstring	an unknown artifact
+steam	historical-figure-name	0xb92f8a	0x1416df900	cstring	interrogator
+steam	historical-figure-name	0xb92fa1	0x141674d08	cstring	subject
+steam	historical-figure-name	0xb93073	0x1416290f0	cstring	Nameless
+steam	historical-figure-name	0xb9310e	0x1416df8e0	cstring	an unidentified creature
+steam	historical-figure-name	0xb93133	0x1415fdb08	cstring	[LPAGE:HF:
+steam	historical-figure-name	0xb93153	0x1415fd690	cstring	]
+steam	historical-figure-name	0xb9325d	0x141662ef8	cstring	myself
+steam	historical-figure-name	0xb93266	0x141662efc	cstring	lf
+steam	historical-figure-name	0xb9331b	0x1415e8e48	cstring	the 
+steam	historical-figure-name	0xb9333f	0x14167db90	cstring	zombie 
+steam	historical-figure-name	0xb93377	0x1415fdbb8	cstring	ghostly 
+steam	historical-figure-name	0xb93499	0x1415e873c	cstring	 
+steam	historical-figure-name	0xb934c8	0x1415e873c	cstring	 
+steam	historical-figure-name	0xb93551	0x1415e956c	cstring	 the 
+steam	historical-figure-name	0xb93575	0x14167db90	cstring	zombie 
+steam	historical-figure-name	0xb935ad	0x1415fdbb8	cstring	ghostly 
+steam	historical-figure-name	0xb936cd	0x1415e873c	cstring	 
+steam	historical-figure-name	0xb9374e	0x1415ed620	cstring	a 
+steam	historical-figure-name	0xb93755	0x1415e8e48	cstring	the 
+steam	historical-figure-name	0xb9377d	0x14167db90	cstring	zombie 
+steam	historical-figure-name	0xb937b5	0x1415fdbb8	cstring	ghostly 
+steam	historical-figure-name	0xb9381c	0x1415e873c	cstring	 
+steam	historical-figure-name	0xb93867	0x1415e9260	cstring	's
+steam	historical-figure-name	0xb93886	0x1415fda88	cstring	[/LPAGE]
+steam	historical-figure-name	0xb938dc	0x141663cd8	cstring	an unknown creature
+steam	historical-figure-name	0xb938f2	0x1415e9260	cstring	's
+steam	site-name	0xb9397a	0x1416df920	cstring	[LPAGE:SITE:
+steam	site-name	0xb9399d	0x1415fd690	cstring	]
+steam	site-name	0xb93a06	0x1415fda88	cstring	[/LPAGE]
+steam	site-name	0xb93a5e	0x1416df910	cstring	an unknown site
+steam	site-building-name	0xb940f8	0x1416df6d8	cstring	[LPAGE:AB:
+steam	site-building-name	0xb9411b	0x141618434	cstring	:
+steam	site-building-name	0xb9413b	0x1415fd690	cstring	]
+steam	site-building-name	0xb941ce	0x1415fda88	cstring	[/LPAGE]
+steam	site-building-name	0xb94255	0x1416637c8	cstring	a counting house
+steam	site-building-name	0xb94267	0x1416637e0	cstring	a hospital
+steam	site-building-name	0xb94279	0x141628b50	cstring	a guildhall
+steam	site-building-name	0xb9428b	0x141663a38	cstring	a mead hall
+steam	site-building-name	0xb9429d	0x141663a44	cstring	a keep
+steam	site-building-name	0xb942af	0x141628b28	cstring	a temple
+steam	site-building-name	0xb942c1	0x141663a18	cstring	a library
+steam	site-building-name	0xb942d3	0x141663a28	cstring	a tavern
+steam	site-building-name	0xb942e5	0x141672dc0	cstring	a dark tower
+steam	site-building-name	0xb942f1	0x1416639e8	cstring	an underworld spire
+steam	site-building-name	0xb94300	0x141663a08	cstring	a market
+steam	site-building-name	0xb9430f	0x1416639dc	cstring	a tomb
+steam	site-building-name	0xb94333	0x141663998	cstring	the catacombs
+steam	site-building-name	0xb94342	0x1416639d0	cstring	the sewers
+steam	site-building-name	0xb94351	0x1416639c0	cstring	a dungeon
+steam	site-building-name	0xb94360	0x141663a00	cstring	a tower
+steam	site-building-name	0xb94369	0x1416df6e8	cstring	an unknown building
+steam	site-building-name	0xb94388	0x1415fda88	cstring	[/LPAGE]
+steam	site-building-name	0xb94397	0x1416df6e8	cstring	an unknown building
+steam	rumor-observation-calendar-date	0xb926ad	0x1415e8e48	cstring	the 
+steam	rumor-observation-calendar-date	0xb926df	0x14161963c	cstring	late 
+steam	rumor-observation-calendar-date	0xb926f7	0x141619644	cstring	early 
+steam	rumor-observation-calendar-date	0xb92706	0x14161964c	cstring	mid
+steam	rumor-observation-calendar-date	0xb9272e	0x14161977c	cstring	winter
+steam	rumor-observation-calendar-date	0xb92737	0x141619774	cstring	autumn
+steam	rumor-observation-calendar-date	0xb92740	0x14161976c	cstring	summer
+steam	rumor-observation-calendar-date	0xb92749	0x141619650	cstring	spring
+steam	rumor-observation-calendar-date	0xb927e2	0x20666f20	inline	 of 
+steam	rumor-observation-calendar-date	0xb928bb	0x1416df958	cstring	a time before time
+steam	surface-region-name	0xb94a8a	0x1416df638	cstring	[LPAGE:SR:
+steam	surface-region-name	0xb94aaa	0x1415fd690	cstring	]
+steam	surface-region-name	0xb94b13	0x1415fda88	cstring	[/LPAGE]
+steam	surface-region-name	0xb94b6b	0x1416df678	cstring	an unknown region
+steam	underground-region-name	0xb94982	0x1416df6a8	cstring	[LPAGE:FL:
+steam	underground-region-name	0xb949a5	0x1415fd690	cstring	]
+steam	underground-region-name	0xb949d1	0x1416df6b8	cstring	the Underworld
+steam	underground-region-name	0xb949e0	0x1416df6c8	cstring	the magma sea
+steam	underground-region-name	0xb949ef	0x1416df690	cstring	the depths of the world
+steam	underground-region-name	0xb94a08	0x1415fda88	cstring	[/LPAGE]
+steam	underground-region-name	0xb94a17	0x1416df648	cstring	an unknown underground region
+steam	generated-english-name	0xa948a3	0x1415e873c	cstring	 
+steam	generated-english-name	0xa9495e	0x1415e873c	cstring	 
+steam	generated-english-name	0xa94a3b	0x1415e873c	cstring	 
+steam	generated-english-name	0xa94a5d	0x1415ed9bc	cstring	The 
+steam	generated-english-name	0xa94a78	0x1415e8e48	cstring	the 
+steam	generated-english-name	0xa94af2	0x1415e873c	cstring	 
+steam	generated-english-name	0xa94b11	0x1415ed9bc	cstring	The 
+steam	generated-english-name	0xa94b1a	0x1415e8e48	cstring	the 
+steam	generated-english-name	0xa94b9a	0x1415e873c	cstring	 
+steam	generated-english-name	0xa94bb9	0x1415ed9bc	cstring	The 
+steam	generated-english-name	0xa94bc2	0x1415e8e48	cstring	the 
+steam	generated-english-name	0xa94d1f	0x1415e873c	cstring	 
+steam	generated-english-name	0xa94d4b	0x1415ed9bc	cstring	The 
+steam	generated-english-name	0xa94d62	0x1415e8e48	cstring	the 
+steam	generated-english-name	0xa94e09	0x1415e873c	cstring	 
+steam	generated-english-name	0xa94e18	0x1416ced90	cstring	of 
+steam	generated-english-name	0xa94e1f	0x1416cee1c	cstring	Of 
+steam	description-paragraph-vector-wrap	0x8e7567	0x1415e873c	cstring	 
+steam	journal-calendar-month	0x7733b8	0x1416a4968	cstring	Granite
+steam	journal-calendar-month	0x7733cd	0x1416a4970	cstring	Slate
+steam	journal-calendar-month	0x7733e2	0x1416a4978	cstring	Felsite
+steam	journal-calendar-month	0x7733f1	0x1416a4980	cstring	Hematite
+steam	journal-calendar-month	0x77340c	0x1416a4990	cstring	Malachite
+steam	journal-calendar-month	0x773421	0x1416a499c	cstring	Galena
+steam	journal-calendar-month	0x773436	0x1416a49a8	cstring	Limestone
+steam	journal-calendar-month	0x77344b	0x1416a49b8	cstring	Sandstone
+steam	journal-calendar-month	0x773460	0x1416a50d4	cstring	Timber
+steam	journal-calendar-month	0x773475	0x1416a50e0	cstring	Moonstone
+steam	journal-calendar-month	0x77348a	0x1416a50ec	cstring	Opal
+steam	journal-calendar-month	0x773499	0x141605b78	cstring	Obsidian
+classic	journal-renderer-and-card-fields	0xc2929	0x1415e7168	cstring	Agreements
+classic	journal-renderer-and-card-fields	0xc295b	0x1415e71ac	cstring	Events
+classic	journal-renderer-and-card-fields	0xc298d	0x1415e71b4	cstring	People
+classic	journal-renderer-and-card-fields	0xc29bf	0x1415e719c	cstring	Sites
+classic	journal-renderer-and-card-fields	0xc29f1	0x1415e71a4	cstring	Groups
+classic	journal-renderer-and-card-fields	0xc2a23	0x1415e71e0	cstring	Regions
+classic	journal-renderer-and-card-fields	0xc2a55	0x1415e71e8	cstring	Bestiary
+classic	journal-renderer-and-card-fields	0xc2a84	0x1415e71c0	cstring	Artifacts
+classic	journal-renderer-and-card-fields	0xc2ab3	0x1415e71d0	cstring	Intrigue
+classic	journal-renderer-and-card-fields	0xc2df6	0x1415e71f4	cstring	Plots
+classic	journal-renderer-and-card-fields	0xc2e24	0x1415e7220	cstring	Organizations
+classic	journal-renderer-and-card-fields	0xc2e52	0x1415e7218	cstring	Actors
+classic	journal-renderer-and-card-fields	0xc319e	0x1415e64cc	cstring	/
+classic	journal-renderer-and-card-fields	0xc3468	0x1415e7278	cstring	Centered on first heard
+classic	journal-renderer-and-card-fields	0xc34d6	0x1415e7260	cstring	Centered on last heard
+classic	journal-renderer-and-card-fields	0xc3541	0x1415e7200	cstring	Centered on location
+classic	journal-renderer-and-card-fields	0xc3798	0x1415e7248	cstring	 Showing type,date
+classic	journal-renderer-and-card-fields	0xc37c2	0x1415e7230	cstring	 Showing pin,last
+classic	journal-renderer-and-card-fields	0xc398b	0x1415e64cc	cstring	/
+classic	journal-renderer-and-card-fields	0xc3b1b	0x1415e72c0	cstring	Overthrow Agreement
+classic	journal-renderer-and-card-fields	0xc3b27	0x1415e72d8	cstring	Guide Agreement
+classic	journal-renderer-and-card-fields	0xc3b33	0x1415e7290	cstring	Rescue Agreement
+classic	journal-renderer-and-card-fields	0xc3b3f	0x1415e72a8	cstring	Aid Rescue Agreement
+classic	journal-renderer-and-card-fields	0xc3b4b	0x1415e7318	cstring	Adventuring Agreement
+classic	journal-renderer-and-card-fields	0xc3b57	0x1415e7330	cstring	Bound Servitude
+classic	journal-renderer-and-card-fields	0xc3b63	0x1415e72e8	cstring	Entertainment Agreement
+classic	journal-renderer-and-card-fields	0xc3b6f	0x1415e7300	cstring	World Joining Agreement
+classic	journal-renderer-and-card-fields	0xc3b7b	0x1415e7368	cstring	Residency Agreement
+classic	journal-renderer-and-card-fields	0xc3b87	0x1415e7380	cstring	Grant of Citizenship
+classic	journal-renderer-and-card-fields	0xc3b93	0x1415e7340	cstring	Parley Arrangement
+classic	journal-renderer-and-card-fields	0xc3b9f	0x1415e7358	cstring	Corruption
+classic	journal-renderer-and-card-fields	0xc3bab	0x1415e73c0	cstring	Artifact Theft
+classic	journal-renderer-and-card-fields	0xc3bb7	0x1415e73d0	cstring	Promise of Position
+classic	journal-renderer-and-card-fields	0xc3bc3	0x1415e7398	cstring	Assassination Plot
+classic	journal-renderer-and-card-fields	0xc3bcf	0x1415e73b0	cstring	Abduction Plot
+classic	journal-renderer-and-card-fields	0xc3bd8	0x1415e7410	cstring	Sabotage Plot
+classic	journal-renderer-and-card-fields	0xc3be1	0x1415e7420	cstring	Infiltration Plot
+classic	journal-renderer-and-card-fields	0xc3bea	0x1415e73e8	cstring	Framing Plot
+classic	journal-renderer-and-card-fields	0xc3bf3	0x1415e73f8	cstring	War Starting Plot
+classic	journal-renderer-and-card-fields	0xc3c20	0x1415e7438	cstring	Foiled Embezzlement Conspiracy
+classic	journal-renderer-and-card-fields	0xc3c29	0x1415e7488	cstring	Foiled Corruption Conspiracy
+classic	journal-renderer-and-card-fields	0xc3c32	0x1415e7468	cstring	Foiled Bribery Conspiracy
+classic	journal-renderer-and-card-fields	0xc3c3b	0x1415e7458	cstring	Build Structure
+classic	journal-renderer-and-card-fields	0xc3c44	0x1415e74c0	cstring	Offer Service
+classic	journal-renderer-and-card-fields	0xc3c4d	0x1415e74d0	cstring	Retrieve Artifact
+classic	journal-renderer-and-card-fields	0xc3da7	0x1415e3c40	cstring	You
+classic	journal-renderer-and-card-fields	0xc3e54	0x1415e7690	cstring	asked that
+classic	journal-renderer-and-card-fields	0xc3eb5	0x1415e74b8	cstring	you
+classic	journal-renderer-and-card-fields	0xc3f5c	0x1415e76a0	cstring	retrieve
+classic	journal-renderer-and-card-fields	0xc4052	0x1415e7684	cstring	from
+classic	journal-renderer-and-card-fields	0xc414e	0x1415e768c	cstring	for
+classic	journal-renderer-and-card-fields	0xc42a1	0x1415e76c8	cstring	Drive members of
+classic	journal-renderer-and-card-fields	0xc4364	0x1415e76ac	cstring	out of
+classic	journal-renderer-and-card-fields	0xc44fa	0x1415e3c40	cstring	You
+classic	journal-renderer-and-card-fields	0xc45a7	0x1415e7650	cstring	requested that
+classic	journal-renderer-and-card-fields	0xc4608	0x1415e74b8	cstring	you
+classic	journal-renderer-and-card-fields	0xc46ab	0x1415e7660	cstring	make an offer of service to
+classic	journal-renderer-and-card-fields	0xc489c	0x1415e3c40	cstring	You
+classic	journal-renderer-and-card-fields	0xc4949	0x1415e74a8	cstring	agreed to join
+classic	journal-renderer-and-card-fields	0xc49aa	0x1415e74b8	cstring	you
+classic	journal-renderer-and-card-fields	0xc4a4f	0x1415e7500	cstring	in insurrection against
+classic	journal-renderer-and-card-fields	0xc4b27	0x1415e7518	cstring	thereby freeing
+classic	journal-renderer-and-card-fields	0xc4c18	0x1415e3c40	cstring	You
+classic	journal-renderer-and-card-fields	0xc4cc5	0x1415e74e8	cstring	agreed to guide
+classic	journal-renderer-and-card-fields	0xc4d26	0x1415e74b8	cstring	you
+classic	journal-renderer-and-card-fields	0xc4dcb	0x1415e74f8	cstring	to
+classic	journal-renderer-and-card-fields	0xc4fd3	0x1415e7560	cstring	somebody unknown
+classic	journal-renderer-and-card-fields	0xc5048	0x1415e3c40	cstring	You
+classic	journal-renderer-and-card-fields	0xc50f5	0x1415e74a8	cstring	agreed to join
+classic	journal-renderer-and-card-fields	0xc5156	0x1415e74b8	cstring	you
+classic	journal-renderer-and-card-fields	0xc51f7	0x1415e7578	cstring	in order to be brought safely away from
+classic	journal-renderer-and-card-fields	0xc52ec	0x1415e3c40	cstring	You
+classic	journal-renderer-and-card-fields	0xc5399	0x1415e74a8	cstring	agreed to join
+classic	journal-renderer-and-card-fields	0xc53fa	0x1415e74b8	cstring	you
+classic	journal-renderer-and-card-fields	0xc549b	0x1415e7528	cstring	in order to rescue
+classic	journal-renderer-and-card-fields	0xc5616	0x1415e7560	cstring	somebody unknown
+classic	journal-renderer-and-card-fields	0xc568b	0x1415e3c40	cstring	You
+classic	journal-renderer-and-card-fields	0xc5738	0x1415e7540	cstring	agreed to adventure with
+classic	journal-renderer-and-card-fields	0xc5799	0x1415e74b8	cstring	you
+classic	journal-renderer-and-card-fields	0xc583a	0x1415e75e0	cstring	wherever the journey might lead
+classic	journal-renderer-and-card-fields	0xc58a9	0x1415e3c40	cstring	You
+classic	journal-renderer-and-card-fields	0xc5956	0x1415e7600	cstring	was bound to serve
+classic	journal-renderer-and-card-fields	0xc59b7	0x1415e74b8	cstring	you
+classic	journal-renderer-and-card-fields	0xc5a58	0x1415e75a0	cstring	by invocation of True Name
+classic	journal-renderer-and-card-fields	0xc5ac7	0x1415e3c40	cstring	You
+classic	journal-renderer-and-card-fields	0xc5b74	0x1415e75c0	cstring	agreed to entertain people with
+classic	journal-renderer-and-card-fields	0xc5bd5	0x1415e74b8	cstring	you
+classic	journal-renderer-and-card-fields	0xc5c76	0x1415e7620	cstring	throughout the world
+classic	journal-renderer-and-card-fields	0xc5cfd	0x1415e7638	cstring	Agreement concluded
+classic	journal-renderer-and-card-fields	0xc5dd0	0x1415e7614	cstring	st
+classic	journal-renderer-and-card-fields	0xc5dd9	0x1415e7618	cstring	nd
+classic	journal-renderer-and-card-fields	0xc5de2	0x1415e767c	cstring	rd
+classic	journal-renderer-and-card-fields	0xc5deb	0x1415e7680	cstring	th
+classic	journal-renderer-and-card-fields	0xc5dfb	0x1415e3720	cstring	 
+classic	journal-renderer-and-card-fields	0xc5e2d	0x1415e40c4	cstring	, 
+classic	journal-renderer-and-card-fields	0xc5eb5	0x1415e76bc	cstring	Kill
+classic	journal-renderer-and-card-fields	0xc5f96	0x1415e7710	cstring	Cause trouble for
+classic	journal-renderer-and-card-fields	0xc605a	0x1415e76b4	cstring	Drive
+classic	journal-renderer-and-card-fields	0xc611d	0x1415e7684	cstring	from
+classic	journal-renderer-and-card-fields	0xc61e3	0x1415e7728	cstring	An order from
+classic	journal-renderer-and-card-fields	0xc62cd	0x1415e76e0	cstring	Finish reporting in
+classic	journal-renderer-and-card-fields	0xc633e	0x1415e76f8	cstring	Complete: report back
+classic	journal-renderer-and-card-fields	0xc638b	0x1415e7760	cstring	Not yet completed
+classic	journal-renderer-and-card-fields	0xc6504	0x1415e3c40	cstring	You
+classic	journal-renderer-and-card-fields	0xc65b1	0x1415e7690	cstring	asked that
+classic	journal-renderer-and-card-fields	0xc6612	0x1415e74b8	cstring	you
+classic	journal-renderer-and-card-fields	0xc66b5	0x1415e7738	cstring	retrieve 
+classic	journal-renderer-and-card-fields	0xc684f	0x1415e3c40	cstring	You
+classic	journal-renderer-and-card-fields	0xc68fc	0x1415e7650	cstring	requested that
+classic	journal-renderer-and-card-fields	0xc695d	0x1415e74b8	cstring	you
+classic	journal-renderer-and-card-fields	0xc6a00	0x1415e7774	cstring	serve 
+classic	journal-renderer-and-card-fields	0xc6ae5	0x1415e7638	cstring	Agreement concluded
+classic	journal-renderer-and-card-fields	0xc6b86	0x1415e7728	cstring	An order from
+classic	journal-renderer-and-card-fields	0xc6c6d	0x1415e76e0	cstring	Finish reporting in
+classic	journal-renderer-and-card-fields	0xc6cdb	0x1415e76f8	cstring	Complete: report back
+classic	journal-renderer-and-card-fields	0xc6d25	0x1415e7760	cstring	Not yet completed
+classic	journal-renderer-and-card-fields	0xc6ef7	0x1415e7748	cstring	Centered on commander
+classic	journal-renderer-and-card-fields	0xc6f61	0x1415e7798	cstring	Centered on target
+classic	journal-renderer-and-card-fields	0xc71e1	0x1415e778c	cstring	Org: 
+classic	journal-renderer-and-card-fields	0xc726b	0x1415e64cc	cstring	/
+classic	journal-renderer-and-card-fields	0xc74d2	0x1415e64cc	cstring	/
+classic	journal-renderer-and-card-fields	0xc7ec9	0x1415e77b0	cstring	One member
+classic	journal-renderer-and-card-fields	0xc7f15	0x1415e7780	cstring	 members
+classic	journal-renderer-and-card-fields	0xc8205	0x1415e64cc	cstring	/
+classic	journal-renderer-and-card-fields	0xc85f0	0x1415e64cc	cstring	/
+classic	journal-renderer-and-card-fields	0xc89e0	0x1415e64cc	cstring	/
+classic	journal-renderer-and-card-fields	0xc8d2c	0x1415e77d8	cstring	 Showing important
+classic	journal-renderer-and-card-fields	0xc8d67	0x1415e77f0	cstring	 Showing all
+classic	journal-renderer-and-card-fields	0xc8f32	0x1415e64cc	cstring	/
+classic	journal-renderer-and-card-fields	0xc927c	0x1415e77d8	cstring	 Showing important
+classic	journal-renderer-and-card-fields	0xc92b7	0x1415e77f0	cstring	 Showing all
+classic	journal-renderer-and-card-fields	0xc9470	0x1415e64cc	cstring	/
+classic	journal-renderer-and-card-fields	0xc97bc	0x1415e77d8	cstring	 Showing important
+classic	journal-renderer-and-card-fields	0xc97f7	0x1415e77f0	cstring	 Showing all
+classic	journal-renderer-and-card-fields	0xc99b0	0x1415e64cc	cstring	/
+classic	journal-renderer-and-card-fields	0xc9da0	0x1415e64cc	cstring	/
+classic	journal-renderer-and-card-fields	0xca0bc	0x1415e77c0	cstring	: Toggle line
+classic	journal-renderer-and-card-fields	0xca216	0x1415e77d0	cstring	...
+classic	journal-renderer-and-card-fields	0xca25a	0x1415e783c	cstring	_
+classic	journal-record-initializer-and-artifact-full-title	0xbeb27	0x1415e7160	cstring	Unknown
+classic	journal-record-initializer-and-artifact-full-title	0xbf236	0x1415e7160	cstring	Unknown
+classic	journal-record-initializer-and-artifact-full-title	0xbf3e8	0x1415e7160	cstring	Unknown
+classic	journal-record-initializer-and-artifact-full-title	0xbf623	0x1415e7160	cstring	Unknown
+classic	journal-record-initializer-and-artifact-full-title	0xbfc20	0x1415e40c4	cstring	, 
+classic	journal-record-initializer-and-artifact-full-title	0xbfc49	0x1415e40c4	cstring	, 
+classic	journal-record-initializer-and-artifact-full-title	0xbfcbf	0x1415e7160	cstring	Unknown
+classic	journal-artifact-description-and-location	0xd0c30	0x1415e7ec8/16	vector	It is traditiona
+classic	journal-artifact-description-and-location	0xd0c3a	0x1415e7ed8/16	vector	lly thought to b
+classic	journal-artifact-description-and-location	0xd0c45	0x1415e7ee8	cstring	e 
+classic	journal-artifact-description-and-location	0xd0c7a	0x1415e7f38/16	vector	It was last seen
+classic	journal-artifact-description-and-location	0xd0c84	0x1415e7f48	cstring	 
+classic	journal-artifact-description-and-location	0xd0ca9	0x1415e7f50/16	vector	It was last rumo
+classic	journal-artifact-description-and-location	0xd0cb3	0x1415e7f60	cstring	red to be 
+classic	journal-artifact-description-and-location	0xd0cc0	0x1415e7f68	cstring	e 
+classic	journal-artifact-description-and-location	0xd0ceb	0x1415e7f20	cstring	held by 
+classic	journal-artifact-description-and-location	0xd0da7	0x1415e7f2c	cstring	 in 
+classic	journal-artifact-description-and-location	0xd0dd1	0x1415e3574	cstring	.
+classic	journal-artifact-description-and-location	0xd0eef	0x1415e7f2c	cstring	 in 
+classic	journal-artifact-description-and-location	0xd0f05	0x1415e7fac	cstring	in 
+classic	journal-artifact-description-and-location	0xd1176	0x1415e7fac	cstring	in 
+classic	journal-artifact-description-and-location	0xd11fa	0x1415e7fac	cstring	in 
+classic	journal-artifact-description-and-location	0xd124b	0x1416da480	cstring	the Underworld
+classic	journal-artifact-description-and-location	0xd1266	0x1416da490	cstring	the magma sea
+classic	journal-artifact-description-and-location	0xd1281	0x1416da4f8	cstring	the depths of the world
+classic	journal-artifact-description-and-location	0xd129c	0x1416da4b0	cstring	an unknown underground region
+classic	complete-item-description	0xc72093	0x14167fd98	cstring	[P]
+classic	complete-item-description	0xc72336	0x1416e8e20	cstring	This is
+classic	complete-item-description	0xc7233d	0x1416e8e28	cstring	These are
+classic	complete-item-description	0xc72358	0x1416443ac	cstring	 a
+classic	complete-item-description	0xc7238d	0x14164412c	cstring	n
+classic	complete-item-description	0xc72399	0x1416e8e08	cstring	This is a stack of
+classic	complete-item-description	0xc723b7	0x1415e3720	cstring	 
+classic	complete-item-description	0xc723f1	0x141610720	cstring	These are 
+classic	complete-item-description	0xc72417	0x1416e9390	cstring	 bundles of
+classic	complete-item-description	0xc72420	0x1416e9378	cstring	This is a bundle of
+classic	complete-item-description	0xc7249a	0x1416e9308	cstring	 masterfully prepared
+classic	complete-item-description	0xc724a3	0x1416e9320	cstring	 exceptional prepared
+classic	complete-item-description	0xc724ac	0x1416e9338	cstring	 superiorly prepared
+classic	complete-item-description	0xc724b5	0x1416e9350	cstring	 finely-prepared
+classic	complete-item-description	0xc724be	0x1416e9368	cstring	 well-prepared
+classic	complete-item-description	0xc724e5	0x1416e92d0	cstring	 masterful
+classic	complete-item-description	0xc724ee	0x1416e92e0	cstring	 exceptional
+classic	complete-item-description	0xc724f7	0x1416e92f0	cstring	 superior quality
+classic	complete-item-description	0xc72500	0x141668610	cstring	 finely-crafted
+classic	complete-item-description	0xc72509	0x141668640	cstring	 well-crafted
+classic	complete-item-description	0xc72518	0x1415e3720	cstring	 
+classic	complete-item-description	0xc72583	0x1416d3be8	cstring	 created by 
+classic	complete-item-description	0xc7259e	0x1415f8b40	cstring	[LPAGE:HF:
+classic	complete-item-description	0xc725bb	0x1415f8664	cstring	]
+classic	complete-item-description	0xc725f9	0x1415f8b50	cstring	[/LPAGE]
+classic	complete-item-description	0xc7260d	0x1415f8850	cstring	.  
+classic	complete-item-description	0xc72630	0x1416e92a4	cstring	All 
+classic	complete-item-description	0xc7269e	0x1416e92b0	cstring	 created by an unknown artisan
+classic	complete-item-description	0xc726b6	0x141625fe8	cstring	craftsman
+classic	complete-item-description	0xc726d2	0x1416e9280	cstring	ship is of the highest quality.  
+classic	complete-item-description	0xc72739	0x1416e9268	cstring	It is sized for 
+classic	complete-item-description	0xc72770	0x1415f8850	cstring	.  
+classic	complete-item-description	0xc72862	0x14163ae74	cstring	[R]
+classic	complete-item-description	0xc7287d	0x14163ae74	cstring	[R]
+classic	complete-item-description	0xc728b9	0x1416e9250	cstring	The ingredients are 
+classic	complete-item-description	0xc728e5	0x1416e9208	cstring	minced 
+classic	complete-item-description	0xc7291e	0x1416e9210	cstring	masterfully 
+classic	complete-item-description	0xc72927	0x1416e9220	cstring	exceptionally 
+classic	complete-item-description	0xc72930	0x1416e9230	cstring	superiorly 
+classic	complete-item-description	0xc72939	0x1416e9240	cstring	finely 
+classic	complete-item-description	0xc72942	0x1416e9248	cstring	well-
+classic	complete-item-description	0xc7295f	0x1416e9200	cstring	cooked 
+classic	complete-item-description	0xc72a1a	0x1415e40c4	cstring	, 
+classic	complete-item-description	0xc72a29	0x1415e40bc	cstring	 and 
+classic	complete-item-description	0xc72a40	0x1415f8850	cstring	.  
+classic	complete-item-description	0xc72a53	0x1416e9208	cstring	minced 
+classic	complete-item-description	0xc72af8	0x14163ae74	cstring	[R]
+classic	complete-item-description	0xc72b04	0x1415e4718	cstring	The pages are blank.
+classic	complete-item-description	0xc72d34	0x1416e91f8	cstring	It is 
+classic	complete-item-description	0xc72d5f	0x1416e91b8	cstring	glazed with
+classic	complete-item-description	0xc72d68	0x1416e91c8	cstring	decorated with
+classic	complete-item-description	0xc72d71	0x1416e91d8	cstring	studded with
+classic	complete-item-description	0xc72d7a	0x1416e91e8	cstring	encrusted with
+classic	complete-item-description	0xc72d89	0x1415e3720	cstring	 
+classic	complete-item-description	0xc73060	0x1416e9148	cstring	masterfully prepared 
+classic	complete-item-description	0xc73069	0x1416e9160	cstring	exceptionally prepared 
+classic	complete-item-description	0xc73072	0x1416e9178	cstring	superior quality 
+classic	complete-item-description	0xc7307b	0x1416e9190	cstring	finely-prepared 
+classic	complete-item-description	0xc73084	0x1416e91a8	cstring	well-prepared 
+classic	complete-item-description	0xc730a6	0x1416e90f8	cstring	masterfully worked 
+classic	complete-item-description	0xc730af	0x1416e9110	cstring	exceptionally worked 
+classic	complete-item-description	0xc730b8	0x1416e9128	cstring	finely-crafted 
+classic	complete-item-description	0xc730c1	0x1416e9138	cstring	well-crafted 
+classic	complete-item-description	0xc731e1	0x1415e8a08	cstring	 by 
+classic	complete-item-description	0xc731f8	0x1415f8b40	cstring	[LPAGE:HF:
+classic	complete-item-description	0xc73215	0x1415f8664	cstring	]
+classic	complete-item-description	0xc73253	0x1415f8b50	cstring	[/LPAGE]
+classic	complete-item-description	0xc7325f	0x1416e90e0	cstring	 by an unknown artist
+classic	complete-item-description	0xc73283	0x1415e40c4	cstring	, 
+classic	complete-item-description	0xc73291	0x1415e40bc	cstring	 and 
+classic	complete-item-description	0xc732dc	0x1415e40c4	cstring	, 
+classic	complete-item-description	0xc732e7	0x1415e40bc	cstring	 and 
+classic	complete-item-description	0xc732f0	0x1415f8850	cstring	.  
+classic	complete-item-description	0xc7332f	0x1416e91f8	cstring	It is 
+classic	complete-item-description	0xc7333e	0x1416e90c0	cstring	encircled with bands of 
+classic	complete-item-description	0xc733d0	0x1416e90f8	cstring	masterfully worked 
+classic	complete-item-description	0xc733d9	0x1416e9110	cstring	exceptionally worked 
+classic	complete-item-description	0xc733e2	0x1416e9178	cstring	superior quality 
+classic	complete-item-description	0xc733eb	0x1416e9128	cstring	finely-crafted 
+classic	complete-item-description	0xc733f4	0x1416e9138	cstring	well-crafted 
+classic	complete-item-description	0xc7350b	0x1415e8a08	cstring	 by 
+classic	complete-item-description	0xc73525	0x1415f8b40	cstring	[LPAGE:HF:
+classic	complete-item-description	0xc73542	0x1415f8664	cstring	]
+classic	complete-item-description	0xc73580	0x1415f8b50	cstring	[/LPAGE]
+classic	complete-item-description	0xc7359f	0x1415e40c4	cstring	, 
+classic	complete-item-description	0xc735ae	0x1415e40bc	cstring	 and 
+classic	complete-item-description	0xc735e8	0x1415e40c4	cstring	, 
+classic	complete-item-description	0xc735f3	0x1415e40bc	cstring	 and 
+classic	complete-item-description	0xc735fc	0x1415f8850	cstring	.  
+classic	complete-item-description	0xc7393d	0x1415e89c4	cstring	The 
+classic	complete-item-description	0xc73a07	0x1416e90b0	cstring	 are made from 
+classic	complete-item-description	0xc73a10	0x1416e90a0	cstring	 is made from 
+classic	complete-item-description	0xc73a76	0x1416e90f8	cstring	masterfully worked 
+classic	complete-item-description	0xc73a7f	0x1416e9110	cstring	exceptionally worked 
+classic	complete-item-description	0xc73a88	0x1416e9178	cstring	superior quality 
+classic	complete-item-description	0xc73a91	0x1416e9128	cstring	finely-crafted 
+classic	complete-item-description	0xc73a9a	0x1416e9138	cstring	well-crafted 
+classic	complete-item-description	0xc73b4a	0x1415e8a08	cstring	 by 
+classic	complete-item-description	0xc73b64	0x1415f8b40	cstring	[LPAGE:HF:
+classic	complete-item-description	0xc73b81	0x1415f8664	cstring	]
+classic	complete-item-description	0xc73bbf	0x1415f8b50	cstring	[/LPAGE]
+classic	complete-item-description	0xc73bd0	0x1415f8850	cstring	.  
+classic	complete-item-description	0xc73c66	0x1416e9040	cstring	The chain is 
+classic	complete-item-description	0xc73c6f	0x1416e9050	cstring	The rope is 
+classic	complete-item-description	0xc73c78	0x1416e9060	cstring	The rollers are made from 
+classic	complete-item-description	0xc73c81	0x1416e9080	cstring	The handle is made from 
+classic	complete-item-description	0xc73cc5	0x1416e90f8	cstring	masterfully worked 
+classic	complete-item-description	0xc73cce	0x1416e9110	cstring	exceptionally worked 
+classic	complete-item-description	0xc73cd7	0x1416e9178	cstring	superior quality 
+classic	complete-item-description	0xc73ce0	0x1416e9128	cstring	finely-crafted 
+classic	complete-item-description	0xc73ce9	0x1416e9138	cstring	well-crafted 
+classic	complete-item-description	0xc73d9b	0x1415e8a08	cstring	 by 
+classic	complete-item-description	0xc73db5	0x1415f8b40	cstring	[LPAGE:HF:
+classic	complete-item-description	0xc73dd2	0x1415f8664	cstring	]
+classic	complete-item-description	0xc73e10	0x1415f8b50	cstring	[/LPAGE]
+classic	complete-item-description	0xc73e1f	0x1415f8850	cstring	.  
+classic	complete-item-description	0xc73e90	0x1416e9030	cstring	This object 
+classic	complete-item-description	0xc73ea5	0x1416e9008	cstring	is adorned with hanging rings of 
+classic	complete-item-description	0xc73f32	0x1416e90f8	cstring	masterfully worked 
+classic	complete-item-description	0xc73f3b	0x1416e9110	cstring	exceptionally worked 
+classic	complete-item-description	0xc73f44	0x1416e9178	cstring	superior quality 
+classic	complete-item-description	0xc73f4d	0x1416e9128	cstring	finely-crafted 
+classic	complete-item-description	0xc73f56	0x1416e9138	cstring	well-crafted 
+classic	complete-item-description	0xc74007	0x1415e8a08	cstring	 by 
+classic	complete-item-description	0xc74021	0x1415f8b40	cstring	[LPAGE:HF:
+classic	complete-item-description	0xc7403e	0x1415f8664	cstring	]
+classic	complete-item-description	0xc7407c	0x1415f8b50	cstring	[/LPAGE]
+classic	complete-item-description	0xc74096	0x1415e40c4	cstring	, 
+classic	complete-item-description	0xc740a5	0x1415e40bc	cstring	 and 
+classic	complete-item-description	0xc740e9	0x1415e40c4	cstring	, 
+classic	complete-item-description	0xc740f5	0x1415e40bc	cstring	 and 
+classic	complete-item-description	0xc740fe	0x1415f8850	cstring	.  
+classic	complete-item-description	0xc7411b	0x1416e9030	cstring	This object 
+classic	complete-item-description	0xc7412a	0x1416e8ff0	cstring	menaces with spikes of 
+classic	complete-item-description	0xc741b3	0x1416e90f8	cstring	masterfully worked 
+classic	complete-item-description	0xc741bc	0x1416e9110	cstring	exceptionally worked 
+classic	complete-item-description	0xc741c5	0x1416e9178	cstring	superior quality 
+classic	complete-item-description	0xc741ce	0x1416e9128	cstring	finely-crafted 
+classic	complete-item-description	0xc741d7	0x1416e9138	cstring	well-crafted 
+classic	complete-item-description	0xc7428c	0x1415e8a08	cstring	 by 
+classic	complete-item-description	0xc742a3	0x1415f8b40	cstring	[LPAGE:HF:
+classic	complete-item-description	0xc742c0	0x1415f8664	cstring	]
+classic	complete-item-description	0xc742fe	0x1415f8b50	cstring	[/LPAGE]
+classic	complete-item-description	0xc7431d	0x1415e40c4	cstring	, 
+classic	complete-item-description	0xc7432c	0x1415e40bc	cstring	 and 
+classic	complete-item-description	0xc7435f	0x1415e40c4	cstring	, 
+classic	complete-item-description	0xc7436b	0x1415e40bc	cstring	 and 
+classic	complete-item-description	0xc74374	0x1415f8850	cstring	.  
+classic	complete-item-description	0xc74495	0x1416e8fd8	cstring	It is made from 
+classic	complete-item-description	0xc744f8	0x1415f8850	cstring	.  
+classic	complete-item-description	0xc7451c	0x14163ae74	cstring	[R]
+classic	complete-item-description	0xc74537	0x14163ae74	cstring	[R]
+classic	complete-item-description	0xc74717	0x1416e8fd8	cstring	It is made from 
+classic	complete-item-description	0xc7475d	0x1415f8850	cstring	.  
+classic	complete-item-description	0xc7484a	0x14163ae74	cstring	[R]
+classic	complete-item-description	0xc74865	0x14163ae74	cstring	[R]
+classic	complete-item-description	0xc74a88	0x1416e8fb8	cstring	On the faces of the object are 
+classic	complete-item-description	0xc74ad6	0x1416e8f38	cstring	numbers
+classic	complete-item-description	0xc74af9	0x1416e8f40	cstring	, ranging from 
+classic	complete-item-description	0xc74b2c	0x1415e8524	cstring	 to 
+classic	complete-item-description	0xc74b78	0x1416e8f50	cstring	dots
+classic	complete-item-description	0xc74b9b	0x1416e8f40	cstring	, ranging from 
+classic	complete-item-description	0xc74bce	0x1415e8524	cstring	 to 
+classic	complete-item-description	0xc74c1a	0x1416e8fa8	cstring	a series of 
+classic	complete-item-description	0xc74c37	0x1416e8f58	cstring	 symbols
+classic	complete-item-description	0xc74c43	0x1416e8fa8	cstring	a series of 
+classic	complete-item-description	0xc74c60	0x1416e8f80	cstring	 words
+classic	complete-item-description	0xc74c74	0x1416e8f68	cstring	 which you cannot read
+classic	complete-item-description	0xc74c7d	0x1416e8fa8	cstring	a series of 
+classic	complete-item-description	0xc74c9a	0x1416e8f88	cstring	 images
+classic	complete-item-description	0xc74ca3	0x1416e8fa8	cstring	a series of 
+classic	complete-item-description	0xc74cc0	0x1416e8f90	cstring	 images and symbols
+classic	complete-item-description	0xc74cd0	0x1415e3574	cstring	.
+classic	complete-item-description	0xc74d31	0x1415f7ff8	cstring	  
+classic	complete-item-description	0xc74d40	0x1416e8f20	cstring	The upward face is 
+classic	complete-item-description	0xc74d7d	0x1415e3574	cstring	.
+classic	complete-item-description	0xc74eeb	0x14163ae74	cstring	[R]
+classic	complete-item-description	0xc74f05	0x14163ae74	cstring	[R]
+classic	complete-item-description	0xc74f1b	0x14163ae74	cstring	[R]
+classic	complete-item-description	0xc74f27	0x1416e8ee8	cstring	There is writing on this item which you have not read.
+classic	complete-item-description	0xc74f36	0x14163ae74	cstring	[R]
+classic	complete-item-description	0xc74f42	0x1415f7ff8	cstring	  
+classic	complete-item-description	0xc74f4e	0x1416e8ee8	cstring	There is writing on this item which you have not read.
+classic	complete-item-description	0xc74f69	0x14163ae74	cstring	[R]
+classic	complete-item-description	0xc74f75	0x1416e8eb0	cstring	There is writing on this item, but you cannot read.
+classic	complete-item-description	0xc74f84	0x14163ae74	cstring	[R]
+classic	complete-item-description	0xc74f8d	0x1415f7ff8	cstring	  
+classic	complete-item-description	0xc74f99	0x1416e8eb0	cstring	There is writing on this item, but you cannot read.
+classic	complete-item-description	0xc74faa	0x1415f7ff8	cstring	  
+classic	complete-item-description	0xc74fc4	0x1415f7ff8	cstring	  
+classic	complete-item-description	0xc7503a	0x1416e8e98	cstring	The material is 
+classic	complete-item-description	0xc75067	0x1415e3574	cstring	.
+classic	complete-item-description	0xc75083	0x14163ae74	cstring	[R]
+classic	complete-item-description	0xc75094	0x1415f7ff8	cstring	  
+classic	complete-item-description	0xc750af	0x1415f7ff8	cstring	  
+classic	complete-item-description	0xc750bb	0x1415e4718	cstring	The pages are blank.
+classic	complete-item-description	0xc750ca	0x1415f7ff8	cstring	  
+classic	complete-item-description	0xc7518c	0x14163ae74	cstring	[R]
+classic	complete-item-description	0xc751b1	0x14163ae74	cstring	[R]
+classic	complete-item-description	0xc751ca	0x14163ae74	cstring	[R]
+classic	complete-item-description	0xc751d6	0x1416e8e78	cstring	You have not read this book.
+classic	complete-item-description	0xc751df	0x1415f7ff8	cstring	  
+classic	complete-item-description	0xc751eb	0x1416e8e78	cstring	You have not read this book.
+classic	complete-item-description	0xc75204	0x14163ae74	cstring	[R]
+classic	complete-item-description	0xc75210	0x1416e8e40	cstring	There is writing in the book, but you cannot read.
+classic	complete-item-description	0xc7521f	0x14163ae74	cstring	[R]
+classic	complete-item-description	0xc75230	0x1415f7ff8	cstring	  
+classic	complete-item-description	0xc7523c	0x1416e8e40	cstring	There is writing in the book, but you cannot read.
+classic	complete-item-description	0xc75248	0x1415f7ff8	cstring	  
+classic	complete-item-description	0xc7526d	0x1415f7ff8	cstring	  
+classic	complete-item-description	0xc75310	0x1416e8e98	cstring	The material is 
+classic	complete-item-description	0xc7533d	0x1415e3574	cstring	.
+classic	complete-item-description	0xc75354	0x14163ae74	cstring	[R]
+classic	complete-item-description	0xc75365	0x1415f7ff8	cstring	  
+classic	complete-item-description	0xc75376	0x1416e98c8	cstring	The thread is 
+classic	complete-item-description	0xc753d8	0x1416e98bc	cstring	gray
+classic	complete-item-description	0xc753f3	0x1415e40c4	cstring	, 
+classic	complete-item-description	0xc75424	0x1416e9210	cstring	masterfully 
+classic	complete-item-description	0xc7542d	0x1416e9220	cstring	exceptionally 
+classic	complete-item-description	0xc75436	0x1416e98b0	cstring	superbly 
+classic	complete-item-description	0xc7543f	0x1416e9240	cstring	finely 
+classic	complete-item-description	0xc75448	0x1416e9248	cstring	well-
+classic	complete-item-description	0xc75457	0x1416e98a8	cstring	colored
+classic	complete-item-description	0xc754e1	0x1415e9590	cstring	 with 
+classic	complete-item-description	0xc75508	0x1416e9898	cstring	a mixture of 
+classic	complete-item-description	0xc755aa	0x1415e40c4	cstring	, 
+classic	complete-item-description	0xc755ce	0x1415e3720	cstring	 
+classic	complete-item-description	0xc755e3	0x1416e988c	cstring	and 
+classic	complete-item-description	0xc75636	0x1415e9590	cstring	 with 
+classic	complete-item-description	0xc756b9	0x1415e8a08	cstring	 by 
+classic	complete-item-description	0xc756d9	0x1415f8b40	cstring	[LPAGE:HF:
+classic	complete-item-description	0xc7571f	0x1415f8664	cstring	]
+classic	complete-item-description	0xc7577d	0x1415f8b50	cstring	[/LPAGE]
+classic	complete-item-description	0xc7578f	0x1415f8850	cstring	.  
+classic	complete-item-description	0xc757fc	0x1416e8e98	cstring	The material is 
+classic	complete-item-description	0xc75829	0x1415e3574	cstring	.
+classic	complete-item-description	0xc75842	0x14163ae74	cstring	[R]
+classic	complete-item-description	0xc75853	0x1415f7ff8	cstring	  
+classic	complete-item-description	0xc7586a	0x1416e8e98	cstring	The material is 
+classic	complete-item-description	0xc758ce	0x1416e98bc	cstring	gray
+classic	complete-item-description	0xc758f3	0x1415e40c4	cstring	, 
+classic	complete-item-description	0xc75924	0x1416e9210	cstring	masterfully 
+classic	complete-item-description	0xc7592d	0x1416e9220	cstring	exceptionally 
+classic	complete-item-description	0xc75936	0x1416e98b0	cstring	superbly 
+classic	complete-item-description	0xc7593f	0x1416e9240	cstring	finely 
+classic	complete-item-description	0xc75948	0x1416e9248	cstring	well-
+classic	complete-item-description	0xc7595d	0x1416e98a8	cstring	colored
+classic	complete-item-description	0xc759f1	0x1415e9590	cstring	 with 
+classic	complete-item-description	0xc75a1e	0x1416e9898	cstring	a mixture of 
+classic	complete-item-description	0xc75ac8	0x1415e40c4	cstring	, 
+classic	complete-item-description	0xc75aec	0x1415e3720	cstring	 
+classic	complete-item-description	0xc75b01	0x1416e988c	cstring	and 
+classic	complete-item-description	0xc75b54	0x1415e9590	cstring	 with 
+classic	complete-item-description	0xc75bd7	0x1415e8a08	cstring	 by 
+classic	complete-item-description	0xc75bf7	0x1415f8b40	cstring	[LPAGE:HF:
+classic	complete-item-description	0xc75c3d	0x1415f8664	cstring	]
+classic	complete-item-description	0xc75c9b	0x1415f8b50	cstring	[/LPAGE]
+classic	complete-item-description	0xc75cad	0x1415f8850	cstring	.  
+classic	complete-item-description	0xc75d48	0x14163ae74	cstring	[R]
+classic	complete-item-description	0xc75d63	0x14163ae74	cstring	[R]
+classic	complete-item-description	0xc75d72	0x1415f7ff8	cstring	  
+classic	complete-item-description	0xc75d90	0x1415f7ff8	cstring	  
+classic	complete-item-description	0xc75dfc	0x1416e9868	cstring	When used as a dye, it produces 
+classic	complete-item-description	0xc75e28	0x1415e3574	cstring	.
+classic	complete-item-description	0xc75e42	0x14163ae74	cstring	[R]
+classic	complete-item-description	0xc75e51	0x1415f7ff8	cstring	  
+classic	complete-item-description	0xc75ece	0x14163ae74	cstring	[R]
+classic	complete-item-description	0xc75ee0	0x1416e9818	cstring	There is writing on the slab, but you cannot read.
+classic	complete-item-description	0xc75ef2	0x14163ae74	cstring	[R]
+classic	complete-item-description	0xc75f0c	0x1415f7ff8	cstring	  
+classic	complete-item-description	0xc75f1e	0x1416e9818	cstring	There is writing on the slab, but you cannot read.
+classic	complete-item-description	0xc75f33	0x1415f7ff8	cstring	  
+classic	complete-item-description	0xc75f52	0x14163ae74	cstring	[R]
+classic	complete-item-description	0xc75f61	0x1415f7ff8	cstring	  
+classic	complete-item-description	0xc75f73	0x1416e9850	cstring	"The slab reads """
+classic	complete-item-description	0xc75f98	0x1416e984c	cstring	"""."
+classic	complete-item-description	0xc75fb2	0x14163ae74	cstring	[R]
+classic	complete-item-description	0xc75fc1	0x1415f7ff8	cstring	  
+classic	complete-item-description	0xc762a4	0x1416e97b0	cstring	This object is in tatters.  
+classic	complete-item-description	0xc762b3	0x1416e97d0	cstring	This object is threadbare.  
+classic	complete-item-description	0xc762d3	0x1416e9770	cstring	This object is mangled.  
+classic	complete-item-description	0xc762e2	0x1416e9790	cstring	This object is heavily worn.  
+classic	complete-item-description	0xc762eb	0x1416e97f0	cstring	This object is showing some wear.  
+classic	complete-item-description	0xc76376	0x1416e91f8	cstring	It is 
+classic	complete-item-description	0xc763a3	0x1416e9764	cstring	coated
+classic	complete-item-description	0xc763b2	0x1416e9758	cstring	spattered
+classic	complete-item-description	0xc763c4	0x1415e9590	cstring	 with 
+classic	complete-item-description	0xc76436	0x1415f8850	cstring	.  
+classic	complete-item-description	0xc76516	0x1415f7ff8	cstring	  
+classic	complete-item-description	0xc76569	0x1415f8388	cstring	[B]
+classic	complete-item-description	0xc7658f	0x1415f8388	cstring	[B]
+classic	complete-item-description	0xc7659e	0x1415f7ff8	cstring	  
+classic	complete-item-description	0xc765c7	0x1415f7ff8	cstring	  
+classic	complete-item-description	0xc76606	0x1415f8388	cstring	[B]
+classic	complete-item-description	0xc7662c	0x1415f8388	cstring	[B]
+classic	complete-item-description	0xc7663b	0x1415f7ff8	cstring	  
+classic	complete-item-description	0xc76664	0x1415f7ff8	cstring	  
+classic	item-identity-and-quality	0xc62734	0x1416e8e38	cstring	 (copy)
+classic	writing-on-item	0xcc3b21	0x1416eae08	cstring	There used to be writing on the item.  
+classic	writing-on-item	0xcc3b78	0x1416eadf0	cstring	Written on the item is 
+classic	writing-on-item	0xcc3b95	0x1416eade0	cstring	an untitled
+classic	writing-on-item	0xcc3bc1	0x1415fdc68	cstring	an
+classic	writing-on-item	0xcc3bd0	0x1415fdc64	cstring	a
+classic	writing-on-item	0xcc3beb	0x1415e3720	cstring	 
+classic	writing-on-item	0xcc3c23	0x1415fdc44	cstring	manual
+classic	writing-on-item	0xcc3c2f	0x1415fdc3c	cstring	guide
+classic	writing-on-item	0xcc3c41	0x1415fddf8	cstring	chronicle
+classic	writing-on-item	0xcc3c53	0x1415fdde8	cstring	short story
+classic	writing-on-item	0xcc3c5f	0x1415fdddc	cstring	novel
+classic	writing-on-item	0xcc3c71	0x1415fddd0	cstring	biography
+classic	writing-on-item	0xcc3c83	0x1415fddc0	cstring	autobiography
+classic	writing-on-item	0xcc3c95	0x1415fddb4	cstring	poem
+classic	writing-on-item	0xcc3ca7	0x1415fddac	cstring	play
+classic	writing-on-item	0xcc3cb9	0x1415fdda4	cstring	letter
+classic	writing-on-item	0xcc3cc5	0x1415fdd9c	cstring	essay
+classic	writing-on-item	0xcc3cd7	0x1415fdd94	cstring	dialog
+classic	writing-on-item	0xcc3ce9	0x1415fdd80	cstring	musical composition
+classic	writing-on-item	0xcc3cfb	0x1415fdd70	cstring	choreography
+classic	writing-on-item	0xcc3d0d	0x1415fdd58	cstring	comparative biography
+classic	writing-on-item	0xcc3d1f	0x1415fdd40	cstring	biographical dictionary
+classic	writing-on-item	0xcc3d31	0x1415fdd30	cstring	genealogy
+classic	writing-on-item	0xcc3d43	0x1415fdd20	cstring	encyclopedia
+classic	writing-on-item	0xcc3d52	0x1415fdec0	cstring	cultural history
+classic	writing-on-item	0xcc3d61	0x1415fdea8	cstring	cultural comparison
+classic	writing-on-item	0xcc3d70	0x1415fde90	cstring	alternate history
+classic	writing-on-item	0xcc3d7f	0x1415fde68	cstring	treatise on technological evolution
+classic	writing-on-item	0xcc3d8e	0x1415fde58	cstring	dictionary
+classic	writing-on-item	0xcc3d9d	0x1415fde48	cstring	star chart
+classic	writing-on-item	0xcc3dac	0x1415fde38	cstring	star catalogue
+classic	writing-on-item	0xcc3db5	0x1415fde30	cstring	atlas
+classic	writing-on-item	0xcc3dd7	0x1416eadd0	cstring	 entitled 
+classic	writing-on-item	0xcc3e6f	0x1415fde20	cstring	, authored by 
+classic	writing-on-item	0xcc3eab	0x1415f8b40	cstring	[LPAGE:HF:
+classic	writing-on-item	0xcc3ece	0x1415f8664	cstring	]
+classic	writing-on-item	0xcc3f59	0x1415f8b50	cstring	[/LPAGE]
+classic	writing-on-item	0xcc3faf	0x1415f8850	cstring	.  
+classic	writing-in-pages	0xcc4090	0x1416eada8	cstring	The written portion consists of 
+classic	writing-in-pages	0xcc4141	0x141616f60	cstring	nothing.
+classic	writing-in-pages	0xcc419a	0x1415e8618	cstring	a 
+classic	writing-in-pages	0xcc41bf	0x1416ead9c	cstring	 page 
+classic	writing-in-pages	0xcc41db	0x1416ead90	cstring	untitled 
+classic	writing-in-pages	0xcc4210	0x1415fdc44	cstring	manual
+classic	writing-in-pages	0xcc421c	0x1415fdc3c	cstring	guide
+classic	writing-in-pages	0xcc422e	0x1415fddf8	cstring	chronicle
+classic	writing-in-pages	0xcc4240	0x1415fdde8	cstring	short story
+classic	writing-in-pages	0xcc424c	0x1415fdddc	cstring	novel
+classic	writing-in-pages	0xcc425e	0x1415fddd0	cstring	biography
+classic	writing-in-pages	0xcc4270	0x1415fddc0	cstring	autobiography
+classic	writing-in-pages	0xcc4282	0x1415fddb4	cstring	poem
+classic	writing-in-pages	0xcc4294	0x1415fddac	cstring	play
+classic	writing-in-pages	0xcc42a6	0x1415fdda4	cstring	letter
+classic	writing-in-pages	0xcc42b2	0x1415fdd9c	cstring	essay
+classic	writing-in-pages	0xcc42c4	0x1415fdd94	cstring	dialog
+classic	writing-in-pages	0xcc42d6	0x1415fdd80	cstring	musical composition
+classic	writing-in-pages	0xcc42e8	0x1415fdd70	cstring	choreography
+classic	writing-in-pages	0xcc42fa	0x1415fdd58	cstring	comparative biography
+classic	writing-in-pages	0xcc430c	0x1415fdd40	cstring	biographical dictionary
+classic	writing-in-pages	0xcc431e	0x1415fdd30	cstring	genealogy
+classic	writing-in-pages	0xcc4330	0x1415fdd20	cstring	encyclopedia
+classic	writing-in-pages	0xcc433f	0x1415fdec0	cstring	cultural history
+classic	writing-in-pages	0xcc434e	0x1415fdea8	cstring	cultural comparison
+classic	writing-in-pages	0xcc435d	0x1415fde90	cstring	alternate history
+classic	writing-in-pages	0xcc436c	0x1415fde68	cstring	treatise on technological evolution
+classic	writing-in-pages	0xcc437b	0x1415fde58	cstring	dictionary
+classic	writing-in-pages	0xcc438a	0x1415fde48	cstring	star chart
+classic	writing-in-pages	0xcc4399	0x1415fde38	cstring	star catalogue
+classic	writing-in-pages	0xcc43a2	0x1415fde30	cstring	atlas
+classic	writing-in-pages	0xcc43c9	0x1416eadd0	cstring	 entitled 
+classic	writing-in-pages	0xcc446c	0x1415fde20	cstring	, authored by 
+classic	writing-in-pages	0xcc44a8	0x1415f8b40	cstring	[LPAGE:HF:
+classic	writing-in-pages	0xcc44cb	0x1415f8664	cstring	]
+classic	writing-in-pages	0xcc4556	0x1415f8b50	cstring	[/LPAGE]
+classic	writing-in-pages	0xcc45ac	0x1415f8850	cstring	.  
+classic	writing-content-and-style	0xcc2e4d	0x1416ea810	cstring	"It asks the question, ""What if "
+classic	writing-content-and-style	0xcc2ea6	0x1416ea7f0	cstring	" had unfolded differently?""  "
+classic	writing-content-and-style	0xcc2ef4	0x1416ea7d0	cstring	It concerns the lineage of 
+classic	writing-content-and-style	0xcc2f4d	0x1415f8850	cstring	.  
+classic	writing-content-and-style	0xcc2f71	0x1416ea7c0	cstring	It concerns 
+classic	writing-content-and-style	0xcc2ffa	0x1415e40c4	cstring	, 
+classic	writing-content-and-style	0xcc300f	0x1415e40bc	cstring	 and 
+classic	writing-content-and-style	0xcc301e	0x1415f8850	cstring	.  
+classic	writing-content-and-style	0xcc304a	0x1416ea798	cstring	The work has no particular subject.  
+classic	writing-content-and-style	0xcc3085	0x1416ea768	cstring	The writing conveys a moral lesson regarding 
+classic	writing-content-and-style	0xcc30e3	0x1415f8850	cstring	.  
+classic	writing-content-and-style	0xcc313d	0x1416ea748	cstring	The overall text emphasizes 
+classic	writing-content-and-style	0xcc319b	0x1415f8850	cstring	.  
+classic	writing-content-and-style	0xcc31f5	0x1416ea720	cstring	For lyrics, the composer has selected 
+classic	writing-content-and-style	0xcc3253	0x1415f8850	cstring	.  
+classic	writing-content-and-style	0xcc32ad	0x1416ea6e0	cstring	For musical accompaniment, the choreographer has selected 
+classic	writing-content-and-style	0xcc330b	0x1415f8850	cstring	.  
+classic	writing-content-and-style	0xcc339d	0x1416ea6d0	cstring	The writing 
+classic	writing-content-and-style	0xcc3457	0x1416ea6b0	cstring	 and it 
+classic	writing-content-and-style	0xcc345e	0x1416ea6c0	cstring	 yet it 
+classic	writing-content-and-style	0xcc349b	0x1415f8850	cstring	.  
+classic	writing-content-and-style	0xcc34d7	0x1416ea678	cstring	Overall, the information is compiled masterfully
+classic	writing-content-and-style	0xcc34ee	0x1416ea648	cstring	Overall, the splendid source of information
+classic	writing-content-and-style	0xcc3505	0x1416ea618	cstring	Overall, this is a great source of information
+classic	writing-content-and-style	0xcc351c	0x1416ea5e8	cstring	Overall, this is a good source of information
+classic	writing-content-and-style	0xcc3530	0x1416ea5b0	cstring	Overall, the information is not compiled very well
+classic	writing-content-and-style	0xcc3542	0x1416ea578	cstring	Overall, this is a terrible compilation of information
+classic	writing-content-and-style	0xcc3560	0x1416ea550	cstring	Overall, the poetry is masterful
+classic	writing-content-and-style	0xcc3577	0x1416ea530	cstring	Overall, the poetry is inspired
+classic	writing-content-and-style	0xcc358e	0x1416ea510	cstring	Overall, the poetry is great
+classic	writing-content-and-style	0xcc35a5	0x1416ea4f0	cstring	Overall, the poetry is passable
+classic	writing-content-and-style	0xcc35bf	0x1416ea4b0	cstring	Overall, the poetry is not awful, but not very good either
+classic	writing-content-and-style	0xcc35d1	0x1416ea488	cstring	Overall, the poetry is very, very bad
+classic	writing-content-and-style	0xcc35ef	0x1416ea460	cstring	Overall, the composition is masterful
+classic	writing-content-and-style	0xcc3606	0x1416ea438	cstring	Overall, the composition is inspired
+classic	writing-content-and-style	0xcc361d	0x1416eb138	cstring	Overall, the composition is great
+classic	writing-content-and-style	0xcc3634	0x1416eb110	cstring	Overall, the composition is passable
+classic	writing-content-and-style	0xcc364e	0x1416eb0d0	cstring	Overall, the composition is not awful, but not very good either
+classic	writing-content-and-style	0xcc3660	0x1416eb0a8	cstring	Overall, the composition is atrocious
+classic	writing-content-and-style	0xcc367e	0x1416eb080	cstring	Overall, the choreography is masterful
+classic	writing-content-and-style	0xcc3695	0x1416eb058	cstring	Overall, the choreography is inspired
+classic	writing-content-and-style	0xcc36ac	0x1416eb030	cstring	Overall, the choreography is great
+classic	writing-content-and-style	0xcc36c3	0x1416eb008	cstring	Overall, the choreography is passable
+classic	writing-content-and-style	0xcc36dd	0x1416eafc0	cstring	Overall, the choreography is not awful, but not very good either
+classic	writing-content-and-style	0xcc36ef	0x1416eaf88	cstring	Overall, the choreography is just terrible
+classic	writing-content-and-style	0xcc370a	0x1416eaf68	cstring	Overall, the prose is masterful
+classic	writing-content-and-style	0xcc371e	0x1416eaf48	cstring	Overall, the prose is splendid
+classic	writing-content-and-style	0xcc3732	0x1416eaf28	cstring	Overall, the prose is great
+classic	writing-content-and-style	0xcc3746	0x1416eaf08	cstring	Overall, the prose is passable
+classic	writing-content-and-style	0xcc375a	0x1416eaec8	cstring	Overall, the prose is not awful, but not very good either
+classic	writing-content-and-style	0xcc3769	0x1416eae98	cstring	Overall, the prose is amateurish at best
+classic	writing-content-and-style	0xcc3787	0x1415f8850	cstring	.  
+classic	writing-content-and-style	0xcc37ae	0x1416eae70	cstring	The work has a single chapter.  
+classic	writing-content-and-style	0xcc37c5	0x1416eae60	cstring	The work has 
+classic	writing-content-and-style	0xcc3818	0x1416eae50	cstring	 chapters.  
+classic	writing-content-and-style	0xcc38a1	0x1415e94f8	cstring	It
+classic	writing-content-and-style	0xcc38b5	0x1415e89c4	cstring	The 
+classic	writing-content-and-style	0xcc3914	0x1416eae40	cstring	 chapter
+classic	writing-content-and-style	0xcc3933	0x1416eae30	cstring	 covers 
+classic	writing-content-and-style	0xcc3994	0x1415f8850	cstring	.  
+classic	writing-style-selector	0xcc2591	0x1416ea2a0	cstring	rapidly shifts between topics
+classic	writing-style-selector	0xcc25a9	0x1416ea278	cstring	moves quickly from subject to subject
+classic	writing-style-selector	0xcc25c5	0x1416ea250	cstring	takes frequent interesting tangents
+classic	writing-style-selector	0xcc25dc	0x1416ea238	cstring	hopelessly meanders
+classic	writing-style-selector	0xcc25f4	0x1416ea220	cstring	meanders somewhat
+classic	writing-style-selector	0xcc2610	0x1416ea1f8	cstring	gets off track from time to time
+classic	writing-style-selector	0xcc2627	0x1416ea1d8	cstring	bubbles over with cheerfulness
+classic	writing-style-selector	0xcc263f	0x1416ea1c0	cstring	is quite cheerful
+classic	writing-style-selector	0xcc265b	0x1416ea1a8	cstring	is fairly cheerful
+classic	writing-style-selector	0xcc2672	0x1416ea190	cstring	overflows with sadness
+classic	writing-style-selector	0xcc268a	0x1416ea180	cstring	is depressing
+classic	writing-style-selector	0xcc26a6	0x1416ea160	cstring	has a touch of melancholy
+classic	writing-style-selector	0xcc26c3	0x1416ea148	cstring	is thoroughly organized
+classic	writing-style-selector	0xcc26db	0x1416ea130	cstring	is clearly organized
+classic	writing-style-selector	0xcc26f7	0x1416ea120	cstring	is organized
+classic	writing-style-selector	0xcc270e	0x1416ea100	cstring	is thoroughly mechanical
+classic	writing-style-selector	0xcc2726	0x1416ea0f0	cstring	is very rigid
+classic	writing-style-selector	0xcc2742	0x1416ea0e0	cstring	is a bit stiff
+classic	writing-style-selector	0xcc2759	0x1416ea0c8	cstring	is completely serious
+classic	writing-style-selector	0xcc2771	0x1416ea0b0	cstring	has a very serious tone
+classic	writing-style-selector	0xcc278d	0x1416ea098	cstring	is reasonably serious
+classic	writing-style-selector	0xcc27aa	0x1416ea060	cstring	artfully flashes through seemingly disjoint topics
+classic	writing-style-selector	0xcc27c2	0x1416ea030	cstring	breaks sharply between topics with regularity
+classic	writing-style-selector	0xcc27de	0x1416ea000	cstring	has some particularly crisp changes in topic
+classic	writing-style-selector	0xcc27f5	0x1416e9fe8	cstring	is utterly disjointed
+classic	writing-style-selector	0xcc280d	0x1416e9fd0	cstring	skips around a lot
+classic	writing-style-selector	0xcc2829	0x1416e9fa8	cstring	occasionally changes topic abruptly
+classic	writing-style-selector	0xcc2846	0x1416e9f70	cstring	uses only artful words and phrases selected with care
+classic	writing-style-selector	0xcc285e	0x1416e9f48	cstring	is throughout ornate and refined
+classic	writing-style-selector	0xcc287a	0x1416e9f10	cstring	has rare but particularly exquisite turns of phrase
+classic	writing-style-selector	0xcc2891	0x1416e9ef8	cstring	is excessively ornate
+classic	writing-style-selector	0xcc28a9	0x1416e9ee8	cstring	is quite florid
+classic	writing-style-selector	0xcc28c5	0x1416e9ed0	cstring	is somewhat showy
+classic	writing-style-selector	0xcc28dc	0x1416e9eb0	cstring	drives forward relentlessly
+classic	writing-style-selector	0xcc28f4	0x1416e9e98	cstring	is full of force
+classic	writing-style-selector	0xcc2910	0x1416e9e88	cstring	is forceful
+classic	writing-style-selector	0xcc292d	0x1416e9e68	cstring	is a comedy treasure trove
+classic	writing-style-selector	0xcc2945	0x1416e9e50	cstring	is quite humorous
+classic	writing-style-selector	0xcc2961	0x1416e9e38	cstring	has a touch of humor
+classic	writing-style-selector	0xcc2978	0x1416e9e08	cstring	is littered with terrible jokes inartfully told
+classic	writing-style-selector	0xcc2990	0x1416ead70	cstring	has poorly-executed humor
+classic	writing-style-selector	0xcc29ac	0x1416ead48	cstring	tries and fails to be funny at times
+classic	writing-style-selector	0xcc29c9	0x1416eacf0	cstring	is artfully suffused with what would otherwise be childish and immature material
+classic	writing-style-selector	0xcc29e1	0x1416eaca0	cstring	contains a deft use throughout of what might be considered immature material
+classic	writing-style-selector	0xcc29fd	0x1416eac60	cstring	manages an artful inclusion here and there of childish material
+classic	writing-style-selector	0xcc2a14	0x1416eac48	cstring	is absolutely puerile
+classic	writing-style-selector	0xcc2a2c	0x1416eac30	cstring	is very childish
+classic	writing-style-selector	0xcc2a48	0x1416eac18	cstring	is a bit immature
+classic	writing-style-selector	0xcc2a65	0x1416eabf0	cstring	indulges the author's every whim
+classic	writing-style-selector	0xcc2a7d	0x1416eabc8	cstring	artfully indulges the author's fancies
+classic	writing-style-selector	0xcc2a99	0x1416eab88	cstring	contains some asides related to the author's preferences
+classic	writing-style-selector	0xcc2aaa	0x1416eab68	cstring	is stunningly self-indulgent
+classic	writing-style-selector	0xcc2ac8	0x1416eab50	cstring	is quite self-indulgent
+classic	writing-style-selector	0xcc2ae4	0x1416eab30	cstring	is somewhat self-indulgent
+classic	writing-style-selector	0xcc2afb	0x1416eaaf8	cstring	could only have been produced by a merciful spirit
+classic	writing-style-selector	0xcc2b13	0x1416eaae0	cstring	is quite touching
+classic	writing-style-selector	0xcc2b2f	0x1416eaac0	cstring	shows a hint of tenderness
+classic	writing-style-selector	0xcc2b46	0x1416eaa90	cstring	is clear evidence of a compassionate being
+classic	writing-style-selector	0xcc2b5e	0x1416eaa78	cstring	is very compassionate
+classic	writing-style-selector	0xcc2b7a	0x1416eaa48	cstring	gives a feeling of compassion here and there
+classic	writing-style-selector	0xcc2b91	0x1416eaa30	cstring	is as vicious as can be
+classic	writing-style-selector	0xcc2ba9	0x1416eaa20	cstring	is quite cruel
+classic	writing-style-selector	0xcc2bc5	0x1416eaa00	cstring	has a hint of viciousness to it
+classic	writing-style-selector	0xcc2bdc	0x1416ea9e0	cstring	is a monument to concision
+classic	writing-style-selector	0xcc2bf4	0x1416ea9d0	cstring	is very concise
+classic	writing-style-selector	0xcc2c10	0x1416ea9c0	cstring	is fairly crisp
+classic	writing-style-selector	0xcc2c27	0x1416ea9a0	cstring	is a pit of bitter scorn
+classic	writing-style-selector	0xcc2c3f	0x1416ea980	cstring	is quite mocking in tone
+classic	writing-style-selector	0xcc2c5b	0x1416ea958	cstring	contains the occasional biting remark
+classic	writing-style-selector	0xcc2c72	0x1416ea928	cstring	is a reservoir of amusingly clever quips
+classic	writing-style-selector	0xcc2c8a	0x1416ea910	cstring	is refreshingly witty
+classic	writing-style-selector	0xcc2ca6	0x1416ea8f0	cstring	has its moments of cleverness
+classic	writing-style-selector	0xcc2cc3	0x1416ea8d0	cstring	is an awe-inspiring wild rant
+classic	writing-style-selector	0xcc2cdb	0x1416ea8b0	cstring	careens forward as a rant
+classic	writing-style-selector	0xcc2cf3	0x1416ea888	cstring	tumbles out almost as a rant at times
+classic	writing-style-selector	0xcc2d0a	0x1416ea868	cstring	is a completely unhinged rant
+classic	writing-style-selector	0xcc2d22	0x1416ea850	cstring	is a rant more or less
+classic	writing-style-selector	0xcc2d34	0x1416ea830	cstring	descends to a rant in places
+classic	artifact-title	0xb914ff	0x1415f8a20	cstring	[LPAGE:ARTIFACT:
+classic	artifact-title	0xb9150e	0x1416da4e8	cstring	[LPAGE:BOOK:
+classic	artifact-title	0xb91533	0x1415f8664	cstring	]
+classic	artifact-title	0xb915f0	0x64656c7469746e55	inline	Untitled
+classic	artifact-title	0xb9164b	0x64656c7469746e55	inline	Untitled
+classic	artifact-title	0xb916c6	0x1415f8b50	cstring	[/LPAGE]
+classic	artifact-title	0xb9171e	0x1416da4d0	cstring	an unknown artifact
+classic	historical-figure-name	0xb8ffca	0x1416da770	cstring	interrogator
+classic	historical-figure-name	0xb8ffe1	0x14166fb90	cstring	subject
+classic	historical-figure-name	0xb900b3	0x141623ec0	cstring	Nameless
+classic	historical-figure-name	0xb9014e	0x1416da750	cstring	an unidentified creature
+classic	historical-figure-name	0xb90173	0x1415f8b40	cstring	[LPAGE:HF:
+classic	historical-figure-name	0xb90193	0x1415f8664	cstring	]
+classic	historical-figure-name	0xb9029d	0x14165df6c	cstring	myself
+classic	historical-figure-name	0xb902a6	0x14165df70	cstring	lf
+classic	historical-figure-name	0xb9035b	0x1415e3e34	cstring	the 
+classic	historical-figure-name	0xb9037f	0x1416789f8	cstring	zombie 
+classic	historical-figure-name	0xb903b7	0x1415f8b70	cstring	ghostly 
+classic	historical-figure-name	0xb904d9	0x1415e3720	cstring	 
+classic	historical-figure-name	0xb90508	0x1415e3720	cstring	 
+classic	historical-figure-name	0xb90591	0x1415e4548	cstring	 the 
+classic	historical-figure-name	0xb905b5	0x1416789f8	cstring	zombie 
+classic	historical-figure-name	0xb905ed	0x1415f8b70	cstring	ghostly 
+classic	historical-figure-name	0xb9070d	0x1415e3720	cstring	 
+classic	historical-figure-name	0xb9078e	0x1415e8618	cstring	a 
+classic	historical-figure-name	0xb90795	0x1415e3e34	cstring	the 
+classic	historical-figure-name	0xb907bd	0x1416789f8	cstring	zombie 
+classic	historical-figure-name	0xb907f5	0x1415f8b70	cstring	ghostly 
+classic	historical-figure-name	0xb9085c	0x1415e3720	cstring	 
+classic	historical-figure-name	0xb908a7	0x1415e4214	cstring	's
+classic	historical-figure-name	0xb908c6	0x1415f8b50	cstring	[/LPAGE]
+classic	historical-figure-name	0xb9091c	0x14165ed98	cstring	an unknown creature
+classic	historical-figure-name	0xb90932	0x1415e4214	cstring	's
+classic	site-name	0xb909ba	0x1416da6f8	cstring	[LPAGE:SITE:
+classic	site-name	0xb909dd	0x1415f8664	cstring	]
+classic	site-name	0xb90a46	0x1415f8b50	cstring	[/LPAGE]
+classic	site-name	0xb90a9e	0x1416da6e8	cstring	an unknown site
+classic	site-building-name	0xb91138	0x1416da548	cstring	[LPAGE:AB:
+classic	site-building-name	0xb9115b	0x141613404	cstring	:
+classic	site-building-name	0xb9117b	0x1415f8664	cstring	]
+classic	site-building-name	0xb9120e	0x1415f8b50	cstring	[/LPAGE]
+classic	site-building-name	0xb91295	0x14165e8a8	cstring	a counting house
+classic	site-building-name	0xb912a7	0x14165e878	cstring	a hospital
+classic	site-building-name	0xb912b9	0x141623cc0	cstring	a guildhall
+classic	site-building-name	0xb912cb	0x14165e888	cstring	a mead hall
+classic	site-building-name	0xb912dd	0x14165e860	cstring	a keep
+classic	site-building-name	0xb912ef	0x141623c98	cstring	a temple
+classic	site-building-name	0xb91301	0x14165e868	cstring	a library
+classic	site-building-name	0xb91313	0x14165e848	cstring	a tavern
+classic	site-building-name	0xb91325	0x14166dc18	cstring	a dark tower
+classic	site-building-name	0xb91331	0x14165e808	cstring	an underworld spire
+classic	site-building-name	0xb91340	0x14165e830	cstring	a market
+classic	site-building-name	0xb9134f	0x14165e83c	cstring	a tomb
+classic	site-building-name	0xb91373	0x14165e7f8	cstring	the catacombs
+classic	site-building-name	0xb91382	0x14165e7e8	cstring	the sewers
+classic	site-building-name	0xb91391	0x14165e820	cstring	a dungeon
+classic	site-building-name	0xb913a0	0x14165e858	cstring	a tower
+classic	site-building-name	0xb913a9	0x1416da558	cstring	an unknown building
+classic	site-building-name	0xb913c8	0x1415f8b50	cstring	[/LPAGE]
+classic	site-building-name	0xb913d7	0x1416da558	cstring	an unknown building
+classic	rumor-observation-calendar-date	0xb8f6ed	0x1415e3e34	cstring	the 
+classic	rumor-observation-calendar-date	0xb8f71f	0x14161458c	cstring	late 
+classic	rumor-observation-calendar-date	0xb8f737	0x141614594	cstring	early 
+classic	rumor-observation-calendar-date	0xb8f746	0x14161459c	cstring	mid
+classic	rumor-observation-calendar-date	0xb8f76e	0x14161434c	cstring	winter
+classic	rumor-observation-calendar-date	0xb8f777	0x141614344	cstring	autumn
+classic	rumor-observation-calendar-date	0xb8f780	0x14161433c	cstring	summer
+classic	rumor-observation-calendar-date	0xb8f789	0x141614334	cstring	spring
+classic	rumor-observation-calendar-date	0xb8f822	0x20666f20	inline	 of 
+classic	rumor-observation-calendar-date	0xb8f8fb	0x1416da738	cstring	a time before time
+classic	surface-region-name	0xb91aca	0x1416da4a0	cstring	[LPAGE:SR:
+classic	surface-region-name	0xb91aea	0x1415f8664	cstring	]
+classic	surface-region-name	0xb91b53	0x1415f8b50	cstring	[/LPAGE]
+classic	surface-region-name	0xb91bab	0x1416daec8	cstring	an unknown region
+classic	underground-region-name	0xb919c2	0x1416da510	cstring	[LPAGE:FL:
+classic	underground-region-name	0xb919e5	0x1415f8664	cstring	]
+classic	underground-region-name	0xb91a11	0x1416da480	cstring	the Underworld
+classic	underground-region-name	0xb91a20	0x1416da490	cstring	the magma sea
+classic	underground-region-name	0xb91a2f	0x1416da4f8	cstring	the depths of the world
+classic	underground-region-name	0xb91a48	0x1415f8b50	cstring	[/LPAGE]
+classic	underground-region-name	0xb91a57	0x1416da4b0	cstring	an unknown underground region
+classic	generated-english-name	0xa91923	0x1415e3720	cstring	 
+classic	generated-english-name	0xa919de	0x1415e3720	cstring	 
+classic	generated-english-name	0xa91abb	0x1415e3720	cstring	 
+classic	generated-english-name	0xa91add	0x1415e89c4	cstring	The 
+classic	generated-english-name	0xa91af8	0x1415e3e34	cstring	the 
+classic	generated-english-name	0xa91b72	0x1415e3720	cstring	 
+classic	generated-english-name	0xa91b91	0x1415e89c4	cstring	The 
+classic	generated-english-name	0xa91b9a	0x1415e3e34	cstring	the 
+classic	generated-english-name	0xa91c1a	0x1415e3720	cstring	 
+classic	generated-english-name	0xa91c39	0x1415e89c4	cstring	The 
+classic	generated-english-name	0xa91c42	0x1415e3e34	cstring	the 
+classic	generated-english-name	0xa91d9f	0x1415e3720	cstring	 
+classic	generated-english-name	0xa91dcb	0x1415e89c4	cstring	The 
+classic	generated-english-name	0xa91de2	0x1415e3e34	cstring	the 
+classic	generated-english-name	0xa91e89	0x1415e3720	cstring	 
+classic	generated-english-name	0xa91e98	0x1416cb220	cstring	of 
+classic	generated-english-name	0xa91e9f	0x1416cb2ac	cstring	Of 
+classic	description-paragraph-vector-wrap	0x8e4dd7	0x1415e3720	cstring	 
+classic	journal-calendar-month	0x770dd8	0x14169fa78	cstring	Granite
+classic	journal-calendar-month	0x770ded	0x14169fa80	cstring	Slate
+classic	journal-calendar-month	0x770e02	0x14169fa88	cstring	Felsite
+classic	journal-calendar-month	0x770e11	0x14169fa90	cstring	Hematite
+classic	journal-calendar-month	0x770e2c	0x14169faa0	cstring	Malachite
+classic	journal-calendar-month	0x770e41	0x14169f898	cstring	Galena
+classic	journal-calendar-month	0x770e56	0x14169f8a0	cstring	Limestone
+classic	journal-calendar-month	0x770e6b	0x14169f8b0	cstring	Sandstone
+classic	journal-calendar-month	0x770e80	0x14169f8bc	cstring	Timber
+classic	journal-calendar-month	0x770e95	0x14169f8c8	cstring	Moonstone
+classic	journal-calendar-month	0x770eaa	0x14169f8d4	cstring	Opal
+classic	journal-calendar-month	0x770eb9	0x141600b40	cstring	Obsidian

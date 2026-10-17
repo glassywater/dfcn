@@ -25,7 +25,14 @@ std::optional<std::string> Overlay::translate_journal_title(std::string_view sou
         // titles. b94400 falls back to the complete item description when
         // its language_name is empty, including the article and CP437
         // quality/wear wrappers; none of these fields is a personal name.
-        target = translate_legends_artifact_identity(source);
+        // Only the native/gloss pair proves the artifact-name production.
+        // Bare BOOK_ART/BOOK_INSTRUCTION titles must reach the complete book
+        // grammar before an unrestricted generated-name fallback consumes
+        // their Course/Question/Mysteries wrapper as name words.
+        if (split_generated_name_identity(source) || split_repeated_title_identity(source) ||
+                lower(normalize_utterance(source)) == "untitled" ||
+                lower(normalize_utterance(source)) == "an unknown artifact")
+            target = translate_legends_artifact_identity(source);
         if (!target) target = translate_legends_book(source);
         if (!target) target = translate_legends_item(source);
         if (!target) target = translate_legends_name(source, false);

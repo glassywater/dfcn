@@ -80,6 +80,7 @@ static bool native_history_war_selection(uintptr_t collection, int32_t &category
 #include "native_paragraph_hooks.inc"
 #include "native_trade_paragraph_hooks.inc"
 #include "native_journal_event_hooks.inc"
+#include "native_journal_artifact_hooks.inc"
 #include "native_trade_item_fields.inc"
 #include "native_trade_item_hooks.inc"
 #include "native_workshop_recipe_hooks.inc"

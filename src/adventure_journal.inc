@@ -4,6 +4,7 @@
 // the ASCII skin whose title can occupy its upper border row.
     {
         const bool native_events_view = refresh_native_journal_event_sources(gps_);
+        const bool native_artifacts_view = refresh_native_journal_artifact_sources(gps_);
         std::vector<std::string> context(gps_->dimy, std::string(gps_->dimx, ' '));
         for (int y = 0; y < gps_->dimy; ++y)
             for (int x = 0; x < gps_->dimx; ++x) {
@@ -28,7 +29,7 @@
                 tabs_y = y;
                 break;
             }
-        if (tabs_y >= 0 || native_events_view) {
+        if (tabs_y >= 0 || native_events_view || native_artifacts_view) {
             if (tabs_y < 0) tabs_y = 0;
             auto journal_draws = captured_native_drawn_text_rows();
             auto journal_upper_draws = captured_native_drawn_text_rows(true);
@@ -161,14 +162,17 @@
             // below still takes precedence for pinned cards of other kinds.
             bool people_selected = false;
             bool events_selected = native_events_view;
+            bool artifacts_selected = native_artifacts_view;
             bool agreements_selected = false;
             for (int y = tabs_y; y <= tabs_y + 1 && y < gps_->dimy; ++y) {
                 int people_color = -1;
                 int events_color = -1;
                 int agreements_color = -1;
+                int artifacts_color = -1;
                 std::unordered_map<int, int> other_colors;
                 std::unordered_map<int, int> other_event_colors;
                 std::unordered_map<int, int> other_agreement_colors;
+                std::unordered_map<int, int> other_artifact_colors;
                 for (const auto caption : main_tabs) {
                     const size_t at = context[y].find(caption);
                     if (at == std::string::npos) continue;
@@ -182,6 +186,8 @@
                     else ++other_event_colors[color];
                     if (caption == "Agreements") agreements_color = color;
                     else ++other_agreement_colors[color];
+                    if (caption == "Artifacts") artifacts_color = color;
+                    else ++other_artifact_colors[color];
                 }
                 if (people_color >= 0 && other_colors.size() == 1 &&
                     other_colors.begin()->second == 8 &&
@@ -192,6 +198,9 @@
                 if (agreements_color >= 0 && other_agreement_colors.size() == 1 &&
                     other_agreement_colors.begin()->second == 8 &&
                     other_agreement_colors.begin()->first != agreements_color) agreements_selected = true;
+                if (artifacts_color >= 0 && other_artifact_colors.size() == 1 &&
+                    other_artifact_colors.begin()->second == 8 &&
+                    other_artifact_colors.begin()->first != artifacts_color) artifacts_selected = true;
             }
             const auto append_tab = [&](int y, std::string_view caption, bool intrigue) {
                 const size_t at = context[y].find(caption);
@@ -513,11 +522,29 @@
                 const bool native_agreement_counter = counter_draw &&
                     native_journal_agreement_field(counter_draw->native_caller) ==
                         NativeJournalAgreementField::Counter;
+                // The native case-7 vector contains only artifact records,
+                // including empty bodies and descriptions scrolled past their
+                // opening. A source prefix cannot establish those records.
+                bool artifact = artifacts_selected || (counter_draw &&
+                    native_journal_artifact_field(counter_draw->native_caller) ==
+                        NativeJournalArtifactField::Counter);
+                for (const Match &row : title_rows)
+                    if (const auto *draw = agreement_draw(row, *counter); draw &&
+                            native_journal_artifact_field(draw->native_caller) ==
+                                NativeJournalArtifactField::Title) artifact = true;
+                for (int y = title_y + 1; !artifact && !collapsed && y < bottom; ++y) {
+                    const auto field = field_at(y, text_right(y));
+                    if (!field) continue;
+                    const auto *draw = agreement_draw(*field, text_right(y));
+                    if (draw && native_journal_artifact_field(draw->native_caller) ==
+                            NativeJournalArtifactField::Body) artifact = true;
+                }
                 bool agreement = native_agreement_title.has_value() || native_agreement_counter ||
                     (collapsed && agreements_selected);
                 // Pinned agreement cards can remain visible on the Events tab.
                 // Their native header owns the kind ahead of tab/date guesses.
                 if (native_agreement_title || native_agreement_counter) event = false;
+                if (artifact) { agreement = false; event = false; }
                 std::unordered_set<int> event_title_rows;
                 std::vector<Match> event_title_logical;
                 std::vector<Match> event_title_halves;
@@ -646,7 +673,7 @@
                 // row. Use the same complete label grammar as animal lists.
                 const auto creature_title = title
                     ? translate_creature_label(title->source) : std::nullopt;
-                const bool bestiary = !event && creature_title.has_value();
+                const bool bestiary = !artifact && !event && creature_title.has_value();
                 const auto title_row = [&](int y) {
                     return std::any_of(title_rows.begin(), title_rows.end(),
                         [&](const Match &row) { return row.y == y; });
@@ -677,7 +704,7 @@
                 bool group = false;
                 bool civilization = false;
                 bool region = false;
-                for (int y = title_y + 1; !agreement && !event && !bestiary && y < bottom; ++y) {
+                for (int y = title_y + 1; !artifact && !agreement && !event && !bestiary && y < bottom; ++y) {
                     if (title_row(y)) continue;
                     const auto field = field_at(y, text_right(y));
                     if (!field) continue;
@@ -744,7 +771,7 @@
                         }
                     }
                 }
-                const bool person = !agreement && !event && !bestiary && !site && !group && !region &&
+                const bool person = !artifact && !agreement && !event && !bestiary && !site && !group && !region &&
                     (kind.has_value() || people_selected);
                 const std::vector<Match> kind_rows = kind ? field_rows(*kind) : std::vector<Match>{};
                 struct HeaderField {
@@ -830,6 +857,7 @@
                     return true;
                 };
                 std::unordered_set<int> owned_body_rows;
+#include "adventure_journal_artifacts.inc"
                 if (agreement) {
                     std::vector<Match> agreement_matches;
                     if (title && !journal_native_field_owned(*title)) {

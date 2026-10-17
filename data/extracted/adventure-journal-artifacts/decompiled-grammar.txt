@@ -1,0 +1,138 @@
+Adventure journal -> Artifacts: original Windows PE source grammar
+
+These are offline original-image sources, not game observations, translated
+examples, or checks. tools/extract_adventure_journal_artifacts_pe.py reads the
+two images configured in data/runtime/native-pe-images.json. pe-functions.tsv
+retains their identities, hashes, real unwind extents and executable extents;
+pe-branches/conditions/switches/calls/literals.tsv retain the native operands.
+DecompileJournalAgreementsPE.java feeds those original instructions and jump
+table overrides into Ghidra. pe-*-ghidra-decompiled.c and the individual .c
+files are actual Ghidra output. RVAs below are Steam; corresponding complete
+Classic bodies and their independent addresses are recorded in the manifest.
+
+SCREEN OWNERSHIP AND DISPLAY
+  viewscreen_adventure_logst renderer c2110..ca4f9, executable end ca358.
+  screen+256 is the selected main tab (int16); value 7 selects Artifacts.
+  screen+254 is a map blink flag, not the selected tab.
+  screen+5a8 is the displayed artifact-card pointer vector, copied/filterable
+  from screen+488; screen+2c8 is its first card index. screen+250 is the
+  selected card, screen+274 its internal text scroll, screen+278 expanded.
+  The Artifacts branch is c84d0..c88bb. No second artifact-card renderer or
+  separate pinned-artifact draw exists outside this branch in this owner.
+
+  card+0 points to artifact; artifact+90 points to the concrete item.
+  card+8 is full title; card+48 is the clipped title; card+68 is the vector
+  of wrapped description-row string pointers. card+80 begins location cache.
+  Draw calls: title c8618/return c861d; counter c86be/return c86c3;
+  description c8782/return c8787. Classic draw sites are these RVAs minus 70.
+  The title and n/total counter occupy top border y. A collapsed card shows
+  three body rows y+1..y+3, has bottom border y+4, next card top y+5. A sole
+  body row is centered at y+2. Expanded mode hides nonselected bodies and
+  gives selected body dimy-((dimy-6)/5)-6 rows. Rows always originate in the
+  same native vector, indexed by the selected card's text scroll.
+  Selected overflow cards draw a 4-column x 3-row arrow texture block after
+  the body text: x=right-4..right-1, y=top+body_capacity-1..+1. This block
+  covers source text at the right edge of the last visible body rows. It is
+  drawn through adb100, not as an English paragraph. Collapsed branch only
+  draws it if the vector has >3 rows; expanded branch always draws it.
+  The main list's separate right scrollbar does not own body text.
+
+FULL TITLE SOURCE
+  Initializer be410..bfdf0, artifact construction bea88..bebbd.
+  It allocates 0xb8-byte cards, initializes their strings/vectors/cache, and
+  stores the artifact pointer at +0. If artifact.name.has_name(+7a) is true,
+  a946e0(artifact+8,card+8,true,false) writes its English generated name.
+  Otherwise it assigns literal "Unknown". Generated names retain all native
+  first-name, nickname, compound, adjective, hyphen, noun, Of/POS choices.
+  d09e0 copies full title+8 into clipped title+48 when +58 size is zero and
+  truncates to 58 source bytes. It never calls b94400 to produce this title.
+  Consequently "Untitled", item-name fallback and unknown-artifact branches
+  of the shared b94400 helper are not top-title alternatives in this page.
+  That helper is still retained as a possible shared-reference text source.
+
+COMPLETE BODY AND COMPOSITION
+  Producer d09e0..d14c9 does nothing further if card+68 vector is nonempty.
+  On cache miss it calls c75000(artifact.item, dst, true, true, false,0) at
+  d0ab7. It wraps the complete returned document to 58 source bytes via
+  8e7440 at d0b31, preserving every line beyond the displayed first three.
+  R9=true selects plain source spaces rather than paragraph markup. flags=0
+  suppresses LPAGE/numeric reference markup. R8=true propagates to artwork;
+  it does not disable artwork or restrict the body to opening/material text.
+
+  Complete shared-source closure is data/extracted/item-description-sources.tsv
+  and item-description-sources.md. Those cataloged native branches remain
+  part of this caller: item type/RAW subtype/material/quantity; artifact or
+  ordinary craftsmanship/quality/maker; food ingredients; all improvement
+  kinds including bands, rings, spikes, rollers, handle, chain/rope, gemstone
+  cuts and materials; base/image/sewn art, historical-art references; dye,
+  color, quality and mixture combinations; dice face/series/range/top face;
+  every writing carrier, page count, title/no-title, author/no-author, format,
+  content subject, style and empty writing branch; coins/ruler/year/faces;
+  slab stored inscriptions; wear; contaminants and material states; source
+  kind10 power description; tool/instrument RAW and stored descriptions.
+
+  The item graph itself binds its art/history/memorial/item-title/RAW subgraphs
+  and every general_ref +90 text-producing virtual owner. It is not replaced
+  by a list of screenshot books or by nearby literal strings. Arbitrary world
+  names, counts, written work titles, authors, raw/mod descriptions, and stored
+  histories are unbounded dynamic fields in these finite native productions.
+
+  This page runs in Adventure context: c77dfd/c7809e/c78e3f literacy/read
+  branches guarded by game_mode=1 and active adventurer are reachable here.
+  Do not inherit the fortress world-map popup's exclusion of unread/unable-to-
+  read text. Writing content, empty pages and slab inscriptions also remain.
+  Actual c75000/c65450/cc6a10/cc7020/cc5d50 bodies and the complete style
+  leaf cc5520..cc5d50 are retained here. All general_ref suppliers also have
+  existing actual Ghidra sources in ../adventure-reading-popup, referenced
+  by the shared item catalog.
+
+OPTIONAL LOCATION PARAGRAPH (COMPLETE PRIORITY CHAIN)
+  The same producer seeds cache+80 from the artifact, then applies rumors
+  9de930 and first-hand observations 9dee30 from the adventurer's knowledge.
+  If holder(+90), site(+88), region(+94) and layer(+98) are all -1, no
+  location paragraph or blank separator is appended.
+  Otherwise prefix is selected in strict order:
+    year(+9c)==-1: "It is traditionally thought to be "
+    else firsthand(+a8)!=null: "It was last seen "
+    else: "It was last rumored to be "
+
+  Location is one mutually exclusive chain:
+    holder(+90)!=-1:
+      "held by " + historical_figure_display(holder,default_context,1,0)
+    else site(+88)!=-1:
+      if building(+8c)!=-1:
+        site_building_display(site,building,true,flags=0) + " in "
+      "in " + surface_region_display(site,flags=0)
+    else surface_region(+94)!=-1:
+      "in " + surface_region_display(region,flags=0)
+    else underground_layer(+98)!=-1:
+      "in " + underground_label(layer)
+
+  The site branch really calls b94a40 with cache.site, not b93930. It also
+  really emits both adjacent " in " and "in " when a building is present.
+  Preserve these original-source shapes instead of guessing a corrected
+  English sentence. Historical figure source includes generated names,
+  anonymous race/caste, zombie, ghost, transformation and unresolved figure.
+  Surface region source includes generated and empty names, and unresolved
+  "an unknown region". Underground source: absent pointer -> "an unknown
+  underground region"; named-region has_name=true -> empty; unnamed type0
+  -> "the depths of the world", type1 -> "the magma sea", type2 -> "the
+  Underworld", other types -> empty. Empty fields remain real native branches.
+
+  If year!=-1 append " in " + b92640(year,tick); always append ".".
+  b92640 is a calendar formatter, not a place-name formatter. year<1 prints
+  "a time before time"; year>=1 and tick==-1 prints the decimal year; else
+  "the "+phase+season+" of "+year. phase is "early ", "mid", or "late ";
+  season is spring/summer/autumn/winter for tick/100800=0/1/2/3, else empty.
+  Phase cutoffs for tick%100800 are 33600 and 67200 (inclusive lower bins).
+  A blank separator row and the 58-byte-wrapped full location paragraph are
+  appended to the existing card+68 vector. That appended paragraph may be
+  offscreen until scrolled, but it is part of this page's source document.
+
+LOCATION KNOWLEDGE PRODUCERS
+  9de930 applies rumor.type2 incident state0..5 and types25..33 with their
+  native artifact/time/matching-location constraints; other values make no
+  visible text. 9dee30 applies first-hand event state0..5 and newer timestamp
+  constraints. They update the same five location fields and timestamp, not
+  independent text captions. Their full native branches and selectors are
+  retained in the manifest and their individual Ghidra .c bodies.
