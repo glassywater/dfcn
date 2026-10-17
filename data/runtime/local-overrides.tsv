@@ -1649,6 +1649,7 @@ Hidden, cannot build at this location	不可见，无法在此处建造	wli
 # grammar with recipe cards and work-order conditions, not word fragments.
 Needs {s}	需要{s}	wtlx
 No access to {s}	无法取得{s}	wtlx
+No access	无法到达	wli
 Need trigger type	需要选择触发类型	wli
 Needs walkable perimeter	周围需要可通行区域	wli
 Needs to be anchored on edge	需要在边缘固定	wli
