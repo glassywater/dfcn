@@ -34,6 +34,14 @@ static std::atomic<uint64_t> g_native_unit_identity_context{0};
 // Saved announcement fields own their semantic snapshot beyond a draw epoch.
 // Their keys include the complete native report, rather than a name spelling.
 static std::atomic<uint64_t> g_native_announcement_unit_context{0};
+// Generated creature/caste RAW names are world-owned identities as well.
+// Readers borrow immutable bytes; only the existing render-side RAW refresh
+// reads the native fields that establish GENERATED provenance.
+using NativeGeneratedCreatureNames = std::unordered_map<std::string, std::string>;
+static std::atomic<std::shared_ptr<const NativeGeneratedCreatureNames>>
+    g_native_generated_creature_names;
+static std::atomic<uint64_t> g_native_generated_creature_context{0};
+static void refresh_native_generated_creature_names();
 static void remember_native_announcement_unit_reference(std::string_view source,
     const NativeUnitIdentity *identity);
 static void remember_native_announcement_pet_name(std::string_view source,
@@ -72,6 +80,7 @@ static uint64_t native_identity_translation_context() {
     constexpr uint64_t formatter_scope = 0x9e3779b97f4a7c15ULL;
     return g_native_unit_identity_context.load(std::memory_order_acquire) ^
         g_native_announcement_unit_context.load(std::memory_order_acquire) ^
+        g_native_generated_creature_context.load(std::memory_order_acquire) ^
         native_announcement_unit_body_context() ^
         native_mission_return_context() ^
         (native_unit_identity_rendering() ? formatter_scope : 0);

@@ -93,7 +93,7 @@ void combat_source_cloud_emission_13c72b0
     uStack_50 = 0xf;
     pppuStack_68 = (undefined8 ****)0x0;
     uStack_158 = CONCAT11(uStack_158._1_1_,1);
-    FUN_14132e430(param_1,&pppuStack_68,1,1);
+    combat_source_combat_unit_caption_132e430(param_1,&pppuStack_68,1,1);
     auStack_88[1] = 0;
     auStack_88[2] = 0;
     auStack_88[3] = 0xf;
@@ -424,7 +424,7 @@ LAB_1413c7aa8:
     uStack_110 = *(undefined2 *)(param_1 + 0xaa);
     uStack_10e = *(undefined2 *)(param_1 + 0xac);
     lStack_f8 = param_1;
-    FUN_1400e3c20(0x1424e3850,auStack_88,&uStack_118);
+    combat_source_announcement_submit_e3c20(&DAT_1424e3850,auStack_88,&uStack_118);
     if (0xf < auStack_88[3]) {
       uVar19 = auStack_88[3] + 1;
       uVar11 = auStack_88[0];

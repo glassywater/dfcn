@@ -8796,6 +8796,68 @@ std::optional<std::string> Overlay::translate_corpsepiece_item_name(
         std::vector<size_t> origins;
         return RULESETS.translate_with_origins(native_text_to_utf8(value), context, origins);
     };
+    const auto owner_name = [&](std::string_view value) -> std::optional<std::string> {
+        // These bytes occupy language_name, selected by the corpse producer,
+        // rather than an arbitrary noun preceding a possessive. A live typed
+        // identity retains its authored-name policy before source fallbacks.
+        if (auto owner = native_unit_identity_source_target(value)) return owner;
+        // ca1aa0/ca10e0 pass language_name to a94030 here. This is a name
+        // alone, never a complete actor/species/occupation caption. The actor
+        // grammar could otherwise reinterpret a preceding action verb as a
+        // profession and consume an entire announcement as the corpse owner.
+        auto owner = translate_legends_name(value, true);
+        if (!translation_complete_with_native_nicknames(owner, value))
+            owner = translate_english_character_name(value);
+        if (translation_complete_with_native_nicknames(owner, value)) return owner;
+        for (const std::string_view article : {"The ", "A ", "An "}) {
+            if (!value.starts_with(article)) continue;
+            value = trim_view(value.substr(article.size()));
+            if (auto identity = native_unit_identity_source_target(value)) return identity;
+            owner = translate_legends_name(value, true);
+            if (!translation_complete_with_native_nicknames(owner, value))
+                owner = translate_english_character_name(value);
+            if (translation_complete_with_native_nicknames(owner, value)) return owner;
+            break;
+        }
+
+        // UTTERANCES can generate a first name and native word groups absent
+        // from T_WORD. A proved complete corpse suffix still establishes the
+        // name's role. Keep the native nickname field separate from those
+        // phonetic groups; its punctuation and spelling are authored data.
+        const size_t open = value.find('`');
+        const size_t close = value.rfind('\'');
+        const bool nickname = open != std::string_view::npos &&
+            close != std::string_view::npos && close > open &&
+            value.find('`', open + 1) == std::string_view::npos;
+        if (open != std::string_view::npos && !nickname) return std::nullopt;
+        const auto render_group = [&](std::string_view group) -> std::optional<std::string> {
+            group = trim_view(group);
+            if (group.empty()) return std::string{};
+            if (group.ends_with("...")) return std::nullopt;
+            if (contains_cjk_utf8(group)) {
+                if (group.find_first_of(".!?,;:\"`[]()\r\n") != std::string_view::npos)
+                    return std::nullopt;
+                return native_text_to_utf8(group);
+            }
+            // Reject lower-case prose or a nested object (corpse's teeth)
+            // before entering the deliberately phonetic name renderer.
+            if (!generated_title_shape(group)) return std::nullopt;
+            // phonetic_only already establishes the name field. The strict
+            // personal_name context returns before its unknown-word fallback.
+            return translate_procedural_fragment(std::string(group), true);
+        };
+        if (!nickname) return render_group(value);
+        const auto first = render_group(value.substr(0, open));
+        const auto rest = render_group(value.substr(close + 1));
+        if (!first || !rest) return std::nullopt;
+        const auto nickname_source = value.substr(open + 1, close - open - 1);
+        const auto reviewed = exact_literal_translation(
+            "Unit nickname: " + std::string(nickname_source));
+        std::string result = *first + "“" +
+            (reviewed ? *reviewed : native_text_to_utf8(nickname_source)) + "”";
+        if (!rest->empty()) result += "·" + *rest;
+        return result;
+    };
     const auto body = [&](auto &&self, std::string_view value) -> std::optional<std::string> {
         value = trim_view(value);
         if (value.empty() || value.ends_with("...")) return std::nullopt;
@@ -8812,6 +8874,13 @@ std::optional<std::string> Overlay::translate_corpsepiece_item_name(
             return noun ? std::optional<std::string>(designation.prefix + *noun +
                 designation.suffix) : std::nullopt;
         }
+        // +0x5f0 emits an article outside the +0x5e8 body description.
+        // Prove that complete description recursively, so the article never
+        // becomes part of an otherwise unknown native owner's spelling.
+        for (const std::string_view article : {"the ", "a ", "an "}) {
+            if (!value.starts_with(article)) continue;
+            if (const auto noun = self(self, value.substr(article.size()))) return noun;
+        }
         // The shared full/short producers select a unit or historical name
         // before the body outcome. Resolve these independently, as materials
         // already do, rather than routing the owner back through a recursive
@@ -8821,22 +8890,21 @@ std::optional<std::string> Overlay::translate_corpsepiece_item_name(
             const auto owner_source = trim_view(value.substr(0, at));
             const auto body_source = trim_view(value.substr(at + 3));
             if (owner_source.empty() || body_source.empty()) continue;
-            const auto noun = scoped(body_source, "::items::corpsepiece::animated_body");
+            // Whole corpse/skeleton/remains outcomes are native body leaves,
+            // just like detached anatomy. The complete corpse root also
+            // explores named owners; re-entering it here can cycle through
+            // person/species callbacks after this owner was already removed.
+            auto noun = scoped(body_source, "::items::corpse::body");
+            if (!noun) noun = scoped(body_source, "::items::corpsepiece::animated_body");
             if (!noun) continue;
-            auto owner = native_unit_identity_source_target(owner_source);
-            if (!owner) owner = translate_legends_actor(owner_source);
-            if (!owner) owner = translate_english_character_name(owner_source);
-            // This complete possessive/body production owns a personal-name
-            // field, including an authored spelling absent from the lexicon.
-            // Preserve that spelling just as the native animation-label path
-            // does; it must not prevent translation of the independent noun.
-            if (!owner) owner = native_text_to_utf8(owner_source);
-            if (owner->empty() || owner->find("[C:") != std::string::npos ||
+            const auto owner = owner_name(owner_source);
+            if (!owner || owner->empty() || owner->find("[C:") != std::string::npos ||
                     owner->find_first_of("\r\n") != std::string::npos) continue;
             return *owner + "的" + *noun;
         }
         // Unnamed species, your, rotten/mangled bodies, generic material
         // classes and remains retain their existing complete scoped grammar.
+        if (auto noun = scoped(value, "::items::corpse::body")) return noun;
         return scoped(value, "::items::corpsepiece::caption");
     };
     return body(body, source);

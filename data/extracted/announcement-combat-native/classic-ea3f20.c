@@ -2189,7 +2189,7 @@ LAB_140ea6776:
             uStack_40 = 0xf;
             pppppppuStack_58 = (undefined8 *******)0x0;
             uStack_1f8 = CONCAT31(uStack_1f8._1_3_,1);
-            FUN_1413293a0(uVar19,&pppppppuStack_58,1,1);
+            combat_source_combat_unit_caption_13293a0(uVar19,&pppppppuStack_58,1,1);
             pppppppuVar29 = &pppppppuStack_58;
             if (0xf < uStack_40) {
               pppppppuVar29 = pppppppuStack_58;
@@ -2279,7 +2279,7 @@ LAB_140ea6a9b:
             uStack_102 = *(undefined4 *)(uVar19 + 0xa8);
             uStack_fe = *(undefined2 *)(uVar19 + 0xac);
             uStack_e0 = uVar19;
-            FUN_1400e3bb0(0x1424dd740,&uStack_98,&uStack_108);
+            combat_source_announcement_submit_e3bb0(&DAT_1424dd740,&uStack_98,&uStack_108);
             FUN_14006f7e0(&pppppppuStack_78);
             FUN_14006f7e0(&pppppppuStack_58);
             FUN_14006f7e0(&uStack_98);

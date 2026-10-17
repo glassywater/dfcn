@@ -62,7 +62,8 @@ std::optional<std::string> Overlay::translate_complete_announcement(
     if (source.empty() || source_colors.size() != source.size()) return std::nullopt;
     dfcn::TranslationWorkScope budget;
     const auto translate_block = [&](std::string_view block, const std::vector<int> &colors,
-            std::vector<int> &translated_colors) -> std::optional<std::string> {
+            std::vector<int> &translated_colors,
+            dfcn::TranslationResult *owned_result = nullptr) -> std::optional<std::string> {
         translated_colors.clear();
         if (!colors.empty() && std::all_of(colors.begin(), colors.end(),
                 [&](int color) { return color == colors.front(); })) {
@@ -111,6 +112,32 @@ std::optional<std::string> Overlay::translate_complete_announcement(
                 for (unsigned char ch : *native)
                     if ((ch & 0xc0) != 0x80) translated_colors.push_back(colors.front());
                 return native;
+            }
+        }
+        // Resolve the whole combat tree before any single-action display
+        // fallback or generic {n} suffix. "ACTOR attacks TARGET but She
+        // jumps away!" owns two clauses; the complete prefix is not the
+        // subject of the separate charge-result "UNIT jumps away!".
+        if (const auto native = translate_announcement_combat(block)) {
+            for (unsigned char ch : *native)
+                if ((ch & 0xc0) != 0x80) translated_colors.push_back(colors.front());
+            return native;
+        }
+        // Unknown adventure items retain their native action and field
+        // boundaries after complete combat productions have had first choice.
+        // Only the full record admits partial display composition; sentence
+        // partitioning below continues to require strict translations.
+        if (owned_result) {
+            auto native = translate_announcement_combat_result(block, "adventure-announcement");
+            if (native.usable()) {
+                for (size_t at = 0; at < native.target.size(); ++at) {
+                    if ((static_cast<unsigned char>(native.target[at]) & 0xc0) == 0x80) continue;
+                    const size_t origin = at < native.origins.size()
+                        ? native.origins[at] : std::string::npos;
+                    translated_colors.push_back(colors[origin < colors.size() ? origin : 0]);
+                }
+                *owned_result = std::move(native);
+                return owned_result->target;
             }
         }
         // The native growth constructor has a single typed result field.
@@ -169,13 +196,10 @@ std::optional<std::string> Overlay::translate_complete_announcement(
                 if ((ch & 0xc0) != 0x80) translated_colors.push_back(colors.front());
             return found->second;
         }
-        translated = translate_announcement_combat(block);
-        if (!translated) {
-            // 103a1d0 also submits BODY alone when neither live unit nor
-            // historical figure supplies a speaker caption. Keep the same
-            // complete speech grammar for that native empty-header branch.
-            translated = translate_spoken_dialogue_body(block);
-        }
+        // 103a1d0 also submits BODY alone when neither live unit nor
+        // historical figure supplies a speaker caption. Keep the same
+        // complete speech grammar for that native empty-header branch.
+        translated = translate_spoken_dialogue_body(block);
         if (!translated) {
             // The conversation dispatcher and dialogue-1048a40 submit the
             // same complete mental-picture statement as the visitor quote.
@@ -227,7 +251,7 @@ std::optional<std::string> Overlay::translate_complete_announcement(
                     if ((ch & 0xc0) != 0x80) target_colors.push_back(source_colors.front());
             }
         }
-        if (!target) target = translate_block(source, source_colors, target_colors);
+        if (!target) target = translate_block(source, source_colors, target_colors, &document_result);
     }
     catch (const dfcn::TranslationWorkLimit &) {
         if (!budget.owns_budget()) throw;

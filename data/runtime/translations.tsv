@@ -23219,6 +23219,7 @@ Announcement combat dialogue-judgement-predicate []: a known thug	众所周知�
 Announcement combat dialogue-stock [dialogue-stock-item]: and {s}	{s1}	l
 Announcement combat dialogue-stock [dialogue-stock-item]: {s} and	{s1}	l
 Announcement combat dialogue-trouble-list [dialogue-trouble]: {s}	{s1}	l
+Announcement combat evasion [subject-pronoun]: {s} scrambles away	{s1}连滚带爬地躲开了	l
 Announcement combat guard-building []: the processed goods market	加工商品市场	l
 Announcement combat historical-artifact [$memorial-artifact]: {s}	{s1}	l
 Announcement combat historical-event-title [agreement-title]: {s}	{s1}	l
@@ -23722,6 +23723,7 @@ Announcement combat dialogue-judgement-predicate []: my comrades	我的战友们
 Announcement combat dialogue-judgement-predicate []: my neighbor	我的邻居	l
 Announcement combat dialogue-judgement-predicate []: my prisoner	我的囚犯	l
 Announcement combat diplomacy-cause []: a dispute over territory	领土争议	l
+Announcement combat evasion [subject-pronoun]: {s} scramble away	{s1}连滚带爬地躲开了	l
 Announcement combat guard-building []: the imported goods market	进口商品市场	l
 Announcement combat historical-battle-location []: unknown lands	未知之地	l
 Announcement combat historical-clash-outcome []: losing everyone	己方全军覆没	l
@@ -25012,6 +25014,7 @@ Announcement combat fortress-arrival [$unit]: {s} has arrived.	{s1}已经到达�
 Announcement combat fortress-arrival [$unit]: {s} is visiting.	{s1}来访了。	l
 Announcement combat guard-building []: a general imports store	进口杂货店	l
 Announcement combat guard-building []: a leather clothing shop	皮制服装店	l
+Announcement combat head [head,equipment]: {s} through the {s}	{s1}，穿过{s2}	l
 Announcement combat head [unit,owned-object]: {s} strangle {s}	{s1}扼住{s2}	l
 Announcement combat injury-list [injury,injury-list]: {s}, {s}	{s1}，{s2}	l
 Announcement combat journal-crime []: conspiracy to slow labor	合谋怠工	l
@@ -25727,6 +25730,8 @@ Announcement combat dialogue-stock [dialogue-stock-item]: {s}	{s1}	l
 Announcement combat dialogue-stock-item [$term]: {s} for free	{s1}（免费）	l
 Announcement combat dialogue-trouble []: bone-chilling horror	骇人的恐怖之物	l
 Announcement combat dialogue-trouble []: the missing treasure	失落的宝藏	l
+Announcement combat evasion [subject-pronoun]: {s} jumps away	{s1}跳开了	l
+Announcement combat evasion [subject-pronoun]: {s} rolls away	{s1}翻滚躲开了	l
 Announcement combat guard-building [$unit]: the shrine to {s}	供奉{s1}的神龛	l
 Announcement combat guard-building []: a metal furniture shop	金属家具店	l
 Announcement combat guard-building []: a stone furniture shop	石制家具店	l
@@ -26420,6 +26425,8 @@ Announcement combat dialogue-judgement-achiever []: You have	你	l
 Announcement combat dialogue-trouble []: armies on the march	正在行军的军队	l
 Announcement combat diplomacy-cause []: an attack by a beast	一次野兽袭击	l
 Announcement combat diplomatic-meeting-topic []: an alliance	结盟	l
+Announcement combat evasion [subject-pronoun]: {s} jump away	{s1}跳开了	l
+Announcement combat evasion [subject-pronoun]: {s} roll away	{s1}翻滚躲开了	l
 Announcement combat fortress-attack [attack-army-entry]: {s}	{s1}	l
 Announcement combat guard-building []: a woven clothing shop	布制服装店	l
 Announcement combat journal-entity-event []: withdrawal from	的撤离	l
@@ -27209,6 +27216,7 @@ Announcement combat guard-building []: a bone carver's shop	骨雕店	l
 Announcement combat guard-building []: a food imports store	进口食品店	l
 Announcement combat guard-building []: a leather goods shop	皮具店	l
 Announcement combat guard-building []: a weaponsmith's shop	武器锻造店	l
+Announcement combat head [head,fluid]: {s} and spilling {s}	{s1}，使{s2}洒出	l
 Announcement combat historical-battle-location [$name]: {s}	{s1}	l
 Announcement combat journal-entity-event []: abandonment of	的弃守	l
 Announcement combat journal-entity-event []: reclamation of	的收复行动	l
@@ -30034,7 +30042,6 @@ Announcement combat memory-sentence [memory-death]: {s}.	未具名者{s1}。	l
 Announcement combat merchant-origin []: a village nearby	附近的村庄	l
 Announcement combat merchant-people []: some of our kind	我们的一些同族	l
 Announcement combat negotiation-opening []: brazenly lie	肆无忌惮地撒谎	l
-Announcement combat owned-object [owner,object]: {s} {s}	{s1}{s2}	l
 Announcement combat quest-destination [quest-place]: {s}	{s1}	l
 Announcement combat quest-object []: an unknown artifact	一件未知神器	l
 Announcement combat reference-building-type []: hospital	医院	l
@@ -31099,6 +31106,8 @@ Announcement combat merchant-address []: my good person	好心人	l
 Announcement combat merchant-advert-origin [$name]: {s}	{s1}	l
 Announcement combat merchant-origin []: the settlements	那些定居点	l
 Announcement combat merchant-people []: some of my kind	我的一些同族	l
+Announcement combat owned-object [owner,$body]: {s} {s}	{s1}{s2}	l
+Announcement combat owned-object [owner,$item]: {s} {s}	{s1}{s2}	l
 Announcement combat quest-building []: a counting house	账房	l
 Announcement combat reference-building-type []: dungeon	地牢	l
 Announcement combat reference-building-type []: library	图书馆	l
@@ -32114,7 +32123,6 @@ Announcement combat dialogue-query-person []: yourself	你自己	l
 Announcement combat dialogue-trouble []: the abduction	那起绑架	l
 Announcement combat diplomacy-cause []: a previous war	此前的一场战争	l
 Announcement combat diplomacy-possessor [$unit]: {s}'s	{s1}的	l
-Announcement combat evasion [unit]: {s} scrambles away	{s1}连滚带爬地躲开了	l
 Announcement combat guard-building [$name]: {s} shrine	{s1}的神龛	l
 Announcement combat guard-building []: a bowyer's shop	制弓店	l
 Announcement combat guard-building []: the great tower	巨塔	l
@@ -33210,7 +33218,6 @@ Announcement combat dialogue-trouble []: the fighting	争斗	l
 Announcement combat diplomacy-cause []: a competition	一场比赛	l
 Announcement combat diplomacy-cause []: a performance	一场表演	l
 Announcement combat diplomacy-possessor [$unit]: {s}'	{s1}的	l
-Announcement combat evasion [unit]: {s} scramble away	{s1}连滚带爬地躲开了	l
 Announcement combat fortress-job [$unit]: Unchain {s}	解开{s1}的锁链	l
 Announcement combat guard-building []: a leather shop	皮革店	l
 Announcement combat injury-subject []: a major artery	一条主要动脉	l
@@ -36951,8 +36958,6 @@ Announcement combat dialogue-trouble []: the beast	那头凶兽	l
 Announcement combat dialogue-trouble []: the death	那起死亡	l
 Announcement combat diplomacy-cause []: a ceremony	一次仪式	l
 Announcement combat embark-threat [$creature]: {s}	{s1}	l
-Announcement combat evasion [unit]: {s} jumps away	{s1}跳开了	l
-Announcement combat evasion [unit]: {s} rolls away	{s1}翻滚躲开了	l
 Announcement combat injury-subject []: many nerves	多条神经	l
 Announcement combat journal-crime []: embezzlement	侵吞公款	l
 Announcement combat journal-entity-event []: claim	的主权宣称	l
@@ -38293,8 +38298,6 @@ Announcement combat diplomacy-cause []: a journey	一段旅程	l
 Announcement combat diplomacy-group []: The group	这个势力	l
 Announcement combat diplomacy-groups [$name]: {s}	{s1}	l
 Announcement combat equipment [owned-object]: {s}	{s1}	l
-Announcement combat evasion [unit]: {s} jump away	{s1}跳开了	l
-Announcement combat evasion [unit]: {s} roll away	{s1}翻滚躲开了	l
 Announcement combat historical-squad [$name]: {s}	{s1}	l
 Announcement combat injury-condition []: sprained	扭伤	l
 Announcement combat injury-condition []: strained	拉伤	l
@@ -44294,6 +44297,7 @@ Announcement combat memory-relation []: lover	恋人	l
 Announcement combat memory-value []: commerce	商业	l
 Announcement combat memory-value []: fairness	公平	l
 Announcement combat memory-value []: stoicism	克制	l
+Announcement combat owned-object [owner]: {s}	{s1}物品	l
 Announcement combat quest-building []: a keep	城堡主楼	l
 Announcement combat quest-building []: a tomb	陵墓	l
 Announcement combat quest-object [$book]: {s}	{s1}	l
@@ -47479,6 +47483,8 @@ Announcement combat sentence []: STRANGUS !	斯特朗古斯！	l
 Announcement combat sentence []: attacked .	未具名者攻击了未具名者。	l
 Announcement combat sentence [head]: {s}, !	{s1}！	l
 Announcement combat shot-result []: parried	招架住了	l
+Announcement combat subject-pronoun []: she	她	l
+Announcement combat subject-pronoun []: you	你	l
 Announcement combat visitor-statement []: .	……。	l
 Announcement combat work-ordinal []: eighth	8	l
 Announcement combat work-ordinal []: fourth	4	l
@@ -49161,6 +49167,8 @@ Announcement combat sentence []: I serve .	我为未具名者效力。	l
 Announcement combat sentence []: STORKIS !	斯托尔基斯！	l
 Announcement combat sentence []: This is .	这个场所未注明名称。	l
 Announcement combat sentence []: We have .	我们这里有酒水。	l
+Announcement combat subject-pronoun []: he	他	l
+Announcement combat subject-pronoun []: it	它	l
 Announcement combat weapon-part []: handle	柄	l
 Announcement combat weapon-part []: pommel	圆头	l
 Announcement combat work-ordinal []: fifth	5	l

@@ -1,39 +1,9 @@
-// A stored animation label is a corpse/body-component production, including
-// a literal owner whose name need not occur in the generated-name vocabulary.
+// A stored animation label is the same full/short corpse production as a
+// butchery target, including its independently generated language_name owner.
 std::optional<std::string> Overlay::translate_native_animation_label(
         std::string_view source) const {
     TranslationStateScope translation_scope;
-    if (auto target = translate_corpsepiece_item_name(source);
-            translation_complete_with_native_nicknames(target, source)) return target;
-    // Native corpse producers append a possessive after the selected name.
-    // An authored nickname can contain an earlier possessive of its own.
-    // Prove the entire body suffix before accepting any owner boundary.
-    for (size_t at = source.rfind("'s "); at != std::string_view::npos;
-         at = at == 0 ? std::string_view::npos : source.rfind("'s ", at - 1)) {
-        const auto owner = trim_view(source.substr(0, at));
-        const auto body = trim_view(source.substr(at + 3));
-        if (owner.empty() || body.empty()) continue;
-        std::vector<size_t> origins;
-        const auto noun = RULESETS.translate_with_origins(native_text_to_utf8(body),
-            "::items::corpsepiece::animated_body", origins);
-        if (!noun) continue;
-        auto name = native_unit_identity_source_target(owner);
-        if (!name) {
-            name = translate_legends_actor(owner);
-            // The corpse's native producer can choose EnglishName too:
-            // first_name, concatenated WORD0/1 surname, title and OfX are
-            // still one typed owner. Reuse the complete character renderer
-            // before retaining an actually authored spelling.
-            if (!translation_complete_with_native_nicknames(name, owner))
-                name = translate_english_character_name(owner);
-            if (!translation_complete_with_native_nicknames(name, owner)) name.reset();
-        }
-        // This is the native producer's owner field, not an inferred person
-        // in ordinary prose. Preserve an authored spelling while translating
-        // the independently resolved body, including all damage modifiers.
-        return (name ? *name : native_text_to_utf8(owner)) + "的" + *noun;
-    }
-    return std::nullopt;
+    return translate_corpsepiece_item_name(source);
 }
 
 // Render one semantic identity for drawing and searching. Classification is

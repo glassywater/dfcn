@@ -35,9 +35,21 @@ void Overlay::rebuild_announcement_combat_rules() {
         announcement_combat_rules_[scope].emplace_back(fields, std::move(rule));
     }
     // Exact and more specific constructions precede recursive alternatives.
+    // A shared-damage sentence owns its attack and complete consequence tree.
+    // Resolve that structure before extension messages with one open unit
+    // field: e.g. an ability named Guts must not claim the final tissue in
+    // "... tearing the fat and bruising the guts!" as an activation report.
     // Stable ties preserve intentional type precedence (anatomy before item).
     for (auto &[scope, entries] : announcement_combat_rules_) {
-        std::stable_sort(entries.begin(), entries.end(), [](const auto &a, const auto &b) {
+        std::stable_sort(entries.begin(), entries.end(), [&](const auto &a, const auto &b) {
+            if (a.second.template_kinds.empty() != b.second.template_kinds.empty())
+                return a.second.template_kinds.empty();
+            if (scope == "sentence") {
+                const auto damage_tree = [](const auto &entry) {
+                    return entry.first == "head" || entry.first.starts_with("head,");
+                };
+                if (damage_tree(a) != damage_tree(b)) return damage_tree(a);
+            }
             const auto literal_size = [](const Rule &r) {
                 return r.source.size() - r.template_kinds.size() * 3;
             };
@@ -76,6 +88,7 @@ static bool announcement_combat_field_edges_fit(
     // require their original nonempty field boundaries.
     return scope == "head" || scope == "attack" || scope == "damage" ||
         scope == "damage-list" || scope == "layer" ||
+        scope == "owned-object" ||
         scope == "work-reference" || scope == "work-reference-list" ||
         // The slain-foe builder always appends " of " after a held office,
         // even when the entity's language_name is empty. The whole victim
@@ -84,7 +97,8 @@ static bool announcement_combat_field_edges_fit(
         scope == "boast-victim";
 }
 
-static bool spoken_identity_has_prose_boundary(std::string_view value) {
+static bool spoken_identity_has_prose_boundary(std::string_view value,
+        bool comma_is_boundary = false) {
     // A speaker's nickname is an authored field, including its punctuation.
     // The enclosing person/role must still end before the next utterance;
     // otherwise the permissive authored-unit fallback can swallow a complete
@@ -101,7 +115,8 @@ static bool spoken_identity_has_prose_boundary(std::string_view value) {
             at = nickname_end;
             continue;
         }
-        if (std::string_view(".!?:[]\r\n").find(value[at]) != std::string_view::npos)
+        if ((comma_is_boundary && value[at] == ',') ||
+                std::string_view(".!?:[]\r\n").find(value[at]) != std::string_view::npos)
             return true;
     }
     return false;
@@ -318,7 +333,16 @@ std::optional<std::string> Overlay::translate_announcement_combat(
             // producer's complete EnglishName/FIRST_NAME grammar instead.
             if (!result && spoken_scope)
                 result = translate_announcement_combat(input, "$speech-person");
-            if (!result && !spoken_scope) result = translate_unit_identity(input, true);
+            // An unbound authored name is the last alternative. A native
+            // identity or a fully parsed profession/animation above may own
+            // punctuation; an arbitrary incident or damage clause may not
+            // establish a unit merely by occupying an extension's capture.
+            // A standalone leaf has no enclosing native production to prove
+            // that arbitrary text is an authored unit name. Display fields
+            // recover their report-bound identities before entering here.
+            if (!result && !spoken_scope && initial_scope != "unit" && initial_scope != "$unit" &&
+                    !spoken_identity_has_prose_boundary(input, true))
+                result = translate_unit_identity(input, true);
             return finish(std::move(result));
         }
         if (scope == "$historical-actor") {
@@ -930,6 +954,7 @@ dfcn::TranslationResult Overlay::translate_announcement_combat_result(
         std::vector<std::string_view> scopes;
         std::vector<std::pair<size_t, size_t>> ranges;
         size_t literal_bytes = 0;
+        bool damage_tree = false;
     };
     std::optional<Candidate> selected;
     bool ambiguous = false;
@@ -941,6 +966,8 @@ dfcn::TranslationResult Overlay::translate_announcement_combat_result(
                     !legends_template_literals_fit(rule, source, 0, source.size(), true)) continue;
             Candidate candidate;
             candidate.rule = &rule;
+            candidate.damage_tree = initial_scope == "sentence" &&
+                (signature == "head" || signature.starts_with("head,"));
             for (size_t at = 0; at < signature.size();) {
                 const size_t comma = signature.find(',', at);
                 const size_t end = comma == std::string::npos ? signature.size() : comma;
@@ -960,7 +987,9 @@ dfcn::TranslationResult Overlay::translate_announcement_combat_result(
             // not native member identities. Missing members cannot prove a
             // list or a whitespace-only actor/object decomposition.
             if (!predicate_literal || initial_scope.ends_with("-list") ||
-                    (selected && candidate.literal_bytes < selected->literal_bytes)) continue;
+                    (selected && ((!candidate.damage_tree && selected->damage_tree) ||
+                        (candidate.damage_tree == selected->damage_tree &&
+                            candidate.literal_bytes < selected->literal_bytes)))) continue;
             std::vector<std::pair<size_t, size_t>> ranges(candidate.scopes.size()), first_ranges;
             size_t bindings = 0;
             const auto bind = [&](const auto &self, size_t field, size_t at) -> void {
@@ -988,7 +1017,9 @@ dfcn::TranslationResult Overlay::translate_announcement_combat_result(
             bind(bind, 0, rule.template_literals.front().size());
             if (!bindings) continue;
             candidate.ranges = std::move(first_ranges);
-            if (!selected || candidate.literal_bytes > selected->literal_bytes) {
+            if (!selected || (candidate.damage_tree && !selected->damage_tree) ||
+                    (candidate.damage_tree == selected->damage_tree &&
+                        candidate.literal_bytes > selected->literal_bytes)) {
                 selected = std::move(candidate);
                 ambiguous = bindings != 1;
             } else ambiguous = true;
@@ -1012,7 +1043,14 @@ dfcn::TranslationResult Overlay::translate_announcement_combat_result(
         const auto scope = candidate.scopes[field];
         std::optional<std::string> translated;
         if (!work_limited) {
-            try { translated = translate_announcement_combat(native, scope); }
+            try {
+                // The complete report owns formatter-captured authored
+                // names. Keep that source binding when a display candidate
+                // resolves its unit field through an independent leaf call.
+                if (scope == "unit" || scope == "$unit")
+                    translated = native_announcement_unit_identity_target(raw_source, native);
+                if (!translated) translated = translate_announcement_combat(native, scope);
+            }
             catch (const dfcn::TranslationWorkLimit &) {
                 if (!budget.owns_budget()) throw;
                 work_limited = true;
@@ -1022,6 +1060,11 @@ dfcn::TranslationResult Overlay::translate_announcement_combat_result(
         // missing numeral/date/relationship is not an unknown noun/name.
         if (!translated && (scope == "$digits" || scope == "$number" ||
                 scope == "$date" || scope == "$kinship")) return finish(no_match);
+        // A missing name may remain visible inside its native field. A
+        // complete failed prose clause cannot instead prove the subject of
+        // a different extension message (e.g. tissue Guts -> ability Guts).
+        if (!translated && scope == "unit" &&
+                spoken_identity_has_prose_boundary(native, true)) return finish(no_match);
         auto result = translated ? dfcn::TranslationResult::translated(native, *translated, scope) :
             dfcn::TranslationResult{};
         if (!result.usable() && !work_limited && !scope.starts_with('$') && native.size() < raw_source.size())

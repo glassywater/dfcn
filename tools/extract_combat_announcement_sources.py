@@ -65,6 +65,12 @@ ROOT_FUNCTIONS = {
         0x14132e0c0: "creature-profession-description",
         0x14132f980: "unit-role-description",
         0x141331500: "alternate-unit-caption",
+        0x1413345d0: "body-part-name",
+        0x1414d1920: "material-state-caption",
+        0x140ca1aa0: "corpse-full-caption",
+        0x140ca10e0: "corpse-short-caption",
+        0x140ca0d60: "corpse-caption-article",
+        0x140a82c10: "generic-item-type-material-caption",
     },
     "classic": {
         0x140c62490: "complete-item-caption",
@@ -88,6 +94,12 @@ ROOT_FUNCTIONS = {
         0x141329030: "creature-profession-description",
         0x14132a8f0: "unit-role-description",
         0x14132c470: "alternate-unit-caption",
+        0x14132f540: "body-part-name",
+        0x1414cc890: "material-state-caption",
+        0x140c9eae0: "corpse-full-caption",
+        0x140c9e120: "corpse-short-caption",
+        0x140c9dda0: "corpse-caption-article",
+        0x140a7fc90: "generic-item-type-material-caption",
     },
 }
 

@@ -73,7 +73,7 @@ void combat_source_fireball_1365990(longlong param_1)
     uStack_40 = 0xf;
     ppppuStack_58 = (undefined8 *****)0x0;
     uStack_118 = CONCAT31(uStack_118._1_3_,1);
-    FUN_14132e430(0,&ppppuStack_58,1,1);
+    combat_source_combat_unit_caption_132e430(0,&ppppuStack_58,1,1);
     auStack_78[1] = 0;
     auStack_78[2] = 0;
     auStack_78[3] = 0xf;
@@ -127,7 +127,7 @@ void combat_source_fireball_1365990(longlong param_1)
     uStack_c0 = *(undefined2 *)(param_1 + 0xaa);
     uStack_be = *(undefined2 *)(param_1 + 0xac);
     lStack_a8 = param_1;
-    FUN_1400e3c20(0x1424e3850,auStack_78,&uStack_c8);
+    combat_source_announcement_submit_e3c20(&DAT_1424e3850,auStack_78,&uStack_c8);
     if (0xf < auStack_78[3]) {
       uVar14 = auStack_78[3] + 1;
       uVar15 = auStack_78[0];

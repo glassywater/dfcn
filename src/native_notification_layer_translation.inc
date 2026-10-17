@@ -67,6 +67,9 @@ void Overlay::render_native_announcement_layer(SDL_Renderer *renderer, bool repo
     // report ownership; an active read scope keeps page recovery out of it.
     NativeUiReadScope component(gps_, nullptr);
     NativePanelReadScope panels(gps_);
+    // Notification grids bypass the generic matcher's RAW refresh. Capture
+    // GENERATED species/caste identities before taking translation cache keys.
+    refresh_native_generated_creature_names();
     CellReadCacheScope cells(*this);
     prepared_matches_ = reports ? find_matches() : find_native_notification_matches();
     const auto owned = [&](const Match &match) {

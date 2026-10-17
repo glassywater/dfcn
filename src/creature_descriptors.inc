@@ -436,6 +436,22 @@ std::optional<std::string> Overlay::translate_creature_descriptor(
                 auto target = translate_compositional(key);
                 if (complete(target)) return target;
             }
+            // World-generated RAWs can use native-language proper names as
+            // their complete species/caste label, without any possessive.
+            // The corpse producer selects this exact field for unnamed
+            // bodies. Only a captured GENERATED RAW establishes that source;
+            // capitalization merely distinguishes its name groups from an
+            // unsupported ordinary English creature description. Keep every
+            // existing semantic production above ahead of phonetic fallback.
+            if (const auto names = g_native_generated_creature_names.load(
+                    std::memory_order_acquire)) {
+                const auto known = names->find(lower_native_name(key));
+                if (known != names->end() && generated_title_shape(known->second) &&
+                        !known->second.ends_with("..."))
+                    // Keep the phonetic branch reachable for generated RAW
+                    // names absent from the strict personal-name vocabulary.
+                    return translate_procedural_fragment(known->second, true);
+            }
             return std::nullopt;
         };
         auto target = resolve();

@@ -814,6 +814,252 @@ reference	creature-appearance	0x140717d30	0x14071a088	0x14168543c	cstring	dry
 reference	creature-appearance	0x140717d30	0x14071a09e	0x14164b74c	cstring	-
 reference	creature-appearance	0x140717d30	0x14071a16a	0x141686348	cstring	average
 reference	creature-appearance	0x140717d30	0x14071a212	0x141686348	cstring	average
+reference	generic-item-type-material-caption	0x140a82c10	0x140a82d27	0x141649d9c	cstring	large
+reference	generic-item-type-material-caption	0x140a82c10	0x140a82d30	0x141649da0	cstring	e
+reference	generic-item-type-material-caption	0x140a82c10	0x140a82d39	0x141686358	cstring	small
+reference	generic-item-type-material-caption	0x140a82c10	0x140a82d42	0x14168635c	cstring	l
+reference	generic-item-type-material-caption	0x140a82c10	0x140a82d8c	0x1416cbf50	cstring	grown 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a82e66	0x14167ccf0	cstring	logs
+reference	generic-item-type-material-caption	0x140a82c10	0x140a82ed8	0x1416ce7e0	cstring	branch
+reference	generic-item-type-material-caption	0x140a82c10	0x140a82efd	0x1416ce880	cstring	es
+reference	generic-item-type-material-caption	0x140a82c10	0x140a82f1d	0x141601038	cstring	rough gems
+reference	generic-item-type-material-caption	0x140a82c10	0x140a82f36	0x1416ce870	cstring	raw green glass
+reference	generic-item-type-material-caption	0x140a82c10	0x140a82f4f	0x1416ce860	cstring	raw clear glass
+reference	generic-item-type-material-caption	0x140a82c10	0x140a82f68	0x1416ce848	cstring	raw crystal glass
+reference	generic-item-type-material-caption	0x140a82c10	0x140a82f8a	0x141601038	cstring	rough gems
+reference	generic-item-type-material-caption	0x140a82c10	0x140a82fa8	0x1416cc1b0	cstring	rough 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a83047	0x1416862ac	cstring	small 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a8305e	0x1416862ac	cstring	small 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a8313e	0x1416ce7ac	cstring	rock
+reference	generic-item-type-material-caption	0x140a82c10	0x140a8315e	0x1416ce7a0	cstring	small rock
+reference	generic-item-type-material-caption	0x140a82c10	0x140a831b7	0x1416ce790	cstring	stone boulders
+reference	generic-item-type-material-caption	0x140a82c10	0x140a831dd	0x1416ce780	cstring	boulders
+reference	generic-item-type-material-caption	0x140a82c10	0x140a832ba	0x1416ce738	cstring	bars
+reference	generic-item-type-material-caption	0x140a82c10	0x140a832d3	0x1416ce7c0	cstring	charcoal
+reference	generic-item-type-material-caption	0x140a82c10	0x140a832e9	0x1416ce7b4	cstring	coke
+reference	generic-item-type-material-caption	0x140a82c10	0x140a832f2	0x1416ce740	cstring	refined coal
+reference	generic-item-type-material-caption	0x140a82c10	0x140a8330b	0x14163e59c	cstring	metal
+reference	generic-item-type-material-caption	0x140a82c10	0x140a8331a	0x1416ce7cc	cstring	 bars
+reference	generic-item-type-material-caption	0x140a82c10	0x140a833ca	0x1416ce7d8	cstring	 wafers
+reference	generic-item-type-material-caption	0x140a82c10	0x140a834b8	0x1416011f0	cstring	cut gems
+reference	generic-item-type-material-caption	0x140a82c10	0x140a834d1	0x1416ce720	cstring	cut green glass gems
+reference	generic-item-type-material-caption	0x140a82c10	0x140a834ea	0x1416ce708	cstring	cut clear glass gems
+reference	generic-item-type-material-caption	0x140a82c10	0x140a83500	0x1416ce768	cstring	cut crystal glass gems
+reference	generic-item-type-material-caption	0x140a82c10	0x140a8351b	0x1416ce760	cstring	gems
+reference	generic-item-type-material-caption	0x140a82c10	0x140a83658	0x1416ce758	cstring	blocks
+reference	generic-item-type-material-caption	0x140a82c10	0x140a8366f	0x1416ce758	cstring	blocks
+reference	generic-item-type-material-caption	0x140a82c10	0x140a8371d	0x1416ce6ec	cstring	door
+reference	generic-item-type-material-caption	0x140a82c10	0x140a83724	0x1416ce750	cstring	portal
+reference	generic-item-type-material-caption	0x140a82c10	0x140a8379a	0x1416ce6e0	cstring	floodgate
+reference	generic-item-type-material-caption	0x140a82c10	0x140a8380a	0x1416ce6d0	cstring	hatch cover
+reference	generic-item-type-material-caption	0x140a82c10	0x140a8387a	0x1416ce6c8	cstring	grate
+reference	generic-item-type-material-caption	0x140a82c10	0x140a838ea	0x14162fdb4	cstring	table
+reference	generic-item-type-material-caption	0x140a82c10	0x140a8395a	0x14163cea0	cstring	cabinet
+reference	generic-item-type-material-caption	0x140a82c10	0x140a839ca	0x14163ce90	cstring	weapon rack
+reference	generic-item-type-material-caption	0x140a82c10	0x140a83a3a	0x14163ce08	cstring	armor stand
+reference	generic-item-type-material-caption	0x140a82c10	0x140a83aaa	0x1416ce704	cstring	bin
+reference	generic-item-type-material-caption	0x140a82c10	0x140a83b51	0x1416ce700	cstring	box
+reference	generic-item-type-material-caption	0x140a82c10	0x140a83b6a	0x1416ce6fc	cstring	e
+reference	generic-item-type-material-caption	0x140a82c10	0x140a83b93	0x1416ce6f4	cstring	coffer
+reference	generic-item-type-material-caption	0x140a82c10	0x140a83ba2	0x14163cea8	cstring	chest
+reference	generic-item-type-material-caption	0x140a82c10	0x140a83bc3	0x1416ce6a0	cstring	boxe
+reference	generic-item-type-material-caption	0x140a82c10	0x140a83bd8	0x1415e9298	cstring	s
+reference	generic-item-type-material-caption	0x140a82c10	0x140a83bec	0x1416ce700	cstring	box
+reference	generic-item-type-material-caption	0x140a82c10	0x140a83c64	0x1416ce69c	cstring	bag
+reference	generic-item-type-material-caption	0x140a82c10	0x140a83cff	0x1416ce690	cstring	backpack
+reference	generic-item-type-material-caption	0x140a82c10	0x140a83dbc	0x1416ce6c0	cstring	cast
+reference	generic-item-type-material-caption	0x140a82c10	0x140a83dc8	0x1416ce680	cstring	limb/body 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a83dd7	0x1416ce6c0	cstring	cast
+reference	generic-item-type-material-caption	0x140a82c10	0x140a83e37	0x1416ce680	cstring	limb/body 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a83e46	0x1416ce6c0	cstring	cast
+reference	generic-item-type-material-caption	0x140a82c10	0x140a83eb6	0x1416ce6b8	cstring	splint
+reference	generic-item-type-material-caption	0x140a82c10	0x140a83f20	0x1416ce6b0	cstring	crutch
+reference	generic-item-type-material-caption	0x140a82c10	0x140a83fbb	0x1416ce6a8	cstring	quiver
+reference	generic-item-type-material-caption	0x140a82c10	0x140a8403a	0x1416ce63c	cstring	casket
+reference	generic-item-type-material-caption	0x140a82c10	0x140a84085	0x1416ce630	cstring	sarcophag
+reference	generic-item-type-material-caption	0x140a82c10	0x140a84094	0x141642184	cstring	us
+reference	generic-item-type-material-caption	0x140a82c10	0x140a8409b	0x1416c0828	cstring	i
+reference	generic-item-type-material-caption	0x140a82c10	0x140a840b7	0x14162fe0c	cstring	coffin
+reference	generic-item-type-material-caption	0x140a82c10	0x140a841d4	0x1416ce61c	cstring	chain
+reference	generic-item-type-material-caption	0x140a82c10	0x140a841e8	0x1416ce624	cstring	rope
+reference	generic-item-type-material-caption	0x140a82c10	0x140a84328	0x1416ce664	cstring	vial
+reference	generic-item-type-material-caption	0x140a82c10	0x140a84339	0x1416ce65c	cstring	flask
+reference	generic-item-type-material-caption	0x140a82c10	0x140a84350	0x1416ce670	cstring	waterskin
+reference	generic-item-type-material-caption	0x140a82c10	0x140a843f9	0x1416ce648	cstring	musical instrument
+reference	generic-item-type-material-caption	0x140a82c10	0x140a844db	0x1416ce5e8	cstring	unglazed 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a84643	0x1415e873c	cstring	 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a8465d	0x1416c1e44	cstring	tool
+reference	generic-item-type-material-caption	0x140a82c10	0x140a846fd	0x1416c1d64	cstring	toy
+reference	generic-item-type-material-caption	0x140a82c10	0x140a847ad	0x1416ce5e0	cstring	cup
+reference	generic-item-type-material-caption	0x140a82c10	0x140a847e1	0x1416ce5dc	cstring	mug
+reference	generic-item-type-material-caption	0x140a82c10	0x140a847fb	0x1416ce5d4	cstring	goblet
+reference	generic-item-type-material-caption	0x140a82c10	0x140a8486b	0x1416ce614	cstring	window
+reference	generic-item-type-material-caption	0x140a82c10	0x140a8491a	0x1416ce5fc	cstring	cage
+reference	generic-item-type-material-caption	0x140a82c10	0x140a84921	0x1416ce608	cstring	terrarium
+reference	generic-item-type-material-caption	0x140a82c10	0x140a84995	0x1416ce5f4	cstring	barrel
+reference	generic-item-type-material-caption	0x140a82c10	0x140a84a05	0x1416cec8c	cstring	bucket
+reference	generic-item-type-material-caption	0x140a82c10	0x140a84a75	0x1416cec80	cstring	animal trap
+reference	generic-item-type-material-caption	0x140a82c10	0x140a84af1	0x14162fe04	cstring	chair
+reference	generic-item-type-material-caption	0x140a82c10	0x140a84b0b	0x1416cec74	cstring	throne
+reference	generic-item-type-material-caption	0x140a82c10	0x140a84bc1	0x1416cec70	cstring	web
+reference	generic-item-type-material-caption	0x140a82c10	0x140a84c0c	0x1416cecb8	cstring	strands
+reference	generic-item-type-material-caption	0x140a82c10	0x140a84c3f	0x1416158b4	cstring	yarn
+reference	generic-item-type-material-caption	0x140a82c10	0x140a84c50	0x14161589c	cstring	thread
+reference	generic-item-type-material-caption	0x140a82c10	0x140a84cc5	0x1416158a4	cstring	cloth
+reference	generic-item-type-material-caption	0x140a82c10	0x140a84dcf	0x1416cecac	cstring	sheet
+reference	generic-item-type-material-caption	0x140a82c10	0x140a84df2	0x1416ceca0	cstring	tanned hide
+reference	generic-item-type-material-caption	0x140a82c10	0x140a84e55	0x1416cec94	cstring	totem
+reference	generic-item-type-material-caption	0x140a82c10	0x140a84ebe	0x1416cec40	cstring	-bound 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a84eda	0x1416cec2c	cstring	codex
+reference	generic-item-type-material-caption	0x140a82c10	0x140a84ee1	0x1416cec38	cstring	codices
+reference	generic-item-type-material-caption	0x140a82c10	0x140a84f60	0x1416cec20	cstring	figurine
+reference	generic-item-type-material-caption	0x140a82c10	0x140a84f7e	0x1416cec68	cstring	rotten 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a84fa3	0x14164fc00	cstring	drink
+reference	generic-item-type-material-caption	0x140a82c10	0x140a84fe6	0x1416cec68	cstring	rotten 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a851cb	0x1416cec60	cstring	filthy 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a851e4	0x1416cec58	cstring	sticky 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a85203	0x1416cec48	cstring	vomitous 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a8521f	0x1416cebec	cstring	slimy 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a85238	0x1416b1070	cstring	stagnant 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a85254	0x1416cebe4	cstring	dirty 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a85270	0x1416cebdc	cstring	gooey 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a85289	0x1416cebd0	cstring	purulent 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a852a2	0x1416cec10	cstring	ichorous 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a852bb	0x1416cec08	cstring	bloody 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a852fa	0x1416a6358	cstring	liquid
+reference	generic-item-type-material-caption	0x140a82c10	0x140a8543c	0x1416cebfc	cstring	 paste
+reference	generic-item-type-material-caption	0x140a82c10	0x140a85491	0x1416cebf4	cstring	glob
+reference	generic-item-type-material-caption	0x140a82c10	0x140a85692	0x1416ceb80	cstring	 laced with 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a85706	0x1415e90d8	cstring	, 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a85716	0x1415e9110	cstring	 and 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a8577b	0x1416cec68	cstring	rotten 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a85818	0x1416ceb70	cstring	 dye mix
+reference	generic-item-type-material-caption	0x140a82c10	0x140a8583c	0x1416ceb64	cstring	powder
+reference	generic-item-type-material-caption	0x140a82c10	0x140a85896	0x1416cec68	cstring	rotten 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a858b8	0x1416ceb5c	cstring	cheese
+reference	generic-item-type-material-caption	0x140a82c10	0x140a85940	0x1416cebc0	cstring	catapult parts
+reference	generic-item-type-material-caption	0x140a82c10	0x140a859b8	0x1416ceba8	cstring	bolt thrower parts
+reference	generic-item-type-material-caption	0x140a82c10	0x140a85a30	0x1416ceb98	cstring	mechanisms
+reference	generic-item-type-material-caption	0x140a82c10	0x140a85adf	0x1416ceb90	cstring	tube
+reference	generic-item-type-material-caption	0x140a82c10	0x140a85af9	0x1416ceb10	cstring	pipe section
+reference	generic-item-type-material-caption	0x140a82c10	0x140a85b97	0x1416ceb00	cstring	trap component
+reference	generic-item-type-material-caption	0x140a82c10	0x140a85bc8	0x1415e873c	cstring	 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a85caa	0x1416ceaf0	cstring	ballista parts
+reference	generic-item-type-material-caption	0x140a82c10	0x140a85d22	0x1416ceae8	cstring	anvil
+reference	generic-item-type-material-caption	0x140a82c10	0x140a85d92	0x1416ceb54	cstring	amulet
+reference	generic-item-type-material-caption	0x140a82c10	0x140a85e02	0x1416ceb40	cstring	ballista arrow head
+reference	generic-item-type-material-caption	0x140a82c10	0x140a85ea9	0x1416ceb30	cstring	siege ammo
+reference	generic-item-type-material-caption	0x140a82c10	0x140a85ff3	0x1416ceb20	cstring	ammunition
+reference	generic-item-type-material-caption	0x140a82c10	0x140a8606b	0x1416ceaa8	cstring	scepter
+reference	generic-item-type-material-caption	0x140a82c10	0x140a860db	0x1416cea9c	cstring	crown
+reference	generic-item-type-material-caption	0x140a82c10	0x140a86145	0x1416cea94	cstring	coin
+reference	generic-item-type-material-caption	0x140a82c10	0x140a86164	0x1416cea88	cstring	perfect 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a86173	0x14164a2c8	cstring	large 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a8625b	0x1416cead8	cstring	green glass 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a86271	0x1416ceac8	cstring	clear glass 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a86287	0x1416ceab8	cstring	crystal glass 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a862a3	0x1416158fc	cstring	gem
+reference	generic-item-type-material-caption	0x140a82c10	0x140a8635b	0x1416ceab0	cstring	 gem
+reference	generic-item-type-material-caption	0x140a82c10	0x140a86436	0x1416cea50	cstring	ring
+reference	generic-item-type-material-caption	0x140a82c10	0x140a864a6	0x1416cea48	cstring	earring
+reference	generic-item-type-material-caption	0x140a82c10	0x140a86516	0x1416cea38	cstring	bracelet
+reference	generic-item-type-material-caption	0x140a82c10	0x140a86586	0x14162fdb0	cstring	bed
+reference	generic-item-type-material-caption	0x140a82c10	0x140a865f6	0x1416cea28	cstring	traction bench
+reference	generic-item-type-material-caption	0x140a82c10	0x140a86666	0x1416cea7c	cstring	quern
+reference	generic-item-type-material-caption	0x140a82c10	0x140a866d6	0x1416cea70	cstring	millstone
+reference	generic-item-type-material-caption	0x140a82c10	0x140a86746	0x1416cea64	cstring	statue
+reference	generic-item-type-material-caption	0x140a82c10	0x140a86852	0x1416cea58	cstring	memorial
+reference	generic-item-type-material-caption	0x140a82c10	0x140a86866	0x1416ce9a0	cstring	food imports sign
+reference	generic-item-type-material-caption	0x140a82c10	0x140a8687a	0x1416ce988	cstring	clothing imports sign
+reference	generic-item-type-material-caption	0x140a82c10	0x140a8688e	0x1416ce970	cstring	general imports sign
+reference	generic-item-type-material-caption	0x140a82c10	0x140a868a2	0x1416ce960	cstring	cloth shop sign
+reference	generic-item-type-material-caption	0x140a82c10	0x140a868b6	0x1416cea10	cstring	leather shop sign
+reference	generic-item-type-material-caption	0x140a82c10	0x140a868ca	0x1416ce9f0	cstring	woven clothing shop sign
+reference	generic-item-type-material-caption	0x140a82c10	0x140a868de	0x1416ce9d0	cstring	leather clothing shop sign
+reference	generic-item-type-material-caption	0x140a82c10	0x140a868f2	0x1416ce9b8	cstring	bone carver's shop sign
+reference	generic-item-type-material-caption	0x140a82c10	0x140a86906	0x1416cf090	cstring	gem cutter's shop sign
+reference	generic-item-type-material-caption	0x140a82c10	0x140a8691a	0x1416cf078	cstring	weaponsmith's shop sign
+reference	generic-item-type-material-caption	0x140a82c10	0x140a8692e	0x1416cf060	cstring	bowyer's shop sign
+reference	generic-item-type-material-caption	0x140a82c10	0x140a86942	0x1416cf048	cstring	blacksmith's shop sign
+reference	generic-item-type-material-caption	0x140a82c10	0x140a86956	0x1416cf0f0	cstring	armorsmith's shop sign
+reference	generic-item-type-material-caption	0x140a82c10	0x140a8696a	0x1416cf0d8	cstring	metal craft shop sign
+reference	generic-item-type-material-caption	0x140a82c10	0x140a8697e	0x1416cf0c0	cstring	leather goods shop sign
+reference	generic-item-type-material-caption	0x140a82c10	0x140a86992	0x1416cf0a8	cstring	carpenter's shop sign
+reference	generic-item-type-material-caption	0x140a82c10	0x140a869a6	0x1416ceff8	cstring	stone furniture shop sign
+reference	generic-item-type-material-caption	0x140a82c10	0x140a869ba	0x1416cefd8	cstring	metal furniture shop sign
+reference	generic-item-type-material-caption	0x140a82c10	0x140a869ce	0x1416cefc8	cstring	tavern sign
+reference	generic-item-type-material-caption	0x140a82c10	0x140a869e2	0x1416cefbc	cstring	slab
+reference	generic-item-type-material-caption	0x140a82c10	0x140a869f6	0x1416cefbc	cstring	slab
+reference	generic-item-type-material-caption	0x140a82c10	0x140a86a14	0x1416cec68	cstring	rotten 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a86a29	0x1416cf03c	cstring	corpse
+reference	generic-item-type-material-caption	0x140a82c10	0x140a86a47	0x1416cec68	cstring	rotten 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a86a6b	0x1416158cc	cstring	tooth
+reference	generic-item-type-material-caption	0x140a82c10	0x140a86a7c	0x1416cf034	cstring	teeth
+reference	generic-item-type-material-caption	0x140a82c10	0x140a86a91	0x1416158c4	cstring	bone
+reference	generic-item-type-material-caption	0x140a82c10	0x140a86aa9	0x1416158bc	cstring	shell
+reference	generic-item-type-material-caption	0x140a82c10	0x140a86ac1	0x1416cf028	cstring	plant part
+reference	generic-item-type-material-caption	0x140a82c10	0x140a86ad9	0x1416cf018	cstring	silk body part
+reference	generic-item-type-material-caption	0x140a82c10	0x140a86af1	0x1416cef70	cstring	leather body part
+reference	generic-item-type-material-caption	0x140a82c10	0x140a86b09	0x1416cef58	cstring	wooden body part
+reference	generic-item-type-material-caption	0x140a82c10	0x140a86b23	0x1416cef48	cstring	soap body part
+reference	generic-item-type-material-caption	0x140a82c10	0x140a86b3d	0x1416158e4	cstring	horn
+reference	generic-item-type-material-caption	0x140a82c10	0x140a86b57	0x1416158dc	cstring	pearl
+reference	generic-item-type-material-caption	0x140a82c10	0x140a86b71	0x1416cef38	cstring	yarn body part
+reference	generic-item-type-material-caption	0x140a82c10	0x140a86b89	0x1416cefa8	cstring	strand body part
+reference	generic-item-type-material-caption	0x140a82c10	0x140a86b92	0x141681050	cstring	body part
+reference	generic-item-type-material-caption	0x140a82c10	0x140a86bbb	0x1416cefa0	cstring	Rotten 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a86d22	0x14167f0c0	cstring	remains
+reference	generic-item-type-material-caption	0x140a82c10	0x140a86d81	0x1416cef94	cstring	seeds
+reference	generic-item-type-material-caption	0x140a82c10	0x140a86df2	0x1416cef88	cstring	withered 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a86e66	0x1416ceee0	cstring	leaves and fruit
+reference	generic-item-type-material-caption	0x140a82c10	0x140a86e77	0x1416ceed0	cstring	leaf or fruit
+reference	generic-item-type-material-caption	0x140a82c10	0x140a86eaa	0x1416cef88	cstring	withered 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a86efd	0x141614d54	cstring	plant
+reference	generic-item-type-material-caption	0x140a82c10	0x140a86f16	0x1415e9298	cstring	s
+reference	generic-item-type-material-caption	0x140a82c10	0x140a86f3c	0x1416cec68	cstring	rotten 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a86f54	0x1416ceec8	cstring	raw 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a870d5	0x1415e90d8	cstring	, 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a870eb	0x1415e90d8	cstring	, 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a87104	0x1416a11f0	cstring	fish
+reference	generic-item-type-material-caption	0x140a82c10	0x140a8712a	0x1416cec68	cstring	rotten 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a87251	0x1415e873c	cstring	 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a87266	0x1416ceec4	cstring	egg
+reference	generic-item-type-material-caption	0x140a82c10	0x140a8728c	0x1416cec68	cstring	rotten 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a8738b	0x1416a11f0	cstring	fish
+reference	generic-item-type-material-caption	0x140a82c10	0x140a873a8	0x1416cef2c	cstring	live 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a873e1	0x1416cef18	cstring	small live animal
+reference	generic-item-type-material-caption	0x140a82c10	0x140a873fb	0x1416cef0c	cstring	tame 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a87404	0x1416ceef8	cstring	small tame animal
+reference	generic-item-type-material-caption	0x140a82c10	0x140a8741b	0x1416cee88	cstring	prepared meal
+reference	generic-item-type-material-caption	0x140a82c10	0x140a87435	0x1416cec68	cstring	rotten 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a8744a	0x1416cee78	cstring	preserved 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a8750c	0x1416cee70	cstring	 chops
+reference	generic-item-type-material-caption	0x140a82c10	0x140a8751d	0x1416cee68	cstring	 chop
+reference	generic-item-type-material-caption	0x140a82c10	0x140a87556	0x1416ceebc	cstring	meat
+reference	generic-item-type-material-caption	0x140a82c10	0x140a87570	0x1416ceebc	cstring	meat
+reference	generic-item-type-material-caption	0x140a82c10	0x140a87602	0x1416c1ecc	cstring	weapon
+reference	generic-item-type-material-caption	0x140a82c10	0x140a8763b	0x1415e873c	cstring	 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a87767	0x1416ceea8	cstring	suits of 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a87776	0x1416c1ec4	cstring	armor
+reference	generic-item-type-material-caption	0x140a82c10	0x140a877dc	0x1415e873c	cstring	 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a87886	0x1416ceeb4	cstring	chain 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a87995	0x14163a34c	cstring	right 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a879b5	0x14163a324	cstring	left 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a879fe	0x1416ceeb4	cstring	chain 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a87a5f	0x1415e873c	cstring	 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a87a73	0x1416cee98	cstring	handwear
+reference	generic-item-type-material-caption	0x140a82c10	0x140a87b17	0x1416c1d74	cstring	shield
+reference	generic-item-type-material-caption	0x140a82c10	0x140a87b36	0x1416cee10	cstring	/buckler
+reference	generic-item-type-material-caption	0x140a82c10	0x140a87b4a	0x1416cee10	cstring	/buckler
+reference	generic-item-type-material-caption	0x140a82c10	0x140a87c87	0x1415e873c	cstring	 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a87cb7	0x1416cee00	cstring	footwear
+reference	generic-item-type-material-caption	0x140a82c10	0x140a87da8	0x1416cedf0	cstring	headwear
+reference	generic-item-type-material-caption	0x140a82c10	0x140a87dec	0x1415e873c	cstring	 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a87ea8	0x1416cede8	cstring	legwear
+reference	generic-item-type-material-caption	0x140a82c10	0x140a87f2c	0x1415e873c	cstring	 
+reference	generic-item-type-material-caption	0x140a82c10	0x140a88046	0x1415fcfe0	cstring	item
+reference	generic-item-type-material-caption	0x140a82c10	0x140a88077	0x14161bdcc	cstring	 [
+reference	generic-item-type-material-caption	0x140a82c10	0x140a88097	0x1415fd690	cstring	]
 reference	complete-item-caption	0x140c65450	0x140c656f4	0x1416ee318	cstring	 (copy)
 reference	complete-item-caption	0x140c65450	0x140c657e2	0x58	inline-store	X
 reference	complete-item-caption	0x140c65450	0x140c65822	0x58	inline-store	X
@@ -837,6 +1083,47 @@ reference	complete-item-caption	0x140c65450	0x140c65df4	0x29	inline-store	)
 reference	complete-item-caption	0x140c65450	0x140c65e1c	0x58	inline-store	X
 reference	complete-item-caption	0x140c65450	0x140c65e61	0x58	inline-store	X
 reference	complete-item-caption	0x140c65450	0x140c65e81	0x78	inline-store	x
+reference	corpse-caption-article	0x140ca0d60	0x140ca0df8	0x1415e8e48	cstring	the 
+reference	corpse-caption-article	0x140ca0d60	0x140ca0e25	0x1415ed620	cstring	a 
+reference	corpse-short-caption	0x140ca10e0	0x140ca11b4	0x1416cec68	cstring	rotten 
+reference	corpse-short-caption	0x140ca10e0	0x140ca122a	0x1415e873c	cstring	 
+reference	corpse-short-caption	0x140ca10e0	0x140ca133c	0x1415edb24	cstring	's 
+reference	corpse-short-caption	0x140ca10e0	0x140ca15e9	0x1416ee3b0	cstring	mangled 
+reference	corpse-short-caption	0x140ca10e0	0x140ca173e	0x1415e873c	cstring	 
+reference	corpse-short-caption	0x140ca10e0	0x140ca177b	0x1416158f0	cstring	material
+reference	corpse-short-caption	0x140ca10e0	0x140ca17d3	0x1416ee3a0	cstring	partial 
+reference	corpse-short-caption	0x140ca10e0	0x140ca17fd	0x6e6f74656c656b73	inline	skeleton
+reference	corpse-short-caption	0x140ca10e0	0x140ca1858	0x6e6f74656c656b73	inline	skeleton
+reference	corpse-short-caption	0x140ca10e0	0x140ca191a	0x1416ee390	cstring	partial remains
+reference	corpse-short-caption	0x140ca10e0	0x140ca1975	0x1416ee390	cstring	partial remains
+reference	corpse-short-caption	0x140ca10e0	0x140ca1981	0x1416ee398	cstring	remains
+reference	corpse-short-caption	0x140ca10e0	0x140ca198b	0x1416ee39c	cstring	ins
+reference	corpse-short-caption	0x140ca10e0	0x140ca1996	0x1416ee39e	cstring	s
+reference	corpse-short-caption	0x140ca10e0	0x140ca19b4	0x1416ee380	cstring	mutilated 
+reference	corpse-short-caption	0x140ca10e0	0x140ca19e8	0x1416cf03c	cstring	corpse
+reference	corpse-short-caption	0x140ca10e0	0x140ca1a43	0x1416cf03c	cstring	corpse
+reference	corpse-short-caption	0x140ca10e0	0x140ca1a4b	0x1416cf040	cstring	se
+reference	corpse-full-caption	0x140ca1aa0	0x140ca1bb0	0x1416ee378	cstring	your 
+reference	corpse-full-caption	0x140ca1aa0	0x140ca1c21	0x1415edb24	cstring	's 
+reference	corpse-full-caption	0x140ca1aa0	0x140ca1cdc	0x1415edb24	cstring	's 
+reference	corpse-full-caption	0x140ca1aa0	0x140ca1d41	0x1416cec68	cstring	rotten 
+reference	corpse-full-caption	0x140ca1aa0	0x140ca1df4	0x1415e873c	cstring	 
+reference	corpse-full-caption	0x140ca1aa0	0x140ca2192	0x1416ee3b0	cstring	mangled 
+reference	corpse-full-caption	0x140ca1aa0	0x140ca222f	0x1415e873c	cstring	 
+reference	corpse-full-caption	0x140ca1aa0	0x140ca226d	0x1416158f0	cstring	material
+reference	corpse-full-caption	0x140ca1aa0	0x140ca22d9	0x6e6f74656c656b73	inline	skeleton
+reference	corpse-full-caption	0x140ca1aa0	0x140ca232e	0x6e6f74656c656b73	inline	skeleton
+reference	corpse-full-caption	0x140ca1aa0	0x140ca24a4	0x14161bdcc	cstring	 [
+reference	corpse-full-caption	0x140ca1aa0	0x140ca24c3	0x1415fd690	cstring	]
+reference	corpse-full-caption	0x140ca1aa0	0x140ca252c	0x1416ee390	cstring	partial remains
+reference	corpse-full-caption	0x140ca1aa0	0x140ca2587	0x1416ee390	cstring	partial remains
+reference	corpse-full-caption	0x140ca1aa0	0x140ca2593	0x1416ee398	cstring	remains
+reference	corpse-full-caption	0x140ca1aa0	0x140ca259d	0x1416ee39c	cstring	ins
+reference	corpse-full-caption	0x140ca1aa0	0x140ca25a8	0x1416ee39e	cstring	s
+reference	corpse-full-caption	0x140ca1aa0	0x140ca25c5	0x1416ee380	cstring	mutilated 
+reference	corpse-full-caption	0x140ca1aa0	0x140ca25f9	0x1416cf03c	cstring	corpse
+reference	corpse-full-caption	0x140ca1aa0	0x140ca2654	0x1416cf03c	cstring	corpse
+reference	corpse-full-caption	0x140ca1aa0	0x140ca265c	0x1416cf040	cstring	se
 reference	projectile-motion-announcements	0x140ea8fb0	0x140eab663	0x32	inline-store	2
 reference	projectile-motion-announcements	0x140ea8fb0	0x140eab966	0x141662860	cstring	 scramble
 reference	projectile-motion-announcements	0x140ea8fb0	0x140eab975	0x141662870	cstring	 scrambles
@@ -1291,6 +1578,8 @@ reference	alternate-unit-caption	0x141331500	0x141332f8d	0x1416bec90	cstring	Gho
 reference	alternate-unit-caption	0x141331500	0x141332f9c	0x141629b50	cstring	Ghostly 
 reference	alternate-unit-caption	0x141331500	0x141332fe9	0x1415e873c	cstring	 
 reference	alternate-unit-caption	0x141331500	0x14133300c	0x141782e38	cstring	One
+reference	body-part-name	0x1413345d0	0x1413347a1	0x141681050	cstring	body part
+reference	body-part-name	0x1413345d0	0x1413347e3	0x141681050	cstring	body part
 reference	grip-state-announcements	0x141361370	0x141361570	0x32	inline-store	2
 reference	grip-state-announcements	0x141361370	0x1413615bd	0x32	inline-store	2
 reference	grip-state-announcements	0x141361370	0x1413616f9	0x1415e9248	cstring	Your
@@ -1455,6 +1744,22 @@ reference	cloud-emission	0x1413ca1d0	0x1413ca340	0x1417838b8	cstring	 breathes
 reference	cloud-emission	0x1413ca1d0	0x1413ca35c	0x141784fe8	cstring	 a cloud of 
 reference	cloud-emission	0x1413ca1d0	0x1413ca3c1	0x1415ee438	cstring	!
 reference	cloud-emission	0x1413ca1d0	0x1413ca6b4	0x64	inline-store	d
+reference	material-state-caption	0x1414d1920	0x1414d1987	0x141614d54	cstring	plant
+reference	material-state-caption	0x1414d1920	0x1414d19a9	0x1416158b4	cstring	yarn
+reference	material-state-caption	0x1414d1920	0x1414d19d1	0x1416158a4	cstring	cloth
+reference	material-state-caption	0x1414d1920	0x1414d19f1	0x1416158ac	cstring	silk
+reference	material-state-caption	0x1414d1920	0x1414d1a11	0x1416158c4	cstring	bone
+reference	material-state-caption	0x1414d1920	0x1414d1a31	0x1416156d0	cstring	leather
+reference	material-state-caption	0x1414d1920	0x1414d1a51	0x1416158bc	cstring	shell
+reference	material-state-caption	0x1414d1920	0x1414d1a73	0x1416158d4	cstring	soap
+reference	material-state-caption	0x1414d1920	0x1414d1a95	0x141789150	cstring	ivory/tooth
+reference	material-state-caption	0x1414d1920	0x1414d1ab7	0x1416158e4	cstring	horn
+reference	material-state-caption	0x1414d1920	0x1414d1ad9	0x1416158dc	cstring	pearl
+reference	material-state-caption	0x1414d1920	0x1414d1b08	0x1416156d8	cstring	wood
+reference	material-state-caption	0x1414d1920	0x1414d1b0f	0x1416a12ec	cstring	wooden
+reference	material-state-caption	0x1414d1920	0x1414d1c65	0x1415edb24	cstring	's 
+reference	material-state-caption	0x1414d1920	0x1414d1cf9	0x1415e873c	cstring	 
+reference	material-state-caption	0x1414d1920	0x1414d1d4a	0x141789108	cstring	unknown material
 classic	announcement-submit	0x1400e3bb0	0x1400e3c67	0x1415e9470/16	vector	Empty announceme
 classic	announcement-submit	0x1400e3bb0	0x1400e3c71	0x1415e9480	cstring	nt 
 classic	announcement-submit	0x1400e3bb0	0x1400e3c7c	0x1415e9482	cstring	 
@@ -2270,6 +2575,252 @@ classic	creature-appearance	0x140715750	0x140717aa8	0x14168069c	cstring	dry
 classic	creature-appearance	0x140715750	0x140717abe	0x14164667c	cstring	-
 classic	creature-appearance	0x140715750	0x140717b8a	0x1416810f8	cstring	average
 classic	creature-appearance	0x140715750	0x140717c32	0x1416810f8	cstring	average
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a7fda7	0x14164517c	cstring	large
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a7fdb0	0x141645180	cstring	e
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a7fdb9	0x141681108	cstring	small
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a7fdc2	0x14168110c	cstring	l
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a7fe0c	0x1416c6848	cstring	grown 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a7fee6	0x141677d30	cstring	logs
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a7ff58	0x1416ca230	cstring	branch
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a7ff7d	0x1416ca2d0	cstring	es
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a7ff9d	0x1415fc0c8	cstring	rough gems
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a7ffb6	0x1416ca2c0	cstring	raw green glass
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a7ffcf	0x1416ca2b0	cstring	raw clear glass
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a7ffe8	0x1416ca298	cstring	raw crystal glass
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a8000a	0x1415fc0c8	cstring	rough gems
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a80028	0x1416c70a4	cstring	rough 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a800c7	0x141680d5c	cstring	small 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a800de	0x141680d5c	cstring	small 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a801be	0x1416ca1fc	cstring	rock
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a801de	0x1416ca1f0	cstring	small rock
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a80237	0x1416ca1e0	cstring	stone boulders
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a8025d	0x1416ca1d0	cstring	boulders
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a8033a	0x1416ca188	cstring	bars
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a80353	0x1416ca210	cstring	charcoal
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a80369	0x1416ca204	cstring	coke
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a80372	0x1416ca190	cstring	refined coal
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a8038b	0x1416396f8	cstring	metal
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a8039a	0x1416ca21c	cstring	 bars
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a8044a	0x1416ca228	cstring	 wafers
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a80538	0x1415fc088	cstring	cut gems
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a80551	0x1416ca170	cstring	cut green glass gems
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a8056a	0x1416ca158	cstring	cut clear glass gems
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a80580	0x1416ca1b8	cstring	cut crystal glass gems
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a8059b	0x1416ca1b0	cstring	gems
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a806d8	0x1416ca1a8	cstring	blocks
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a806ef	0x1416ca1a8	cstring	blocks
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a8079d	0x1416ca13c	cstring	door
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a807a4	0x1416ca1a0	cstring	portal
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a8081a	0x1416ca130	cstring	floodgate
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a8088a	0x1416ca120	cstring	hatch cover
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a808fa	0x1416ca118	cstring	grate
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a8096a	0x14162aa9c	cstring	table
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a809da	0x141637a60	cstring	cabinet
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a80a4a	0x141637a50	cstring	weapon rack
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a80aba	0x141637a40	cstring	armor stand
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a80b2a	0x1416ca154	cstring	bin
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a80bd1	0x1416ca150	cstring	box
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a80bea	0x1416ca14c	cstring	e
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a80c13	0x1416ca144	cstring	coffer
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a80c22	0x141637a68	cstring	chest
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a80c43	0x1416caa88	cstring	boxe
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a80c58	0x1415e4220	cstring	s
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a80c6c	0x1416ca150	cstring	box
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a80ce4	0x1416caa84	cstring	bag
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a80d7f	0x1416caa78	cstring	backpack
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a80e3c	0x1416caaa8	cstring	cast
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a80e48	0x1416caa68	cstring	limb/body 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a80e57	0x1416caaa8	cstring	cast
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a80eb7	0x1416caa68	cstring	limb/body 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a80ec6	0x1416caaa8	cstring	cast
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a80f36	0x1416caaa0	cstring	splint
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a80fa0	0x1416caa98	cstring	crutch
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a8103b	0x1416caa90	cstring	quiver
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a810ba	0x1416caa24	cstring	casket
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a81105	0x1416caa18	cstring	sarcophag
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a81114	0x14163d170	cstring	us
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a8111b	0x1416bafec	cstring	i
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a81137	0x14162a9ec	cstring	coffin
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a81254	0x1416caa04	cstring	chain
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a81268	0x1416caa0c	cstring	rope
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a813a8	0x1416caa4c	cstring	vial
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a813b9	0x1416caa44	cstring	flask
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a813d0	0x1416caa58	cstring	waterskin
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a81479	0x1416caa30	cstring	musical instrument
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a8155b	0x1416ca9d0	cstring	unglazed 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a816c3	0x1415e3720	cstring	 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a816dd	0x1416bcee4	cstring	tool
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a8177d	0x1416bcefc	cstring	toy
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a8182d	0x1416ca9cc	cstring	cup
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a81861	0x1416ca9c8	cstring	mug
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a8187b	0x1416ca9c0	cstring	goblet
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a818eb	0x1416ca9fc	cstring	window
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a8199a	0x1416ca9e4	cstring	cage
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a819a1	0x1416ca9f0	cstring	terrarium
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a81a15	0x1416ca9dc	cstring	barrel
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a81a85	0x1416ca98c	cstring	bucket
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a81af5	0x1416ca980	cstring	animal trap
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a81b71	0x14162aaa4	cstring	chair
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a81b8b	0x1416ca974	cstring	throne
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a81c41	0x1416ca970	cstring	web
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a81c8c	0x1416ca9b8	cstring	strands
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a81cbf	0x1416106b8	cstring	yarn
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a81cd0	0x1416106a0	cstring	thread
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a81d45	0x1416106a8	cstring	cloth
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a81e4f	0x1416ca9ac	cstring	sheet
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a81e72	0x1416ca9a0	cstring	tanned hide
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a81ed5	0x1416ca994	cstring	totem
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a81f3e	0x1416ca940	cstring	-bound 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a81f5a	0x1416ca92c	cstring	codex
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a81f61	0x1416ca938	cstring	codices
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a81fe0	0x1416ca920	cstring	figurine
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a81ffe	0x1416ca968	cstring	rotten 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a82023	0x14164aac0	cstring	drink
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a82066	0x1416ca968	cstring	rotten 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a8224b	0x1416ca960	cstring	filthy 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a82264	0x1416ca958	cstring	sticky 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a82283	0x1416ca948	cstring	vomitous 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a8229f	0x1416ca8ec	cstring	slimy 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a822b8	0x1416ab578	cstring	stagnant 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a822d4	0x1416ca8e4	cstring	dirty 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a822f0	0x1416ca8dc	cstring	gooey 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a82309	0x1416ca8d0	cstring	purulent 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a82322	0x1416ca910	cstring	ichorous 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a8233b	0x1416ca908	cstring	bloody 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a8237a	0x1416a1240	cstring	liquid
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a824bc	0x1416ca8fc	cstring	 paste
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a82511	0x1416ca8f4	cstring	glob
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a82712	0x1416ca880	cstring	 laced with 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a82786	0x1415e40c4	cstring	, 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a82796	0x1415e40bc	cstring	 and 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a827fb	0x1416ca968	cstring	rotten 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a82898	0x1416ca870	cstring	 dye mix
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a828bc	0x1416ca864	cstring	powder
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a82916	0x1416ca968	cstring	rotten 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a82938	0x1416ca85c	cstring	cheese
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a829c0	0x1416ca8c0	cstring	catapult parts
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a82a38	0x1416ca8a8	cstring	bolt thrower parts
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a82ab0	0x1416ca898	cstring	mechanisms
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a82b5f	0x1416ca890	cstring	tube
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a82b79	0x1416ca810	cstring	pipe section
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a82c17	0x1416ca800	cstring	trap component
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a82c48	0x1415e3720	cstring	 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a82d2a	0x1416ca7f0	cstring	ballista parts
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a82da2	0x1416ca7e4	cstring	anvil
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a82e12	0x1416ca854	cstring	amulet
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a82e82	0x1416ca840	cstring	ballista arrow head
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a82f29	0x1416ca830	cstring	siege ammo
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a83073	0x1416ca820	cstring	ammunition
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a830eb	0x1416cae98	cstring	scepter
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a8315b	0x1416cae8c	cstring	crown
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a831c5	0x1416cae84	cstring	coin
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a831e4	0x1416cae78	cstring	perfect 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a831f3	0x1416455a8	cstring	large 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a832db	0x1416caec8	cstring	green glass 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a832f1	0x1416caeb8	cstring	clear glass 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a83307	0x1416caea8	cstring	crystal glass 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a83323	0x1416106fc	cstring	gem
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a833db	0x1416caea0	cstring	 gem
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a834b6	0x1416cae40	cstring	ring
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a83526	0x1416cae38	cstring	earring
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a83596	0x1416cae28	cstring	bracelet
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a83606	0x14162aab0	cstring	bed
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a83676	0x1416cae18	cstring	traction bench
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a836e6	0x1416cae6c	cstring	quern
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a83756	0x1416cae60	cstring	millstone
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a837c6	0x1416cae54	cstring	statue
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a838d2	0x1416cae48	cstring	memorial
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a838e6	0x1416cad90	cstring	food imports sign
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a838fa	0x1416cad78	cstring	clothing imports sign
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a8390e	0x1416cad60	cstring	general imports sign
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a83922	0x1416cad50	cstring	cloth shop sign
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a83936	0x1416cae00	cstring	leather shop sign
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a8394a	0x1416cade0	cstring	woven clothing shop sign
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a8395e	0x1416cadc0	cstring	leather clothing shop sign
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a83972	0x1416cada8	cstring	bone carver's shop sign
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a83986	0x1416cacd8	cstring	gem cutter's shop sign
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a8399a	0x1416cacc0	cstring	weaponsmith's shop sign
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a839ae	0x1416caca8	cstring	bowyer's shop sign
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a839c2	0x1416cac90	cstring	blacksmith's shop sign
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a839d6	0x1416cad38	cstring	armorsmith's shop sign
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a839ea	0x1416cad20	cstring	metal craft shop sign
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a839fe	0x1416cad08	cstring	leather goods shop sign
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a83a12	0x1416cacf0	cstring	carpenter's shop sign
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a83a26	0x1416cac40	cstring	stone furniture shop sign
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a83a3a	0x1416cac20	cstring	metal furniture shop sign
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a83a4e	0x1416cac10	cstring	tavern sign
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a83a62	0x1416cac04	cstring	slab
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a83a76	0x1416cac04	cstring	slab
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a83a94	0x1416ca968	cstring	rotten 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a83aa9	0x1416cac84	cstring	corpse
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a83ac7	0x1416ca968	cstring	rotten 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a83aeb	0x1416106d0	cstring	tooth
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a83afc	0x1416cac7c	cstring	teeth
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a83b11	0x1416106c8	cstring	bone
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a83b29	0x1416106c0	cstring	shell
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a83b41	0x1416cac70	cstring	plant part
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a83b59	0x1416cac60	cstring	silk body part
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a83b71	0x1416cabb8	cstring	leather body part
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a83b89	0x1416caba0	cstring	wooden body part
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a83ba3	0x1416cab90	cstring	soap body part
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a83bbd	0x1416106e8	cstring	horn
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a83bd7	0x1416106e0	cstring	pearl
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a83bf1	0x1416cab80	cstring	yarn body part
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a83c09	0x1416cabf0	cstring	strand body part
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a83c12	0x14167bdf0	cstring	body part
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a83c3b	0x1416cabe8	cstring	Rotten 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a83da2	0x141679ef8	cstring	remains
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a83e01	0x1416cabdc	cstring	seeds
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a83e72	0x1416cabd0	cstring	withered 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a83ee6	0x1416cab28	cstring	leaves and fruit
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a83ef7	0x1416cab18	cstring	leaf or fruit
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a83f2a	0x1416cabd0	cstring	withered 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a83f7d	0x14160fd14	cstring	plant
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a83f96	0x1415e4220	cstring	s
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a83fbc	0x1416ca968	cstring	rotten 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a83fd4	0x1416cab10	cstring	raw 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a84155	0x1415e40c4	cstring	, 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a8416b	0x1415e40c4	cstring	, 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a84184	0x14169c0e8	cstring	fish
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a841aa	0x1416ca968	cstring	rotten 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a842d1	0x1415e3720	cstring	 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a842e6	0x1416cab0c	cstring	egg
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a8430c	0x1416ca968	cstring	rotten 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a8440b	0x14169c0e8	cstring	fish
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a84428	0x1416cab74	cstring	live 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a84461	0x1416cab60	cstring	small live animal
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a8447b	0x1416cab54	cstring	tame 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a84484	0x1416cab40	cstring	small tame animal
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a8449b	0x1416caad0	cstring	prepared meal
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a844b5	0x1416ca968	cstring	rotten 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a844ca	0x1416caac0	cstring	preserved 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a8458c	0x1416caab8	cstring	 chops
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a8459d	0x1416caab0	cstring	 chop
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a845d6	0x1416cab04	cstring	meat
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a845f0	0x1416cab04	cstring	meat
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a84682	0x1416bce90	cstring	weapon
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a846bb	0x1415e3720	cstring	 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a847e7	0x1416caaf0	cstring	suits of 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a847f6	0x1416bce88	cstring	armor
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a8485c	0x1415e3720	cstring	 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a84906	0x1416caafc	cstring	chain 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a84a15	0x141635604	cstring	right 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a84a35	0x14163560c	cstring	left 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a84a7e	0x1416caafc	cstring	chain 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a84adf	0x1415e3720	cstring	 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a84af3	0x1416caae0	cstring	handwear
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a84b97	0x1416bce58	cstring	shield
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a84bb6	0x1416cb2a0	cstring	/buckler
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a84bca	0x1416cb2a0	cstring	/buckler
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a84d07	0x1415e3720	cstring	 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a84d37	0x1416cb290	cstring	footwear
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a84e28	0x1416cb280	cstring	headwear
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a84e6c	0x1415e3720	cstring	 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a84f28	0x1416cb278	cstring	legwear
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a84fac	0x1415e3720	cstring	 
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a850c6	0x1415f7fb0	cstring	item
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a850f7	0x141616f6c	cstring	 [
+classic	generic-item-type-material-caption	0x140a7fc90	0x140a85117	0x1415f8664	cstring	]
 classic	complete-item-caption	0x140c62490	0x140c62734	0x1416e8e38	cstring	 (copy)
 classic	complete-item-caption	0x140c62490	0x140c62822	0x58	inline-store	X
 classic	complete-item-caption	0x140c62490	0x140c62862	0x58	inline-store	X
@@ -2293,6 +2844,47 @@ classic	complete-item-caption	0x140c62490	0x140c62e34	0x29	inline-store	)
 classic	complete-item-caption	0x140c62490	0x140c62e5c	0x58	inline-store	X
 classic	complete-item-caption	0x140c62490	0x140c62ea1	0x58	inline-store	X
 classic	complete-item-caption	0x140c62490	0x140c62ec1	0x78	inline-store	x
+classic	corpse-caption-article	0x140c9dda0	0x140c9de38	0x1415e3e34	cstring	the 
+classic	corpse-caption-article	0x140c9dda0	0x140c9de65	0x1415e8618	cstring	a 
+classic	corpse-short-caption	0x140c9e120	0x140c9e1f4	0x1416ca968	cstring	rotten 
+classic	corpse-short-caption	0x140c9e120	0x140c9e26a	0x1415e3720	cstring	 
+classic	corpse-short-caption	0x140c9e120	0x140c9e37c	0x1415e8b58	cstring	's 
+classic	corpse-short-caption	0x140c9e120	0x140c9e629	0x1416e9628	cstring	mangled 
+classic	corpse-short-caption	0x140c9e120	0x140c9e77e	0x1415e3720	cstring	 
+classic	corpse-short-caption	0x140c9e120	0x140c9e7bb	0x1416106f0	cstring	material
+classic	corpse-short-caption	0x140c9e120	0x140c9e813	0x1416e9618	cstring	partial 
+classic	corpse-short-caption	0x140c9e120	0x140c9e83d	0x6e6f74656c656b73	inline	skeleton
+classic	corpse-short-caption	0x140c9e120	0x140c9e898	0x6e6f74656c656b73	inline	skeleton
+classic	corpse-short-caption	0x140c9e120	0x140c9e95a	0x1416e9608	cstring	partial remains
+classic	corpse-short-caption	0x140c9e120	0x140c9e9b5	0x1416e9608	cstring	partial remains
+classic	corpse-short-caption	0x140c9e120	0x140c9e9c1	0x1416e9610	cstring	remains
+classic	corpse-short-caption	0x140c9e120	0x140c9e9cb	0x1416e9614	cstring	ins
+classic	corpse-short-caption	0x140c9e120	0x140c9e9d6	0x1416e9616	cstring	s
+classic	corpse-short-caption	0x140c9e120	0x140c9e9f4	0x1416e95f8	cstring	mutilated 
+classic	corpse-short-caption	0x140c9e120	0x140c9ea28	0x1416cac84	cstring	corpse
+classic	corpse-short-caption	0x140c9e120	0x140c9ea83	0x1416cac84	cstring	corpse
+classic	corpse-short-caption	0x140c9e120	0x140c9ea8b	0x1416cac88	cstring	se
+classic	corpse-full-caption	0x140c9eae0	0x140c9ebf0	0x1416e95f0	cstring	your 
+classic	corpse-full-caption	0x140c9eae0	0x140c9ec61	0x1415e8b58	cstring	's 
+classic	corpse-full-caption	0x140c9eae0	0x140c9ed1c	0x1415e8b58	cstring	's 
+classic	corpse-full-caption	0x140c9eae0	0x140c9ed81	0x1416ca968	cstring	rotten 
+classic	corpse-full-caption	0x140c9eae0	0x140c9ee34	0x1415e3720	cstring	 
+classic	corpse-full-caption	0x140c9eae0	0x140c9f1d2	0x1416e9628	cstring	mangled 
+classic	corpse-full-caption	0x140c9eae0	0x140c9f26f	0x1415e3720	cstring	 
+classic	corpse-full-caption	0x140c9eae0	0x140c9f2ad	0x1416106f0	cstring	material
+classic	corpse-full-caption	0x140c9eae0	0x140c9f319	0x6e6f74656c656b73	inline	skeleton
+classic	corpse-full-caption	0x140c9eae0	0x140c9f36e	0x6e6f74656c656b73	inline	skeleton
+classic	corpse-full-caption	0x140c9eae0	0x140c9f4e4	0x141616f6c	cstring	 [
+classic	corpse-full-caption	0x140c9eae0	0x140c9f503	0x1415f8664	cstring	]
+classic	corpse-full-caption	0x140c9eae0	0x140c9f56c	0x1416e9608	cstring	partial remains
+classic	corpse-full-caption	0x140c9eae0	0x140c9f5c7	0x1416e9608	cstring	partial remains
+classic	corpse-full-caption	0x140c9eae0	0x140c9f5d3	0x1416e9610	cstring	remains
+classic	corpse-full-caption	0x140c9eae0	0x140c9f5dd	0x1416e9614	cstring	ins
+classic	corpse-full-caption	0x140c9eae0	0x140c9f5e8	0x1416e9616	cstring	s
+classic	corpse-full-caption	0x140c9eae0	0x140c9f605	0x1416e95f8	cstring	mutilated 
+classic	corpse-full-caption	0x140c9eae0	0x140c9f639	0x1416cac84	cstring	corpse
+classic	corpse-full-caption	0x140c9eae0	0x140c9f694	0x1416cac84	cstring	corpse
+classic	corpse-full-caption	0x140c9eae0	0x140c9f69c	0x1416cac88	cstring	se
 classic	projectile-motion-announcements	0x140ea3f20	0x140ea65d3	0x32	inline-store	2
 classic	projectile-motion-announcements	0x140ea3f20	0x140ea68d6	0x14165d8f0	cstring	 scramble
 classic	projectile-motion-announcements	0x140ea3f20	0x140ea68e5	0x14165d900	cstring	 scrambles
@@ -2747,6 +3339,8 @@ classic	alternate-unit-caption	0x14132c470	0x14132defd	0x1416b9d2c	cstring	Ghost
 classic	alternate-unit-caption	0x14132c470	0x14132df0c	0x141625190	cstring	Ghostly 
 classic	alternate-unit-caption	0x14132c470	0x14132df59	0x1415e3720	cstring	 
 classic	alternate-unit-caption	0x14132c470	0x14132df7c	0x14177cb68	cstring	One
+classic	body-part-name	0x14132f540	0x14132f711	0x14167bdf0	cstring	body part
+classic	body-part-name	0x14132f540	0x14132f753	0x14167bdf0	cstring	body part
 classic	grip-state-announcements	0x14135c2e0	0x14135c4e0	0x32	inline-store	2
 classic	grip-state-announcements	0x14135c2e0	0x14135c52d	0x32	inline-store	2
 classic	grip-state-announcements	0x14135c2e0	0x14135c669	0x1415e4218	cstring	Your
@@ -2911,3 +3505,19 @@ classic	cloud-emission	0x1413c5140	0x1413c52b0	0x14177d340	cstring	 breathes
 classic	cloud-emission	0x1413c5140	0x1413c52cc	0x14177eb50	cstring	 a cloud of 
 classic	cloud-emission	0x1413c5140	0x1413c5331	0x1415e942c	cstring	!
 classic	cloud-emission	0x1413c5140	0x1413c5624	0x64	inline-store	d
+classic	material-state-caption	0x1414cc890	0x1414cc8f7	0x14160fd14	cstring	plant
+classic	material-state-caption	0x1414cc890	0x1414cc919	0x1416106b8	cstring	yarn
+classic	material-state-caption	0x1414cc890	0x1414cc941	0x1416106a8	cstring	cloth
+classic	material-state-caption	0x1414cc890	0x1414cc961	0x1416106b0	cstring	silk
+classic	material-state-caption	0x1414cc890	0x1414cc981	0x1416106c8	cstring	bone
+classic	material-state-caption	0x1414cc890	0x1414cc9a1	0x141610690	cstring	leather
+classic	material-state-caption	0x1414cc890	0x1414cc9c1	0x1416106c0	cstring	shell
+classic	material-state-caption	0x1414cc890	0x1414cc9e3	0x1416106d8	cstring	soap
+classic	material-state-caption	0x1414cc890	0x1414cca05	0x141782aa0	cstring	ivory/tooth
+classic	material-state-caption	0x1414cc890	0x1414cca27	0x1416106e8	cstring	horn
+classic	material-state-caption	0x1414cc890	0x1414cca49	0x1416106e0	cstring	pearl
+classic	material-state-caption	0x1414cc890	0x1414cca78	0x141610698	cstring	wood
+classic	material-state-caption	0x1414cc890	0x1414cca7f	0x14169c26c	cstring	wooden
+classic	material-state-caption	0x1414cc890	0x1414ccbd5	0x1415e8b58	cstring	's 
+classic	material-state-caption	0x1414cc890	0x1414ccc69	0x1415e3720	cstring	 
+classic	material-state-caption	0x1414cc890	0x1414cccba	0x141782ab0	cstring	unknown material

@@ -67,7 +67,7 @@ void combat_source_webbing_13664d0
       uStack_40 = 0xf;
       pppuStack_58 = (undefined8 ****)0x0;
       uStack_f8 = CONCAT11(uStack_f8._1_1_,1);
-      FUN_14132e430(param_1,&pppuStack_58,1,1);
+      combat_source_combat_unit_caption_132e430(param_1,&pppuStack_58,1,1);
       auStack_78[1] = 0;
       auStack_78[2] = 0;
       auStack_78[3] = 0xf;
@@ -119,7 +119,7 @@ void combat_source_webbing_13664d0
       uStack_c0 = *(undefined2 *)(param_1 + 0xaa);
       uStack_be = *(undefined2 *)(param_1 + 0xac);
       lStack_a8 = param_1;
-      FUN_1400e3c20(0x1424e3850,auStack_78,&uStack_c8);
+      combat_source_announcement_submit_e3c20(&DAT_1424e3850,auStack_78,&uStack_c8);
       if (0xf < auStack_78[3]) {
         uVar6 = auStack_78[3] + 1;
         uVar7 = auStack_78[0];

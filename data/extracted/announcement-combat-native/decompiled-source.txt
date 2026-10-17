@@ -5,8 +5,8 @@ Source extraction: tools/extract_combat_announcement_sources.py and
 tools/DecompileCombatAnnouncements.java.
 The configured reference and classic images were read and disassembled locally;
 the manifest owners were then decompiled from those same original PE bytes by
-Ghidra 12.1.4 into real per-owner C. There are 35 logical native owners per image,
-70 .c files in total, each beside its corresponding .asm. This document describes
+Ghidra 12.1.4 into real per-owner C. There are 41 logical native owners per image,
+82 .c files in total, each beside its corresponding .asm. This document describes
 their production grammar; it is not a substitute for the original-PE C exports.
 Image identities: reference PE:6a70a6d9:02711000; classic PE:6a70b91c:0270a000.
 This is static source extraction, not observed game output. The extractor
@@ -61,8 +61,9 @@ verbs. Complete sentence translation must therefore happen before the native
 wrapped fragments lose their full sentence and dynamic-field ownership context.
 
 The rendered panel accepts other producers using the same announcement transport.
-The 35-owner combat/source manifest is a scoped construction tree and includes
-its display consumers; it is not a claim that this UI admits only 35 producers.
+The 41-owner combat/source manifest is a scoped construction tree and includes
+its display consumers and complete corpse/body/material suppliers; it is not
+a claim that this UI admits only 41 producers.
 The broader announcement-popup-native transport/catalog extraction and existing
 status/death/speech source extractions retain those additional producer families.
 
@@ -184,10 +185,24 @@ other actors use native sex-based possessive pronoun (0x14064afdc..0x14064b034).
 ITEM is appended whole at 0x14064b063 with caption detail argument false.
 The body instrument alternative at 0x14064b736..0x14064b7b3 uses the same ownership.
 
-ACTOR = UNIT for a creature actor; with projectile:
-        "The flying " + ITEM / "The spinning " + ITEM / "The " + ITEM.
-Projectile material/state/type/flags select motion, independently of ITEM.
-See 0x14064a82a..0x14064a8eb and shared-damage 0x1400e5887..0x1400e5951.
+ACTOR = UNIT for a creature actor; this attack producer's projectile actor is
+        "The flying " + ITEM / "The spinning " + ITEM.
+The virtual flying predicate and projectile item kinds 0x27/0x41 choose flying;
+the other branch chooses spinning (0x14064a82a..0x14064a8eb). The shared-damage
+constructor independently also admits "The " + ITEM when its projectile flags
+omit motion (0x1400e5887..0x1400e5951); that is not a third evasion-head branch.
+
+TARGET_PRONOUN = You for the adventure player, otherwise He / She / It selected
+from target.sex at +0x12e, with capitalization enabled. The target's full UNIT
+caption and this grammatical subject pronoun are separate native strings.
+The producer builds UNIT at 0x14064a90a and TARGET_PRONOUN at
+0x14064a981 / 0x14064a995; independently configured classic calls are
+0x14064832a and 0x1406483a1 / 0x1406483b5. The complete native helper is
+0x140aa4730..0x140aa47a4 / 0x140aa17b0..0x140aa1824 and is retained as real
+per-edition C and .asm in announcement-conversation/*-subject-pronoun.*.
+Its finite selector is sex==1 -> he, sex==0 -> she, otherwise it; the last
+argument capitalizes the first byte. You bypasses that helper. No unit name,
+profession or arbitrary sentence tail is passed to this pronoun supplier.
 
 Every finite direct sentence family of this producer:
   UNIT + " has moved out of range!"                 0x14064a578
@@ -199,8 +214,8 @@ Every finite direct sentence family of this producer:
   ACTOR + (" attack " | " attacks ") + UNIT + " but " + EVASION + "!"
                                                    0x14064d2f8..0x14064d7c5,
                                                    0x14064e2ba..0x14064e3b1
-  EVASION = UNIT + (" scramble" | " scrambles" | " roll" | " rolls" |
-                    " jump" | " jumps") + " away"
+  EVASION = TARGET_PRONOUN + (" scramble" | " scrambles" | " roll" | " rolls" |
+                              " jump" | " jumps") + " away"
   UNIT + (" scramble" | " scrambles" | " roll" | " rolls" |
           " jump" | " jumps") + " away from " + ACTOR + "!"
                                                    0x14064e08a..0x14064e112
@@ -231,6 +246,26 @@ Every finite direct sentence family of this producer:
 The weapon optional clauses are omitted on null item pointer paths. Actor,
 defender, projectile and equipment retain distinct typed ownership.
 No adverb branch is a generalized global word replacement.
+
+Both compound evasion sites append the capitalized TARGET_PRONOUN verbatim
+after the lowercase connector " but ": 0x14064d327..0x14064d348 and
+0x14064e2e9..0x14064e30a. Thus "but She jumps away!", "but He rolls away!"
+and "but It scrambles away!" are the actual native spelling, including that
+interior uppercase letter. Replacing these pronouns with the preceding full
+unit caption would alter the native construction and misses the source field.
+These two complete branches both choose the motion verb from the same finite
+decision tree: target flags1 bit0x8000 clear -> jump/jumps; bit set -> random
+two-way roll/rolls or scramble/scrambles. The adventure player alone uses the
+base form; other targets use third-person, independently of the attacker.
+The second branch's complete sources are 0x14064e30f..0x14064e3c4 (classic
+0x14064bd2f..0x14064bde4); the first has split native basic blocks at
+0x14064d34d..0x14064d391 and 0x14064d759..0x14064d7d8 (classic
+0x14064ad6d..0x14064adb1 and 0x14064b179..0x14064b1f8). All six finite
+verb forms and all four subject alternatives belong to this complete source
+tree; they are not six screenshot-specific replacements. The projectile
+variant instead starts with the complete target UNIT and appends the motion
+plus " away from " + ACTOR + "!" (0x14064e051..0x14064e125 / classic
+0x14064ba71..0x14064bb45), with no separate subject-pronoun substitution.
 
 Additional complete prefixes passed through shared damage (record flag0x20):
   "The force bends the " + BODY                  0x1406530ad
@@ -301,6 +336,12 @@ Failure (input success byte false at 0x141361e8e):
   UNIT + (" are unable to break" | " is unable to break") + " the grip of " +
       OWNED_BODY_B + " on " + OWNED_BODY_A + "!" 0x14136210e..0x1413621f7
 The from/on relation and swapped owner order are distinct source branches.
+For either owned field, item-id -1 selects the complete body-name branch.
+A different item-id selects item lookup and complete-item-caption; a failed
+lookup leaves that noun empty after its already constructed owner and space.
+The paired units have already been found before this caption block, so this
+null item branch does not remove either unit owner. It must not substitute a
+guessed species, body part or item identity into that empty native field.
 
 Embedded item producer 0x140643f70..0x140646e24
 --------------------------------------------
@@ -457,6 +498,60 @@ Quality/wear wrappers are whole item decorations, not ownership delimiters.
 The finite dispatch branches are unchanged when an arbitrary item is wielded as
 an improvised weapon; translating only material/type nouns omits bare names.
 
+Corpse, body and material field suppliers
+---------------------------------------
+The current PE extraction additionally retains the complete corpse item virtual
+methods, not just literals found in the report constructor:
+  full body-component caption: 0x140ca1aa0 / 0x140c9eae0
+  short body-component caption:0x140ca10e0 / 0x140c9e120
+  body-component article:      0x140ca0d60 / 0x140c9dda0
+  generic type/material noun:  0x140a82c10 / 0x140a7fc90
+  complete body-name supplier: 0x1413345d0 / 0x14132f540
+  material/state supplier:     0x1414d1920 / 0x1414cc890
+All six have per-edition .asm and real Ghidra C here, together with their own
+unwind ranges, finite operands, calls, conditions and selector destinations.
+The classic corpse short method is read directly from item_corpsest vtable
+0x1416436a8 +0x5f8; the full/article slots +0x5e8/+0x5f0 supply the two other
+methods above. These are independent original-PE operands, not a global assumed
+reference/classic address delta.
+
+The full caption chooses player "your ", named live owner plus "'s ", named
+historical figure plus "'s ", or the unnamed complete creature/caste label.
+The two possessive branches call the pure language_name formatter a94030 on
+unit+8 (ca1bfc) or historical figure+0x38 (ca1cb7), then append the possessive
+at ca1c21/ca1cdc. They do not supply an actor/profession caption. A preceding
+announcement action therefore cannot become an occupation inside this owner.
+It then composes optional "rotten ", optional "mangled ", the selected body or
+tissue/material field, and the finite body states skeleton, partial remains,
+mutilated corpse, corpse. Partial skeleton/body states and optional [amount]
+are retained in the native body-status branches. Short captions keep their own
+"partial " path and number selection. Detached body components can combine a
+complete body name, a material/state name, or the literal material fallback;
+they are not only the finite corpse/skeleton nouns. The article supplier emits
+no article for player/named owners; otherwise count==1 selects "the ", count==0
+can select "a " for an unstacked single item, and other count/mass branches omit
+the article. An open RAW creature/caste caption can itself contain generated
+world-language words. Therefore a leading the/a is a separate native article,
+not evidence that the following complete creature name is an authored alias.
+
+World-generated creature labels are identified by the native RAW field rather
+than by their spelling or article. data/upstream/df-structures/df.creature.xml
+declares creature_raw_flags.GENERATED at zero-based index 91 and binds that enum
+to creature_raw.flags. The active edition's native field bindings retain its
+dynamic byte-array flags and the creature/caste name, baby and child arrays.
+The render-side source snapshot publishes complete labels only for GENERATED
+RAWs. Semantic creature translations precede phonetic rendering of a complete
+generated name; personal owners and authored nicknames keep their separate
+language_name/identity paths. Stored body captions use the same typed grammar
+as live animation labels, including all status, component and quantity fields.
+
+The body-name method selects RAW singular/plural and INDIVIDUAL_NAME according
+to requested index, count mode and body count; missing/invalid data emits body
+part or body parts, optionally with the native numeric prefix. Material-state
+selection retains category flags, historical-figure-associated material names,
+RAW state names and the exact unknown material fallback. These input namespaces
+stay distinct from personal names and complete decorated item descriptions.
+
 Shared damage and companion state/death source ownership
 -------------------------------------------------------
 0x1400e56a0..0x1400e9f40 is re-extracted here in reference-e56a0.asm and classic.
@@ -472,6 +567,14 @@ item, latching, propulsion, unconsciousness, repeated stun/breathing/sickness,
 injected/poured/flowed/splattered/crumbled/sucked material and silent record cases.
 These source records are shared by ordinary strikes, wrestling, collision,
 full-impact, force bend/twist/pull and the newly identified ground-skid head.
+The normal outcome also reaches the equipment append at 0x1400e82df when the
+record count at context+0x4284 is zero, or when the retained records emit no
+kind4/5 damage text. A failed kind5 damage-record lookup can break the loop
+before its separator is appended. Thus H + " through the " + ITEM + "!" is a
+complete native production without a preceding damage-list or comma. The
+separate kind14 fluid loop at 0x1400e8351 may append repeated " and spilling "
++ FLUID after H or after that equipment suffix. Empty damage text does not
+mean that the native head, equipment, fluid or final punctuation were omitted.
 0x1400e9ecc is the 29-case aux dispatch; three preceding six-case injury tables
 and unsigned-default branches are preserved in native-switches.tsv.
 Null item lookup can leave the relation or deflection connector with no object;

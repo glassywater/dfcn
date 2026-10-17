@@ -103,8 +103,9 @@ LAB_141329faa:
         }
         uStack_100 = 0;
         pppppuStack_108 = (undefined8 *****)((ulonglong)pppppuStack_108 & 0xffffffffffffff00);
-        cVar5 = FUN_141329030(&pppppuStack_88,sVar8,*(undefined2 *)(param_1 + 0xa4),
-                              *(undefined2 *)(param_1 + 300));
+        cVar5 = combat_source_creature_profession_description_1329030
+                          (&pppppuStack_88,sVar8,*(undefined2 *)(param_1 + 0xa4),
+                           *(undefined2 *)(param_1 + 300));
         if ((lVar14 == 0) || (*(short *)(lVar14 + 0xac) == -1)) {
           lVar14 = FUN_140b500f0(0x1424f3ba8,*(undefined4 *)(param_1 + 0xc30),param_1 + 0x1274);
           if (lVar14 != 0) {
@@ -686,8 +687,9 @@ LAB_141329682:
       }
       uStack_100 = 0;
       pppppuStack_108 = (undefined8 *****)((ulonglong)pppppuStack_108 & 0xffffffffffffff00);
-      FUN_141329030(&pppppuStack_a8,*(undefined2 *)(param_1 + 0xa0),*(undefined2 *)(param_1 + 0xa4),
-                    *(undefined2 *)(param_1 + 300));
+      combat_source_creature_profession_description_1329030
+                (&pppppuStack_a8,*(undefined2 *)(param_1 + 0xa0),*(undefined2 *)(param_1 + 0xa4),
+                 *(undefined2 *)(param_1 + 300));
       if ((puStack_d0 == (undefined4 *)0x0) ||
          (ppppppuVar20 = (undefined8 ******)pppppuStack_a8, *(short *)(puStack_d0 + 0x2b) == -1)) {
         lVar13 = FUN_140b500f0(0x1424f3ba8,*(undefined4 *)(param_1 + 0xc30),param_1 + 0x1274);
