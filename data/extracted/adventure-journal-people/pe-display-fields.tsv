@@ -1,0 +1,7 @@
+edition	instruction_rva	return_site_rva	source_kind	native_origin
+steam	0xc8a08	0xc8a0d	Title	card+0x48 native shortened person name; full source card+0x08
+steam	0xc8aae	0xc8ab3	Counter	one-based card index / total
+steam	0xc8b72	0xc8b77	Paragraph	card+0x68 native wrapped description lines[scroll+line]
+classic	0xc8998	0xc899d	Title	card+0x48 native shortened person name; full source card+0x08
+classic	0xc8a3e	0xc8a43	Counter	one-based card index / total
+classic	0xc8b02	0xc8b07	Paragraph	card+0x68 native wrapped description lines[scroll+line]

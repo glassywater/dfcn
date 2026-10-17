@@ -36,9 +36,9 @@
                 std::make_move_iterator(journal_upper_draws.begin()),
                 std::make_move_iterator(journal_upper_draws.end()));
             const auto journal_paragraphs = captured_native_paragraphs();
-            // Several cards can show the same first hearing row but retain
-            // different informants on an unseen continuation. Only the actual
-            // native string address binds that row to its complete paragraph.
+            // Cards can share the visible beginning of a paragraph and differ
+            // on an unseen continuation. The actual native row string address
+            // binds each People/Events preview to its own complete paragraph.
             const auto event_source_for_rows = [&](const std::vector<Match> &rows,
                     const std::vector<int> &clips, NativeParagraphViewport *viewport)
                     -> std::optional<std::string> {
@@ -1216,7 +1216,7 @@
                     }
                     if (rows.empty()) continue;
                     NativeParagraphViewport viewport;
-                    auto native = event ? event_source_for_rows(rows, clips, &viewport)
+                    auto native = event || person ? event_source_for_rows(rows, clips, &viewport)
                         : native_source_for_rows(rows, -1, nullptr, &viewport, clips);
                     if (event && native) {
                         // The paragraph's actual address/bytes own every
@@ -1328,19 +1328,21 @@
                             journal_creature_translation_bytes_ += bytes;
                         }
                         }
-                    } else if (person && prefix.empty()) {
-                        // Every People paragraph, not only office statements,
-                        // owns its complete native source before word matching.
-                        // Shared typed scopes cover all family/time branches;
-                        // fixed and compound statuses reuse the UI catalog.
-                        target = translate_announcement_combat(source, "journal-person");
                     } else {
-                        for (int index : matching_legends_rules(source)) {
-                            const Rule &rule = rules_[static_cast<size_t>(index)];
-                            if (!rule.source.starts_with(prefix)) continue;
-                            target = translate_legends_nested(rule, source, 0);
-                            if (target) break;
-                        }
+                        // The complete People grammar owns office statements
+                        // too: d1ef0 can append an empty title or owner while
+                        // retaining "one of the", "of" and military tails.
+                        // Shared typed family/time/status fields stay scoped
+                        // to this native paragraph before generic matching.
+                        if (person || prefix == "This person is ")
+                            target = translate_announcement_combat(source, "journal-person");
+                        if (!target && !prefix.empty())
+                            for (int index : matching_legends_rules(source)) {
+                                const Rule &rule = rules_[static_cast<size_t>(index)];
+                                if (!rule.source.starts_with(prefix)) continue;
+                                target = translate_legends_nested(rule, source, 0);
+                                if (target) break;
+                            }
                     }
                     if (target && append_bounded_paragraph(rows, *target, screen_rows,
                             result, only_y, body_right, body_right, target_colors, false, left,

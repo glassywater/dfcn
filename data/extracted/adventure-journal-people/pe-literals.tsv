@@ -1,0 +1,991 @@
+edition	role	instruction_rva	operand	kind	text
+steam	journal-renderer-and-card-fields	0xc2999	0x1415ec1e8	cstring	Agreements
+steam	journal-renderer-and-card-fields	0xc29cb	0x1415ec1d0	cstring	Events
+steam	journal-renderer-and-card-fields	0xc29fd	0x1415ec1d8	cstring	People
+steam	journal-renderer-and-card-fields	0xc2a2f	0x1415ec20c	cstring	Sites
+steam	journal-renderer-and-card-fields	0xc2a61	0x1415ec214	cstring	Groups
+steam	journal-renderer-and-card-fields	0xc2a93	0x1415ec1f8	cstring	Regions
+steam	journal-renderer-and-card-fields	0xc2ac5	0x1415ec200	cstring	Bestiary
+steam	journal-renderer-and-card-fields	0xc2af4	0x1415ec238	cstring	Artifacts
+steam	journal-renderer-and-card-fields	0xc2b23	0x1415ec248	cstring	Intrigue
+steam	journal-renderer-and-card-fields	0xc2e66	0x1415ec288	cstring	Plots
+steam	journal-renderer-and-card-fields	0xc2e94	0x1415ec228	cstring	Organizations
+steam	journal-renderer-and-card-fields	0xc2ec2	0x1415ec21c	cstring	Actors
+steam	journal-renderer-and-card-fields	0xc320e	0x1415eb514	cstring	/
+steam	journal-renderer-and-card-fields	0xc34d8	0x1415ec270	cstring	Centered on first heard
+steam	journal-renderer-and-card-fields	0xc3546	0x1415ec258	cstring	Centered on last heard
+steam	journal-renderer-and-card-fields	0xc35b1	0x1415ec290	cstring	Centered on location
+steam	journal-renderer-and-card-fields	0xc3808	0x1415ec2e8	cstring	 Showing type,date
+steam	journal-renderer-and-card-fields	0xc3832	0x1415ec2d0	cstring	 Showing pin,last
+steam	journal-renderer-and-card-fields	0xc39fb	0x1415eb514	cstring	/
+steam	journal-renderer-and-card-fields	0xc3b8b	0x1415ec2a8	cstring	Overthrow Agreement
+steam	journal-renderer-and-card-fields	0xc3b97	0x1415ec2c0	cstring	Guide Agreement
+steam	journal-renderer-and-card-fields	0xc3ba3	0x1415ec328	cstring	Rescue Agreement
+steam	journal-renderer-and-card-fields	0xc3baf	0x1415ec340	cstring	Aid Rescue Agreement
+steam	journal-renderer-and-card-fields	0xc3bbb	0x1415ec300	cstring	Adventuring Agreement
+steam	journal-renderer-and-card-fields	0xc3bc7	0x1415ec318	cstring	Bound Servitude
+steam	journal-renderer-and-card-fields	0xc3bd3	0x1415ec388	cstring	Entertainment Agreement
+steam	journal-renderer-and-card-fields	0xc3bdf	0x1415ec3a0	cstring	World Joining Agreement
+steam	journal-renderer-and-card-fields	0xc3beb	0x1415ec358	cstring	Residency Agreement
+steam	journal-renderer-and-card-fields	0xc3bf7	0x1415ec370	cstring	Grant of Citizenship
+steam	journal-renderer-and-card-fields	0xc3c03	0x1415ec3e0	cstring	Parley Arrangement
+steam	journal-renderer-and-card-fields	0xc3c0f	0x1415ec3f8	cstring	Corruption
+steam	journal-renderer-and-card-fields	0xc3c1b	0x1415ec3b8	cstring	Artifact Theft
+steam	journal-renderer-and-card-fields	0xc3c27	0x1415ec3c8	cstring	Promise of Position
+steam	journal-renderer-and-card-fields	0xc3c33	0x1415ec430	cstring	Assassination Plot
+steam	journal-renderer-and-card-fields	0xc3c3f	0x1415ec448	cstring	Abduction Plot
+steam	journal-renderer-and-card-fields	0xc3c48	0x1415ec408	cstring	Sabotage Plot
+steam	journal-renderer-and-card-fields	0xc3c51	0x1415ec418	cstring	Infiltration Plot
+steam	journal-renderer-and-card-fields	0xc3c5a	0x1415ec498	cstring	Framing Plot
+steam	journal-renderer-and-card-fields	0xc3c63	0x1415ec4a8	cstring	War Starting Plot
+steam	journal-renderer-and-card-fields	0xc3c90	0x1415ec4e8	cstring	Foiled Embezzlement Conspiracy
+steam	journal-renderer-and-card-fields	0xc3c99	0x1415ec478	cstring	Foiled Corruption Conspiracy
+steam	journal-renderer-and-card-fields	0xc3ca2	0x1415ec458	cstring	Foiled Bribery Conspiracy
+steam	journal-renderer-and-card-fields	0xc3cab	0x1415ec508	cstring	Build Structure
+steam	journal-renderer-and-card-fields	0xc3cb4	0x1415ec4c0	cstring	Offer Service
+steam	journal-renderer-and-card-fields	0xc3cbd	0x1415ec4d0	cstring	Retrieve Artifact
+steam	journal-renderer-and-card-fields	0xc3e17	0x1415e8ca0	cstring	You
+steam	journal-renderer-and-card-fields	0xc3ec4	0x1415ec6a0	cstring	asked that
+steam	journal-renderer-and-card-fields	0xc3f25	0x1415ec550	cstring	you
+steam	journal-renderer-and-card-fields	0xc3fcc	0x1415ec6b0	cstring	retrieve
+steam	journal-renderer-and-card-fields	0xc40c2	0x1415ec70c	cstring	from
+steam	journal-renderer-and-card-fields	0xc41be	0x1415ec714	cstring	for
+steam	journal-renderer-and-card-fields	0xc4311	0x1415ec6f8	cstring	Drive members of
+steam	journal-renderer-and-card-fields	0xc43d4	0x1415ec740	cstring	out of
+steam	journal-renderer-and-card-fields	0xc456a	0x1415e8ca0	cstring	You
+steam	journal-renderer-and-card-fields	0xc4617	0x1415ec6c0	cstring	requested that
+steam	journal-renderer-and-card-fields	0xc4678	0x1415ec550	cstring	you
+steam	journal-renderer-and-card-fields	0xc471b	0x1415ec6d0	cstring	make an offer of service to
+steam	journal-renderer-and-card-fields	0xc490c	0x1415e8ca0	cstring	You
+steam	journal-renderer-and-card-fields	0xc49b9	0x1415ec540	cstring	agreed to join
+steam	journal-renderer-and-card-fields	0xc4a1a	0x1415ec550	cstring	you
+steam	journal-renderer-and-card-fields	0xc4abf	0x1415ec518	cstring	in insurrection against
+steam	journal-renderer-and-card-fields	0xc4b97	0x1415ec530	cstring	thereby freeing
+steam	journal-renderer-and-card-fields	0xc4c88	0x1415e8ca0	cstring	You
+steam	journal-renderer-and-card-fields	0xc4d35	0x1415ec598	cstring	agreed to guide
+steam	journal-renderer-and-card-fields	0xc4d96	0x1415ec550	cstring	you
+steam	journal-renderer-and-card-fields	0xc4e3b	0x1415ec5a8	cstring	to
+steam	journal-renderer-and-card-fields	0xc5043	0x1415ec558	cstring	somebody unknown
+steam	journal-renderer-and-card-fields	0xc50b8	0x1415e8ca0	cstring	You
+steam	journal-renderer-and-card-fields	0xc5165	0x1415ec540	cstring	agreed to join
+steam	journal-renderer-and-card-fields	0xc51c6	0x1415ec550	cstring	you
+steam	journal-renderer-and-card-fields	0xc5267	0x1415ec570	cstring	in order to be brought safely away from
+steam	journal-renderer-and-card-fields	0xc535c	0x1415e8ca0	cstring	You
+steam	journal-renderer-and-card-fields	0xc5409	0x1415ec540	cstring	agreed to join
+steam	journal-renderer-and-card-fields	0xc546a	0x1415ec550	cstring	you
+steam	journal-renderer-and-card-fields	0xc550b	0x1415ec5e8	cstring	in order to rescue
+steam	journal-renderer-and-card-fields	0xc5686	0x1415ec558	cstring	somebody unknown
+steam	journal-renderer-and-card-fields	0xc56fb	0x1415e8ca0	cstring	You
+steam	journal-renderer-and-card-fields	0xc57a8	0x1415ec600	cstring	agreed to adventure with
+steam	journal-renderer-and-card-fields	0xc5809	0x1415ec550	cstring	you
+steam	journal-renderer-and-card-fields	0xc58aa	0x1415ec5b0	cstring	wherever the journey might lead
+steam	journal-renderer-and-card-fields	0xc5919	0x1415e8ca0	cstring	You
+steam	journal-renderer-and-card-fields	0xc59c6	0x1415ec5d0	cstring	was bound to serve
+steam	journal-renderer-and-card-fields	0xc5a27	0x1415ec550	cstring	you
+steam	journal-renderer-and-card-fields	0xc5ac8	0x1415ec650	cstring	by invocation of True Name
+steam	journal-renderer-and-card-fields	0xc5b37	0x1415e8ca0	cstring	You
+steam	journal-renderer-and-card-fields	0xc5be4	0x1415ec670	cstring	agreed to entertain people with
+steam	journal-renderer-and-card-fields	0xc5c45	0x1415ec550	cstring	you
+steam	journal-renderer-and-card-fields	0xc5ce6	0x1415ec620	cstring	throughout the world
+steam	journal-renderer-and-card-fields	0xc5d6d	0x1415ec638	cstring	Agreement concluded
+steam	journal-renderer-and-card-fields	0xc5e40	0x1415ec698	cstring	st
+steam	journal-renderer-and-card-fields	0xc5e49	0x1415ec69c	cstring	nd
+steam	journal-renderer-and-card-fields	0xc5e52	0x1415ec690	cstring	rd
+steam	journal-renderer-and-card-fields	0xc5e5b	0x1415ec694	cstring	th
+steam	journal-renderer-and-card-fields	0xc5e6b	0x1415e873c	cstring	 
+steam	journal-renderer-and-card-fields	0xc5e9d	0x1415e90d8	cstring	, 
+steam	journal-renderer-and-card-fields	0xc5f25	0x1415ec6ec	cstring	Kill
+steam	journal-renderer-and-card-fields	0xc6006	0x1415ec718	cstring	Cause trouble for
+steam	journal-renderer-and-card-fields	0xc60ca	0x1415ec748	cstring	Drive
+steam	journal-renderer-and-card-fields	0xc618d	0x1415ec70c	cstring	from
+steam	journal-renderer-and-card-fields	0xc6253	0x1415ec730	cstring	An order from
+steam	journal-renderer-and-card-fields	0xc633d	0x1415ec770	cstring	Finish reporting in
+steam	journal-renderer-and-card-fields	0xc63ae	0x1415ec788	cstring	Complete: report back
+steam	journal-renderer-and-card-fields	0xc63fb	0x1415ec750	cstring	Not yet completed
+steam	journal-renderer-and-card-fields	0xc6574	0x1415e8ca0	cstring	You
+steam	journal-renderer-and-card-fields	0xc6621	0x1415ec6a0	cstring	asked that
+steam	journal-renderer-and-card-fields	0xc6682	0x1415ec550	cstring	you
+steam	journal-renderer-and-card-fields	0xc6725	0x1415ec7c8	cstring	retrieve 
+steam	journal-renderer-and-card-fields	0xc68bf	0x1415e8ca0	cstring	You
+steam	journal-renderer-and-card-fields	0xc696c	0x1415ec6c0	cstring	requested that
+steam	journal-renderer-and-card-fields	0xc69cd	0x1415ec550	cstring	you
+steam	journal-renderer-and-card-fields	0xc6a70	0x1415ec764	cstring	serve 
+steam	journal-renderer-and-card-fields	0xc6b55	0x1415ec638	cstring	Agreement concluded
+steam	journal-renderer-and-card-fields	0xc6bf6	0x1415ec730	cstring	An order from
+steam	journal-renderer-and-card-fields	0xc6cdd	0x1415ec770	cstring	Finish reporting in
+steam	journal-renderer-and-card-fields	0xc6d4b	0x1415ec788	cstring	Complete: report back
+steam	journal-renderer-and-card-fields	0xc6d95	0x1415ec750	cstring	Not yet completed
+steam	journal-renderer-and-card-fields	0xc6f67	0x1415ec7d8	cstring	Centered on commander
+steam	journal-renderer-and-card-fields	0xc6fd1	0x1415ec7a0	cstring	Centered on target
+steam	journal-renderer-and-card-fields	0xc7251	0x1415ec824	cstring	Org: 
+steam	journal-renderer-and-card-fields	0xc72db	0x1415eb514	cstring	/
+steam	journal-renderer-and-card-fields	0xc7542	0x1415eb514	cstring	/
+steam	journal-renderer-and-card-fields	0xc7f39	0x1415ec7b8	cstring	One member
+steam	journal-renderer-and-card-fields	0xc7f85	0x1415ec818	cstring	 members
+steam	journal-renderer-and-card-fields	0xc8275	0x1415eb514	cstring	/
+steam	journal-renderer-and-card-fields	0xc8660	0x1415eb514	cstring	/
+steam	journal-renderer-and-card-fields	0xc8a50	0x1415eb514	cstring	/
+steam	journal-renderer-and-card-fields	0xc8d9c	0x1415ec7f0	cstring	 Showing important
+steam	journal-renderer-and-card-fields	0xc8dd7	0x1415ec808	cstring	 Showing all
+steam	journal-renderer-and-card-fields	0xc8fa2	0x1415eb514	cstring	/
+steam	journal-renderer-and-card-fields	0xc92ec	0x1415ec7f0	cstring	 Showing important
+steam	journal-renderer-and-card-fields	0xc9327	0x1415ec808	cstring	 Showing all
+steam	journal-renderer-and-card-fields	0xc94e0	0x1415eb514	cstring	/
+steam	journal-renderer-and-card-fields	0xc982c	0x1415ec7f0	cstring	 Showing important
+steam	journal-renderer-and-card-fields	0xc9867	0x1415ec808	cstring	 Showing all
+steam	journal-renderer-and-card-fields	0xc9a20	0x1415eb514	cstring	/
+steam	journal-renderer-and-card-fields	0xc9e10	0x1415eb514	cstring	/
+steam	journal-renderer-and-card-fields	0xca12c	0x1415ec850	cstring	: Toggle line
+steam	journal-renderer-and-card-fields	0xca286	0x1415ec860	cstring	...
+steam	journal-renderer-and-card-fields	0xca2ca	0x1415ec82c	cstring	_
+steam	journal-person-description	0xd20a6	0x1415ecfd8/16	vector	Died in the year
+steam	journal-person-description	0xd20b0	0x1415ecfe8	cstring	 
+steam	journal-person-description	0xd2219	0x1415ed060	cstring	 deity
+steam	journal-person-description	0xd2282	0x1415ed068	cstring	Force
+steam	journal-person-description	0xd2327	0x1415ed060	cstring	 deity
+steam	journal-person-description	0xd2385	0x1415ed068	cstring	Force
+steam	journal-person-description	0xd2564	0x1415ed0b0	cstring	This person is one of the 
+steam	journal-person-description	0xd258c	0x1415eb518	cstring	 of 
+steam	journal-person-description	0xd25ba	0x1415ed0d0	cstring	 and your military subordinate
+steam	journal-person-description	0xd25cb	0x1415ed070	cstring	 alongside you
+steam	journal-person-description	0xd25de	0x1415e85b4	cstring	.
+steam	journal-person-description	0xd26bd	0x1415ed030	cstring	This person is 
+steam	journal-person-description	0xd2717	0x1415eb518	cstring	 of 
+steam	journal-person-description	0xd274d	0x1415ed040	cstring	 and your military commander
+steam	journal-person-description	0xd2760	0x1415e85b4	cstring	.
+steam	journal-person-description	0xd2848	0x1415ed080	cstring	You have known this person your entire life.
+steam	journal-person-description	0xd2873	0x1415ed130	cstring	You have known this person since 
+steam	journal-person-description	0xd28b6	0x1415ed158	cstring	 birth.
+steam	journal-person-description	0xd28ef	0x1415ed0f0	cstring	You have known each other your entire lives.
+steam	journal-person-description	0xd299f	0x1415ed120	cstring	You last spoke 
+steam	journal-person-description	0xd29af	0x1415ed128	cstring	 spoke 
+steam	journal-person-description	0xd29bb	0x1415ed12c	cstring	ke 
+steam	journal-person-description	0xd29c9	0x1415ed12e	cstring	 
+steam	journal-person-description	0xd2a4b	0x1415e85b4	cstring	.
+steam	journal-person-description	0xd2beb	0x1415ed1a0/16	vector	You have heard t
+steam	journal-person-description	0xd2bf5	0x1415ed1b0/16	vector	his name suggest
+steam	journal-person-description	0xd2c00	0x1415ed1c0/16	vector	ed as a potentia
+steam	journal-person-description	0xd2c0b	0x1415ed1d0/16	vector	l guide to faraw
+steam	journal-person-description	0xd2c16	0x1415ed1e0	cstring	ay places.
+steam	journal-person-description	0xd2c23	0x1415ed1e8	cstring	s.
+steam	journal-person-description	0xd2e48	0x1415ed1f0/16	vector	You worship this
+steam	journal-person-description	0xd2e52	0x1415ed200	cstring	 figure.
+steam	journal-person-description	0xd2ed8	0x1415ed160	cstring	  You are beloved.
+steam	journal-person-description	0xd2ee6	0x1415ed178	cstring	  You are held in high regard.
+steam	journal-person-description	0xd2ef4	0x1415ed258	cstring	  You are held in some esteem.
+steam	journal-person-description	0xd2f00	0x1415ed278	cstring	  You have been favorably noticed.
+steam	journal-person-description	0xd2f09	0x1415ed210	cstring	  You have attracted some positive interest.
+steam	journal-person-description	0xd30b1	0x1415ed240/16	vector	This is your lov
+steam	journal-person-description	0xd30bb	0x1415ed250	cstring	er.
+steam	journal-person-description	0xd30c6	0x1415ed252	cstring	.
+steam	journal-person-description	0xd3150	0x1415ed2d8/16	vector	This is your pri
+steam	journal-person-description	0xd315a	0x1415ed2e8	cstring	soner.
+steam	journal-person-description	0xd3163	0x1415ed2ec	cstring	r.
+steam	journal-person-description	0xd31ee	0x1415ed2f0/16	vector	This is your jai
+steam	journal-person-description	0xd31f8	0x1415ed300	cstring	lor.
+steam	journal-person-description	0xd32ba	0x1415ed2a0/16	vector	This is your mas
+steam	journal-person-description	0xd32c4	0x1415ed2b0	cstring	ter.
+steam	journal-person-description	0xd333d	0x1415ed2b8/16	vector	This is your app
+steam	journal-person-description	0xd3347	0x1415ed2c8	cstring	rentice.
+steam	journal-person-description	0xd33d4	0x1415ed340/16	vector	This is your tra
+steam	journal-person-description	0xd33de	0x1415ed350/16	vector	veling companion
+steam	journal-person-description	0xd33e9	0x1415ed360	cstring	.
+steam	journal-person-description	0xd3476	0x1415ed368/16	vector	This is your for
+steam	journal-person-description	0xd3480	0x1415ed378	cstring	mer master.
+steam	journal-person-description	0xd348d	0x1415ed380	cstring	er.
+steam	journal-person-description	0xd3498	0x1415ed382	cstring	.
+steam	journal-person-description	0xd34f1	0x1415ed308	cstring	This is your former apprentice.
+steam	journal-person-description	0xd3581	0x1415ed328/16	vector	This is your own
+steam	journal-person-description	0xd358b	0x1415ed338	cstring	er.
+steam	journal-person-description	0xd3596	0x1415ed33a	cstring	.
+steam	journal-person-description	0xd3623	0x1415ed3d0/16	vector	This is your for
+steam	journal-person-description	0xd362d	0x1415ed3e0	cstring	mer spouse.
+steam	journal-person-description	0xd363a	0x1415ed3e8	cstring	se.
+steam	journal-person-description	0xd3645	0x1415ed3ea	cstring	.
+steam	journal-person-description	0xd36d2	0x1415ed3f0/16	vector	This is your dec
+steam	journal-person-description	0xd36dc	0x1415ed400	cstring	eased spouse.
+steam	journal-person-description	0xd36e9	0x1415ed408	cstring	ouse.
+steam	journal-person-description	0xd36f2	0x1415ed40c	cstring	.
+steam	journal-person-description	0xd37de	0x1415ed388	cstring	This is your 
+steam	journal-person-description	0xd37ee	0x1415ed390	cstring	your 
+steam	journal-person-description	0xd37fa	0x1415ed394	cstring	 
+steam	journal-person-description	0xd3890	0x1415e85b4	cstring	.
+steam	journal-entity-name	0xb9296a	0x14165e438	cstring	[LPAGE:ENT:
+steam	journal-entity-name	0xb9298a	0x1415fd690	cstring	]
+steam	journal-entity-name	0xb929f4	0x1415fda88	cstring	[/LPAGE]
+steam	journal-entity-name	0xb92a4c	0x1416df940	cstring	an unknown civilization
+steam	journal-religious-office-suffix	0x9be03a	0x1415eb518	cstring	 of 
+steam	journal-person-name	0xa948a3	0x1415e873c	cstring	 
+steam	journal-person-name	0xa9495e	0x1415e873c	cstring	 
+steam	journal-person-name	0xa94a3b	0x1415e873c	cstring	 
+steam	journal-person-name	0xa94a5d	0x1415ed9bc	cstring	The 
+steam	journal-person-name	0xa94a78	0x1415e8e48	cstring	the 
+steam	journal-person-name	0xa94af2	0x1415e873c	cstring	 
+steam	journal-person-name	0xa94b11	0x1415ed9bc	cstring	The 
+steam	journal-person-name	0xa94b1a	0x1415e8e48	cstring	the 
+steam	journal-person-name	0xa94b9a	0x1415e873c	cstring	 
+steam	journal-person-name	0xa94bb9	0x1415ed9bc	cstring	The 
+steam	journal-person-name	0xa94bc2	0x1415e8e48	cstring	the 
+steam	journal-person-name	0xa94d1f	0x1415e873c	cstring	 
+steam	journal-person-name	0xa94d4b	0x1415ed9bc	cstring	The 
+steam	journal-person-name	0xa94d62	0x1415e8e48	cstring	the 
+steam	journal-person-name	0xa94e09	0x1415e873c	cstring	 
+steam	journal-person-name	0xa94e18	0x1416ced90	cstring	of 
+steam	journal-person-name	0xa94e1f	0x1416cee1c	cstring	Of 
+steam	journal-gender-possessive	0xaa4866	0x1416ced18	cstring	his
+steam	journal-gender-possessive	0xaa4871	0x1416cecc0	cstring	her
+steam	journal-gender-possessive	0xaa4878	0x1415ee528	cstring	its
+steam	journal-kinship-term	0x75a5e7	0x1416a1dac	cstring	an 
+steam	journal-kinship-term	0x75a5f6	0x1415ed620	cstring	a 
+steam	journal-kinship-term	0x75a61a	0x141646634	cstring	mother
+steam	journal-kinship-term	0x75a62c	0x1416465a8	cstring	father
+steam	journal-kinship-term	0x75a63e	0x1416465b0	cstring	parent
+steam	journal-kinship-term	0x75a650	0x141646588	cstring	husband
+steam	journal-kinship-term	0x75a665	0x14164657c	cstring	wife
+steam	journal-kinship-term	0x75a66c	0x1416a1db0	cstring	wives
+steam	journal-kinship-term	0x75a680	0x141646574	cstring	spouse
+steam	journal-kinship-term	0x75a692	0x1416a1db8	cstring	eldest son
+steam	journal-kinship-term	0x75a6a4	0x1416a1dc8	cstring	second eldest son
+steam	journal-kinship-term	0x75a6b6	0x1416a1de0	cstring	third eldest son
+steam	journal-kinship-term	0x75a6c8	0x1416a1df8	cstring	fourth eldest son
+steam	journal-kinship-term	0x75a6da	0x1416a1e10	cstring	fifth eldest son
+steam	journal-kinship-term	0x75a6ec	0x1416a1e28	cstring	sixth eldest son
+steam	journal-kinship-term	0x75a6fe	0x1416a1b88	cstring	seventh eldest son
+steam	journal-kinship-term	0x75a710	0x1416a1ba0	cstring	eighth eldest son
+steam	journal-kinship-term	0x75a722	0x1416a1bb8	cstring	ninth eldest son
+steam	journal-kinship-term	0x75a734	0x1416a1bd0	cstring	tenth eldest son
+steam	journal-kinship-term	0x75a746	0x1416465b8	cstring	son
+steam	journal-kinship-term	0x75a758	0x1416a1be8	cstring	youngest son
+steam	journal-kinship-term	0x75a76a	0x1416a1bf8	cstring	only son
+steam	journal-kinship-term	0x75a77c	0x1416a1c08	cstring	eldest daughter
+steam	journal-kinship-term	0x75a788	0x1416a1c18	cstring	second eldest daughter
+steam	journal-kinship-term	0x75a79a	0x1416a1c30	cstring	third eldest daughter
+steam	journal-kinship-term	0x75a7ac	0x1416a1c48	cstring	fourth eldest daughter
+steam	journal-kinship-term	0x75a7be	0x1416a1c60	cstring	fifth eldest daughter
+steam	journal-kinship-term	0x75a7d0	0x1416a1c78	cstring	sixth eldest daughter
+steam	journal-kinship-term	0x75a7e2	0x1416a1c90	cstring	seventh eldest daughter
+steam	journal-kinship-term	0x75a7f4	0x1416a1ca8	cstring	eighth eldest daughter
+steam	journal-kinship-term	0x75a806	0x1416a1cc0	cstring	ninth eldest daughter
+steam	journal-kinship-term	0x75a818	0x1416a1cd8	cstring	tenth eldest daughter
+steam	journal-kinship-term	0x75a82a	0x1416465c0	cstring	daughter
+steam	journal-kinship-term	0x75a83c	0x1416a24f0	cstring	only daughter
+steam	journal-kinship-term	0x75a84e	0x1416a2500	cstring	youngest daughter
+steam	journal-kinship-term	0x75a860	0x1416a2518	cstring	eldest child
+steam	journal-kinship-term	0x75a872	0x1416a2528	cstring	second eldest child
+steam	journal-kinship-term	0x75a884	0x1416a2540	cstring	third eldest child
+steam	journal-kinship-term	0x75a896	0x1416a2558	cstring	fourth eldest child
+steam	journal-kinship-term	0x75a8a8	0x1416a2570	cstring	fifth eldest child
+steam	journal-kinship-term	0x75a8ba	0x1416a2588	cstring	sixth eldest child
+steam	journal-kinship-term	0x75a8cc	0x1416a25a0	cstring	seventh eldest child
+steam	journal-kinship-term	0x75a8de	0x1416a25b8	cstring	eighth eldest child
+steam	journal-kinship-term	0x75a8f0	0x1416a25d0	cstring	ninth eldest child
+steam	journal-kinship-term	0x75a902	0x1416a25e8	cstring	tenth eldest child
+steam	journal-kinship-term	0x75a914	0x141646ac0	cstring	child
+steam	journal-kinship-term	0x75a926	0x1416a2600	cstring	youngest child
+steam	journal-kinship-term	0x75a938	0x1416a2610	cstring	only child
+steam	journal-kinship-term	0x75a94a	0x1416a2620	cstring	paternal grandmother
+steam	journal-kinship-term	0x75a95c	0x1416a2638	cstring	paternal grandfather
+steam	journal-kinship-term	0x75a96e	0x1416a23b8	cstring	maternal grandmother
+steam	journal-kinship-term	0x75a980	0x1416a23d0	cstring	maternal grandfather
+steam	journal-kinship-term	0x75a992	0x141646ac8	cstring	grandmother
+steam	journal-kinship-term	0x75a9a4	0x141646ad8	cstring	grandfather
+steam	journal-kinship-term	0x75a9b6	0x141646ae8	cstring	grandparent
+steam	journal-kinship-term	0x75a9c8	0x1416a23e8	cstring	older brother
+steam	journal-kinship-term	0x75a9da	0x1416a23f8	cstring	older sister
+steam	journal-kinship-term	0x75a9ec	0x1416a2408	cstring	older sibling
+steam	journal-kinship-term	0x75a9fe	0x1416a2418	cstring	younger brother
+steam	journal-kinship-term	0x75aa0a	0x1416a2428	cstring	younger sister
+steam	journal-kinship-term	0x75aa1c	0x1416a2438	cstring	younger sibling
+steam	journal-kinship-term	0x75aa28	0x141646a58	cstring	cousin
+steam	journal-kinship-term	0x75aa3a	0x141646a90	cstring	aunt
+steam	journal-kinship-term	0x75aa4c	0x141646a40	cstring	uncle
+steam	journal-kinship-term	0x75aa5e	0x141646a48	cstring	niece
+steam	journal-kinship-term	0x75aa70	0x141646a50	cstring	nephew
+steam	journal-kinship-term	0x75aa82	0x141646ab8	cstring	sibling
+steam	journal-kinship-term	0x75aa94	0x141646a98	cstring	grandchild
+steam	journal-kinship-term	0x75aaa3	0x1416a2448	cstring	older half-brother
+steam	journal-kinship-term	0x75aab2	0x1416a2460	cstring	older half-sister
+steam	journal-kinship-term	0x75aac1	0x1416a2478	cstring	older half-sibling
+steam	journal-kinship-term	0x75aad0	0x1416a2490	cstring	younger half-brother
+steam	journal-kinship-term	0x75aadf	0x1416a24a8	cstring	younger half-sister
+steam	journal-kinship-term	0x75aaee	0x1416a24c0	cstring	younger half-sibling
+steam	journal-kinship-term	0x75aafd	0x141646a80	cstring	half-sibling
+steam	journal-kinship-term	0x75ab0c	0x1416a24d8	cstring	no relationship
+steam	journal-kinship-term	0x75ab4a	0x1416a24e8	cstring	ren
+steam	journal-kinship-term	0x75ab59	0x1415e9298	cstring	s
+steam	journal-reputation-captions	0xbc427	0x1415eb538	cstring	Reputation:
+steam	journal-reputation-captions	0xbc434	0x1415eb540	cstring	on:
+steam	journal-reputation-captions	0xbc43f	0x1415eb542	cstring	:
+steam	journal-reputation-captions	0xbc52e	0x1415eb548	cstring	legendary hero
+steam	journal-reputation-captions	0xbc545	0x1415eb520	cstring	famous hero
+steam	journal-reputation-captions	0xbc55c	0x1415eb52c	cstring	hero
+steam	journal-reputation-captions	0xbc573	0x1415eb590	cstring	greatly respected for heroic acts
+steam	journal-reputation-captions	0xbc585	0x1415eb5b8	cstring	respected for heroic acts
+steam	journal-reputation-captions	0xbc59c	0x1415eb558	cstring	legendary training partner
+steam	journal-reputation-captions	0xbc5b3	0x1415eb578	cstring	famous training partner
+steam	journal-reputation-captions	0xbc5ca	0x1415eb610	cstring	noted training partner
+steam	journal-reputation-captions	0xbc5e1	0x1415eb628	cstring	training partner
+steam	journal-reputation-captions	0xbc5ed	0x1415eb5d8	cstring	dabbling training partner
+steam	journal-reputation-captions	0xbc604	0x1415eb5f8	cstring	legendary brawler
+steam	journal-reputation-captions	0xbc61b	0x1415eb660	cstring	famous brawler
+steam	journal-reputation-captions	0xbc632	0x1415eb670	cstring	noted brawler
+steam	journal-reputation-captions	0xbc649	0x1415eb640	cstring	known brawler
+steam	journal-reputation-captions	0xbc65b	0x1415eb650	cstring	rumored brawler
+steam	journal-reputation-captions	0xbc672	0x1415eb6a0	cstring	legendary villain
+steam	journal-reputation-captions	0xbc689	0x1415eb6b8	cstring	infamous villain
+steam	journal-reputation-captions	0xbc69a	0x1415eb680	cstring	noted villain
+steam	journal-reputation-captions	0xbc6b1	0x1415eb690	cstring	known villain
+steam	journal-reputation-captions	0xbc6c3	0x1415eb700	cstring	rumored villain
+steam	journal-reputation-captions	0xbc6da	0x1415eb710	cstring	legendary trade partner
+steam	journal-reputation-captions	0xbc6f1	0x1415eb6d0	cstring	famous trade partner
+steam	journal-reputation-captions	0xbc708	0x1415eb6e8	cstring	noted trade partner
+steam	journal-reputation-captions	0xbc71f	0x1415eb750	cstring	trade partner
+steam	journal-reputation-captions	0xbc731	0x1415eb760	cstring	dabbling trade partner
+steam	journal-reputation-captions	0xbc748	0x1415eb728	cstring	legendarily polite
+steam	journal-reputation-captions	0xbc75f	0x1415eb740	cstring	famously polite
+steam	journal-reputation-captions	0xbc776	0x1415eb7a0	cstring	notably polite
+steam	journal-reputation-captions	0xbc78d	0x1415eb7b0	cstring	polite
+steam	journal-reputation-captions	0xbc79f	0x1415eb778	cstring	possibly polite
+steam	journal-reputation-captions	0xbc7b6	0x1415eb788	cstring	legendary killer
+steam	journal-reputation-captions	0xbc7c7	0x1415eb7d8	cstring	infamous killer
+steam	journal-reputation-captions	0xbc7de	0x1415eb7e8	cstring	noted killer
+steam	journal-reputation-captions	0xbc7f5	0x1415eb7b8	cstring	known killer
+steam	journal-reputation-captions	0xbc807	0x1415eb7c8	cstring	rumored killer
+steam	journal-reputation-captions	0xbc81e	0x1415eb818	cstring	legendary murderer
+steam	journal-reputation-captions	0xbc835	0x1415eb830	cstring	infamous murderer
+steam	journal-reputation-captions	0xbc84c	0x1415eb7f8	cstring	noted murderer
+steam	journal-reputation-captions	0xbc863	0x1415eb808	cstring	known murderer
+steam	journal-reputation-captions	0xbc875	0x1415eb868	cstring	rumored murderer
+steam	journal-reputation-captions	0xbc886	0x1415eb880	cstring	legendary comrade
+steam	journal-reputation-captions	0xbc89d	0x1415eb848	cstring	famous comrade
+steam	journal-reputation-captions	0xbc8b4	0x1415eb858	cstring	noted comrade
+steam	journal-reputation-captions	0xbc8cb	0x1415eb8b8	cstring	comrade
+steam	journal-reputation-captions	0xbc8dd	0x1415eb8c0	cstring	possible comrade
+steam	journal-reputation-captions	0xbc8ee	0x1415eb898	cstring	legendary ally
+steam	journal-reputation-captions	0xbc905	0x1415eb8a8	cstring	famous ally
+steam	journal-reputation-captions	0xbc91c	0x1415eb8f8	cstring	noted ally
+steam	journal-reputation-captions	0xbc933	0x1415eb908	cstring	known ally
+steam	journal-reputation-captions	0xbc945	0x1415eb8d8	cstring	rumored ally
+steam	journal-reputation-captions	0xbc95c	0x1415eb8e8	cstring	legendary enemy
+steam	journal-reputation-captions	0xbc973	0x1415eb938	cstring	infamous enemy
+steam	journal-reputation-captions	0xbc98a	0x1415eb948	cstring	noted enemy
+steam	journal-reputation-captions	0xbc9a1	0x1415eb918	cstring	known enemy
+steam	journal-reputation-captions	0xbc9b3	0x1415eb928	cstring	rumored enemy
+steam	journal-reputation-captions	0xbc9ca	0x1415eb988	cstring	legendary enemy fighter
+steam	journal-reputation-captions	0xbc9e1	0x1415eb9a0	cstring	infamous enemy fighter
+steam	journal-reputation-captions	0xbc9f8	0x1415eb958	cstring	noted enemy fighter
+steam	journal-reputation-captions	0xbca0f	0x1415eb970	cstring	known enemy fighter
+steam	journal-reputation-captions	0xbca21	0x1415eb9d8	cstring	rumored enemy fighter
+steam	journal-reputation-captions	0xbca38	0x1415eb9f0	cstring	legendary fighter
+steam	journal-reputation-captions	0xbca4f	0x1415eb9b8	cstring	famous fighter
+steam	journal-reputation-captions	0xbca66	0x1415eb9c8	cstring	noted fighter
+steam	journal-reputation-captions	0xbca7d	0x1415eba28	cstring	known fighter
+steam	journal-reputation-captions	0xbca8f	0x1415eba38	cstring	rumored fighter
+steam	journal-reputation-captions	0xbcaa6	0x1415eba08	cstring	legendary bully
+steam	journal-reputation-captions	0xbcabd	0x1415eba18	cstring	infamous bully
+steam	journal-reputation-captions	0xbcad4	0x1415eba70	cstring	noted bully
+steam	journal-reputation-captions	0xbcaeb	0x1415eba80	cstring	known bully
+steam	journal-reputation-captions	0xbcafd	0x1415eba48	cstring	rumored bully
+steam	journal-reputation-captions	0xbcb14	0x1415eba58	cstring	legendary brigand
+steam	journal-reputation-captions	0xbcb2b	0x1415ebab0	cstring	infamous brigand
+steam	journal-reputation-captions	0xbcb3c	0x1415ebac8	cstring	noted brigand
+steam	journal-reputation-captions	0xbcb53	0x1415eba90	cstring	known brigand
+steam	journal-reputation-captions	0xbcb65	0x1415ebaa0	cstring	rumored brigand
+steam	journal-reputation-captions	0xbcb7c	0x1415ebb08	cstring	legendary loyal soldier
+steam	journal-reputation-captions	0xbcb93	0x1415ebb20	cstring	famous loyal soldier
+steam	journal-reputation-captions	0xbcbaa	0x1415ebad8	cstring	noted loyal soldier
+steam	journal-reputation-captions	0xbcbc1	0x1415ebaf0	cstring	known loyal soldier
+steam	journal-reputation-captions	0xbcbd3	0x1415ebb60	cstring	rumored loyal soldier
+steam	journal-reputation-captions	0xbcbea	0x1415ebb78	cstring	legendary monster
+steam	journal-reputation-captions	0xbcc01	0x1415ebb38	cstring	infamous monster
+steam	journal-reputation-captions	0xbcc12	0x1415ebb50	cstring	noted monster
+steam	journal-reputation-captions	0xbcc29	0x1415ebbc0	cstring	known monster
+steam	journal-reputation-captions	0xbcc3b	0x1415ebbd0	cstring	rumored monster
+steam	journal-reputation-captions	0xbcc52	0x1415ebb90	cstring	legendary storyteller
+steam	journal-reputation-captions	0xbcc69	0x1415ebba8	cstring	famous storyteller
+steam	journal-reputation-captions	0xbcc80	0x1415ebc08	cstring	noted storyteller
+steam	journal-reputation-captions	0xbcc97	0x1415ebc20	cstring	known storyteller
+steam	journal-reputation-captions	0xbcca9	0x1415ebbe0	cstring	rumored storyteller
+steam	journal-reputation-captions	0xbccc0	0x1415ebbf8	cstring	legendary poet
+steam	journal-reputation-captions	0xbccd7	0x1415ebc58	cstring	famous poet
+steam	journal-reputation-captions	0xbccee	0x1415ebc68	cstring	noted poet
+steam	journal-reputation-captions	0xbcd05	0x1415ebc38	cstring	known poet
+steam	journal-reputation-captions	0xbcd17	0x1415ebc48	cstring	rumored poet
+steam	journal-reputation-captions	0xbcd2e	0x1415ebc98	cstring	legendary bard
+steam	journal-reputation-captions	0xbcd45	0x1415ebca8	cstring	famous bard
+steam	journal-reputation-captions	0xbcd5c	0x1415ebc78	cstring	noted bard
+steam	journal-reputation-captions	0xbcd73	0x1415ebc88	cstring	known bard
+steam	journal-reputation-captions	0xbcd85	0x1415ebcd8	cstring	rumored bard
+steam	journal-reputation-captions	0xbcd9c	0x1415ebce8	cstring	legendary dancer
+steam	journal-reputation-captions	0xbcdad	0x1415ebcb8	cstring	famous dancer
+steam	journal-reputation-captions	0xbcdc4	0x1415ebcc8	cstring	noted dancer
+steam	journal-reputation-captions	0xbcddb	0x1415ebd30	cstring	known dancer
+steam	journal-reputation-captions	0xbcded	0x1415ebd40	cstring	rumored dancer
+steam	journal-reputation-captions	0xbce04	0x1415ebd00	cstring	legendary quarreler
+steam	journal-reputation-captions	0xbce1b	0x1415ebd18	cstring	infamous quarreler
+steam	journal-reputation-captions	0xbce32	0x1415ebd80	cstring	noted quarreler
+steam	journal-reputation-captions	0xbce49	0x1415ebd90	cstring	known quarreler
+steam	journal-reputation-captions	0xbce5b	0x1415ebd50	cstring	rumored quarreler
+steam	journal-reputation-captions	0xbce72	0x1415ebd68	cstring	legendary flatterer
+steam	journal-reputation-captions	0xbce89	0x1415ebdc8	cstring	infamous flatterer
+steam	journal-reputation-captions	0xbcea0	0x1415ebde0	cstring	noted flatterer
+steam	journal-reputation-captions	0xbceb7	0x1415ebda0	cstring	known flatterer
+steam	journal-reputation-captions	0xbcec9	0x1415ebdb0	cstring	rumored flatterer
+steam	journal-reputation-captions	0xbcee0	0x1415ebe10	cstring	legendary hunter
+steam	journal-reputation-captions	0xbcef1	0x1415ebe28	cstring	great hunter
+steam	journal-reputation-captions	0xbcf08	0x1415ebdf0	cstring	talented hunter
+steam	journal-reputation-captions	0xbcf23	0x1415ebe00	cstring	skilled hunter
+steam	journal-reputation-captions	0xbcf30	0x1415ebe78	cstring	rumored hunter
+steam	journal-reputation-captions	0xbcf47	0x1415ebe88	cstring	legendary protector of the weak
+steam	journal-reputation-captions	0xbcf5e	0x1415ebe38	cstring	famous protector of the weak
+steam	journal-reputation-captions	0xbcf75	0x1415ebe58	cstring	noted protector of the weak
+steam	journal-reputation-captions	0xbcf90	0x1415ebee0	cstring	known protector of the weak
+steam	journal-reputation-captions	0xbcfa2	0x1415ebf00	cstring	rumored protector of the weak
+steam	journal-reputation-captions	0xbcfb9	0x1415ebea8	cstring	legendary treasure hunter
+steam	journal-reputation-captions	0xbcfd0	0x1415ebec8	cstring	famous treasure hunter
+steam	journal-reputation-captions	0xbcfe7	0x1415ebf48	cstring	noted treasure hunter
+steam	journal-reputation-captions	0xbd002	0x1415ebf60	cstring	known treasure hunter
+steam	journal-reputation-captions	0xbd014	0x1415ebf20	cstring	rumored treasure hunter
+steam	journal-reputation-captions	0xbd02b	0x1415ebf38	cstring	legendary thief
+steam	journal-reputation-captions	0xbd042	0x1415ebf98	cstring	infamous thief
+steam	journal-reputation-captions	0xbd059	0x1415ebfa8	cstring	noted thief
+steam	journal-reputation-captions	0xbd074	0x1415ebf78	cstring	known thief
+steam	journal-reputation-captions	0xbd086	0x1415ebf88	cstring	rumored thief
+steam	journal-reputation-captions	0xbd09d	0x1415ebff8	cstring	legendary information source
+steam	journal-reputation-captions	0xbd0b4	0x1415ec018	cstring	infamous information source
+steam	journal-reputation-captions	0xbd0cb	0x1415ebfb8	cstring	noted information source
+steam	journal-reputation-captions	0xbd0e6	0x1415ebfd8	cstring	known information source
+steam	journal-reputation-captions	0xbd0f8	0x1415ec078	cstring	rumored information source
+steam	journal-reputation-captions	0xbd10f	0x1415ec098	cstring	legendary preserver of knowledge
+steam	journal-reputation-captions	0xbd126	0x1415ec038	cstring	famous preserver of knowledge
+steam	journal-reputation-captions	0xbd13d	0x1415ec058	cstring	noted preserver of knowledge
+steam	journal-reputation-captions	0xbd158	0x1415ec0f0	cstring	known preserver of knowledge
+steam	journal-reputation-captions	0xbd16a	0x1415ec110	cstring	rumored preserver of knowledge
+steam	journal-reputation-captions	0xbd181	0x1415ec0c0	cstring	legendary intruder
+steam	journal-reputation-captions	0xbd198	0x1415ec0d8	cstring	infamous intruder
+steam	journal-reputation-captions	0xbd1af	0x1415ec160	cstring	noted intruder
+steam	journal-reputation-captions	0xbd1ca	0x1415ec170	cstring	known intruder
+steam	journal-reputation-captions	0xbd1d9	0x1415ec130	cstring	rumored intruder
+steam	journal-reputation-captions	0xbd1ed	0x1415ec148	cstring	legendary preacher
+steam	journal-reputation-captions	0xbd201	0x1415ec1a8	cstring	infamous preacher
+steam	journal-reputation-captions	0xbd215	0x1415ec1c0	cstring	noted preacher
+steam	journal-reputation-captions	0xbd229	0x1415ec180	cstring	known preacher
+steam	journal-reputation-captions	0xbd232	0x1415ec190	cstring	rumored preacher
+steam	journal-paragraph-vector-wrap	0x8e7567	0x1415e873c	cstring	 
+steam	journal-relative-time	0x67568b	0x141670808	cstring	in a time before time
+steam	journal-relative-time	0x6756ae	0x1416707d0	cstring	in the future
+steam	journal-relative-time	0x6756e9	0x1416707e0	cstring	just now
+steam	journal-relative-time	0x675703	0x1416707a0	cstring	a few minutes ago
+steam	journal-relative-time	0x67571d	0x1416707b8	cstring	not a quarter hour ago
+steam	journal-relative-time	0x675737	0x141670770	cstring	not a half hour ago
+steam	journal-relative-time	0x675751	0x141670788	cstring	not one hour ago
+steam	journal-relative-time	0x67576e	0x141670750	cstring	a few hours ago
+steam	journal-relative-time	0x67578b	0x141670760	cstring	not one day ago
+steam	journal-relative-time	0x6757a8	0x141670728	cstring	a few days ago
+steam	journal-relative-time	0x6757c5	0x141670738	cstring	several days ago
+steam	journal-relative-time	0x6757e2	0x141670708	cstring	a week ago
+steam	journal-relative-time	0x6757ff	0x141670718	cstring	a few weeks ago
+steam	journal-relative-time	0x67581c	0x141670948	cstring	a month ago
+steam	journal-relative-time	0x675839	0x141670958	cstring	a few months ago
+steam	journal-relative-time	0x67585c	0x141670928	cstring	months ago
+steam	journal-relative-time	0x67586b	0x141670938	cstring	a year ago
+steam	journal-relative-time	0x675883	0x141670900	cstring	a few years ago
+steam	journal-relative-time	0x6758a1	0x141670910	cstring	several years ago
+steam	journal-relative-time	0x6758bf	0x1416708e0	cstring	many years ago
+steam	journal-relative-time	0x6758dd	0x1416708f0	cstring	long ago
+steam	journal-relative-time	0x6758f2	0x1416708c8	cstring	long, long ago
+classic	journal-renderer-and-card-fields	0xc2929	0x1415e7168	cstring	Agreements
+classic	journal-renderer-and-card-fields	0xc295b	0x1415e71ac	cstring	Events
+classic	journal-renderer-and-card-fields	0xc298d	0x1415e71b4	cstring	People
+classic	journal-renderer-and-card-fields	0xc29bf	0x1415e719c	cstring	Sites
+classic	journal-renderer-and-card-fields	0xc29f1	0x1415e71a4	cstring	Groups
+classic	journal-renderer-and-card-fields	0xc2a23	0x1415e71e0	cstring	Regions
+classic	journal-renderer-and-card-fields	0xc2a55	0x1415e71e8	cstring	Bestiary
+classic	journal-renderer-and-card-fields	0xc2a84	0x1415e71c0	cstring	Artifacts
+classic	journal-renderer-and-card-fields	0xc2ab3	0x1415e71d0	cstring	Intrigue
+classic	journal-renderer-and-card-fields	0xc2df6	0x1415e71f4	cstring	Plots
+classic	journal-renderer-and-card-fields	0xc2e24	0x1415e7220	cstring	Organizations
+classic	journal-renderer-and-card-fields	0xc2e52	0x1415e7218	cstring	Actors
+classic	journal-renderer-and-card-fields	0xc319e	0x1415e64cc	cstring	/
+classic	journal-renderer-and-card-fields	0xc3468	0x1415e7278	cstring	Centered on first heard
+classic	journal-renderer-and-card-fields	0xc34d6	0x1415e7260	cstring	Centered on last heard
+classic	journal-renderer-and-card-fields	0xc3541	0x1415e7200	cstring	Centered on location
+classic	journal-renderer-and-card-fields	0xc3798	0x1415e7248	cstring	 Showing type,date
+classic	journal-renderer-and-card-fields	0xc37c2	0x1415e7230	cstring	 Showing pin,last
+classic	journal-renderer-and-card-fields	0xc398b	0x1415e64cc	cstring	/
+classic	journal-renderer-and-card-fields	0xc3b1b	0x1415e72c0	cstring	Overthrow Agreement
+classic	journal-renderer-and-card-fields	0xc3b27	0x1415e72d8	cstring	Guide Agreement
+classic	journal-renderer-and-card-fields	0xc3b33	0x1415e7290	cstring	Rescue Agreement
+classic	journal-renderer-and-card-fields	0xc3b3f	0x1415e72a8	cstring	Aid Rescue Agreement
+classic	journal-renderer-and-card-fields	0xc3b4b	0x1415e7318	cstring	Adventuring Agreement
+classic	journal-renderer-and-card-fields	0xc3b57	0x1415e7330	cstring	Bound Servitude
+classic	journal-renderer-and-card-fields	0xc3b63	0x1415e72e8	cstring	Entertainment Agreement
+classic	journal-renderer-and-card-fields	0xc3b6f	0x1415e7300	cstring	World Joining Agreement
+classic	journal-renderer-and-card-fields	0xc3b7b	0x1415e7368	cstring	Residency Agreement
+classic	journal-renderer-and-card-fields	0xc3b87	0x1415e7380	cstring	Grant of Citizenship
+classic	journal-renderer-and-card-fields	0xc3b93	0x1415e7340	cstring	Parley Arrangement
+classic	journal-renderer-and-card-fields	0xc3b9f	0x1415e7358	cstring	Corruption
+classic	journal-renderer-and-card-fields	0xc3bab	0x1415e73c0	cstring	Artifact Theft
+classic	journal-renderer-and-card-fields	0xc3bb7	0x1415e73d0	cstring	Promise of Position
+classic	journal-renderer-and-card-fields	0xc3bc3	0x1415e7398	cstring	Assassination Plot
+classic	journal-renderer-and-card-fields	0xc3bcf	0x1415e73b0	cstring	Abduction Plot
+classic	journal-renderer-and-card-fields	0xc3bd8	0x1415e7410	cstring	Sabotage Plot
+classic	journal-renderer-and-card-fields	0xc3be1	0x1415e7420	cstring	Infiltration Plot
+classic	journal-renderer-and-card-fields	0xc3bea	0x1415e73e8	cstring	Framing Plot
+classic	journal-renderer-and-card-fields	0xc3bf3	0x1415e73f8	cstring	War Starting Plot
+classic	journal-renderer-and-card-fields	0xc3c20	0x1415e7438	cstring	Foiled Embezzlement Conspiracy
+classic	journal-renderer-and-card-fields	0xc3c29	0x1415e7488	cstring	Foiled Corruption Conspiracy
+classic	journal-renderer-and-card-fields	0xc3c32	0x1415e7468	cstring	Foiled Bribery Conspiracy
+classic	journal-renderer-and-card-fields	0xc3c3b	0x1415e7458	cstring	Build Structure
+classic	journal-renderer-and-card-fields	0xc3c44	0x1415e74c0	cstring	Offer Service
+classic	journal-renderer-and-card-fields	0xc3c4d	0x1415e74d0	cstring	Retrieve Artifact
+classic	journal-renderer-and-card-fields	0xc3da7	0x1415e3c40	cstring	You
+classic	journal-renderer-and-card-fields	0xc3e54	0x1415e7690	cstring	asked that
+classic	journal-renderer-and-card-fields	0xc3eb5	0x1415e74b8	cstring	you
+classic	journal-renderer-and-card-fields	0xc3f5c	0x1415e76a0	cstring	retrieve
+classic	journal-renderer-and-card-fields	0xc4052	0x1415e7684	cstring	from
+classic	journal-renderer-and-card-fields	0xc414e	0x1415e768c	cstring	for
+classic	journal-renderer-and-card-fields	0xc42a1	0x1415e76c8	cstring	Drive members of
+classic	journal-renderer-and-card-fields	0xc4364	0x1415e76ac	cstring	out of
+classic	journal-renderer-and-card-fields	0xc44fa	0x1415e3c40	cstring	You
+classic	journal-renderer-and-card-fields	0xc45a7	0x1415e7650	cstring	requested that
+classic	journal-renderer-and-card-fields	0xc4608	0x1415e74b8	cstring	you
+classic	journal-renderer-and-card-fields	0xc46ab	0x1415e7660	cstring	make an offer of service to
+classic	journal-renderer-and-card-fields	0xc489c	0x1415e3c40	cstring	You
+classic	journal-renderer-and-card-fields	0xc4949	0x1415e74a8	cstring	agreed to join
+classic	journal-renderer-and-card-fields	0xc49aa	0x1415e74b8	cstring	you
+classic	journal-renderer-and-card-fields	0xc4a4f	0x1415e7500	cstring	in insurrection against
+classic	journal-renderer-and-card-fields	0xc4b27	0x1415e7518	cstring	thereby freeing
+classic	journal-renderer-and-card-fields	0xc4c18	0x1415e3c40	cstring	You
+classic	journal-renderer-and-card-fields	0xc4cc5	0x1415e74e8	cstring	agreed to guide
+classic	journal-renderer-and-card-fields	0xc4d26	0x1415e74b8	cstring	you
+classic	journal-renderer-and-card-fields	0xc4dcb	0x1415e74f8	cstring	to
+classic	journal-renderer-and-card-fields	0xc4fd3	0x1415e7560	cstring	somebody unknown
+classic	journal-renderer-and-card-fields	0xc5048	0x1415e3c40	cstring	You
+classic	journal-renderer-and-card-fields	0xc50f5	0x1415e74a8	cstring	agreed to join
+classic	journal-renderer-and-card-fields	0xc5156	0x1415e74b8	cstring	you
+classic	journal-renderer-and-card-fields	0xc51f7	0x1415e7578	cstring	in order to be brought safely away from
+classic	journal-renderer-and-card-fields	0xc52ec	0x1415e3c40	cstring	You
+classic	journal-renderer-and-card-fields	0xc5399	0x1415e74a8	cstring	agreed to join
+classic	journal-renderer-and-card-fields	0xc53fa	0x1415e74b8	cstring	you
+classic	journal-renderer-and-card-fields	0xc549b	0x1415e7528	cstring	in order to rescue
+classic	journal-renderer-and-card-fields	0xc5616	0x1415e7560	cstring	somebody unknown
+classic	journal-renderer-and-card-fields	0xc568b	0x1415e3c40	cstring	You
+classic	journal-renderer-and-card-fields	0xc5738	0x1415e7540	cstring	agreed to adventure with
+classic	journal-renderer-and-card-fields	0xc5799	0x1415e74b8	cstring	you
+classic	journal-renderer-and-card-fields	0xc583a	0x1415e75e0	cstring	wherever the journey might lead
+classic	journal-renderer-and-card-fields	0xc58a9	0x1415e3c40	cstring	You
+classic	journal-renderer-and-card-fields	0xc5956	0x1415e7600	cstring	was bound to serve
+classic	journal-renderer-and-card-fields	0xc59b7	0x1415e74b8	cstring	you
+classic	journal-renderer-and-card-fields	0xc5a58	0x1415e75a0	cstring	by invocation of True Name
+classic	journal-renderer-and-card-fields	0xc5ac7	0x1415e3c40	cstring	You
+classic	journal-renderer-and-card-fields	0xc5b74	0x1415e75c0	cstring	agreed to entertain people with
+classic	journal-renderer-and-card-fields	0xc5bd5	0x1415e74b8	cstring	you
+classic	journal-renderer-and-card-fields	0xc5c76	0x1415e7620	cstring	throughout the world
+classic	journal-renderer-and-card-fields	0xc5cfd	0x1415e7638	cstring	Agreement concluded
+classic	journal-renderer-and-card-fields	0xc5dd0	0x1415e7614	cstring	st
+classic	journal-renderer-and-card-fields	0xc5dd9	0x1415e7618	cstring	nd
+classic	journal-renderer-and-card-fields	0xc5de2	0x1415e767c	cstring	rd
+classic	journal-renderer-and-card-fields	0xc5deb	0x1415e7680	cstring	th
+classic	journal-renderer-and-card-fields	0xc5dfb	0x1415e3720	cstring	 
+classic	journal-renderer-and-card-fields	0xc5e2d	0x1415e40c4	cstring	, 
+classic	journal-renderer-and-card-fields	0xc5eb5	0x1415e76bc	cstring	Kill
+classic	journal-renderer-and-card-fields	0xc5f96	0x1415e7710	cstring	Cause trouble for
+classic	journal-renderer-and-card-fields	0xc605a	0x1415e76b4	cstring	Drive
+classic	journal-renderer-and-card-fields	0xc611d	0x1415e7684	cstring	from
+classic	journal-renderer-and-card-fields	0xc61e3	0x1415e7728	cstring	An order from
+classic	journal-renderer-and-card-fields	0xc62cd	0x1415e76e0	cstring	Finish reporting in
+classic	journal-renderer-and-card-fields	0xc633e	0x1415e76f8	cstring	Complete: report back
+classic	journal-renderer-and-card-fields	0xc638b	0x1415e7760	cstring	Not yet completed
+classic	journal-renderer-and-card-fields	0xc6504	0x1415e3c40	cstring	You
+classic	journal-renderer-and-card-fields	0xc65b1	0x1415e7690	cstring	asked that
+classic	journal-renderer-and-card-fields	0xc6612	0x1415e74b8	cstring	you
+classic	journal-renderer-and-card-fields	0xc66b5	0x1415e7738	cstring	retrieve 
+classic	journal-renderer-and-card-fields	0xc684f	0x1415e3c40	cstring	You
+classic	journal-renderer-and-card-fields	0xc68fc	0x1415e7650	cstring	requested that
+classic	journal-renderer-and-card-fields	0xc695d	0x1415e74b8	cstring	you
+classic	journal-renderer-and-card-fields	0xc6a00	0x1415e7774	cstring	serve 
+classic	journal-renderer-and-card-fields	0xc6ae5	0x1415e7638	cstring	Agreement concluded
+classic	journal-renderer-and-card-fields	0xc6b86	0x1415e7728	cstring	An order from
+classic	journal-renderer-and-card-fields	0xc6c6d	0x1415e76e0	cstring	Finish reporting in
+classic	journal-renderer-and-card-fields	0xc6cdb	0x1415e76f8	cstring	Complete: report back
+classic	journal-renderer-and-card-fields	0xc6d25	0x1415e7760	cstring	Not yet completed
+classic	journal-renderer-and-card-fields	0xc6ef7	0x1415e7748	cstring	Centered on commander
+classic	journal-renderer-and-card-fields	0xc6f61	0x1415e7798	cstring	Centered on target
+classic	journal-renderer-and-card-fields	0xc71e1	0x1415e778c	cstring	Org: 
+classic	journal-renderer-and-card-fields	0xc726b	0x1415e64cc	cstring	/
+classic	journal-renderer-and-card-fields	0xc74d2	0x1415e64cc	cstring	/
+classic	journal-renderer-and-card-fields	0xc7ec9	0x1415e77b0	cstring	One member
+classic	journal-renderer-and-card-fields	0xc7f15	0x1415e7780	cstring	 members
+classic	journal-renderer-and-card-fields	0xc8205	0x1415e64cc	cstring	/
+classic	journal-renderer-and-card-fields	0xc85f0	0x1415e64cc	cstring	/
+classic	journal-renderer-and-card-fields	0xc89e0	0x1415e64cc	cstring	/
+classic	journal-renderer-and-card-fields	0xc8d2c	0x1415e77d8	cstring	 Showing important
+classic	journal-renderer-and-card-fields	0xc8d67	0x1415e77f0	cstring	 Showing all
+classic	journal-renderer-and-card-fields	0xc8f32	0x1415e64cc	cstring	/
+classic	journal-renderer-and-card-fields	0xc927c	0x1415e77d8	cstring	 Showing important
+classic	journal-renderer-and-card-fields	0xc92b7	0x1415e77f0	cstring	 Showing all
+classic	journal-renderer-and-card-fields	0xc9470	0x1415e64cc	cstring	/
+classic	journal-renderer-and-card-fields	0xc97bc	0x1415e77d8	cstring	 Showing important
+classic	journal-renderer-and-card-fields	0xc97f7	0x1415e77f0	cstring	 Showing all
+classic	journal-renderer-and-card-fields	0xc99b0	0x1415e64cc	cstring	/
+classic	journal-renderer-and-card-fields	0xc9da0	0x1415e64cc	cstring	/
+classic	journal-renderer-and-card-fields	0xca0bc	0x1415e77c0	cstring	: Toggle line
+classic	journal-renderer-and-card-fields	0xca216	0x1415e77d0	cstring	...
+classic	journal-renderer-and-card-fields	0xca25a	0x1415e783c	cstring	_
+classic	journal-person-description	0xd2036	0x1415e7fe0/16	vector	Died in the year
+classic	journal-person-description	0xd2040	0x1415e7ff0	cstring	 
+classic	journal-person-description	0xd21a9	0x1415e7fb8	cstring	 deity
+classic	journal-person-description	0xd2212	0x1415e7fc0	cstring	Force
+classic	journal-person-description	0xd22b7	0x1415e7fb8	cstring	 deity
+classic	journal-person-description	0xd2315	0x1415e7fc0	cstring	Force
+classic	journal-person-description	0xd24f4	0x1415e7ff8	cstring	This person is one of the 
+classic	journal-person-description	0xd251c	0x1415e64d0	cstring	 of 
+classic	journal-person-description	0xd254a	0x1415e8018	cstring	 and your military subordinate
+classic	journal-person-description	0xd255b	0x1415e8098	cstring	 alongside you
+classic	journal-person-description	0xd256e	0x1415e3574	cstring	.
+classic	journal-person-description	0xd264d	0x1415e8038	cstring	This person is 
+classic	journal-person-description	0xd26a7	0x1415e64d0	cstring	 of 
+classic	journal-person-description	0xd26dd	0x1415e8048	cstring	 and your military commander
+classic	journal-person-description	0xd26f0	0x1415e3574	cstring	.
+classic	journal-person-description	0xd27d8	0x1415e80a8	cstring	You have known this person your entire life.
+classic	journal-person-description	0xd2803	0x1415e8068	cstring	You have known this person since 
+classic	journal-person-description	0xd2846	0x1415e8090	cstring	 birth.
+classic	journal-person-description	0xd287f	0x1415e8150	cstring	You have known each other your entire lives.
+classic	journal-person-description	0xd292f	0x1415e8180	cstring	You last spoke 
+classic	journal-person-description	0xd293f	0x1415e8188	cstring	 spoke 
+classic	journal-person-description	0xd294b	0x1415e818c	cstring	ke 
+classic	journal-person-description	0xd2959	0x1415e818e	cstring	 
+classic	journal-person-description	0xd29db	0x1415e3574	cstring	.
+classic	journal-person-description	0xd2b7b	0x1415e80e0/16	vector	You have heard t
+classic	journal-person-description	0xd2b85	0x1415e80f0/16	vector	his name suggest
+classic	journal-person-description	0xd2b90	0x1415e8100/16	vector	ed as a potentia
+classic	journal-person-description	0xd2b9b	0x1415e8110/16	vector	l guide to faraw
+classic	journal-person-description	0xd2ba6	0x1415e8120	cstring	ay places.
+classic	journal-person-description	0xd2bb3	0x1415e8128	cstring	s.
+classic	journal-person-description	0xd2dd8	0x1415e8130/16	vector	You worship this
+classic	journal-person-description	0xd2de2	0x1415e8140	cstring	 figure.
+classic	journal-person-description	0xd2e68	0x1415e81d8	cstring	  You are beloved.
+classic	journal-person-description	0xd2e76	0x1415e81f0	cstring	  You are held in high regard.
+classic	journal-person-description	0xd2e84	0x1415e8190	cstring	  You are held in some esteem.
+classic	journal-person-description	0xd2e90	0x1415e81b0	cstring	  You have been favorably noticed.
+classic	journal-person-description	0xd2e99	0x1415e8240	cstring	  You have attracted some positive interest.
+classic	journal-person-description	0xd3041	0x1415e8270/16	vector	This is your lov
+classic	journal-person-description	0xd304b	0x1415e8280	cstring	er.
+classic	journal-person-description	0xd3056	0x1415e8282	cstring	.
+classic	journal-person-description	0xd30e0	0x1415e8210/16	vector	This is your pri
+classic	journal-person-description	0xd30ea	0x1415e8220	cstring	soner.
+classic	journal-person-description	0xd30f3	0x1415e8224	cstring	r.
+classic	journal-person-description	0xd317e	0x1415e8228/16	vector	This is your jai
+classic	journal-person-description	0xd3188	0x1415e8238	cstring	lor.
+classic	journal-person-description	0xd324a	0x1415e82d0/16	vector	This is your mas
+classic	journal-person-description	0xd3254	0x1415e82e0	cstring	ter.
+classic	journal-person-description	0xd32cd	0x1415e82e8/16	vector	This is your app
+classic	journal-person-description	0xd32d7	0x1415e82f8	cstring	rentice.
+classic	journal-person-description	0xd3364	0x1415e8288/16	vector	This is your tra
+classic	journal-person-description	0xd336e	0x1415e8298/16	vector	veling companion
+classic	journal-person-description	0xd3379	0x1415e82a8	cstring	.
+classic	journal-person-description	0xd3406	0x1415e82b0/16	vector	This is your for
+classic	journal-person-description	0xd3410	0x1415e82c0	cstring	mer master.
+classic	journal-person-description	0xd341d	0x1415e82c8	cstring	er.
+classic	journal-person-description	0xd3428	0x1415e82ca	cstring	.
+classic	journal-person-description	0xd3481	0x1415e8348	cstring	This is your former apprentice.
+classic	journal-person-description	0xd3511	0x1415e8368/16	vector	This is your own
+classic	journal-person-description	0xd351b	0x1415e8378	cstring	er.
+classic	journal-person-description	0xd3526	0x1415e837a	cstring	.
+classic	journal-person-description	0xd35b3	0x1415e8308/16	vector	This is your for
+classic	journal-person-description	0xd35bd	0x1415e8318	cstring	mer spouse.
+classic	journal-person-description	0xd35ca	0x1415e8320	cstring	se.
+classic	journal-person-description	0xd35d5	0x1415e8322	cstring	.
+classic	journal-person-description	0xd3662	0x1415e8328/16	vector	This is your dec
+classic	journal-person-description	0xd366c	0x1415e8338	cstring	eased spouse.
+classic	journal-person-description	0xd3679	0x1415e8340	cstring	ouse.
+classic	journal-person-description	0xd3682	0x1415e8344	cstring	.
+classic	journal-person-description	0xd376e	0x1415e83f8	cstring	This is your 
+classic	journal-person-description	0xd377e	0x1415e8400	cstring	your 
+classic	journal-person-description	0xd378a	0x1415e8404	cstring	 
+classic	journal-person-description	0xd3820	0x1415e3574	cstring	.
+classic	journal-entity-name	0xb8f9aa	0x1416592f8	cstring	[LPAGE:ENT:
+classic	journal-entity-name	0xb8f9ca	0x1415f8664	cstring	]
+classic	journal-entity-name	0xb8fa34	0x1415f8b50	cstring	[/LPAGE]
+classic	journal-entity-name	0xb8fa8c	0x1416da720	cstring	an unknown civilization
+classic	journal-religious-office-suffix	0x9bb86a	0x1415e64d0	cstring	 of 
+classic	journal-person-name	0xa91923	0x1415e3720	cstring	 
+classic	journal-person-name	0xa919de	0x1415e3720	cstring	 
+classic	journal-person-name	0xa91abb	0x1415e3720	cstring	 
+classic	journal-person-name	0xa91add	0x1415e89c4	cstring	The 
+classic	journal-person-name	0xa91af8	0x1415e3e34	cstring	the 
+classic	journal-person-name	0xa91b72	0x1415e3720	cstring	 
+classic	journal-person-name	0xa91b91	0x1415e89c4	cstring	The 
+classic	journal-person-name	0xa91b9a	0x1415e3e34	cstring	the 
+classic	journal-person-name	0xa91c1a	0x1415e3720	cstring	 
+classic	journal-person-name	0xa91c39	0x1415e89c4	cstring	The 
+classic	journal-person-name	0xa91c42	0x1415e3e34	cstring	the 
+classic	journal-person-name	0xa91d9f	0x1415e3720	cstring	 
+classic	journal-person-name	0xa91dcb	0x1415e89c4	cstring	The 
+classic	journal-person-name	0xa91de2	0x1415e3e34	cstring	the 
+classic	journal-person-name	0xa91e89	0x1415e3720	cstring	 
+classic	journal-person-name	0xa91e98	0x1416cb220	cstring	of 
+classic	journal-person-name	0xa91e9f	0x1416cb2ac	cstring	Of 
+classic	journal-gender-possessive	0xaa18e6	0x1416cb1a8	cstring	his
+classic	journal-gender-possessive	0xaa18f1	0x1416cb150	cstring	her
+classic	journal-gender-possessive	0xaa18f8	0x1415e94d8	cstring	its
+classic	journal-kinship-term	0x758007	0x14169cf7c	cstring	an 
+classic	journal-kinship-term	0x758016	0x1415e8618	cstring	a 
+classic	journal-kinship-term	0x75803a	0x141641744	cstring	mother
+classic	journal-kinship-term	0x75804c	0x14164174c	cstring	father
+classic	journal-kinship-term	0x75805e	0x1416416e4	cstring	parent
+classic	journal-kinship-term	0x758070	0x141640fb0	cstring	husband
+classic	journal-kinship-term	0x758085	0x141640fa4	cstring	wife
+classic	journal-kinship-term	0x75808c	0x14169cf80	cstring	wives
+classic	journal-kinship-term	0x7580a0	0x141641034	cstring	spouse
+classic	journal-kinship-term	0x7580b2	0x14169cf88	cstring	eldest son
+classic	journal-kinship-term	0x7580c4	0x14169cf98	cstring	second eldest son
+classic	journal-kinship-term	0x7580d6	0x14169cfb0	cstring	third eldest son
+classic	journal-kinship-term	0x7580e8	0x14169cd18	cstring	fourth eldest son
+classic	journal-kinship-term	0x7580fa	0x14169cd30	cstring	fifth eldest son
+classic	journal-kinship-term	0x75810c	0x14169cd48	cstring	sixth eldest son
+classic	journal-kinship-term	0x75811e	0x14169cd60	cstring	seventh eldest son
+classic	journal-kinship-term	0x758130	0x14169cd78	cstring	eighth eldest son
+classic	journal-kinship-term	0x758142	0x14169cd90	cstring	ninth eldest son
+classic	journal-kinship-term	0x758154	0x14169cda8	cstring	tenth eldest son
+classic	journal-kinship-term	0x758166	0x1416416ec	cstring	son
+classic	journal-kinship-term	0x758178	0x14169cdc0	cstring	youngest son
+classic	journal-kinship-term	0x75818a	0x14169cdd0	cstring	only son
+classic	journal-kinship-term	0x75819c	0x14169cde0	cstring	eldest daughter
+classic	journal-kinship-term	0x7581a8	0x14169cdf0	cstring	second eldest daughter
+classic	journal-kinship-term	0x7581ba	0x14169ce08	cstring	third eldest daughter
+classic	journal-kinship-term	0x7581cc	0x14169ce20	cstring	fourth eldest daughter
+classic	journal-kinship-term	0x7581de	0x14169ce38	cstring	fifth eldest daughter
+classic	journal-kinship-term	0x7581f0	0x14169ce50	cstring	sixth eldest daughter
+classic	journal-kinship-term	0x758202	0x14169ce68	cstring	seventh eldest daughter
+classic	journal-kinship-term	0x758214	0x14169cbb0	cstring	eighth eldest daughter
+classic	journal-kinship-term	0x758226	0x14169cbc8	cstring	ninth eldest daughter
+classic	journal-kinship-term	0x758238	0x14169cbe0	cstring	tenth eldest daughter
+classic	journal-kinship-term	0x75824a	0x1416416f0	cstring	daughter
+classic	journal-kinship-term	0x75825c	0x14169cbf8	cstring	only daughter
+classic	journal-kinship-term	0x75826e	0x14169cc08	cstring	youngest daughter
+classic	journal-kinship-term	0x758280	0x14169cc20	cstring	eldest child
+classic	journal-kinship-term	0x758292	0x14169cc30	cstring	second eldest child
+classic	journal-kinship-term	0x7582a4	0x14169cc48	cstring	third eldest child
+classic	journal-kinship-term	0x7582b6	0x14169cc60	cstring	fourth eldest child
+classic	journal-kinship-term	0x7582c8	0x14169cc78	cstring	fifth eldest child
+classic	journal-kinship-term	0x7582da	0x14169cc90	cstring	sixth eldest child
+classic	journal-kinship-term	0x7582ec	0x14169cca8	cstring	seventh eldest child
+classic	journal-kinship-term	0x7582fe	0x14169ccc0	cstring	eighth eldest child
+classic	journal-kinship-term	0x758310	0x14169ccd8	cstring	ninth eldest child
+classic	journal-kinship-term	0x758322	0x14169ccf0	cstring	tenth eldest child
+classic	journal-kinship-term	0x758334	0x1416416fc	cstring	child
+classic	journal-kinship-term	0x758346	0x14169cd08	cstring	youngest child
+classic	journal-kinship-term	0x758358	0x14169d4c8	cstring	only child
+classic	journal-kinship-term	0x75836a	0x14169d4d8	cstring	paternal grandmother
+classic	journal-kinship-term	0x75837c	0x14169d4f0	cstring	paternal grandfather
+classic	journal-kinship-term	0x75838e	0x14169d508	cstring	maternal grandmother
+classic	journal-kinship-term	0x7583a0	0x14169d520	cstring	maternal grandfather
+classic	journal-kinship-term	0x7583b2	0x1416416a8	cstring	grandmother
+classic	journal-kinship-term	0x7583c4	0x1416416b8	cstring	grandfather
+classic	journal-kinship-term	0x7583d6	0x1416416c8	cstring	grandparent
+classic	journal-kinship-term	0x7583e8	0x14169d538	cstring	older brother
+classic	journal-kinship-term	0x7583fa	0x14169d548	cstring	older sister
+classic	journal-kinship-term	0x75840c	0x14169d558	cstring	older sibling
+classic	journal-kinship-term	0x75841e	0x14169d568	cstring	younger brother
+classic	journal-kinship-term	0x75842a	0x14169d578	cstring	younger sister
+classic	journal-kinship-term	0x75843c	0x14169d588	cstring	younger sibling
+classic	journal-kinship-term	0x758448	0x141641a88	cstring	cousin
+classic	journal-kinship-term	0x75845a	0x141641670	cstring	aunt
+classic	journal-kinship-term	0x75846c	0x141641678	cstring	uncle
+classic	journal-kinship-term	0x75847e	0x141641a78	cstring	niece
+classic	journal-kinship-term	0x758490	0x141641a80	cstring	nephew
+classic	journal-kinship-term	0x7584a2	0x141641690	cstring	sibling
+classic	journal-kinship-term	0x7584b4	0x1416416d8	cstring	grandchild
+classic	journal-kinship-term	0x7584c3	0x14169d598	cstring	older half-brother
+classic	journal-kinship-term	0x7584d2	0x14169d5b0	cstring	older half-sister
+classic	journal-kinship-term	0x7584e1	0x14169d5c8	cstring	older half-sibling
+classic	journal-kinship-term	0x7584f0	0x14169d5e0	cstring	younger half-brother
+classic	journal-kinship-term	0x7584ff	0x14169d5f8	cstring	younger half-sister
+classic	journal-kinship-term	0x75850e	0x14169d3a8	cstring	younger half-sibling
+classic	journal-kinship-term	0x75851d	0x141641660	cstring	half-sibling
+classic	journal-kinship-term	0x75852c	0x14169d3c0	cstring	no relationship
+classic	journal-kinship-term	0x75856a	0x14169d3d0	cstring	ren
+classic	journal-kinship-term	0x758579	0x1415e4220	cstring	s
+classic	journal-reputation-captions	0xbc3b7	0x1415e64d8	cstring	Reputation:
+classic	journal-reputation-captions	0xbc3c4	0x1415e64e0	cstring	on:
+classic	journal-reputation-captions	0xbc3cf	0x1415e64e2	cstring	:
+classic	journal-reputation-captions	0xbc4be	0x1415e64e8	cstring	legendary hero
+classic	journal-reputation-captions	0xbc4d5	0x1415e6540	cstring	famous hero
+classic	journal-reputation-captions	0xbc4ec	0x1415e654c	cstring	hero
+classic	journal-reputation-captions	0xbc503	0x1415e64f8	cstring	greatly respected for heroic acts
+classic	journal-reputation-captions	0xbc515	0x1415e6520	cstring	respected for heroic acts
+classic	journal-reputation-captions	0xbc52c	0x1415e6588	cstring	legendary training partner
+classic	journal-reputation-captions	0xbc543	0x1415e65a8	cstring	famous training partner
+classic	journal-reputation-captions	0xbc55a	0x1415e6558	cstring	noted training partner
+classic	journal-reputation-captions	0xbc571	0x1415e6570	cstring	training partner
+classic	journal-reputation-captions	0xbc57d	0x1415e65e0	cstring	dabbling training partner
+classic	journal-reputation-captions	0xbc594	0x1415e6600	cstring	legendary brawler
+classic	journal-reputation-captions	0xbc5ab	0x1415e65c0	cstring	famous brawler
+classic	journal-reputation-captions	0xbc5c2	0x1415e65d0	cstring	noted brawler
+classic	journal-reputation-captions	0xbc5d9	0x1415e6648	cstring	known brawler
+classic	journal-reputation-captions	0xbc5eb	0x1415e6658	cstring	rumored brawler
+classic	journal-reputation-captions	0xbc602	0x1415e6618	cstring	legendary villain
+classic	journal-reputation-captions	0xbc619	0x1415e6630	cstring	infamous villain
+classic	journal-reputation-captions	0xbc62a	0x1415e6690	cstring	noted villain
+classic	journal-reputation-captions	0xbc641	0x1415e66a0	cstring	known villain
+classic	journal-reputation-captions	0xbc653	0x1415e6668	cstring	rumored villain
+classic	journal-reputation-captions	0xbc66a	0x1415e6678	cstring	legendary trade partner
+classic	journal-reputation-captions	0xbc681	0x1415e66d8	cstring	famous trade partner
+classic	journal-reputation-captions	0xbc698	0x1415e66f0	cstring	noted trade partner
+classic	journal-reputation-captions	0xbc6af	0x1415e66b0	cstring	trade partner
+classic	journal-reputation-captions	0xbc6c1	0x1415e66c0	cstring	dabbling trade partner
+classic	journal-reputation-captions	0xbc6d8	0x1415e6720	cstring	legendarily polite
+classic	journal-reputation-captions	0xbc6ef	0x1415e6738	cstring	famously polite
+classic	journal-reputation-captions	0xbc706	0x1415e6708	cstring	notably polite
+classic	journal-reputation-captions	0xbc71d	0x1415e6718	cstring	polite
+classic	journal-reputation-captions	0xbc72f	0x1415e6768	cstring	possibly polite
+classic	journal-reputation-captions	0xbc746	0x1415e6778	cstring	legendary killer
+classic	journal-reputation-captions	0xbc757	0x1415e6748	cstring	infamous killer
+classic	journal-reputation-captions	0xbc76e	0x1415e6758	cstring	noted killer
+classic	journal-reputation-captions	0xbc785	0x1415e67c0	cstring	known killer
+classic	journal-reputation-captions	0xbc797	0x1415e67d0	cstring	rumored killer
+classic	journal-reputation-captions	0xbc7ae	0x1415e6790	cstring	legendary murderer
+classic	journal-reputation-captions	0xbc7c5	0x1415e67a8	cstring	infamous murderer
+classic	journal-reputation-captions	0xbc7dc	0x1415e6810	cstring	noted murderer
+classic	journal-reputation-captions	0xbc7f3	0x1415e6820	cstring	known murderer
+classic	journal-reputation-captions	0xbc805	0x1415e67e0	cstring	rumored murderer
+classic	journal-reputation-captions	0xbc816	0x1415e67f8	cstring	legendary comrade
+classic	journal-reputation-captions	0xbc82d	0x1415e6850	cstring	famous comrade
+classic	journal-reputation-captions	0xbc844	0x1415e6860	cstring	noted comrade
+classic	journal-reputation-captions	0xbc85b	0x1415e6830	cstring	comrade
+classic	journal-reputation-captions	0xbc86d	0x1415e6838	cstring	possible comrade
+classic	journal-reputation-captions	0xbc87e	0x1415e6890	cstring	legendary ally
+classic	journal-reputation-captions	0xbc895	0x1415e68a0	cstring	famous ally
+classic	journal-reputation-captions	0xbc8ac	0x1415e6870	cstring	noted ally
+classic	journal-reputation-captions	0xbc8c3	0x1415e6880	cstring	known ally
+classic	journal-reputation-captions	0xbc8d5	0x1415e68d0	cstring	rumored ally
+classic	journal-reputation-captions	0xbc8ec	0x1415e68e0	cstring	legendary enemy
+classic	journal-reputation-captions	0xbc903	0x1415e68b0	cstring	infamous enemy
+classic	journal-reputation-captions	0xbc91a	0x1415e68c0	cstring	noted enemy
+classic	journal-reputation-captions	0xbc931	0x1415e6920	cstring	known enemy
+classic	journal-reputation-captions	0xbc943	0x1415e6930	cstring	rumored enemy
+classic	journal-reputation-captions	0xbc95a	0x1415e68f0	cstring	legendary enemy fighter
+classic	journal-reputation-captions	0xbc971	0x1415e6908	cstring	infamous enemy fighter
+classic	journal-reputation-captions	0xbc988	0x1415e6970	cstring	noted enemy fighter
+classic	journal-reputation-captions	0xbc99f	0x1415e6988	cstring	known enemy fighter
+classic	journal-reputation-captions	0xbc9b1	0x1415e6940	cstring	rumored enemy fighter
+classic	journal-reputation-captions	0xbc9c8	0x1415e6958	cstring	legendary fighter
+classic	journal-reputation-captions	0xbc9df	0x1415e69c0	cstring	famous fighter
+classic	journal-reputation-captions	0xbc9f6	0x1415e69d0	cstring	noted fighter
+classic	journal-reputation-captions	0xbca0d	0x1415e69a0	cstring	known fighter
+classic	journal-reputation-captions	0xbca1f	0x1415e69b0	cstring	rumored fighter
+classic	journal-reputation-captions	0xbca36	0x1415e6a00	cstring	legendary bully
+classic	journal-reputation-captions	0xbca4d	0x1415e6a10	cstring	infamous bully
+classic	journal-reputation-captions	0xbca64	0x1415e69e0	cstring	noted bully
+classic	journal-reputation-captions	0xbca7b	0x1415e69f0	cstring	known bully
+classic	journal-reputation-captions	0xbca8d	0x1415e6a48	cstring	rumored bully
+classic	journal-reputation-captions	0xbcaa4	0x1415e6a58	cstring	legendary brigand
+classic	journal-reputation-captions	0xbcabb	0x1415e6a20	cstring	infamous brigand
+classic	journal-reputation-captions	0xbcacc	0x1415e6a38	cstring	noted brigand
+classic	journal-reputation-captions	0xbcae3	0x1415e6aa0	cstring	known brigand
+classic	journal-reputation-captions	0xbcaf5	0x1415e6ab0	cstring	rumored brigand
+classic	journal-reputation-captions	0xbcb0c	0x1415e6a70	cstring	legendary loyal soldier
+classic	journal-reputation-captions	0xbcb23	0x1415e6a88	cstring	famous loyal soldier
+classic	journal-reputation-captions	0xbcb3a	0x1415e6af0	cstring	noted loyal soldier
+classic	journal-reputation-captions	0xbcb51	0x1415e6b08	cstring	known loyal soldier
+classic	journal-reputation-captions	0xbcb63	0x1415e6ac0	cstring	rumored loyal soldier
+classic	journal-reputation-captions	0xbcb7a	0x1415e6ad8	cstring	legendary monster
+classic	journal-reputation-captions	0xbcb91	0x1415e6b40	cstring	infamous monster
+classic	journal-reputation-captions	0xbcba2	0x1415e6b58	cstring	noted monster
+classic	journal-reputation-captions	0xbcbb9	0x1415e6b20	cstring	known monster
+classic	journal-reputation-captions	0xbcbcb	0x1415e6b30	cstring	rumored monster
+classic	journal-reputation-captions	0xbcbe2	0x1415e6b98	cstring	legendary storyteller
+classic	journal-reputation-captions	0xbcbf9	0x1415e6bb0	cstring	famous storyteller
+classic	journal-reputation-captions	0xbcc10	0x1415e6b68	cstring	noted storyteller
+classic	journal-reputation-captions	0xbcc27	0x1415e6b80	cstring	known storyteller
+classic	journal-reputation-captions	0xbcc39	0x1415e6be8	cstring	rumored storyteller
+classic	journal-reputation-captions	0xbcc50	0x1415e6c00	cstring	legendary poet
+classic	journal-reputation-captions	0xbcc67	0x1415e6bc8	cstring	famous poet
+classic	journal-reputation-captions	0xbcc7e	0x1415e6bd8	cstring	noted poet
+classic	journal-reputation-captions	0xbcc95	0x1415e6c30	cstring	known poet
+classic	journal-reputation-captions	0xbcca7	0x1415e6c40	cstring	rumored poet
+classic	journal-reputation-captions	0xbccbe	0x1415e6c10	cstring	legendary bard
+classic	journal-reputation-captions	0xbccd5	0x1415e6c20	cstring	famous bard
+classic	journal-reputation-captions	0xbccec	0x1415e6c78	cstring	noted bard
+classic	journal-reputation-captions	0xbcd03	0x1415e6c88	cstring	known bard
+classic	journal-reputation-captions	0xbcd15	0x1415e6c50	cstring	rumored bard
+classic	journal-reputation-captions	0xbcd2c	0x1415e6c60	cstring	legendary dancer
+classic	journal-reputation-captions	0xbcd3d	0x1415e6cb8	cstring	famous dancer
+classic	journal-reputation-captions	0xbcd54	0x1415e6cc8	cstring	noted dancer
+classic	journal-reputation-captions	0xbcd6b	0x1415e6c98	cstring	known dancer
+classic	journal-reputation-captions	0xbcd7d	0x1415e6ca8	cstring	rumored dancer
+classic	journal-reputation-captions	0xbcd94	0x1415e6cf8	cstring	legendary quarreler
+classic	journal-reputation-captions	0xbcdab	0x1415e6d10	cstring	infamous quarreler
+classic	journal-reputation-captions	0xbcdc2	0x1415e6cd8	cstring	noted quarreler
+classic	journal-reputation-captions	0xbcdd9	0x1415e6ce8	cstring	known quarreler
+classic	journal-reputation-captions	0xbcdeb	0x1415e6d50	cstring	rumored quarreler
+classic	journal-reputation-captions	0xbce02	0x1415e6d68	cstring	legendary flatterer
+classic	journal-reputation-captions	0xbce19	0x1415e6d28	cstring	infamous flatterer
+classic	journal-reputation-captions	0xbce30	0x1415e6d40	cstring	noted flatterer
+classic	journal-reputation-captions	0xbce47	0x1415e6da8	cstring	known flatterer
+classic	journal-reputation-captions	0xbce59	0x1415e6db8	cstring	rumored flatterer
+classic	journal-reputation-captions	0xbce70	0x1415e6d80	cstring	legendary hunter
+classic	journal-reputation-captions	0xbce81	0x1415e6d98	cstring	great hunter
+classic	journal-reputation-captions	0xbce98	0x1415e6e00	cstring	talented hunter
+classic	journal-reputation-captions	0xbceb3	0x1415e6e10	cstring	skilled hunter
+classic	journal-reputation-captions	0xbcec0	0x1415e6dd0	cstring	rumored hunter
+classic	journal-reputation-captions	0xbced7	0x1415e6de0	cstring	legendary protector of the weak
+classic	journal-reputation-captions	0xbceee	0x1415e6e60	cstring	famous protector of the weak
+classic	journal-reputation-captions	0xbcf05	0x1415e6e80	cstring	noted protector of the weak
+classic	journal-reputation-captions	0xbcf20	0x1415e6e20	cstring	known protector of the weak
+classic	journal-reputation-captions	0xbcf32	0x1415e6e40	cstring	rumored protector of the weak
+classic	journal-reputation-captions	0xbcf49	0x1415e6ed0	cstring	legendary treasure hunter
+classic	journal-reputation-captions	0xbcf60	0x1415e6ef0	cstring	famous treasure hunter
+classic	journal-reputation-captions	0xbcf77	0x1415e6ea0	cstring	noted treasure hunter
+classic	journal-reputation-captions	0xbcf92	0x1415e6eb8	cstring	known treasure hunter
+classic	journal-reputation-captions	0xbcfa4	0x1415e6f28	cstring	rumored treasure hunter
+classic	journal-reputation-captions	0xbcfbb	0x1415e6f40	cstring	legendary thief
+classic	journal-reputation-captions	0xbcfd2	0x1415e6f08	cstring	infamous thief
+classic	journal-reputation-captions	0xbcfe9	0x1415e6f18	cstring	noted thief
+classic	journal-reputation-captions	0xbd004	0x1415e6f90	cstring	known thief
+classic	journal-reputation-captions	0xbd016	0x1415e6fa0	cstring	rumored thief
+classic	journal-reputation-captions	0xbd02d	0x1415e6f50	cstring	legendary information source
+classic	journal-reputation-captions	0xbd044	0x1415e6f70	cstring	infamous information source
+classic	journal-reputation-captions	0xbd05b	0x1415e6ff8	cstring	noted information source
+classic	journal-reputation-captions	0xbd076	0x1415e7018	cstring	known information source
+classic	journal-reputation-captions	0xbd088	0x1415e6fb0	cstring	rumored information source
+classic	journal-reputation-captions	0xbd09f	0x1415e6fd0	cstring	legendary preserver of knowledge
+classic	journal-reputation-captions	0xbd0b6	0x1415e7078	cstring	famous preserver of knowledge
+classic	journal-reputation-captions	0xbd0cd	0x1415e7098	cstring	noted preserver of knowledge
+classic	journal-reputation-captions	0xbd0e8	0x1415e7038	cstring	known preserver of knowledge
+classic	journal-reputation-captions	0xbd0fa	0x1415e7058	cstring	rumored preserver of knowledge
+classic	journal-reputation-captions	0xbd111	0x1415e70d8	cstring	legendary intruder
+classic	journal-reputation-captions	0xbd128	0x1415e70f0	cstring	infamous intruder
+classic	journal-reputation-captions	0xbd13f	0x1415e70b8	cstring	noted intruder
+classic	journal-reputation-captions	0xbd15a	0x1415e70c8	cstring	known intruder
+classic	journal-reputation-captions	0xbd169	0x1415e7130	cstring	rumored intruder
+classic	journal-reputation-captions	0xbd17d	0x1415e7148	cstring	legendary preacher
+classic	journal-reputation-captions	0xbd191	0x1415e7108	cstring	infamous preacher
+classic	journal-reputation-captions	0xbd1a5	0x1415e7120	cstring	noted preacher
+classic	journal-reputation-captions	0xbd1b9	0x1415e7178	cstring	known preacher
+classic	journal-reputation-captions	0xbd1c2	0x1415e7188	cstring	rumored preacher
+classic	journal-paragraph-vector-wrap	0x8e4dd7	0x1415e3720	cstring	 
+classic	journal-relative-time	0x6730ab	0x14166ae10	cstring	in a time before time
+classic	journal-relative-time	0x6730ce	0x14166ae28	cstring	in the future
+classic	journal-relative-time	0x673109	0x14166ade8	cstring	just now
+classic	journal-relative-time	0x673123	0x14166adf8	cstring	a few minutes ago
+classic	journal-relative-time	0x67313d	0x14166adb8	cstring	not a quarter hour ago
+classic	journal-relative-time	0x673157	0x14166add0	cstring	not a half hour ago
+classic	journal-relative-time	0x673171	0x14166ad90	cstring	not one hour ago
+classic	journal-relative-time	0x67318e	0x14166ada8	cstring	a few hours ago
+classic	journal-relative-time	0x6731ab	0x14166ad70	cstring	not one day ago
+classic	journal-relative-time	0x6731c8	0x14166ad80	cstring	a few days ago
+classic	journal-relative-time	0x6731e5	0x14166b788	cstring	several days ago
+classic	journal-relative-time	0x673202	0x14166b7a0	cstring	a week ago
+classic	journal-relative-time	0x67321f	0x14166b768	cstring	a few weeks ago
+classic	journal-relative-time	0x67323c	0x14166b778	cstring	a month ago
+classic	journal-relative-time	0x673259	0x14166b740	cstring	a few months ago
+classic	journal-relative-time	0x67327c	0x14166b758	cstring	months ago
+classic	journal-relative-time	0x67328b	0x14166b720	cstring	a year ago
+classic	journal-relative-time	0x6732a3	0x14166b730	cstring	a few years ago
+classic	journal-relative-time	0x6732c1	0x14166b6f8	cstring	several years ago
+classic	journal-relative-time	0x6732df	0x14166b710	cstring	many years ago
+classic	journal-relative-time	0x6732fd	0x14166b6d8	cstring	long ago
+classic	journal-relative-time	0x673312	0x14166b6e8	cstring	long, long ago

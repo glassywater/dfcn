@@ -361,6 +361,23 @@ std::optional<std::string> Overlay::translate_announcement_combat(
             return finish(std::move(result));
         }
         if (scope == "$requirement") return finish(translate_workshop_recipe_source(input));
+        if (scope == "$journal-office") {
+            // d1ef0 takes a whole gendered position title or assignment's
+            // plural title. Keep its office sense and shared RAW vocabulary.
+            return finish(translate_legends_office(input));
+        }
+        if (scope == "$journal-owner") {
+            // The People producer names an entity, or a deity when 9bdfb0
+            // supplies the religious suffix. A bound entity keeps its own
+            // name senses; a divine figure keeps its personal name grammar.
+            auto result = translate_civilization_reference(input);
+            if (!translation_complete_with_native_nicknames(result, input))
+                result = translate_legends_name(input, true);
+            if (!translation_complete_with_native_nicknames(result, input))
+                result = translate_legends_name(input, false, true);
+            return finish(translation_complete_with_native_nicknames(result, input)
+                ? std::move(result) : std::nullopt);
+        }
         if (scope == "$office") {
             // Intrigue and negotiation insert position.name directly from
             // the native position record. Resolve that complete typed title

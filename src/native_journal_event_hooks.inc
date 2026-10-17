@@ -1,6 +1,6 @@
-// PE Events cards keep every 58-column paragraph in summary+0xd8 while
-// unselected cards draw only three rows. Recover that retained source at the
-// real card-construction call, including paragraphs built before capture.
+// PE Events and People cache every 58-column paragraph while unselected
+// cards draw only three rows. Keep the actual cached row/string addresses,
+// including complete paragraphs whose construction no longer repeats.
 #ifdef _WIN32
 using NativeJournalEventBuildFn = void (*)(void *);
 static NativeJournalEventBuildFn g_native_journal_event_build = nullptr;
@@ -48,6 +48,28 @@ static bool native_journal_event_interval_captured(uintptr_t owner, int width,
     return false;
 }
 
+static void retain_native_journal_card_paragraphs(uintptr_t owner) {
+    std::vector<std::string> rows;
+    std::vector<uintptr_t> addresses;
+    if (!native_journal_event_rows(owner, rows, addresses)) return;
+    for (size_t first = 0; first < rows.size();) {
+        if (rows[first].empty()) { ++first; continue; }
+        size_t last = first + 1;
+        while (last < rows.size() && !rows[last].empty()) ++last;
+        if (!native_journal_event_interval_captured(owner, 58, rows, addresses, first, last)) {
+            std::string source;
+            // 8e7440 keeps the break-space in its outgoing row and only
+            // skips subsequent leading spaces. Concatenate those real bytes;
+            // inserting spaces would corrupt a forced split inside a name.
+            for (size_t line = first; line < last; ++line) source += rows[line];
+            remember_native_paragraph(owner, 58, std::move(source),
+                std::vector<std::string>(rows.begin() + first, rows.begin() + last), first,
+                std::vector<uintptr_t>(addresses.begin() + first, addresses.begin() + last));
+        }
+        first = last;
+    }
+}
+
 static void retain_native_journal_event(void *summary) {
     const uintptr_t object = reinterpret_cast<uintptr_t>(summary);
     if (!object || object > UINTPTR_MAX - 0xf0 || !g_overlay.translation_enabled()) return;
@@ -76,27 +98,7 @@ static void retain_native_journal_event(void *summary) {
             remember_native_paragraph(object + 0xc0, 50, std::move(title),
                 std::move(title_rows), 0, std::move(title_addresses), true);
     }
-
-    std::vector<std::string> rows;
-    std::vector<uintptr_t> addresses;
-    const uintptr_t owner = object + 0xd8;
-    if (!native_journal_event_rows(owner, rows, addresses)) return;
-    for (size_t first = 0; first < rows.size();) {
-        if (rows[first].empty()) { ++first; continue; }
-        size_t last = first + 1;
-        while (last < rows.size() && !rows[last].empty()) ++last;
-        if (!native_journal_event_interval_captured(owner, 58, rows, addresses, first, last)) {
-            std::string source;
-            // 8e7440 keeps the break-space in its outgoing row and only
-            // skips subsequent leading spaces. Concatenate those real bytes;
-            // inserting spaces would corrupt a forced split inside a name.
-            for (size_t line = first; line < last; ++line) source += rows[line];
-            remember_native_paragraph(owner, 58, std::move(source),
-                std::vector<std::string>(rows.begin() + first, rows.begin() + last), first,
-                std::vector<uintptr_t>(addresses.begin() + first, addresses.begin() + last));
-        }
-        first = last;
-    }
+    retain_native_journal_card_paragraphs(object + 0xd8);
 }
 
 // The current viewscreen owns these cached rows even when no constructor or
@@ -108,30 +110,39 @@ static bool refresh_native_journal_event_sources(const graphicst *graphics) {
     const uintptr_t screen = native_current_viewscreen();
     uintptr_t vtable = 0;
     int16_t mode = -1;
-    if (!base || !screen || screen > UINTPTR_MAX - 0x590 ||
+    if (!base || !screen || screen > UINTPTR_MAX - 0x5a8 ||
             !native_history_copy(screen, vtable) ||
             vtable != native_reference_address(base, 0x15eb450) ||
-            !native_history_copy(screen + 0x256, mode) || mode != 0) return false;
-    NativeBorrowedVector<uintptr_t> events;
+            !native_history_copy(screen + 0x256, mode) || (mode != 0 && mode != 2)) return false;
+    const bool event_view = mode == 0;
+    NativeBorrowedVector<uintptr_t> cards;
     int32_t scroll = 0, selected = -1;
-    if (!native_history_read_vector(screen + 0x578, events) || events.size() > 65536 ||
-            !native_history_copy(screen + 0x2ac, scroll) ||
-            !native_history_copy(screen + 0x250, selected)) return true;
-    // c2f79..c3040 selects this same bounded slice of the native event vector.
+    if (!native_history_read_vector(screen + (event_view ? 0x578 : 0x590), cards) ||
+            cards.size() > 65536 ||
+            !native_history_copy(screen + (event_view ? 0x2ac : 0x2b4), scroll) ||
+            !native_history_copy(screen + 0x250, selected)) return event_view;
+    // c2f79..c3040 / c88ed select the same bounded Events / People slice.
     const size_t count = static_cast<size_t>(std::max(0, (graphics->dimy - 6) / 5));
     const size_t first = static_cast<size_t>(std::clamp<int64_t>(scroll, 0,
-        events.size() > count ? events.size() - count : 0));
-    const size_t last = std::min(events.size(), first + count);
+        cards.size() > count ? cards.size() - count : 0));
+    const size_t last = std::min(cards.size(), first + count);
+    const auto retain_card = [&](size_t index) {
+        const uintptr_t card = native_history_vector_at(cards, index);
+        if (!card) return;
+        if (event_view) retain_native_journal_event(reinterpret_cast<void *>(card));
+        // d1f4d returns as soon as People+68 contains cached rows. The
+        // original blank separators delimit every complete native paragraph.
+        else if (card <= UINTPTR_MAX - 0x80 && g_overlay.translation_enabled())
+            retain_native_journal_card_paragraphs(card + 0x68);
+    };
     for (size_t index = first; index < last; ++index) {
-        const uintptr_t event = native_history_vector_at(events, index);
-        if (event) retain_native_journal_event(reinterpret_cast<void *>(event));
+        retain_card(index);
     }
-    if (selected >= 0 && static_cast<size_t>(selected) < events.size() &&
+    if (selected >= 0 && static_cast<size_t>(selected) < cards.size() &&
             (static_cast<size_t>(selected) < first || static_cast<size_t>(selected) >= last)) {
-        const uintptr_t event = native_history_vector_at(events, static_cast<size_t>(selected));
-        if (event) retain_native_journal_event(reinterpret_cast<void *>(event));
+        retain_card(static_cast<size_t>(selected));
     }
-    return true;
+    return event_view;
 }
 
 static void capture_native_journal_event_build(void *summary) {

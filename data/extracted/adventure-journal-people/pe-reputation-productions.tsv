@@ -1,0 +1,311 @@
+edition	reputation_selector	minimum_score	maximum_score	literal_instruction_rva	display_text
+steam	0	100		0xbc52e	Legendary hero
+steam	0	75	99	0xbc545	Famous hero
+steam	0	50	74	0xbc55c	Hero
+steam	0	25	49	0xbc573	Greatly respected for heroic acts
+steam	0	1	24	0xbc585	Respected for heroic acts
+steam	1	100		0xbc59c	Legendary training partner
+steam	1	75	99	0xbc5b3	Famous training partner
+steam	1	50	74	0xbc5ca	Noted training partner
+steam	1	25	49	0xbc5e1	Training partner
+steam	1	1	24	0xbc5ed	Dabbling training partner
+steam	2	100		0xbc604	Legendary brawler
+steam	2	75	99	0xbc61b	Famous brawler
+steam	2	50	74	0xbc632	Noted brawler
+steam	2	25	49	0xbc649	Known brawler
+steam	2	1	24	0xbc65b	Rumored brawler
+steam	3	100		0xbc672	Legendary villain
+steam	3	75	99	0xbc689	Infamous villain
+steam	3	50	74	0xbc69a	Noted villain
+steam	3	25	49	0xbc6b1	Known villain
+steam	3	1	24	0xbc6c3	Rumored villain
+steam	4	100		0xbc6da	Legendary trade partner
+steam	4	75	99	0xbc6f1	Famous trade partner
+steam	4	50	74	0xbc708	Noted trade partner
+steam	4	25	49	0xbc71f	Trade partner
+steam	4	1	24	0xbc731	Dabbling trade partner
+steam	5	100		0xbc748	Legendarily polite
+steam	5	75	99	0xbc75f	Famously polite
+steam	5	50	74	0xbc776	Notably polite
+steam	5	25	49	0xbc78d	Polite
+steam	5	1	24	0xbc79f	Possibly polite
+steam	6	100		0xbc7b6	Legendary killer
+steam	6	75	99	0xbc7c7	Infamous killer
+steam	6	50	74	0xbc7de	Noted killer
+steam	6	25	49	0xbc7f5	Known killer
+steam	6	1	24	0xbc807	Rumored killer
+steam	7	100		0xbc81e	Legendary murderer
+steam	7	75	99	0xbc835	Infamous murderer
+steam	7	50	74	0xbc84c	Noted murderer
+steam	7	25	49	0xbc863	Known murderer
+steam	7	1	24	0xbc875	Rumored murderer
+steam	8	100		0xbc886	Legendary comrade
+steam	8	75	99	0xbc89d	Famous comrade
+steam	8	50	74	0xbc8b4	Noted comrade
+steam	8	25	49	0xbc8cb	Comrade
+steam	8	1	24	0xbc8dd	Possible comrade
+steam	9	100		0xbc8ee	Legendary ally
+steam	9	75	99	0xbc905	Famous ally
+steam	9	50	74	0xbc91c	Noted ally
+steam	9	25	49	0xbc933	Known ally
+steam	9	1	24	0xbc945	Rumored ally
+steam	10	100		0xbc95c	Legendary enemy
+steam	10	75	99	0xbc973	Infamous enemy
+steam	10	50	74	0xbc98a	Noted enemy
+steam	10	25	49	0xbc9a1	Known enemy
+steam	10	1	24	0xbc9b3	Rumored enemy
+steam	11	100		0xbc9ca	Legendary enemy fighter
+steam	11	75	99	0xbc9e1	Infamous enemy fighter
+steam	11	50	74	0xbc9f8	Noted enemy fighter
+steam	11	25	49	0xbca0f	Known enemy fighter
+steam	11	1	24	0xbca21	Rumored enemy fighter
+steam	12	100		0xbca38	Legendary fighter
+steam	12	75	99	0xbca4f	Famous fighter
+steam	12	50	74	0xbca66	Noted fighter
+steam	12	25	49	0xbca7d	Known fighter
+steam	12	1	24	0xbca8f	Rumored fighter
+steam	13	100		0xbcaa6	Legendary bully
+steam	13	75	99	0xbcabd	Infamous bully
+steam	13	50	74	0xbcad4	Noted bully
+steam	13	25	49	0xbcaeb	Known bully
+steam	13	1	24	0xbcafd	Rumored bully
+steam	14	100		0xbcb14	Legendary brigand
+steam	14	75	99	0xbcb2b	Infamous brigand
+steam	14	50	74	0xbcb3c	Noted brigand
+steam	14	25	49	0xbcb53	Known brigand
+steam	14	1	24	0xbcb65	Rumored brigand
+steam	15	100		0xbcb7c	Legendary loyal soldier
+steam	15	75	99	0xbcb93	Famous loyal soldier
+steam	15	50	74	0xbcbaa	Noted loyal soldier
+steam	15	25	49	0xbcbc1	Known loyal soldier
+steam	15	1	24	0xbcbd3	Rumored loyal soldier
+steam	16	100		0xbcbea	Legendary monster
+steam	16	75	99	0xbcc01	Infamous monster
+steam	16	50	74	0xbcc12	Noted monster
+steam	16	25	49	0xbcc29	Known monster
+steam	16	1	24	0xbcc3b	Rumored monster
+steam	17	100		0xbcc52	Legendary storyteller
+steam	17	75	99	0xbcc69	Famous storyteller
+steam	17	50	74	0xbcc80	Noted storyteller
+steam	17	25	49	0xbcc97	Known storyteller
+steam	17	1	24	0xbcca9	Rumored storyteller
+steam	18	100		0xbccc0	Legendary poet
+steam	18	75	99	0xbccd7	Famous poet
+steam	18	50	74	0xbccee	Noted poet
+steam	18	25	49	0xbcd05	Known poet
+steam	18	1	24	0xbcd17	Rumored poet
+steam	19	100		0xbcd2e	Legendary bard
+steam	19	75	99	0xbcd45	Famous bard
+steam	19	50	74	0xbcd5c	Noted bard
+steam	19	25	49	0xbcd73	Known bard
+steam	19	1	24	0xbcd85	Rumored bard
+steam	20	100		0xbcd9c	Legendary dancer
+steam	20	75	99	0xbcdad	Famous dancer
+steam	20	50	74	0xbcdc4	Noted dancer
+steam	20	25	49	0xbcddb	Known dancer
+steam	20	1	24	0xbcded	Rumored dancer
+steam	21	100		0xbce04	Legendary quarreler
+steam	21	75	99	0xbce1b	Infamous quarreler
+steam	21	50	74	0xbce32	Noted quarreler
+steam	21	25	49	0xbce49	Known quarreler
+steam	21	1	24	0xbce5b	Rumored quarreler
+steam	22	100		0xbce72	Legendary flatterer
+steam	22	75	99	0xbce89	Infamous flatterer
+steam	22	50	74	0xbcea0	Noted flatterer
+steam	22	25	49	0xbceb7	Known flatterer
+steam	22	1	24	0xbcec9	Rumored flatterer
+steam	23	100		0xbcee0	Legendary hunter
+steam	23	75	99	0xbcef1	Great hunter
+steam	23	50	74	0xbcf08	Talented hunter
+steam	23	25	49	0xbcf23	Skilled hunter
+steam	23	1	24	0xbcf30	Rumored hunter
+steam	24	100		0xbcf47	Legendary protector of the weak
+steam	24	75	99	0xbcf5e	Famous protector of the weak
+steam	24	50	74	0xbcf75	Noted protector of the weak
+steam	24	25	49	0xbcf90	Known protector of the weak
+steam	24	1	24	0xbcfa2	Rumored protector of the weak
+steam	25	100		0xbcfb9	Legendary treasure hunter
+steam	25	75	99	0xbcfd0	Famous treasure hunter
+steam	25	50	74	0xbcfe7	Noted treasure hunter
+steam	25	25	49	0xbd002	Known treasure hunter
+steam	25	1	24	0xbd014	Rumored treasure hunter
+steam	26	100		0xbd02b	Legendary thief
+steam	26	75	99	0xbd042	Infamous thief
+steam	26	50	74	0xbd059	Noted thief
+steam	26	25	49	0xbd074	Known thief
+steam	26	1	24	0xbd086	Rumored thief
+steam	27	100		0xbd09d	Legendary information source
+steam	27	75	99	0xbd0b4	Infamous information source
+steam	27	50	74	0xbd0cb	Noted information source
+steam	27	25	49	0xbd0e6	Known information source
+steam	27	1	24	0xbd0f8	Rumored information source
+steam	28	100		0xbd10f	Legendary preserver of knowledge
+steam	28	75	99	0xbd126	Famous preserver of knowledge
+steam	28	50	74	0xbd13d	Noted preserver of knowledge
+steam	28	25	49	0xbd158	Known preserver of knowledge
+steam	28	1	24	0xbd16a	Rumored preserver of knowledge
+steam	29	100		0xbd181	Legendary intruder
+steam	29	75	99	0xbd198	Infamous intruder
+steam	29	50	74	0xbd1af	Noted intruder
+steam	29	25	49	0xbd1ca	Known intruder
+steam	29	1	24	0xbd1d9	Rumored intruder
+steam	30	100		0xbd1ed	Legendary preacher
+steam	30	75	99	0xbd201	Infamous preacher
+steam	30	50	74	0xbd215	Noted preacher
+steam	30	25	49	0xbd229	Known preacher
+steam	30	1	24	0xbd232	Rumored preacher
+classic	0	100		0xbc4be	Legendary hero
+classic	0	75	99	0xbc4d5	Famous hero
+classic	0	50	74	0xbc4ec	Hero
+classic	0	25	49	0xbc503	Greatly respected for heroic acts
+classic	0	1	24	0xbc515	Respected for heroic acts
+classic	1	100		0xbc52c	Legendary training partner
+classic	1	75	99	0xbc543	Famous training partner
+classic	1	50	74	0xbc55a	Noted training partner
+classic	1	25	49	0xbc571	Training partner
+classic	1	1	24	0xbc57d	Dabbling training partner
+classic	2	100		0xbc594	Legendary brawler
+classic	2	75	99	0xbc5ab	Famous brawler
+classic	2	50	74	0xbc5c2	Noted brawler
+classic	2	25	49	0xbc5d9	Known brawler
+classic	2	1	24	0xbc5eb	Rumored brawler
+classic	3	100		0xbc602	Legendary villain
+classic	3	75	99	0xbc619	Infamous villain
+classic	3	50	74	0xbc62a	Noted villain
+classic	3	25	49	0xbc641	Known villain
+classic	3	1	24	0xbc653	Rumored villain
+classic	4	100		0xbc66a	Legendary trade partner
+classic	4	75	99	0xbc681	Famous trade partner
+classic	4	50	74	0xbc698	Noted trade partner
+classic	4	25	49	0xbc6af	Trade partner
+classic	4	1	24	0xbc6c1	Dabbling trade partner
+classic	5	100		0xbc6d8	Legendarily polite
+classic	5	75	99	0xbc6ef	Famously polite
+classic	5	50	74	0xbc706	Notably polite
+classic	5	25	49	0xbc71d	Polite
+classic	5	1	24	0xbc72f	Possibly polite
+classic	6	100		0xbc746	Legendary killer
+classic	6	75	99	0xbc757	Infamous killer
+classic	6	50	74	0xbc76e	Noted killer
+classic	6	25	49	0xbc785	Known killer
+classic	6	1	24	0xbc797	Rumored killer
+classic	7	100		0xbc7ae	Legendary murderer
+classic	7	75	99	0xbc7c5	Infamous murderer
+classic	7	50	74	0xbc7dc	Noted murderer
+classic	7	25	49	0xbc7f3	Known murderer
+classic	7	1	24	0xbc805	Rumored murderer
+classic	8	100		0xbc816	Legendary comrade
+classic	8	75	99	0xbc82d	Famous comrade
+classic	8	50	74	0xbc844	Noted comrade
+classic	8	25	49	0xbc85b	Comrade
+classic	8	1	24	0xbc86d	Possible comrade
+classic	9	100		0xbc87e	Legendary ally
+classic	9	75	99	0xbc895	Famous ally
+classic	9	50	74	0xbc8ac	Noted ally
+classic	9	25	49	0xbc8c3	Known ally
+classic	9	1	24	0xbc8d5	Rumored ally
+classic	10	100		0xbc8ec	Legendary enemy
+classic	10	75	99	0xbc903	Infamous enemy
+classic	10	50	74	0xbc91a	Noted enemy
+classic	10	25	49	0xbc931	Known enemy
+classic	10	1	24	0xbc943	Rumored enemy
+classic	11	100		0xbc95a	Legendary enemy fighter
+classic	11	75	99	0xbc971	Infamous enemy fighter
+classic	11	50	74	0xbc988	Noted enemy fighter
+classic	11	25	49	0xbc99f	Known enemy fighter
+classic	11	1	24	0xbc9b1	Rumored enemy fighter
+classic	12	100		0xbc9c8	Legendary fighter
+classic	12	75	99	0xbc9df	Famous fighter
+classic	12	50	74	0xbc9f6	Noted fighter
+classic	12	25	49	0xbca0d	Known fighter
+classic	12	1	24	0xbca1f	Rumored fighter
+classic	13	100		0xbca36	Legendary bully
+classic	13	75	99	0xbca4d	Infamous bully
+classic	13	50	74	0xbca64	Noted bully
+classic	13	25	49	0xbca7b	Known bully
+classic	13	1	24	0xbca8d	Rumored bully
+classic	14	100		0xbcaa4	Legendary brigand
+classic	14	75	99	0xbcabb	Infamous brigand
+classic	14	50	74	0xbcacc	Noted brigand
+classic	14	25	49	0xbcae3	Known brigand
+classic	14	1	24	0xbcaf5	Rumored brigand
+classic	15	100		0xbcb0c	Legendary loyal soldier
+classic	15	75	99	0xbcb23	Famous loyal soldier
+classic	15	50	74	0xbcb3a	Noted loyal soldier
+classic	15	25	49	0xbcb51	Known loyal soldier
+classic	15	1	24	0xbcb63	Rumored loyal soldier
+classic	16	100		0xbcb7a	Legendary monster
+classic	16	75	99	0xbcb91	Infamous monster
+classic	16	50	74	0xbcba2	Noted monster
+classic	16	25	49	0xbcbb9	Known monster
+classic	16	1	24	0xbcbcb	Rumored monster
+classic	17	100		0xbcbe2	Legendary storyteller
+classic	17	75	99	0xbcbf9	Famous storyteller
+classic	17	50	74	0xbcc10	Noted storyteller
+classic	17	25	49	0xbcc27	Known storyteller
+classic	17	1	24	0xbcc39	Rumored storyteller
+classic	18	100		0xbcc50	Legendary poet
+classic	18	75	99	0xbcc67	Famous poet
+classic	18	50	74	0xbcc7e	Noted poet
+classic	18	25	49	0xbcc95	Known poet
+classic	18	1	24	0xbcca7	Rumored poet
+classic	19	100		0xbccbe	Legendary bard
+classic	19	75	99	0xbccd5	Famous bard
+classic	19	50	74	0xbccec	Noted bard
+classic	19	25	49	0xbcd03	Known bard
+classic	19	1	24	0xbcd15	Rumored bard
+classic	20	100		0xbcd2c	Legendary dancer
+classic	20	75	99	0xbcd3d	Famous dancer
+classic	20	50	74	0xbcd54	Noted dancer
+classic	20	25	49	0xbcd6b	Known dancer
+classic	20	1	24	0xbcd7d	Rumored dancer
+classic	21	100		0xbcd94	Legendary quarreler
+classic	21	75	99	0xbcdab	Infamous quarreler
+classic	21	50	74	0xbcdc2	Noted quarreler
+classic	21	25	49	0xbcdd9	Known quarreler
+classic	21	1	24	0xbcdeb	Rumored quarreler
+classic	22	100		0xbce02	Legendary flatterer
+classic	22	75	99	0xbce19	Infamous flatterer
+classic	22	50	74	0xbce30	Noted flatterer
+classic	22	25	49	0xbce47	Known flatterer
+classic	22	1	24	0xbce59	Rumored flatterer
+classic	23	100		0xbce70	Legendary hunter
+classic	23	75	99	0xbce81	Great hunter
+classic	23	50	74	0xbce98	Talented hunter
+classic	23	25	49	0xbceb3	Skilled hunter
+classic	23	1	24	0xbcec0	Rumored hunter
+classic	24	100		0xbced7	Legendary protector of the weak
+classic	24	75	99	0xbceee	Famous protector of the weak
+classic	24	50	74	0xbcf05	Noted protector of the weak
+classic	24	25	49	0xbcf20	Known protector of the weak
+classic	24	1	24	0xbcf32	Rumored protector of the weak
+classic	25	100		0xbcf49	Legendary treasure hunter
+classic	25	75	99	0xbcf60	Famous treasure hunter
+classic	25	50	74	0xbcf77	Noted treasure hunter
+classic	25	25	49	0xbcf92	Known treasure hunter
+classic	25	1	24	0xbcfa4	Rumored treasure hunter
+classic	26	100		0xbcfbb	Legendary thief
+classic	26	75	99	0xbcfd2	Infamous thief
+classic	26	50	74	0xbcfe9	Noted thief
+classic	26	25	49	0xbd004	Known thief
+classic	26	1	24	0xbd016	Rumored thief
+classic	27	100		0xbd02d	Legendary information source
+classic	27	75	99	0xbd044	Infamous information source
+classic	27	50	74	0xbd05b	Noted information source
+classic	27	25	49	0xbd076	Known information source
+classic	27	1	24	0xbd088	Rumored information source
+classic	28	100		0xbd09f	Legendary preserver of knowledge
+classic	28	75	99	0xbd0b6	Famous preserver of knowledge
+classic	28	50	74	0xbd0cd	Noted preserver of knowledge
+classic	28	25	49	0xbd0e8	Known preserver of knowledge
+classic	28	1	24	0xbd0fa	Rumored preserver of knowledge
+classic	29	100		0xbd111	Legendary intruder
+classic	29	75	99	0xbd128	Infamous intruder
+classic	29	50	74	0xbd13f	Noted intruder
+classic	29	25	49	0xbd15a	Known intruder
+classic	29	1	24	0xbd169	Rumored intruder
+classic	30	100		0xbd17d	Legendary preacher
+classic	30	75	99	0xbd191	Infamous preacher
+classic	30	50	74	0xbd1a5	Noted preacher
+classic	30	25	49	0xbd1b9	Known preacher
+classic	30	1	24	0xbd1c2	Rumored preacher

@@ -4510,6 +4510,7 @@ Announcement combat agreement-title-core [agreement-party-list,agreement-party-l
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list]: the joining of {s} with {s} to entertain the world	{s1}与{s2}同行，为世人表演	l
 Announcement combat artwork-artifact-destruction-title [historical-artifact,$memorial-actor,$date]: the destruction of {s} by {s} in {s}	{s3}，{s2}毁灭了{s1}	l
 Announcement combat dialogue-judgement [dialogue-judgement-person,dialogue-judgement-person]: {s} perpetrated a violent attack upon {s}.	{s1}曾对{s2}施暴。	l
+Announcement combat journal-person [$journal-office,$memory-entity]: This person is one of the {s} of {s} and your military subordinate.	此人是{s2}的{s1}之一，也是你的军事下属。	l
 Announcement combat justice-interrogation-sentence [$unit]: Attempted to appeal to shared worship of {s} in order to elicit information.	试图以共同信奉{s1}为由规劝受审者，以获取情报。	l
 Announcement combat negotiation-sentence []: The task was made somewhat more difficult by the relative populations of the civilizations.	双方政权的人口差距让这项任务困难了一些。	l
 DFHack help: "--clear" Reset the timeskip duration to its default value. Note that this won't affect timeskips which have already begun.	"--clear" 将时间跳跃持续时间重置为其默认值。请注意，这不会影响已经开始的时间跳跃。	l
@@ -6141,6 +6142,7 @@ Announcement combat conversation-conflict-attacker [conversation-conflict-caste,
 Announcement combat conversation-conflict-slain-list [conversation-conflict-slain,conversation-conflict-slain]: {s} and {s}	{s1}和{s2}	l
 Announcement combat dialogue-judgement [dialogue-judgement-person,dialogue-judgement-person]: {s} started a fight with {s}.	{s1}曾挑起与{s2}的争斗。	l
 Announcement combat fortress-arrival []: No one even considered making the journey to such a cursed death-trap this season.	本季无人有意前往这样一个受诅咒的死亡陷阱。	l
+Announcement combat journal-person [$journal-office,$journal-owner]: This person is {s} of {s} and your military commander.	此人是{s2}的{s1}，也是你的军事指挥官。	l
 Announcement combat justice-interrogation-sentence []: Attempted to make flattering remarks in order to elicit information.	试图以奉承的话讨好受审者，以获取情报。	l
 Announcement combat justice-interrogation-sentence []: Subject revealed that being nameless is in fact an assumed identity.	受审者交代，所谓没有姓名实际上是在掩饰身份。	l
 Announcement combat negotiation-response []: replied with a grand oration of their own but ultimately the matter was agreed	也发表了一番气势恢宏的演说作为回应，不过双方最终还是达成了一致	l
@@ -6560,6 +6562,7 @@ Announcement combat agreement-title-core [agreement-party-list]: the agreement b
 Announcement combat agreement-title-core [agreement-party-list]: the agreement by {s} to establish a grand guildhall for	{s1}为建造大行会大厅的协议	l
 Announcement combat dialogue-judgement [dialogue-judgement-person,dialogue-judgement-person]: {s} brought battle to {s}.	{s1}曾进攻{s2}。	l
 Announcement combat dialogue-judgement [dialogue-judgement-person,dialogue-judgement-person]: {s} ended the days of {s}.	{s1}曾终结{s2}的生命。	l
+Announcement combat journal-person [$journal-office,$memory-entity]: This person is one of the {s} of {s} alongside you.	此人与你同为{s2}的{s1}。	l
 Announcement combat memory-performance-core [memory-person,memory-performance-past,memory-performance-work]: {s} {s} {s}	{s1}{s2}{s3}	l
 Announcement combat negotiation-response []: joined in the discussion of history and past griefs and agreed on the issue	一起谈起了往事与旧日伤痛，并就此达成了一致	l
 Announcement combat sentence [$kinship]: It pains me all the more, for the foul villain was once my own {s}, now cursed.	更让我痛心的是，这个恶徒曾是我的{s1}，如今已遭到诅咒。	l
@@ -6970,6 +6973,7 @@ Announcement combat agreement-title-core [agreement-party-list,$office,$name]: t
 Announcement combat boast-slain-clause []: who should have stayed in the trees when the real elves came down to fight	真正的精灵下树作战时，对方本该乖乖留在树上	l
 Announcement combat conversation-conflict-deaths [conversation-conflict-death,conversation-conflict-deaths]: {s}, {s}	{s1}、{s2}	l
 Announcement combat dialogue-judgement [dialogue-judgement-achiever]: {s} also sought out and returned our treasures.	{s1}还曾寻获并归还我们的宝物。	l
+Announcement combat journal-person [$journal-office]: This person is one of the {s} of and your military subordinate.	此人是其中一位{s1}，也是你的军事下属。	l
 Announcement combat justice-intrigue-motive [justice-intrigue-place]: have someone to act on plots and schemes in {s}	让对方在{s1}为自己的阴谋效力	l
 Announcement combat merchant-hawk-origin [merchant-genuine-item,merchant-advert-origin]: try {s} all the way from {s}	来试试一路从{s2}运来的{s1}	l
 Announcement combat negotiation-recipient [$historical-actor,$office,$name,$name]: {s}, {s} of {s}, representing {s},	代表{s4}的{s3}{s2}{s1}	l
@@ -7105,6 +7109,7 @@ Announcement combat agreement-title-core [agreement-party-list]: the permanent j
 Announcement combat attack-leader [$historical-actor,attack-leader-quality]: The army is commanded by {s}, {s} and .	这支军队的统领是{s1}，{s2}。	l
 Announcement combat attack-reinforcement-group [attack-reinforcement-kind]: come monstrous siege engineers and a {s}	可怕的攻城巨兽和一只{s1}	l
 Announcement combat fortress-announcement [$unit,$job,$requirement]: {s} cancels {s}: Needs {s} in linked stockpile.	{s1}取消了{s2}：相连的储物堆中需要{s3}。	l
+Announcement combat journal-person [$memory-entity]: This person is one of the of {s} and your military subordinate.	此人是{s1}的成员之一，也是你的军事下属。	l
 Announcement combat justice-intrigue-factor [justice-intrigue-actor,justice-intrigue-relationship-factor]: {s}'s {s}	{s1}{s2}	l
 Announcement combat justice-intrigue-motive [justice-intrigue-place]: have law enforcement look the other way in {s}	让{s1}的执法者睁一只眼闭一只眼	l
 Announcement combat justice-intrigue-predicate [justice-intrigue-actor,justice-intrigue-actor]: {s} subordinated {s}	{s1}使{s2}成为部下	l
@@ -8710,6 +8715,7 @@ Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judg
 Announcement combat fortress-arrival []: Migrants refused to journey to this unhappy fortress this season.	本季移民拒绝前往这座不幸的要塞。	l
 Announcement combat fortress-arrival []: Others refused to journey to this dangerous and unhappy fortress.	其他人拒绝前往这座危险而不幸的要塞。	l
 Announcement combat historical-commanded-squad [historical-squad,$historical-actor]: {s}, ably led by {s},	{s1}（由{s2}率领，指挥得当）	l
+Announcement combat journal-person [$journal-office,$memory-entity]: This person is one of the {s} of {s}.	此人是{s2}的{s1}之一。	l
 Announcement combat journal-transfer-core [journal-event-object,journal-event-actor]: giving of {s} to {s}	将{s1}交给{s2}	l
 Announcement combat justice-interrogation-sentence []: Attempted to appeal to subject's belief in harmony.	试图以受审者对和谐的重视为由进行劝说。	l
 Announcement combat justice-interrogation-sentence []: Attempted to appeal to subject's belief in the law.	试图以受审者对法律的重视为由进行劝说。	l
@@ -9055,6 +9061,7 @@ Announcement combat agreement-title-core [agreement-party-list]: the plot of {s}
 Announcement combat agreement-title-core [agreement-party-list]: the plot of {s} to induce a war of upon	{s1}挑起战争的阴谋	l
 Announcement combat boast-slain-clause []: whose fragile bones shattered before the power of my contempt	对方脆弱的骨头在我轻蔑的力量面前粉碎了	l
 Announcement combat fortress-arrival []: A migrant has decided to brave this terrifying miserable place.	一名移民决定勇闯这个恐怖而悲惨的地方。	l
+Announcement combat journal-person [$journal-office]: This person is {s} of and your military commander.	此人担任{s1}，也是你的军事指挥官。	l
 Announcement combat justice-interrogation-response []: was intellectually stubborn and refused to listen	固执己见，拒绝听取劝说	l
 Announcement combat justice-interrogation-sentence []: Subject has used a nameless identity in the past.	受审者过去曾使用过无名身份。	l
 Announcement combat memory-performance-core [memory-person,memory-sermon-topic]: I saw {s} preach on {s}	我听{s1}讲了关于{s2}的道理	l
@@ -9211,6 +9218,7 @@ Announcement combat agreement-title-core [agreement-party-list]: the joining of 
 Announcement combat agreement-title-core [agreement-party-list]: the joining of {s} with to help rescue	{s1}与同行，前去营救……	l
 Announcement combat dialogue-battle [dialogue-battle-attacker,dialogue-battle-target]: {s} attacked {s}	{s1}袭击了{s2}	l
 Announcement combat journal-entity-event [journal-event-entity]: acceptance of {s}'s demand for tribute	接受{s1}的进贡要求	l
+Announcement combat journal-person [$journal-owner]: This person is of {s} and your military commander.	此人是{s1}的任职者，也是你的军事指挥官。	l
 Announcement combat justice-interrogation-response []: was too unsettled by death to face it and agreed	对死亡太过不安，无法面对，因而答应了	l
 Announcement combat justice-interrogation-response []: was unswayed by the emotional appeal and refused	未被情感上的劝说打动，因而拒绝了	l
 Announcement combat justice-interrogation-response []: was willing to accept eventual death and refused	愿意接受最终的死亡，因而拒绝了	l
@@ -9605,6 +9613,7 @@ Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: No avai
 Announcement combat historical-commanded-squad [historical-squad,$historical-actor]: {s}, led by {s},	{s1}（由{s2}率领）	l
 Announcement combat journal-entity-event [journal-event-entity]: acceptance of {s}'s offer of tribute	接受{s1}的进贡提议	l
 Announcement combat journal-event-title [journal-event-place]: The failed insurrection against in {s}	{s1}的起义失败	l
+Announcement combat journal-person [$journal-office]: This person is one of the {s} of alongside you.	此人与你同为{s1}。	l
 Announcement combat journal-transfer-event [journal-transfer-core,journal-event-place]: {s} in in {s}	在{s2}{s1}	l
 Announcement combat journal-transfer-event [journal-transfer-core,journal-event-place]: {s} in {s} in	在{s2}{s1}	l
 Announcement combat justice-interrogation-relationship-factor []: lack of loyalty toward interrogator	对审讯者毫无忠诚	l
@@ -9797,6 +9806,7 @@ Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Getting
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Job item lost or destroyed.	{s1}取消了{s2}：工作物品丢失或损毁。	l
 Announcement combat fortress-arrival [$mission-return-party,$history-report]: {s} have returned. {s}	{s1}回来了。{s2}	l
 Announcement combat journal-entity-event [journal-event-entity]: refusal of {s}'s demand for tribute	拒绝{s1}的进贡要求	l
+Announcement combat journal-person [$memory-entity]: This person is one of the of {s} alongside you.	此人与你同为{s1}的成员。	l
 Announcement combat justice-interrogation-sentence []: Built rapport in order to elicit information.	与受审者建立融洽关系，试图获取情报。	l
 Announcement combat memory-performance-core [memory-person,memory-sermon-topic]: {s} preached on {s}	{s1}讲了关于{s2}的道理	l
 Announcement combat memory-sentence [memory-person,memory-person]: {s} demanded submission from {s}.	{s1}要{s2}服从。	l
@@ -10224,6 +10234,7 @@ Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: No mech
 Announcement combat journal-entity-event [journal-event-entity]: refusal of {s}'s offer of tribute	拒绝{s1}的进贡提议	l
 Announcement combat journal-event-title [journal-event-entity]: The insurrection crushed by {s} in	{s1}镇压了起义	l
 Announcement combat journal-performance [journal-performance-core,journal-event-place]: {s} at {s}	在{s2}，{s1}	l
+Announcement combat journal-person []: This person is one of the of and your military subordinate.	此人是其中一位成员，也是你的军事下属。	l
 Announcement combat journal-transfer-event [journal-transfer-core,journal-event-place]: {s} in {s}	在{s2}{s1}	l
 Announcement combat justice-interrogation-relationship-factor []: lack of fear toward interrogator	不怕审讯者	l
 Announcement combat justice-interrogation-response []: felt no loyalty to interrogator and refused	对审讯者毫无忠诚，因而拒绝了	l
@@ -10920,6 +10931,7 @@ Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Water s
 Announcement combat journal-event-title [journal-event-entity]: The insurrection crushed by {s}	{s1}镇压了起义	l
 Announcement combat journal-event-title [journal-event-entity]: The insurrection in against {s}	某地发生的反抗{s1}的起义	l
 Announcement combat journal-incident-event [journal-event-actor]: demand of submission from {s}	要求{s1}臣服	l
+Announcement combat journal-person [$journal-office,$journal-owner]: This person is {s} of {s}.	此人是{s2}的{s1}。	l
 Announcement combat justice-interrogation-response []: desired vengeance and willingly complied	渴望复仇，因而自愿配合	l
 Announcement combat justice-interrogation-response []: spurning the truth and refused to listen	轻视真相，拒绝听取劝说	l
 Announcement combat justice-interrogation-response []: was too proud to accept death and agreed	太过骄傲，无法接受死亡，因而答应了	l
@@ -12897,6 +12909,7 @@ Announcement combat journal-event-title [journal-event-entity]: The occupation o
 Announcement combat journal-event-title [journal-event-place]: The absence of from {s}'s	某件物品从{s1}消失	l
 Announcement combat journal-event-title [journal-event-place]: The presence of in in {s}	某件物品出现在{s1}	l
 Announcement combat journal-event-title [journal-event-place]: The presence of in {s} in	某件物品出现在{s1}	l
+Announcement combat journal-person [$journal-office]: This person is one of the {s} of .	此人是其中一位{s1}。	l
 Announcement combat journal-transfer-core [journal-event-object]: refusal to give {s} to	拒绝将{s1}交给某人	l
 Announcement combat justice-interrogation-relationship-factor []: hatred of interrogator	憎恨审讯者	l
 Announcement combat justice-interrogation-response []: respected interrogator and agreed	出于对审讯者的尊重而答应了	l
@@ -13493,6 +13506,7 @@ Announcement combat journal-event-title [journal-event-place]: The absence of fr
 Announcement combat journal-event-title [journal-event-place]: The insurrection in {s}	{s1}的起义	l
 Announcement combat journal-event-title [journal-event-place]: The overthrow of in {s}	{s1}的政权被推翻	l
 Announcement combat journal-performance-core [memory-sermon-topic]: Your sermon on {s}	你关于{s1}的布道	l
+Announcement combat journal-person [$memory-entity]: This person is one of the of {s}.	此人是{s1}的成员之一。	l
 Announcement combat justice-interrogation-factor []: spurning the value of cooperation	轻视合作的价值	l
 Announcement combat justice-interrogation-relationship-factor []: fear of interrogator	惧怕审讯者	l
 Announcement combat justice-interrogation-relationship-factor []: love of interrogator	爱着审讯者	l
@@ -13807,6 +13821,7 @@ Announcement combat journal-event-title [journal-event-actor]: The reunion of {s
 Announcement combat journal-event-title [journal-event-object]: The destruction of{s}	{s1}的毁坏	l
 Announcement combat journal-event-title [journal-event-place]: The presence of in {s}	某件物品出现在{s1}	l
 Announcement combat journal-performance-core [memory-sermon-topic]: The sermon on {s}	关于{s1}的布道	l
+Announcement combat journal-person []: This person is of and your military commander.	此人担任某个职位，也是你的军事指挥官。	l
 Announcement combat justice-interrogation-factor []: an unwillingness to accept death	不愿接受死亡	l
 Announcement combat justice-interrogation-factor []: being unaffected by the comments	未受那些话影响	l
 Announcement combat justice-interrogation-factors [justice-interrogation-factor]: {s}	{s1}	l
@@ -14815,6 +14830,7 @@ Announcement combat journal-entity-event [journal-event-place]: abandonment of {
 Announcement combat journal-entity-event [journal-event-place]: reclamation of {s}	收复{s1}	l
 Announcement combat journal-event-title [journal-incident-event]: A creature's {s}	不明生物{s1}	l
 Announcement combat journal-performance-core [memory-poem]: Your recitation of {s}	你朗诵{s1}	l
+Announcement combat journal-person []: This person is one of the of alongside you.	此人与你同为成员。	l
 Announcement combat journal-person []: You have known this person since her birth.	你从她出生起就认识她。	l
 Announcement combat journal-person []: You have known this person since his birth.	你从他出生起就认识他。	l
 Announcement combat journal-person []: You have known this person since its birth.	你从它出生起就认识它。	l
@@ -16638,6 +16654,7 @@ Announcement combat historical-squad-clash [historical-squad-clash-core]: {s}	{s
 Announcement combat journal-ascension-position [journal-event-entity]: of {s}	{s1}的职位	l
 Announcement combat journal-entity-event []: refusal of 's demand for tribute	拒绝进贡要求	l
 Announcement combat journal-performance-core []: Your telling of the story of	你讲述一个故事	l
+Announcement combat journal-person [$journal-office]: This person is {s} of .	此人担任{s1}。	l
 Announcement combat journal-transfer-event [journal-transfer-core]: {s} in in	{s1}	l
 Announcement combat justice-interrogation-factor []: being trusting by nature	天性轻信	l
 Announcement combat justice-plot [justice-plot-attempted,$digits]: {s} in {s}	{s1}（第{s2}年）	l
@@ -17422,6 +17439,7 @@ Announcement combat fortress-job [memorial-subject]: {s} (engrave memorial)	{s1}
 Announcement combat historical-event-paragraph [negotiation-paragraph]: {s}	{s1}	l
 Announcement combat journal-entity-event []: refusal of 's offer of tribute	拒绝进贡提议	l
 Announcement combat journal-event-title []: The failed insurrection against	起义失败	l
+Announcement combat journal-person [$journal-owner]: This person is of {s}.	此人是{s1}的任职者。	l
 Announcement combat justice-interrogation-crime []: the job order violation	违反工作命令	l
 Announcement combat justice-interrogation-factor []: a desire for vengeance	渴望复仇	l
 Announcement combat justice-intrigue-factors [justice-intrigue-factor]: {s}	{s1}	l
@@ -20091,6 +20109,7 @@ Announcement combat journal-entity-event []: march to found a site in	的建城�
 Announcement combat journal-incident-event []: refusal to identify to	拒绝透露身份	l
 Announcement combat journal-incident-event []: self-identification to	自报身份	l
 Announcement combat journal-performance [journal-event-place]: at {s}	在{s1}的一场表演	l
+Announcement combat journal-person []: This person is one of the of .	此人是其中一位成员。	l
 Announcement combat justice-interrogation-factor []: fearing of death	惧怕死亡	l
 Announcement combat justice-interrogation-factor []: spurning the law	轻视法律	l
 Announcement combat justice-interrogation-response []: valued harmony	重视和谐	l
@@ -26864,6 +26883,7 @@ Announcement combat journal-entity-event []: foundation of	的建城行动	l
 Announcement combat journal-entity-event []: harassment of	的骚扰	l
 Announcement combat journal-event-actor [$creature]: A {s}	{s1}	l
 Announcement combat journal-event-title []: Your abduction	你被绑架	l
+Announcement combat journal-person []: This person is of .	此人担任某个职位。	l
 Announcement combat journal-transfer-core []: giving of to	将某件物品交给某人	l
 Announcement combat journal-transfer-core []: placement of	放置某件物品	l
 Announcement combat justice-plot-core [$name]: Corrupt {s}	拉拢{s1}	l
@@ -36936,6 +36956,7 @@ Announcement combat injury-condition []: strained	拉伤	l
 Announcement combat injury-subject []: a ligament	一条韧带	l
 Announcement combat journal-event [$message]: {s}	{s1}	l
 Announcement combat journal-person-kind []: Force	自然之灵	l
+Announcement combat journal-person-kind []: deity	神祇	l
 Announcement combat justice-plot-core []: Corrupt	拉拢	l
 Announcement combat layer-phrase [layer]: the {s}	{s1}	l
 Announcement combat material []: unknown material	未知材料	l
