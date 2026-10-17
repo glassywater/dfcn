@@ -1,13 +1,13 @@
 [h1]DFCN · 矮人要塞简体中文汉化[/h1]
 
-DFCN 是 Byayoi 同人社区的《Dwarf Fortress（矮人要塞）》汉化作品，结合社区译文与本地修订，翻译游戏界面、人物信息、物品描述和传说故事。
+DFCN 是 Byayoi 同人社区的《Dwarf Fortress（矮人要塞）》汉化作品，结合社区译文与本地修订，翻译游戏界面、人物信息、物品描述和传说故事，支持简体中文与台湾正体中文。
 
 [b]适配 Dwarf Fortress 53.16，Windows x64，支持 Steam 版与官网免费版。[/b]
-当前版本：[b]53.16-20261015.3[/b]（2026-10-15）。
+当前版本：[b]53.16-20261017[/b]（2026-10-17）。
 更新内容见改动说明与订阅目录中的 CHANGELOG.txt。
 
 [url=https://github.com/pokemonchw/dfcn]GitHub 项目主页[/url]
-[url=https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261015.3]Windows 与独立汉化数据下载[/url]
+[url=https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261017]Windows 与独立汉化数据下载[/url]
 [url=https://byayoi.org/]Byayoi 同人社区[/url]
 
 [h1]Windows 工坊安装[/h1]
@@ -22,14 +22,23 @@ DFCN 是 Byayoi 同人社区的《Dwarf Fortress（矮人要塞）》汉化作�
 位于不同 Steam 库时，改用实际绝对路径，例如：[code]D:/SteamLibrary/steamapps/workshop/content/975370/3811193379/DFCN/dfcn/dfhooks_dfcn.dll[/code]
 [b]第一行只写 DLL 路径，不加引号、不写 key=value，保存为 UTF-8 无 BOM。[/b]
 
-保留完整订阅目录结构。汉化设置位于：[code]DFCN/dfcn/data/runtime/config.ini[/code]
-后续工坊更新由 Steam 下载到订阅目录；目录不变时，入口配置继续使用。
+保留完整订阅目录结构。汉化设置优先使用游戏根目录的 [b]dfcn_config.ini[/b]；首次启动时若该文件不存在，从订阅目录的 [code]DFCN/dfcn/data/runtime/config.ini[/code] 复制生成，已有文件不会覆盖。订阅目录中的 config.ini 保留为默认模板和复制失败时的回退配置。
+后续工坊更新由 Steam 下载到订阅目录；目录不变时，入口配置继续使用，个人设置保存在游戏根目录。
 旧版整包安装升级时，移除游戏根目录中旧的 [b]dfhooks_dfcn.dll[/b]（若存在）。旧 dfcn 文件夹中的个人配置可自行保留。
+
+[h1]简体与正体切换[/h1]
+
+默认显示简体中文。[b]Shift+F8[/b] 可在简体中文与台湾正体中文之间切换。正体译文使用随包提供的离线 OpenCC，采用台湾字形及常用词汇；自定义小队名称和用户输入保持原样。
+
+左右 Shift 均可，长按不会重复切换。切换时同步刷新字体与译文排版，不改变汉化开关状态；语言选择在本次运行及核心重载后保留，不写入配置文件。
+
+设置默认语言请修改游戏根目录的 [b]dfcn_config.ini[/b]：
+[code]language=zh-Hans[/code] 表示简体中文；[code]language=zh-Hant[/code] 表示台湾正体中文。也接受 zh-CN、zh-TW、zh-Hans-CN、zh-Hant-TW。
 
 [h1]GitHub 安装与汉化扩展[/h1]
 
 GitHub Windows 运行包 [b]DFCN-Windows-x64-minimal.zip[/b] 整包解压到游戏根目录，包括 dfhooks.dll、dfhooks_dfcn.ini 和整个 dfcn 文件夹。
-整包安装的设置位于游戏目录的 dfcn/data/runtime/config.ini。
+汉化设置同样优先使用游戏根目录的 dfcn_config.ini；首次启动由 dfcn/data/runtime/config.ini 复制生成，已有文件不会覆盖。
 
 本体自动识别已下载的独立汉化数据扩展；数据包无需在创建世界的模组列表中启用，原始玩法模组按其作者说明使用。本体运行包不内置独立数据包。
 
@@ -44,6 +53,9 @@ Dwarvemon 与 Beta 各有独立完整数据；Entity Type 与 Entity All 翻译�
 
 [h1]开关与刷新[/h1]
 
+[b]Shift+F1[/b]：打开或关闭汉化设置菜单，可切换中英文、繁简体、四族语言音译，开关已安装的 DFHack，或重新载入核心与数据并开启汉化。英文模式下仍可打开。
+点击选项后自动关闭，也可按 Esc、右键或点击菜单外空白处关闭。四族语言默认采用中文音译，可切换为原文拼写，选择在本次运行及核心重载后保留；DFHack 选项需已安装 DFHack 且接口可用。
+
 [b]Shift+F10[/b]：开启或关闭汉化，保留当前核心与数据。
 [b]Shift+F5[/b]：关闭汉化，再次开启时重新读取核心与数据。
 [b]Ctrl+Shift+F10[/b]：刷新配置、词表和规则数据。
@@ -53,8 +65,8 @@ Windows 同时安装 DFHack 53.16-r2 时，[b]Shift+F11[/b] 可独立暂停或�
 
 [h1]卸载与许可[/h1]
 
-取消订阅不会删除手动安装到游戏目录的文件。工坊安装需移除自己添加的 dfhooks.dll 与 dfhooks_dfcn.ini；整包安装还需移除汉化 dfcn 目录。保留游戏本体、RAW、存档与个人资料。
+取消订阅不会删除手动安装或生成的文件。工坊安装需移除自己添加的 dfhooks.dll、dfhooks_dfcn.ini 和 dfcn_config.ini；整包安装还需移除汉化 dfcn 目录。保留游戏本体、RAW、存档与个人资料，需要的个人设置可先保存。
 
 普通汉化无需 DFHack，不改写磁盘上的游戏本体、RAW 或存档。
-感谢矮人要塞中文维基翻译组，以及 DFHack / dfhooks、df-structures、DFI18n、dfint、dfzh、ECDICT 等上游贡献者。
+感谢矮人要塞中文维基翻译组，以及 DFHack / dfhooks、df-structures、DFI18n、dfint、dfzh、ECDICT、OpenCC 等上游贡献者。
 原创内容采用 [url=https://creativecommons.org/licenses/by-nc-sa/4.0/]CC BY-NC-SA 4.0[/url]。第三方资源保留各自许可与署名，详见 [url=https://github.com/pokemonchw/dfcn/blob/main/THIRD_PARTY_NOTICES.md]THIRD_PARTY_NOTICES.md[/url] 及运行文件内许可说明。

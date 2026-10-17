@@ -358,6 +358,7 @@ static bool stop_reloadable_core() {
         log_line("ERROR", "Core remains resident because callbacks could not be detached");
         return false;
     }
+    native_settings_menu_release();
     if (g_plugin_active.load()) {
         g_native_squads_overlay.release_native_squads_resources();
         g_overlay.shutdown();

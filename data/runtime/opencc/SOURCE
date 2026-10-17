@@ -1,0 +1,19 @@
+OpenCC (Open Chinese Convert)
+Upstream: https://github.com/BYVoid/OpenCC
+Release: ver.1.1.9
+Commit: 556ed22496d650bd0b13b6c163be9814637970ae
+License: Apache-2.0; see LICENSE.
+
+All dictionaries are unmodified UTF-8 text files from upstream data/dictionary.
+The reference s2twp.json is the unmodified upstream data/config/s2twp.json.
+
+The native DFCN converter follows this configuration using OpenCC TextDict:
+  segmentation: STPhrases
+  conversion 1: STPhrases, then STCharacters as an ordered DictGroup
+  conversion 2: TWPhrases
+  conversion 3: TWVariants
+
+TWPhrases is assembled in memory from TWPhrasesIT, TWPhrasesName and
+TWPhrasesOther, in the same order and with the same last-key-wins behavior
+as upstream data/scripts/merge.py and common.py. No generated dictionary
+or preprocessing step is required.

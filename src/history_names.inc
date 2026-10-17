@@ -322,11 +322,12 @@ std::optional<std::string> Overlay::translate_history_name(
         // gloss is still a proper name here, not a surname to be recomposed.
         if (!nickname && (!forms[0].empty() || !forms[1].empty()) &&
                 !name.native_name.empty()) {
-            const auto native = translate_procedural_fragment(name.native_name, true);
+            const auto native = translate_procedural_fragment(name.native_name, true,
+                false, {}, ProceduralFragmentContext::general_text, false);
             const auto given = std::string_view(name.native_name).substr(
                 0, name.native_name.find(' '));
-            const auto target = native ? std::string_view(*native).substr(
-                0, native->find("·")) : std::string_view{};
+            const std::string target = native ? native->substr(
+                0, native->find("·")) : std::string{};
             return translate_english_character_name(english, given, target);
         }
         return translate_english_character_name(english);
@@ -334,11 +335,7 @@ std::optional<std::string> Overlay::translate_history_name(
     auto given_name = [&](const std::string &value) {
         // First-name/utterance fields keep the established proper-name
         // phonetics, including site governments. WORD slots supply imagery.
-        if (contains_cjk_utf8(value)) return native_text_to_utf8(value);
-        const auto reviewed = native_name_reviewed_transliterations_.find(lower_native_name(value));
-        if (reviewed != native_name_reviewed_transliterations_.end() &&
-            !reviewed->second.empty()) return reviewed->second;
-        return transliterate_native_history_name(value);
+        return transliterate_native_language_word(value);
     };
     // Nicknames are authored text, rather than WORD slots. Only an explicit
     // whole-field override changes their spelling; preserve all other text

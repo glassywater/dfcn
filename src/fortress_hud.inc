@@ -322,6 +322,7 @@ void Overlay::layout_fortress_text_rows(SDL_Renderer *renderer,
         const int width = row_width(i), row_right = row_rights[i];
         std::vector<int> row_advances;
         for (Match *part : row) {
+            const DisplayLanguageScope language_scope(part);
             // Preserve the fixed UI size for every colored run.
             part->layout_x = left;
             part->layout_length = row_right - left;

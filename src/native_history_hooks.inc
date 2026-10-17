@@ -83,7 +83,7 @@ static bool native_world_map_screen() {
     return screen && native_history_object_is(screen, "viewscreen_worldst");
 }
 
-static std::optional<std::vector<std::string>> native_expanded_world_site_rumor_lines() {
+static std::optional<std::vector<std::string>> native_world_site_rumor_lines(bool expanded_only) {
     const uintptr_t screen = native_current_viewscreen();
     if (!screen || !native_history_object_is(screen, "viewscreen_worldst"))
         return std::nullopt;
@@ -93,7 +93,7 @@ static std::optional<std::vector<std::string>> native_expanded_world_site_rumor_
         "viewscreen_worldst", "rumor_text.text", sizeof(NativeBorrowedVector<uintptr_t>));
     bool focused = false;
     NativeBorrowedVector<uintptr_t> native_lines;
-    if (!native_history_copy(focus_field, focused) || !focused ||
+    if (!native_history_copy(focus_field, focused) || (expanded_only && !focused) ||
             !native_history_copy(lines_field, native_lines) ||
             !native_lines.valid(16384) || !native_lines.size()) return std::nullopt;
     std::vector<uintptr_t> pointers(native_lines.size());
@@ -114,8 +114,9 @@ static std::optional<std::vector<std::string>> native_expanded_world_site_rumor_
         lines.push_back(std::move(line));
     }
     NativeBorrowedVector<uintptr_t> current_lines;
+    bool current_focus = false;
     if (!bytes || native_current_viewscreen() != screen ||
-            !native_history_copy(focus_field, focused) || !focused ||
+            !native_history_copy(focus_field, current_focus) || current_focus != focused ||
             !native_history_copy(lines_field, current_lines) ||
             current_lines.begin != native_lines.begin || current_lines.end != native_lines.end ||
             current_lines.capacity != native_lines.capacity) return std::nullopt;

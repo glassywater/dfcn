@@ -116,6 +116,25 @@ def package_translation_extensions() -> None:
         print(f"Independent translation data mod packaged: {archive}", flush=True)
 
 
+def add_missing_language_settings(content: bytes) -> bytes:
+    """Append language defaults while preserving existing user preferences."""
+    config = content.decode("utf-8-sig")
+    newline = b"\r\n" if b"\r\n" in content else b"\n"
+    additions = []
+    for key, value, comment in (
+        ("language", "zh-Hans", "# BCP 47: zh-Hans (default) / zh-Hant (Taiwan wording)."),
+        ("native_language_original", "0",
+         "# 四族语言（矮人、精灵、哥布林、人类）：1 显示原文，0 显示音译（默认）。\n"
+         "# 中文释义中的人名首名仍按原有逻辑音译，不受此选项影响。"),
+    ):
+        if not re.search(rf"(?mi)^\s*{key}\s*=", config):
+            additions.extend(line.encode("utf-8") for line in comment.splitlines())
+            additions.append(f"{key}={value}".encode("utf-8"))
+    if not additions:
+        return content
+    return content + newline + newline.join(additions) + newline
+
+
 def deploy_runtime_data(directory: Path) -> None:
     """Publish the same data layout before a configured edition gets its core."""
     directory = directory.resolve()
@@ -177,6 +196,9 @@ def deploy_runtime_data(directory: Path) -> None:
     install(runtime / name, (RUNTIME / name).read_bytes())
     for source in sorted((RUNTIME / "rulesets").rglob("*.toml")):
         install(runtime / source.relative_to(RUNTIME), source.read_bytes())
+    for source in sorted((RUNTIME / "opencc").rglob("*")):
+        if source.is_file():
+            install(runtime / source.relative_to(RUNTIME), source.read_bytes())
 
     # Migrate earlier bundled extension dictionaries out of the core. Only
     # identical copies of independently packaged files are removed; retain
@@ -208,7 +230,7 @@ def deploy_runtime_data(directory: Path) -> None:
     }
     for old, new in relocations.items():
         config = config.replace(old, new).replace(old.replace("/", "\\"), new.replace("/", "\\"))
-    install(runtime / "config.ini", config.encode("utf-8"))
+    install(runtime / "config.ini", add_missing_language_settings(config.encode("utf-8")))
     for name in ("untranslated.tsv", "font.ttf", "font.otf", "font.ttc"):
         destination = runtime / name
         if destination.exists():
@@ -756,7 +778,8 @@ def main() -> int:
                 generate_elf_seed(sources["reference"], seed_output)
         compile_flags = ["-std=c++20", *split_arguments(env.get("CXXFLAGS", "-O2")),
                          "-Wall", "-Wextra", "-Wpedantic", *abi["compile"],
-                         "-Icompat", "-Isrc", "-Ithird_party/tomlplusplus/include", "-iquote",
+                         "-Icompat", "-Isrc", "-Ithird_party/tomlplusplus/include",
+                         "-Ithird_party/opencc/src", "-DOpencc_BUILT_AS_STATIC", "-iquote",
                          "g_src",
                          *dependency_includes, *split_arguments(env.get("CPPFLAGS", ""))]
         link_flags = ["-shared", *split_arguments(env.get("LDFLAGS", "")),
@@ -766,6 +789,7 @@ def main() -> int:
         core_inputs = [SCRIPT, *file_inputs(ROOT / "src", {".cpp", ".h", ".inc", ".exports"}),
                        *file_inputs(ROOT / "compat", {".h"}),
                        *file_inputs(ROOT / "third_party/tomlplusplus/include", {".h", ".hpp"}),
+                       *file_inputs(ROOT / "third_party/opencc/src", {".cpp", ".h", ".hpp"}),
                        ROOT / "third_party/pinyin-data/pinyin_data.inc"]
         if (GAME / "g_src/init.h").is_file():
             core_inputs.append(GAME / "g_src/init.h")
@@ -780,7 +804,7 @@ def main() -> int:
             # resolve inside this private tree for every compiler invocation.
             with tempfile.TemporaryDirectory(prefix=".dfcn-build-sources-", dir=ROOT) as snapshot_dir:
                 snapshot = Path(snapshot_dir)
-                for relative in ("src", "compat", "third_party/tomlplusplus/include"):
+                for relative in ("src", "compat", "third_party/tomlplusplus/include", "third_party/opencc/src"):
                     shutil.copytree(ROOT / relative, snapshot / relative)
                 pinyin = Path("third_party/pinyin-data/pinyin_data.inc")
                 (snapshot / pinyin).parent.mkdir(parents=True, exist_ok=True)
@@ -790,7 +814,9 @@ def main() -> int:
                 if rebuild_core:
                     print("Building the reloadable core...", flush=True)
                     run([*compiler, *compile_flags, "-o", str(core_candidate), "src/dfcn.cpp",
-                         "src/rulesets_manager.cpp", *link_flags, *abi["core_link"]], env, cwd=snapshot)
+                         "src/rulesets_manager.cpp", "src/chinese_conversion.cpp",
+                         *[str(path.relative_to(ROOT)) for path in sorted((ROOT / "third_party/opencc/src").glob("*.cpp"))],
+                         *link_flags, *abi["core_link"]], env, cwd=snapshot)
                     stamp_core_version(core_candidate)
                 if rebuild_loader:
                     print("Building the resident loader...", flush=True)

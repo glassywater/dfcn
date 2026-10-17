@@ -133,6 +133,7 @@ static void native_help_begin_frame(void *renderer) {
     g_native_help_frame_renderer = renderer;
 #else
     native_help_reset_frame(renderer);
+    native_settings_menu_prepare();
 #endif
 }
 
@@ -148,6 +149,7 @@ static void native_help_produce_frame() {
     // an empty frame when the native component closes.
     native_help_reset_frame(g_native_help_frame_renderer);
     callback.call_native([&] { original(); });
+    native_settings_menu_prepare();
 }
 #endif
 

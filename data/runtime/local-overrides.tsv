@@ -1770,14 +1770,14 @@ Diplomacy	外交	wi
 # The wide mission choices share a native left inset. Preserve it instead of
 # centering each translation within its differently sized English text span.
 Remove	移除	wi
-No commanders	没有指挥官	wli
-No messengers	没有信使	wli
+No commanders	没有指挥官	wliP
+No messengers	没有信使	wliP
 # Assignment captions beside the native checkbox and the final action button.
-No specific orders	无具体命令	wli
-On this mission	已加入此任务	wli
-Messenger (unfilled)	信使（空缺）	wli
-Done assigning	完成指派	wli
-No notable skills	无显著技能	wli
+No specific orders	无具体命令	wliP
+On this mission	已加入此任务	wliP
+Messenger (unfilled)	信使（空缺）	wliP
+Done assigning	完成指派	wliP
+No notable skills	无显著技能	wliP
 # Native Windows mission summaries (PE 0x1602fc0..0x1603010): each side
 # selects no / singular / plural, then appends here / traveling. When both
 # counts are zero the native branch uses No messengers / No commanders.
@@ -1888,28 +1888,32 @@ Routine:	日程：	wl
 Off duty	休息	wl
 Constant training	持续训练	wl
 Staggered training	轮换训练	wl
-Raid (squads will try to avoid detection)	突袭（小队会尽量避免被发现）	wli
-Pillage (openly attack)	劫掠（公开进攻）	wli
-Raze (openly attack and destroy site)	夷平（公开进攻并摧毁地点）	wli
-Demand one-time tribute	索取一次性贡品	wli
-Demand ongoing tribute	要求持续进贡	wli
-Conquer and occupy	征服并占领	wli
-Demand surrender and occupy	要求投降并占领	wli
-Free captives belonging to your civilization	解救本政权的俘虏	wli
-Release other prisoners	释放其他囚犯	wli
-Take important treasures	夺取重要珍宝	wli
-Loot other items	掠夺其他物品	wli
-Steal livestock	偷走牲畜	wli
-# Diplomacy mission choices use the same complete, left-aligned captions.
+# Complete mission controls use the UI-message matcher so native button padding
+# cannot split a caption into translated prefixes and untranslated English tails.
+# Keep the existing flags and add P to retain typed exact lookups as well.
+# Native branches and source strings: data/extracted/mission-options/.
+Raid (squads will try to avoid detection)	突袭（小队会尽量避免被发现）	wliP
+Pillage (openly attack)	劫掠（公开进攻）	wliP
+Raze (openly attack and destroy site)	夷平（公开进攻并摧毁地点）	wliP
+Demand one-time tribute	索取一次性贡品	wliP
+Demand ongoing tribute	要求持续进贡	wliP
+Conquer and occupy	征服并占领	wliP
+Demand surrender and occupy	要求投降并占领	wliP
+Free captives belonging to your civilization	解救本政权的俘虏	wliP
+Release other prisoners	释放其他囚犯	wliP
+Take important treasures	夺取重要珍宝	wliP
+Loot other items	掠夺其他物品	wliP
+Steal livestock	偷走牲畜	wliP
+# Diplomacy mission choices use the same complete UI-message path.
 # Keep the native "Demander" spelling so the surrender button matches.
-Make peace	议和	wli
-Demander unconditional surrender	要求对方无条件投降	wli
-Declare war	宣战	wli
-Seek alliance	寻求结盟	wli
-Make contact	建立联系	wli
-Improve trade	改善贸易关系	wli
+Make peace	议和	wliP
+Demander unconditional surrender	要求对方无条件投降	wliP
+Declare war	宣战	wliP
+Seek alliance	寻求结盟	wliP
+Make contact	建立联系	wliP
+Improve trade	改善贸易关系	wliP
 # Mission-detail buttons also draw this reason outside the site-action card.
-Not in contact	尚未建立联系	wli
+Not in contact	尚未建立联系	wliP
 # Second-line restrictions inside world-site action buttons. These are not
 # generated names. Native Linux 53.16's reason branch (0x143a45d join) draws
 # Inaccessible at 0x143f040; its sibling cases cover the restrictions below.

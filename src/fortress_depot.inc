@@ -12,7 +12,10 @@ void Overlay::append_fortress_depot_fields(std::vector<std::string> &rows,
             }
     }
     const NativePanelBorders borders(*gps_);
-    constexpr std::string_view move_goods = "Move goods to/from depot";
+    constexpr std::string_view depot_controls[] = {
+        "Move goods to/from depot", "Broker requested at depot",
+        "Anyone requested at depot", "No trader needed at depot",
+    };
     std::optional<SDL_Rect> panel;
     std::optional<SDL_Rect> goods_search;
     // The goods chooser has a filter beside its trade-specific sort controls
@@ -47,12 +50,18 @@ void Overlay::append_fortress_depot_fields(std::vector<std::string> &rows,
             }
         }
     }
+    // With no caravan present the depot omits Move goods, but retains its
+    // three broker-request buttons. Their complete native skins establish
+    // the same inspection panel and its broker's full activity field.
     for (int y = 0; y < gps_->dimy && !panel; ++y) {
-        const auto at = context[y].find(move_goods);
-        if (at == std::string::npos) continue;
-        const int x = static_cast<int>(at), end = x + static_cast<int>(move_goods.size());
-        if (native_button_text_span(*gps_, x, end, y))
-            panel = native_panel_interior(borders, *gps_, x, end, y);
+        for (const auto caption : depot_controls) {
+            const auto at = context[y].find(caption);
+            if (at == std::string::npos) continue;
+            const int x = static_cast<int>(at), end = x + static_cast<int>(caption.size());
+            if (native_button_text_span(*gps_, x, end, y))
+                panel = native_panel_interior(borders, *gps_, x, end, y);
+            if (panel) break;
+        }
     }
     if (!panel) return;
     const int right = panel->x + panel->w, bottom = panel->y + panel->h;

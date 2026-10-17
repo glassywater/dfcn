@@ -17,6 +17,7 @@ void Overlay::release_native_squads_resources() {
     face_ = nullptr;
     ft_ = nullptr;
     dfhack_translation_catalog_revision_ = 0;
+    display_language_source_ = nullptr;
 }
 
 void Overlay::render_native_squads_layer(SDL_Renderer *renderer,
@@ -38,6 +39,7 @@ void Overlay::render_native_squads_layer(SDL_Renderer *renderer,
         dfhack_translation_catalog_revision_ =
             source.dfhack_translation_catalog_revision_.load(std::memory_order_acquire);
     }
+    display_language_source_ = &source;
     config_ = source.config_;
     gps_ = layer.foreground.graphics();
     if (!config_.enabled || !face_ || !ft_) {

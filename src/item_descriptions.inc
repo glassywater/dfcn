@@ -124,7 +124,7 @@ static bool translation_complete_with_native_nicknames(
         const std::optional<std::string> &target, std::string_view source) {
     if (item_description_translation_complete(target)) return true;
     if (!target || target->empty()) return false;
-    std::string remaining = *target;
+    std::string remaining = mask_native_language_originals(*target, source);
     for (size_t open = source.find('`'); open != std::string_view::npos;
          open = source.find('`', open + 1)) {
         // Nicknames may contain apostrophes and literal backticks. The typed
@@ -459,7 +459,7 @@ std::optional<std::string> Overlay::translate_item_description_term(
             // or material. The written resolver proves the entire title.
             if (!predicate && value.ends_with(" (copy)"))
                 if (auto title = translate_written_item_caption(value);
-                    item_description_translation_complete(title)) return title;
+                    translation_complete_with_native_nicknames(title, value)) return title;
             // A written-work title may contain punctuation without quotes in
             // native artwork. Defer rejection until the complete scoped item
             // and named-artifact productions have had a chance to own it;
@@ -716,7 +716,7 @@ std::optional<std::string> Overlay::translate_item_description_source(
             const size_t stop = source.find('.', begin);
             if (stop == std::string::npos) break;
             const auto part = trim_view(std::string_view(source).substr(begin, stop + 1 - begin));
-            if (item_description_translation_complete(translate_instrument_description(part))) {
+            if (translation_complete_with_native_nicknames(translate_instrument_description(part), part)) {
                 instrument_context = true;
                 break;
             }
@@ -882,7 +882,7 @@ std::optional<std::string> Overlay::translate_item_description_source(
         if (auto target = translate_symbol_description_source(value);
             translation_complete_with_native_nicknames(target, value)) return target;
         if (auto target = translate_instrument_description(value, false, instrument_context);
-            item_description_translation_complete(target)) return target;
+            translation_complete_with_native_nicknames(target, value)) return target;
         return std::nullopt;
     };
     // Propose the earliest boundary first. Trying the whole paragraph first

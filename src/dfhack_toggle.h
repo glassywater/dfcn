@@ -600,6 +600,12 @@ public:
         module_ = elf_loaded_module("libdfhack.so");
 #endif
         if (!module_) return; // Optional installation, never load DFHack ourselves.
+#ifdef _WIN32
+        // The bootstrap can initialize this module before it has appended
+        // DFHack's adapter to the callback chain. That is not an ABI failure;
+        // leave the switch retryable when a later menu/shortcut requests it.
+        if (!chain_bind()) return;
+#endif
         attempted_ = true;
         instance_ = this;
         if (!prepare_hooks()) {
@@ -643,6 +649,19 @@ public:
         report("INFO", "Shift+F11 DFHack switch installed");
     }
 
+    bool toggle() {
+        if (!ready_) return false;
+        requests_.fetch_add(1, std::memory_order_acq_rel);
+        // Both the shortcut and settings menu run on the SDL event thread.
+        // A Shift held while opening the menu may be released while off;
+        // reset native modifier state before those releases can be hidden.
+        SDL_Event reset{};
+        reset.type = SDL_WINDOWEVENT;
+        reset.window.event = SDL_WINDOWEVENT_FOCUS_GAINED;
+        reinterpret_cast<EventFn>(callbacks_[3])(&reset);
+        return true;
+    }
+
     bool event(void *raw) {
         if (!ready_ || !raw) return false;
         const auto &event = *static_cast<const SDL_Event *>(raw);
@@ -657,15 +676,7 @@ public:
         const auto mods = static_cast<SDL_Keymod>(event.key.keysym.mod);
         if (!(mods & KMOD_SHIFT) || (mods & (KMOD_CTRL | KMOD_ALT | KMOD_GUI))) return false;
         f11_consumed_ = true;
-        if (!event.key.repeat) {
-            requests_.fetch_add(1, std::memory_order_acq_rel);
-            // The native event callback owns render-thread modifier state.
-            // Clear it so keys released while off cannot stick after recovery.
-            SDL_Event reset{};
-            reset.type = SDL_WINDOWEVENT;
-            reset.window.event = SDL_WINDOWEVENT_FOCUS_GAINED;
-            reinterpret_cast<EventFn>(callbacks_[3])(&reset);
-        }
+        if (!event.key.repeat) toggle();
         return true;
     }
 

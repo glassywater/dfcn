@@ -13,13 +13,10 @@ std::optional<std::string> Overlay::translate_inventory_item_name(
         break;
     }
     if (source.empty()) return std::nullopt;
-    auto complete = [](const std::optional<std::string> &target) {
-        return target && !target->empty() &&
+    const auto complete = [&](const std::optional<std::string> &target) {
+        return translation_complete_with_native_nicknames(target, source) &&
             target->find("[C:") == std::string::npos &&
-            std::none_of(target->begin(), target->end(), [](unsigned char ch) {
-                return (ch >= 'a' && ch <= 'z') ||
-                    (ch >= 'A' && ch <= 'Z') || ch == '\n' || ch == '\r';
-            });
+            target->find_first_of("\r\n") == std::string::npos;
     };
     if (auto target = translate_coin_item_name(source); complete(target)) return target;
     if (const auto suffix = item_number_suffix(source); !suffix.empty()) {

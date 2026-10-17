@@ -93,6 +93,13 @@ DFCN 的原创内容采用知识共享署名—非商业性使用—相同方式
     - 用途：英文名称的传统英式 RP 读音及音译回退。词典、模型、符号表和元数据保留原始内容；DFCN 的读音归一化与中文转写属于本项目实现。
     - 本地资源、来源及版本说明：`data/runtime/english-pronunciation/`，其中 `SOURCE` 保留各资源的详细出处，Britfone 原始 README 同时随包提供。
 
+12. **OpenCC 1.1.9 简繁转换代码与字典**
+    - 项目：https://github.com/BYVoid/OpenCC
+    - 用途：将简体中文译文离线转换为台湾正体及常用词汇，采用上游 s2twp 转换流程。
+    - 本地代码：`third_party/opencc/src/`；代码以静态方式编入汉化核心。所采用的代码范围和本地修改见 `third_party/opencc/SOURCE`。
+    - 本地数据：`data/runtime/opencc/`，保留上游原始 UTF-8 字典、参考配置与来源说明，不需要另行生成字典。
+    - 许可：Apache-2.0；代码许可与来源见 `third_party/opencc/LICENSE`、`third_party/opencc/SOURCE`，数据许可与来源见 `data/runtime/opencc/LICENSE`、`data/runtime/opencc/SOURCE`，随运行包提供。
+
 完整许可文本分别保存在 `data/upstream/licenses/dfi18n-data.LICENSE.md` 和
 `data/upstream/licenses/dfzh-data.LICENSE.md`。DFCN 对数据做了格式转换、冲突过滤、数字模板转换、
 RAW 空白归一化和 CP437 屏幕编码转换；本地 dfzh 词表另按项目约定将居民管理

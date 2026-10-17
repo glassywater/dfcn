@@ -595,7 +595,7 @@ adventure-announcement	See to your legacy.	考虑自己留给后世的东西。	
 adventure-announcement	See to your responsibilities.	履行你的责任。		ELF 0x11e189e
 adventure-announcement	Shameful.	可耻。		ELF 0x18b1d36
 adventure-announcement	Show some mercy now and again.	偶尔也发发慈悲。		ELF 0x102fcc4
-adventure-announcement	Snatcher! Protect the children!	拐子！保护孩子们！		ELF 0xb838a1
+adventure-announcement	Snatcher! Protect the children!	有人抢孩子！快保护孩子们！		ELF 0xb838a1
 adventure-announcement	So I overindulge sometimes.	我偶尔也会放纵自己。		ELF 0x102ef16
 adventure-announcement	Some changes are inevitable.	有些变化不可避免。		ELF 0x11e14b6
 adventure-announcement	Some migrants have arrived at this miserable place, despite the danger.	一些移民不顾危险，来到了这个悲惨的地方。		ELF 0xf1638e
@@ -985,7 +985,7 @@ adventure-announcement	{s} has grown attached to a {s}!	{s1}对一件{s2}产生�
 adventure-announcement	{s} has been moved from its proper place!	{s1}被移离了原本的位置！	$announcement-item	PE 0x1413e6e20:0x1413e774d-0x1413e7cf6; ELF native submission owners, elf-source-*.c and native-calls.tsv; complete typed action
 adventure-announcement	{s} is missing from its proper place!	{s1}从原本的位置不见了！	$announcement-item	PE 0x1413e6e20:0x1413e774d-0x1413e7cf6; ELF native submission owners, elf-source-*.c and native-calls.tsv; complete typed action
 adventure-announcement	{s} was seen being passed to a thief!	{s1}被人看见交给了一个窃贼！	$announcement-item	PE 0x1413e6e20:0x1413e774d-0x1413e7cf6; ELF native submission owners, elf-source-*.c and native-calls.tsv; complete typed action
-adventure-announcement	{s} was seen being stolen!	{s1}被人看见遭到偷窃！	$announcement-item	PE 0x1413e6e20:0x1413e774d-0x1413e7cf6; ELF native submission owners, elf-source-*.c and native-calls.tsv; complete typed action
+adventure-announcement	{s} was seen being stolen!	有人看见{s1}被偷走了！	$announcement-item	PE 0x1413e6e20:0x1413e774d-0x1413e7cf6; ELF native submission owners, elf-source-*.c and native-calls.tsv; complete typed action
 adventure-announcement	{s} drinks the {s}.	{s1}喝下了{s2}。	$unit,$announcement-item	PE 0x1413e8800:0x1413e8c7e-0x1413e8d33; ELF native submission owners, elf-source-*.c and native-calls.tsv; complete typed action
 adventure-announcement	{s} eats the {s}.	{s1}吃下了{s2}。	$unit,$announcement-item	PE 0x1413e8800:0x1413e8e57-0x1413e8ff8; ELF native submission owners, elf-source-*.c and native-calls.tsv; complete typed action
 adventure-announcement	You pick up {s}.	你拾起了{s1}。	$announcement-item	PE 0x14007de50:0x14007e455-0x14007e753;item=0x140c65450; ELF native submission owners, elf-source-*.c and native-calls.tsv; complete typed action

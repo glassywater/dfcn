@@ -8,6 +8,10 @@ DFCN 是 **Byayoi 同人社区**的《Dwarf Fortress（矮人要塞）》汉化�
 
 项目在游戏渲染阶段捕获英文文本，通过词表与语法规则生成中文，再进行字形测量、换行和覆盖绘制，不修改游戏 RAW 或存档。提供 Windows 与 Linux 原生适配，当前适配版本为 **53.16**；Windows 支持 Steam 版与官网免费版。
 
+Windows 本版的显示语言由配置中的 BCP 47 标签 `language` 控制：默认 `zh-Hans` 为简体中文，`zh-Hant` 将全部译文通过离线 OpenCC 转为台湾正体及常用词汇，也接受 `zh-CN` / `zh-TW`、`zh-Hans-CN` / `zh-Hant-TW`。自定义小队名称保持原样。配置模板位于 `data/runtime/config.ini`，已安装游戏优先读取游戏根目录的 `dfcn_config.ini`。
+
+**Shift+F8** 在简体与台湾正体之间切换，并刷新字体与译文排版；左右 Shift 均可，长按不重复触发。语言选择在本次运行及核心重载后保留，不改写配置文件，也不改变汉化显示开关。
+
 Linux 遇到未收录的游戏 Build ID 时，会读取当前进程的 ELF 加载地址，并使用随包发布的 `data/runtime/native-addresses/elf-seed.bin` 自动解析函数和全局对象地址。完整解析后按游戏文件及特征数据的指纹缓存结果；同一进程内重载核心沿用 Windows 的地址表复用机制，直接读取独立保留的密封字节缓存，省去游戏 ELF 文件的重复读取、哈希与解析。游戏映像、加载地址或特征数据变化时重新解析；存在歧义、缺失地址或不兼容的 ABI 时会说明具体原因并停止安装钩子。启动时无需 Python、反汇编工具或参考游戏文件，自动扫描不保证兼容任意新版本。
 
 Linux 核心重载安装、卸载钩子时，在各自阶段内复用内存映射信息，避免每个内存页查询和跳板分配都重复扫描 `/proc/self/maps`；汉化自身的映射、权限变更同步更新这份快照，阶段结束后释放。
@@ -24,13 +28,15 @@ Windows 与 Linux 共用汉化数据载入优化：TOML 规则图按节点及引
 ../../workshop/content/975370/3811193379/DFCN/dfcn/dfhooks_dfcn.dll
 ```
 
-如果位于不同 Steam 库，将第一行改为该 DLL 的实际绝对路径；只写路径，不加引号或 `key=value`，保存为 UTF-8 无 BOM。汉化设置 `config.ini` 留在订阅目录的 `DFCN/dfcn/data/runtime/` 中。完整路径示例、旧版迁移与卸载方法见 [工坊详细说明](https://steamcommunity.com/sharedfiles/filedetails/?id=3811193379)。
+如果位于不同 Steam 库，将第一行改为该 DLL 的实际绝对路径；只写路径，不加引号或 `key=value`，保存为 UTF-8 无 BOM。汉化启动时优先读取游戏根目录的 `dfcn_config.ini`；文件不存在时，从订阅目录的 `DFCN/dfcn/data/runtime/config.ini` 复制生成，已有文件不会覆盖。订阅目录中的 `config.ini` 保留为默认模板，复制失败时作为回退配置。完整路径示例、旧版迁移与卸载方法见 [工坊详细说明](https://steamcommunity.com/sharedfiles/filedetails/?id=3811193379)。
 
-**GitHub Release：**从 [v53.16-20261015.3](https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261015.3) 下载 `DFCN-Windows-x64-minimal.zip`，解压后将全部内容按原有目录结构复制到游戏根目录，包括 `dfhooks.dll`、`dfhooks_dfcn.ini` 和整个 `dfcn` 文件夹。此方式的汉化设置位于游戏目录的 `dfcn/data/runtime/config.ini`。完整变化见 Release 更新日志。
+**GitHub Release：**从 [v53.16-20261017](https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261017) 下载 `DFCN-Windows-x64-minimal.zip`，解压后将全部内容按原有目录结构复制到游戏根目录，包括 `dfhooks.dll`、`dfhooks_dfcn.ini` 和整个 `dfcn` 文件夹。汉化设置同样使用游戏根目录的 `dfcn_config.ini`，首次启动时由 `dfcn/data/runtime/config.ini` 复制生成，已有文件不会覆盖；复制失败时读取默认模板。完整变化见 Release 更新日志。
 
-Windows 汉化核心、配置与翻译数据按汉化模块所在目录定位，因此支持将运行文件保留在工坊目录。游戏中按 **Shift+F10** 开启或关闭汉化，保留当前核心与数据；按 **Shift+F5** 关闭再开启汉化时，重新加载核心与数据。数据仅在启动、**Shift+F5** 重新开启或 **Ctrl+Shift+F10** 显式刷新时加载，不自动检查文件变化。安装仅添加汉化自身文件，不改写磁盘上的游戏本体、RAW 或存档；取消订阅不会删除已复制的入口文件，卸载时需手动移除自己安装的汉化文件。
+Windows 汉化核心与翻译数据按汉化模块所在目录定位，支持将运行文件保留在工坊目录；用户配置统一使用游戏根目录的 `dfcn_config.ini`。游戏中按 **Shift+F10** 开启或关闭汉化，保留当前核心与数据；按 **Shift+F5** 关闭再开启汉化时，重新加载核心与数据。数据仅在启动、**Shift+F5** 重新开启或 **Ctrl+Shift+F10** 显式刷新时加载，不自动检查文件变化。安装仅添加汉化自身文件，不改写磁盘上的游戏本体、RAW 或存档；取消订阅不会删除已复制的入口文件和 `dfcn_config.ini`，卸载时需手动移除自己安装的汉化文件。
 
 Windows 本版提供 **Shift+F6**：扩展默认启用，首次按下停用全部扩展 TSV 词表与 TOML 规则，立即重新载入本体汉化并开启显示；再次按下恢复扩展并重新载入汉化。左右 Shift 均可，长按不重复切换。扩展开关只影响本次运行，跨 **Shift+F5** 核心重载保留，不写入配置文件。
+
+**Shift+F1** 打开或关闭汉化设置菜单，提供切换中英文、切换繁简体、切换四族语言音译、开关 DFHack（需已安装 DFHack）、重载汉化五项。点击选项执行后自动关闭，也可按 Esc、右键或点击菜单外空白处关闭；英文模式下仍可打开。四族语言默认采用中文音译，可切换为原文拼写，选择保留到本次游戏结束，并跨核心重载保留。DFHack 选项与 Shift+F11 相同，未安装或接口未就绪时不执行。重载汉化会重新载入核心与数据并开启汉化。
 
 Windows 同时安装 **DFHack 53.16-r2** 时，可按 **Shift+F11** 关闭 DFHack，再按一次恢复。开关独立于汉化：关闭时暂停插件更新、界面 hook、热键、命令与 Lua 定时回调，保留驻留核心、插件配置、存档数据和世界卸载清理。已打开的 DFHack 界面会关闭；已执行的游戏或存档修改不会回滚。
 
@@ -40,11 +46,11 @@ Windows 同时安装 **DFHack 53.16-r2** 时，可按 **Shift+F11** 关闭 DFHac
 
 **GitHub Release：**从 [v53.16-20261008-linux](https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261008-linux) 下载 `DFCN-Linux-x64-minimal.zip`，将全部内容按原有目录结构解压到包含 `dwarfort` 的游戏根目录，包括 `libdfhooks.so` 和完整 `dfcn` 文件夹。
 
-Linux 汉化设置位于**游戏目录**的 `dfcn/data/runtime/config.ini`。更新时按原有目录结构解压完整运行包，可先保留自己修改过的配置。Linux 包同时提供 Steam 版与官网免费版的地址绑定，依赖系统的 SDL2、FreeType、Fontconfig、libstdc++ 和 glibc；这些系统库及游戏程序不包含在运行包中。系统没有可用中文字体时，需安装系统中文字体，供 Fontconfig 选择。纯汉化数据无需在创建世界时启用，也无需 DFHack。
+上述 Linux 已发布运行包的汉化设置位于**游戏目录**的 `dfcn/data/runtime/config.ini`。更新时按原有目录结构解压完整运行包，可先保留自己修改过的配置。Linux 包同时提供 Steam 版与官网免费版的地址绑定，依赖系统的 SDL2、FreeType、Fontconfig、libstdc++ 和 glibc；这些系统库及游戏程序不包含在运行包中。系统没有可用中文字体时，需安装系统中文字体，供 Fontconfig 选择。纯汉化数据无需在创建世界时启用，也无需 DFHack。
 
 Linux 已发布核心同样使用 **Shift+F10** 切换汉化并保留核心与数据；**Shift+F5** 关闭再开启时重新读取核心与数据；**Ctrl+Shift+F10** 显式刷新数据。卸载时移除自己安装的 `libdfhooks.so` 和 `dfcn` 汉化目录；无需删除游戏或存档。
 
-Linux 源码已实现 **Shift+F6**，当前 Linux 发布包尚未包含此快捷键及本版 Windows 的后续修复。
+Linux 源码已实现 **Shift+F6**、**Shift+F8** 和游戏根目录 `dfcn_config.ini` 配置，当前 Linux 发布包尚未包含这些功能及本版 Windows 的后续修复。
 
 ## Mod 汉化数据扩展
 

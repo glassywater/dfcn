@@ -11,6 +11,9 @@ std::optional<std::string> Overlay::translate_conversation_choice(
                 return (ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z');
             });
     };
+    const auto complete_native = [&](const std::optional<std::string> &target) {
+        return translation_complete_with_native_nicknames(target, source);
+    };
     // These are complete typed noun/event parsers. None may replace just a
     // convenient prefix of an unrecognised conversational sentence.
     if (const auto target = exact_literal_translation(source); complete(target)) return target;
@@ -70,9 +73,9 @@ std::optional<std::string> Overlay::translate_conversation_choice(
         }
         return std::nullopt;
     }
-    if (const auto target = translate_creature_label(source); complete(target)) return target;
-    if (const auto target = translate_item_description_term(source); complete(target)) return target;
-    if (const auto target = translate_legends_event(source); complete(target)) return target;
+    if (const auto target = translate_creature_label(source); complete_native(target)) return target;
+    if (const auto target = translate_item_description_term(source); complete_native(target)) return target;
+    if (const auto target = translate_legends_event(source); complete_native(target)) return target;
 
     // Unit captions add a caste before the native personal name. A proven
     // complete caste prefix allows the same resolver as action captions; it
@@ -84,7 +87,7 @@ std::optional<std::string> Overlay::translate_conversation_choice(
         const auto caste = translate_creature_descriptor(label.substr(0, at), true);
         if (!complete(caste)) continue;
         const auto target = translate_ui_message_capture(source, true);
-        if (complete(target)) return target;
+        if (complete_native(target)) return target;
     }
 
     // Name-only submenus contain no authored verb for a P template to match.
@@ -140,10 +143,10 @@ std::optional<std::string> Overlay::translate_conversation_choice(
     if (previous_connector) return std::nullopt;
     if (person) {
         const auto target = translate_ui_message_capture(source, true);
-        if (complete(target)) return target;
+        if (complete_native(target)) return target;
     }
     const auto target = translate_legends_name(source, person);
-    return complete(target) ? target : std::nullopt;
+    return complete_native(target) ? target : std::nullopt;
 }
 
 std::optional<std::string> Overlay::translate_adventure_action_choice(
@@ -419,6 +422,10 @@ std::optional<std::string> Overlay::translate_conversation_keywords(
                 return (ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z');
             });
     };
+    const auto complete_name_target = [](const std::optional<std::string> &target,
+                                         std::string_view original) {
+        return translation_complete_with_native_nicknames(target, original);
+    };
 
     // Keep the reviewed complete palette records authoritative.
     if (!ui_message_trie_.empty()) {
@@ -516,8 +523,10 @@ std::optional<std::string> Overlay::translate_conversation_keywords(
     struct Edge { size_t end; std::string target; unsigned priority; };
     std::vector<std::vector<Edge>> edges(words.size());
     const auto add = [&](size_t begin, size_t end,
-                         const std::optional<std::string> &target, unsigned priority) {
-        if (begin < end && complete_target(target))
+                         const std::optional<std::string> &target, unsigned priority,
+                         std::string_view name_source = {}) {
+        if (begin < end && (complete_target(target) ||
+                (!name_source.empty() && complete_name_target(target, name_source))))
             edges[begin].push_back({end, *target, priority});
     };
     const auto solve = [&]() -> std::optional<std::string> {
@@ -685,14 +694,16 @@ std::optional<std::string> Overlay::translate_conversation_keywords(
             word == "to" || word == "from";
     };
     std::unordered_map<std::string, std::optional<std::string>> caption_names;
+    std::unordered_map<std::string, std::string> caption_name_sources;
     std::unordered_map<std::string, std::optional<std::string>> caption_slots;
     std::unordered_set<std::string> whole_caption_names;
     const auto add_caption_name = [&](std::string_view raw,
                                      const std::optional<std::string> &target, bool whole) {
-        if (!complete_target(target)) return;
+        if (!complete_name_target(target, raw)) return;
         const std::string key = ConversationKeywordLexicon::search_spelling(raw);
         if (key.empty()) return;
         const auto [found, added] = caption_names.emplace(key, target);
+        if (added) caption_name_sources.emplace(key, raw);
         if (!added && found->second != target) found->second.reset();
         if (whole) whole_caption_names.insert(key);
     };
@@ -736,7 +747,7 @@ std::optional<std::string> Overlay::translate_conversation_keywords(
                     else if (kind == 'e') slot->second = translate_legends_name(captures[i], false);
                     else slot->second = translate_ui_message_capture(captures[i], true);
                 }
-                if (!complete_target(slot->second)) continue;
+                if (!complete_name_target(slot->second, captures[i])) continue;
                 add_caption_name(captures[i], slot->second, true);
                 // Global native deduplication can remove a repeated given
                 // name from a later field. Its surviving components remain
@@ -839,7 +850,8 @@ std::optional<std::string> Overlay::translate_conversation_keywords(
             if (begin != offsets.end() && *begin == at) {
                 const size_t first = static_cast<size_t>(begin - offsets.begin());
                 const bool whole = whole_caption_names.contains(key);
-                add(first, word_ends[end], target, whole ? 40 : 35);
+                add(first, word_ends[end], target, whole ? 40 : 35,
+                    caption_name_sources.at(key));
                 if (whole) name_boundaries[first] = name_boundaries[word_ends[end]] = true;
             }
         }
@@ -861,9 +873,10 @@ std::optional<std::string> Overlay::translate_conversation_keywords(
             if (const auto found = lexicon->resolved.find(key); found != lexicon->resolved.end())
                 return found->second;
         }
-        auto target = native ? translate_procedural_fragment(title(name), true)
-                             : translate_legends_name(title(name), false);
-        if (!complete_target(target)) target.reset();
+        const std::string original = title(name);
+        auto target = native ? translate_procedural_fragment(original, true)
+                             : translate_legends_name(original, false);
+        if (!complete_name_target(target, original)) target.reset();
         {
             std::lock_guard<std::mutex> lock(lexicon->resolved_mutex);
             if (lexicon->resolved.size() >= 8192) lexicon->resolved.clear();
@@ -882,7 +895,7 @@ std::optional<std::string> Overlay::translate_conversation_keywords(
             const size_t last = word_ends[end];
             if (last == std::string::npos) return;
             const auto target = resolve(name, true);
-            add(begin, last, target, 10);
+            add(begin, last, target, 10, title(name));
             if (last == begin + 1 && target)
                 native_atoms[begin].push_back({std::move(name), languages});
         };
@@ -900,7 +913,7 @@ std::optional<std::string> Overlay::translate_conversation_keywords(
             const size_t last = word_ends[end];
             if (last == std::string::npos) return;
             const auto target = resolve(name, false);
-            add(begin, last, target, 10);
+            add(begin, last, target, 10, title(name));
             if (last == begin + 1 && target) english_atoms[begin] = true;
         };
         scan(lexicon->english, offsets[begin], [&](size_t middle, size_t first) {
@@ -938,7 +951,7 @@ std::optional<std::string> Overlay::translate_conversation_keywords(
                 name += atom->source;
             }
             const auto target = resolve(name, true);
-            add(begin, last, target, 25);
+            add(begin, last, target, 25, title(name));
             if (target) for (size_t at = begin; at < last; ++at) native_owned[at] = true;
         }
         begin = std::max(begin + 1, last);
@@ -977,12 +990,12 @@ std::optional<std::string> Overlay::translate_conversation_keywords(
             }
             if (!cached) {
                 target = translate_legends_name(name, false);
-                if (!complete_target(target)) target.reset();
+                if (!complete_name_target(target, name)) target.reset();
                 std::lock_guard<std::mutex> lock(lexicon->resolved_mutex);
                 if (lexicon->resolved.size() >= 8192) lexicon->resolved.clear();
                 lexicon->resolved.emplace(key, target);
             }
-            add(begin, end, target, 20);
+            add(begin, end, target, 20, name);
         }
         begin = std::max(begin + 1, end);
     }

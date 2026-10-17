@@ -243,8 +243,12 @@ bool Overlay::load_site_name_decisions() {
     return !site_name_decisions_.empty();
 }
 
-static std::string transliterate_site_spelling(std::string_view original) {
+std::string Overlay::transliterate_site_spelling(std::string_view original) const {
     if (original.empty() || contains_cjk_utf8(original)) return native_text_to_utf8(original);
+    if (config_.native_language_original) {
+        const auto display = native_text_to_utf8(original);
+        return preserve_native_language_original(display, display);
+    }
     // A native first_name or an absent WORD table does not prove authorship:
     // utterance names also use that storage. Pronounce the complete saved
     // spelling without recovering invented WORD meanings or a naming culture.
@@ -267,6 +271,8 @@ static std::string transliterate_site_spelling(std::string_view original) {
 
 std::string Overlay::site_name_full_transliteration(const NativeHistoryName &name) const {
     if (name.site_id < 0 || !name.has_name || name.native_name.empty()) return {};
+    if (config_.native_language_original)
+        return transliterate_site_spelling(name.native_name);
     if (!name.nickname.empty() || contains_cjk_utf8(name.native_name))
         return native_text_to_utf8(name.native_name);
     const auto reviewed = site_name_decisions_.find(site_name_decision_key(

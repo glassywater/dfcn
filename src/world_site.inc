@@ -290,6 +290,48 @@ std::vector<NativeTextCard> Overlay::capture_world_civilization_records(
     return records;
 }
 
+// Both the site preview and expanded news list draw the same retained wrap.
+// Match the entire visible rumor range, including its blank separators,
+// before recovering any clipped event. Facts and the footer stay outside it.
+static bool world_site_bind_rumor_lines(NativeTextCard &card,
+        const std::vector<std::string> &lines, size_t first_row, size_t end_row,
+        bool preview) {
+    if (first_row >= end_row || end_row > card.rows.size()) return false;
+    const auto &first = card.rows[first_row];
+    const size_t height = static_cast<size_t>(card.rows[end_row - 1].y - first.y + 1);
+    const int width = card.interior.x + card.interior.w - first.x;
+    if (width <= 0 || height > lines.size()) return false;
+    // The ordinary preview always starts at the first retained line. Only
+    // the expanded list may start partway through the scroll allocation.
+    const size_t candidates = preview ? 1 : lines.size() - height + 1;
+    for (size_t begin = 0; begin < candidates; ++begin) {
+        size_t row = first_row;
+        bool same = true;
+        for (size_t offset = 0; offset < height; ++offset) {
+            const auto expected = trim_view(trim_view(lines[begin + offset]).substr(
+                0, static_cast<size_t>(width)));
+            const int line_y = first.y + static_cast<int>(offset);
+            if (row < end_row && card.rows[row].y == line_y) {
+                const auto &visible = card.rows[row++];
+                if (visible.x != first.x || visible.source != expected) {
+                    same = false;
+                    break;
+                }
+            } else if (!expected.empty()) {
+                same = false;
+                break;
+            }
+        }
+        if (!same || row != end_row) continue;
+        card.world_site_rumor_first_line = begin;
+        card.world_site_rumor_first_row = first.y;
+        card.world_site_rumor_last_row = card.rows[end_row - 1].y;
+        card.world_site_rumor_lines = lines;
+        return true;
+    }
+    return false;
+}
+
 std::optional<NativeTextCard> Overlay::capture_world_site_card(
         std::vector<NativeTextCard> &action_cards) const {
     action_cards.clear();
@@ -341,7 +383,9 @@ std::optional<NativeTextCard> Overlay::capture_world_site_card(
             // A native letter can occupy the graphical right-edge cell.
             // Suppress only that verified letter, never the frame texture or
             // text in a neighbouring widget, and retain the interior width.
-            if (drawn && right < gps_->dimx &&
+            // Retained rumors already have the complete source; their right
+            // boundary may instead be the scrollbar's first column.
+            if (drawn && card.world_site_rumor_lines.empty() && right < gps_->dimx &&
                 row.x + static_cast<int>(row.source.size()) == right &&
                 drawn->size() > row.source.size()) {
                 bool top = false;
@@ -362,12 +406,25 @@ std::optional<NativeTextCard> Overlay::capture_world_site_card(
         for (const auto &row : card.rows) left = std::min(left, row.x);
         card.interior.x = left;
         card.interior.w = right - left;
+        if (card.world_site_rumor_lines.empty()) {
+            const auto footer = std::find_if(card.rows.begin(), card.rows.end(),
+                [](const auto &row) {
+                    return normalize_utterance(row.source) == "Click to view all news and rumors";
+                });
+            const auto first_rumor = std::find_if(card.rows.begin(), footer,
+                [](const auto &row) { return normalize_utterance(row.source).starts_with("In "); });
+            if (first_rumor != footer && footer != card.rows.end())
+                if (const auto lines = native_world_site_rumor_lines(false))
+                    world_site_bind_rumor_lines(card, *lines,
+                        static_cast<size_t>(first_rumor - card.rows.begin()),
+                        static_cast<size_t>(footer - card.rows.begin()), true);
+        }
         return card;
     };
     // Clicking the news footer replaces all site facts with the retained
     // rumor list. Its native owner and closed frame establish this card;
     // population/government captions and translation coverage cannot do so.
-    if (auto native_lines = native_expanded_world_site_rumor_lines()) {
+    if (auto native_lines = native_world_site_rumor_lines(true)) {
         for (int y = 1; y < gps_->dimy - 1; ++y) {
             for (const auto &field : split_text_fields(context[y])) {
                 if (std::none_of(native_lines->begin(), native_lines->end(),
@@ -375,33 +432,19 @@ std::optional<NativeTextCard> Overlay::capture_world_site_card(
                 const auto panel = native_panel_interior(borders, *gps_,
                     field.start, field.end, y);
                 if (!panel) continue;
-                auto card = capture_panel_text_card(*panel);
+                // The expanded list paints its scrollbar inside the frame,
+                // without narrowing the native text draw's clip. Reserve the
+                // live control's columns for the whole document, including
+                // paragraphs above its upper cap and below the thumb.
+                SDL_Rect text_panel = *panel;
+                for (const auto &bar : native_vertical_scrollbar_spans(*gps_, *panel))
+                    text_panel.w = std::min(text_panel.w, bar.x - text_panel.x);
+                if (text_panel.w <= 0) continue;
+                auto card = capture_panel_text_card(text_panel);
                 if (!card || card->rows.front().x != field.start ||
                         card->rows.front().y != y) continue;
-                const auto &first = card->rows.front();
-                const size_t height = static_cast<size_t>(card->rows.back().y - first.y + 1);
-                for (size_t begin = 0; begin + height <= native_lines->size(); ++begin) {
-                    size_t row = 0;
-                    bool same = true;
-                    for (size_t offset = 0; offset < height; ++offset) {
-                        const auto expected = trim_view((*native_lines)[begin + offset]);
-                        const int line_y = first.y + static_cast<int>(offset);
-                        if (row < card->rows.size() && card->rows[row].y == line_y) {
-                            const auto &visible = card->rows[row++];
-                            if (visible.x != first.x || visible.source != expected) {
-                                same = false;
-                                break;
-                            }
-                        } else if (!expected.empty()) {
-                            same = false;
-                            break;
-                        }
-                    }
-                    if (!same) continue;
-                    card->world_site_rumor_first_line = begin;
-                    card->world_site_rumor_lines = std::move(*native_lines);
+                if (world_site_bind_rumor_lines(*card, *native_lines, 0, card->rows.size(), false))
                     return align_card(std::move(*card));
-                }
             }
         }
     }
@@ -861,7 +904,9 @@ void Overlay::append_world_site_phrases(const NativeTextCard &card,
     for (size_t index = description_end; index < card.rows.size(); ++index) {
         const auto &row = card.rows[index];
         if (travel_status_rows.contains(row.y)) continue;
-        if (!action_control && (reclaim_history || !card.world_site_rumor_lines.empty() ||
+        const bool retained_rumor = !card.world_site_rumor_lines.empty() &&
+            row.y >= card.world_site_rumor_first_row && row.y <= card.world_site_rumor_last_row;
+        if (!action_control && (reclaim_history || retained_rumor ||
                 normalize_utterance(row.source).starts_with("In "))) {
             // The site-news builder wraps dated events before drawing them.
             // Gather the whole live paragraph before any independent row,
@@ -872,7 +917,8 @@ void Overlay::append_world_site_phrases(const NativeTextCard &card,
             size_t end = index + 1;
             while (end < card.rows.size() &&
                     card.rows[end].y == card.rows[end - 1].y + 1 &&
-                    (reclaim_history || !card.world_site_rumor_lines.empty() ||
+                    (!retained_rumor || card.rows[end].y <= card.world_site_rumor_last_row) &&
+                    (reclaim_history || retained_rumor ||
                      !normalize_utterance(card.rows[end].source).starts_with("In "))) ++end;
             std::vector<Match> paragraph;
             std::vector<int> paragraph_rows;
@@ -887,10 +933,10 @@ void Overlay::append_world_site_phrases(const NativeTextCard &card,
             }
             const int right = card.interior.x + card.interior.w;
             std::optional<NativeParagraphViewport> viewport;
-            if (!card.world_site_rumor_lines.empty()) {
+            if (retained_rumor) {
                 const auto &lines = card.world_site_rumor_lines;
                 const size_t visible = card.world_site_rumor_first_line +
-                    static_cast<size_t>(row.y - card.rows.front().y);
+                    static_cast<size_t>(row.y - card.world_site_rumor_first_row);
                 size_t begin = visible, last = visible + end - index;
                 while (begin > 0 && !trim_view(lines[begin - 1]).empty()) --begin;
                 while (last < lines.size() && !trim_view(lines[last]).empty()) ++last;

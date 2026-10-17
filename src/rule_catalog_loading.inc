@@ -353,6 +353,8 @@ bool Overlay::load_rules() {
         candidate->rules_ = std::move(loaded);
         candidate->loaded_extensions_ = std::move(extension_snapshot);
         candidate->name_editor_search_revision_ = name_editor_search_revision_;
+        if (config_.native_language_original)
+            candidate->load_native_language_vocabulary();
         candidate->build_trie(&catalog_publication);
         candidate->rebuild_announcement_combat_rules();
         candidate->template_anchors_.finalize();
@@ -382,6 +384,7 @@ bool Overlay::load_rules() {
         swap(live, prepared);
     };
     commit(rules_, candidate->rules_);
+    clear_native_language_originals();
     commit(trie_, candidate->trie_);
     commit(trie_ci_, candidate->trie_ci_);
     commit(template_rules_, candidate->template_rules_);
@@ -684,6 +687,15 @@ void Overlay::build_trie(std::function<void()>* catalog_publication) {
     };
     for (size_t rule_index = 0; rule_index < rules_.size(); ++rule_index) {
         const Rule &material_rule = rules_[rule_index];
+        // Flattened native pronunciations are still available to the typed
+        // phonetic renderer, but must not claim raw names as global literals.
+        // Ordinary semantic homonyms lack this title-cased wi provenance.
+        if (config_.native_language_original && material_rule.word_boundary &&
+                material_rule.case_insensitive && !material_rule.source.empty()) {
+            const auto folded = lower_native_name(material_rule.source);
+            if (folded.front() != material_rule.source.front() &&
+                    native_name_language_masks_.contains(folded)) continue;
+        }
         if (material_rule.source.starts_with("DFHack help: ") ||
                 material_rule.source.starts_with("DFHack GUI ")) {
             index_capture_literal(material_rule);

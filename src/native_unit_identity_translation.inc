@@ -51,11 +51,7 @@ std::optional<std::string> Overlay::translate_native_justice_organization_initia
     };
     const auto phonetic_word = [&](std::string_view word) -> std::string {
         if (word.empty()) return {};
-        if (contains_cjk_utf8(word)) return native_text_to_utf8(word);
-        const auto reviewed = native_name_reviewed_transliterations_.find(
-            lower_native_name(std::string(word)));
-        return reviewed != native_name_reviewed_transliterations_.end() && !reviewed->second.empty()
-            ? reviewed->second : transliterate_native_history_name(word);
+        return transliterate_native_language_word(word);
     };
     std::string result;
     const bool given = !name.first_name.empty();
@@ -304,10 +300,9 @@ std::optional<std::string> Overlay::translate_native_unit_identity(
                     if (part.name.language < 0 || contains_cjk_utf8(part.source))
                         value = native_text_to_utf8(part.source);
                     else {
-                        const auto reviewed = native_name_reviewed_transliterations_.find(
-                            lower_native_name(part.name.first_name));
-                        value = reviewed != native_name_reviewed_transliterations_.end()
-                            ? reviewed->second : transliterate_native_history_name(part.name.first_name);
+                        value = config_.native_language_original
+                            ? native_language_word_display(part.source)
+                            : native_language_word_display(part.name.first_name);
                         if (value.empty()) value = native_text_to_utf8(part.source);
                     }
                     break;
@@ -462,13 +457,13 @@ std::optional<std::string> Overlay::translate_native_unit_identity(
         };
         const auto phonetic_word = [&](std::string_view word) -> std::string {
             if (word.empty()) return {};
-            if (contains_cjk_utf8(word)) return native_text_to_utf8(word);
-            const auto reviewed = native_name_reviewed_transliterations_.find(
-                lower_native_name(std::string(word)));
-            return reviewed != native_name_reviewed_transliterations_.end() && !reviewed->second.empty()
-                ? reviewed->second : transliterate_native_history_name(word);
+            return transliterate_native_language_word(word);
         };
         const auto phonetic_name = [&]() -> std::optional<std::string> {
+            if (config_.native_language_original) {
+                const auto original = native_text_to_utf8(unit.native_name);
+                return preserve_native_language_original(original, original);
+            }
             if (!unit.name.has_name || !unit.native_name_words_valid) return std::nullopt;
             // The game selected these precise WORD roots and their language.
             // Keep the established per-root pronunciation without splitting the

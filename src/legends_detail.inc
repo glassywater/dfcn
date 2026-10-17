@@ -3609,7 +3609,12 @@ void Overlay::layout_legends_details(SDL_Renderer *renderer) {
             const int flow_width = flow.native_clip.w;
             size_t row = 0;
             int used = 0;
-            for (const auto &piece : flow.pieces) {
+            for (const auto &source_piece : flow.pieces) {
+                auto piece = source_piece;
+                piece.target = localize_display(piece.target,
+                    piece.translation_result ? piece.translation_result->source : std::string_view{},
+                    piece.translation_result.get()).text;
+                const DisplayLanguageScope localized_scope(nullptr, true);
                 std::vector<uint32_t> cps;
                 if (!decode_utf8(piece.target, cps)) return false;
                 std::vector<size_t> offsets{0};

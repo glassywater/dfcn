@@ -1,6 +1,7 @@
 #include <SDL2/SDL.h>
 
 #include "native_runtime.h"
+#include "runtime_config.h"
 #include "native_font_metrics.h"
 #include "native_graphics.h"
 #include "byayoi_sprite.inc"
@@ -70,6 +71,7 @@
 #include "translation_extensions.h"
 #include "english_character_names.h"
 #include "english_name_transliteration.h"
+#include "chinese_conversion.h"
 
 namespace fs = std::filesystem;
 
@@ -77,6 +79,8 @@ namespace dfcn {
 
 static std::atomic_bool g_native_process_exiting{false};
 static void request_native_process_exit() noexcept;
+static void release_native_squads_language_resources();
+static void release_native_dfhack_layer_target() noexcept;
 
 #include "history_event_clauses.inc"
 
@@ -132,7 +136,7 @@ static bool native_arena_map_screen();
 static std::vector<SDL_Rect> native_text_input_regions(const graphicst &gps,
     const std::vector<std::string> &rows, const unsigned char *screen_override);
 static std::optional<std::vector<std::string>> native_world_artifact_description_lines();
-static std::optional<std::vector<std::string>> native_expanded_world_site_rumor_lines();
+static std::optional<std::vector<std::string>> native_world_site_rumor_lines(bool expanded_only);
 static bool native_history_legends_page();
 static bool native_history_legends_artwork_page();
 struct NativeHistoryLegendsCaption {
@@ -343,10 +347,15 @@ static void log_translation_state_timing(const TranslationStateTiming &sample) {
     log_line("WARN", line.str());
 }
 
+static constexpr const char *kDisplayLanguageHint = "DFCN_DISPLAY_LANGUAGE";
+static constexpr const char *kNativeLanguageOriginalHint = "DFCN_NATIVE_LANGUAGE_ORIGINAL";
+
 struct Config {
     static constexpr double default_font_scale = 1.1;
     static constexpr double font_scale_baseline = 0.92;
     bool enabled = true;
+    std::string language = "zh-Hans";
+    bool native_language_original = false;
     bool clear_background = true;
     bool log_matches = false;
     bool trace_render_timing = false;
@@ -735,7 +744,30 @@ struct Match {
     // Recovered semantic text may join wrapped rows or collapse field gaps.
     // Raster input ownership instead follows the exact bytes of this row.
     std::optional<std::string> native_source{};
+    // Reflowed lines already passed through the display-language converter.
+    bool language_converted = false;
 };
+
+static thread_local const Match *g_display_language_match = nullptr;
+static thread_local bool g_display_language_converted = false;
+class DisplayLanguageScope {
+    const Match *previous_match_ = g_display_language_match;
+    bool previous_converted_ = g_display_language_converted;
+public:
+    explicit DisplayLanguageScope(const Match *match, bool already_localized = false) {
+        g_display_language_match = match;
+        g_display_language_converted = already_localized || (match && match->language_converted);
+    }
+    ~DisplayLanguageScope() {
+        g_display_language_match = previous_match_;
+        g_display_language_converted = previous_converted_;
+    }
+};
+
+static std::vector<int> remap_display_colors(std::string_view input,
+    const ConvertedText &converted, const std::vector<int> &colors);
+static std::vector<std::pair<size_t, size_t>> remap_display_ranges(std::string_view input,
+    const ConvertedText &converted, const std::vector<std::pair<size_t, size_t>> &ranges);
 
 static std::string_view native_match_source(const Match &match) {
     return match.native_source ? std::string_view(*match.native_source)
@@ -1031,9 +1063,10 @@ struct NativeTextCard {
     std::optional<SDL_Rect> button_box{};
     // A typed owner can retain the complete document beyond its visible rows.
     std::string paragraph_source{};
-    // Expanded world-map rumors retain their native wrap and scroll allocation.
+    // World-map rumors retain their complete native wrap beyond the viewport.
     std::vector<std::string> world_site_rumor_lines{};
     size_t world_site_rumor_first_line = 0;
+    int world_site_rumor_first_row = -1, world_site_rumor_last_row = -1;
     bool travel_buildings = false;
     bool character_group_role = false;
     bool character_group_civilization = false;
@@ -3590,6 +3623,11 @@ public:
         bool date = false) const;
     void set_translation_enabled(bool enabled);
     void toggle_translation();
+    void toggle_display_language();
+    void toggle_native_language();
+    void render_settings_menu(SDL_Renderer *renderer);
+    bool settings_menu_event(const SDL_Event &event);
+    void run_settings_menu_action(int action);
     void toggle_translation_extensions();
     void remap_legends_mouse(int *x, int *y) const;
     void request_reload() { reload_requested_.store(true); }
@@ -3761,6 +3799,15 @@ private:
         bool has_ink = false;
     };
     Config config_;
+    ChineseConversion chinese_conversion_;
+    // Component drawers borrow the main converter and its authored-name context.
+    const Overlay *display_language_source_ = nullptr;
+    mutable std::mutex display_conversion_mutex_;
+    mutable std::unordered_map<std::string, ConvertedText> display_conversion_cache_;
+    ConvertedText localize_display(std::string_view text, std::string_view source = {},
+        const TranslationResult *result = nullptr) const;
+    std::vector<std::pair<size_t, size_t>> authored_squad_display_spans(
+        std::string_view source, std::string_view target) const;
     // Native formatters only need the on/off decision here. Actual translation
     // still takes TranslationStateScope; this read must not queue behind a
     // whole render pass merely to discover that translation is disabled.
@@ -3872,6 +3919,9 @@ private:
         std::string_view english, const NativeHistoryName *identity = nullptr) const;
     std::string transliterate_english_name(std::string_view english,
         const NativeHistoryName *identity = nullptr) const;
+    std::string native_language_word_display(std::string_view original) const;
+    std::string transliterate_native_language_word(std::string_view original) const;
+    std::string transliterate_site_spelling(std::string_view original) const;
     std::optional<std::string> translate_site_display(
         const NativeHistoryName &name, std::string_view source) const;
     std::string site_name_core(const NativeHistoryName &name) const;
@@ -4602,6 +4652,7 @@ private:
 
     bool load_config();
     bool load_rules();
+    bool load_native_language_vocabulary();
     void build_trie(std::function<void()> *catalog_publication = nullptr);
     bool load_font();
     bool load_compositional_rules();
@@ -5369,7 +5420,8 @@ private:
         const std::string &screen_text, bool phonetic_only = false,
         bool character_name_gloss = false,
         ProceduralNameHead name_head = {},
-        ProceduralFragmentContext context = ProceduralFragmentContext::general_text) const;
+        ProceduralFragmentContext context = ProceduralFragmentContext::general_text,
+        bool allow_native_original = true) const;
     std::optional<std::string> translate_worldgen_creation(
         const std::string &source) const;
     std::optional<std::string> translate_adventure_origin_source(
@@ -5896,7 +5948,12 @@ static std::optional<std::string> utf8_to_cp437(std::string_view source,
     bool preserve_authored_cjk = false);
 static bool translation_complete_with_native_nicknames(
     const std::optional<std::string> &target, std::string_view source);
+static std::string preserve_native_language_original(
+    std::string_view source_utf8, std::string original_utf8);
+static void clear_native_language_originals();
 static bool item_term_contains_sentence_punctuation(std::string_view source);
+
+#include "display_language.inc"
 
 bool Overlay::load_config() {
     native_knowledge_layouts_.clear();
@@ -5906,12 +5963,14 @@ bool Overlay::load_config() {
     embark_knowledge_list_matches_.clear();
     embark_knowledge_list_identity_.clear();
     Config next;
-    std::ifstream in(runtime::config_path());
+    const auto config_path = runtime::config_path();
+    std::ifstream in(config_path);
     if (in) {
         std::string line;
         size_t line_no = 0;
         while (std::getline(in, line)) {
             ++line_no;
+            if (line_no == 1 && line.starts_with("\xef\xbb\xbf")) line.erase(0, 3);
             if (!line.empty() && line.back() == '\r') line.pop_back();
             const std::string stripped = trim(line);
             if (stripped.empty() || stripped[0] == '#' || stripped[0] == ';' ||
@@ -5920,13 +5979,16 @@ bool Overlay::load_config() {
             }
             const size_t eq = stripped.find('=');
             if (eq == std::string::npos) {
-                log_line("WARN", "config.ini:" + std::to_string(line_no) +
+                log_line("WARN", runtime::utf8(config_path) + ":" + std::to_string(line_no) +
                                      " missing '='; ignored");
                 continue;
             }
             const std::string key = lower(trim(stripped.substr(0, eq)));
             const std::string value = trim(stripped.substr(eq + 1));
             if (key == "enabled") next.enabled = parse_bool(value, next.enabled);
+            else if (key == "language") next.language = value;
+            else if (key == "native_language_original")
+                next.native_language_original = parse_bool(value, next.native_language_original);
             else if (key == "clear_background") next.clear_background = parse_bool(value, next.clear_background);
             else if (key == "log_matches") next.log_matches = parse_bool(value, next.log_matches);
             else if (key == "trace_render_timing") next.trace_render_timing = parse_bool(value, next.trace_render_timing);
@@ -5988,13 +6050,39 @@ bool Overlay::load_config() {
     next.collect_interval_seconds = std::clamp(next.collect_interval_seconds, 1, 60);
     next.max_untranslated_entries = std::clamp(next.max_untranslated_entries, 100, 50000);
 
+    if (const char *choice = SDL_GetHint(kDisplayLanguageHint);
+            choice && (std::strcmp(choice, "zh-Hans") == 0 || std::strcmp(choice, "zh-Hant") == 0))
+        next.language = choice;
+    if (const char *choice = SDL_GetHint(kNativeLanguageOriginalHint))
+        next.native_language_original = parse_bool(choice, next.native_language_original);
+    const auto language = lower(next.language);
+    if (language == "zh-hant" || language == "zh-tw" || language == "zh-hant-tw")
+        next.language = "zh-Hant";
+    else {
+        if (language != "zh-hans" && language != "zh-cn" && language != "zh-hans-cn")
+            log_line("WARN", "Unsupported language tag: " + next.language + "; using zh-Hans");
+        next.language = "zh-Hans";
+    }
+    if (next.language == "zh-Hant" && !chinese_conversion_.loaded()) {
+        try {
+            chinese_conversion_.load(runtime::data_path() / "opencc");
+        } catch (const std::exception &error) {
+            log_line("ERROR", std::string("Cannot load OpenCC conversion dictionaries: ") + error.what());
+            return false;
+        }
+    }
+    {
+        std::lock_guard<std::mutex> lock(display_conversion_mutex_);
+        display_conversion_cache_.clear();
+    }
     const bool font_changed = next.font_path != config_.font_path ||
                               next.font_index != config_.font_index ||
                               next.font_bold != config_.font_bold ||
                               next.font_pixels != config_.font_pixels ||
                               next.font_pixel_grid != config_.font_pixel_grid ||
                               next.font_scale != config_.font_scale ||
-                              next.min_font_pixels != config_.min_font_pixels;
+                              next.min_font_pixels != config_.min_font_pixels ||
+                              next.language != config_.language;
     if (runtime_enabled_override_) next.enabled = *runtime_enabled_override_;
     config_ = std::move(next);
     translation_enabled_snapshot_.store(config_.enabled, std::memory_order_release);
@@ -6241,7 +6329,8 @@ Overlay::FontGlyph Overlay::resolve_font_glyph_at_size(uint32_t codepoint, int p
         }
     }
     if (!selected.index) {
-        if (FT_Face face = native_open_fallback_font(ft_, codepoint, pixels, config_.font_bold)) {
+        if (FT_Face face = native_open_fallback_font(ft_, codepoint, pixels, config_.font_bold,
+                config_.language == "zh-Hant")) {
             fallback_fonts_.push_back(face);
             selected = {face, FT_Get_Char_Index(face, codepoint)};
         }
@@ -6383,7 +6472,7 @@ bool Overlay::load_font() {
 #ifdef _WIN32
     const bool use_default_font = path.empty();
 #endif
-    if (path.empty()) native_find_font(path, index, config_.font_bold);
+    if (path.empty()) native_find_font(path, index, config_.font_bold, config_.language == "zh-Hant");
     if (path.empty()) {
         log_line("ERROR", "No CJK font found. Set font= in " + runtime::utf8(runtime::config_path()));
         return false;
@@ -6396,7 +6485,7 @@ bool Overlay::load_font() {
         return false;
     }
 #ifdef _WIN32
-    if (use_default_font) {
+    if (use_default_font && config_.language != "zh-Hant") {
         // Keep the established default family and medium weight when the
         // user has not supplied a font. The discovered file is still
         // registered so a private/default font remains available to GDI.
@@ -6446,6 +6535,7 @@ bool Overlay::load_compositional_rules() {
     settings_announcement_toggle_x_ = -1;
     settings_announcement_columns_valid_ = false;
     settings_announcement_column_centres_twice_.fill(0);
+    RULESETS.set_native_language_original(config_.native_language_original);
     const bool loaded = RULESETS.init();
     if (loaded) {
         RULESETS.set_context_revision_provider([] {
@@ -6465,6 +6555,8 @@ bool Overlay::load_compositional_rules() {
         // supplies a fully translated noun/title, never untranslated captures.
         RULESETS.set_phrase_resolver([this](std::string_view source, std::string_view kind)
                 -> std::optional<std::string> {
+            if (kind == "native_language_original")
+                return preserve_native_language_original(source, std::string(source));
             // Animal labels are unit identities, not bare species. Tasks and
             // roster captions must share ownership, numbering and state parsing,
             // including an authored UTF-8 name inside native CP437 text.
@@ -6627,6 +6719,39 @@ bool Overlay::load_generated_instrument_names() {
     identity_record_translation_cache_.clear();
     identity_record_translation_order_.clear();
     load_instrument_translations();
+    const bool loaded_languages = load_native_language_vocabulary();
+    native_name_reviewed_transliterations_.clear();
+
+    // The exact table retains its pronunciations even in original mode;
+    // only display selection changes, never the name/WORD vocabulary.
+    size_t reviewed = 0;
+    constexpr std::string_view pronunciation_scope = "Native name pronunciation: ";
+    for (const Rule &rule : rules_) {
+        if (rule.numeric_template || rule.string_template ||
+            rule.source.empty() || rule.target.empty()) continue;
+        std::string folded;
+        if (rule.legends_prose && rule.source.starts_with(pronunciation_scope)) {
+            folded = lower_native_name(trim(rule.source.substr(pronunciation_scope.size())));
+        } else {
+            if (!rule.word_boundary || !rule.case_insensitive) continue;
+            folded = lower_native_name(trim(rule.source));
+            if (folded.empty() || folded.front() == rule.source.front()) continue;
+        }
+        if (native_name_language_masks_.contains(folded))
+            native_name_reviewed_transliterations_[folded] = rule.target;
+        const auto native = generated_instrument_name_transliterations_.find(folded);
+        if (native == generated_instrument_name_transliterations_.end()) continue;
+        if (native->second.empty()) ++reviewed;
+        native->second = rule.target;
+    }
+    log_line("INFO", "Loaded " +
+        std::to_string(generated_instrument_name_transliterations_.size()) +
+        " Dwarven native instrument-name forms (" +
+        std::to_string(reviewed) + " reviewed transliterations)");
+    return loaded_languages;
+}
+
+bool Overlay::load_native_language_vocabulary() {
     generated_instrument_name_transliterations_.clear();
     native_name_language_masks_.clear();
     native_name_word_languages_.clear();
@@ -6697,42 +6822,6 @@ bool Overlay::load_generated_instrument_names() {
         }
     }
 
-    // The existing exact table contains reviewed phonetic forms for most
-    // Dwarven words. Import only its title-cased, case-insensitive word rules;
-    // ordinary semantic UI entries such as `Mat` deliberately do not have the
-    // `i` flag and therefore cannot leak into this phonetic-only namespace.
-    // Short roots omitted from global literals use the same vocabulary via a
-    // scoped entry generated from the existing native-language TOML tables.
-    size_t reviewed = 0;
-    constexpr std::string_view pronunciation_scope = "Native name pronunciation: ";
-    for (const Rule &rule : rules_) {
-        if (rule.numeric_template || rule.string_template ||
-            rule.source.empty() || rule.target.empty()) {
-            continue;
-        }
-        std::string folded;
-        if (rule.legends_prose && rule.source.starts_with(pronunciation_scope)) {
-            folded = lower_native_name(trim(rule.source.substr(pronunciation_scope.size())));
-        } else {
-            if (!rule.word_boundary || !rule.case_insensitive) continue;
-            folded = lower_native_name(trim(rule.source));
-            if (folded.empty() || folded.front() == rule.source.front()) continue;
-        }
-        if (native_name_language_masks_.contains(folded)) {
-            native_name_reviewed_transliterations_[folded] = rule.target;
-        }
-        const auto native =
-            generated_instrument_name_transliterations_.find(folded);
-        if (native == generated_instrument_name_transliterations_.end())
-            continue;
-        if (native->second.empty()) ++reviewed;
-        native->second = rule.target;
-    }
-
-    log_line("INFO", "Loaded " +
-        std::to_string(generated_instrument_name_transliterations_.size()) +
-        " Dwarven native instrument-name forms (" +
-        std::to_string(reviewed) + " reviewed transliterations)");
     log_line("INFO", "Loaded " +
         std::to_string(native_name_language_masks_.size()) +
         " native personal-name forms across " +
@@ -7548,6 +7637,48 @@ void Overlay::toggle_translation() {
     set_translation_enabled(!config_.enabled);
 }
 
+void Overlay::toggle_display_language() {
+    TranslationStateScope translation_scope;
+    const std::string previous = config_.language;
+    const std::string next = previous == "zh-Hant" ? "zh-Hans" : "zh-Hant";
+    if (next == "zh-Hant" && !chinese_conversion_.loaded()) {
+        try {
+            chinese_conversion_.load(runtime::data_path() / "opencc");
+        } catch (const std::exception &error) {
+            log_line("ERROR", std::string("Shift+F8: cannot load OpenCC dictionaries: ") + error.what());
+            return;
+        }
+    }
+    // Use the existing render reset while the SDL event loop owns the render
+    // thread. Retire borrowed component faces before replacing the main font.
+    invalidate_render_resources();
+    release_native_squads_language_resources();
+    release_native_dfhack_layer_target();
+    {
+        std::lock_guard<std::mutex> lock(dfhack_translation_mutex_);
+        dfhack_translation_completed_frame_.store({}, std::memory_order_release);
+        dfhack_translation_cache_.clear();
+        dfhack_translation_blocked_keys_.clear();
+    }
+    config_.language = next;
+    if (ft_ && !load_font()) {
+        config_.language = previous;
+        load_font();
+        log_line("ERROR", "Shift+F8: cannot load language font; restored " + previous);
+        return;
+    }
+    // SDL retains the session choice across core image reloads, just as it
+    // does for Shift+F6. The user's initial language setting stays on disk.
+    if (SDL_SetHintWithPriority(kDisplayLanguageHint, next.c_str(), SDL_HINT_OVERRIDE) != SDL_TRUE) {
+        config_.language = previous;
+        if (ft_) load_font();
+        log_line("ERROR", "Shift+F8: cannot retain language choice; restored " + previous);
+        return;
+    }
+    queue_dfhack_layer_translation();
+    log_line("INFO", "Shift+F8: display language switched to " + next);
+}
+
 void Overlay::toggle_translation_extensions() {
     TranslationStateScope translation_scope;
     const bool previous = extensions::enabled();
@@ -7649,6 +7780,71 @@ bool Overlay::apply_requested_reload() {
     load_generated_instrument_names();
     load_procedural_terms();
     return load_compositional_rules();
+}
+
+void Overlay::toggle_native_language() {
+    TranslationStateScope translation;
+    const bool previous = config_.native_language_original;
+    const bool enabled = config_.enabled;
+    const auto retain_choice = [](bool original) {
+        return SDL_SetHintWithPriority(kNativeLanguageOriginalHint,
+            original ? "1" : "0", SDL_HINT_OVERRIDE) == SDL_TRUE;
+    };
+    if (!retain_choice(!previous)) {
+        log_line("ERROR", "Settings menu: cannot retain native-language choice");
+        return;
+    }
+    invalidate_render_resources();
+    try {
+        request_reload();
+        if (!apply_requested_reload()) {
+            retain_choice(previous);
+            request_reload();
+            const bool restored = apply_requested_reload();
+            set_translation_enabled(enabled && restored);
+            log_line("ERROR", restored
+                ? "Settings menu: native-language reload failed; previous choice restored"
+                : "Settings menu: native-language reload and recovery failed; translation disabled");
+        } else {
+            set_translation_enabled(enabled);
+            log_line("INFO", config_.native_language_original
+                ? "Settings menu: four-race names use original spelling"
+                : "Settings menu: four-race names use Chinese transliteration");
+        }
+    } catch (...) {
+        retain_choice(previous);
+        request_reload();
+        set_translation_enabled(false);
+        throw;
+    }
+    {
+        std::lock_guard<std::mutex> lock(dfhack_translation_mutex_);
+        dfhack_translation_completed_frame_.store({}, std::memory_order_release);
+        dfhack_translation_cache_.clear();
+        dfhack_translation_blocked_keys_.clear();
+    }
+    queue_dfhack_layer_translation();
+}
+
+#include "dfhack_menu_dispatch.inc"
+
+void Overlay::run_settings_menu_action(int action) {
+    switch (action) {
+    case 0: toggle_translation(); break;
+    case 1: toggle_display_language(); break;
+    case 2: toggle_native_language(); break;
+    case 3:
+        if (!request_native_dfhack_toggle())
+            log_line("ERROR", "Settings menu: DFHack switch is unavailable or could not accept the request");
+        break;
+    case 4:
+        // The resident loader consumes this after the core's event callback
+        // has returned; no callback may unload the image on its own stack.
+        if (SDL_SetHintWithPriority("DFCN_SETTINGS_MENU_RELOAD_CORE", "1",
+                SDL_HINT_OVERRIDE) != SDL_TRUE)
+            log_line("ERROR", "Settings menu: cannot request core reload");
+        break;
+    }
 }
 
 const unsigned char *Overlay::cell_at(int x, int y, bool *top) const {
@@ -8084,6 +8280,7 @@ static std::string native_text_to_utf8(std::string_view input) {
     return output;
 }
 
+#include "native_language_display.inc"
 #include "native_file_errors.inc"
 
 // Soundtrack titles and credits are authored metadata, including built-in
@@ -9459,6 +9656,23 @@ std::optional<std::string> Overlay::translate_world_region_heading(std::string_v
 
 static std::string transliterate_native_history_name(std::string_view raw);
 
+std::string Overlay::native_language_word_display(std::string_view original) const {
+    const std::string display = native_text_to_utf8(original);
+    if (config_.native_language_original)
+        return preserve_native_language_original(display, display);
+    return transliterate_native_language_word(original);
+}
+
+std::string Overlay::transliterate_native_language_word(std::string_view original) const {
+    const std::string display = native_text_to_utf8(original);
+    if (contains_cjk_utf8(original)) return display;
+    const auto reviewed = native_name_reviewed_transliterations_.find(
+        lower_native_name(std::string(original)));
+    if (reviewed != native_name_reviewed_transliterations_.end() && !reviewed->second.empty())
+        return reviewed->second;
+    return transliterate_native_history_name(original);
+}
+
 std::optional<std::string> Overlay::translate_english_character_name(
         std::string_view raw, std::string_view native_given,
         std::string_view native_given_target) const {
@@ -9505,7 +9719,9 @@ std::optional<std::string> Overlay::translate_english_character_name(
                 // the phonetics even when the two spellings differ.
                 const bool proven_first = !proven_given.empty() &&
                     (given == proven_given || given == first);
-                if (proven_first && !proven_target.empty()) return proven_target;
+                if (proven_first && !proven_target.empty()) {
+                    return proven_target;
+                }
                 if (contains_cjk_utf8(given)) return native_text_to_utf8(given);
                 const std::string_view phonetic_source = proven_first ?
                     std::string_view(proven_given) : given;
@@ -9516,10 +9732,7 @@ std::optional<std::string> Overlay::translate_english_character_name(
                         !proven_first &&
                         !(generated_suffix && given == first &&
                           !english_character_names_.known_component(given))) return std::nullopt;
-                const auto reviewed = native_name_reviewed_transliterations_.find(key);
-                if (reviewed != native_name_reviewed_transliterations_.end() &&
-                        !reviewed->second.empty()) return reviewed->second;
-                return transliterate_native_history_name(spelling);
+                return transliterate_native_language_word(spelling);
             },
             [&](std::string_view nickname) {
                 auto target = exact_literal_translation(
@@ -9781,7 +9994,7 @@ std::optional<std::string> Overlay::translate_worldgen_creation(
 std::optional<std::string> Overlay::translate_procedural_fragment(
     const std::string &screen_text, bool phonetic_only,
     bool character_name_gloss, ProceduralNameHead name_head,
-    ProceduralFragmentContext context) const {
+    ProceduralFragmentContext context, bool allow_native_original) const {
     TranslationWorkFrame work_frame("generated name", screen_text);
     if (screen_text.empty()) return std::nullopt;
 
@@ -9789,6 +10002,14 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
     // graphical logo. It is not a native-language name: the single-token
     // phonetic fallback below would turn it into a fictitious Chinese name.
     if (trim_view(screen_text) == "DFHack") return std::nullopt;
+
+    // This entry is explicitly a native-language field. Keep the complete
+    // spelling before root folding or phonetic separators can change it.
+    const bool original_native = config_.native_language_original && allow_native_original;
+    if (phonetic_only && original_native) {
+        const auto original = native_text_to_utf8(screen_text);
+        return preserve_native_language_original(original, original);
+    }
 
     if (!phonetic_only && context == ProceduralFragmentContext::general_text &&
             screen_text.starts_with("Creating "))
@@ -10186,13 +10407,12 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
     auto transliterate = transliterate_native_history_name;
 
     auto render_native_word = [&](std::string_view raw) {
-        const std::string folded = lower_native_name(std::string(raw));
-        const auto reviewed = native_name_reviewed_transliterations_.find(folded);
-        if (reviewed != native_name_reviewed_transliterations_.end() &&
-            !reviewed->second.empty()) {
-            return reviewed->second;
-        }
-        return transliterate(folded);
+        return transliterate_native_language_word(raw);
+    };
+    const auto native_display = [&](std::string_view raw, std::string phonetic) {
+        if (!original_native) return phonetic;
+        const auto original = native_text_to_utf8(raw);
+        return preserve_native_language_original(original, original);
     };
     auto resolve_native_given_word = [&](std::string_view raw)
             -> std::optional<NativeNameWord> {
@@ -10200,7 +10420,7 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
         const auto found = native_name_language_masks_.find(folded);
         if (found == native_name_language_masks_.end()) return std::nullopt;
         return NativeNameWord{
-            render_native_word(folded), found->second, 1,
+            native_display(raw, render_native_word(folded)), found->second, 1,
         };
     };
     auto resolve_native_compound_word = [&](std::string_view raw,
@@ -10212,7 +10432,11 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
         cache_key.push_back(require_compound_grammar ? '\1' : '\0');
         cache_key += folded;
         if (const auto found = native_compound_cache_.find(cache_key);
-                found != native_compound_cache_.end()) return found->second;
+                found != native_compound_cache_.end()) {
+            auto result = found->second;
+            if (result) result->translated = native_display(raw, std::move(result->translated));
+            return result;
+        }
         std::optional<NativeNameWord> best;
         int best_score = -1;
         size_t best_shorter_part = 0;
@@ -10260,6 +10484,7 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
         }
         if (native_compound_cache_.size() < 32768 && folded.size() <= 512)
             native_compound_cache_.emplace(std::move(cache_key), best);
+        if (best) best->translated = native_display(raw, std::move(best->translated));
         return best;
     };
     auto native_name_word_shape = [](std::string_view word) {
@@ -10284,6 +10509,7 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
         if (auto root = resolve_native_given_word(folded);
                 root && (root->language_mask & languages)) {
             root->language_mask &= languages;
+            root->translated = native_display(raw, std::move(root->translated));
             return root;
         }
         std::optional<NativeNameWord> best;
@@ -10311,6 +10537,7 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
                     suffixes.front()->translated == best->translated)
                 best->language_mask |= mask;
         }
+        if (best) best->translated = native_display(raw, std::move(best->translated));
         return best;
     };
     if (native_name_groups) {
@@ -10364,7 +10591,7 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
                 }
                 translated += "·" + group->translated;
             }
-            if (complete) return translated;
+            if (complete) return native_display(screen_text, std::move(translated));
         }
         return std::nullopt;
     }
@@ -10428,7 +10655,7 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
                 if (!language_mask) return std::nullopt;
                 translated += "·" + suffix->translated;
             }
-            return translated;
+            return native_display(raw, std::move(translated));
         };
         if (const auto person = with_given_name()) return person;
 
@@ -10466,7 +10693,7 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
                 if (!suffix) { complete = false; break; }
                 translated += "·" + suffix->translated;
             }
-            if (complete) return translated;
+            if (complete) return native_display(raw, std::move(translated));
         }
         return std::nullopt;
     };
@@ -10644,7 +10871,7 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
         const auto surname = english_character_names_.compound(
             native_text_to_utf8(surname_source));
         if (!surname) return std::nullopt;
-        return given->translated + "·" + *surname;
+        return transliterate_native_language_word(given_source) + "·" + *surname;
     };
 
     // A chooser can contain both actions and people. Validate the generated
@@ -11125,11 +11352,16 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
         const auto native = translate_procedural_fragment(
             std::string(native_name), true);
         if (!native) return std::nullopt;
+        // The left field is native spelling; the quoted English gloss owns
+        // its Chinese name rendering, including a phonetic given name.
+        const auto phonetic = original_native ? translate_procedural_fragment(
+            std::string(native_name), true, false, {},
+            ProceduralFragmentContext::general_text, false) : native;
+        if (!phonetic) return std::nullopt;
         const auto given = native_name.substr(0, native_name.find(' '));
         if (character && source_gloss != native_name) {
-            const auto given_target = trim_view(
-                std::string_view(*native).substr(0,
-                    std::min(native->find("·"), native->find("“"))));
+            const auto given_target = trim_view(std::string_view(*phonetic).substr(0,
+                std::min(phonetic->find("·"), phonetic->find("“"))));
             const auto translated = translate_english_character_name(
                 source_gloss, given, given_target);
             return *native + "，“" + (translated ? *translated :
@@ -11139,7 +11371,7 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
         if (source_gloss == native_name) {
             // A single-name creature repeats its untranslated given name
             // inside quotes. It is not an English dictionary word.
-            gloss = *native;
+            gloss = *phonetic;
         } else if (source_gloss.starts_with(given) &&
                    source_gloss.size() > given.size() &&
                    source_gloss[given.size()] == ' ') {
@@ -11147,7 +11379,7 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
             // identity. In isolation the same word can also segment as a
             // compound, so resolving it again can produce two different
             // transliterations for one person on the same row.
-            gloss = native->substr(0, native->find("·"));
+            gloss = phonetic->substr(0, phonetic->find("·"));
             auto rest = trim_view(source_gloss.substr(given.size()));
             std::string_view surname, title;
             if (rest.starts_with("the ")) {
@@ -11566,7 +11798,7 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
             }
             if (const auto compound = resolve_native_compound_word(screen_text))
                 return complete_generated_name(compound->translated);
-            return complete_generated_name(transliterate(screen_text));
+            return complete_generated_name(native_display(screen_text, transliterate(screen_text)));
         }
     }
 
@@ -12457,13 +12689,11 @@ std::optional<std::string> Overlay::translate_ui_message_capture(
         if (const auto identity = exact_literal_translation("Announcement unit: " + lower(source)))
             return identity;
     }
-    const auto complete = [](const std::optional<std::string> &target) {
+    const auto complete = [&](const std::optional<std::string> &target) {
         if (!target || target->empty()) return false;
         const auto designation = split_item_designation(*target);
         return !designation.item.empty() &&
-            std::none_of(designation.item.begin(), designation.item.end(), [](unsigned char ch) {
-                return (ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z');
-            });
+            translation_complete_with_native_nicknames(std::string(designation.item), source);
     };
     std::optional<std::string> target;
     if (unit_label) {
@@ -15945,6 +16175,24 @@ const NativeKnowledgeLayout &Overlay::prepare_native_knowledge_layout(
             if (document_result->usable()) next.translation_result = document_result;
         }
 
+        if (config_.language == "zh-Hant") {
+            for (size_t index = 0; index < targets.size(); ++index) {
+                auto converted = localize_display(targets[index], source, next.translation_result.get());
+                if (index < target_foregrounds.size() && !target_foregrounds[index].empty() &&
+                        converted.text != targets[index]) {
+                    const auto &colors = target_foregrounds[index];
+                    std::vector<int> mapped;
+                    mapped.reserve(converted.text.size());
+                    for (size_t at = 0; at < converted.text.size(); ++at) {
+                        const size_t origin = converted.origins.empty() ? at : converted.origins[at];
+                        mapped.push_back(colors[std::min(origin, colors.size() - 1)]);
+                    }
+                    target_foregrounds[index] = std::move(mapped);
+                }
+                targets[index] = std::move(converted.text);
+            }
+        }
+        const DisplayLanguageScope localized_scope(nullptr, config_.language == "zh-Hant");
         const int max_pixels = std::max(1,
             width * gps_->tile_pixel_x - 2 * config_.horizontal_padding - 2);
         auto nonstarter = [](uint32_t cp) {
@@ -16513,6 +16761,7 @@ std::vector<Match> Overlay::resolve_native_knowledge_matches(
             owns_line ? layout.lines[static_cast<size_t>(target_line)] : std::string{},
             source_row ? document.rows[static_cast<size_t>(first_native_line + row)] : std::string{}};
         match.translation_result = layout.translation_result;
+        match.language_converted = config_.language == "zh-Hant";
         match.layout_x = left;
         match.layout_y = y;
         match.layout_length = width;
@@ -24488,8 +24737,15 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
             }
 
             if (only_y < 0) {
+                std::string localized_target;
+                std::string_view target = *translated;
+                if (config_.language == "zh-Hant") {
+                    localized_target = localize_display(target, poetic_description_source).text;
+                    target = localized_target;
+                }
+                const DisplayLanguageScope localized_scope(nullptr, config_.language == "zh-Hant");
                 std::vector<uint32_t> codepoints;
-                if (decode_utf8(*translated, codepoints) &&
+                if (decode_utf8(target, codepoints) &&
                     !codepoints.empty()) {
                     auto units = [](uint32_t cp) { return cp < 0x80 ? 1 : 2; };
                     auto nonstarter = [](uint32_t cp) {
@@ -24600,6 +24856,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                             rendered_lines[static_cast<size_t>(target_line)],
                             owns_source ? source_row.source : std::string{},
                         };
+                        visible.language_converted = config_.language == "zh-Hant";
                         visible.layout_x = paragraph_x;
                         const int pixel_y = display_top + visible_line * line_height;
                         visible.layout_y = pixel_y / gps_->tile_pixel_y;
@@ -25165,8 +25422,15 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
         const int paragraph_width = std::max(
             8, std::min(gps_->dimx - paragraph_x - 4,
                         paragraph_right - paragraph_x));
+        std::string localized_target;
+        std::string_view target = paragraph.target;
+        if (config_.language == "zh-Hant") {
+            localized_target = localize_display(target, paragraph.source).text;
+            target = localized_target;
+        }
+        const DisplayLanguageScope localized_scope(nullptr, config_.language == "zh-Hant");
         std::vector<uint32_t> codepoints;
-        if (!decode_utf8(paragraph.target, codepoints) || codepoints.empty())
+        if (!decode_utf8(target, codepoints) || codepoints.empty())
             continue;
         auto units = [](uint32_t cp) { return cp < 0x80 ? 1 : 2; };
         auto nonstarter = [](uint32_t cp) {
@@ -25259,6 +25523,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                 rendered_lines[static_cast<size_t>(target_line)],
                 owns_source ? source_row.source : std::string{},
             };
+            visible.language_converted = config_.language == "zh-Hant";
             visible.layout_x = paragraph_x;
             const int pixel_y = display_top + visible_line * line_height;
             visible.layout_y = pixel_y / gps_->tile_pixel_y;
@@ -25753,6 +26018,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                             static_cast<int>(i) * line_height;
                         Match match{anchor.x, anchor.y, 0, description_rule, layout.lines[i], {}};
                         match.translation_result = layout.translation_result;
+                        match.language_converted = config_.language == "zh-Hant";
                         match.layout_x = left;
                         match.layout_y = pixel_y / gps_->tile_pixel_y;
                         match.layout_pixel_y = pixel_y % gps_->tile_pixel_y;
@@ -26055,6 +26321,9 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                 combined_target += target;
             for (const std::string &target : personality_target->cave_adaptation)
                 combined_target += target;
+            if (config_.language == "zh-Hant")
+                combined_target = localize_display(combined_target, block.source).text;
+            const DisplayLanguageScope localized_scope(nullptr, config_.language == "zh-Hant");
             std::vector<uint32_t> codepoints;
             if (!decode_utf8(combined_target, codepoints) || codepoints.empty())
                 continue;
@@ -26113,6 +26382,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                 const PersonalityRow &row = block.rows[std::min(
                     static_cast<size_t>(line), block.rows.size() - 1)];
                 Match visible{row.x, row.y, 0, -10, std::move(rendered), {}};
+                visible.language_converted = config_.language == "zh-Hant";
                 visible.layout_x = paragraph_x;
                 const int display_y = display_top + line * line_height;
                 visible.layout_y = display_y / gps_->tile_pixel_y;
@@ -39831,7 +40101,10 @@ static std::string texture_key(const std::string &text, int max_width, int tile_
 }
 
 std::optional<Overlay::EllipsizedText> Overlay::ellipsize_text(
-        const std::string &text, int max_width) const {
+        const std::string &input_text, int max_width) const {
+    const auto converted = config_.language == "zh-Hant" && !g_display_language_converted
+        ? std::optional<ConvertedText>(localize_display(input_text)) : std::nullopt;
+    const auto &text = converted ? converted->text : input_text;
     const int pixels = unified_font_pixels();
     const std::string key = text + '\0' + std::to_string(pixels) + ':' +
         std::to_string(max_width);
@@ -39907,12 +40180,18 @@ std::optional<Overlay::EllipsizedText> Overlay::ellipsize_text(
     return result;
 }
 
-GlyphTexture *Overlay::get_glyph_texture(SDL_Renderer *renderer, const std::string &text,
+GlyphTexture *Overlay::get_glyph_texture(SDL_Renderer *renderer, const std::string &input_text,
                                          int max_width, int tile_height,
                                          int forced_pixel_size,
                                          int target_visual_height,
                                          bool lock_pixel_size,
-                                         const std::vector<int> &foregrounds, int wrap_width) {
+                                         const std::vector<int> &input_foregrounds, int wrap_width) {
+    const auto converted = config_.language == "zh-Hant" && !g_display_language_converted
+        ? std::optional<ConvertedText>(localize_display(input_text)) : std::nullopt;
+    const auto &text = converted ? converted->text : input_text;
+    const auto converted_foregrounds = converted
+        ? remap_display_colors(input_text, *converted, input_foregrounds) : std::vector<int>{};
+    const auto &foregrounds = converted ? converted_foregrounds : input_foregrounds;
     if (!face_ || max_width <= 0 || tile_height <= 0 || text.empty()) return nullptr;
     // All callers share one immutable size; available area affects layout,
     // never font metrics or glyph bitmaps.
@@ -39960,6 +40239,7 @@ GlyphTexture *Overlay::get_glyph_texture(SDL_Renderer *renderer, const std::stri
 }
 
 void Overlay::render_ime_popup(SDL_Renderer *renderer) {
+    DisplayLanguageScope authored_input(nullptr, true);
     TranslationStateScope translation_scope;
     if (!config_.enabled || !renderer || !face_ || SDL_IsTextInputActive() != SDL_TRUE) return;
     const ImePopupSnapshot snapshot = current_ime_popup_snapshot();
@@ -40631,12 +40911,14 @@ void Overlay::note_graphical_clear_write(SDL_Renderer *renderer, const SDL_Rect 
 }
 
 void Overlay::draw_match(SDL_Renderer *renderer, const Match &match) {
+    DisplayLanguageScope language_scope(&match);
     if (match.native_help_source_only) return;
     if (match.native_split_duplicate) return;
     if (match.legends_flow && match.legends_flow->laid_out) {
         if (!match.legends_flow_owner) return;
         const auto &flow = *match.legends_flow;
         Match part = match;
+        part.language_converted = true;
         part.legends_flow.reset();
         part.legends_flow_owner = false;
         // The source may carry native half-font caption flags. Each measured
@@ -41135,11 +41417,20 @@ void Overlay::draw_match(SDL_Renderer *renderer, const Match &match) {
     RenderTimingScope texture_timing(render_timings_, config_.trace_render_timing,
         RenderTimingStage::DrawTexture);
     auto foregrounds = colored_match_foregrounds(match, (fg_r << 16) | (fg_g << 8) | fg_b);
+    const bool needs_conversion = config_.language == "zh-Hant" && !g_display_language_converted;
+    const auto converted = needs_conversion
+        ? std::optional<ConvertedText>(localize_display(match.target)) : std::nullopt;
+    if (converted) foregrounds = remap_display_colors(match.target, *converted, foregrounds);
+    std::vector<std::string> converted_parts;
+    if (needs_conversion) for (const auto &part : match.layout_justified_parts)
+        converted_parts.push_back(localize_display(part).text);
+    const auto &justified_parts = needs_conversion ? converted_parts : match.layout_justified_parts;
+    const DisplayLanguageScope converted_scope(&match, true);
     std::string ellipsized;
-    const std::string *display_text = &match.target;
+    const std::string *display_text = converted ? &converted->text : &match.target;
     if (match.layout_ellipsize) {
         display_text = &ellipsized;
-        if (const auto fitted = ellipsize_text(match.target, span_width)) {
+        if (const auto fitted = ellipsize_text(converted ? converted->text : match.target, span_width)) {
             ellipsized = fitted->text;
             if (fitted->shortened && !foregrounds.empty()) {
                 const size_t kept = std::min(fitted->kept_codepoints, foregrounds.size());
@@ -41150,21 +41441,21 @@ void Overlay::draw_match(SDL_Renderer *renderer, const Match &match) {
         }
     }
     bool justified = false;
-    if (match.layout_justified_parts.size() >= 3 && foregrounds.empty()) {
+    if (justified_parts.size() >= 3 && foregrounds.empty()) {
         std::vector<int> widths;
         int total_width = 0;
-        for (const auto &part : match.layout_justified_parts) {
+        for (const auto &part : justified_parts) {
             const auto *glyph = get_glyph_texture(renderer, part, span_width, line_height,
                 match.layout_font_pixels, match.layout_visual_height_pixels, true);
             if (!glyph || !glyph->texture) break;
             widths.push_back(glyph->width);
             total_width += glyph->width;
         }
-        if (widths.size() == match.layout_justified_parts.size() && total_width <= span_width) {
+        if (widths.size() == justified_parts.size() && total_width <= span_width) {
             const int free_width = span_width - total_width;
             int preceding_width = 0;
             for (size_t index = 0; index < widths.size(); ++index) {
-                auto *glyph = get_glyph_texture(renderer, match.layout_justified_parts[index],
+                auto *glyph = get_glyph_texture(renderer, justified_parts[index],
                     span_width, line_height, match.layout_font_pixels,
                     match.layout_visual_height_pixels, true);
                 if (!glyph || !glyph->texture) continue;
@@ -42632,6 +42923,9 @@ static Overlay g_overlay;
 // The squad component borrows immutable catalog/font resources only. Its
 // graphics, matches, font caches and GPU text resources belong to this object.
 static Overlay g_native_squads_overlay;
+static void release_native_squads_language_resources() {
+    g_native_squads_overlay.release_native_squads_resources();
+}
 static void native_squads_prepare_text() {
     try { g_overlay.prepare_native_squads_text(); }
     catch (...) {
@@ -42910,6 +43204,7 @@ extern "C" void dfcn_render_present(SDL_Renderer *renderer) {
         boundary.checkpoint("name_search");
         g_overlay.render_ime_popup(renderer);
         boundary.checkpoint("ime_popup");
+        g_overlay.render_settings_menu(renderer);
         // Only a newly drawn native frame consumes the caption generation.
         // Repeated Present calls retain the last actual native writer evidence.
         if (g_overlay.native_frame_submitted()) advance_embark_item_capture_epoch();
@@ -42948,7 +43243,10 @@ extern "C" int dfcn_render_copy(SDL_Renderer *renderer, SDL_Texture *texture,
     return result;
 }
 
+static void native_settings_menu_prepare();
+static void native_settings_menu_release();
 #include "native_hooks.inc"
+#include "native_settings_menu.inc"
 #include "civilization_names.inc"
 #include "site_references.inc"
 #include "native_save_names.inc"
@@ -42972,6 +43270,8 @@ DFCN_EXPORT void dfhooks_init() {
     dfcn::reset_native_dfhack_console_lifecycle();
     dfcn::g_native_hook_thread = std::this_thread::get_id();
     dfcn::log_line("INFO", "========== DFCN loaded ==========");
+    if (auto error = dfcn::runtime::sync_game_config_defaults())
+        dfcn::log_line("WARN", *error);
     const SDL_bool native_ui = SDL_SetHintWithPriority(
         SDL_HINT_IME_SHOW_UI, "1", SDL_HINT_OVERRIDE);
     const SDL_bool internal_editing = SDL_SetHintWithPriority(
@@ -43014,6 +43314,7 @@ DFCN_EXPORT bool dfhooks_sdl_event(void *raw_event) {
         // Keep the event visible to the game's own renderer recovery.
         return false;
     }
+    if (dfcn::g_overlay.settings_menu_event(*event)) return true;
     static bool f6_consumed = false;
     if (event->type == SDL_WINDOWEVENT &&
         event->window.event == SDL_WINDOWEVENT_FOCUS_LOST) f6_consumed = false;
@@ -43027,6 +43328,23 @@ DFCN_EXPORT bool dfhooks_sdl_event(void *raw_event) {
         if ((mods & KMOD_SHIFT) && !(mods & (KMOD_CTRL | KMOD_ALT | KMOD_GUI))) {
             f6_consumed = true;
             if (!event->key.repeat) dfcn::g_overlay.toggle_translation_extensions();
+            return true;
+        }
+    }
+    static bool f8_consumed = false;
+    if (event->type == SDL_WINDOWEVENT &&
+        event->window.event == SDL_WINDOWEVENT_FOCUS_LOST) f8_consumed = false;
+    if (event->type == SDL_KEYUP && event->key.keysym.sym == SDLK_F8 && f8_consumed) {
+        f8_consumed = false;
+        return true;
+    }
+    if (event->type == SDL_KEYDOWN && event->key.keysym.sym == SDLK_F8) {
+        if (!event->key.repeat) f8_consumed = false;
+        if (f8_consumed) return true;
+        const auto mods = static_cast<SDL_Keymod>(event->key.keysym.mod);
+        if ((mods & KMOD_SHIFT) && !(mods & (KMOD_CTRL | KMOD_ALT | KMOD_GUI))) {
+            f8_consumed = true;
+            if (!event->key.repeat) dfcn::g_overlay.toggle_display_language();
             return true;
         }
     }

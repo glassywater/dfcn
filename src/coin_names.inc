@@ -62,6 +62,12 @@ std::optional<std::string> Overlay::translate_coin_item_name(
                     (ch >= 'A' && ch <= 'Z') || ch == '\n' || ch == '\r';
             });
     };
+    const auto complete_native_target = [](const std::optional<std::string> &target,
+                                           std::string_view original) {
+        return translation_complete_with_native_nicknames(target, original) &&
+            target->find("[C:") == std::string::npos &&
+            target->find_first_of("\r\n") == std::string::npos;
+    };
     auto &rulesets = DFHack::DFZH::Hooks::RulesetsManager::getInstance();
     // Starting at the leftmost boundary selects the longest complete material
     // suffix (including alloys and multiword materials), never a partial word.
@@ -95,7 +101,7 @@ std::optional<std::string> Overlay::translate_coin_item_name(
                 }
             }
             const auto name = translate_coin_native_identity(identity);
-            if (!complete_target(name)) return std::nullopt;
+            if (!complete_native_target(name, identity)) return std::nullopt;
             if (!year.empty()) {
                 // Use the same date wording as structured coin descriptions,
                 // with already resolved identity/number captures.
@@ -105,7 +111,7 @@ std::optional<std::string> Overlay::translate_coin_item_name(
                     const std::vector<std::optional<std::string>> resolved = {*name, year};
                     const auto dated = fill_template(rule, {identity, year},
                         nullptr, nullptr, &resolved);
-                    if (!complete_target(dated)) return std::nullopt;
+                    if (!complete_native_target(dated, source)) return std::nullopt;
                     return dated + " " + *coin;
                 }
                 return std::nullopt;

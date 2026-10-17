@@ -242,7 +242,8 @@ inline std::optional<NativeUiSettings> native_ui_settings() {
     return result;
 }
 
-inline void native_find_font(std::string &path, int &index, bool bold = false) {
+inline void native_find_font(std::string &path, int &index, bool bold = false,
+        bool traditional = false) {
 #ifdef _WIN32
     (void)bold;
     if (path.empty()) {
@@ -250,9 +251,9 @@ inline void native_find_font(std::string &path, int &index, bool bold = false) {
         const auto length = GetWindowsDirectoryW(directory, 32768);
         if (!length || length >= 32768) return;
         const auto fonts = std::filesystem::path(directory) / "Fonts";
-        const std::array<const char *, 4> system_candidates = {
-            "NotoSansSC-VF.ttf", "Deng.ttf", "simhei.ttf", "simsun.ttc"
-        };
+        const auto system_candidates = traditional
+            ? std::array<const char *, 4>{"NotoSansTC-VF.ttf", "msjh.ttc", "mingliu.ttc", "simsun.ttc"}
+            : std::array<const char *, 4>{"NotoSansSC-VF.ttf", "Deng.ttf", "simhei.ttf", "simsun.ttc"};
         for (const char *candidate : system_candidates) {
             std::error_code ec;
             if (std::filesystem::is_regular_file(fonts / candidate, ec)) {
@@ -270,11 +271,11 @@ inline void native_find_font(std::string &path, int &index, bool bold = false) {
         // out after grayscale antialiasing; Fontconfig still supplies a
         // generic CJK fallback when these families are not installed.
         FcPatternAddString(pattern, FC_FAMILY,
-                           reinterpret_cast<const FcChar8 *>("Source Han Sans SC"));
+                           reinterpret_cast<const FcChar8 *>(traditional ? "Source Han Sans TC" : "Source Han Sans SC"));
         FcPatternAddString(pattern, FC_FAMILY,
-                           reinterpret_cast<const FcChar8 *>("Noto Sans CJK SC"));
+                           reinterpret_cast<const FcChar8 *>(traditional ? "Noto Sans CJK TC" : "Noto Sans CJK SC"));
         FcPatternAddString(pattern, FC_FAMILY, reinterpret_cast<const FcChar8 *>("sans-serif"));
-        FcPatternAddString(pattern, FC_LANG, reinterpret_cast<const FcChar8 *>("zh-cn"));
+        FcPatternAddString(pattern, FC_LANG, reinterpret_cast<const FcChar8 *>(traditional ? "zh-tw" : "zh-cn"));
         FcPatternAddInteger(pattern, FC_WEIGHT, bold ? FC_WEIGHT_BOLD : FC_WEIGHT_MEDIUM);
         FcConfigSubstitute(nullptr, pattern, FcMatchPattern);
         FcDefaultSubstitute(pattern);
