@@ -911,10 +911,11 @@ std::optional<std::string> Overlay::translate_map_hover_phrase(std::string_view 
         // Native lookinfo_verminst::item_id, colony flag and count select
         // the same finite productions used by the game's formatter.
         if (context.data[1] != -1) return item();
+        const uint32_t count = static_cast<uint32_t>(context.data[3]);
         std::string_view prefix;
         if (static_cast<uint32_t>(context.data[2]) & 2u) prefix = "a colony of ";
-        else if (context.data[3] >= 50) prefix = "a swarm of ";
-        else if (context.data[3] >= 10) prefix = "many ";
+        else if (count >= 50) prefix = "a swarm of ";
+        else if (count >= 10) prefix = "many ";
         if (!prefix.empty()) {
             // The native constructor keeps its quantity prefix when the
             // species lookup fails. The complete caption was trimmed above.
@@ -929,7 +930,7 @@ std::optional<std::string> Overlay::translate_map_hover_phrase(std::string_view 
                 std::string(prefix) + "{::creatures::name::plural}",
                 {{"::creatures::name::plural", *species}});
         }
-        if (context.data[3] > 1) return scoped(source, "::creatures::name::plural");
+        if (count > 1) return scoped(source, "::creatures::name::plural");
         if (auto target = scoped(source, "::creatures::caste::singular")) return target;
         return scoped(source, "::creatures::name::singular");
     }

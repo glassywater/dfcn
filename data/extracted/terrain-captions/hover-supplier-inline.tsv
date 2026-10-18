@@ -1,0 +1,9 @@
+edition	role	owner_rva	instruction_rva	little_endian_bytes	source	instruction
+reference	unit-caption-adventure	0x132e430	0x132eb4f	707269736f6e6572	prisoner	movabs rcx,0x72656e6f73697270
+reference	unit-caption-adventure	0x132e430	0x132ebad	707269736f6e6572	prisoner	movabs rax,0x72656e6f73697270
+reference	unit-caption-adventure	0x132e430	0x132f3ff	707269736f6e6572	prisoner	movabs rcx,0x72656e6f73697270
+reference	unit-caption-adventure	0x132e430	0x132f459	707269736f6e6572	prisoner	movabs rax,0x72656e6f73697270
+classic	unit-caption-adventure	0x13293a0	0x1329abf	707269736f6e6572	prisoner	movabs rcx,0x72656e6f73697270
+classic	unit-caption-adventure	0x13293a0	0x1329b1d	707269736f6e6572	prisoner	movabs rax,0x72656e6f73697270
+classic	unit-caption-adventure	0x13293a0	0x132a36f	707269736f6e6572	prisoner	movabs rcx,0x72656e6f73697270
+classic	unit-caption-adventure	0x13293a0	0x132a3c9	707269736f6e6572	prisoner	movabs rax,0x72656e6f73697270

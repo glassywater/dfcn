@@ -15,9 +15,10 @@ This is a finite inventory of the caption producers and their source fields.
 It is not an enumeration of every possible world-specific output sentence.
 RAW material/plant/body-part text and procedural names remain dynamic inputs.
 Existing RAW/name translation catalogs supply those domains; their strings
-must not be replaced by a guessed finite list. Calls into generic item, unit,
-building and generated-name formatters are recorded, not recursively claimed
-to have been decompiled in this terrain extraction.
+must not be replaced by a guessed finite list. Generic building virtual
+methods and generated-name internals are recorded as dynamic suppliers.
+The item wrapper, Fortress/Adventure unit wrappers, vermin race/caste helper
+and critter item-description route are now actual Ghidra C output as well.
 
 The original tile-hover-sources.tsv catalog retained reference-image LEA
 operands. This extraction additionally retains printable operands of any
@@ -448,7 +449,8 @@ vermin quantity;14 flow selectors; Campfire/Fire; surface-deposit extent;
 water/magma complete bracket strings; spoor complete-source shortening.
 Notable constructor-specific edges: building-item adds leading space;
 spoor uninformed/default state can emit just Track/Spoor; vapor lowercase;
-solid extent1 constructor omits quantity prefix while HUD emits thin layer.
+matter_state!=1 extent1 constructor emits A dusting of while HUD solid
+extent1 emits A thin layer of. Only extents outside1..3 omit the prefix.
 Missing typed objects can leave the cleared caption empty and still set
 color. Unknown top-level type jumps cleanup leaving empty caption.
 
@@ -503,3 +505,108 @@ It also retains34 actual dedicated-vector-leaf CALL rows and their complete
 instruction contexts; all belong to the three known list-owner families.
 Vector-owner interval ASM includes the complete unwind span; embedded table
 bytes at its end are not counted as newly decompiled instruction branches.
+
+Actual Ghidra extraction of the complete cached-hover source, 2026-10-18
+--------------------------------------------------------------------
+DecompileHoverCaptionSuppliers.java was run headlessly against BOTH actual
+configured PE files with the installed Ghidra12.1.4/JDK25.0.4.1, -noanalysis,
+and explicit original instruction bodies plus binary jump-table overrides.
+The resulting edition-hover-ghidra-decompiled.c and per-role *.c files are
+actual decompiler output, not pseudocode reconstructed from literal hits.
+The normal successful runs completed with process exit0. Each edition uses
+its own temporary settings/cache because the default Felix cache could not
+start. Source extractors never attached to or controlled the running game.
+
+The cached constructor's complete dispatch is the following native table.
+Classic entry RVAs are Reference-0x2440; type outside0..15 takes cleanup,
+leaving the cleared string empty. These are source cases, not sample outputs.
+
+type  Reference entry   source
+0     0x4068e2          item id ->item-caption
+1     0x406973          terrain with growth=true
+2     0x406c7f          unit id ->Fortress or Adventure unit-caption
+3     0x406d2e          building id ->virtual slot+0x188
+4     0x406daa          vermin; full RAW/item/quantity branches below
+5     0x407119          all14 flow kinds, material/item cloud alternatives
+6     0x40743e          A Campfire
+7     0x40745f          all surface-deposit state/extent/material/item routes
+8     0x407641          building-item ->leading space+item-caption
+9     0x407710          A Fire
+10    0x407731          four stagnant/salt water variants+depth+/7]
+11    0x40782f          Magma/Lava+depth+/7]
+12    0x4078c9          complete spoor source, shortening and suffix routes
+13    0x4069a3          all9 sound types and recent/heard suffix alternatives
+14    0x406afb          all11 remembered object/terrain categories
+15    0x406c4d          Blood of the living (sensed)
+
+Vermin native construction and all dynamic text supply paths
+-----------------------------------------------------------
+Producer Reference0x408d81..0x408e7c (Classic-0x2440) visits world.vermin.
+Only visible/active records whose x,y,z match the selected tile create type4.
+It initializes item_id(+0x8)=-1, flags(+0xc)=0, count(+0x10)=1, then copies
+race/caste words from vermin+0/+2, optional backing-item id from pointer+0x10
+to item.id+0x1c, and native flags/count from vermin+0x18/+0x1c. It calls the
+same cached constructor before appending the record; no display-word guess
+selects the data source.
+
+At cached case0x406daa, item_id!=-1 bypasses every RAW quantity route. A
+successful item id lookup calls item-caption0xc65450; a missing lookup keeps
+the cleared string empty. item_id==-1 selects these complete native routes:
+* flags&2 ->"a colony of "+creature_raw.name[1], irrespective of count.
+* otherwise count0..1 ->vermin-name(race,out,plural=false,caste).
+* count2..9 ->creature_raw.name[1], with no number or prefix.
+* count10..49 ->"many "+creature_raw.name[1].
+* count>=50 ->"a swarm of "+creature_raw.name[1].
+All counts are unsigned in this constructor. Invalid race indices append
+no RAW name. Prefixes already appended on colony/many/swarm paths remain;
+the native program does not substitute an Unknown caption.
+
+vermin-name Reference0xaa3bd0..0xaa3d93, Classic0xaa0c50..0xaa0e13:
+The helper clears its output first. A valid caste's nonempty name[0] at+0x20
+wins for singular; absent caste(-1), negative/out-of-range caste or empty
+caste singular name falls back to creature_raw.name[0] at+0x20. Plural=true
+uses the same hierarchy with name[1] at+0x40. Invalid race leaves empty.
+Cached hover invokes singular only in count<=1; larger quantities read the
+species plural directly, so caste-specific plural text is not a hover path.
+
+Item-backed critter caption: actual RTTI and vtable bytes are retained in
+hover-supplier-virtuals.tsv. item_critterst, item_verminst and item_petst
+share getItemDescription at vtable+0x5e8: Reference0xca2a80..0xca2b85,
+Classic0xc9fac0..0xc9fbc5. vtable+0x5f0 is the article method, not the name.
+The description optionally prepends the critter's own language_name(+0xc8)
+and ", " when has_name(+0x13a) is set; this own name is not a species RAW.
+It then calls critter-species0xca5bb0/0xca2bf0. That source gathers actual
+item type/subtype/material/race/caste/count/flags and optional artifact info,
+selects requested singular/plural/count mode, and calls the existing shared
+item-kind/material formatter0xa82c10 (Classic0xa7fc90). Thus item-backed
+Vermin also reaches live species/caste/item-name fields through item source;
+the wrapper supplies quality/wear/ownership decoration independently.
+
+Neither cached type4, vermin-name nor critter-description has a literal
+"[cook]" branch. That text can arrive as part of a changed live RAW name.
+The screenshot's species name therefore must be translated as a source
+field with permitted live RAW tags, preserving independently supplied own
+names and the native colony/many/swarm/item-backed distinctions. The game
+can produce dynamic names from installed data; no finite catalogue of full
+world-specific strings can replace these field routes.
+
+Translation of live RAW use annotations
+--------------------------------------
+The existing item_tagger::tags::tag vocabulary supplies all nine known labels:
+[brew], [cook], [edi], [mill], [color], [eco], [flux], [fuel], [msafe]. These
+are annotation vocabulary inputs, not literals recovered from the native
+constructor. The shared creature descriptor now separates a complete suffix
+of known annotations from a fully resolved species/caste noun, preserving
+annotation order. Whitespace normalization also covers earlier runs leaving
+extra spaces. Unknown annotations or unresolved base nouns do not produce a
+partially translated field.
+
+The creature-prefix resolver now offers closing-bracket boundaries to that
+strict descriptor. Thus the same correction reaches all three typed scopes
+(species singular/plural and caste singular), including cached/HUD vermin,
+live-animal item captions, unit RAW roles and species-owned spoor. Personal
+names and custom professions retain their independently typed name handling.
+Vermin count dispatch uses the constructor's unsigned32-bit interpretation;
+colony retains priority over the count thresholds. The screenshot's complete
+field resolves as "拟星虫 [可烹饪]" without adding a species/tag combination
+entry or replacing its source type with an inferred profession.
