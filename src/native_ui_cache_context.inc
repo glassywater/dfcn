@@ -509,6 +509,119 @@ public:
         });
         optional(input.index_intro, [&](const auto &box) { rect(box); });
     }
+    void adventure_background_snapshot(uintptr_t screen) {
+#ifdef _WIN32
+        const auto *native = native_graphics();
+        if (!native || !native->screen) { complete = false; return; }
+        const auto screen_field = [&](std::string_view member, size_t width) {
+            return native_history_object_member(screen, "viewscreen_setupadventurest", member, width);
+        };
+        int32_t selected = -1;
+        NativeBorrowedVector<uintptr_t> sheets;
+        if (!native_history_copy(screen_field("active_sheet_index", sizeof(selected)), selected) ||
+                selected < 0 || !native_history_read_vector(screen_field("csheet", sizeof(sheets)), sheets) ||
+                !sheets.valid(64) || static_cast<size_t>(selected) >= sheets.size()) {
+            complete = false; return;
+        }
+        const uintptr_t owner = native_history_vector_at(sheets, static_cast<size_t>(selected));
+        const auto field = [&](std::string_view member, size_t width) {
+            return native_history_object_member(owner, "setup_character_info", member, width);
+        };
+        int32_t column = -1, description = -1, native_grid_y = 0;
+        const auto *settings = native_ui_settings_source();
+        if (!owner || !native_history_copy(field("active_column", sizeof(column)), column) ||
+                column != 2 ||
+                !native_history_copy(field("desc_rp_index", sizeof(description)), description) ||
+                !settings || !native_history_copy(reinterpret_cast<uintptr_t>(settings) + 0x18,
+                    native_grid_y) || native_grid_y <= 20 || native_grid_y > 1000) {
+            // Home still resolves additional live site/controller formatter
+            // context. Keep it on the ordinary path until that context is owned.
+            complete = false; return;
+        }
+        value(screen); value(selected); value(owner); value(column); value(description);
+        value(native_grid_y);
+        const auto beliefs = frame_native_adventure_belief_cache();
+        const auto choices = frame_native_adventure_belief_choices();
+        if (!choices || frame_native_adventure_home_cache()) { complete = false; return; }
+        optional(beliefs, [&](const auto &cache) {
+            if (cache.screen != screen || cache.owner != owner) { complete = false; return; }
+            value(cache.screen); value(cache.owner);
+            value(cache.practice); value(cache.practice_id); value(cache.figure_id);
+            value(cache.religion); value(cache.figure); value(cache.figure_flags);
+            value(cache.figure_race); value(cache.figure_sex); value(cache.character_race);
+            text(cache.creature_singular); text(cache.creature_adjective);
+            range(cache.figure_spheres, [&](auto sphere) { value(sphere); });
+            optional(cache.religion_name, [&](const auto &input) { name(input); });
+            optional(cache.figure_name, [&](const auto &input) { name(input); });
+            optional(cache.force_name, [&](const auto &input) { name(input); });
+            optional(cache.temple, [&](const auto &input) {
+                value(input.kind); value(input.id); value(input.subid); value(input.native_type);
+                name(input.name); text(input.species); text(input.label_key); text(input.raw_title);
+            });
+            value(cache.temple_ruined);
+            range(cache.rows, [&](const auto &input) { address(input.address); text(input.source); });
+            range(cache.paragraphs, [&](const auto &paragraph) { text(paragraph); });
+        });
+        range(*choices, [&](const auto &choice) {
+            value(choice.practice); value(choice.id); value(choice.figure_flags); text(choice.species);
+            optional(choice.name, [&](const auto &input) { name(input); });
+        });
+        const auto submitted = captured_native_adventure_background_draws(*native);
+        range(submitted, [&](const auto &draw) {
+            value(draw.x); value(draw.y); address(draw.address); text(draw.source);
+            value(draw.draw_dimx); value(draw.draw_dimy);
+            // The getter already requires this producer's current base grid.
+            // Neither alternating native buffers nor frame counters are content.
+            value(draw.draw_grid == native->screen);
+        });
+        optional(native_hover_center_background_rgb(*native), [&](int rgb) { value(rgb); });
+        if (!submitted.empty() && !native_ui_classic().value_or(true)) {
+            // A retained solid clear also depends on the real anchored draw
+            // extents. Surface dimensions can change without changing a tile
+            // ID; the native source-array comparison alone cannot see that.
+            for (bool top_layer : {false, true}) {
+                if (top_layer && !native->top_in_use) continue;
+                const auto *textures = top_layer
+                    ? native->screentexpos_top_anchored : native->screentexpos_anchored;
+                const auto *flags = top_layer
+                    ? native->screentexpos_top_flag : native->screentexpos_flag;
+                value(top_layer); value(textures != nullptr); value(flags != nullptr);
+                if (!textures) continue;
+                for (int x = 0; x < native->dimx; ++x)
+                    for (int y = 0; y < native->dimy; ++y) {
+                        const size_t tile = static_cast<size_t>(x) * native->dimy + y;
+                        if (!textures[tile] || (flags && (flags[tile] & 4u))) continue;
+                        value(x); value(y);
+                        optional(native_anchored_tile_draw_bounds(*native,
+                            g_native_help_layer.native_renderer, x, y, top_layer),
+                            [&](const auto &bounds) { rect(bounds); });
+                    }
+                value(-1); // End of this plane's variable-length origin list.
+            }
+        }
+#else
+        (void)screen;
+        complete = false;
+#endif
+    }
+    bool adventure_background(uintptr_t screen) {
+        auto *snapshot = g_native_adventure_background_read;
+        if (snapshot && snapshot->context_read) {
+            if (!snapshot->context) return false;
+            text(*snapshot->context);
+            return complete;
+        }
+        NativeUiCacheContextWriter sources;
+        sources.adventure_background_snapshot(screen);
+        auto context = sources.finish();
+        if (snapshot) {
+            snapshot->context_read = true;
+            snapshot->context = context;
+        }
+        if (!context) return false;
+        text(*context);
+        return complete;
+    }
     bool common(bool character = false) {
         character_ = character;
         value(g_native_ui_render_generation);
@@ -517,6 +630,8 @@ public:
         value(g_overlay.native_identity_translation_catalog_generation());
         const uintptr_t screen = native_current_viewscreen();
         if (!screen) return false;
+        if (!character && native_history_object_is(screen, "viewscreen_setupadventurest") &&
+                !adventure_background(screen)) return false;
         value(screen);
         const auto classic = native_ui_classic();
         if (!classic) return false;

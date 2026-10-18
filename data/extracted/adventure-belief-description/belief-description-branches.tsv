@@ -1,4 +1,7 @@
 edition	branch	guard	producer_rva	text
+reference	no-description	subtab=2; faith types empty (other tabs keep their own source branch)	0x63e3fb	
+reference	deity/missing-figure	type=0; selected figure ID is -1 or absent	0x63e572	
+reference	unsupported-faith-type	selected type is neither 0 nor 1	0x63e447	
 reference	religion/no-deity	type=1; entity missing or entity.deities empty or first figure missing	0x63e46d	{religion} is a religion
 reference	deity/female/caste-0/domains-0	type=0; figure.flags[0]&4; gender=female; caste adjective=0; spheres nonempty=0	0x63e73e	{deity} is the goddess.
 reference	deity/female/caste-0/domains-1	type=0; figure.flags[0]&4; gender=female; caste adjective=0; spheres nonempty=1	0x63e73e	{deity} is the goddess of {domain list}.
@@ -27,10 +30,12 @@ reference	religion/other/caste-1/domains-1	type=1; figure.flags[0]&4; gender=oth
 reference	deity/force	figure.flags[0]&8 and !(figure.flags[0]&4); force place missing	0x63e653	{deity} is the force.
 reference	deity/force-place	figure.flags[0]&8 and !(figure.flags[0]&4); force place found	0x63e653	{deity} is the force which permeates {place}.
 reference	deity/ordinary-figure	figure has neither deity nor force flags; race is valid; native clears accumulated output before reading race/caste singular	0x63e919	{creature singular}.
+reference	deity/ordinary-figure-empty-raw	figure has neither deity nor force flags; race != -1; native raw lookup fails or both singular fields are empty after it clears output	0x63e96a	.
 reference	deity/figure-name-only	figure has neither deity nor force flags; race == -1	0x63e919	{deity}.
 reference	religion/force	figure.flags[0]&8 and !(figure.flags[0]&4); force place missing	0x63e653	{religion} is a religion whose adherents worship {deity}, the force.
 reference	religion/force-place	figure.flags[0]&8 and !(figure.flags[0]&4); force place found	0x63e653	{religion} is a religion whose adherents worship {deity}, the force which permeates {place}.
 reference	religion/ordinary-figure	figure has neither deity nor force flags; race is valid; native clears accumulated output before reading race/caste singular	0x63e919	{creature singular}.
+reference	religion/ordinary-figure-empty-raw	figure has neither deity nor force flags; race != -1; native raw lookup fails or both singular fields are empty after it clears output	0x63e96a	.
 reference	religion/figure-name-only	figure has neither deity nor force flags; race == -1	0x63e919	{religion} is a religion whose adherents worship {deity}.
 reference	religion/active-temple	matching site; matching religion temple; not obsolete; active temple selected	0x63ed15	They worship at {structure}.
 reference	religion/ruined-temple	no active temple; matching religion temple has inactive or ruined flag	0x63ef7b	Their temple {structure} is ruined.
@@ -39,6 +44,9 @@ reference	deity/no-temple	type=0 leaves religion pointer null; temple branch req
 reference	domain-list/one	sphere count=1; native iteration starts at last element	0x63e890	{domain}
 reference	domain-list/two	sphere count=2; reverse native vector order	0x63e901	{domain[1]} and {domain[0]}
 reference	domain-list/many	sphere count>=3; reverse native vector order; comma while index>=2; and when index=1	0x63e8d1	{domain[n-1]}, ... {domain[1]} and {domain[0]}
+classic	no-description	subtab=2; faith types empty (other tabs keep their own source branch)	0x63be1b	
+classic	deity/missing-figure	type=0; selected figure ID is -1 or absent	0x63bf92	
+classic	unsupported-faith-type	selected type is neither 0 nor 1	0x63be67	
 classic	religion/no-deity	type=1; entity missing or entity.deities empty or first figure missing	0x63be8d	{religion} is a religion
 classic	deity/female/caste-0/domains-0	type=0; figure.flags[0]&4; gender=female; caste adjective=0; spheres nonempty=0	0x63c15e	{deity} is the goddess.
 classic	deity/female/caste-0/domains-1	type=0; figure.flags[0]&4; gender=female; caste adjective=0; spheres nonempty=1	0x63c15e	{deity} is the goddess of {domain list}.
@@ -67,10 +75,12 @@ classic	religion/other/caste-1/domains-1	type=1; figure.flags[0]&4; gender=other
 classic	deity/force	figure.flags[0]&8 and !(figure.flags[0]&4); force place missing	0x63c073	{deity} is the force.
 classic	deity/force-place	figure.flags[0]&8 and !(figure.flags[0]&4); force place found	0x63c073	{deity} is the force which permeates {place}.
 classic	deity/ordinary-figure	figure has neither deity nor force flags; race is valid; native clears accumulated output before reading race/caste singular	0x63c339	{creature singular}.
+classic	deity/ordinary-figure-empty-raw	figure has neither deity nor force flags; race != -1; native raw lookup fails or both singular fields are empty after it clears output	0x63c38a	.
 classic	deity/figure-name-only	figure has neither deity nor force flags; race == -1	0x63c339	{deity}.
 classic	religion/force	figure.flags[0]&8 and !(figure.flags[0]&4); force place missing	0x63c073	{religion} is a religion whose adherents worship {deity}, the force.
 classic	religion/force-place	figure.flags[0]&8 and !(figure.flags[0]&4); force place found	0x63c073	{religion} is a religion whose adherents worship {deity}, the force which permeates {place}.
 classic	religion/ordinary-figure	figure has neither deity nor force flags; race is valid; native clears accumulated output before reading race/caste singular	0x63c339	{creature singular}.
+classic	religion/ordinary-figure-empty-raw	figure has neither deity nor force flags; race != -1; native raw lookup fails or both singular fields are empty after it clears output	0x63c38a	.
 classic	religion/figure-name-only	figure has neither deity nor force flags; race == -1	0x63c339	{religion} is a religion whose adherents worship {deity}.
 classic	religion/active-temple	matching site; matching religion temple; not obsolete; active temple selected	0x63c735	They worship at {structure}.
 classic	religion/ruined-temple	no active temple; matching religion temple has inactive or ruined flag	0x63c99b	Their temple {structure} is ruined.

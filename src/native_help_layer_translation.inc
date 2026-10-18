@@ -63,6 +63,7 @@ void Overlay::render_native_help_layer(SDL_Renderer *renderer) {
     std::vector<Match> result, untranslated_help_rows;
     const unsigned char *screen_override = nullptr;
     const auto mask_announcement_popup = [](std::vector<std::string> &) {};
+    const auto mask_adventure_background_rows = [](std::vector<std::string> &) {};
     auto append_setup_paragraph = [&](std::vector<Match> rows, std::string_view target,
             int clip_right = -1, int box_right = -1,
             const std::vector<int> &foregrounds = std::vector<int>{},

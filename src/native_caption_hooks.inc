@@ -2616,6 +2616,46 @@ static void capture_native_announcement_log_caption(graphicst *graphics,
     } catch (...) {}
 }
 
+#ifdef _WIN32
+static void remember_native_adventure_background_draw(graphicst *graphics,
+        const NativeString *source, bool top_layer, uintptr_t native_caller) {
+    if (!native_caller || native_caller != native_reference_address(
+            native_history_profile_base(), 0x62d711) || top_layer || !graphics ||
+            !graphics->screen || graphics->dimx <= 0 || graphics->dimx > 1000 ||
+            graphics->dimy <= 0 || graphics->dimy > 1000) return;
+    try {
+        const int x = graphics->screenx, y = graphics->screeny;
+        std::string_view text;
+        if (!source || x < 0 || x >= graphics->dimx || y < 0 || y >= graphics->dimy ||
+                y < graphics->clipy[0] || y > graphics->clipy[1] ||
+                x < graphics->clipx[0] || !native_string_view(source, &text, 4096) ||
+                text.size() > static_cast<size_t>(graphics->dimx - x) ||
+                int64_t(x) + static_cast<int64_t>(text.size()) > int64_t(graphics->clipx[1]) + 1 ||
+                text.find_first_of("\r\n") != std::string_view::npos ||
+                text.find('\0') != std::string_view::npos) return;
+        const auto epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
+        std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
+        if (g_native_adventure_background_epoch != epoch) {
+            g_native_adventure_background_rows.clear();
+            g_native_adventure_background_epoch = epoch;
+        }
+        std::erase_if(g_native_adventure_background_rows, [&](const auto &row) {
+            return row.x == x && row.y == y;
+        });
+        if (g_native_adventure_background_rows.size() >= 4096) return;
+        // Blank retained rows are real addst submissions too. Their positions
+        // prove spacing independently of ordinary caption/prose classification.
+        NativeDrawnTextRow row{x, y, std::string(text), reinterpret_cast<uintptr_t>(source), true};
+        row.draw_grid = graphics->screen;
+        row.draw_dimx = graphics->dimx;
+        row.draw_dimy = graphics->dimy;
+        row.draw_epoch = epoch;
+        row.native_caller = native_caller;
+        g_native_adventure_background_rows.push_back(std::move(row));
+    } catch (...) {}
+}
+#endif
+
 template<typename Draw>
 static void capture_native_limited_caption_draw(graphicst *graphics, const NativeString *source,
         NativeJustification just, int width, Draw &&draw, bool top_layer = false,
@@ -2652,6 +2692,11 @@ static void capture_native_limited_caption_draw(graphicst *graphics, const Nativ
         return;
     }
     if (native_private_ui_write_active(graphics)) { draw(); return; }
+#ifdef _WIN32
+    // The retained background writer owns these submissions independently
+    // of generic resize/prose capture and its re-entrancy guard.
+    remember_native_adventure_background_draw(graphics, source, top_layer, native_caller);
+#endif
     const auto inventory_role = native_adventure_inventory_role(
         native_caller, reinterpret_cast<uintptr_t>(source));
     const auto barter_field = native_adventure_barter_field(native_caller);

@@ -748,6 +748,9 @@ struct Match {
     // Only a proved, uniformly filled native text body owns every pixel in
     // this box, including old target ink of any foreground colour.
     bool graphical_clear_flat_background = false;
+    // A current opaque native centre texture can supply its exact flat fill
+    // from CPU memory, avoiding a GPU readback for this owned text body.
+    int graphical_clear_background_rgb = -1;
     bool graphical_auto_foreground = false;
     // Native TOP_OF_TEXT/BOTTOM_OF_TEXT are two halves of ONE caption,
     // not repeated text rows. Preserve that identity through page layout.
@@ -2394,6 +2397,13 @@ struct NativeDrawnTextRow {
 };
 static std::mutex g_native_drawn_text_mutex;
 static std::vector<NativeDrawnTextRow> g_native_drawn_text_rows;
+#ifdef _WIN32
+// setupadventure's retained Home/Beliefs row loop has its own lifetime.
+// Keep its submitted rows even when other captions reuse a position; readers
+// still require the current native producer frame and display grid.
+static std::vector<NativeDrawnTextRow> g_native_adventure_background_rows;
+static uint64_t g_native_adventure_background_epoch = 0;
+#endif
 static uint64_t g_native_drawn_text_sequence = 0;
 static uint64_t g_native_drawn_text_revision = 0;
 // Top-layer text is independent of base draw order. Keep its map-ownership
@@ -3182,6 +3192,10 @@ static void clear_native_drawn_text_rows() {
     std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
     ++g_native_drawn_text_revision;
     g_native_drawn_text_rows.clear();
+#ifdef _WIN32
+    g_native_adventure_background_rows.clear();
+    g_native_adventure_background_epoch = 0;
+#endif
     g_native_drawn_top_text_rows.clear();
     g_native_overwritten_text_rows.clear();
     g_native_drawn_text_sequence = 0;
@@ -5493,9 +5507,11 @@ private:
     std::optional<std::string> translate_adventure_origin_source(
         std::string_view source) const;
     std::optional<std::string> translate_adventure_background_source(
-        std::string_view source) const;
+        std::string_view source, std::string_view native_given = {}) const;
     std::optional<std::string> translate_adventure_belief_source(
-        std::string_view source) const;
+        size_t paragraph_index, const NativeAdventureBeliefCache &belief) const;
+    std::optional<std::string> translate_adventure_religion_name(
+        const NativeHistoryName &name) const;
     std::optional<std::string> translate_adventure_home_source(
         std::string_view source, const NativeAdventureHomeCache &home) const;
     std::optional<std::string> translate_deity_spheres(
@@ -13408,13 +13424,18 @@ std::optional<std::string> Overlay::translate_deity_spheres(
 }
 
 std::optional<std::string> Overlay::translate_adventure_background_source(
-        std::string_view raw_source) const {
+        std::string_view raw_source, std::string_view native_given) const {
     const std::string source = normalize_utterance(raw_source);
-    if (const auto found = adventure_background_translation_cache_.find(source);
+    std::string cache_key = source;
+    if (!native_given.empty()) {
+        cache_key.push_back('\0');
+        cache_key += native_given;
+    }
+    if (const auto found = adventure_background_translation_cache_.find(cache_key);
         found != adventure_background_translation_cache_.end() &&
             found->second.epoch == draw_epoch_) return found->second.target;
     auto remember = [&](std::optional<std::string> target) {
-        const auto previous = adventure_background_translation_cache_.find(source);
+        const auto previous = adventure_background_translation_cache_.find(cache_key);
         const bool report_failure = !target &&
             (previous == adventure_background_translation_cache_.end() ||
              previous->second.target.has_value());
@@ -13424,7 +13445,7 @@ std::optional<std::string> Overlay::translate_adventure_background_source(
         // Site identities and governing context are live. Reuse a production
         // only within this draw, while retaining failure history to avoid
         // emitting the same missing-production warning every frame.
-        adventure_background_translation_cache_.insert_or_assign(source,
+        adventure_background_translation_cache_.insert_or_assign(cache_key,
             AdventureBackgroundTranslation{draw_epoch_, target});
         if (report_failure) {
             // A physical-row queue loses exactly the context needed to fix
@@ -13500,7 +13521,9 @@ std::optional<std::string> Overlay::translate_adventure_background_source(
         // English surname use the shared person grammar, even when a name
         // component also happens to be an ordinary UI dictionary entry.
         if (figure) {
-            auto translated = translate_procedural_fragment(value, false, false, {},
+            auto translated = translate_english_character_name(value, native_given);
+            if (complete(translated)) return translated;
+            translated = translate_procedural_fragment(value, false, false, {},
                 ProceduralFragmentContext::personal_name);
             if (complete(translated)) return translated;
         }
@@ -17863,10 +17886,15 @@ std::vector<Match> Overlay::find_matches(int only_y,
 std::vector<Match> Overlay::find_native_matches(int only_y,
         const unsigned char *screen_override, bool primary_pages_probed) const {
     NativeCapturedTextReadScope captured_text_reads;
+    NativeAdventureBackgroundReadScope adventure_background_reads;
     RenderTimingScope match_timing(render_timings_, config_.trace_render_timing, RenderTimingStage::Match);
     RenderTimingScope context_timing(render_timings_, config_.trace_render_timing, RenderTimingStage::Context);
     RenderTimingScope context_detail(render_timings_, config_.trace_render_timing, RenderTimingStage::Ownership);
     std::vector<Match> result;
+    // A retained setupadventure document has a native writer and typed owner.
+    // Publish it after generic hover/help claims have finished, so those
+    // earlier probes cannot replace its complete translated body.
+    std::vector<Match> adventure_background_cards;
     if (!gps_ || !gps_->screen || gps_->dimx <= 0 || gps_->dimx > 1000 ||
         gps_->dimy <= 0 || gps_->dimy > 1000 || trie_.empty() ||
         only_y >= gps_->dimy || native_map_mixed_view(gps_) ||
@@ -18163,6 +18191,24 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     screen_rows.reserve(static_cast<size_t>(gps_->dimy));
     for (int row_y = 0; row_y < gps_->dimy; ++row_y)
         screen_rows.push_back(read_row(row_y));
+    // This native writer supplies a complete, typed document. Claim it before
+    // any help, entity-name or generic prose probe can interpret its words.
+    const auto &adventure_belief_cache = frame_native_adventure_belief_cache();
+    const auto &adventure_belief_choices = frame_native_adventure_belief_choices();
+    const auto &adventure_home_cache = frame_native_adventure_home_cache();
+    std::vector<std::vector<bool>> adventure_background_owned;
+    if ((adventure_belief_cache || adventure_home_cache) &&
+            gps_->tile_pixel_x > 0 && gps_->tile_pixel_y > 0) {
+        adventure_background_owned.assign(static_cast<size_t>(gps_->dimy),
+            std::vector<bool>(static_cast<size_t>(gps_->dimx), false));
+        auto &owned = adventure_background_owned;
+#include "adventure_belief_description.inc"
+    }
+    const auto mask_adventure_background_rows = [&](std::vector<std::string> &rows) {
+        for (size_t y = 0; y < adventure_background_owned.size(); ++y)
+            for (size_t x = 0; x < adventure_background_owned[y].size(); ++x)
+                if (adventure_background_owned[y][x]) rows[y][x] = ' ';
+    };
     append_settings_toggle_labels(screen_rows, result, only_y);
     // The native placement status/header owns its whole source before room,
     // location, item and generic caption readers can consume an inner word.
@@ -19046,6 +19092,20 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                 match.layout_prepared = true;
             }
         }
+        for (const auto &card : adventure_background_cards) {
+            if (!card.layout_native_clip) continue;
+            const auto &clip = *card.layout_native_clip;
+            const int tile_w = gps_->tile_pixel_x, tile_h = gps_->tile_pixel_y;
+            const int origin_x = (gps_->screen_pixel_x - gps_->dimx * tile_w) / 2;
+            const int origin_y = (gps_->screen_pixel_y - gps_->dimy * tile_h) / 2;
+            std::erase_if(result, [&](const Match &match) {
+                const SDL_Rect source{origin_x + match.x * tile_w,
+                    origin_y + match.y * tile_h, std::max(1, match.length) * tile_w, tile_h};
+                return SDL_HasIntersection(&clip, &source) == SDL_TRUE;
+            });
+        }
+        result.insert(result.end(), std::make_move_iterator(adventure_background_cards.begin()),
+            std::make_move_iterator(adventure_background_cards.end()));
         return std::move(result);
     };
 
@@ -21209,9 +21269,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     // Recover the current native source and ALL its exact wrapped rows before
     // the generic word matcher can turn them into mixed English/Chinese.
     std::vector<std::string> background_rows = screen_rows;
-    const auto adventure_belief_cache = native_adventure_belief_cache();
-    const auto adventure_home_cache = native_adventure_home_cache();
-    if (screen_override || adventure_belief_cache || adventure_home_cache) {
+    if (screen_override || adventure_belief_cache || adventure_belief_choices || adventure_home_cache) {
         // Immediate glyph suppression sees one layer at a time. The retained
         // faith cache also proves a live background page, whose earlier
         // phrase matches can have erased its labels from screen_rows. Use
@@ -21334,8 +21392,9 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
             [&](const std::string &row) { return row.find(label) != std::string::npos; });
     };
     const bool adventure_background_screen =
-        has_background_label("Randomize background") &&
-        has_background_label("Accept background");
+        adventure_belief_choices || adventure_belief_cache || adventure_home_cache ||
+        (has_background_label("Randomize background") &&
+         has_background_label("Accept background"));
     if (adventure_background_screen) {
         int tabs_y = -1;
         int beliefs_x = -1;
@@ -21354,25 +21413,47 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
         int list_left = gps_->dimx;
         int list_right = 0;
         int last_category_y = -1;
-        auto complete_name = [&](const std::string &source) -> std::optional<std::string> {
-            auto target = exact_literal_translation(source);
-            if (!target && (source == "an unknown civilization" ||
-                    source == "an unknown creature"))
-                target = translate_legends_term(source, false);
-            if (!target) target = translate_procedural_fragment(source);
-            if (!target) {
-                // Only a typed deity/religion card may use the quoted-title
-                // fallback. This also handles mod names without broadening
-                // phonetic fallback to unrelated sentences or UI labels.
-                target = translate_procedural_fragment("\"" + source + "\"");
-                if (target && target->starts_with("“") && target->ends_with("”"))
-                    *target = target->substr(3, target->size() - 6);
+        auto complete_name = [&](std::string_view source, std::string_view category)
+                -> std::optional<std::string> {
+            if (!adventure_belief_choices) return std::nullopt;
+            std::optional<std::string> result;
+            for (const auto &choice : *adventure_belief_choices) {
+                // Memory selects the grammar. English bytes only associate
+                // this visible caption with its already classified option.
+                const bool religion = choice.practice == 1;
+                if (!religion && choice.practice != 0) continue;
+                const std::string_view expected_category = religion ? "Religion"
+                    : choice.figure_flags & 4u ? "Deity"
+                    : choice.figure_flags & 8u ? "Force" : "Object of worship";
+                if (category != expected_category && !(religion &&
+                        (category == "Religion with temple" ||
+                         category == "Religion with ruined temple"))) continue;
+                std::optional<std::string> target;
+                if (choice.name && choice.name->has_name) {
+                    auto english = reconstruct_site_english_name(*choice.name);
+                    if (!english) continue;
+                    if (!english->empty() && english->front() >= 'a' && english->front() <= 'z')
+                        english->front() -= 'a' - 'A';
+                    if (*english != source) continue;
+                    target = religion ? translate_adventure_religion_name(*choice.name)
+                        : translate_history_name(*choice.name, true);
+                } else if (!choice.name) {
+                    const std::string_view unknown = religion
+                        ? "an unknown civilization" : "an unknown creature";
+                    if (source == unknown) target = translate_legends_term(unknown, false);
+                } else if (!religion) {
+                    // A real unnamed historical figure displays its RAW
+                    // creature caption; that source is a term, not a name.
+                    std::string english = choice.species;
+                    if (!english.empty() && english.front() >= 'a' && english.front() <= 'z')
+                        english.front() -= 'a' - 'A';
+                    if (english == source) target = translate_creature_reference(source);
+                }
+                if (!target) continue;
+                if (result && *result != *target) return std::nullopt;
+                result = std::move(target);
             }
-            if (!target || target->empty() ||
-                std::any_of(target->begin(), target->end(), [](unsigned char ch) {
-                    return (ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z');
-                })) return std::nullopt;
-            return target;
+            return result;
         };
         for (int y = tabs_y + 2; tabs_y >= 0 && y < footer_y; ++y) {
             const auto titles = split_text_fields(background_rows[static_cast<size_t>(y - 1)]);
@@ -21406,7 +21487,21 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                     // An unresolved/ambiguous site still owns one full name.
                     // Never turn it back into independently translated roots.
                     if (!target) target = native_text_to_utf8(title->text);
-                } else target = complete_name(title->text);
+                } else {
+                    std::string source = title->text;
+                    for (const auto &caption : clipped_template_captions) {
+                        if (caption.x == title->start && caption.y == y - 1 &&
+                                caption.visible == title->text) {
+                            source = caption.complete;
+                            break;
+                        }
+                    }
+                    target = complete_name(source, kind.text);
+                    // An unresolved native identity still owns this entire
+                    // title. Preserve it as one field instead of letting a
+                    // later generic name matcher assign a different role.
+                    if (!target && adventure_belief_choices) target = native_text_to_utf8(source);
+                }
                 const auto category = exact_literal_translation(kind.text);
                 if (!target || !category) continue;
                 background_labels.push_back({title->start, y - 1, title->end - title->start,
@@ -21447,11 +21542,17 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
             }
         }
     }
-    if (adventure_background_screen && gps_->tile_pixel_x > 0 && gps_->tile_pixel_y > 0) {
+    // A retained description is already tied to the current setupadventure
+    // sheet and selected background column. Its own native writer and frame
+    // establish the tooltip even when earlier caption suppression has removed
+    // Randomize/Accept from the layer being translated.
+    if ((adventure_background_screen || adventure_belief_cache || adventure_home_cache) &&
+            gps_->tile_pixel_x > 0 && gps_->tile_pixel_y > 0) {
         const auto captures = captured_native_paragraphs();
-        std::vector<std::vector<bool>> owned(static_cast<size_t>(gps_->dimy),
-            std::vector<bool>(static_cast<size_t>(gps_->dimx), false));
-#include "adventure_belief_description.inc"
+        if (adventure_background_owned.empty())
+            adventure_background_owned.assign(static_cast<size_t>(gps_->dimy),
+                std::vector<bool>(static_cast<size_t>(gps_->dimx), false));
+        auto &owned = adventure_background_owned;
         for (auto capture = captures.rbegin(); capture != captures.rend(); ++capture) {
             if (capture->wrapped_lines.empty() ||
                 capture->wrapped_lines.size() > static_cast<size_t>(gps_->dimy)) continue;
@@ -27656,6 +27757,13 @@ void Overlay::normalize_native_split_text() {
         // Flags retained from a covered picture caption cannot turn those
         // lines into duplicate halves or move their final Chinese baseline.
         if (match.rule == kToolbarTooltipBodyRule || match.rule == kToolbarTooltipKeyRule) continue;
+#ifdef _WIN32
+        // setupadventure's retained Home/Beliefs cache uses base addst once
+        // per line. Its complete framed paragraph already owns the layout;
+        // inherited map/picture flags cannot turn it into font halves here.
+        if (match.rule == kAdventureBackgroundDescriptionRule &&
+                match.layout_reflowed_paragraph && match.layout_native_clip) continue;
+#endif
         // Typed guild hover rows use ordinary addst once per line. Their
         // fixed native baselines must not inherit covered map font halves.
         if ((match.rule == kFortressLocationListRule || match.rule == kFortressFarmFieldRule ||
@@ -41279,6 +41387,7 @@ Overlay::GraphicalClearReadback Overlay::capture_graphical_clear_pixels(
     for (const Match &match : prepared_matches_) {
         if (match.native_help_source_only || match.native_split_duplicate ||
             match.graphical_clear_width <= 0 || match.graphical_clear_height <= 0 ||
+            match.graphical_clear_background_rgb >= 0 ||
             (match.rule >= 0 && static_cast<size_t>(match.rule) >= rules_.size()) ||
             (match.legends_flow && match.legends_flow->laid_out && !match.legends_flow_owner))
             continue;
@@ -41495,7 +41604,16 @@ void Overlay::draw_match(SDL_Renderer *renderer, const Match &match) {
             clear_visible = SDL_IntersectRect(&clipped, &active_clip, &exposed);
             clipped = exposed;
         }
-        if (clear_visible && clipped.w > 0 && clipped.h > 0) {
+        if (clear_visible && clipped.w > 0 && clipped.h > 0 &&
+                match.graphical_clear_background_rgb >= 0) {
+            RenderTimingScope clear_timing(render_timings_, config_.trace_render_timing,
+                RenderTimingStage::DrawClearPixels);
+            const int background = match.graphical_clear_background_rgb;
+            SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_NONE);
+            SDL_SetRenderDrawColor(renderer, static_cast<Uint8>(background >> 16),
+                static_cast<Uint8>(background >> 8), static_cast<Uint8>(background), 255);
+            SDL_RenderFillRect(renderer, &clipped);
+        } else if (clear_visible && clipped.w > 0 && clipped.h > 0) {
             std::vector<Uint8> pixels(
                 static_cast<size_t>(clipped.w) * clipped.h * 4);
             if (copy_graphical_clear_pixels(renderer, clipped, pixels) ||
@@ -42974,6 +43092,7 @@ void Overlay::mask_native_ui_matches(NativeUiLayerGrid &input) {
 
 bool Overlay::prepare_native_ui_input(NativeUiLayerGrid &input, SDL_Renderer *renderer) {
     NativeCapturedTextReadScope captured_text_reads;
+    NativeAdventureBackgroundReadScope adventure_background_reads;
     native_ui_frame_ready_ = false;
     native_ui_copy_passthrough_ = false;
     native_ui_layout_page_.reset();
@@ -43035,7 +43154,7 @@ bool Overlay::prepare_native_ui_input(NativeUiLayerGrid &input, SDL_Renderer *re
         cached.restore_input(input, *gps_);
         frame_prepared_ = true;
         native_ui_frame_ready_ = true;
-        native_ui_copy_passthrough_ = true;
+        native_ui_copy_passthrough_ = cached.copy_passthrough;
         native_frame_drawn_ = true;
         return true;
     }
@@ -43070,12 +43189,24 @@ bool Overlay::prepare_native_ui_input(NativeUiLayerGrid &input, SDL_Renderer *re
         std::none_of(prepared_matches_.begin(), prepared_matches_.end(),
             [](const Match &match) {
                 return match.rule == -8 ||
-                    (match.graphical_clear_width > 0 && match.graphical_clear_height > 0);
+                    (match.graphical_clear_width > 0 && match.graphical_clear_height > 0 &&
+                        !(match.rule == kAdventureBackgroundDescriptionRule &&
+                            match.layout_native_clip && match.graphical_clear_background_rgb >= 0));
             });
     // Keep both native buffer variants at this shared input boundary. Each
     // retains its exact ownership context, translation/layout and source arrays;
     // dynamic ownership or pixel recovery continues through the full path.
-    const bool retain_prepared = cache_context && native_ui_copy_passthrough_ &&
+    const bool background_clear_only = native_border_repairs_.empty() &&
+        !native_knowledge_frame_transition_ &&
+        std::none_of(captured_embark_item_suppress_.begin(),
+            captured_embark_item_suppress_.end(), [](uint8_t value) { return value != 0; }) &&
+        std::none_of(prepared_matches_.begin(), prepared_matches_.end(), [](const Match &match) {
+            return match.rule == -8 ||
+                (match.graphical_clear_width > 0 && match.graphical_clear_height > 0 &&
+                    !(match.rule == kAdventureBackgroundDescriptionRule && match.layout_native_clip));
+        });
+    const bool retain_prepared = cache_context &&
+        (native_ui_copy_passthrough_ || background_clear_only) &&
         cells <= 262144 && !native_ui_layout_page_ && !native_ui_toolbar_tooltip_ &&
         !embark_pause_menu_active_ && !embark_pause_snapshot_active_ &&
         !embark_pre_pause_capture_pending_ &&
@@ -43089,7 +43220,8 @@ bool Overlay::prepare_native_ui_input(NativeUiLayerGrid &input, SDL_Renderer *re
                 auto cached = std::make_shared<NativePreparedUiFrame>();
                 cached->capture_source(*gps_, renderer, *completed_context);
                 cached->capture_result(input, prepared_matches_, suppress_base_, suppress_top_,
-                    main_menu_frame_, settings_video_frame_, fortress_map_frame_);
+                    main_menu_frame_, settings_video_frame_, fortress_map_frame_,
+                    native_ui_copy_passthrough_);
                 native_prepared_ui_frame_[1] = std::move(native_prepared_ui_frame_[0]);
                 native_prepared_ui_frame_[0] = std::move(cached);
             } else native_prepared_ui_frame_ = {};

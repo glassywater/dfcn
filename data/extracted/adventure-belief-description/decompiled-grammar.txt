@@ -2,6 +2,13 @@ STATIC DECOMPILATION OF THE ADVENTURE CREATION FAITH TOOLTIP
 
 Source: the reference and classic PE paths configured in
 data/runtime/native-pe-images.json. No process was attached or executed.
+Actual Ghidra 12.1.4 output is preserved in reference-ghidra-decompiled.c
+and classic-ghidra-decompiled.c, with one separate .c file per native body.
+This file is a readable semantic reconstruction, not decompiler output.
+The real decompiler inputs are ghidra-functions.tsv (whole unwind owners,
+excluding embedded jump-table bytes) and ghidra-switches.tsv (all PE-read
+switch destinations and aliases). The complete creation-render-owner
+supplies the real caller prologue and every branch around both cache users.
 Addresses below are reference RVAs. The classic owner has an identical
 instruction layout at RVA 0x63b7b0, a delta of -0x25e0 from 0x63dd90.
 Helper addresses have their own edition mappings in native-owners.tsv.
@@ -92,6 +99,7 @@ produce(setup, hometown_index, unused_third, faith_index):
         // 0x63ea46 appends a zero-length separate buffer. The resulting source
         // is the raw singular followed by a period, with the preceding deity
         // and religion text gone. This branch is catalogued explicitly.
+        // An invalid race/caste or empty raw singular can leave only ".".
 
     description += "."
 
@@ -149,9 +157,9 @@ The ordinary-figure path instead uses NAME[0] at caste/raw+0x20.
 These operands originate in creature raws; they are not finite PE strings.
 
 force_place(world,figure_id) at 0x5c3760:
-    reverse iterate world.sites(+0x238)
-    find figure_id in site's force/deity map at site+0x250 (0xbabe0)
-    return the first reverse-order site's language-name object, else null
+    reverse iterate world_data.regions(+0x238)
+    find figure_id in region.forces at region+0x250 (0xbabe0)
+    return the first reverse-order region's language-name object, else null
 
 entity_name(id) at 0xb92900:
     missing entity -> "an unknown civilization"

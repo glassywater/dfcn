@@ -86,6 +86,11 @@ static void native_help_draw(void *help) {
 }
 
 static void native_help_reset_frame(void *renderer) {
+#ifdef _WIN32
+    // A retained setupadventure cache can outlive its hover. Only this
+    // producer frame's actual background row calls may publish the card.
+    reset_native_adventure_background_draws();
+#endif
     native_map_begin_frame();
     native_tooltip_begin_frame();
     native_notification_begin_frame();

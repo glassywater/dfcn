@@ -1,7 +1,7 @@
 """Read both configured PE belief-tooltip producers and semantic operands.
 
-This static extraction writes disassembly, branch operands and decompiled
-source grammar for implementation work. It never runs the game, core,
+This static extraction writes disassembly, branch operands and inputs to
+actual Ghidra decompilation for implementation work. It never runs the game, core,
 translations, a generator, a compiler, or a verification procedure.
 """
 from __future__ import annotations
@@ -140,6 +140,9 @@ def source_branches(edition, start, rows):
     delta = start-0x63dd90
     def add(branch, guard, at, text):
         rows.append((edition,branch,guard,hex(at+delta),text))
+    add("no-description","subtab=2; faith types empty (other tabs keep their own source branch)",0x63e3fb,"")
+    add("deity/missing-figure","type=0; selected figure ID is -1 or absent",0x63e572,"")
+    add("unsupported-faith-type","selected type is neither 0 nor 1",0x63e447,"")
     add("religion/no-deity","type=1; entity missing or entity.deities empty or first figure missing",0x63e46d,"{religion} is a religion")
     for kind,noun in (("female","goddess"),("male","god"),("other","deity")):
         for scope in ("deity","religion"):
@@ -153,6 +156,7 @@ def source_branches(edition, start, rows):
         add(f"{scope}/force","figure.flags[0]&8 and !(figure.flags[0]&4); force place missing",0x63e653,head+".")
         add(f"{scope}/force-place","figure.flags[0]&8 and !(figure.flags[0]&4); force place found",0x63e653,head+" which permeates {place}.")
         add(f"{scope}/ordinary-figure","figure has neither deity nor force flags; race is valid; native clears accumulated output before reading race/caste singular",0x63e919,"{creature singular}.")
+        add(f"{scope}/ordinary-figure-empty-raw","figure has neither deity nor force flags; race != -1; native raw lookup fails or both singular fields are empty after it clears output",0x63e96a,".")
         add(f"{scope}/figure-name-only","figure has neither deity nor force flags; race == -1",0x63e919,("{deity}" if scope == "deity" else "{religion} is a religion whose adherents worship {deity}")+".")
     add("religion/active-temple","matching site; matching religion temple; not obsolete; active temple selected",0x63ed15,"They worship at {structure}.")
     add("religion/ruined-temple","no active temple; matching religion temple has inactive or ruined flag",0x63ef7b,"Their temple {structure} is ruined.")
@@ -163,10 +167,29 @@ def source_branches(edition, start, rows):
     add("domain-list/many","sphere count>=3; reverse native vector order; comma while index>=2; and when index=1",0x63e8d1,"{domain[n-1]}, ... {domain[1]} and {domain[0]}")
 
 
+def render_switches(image, edition, start, end, rows):
+    instructions = list(image.instructions(start, end))
+    for index,(pc,text) in enumerate(instructions):
+        if text != "jmp    rcx":
+            continue
+        preceding = [t for _,t in instructions[max(0,index-14):index]]
+        table = next(int(re.search(r"\*4\+0x([0-9a-f]+)\]",t)[1],16)
+                     for t in reversed(preceding) if "DWORD PTR" in t and "*4+0x" in t)
+        guard = next(t for t in reversed(preceding) if re.match(r"cmp\s+\w+,0x[0-9a-f]+$",t))
+        maximum = int(guard.rsplit("0x",1)[1],16)
+        remap = next((int(re.search(r"\*1\+0x([0-9a-f]+)\]",t)[1],16)
+                      for t in reversed(preceding) if "movzx" in t and "BYTE PTR" in t and "*1+0x" in t),None)
+        for enum in range(maximum+1):
+            case = image.raw[image.offset(image.base+remap+enum)] if remap is not None else enum
+            target = struct.unpack_from("<I",image.raw,image.offset(image.base+table+case*4))[0]
+            rows.append((edition,"creation-render-owner",hex(pc-image.base),str(enum),hex(target)))
+
+
 def main():
     DEST.mkdir(parents=True,exist_ok=True)
     config = json.loads((ROOT/"data/runtime/native-pe-images.json").read_text(encoding="utf-8"))
     owners,literals,calls,branches,fields,templates,callers = [],[],[],[],[],[],[]
+    decompiler_bodies, switches = [], []
     helper_sets = {
         "reference": {"domain-field":0x756500,"sphere-field":0x756690,"force-place-field":0x5c3760,"caste-field":0xaa3770,"structure-field":0xb94090,"entity-field":0xb92900,"figure-field":0xb92f10,"language-name":0xa946e0,"cache-wrap":0x8e7310,"cache-lines-wrap":0x8e7440,"site-controller-field":0x9b4e70,"site-type-field":0x10cbe50},
         "classic": {"domain-field":0x753f20,"sphere-field":0x7540b0,"force-place-field":0x5c1180,"caste-field":0xaa07f0,"structure-field":0xb910d0,"entity-field":0xb8f940,"figure-field":0xb8ff50,"language-name":0xa91760,"cache-wrap":0x8e4b80,"cache-lines-wrap":0x8e4cb0,"site-controller-field":0x9b26a0,"site-type-field":0x10c6dc0},
@@ -186,8 +209,13 @@ def main():
             if role == "site-type-field":
                 end = image.base+rva+0x310
             dump(image,image.base+rva,role,edition,owners,literals,calls,branches,end)
-        for at,caller in direct_calls(image,start):
+        producer_callers = list(direct_calls(image,start))
+        for at,caller in producer_callers:
             callers.append((edition,hex(at-image.base),hex(caller-image.base),hex(image.functions[caller]-image.base),hex(start-image.base)))
+        # The render slices below are retained for navigation; the actual
+        # decompiler receives their complete unwind owner with its prologue.
+        for caller in sorted({caller for _,caller in producer_callers}):
+            dump(image,caller,"creation-render-owner",edition,owners,literals,calls,branches)
         # Preserve the full faith-page call, cache drawing, and nine-part border
         # path including every conditional jump, not merely the text CALL.
         draw_begin,draw_end = ((0x62cb94,0x62d820) if edition == "reference" else (0x62a5b4,0x62b240))
@@ -196,6 +224,36 @@ def main():
         dump(image,image.base+first_begin,"hometown-cache-caller",edition,owners,literals,calls,branches,image.base+first_end)
         finite_fields(image,edition,helpers,literals,fields)
         source_branches(edition,start-image.base,templates)
+        for row in owners:
+            if row[0] != edition or row[2] in ("faith-render-path", "hometown-cache-caller"):
+                continue
+            code_end = int(row[4],16)
+            if row[2] == "domain-field":
+                code_end = int(row[3],16)+0x114
+            elif row[2] == "structure-field":
+                code_end = int(row[3],16)+0x330
+            elif row[2] == "creation-render-owner":
+                code_end = int(row[3],16)+0x123b4
+                render_switches(image,edition,image.base+int(row[3],16),image.base+code_end,switches)
+            decompiler_bodies.append((*row[:4],hex(code_end),f"{edition}-{row[2]}.asm"))
+        # Preserve every switch destination, including aliases, independently
+        # of the decompiler's heuristics. All values are read from the PE.
+        for role,dispatch,table,count in (
+            ("sphere-field",0x23,0xae4,130),
+            ("structure-field",0x1d9,0x330,14),
+            ("site-type-field",0x41,0x310,11),
+        ):
+            begin = helpers[role]
+            if role == "structure-field":
+                dispatch = next(a-image.base-begin for a,t in image.instructions(image.base+begin,image.base+begin+0x330) if t == "jmp    rcx")
+            for enum in range(count):
+                target = struct.unpack_from("<I",image.raw,image.offset(image.base+begin+table+enum*4))[0]
+                switches.append((edition,role,hex(begin+dispatch),str(enum),hex(target)))
+        begin = helpers["domain-field"]
+        for enum in range(19,127):
+            choice = image.raw[image.offset(image.base+begin+0x11c+enum-19)]
+            target = struct.unpack_from("<I",image.raw,image.offset(image.base+begin+0x114+choice*4))[0]
+            switches.append((edition,"domain-field",hex(begin+0x60),str(enum),hex(target)))
         print(f"{edition} {image.identity}: belief producer {start-image.base:#x}..{image.functions[start]-image.base:#x}")
     write_tsv("native-owners.tsv",("edition","image_identity","role","start_rva","end_rva","path"),owners)
     write_tsv("native-literals.tsv",("edition","role","owner_rva","instruction_rva","literal_rva","text"),literals)
@@ -204,6 +262,8 @@ def main():
     write_tsv("finite-field-values.tsv",("edition","field","case","instruction_rva","literal_rva","base_text","displayed_text"),fields)
     write_tsv("belief-description-branches.tsv",("edition","branch","guard","producer_rva","text"),templates)
     write_tsv("producer-callers.tsv",("edition","call_rva","caller_rva","caller_end_rva","producer_rva"),callers)
+    write_tsv("ghidra-functions.tsv",("edition","image_identity","role","start_rva","code_end_rva","assembly_file"),decompiler_bodies)
+    write_tsv("ghidra-switches.tsv",("edition","role","dispatch_rva","value","target_rva"),switches)
 
 
 if __name__ == "__main__":

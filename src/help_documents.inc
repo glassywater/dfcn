@@ -15,6 +15,10 @@
                 const auto *cell = cell_at(x, y, &top);
                 help_rows[y][x] = cell && cell[0] ? static_cast<char>(cell[0]) : ' ';
             }
+        // Raw help recovery must respect the earlier typed background writer,
+        // just as it respects the announcement document below. Re-reading its
+        // original glyphs must not send a religion through the help grammar.
+        mask_adventure_background_rows(help_rows);
         // Okay modals also admit complete quoted divine guidance. This raw
         // read must keep the live markup popup's prior ownership; otherwise
         // its help fragments produce a second, differently inset paragraph.

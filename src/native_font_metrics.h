@@ -354,6 +354,146 @@ public:
     }
 };
 
+// Only an opaque, uniform current hover-centre source can replace a complete
+// owned text body without sampling the renderer's finished target.
+inline std::optional<int> native_hover_center_background_rgb(const graphicst &gps) {
+    const auto classic = native_ui_classic();
+    if (!classic) return std::nullopt;
+    const int32_t centre = gps.texpos_hover_rectangle[1][1];
+    if (*classic) {
+        if (centre < 0 || centre > 0x7fff || (centre & 0xff) != ' ')
+            return std::nullopt;
+        const auto &color = gps.uccolor[(centre >> 11) & 7];
+        return (color[0] << 16) | (color[1] << 8) | color[2];
+    }
+#ifdef _WIN32
+    using native_font_metrics_detail::copy_native_font_memory;
+    using native_font_metrics_detail::copy_native_font_value;
+    const auto executable = reinterpret_cast<uintptr_t>(GetModuleHandleW(nullptr));
+    const uintptr_t enabler = native_pe_address(executable, 0x02390290);
+    struct RawSurfaces { uintptr_t begin = 0, end = 0, capacity = 0; } raws;
+    if (!enabler || centre <= 0 ||
+            !copy_native_font_value(enabler + 0x348, raws) || !raws.begin ||
+            raws.end < raws.begin || raws.capacity < raws.end ||
+            (raws.end - raws.begin) % sizeof(SDL_Surface *) ||
+            (raws.end - raws.begin) / sizeof(SDL_Surface *) > (1u << 24) ||
+            static_cast<size_t>(centre) >= (raws.end - raws.begin) / sizeof(SDL_Surface *))
+        return std::nullopt;
+    SDL_Surface *address = nullptr;
+    SDL_Surface surface{};
+    SDL_PixelFormat format{};
+    if (!copy_native_font_value(raws.begin + static_cast<size_t>(centre) * sizeof(address), address) ||
+            !copy_native_font_value(reinterpret_cast<uintptr_t>(address), surface) ||
+            !copy_native_font_value(reinterpret_cast<uintptr_t>(surface.format), format) ||
+            !surface.pixels || surface.w <= 0 || surface.h <= 0 ||
+            surface.w > 256 || surface.h > 256 ||
+            surface.pitch < surface.w * 4 || surface.pitch > 4096 ||
+            (surface.flags & SDL_RLEACCEL) || format.palette ||
+            format.BitsPerPixel != 32 || format.BytesPerPixel != 4 ||
+            !format.Rmask || !format.Gmask || !format.Bmask || !format.Amask)
+        return std::nullopt;
+    std::vector<unsigned char> pixels(static_cast<size_t>(surface.pitch) * surface.h);
+    if (!copy_native_font_memory(reinterpret_cast<uintptr_t>(surface.pixels),
+            pixels.data(), pixels.size())) return std::nullopt;
+    int background = -1;
+    for (int y = 0; y < surface.h; ++y) {
+        const auto *row = pixels.data() + static_cast<size_t>(y) * surface.pitch;
+        for (int x = 0; x < surface.w; ++x) {
+            Uint32 pixel = 0;
+            Uint8 red = 0, green = 0, blue = 0, alpha = 0;
+            std::memcpy(&pixel, row + x * 4, sizeof(pixel));
+            SDL_GetRGBA(pixel, &format, &red, &green, &blue, &alpha);
+            const int color = (red << 16) | (green << 8) | blue;
+            if (alpha != 255 || (background >= 0 && background != color))
+                return std::nullopt;
+            background = color;
+        }
+    }
+    SDL_Surface current{};
+    SDL_PixelFormat current_format{};
+    SDL_Surface *current_address = nullptr;
+    if (!copy_native_font_value(raws.begin + static_cast<size_t>(centre) * sizeof(address),
+                current_address) || current_address != address ||
+            !copy_native_font_value(reinterpret_cast<uintptr_t>(address), current) ||
+            current.pixels != surface.pixels || current.format != surface.format ||
+            current.w != surface.w || current.h != surface.h || current.pitch != surface.pitch ||
+            current.flags != surface.flags ||
+            !copy_native_font_value(reinterpret_cast<uintptr_t>(surface.format), current_format) ||
+            std::memcmp(&format, &current_format, sizeof(format)) != 0)
+        return std::nullopt;
+    return background;
+#else
+    return std::nullopt;
+#endif
+}
+
+// PE update_anchor_tile (8dd7c0) paints after every ordinary/lower tile.
+// Its destination uses native renderer pitch/origin and the raw surface's
+// dimensions, so an origin outside a text card can still overlap its body.
+inline std::optional<SDL_Rect> native_anchored_tile_draw_bounds(const graphicst &gps,
+        const void *renderer, int x, int y, bool top_layer) {
+#ifdef _WIN32
+    using native_font_metrics_detail::copy_native_font_value;
+    const auto *textures = top_layer ? gps.screentexpos_top_anchored : gps.screentexpos_anchored;
+    const auto *offset_x = top_layer ? gps.screentexpos_top_anchored_x : gps.screentexpos_anchored_x;
+    const auto *offset_y = top_layer ? gps.screentexpos_top_anchored_y : gps.screentexpos_anchored_y;
+    if (!renderer || !textures || !offset_x || !offset_y || x < 0 || y < 0 ||
+            x >= gps.dimx || y >= gps.dimy) return std::nullopt;
+    const size_t tile = static_cast<size_t>(x) * gps.dimy + y;
+    const int32_t texture = textures[tile];
+    // renderer+158/15c are the native scale denominators; +168/16c
+    // are the interface tile pitch and +170/174 its pixel origin.
+    std::array<int32_t, 8> geometry{};
+    const auto executable = reinterpret_cast<uintptr_t>(GetModuleHandleW(nullptr));
+    const auto enabler = native_pe_address(executable, 0x02390290);
+    struct RawSurfaces { uintptr_t begin = 0, end = 0, capacity = 0; } raws;
+    SDL_Surface *address = nullptr;
+    SDL_Surface surface{};
+    if (texture <= 0 || !enabler ||
+            !copy_native_font_value(reinterpret_cast<uintptr_t>(renderer) + 0x158, geometry) ||
+            geometry[0] <= 0 || geometry[1] <= 0 || geometry[4] != gps.tile_pixel_x ||
+            geometry[5] != gps.tile_pixel_y || geometry[4] <= 0 || geometry[5] <= 0 ||
+            geometry[6] != (gps.screen_pixel_x - gps.dimx * gps.tile_pixel_x) / 2 ||
+            geometry[7] != (gps.screen_pixel_y - gps.dimy * gps.tile_pixel_y) / 2 ||
+            !copy_native_font_value(enabler + 0x348, raws) || !raws.begin ||
+            raws.end < raws.begin || raws.capacity < raws.end ||
+            (raws.end - raws.begin) % sizeof(SDL_Surface *) ||
+            (raws.end - raws.begin) / sizeof(SDL_Surface *) > (1u << 24) ||
+            static_cast<size_t>(texture) >= (raws.end - raws.begin) / sizeof(SDL_Surface *) ||
+            !copy_native_font_value(raws.begin + static_cast<size_t>(texture) * sizeof(address), address) ||
+            !copy_native_font_value(reinterpret_cast<uintptr_t>(address), surface) ||
+            surface.w <= 0 || surface.h <= 0) return std::nullopt;
+    const int64_t scaled_w = int64_t(geometry[4]) * surface.w;
+    const int64_t scaled_h = int64_t(geometry[5]) * surface.h;
+    const int64_t left = int64_t(x) * geometry[4] + geometry[6] + offset_x[tile];
+    const int64_t top = int64_t(y) * geometry[5] + geometry[7] + offset_y[tile];
+    const int64_t width = scaled_w / geometry[0], height = scaled_h / geometry[1];
+    // Native imul/idiv operate in int32. Overflow or an unknown geometry
+    // cannot prove that this image misses the card.
+    if (scaled_w > INT32_MAX || scaled_h > INT32_MAX || left < INT32_MIN || left > INT32_MAX ||
+            top < INT32_MIN || top > INT32_MAX || width > INT32_MAX - std::max<int64_t>(0, left) ||
+            height > INT32_MAX - std::max<int64_t>(0, top)) return std::nullopt;
+    SDL_Surface *current_address = nullptr;
+    SDL_Surface current{};
+    RawSurfaces current_raws;
+    std::array<int32_t, 8> current_geometry{};
+    if (!copy_native_font_value(enabler + 0x348, current_raws) ||
+            current_raws.begin != raws.begin || current_raws.end != raws.end ||
+            current_raws.capacity != raws.capacity ||
+            !copy_native_font_value(reinterpret_cast<uintptr_t>(renderer) + 0x158, current_geometry) ||
+            current_geometry != geometry ||
+            !copy_native_font_value(raws.begin + static_cast<size_t>(texture) * sizeof(address),
+                current_address) || current_address != address ||
+            !copy_native_font_value(reinterpret_cast<uintptr_t>(address), current) ||
+            current.w != surface.w || current.h != surface.h) return std::nullopt;
+    return SDL_Rect{static_cast<int>(left), static_cast<int>(top),
+        static_cast<int>(width), static_cast<int>(height)};
+#else
+    (void)gps; (void)renderer; (void)x; (void)y; (void)top_layer;
+    return std::nullopt;
+#endif
+}
+
 // Called at native text-layout/render entry, not for every glyph. Re-read the
 // live selection and resource identities each pass; only pixel decoding is
 // cached. This also retries fonts that were not loaded at the first call.
