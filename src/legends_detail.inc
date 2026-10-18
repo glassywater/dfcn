@@ -521,6 +521,41 @@ static bool written_work_description_capture(const Rule &rule, size_t field) {
         source == "The writing {s} yet it .";
 }
 
+static bool creature_description_capture(const Rule &rule, size_t field) {
+    if (field >= rule.template_kinds.size() || rule.template_kinds[field] != 's')
+        return false;
+    // shared_info.lua build_description emits these complete physical
+    // clauses. Their noun/texture fields use the reviewed hv grammar, just
+    // as written descriptions do; ordinary terms cannot see that namespace.
+    const std::string_view source = rule.source;
+    if (field == 0 && (source == "A {s}." || source == "An {s}." ||
+            source == "It has {s}." || source.starts_with("It has {s} and ")))
+        return true;
+    if (field != 1) return false;
+    for (const std::string_view clause : {
+            "Its {q} hair is {s}.", "Its {q} feathers are {s}.",
+            "Its {q} scales are small and {s}.",
+            "Its {q} scales are large and {s}.",
+            "Its {q} scales are round and {s}.",
+            "Its {q} scales are blocky and {s}.",
+            "Its {q} scales are jagged and {s}.",
+            "Its {q} scales are oval-shaped and {s}.",
+            "Its {q} skin is {s}.", "Its {q} exoskeleton is {s}."})
+        if (source == clause) return true;
+    return false;
+}
+
+static bool experiment_site_capture(const Rule &rule, size_t field) {
+    if (field >= rule.template_kinds.size() || rule.template_kinds[field] != 'p')
+        return false;
+    // experiment_description emits .name.translated for both the creator's
+    // capital and the creation site. Every place field in these compiled
+    // origin frames therefore has EnglishName provenance, even when no
+    // unique loaded site supplies its identity or settlement type.
+    return rule.source.starts_with("This night creature was first created by ") ||
+        rule.source.starts_with("This night creature was first created accidentally by ");
+}
+
 static bool journal_habitat_rule(const Rule &rule) {
     return rule.source == "This creature can be found in {p}." ||
         rule.source == "This creature lives in {p}.";
@@ -1041,6 +1076,8 @@ std::optional<std::string> Overlay::translate_legends_nested(
         case 'p':
             if (written_work_form_rule(rule))
                 mode += ":art-form";
+            else if (experiment_site_capture(rule, field))
+                mode += ":experiment-site";
             else if (legends_biography_reference_capture(rule, field) ==
                     LegendsBiographyReference::Entity)
                 mode += ":biography-entity";
@@ -1060,6 +1097,8 @@ std::optional<std::string> Overlay::translate_legends_nested(
         case 's':
             if (written_work_description_capture(rule, field))
                 mode += ":written-description";
+            else if (creature_description_capture(rule, field))
+                mode += ":physical-description";
             else if (rule.legends_identity && field == 0 &&
                     (rule.source.starts_with("the {s} the {s}") ||
                      rule.source.starts_with("the {s} {s}") ||
@@ -1144,6 +1183,10 @@ std::optional<std::string> Overlay::translate_legends_nested(
                     // Share their semantic title grammar with preferences;
                     // a place field can legitimately preserve English text.
                     target = translate_character_preference_term(part, true);
+                } else if (mode == "p:experiment-site") {
+                    target = translate_site_reference(part, true);
+                    if (!translation_complete_with_native_nicknames(target, part))
+                        target = translate_legends_place(part, true);
                 } else if (mode == "p:biography-entity" || mode == "p:biography-region") {
                     // Deity lookup scans every entity type, rather than only
                     // civilizations and local governments. Its real WORD/POS
@@ -1221,7 +1264,7 @@ std::optional<std::string> Overlay::translate_legends_nested(
                     if (mode == "s:office-term")
                         target = translate_legends_office(part);
                     if (!target) target = translate_legends_term(part,
-                        mode == "s:written-description");
+                        mode == "s:written-description" || mode == "s:physical-description");
                 }
                 break;
             case 'e': {
@@ -1773,6 +1816,13 @@ std::optional<std::string> Overlay::translate_legends_text(
                 std::vector<std::optional<std::string>> translated(captures.size());
                 const auto translate_place = [&](size_t field, std::string_view value)
                         -> std::optional<std::string> {
+                    if (experiment_site_capture(rule, field)) {
+                        auto target = translate_site_reference(value, true);
+                        if (!translation_complete_with_native_nicknames(target, value))
+                            target = translate_legends_place(value, true);
+                        return translation_complete_with_native_nicknames(target, value)
+                            ? target : std::nullopt;
+                    }
                     const auto biography = legends_biography_reference_capture(rule, field);
                     if (biography != LegendsBiographyReference::None) {
                         auto target = biography == LegendsBiographyReference::Entity
@@ -1844,7 +1894,8 @@ std::optional<std::string> Overlay::translate_legends_text(
                         }
                         break;
                     case 's': translated[i] = translate_legends_term(captures[i],
-                        written_work_description_capture(rule, i)); break;
+                        written_work_description_capture(rule, i) ||
+                        creature_description_capture(rule, i)); break;
                     case 'q': translated[i] = translate_legends_color(captures[i]); break;
                     case 't': translated[i] = translate_legends_anatomy(captures[i]); break;
                     case 'i': translated[i] = translate_legends_item(captures[i]); break;

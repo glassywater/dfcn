@@ -1,0 +1,13 @@
+edition	source_kind	role	original_path	retained_file	provenance
+reference	installed Lua source	creatures	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\creatures.lua	reference-creatures.lua	original bytes
+reference	installed Lua source	shared-info	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\creatures\shared_info.lua	reference-shared-info.lua	original bytes
+reference	installed Lua source	physical-profiles	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_procedural\scripts\generators\creatures\rcp.lua	reference-physical-profiles.lua	original bytes
+reference	actual native decompilation	complete biography producer	D:\workspace\dfcn\data\extracted\symbol-picker-descriptions\reference-figure-native-description.c	reference-native-biography-description.c	original Ghidra 12.1.4 source
+reference	native instructions	complete biography producer	D:\workspace\dfcn\data\extracted\symbol-picker-descriptions\reference-figure-native-description.asm	reference-native-biography-description.asm	original PE objdump source
+reference	installed RAW source	descriptor color values	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_descriptors\objects\descriptor_color_standard.txt	reference-descriptor-color-standard.txt	original bytes
+classic	installed Lua source	creatures	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_procedural\scripts\generators\creatures.lua	classic-creatures.lua	original bytes
+classic	installed Lua source	shared-info	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_procedural\scripts\generators\creatures\shared_info.lua	classic-shared-info.lua	original bytes
+classic	installed Lua source	physical-profiles	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_procedural\scripts\generators\creatures\rcp.lua	classic-physical-profiles.lua	original bytes
+classic	actual native decompilation	complete biography producer	D:\workspace\dfcn\data\extracted\symbol-picker-descriptions\classic-figure-native-description.c	classic-native-biography-description.c	original Ghidra 12.1.4 source
+classic	native instructions	complete biography producer	D:\workspace\dfcn\data\extracted\symbol-picker-descriptions\classic-figure-native-description.asm	classic-native-biography-description.asm	original PE objdump source
+classic	installed RAW source	descriptor color values	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_descriptors\objects\descriptor_color_standard.txt	classic-descriptor-color-standard.txt	original bytes

@@ -89,6 +89,112 @@
             NativeParagraphViewport viewport;
             const auto native = native_source_for_rows(rows, -1, nullptr, &viewport);
             if (native) source = *native;
+            std::optional<NativeParagraphViewport> source_viewport = native
+                ? std::optional(viewport) : std::nullopt;
+            int complete_layout_rows = 0;
+            // The performance renderer wraps the complete selected-subject
+            // source at 0x8712e4 -> 0x858550 and draws its colored rows through
+            // 0x872b3d -> 0xad9790. These are rich documents, separate from
+            // add_paragraph's plain registry. Bind every visible source row
+            // to one document's actual draws before using its hidden tail.
+            bool current_rich = false;
+            std::vector<NativeKnowledgeDraw> previous_draws;
+            const auto rich_draws = captured_native_knowledge_draws(
+                &current_rich, &previous_draws);
+            const auto recover_rich_source = [&](const std::vector<NativeKnowledgeDraw> &draws) {
+                const bool clipped = rows.back().source == "(etc.)";
+                const size_t visible_lines = rows.size() - (clipped ? 1 : 0);
+                if (!visible_lines) return false;
+                for (const auto &anchor : draws) {
+                    const auto &document = anchor.document;
+                    if (!document || document->source.empty() || document->rows.empty() ||
+                            document->row_addresses.size() != document->rows.size() ||
+                            document->width <= 0 || anchor.x < description->x ||
+                            document->width > right - anchor.x || anchor.y != rows.front().y ||
+                            anchor.line < 0 || anchor.line >= static_cast<int>(document->rows.size()) ||
+                            !native_knowledge_draw_owns_base(anchor, *gps_)) continue;
+                    {
+                        std::lock_guard<std::mutex> lock(g_native_knowledge_mutex);
+                        const auto row_owner = g_native_knowledge_row_owners.find(
+                            document->row_addresses[static_cast<size_t>(anchor.line)]);
+                        if (row_owner == g_native_knowledge_row_owners.end() ||
+                                row_owner->second.second != anchor.line) continue;
+                        const auto owner = g_native_knowledge_documents.find(row_owner->second.first);
+                        if (owner == g_native_knowledge_documents.end() || owner->second != document)
+                            continue;
+                    }
+                    const int origin_y = anchor.y - anchor.line;
+                    int previous_line = -1;
+                    bool intact = true;
+                    for (size_t row_index = 0; row_index < visible_lines; ++row_index) {
+                        const Match &row = rows[row_index];
+                        const auto draw = std::find_if(draws.begin(), draws.end(), [&](const auto &candidate) {
+                            if (candidate.document != document || candidate.x != anchor.x ||
+                                    candidate.y != row.y || candidate.line <= previous_line ||
+                                    candidate.line < 0 || candidate.line >= static_cast<int>(document->rows.size()) ||
+                                    candidate.y - candidate.line != origin_y ||
+                                    !native_knowledge_draw_owns_base(candidate, *gps_)) return false;
+                            const auto &native_row = document->rows[static_cast<size_t>(candidate.line)];
+                            const auto ink = trim_view(native_row);
+                            return ink == row.source && candidate.x +
+                                static_cast<int>(ink.data() - native_row.data()) == row.x;
+                        });
+                        if (draw == draws.end()) { intact = false; break; }
+                        for (int line = previous_line + 1; line < draw->line; ++line)
+                            if (!trim_view(document->rows[static_cast<size_t>(line)]).empty()) {
+                                intact = false;
+                                break;
+                            }
+                        if (!intact) break;
+                        previous_line = draw->line;
+                    }
+                    if (!intact) continue;
+                    const size_t next_line = static_cast<size_t>(previous_line + 1);
+                    if (clipped) {
+                        // Native replaces exactly its last visible row with
+                        // this marker while retaining the full cached source.
+                        if (next_line >= document->rows.size() ||
+                                rows.back().x != anchor.x ||
+                                rows.back().y != origin_y + static_cast<int>(next_line)) continue;
+                    } else if (std::any_of(document->rows.begin() + next_line,
+                            document->rows.end(), [](const auto &row) {
+                                return !trim_view(row).empty();
+                            })) continue;
+                    source = document->source;
+                    complete_layout_rows = static_cast<int>(document->rows.size());
+                    // This fixed preview has no native scrolling offset. Lay
+                    // out the complete translation and clip it to its frame.
+                    source_viewport.reset();
+                    return true;
+                }
+                return false;
+            };
+            if (!recover_rich_source(rich_draws))
+                recover_rich_source(previous_draws);
+            const auto erase_description_matches = [&] {
+                std::erase_if(result, [&](const Match &match) {
+                    return std::any_of(card->rows.begin(), card->rows.end(), [&](const auto &row) {
+                        return match.y == row.y &&
+                            match.x < row.x + static_cast<int>(row.source.size()) &&
+                            row.x < match.x + match.length;
+                    });
+                });
+            };
+            const auto retain_description_source = [&] {
+                // This closed frame owns one complete subject/form document.
+                // A failed production or layout keeps its original native ink;
+                // earlier field matches and later word readers cannot divide it.
+                erase_description_matches();
+                const auto retain = [&](const Match &original) {
+                    Match row = original;
+                    row.native_help_source_only = true;
+                    row.native_help_review_source = source;
+                    std::fill_n(screen_rows[row.y].begin() + row.x, row.length, ' ');
+                    untranslated_help_rows.push_back(std::move(row));
+                };
+                for (const Match &row : rows) retain(row);
+                for (const Match &row : duplicates) retain(row);
+            };
 
             // The renderer appends work identity/content, [B], then the form's
             // complete description. Preserve those boundaries before routing;
@@ -131,7 +237,10 @@
                 at = end + 1;
             }
             flush();
-            if (!supported_markup || paragraphs.empty()) continue;
+            if (!supported_markup || paragraphs.empty()) {
+                retain_description_source();
+                continue;
+            }
 
             // Poetry's identity, rules and sections share a grammar across
             // several native paragraphs. Music/dance consume full paragraphs.
@@ -157,7 +266,15 @@
                         translated = translate_dance_form_paragraph(complete);
                         if (!translated) translated = translate_musical_form_paragraph(complete);
                     }
-                    if (!translated) translated = translate_legends_text(complete, false, false);
+                    // Form parsers consume their complete grammar and own
+                    // rhyme/beat notation such as ABCD1A1CD and X/x. Keep
+                    // those native symbols; the generic biography resolver
+                    // still has to reject untranslated English prose.
+                    if (!translated) {
+                        translated = translate_legends_text(complete, false, false);
+                        if (!translation_complete_with_native_nicknames(translated, complete))
+                            continue;
+                    }
                     if (!translated || translated->empty()) continue;
                     if (end < paragraphs.size()) {
                         const auto tail = translate_card(end);
@@ -170,7 +287,10 @@
                 return memo[begin];
             };
             const auto target = translate_card(0);
-            if (!target) continue;
+            if (!target) {
+                retain_description_source();
+                continue;
+            }
             const bool poetic = source.find(" poetic ") != std::string::npos;
             const bool performance = poetic || is_native_knowledge_description(source);
             if (poetic) {
@@ -183,7 +303,10 @@
             std::vector<Match> translated;
             if (!append_bounded_paragraph(rows, *target, screen_rows, translated,
                     only_y, right, right, {}, false, left,
-                    native ? std::optional(viewport) : std::nullopt)) continue;
+                    source_viewport, {}, complete_layout_rows)) {
+                retain_description_source();
+                continue;
+            }
             // The common paragraph layout owns every Chinese baseline,
             // including additional rows with no native source span.
             for (Match &row : duplicates) {
@@ -191,12 +314,7 @@
                 if (only_y < 0 || only_y == row.y) translated.push_back(std::move(row));
             }
             // Complete prose replaces any earlier overlapping field match.
-            std::erase_if(result, [&](const Match &match) {
-                return std::any_of(card->rows.begin(), card->rows.end(), [&](const auto &row) {
-                    return match.y == row.y && match.x < row.x + static_cast<int>(row.source.size()) &&
-                        row.x < match.x + match.length;
-                });
-            });
+            erase_description_matches();
             result.insert(result.end(), std::make_move_iterator(translated.begin()),
                 std::make_move_iterator(translated.end()));
         }
