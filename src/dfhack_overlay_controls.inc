@@ -19,7 +19,8 @@
         const auto named_source = [&](int x, int y, int length) {
             return std::any_of(source_texts.begin(), source_texts.end(), [&](const auto &text) {
                 return (text.option_name || text.role == NativeDfhackOverlayTextRole::Material ||
-                        text.role == NativeDfhackOverlayTextRole::Category) && text.y == y &&
+                        text.role == NativeDfhackOverlayTextRole::Category ||
+                        text.role == NativeDfhackOverlayTextRole::Item) && text.y == y &&
                     x < text.x + static_cast<int>(text.visible.size()) &&
                     x + length > text.x;
             });
@@ -27,7 +28,8 @@
         for (const auto &text : source_texts)
             if (text.option_name || text.role == NativeDfhackOverlayTextRole::Key ||
                     text.role == NativeDfhackOverlayTextRole::Material ||
-                    text.role == NativeDfhackOverlayTextRole::Category || text.quick_filter_label)
+                    text.role == NativeDfhackOverlayTextRole::Category ||
+                    text.role == NativeDfhackOverlayTextRole::Item || text.quick_filter_label)
                 dfhack_auxiliary_regions.push_back({text.x, text.y, static_cast<int>(text.visible.size()), 1});
         struct OptionText { int length = 0; std::string target; };
         const auto option_text = [&](std::string_view pattern, std::string_view target,
@@ -178,7 +180,20 @@
         const int last_y = only_y < 0 ? gps_->dimy : std::min(gps_->dimy, only_y + 1);
         for (const auto &text : source_texts) {
             if (text.y < first_y || text.y >= last_y || text.option_name) continue;
-            if (text.quick_filter_label && text.full == "empty") {
+            if (text.role == NativeDfhackOverlayTextRole::Item) {
+                // The two mechanism HotkeyLabels and ItemSelection's final
+                // list token retain the complete native item designation.
+                // Resolve its material, singular/plural noun and quality
+                // marks together instead of matching their visible words.
+                auto target = exact_literal_translation(
+                    "DFHack GUI Buildingplan mechanism: " + text.full);
+                if (!target) target = translate_dfhack_caption("item", text.full);
+                if (!target) continue;
+                const int end = text.x + static_cast<int>(text.visible.size());
+                int right = end;
+                while (right < gps_->dimx && dfhack_context_rows[text.y][right] == ' ') ++right;
+                emit(text.x, text.y, static_cast<int>(text.visible.size()), *target, right, true);
+            } else if (text.quick_filter_label && text.full == "empty") {
                 if (const auto target = exact_literal_translation("DFHack GUI Buildingplan favorite: empty"))
                     emit(text.x, text.y, static_cast<int>(text.visible.size()), *target,
                         text.x + static_cast<int>(text.visible.size()));
@@ -207,7 +222,8 @@
                 if (text.y < first_y || text.y >= last_y ||
                         text.role == NativeDfhackOverlayTextRole::Key ||
                         text.role == NativeDfhackOverlayTextRole::Material ||
-                        text.role == NativeDfhackOverlayTextRole::Category || text.quick_filter_label ||
+                        text.role == NativeDfhackOverlayTextRole::Category ||
+                        text.role == NativeDfhackOverlayTextRole::Item || text.quick_filter_label ||
                         (text.option_name && (!control.caption.empty() || control.option != "*"))) continue;
                 if (!control.caption.empty() && !control.option.empty() && !control.below &&
                         control.gap >= 0 && control.label_width < 0 &&

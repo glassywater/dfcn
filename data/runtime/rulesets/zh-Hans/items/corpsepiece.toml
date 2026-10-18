@@ -41,7 +41,7 @@ name = "animated_body"
 # authored owner need not occur in the person lexicon. Keep all body outcomes
 # independent of that vocabulary: part, tissue STATE_NAME, part + STATE_NAME,
 # skeleton, partial skeleton, mutilated corpse and partial remains.
-"{::items::corpse}{::items::$number}" = "{::items::corpse}{::items::$number}"
+"{::items::corpse::body}{::items::$number}" = "{::items::corpse::body}{::items::$number}"
 "{^0}{::items::corpse::mangled}{part}{::items::$number}" = "{^0}{::items::corpse::mangled}{part}{::items::$number}"
 
 [[rulesets]]

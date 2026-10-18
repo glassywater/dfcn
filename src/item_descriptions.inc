@@ -384,8 +384,10 @@ std::optional<std::string> Overlay::translate_item_description_term(
         std::string_view raw_source, bool predicate) const {
     const std::string source = normalize_art_utterance(raw_source);
     const std::string key = item_translation_cache_prefix() + (predicate ? "V:" : "T:") + source;
+    const auto parse = [&]() -> std::optional<std::string> {
     if (const auto found = item_description_cache_.find(key);
-        found != item_description_cache_.end()) return found->second;
+        !native_announcement_log_item_field_active() && found != item_description_cache_.end())
+        return found->second;
     std::unordered_map<std::string, std::optional<std::string>> memo;
     auto translate = [&](auto &&self, std::string_view value, bool predicate, unsigned depth)
             -> std::optional<std::string> {
@@ -608,10 +610,15 @@ std::optional<std::string> Overlay::translate_item_description_term(
         return target;
     };
     auto target = translate(translate, source, predicate, 0);
-    if (!item_translation_cache_context_current(key)) return target;
+    if (native_announcement_log_item_field_active() || !item_translation_cache_context_current(key))
+        return target;
     if (item_description_cache_.size() >= 2048) item_description_cache_.clear();
     item_description_cache_.emplace(key, target);
     return target;
+    };
+    if (native_announcement_log_item_field_active())
+        return translation_work_memo("closed-item-term:" + key, parse);
+    return parse();
 }
 
 bool Overlay::item_description_sentence_start(std::string_view source) const {
@@ -652,7 +659,8 @@ std::optional<std::string> Overlay::translate_item_description_source(
     // only inside an identified item description or its typed inscription.
     const std::string key = item_translation_cache_prefix() + (item_context ? "P:I:" : "P:A:") + source;
     if (const auto found = item_description_cache_.find(key);
-        found != item_description_cache_.end()) return found->second;
+        !native_announcement_log_item_field_active() && found != item_description_cache_.end())
+        return found->second;
     if (!item_context) {
         // This reviewed sentence is stored with Legends event rules so its
         // subject keeps the shared {e} semantics, but still anchors item prose.
@@ -697,9 +705,10 @@ std::optional<std::string> Overlay::translate_item_description_source(
             }
         }
         if (!item_opening) {
-            if (item_description_cache_.size() >= 2048) item_description_cache_.clear();
-            if (item_translation_cache_context_current(key))
+            if (!native_announcement_log_item_field_active() && item_translation_cache_context_current(key)) {
+                if (item_description_cache_.size() >= 2048) item_description_cache_.clear();
                 item_description_cache_.emplace(key, std::nullopt);
+            }
             return std::nullopt;
         }
     }
@@ -961,7 +970,7 @@ std::optional<std::string> Overlay::translate_item_description_source(
         if (complete && translated_any && !quoted &&
             !output.empty() && ending.empty()) target = trim(std::move(output));
     }
-    if (item_translation_cache_context_current(key)) {
+    if (!native_announcement_log_item_field_active() && item_translation_cache_context_current(key)) {
         if (item_description_cache_.size() >= 2048) item_description_cache_.clear();
         item_description_cache_.emplace(key, target);
     }
@@ -1069,7 +1078,9 @@ TranslationResult Overlay::translate_item_description_source_display(
         std::string_view raw_source, bool item_context) const {
     TranslationStateScope state;
     TranslationWorkScope work;
-    const std::string source = normalize_art_utterance(raw_source);
+    std::string source = normalize_art_utterance(raw_source);
+    for (char &ch : source)
+        if (ch == '\x10' || ch == '\x11') ch = '"';
     if (source.empty()) return {};
     const std::string key = item_translation_cache_prefix() +
         (item_context ? "prose-item:" : "prose-anchor:") + source;
@@ -1145,6 +1156,73 @@ TranslationResult Overlay::translate_item_description_source_display(
                         }, "item-sentence");
                     if (target.usable() && target.changed()) return target;
                 }
+                // The same item writer appends cc6a10/cc7020 carriers and
+                // cc5d50 work prose. Their reviewed templates live in the
+                // Legends namespace, so an unresolved author/title/topic must
+                // not discard the entire writing sentence's translated
+                // structure. Preserve only its uniquely delimited field.
+                // Admit native writing openings only: generic event clauses
+                // cannot acquire item ownership through their open captures.
+                const bool work_content = written_work_content_sentence_start(value);
+                const auto work_carrier = [](std::string_view input) {
+                    return input.starts_with("The written portion consists of ") ||
+                        input.starts_with("Written on the item is ") ||
+                        input.starts_with("The writing ") || input.starts_with("The work has ") ||
+                        input.starts_with("Overall, ");
+                };
+                if (work_content) {
+                    const auto scope = announcement_combat_rules_.find("work-sentence");
+                    if (scope != announcement_combat_rules_.end())
+                        for (const auto &[signature, rule] : scope->second) {
+                            std::vector<std::string_view> fields;
+                            for (size_t begin = 0; begin < signature.size();) {
+                                size_t end = signature.find(',', begin);
+                                if (end == std::string::npos) end = signature.size();
+                                fields.push_back(std::string_view(signature).substr(begin, end - begin));
+                                begin = end + 1;
+                            }
+                            size_t field = 0;
+                            auto target = translate_item_display_rule(rule, value,
+                                [&](char, std::string_view part) -> TranslationResult {
+                                    if (field >= fields.size()) return {};
+                                    const auto scope_name = fields[field++];
+                                    const auto translated = translate_announcement_combat(part, scope_name);
+                                    return translated && item_display_target_valid(*translated)
+                                        ? TranslationResult::translated(part, *translated, "work-reference")
+                                        : TranslationResult{};
+                                }, "written-item-sentence");
+                            if (target.usable() && target.changed()) return target;
+                        }
+                }
+                if (work_carrier(value)) {
+                    for (int index : matching_legends_rules(value)) {
+                        const auto &rule = rules_[static_cast<size_t>(index)];
+                        if (!work_carrier(rule.source)) continue;
+                        const std::string_view opening = rule.template_kinds.empty()
+                            ? std::string_view(rule.source) : std::string_view(rule.template_literals.front());
+                        if (opening.empty() || !template_literal_at(value, 0,
+                                opening, rule.case_insensitive)) continue;
+                        auto target = translate_item_display_rule(rule, value,
+                            [&](char kind, std::string_view part) -> TranslationResult {
+                                std::optional<std::string> translated;
+                                switch (kind) {
+                                case 's': translated = translate_legends_term(part, true); break;
+                                case 'n': translated = translate_legends_actor(part); break;
+                                case 'b': translated = translate_legends_book(part); break;
+                                case 'd': translated = std::string(part); break;
+                                case 'c':
+                                    if (const auto count = adventure_location_count(lower(std::string(part))))
+                                        translated = std::to_string(*count);
+                                    break;
+                                default: return {};
+                                }
+                                return translated && item_display_target_valid(*translated)
+                                    ? TranslationResult::translated(part, *translated, "written-item-slot")
+                                    : TranslationResult{};
+                            }, "written-item-sentence");
+                        if (target.usable() && target.changed()) return target;
+                    }
+                }
                 return preserved_item_field(value, "item-sentence");
             };
             // The strict parser above already considered complete typed
@@ -1162,19 +1240,23 @@ TranslationResult Overlay::translate_item_description_source_display(
                 // earlier independent item/material/quality sentences.
                 if (!native_nickname && (source[at] == '"' ||
                         source[at] == '\x10' || source[at] == '\x11')) quoted = !quoted;
-                if ((!native_nickname && quoted) ||
+                const bool quoted_stop = quoted && at + 2 < source.size() &&
+                    source[at + 1] == '"' && source[at + 2] == ' ';
+                if ((!native_nickname && quoted && !quoted_stop) ||
                     (source[at] != '.' && source[at] != '!' && source[at] != '?') ||
-                    source[at + 1] != ' ') continue;
-                const auto next = trim_view(std::string_view(source).substr(at + 1));
+                    (!quoted_stop && source[at + 1] != ' ')) continue;
+                const size_t end = at + (quoted_stop ? 2 : 1);
+                const auto next = trim_view(std::string_view(source).substr(end));
                 const auto previous = trim_view(std::string_view(source).substr(
-                    boundaries.back(), at + 1 - boundaries.back()));
+                    boundaries.back(), end - boundaries.back()));
                 // A complete existing production also proves its end,
                 // even when the following independent sentence is new.
                 // Unknown text alone never grants punctuation that role.
                 if ((!native_nickname && anchored(next)) ||
                         translate_item_description_source(previous, true)) {
-                    boundaries.push_back(at + 1);
+                    boundaries.push_back(end);
                     quoted = native_nickname = false;
+                    if (quoted_stop) ++at;
                 }
             }
             // An unmatched quoted title invalidates only its current unit;

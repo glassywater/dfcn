@@ -35,13 +35,46 @@ void Overlay::rebuild_announcement_combat_rules() {
         announcement_combat_rules_[scope].emplace_back(fields, std::move(rule));
     }
     // Exact and more specific constructions precede recursive alternatives.
-    // Stable ties preserve intentional type precedence (anatomy before item).
+    // A shared-damage sentence owns its attack and complete consequence tree.
+    // Resolve that structure before extension messages with one open unit
+    // field: e.g. an ability named Guts must not claim the final tissue in
+    // "... tearing the fat and bruising the guts!" as an activation report.
+    // Anatomy must precede item/name fallbacks independently of dictionary order.
     for (auto &[scope, entries] : announcement_combat_rules_) {
-        std::stable_sort(entries.begin(), entries.end(), [](const auto &a, const auto &b) {
+        std::stable_sort(entries.begin(), entries.end(), [&](const auto &a, const auto &b) {
+            if (a.second.template_kinds.empty() != b.second.template_kinds.empty())
+                return a.second.template_kinds.empty();
+            if (scope == "sentence") {
+                // The melee/projectile producer owns the whole SHOT and
+                // its block/parry/deflection result. Resolve those complete
+                // productions before generic damage: "strikes at YOU ...
+                // by the ITEM" otherwise also fits attack-verb=strikes,
+                // unit="at YOU ...", object=ITEM in the by-the attack rule.
+                // Native COMBAT_PARRY 15 reaches this exact overlap at
+                // reference 64f904..64fa1f / classic 64d324..64d43f.
+                const auto shot_tree = [](const auto &entry) {
+                    return entry.first == "shot" || entry.first.starts_with("shot,");
+                };
+                if (shot_tree(a) != shot_tree(b)) return shot_tree(a);
+                const auto damage_tree = [](const auto &entry) {
+                    return entry.first == "head" || entry.first.starts_with("head,");
+                };
+                if (damage_tree(a) != damage_tree(b)) return damage_tree(a);
+            }
             const auto literal_size = [](const Rule &r) {
                 return r.source.size() - r.template_kinds.size() * 3;
             };
-            return literal_size(a.second) > literal_size(b.second);
+            if (literal_size(a.second) != literal_size(b.second))
+                return literal_size(a.second) > literal_size(b.second);
+            // The merged dictionary sorts synthetic keys by length, placing
+            // $combat-item before $body. Stable ties would then parse a RAW
+            // right hand as an item and give right its unrelated name sense.
+            const auto anatomy = [](const auto &entry) {
+                const std::string_view fields = entry.first;
+                return fields == "$body" || fields.starts_with("$body,") ||
+                    fields.ends_with(",$body") || fields.find(",$body,") != std::string_view::npos;
+            };
+            return anatomy(a) && !anatomy(b);
         });
         auto &syntax = announcement_combat_syntax_[scope];
         for (size_t index = 0; index < entries.size(); ++index) {
@@ -76,23 +109,227 @@ static bool announcement_combat_field_edges_fit(
     // require their original nonempty field boundaries.
     return scope == "head" || scope == "attack" || scope == "damage" ||
         scope == "damage-list" || scope == "layer" ||
-        scope == "work-reference" || scope == "work-reference-list";
+        scope == "owned-object" ||
+        scope == "work-reference" || scope == "work-reference-list" ||
+        // The slain-foe builder always appends " of " after a held office,
+        // even when the entity's language_name is empty. The whole victim
+        // field owns that final space; its concrete empty-name grammar is
+        // resolved after trimming, without relaxing any person/office leaf.
+        scope == "boast-victim";
+}
+
+static bool spoken_identity_has_prose_boundary(std::string_view value,
+        bool comma_is_boundary = false) {
+    // A speaker's nickname is an authored field, including its punctuation.
+    // The enclosing person/role must still end before the next utterance;
+    // otherwise the permissive authored-unit fallback can swallow a complete
+    // reaction after the incident that precedes it.
+    const size_t nickname = value.find('`');
+    const size_t nickname_end = value.rfind('\'');
+    const bool quoted_identity = value.size() >= 2 &&
+        value.front() == '"' && value.back() == '"' &&
+        std::count(value.begin(), value.end(), '"') == 2;
+    if (quoted_identity) return false;
+    for (size_t at = 0; at < value.size(); ++at) {
+        if (nickname != std::string_view::npos && nickname_end != std::string_view::npos &&
+                nickname_end > nickname && at == nickname) {
+            at = nickname_end;
+            continue;
+        }
+        if ((comma_is_boundary && value[at] == ',') ||
+                std::string_view(".!?:[]\r\n").find(value[at]) != std::string_view::npos)
+            return true;
+    }
+    return false;
+}
+
+static bool announcement_combat_person_scope(std::string_view scope) {
+    return scope == "unit" || scope == "$unit" ||
+        scope == "person" || scope == "$person" ||
+        scope == "speech-person" || scope == "$speech-person" ||
+        scope == "speech-first-name" || scope == "$speech-first-name" ||
+        scope == "memory-person" || scope == "historical-actor" ||
+        scope == "$historical-actor";
+}
+
+static bool announcement_combat_numeric_tail_fits(const Rule &rule, std::string_view source) {
+    if (rule.template_kinds.empty() || rule.template_kinds.back() != 'd' ||
+            !rule.template_literals[rule.template_kinds.size() - 1].ends_with(' ')) return true;
+    if (rule.template_literals.back().size() > source.size()) return false;
+    const auto prefix = trim_view(source.substr(0, source.size() - rule.template_literals.back().size()));
+    const size_t word = prefix.find_last_of(' ');
+    return legends_number_field(prefix.substr(word == std::string_view::npos ? 0 : word + 1));
+}
+
+struct AnnouncementLiteralSource {
+    std::string raw, normalized, folded;
+    std::vector<size_t> origins;
+    std::unordered_map<std::string, std::vector<size_t>> literals;
+
+    const std::vector<size_t> &positions(std::string_view literal) {
+        std::string pattern(literal);
+        for (char &ch : pattern) ch = static_cast<char>(fold_ascii(static_cast<unsigned char>(ch)));
+        const auto found = literals.find(pattern);
+        if (found != literals.end()) return found->second;
+        std::vector<size_t> result;
+        if (literal.empty()) {
+            result.reserve(normalized.size() + 1);
+            for (size_t at = 0; at <= normalized.size(); ++at) result.push_back(at);
+        } else {
+            // A delimiter with a long repeated prefix must not restart its
+            // comparison at every source byte. KMP finds all overlapping
+            // occurrences in O(source + literal + occurrences) once.
+            std::vector<size_t> failure(pattern.size());
+            for (size_t at = 1, matched = 0; at < pattern.size(); ++at) {
+                while (matched && pattern[at] != pattern[matched]) matched = failure[matched - 1];
+                if (pattern[at] == pattern[matched]) ++matched;
+                failure[at] = matched;
+            }
+            for (size_t at = 0, matched = 0; at < folded.size(); ++at) {
+                if ((at & 255) == 0) translation_work_step();
+                while (matched && folded[at] != pattern[matched]) matched = failure[matched - 1];
+                if (folded[at] == pattern[matched]) ++matched;
+                if (matched == pattern.size()) {
+                    result.push_back(at + 1 - matched);
+                    matched = failure[matched - 1];
+                }
+            }
+        }
+        return literals.emplace(std::move(pattern), std::move(result)).first->second;
+    }
+};
+
+// Strict recognition and display binding use one immutable normalization and
+// one delimiter index for the same complete source. These are structural
+// facts, independent of the root scope or personal-name translation policy.
+static std::shared_ptr<AnnouncementLiteralSource> announcement_literal_source(
+        uintptr_t owner, uint64_t revision, std::string_view raw_source) {
+    struct Session {
+        std::unordered_map<std::string, std::shared_ptr<AnnouncementLiteralSource>> sources;
+    };
+    static const unsigned char session_tag = 0;
+    auto &retained = active_translation_work->parser_sessions[&session_tag];
+    if (!retained) retained = std::make_shared<Session>();
+    const auto session = std::static_pointer_cast<Session>(retained);
+    std::string key;
+    key.append(reinterpret_cast<const char *>(&owner), sizeof(owner));
+    key.append(reinterpret_cast<const char *>(&revision), sizeof(revision));
+    key.append(raw_source);
+    if (const auto found = session->sources.find(key); found != session->sources.end()) return found->second;
+    auto source = std::make_shared<AnnouncementLiteralSource>();
+    source->raw.assign(raw_source);
+    source->normalized = normalize_utterance(source->raw, &source->origins);
+    source->folded = source->normalized;
+    for (char &ch : source->folded) ch = static_cast<char>(fold_ascii(static_cast<unsigned char>(ch)));
+    session->sources.emplace(std::move(key), source);
+    return source;
 }
 
 std::optional<std::string> Overlay::translate_announcement_combat(
         std::string_view raw_source, std::string_view initial_scope) const {
     TranslationWorkScope budget;
+    struct ScopeSpan {
+        size_t scope, begin, length;
+        bool operator==(const ScopeSpan &) const = default;
+    };
+    struct ScopeSpanHash {
+        size_t operator()(const ScopeSpan &span) const {
+            size_t hash = span.scope;
+            for (const size_t value : {span.begin, span.length})
+                hash ^= value + 0x9e3779b9 + (hash << 6) + (hash >> 2);
+            return hash;
+        }
+    };
+    struct SyntaxPath {
+        const Rule *rule;
+        size_t begin, end, field;
+        bool operator==(const SyntaxPath &) const = default;
+    };
+    struct SyntaxPathHash {
+        size_t operator()(const SyntaxPath &path) const {
+            size_t hash = std::hash<const Rule *>{}(path.rule);
+            for (const size_t value : {path.begin, path.end, path.field})
+                hash ^= value + 0x9e3779b9 + (hash << 6) + (hash >> 2);
+            return hash;
+        }
+    };
+    struct SemanticPath {
+        const Rule *rule;
+        size_t begin, end, field;
+        bool operator==(const SemanticPath &) const = default;
+    };
+    struct SemanticPathHash {
+        size_t operator()(const SemanticPath &path) const {
+            size_t hash = std::hash<const Rule *>{}(path.rule);
+            for (const auto value : {path.begin, path.end, path.field})
+                hash ^= value + 0x9e3779b9 + (hash << 6) + (hash >> 2);
+            return hash;
+        }
+    };
+    struct SemanticMatch {
+        bool matched = false;
+        size_t end = 0;
+        std::optional<std::string> translation;
+        std::shared_ptr<const SemanticMatch> next;
+    };
+    struct SemanticChart {
+        std::unordered_map<ScopeSpan, std::optional<std::string>, ScopeSpanHash> values;
+        std::unordered_map<SemanticPath, SemanticMatch, SemanticPathHash> matches;
+    };
+    struct SyntaxChart {
+        // Syntax paths borrow only this immutable normalization. Retaining a
+        // caller's temporary string_view would leave later root scopes stale.
+        std::shared_ptr<AnnouncementLiteralSource> text;
+        std::unordered_map<std::string, size_t> scope_ids;
+        std::unordered_map<ScopeSpan, std::vector<int>, ScopeSpanHash> candidates;
+        std::unordered_map<ScopeSpan, bool, ScopeSpanHash> scopes;
+        std::unordered_set<ScopeSpan, ScopeSpanHash> active;
+        std::unordered_map<SyntaxPath, bool, SyntaxPathHash> paths;
+        std::unordered_map<std::string, std::shared_ptr<SemanticChart>> semantics;
+    };
+    struct ParserSession {
+        std::unordered_map<std::string, std::shared_ptr<SyntaxChart>> charts;
+    };
+    const auto resources = RULESETS.resource_revision();
+    const auto context = native_identity_translation_context();
+    const auto owner = reinterpret_cast<uintptr_t>(this);
+    std::string domain;
+    const auto value = [&](std::string &key, const auto &input) {
+        key.append(reinterpret_cast<const char *>(&input), sizeof(input));
+    };
+    value(domain, owner); value(domain, resources);
+    std::string chart_key = domain;
+    value(chart_key, raw_source.size()); chart_key.append(raw_source);
+    std::string active_key = "announcement-combat\x1f";
+    active_key.append(domain);
+    value(active_key, initial_scope.size()); active_key.append(initial_scope);
+    value(active_key, raw_source.size()); active_key.append(raw_source);
+    std::string memo_key = active_key;
+    value(memo_key, context);
     const auto parse = [&]() -> std::optional<std::string> {
     TranslationWorkFrame work_frame("announcement grammar", raw_source);
     if (announcement_combat_rules_.empty()) return std::nullopt;
+    const bool spoken_scope = initial_scope == "spoken-sentence" ||
+        initial_scope == "spoken-greeting" || initial_scope == "adventure-announcement";
     // Match native prose in a canonical view, but give typed leaves their
     // original bytes. Memorial death clauses can contain doubled spaces while
     // an authored nickname in the same inscription owns its exact whitespace.
     // The mapping also preserves nicknames inside READ_ITEM inscriptions and
     // historical collection titles reached through the shared grammar. Squad
     // aliases need the same original-byte ownership even without backticks.
-    std::vector<size_t> origins;
-    const std::string source = normalize_utterance(raw_source, &origins);
+    static const unsigned char session_tag = 0;
+    auto &retained_session = active_translation_work->parser_sessions[&session_tag];
+    if (!retained_session) retained_session = std::make_shared<ParserSession>();
+    const auto session = std::static_pointer_cast<ParserSession>(retained_session);
+    auto &retained_chart = session->charts[chart_key];
+    if (!retained_chart) {
+        auto made = std::make_shared<SyntaxChart>();
+        made->text = announcement_literal_source(owner, resources, raw_source);
+        retained_chart = std::move(made);
+    }
+    const auto chart = retained_chart;
+    const auto &source = chart->text->normalized;
+    const auto &origins = chart->text->origins;
     if (source.empty()) return std::nullopt;
     // Shared historical/item fields can enter this grammar through another
     // parser. Track the semantic span across calls as well as within resolve,
@@ -102,51 +339,59 @@ std::optional<std::string> Overlay::translate_announcement_combat(
     auto &active_calls = reloadable_thread_state<
         std::unordered_set<std::string>, struct CombatActiveCallsTag>();
     const std::string call_key = std::string(initial_scope) + '\x1f' + std::string(raw_source);
-    if (!active_calls.insert(call_key).second) return std::nullopt;
+    if (!active_calls.insert(call_key).second) {
+        ++active_translation_work->cycle_revision;
+        return std::nullopt;
+    }
     struct ActiveCall {
         std::unordered_set<std::string> &calls;
         const std::string &key;
         ~ActiveCall() { calls.erase(key); }
     } call{active_calls, call_key};
     using Result = std::optional<std::string>;
-    std::unordered_map<std::string, Result> memo;
-    std::unordered_set<std::string> active;
+    std::string semantic_domain;
+    // Only these modes change field semantics. The selected root rule does
+    // not: greeting/sentence/adventure retries reuse the same scope/span
+    // results whenever their actual personal-field policy is identical.
+    const unsigned char semantic_mode = spoken_scope ? 1 :
+        (initial_scope == "unit" || initial_scope == "$unit" ? 2 : 0);
+    value(semantic_domain, semantic_mode);
+    value(semantic_domain, context);
+    auto &retained_semantics = chart->semantics[semantic_domain];
+    if (!retained_semantics) retained_semantics = std::make_shared<SemanticChart>();
+    const auto semantics = retained_semantics;
+    auto &memo = semantics->values;
+    std::unordered_set<ScopeSpan, ScopeSpanHash> active;
     // Recognize the complete grammar before translating its fields. External
     // resolvers remain conservative wildcards; table-owned scopes propagate
     // their literals and finite vocabulary through aliases at every position.
     // This does not reorder rules or make lexical recognition a translation.
-    std::unordered_map<std::string, std::vector<int>> syntax_candidates;
-    std::unordered_map<std::string, bool> syntax_scopes;
-    std::unordered_set<std::string> active_syntax;
-    struct SyntaxPath {
-        const Rule *rule;
-        std::string_view input;
-        size_t field, at;
-        bool operator==(const SyntaxPath &) const = default;
+    auto &syntax_candidates = chart->candidates;
+    auto &syntax_scopes = chart->scopes;
+    auto &active_syntax = chart->active;
+    auto &syntax_paths = chart->paths;
+    const auto span_key = [&](std::string_view scope, std::string_view input) {
+        const auto found = chart->scope_ids.try_emplace(std::string(scope), chart->scope_ids.size());
+        return ScopeSpan{found.first->second, static_cast<size_t>(input.data() - source.data()), input.size()};
     };
-    struct SyntaxPathHash {
-        size_t operator()(const SyntaxPath &path) const {
-            size_t hash = std::hash<std::string_view>{}(path.input);
-            const auto add = [&](size_t value) {
-                hash ^= value + 0x9e3779b9 + (hash << 6) + (hash >> 2);
-            };
-            add(std::hash<const Rule *>{}(path.rule));
-            add(path.field);
-            add(path.at);
-            return hash;
-        }
+    // Index each literal once in the owned complete source. Every grammar
+    // state then visits actual delimiter positions, not every intervening
+    // byte followed by another complete suffix scan. Empty literals retain
+    // every legal byte boundary, preserving adjacent-capture coverage.
+    const auto literal_positions = [&](std::string_view literal) -> const std::vector<size_t> & {
+        return chart->text->positions(literal);
     };
-    std::unordered_map<SyntaxPath, bool, SyntaxPathHash> syntax_paths;
     const auto candidates = [&](std::string_view scope, std::string_view input)
             -> const std::vector<int> & {
-        const std::string key = std::string(scope) + '\x1f' + std::string(input);
-        const auto [found, added] = syntax_candidates.try_emplace(key);
-        if (added) {
-            if (const auto grammar = announcement_combat_syntax_.find(std::string(scope));
-                    grammar != announcement_combat_syntax_.end())
-                found->second = grammar->second.anchors.candidates(input);
-        }
-        return found->second;
+        const auto key = span_key(scope, input);
+        if (const auto found = syntax_candidates.find(key); found != syntax_candidates.end())
+            return found->second;
+        translation_work_step();
+        std::vector<int> made;
+        if (const auto grammar = announcement_combat_syntax_.find(std::string(scope));
+                grammar != announcement_combat_syntax_.end())
+            made = grammar->second.anchors.candidates(input);
+        return syntax_candidates.emplace(key, std::move(made)).first->second;
     };
     std::function<bool(std::string_view, std::string_view)> scope_fits;
     std::function<bool(const Rule &, const std::vector<std::string> &,
@@ -154,16 +399,24 @@ std::optional<std::string> Overlay::translate_announcement_combat(
     suffix_fits = [&](const Rule &rule, const std::vector<std::string> &fields,
             std::string_view input, size_t field, size_t at) {
         if (field == fields.size()) return at == input.size();
-        const SyntaxPath path{&rule, input, field, at};
+        const size_t input_begin = static_cast<size_t>(input.data() - source.data());
+        // Consumed prefixes cannot affect this suffix. Canonical absolute
+        // endpoints let different enclosing spans share its one DP proof.
+        const SyntaxPath path{&rule, input_begin + at, input_begin + input.size(), field};
         if (const auto found = syntax_paths.find(path); found != syntax_paths.end())
             return found->second;
+        translation_work_step();
         const auto &following = rule.template_literals[field + 1];
         bool fits = false;
         if (at < input.size() && following.size() < input.size() - at) {
             const size_t last = input.size() - following.size();
-            for (size_t end = field + 1 == fields.size() ? last : at + 1;
-                    end <= last; ++end) {
-                if (!template_literal_at(input, end, following, true)) continue;
+            const auto &positions = literal_positions(following);
+            auto next = std::lower_bound(positions.begin(), positions.end(), input_begin +
+                (field + 1 == fields.size() ? last : at + 1));
+            const auto stop = std::upper_bound(next, positions.end(), input_begin + last);
+            for (; next != stop; ++next) {
+                translation_work_step();
+                const size_t end = *next - input_begin;
                 const auto value = input.substr(at, end - at);
                 if (!announcement_combat_field_edges_fit(fields[field], value)) continue;
                 // Prove the suffix before entering an open name/item field.
@@ -183,53 +436,99 @@ std::optional<std::string> Overlay::translate_announcement_combat(
         // This scope also has a native work-reference fallback outside its
         // table. Its lexical admission must include that external production.
         if (scope.starts_with('$') || scope == "work-reference-list") return true;
-        const std::string key = std::string(scope) + '\x1f' + std::string(input);
+        const auto key = span_key(scope, input);
         if (const auto found = syntax_scopes.find(key); found != syntax_scopes.end())
             return found->second;
         // Cyclic aliases are unknown here, not a proved syntax rejection.
         // The semantic resolver's active-span guard still rejects real cycles.
         if (!active_syntax.insert(key).second) return true;
+        struct ActiveSyntax {
+            std::unordered_set<ScopeSpan, ScopeSpanHash> &active;
+            const ScopeSpan &key;
+            ~ActiveSyntax() { active.erase(key); }
+        } active_scope{active_syntax, key};
+        translation_work_step();
         bool fits = false;
         const auto grammar = announcement_combat_rules_.find(std::string(scope));
         const auto syntax = announcement_combat_syntax_.find(std::string(scope));
         if (grammar != announcement_combat_rules_.end() &&
                 syntax != announcement_combat_syntax_.end()) {
-            for (int index : candidates(scope, input)) {
+            const auto &choices = candidates(scope, input);
+            for (const int index : choices) {
+                translation_work_step();
                 const auto &rule = grammar->second[static_cast<size_t>(index)].second;
                 if (rule.template_kinds.empty()) {
                     fits = input.size() == rule.source.size() &&
                         template_literal_at(input, 0, rule.source, true);
-                } else if (legends_template_literals_fit(rule, input, 0, input.size(), true)) {
+                } else if (template_literal_at(input, 0, rule.template_literals.front(), true) &&
+                        announcement_combat_numeric_tail_fits(rule, input)) {
                     fits = suffix_fits(rule, syntax->second.fields[static_cast<size_t>(index)],
                         input, 0, rule.template_literals.front().size());
                 }
                 if (fits) break;
             }
         }
-        active_syntax.erase(key);
         syntax_scopes.emplace(key, fits);
         return fits;
     };
     std::function<Result(std::string_view, std::string_view)> resolve;
     resolve = [&](std::string_view scope, std::string_view input) -> Result {
-        TranslationWorkFrame field_work("announcement grammar field", input);
         input = trim_view(input);
         if (input.empty()) return std::nullopt;
         const size_t begin = static_cast<size_t>(input.data() - source.data());
         const size_t end = begin + input.size();
-        const std::string_view original = raw_source.substr(
+        const std::string_view original = std::string_view(chart->text->raw).substr(
             origins[begin], origins[end - 1] + 1 - origins[begin]);
-        std::string key(scope);
-        key.push_back('\x1f');
-        key.append(original);
+        const auto key = span_key(scope, input);
         if (auto found = memo.find(key); found != memo.end()) return found->second;
+        std::string leaf_key;
+        if (scope.starts_with('$')) {
+            leaf_key = "announcement-typed-field\x1f";
+            leaf_key.append(domain);
+            value(leaf_key, context);
+            // Unit/person policies differ between speech, ordinary clauses
+            // and a standalone label. Other external fields have no root-
+            // scope policy and must not repeat their noun/name grammar for
+            // every root that asks about this same proved source field.
+            const unsigned char leaf_mode = scope == "$unit" || scope == "$person"
+                ? semantic_mode : 0;
+            value(leaf_key, leaf_mode);
+            value(leaf_key, scope.size()); leaf_key.append(scope);
+            value(leaf_key, original.size()); leaf_key.append(original);
+            const bool report_binding = scope == "$unit" || scope == "$person" ||
+                scope == "$speech-person" || scope == "$speech-first-name";
+            if (scope == "$announcement" || (report_binding && !g_native_announcement_log_translation_report)) {
+                value(leaf_key, raw_source.size()); leaf_key.append(raw_source);
+            }
+            if ((scope == "$item" || scope == "$announcement-item") &&
+                    g_native_announcement_log_translation_document &&
+                    g_native_announcement_log_translation_document->owned_fields &&
+                    !g_native_announcement_log_translation_document->owned_fields->fragments.empty()) {
+                // Equal item text at two native offsets can contain distinct
+                // owned fields. Do not bypass that binding in the work memo.
+                value(leaf_key, raw_source.size()); leaf_key.append(raw_source);
+                value(leaf_key, origins[begin]);
+            }
+            if (const auto found = active_translation_work->memo.find(leaf_key);
+                    found != active_translation_work->memo.end()) return found->second;
+        }
+        TranslationWorkFrame field_work("announcement grammar field", input);
         // Aliases may preserve span length while changing semantic scope. A
         // visited (scope, span) prevents cycles without truncating long reports.
-        if (!active.insert(key).second) return std::nullopt;
+        if (!active.insert(key).second) {
+            ++active_translation_work->cycle_revision;
+            return std::nullopt;
+        }
+        const auto cycle_revision = active_translation_work->cycle_revision;
         const auto finish = [&](Result result) -> Result {
             active.erase(key);
             if (result && result->empty()) result.reset();
-            memo.emplace(key, result);
+            if (!translation_work_exhausted() &&
+                    cycle_revision == active_translation_work->cycle_revision) {
+                memo.emplace(key, result);
+                if (!leaf_key.empty() && context == native_identity_translation_context())
+                    active_translation_work->memo.emplace(leaf_key, result);
+            }
             return result;
         };
         if (scope.starts_with("$")) input = original;
@@ -266,19 +565,43 @@ std::optional<std::string> Overlay::translate_announcement_combat(
                 ? std::move(result) : std::nullopt);
         }
         if (scope == "$unit") {
-            auto result = native_announcement_unit_identity_target(raw_source, input);
+            bool bound = false;
+            auto result = native_announcement_unit_identity_target(raw_source, input, &bound);
+            // A frozen typed report can retain an unbound field verbatim.
+            // That display fallback does not prove a person: continue through
+            // the complete name grammar, rather than swallowing a reaction.
+            if (!bound) result.reset();
             if (!result) result = native_unit_identity_source_target(input);
             // b6ca30/132e430 can copy the complete animated corpse/body-part
             // label into a proved unit field. Resolve its owner and native
             // body suffix together before treating it as a bare person name.
             if (!result) result = translate_native_animation_label(input);
+            if (!result && spoken_identity_has_prose_boundary(input))
+                return finish(std::nullopt);
             if (!result) result = translate_ui_message_capture(input, true);
             // The complete native production establishes this unit slot in
             // combat and adventure records too. b6ca30 may return an authored
             // name alone; it need not exist in the generated-name lexicon.
             // Resolve known identities first, then preserve the owned name
             // through the same typed path used by fortress announcements.
-            if (!result) result = translate_unit_identity(input, true);
+            // Speech first resolves the whole native body, then partitions
+            // appended complete sentences. An unbound authored-name fallback
+            // here would preserve an arbitrary body prefix or a later reaction
+            // as if it were a unit. Native identity bindings above still own
+            // real authored captions; unbound personal names use the speech
+            // producer's complete EnglishName/FIRST_NAME grammar instead.
+            if (!result && spoken_scope)
+                result = translate_announcement_combat(input, "$speech-person");
+            // A textual capture alone does not establish an authored name.
+            // The broad damage head can otherwise steal a complete shot:
+            // "strikes [at you but the shot is deflected] by the [item]".
+            // Native-bound identities above retain authored bytes; this last
+            // unbound alternative must resolve a real name/identity grammar.
+            // A display production may preserve an unknown noun only after
+            // its complete native clause boundaries have been established.
+            if (!result && !spoken_scope && initial_scope != "unit" && initial_scope != "$unit" &&
+                    !spoken_identity_has_prose_boundary(input, true))
+                result = translate_unit_identity(input, false);
             return finish(std::move(result));
         }
         if (scope == "$historical-actor") {
@@ -288,6 +611,8 @@ std::optional<std::string> Overlay::translate_announcement_combat(
             // live unit's profession caption or a bare generated name.
             if (const auto identity = native_unit_identity_source_target(input))
                 return finish(identity);
+            if (spoken_identity_has_prose_boundary(input))
+                return finish(std::nullopt);
             auto result = translate_legends_actor(input, 0, true);
             if (translation_complete_with_native_nicknames(result, input))
                 return finish(std::move(result));
@@ -361,6 +686,23 @@ std::optional<std::string> Overlay::translate_announcement_combat(
             return finish(std::move(result));
         }
         if (scope == "$requirement") return finish(translate_workshop_recipe_source(input));
+        if (scope == "$journal-office") {
+            // d1ef0 takes a whole gendered position title or assignment's
+            // plural title. Keep its office sense and shared RAW vocabulary.
+            return finish(translate_legends_office(input));
+        }
+        if (scope == "$journal-owner") {
+            // The People producer names an entity, or a deity when 9bdfb0
+            // supplies the religious suffix. A bound entity keeps its own
+            // name senses; a divine figure keeps its personal name grammar.
+            auto result = translate_civilization_reference(input);
+            if (!translation_complete_with_native_nicknames(result, input))
+                result = translate_legends_name(input, true);
+            if (!translation_complete_with_native_nicknames(result, input))
+                result = translate_legends_name(input, false, true);
+            return finish(translation_complete_with_native_nicknames(result, input)
+                ? std::move(result) : std::nullopt);
+        }
         if (scope == "$office") {
             // Intrigue and negotiation insert position.name directly from
             // the native position record. Resolve that complete typed title
@@ -405,6 +747,25 @@ std::optional<std::string> Overlay::translate_announcement_combat(
             return finish(translation_complete_with_native_nicknames(result, input)
                 ? std::move(result) : std::nullopt);
         }
+        if (scope == "$journal-artifact-place") {
+            // d09e0 appends the complete English location supplier, including
+            // unnamed region/underground fallbacks. Its first site branch
+            // actually calls b94a40 too; preserve that native geographic
+            // field instead of inferring a site from the stored ID alone.
+            auto result = translate_world_artifact_location(input);
+            return finish(translation_complete_with_native_nicknames(result, input)
+                ? std::move(result) : std::nullopt);
+        }
+        if (scope == "$journal-artifact-building") {
+            // b94090 selects either a complete generated English building
+            // name or one of its finite unnamed/type labels. Resolve those
+            // labels before entering the generated-name grammar.
+            auto result = translate_legends_term(input);
+            if (!translation_complete_with_native_nicknames(result, input))
+                result = translate_legends_name(input, false, false);
+            return finish(translation_complete_with_native_nicknames(result, input)
+                ? std::move(result) : std::nullopt);
+        }
         if (scope == "$resident-assigned-name") {
             // 135c28c..135c2e6 reuses the resident role's NativeString. A
             // null getter or has_name=false leaves that complete role in the
@@ -429,6 +790,19 @@ std::optional<std::string> Overlay::translate_announcement_combat(
             auto result = translate_creature_descriptor(input, true);
             if (!result) result = translate_unit_profession(input, false);
             if (!result) result = translate_legends_term(input, false);
+            return finish(translation_complete_with_native_nicknames(result, input)
+                ? std::move(result) : std::nullopt);
+        }
+        if (scope == "$combat-item") {
+            // Shot block/parry/deflection calls pass c65450 count=1.
+            // The virtual +0x5f0
+            // article precedes every quality/wear/ownership wrapper, while
+            // +0x5e8 supplies the complete noun inside them. Inventory owns
+            // that same full caption grammar, including article and marks;
+            // a bare ::items lookup does not own the leading article.
+            auto result = translate_inventory_item_name(input, -1, -1);
+            if (!translation_complete_with_native_nicknames(result, input))
+                result = translate_announcement_combat(input, "$announcement-item");
             return finish(translation_complete_with_native_nicknames(result, input)
                 ? std::move(result) : std::nullopt);
         }
@@ -459,6 +833,12 @@ std::optional<std::string> Overlay::translate_announcement_combat(
             if (!is_written_work_description(normalized)) return finish(std::nullopt);
             return finish(translate_written_work_paragraph(input));
         }
+        if (scope == "$announcement-terrain") {
+            // The interruption input's failed-grab message appends the same
+            // complete e7d330 terrain field as its Hold/Hang-from captions.
+            // Its material and construction grammar belongs to a tile.
+            return finish(RULESETS.translate_tile_description(native_text_to_utf8(input)));
+        }
         if (scope == "$announcement-building") {
             // 1168910 obtains a discovered building's entire caption from
             // virtual +0x188. Reuse that exact hover-caption grammar, keeping
@@ -468,11 +848,12 @@ std::optional<std::string> Overlay::translate_announcement_combat(
                 "::map_hover::building", building_origins));
         }
         if (scope == "$item" || scope == "$announcement-item") {
+            const auto parse_item = [&]() -> Result {
             // A complete equipment/material production has its own proven
             // item kind. Keep it ahead of broad title conjunctions such as
             // "{b} and {b}" and preserve authored item-name fields.
             if (auto caption = translate_item_caption_grammar(input))
-                return finish(std::move(caption));
+                return caption;
             // ELF e68020 emits a complete written title for item kinds
             // 0x56/0x59, optionally followed by " (copy)". Its punctuation
             // belongs to this item field, before the announcement's period.
@@ -480,7 +861,7 @@ std::optional<std::string> Overlay::translate_announcement_combat(
             // parsing can spend the record's work budget on title words.
             auto result = translate_written_item_caption(input, false, true);
             if (translation_complete_with_native_nicknames(result, input))
-                return finish(std::move(result));
+                return result;
             // Shared damage's c65450 and announcements' e68020 both supply
             // complete live item captions. A figurine/statue owns its depicted
             // subject as well as material and designation marks; the narrower
@@ -497,8 +878,21 @@ std::optional<std::string> Overlay::translate_announcement_combat(
             if (!translation_complete_with_native_nicknames(result, input))
                 result = translate_procedural_fragment(std::string(input),
                     false, false, {}, ProceduralFragmentContext::native_item_name);
-            return finish(translation_complete_with_native_nicknames(result, input)
-                ? std::move(result) : std::nullopt);
+            return translation_complete_with_native_nicknames(result, input)
+                ? std::move(result) : std::nullopt;
+            };
+            std::string configuration = config_.language;
+            configuration.push_back(config_.enabled ? '\1' : '\0');
+            configuration.push_back(config_.native_language_original ? '\1' : '\0');
+            configuration.push_back(config_.compositional_rules ? '\1' : '\0');
+            auto closed = native_announcement_log_closed_item_field(this, raw_source,
+                    origins[begin], input,
+                    scope, configuration, native_identity_translation_catalog_generation(),
+                    [&](const NativeUnitIdentity &identity) { return translate_native_unit_identity(identity); },
+                    parse_item);
+            if (closed.state != NativeAnnouncementLogItemFieldState::CompatibilityRequired)
+                return finish(std::move(closed.target));
+            return finish(parse_item());
         }
         if (scope == "$body") return finish(translate_legends_anatomy(input));
         if (scope == "$announcement-substance") {
@@ -551,9 +945,77 @@ std::optional<std::string> Overlay::translate_announcement_combat(
         }
         if (scope == "$term") return finish(translate_ui_message_capture(input, false));
         if (scope == "$person") {
-            auto result = native_announcement_unit_identity_target(raw_source, input);
+            bool bound = false;
+            auto result = native_announcement_unit_identity_target(raw_source, input, &bound);
+            if (!bound) result.reset();
+            if (!result) result = native_unit_identity_source_target(input);
+            if (!result && spoken_identity_has_prose_boundary(input))
+                return finish(std::nullopt);
             if (!result) result = translate_legends_name(input, true);
+            if (!result && spoken_scope)
+                result = translate_announcement_combat(input, "$speech-person");
             return finish(std::move(result));
+        }
+        if (scope == "$speech-person" || scope == "$speech-first-name") {
+            // The decompiled SPEAKER/AUDIENCE/HF parameter producers own
+            // these personal fields. FIRST_NAME can come from UTTERANCES,
+            // without a native WORD mask; TRANS_NAME can pair that same
+            // given name with a complete English surname/title. Keep this
+            // proof scoped to speech rather than widening ordinary names.
+            bool bound = false;
+            auto result = native_announcement_unit_identity_target(raw_source, input, &bound);
+            if (!bound) result.reset();
+            if (!result) result = native_unit_identity_source_target(input);
+            if (result) return finish(std::move(result));
+            if (spoken_identity_has_prose_boundary(input))
+                return finish(std::nullopt);
+            // Report captures own native CP437 bytes, while paragraph callers
+            // can supply the same field as UTF-8. Invert only a complete UTF-8
+            // representation before handing it to the native name renderer;
+            // authored CJK stays UTF-8. Testing individual UTF-8 bytes as CP437
+            // letters rejected accented given names and left entire greetings
+            // untranslated, or sent them through the legacy generic template.
+            const auto native = utf8_to_cp437(input, true);
+            const std::string_view name = native ? std::string_view(*native) : input;
+            const auto given = name.substr(0, name.find(' '));
+            bool valid_given = !given.empty();
+            for (size_t at = 0; valid_given && at < given.size();) {
+                const auto decoded = decode_utf8_at(given, at);
+                if (decoded && is_cjk_display_codepoint(decoded->first)) {
+                    at += decoded->second;
+                    continue;
+                }
+                const unsigned char ch = static_cast<unsigned char>(given[at++]);
+                valid_given = (ch >= 'A' && ch <= 'Z') ||
+                    (ch >= 'a' && ch <= 'z') || is_cp437_latin_letter_byte(ch) ||
+                    ch == '-' || ch == '\'';
+            }
+            // TRANS_NAME is the complete English name, including generated
+            // surname/title groups. Render those groups before a permissive
+            // personal-name path can keep a CJK given name plus English tail.
+            if (scope == "$speech-person" && valid_given && given.size() < name.size()) {
+                result = translate_english_character_name(name, given);
+                if (translation_complete_with_native_nicknames(result, name))
+                    return finish(std::move(result));
+            }
+            result = translate_legends_name(name, true);
+            if (translation_complete_with_native_nicknames(result, name))
+                return finish(std::move(result));
+            // FIRST_NAME is copied directly from the native string, so an
+            // authored Chinese name needs neither Latin letters nor WORD
+            // roots. Do not let this name span cross a prose sentence: the
+            // greeting may append several independently complete messages.
+            if (scope == "$speech-first-name" && contains_cjk_utf8(name)) {
+                if (name.find_first_of(".!?,;:\"`[]()\r\n") != std::string_view::npos)
+                    return finish(std::nullopt);
+                return finish(native_text_to_utf8(name));
+            }
+            if (!valid_given ||
+                    (scope == "$speech-first-name" && given.size() != name.size()))
+                return finish(std::nullopt);
+            result = translate_english_character_name(name, given);
+            return finish(translation_complete_with_native_nicknames(result, name)
+                ? std::move(result) : std::nullopt);
         }
         if (scope == "$memory-entity") {
             // The incident-memory name/refusal tail calls b92900, whose
@@ -563,6 +1025,25 @@ std::optional<std::string> Overlay::translate_announcement_combat(
             return finish(translate_legends_name(input, false, true));
         }
         if (scope == "$name") return finish(translate_legends_name(input, false));
+        if (scope == "$visitor-place-name") {
+            // A mental-picture element can name a site or the world. The
+            // general name renderer may preserve authored CJK verbatim; a
+            // successful result there does not prove that a mixed-language
+            // greeting prefix is one name. Only a complete name translation
+            // may finish this branch, leaving personal references to their
+            // dedicated alternative and compound speech to its partitioner.
+            // Keep authored CJK place names, including their Latin/digit
+            // components, when the field contains no prose delimiters. A
+            // greeting prefix necessarily includes its complete sentences.
+            if (contains_cjk_utf8(input) &&
+                    input.find_first_of(".!?,;:\"`[]()\r\n") == std::string_view::npos)
+                return finish(native_text_to_utf8(input));
+            auto result = translate_legends_name(input, false);
+            return finish(translation_complete_with_native_nicknames(result, input)
+                ? std::move(result) : std::nullopt);
+        }
+        if (scope == "$native-site-name") return finish(translate_legends_place(input, false));
+        if (scope == "$announcement-site-type") return finish(translate_world_site_type(input));
         if (scope == "$event") return finish(translate_legends_event(input, 0));
         if (scope == "$number") return finish(translate_announcement_number(input));
         if (scope == "$kinship") return finish(native_announcement_kinship_target(input));
@@ -635,9 +1116,9 @@ std::optional<std::string> Overlay::translate_announcement_combat(
             const std::vector<int> source_colors(input.size(), 0xffffff);
             std::vector<int> target_colors;
             NativeAnnouncementUnitBodyScope semantic_body(raw_source, input);
-            translate_complete_announcement(input, source_colors, target_colors);
-            const auto cached = announcement_result_metadata(input);
-            return finish(cached ? cached->strict_target() : std::nullopt);
+            dfcn::TranslationResult result;
+            translate_complete_announcement(input, source_colors, target_colors, false, -1, &result);
+            return finish(result.strict_target());
         }
         if (scope == "work-reference") {
             // general_ref's event display field owns its whole native title,
@@ -673,28 +1154,32 @@ std::optional<std::string> Overlay::translate_announcement_combat(
             // Every fixed fragment must fit in order, with a nonempty typed
             // field between fragments. Reject impossible rules before any
             // name/item parser runs, preserving the actual capture order.
-            if (!legends_template_literals_fit(rule, input, 0, input.size(), true))
+            if (!template_literal_at(input, 0, literals.front(), true) ||
+                    !announcement_combat_numeric_tail_fits(rule, input))
                 continue;
             const auto &scopes = syntax.fields[static_cast<size_t>(index)];
             if (!suffix_fits(rule, scopes, input, 0, literals.front().size())) continue;
-            std::vector<std::string> captures(scopes.size());
-            std::vector<Result> translated(scopes.size());
-            // Earlier fields can reach the same impossible suffix through
-            // different splits. Only failures are reused so a successful
-            // branch still fills every capture in its original order.
-            std::set<std::pair<size_t, size_t>> failed_states;
-            std::function<bool(size_t, size_t)> match = [&](size_t field, size_t at) {
+            const size_t input_begin = static_cast<size_t>(input.data() - source.data());
+            std::function<SemanticMatch(size_t, size_t)> match = [&](size_t field, size_t at) {
+                const SemanticPath path{&rule, input_begin + at, input_begin + input.size(), field};
+                if (const auto found = semantics->matches.find(path); found != semantics->matches.end())
+                    return found->second;
                 TranslationWorkFrame match_work;
-                if (field == scopes.size()) return at == input.size();
-                const auto state = std::make_pair(field, at);
-                if (failed_states.contains(state)) return false;
+                const auto cycle_revision = active_translation_work->cycle_revision;
+                const auto complete = [&](SemanticMatch result) {
+                    if (!translation_work_exhausted() &&
+                            cycle_revision == active_translation_work->cycle_revision) {
+                        semantics->matches.emplace(path, result);
+                    }
+                    return result;
+                };
+                if (field == scopes.size()) return complete(SemanticMatch{at == input.size()});
                 const std::string &following = literals[field + 1];
                 // An interior literal can be longer than the entire input.
                 // Check the remaining span before subtracting; otherwise an
                 // unsigned underflow turns this scan into a SIZE_MAX loop.
                 if (at >= input.size() || following.size() >= input.size() - at) {
-                    failed_states.insert(state);
-                    return false;
+                    return complete(SemanticMatch{});
                 }
                 const size_t final_end = input.size() - following.size();
                 // A final field owns the entire remaining span. Interior
@@ -702,28 +1187,45 @@ std::optional<std::string> Overlay::translate_announcement_combat(
                 // Prefer the complete attack verb: "snatches at" must own
                 // "at" before a typed CJK name can preserve it as name text.
                 const size_t first_end = field + 1 == scopes.size() ? final_end : at + 1;
-                for (size_t choice = first_end; choice <= final_end; ++choice) {
-                    const size_t end = scopes[field] == "attack-verb"
-                        ? final_end - (choice - first_end) : choice;
+                const auto &positions = literal_positions(following);
+                const auto first = std::lower_bound(positions.begin(), positions.end(), input_begin + first_end);
+                const auto stop = std::upper_bound(first, positions.end(), input_begin + final_end);
+                const size_t count = static_cast<size_t>(stop - first);
+                for (size_t choice = 0; choice < count; ++choice) {
+                    const size_t end = (scopes[field] == "attack-verb"
+                        ? *(stop - 1 - static_cast<ptrdiff_t>(choice)) : first[choice]) - input_begin;
                     translation_work_step();
-                    if (end <= at || !template_literal_at(input, end, following, true)) continue;
-                    const auto value = input.substr(at, end - at);
-                    if (!announcement_combat_field_edges_fit(scopes[field], value)) continue;
-                    if (!legends_template_suffix_literals_fit(rule, input, field + 1,
-                            end + following.size(), input.size(), true)) continue;
-                    if (!suffix_fits(rule, scopes, input, field + 1,
-                            end + following.size()) || !scope_fits(scopes[field], value)) continue;
-                    auto result = resolve(scopes[field], value);
-                    if (!result) continue;
-                    captures[field] = std::string(value);
-                    translated[field] = std::move(result);
-                    if (match(field + 1, end + following.size())) return true;
+                    if (end > at) {
+                        const auto value = input.substr(at, end - at);
+                        if (announcement_combat_field_edges_fit(scopes[field], value) &&
+                                suffix_fits(rule, scopes, input, field + 1, end + following.size()) &&
+                                scope_fits(scopes[field], value)) {
+                            auto result = resolve(scopes[field], value);
+                            if (result) {
+                                auto suffix = match(field + 1, end + following.size());
+                                if (suffix.matched) return complete(SemanticMatch{
+                                    true, input_begin + end, std::move(result),
+                                    std::make_shared<const SemanticMatch>(std::move(suffix))});
+                            }
+                        }
+                    }
                 }
-                failed_states.insert(state);
-                return false;
+                return complete(SemanticMatch{});
             };
-            if (match(0, literals.front().size()))
+            auto witness = match(0, literals.front().size());
+            if (witness.matched) {
+                std::vector<std::string> captures(scopes.size());
+                std::vector<Result> translated(scopes.size());
+                size_t at = literals.front().size();
+                for (size_t field = 0; field < scopes.size(); ++field) {
+                    const size_t end = witness.end - input_begin;
+                    captures[field] = std::string(input.substr(at, end - at));
+                    translated[field] = witness.translation;
+                    at = end + literals[field + 1].size();
+                    if (witness.next) witness = *witness.next;
+                }
                 return finish(fill_template(rule, captures, &capture_translations_, nullptr, &translated));
+            }
         }
         return finish(std::nullopt);
     };
@@ -732,9 +1234,11 @@ std::optional<std::string> Overlay::translate_announcement_combat(
     return resolve(initial_scope, source);
     };
     try {
-        auto result = parse();
-        translation_work_step();
-        return result;
+        return translation_work_memo(memo_key, [&] {
+            auto result = parse();
+            translation_work_step();
+            return result;
+        }, active_key);
     } catch (const TranslationWorkLimit &) {
         if (!budget.owns_budget()) throw;
         return std::nullopt;
@@ -786,25 +1290,84 @@ dfcn::TranslationResult Overlay::translate_announcement_combat_result(
     }
     const auto entries = announcement_combat_rules_.find(std::string(initial_scope));
     if (entries == announcement_combat_rules_.end()) return finish(no_match);
-    std::vector<size_t> normalized_origins;
-    const auto source = normalize_utterance(raw_source, &normalized_origins);
-    if (source.empty() || source.size() != normalized_origins.size()) return finish(no_match);
+    struct BindingStateKey {
+        const Rule *rule;
+        size_t field, at;
+        bool operator==(const BindingStateKey &) const = default;
+    };
+    struct BindingStateHash {
+        size_t operator()(const BindingStateKey &key) const {
+            size_t hash = std::hash<const Rule *>{}(key.rule);
+            hash ^= key.field + 0x9e3779b9 + (hash << 6) + (hash >> 2);
+            hash ^= key.at + 0x9e3779b9 + (hash << 6) + (hash >> 2);
+            return hash;
+        }
+    };
+    struct BindingState {
+        unsigned char count = 0;
+        size_t first_end = SIZE_MAX;
+    };
     struct Candidate {
         const Rule *rule = nullptr;
-        std::vector<std::string_view> scopes;
+        std::vector<std::string> scopes;
         std::vector<std::pair<size_t, size_t>> ranges;
         size_t literal_bytes = 0;
+        bool damage_tree = false;
     };
-    std::optional<Candidate> selected;
-    bool ambiguous = false;
+    struct BindingChart {
+        std::shared_ptr<AnnouncementLiteralSource> text;
+        std::vector<int> rules;
+        std::unordered_map<BindingStateKey, BindingState, BindingStateHash> states;
+        std::optional<Candidate> selected;
+        bool ambiguous = false, selection_complete = false;
+    };
+    struct BindingSession {
+        std::unordered_map<std::string, std::shared_ptr<BindingChart>> charts;
+    };
+    static const unsigned char binding_session_tag = 0;
+    auto &retained_session = active_translation_work->parser_sessions[&binding_session_tag];
+    if (!retained_session) retained_session = std::make_shared<BindingSession>();
+    const auto session = std::static_pointer_cast<BindingSession>(retained_session);
+    std::string chart_key;
+    const auto chart_value = [&](const auto &value) {
+        chart_key.append(reinterpret_cast<const char *>(&value), sizeof(value));
+    };
+    const auto owner = reinterpret_cast<uintptr_t>(this);
+    chart_value(owner); chart_value(no_match.resource_revision);
+    chart_value(initial_scope.size()); chart_key.append(initial_scope);
+    chart_value(raw_source.size()); chart_key.append(raw_source);
+    auto &retained_chart = session->charts[chart_key];
+    if (!retained_chart) {
+        auto made = std::make_shared<BindingChart>();
+        made->text = announcement_literal_source(owner, no_match.resource_revision, raw_source);
+        const auto syntax = announcement_combat_syntax_.find(std::string(initial_scope));
+        if (syntax != announcement_combat_syntax_.end())
+            made->rules = syntax->second.anchors.candidates(made->text->normalized);
+        else for (size_t index = 0; index < entries->second.size(); ++index)
+            made->rules.push_back(static_cast<int>(index));
+        retained_chart = std::move(made);
+    }
+    const auto chart = retained_chart;
+    const auto &source = chart->text->normalized;
+    const auto &normalized_origins = chart->text->origins;
+    if (source.empty() || source.size() != normalized_origins.size()) return finish(no_match);
+    auto &selected = chart->selected;
+    auto &ambiguous = chart->ambiguous;
     try {
-        for (const auto &[signature, rule] : entries->second) {
+        for (const int rule_at : chart->rules) {
+            if (chart->selection_complete) break;
+            const auto &[signature, rule] = entries->second[static_cast<size_t>(rule_at)];
             translation_work_step();
             if (rule.template_kinds.empty() || rule.target_capture_order.size() != rule.template_kinds.size() ||
                     rule.target_template_literals.size() != rule.target_capture_order.size() + 1 ||
-                    !legends_template_literals_fit(rule, source, 0, source.size(), true)) continue;
+                    !template_literal_at(source, 0, rule.template_literals.front(), true) ||
+                    !announcement_combat_numeric_tail_fits(rule, source)) {
+                continue;
+            }
             Candidate candidate;
             candidate.rule = &rule;
+            candidate.damage_tree = initial_scope == "sentence" &&
+                (signature == "head" || signature.starts_with("head,"));
             for (size_t at = 0; at < signature.size();) {
                 const size_t comma = signature.find(',', at);
                 const size_t end = comma == std::string::npos ? signature.size() : comma;
@@ -824,39 +1387,62 @@ dfcn::TranslationResult Overlay::translate_announcement_combat_result(
             // not native member identities. Missing members cannot prove a
             // list or a whitespace-only actor/object decomposition.
             if (!predicate_literal || initial_scope.ends_with("-list") ||
-                    (selected && candidate.literal_bytes < selected->literal_bytes)) continue;
-            std::vector<std::pair<size_t, size_t>> ranges(candidate.scopes.size()), first_ranges;
-            size_t bindings = 0;
-            const auto bind = [&](const auto &self, size_t field, size_t at) -> void {
+                    (selected && ((!candidate.damage_tree && selected->damage_tree) ||
+                        (candidate.damage_tree == selected->damage_tree &&
+                            candidate.literal_bytes < selected->literal_bytes)))) {
+                continue;
+            }
+            const auto bind = [&](const auto &self, size_t field, size_t at) -> BindingState {
+                const BindingStateKey key{&rule, field, at};
+                if (const auto cached = chart->states.find(key); cached != chart->states.end())
+                    return cached->second;
                 translation_work_step();
-                if (bindings >= 2) return;
-                if (field == candidate.scopes.size()) {
-                    if (at == source.size()) { ++bindings; if (bindings == 1) first_ranges = ranges; }
-                    return;
+                BindingState result;
+                if (field == candidate.scopes.size()) result.count = at == source.size() ? 1 : 0;
+                else {
+                    const auto &following = rule.template_literals[field + 1];
+                    if (at < source.size() && following.size() < source.size() - at) {
+                        const size_t final = source.size() - following.size();
+                        const auto &positions = chart->text->positions(following);
+                        auto next = std::lower_bound(positions.begin(), positions.end(),
+                            field + 1 == candidate.scopes.size() ? final : at + 1);
+                        const auto stop = std::upper_bound(next, positions.end(), final);
+                        for (; next != stop && result.count < 2; ++next) {
+                            translation_work_step();
+                            const size_t end = *next;
+                            if (!announcement_combat_field_edges_fit(candidate.scopes[field],
+                                    std::string_view(source).substr(at, end - at))) continue;
+                            const auto suffix = self(self, field + 1, end + following.size());
+                            if (suffix.count) {
+                                if (!result.count) result.first_end = end;
+                                result.count = static_cast<unsigned char>(
+                                    std::min(2, static_cast<int>(result.count) + suffix.count));
+                            }
+                        }
+                    }
                 }
-                const auto &following = rule.template_literals[field + 1];
-                if (at >= source.size() || following.size() >= source.size() - at) return;
-                const size_t final = source.size() - following.size();
-                for (size_t end = field + 1 == candidate.scopes.size() ? final : at + 1;
-                        end <= final && bindings < 2; ++end) {
-                    translation_work_step();
-                    if (!template_literal_at(source, end, following, true) ||
-                            !announcement_combat_field_edges_fit(candidate.scopes[field],
-                                std::string_view(source).substr(at, end - at)) ||
-                            !legends_template_suffix_literals_fit(rule, source, field + 1,
-                                end + following.size(), source.size(), true)) continue;
-                    ranges[field] = {at, end};
-                    self(self, field + 1, end + following.size());
-                }
+                // A suffix state is proved once. Saturating the ambiguity
+                // count keeps binding polynomial without enumerating capture
+                // combinations or rescanning the remaining fixed literals.
+                chart->states.emplace(key, result);
+                return result;
             };
-            bind(bind, 0, rule.template_literals.front().size());
+            const auto bindings = bind(bind, 0, rule.template_literals.front().size()).count;
             if (!bindings) continue;
-            candidate.ranges = std::move(first_ranges);
-            if (!selected || candidate.literal_bytes > selected->literal_bytes) {
+            size_t at = rule.template_literals.front().size();
+            for (size_t field = 0; field < candidate.scopes.size(); ++field) {
+                const auto &state = chart->states.at(BindingStateKey{&rule, field, at});
+                candidate.ranges.emplace_back(at, state.first_end);
+                at = state.first_end + rule.template_literals[field + 1].size();
+            }
+            if (!selected || (candidate.damage_tree && !selected->damage_tree) ||
+                    (candidate.damage_tree == selected->damage_tree &&
+                        candidate.literal_bytes > selected->literal_bytes)) {
                 selected = std::move(candidate);
                 ambiguous = bindings != 1;
             } else ambiguous = true;
         }
+        chart->selection_complete = true;
     } catch (const dfcn::TranslationWorkLimit &) {
         if (!budget.owns_budget()) throw;
         return finish(preserve_native_translation(raw_source, initial_scope, false,
@@ -874,9 +1460,24 @@ dfcn::TranslationResult Overlay::translate_announcement_combat_result(
         const size_t last = normalized_origins[end - 1] + 1;
         const auto native = raw_source.substr(first, last - first);
         const auto scope = candidate.scopes[field];
+        const bool personal = announcement_combat_person_scope(scope);
+        bool bound = false;
         std::optional<std::string> translated;
         if (!work_limited) {
-            try { translated = translate_announcement_combat(native, scope); }
+            try {
+                // The complete report owns formatter-captured authored
+                // names. Keep that source binding when a display candidate
+                // resolves its unit field through an independent leaf call.
+                if (personal) {
+                    translated = native_announcement_unit_identity_target(raw_source, native, &bound);
+                    if (!bound) translated.reset();
+                    if (!translated) {
+                        translated = native_unit_identity_source_target(native);
+                        bound = translated.has_value();
+                    }
+                }
+                if (!translated) translated = translate_announcement_combat(native, scope);
+            }
             catch (const dfcn::TranslationWorkLimit &) {
                 if (!budget.owns_budget()) throw;
                 work_limited = true;
@@ -886,10 +1487,27 @@ dfcn::TranslationResult Overlay::translate_announcement_combat_result(
         // missing numeral/date/relationship is not an unknown noun/name.
         if (!translated && (scope == "$digits" || scope == "$number" ||
                 scope == "$date" || scope == "$kinship")) return finish(no_match);
+        // A typed report's raw fallback does not own a person boundary.
+        // In particular memory-person must not preserve both a historical
+        // name and the next complete event/reaction as one opaque name.
+        // Genuine formatter bindings still own authored punctuation; the
+        // boundary helper likewise leaves nicknames and quoted names intact.
+        if (personal && !bound && spoken_identity_has_prose_boundary(native,
+                scope == "unit" || scope == "$unit")) return finish(no_match);
         auto result = translated ? dfcn::TranslationResult::translated(native, *translated, scope) :
             dfcn::TranslationResult{};
         if (!result.usable() && !work_limited && !scope.starts_with('$') && native.size() < raw_source.size())
             result = translate_announcement_combat_result(native, scope);
+        // These children are native syntax, not open names/materials. A
+        // failed child must not survive as an opaque English clause inside
+        // an otherwise translated combat sentence. In particular SHOT owns
+        // both "strikes at" fields and SHOT_RESULT owns its finite adverb
+        // and parry/deflection verb, independently of an unknown item noun.
+        if (!result.usable() && (scope == "shot" || scope == "shot-result" ||
+                scope == "defense-adverb" || scope == "assault" || scope == "evasion" ||
+                scope == "attack" || scope == "attack-verb" || scope == "head" ||
+                scope == "damage" || scope == "damage-verb" || scope == "damage-list" ||
+                scope == "body-result" || scope == "injury-list")) return finish(no_match);
         if (!result.usable()) result = preserve_native_translation(native, scope, false, work_limited ?
             dfcn::TranslationStatus::WorkLimited : dfcn::TranslationStatus::Untranslated);
         fields.push_back(std::move(result));

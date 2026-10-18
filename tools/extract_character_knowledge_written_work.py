@@ -303,6 +303,20 @@ def main():
             if not role.startswith("knowledge-"):
                 continue
             _, _, instructions = body(native,image,start)
+            # These directly-called text suppliers precede their art-form
+            # owners in both configured images. Keep their full branch and
+            # literal bodies rather than treating a call as prose coverage.
+            supplier_seeds = {
+                "knowledge-poetic-form": (0x380, "poetic-topic"),
+                "knowledge-dance-form": (0xe30, "dance-movement-description"),
+                "knowledge-musical-form": (0xf30, "musical-register-selector"),
+            }
+            if role in supplier_seeds:
+                distance, supplier_role = supplier_seeds[role]
+                targets = {int(call[2],16)-image.base for _, inst in instructions
+                           if (call := DIRECT.fullmatch(inst)) and call[1] == "call"}
+                if start-distance in targets:
+                    roles[start-distance] = supplier_role
             for index, (_, inst) in enumerate(instructions):
                 if not re.match(r"lea\s+rcx,\[\w+\+0x8\]$",inst):
                     continue

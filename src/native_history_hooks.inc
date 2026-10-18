@@ -130,8 +130,8 @@ static std::vector<SDL_Rect> native_text_input_regions(const graphicst &gps,
             gps.dimy <= 0 || gps.dimy > 1000 ||
             rows.size() != static_cast<size_t>(gps.dimy)) return regions;
     std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
-    const uint64_t epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
-    if (g_native_drawn_text_epoch != epoch) return regions;
+    const uint64_t epoch = g_native_drawn_text_epoch;
+    if (!epoch) return regions;
     const auto has_input = [](const auto &draws) {
         return std::any_of(draws.begin(), draws.end(),
             [](const auto &draw) { return draw.editable_text; });
@@ -640,6 +640,8 @@ struct NativeHistoryProfile {
 };
 #include "native_history_legends.inc"
 #include "native_mission_report.inc"
+#include "native_performance_form_description.inc"
+#include "native_performance_story_description.inc"
 #include "native_history_frame.inc"
 #include "native_history_profile.inc"
 

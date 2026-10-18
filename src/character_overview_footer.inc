@@ -1,7 +1,7 @@
 // Footer layout and immediate suppression must agree on whether the complete
 // native quote currently owns these cells, including every visible wrap row.
 std::optional<NativeOverviewQuoteDraw> Overlay::current_character_overview_quote() const {
-    if (!gps_ || !gps_->screen) return std::nullopt;
+    if (!gps_ || !gps_->screen || !native_character_translation_active(gps_)) return std::nullopt;
     std::optional<NativeOverviewQuoteDraw> draw;
     {
         std::lock_guard<std::mutex> lock(g_native_overview_quote_mutex);
@@ -133,6 +133,7 @@ void Overlay::append_character_overview_footer(
         const std::vector<std::string> &input_rows,
         std::vector<std::string> &screen_rows, std::vector<Match> &matches,
         int tabs_y, int only_y, bool source_scan) const {
+    if (!native_character_translation_active(gps_)) return;
     auto draw = current_character_overview_quote();
     std::vector<std::string> draw_rows;
     if (draw) {

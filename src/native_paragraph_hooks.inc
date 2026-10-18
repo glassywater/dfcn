@@ -14,6 +14,14 @@ static NativeEntryHook g_native_paragraph_entry;
 #ifdef _WIN32
 static NativeEntryHook g_native_paragraph_vector_entry;
 #endif
+static bool native_paragraph_capture_installed() {
+    return g_real_native_paragraph &&
+        (g_native_paragraph_import.installed || g_native_paragraph_entry.installed)
+#ifdef _WIN32
+        && g_real_native_paragraph_vector && g_native_paragraph_vector_entry.installed
+#endif
+        ;
+}
 static bool native_paragraph_hooks_active() {
     return g_native_paragraph_import.active() || g_native_paragraph_entry.active()
 #ifdef _WIN32

@@ -27,7 +27,9 @@ bool Overlay::find_main_menu_matches(int only_y,
             if (cell && cell[0]) context[y][x] = static_cast<char>(cell[0]);
             const auto ch = screen_override
                 ? screen_override[(static_cast<size_t>(x) * gps_->dimy + y) * 8]
-                : visible_char_at(x, y);
+                // Before native rasterization, visibility is exactly the
+                // logical cell just read; no SDL-cover evidence applies yet.
+                : native_ui_input_read_ ? (cell ? cell[0] : 0) : visible_char_at(x, y);
             if (ch) rows[y][x] = static_cast<char>(ch);
         }
     }
@@ -67,7 +69,11 @@ bool Overlay::find_main_menu_matches(int only_y,
                     [](unsigned char ch) { return ascii_word_byte(ch); })) continue;
             const auto action = std::find(main_menu_actions.begin(),
                 main_menu_actions.end(), field.text);
+            // The native title adds this optional action when a game exists;
+            // it must not change the required main-menu signature below.
+            const bool continue_game = field.text == "Continue active game";
             if (action == main_menu_actions.end() &&
+                    !continue_game &&
                     !std::string_view(field.text).starts_with("Histories of "))
                 return false; // A modal, another title mode, or an unknown field.
             const int rule = literal_rule(field.text);

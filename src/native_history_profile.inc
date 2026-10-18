@@ -143,6 +143,11 @@ static bool resolve_native_history_profile(NativeHistoryProfile &profile) {
         {0xd435e4, 0xad9960, reinterpret_cast<const void *>(&capture_native_history_draw)},
         {0xd3c11f, 0, reinterpret_cast<const void *>(&capture_native_history_nested_title), {},
             {0xff,0x90,0xd8,0x00,0x00,0x00}},
+        // A lost masterpiece accepts the title of any referenced event.
+        {0xb639cf, 0, reinterpret_cast<const void *>(&capture_native_history_nested_title), {},
+            {0x41,0xff,0x92,0xd8,0x00,0x00,0x00}},
+        {0xb63a22, 0, reinterpret_cast<const void *>(&capture_native_history_nested_title), {},
+            {0x41,0xff,0x92,0xd8,0x00,0x00,0x00}},
         {0xb8bd39, 0, reinterpret_cast<const void *>(&capture_native_history_nested_title),
             {0x48,0x8b,0xce}, {0x48,0x8b,0xce,0xff,0xd0}},
         {0xb8c438, 0, reinterpret_cast<const void *>(&capture_native_history_nested_title),

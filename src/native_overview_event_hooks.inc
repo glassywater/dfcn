@@ -15,17 +15,6 @@ using NativeOverviewEventFn = void (*)(void *, void *, NativeString *,
 using NativeConversationEventFn = void (*)(void *, NativeString *,
     int32_t, int32_t, int32_t, bool);
 
-struct NativeOverviewEventSource {
-    std::string source;
-    int32_t collection_id = -1;
-    bool ambiguous = false;
-    std::shared_ptr<const NativeHistoryDocument> document;
-};
-
-static std::mutex g_native_overview_event_mutex;
-static std::array<NativeOverviewEventSource, 256> g_native_overview_event_sources;
-static size_t g_native_overview_event_next = 0;
-static uint64_t g_native_overview_event_revision = 0;
 static NativeCallHook g_native_overview_event_hooks;
 static NativeOverviewEventFn g_native_overview_event_original = nullptr;
 static NativeConversationEventFn g_native_conversation_event_original = nullptr;

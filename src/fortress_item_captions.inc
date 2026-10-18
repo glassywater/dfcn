@@ -105,8 +105,14 @@ std::optional<std::string> Overlay::translate_fortress_item_caption(
     bool typed_description_complete = false;
     try {
         TranslationWorkFrame work_frame("complete item caption", source);
+        // Item headings can be just a work's complete title. Use the same
+        // grammar as the writing document before ordinary item/name senses.
+        if (!relationship && !building_material) {
+            target = translate_written_item_caption(source);
+            typed_description_complete = target.has_value();
+        }
         const bool artwork_subject = !relationship && item_caption_has_art_subject(source);
-        if (artwork_subject && config_.compositional_rules) {
+        if (!target && artwork_subject && config_.compositional_rules) {
             target = translate_item_description_term(source);
             typed_description_complete =
                 translation_complete_with_native_nicknames(target, source);
@@ -164,7 +170,6 @@ std::optional<std::string> Overlay::translate_fortress_item_caption(
             if (!target) target = translate_coin_item_name(source);
             if (!target) target = translate_arena_equipment_source_phrase(source);
             if (!target) target = translate_embark_equipment_item(source, -1, -1, source);
-            if (!target) target = translate_written_item_caption(source);
             // Detail headings and item records can contain only an artifact's
             // native name. Share inventory's same-language root validation for
             // its compound/title groups before generic item composition.
@@ -426,8 +431,8 @@ std::optional<std::string> Overlay::translate_info_panel_title(
 // complete fields before location, stockpile and item-row readers see them.
 void Overlay::append_native_info_panel_titles(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y) const {
-    const auto drawn = captured_native_drawn_text_rows();
-    const auto top_drawn = captured_native_drawn_text_rows(true);
+    const auto drawn = captured_native_drawn_text_view();
+    const auto top_drawn = captured_native_drawn_text_view(true);
     // These fields are proven by their actual native draw callers, including
     // headings without Weight or an item-action strip. Match every displayed
     // byte and the current layer; a retained draw cannot own a newer popup.
@@ -515,8 +520,8 @@ void Overlay::append_native_info_panel_titles(std::vector<std::string> &rows,
 void Overlay::append_fortress_item_captions(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y) const {
     if (!native_item_anchors_in(*gps_, {0, 0, gps_->dimx, gps_->dimy})) return;
-    const auto drawn = captured_native_drawn_text_rows();
-    const auto top_drawn = captured_native_drawn_text_rows(true);
+    const auto drawn = captured_native_drawn_text_view();
+    const auto top_drawn = captured_native_drawn_text_view(true);
     const auto captures = captured_clipped_captions();
     const NativePanelBorders borders(*gps_);
     const auto settings = native_ui_settings();

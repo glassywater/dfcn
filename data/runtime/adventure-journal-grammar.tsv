@@ -2,6 +2,33 @@
 # Event hearing paragraphs share the occurrence date's ordinal/month fields.
 # Native Steam 53.16 appends an optional complete informant and a final period.
 # journal-calendar-date is generated from reviewed day/month and year fields.
+# PE calendar 0x773390 / Classic 0x770db0 appends nothing outside month0..11.
+# Occurrence/hearing producers still render that date; normalized double
+# spaces leave these four explicit monthless ordinal forms.
+journal-calendar-date	{s}st in the year {s}	第{s2}年某月{s1}日	$digits,$digits	PE 0xd50d8..0xd519c/0xd8d61..0xd8e08/0xd92b5..0xd935c; calendar default appends no month
+journal-calendar-date	{s}nd in the year {s}	第{s2}年某月{s1}日	$digits,$digits	PE 0x773393 ja 0x7734ae; month outside0..11
+journal-calendar-date	{s}rd in the year {s}	第{s2}年某月{s1}日	$digits,$digits	PE 0x773393 ja 0x7734ae; month outside0..11
+journal-calendar-date	{s}th in the year {s}	第{s2}年某月{s1}日	$digits,$digits	PE 0x773393 ja 0x7734ae; month outside0..11
+# Artifact record body is a complete c75000 description followed by this
+# independent location paragraph. Steam d09e0 / Classic d0970 choose the
+# provenance prefix, location owner and optional date independently. The
+# shared site-rumor-date namespace owns b92640's year/season/before-time.
+journal-artifact	It is traditionally thought to be {s}.	传统记载：{s1}。	journal-artifact-state	PE Steam 0xd0c7d..0xd0cc4; year=-1 selects traditional provenance
+journal-artifact	It was last seen {s}.	上次目击记录：{s1}。	journal-artifact-state	PE Steam 0xd0cc6..0xd0d02; nonzero first-hand stamp selects seen
+journal-artifact	It was last rumored to be {s}.	最近传闻：{s1}。	journal-artifact-state	PE Steam 0xd0d04..0xd0d3f; dated location without first-hand stamp
+journal-artifact-state	{s} in {s}	于{s2}{s1}	journal-artifact-location,site-rumor-date	PE Steam 0xd0e08..0xd0e3e; date added only if year!=-1
+journal-artifact-state	{s}	{s1}	journal-artifact-location	PE Steam 0xd0e08..0xd0e3e; no date suffix
+journal-artifact-location	held by {s}	由{s1}持有	travel-actor	PE Steam 0xd0d48..0xd0d97; complete b92f10 contextual figure
+journal-artifact-location	held by	由未注明的持有者保管		PE Steam 0xd0d5b; empty native figure field leaves its own prefix
+# The native site/building path appends BUILDING + " in " + "in " +
+# b94a40 output. Retain its duplicate preposition in the source grammar;
+# silently repairing the native source would miss this reachable branch.
+journal-artifact-location	{s} in in {s}	位于{s2}的{s1}	$journal-artifact-building,$journal-artifact-place	PE Steam 0xd0f39..0xd0f93; building present, then duplicate native in
+journal-artifact-location	{s} in in	位于未注明地区的{s1}	$journal-artifact-building	PE Steam 0xd0f39..0xd0f93; region name formatter returns empty
+journal-artifact-location	in in {s}	位于{s1}的一处建筑内	$journal-artifact-place	PE Steam 0xd0f39..0xd0f93; empty building field with retained region
+journal-artifact-location	in in	位于未注明地区的一处建筑内		PE Steam 0xd0f39..0xd0f93; both dynamic fields empty
+journal-artifact-location	in {s}	位于{s1}	$journal-artifact-place	PE Steam 0xd0f6f/0xd11d7/0xd1257; complete region or finite underground label
+journal-artifact-location	in	位于未注明的地点		PE Steam 0xd1298..0xd12af; named or unsupported underground kind emits no label
 journal-event	You last heard this on the {s}.	你上次在{s1}听说了这件事。	journal-calendar-date	PE 0x1400d8c78..0x1400d90be; You last + heard this + on the + day/month + year + period
 journal-event	You last heard this on the {s} from {s}.	你上次在{s1}从{s2}那里听说了这件事。	journal-calendar-date,$person	PE 0x1400d8faf..0x1400d9030; optional from + 0x140a946e0 native figure name
 journal-event	You heard this on the {s}.	你在{s1}听说了这件事。	journal-calendar-date	PE 0x1400d8c89..0x1400d90be; unrepeated hearing uses You
@@ -9,26 +36,65 @@ journal-event	You heard this on the {s} from {s}.	你在{s1}从{s2}那里听说�
 journal-event	You first heard this on the {s}.	你最初在{s1}听说了这件事。	journal-calendar-date	PE 0x1400d9205..0x1400d9629; first hearing date is independently supplied
 journal-event	You first heard this on the {s} from {s}.	你最初在{s1}从{s2}那里听说了这件事。	journal-calendar-date,$person	PE 0x1400d9385..0x1400d959b; optional native informant
 journal-event	{s}	{s1}	$message	PE 0x1400d9205..0x1400d96e2; fixed common-knowledge/assigned-mission paragraphs reuse ui-messages.tsv
-# People card producer: installed Linux 53.16 dwarfort VA 0x17c7d30..0x17c9ecd.
+# People card producer: PE Steam RVA 0xd1ef0..0xd3aa0, Classic
+# 0xd1e80..0xd3a30; ELF 53.16 dwarfort VA 0x17c7d30..0x17c9ecd.
+# Office and plural membership are distinct native constructions. In both,
+# the position title and the independently formatted owner can be empty.
+# These explicit normalized forms preserve the remaining native statement;
+# they never infer a missing title from the organization name or screenshot.
+# Ordinary offices call 0x99a3c0 for NAME/NAME_FEMALE/NAME_MALE. Their owner
+# is either the entity's language name or the historical-figure deity name
+# selected by 0x9bdfb0. Resolve that owner through its typed shared grammar.
+journal-person	This person is {s} of {s} and your military commander.	此人是{s2}的{s1}，也是你的军事指挥官。	$journal-office,$journal-owner	PE Steam 0xd26bd..0xd2784; gendered office and entity/deity owner, commander suffix
+journal-person	This person is {s} of {s}.	此人是{s2}的{s1}。	$journal-office,$journal-owner	PE Steam 0xd26bd..0xd2784; gendered office and entity/deity owner
+journal-person	This person is of {s} and your military commander.	此人是{s1}的任职者，也是你的军事指挥官。	$journal-owner	PE Steam 0xd26bd..0xd2784; empty office title, owner retained, commander suffix
+journal-person	This person is of {s}.	此人是{s1}的任职者。	$journal-owner	PE Steam 0xd26bd..0xd2784; empty office title, owner retained
+journal-person	This person is {s} of and your military commander.	此人担任{s1}，也是你的军事指挥官。	$journal-office	PE Steam 0xd26bd..0xd2784; owner formatter returned an empty name, commander suffix
+journal-person	This person is {s} of .	此人担任{s1}。	$journal-office	PE Steam 0xd26bd..0xd2784; owner formatter returned an empty name
+journal-person	This person is of and your military commander.	此人担任某个职位，也是你的军事指挥官。		PE Steam 0xd26bd..0xd2784; empty office and owner names, commander suffix
+journal-person	This person is of .	此人担任某个职位。		PE Steam 0xd26bd..0xd2784; empty office and owner names
+# The one-of branch reads NAME_PLURAL directly at position+0x218; it does
+# not substitute NAME when that field is empty. Suffix precedence is the
+# adventurer's commander, then the adventurer's assignment, then no suffix.
+journal-person	This person is one of the {s} of {s} and your military subordinate.	此人是{s2}的{s1}之一，也是你的军事下属。	$journal-office,$memory-entity	PE Steam 0xd2564..0xd2602; plural title + entity, subordinate suffix
+journal-person	This person is one of the {s} of {s} alongside you.	此人与你同为{s2}的{s1}。	$journal-office,$memory-entity	PE Steam 0xd2564..0xd2602; plural title + entity, same-assignment suffix
+journal-person	This person is one of the {s} of {s}.	此人是{s2}的{s1}之一。	$journal-office,$memory-entity	PE Steam 0xd2564..0xd2602; plural title + entity
+journal-person	This person is one of the of {s} and your military subordinate.	此人是{s1}的成员之一，也是你的军事下属。	$memory-entity	PE Steam 0xd2564..0xd2602; empty NAME_PLURAL, entity retained, subordinate suffix
+journal-person	This person is one of the of {s} alongside you.	此人与你同为{s1}的成员。	$memory-entity	PE Steam 0xd2564..0xd2602; empty NAME_PLURAL, entity retained, same-assignment suffix
+journal-person	This person is one of the of {s}.	此人是{s1}的成员之一。	$memory-entity	PE Steam 0xd2564..0xd2602; empty NAME_PLURAL, entity retained
+journal-person	This person is one of the {s} of and your military subordinate.	此人是其中一位{s1}，也是你的军事下属。	$journal-office	PE Steam 0xd2564..0xd2602; empty entity name, subordinate suffix
+journal-person	This person is one of the {s} of alongside you.	此人与你同为{s1}。	$journal-office	PE Steam 0xd2564..0xd2602; empty entity name, same-assignment suffix
+journal-person	This person is one of the {s} of .	此人是其中一位{s1}。	$journal-office	PE Steam 0xd2564..0xd2602; empty entity name
+journal-person	This person is one of the of and your military subordinate.	此人是其中一位成员，也是你的军事下属。		PE Steam 0xd2564..0xd2602; empty plural title and entity name, subordinate suffix
+journal-person	This person is one of the of alongside you.	此人与你同为成员。		PE Steam 0xd2564..0xd2602; empty plural title and entity name, same-assignment suffix
+journal-person	This person is one of the of .	此人是其中一位成员。		PE Steam 0xd2564..0xd2602; empty plural title and entity name
 # Reuse the same native FAMILY_RELATIONSHIP vocabulary and relative-time
 # formatter as dialogue/rumors, rather than enumerating one screenshot's sex,
 # relationship, date or generated name. These scopes are not global replacements.
-journal-person	You have known this person since his birth.	你从他出生起就认识他。		ELF 0x17c7f58..0x17c7fd0; possessive helper 0x12ca790
-journal-person	You have known this person since her birth.	你从她出生起就认识她。		ELF 0x17c7f58..0x17c7fd0; possessive helper 0x12ca790
-journal-person	You have known this person since its birth.	你从它出生起就认识它。		ELF 0x17c7f58..0x17c7fd0; possessive helper 0x12ca790
-journal-person	You last spoke {s}.	你们上次交谈是在{s1}。	rumor-time	ELF 0x17c8054..0x17c8175 -> 0x10448d0..0x1044d60; all 22 relative-time branches
+journal-person	You have known this person since his birth.	你从他出生起就认识他。		PE Steam 0xd2873..0xd28da -> 0xaa4850; ELF 0x17c7f58..0x17c7fd0
+journal-person	You have known this person since her birth.	你从她出生起就认识她。		PE Steam 0xd2873..0xd28da -> 0xaa4850; ELF 0x17c7f58..0x17c7fd0
+journal-person	You have known this person since its birth.	你从它出生起就认识它。		PE Steam 0xd2873..0xd28da -> 0xaa4850; ELF 0x17c7f58..0x17c7fd0
+journal-person	You last spoke {s}.	你们上次交谈是在{s1}。	rumor-time	PE Steam 0xd299f..0xd2a6f -> 0x675670..0x675907; all 22 relative-time branches
 journal-person	This is your {s}.	这是你的{s1}。	dialogue-family	ELF 0x17c825e..0x17c83b7 -> 0x1503cd0; complete shared kinship enum
-# Linux submits the kinship string before appending its period at 0x17c8354.
-journal-person	This is your {s}	这是你的{s1}。	dialogue-family	ELF 0x17c8354 precedes 0x17c839e; actual unpunctuated add_paragraph source
-journal-person	Died in the year {s}	卒于第{s1}年	$digits	ELF 0x17c89a2..0x17c8a0b; signed year, no trailing period
+# Both PE and ELF submit the kinship string before appending its period.
+journal-person	This is your {s}	这是你的{s1}。	dialogue-family	PE Steam 0xd3885 precedes 0xd389e; ELF 0x17c8354 precedes 0x17c839e; actual unpunctuated add_paragraph source
+journal-person	Died in the year {s}	卒于第{s1}年	$digits	PE Steam 0xd20a6..0xd20e1; ELF 0x17c89a2..0x17c8a0b; signed year, no trailing period
 # Fixed lifelong acquaintance, guide, worship/esteem and social-link states
 # already live in the UI catalog. Worship can append any of five esteem
 # sentences in the SAME paragraph: $message retains the complete paragraph.
-journal-person	{s}	{s1}	$message	ELF 0x17c91d0..0x17c9403,0x17c9e29..0x17c9e76; data/runtime/ui-messages.tsv adventure.log
+# PE 0xd2ed8..0xd2f09 selects beloved/high regard/some esteem/favorably
+# noticed/positive interest at strength >=100/75/50/25/>0; <=0 adds none.
+# The twelve enum4..15 relationship branches use worship plus lover,
+# prisoner, jailor, master, apprentice, traveling companion, former master,
+# former apprentice, owner, former spouse and deceased spouse. Unknown
+# enum values emit no relationship paragraph; the catalog owns every fixed
+# statement, including both lifelong-acquaintance and the guide caption.
+journal-person	{s}	{s1}	$message	PE Steam 0xd2848..0xd290d,0xd2beb..0xd3710; ELF 0x17c91d0..0x17c9403,0x17c9e29..0x17c9e76; data/runtime/ui-messages.tsv adventure.log
 # Species is native metadata, not a generated name or ordinary prose. The
 # title renderer handles normal species; these are its two divine variants.
-journal-person-kind	{s} deity	{s1}神祇	$creature	ELF 0x17c8a7c..0x17c8b37,0x17c9c16..0x17c9ca5; native creature label + deity
-journal-person-kind	Force	自然之灵		ELF 0x17c9b28/0x17c9dc0; regional FORCE historical figure, shared with relationship caption
+journal-person-kind	{s} deity	{s1}神祇	$creature	PE Steam 0xd21e8..0xd223d,0xd22f3..0xd234b; ELF 0x17c8a7c..0x17c8b37,0x17c9c16..0x17c9ca5; native creature label + deity
+journal-person-kind	deity	神祇		PE Steam 0xd2219/0xd2327 appends deity even when 0xaa3bd0 returns an empty creature label
+journal-person-kind	Force	自然之灵		PE Steam 0xd2282/0xd2385; ELF 0x17c9b28/0x17c9dc0; regional FORCE historical figure, shared with relationship caption
 # Justice and Adventure share this complete intrigue plot title constructor.
 # Steam 53.16 0x2b6760..0x2b9040; Classic uses the same switch at -0x2440.
 # Type 12, empty item lists and unsupported subjects keep the undated default.

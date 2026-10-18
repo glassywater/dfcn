@@ -144,35 +144,124 @@ std::optional<std::string> Overlay::translate_announcement_date(
 std::optional<std::string> Overlay::translate_spoken_dialogue_body(
         std::string_view source) const {
     if (source.empty()) return std::nullopt;
+    TranslationWorkScope work;
+    std::string active_key = "announcement-speech-body\x1f";
+    const auto owner = reinterpret_cast<uintptr_t>(this);
+    const auto revision = RULESETS.resource_revision();
+    active_key.append(reinterpret_cast<const char *>(&owner), sizeof(owner));
+    active_key.append(reinterpret_cast<const char *>(&revision), sizeof(revision));
+    active_key.append(source);
+    std::string memo_key = active_key;
+    const auto context = native_identity_translation_context();
+    memo_key.append(reinterpret_cast<const char *>(&context), sizeof(context));
+    return translation_work_memo(memo_key, [&]() -> std::optional<std::string> {
+    struct SentenceSpan {
+        size_t begin, length;
+        bool operator==(const SentenceSpan &) const = default;
+    };
+    struct SentenceSpanHash {
+        size_t operator()(const SentenceSpan &span) const {
+            return span.begin ^ (span.length + 0x9e3779b9 + (span.begin << 6) + (span.begin >> 2));
+        }
+    };
+    struct SentenceTail {
+        std::string text;
+        size_t next = 0;
+    };
+    struct BodyProgress {
+        int phase = 0;
+        std::vector<size_t> starts;
+        std::vector<std::optional<SentenceTail>> tails;
+        std::unordered_map<SentenceSpan, std::optional<std::string>, SentenceSpanHash> sentences;
+        size_t part = 0, next = 0;
+        std::optional<std::string> result;
+    };
+    struct BodySession {
+        std::unordered_map<std::string, std::shared_ptr<BodyProgress>> entries;
+    };
+    static const unsigned char body_session_tag = 0;
+    auto &retained = active_translation_work->parser_sessions[&body_session_tag];
+    if (!retained) retained = std::make_shared<BodySession>();
+    const auto session = std::static_pointer_cast<BodySession>(retained);
+    auto &saved = session->entries[memo_key];
+    if (!saved) saved = std::make_shared<BodyProgress>();
+    struct CycleGuard {
+        BodySession &session;
+        const std::string &key;
+        TranslationWorkState &work;
+        size_t revision;
+        ~CycleGuard() {
+            if (work.cycle_revision != revision) session.entries.erase(key);
+        }
+    } cycle_guard{*session, memo_key, *active_translation_work,
+        active_translation_work->cycle_revision};
+    const auto owned_progress = saved;
+    auto &progress = *owned_progress;
+    if (progress.phase == 4) return progress.result;
     const auto sentence = [&](std::string_view part) -> std::optional<std::string> {
+        const SentenceSpan span{static_cast<size_t>(part.data() - source.data()), part.size()};
+        if (const auto found = progress.sentences.find(span); found != progress.sentences.end())
+            return found->second;
+        const auto cycle_revision = active_translation_work->cycle_revision;
+        const auto complete = [&](std::optional<std::string> result) {
+            if (!translation_work_exhausted() && cycle_revision == active_translation_work->cycle_revision)
+                progress.sentences.emplace(span, result);
+            return result;
+        };
         const std::vector<int> colors(part.size(), 0xffffff);
         std::vector<int> targets;
         // Fixed wording must precede name-bearing rumor alternatives.
         if (auto literal = translate_help_paragraph(part, colors, targets, true, -1, true))
-            return literal;
+            return complete(std::move(literal));
         if (auto native = translate_announcement_combat(part, "spoken-greeting"))
-            return native;
+            return complete(std::move(native));
+        // The dispatcher proves each native field's type. Its complete
+        // productions must precede legacy speech templates: a person,
+        // first-name, item or location cannot become generic prose merely
+        // because that template has the same visible wording.
+        if (auto native = translate_announcement_combat(part, "spoken-sentence"))
+            return complete(std::move(native));
+        // Greetings can append a complete memory statement using the same
+        // event/emotion/action switches as visitor quotes.
+        if (auto statement = translate_announcement_combat(part, "visitor-statement"))
+            return complete(std::move(statement));
         const auto compact = compact_ui_message_literal(part);
         for (int probe : ui_message_anchors_.candidates(compact)) {
             const int index = ui_message_template_probes_[static_cast<size_t>(probe)].index;
             if (!rules_[static_cast<size_t>(index)].spoken_dialogue) continue;
             if (auto translated = translate_help_paragraph(part, colors, targets, true, index))
-                return translated;
+                return complete(std::move(translated));
         }
-        if (auto native = translate_announcement_combat(part, "spoken-sentence"))
-            return native;
-        // The greeting can append the same complete mental-picture statement
-        // as the visitor quote, including all native emotion/action switches.
-        if (auto statement = translate_announcement_combat(part, "visitor-statement"))
-            return statement;
-        return std::nullopt;
+        return complete(std::nullopt);
     };
-    if (auto complete = sentence(source)) return complete;
+    // EmotionalOutburstMinor/Major append a complete memory event, two
+    // spaces, then an independently selected emotion (reference 4d3091..
+    // 4d3130). Reuse the overview's complete event/reaction partitioner
+    // before an event's personal field can absorb that following sentence.
+    // Its reviewed glossary already owns every emotion/intensity variant.
+    if (progress.phase == 0) {
+        if (const auto memory = translate_overview_quote("\"" + std::string(source) + "\"");
+                memory && memory->starts_with("“") && memory->ends_with("”") &&
+                memory->size() > 6) {
+            progress.result = memory->substr(3, memory->size() - 6);
+            progress.phase = 4;
+            return progress.result;
+        }
+        progress.phase = 1;
+    }
+    if (progress.phase == 1) {
+        if (auto complete = sentence(source)) {
+            progress.result = std::move(complete); progress.phase = 4;
+            return progress.result;
+        }
+        progress.phase = 2;
+    }
 
     // Native speech appends independently complete sentences. A split is valid
     // only when every resulting span resolves through the owned speech grammar.
     // Try the longest spans first; punctuation in a generated title or authored
     // nickname never becomes a reason to consume only part of that name.
+    if (progress.phase == 2) {
     std::vector<size_t> starts{0};
     char quote = 0;
     int brackets = 0, parentheses = 0;
@@ -195,22 +284,49 @@ std::optional<std::string> Overlay::translate_spoken_dialogue_body(
         while (at < source.size() && std::isspace(static_cast<unsigned char>(source[at]))) ++at;
         if (at < source.size()) starts.push_back(at);
     }
-    if (starts.size() == 1) return std::nullopt;
+    if (starts.size() == 1) { progress.phase = 4; return {}; }
     starts.push_back(source.size());
-    std::vector<std::optional<std::string>> tails(starts.size());
-    tails.back() = std::string{};
-    for (size_t part = starts.size() - 1; part-- > 0;) {
-        for (size_t next = starts.size() - 1; next > part; --next) {
-            if (!tails[next] || (part == 0 && next + 1 == starts.size())) continue;
+    progress.starts = std::move(starts);
+    progress.tails.resize(progress.starts.size());
+    progress.tails.back() = SentenceTail{};
+    progress.part = progress.starts.size() - 2;
+    progress.next = progress.starts.size() - 1;
+    progress.phase = 3;
+    }
+    const auto &starts = progress.starts;
+    auto &tails = progress.tails;
+    for (;;) {
+        const size_t part = progress.part;
+        while (progress.next > part) {
+            const size_t next = progress.next;
+            translation_work_step();
+            if (!tails[next] || (part == 0 && next + 1 == starts.size())) {
+                --progress.next; continue;
+            }
             const auto text = trim_view(source.substr(starts[part], starts[next] - starts[part]));
-            if (text.empty()) continue;
+            if (text.empty()) { --progress.next; continue; }
             if (auto translated = sentence(text)) {
-                tails[part] = *translated + *tails[next];
+                // Retain one selected edge, not a copy of the entire rendered
+                // suffix at every sentence boundary. Long complete dialogue
+                // chains are assembled exactly once after their proof closes.
+                tails[part] = SentenceTail{std::move(*translated), next};
                 break;
             }
+            --progress.next;
         }
+        if (part == 0) break;
+        --progress.part;
+        progress.next = starts.size() - 1;
     }
-    return tails.front();
+    if (tails.front()) {
+        std::string target;
+        for (size_t part = 0; part + 1 < starts.size(); part = tails[part]->next)
+            target += tails[part]->text;
+        progress.result = std::move(target);
+    }
+    progress.phase = 4;
+    return progress.result;
+    }, active_key);
 }
 
 // 0x140684a10 submits either ACTOR: BODY or ACTOR (to RECIPIENT): BODY.
@@ -219,7 +335,7 @@ std::optional<std::string> Overlay::translate_spoken_dialogue_body(
 // This wrapper is called from the dedicated announcement entry, outside the
 // generic paragraph matcher, so inner catalog translation cannot recurse here.
 std::optional<std::string> Overlay::translate_announcement_dialogue(
-        std::string_view source) const {
+        std::string_view source, int native_type) const {
     auto actor = [&](std::string_view value) -> std::optional<std::string> {
         if (value == "You") return std::string("你");
         // The speech wrapper's live-unit formatter copies animation+0x20
@@ -234,33 +350,48 @@ std::optional<std::string> Overlay::translate_announcement_dialogue(
         // native given-word mask, so it needs the same typed person renderer
         // used by the body's historical-figure fields.
         const auto figure = translate_legends_actor(value, 0, true);
-        return translation_complete_with_native_nicknames(figure, value)
-            ? figure : std::nullopt;
+        if (translation_complete_with_native_nicknames(figure, value)) return figure;
+        // EnglishName copies FIRST_NAME from UTTERANCES as well as WORD
+        // names. A stored speech record can outlive its live formatter's
+        // identity binding, so the historical-header branch needs the same
+        // complete personal-name renderer as SPEAKER:TRANS_NAME.
+        return translate_announcement_combat(value, "$speech-person");
     };
-    for (size_t colon = source.find(": "); colon != std::string_view::npos;
-         colon = source.find(": ", colon + 2)) {
+    for (size_t colon = source.find(':'); colon != std::string_view::npos;
+         colon = source.find(':', colon + 1)) {
+        if (colon + 1 < source.size() && source[colon + 1] != ' ') continue;
         std::string_view prefix = source.substr(0, colon);
-        const std::string_view body = source.substr(colon + 2);
-        if (prefix.empty() || body.empty()) continue;
+        const std::string_view body = trim_view(source.substr(colon + 1));
+        if (prefix.empty()) continue;
         std::optional<std::string> recipient;
         const size_t to = prefix.find(" (to ");
         if (to != std::string_view::npos) {
             if (!prefix.ends_with(')')) continue;
-            recipient = actor(prefix.substr(to + 5, prefix.size() - to - 6));
+            const auto caption = prefix.substr(to + 5, prefix.size() - to - 6);
+            // 685006 follows a resolved recipient unit, even when that
+            // unit's caption is empty: the native " (to )" still survives.
+            recipient = caption.empty()
+                ? exact_literal_translation("Announcement speech: unnamed recipient")
+                : actor(caption);
             if (!recipient || recipient->empty()) continue;
             prefix = prefix.substr(0, to);
         }
         const auto speaker = actor(prefix);
         if (!speaker || speaker->empty()) continue;
+        const std::string heading = *speaker +
+            (recipient ? "（对" + *recipient + "）" : "") + "：";
+        // 6852ce appends the colon before the expanded body, with no
+        // nonempty-body condition. Display normalization trims its final
+        // space, leaving a real header-only record when TEXT_SET is empty.
+        if (body.empty()) return heading;
         const std::vector<int> source_colors(body.size(), 0xffffff);
         std::vector<int> target_colors;
         NativeAnnouncementUnitBodyScope semantic_body(source, body);
         auto translated = translate_spoken_dialogue_body(body);
         if (!translated) translated = translate_complete_announcement(
-            body, source_colors, target_colors);
+            body, source_colors, target_colors, false, native_type);
         if (!translated || translated->empty()) continue;
-        return *speaker + (recipient ? "（对" + *recipient + "）" : "") +
-               "：" + *translated;
+        return heading + *translated;
     }
     return std::nullopt;
 }

@@ -3285,6 +3285,37 @@ struct f_agreement_details_data_join_party {
     int32_t f_end_year;
     int32_t f_end_season_tick;
 };
+struct f_agreement_details_data_offer_service {
+    int32_t f_requesting_party;
+    int32_t f_serving_party;
+    int32_t f_served_entity;
+};
+struct f_agreement_details_data_retrieve_artifact {
+    int32_t f_retrieving_party;
+    int32_t f_requesting_party;
+    int32_t f_artifact;
+    int32_t f_artifact_site;
+    int32_t f_receiving_entity;
+};
+struct f_agreement_entryst {
+    uintptr_t f_ag;
+    uintptr_t f_sq;
+    uintptr_t f_so;
+    bool f_squad_order_repeatable;
+    std::string f_list_name;
+    std::string f_simple_list_name;
+    std::string f_p_list_name;
+    native_history_layout::f_curses_text_boxst f_main_text_box;
+    bool f_showing_commander;
+    int32_t f_ax;
+    int32_t f_ay;
+};
+struct f_agreement_party {
+    int32_t f_id;
+    Vector f_histfig_ids;
+    Vector f_entity_ids;
+    Vector f_complaint;
+};
 struct f_art_image {
     Vector f_elements;
     Vector f_properties;
@@ -7985,6 +8016,104 @@ struct f_viewscreen : f_abstract_interfacest {
     int8_t f_breakdown_level;
     int8_t f_option_key_pressed;
     native_history_layout::f_widget_container f_widgets;
+};
+struct f_evidence_repositoryst {
+    Vector f_hf_file;
+    Vector f_foiled_plot_agreements;
+    Vector f_known_events;
+    uint32_t f_flags;
+};
+struct f_adventure_log_map_displayst {
+    int8_t f_map;
+    int8_t f_midmap;
+    int8_t f_localmap;
+    int8_t f_hide_map;
+    native_history_layout::f_coord2d f_cur_loc;
+    native_history_layout::f_coord2d f_cur_mm_loc;
+    native_history_layout::f_coord2d f_min;
+    native_history_layout::f_coord2d f_max;
+    native_history_layout::f_coord2d f_cursor;
+    int16_t f_midmap_highlight_sx;
+    int16_t f_midmap_highlight_ex;
+    int16_t f_midmap_highlight_sy;
+    int16_t f_midmap_highlight_ey;
+};
+struct f_viewscreen_adventure_logst : f_viewscreen {
+    Vector f_base_actor_entry;
+    Vector f_base_organization_entry;
+    Vector f_base_plot_entry;
+    native_history_layout::f_evidence_repositoryst f_evidence_repository;
+    native_history_layout::f_adventure_log_map_displayst f_map_display;
+    int32_t f_selected;
+    int8_t f_line_on;
+    int16_t f_mode;
+    int16_t f_submode;
+    int16_t f_saved_submode_intrigue;
+    int32_t f_adventure_log_event_text_scroll;
+    int32_t f_histfig_text_scroll;
+    int32_t f_bestiary_text_scroll;
+    int32_t f_entity_text_scroll;
+    int32_t f_site_text_scroll;
+    int32_t f_subregion_text_scroll;
+    int32_t f_artifact_text_scroll;
+    bool f_expand_text;
+    uintptr_t f_selected_oen;
+    std::string f_filter_str;
+    bool f_entering_filter;
+    bool f_initialized_intrigue_mode;
+    int32_t f_scroll_position_events;
+    int32_t f_scroll_position_agreements;
+    int32_t f_scroll_position_people;
+    int32_t f_scroll_position_sites;
+    int32_t f_scroll_position_entities;
+    int32_t f_scroll_position_subregions;
+    int32_t f_scroll_position_bestiary;
+    int32_t f_scroll_position_artifacts;
+    int32_t f_scroll_position_intrigue_actors;
+    int32_t f_scroll_position_intrigue_organizations;
+    int32_t f_scroll_position_intrigue_plots;
+    bool f_scrolling;
+    Vector f_base_site_entry;
+    Vector f_base_entity_entry;
+    Vector f_base_subregion_entry;
+    Vector f_base_feature_layer;
+    Vector f_base_agreement_entry;
+    Vector f_base_bestiary_entry;
+    Vector f_base_adventure_log_event;
+    Vector f_base_histfig_entry;
+    Vector f_base_artifact_entry;
+    bool f_priority_sort_site;
+    bool f_priority_sort_entity;
+    bool f_priority_sort_histfig;
+    int32_t f_event_sort_mode;
+    bool f_set_priority_site;
+    bool f_set_priority_entity;
+    bool f_set_priority_histfig;
+    bool f_set_priority_event;
+    Vector f_value_site_entry;
+    Vector f_value_entity_entry;
+    Vector f_value_subregion_entry;
+    Vector f_value_feature_layer;
+    Vector f_value_agreement_entry;
+    Vector f_value_bestiary_entry;
+    Vector f_value_adventure_log_event;
+    Vector f_value_histfig_entry;
+    Vector f_value_artifact_entry;
+    Vector f_value_actor_entry;
+    Vector f_value_organization_entry;
+    Vector f_value_plot_entry;
+    Vector f_site_entry;
+    Vector f_entity_entry;
+    Vector f_subregion_entry;
+    Vector f_feature_layer;
+    Vector f_agreement_entry;
+    Vector f_bestiary_entry;
+    Vector f_adventure_log_event;
+    Vector f_histfig_entry;
+    Vector f_artifact_entry;
+    Vector f_actor_entry;
+    Vector f_organization_entry;
+    Vector f_plot_entry;
 };
 struct f_embark_location {
     native_history_layout::f_coord2d f_region_pos;
@@ -12760,6 +12889,37 @@ static constexpr std::array<Field, 8> f_agreement_details_data_join_party_fields
     {0x14, DFCN_NATIVE_FIELD(f_agreement_details_data_join_party, f_figure, 0x14), 4, "figure"},
     {0x18, DFCN_NATIVE_FIELD(f_agreement_details_data_join_party, f_end_year, 0x18), 4, "end_year"},
     {0x1c, DFCN_NATIVE_FIELD(f_agreement_details_data_join_party, f_end_season_tick, 0x1c), 4, "end_season_tick"},
+}};
+static constexpr std::array<Field, 3> f_agreement_details_data_offer_service_fields = {{
+    {0x0, DFCN_NATIVE_FIELD(f_agreement_details_data_offer_service, f_requesting_party, 0x0), 4, "requesting_party"},
+    {0x4, DFCN_NATIVE_FIELD(f_agreement_details_data_offer_service, f_serving_party, 0x4), 4, "serving_party"},
+    {0x8, DFCN_NATIVE_FIELD(f_agreement_details_data_offer_service, f_served_entity, 0x8), 4, "served_entity"},
+}};
+static constexpr std::array<Field, 5> f_agreement_details_data_retrieve_artifact_fields = {{
+    {0x0, DFCN_NATIVE_FIELD(f_agreement_details_data_retrieve_artifact, f_retrieving_party, 0x0), 4, "retrieving_party"},
+    {0x4, DFCN_NATIVE_FIELD(f_agreement_details_data_retrieve_artifact, f_requesting_party, 0x4), 4, "requesting_party"},
+    {0x8, DFCN_NATIVE_FIELD(f_agreement_details_data_retrieve_artifact, f_artifact, 0x8), 4, "artifact"},
+    {0xc, DFCN_NATIVE_FIELD(f_agreement_details_data_retrieve_artifact, f_artifact_site, 0xc), 4, "artifact_site"},
+    {0x10, DFCN_NATIVE_FIELD(f_agreement_details_data_retrieve_artifact, f_receiving_entity, 0x10), 4, "receiving_entity"},
+}};
+static constexpr std::array<Field, 11> f_agreement_entryst_fields = {{
+    {0x0, DFCN_NATIVE_FIELD(f_agreement_entryst, f_ag, 0x0), 8, "ag"},
+    {0x8, DFCN_NATIVE_FIELD(f_agreement_entryst, f_sq, 0x8), 8, "sq"},
+    {0x10, DFCN_NATIVE_FIELD(f_agreement_entryst, f_so, 0x10), 8, "so"},
+    {0x18, DFCN_NATIVE_FIELD(f_agreement_entryst, f_squad_order_repeatable, 0x18), 1, "squad_order_repeatable"},
+    {0x20, DFCN_NATIVE_FIELD(f_agreement_entryst, f_list_name, 0x20), 32, "list_name"},
+    {0x40, DFCN_NATIVE_FIELD(f_agreement_entryst, f_simple_list_name, 0x40), 32, "simple_list_name"},
+    {0x60, DFCN_NATIVE_FIELD(f_agreement_entryst, f_p_list_name, 0x60), 32, "p_list_name"},
+    {0x80, DFCN_NATIVE_FIELD(f_agreement_entryst, f_main_text_box.f_text, 0x80), 24, "main_text_box.text"},
+    {0x98, DFCN_NATIVE_FIELD(f_agreement_entryst, f_showing_commander, 0x98), 1, "showing_commander"},
+    {0x9c, DFCN_NATIVE_FIELD(f_agreement_entryst, f_ax, 0x9c), 4, "ax"},
+    {0xa0, DFCN_NATIVE_FIELD(f_agreement_entryst, f_ay, 0xa0), 4, "ay"},
+}};
+static constexpr std::array<Field, 4> f_agreement_party_fields = {{
+    {0x0, DFCN_NATIVE_FIELD(f_agreement_party, f_id, 0x0), 4, "id"},
+    {0x8, DFCN_NATIVE_FIELD(f_agreement_party, f_histfig_ids, 0x8), 24, "histfig_ids"},
+    {0x20, DFCN_NATIVE_FIELD(f_agreement_party, f_entity_ids, 0x20), 24, "entity_ids"},
+    {0x38, DFCN_NATIVE_FIELD(f_agreement_party, f_complaint, 0x38), 24, "complaint"},
 }};
 static constexpr std::array<Field, 21> f_art_image_fields = {{
     {0x0, DFCN_NATIVE_FIELD(f_art_image, f_elements, 0x0), 24, "elements"},
@@ -22133,6 +22293,135 @@ static constexpr std::array<Field, 171> f_view_sheets_interfacest_fields = {{
     {0x1e70, DFCN_NATIVE_FIELD(f_view_sheets_interfacest, f_item_use, 0x1e70), 24, "item_use"},
     {0x1e88, DFCN_NATIVE_FIELD(f_view_sheets_interfacest, f_item_use_reaction_index, 0x1e88), 24, "item_use_reaction_index"},
 }};
+static constexpr std::array<Field, 127> f_viewscreen_adventure_logst_fields = {{
+    {0x8, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_child, 0x8), 8, "child"},
+    {0x10, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_parent, 0x10), 8, "parent"},
+    {0x18, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_breakdown_level, 0x18), 1, "breakdown_level"},
+    {0x19, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_option_key_pressed, 0x19), 1, "option_key_pressed"},
+    {0x28, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_widgets.f_parent, 0x28), 8, "widgets.parent"},
+    {0x30, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_widgets.f_rect.f_x1, 0x30), 4, "widgets.rect.x1"},
+    {0x34, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_widgets.f_rect.f_y1, 0x34), 4, "widgets.rect.y1"},
+    {0x38, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_widgets.f_rect.f_x2, 0x38), 4, "widgets.rect.x2"},
+    {0x3c, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_widgets.f_rect.f_y2, 0x3c), 4, "widgets.rect.y2"},
+    {0x40, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_widgets.f_custom_feed, 0x40), 24, "widgets.custom_feed"},
+    {0x58, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_widgets.f_custom_logic, 0x58), 24, "widgets.custom_logic"},
+    {0x70, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_widgets.f_custom_render, 0x70), 24, "widgets.custom_render"},
+    {0x88, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_widgets.f_custom_activated, 0x88), 24, "widgets.custom_activated"},
+    {0xa0, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_widgets.f_name, 0xa0), 32, "widgets.name"},
+    {0xc0, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_widgets.f_flag, 0xc0), 1, "widgets.flag"},
+    {0xc4, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_widgets.f_offset_bottom, 0xc4), 4, "widgets.offset_bottom"},
+    {0xc8, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_widgets.f_offset_left, 0xc8), 4, "widgets.offset_left"},
+    {0xcc, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_widgets.f_offset_right, 0xcc), 4, "widgets.offset_right"},
+    {0xd0, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_widgets.f_offset_top, 0xd0), 4, "widgets.offset_top"},
+    {0xd4, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_widgets.f_anchor_top, 0xd4), 4, "widgets.anchor_top"},
+    {0xd8, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_widgets.f_anchor_bottom, 0xd8), 4, "widgets.anchor_bottom"},
+    {0xdc, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_widgets.f_anchor_left, 0xdc), 4, "widgets.anchor_left"},
+    {0xe0, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_widgets.f_anchor_right, 0xe0), 4, "widgets.anchor_right"},
+    {0xe4, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_widgets.f_min_w, 0xe4), 4, "widgets.min_w"},
+    {0xe8, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_widgets.f_min_h, 0xe8), 4, "widgets.min_h"},
+    {0xf0, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_widgets.f_tooltip, 0xf0), 72, "widgets.tooltip"},
+    {0x138, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_widgets.f_tooltip_type, 0x138), 1, "widgets.tooltip_type"},
+    {0x139, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_widgets.f_displaying_tooltip, 0x139), 1, "widgets.displaying_tooltip"},
+    {0x140, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_widgets.f_search_string, 0x140), 32, "widgets.search_string"},
+    {0x160, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_widgets.f_activation_hotkeys, 0x160), 16, "widgets.activation_hotkeys"},
+    {0x170, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_widgets.f_children_by_name, 0x170), 16, "widgets.children_by_name"},
+    {0x180, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_widgets.f_children, 0x180), 24, "widgets.children"},
+    {0x198, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_base_actor_entry, 0x198), 24, "base_actor_entry"},
+    {0x1b0, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_base_organization_entry, 0x1b0), 24, "base_organization_entry"},
+    {0x1c8, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_base_plot_entry, 0x1c8), 24, "base_plot_entry"},
+    {0x1e0, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_evidence_repository.f_hf_file, 0x1e0), 24, "evidence_repository.hf_file"},
+    {0x1f8, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_evidence_repository.f_foiled_plot_agreements, 0x1f8), 24, "evidence_repository.foiled_plot_agreements"},
+    {0x210, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_evidence_repository.f_known_events, 0x210), 24, "evidence_repository.known_events"},
+    {0x228, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_evidence_repository.f_flags, 0x228), 4, "evidence_repository.flags"},
+    {0x230, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_map_display.f_map, 0x230), 1, "map_display.map"},
+    {0x231, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_map_display.f_midmap, 0x231), 1, "map_display.midmap"},
+    {0x232, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_map_display.f_localmap, 0x232), 1, "map_display.localmap"},
+    {0x233, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_map_display.f_hide_map, 0x233), 1, "map_display.hide_map"},
+    {0x234, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_map_display.f_cur_loc.f_x, 0x234), 2, "map_display.cur_loc.x"},
+    {0x236, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_map_display.f_cur_loc.f_y, 0x236), 2, "map_display.cur_loc.y"},
+    {0x238, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_map_display.f_cur_mm_loc.f_x, 0x238), 2, "map_display.cur_mm_loc.x"},
+    {0x23a, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_map_display.f_cur_mm_loc.f_y, 0x23a), 2, "map_display.cur_mm_loc.y"},
+    {0x23c, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_map_display.f_min.f_x, 0x23c), 2, "map_display.min.x"},
+    {0x23e, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_map_display.f_min.f_y, 0x23e), 2, "map_display.min.y"},
+    {0x240, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_map_display.f_max.f_x, 0x240), 2, "map_display.max.x"},
+    {0x242, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_map_display.f_max.f_y, 0x242), 2, "map_display.max.y"},
+    {0x244, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_map_display.f_cursor.f_x, 0x244), 2, "map_display.cursor.x"},
+    {0x246, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_map_display.f_cursor.f_y, 0x246), 2, "map_display.cursor.y"},
+    {0x248, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_map_display.f_midmap_highlight_sx, 0x248), 2, "map_display.midmap_highlight_sx"},
+    {0x24a, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_map_display.f_midmap_highlight_ex, 0x24a), 2, "map_display.midmap_highlight_ex"},
+    {0x24c, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_map_display.f_midmap_highlight_sy, 0x24c), 2, "map_display.midmap_highlight_sy"},
+    {0x24e, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_map_display.f_midmap_highlight_ey, 0x24e), 2, "map_display.midmap_highlight_ey"},
+    {0x250, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_selected, 0x250), 4, "selected"},
+    {0x254, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_line_on, 0x254), 1, "line_on"},
+    {0x256, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_mode, 0x256), 2, "mode"},
+    {0x258, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_submode, 0x258), 2, "submode"},
+    {0x25a, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_saved_submode_intrigue, 0x25a), 2, "saved_submode_intrigue"},
+    {0x25c, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_adventure_log_event_text_scroll, 0x25c), 4, "adventure_log_event_text_scroll"},
+    {0x260, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_histfig_text_scroll, 0x260), 4, "histfig_text_scroll"},
+    {0x264, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_bestiary_text_scroll, 0x264), 4, "bestiary_text_scroll"},
+    {0x268, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_entity_text_scroll, 0x268), 4, "entity_text_scroll"},
+    {0x26c, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_site_text_scroll, 0x26c), 4, "site_text_scroll"},
+    {0x270, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_subregion_text_scroll, 0x270), 4, "subregion_text_scroll"},
+    {0x274, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_artifact_text_scroll, 0x274), 4, "artifact_text_scroll"},
+    {0x278, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_expand_text, 0x278), 1, "expand_text"},
+    {0x280, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_selected_oen, 0x280), 8, "selected_oen"},
+    {0x288, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_filter_str, 0x288), 32, "filter_str"},
+    {0x2a8, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_entering_filter, 0x2a8), 1, "entering_filter"},
+    {0x2a9, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_initialized_intrigue_mode, 0x2a9), 1, "initialized_intrigue_mode"},
+    {0x2ac, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_scroll_position_events, 0x2ac), 4, "scroll_position_events"},
+    {0x2b0, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_scroll_position_agreements, 0x2b0), 4, "scroll_position_agreements"},
+    {0x2b4, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_scroll_position_people, 0x2b4), 4, "scroll_position_people"},
+    {0x2b8, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_scroll_position_sites, 0x2b8), 4, "scroll_position_sites"},
+    {0x2bc, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_scroll_position_entities, 0x2bc), 4, "scroll_position_entities"},
+    {0x2c0, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_scroll_position_subregions, 0x2c0), 4, "scroll_position_subregions"},
+    {0x2c4, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_scroll_position_bestiary, 0x2c4), 4, "scroll_position_bestiary"},
+    {0x2c8, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_scroll_position_artifacts, 0x2c8), 4, "scroll_position_artifacts"},
+    {0x2cc, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_scroll_position_intrigue_actors, 0x2cc), 4, "scroll_position_intrigue_actors"},
+    {0x2d0, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_scroll_position_intrigue_organizations, 0x2d0), 4, "scroll_position_intrigue_organizations"},
+    {0x2d4, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_scroll_position_intrigue_plots, 0x2d4), 4, "scroll_position_intrigue_plots"},
+    {0x2d8, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_scrolling, 0x2d8), 1, "scrolling"},
+    {0x2e0, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_base_site_entry, 0x2e0), 24, "base_site_entry"},
+    {0x2f8, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_base_entity_entry, 0x2f8), 24, "base_entity_entry"},
+    {0x310, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_base_subregion_entry, 0x310), 24, "base_subregion_entry"},
+    {0x328, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_base_feature_layer, 0x328), 24, "base_feature_layer"},
+    {0x340, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_base_agreement_entry, 0x340), 24, "base_agreement_entry"},
+    {0x358, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_base_bestiary_entry, 0x358), 24, "base_bestiary_entry"},
+    {0x370, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_base_adventure_log_event, 0x370), 24, "base_adventure_log_event"},
+    {0x388, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_base_histfig_entry, 0x388), 24, "base_histfig_entry"},
+    {0x3a0, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_base_artifact_entry, 0x3a0), 24, "base_artifact_entry"},
+    {0x3b8, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_priority_sort_site, 0x3b8), 1, "priority_sort_site"},
+    {0x3b9, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_priority_sort_entity, 0x3b9), 1, "priority_sort_entity"},
+    {0x3ba, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_priority_sort_histfig, 0x3ba), 1, "priority_sort_histfig"},
+    {0x3bc, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_event_sort_mode, 0x3bc), 4, "event_sort_mode"},
+    {0x3c0, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_set_priority_site, 0x3c0), 1, "set_priority_site"},
+    {0x3c1, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_set_priority_entity, 0x3c1), 1, "set_priority_entity"},
+    {0x3c2, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_set_priority_histfig, 0x3c2), 1, "set_priority_histfig"},
+    {0x3c3, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_set_priority_event, 0x3c3), 1, "set_priority_event"},
+    {0x3c8, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_value_site_entry, 0x3c8), 24, "value_site_entry"},
+    {0x3e0, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_value_entity_entry, 0x3e0), 24, "value_entity_entry"},
+    {0x3f8, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_value_subregion_entry, 0x3f8), 24, "value_subregion_entry"},
+    {0x410, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_value_feature_layer, 0x410), 24, "value_feature_layer"},
+    {0x428, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_value_agreement_entry, 0x428), 24, "value_agreement_entry"},
+    {0x440, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_value_bestiary_entry, 0x440), 24, "value_bestiary_entry"},
+    {0x458, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_value_adventure_log_event, 0x458), 24, "value_adventure_log_event"},
+    {0x470, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_value_histfig_entry, 0x470), 24, "value_histfig_entry"},
+    {0x488, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_value_artifact_entry, 0x488), 24, "value_artifact_entry"},
+    {0x4a0, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_value_actor_entry, 0x4a0), 24, "value_actor_entry"},
+    {0x4b8, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_value_organization_entry, 0x4b8), 24, "value_organization_entry"},
+    {0x4d0, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_value_plot_entry, 0x4d0), 24, "value_plot_entry"},
+    {0x4e8, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_site_entry, 0x4e8), 24, "site_entry"},
+    {0x500, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_entity_entry, 0x500), 24, "entity_entry"},
+    {0x518, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_subregion_entry, 0x518), 24, "subregion_entry"},
+    {0x530, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_feature_layer, 0x530), 24, "feature_layer"},
+    {0x548, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_agreement_entry, 0x548), 24, "agreement_entry"},
+    {0x560, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_bestiary_entry, 0x560), 24, "bestiary_entry"},
+    {0x578, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_adventure_log_event, 0x578), 24, "adventure_log_event"},
+    {0x590, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_histfig_entry, 0x590), 24, "histfig_entry"},
+    {0x5a8, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_artifact_entry, 0x5a8), 24, "artifact_entry"},
+    {0x5c0, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_actor_entry, 0x5c0), 24, "actor_entry"},
+    {0x5d8, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_organization_entry, 0x5d8), 24, "organization_entry"},
+    {0x5f0, DFCN_NATIVE_FIELD(f_viewscreen_adventure_logst, f_plot_entry, 0x5f0), 24, "plot_entry"},
+}};
 static constexpr std::array<Field, 123> f_viewscreen_choose_start_sitest_fields = {{
     {0x8, DFCN_NATIVE_FIELD(f_viewscreen_choose_start_sitest, f_child, 0x8), 8, "child"},
     {0x10, DFCN_NATIVE_FIELD(f_viewscreen_choose_start_sitest, f_parent, 0x10), 8, "parent"},
@@ -23925,6 +24214,7 @@ static constexpr size_t f_itemimprovement_threadst_slots[] = {DFCN_NATIVE_BINDIN
 static constexpr size_t f_itemimprovement_writingst_slots[] = {DFCN_NATIVE_BINDING(0, 0), DFCN_NATIVE_BINDING(8, 8), DFCN_NATIVE_BINDING(16, 16), DFCN_NATIVE_BINDING(24, 24), DFCN_NATIVE_BINDING(32, 32), DFCN_NATIVE_BINDING(40, 40), DFCN_NATIVE_BINDING(48, 48), DFCN_NATIVE_BINDING(56, 56), DFCN_NATIVE_BINDING(64, 72), DFCN_NATIVE_BINDING(72, 80)};
 static constexpr size_t f_labor_work_details_interfacest_slots[] = {DFCN_NATIVE_BINDING(0, 0), DFCN_NATIVE_BINDING(8, 8), DFCN_NATIVE_BINDING(16, 16), DFCN_NATIVE_BINDING(24, 24), DFCN_NATIVE_BINDING(32, 32), DFCN_NATIVE_BINDING(40, 40), DFCN_NATIVE_BINDING(48, 48), DFCN_NATIVE_BINDING(56, 56)};
 static constexpr size_t f_unit_slots[] = {DFCN_NATIVE_BINDING(0, 0), DFCN_NATIVE_BINDING(8, 8), DFCN_NATIVE_BINDING(16, 16), DFCN_NATIVE_BINDING(24, 24), DFCN_NATIVE_BINDING(32, 32)};
+static constexpr size_t f_viewscreen_adventure_logst_slots[] = {DFCN_NATIVE_BINDING(0, 0), DFCN_NATIVE_BINDING(8, 8), DFCN_NATIVE_BINDING(16, 16), DFCN_NATIVE_BINDING(24, 24), DFCN_NATIVE_BINDING(32, 32), DFCN_NATIVE_BINDING(40, 40), DFCN_NATIVE_BINDING(48, 48), DFCN_NATIVE_BINDING(56, 56), DFCN_NATIVE_BINDING(64, 64), DFCN_NATIVE_BINDING(72, 72)};
 static constexpr size_t f_viewscreen_choose_start_sitest_slots[] = {DFCN_NATIVE_BINDING(0, 0), DFCN_NATIVE_BINDING(8, 8), DFCN_NATIVE_BINDING(16, 16), DFCN_NATIVE_BINDING(24, 24), DFCN_NATIVE_BINDING(32, 32), DFCN_NATIVE_BINDING(40, 40), DFCN_NATIVE_BINDING(48, 48), DFCN_NATIVE_BINDING(56, 56), DFCN_NATIVE_BINDING(64, 64), DFCN_NATIVE_BINDING(72, 72)};
 static constexpr size_t f_viewscreen_dungeonmodest_slots[] = {DFCN_NATIVE_BINDING(0, 0), DFCN_NATIVE_BINDING(8, 8), DFCN_NATIVE_BINDING(16, 16), DFCN_NATIVE_BINDING(24, 24), DFCN_NATIVE_BINDING(32, 32), DFCN_NATIVE_BINDING(40, 40), DFCN_NATIVE_BINDING(48, 48), DFCN_NATIVE_BINDING(56, 56), DFCN_NATIVE_BINDING(64, 64), DFCN_NATIVE_BINDING(72, 72)};
 static constexpr size_t f_viewscreen_dwarfmodest_slots[] = {DFCN_NATIVE_BINDING(0, 0), DFCN_NATIVE_BINDING(8, 8), DFCN_NATIVE_BINDING(16, 16), DFCN_NATIVE_BINDING(24, 24), DFCN_NATIVE_BINDING(32, 32), DFCN_NATIVE_BINDING(40, 40), DFCN_NATIVE_BINDING(48, 48), DFCN_NATIVE_BINDING(56, 56), DFCN_NATIVE_BINDING(64, 64), DFCN_NATIVE_BINDING(72, 72)};
@@ -23979,6 +24269,10 @@ static constexpr Object objects[] = {
     {"agreement", "", DFCN_NATIVE_BINDING(0x0, 0x0), f_agreement_fields.data(), std::size(f_agreement_fields), nullptr, 0},
     {"agreement_details", "", DFCN_NATIVE_BINDING(0x0, 0x0), f_agreement_details_fields.data(), std::size(f_agreement_details_fields), nullptr, 0},
     {"agreement_details_data_join_party", "", DFCN_NATIVE_BINDING(0x0, 0x0), f_agreement_details_data_join_party_fields.data(), std::size(f_agreement_details_data_join_party_fields), nullptr, 0},
+    {"agreement_details_data_offer_service", "", DFCN_NATIVE_BINDING(0x0, 0x0), f_agreement_details_data_offer_service_fields.data(), std::size(f_agreement_details_data_offer_service_fields), nullptr, 0},
+    {"agreement_details_data_retrieve_artifact", "", DFCN_NATIVE_BINDING(0x0, 0x0), f_agreement_details_data_retrieve_artifact_fields.data(), std::size(f_agreement_details_data_retrieve_artifact_fields), nullptr, 0},
+    {"agreement_entryst", "", DFCN_NATIVE_BINDING(0x0, 0x0), f_agreement_entryst_fields.data(), std::size(f_agreement_entryst_fields), nullptr, 0},
+    {"agreement_party", "", DFCN_NATIVE_BINDING(0x0, 0x0), f_agreement_party_fields.data(), std::size(f_agreement_party_fields), nullptr, 0},
     {"art_image", "", DFCN_NATIVE_BINDING(0x0, 0x0), f_art_image_fields.data(), std::size(f_art_image_fields), nullptr, 0},
     {"art_image_chunk", "", DFCN_NATIVE_BINDING(0x0, 0x0), f_art_image_chunk_fields.data(), std::size(f_art_image_chunk_fields), nullptr, 0},
     {"art_image_chunk_handlerst", "", DFCN_NATIVE_BINDING(0x0, 0x0), f_art_image_chunk_handlerst_fields.data(), std::size(f_art_image_chunk_handlerst_fields), nullptr, 0},
@@ -24346,6 +24640,7 @@ static constexpr Object objects[] = {
     {"unit", "", DFCN_NATIVE_BINDING(0x1781308, 0x202f330), f_unit_fields.data(), std::size(f_unit_fields), f_unit_slots, std::size(f_unit_slots)},
     {"utterancest", "", DFCN_NATIVE_BINDING(0x0, 0x0), f_utterancest_fields.data(), std::size(f_utterancest_fields), nullptr, 0},
     {"view_sheets_interfacest", "", DFCN_NATIVE_BINDING(0x0, 0x0), f_view_sheets_interfacest_fields.data(), std::size(f_view_sheets_interfacest_fields), nullptr, 0},
+    {"viewscreen_adventure_logst", "viewscreen", DFCN_NATIVE_BINDING(0x15eb450, 0x20817e0), f_viewscreen_adventure_logst_fields.data(), std::size(f_viewscreen_adventure_logst_fields), f_viewscreen_adventure_logst_slots, std::size(f_viewscreen_adventure_logst_slots)},
     {"viewscreen_choose_start_sitest", "viewscreen", DFCN_NATIVE_BINDING(0x1749000, 0x2086b68), f_viewscreen_choose_start_sitest_fields.data(), std::size(f_viewscreen_choose_start_sitest_fields), f_viewscreen_choose_start_sitest_slots, std::size(f_viewscreen_choose_start_sitest_slots)},
     {"viewscreen_dungeonmodest", "viewscreen", DFCN_NATIVE_BINDING(0x16b9f48, 0x207fb70), f_viewscreen_dungeonmodest_fields.data(), std::size(f_viewscreen_dungeonmodest_fields), f_viewscreen_dungeonmodest_slots, std::size(f_viewscreen_dungeonmodest_slots)},
     {"viewscreen_dwarfmodest", "viewscreen", DFCN_NATIVE_BINDING(0x16be500, 0x20802e8), f_viewscreen_dwarfmodest_fields.data(), std::size(f_viewscreen_dwarfmodest_fields), f_viewscreen_dwarfmodest_slots, std::size(f_viewscreen_dwarfmodest_slots)},

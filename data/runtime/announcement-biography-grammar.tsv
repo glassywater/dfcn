@@ -6,8 +6,8 @@ biography-office	{s}	{s1}	$term	0x14068a6f2 ->0x14099a3c0; complete existing ent
 biography-office	{s} of {s}	{s2}的{s1}	$term,$name	0x14068a73e ->0x1409bdfb0:0x1409be03a+0x1409be076; complete institution ownership
 sentence	I am {s}.	我是{s1}。	biography-office	0x14068a6c9+0x14068a6f2+0x14068a73e+0x14068a749
 sentence	I am a forgetful guard.	我是一名健忘的卫兵。		0x14068a938+0x14068aab3+0x14068ab17; missing guard-office data branch
-sentence	I am a {s} of the {s} {s}.	我是{s2}{s3}的{s1}。	$term,$term,$person	0x14068a938+0x14068a9cd+0x14068aa28..0x14068aa7d+0x14068ab17; raw POSITION guard title + superior office + personal name
-sentence	I am a {s} of the {s} {s}, as are you.	与你一样，我也是{s2}{s3}的{s1}。	$term,$term,$person	0x14068a938+0x14068a9cd+0x14068aa28..0x14068aa7d+0x14068aaa2+0x14068ab17
+sentence	I am a {s} of the {s} {s}.	我是{s2}{s3}的{s1}。	$term,$term,speech-person	0x14068a938+0x14068a9cd+0x14068aa28..0x14068aa7d+0x14068ab17; raw POSITION guard title + superior office + personal name
+sentence	I am a {s} of the {s} {s}, as are you.	与你一样，我也是{s2}{s3}的{s1}。	$term,$term,speech-person	0x14068a938+0x14068a9cd+0x14068aa28..0x14068aa7d+0x14068aaa2+0x14068ab17
 sentence	I am a {s}, as are you.	与你一样，我也是一名{s1}。	$term	0x14068a938+0x14068a9cd ->0x14068aa8f+0x14068aaa2+0x14068ab17; absent superior's figure branch
 sentence	I am a prisoner of {s}.	我是{s1}的囚犯。	$name	0x14068aada+0x14068ab12+0x14068ab17; complete entity name built at 0x14068a8f7
 sentence	I am a slave of {s}.	我是{s1}的奴隶。	$name	0x14068aaf9+0x14068ab12+0x14068ab17

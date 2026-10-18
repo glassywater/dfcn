@@ -57,6 +57,10 @@
 0x000bb8ce: mov    eax,ebx
 0x000bb8d0: jmp    0x1400bb8af
 
+# steam PE:6a70a6d9:02711000; rumor-type-getter; RVA 0xbbb20..0xbbb24
+0x000bbb20: mov    eax,DWORD PTR [rcx+0x24]
+0x000bbb23: ret
+
 # steam PE:6a70a6d9:02711000; search-fold; RVA 0x52cee0..0x52d033
 0x0052cee0: xor    r10d,r10d
 0x0052cee3: cmp    QWORD PTR [rcx+0x10],r10

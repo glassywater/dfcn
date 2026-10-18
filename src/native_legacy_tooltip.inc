@@ -1,4 +1,4 @@
-// DF 53.16 fortress toolbar: redirect before its inline background clear,
+// DF 53.16 native toolbars: redirect before their inline background clear,
 // then collect only the paragraph/key calls belonging to this native card.
 // A partial border or an item picture over the card is not its identity.
 static NativeCallHook g_native_legacy_tooltip_hook;
@@ -43,36 +43,72 @@ static size_t capture_native_legacy_tooltip_rows(const void *paragraph) {
             const int height = static_cast<int>(count) + (keys ? 4 : 2);
             const int top = bottom - height + 1;
             if (height >= 3 && left >= 0 && left <= gps->dimx - 28 &&
-                    top >= 0 && bottom < gps->dimy &&
-                    left >= gps->clipx[0] && left + 27 <= gps->clipx[1] &&
-                    top >= gps->clipy[0] && bottom <= gps->clipy[1]) {
+                    top >= 0 && bottom < gps->dimy) {
                 NativeTooltipWidgetFrame frame;
                 frame.bounds = {left, top, 28, height};
                 frame.dimx = gps->dimx;
                 frame.dimy = gps->dimy;
                 frame.epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
                 frame.rows.assign(height, std::string(28, ' '));
-                for (size_t row = 0; row < count; ++row) {
-                    std::string_view source;
-                    if (!native_string_view(native_paragraph_row(paragraph, row), &source, 4096)) {
-                        frame.body_source.clear();
-                        break;
-                    }
-                    if (!frame.body_source.empty()) frame.body_source += ' ';
-                    frame.body_source.append(source);
-                }
                 state.epoch = frame.epoch;
                 state.remaining_body_rows = count;
                 state.has_keys = keys;
-                if (!native_tooltip_begin_draw(frame)) {
-                    frame.page = std::make_shared<NativeTooltipPage>(*gps);
-                    frame.page->bounds = frame.bounds;
-                }
-                state.frame = std::move(frame);
+                if (native_tooltip_begin_draw(frame)) state.frame = std::move(frame);
             }
         }
     } catch (...) {}
     return count;
+}
+
+// Adventure has its own inline toolbar painter. It shares the paragraph
+// catalogue with Fortress, but never calls that painter's row-count helper.
+// Replace its compact-mode comparison before either background branch;
+// the returned byte preserves the native JE through the relay's TEST AL,AL.
+static bool capture_native_adventure_toolbar_start(const void *paragraph,
+        int viewport_right) {
+    NativeInputCallbackScope callback;
+    const auto base = g_native_legacy_tooltip_base;
+    const bool compact = *reinterpret_cast<const unsigned char *>(
+        native_pe_address(base, 0x18a93b8)) != 0;
+    try {
+        auto &state = native_legacy_tooltip_state();
+        if (state.frame && state.frame->isolated)
+            native_tooltip_end_draw(*state.frame);
+        state.frame.reset();
+        state.remaining_body_rows = 0;
+        state.has_keys = false;
+        auto *gps = native_graphics();
+        const size_t count = native_paragraph_row_count(paragraph);
+        const bool keys = *reinterpret_cast<const int32_t *>(
+            native_pe_address(base, 0x18a93a8)) != 0;
+        if (!paragraph || !gps || !gps->screen || gps->dimx <= 0 || gps->dimx > 1000 ||
+                gps->dimy <= 0 || gps->dimy > 1000 ||
+                count > static_cast<size_t>(gps->dimy) || (!count && !keys)) return compact;
+        const int rows = static_cast<int>(count);
+        const int left = compact ? viewport_right - 30 :
+            *reinterpret_cast<const int32_t *>(native_pe_address(base, 0x18a93bc));
+        const int bottom = *reinterpret_cast<const int32_t *>(native_pe_address(base, 0x18a93c0));
+        // Compact cards draw from row 0, with text from row 1. Include any
+        // submitted key rows below their capped border, without clipping a
+        // native text store that would otherwise remain on-screen.
+        const int height = compact ? std::min(gps->dimy,
+            std::max(std::min(rows + 1, 17) + 1, rows + (keys ? 3 : 1))) :
+            rows + (keys ? 4 : 2);
+        const int top = compact ? 0 : bottom - height + 1;
+        if (height < 3 || height > gps->dimy || left < 0 || left > gps->dimx - 28 ||
+                top < 0 || top > gps->dimy - height) return compact;
+        NativeTooltipWidgetFrame frame;
+        frame.bounds = {left, top, 28, height};
+        frame.dimx = gps->dimx;
+        frame.dimy = gps->dimy;
+        frame.epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
+        frame.rows.assign(height, std::string(28, ' '));
+        state.epoch = frame.epoch;
+        state.remaining_body_rows = count;
+        state.has_keys = keys;
+        if (native_tooltip_begin_draw(frame)) state.frame = std::move(frame);
+    } catch (...) {}
+    return compact;
 }
 #else
 // The native branch has already selected the actual paragraph, including RAW
@@ -99,32 +135,17 @@ static int32_t capture_native_legacy_tooltip_start(const void *paragraph) {
             const int height = static_cast<int>(count) + (keys ? 4 : 2);
             const int top = bottom - height + 1;
             if (height < 3 || left < 0 || left > gps->dimx - 28 ||
-                    top < 0 || bottom >= gps->dimy || left < gps->clipx[0] ||
-                    left + 27 > gps->clipx[1] || top < gps->clipy[0] ||
-                    bottom > gps->clipy[1]) return left;
+                    top < 0 || bottom >= gps->dimy) return left;
             NativeTooltipWidgetFrame frame;
             frame.bounds = {left, top, 28, height};
             frame.dimx = gps->dimx;
             frame.dimy = gps->dimy;
             frame.epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
             frame.rows.assign(height, std::string(28, ' '));
-            for (size_t row = 0; row < count; ++row) {
-                std::string_view source;
-                if (!native_string_view(native_paragraph_row(paragraph, row), &source, 4096)) {
-                    frame.body_source.clear();
-                    break;
-                }
-                if (!frame.body_source.empty()) frame.body_source += ' ';
-                frame.body_source.append(source);
-            }
             state.epoch = frame.epoch;
             state.remaining_body_rows = count;
             state.has_keys = keys;
-            if (!native_tooltip_begin_draw(frame)) {
-                frame.page = std::make_shared<NativeTooltipPage>(*gps);
-                frame.page->bounds = frame.bounds;
-            }
-            state.frame = std::move(frame);
+            if (native_tooltip_begin_draw(frame)) state.frame = std::move(frame);
         }
     } catch (...) {}
     return left;
@@ -137,8 +158,9 @@ static void capture_native_legacy_tooltip_text(graphicst *gps, Draw &&draw) {
     NativeTooltipWidgetFrame *frame = nullptr;
     try {
         auto &pending = native_legacy_tooltip_state().frame;
-        if (pending && gps && pending->dimx == gps->dimx && pending->dimy == gps->dimy &&
-            pending->epoch == g_embark_item_capture_epoch.load(std::memory_order_acquire))
+        if (pending && pending->isolated && g_native_tooltip_output && gps &&
+            pending->dimx == gps->dimx && pending->dimy == gps->dimy &&
+            pending->grid_identity == gps->screen)
             frame = &*pending;
     } catch (...) {}
     if (frame) g_native_tooltip_write = frame;
@@ -147,16 +169,6 @@ static void capture_native_legacy_tooltip_text(graphicst *gps, Draw &&draw) {
         ~Restore() { g_native_tooltip_write = previous; }
     } restore{previous};
     draw();
-    try {
-        if (!frame) return;
-        // The complete card is already writing to its own grid. Its body
-        // and key hooks only collect text; the final native call publishes it.
-        if (frame->isolated) return;
-        frame->document = std::make_shared<NativeTooltipPage>(*gps);
-        frame->document->bounds = frame->bounds;
-        std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
-        g_native_tooltip_widget_frame = *frame;
-    } catch (...) {}
 }
 
 static void capture_native_legacy_tooltip_row(graphicst *gps, const NativeString *source,
@@ -164,7 +176,9 @@ static void capture_native_legacy_tooltip_row(graphicst *gps, const NativeString
     NativeInputCallbackScope callback;
     const auto caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
 #ifdef _WIN32
-    const bool body_row = caller == native_pe_address(g_native_legacy_tooltip_base, 0x3fb318) + 5;
+    const bool body_row = caller == native_pe_address(g_native_legacy_tooltip_base, 0x3fb318) + 5 ||
+        caller == native_pe_address(g_native_legacy_tooltip_base, 0x7f5cde) + 5 ||
+        caller == native_pe_address(g_native_legacy_tooltip_base, 0x8182e0) + 5;
 #else
     const bool body_row = caller == g_native_legacy_tooltip_base + 0x16919e9 + 5;
 #endif
@@ -175,7 +189,13 @@ static void capture_native_legacy_tooltip_row(graphicst *gps, const NativeString
         0x425170);
 #endif
     capture_native_legacy_tooltip_text(gps, [&] {
-        callback.call_native([&] { original(gps, source, just, width); });
+        const auto draw = [&] {
+            callback.call_native([&] { original(gps, source, just, width); });
+        };
+        // This call site is the actual toolbar text writer. Publish its
+        // submitted row directly rather than relying on another caption
+        // entry adapter to rediscover the active tooltip write scope.
+        if (!capture_native_tooltip_caption_draw(gps, source, draw)) draw();
     });
     try {
         auto &state = native_legacy_tooltip_state();
@@ -218,7 +238,24 @@ static bool install_native_legacy_tooltip(uintptr_t base) {
         {0x3fb149, 0x6ee50, reinterpret_cast<const void *>(&capture_native_legacy_tooltip_rows)},
         {0x3fb318, 0xad9960, reinterpret_cast<const void *>(&capture_native_legacy_tooltip_row)},
         {0x3fb3c6, 0xad9960, reinterpret_cast<const void *>(&capture_native_legacy_tooltip_row)},
-        {0x3fb401, 0xc394b0, reinterpret_cast<const void *>(&capture_native_legacy_tooltip_key)}
+        {0x3fb401, 0xc394b0, reinterpret_cast<const void *>(&capture_native_legacy_tooltip_key)},
+        // R13 is the actual selected paragraph, ESI the current viewport's
+        // right limit. Neither branch has cleared its background yet. All
+        // live native state is nonvolatile or already saved to stack locals;
+        // later stores redefine volatile arguments before using them.
+        {0x7f5a81, 0, reinterpret_cast<const void *>(&capture_native_adventure_toolbar_start),
+            {0x4c,0x89,0xe9,0x89,0xf2},
+            {0x44,0x38,0x35,0x30,0x39,0x0b,0x01}, {0x84,0xc0}},
+        {0x7f5cde, 0xad9960, reinterpret_cast<const void *>(&capture_native_legacy_tooltip_row)},
+        {0x7f5d56, 0xad9960, reinterpret_cast<const void *>(&capture_native_legacy_tooltip_row)},
+        {0x7f5d75, 0xc394b0, reinterpret_cast<const void *>(&capture_native_legacy_tooltip_key)},
+        // Adventure's graphical toolbar is a third painter. Its count call
+        // precedes all background stores and uses the same floating bounds
+        // as Fortress; sharing source strings does not share either writer.
+        {0x818150, 0x6ee50, reinterpret_cast<const void *>(&capture_native_legacy_tooltip_rows)},
+        {0x8182e0, 0xad9960, reinterpret_cast<const void *>(&capture_native_legacy_tooltip_row)},
+        {0x818354, 0xad9960, reinterpret_cast<const void *>(&capture_native_legacy_tooltip_row)},
+        {0x81838b, 0xc394b0, reinterpret_cast<const void *>(&capture_native_legacy_tooltip_key)}
 #else
         // Replace the 19-byte left-coordinate load and local setup. RDI
         // receives the selected paragraph; EAX returns the unchanged left.

@@ -37,6 +37,14 @@ void Overlay::draw_work_order_buttons(SDL_Renderer *renderer) {
     Uint8 saved_r = 0, saved_g = 0, saved_b = 0, saved_a = 0;
     SDL_GetRenderDrawColor(renderer, &saved_r, &saved_g, &saved_b, &saved_a);
 
+    struct ButtonDraw {
+        int x, y;
+        size_t caption;
+        SDL_Rect inner, clip;
+        uint32_t background = 0, foreground = 0;
+        bool sampled = false;
+    };
+    std::vector<ButtonDraw> buttons;
     for (int y = 1; y + 1 < gps_->dimy; ++y) {
         for (int x = 0; x + 4 <= gps_->dimx; ++x) {
             for (size_t index = 0; index < captions.size(); ++index) {
@@ -62,59 +70,110 @@ void Overlay::draw_work_order_buttons(SDL_Renderer *renderer) {
                 const GlyphTexture *glyph = get_glyph_texture(renderer, *targets[index],
                     text_width, tile_h, font_pixels);
                 if (!glyph || !glyph->texture) continue;
-
-                std::vector<Uint8> pixels(static_cast<size_t>(inner.w) * inner.h * 4);
-                if (SDL_RenderReadPixels(renderer, &inner, SDL_PIXELFORMAT_RGBA32,
-                        pixels.data(), inner.w * 4) != 0) continue;
-                const auto pixel_key = [&](size_t offset) {
-                    return (static_cast<uint32_t>(pixels[offset]) << 16) |
-                        (static_cast<uint32_t>(pixels[offset + 1]) << 8) |
-                        pixels[offset + 2];
-                };
-                // The first scanline of the middle atlas row is clean fill.
-                // Sample the completed widget to preserve its current tint;
-                // neither logical-cell colours nor a hardcoded black are its
-                // actual background. The brightest interior ink is its text.
-                std::unordered_map<uint32_t, int> fills;
-                uint32_t background = 0, foreground = 0;
-                int fill_count = 0, brightest = -1;
-                for (int px = 0; px < inner.w; ++px) {
-                    const uint32_t key = pixel_key(static_cast<size_t>(px) * 4);
-                    const int count = ++fills[key];
-                    if (count > fill_count) { fill_count = count; background = key; }
-                }
-                for (size_t offset = 0; offset < pixels.size(); offset += 4) {
-                    const int brightness = pixels[offset] + pixels[offset + 1] + pixels[offset + 2];
-                    if (brightness > brightest) {
-                        brightest = brightness;
-                        foreground = pixel_key(offset);
-                    }
-                }
-                if (foreground == background) continue;
-                SDL_RenderSetClipRect(renderer, &clip);
-                SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_NONE);
-                SDL_SetRenderDrawColor(renderer, static_cast<Uint8>(background >> 16),
-                    static_cast<Uint8>(background >> 8), static_cast<Uint8>(background), 255);
-                SDL_RenderFillRect(renderer, &inner);
-
-                // There are no native text cells to suppress or repaint. A
-                // zero-length source keeps generic background clearing out of
-                // this picture while sharing the normal font fitting path.
-                Match caption{x, y, 0, -1, *targets[index], {}};
-                caption.layout_x = x;
-                caption.layout_y = y;
-                caption.layout_length = 4;
-                caption.layout_box_pixel_x = inner.x;
-                caption.layout_box_pixel_width = inner.w;
-                caption.layout_native_clip = inner;
-                caption.layout_font_pixels = font_pixels;
-                caption.layout_foreground_rgb = static_cast<int>(foreground);
-                draw_match(renderer, caption);
-                SDL_RenderSetClipRect(renderer, had_clip ? &saved_clip : nullptr);
+                buttons.push_back({x, y, index, inner, clip});
                 x += 3;
                 break;
             }
         }
+    }
+
+    // Complete every native-widget sample before submitting translated ink.
+    // A read after each caption otherwise drains the GPU command queue again.
+    // Nearby buttons share a read, while the occupied-area bound prevents a
+    // few distant controls from forcing a full-screen transfer.
+    struct ReadbackGroup {
+        SDL_Rect box;
+        size_t occupied_pixels;
+        std::vector<size_t> buttons;
+    };
+    const auto area = [](const SDL_Rect &box) {
+        return static_cast<size_t>(box.w) * box.h;
+    };
+    std::vector<ReadbackGroup> groups;
+    for (size_t index = 0; index < buttons.size(); ++index) {
+        const auto &inner = buttons[index].inner;
+        const size_t pixels = area(inner);
+        size_t best = groups.size();
+        size_t best_extra = 0;
+        SDL_Rect best_box{};
+        for (size_t group = 0; group < groups.size(); ++group) {
+            SDL_Rect joined{};
+            SDL_UnionRect(&groups[group].box, &inner, &joined);
+            const size_t joined_pixels = area(joined);
+            if (joined_pixels > (groups[group].occupied_pixels + pixels) * 4) continue;
+            const size_t extra = joined_pixels - area(groups[group].box);
+            if (best != groups.size() && extra >= best_extra) continue;
+            best = group; best_extra = extra; best_box = joined;
+        }
+        if (best == groups.size()) {
+            groups.push_back({inner, pixels, {index}});
+        } else {
+            auto &group = groups[best];
+            group.box = best_box;
+            group.occupied_pixels += pixels;
+            group.buttons.push_back(index);
+        }
+    }
+    std::vector<Uint8> pixels;
+    for (const auto &group : groups) {
+        pixels.resize(area(group.box) * 4);
+        const size_t stride = static_cast<size_t>(group.box.w) * 4;
+        if (read_overlay_pixels(renderer, group.box, pixels.data(),
+                static_cast<int>(stride), "work-order-buttons") != 0) continue;
+        const auto pixel_key = [&](size_t offset) {
+            return (static_cast<uint32_t>(pixels[offset]) << 16) |
+                (static_cast<uint32_t>(pixels[offset + 1]) << 8) |
+                pixels[offset + 2];
+        };
+        for (const size_t index : group.buttons) {
+            auto &button = buttons[index];
+            const auto &inner = button.inner;
+            const size_t first = static_cast<size_t>(inner.y - group.box.y) * stride +
+                static_cast<size_t>(inner.x - group.box.x) * 4;
+            // Preserve live tint: the first scanline is clean native fill,
+            // and the brightest interior pixel supplies the caption colour.
+            std::unordered_map<uint32_t, int> fills;
+            int fill_count = 0, brightest = -1;
+            for (int px = 0; px < inner.w; ++px) {
+                const uint32_t key = pixel_key(first + static_cast<size_t>(px) * 4);
+                const int count = ++fills[key];
+                if (count > fill_count) { fill_count = count; button.background = key; }
+            }
+            for (int py = 0; py < inner.h; ++py) {
+                const size_t row = first + static_cast<size_t>(py) * stride;
+                for (int px = 0; px < inner.w; ++px) {
+                    const size_t offset = row + static_cast<size_t>(px) * 4;
+                    const int brightness = pixels[offset] + pixels[offset + 1] + pixels[offset + 2];
+                    if (brightness > brightest) {
+                        brightest = brightness;
+                        button.foreground = pixel_key(offset);
+                    }
+                }
+            }
+            button.sampled = button.foreground != button.background;
+        }
+    }
+    for (const auto &button : buttons) {
+        if (!button.sampled) continue;
+        const auto &inner = button.inner;
+        SDL_RenderSetClipRect(renderer, &button.clip);
+        SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_NONE);
+        SDL_SetRenderDrawColor(renderer, static_cast<Uint8>(button.background >> 16),
+            static_cast<Uint8>(button.background >> 8), static_cast<Uint8>(button.background), 255);
+        SDL_RenderFillRect(renderer, &inner);
+
+        // Picture captions have no text cells to suppress. Keep the shared
+        // font fitting path without introducing generic background clearing.
+        Match caption{button.x, button.y, 0, -1, *targets[button.caption], {}};
+        caption.layout_x = button.x;
+        caption.layout_y = button.y;
+        caption.layout_length = 4;
+        caption.layout_box_pixel_x = inner.x;
+        caption.layout_box_pixel_width = inner.w;
+        caption.layout_native_clip = inner;
+        caption.layout_font_pixels = font_pixels;
+        caption.layout_foreground_rgb = static_cast<int>(button.foreground);
+        draw_match(renderer, caption);
     }
     SDL_RenderSetClipRect(renderer, had_clip ? &saved_clip : nullptr);
     SDL_SetRenderDrawColor(renderer, saved_r, saved_g, saved_b, saved_a);

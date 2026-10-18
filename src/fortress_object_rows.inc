@@ -29,8 +29,8 @@ void Overlay::append_fortress_object_rows(std::vector<std::string> &rows,
     const int bottom = panel->y + panel->h;
     for (const auto &bar : native_vertical_scrollbar_spans(*gps_, *panel))
         panel_right = std::min(panel_right, bar.x);
-    const auto draws = std::array{captured_native_drawn_text_rows(),
-        captured_native_drawn_text_rows(true)};
+    const auto draws = std::array{captured_native_drawn_text_view(),
+        captured_native_drawn_text_view(true)};
     const auto captures = captured_clipped_captions();
     constexpr uint32_t top_half = 1u << 3, bottom_half = 1u << 4;
     constexpr uint32_t half_mask = top_half | bottom_half;

@@ -1,0 +1,66 @@
+type	function	condition	source_production	typed_fields
+meta	notation	Actual collection +0x30 source productions; native RTTI aliases retained	Quoted literals preserve spaces; + is byte concatenation without implicit spacing; assign replaces earlier output. Optional stages are independent unless stated.	C and ASM in this directory; native-switches.tsv recovers all actual selector aliases omitted by Ghidra's representative case labels; no runtime/name samples.
+meta	typed-suppliers	all rows	F=neutral history_figure(id,ctx,1,0); E=history_entity; S=history_site; U=history_underground; G=history_region; AN=collection-artifact-name; N=language-name; PN=personal-name; Ord=lower-case native english ordinal then capitalization.	actual C boundaries in native-text-boundaries.tsv. Unknown IDs use native fallback; existing generated/RAW strings may be empty. No synthetic names or titles.
+meta	prefix	numbered prefix stage	P(n)="The "+[if signed n>1:Cap(Ordinal(n))+" "]	The does not depend on n except collection9. Ordinal helper consumes only actual n; no list of possible occurrence numbers is invented.
+meta	occasion-lookup	collections 9..13	O=entity.occasion by native IDs; OName=N(O+10); Activity=O.activity[c+6c].	collection9 entity=c+60,occasion=c+64; others entity=c+64,occasion=c+68. Missing entity/occasion/activity are distinct branches.
+0	history_event_collection_warst	always	PN(c+60,out); English=N(c+60,1,0); [if output bytes != English: append(", \""+English+"\"")]	Both RTTI types share reference bc56b0/classic bc26f0 and the actual battle C file. Native proper-name caption first, English gloss only when different, not a fixed The War/Battle label.
+0	history_event_collection_warst	primary name and English gloss identical	PN(c+60,out)	Comparison includes full byte length and contents. Empty==empty contributes no additional quote block; one empty and one nonempty still follows actual inequality.
+1	history_event_collection_battlest	always	PN(c+60,out); English=N(c+60,1,0); [if output bytes != English: append(", \""+English+"\"")]	Both RTTI types share reference bc56b0/classic bc26f0 and the actual battle C file. Native proper-name caption first, English gloss only when different, not a fixed The War/Battle label.
+1	history_event_collection_battlest	primary name and English gloss identical	PN(c+60,out)	Comparison includes full byte length and contents. Empty==empty contributes no additional quote block; one empty and one nonempty still follows actual inequality.
+2	history_event_collection_duelst	always	assign(out,P(c+7c)+"Duel of "+F(c+74)+" and "+F(c+78))	A fresh neutral history context is used for both figures. Invalid IDs still produce unknown-creature captions.
+3	history_event_collection_site_conqueredst	always	assign(out,P(c+9c)+ACTION+" of "+S(c+64))	ACTION selected by int16(c+98), native normalization type-1. It is NOT collection type itself.
+3	history_event_collection_site_conqueredst	stage ACTION: event-type in {1}	ACTION="Destruction"	Actual byte remap/jump table, including conquest aliases.
+3	history_event_collection_site_conqueredst	stage ACTION: event-type in {47}	ACTION="Pillaging"	Actual byte remap/jump table, including conquest aliases.
+3	history_event_collection_site_conqueredst	stage ACTION: event-type in {110}	ACTION="Surrender"	Actual byte remap/jump table, including conquest aliases.
+3	history_event_collection_site_conqueredst	stage ACTION: event-type in {48,49,50}	ACTION="Conquest"	Actual byte remap/jump table, including conquest aliases.
+3	history_event_collection_site_conqueredst	stage ACTION: all other event types, including outside 1..110	ACTION=""	The numbered prefix and of Site remain; this can yield The ORD(space)(space)of SITE.
+4	history_event_collection_abductionst	always	assign(out,P(c+c8)+[if found_ids(+98..+a0) empty:"Attempted "]+"Abduction"+SUBJECT+PLACE)	SUBJECT and PLACE stages below; no date suffix.
+4	history_event_collection_abductionst	stage SUBJECT: found_ids count==1	SUBJECT=" of "+F(found_ids[0])	No -1 guard on the single figure ID. Unknown figure fallback is retained.
+4	history_event_collection_abductionst	stage SUBJECT: found_ids empty AND intended_ids(+b0..+b8) count==1	SUBJECT=" of "+F(intended_ids[0])	
+4	history_event_collection_abductionst	stage SUBJECT: all other vector lengths	SUBJECT=""	More than one found subject does not enumerate a list. Intended subject is consulted only when found vector is empty.
+4	history_event_collection_abductionst	stage PLACE	site(c+6c)!=-1?" at "+S(c+6c):underground(c+68)!=-1?" in "+U(c+68):region(c+64)!=-1?" in "+G(c+64):" in the Wilds"	Priority site > underground > surface > Wilds. Existing empty names retain preceding connective.
+5	history_event_collection_theftst	always	assign(out,P(c+1b8)+[if found_artifacts(+f8..+100) empty:"Attempted "]+"Theft"+SUBJECT+PLACE)	PLACE is identical to collection4 using site+6c,underground+68,region+64.
+5	history_event_collection_theftst	stage SUBJECT: found_artifacts count==1 AND found[0]!=-1	SUBJECT=" of "+AN(found[0])	AN looks up an artifact by its physical item ID, not by the artifact record ID; no matching record gives an unknown artifact; matching record with empty generated name always gives Untitled, with no ordinary-item-description fallback.
+5	history_event_collection_theftst	stage SUBJECT: found_artifacts empty AND intended_artifacts(+188..+190) count==1 AND intended[0]!=-1	SUBJECT=" of "+AN(intended[0])	
+5	history_event_collection_theftst	stage SUBJECT: all other lengths or selected ID==-1	SUBJECT=""	
+6	history_event_collection_beast_attackst	always	assign(out,P(c+90)+MONSTER_PREFIX+"Rampage"+[if attackers(+78..+80) count==1:" of "+F(attackers[0])]+" in "+PLACE)	A fresh neutral F context; count>1 adds no figure list. Rampage fixed location connective is always in, including site.
+6	history_event_collection_beast_attackst	stage MONSTER_PREFIX: count<=1	MONSTER_PREFIX=""	
+6	history_event_collection_beast_attackst	stage MONSTER_PREFIX: count>1 AND common-race lookup bc6780 returns -1	MONSTER_PREFIX="Monster "	The common-race helper compares participant HF race indices, returning -1 for mixed or absent race. It emits no text.
+6	history_event_collection_beast_attackst	stage MONSTER_PREFIX: count>1 AND common-race!=-1	MONSTER_PREFIX=Cap(CreatureRAW.plural_NAME(common-race,+60))+" "	If the race index is unsupported or RAW plural empty, the source still emits the final space. No Monster substitution on this branch.
+6	history_event_collection_beast_attackst	stage PLACE: site(c+6c)!=-1	PLACE=S(c+6c)	
+6	history_event_collection_beast_attackst	stage PLACE: site==-1 AND underground(c+68)!=-1	PLACE=" in "+U(c+68)	This is an EXTRA in after the unconditional in: actual title contains in in. Not a reconstruction correction.
+6	history_event_collection_beast_attackst	stage PLACE: no site/underground	PLACE=region(c+64)!=-1?G(c+64):"the Wilds"	
+7	history_event_collection_journeyst	always	assign(out,P(c+78)+"Journey"+[if figures(+60..+68) nonempty:" of "+F(figures[0])+[if count==2:" and "+F(figures[1])]])	Count>2 still prints only first participant. Count0 omits of; no date or place suffix.
+8	history_event_collection_insurrectionst	always	assign(out,P(c+68)+"Insurrection in "+S(c+60))	
+9	history_event_collection_occasionst	always	assign(out,""); [if signed c+68>1:append("The "+Cap(Ordinal(c+68))+" Occasion of ")]; append(O exists?N(O+10):"The Occasion")	Unlike other collection roots, no generic The prefix when occurrence<=1 and O exists.
+9	history_event_collection_occasionst	c+68>1 AND O missing	"The "+Cap(Ordinal(c+68))+" Occasion of The Occasion"	The second The Occasion is an actual fallback appended after the numbered prefix, not an alternative whole title.
+9	history_event_collection_occasionst	O exists but generated name empty	numbered prefix when n>1, otherwise empty output	Existing empty names do not choose The Occasion fallback.
+10	history_event_collection_performancest	always	assign(out,P(c+70)+PERFORMANCE+[if O exists:" of "+N(O+10)])	Missing Activity can retain O and therefore produce Performance of OName; missing O cannot.
+10	history_event_collection_performancest	stage PERFORMANCE: O/Activity resolve and activity.kind==0	PERFORMANCE="Dance Performance"	
+10	history_event_collection_performancest	stage PERFORMANCE: O/Activity resolve and activity.kind==1	PERFORMANCE="Musical Performance"	
+10	history_event_collection_performancest	stage PERFORMANCE: O/Activity resolve and activity.kind==2	PERFORMANCE="Poetry Recital"	
+10	history_event_collection_performancest	stage PERFORMANCE: O/Activity resolve and activity.kind==3	PERFORMANCE="Storytelling"	
+10	history_event_collection_performancest	stage PERFORMANCE: O missing OR Activity missing	PERFORMANCE="Performance"	
+10	history_event_collection_performancest	stage PERFORMANCE: O/Activity resolve but kind outside0..3	PERFORMANCE=""	OName suffix still emits. Actual The [ORD ] of NAME and empty-name trailing of are reachable.
+11	history_event_collection_competitionst	always	assign(out,P(c+70)+COMPETITION+[if O exists:" of "+N(O+10)])	Competition type comes from the actual Activity kind, not from filename or name spelling.
+11	history_event_collection_competitionst	stage COMPETITION: activity.kind==4	COMPETITION="Dance Competition"	
+11	history_event_collection_competitionst	stage COMPETITION: activity.kind==5	COMPETITION="Musical Competition"	
+11	history_event_collection_competitionst	stage COMPETITION: activity.kind==6	COMPETITION="Poetry Competition"	
+11	history_event_collection_competitionst	stage COMPETITION: activity.kind==7	COMPETITION="Race"	
+11	history_event_collection_competitionst	stage COMPETITION: activity.kind==8	COMPETITION="Air Race"	
+11	history_event_collection_competitionst	stage COMPETITION: activity.kind==10	COMPETITION="Wrestling Competition"	
+11	history_event_collection_competitionst	stage COMPETITION: activity.kind==12	COMPETITION="Gladiatory Games"	
+11	history_event_collection_competitionst	stage COMPETITION: activity.kind==9	COMPETITION=Cap(valid race?CreatureName(activity+4,caste+8):"creature")+" Race"	Valid RAW caption may be empty. Invalid race explicitly uses creature.
+11	history_event_collection_competitionst	stage COMPETITION: activity.kind==11	COMPETITION=Cap(ItemCaption(activity.item_type+4,subtype+8,mat_type+c,mat_index+10))+" Throwing Competition"	Typed generic item-caption producer is already actually decompiled; do not parse its material/name words as event separators.
+11	history_event_collection_competitionst	stage COMPETITION: O missing OR Activity missing	COMPETITION="Competition"	
+11	history_event_collection_competitionst	stage COMPETITION: O/Activity resolve but kind outside4..12	COMPETITION=""	OName suffix still emitted, including empty-name/of-only shapes.
+12	history_event_collection_processionst	always	assign(out,P(c+70)+"Procession"+[if O resolves:" of "+N(O+10)])	Missing O leaves Procession; existing unnamed O leaves trailing of.
+13	history_event_collection_ceremonyst	always	assign(out,P(c+70)+CEREMONY+[if O resolves:" of "+N(O+10)])	Date-pair equality below is performed on actual offsets; no calendar phrase is produced here.
+13	history_event_collection_ceremonyst	stage CEREMONY: O exists, O+88==c+40 AND O+8c!=c+44	CEREMONY="Opening Ceremony"	
+13	history_event_collection_ceremonyst	stage CEREMONY: O exists, O+8c==c+44 AND O+88!=c+40	CEREMONY="Closing Ceremony"	
+13	history_event_collection_ceremonyst	stage CEREMONY: O exists and neither preceding exclusive condition	CEREMONY="Main Ceremony"	Both equal, or neither equal, share Main Ceremony.
+13	history_event_collection_ceremonyst	stage CEREMONY: O missing	CEREMONY="Ceremony"	
+14	history_event_collection_purgest	always	assign(out,P(c+88)+[if RAW label string(c+68).length(+78)!=0:RAW_label+" "]+"Purge in "+S(c+60))	The label is an original dynamic string, not inferred from participant names.
+15	history_event_collection_raidst	always	assign(out,P(c+98)+"Raid of "+PLACE)	PLACE=site(+6c) if !=-1,else underground(+68),else region(+64),else literal the Wilds. No added in before PLACE; no date.
+16	history_event_collection_persecutionst	always	assign(out,P(c+68)+"Persecution of "+E(c+64)+" in "+S(c+60))	
+17	history_event_collection_entity_overthrownst	always	assign(out,P(c+68)+"Overthrow of "+E(c+64)+[if site(c+60)!=-1:" in "+S(c+60)])	Only this root's location stage is optional; persecution's site is unconditional.

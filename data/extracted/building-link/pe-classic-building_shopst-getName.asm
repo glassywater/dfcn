@@ -1,0 +1,52 @@
+; classic PE:6a70b91c:0270a000; building_shopst-getName; RVA 0x54c400..0x54c4d9
+; decoded native frameless body including all return arms before alignment padding; original native renderer 0x14ef20..0x1a0154
+0x54c400: cmp    QWORD PTR [rcx+0xe0],0x0
+0x54c408: mov    r9,rdx
+0x54c40b: je     0x14054c433
+0x54c40d: lea    rdx,[rcx+0xd0]
+0x54c414: cmp    r9,rdx
+0x54c417: je     0x14054c4d8
+0x54c41d: cmp    QWORD PTR [rdx+0x18],0xf
+0x54c422: mov    r8,QWORD PTR [rdx+0x10]
+0x54c426: jbe    0x14054c42b
+0x54c428: mov    rdx,QWORD PTR [rdx]
+0x54c42b: mov    rcx,r9
+0x54c42e: jmp    0x14006f860
+0x54c433: mov    QWORD PTR [rdx+0x10],0x0
+0x54c43b: mov    rax,r9
+0x54c43e: cmp    QWORD PTR [rdx+0x18],0xf
+0x54c443: jbe    0x14054c448
+0x54c445: mov    rax,QWORD PTR [rdx]
+0x54c448: mov    BYTE PTR [rax],0x0
+0x54c44b: cmp    QWORD PTR [rcx+0x148],0x0
+0x54c453: jne    0x14054c46a
+0x54c455: mov    r8d,0xb
+0x54c45b: lea    rdx,[rip+0x1100a2e]        # 0x14164ce90 ; cstring='Vacant Shop'
+0x54c462: mov    rcx,r9
+0x54c465: jmp    0x14006f9a0
+0x54c46a: movsx  ecx,WORD PTR [rcx+0x156]
+0x54c471: test   ecx,ecx
+0x54c473: je     0x14054c4c3
+0x54c475: sub    ecx,0x1
+0x54c478: je     0x14054c4ae
+0x54c47a: sub    ecx,0x1
+0x54c47d: je     0x14054c499
+0x54c47f: cmp    ecx,0x1
+0x54c482: jne    0x14054c4d8
+0x54c484: mov    r8d,0x14
+0x54c48a: lea    rdx,[rip+0x1100e1f]        # 0x14164d2b0 ; cstring='Exotic Clothing Shop'
+0x54c491: mov    rcx,r9
+0x54c494: jmp    0x14006f9a0
+0x54c499: lea    rdx,[rip+0x1100e28]        # 0x14164d2c8 ; cstring='Clothing Shop'
+0x54c4a0: mov    r8d,0xd
+0x54c4a6: mov    rcx,r9
+0x54c4a9: jmp    0x14006f9a0
+0x54c4ae: lea    rdx,[rip+0x1100e23]        # 0x14164d2d8 ; cstring='Crafts Market'
+0x54c4b5: mov    r8d,0xd
+0x54c4bb: mov    rcx,r9
+0x54c4be: jmp    0x14006f9a0
+0x54c4c3: lea    rdx,[rip+0x1100e1e]        # 0x14164d2e8 ; cstring='General Store'
+0x54c4ca: mov    r8d,0xd
+0x54c4d0: mov    rcx,r9
+0x54c4d3: jmp    0x14006f9a0
+0x54c4d8: ret

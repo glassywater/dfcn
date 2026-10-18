@@ -12,3 +12,10 @@ name = "plural"
 [rulesets.rules]
 "{::plants::dwarvemon_beta}" = "{::plants::dwarvemon_beta}"
 "{::plants::dwarvemon::name}" = "{::plants::dwarvemon::name}"
+
+# Native grass slopes and stairs use RAW ADJ rather than NAME_PLURAL.
+[[rulesets]]
+name = "adjective"
+[rulesets.rules]
+"{::plants::dwarvemon_beta}" = "{::plants::dwarvemon_beta}"
+"{::plants::dwarvemon::name}" = "{::plants::dwarvemon::name}"

@@ -1,0 +1,60 @@
+; steam PE:6a70a6d9:02711000; journal-underground-region-name; unwind RVA 0xb94940..0xb94a36; executable end 0xb94a36
+0xb94940: mov    QWORD PTR [rsp+0x8],rbx
+0xb94945: mov    QWORD PTR [rsp+0x10],rsi
+0xb9494a: push   rdi
+0xb9494b: sub    rsp,0x20
+0xb9494f: mov    rbx,rdx
+0xb94952: mov    ecx,r8d
+0xb94955: mov    rdx,QWORD PTR [rip+0x19571fc]        # 0x1424ebb58
+0xb9495c: mov    esi,r9d
+0xb9495f: add    rdx,0x250
+0xb94966: call   0x1400e1560
+0xb9496b: mov    rdi,rax
+0xb9496e: test   rax,rax
+0xb94971: je     0x140b94a11
+0xb94977: and    esi,0x2
+0xb9497a: je     0x140b949b4
+0xb9497c: mov    r8d,0xa
+0xb94982: lea    rdx,[rip+0xb4ad1f]        # 0x1416df6a8 ; cstring='[LPAGE:FL:'
+0xb94989: mov    rcx,rbx
+0xb9498c: call   0x14006fa10
+0xb94991: mov    ecx,DWORD PTR [rdi+0x80]
+0xb94997: mov    rdx,rbx
+0xb9499a: call   0x14052c130
+0xb9499f: mov    r8d,0x1
+0xb949a5: lea    rdx,[rip+0xa68ce4]        # 0x1415fd690 ; cstring=']'
+0xb949ac: mov    rcx,rbx
+0xb949af: call   0x14006fa10
+0xb949b4: cmp    BYTE PTR [rdi+0x7a],0x0
+0xb949b8: jne    0x140b949fe
+0xb949ba: movsx  ecx,WORD PTR [rdi]
+0xb949bd: test   ecx,ecx
+0xb949bf: je     0x140b949e9
+0xb949c1: sub    ecx,0x1
+0xb949c4: je     0x140b949da
+0xb949c6: cmp    ecx,0x1
+0xb949c9: jne    0x140b949fe
+0xb949cb: mov    r8d,0xe
+0xb949d1: lea    rdx,[rip+0xb4ace0]        # 0x1416df6b8 ; cstring='the Underworld'
+0xb949d8: jmp    0x140b949f6
+0xb949da: mov    r8d,0xd
+0xb949e0: lea    rdx,[rip+0xb4ace1]        # 0x1416df6c8 ; cstring='the magma sea'
+0xb949e7: jmp    0x140b949f6
+0xb949e9: mov    r8d,0x17
+0xb949ef: lea    rdx,[rip+0xb4ac9a]        # 0x1416df690 ; cstring='the depths of the world'
+0xb949f6: mov    rcx,rbx
+0xb949f9: call   0x14006fa10
+0xb949fe: test   esi,esi
+0xb94a00: je     0x140b94a26
+0xb94a02: mov    r8d,0x8
+0xb94a08: lea    rdx,[rip+0xa69079]        # 0x1415fda88 ; cstring='[/LPAGE]'
+0xb94a0f: jmp    0x140b94a1e
+0xb94a11: mov    r8d,0x1d
+0xb94a17: lea    rdx,[rip+0xb4ac2a]        # 0x1416df648 ; cstring='an unknown underground region'
+0xb94a1e: mov    rcx,rbx
+0xb94a21: call   0x14006fa10
+0xb94a26: mov    rbx,QWORD PTR [rsp+0x30]
+0xb94a2b: mov    rsi,QWORD PTR [rsp+0x38]
+0xb94a30: add    rsp,0x20
+0xb94a34: pop    rdi
+0xb94a35: ret

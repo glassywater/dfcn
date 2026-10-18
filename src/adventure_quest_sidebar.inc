@@ -56,7 +56,7 @@
         auto upper_draws = captured_native_drawn_text_rows(true);
         title_draws.insert(title_draws.end(), std::make_move_iterator(upper_draws.begin()),
             std::make_move_iterator(upper_draws.end()));
-        const auto title_epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
+        const auto title_epoch = captured_native_drawn_text_epoch();
         const auto native_title_at = [&](int x, int y, int right)
                 -> std::optional<NativeAdventureQuestTitle> {
             for (auto it = title_draws.rbegin(); it != title_draws.rend(); ++it) {

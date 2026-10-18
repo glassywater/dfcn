@@ -9,6 +9,108 @@ static NativeHistoryNestedState &native_history_nested_state() {
     return reloadable_thread_state<NativeHistoryNestedState, struct HistoryNestedStateTag>();
 }
 
+// Capture the fields owned by each reviewed +d8 production. Its title can
+// omit records that +d0 narration reads, so those records cannot be required.
+static bool capture_native_history_subject_title_fields(const void *event,
+        const void *context, NativeHistoryEventData &title) {
+    const int32_t type = title.native_type;
+    const auto field = [&](const char *name, size_t offset, size_t width = 4) {
+        int32_t value = -1;
+        if (width == 2) {
+            int16_t short_value = -1;
+            if (!native_history_copy(native_history_event_field(event, type, offset, 2), short_value))
+                return false;
+            value = short_value;
+        } else if (!native_history_copy(native_history_event_field(event, type, offset, sizeof(value)), value))
+            return false;
+        title.fields[name] = {value};
+        return true;
+    };
+    const auto reference = [&](const char *name, NativeHistoryObjectKind kind) {
+        const int32_t id = title.fields.at(name).front();
+        if (id >= 0) title.references.emplace_back(kind, id);
+    };
+    if (type == 44 || type == 95 || type == 98) {
+        auto fields = snapshot_native_history_event(event, context);
+        if (!fields || fields->fields.contains("snapshot.incomplete")) return false;
+        title = std::move(*fields);
+    } else if (type == 0 || type == 50 || type == 80) {
+        // b65eb0/b67370/b67d00 read these four IDs independently. General,
+        // mercenary and new-government records belong only to +d0 prose.
+        const bool takeover = type == 50;
+        const char *attacker = type == 0 ? "attacker" :
+            type == 50 ? "attacker_civ" : "attacker_hf";
+        if (!field(attacker, 0x28) || !field("defender_civ", takeover ? 0x30 : 0x2c) ||
+                !field("site_civ", takeover ? 0x34 : 0x30) ||
+                !field("site", takeover ? 0x38 : 0x34)) return false;
+        reference(attacker, type == 80 ? NativeHistoryObjectKind::Figure :
+            NativeHistoryObjectKind::Entity);
+        reference("site_civ", NativeHistoryObjectKind::Entity);
+        if (title.fields.at("defender_civ").front() != title.fields.at("site_civ").front())
+            reference("defender_civ", NativeHistoryObjectKind::Entity);
+        reference("site", NativeHistoryObjectKind::Site);
+    } else if (type == 66) {
+        // b732f0 never reads the reviver at +0x40. Preserve the visible form
+        // selector, including its independent once-more bit and RAW name.
+        if (!field("histfig", 0x28) || !field("site", 0x2c) ||
+                !field("region", 0x30) || !field("layer", 0x34) ||
+                !field("ghost", 0x38, 2) || !field("revival_flags", 0x3c) ||
+                !field("interaction", 0x44) || !field("effect", 0x48)) return false;
+        reference("histfig", NativeHistoryObjectKind::Figure);
+        if (title.fields.at("site").front() != -1)
+            reference("site", NativeHistoryObjectKind::Site);
+        else if (title.fields.at("layer").front() != -1)
+            reference("layer", NativeHistoryObjectKind::Underground);
+        else reference("region", NativeHistoryObjectKind::Region);
+        if (title.fields.at("ghost").front() == -1) {
+            std::string form;
+            if (!capture_native_history_revival_form(native_history_profile_base(),
+                    title.fields.at("interaction").front(),
+                    title.fields.at("effect").front(), form)) return false;
+            title.texts["revival_form"] = std::move(form);
+        }
+    } else if (type == 99 || type == 105 || type == 128 || type == 129) {
+        if (type == 105) {
+            NativeBorrowedVector<int32_t> people;
+            if (!native_history_copy(native_history_event_field(event, type, 0x28, sizeof(people)), people) ||
+                    !people.valid(kNativeHistoryNodeValues)) return false;
+            std::vector<int32_t> ids(people.size());
+            if (!ids.empty() && !native_history_copy_bytes(reinterpret_cast<uintptr_t>(people.begin),
+                    ids.data(), ids.size() * sizeof(int32_t))) return false;
+            for (int32_t id : ids)
+                if (id >= 0) title.references.emplace_back(NativeHistoryObjectKind::Figure, id);
+            title.fields["histfigs"] = std::move(ids);
+            if (!field("action", 0x40) || !field("site", 0x48) || !field("structure", 0x4c) ||
+                    !field("region", 0x50) || !field("layer", 0x54)) return false;
+            // +d8 never reads +d0's diplomatic target entity at +0x44.
+            if (!title.fields.at("histfigs").empty() && title.fields.at("site").front() != -1) {
+                reference("site", NativeHistoryObjectKind::Site);
+                if (title.fields.at("structure").front() != -1 &&
+                        !native_history_structure_reference(title, title.fields.at("site").front(),
+                            title.fields.at("structure").front())) return false;
+            } else if (title.fields.at("layer").front() != -1)
+                reference("layer", NativeHistoryObjectKind::Underground);
+            else reference("region", NativeHistoryObjectKind::Region);
+        } else {
+            const size_t location = type == 129 ? 0x38 : 0x40;
+            if (!field("corruptor", 0x28) || !field("target", 0x30) ||
+                    !field("site", location) || !field("region", location + 4) ||
+                    !field("layer", location + 8)) return false;
+            if (type == 99 && (!field("first_relationship", 0x38) ||
+                    !field("second_relationship", 0x3c))) return false;
+            reference("corruptor", NativeHistoryObjectKind::Figure);
+            reference("target", NativeHistoryObjectKind::Figure);
+            reference("site", NativeHistoryObjectKind::Site);
+            if (title.fields.at("layer").front() != -1)
+                reference("layer", NativeHistoryObjectKind::Underground);
+            else reference("region", NativeHistoryObjectKind::Region);
+        }
+    } else return false;
+    title.fields["native_title"] = {1};
+    title.fields["native_story_title"] = {1};
+    return true;
+}
+
 static void capture_native_history_nested_title(void *event, NativeString *output,
         void *context, bool translated, bool glyphs_only) {
     NativeHistoryCallbackScope callback;
@@ -28,6 +130,9 @@ static void capture_native_history_nested_title(void *event, NativeString *outpu
         ~RestorePath() { state.path.resize(size); state.root = root; state.page_root = page_root; }
     } path_scope{state, state.path.size(), state.root, state.page_root};
     std::optional<NativeHistoryEventData> snapshot;
+    std::optional<NativeHistoryEventData> subject_header;
+    std::string output_prefix;
+    bool have_output_prefix = false;
     try {
         if (parent) {
             if (state.path.empty()) {
@@ -36,12 +141,30 @@ static void capture_native_history_nested_title(void *event, NativeString *outpu
                 state.path.push_back(parent->id);
             }
             if (state.path.size() < kNativeHistoryTreeDepth) {
-                snapshot = snapshot_native_history_event(event, context);
+                auto header = snapshot_native_history_event_header(event, context);
+                if (header && parent->native_type == 43 &&
+                        (header->native_type < 37 || header->native_type > 42)) {
+                    subject_header = *header;
+                    snapshot = std::move(header);
+                    try {
+                        auto typed = *snapshot;
+                        if (capture_native_history_subject_title_fields(event, context, typed))
+                            snapshot = std::move(typed);
+                    } catch (...) {
+                        // Optional title fields must not discard the real
+                        // child identity and its original +d8 source.
+                    }
+                } else snapshot = snapshot_native_history_event(event, context);
                 if (snapshot) {
                     if (std::find(state.path.begin(), state.path.end(), snapshot->id) != state.path.end())
                         snapshot.reset();
                     else state.path.push_back(snapshot->id);
                 }
+            }
+            std::string_view prefix;
+            if (snapshot && native_string_view(output, &prefix, kNativeHistorySourceLimit)) {
+                output_prefix.assign(prefix);
+                have_output_prefix = true;
             }
         }
     } catch (...) { snapshot.reset(); }
@@ -53,7 +176,8 @@ static void capture_native_history_nested_title(void *event, NativeString *outpu
     }
     try {
         if (!snapshot || !parent) return;
-        if (snapshot->native_type == 40 || snapshot->native_type == 42 || snapshot->native_type == 43) {
+        if (!subject_header &&
+                (snapshot->native_type == 40 || snapshot->native_type == 42 || snapshot->native_type == 43)) {
             auto refreshed = snapshot_native_history_event(event, context);
             if (refreshed) {
                 for (auto &[key, value] : snapshot->texts) refreshed->texts.try_emplace(key, std::move(value));
@@ -68,7 +192,22 @@ static void capture_native_history_nested_title(void *event, NativeString *outpu
                 snapshot = std::move(refreshed);
             }
         }
-        if (!populate_native_history_subjects(*snapshot) || !native_history_tree_within_limits(*snapshot)) return;
+        if (!populate_native_history_subjects(*snapshot)) {
+            if (!subject_header) return;
+            snapshot = *subject_header;
+        }
+        if (have_output_prefix) {
+            std::string_view source;
+            if (native_string_view(output, &source, kNativeHistorySourceLimit)) {
+                // Some native title arms assign instead of appending. In that
+                // case their actual title replaced the preceding buffer.
+                const size_t begin = source.starts_with(output_prefix) ? output_prefix.size() : 0;
+                if (source.size() - begin <= kNativeHistoryStringLimit)
+                    snapshot->texts["native.subject-title"] = std::string(source.substr(begin));
+            }
+        }
+        if (subject_header && !snapshot->texts.contains("native.subject-title")) return;
+        if (!native_history_tree_within_limits(*snapshot)) return;
         auto child = std::make_shared<NativeHistoryEventData>(std::move(*snapshot));
         const int32_t id = child->id;
         auto prior = parent->children.find(id);

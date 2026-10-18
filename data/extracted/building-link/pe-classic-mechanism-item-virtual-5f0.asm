@@ -1,0 +1,30 @@
+; classic PE:6a70b91c:0270a000; mechanism-item-virtual-5f0; RVA 0xc62420..0xc62485
+; complete native unwind owner and chained fragments; original native renderer 0x14ef20..0x1a0154
+0xc62420: rex push rbx
+0xc62422: sub    rsp,0x20
+0xc62426: mov    rbx,rdx
+0xc62429: cmp    r8d,0x1
+0xc6242d: jne    0x140c62449
+0xc6242f: mov    r8d,0x4
+0xc62435: lea    rdx,[rip+0x9819f8]        # 0x1415e3e34 ; cstring='the '
+0xc6243c: mov    rcx,rbx
+0xc6243f: add    rsp,0x20
+0xc62443: pop    rbx
+0xc62444: jmp    0x14006f9a0
+0xc62449: test   r8d,r8d
+0xc6244c: jne    0x140c6247f
+0xc6244e: test   DWORD PTR [rcx+0x10],0x40000
+0xc62455: jne    0x140c6247f
+0xc62457: mov    rax,QWORD PTR [rcx]
+0xc6245a: call   QWORD PTR [rax+0x478]
+0xc62460: cmp    eax,0x1
+0xc62463: jne    0x140c6247f
+0xc62465: mov    r8d,0x2
+0xc6246b: lea    rdx,[rip+0x9861a6]        # 0x1415e8618 ; cstring='a '
+0xc62472: mov    rcx,rbx
+0xc62475: add    rsp,0x20
+0xc62479: pop    rbx
+0xc6247a: jmp    0x14006f9a0
+0xc6247f: add    rsp,0x20
+0xc62483: pop    rbx
+0xc62484: ret

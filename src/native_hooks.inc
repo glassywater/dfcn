@@ -36,6 +36,7 @@ static bool native_history_war_selection(uintptr_t collection, int32_t &category
 #include "native_history_capture.inc"
 #include "native_dfhack_raw_creatures.inc"
 #include "native_history_hooks.inc"
+#include "native_announcement_log_event_sources.inc"
 #include "native_fortress_map_hud.inc"
 #include "native_work_order_shops.inc"
 #include "native_caravan_picker.inc"
@@ -75,10 +76,13 @@ static bool native_history_war_selection(uintptr_t collection, int32_t &category
 #include "native_adventure_barter_search_hooks.inc"
 #include "native_construction_search_hooks.inc"
 #include "native_caption_hooks.inc"
+#include "native_adventure_home_source.inc"
 #include "native_character_relations.inc"
 #include "native_overview_quote_hooks.inc"
 #include "native_paragraph_hooks.inc"
 #include "native_trade_paragraph_hooks.inc"
+#include "native_journal_event_hooks.inc"
+#include "native_journal_artifact_hooks.inc"
 #include "native_trade_item_fields.inc"
 #include "native_trade_item_hooks.inc"
 #include "native_workshop_recipe_hooks.inc"
@@ -86,11 +90,14 @@ static bool native_history_war_selection(uintptr_t collection, int32_t &category
 #include "native_adventure_hover_hooks.inc"
 #include "native_announcement_hooks.inc"
 #include "native_dfhack_layer_present.inc"
+#include "native_ui_cache_context.inc"
 #include "native_help_layer_render.inc"
 #include "native_resolution_layer_render.inc"
 #include "native_tooltip_layer_render.inc"
 #include "native_notification_layer_render.inc"
+#include "native_announcement_log_layer_render.inc"
 #include "native_info_layer_render.inc"
+#include "native_character_layer_render.inc"
 #include "native_stocks_layer_render.inc"
 #include "native_squads_layer_render.inc"
 #include "native_reports_layer_render.inc"
@@ -152,15 +159,17 @@ static bool install_sdl_hooks() {
         {"Native overview quote draw", install_native_overview_quote_hooks},
         {"Complete paragraph capture", install_native_paragraph_hook},
         {"Complete trade reply capture", install_native_trade_paragraph_hooks},
+        {"Complete journal event source", install_native_journal_event_hooks},
         {"Trade item memory capture", install_native_trade_item_hooks},
         {"Complete workshop requirement capture", install_native_workshop_recipe_hooks},
         {"Rich-text capture", install_native_rich_hooks},
-        {"Adventure hover background capture", install_native_adventure_hover_hook},
+        {"Native attribute and skill tooltip layer", install_native_adventure_hover_hook},
         {"Complete announcement capture", install_native_announcement_hook},
         {"Native history event capture", install_native_history_hooks},
         {"Native tutorials and help layer", install_native_help_layer_hook},
         {"Native resolution selector layer", install_native_resolution_layer_hook},
         {"Native fortress management layer", install_native_info_layer_hook},
+        {"Native character sheet layer", install_native_character_layer_hook},
         {"Native Stocks layer", install_native_stocks_layer_hook},
         {"Native fortress Squads layer", install_native_squads_layer_hook},
         {"Native announcements and report tabs layer", install_native_reports_layer_hook},
@@ -202,6 +211,7 @@ static void uninstall_sdl_hooks() {
     uninstall_native_squads_layer_hook();
     uninstall_native_stocks_layer_hook();
     uninstall_native_info_layer_hook();
+    uninstall_native_character_layer_hook();
     uninstall_native_resolution_layer_hook();
     uninstall_native_help_layer_hook();
     uninstall_native_dfhack_sitemap_hook();
@@ -224,6 +234,7 @@ static void uninstall_sdl_hooks() {
     uninstall_native_rich_hooks();
     uninstall_native_workshop_recipe_hooks();
     uninstall_native_trade_paragraph_hooks();
+    uninstall_native_journal_event_hooks();
     uninstall_native_trade_item_hooks();
     uninstall_native_paragraph_hook();
     uninstall_native_overview_quote_hooks();
@@ -269,6 +280,7 @@ static bool native_hooks_detached() {
         !native_resolution_layer_hook_active() &&
         !native_map_layer_hook_active() &&
         !native_info_layer_hook_active() &&
+        !native_character_layer_hook_active() &&
         !native_stocks_layer_hook_active() &&
         !native_squads_layer_hook_active() &&
         !native_reports_layer_hook_active() &&
@@ -285,6 +297,7 @@ static bool native_hooks_detached() {
         !native_history_hooks_active() && !native_announcement_hook_active() && !native_adventure_hover_hook_active() &&
         !native_rich_hooks_active() && !native_paragraph_hooks_active() &&
         !native_trade_paragraph_hooks_active() &&
+        !native_journal_event_hooks_active() &&
         !native_trade_item_hooks_active() &&
         !native_workshop_recipe_hooks_active() &&
         !native_caption_hooks_active() && !native_conversation_search_hook_active() &&
@@ -335,6 +348,7 @@ static void request_native_process_exit() noexcept {
     // console/plugins. Stop accepting work without joining or freeing any
     // callback-owned arrays, catalogs, fonts, textures or native interposes.
     g_native_identity_translation_jobs.request_stop();
+    g_render_workers.request_stop();
     try { g_overlay.request_dfhack_translation_stop(); } catch (...) {}
 }
 
@@ -347,6 +361,7 @@ static bool stop_reloadable_core() {
     // Join without the translation lock and retain catalogs/fonts until every
     // native callback has detached. Retiring captures reject new queued jobs.
     stop_native_identity_translation_jobs();
+    g_render_workers.shutdown();
     g_overlay.stop_dfhack_translation_worker();
     // Process exit has no future DFHack suspension context for retiring links.
     // Native shutdown still owns cleanup callbacks and renderer arrays. Leave
@@ -361,6 +376,7 @@ static bool stop_reloadable_core() {
     native_settings_menu_release();
     if (g_plugin_active.load()) {
         g_native_squads_overlay.release_native_squads_resources();
+        release_native_character_language_resources();
         g_overlay.shutdown();
         g_plugin_active.store(false);
     }

@@ -7,6 +7,11 @@ unit	she	她		native unit/pronoun helpers 0x14132e430 0x140aa4730; existing He/S
 unit	it	它		native unit/pronoun helpers 0x14132e430 0x140aa4730; existing He/She/It terms
 unit	they	他们		native unit/pronoun helpers 0x14132e430 0x140aa4730; existing He/She/It terms
 unit	{s}	{s1}	$unit	0x14132e430
+# The melee outcome builder stores this separate, capitalized sex/player pronoun before appending its evasion clause. It is not a complete creature caption.
+subject-pronoun	you	你		PE reference 0x14064a995 -> 0x140aa4730; classic 0x1406483b5 -> 0x140aa17b0; adventure target player
+subject-pronoun	he	他		PE reference 0x14064a995 -> 0x140aa4730; classic 0x1406483b5 -> 0x140aa17b0; sex 1
+subject-pronoun	she	她		PE reference 0x14064a995 -> 0x140aa4730; classic 0x1406483b5 -> 0x140aa17b0; sex 0
+subject-pronoun	it	它		PE reference 0x14064a995 -> 0x140aa4730; classic 0x1406483b5 -> 0x140aa17b0; other sex values
 owner	your	你的		0x1400e5809+0x1400e5985; pronoun helper 0x140aa4850
 owner	his	他的		0x1400e5809+0x1400e5985; pronoun helper 0x140aa4850
 owner	her	她的		0x1400e5809+0x1400e5985; pronoun helper 0x140aa4850
@@ -22,22 +27,25 @@ layer	{s}'s {s}	{s1}的{s2}	layer,$term	0x1400e7732+0x1400e7a26+0x1400e8158
 layer	{s}	{s1}	$body	0x1413345d0; RAW body names
 layer	{s}	{s1}	$term	0x1400e7768+0x1400e79b5; RAW tissue/material display names
 object	{s}	{s1}	$body	0x1400e5b17+0x141361868; anatomical semantics precede homonymous item nouns
-object	{s}	{s1}	$item	0x1400e5afa+0x1413617c3
+object	{s}	{s1}	$combat-item	0x1400e5afa+0x1413617c3; complete c65450 caption includes its virtual article and designation wrappers
 object	body part	身体部位		0x141361885+0x141361c5a
-owned-object	{s} {s}	{s1}{s2}	owner,object	0x141361f2c+0x141361f34+0x141361f5a
+# Grip records supply one complete owner followed by either a RAW body name or a complete item caption. Resolve all anatomical splits before any item split: a corpse unit owns its teeth; "corpse's teeth" must not become a detached item owned by the literal word corpse.
+owned-object	{s} {s}	{s1}{s2}	owner,$body	PE reference 0x1413617cd..0x141361a9a+0x141361ba2..0x141361e6d; classic 0x14135c73d..0x14135ca0a+0x14135cb12..0x14135cddd; whole owner plus RAW singular/plural body name or body part(s)
+owned-object	{s} {s}	{s1}{s2}	owner,$combat-item	PE reference 0x14136175a..0x1413617c8+0x141361b2b..0x141361b9d; classic 0x14135c6ca..0x14135c738+0x14135ca9b..0x14135cb0d; native item-id branch calls complete item caption after whole owner
+owned-object	{s}	{s1}物品	owner	PE reference 0x141361772+0x1413617ad+0x141361b43+0x141361b88; classic 0x14135c6e2+0x14135c71d+0x14135cab3+0x14135caf8; item-id lookup failure leaves owner and separator; retain its proved item meaning separately from body part(s) fallback
 equipment	{s} {s}	{s1}{s2}	owner,$body	0x14064b736..0x14064b7b3; anatomy before homonymous item instrument
 equipment	{s}	{s1}	owned-object	0x14064b736..0x14064b7b3; unarmed owner and full body part
 equipment	{s}	{s1}	$body	0x14064b7a0; unarmed anatomical instrument
-equipment	{s}	{s1}	$item	0x14064af07..0x14064b736; item helper 0x140c65450
-equipment	{s} {s}	{s1}{s2}	owner,$item	0x14064afdc+0x14064b736
+equipment	{s}	{s1}	$combat-item	0x14064af07..0x14064b736; complete item helper 0x140c65450 includes article before quality/wear/ownership wrappers
+equipment	{s} {s}	{s1}{s2}	owner,$combat-item	0x14064afdc+0x14064b736
 equipment	the {s} of {s}	{s2}的{s1}	weapon-part,equipment	0x14064af91+0x14064afb7
 weapon-part	shaft	杆		RAW ATTACK subpart; data/runtime/rulesets/zh-Hans/adv/attack.toml hitway
 weapon-part	flat	平面		RAW ATTACK subpart; data/runtime/rulesets/zh-Hans/adv/attack.toml hitway
 weapon-part	pommel	圆头		RAW ATTACK subpart; data/runtime/rulesets/zh-Hans/adv/attack.toml hitway
 actor	{s}	{s1}	unit	0x1400e57f2
-actor	the spinning {s}	旋转着的{s1}	$item	0x1400e5887+0x1400e58e0+0x1400e5911
-actor	the flying {s}	飞来的{s1}	$item	0x1400e5887+0x1400e58e9+0x1400e5911
-actor	the {s}	{s1}	$item	0x1400e58de+0x1400e5911
+actor	the spinning {s}	旋转着的{s1}	$combat-item	0x1400e5887+0x1400e58e0+0x1400e5911
+actor	the flying {s}	飞来的{s1}	$combat-item	0x1400e5887+0x1400e58e9+0x1400e5911
+actor	the {s}	{s1}	$combat-item	0x1400e58de+0x1400e5911
 attack-verb	bite	咬		active vanilla ATTACK_VERB / item_weapon.txt ATTACK; native 0x14064a9e6+0x14064af07+0x14064b97a; existing data/runtime/rulesets/zh-Hans/adv/attack.toml terminology
 attack-verb	bites	咬		active vanilla ATTACK_VERB / item_weapon.txt ATTACK; native 0x14064a9e6+0x14064af07+0x14064b97a; existing data/runtime/rulesets/zh-Hans/adv/attack.toml terminology
 attack-verb	snatch at	扑抓		active vanilla ATTACK_VERB / item_weapon.txt ATTACK; native 0x14064a9e6+0x14064af07+0x14064b97a; existing data/runtime/rulesets/zh-Hans/adv/attack.toml terminology
@@ -141,6 +149,10 @@ fluid	{s} {s} {s}	{s1}{s2}{s3}	owner,decay,$term	0x1400e83d3+0x1400e84ad+0x1400e
 fluid	{s}	{s1}	$term	0x1400e9a39+0x1400e9bdc+0x1400e9d49
 damage-list	{s} and spilling {s}	{s1}，使{s2}洒出	damage-list,fluid	0x1400e837a..0x1400e8527; may repeat for several fluids
 damage-list	and spilling {s}	使{s1}洒出	fluid	Steam 0x1400e8082->0x1400e82d5+0x1400e837a..0x1400e8527 / classic 0x1400e8012->0x1400e8265+0x1400e830a..0x1400e84b7; first kind4 tissue is null but independent fluid records still append complete spill material and owner
+# The loop can emit no kind4/5 injury at all. Equipment and each fluid remain
+# independent suffixes before the final exclamation, with no comma inserted.
+head	{s} through the {s}	{s1}，穿过{s2}	head,equipment	Steam 0x1400e82df..0x1400e834c / classic 0x1400e826f..0x1400e82dc; zero damage records, skipped non-damage kinds, or failed kind5 lookup still append complete equipment
+head	{s} and spilling {s}	{s1}，使{s2}洒出	head,fluid	Steam 0x1400e834c..0x1400e8527 / classic 0x1400e82dc..0x1400e84b7; zero emitted injury text retains every kind14 fluid suffix, including after equipment
 sentence	{s}, but it is deflected by {s}!	{s1}，却被{s2}挡开了！	head,equipment	0x1400e5a43+0x1400e5df6
 sentence	{s}, but the attack is deflected by {s}!	{s1}，但攻击被{s2}挡开了！	head,equipment	0x1400e5b7a+0x1400e5df6
 sentence	{s}, but it is deflected by !	{s1}，却被挡开了！	head	Steam 0x1400e5a43+0x1400e5bba..0x1400e5c34 / classic 0x1400e59d3+0x1400e5b4a..0x1400e5bc4; failed separate deflection-item lookup appends only terminal ! after by-space
@@ -243,17 +255,17 @@ assault	{s} attack {s}	{s1}攻击{s2}	actor,unit	0x14064d2d0..0x14064d348+0x1406
 assault	{s} attacks {s}	{s1}攻击{s2}	actor,unit	0x14064d2d0..0x14064d348+0x14064e2ba..0x14064e30a
 shot	{s} strike at {s}	{s1}向{s2}发动射击	actor,unit	0x14064d52d..0x14064d55c+0x14064db18..0x14064db47+0x14064f1b5..0x14064f1e4
 shot	{s} strikes at {s}	{s1}向{s2}发动射击	actor,unit	0x14064d52d..0x14064d55c+0x14064db18..0x14064db47+0x14064f1b5..0x14064f1e4
-evasion	{s} scramble away	{s1}连滚带爬地躲开了	unit	0x14064d38a..0x14064d7c5+0x14064e33c..0x14064e3b1
+evasion	{s} scramble away	{s1}连滚带爬地躲开了	subject-pronoun	0x14064d38a..0x14064d7c5+0x14064e33c..0x14064e3b1
 sentence	{s} scramble away from {s}!	{s1}连滚带爬地躲开了{s2}！	unit,actor	0x14064e08a..0x14064e112
-evasion	{s} scrambles away	{s1}连滚带爬地躲开了	unit	0x14064d38a..0x14064d7c5+0x14064e33c..0x14064e3b1
+evasion	{s} scrambles away	{s1}连滚带爬地躲开了	subject-pronoun	0x14064d38a..0x14064d7c5+0x14064e33c..0x14064e3b1
 sentence	{s} scrambles away from {s}!	{s1}连滚带爬地躲开了{s2}！	unit,actor	0x14064e08a..0x14064e112
-evasion	{s} roll away	{s1}翻滚躲开了	unit	0x14064d38a..0x14064d7c5+0x14064e33c..0x14064e3b1
+evasion	{s} roll away	{s1}翻滚躲开了	subject-pronoun	0x14064d38a..0x14064d7c5+0x14064e33c..0x14064e3b1
 sentence	{s} roll away from {s}!	{s1}翻滚躲开了{s2}！	unit,actor	0x14064e08a..0x14064e112
-evasion	{s} rolls away	{s1}翻滚躲开了	unit	0x14064d38a..0x14064d7c5+0x14064e33c..0x14064e3b1
+evasion	{s} rolls away	{s1}翻滚躲开了	subject-pronoun	0x14064d38a..0x14064d7c5+0x14064e33c..0x14064e3b1
 sentence	{s} rolls away from {s}!	{s1}翻滚躲开了{s2}！	unit,actor	0x14064e08a..0x14064e112
-evasion	{s} jump away	{s1}跳开了	unit	0x14064d38a..0x14064d7c5+0x14064e33c..0x14064e3b1
+evasion	{s} jump away	{s1}跳开了	subject-pronoun	0x14064d38a..0x14064d7c5+0x14064e33c..0x14064e3b1
 sentence	{s} jump away from {s}!	{s1}跳开了{s2}！	unit,actor	0x14064e08a..0x14064e112
-evasion	{s} jumps away	{s1}跳开了	unit	0x14064d38a..0x14064d7c5+0x14064e33c..0x14064e3b1
+evasion	{s} jumps away	{s1}跳开了	subject-pronoun	0x14064d38a..0x14064d7c5+0x14064e33c..0x14064e3b1
 sentence	{s} jumps away from {s}!	{s1}跳开了{s2}！	unit,actor	0x14064e08a..0x14064e112
 sentence	{s} but {s}!	{s1}，但{s2}！	assault,evasion	0x14064d327+0x14064d348+0x14064d7c5; 0x14064e2e9+0x14064e3b1
 sentence	{s} miss {s}!	{s1}未能击中{s2}！	actor,unit	0x14064e61b..0x14064e658

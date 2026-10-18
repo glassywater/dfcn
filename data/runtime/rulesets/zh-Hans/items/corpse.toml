@@ -2,8 +2,16 @@ base = "items::corpse"
 
 [[rulesets]]
 [rulesets.rules]
-"{^0}{mangled}{main}" = "{^0}{mangled}{main}"
+"{body}" = "{body}"
 "{named}" = "{named}"
+
+[[rulesets]]
+name = "body"
+[rulesets.rules]
+# PE ca1aa0/ca10e0 choose this complete outcome after the separately
+# selected owner/species. Keep this leaf free of named/owner callbacks so
+# an already resolved possessive never recursively asks for another owner.
+"{^0}{mangled}{main}" = "{^0}{mangled}{main}"
 
 [[rulesets]]
 name = "named"

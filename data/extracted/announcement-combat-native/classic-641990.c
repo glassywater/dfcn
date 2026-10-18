@@ -812,7 +812,8 @@ LAB_140642c12:
         uStack_3a0 = 0xf;
         ppppppiStack_3b8 = (int ******)0x0;
         uStack_498 = CONCAT31(uStack_498._1_3_,1);
-        FUN_1413293a0(lVar28,&ppppppuStack_398,1,CONCAT71((int7)(uVar43 >> 8),1));
+        combat_source_combat_unit_caption_13293a0
+                  (lVar28,&ppppppuStack_398,1,CONCAT71((int7)(uVar43 >> 8),1));
         if ((_DAT_141896268 == 1) && (lVar28 == _DAT_1423df000)) {
           pcVar29 = " pull";
           uVar39 = 5;
@@ -843,11 +844,8 @@ LAB_140642c12:
         }
         else {
           if (uStack_388 == 0x7fffffffffffffff) {
-LAB_140644818:
+                    /* WARNING: Subroutine does not return */
             FUN_140065820();
-            pcVar4 = (code *)swi(3);
-            (*pcVar4)();
-            return;
           }
           uVar47 = uStack_388 + 1;
           uVar24 = uVar47 | 0xf;
@@ -900,7 +898,7 @@ LAB_140644818:
         uStack_400 = *(undefined2 *)(lStack_3e0 + 0xaa);
         uStack_3fe = *(undefined2 *)(lStack_3e0 + 0xac);
         lStack_3e8 = lVar28;
-        FUN_1400e3bb0(0x1424dd740,&ppppppuStack_398,&uStack_408);
+        combat_source_announcement_submit_e3bb0(&DAT_1424dd740,&ppppppuStack_398,&uStack_408);
         FUN_140c85f90(*puVar17,1,1);
         for (puVar17 = *(undefined8 **)(lVar28 + 2000); puVar17 < *(undefined8 **)(lVar28 + 0x7d8);
             puVar17 = puVar17 + 1) {
@@ -962,7 +960,8 @@ LAB_140642eaf:
               uStack_3a0 = 0xf;
               ppppppiStack_3b8 = (int ******)0x0;
               uStack_498 = CONCAT31(uStack_498._1_3_,1);
-              FUN_1413293a0(lVar28,&ppppppuStack_398,1,CONCAT71((int7)((ulonglong)puVar17 >> 8),1));
+              combat_source_combat_unit_caption_13293a0
+                        (lVar28,&ppppppuStack_398,1,CONCAT71((int7)((ulonglong)puVar17 >> 8),1));
               if ((_DAT_141896268 == 1) && (lVar28 == _DAT_1423df000)) {
                 pcVar29 = " try";
                 uVar39 = 4;
@@ -994,8 +993,8 @@ LAB_140642eaf:
               }
               else {
                 if (uStack_388 == 0x7fffffffffffffff) {
+                    /* WARNING: Subroutine does not return */
                   FUN_140065820();
-                  goto LAB_140644818;
                 }
                 uVar47 = uStack_388 + 1;
                 uVar24 = uVar47 | 0xf;
@@ -1049,7 +1048,7 @@ LAB_140642eaf:
               uStack_400 = *(undefined2 *)(lStack_3e0 + 0xaa);
               uStack_3fe = *(undefined2 *)(lStack_3e0 + 0xac);
               lStack_3e8 = lVar28;
-              FUN_1400e3bb0(0x1424dd740,&ppppppuStack_398,&uStack_408);
+              combat_source_announcement_submit_e3bb0(&DAT_1424dd740,&ppppppuStack_398,&uStack_408);
               lVar23 = *(longlong *)*plVar33;
               FUN_140c85f90(lVar23,1,1);
               lVar40 = *(longlong *)(lVar28 + 0x408);

@@ -51,7 +51,6 @@ std::vector<Match> Overlay::find_native_info_matches() const {
     const auto &clipped_template_captions = *clipped_template_snapshot;
     append_native_map_hover_phrases(screen_rows, result, only_y,
         NativeMapHoverKind::Terrain);
-    append_toolbar_tooltip_matches(screen_rows, result, only_y, false);
     if (g_native_info_page == NativeInfoPage::Objects) {
         append_fortress_written_content_rows(screen_rows, result, only_y, nullptr);
         append_fortress_object_rows(screen_rows, result, only_y, nullptr);
@@ -297,19 +296,43 @@ std::vector<Match> Overlay::find_native_info_background_matches(int only_y,
         const unsigned char *screen_override) const {
     std::vector<Match> result;
     std::vector<std::string> rows(gps_->dimy, std::string(gps_->dimx, ' '));
-    for (int y = 0; y < gps_->dimy; ++y)
-        for (int x = 0; x < gps_->dimx; ++x) {
-            if (native_info_background_cell_hidden(gps_, x, y)) continue;
-            const auto ch = screen_override
-                ? screen_override[(static_cast<size_t>(x) * gps_->dimy + y) * 8]
-                : visible_char_at(x, y);
-            if (ch) rows[y][x] = static_cast<char>(ch);
+    const bool character_background = native_character_background_view(gps_);
+    std::vector<std::pair<int, int>> character_spans;
+    if (character_background) character_spans.reserve(g_native_character_layer.frames.size());
+    for (int y = 0; y < gps_->dimy; ++y) {
+        character_spans.clear();
+        if (character_background) {
+            for (const auto &frame : g_native_character_layer.frames) {
+                if (y < frame.y || int64_t(y) >= int64_t(frame.y) + frame.h) continue;
+                const int left = static_cast<int>(std::clamp<int64_t>(frame.x, 0, gps_->dimx));
+                const int right = static_cast<int>(std::clamp<int64_t>(
+                    int64_t(frame.x) + frame.w, left, gps_->dimx));
+                if (left < right) character_spans.emplace_back(left, right);
+            }
+            std::sort(character_spans.begin(), character_spans.end());
         }
+        const auto read_span = [&](int left, int right) {
+            for (int x = left; x < right; ++x) {
+                if (native_info_background_cell_hidden(gps_, x, y)) continue;
+                const auto ch = screen_override
+                    ? screen_override[(static_cast<size_t>(x) * gps_->dimy + y) * 8]
+                    : visible_char_at(x, y);
+                if (ch) rows[y][x] = static_cast<char>(ch);
+            }
+        };
+        // Character output has its own producer and texture. Skip each owned
+        // span at once; its blank background rows need no per-cell visit.
+        int left = 0;
+        for (const auto &[hidden_left, hidden_right] : character_spans) {
+            read_span(left, hidden_left);
+            left = std::max(left, hidden_right);
+        }
+        read_span(left, gps_->dimx);
+    }
     NativePanelReadScope panels(gps_);
     // The map remains behind management components. A real terrain draw
     // keeps its own field grammar in this reduced background reader too.
     append_native_map_hover_phrases(rows, result, only_y, NativeMapHoverKind::Terrain);
-    append_toolbar_tooltip_matches(rows, result, only_y, screen_override != nullptr);
     append_fortress_site_name(rows, result, only_y, screen_override != nullptr);
     append_fortress_elevation_rows(rows, result, only_y, screen_override != nullptr);
     append_native_info_grid_matches(rows, result, only_y, false);

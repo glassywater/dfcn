@@ -1,0 +1,3 @@
+edition	image	role	start_rva	end_rva	assembly_file
+reference	PE:6a70a6d9:02711000	placement-renderer-owner	0x3d6950	0x3fca34	pe-reference-placement-renderer-owner.asm
+classic	PE:6a70b91c:0270a000	placement-renderer-owner	0x3d4510	0x3fa5f4	pe-classic-placement-renderer-owner.asm

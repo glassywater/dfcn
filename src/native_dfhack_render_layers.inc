@@ -45,6 +45,11 @@ static const void *g_native_dfhack_render_refreshed_host = nullptr;
 static thread_local bool g_native_dfhack_render_maintaining = false;
 static thread_local unsigned g_native_dfhack_render_foreign_depth = 0;
 
+static bool native_dfhack_render_capture_enabled() noexcept {
+    return g_native_dfhack_render_enabled.load(std::memory_order_acquire) &&
+        !native_dfhack_switch_disabled();
+}
+
 struct NativeDfhackRenderForeignContentScope {
     bool entered;
     explicit NativeDfhackRenderForeignContentScope(bool enter) noexcept : entered(enter) {
@@ -163,9 +168,9 @@ static void native_dfhack_render_custom_callback(void *screen, uint32_t tick) {
             method = reinterpret_cast<NativeDfhackRenderMethod>(known->original);
     }
     if (!method) return;
-    const bool enabled = g_native_dfhack_render_enabled.load(std::memory_order_acquire);
+    const bool enabled = native_dfhack_render_capture_enabled();
     NativeDfhackFrameTransactionScope transaction(enabled, screen);
-    NativeDfhackRenderForeignContentScope content(true);
+    NativeDfhackRenderForeignContentScope content(enabled);
     NativeDfhackRenderFrame foreign(enabled);
     callback.call_native([&] { method(screen, tick); });
 }
@@ -203,11 +208,11 @@ static void native_dfhack_render_link_callback(void *screen, uint32_t tick,
     if (!method) return;
     void *chain_this = reinterpret_cast<void *>(reinterpret_cast<uintptr_t>(screen) +
         static_cast<intptr_t>(context->this_shift));
-    NativeDfhackRenderForeignContentScope content(context->foreign_content);
-    if (!g_native_dfhack_render_enabled.load(std::memory_order_acquire)) {
+    if (!native_dfhack_render_capture_enabled()) {
         callback.call_native([&] { method(chain_this, tick); });
         return;
     }
+    NativeDfhackRenderForeignContentScope content(context->foreign_content);
     // Only the outer viewscreen render publishes a complete private frame.
     // Native-only screens also publish an empty frame when foreign UI closes.
     NativeDfhackFrameTransactionScope transaction(!context->bottom, screen);
@@ -401,6 +406,10 @@ static bool native_dfhack_render_place_bottom(NativeDfhackRenderLinkContext &bot
 }
 
 static bool native_dfhack_render_refresh(bool reorder) noexcept {
+    // The resident switch defers apply(true) while DFHack is disabled: success
+    // records enabled intent but intentionally leaves the native link inactive.
+    // No render chain needs capture until that switch restores its hooks.
+    if (native_dfhack_switch_disabled()) return true;
     if (!native_dfhack_render_suspended() || g_native_dfhack_render_maintaining) return false;
     struct Maintenance {
         Maintenance() { g_native_dfhack_render_maintaining = true; }
@@ -547,19 +556,27 @@ static void native_dfhack_render_update_callback(void *core, void *console) {
         callback.call_native([&] { original(core, console); });
         return;
     }
-    const bool enabled = g_native_dfhack_render_enabled.load(std::memory_order_acquire);
-    if (!enabled) native_dfhack_render_retire_links();
+    const bool desired_enabled = g_native_dfhack_render_enabled.load(std::memory_order_acquire);
+    if (!desired_enabled) native_dfhack_render_retire_links();
+    const bool enabled = native_dfhack_render_capture_enabled();
     const bool guarded = enabled && native_dfhack_render_refresh(false);
     if (enabled && !guarded) native_dfhack_render_capture_failed(true);
     {
-        // Plugins and Lua timers can write buffers directly in onUpdate.
-        // Selecting private pointers covers them without reading the page.
-        NativeDfhackRenderForeignContentScope content(enabled);
-        NativeDfhackLayerUpdateScope foreign(enabled);
+        // The resident switch can restore plugins inside this doUpdate and
+        // immediately run their onUpdate callbacks. Keep private output ready
+        // across that transition even when registry capture starts disabled.
+        NativeDfhackRenderForeignContentScope content(desired_enabled);
+        NativeDfhackLayerUpdateScope foreign(desired_enabled);
         callback.call_native([&] { original(core, console); });
     }
-    if (g_native_dfhack_render_enabled.load(std::memory_order_acquire)) {
+    if (native_dfhack_render_capture_enabled()) {
         if (!native_dfhack_render_refresh(true)) native_dfhack_render_capture_failed(true);
+    } else if (native_dfhack_switch_disabled()) {
+        // doUpdate still owns the resident switch's lifecycle/reenable callback.
+        // Keep deferred links intact and rediscover their restored chains once
+        // DFHack is enabled again, including changes made while it was off.
+        g_native_dfhack_render_refreshed_revision = 0;
+        g_native_dfhack_render_current_foreign.store(false, std::memory_order_release);
     }
 }
 
@@ -571,7 +588,7 @@ static void native_dfhack_render_lua_callback(void *screen, uint32_t tick) {
         callback.call_native([&] { original(screen, tick); });
         return;
     }
-    const bool enabled = g_native_dfhack_render_enabled.load(std::memory_order_acquire);
+    const bool enabled = native_dfhack_render_capture_enabled();
     const bool guarded = enabled && native_dfhack_render_refresh(false);
     if (enabled && !guarded) native_dfhack_render_capture_failed();
     NativeDfhackFrameTransactionScope transaction(enabled, screen);
@@ -588,7 +605,7 @@ static void native_dfhack_render_thread_callback() {
         callback.call_native([&] { original(); });
         return;
     }
-    const bool enabled = g_native_dfhack_render_enabled.load(std::memory_order_acquire);
+    const bool enabled = native_dfhack_render_capture_enabled();
     // Leave newly enqueued callbacks for the next render loop rather than
     // consuming them outside the private target after an empty observation.
     if (enabled && !native_dfhack_render_callbacks_pending()) return;

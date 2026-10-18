@@ -2,6 +2,11 @@
 // output grid. Redirect before their first clear, including all skin stores.
 static NativeUiLayerStorage g_native_notification_layer;
 static NativeInfoCapturedText g_native_notification_text;
+static std::vector<NativeAnnouncementParagraph> g_native_notification_paragraphs;
+static bool g_native_notification_sources_valid = false;
+static NativeFortressAlertSourceKind g_native_notification_source_kind = NativeFortressAlertSourceKind::None;
+static uintptr_t g_native_notification_source_owner = 0;
+static uint64_t g_native_notification_source_wrap_generation = 0;
 static std::unique_ptr<NativeUiGridBinding> g_native_notification_output;
 static std::unique_ptr<NativeInfoCapturedTextScope> g_native_notification_captions;
 static std::unique_ptr<TranslationStateScope> g_native_notification_translation;
@@ -27,7 +32,7 @@ static bool native_notification_begin_draw(const SDL_Rect &bounds) {
         auto &layer = g_native_notification_layer;
         if (!gps || !gps->screen || !gps->screen_top || g_native_notification_output ||
                 g_native_tooltip_output || native_private_ui_write_active(gps) ||
-                gps == g_native_reports_write_graphics ||
+                native_notification_write_active(gps) ||
                 gps == g_native_pause_write_graphics ||
                 gps == g_native_info_write_graphics || gps == g_native_stocks_write_graphics ||
                 gps == g_native_squads_write_graphics ||
@@ -39,14 +44,23 @@ static bool native_notification_begin_draw(const SDL_Rect &bounds) {
         if (!visible) return false;
         if (layer.ready && (layer.foreground.dimx != gps->dimx ||
                 layer.foreground.dimy != gps->dimy)) return false;
+        const size_t cells = static_cast<size_t>(gps->dimx) * gps->dimy;
+        const bool resized = layer.foreground.dimx != gps->dimx ||
+            layer.foreground.dimy != gps->dimy ||
+            layer.foreground.planes[0].screen.size() != cells * 8 ||
+            layer.foreground.planes[1].screen.size() != cells * 8;
         layer.foreground.prepare(*gps);
-        if (!layer.ready) layer.foreground.clear();
+        if (resized) layer.foreground.clear();
+        else layer.foreground.clear(*visible);
         layer.frames.reserve(layer.frames.size() + 1);
         auto captions = std::make_unique<NativeInfoCapturedTextScope>(g_native_notification_text);
         auto output = std::make_unique<NativeUiGridBinding>(gps, *layer.foreground.graphics());
         layer.native_renderer = g_native_help_layer.native_renderer;
         layer.renderer = g_native_help_layer.renderer;
         g_native_notification_bounds = *visible;
+        g_native_notification_source_kind = NativeFortressAlertSourceKind::None;
+        g_native_notification_source_owner = 0;
+        g_native_notification_source_wrap_generation = 0;
         g_native_notification_write_graphics = gps;
         g_native_notification_captions = std::move(captions);
         g_native_notification_output = std::move(output);
@@ -60,6 +74,9 @@ static void native_notification_restore_output() {
     g_native_notification_captions.reset();
     g_native_notification_write_graphics = nullptr;
     g_native_notification_bounds = {};
+    g_native_notification_source_kind = NativeFortressAlertSourceKind::None;
+    g_native_notification_source_owner = 0;
+    g_native_notification_source_wrap_generation = 0;
     g_native_notification_translation.reset();
 }
 
@@ -69,16 +86,31 @@ static void native_notification_end_draw() {
     layer.foreground.graphics()->top_in_use = native_graphics()->top_in_use;
     layer.frames.push_back(g_native_notification_bounds);
     layer.ready = true;
+    // Freeze the complete sources with their native draw, rather than reading
+    // the live hover caches again on every SDL Present.
+    try {
+        g_native_notification_paragraphs = native_fortress_alert_source_paragraphs(
+            g_native_notification_source_kind, g_native_notification_source_owner,
+            g_native_notification_source_wrap_generation);
+        native_notification_bind_report_documents(g_native_notification_paragraphs);
+        g_native_notification_sources_valid = !g_native_notification_paragraphs.empty();
+    } catch (...) {
+        g_native_notification_paragraphs.clear();
+        g_native_notification_sources_valid = false;
+    }
     native_notification_restore_output();
 }
 
 static void native_notification_begin_frame() {
     reset_native_announcement_notification_capture();
     auto &layer = g_native_notification_layer;
+    for (const auto &frame : layer.frames) layer.foreground.clear(frame);
     layer.ready = false;
     layer.frames.clear();
     layer.native_renderer = nullptr;
     layer.renderer = nullptr;
     g_native_notification_text.clear();
+    g_native_notification_paragraphs.clear();
+    g_native_notification_sources_valid = false;
     NativeUiReadScope::invalidate_reads();
 }

@@ -5,11 +5,12 @@ void Overlay::append_character_header(
         const std::vector<std::string> &header_rows,
         std::vector<std::string> &screen_rows, std::vector<Match> &result,
         int header_tabs_y, int only_y) const {
+    if (!native_character_translation_active(gps_)) return;
     if (!gps_) return;
     const auto clipped_captions = captured_clipped_captions();
-    const auto base_draws = captured_native_drawn_text_rows();
-    const auto top_draws = captured_native_drawn_text_rows(true);
-    const std::array<const std::vector<NativeDrawnTextRow> *, 2> header_draws{
+    const auto base_draws = captured_native_drawn_text_view();
+    const auto top_draws = captured_native_drawn_text_view(true);
+    const std::array<const NativeDrawnTextView *, 2> header_draws{
         &base_draws, &top_draws};
     const auto read_header_char = [&](int x, int y) {
         return static_cast<unsigned char>(header_rows[y][x]);
@@ -304,7 +305,7 @@ void Overlay::append_character_header(
         const auto read_header_char = [&](int x, int row_y) {
             return static_cast<unsigned char>(header_rows[row_y][x]);
         };
-        const std::array<const std::vector<NativeDrawnTextRow> *, 2> identity_draws{
+        const std::array<const NativeDrawnTextView *, 2> identity_draws{
             &base_draws, &top_draws};
         for (size_t layer = 0;
                 layer < identity_draws.size() && !bound_owner && !bound_header; ++layer) {

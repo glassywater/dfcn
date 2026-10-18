@@ -1,0 +1,53 @@
+edition	group	branch	guard	source_rva	text_or_source
+reference	producer	reuse-cache	selected index and secondary cache key match; cached field +0x134c == -1	0x63ddc9	reuse screen+0x1330
+reference	producer	home	screen+0x1298 == 0; site vector screen+0x1280 nonempty	0x63de48	{site} is a {dark?}{civilization race adjective?}{site type}.  {population}{controller?}.
+reference	producer	no-home-text	screen+0x1298 != 0 or site vector empty	0x63de48	
+reference	name	site	selected site = screen+0x1280[index]; site starts with language_name	0x63dea3	language-name(site, output, true, false)
+reference	adjective	dark	site.type == 1	0x63deee	dark 
+reference	adjective	no-dark	site.type != 1	0x63deee	
+reference	adjective	race	site.type != 10; controller exists; controller civilization exists; civilization.flags+0x9c bit10 clear; race in range	0x63dfe0	creature_raws[civilization.race]+0x60 adjective, then space
+reference	adjective	empty-race	same branch but race out of range; native still appends space	0x63e048	 
+reference	adjective	no-race	site.type == 10 or no controller/civilization or civilization.flags+0x9c bit10 set	0x63dfe0	
+reference	population	nonpositive	N <= 0	0x63e266	Nobody lives there
+reference	population	1-9	1 <= N <= 9	0x63e27e	Few live there
+reference	population	10-24	10 <= N <= 24	0x63e296	A few dozen or less live there
+reference	population	25-79	25 <= N <= 79	0x63e2ae	Some dozens live there
+reference	population	80-119	80 <= N <= 119	0x63e2c6	Roughly a hundred live there
+reference	population	120-174	120 <= N <= 174	0x63e2e1	Well over a hundred live there
+reference	population	175-249	175 <= N <= 249	0x63e2f9	A few hundred live there
+reference	population	250-749	250 <= N <= 749	0x63e311	Several hundred live there
+reference	population	750-1499	750 <= N <= 1499	0x63e329	A thousand live there
+reference	population	1500-2499	1500 <= N <= 2499	0x63e341	A few thousand live there
+reference	population	2500+	N >= 2500	0x63e350	Thousands live there
+reference	population	source	signed int sum; two int vectors and population entries	0x63e21a	N = len(site+0x90..0x98)/4 + len(site+0x108..0x110)/4 + sum(**entry for entry in site+0xd8..0xe0)
+reference	controller	present	site-controller-field returns nonnull entity	0x63e369	 and it is controlled by {entity language name}
+reference	controller	missing	site-controller-field returns null	0x63e374	
+reference	controller	name	entity-field(entity ID +4, flags=0); entity+0x20 language_name	0x63e397	language-name(entity+0x20, output, true, false)
+reference	controller	unknown	entity-field cannot look up controller ID	0x63e397	an unknown civilization
+reference	cache	wrap	text constructed before row cache wrapping; fixed native width 27 (0x1b)	0x63f075	whole paragraph -> cache-wrap -> cache-lines-wrap -> screen+0x1330 vector<string*>
+classic	producer	reuse-cache	selected index and secondary cache key match; cached field +0x134c == -1	0x63b7e9	reuse screen+0x1330
+classic	producer	home	screen+0x1298 == 0; site vector screen+0x1280 nonempty	0x63b868	{site} is a {dark?}{civilization race adjective?}{site type}.  {population}{controller?}.
+classic	producer	no-home-text	screen+0x1298 != 0 or site vector empty	0x63b868	
+classic	name	site	selected site = screen+0x1280[index]; site starts with language_name	0x63b8c3	language-name(site, output, true, false)
+classic	adjective	dark	site.type == 1	0x63b90e	dark 
+classic	adjective	no-dark	site.type != 1	0x63b90e	
+classic	adjective	race	site.type != 10; controller exists; controller civilization exists; civilization.flags+0x9c bit10 clear; race in range	0x63ba00	creature_raws[civilization.race]+0x60 adjective, then space
+classic	adjective	empty-race	same branch but race out of range; native still appends space	0x63ba68	 
+classic	adjective	no-race	site.type == 10 or no controller/civilization or civilization.flags+0x9c bit10 set	0x63ba00	
+classic	population	nonpositive	N <= 0	0x63bc86	Nobody lives there
+classic	population	1-9	1 <= N <= 9	0x63bc9e	Few live there
+classic	population	10-24	10 <= N <= 24	0x63bcb6	A few dozen or less live there
+classic	population	25-79	25 <= N <= 79	0x63bcce	Some dozens live there
+classic	population	80-119	80 <= N <= 119	0x63bce6	Roughly a hundred live there
+classic	population	120-174	120 <= N <= 174	0x63bd01	Well over a hundred live there
+classic	population	175-249	175 <= N <= 249	0x63bd19	A few hundred live there
+classic	population	250-749	250 <= N <= 749	0x63bd31	Several hundred live there
+classic	population	750-1499	750 <= N <= 1499	0x63bd49	A thousand live there
+classic	population	1500-2499	1500 <= N <= 2499	0x63bd61	A few thousand live there
+classic	population	2500+	N >= 2500	0x63bd70	Thousands live there
+classic	population	source	signed int sum; two int vectors and population entries	0x63bc3a	N = len(site+0x90..0x98)/4 + len(site+0x108..0x110)/4 + sum(**entry for entry in site+0xd8..0xe0)
+classic	controller	present	site-controller-field returns nonnull entity	0x63bd89	 and it is controlled by {entity language name}
+classic	controller	missing	site-controller-field returns null	0x63bd94	
+classic	controller	name	entity-field(entity ID +4, flags=0); entity+0x20 language_name	0x63bdb7	language-name(entity+0x20, output, true, false)
+classic	controller	unknown	entity-field cannot look up controller ID	0x63bdb7	an unknown civilization
+classic	cache	wrap	text constructed before row cache wrapping; fixed native width 27 (0x1b)	0x63ca95	whole paragraph -> cache-wrap -> cache-lines-wrap -> screen+0x1330 vector<string*>

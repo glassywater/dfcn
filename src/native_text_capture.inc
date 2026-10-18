@@ -117,7 +117,10 @@ static void dfcn_capture_native_paragraph(void *box, const NativeString *source,
     } catch (...) { before = SIZE_MAX; }
     {
         auto native_timing = timing.phase(NativeWrapTiming::Stage::Native);
-        if (g_real_native_paragraph) g_real_native_paragraph(box, source, width);
+        if (g_real_native_paragraph) {
+            remember_native_fortress_alert_hover_wrap(reinterpret_cast<uintptr_t>(box));
+            g_real_native_paragraph(box, source, width);
+        }
     }
     try {
         auto capture_timing = timing.phase(NativeWrapTiming::Stage::Capture);
@@ -156,7 +159,10 @@ static void dfcn_capture_native_paragraph_vector(void *box, const void *source, 
     } catch (...) { before = SIZE_MAX; }
     {
         auto native_timing = timing.phase(NativeWrapTiming::Stage::Native);
-        if (g_real_native_paragraph_vector) g_real_native_paragraph_vector(box, source, width);
+        if (g_real_native_paragraph_vector) {
+            remember_native_fortress_alert_hover_wrap(reinterpret_cast<uintptr_t>(box));
+            g_real_native_paragraph_vector(box, source, width);
+        }
     }
     try {
         auto capture_timing = timing.phase(NativeWrapTiming::Stage::Capture);
@@ -292,9 +298,17 @@ static void dfcn_capture_native_knowledge_wrap(
     }
 }
 
+static bool native_character_capture_enabled(const void *sheet) noexcept {
+    // Platforms without this component hook retain their existing capture
+    // path. On the supported owner, only its memory-open UNIT sheet may
+    // build translated documents or adjust its cached native text boxes.
+    return !g_native_character_owner ||
+        (reinterpret_cast<uintptr_t>(sheet) == g_native_character_owner && native_character_open());
+}
+
 static void prepare_native_overview_thoughts_cache(const void *sheet,
         bool overview = true, const char *current_row = nullptr) {
-    if (!sheet) return;
+    if (!sheet || !native_character_capture_enabled(sheet)) return;
     const auto [source_offset, box_offset] = native_character_layout.thought_vectors.front();
     const auto *bytes = static_cast<const unsigned char *>(sheet);
     const auto sources = NativeBorrowedVector<const NativeString *>::read(bytes + source_offset);
@@ -379,10 +393,171 @@ static bool native_character_page_binding_current(
     return owns_row && source_end == page.source.size() && row_end == page.rows.size();
 }
 
+// The live personality vector retains the complete prose even when a draw
+// batch is absent or incomplete. Recover it only against this character's
+// private output, preserving the native row identities and their exact byte
+// positions. English words reconstructed from display fields are not input
+// to this recovery path.
+static std::shared_ptr<const NativeKnowledgeDocument>
+captured_native_character_personality_document(const graphicst *graphics,
+        const SDL_Rect &requested_pane, std::vector<NativeKnowledgeDraw> *visible_draws) {
+    if (visible_draws) visible_draws->clear();
+    try {
+    // This is the producer's current outer character-panel rectangle, set
+    // alongside its private grid before native rendering. Empty padding
+    // rows cannot extend the recovered viewport through its lower border.
+    const auto &panel = g_native_character_panel;
+    if (panel.w <= 2 || panel.h <= 2) return {};
+    const SDL_Rect interior{panel.x + 1, panel.y + 1, panel.w - 2, panel.h - 2};
+    SDL_Rect pane{};
+    if (!SDL_IntersectRect(&requested_pane, &interior, &pane)) return {};
+    if (!graphics || !graphics->screen || !native_character_foreground_view(graphics) ||
+            !g_native_character_owner || !native_character_open() ||
+            pane.x < 0 || pane.y < 0 || pane.w <= 0 || pane.h <= 0 ||
+            pane.x > graphics->dimx - pane.w || pane.y > graphics->dimy - pane.h)
+        return {};
+    const void *sheet = reinterpret_cast<const void *>(g_native_character_owner);
+    std::vector<const NativeString *> sources;
+    std::vector<NativeKnowledgeTextBox *> boxes;
+    if (!native_character_page(sheet, false, sources, boxes) || boxes.empty()) return {};
+    auto page = std::make_shared<NativeKnowledgeDocument>();
+    page->personality = true;
+    page->width = boxes.front() ? boxes.front()->width : 0;
+    if (page->width <= 0 || page->width > pane.w) return {};
+    std::vector<std::shared_ptr<const NativeKnowledgeDocument>> parts;
+    parts.reserve(boxes.size());
+    for (size_t index = 0; index < boxes.size(); ++index) {
+        auto part = read_native_reading_box(boxes[index], sources[index], true, false, false);
+        if (!part || part->width != page->width ||
+                part->rows.size() > 16384 - page->rows.size() ||
+                part->source.size() + 12 > 262144 - page->source.size()) return {};
+        if (!index) page->foreground = part->foreground;
+        if (index) page->source += "[B]";
+        page->source += "[C:" + std::to_string(part->foreground & 7) +
+            ":0:" + std::to_string((part->foreground & 64) ? 1 : 0) + "]";
+        page->source += part->source;
+        page->rows.insert(page->rows.end(), part->rows.begin(), part->rows.end());
+        page->row_addresses.insert(page->row_addresses.end(),
+            part->row_addresses.begin(), part->row_addresses.end());
+        page->box_boundaries.push_back({page->source.size(), page->rows.size()});
+        parts.push_back(std::move(part));
+    }
+    if (page->rows.empty()) return {};
+
+    const int right = pane.x + pane.w, bottom = pane.y + pane.h;
+    const auto row_ink_matches = [&](size_t line, int left, int y) {
+        const auto &source = page->rows[line];
+        // Native wrapping checks the word before inserting its separating
+        // space, so a row can exceed width by one. An initial long word is
+        // appended whole. Their visible ink still belongs to this row up
+        // to the actual panel clip, independently of the layout width.
+        const size_t visible = std::min(source.size(), static_cast<size_t>(right - left));
+        for (size_t at = 0; at < visible; ++at) {
+            if (source[at] == ' ') continue;
+            const size_t tile = static_cast<size_t>(left + static_cast<int>(at)) *
+                graphics->dimy + y;
+            if (graphics->screen[tile * 8] != static_cast<unsigned char>(source[at]))
+                return false;
+        }
+        return true;
+    };
+    struct Alignment { int left, origin, first, end; };
+    std::optional<Alignment> alignment;
+    std::array<std::vector<std::pair<int, int>>, 256> ink_positions;
+    for (int y = pane.y; y < bottom; ++y)
+        for (int x = pane.x; x < right; ++x) {
+            const auto ch = graphics->screen[(static_cast<size_t>(x) * graphics->dimy + y) * 8];
+            if (ch && ch != ' ') ink_positions[ch].emplace_back(x, y);
+        }
+    // A native line can start above this viewport after scrolling. Its
+    // position relative to the other rows stays exact; no token matching,
+    // whitespace insertion or name spelling selects that position.
+    for (size_t line = 0; line < page->rows.size(); ++line) {
+        const auto &source = page->rows[line];
+        size_t anchor = std::string::npos;
+        // Every accepted left position exposes the box's nominal width;
+        // choose an anchor there even when a long native token continues
+        // farther right and is only partly visible at the panel boundary.
+        const size_t anchored = std::min(source.size(), static_cast<size_t>(page->width));
+        for (size_t at = 0; at < anchored; ++at) {
+            const auto ch = static_cast<unsigned char>(source[at]);
+            if (ch != ' ' && (anchor == std::string::npos ||
+                    ink_positions[ch].size() <
+                        ink_positions[static_cast<unsigned char>(source[anchor])].size()))
+                anchor = at;
+        }
+        if (anchor == std::string::npos) continue;
+        // Index the private grid once, then use the least common native
+        // byte in each row to locate candidates before comparing any row.
+        // Even a one-byte legitimate source can participate; uniqueness
+        // and complete live-row agreement establish its provenance.
+        for (const auto &[anchor_x, y] :
+                ink_positions[static_cast<unsigned char>(source[anchor])]) {
+            const int left = anchor_x - static_cast<int>(anchor);
+            if (left < pane.x || left > right - page->width) continue;
+            const int origin = y - static_cast<int>(line);
+            const int first = std::max(0, pane.y - origin);
+            const int end = std::min(static_cast<int>(page->rows.size()), bottom - origin);
+            if (alignment && alignment->left == left && alignment->origin == origin)
+                continue;
+            if (!row_ink_matches(line, left, y)) continue;
+            bool intact = true;
+            for (int visible = first; visible < end; ++visible) {
+                if (!row_ink_matches(static_cast<size_t>(visible), left, origin + visible)) {
+                    intact = false;
+                    break;
+                }
+            }
+            if (!intact) continue;
+            // More than one complete native alignment is ambiguous,
+            // including repeated single-line paragraphs near an edge.
+            if (alignment) return {};
+            alignment = Alignment{left, origin, first, end};
+        }
+    }
+    if (!alignment) return {};
+
+    // Keep the snapshot tied to the same live source strings, boxes and row
+    // allocations through publication. A page rebuild cannot donate an old
+    // complete source to new output merely by reusing its enclosing sheet.
+    std::vector<const NativeString *> live_sources;
+    std::vector<NativeKnowledgeTextBox *> live_boxes;
+    if (!native_character_open() ||
+            !native_character_page(sheet, false, live_sources, live_boxes) ||
+            live_sources != sources || live_boxes != boxes) return {};
+    for (size_t index = 0; index < boxes.size(); ++index) {
+        std::string_view source;
+        const auto &part = *parts[index];
+        if (!native_string_view(sources[index], &source) || source != part.source ||
+                boxes[index]->width != page->width ||
+                native_reading_row_count(boxes[index]) != part.rows.size()) return {};
+        for (size_t line = 0; line < part.rows.size(); ++line) {
+            const auto *row = native_reading_row_at(boxes[index], line);
+            if (!row || reinterpret_cast<uintptr_t>(row) != part.row_addresses[line] ||
+                    std::string_view(row->text, strnlen(row->text, sizeof(row->text))) !=
+                        part.rows[line]) return {};
+        }
+    }
+    if (visible_draws) {
+        visible_draws->reserve(static_cast<size_t>(alignment->end - alignment->first));
+        const std::array<long, 4> clip{{pane.x, right - 1, pane.y, bottom - 1}};
+        for (int line = alignment->first; line < alignment->end; ++line)
+            visible_draws->push_back({page, line, alignment->left, alignment->origin + line,
+                reinterpret_cast<uintptr_t>(graphics->screen), graphics->dimx,
+                graphics->dimy, clip});
+    }
+    return page;
+    } catch (...) {
+        if (visible_draws) visible_draws->clear();
+        return {};
+    }
+}
+
 static void capture_native_character_document(
         NativeKnowledgeTextBox *box, const NativeString *source, const void *sheet,
         bool health, bool thoughts, NativeWrapTiming &timing,
         const char *current_row = nullptr, bool grow_rows = true) {
+    if (!native_character_capture_enabled(sheet)) return;
     try {
         auto translation_wait = timing.phase(NativeWrapTiming::Stage::TranslationLock);
         dfcn::TranslationStateScope translation_scope;
@@ -562,6 +737,9 @@ static void dfcn_capture_native_overview_thoughts_wrap(
 
 static void dfcn_capture_native_knowledge_draw(
         graphicst *graphics, const char *text, const char *colors) {
+    // The story preview retains its colored rows across core replacement.
+    // Recover their selected event before the shared writer publishes them.
+    if (graphics && text) prepare_native_performance_story_document(text);
     // The native draw advances the cursor. Preserve its input position, but
     // publish row ownership only after the corresponding grid write exists.
     // Otherwise the renderer can consume a new scroll capture against the
@@ -657,6 +835,10 @@ static void capture_native_character_wrap(
 
 static void dfcn_capture_native_thoughts_draw(graphicst *graphics,
         const char *text, const char *colors, const void *sheet) {
+    if (!native_character_capture_enabled(sheet)) {
+        if (g_real_native_knowledge_draw) g_real_native_knowledge_draw(graphics, text, colors);
+        return;
+    }
     // The native renderer can reuse every box without calling wrap after a
     // core reload. Bind its complete source page before publishing this draw.
     // Recovery only reads rows: the native loop already holds vector iterators,
@@ -671,6 +853,10 @@ static void dfcn_capture_native_thoughts_draw(graphicst *graphics,
 
 static void dfcn_capture_native_personality_draw(graphicst *graphics,
         const char *text, const char *colors, const void *sheet) {
+    if (!native_character_capture_enabled(sheet)) {
+        if (g_real_native_knowledge_draw) g_real_native_knowledge_draw(graphics, text, colors);
+        return;
+    }
     // The native Traits/Values/Preferences/Needs renderer retains the complete
     // source vector even when its cached width skips wrapping. Bind that live
     // page before the generic row writer publishes this draw. The draw loop
@@ -685,6 +871,10 @@ static void dfcn_capture_native_personality_draw(graphicst *graphics,
 
 static void dfcn_capture_native_overview_thoughts_draw(graphicst *graphics,
         const char *text, const char *colors, const void *sheet) {
+    if (!native_character_capture_enabled(sheet)) {
+        if (g_real_native_knowledge_draw) g_real_native_knowledge_draw(graphics, text, colors);
+        return;
+    }
     if (graphics && text && sheet) {
         prepare_native_overview_thoughts_cache(sheet);
         NativeWrapTiming timing("overview-thoughts-draw", nullptr, nullptr, false, false, true);

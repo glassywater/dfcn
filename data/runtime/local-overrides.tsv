@@ -1649,6 +1649,7 @@ Hidden, cannot build at this location	不可见，无法在此处建造	wli
 # grammar with recipe cards and work-order conditions, not word fragments.
 Needs {s}	需要{s}	wtlx
 No access to {s}	无法取得{s}	wtlx
+No access	无法到达	wli
 Need trigger type	需要选择触发类型	wli
 Needs walkable perimeter	周围需要可通行区域	wli
 Needs to be anchored on edge	需要在边缘固定	wli
@@ -2189,6 +2190,125 @@ Adventurer log group status: Former prisoner	前囚犯	h
 Adventurer log group status: Enemy	敌人	h
 Adventurer log group status: Criminal	罪犯	h
 Adventurer log group status: Prisoner	囚犯	h
+# Character Groups: complete native type and role fields, not name fragments.
+# PE Steam 0x179503..0x1797f2 / Classic 0x179493..0x179782 selects
+# entity kinds 0..10; kind 10 composes a profession (or craft) and guild.
+Character group type: Civilization	政权	h
+Character group type: Site government	地区政府	h
+Character group type: Vessel crew	船员	h
+Character group type: Migrating group	迁徙势力	h
+Character group type: Nomadic group	游牧势力	h
+Character group type: Religion	宗教	h
+Character group type: Military organization	军事组织	h
+Character group type: Outcast	流亡者	h
+Character group type: Performance troupe	表演团	h
+Character group type: Merchant company	商行	h
+Character group type: Craft guild	工艺行会	hi
+# Relationship 0 distinguishes Citizen for civilizations from Member.
+# Gendered/spouse offices (10/11) retain their dynamic office formatter;
+# RAW squad titles (13/14) use position.squad[0], never squad.alias.
+# relationship 12 and unsupported values emit no text.
+Character group role: Citizen	居民	h
+Character group role: Member	成员	h
+Character group role: Former member	前成员	h
+Character group role: Mercenary	佣兵	h
+Character group role: Former mercenary	前佣兵	h
+Character group role: Slave	奴隶	h
+Character group role: Former slave	前奴隶	h
+Character group role: Prisoner	囚犯	h
+Character group role: Former prisoner	前囚犯	h
+Character group role: Enemy	敌人	h
+Character group role: Criminal	罪犯	h
+Character group role: Worker	工人	h
+Character group role: Former worker	前工人	h
+# Reputation takes precedence over relationship. The native selector has 30
+# cases: 17 emit five score tiers (>=100/75/50/25/otherwise); the remaining
+# 13 cases emit no role text. Preserve the original typo-bearing sources.
+Character group role: Legendary hero	传奇英雄	h
+Character group role: Famous hero	名声显赫的英雄	h
+Character group role: Hero	英雄	h
+Character group role: Greatly respected for heroic acts	因英雄之举而备受尊敬	h
+Character group role: Respected for heroic acts	因英雄之举而受人尊敬	h
+Character group role: Legendary brawler	传奇斗殴者	h
+Character group role: Famous brawler	名声显赫的斗殴者	h
+Character group role: Moted brawler	著名的斗殴者	h
+Character group role: Certainly considered a brawler	被明确视为斗殴者	h
+Character group role: Considered a brawler	被视为斗殴者	h
+Character group role: Legendary villain	传奇恶棍	h
+Character group role: Infamous villain	臭名昭著的恶棍	h
+Character group role: Noted villain	著名的恶棍	h
+Character group role: Greatly feared as a villain	令人十分畏惧的恶棍	h
+Character group role: Feared as a villain	令人畏惧的恶棍	h
+Character group role: Legendary killer	传奇杀手	h
+Character group role: Infamous killer	臭名昭著的杀手	h
+Character group role: Noted killer	著名的杀手	h
+Character group role: Greatly feared as a killer	令人十分畏惧的杀手	h
+Character group role: Feared as a killer	令人畏惧的杀手	h
+Character group role: Legendary murderer	传奇杀人犯	h
+Character group role: Infamous murderer	臭名昭著的杀人犯	h
+Character group role: Noted murderer	著名的杀人犯	h
+Character group role: Greatly feared as a murderer	令人十分畏惧的杀人犯	h
+Character group role: Feared as a murderer	令人畏惧的杀人犯	h
+Character group role: Legendary enemy fighter	传奇敌对斗士	h
+Character group role: Infamous enemy fighter	臭名昭著的敌对斗士	h
+Character group role: Noted enemy fighter	著名的敌对斗士	h
+Character group role: Greatly feared for violent oppositoin	因暴力对抗而令人十分畏惧	h
+Character group role: Feared for violent opposition	因暴力对抗而令人畏惧	h
+Character group role: Legendary fighter	传奇斗士	h
+Character group role: Famous fighter	名声显赫的战士	h
+Character group role: Noted fighter	著名的战士	h
+Character group role: Greatly respected for fighter	因战斗本领而备受尊敬	h
+Character group role: Respected for fighter	因战斗本领而受人尊敬	h
+Character group role: Legendary bully	传奇恶霸	h
+Character group role: Infamous bully	臭名昭著的恶霸	h
+Character group role: Noted bully	著名的恶霸	h
+Character group role: Certainly considered a bully	被明确视为恶霸	h
+Character group role: Considered a bully	被视为恶霸	h
+Character group role: Legendary brigand	传奇强盗	h
+Character group role: Infamous brigand	臭名昭著的强盗	h
+Character group role: Noted brigand	著名的强盗	h
+Character group role: Certainly feared as a brigand	令人十分畏惧的强盗	h
+Character group role: Feared as a brigand	令人畏惧的强盗	h
+Character group role: Legendary loyal soldier	传奇的忠诚军人	h
+Character group role: Famous loyal soldier	名声显赫的忠诚军人	h
+Character group role: Noted loyal soldier	著名的忠诚士兵	h
+Character group role: Greatly respected for loyalty	因忠诚而备受尊敬	h
+Character group role: Respected for loyalty	因忠诚而受人尊敬	h
+Character group role: Legendary monster	传奇怪物	h
+Character group role: Infamous monster	臭名昭著的怪物	h
+Character group role: Noted monster	著名的怪物	h
+Character group role: Certainly feared as a monster	令人十分畏惧的怪物	h
+Character group role: Feared as a monster	令人畏惧的怪物	h
+Character group role: Legendary hunter	传奇猎人	h
+Character group role: Great hunter	伟大的猎人	h
+Character group role: Talented hunter	天才猎人	h
+Character group role: Skilled hunter	技巧高超的猎人	h
+Character group role: Respected as a hunter	受人尊敬的猎人	h
+Character group role: Legendary protector of the weak	传奇庇护者	h
+Character group role: Famous protector of the weak	声名显赫的庇护者	h
+Character group role: Noted protector of the weak	著名的庇护者	h
+Character group role: Greatly respected for protecting the weak	因保护弱者而备受尊敬	h
+Character group role: Respected for protecting the weak	因保护弱者而受人尊敬	h
+Character group role: Legendary treasure hunter	传奇寻宝者	h
+Character group role: Famous treasure hunter	名声显赫的宝物猎人	h
+Character group role: Noted treasure hunter	著名的宝物猎人	h
+Character group role: Greatly respected for hunting treasure	因寻宝而备受尊敬	h
+Character group role: Respected for hunting treasure	因寻宝而受人尊敬	h
+Character group role: Legendary thief	传奇盗贼	h
+Character group role: Infamous thief	臭名昭著的盗贼	h
+Character group role: Noted thief	著名的盗贼	h
+Character group role: Certainly considered a thief	被明确视为盗贼	h
+Character group role: Considered a thief	被视为盗贼	h
+Character group role: Legendary preserver of the knowledge	传奇知识守护者	h
+Character group role: Famous preserver of the knowledge	名声显赫的知识守护者	h
+Character group role: Noted preserver of the knowledge	著名的知识守护者	h
+Character group role: Greatly respected for preserving the knowledge	因保存知识而备受尊敬	h
+Character group role: Respected for preserving the knowledge	因保存知识而受人尊敬	h
+Character group role: Legendary intruder	传奇入侵者	h
+Character group role: Infamous intruder	臭名昭著的入侵者	h
+Character group role: Noted intruder according	著名的入侵者	h
+Character group role: Certainly considered an intruder	被明确视为入侵者	h
+Character group role: Considered an intruder	被视为入侵者	h
 # Native People cards use complete office/membership paragraphs. Their name
 # slots share the existing entity/site grammar and their titles share the
 # scoped office glossary (including generated religious titles).
@@ -6417,6 +6537,10 @@ Floor (remembered)	地板（印象中）	wl
 Open air (remembered)	开放空间（印象中）	wl
 # RVA 0x4069a3..0x406aab: nine sound kinds, four with quiet/loud branches,
 # produce 13 labels. RVA 0x406ab0..0x406aea adds one of two heard states.
+# An out-of-range sound kind skips the label but still appends its heard
+# state; the native caption reader trims the resulting leading space.
+(heard)	（听到）	wl
+(heard recently)	（刚刚听到）	wl
 Quiet movement (heard)	轻微移动声（听到）	wl
 Quiet movement (heard recently)	轻微移动声（刚刚听到）	wl
 Loud movement (heard)	响亮移动声（听到）	wl
@@ -7661,7 +7785,7 @@ Overview sentence: This is truly horrifying.	这实在太可怕了。	l
 Overview sentence: This is great!	这太棒了！	l
 Overview sentence: I am about to lose it!	我快要失控了！	l
 Overview sentence: Begone fear!	别怕！	l
-Overview sentence: I cannot give in to sadness.	不能难过得什么都不管了。	l
+Overview sentence: I cannot give in to sadness.	我不能向悲伤屈服。	l
 Overview sentence: I am very satisfied.	这下可满意了。	l
 Overview sentence: This is a joyous time.	这段日子真开心。	l
 Overview sentence: This is love.	这就是爱。	l
@@ -11250,6 +11374,35 @@ Unloaded	未装填	wi
 Loading	装填中	wi
 
 # Military uniform chooser: translate each complete preset as one label.
+# The complete native equipment chooser also offers one concrete item in
+# each of its seven category branches; keep these captions as whole labels.
+specific armor	指定躯干装备	wli
+specific helm	指定头部装备	wli
+specific pants	指定腿部装备	wli
+specific gloves	指定手部装备	wli
+specific shoes	指定足部装备	wli
+specific shield	指定盾牌	wli
+specific weapon	指定武器	wli
+missing item	物品不存在	wli
+Custom uniform	自定义制式服装	wli
+{d} assigned items	已指定{d}件物品	wlt
+# Native material category switch, including the invalid-category fallback.
+Uniform material: leather	皮革	l
+Uniform material: cloth	布匹	l
+Uniform material: silk	丝布	l
+Uniform material: yarn	纱线	l
+Uniform material: plant fiber	植物纤维	l
+Uniform material: metal	金属	l
+Uniform material: wood	木材	l
+Uniform material: stone	石材	l
+Uniform material: gem	宝石	l
+Uniform material: bone	骨	l
+Uniform material: shell	甲壳	l
+Uniform material: pearl	珍珠	l
+Uniform material: tooth	牙齿	l
+Uniform material: horn	角	l
+Uniform material: BROKEN	无效材料	l
+Uniform material: any material	不限材料	l
 individual choice, weapon	自行选择武器	wli
 indiv choice, melee	自行选择近战武器	wli
 indiv choice, ranged	自行选择远程武器	wli
@@ -11450,6 +11603,23 @@ Adventure movement medium: Air	空气	h
 Adventure movement medium: Water	水	h
 Adventure movement medium: Lava	熔岩	h
 Adventure movement medium: Magma	岩浆	h
+
+# Native chooser option+0x118: conflict prelude, separate from its ranged action.
+# Seven direct levels, the shared-conflict Ally branch, and an unnamed colon
+# are retained by the typed action compositor; an absent prelude stays absent.
+Adventure ranged prefix: Encounter	遭遇战	h
+Adventure ranged prefix: Horseplay	打闹	h
+Adventure ranged prefix: Training	训练	h
+Adventure ranged prefix: Brawl	斗殴	h
+Adventure ranged prefix: Non-lethal	非致命	h
+Adventure ranged prefix: Lethal	致命	h
+Adventure ranged prefix: No Quarter	不留活口	h
+Adventure ranged prefix: Ally	盟友	h
+
+# A valid Get-source pointer can return an empty name. Preserve the action
+# without inventing a source name; the independent direction remains typed.
+Adventure item action: Get {s} from	拿取{s}	h
+Adventure item action: Get {s} from ({p})	拿取{s}（{p}）	h
 Adventure action target: creature	生物	h
 Adventure action target: creatures	生物	h
 Adventure action target: item	物品	h
@@ -12210,6 +12380,20 @@ Uniform name: Updated Metal Melee	改良金属甲近战	l
 # retain the count even when the popup uses a one-cell left indent.
 {d} bedrooms created.	已创建{d1}间卧室。	wtl
 {d} dormitories created.	已创建{d1}间公共宿舍。	wtl
+{d} dining halls created.	已创建{d1}间餐厅。	wtl
+{d} offices created.	已创建{d1}间办公室。	wtl
+{d} tombs created.	已创建{d1}处墓地。	wtl
+
+# Complete counted rejection feedback from the native rectangle room selector.
+# The furniture count and each independent rejection reason remain together.
+{d} beds rejected (already in use.)	{d1}张床未被选用（已被占用）	wtl
+{d} tables rejected (already in use.)	{d1}张桌子未被选用（已被占用）	wtl
+{d} chairs rejected (already in use.)	{d1}把椅子未被选用（已被占用）	wtl
+{d} coffins rejected (already in use.)	{d1}具棺材未被选用（已被占用）	wtl
+{d} beds rejected (not enclosed.)	{d1}张床未被选用（房间未封闭）	wtl
+{d} tables rejected (not enclosed.)	{d1}张桌子未被选用（房间未封闭）	wtl
+{d} chairs rejected (not enclosed.)	{d1}把椅子未被选用（房间未封闭）	wtl
+{d} coffins rejected (not enclosed.)	{d1}具棺材未被选用（房间未封闭）	wtl
 
 # Diplomacy elevation fields and DFHack's per-candidate item annotations.
 DFHack GUI Elevate barony preferences: no item preferences	无物品偏好	l
@@ -12578,3 +12762,17 @@ Adventurer log agreement field: Centered on last heard	已定位到最近获悉�
 # Complete branches from the ELF/PE building material picker.
 Amount needed: {d} to {d}	所需数量：{d1}～{d2}	wt
 Build material: Null	物品不存在	h
+
+# Adventure Events: the native calendar omits invalid/out-of-range months.
+# Preserve the signed day/year and translate the entire occurrence sentence.
+This event occurred on the {d}st in the year {d}.	第{d2}年某月{d1}日发生了这件事。	wtl
+This event occurred on the {d}nd in the year {d}.	第{d2}年某月{d1}日发生了这件事。	wtl
+This event occurred on the {d}rd in the year {d}.	第{d2}年某月{d1}日发生了这件事。	wtl
+This event occurred on the {d}th in the year {d}.	第{d2}年某月{d1}日发生了这件事。	wtl
+
+# Complete building-link fields, bound to their native addst producers.
+# The installation prefix and the building caption are separate native draws.
+Building link prompt: {s}	点击一个建筑，将其连接到{s}。	l
+Building link candidate: {s}	连接到{s}	l
+Building link rejected: {s}	无法连接到{s}	l
+Building link installation: {s}	将安装在{s}处	l

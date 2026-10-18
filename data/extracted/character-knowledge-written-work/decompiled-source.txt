@@ -467,3 +467,214 @@ DOWNSTREAM SOURCE OWNERSHIP
   list of English literals: mods and saved world objects can author them.
   Translation must retain the typed dynamic field path and empty alternatives,
   rather than inventing a finite list of every possible world-generated name.
+
+POETIC COMPLETE DESCRIPTION
+  Current-image roots: reference 0xe76400..0xe7cec8 (code to 0xe7c860),
+  classic 0xe71370..0xe77e38 (code to 0xe777d0). Their internal form-body
+  instructions correspond with classic RVA = reference RVA - 0x5090.
+  The complete paired ASM, branch predicates, both branch destinations and
+  switch remaps are retained in this directory. Topic helper is now also
+  retained as reference-e76080.asm / classic-e70ff0.asm and role poetic-topic.
+  Purpose/topic and unknown/default mood combinations are defined in the
+  preceding POETIC PURPOSE AND TOPIC SOURCE GRAMMAR section; they apply at
+  the opening, part and line levels below. Text here is source reconstruction,
+  with dynamic NAME/FIGURE/CREATURE slots delegated to their native producers.
+
+  Document order, including independently optional branches:
+    name/type/purpose/topic/origin opening;
+    composition-or-improvisation rule; structure; whole-form persona;
+    literary features; parallelism; visual features;
+    whole-form meter or syllables; caesura; common ending-rhyme declaration;
+    for each native part: local part/line clauses, refrain and rhyme scheme;
+    append each nonempty local paragraph, preceded by [B] when part_count>=2.
+  A source sentence is not a native paragraph boundary. Only the last [B]
+  branch at e7c7d8..e7c7ee creates one here. Part purpose22 and line purpose22
+  can append their detached to-beseech literals globally before that paragraph,
+  as reconstructed above.
+
+  OPENING, e76453..e767b9
+    generated-form-name(form+8, capitalized=true) may append no name at all.
+    Append " is " then mood adjective: solemn/light/ribald/reflective/dramatic,
+    each with article a; other moods leave article a without an adjective.
+    Append " poetic ", then mood0 narrative / mood3 riddle / otherwise form.
+    Purpose/topic follows the already reconstructed action grammar.
+    Provenance independently supplies one of:
+      ", originating in " + generated entity name;
+      " which grew out of the performances of " + historical figure;
+      " originally devised by " + historical figure;
+      no provenance clause.
+    A missing formatted dynamic field leaves its fixed prefix in the source.
+    Form flag selects exactly one rule sentence:
+      "The form guides poets during improvised performances.  "
+      "The rules of the form are applied by poets to produce individual poems which can be recited.  "
+
+  STRUCTURE, e767bf..e77558
+    Literal subject is "The poem ". Native branch predicates include part
+    count, equal sizes/count ranges/verse-paragraph flags and same preceding
+    structure. They select "is ", "is divided into ", "two distinct ",
+    or CARDINAL + " distinct parts: ". Lists use ", " and final " and ".
+    A structure atom has one of:
+      a / an / a single / another + singular unit;
+      CARDINAL / CARDINAL " to " CARDINAL + plural unit;
+      "a series of" / "numerous series of" /
+      "an extremely long series of" + plural unit;
+      "another series of" / "another numerous series of" /
+      "another extremely long series of" + plural unit.
+    Series thresholds are max_count 10,50,100: >=100 extremely long,
+    >=50 numerous, >=10 series; smaller ranges use their actual cardinals.
+    Native repeated-structure branches retain "another" before these tails.
+    Unit selection: size1 line,2 couplet,3 tercet,4 quatrain,5 quintain,
+    6 sexain,7 septet,8 octet,>=9 CARDINAL + "-line stanza"; singular/plural
+    s is appended separately. Verse-paragraph flag selects its separate noun.
+    In the special two-distinct branch the verse noun is:
+      "brief verse paragraph" for size<6;
+      "long verse paragraph" for size>21;
+      "verse paragraph" otherwise (e76c03/e76c23).
+    General part list selects brief / lengthy / full verse paragraph using
+    its own size branch at e7724f..e772a6; keep both long and lengthy words.
+    This is why a one-off stanza/paragraph spelling list is insufficient.
+
+  PERSONA, e7755d..e776c4; e7900b..e79199; e7aa4f..e7abdc
+    Whole form: NAME + " is always written from the perspective of " + P.
+    Part/line: S + " is written from the perspective of " + P.
+    P selectors: the author, a soldier, a traveler, a relative of the author,
+    a party to a debate, a fictional poet, a historical figure or formatted
+    actual figure, an animal or "a " + formatted actual creature.
+    The first six are fixed literals. Figure/animal selectors with absent
+    IDs use the fixed placeholders; successful typed IDs use their formatters.
+    An unknown persona emits no P but still appends the sentence-ending period.
+    S is The ORDINAL part / The ORDINAL line when not yet established, else It.
+
+  LITERARY FEATURES, e776c9..e779ad; e791a9..e79521; e7abe9..e7af8d
+    Count only the relevant native feature bits. If nonzero, whole form:
+      "Use of " + FEATURE_LIST + " is characteristic of the form.  "
+    Part and line:
+      S + " must make use of " + FEATURE_LIST + ".  "
+    Bit-selected finite FEATURE_LIST, preserving native join order:
+      antanaclasis, onomatopoeia, alliteration, internal rhyme, assonance,
+      epenthesis, elision, consonance, synchysis, metaphor, symbolism,
+      ambiguity, allegory, simile, juxtaposition, vivid imagery, metonymy.
+    List punctuation is comma for >2 remaining entries and and for exactly 2.
+
+  PARALLELISM, e779b5..e77b64; e7952f..e799ab
+    Whole form uses singular/plural opening according to vector length:
+      "A form of parallelism is common throughout the poem, in that "
+      "Forms of parallelism are common throughout the poem, in that "
+    First predicate gets "certain lines "; subsequent predicates get "they ".
+    Part variant is "Certain lines" + optional " of the ORDINAL part" + space.
+    Predicates: often share an underlying meaning; often contrast underlying
+    meaning; are required to maintain phrasing; have similar grammatical
+    structures; use the same placement of allusions; sometimes have reversed
+    word orders; reverse grammatical structures. Part also has present
+    different views of the same subject. Unknown selector appends no predicate.
+    Specific relations use optional "In the ORDINAL part, the ", otherwise
+    "The ", then ORDINAL + " line of " + each/the + unit + space + RELATION
+    + " the " + ORDINAL + " line.  ". Unit depends on verse-paragraph flag
+    and size: verse paragraph/stanza/octet/septet/sexain/quintain/quatrain/
+    tercet/couplet; size<2 leaves this unit empty.
+    Exact RELATION switch 0..8:
+      shares the underlying meaning of;
+      contrasts the underlying meaning of;
+      is required to maintain the phrasing of;
+      has the same grammatical structure as;
+      uses the same placement of allusions as;
+      reverses the word order of;
+      reverses the grammatical structure of;
+      presents a different view of the subject of;
+      must expand the idea of.
+
+  VISUAL FEATURES, e77b69..e77ccc; e799de..e79b75; e7af9b..e7b11d
+    Whole-form feature count = bits5,6,7,8 at form+e4. Nonzero produces:
+      "Linguistic skill is required in the visual presentation as well, as "
+      + generated-form-name(form+8,capitalized=true)
+      + " must feature " + VISUAL_LIST + ".  "
+    The name call is at e77bcc, and the fixed must-feature append at e77bed.
+    Therefore the NAME and must-feature predicate are outside VISUAL_LIST.
+    In bit order the list contains:
+      lines with different readings depending on word breaks;
+      lines which can be read backwards as well as forwards;
+      lines which can be read orthogonally across the standard lines;
+      lines which emerge when reading along certain prescribed paths across the body of the poem.
+    If multiple features are present, e77c5d adds "even " before the final
+    path-reading literal. Keep this finite intensifier distinct from a name.
+    Part variant: S + " includes " + VISUAL_LIST + ".  "; path literal here
+    ends at "prescribed paths" (e79b16), and its even branch is at e79b07.
+    Line variant only uses bits5,6, in that order, with native list joiners:
+      S + " has different readings depending on word breaks"
+      S + " can be read backwards as well as forwards"
+      S + " has different readings depending on word breaks and can be read backwards as well as forwards".
+    The combined last form is one sentence, not a failed standalone predicate.
+
+  METER, SYLLABLES, CAESURA
+    Whole meter e77cd1..e78257: if pattern!=-1 and feet!=0, subject is The poem
+    for a one-line single part, otherwise Each line. Append " has " + CARDINAL
+    + " foot" (1) / " feet" (otherwise) + " with " then PATTERN_DESCRIPTION.
+    Tone flag chooses "a tone pattern of " + even/uneven pattern + ".  ".
+    Otherwise quantitative flag chooses "a syllable weight pattern of " +
+    short/long pattern + " (quantitative " + foot-name + space + meter-name
+    + ").  ". Without that flag use "an accent pattern of " +
+    unstressed/stressed pattern + " (qualitative " + labels + ").  ".
+    Pattern switch has 12 entries: AA,AB,BA,BB,AAA,BAA,ABA,AAB,ABB,BBA,BAB,BBB;
+    its three vocabulary sets use even/uneven, short/long, unstressed/stressed.
+    Foot names: pyrrhic,iambic,trochaic,spondaic,tribrachic,dactylic,
+    amphibrachic,anapaestic,bacchic,antibacchic,cretic,molossic.
+    Feet 1..8 choose monometer,dimeter,trimeter,tetrameter,pentameter,
+    hexameter,heptameter,octameter; default feet omit this meter-name label.
+    Default pattern omits its pattern/foot labels but keeps the fixed prefixes.
+    Whole syllable branch e78257..e78413 applies when pattern==-1 and the
+    relevant per-line pattern vectors are absent: The poem / Each line +
+    " has " + CARDINAL + " syllables.  ".
+    Whole caesura e78418..e784a5: caesura!=-1, subject The poem or
+    Every line of the poem. Select initial/medial/terminal caesura (0/1/2);
+    unknown caesura leaves the noun empty but keeps subject/has/period.
+    Part versions e79b94..e7a501 use S + " has lines with " (multi-line part)
+    or S + " has " then the same meter or CARDINAL syllables grammar.
+    Part caesura adds " in each line" when appropriate.
+    Line versions e7b12f..e7bb75 use S + " has " then syllables, meter or
+    caesura, and reuse It once that line subject has been established.
+
+  RHYME AND REFRAIN, e784aa..e78ace and e7bb82..e7c7ae
+    Common-rhyme branch: "The ending of each line of the poem shares the same rhyme"
+    + optional soft-rhyme exception + ".  ".
+    Part common-rhyme subject is "The ending of each line " followed by
+    of the poem / of the ORDINAL part / of this part, then the same predicate.
+    Global softness: ", though the rhyming doesn't have to be perfect".
+    Part exception: ", though rhymes at the end of lines in the " + ordinal
+    list + " section"/" sections" + " don't need to match perfectly".
+    Line exception: ", though the rhyme" + optional plural s +
+    " at the end of the " + ordinal list + " line doesn't"/" lines don't"
+    + " need to match perfectly".
+    Non-shared rhyme path also emits this independent line exception with
+    "The rhyme"/"The rhymes" as its opening (e7c644..e7c7a3).
+    Refrain fields choose every following actual source shape:
+      The refrain occurs as line CARDINAL.
+      The refrain occurs as lines CARDINAL and CARDINAL.
+      The ORDINAL refrain occurs as line CARDINAL.
+      The ORDINAL refrain occurs as lines CARDINAL and CARDINAL.
+      The ORDINAL refrain occurs as line CARDINAL and the ORDINAL refrain occurs as line CARDINAL.
+    Each can end with " of the ORDINAL part" before its final period.
+    Refrain IDs are assigned stable ordinal labels by the local mapping at
+    e7bcaa..e7bcfb; do not replace their ordinal with their line number.
+    Rhyme scheme prefix "The rhyme scheme " selects qualifier:
+      of the poem; repeating in each stanza; within each stanza;
+      within this stanza; repeating in each stanza of the ORDINAL part;
+      within each stanza of the ORDINAL part; within the ORDINAL part;
+      of the ORDINAL part; respecting the full poem;
+      of the ORDINAL part respecting the full poem.
+    Explicit ordinal part qualifier depends on whether this part is already
+    named (rsp+31). Flag0 changes the scheme's frame to the full poem; flag2
+    selects repeating-in-each-stanza where flag0 is absent. Append " is " +
+    letter/number scheme. Refrain markers append decimal numbers; when present
+    append ", where numbers indicate a refrain". Then append ".  ".
+    Independent softness paragraphs are exactly:
+      As a rule throughout the poem, the end rhymes don't generally match perfectly.
+      In this part of the poem, the end rhymes don't need to match perfectly.
+
+  SHARED NUMBER PRODUCERS
+    chapter-cardinal 52e360/classic52bd80 spells zero..nineteen and tens,
+    uses a hyphen for tens+units, recursively emits hundred/thousand/million/
+    billion with spaces and optional negative prefix. No English and is added.
+    chapter-ordinal 52eb70/classic52c590 spells first..nineteenth with r8b=0;
+    20 and above use decimal digits plus st/nd/rd/th, with 11/12/13 exceptions.
+    Every ordinal call in the poetic body uses r8b=0 and lowercases the result.
+    The decimal 20th+ branch is part of part/line/refrain grammar, not a name.

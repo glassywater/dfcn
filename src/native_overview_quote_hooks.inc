@@ -100,6 +100,13 @@ static void capture_native_overview_quote_row(graphicst *graphics,
 #endif
                     rows) ||
                     rows.size() == 0 || rows.size() > 4096) return;
+            const size_t visible_rows = std::min(rows.size(),
+                static_cast<size_t>(bottom - top));
+            // Only the final visible row publishes the complete quote. All
+            // earlier addst callbacks still draw normally, without copying
+            // the entire source vector merely to discard it afterward.
+            if (!visible_rows || int64_t(top) + int64_t(visible_rows) - 1 !=
+                    graphics->screeny) return;
             NativeOverviewQuoteDraw captured;
             captured.owner = object;
             captured.grid = graphics->screen;
@@ -134,9 +141,7 @@ static void capture_native_overview_quote_row(graphicst *graphics,
             }
             if (current == SIZE_MAX || int64_t(top) + int64_t(current) != graphics->screeny)
                 return;
-            const size_t visible_rows = std::min(captured.wrapped_lines.size(),
-                static_cast<size_t>(bottom - top));
-            if (!visible_rows || current != visible_rows - 1) return;
+            if (current != visible_rows - 1) return;
             pending = std::move(captured);
         };
         capture();

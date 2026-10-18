@@ -1,0 +1,325 @@
+# scope	source	target	semantic field scopes	native construction evidence
+# Complete native chooser captions from both PE talk-choice dispatchers:
+# steam 0x697740 / classic 0x695160, selectors 0..253 and nested switches.
+# Fixed captions and the 33 value families are already complete ui-messages.
+# Conflict type118 and emotion types66..70 keep their existing typed entry.
+# These productions consume the whole caption; none is a global prefix rule.
+# Actual Ghidra C: adventure-conversation-keywords/steam-keyword-main-0x697740.c,
+# case0xc (incident), case0xd (historical/rumor), and cases0..0xfd.
+conversation-choice	Bring up {s}	谈起{s1}这件事	conversation-choice-event	PE type12 0x69aa95..0x69cb18; complete incident title
+conversation-choice	Spread rumor of {s}	传播{s1}的传闻	conversation-choice-event	PE type13 0x69cb26..0x6a1849; complete historical/incident title
+# The shared journal title grammar covers the same native incident subjects,
+# nineteen crime labels, race/HF fallbacks and delegated performance formatter.
+# PE-specific constructions below retain the dispatcher's different ordering.
+conversation-choice-event	{s}	{s1}	journal-event-title	PE type12/13 incident constructors; same subjects as ELF 17c06e0/17c24d0
+conversation-choice-event	{s}	{s1}	journal-performance	PE type12 0x69bf80 and type13 0x69ff56 ->0x65f420; all eight performance topics
+conversation-choice-event	{s} {s}	{s1}{s2}	conversation-choice-owner,conversation-choice-person-event	PE type12/13 possessive actor plus complete incident predicate
+conversation-choice-owner	your	你的		PE 0x69ab6d/69af70/69b5da/69c068/69c255/69c3ee/69c666/69c8de and type13 counterparts
+conversation-choice-owner	Somebody's	某人的		PE 0x69abe8/69afeb/69eb3d/69ef5b
+conversation-choice-owner	's	某人的		PE named HF exists but formatter returns an empty language_name
+conversation-choice-owner	a 's	某个生物的		PE 0xb94ed0 empty RAW caste; possessive suffix is retained
+conversation-choice-owner	{s}'s	{s1}的	$person	PE 0x69abd4/69afd7/69b67e ->0xd3ba10; complete HF English name
+conversation-choice-owner	a {s}'s	一只{s1}的	$conflict-caste	PE 0x69b692/69c4a2/69c71a/69c992 ->0xb94ed0
+conversation-choice-owner	a creature's	一只生物的		PE 0xb94ed0 invalid RAW caste fallback
+conversation-choice-person-event	{s}	{s1}	journal-crime	PE 0x69b726..69bf1d and 69f6fc..69fef3; all nineteen crime selectors
+conversation-choice-person-event	{s}	{s1}	journal-person-event	PE common incident/historical predicate suppliers
+conversation-choice-person-event	death	死亡		PE 0x69f541; type13 appends possessive death
+conversation-choice-person-event	self-identification to {s}	向{s1}表明身份	conversation-choice-entity	PE 0x69c145/6a011b ->0xb92900; recipient is an entity
+conversation-choice-person-event	refusal to identify to {s}	拒绝向{s1}表明身份	conversation-choice-entity	PE 0x69c332/6a0308 ->0xb92900; recipient is an entity
+conversation-choice-person-event	{s}	{s1}	conversation-choice-transfer	PE type12/13 artifact and written-work actions
+conversation-choice-person-event	{s} in {s}	在{s2}{s1}	conversation-choice-transfer,conversation-choice-place	PE 0x69ad65..69ae5e /69eccd..69edc6; location supplier
+conversation-choice-person-event	{s} in {s} in {s}	在{s3}的{s2}{s1}	conversation-choice-transfer,conversation-choice-place,conversation-choice-place	PE 0x69ad65/69adad; building then site
+conversation-choice-transfer	giving of {s} to {s}	将{s1}交给{s2}	conversation-choice-object,conversation-choice-person	PE 0x69ac20/69ac85 and 69b03b/69b0a1; written or artifact transfer
+conversation-choice-transfer	placement of {s} to {s}	将{s1}交由{s2}保管	conversation-choice-object,conversation-choice-person	PE 0x69ac29/69ac85 and 69b04d/69b0a1; retains native optional recipient
+conversation-choice-transfer	refusal to give {s} to {s}	拒绝将{s1}交给{s2}	conversation-choice-object,conversation-choice-person	PE 0x69b032/69b0a1; artifact refused transfer with recipient
+conversation-choice-transfer	giving of {s}	赠送{s1}	conversation-choice-object	PE 0x69b03b; no recipient branch
+conversation-choice-transfer	placement of {s}	放置{s1}	conversation-choice-object	PE 0x69b04d; no recipient branch
+conversation-choice-transfer	refusal to give {s}	拒绝交出{s1}	conversation-choice-object	PE 0x69b032; no recipient branch
+conversation-choice-transfer	gaining of {s}	获得{s1}	conversation-choice-object	PE 0x69b044
+conversation-choice-transfer	possession of {s}	持有{s1}	conversation-choice-object	PE 0x69b056/6a0fa9
+conversation-choice-transfer	lack of possession of {s}	不再持有{s1}	conversation-choice-object	PE 0x6a1507
+conversation-choice-event	{s}'s {s}	{s1}{s2}	conversation-choice-entity,journal-entity-event	PE 0x69d16a..69e8a5; complete native entity predicate
+conversation-choice-event	{s} death	{s1}死亡	conversation-choice-owner	PE 0x69f414..69f554; player/HF/RAW caste owner
+conversation-choice-event	{s}'s destruction	{s1}的毁坏	conversation-choice-object	PE 0x6a0d32/6a0d59; historical artifact destruction
+conversation-choice-event	{s}'s presence in {s}	{s1}出现在{s2}	conversation-choice-object,conversation-choice-place	PE 0x6a1032/6a1103/6a11d4; artifact location site/region/building
+conversation-choice-event	{s}'s presence in {s} in {s}	{s1}出现在{s3}的{s2}	conversation-choice-object,conversation-choice-place,conversation-choice-place	PE 0x6a11fb/6a1268; artifact building then site
+conversation-choice-event	{s}'s absence from {s}	{s1}从{s2}消失	conversation-choice-object,conversation-choice-place	PE 0x6a1590/6a1661/6a1732; artifact absent site/region/building
+conversation-choice-event	{s}'s absence from {s}'s {s}	{s1}从{s2}的{s3}消失	conversation-choice-object,conversation-choice-place,conversation-choice-place	PE 0x6a1759/6a17c6; site possessive building
+conversation-choice-event	's presence in {s}	某件造物出现在{s1}	conversation-choice-place	PE 0x6a1032/6a1103/6a11d4; empty artifact title
+conversation-choice-event	's presence in {s} in {s}	某件造物出现在{s2}的{s1}	conversation-choice-place,conversation-choice-place	PE 0x6a11fb/6a1268; empty artifact title, complete building/site
+conversation-choice-event	's absence from {s}	某件造物从{s1}消失	conversation-choice-place	PE 0x6a1590/6a1661/6a1732; empty artifact title
+conversation-choice-event	's absence from {s}'s {s}	某件造物从{s1}的{s2}消失	conversation-choice-place,conversation-choice-place	PE 0x6a1759/6a17c6; empty artifact title, complete site/building
+conversation-choice-event	{s}'s presence in in {s}	{s1}出现在{s2}	conversation-choice-object,conversation-choice-place	PE 0x6a11fb/6a1268; site name empty and building name present
+conversation-choice-event	{s}'s presence in {s} in	{s1}出现在{s2}	conversation-choice-object,conversation-choice-place	PE 0x6a11fb/6a1268; building name empty and site name present
+conversation-choice-event	{s}'s presence in	{s1}的出现	conversation-choice-object	PE 0x6a1059/6a112a/6a11fb; complete artifact and empty place
+conversation-choice-event	{s}'s presence in in	{s1}的出现	conversation-choice-object	PE 0x6a11fb/6a1268; site and building names empty
+conversation-choice-event	{s}'s absence from	{s1}的消失	conversation-choice-object	PE 0x6a15b7/6a1688/6a1759; empty place
+conversation-choice-event	{s}'s absence from 's {s}	{s1}从{s2}消失	conversation-choice-object,conversation-choice-place	PE 0x6a1759/6a17c6; empty site and complete building
+conversation-choice-event	{s}'s absence from {s}'s	{s1}从{s2}消失	conversation-choice-object,conversation-choice-place	PE 0x6a1759/6a17c6; complete site and empty building
+conversation-choice-event	{s}'s absence from 's	{s1}的消失	conversation-choice-object	PE 0x6a1759/6a17c6; site and building names empty
+conversation-choice-event	's presence in	某件造物的出现		PE 0x6a1032/6a1103/6a11d4; empty artifact and place names
+conversation-choice-event	's presence in in	某件造物的出现		PE 0x6a11fb/6a1268; all artifact/site/building names empty
+conversation-choice-event	's absence from	某件造物的消失		PE 0x6a1590/6a1661/6a1732; empty artifact/place names
+conversation-choice-event	's absence from 's	某件造物的消失		PE 0x6a1759/6a17c6; all artifact/site/building names empty
+conversation-choice-transfer	{s}	{s1}	journal-transfer-core	PE 0x69b032..69b120; same independent empty object/recipient cases
+conversation-choice-transfer	placement of to {s}	将某部作品交由{s1}保管	conversation-choice-person	PE 0x69ac29/69ac85; empty written_content.name
+conversation-choice-transfer	placement of {s} to	将{s1}交由某人保管	conversation-choice-object	PE 0x69ac29/69ac85; empty recipient language_name
+conversation-choice-transfer	placement of to	将某部作品交由某人保管		PE 0x69ac29/69ac85; both names empty
+conversation-choice-person-event	{s} in	{s1}	conversation-choice-transfer	PE 0x69ad65..69ae5e; empty place
+conversation-choice-person-event	{s} in in {s}	在{s2}{s1}	conversation-choice-transfer,conversation-choice-place	PE 0x69ad65/69adad; empty building name
+conversation-choice-person-event	{s} in {s} in	在{s2}{s1}	conversation-choice-transfer,conversation-choice-place	PE 0x69ad65/69adad; empty site name
+conversation-choice-person-event	{s} in in	{s1}	conversation-choice-transfer	PE 0x69ad65/69adad; building and site names empty
+conversation-choice-event	the insurrection crushed by {s} in {s}	{s1}在{s2}镇压起义	conversation-choice-entity,conversation-choice-place	PE 0x69dfab/69e073/69e094/69e214; no extra leading faction before insurrection
+conversation-choice-event	the insurrection crushed by {s}	{s1}镇压起义	conversation-choice-entity	PE 0x69e094; no site
+conversation-choice-event	the insurrection crushed in {s}	{s1}的起义遭到镇压	conversation-choice-place	PE 0x69e073/69e214; no entity
+conversation-choice-event	the failed insurrection against {s} in {s}	{s2}反抗{s1}的起义失败	conversation-choice-entity,conversation-choice-place	PE 0x69e102/69e123/69e214; no fabricated faction before against
+conversation-choice-event	the overthrow of {s} in {s}	在{s2}推翻{s1}	conversation-choice-entity,conversation-choice-place	PE 0x69e191/69e1ae/69e214
+conversation-choice-object	an untitled work	一部无题作品		PE 0x69ac69/69ebbe
+conversation-choice-object	an unknown artifact	未知造物		PE 0xb94400 missing artifact fallback
+conversation-choice-object	{s}	{s1}	$book	PE 0xb94400 artifact designation or written_content.name
+conversation-choice-object	{s}	{s1}	$item	PE item virtual +0x188 ->0xc65450; complete actual item
+conversation-choice-person	you	你		PE 0x69acd5/69b0f1/69c51d/69c795/69ca0d; player HF
+conversation-choice-person	yourself	你自己		PE 0x6991d1/698e10/69904a; player as requested target
+conversation-choice-person	somebody	某人		PE 0x69ad41/69b45c/69c11f/69c30c; missing HF
+conversation-choice-person	a {s}	一只{s1}	$conflict-caste	PE 0x69cac5 ->0xb94ed0; invalid HF uses RAW caste
+conversation-choice-person	{s}	{s1}	$person	PE 0xa946e0; complete HF personal language_name
+conversation-choice-person	{s}	{s1}	$unit	PE 0x6982bc gift-pet -> contextual unit caption
+conversation-choice-entity	an unknown civilization	未知文明		PE 0xb92900; missing entity
+conversation-choice-entity	{s}	{s1}	$name	PE 0xb92900/0xa946e0; complete entity language_name
+conversation-choice-place	an unknown site	未知地点		PE 0xb93930; missing site
+conversation-choice-place	an unknown region	未知区域		PE 0xb94a40; missing region
+conversation-choice-place	an unknown underground region	未知地下区域		PE 0xb94940; missing underground region
+conversation-choice-place	the depths of the world	世界深处		PE 0xb94940 unnamed underground type0
+conversation-choice-place	the magma sea	岩浆海		PE 0xb94940 unnamed underground type1
+conversation-choice-place	the Underworld	冥界		PE 0xb94940 unnamed underground type2
+conversation-choice-place	{s}	{s1}	$conflict-place	PE 0xb93930/0xb94a40/0xb94940/0xb94090; site/region/underground/building
+conversation-choice-role	{s}	{s1}	$office	PE squad-type +0x218 singular title; position ->0x99a3c0
+conversation-choice-role	{s} of {s}	{s2}的{s1}	$office,conversation-choice-entity	PE 0x6a3ed9/6a3f22; position followed by employing entity
+conversation-choice-role	{s}	{s1}	$journal-office	PE 0x9bdfb0 linked religious-site office title
+conversation-choice-item	the object	那件物品		PE 0x6a3aa5/6a2cf2/6a2bb6/6a2a49; missing object
+conversation-choice-item	{s}	{s1}	$item	PE 0xc65450/actual item virtual +0x188; full designation
+conversation-choice-item	{s}	{s1}	$book	PE 0xb94400 named artifact
+# Directions, people, entities and their complete qualifiers.
+conversation-choice	Suggest traveling to {s} to find a relative	建议前往{s1}寻找亲属	conversation-choice-place	PE type38 0x6a7d69/6a7def
+conversation-choice	Suggest traveling to {s}	建议前往{s1}	conversation-choice-place	PE type38 0x6a7d69; no purpose suffix
+conversation-choice	Suggest talking to {s} to offer condolences	建议与{s1}交谈并表示慰问	conversation-choice-person	PE type39 0x6a7c7a/6a7d02
+conversation-choice	Suggest talking to {s}	建议与{s1}交谈	conversation-choice-person	PE type39 0x6a7c7a; no purpose suffix
+conversation-choice	State {s}'s location to be {s}	说明{s1}的位置在{s2}	conversation-choice-person,conversation-choice-place	PE type46 0x6a7b12/6a7b73/6a7bbe; two complete native names
+conversation-choice	State {s}'s location	说明{s1}的位置	conversation-choice-person	PE type46 missing destination lookup
+conversation-choice	State to be {s}	说明位置在{s1}	conversation-choice-place	PE type46 missing HF lookup
+conversation-choice	Ask for directions to {s}	询问前往{s1}的路线	conversation-choice-place	PE type77 0x698eab
+conversation-choice	Ask for the whereabouts of {s}	询问{s1}的下落	conversation-choice-person	PE type78 0x6990e1/6991d1
+conversation-choice	Request a guide to {s}	请求向导带你前往{s1}	conversation-choice-place	PE type79 0x698c71
+conversation-choice	Request a guide to {s}	请求向导带你寻找{s1}	conversation-choice-person	PE type80 0x698d20/698e10
+conversation-choice	Provide directions to {s}	提供前往{s1}的路线	conversation-choice-place	PE type81 0x6aa43d
+conversation-choice	Provide the whereabouts of {s}	告知{s1}的下落	conversation-choice-person	PE type82 0x6aa9d7
+conversation-choice	Tell the listener that {s} is dead	告诉对方{s1}已死	conversation-choice-person	PE type84 0x6aa5ec/6aa636
+conversation-choice	Recommend {s} as a guide	推荐{s1}担任向导	conversation-choice-person	PE type85 0x6aa4e3/6aa52d
+conversation-choice	Tell listener about {s}	向对方介绍{s1}	conversation-choice-place	PE type87 0x6aa34b ->0xb94090; abstract building
+conversation-choice	Go into {s}'s relationship with {s}	详谈{s1}与{s2}的关系	conversation-choice-entity,conversation-choice-entity	PE type103 0x699823/699850
+conversation-choice	Claim this site for yourself and {s}	宣布此地归你和{s1}所有	conversation-choice-entity	PE type104 0x697fde
+conversation-choice	Request duty or advice pertaining to service as a {s}	请求分派担任{s1}的职责或给予建议	conversation-choice-role	PE type106 0x6a5634; squad-type name +0x218
+conversation-choice	Ask to become a {s}	请求成为{s1}	conversation-choice-role	PE type107 0x6a77f7
+conversation-choice	Accept as a {s}	同意对方成为{s1}	conversation-choice-role	PE type108 0x6a74c5
+conversation-choice	Give an order based on {s}'s relationship with {s}	根据{s1}与{s2}的关系下令	conversation-choice-entity,conversation-choice-entity	PE type110 0x6996f3/699720
+conversation-choice	Summarize your views on {s}	概述你对{s1}的看法	conversation-choice-entity	PE type119 0x699d45
+conversation-choice	Demand that the listener drop {s}	要求对方丢下{s1}	conversation-choice-item	PE type127 0x6a3a32/6a3aa5
+conversation-choice	Ask the listener for the location of {s}	询问对方{s1}的位置	conversation-choice-item	PE type130 0x6a2c7f/6a2cf2
+conversation-choice	Demand that {s} pay homage to {s}	要求{s1}向{s2}进贡	conversation-choice-entity,conversation-choice-entity	PE type131 0x6a3860/6a388e
+conversation-choice	Agree to have {s} pay homage to {s}	同意让{s1}向{s2}进贡	conversation-choice-entity,conversation-choice-entity	PE type132 0x6a3249/6a3277
+conversation-choice	Refuse to have {s} pay homage to {s}	拒绝让{s1}向{s2}进贡	conversation-choice-entity,conversation-choice-entity	PE type133 0x6a335f/6a338d
+conversation-choice	Offer to have {s} pay homage to {s}	提议让{s1}向{s2}进贡	conversation-choice-entity,conversation-choice-entity	PE type134 0x6a3475/6a34a3
+conversation-choice	Agree to have {s} accept homage from {s}	同意让{s1}接受{s2}进贡	conversation-choice-entity,conversation-choice-entity	PE type135 0x6a2df1/6a2e1f
+conversation-choice	Refuse to have {s} accept homage from {s}	拒绝让{s1}接受{s2}进贡	conversation-choice-entity,conversation-choice-entity	PE type136 0x6a2f07/6a2f35
+conversation-choice	Cancel tribute from {s} to {s}	取消{s1}向{s2}的进贡	conversation-choice-entity,conversation-choice-entity	PE type137 0x6a35e4/6a3612
+conversation-choice	Offer peace between {s} and {s}	提议{s1}与{s2}议和	conversation-choice-entity,conversation-choice-entity	PE type138 0x6a3753/6a3781
+conversation-choice	Agree to make peace between {s} and {s}	同意让{s1}与{s2}议和	conversation-choice-entity,conversation-choice-entity	PE type139 0x6a301d/6a304b
+conversation-choice	Refuse to make peace between {s} and {s}	拒绝让{s1}与{s2}议和	conversation-choice-entity,conversation-choice-entity	PE type140 0x6a3133/6a3161
+conversation-choice	Express astonishment at seeing {s}	对见到{s1}表示惊讶	conversation-choice-person	PE type142 0x6ab090
+conversation-choice	Summarize the hold of {s} on its territory	概述{s1}对其领土的控制	conversation-choice-entity	PE type145 0x69998c/6999be
+conversation-choice	Summarize the local disposition of the forces of {s}	概述{s1}在当地的兵力部署	conversation-choice-entity	PE type146 0x699a87
+conversation-choice	Summarize your views on the opposition to {s}	概述你对反对{s1}的各方的看法	conversation-choice-entity	PE type147 0x699ba0
+conversation-choice	Describe the refugees created by the attack of {s}	描述{s1}的进攻造成的难民	conversation-choice-entity	PE type148 0x699c26
+conversation-choice	Ask listener to adopt {s}	请求对方收养{s1}	conversation-choice-person	PE type150 0x6a3fb8
+conversation-choice	Revoke listener's status as a {s}	撤销对方的{s1}身份	conversation-choice-role	PE type153 0x6a75b5
+conversation-choice	Invite listener to become a {s}	邀请对方成为{s1}	conversation-choice-role	PE type154 0x6a76d6
+conversation-choice	Accept invitation to become a {s}	接受成为{s1}的邀请	conversation-choice-role	PE type155 0x6a72b4
+conversation-choice	Refuse invitation to become a {s}	拒绝成为{s1}的邀请	conversation-choice-role	PE type157 0x6a7162
+conversation-choice	Refuse request to become a {s}	拒绝成为{s1}的请求	conversation-choice-role	PE type158 0x6a73a4
+conversation-choice	Offer listener your position as {s}	提议将你的{s1}职位交给对方	conversation-choice-role	PE type159 0x6a3e65/6a3ed9/6a3f22; optional religious-site suffix
+conversation-choice	Offer listener your position as someone of {s}	提议将你在{s1}的职位交给对方	conversation-choice-entity	PE type159 0x6a3f0f; missing assignment/position
+conversation-choice	Offer listener your position as something	提议将你的某项职位交给对方		PE type159 0x6a3f51; missing entity
+conversation-choice	Give report pertaining to service as a {s}	汇报担任{s1}期间的事务	conversation-choice-role	PE type166 0x6a5424
+conversation-choice	Ask about {s}	打听{s1}	conversation-choice-person	PE type170 0x698f5a/69904a; complete HF or yourself
+conversation-choice	Give your opinion of {s}	谈谈你对{s1}的看法	conversation-choice-person	PE type171 0x6aa6aa
+conversation-choice	Order free {s}	点一份免费的{s1}	$term	PE type176 0x6a1c26/6a1c40 ->0xa82c10 drink material
+conversation-choice	Order {s} for {s}	花{s2}点一份{s1}	$term,$digits	PE type176 0x6a1cd0/6a1ced; numeric price
+conversation-choice	Order {s}	点一份{s1}	$term	PE type176 price <0 retains drink with no price suffix
+conversation-choice	Rent room for {s}	花{s1}租用客房	$digits	PE type177 0x6a1e3a ->0x52c130
+conversation-choice	Extend room rental for {s}	花{s1}延长客房租期	$digits	PE type178 0x6a1f46 ->0x52c130
+conversation-choice	Ask to join {s}	请求加入{s1}	conversation-choice-entity	PE type182 0x6a6899
+conversation-choice	Accept into {s}	同意加入{s1}	conversation-choice-entity	PE type183 0x6a69b0
+conversation-choice	Refuse request to join {s}	拒绝加入{s1}的请求	conversation-choice-entity	PE type184 0x6a6a96
+conversation-choice	Invite listener to join {s}	邀请对方加入{s1}	conversation-choice-entity	PE type185 0x6a6bad
+conversation-choice	Accept invitation to join {s}	接受加入{s1}的邀请	conversation-choice-entity	PE type186 0x6a6cc4
+conversation-choice	Refuse invitation to join {s}	拒绝加入{s1}的邀请	conversation-choice-entity	PE type187 0x6a6daa
+conversation-choice	Kick listener out of {s}	将对方逐出{s1}	conversation-choice-entity	PE type188 0x6a7009
+conversation-choice	Leave {s}	离开{s1}	conversation-choice-entity	PE type190 0x6a6ef2
+conversation-choice	State {s} (not your values)	阐述{s1}（并非你的价值观）	conversation-choice-value	PE type198 0x6ab8d1/6ab900/6ab958; 33 values and three strength bands
+conversation-choice	State {s}	阐述{s1}	conversation-choice-value	PE type198 0x6ab8d1/6ab900; no discordant-value marker
+conversation-choice	Argue {s} (not your values)	争辩{s1}（并非你的价值观）	conversation-choice-value	PE type201 0x6ab9cf/6ab9fe/6aba56
+conversation-choice	Argue {s}	争辩{s1}	conversation-choice-value	PE type201 0x6ab9cf/6ab9fe
+conversation-choice-value	the worthlessness of {s}	{s1}毫无价值	reference-value	PE 0xee0398/ee03d6 and all 33 value selectors
+conversation-choice-value	the value of {s}	{s1}的价值	reference-value	PE 0xee03ac/ee03d6 and all 33 value selectors
+conversation-choice-value	nuances of {s}	{s1}的复杂之处	reference-value	PE 0xee03bb/ee03d6 and all 33 value selectors
+conversation-choice	Provide the location of {s}	告知{s1}的位置	conversation-choice-place	PE type200 0x6aa8dc ->0xb94090 abstract building
+# Native occupation selectors0..10: selector6 and the table default append no
+# occupation; the other ten roles retain their singular/plural spelling.
+conversation-choice	Ask to be made a {s} for {s}	请求为{s2}担任{s1}	conversation-choice-occupation,conversation-choice-entity	PE type210 0x6a5776/6a5aed
+conversation-choice	Ask for {s} to made {s} for {s}	请求让{s1}为{s3}担任{s2}	conversation-choice-entity,conversation-choice-occupation,conversation-choice-entity	PE type211 0x6a5c1f/6a5c68/6a5fe7; native literal is to made
+conversation-choice	Grant listener work as {s} for {s}	准许对方为{s2}担任{s1}	conversation-choice-occupation,conversation-choice-entity	PE type212 0x6a610b/6a619f
+conversation-choice	Refuse listener work as {s} for {s}	拒绝让对方为{s2}担任{s1}	conversation-choice-occupation,conversation-choice-entity	PE type213 0x6a64d2/6a6566
+conversation-choice	Grant {s} work as {s} for {s}	准许{s1}为{s3}担任{s2}	conversation-choice-entity,conversation-choice-occupation,conversation-choice-entity	PE type214 0x6a62d1/6a631a/6a63ae
+conversation-choice	Refuse {s} work as {s} for {s}	拒绝让{s1}为{s3}担任{s2}	conversation-choice-entity,conversation-choice-occupation,conversation-choice-entity	PE type215 0x6a6698/6a66e1/6a6775
+conversation-choice-occupation	tavern keeper	酒馆管理员		PE type210..215 native occupation selector0
+conversation-choice-occupation	tavern keepers	酒馆管理员		PE type211/214/215 plural selector0
+conversation-choice-occupation	performer	艺人		PE type210..215 selector1
+conversation-choice-occupation	performers	艺人		PE type211/214/215 plural selector1
+conversation-choice-occupation	scholar	学者		PE type210..215 selector2
+conversation-choice-occupation	scholars	学者		PE type211/214/215 plural selector2
+conversation-choice-occupation	doctor	医生		PE type210..215 selector7
+conversation-choice-occupation	doctors	医生		PE type211/214/215 plural selector7
+conversation-choice-occupation	diagnostician	诊断医师		PE type210..215 selector8; type211 deliberately singular
+conversation-choice-occupation	diagnosticians	诊断医师		PE type214/215 plural selector8
+conversation-choice-occupation	surgeon	外科医师		PE type210..215 selector9; type211 deliberately singular
+conversation-choice-occupation	surgeons	外科医师		PE type214/215 plural selector9
+conversation-choice-occupation	bone doctor	骨科医师		PE type212..215 selector10
+conversation-choice-occupation	bone doctors	骨科医师		PE type214/215 plural selector10
+conversation-choice-occupation	bonedoctor	骨科医师		PE type210/211 selector10; 0x6a597e/6a5991 and 6a5e78/6a5e8b concatenate bone and doctor without space
+conversation-choice-occupation	mercenary	佣兵		PE type210..215 selector3
+conversation-choice-occupation	mercenaries	佣兵		PE type211/214/215 plural selector3
+conversation-choice-occupation	monster slayer	怪物猎手		PE type210..215 selector4
+conversation-choice-occupation	monster slayers	怪物猎手		PE type211/214/215 plural selector4
+conversation-choice-occupation	scribe	抄写员		PE type210..215 selector5
+conversation-choice-occupation	scribes	抄写员		PE type211/214/215 plural selector5
+conversation-choice	Order listener to drive the forces of {s} from {s}	命令对方将{s1}的部队逐出{s2}	conversation-choice-entity,conversation-choice-place	PE type216 0x699595/699618; entity target
+conversation-choice	Order listener to kill {s}	命令对方杀死{s1}	conversation-choice-person	PE type216 0x69959e; HF target
+conversation-choice	Order listener to drive {s} from {s}	命令对方将{s1}逐出{s2}	conversation-choice-entity,conversation-choice-place	PE type216 0x6995eb/699618 ->b92900/b93930; entity expulsion target
+conversation-choice	Discuss the missing artifact {s}	谈论失踪的造物{s1}	conversation-choice-object	PE type217 0x699dfc ->0xb94400
+conversation-choice	Praise for returning {s}	称赞归还{s1}	conversation-choice-item	PE type218 0x6ab173; complete item virtual designation
+conversation-choice	Suggest that the listener trade {s}	建议对方交易{s1}	conversation-choice-item	PE type222 0x6a2b43/6a2bb6
+conversation-choice	Accept that the listener will not trade {s}	接受对方不愿交易{s1}	conversation-choice-item	PE type223 0x6a29d6/6a2a49
+conversation-choice	Give {s}	赠送{s1}	conversation-choice-person	PE type247 0x6982bc -> contextual pet caption; retained RAW caste and native name
+conversation-choice	Lay quest to retrieve {s}	委派寻回{s1}的任务	conversation-choice-item	PE type251 0x6a9ad9
+conversation-choice	Charge to serve {s}	责令侍奉{s1}	$sphere	PE type252 0x6a9c97 -> native sphere-name supplier
+# A found record may contain an empty language_name; some failed lookups also
+# retain the caption head. These are explicit native complete productions.
+conversation-choice	Suggest traveling to	建议前往某地		PE type38 0x6a7d92; site lookup absent or name empty
+conversation-choice	Suggest traveling to to find a relative	建议前往某地寻找亲属		PE type38 0x6a7d92/6a7def
+conversation-choice	Suggest talking to	建议找某人交谈		PE type39 0x6a7ca3; HF lookup absent or name empty
+conversation-choice	Suggest talking to to offer condolences	建议向某人表示慰问		PE type39 0x6a7ca3/6a7d02
+conversation-choice	State	说明位置		PE type46 0x6a7b3b/6a7bbc; both lookups absent
+conversation-choice	State 's location	说明某人的位置		PE type46 0x6a7b73; empty HF name and no destination
+conversation-choice	State 's location to be {s}	说明某人的位置在{s1}	conversation-choice-place	PE type46 0x6a7b73/6a7bbe; empty HF name
+conversation-choice	State {s}'s location to be	说明{s1}的位置	conversation-choice-person	PE type46 0x6a7bbe; empty site name
+conversation-choice	State 's location to be	说明某人的位置		PE type46 0x6a7b73/6a7bbe; both names empty
+conversation-choice	State to be	说明位置		PE type46 missing HF lookup and empty site name
+conversation-choice	Ask for directions to	询问前往某地的路线		PE type77 valid site with empty name
+conversation-choice	Ask for the whereabouts of	询问某人的下落		PE type78 empty HF identity
+conversation-choice	Request a guide to	请求一名向导		PE type79/80 target formatter returned empty
+conversation-choice	Provide directions to	提供路线		PE type81 empty site name
+conversation-choice	Provide the whereabouts of	告知某人的下落		PE type82 empty target name
+conversation-choice	Tell the listener that is dead	告诉对方某人已死		PE type84 empty HF name with native suffix
+conversation-choice	Recommend as a guide	推荐某人担任向导		PE type85 empty HF name
+conversation-choice	Tell listener about	介绍此处建筑		PE type87 empty abstract-building name
+conversation-choice	Go into 's relationship with {s}	详谈某个势力与{s1}的关系	conversation-choice-entity	PE type103 first entity language_name empty
+conversation-choice	Go into {s}'s relationship with	详谈{s1}的对外关系	conversation-choice-entity	PE type103 second entity language_name empty
+conversation-choice	Go into 's relationship with	详谈势力间的关系		PE type103 both entity language_name fields empty
+conversation-choice	Claim this site for yourself and	宣布此地归你及所属势力所有		PE type104 entity name empty
+conversation-choice	Request duty or advice pertaining to service as a	请求分派职责或给予建议		PE type106 empty squad-type title
+conversation-choice	Ask to become a	请求加入任职		PE type107 empty squad-type title
+conversation-choice	Accept as a	同意加入任职		PE type108 empty squad-type title
+conversation-choice	Give an order based on 's relationship with {s}	根据与{s1}的关系下令	conversation-choice-entity	PE type110 first entity name empty
+conversation-choice	Give an order based on {s}'s relationship with	根据{s1}的对外关系下令	conversation-choice-entity	PE type110 second entity name empty
+conversation-choice	Give an order based on 's relationship with	根据势力间的关系下令		PE type110 both entity names empty
+conversation-choice	Summarize your views on	概述你对该势力的看法		PE type119 empty entity name
+conversation-choice	Summarize the hold of on its territory	概述该势力对其领土的控制		PE type145 empty entity name
+conversation-choice	Summarize the local disposition of the forces of	概述该势力在当地的兵力部署		PE type146 empty entity name
+conversation-choice	Summarize your views on the opposition to	概述你对反对势力的看法		PE type147 empty entity name
+conversation-choice	Describe the refugees created by the attack of	描述这次进攻造成的难民		PE type148 empty attacking entity name
+conversation-choice	Ask listener to adopt	请求对方收养孩子		PE type150 empty child's name
+conversation-choice	Revoke listener's status as a	撤销对方的任职身份		PE type153 empty squad-type title
+conversation-choice	Invite listener to become a	邀请对方加入任职		PE type154 empty squad-type title
+conversation-choice	Accept invitation to become a	接受任职邀请		PE type155 empty squad-type title
+conversation-choice	Refuse invitation to become a	拒绝任职邀请		PE type157 empty squad-type title
+conversation-choice	Refuse request to become a	拒绝任职请求		PE type158 empty squad-type title
+conversation-choice	Give report pertaining to service as a	汇报任职期间的事务		PE type166 empty squad-type title
+conversation-choice	Give your opinion of	谈谈你对某人的看法		PE type171 empty HF name
+conversation-choice	Ask to join	请求加入表演团		PE type182 empty troupe name
+conversation-choice	Accept into	同意加入表演团		PE type183 empty troupe name
+conversation-choice	Refuse request to join	拒绝加入表演团的请求		PE type184 empty troupe name
+conversation-choice	Invite listener to join	邀请对方加入表演团		PE type185 empty troupe name
+conversation-choice	Accept invitation to join	接受加入表演团的邀请		PE type186 empty troupe name
+conversation-choice	Refuse invitation to join	拒绝加入表演团的邀请		PE type187 empty troupe name
+conversation-choice	Kick listener out of	将对方逐出表演团		PE type188 empty troupe name
+conversation-choice	Leave	离开表演团		PE type190 empty troupe name
+conversation-choice	Provide the location of	告知此处建筑的位置		PE type200 empty abstract-building name
+conversation-choice	Discuss the missing artifact	谈论失踪的造物		PE type217 empty artifact name
+conversation-choice	Praise for returning	称赞归还物品		PE type218 empty item designation
+conversation-choice	Give	赠送宠物		PE type247 empty pet designation
+conversation-choice	Lay quest to retrieve	委派寻回物品的任务		PE type251 empty item designation
+# Each entity language_name in these native compositions may independently be
+# empty. Keep the literal connector with its complete enclosing relation.
+conversation-choice	Demand that {s}	要求{s1}	conversation-choice-homage	PE type131 complete tribute relation including empty-name paths
+conversation-choice	Agree to have {s}	同意让{s1}	conversation-choice-homage	PE type132 complete tribute relation including empty-name paths
+conversation-choice	Refuse to have {s}	拒绝让{s1}	conversation-choice-homage	PE type133 complete tribute relation including empty-name paths
+conversation-choice	Offer to have {s}	提议让{s1}	conversation-choice-homage	PE type134 complete tribute relation including empty-name paths
+conversation-choice	Agree to have {s}	同意让{s1}	conversation-choice-receive-homage	PE type135 complete tribute relation including empty-name paths
+conversation-choice	Refuse to have {s}	拒绝让{s1}	conversation-choice-receive-homage	PE type136 complete tribute relation including empty-name paths
+conversation-choice-homage	{s} pay homage to {s}	{s1}向{s2}进贡	conversation-choice-entity,conversation-choice-entity	PE 0x6a3860..6a38d1 and type132..134 corresponding builder
+conversation-choice-homage	pay homage to {s}	该势力向{s1}进贡	conversation-choice-entity	PE first entity name empty
+conversation-choice-homage	{s} pay homage to	{s1}向另一势力进贡	conversation-choice-entity	PE second entity name empty
+conversation-choice-homage	pay homage to	该势力向另一势力进贡		PE both entity names empty
+conversation-choice-receive-homage	{s} accept homage from {s}	{s1}接受{s2}进贡	conversation-choice-entity,conversation-choice-entity	PE 0x6a2df1/6a2e1f and type136 corresponding builder
+conversation-choice-receive-homage	accept homage from {s}	该势力接受{s1}进贡	conversation-choice-entity	PE first entity name empty
+conversation-choice-receive-homage	{s} accept homage from	{s1}接受另一势力进贡	conversation-choice-entity	PE second entity name empty
+conversation-choice-receive-homage	accept homage from	该势力接受另一势力进贡		PE both entity names empty
+conversation-choice	Cancel tribute from to {s}	取消向{s1}的进贡	conversation-choice-entity	PE type137 first entity name empty
+conversation-choice	Cancel tribute from {s} to	取消{s1}的进贡	conversation-choice-entity	PE type137 second entity name empty
+conversation-choice	Cancel tribute from to	取消进贡		PE type137 both entity names empty
+conversation-choice	Offer peace between {s}	提议{s1}议和	conversation-choice-peace-pair	PE type138 complete entity pair including empty-name paths
+conversation-choice	Agree to make peace between {s}	同意让{s1}议和	conversation-choice-peace-pair	PE type139 complete entity pair including empty-name paths
+conversation-choice	Refuse to make peace between {s}	拒绝让{s1}议和	conversation-choice-peace-pair	PE type140 complete entity pair including empty-name paths
+conversation-choice-peace-pair	{s} and {s}	{s1}与{s2}	conversation-choice-entity,conversation-choice-entity	PE 0x6a3753/6a3781 and type139/140 corresponding builder
+conversation-choice-peace-pair	and {s}	某个势力与{s1}	conversation-choice-entity	PE first entity name empty
+conversation-choice-peace-pair	{s} and	{s1}与另一个势力	conversation-choice-entity	PE second entity name empty
+conversation-choice-peace-pair	and	双方		PE both entity names empty
+# The occupation suffix owns both the role and employer. In particular native
+# selector6/default retains "for" with no role; no generic role parser guesses
+# a profession from the employing entity's name.
+conversation-choice-work	{s} for {s}	为{s2}担任{s1}	conversation-choice-occupation,conversation-choice-entity	PE types210..215 complete occupation/employer composition
+conversation-choice-work	for {s}	为{s1}工作	conversation-choice-entity	PE types210..215 selector6 or table default; no occupation appended
+conversation-choice-work	{s} for	担任{s1}	conversation-choice-occupation	PE types210..215 empty employing entity name
+conversation-choice-work	for	工作		PE types210..215 empty role and employer name
+conversation-choice	Ask to be made a {s}	请求{s1}	conversation-choice-work	PE type210; all occupation/default and empty employer branches
+conversation-choice	Ask for {s} to made {s}	请求让{s1}{s2}	conversation-choice-entity,conversation-choice-work	PE type211; native to made spelling retained
+conversation-choice	Ask for to made {s}	请求让该团体{s1}	conversation-choice-work	PE type211 empty applicant entity name
+conversation-choice	Grant listener work as {s}	准许对方{s1}	conversation-choice-work	PE type212 occupation/default and empty employer branches
+conversation-choice	Refuse listener work as {s}	拒绝让对方{s1}	conversation-choice-work	PE type213 occupation/default and empty employer branches
+conversation-choice	Grant {s} work as {s}	准许{s1}{s2}	conversation-choice-entity,conversation-choice-work	PE type214 occupation/default and empty employer branches
+conversation-choice	Refuse {s} work as {s}	拒绝让{s1}{s2}	conversation-choice-entity,conversation-choice-work	PE type215 occupation/default and empty employer branches
+conversation-choice	Grant work as {s}	准许该团体{s1}	conversation-choice-work	PE type214 empty applicant entity name
+conversation-choice	Refuse work as {s}	拒绝让该团体{s1}	conversation-choice-work	PE type215 empty applicant entity name
+conversation-choice	Order listener to	向对方下令		PE type216 unsupported order type leaves only the head
+conversation-choice	Order listener to kill	命令对方杀死某人		PE type216 empty contextual HF caption
+conversation-choice	Order listener to drive the forces of from {s}	命令对方将该势力的部队逐出{s1}	conversation-choice-place	PE type216 empty target entity name
+conversation-choice	Order listener to drive the forces of {s} from	命令对方驱逐{s1}的部队	conversation-choice-entity	PE type216 empty destination site name
+conversation-choice	Order listener to drive the forces of from	命令对方驱逐该势力的部队		PE type216 both entity and site names empty
+conversation-choice	Order listener to drive from {s}	命令对方将该势力逐出{s1}	conversation-choice-place	PE type216 empty target entity name
+conversation-choice	Order listener to drive {s} from	命令对方驱逐{s1}	conversation-choice-entity	PE type216 empty site name
+conversation-choice	Order listener to drive from	命令对方驱逐该势力		PE type216 both entity and site names empty
+conversation-choice-role	{s} of	{s1}	$office	PE type159 existing office with empty linked entity name
+conversation-choice-role	of {s}	{s1}的一项职位	conversation-choice-entity	PE type159 existing position with empty title
+conversation-choice-role	of	某项职位		PE type159 both office title and linked entity name empty
+conversation-choice	Offer listener your position as someone of	提议将你的某项职位交给对方		PE type159 missing position and empty entity name
+conversation-choice	Offer listener your position as	提议将你的某项职位交给对方		PE type159 religious title supplier returns an empty caption

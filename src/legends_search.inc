@@ -22,9 +22,19 @@ std::optional<std::string> Overlay::translate_journal_title(std::string_view sou
         break;
     case JournalSearchKind::Artifact:
         // Artifact headings can be paired native/gloss identities or book
-        // titles; neither is a personal name, even when it contains one.
-        target = translate_legends_artifact_identity(source);
+        // titles. b94400 falls back to the complete item description when
+        // its language_name is empty, including the article and CP437
+        // quality/wear wrappers; none of these fields is a personal name.
+        // Only the native/gloss pair proves the artifact-name production.
+        // Bare BOOK_ART/BOOK_INSTRUCTION titles must reach the complete book
+        // grammar before an unrestricted generated-name fallback consumes
+        // their Course/Question/Mysteries wrapper as name words.
+        if (split_generated_name_identity(source) || split_repeated_title_identity(source) ||
+                lower(normalize_utterance(source)) == "untitled" ||
+                lower(normalize_utterance(source)) == "an unknown artifact")
+            target = translate_legends_artifact_identity(source);
         if (!target) target = translate_legends_book(source);
+        if (!target) target = translate_legends_item(source);
         if (!target) target = translate_legends_name(source, false);
         break;
     case JournalSearchKind::Site:
@@ -74,6 +84,18 @@ std::optional<std::string> Overlay::translate_journal_title(std::string_view sou
     if (!target) target = exact_literal_translation(source);
     if (!target) target = translate_compositional(std::string(source));
     return target;
+}
+
+bool Overlay::translated_journal_agreement_field_matches(std::string_view source,
+        std::string_view query, NativeJournalAgreementField kind) const {
+    TranslationStateScope translation_scope;
+    if (!config_.enabled || source.empty() || source.size() > 65536 ||
+            query.size() > 4096 || translated_search_query(query).literal.empty()) return false;
+    if (translated_search_text_matches(native_text_to_utf8(source), query)) return true;
+    // Independent card fields use the same typed grammar as their display;
+    // a person's name must not inherit an agreement title's interpretation.
+    const auto target = translate_journal_agreement_field(source, kind);
+    return target && translated_search_text_matches(*target, query);
 }
 
 bool Overlay::translated_journal_search_matches(std::string_view source,

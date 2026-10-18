@@ -26,7 +26,17 @@ case NativeHistoryPageKind::EntityIntroduction: {
     case 7: key += "collection of outcasts from {p}"; break;
     case 8: key += "performance troupe from {p}"; break;
     case 9: key += "merchant company from {p}"; break;
-    default: return std::nullopt;
+    case 10:
+        if (number("guild_craft")) key += "craft guild from {p}";
+        else if (text("guild_profession").empty()) key += "guild from {p}";
+        else {
+            auto profession = translate_unit_profession(text("guild_profession"), true);
+            if (!profession) return std::nullopt;
+            key += "{s} guild from {p}";
+            fields.push_back(Pieces{piece(*profession, neutral)});
+        }
+        break;
+    default: key += "group from {p}"; break;
     }
     fields.push_back(*world);
     auto result = apply(key, fields);
@@ -53,7 +63,8 @@ case NativeHistoryPageKind::EntityIntroduction: {
             if (weapons) {
                 Pieces names;
                 for (int32_t index = 0; index < weapons; ++index) {
-                    auto name = term(text("weapon." + std::to_string(index)));
+                    const auto &source = text("weapon." + std::to_string(index));
+                    auto name = source.empty() ? std::optional<Pieces>(Pieces{}) : term(source);
                     if (!name) return std::nullopt;
                     if (index) names.push_back(piece(index + 1 == weapons ? "与" : "、", neutral));
                     join(names, *name);
@@ -63,11 +74,13 @@ case NativeHistoryPageKind::EntityIntroduction: {
             } else {
                 static constexpr const char *unarmed[] = {"wrestling", "biting", "striking", "kicking"};
                 const int32_t skill = number("unarmed_skill");
-                if (skill < 99 || skill > 102) return std::nullopt;
-                auto name = term(unarmed[skill - 99]);
-                if (!name) return std::nullopt;
-                specialty = apply(number("skill") > 10 ? "dedicated to the mastery of {s}" :
-                    "known for {s}", {*name});
+                if (skill >= 99 && skill <= 102) {
+                    auto name = term(unarmed[skill - 99]);
+                    if (!name) return std::nullopt;
+                    specialty = apply(number("skill") > 10 ? "dedicated to the mastery of {s}" :
+                        "known for {s}", {*name});
+                } else specialty = term(number("skill") > 10
+                    ? "dedicated to the mastery of" : "known for");
             }
             if (!specialty) return std::nullopt;
             append_clause(*result, *specialty);

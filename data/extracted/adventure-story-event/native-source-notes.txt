@@ -1,0 +1,126 @@
+Adventure story/event choice titles, native Windows Steam + Classic 53.16
+
+This directory contains source extracted from the two original PE images in
+data/runtime/native-pe-images.json. It is not a runtime observation, translator
+simulation, test, or game-display result.
+
+Reference image PE:6a70a6d9:02711000
+  SHA256 205770918fd54c96cbbcf89223ebd449e2e113c7c873ed81177c4511a3450db7
+Classic image PE:6a70b91c:0270a000
+  SHA256 f35bbaf37aa96f93f95f8a35a9341e6649da46bc29a8650316bfdc2dfc57f3e4
+
+Native ownership
+  The performance/story chooser's state 6, STORY_EVENT=12, constructs its title
+  through history_event virtual +0xd8. The native caller and choice-entry field
+  layout are retained in ../adventure-performance-menu/steam-decompiled.txt
+  and its original menu/helper ASM. A choice keeps the complete title at +0x28;
+  display cropping does not change that original string.
+
+  native-rtti.tsv rediscovers the concrete classes from the current image's
+  MSVC RTTI descriptor/COL references and reads slot +0xd8/+0x30 from each actual
+  vtable. It does not infer completeness from an existing enum/profile table.
+  Each image has 133 concrete event roots and 18 collection roots. War and
+  battle share the same collection function, leaving 17 distinct collection
+  producers. The abstract history_eventst has getType=-1 and contributes no
+  concrete event production.
+
+Native title productions
+  title-productions-000-044.tsv, title-productions-045-094.tsv and
+  title-productions-095-132.tsv retain every event root's text-producing
+  choices, aliases, missing-field/default paths and exact append order.
+  collection-title-productions.tsv retains the eighteen collection families.
+  Their typed supplier names refer to the actual C catalogued below; literal
+  concatenation adds no implicit whitespace. These are source grammars,
+  including original malformed joins and overwrites, not simulated outputs.
+
+Actual decompilation
+  reference-ghidra-decompiled.c and classic-ghidra-decompiled.c concatenate
+  all 133 native event roots, all 18 collection roots (17 distinct functions)
+  and 25 semantic text suppliers per image: 175 independent functions.
+  The corresponding individual *.c files are actual Ghidra 12.1.4 output,
+  retaining original field offsets and conditional expressions. Names assigned
+  by the extraction script are labels, not recovered debug symbols.
+
+  native-functions.tsv records the original image, digest and all chained
+  unwind spans. Each *.asm keeps only native CFG instruction addresses, so
+  compiler jump/remap data after code is not fed to Ghidra as instructions.
+  native-switches.tsv retains every decoded selector alias and destination.
+  The Ghidra script supplies these exact native destinations as switch
+  overrides; its "Switch is manually overridden" comments refer to restored
+  native jump tables, not invented branches. Overlapping global-symbol
+  warnings reflect Ghidra's untyped imported image data.
+
+  native-branches.tsv retains conditional/unconditional edges; native-
+  conditions.tsv retains predicates; native-literals.tsv retains C-string,
+  vector and inline-store operands; native-calls.tsv and native-indirect-
+  calls.tsv retain direct suppliers and dynamic virtual boundaries.
+
+Shared text suppliers
+  In addition to every event producer, actual C is retained for dates, reasons,
+  death causes, figure/entity/site identity, construction/building/region and
+  underground labels, artifact and creature identity, generated language
+  names, religious offices, unit identity, knowledge discoveries and battles.
+  These have their own nullable-record, missing-name, enum/default and RAW
+  field branches. Names and user-authored fields are dynamic source values;
+  finite source extraction does not fabricate a list of possible names.
+
+  native-text-boundaries.tsv explicitly names every local C function and the
+  already-decompiled direct semantic leaves in their existing source files.
+  The latter include both editions' generic/complete item captions, personal
+  names, generated word forms, agreement parties, cardinal/ordinal numbers
+  and capitalization. These source files are reused without decompiling or
+  copying their original C a second time. Signed decimal conversion and
+  string/container/lookup operations remain explicit native calls; they do
+  not supply additional sentence templates.
+
+  Item virtual descriptions continue into the existing item-description,
+  item-info-title, item-raw-title, corpse-caption and native-history item
+  catalogues. General_ref getters retain their native typed dispatch.
+
+Reachable collection titles
+  history-reason's secondary thought selector (dispatch b5b34a in reference)
+  includes "during ", collection lookup 13cc50, then collection virtual +0x30
+  at b5b576. Consequently all 18 collection roots can supply nested text to a
+  STORY_EVENT title. Their actual C and all branches are included here.
+
+  These cover war/battle, duel, conquest, overthrow, persecution, purge,
+  insurrection, abduction, raid, theft, beast attack, journey, occasion,
+  performance, competition, procession and ceremony. Optional ordinal counts,
+  attempted/successful actions, nullable subjects, artifact names, region/site
+  precedence, occasion records and competition-type branches remain native.
+  The theft artifact-name-only supplier b94710 (classic b91750), with its
+  "an unknown artifact" fallback, is the additional 25th semantic supplier.
+  Collection helper bc6780 only returns a common participant race index or
+  -1. Its resulting creature label is rendered by already retained suppliers;
+  it has no independent text literal or formatting call.
+
+Screenshot-related branches
+  history_event_add_hf_entity_linkst: all 16 link selectors, appointment/
+  election/selection/ascension predicates, nullable offices, sex-specific RAW
+  office names, military squad RAW title, entity and date. Selectors 4/6 call
+  std::string assign("by",2), replacing the earlier subject bytes. Thus the
+  capitalized "By GROUP in DATE" row is a real native output.
+
+  history_event_change_hf_jobst: profession and site/date combinations.
+  history_event_hf_act_on_buildingst and hf_state_changest: typed action and
+  location-state branches. All settling/acceptance/job/impersonation/visit/
+  false-friendship producers retain their complete native argument handling.
+  history-reason includes the gathering-information and other motive selectors.
+
+  history-date preserves year<1, tick==-1, all twelve season/phase forms and
+  the out-of-range-season path, which appends phase and year with no season.
+  The inline DWORD 0x20666f20 appends " of "; it is not an adjacent C string.
+
+  The poetic/musical/dance creation roots explicitly emit "the creation of a
+  poetic form", "the creation of a musical form" or "the creation of a dance
+  form" when the corresponding work/form record is absent.
+
+Reproduction
+  Use the configured fixed Windows Python interpreter to run
+  tools/extract_adventure_story_event_sources.py. Then import each configured
+  original PE with the installed dfcn-analysis-tools/ghidra_12.1.4_PUBLIC
+  support/analyzeHeadless.bat, -noanalysis -scriptPath tools, and
+  -postScript DecompileAdventureStoryEvent.java SOURCE_DIRECTORY EDITION.
+  EDITION is reference or classic. The installed JDK is
+  dfcn-analysis-tools/jdk-25.0.4.1+1; use separate application.settingsdir and
+  application.cachedir per edition. This workflow writes offline source only.

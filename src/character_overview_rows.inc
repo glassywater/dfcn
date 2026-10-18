@@ -2,10 +2,12 @@
 // physical cell before generic matching so an English name, an age/sex pair
 // and independently positioned badges can share one compact translated row.
 std::vector<NativeTextCard> Overlay::capture_character_overview_rows() const {
+    if (!native_character_translation_active(gps_)) return {};
     if (!gps_ || gps_->dimx <= 0 || gps_->dimy <= 0) return {};
 
     const auto settings = native_ui_settings();
     const bool classic = settings && settings->classic;
+    const auto bounds = native_character_read_bounds(*gps_);
 
     const auto texture_at = [&](int x, int y) -> long {
         bool top = false;
@@ -30,12 +32,12 @@ std::vector<NativeTextCard> Overlay::capture_character_overview_rows() const {
         return false;
     };
 
-    for (int tabs_y = 0; tabs_y < gps_->dimy; ++tabs_y) {
+    for (int tabs_y = bounds.y; tabs_y < bounds.y + bounds.h; ++tabs_y) {
         // A per-layer suppression scan must see the same current tab band as
         // final composition, even when captions and content use different
         // logical layers. Do not borrow a preceding frame's occlusion state.
         std::string tabs(static_cast<size_t>(gps_->dimx), ' ');
-        for (int x = 0; x < gps_->dimx; ++x) {
+        for (int x = bounds.x; x < bounds.x + bounds.w; ++x) {
             bool top = false;
             const auto *cell = cell_at(x, tabs_y, &top);
             if (cell && cell[0]) tabs[static_cast<size_t>(x)] = cell[0];
@@ -96,6 +98,7 @@ void Overlay::append_character_overview_identities(
         const std::vector<NativeTextCard> &cards,
         std::vector<std::string> &screen_rows, std::vector<Match> &matches,
         int only_y) const {
+    if (!native_character_translation_active(gps_)) return;
 #include "character_overview_draw_rows.inc"
     for (const auto &card : cards) {
         for (const auto &row : card.rows) {
@@ -161,7 +164,7 @@ void Overlay::append_character_overview_identities(
     // actual draw, not a guessed completion of that prefix. The cards still
     // own layout; each surviving physical span separately owns suppression.
     if (cards.empty()) return;
-    const auto draws = captured_native_drawn_text_rows();
+    const auto draws = captured_native_drawn_text_view();
     const auto settings = native_ui_settings();
     const bool classic = settings && settings->classic;
     const long vertical = native_texture_interior_border_n_s(*gps_);

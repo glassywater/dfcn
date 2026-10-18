@@ -1,0 +1,131 @@
+edition	image	role	start_rva	code_end_rva	assembly_file	native_extent_end_rva	retained_actual_c_source
+reference	PE:6a70a6d9:02711000	instrument-stored-description-writer	0xebe8a0	0xecc2f0	reference-instrument-stored-description-writer.asm	0xecc30c	
+reference	PE:6a70a6d9:02711000	instrument-helper-eb9410	0xeb9410	0xeb98e0	reference-instrument-helper-eb9410.asm	0xeb98fc	
+reference	PE:6a70a6d9:02711000	instrument-helper-eb91f0	0xeb91f0	0xeb940b	reference-instrument-helper-eb91f0.asm	0xeb940b	
+reference	PE:6a70a6d9:02711000	instrument-helper-eb8ff0	0xeb8ff0	0xeb91e9	reference-instrument-helper-eb8ff0.asm	0xeb91e9	
+reference	PE:6a70a6d9:02711000	instrument-helper-eb7ff0	0xeb7ff0	0xeb8760	reference-instrument-helper-eb7ff0.asm	0xeb8760	
+reference	PE:6a70a6d9:02711000	instrument-helper-eb8760	0xeb8760	0xeb8ae3	reference-instrument-helper-eb8760.asm	0xeb8ae3	
+reference	PE:6a70a6d9:02711000	instrument-helper-eb8e60	0xeb8e60	0xeb8f74	reference-instrument-helper-eb8e60.asm	0xeb8ff0	
+reference	PE:6a70a6d9:02711000	instrument-helper-eb6fe0	0xeb6fe0	0xeb757b	reference-instrument-helper-eb6fe0.asm	0xeb757b	
+reference	PE:6a70a6d9:02711000	instrument-helper-eb8af0	0xeb8af0	0xeb8e5e	reference-instrument-helper-eb8af0.asm	0xeb8e5e	
+reference	PE:6a70a6d9:02711000	instrument-timbre-qualities-77cf20	0x77cf20	0x77d470	reference-instrument-timbre-qualities-77cf20.asm	0x77d56c	
+reference	PE:6a70a6d9:02711000	instrument-helper-eb6e20	0xeb6e20	0xeb6fc4	reference-instrument-helper-eb6e20.asm	0xeb6fe0	
+reference	PE:6a70a6d9:02711000	instrument-timbre-qualities-77d570	0x77d570	0x77dac0	reference-instrument-timbre-qualities-77d570.asm	0x77dbbc	
+reference	PE:6a70a6d9:02711000	instrument-helper-eb68b0	0xeb68b0	0xeb6a93	reference-instrument-helper-eb68b0.asm	0xeb6a93	
+reference	PE:6a70a6d9:02711000	instrument-helper-eb79d0	0xeb79d0	0xeb7fee	reference-instrument-helper-eb79d0.asm	0xeb7fee	
+reference	PE:6a70a6d9:02711000	instrument-helper-eb7580	0xeb7580	0xeb78cc	reference-instrument-helper-eb7580.asm	0xeb79d0	
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb9241c	reference-history-describe-complete.asm	0xb92634	data/extracted/legends-entity-introduction/reference-history-describe-complete.c
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x872ba8	reference-chooser-description-producer.asm	0x872cec	data/extracted/legends-entity-introduction/reference-chooser-description-producer.c
+reference	PE:6a70a6d9:02711000	entity-lookup	0x7daf0	0x7db15	reference-entity-lookup.asm	0x7db15	data/extracted/legends-entity-introduction/reference-entity-lookup.c
+reference	PE:6a70a6d9:02711000	entity-name-and-confidence	0xb92900	0xb92a78	reference-entity-name-and-confidence.asm	0xb92a78	data/extracted/legends-entity-introduction/reference-entity-name-and-confidence.c
+reference	PE:6a70a6d9:02711000	species-name	0xb94ed0	0xb9501c	reference-species-name.asm	0xb9501c	data/extracted/legends-entity-introduction/reference-species-name.c
+reference	PE:6a70a6d9:02711000	knowledge-confidence-paragraph	0xb95720	0xb957aa	reference-knowledge-confidence-paragraph.asm	0xb957aa	data/extracted/legends-entity-introduction/reference-knowledge-confidence-paragraph.c
+reference	PE:6a70a6d9:02711000	world-name	0xa946e0	0xa94ea2	reference-world-name.asm	0xa94ea2	data/extracted/legends-entity-introduction/reference-world-name.c
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132de98	reference-profession-title.asm	0x132e0b4	data/extracted/legends-entity-introduction/reference-profession-title.c
+reference	PE:6a70a6d9:02711000	historical-figure-name-and-confidence	0xb92f10	0xb93927	reference-historical-figure-name-and-confidence.asm	0xb93927	data/extracted/legends-entity-introduction/reference-historical-figure-name-and-confidence.c
+reference	PE:6a70a6d9:02711000	historical-figure-derived-species	0xaa3770	0xaa3868	reference-historical-figure-derived-species.asm	0xaa3868	data/extracted/legends-entity-introduction/reference-historical-figure-derived-species.c
+reference	PE:6a70a6d9:02711000	sphere-name	0x756500	0x756614	reference-sphere-name.asm	0x756688	data/extracted/legends-entity-introduction/reference-sphere-name.c
+reference	PE:6a70a6d9:02711000	force-is-known	0x5c3760	0x5c3821	reference-force-is-known.asm	0x5c3821	data/extracted/legends-entity-introduction/reference-force-is-known.c
+reference	PE:6a70a6d9:02711000	entity-historical-knowledge-tier	0x9363e0	0x9364c4	reference-entity-historical-knowledge-tier.asm	0x9364c4	data/extracted/legends-entity-introduction/reference-entity-historical-knowledge-tier.c
+reference	PE:6a70a6d9:02711000	profession-raw-title-available	0x30cea0	0x30cf63	reference-profession-raw-title-available.asm	0x30cf63	data/extracted/legends-entity-introduction/reference-profession-raw-title-available.c
+reference	PE:6a70a6d9:02711000	profession-raw-title-selection	0x30cf70	0x30d0e4	reference-profession-raw-title-selection.asm	0x30d0e4	data/extracted/legends-entity-introduction/reference-profession-raw-title-selection.c
+reference	PE:6a70a6d9:02711000	profession-raw-creature-title	0x1bb330	0x1bb3fc	reference-profession-raw-creature-title.asm	0x1bb3fc	data/extracted/legends-entity-introduction/reference-profession-raw-creature-title.c
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x757174	reference-sphere-token.asm	0x75737c	data/extracted/legends-entity-introduction/reference-sphere-token.c
+reference	PE:6a70a6d9:02711000	figure-description	0xc2b870	0xc2cea8	reference-figure-description.asm	0xc2ced3	data/extracted/symbol-picker-descriptions/reference-figure-native-description.c
+reference	PE:6a70a6d9:02711000	figure-birth-year	0xb92640	0xb928f4	reference-figure-birth-year.asm	0xb928f4	data/extracted/symbol-picker-descriptions/reference-figure-native-birth-year.c
+reference	PE:6a70a6d9:02711000	figure-subject-pronoun	0xaa4730	0xaa47a4	reference-figure-subject-pronoun.asm	0xaa47a4	data/extracted/symbol-picker-descriptions/reference-figure-native-subject-pronoun.c
+reference	PE:6a70a6d9:02711000	figure-possessive-pronoun	0xaa4850	0xaa48be	reference-figure-possessive-pronoun.asm	0xaa48be	data/extracted/symbol-picker-descriptions/reference-figure-native-possessive-pronoun.c
+reference	PE:6a70a6d9:02711000	figure-child-relation	0x75a580	0x75ab80	reference-figure-child-relation.asm	0x75ad31	data/extracted/symbol-picker-descriptions/reference-figure-native-child-relation.c
+reference	PE:6a70a6d9:02711000	figure-child-order	0xbb2f30	0xbb313d	reference-figure-child-order.asm	0xbb313d	data/extracted/symbol-picker-descriptions/reference-figure-native-child-order.c
+reference	PE:6a70a6d9:02711000	figure-creature-noun	0xaa3bd0	0xaa3d93	reference-figure-creature-noun.asm	0xaa3d93	data/extracted/symbol-picker-descriptions/reference-figure-native-creature-noun.c
+reference	PE:6a70a6d9:02711000	figure-english-word	0xd2cb50	0xd2cc1c	reference-figure-english-word.asm	0xd2cc40	data/extracted/symbol-picker-descriptions/reference-figure-native-english-word.c
+reference	PE:6a70a6d9:02711000	figure-capitalize-name	0x52d3c0	0x52d600	reference-figure-capitalize-name.asm	0x52d648	data/extracted/symbol-picker-descriptions/reference-figure-native-capitalize-name.c
+reference	PE:6a70a6d9:02711000	historical-figure-lookup	0x67dc0	0x67e30	reference-historical-figure-lookup.asm	0x67e30	
+reference	PE:6a70a6d9:02711000	figure-knowledge-tier	0xb95270	0xb95333	reference-figure-knowledge-tier.asm	0xb95333	
+reference	PE:6a70a6d9:02711000	site-lookup	0x7db20	0x7dbd6	reference-site-lookup.asm	0x7dbd6	
+reference	PE:6a70a6d9:02711000	site-name	0xb93930	0xb93a8a	reference-site-name.asm	0xb93a8a	data/extracted/adventure-story-narrative/reference-history-supplier-b93930.c
+reference	PE:6a70a6d9:02711000	site-adjective	0x10cbe10	0x10cbe4b	reference-site-adjective.asm	0x10cbe4b	
+reference	PE:6a70a6d9:02711000	site-type	0x10cbe50	0x10cc160	reference-site-type.asm	0x10cc18c	
+reference	PE:6a70a6d9:02711000	site-knowledge-tier	0x1081f60	0x1082054	reference-site-knowledge-tier.asm	0x1082054	
+reference	PE:6a70a6d9:02711000	artifact-name	0xb94400	0xb94710	reference-artifact-name.asm	0xb94710	data/extracted/adventure-story-narrative/reference-history-supplier-b94400.c
+reference	PE:6a70a6d9:02711000	artifact-knowledge-tier	0xb95340	0xb95430	reference-artifact-knowledge-tier.asm	0xb95430	
+reference	PE:6a70a6d9:02711000	subregion-name	0xb94a40	0xb94b97	reference-subregion-name.asm	0xb94b97	data/extracted/adventure-story-narrative/reference-history-supplier-b94a40.c
+reference	PE:6a70a6d9:02711000	subregion-knowledge-tier	0xb95630	0xb95714	reference-subregion-knowledge-tier.asm	0xb95714	
+reference	PE:6a70a6d9:02711000	underground-name	0xb94940	0xb94a36	reference-underground-name.asm	0xb94a36	data/extracted/adventure-story-narrative/reference-history-supplier-b94940.c
+reference	PE:6a70a6d9:02711000	underground-knowledge-tier	0xb95430	0xb95524	reference-underground-knowledge-tier.asm	0xb95524	
+reference	PE:6a70a6d9:02711000	population-name	0xb94ba0	0xb94ecf	reference-population-name.asm	0xb94ecf	
+reference	PE:6a70a6d9:02711000	population-knowledge-tier	0xb95530	0xb95624	reference-population-knowledge-tier.asm	0xb95624	
+reference	PE:6a70a6d9:02711000	building-name	0xb94090	0xb943c0	reference-building-name.asm	0xb943f8	data/extracted/adventure-story-narrative/reference-history-supplier-b94090.c
+reference	PE:6a70a6d9:02711000	building-knowledge-tier	0xb95170	0xb95268	reference-building-knowledge-tier.asm	0xb95268	
+reference	PE:6a70a6d9:02711000	knowledge-dance-form	0x4ea820	0x4ee5d4	reference-knowledge-dance-form.asm	0x4eeb08	data/extracted/adventure-reading-popup/reference-decompiled.c
+reference	PE:6a70a6d9:02711000	chapter-cardinal	0x52e360	0x52eafc	reference-chapter-cardinal.asm	0x52eb6c	data/extracted/adventure-reading-popup/reference-decompiled.c
+reference	PE:6a70a6d9:02711000	chapter-ordinal	0x52eb70	0x52f040	reference-chapter-ordinal.asm	0x52f090	data/extracted/adventure-reading-popup/reference-decompiled.c
+reference	PE:6a70a6d9:02711000	written-work-style	0xcc5520	0xcc5d08	reference-written-work-style.asm	0xcc5d50	data/extracted/adventure-reading-popup/reference-decompiled.c
+reference	PE:6a70a6d9:02711000	written-work-content	0xcc5d50	0xcc69a0	reference-written-work-content.asm	0xcc6a0e	data/extracted/adventure-reading-popup/reference-decompiled.c
+reference	PE:6a70a6d9:02711000	knowledge-musical-form	0xdd5ce0	0xddcd04	reference-knowledge-musical-form.asm	0xddd464	data/extracted/adventure-reading-popup/reference-decompiled.c
+reference	PE:6a70a6d9:02711000	knowledge-poetic-form	0xe76400	0xe7c860	reference-knowledge-poetic-form.asm	0xe7cec8	data/extracted/adventure-reading-popup/reference-decompiled.c
+classic	PE:6a70b91c:0270a000	instrument-stored-description-writer	0xeb9810	0xec7260	classic-instrument-stored-description-writer.asm	0xec727c	
+classic	PE:6a70b91c:0270a000	instrument-helper-eb4380	0xeb4380	0xeb4850	classic-instrument-helper-eb4380.asm	0xeb486c	
+classic	PE:6a70b91c:0270a000	instrument-helper-eb4160	0xeb4160	0xeb437b	classic-instrument-helper-eb4160.asm	0xeb437b	
+classic	PE:6a70b91c:0270a000	instrument-helper-eb3f60	0xeb3f60	0xeb4159	classic-instrument-helper-eb3f60.asm	0xeb4159	
+classic	PE:6a70b91c:0270a000	instrument-helper-eb2f60	0xeb2f60	0xeb36d0	classic-instrument-helper-eb2f60.asm	0xeb36d0	
+classic	PE:6a70b91c:0270a000	instrument-helper-eb36d0	0xeb36d0	0xeb3a53	classic-instrument-helper-eb36d0.asm	0xeb3a53	
+classic	PE:6a70b91c:0270a000	instrument-helper-eb3dd0	0xeb3dd0	0xeb3ee4	classic-instrument-helper-eb3dd0.asm	0xeb3f60	
+classic	PE:6a70b91c:0270a000	instrument-helper-eb1f50	0xeb1f50	0xeb24eb	classic-instrument-helper-eb1f50.asm	0xeb24eb	
+classic	PE:6a70b91c:0270a000	instrument-helper-eb3a60	0xeb3a60	0xeb3dce	classic-instrument-helper-eb3a60.asm	0xeb3dce	
+classic	PE:6a70b91c:0270a000	instrument-timbre-qualities-77a940	0x77a940	0x77ae90	classic-instrument-timbre-qualities-77a940.asm	0x77af8c	
+classic	PE:6a70b91c:0270a000	instrument-helper-eb1d90	0xeb1d90	0xeb1f34	classic-instrument-helper-eb1d90.asm	0xeb1f50	
+classic	PE:6a70b91c:0270a000	instrument-timbre-qualities-77af90	0x77af90	0x77b4e0	classic-instrument-timbre-qualities-77af90.asm	0x77b5dc	
+classic	PE:6a70b91c:0270a000	instrument-helper-eb1820	0xeb1820	0xeb1a03	classic-instrument-helper-eb1820.asm	0xeb1a03	
+classic	PE:6a70b91c:0270a000	instrument-helper-eb2940	0xeb2940	0xeb2f5e	classic-instrument-helper-eb2940.asm	0xeb2f5e	
+classic	PE:6a70b91c:0270a000	instrument-helper-eb24f0	0xeb24f0	0xeb283c	classic-instrument-helper-eb24f0.asm	0xeb2940	
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8f45c	classic-history-describe-complete.asm	0xb8f674	data/extracted/legends-entity-introduction/classic-history-describe-complete.c
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x870428	classic-chooser-description-producer.asm	0x87056c	data/extracted/legends-entity-introduction/classic-chooser-description-producer.c
+classic	PE:6a70b91c:0270a000	entity-lookup	0x7da80	0x7daa5	classic-entity-lookup.asm	0x7daa5	data/extracted/legends-entity-introduction/classic-entity-lookup.c
+classic	PE:6a70b91c:0270a000	entity-name-and-confidence	0xb8f940	0xb8fab8	classic-entity-name-and-confidence.asm	0xb8fab8	data/extracted/legends-entity-introduction/classic-entity-name-and-confidence.c
+classic	PE:6a70b91c:0270a000	species-name	0xb91f10	0xb9205c	classic-species-name.asm	0xb9205c	data/extracted/legends-entity-introduction/classic-species-name.c
+classic	PE:6a70b91c:0270a000	knowledge-confidence-paragraph	0xb92760	0xb927ea	classic-knowledge-confidence-paragraph.asm	0xb927ea	data/extracted/legends-entity-introduction/classic-knowledge-confidence-paragraph.c
+classic	PE:6a70b91c:0270a000	world-name	0xa91760	0xa91f22	classic-world-name.asm	0xa91f22	data/extracted/legends-entity-introduction/classic-world-name.c
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1328e08	classic-profession-title.asm	0x1329024	data/extracted/legends-entity-introduction/classic-profession-title.c
+classic	PE:6a70b91c:0270a000	historical-figure-name-and-confidence	0xb8ff50	0xb90967	classic-historical-figure-name-and-confidence.asm	0xb90967	data/extracted/legends-entity-introduction/classic-historical-figure-name-and-confidence.c
+classic	PE:6a70b91c:0270a000	historical-figure-derived-species	0xaa07f0	0xaa08e8	classic-historical-figure-derived-species.asm	0xaa08e8	data/extracted/legends-entity-introduction/classic-historical-figure-derived-species.c
+classic	PE:6a70b91c:0270a000	sphere-name	0x753f20	0x754034	classic-sphere-name.asm	0x7540a8	data/extracted/legends-entity-introduction/classic-sphere-name.c
+classic	PE:6a70b91c:0270a000	force-is-known	0x5c1180	0x5c1241	classic-force-is-known.asm	0x5c1241	data/extracted/legends-entity-introduction/classic-force-is-known.c
+classic	PE:6a70b91c:0270a000	entity-historical-knowledge-tier	0x933c10	0x933cf4	classic-entity-historical-knowledge-tier.asm	0x933cf4	data/extracted/legends-entity-introduction/classic-entity-historical-knowledge-tier.c
+classic	PE:6a70b91c:0270a000	profession-raw-title-available	0x30aa60	0x30ab23	classic-profession-raw-title-available.asm	0x30ab23	data/extracted/legends-entity-introduction/classic-profession-raw-title-available.c
+classic	PE:6a70b91c:0270a000	profession-raw-title-selection	0x30ab30	0x30aca4	classic-profession-raw-title-selection.asm	0x30aca4	data/extracted/legends-entity-introduction/classic-profession-raw-title-selection.c
+classic	PE:6a70b91c:0270a000	profession-raw-creature-title	0x1bb2c0	0x1bb38c	classic-profession-raw-creature-title.asm	0x1bb38c	data/extracted/legends-entity-introduction/classic-profession-raw-creature-title.c
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754b94	classic-sphere-token.asm	0x754d9c	data/extracted/legends-entity-introduction/classic-sphere-token.c
+classic	PE:6a70b91c:0270a000	figure-description	0xc288b0	0xc29ee8	classic-figure-description.asm	0xc29f13	data/extracted/symbol-picker-descriptions/classic-figure-native-description.c
+classic	PE:6a70b91c:0270a000	figure-birth-year	0xb8f680	0xb8f934	classic-figure-birth-year.asm	0xb8f934	data/extracted/symbol-picker-descriptions/classic-figure-native-birth-year.c
+classic	PE:6a70b91c:0270a000	figure-subject-pronoun	0xaa17b0	0xaa1824	classic-figure-subject-pronoun.asm	0xaa1824	data/extracted/symbol-picker-descriptions/classic-figure-native-subject-pronoun.c
+classic	PE:6a70b91c:0270a000	figure-possessive-pronoun	0xaa18d0	0xaa193e	classic-figure-possessive-pronoun.asm	0xaa193e	data/extracted/symbol-picker-descriptions/classic-figure-native-possessive-pronoun.c
+classic	PE:6a70b91c:0270a000	figure-child-relation	0x757fa0	0x7585a0	classic-figure-child-relation.asm	0x758751	data/extracted/symbol-picker-descriptions/classic-figure-native-child-relation.c
+classic	PE:6a70b91c:0270a000	figure-child-order	0xbaff70	0xbb017d	classic-figure-child-order.asm	0xbb017d	data/extracted/symbol-picker-descriptions/classic-figure-native-child-order.c
+classic	PE:6a70b91c:0270a000	figure-creature-noun	0xaa0c50	0xaa0e13	classic-figure-creature-noun.asm	0xaa0e13	data/extracted/symbol-picker-descriptions/classic-figure-native-creature-noun.c
+classic	PE:6a70b91c:0270a000	figure-english-word	0xd29b90	0xd29c5c	classic-figure-english-word.asm	0xd29c80	data/extracted/symbol-picker-descriptions/classic-figure-native-english-word.c
+classic	PE:6a70b91c:0270a000	figure-capitalize-name	0x52ade0	0x52b020	classic-figure-capitalize-name.asm	0x52b068	data/extracted/symbol-picker-descriptions/classic-figure-native-capitalize-name.c
+classic	PE:6a70b91c:0270a000	historical-figure-lookup	0x67d50	0x67dc0	classic-historical-figure-lookup.asm	0x67dc0	
+classic	PE:6a70b91c:0270a000	figure-knowledge-tier	0xb922b0	0xb92373	classic-figure-knowledge-tier.asm	0xb92373	
+classic	PE:6a70b91c:0270a000	site-lookup	0x7dab0	0x7db66	classic-site-lookup.asm	0x7db66	
+classic	PE:6a70b91c:0270a000	site-name	0xb90970	0xb90aca	classic-site-name.asm	0xb90aca	data/extracted/adventure-story-narrative/classic-history-supplier-b90970.c
+classic	PE:6a70b91c:0270a000	site-adjective	0x10c6d80	0x10c6dbb	classic-site-adjective.asm	0x10c6dbb	
+classic	PE:6a70b91c:0270a000	site-type	0x10c6dc0	0x10c70d0	classic-site-type.asm	0x10c70fc	
+classic	PE:6a70b91c:0270a000	site-knowledge-tier	0x107ced0	0x107cfc4	classic-site-knowledge-tier.asm	0x107cfc4	
+classic	PE:6a70b91c:0270a000	artifact-name	0xb91440	0xb91750	classic-artifact-name.asm	0xb91750	data/extracted/adventure-story-narrative/classic-history-supplier-b91440.c
+classic	PE:6a70b91c:0270a000	artifact-knowledge-tier	0xb92380	0xb92470	classic-artifact-knowledge-tier.asm	0xb92470	
+classic	PE:6a70b91c:0270a000	subregion-name	0xb91a80	0xb91bd7	classic-subregion-name.asm	0xb91bd7	data/extracted/adventure-story-narrative/classic-history-supplier-b91a80.c
+classic	PE:6a70b91c:0270a000	subregion-knowledge-tier	0xb92670	0xb92754	classic-subregion-knowledge-tier.asm	0xb92754	
+classic	PE:6a70b91c:0270a000	underground-name	0xb91980	0xb91a76	classic-underground-name.asm	0xb91a76	data/extracted/adventure-story-narrative/classic-history-supplier-b91980.c
+classic	PE:6a70b91c:0270a000	underground-knowledge-tier	0xb92470	0xb92564	classic-underground-knowledge-tier.asm	0xb92564	
+classic	PE:6a70b91c:0270a000	population-name	0xb91be0	0xb91f0f	classic-population-name.asm	0xb91f0f	
+classic	PE:6a70b91c:0270a000	population-knowledge-tier	0xb92570	0xb92664	classic-population-knowledge-tier.asm	0xb92664	
+classic	PE:6a70b91c:0270a000	building-name	0xb910d0	0xb91400	classic-building-name.asm	0xb91438	data/extracted/adventure-story-narrative/classic-history-supplier-b910d0.c
+classic	PE:6a70b91c:0270a000	building-knowledge-tier	0xb921b0	0xb922a8	classic-building-knowledge-tier.asm	0xb922a8	
+classic	PE:6a70b91c:0270a000	knowledge-dance-form	0x4e83e0	0x4ec194	classic-knowledge-dance-form.asm	0x4ec6c8	data/extracted/adventure-reading-popup/classic-decompiled.c
+classic	PE:6a70b91c:0270a000	chapter-cardinal	0x52bd80	0x52c51c	classic-chapter-cardinal.asm	0x52c58c	data/extracted/adventure-reading-popup/classic-decompiled.c
+classic	PE:6a70b91c:0270a000	chapter-ordinal	0x52c590	0x52ca60	classic-chapter-ordinal.asm	0x52cab0	data/extracted/adventure-reading-popup/classic-decompiled.c
+classic	PE:6a70b91c:0270a000	written-work-style	0xcc2560	0xcc2d48	classic-written-work-style.asm	0xcc2d90	data/extracted/adventure-reading-popup/classic-decompiled.c
+classic	PE:6a70b91c:0270a000	written-work-content	0xcc2d90	0xcc39e0	classic-written-work-content.asm	0xcc3a4e	data/extracted/adventure-reading-popup/classic-decompiled.c
+classic	PE:6a70b91c:0270a000	knowledge-musical-form	0xdd0c50	0xdd7c74	classic-knowledge-musical-form.asm	0xdd83d4	data/extracted/adventure-reading-popup/classic-decompiled.c
+classic	PE:6a70b91c:0270a000	knowledge-poetic-form	0xe71370	0xe777d0	classic-knowledge-poetic-form.asm	0xe77e38	data/extracted/adventure-reading-popup/classic-decompiled.c

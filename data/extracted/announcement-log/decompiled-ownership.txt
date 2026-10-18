@@ -1,5 +1,9 @@
 Source: configured Steam PE:6a70a6d9:02711000 and classic PE:6a70b91c:0270a000.
 Full instruction bodies and literal/call operands accompany this reconstruction.
+Complete Ghidra C bodies are retained in reference-883f40.c / classic-8817c0.c
+and reference-234ad0.c / classic-234a60.c, extracted directly from the two
+configured PE images by tools/DecompileAnnouncementLog.java. The latter pair
+are the settings-title constructors rather than announcement text producers.
 
 Compact Announcements/Done renderer:
   Steam RVA 883f40..884458; classic RVA 8817c0..881cd8.

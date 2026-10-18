@@ -17,7 +17,7 @@ struct NativeDfhackSitemapLuaApi {
     NativeDfhackLuaCFunction paint_string = nullptr;
     std::string painter_source, list_source, filtered_source, sitemap_source, notify_source, zone_source;
     std::string label_source, cycle_source, overlay_source, asyncexport_source, prioritize_source;
-    std::string filterselection_source, planner_source;
+    std::string filterselection_source, planner_source, mechanisms_source, itemselection_source;
     std::string wrapped_source, control_panel_source, movegoods_source;
 };
 static NativeDfhackSitemapLuaApi g_native_dfhack_sitemap_lua_api;
@@ -333,7 +333,8 @@ static std::vector<NativeDfhackOverlayText> native_dfhack_overlay_texts(
             }
             ++current_length;
         }
-        const bool scrollbar_clipped = text.overlay.role == NativeDfhackOverlayTextRole::Material &&
+        const bool scrollbar_clipped = (text.overlay.role == NativeDfhackOverlayTextRole::Material ||
+            text.overlay.role == NativeDfhackOverlayTextRole::Item) &&
             current_length > 0 && text.visible.size() - current_length <= 2;
         if (current || scrollbar_clipped) {
             auto overlay = text.overlay;
@@ -674,6 +675,26 @@ static bool native_dfhack_overlay_bound_callback(NativeDfhackLuaState *state,
         api.rawequal(state, -1, parent) && !api.getupvalue(state, curried, 4);
 }
 
+// MechanismOverlay's two HotkeyLabel callbacks return a complete readable
+// item description, or one of its three heat-safety unavailability messages.
+// Prove the authored callback before treating the text as an item; its key,
+// safety caption and selected option are independent Label tokens.
+static bool native_dfhack_overlay_mechanism_item(NativeDfhackLuaState *state,
+        int token, std::string_view overlay_name) {
+    const auto &api = g_native_dfhack_sitemap_lua_api;
+    const auto &stack = api.stack;
+    NativeDfhackOverlayLuaStackRestore restore{state, stack.gettop(state)};
+    if (overlay_name != "buildingplan.mechanisms" ||
+            !native_dfhack_sitemap_raw_field(state, token, "text") ||
+            stack.type(state, -1) != 6 || stack.tocfunction(state, -1)) return false;
+    NativeDfhackLuaDebug producer{};
+    if (!stack.getinfo(state, ">Su", &producer) || producer.nparams != 0 || producer.isvararg ||
+            !((producer.linedefined == 73 && producer.lastlinedefined == 77) ||
+              (producer.linedefined == 85 && producer.lastlinedefined == 89))) return false;
+    const auto source = native_dfhack_lua_text(producer.source, 32768);
+    return source && native_dfhack_lua_source_key(*source) == api.mechanisms_source;
+}
+
 static void native_dfhack_overlay_quick_filter(NativeDfhackLuaState *state,
         int token, int widget, NativeDfhackOverlayText &result) {
     const auto &api = g_native_dfhack_sitemap_lua_api;
@@ -817,6 +838,10 @@ static std::optional<NativeDfhackOverlayText> native_dfhack_overlay_label_text(
                 result.overlay_name, painted_full)) result.full = std::move(*complete);
         result.option_name = native_dfhack_overlay_builder_name(state, token, widget,
             result.overlay_name);
+        if (native_dfhack_overlay_mechanism_item(state, token, result.overlay_name)) {
+            result.role = NativeDfhackOverlayTextRole::Item;
+            return result;
+        }
     }
     native_dfhack_overlay_quick_filter(state, token, widget, result);
     if (result.quick_filter_label || result.quick_filter_clear) return result;
@@ -912,9 +937,22 @@ static std::optional<NativeDfhackOverlayText> native_dfhack_buildingplan_list_te
         return value ? std::move(*value) : std::string{};
     };
     bool material_list = false, category_list = false, material_page = false, filter_screen = false;
+    bool item_list = false, item_page = false, item_screen = false;
     int parent = widget;
     for (int depth = 0; depth < 16; ++depth) {
         const auto view_id = string_field(parent, "view_id");
+        if (view_id == "flist") {
+            const int top = stack.gettop(state);
+            item_list = native_dfhack_sitemap_raw_field(state, parent, "list") &&
+                stack.type(state, -1) == 5 && api.rawequal(state, -1, widget);
+            stack.settop(state, top);
+        }
+        item_page = item_page ||
+            native_dfhack_overlay_class_method(state, parent, "init", api.itemselection_source, 83);
+        item_screen = item_screen ||
+            (string_field(parent, "focus_path") ==
+                "dwarfmode/Building/Placement/dfhack/lua/buildingplan/itemselection" &&
+             native_dfhack_overlay_class_method(state, parent, "init", api.itemselection_source, 431));
         if (parent == widget && view_id == "materials_categories") category_list = true;
         if (view_id == "materials_mats") {
             const int top = stack.gettop(state);
@@ -932,6 +970,30 @@ static std::optional<NativeDfhackOverlayText> native_dfhack_buildingplan_list_te
         if (!native_dfhack_sitemap_raw_field(state, parent, "parent_view") ||
                 stack.type(state, -1) != 5) break;
         parent = stack.gettop(state);
+    }
+    if (item_list && item_page && item_screen) {
+        NativeDfhackOverlayText result;
+        result.full.assign(painted_full);
+        result.widget_id = reinterpret_cast<uintptr_t>(api.topointer(state, widget));
+        result.overlay_name = "buildingplan.itemselection";
+        result.view_id = "flist";
+        result.role = NativeDfhackOverlayTextRole::Key;
+        if (key_draw) return result;
+        stack.settop(state, row);
+        if (!native_dfhack_sitemap_raw_field(state, row, "data") || stack.type(state, -1) != 5)
+            return std::nullopt;
+        const std::string description = string_field(stack.gettop(state), "desc");
+        stack.settop(state, row);
+        if (!native_dfhack_overlay_local(state, render, "token") || stack.type(state, -1) != 5)
+            return std::nullopt;
+        // get_choices preserves numbers/value in separate fixed-width
+        // tokens. Only its final static data.desc token is item prose.
+        if (!description.empty() && string_field(stack.gettop(state), "text") == description &&
+                description.starts_with(painted_full)) {
+            result.full = description;
+            result.role = NativeDfhackOverlayTextRole::Item;
+        }
+        return result;
     }
     if (!material_page || !filter_screen || (material_list == category_list)) return std::nullopt;
     NativeDfhackOverlayText result;
@@ -1411,6 +1473,8 @@ static bool bind_native_dfhack_sitemap_lua(HMODULE module) {
     api.prioritize_source = key(hack / L"scripts" / L"prioritize.lua");
     api.filterselection_source = key(hack / L"lua" / L"plugins" / L"buildingplan" / L"filterselection.lua");
     api.planner_source = key(hack / L"lua" / L"plugins" / L"buildingplan" / L"planneroverlay.lua");
+    api.mechanisms_source = key(hack / L"lua" / L"plugins" / L"buildingplan" / L"mechanisms.lua");
+    api.itemselection_source = key(hack / L"lua" / L"plugins" / L"buildingplan" / L"itemselection.lua");
     g_native_dfhack_sitemap_lua_api = std::move(api);
     g_native_dfhack_sitemap_lua_bound.store(true, std::memory_order_release);
     return true;

@@ -1,0 +1,161 @@
+edition	role	owner_rva	instruction_rva	literal_rva	kind	text
+reference	fill-item	0x8360a0	0x8362d5	0x16b0e70	cstring	You fill your 
+reference	fill-item	0x8360a0	0x8362e2	0x16b0e78	cstring	 your 
+reference	fill-item	0x8360a0	0x8362eb	0x16b0e7c	cstring	r 
+reference	fill-item	0x8360a0	0x836330	0x15ee5e0	cstring	 with 
+reference	fill-item	0x8360a0	0x836376	0x15e85b4	cstring	.
+reference	fill-item	0x8360a0	0x8364a7	0x16b0f64	cstring	Your 
+reference	fill-item	0x8360a0	0x8364b0	0x16b0f68	cstring	 
+reference	fill-item	0x8360a0	0x8364f4	0x16b0f50	cstring	 is already full.
+reference	fill-item	0x8360a0	0x8365ef	0x16b0f28	bytes	It won't fit in 
+reference	fill-item	0x8360a0	0x8365f9	0x16b0f38	cstring	your 
+reference	fill-item	0x8360a0	0x836602	0x16b0f3c	cstring	 
+reference	fill-item	0x8360a0	0x83664a	0x15e85b4	cstring	.
+reference	fill-item	0x8360a0	0x8367e7	0x16b0f40	cstring	 is empty.
+reference	heat-liquid	0x836b20	0x836bd6		inline	['
+reference	heat-liquid	0x836b20	0x836c46	0x15ed9bc	cstring	The 
+reference	heat-liquid	0x836b20	0x836c8d	0x16b0f10	cstring	 is hot enough already.
+reference	heat-liquid	0x836b20	0x836da1	0x16b0ef8	cstring	You heat the 
+reference	heat-liquid	0x836b20	0x836dae	0x16b0f00	cstring	 the 
+reference	heat-liquid	0x836b20	0x836db7	0x16b0f04	cstring	 
+reference	heat-liquid	0x836b20	0x836dfc	0x15e85b4	cstring	.
+reference	heat-liquid	0x836b20	0x836f82	0x16b0ef8	cstring	You heat the 
+reference	heat-liquid	0x836b20	0x836f8f	0x16b0f00	cstring	 the 
+reference	heat-liquid	0x836b20	0x836f98	0x16b0f04	cstring	 
+reference	heat-liquid	0x836b20	0x836fdd	0x16b0ee8	cstring	 to no effect.
+reference	fill-liquid	0x837150	0x8374c2	0x16b0e70	cstring	You fill your 
+reference	fill-liquid	0x837150	0x837509	0x15ee5e0	cstring	 with 
+reference	fill-liquid	0x837150	0x837792	0x15edb24	cstring	's 
+reference	fill-liquid	0x837150	0x83782e	0x15e873c	cstring	 
+reference	fill-liquid	0x837150	0x83785f	0x1789108	cstring	unknown material
+reference	fill-liquid	0x837150	0x837896	0x15e873c	cstring	 
+reference	fill-liquid	0x837150	0x83799e	0x16b1070	cstring	stagnant 
+reference	fill-liquid	0x837150	0x8379b8	0x16b1024	cstring	salt 
+reference	fill-liquid	0x837150	0x837a2c	0x15e85b4	cstring	.
+reference	fill-liquid	0x837150	0x837ba2	0x16b0f64	cstring	Your 
+reference	fill-liquid	0x837150	0x837bab	0x16b0f68	cstring	 
+reference	fill-liquid	0x837150	0x837bf0	0x16b0f50	cstring	 is already full.
+reference	fill-liquid	0x837150	0x837ce9	0x16b0f28	cstring	It won't fit in your 
+reference	fill-liquid	0x837150	0x837d30	0x15e85b4	cstring	.
+reference	empty-item	0x894b00	0x894c39	0x16b4438	cstring	You empty 
+reference	empty-item	0x894b00	0x894c46	0x16b4440	cstring	y 
+reference	empty-item	0x894b00	0x894ef0	0x16b4428	cstring	You drop 
+reference	empty-item	0x894b00	0x894efd	0x16b4430	cstring	 
+reference	remove-empty-item	0x8956d0	0x895810	0x16b43c8	cstring	You empty the 
+reference	remove-empty-item	0x8956d0	0x8959fe	0x16b43f8	bytes	You take out the
+reference	remove-empty-item	0x8956d0	0x895a08	0x16b4408	cstring	 
+reference	remove-empty-item	0x8956d0	0x895c67	0x16b43e8	cstring	You take off 
+reference	consume	0x895fd0	0x8961f1	0x16b4c08	cstring	You eat the 
+reference	consume	0x895fd0	0x8961fe	0x16b4c10	cstring	the 
+reference	consume	0x895fd0	0x89652b	0x16b4bf8	cstring	You drink the 
+reference	consume	0x895fd0	0x896538	0x16b4c00	cstring	k the 
+reference	consume	0x895fd0	0x896541	0x16b4c04	cstring	e 
+reference	consume	0x895fd0	0x8968ab		inline	The 
+reference	consume	0x895fd0	0x8968ec	0x16b4c28	cstring	 is too salty.
+reference	consume	0x895fd0	0x896a5a	0x15ed9bc	cstring	The 
+reference	consume	0x895fd0	0x896aa0	0x16b4c18	cstring	 is too hot.
+reference	consume	0x895fd0	0x896b8c		inline	The 
+reference	consume	0x895fd0	0x896bcd	0x16b4bb0	cstring	 is too cold.
+reference	consume	0x895fd0	0x896d83	0x16b4be0	bytes	No.  That's disg
+reference	consume	0x895fd0	0x896d8d	0x16b4bf0	cstring	usting.
+reference	consume	0x895fd0	0x896d96	0x16b4bf4	cstring	ng.
+reference	consume	0x895fd0	0x896da1	0x16b4bf6	cstring	.
+reference	consume	0x895fd0	0x896e60	0x16b4bc0	bytes	You just can't f
+reference	consume	0x895fd0	0x896e6a	0x16b4bd0	cstring	it any more.
+reference	consume	0x895fd0	0x896e77	0x16b4bd8	cstring	ore.
+reference	consume	0x895fd0	0x896fef	0x16b4ca8	bytes	It's too much!  
+reference	consume	0x895fd0	0x896ff9	0x16b4cb8	bytes	You feel even mo
+reference	consume	0x895fd0	0x897004	0x16b4cc8	cstring	re sick.
+reference	consume	0x895fd0	0x89708e	0x16b4c70	bytes	It's too much!  
+reference	consume	0x895fd0	0x897098	0x16b4c80	bytes	You might not be
+reference	consume	0x895fd0	0x8970a3	0x16b4c90	bytes	 able to keep it
+reference	consume	0x895fd0	0x8970ae	0x16b4ca0	cstring	 down.
+reference	consume	0x895fd0	0x8970b7	0x16b4ca4	cstring	n.
+reference	consume	0x895fd0	0x897191	0x16b4cf8	bytes	You feel really 
+reference	consume	0x895fd0	0x89719b	0x16b4d08	cstring	full.
+reference	consume	0x895fd0	0x8971a4	0x16b4d0c	cstring	.
+reference	consume	0x895fd0	0x8971ea	0x16b4cd8	bytes	You are starting
+reference	consume	0x895fd0	0x8971f4	0x16b4ce8	cstring	 to feel full.
+reference	consume	0x895fd0	0x897201	0x16b4cf0	cstring	 full.
+reference	consume	0x895fd0	0x89720a	0x16b4cf4	cstring	l.
+reference	consume	0x895fd0	0x8972d3	0x16b4ba0	cstring	You lick the 
+classic	fill-item	0x833920	0x833b55	0x16abff8	cstring	You fill your 
+classic	fill-item	0x833920	0x833b62	0x16ac000	cstring	 your 
+classic	fill-item	0x833920	0x833b6b	0x16ac004	cstring	r 
+classic	fill-item	0x833920	0x833bb0	0x15e9590	cstring	 with 
+classic	fill-item	0x833920	0x833bf6	0x15e3574	cstring	.
+classic	fill-item	0x833920	0x833d27	0x16abfc4	cstring	Your 
+classic	fill-item	0x833920	0x833d30	0x16abfc8	cstring	 
+classic	fill-item	0x833920	0x833d74	0x16abfb0	cstring	 is already full.
+classic	fill-item	0x833920	0x833e6f	0x16abf88	bytes	It won't fit in 
+classic	fill-item	0x833920	0x833e79	0x16abf98	cstring	your 
+classic	fill-item	0x833920	0x833e82	0x16abf9c	cstring	 
+classic	fill-item	0x833920	0x833eca	0x15e3574	cstring	.
+classic	fill-item	0x833920	0x834067	0x16abfa0	cstring	 is empty.
+classic	heat-liquid	0x8343a0	0x834456		inline	['
+classic	heat-liquid	0x8343a0	0x8344c6	0x15e89c4	cstring	The 
+classic	heat-liquid	0x8343a0	0x83450d	0x16abe80	cstring	 is hot enough already.
+classic	heat-liquid	0x8343a0	0x834621	0x16abe68	cstring	You heat the 
+classic	heat-liquid	0x8343a0	0x83462e	0x16abe70	cstring	 the 
+classic	heat-liquid	0x8343a0	0x834637	0x16abe74	cstring	 
+classic	heat-liquid	0x8343a0	0x83467c	0x15e3574	cstring	.
+classic	heat-liquid	0x8343a0	0x834802	0x16abe68	cstring	You heat the 
+classic	heat-liquid	0x8343a0	0x83480f	0x16abe70	cstring	 the 
+classic	heat-liquid	0x8343a0	0x834818	0x16abe74	cstring	 
+classic	heat-liquid	0x8343a0	0x83485d	0x16abe58	cstring	 to no effect.
+classic	fill-liquid	0x8349d0	0x834d42	0x16abff8	cstring	You fill your 
+classic	fill-liquid	0x8349d0	0x834d89	0x15e9590	cstring	 with 
+classic	fill-liquid	0x8349d0	0x835012	0x15e8b58	cstring	's 
+classic	fill-liquid	0x8349d0	0x8350ae	0x15e3720	cstring	 
+classic	fill-liquid	0x8349d0	0x8350df	0x1782ab0	cstring	unknown material
+classic	fill-liquid	0x8349d0	0x835116	0x15e3720	cstring	 
+classic	fill-liquid	0x8349d0	0x83521e	0x16ab578	cstring	stagnant 
+classic	fill-liquid	0x8349d0	0x835238	0x16abf64	cstring	salt 
+classic	fill-liquid	0x8349d0	0x8352ac	0x15e3574	cstring	.
+classic	fill-liquid	0x8349d0	0x835422	0x16abfc4	cstring	Your 
+classic	fill-liquid	0x8349d0	0x83542b	0x16abfc8	cstring	 
+classic	fill-liquid	0x8349d0	0x835470	0x16abfb0	cstring	 is already full.
+classic	fill-liquid	0x8349d0	0x835569	0x16abf88	cstring	It won't fit in your 
+classic	fill-liquid	0x8349d0	0x8355b0	0x15e3574	cstring	.
+classic	empty-item	0x892380	0x8924b9	0x16af5a8	cstring	You empty 
+classic	empty-item	0x892380	0x8924c6	0x16af5b0	cstring	y 
+classic	empty-item	0x892380	0x892770	0x16af598	cstring	You drop 
+classic	empty-item	0x892380	0x89277d	0x16af5a0	cstring	 
+classic	remove-empty-item	0x892f50	0x893090	0x16af350	cstring	You empty the 
+classic	remove-empty-item	0x892f50	0x89327e	0x16af380	bytes	You take out the
+classic	remove-empty-item	0x892f50	0x893288	0x16af390	cstring	 
+classic	remove-empty-item	0x892f50	0x8934e7	0x16af370	cstring	You take off 
+classic	consume	0x893850	0x893a71	0x16af320	cstring	You eat the 
+classic	consume	0x893850	0x893a7e	0x16af328	cstring	the 
+classic	consume	0x893850	0x893dab	0x16af310	cstring	You drink the 
+classic	consume	0x893850	0x893db8	0x16af318	cstring	k the 
+classic	consume	0x893850	0x893dc1	0x16af31c	cstring	e 
+classic	consume	0x893850	0x89412b		inline	The 
+classic	consume	0x893850	0x89416c	0x16af340	cstring	 is too salty.
+classic	consume	0x893850	0x8942da	0x15e89c4	cstring	The 
+classic	consume	0x893850	0x894320	0x16af330	cstring	 is too hot.
+classic	consume	0x893850	0x89440c		inline	The 
+classic	consume	0x893850	0x89444d	0x16af448	cstring	 is too cold.
+classic	consume	0x893850	0x894603	0x16af478	bytes	No.  That's disg
+classic	consume	0x893850	0x89460d	0x16af488	cstring	usting.
+classic	consume	0x893850	0x894616	0x16af48c	cstring	ng.
+classic	consume	0x893850	0x894621	0x16af48e	cstring	.
+classic	consume	0x893850	0x8946e0	0x16af458	bytes	You just can't f
+classic	consume	0x893850	0x8946ea	0x16af468	cstring	it any more.
+classic	consume	0x893850	0x8946f7	0x16af470	cstring	ore.
+classic	consume	0x893850	0x89486f	0x16af3d0	bytes	It's too much!  
+classic	consume	0x893850	0x894879	0x16af3e0	bytes	You feel even mo
+classic	consume	0x893850	0x894884	0x16af3f0	cstring	re sick.
+classic	consume	0x893850	0x89490e	0x16af398	bytes	It's too much!  
+classic	consume	0x893850	0x894918	0x16af3a8	bytes	You might not be
+classic	consume	0x893850	0x894923	0x16af3b8	bytes	 able to keep it
+classic	consume	0x893850	0x89492e	0x16af3c8	cstring	 down.
+classic	consume	0x893850	0x894937	0x16af3cc	cstring	n.
+classic	consume	0x893850	0x894a11	0x16af420	bytes	You feel really 
+classic	consume	0x893850	0x894a1b	0x16af430	cstring	full.
+classic	consume	0x893850	0x894a24	0x16af434	cstring	.
+classic	consume	0x893850	0x894a6a	0x16af400	bytes	You are starting
+classic	consume	0x893850	0x894a74	0x16af410	cstring	 to feel full.
+classic	consume	0x893850	0x894a81	0x16af418	cstring	 full.
+classic	consume	0x893850	0x894a8a	0x16af41c	cstring	l.
+classic	consume	0x893850	0x894b53	0x16af438	cstring	You lick the 

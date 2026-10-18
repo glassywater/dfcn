@@ -94,7 +94,9 @@ std::optional<std::string> Overlay::translate_symbol_element(
     for (char &ch : source)
         if (ch == '\x10' || ch == '\x11') ch = '"';
     if (const auto found = symbol_element_cache_.find(source);
-        found != symbol_element_cache_.end()) return found->second;
+        !translation_work_exhausted() && !native_announcement_log_item_field_active() &&
+        found != symbol_element_cache_.end())
+        return found->second;
     auto complete = [&](const std::optional<std::string> &target) {
         return translation_complete_with_native_nicknames(target, source);
     };
@@ -270,8 +272,10 @@ std::optional<std::string> Overlay::translate_symbol_element(
         return std::nullopt;
     };
     auto target = noun(noun, source, 0);
-    if (symbol_element_cache_.size() >= 512) symbol_element_cache_.clear();
-    symbol_element_cache_.emplace(source, target);
+    if (!translation_work_exhausted() && !native_announcement_log_item_field_active()) {
+        if (symbol_element_cache_.size() >= 512) symbol_element_cache_.clear();
+        symbol_element_cache_.emplace(source, target);
+    }
     return target;
 }
 
@@ -370,10 +374,14 @@ std::optional<std::string> Overlay::translate_symbol_action(
     for (char &ch : source)
         if (ch == '\x10' || ch == '\x11') ch = '"';
     if (const auto found = symbol_action_cache_.find(source);
-        found != symbol_action_cache_.end()) return found->second;
+        !translation_work_exhausted() && !native_announcement_log_item_field_active() &&
+        found != symbol_action_cache_.end())
+        return found->second;
     auto remember = [&](std::optional<std::string> target) {
-        if (symbol_action_cache_.size() >= 512) symbol_action_cache_.clear();
-        symbol_action_cache_.emplace(source, target);
+        if (!translation_work_exhausted() && !native_announcement_log_item_field_active()) {
+            if (symbol_action_cache_.size() >= 512) symbol_action_cache_.clear();
+            symbol_action_cache_.emplace(source, target);
+        }
         return target;
     };
     std::string_view sentence = source;
@@ -451,10 +459,14 @@ std::optional<std::string> Overlay::translate_symbol_description_source(
     for (char &ch : source)
         if (ch == '\x10' || ch == '\x11') ch = '"';
     if (const auto found = symbol_description_cache_.find(source);
-        found != symbol_description_cache_.end()) return found->second;
+        !translation_work_exhausted() && !native_announcement_log_item_field_active() &&
+        found != symbol_description_cache_.end())
+        return found->second;
     auto remember = [&](std::optional<std::string> target) {
-        if (symbol_description_cache_.size() >= 256) symbol_description_cache_.clear();
-        symbol_description_cache_.emplace(source, target);
+        if (!translation_work_exhausted() && !native_announcement_log_item_field_active()) {
+            if (symbol_description_cache_.size() >= 256) symbol_description_cache_.clear();
+            symbol_description_cache_.emplace(source, target);
+        }
         return target;
     };
     constexpr std::string_view introduction = "It is an image of ";

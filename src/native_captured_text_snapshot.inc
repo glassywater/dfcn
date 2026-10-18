@@ -1,3 +1,108 @@
+// Resolve retained main-page captions against the pinned display buffers once,
+// before cache keys, source matching and layout borrow the same registry.
+static void bind_native_drawn_text_frame(const graphicst &graphics) {
+    if (!graphics.screen || graphics.dimx <= 0 || graphics.dimx > 1000 ||
+            graphics.dimy <= 0 || graphics.dimy > 1000) return;
+    const uintptr_t journal_base = native_history_profile_base();
+#ifdef _WIN32
+    const std::array journal_title_callers{
+        native_reference_address(journal_base, 0xc3197),
+        native_reference_address(journal_base, 0xc31d9),
+    };
+    const uintptr_t journal_counter_caller = native_reference_address(journal_base, 0xc3263);
+#else
+    const std::array journal_title_callers{
+        native_reference_address(journal_base, 0x17cf93a),
+        native_reference_address(journal_base, 0x17cf972),
+        native_reference_address(journal_base, 0x17cfd0e),
+    };
+    const uintptr_t journal_counter_caller = native_reference_address(journal_base, 0x17cfa9b);
+#endif
+    std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
+    bool changed = false;
+    const auto bind = [&](NativeDrawnTextRow &row,
+            const std::vector<NativeDrawnTextRow> &draws) {
+        const auto *grid = row.top_layer ? graphics.screen_top : graphics.screen;
+        if (!grid || !row.draw_grid || row.draw_grid == grid ||
+                row.draw_dimx != graphics.dimx || row.draw_dimy != graphics.dimy ||
+                row.x < 0 || row.x >= graphics.dimx || row.y < 0 ||
+                row.y >= graphics.dimy || row.source.empty() ||
+                row.source.size() > static_cast<size_t>(graphics.dimx - row.x)) return;
+        // Native display rotates its buffers independently of retained addst
+        // records. Bind ordinary records only while their ENTIRE source
+        // remains at the same coordinates on the same logical plane. Never read
+        // the old buffer, infer another owner from its spelling, or change the
+        // captured caller, epoch, order, or typed identity/name metadata.
+        bool current = true;
+        for (size_t byte = 0; byte < row.source.size(); ++byte) {
+            const size_t tile = (static_cast<size_t>(row.x) + byte) * graphics.dimy + row.y;
+            const auto ch = grid[tile * 8];
+            if ((ch ? ch : static_cast<unsigned char>(' ')) !=
+                    static_cast<unsigned char>(row.source[byte])) {
+                current = false;
+                break;
+            }
+        }
+        if (!current) {
+            if (!journal_base || std::find(journal_title_callers.begin(),
+                    journal_title_callers.end(), row.native_caller) ==
+                        journal_title_callers.end()) return;
+            // Events paint their counter after the wrapped title. Its exact
+            // producer can overwrite the title's tail on every retained buffer;
+            // require that whole counter and every remaining title byte here.
+            current = std::any_of(draws.begin(), draws.end(), [&](const auto &counter) {
+                if (counter.native_caller != journal_counter_caller ||
+                        counter.top_layer != row.top_layer ||
+                        !counter.draw_grid || (counter.draw_grid != row.draw_grid &&
+                            counter.draw_grid != grid) ||
+                        counter.draw_dimx != row.draw_dimx || counter.draw_dimy != row.draw_dimy ||
+                        counter.draw_epoch != row.draw_epoch || counter.y != row.y ||
+                        counter.sequence <= row.sequence || counter.x <= row.x ||
+                        counter.x >= graphics.dimx || counter.source.empty() ||
+                        counter.source.size() > static_cast<size_t>(graphics.dimx - counter.x) ||
+                        static_cast<size_t>(counter.x - row.x) >= row.source.size()) return false;
+                const int counter_end = counter.x + static_cast<int>(counter.source.size());
+                if (counter.draw_clip &&
+                        (counter.x < counter.draw_clip->x || counter.y < counter.draw_clip->y ||
+                         counter_end > int64_t(counter.draw_clip->x) + counter.draw_clip->w ||
+                         counter.y >= int64_t(counter.draw_clip->y) + counter.draw_clip->h)) return false;
+                for (size_t byte = 0; byte < counter.source.size(); ++byte) {
+                    const size_t tile = (static_cast<size_t>(counter.x) + byte) * graphics.dimy + row.y;
+                    if (grid[tile * 8] != static_cast<unsigned char>(counter.source[byte])) return false;
+                }
+                bool visible_title = false;
+                for (size_t byte = 0; byte < row.source.size(); ++byte) {
+                    const int x = row.x + static_cast<int>(byte);
+                    if (x >= counter.x && x < counter_end) continue;
+                    const size_t tile = static_cast<size_t>(x) * graphics.dimy + row.y;
+                    const auto expected = static_cast<unsigned char>(row.source[byte]);
+                    const auto ch = grid[tile * 8];
+                    if ((ch ? ch : static_cast<unsigned char>(' ')) != expected) return false;
+                    if (expected != ' ' && (!row.draw_clip ||
+                            (x >= row.draw_clip->x && row.y >= row.draw_clip->y &&
+                             x < int64_t(row.draw_clip->x) + row.draw_clip->w &&
+                             row.y < int64_t(row.draw_clip->y) + row.draw_clip->h)))
+                        visible_title = true;
+                }
+                return visible_title;
+            });
+            if (!current) return;
+        }
+        row.draw_grid = grid;
+        changed = true;
+    };
+    for (auto &row : g_native_drawn_text_rows) bind(row, g_native_drawn_text_rows);
+    for (auto &row : g_native_drawn_top_text_rows) bind(row, g_native_drawn_top_text_rows);
+    if (changed) ++g_native_drawn_text_revision;
+}
+
+static uint64_t captured_native_drawn_text_epoch() {
+    // Present advances the next writer's generation even while display keeps
+    // the last native page. Readers belong to the last actual caption batch.
+    std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
+    return g_native_drawn_text_epoch;
+}
+
 // Share owned captures only during one discovery/layout pass. Native producers
 // can replace a layer without advancing its epoch, so mutations have their own
 // revision and every reader validates both before reusing a snapshot.
@@ -93,6 +198,39 @@ static std::shared_ptr<const std::vector<NativeClippedCaption>>
         scope->clipped = result;
     }
     return result;
+}
+
+// Read-only consumers keep the snapshot alive without copying every captured
+// string and typed caption again. In particular, a range-for over a temporary
+// view owns its rows for the full loop, including nested capture refreshes.
+class NativeDrawnTextView {
+    using Rows = std::vector<NativeDrawnTextRow>;
+    std::shared_ptr<const Rows> rows_;
+    const Rows &rows() const noexcept {
+        if (rows_) return *rows_;
+        static const Rows empty;
+        return empty;
+    }
+public:
+    NativeDrawnTextView() = default;
+    explicit NativeDrawnTextView(std::shared_ptr<const Rows> rows) noexcept
+        : rows_(std::move(rows)) {}
+    Rows::const_iterator begin() const noexcept { return rows().begin(); }
+    Rows::const_iterator end() const noexcept { return rows().end(); }
+    Rows::const_iterator cbegin() const noexcept { return rows().cbegin(); }
+    Rows::const_iterator cend() const noexcept { return rows().cend(); }
+    Rows::const_reverse_iterator rbegin() const noexcept { return rows().rbegin(); }
+    Rows::const_reverse_iterator rend() const noexcept { return rows().rend(); }
+    size_t size() const noexcept { return rows().size(); }
+    bool empty() const noexcept { return rows().empty(); }
+    const NativeDrawnTextRow &operator[](size_t index) const noexcept { return rows()[index]; }
+    const NativeDrawnTextRow &front() const noexcept { return rows().front(); }
+    const NativeDrawnTextRow &back() const noexcept { return rows().back(); }
+    operator const Rows &() const noexcept { return rows(); }
+};
+
+static NativeDrawnTextView captured_native_drawn_text_view(bool top_layer = false) {
+    return NativeDrawnTextView(captured_native_drawn_text_snapshot(top_layer));
 }
 
 // Some consumers merge/filter their local vectors. Keep that interface and

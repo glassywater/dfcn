@@ -6,6 +6,7 @@
 #include "logger.h"
 #include "translation_state.h"
 #include "translation_work.h"
+#include "dfhack_translation_thread.h"
 
 #include <algorithm>
 #include <array>
@@ -74,19 +75,36 @@ namespace Hooks {
     RulesetsManager::RulesetsManager() {
     }
 
-    RulesetsManager::CaptionSnapshot RulesetsManager::make_caption_snapshot(
-            std::unordered_map<std::string, std::string> material_qualifiers) const {
+    std::shared_ptr<RulesetsManager> RulesetsManager::clone_private() const {
         dfcn::TranslationStateScope translation_scope;
         auto parser = std::shared_ptr<RulesetsManager>(new RulesetsManager,
             [](RulesetsManager* value) { delete value; });
+        parser->initialized = initialized;
+        parser->native_language_original_ = native_language_original_;
+        parser->last_load_error_ = last_load_error_;
+        parser->ruleset_directory_ = ruleset_directory_;
+        parser->loaded_dependencies_ = loaded_dependencies_;
+        parser->attempted_dependencies_ = attempted_dependencies_;
+        parser->loaded_extensions_ = loaded_extensions_;
+        parser->attempted_extensions_ = attempted_extensions_;
+        parser->resource_revision_ = resource_revision_;
         parser->rulesets_ = rulesets_;
         parser->cyclic_rule_signatures_ = cyclic_rule_signatures_;
         parser->static_creature_names_ = static_creature_names_;
-        parser->native_language_original_ = native_language_original_;
-        // Leaf indexes contain views into token storage, so rebuild them in
-        // the copied graph. Memoized trees, Overlay resolvers and the game
-        // context-revision provider stay empty in this detached publication.
+        // Prefix/closed-leaf indexes retain views into their token storage.
+        // Rebuild them in the copied graph; no result tree or resolver from
+        // the live parser may retain pointers into that other owner.
         parser->rebuild_rule_prefix_indexes();
+        return parser;
+    }
+
+    RulesetsManager::CaptionSnapshot RulesetsManager::make_caption_snapshot(
+            std::unordered_map<std::string, std::string> material_qualifiers) const {
+        dfcn::TranslationStateScope translation_scope;
+        auto parser = clone_private();
+        // The clone owns rebuilt leaf indexes. Memoized trees, Overlay
+        // resolvers and the game context-revision provider stay empty in
+        // this detached publication.
         const auto complete = [owner = parser.get()](std::string_view source,
                 std::string_view name) -> std::optional<std::string> {
             const auto results = owner->resolve_namespace(
@@ -1786,7 +1804,8 @@ namespace Hooks {
             return cached->second;
         // Completed proofs are safe even during a callback: they need no
         // unfinished recursive owner to resolve their source again.
-        if (auto outer_it = memo_cache_.find(identifier); outer_it != memo_cache_.end()) {
+        if (auto outer_it = memo_cache_.find(identifier);
+                !dfcn::dfhack_world_read_attempt && outer_it != memo_cache_.end()) {
             if (auto* cached = outer_it->second.find(text, context_revision)) {
                 session.memo.emplace(ResolutionSession::Key{
                     identifier, text, context_revision}, *cached);
@@ -1818,7 +1837,8 @@ namespace Hooks {
             if (stable) {
                 session.memo.emplace(ResolutionSession::Key{
                     identifier, text, context_revision}, results);
-                memo_cache_[identifier].insert(text, results, context_revision);
+                if (!dfcn::dfhack_world_read_attempt)
+                    memo_cache_[identifier].insert(text, results, context_revision);
             }
             return results;
         };

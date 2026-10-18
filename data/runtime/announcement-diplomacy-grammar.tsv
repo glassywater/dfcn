@@ -64,10 +64,10 @@ sentence	The trouble started because of {s}.	最初是因为{s1}，才起了冲�
 sentence	The trouble started because of .	冲突起因不详。		0x1404ab793 ->0x1404abc99: native unknown reason leaves no cause text; also 0x1404ab567 ->0x1404ab6e0
 sentence	There is also a family matter.	另外还牵涉到家族的事。		0x1404abe01..0x1404ac0a5
 sentence	There is also the issue of their godlessness.	还有，他们不信神，这也是个问题。		0x1404abe01..0x1404ac0a5
-sentence	There is also the issue of their worship of {s}.	还有，他们崇拜{s1}，这也是个问题。	$sphere	0x1404abe95..0x1404ac0a5 ->0x140756500/0x140756690
-sentence	There is also the issue of their oneness with {s}.	还有，他们与{s1}融为一体，这也是个问题。	$sphere	0x1404abe95..0x1404ac0a5 ->0x140756500/0x140756690
-sentence	There is also the natural issue of their worship of {s}.	他们崇拜{s1}，这当然也是个问题。	$sphere	0x1404abe95..0x1404ac0a5 ->0x140756500/0x140756690
-sentence	There is also the natural issue of their oneness with {s}.	他们与{s1}融为一体，这当然也是个问题。	$sphere	0x1404abe95..0x1404ac0a5 ->0x140756500/0x140756690
+sentence	There is also the issue of their worship of {s}.	还有，他们崇拜{s1}，这也是个问题。	speech-sphere	0x1404abe95..0x1404ac0a5 ->0x140756500/0x140756690
+sentence	There is also the issue of their oneness with {s}.	还有，他们与{s1}融为一体，这也是个问题。	speech-sphere	0x1404abe95..0x1404ac0a5 ->0x140756500/0x140756690
+sentence	There is also the natural issue of their worship of {s}.	他们崇拜{s1}，这当然也是个问题。	speech-sphere	0x1404abe95..0x1404ac0a5 ->0x140756500/0x140756690
+sentence	There is also the natural issue of their oneness with {s}.	他们与{s1}融为一体，这当然也是个问题。	speech-sphere	0x1404abe95..0x1404ac0a5 ->0x140756500/0x140756690
 sentence	Be careful, for their leader {s} is my {s}.	小心点，他们的领袖{s1}可是我的{s2}。	$unit,dialogue-family	0x1404ac113..0x1404ac1e3
 diplomacy-possessor	{s}'s	{s1}的	$unit	0x1404ac35c ->0x140b92f10 possessive mode
 diplomacy-possessor	{s}'	{s1}的	$unit	0x1404ac35c ->0x140b92f10 possessive mode
@@ -120,14 +120,14 @@ sentence	No fewer than {s} groups fled.	至少有{s1}个势力逃走了。	$numb
 sentence	{s} fled before the attack.	{s1}在袭击前逃离了。	diplomacy-groups	0x1404ae70f..0x1404ae7c4
 sentence	{s} has occupied {s}.	{s1}占领了{s2}。	$name,$name	0x1404aeb2f..0x1404aebb8
 sentence	{s} rules {s}.	{s1}统治着{s2}。	$name,$name	0x1404aeb2f..0x1404aebb8
-sentence	My {s} {s} is {s}.	我的{s1}{s2}担任{s3}。	dialogue-family,$person,biography-office	0x1404aed00..0x1404aee35
-sentence	{s} is {s}.	{s1}是{s2}。	$person,biography-office	0x1404aed59..0x1404aee35; no kinship prefix
+sentence	My {s} {s} is {s}.	我的{s1}{s2}担任{s3}。	dialogue-family,speech-person,biography-office	0x1404aed00..0x1404aee35
+sentence	{s} is {s}.	{s1}是{s2}。	speech-person,biography-office	0x1404aed59..0x1404aee35; no kinship prefix
 sentence	{s} is a group of {s}.	{s1}是一个由{s2}组成的势力。	$name,$creature	0x1404aee5e..0x1404aeec8 ->0x140b94ed0
 sentence	I rule {s} from this capital as well.	我也在这座首都统治着{s1}。	$name	0x1404af2df..0x1404af461
-sentence	Not that it matters, as {s} abides here in magnificence.	不过这也没什么要紧，{s1}正住在这里享尽荣华呢。	$person	0x1404af33c..0x1404af461; 0x1404af29e historical figure +0x38 language_name ->0x140a946e0
-sentence	Not that it matters, as the seat of {s} is here, and the blood-drinker allows no chattel to rise.	不过这也没什么要紧，{s1}的统治中心就在这里，那吸血者可不会让奴隶有出头之日。	$person	0x1404af38f..0x1404af461; 0x1404af29e historical figure +0x38 language_name ->0x140a946e0
-sentence	Not that it matters, as the seat of {s} is here, and the law is absolute.	不过这也没什么要紧，{s1}的统治中心就在这里，法律说一不二。	$person	0x1404af38f..0x1404af461; 0x1404af29e historical figure +0x38 language_name ->0x140a946e0
-sentence	The seat of {s} is also located here.	{s1}的统治中心也在这里。	$person	0x1404af414..0x1404af461; 0x1404af29e historical figure +0x38 language_name ->0x140a946e0
+sentence	Not that it matters, as {s} abides here in magnificence.	不过这也没什么要紧，{s1}正住在这里享尽荣华呢。	speech-person	0x1404af33c..0x1404af461; 0x1404af29e historical figure +0x38 language_name ->0x140a946e0
+sentence	Not that it matters, as the seat of {s} is here, and the blood-drinker allows no chattel to rise.	不过这也没什么要紧，{s1}的统治中心就在这里，那吸血者可不会让奴隶有出头之日。	speech-person	0x1404af38f..0x1404af461; 0x1404af29e historical figure +0x38 language_name ->0x140a946e0
+sentence	Not that it matters, as the seat of {s} is here, and the law is absolute.	不过这也没什么要紧，{s1}的统治中心就在这里，法律说一不二。	speech-person	0x1404af38f..0x1404af461; 0x1404af29e historical figure +0x38 language_name ->0x140a946e0
+sentence	The seat of {s} is also located here.	{s1}的统治中心也在这里。	speech-person	0x1404af414..0x1404af461; 0x1404af29e historical figure +0x38 language_name ->0x140a946e0
 diplomacy-cause	a dispute over the ownership of {s}	对{s1}的所有权存在争议	$item	0x1404ab798+0x1404ab7d9 ->0x140b94400; unnamed artifact uses physical item description at 0x140b94583
 diplomacy-cause	a dispute over the ownership of an unknown artifact	对一件不知名造物的所有权存在争议		0x1404ab7d9 ->0x140b946de missing-artifact fallback
 sentence	The trouble started because of a dispute over .	最初是起了争执，才引发冲突。		0x1404ab5bb ->0x1404ab67e ->0x1404ab6e0 and 0x1404ab963 ->0x1404aba0c ->0x1404abc99; native unknown dispute subtype omits its subject

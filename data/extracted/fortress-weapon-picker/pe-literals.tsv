@@ -1,0 +1,841 @@
+edition	role	instruction_rva	operand	kind	text
+reference	uniform-equipment-selector-renderer	0x45033b	0x14163e7a0	cstring	Select bodywear.
+reference	uniform-equipment-selector-renderer	0x450371	0x14163e788	cstring	Select headwear.
+reference	uniform-equipment-selector-renderer	0x4503a7	0x14163e778	cstring	Select legwear.
+reference	uniform-equipment-selector-renderer	0x4503dd	0x14163e6d8	cstring	Select handwear.
+reference	uniform-equipment-selector-renderer	0x450413	0x14163e6c0	cstring	Select footwear.
+reference	uniform-equipment-selector-renderer	0x450446	0x14163e6b0	cstring	Select shield.
+reference	uniform-equipment-selector-renderer	0x450479	0x14163e6a0	cstring	Select weapon.
+reference	uniform-equipment-selector-renderer	0x45082e	0x14163e720	cstring	specific armor
+reference	uniform-equipment-selector-renderer	0x45083a	0x14163e710	cstring	specific helm
+reference	uniform-equipment-selector-renderer	0x450846	0x14163e700	cstring	specific pants
+reference	uniform-equipment-selector-renderer	0x450852	0x14163e6f0	cstring	specific gloves
+reference	uniform-equipment-selector-renderer	0x45085e	0x14163e640	cstring	specific shoes
+reference	uniform-equipment-selector-renderer	0x45086a	0x14163e630	cstring	specific shield
+reference	uniform-equipment-selector-renderer	0x450876	0x14163e620	cstring	specific weapon
+reference	uniform-equipment-selector-renderer	0x45089d	0x14163e608	cstring	individual choice
+reference	uniform-equipment-selector-renderer	0x4508c5	0x14163e690	cstring	, weapon
+reference	uniform-equipment-selector-renderer	0x4508e1	0x14163e678	cstring	indiv choice, melee
+reference	uniform-equipment-selector-renderer	0x450909	0x14163e660	cstring	indiv choice, ranged
+reference	uniform-equipment-selector-renderer	0x4509af	0x14163e650	cstring	 (foreign)
+reference	uniform-equipment-selector-renderer	0x450b18	0x14163e5b8	cstring	Select material.
+reference	uniform-equipment-selector-renderer	0x450da9	0x1416156d0	cstring	leather
+reference	uniform-equipment-selector-renderer	0x450db5	0x1416158a4	cstring	cloth
+reference	uniform-equipment-selector-renderer	0x450dbe	0x1416158ac	cstring	silk
+reference	uniform-equipment-selector-renderer	0x450dc7	0x1416158b4	cstring	yarn
+reference	uniform-equipment-selector-renderer	0x450dd0	0x14163e5a8	cstring	plant fiber
+reference	uniform-equipment-selector-renderer	0x450dd9	0x14163e59c	cstring	metal
+reference	uniform-equipment-selector-renderer	0x450de2	0x1416156d8	cstring	wood
+reference	uniform-equipment-selector-renderer	0x450deb	0x1416156b8	cstring	stone
+reference	uniform-equipment-selector-renderer	0x450df4	0x1416158fc	cstring	gem
+reference	uniform-equipment-selector-renderer	0x450dfd	0x1416158c4	cstring	bone
+reference	uniform-equipment-selector-renderer	0x450e06	0x1416158bc	cstring	shell
+reference	uniform-equipment-selector-renderer	0x450e0f	0x1416158dc	cstring	pearl
+reference	uniform-equipment-selector-renderer	0x450e18	0x1416158cc	cstring	tooth
+reference	uniform-equipment-selector-renderer	0x450e21	0x1416158e4	cstring	horn
+reference	uniform-equipment-selector-renderer	0x450e2a	0x14163e594	cstring	BROKEN
+reference	uniform-equipment-selector-renderer	0x450e33	0x14163e5f8	cstring	any material
+reference	uniform-equipment-selector-renderer	0x450fa3	0x14163e5e8	cstring	Select color.
+reference	uniform-equipment-selector-renderer	0x451193	0x14163e5d8	cstring	any color
+reference	uniform-equipment-selector-renderer	0x45120d	0x14163e5cc	cstring	 (Dye)
+reference	uniform-equipment-selector-renderer	0x451373	0x14163e9a8	cstring	Select item.
+reference	uniform-equipment-selector-renderer	0x451652	0x14163e998	cstring	missing item
+reference	uniform-equipment-selector-renderer	0x4518a3	0x14163e980	cstring	Will be assigned to 
+reference	uniform-equipment-selector-renderer	0x451911	0x1416047a0	cstring	, position 
+reference	uniform-equipment-selector-renderer	0x45196b	0x1415fe210	cstring	Assigned to 
+reference	uniform-equipment-selector-renderer	0x4519d9	0x1416047a0	cstring	, position 
+reference	uniform-equipment-selector-renderer	0x451a74	0x1416014b0	cstring	Assigned
+reference	uniform-equipment-selector-renderer	0x451e0c	0x14163e970	cstring	Position 
+reference	uniform-equipment-selector-renderer	0x451e6a	0x14163ea00	cstring	Adding uniform
+reference	uniform-equipment-selector-renderer	0x451f6d	0x14162bdb8	cstring	Confirm
+reference	uniform-equipment-selector-renderer	0x4520c3	0x14163e9e8	cstring	(enter name here)
+reference	uniform-equipment-selector-renderer	0x452107	0x1415ec82c	cstring	_
+reference	uniform-equipment-selector-renderer	0x452228	0x14163e9c8	cstring	Confirm and save uniform
+reference	uniform-equipment-selector-renderer	0x45231e	0x14163e9b8	cstring	New bodywear
+reference	uniform-equipment-selector-renderer	0x45240f	0x14163e900	cstring	New headwear
+reference	uniform-equipment-selector-renderer	0x452500	0x14163e8f0	cstring	New legwear
+reference	uniform-equipment-selector-renderer	0x452603	0x14163e8e0	cstring	New handwear
+reference	uniform-equipment-selector-renderer	0x4526fe	0x14163e8d0	cstring	New footwear
+reference	uniform-equipment-selector-renderer	0x4527ee	0x14163e960	cstring	New shield
+reference	uniform-equipment-selector-renderer	0x4528de	0x14163e950	cstring	New weapon
+reference	uniform-equipment-selector-renderer	0x4529df	0x14163e930	cstring	Uniform replaces clothing
+reference	uniform-equipment-selector-renderer	0x452a12	0x14163e910	cstring	Uniform worn over clothing
+reference	uniform-equipment-selector-renderer	0x452b11	0x14163e878	cstring	Exact matches only
+reference	uniform-equipment-selector-renderer	0x452b44	0x14163e860	cstring	Partial matches okay
+reference	uniform-equipment-selector-renderer	0x452f93	0x14163e998	cstring	missing item
+reference	uniform-equipment-selector-renderer	0x452fdf	0x1415e873c	cstring	 
+reference	uniform-equipment-selector-renderer	0x453096	0x14163e848	cstring	 individual choice
+reference	uniform-equipment-selector-renderer	0x4530c2	0x14163e690	cstring	, weapon
+reference	uniform-equipment-selector-renderer	0x45315d	0x14163e830	cstring	 indiv choice, melee
+reference	uniform-equipment-selector-renderer	0x4531fc	0x14163e8b8	cstring	 indiv choice, ranged
+reference	uniform-equipment-selector-renderer	0x45330e	0x1416156d0	cstring	leather
+reference	uniform-equipment-selector-renderer	0x453317	0x1416158a4	cstring	cloth
+reference	uniform-equipment-selector-renderer	0x453320	0x1416158ac	cstring	silk
+reference	uniform-equipment-selector-renderer	0x453329	0x1416158b4	cstring	yarn
+reference	uniform-equipment-selector-renderer	0x453332	0x14163e5a8	cstring	plant fiber
+reference	uniform-equipment-selector-renderer	0x45333b	0x14163e59c	cstring	metal
+reference	uniform-equipment-selector-renderer	0x453344	0x1416156d8	cstring	wood
+reference	uniform-equipment-selector-renderer	0x45334d	0x1416156b8	cstring	stone
+reference	uniform-equipment-selector-renderer	0x453356	0x1416158fc	cstring	gem
+reference	uniform-equipment-selector-renderer	0x45335f	0x1416158c4	cstring	bone
+reference	uniform-equipment-selector-renderer	0x453368	0x1416158bc	cstring	shell
+reference	uniform-equipment-selector-renderer	0x453371	0x1416158dc	cstring	pearl
+reference	uniform-equipment-selector-renderer	0x45337a	0x1416158cc	cstring	tooth
+reference	uniform-equipment-selector-renderer	0x453383	0x1416158e4	cstring	horn
+reference	uniform-equipment-selector-renderer	0x45338c	0x14163e594	cstring	BROKEN
+reference	uniform-equipment-selector-renderer	0x45339f	0x1415e873c	cstring	 
+reference	uniform-equipment-selector-renderer	0x4533c6	0x14163e608	cstring	individual choice
+reference	uniform-equipment-selector-renderer	0x4533f2	0x14163e690	cstring	, weapon
+reference	uniform-equipment-selector-renderer	0x45342a	0x14163e660	cstring	indiv choice, ranged
+reference	uniform-equipment-selector-renderer	0x4534ed	0x14163e660	cstring	indiv choice, ranged
+reference	uniform-equipment-selector-renderer	0x453569	0x14163e678	cstring	indiv choice, melee
+reference	uniform-equipment-selector-renderer	0x453679	0x14163e8a8	cstring	 assigned items
+reference	uniform-equipment-selector-renderer	0x45381f	0x141604508	cstring	Not yet assigned
+reference	uniform-equipment-selector-renderer	0x453852	0x14163e890	cstring	No assigned items
+reference	uniform-equipment-selector-renderer	0x453978	0x14163e88c	cstring	Mat
+reference	uniform-equipment-selector-renderer	0x453a63	0x14162a450	cstring	Color
+reference	uniform-equipment-selector-renderer	0x453ceb	0x1415fe724	cstring	Cancel
+reference	uniform-equipment-selector-renderer	0x453fc0	0x1416156d0	cstring	leather
+reference	uniform-equipment-selector-renderer	0x453fcc	0x1416158a4	cstring	cloth
+reference	uniform-equipment-selector-renderer	0x453fd8	0x1416158ac	cstring	silk
+reference	uniform-equipment-selector-renderer	0x453fe4	0x1416158b4	cstring	yarn
+reference	uniform-equipment-selector-renderer	0x453ff9	0x14163e5a8	cstring	plant fiber
+reference	uniform-equipment-selector-renderer	0x454002	0x14163e59c	cstring	metal
+reference	uniform-equipment-selector-renderer	0x45400b	0x1416156d8	cstring	wood
+reference	uniform-equipment-selector-renderer	0x454014	0x1416156b8	cstring	stone
+reference	uniform-equipment-selector-renderer	0x45401d	0x1416158fc	cstring	gem
+reference	uniform-equipment-selector-renderer	0x454026	0x1416158c4	cstring	bone
+reference	uniform-equipment-selector-renderer	0x45402f	0x1416158bc	cstring	shell
+reference	uniform-equipment-selector-renderer	0x454038	0x1416158dc	cstring	pearl
+reference	uniform-equipment-selector-renderer	0x454041	0x1416158cc	cstring	tooth
+reference	uniform-equipment-selector-renderer	0x454056	0x1416158e4	cstring	horn
+reference	uniform-equipment-selector-renderer	0x45405f	0x14163e594	cstring	BROKEN
+reference	uniform-equipment-selector-renderer	0x454072	0x1415e873c	cstring	 
+reference	uniform-equipment-selector-renderer	0x4542b7	0x1415fe724	cstring	Cancel
+reference	uniform-equipment-selector-renderer	0x454527	0x14163e650	cstring	 (foreign)
+reference	uniform-equipment-selector-renderer	0x45475f	0x14163e808	cstring	Hunters
+reference	uniform-equipment-selector-renderer	0x454857	0x14162bdb8	cstring	Confirm
+reference	uniform-equipment-selector-renderer	0x454c2d	0x1416156d0	cstring	leather
+reference	uniform-equipment-selector-renderer	0x454c39	0x1416158a4	cstring	cloth
+reference	uniform-equipment-selector-renderer	0x454c45	0x1416158ac	cstring	silk
+reference	uniform-equipment-selector-renderer	0x454c51	0x1416158b4	cstring	yarn
+reference	uniform-equipment-selector-renderer	0x454c66	0x14163e5a8	cstring	plant fiber
+reference	uniform-equipment-selector-renderer	0x454c6f	0x14163e59c	cstring	metal
+reference	uniform-equipment-selector-renderer	0x454c78	0x1416156d8	cstring	wood
+reference	uniform-equipment-selector-renderer	0x454c81	0x1416156b8	cstring	stone
+reference	uniform-equipment-selector-renderer	0x454c8a	0x1416158fc	cstring	gem
+reference	uniform-equipment-selector-renderer	0x454c93	0x1416158c4	cstring	bone
+reference	uniform-equipment-selector-renderer	0x454c9c	0x1416158bc	cstring	shell
+reference	uniform-equipment-selector-renderer	0x454ca5	0x1416158dc	cstring	pearl
+reference	uniform-equipment-selector-renderer	0x454cae	0x1416158cc	cstring	tooth
+reference	uniform-equipment-selector-renderer	0x454cc3	0x1416158e4	cstring	horn
+reference	uniform-equipment-selector-renderer	0x454ccc	0x14163e594	cstring	BROKEN
+reference	uniform-equipment-selector-renderer	0x454cdf	0x1415e873c	cstring	 
+reference	uniform-equipment-selector-renderer	0x454e4e	0x1415eb514	cstring	/
+reference	uniform-equipment-selector-renderer	0x454ea0	0x1415ec82c	cstring	_
+reference	uniform-equipment-selector-renderer	0x454fb8	0x14163e88c	cstring	Mat
+reference	uniform-equipment-selector-renderer	0x4550bd	0x14163e800	cstring	Amt
+reference	uniform-equipment-selector-renderer	0x4551dc	0x1415f7154	cstring	Combat
+reference	uniform-equipment-selector-renderer	0x4552f1	0x141630090	cstring	Training
+reference	uniform-equipment-selector-renderer	0x4553e4	0x141619224	cstring	Delete
+reference	uniform-equipment-selector-renderer	0x455794	0x14160408c	cstring	Remove
+reference	uniform-equipment-selector-renderer	0x455972	0x14163e7f0	cstring	Add ammunition
+reference	uniform-equipment-selector-renderer	0x455a8e	0x14162bdb8	cstring	Confirm
+reference	uniform-equipment-selector-renderer	0x455aed	0x14163e7c8	cstring	Supplies carried by each squad member
+reference	uniform-equipment-selector-renderer	0x455efc	0x14163e828	cstring	3 food
+reference	uniform-equipment-selector-renderer	0x456012	0x14163e820	cstring	2 food
+reference	uniform-equipment-selector-renderer	0x45611d	0x14163e818	cstring	1 food
+reference	uniform-equipment-selector-renderer	0x45622d	0x14163e810	cstring	No food
+reference	uniform-equipment-selector-renderer	0x45633e	0x14162fc1c	cstring	Drink
+reference	uniform-equipment-selector-renderer	0x45644e	0x14162f458	cstring	Water
+reference	uniform-equipment-selector-renderer	0x45655e	0x14163ea40	cstring	No water
+reference	uniform-equipment-selector-renderer	0x456786	0x14163ea30	cstring	Assign uniform
+reference	uniform-equipment-selector-renderer	0x45688f	0x14163ea20	cstring	Add uniform
+reference	uniform-equipment-selector-renderer	0x456a10	0x14162a0d8	cstring	Ammo
+reference	uniform-equipment-selector-renderer	0x456afb	0x14163ea10	cstring	Supplies
+reference	uniform-equipment-selector-renderer	0x456d6b	0x14163ea60	cstring	Update equipment
+reference	uniform-equipment-selector-renderer	0x4572a2	0x14163ea50	cstring	Custom uniform
+reference	uniform-equipment-selector-renderer	0x458ff9	0x14163d000	cstring	Details
+reference	equipment-generic-item-type-caption	0xa82d27	0x141649d9c	cstring	large
+reference	equipment-generic-item-type-caption	0xa82d30	0x141649da0	cstring	e
+reference	equipment-generic-item-type-caption	0xa82d39	0x141686358	cstring	small
+reference	equipment-generic-item-type-caption	0xa82d42	0x14168635c	cstring	l
+reference	equipment-generic-item-type-caption	0xa82d8c	0x1416cbf50	cstring	grown 
+reference	equipment-generic-item-type-caption	0xa82e66	0x14167ccf0	cstring	logs
+reference	equipment-generic-item-type-caption	0xa82ed8	0x1416ce7e0	cstring	branch
+reference	equipment-generic-item-type-caption	0xa82efd	0x1416ce880	cstring	es
+reference	equipment-generic-item-type-caption	0xa82f1d	0x141601038	cstring	rough gems
+reference	equipment-generic-item-type-caption	0xa82f36	0x1416ce870	cstring	raw green glass
+reference	equipment-generic-item-type-caption	0xa82f4f	0x1416ce860	cstring	raw clear glass
+reference	equipment-generic-item-type-caption	0xa82f68	0x1416ce848	cstring	raw crystal glass
+reference	equipment-generic-item-type-caption	0xa82f8a	0x141601038	cstring	rough gems
+reference	equipment-generic-item-type-caption	0xa82fa8	0x1416cc1b0	cstring	rough 
+reference	equipment-generic-item-type-caption	0xa83047	0x1416862ac	cstring	small 
+reference	equipment-generic-item-type-caption	0xa8305e	0x1416862ac	cstring	small 
+reference	equipment-generic-item-type-caption	0xa8313e	0x1416ce7ac	cstring	rock
+reference	equipment-generic-item-type-caption	0xa8315e	0x1416ce7a0	cstring	small rock
+reference	equipment-generic-item-type-caption	0xa831b7	0x1416ce790	cstring	stone boulders
+reference	equipment-generic-item-type-caption	0xa831dd	0x1416ce780	cstring	boulders
+reference	equipment-generic-item-type-caption	0xa832ba	0x1416ce738	cstring	bars
+reference	equipment-generic-item-type-caption	0xa832d3	0x1416ce7c0	cstring	charcoal
+reference	equipment-generic-item-type-caption	0xa832e9	0x1416ce7b4	cstring	coke
+reference	equipment-generic-item-type-caption	0xa832f2	0x1416ce740	cstring	refined coal
+reference	equipment-generic-item-type-caption	0xa8330b	0x14163e59c	cstring	metal
+reference	equipment-generic-item-type-caption	0xa8331a	0x1416ce7cc	cstring	 bars
+reference	equipment-generic-item-type-caption	0xa833ca	0x1416ce7d8	cstring	 wafers
+reference	equipment-generic-item-type-caption	0xa834b8	0x1416011f0	cstring	cut gems
+reference	equipment-generic-item-type-caption	0xa834d1	0x1416ce720	cstring	cut green glass gems
+reference	equipment-generic-item-type-caption	0xa834ea	0x1416ce708	cstring	cut clear glass gems
+reference	equipment-generic-item-type-caption	0xa83500	0x1416ce768	cstring	cut crystal glass gems
+reference	equipment-generic-item-type-caption	0xa8351b	0x1416ce760	cstring	gems
+reference	equipment-generic-item-type-caption	0xa83658	0x1416ce758	cstring	blocks
+reference	equipment-generic-item-type-caption	0xa8366f	0x1416ce758	cstring	blocks
+reference	equipment-generic-item-type-caption	0xa8371d	0x1416ce6ec	cstring	door
+reference	equipment-generic-item-type-caption	0xa83724	0x1416ce750	cstring	portal
+reference	equipment-generic-item-type-caption	0xa8379a	0x1416ce6e0	cstring	floodgate
+reference	equipment-generic-item-type-caption	0xa8380a	0x1416ce6d0	cstring	hatch cover
+reference	equipment-generic-item-type-caption	0xa8387a	0x1416ce6c8	cstring	grate
+reference	equipment-generic-item-type-caption	0xa838ea	0x14162fdb4	cstring	table
+reference	equipment-generic-item-type-caption	0xa8395a	0x14163cea0	cstring	cabinet
+reference	equipment-generic-item-type-caption	0xa839ca	0x14163ce90	cstring	weapon rack
+reference	equipment-generic-item-type-caption	0xa83a3a	0x14163ce08	cstring	armor stand
+reference	equipment-generic-item-type-caption	0xa83aaa	0x1416ce704	cstring	bin
+reference	equipment-generic-item-type-caption	0xa83b51	0x1416ce700	cstring	box
+reference	equipment-generic-item-type-caption	0xa83b6a	0x1416ce6fc	cstring	e
+reference	equipment-generic-item-type-caption	0xa83b93	0x1416ce6f4	cstring	coffer
+reference	equipment-generic-item-type-caption	0xa83ba2	0x14163cea8	cstring	chest
+reference	equipment-generic-item-type-caption	0xa83bc3	0x1416ce6a0	cstring	boxe
+reference	equipment-generic-item-type-caption	0xa83bd8	0x1415e9298	cstring	s
+reference	equipment-generic-item-type-caption	0xa83bec	0x1416ce700	cstring	box
+reference	equipment-generic-item-type-caption	0xa83c64	0x1416ce69c	cstring	bag
+reference	equipment-generic-item-type-caption	0xa83cff	0x1416ce690	cstring	backpack
+reference	equipment-generic-item-type-caption	0xa83dbc	0x1416ce6c0	cstring	cast
+reference	equipment-generic-item-type-caption	0xa83dc8	0x1416ce680	cstring	limb/body 
+reference	equipment-generic-item-type-caption	0xa83dd7	0x1416ce6c0	cstring	cast
+reference	equipment-generic-item-type-caption	0xa83e37	0x1416ce680	cstring	limb/body 
+reference	equipment-generic-item-type-caption	0xa83e46	0x1416ce6c0	cstring	cast
+reference	equipment-generic-item-type-caption	0xa83eb6	0x1416ce6b8	cstring	splint
+reference	equipment-generic-item-type-caption	0xa83f20	0x1416ce6b0	cstring	crutch
+reference	equipment-generic-item-type-caption	0xa83fbb	0x1416ce6a8	cstring	quiver
+reference	equipment-generic-item-type-caption	0xa8403a	0x1416ce63c	cstring	casket
+reference	equipment-generic-item-type-caption	0xa84085	0x1416ce630	cstring	sarcophag
+reference	equipment-generic-item-type-caption	0xa84094	0x141642184	cstring	us
+reference	equipment-generic-item-type-caption	0xa8409b	0x1416c0828	cstring	i
+reference	equipment-generic-item-type-caption	0xa840b7	0x14162fe0c	cstring	coffin
+reference	equipment-generic-item-type-caption	0xa841d4	0x1416ce61c	cstring	chain
+reference	equipment-generic-item-type-caption	0xa841e8	0x1416ce624	cstring	rope
+reference	equipment-generic-item-type-caption	0xa84328	0x1416ce664	cstring	vial
+reference	equipment-generic-item-type-caption	0xa84339	0x1416ce65c	cstring	flask
+reference	equipment-generic-item-type-caption	0xa84350	0x1416ce670	cstring	waterskin
+reference	equipment-generic-item-type-caption	0xa843f9	0x1416ce648	cstring	musical instrument
+reference	equipment-generic-item-type-caption	0xa844db	0x1416ce5e8	cstring	unglazed 
+reference	equipment-generic-item-type-caption	0xa84643	0x1415e873c	cstring	 
+reference	equipment-generic-item-type-caption	0xa8465d	0x1416c1e44	cstring	tool
+reference	equipment-generic-item-type-caption	0xa846fd	0x1416c1d64	cstring	toy
+reference	equipment-generic-item-type-caption	0xa847ad	0x1416ce5e0	cstring	cup
+reference	equipment-generic-item-type-caption	0xa847e1	0x1416ce5dc	cstring	mug
+reference	equipment-generic-item-type-caption	0xa847fb	0x1416ce5d4	cstring	goblet
+reference	equipment-generic-item-type-caption	0xa8486b	0x1416ce614	cstring	window
+reference	equipment-generic-item-type-caption	0xa8491a	0x1416ce5fc	cstring	cage
+reference	equipment-generic-item-type-caption	0xa84921	0x1416ce608	cstring	terrarium
+reference	equipment-generic-item-type-caption	0xa84995	0x1416ce5f4	cstring	barrel
+reference	equipment-generic-item-type-caption	0xa84a05	0x1416cec8c	cstring	bucket
+reference	equipment-generic-item-type-caption	0xa84a75	0x1416cec80	cstring	animal trap
+reference	equipment-generic-item-type-caption	0xa84af1	0x14162fe04	cstring	chair
+reference	equipment-generic-item-type-caption	0xa84b0b	0x1416cec74	cstring	throne
+reference	equipment-generic-item-type-caption	0xa84bc1	0x1416cec70	cstring	web
+reference	equipment-generic-item-type-caption	0xa84c0c	0x1416cecb8	cstring	strands
+reference	equipment-generic-item-type-caption	0xa84c3f	0x1416158b4	cstring	yarn
+reference	equipment-generic-item-type-caption	0xa84c50	0x14161589c	cstring	thread
+reference	equipment-generic-item-type-caption	0xa84cc5	0x1416158a4	cstring	cloth
+reference	equipment-generic-item-type-caption	0xa84dcf	0x1416cecac	cstring	sheet
+reference	equipment-generic-item-type-caption	0xa84df2	0x1416ceca0	cstring	tanned hide
+reference	equipment-generic-item-type-caption	0xa84e55	0x1416cec94	cstring	totem
+reference	equipment-generic-item-type-caption	0xa84ebe	0x1416cec40	cstring	-bound 
+reference	equipment-generic-item-type-caption	0xa84eda	0x1416cec2c	cstring	codex
+reference	equipment-generic-item-type-caption	0xa84ee1	0x1416cec38	cstring	codices
+reference	equipment-generic-item-type-caption	0xa84f60	0x1416cec20	cstring	figurine
+reference	equipment-generic-item-type-caption	0xa84f7e	0x1416cec68	cstring	rotten 
+reference	equipment-generic-item-type-caption	0xa84fa3	0x14164fc00	cstring	drink
+reference	equipment-generic-item-type-caption	0xa84fe6	0x1416cec68	cstring	rotten 
+reference	equipment-generic-item-type-caption	0xa851cb	0x1416cec60	cstring	filthy 
+reference	equipment-generic-item-type-caption	0xa851e4	0x1416cec58	cstring	sticky 
+reference	equipment-generic-item-type-caption	0xa85203	0x1416cec48	cstring	vomitous 
+reference	equipment-generic-item-type-caption	0xa8521f	0x1416cebec	cstring	slimy 
+reference	equipment-generic-item-type-caption	0xa85238	0x1416b1070	cstring	stagnant 
+reference	equipment-generic-item-type-caption	0xa85254	0x1416cebe4	cstring	dirty 
+reference	equipment-generic-item-type-caption	0xa85270	0x1416cebdc	cstring	gooey 
+reference	equipment-generic-item-type-caption	0xa85289	0x1416cebd0	cstring	purulent 
+reference	equipment-generic-item-type-caption	0xa852a2	0x1416cec10	cstring	ichorous 
+reference	equipment-generic-item-type-caption	0xa852bb	0x1416cec08	cstring	bloody 
+reference	equipment-generic-item-type-caption	0xa852fa	0x1416a6358	cstring	liquid
+reference	equipment-generic-item-type-caption	0xa8543c	0x1416cebfc	cstring	 paste
+reference	equipment-generic-item-type-caption	0xa85491	0x1416cebf4	cstring	glob
+reference	equipment-generic-item-type-caption	0xa85692	0x1416ceb80	cstring	 laced with 
+reference	equipment-generic-item-type-caption	0xa85706	0x1415e90d8	cstring	, 
+reference	equipment-generic-item-type-caption	0xa85716	0x1415e9110	cstring	 and 
+reference	equipment-generic-item-type-caption	0xa8577b	0x1416cec68	cstring	rotten 
+reference	equipment-generic-item-type-caption	0xa85818	0x1416ceb70	cstring	 dye mix
+reference	equipment-generic-item-type-caption	0xa8583c	0x1416ceb64	cstring	powder
+reference	equipment-generic-item-type-caption	0xa85896	0x1416cec68	cstring	rotten 
+reference	equipment-generic-item-type-caption	0xa858b8	0x1416ceb5c	cstring	cheese
+reference	equipment-generic-item-type-caption	0xa85940	0x1416cebc0	cstring	catapult parts
+reference	equipment-generic-item-type-caption	0xa859b8	0x1416ceba8	cstring	bolt thrower parts
+reference	equipment-generic-item-type-caption	0xa85a30	0x1416ceb98	cstring	mechanisms
+reference	equipment-generic-item-type-caption	0xa85adf	0x1416ceb90	cstring	tube
+reference	equipment-generic-item-type-caption	0xa85af9	0x1416ceb10	cstring	pipe section
+reference	equipment-generic-item-type-caption	0xa85b97	0x1416ceb00	cstring	trap component
+reference	equipment-generic-item-type-caption	0xa85bc8	0x1415e873c	cstring	 
+reference	equipment-generic-item-type-caption	0xa85caa	0x1416ceaf0	cstring	ballista parts
+reference	equipment-generic-item-type-caption	0xa85d22	0x1416ceae8	cstring	anvil
+reference	equipment-generic-item-type-caption	0xa85d92	0x1416ceb54	cstring	amulet
+reference	equipment-generic-item-type-caption	0xa85e02	0x1416ceb40	cstring	ballista arrow head
+reference	equipment-generic-item-type-caption	0xa85ea9	0x1416ceb30	cstring	siege ammo
+reference	equipment-generic-item-type-caption	0xa85ff3	0x1416ceb20	cstring	ammunition
+reference	equipment-generic-item-type-caption	0xa8606b	0x1416ceaa8	cstring	scepter
+reference	equipment-generic-item-type-caption	0xa860db	0x1416cea9c	cstring	crown
+reference	equipment-generic-item-type-caption	0xa86145	0x1416cea94	cstring	coin
+reference	equipment-generic-item-type-caption	0xa86164	0x1416cea88	cstring	perfect 
+reference	equipment-generic-item-type-caption	0xa86173	0x14164a2c8	cstring	large 
+reference	equipment-generic-item-type-caption	0xa8625b	0x1416cead8	cstring	green glass 
+reference	equipment-generic-item-type-caption	0xa86271	0x1416ceac8	cstring	clear glass 
+reference	equipment-generic-item-type-caption	0xa86287	0x1416ceab8	cstring	crystal glass 
+reference	equipment-generic-item-type-caption	0xa862a3	0x1416158fc	cstring	gem
+reference	equipment-generic-item-type-caption	0xa8635b	0x1416ceab0	cstring	 gem
+reference	equipment-generic-item-type-caption	0xa86436	0x1416cea50	cstring	ring
+reference	equipment-generic-item-type-caption	0xa864a6	0x1416cea48	cstring	earring
+reference	equipment-generic-item-type-caption	0xa86516	0x1416cea38	cstring	bracelet
+reference	equipment-generic-item-type-caption	0xa86586	0x14162fdb0	cstring	bed
+reference	equipment-generic-item-type-caption	0xa865f6	0x1416cea28	cstring	traction bench
+reference	equipment-generic-item-type-caption	0xa86666	0x1416cea7c	cstring	quern
+reference	equipment-generic-item-type-caption	0xa866d6	0x1416cea70	cstring	millstone
+reference	equipment-generic-item-type-caption	0xa86746	0x1416cea64	cstring	statue
+reference	equipment-generic-item-type-caption	0xa86852	0x1416cea58	cstring	memorial
+reference	equipment-generic-item-type-caption	0xa86866	0x1416ce9a0	cstring	food imports sign
+reference	equipment-generic-item-type-caption	0xa8687a	0x1416ce988	cstring	clothing imports sign
+reference	equipment-generic-item-type-caption	0xa8688e	0x1416ce970	cstring	general imports sign
+reference	equipment-generic-item-type-caption	0xa868a2	0x1416ce960	cstring	cloth shop sign
+reference	equipment-generic-item-type-caption	0xa868b6	0x1416cea10	cstring	leather shop sign
+reference	equipment-generic-item-type-caption	0xa868ca	0x1416ce9f0	cstring	woven clothing shop sign
+reference	equipment-generic-item-type-caption	0xa868de	0x1416ce9d0	cstring	leather clothing shop sign
+reference	equipment-generic-item-type-caption	0xa868f2	0x1416ce9b8	cstring	bone carver's shop sign
+reference	equipment-generic-item-type-caption	0xa86906	0x1416cf090	cstring	gem cutter's shop sign
+reference	equipment-generic-item-type-caption	0xa8691a	0x1416cf078	cstring	weaponsmith's shop sign
+reference	equipment-generic-item-type-caption	0xa8692e	0x1416cf060	cstring	bowyer's shop sign
+reference	equipment-generic-item-type-caption	0xa86942	0x1416cf048	cstring	blacksmith's shop sign
+reference	equipment-generic-item-type-caption	0xa86956	0x1416cf0f0	cstring	armorsmith's shop sign
+reference	equipment-generic-item-type-caption	0xa8696a	0x1416cf0d8	cstring	metal craft shop sign
+reference	equipment-generic-item-type-caption	0xa8697e	0x1416cf0c0	cstring	leather goods shop sign
+reference	equipment-generic-item-type-caption	0xa86992	0x1416cf0a8	cstring	carpenter's shop sign
+reference	equipment-generic-item-type-caption	0xa869a6	0x1416ceff8	cstring	stone furniture shop sign
+reference	equipment-generic-item-type-caption	0xa869ba	0x1416cefd8	cstring	metal furniture shop sign
+reference	equipment-generic-item-type-caption	0xa869ce	0x1416cefc8	cstring	tavern sign
+reference	equipment-generic-item-type-caption	0xa869e2	0x1416cefbc	cstring	slab
+reference	equipment-generic-item-type-caption	0xa869f6	0x1416cefbc	cstring	slab
+reference	equipment-generic-item-type-caption	0xa86a14	0x1416cec68	cstring	rotten 
+reference	equipment-generic-item-type-caption	0xa86a29	0x1416cf03c	cstring	corpse
+reference	equipment-generic-item-type-caption	0xa86a47	0x1416cec68	cstring	rotten 
+reference	equipment-generic-item-type-caption	0xa86a6b	0x1416158cc	cstring	tooth
+reference	equipment-generic-item-type-caption	0xa86a7c	0x1416cf034	cstring	teeth
+reference	equipment-generic-item-type-caption	0xa86a91	0x1416158c4	cstring	bone
+reference	equipment-generic-item-type-caption	0xa86aa9	0x1416158bc	cstring	shell
+reference	equipment-generic-item-type-caption	0xa86ac1	0x1416cf028	cstring	plant part
+reference	equipment-generic-item-type-caption	0xa86ad9	0x1416cf018	cstring	silk body part
+reference	equipment-generic-item-type-caption	0xa86af1	0x1416cef70	cstring	leather body part
+reference	equipment-generic-item-type-caption	0xa86b09	0x1416cef58	cstring	wooden body part
+reference	equipment-generic-item-type-caption	0xa86b23	0x1416cef48	cstring	soap body part
+reference	equipment-generic-item-type-caption	0xa86b3d	0x1416158e4	cstring	horn
+reference	equipment-generic-item-type-caption	0xa86b57	0x1416158dc	cstring	pearl
+reference	equipment-generic-item-type-caption	0xa86b71	0x1416cef38	cstring	yarn body part
+reference	equipment-generic-item-type-caption	0xa86b89	0x1416cefa8	cstring	strand body part
+reference	equipment-generic-item-type-caption	0xa86b92	0x141681050	cstring	body part
+reference	equipment-generic-item-type-caption	0xa86bbb	0x1416cefa0	cstring	Rotten 
+reference	equipment-generic-item-type-caption	0xa86d22	0x14167f0c0	cstring	remains
+reference	equipment-generic-item-type-caption	0xa86d81	0x1416cef94	cstring	seeds
+reference	equipment-generic-item-type-caption	0xa86df2	0x1416cef88	cstring	withered 
+reference	equipment-generic-item-type-caption	0xa86e66	0x1416ceee0	cstring	leaves and fruit
+reference	equipment-generic-item-type-caption	0xa86e77	0x1416ceed0	cstring	leaf or fruit
+reference	equipment-generic-item-type-caption	0xa86eaa	0x1416cef88	cstring	withered 
+reference	equipment-generic-item-type-caption	0xa86efd	0x141614d54	cstring	plant
+reference	equipment-generic-item-type-caption	0xa86f16	0x1415e9298	cstring	s
+reference	equipment-generic-item-type-caption	0xa86f3c	0x1416cec68	cstring	rotten 
+reference	equipment-generic-item-type-caption	0xa86f54	0x1416ceec8	cstring	raw 
+reference	equipment-generic-item-type-caption	0xa870d5	0x1415e90d8	cstring	, 
+reference	equipment-generic-item-type-caption	0xa870eb	0x1415e90d8	cstring	, 
+reference	equipment-generic-item-type-caption	0xa87104	0x1416a11f0	cstring	fish
+reference	equipment-generic-item-type-caption	0xa8712a	0x1416cec68	cstring	rotten 
+reference	equipment-generic-item-type-caption	0xa87251	0x1415e873c	cstring	 
+reference	equipment-generic-item-type-caption	0xa87266	0x1416ceec4	cstring	egg
+reference	equipment-generic-item-type-caption	0xa8728c	0x1416cec68	cstring	rotten 
+reference	equipment-generic-item-type-caption	0xa8738b	0x1416a11f0	cstring	fish
+reference	equipment-generic-item-type-caption	0xa873a8	0x1416cef2c	cstring	live 
+reference	equipment-generic-item-type-caption	0xa873e1	0x1416cef18	cstring	small live animal
+reference	equipment-generic-item-type-caption	0xa873fb	0x1416cef0c	cstring	tame 
+reference	equipment-generic-item-type-caption	0xa87404	0x1416ceef8	cstring	small tame animal
+reference	equipment-generic-item-type-caption	0xa8741b	0x1416cee88	cstring	prepared meal
+reference	equipment-generic-item-type-caption	0xa87435	0x1416cec68	cstring	rotten 
+reference	equipment-generic-item-type-caption	0xa8744a	0x1416cee78	cstring	preserved 
+reference	equipment-generic-item-type-caption	0xa8750c	0x1416cee70	cstring	 chops
+reference	equipment-generic-item-type-caption	0xa8751d	0x1416cee68	cstring	 chop
+reference	equipment-generic-item-type-caption	0xa87556	0x1416ceebc	cstring	meat
+reference	equipment-generic-item-type-caption	0xa87570	0x1416ceebc	cstring	meat
+reference	equipment-generic-item-type-caption	0xa87602	0x1416c1ecc	cstring	weapon
+reference	equipment-generic-item-type-caption	0xa8763b	0x1415e873c	cstring	 
+reference	equipment-generic-item-type-caption	0xa87767	0x1416ceea8	cstring	suits of 
+reference	equipment-generic-item-type-caption	0xa87776	0x1416c1ec4	cstring	armor
+reference	equipment-generic-item-type-caption	0xa877dc	0x1415e873c	cstring	 
+reference	equipment-generic-item-type-caption	0xa87886	0x1416ceeb4	cstring	chain 
+reference	equipment-generic-item-type-caption	0xa87995	0x14163a34c	cstring	right 
+reference	equipment-generic-item-type-caption	0xa879b5	0x14163a324	cstring	left 
+reference	equipment-generic-item-type-caption	0xa879fe	0x1416ceeb4	cstring	chain 
+reference	equipment-generic-item-type-caption	0xa87a5f	0x1415e873c	cstring	 
+reference	equipment-generic-item-type-caption	0xa87a73	0x1416cee98	cstring	handwear
+reference	equipment-generic-item-type-caption	0xa87b17	0x1416c1d74	cstring	shield
+reference	equipment-generic-item-type-caption	0xa87b36	0x1416cee10	cstring	/buckler
+reference	equipment-generic-item-type-caption	0xa87b4a	0x1416cee10	cstring	/buckler
+reference	equipment-generic-item-type-caption	0xa87c87	0x1415e873c	cstring	 
+reference	equipment-generic-item-type-caption	0xa87cb7	0x1416cee00	cstring	footwear
+reference	equipment-generic-item-type-caption	0xa87da8	0x1416cedf0	cstring	headwear
+reference	equipment-generic-item-type-caption	0xa87dec	0x1415e873c	cstring	 
+reference	equipment-generic-item-type-caption	0xa87ea8	0x1416cede8	cstring	legwear
+reference	equipment-generic-item-type-caption	0xa87f2c	0x1415e873c	cstring	 
+reference	equipment-generic-item-type-caption	0xa88046	0x1415fcfe0	cstring	item
+reference	equipment-generic-item-type-caption	0xa88077	0x14161bdcc	cstring	 [
+reference	equipment-generic-item-type-caption	0xa88097	0x1415fd690	cstring	]
+reference	equipment-specific-item-caption	0xc656f4	0x1416ee318	cstring	 (copy)
+reference	equipment-material-caption	0x14d1987	0x141614d54	cstring	plant
+reference	equipment-material-caption	0x14d19a9	0x1416158b4	cstring	yarn
+reference	equipment-material-caption	0x14d19d1	0x1416158a4	cstring	cloth
+reference	equipment-material-caption	0x14d19f1	0x1416158ac	cstring	silk
+reference	equipment-material-caption	0x14d1a11	0x1416158c4	cstring	bone
+reference	equipment-material-caption	0x14d1a31	0x1416156d0	cstring	leather
+reference	equipment-material-caption	0x14d1a51	0x1416158bc	cstring	shell
+reference	equipment-material-caption	0x14d1a73	0x1416158d4	cstring	soap
+reference	equipment-material-caption	0x14d1a95	0x141789150	cstring	ivory/tooth
+reference	equipment-material-caption	0x14d1ab7	0x1416158e4	cstring	horn
+reference	equipment-material-caption	0x14d1ad9	0x1416158dc	cstring	pearl
+reference	equipment-material-caption	0x14d1b08	0x1416156d8	cstring	wood
+reference	equipment-material-caption	0x14d1b0f	0x1416a12ec	cstring	wooden
+reference	equipment-material-caption	0x14d1c65	0x1415edb24	cstring	's 
+reference	equipment-material-caption	0x14d1cf9	0x1415e873c	cstring	 
+reference	equipment-material-caption	0x14d1d4a	0x141789108	cstring	unknown material
+classic	uniform-equipment-selector-renderer	0x44defb	0x141639360	cstring	Select bodywear.
+classic	uniform-equipment-selector-renderer	0x44df31	0x141639348	cstring	Select headwear.
+classic	uniform-equipment-selector-renderer	0x44df67	0x141639338	cstring	Select legwear.
+classic	uniform-equipment-selector-renderer	0x44df9d	0x141639320	cstring	Select handwear.
+classic	uniform-equipment-selector-renderer	0x44dfd3	0x1416393a8	cstring	Select footwear.
+classic	uniform-equipment-selector-renderer	0x44e006	0x141639398	cstring	Select shield.
+classic	uniform-equipment-selector-renderer	0x44e039	0x141639388	cstring	Select weapon.
+classic	uniform-equipment-selector-renderer	0x44e3ee	0x141639378	cstring	specific armor
+classic	uniform-equipment-selector-renderer	0x44e3fa	0x141639740	cstring	specific helm
+classic	uniform-equipment-selector-renderer	0x44e406	0x141639730	cstring	specific pants
+classic	uniform-equipment-selector-renderer	0x44e412	0x141639720	cstring	specific gloves
+classic	uniform-equipment-selector-renderer	0x44e41e	0x141639710	cstring	specific shoes
+classic	uniform-equipment-selector-renderer	0x44e42a	0x141639788	cstring	specific shield
+classic	uniform-equipment-selector-renderer	0x44e436	0x141639778	cstring	specific weapon
+classic	uniform-equipment-selector-renderer	0x44e45d	0x141639760	cstring	individual choice
+classic	uniform-equipment-selector-renderer	0x44e485	0x141639750	cstring	, weapon
+classic	uniform-equipment-selector-renderer	0x44e4a1	0x1416396c8	cstring	indiv choice, melee
+classic	uniform-equipment-selector-renderer	0x44e4c9	0x1416396b0	cstring	indiv choice, ranged
+classic	uniform-equipment-selector-renderer	0x44e56f	0x1416396a0	cstring	 (foreign)
+classic	uniform-equipment-selector-renderer	0x44e6d8	0x141639688	cstring	Select material.
+classic	uniform-equipment-selector-renderer	0x44e969	0x141610690	cstring	leather
+classic	uniform-equipment-selector-renderer	0x44e975	0x1416106a8	cstring	cloth
+classic	uniform-equipment-selector-renderer	0x44e97e	0x1416106b0	cstring	silk
+classic	uniform-equipment-selector-renderer	0x44e987	0x1416106b8	cstring	yarn
+classic	uniform-equipment-selector-renderer	0x44e990	0x141639700	cstring	plant fiber
+classic	uniform-equipment-selector-renderer	0x44e999	0x1416396f8	cstring	metal
+classic	uniform-equipment-selector-renderer	0x44e9a2	0x141610698	cstring	wood
+classic	uniform-equipment-selector-renderer	0x44e9ab	0x141610678	cstring	stone
+classic	uniform-equipment-selector-renderer	0x44e9b4	0x1416106fc	cstring	gem
+classic	uniform-equipment-selector-renderer	0x44e9bd	0x1416106c8	cstring	bone
+classic	uniform-equipment-selector-renderer	0x44e9c6	0x1416106c0	cstring	shell
+classic	uniform-equipment-selector-renderer	0x44e9cf	0x1416106e0	cstring	pearl
+classic	uniform-equipment-selector-renderer	0x44e9d8	0x1416106d0	cstring	tooth
+classic	uniform-equipment-selector-renderer	0x44e9e1	0x1416106e8	cstring	horn
+classic	uniform-equipment-selector-renderer	0x44e9ea	0x1416396f0	cstring	BROKEN
+classic	uniform-equipment-selector-renderer	0x44e9f3	0x1416396e0	cstring	any material
+classic	uniform-equipment-selector-renderer	0x44eb63	0x141639630	cstring	Select color.
+classic	uniform-equipment-selector-renderer	0x44ed53	0x141639620	cstring	any color
+classic	uniform-equipment-selector-renderer	0x44edcd	0x141639618	cstring	 (Dye)
+classic	uniform-equipment-selector-renderer	0x44ef33	0x141639608	cstring	Select item.
+classic	uniform-equipment-selector-renderer	0x44f212	0x141639678	cstring	missing item
+classic	uniform-equipment-selector-renderer	0x44f463	0x141639660	cstring	Will be assigned to 
+classic	uniform-equipment-selector-renderer	0x44f4d1	0x1415ff770	cstring	, position 
+classic	uniform-equipment-selector-renderer	0x44f52b	0x1415f9078	cstring	Assigned to 
+classic	uniform-equipment-selector-renderer	0x44f599	0x1415ff770	cstring	, position 
+classic	uniform-equipment-selector-renderer	0x44f634	0x1415fc580	cstring	Assigned
+classic	uniform-equipment-selector-renderer	0x44f9cc	0x141639650	cstring	Position 
+classic	uniform-equipment-selector-renderer	0x44fa2a	0x141639640	cstring	Adding uniform
+classic	uniform-equipment-selector-renderer	0x44fb2d	0x1416275a8	cstring	Confirm
+classic	uniform-equipment-selector-renderer	0x44fc83	0x1416395b0	cstring	(enter name here)
+classic	uniform-equipment-selector-renderer	0x44fcc7	0x1415e783c	cstring	_
+classic	uniform-equipment-selector-renderer	0x44fde8	0x141639590	cstring	Confirm and save uniform
+classic	uniform-equipment-selector-renderer	0x44fede	0x141639580	cstring	New bodywear
+classic	uniform-equipment-selector-renderer	0x44ffcf	0x141639570	cstring	New headwear
+classic	uniform-equipment-selector-renderer	0x4500c0	0x1416395f8	cstring	New legwear
+classic	uniform-equipment-selector-renderer	0x4501c3	0x1416395e8	cstring	New handwear
+classic	uniform-equipment-selector-renderer	0x4502be	0x1416395d8	cstring	New footwear
+classic	uniform-equipment-selector-renderer	0x4503ae	0x1416395c8	cstring	New shield
+classic	uniform-equipment-selector-renderer	0x45049e	0x1416398f0	cstring	New weapon
+classic	uniform-equipment-selector-renderer	0x45059f	0x1416398d0	cstring	Uniform replaces clothing
+classic	uniform-equipment-selector-renderer	0x4505d2	0x1416398b0	cstring	Uniform worn over clothing
+classic	uniform-equipment-selector-renderer	0x4506d1	0x141639898	cstring	Exact matches only
+classic	uniform-equipment-selector-renderer	0x450704	0x141639948	cstring	Partial matches okay
+classic	uniform-equipment-selector-renderer	0x450b53	0x141639678	cstring	missing item
+classic	uniform-equipment-selector-renderer	0x450b9f	0x1415e3720	cstring	 
+classic	uniform-equipment-selector-renderer	0x450c56	0x141639930	cstring	 individual choice
+classic	uniform-equipment-selector-renderer	0x450c82	0x141639750	cstring	, weapon
+classic	uniform-equipment-selector-renderer	0x450d1d	0x141639918	cstring	 indiv choice, melee
+classic	uniform-equipment-selector-renderer	0x450dbc	0x141639900	cstring	 indiv choice, ranged
+classic	uniform-equipment-selector-renderer	0x450ece	0x141610690	cstring	leather
+classic	uniform-equipment-selector-renderer	0x450ed7	0x1416106a8	cstring	cloth
+classic	uniform-equipment-selector-renderer	0x450ee0	0x1416106b0	cstring	silk
+classic	uniform-equipment-selector-renderer	0x450ee9	0x1416106b8	cstring	yarn
+classic	uniform-equipment-selector-renderer	0x450ef2	0x141639700	cstring	plant fiber
+classic	uniform-equipment-selector-renderer	0x450efb	0x1416396f8	cstring	metal
+classic	uniform-equipment-selector-renderer	0x450f04	0x141610698	cstring	wood
+classic	uniform-equipment-selector-renderer	0x450f0d	0x141610678	cstring	stone
+classic	uniform-equipment-selector-renderer	0x450f16	0x1416106fc	cstring	gem
+classic	uniform-equipment-selector-renderer	0x450f1f	0x1416106c8	cstring	bone
+classic	uniform-equipment-selector-renderer	0x450f28	0x1416106c0	cstring	shell
+classic	uniform-equipment-selector-renderer	0x450f31	0x1416106e0	cstring	pearl
+classic	uniform-equipment-selector-renderer	0x450f3a	0x1416106d0	cstring	tooth
+classic	uniform-equipment-selector-renderer	0x450f43	0x1416106e8	cstring	horn
+classic	uniform-equipment-selector-renderer	0x450f4c	0x1416396f0	cstring	BROKEN
+classic	uniform-equipment-selector-renderer	0x450f5f	0x1415e3720	cstring	 
+classic	uniform-equipment-selector-renderer	0x450f86	0x141639760	cstring	individual choice
+classic	uniform-equipment-selector-renderer	0x450fb2	0x141639750	cstring	, weapon
+classic	uniform-equipment-selector-renderer	0x450fea	0x1416396b0	cstring	indiv choice, ranged
+classic	uniform-equipment-selector-renderer	0x4510ad	0x1416396b0	cstring	indiv choice, ranged
+classic	uniform-equipment-selector-renderer	0x451129	0x1416396c8	cstring	indiv choice, melee
+classic	uniform-equipment-selector-renderer	0x451239	0x141639840	cstring	 assigned items
+classic	uniform-equipment-selector-renderer	0x4513df	0x1415ff4d8	cstring	Not yet assigned
+classic	uniform-equipment-selector-renderer	0x451412	0x141639828	cstring	No assigned items
+classic	uniform-equipment-selector-renderer	0x451538	0x141639820	cstring	Mat
+classic	uniform-equipment-selector-renderer	0x451623	0x141625ba0	cstring	Color
+classic	uniform-equipment-selector-renderer	0x4518ab	0x1415f959c	cstring	Cancel
+classic	uniform-equipment-selector-renderer	0x451b80	0x141610690	cstring	leather
+classic	uniform-equipment-selector-renderer	0x451b8c	0x1416106a8	cstring	cloth
+classic	uniform-equipment-selector-renderer	0x451b98	0x1416106b0	cstring	silk
+classic	uniform-equipment-selector-renderer	0x451ba4	0x1416106b8	cstring	yarn
+classic	uniform-equipment-selector-renderer	0x451bb9	0x141639700	cstring	plant fiber
+classic	uniform-equipment-selector-renderer	0x451bc2	0x1416396f8	cstring	metal
+classic	uniform-equipment-selector-renderer	0x451bcb	0x141610698	cstring	wood
+classic	uniform-equipment-selector-renderer	0x451bd4	0x141610678	cstring	stone
+classic	uniform-equipment-selector-renderer	0x451bdd	0x1416106fc	cstring	gem
+classic	uniform-equipment-selector-renderer	0x451be6	0x1416106c8	cstring	bone
+classic	uniform-equipment-selector-renderer	0x451bef	0x1416106c0	cstring	shell
+classic	uniform-equipment-selector-renderer	0x451bf8	0x1416106e0	cstring	pearl
+classic	uniform-equipment-selector-renderer	0x451c01	0x1416106d0	cstring	tooth
+classic	uniform-equipment-selector-renderer	0x451c16	0x1416106e8	cstring	horn
+classic	uniform-equipment-selector-renderer	0x451c1f	0x1416396f0	cstring	BROKEN
+classic	uniform-equipment-selector-renderer	0x451c32	0x1415e3720	cstring	 
+classic	uniform-equipment-selector-renderer	0x451e77	0x1415f959c	cstring	Cancel
+classic	uniform-equipment-selector-renderer	0x4520e7	0x1416396a0	cstring	 (foreign)
+classic	uniform-equipment-selector-renderer	0x45231f	0x141639818	cstring	Hunters
+classic	uniform-equipment-selector-renderer	0x452417	0x1416275a8	cstring	Confirm
+classic	uniform-equipment-selector-renderer	0x4527ed	0x141610690	cstring	leather
+classic	uniform-equipment-selector-renderer	0x4527f9	0x1416106a8	cstring	cloth
+classic	uniform-equipment-selector-renderer	0x452805	0x1416106b0	cstring	silk
+classic	uniform-equipment-selector-renderer	0x452811	0x1416106b8	cstring	yarn
+classic	uniform-equipment-selector-renderer	0x452826	0x141639700	cstring	plant fiber
+classic	uniform-equipment-selector-renderer	0x45282f	0x1416396f8	cstring	metal
+classic	uniform-equipment-selector-renderer	0x452838	0x141610698	cstring	wood
+classic	uniform-equipment-selector-renderer	0x452841	0x141610678	cstring	stone
+classic	uniform-equipment-selector-renderer	0x45284a	0x1416106fc	cstring	gem
+classic	uniform-equipment-selector-renderer	0x452853	0x1416106c8	cstring	bone
+classic	uniform-equipment-selector-renderer	0x45285c	0x1416106c0	cstring	shell
+classic	uniform-equipment-selector-renderer	0x452865	0x1416106e0	cstring	pearl
+classic	uniform-equipment-selector-renderer	0x45286e	0x1416106d0	cstring	tooth
+classic	uniform-equipment-selector-renderer	0x452883	0x1416106e8	cstring	horn
+classic	uniform-equipment-selector-renderer	0x45288c	0x1416396f0	cstring	BROKEN
+classic	uniform-equipment-selector-renderer	0x45289f	0x1415e3720	cstring	 
+classic	uniform-equipment-selector-renderer	0x452a0e	0x1415e64cc	cstring	/
+classic	uniform-equipment-selector-renderer	0x452a60	0x1415e783c	cstring	_
+classic	uniform-equipment-selector-renderer	0x452b78	0x141639820	cstring	Mat
+classic	uniform-equipment-selector-renderer	0x452c7d	0x141639890	cstring	Amt
+classic	uniform-equipment-selector-renderer	0x452d9c	0x1415f20d8	cstring	Combat
+classic	uniform-equipment-selector-renderer	0x452eb1	0x14162ac88	cstring	Training
+classic	uniform-equipment-selector-renderer	0x452fa4	0x1416144ac	cstring	Delete
+classic	uniform-equipment-selector-renderer	0x453354	0x1415ff054	cstring	Remove
+classic	uniform-equipment-selector-renderer	0x453532	0x141639880	cstring	Add ammunition
+classic	uniform-equipment-selector-renderer	0x45364e	0x1416275a8	cstring	Confirm
+classic	uniform-equipment-selector-renderer	0x4536ad	0x141639858	cstring	Supplies carried by each squad member
+classic	uniform-equipment-selector-renderer	0x453abc	0x141639850	cstring	3 food
+classic	uniform-equipment-selector-renderer	0x453bd2	0x1416397c8	cstring	2 food
+classic	uniform-equipment-selector-renderer	0x453cdd	0x1416397c0	cstring	1 food
+classic	uniform-equipment-selector-renderer	0x453ded	0x1416397b8	cstring	No food
+classic	uniform-equipment-selector-renderer	0x453efe	0x14162aca0	cstring	Drink
+classic	uniform-equipment-selector-renderer	0x45400e	0x14162a710	cstring	Water
+classic	uniform-equipment-selector-renderer	0x45411e	0x1416397a8	cstring	No water
+classic	uniform-equipment-selector-renderer	0x454346	0x141639808	cstring	Assign uniform
+classic	uniform-equipment-selector-renderer	0x45444f	0x1416397f8	cstring	Add uniform
+classic	uniform-equipment-selector-renderer	0x4545d0	0x141625808	cstring	Ammo
+classic	uniform-equipment-selector-renderer	0x4546bb	0x1416397e8	cstring	Supplies
+classic	uniform-equipment-selector-renderer	0x45492b	0x1416397d0	cstring	Update equipment
+classic	uniform-equipment-selector-renderer	0x454e62	0x141639798	cstring	Custom uniform
+classic	uniform-equipment-selector-renderer	0x456bb9	0x141637b30	cstring	Details
+classic	equipment-generic-item-type-caption	0xa7fda7	0x14164517c	cstring	large
+classic	equipment-generic-item-type-caption	0xa7fdb0	0x141645180	cstring	e
+classic	equipment-generic-item-type-caption	0xa7fdb9	0x141681108	cstring	small
+classic	equipment-generic-item-type-caption	0xa7fdc2	0x14168110c	cstring	l
+classic	equipment-generic-item-type-caption	0xa7fe0c	0x1416c6848	cstring	grown 
+classic	equipment-generic-item-type-caption	0xa7fee6	0x141677d30	cstring	logs
+classic	equipment-generic-item-type-caption	0xa7ff58	0x1416ca230	cstring	branch
+classic	equipment-generic-item-type-caption	0xa7ff7d	0x1416ca2d0	cstring	es
+classic	equipment-generic-item-type-caption	0xa7ff9d	0x1415fc0c8	cstring	rough gems
+classic	equipment-generic-item-type-caption	0xa7ffb6	0x1416ca2c0	cstring	raw green glass
+classic	equipment-generic-item-type-caption	0xa7ffcf	0x1416ca2b0	cstring	raw clear glass
+classic	equipment-generic-item-type-caption	0xa7ffe8	0x1416ca298	cstring	raw crystal glass
+classic	equipment-generic-item-type-caption	0xa8000a	0x1415fc0c8	cstring	rough gems
+classic	equipment-generic-item-type-caption	0xa80028	0x1416c70a4	cstring	rough 
+classic	equipment-generic-item-type-caption	0xa800c7	0x141680d5c	cstring	small 
+classic	equipment-generic-item-type-caption	0xa800de	0x141680d5c	cstring	small 
+classic	equipment-generic-item-type-caption	0xa801be	0x1416ca1fc	cstring	rock
+classic	equipment-generic-item-type-caption	0xa801de	0x1416ca1f0	cstring	small rock
+classic	equipment-generic-item-type-caption	0xa80237	0x1416ca1e0	cstring	stone boulders
+classic	equipment-generic-item-type-caption	0xa8025d	0x1416ca1d0	cstring	boulders
+classic	equipment-generic-item-type-caption	0xa8033a	0x1416ca188	cstring	bars
+classic	equipment-generic-item-type-caption	0xa80353	0x1416ca210	cstring	charcoal
+classic	equipment-generic-item-type-caption	0xa80369	0x1416ca204	cstring	coke
+classic	equipment-generic-item-type-caption	0xa80372	0x1416ca190	cstring	refined coal
+classic	equipment-generic-item-type-caption	0xa8038b	0x1416396f8	cstring	metal
+classic	equipment-generic-item-type-caption	0xa8039a	0x1416ca21c	cstring	 bars
+classic	equipment-generic-item-type-caption	0xa8044a	0x1416ca228	cstring	 wafers
+classic	equipment-generic-item-type-caption	0xa80538	0x1415fc088	cstring	cut gems
+classic	equipment-generic-item-type-caption	0xa80551	0x1416ca170	cstring	cut green glass gems
+classic	equipment-generic-item-type-caption	0xa8056a	0x1416ca158	cstring	cut clear glass gems
+classic	equipment-generic-item-type-caption	0xa80580	0x1416ca1b8	cstring	cut crystal glass gems
+classic	equipment-generic-item-type-caption	0xa8059b	0x1416ca1b0	cstring	gems
+classic	equipment-generic-item-type-caption	0xa806d8	0x1416ca1a8	cstring	blocks
+classic	equipment-generic-item-type-caption	0xa806ef	0x1416ca1a8	cstring	blocks
+classic	equipment-generic-item-type-caption	0xa8079d	0x1416ca13c	cstring	door
+classic	equipment-generic-item-type-caption	0xa807a4	0x1416ca1a0	cstring	portal
+classic	equipment-generic-item-type-caption	0xa8081a	0x1416ca130	cstring	floodgate
+classic	equipment-generic-item-type-caption	0xa8088a	0x1416ca120	cstring	hatch cover
+classic	equipment-generic-item-type-caption	0xa808fa	0x1416ca118	cstring	grate
+classic	equipment-generic-item-type-caption	0xa8096a	0x14162aa9c	cstring	table
+classic	equipment-generic-item-type-caption	0xa809da	0x141637a60	cstring	cabinet
+classic	equipment-generic-item-type-caption	0xa80a4a	0x141637a50	cstring	weapon rack
+classic	equipment-generic-item-type-caption	0xa80aba	0x141637a40	cstring	armor stand
+classic	equipment-generic-item-type-caption	0xa80b2a	0x1416ca154	cstring	bin
+classic	equipment-generic-item-type-caption	0xa80bd1	0x1416ca150	cstring	box
+classic	equipment-generic-item-type-caption	0xa80bea	0x1416ca14c	cstring	e
+classic	equipment-generic-item-type-caption	0xa80c13	0x1416ca144	cstring	coffer
+classic	equipment-generic-item-type-caption	0xa80c22	0x141637a68	cstring	chest
+classic	equipment-generic-item-type-caption	0xa80c43	0x1416caa88	cstring	boxe
+classic	equipment-generic-item-type-caption	0xa80c58	0x1415e4220	cstring	s
+classic	equipment-generic-item-type-caption	0xa80c6c	0x1416ca150	cstring	box
+classic	equipment-generic-item-type-caption	0xa80ce4	0x1416caa84	cstring	bag
+classic	equipment-generic-item-type-caption	0xa80d7f	0x1416caa78	cstring	backpack
+classic	equipment-generic-item-type-caption	0xa80e3c	0x1416caaa8	cstring	cast
+classic	equipment-generic-item-type-caption	0xa80e48	0x1416caa68	cstring	limb/body 
+classic	equipment-generic-item-type-caption	0xa80e57	0x1416caaa8	cstring	cast
+classic	equipment-generic-item-type-caption	0xa80eb7	0x1416caa68	cstring	limb/body 
+classic	equipment-generic-item-type-caption	0xa80ec6	0x1416caaa8	cstring	cast
+classic	equipment-generic-item-type-caption	0xa80f36	0x1416caaa0	cstring	splint
+classic	equipment-generic-item-type-caption	0xa80fa0	0x1416caa98	cstring	crutch
+classic	equipment-generic-item-type-caption	0xa8103b	0x1416caa90	cstring	quiver
+classic	equipment-generic-item-type-caption	0xa810ba	0x1416caa24	cstring	casket
+classic	equipment-generic-item-type-caption	0xa81105	0x1416caa18	cstring	sarcophag
+classic	equipment-generic-item-type-caption	0xa81114	0x14163d170	cstring	us
+classic	equipment-generic-item-type-caption	0xa8111b	0x1416bafec	cstring	i
+classic	equipment-generic-item-type-caption	0xa81137	0x14162a9ec	cstring	coffin
+classic	equipment-generic-item-type-caption	0xa81254	0x1416caa04	cstring	chain
+classic	equipment-generic-item-type-caption	0xa81268	0x1416caa0c	cstring	rope
+classic	equipment-generic-item-type-caption	0xa813a8	0x1416caa4c	cstring	vial
+classic	equipment-generic-item-type-caption	0xa813b9	0x1416caa44	cstring	flask
+classic	equipment-generic-item-type-caption	0xa813d0	0x1416caa58	cstring	waterskin
+classic	equipment-generic-item-type-caption	0xa81479	0x1416caa30	cstring	musical instrument
+classic	equipment-generic-item-type-caption	0xa8155b	0x1416ca9d0	cstring	unglazed 
+classic	equipment-generic-item-type-caption	0xa816c3	0x1415e3720	cstring	 
+classic	equipment-generic-item-type-caption	0xa816dd	0x1416bcee4	cstring	tool
+classic	equipment-generic-item-type-caption	0xa8177d	0x1416bcefc	cstring	toy
+classic	equipment-generic-item-type-caption	0xa8182d	0x1416ca9cc	cstring	cup
+classic	equipment-generic-item-type-caption	0xa81861	0x1416ca9c8	cstring	mug
+classic	equipment-generic-item-type-caption	0xa8187b	0x1416ca9c0	cstring	goblet
+classic	equipment-generic-item-type-caption	0xa818eb	0x1416ca9fc	cstring	window
+classic	equipment-generic-item-type-caption	0xa8199a	0x1416ca9e4	cstring	cage
+classic	equipment-generic-item-type-caption	0xa819a1	0x1416ca9f0	cstring	terrarium
+classic	equipment-generic-item-type-caption	0xa81a15	0x1416ca9dc	cstring	barrel
+classic	equipment-generic-item-type-caption	0xa81a85	0x1416ca98c	cstring	bucket
+classic	equipment-generic-item-type-caption	0xa81af5	0x1416ca980	cstring	animal trap
+classic	equipment-generic-item-type-caption	0xa81b71	0x14162aaa4	cstring	chair
+classic	equipment-generic-item-type-caption	0xa81b8b	0x1416ca974	cstring	throne
+classic	equipment-generic-item-type-caption	0xa81c41	0x1416ca970	cstring	web
+classic	equipment-generic-item-type-caption	0xa81c8c	0x1416ca9b8	cstring	strands
+classic	equipment-generic-item-type-caption	0xa81cbf	0x1416106b8	cstring	yarn
+classic	equipment-generic-item-type-caption	0xa81cd0	0x1416106a0	cstring	thread
+classic	equipment-generic-item-type-caption	0xa81d45	0x1416106a8	cstring	cloth
+classic	equipment-generic-item-type-caption	0xa81e4f	0x1416ca9ac	cstring	sheet
+classic	equipment-generic-item-type-caption	0xa81e72	0x1416ca9a0	cstring	tanned hide
+classic	equipment-generic-item-type-caption	0xa81ed5	0x1416ca994	cstring	totem
+classic	equipment-generic-item-type-caption	0xa81f3e	0x1416ca940	cstring	-bound 
+classic	equipment-generic-item-type-caption	0xa81f5a	0x1416ca92c	cstring	codex
+classic	equipment-generic-item-type-caption	0xa81f61	0x1416ca938	cstring	codices
+classic	equipment-generic-item-type-caption	0xa81fe0	0x1416ca920	cstring	figurine
+classic	equipment-generic-item-type-caption	0xa81ffe	0x1416ca968	cstring	rotten 
+classic	equipment-generic-item-type-caption	0xa82023	0x14164aac0	cstring	drink
+classic	equipment-generic-item-type-caption	0xa82066	0x1416ca968	cstring	rotten 
+classic	equipment-generic-item-type-caption	0xa8224b	0x1416ca960	cstring	filthy 
+classic	equipment-generic-item-type-caption	0xa82264	0x1416ca958	cstring	sticky 
+classic	equipment-generic-item-type-caption	0xa82283	0x1416ca948	cstring	vomitous 
+classic	equipment-generic-item-type-caption	0xa8229f	0x1416ca8ec	cstring	slimy 
+classic	equipment-generic-item-type-caption	0xa822b8	0x1416ab578	cstring	stagnant 
+classic	equipment-generic-item-type-caption	0xa822d4	0x1416ca8e4	cstring	dirty 
+classic	equipment-generic-item-type-caption	0xa822f0	0x1416ca8dc	cstring	gooey 
+classic	equipment-generic-item-type-caption	0xa82309	0x1416ca8d0	cstring	purulent 
+classic	equipment-generic-item-type-caption	0xa82322	0x1416ca910	cstring	ichorous 
+classic	equipment-generic-item-type-caption	0xa8233b	0x1416ca908	cstring	bloody 
+classic	equipment-generic-item-type-caption	0xa8237a	0x1416a1240	cstring	liquid
+classic	equipment-generic-item-type-caption	0xa824bc	0x1416ca8fc	cstring	 paste
+classic	equipment-generic-item-type-caption	0xa82511	0x1416ca8f4	cstring	glob
+classic	equipment-generic-item-type-caption	0xa82712	0x1416ca880	cstring	 laced with 
+classic	equipment-generic-item-type-caption	0xa82786	0x1415e40c4	cstring	, 
+classic	equipment-generic-item-type-caption	0xa82796	0x1415e40bc	cstring	 and 
+classic	equipment-generic-item-type-caption	0xa827fb	0x1416ca968	cstring	rotten 
+classic	equipment-generic-item-type-caption	0xa82898	0x1416ca870	cstring	 dye mix
+classic	equipment-generic-item-type-caption	0xa828bc	0x1416ca864	cstring	powder
+classic	equipment-generic-item-type-caption	0xa82916	0x1416ca968	cstring	rotten 
+classic	equipment-generic-item-type-caption	0xa82938	0x1416ca85c	cstring	cheese
+classic	equipment-generic-item-type-caption	0xa829c0	0x1416ca8c0	cstring	catapult parts
+classic	equipment-generic-item-type-caption	0xa82a38	0x1416ca8a8	cstring	bolt thrower parts
+classic	equipment-generic-item-type-caption	0xa82ab0	0x1416ca898	cstring	mechanisms
+classic	equipment-generic-item-type-caption	0xa82b5f	0x1416ca890	cstring	tube
+classic	equipment-generic-item-type-caption	0xa82b79	0x1416ca810	cstring	pipe section
+classic	equipment-generic-item-type-caption	0xa82c17	0x1416ca800	cstring	trap component
+classic	equipment-generic-item-type-caption	0xa82c48	0x1415e3720	cstring	 
+classic	equipment-generic-item-type-caption	0xa82d2a	0x1416ca7f0	cstring	ballista parts
+classic	equipment-generic-item-type-caption	0xa82da2	0x1416ca7e4	cstring	anvil
+classic	equipment-generic-item-type-caption	0xa82e12	0x1416ca854	cstring	amulet
+classic	equipment-generic-item-type-caption	0xa82e82	0x1416ca840	cstring	ballista arrow head
+classic	equipment-generic-item-type-caption	0xa82f29	0x1416ca830	cstring	siege ammo
+classic	equipment-generic-item-type-caption	0xa83073	0x1416ca820	cstring	ammunition
+classic	equipment-generic-item-type-caption	0xa830eb	0x1416cae98	cstring	scepter
+classic	equipment-generic-item-type-caption	0xa8315b	0x1416cae8c	cstring	crown
+classic	equipment-generic-item-type-caption	0xa831c5	0x1416cae84	cstring	coin
+classic	equipment-generic-item-type-caption	0xa831e4	0x1416cae78	cstring	perfect 
+classic	equipment-generic-item-type-caption	0xa831f3	0x1416455a8	cstring	large 
+classic	equipment-generic-item-type-caption	0xa832db	0x1416caec8	cstring	green glass 
+classic	equipment-generic-item-type-caption	0xa832f1	0x1416caeb8	cstring	clear glass 
+classic	equipment-generic-item-type-caption	0xa83307	0x1416caea8	cstring	crystal glass 
+classic	equipment-generic-item-type-caption	0xa83323	0x1416106fc	cstring	gem
+classic	equipment-generic-item-type-caption	0xa833db	0x1416caea0	cstring	 gem
+classic	equipment-generic-item-type-caption	0xa834b6	0x1416cae40	cstring	ring
+classic	equipment-generic-item-type-caption	0xa83526	0x1416cae38	cstring	earring
+classic	equipment-generic-item-type-caption	0xa83596	0x1416cae28	cstring	bracelet
+classic	equipment-generic-item-type-caption	0xa83606	0x14162aab0	cstring	bed
+classic	equipment-generic-item-type-caption	0xa83676	0x1416cae18	cstring	traction bench
+classic	equipment-generic-item-type-caption	0xa836e6	0x1416cae6c	cstring	quern
+classic	equipment-generic-item-type-caption	0xa83756	0x1416cae60	cstring	millstone
+classic	equipment-generic-item-type-caption	0xa837c6	0x1416cae54	cstring	statue
+classic	equipment-generic-item-type-caption	0xa838d2	0x1416cae48	cstring	memorial
+classic	equipment-generic-item-type-caption	0xa838e6	0x1416cad90	cstring	food imports sign
+classic	equipment-generic-item-type-caption	0xa838fa	0x1416cad78	cstring	clothing imports sign
+classic	equipment-generic-item-type-caption	0xa8390e	0x1416cad60	cstring	general imports sign
+classic	equipment-generic-item-type-caption	0xa83922	0x1416cad50	cstring	cloth shop sign
+classic	equipment-generic-item-type-caption	0xa83936	0x1416cae00	cstring	leather shop sign
+classic	equipment-generic-item-type-caption	0xa8394a	0x1416cade0	cstring	woven clothing shop sign
+classic	equipment-generic-item-type-caption	0xa8395e	0x1416cadc0	cstring	leather clothing shop sign
+classic	equipment-generic-item-type-caption	0xa83972	0x1416cada8	cstring	bone carver's shop sign
+classic	equipment-generic-item-type-caption	0xa83986	0x1416cacd8	cstring	gem cutter's shop sign
+classic	equipment-generic-item-type-caption	0xa8399a	0x1416cacc0	cstring	weaponsmith's shop sign
+classic	equipment-generic-item-type-caption	0xa839ae	0x1416caca8	cstring	bowyer's shop sign
+classic	equipment-generic-item-type-caption	0xa839c2	0x1416cac90	cstring	blacksmith's shop sign
+classic	equipment-generic-item-type-caption	0xa839d6	0x1416cad38	cstring	armorsmith's shop sign
+classic	equipment-generic-item-type-caption	0xa839ea	0x1416cad20	cstring	metal craft shop sign
+classic	equipment-generic-item-type-caption	0xa839fe	0x1416cad08	cstring	leather goods shop sign
+classic	equipment-generic-item-type-caption	0xa83a12	0x1416cacf0	cstring	carpenter's shop sign
+classic	equipment-generic-item-type-caption	0xa83a26	0x1416cac40	cstring	stone furniture shop sign
+classic	equipment-generic-item-type-caption	0xa83a3a	0x1416cac20	cstring	metal furniture shop sign
+classic	equipment-generic-item-type-caption	0xa83a4e	0x1416cac10	cstring	tavern sign
+classic	equipment-generic-item-type-caption	0xa83a62	0x1416cac04	cstring	slab
+classic	equipment-generic-item-type-caption	0xa83a76	0x1416cac04	cstring	slab
+classic	equipment-generic-item-type-caption	0xa83a94	0x1416ca968	cstring	rotten 
+classic	equipment-generic-item-type-caption	0xa83aa9	0x1416cac84	cstring	corpse
+classic	equipment-generic-item-type-caption	0xa83ac7	0x1416ca968	cstring	rotten 
+classic	equipment-generic-item-type-caption	0xa83aeb	0x1416106d0	cstring	tooth
+classic	equipment-generic-item-type-caption	0xa83afc	0x1416cac7c	cstring	teeth
+classic	equipment-generic-item-type-caption	0xa83b11	0x1416106c8	cstring	bone
+classic	equipment-generic-item-type-caption	0xa83b29	0x1416106c0	cstring	shell
+classic	equipment-generic-item-type-caption	0xa83b41	0x1416cac70	cstring	plant part
+classic	equipment-generic-item-type-caption	0xa83b59	0x1416cac60	cstring	silk body part
+classic	equipment-generic-item-type-caption	0xa83b71	0x1416cabb8	cstring	leather body part
+classic	equipment-generic-item-type-caption	0xa83b89	0x1416caba0	cstring	wooden body part
+classic	equipment-generic-item-type-caption	0xa83ba3	0x1416cab90	cstring	soap body part
+classic	equipment-generic-item-type-caption	0xa83bbd	0x1416106e8	cstring	horn
+classic	equipment-generic-item-type-caption	0xa83bd7	0x1416106e0	cstring	pearl
+classic	equipment-generic-item-type-caption	0xa83bf1	0x1416cab80	cstring	yarn body part
+classic	equipment-generic-item-type-caption	0xa83c09	0x1416cabf0	cstring	strand body part
+classic	equipment-generic-item-type-caption	0xa83c12	0x14167bdf0	cstring	body part
+classic	equipment-generic-item-type-caption	0xa83c3b	0x1416cabe8	cstring	Rotten 
+classic	equipment-generic-item-type-caption	0xa83da2	0x141679ef8	cstring	remains
+classic	equipment-generic-item-type-caption	0xa83e01	0x1416cabdc	cstring	seeds
+classic	equipment-generic-item-type-caption	0xa83e72	0x1416cabd0	cstring	withered 
+classic	equipment-generic-item-type-caption	0xa83ee6	0x1416cab28	cstring	leaves and fruit
+classic	equipment-generic-item-type-caption	0xa83ef7	0x1416cab18	cstring	leaf or fruit
+classic	equipment-generic-item-type-caption	0xa83f2a	0x1416cabd0	cstring	withered 
+classic	equipment-generic-item-type-caption	0xa83f7d	0x14160fd14	cstring	plant
+classic	equipment-generic-item-type-caption	0xa83f96	0x1415e4220	cstring	s
+classic	equipment-generic-item-type-caption	0xa83fbc	0x1416ca968	cstring	rotten 
+classic	equipment-generic-item-type-caption	0xa83fd4	0x1416cab10	cstring	raw 
+classic	equipment-generic-item-type-caption	0xa84155	0x1415e40c4	cstring	, 
+classic	equipment-generic-item-type-caption	0xa8416b	0x1415e40c4	cstring	, 
+classic	equipment-generic-item-type-caption	0xa84184	0x14169c0e8	cstring	fish
+classic	equipment-generic-item-type-caption	0xa841aa	0x1416ca968	cstring	rotten 
+classic	equipment-generic-item-type-caption	0xa842d1	0x1415e3720	cstring	 
+classic	equipment-generic-item-type-caption	0xa842e6	0x1416cab0c	cstring	egg
+classic	equipment-generic-item-type-caption	0xa8430c	0x1416ca968	cstring	rotten 
+classic	equipment-generic-item-type-caption	0xa8440b	0x14169c0e8	cstring	fish
+classic	equipment-generic-item-type-caption	0xa84428	0x1416cab74	cstring	live 
+classic	equipment-generic-item-type-caption	0xa84461	0x1416cab60	cstring	small live animal
+classic	equipment-generic-item-type-caption	0xa8447b	0x1416cab54	cstring	tame 
+classic	equipment-generic-item-type-caption	0xa84484	0x1416cab40	cstring	small tame animal
+classic	equipment-generic-item-type-caption	0xa8449b	0x1416caad0	cstring	prepared meal
+classic	equipment-generic-item-type-caption	0xa844b5	0x1416ca968	cstring	rotten 
+classic	equipment-generic-item-type-caption	0xa844ca	0x1416caac0	cstring	preserved 
+classic	equipment-generic-item-type-caption	0xa8458c	0x1416caab8	cstring	 chops
+classic	equipment-generic-item-type-caption	0xa8459d	0x1416caab0	cstring	 chop
+classic	equipment-generic-item-type-caption	0xa845d6	0x1416cab04	cstring	meat
+classic	equipment-generic-item-type-caption	0xa845f0	0x1416cab04	cstring	meat
+classic	equipment-generic-item-type-caption	0xa84682	0x1416bce90	cstring	weapon
+classic	equipment-generic-item-type-caption	0xa846bb	0x1415e3720	cstring	 
+classic	equipment-generic-item-type-caption	0xa847e7	0x1416caaf0	cstring	suits of 
+classic	equipment-generic-item-type-caption	0xa847f6	0x1416bce88	cstring	armor
+classic	equipment-generic-item-type-caption	0xa8485c	0x1415e3720	cstring	 
+classic	equipment-generic-item-type-caption	0xa84906	0x1416caafc	cstring	chain 
+classic	equipment-generic-item-type-caption	0xa84a15	0x141635604	cstring	right 
+classic	equipment-generic-item-type-caption	0xa84a35	0x14163560c	cstring	left 
+classic	equipment-generic-item-type-caption	0xa84a7e	0x1416caafc	cstring	chain 
+classic	equipment-generic-item-type-caption	0xa84adf	0x1415e3720	cstring	 
+classic	equipment-generic-item-type-caption	0xa84af3	0x1416caae0	cstring	handwear
+classic	equipment-generic-item-type-caption	0xa84b97	0x1416bce58	cstring	shield
+classic	equipment-generic-item-type-caption	0xa84bb6	0x1416cb2a0	cstring	/buckler
+classic	equipment-generic-item-type-caption	0xa84bca	0x1416cb2a0	cstring	/buckler
+classic	equipment-generic-item-type-caption	0xa84d07	0x1415e3720	cstring	 
+classic	equipment-generic-item-type-caption	0xa84d37	0x1416cb290	cstring	footwear
+classic	equipment-generic-item-type-caption	0xa84e28	0x1416cb280	cstring	headwear
+classic	equipment-generic-item-type-caption	0xa84e6c	0x1415e3720	cstring	 
+classic	equipment-generic-item-type-caption	0xa84f28	0x1416cb278	cstring	legwear
+classic	equipment-generic-item-type-caption	0xa84fac	0x1415e3720	cstring	 
+classic	equipment-generic-item-type-caption	0xa850c6	0x1415f7fb0	cstring	item
+classic	equipment-generic-item-type-caption	0xa850f7	0x141616f6c	cstring	 [
+classic	equipment-generic-item-type-caption	0xa85117	0x1415f8664	cstring	]
+classic	equipment-specific-item-caption	0xc62734	0x1416e8e38	cstring	 (copy)
+classic	equipment-material-caption	0x14cc8f7	0x14160fd14	cstring	plant
+classic	equipment-material-caption	0x14cc919	0x1416106b8	cstring	yarn
+classic	equipment-material-caption	0x14cc941	0x1416106a8	cstring	cloth
+classic	equipment-material-caption	0x14cc961	0x1416106b0	cstring	silk
+classic	equipment-material-caption	0x14cc981	0x1416106c8	cstring	bone
+classic	equipment-material-caption	0x14cc9a1	0x141610690	cstring	leather
+classic	equipment-material-caption	0x14cc9c1	0x1416106c0	cstring	shell
+classic	equipment-material-caption	0x14cc9e3	0x1416106d8	cstring	soap
+classic	equipment-material-caption	0x14cca05	0x141782aa0	cstring	ivory/tooth
+classic	equipment-material-caption	0x14cca27	0x1416106e8	cstring	horn
+classic	equipment-material-caption	0x14cca49	0x1416106e0	cstring	pearl
+classic	equipment-material-caption	0x14cca78	0x141610698	cstring	wood
+classic	equipment-material-caption	0x14cca7f	0x14169c26c	cstring	wooden
+classic	equipment-material-caption	0x14ccbd5	0x1415e8b58	cstring	's 
+classic	equipment-material-caption	0x14ccc69	0x1415e3720	cstring	 
+classic	equipment-material-caption	0x14cccba	0x141782ab0	cstring	unknown material

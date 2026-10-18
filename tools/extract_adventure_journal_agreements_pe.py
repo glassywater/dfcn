@@ -21,6 +21,12 @@ ROOTS = {
     0xc2110: "journal-agreement-details-and-card-fields",
     0xdf540: "journal-agreement-title-and-orders",
 }
+NAME_SUPPLIERS = {
+    "steam": {0xb92900: "journal-agreement-entity-name",
+              0xb94400: "journal-agreement-artifact-name"},
+    "classic": {0xb8f940: "journal-agreement-entity-name",
+                0xb91440: "journal-agreement-artifact-name"},
+}
 EXPLICIT_RANGES = {
     "steam": ((0xdec60, 0xdee12, "journal-card-border"),
               (0xcdf30, 0xcdfb3, "journal-agreement-retained-title-clipping"),
@@ -121,10 +127,13 @@ def main():
     OUT.mkdir(parents=True, exist_ok=True)
     config = json.loads((ROOT / "data/runtime/native-pe-images.json").read_text(encoding="utf-8"))
     functions, literals, calls, branches, conditions, switches, fields = [], [], [], [], [], [], []
+    decompiler_functions = []
     for edition, key, shift in (("steam", "reference", 0), ("classic", "classic", -0x70)):
         image = CaptionImage(Path(config[key]), OBJDUMP)
         roots = [(image.base + reference + shift, image.functions[image.base + reference + shift], role, "unwind")
                  for reference, role in ROOTS.items()]
+        roots.extend((image.base + entry, image.functions[image.base + entry], role, "unwind")
+                     for entry, role in NAME_SUPPLIERS[edition].items())
         roots.extend((image.base + start, image.base + end, role, "decoded leaf / complete chained unwind chunks")
                      for start, end, role in EXPLICIT_RANGES[edition])
         for start, end, role, basis in roots:
@@ -148,11 +157,22 @@ def main():
                                      hex(body[index + 1][0] - image.base) if index + 1 < len(body) else hex(end - image.base)))
                 if re.match(r"(?:cmp|test|bt)\s", instruction):
                     conditions.append((edition, role, hex(pc - image.base), instruction))
-            switches.extend(native_switches(image, body, edition, role))
+            owner_switches = native_switches(image, body, edition, role)
+            switches.extend(owner_switches)
+            # MSVC includes the trailing jump-table bytes in the unwind range.
+            # Keep the raw owner intact above, but do not decode those bytes as
+            # instructions when constructing the function for Ghidra.
+            code_end = min([end] + [image.base + int(row[3], 16)
+                                   for row in owner_switches
+                                   if start <= image.base + int(row[3], 16) < end])
+            decompiler_functions.append((edition, image.identity, role,
+                                        hex(start - image.base), hex(code_end - image.base),
+                                        f"pe-{edition}-{role}.asm"))
             if role == "journal-agreement-details-and-card-fields":
                 fields.extend(display_fields(image, edition, body))
             (OUT / f"pe-{edition}-{role}.asm").write_text("\n".join(lines) + "\n", encoding="utf-8")
     emit("functions", ("edition", "image", "source_path", "sha256", "role", "start_rva", "end_rva", "image_base", "body_basis"), functions)
+    emit("ghidra-functions", ("edition", "image", "role", "start_rva", "code_end_rva", "assembly_file"), decompiler_functions)
     emit("literals", ("edition", "role", "instruction_rva", "operand", "kind", "text"), literals)
     emit("calls", ("edition", "role", "instruction_rva", "callee_rva", "operation"), calls)
     emit("branches", ("edition", "role", "instruction_rva", "branch", "target_rva", "fallthrough_rva"), branches)

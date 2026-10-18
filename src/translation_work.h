@@ -1,5 +1,6 @@
 #pragma once
 
+#include <atomic>
 #include <cstddef>
 #include <limits>
 #include <memory>
@@ -11,6 +12,19 @@
 #include <utility>
 
 namespace dfcn {
+
+// Cancellation is ownership/lifecycle control, never a translation miss or
+// a deadline that can replace a complete Chinese result with source text.
+struct TranslationWorkCancelled {};
+inline thread_local const std::atomic_bool *translation_work_cancellation = nullptr;
+class TranslationWorkCancellationScope {
+    const std::atomic_bool *previous_ = translation_work_cancellation;
+public:
+    explicit TranslationWorkCancellationScope(const std::atomic_bool *cancelled) noexcept {
+        translation_work_cancellation = cancelled;
+    }
+    ~TranslationWorkCancellationScope() { translation_work_cancellation = previous_; }
+};
 
 // Recursive grammars and typed callbacks share one complete parse's memo.
 // Completion depends on semantic states and source progress, not elapsed time
@@ -27,6 +41,7 @@ struct TranslationWorkState {
     std::size_t steps = 0;
     std::size_t depth = 0;
     const char *limit_reason = nullptr;
+    bool dependency_pending = false;
     std::string_view stage = "historical paragraph";
     std::string_view input = {};
     std::unordered_map<std::string, std::optional<std::string>> memo;
@@ -39,12 +54,20 @@ struct TranslationWorkState {
 // reloadable core. The active scope owns this state on its ordinary stack.
 inline thread_local TranslationWorkState *active_translation_work = nullptr;
 
+inline void translation_work_require_dependency() noexcept {
+    if (active_translation_work) active_translation_work->dependency_pending = true;
+}
+
 inline bool translation_work_exhausted() {
     const auto *state = active_translation_work;
-    return state && state->limit_reason;
+    return (state && (state->limit_reason || state->dependency_pending)) || (translation_work_cancellation &&
+        translation_work_cancellation->load(std::memory_order_acquire));
 }
 
 inline void translation_work_step(std::size_t amount = 1) {
+    if (translation_work_cancellation &&
+            translation_work_cancellation->load(std::memory_order_acquire))
+        throw TranslationWorkCancelled{};
     auto *state = active_translation_work;
     if (!state) return;
     const auto remaining = std::numeric_limits<std::size_t>::max() - state->steps;
@@ -67,7 +90,10 @@ public:
     TranslationWorkScope &operator=(const TranslationWorkScope &) = delete;
     bool owns_budget() const { return !previous_; }
     bool exhausted() const {
-        return (previous_ ? previous_ : &state_)->limit_reason != nullptr;
+        const auto *state = previous_ ? previous_ : &state_;
+        return state->limit_reason != nullptr || state->dependency_pending ||
+            (translation_work_cancellation &&
+             translation_work_cancellation->load(std::memory_order_acquire));
     }
 };
 
@@ -116,7 +142,12 @@ template<class Resolver>
 std::optional<std::string> translation_work_memo(const std::string &key,
         Resolver &&resolve, std::string_view active_key = {}) {
     auto *state = active_translation_work;
-    if (!state) return std::forward<Resolver>(resolve)();
+    if (!state) {
+        translation_work_step(0);
+        auto result = std::forward<Resolver>(resolve)();
+        translation_work_step(0);
+        return result;
+    }
     translation_work_step();
     const std::string active(active_key.empty() ? std::string_view(key) : active_key);
     if (const auto found = state->memo.find(key); found != state->memo.end())
@@ -134,7 +165,8 @@ std::optional<std::string> translation_work_memo(const std::string &key,
     const auto cycle_revision = state->cycle_revision;
     auto result = std::forward<Resolver>(resolve)();
     translation_work_step();
-    if (cycle_revision == state->cycle_revision) state->memo.emplace(key, result);
+    if (cycle_revision == state->cycle_revision && !translation_work_exhausted())
+        state->memo.emplace(key, result);
     return result;
 }
 

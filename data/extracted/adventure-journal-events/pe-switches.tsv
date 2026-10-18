@@ -1,0 +1,955 @@
+edition	role	dispatch_rva	table_rva	remap_rva	selector	table_index	target_rva
+steam	journal-renderer-and-card-fields	0xc26d9	0xca358		0	0	0xc26db
+steam	journal-renderer-and-card-fields	0xc26d9	0xca358		1	1	0xc26f2
+steam	journal-renderer-and-card-fields	0xc26d9	0xca358		2	2	0xc270d
+steam	journal-renderer-and-card-fields	0xc26d9	0xca358		3	3	0xc2726
+steam	journal-renderer-and-card-fields	0xc26d9	0xca358		4	4	0xc273c
+steam	journal-renderer-and-card-fields	0xc26d9	0xca358		5	5	0xc2754
+steam	journal-renderer-and-card-fields	0xc26d9	0xca358		6	6	0xc276a
+steam	journal-renderer-and-card-fields	0xc26d9	0xca358		7	7	0xc2782
+steam	journal-renderer-and-card-fields	0xc26d9	0xca358		8	8	0xc279a
+steam	journal-renderer-and-card-fields	0xc2997	0xca3a0		0	0	0xc29cb
+steam	journal-renderer-and-card-fields	0xc2997	0xca3a0		1	1	0xc2999
+steam	journal-renderer-and-card-fields	0xc2997	0xca3a0		2	2	0xc29fd
+steam	journal-renderer-and-card-fields	0xc2997	0xca3a0		3	3	0xc2a2f
+steam	journal-renderer-and-card-fields	0xc2997	0xca3a0		4	4	0xc2a61
+steam	journal-renderer-and-card-fields	0xc2997	0xca3a0		5	5	0xc2a93
+steam	journal-renderer-and-card-fields	0xc2997	0xca3a0		6	6	0xc2ac5
+steam	journal-renderer-and-card-fields	0xc2997	0xca3a0		7	7	0xc2af4
+steam	journal-renderer-and-card-fields	0xc2997	0xca3a0		8	8	0xc2b23
+steam	journal-renderer-and-card-fields	0xc2fec	0xca3c4		0	0	0xc2fee
+steam	journal-renderer-and-card-fields	0xc2fec	0xca3c4		1	1	0xc3871
+steam	journal-renderer-and-card-fields	0xc2fec	0xca3c4		2	2	0xc88c0
+steam	journal-renderer-and-card-fields	0xc2fec	0xca3c4		3	3	0xc9350
+steam	journal-renderer-and-card-fields	0xc2fec	0xca3c4		4	4	0xc8e12
+steam	journal-renderer-and-card-fields	0xc2fec	0xca3c4		5	5	0xc9890
+steam	journal-renderer-and-card-fields	0xc2fec	0xca3c4		6	6	0xc9c80
+steam	journal-renderer-and-card-fields	0xc2fec	0xca3c4		7	7	0xc84d0
+steam	journal-renderer-and-card-fields	0xc2fec	0xca3c4		8	8	0xc70a4
+steam	journal-renderer-and-card-fields	0xc3b26	0xca3e8		0	0	0xc3b28
+steam	journal-renderer-and-card-fields	0xc3b26	0xca3e8		1	1	0xc3bdf
+steam	journal-renderer-and-card-fields	0xc3b26	0xca3e8		2	2	0xc3beb
+steam	journal-renderer-and-card-fields	0xc3b26	0xca3e8		3	3	0xc3bf7
+steam	journal-renderer-and-card-fields	0xc3b26	0xca3e8		4	4	0xc3c03
+steam	journal-renderer-and-card-fields	0xc3b26	0xca3e8		5	5	0xc3c0f
+steam	journal-renderer-and-card-fields	0xc3b26	0xca3e8		6	6	0xc3c1b
+steam	journal-renderer-and-card-fields	0xc3b26	0xca3e8		7	7	0xc3c27
+steam	journal-renderer-and-card-fields	0xc3b26	0xca3e8		8	8	0xc3c33
+steam	journal-renderer-and-card-fields	0xc3b26	0xca3e8		9	9	0xc3c3f
+steam	journal-renderer-and-card-fields	0xc3b26	0xca3e8		10	10	0xc3c48
+steam	journal-renderer-and-card-fields	0xc3b26	0xca3e8		11	11	0xc3c6c
+steam	journal-renderer-and-card-fields	0xc3b26	0xca3e8		12	12	0xc3cab
+steam	journal-renderer-and-card-fields	0xc3b26	0xca3e8		13	13	0xc3c51
+steam	journal-renderer-and-card-fields	0xc3b26	0xca3e8		14	14	0xc3c5a
+steam	journal-renderer-and-card-fields	0xc3b26	0xca3e8		15	15	0xc3c63
+steam	journal-renderer-and-card-fields	0xc3b26	0xca3e8		16	16	0xc3cb4
+steam	journal-renderer-and-card-fields	0xc3b26	0xca3e8		17	17	0xc3cbd
+steam	journal-renderer-and-card-fields	0xc3b89	0xca430	0xca450	0	0	0xc3b8b
+steam	journal-renderer-and-card-fields	0xc3b89	0xca430	0xca450	1	1	0xc3bbb
+steam	journal-renderer-and-card-fields	0xc3b89	0xca430	0xca450	2	2	0xc3b97
+steam	journal-renderer-and-card-fields	0xc3b89	0xca430	0xca450	3	7	0xc3cd0
+steam	journal-renderer-and-card-fields	0xc3b89	0xca430	0xca450	4	7	0xc3cd0
+steam	journal-renderer-and-card-fields	0xc3b89	0xca430	0xca450	5	7	0xc3cd0
+steam	journal-renderer-and-card-fields	0xc3b89	0xca430	0xca450	6	7	0xc3cd0
+steam	journal-renderer-and-card-fields	0xc3b89	0xca430	0xca450	7	7	0xc3cd0
+steam	journal-renderer-and-card-fields	0xc3b89	0xca430	0xca450	8	7	0xc3cd0
+steam	journal-renderer-and-card-fields	0xc3b89	0xca430	0xca450	9	7	0xc3cd0
+steam	journal-renderer-and-card-fields	0xc3b89	0xca430	0xca450	10	7	0xc3cd0
+steam	journal-renderer-and-card-fields	0xc3b89	0xca430	0xca450	11	7	0xc3cd0
+steam	journal-renderer-and-card-fields	0xc3b89	0xca430	0xca450	12	7	0xc3cd0
+steam	journal-renderer-and-card-fields	0xc3b89	0xca430	0xca450	13	7	0xc3cd0
+steam	journal-renderer-and-card-fields	0xc3b89	0xca430	0xca450	14	7	0xc3cd0
+steam	journal-renderer-and-card-fields	0xc3b89	0xca430	0xca450	15	7	0xc3cd0
+steam	journal-renderer-and-card-fields	0xc3b89	0xca430	0xca450	16	7	0xc3cd0
+steam	journal-renderer-and-card-fields	0xc3b89	0xca430	0xca450	17	7	0xc3cd0
+steam	journal-renderer-and-card-fields	0xc3b89	0xca430	0xca450	18	7	0xc3cd0
+steam	journal-renderer-and-card-fields	0xc3b89	0xca430	0xca450	19	7	0xc3cd0
+steam	journal-renderer-and-card-fields	0xc3b89	0xca430	0xca450	20	7	0xc3cd0
+steam	journal-renderer-and-card-fields	0xc3b89	0xca430	0xca450	21	7	0xc3cd0
+steam	journal-renderer-and-card-fields	0xc3b89	0xca430	0xca450	22	7	0xc3cd0
+steam	journal-renderer-and-card-fields	0xc3b89	0xca430	0xca450	23	3	0xc3ba3
+steam	journal-renderer-and-card-fields	0xc3b89	0xca430	0xca450	24	4	0xc3baf
+steam	journal-renderer-and-card-fields	0xc3b89	0xca430	0xca450	25	7	0xc3cd0
+steam	journal-renderer-and-card-fields	0xc3b89	0xca430	0xca450	26	7	0xc3cd0
+steam	journal-renderer-and-card-fields	0xc3b89	0xca430	0xca450	27	7	0xc3cd0
+steam	journal-renderer-and-card-fields	0xc3b89	0xca430	0xca450	28	7	0xc3cd0
+steam	journal-renderer-and-card-fields	0xc3b89	0xca430	0xca450	29	7	0xc3cd0
+steam	journal-renderer-and-card-fields	0xc3b89	0xca430	0xca450	30	7	0xc3cd0
+steam	journal-renderer-and-card-fields	0xc3b89	0xca430	0xca450	31	7	0xc3cd0
+steam	journal-renderer-and-card-fields	0xc3b89	0xca430	0xca450	32	7	0xc3cd0
+steam	journal-renderer-and-card-fields	0xc3b89	0xca430	0xca450	33	7	0xc3cd0
+steam	journal-renderer-and-card-fields	0xc3b89	0xca430	0xca450	34	7	0xc3cd0
+steam	journal-renderer-and-card-fields	0xc3b89	0xca430	0xca450	35	7	0xc3cd0
+steam	journal-renderer-and-card-fields	0xc3b89	0xca430	0xca450	36	7	0xc3cd0
+steam	journal-renderer-and-card-fields	0xc3b89	0xca430	0xca450	37	7	0xc3cd0
+steam	journal-renderer-and-card-fields	0xc3b89	0xca430	0xca450	38	7	0xc3cd0
+steam	journal-renderer-and-card-fields	0xc3b89	0xca430	0xca450	39	5	0xc3bc7
+steam	journal-renderer-and-card-fields	0xc3b89	0xca430	0xca450	40	7	0xc3cd0
+steam	journal-renderer-and-card-fields	0xc3b89	0xca430	0xca450	41	7	0xc3cd0
+steam	journal-renderer-and-card-fields	0xc3b89	0xca430	0xca450	42	6	0xc3bd3
+steam	journal-renderer-and-card-fields	0xc48d1	0xca47c	0xca49c	0	0	0xc48d3
+steam	journal-renderer-and-card-fields	0xc48d1	0xca47c	0xca49c	1	1	0xc56c2
+steam	journal-renderer-and-card-fields	0xc48d1	0xca47c	0xca49c	2	2	0xc4c4f
+steam	journal-renderer-and-card-fields	0xc48d1	0xca47c	0xca49c	3	7	0xc5d19
+steam	journal-renderer-and-card-fields	0xc48d1	0xca47c	0xca49c	4	7	0xc5d19
+steam	journal-renderer-and-card-fields	0xc48d1	0xca47c	0xca49c	5	7	0xc5d19
+steam	journal-renderer-and-card-fields	0xc48d1	0xca47c	0xca49c	6	7	0xc5d19
+steam	journal-renderer-and-card-fields	0xc48d1	0xca47c	0xca49c	7	7	0xc5d19
+steam	journal-renderer-and-card-fields	0xc48d1	0xca47c	0xca49c	8	7	0xc5d19
+steam	journal-renderer-and-card-fields	0xc48d1	0xca47c	0xca49c	9	7	0xc5d19
+steam	journal-renderer-and-card-fields	0xc48d1	0xca47c	0xca49c	10	7	0xc5d19
+steam	journal-renderer-and-card-fields	0xc48d1	0xca47c	0xca49c	11	7	0xc5d19
+steam	journal-renderer-and-card-fields	0xc48d1	0xca47c	0xca49c	12	7	0xc5d19
+steam	journal-renderer-and-card-fields	0xc48d1	0xca47c	0xca49c	13	7	0xc5d19
+steam	journal-renderer-and-card-fields	0xc48d1	0xca47c	0xca49c	14	7	0xc5d19
+steam	journal-renderer-and-card-fields	0xc48d1	0xca47c	0xca49c	15	7	0xc5d19
+steam	journal-renderer-and-card-fields	0xc48d1	0xca47c	0xca49c	16	7	0xc5d19
+steam	journal-renderer-and-card-fields	0xc48d1	0xca47c	0xca49c	17	7	0xc5d19
+steam	journal-renderer-and-card-fields	0xc48d1	0xca47c	0xca49c	18	7	0xc5d19
+steam	journal-renderer-and-card-fields	0xc48d1	0xca47c	0xca49c	19	7	0xc5d19
+steam	journal-renderer-and-card-fields	0xc48d1	0xca47c	0xca49c	20	7	0xc5d19
+steam	journal-renderer-and-card-fields	0xc48d1	0xca47c	0xca49c	21	7	0xc5d19
+steam	journal-renderer-and-card-fields	0xc48d1	0xca47c	0xca49c	22	7	0xc5d19
+steam	journal-renderer-and-card-fields	0xc48d1	0xca47c	0xca49c	23	3	0xc507f
+steam	journal-renderer-and-card-fields	0xc48d1	0xca47c	0xca49c	24	4	0xc5323
+steam	journal-renderer-and-card-fields	0xc48d1	0xca47c	0xca49c	25	7	0xc5d19
+steam	journal-renderer-and-card-fields	0xc48d1	0xca47c	0xca49c	26	7	0xc5d19
+steam	journal-renderer-and-card-fields	0xc48d1	0xca47c	0xca49c	27	7	0xc5d19
+steam	journal-renderer-and-card-fields	0xc48d1	0xca47c	0xca49c	28	7	0xc5d19
+steam	journal-renderer-and-card-fields	0xc48d1	0xca47c	0xca49c	29	7	0xc5d19
+steam	journal-renderer-and-card-fields	0xc48d1	0xca47c	0xca49c	30	7	0xc5d19
+steam	journal-renderer-and-card-fields	0xc48d1	0xca47c	0xca49c	31	7	0xc5d19
+steam	journal-renderer-and-card-fields	0xc48d1	0xca47c	0xca49c	32	7	0xc5d19
+steam	journal-renderer-and-card-fields	0xc48d1	0xca47c	0xca49c	33	7	0xc5d19
+steam	journal-renderer-and-card-fields	0xc48d1	0xca47c	0xca49c	34	7	0xc5d19
+steam	journal-renderer-and-card-fields	0xc48d1	0xca47c	0xca49c	35	7	0xc5d19
+steam	journal-renderer-and-card-fields	0xc48d1	0xca47c	0xca49c	36	7	0xc5d19
+steam	journal-renderer-and-card-fields	0xc48d1	0xca47c	0xca49c	37	7	0xc5d19
+steam	journal-renderer-and-card-fields	0xc48d1	0xca47c	0xca49c	38	7	0xc5d19
+steam	journal-renderer-and-card-fields	0xc48d1	0xca47c	0xca49c	39	5	0xc58e0
+steam	journal-renderer-and-card-fields	0xc48d1	0xca47c	0xca49c	40	7	0xc5d19
+steam	journal-renderer-and-card-fields	0xc48d1	0xca47c	0xca49c	41	7	0xc5d19
+steam	journal-renderer-and-card-fields	0xc48d1	0xca47c	0xca49c	42	6	0xc5afe
+steam	journal-renderer-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	0	0	0xc5e40
+steam	journal-renderer-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	1	1	0xc5e49
+steam	journal-renderer-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	2	2	0xc5e52
+steam	journal-renderer-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	3	3	0xc5e5b
+steam	journal-renderer-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	4	3	0xc5e5b
+steam	journal-renderer-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	5	3	0xc5e5b
+steam	journal-renderer-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	6	3	0xc5e5b
+steam	journal-renderer-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	7	3	0xc5e5b
+steam	journal-renderer-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	8	3	0xc5e5b
+steam	journal-renderer-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	9	3	0xc5e5b
+steam	journal-renderer-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	10	3	0xc5e5b
+steam	journal-renderer-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	11	3	0xc5e5b
+steam	journal-renderer-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	12	3	0xc5e5b
+steam	journal-renderer-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	13	3	0xc5e5b
+steam	journal-renderer-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	14	3	0xc5e5b
+steam	journal-renderer-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	15	3	0xc5e5b
+steam	journal-renderer-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	16	3	0xc5e5b
+steam	journal-renderer-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	17	3	0xc5e5b
+steam	journal-renderer-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	18	3	0xc5e5b
+steam	journal-renderer-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	19	3	0xc5e5b
+steam	journal-renderer-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	20	0	0xc5e40
+steam	journal-renderer-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	21	1	0xc5e49
+steam	journal-renderer-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	22	2	0xc5e52
+steam	journal-renderer-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	23	3	0xc5e5b
+steam	journal-renderer-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	24	3	0xc5e5b
+steam	journal-renderer-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	25	3	0xc5e5b
+steam	journal-renderer-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	26	3	0xc5e5b
+steam	journal-renderer-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	27	3	0xc5e5b
+steam	journal-renderer-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	28	3	0xc5e5b
+steam	journal-renderer-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	29	3	0xc5e5b
+steam	journal-renderer-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	30	0	0xc5e40
+steam	journal-renderer-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	31	1	0xc5e49
+steam	journal-renderer-and-card-fields	0xc5e3e	0xca4c8	0xca4d8	32	2	0xc5e52
+steam	journal-event-occurrence-and-card-construction	0xd50f9	0xd536c	0xd537c	0	0	0xd50fb
+steam	journal-event-occurrence-and-card-construction	0xd50f9	0xd536c	0xd537c	1	1	0xd5104
+steam	journal-event-occurrence-and-card-construction	0xd50f9	0xd536c	0xd537c	2	2	0xd510d
+steam	journal-event-occurrence-and-card-construction	0xd50f9	0xd536c	0xd537c	3	3	0xd5116
+steam	journal-event-occurrence-and-card-construction	0xd50f9	0xd536c	0xd537c	4	3	0xd5116
+steam	journal-event-occurrence-and-card-construction	0xd50f9	0xd536c	0xd537c	5	3	0xd5116
+steam	journal-event-occurrence-and-card-construction	0xd50f9	0xd536c	0xd537c	6	3	0xd5116
+steam	journal-event-occurrence-and-card-construction	0xd50f9	0xd536c	0xd537c	7	3	0xd5116
+steam	journal-event-occurrence-and-card-construction	0xd50f9	0xd536c	0xd537c	8	3	0xd5116
+steam	journal-event-occurrence-and-card-construction	0xd50f9	0xd536c	0xd537c	9	3	0xd5116
+steam	journal-event-occurrence-and-card-construction	0xd50f9	0xd536c	0xd537c	10	3	0xd5116
+steam	journal-event-occurrence-and-card-construction	0xd50f9	0xd536c	0xd537c	11	3	0xd5116
+steam	journal-event-occurrence-and-card-construction	0xd50f9	0xd536c	0xd537c	12	3	0xd5116
+steam	journal-event-occurrence-and-card-construction	0xd50f9	0xd536c	0xd537c	13	3	0xd5116
+steam	journal-event-occurrence-and-card-construction	0xd50f9	0xd536c	0xd537c	14	3	0xd5116
+steam	journal-event-occurrence-and-card-construction	0xd50f9	0xd536c	0xd537c	15	3	0xd5116
+steam	journal-event-occurrence-and-card-construction	0xd50f9	0xd536c	0xd537c	16	3	0xd5116
+steam	journal-event-occurrence-and-card-construction	0xd50f9	0xd536c	0xd537c	17	3	0xd5116
+steam	journal-event-occurrence-and-card-construction	0xd50f9	0xd536c	0xd537c	18	3	0xd5116
+steam	journal-event-occurrence-and-card-construction	0xd50f9	0xd536c	0xd537c	19	3	0xd5116
+steam	journal-event-occurrence-and-card-construction	0xd50f9	0xd536c	0xd537c	20	0	0xd50fb
+steam	journal-event-occurrence-and-card-construction	0xd50f9	0xd536c	0xd537c	21	1	0xd5104
+steam	journal-event-occurrence-and-card-construction	0xd50f9	0xd536c	0xd537c	22	2	0xd510d
+steam	journal-event-occurrence-and-card-construction	0xd50f9	0xd536c	0xd537c	23	3	0xd5116
+steam	journal-event-occurrence-and-card-construction	0xd50f9	0xd536c	0xd537c	24	3	0xd5116
+steam	journal-event-occurrence-and-card-construction	0xd50f9	0xd536c	0xd537c	25	3	0xd5116
+steam	journal-event-occurrence-and-card-construction	0xd50f9	0xd536c	0xd537c	26	3	0xd5116
+steam	journal-event-occurrence-and-card-construction	0xd50f9	0xd536c	0xd537c	27	3	0xd5116
+steam	journal-event-occurrence-and-card-construction	0xd50f9	0xd536c	0xd537c	28	3	0xd5116
+steam	journal-event-occurrence-and-card-construction	0xd50f9	0xd536c	0xd537c	29	3	0xd5116
+steam	journal-event-occurrence-and-card-construction	0xd50f9	0xd536c	0xd537c	30	0	0xd50fb
+steam	journal-event-occurrence-and-card-construction	0xd50f9	0xd536c	0xd537c	31	1	0xd5104
+steam	journal-event-occurrence-and-card-construction	0xd50f9	0xd536c	0xd537c	32	2	0xd510d
+steam	journal-event-title	0xd53f4	0xd6fec		0	0	0xd5fa1
+steam	journal-event-title	0xd53f4	0xd6fec		1	1	0xd60c0
+steam	journal-event-title	0xd53f4	0xd6fec		2	2	0xd6a6d
+steam	journal-event-title	0xd53f4	0xd6fec		3	3	0xd6cda
+steam	journal-event-title	0xd53f4	0xd6fec		4	4	0xd5b80
+steam	journal-event-title	0xd53f4	0xd6fec		5	5	0xd6800
+steam	journal-event-title	0xd53f4	0xd6fec		6	6	0xd64c9
+steam	journal-event-title	0xd53f4	0xd6fec		7	7	0xd583b
+steam	journal-event-title	0xd53f4	0xd6fec		8	8	0xd53f6
+steam	journal-event-title	0xd53f4	0xd6fec		9	9	0xd64f9
+steam	journal-event-title	0xd53f4	0xd6fec		10	10	0xd6699
+steam	journal-event-title	0xd5859	0xd7018		0	0	0xd588d
+steam	journal-event-title	0xd5859	0xd7018		1	1	0xd588d
+steam	journal-event-title	0xd5859	0xd7018		2	2	0xd588d
+steam	journal-event-title	0xd5859	0xd7018		3	3	0xd588d
+steam	journal-event-title	0xd5859	0xd7018		4	4	0xd588d
+steam	journal-event-title	0xd5859	0xd7018		5	5	0xd585b
+steam	journal-event-title	0xd62c6	0xd7030		0	0	0xd62c8
+steam	journal-event-title	0xd62c6	0xd7030		1	1	0xd62e3
+steam	journal-event-title	0xd62c6	0xd7030		2	2	0xd62fe
+steam	journal-event-title	0xd62c6	0xd7030		3	3	0xd6319
+steam	journal-event-title	0xd62c6	0xd7030		4	4	0xd6334
+steam	journal-event-title	0xd62c6	0xd7030		5	5	0xd634f
+steam	journal-event-title	0xd62c6	0xd7030		6	6	0xd636a
+steam	journal-event-title	0xd62c6	0xd7030		7	7	0xd63bb
+steam	journal-event-title	0xd62c6	0xd7030		8	8	0xd63d6
+steam	journal-event-title	0xd62c6	0xd7030		9	9	0xd63f1
+steam	journal-event-title	0xd62c6	0xd7030		10	10	0xd6442
+steam	journal-event-title	0xd62c6	0xd7030		11	11	0xd63a0
+steam	journal-event-title	0xd62c6	0xd7030		12	12	0xd6478
+steam	journal-event-title	0xd62c6	0xd7030		13	13	0xd6493
+steam	journal-event-title	0xd62c6	0xd7030		14	14	0xd64ae
+steam	journal-event-title	0xd62c6	0xd7030		15	15	0xd645d
+steam	journal-event-title	0xd62c6	0xd7030		16	16	0xd6427
+steam	journal-event-title	0xd62c6	0xd7030		17	17	0xd640c
+steam	journal-event-title	0xd62c6	0xd7030		18	18	0xd6385
+steam	journal-historical-event-title	0xd70d1	0xd83ac		0	0	0xd7c07
+steam	journal-historical-event-title	0xd70d1	0xd83ac		1	1	0xd7e1a
+steam	journal-historical-event-title	0xd70d1	0xd83ac		2	2	0xd7d63
+steam	journal-historical-event-title	0xd70d1	0xd83ac		3	3	0xd7c4c
+steam	journal-historical-event-title	0xd70d1	0xd83ac		4	4	0xd73bb
+steam	journal-historical-event-title	0xd70d1	0xd83ac		5	5	0xd7589
+steam	journal-historical-event-title	0xd70d1	0xd83ac		6	6	0xd77f3
+steam	journal-historical-event-title	0xd70d1	0xd83ac		7	7	0xd7873
+steam	journal-historical-event-title	0xd70d1	0xd83ac		8	8	0xd78b8
+steam	journal-historical-event-title	0xd70d1	0xd83ac		9	9	0xd7b24
+steam	journal-historical-event-title	0xd70d1	0xd83ac		10	10	0xd7b45
+steam	journal-historical-event-title	0xd70d1	0xd83ac		11	11	0xd7b60
+steam	journal-historical-event-title	0xd70d1	0xd83ac		12	12	0xd7ba5
+steam	journal-historical-event-title	0xd70d1	0xd83ac		13	13	0xd7855
+steam	journal-historical-event-title	0xd70d1	0xd83ac		14	14	0xd78d9
+steam	journal-historical-event-title	0xd70d1	0xd83ac		15	15	0xd795e
+steam	journal-historical-event-title	0xd70d1	0xd83ac		16	16	0xd70d3
+steam	journal-historical-event-title	0xd70d1	0xd83ac		17	17	0xd7791
+steam	journal-historical-event-title	0xd70d1	0xd83ac		18	18	0xd75eb
+steam	journal-historical-event-title	0xd70d1	0xd83ac		19	19	0xd763e
+steam	journal-historical-event-title	0xd70d1	0xd83ac		20	20	0xd7663
+steam	journal-historical-event-title	0xd70d1	0xd83ac		21	21	0xd76b6
+steam	journal-historical-event-title	0xd70d1	0xd83ac		22	22	0xd76db
+steam	journal-historical-event-title	0xd70d1	0xd83ac		23	23	0xd772e
+steam	journal-historical-event-title	0xd70d1	0xd83ac		24	24	0xd7753
+steam	journal-historical-event-title	0xd70d1	0xd83ac		25	25	0xd7f4a
+steam	journal-historical-event-title	0xd70d1	0xd83ac		26	26	0xd7fe6
+steam	journal-historical-event-title	0xd70d1	0xd83ac		27	27	0xd7fe6
+steam	journal-historical-event-title	0xd70d1	0xd83ac		28	28	0xd8014
+steam	journal-historical-event-title	0xd70d1	0xd83ac		29	29	0xd816f
+steam	journal-historical-event-title	0xd70d1	0xd83ac		30	30	0xd820b
+steam	journal-historical-event-title	0xd70d1	0xd83ac		31	31	0xd820b
+steam	journal-historical-event-title	0xd70d1	0xd83ac		32	32	0xd8246
+steam	journal-historical-event-title	0xd70d1	0xd83ac		33	33	0xd7f2f
+steam	journal-event-hearing-and-mission-paragraphs	0xd8d5f	0xd9818	0xd9828	0	0	0xd8d61
+steam	journal-event-hearing-and-mission-paragraphs	0xd8d5f	0xd9818	0xd9828	1	1	0xd8d6a
+steam	journal-event-hearing-and-mission-paragraphs	0xd8d5f	0xd9818	0xd9828	2	2	0xd8d73
+steam	journal-event-hearing-and-mission-paragraphs	0xd8d5f	0xd9818	0xd9828	3	3	0xd8d7c
+steam	journal-event-hearing-and-mission-paragraphs	0xd8d5f	0xd9818	0xd9828	4	3	0xd8d7c
+steam	journal-event-hearing-and-mission-paragraphs	0xd8d5f	0xd9818	0xd9828	5	3	0xd8d7c
+steam	journal-event-hearing-and-mission-paragraphs	0xd8d5f	0xd9818	0xd9828	6	3	0xd8d7c
+steam	journal-event-hearing-and-mission-paragraphs	0xd8d5f	0xd9818	0xd9828	7	3	0xd8d7c
+steam	journal-event-hearing-and-mission-paragraphs	0xd8d5f	0xd9818	0xd9828	8	3	0xd8d7c
+steam	journal-event-hearing-and-mission-paragraphs	0xd8d5f	0xd9818	0xd9828	9	3	0xd8d7c
+steam	journal-event-hearing-and-mission-paragraphs	0xd8d5f	0xd9818	0xd9828	10	3	0xd8d7c
+steam	journal-event-hearing-and-mission-paragraphs	0xd8d5f	0xd9818	0xd9828	11	3	0xd8d7c
+steam	journal-event-hearing-and-mission-paragraphs	0xd8d5f	0xd9818	0xd9828	12	3	0xd8d7c
+steam	journal-event-hearing-and-mission-paragraphs	0xd8d5f	0xd9818	0xd9828	13	3	0xd8d7c
+steam	journal-event-hearing-and-mission-paragraphs	0xd8d5f	0xd9818	0xd9828	14	3	0xd8d7c
+steam	journal-event-hearing-and-mission-paragraphs	0xd8d5f	0xd9818	0xd9828	15	3	0xd8d7c
+steam	journal-event-hearing-and-mission-paragraphs	0xd8d5f	0xd9818	0xd9828	16	3	0xd8d7c
+steam	journal-event-hearing-and-mission-paragraphs	0xd8d5f	0xd9818	0xd9828	17	3	0xd8d7c
+steam	journal-event-hearing-and-mission-paragraphs	0xd8d5f	0xd9818	0xd9828	18	3	0xd8d7c
+steam	journal-event-hearing-and-mission-paragraphs	0xd8d5f	0xd9818	0xd9828	19	3	0xd8d7c
+steam	journal-event-hearing-and-mission-paragraphs	0xd8d5f	0xd9818	0xd9828	20	0	0xd8d61
+steam	journal-event-hearing-and-mission-paragraphs	0xd8d5f	0xd9818	0xd9828	21	1	0xd8d6a
+steam	journal-event-hearing-and-mission-paragraphs	0xd8d5f	0xd9818	0xd9828	22	2	0xd8d73
+steam	journal-event-hearing-and-mission-paragraphs	0xd8d5f	0xd9818	0xd9828	23	3	0xd8d7c
+steam	journal-event-hearing-and-mission-paragraphs	0xd8d5f	0xd9818	0xd9828	24	3	0xd8d7c
+steam	journal-event-hearing-and-mission-paragraphs	0xd8d5f	0xd9818	0xd9828	25	3	0xd8d7c
+steam	journal-event-hearing-and-mission-paragraphs	0xd8d5f	0xd9818	0xd9828	26	3	0xd8d7c
+steam	journal-event-hearing-and-mission-paragraphs	0xd8d5f	0xd9818	0xd9828	27	3	0xd8d7c
+steam	journal-event-hearing-and-mission-paragraphs	0xd8d5f	0xd9818	0xd9828	28	3	0xd8d7c
+steam	journal-event-hearing-and-mission-paragraphs	0xd8d5f	0xd9818	0xd9828	29	3	0xd8d7c
+steam	journal-event-hearing-and-mission-paragraphs	0xd8d5f	0xd9818	0xd9828	30	0	0xd8d61
+steam	journal-event-hearing-and-mission-paragraphs	0xd8d5f	0xd9818	0xd9828	31	1	0xd8d6a
+steam	journal-event-hearing-and-mission-paragraphs	0xd8d5f	0xd9818	0xd9828	32	2	0xd8d73
+steam	journal-event-hearing-and-mission-paragraphs	0xd92b3	0xd984c	0xd985c	0	0	0xd92b5
+steam	journal-event-hearing-and-mission-paragraphs	0xd92b3	0xd984c	0xd985c	1	1	0xd92be
+steam	journal-event-hearing-and-mission-paragraphs	0xd92b3	0xd984c	0xd985c	2	2	0xd92c7
+steam	journal-event-hearing-and-mission-paragraphs	0xd92b3	0xd984c	0xd985c	3	3	0xd92d0
+steam	journal-event-hearing-and-mission-paragraphs	0xd92b3	0xd984c	0xd985c	4	3	0xd92d0
+steam	journal-event-hearing-and-mission-paragraphs	0xd92b3	0xd984c	0xd985c	5	3	0xd92d0
+steam	journal-event-hearing-and-mission-paragraphs	0xd92b3	0xd984c	0xd985c	6	3	0xd92d0
+steam	journal-event-hearing-and-mission-paragraphs	0xd92b3	0xd984c	0xd985c	7	3	0xd92d0
+steam	journal-event-hearing-and-mission-paragraphs	0xd92b3	0xd984c	0xd985c	8	3	0xd92d0
+steam	journal-event-hearing-and-mission-paragraphs	0xd92b3	0xd984c	0xd985c	9	3	0xd92d0
+steam	journal-event-hearing-and-mission-paragraphs	0xd92b3	0xd984c	0xd985c	10	3	0xd92d0
+steam	journal-event-hearing-and-mission-paragraphs	0xd92b3	0xd984c	0xd985c	11	3	0xd92d0
+steam	journal-event-hearing-and-mission-paragraphs	0xd92b3	0xd984c	0xd985c	12	3	0xd92d0
+steam	journal-event-hearing-and-mission-paragraphs	0xd92b3	0xd984c	0xd985c	13	3	0xd92d0
+steam	journal-event-hearing-and-mission-paragraphs	0xd92b3	0xd984c	0xd985c	14	3	0xd92d0
+steam	journal-event-hearing-and-mission-paragraphs	0xd92b3	0xd984c	0xd985c	15	3	0xd92d0
+steam	journal-event-hearing-and-mission-paragraphs	0xd92b3	0xd984c	0xd985c	16	3	0xd92d0
+steam	journal-event-hearing-and-mission-paragraphs	0xd92b3	0xd984c	0xd985c	17	3	0xd92d0
+steam	journal-event-hearing-and-mission-paragraphs	0xd92b3	0xd984c	0xd985c	18	3	0xd92d0
+steam	journal-event-hearing-and-mission-paragraphs	0xd92b3	0xd984c	0xd985c	19	3	0xd92d0
+steam	journal-event-hearing-and-mission-paragraphs	0xd92b3	0xd984c	0xd985c	20	0	0xd92b5
+steam	journal-event-hearing-and-mission-paragraphs	0xd92b3	0xd984c	0xd985c	21	1	0xd92be
+steam	journal-event-hearing-and-mission-paragraphs	0xd92b3	0xd984c	0xd985c	22	2	0xd92c7
+steam	journal-event-hearing-and-mission-paragraphs	0xd92b3	0xd984c	0xd985c	23	3	0xd92d0
+steam	journal-event-hearing-and-mission-paragraphs	0xd92b3	0xd984c	0xd985c	24	3	0xd92d0
+steam	journal-event-hearing-and-mission-paragraphs	0xd92b3	0xd984c	0xd985c	25	3	0xd92d0
+steam	journal-event-hearing-and-mission-paragraphs	0xd92b3	0xd984c	0xd985c	26	3	0xd92d0
+steam	journal-event-hearing-and-mission-paragraphs	0xd92b3	0xd984c	0xd985c	27	3	0xd92d0
+steam	journal-event-hearing-and-mission-paragraphs	0xd92b3	0xd984c	0xd985c	28	3	0xd92d0
+steam	journal-event-hearing-and-mission-paragraphs	0xd92b3	0xd984c	0xd985c	29	3	0xd92d0
+steam	journal-event-hearing-and-mission-paragraphs	0xd92b3	0xd984c	0xd985c	30	0	0xd92b5
+steam	journal-event-hearing-and-mission-paragraphs	0xd92b3	0xd984c	0xd985c	31	1	0xd92be
+steam	journal-event-hearing-and-mission-paragraphs	0xd92b3	0xd984c	0xd985c	32	2	0xd92c7
+steam	journal-incident-summary-and-search-index-initializer	0xd999b	0xdc734		0	0	0xda73c
+steam	journal-incident-summary-and-search-index-initializer	0xd999b	0xdc734		1	1	0xda89e
+steam	journal-incident-summary-and-search-index-initializer	0xd999b	0xdc734		2	2	0xdc0bb
+steam	journal-incident-summary-and-search-index-initializer	0xd999b	0xdc734		3	3	0xdc453
+steam	journal-incident-summary-and-search-index-initializer	0xd999b	0xdc734		4	4	0xda3f6
+steam	journal-incident-summary-and-search-index-initializer	0xd999b	0xdc734		5	5	0xdbcd1
+steam	journal-incident-summary-and-search-index-initializer	0xd999b	0xdc734		6	6	0xdb121
+steam	journal-incident-summary-and-search-index-initializer	0xd999b	0xdc734		7	7	0xd9e73
+steam	journal-incident-summary-and-search-index-initializer	0xd999b	0xdc734		8	8	0xd999d
+steam	journal-incident-summary-and-search-index-initializer	0xd999b	0xdc734		9	9	0xdb810
+steam	journal-incident-summary-and-search-index-initializer	0xd999b	0xdc734		10	10	0xdba81
+steam	journal-incident-summary-and-search-index-initializer	0xd9f1b	0xdc760		0	0	0xd9f26
+steam	journal-incident-summary-and-search-index-initializer	0xd9f1b	0xdc760		1	1	0xd9f2f
+steam	journal-incident-summary-and-search-index-initializer	0xd9f1b	0xdc760		2	2	0xd9f38
+steam	journal-incident-summary-and-search-index-initializer	0xd9f1b	0xdc760		3	3	0xd9f41
+steam	journal-incident-summary-and-search-index-initializer	0xd9f1b	0xdc760		4	4	0xd9f4a
+steam	journal-incident-summary-and-search-index-initializer	0xd9f1b	0xdc760		5	5	0xd9f1d
+steam	journal-incident-summary-and-search-index-initializer	0xda9c0	0xdc778		0	0	0xda9c2
+steam	journal-incident-summary-and-search-index-initializer	0xda9c0	0xdc778		1	1	0xdaa4f
+steam	journal-incident-summary-and-search-index-initializer	0xda9c0	0xdc778		2	2	0xdaadc
+steam	journal-incident-summary-and-search-index-initializer	0xda9c0	0xdc778		3	3	0xdab69
+steam	journal-incident-summary-and-search-index-initializer	0xda9c0	0xdc778		4	4	0xdabf6
+steam	journal-incident-summary-and-search-index-initializer	0xda9c0	0xdc778		5	5	0xdac2d
+steam	journal-incident-summary-and-search-index-initializer	0xda9c0	0xdc778		6	6	0xdac8f
+steam	journal-incident-summary-and-search-index-initializer	0xda9c0	0xdc778		7	7	0xdad5f
+steam	journal-incident-summary-and-search-index-initializer	0xda9c0	0xdc778		8	8	0xdad96
+steam	journal-incident-summary-and-search-index-initializer	0xda9c0	0xdc778		9	9	0xdadcd
+steam	journal-incident-summary-and-search-index-initializer	0xda9c0	0xdc778		10	10	0xdae72
+steam	journal-incident-summary-and-search-index-initializer	0xda9c0	0xdc778		11	11	0xdad28
+steam	journal-incident-summary-and-search-index-initializer	0xda9c0	0xdc778		12	12	0xdaf0b
+steam	journal-incident-summary-and-search-index-initializer	0xda9c0	0xdc778		13	13	0xdaf42
+steam	journal-incident-summary-and-search-index-initializer	0xda9c0	0xdc778		14	14	0xdafa1
+steam	journal-incident-summary-and-search-index-initializer	0xda9c0	0xdc778		15	15	0xdaed4
+steam	journal-incident-summary-and-search-index-initializer	0xda9c0	0xdc778		16	16	0xdae3b
+steam	journal-incident-summary-and-search-index-initializer	0xda9c0	0xdc778		17	17	0xdae04
+steam	journal-incident-summary-and-search-index-initializer	0xda9c0	0xdc778		18	18	0xdacf1
+steam	journal-incident-summary-and-search-index-initializer	0xdb1df	0xdc7c4		0	0	0xdb49b
+steam	journal-incident-summary-and-search-index-initializer	0xdb1df	0xdc7c4		1	1	0xdb529
+steam	journal-incident-summary-and-search-index-initializer	0xdb1df	0xdc7c4		2	2	0xdb5ca
+steam	journal-incident-summary-and-search-index-initializer	0xdb1df	0xdc7c4		3	3	0xdb66b
+steam	journal-incident-summary-and-search-index-initializer	0xdb1df	0xdc7c4		4	4	0xdb1e1
+steam	journal-incident-summary-and-search-index-initializer	0xdb1df	0xdc7c4		5	5	0xdb25b
+steam	journal-incident-summary-and-search-index-initializer	0xdb1df	0xdc7c4		6	6	0xdb2bd
+steam	journal-incident-summary-and-search-index-initializer	0xdb1df	0xdc7c4		7	7	0xdb2bd
+steam	journal-incident-summary-and-search-index-initializer	0xdb30f	0xdc7e4		0	0	0xdb311
+steam	journal-incident-summary-and-search-index-initializer	0xdb30f	0xdc7e4		1	1	0xdb31d
+steam	journal-incident-summary-and-search-index-initializer	0xdb30f	0xdc7e4		2	2	0xdb329
+steam	journal-incident-summary-and-search-index-initializer	0xdb30f	0xdc7e4		3	3	0xdb335
+steam	journal-incident-summary-and-search-index-initializer	0xdb30f	0xdc7e4		4	4	0xdb341
+steam	journal-incident-summary-and-search-index-initializer	0xdb30f	0xdc7e4		5	5	0xdb34d
+steam	journal-incident-summary-and-search-index-initializer	0xdb30f	0xdc7e4		6	6	0xdb359
+steam	journal-incident-summary-and-search-index-initializer	0xdb30f	0xdc7e4		7	7	0xdb365
+steam	journal-incident-summary-and-search-index-initializer	0xdb30f	0xdc7e4		8	8	0xdb371
+steam	journal-incident-summary-and-search-index-initializer	0xdb30f	0xdc7e4		9	9	0xdb37d
+steam	journal-incident-summary-and-search-index-initializer	0xdb30f	0xdc7e4		10	10	0xdb389
+steam	journal-incident-summary-and-search-index-initializer	0xdb30f	0xdc7e4		11	11	0xdb395
+steam	journal-incident-summary-and-search-index-initializer	0xdb30f	0xdc7e4		12	12	0xdb3a1
+steam	journal-incident-summary-and-search-index-initializer	0xdb30f	0xdc7e4		13	13	0xdb3ad
+steam	journal-incident-summary-and-search-index-initializer	0xdb30f	0xdc7e4		14	14	0xdb3b9
+steam	journal-incident-summary-and-search-index-initializer	0xdb30f	0xdc7e4		15	15	0xdb3c5
+steam	journal-incident-summary-and-search-index-initializer	0xdb30f	0xdc7e4		16	16	0xdb3d1
+steam	journal-incident-summary-and-search-index-initializer	0xdb30f	0xdc7e4		17	17	0xdb3dd
+steam	journal-incident-summary-and-search-index-initializer	0xdb30f	0xdc7e4		18	18	0xdb3e9
+steam	journal-incident-summary-and-search-index-initializer	0xdb30f	0xdc7e4		19	19	0xdb3f5
+steam	journal-incident-summary-and-search-index-initializer	0xdb30f	0xdc7e4		20	20	0xdb3fe
+steam	journal-incident-summary-and-search-index-initializer	0xdb30f	0xdc7e4		21	21	0xdb407
+steam	journal-incident-summary-and-search-index-initializer	0xdb30f	0xdc7e4		22	22	0xdb410
+steam	journal-incident-summary-and-search-index-initializer	0xdb30f	0xdc7e4		23	23	0xdb419
+steam	journal-incident-summary-and-search-index-initializer	0xdb30f	0xdc7e4		24	24	0xdb422
+steam	journal-incident-summary-and-search-index-initializer	0xdb30f	0xdc7e4		25	25	0xdb42b
+steam	journal-incident-summary-and-search-index-initializer	0xdb30f	0xdc7e4		26	26	0xdb434
+steam	journal-incident-summary-and-search-index-initializer	0xdb30f	0xdc7e4		27	27	0xdb43d
+steam	journal-incident-summary-and-search-index-initializer	0xdb30f	0xdc7e4		28	28	0xdb446
+steam	journal-incident-summary-and-search-index-initializer	0xdb30f	0xdc7e4		29	29	0xdb44f
+steam	journal-incident-summary-and-search-index-initializer	0xdb30f	0xdc7e4		30	30	0xdb458
+steam	journal-incident-summary-and-search-index-initializer	0xdb30f	0xdc7e4		31	31	0xdb461
+steam	journal-incident-summary-and-search-index-initializer	0xdb30f	0xdc7e4		32	32	0xdb46a
+steam	journal-performance-title	0x65f4cb	0x6607c0		0	0	0x65f9f8
+steam	journal-performance-title	0x65f4cb	0x6607c0		1	1	0x65faf0
+steam	journal-performance-title	0x65f4cb	0x6607c0		2	2	0x65fcd4
+steam	journal-performance-title	0x65f4cb	0x6607c0		3	3	0x6600ab
+steam	journal-performance-title	0x65f4cb	0x6607c0		4	4	0x65f4cd
+steam	journal-performance-title	0x65f4cb	0x6607c0		5	5	0x65f569
+steam	journal-performance-title	0x65f4cb	0x6607c0		6	6	0x65f620
+steam	journal-performance-title	0x65f4cb	0x6607c0		7	7	0x65f620
+steam	journal-performance-title	0x65f78a	0x6607e0		0	0	0x65f78c
+steam	journal-performance-title	0x65f78a	0x6607e0		1	1	0x65f79b
+steam	journal-performance-title	0x65f78a	0x6607e0		2	2	0x65f7aa
+steam	journal-performance-title	0x65f78a	0x6607e0		3	3	0x65f7bc
+steam	journal-performance-title	0x65f78a	0x6607e0		4	4	0x65f7ce
+steam	journal-performance-title	0x65f78a	0x6607e0		5	5	0x65f7e0
+steam	journal-performance-title	0x65f78a	0x6607e0		6	6	0x65f7f2
+steam	journal-performance-title	0x65f78a	0x6607e0		7	7	0x65f801
+steam	journal-performance-title	0x65f78a	0x6607e0		8	8	0x65f80d
+steam	journal-performance-title	0x65f78a	0x6607e0		9	9	0x65f81f
+steam	journal-performance-title	0x65f78a	0x6607e0		10	10	0x65f82e
+steam	journal-performance-title	0x65f78a	0x6607e0		11	11	0x65f83a
+steam	journal-performance-title	0x65f78a	0x6607e0		12	12	0x65f849
+steam	journal-performance-title	0x65f78a	0x6607e0		13	13	0x65f85b
+steam	journal-performance-title	0x65f78a	0x6607e0		14	14	0x65f86d
+steam	journal-performance-title	0x65f78a	0x6607e0		15	15	0x65f87f
+steam	journal-performance-title	0x65f78a	0x6607e0		16	16	0x65f891
+steam	journal-performance-title	0x65f78a	0x6607e0		17	17	0x65f8a3
+steam	journal-performance-title	0x65f78a	0x6607e0		18	18	0x65f8b5
+steam	journal-performance-title	0x65f78a	0x6607e0		19	19	0x65f8c4
+steam	journal-performance-title	0x65f78a	0x6607e0		20	20	0x65f8d0
+steam	journal-performance-title	0x65f78a	0x6607e0		21	21	0x65f8e2
+steam	journal-performance-title	0x65f78a	0x6607e0		22	22	0x65f8f4
+steam	journal-performance-title	0x65f78a	0x6607e0		23	23	0x65f906
+steam	journal-performance-title	0x65f78a	0x6607e0		24	24	0x65f90f
+steam	journal-performance-title	0x65f78a	0x6607e0		25	25	0x65f918
+steam	journal-performance-title	0x65f78a	0x6607e0		26	26	0x65f927
+steam	journal-performance-title	0x65f78a	0x6607e0		27	27	0x65f936
+steam	journal-performance-title	0x65f78a	0x6607e0		28	28	0x65f945
+steam	journal-performance-title	0x65f78a	0x6607e0		29	29	0x65f954
+steam	journal-performance-title	0x65f78a	0x6607e0		30	30	0x65f960
+steam	journal-performance-title	0x65f78a	0x6607e0		31	31	0x65f96f
+steam	journal-performance-title	0x65f78a	0x6607e0		32	32	0x65f97e
+steam	journal-building-name	0xb9424d	0xb943c0		0	0	0xb94285
+steam	journal-building-name	0xb9424d	0xb943c0		1	1	0xb94297
+steam	journal-building-name	0xb9424d	0xb943c0		2	2	0xb942a9
+steam	journal-building-name	0xb9424d	0xb943c0		3	3	0xb942df
+steam	journal-building-name	0xb9424d	0xb943c0		4	4	0xb942fa
+steam	journal-building-name	0xb9424d	0xb943c0		5	5	0xb94309
+steam	journal-building-name	0xb9424d	0xb943c0		6	6	0xb94318
+steam	journal-building-name	0xb9424d	0xb943c0		7	7	0xb942f1
+steam	journal-building-name	0xb9424d	0xb943c0		8	8	0xb942cd
+steam	journal-building-name	0xb9424d	0xb943c0		9	9	0xb942bb
+steam	journal-building-name	0xb9424d	0xb943c0		10	10	0xb9424f
+steam	journal-building-name	0xb9424d	0xb943c0		11	11	0xb94273
+steam	journal-building-name	0xb9424d	0xb943c0		12	12	0xb9435a
+steam	journal-building-name	0xb9424d	0xb943c0		13	13	0xb94261
+steam	journal-calendar-month	0x7733b0	0x7734b0		0	0	0x7733b2
+steam	journal-calendar-month	0x7733b0	0x7734b0		1	1	0x7733c7
+steam	journal-calendar-month	0x7733b0	0x7734b0		2	2	0x7733dc
+steam	journal-calendar-month	0x7733b0	0x7734b0		3	3	0x7733f1
+steam	journal-calendar-month	0x7733b0	0x7734b0		4	4	0x773406
+steam	journal-calendar-month	0x7733b0	0x7734b0		5	5	0x77341b
+steam	journal-calendar-month	0x7733b0	0x7734b0		6	6	0x773430
+steam	journal-calendar-month	0x7733b0	0x7734b0		7	7	0x773445
+steam	journal-calendar-month	0x7733b0	0x7734b0		8	8	0x77345a
+steam	journal-calendar-month	0x7733b0	0x7734b0		9	9	0x77346f
+steam	journal-calendar-month	0x7733b0	0x7734b0		10	10	0x773484
+steam	journal-calendar-month	0x7733b0	0x7734b0		11	11	0x773499
+classic	journal-renderer-and-card-fields	0xc2669	0xca2e8		0	0	0xc266b
+classic	journal-renderer-and-card-fields	0xc2669	0xca2e8		1	1	0xc2682
+classic	journal-renderer-and-card-fields	0xc2669	0xca2e8		2	2	0xc269d
+classic	journal-renderer-and-card-fields	0xc2669	0xca2e8		3	3	0xc26b6
+classic	journal-renderer-and-card-fields	0xc2669	0xca2e8		4	4	0xc26cc
+classic	journal-renderer-and-card-fields	0xc2669	0xca2e8		5	5	0xc26e4
+classic	journal-renderer-and-card-fields	0xc2669	0xca2e8		6	6	0xc26fa
+classic	journal-renderer-and-card-fields	0xc2669	0xca2e8		7	7	0xc2712
+classic	journal-renderer-and-card-fields	0xc2669	0xca2e8		8	8	0xc272a
+classic	journal-renderer-and-card-fields	0xc2927	0xca330		0	0	0xc295b
+classic	journal-renderer-and-card-fields	0xc2927	0xca330		1	1	0xc2929
+classic	journal-renderer-and-card-fields	0xc2927	0xca330		2	2	0xc298d
+classic	journal-renderer-and-card-fields	0xc2927	0xca330		3	3	0xc29bf
+classic	journal-renderer-and-card-fields	0xc2927	0xca330		4	4	0xc29f1
+classic	journal-renderer-and-card-fields	0xc2927	0xca330		5	5	0xc2a23
+classic	journal-renderer-and-card-fields	0xc2927	0xca330		6	6	0xc2a55
+classic	journal-renderer-and-card-fields	0xc2927	0xca330		7	7	0xc2a84
+classic	journal-renderer-and-card-fields	0xc2927	0xca330		8	8	0xc2ab3
+classic	journal-renderer-and-card-fields	0xc2f7c	0xca354		0	0	0xc2f7e
+classic	journal-renderer-and-card-fields	0xc2f7c	0xca354		1	1	0xc3801
+classic	journal-renderer-and-card-fields	0xc2f7c	0xca354		2	2	0xc8850
+classic	journal-renderer-and-card-fields	0xc2f7c	0xca354		3	3	0xc92e0
+classic	journal-renderer-and-card-fields	0xc2f7c	0xca354		4	4	0xc8da2
+classic	journal-renderer-and-card-fields	0xc2f7c	0xca354		5	5	0xc9820
+classic	journal-renderer-and-card-fields	0xc2f7c	0xca354		6	6	0xc9c10
+classic	journal-renderer-and-card-fields	0xc2f7c	0xca354		7	7	0xc8460
+classic	journal-renderer-and-card-fields	0xc2f7c	0xca354		8	8	0xc7034
+classic	journal-renderer-and-card-fields	0xc3ab6	0xca378		0	0	0xc3ab8
+classic	journal-renderer-and-card-fields	0xc3ab6	0xca378		1	1	0xc3b6f
+classic	journal-renderer-and-card-fields	0xc3ab6	0xca378		2	2	0xc3b7b
+classic	journal-renderer-and-card-fields	0xc3ab6	0xca378		3	3	0xc3b87
+classic	journal-renderer-and-card-fields	0xc3ab6	0xca378		4	4	0xc3b93
+classic	journal-renderer-and-card-fields	0xc3ab6	0xca378		5	5	0xc3b9f
+classic	journal-renderer-and-card-fields	0xc3ab6	0xca378		6	6	0xc3bab
+classic	journal-renderer-and-card-fields	0xc3ab6	0xca378		7	7	0xc3bb7
+classic	journal-renderer-and-card-fields	0xc3ab6	0xca378		8	8	0xc3bc3
+classic	journal-renderer-and-card-fields	0xc3ab6	0xca378		9	9	0xc3bcf
+classic	journal-renderer-and-card-fields	0xc3ab6	0xca378		10	10	0xc3bd8
+classic	journal-renderer-and-card-fields	0xc3ab6	0xca378		11	11	0xc3bfc
+classic	journal-renderer-and-card-fields	0xc3ab6	0xca378		12	12	0xc3c3b
+classic	journal-renderer-and-card-fields	0xc3ab6	0xca378		13	13	0xc3be1
+classic	journal-renderer-and-card-fields	0xc3ab6	0xca378		14	14	0xc3bea
+classic	journal-renderer-and-card-fields	0xc3ab6	0xca378		15	15	0xc3bf3
+classic	journal-renderer-and-card-fields	0xc3ab6	0xca378		16	16	0xc3c44
+classic	journal-renderer-and-card-fields	0xc3ab6	0xca378		17	17	0xc3c4d
+classic	journal-renderer-and-card-fields	0xc3b19	0xca3c0	0xca3e0	0	0	0xc3b1b
+classic	journal-renderer-and-card-fields	0xc3b19	0xca3c0	0xca3e0	1	1	0xc3b4b
+classic	journal-renderer-and-card-fields	0xc3b19	0xca3c0	0xca3e0	2	2	0xc3b27
+classic	journal-renderer-and-card-fields	0xc3b19	0xca3c0	0xca3e0	3	7	0xc3c60
+classic	journal-renderer-and-card-fields	0xc3b19	0xca3c0	0xca3e0	4	7	0xc3c60
+classic	journal-renderer-and-card-fields	0xc3b19	0xca3c0	0xca3e0	5	7	0xc3c60
+classic	journal-renderer-and-card-fields	0xc3b19	0xca3c0	0xca3e0	6	7	0xc3c60
+classic	journal-renderer-and-card-fields	0xc3b19	0xca3c0	0xca3e0	7	7	0xc3c60
+classic	journal-renderer-and-card-fields	0xc3b19	0xca3c0	0xca3e0	8	7	0xc3c60
+classic	journal-renderer-and-card-fields	0xc3b19	0xca3c0	0xca3e0	9	7	0xc3c60
+classic	journal-renderer-and-card-fields	0xc3b19	0xca3c0	0xca3e0	10	7	0xc3c60
+classic	journal-renderer-and-card-fields	0xc3b19	0xca3c0	0xca3e0	11	7	0xc3c60
+classic	journal-renderer-and-card-fields	0xc3b19	0xca3c0	0xca3e0	12	7	0xc3c60
+classic	journal-renderer-and-card-fields	0xc3b19	0xca3c0	0xca3e0	13	7	0xc3c60
+classic	journal-renderer-and-card-fields	0xc3b19	0xca3c0	0xca3e0	14	7	0xc3c60
+classic	journal-renderer-and-card-fields	0xc3b19	0xca3c0	0xca3e0	15	7	0xc3c60
+classic	journal-renderer-and-card-fields	0xc3b19	0xca3c0	0xca3e0	16	7	0xc3c60
+classic	journal-renderer-and-card-fields	0xc3b19	0xca3c0	0xca3e0	17	7	0xc3c60
+classic	journal-renderer-and-card-fields	0xc3b19	0xca3c0	0xca3e0	18	7	0xc3c60
+classic	journal-renderer-and-card-fields	0xc3b19	0xca3c0	0xca3e0	19	7	0xc3c60
+classic	journal-renderer-and-card-fields	0xc3b19	0xca3c0	0xca3e0	20	7	0xc3c60
+classic	journal-renderer-and-card-fields	0xc3b19	0xca3c0	0xca3e0	21	7	0xc3c60
+classic	journal-renderer-and-card-fields	0xc3b19	0xca3c0	0xca3e0	22	7	0xc3c60
+classic	journal-renderer-and-card-fields	0xc3b19	0xca3c0	0xca3e0	23	3	0xc3b33
+classic	journal-renderer-and-card-fields	0xc3b19	0xca3c0	0xca3e0	24	4	0xc3b3f
+classic	journal-renderer-and-card-fields	0xc3b19	0xca3c0	0xca3e0	25	7	0xc3c60
+classic	journal-renderer-and-card-fields	0xc3b19	0xca3c0	0xca3e0	26	7	0xc3c60
+classic	journal-renderer-and-card-fields	0xc3b19	0xca3c0	0xca3e0	27	7	0xc3c60
+classic	journal-renderer-and-card-fields	0xc3b19	0xca3c0	0xca3e0	28	7	0xc3c60
+classic	journal-renderer-and-card-fields	0xc3b19	0xca3c0	0xca3e0	29	7	0xc3c60
+classic	journal-renderer-and-card-fields	0xc3b19	0xca3c0	0xca3e0	30	7	0xc3c60
+classic	journal-renderer-and-card-fields	0xc3b19	0xca3c0	0xca3e0	31	7	0xc3c60
+classic	journal-renderer-and-card-fields	0xc3b19	0xca3c0	0xca3e0	32	7	0xc3c60
+classic	journal-renderer-and-card-fields	0xc3b19	0xca3c0	0xca3e0	33	7	0xc3c60
+classic	journal-renderer-and-card-fields	0xc3b19	0xca3c0	0xca3e0	34	7	0xc3c60
+classic	journal-renderer-and-card-fields	0xc3b19	0xca3c0	0xca3e0	35	7	0xc3c60
+classic	journal-renderer-and-card-fields	0xc3b19	0xca3c0	0xca3e0	36	7	0xc3c60
+classic	journal-renderer-and-card-fields	0xc3b19	0xca3c0	0xca3e0	37	7	0xc3c60
+classic	journal-renderer-and-card-fields	0xc3b19	0xca3c0	0xca3e0	38	7	0xc3c60
+classic	journal-renderer-and-card-fields	0xc3b19	0xca3c0	0xca3e0	39	5	0xc3b57
+classic	journal-renderer-and-card-fields	0xc3b19	0xca3c0	0xca3e0	40	7	0xc3c60
+classic	journal-renderer-and-card-fields	0xc3b19	0xca3c0	0xca3e0	41	7	0xc3c60
+classic	journal-renderer-and-card-fields	0xc3b19	0xca3c0	0xca3e0	42	6	0xc3b63
+classic	journal-renderer-and-card-fields	0xc4861	0xca40c	0xca42c	0	0	0xc4863
+classic	journal-renderer-and-card-fields	0xc4861	0xca40c	0xca42c	1	1	0xc5652
+classic	journal-renderer-and-card-fields	0xc4861	0xca40c	0xca42c	2	2	0xc4bdf
+classic	journal-renderer-and-card-fields	0xc4861	0xca40c	0xca42c	3	7	0xc5ca9
+classic	journal-renderer-and-card-fields	0xc4861	0xca40c	0xca42c	4	7	0xc5ca9
+classic	journal-renderer-and-card-fields	0xc4861	0xca40c	0xca42c	5	7	0xc5ca9
+classic	journal-renderer-and-card-fields	0xc4861	0xca40c	0xca42c	6	7	0xc5ca9
+classic	journal-renderer-and-card-fields	0xc4861	0xca40c	0xca42c	7	7	0xc5ca9
+classic	journal-renderer-and-card-fields	0xc4861	0xca40c	0xca42c	8	7	0xc5ca9
+classic	journal-renderer-and-card-fields	0xc4861	0xca40c	0xca42c	9	7	0xc5ca9
+classic	journal-renderer-and-card-fields	0xc4861	0xca40c	0xca42c	10	7	0xc5ca9
+classic	journal-renderer-and-card-fields	0xc4861	0xca40c	0xca42c	11	7	0xc5ca9
+classic	journal-renderer-and-card-fields	0xc4861	0xca40c	0xca42c	12	7	0xc5ca9
+classic	journal-renderer-and-card-fields	0xc4861	0xca40c	0xca42c	13	7	0xc5ca9
+classic	journal-renderer-and-card-fields	0xc4861	0xca40c	0xca42c	14	7	0xc5ca9
+classic	journal-renderer-and-card-fields	0xc4861	0xca40c	0xca42c	15	7	0xc5ca9
+classic	journal-renderer-and-card-fields	0xc4861	0xca40c	0xca42c	16	7	0xc5ca9
+classic	journal-renderer-and-card-fields	0xc4861	0xca40c	0xca42c	17	7	0xc5ca9
+classic	journal-renderer-and-card-fields	0xc4861	0xca40c	0xca42c	18	7	0xc5ca9
+classic	journal-renderer-and-card-fields	0xc4861	0xca40c	0xca42c	19	7	0xc5ca9
+classic	journal-renderer-and-card-fields	0xc4861	0xca40c	0xca42c	20	7	0xc5ca9
+classic	journal-renderer-and-card-fields	0xc4861	0xca40c	0xca42c	21	7	0xc5ca9
+classic	journal-renderer-and-card-fields	0xc4861	0xca40c	0xca42c	22	7	0xc5ca9
+classic	journal-renderer-and-card-fields	0xc4861	0xca40c	0xca42c	23	3	0xc500f
+classic	journal-renderer-and-card-fields	0xc4861	0xca40c	0xca42c	24	4	0xc52b3
+classic	journal-renderer-and-card-fields	0xc4861	0xca40c	0xca42c	25	7	0xc5ca9
+classic	journal-renderer-and-card-fields	0xc4861	0xca40c	0xca42c	26	7	0xc5ca9
+classic	journal-renderer-and-card-fields	0xc4861	0xca40c	0xca42c	27	7	0xc5ca9
+classic	journal-renderer-and-card-fields	0xc4861	0xca40c	0xca42c	28	7	0xc5ca9
+classic	journal-renderer-and-card-fields	0xc4861	0xca40c	0xca42c	29	7	0xc5ca9
+classic	journal-renderer-and-card-fields	0xc4861	0xca40c	0xca42c	30	7	0xc5ca9
+classic	journal-renderer-and-card-fields	0xc4861	0xca40c	0xca42c	31	7	0xc5ca9
+classic	journal-renderer-and-card-fields	0xc4861	0xca40c	0xca42c	32	7	0xc5ca9
+classic	journal-renderer-and-card-fields	0xc4861	0xca40c	0xca42c	33	7	0xc5ca9
+classic	journal-renderer-and-card-fields	0xc4861	0xca40c	0xca42c	34	7	0xc5ca9
+classic	journal-renderer-and-card-fields	0xc4861	0xca40c	0xca42c	35	7	0xc5ca9
+classic	journal-renderer-and-card-fields	0xc4861	0xca40c	0xca42c	36	7	0xc5ca9
+classic	journal-renderer-and-card-fields	0xc4861	0xca40c	0xca42c	37	7	0xc5ca9
+classic	journal-renderer-and-card-fields	0xc4861	0xca40c	0xca42c	38	7	0xc5ca9
+classic	journal-renderer-and-card-fields	0xc4861	0xca40c	0xca42c	39	5	0xc5870
+classic	journal-renderer-and-card-fields	0xc4861	0xca40c	0xca42c	40	7	0xc5ca9
+classic	journal-renderer-and-card-fields	0xc4861	0xca40c	0xca42c	41	7	0xc5ca9
+classic	journal-renderer-and-card-fields	0xc4861	0xca40c	0xca42c	42	6	0xc5a8e
+classic	journal-renderer-and-card-fields	0xc5dce	0xca458	0xca468	0	0	0xc5dd0
+classic	journal-renderer-and-card-fields	0xc5dce	0xca458	0xca468	1	1	0xc5dd9
+classic	journal-renderer-and-card-fields	0xc5dce	0xca458	0xca468	2	2	0xc5de2
+classic	journal-renderer-and-card-fields	0xc5dce	0xca458	0xca468	3	3	0xc5deb
+classic	journal-renderer-and-card-fields	0xc5dce	0xca458	0xca468	4	3	0xc5deb
+classic	journal-renderer-and-card-fields	0xc5dce	0xca458	0xca468	5	3	0xc5deb
+classic	journal-renderer-and-card-fields	0xc5dce	0xca458	0xca468	6	3	0xc5deb
+classic	journal-renderer-and-card-fields	0xc5dce	0xca458	0xca468	7	3	0xc5deb
+classic	journal-renderer-and-card-fields	0xc5dce	0xca458	0xca468	8	3	0xc5deb
+classic	journal-renderer-and-card-fields	0xc5dce	0xca458	0xca468	9	3	0xc5deb
+classic	journal-renderer-and-card-fields	0xc5dce	0xca458	0xca468	10	3	0xc5deb
+classic	journal-renderer-and-card-fields	0xc5dce	0xca458	0xca468	11	3	0xc5deb
+classic	journal-renderer-and-card-fields	0xc5dce	0xca458	0xca468	12	3	0xc5deb
+classic	journal-renderer-and-card-fields	0xc5dce	0xca458	0xca468	13	3	0xc5deb
+classic	journal-renderer-and-card-fields	0xc5dce	0xca458	0xca468	14	3	0xc5deb
+classic	journal-renderer-and-card-fields	0xc5dce	0xca458	0xca468	15	3	0xc5deb
+classic	journal-renderer-and-card-fields	0xc5dce	0xca458	0xca468	16	3	0xc5deb
+classic	journal-renderer-and-card-fields	0xc5dce	0xca458	0xca468	17	3	0xc5deb
+classic	journal-renderer-and-card-fields	0xc5dce	0xca458	0xca468	18	3	0xc5deb
+classic	journal-renderer-and-card-fields	0xc5dce	0xca458	0xca468	19	3	0xc5deb
+classic	journal-renderer-and-card-fields	0xc5dce	0xca458	0xca468	20	0	0xc5dd0
+classic	journal-renderer-and-card-fields	0xc5dce	0xca458	0xca468	21	1	0xc5dd9
+classic	journal-renderer-and-card-fields	0xc5dce	0xca458	0xca468	22	2	0xc5de2
+classic	journal-renderer-and-card-fields	0xc5dce	0xca458	0xca468	23	3	0xc5deb
+classic	journal-renderer-and-card-fields	0xc5dce	0xca458	0xca468	24	3	0xc5deb
+classic	journal-renderer-and-card-fields	0xc5dce	0xca458	0xca468	25	3	0xc5deb
+classic	journal-renderer-and-card-fields	0xc5dce	0xca458	0xca468	26	3	0xc5deb
+classic	journal-renderer-and-card-fields	0xc5dce	0xca458	0xca468	27	3	0xc5deb
+classic	journal-renderer-and-card-fields	0xc5dce	0xca458	0xca468	28	3	0xc5deb
+classic	journal-renderer-and-card-fields	0xc5dce	0xca458	0xca468	29	3	0xc5deb
+classic	journal-renderer-and-card-fields	0xc5dce	0xca458	0xca468	30	0	0xc5dd0
+classic	journal-renderer-and-card-fields	0xc5dce	0xca458	0xca468	31	1	0xc5dd9
+classic	journal-renderer-and-card-fields	0xc5dce	0xca458	0xca468	32	2	0xc5de2
+classic	journal-event-occurrence-and-card-construction	0xd5089	0xd52fc	0xd530c	0	0	0xd508b
+classic	journal-event-occurrence-and-card-construction	0xd5089	0xd52fc	0xd530c	1	1	0xd5094
+classic	journal-event-occurrence-and-card-construction	0xd5089	0xd52fc	0xd530c	2	2	0xd509d
+classic	journal-event-occurrence-and-card-construction	0xd5089	0xd52fc	0xd530c	3	3	0xd50a6
+classic	journal-event-occurrence-and-card-construction	0xd5089	0xd52fc	0xd530c	4	3	0xd50a6
+classic	journal-event-occurrence-and-card-construction	0xd5089	0xd52fc	0xd530c	5	3	0xd50a6
+classic	journal-event-occurrence-and-card-construction	0xd5089	0xd52fc	0xd530c	6	3	0xd50a6
+classic	journal-event-occurrence-and-card-construction	0xd5089	0xd52fc	0xd530c	7	3	0xd50a6
+classic	journal-event-occurrence-and-card-construction	0xd5089	0xd52fc	0xd530c	8	3	0xd50a6
+classic	journal-event-occurrence-and-card-construction	0xd5089	0xd52fc	0xd530c	9	3	0xd50a6
+classic	journal-event-occurrence-and-card-construction	0xd5089	0xd52fc	0xd530c	10	3	0xd50a6
+classic	journal-event-occurrence-and-card-construction	0xd5089	0xd52fc	0xd530c	11	3	0xd50a6
+classic	journal-event-occurrence-and-card-construction	0xd5089	0xd52fc	0xd530c	12	3	0xd50a6
+classic	journal-event-occurrence-and-card-construction	0xd5089	0xd52fc	0xd530c	13	3	0xd50a6
+classic	journal-event-occurrence-and-card-construction	0xd5089	0xd52fc	0xd530c	14	3	0xd50a6
+classic	journal-event-occurrence-and-card-construction	0xd5089	0xd52fc	0xd530c	15	3	0xd50a6
+classic	journal-event-occurrence-and-card-construction	0xd5089	0xd52fc	0xd530c	16	3	0xd50a6
+classic	journal-event-occurrence-and-card-construction	0xd5089	0xd52fc	0xd530c	17	3	0xd50a6
+classic	journal-event-occurrence-and-card-construction	0xd5089	0xd52fc	0xd530c	18	3	0xd50a6
+classic	journal-event-occurrence-and-card-construction	0xd5089	0xd52fc	0xd530c	19	3	0xd50a6
+classic	journal-event-occurrence-and-card-construction	0xd5089	0xd52fc	0xd530c	20	0	0xd508b
+classic	journal-event-occurrence-and-card-construction	0xd5089	0xd52fc	0xd530c	21	1	0xd5094
+classic	journal-event-occurrence-and-card-construction	0xd5089	0xd52fc	0xd530c	22	2	0xd509d
+classic	journal-event-occurrence-and-card-construction	0xd5089	0xd52fc	0xd530c	23	3	0xd50a6
+classic	journal-event-occurrence-and-card-construction	0xd5089	0xd52fc	0xd530c	24	3	0xd50a6
+classic	journal-event-occurrence-and-card-construction	0xd5089	0xd52fc	0xd530c	25	3	0xd50a6
+classic	journal-event-occurrence-and-card-construction	0xd5089	0xd52fc	0xd530c	26	3	0xd50a6
+classic	journal-event-occurrence-and-card-construction	0xd5089	0xd52fc	0xd530c	27	3	0xd50a6
+classic	journal-event-occurrence-and-card-construction	0xd5089	0xd52fc	0xd530c	28	3	0xd50a6
+classic	journal-event-occurrence-and-card-construction	0xd5089	0xd52fc	0xd530c	29	3	0xd50a6
+classic	journal-event-occurrence-and-card-construction	0xd5089	0xd52fc	0xd530c	30	0	0xd508b
+classic	journal-event-occurrence-and-card-construction	0xd5089	0xd52fc	0xd530c	31	1	0xd5094
+classic	journal-event-occurrence-and-card-construction	0xd5089	0xd52fc	0xd530c	32	2	0xd509d
+classic	journal-event-title	0xd5384	0xd6f7c		0	0	0xd5f31
+classic	journal-event-title	0xd5384	0xd6f7c		1	1	0xd6050
+classic	journal-event-title	0xd5384	0xd6f7c		2	2	0xd69fd
+classic	journal-event-title	0xd5384	0xd6f7c		3	3	0xd6c6a
+classic	journal-event-title	0xd5384	0xd6f7c		4	4	0xd5b10
+classic	journal-event-title	0xd5384	0xd6f7c		5	5	0xd6790
+classic	journal-event-title	0xd5384	0xd6f7c		6	6	0xd6459
+classic	journal-event-title	0xd5384	0xd6f7c		7	7	0xd57cb
+classic	journal-event-title	0xd5384	0xd6f7c		8	8	0xd5386
+classic	journal-event-title	0xd5384	0xd6f7c		9	9	0xd6489
+classic	journal-event-title	0xd5384	0xd6f7c		10	10	0xd6629
+classic	journal-event-title	0xd57e9	0xd6fa8		0	0	0xd581d
+classic	journal-event-title	0xd57e9	0xd6fa8		1	1	0xd581d
+classic	journal-event-title	0xd57e9	0xd6fa8		2	2	0xd581d
+classic	journal-event-title	0xd57e9	0xd6fa8		3	3	0xd581d
+classic	journal-event-title	0xd57e9	0xd6fa8		4	4	0xd581d
+classic	journal-event-title	0xd57e9	0xd6fa8		5	5	0xd57eb
+classic	journal-event-title	0xd6256	0xd6fc0		0	0	0xd6258
+classic	journal-event-title	0xd6256	0xd6fc0		1	1	0xd6273
+classic	journal-event-title	0xd6256	0xd6fc0		2	2	0xd628e
+classic	journal-event-title	0xd6256	0xd6fc0		3	3	0xd62a9
+classic	journal-event-title	0xd6256	0xd6fc0		4	4	0xd62c4
+classic	journal-event-title	0xd6256	0xd6fc0		5	5	0xd62df
+classic	journal-event-title	0xd6256	0xd6fc0		6	6	0xd62fa
+classic	journal-event-title	0xd6256	0xd6fc0		7	7	0xd634b
+classic	journal-event-title	0xd6256	0xd6fc0		8	8	0xd6366
+classic	journal-event-title	0xd6256	0xd6fc0		9	9	0xd6381
+classic	journal-event-title	0xd6256	0xd6fc0		10	10	0xd63d2
+classic	journal-event-title	0xd6256	0xd6fc0		11	11	0xd6330
+classic	journal-event-title	0xd6256	0xd6fc0		12	12	0xd6408
+classic	journal-event-title	0xd6256	0xd6fc0		13	13	0xd6423
+classic	journal-event-title	0xd6256	0xd6fc0		14	14	0xd643e
+classic	journal-event-title	0xd6256	0xd6fc0		15	15	0xd63ed
+classic	journal-event-title	0xd6256	0xd6fc0		16	16	0xd63b7
+classic	journal-event-title	0xd6256	0xd6fc0		17	17	0xd639c
+classic	journal-event-title	0xd6256	0xd6fc0		18	18	0xd6315
+classic	journal-historical-event-title	0xd7061	0xd833c		0	0	0xd7b97
+classic	journal-historical-event-title	0xd7061	0xd833c		1	1	0xd7daa
+classic	journal-historical-event-title	0xd7061	0xd833c		2	2	0xd7cf3
+classic	journal-historical-event-title	0xd7061	0xd833c		3	3	0xd7bdc
+classic	journal-historical-event-title	0xd7061	0xd833c		4	4	0xd734b
+classic	journal-historical-event-title	0xd7061	0xd833c		5	5	0xd7519
+classic	journal-historical-event-title	0xd7061	0xd833c		6	6	0xd7783
+classic	journal-historical-event-title	0xd7061	0xd833c		7	7	0xd7803
+classic	journal-historical-event-title	0xd7061	0xd833c		8	8	0xd7848
+classic	journal-historical-event-title	0xd7061	0xd833c		9	9	0xd7ab4
+classic	journal-historical-event-title	0xd7061	0xd833c		10	10	0xd7ad5
+classic	journal-historical-event-title	0xd7061	0xd833c		11	11	0xd7af0
+classic	journal-historical-event-title	0xd7061	0xd833c		12	12	0xd7b35
+classic	journal-historical-event-title	0xd7061	0xd833c		13	13	0xd77e5
+classic	journal-historical-event-title	0xd7061	0xd833c		14	14	0xd7869
+classic	journal-historical-event-title	0xd7061	0xd833c		15	15	0xd78ee
+classic	journal-historical-event-title	0xd7061	0xd833c		16	16	0xd7063
+classic	journal-historical-event-title	0xd7061	0xd833c		17	17	0xd7721
+classic	journal-historical-event-title	0xd7061	0xd833c		18	18	0xd757b
+classic	journal-historical-event-title	0xd7061	0xd833c		19	19	0xd75ce
+classic	journal-historical-event-title	0xd7061	0xd833c		20	20	0xd75f3
+classic	journal-historical-event-title	0xd7061	0xd833c		21	21	0xd7646
+classic	journal-historical-event-title	0xd7061	0xd833c		22	22	0xd766b
+classic	journal-historical-event-title	0xd7061	0xd833c		23	23	0xd76be
+classic	journal-historical-event-title	0xd7061	0xd833c		24	24	0xd76e3
+classic	journal-historical-event-title	0xd7061	0xd833c		25	25	0xd7eda
+classic	journal-historical-event-title	0xd7061	0xd833c		26	26	0xd7f76
+classic	journal-historical-event-title	0xd7061	0xd833c		27	27	0xd7f76
+classic	journal-historical-event-title	0xd7061	0xd833c		28	28	0xd7fa4
+classic	journal-historical-event-title	0xd7061	0xd833c		29	29	0xd80ff
+classic	journal-historical-event-title	0xd7061	0xd833c		30	30	0xd819b
+classic	journal-historical-event-title	0xd7061	0xd833c		31	31	0xd819b
+classic	journal-historical-event-title	0xd7061	0xd833c		32	32	0xd81d6
+classic	journal-historical-event-title	0xd7061	0xd833c		33	33	0xd7ebf
+classic	journal-event-hearing-and-mission-paragraphs	0xd8cef	0xd97a8	0xd97b8	0	0	0xd8cf1
+classic	journal-event-hearing-and-mission-paragraphs	0xd8cef	0xd97a8	0xd97b8	1	1	0xd8cfa
+classic	journal-event-hearing-and-mission-paragraphs	0xd8cef	0xd97a8	0xd97b8	2	2	0xd8d03
+classic	journal-event-hearing-and-mission-paragraphs	0xd8cef	0xd97a8	0xd97b8	3	3	0xd8d0c
+classic	journal-event-hearing-and-mission-paragraphs	0xd8cef	0xd97a8	0xd97b8	4	3	0xd8d0c
+classic	journal-event-hearing-and-mission-paragraphs	0xd8cef	0xd97a8	0xd97b8	5	3	0xd8d0c
+classic	journal-event-hearing-and-mission-paragraphs	0xd8cef	0xd97a8	0xd97b8	6	3	0xd8d0c
+classic	journal-event-hearing-and-mission-paragraphs	0xd8cef	0xd97a8	0xd97b8	7	3	0xd8d0c
+classic	journal-event-hearing-and-mission-paragraphs	0xd8cef	0xd97a8	0xd97b8	8	3	0xd8d0c
+classic	journal-event-hearing-and-mission-paragraphs	0xd8cef	0xd97a8	0xd97b8	9	3	0xd8d0c
+classic	journal-event-hearing-and-mission-paragraphs	0xd8cef	0xd97a8	0xd97b8	10	3	0xd8d0c
+classic	journal-event-hearing-and-mission-paragraphs	0xd8cef	0xd97a8	0xd97b8	11	3	0xd8d0c
+classic	journal-event-hearing-and-mission-paragraphs	0xd8cef	0xd97a8	0xd97b8	12	3	0xd8d0c
+classic	journal-event-hearing-and-mission-paragraphs	0xd8cef	0xd97a8	0xd97b8	13	3	0xd8d0c
+classic	journal-event-hearing-and-mission-paragraphs	0xd8cef	0xd97a8	0xd97b8	14	3	0xd8d0c
+classic	journal-event-hearing-and-mission-paragraphs	0xd8cef	0xd97a8	0xd97b8	15	3	0xd8d0c
+classic	journal-event-hearing-and-mission-paragraphs	0xd8cef	0xd97a8	0xd97b8	16	3	0xd8d0c
+classic	journal-event-hearing-and-mission-paragraphs	0xd8cef	0xd97a8	0xd97b8	17	3	0xd8d0c
+classic	journal-event-hearing-and-mission-paragraphs	0xd8cef	0xd97a8	0xd97b8	18	3	0xd8d0c
+classic	journal-event-hearing-and-mission-paragraphs	0xd8cef	0xd97a8	0xd97b8	19	3	0xd8d0c
+classic	journal-event-hearing-and-mission-paragraphs	0xd8cef	0xd97a8	0xd97b8	20	0	0xd8cf1
+classic	journal-event-hearing-and-mission-paragraphs	0xd8cef	0xd97a8	0xd97b8	21	1	0xd8cfa
+classic	journal-event-hearing-and-mission-paragraphs	0xd8cef	0xd97a8	0xd97b8	22	2	0xd8d03
+classic	journal-event-hearing-and-mission-paragraphs	0xd8cef	0xd97a8	0xd97b8	23	3	0xd8d0c
+classic	journal-event-hearing-and-mission-paragraphs	0xd8cef	0xd97a8	0xd97b8	24	3	0xd8d0c
+classic	journal-event-hearing-and-mission-paragraphs	0xd8cef	0xd97a8	0xd97b8	25	3	0xd8d0c
+classic	journal-event-hearing-and-mission-paragraphs	0xd8cef	0xd97a8	0xd97b8	26	3	0xd8d0c
+classic	journal-event-hearing-and-mission-paragraphs	0xd8cef	0xd97a8	0xd97b8	27	3	0xd8d0c
+classic	journal-event-hearing-and-mission-paragraphs	0xd8cef	0xd97a8	0xd97b8	28	3	0xd8d0c
+classic	journal-event-hearing-and-mission-paragraphs	0xd8cef	0xd97a8	0xd97b8	29	3	0xd8d0c
+classic	journal-event-hearing-and-mission-paragraphs	0xd8cef	0xd97a8	0xd97b8	30	0	0xd8cf1
+classic	journal-event-hearing-and-mission-paragraphs	0xd8cef	0xd97a8	0xd97b8	31	1	0xd8cfa
+classic	journal-event-hearing-and-mission-paragraphs	0xd8cef	0xd97a8	0xd97b8	32	2	0xd8d03
+classic	journal-event-hearing-and-mission-paragraphs	0xd9243	0xd97dc	0xd97ec	0	0	0xd9245
+classic	journal-event-hearing-and-mission-paragraphs	0xd9243	0xd97dc	0xd97ec	1	1	0xd924e
+classic	journal-event-hearing-and-mission-paragraphs	0xd9243	0xd97dc	0xd97ec	2	2	0xd9257
+classic	journal-event-hearing-and-mission-paragraphs	0xd9243	0xd97dc	0xd97ec	3	3	0xd9260
+classic	journal-event-hearing-and-mission-paragraphs	0xd9243	0xd97dc	0xd97ec	4	3	0xd9260
+classic	journal-event-hearing-and-mission-paragraphs	0xd9243	0xd97dc	0xd97ec	5	3	0xd9260
+classic	journal-event-hearing-and-mission-paragraphs	0xd9243	0xd97dc	0xd97ec	6	3	0xd9260
+classic	journal-event-hearing-and-mission-paragraphs	0xd9243	0xd97dc	0xd97ec	7	3	0xd9260
+classic	journal-event-hearing-and-mission-paragraphs	0xd9243	0xd97dc	0xd97ec	8	3	0xd9260
+classic	journal-event-hearing-and-mission-paragraphs	0xd9243	0xd97dc	0xd97ec	9	3	0xd9260
+classic	journal-event-hearing-and-mission-paragraphs	0xd9243	0xd97dc	0xd97ec	10	3	0xd9260
+classic	journal-event-hearing-and-mission-paragraphs	0xd9243	0xd97dc	0xd97ec	11	3	0xd9260
+classic	journal-event-hearing-and-mission-paragraphs	0xd9243	0xd97dc	0xd97ec	12	3	0xd9260
+classic	journal-event-hearing-and-mission-paragraphs	0xd9243	0xd97dc	0xd97ec	13	3	0xd9260
+classic	journal-event-hearing-and-mission-paragraphs	0xd9243	0xd97dc	0xd97ec	14	3	0xd9260
+classic	journal-event-hearing-and-mission-paragraphs	0xd9243	0xd97dc	0xd97ec	15	3	0xd9260
+classic	journal-event-hearing-and-mission-paragraphs	0xd9243	0xd97dc	0xd97ec	16	3	0xd9260
+classic	journal-event-hearing-and-mission-paragraphs	0xd9243	0xd97dc	0xd97ec	17	3	0xd9260
+classic	journal-event-hearing-and-mission-paragraphs	0xd9243	0xd97dc	0xd97ec	18	3	0xd9260
+classic	journal-event-hearing-and-mission-paragraphs	0xd9243	0xd97dc	0xd97ec	19	3	0xd9260
+classic	journal-event-hearing-and-mission-paragraphs	0xd9243	0xd97dc	0xd97ec	20	0	0xd9245
+classic	journal-event-hearing-and-mission-paragraphs	0xd9243	0xd97dc	0xd97ec	21	1	0xd924e
+classic	journal-event-hearing-and-mission-paragraphs	0xd9243	0xd97dc	0xd97ec	22	2	0xd9257
+classic	journal-event-hearing-and-mission-paragraphs	0xd9243	0xd97dc	0xd97ec	23	3	0xd9260
+classic	journal-event-hearing-and-mission-paragraphs	0xd9243	0xd97dc	0xd97ec	24	3	0xd9260
+classic	journal-event-hearing-and-mission-paragraphs	0xd9243	0xd97dc	0xd97ec	25	3	0xd9260
+classic	journal-event-hearing-and-mission-paragraphs	0xd9243	0xd97dc	0xd97ec	26	3	0xd9260
+classic	journal-event-hearing-and-mission-paragraphs	0xd9243	0xd97dc	0xd97ec	27	3	0xd9260
+classic	journal-event-hearing-and-mission-paragraphs	0xd9243	0xd97dc	0xd97ec	28	3	0xd9260
+classic	journal-event-hearing-and-mission-paragraphs	0xd9243	0xd97dc	0xd97ec	29	3	0xd9260
+classic	journal-event-hearing-and-mission-paragraphs	0xd9243	0xd97dc	0xd97ec	30	0	0xd9245
+classic	journal-event-hearing-and-mission-paragraphs	0xd9243	0xd97dc	0xd97ec	31	1	0xd924e
+classic	journal-event-hearing-and-mission-paragraphs	0xd9243	0xd97dc	0xd97ec	32	2	0xd9257
+classic	journal-incident-summary-and-search-index-initializer	0xd992b	0xdc6c4		0	0	0xda6cc
+classic	journal-incident-summary-and-search-index-initializer	0xd992b	0xdc6c4		1	1	0xda82e
+classic	journal-incident-summary-and-search-index-initializer	0xd992b	0xdc6c4		2	2	0xdc04b
+classic	journal-incident-summary-and-search-index-initializer	0xd992b	0xdc6c4		3	3	0xdc3e3
+classic	journal-incident-summary-and-search-index-initializer	0xd992b	0xdc6c4		4	4	0xda386
+classic	journal-incident-summary-and-search-index-initializer	0xd992b	0xdc6c4		5	5	0xdbc61
+classic	journal-incident-summary-and-search-index-initializer	0xd992b	0xdc6c4		6	6	0xdb0b1
+classic	journal-incident-summary-and-search-index-initializer	0xd992b	0xdc6c4		7	7	0xd9e03
+classic	journal-incident-summary-and-search-index-initializer	0xd992b	0xdc6c4		8	8	0xd992d
+classic	journal-incident-summary-and-search-index-initializer	0xd992b	0xdc6c4		9	9	0xdb7a0
+classic	journal-incident-summary-and-search-index-initializer	0xd992b	0xdc6c4		10	10	0xdba11
+classic	journal-incident-summary-and-search-index-initializer	0xd9eab	0xdc6f0		0	0	0xd9eb6
+classic	journal-incident-summary-and-search-index-initializer	0xd9eab	0xdc6f0		1	1	0xd9ebf
+classic	journal-incident-summary-and-search-index-initializer	0xd9eab	0xdc6f0		2	2	0xd9ec8
+classic	journal-incident-summary-and-search-index-initializer	0xd9eab	0xdc6f0		3	3	0xd9ed1
+classic	journal-incident-summary-and-search-index-initializer	0xd9eab	0xdc6f0		4	4	0xd9eda
+classic	journal-incident-summary-and-search-index-initializer	0xd9eab	0xdc6f0		5	5	0xd9ead
+classic	journal-incident-summary-and-search-index-initializer	0xda950	0xdc708		0	0	0xda952
+classic	journal-incident-summary-and-search-index-initializer	0xda950	0xdc708		1	1	0xda9df
+classic	journal-incident-summary-and-search-index-initializer	0xda950	0xdc708		2	2	0xdaa6c
+classic	journal-incident-summary-and-search-index-initializer	0xda950	0xdc708		3	3	0xdaaf9
+classic	journal-incident-summary-and-search-index-initializer	0xda950	0xdc708		4	4	0xdab86
+classic	journal-incident-summary-and-search-index-initializer	0xda950	0xdc708		5	5	0xdabbd
+classic	journal-incident-summary-and-search-index-initializer	0xda950	0xdc708		6	6	0xdac1f
+classic	journal-incident-summary-and-search-index-initializer	0xda950	0xdc708		7	7	0xdacef
+classic	journal-incident-summary-and-search-index-initializer	0xda950	0xdc708		8	8	0xdad26
+classic	journal-incident-summary-and-search-index-initializer	0xda950	0xdc708		9	9	0xdad5d
+classic	journal-incident-summary-and-search-index-initializer	0xda950	0xdc708		10	10	0xdae02
+classic	journal-incident-summary-and-search-index-initializer	0xda950	0xdc708		11	11	0xdacb8
+classic	journal-incident-summary-and-search-index-initializer	0xda950	0xdc708		12	12	0xdae9b
+classic	journal-incident-summary-and-search-index-initializer	0xda950	0xdc708		13	13	0xdaed2
+classic	journal-incident-summary-and-search-index-initializer	0xda950	0xdc708		14	14	0xdaf31
+classic	journal-incident-summary-and-search-index-initializer	0xda950	0xdc708		15	15	0xdae64
+classic	journal-incident-summary-and-search-index-initializer	0xda950	0xdc708		16	16	0xdadcb
+classic	journal-incident-summary-and-search-index-initializer	0xda950	0xdc708		17	17	0xdad94
+classic	journal-incident-summary-and-search-index-initializer	0xda950	0xdc708		18	18	0xdac81
+classic	journal-incident-summary-and-search-index-initializer	0xdb16f	0xdc754		0	0	0xdb42b
+classic	journal-incident-summary-and-search-index-initializer	0xdb16f	0xdc754		1	1	0xdb4b9
+classic	journal-incident-summary-and-search-index-initializer	0xdb16f	0xdc754		2	2	0xdb55a
+classic	journal-incident-summary-and-search-index-initializer	0xdb16f	0xdc754		3	3	0xdb5fb
+classic	journal-incident-summary-and-search-index-initializer	0xdb16f	0xdc754		4	4	0xdb171
+classic	journal-incident-summary-and-search-index-initializer	0xdb16f	0xdc754		5	5	0xdb1eb
+classic	journal-incident-summary-and-search-index-initializer	0xdb16f	0xdc754		6	6	0xdb24d
+classic	journal-incident-summary-and-search-index-initializer	0xdb16f	0xdc754		7	7	0xdb24d
+classic	journal-incident-summary-and-search-index-initializer	0xdb29f	0xdc774		0	0	0xdb2a1
+classic	journal-incident-summary-and-search-index-initializer	0xdb29f	0xdc774		1	1	0xdb2ad
+classic	journal-incident-summary-and-search-index-initializer	0xdb29f	0xdc774		2	2	0xdb2b9
+classic	journal-incident-summary-and-search-index-initializer	0xdb29f	0xdc774		3	3	0xdb2c5
+classic	journal-incident-summary-and-search-index-initializer	0xdb29f	0xdc774		4	4	0xdb2d1
+classic	journal-incident-summary-and-search-index-initializer	0xdb29f	0xdc774		5	5	0xdb2dd
+classic	journal-incident-summary-and-search-index-initializer	0xdb29f	0xdc774		6	6	0xdb2e9
+classic	journal-incident-summary-and-search-index-initializer	0xdb29f	0xdc774		7	7	0xdb2f5
+classic	journal-incident-summary-and-search-index-initializer	0xdb29f	0xdc774		8	8	0xdb301
+classic	journal-incident-summary-and-search-index-initializer	0xdb29f	0xdc774		9	9	0xdb30d
+classic	journal-incident-summary-and-search-index-initializer	0xdb29f	0xdc774		10	10	0xdb319
+classic	journal-incident-summary-and-search-index-initializer	0xdb29f	0xdc774		11	11	0xdb325
+classic	journal-incident-summary-and-search-index-initializer	0xdb29f	0xdc774		12	12	0xdb331
+classic	journal-incident-summary-and-search-index-initializer	0xdb29f	0xdc774		13	13	0xdb33d
+classic	journal-incident-summary-and-search-index-initializer	0xdb29f	0xdc774		14	14	0xdb349
+classic	journal-incident-summary-and-search-index-initializer	0xdb29f	0xdc774		15	15	0xdb355
+classic	journal-incident-summary-and-search-index-initializer	0xdb29f	0xdc774		16	16	0xdb361
+classic	journal-incident-summary-and-search-index-initializer	0xdb29f	0xdc774		17	17	0xdb36d
+classic	journal-incident-summary-and-search-index-initializer	0xdb29f	0xdc774		18	18	0xdb379
+classic	journal-incident-summary-and-search-index-initializer	0xdb29f	0xdc774		19	19	0xdb385
+classic	journal-incident-summary-and-search-index-initializer	0xdb29f	0xdc774		20	20	0xdb38e
+classic	journal-incident-summary-and-search-index-initializer	0xdb29f	0xdc774		21	21	0xdb397
+classic	journal-incident-summary-and-search-index-initializer	0xdb29f	0xdc774		22	22	0xdb3a0
+classic	journal-incident-summary-and-search-index-initializer	0xdb29f	0xdc774		23	23	0xdb3a9
+classic	journal-incident-summary-and-search-index-initializer	0xdb29f	0xdc774		24	24	0xdb3b2
+classic	journal-incident-summary-and-search-index-initializer	0xdb29f	0xdc774		25	25	0xdb3bb
+classic	journal-incident-summary-and-search-index-initializer	0xdb29f	0xdc774		26	26	0xdb3c4
+classic	journal-incident-summary-and-search-index-initializer	0xdb29f	0xdc774		27	27	0xdb3cd
+classic	journal-incident-summary-and-search-index-initializer	0xdb29f	0xdc774		28	28	0xdb3d6
+classic	journal-incident-summary-and-search-index-initializer	0xdb29f	0xdc774		29	29	0xdb3df
+classic	journal-incident-summary-and-search-index-initializer	0xdb29f	0xdc774		30	30	0xdb3e8
+classic	journal-incident-summary-and-search-index-initializer	0xdb29f	0xdc774		31	31	0xdb3f1
+classic	journal-incident-summary-and-search-index-initializer	0xdb29f	0xdc774		32	32	0xdb3fa
+classic	journal-performance-title	0x65ceeb	0x65e1e0		0	0	0x65d418
+classic	journal-performance-title	0x65ceeb	0x65e1e0		1	1	0x65d510
+classic	journal-performance-title	0x65ceeb	0x65e1e0		2	2	0x65d6f4
+classic	journal-performance-title	0x65ceeb	0x65e1e0		3	3	0x65dacb
+classic	journal-performance-title	0x65ceeb	0x65e1e0		4	4	0x65ceed
+classic	journal-performance-title	0x65ceeb	0x65e1e0		5	5	0x65cf89
+classic	journal-performance-title	0x65ceeb	0x65e1e0		6	6	0x65d040
+classic	journal-performance-title	0x65ceeb	0x65e1e0		7	7	0x65d040
+classic	journal-performance-title	0x65d1aa	0x65e200		0	0	0x65d1ac
+classic	journal-performance-title	0x65d1aa	0x65e200		1	1	0x65d1bb
+classic	journal-performance-title	0x65d1aa	0x65e200		2	2	0x65d1ca
+classic	journal-performance-title	0x65d1aa	0x65e200		3	3	0x65d1dc
+classic	journal-performance-title	0x65d1aa	0x65e200		4	4	0x65d1ee
+classic	journal-performance-title	0x65d1aa	0x65e200		5	5	0x65d200
+classic	journal-performance-title	0x65d1aa	0x65e200		6	6	0x65d212
+classic	journal-performance-title	0x65d1aa	0x65e200		7	7	0x65d221
+classic	journal-performance-title	0x65d1aa	0x65e200		8	8	0x65d22d
+classic	journal-performance-title	0x65d1aa	0x65e200		9	9	0x65d23f
+classic	journal-performance-title	0x65d1aa	0x65e200		10	10	0x65d24e
+classic	journal-performance-title	0x65d1aa	0x65e200		11	11	0x65d25a
+classic	journal-performance-title	0x65d1aa	0x65e200		12	12	0x65d269
+classic	journal-performance-title	0x65d1aa	0x65e200		13	13	0x65d27b
+classic	journal-performance-title	0x65d1aa	0x65e200		14	14	0x65d28d
+classic	journal-performance-title	0x65d1aa	0x65e200		15	15	0x65d29f
+classic	journal-performance-title	0x65d1aa	0x65e200		16	16	0x65d2b1
+classic	journal-performance-title	0x65d1aa	0x65e200		17	17	0x65d2c3
+classic	journal-performance-title	0x65d1aa	0x65e200		18	18	0x65d2d5
+classic	journal-performance-title	0x65d1aa	0x65e200		19	19	0x65d2e4
+classic	journal-performance-title	0x65d1aa	0x65e200		20	20	0x65d2f0
+classic	journal-performance-title	0x65d1aa	0x65e200		21	21	0x65d302
+classic	journal-performance-title	0x65d1aa	0x65e200		22	22	0x65d314
+classic	journal-performance-title	0x65d1aa	0x65e200		23	23	0x65d326
+classic	journal-performance-title	0x65d1aa	0x65e200		24	24	0x65d32f
+classic	journal-performance-title	0x65d1aa	0x65e200		25	25	0x65d338
+classic	journal-performance-title	0x65d1aa	0x65e200		26	26	0x65d347
+classic	journal-performance-title	0x65d1aa	0x65e200		27	27	0x65d356
+classic	journal-performance-title	0x65d1aa	0x65e200		28	28	0x65d365
+classic	journal-performance-title	0x65d1aa	0x65e200		29	29	0x65d374
+classic	journal-performance-title	0x65d1aa	0x65e200		30	30	0x65d380
+classic	journal-performance-title	0x65d1aa	0x65e200		31	31	0x65d38f
+classic	journal-performance-title	0x65d1aa	0x65e200		32	32	0x65d39e
+classic	journal-building-name	0xb9128d	0xb91400		0	0	0xb912c5
+classic	journal-building-name	0xb9128d	0xb91400		1	1	0xb912d7
+classic	journal-building-name	0xb9128d	0xb91400		2	2	0xb912e9
+classic	journal-building-name	0xb9128d	0xb91400		3	3	0xb9131f
+classic	journal-building-name	0xb9128d	0xb91400		4	4	0xb9133a
+classic	journal-building-name	0xb9128d	0xb91400		5	5	0xb91349
+classic	journal-building-name	0xb9128d	0xb91400		6	6	0xb91358
+classic	journal-building-name	0xb9128d	0xb91400		7	7	0xb91331
+classic	journal-building-name	0xb9128d	0xb91400		8	8	0xb9130d
+classic	journal-building-name	0xb9128d	0xb91400		9	9	0xb912fb
+classic	journal-building-name	0xb9128d	0xb91400		10	10	0xb9128f
+classic	journal-building-name	0xb9128d	0xb91400		11	11	0xb912b3
+classic	journal-building-name	0xb9128d	0xb91400		12	12	0xb9139a
+classic	journal-building-name	0xb9128d	0xb91400		13	13	0xb912a1
+classic	journal-calendar-month	0x770dd0	0x770ed0		0	0	0x770dd2
+classic	journal-calendar-month	0x770dd0	0x770ed0		1	1	0x770de7
+classic	journal-calendar-month	0x770dd0	0x770ed0		2	2	0x770dfc
+classic	journal-calendar-month	0x770dd0	0x770ed0		3	3	0x770e11
+classic	journal-calendar-month	0x770dd0	0x770ed0		4	4	0x770e26
+classic	journal-calendar-month	0x770dd0	0x770ed0		5	5	0x770e3b
+classic	journal-calendar-month	0x770dd0	0x770ed0		6	6	0x770e50
+classic	journal-calendar-month	0x770dd0	0x770ed0		7	7	0x770e65
+classic	journal-calendar-month	0x770dd0	0x770ed0		8	8	0x770e7a
+classic	journal-calendar-month	0x770dd0	0x770ed0		9	9	0x770e8f
+classic	journal-calendar-month	0x770dd0	0x770ed0		10	10	0x770ea4
+classic	journal-calendar-month	0x770dd0	0x770ed0		11	11	0x770eb9

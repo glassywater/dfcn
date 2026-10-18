@@ -1,0 +1,27 @@
+family	production	finite_branches_and_conditions	dynamic_fields	translation_domain
+wall-prefix	[Warm ][Damp ][Muddy ][Snow-covered ][Mossy ]{wall}	earlier wall gate; independent conditions in fixed order	map designations and events	::tiles
+terrain-prefix	[Muddy ][Snow-covered ][Mossy ]{terrain}	non-wall routes; independent conditions in fixed order	map events	::tiles
+engraving	{quality-mark}(Detailed|Sculpted){quality-mark} {material} {shape}	quality 0/no mark; 1/-; 2/+; 3/*; 4/CP437 f0; 5/CP437 0f; other/no mark	material	::tiles
+wall	(Smooth |Rough-hewn |Straight |Exposed |engraving){material} (Wall|Cluster|Fortification|Pillar)	shape/material sub-switch; construction, Ice and natural sources	construction or material	::tiles
+plant	[generated-name, ][Dead ](Tree|Shrub|Sapling|Young {plant-part}|{plant-part} Sapling|{plant-part})	actual plant presence, type, dead flag, tile shape; explicit generic fallbacks	generated plant name, RAW names and part overrides	::tiles; ::plants
+grass	[Sparse |Dense ][Dead |Dry ](Grass|{plant-name})	positive grass event; amount <=33 Sparse, >=67 Dense, otherwise neither; absent RAW generic fallback	RAW grass plural/name	::tiles; ::plants
+plant-part	{plant-name} (roots|trunk|branches|twigs|cap)	seven part cases include thick and smooth branches; per-part RAW override if nonempty	RAW plural NAME and part NAME overrides	::plants
+plant-growth	{terrain}[, {growth-plural}]...	final growth argument FALSE in action movest omits every trailing growth; generated-name prefix remains	RAW growth plural names when shared supplier is called with true	::tiles; ::plants::growth::plural
+track	[Shoddy ]{material} [Upward |Downward ]Track ({connection})	natural material, construction, Ice; 15 connections; down route reads tile below	material or construction; N/S/E/W combinations	::tiles
+floor	[quality Detailed |Smooth ]{material}[ Floor]	bit15 controls Floor suffix on detailed/smooth path	material noun	::tiles
+cavern-floor	[Wet ]{material}[ Cavern Floor]	bit15 controls Cavern Floor suffix; independent wet route	material noun	::tiles
+ice-floor	Sculpted Ice Floor|Level Ice Floor	actual literal tile branches	none	::tiles
+stone-debris	{material} Boulder|{material} Pebbles	actual boulder and pebble selectors	material noun	::tiles
+furrow	Furrowed {material}	actual furrowed selector	material noun	::tiles
+stairs	[{material}|[Sparse |Dense ]{plant-adjective}|Grassy|Ice] (Upward|Downward|Up/Down) Stairway	plain, natural, construction, Shoddy construction, grass and ice branches	material or construction or RAW grass adjective	::tiles
+slope	[Unusable ][{material}|[Sparse |Dense ][Dead |Dry ]{plant-adjective}|[Dead |Dry ]Grass|Grassy|Glacial] (Upward|Downward) Slope	actual usability; downward decrements z and dispatches tile below; unsupported below routes plain Downward Slope	material/construction or RAW grass adjective	::tiles
+pool	Murky Pool|[Unusable ]Murky Pool Slope	pool tile selectors; actual slope usability	none	::tiles
+waterway	River|Brook|Waterfall|River Source	actual literal tile selectors	none	::tiles
+special	Underworld Gate|Driftwood|Open Space|Chasm|Eerie Glowing Pit|Ashes|Ice|Semi-molten Rock|Glowing Barrier|Glowing Floor	actual literal tile selectors	none	::tiles
+molten-flow	Lava Flow|Magma Flow	bit15 selects the native molten-flow wording	none	::tiles
+default	Unknown	unmapped and out-of-range tile selectors unless earlier wall gate intercepts	none	::tiles
+material	[owner's ][NAME_PREFIX ]STATE_NAME	material-noun uses state-specific noun; optional adjective mode in shared helper; null material unknown material	generated owner, RAW prefix and state strings	::tiles::material; ::materials
+material-no-index	plant|yarn|wood|wooden|cloth|silk|bone|leather|shell|soap|ivory/tooth|horn|pearl	ordered category-bit alternatives; wood/wooden from noun/adjective argument	none	::materials::job
+construction	[rough ][reinforcement-material-][Reinforced ]{base-material}[ block| log]	missing construction empty; type4 rough; reinforcement bit independent; type2/4 block; type5 log; other no suffix	independent base/reinforcement material owner, prefix and state adjective	::tiles::constructed
+construction-case	Capitalized construction descriptor	ASCII/CP437 uppercase at eligible word starts; bracket nesting suppresses transformations	complete constructed descriptor	ASCII-insensitive literals in rulesets_manager
+outside-field	{terrain}[ ({direction}{media})]	complete direction/media group is added by action owner after the whole terrain field	27 direction outputs; independent Air, Water, Lava/Magma appends	Adventure item action and direction grammar

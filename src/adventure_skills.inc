@@ -181,7 +181,7 @@ void Overlay::append_adventure_skill_matches(std::vector<std::string> &rows,
     // its complete current visible byte span, including native ellipses.
     for (const auto &caption : captured_clipped_captions())
         append_captured(caption.x, caption.y, caption.visible, caption.complete);
-    const std::array draws{captured_native_drawn_text_rows(false), captured_native_drawn_text_rows(true)};
+    const std::array draws{captured_native_drawn_text_view(false), captured_native_drawn_text_view(true)};
     for (const auto &layer : draws) {
         for (const auto &draw : layer) {
             if (draw.complete_source.empty() || draw.draw_dimx != gps_->dimx ||

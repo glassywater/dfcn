@@ -1,0 +1,110 @@
+/* reference PE:6a70a6d9:02711000; history_event_hist_figure_travelst; RVA 0xb6c210..0xb6c491; actual Ghidra 12.1.4 decompiler output. */
+
+void story_history_event_hist_figure_travelst(longlong param_1,undefined8 param_2,longlong param_3)
+
+{
+  int *piVar1;
+  bool bVar2;
+  int *piVar3;
+  char *pcVar4;
+  ulonglong uVar5;
+  int iVar6;
+  ulonglong uVar7;
+  undefined8 uVar8;
+  int iVar9;
+  longlong lVar10;
+  
+  piVar1 = *(int **)(param_1 + 0x28);
+  lVar10 = (longlong)*(int **)(param_1 + 0x30) - (longlong)piVar1 >> 2;
+  if (lVar10 != 0) {
+    piVar3 = piVar1;
+    bVar2 = false;
+    if (*(int *)(param_3 + 0x20) != -1) {
+      for (; piVar3 < *(int **)(param_1 + 0x30); piVar3 = piVar3 + 1) {
+        if (*piVar3 == *(int *)(param_3 + 0x20)) {
+          bVar2 = false;
+          if ((int)((longlong)piVar3 - (longlong)piVar1 >> 2) != -1) {
+            bVar2 = true;
+          }
+          break;
+        }
+      }
+    }
+    if ((*(uint *)(param_1 + 0x4c) & 2) == 0) {
+      if ((*(uint *)(param_1 + 0x4c) & 1) == 0) {
+        pcVar4 = "the journey of ";
+        uVar8 = 0xf;
+      }
+      else {
+        pcVar4 = "the return of ";
+        uVar8 = 0xe;
+      }
+    }
+    else {
+      pcVar4 = "the escape from ";
+      uVar8 = 0x10;
+    }
+    FUN_14006fa10(param_2,pcVar4,uVar8);
+    uVar5 = 0;
+    iVar9 = (int)lVar10;
+    if (bVar2) {
+      story_history_figure(0x1424f9cb8,param_2,*(undefined4 *)(param_3 + 0x20),param_3,0,0);
+      if (iVar9 < 3) {
+        if (iVar9 == 2) {
+          FUN_14006fa10(param_2," and ",5);
+          iVar9 = **(int **)(param_1 + 0x28);
+          if (iVar9 == *(int *)(param_3 + 0x20)) {
+            story_history_figure(0x1424f9cb8,param_2,(*(int **)(param_1 + 0x28))[1],param_3,0,0);
+          }
+          else {
+            story_history_figure(0x1424f9cb8,param_2,iVar9,param_3,0,0);
+          }
+        }
+      }
+      else {
+        FUN_14006fa10(param_2," and others",0xb);
+      }
+    }
+    else if (0 < iVar9) {
+      uVar7 = uVar5;
+      do {
+        story_history_figure
+                  (0x1424f9cb8,param_2,*(undefined4 *)(*(longlong *)(param_1 + 0x28) + uVar5 * 4),
+                   param_3,0,0);
+        iVar6 = (int)uVar7;
+        if (iVar6 < iVar9 + -2) {
+          uVar8 = 2;
+          pcVar4 = ", ";
+LAB_140b6c3c7:
+          FUN_14006fa10(param_2,pcVar4,uVar8);
+        }
+        else if (iVar6 == iVar9 + -2) {
+          uVar8 = 5;
+          pcVar4 = " and ";
+          goto LAB_140b6c3c7;
+        }
+        uVar7 = (ulonglong)(iVar6 + 1);
+        uVar5 = uVar5 + 1;
+      } while ((longlong)uVar5 < (longlong)iVar9);
+    }
+    FUN_14006fa10(param_2," to ",4);
+    if (*(int *)(param_1 + 0x40) == -1) {
+      if ((*(int *)(param_1 + 0x44) == -1) && (*(int *)(param_1 + 0x48) == -1)) {
+        FUN_14006fa10(param_2,"unknown lands",0xd);
+      }
+      else if (*(int *)(param_1 + 0x48) == -1) {
+        story_history_region();
+      }
+      else {
+        story_history_underground();
+      }
+    }
+    else {
+      story_history_site();
+    }
+    FUN_14006fa10(param_2," in ",4);
+    story_history_date();
+  }
+  return;
+}
+

@@ -75,11 +75,12 @@ static NativeModDetails native_mod_details(bool background_owner) {
     auto *gps = native_graphics();
     if (!gps || !gps->screen || gps->dimx <= 0 || gps->dimx > 1000 ||
             gps->dimy <= 2 || gps->dimy > 1000) return details;
-    const uint64_t epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
     std::vector<uintptr_t> title_addresses;
+    uint64_t epoch = 0;
     {
         std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
-        if (g_native_drawn_text_epoch != epoch) return details;
+        epoch = g_native_drawn_text_epoch;
+        if (!epoch) return details;
         const auto capture = [&](const auto &draws) {
             for (const auto &draw : draws) {
                 if (draw.y != 2 || !draw.address || draw.source.empty() ||

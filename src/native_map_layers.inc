@@ -8,6 +8,22 @@ static uint64_t g_native_map_frame_serial = 0;
 static bool g_native_map_classic = false;
 static void native_map_begin_frame();
 
+// Save only completed native map ownership. The private glyph header is
+// prepared before the producer runs and may precede its final map bindings.
+struct NativeMapDisplaySource {
+    uint64_t serial = 0;
+    int dimx = 0, dimy = 0;
+    int screen_pixel_x = 0, screen_pixel_y = 0;
+    int tile_pixel_x = 0, tile_pixel_y = 0;
+    int viewport_zoom_factor = 0;
+    const void *main_viewport = nullptr, *main_map_port = nullptr;
+    std::array<const void *, 8> lower_viewport{};
+};
+static NativeMapDisplaySource g_native_map_display_source;
+#ifdef _WIN32
+static void bind_native_map_display_frame(const graphicst *graphics) noexcept;
+#endif
+
 static bool native_map_background_view(const graphicst *graphics) noexcept {
     return graphics && g_native_map_layer.ready &&
         !g_native_map_write_graphics &&

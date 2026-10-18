@@ -26,8 +26,8 @@ void Overlay::append_work_order_shop_fields(std::vector<std::string> &rows,
         return source == ' ' || draw.foreground_rgb < 0 ||
             ((cell[1] << 16) | (cell[2] << 8) | cell[3]) == draw.foreground_rgb;
     };
-    const auto draws = captured_native_drawn_text_rows();
-    const auto top_draws = captured_native_drawn_text_rows(true);
+    const auto draws = captured_native_drawn_text_view();
+    const auto top_draws = captured_native_drawn_text_view(true);
     std::vector<NativeDrawnTextRow> overwritten;
     const auto has_warning = [](const auto &captured) {
         return std::any_of(captured.begin(), captured.end(), [](const auto &draw) {

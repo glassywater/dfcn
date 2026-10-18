@@ -345,6 +345,7 @@ static std::optional<std::string> translate_dfhack_console_item_report(
 // Only the render side reads game RAWs. Console workers continue to borrow
 // owned immutable strings, including after a world is unloaded.
 static void refresh_dfhack_raw_creature_labels() {
+    refresh_native_generated_creature_names();
     const auto current = g_dfhack_output_snapshot.load(std::memory_order_acquire);
     if (!current) return;
     try {

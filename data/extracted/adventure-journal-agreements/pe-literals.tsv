@@ -171,6 +171,17 @@ steam	journal-agreement-title-and-orders	0xe0185	0x1415ee390	cstring	Order: Kill
 steam	journal-agreement-title-and-orders	0xe03ba	0x1415ee358	cstring	Order: Cause trouble for 
 steam	journal-agreement-title-and-orders	0xe0ccc	0x1415ee340	cstring	Order: Drive off 
 steam	journal-agreement-title-and-orders	0xe0cf4	0x1415ed97c	cstring	 from 
+steam	journal-agreement-entity-name	0xb9296a	0x14165e438	cstring	[LPAGE:ENT:
+steam	journal-agreement-entity-name	0xb9298a	0x1415fd690	cstring	]
+steam	journal-agreement-entity-name	0xb929f4	0x1415fda88	cstring	[/LPAGE]
+steam	journal-agreement-entity-name	0xb92a4c	0x1416df940	cstring	an unknown civilization
+steam	journal-agreement-artifact-name	0xb944bf	0x1415fdaa8	cstring	[LPAGE:ARTIFACT:
+steam	journal-agreement-artifact-name	0xb944ce	0x1416df718	cstring	[LPAGE:BOOK:
+steam	journal-agreement-artifact-name	0xb944f3	0x1415fd690	cstring	]
+steam	journal-agreement-artifact-name	0xb945b0	0x64656c7469746e55	inline	Untitled
+steam	journal-agreement-artifact-name	0xb9460b	0x64656c7469746e55	inline	Untitled
+steam	journal-agreement-artifact-name	0xb94686	0x1415fda88	cstring	[/LPAGE]
+steam	journal-agreement-artifact-name	0xb946de	0x1416df700	cstring	an unknown artifact
 steam	journal-agreement-calendar-month	0x7733b8	0x1416a4968	cstring	Granite
 steam	journal-agreement-calendar-month	0x7733cd	0x1416a4970	cstring	Slate
 steam	journal-agreement-calendar-month	0x7733e2	0x1416a4978	cstring	Felsite
@@ -355,6 +366,17 @@ classic	journal-agreement-title-and-orders	0xe0115	0x1415e92e8	cstring	Order: Ki
 classic	journal-agreement-title-and-orders	0xe034a	0x1415e9338	cstring	Order: Cause trouble for 
 classic	journal-agreement-title-and-orders	0xe0c5c	0x1415e9320	cstring	Order: Drive off 
 classic	journal-agreement-title-and-orders	0xe0c84	0x1415e8984	cstring	 from 
+classic	journal-agreement-entity-name	0xb8f9aa	0x1416592f8	cstring	[LPAGE:ENT:
+classic	journal-agreement-entity-name	0xb8f9ca	0x1415f8664	cstring	]
+classic	journal-agreement-entity-name	0xb8fa34	0x1415f8b50	cstring	[/LPAGE]
+classic	journal-agreement-entity-name	0xb8fa8c	0x1416da720	cstring	an unknown civilization
+classic	journal-agreement-artifact-name	0xb914ff	0x1415f8a20	cstring	[LPAGE:ARTIFACT:
+classic	journal-agreement-artifact-name	0xb9150e	0x1416da4e8	cstring	[LPAGE:BOOK:
+classic	journal-agreement-artifact-name	0xb91533	0x1415f8664	cstring	]
+classic	journal-agreement-artifact-name	0xb915f0	0x64656c7469746e55	inline	Untitled
+classic	journal-agreement-artifact-name	0xb9164b	0x64656c7469746e55	inline	Untitled
+classic	journal-agreement-artifact-name	0xb916c6	0x1415f8b50	cstring	[/LPAGE]
+classic	journal-agreement-artifact-name	0xb9171e	0x1416da4d0	cstring	an unknown artifact
 classic	journal-agreement-calendar-month	0x770dd8	0x14169fa78	cstring	Granite
 classic	journal-agreement-calendar-month	0x770ded	0x14169fa80	cstring	Slate
 classic	journal-agreement-calendar-month	0x770e02	0x14169fa88	cstring	Felsite

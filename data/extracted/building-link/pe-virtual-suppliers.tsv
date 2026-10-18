@@ -1,0 +1,689 @@
+edition	class	vtable_rva	slot	supplier_rva	production
+reference	building_civzonest	0x1620590	0x188	0x54f2b0	building.getName; stored authored name or generated class caption
+reference	building_civzonest	0x1620590	0x120	0x67500	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_civzonest	0x1620590	0x258	0x67050	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_civzonest	0x1620590	0x260	0x67050	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_civzonest	0x1620590	0x268	0x67050	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_civzonest	0x1620590	0x270	0x28b600	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_stockpilest	0x162d2c0	0x188	0x556e50	building.getName; stored authored name or generated class caption
+reference	building_stockpilest	0x162d2c0	0x120	0x67500	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_stockpilest	0x162d2c0	0x258	0x67050	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_stockpilest	0x162d2c0	0x260	0x67050	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_stockpilest	0x162d2c0	0x268	0x67050	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_stockpilest	0x162d2c0	0x270	0x589470	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_chairst	0x161dab0	0x188	0x554800	building.getName; stored authored name or generated class caption
+reference	building_chairst	0x161dab0	0x120	0x67500	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_chairst	0x161dab0	0x258	0x28b960	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_chairst	0x161dab0	0x260	0x28b990	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_chairst	0x161dab0	0x268	0x5892e0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_chairst	0x161dab0	0x270	0x589340	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_cabinetst	0x1622308	0x188	0x5551c0	building.getName; stored authored name or generated class caption
+reference	building_cabinetst	0x1622308	0x120	0x67500	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_cabinetst	0x1622308	0x258	0x28b960	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_cabinetst	0x1622308	0x260	0x28b990	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_cabinetst	0x1622308	0x268	0x5892e0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_cabinetst	0x1622308	0x270	0x589340	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_doorst	0x161ffc0	0x188	0x550230	building.getName; stored authored name or generated class caption
+reference	building_doorst	0x161ffc0	0x120	0x67500	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_doorst	0x161ffc0	0x258	0x28b960	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_doorst	0x161ffc0	0x260	0x28b990	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_doorst	0x161ffc0	0x268	0x5892e0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_doorst	0x161ffc0	0x270	0x589340	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_display_furniturest	0x16202a8	0x188	0x54ed00	building.getName; stored authored name or generated class caption
+reference	building_display_furniturest	0x16202a8	0x120	0x67500	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_display_furniturest	0x16202a8	0x258	0x28b960	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_display_furniturest	0x16202a8	0x260	0x28b990	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_display_furniturest	0x16202a8	0x268	0x5892e0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_display_furniturest	0x16202a8	0x270	0x589340	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_boxst	0x161c648	0x188	0x555b50	building.getName; stored authored name or generated class caption
+reference	building_boxst	0x161c648	0x120	0x67500	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_boxst	0x161c648	0x258	0x28b960	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_boxst	0x161c648	0x260	0x28b990	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_boxst	0x161c648	0x268	0x5892e0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_boxst	0x161c648	0x270	0x589340	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_actualst	0x1620860	0x188	0x28b5b0	building.getName; stored authored name or generated class caption
+reference	building_actualst	0x1620860	0x120	0x67500	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_actualst	0x1620860	0x258	0x28b960	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_actualst	0x1620860	0x260	0x28b990	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_actualst	0x1620860	0x268	0x5892e0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_actualst	0x1620860	0x270	0x589340	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_bedst	0x1624f98	0x188	0x555f20	building.getName; stored authored name or generated class caption
+reference	building_bedst	0x1624f98	0x120	0x67500	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_bedst	0x1624f98	0x258	0x28b960	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_bedst	0x1624f98	0x260	0x28b990	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_bedst	0x1624f98	0x268	0x5892e0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_bedst	0x1624f98	0x270	0x589340	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_hatchst	0x1622eb0	0x188	0x550560	building.getName; stored authored name or generated class caption
+reference	building_hatchst	0x1622eb0	0x120	0x67500	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_hatchst	0x1622eb0	0x258	0x28b960	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_hatchst	0x1622eb0	0x260	0x28b990	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_hatchst	0x1622eb0	0x268	0x5892e0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_hatchst	0x1622eb0	0x270	0x589340	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_tablest	0x161f558	0x188	0x554e90	building.getName; stored authored name or generated class caption
+reference	building_tablest	0x161f558	0x120	0x67500	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_tablest	0x161f558	0x258	0x28b960	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_tablest	0x161f558	0x260	0x28b990	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_tablest	0x161f558	0x268	0x5892e0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_tablest	0x161f558	0x270	0x589340	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_weaponst	0x1648f10	0x188	0x554270	building.getName; stored authored name or generated class caption
+reference	building_weaponst	0x1648f10	0x120	0x67500	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_weaponst	0x1648f10	0x258	0x28b960	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_weaponst	0x1648f10	0x260	0x28b990	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_weaponst	0x1648f10	0x268	0x5892e0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_weaponst	0x1648f10	0x270	0x589340	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_wagonst	0x1659160	0x188	0x54eac0	building.getName; stored authored name or generated class caption
+reference	building_wagonst	0x1659160	0x120	0x67520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_wagonst	0x1659160	0x258	0x28b960	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_wagonst	0x1659160	0x260	0x28b990	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_wagonst	0x1659160	0x268	0x5892e0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_wagonst	0x1659160	0x270	0x589340	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_cagest	0x16531e0	0x188	0x551cb0	building.getName; stored authored name or generated class caption
+reference	building_cagest	0x16531e0	0x120	0x67500	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_cagest	0x16531e0	0x258	0x28b960	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_cagest	0x16531e0	0x260	0x28b990	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_cagest	0x16531e0	0x268	0x5892e0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_cagest	0x16531e0	0x270	0x589340	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_grate_wallst	0x165b358	0x188	0x550890	building.getName; stored authored name or generated class caption
+reference	building_grate_wallst	0x165b358	0x120	0x67500	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_grate_wallst	0x165b358	0x258	0x28b960	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_grate_wallst	0x165b358	0x260	0x28b990	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_grate_wallst	0x165b358	0x268	0x5892e0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_grate_wallst	0x165b358	0x270	0x589340	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_chainst	0x1654350	0x188	0x551880	building.getName; stored authored name or generated class caption
+reference	building_chainst	0x1654350	0x120	0x67500	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_chainst	0x1654350	0x258	0x28b960	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_chainst	0x1654350	0x260	0x28b990	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_chainst	0x1654350	0x268	0x5892e0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_chainst	0x1654350	0x270	0x589340	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_nest_boxst	0x1652c10	0x188	0x54ebe0	building.getName; stored authored name or generated class caption
+reference	building_nest_boxst	0x1652c10	0x120	0x67500	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_nest_boxst	0x1652c10	0x258	0x28b960	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_nest_boxst	0x1652c10	0x260	0x28b990	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_nest_boxst	0x1652c10	0x268	0x5892e0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_nest_boxst	0x1652c10	0x270	0x589340	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_axle_horizontalst	0x16579c8	0x188	0x553720	building.getName; stored authored name or generated class caption
+reference	building_axle_horizontalst	0x16579c8	0x120	0x67500	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_axle_horizontalst	0x16579c8	0x258	0x28b960	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_axle_horizontalst	0x16579c8	0x260	0x28b990	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_axle_horizontalst	0x16579c8	0x268	0x5892e0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_axle_horizontalst	0x16579c8	0x270	0x589340	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_gear_assemblyst	0x165c798	0x188	0x5530c0	building.getName; stored authored name or generated class caption
+reference	building_gear_assemblyst	0x165c798	0x120	0x67500	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_gear_assemblyst	0x165c798	0x258	0x28b960	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_gear_assemblyst	0x165c798	0x260	0x28b990	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_gear_assemblyst	0x165c798	0x268	0x5892e0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_gear_assemblyst	0x165c798	0x270	0x589340	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_weaponrackst	0x1659780	0x188	0x5554f0	building.getName; stored authored name or generated class caption
+reference	building_weaponrackst	0x1659780	0x120	0x67500	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_weaponrackst	0x1659780	0x258	0x28b960	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_weaponrackst	0x1659780	0x260	0x28b990	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_weaponrackst	0x1659780	0x268	0x5892e0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_weaponrackst	0x1659780	0x270	0x589340	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_rollersst	0x16563c0	0x188	0x5533f0	building.getName; stored authored name or generated class caption
+reference	building_rollersst	0x16563c0	0x120	0x67500	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_rollersst	0x16563c0	0x258	0x28b960	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_rollersst	0x16563c0	0x260	0x28b990	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_rollersst	0x16563c0	0x268	0x5892e0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_rollersst	0x16563c0	0x270	0x589340	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_archerytargetst	0x1653a98	0x188	0x552c40	building.getName; stored authored name or generated class caption
+reference	building_archerytargetst	0x1653a98	0x120	0x67500	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_archerytargetst	0x1653a98	0x258	0x28b960	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_archerytargetst	0x1653a98	0x260	0x28b990	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_archerytargetst	0x1653a98	0x268	0x5892e0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_archerytargetst	0x1653a98	0x270	0x589340	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_slabst	0x1659498	0x188	0x556a40	building.getName; stored authored name or generated class caption
+reference	building_slabst	0x1659498	0x120	0x67500	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_slabst	0x1659498	0x258	0x28b960	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_slabst	0x1659498	0x260	0x28b990	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_slabst	0x1659498	0x268	0x5892e0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_slabst	0x1659498	0x270	0x589340	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_road_dirtst	0x1654c08	0x188	0x555fe0	building.getName; stored authored name or generated class caption
+reference	building_road_dirtst	0x1654c08	0x120	0x67520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_road_dirtst	0x1654c08	0x258	0x28b960	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_road_dirtst	0x1654c08	0x260	0x28b990	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_road_dirtst	0x1654c08	0x268	0x5892e0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_road_dirtst	0x1654c08	0x270	0x589340	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_axle_verticalst	0x1656c78	0x188	0x553a50	building.getName; stored authored name or generated class caption
+reference	building_axle_verticalst	0x1656c78	0x120	0x67500	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_axle_verticalst	0x1656c78	0x258	0x28b960	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_axle_verticalst	0x1656c78	0x260	0x28b990	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_axle_verticalst	0x1656c78	0x268	0x5892e0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_axle_verticalst	0x1656c78	0x270	0x589340	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_shopst	0x165a7b8	0x188	0x54e9e0	building.getName; stored authored name or generated class caption
+reference	building_shopst	0x165a7b8	0x120	0x67520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_shopst	0x165a7b8	0x258	0x28b960	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_shopst	0x165a7b8	0x260	0x28b990	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_shopst	0x165a7b8	0x268	0x5892e0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_shopst	0x165a7b8	0x270	0x589340	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_trapst	0x1654068	0x188	0x54f5b0	building.getName; stored authored name or generated class caption
+reference	building_trapst	0x1654068	0x120	0x67500	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_trapst	0x1654068	0x258	0x28b960	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_trapst	0x1654068	0x260	0x28b990	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_trapst	0x1654068	0x268	0x5892e0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_trapst	0x1654068	0x270	0x589390	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_offering_placest	0x1656990	0x188	0x54ec40	building.getName; stored authored name or generated class caption
+reference	building_offering_placest	0x1656990	0x120	0x67500	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_offering_placest	0x1656990	0x258	0x28b960	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_offering_placest	0x1656990	0x260	0x28b990	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_offering_placest	0x1656990	0x268	0x5892e0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_offering_placest	0x1656990	0x270	0x589340	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_screw_pumpst	0x16537b0	0x188	0x552fa0	building.getName; stored authored name or generated class caption
+reference	building_screw_pumpst	0x16537b0	0x120	0x67500	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_screw_pumpst	0x16537b0	0x258	0x28b960	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_screw_pumpst	0x16537b0	0x260	0x28b990	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_screw_pumpst	0x16537b0	0x268	0x5892e0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_screw_pumpst	0x16537b0	0x270	0x589340	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_furnacest	0x16534c8	0x188	0x54f390	building.getName; stored authored name or generated class caption
+reference	building_furnacest	0x16534c8	0x120	0x67520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_furnacest	0x16534c8	0x258	0x28b960	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_furnacest	0x16534c8	0x260	0x28b990	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_furnacest	0x16534c8	0x268	0x5892e0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_furnacest	0x16534c8	0x270	0x589340	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_water_wheelst	0x1654ef0	0x188	0x553000	building.getName; stored authored name or generated class caption
+reference	building_water_wheelst	0x1654ef0	0x120	0x67500	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_water_wheelst	0x1654ef0	0x258	0x28b960	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_water_wheelst	0x1654ef0	0x260	0x28b990	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_water_wheelst	0x1654ef0	0x268	0x5892e0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_water_wheelst	0x1654ef0	0x270	0x589340	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_wellst	0x1657cb0	0x188	0x5566b0	building.getName; stored authored name or generated class caption
+reference	building_wellst	0x1657cb0	0x120	0x67500	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_wellst	0x1657cb0	0x258	0x28b960	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_wellst	0x1657cb0	0x260	0x28b990	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_wellst	0x1657cb0	0x268	0x5892e0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_wellst	0x1657cb0	0x270	0x589340	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_hivest	0x165d4e8	0x188	0x54ee20	building.getName; stored authored name or generated class caption
+reference	building_hivest	0x165d4e8	0x120	0x67500	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_hivest	0x165d4e8	0x258	0x28b960	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_hivest	0x165d4e8	0x260	0x28b990	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_hivest	0x165d4e8	0x268	0x5892e0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_hivest	0x165d4e8	0x270	0x589340	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_farmplotst	0x1653d80	0x188	0x54f330	building.getName; stored authored name or generated class caption
+reference	building_farmplotst	0x1653d80	0x120	0x67520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_farmplotst	0x1653d80	0x258	0x28b960	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_farmplotst	0x1653d80	0x260	0x28b990	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_farmplotst	0x1653d80	0x268	0x5892e0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_farmplotst	0x1653d80	0x270	0x589340	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_armorstandst	0x165ca80	0x188	0x555820	building.getName; stored authored name or generated class caption
+reference	building_armorstandst	0x165ca80	0x120	0x67500	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_armorstandst	0x165ca80	0x258	0x28b960	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_armorstandst	0x165ca80	0x260	0x28b990	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_armorstandst	0x165ca80	0x268	0x5892e0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_armorstandst	0x165ca80	0x270	0x589340	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_window_glassst	0x165bef8	0x188	0x556d70	building.getName; stored authored name or generated class caption
+reference	building_window_glassst	0x165bef8	0x120	0x67500	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_window_glassst	0x165bef8	0x258	0x28b960	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_window_glassst	0x165bef8	0x260	0x28b990	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_window_glassst	0x165bef8	0x268	0x5892e0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_window_glassst	0x165bef8	0x270	0x589340	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_traction_benchst	0x1654920	0x188	0x555f80	building.getName; stored authored name or generated class caption
+reference	building_traction_benchst	0x1654920	0x120	0x67500	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_traction_benchst	0x1654920	0x258	0x28b960	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_traction_benchst	0x1654920	0x260	0x28b990	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_traction_benchst	0x1654920	0x268	0x5892e0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_traction_benchst	0x1654920	0x270	0x589340	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_floodgatest	0x165ad88	0x188	0x551550	building.getName; stored authored name or generated class caption
+reference	building_floodgatest	0x165ad88	0x120	0x67500	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_floodgatest	0x165ad88	0x258	0x28b960	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_floodgatest	0x165ad88	0x260	0x28b990	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_floodgatest	0x165ad88	0x268	0x5892e0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_floodgatest	0x165ad88	0x270	0x589340	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_bookcasest	0x165b928	0x188	0x54edc0	building.getName; stored authored name or generated class caption
+reference	building_bookcasest	0x165b928	0x120	0x67500	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_bookcasest	0x165b928	0x258	0x28b960	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_bookcasest	0x165b928	0x260	0x28b990	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_bookcasest	0x165b928	0x268	0x5892e0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_bookcasest	0x165b928	0x270	0x589340	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_coffinst	0x1658280	0x188	0x554460	building.getName; stored authored name or generated class caption
+reference	building_coffinst	0x1658280	0x120	0x67500	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_coffinst	0x1658280	0x258	0x28b960	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_coffinst	0x1658280	0x260	0x28b990	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_coffinst	0x1658280	0x268	0x5892e0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_coffinst	0x1658280	0x270	0x589340	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_nestst	0x1654638	0x188	0x54eb80	building.getName; stored authored name or generated class caption
+reference	building_nestst	0x1654638	0x120	0x67500	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_nestst	0x1654638	0x258	0x28b960	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_nestst	0x1654638	0x260	0x28b990	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_nestst	0x1654638	0x268	0x5892e0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_nestst	0x1654638	0x270	0x589340	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_bars_verticalst	0x165dab8	0x188	0x550ef0	building.getName; stored authored name or generated class caption
+reference	building_bars_verticalst	0x165dab8	0x120	0x67500	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_bars_verticalst	0x165dab8	0x258	0x28b960	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_bars_verticalst	0x165dab8	0x260	0x28b990	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_bars_verticalst	0x165dab8	0x268	0x5892e0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_bars_verticalst	0x165dab8	0x270	0x589340	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_tradedepotst	0x1652ef8	0x188	0x54eb20	building.getName; stored authored name or generated class caption
+reference	building_tradedepotst	0x1652ef8	0x120	0x67520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_tradedepotst	0x1652ef8	0x258	0x28b960	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_tradedepotst	0x1652ef8	0x260	0x28b990	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_tradedepotst	0x1652ef8	0x268	0x5892e0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_tradedepotst	0x1652ef8	0x270	0x589340	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_grate_floorst	0x16586a8	0x188	0x550bc0	building.getName; stored authored name or generated class caption
+reference	building_grate_floorst	0x16586a8	0x120	0x67500	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_grate_floorst	0x16586a8	0x258	0x28b960	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_grate_floorst	0x16586a8	0x260	0x28b990	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_grate_floorst	0x16586a8	0x268	0x5892e0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_grate_floorst	0x16586a8	0x270	0x589340	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_siegeenginest	0x165d7d0	0x188	0x54f980	building.getName; stored authored name or generated class caption
+reference	building_siegeenginest	0x165d7d0	0x120	0x67520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_siegeenginest	0x165d7d0	0x258	0x28b960	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_siegeenginest	0x165d7d0	0x260	0x28b990	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_siegeenginest	0x165d7d0	0x268	0x5892e0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_siegeenginest	0x165d7d0	0x270	0x589340	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_road_pavedst	0x16551d8	0x188	0x555fe0	building.getName; stored authored name or generated class caption
+reference	building_road_pavedst	0x16551d8	0x120	0x67520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_road_pavedst	0x16551d8	0x258	0x28b960	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_road_pavedst	0x16551d8	0x260	0x28b990	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_road_pavedst	0x16551d8	0x268	0x5892e0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_road_pavedst	0x16551d8	0x270	0x589340	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_workshopst	0x165b070	0x188	0x54fa20	building.getName; stored authored name or generated class caption
+reference	building_workshopst	0x165b070	0x120	0x5b1810	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_workshopst	0x165b070	0x258	0x28b960	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_workshopst	0x165b070	0x260	0x28b990	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_workshopst	0x165b070	0x268	0x5892e0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_workshopst	0x165b070	0x270	0x589340	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_bridgest	0x165bc10	0x188	0x556360	building.getName; stored authored name or generated class caption
+reference	building_bridgest	0x165bc10	0x120	0x67520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_bridgest	0x165bc10	0x258	0x28b960	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_bridgest	0x165bc10	0x260	0x28b990	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_bridgest	0x165bc10	0x268	0x5892e0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_bridgest	0x165bc10	0x270	0x589340	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_constructionst	0x16566a8	0x188	0x54ee80	building.getName; stored authored name or generated class caption
+reference	building_constructionst	0x16566a8	0x120	0x67500	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_constructionst	0x16566a8	0x258	0x28b960	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_constructionst	0x16566a8	0x260	0x28b990	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_constructionst	0x16566a8	0x268	0x5892e0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_constructionst	0x16566a8	0x270	0x589340	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_supportst	0x165b640	0x188	0x553d80	building.getName; stored authored name or generated class caption
+reference	building_supportst	0x165b640	0x120	0x67500	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_supportst	0x165b640	0x258	0x28b960	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_supportst	0x165b640	0x260	0x28b990	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_supportst	0x165b640	0x268	0x5892e0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_supportst	0x165b640	0x270	0x589340	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_window_gemst	0x16576e0	0x188	0x556d70	building.getName; stored authored name or generated class caption
+reference	building_window_gemst	0x16576e0	0x120	0x67500	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_window_gemst	0x16576e0	0x258	0x28b960	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_window_gemst	0x16576e0	0x260	0x28b990	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_window_gemst	0x16576e0	0x268	0x5892e0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_window_gemst	0x16576e0	0x270	0x589340	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_animaltrapst	0x165aaa0	0x188	0x554b60	building.getName; stored authored name or generated class caption
+reference	building_animaltrapst	0x165aaa0	0x120	0x67500	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_animaltrapst	0x165aaa0	0x258	0x28b960	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_animaltrapst	0x165aaa0	0x260	0x28b990	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_animaltrapst	0x165aaa0	0x268	0x5892e0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_animaltrapst	0x165aaa0	0x270	0x589340	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_bars_floorst	0x165a4d0	0x188	0x551220	building.getName; stored authored name or generated class caption
+reference	building_bars_floorst	0x165a4d0	0x120	0x67500	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_bars_floorst	0x165a4d0	0x258	0x28b960	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_bars_floorst	0x165a4d0	0x260	0x28b990	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_bars_floorst	0x165a4d0	0x268	0x5892e0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_bars_floorst	0x165a4d0	0x270	0x589340	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_statuest	0x165c1e0	0x188	0x556710	building.getName; stored authored name or generated class caption
+reference	building_statuest	0x165c1e0	0x120	0x67500	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_statuest	0x165c1e0	0x258	0x28b960	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_statuest	0x165c1e0	0x260	0x28b990	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_statuest	0x165c1e0	0x268	0x5892e0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_statuest	0x165c1e0	0x270	0x589340	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_windmillst	0x165a1e8	0x188	0x553060	building.getName; stored authored name or generated class caption
+reference	building_windmillst	0x165a1e8	0x120	0x67500	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_windmillst	0x165a1e8	0x258	0x28b960	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_windmillst	0x165a1e8	0x260	0x28b990	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_windmillst	0x165a1e8	0x268	0x5892e0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_windmillst	0x165a1e8	0x270	0x589340	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_instrumentst	0x1657f98	0x188	0x554100	building.getName; stored authored name or generated class caption
+reference	building_instrumentst	0x1657f98	0x120	0x67500	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_instrumentst	0x1657f98	0x258	0x28b960	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_instrumentst	0x1657f98	0x260	0x28b990	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_instrumentst	0x1657f98	0x268	0x5892e0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	building_instrumentst	0x1657f98	0x270	0x589340	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+reference	item_trappartsst	0x16f28c0	0x0	0x7d7d0	mechanism item description virtual supplier
+reference	item_trappartsst	0x16f28c0	0x1d8	0xfc240	mechanism item description virtual supplier
+reference	item_trappartsst	0x16f28c0	0x508	0xfcc20	mechanism item description virtual supplier
+reference	item_trappartsst	0x16f28c0	0x518	0xfccb0	mechanism item description virtual supplier
+reference	item_trappartsst	0x16f28c0	0x5d8	0xfcd80	mechanism item description virtual supplier
+reference	item_trappartsst	0x16f28c0	0x5e0	0xfc1c0	mechanism item description virtual supplier
+reference	item_trappartsst	0x16f28c0	0x5e8	0xca5bb0	mechanism item description virtual supplier
+reference	item_trappartsst	0x16f28c0	0x5f0	0xc653e0	mechanism item description virtual supplier
+classic	building_civzonest	0x161b448	0x188	0x54ccd0	building.getName; stored authored name or generated class caption
+classic	building_civzonest	0x161b448	0x120	0x67490	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_civzonest	0x161b448	0x258	0x66fe0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_civzonest	0x161b448	0x260	0x66fe0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_civzonest	0x161b448	0x268	0x66fe0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_civzonest	0x161b448	0x270	0x2891c0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_stockpilest	0x1624bf0	0x188	0x554870	building.getName; stored authored name or generated class caption
+classic	building_stockpilest	0x1624bf0	0x120	0x67490	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_stockpilest	0x1624bf0	0x258	0x66fe0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_stockpilest	0x1624bf0	0x260	0x66fe0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_stockpilest	0x1624bf0	0x268	0x66fe0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_stockpilest	0x1624bf0	0x270	0x586e90	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_chairst	0x1618968	0x188	0x552220	building.getName; stored authored name or generated class caption
+classic	building_chairst	0x1618968	0x120	0x67490	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_chairst	0x1618968	0x258	0x289520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_chairst	0x1618968	0x260	0x289550	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_chairst	0x1618968	0x268	0x586d00	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_chairst	0x1618968	0x270	0x586d60	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_cabinetst	0x161d1c0	0x188	0x552be0	building.getName; stored authored name or generated class caption
+classic	building_cabinetst	0x161d1c0	0x120	0x67490	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_cabinetst	0x161d1c0	0x258	0x289520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_cabinetst	0x161d1c0	0x260	0x289550	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_cabinetst	0x161d1c0	0x268	0x586d00	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_cabinetst	0x161d1c0	0x270	0x586d60	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_doorst	0x161ae78	0x188	0x54dc50	building.getName; stored authored name or generated class caption
+classic	building_doorst	0x161ae78	0x120	0x67490	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_doorst	0x161ae78	0x258	0x289520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_doorst	0x161ae78	0x260	0x289550	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_doorst	0x161ae78	0x268	0x586d00	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_doorst	0x161ae78	0x270	0x586d60	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_display_furniturest	0x161b160	0x188	0x54c720	building.getName; stored authored name or generated class caption
+classic	building_display_furniturest	0x161b160	0x120	0x67490	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_display_furniturest	0x161b160	0x258	0x289520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_display_furniturest	0x161b160	0x260	0x289550	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_display_furniturest	0x161b160	0x268	0x586d00	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_display_furniturest	0x161b160	0x270	0x586d60	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_boxst	0x1617500	0x188	0x553570	building.getName; stored authored name or generated class caption
+classic	building_boxst	0x1617500	0x120	0x67490	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_boxst	0x1617500	0x258	0x289520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_boxst	0x1617500	0x260	0x289550	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_boxst	0x1617500	0x268	0x586d00	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_boxst	0x1617500	0x270	0x586d60	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_actualst	0x161b718	0x188	0x289170	building.getName; stored authored name or generated class caption
+classic	building_actualst	0x161b718	0x120	0x67490	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_actualst	0x161b718	0x258	0x289520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_actualst	0x161b718	0x260	0x289550	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_actualst	0x161b718	0x268	0x586d00	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_actualst	0x161b718	0x270	0x586d60	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_bedst	0x161fe50	0x188	0x553940	building.getName; stored authored name or generated class caption
+classic	building_bedst	0x161fe50	0x120	0x67490	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_bedst	0x161fe50	0x258	0x289520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_bedst	0x161fe50	0x260	0x289550	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_bedst	0x161fe50	0x268	0x586d00	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_bedst	0x161fe50	0x270	0x586d60	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_hatchst	0x161dd68	0x188	0x54df80	building.getName; stored authored name or generated class caption
+classic	building_hatchst	0x161dd68	0x120	0x67490	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_hatchst	0x161dd68	0x258	0x289520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_hatchst	0x161dd68	0x260	0x289550	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_hatchst	0x161dd68	0x268	0x586d00	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_hatchst	0x161dd68	0x270	0x586d60	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_tablest	0x161a410	0x188	0x5528b0	building.getName; stored authored name or generated class caption
+classic	building_tablest	0x161a410	0x120	0x67490	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_tablest	0x161a410	0x258	0x289520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_tablest	0x161a410	0x260	0x289550	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_tablest	0x161a410	0x268	0x586d00	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_tablest	0x161a410	0x270	0x586d60	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_weaponst	0x1643e28	0x188	0x551c90	building.getName; stored authored name or generated class caption
+classic	building_weaponst	0x1643e28	0x120	0x67490	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_weaponst	0x1643e28	0x258	0x289520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_weaponst	0x1643e28	0x260	0x289550	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_weaponst	0x1643e28	0x268	0x586d00	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_weaponst	0x1643e28	0x270	0x586d60	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_wagonst	0x1654080	0x188	0x54c4e0	building.getName; stored authored name or generated class caption
+classic	building_wagonst	0x1654080	0x120	0x674b0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_wagonst	0x1654080	0x258	0x289520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_wagonst	0x1654080	0x260	0x289550	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_wagonst	0x1654080	0x268	0x586d00	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_wagonst	0x1654080	0x270	0x586d60	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_cagest	0x164e100	0x188	0x54f6d0	building.getName; stored authored name or generated class caption
+classic	building_cagest	0x164e100	0x120	0x67490	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_cagest	0x164e100	0x258	0x289520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_cagest	0x164e100	0x260	0x289550	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_cagest	0x164e100	0x268	0x586d00	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_cagest	0x164e100	0x270	0x586d60	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_chainst	0x164eca0	0x188	0x54f2a0	building.getName; stored authored name or generated class caption
+classic	building_chainst	0x164eca0	0x120	0x67490	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_chainst	0x164eca0	0x258	0x289520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_chainst	0x164eca0	0x260	0x289550	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_chainst	0x164eca0	0x268	0x586d00	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_chainst	0x164eca0	0x270	0x586d60	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_grate_wallst	0x1656560	0x188	0x54e2b0	building.getName; stored authored name or generated class caption
+classic	building_grate_wallst	0x1656560	0x120	0x67490	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_grate_wallst	0x1656560	0x258	0x289520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_grate_wallst	0x1656560	0x260	0x289550	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_grate_wallst	0x1656560	0x268	0x586d00	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_grate_wallst	0x1656560	0x270	0x586d60	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_nest_boxst	0x164db30	0x188	0x54c600	building.getName; stored authored name or generated class caption
+classic	building_nest_boxst	0x164db30	0x120	0x67490	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_nest_boxst	0x164db30	0x258	0x289520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_nest_boxst	0x164db30	0x260	0x289550	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_nest_boxst	0x164db30	0x268	0x586d00	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_nest_boxst	0x164db30	0x270	0x586d60	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_axle_horizontalst	0x16528e8	0x188	0x551140	building.getName; stored authored name or generated class caption
+classic	building_axle_horizontalst	0x16528e8	0x120	0x67490	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_axle_horizontalst	0x16528e8	0x258	0x289520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_axle_horizontalst	0x16528e8	0x260	0x289550	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_axle_horizontalst	0x16528e8	0x268	0x586d00	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_axle_horizontalst	0x16528e8	0x270	0x586d60	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_gear_assemblyst	0x16579a0	0x188	0x550ae0	building.getName; stored authored name or generated class caption
+classic	building_gear_assemblyst	0x16579a0	0x120	0x67490	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_gear_assemblyst	0x16579a0	0x258	0x289520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_gear_assemblyst	0x16579a0	0x260	0x289550	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_gear_assemblyst	0x16579a0	0x268	0x586d00	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_gear_assemblyst	0x16579a0	0x270	0x586d60	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_weaponrackst	0x16546a0	0x188	0x552f10	building.getName; stored authored name or generated class caption
+classic	building_weaponrackst	0x16546a0	0x120	0x67490	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_weaponrackst	0x16546a0	0x258	0x289520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_weaponrackst	0x16546a0	0x260	0x289550	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_weaponrackst	0x16546a0	0x268	0x586d00	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_weaponrackst	0x16546a0	0x270	0x586d60	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_rollersst	0x16512e0	0x188	0x550e10	building.getName; stored authored name or generated class caption
+classic	building_rollersst	0x16512e0	0x120	0x67490	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_rollersst	0x16512e0	0x258	0x289520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_rollersst	0x16512e0	0x260	0x289550	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_rollersst	0x16512e0	0x268	0x586d00	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_rollersst	0x16512e0	0x270	0x586d60	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_archerytargetst	0x164e6d0	0x188	0x550660	building.getName; stored authored name or generated class caption
+classic	building_archerytargetst	0x164e6d0	0x120	0x67490	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_archerytargetst	0x164e6d0	0x258	0x289520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_archerytargetst	0x164e6d0	0x260	0x289550	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_archerytargetst	0x164e6d0	0x268	0x586d00	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_archerytargetst	0x164e6d0	0x270	0x586d60	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_slabst	0x1654368	0x188	0x554460	building.getName; stored authored name or generated class caption
+classic	building_slabst	0x1654368	0x120	0x67490	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_slabst	0x1654368	0x258	0x289520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_slabst	0x1654368	0x260	0x289550	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_slabst	0x1654368	0x268	0x586d00	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_slabst	0x1654368	0x270	0x586d60	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_road_dirtst	0x164fb28	0x188	0x553a00	building.getName; stored authored name or generated class caption
+classic	building_road_dirtst	0x164fb28	0x120	0x674b0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_road_dirtst	0x164fb28	0x258	0x289520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_road_dirtst	0x164fb28	0x260	0x289550	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_road_dirtst	0x164fb28	0x268	0x586d00	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_road_dirtst	0x164fb28	0x270	0x586d60	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_axle_verticalst	0x1651b98	0x188	0x551470	building.getName; stored authored name or generated class caption
+classic	building_axle_verticalst	0x1651b98	0x120	0x67490	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_axle_verticalst	0x1651b98	0x258	0x289520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_axle_verticalst	0x1651b98	0x260	0x289550	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_axle_verticalst	0x1651b98	0x268	0x586d00	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_axle_verticalst	0x1651b98	0x270	0x586d60	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_shopst	0x16556d8	0x188	0x54c400	building.getName; stored authored name or generated class caption
+classic	building_shopst	0x16556d8	0x120	0x674b0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_shopst	0x16556d8	0x258	0x289520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_shopst	0x16556d8	0x260	0x289550	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_shopst	0x16556d8	0x268	0x586d00	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_shopst	0x16556d8	0x270	0x586d60	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_trapst	0x164ef88	0x188	0x54cfd0	building.getName; stored authored name or generated class caption
+classic	building_trapst	0x164ef88	0x120	0x67490	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_trapst	0x164ef88	0x258	0x289520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_trapst	0x164ef88	0x260	0x289550	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_trapst	0x164ef88	0x268	0x586d00	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_trapst	0x164ef88	0x270	0x586db0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_offering_placest	0x16518b0	0x188	0x54c660	building.getName; stored authored name or generated class caption
+classic	building_offering_placest	0x16518b0	0x120	0x67490	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_offering_placest	0x16518b0	0x258	0x289520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_offering_placest	0x16518b0	0x260	0x289550	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_offering_placest	0x16518b0	0x268	0x586d00	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_offering_placest	0x16518b0	0x270	0x586d60	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_screw_pumpst	0x164e9b8	0x188	0x5509c0	building.getName; stored authored name or generated class caption
+classic	building_screw_pumpst	0x164e9b8	0x120	0x67490	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_screw_pumpst	0x164e9b8	0x258	0x289520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_screw_pumpst	0x164e9b8	0x260	0x289550	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_screw_pumpst	0x164e9b8	0x268	0x586d00	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_screw_pumpst	0x164e9b8	0x270	0x586d60	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_furnacest	0x164e3e8	0x188	0x54cdb0	building.getName; stored authored name or generated class caption
+classic	building_furnacest	0x164e3e8	0x120	0x674b0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_furnacest	0x164e3e8	0x258	0x289520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_furnacest	0x164e3e8	0x260	0x289550	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_furnacest	0x164e3e8	0x268	0x586d00	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_furnacest	0x164e3e8	0x270	0x586d60	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_water_wheelst	0x164fe10	0x188	0x550a20	building.getName; stored authored name or generated class caption
+classic	building_water_wheelst	0x164fe10	0x120	0x67490	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_water_wheelst	0x164fe10	0x258	0x289520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_water_wheelst	0x164fe10	0x260	0x289550	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_water_wheelst	0x164fe10	0x268	0x586d00	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_water_wheelst	0x164fe10	0x270	0x586d60	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_wellst	0x1652bd0	0x188	0x5540d0	building.getName; stored authored name or generated class caption
+classic	building_wellst	0x1652bd0	0x120	0x67490	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_wellst	0x1652bd0	0x258	0x289520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_wellst	0x1652bd0	0x260	0x289550	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_wellst	0x1652bd0	0x268	0x586d00	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_wellst	0x1652bd0	0x270	0x586d60	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_hivest	0x1658408	0x188	0x54c840	building.getName; stored authored name or generated class caption
+classic	building_hivest	0x1658408	0x120	0x67490	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_hivest	0x1658408	0x258	0x289520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_hivest	0x1658408	0x260	0x289550	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_hivest	0x1658408	0x268	0x586d00	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_hivest	0x1658408	0x270	0x586d60	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_farmplotst	0x164f270	0x188	0x54cd50	building.getName; stored authored name or generated class caption
+classic	building_farmplotst	0x164f270	0x120	0x674b0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_farmplotst	0x164f270	0x258	0x289520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_farmplotst	0x164f270	0x260	0x289550	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_farmplotst	0x164f270	0x268	0x586d00	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_farmplotst	0x164f270	0x270	0x586d60	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_armorstandst	0x16576b8	0x188	0x553240	building.getName; stored authored name or generated class caption
+classic	building_armorstandst	0x16576b8	0x120	0x67490	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_armorstandst	0x16576b8	0x258	0x289520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_armorstandst	0x16576b8	0x260	0x289550	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_armorstandst	0x16576b8	0x268	0x586d00	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_armorstandst	0x16576b8	0x270	0x586d60	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_window_glassst	0x1656e18	0x188	0x554790	building.getName; stored authored name or generated class caption
+classic	building_window_glassst	0x1656e18	0x120	0x67490	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_window_glassst	0x1656e18	0x258	0x289520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_window_glassst	0x1656e18	0x260	0x289550	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_window_glassst	0x1656e18	0x268	0x586d00	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_window_glassst	0x1656e18	0x270	0x586d60	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_traction_benchst	0x164f840	0x188	0x5539a0	building.getName; stored authored name or generated class caption
+classic	building_traction_benchst	0x164f840	0x120	0x67490	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_traction_benchst	0x164f840	0x258	0x289520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_traction_benchst	0x164f840	0x260	0x289550	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_traction_benchst	0x164f840	0x268	0x586d00	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_traction_benchst	0x164f840	0x270	0x586d60	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_floodgatest	0x1655ca8	0x188	0x54ef70	building.getName; stored authored name or generated class caption
+classic	building_floodgatest	0x1655ca8	0x120	0x67490	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_floodgatest	0x1655ca8	0x258	0x289520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_floodgatest	0x1655ca8	0x260	0x289550	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_floodgatest	0x1655ca8	0x268	0x586d00	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_floodgatest	0x1655ca8	0x270	0x586d60	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_bookcasest	0x1656848	0x188	0x54c7e0	building.getName; stored authored name or generated class caption
+classic	building_bookcasest	0x1656848	0x120	0x67490	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_bookcasest	0x1656848	0x258	0x289520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_bookcasest	0x1656848	0x260	0x289550	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_bookcasest	0x1656848	0x268	0x586d00	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_bookcasest	0x1656848	0x270	0x586d60	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_coffinst	0x16531a0	0x188	0x551e80	building.getName; stored authored name or generated class caption
+classic	building_coffinst	0x16531a0	0x120	0x67490	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_coffinst	0x16531a0	0x258	0x289520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_coffinst	0x16531a0	0x260	0x289550	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_coffinst	0x16531a0	0x268	0x586d00	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_coffinst	0x16531a0	0x270	0x586d60	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_nestst	0x164f558	0x188	0x54c5a0	building.getName; stored authored name or generated class caption
+classic	building_nestst	0x164f558	0x120	0x67490	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_nestst	0x164f558	0x258	0x289520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_nestst	0x164f558	0x260	0x289550	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_nestst	0x164f558	0x268	0x586d00	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_nestst	0x164f558	0x270	0x586d60	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_bars_verticalst	0x16589d8	0x188	0x54e910	building.getName; stored authored name or generated class caption
+classic	building_bars_verticalst	0x16589d8	0x120	0x67490	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_bars_verticalst	0x16589d8	0x258	0x289520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_bars_verticalst	0x16589d8	0x260	0x289550	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_bars_verticalst	0x16589d8	0x268	0x586d00	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_bars_verticalst	0x16589d8	0x270	0x586d60	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_tradedepotst	0x164de18	0x188	0x54c540	building.getName; stored authored name or generated class caption
+classic	building_tradedepotst	0x164de18	0x120	0x674b0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_tradedepotst	0x164de18	0x258	0x289520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_tradedepotst	0x164de18	0x260	0x289550	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_tradedepotst	0x164de18	0x268	0x586d00	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_tradedepotst	0x164de18	0x270	0x586d60	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_grate_floorst	0x16535c8	0x188	0x54e5e0	building.getName; stored authored name or generated class caption
+classic	building_grate_floorst	0x16535c8	0x120	0x67490	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_grate_floorst	0x16535c8	0x258	0x289520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_grate_floorst	0x16535c8	0x260	0x289550	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_grate_floorst	0x16535c8	0x268	0x586d00	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_grate_floorst	0x16535c8	0x270	0x586d60	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_siegeenginest	0x16586f0	0x188	0x54d3a0	building.getName; stored authored name or generated class caption
+classic	building_siegeenginest	0x16586f0	0x120	0x674b0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_siegeenginest	0x16586f0	0x258	0x289520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_siegeenginest	0x16586f0	0x260	0x289550	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_siegeenginest	0x16586f0	0x268	0x586d00	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_siegeenginest	0x16586f0	0x270	0x586d60	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_road_pavedst	0x16500f8	0x188	0x553a00	building.getName; stored authored name or generated class caption
+classic	building_road_pavedst	0x16500f8	0x120	0x674b0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_road_pavedst	0x16500f8	0x258	0x289520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_road_pavedst	0x16500f8	0x260	0x289550	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_road_pavedst	0x16500f8	0x268	0x586d00	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_road_pavedst	0x16500f8	0x270	0x586d60	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_bridgest	0x1656b30	0x188	0x553d80	building.getName; stored authored name or generated class caption
+classic	building_bridgest	0x1656b30	0x120	0x674b0	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_bridgest	0x1656b30	0x258	0x289520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_bridgest	0x1656b30	0x260	0x289550	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_bridgest	0x1656b30	0x268	0x586d00	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_bridgest	0x1656b30	0x270	0x586d60	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_workshopst	0x1655f90	0x188	0x54d440	building.getName; stored authored name or generated class caption
+classic	building_workshopst	0x1655f90	0x120	0x5af230	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_workshopst	0x1655f90	0x258	0x289520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_workshopst	0x1655f90	0x260	0x289550	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_workshopst	0x1655f90	0x268	0x586d00	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_workshopst	0x1655f90	0x270	0x586d60	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_constructionst	0x16515c8	0x188	0x54c8a0	building.getName; stored authored name or generated class caption
+classic	building_constructionst	0x16515c8	0x120	0x67490	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_constructionst	0x16515c8	0x258	0x289520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_constructionst	0x16515c8	0x260	0x289550	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_constructionst	0x16515c8	0x268	0x586d00	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_constructionst	0x16515c8	0x270	0x586d60	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_supportst	0x1656278	0x188	0x5517a0	building.getName; stored authored name or generated class caption
+classic	building_supportst	0x1656278	0x120	0x67490	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_supportst	0x1656278	0x258	0x289520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_supportst	0x1656278	0x260	0x289550	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_supportst	0x1656278	0x268	0x586d00	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_supportst	0x1656278	0x270	0x586d60	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_window_gemst	0x1652600	0x188	0x554790	building.getName; stored authored name or generated class caption
+classic	building_window_gemst	0x1652600	0x120	0x67490	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_window_gemst	0x1652600	0x258	0x289520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_window_gemst	0x1652600	0x260	0x289550	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_window_gemst	0x1652600	0x268	0x586d00	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_window_gemst	0x1652600	0x270	0x586d60	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_animaltrapst	0x16559c0	0x188	0x552580	building.getName; stored authored name or generated class caption
+classic	building_animaltrapst	0x16559c0	0x120	0x67490	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_animaltrapst	0x16559c0	0x258	0x289520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_animaltrapst	0x16559c0	0x260	0x289550	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_animaltrapst	0x16559c0	0x268	0x586d00	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_animaltrapst	0x16559c0	0x270	0x586d60	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_bars_floorst	0x16553f0	0x188	0x54ec40	building.getName; stored authored name or generated class caption
+classic	building_bars_floorst	0x16553f0	0x120	0x67490	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_bars_floorst	0x16553f0	0x258	0x289520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_bars_floorst	0x16553f0	0x260	0x289550	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_bars_floorst	0x16553f0	0x268	0x586d00	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_bars_floorst	0x16553f0	0x270	0x586d60	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_statuest	0x1657100	0x188	0x554130	building.getName; stored authored name or generated class caption
+classic	building_statuest	0x1657100	0x120	0x67490	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_statuest	0x1657100	0x258	0x289520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_statuest	0x1657100	0x260	0x289550	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_statuest	0x1657100	0x268	0x586d00	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_statuest	0x1657100	0x270	0x586d60	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_windmillst	0x1655108	0x188	0x550a80	building.getName; stored authored name or generated class caption
+classic	building_windmillst	0x1655108	0x120	0x67490	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_windmillst	0x1655108	0x258	0x289520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_windmillst	0x1655108	0x260	0x289550	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_windmillst	0x1655108	0x268	0x586d00	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_windmillst	0x1655108	0x270	0x586d60	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_instrumentst	0x1652eb8	0x188	0x551b20	building.getName; stored authored name or generated class caption
+classic	building_instrumentst	0x1652eb8	0x120	0x67490	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_instrumentst	0x1652eb8	0x258	0x289520	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_instrumentst	0x1652eb8	0x260	0x289550	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_instrumentst	0x1652eb8	0x268	0x586d00	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	building_instrumentst	0x1652eb8	0x270	0x586d60	candidate required stage, forbidden, visibility, and mouse eligibility predicates
+classic	item_trappartsst	0x16ec840	0x0	0x7d760	mechanism item description virtual supplier
+classic	item_trappartsst	0x16ec840	0x1d8	0xfc1d0	mechanism item description virtual supplier
+classic	item_trappartsst	0x16ec840	0x508	0xfcbb0	mechanism item description virtual supplier
+classic	item_trappartsst	0x16ec840	0x518	0xfcc40	mechanism item description virtual supplier
+classic	item_trappartsst	0x16ec840	0x5d8	0xfcd10	mechanism item description virtual supplier
+classic	item_trappartsst	0x16ec840	0x5e0	0xfc150	mechanism item description virtual supplier
+classic	item_trappartsst	0x16ec840	0x5e8	0xca2bf0	mechanism item description virtual supplier
+classic	item_trappartsst	0x16ec840	0x5f0	0xc62420	mechanism item description virtual supplier

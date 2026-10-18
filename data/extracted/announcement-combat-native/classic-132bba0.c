@@ -165,7 +165,7 @@ LAB_14132bde2:
   uStack_78 = 0;
   uStack_70 = 0xf;
   pppuStack_88 = (undefined8 ****)0x0;
-  FUN_14132a8f0(param_1,&pppuStack_88,1);
+  combat_source_unit_role_description_132a8f0(param_1,&pppuStack_88,1);
   ppppuVar9 = &pppuStack_88;
   if (0xf < uStack_70) {
     ppppuVar9 = (undefined8 ****)pppuStack_88;

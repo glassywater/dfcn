@@ -159,20 +159,19 @@ static bool install_native_worldgen_layer_hook() {
     const auto viewport = native_reference_address(base, 0x41f640);
     auto *clear = reinterpret_cast<unsigned char *>(
         native_reference_address(base, 0xe37d0));
-    // viewscreen_new_regionst vtable slot 3 is this renderer. Its complete
-    // initial MOV [RSP+0x10],RBX is position independent on both pinned PEs.
+    // Hook the native renderer's body, preserving DFHack's render interpose
+    // chain. Its live vtable slot can legitimately name a wrapper, as in the
+    // Legends renderer, and must not be required to still name this body.
+    // MOV [RSP+0x10],RBX is position independent on both pinned PEs.
     std::vector<unsigned char> prefix{0x48,0x89,0x5c,0x24,0x10};
     std::vector<unsigned char> viewport_prefix{0x48,0x8b,0xca,0x49,0x8b,0xd0};
     // PUSH RSI; SUB RSP,0x20 are complete position-independent instructions.
     // The same richbox ABI is already bound by native_history_profile.
     std::vector<unsigned char> clear_prefix{0x40,0x56,0x48,0x83,0xec,0x20};
-    uintptr_t method = 0;
     if (!table || !draw || !viewport || !clear || !g_native_history_box ||
             !native_reference_bytes(0xdf8a80, prefix) ||
             !native_reference_bytes(0x41f640, viewport_prefix) ||
             !native_reference_bytes(0xe37d0, clear_prefix) ||
-            !native_history_copy(table + 3 * sizeof(void *), method) ||
-            method != reinterpret_cast<uintptr_t>(draw) ||
             !g_native_worldgen_draw_hook.prepare(draw, prefix,
                 reinterpret_cast<const void *>(&native_worldgen_draw), {}, label) ||
             !g_native_worldgen_history_clear_hook.prepare(clear, clear_prefix,

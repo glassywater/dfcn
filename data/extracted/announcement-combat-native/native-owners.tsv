@@ -11,7 +11,11 @@ reference	PE:6a70a6d9:02711000	speech-wrapper	0x140684a10	0x1406858fc
 reference	PE:6a70a6d9:02711000	body-size-caption	0x140716b70	0x140717d30
 reference	PE:6a70a6d9:02711000	creature-appearance	0x140717d30	0x14071a2b4
 reference	PE:6a70a6d9:02711000	adventure-announcement-row-builder	0x1408a40e0	0x1408a44a7
+reference	PE:6a70a6d9:02711000	generic-item-type-material-caption	0x140a82c10	0x140a882fc
 reference	PE:6a70a6d9:02711000	complete-item-caption	0x140c65450	0x140c65f0a
+reference	PE:6a70a6d9:02711000	corpse-caption-article	0x140ca0d60	0x140ca0e44
+reference	PE:6a70a6d9:02711000	corpse-short-caption	0x140ca10e0	0x140ca1a9c
+reference	PE:6a70a6d9:02711000	corpse-full-caption	0x140ca1aa0	0x140ca26ad
 reference	PE:6a70a6d9:02711000	projectile-motion-announcements	0x140ea8fb0	0x140eade98
 reference	PE:6a70a6d9:02711000	collision	0x140eadea0	0x140eb3ac4
 reference	PE:6a70a6d9:02711000	profession-label-supplier	0x14132cc10	0x14132e0b4
@@ -20,6 +24,7 @@ reference	PE:6a70a6d9:02711000	combat-unit-caption	0x14132e430	0x14132f971
 reference	PE:6a70a6d9:02711000	unit-role-description	0x14132f980	0x14133025e
 reference	PE:6a70a6d9:02711000	speaker-caption	0x141330c30	0x1413312b8
 reference	PE:6a70a6d9:02711000	alternate-unit-caption	0x141331500	0x141333724
+reference	PE:6a70a6d9:02711000	body-part-name	0x1413345d0	0x141334819
 reference	PE:6a70a6d9:02711000	grip-state-announcements	0x141361370	0x141362544
 reference	PE:6a70a6d9:02711000	breath-defense	0x1413650e0	0x1413654b6
 reference	PE:6a70a6d9:02711000	breath-fire	0x1413654c0	0x141365983
@@ -34,6 +39,7 @@ reference	PE:6a70a6d9:02711000	glob-emission	0x1413c80b0	0x1413c8f57
 reference	PE:6a70a6d9:02711000	cloud-emission	0x1413c8f60	0x1413c9ac3
 reference	PE:6a70a6d9:02711000	cloud-emission	0x1413c9ad0	0x1413ca1cc
 reference	PE:6a70a6d9:02711000	cloud-emission	0x1413ca1d0	0x1413ca6ed
+reference	PE:6a70a6d9:02711000	material-state-caption	0x1414d1920	0x1414d1d79
 classic	PE:6a70b91c:0270a000	announcement-submit	0x1400e3bb0	0x1400e562d
 classic	PE:6a70b91c:0270a000	shared-damage	0x1400e5630	0x1400e9ed0
 classic	PE:6a70b91c:0270a000	adventure-announcement-popup-render	0x1400e9ed0	0x1400ea458
@@ -46,7 +52,11 @@ classic	PE:6a70b91c:0270a000	speech-wrapper	0x140682430	0x14068331c
 classic	PE:6a70b91c:0270a000	body-size-caption	0x140714590	0x140715750
 classic	PE:6a70b91c:0270a000	creature-appearance	0x140715750	0x140717cd4
 classic	PE:6a70b91c:0270a000	adventure-announcement-row-builder	0x1408a1960	0x1408a1d27
+classic	PE:6a70b91c:0270a000	generic-item-type-material-caption	0x140a7fc90	0x140a8537c
 classic	PE:6a70b91c:0270a000	complete-item-caption	0x140c62490	0x140c62f4a
+classic	PE:6a70b91c:0270a000	corpse-caption-article	0x140c9dda0	0x140c9de84
+classic	PE:6a70b91c:0270a000	corpse-short-caption	0x140c9e120	0x140c9eadc
+classic	PE:6a70b91c:0270a000	corpse-full-caption	0x140c9eae0	0x140c9f6ed
 classic	PE:6a70b91c:0270a000	projectile-motion-announcements	0x140ea3f20	0x140ea8e08
 classic	PE:6a70b91c:0270a000	collision	0x140ea8e10	0x140eaea34
 classic	PE:6a70b91c:0270a000	profession-label-supplier	0x141327b80	0x141329024
@@ -55,6 +65,7 @@ classic	PE:6a70b91c:0270a000	combat-unit-caption	0x1413293a0	0x14132a8e1
 classic	PE:6a70b91c:0270a000	unit-role-description	0x14132a8f0	0x14132b1ce
 classic	PE:6a70b91c:0270a000	speaker-caption	0x14132bba0	0x14132c228
 classic	PE:6a70b91c:0270a000	alternate-unit-caption	0x14132c470	0x14132e694
+classic	PE:6a70b91c:0270a000	body-part-name	0x14132f540	0x14132f789
 classic	PE:6a70b91c:0270a000	grip-state-announcements	0x14135c2e0	0x14135d4b4
 classic	PE:6a70b91c:0270a000	breath-defense	0x141360050	0x141360426
 classic	PE:6a70b91c:0270a000	breath-fire	0x141360430	0x1413608f3
@@ -69,3 +80,4 @@ classic	PE:6a70b91c:0270a000	glob-emission	0x1413c3020	0x1413c3ec7
 classic	PE:6a70b91c:0270a000	cloud-emission	0x1413c3ed0	0x1413c4a33
 classic	PE:6a70b91c:0270a000	cloud-emission	0x1413c4a40	0x1413c513c
 classic	PE:6a70b91c:0270a000	cloud-emission	0x1413c5140	0x1413c565d
+classic	PE:6a70b91c:0270a000	material-state-caption	0x1414cc890	0x1414ccce9

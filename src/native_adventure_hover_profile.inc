@@ -1,5 +1,5 @@
-// Native binding only: the shared callback captures the page before the
-// character editor overwrites it with an attribute or skill hover document.
+// Native binding only: identify the complete attribute/skill hover writer,
+// including its normal and truncated-document continuations.
 static bool resolve_native_adventure_hover_profile(NativeAdventureHoverProfile &profile) {
     profile = {};
 #ifdef _WIN32
@@ -27,9 +27,19 @@ static bool resolve_native_adventure_hover_profile(NativeAdventureHoverProfile &
     profile.target = native_pe_rva(count_target);
     if (!profile.site || !profile.target) return false;
     profile.count = reinterpret_cast<NativeAdventureHoverCountFn>(base + profile.target);
+    profile.condition_first = native_pe_rva(0x62b594);
+    profile.condition_next = native_pe_rva(0x62b60d);
+    profile.condition_target = native_pe_rva(0x657b0);
+    profile.destroy_site = native_pe_rva(0x62b6cf);
+    profile.destroy_target = native_pe_rva(0x67e30);
+    if (!profile.condition_first || !profile.condition_next || !profile.condition_target ||
+            !profile.destroy_site || !profile.destroy_target) return false;
+    profile.condition = reinterpret_cast<NativeAdventureHoverConditionFn>(
+        base + profile.condition_target);
+    profile.destroy = reinterpret_cast<NativeAdventureHoverDestroyFn>(
+        base + profile.destroy_target);
 #else
-    // No verified pre-overwrite call site is available for this native ABI.
-    // An empty binding leaves the shared current-layer recovery in use.
+    // No complete inline write interval has been retained for this ABI.
 #endif
     return true;
 }

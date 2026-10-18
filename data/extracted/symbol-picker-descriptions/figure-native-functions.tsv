@@ -1,0 +1,33 @@
+edition	image_identity	role	start_rva	code_end_rva	source_extent_end_rva	image_path
+reference	PE:6a70a6d9:02711000	description	0xc2b870	0xc2cea8	0xc2ced3	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+reference	PE:6a70a6d9:02711000	identity	0xb92f10	0xb93927	0xb93927	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+reference	PE:6a70a6d9:02711000	species-title	0xb94ed0	0xb9501c	0xb9501c	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+reference	PE:6a70a6d9:02711000	birth-year	0xb92640	0xb928f4	0xb928f4	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+reference	PE:6a70a6d9:02711000	subject-pronoun	0xaa4730	0xaa47a4	0xaa47a4	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+reference	PE:6a70a6d9:02711000	possessive-pronoun	0xaa4850	0xaa48be	0xaa48be	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+reference	PE:6a70a6d9:02711000	child-relation	0x75a580	0x75ab80	0x75ad31	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+reference	PE:6a70a6d9:02711000	sphere	0x756500	0x756614	0x756688	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+reference	PE:6a70a6d9:02711000	language-name	0xa946e0	0xa94ea2	0xa94ea2	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+reference	PE:6a70a6d9:02711000	child-order	0xbb2f30	0xbb313d	0xbb313d	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+reference	PE:6a70a6d9:02711000	sphere-label	0x756690	0x757174	0x757380	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+reference	PE:6a70a6d9:02711000	creature-noun	0xaa3bd0	0xaa3d93	0xaa3d93	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+reference	PE:6a70a6d9:02711000	picker-description-dispatch	0x2126d0	0x2133bc	0x21341c	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+reference	PE:6a70a6d9:02711000	force-place	0x5c3760	0x5c3821	0x5c3821	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+reference	PE:6a70a6d9:02711000	english-word	0xd2cb50	0xd2cc1c	0xd2cc40	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+reference	PE:6a70a6d9:02711000	capitalize-name	0x52d3c0	0x52d600	0x52d648	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	description	0xc288b0	0xc29ee8	0xc29f13	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	identity	0xb8ff50	0xb90967	0xb90967	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	species-title	0xb91f10	0xb9205c	0xb9205c	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	birth-year	0xb8f680	0xb8f934	0xb8f934	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	subject-pronoun	0xaa17b0	0xaa1824	0xaa1824	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	possessive-pronoun	0xaa18d0	0xaa193e	0xaa193e	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	child-relation	0x757fa0	0x7585a0	0x758751	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	sphere	0x753f20	0x754034	0x7540a8	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	language-name	0xa91760	0xa91f22	0xa91f22	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	child-order	0xbaff70	0xbb017d	0xbb017d	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	sphere-label	0x7540b0	0x754b94	0x754da0	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	creature-noun	0xaa0c50	0xaa0e13	0xaa0e13	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	picker-description-dispatch	0x212660	0x21334c	0x2133ac	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	force-place	0x5c1180	0x5c1241	0x5c1241	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	english-word	0xd29b90	0xd29c5c	0xd29c80	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	capitalize-name	0x52ade0	0x52b020	0x52b068	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe

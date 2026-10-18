@@ -58,7 +58,7 @@ class NativeMapCardSources {
     const graphicst &gps_;
     // These snapshots live only for this card capture. Read a document source
     // only after a current row has an actual, matching native draw.
-    std::array<std::optional<std::vector<NativeAnnouncementParagraph>>, 3> announcements_;
+    std::array<std::optional<std::vector<NativeAnnouncementParagraph>>, 2> announcements_;
     std::optional<std::vector<NativeKnowledgeDraw>> rich_;
     std::vector<NativeKnowledgeDraw> previous_rich_;
 
@@ -114,10 +114,8 @@ class NativeMapCardSources {
         };
         if (!announcements_[0]) announcements_[0] = native_adventure_announcement_paragraphs();
         if (own_announcement(*announcements_[0])) return true;
-        if (!announcements_[1]) announcements_[1] = native_announcement_log_paragraphs();
+        if (!announcements_[1]) announcements_[1] = native_fortress_alert_paragraphs();
         if (own_announcement(*announcements_[1])) return true;
-        if (!announcements_[2]) announcements_[2] = native_fortress_alert_paragraphs();
-        if (own_announcement(*announcements_[2])) return true;
         if (origin_top) return false;
         if (!rich_) {
             bool current = false, previous_current = false;
@@ -236,11 +234,8 @@ std::optional<NativeTextCard> Overlay::capture_map_hover_card(
 
     std::optional<NativeToolbarTooltip> tooltip;
     if (!fortress) {
-        std::vector<std::string> context;
-        context.reserve(gps_->dimy);
-        for (int y = 0; y < gps_->dimy; ++y)
-            context.push_back(current_row(y));
-        tooltip = find_toolbar_tooltip(context);
+        capture_toolbar_tooltip();
+        tooltip = g_native_toolbar_tooltip;
     }
 
     const NativePanelBorders borders(*gps_);
@@ -921,6 +916,11 @@ std::optional<std::string> Overlay::translate_map_hover_phrase(std::string_view 
         else if (context.data[3] >= 50) prefix = "a swarm of ";
         else if (context.data[3] >= 10) prefix = "many ";
         if (!prefix.empty()) {
+            // The native constructor keeps its quantity prefix when the
+            // species lookup fails. The complete caption was trimmed above.
+            if (source == trim_view(prefix))
+                return config_.compositional_rules ? RULESETS.compose_bound_rule(
+                    "::map_hover::vermin_missing_species", std::string(source), {}) : std::nullopt;
             if (!source.starts_with(prefix)) return std::nullopt;
             auto species = scoped(source.substr(prefix.size()), "::creatures::name::plural");
             if (!species) return std::nullopt;
@@ -946,7 +946,11 @@ std::optional<std::string> Overlay::translate_map_hover_phrase(std::string_view 
             constexpr std::string_view suffix = " vapor";
             if (!source.ends_with(suffix) && !source.ends_with(" Vapor"))
                 return std::nullopt;
-            const auto material = scoped(source.substr(0, source.size() - suffix.size()), "::materials");
+            // The same native material noun supplier as dust/gas can prepend
+            // a historical owner's name before the RAW prefix and state.
+            const auto material = config_.compositional_rules
+                ? translate_material_name(source.substr(0, source.size() - suffix.size()))
+                : std::nullopt;
             if (!material) return std::nullopt;
             return RULESETS.compose_bound_rule("::map_hover", "{::materials} vapor",
                 {{"::materials", *material}});

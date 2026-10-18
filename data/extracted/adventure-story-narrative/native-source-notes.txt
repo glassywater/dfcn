@@ -1,0 +1,109 @@
+Adventure story choice: complete yellow historical-event paragraph source
+
+This is original offline source material from the configured Steam and Classic
+Windows PE images. The native RTTI, instruction PCs, conditions, switch aliases,
+literal operands and actual Ghidra C are retained alongside one another.
+
+ENTRY AND CALLING CONTEXT
+  The lower event choices are history_event virtual +0xd8 titles. Their source
+  remains in ../adventure-story-event. The upper yellow box is a separate +0xd0
+  paragraph; title grammar must not be substituted for paragraph grammar.
+
+  Actual chooser detail renderer:
+    reference 0x870260, ID12 arm 0x8715e7, indirect call 0x871664
+    classic   0x86dae0, ID12 arm 0x86ee67, indirect call 0x86eee4
+  The renderer reads the selected option kind from option+0 and dispatches
+  kind-8 through its native table. Kind12 reads the event ID at option+0x68,
+  obtains that event through native lookup, and skips the paragraph if missing.
+  There is no additional concrete-event-type whitelist in this detail arm.
+  The menu producer's subject filters determine which events become choices;
+  once selected, every concrete event uses its actual vtable +0xd0.
+
+  A found event gets a fresh default context from reference0x72080 or
+  classic0x72010. Its flags=0, all focus IDs=-1, number=1. The caller prefixes
+  [C:6:0:1], sets r9b=true and the trailing stack boolean=false, then calls +d0.
+  It sends the result to reference0x858550/classic0x855dd0 for wrapped storage.
+  The corresponding C and ASM are retained here as story-chooser-detail-
+  renderer and history-context-initializer. The full original renderer ASM is
+  also retained in ../adventure-performance-menu/steam-helper-140870260.asm
+  and classic-helper-14086dae0.asm.
+
+NATIVE EVENT OWNERSHIP AND BRANCHES
+  native-rtti.tsv discovers all 133 concrete history-event classes independently
+  in each configured PE and reads the actual +0xd0 entry from each vtable. It
+  does not infer event roots from a pre-existing translation enum/profile list.
+  Abstract history_eventst has getType=-1 and contributes no concrete event.
+  native-functions.tsv records image paths, SHA256 digests, native function
+  entries and chained unwind regions. Internal jumps stay inside their owning
+  function; they are not separately declared as source suppliers.
+
+  Every root and the directly called native-history paragraph suppliers have
+  original ASM and actual Ghidra 12.1.4 C. The two combined *-ghidra-decompiled.c
+  files retain those bodies in source-entry order. native-calls.tsv preserves
+  external direct suppliers; native-indirect-calls.tsv preserves virtual calls.
+  native-branches.tsv and native-conditions.tsv retain raw selector conditions
+  and conditional/default edges. native-switches.tsv retains selector aliases,
+  remap bytes and native destinations. Native jump tables are excluded from
+  the executable instruction bodies and restored as Ghidra switch overrides.
+  native-literals.tsv includes strings, inline immediate fragments and vector
+  operands; adjacency of those operands is not used to infer sentence grammar.
+
+  The shared date, reason, trade commodity, figure/entity/site, region/underground,
+  building, artifact, creature and identity producers are included. Other
+  semantic text providers reuse their existing actual C in the same original
+  images: native-text-boundaries.tsv records their exact source paths. Those
+  providers include names, complete item captions, materials, professions,
+  historical forms, knowledge discovery, battle descriptions, religious offices
+  and agreement-party lists. The schedule-feature-paragraph C retains all 21
+  native feature variants appended after occasion events. The death-cause
+  branches belong to the actual hist_figure_died root; the helper b85510 is
+  a trade-commodity producer despite an old catalogue's death-cause label.
+  Dynamic RAW labels and authored names are typed
+  fields; source extraction cannot produce a finite list of all world names.
+
+PREACHING PARAGRAPH, native type120
+  Reference paragraph 0xb7b540..0xb7b6a0; Classic 0xb78580..0xb786e0.
+  append "In " + DATE(event+8,event+c) + ", " + FIGURE(event+28) + " ".
+  Signed WORD event+30 selects:
+    11: "preached to " + ENTITY(event+34)
+        + ", inveighing against " + ENTITY(event+38)
+    12: "preached to " + ENTITY(event+34)
+        + ", urging love be shown to " + ENTITY(event+38)
+    default: no predicate and no audience/target entity lookup.
+  Independently, event+2c != -1 appends " at " + SITE(event+2c).
+  Then append ".". No other meeting-topic prose branch exists in this method.
+
+ADDITIONAL PARAGRAPH/TITLE DIFFERENCES
+  native type95 artifact_claim_formed: reference0xb88500 defaults directly to
+  0xb886dc when claim+38 is outside0..3. It retains artifact+28, optional figure
+  owner+2c or entity owner+30, and shared reason/circumstance text. The default
+  supplies no claim verb. This differs from a failed whole-event translation.
+
+  native type98 hf_recruited_unit_type_for_entity: reference0xb7a150 appends
+  " recruited " + battle-profession captions + " into " + ENTITY(event+28).
+  The entity receives recruits. It is not introduced with "from". PEASANT102
+  without a race supplies empty profession captions; the entity and location
+  remain. Location appends a present site and independently its layer/region;
+  all location IDs absent yields "the wilds".
+
+SHARED REASON/CIRCUMSTANCE DEFAULTS
+  Reference b5a6c0 first handles reason, then independently circumstance.
+  b5a70a/b5a70d: reason=-1 jumps to b5b2fd (circumstance processing).
+  b5a729/b5a72c: unsigned reason>0x5d takes the same empty-reason path.
+  b5b2ff/b5b303: circumstance=-1 jumps to b5b68b (ordinary return).
+  b5b322/b5b329: unsigned circumstance>0x118 takes the same empty path.
+  The sparse circumstance remap also has empty/default entries. A missing
+  reason phrase does not suppress the circumstance or the original event.
+  A missing circumstance phrase does not suppress the preceding event/reason.
+  Valid reasons with their own data enums retain separate native branches;
+  for example an unknown value after "due to a belief in " leaves that prefix
+  and an empty value instead of converting the whole valid reason to default.
+
+REPRODUCTION
+  Run tools/extract_adventure_story_narrative_sources.py with the fixed native
+  Windows Python. Import each configured original PE using the installed
+  dfcn-analysis-tools/ghidra_12.1.4_PUBLIC/support/analyzeHeadless.bat with
+  -noanalysis -scriptPath tools -postScript DecompileAdventureStoryNarrative.java
+  SOURCE_DIRECTORY EDITION. EDITION is reference or classic; SOURCE_DIRECTORY
+  is this directory. Use installed JDK dfcn-analysis-tools/jdk-25.0.4.1+1 and
+  separate application.settingsdir/application.cachedir for the two editions.

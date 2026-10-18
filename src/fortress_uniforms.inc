@@ -55,8 +55,8 @@ void Overlay::append_fortress_uniform_choices(std::vector<std::string> &rows,
             })) choosers.push_back({*panel, heading_end});
     }
     if (choosers.empty()) return;
-    const std::array draws{captured_native_drawn_text_rows(false),
-        captured_native_drawn_text_rows(true)};
+    const std::array draws{captured_native_drawn_text_view(false),
+        captured_native_drawn_text_view(true)};
     const auto clipped = captured_clipped_captions();
     for (const auto &chooser : choosers) {
         const auto scrollbars = native_vertical_scrollbar_spans(*gps_, chooser.panel);

@@ -29,13 +29,15 @@ static std::optional<std::array<int32_t, 9>> character_group_classic_skin(
 // Whole physical fields retain their source spans for glyph suppression;
 // translated names, types and roles share the current record's text bounds.
 std::vector<NativeTextCard> Overlay::capture_character_group_rows() const {
+    if (!native_character_translation_active(gps_)) return {};
     if (!gps_ || gps_->dimx <= 0 || gps_->dimy <= 0) return {};
+    const auto bounds = native_character_read_bounds(*gps_);
     std::vector<std::string> context(gps_->dimy);
     const auto read_row = [&](int y) -> const std::string & {
         auto &row = context[y];
         if (row.empty()) {
             row.assign(gps_->dimx, ' ');
-            for (int x = 0; x < gps_->dimx; ++x) {
+            for (int x = bounds.x; x < bounds.x + bounds.w; ++x) {
                 bool top = false;
                 const auto *cell = cell_at(x, y, &top);
                 if (cell && cell[0]) row[x] = cell[0];
@@ -43,7 +45,109 @@ std::vector<NativeTextCard> Overlay::capture_character_group_rows() const {
         }
         return row;
     };
-    for (int tabs_y = 0; tabs_y < gps_->dimy; ++tabs_y) {
+#ifdef _WIN32
+    if (native_character_foreground_view(gps_)) {
+        // These are the three addst returns in the complete native Groups
+        // arm. Its private producer already owns the pane and each field;
+        // neither a closed bottom edge nor a nonempty role is required.
+        const uintptr_t base = native_history_profile_base();
+        const std::array<uintptr_t, 3> callers{
+            native_reference_address(base, 0x1794ba),
+            native_reference_address(base, 0x17986a),
+            native_reference_address(base, 0x17ab4c)};
+        const std::array draws{captured_native_drawn_text_view(false),
+            captured_native_drawn_text_view(true)};
+        std::array<std::vector<const NativeDrawnTextRow *>, 3> fields;
+        for (const auto &layer : draws)
+            for (const auto &draw : layer) {
+                if (draw.draw_grid != (draw.top_layer ? gps_->screen_top : gps_->screen) ||
+                        draw.draw_dimx != gps_->dimx || draw.draw_dimy != gps_->dimy ||
+                        draw.source.empty() || draw.editable_text ||
+                        draw.x < bounds.x || draw.x >= bounds.x + bounds.w ||
+                        draw.y < bounds.y || draw.y >= bounds.y + bounds.h) continue;
+                for (size_t field = 0; field < callers.size(); ++field)
+                    if (callers[field] && draw.native_caller == callers[field])
+                        fields[field].push_back(&draw);
+            }
+        for (auto &field : fields)
+            std::sort(field.begin(), field.end(), [](const auto *a, const auto *b) {
+                return a->y != b->y ? a->y < b->y : a->x < b->x;
+            });
+        int type_left = bounds.x + bounds.w - 1;
+        int content_right = type_left;
+        if (!fields[1].empty()) {
+            content_right = bounds.x;
+            for (const auto *type : fields[1]) {
+                type_left = std::min(type_left, type->x);
+                content_right = std::max(content_right,
+                    type->x + static_cast<int>(type->source.size()));
+            }
+            content_right = std::min(content_right, bounds.x + bounds.w - 1);
+        }
+        std::vector<NativeTextCard> cards;
+        for (size_t index = 0; index < fields[0].size(); ++index) {
+            const auto &name = *fields[0][index];
+            const int next_y = index + 1 < fields[0].size()
+                ? fields[0][index + 1]->y : bounds.y + bounds.h;
+            const NativeDrawnTextRow *type = nullptr, *role = nullptr;
+            for (const auto *field : fields[1])
+                if (field->y == name.y) { type = field; break; }
+            for (const auto *field : fields[2])
+                if (field->y > name.y && field->y < next_y) { role = field; break; }
+            const int name_right = type ? type_left - 1 : content_right;
+            if (name.x >= name_right) continue;
+            std::optional<SDL_Rect> box;
+            if (type && native_ui_classic().value_or(false)) {
+                const int right = type->x + static_cast<int>(type->source.size()) - 1;
+                if (character_group_classic_skin(*gps_, name.x, right, name.y - 1))
+                    box = SDL_Rect{name.x + 1, name.y - 1, right - name.x - 1, 3};
+            }
+            const auto capture = [&](const NativeDrawnTextRow &draw, size_t field,
+                                     int left, int right) {
+                int end = std::min(draw.x + static_cast<int>(draw.source.size()),
+                    bounds.x + bounds.w);
+                // The later type draw can overwrite the tail of a long name.
+                // Retain the formatter's complete name but mask only its
+                // surviving physical prefix, leaving the type's ink intact.
+                if (field == 0 && type) end = std::min(end, type->x);
+                const auto &physical = read_row(draw.y);
+                while (end > draw.x && physical[end - 1] == ' ') --end;
+                if (end <= draw.x || left >= right ||
+                        std::string_view(physical).substr(draw.x, end - draw.x) !=
+                            std::string_view(draw.source).substr(0, end - draw.x)) return;
+                NativeTextCard card;
+                card.interior = {left, draw.y, right - left, 1};
+                card.button_box = box;
+                card.character_group_name = field == 0;
+                card.character_group_type = field == 1;
+                card.character_group_role = field == 2;
+                card.character_group_civilization = field == 0 && type &&
+                    lower(normalize_utterance(type->complete_source.empty()
+                        ? type->source : type->complete_source)) == "civilization";
+                NativeTextCardRow row;
+                row.x = draw.x; row.y = draw.y;
+                row.source = physical.substr(draw.x, end - draw.x);
+                row.complete_source = draw.complete_source.empty()
+                    ? draw.source : draw.complete_source;
+                for (int x = draw.x; x < end; ++x) {
+                    bool top = false;
+                    const auto *cell = cell_at(x, draw.y, &top);
+                    row.foregrounds.push_back(cell
+                        ? (cell[1] << 16) | (cell[2] << 8) | cell[3]
+                        : draw.foreground_rgb);
+                }
+                card.rows.push_back(std::move(row));
+                cards.push_back(std::move(card));
+            };
+            const int left = box ? box->x : name.x;
+            capture(name, 0, left, name_right);
+            if (type) capture(*type, 1, type_left, content_right);
+            if (role) capture(*role, 2, left, name_right);
+        }
+        if (!cards.empty()) return cards;
+    }
+#endif
+    for (int tabs_y = bounds.y; tabs_y < bounds.y + bounds.h; ++tabs_y) {
         const auto tabs = character_information_tab_fields(read_row(tabs_y));
         if (tabs.empty() || !character_social_tab_selected(tabs_y, "Groups")) continue;
         if (native_ui_classic().value_or(false)) {
@@ -72,12 +176,12 @@ std::vector<NativeTextCard> Overlay::capture_character_group_rows() const {
             };
             // The list's native strip is its own geometry. An off-screen
             // outer side/bottom must not veto these complete visible rows.
-            for (int y = tabs_y + 1; y + 2 < gps_->dimy; ++y) {
-                for (int x = 1; x + 3 < gps_->dimx; ++x) {
+            for (int y = tabs_y + 1; y + 2 < bounds.y + bounds.h; ++y) {
+                for (int x = std::max(1, bounds.x); x + 3 < bounds.x + bounds.w; ++x) {
                     if (!native_ui_skin_at(*gps_, x, y, rectangle[1][0], true)) continue;
                     const int left = x - 1;
                     int right = x;
-                    while (right < gps_->dimx &&
+                    while (right < bounds.x + bounds.w &&
                         native_ui_skin_at(*gps_, right, y, rectangle[1][0], true)) ++right;
                     x = right;
                     const auto skin = character_group_classic_skin(*gps_, left, right, y);
@@ -123,6 +227,8 @@ std::vector<NativeTextCard> Overlay::capture_character_group_rows() const {
                     card.interior = {left, record.fields[index].y, end - left, 1};
                     card.button_box = record.box;
                     card.character_group_role = index == 2;
+                    card.character_group_name = index == 0;
+                    card.character_group_type = index == 1;
                     card.character_group_civilization = index == 0 &&
                         lower(normalize_utterance(record.fields[1].source)) == "civilization";
                     card.rows.push_back(record.fields[index]);
@@ -147,7 +253,7 @@ std::vector<NativeTextCard> Overlay::capture_character_group_rows() const {
             // Stop at the first missing side, so another pane cannot join.
             const NativePanelBorders borders(*gps_);
             frame->bottom = tabs_y + 1;
-            while (frame->bottom < gps_->dimy &&
+            while (frame->bottom < bounds.y + bounds.h &&
                     borders.at(frame->left, frame->bottom, 3) &&
                     borders.at(frame->right, frame->bottom, 5)) ++frame->bottom;
         }
@@ -260,6 +366,8 @@ std::vector<NativeTextCard> Overlay::capture_character_group_rows() const {
             if (!name || !type || !role) continue;
             name->character_group_civilization =
                 lower(normalize_utterance(type->rows.front().source)) == "civilization";
+            name->character_group_name = true;
+            type->character_group_type = true;
             role->character_group_role = true;
             cards.push_back(std::move(*name));
             cards.push_back(std::move(*type));
@@ -270,9 +378,10 @@ std::vector<NativeTextCard> Overlay::capture_character_group_rows() const {
     return {};
 }
 
-void Overlay::append_character_group_civilization(const NativeTextCard &card,
+void Overlay::append_character_group_field(const NativeTextCard &card,
         std::vector<Match> &matches, int only_y) const {
-    if (!card.character_group_civilization) return;
+    if (!native_character_translation_active(gps_)) return;
+    if (!card.character_group_name && !card.character_group_type) return;
     const auto captions = captured_clipped_captions();
     for (const auto &row : card.rows) {
         if (only_y >= 0 && row.y != only_y) continue;
@@ -282,12 +391,48 @@ void Overlay::append_character_group_civilization(const NativeTextCard &card,
                 source = caption.complete;
                 break;
             }
-        // The adjacent native type establishes a civilization name. Resolve
-        // its WORD/POS identity and political name senses as one field before
-        // row composition can preserve the generic noun/ownership fragments.
-        const auto target = translate_procedural_fragment(normalize_utterance(source),
-            false, false, {}, ProceduralFragmentContext::civilization_name);
-        if (!target || target->empty()) continue;
+        source = normalize_utterance(source);
+        std::optional<std::string> target;
+        if (card.character_group_type) {
+            // The typed column is a complete UI label, independent of any
+            // generic name/prose classification applied to its spelling.
+            target = exact_literal_translation("Character group type: " + source);
+            if (!target && lower(source).ends_with(" guild")) {
+                // Kind 10 appends " guild" to the native plural RAW or
+                // profession helper result. It is not a generated name.
+                const auto profession = translate_unit_profession(
+                    std::string_view(source).substr(0, source.size() - 6));
+                const auto guild = exact_literal_translation("Guild");
+                if (profession && guild) target = *profession + *guild;
+            }
+            if (!target) target = exact_literal_translation(source);
+        } else {
+            // Prefer the actual language_name owner captured at this row's
+            // formatter. Equal English names can belong to different entities
+            // with different WORD/POS roots; a world-wide spelling lookup
+            // cannot resolve that ambiguity.
+            for (bool top : {false, true})
+                for (const auto &draw : captured_native_drawn_text_view(top))
+                    if (draw.x == row.x && draw.y == row.y &&
+                            draw.unit_identity_target &&
+                            (draw.source.starts_with(row.source) ||
+                             (!draw.complete_source.empty() &&
+                              normalize_utterance(draw.complete_source) == source))) {
+                        target = *draw.unit_identity_target;
+                        break;
+                    }
+            if (!target) target = translate_civilization_reference(source, true);
+            // Only the native Civilization label admits political surface
+            // vocabulary when the live identity cannot be recovered.
+            if (!target && card.character_group_civilization)
+                target = translate_procedural_fragment(source,
+                    false, false, {}, ProceduralFragmentContext::civilization_name);
+            // Unsupported or pending entity fields remain one owned name.
+            // A generic medical Band literal must never replace its head
+            // while the rest of the organization stays in English.
+            if (!target) target = native_text_to_utf8(source);
+        }
+        if (!target) continue;
         std::erase_if(matches, [&](const Match &match) {
             return match.y == row.y && match.x < row.x + static_cast<int>(row.source.size()) &&
                 row.x < match.x + match.length;
@@ -299,42 +444,34 @@ void Overlay::append_character_group_civilization(const NativeTextCard &card,
 
 void Overlay::append_character_group_role(const NativeTextCard &card,
         std::vector<Match> &matches, int only_y) const {
+    if (!native_character_translation_active(gps_)) return;
     if (!card.character_group_role) return;
     for (const auto &row : card.rows) {
         if (only_y >= 0 && row.y != only_y) continue;
-        const std::string source = normalize_utterance(row.source);
+        const std::string source = normalize_utterance(row.complete_source.empty()
+            ? row.source : row.complete_source);
         const std::string folded = lower(source);
         constexpr std::string_view prefix = "former ";
-        if (!folded.starts_with(prefix)) continue;
-        // Groups uses separate literal branches for these entity relations.
-        // Only former_position/former_position_spouse append a dynamic title
-        // after "Former " (Windows 53.16 RVA 0x17a602 and 0x17a858).
-        const std::string title = source.substr(prefix.size());
-        const std::string title_key = folded.substr(prefix.size());
-        if (title_key.empty() || title_key == "member" || title_key == "mercenary" ||
-            title_key == "slave" || title_key == "prisoner" || title_key == "worker")
-            continue;
-
-        // Reuse complete office meanings, including generated court, civic
-        // and religious titles. A master here is an entity's leader, not a
-        // skill rank or the mentor from the separate Relationships tab.
-        std::optional<std::string> office;
-        if (const auto scoped = legends_terms_.find("Native history office: " + title_key);
-                scoped != legends_terms_.end()) office = scoped->second;
-        if (!office) {
-            if (const auto exact = legends_terms_.find(title); exact != legends_terms_.end())
-                office = exact->second;
-            else if (const auto ci = legends_terms_ci_.find(title_key); ci != legends_terms_ci_.end())
-                office = ci->second;
+        // The native reputation arm takes priority over the relationship
+        // arm. Resolve its complete label, including native spelling errors,
+        // before any occupation or generated-office grammar.
+        auto target = exact_literal_translation("Character group role: " + source);
+        if (!target) {
+            const bool former = folded.starts_with(prefix);
+            const std::string title = former ? source.substr(prefix.size()) : source;
+            // Current/former gendered offices, spouse offices and RAW
+            // position.squad[0] titles share the complete role vocabulary.
+            // The latter is a soldier category, never an authored squad.alias.
+            // Master here denotes an office, rather than a skill or relation.
+            auto office = translate_legends_office(title);
+            if (!office) office = translate_unit_profession(title);
+            if (office && !office->empty()) {
+                target = former ? RULESETS.compose_bound_rule("::positions::former",
+                    "Former {::positions::singular}", {{"::positions::singular", *office}})
+                    : office;
+            }
         }
-        if (!office) office = translate_unit_profession(title);
-        if (!office || office->empty() || std::any_of(office->begin(), office->end(),
-                [](unsigned char ch) {
-                    return (ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z');
-                })) continue;
-        const auto target = RULESETS.compose_bound_rule("::positions::former",
-            "Former {::positions::singular}", {{"::positions::singular", *office}});
-        if (!target) continue;
+        if (!target) target = native_text_to_utf8(source);
         // Replace the complete role before row composition can join a bare
         // English prefix to independently translated office words. The card
         // still owns the same source span, colors, column and baseline.
@@ -348,6 +485,7 @@ void Overlay::append_character_group_role(const NativeTextCard &card,
 }
 
 void Overlay::layout_character_group_rows(SDL_Renderer *renderer) {
+    if (!native_character_translation_active(gps_)) return;
     if (!renderer || !face_ || !gps_ || gps_->tile_pixel_x <= 0 ||
         gps_->tile_pixel_y <= 0) return;
     std::vector<Match *> fields;

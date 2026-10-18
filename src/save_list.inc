@@ -277,7 +277,7 @@ void Overlay::append_save_list_captions(std::vector<std::string> &rows,
     // to addst. Its field address identifies this saved name independently
     // of folder text, list order and equal names in another world.
     for (const bool top_layer : {false, true}) {
-        for (const auto &draw : captured_native_drawn_text_rows(top_layer)) {
+        for (const auto &draw : captured_native_drawn_text_view(top_layer)) {
             if (!draw.address || draw.source.empty() || draw.y < 0 ||
                     draw.y >= gps_->dimy || draw.draw_dimx != gps_->dimx ||
                     draw.draw_dimy != gps_->dimy ||

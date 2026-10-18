@@ -1,5 +1,27 @@
 # scope	complete native source or constituent	target	semantic field scopes	native construction evidence
 # Complete slain-foe boast grammar; includes optional office, all active GENERAL/SLAIN_DWARF/SLAIN_ELF clauses and native nonverbal cries.
+# A selected SLAIN_SPEECH text set can return empty after the native comma is appended; preserve the complete `, !` source branch for every SLAYER alternative.
+# The SLAYER selector's empty return is appended without a nonempty check too; normalized native `I am the  of ` becomes `I am the of `.
+sentence	I am the of {s}!	击败{s1}的正是我！	boast-victim	reference 0x14068f608..0x14068f638/0x14068ff75; classic 0x14068d028..0x14068d058/0x14068d995; empty SLAYER set 4, victim present, no slain clause
+sentence	I am the of {s}, {s}!	击败{s1}的正是我，{s2}！	boast-victim,boast-slain-clause	reference 0x14068f608/0x14068fa8a/0x14068ff75; classic 0x14068d028/0x14068d4aa/0x14068d995; empty SLAYER set 4, victim and slain clause present
+sentence	I am the of {s}, !	击败{s1}的正是我！	boast-victim	reference 0x14068f608/0x14068fa8a/0x14068ff75; classic 0x14068d028/0x14068d4aa/0x14068d995; empty SLAYER set 4 and selected SLAIN_SPEECH, victim present
+sentence	I am the of !	击败对方的正是我！		reference 0x14068f608/0x14068f7c6/0x14068ff75; classic 0x14068d028/0x14068d1e6/0x14068d995; empty SLAYER set 4 and victim, no slain clause
+sentence	I am the of , {s}!	击败对方的正是我，{s1}！	boast-slain-clause	reference 0x14068f608/0x14068f7c6/0x14068fa8a/0x14068ff75; classic 0x14068d028/0x14068d1e6/0x14068d4aa/0x14068d995; empty SLAYER set 4 and victim, slain clause present
+sentence	I am the of , !	击败对方的正是我！		reference 0x14068f608/0x14068f7c6/0x14068fa8a/0x14068ff75; classic 0x14068d028/0x14068d1e6/0x14068d4aa/0x14068d995; SLAYER set 4, victim and selected SLAIN_SPEECH all empty
+sentence	I am the bane of {s}, !	我就是{s1}的祸根！	boast-victim	reference 0x14068f914..0x14068fa8a/0x14068ff75; classic 0x14068d334..0x14068d4aa/0x14068d995; empty selected SLAIN_SPEECH after comma, then !
+sentence	I am the conqueror of {s}, !	我就是{s1}的征服者！	boast-victim	reference 0x14068f914..0x14068fa8a/0x14068ff75; classic 0x14068d334..0x14068d4aa/0x14068d995; empty selected SLAIN_SPEECH after comma, then !
+sentence	I am the death of {s}, !	给{s1}带来死亡的正是我！	boast-victim	reference 0x14068f914..0x14068fa8a/0x14068ff75; classic 0x14068d334..0x14068d4aa/0x14068d995; empty selected SLAIN_SPEECH after comma, then !
+sentence	I am the foe of {s}, !	我就是{s1}的敌人！	boast-victim	reference 0x14068f914..0x14068fa8a/0x14068ff75; classic 0x14068d334..0x14068d4aa/0x14068d995; empty selected SLAIN_SPEECH after comma, then !
+sentence	I am the killer of {s}, !	杀死{s1}的正是我！	boast-victim	reference 0x14068f914..0x14068fa8a/0x14068ff75; classic 0x14068d334..0x14068d4aa/0x14068d995; empty selected SLAIN_SPEECH after comma, then !
+sentence	I am the lord of {s}, !	我就是{s1}的领主！	boast-victim	reference 0x14068f914..0x14068fa8a/0x14068ff75; classic 0x14068d334..0x14068d4aa/0x14068d995; empty selected SLAIN_SPEECH after comma, then !
+sentence	I am the master of {s}, !	我就是{s1}的主人！	boast-victim	reference 0x14068f914..0x14068fa8a/0x14068ff75; classic 0x14068d334..0x14068d4aa/0x14068d995; empty selected SLAIN_SPEECH after comma, then !
+sentence	I am the nemesis of {s}, !	我就是{s1}的宿敌！	boast-victim	reference 0x14068f914..0x14068fa8a/0x14068ff75; classic 0x14068d334..0x14068d4aa/0x14068d995; empty selected SLAIN_SPEECH after comma, then !
+sentence	I am the slayer of {s}, !	杀死{s1}的正是我！	boast-victim	reference 0x14068f914..0x14068fa8a/0x14068ff75; classic 0x14068d334..0x14068d4aa/0x14068d995; empty selected SLAIN_SPEECH after comma, then !
+sentence	I am the vanquisher of {s}, !	战胜{s1}的正是我！	boast-victim	reference 0x14068f914..0x14068fa8a/0x14068ff75; classic 0x14068d334..0x14068d4aa/0x14068d995; empty selected SLAIN_SPEECH after comma, then !
+sentence	I am the murderer of {s}, !	谋杀{s1}的正是我！	boast-victim	reference 0x14068f914..0x14068fa8a/0x14068ff75; classic 0x14068d334..0x14068d4aa/0x14068d995; empty selected SLAIN_SPEECH after comma, then !
+sentence	I am the crusher of {s}, !	碾碎{s1}的正是我！	boast-victim	reference 0x14068f914..0x14068fa8a/0x14068ff75; classic 0x14068d334..0x14068d4aa/0x14068d995; empty selected SLAIN_SPEECH after comma, then !
+sentence	I am the extinguisher of {s}, !	终结{s1}生命的正是我！	boast-victim	reference 0x14068f914..0x14068fa8a/0x14068ff75; classic 0x14068d334..0x14068d4aa/0x14068d995; empty selected SLAIN_SPEECH after comma, then !
+sentence	I am the strangler of {s}, !	绞杀{s1}的正是我！	boast-victim	reference 0x14068f914..0x14068fa8a/0x14068ff75; classic 0x14068d334..0x14068d4aa/0x14068d995; empty selected SLAIN_SPEECH after comma, then !
 sentence	I am the bane of {s}!	我就是{s1}的祸根！	boast-victim	0x14068f2f0..0x140690060; main speech 0x1404dd6b0/0x1404b987b; SLAYER text at 0x14068f608, victim 0x14068f7c6, terminal 0x14068ff75; data/vanilla/vanilla_text/objects/text_slayer.txt
 sentence	I am the bane of {s}, {s}!	我就是{s1}的祸根，{s2}！	boast-victim,boast-slain-clause	0x14068f2f0..0x140690060; main speech 0x1404dd6b0/0x1404b987b; SLAYER + victim + full GENERAL/SLAIN_* relative clause 0x14068f8f5..0x14068ff75
 sentence	I am the conqueror of {s}!	我就是{s1}的征服者！	boast-victim	0x14068f2f0..0x140690060; main speech 0x1404dd6b0/0x1404b987b; SLAYER text at 0x14068f608, victim 0x14068f7c6, terminal 0x14068ff75; data/vanilla/vanilla_text/objects/text_slayer.txt
@@ -28,12 +50,73 @@ sentence	I am the extinguisher of {s}!	终结{s1}生命的正是我！	boast-vic
 sentence	I am the extinguisher of {s}, {s}!	终结{s1}生命的正是我，{s2}！	boast-victim,boast-slain-clause	0x14068f2f0..0x140690060; main speech 0x1404dd6b0/0x1404b987b; SLAYER + victim + full GENERAL/SLAIN_* relative clause 0x14068f8f5..0x14068ff75
 sentence	I am the strangler of {s}!	绞杀{s1}的正是我！	boast-victim	0x14068f2f0..0x140690060; main speech 0x1404dd6b0/0x1404b987b; SLAYER text at 0x14068f608, victim 0x14068f7c6, terminal 0x14068ff75; data/vanilla/vanilla_text/objects/text_slayer.txt
 sentence	I am the strangler of {s}, {s}!	绞杀{s1}的正是我，{s2}！	boast-victim,boast-slain-clause	0x14068f2f0..0x140690060; main speech 0x1404dd6b0/0x1404b987b; SLAYER + victim + full GENERAL/SLAIN_* relative clause 0x14068f8f5..0x14068ff75
-boast-victim	{s}	{s1}	$person	0x14068f2f0..0x140690060; main speech 0x1404dd6b0/0x1404b987b; victim language_name 0x14068f7b8 -> 0x140a946e0
-boast-victim	{s}, {s} of {s}	{s3}的{s2}{s1}	$person,$term,$name	0x14068f2f0..0x140690060; main speech 0x1404dd6b0/0x1404b987b; 0x14068f951..0x14068fa28; optional held-office gender name + entity language_name
-sentence	{s} STORKIS {s}!	{s1} STORKIS {s2}！	$unit,$person	0x14068f2f0..0x140690060; main speech 0x1404dd6b0/0x1404b987b; nonverbal caste flag +0x6a8; personal name 0x1413e5a90; three cries 0x14068f773/0x14068f782/0x14068f791
-sentence	{s} AUGIS {s}!	{s1} AUGIS {s2}！	$unit,$person	0x14068f2f0..0x140690060; main speech 0x1404dd6b0/0x1404b987b; nonverbal caste flag +0x6a8; personal name 0x1413e5a90; three cries 0x14068f773/0x14068f782/0x14068f791
-sentence	{s} STRANGUS {s}!	{s1} STRANGUS {s2}！	$unit,$person	0x14068f2f0..0x140690060; main speech 0x1404dd6b0/0x1404b987b; nonverbal caste flag +0x6a8; personal name 0x1413e5a90; three cries 0x14068f773/0x14068f782/0x14068f791
-sentence	{s}!	{s1}！	$person	0x14068f2f0..0x140690060; main speech 0x1404dd6b0/0x1404b987b; nonverbal branch without applicable caste flag 0x14068f696..0x14068f7a1; victim name only, no missing words
+# The victim language_name is appended without a nonempty postcondition. A wholly empty victim cannot enter a nonempty typed capture.
+sentence	I am the bane of !	我就是对方的祸根！		reference 0x14068f7c6..0x14068f89d/0x14068ff75; classic 0x14068d1e6..0x14068d2bd/0x14068d995; empty language_name
+sentence	I am the bane of , {s}!	我就是对方的祸根，{s1}！	boast-slain-clause	reference 0x14068f7c6..0x14068fa8a/0x14068ff75; classic 0x14068d1e6..0x14068d4aa/0x14068d995; empty language_name
+sentence	I am the bane of , !	我就是对方的祸根！		reference 0x14068f7c6..0x14068fa8a/0x14068ff75; classic 0x14068d1e6..0x14068d4aa/0x14068d995; empty language_name and selected SLAIN_SPEECH
+sentence	I am the conqueror of !	我就是对方的征服者！		reference 0x14068f7c6..0x14068f89d/0x14068ff75; classic 0x14068d1e6..0x14068d2bd/0x14068d995; empty language_name
+sentence	I am the conqueror of , {s}!	我就是对方的征服者，{s1}！	boast-slain-clause	reference 0x14068f7c6..0x14068fa8a/0x14068ff75; classic 0x14068d1e6..0x14068d4aa/0x14068d995; empty language_name
+sentence	I am the conqueror of , !	我就是对方的征服者！		reference 0x14068f7c6..0x14068fa8a/0x14068ff75; classic 0x14068d1e6..0x14068d4aa/0x14068d995; empty language_name and selected SLAIN_SPEECH
+sentence	I am the death of !	给对方带来死亡的正是我！		reference 0x14068f7c6..0x14068f89d/0x14068ff75; classic 0x14068d1e6..0x14068d2bd/0x14068d995; empty language_name
+sentence	I am the death of , {s}!	给对方带来死亡的正是我，{s1}！	boast-slain-clause	reference 0x14068f7c6..0x14068fa8a/0x14068ff75; classic 0x14068d1e6..0x14068d4aa/0x14068d995; empty language_name
+sentence	I am the death of , !	给对方带来死亡的正是我！		reference 0x14068f7c6..0x14068fa8a/0x14068ff75; classic 0x14068d1e6..0x14068d4aa/0x14068d995; empty language_name and selected SLAIN_SPEECH
+sentence	I am the foe of !	我就是对方的敌人！		reference 0x14068f7c6..0x14068f89d/0x14068ff75; classic 0x14068d1e6..0x14068d2bd/0x14068d995; empty language_name
+sentence	I am the foe of , {s}!	我就是对方的敌人，{s1}！	boast-slain-clause	reference 0x14068f7c6..0x14068fa8a/0x14068ff75; classic 0x14068d1e6..0x14068d4aa/0x14068d995; empty language_name
+sentence	I am the foe of , !	我就是对方的敌人！		reference 0x14068f7c6..0x14068fa8a/0x14068ff75; classic 0x14068d1e6..0x14068d4aa/0x14068d995; empty language_name and selected SLAIN_SPEECH
+sentence	I am the killer of !	杀死对方的正是我！		reference 0x14068f7c6..0x14068f89d/0x14068ff75; classic 0x14068d1e6..0x14068d2bd/0x14068d995; empty language_name
+sentence	I am the killer of , {s}!	杀死对方的正是我，{s1}！	boast-slain-clause	reference 0x14068f7c6..0x14068fa8a/0x14068ff75; classic 0x14068d1e6..0x14068d4aa/0x14068d995; empty language_name
+sentence	I am the killer of , !	杀死对方的正是我！		reference 0x14068f7c6..0x14068fa8a/0x14068ff75; classic 0x14068d1e6..0x14068d4aa/0x14068d995; empty language_name and selected SLAIN_SPEECH
+sentence	I am the lord of !	我就是对方的领主！		reference 0x14068f7c6..0x14068f89d/0x14068ff75; classic 0x14068d1e6..0x14068d2bd/0x14068d995; empty language_name
+sentence	I am the lord of , {s}!	我就是对方的领主，{s1}！	boast-slain-clause	reference 0x14068f7c6..0x14068fa8a/0x14068ff75; classic 0x14068d1e6..0x14068d4aa/0x14068d995; empty language_name
+sentence	I am the lord of , !	我就是对方的领主！		reference 0x14068f7c6..0x14068fa8a/0x14068ff75; classic 0x14068d1e6..0x14068d4aa/0x14068d995; empty language_name and selected SLAIN_SPEECH
+sentence	I am the master of !	我就是对方的主人！		reference 0x14068f7c6..0x14068f89d/0x14068ff75; classic 0x14068d1e6..0x14068d2bd/0x14068d995; empty language_name
+sentence	I am the master of , {s}!	我就是对方的主人，{s1}！	boast-slain-clause	reference 0x14068f7c6..0x14068fa8a/0x14068ff75; classic 0x14068d1e6..0x14068d4aa/0x14068d995; empty language_name
+sentence	I am the master of , !	我就是对方的主人！		reference 0x14068f7c6..0x14068fa8a/0x14068ff75; classic 0x14068d1e6..0x14068d4aa/0x14068d995; empty language_name and selected SLAIN_SPEECH
+sentence	I am the nemesis of !	我就是对方的宿敌！		reference 0x14068f7c6..0x14068f89d/0x14068ff75; classic 0x14068d1e6..0x14068d2bd/0x14068d995; empty language_name
+sentence	I am the nemesis of , {s}!	我就是对方的宿敌，{s1}！	boast-slain-clause	reference 0x14068f7c6..0x14068fa8a/0x14068ff75; classic 0x14068d1e6..0x14068d4aa/0x14068d995; empty language_name
+sentence	I am the nemesis of , !	我就是对方的宿敌！		reference 0x14068f7c6..0x14068fa8a/0x14068ff75; classic 0x14068d1e6..0x14068d4aa/0x14068d995; empty language_name and selected SLAIN_SPEECH
+sentence	I am the slayer of !	杀死对方的正是我！		reference 0x14068f7c6..0x14068f89d/0x14068ff75; classic 0x14068d1e6..0x14068d2bd/0x14068d995; empty language_name
+sentence	I am the slayer of , {s}!	杀死对方的正是我，{s1}！	boast-slain-clause	reference 0x14068f7c6..0x14068fa8a/0x14068ff75; classic 0x14068d1e6..0x14068d4aa/0x14068d995; empty language_name
+sentence	I am the slayer of , !	杀死对方的正是我！		reference 0x14068f7c6..0x14068fa8a/0x14068ff75; classic 0x14068d1e6..0x14068d4aa/0x14068d995; empty language_name and selected SLAIN_SPEECH
+sentence	I am the vanquisher of !	战胜对方的正是我！		reference 0x14068f7c6..0x14068f89d/0x14068ff75; classic 0x14068d1e6..0x14068d2bd/0x14068d995; empty language_name
+sentence	I am the vanquisher of , {s}!	战胜对方的正是我，{s1}！	boast-slain-clause	reference 0x14068f7c6..0x14068fa8a/0x14068ff75; classic 0x14068d1e6..0x14068d4aa/0x14068d995; empty language_name
+sentence	I am the vanquisher of , !	战胜对方的正是我！		reference 0x14068f7c6..0x14068fa8a/0x14068ff75; classic 0x14068d1e6..0x14068d4aa/0x14068d995; empty language_name and selected SLAIN_SPEECH
+sentence	I am the murderer of !	谋杀对方的正是我！		reference 0x14068f7c6..0x14068f89d/0x14068ff75; classic 0x14068d1e6..0x14068d2bd/0x14068d995; empty language_name
+sentence	I am the murderer of , {s}!	谋杀对方的正是我，{s1}！	boast-slain-clause	reference 0x14068f7c6..0x14068fa8a/0x14068ff75; classic 0x14068d1e6..0x14068d4aa/0x14068d995; empty language_name
+sentence	I am the murderer of , !	谋杀对方的正是我！		reference 0x14068f7c6..0x14068fa8a/0x14068ff75; classic 0x14068d1e6..0x14068d4aa/0x14068d995; empty language_name and selected SLAIN_SPEECH
+sentence	I am the crusher of !	碾碎对方的正是我！		reference 0x14068f7c6..0x14068f89d/0x14068ff75; classic 0x14068d1e6..0x14068d2bd/0x14068d995; empty language_name
+sentence	I am the crusher of , {s}!	碾碎对方的正是我，{s1}！	boast-slain-clause	reference 0x14068f7c6..0x14068fa8a/0x14068ff75; classic 0x14068d1e6..0x14068d4aa/0x14068d995; empty language_name
+sentence	I am the crusher of , !	碾碎对方的正是我！		reference 0x14068f7c6..0x14068fa8a/0x14068ff75; classic 0x14068d1e6..0x14068d4aa/0x14068d995; empty language_name and selected SLAIN_SPEECH
+sentence	I am the extinguisher of !	终结对方生命的正是我！		reference 0x14068f7c6..0x14068f89d/0x14068ff75; classic 0x14068d1e6..0x14068d2bd/0x14068d995; empty language_name
+sentence	I am the extinguisher of , {s}!	终结对方生命的正是我，{s1}！	boast-slain-clause	reference 0x14068f7c6..0x14068fa8a/0x14068ff75; classic 0x14068d1e6..0x14068d4aa/0x14068d995; empty language_name
+sentence	I am the extinguisher of , !	终结对方生命的正是我！		reference 0x14068f7c6..0x14068fa8a/0x14068ff75; classic 0x14068d1e6..0x14068d4aa/0x14068d995; empty language_name and selected SLAIN_SPEECH
+sentence	I am the strangler of !	绞杀对方的正是我！		reference 0x14068f7c6..0x14068f89d/0x14068ff75; classic 0x14068d1e6..0x14068d2bd/0x14068d995; empty language_name
+sentence	I am the strangler of , {s}!	绞杀对方的正是我，{s1}！	boast-slain-clause	reference 0x14068f7c6..0x14068fa8a/0x14068ff75; classic 0x14068d1e6..0x14068d4aa/0x14068d995; empty language_name
+sentence	I am the strangler of , !	绞杀对方的正是我！		reference 0x14068f7c6..0x14068fa8a/0x14068ff75; classic 0x14068d1e6..0x14068d4aa/0x14068d995; empty language_name and selected SLAIN_SPEECH
+boast-victim	{s}	{s1}	$speech-person	0x14068f2f0..0x140690060; main speech 0x1404dd6b0/0x1404b987b; victim language_name 0x14068f7b8 -> 0x140a946e0
+boast-victim	{s}, {s} of {s}	{s3}的{s2}{s1}	$speech-person,$journal-office,$name	0x14068f2f0..0x140690060; main speech 0x1404dd6b0/0x1404b987b; 0x14068f951..0x14068fa28; optional held-office gender name + entity language_name
+boast-victim	{s}, of {s}	任职于{s2}的{s1}	$speech-person,$name	reference 0x14068f951..0x14068fa28; classic 0x14068d371..0x14068d448; office neutral/gendered title empty, native comma and of remain
+boast-victim	{s}, {s} of	{s2}{s1}	$speech-person,$journal-office	reference 0x14068f951..0x14068fa28; classic 0x14068d371..0x14068d448; entity language_name empty, native comma and of remain
+boast-victim	{s}, of	{s1}	$speech-person	reference 0x14068f951..0x14068fa28; classic 0x14068d371..0x14068d448; office title and entity language_name empty
+boast-victim	, {s} of {s}	{s2}的{s1}	$journal-office,$name	reference 0x14068f7c6/0x14068f951..0x14068fa28; classic 0x14068d1e6/0x14068d371..0x14068d448; victim language_name empty, held office remains
+boast-victim	, of {s}	任职于{s1}的那人	$name	reference 0x14068f7c6/0x14068f951..0x14068fa28; classic 0x14068d1e6/0x14068d371..0x14068d448; victim language_name and office title empty
+boast-victim	, {s} of	那位{s1}	$journal-office	reference 0x14068f7c6/0x14068f951..0x14068fa28; classic 0x14068d1e6/0x14068d371..0x14068d448; victim and entity language_name empty
+boast-victim	, of	对方		reference 0x14068f7c6/0x14068f951..0x14068fa28; classic 0x14068d1e6/0x14068d371..0x14068d448; victim, office title and entity language_name empty
+# The three native random cries are literal vocalizations, not authored names. Transliterate their sounds without assigning a meaning absent from the source.
+sentence	{s} STORKIS {s}!	{s1} 斯托尔基斯 {s2}！	$unit,$speech-person	0x14068f2f0..0x140690060; main speech 0x1404dd6b0/0x1404b987b; nonverbal caste flag +0x6a8; personal name 0x1413e5a90; three cries 0x14068f773/0x14068f782/0x14068f791
+sentence	{s} AUGIS {s}!	{s1} 奥吉斯 {s2}！	$unit,$speech-person	0x14068f2f0..0x140690060; main speech 0x1404dd6b0/0x1404b987b; nonverbal caste flag +0x6a8; personal name 0x1413e5a90; three cries 0x14068f773/0x14068f782/0x14068f791
+sentence	{s} STRANGUS {s}!	{s1} 斯特朗古斯 {s2}！	$unit,$speech-person	0x14068f2f0..0x140690060; main speech 0x1404dd6b0/0x1404b987b; nonverbal caste flag +0x6a8; personal name 0x1413e5a90; three cries 0x14068f773/0x14068f782/0x14068f791
+sentence	{s}!	{s1}！	$speech-person	0x14068f2f0..0x140690060; main speech 0x1404dd6b0/0x1404b987b; nonverbal branch without applicable caste flag 0x14068f696..0x14068f7a1; victim name only, no missing words
+sentence	{s} STORKIS !	{s1} 斯托尔基斯！	$unit	reference 0x14068f713..0x14068f7c6/0x14068ff75; classic 0x14068d133..0x14068d1e6/0x14068d995; empty victim language_name
+sentence	STORKIS {s}!	斯托尔基斯 {s1}！	$speech-person	reference 0x14068f713..0x14068f7c6/0x14068ff75; classic 0x14068d133..0x14068d1e6/0x14068d995; empty speaker personal name
+sentence	STORKIS !	斯托尔基斯！		reference 0x14068f713..0x14068f7c6/0x14068ff75; classic 0x14068d133..0x14068d1e6/0x14068d995; empty speaker and victim names
+sentence	{s} AUGIS !	{s1} 奥吉斯！	$unit	reference 0x14068f713..0x14068f7c6/0x14068ff75; classic 0x14068d133..0x14068d1e6/0x14068d995; empty victim language_name
+sentence	AUGIS {s}!	奥吉斯 {s1}！	$speech-person	reference 0x14068f713..0x14068f7c6/0x14068ff75; classic 0x14068d133..0x14068d1e6/0x14068d995; empty speaker personal name
+sentence	AUGIS !	奥吉斯！		reference 0x14068f713..0x14068f7c6/0x14068ff75; classic 0x14068d133..0x14068d1e6/0x14068d995; empty speaker and victim names
+sentence	{s} STRANGUS !	{s1} 斯特朗古斯！	$unit	reference 0x14068f713..0x14068f7c6/0x14068ff75; classic 0x14068d133..0x14068d1e6/0x14068d995; empty victim language_name
+sentence	STRANGUS {s}!	斯特朗古斯 {s1}！	$speech-person	reference 0x14068f713..0x14068f7c6/0x14068ff75; classic 0x14068d133..0x14068d1e6/0x14068d995; empty speaker personal name
+sentence	STRANGUS !	斯特朗古斯！		reference 0x14068f713..0x14068f7c6/0x14068ff75; classic 0x14068d133..0x14068d1e6/0x14068d995; empty speaker and victim names
+sentence	!	！		reference 0x14068f696..0x14068f7c6/0x14068ff75; classic 0x14068d0b6..0x14068d1e6/0x14068d995; nonverbal branch without cry, empty victim name
 boast-slain-clause	whose cries for mercy went unheeded by my wrath	对方的求饶声也无法平息我的怒火		0x14068f2f0..0x140690060; main speech 0x1404dd6b0/0x1404b987b; 0x14068fa8a; 0x1406d0950..0x1406d0ad8 selects race/caste SLAIN_SPEECH; data/vanilla/vanilla_text/objects/text_general.txt:7; gender pronoun substitution 0x14068faad..0x14068ff20
 boast-slain-clause	whose insignificant name I struggle to recall	对方微不足道的名字，我都快想不起来了		0x14068f2f0..0x140690060; main speech 0x1404dd6b0/0x1404b987b; 0x14068fa8a; 0x1406d0950..0x1406d0ad8 selects race/caste SLAIN_SPEECH; data/vanilla/vanilla_text/objects/text_general.txt:8; gender pronoun substitution 0x14068faad..0x14068ff20
 boast-slain-clause	a spineless slug who was crushed under my might	这个没骨气的鼻涕虫被我的力量碾碎了		0x14068f2f0..0x140690060; main speech 0x1404dd6b0/0x1404b987b; 0x14068fa8a; 0x1406d0950..0x1406d0ad8 selects race/caste SLAIN_SPEECH; data/vanilla/vanilla_text/objects/text_general.txt:9; gender pronoun substitution 0x14068faad..0x14068ff20
@@ -58,3 +141,9 @@ boast-slain-clause	whose tall tales of bravery were all the more embarrassing be
 boast-slain-clause	who forged its own doom by challenging me	对方竟敢挑战我，亲手铸就了自己的末日		0x14068f2f0..0x140690060; main speech 0x1404dd6b0/0x1404b987b; 0x14068fa8a; 0x1406d0950..0x1406d0ad8 selects race/caste SLAIN_SPEECH; data/vanilla/vanilla_creatures/objects/text_dwarf.txt:11; gender pronoun substitution 0x14068faad..0x14068ff20
 boast-slain-clause	whose tall tales of bravery were all the more embarrassing because of its height	对方那夸大其词的英勇事迹，因其矮小的身高而更显可笑		0x14068f2f0..0x140690060; main speech 0x1404dd6b0/0x1404b987b; 0x14068fa8a; 0x1406d0950..0x1406d0ad8 selects race/caste SLAIN_SPEECH; data/vanilla/vanilla_creatures/objects/text_dwarf.txt:13; gender pronoun substitution 0x14068faad..0x14068ff20
 sentence	I've defeated many fearsome opponents!	我击败过许多可怕的对手！		0x14068f2f0..0x140690060; main speech 0x1404dd6b0/0x1404b987b; 0x14069002a; fallback only if 0x140696310 appended no RAW statement
+# HIST_FIG_SLAYER is the alternate RAW boast selected by 696310. TRANS_NAME explicitly substitutes nameless when its language_name is empty; RACE independently permits an empty replacement.
+sentence	It is I that felled {s} the {s}.	正是我击倒了{s2}{s1}。	boast-raw-victim,$creature	reference 0x140696512 ->0x1406965c7 ->0x140685d00 HIST_FIG ->0x140bb13e0; classic 0x140693f32 ->0x140693fe7 ->0x140683720 ->0x140bae420; text_hist_fig_slayer.txt:7
+sentence	It is I that felled {s} the .	正是我击倒了{s1}。	boast-raw-victim	reference 0x140bb1918..0x140bb1998; classic 0x140bae958..0x140bae9d8; RACE < 0, outside creature vector or empty RAW name[0] replaces parameter with empty string
+boast-raw-victim	nameless	无名者		reference 0x140bb181d..0x140bb1857; classic 0x140bae85d..0x140bae897; TRANS_NAME's empty language_name becomes literal nameless, never an empty victim
+boast-raw-victim	something	某人		reference 0x140685a69..0x140685aa4; classic speech-person-parameter; unresolved non-PLACE TRANS_NAME falls back to something
+boast-raw-victim	{s}	{s1}	$speech-person	reference 0x140bb180f..0x140bb1857; classic 0x140bae84f..0x140bae897; HIST_FIG:TRANS_NAME full personal language_name

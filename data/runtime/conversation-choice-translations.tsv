@@ -1,0 +1,79 @@
+# Reloadable, conversation-scoped additions from the native chooser.
+# The complete fixed captions already live in ui-messages.tsv. These search
+# words supplement complete caption binding; they never translate name pieces.
+# PE type12/13/118 at 0x697740 and elapsed-time supplier 0x675670.
+Conversation keyword: bring up	谈起	l
+Conversation keyword: bring	谈起	l
+Conversation keyword: up	提起	l
+Conversation keyword: summarize	概述	l
+Conversation keyword: attacked	袭击	l
+Conversation keyword: attack	攻击	l
+Conversation keyword: slain	被杀死	l
+Conversation keyword: died	丧生	l
+Conversation keyword: occurred	发生	l
+Conversation keyword: escalated	加剧	l
+Conversation keyword: attempted	未遂	l
+Conversation keyword: ascension	就任	l
+Conversation keyword: abandonment	放弃	l
+Conversation keyword: cessation	停止	l
+Conversation keyword: reclamation	收复	l
+Conversation keyword: foundation	建立	l
+Conversation keyword: gaining	获得	l
+Conversation keyword: giving	赠送	l
+Conversation keyword: placement	放置	l
+Conversation keyword: possession	持有	l
+Conversation keyword: lack	缺少	l
+Conversation keyword: identification	表明身份	l
+Conversation keyword: identify	表明身份	l
+Conversation keyword: somebody	某人	l
+Conversation keyword: someone	某人	l
+Conversation keyword: spread	传播	l
+Conversation keyword: untitled	无题	l
+# Full native time phrases retain their unit and degree. Individual atoms are
+# also emitted beside the complete caption in the screenshot's keyword vector.
+Conversation keyword: in a time before time	太古之时	l
+Conversation keyword: in the future	将来	l
+Conversation keyword: just now	刚才	l
+Conversation keyword: a few minutes ago	几分钟前	l
+Conversation keyword: not a quarter hour ago	不到一刻钟前	l
+Conversation keyword: not a half hour ago	不到半小时前	l
+Conversation keyword: not one hour ago	不到一小时前	l
+Conversation keyword: a few hours ago	几小时前	l
+Conversation keyword: not one day ago	不到一天前	l
+Conversation keyword: a few days ago	几天前	l
+Conversation keyword: several days ago	数天前	l
+Conversation keyword: a week ago	一周前	l
+Conversation keyword: a few weeks ago	几周前	l
+Conversation keyword: a month ago	一个月前	l
+Conversation keyword: a few months ago	几个月前	l
+Conversation keyword: months ago	数月前	l
+Conversation keyword: a year ago	一年前	l
+Conversation keyword: a few years ago	几年前	l
+Conversation keyword: several years ago	数年前	l
+Conversation keyword: many years ago	很多年前	l
+Conversation keyword: long ago	很久以前	l
+Conversation keyword: long long ago	很久很久以前	l
+Conversation keyword: just	刚刚	l
+Conversation keyword: now	现在	l
+Conversation keyword: few	几	l
+Conversation keyword: several	数	l
+Conversation keyword: many	许多	l
+Conversation keyword: one	一	l
+Conversation keyword: quarter	一刻	l
+Conversation keyword: half	半	l
+Conversation keyword: minute	分钟	l
+Conversation keyword: minutes	分钟	l
+Conversation keyword: hour	小时	l
+Conversation keyword: hours	小时	l
+Conversation keyword: day	天	l
+Conversation keyword: days	天	l
+Conversation keyword: week	周	l
+Conversation keyword: weeks	周	l
+Conversation keyword: month	月	l
+Conversation keyword: months	月	l
+Conversation keyword: year	年	l
+Conversation keyword: years	年	l
+Conversation keyword: long	很久	l
+Conversation keyword: ago	前	l
+Conversation keyword: before	以前	l
+Conversation keyword: future	将来	l

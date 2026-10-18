@@ -260,8 +260,19 @@ static bool native_fortress_alert_consume_rows(
     return false;
 }
 
+struct NativeFortressAlertHoverSourceCache {
+    uintptr_t world = 0, alert = 0, box = 0;
+    uint64_t generation = 0, wrap_generation = 0;
+    int32_t width = 0;
+    std::vector<NativeAnnouncementDisplayRow> rows;
+    std::vector<int32_t> ids, unit_ids;
+    std::vector<int16_t> categories;
+    std::vector<NativeAnnouncementParagraph> paragraphs;
+    bool valid = false;
+};
+
 static std::vector<NativeAnnouncementParagraph> native_fortress_alert_hover_sources(
-        uintptr_t base, uintptr_t alert, bool button) {
+        uintptr_t base, uintptr_t alert, bool button, uint64_t wrap_generation = 0) {
     const uintptr_t box = button
         ? native_fortress_alert_address(base, 0x18ace80, 0x2701e28)
         : native_fortress_alert_address(base, 0x18ace30, 0x2701dd8);
@@ -269,12 +280,37 @@ static std::vector<NativeAnnouncementParagraph> native_fortress_alert_hover_sour
         ? native_fortress_alert_address(base, 0x18acec8, 0x2701e70)
         : native_fortress_alert_address(base, 0x18ace78, 0x2701e20);
     std::vector<NativeAnnouncementDisplayRow> rows;
-    std::vector<int32_t> ids;
     int32_t width = 0;
     if ((!button && !alert) || !native_fortress_alert_rows(box, rows) || rows.empty() ||
-            !native_history_copy(width_address, width) || width <= 0 || width > 1000 ||
-            !native_fortress_alert_vector(button ? native_history_global(0x24e3968)
-                : alert + 8, ids)) return {};
+            !native_history_copy(width_address, width) || width <= 0 || width > 1000)
+        return {};
+    uintptr_t world = 0;
+    const bool have_world = native_history_copy(native_history_global(0x24ebb58), world) && world;
+    // The actual native wrap owns this display version. Report IDs, repeat
+    // counts and unit arrays may change while native retains these same rows;
+    // they cannot invalidate a parent binding proved for this wrap generation.
+    static std::array<NativeFortressAlertHoverSourceCache, 2> caches;
+    auto &cache = caches[button ? 0 : 1];
+    const bool same_display = have_world && cache.valid && cache.world == world &&
+        cache.generation == g_native_announcement_log_semantic_generation &&
+        cache.alert == alert && cache.box == box && cache.width == width && cache.rows == rows;
+    if (wrap_generation && same_display && cache.wrap_generation == wrap_generation)
+        return cache.paragraphs;
+    std::vector<int32_t> ids;
+    if (!native_fortress_alert_vector(button ? native_history_global(0x24e3968)
+            : alert + 8, ids)) return {};
+    std::vector<int32_t> unit_ids;
+    std::vector<int16_t> categories;
+    const bool units_valid = button ||
+        (native_fortress_alert_vector(alert + 0x20, unit_ids) &&
+         native_fortress_alert_vector(alert + 0x38, categories) &&
+         categories.size() == unit_ids.size());
+    const bool cacheable = units_valid && have_world;
+    // A cache that predates wrap observation still needs the original full
+    // source proof. Never guess that allocation/address reuse means no rebuild.
+    if (!wrap_generation && cacheable && same_display && cache.ids == ids &&
+            cache.unit_ids == unit_ids && cache.categories == categories)
+        return cache.paragraphs;
     size_t next = 0;
     std::vector<NativeAnnouncementParagraph> result;
     for (const int32_t id : ids) {
@@ -295,11 +331,7 @@ static std::vector<NativeAnnouncementParagraph> native_fortress_alert_hover_sour
         if (!paragraph.rows.empty()) result.push_back(std::move(paragraph));
     }
     if (!button) {
-        std::vector<int32_t> unit_ids;
-        std::vector<int16_t> categories;
-        if (!native_fortress_alert_vector(alert + 0x20, unit_ids) ||
-                !native_fortress_alert_vector(alert + 0x38, categories) ||
-                categories.size() != unit_ids.size()) return result;
+        if (!units_valid) return result;
         for (size_t index = 0; index < unit_ids.size(); ++index) {
             uintptr_t unit = 0;
             if (!native_fortress_alert_find_id(native_history_global(0x23e50b0),
@@ -324,8 +356,84 @@ static std::vector<NativeAnnouncementParagraph> native_fortress_alert_hover_sour
     // A changed/deleted later unit can invalidate the remaining old hover
     // cache. Keep earlier complete ID-owned entries; never infer the tail's
     // source or discard those already established report identities.
+    while (next < rows.size() && native_fortress_alert_blank(rows[next].source)) ++next;
+    if (cacheable && next == rows.size()) {
+        // Construct privately so failed reads, partial tails and allocation
+        // failures never publish a cached failure or replace a complete entry.
+        NativeFortressAlertHoverSourceCache complete;
+        complete.world = world;
+        complete.alert = alert;
+        complete.box = box;
+        complete.generation = g_native_announcement_log_semantic_generation;
+        complete.wrap_generation = wrap_generation;
+        complete.width = width;
+        complete.rows = std::move(rows);
+        complete.ids = std::move(ids);
+        complete.unit_ids = std::move(unit_ids);
+        complete.categories = std::move(categories);
+        complete.paragraphs = result;
+        complete.valid = true;
+        cache = std::move(complete);
+    }
     return result;
 }
+
+static NativeFortressAlertSourceKind native_fortress_alert_hover_source_kind(uintptr_t box) {
+    const uintptr_t base = native_history_profile_base();
+    if (!box || !base) return NativeFortressAlertSourceKind::None;
+    if (box == native_fortress_alert_address(base, 0x18ace80, 0x2701e28))
+        return NativeFortressAlertSourceKind::ButtonHover;
+    if (box == native_fortress_alert_address(base, 0x18ace30, 0x2701dd8))
+        return NativeFortressAlertSourceKind::AlertHover;
+    return NativeFortressAlertSourceKind::None;
+}
+
+static std::array<std::atomic<uint64_t>, 2> g_native_fortress_alert_hover_wrap_generations{};
+
+static void remember_native_fortress_alert_hover_wrap(uintptr_t box) {
+    const auto kind = native_fortress_alert_hover_source_kind(box);
+    if (kind != NativeFortressAlertSourceKind::ButtonHover &&
+            kind != NativeFortressAlertSourceKind::AlertHover) return;
+    auto &generation = g_native_fortress_alert_hover_wrap_generations[
+        kind == NativeFortressAlertSourceKind::ButtonHover ? 0 : 1];
+    auto previous = generation.load(std::memory_order_relaxed);
+    // Saturation withdraws the proof instead of ever reusing a version.
+    while (previous != UINT64_MAX && !generation.compare_exchange_weak(previous,
+            previous + 1, std::memory_order_release, std::memory_order_relaxed)) {}
+}
+
+static uint64_t native_fortress_alert_hover_wrap_generation(uintptr_t box) {
+    if (!native_paragraph_capture_installed()) return 0;
+    const auto kind = native_fortress_alert_hover_source_kind(box);
+    if (kind != NativeFortressAlertSourceKind::ButtonHover &&
+            kind != NativeFortressAlertSourceKind::AlertHover) return 0;
+    const auto generation = g_native_fortress_alert_hover_wrap_generations[
+        kind == NativeFortressAlertSourceKind::ButtonHover ? 0 : 1].load(std::memory_order_acquire);
+    // Zero wraps since the complete observer was installed is a valid initial
+    // display version too. Reserve external zero only for missing observation
+    // or saturation, rather than requiring native to rebuild an existing hover.
+    return generation == UINT64_MAX ? 0 : generation + 1;
+}
+
+static std::vector<NativeAnnouncementParagraph> native_fortress_alert_source_paragraphs(
+        NativeFortressAlertSourceKind kind, uintptr_t owner, uint64_t wrap_generation) {
+    if (kind == NativeFortressAlertSourceKind::Popup)
+        return owner ? native_fortress_alert_popup_sources(owner)
+            : std::vector<NativeAnnouncementParagraph>{};
+    if (native_fortress_alert_hover_source_kind(owner) != kind) return {};
+    const uintptr_t base = native_history_profile_base();
+    if (kind == NativeFortressAlertSourceKind::ButtonHover)
+        return native_fortress_alert_hover_sources(base, 0, true, wrap_generation);
+    if (kind != NativeFortressAlertSourceKind::AlertHover) return {};
+    uintptr_t current_alert = 0, cached_alert = 0;
+    if (!native_history_copy(native_fortress_alert_address(base,
+                0x18a93b0, 0x26fe358), current_alert) ||
+            !native_history_copy(native_fortress_alert_address(base,
+                0x18ace28, 0x2701dd0), cached_alert) ||
+            !current_alert || current_alert != cached_alert) return {};
+    return native_fortress_alert_hover_sources(base, current_alert, false, wrap_generation);
+}
+
 static std::vector<NativeAnnouncementParagraph> native_fortress_alert_paragraphs() {
     const uintptr_t base = native_history_profile_base();
     const uintptr_t owner = native_fortress_alert_address(base, 0x18a3598, 0x26f8308);

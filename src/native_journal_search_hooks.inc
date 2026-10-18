@@ -9,9 +9,20 @@ struct NativeJournalSearchProfile {
     std::vector<NativeCall> calls;
 };
 
+static bool native_journal_search_input(const NativeString *query) {
+    const uintptr_t screen = native_current_viewscreen();
+    // A typed current owner keeps other text boxes unchanged. The generated
+    // ABI layout supplies the exact filter_str copied by the bindings below.
+    return screen && native_history_object_is(screen, "viewscreen_adventure_logst") &&
+        reinterpret_cast<uintptr_t>(query) == native_history_object_member(screen,
+            "viewscreen_adventure_logst", "filter_str", sizeof(NativeString));
+}
+
 static void capture_native_journal_search_query(NativeString *query) {
     fold_native_search_query(query, g_native_journal_search_fold);
 }
+
+#include "native_journal_agreement_search.inc"
 
 template<JournalSearchKind Kind>
 static void capture_native_journal_search_term(NativeString *term,
@@ -27,8 +38,11 @@ static void capture_native_journal_search_term(NativeString *term,
     } catch (...) {}
     prepare_native_inlined_search_term(term, query_string, g_native_journal_search_fold,
         [&](std::string_view, std::string_view query) {
-            return !source.empty() &&
-                g_overlay.translated_journal_search_matches(source, query, Kind);
+            if (!source.empty() &&
+                    g_overlay.translated_journal_search_matches(source, query, Kind)) return true;
+            if constexpr (Kind == JournalSearchKind::Agreement)
+                return native_journal_agreement_search_matches(display_source, query);
+            return false;
         });
 }
 

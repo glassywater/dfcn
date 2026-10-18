@@ -1,0 +1,67 @@
+edition	building_type	type_name	switch_selector	remap_index	target_rva	branch
+reference	8	Door	0	0	0x14f9bc	native eligibility arm
+reference	9	Floodgate	1	1	0x15011c	native eligibility arm
+reference	10	Box	2	14	0x1505b3	rejected type
+reference	11	Weaponrack	3	14	0x1505b3	rejected type
+reference	12	Armorstand	4	14	0x1505b3	rejected type
+reference	13	Workshop	5	14	0x1505b3	rejected type
+reference	14	Cabinet	6	14	0x1505b3	rejected type
+reference	15	Statue	7	14	0x1505b3	rejected type
+reference	16	WindowGlass	8	14	0x1505b3	rejected type
+reference	17	WindowGem	9	14	0x1505b3	rejected type
+reference	18	Well	10	14	0x1505b3	rejected type
+reference	19	Bridge	11	2	0x14fb94	native eligibility arm
+reference	20	RoadDirt	12	14	0x1505b3	rejected type
+reference	21	RoadPaved	13	14	0x1505b3	rejected type
+reference	22	SiegeEngine	14	14	0x1505b3	rejected type
+reference	23	Trap	15	3	0x14f8a7	native eligibility arm
+reference	24	AnimalTrap	16	14	0x1505b3	rejected type
+reference	25	Support	17	4	0x1502f4	native eligibility arm
+reference	26	ArcheryTarget	18	14	0x1505b3	rejected type
+reference	27	Chain	19	5	0x1503e0	native eligibility arm
+reference	28	Cage	20	6	0x1504cc	native eligibility arm
+reference	29	Stockpile	21	14	0x1505b3	rejected type
+reference	30	Civzone	22	14	0x1505b3	rejected type
+reference	31	Weapon	23	7	0x150208	native eligibility arm
+reference	32	Wagon	24	14	0x1505b3	rejected type
+reference	33	ScrewPump	25	14	0x1505b3	rejected type
+reference	34	Construction	26	14	0x1505b3	rejected type
+reference	35	Hatch	27	8	0x14fc80	native eligibility arm
+reference	36	GrateWall	28	9	0x14fd6c	native eligibility arm
+reference	37	GrateFloor	29	10	0x14fe58	native eligibility arm
+reference	38	BarsVertical	30	11	0x14ff44	native eligibility arm
+reference	39	BarsFloor	31	12	0x150030	native eligibility arm
+reference	40	GearAssembly	32	13	0x14faa8	native eligibility arm
+classic	8	Door	0	0	0x14f94c	native eligibility arm
+classic	9	Floodgate	1	1	0x1500ac	native eligibility arm
+classic	10	Box	2	14	0x150543	rejected type
+classic	11	Weaponrack	3	14	0x150543	rejected type
+classic	12	Armorstand	4	14	0x150543	rejected type
+classic	13	Workshop	5	14	0x150543	rejected type
+classic	14	Cabinet	6	14	0x150543	rejected type
+classic	15	Statue	7	14	0x150543	rejected type
+classic	16	WindowGlass	8	14	0x150543	rejected type
+classic	17	WindowGem	9	14	0x150543	rejected type
+classic	18	Well	10	14	0x150543	rejected type
+classic	19	Bridge	11	2	0x14fb24	native eligibility arm
+classic	20	RoadDirt	12	14	0x150543	rejected type
+classic	21	RoadPaved	13	14	0x150543	rejected type
+classic	22	SiegeEngine	14	14	0x150543	rejected type
+classic	23	Trap	15	3	0x14f837	native eligibility arm
+classic	24	AnimalTrap	16	14	0x150543	rejected type
+classic	25	Support	17	4	0x150284	native eligibility arm
+classic	26	ArcheryTarget	18	14	0x150543	rejected type
+classic	27	Chain	19	5	0x150370	native eligibility arm
+classic	28	Cage	20	6	0x15045c	native eligibility arm
+classic	29	Stockpile	21	14	0x150543	rejected type
+classic	30	Civzone	22	14	0x150543	rejected type
+classic	31	Weapon	23	7	0x150198	native eligibility arm
+classic	32	Wagon	24	14	0x150543	rejected type
+classic	33	ScrewPump	25	14	0x150543	rejected type
+classic	34	Construction	26	14	0x150543	rejected type
+classic	35	Hatch	27	8	0x14fc10	native eligibility arm
+classic	36	GrateWall	28	9	0x14fcfc	native eligibility arm
+classic	37	GrateFloor	29	10	0x14fde8	native eligibility arm
+classic	38	BarsVertical	30	11	0x14fed4	native eligibility arm
+classic	39	BarsFloor	31	12	0x14ffc0	native eligibility arm
+classic	40	GearAssembly	32	13	0x14fa38	native eligibility arm

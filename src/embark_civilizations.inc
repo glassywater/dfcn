@@ -102,8 +102,8 @@ void Overlay::append_embark_civilization_rows(std::vector<std::string> &rows,
     const auto records = native_embark_selection_records(*gps_, context);
     if (records.empty()) return;
     const auto captures = captured_clipped_captions();
-    const std::array draws{captured_native_drawn_text_rows(false),
-        captured_native_drawn_text_rows(true)};
+    const std::array draws{captured_native_drawn_text_view(false),
+        captured_native_drawn_text_view(true)};
     const auto text_span = [&](int y, int left, int right) {
         return embark_selection_text_span(context[y], left, right);
     };

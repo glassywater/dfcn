@@ -83,7 +83,7 @@ void combat_source_item_removal_job_1392070(longlong param_1)
               uStack_50 = 0xf;
               pppuStack_68 = (undefined8 ****)0x0;
               uStack_c8 = 1;
-              FUN_1413293a0(param_1,alStack_48,1,1);
+              combat_source_combat_unit_caption_13293a0(param_1,alStack_48,1,1);
               FUN_14006f9a0(alStack_48," pulls out and ",0xf);
               cVar7 = FUN_14135c060(param_1,**(undefined8 **)
                                               ((longlong)iVar13 * 8 + *(longlong *)(param_1 + 0x408)
@@ -123,7 +123,7 @@ void combat_source_item_removal_job_1392070(longlong param_1)
               uStack_b0 = *(undefined2 *)(param_1 + 0xaa);
               uStack_ae = *(undefined2 *)(param_1 + 0xac);
               lStack_98 = param_1;
-              FUN_1400e3bb0(0x1424dd740,alStack_48,&uStack_b8);
+              combat_source_announcement_submit_e3bb0(&DAT_1424dd740,alStack_48,&uStack_b8);
               if (0xf < uStack_50) {
                 uVar12 = uStack_50 + 1;
                 ppppuVar9 = (undefined8 ****)pppuStack_68;

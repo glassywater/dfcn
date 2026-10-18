@@ -1,0 +1,15 @@
+edition	image	role	start_rva	end_rva	assembly_file
+reference	PE:6a70a6d9:02711000	character-renderer-owner	0x14ef90	0x19e16c	pe-reference-character-renderer-owner.asm
+reference	PE:6a70a6d9:02711000	english-entity-name	0xa946e0	0xa94ea2	pe-reference-english-entity-name.asm
+reference	PE:6a70a6d9:02711000	guild-profession-name	0x132cc10	0x132de98	pe-reference-guild-profession-name.asm
+reference	PE:6a70a6d9:02711000	gendered-office-name	0x99a3c0	0x99a4d3	pe-reference-gendered-office-name.asm
+reference	PE:6a70a6d9:02711000	territory-office-suffix	0x9bdfb0	0x9be0f8	pe-reference-territory-office-suffix.asm
+reference	PE:6a70a6d9:02711000	entity-position-lookup	0x1ba140	0x1ba1e8	pe-reference-entity-position-lookup.asm
+reference	PE:6a70a6d9:02711000	entity-assignment-lookup	0xb9dc0	0xb9e67	pe-reference-entity-assignment-lookup.asm
+classic	PE:6a70b91c:0270a000	character-renderer-owner	0x14ef20	0x19e0fc	pe-classic-character-renderer-owner.asm
+classic	PE:6a70b91c:0270a000	english-entity-name	0xa91760	0xa91f22	pe-classic-english-entity-name.asm
+classic	PE:6a70b91c:0270a000	guild-profession-name	0x1327b80	0x1328e08	pe-classic-guild-profession-name.asm
+classic	PE:6a70b91c:0270a000	gendered-office-name	0x997bf0	0x997d03	pe-classic-gendered-office-name.asm
+classic	PE:6a70b91c:0270a000	territory-office-suffix	0x9bb7e0	0x9bb928	pe-classic-territory-office-suffix.asm
+classic	PE:6a70b91c:0270a000	entity-position-lookup	0x1ba0d0	0x1ba178	pe-classic-entity-position-lookup.asm
+classic	PE:6a70b91c:0270a000	entity-assignment-lookup	0xb9d50	0xb9df7	pe-classic-entity-assignment-lookup.asm

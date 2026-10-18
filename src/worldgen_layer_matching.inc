@@ -79,8 +79,8 @@ std::vector<Match> Overlay::find_native_worldgen_matches() const {
         const auto *cell = cell_at(x, y, &top);
         return cell ? (cell[1] << 16) | (cell[2] << 8) | cell[3] : 0xc0c0c0;
     };
-    const auto draws = std::array{captured_native_drawn_text_rows(),
-        captured_native_drawn_text_rows(true)};
+    const auto draws = std::array{captured_native_drawn_text_view(),
+        captured_native_drawn_text_view(true)};
     for (const auto &plane : draws) for (const auto &draw : plane) {
         if (draw.y < 0 || draw.y >= gps_->dimy || draw.source.empty() ||
                 draw.draw_dimx != gps_->dimx || draw.draw_dimy != gps_->dimy ||

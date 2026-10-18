@@ -211,6 +211,9 @@ A bolt thrower can be freely turned by the operator. Choose a resting orientatio
 Horizontal axles can vary in length.	水平轴可设置不同长度。
 Set the liquid flow direction below.	在下方设置液体流动方向。
 Water flows from the adjacent input tile and from the tile below the input tile.	水会从相邻的输入格及输入格下方的格子流入。
+# Pump guidance is drawn as two independent native rows, not a wrapped caption.
+Water flows from the adjacent input tile	水会从相邻的输入格流入，
+and from the tile below the input tile.	也会从输入格下方的格子流入。
 Minecart rollers can vary in length.	矿车滚轴可设置不同长度。
 Set the orientation and speed below.	在下方设置朝向和速度。
 Set the friction and auto-dump direction.	设置摩擦力和自动倾倒方向。
@@ -1126,6 +1129,9 @@ Select another rectangle to continue.	选择另一个矩形以继续。
 # room name leaves the success suffix in English.
 Bedroom created.	卧室已创建。
 Dormitory created.	公共宿舍已创建。
+Dining hall created.	餐厅已创建。
+Office created.	办公室已创建。
+Tomb created.	墓地已创建。
 # Room selection joins the furniture name to a rejection reason (Windows
 # native string data near file offset 0x162EFF3). Match the complete warning
 # before the unrelated psychological sense of "rejected".
@@ -1155,6 +1161,7 @@ Where will you jump?	你要跳到哪里？
 Delay warning: Ammo will be loaded/nocked before firing.	延迟提示：发射前需要先装填弹药或搭箭。
 Where will you aim?	你要瞄准哪里？
 Would you like to take an action?	你要采取行动吗？
+Do not alter actions	保持当前行动不变
 You cannot jump while prone.	俯卧时无法跳跃。
 You cannot jump while swimming.	游泳时无法跳跃。
 You are too injured to jump.	你的伤势太重，无法跳跃。
@@ -1164,7 +1171,7 @@ You have nothing left to fire.	你已经没有可以发射的弹药了。
 There is nowhere to jump.	没有可以跳到的位置。
 You cannot jump while wrestling.	摔跤时无法跳跃。
 You cannot speak.	你无法说话。
-You just can't fit any more.	你实在吃不下更多东西了。
+You just can't fit any more.	你实在吃喝不下更多了。
 You haven't been able to act for a while.	你已经有一段时间无法行动了。
 
 # Native key inserts remain dynamic bindings, never default-key text.

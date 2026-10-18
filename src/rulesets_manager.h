@@ -32,9 +32,29 @@ namespace Hooks {
     class RulesetsManager {
     public:
         static RulesetsManager& getInstance() {
+            if (instance_override_) return *instance_override_;
             static RulesetsManager instance;
             return instance;
         }
+
+        // The owner keeps this parser alive until its worker has stopped.
+        // Routing also covers explicit getInstance() calls in shared helpers.
+        class ScopedInstanceOverride {
+            RulesetsManager *previous_;
+        public:
+            explicit ScopedInstanceOverride(RulesetsManager &parser) noexcept
+                : previous_(instance_override_) { instance_override_ = &parser; }
+            ~ScopedInstanceOverride() { instance_override_ = previous_; }
+            ScopedInstanceOverride(const ScopedInstanceOverride &) = delete;
+            ScopedInstanceOverride &operator=(const ScopedInstanceOverride &) = delete;
+        };
+
+        // Copy every loaded namespace and naming vocabulary, rebuilding all
+        // views into the new owned token graph. Runtime memo/active state and
+        // callbacks capturing another Overlay are intentionally left empty;
+        // set_*_resolver/provider can bind the private owner afterwards.
+        // Invoke while the source parser's translation domain is active.
+        std::shared_ptr<RulesetsManager> clone_private() const;
 
         bool init();
         void shutdown();
@@ -154,6 +174,7 @@ namespace Hooks {
         std::optional<std::string> translate_tile_description(const std::string& text) const;
 
     private:
+        inline static thread_local RulesetsManager *instance_override_ = nullptr;
         // =====================================================================
         // 1. 构造
         // =====================================================================

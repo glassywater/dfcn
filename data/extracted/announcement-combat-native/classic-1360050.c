@@ -120,7 +120,8 @@ LAB_1413600cf:
   uStack_40 = 0xf;
   ppppuStack_58 = (ulonglong ****)0x0;
   uStack_128 = 1;
-  FUN_1413293a0(param_1,&ppppuStack_58,1,CONCAT71((int7)(lStack_a0 - lStack_a8 >> 10),1));
+  combat_source_combat_unit_caption_13293a0
+            (param_1,&ppppuStack_58,1,CONCAT71((int7)(lStack_a0 - lStack_a8 >> 10),1));
   uVar11 = uStack_48;
   pppuStack_78 = (ulonglong ***)0x0;
   pppuStack_70 = (ulonglong ***)0x0;
@@ -131,10 +132,8 @@ LAB_1413600cf:
     pppppuVar14 = (ulonglong *****)ppppuStack_58;
   }
   if (0x7fffffffffffffff < uStack_48) {
+                    /* WARNING: Subroutine does not return */
     FUN_140065820();
-    pcVar3 = (code *)swi(3);
-    (*pcVar3)();
-    return;
   }
   if (uStack_48 < 0x10) {
     uStack_68 = uStack_48;
@@ -196,7 +195,7 @@ LAB_1413602ab:
   uStack_f0 = *(undefined2 *)(param_1 + 0xaa);
   uStack_ee = *(undefined2 *)(param_1 + 0xac);
   lStack_d8 = param_1;
-  FUN_1400e3bb0(0x1424dd740,&pppuStack_78,&uStack_f8);
+  combat_source_announcement_submit_e3bb0(&DAT_1424dd740,&pppuStack_78,&uStack_f8);
   if (0xf < uStack_60) {
     uVar11 = uStack_60 + 1;
     ppppuVar8 = (ulonglong ****)pppuStack_78;

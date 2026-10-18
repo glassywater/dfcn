@@ -21,6 +21,9 @@ static NativeAnnouncementLogRenderFn g_real_native_announcement_log = nullptr;
 static std::atomic_uint g_active_native_announcement_callbacks{0};
 #include "native_announcement_identity.inc"
 #include "native_announcement_kinship.inc"
+#include "native_announcement_log_fields.inc"
+#include "native_announcement_log_speech.inc"
+#include "native_announcement_log_worker_inputs.inc"
 
 static void capture_native_announcement_log(uint64_t owner, uint64_t second,
         uint64_t third, uint64_t fourth) {
@@ -28,12 +31,132 @@ static void capture_native_announcement_log(uint64_t owner, uint64_t second,
         Scope() { g_active_native_announcement_callbacks.fetch_add(1, std::memory_order_acq_rel); }
         ~Scope() { g_active_native_announcement_callbacks.fetch_sub(1, std::memory_order_acq_rel); }
     } scope;
-    try { remember_native_announcement_log_owner(static_cast<uintptr_t>(owner)); }
-    catch (...) {}
-    // Preserve all four register arguments. The native renderer's caller
-    // ignores the return value and its body reads no incoming stack slots.
-    if (g_real_native_announcement_log)
-        g_real_native_announcement_log(owner, second, third, fourth);
+    NativeInputCallbackScope callback;
+    const auto original = g_real_native_announcement_log;
+    if (!original) return;
+    TranslationStateScope translation;
+    auto *gps = native_graphics();
+    auto &layer = g_native_announcement_log_layer;
+    if (!gps || !owner || !gps->screen || !gps->screen_top ||
+            gps->dimx <= 0 || gps->dimx > 1000 || gps->dimy <= 0 || gps->dimy > 1000) {
+        log_line("ERROR", "Announcement layer cannot capture invalid native graphics; shared output is not used");
+        return;
+    }
+    if (native_announcement_log_foreground_view(gps)) {
+        // A recursive call is already bound to this same private output.
+        callback.call_native([&] { original(owner, second, third, fourth); });
+        return;
+    }
+    size_t first_visible = 0, end_visible = 0;
+    std::optional<SDL_Rect> panel;
+    try {
+        NativeBorrowedVector<uintptr_t> rows;
+        const auto *settings = native_ui_settings_source();
+        int32_t grid_y = 0, scroll = 0;
+#ifdef _WIN32
+        if (settings) std::memcpy(&grid_y,
+            reinterpret_cast<const unsigned char *>(settings) + 0x18, sizeof(grid_y));
+#else
+        if (settings) grid_y = settings->display.grid_y;
+#endif
+        if (grid_y > 0 && grid_y <= 1000 && native_history_read_vector(owner + 8, rows) &&
+                native_history_copy(owner + 0x24, scroll)) {
+            // These are the producer's actual fill and row-loop bounds. They
+            // define owned stores directly, without discovering them in a grid.
+            const int64_t center = (int64_t(static_cast<int32_t>(third)) +
+                static_cast<int32_t>(fourth)) / 2;
+            const int64_t bottom = int64_t(grid_y) - 5;
+            const int64_t height = std::min<int64_t>(39, int64_t(rows.size()) + 6);
+            const int64_t top = bottom - 19 > height ? bottom - height + 1 : 20;
+            panel = native_notification_visible_bounds(*gps,
+                center - 50, top, center + 50, bottom);
+            const int64_t capacity = std::max<int64_t>(0, bottom - (top + 4));
+            first_visible = static_cast<size_t>(std::max<int64_t>(0,
+                std::min<int64_t>(scroll, int64_t(rows.size()) - capacity)));
+            end_visible = static_cast<size_t>(std::min<int64_t>(rows.size(),
+                int64_t(first_visible) + capacity));
+        }
+    } catch (...) {}
+    if (!panel) {
+        log_line("ERROR", "Announcement native allocation is unavailable; shared output is not used");
+        return;
+    }
+    try {
+        native_announcement_log_begin_frame();
+        const bool resized = layer.foreground.dimx != gps->dimx ||
+            layer.foreground.dimy != gps->dimy;
+        layer.foreground.prepare(*gps);
+        native_ui_detach_map_output(*layer.foreground.graphics());
+        // Only allocation/stride changes initialize the entire new storage.
+        // Ordinary frames clear just the preceding producer-owned stores.
+        if (resized) layer.foreground.clear();
+        else for (const auto &frame : layer.frames) layer.foreground.clear(frame);
+        layer.frames.clear();
+        layer.frames.push_back(*panel);
+        g_native_announcement_log_panel = *panel;
+    } catch (...) {
+        log_line("ERROR", "Announcement private output allocation failed; shared output is not used");
+        return;
+    }
+    layer.native_renderer = g_native_help_layer.native_renderer;
+    layer.renderer = g_native_help_layer.renderer;
+    try {
+        // Redirect before the first native background/border store. The grid
+        // starts empty, so no live HUD glyph or texture enters this document.
+        NativeUiGridBinding output(gps, *layer.foreground.graphics());
+        struct WriteScope {
+            const graphicst *previous = g_native_announcement_log_write_graphics;
+            explicit WriteScope(const graphicst *graphics) {
+                g_native_announcement_log_write_graphics = graphics;
+            }
+            ~WriteScope() { g_native_announcement_log_write_graphics = previous; }
+        } writing(gps);
+        // Preserve all four register arguments; the complete native body
+        // consumes no incoming stack arguments on either supported host ABI.
+        callback.call_native([&] { original(owner, second, third, fourth); });
+        layer.foreground.graphics()->top_in_use = gps->top_in_use;
+        // A retained layer can be presented after the capture epoch advances.
+        // Freeze its complete parents now, alongside their actual drawn rows.
+        try { g_native_announcement_log_records = native_announcement_log_paragraphs(
+            owner, first_visible, end_visible); }
+        catch (...) { g_native_announcement_log_records.clear(); }
+    } catch (...) {
+        log_line("ERROR", "Announcement native draw failed inside its private layer; shared output is not used");
+        return;
+    }
+    g_native_announcement_log_source_context_valid = false;
+    try {
+#ifdef _WIN32
+        // Freeze the native atlas/display selections once with this producer
+        // submission. Repeated Present must not resnapshot nine font tables.
+        g_native_announcement_log_fonts.emplace(true, true);
+        g_native_announcement_log_resources_valid =
+            g_native_announcement_log_fonts->append_native_context(
+                g_native_announcement_log_resources);
+        if (layer.native_renderer) {
+            const auto native = reinterpret_cast<uintptr_t>(layer.native_renderer);
+            std::array<int32_t, 4> raster{};
+            uint8_t zoom = 0;
+            int32_t factor = 0;
+            if (native_font_metrics_detail::copy_native_font_memory(
+                        native + 0x168, raster.data(), sizeof(raster)) &&
+                    native_font_metrics_detail::copy_native_font_value(native + 0x180, zoom) &&
+                    native_font_metrics_detail::copy_native_font_value(native + 0x184, factor)) {
+                auto &resources = g_native_announcement_log_resources;
+                resources.append(reinterpret_cast<const char *>(raster.data()), sizeof(raster));
+                resources.append(reinterpret_cast<const char *>(&zoom), sizeof(zoom));
+                resources.append(reinterpret_cast<const char *>(&factor), sizeof(factor));
+            } else g_native_announcement_log_resources_valid = false;
+        }
+#else
+        g_native_announcement_log_resources_valid = true;
+#endif
+        g_native_announcement_log_source_context = native_announcement_log_source_key();
+        g_native_announcement_log_source_context_valid = g_native_announcement_log_resources_valid;
+    } catch (...) { g_native_announcement_log_source_context.clear(); }
+    ++g_native_announcement_log_submission;
+    layer.ready = true;
+    NativeUiReadScope::invalidate_reads();
 }
 
 static void capture_native_speech_transform(NativeString *source) {
@@ -49,8 +172,10 @@ static void capture_native_speech_transform(NativeString *source) {
     if (g_real_native_speech_transform) g_real_native_speech_transform(source);
     try {
         std::string_view rendered;
-        if (!original.empty() && native_string_view(source, &rendered, SIZE_MAX))
+        if (!original.empty() && native_string_view(source, &rendered, SIZE_MAX)) {
             remember_native_speech_source(original, rendered);
+            remember_native_announcement_log_speech_transform(original, rendered);
+        }
     } catch (...) {}
 }
 
@@ -62,6 +187,7 @@ static void capture_native_announcement(void *manager, const NativeString *sourc
     } scope;
     int16_t submitted_type = -1;
     std::string submitted_source;
+    std::shared_ptr<const NativeAnnouncementUnitRecord> submitted_fields;
     try {
         std::string_view text;
         // This argument is the game's live submitted string, with its native
@@ -78,12 +204,32 @@ static void capture_native_announcement(void *manager, const NativeString *sourc
                 if (type == 301)
                     remember_native_mission_return_submission(
                         reinterpret_cast<uintptr_t>(source), text);
-                remember_native_announcement_unit_submission(type, text);
+                submitted_fields = remember_native_announcement_unit_submission(type, text);
                 remember_native_announcement(type, text);
             }
         }
     } catch (...) {}
+    NativeAnnouncementLogEventSubmission event_ticket;
+    NativeAnnouncementLogFieldSubmission field_ticket;
+    NativeAnnouncementLogSpeechSubmission speech_ticket;
+    try {
+        if (submitted_type >= 0)
+            event_ticket = begin_native_announcement_log_event_submission(submitted_type, source);
+    } catch (...) {}
+    try {
+        field_ticket = begin_native_announcement_log_field_submission(
+            std::move(submitted_fields), submitted_source);
+    } catch (...) {}
+    try {
+        speech_ticket = begin_native_announcement_log_speech_submission(submitted_type, source);
+    } catch (...) {}
     if (g_real_native_announcement) g_real_native_announcement(manager, source, parameters);
+    try { finish_native_announcement_log_event_submission(event_ticket); }
+    catch (...) {}
+    try { finish_native_announcement_log_field_submission(field_ticket); }
+    catch (...) {}
+    try { finish_native_announcement_log_speech_submission(speech_ticket); }
+    catch (...) {}
     // The native submitter may coalesce a repeat without allocating a new
     // report. Queue its owned complete key AFTER the native update, including
     // when a draw already observed the pre-submit recent-source snapshot.
@@ -92,12 +238,18 @@ static void capture_native_announcement(void *manager, const NativeString *sourc
         std::lock_guard<std::mutex> lock(g_native_announcement_mutex);
         g_native_announcement_history_full_refresh = true;
     }
+    // Every formatter/event ticket is now bound to the actual native report
+    // ID, including a coalesced repeat. Queue its immutable input before any
+    // modal has to discover it through wrapped visible rows.
+    try { native_announcement_log_preheat_submission(submitted_type, submitted_source); }
+    catch (...) {}
 }
 
 static bool native_announcement_hook_active() {
     return g_native_announcement_entry.active() || g_native_speech_transform_entry.active() ||
         g_native_announcement_log_entry.active() ||
         native_announcement_kinship_hook_active() ||
+        native_announcement_log_speech_hook_active() ||
         g_active_native_announcement_callbacks.load(std::memory_order_acquire) != 0;
 }
 static void uninstall_native_announcement_hook() {
@@ -106,13 +258,14 @@ static void uninstall_native_announcement_hook() {
     const bool announcement = g_native_announcement_entry.uninstall("Native announcement capture");
     const bool log = g_native_announcement_log_entry.uninstall("Native announcement log ownership");
     const bool kinship = uninstall_native_announcement_kinship_hook();
+    const bool spoken = uninstall_native_announcement_log_speech_hook();
     if (speech) g_real_native_speech_transform = nullptr;
     if (announcement) g_real_native_announcement = nullptr;
     if (log) {
         g_real_native_announcement_log = nullptr;
-        remember_native_announcement_log_owner(0);
+        native_announcement_log_release_layer();
     }
-    if (speech && announcement && log && kinship) {
+    if (speech && announcement && log && kinship && spoken) {
         clear_native_announcement_sources();
         clear_native_announcement_unit_identities();
     }
@@ -123,7 +276,7 @@ static bool install_native_announcement_hook() {
 #ifdef _WIN32
             && g_native_threat_details_entry.installed && g_native_threat_family_calls.installed
 #endif
-        ) return true;
+        ) return install_native_announcement_log_speech_hook();
     if (native_announcement_hook_active()) {
         uninstall_native_announcement_hook();
         if (native_announcement_hook_active()) return false;
@@ -168,6 +321,10 @@ static bool install_native_announcement_hook() {
         }
     }
     if (!install_native_announcement_kinship_hook()) {
+        uninstall_native_announcement_hook();
+        return false;
+    }
+    if (!install_native_announcement_log_speech_hook()) {
         uninstall_native_announcement_hook();
         return false;
     }

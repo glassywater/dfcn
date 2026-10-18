@@ -296,8 +296,8 @@ void Overlay::append_fortress_labor_rows(std::vector<std::string> &rows,
     };
     const bool classic = native_ui_classic().value_or(false);
     const auto captures = captured_clipped_captions();
-    const auto draws = captured_native_drawn_text_rows();
-    const auto top_draws = captured_native_drawn_text_rows(true);
+    const auto draws = captured_native_drawn_text_view();
+    const auto top_draws = captured_native_drawn_text_view(true);
     struct CaptionRow {
         NativeFortressLaborCaption caption;
         bool top = false;

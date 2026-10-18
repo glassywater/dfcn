@@ -60,8 +60,8 @@ void Overlay::append_fortress_noble_rows(std::vector<std::string> &rows,
     const auto band = fortress_nobles_band(*gps_, rows);
     if (!band) return;
     const auto captures = captured_clipped_captions();
-    const std::array draws{captured_native_drawn_text_rows(false),
-        captured_native_drawn_text_rows(true)};
+    const std::array draws{captured_native_drawn_text_view(false),
+        captured_native_drawn_text_view(true)};
     const int appoint_x = band->appoint_x;
     const int panel_right = band->panel.x + band->panel.w;
     // The native rectangle spans the whole record; the controls and portrait

@@ -54,8 +54,12 @@ TranslationResult Overlay::translate_musical_form_paragraph_result(
     // in the existing reference grammar and share the material parsing.
     auto translate_recited_material = [&](std::string_view raw)
             -> std::optional<std::string> {
+        raw = trim_view(raw);
+        if (raw.empty()) return "吟诵未注明的内容";
         if (raw == "nonsensical words and sounds")
             return "诵念没有具体含义的词句与音节";
+        if (raw == "a composition of") return "吟诵体式未注明的诗作";
+        if (raw == "the words of") return "吟诵题名未注明的作品中的词句";
         if (raw.starts_with("a composition of ")) {
             const auto work = translate_reference(raw.substr(17));
             if (!work) return std::nullopt;
@@ -164,6 +168,14 @@ TranslationResult Overlay::translate_musical_form_paragraph_result(
     };
     auto number_value = [](std::string_view raw) -> std::optional<int> {
         std::string value = lower(trim(std::string(raw)));
+        // Share the inverse of the native recursive cardinal formatter for
+        // every magnitude; the relaxed legacy spellings below remain valid.
+        if (const auto number = adventure_location_count(value))
+            return static_cast<int>(*number);
+        if (value.starts_with("negative ")) {
+            if (const auto number = adventure_location_count(value.substr(9)))
+                return static_cast<int>(-*number);
+        }
         if (!value.empty() && std::all_of(
                 value.begin(), value.end(), [](unsigned char ch) {
                     return ch >= '0' && ch <= '9';
@@ -1086,75 +1098,204 @@ TranslationResult Overlay::translate_musical_form_paragraph_result(
             return "乐手按这一曲式即兴演奏";
         }
 
-        // Spoken or sung material accompanying the music.  Besides the two
-        // generic roles, the generator can put a named vocal instrument here
-        // (`A chanter recites ...`).  Parse the actor slot instead of limiting
-        // the whole production to two captured literals.
-        {
-            size_t recites_at = sentence.find(" recites ");
-            size_t recite_size = 9;
-            if (recites_at == std::string::npos) {
-                recites_at = sentence.find(" recite ");
-                recite_size = 8;
+        // dd5ed4..dd644f serializes every voice in vector order. A failed
+        // work/form lookup jumps to dd6249 after writing the count and role,
+        // leaving the recite verb absent. Recover count/role slots before
+        // resolving their opaque material or neighboring instrument names.
+        const auto translate_voice_overview = [&]() -> std::optional<std::string> {
+            auto native_count = [&](std::string_view raw)
+                    -> std::optional<std::string> {
+                const std::string value = lower(trim(std::string(raw)));
+                if (value == "a" || value == "an") return std::string("一");
+                const auto native_number = [](std::string_view field)
+                        -> std::optional<int> {
+                    bool negative = false;
+                    if (field.starts_with("negative ")) {
+                        negative = true;
+                        field.remove_prefix(9);
+                    }
+                    const auto number = adventure_location_count(field);
+                    if (!number) return std::nullopt;
+                    return static_cast<int>(negative ? -*number : *number);
+                };
+                const size_t range = value.find(" to ");
+                if (range != std::string::npos) {
+                    const auto first = native_number(std::string_view(value).substr(0, range));
+                    const auto last = native_number(std::string_view(value).substr(range + 4));
+                    if (!first || !last) return std::nullopt;
+                    return chinese_number(*first) + "至" + chinese_number(*last);
+                }
+                const auto number = native_number(value);
+                if (!number) return std::nullopt;
+                return chinese_number(*number);
+            };
+            auto trim_instrument_separator = [](std::string_view value) {
+                value = trim_view(value);
+                if (value.ends_with(',')) value = trim_view(value.substr(0, value.size() - 1));
+                if (value.ends_with(" and")) value = trim_view(value.substr(0, value.size() - 4));
+                return value;
+            };
+            auto counted_instruments = [&](std::string_view raw)
+                    -> std::optional<std::string> {
+                raw = trim_instrument_separator(raw);
+                if (raw.starts_with(',')) raw = trim_view(raw.substr(1));
+                if (raw.starts_with("and ")) raw = trim_view(raw.substr(4));
+                std::vector<std::string> instruments;
+                for (std::string_view item : split_list(raw)) {
+                    std::optional<std::string> count;
+                    std::string_view name;
+                    // Count/range is a native field, not part of the raw
+                    // instrument name. Require it on every list member.
+                    for (size_t boundary = item.find(' ');
+                         boundary != std::string_view::npos;
+                         boundary = item.find(' ', boundary + 1)) {
+                        const auto candidate = native_count(item.substr(0, boundary));
+                        const auto tail = trim_view(item.substr(boundary + 1));
+                        if (!candidate || tail.empty()) continue;
+                        count = candidate;
+                        name = tail;
+                    }
+                    if (!count || name.empty()) return std::nullopt;
+                    const auto translated = translate_native_reference(name);
+                    if (!translated) return std::nullopt;
+                    instruments.push_back(*count + "件“" + *translated + "”");
+                }
+                if (instruments.empty()) return std::nullopt;
+                return join_chinese(instruments);
+            };
+            struct VocalSlot {
+                size_t begin;
+                size_t end;
+                bool recites;
+                std::string actor;
+            };
+            static constexpr auto roles = std::to_array<std::pair<
+                std::string_view, std::string_view>>({
+                {"singers", "歌者"}, {"singer", "歌者"},
+                {"speakers", "朗诵者"}, {"speaker", "朗诵者"},
+                {"chanters", "吟唱者"}, {"chanter", "吟唱者"},
+            });
+            std::vector<VocalSlot> vocals;
+            const std::string_view voices(sentence);
+            size_t scan = 0;
+            while (scan < voices.size()) {
+                std::optional<VocalSlot> next;
+                for (const auto &[role, chinese] : roles) {
+                    for (size_t at = voices.find(role, scan);
+                         at != std::string_view::npos;
+                         at = voices.find(role, at + role.size())) {
+                        const size_t role_end = at + role.size();
+                        if (at == 0 || voices[at - 1] != ' ' ||
+                            (role_end < voices.size() && voices[role_end] != ' ')) continue;
+                        for (size_t boundary = scan; boundary + 1 < at;) {
+                            const auto count = native_count(voices.substr(
+                                boundary, at - boundary - 1));
+                            if (count) {
+                                size_t end = role_end;
+                                bool recites = false;
+                                for (const std::string_view verb : {" recites", " recite"}) {
+                                    if (!voices.substr(end).starts_with(verb)) continue;
+                                    const size_t verb_end = end + verb.size();
+                                    if (verb_end < voices.size() && voices[verb_end] != ' ') continue;
+                                    end = verb_end;
+                                    recites = true;
+                                    break;
+                                }
+                                if (!next || boundary < next->begin)
+                                    next = VocalSlot{boundary, end, recites,
+                                        *count + "名" + std::string(chinese)};
+                                break;
+                            }
+                            const size_t space = voices.find(' ', boundary);
+                            if (space == std::string_view::npos) break;
+                            boundary = space + 1;
+                        }
+                        if (next && next->begin < at) break;
+                    }
+                }
+                if (!next) break;
+                vocals.push_back(std::move(*next));
+                scan = vocals.back().end;
             }
-            if (recites_at != std::string::npos) {
-                std::string_view raw_actor = std::string_view(sentence).substr(
-                    0, recites_at);
-                std::optional<std::string> actor;
-                if (raw_actor == "A singer") actor = "一名歌者";
-                else if (raw_actor == "A speaker") actor = "一名朗诵者";
-                else if (raw_actor == "A chanter") actor = "一名吟唱者";
-                else {
-                    // The final word is the role; the complete preceding
-                    // phrase is its count (`One to four speakers`,
-                    // `Twenty one singers`, `up to three chanters`). Splitting
-                    // at the first space misreads ranges as native names.
-                    const size_t actor_space = raw_actor.rfind(' ');
-                    if (actor_space != std::string_view::npos) {
-                        const std::string_view role =
-                            raw_actor.substr(actor_space + 1);
-                        if (role == "singer" || role == "singers" ||
-                            role == "speaker" || role == "speakers" ||
-                            role == "chanter" || role == "chanters") {
-                            const auto count = translate_count(
-                                raw_actor.substr(0, actor_space));
-                            if (!count) return std::nullopt;
-                            if (role == "singer" || role == "singers")
-                                actor = *count + "名歌者";
-                            else if (role == "speaker" || role == "speakers")
-                                actor = *count + "名朗诵者";
-                            else actor = *count + "名吟唱者";
+            if (!vocals.empty()) {
+                constexpr std::string_view first_instruments =
+                    "The music is played on";
+                constexpr std::string_view later_instruments =
+                    "while the music is played on";
+                std::vector<std::string> assignments;
+                const auto leading = trim_instrument_separator(
+                    voices.substr(0, vocals.front().begin));
+                if (!leading.empty()) {
+                    if (!leading.starts_with(first_instruments)) return std::nullopt;
+                    const auto instruments = counted_instruments(
+                        trim_view(leading.substr(first_instruments.size())));
+                    if (!instruments) return std::nullopt;
+                    assignments.push_back("演奏乐器为" + *instruments);
+                }
+                for (size_t index = 0; index < vocals.size(); ++index) {
+                    const auto &vocal = vocals[index];
+                    const size_t end = index + 1 == vocals.size()
+                        ? voices.size() : vocals[index + 1].begin;
+                    std::string_view tail = trim_instrument_separator(
+                        voices.substr(vocal.end, end - vocal.end));
+                    std::string_view material = tail;
+                    std::optional<std::string> instruments;
+                    const size_t explicit_at = tail.find(later_instruments);
+                    if (explicit_at != std::string_view::npos) {
+                        material = trim_view(tail.substr(0, explicit_at));
+                        instruments = counted_instruments(trim_view(tail.substr(
+                            explicit_at + later_instruments.size())));
+                        if (!instruments) return std::nullopt;
+                    } else if (!vocal.recites) {
+                        material = {};
+                        if (!tail.empty()) {
+                            instruments = counted_instruments(tail);
+                            if (!instruments) return std::nullopt;
+                        }
+                    } else {
+                        // Later instruments have no repeated introduction
+                        // once an earlier voice set the native flag. Resolve
+                        // their counted field boundary before sending any
+                        // recited title to the procedural-name resolver.
+                        size_t material_prefix = 0;
+                        if (tail.starts_with("nonsensical words and sounds"))
+                            material_prefix = std::string_view("nonsensical words and sounds").size();
+                        else if (tail.starts_with("a composition of"))
+                            material_prefix = std::string_view("a composition of").size();
+                        else if (tail.starts_with("the words of"))
+                            material_prefix = std::string_view("the words of").size();
+                        else if (tail.starts_with("The ")) material_prefix = 4;
+                        for (size_t boundary = material_prefix;
+                             boundary < tail.size();) {
+                            if ((boundary == 0 || tail[boundary - 1] == ' ' ||
+                                 tail[boundary - 1] == ',') &&
+                                tail[boundary] != ' ') {
+                                const auto candidate = counted_instruments(tail.substr(boundary));
+                                if (candidate) {
+                                    material = trim_instrument_separator(tail.substr(0, boundary));
+                                    instruments = candidate;
+                                    break;
+                                }
+                            }
+                            const size_t space = tail.find(' ', boundary);
+                            if (space == std::string_view::npos) break;
+                            boundary = space + 1;
                         }
                     }
-                    if (!actor) {
-                        std::string_view named_actor = raw_actor;
-                        if (named_actor.starts_with("A "))
-                            named_actor.remove_prefix(2);
-                        const auto named =
-                            translate_native_reference(named_actor);
-                        if (named) actor = "“" + *named + "”声部";
-                    }
+                    std::string rendered = vocal.actor;
+                    if (vocal.recites) {
+                        const auto translated = translate_recited_material(material);
+                        if (!translated) return std::nullopt;
+                        rendered += *translated;
+                    } else rendered += "（诵念内容未注明）";
+                    if (instruments) rendered += "，伴奏乐器为" + *instruments;
+                    assignments.push_back(std::move(rendered));
                 }
-                if (!actor) return std::nullopt;
-
-                const std::string_view tail = std::string_view(sentence).substr(
-                    recites_at + recite_size);
-                constexpr std::string_view accompaniment =
-                    " while the music is played on ";
-                const size_t while_at = tail.find(accompaniment);
-                const auto material = translate_recited_material(
-                    tail.substr(0, while_at));
-                if (!material) return std::nullopt;
-                std::string result = *actor + *material;
-                if (while_at != std::string_view::npos) {
-                    const auto instruments = translate_reference_list(tail.substr(
-                        while_at + accompaniment.size()));
-                    if (!instruments) return std::nullopt;
-                    result += "，伴奏乐器为" + *instruments;
-                }
-                return result;
+                return join_chinese(assignments, "；");
             }
-        }
+            return std::nullopt;
+        };
+        if (const auto overview = translate_voice_overview()) return overview;
 
         if (sentence == "Only one pitch is ever played at a time")
             return "每次只奏一个音，不叠加其他音";

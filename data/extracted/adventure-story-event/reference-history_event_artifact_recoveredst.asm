@@ -1,0 +1,83 @@
+; reference PE:6a70a6d9:02711000; history_event_artifact_recoveredst; RVA 0xb8b830..0xb8b989
+0xb8b830: mov    QWORD PTR [rsp+0x10],rbx
+0xb8b835: mov    QWORD PTR [rsp+0x18],rdi
+0xb8b83a: push   r14
+0xb8b83c: sub    rsp,0x30
+0xb8b840: mov    rdi,rdx
+0xb8b843: mov    r14,r8
+0xb8b846: mov    rbx,rcx
+0xb8b849: lea    rdx,[rip+0xb536e0]        # 0x1416def30 ; cstring='the recovery of '
+0xb8b850: mov    rcx,rdi
+0xb8b853: mov    r8d,0x10
+0xb8b859: call   0x14006fa10
+0xb8b85e: mov    r9d,DWORD PTR [r14]
+0xb8b861: mov    rdx,rdi
+0xb8b864: mov    r8d,DWORD PTR [rbx+0x28]
+0xb8b868: call   0x140b94400
+0xb8b86d: mov    r8d,0x4
+0xb8b873: lea    rdx,[rip+0xa6218e]        # 0x1415eda08 ; cstring=' by '
+0xb8b87a: mov    rcx,rdi
+0xb8b87d: call   0x14006fa10
+0xb8b882: mov    r8d,DWORD PTR [rbx+0x30]
+0xb8b886: lea    rcx,[rip+0x196e42b]        # 0x1424f9cb8
+0xb8b88d: xor    eax,eax
+0xb8b88f: mov    r9,r14
+0xb8b892: mov    WORD PTR [rsp+0x28],ax
+0xb8b897: mov    rdx,rdi
+0xb8b89a: mov    WORD PTR [rsp+0x20],0x1
+0xb8b8a1: call   0x140b92f10
+0xb8b8a6: cmp    DWORD PTR [rbx+0x34],0xffffffff
+0xb8b8aa: je     0x140b8b909
+0xb8b8ac: cmp    DWORD PTR [rbx+0x38],0xffffffff
+0xb8b8b0: je     0x140b8b8e3
+0xb8b8b2: mov    r8d,0x6
+0xb8b8b8: lea    rdx,[rip+0xa620bd]        # 0x1415ed97c ; cstring=' from '
+0xb8b8bf: mov    rcx,rdi
+0xb8b8c2: call   0x14006fa10
+0xb8b8c7: mov    eax,DWORD PTR [r14]
+0xb8b8ca: mov    rdx,rdi
+0xb8b8cd: mov    r9d,DWORD PTR [rbx+0x38]
+0xb8b8d1: mov    r8d,DWORD PTR [rbx+0x34]
+0xb8b8d5: mov    DWORD PTR [rsp+0x28],eax
+0xb8b8d9: mov    BYTE PTR [rsp+0x20],0x1
+0xb8b8de: call   0x140b94090
+0xb8b8e3: mov    r8d,0x4
+0xb8b8e9: lea    rdx,[rip+0xa616c4]        # 0x1415ecfb4 ; cstring=' in '
+0xb8b8f0: mov    rcx,rdi
+0xb8b8f3: call   0x14006fa10
+0xb8b8f8: mov    r9d,DWORD PTR [r14]
+0xb8b8fb: mov    rdx,rdi
+0xb8b8fe: mov    r8d,DWORD PTR [rbx+0x34]
+0xb8b902: call   0x140b93930
+0xb8b907: jmp    0x140b8b954
+0xb8b909: cmp    DWORD PTR [rbx+0x3c],0xffffffff
+0xb8b90d: mov    QWORD PTR [rsp+0x40],rsi
+0xb8b912: jne    0x140b8b91a
+0xb8b914: cmp    DWORD PTR [rbx+0x40],0xffffffff
+0xb8b918: je     0x140b8b94f
+0xb8b91a: mov    r8d,0x4
+0xb8b920: lea    rdx,[rip+0xa6168d]        # 0x1415ecfb4 ; cstring=' in '
+0xb8b927: mov    rcx,rdi
+0xb8b92a: call   0x14006fa10
+0xb8b92f: mov    r8d,DWORD PTR [rbx+0x40]
+0xb8b933: mov    rdx,rdi
+0xb8b936: mov    r9d,DWORD PTR [r14]
+0xb8b939: cmp    r8d,0xffffffff
+0xb8b93d: je     0x140b8b946
+0xb8b93f: call   0x140b94940
+0xb8b944: jmp    0x140b8b94f
+0xb8b946: mov    r8d,DWORD PTR [rbx+0x3c]
+0xb8b94a: call   0x140b94a40
+0xb8b94f: mov    rsi,QWORD PTR [rsp+0x40]
+0xb8b954: mov    r8d,0x4
+0xb8b95a: lea    rdx,[rip+0xa61653]        # 0x1415ecfb4 ; cstring=' in '
+0xb8b961: mov    rcx,rdi
+0xb8b964: call   0x14006fa10
+0xb8b969: mov    r9d,DWORD PTR [rbx+0xc]
+0xb8b96d: mov    rdx,rdi
+0xb8b970: mov    r8d,DWORD PTR [rbx+0x8]
+0xb8b974: mov    rbx,QWORD PTR [rsp+0x48]
+0xb8b979: mov    rdi,QWORD PTR [rsp+0x50]
+0xb8b97e: add    rsp,0x30
+0xb8b982: pop    r14
+0xb8b984: jmp    0x140b92640

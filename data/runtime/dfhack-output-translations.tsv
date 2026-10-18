@@ -2520,6 +2520,10 @@ DFHack output: Remove depot	拆除贸易站	l
 DFHack output: Are you sure you want to remove this depot? Merchants are present and will lose profits.	确定要拆除这个贸易站吗？商人仍在场，这会使他们损失利润。	l
 DFHack output: Delete uniform	删除军装方案	l
 DFHack output: Are you sure you want to delete this uniform?	确定要删除这套军装方案吗？	l
+DFHack output: Remove manger order	删除管理订单	l
+DFHack output: Remove manager order	删除管理订单	l
+DFHack output: Are you sure you want to remove this manager order?	确定要删除此管理订单吗？	l
+DFHack GUI Confirmation order: {m} {j}	{j}（材料：{m}）	l
 
 # Installed scripts/internal/confirm/specs.lua:517-518: embark site-finder confirmation.
 DFHack output: Re-run finder	重新搜索地点	l

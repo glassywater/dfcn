@@ -284,6 +284,36 @@ static void capture_native_companion_english_name(const void *name,
     } catch (...) {}
 }
 
+// Groups formats historical_entity.name directly, rather than a unit name.
+// This verified supplier owns the entity at name-0x20, including signed kinds
+// handled by the page's default branch. Keep that actual
+// identity instead of resolving the displayed spelling against every entity.
+static void capture_native_character_group_english_name(const void *name,
+        NativeString *output, bool first, bool second) {
+    NativeInputCallbackScope callback;
+    callback.call_native([&] {
+        g_native_unit_identity_hooks.english_name(name, output, first, second);
+    });
+    try {
+        std::string_view source;
+        const uintptr_t address = reinterpret_cast<uintptr_t>(name);
+        const uintptr_t base = g_native_unit_identity_hooks.base;
+        if (!g_overlay.translation_enabled() || address < 0x20 ||
+                !native_string_view(output, &source, 262144) || source.empty()) return;
+        NativeUnitIdentity snapshot;
+        if (!capture_native_history_name(base, address, snapshot.name) ||
+                !capture_native_history_entity_name_context(base, address - 0x20,
+                    snapshot.name, true, nullptr, true)) return;
+        snapshot.native_name.assign(source);
+        snapshot.form = NativeUnitIdentityForm::NameOnly;
+        snapshot.english_name = true;
+        // Entity naming can read current world relationships. The existing
+        // publisher retains this owned snapshot for SDL's deferred replay.
+        publish_native_unit_identity_snapshot(std::move(snapshot),
+            reinterpret_cast<uintptr_t>(output), std::string(source), 0, true);
+    } catch (...) {}
+}
+
 // Only the verified pet naming response calls this wrapper. Its English
 // formatter still supplies a typed language_name, including authored names.
 static void capture_native_announcement_pet_english_name(const void *name,
@@ -573,7 +603,7 @@ static std::optional<std::string> finish_native_unit_reference_call(
             if (call.publish)
                 translated = publish_native_unit_identity_snapshot(snapshot,
                     reinterpret_cast<uintptr_t>(output), original, call.unit, false);
-            else translated = g_overlay.translate_native_unit_identity(snapshot);
+            else if (!captured) translated = g_overlay.translate_native_unit_identity(snapshot);
         }
         if (translated && translated->empty()) translated.reset();
         if (call.publish) {
@@ -635,7 +665,7 @@ static void capture_native_unit_reference(void *unit, NativeString *output) {
     finish_native_unit_reference_call(call, output);
 }
 
-static void capture_native_conversation_portrait_capitalization(NativeString *output) {
+static void capture_native_identity_capitalization(NativeString *output) {
     NativeInputCallbackScope callback;
     std::optional<NativeUnitIdentitySource> identity;
     try {
@@ -649,11 +679,15 @@ static void capture_native_conversation_portrait_capitalization(NativeString *ou
     try {
         std::string_view source;
         if (!native_string_view(output, &source, 262144) || source.empty()) return;
-        // This exact caller capitalizes 1331500's same NativeString before
-        // drawing it. Keep its typed identity even when no info rows follow.
+        // These verified callers capitalize the same captured NativeString
+        // before drawing it. Only its bytes change, not the typed identity.
         rebind_native_unit_identity_capitalization(
             reinterpret_cast<uintptr_t>(output), *identity, source);
     } catch (...) {}
+}
+
+static void capture_native_conversation_portrait_capitalization(NativeString *output) {
+    capture_native_identity_capitalization(output);
 }
 
 // 132e430 has five native arguments. Its fifth stack argument decides whether
@@ -701,6 +735,86 @@ static void capture_native_unit_movement_reference(void *unit, NativeString *out
         callback.call_native([&] { original(unit, output, article, capitalize, use_custom); });
     }
     finish_native_unit_reference_call(call, output);
+}
+
+static std::optional<NativeAnnouncementLogSpeechHeader> native_announcement_log_speech_header(
+        const NativeAnnouncementLogDocument &document) {
+#ifndef _WIN32
+    // This replay's five-argument speech call is proved by the PE wrapper.
+    // ELF keeps its existing complete speech translation until that call's
+    // ABI and arguments have their own retained native evidence.
+    (void)document;
+    return std::nullopt;
+#else
+    const auto &report = document.report;
+    if ((report.type != 163 && report.type != 177) || report.identity[4] < 0 ||
+            report.source.empty() || !document.world) return std::nullopt;
+    uintptr_t world = 0, unit = 0;
+    if (!native_history_copy(native_history_global(0x24ebb58), world) ||
+            world != document.world) return std::nullopt;
+    size_t id_offset = SIZE_MAX;
+    for (const auto &field : native_history_layout::f_unit_fields)
+        if (std::string_view(field.name) == "id") { id_offset = field.native; break; }
+    if (id_offset == SIZE_MAX || !native_history_material_find_id(
+            native_history_page_address(NativeHistoryPageSymbol::Units), id_offset,
+            report.identity[4], unit) || !unit) return std::nullopt;
+
+    const auto body_offset = [&](std::string_view caption) -> std::optional<size_t> {
+        if (caption.empty() || report.source.size() < caption.size() + 1 ||
+                std::string_view(report.source).substr(0, caption.size()) != caption ||
+                report.source[caption.size()] != ':') return std::nullopt;
+        const size_t after = caption.size() + 1;
+        if (after == report.source.size()) return after;
+        if (report.source[after] != ' ') return std::nullopt;
+        return after + 1;
+    };
+    // 684f0e..685000 replaces this exact player's native caption with You.
+    // The report's speaker ID and complete literal prefix must both agree;
+    // a named unit whose authored caption happens to be You is not a pronoun.
+    uintptr_t player = 0;
+    if (native_history_copy(native_history_global(0x23e5110), player) && player == unit)
+        if (const auto offset = body_offset("You"))
+            return NativeAnnouncementLogSpeechHeader{*offset, {}, true};
+
+    // A saved caption may precede a later rename. Prefix equality alone
+    // cannot distinguish old "A: B: body" from current caption "A".
+    // Admit only a unique ASCII delimiter in the complete old NPC report;
+    // colon-bearing captions/bodies keep the existing complete grammar.
+    const size_t colon = report.source.find(':');
+    if (colon == std::string::npos || report.source.find(':', colon + 1) != std::string::npos)
+        return std::nullopt;
+
+    const auto &hooks = g_native_unit_identity_hooks;
+    if (!hooks.entries[6].installed || !hooks.entries[6].original || !hooks.destroy)
+        return std::nullopt;
+    NativeInputCallbackScope callback;
+    NativeSearchString output(hooks.destroy);
+    NativeUnitIdentityCall call;
+    call.unit = unit;
+    call.publish = false;
+    call.reference_output = &output.value;
+    call.reference_use_custom = true;
+    {
+        NativeUnitIdentityActiveScope scope(call);
+        capture_native_unit_reference_selected_name(unit + 8);
+        const auto original = reinterpret_cast<NativeUnitMovementReferenceFn>(hooks.entries[6].original);
+        // The speech wrapper's 684b0e..684b23 arguments are exactly
+        // (unit, output, -1, true, true). Replaying only this formatter does
+        // not dispatch a topic, append a turn or submit another report.
+        callback.call_native([&] {
+            original(reinterpret_cast<void *>(unit), &output.value, -1, true, true);
+        });
+    }
+    std::string_view caption;
+    if (!native_string_view(&output.value, &caption, SIZE_MAX)) return std::nullopt;
+    const auto offset = body_offset(caption);
+    if (!offset) return std::nullopt;
+    std::optional<NativeUnitIdentity> identity;
+    finish_native_unit_reference_call(call, &output.value, &identity);
+    translation_work_step(0);
+    if (!identity) return std::nullopt;
+    return NativeAnnouncementLogSpeechHeader{*offset, std::move(identity), false};
+#endif
 }
 
 static void capture_native_unit_movement_direct_name(const void *name, NativeString *output) {
@@ -1031,6 +1145,13 @@ static bool install_native_unit_identity_hooks() {
     // and sheet header. Call sites leave other consumers' entry signatures
     // intact and preserve disguised/linked identity selection by the game.
     std::vector<NativeCall> names{
+        // Groups: historical_entity+0x20, then capitalization of that
+        // same output before the native clipping and draw (Classic 179312 /
+        // 17931f). The name is an entity field, never a squad.alias.
+        {0x179382, 0xa946e0,
+            reinterpret_cast<const void *>(&capture_native_character_group_english_name)},
+        {0x17938f, 0x52d650,
+            reinterpret_cast<const void *>(&capture_native_identity_capitalization)},
         // Pet naming response: the producer formats the actual language_name
         // before appending its fixed conversation suffix (Classic 0x1ff07a).
         {0x1ff0ea, 0xa946e0,

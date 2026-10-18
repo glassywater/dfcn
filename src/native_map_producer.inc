@@ -10,12 +10,73 @@ static void native_map_begin_frame() {
     g_native_map_background_grid = nullptr;
     g_native_map_mixed_grid = nullptr;
     g_native_map_write_graphics = nullptr;
+    g_native_map_display_source = {};
     NativeUiReadScope::invalidate_reads();
 }
 
 #ifdef _WIN32
 static NativeEntryHook g_native_map_producer_hook;
 using NativeMapProducerFn = void (*)(void *, int32_t, void *);
+static graphicst *native_dfhack_render_read_graphics();
+
+static void capture_native_map_display_source(const graphicst &graphics) noexcept {
+    auto &source = g_native_map_display_source;
+    source.serial = g_native_map_frame_serial;
+    source.dimx = graphics.dimx; source.dimy = graphics.dimy;
+    source.screen_pixel_x = graphics.screen_pixel_x;
+    source.screen_pixel_y = graphics.screen_pixel_y;
+    source.tile_pixel_x = graphics.tile_pixel_x;
+    source.tile_pixel_y = graphics.tile_pixel_y;
+    source.viewport_zoom_factor = graphics.viewport_zoom_factor;
+    source.main_viewport = graphics.main_viewport;
+    source.main_map_port = graphics.main_map_port;
+    for (size_t index = 0; index < source.lower_viewport.size(); ++index)
+        source.lower_viewport[index] = graphics.lower_viewport[index];
+}
+
+// Called only at the raw native display boundary, before any private map or
+// UI target is selected. Buffer rotation does not replace its map objects.
+static void bind_native_map_display_frame(const graphicst *graphics) noexcept {
+    if (!graphics || graphics != native_dfhack_render_read_graphics() ||
+            graphics != g_native_graphics_read_view || !graphics->screen ||
+            !g_native_map_layer.ready || !g_native_map_background_grid ||
+            g_native_map_mixed_grid || g_native_map_write_graphics ||
+            native_private_ui_write_active(graphics) ||
+            NativeDfhackForegroundScope::active || g_native_info_foreground ||
+            g_native_character_foreground) return;
+    // Private producers can borrow the same map-object pointers. Their byte
+    // arrays are never evidence that the raw native display rotated buffers.
+    const NativeUiLayerStorage *private_layers[]{
+        &g_native_map_layer, &g_native_help_layer, &g_native_resolution_layer,
+        &g_native_info_layer, &g_native_character_layer, &g_native_stocks_layer,
+        &g_native_tooltip_layer, &g_native_notification_layer,
+        &g_native_announcement_log_layer, &g_native_reports_layer,
+        &g_native_squads_layer, &g_native_pause_layer, &g_native_worldgen_layer
+    };
+    for (const auto *layer : private_layers)
+        for (const auto &plane : layer->foreground.planes) {
+            const auto *grid = plane.screen.data();
+            if (grid && (graphics->screen == grid || graphics->screen_top == grid)) return;
+        }
+    const auto &source = g_native_map_display_source;
+    if (!source.serial || source.serial != g_native_map_frame_serial ||
+            source.dimx != graphics->dimx || source.dimy != graphics->dimy ||
+            source.screen_pixel_x != graphics->screen_pixel_x ||
+            source.screen_pixel_y != graphics->screen_pixel_y ||
+            source.tile_pixel_x != graphics->tile_pixel_x ||
+            source.tile_pixel_y != graphics->tile_pixel_y ||
+            source.viewport_zoom_factor != graphics->viewport_zoom_factor ||
+            source.main_viewport != graphics->main_viewport ||
+            source.main_map_port != graphics->main_map_port) return;
+    bool has_map = source.main_viewport || source.main_map_port;
+    for (size_t index = 0; index < source.lower_viewport.size(); ++index) {
+        if (source.lower_viewport[index] != graphics->lower_viewport[index]) return;
+        has_map = has_map || source.lower_viewport[index];
+    }
+    // Classic frames without map objects retain the existing exact-buffer
+    // path; dimensions alone cannot establish their native owner.
+    if (has_map) g_native_map_background_grid = graphics->screen;
+}
 
 static void native_map_clear_empty_ui_cells(graphicst &gps) {
     const size_t count = static_cast<size_t>(gps.dimx) * gps.dimy;
@@ -71,6 +132,7 @@ static void native_map_producer(void *map, int32_t tick, void *context) {
             layer.native_renderer = nullptr;
             layer.renderer = nullptr;
             g_native_map_background_grid = nullptr;
+            g_native_map_display_source = {};
         }
         NativeUiReadScope::invalidate_reads();
         callback.call_native([&] { original(map, tick, context); });
@@ -97,6 +159,7 @@ static void native_map_producer(void *map, int32_t tick, void *context) {
     g_native_map_background_grid = background;
     g_native_map_mixed_grid = nullptr;
     g_native_map_classic = native_ui_classic().value_or(false);
+    capture_native_map_display_source(*gps);
     layer.ready = true;
     NativeUiReadScope::invalidate_reads();
 }

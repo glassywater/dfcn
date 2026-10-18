@@ -1,0 +1,266 @@
+type	function	condition	source_production	typed_fields
+meta	notation	Source-derived productions; reference C plus native selector aliases; Classic corresponding class has same construction	Quoted strings preserve exact spaces. + means byte concatenation with no implicit separator; [if C: P] means append P only on C; stage rows define fragments used by main rows.	Source: reference-<function>.c and *.asm; native-rtti.tsv and native-switches.tsv; not translator outputs or game observations.
+meta	typed-suppliers	all functions	F(id,k=1)=history_figure(id,neutral_ctx,k,0); E(id)=history_entity; S(id)=history_site; U(id)=history_underground; G(id)=history_region; A(id)=history_artifact; B(site,building)=history_building; AB(site,building)=history_abstract_building; D=history_date(e+08,e+0c).	Helpers are complete semantic boundaries, not arbitrary English substrings. Missing F/E/S/G/U/A records have native unknown fallbacks; existing name/RAW/underground default may contribute zero bytes. native-text-boundaries.tsv locates actual C.
+meta	shared-date	all event main rows	D = year<1 ? "a time before time" : tick==-1 ? decimal(year) : "the "+PHASE+SEASON+" of "+decimal(year).	season=trunc(tick/100800): 0 spring,1 summer,2 autumn,3 winter,else empty; remainder<=33600 early(space),<=67200 mid(no space),else late(space).
+meta	constructing-entity	used by 2,23,30,31	CIVGROUP = e+2c!=-1 ? E(+2c)+[if e+28!=-1: " of "+E(+28)] : E(+28).	An absent pair still calls E(-1) for its unknown-civilization fallback. No guessing a force name from spelling.
+0	history_event_war_attacked_sitest	always	"the attack on "+E(+30)+[if e+2c!=e+30: " of "+E(+2c)]+" at "+S(+34)+" by "+E(+28)+" in "+D	all four IDs are independent native helper inputs.
+1	history_event_war_destroyed_sitest	flags(e+38)&1 == 0	"the defeat of "+E(+30)+[if e+2c!=e+30: " of "+E(+2c)]+" and destruction of "+S(+34)+" by "+E(+28)+" in "+D	
+1	history_event_war_destroyed_sitest	flags(e+38)&1 != 0	"the destruction of "+S(+34)+" by "+E(+28)+" in "+D	
+2	history_event_created_sitest	always	PREFIX+S(+34)+" by "+BUILDER+[if e+30!=-1: " for "+E(+30)]+" in "+D	BUILDER=F(+38,0) when e+38!=-1, otherwise CIVGROUP.
+2	history_event_created_sitest	site(+34) missing OR site.kind not 8 or 10	PREFIX="the foundation of "	
+2	history_event_created_sitest	site.kind==8 OR (site.kind==10 and site.subtype(+310,+2)!=1)	PREFIX="the construction of "	
+2	history_event_created_sitest	site.kind==10 and site.subtype==1	PREFIX="the creation of "	
+3	history_event_hist_figure_diedst	always	CAUSE_TITLE+[if e+58!=-1: " in "+S(+58)]+[if e+5c!=-1 OR e+60!=-1: " in "+(e+60!=-1?U(+60):G(+5c))]+" in "+D	cause=uint16(e+64); victim=F(+28); killer HF=e+2c, creature race=e+30/caste=e+34. Site and region/underground append independently.
+3	history_event_hist_figure_diedst	stage: attacker suffix	BY = e+2c!=-1 ? " by "+F(+2c) : e+30!=-1 ? " by a "+Creature(+30,+34) : ""	Creature=history_creature RAW race/caste caption; F uses neutral context.
+3	history_event_hist_figure_diedst	stage: two weapon captions	W1=ARTIFACT(item(+38)) or [if int16(e+3c)!=-1: [if type!=0x45: "a "]+ItemCaption(+3c,+3e,+40,+44)]; W2 analogous item(+48),type(+4c),subtype(+4e),mat(+50,+54).	Artifact ref requires item flags&0x40000 then general_ref virtual+10 type1 and virtual+40 artifact record; no resolved artifact => native item caption. Missing item type gives empty W.
+3	history_event_hist_figure_diedst	stage: weapon suffix	WEAPONS = W1!="" ? " with "+W1+[if W2!="": " from "+W2] : W2!="" ? " with "+W2 : ""	
+3	history_event_hist_figure_diedst	cause in {0}	"the passing of "+F(+28)	
+3	history_event_hist_figure_diedst	cause in {2}	"the dehydration of "+F(+28)	
+3	history_event_hist_figure_diedst	cause in {8}	"the scuttling of "+F(+28)	
+3	history_event_hist_figure_diedst	cause in {14}	"the scalding of "+F(+28)	
+3	history_event_hist_figure_diedst	cause in {22}	"the vanishment of "+F(+28)	
+3	history_event_hist_figure_diedst	cause in {25}	"the heat-induced death of "+F(+28)	
+3	history_event_hist_figure_diedst	cause in {39}	"the boiling of "+F(+28)	
+3	history_event_hist_figure_diedst	cause in {40}	"the melting of "+F(+28)	
+3	history_event_hist_figure_diedst	cause in {41}	"the condensation of "+F(+28)	
+3	history_event_hist_figure_diedst	cause in {43}	"the fatal illness of "+F(+28)	
+3	history_event_hist_figure_diedst	cause in {44}	"the putting to rest of "+F(+28)	
+3	history_event_hist_figure_diedst	cause in {46}	"the death in the dark of "+F(+28)	
+3	history_event_hist_figure_diedst	cause in {1,23,24}	"the starvation of "+F(+28)	
+3	history_event_hist_figure_diedst	cause in {5,53}	"the drowning of "+F(+28)	
+3	history_event_hist_figure_diedst	cause in {26,42}	"the freezing of "+F(+28)	
+3	history_event_hist_figure_diedst	cause==3	"the shooting of "+F(+28)+BY+WEAPONS	
+3	history_event_hist_figure_diedst	cause==4	"the mortal wounding of "+F(+28)+BY+WEAPONS	
+3	history_event_hist_figure_diedst	cause==6	"the mortal wounding of "+F(+28)+BY+WEAPONS	
+3	history_event_hist_figure_diedst	cause==7	"the killing of "+F(+28)+BY+WEAPONS	
+3	history_event_hist_figure_diedst	cause==49	"the slaughter of "+F(+28)+BY+WEAPONS	
+3	history_event_hist_figure_diedst	cause==9	"the collision of "+F(+28)+" with an obstacle"+[if killer HF/race present: ", after the death strike by "+(e+2c!=-1?F(+2c):"a "+Creature(+30,+34))]	
+3	history_event_hist_figure_diedst	cause==27	"the impalement of "+F(+28)+" on spikes"+[if killer HF/race present: ", after the death strike by "+(e+2c!=-1?F(+2c):"a "+Creature(+30,+34))]	
+3	history_event_hist_figure_diedst	cause==10	"the burning of "+F(+28)+" in magma"	
+3	history_event_hist_figure_diedst	cause==11	"the burning of "+F(+28)+" in a magma mist"	
+3	history_event_hist_figure_diedst	cause==15	"the crushing of "+F(+28)+" under a collapsing ceiling"	
+3	history_event_hist_figure_diedst	cause==16	"the crushing of "+F(+28)+" under a drawbridge"	
+3	history_event_hist_figure_diedst	cause==17	"the crushing of "+F(+28)+" by falling rocks"	
+3	history_event_hist_figure_diedst	cause==18	"the fall of "+F(+28)+" into a deep chasm"	
+3	history_event_hist_figure_diedst	cause==19	"the death of "+F(+28)+" in a cage"	
+3	history_event_hist_figure_diedst	cause==21	"the killing of "+F(+28)+" by a trap"	
+3	history_event_hist_figure_diedst	cause==28	"the encasement of "+F(+28)+" in cooling lava"	
+3	history_event_hist_figure_diedst	cause==29	"the encasement of "+F(+28)+" in cooling magma"	
+3	history_event_hist_figure_diedst	cause==30	"the encasement of "+F(+28)+" in ice"	
+3	history_event_hist_figure_diedst	cause==50	"the killing of "+F(+28)+" by a vehicle"	
+3	history_event_hist_figure_diedst	cause==51	"the killing of "+F(+28)+" by a flying object"	
+3	history_event_hist_figure_diedst	cause==52	"the leap of "+F(+28)+" from a great height"	
+3	history_event_hist_figure_diedst	cause==12	"the burning of "+F(+28)+" in "+(e+2c!=-1?F(+2c,2)+" dragon fire":e+30!=-1?Creature(+30,+34)+"\'s dragon fire":"dragon fire")	
+3	history_event_hist_figure_diedst	cause==13	"the burning of "+F(+28)+(e+2c!=-1?" in "+F(+2c,2)+" fire":e+30!=-1?" in a "+Creature(+30,+34)+"\'s fire":"")	Neither attacker field set means no fire wording at all.
+3	history_event_hist_figure_diedst	cause==20	"the murder of "+F(+28)+""+BY	
+3	history_event_hist_figure_diedst	cause==31	"the beheading of "+F(+28)+""+BY	
+3	history_event_hist_figure_diedst	cause==32	"the crucifixion of "+F(+28)+""+BY	
+3	history_event_hist_figure_diedst	cause==33	"the burial of "+F(+28)+" alive"+BY	
+3	history_event_hist_figure_diedst	cause==34	"the drowning of "+F(+28)+""+BY	
+3	history_event_hist_figure_diedst	cause==35	"the burning of "+F(+28)+" alive"+BY	
+3	history_event_hist_figure_diedst	cause==36	"the feeding of "+F(+28)+" to beasts"+BY	
+3	history_event_hist_figure_diedst	cause==37	"the hacking of "+F(+28)+" to pieces"+BY	
+3	history_event_hist_figure_diedst	cause==38	"the leaving of "+F(+28)+" out in the air"+BY	
+3	history_event_hist_figure_diedst	cause==45	"the scaring of "+F(+28)+" to death "+BY	
+3	history_event_hist_figure_diedst	cause==54	"the execution of "+F(+28)+""+BY	
+3	history_event_hist_figure_diedst	cause==48	"the draining of "+F(+28,2)+" blood"+BY	
+3	history_event_hist_figure_diedst	cause==47	"the collapse of "+F(+28)+ATTACK+COLLAPSE_WEAPONS	ATTACK=" after an attack by "+F(killer) or " after an attack by a "+Creature(race), or if no attacker but any weapon: " after an attack", else empty.
+3	history_event_hist_figure_diedst	cause==47; stage COLLAPSE_WEAPONS	W1!="" && W2!="" ? " attack with "+W1+" from "+W2 : WEAPONS	The extra word attack is native even after ATTACK. No generic repair or invented delimiter.
+3	history_event_hist_figure_diedst	cause>=55 (uint16)	CAUSE_TITLE=""; location/date stages still execute	No replacement death phrase is fabricated for out-of-range selectors.
+4	history_event_add_hf_entity_linkst	always except selector4/6 assign branch	P+" of "+F(+2c)+" "+LINK+" "+E(+28)+" in "+D	k=uint32(e+30); position=e+34. P and LINK independently nullable; resulting connectives/spaces survive missing fields.
+4	history_event_add_hf_entity_linkst	stage P: k in {0}	P="the acceptance"	
+4	history_event_add_hf_entity_linkst	stage P: k in {2}	P="the entry"	
+4	history_event_add_hf_entity_linkst	stage P: k in {4}	P="the enslavement"	
+4	history_event_add_hf_entity_linkst	stage P: k in {6}	P="the imprisonment"	
+4	history_event_add_hf_entity_linkst	stage P: k in {8}	P="the rise"	
+4	history_event_add_hf_entity_linkst	stage P: k in {9}	P="the crimes"	
+4	history_event_add_hf_entity_linkst	stage P: k in {15}	P="the work"	
+4	history_event_add_hf_entity_linkst	stage P: k in {1,3,5,7,13}	P="the status"	
+4	history_event_add_hf_entity_linkst	stage P: k==10 and resolved position	P = flags0&0x40 OR succession-vector nonempty ? "the ascension" : appointed_by-vector nonempty ? "the appointment" : flags0&2 ? "the election" : "the selection"	Position resolution uses entity(+28), position(+34) in entity+10c0; flags0 only if flags bytes present.
+4	history_event_add_hf_entity_linkst	stage P: k==12 and resolved position	P="the claim"	
+4	history_event_add_hf_entity_linkst	stage P: k=11/14, k>15, OR k=10/12 and no position	P=""	
+4	history_event_add_hf_entity_linkst	stage LINK: k==0	LINK="as a member of"	
+4	history_event_add_hf_entity_linkst	stage LINK: k==1	LINK="as a former member of"	
+4	history_event_add_hf_entity_linkst	stage LINK: k==2	LINK="into the mercenary service of"	
+4	history_event_add_hf_entity_linkst	stage LINK: k==3	LINK="as a former mercenary of"	
+4	history_event_add_hf_entity_linkst	stage LINK: k==5	LINK="as a former slave of"	
+4	history_event_add_hf_entity_linkst	stage LINK: k==7	LINK="as a former prisoner of"	
+4	history_event_add_hf_entity_linkst	stage LINK: k==8	LINK="as an enemy of"	
+4	history_event_add_hf_entity_linkst	stage LINK: k==9	LINK="in the eyes of"	
+4	history_event_add_hf_entity_linkst	stage LINK: k==15	LINK="for"	
+4	history_event_add_hf_entity_linkst	k==4 OR k==6	assign(out,"by"); append(" "+E(+28)+" in "+D)	Original std::string assign destroys P+of+actor+space. It really produces By GROUP, with actor removed.
+4	history_event_add_hf_entity_linkst	stage LINK: k=10/12; HF and position resolved	LINK="to the position of "+PositionName(sex)+" of"	sex0 prefers nonempty female(+d8),sex1 nonempty male(+118),otherwise neutral(+98). Empty title still keeps connectives.
+4	history_event_add_hf_entity_linkst	stage LINK: k==13 and resolved position	LINK="as a "+Position.squad_RAW(+218)+" of"	This RAW squad type title is not squad.alias and must not overwrite user alias.
+4	history_event_add_hf_entity_linkst	stage LINK: other/default/missing position	LINK=""	
+5	history_event_remove_hf_entity_linkst	always	P+" "+F(+2c)+" "+LINK+" "+E(+28)+" in "+D	k=uint32(e+30); position=e+34.
+5	history_event_remove_hf_entity_linkst	stage P: k in {0}	P="the end of the membership of"	
+5	history_event_remove_hf_entity_linkst	stage P: k in {1}	P="the end of the former membership of"	
+5	history_event_remove_hf_entity_linkst	stage P: k in {3}	P="the end of the former mercenary status of"	
+5	history_event_remove_hf_entity_linkst	stage P: k in {5}	P="the end of the former enslavement of"	
+5	history_event_remove_hf_entity_linkst	stage P: k in {7}	P="the end of the former imprisonment of"	
+5	history_event_remove_hf_entity_linkst	stage P: k in {8}	P="the peace-making of"	
+5	history_event_remove_hf_entity_linkst	stage P: k in {9}	P="the loss of heroic status of"	
+5	history_event_remove_hf_entity_linkst	stage P: k in {13}	P="the loss of status of"	
+5	history_event_remove_hf_entity_linkst	stage P: k in {15}	P="the end of work"	
+5	history_event_remove_hf_entity_linkst	stage P: k in {4,6}	P="the escape of"	
+5	history_event_remove_hf_entity_linkst	stage P: k==10 and resolved position	P=flags0&0x40 OR succession nonempty?"the fall of":appointed_by nonempty?"the removal of":"the departure of"	
+5	history_event_remove_hf_entity_linkst	stage P: k==12 and resolved position	P="the end of the claim of"	
+5	history_event_remove_hf_entity_linkst	stage P: k=2/11/14 or >15 or k=10/12 missing position	P=""	
+5	history_event_remove_hf_entity_linkst	stage LINK: k in {2}	LINK="from the mercenary service of"	
+5	history_event_remove_hf_entity_linkst	stage LINK: k in {4}	LINK="from the slavery of"	
+5	history_event_remove_hf_entity_linkst	stage LINK: k in {6}	LINK="from the prisons of"	
+5	history_event_remove_hf_entity_linkst	stage LINK: k in {8}	LINK="with"	
+5	history_event_remove_hf_entity_linkst	stage LINK: k in {9}	LINK="and"	
+5	history_event_remove_hf_entity_linkst	stage LINK: k in {15}	LINK="for"	
+5	history_event_remove_hf_entity_linkst	stage LINK: k in {0,1,3}	LINK="in"	
+5	history_event_remove_hf_entity_linkst	stage LINK: k in {5,7}	LINK="by"	
+5	history_event_remove_hf_entity_linkst	stage LINK: k=10/12; HF and position resolved	LINK=(k==10?"from the position of ":"to the position of ")+PositionName(sex)+" of"	Same RAW sex preference as type4; k12 genuinely uses to, not from.
+5	history_event_remove_hf_entity_linkst	stage LINK: k==13 and resolved position	LINK="as a "+Position.squad_RAW+" of"	
+5	history_event_remove_hf_entity_linkst	stage LINK: k=11/14 or >15 or missing position	LINK=""	
+6	history_event_first_contactst	always	"the first contact of "+E(+28)+" and "+E(+2c)+[if e+30!=-1:" at "+S(+30)]+" in "+D	
+7	history_event_first_contact_failedst	always	"the rejection of contact by "+E(+2c)+" of "+E(+28)+[if e+30!=-1:" at "+S(+30)]+" in "+D	
+8	history_event_topicagreement_concludedst	always	P+" of "+Topic(+34)+" between "+E(+28)+" and "+E(+2c)+[if e+30!=-1:" at "+S(+30)]+" in "+D	rating=int32(e+38), native guard uint(rating+3)<6.
+8	history_event_topicagreement_concludedst	stage P: rating==0	P="the fair conclusion"	
+8	history_event_topicagreement_concludedst	stage P: rating==1	P="the positive"	
+8	history_event_topicagreement_concludedst	stage P: rating==2	P="the brilliant"	
+8	history_event_topicagreement_concludedst	stage P: rating==-3	P="the miserable failure"	
+8	history_event_topicagreement_concludedst	stage P: rating==-2	P="the failure"	
+8	history_event_topicagreement_concludedst	stage P: rating==-1	P="the unsatisfactory conclusion"	
+8	history_event_topicagreement_concludedst	stage P: rating outside -3..2	P=""	Native still emits of Topic between entities, not a fabricated conclusion word.
+9	history_event_topicagreement_rejectedst	always	"the rejection of "+Topic(+28)+" of "+E(+2c)+" by "+E(+30)+[if e+34!=-1:" at "+S(+34)]+" in "+D	
+10	history_event_topicagreement_madest	topic(+28)==13	"the making of "+Topic(+28)+" by "+E(+2c)+" to "+E(+30)+SITE_SUFFIX+" in "+D	SITE_SUFFIX=e+34!=-1?" at "+S(+34):"".
+10	history_event_topicagreement_madest	topic(+28)!=13	"the acceptance of "+Topic(+28)+" of "+E(+2c)+" by "+E(+30)+SITE_SUFFIX+" in "+D	
+11	history_event_war_peace_acceptedst	always	"the acceptance of an offer of peace from "+E(+2c)+" by "+E(+30)+[if e+34!=-1:" at "+S(+34)]+" in "+D	
+12	history_event_war_peace_rejectedst	always	"the rejection of an offer of peace from "+E(+2c)+" by "+E(+30)+[if e+34!=-1:" at "+S(+34)]+" in "+D	
+13	history_event_diplomat_lostst	always	"the loss of a diplomat of "+E(+28)+" at "+S(+30)+" with the possible involvement of "+E(+2c)+" in "+D	
+14	history_event_agreements_voidedst	always	"the voiding of agreements with "+E(+2c)+" by "+E(+28)+" in "+D	
+15	history_event_merchantst	always	"the "+ASSESS+(TRIBUTE?"tribute delivery":"visit of merchants")+" from "+E(+28)+" to "+E(+2c)+" at "+S(+30)+" in "+D	flags byte exists when e+40>0 at *(e+38); TRIBUTE=flags-present && bit0x20; input=e+48,output=e+4c signed.
+15	history_event_merchantst	stage ASSESS: flags present and bit1	ASSESS="ill-fated "	Bit1 bypasses all subsequent adjective/profit branches.
+15	history_event_merchantst	stage ASSESS: no bit1	ASSESS=[if flags-present && bit2:"tragic "]+[if flags-present && bit4:"terrible "; else if bit8:"unfortunate "]+[if !TRIBUTE: PROFIT]	Bit labels here are numeric masks 1,2,4,8,0x20, not ordinal bit positions.
+15	history_event_merchantst	stage PROFIT	output<input?"costly ": output >= trunc((input*3)/2)?"profitable ":""	Native signed arithmetic; adjective clauses can stack.
+16	history_event_artifact_hiddenst	always	"the concealment of "+A(+28)+" in "+S(+34)+[if e+30!=-1:" by "+F(+30)]+" in "+D	
+17	history_event_artifact_possessedst	always	"the acquisition of "+A(+28)+LOCATION+" by "+F(+30)+Reason(+48,+4c,+40,+44)+" in "+D	LOCATION=e+34!=-1?" in "+S(+34):(e+3c!=-1?" in "+U(+3c):e+38!=-1?" in "+G(+38):""); Reason arguments motive,motiveArg,thought,thoughtArg.
+18	history_event_artifact_createdst	always	(flags(+3c)&1?"the naming of ":"the creation of ")+A(+28)+[if e+38!=-1:" in "+S(+38)]+MAKERS+" in "+D	MAKERS empty if +30/+34 both -1; otherwise " by "+[if HF+30!=-1:F(+30)]+[if both:" and "]+[if entity+34!=-1:E(+34)].
+19	history_event_artifact_lostst	always	"the disappearance of "+A(+28)+LOCATION+" in "+D	site+2c present: [if building+30!=-1:" in "+AB(+2c,+30)]+" in "+S(+2c). Otherwise +38 underground takes precedence over +34 region; neither means no location.
+20	history_event_artifact_foundst	always	"the discovery of "+A(+28)+LOCATION+" by "+F(+30)+" in "+D	site+34 present: [if building+38!=-1:" in "+AB(+34,+38)]+" in "+S(+34); else underground+40 preferred over region+3c; no ids=>empty.
+21	history_event_artifact_recoveredst	always	"the recovery of "+A(+28)+" by "+F(+30)+LOCATION+" in "+D	site+34 present: [if building+38!=-1:" from "+B(+34,+38)]+" in "+S(+34); else underground+40 preferred over region+3c.
+22	history_event_artifact_droppedst	always	"the discardment of "+A(+28)+" by "+F(+30)+" in "+S(+34)+" in "+D	
+23	history_event_reclaim_sitest	flags(+34)&1==0	"the reclamation of "+S(+30)+" by "+CIVGROUP+" in "+D	
+23	history_event_reclaim_sitest	flags(+34)&1!=0	"the questionable judgment of "+CIVGROUP+" at "+S(+30)+" in "+D	
+24	history_event_hf_destroyed_sitest	always	"the rout of "+E(+30)+[if e+2c!=e+30:" of "+E(+2c)]+" and destruction of "+S(+34)+" by "+F(+28)+" in "+D	
+25	history_event_site_diedst	always	(flags(+34)&1?"the abandonment of ":"the withering of ")+E(+2c)+" and "+(e+28==e+2c?"their":E(+28))+" settlement of "+S(+30)+" in "+D	
+26	history_event_site_retiredst	always	"the return to reason at the settlement of "+S(+30)+" by "+E(+2c)+" of "+E(+28)+" in "+D	
+27	history_event_entity_createdst	always	"the formation of "+E(+28)+[if e+34!=-1:" by "+F(+34)]+[if site+2c!=-1:[if building+30!=-1:" in "+B(+2c,+30)]+" at "+S(+2c)]+" in "+D	A building ID without a site is ignored; unknown present site/actor use helper fallbacks.
+28	history_event_entity_actionst	always	"the "+P+" "+E(+28)+[if site+2c!=-1:" "+PREP+[if building+30!=-1:" "+B(+2c,+30)]+" "+[if building+30!=-1:"in "]+S(+2c)]+" in "+D	k=e+34; k0 P="ascendency of the criminal organization",PREP="in"; k1 P="relocation of",PREP="to"; others P/PREP empty but independent spaces/site remain.
+29	history_event_entity_incorporatedst	always	(flags(+38)&1?"the subordination of ":"the incorporation of ")+E(+28)+(flags&1?" by ":" into ")+E(+2c)+[if site+34!=-1:" at "+S(+34)]+[if HF+30!=-1:" under the leadership of "+F(+30)]+" in "+D	
+30	history_event_created_buildingst	always	PREFIX+B(+30,+34)+" in "+S(+30)+LINK+BUILDER+" in "+D	BUILDER=HF(+38)!=-1?F(+38,0):CIVGROUP. Building lookup uses site+30,building+34; flags+3c.
+30	history_event_created_buildingst	building found and virtual-kind==7	PREFIX="the emergence of "; LINK=" from the underworld through the power of "	
+30	history_event_created_buildingst	building absent OR kind!=7	PREFIX=flags&1?"the rebuilding of ":"the construction of "; LINK=" by "	
+31	history_event_replaced_buildingst	always	"the replacement of "+B(+30,+34)+" with "+B(+30,+38)+" in "+S(+30)+" by "+CIVGROUP+" in "+D	
+32	history_event_add_hf_site_linkst	always	P+" "+F(+30)+" "+PREP+[if building+2c!=-1:" "+B(+28,+2c)+[if entity+34!=-1:" of "+E(+34)]+" in "]+S(+28)+" in "+D	k=uint32(e+38). With no building, PREP directly touches Site: atSITE/inSITE/fromSITE. Exact native behavior, no inserted separator.
+33	history_event_remove_hf_site_linkst	always	P+" "+F(+30)+" "+PREP+[if building+2c!=-1:" "+B(+28,+2c)+[if entity+34!=-1:" of "+E(+34)]+" in "]+S(+28)+" in "+D	k=uint32(e+38). With no building, PREP directly touches Site: atSITE/inSITE/fromSITE. Exact native behavior, no inserted separator.
+32	history_event_add_hf_site_linkst	stage P: k in {0}	P="the working of"	
+32	history_event_add_hf_site_linkst	stage P: k in {1}	P="the seat of power of"	
+32	history_event_add_hf_site_linkst	stage P: k in {2}	P="the hanging-out of"	
+32	history_event_add_hf_site_linkst	stage P: k in {5}	P="the lair of"	
+32	history_event_add_hf_site_linkst	stage P: k in {3,4,6,7}	P="the residence of"	
+32	history_event_add_hf_site_linkst	stage P: k in {8,9}	P="the imprisonment of"	
+32	history_event_add_hf_site_linkst	stage PREP	k in {0,1,2}?"at":k in {3,4,5,6,7,8,9}?"in":""	Aliases from actual native table, not Ghidra representative case labels.
+32	history_event_add_hf_site_linkst	k>=10	P=""; PREP=""; actor, spaces, site and date still appended	
+33	history_event_remove_hf_site_linkst	stage P: k in {0}	P="the cease of occupation of"	
+33	history_event_remove_hf_site_linkst	stage P: k in {1}	P="the removal of the seat of power of"	
+33	history_event_remove_hf_site_linkst	stage P: k in {2}	P="the stoppage of hanging-out of"	
+33	history_event_remove_hf_site_linkst	stage P: k in {3,4,5,6,7}	P="the moving out of"	
+33	history_event_remove_hf_site_linkst	stage P: k in {8,9}	P="the escape of"	
+33	history_event_remove_hf_site_linkst	stage PREP	k in {0,2}?"at":k in {1,3,4,5,6,7,8,9}?"from":""	Native table has all aliases; Ghidra's representative case0/case1 alone is not the selector map.
+33	history_event_remove_hf_site_linkst	k>=10	P=""; PREP=""; actor, spaces, site and date still appended	
+34	history_event_add_hf_hf_linkst	always	P+" "+F(+28)+" "+REL+" "+F(+2c)+" in "+D	k=uint32(e+30); out-of-range k>=14 supplies no P/REL but still both actors/spaces/date.
+35	history_event_remove_hf_hf_linkst	always	P+" "+F(+28)+" "+REL+" "+F(+2c)+" in "+D	k=uint32(e+30); out-of-range k>=14 supplies no P/REL but still both actors/spaces/date.
+34	history_event_add_hf_hf_linkst	stage P: k in {2}	P="the marriage of"	
+34	history_event_add_hf_hf_linkst	stage P: k in {4}	P="the belief of"	
+34	history_event_add_hf_hf_linkst	stage P: k in {5}	P="the romantic relationship between"	
+34	history_event_add_hf_hf_linkst	stage P: k in {6}	P="the imprisonment by"	
+34	history_event_add_hf_hf_linkst	stage P: k in {7}	P="the imprisonment of"	
+34	history_event_add_hf_hf_linkst	stage P: k in {8}	P="the apprenticeship of"	
+34	history_event_add_hf_hf_linkst	stage P: k in {9}	P="the master-apprentice relationship of"	
+34	history_event_add_hf_hf_linkst	stage P: k in {10}	P="the companionship of"	
+34	history_event_add_hf_hf_linkst	stage P: k in {11}	P="the former apprenticeship of"	
+34	history_event_add_hf_hf_linkst	stage P: k in {12}	P="the former master-apprentice relationship of"	
+34	history_event_add_hf_hf_linkst	stage P: k in {0,1,3,13}	P="the status of"	
+35	history_event_remove_hf_hf_linkst	stage P: k in {2}	P="the divorce of"	
+35	history_event_remove_hf_hf_linkst	stage P: k in {4}	P="the loss of faith of"	
+35	history_event_remove_hf_hf_linkst	stage P: k in {5}	P="the end of the romantic relationship between"	
+35	history_event_remove_hf_hf_linkst	stage P: k in {6}	P="the end of the imprisonment by"	
+35	history_event_remove_hf_hf_linkst	stage P: k in {7}	P="the end of the imprisonment of"	
+35	history_event_remove_hf_hf_linkst	stage P: k in {8}	P="the end of the apprenticeship of"	
+35	history_event_remove_hf_hf_linkst	stage P: k in {9}	P="the end of the master-apprentice of"	
+35	history_event_remove_hf_hf_linkst	stage P: k in {10}	P="the end of the companionship of"	
+35	history_event_remove_hf_hf_linkst	stage P: k in {11}	P="the apprenticeship of"	
+35	history_event_remove_hf_hf_linkst	stage P: k in {12}	P="the master-apprentice relationship of"	
+35	history_event_remove_hf_hf_linkst	stage P: k in {0,1,3,13}	P="the termination of"	
+34	history_event_add_hf_hf_linkst	stage REL: k in {3}	REL="as the parent of"	
+34	history_event_add_hf_hf_linkst	stage REL: k in {4}	REL="in"	
+34	history_event_add_hf_hf_linkst	stage REL: k in {6}	REL="of"	
+34	history_event_add_hf_hf_linkst	stage REL: k in {7}	REL="by"	
+34	history_event_add_hf_hf_linkst	stage REL: k in {0,1}	REL="as the child of"	
+34	history_event_add_hf_hf_linkst	stage REL: k in {2,5,10}	REL="and"	
+34	history_event_add_hf_hf_linkst	stage REL: k in {8,11}	REL="under"	
+34	history_event_add_hf_hf_linkst	stage REL: k in {9,12}	REL="over"	
+34	history_event_add_hf_hf_linkst	stage REL: k==13	REL="as the owner of"	
+34	history_event_add_hf_hf_linkst	k>=14	P=""; REL=""	
+35	history_event_remove_hf_hf_linkst	stage REL: k in {3}	REL="as the parent of"	
+35	history_event_remove_hf_hf_linkst	stage REL: k in {4}	REL="in"	
+35	history_event_remove_hf_hf_linkst	stage REL: k in {6}	REL="of"	
+35	history_event_remove_hf_hf_linkst	stage REL: k in {7}	REL="by"	
+35	history_event_remove_hf_hf_linkst	stage REL: k in {0,1}	REL="as the child of"	
+35	history_event_remove_hf_hf_linkst	stage REL: k in {2,5,10}	REL="and"	
+35	history_event_remove_hf_hf_linkst	stage REL: k in {8,11}	REL="under"	
+35	history_event_remove_hf_hf_linkst	stage REL: k in {9,12}	REL="over"	
+35	history_event_remove_hf_hf_linkst	stage REL: k==13	REL="as the pet of"	
+35	history_event_remove_hf_hf_linkst	k>=14	P=""; REL=""	
+36	history_event_entity_razed_buildingst	always	"the razing of "+B(+2c,+30)+" in "+S(+2c)+" by "+E(+28)+" in "+D	
+37	history_event_masterpiece_created_arch_constructst	always	"the "+BuildingType(+38,+3a,race,+3c)+" masterfully constructed by "+F(+28)+" for "+E(+2c)+" at "+S(+30)+" in "+D	race first resolved entity(+2c).race(+98), if absent/-1 falls back creator HF(+28).race(+2), else -1; building RAW/custom-subtype boundary retained.
+38	history_event_masterpiece_created_itemst	always	"the masterful "+ItemCaption(+38,+3a,+3c,+3e,race,+40)+" created by "+F(+28)+" for "+E(+2c)+" at "+S(+30)+" in "+D	race same entity/HF fallback as type37; ItemCaption is actual generic-item-caption C, not untyped tail text.
+39	history_event_masterpiece_created_dye_itemst	always	"the "+ItemCaption(+38,+3a,+3c,+40,race,+44)+" masterfully dyed with "+DyeMaterial(+48,+4c)+" by "+F(+28)+" for "+E(+2c)+" at "+S(+30)+" in "+D	Item race same creator/entity fallback. Dye material is resolved independently from item base material.
+39	history_event_masterpiece_created_dye_itemst	stage DyeMaterial	[if material type219..418 and material HF found with has-name: AliasOrHFName+"\'s "]+(material record absent?"unknown material":[if state adjective(+520) nonempty: adjective+" "]+powder-state-name(+118))	AliasOrHFName may be empty even on this branch: native still appends apostrophe-s. RAW state strings are dynamic.
+40	history_event_masterpiece_created_item_improvementst	always	PREFIX+[if image(+58,+5c<500) resolves:" \""+Name(image+38)+"\""]+[if mat_type(+50)!=-1:" in "+ImprovementMaterial(+50,+54)]+" to "+ItemCaption(+38,+3a,+3c,+40,race,+44)+" by "+F(+28)+" for "+E(+2c)+" at "+S(+30)+" in "+D	Image quotes emitted even if generated name is empty. Item race same fallback. Material uses solid-state-name(+b8), otherwise same biological owner/state adjective behavior as type39.
+40	history_event_masterpiece_created_item_improvementst	stage PREFIX: uint16(e+48) in {0}	PREFIX="the "+"addition of a masterful image"	
+40	history_event_masterpiece_created_item_improvementst	stage PREFIX: uint16(e+48) in {1}	PREFIX="the "+"addition of a masterful covering"	
+40	history_event_masterpiece_created_item_improvementst	stage PREFIX: uint16(e+48) in {2}	PREFIX="the "+"addition of masterful rings"	
+40	history_event_masterpiece_created_item_improvementst	stage PREFIX: uint16(e+48) in {3}	PREFIX="the "+"addition of masterful bands"	
+40	history_event_masterpiece_created_item_improvementst	stage PREFIX: uint16(e+48) in {4}	PREFIX="the "+"addition of masterful spikes"	
+40	history_event_masterpiece_created_item_improvementst	stage PREFIX: uint16(e+48) in {6}	PREFIX="the "+"addition of masterful thread"	
+40	history_event_masterpiece_created_item_improvementst	stage PREFIX: uint16(e+48) in {7}	PREFIX="the "+"addition of masterful cloth"	
+40	history_event_masterpiece_created_item_improvementst	stage PREFIX: uint16(e+48) in {8}	PREFIX="the "+"weaving of a masterful sewn image"	
+40	history_event_masterpiece_created_item_improvementst	stage PREFIX: uint16(e+48) in {10}	PREFIX="the "+"creation of a masterful illustration"	
+40	history_event_masterpiece_created_item_improvementst	stage PREFIX: uint16(e+48) in {13}	PREFIX="the "+"creation of a masterful image set"	
+40	history_event_masterpiece_created_item_improvementst	stage PREFIX: uint16(e+48) in {14}	PREFIX="the "+"addition of masterful coloration"	
+40	history_event_masterpiece_created_item_improvementst	stage PREFIX: uint16(e+48) in {9,12}	PREFIX="the "+"writing of a masterpiece"	
+40	history_event_masterpiece_created_item_improvementst	stage PREFIX: e+48==5 and e+4c==0	PREFIX="the "+"addition of a masterful handle"	
+40	history_event_masterpiece_created_item_improvementst	stage PREFIX: e+48==5 and e+4c==1	PREFIX="the "+"addition of masterful rollers"	
+40	history_event_masterpiece_created_item_improvementst	stage PREFIX: e+48==5 and e+4c==2	PREFIX="the "+"added a masterful rope"	
+40	history_event_masterpiece_created_item_improvementst	stage PREFIX: e+48==5 and e+4c==3	PREFIX="the "+"added a masterful chain"	
+40	history_event_masterpiece_created_item_improvementst	e+48==11	assign(out,"addition of a masterful instrument piece"); PREFIX has no "the "	Actual string assign, not append: it removes initial the. Subsequent optional image/material/item/actor/site/date still execute.
+40	history_event_masterpiece_created_item_improvementst	uint16(e+48)>14 OR (e+48==5 and e+4c not in 0..3)	PREFIX="the making of a masterful improvement"	
+41	history_event_masterpiece_created_foodst	always	"the masterful "+FoodTitle+" prepared by "+F(+28)+" for "+E(+2c)+" at "+S(+30)+" in "+D	Food subtype=e+38; reverse lookup food RAW list by +28 type; existing record RAW title(+68) used even if empty; no record -> literal Prepared Food (inline stores).
+42	history_event_masterpiece_created_engravingst	always	"the masterful engraving"+[if image chunk(+38),slot(+3c)<500 resolves:" \""+Name(image+38)+"\""]+" created by "+F(+28)+" for "+E(+2c)+" at "+S(+30)+" in "+D	Quotes survive empty image title. Missing image produces no quote block.
+43	history_event_masterpiece_lostst	always	"the destruction of "+Original+[if destroyer+2c!=-1:" by "+F(+2c)]+METHOD+[if site+30!=-1:" at "+S(+30)]+"in "+D	Original=historical event(+28)->virtual+d8 with inherited args, else literal a masterpiece. Final in has NO leading space, causing actor/site/method/title+in concatenation and potentially nested event date followed by outer date.
+43	history_event_masterpiece_lostst	stage METHOD: uint16(e+34)==0	METHOD=" by melting"	
+43	history_event_masterpiece_lostst	stage METHOD: uint16(e+34)==1	METHOD=" by magma"	
+43	history_event_masterpiece_lostst	stage METHOD: uint16(e+34)==2	METHOD=" during fortification carving"	
+43	history_event_masterpiece_lostst	stage METHOD: uint16(e+34)==3	METHOD=" during mining"	
+43	history_event_masterpiece_lostst	stage METHOD: uint16(e+34)==4	METHOD=" by falling debris"	
+43	history_event_masterpiece_lostst	stage METHOD: uint16(e+34)==5	METHOD=" by growing vegetation"	
+43	history_event_masterpiece_lostst	stage METHOD: uint16(e+34)>=6	METHOD=""	
+44	history_event_change_hf_statest	always	"the "+STATE_NOUN+" of "+F(+28)+PREP+" "+PLACE+[if motive(+30) not 45/91:Reason(+30,-1,-1,-1)]+" in "+D	state=int16(e+2c),motive=e+30; PLACE=site(+34) if !=-1,else underground(+3c) if !=-1,else region(+38) if !=-1,else literal the wilds.
+44	history_event_change_hf_statest	state=0/1/5 and motive=45; OR state=2	STATE_NOUN="flight"	
+44	history_event_change_hf_statest	state=0/1/5 and motive in {46,47}	STATE_NOUN="studies"	
+44	history_event_change_hf_statest	state=0/1/5 and motive=91	STATE_NOUN="exile"	
+44	history_event_change_hf_statest	state=0 and other motive	STATE_NOUN="wandering"	
+44	history_event_change_hf_statest	state=1 and other motive	STATE_NOUN="settling"	
+44	history_event_change_hf_statest	state=5 and other motive	STATE_NOUN="visit"	
+44	history_event_change_hf_statest	state not 0,1,2,5	STATE_NOUN=""; PREP=""	Native retains the + of + actor + space + place; no invented state label.
+44	history_event_change_hf_statest	stage PREP: state=0	motive in {45,91}?" to":site(+34)!=-1?" around":" in"	
+44	history_event_change_hf_statest	stage PREP: state=1	motive in {45,91}?" to":" in"	
+44	history_event_change_hf_statest	stage PREP: state=2	site(+34)!=-1?" into the area around":" into"	
+44	history_event_change_hf_statest	stage PREP: state=5	motive in {46,47}?" in":" to"	

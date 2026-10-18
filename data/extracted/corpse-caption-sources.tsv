@@ -6,6 +6,13 @@
 # Short description also permits partial skeleton. Shared native quantities and designation glyphs remain outside these nouns.
 # BODY/BP and INDIVIDUAL_NAME rows enumerate 396 distinct names from current vanilla and extinct RAWs; STP and NP are control markers.
 # Material, species and generated identity slots use existing typed vocabularies instead of enumerating their cross product or individual saved-world people.
+# The independent +0x5f0 article precedes the complete body description, including a possessive owner; it is not part of that owner's native name.
+# The full ELF C graph in corpse-captions-elf/elf-decompiled.c retains all owner/name-mode/body-outcome branches; native-productions.tsv maps their dynamic fields.
+# Native language_name first_name/WORD groups may be absent from T_WORD (including UTTERANCES); the proved corpse owner uses the shared phonetic name renderer, while a delimited authored nickname remains independent.
+# Current two-edition PE C: announcement-combat-native/reference-ca1aa0.c, classic-c9eae0.c (full); reference-ca10e0.c, classic-c9e120.c (short); reference-ca0d60.c, classic-c9dda0.c (article).
+# The PE article supplier omits articles for named unit/HF owners and the player. An unnamed body can instead carry an article and a complete generated creature/caste label without any possessive.
+# World-generated species provenance is creature_raw.flags[91] GENERATED (data/upstream/df-structures/df.creature.xml:1336,1439,1522); bound creature.name/general_baby_name/general_child_name/temp_single_name and caste.caste_name/baby_name/child_name fields enter an immutable native-name snapshot.
+# Generated label fallback requires exact membership in that captured GENERATED field set and complete native name-group shape, after the existing semantic creature grammar; no title case or article alone establishes a generated species.
 kind	owner	entry_va	source_or_raw_location	reference_va_or_namespace	source
 pe-literal	generic-dead-body-item	0x140a82c10	0x1416cec68	0x140a86a14	rotten 
 pe-literal	generic-dead-body-item	0x140a82c10	0x1416cf03c	0x140a86a29	corpse

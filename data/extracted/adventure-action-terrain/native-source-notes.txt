@@ -1,0 +1,122 @@
+Adventure action chooser: complete native terrain field, DF 53.16
+================================================================
+
+These files are offline extraction of the two PE images configured in
+data/runtime/native-pe-images.json. No process was attached or game window
+operated. This source inventory is the decompilation requested by the user;
+it is not a runtime observation or a test/check report.
+
+Actual ownership
+---------------
+Steam PE:6a70a6d9:02711000, adventure_movement_movest caption 0x841440:
+  call 0x84169b -> terrain 0xe7d330, final growth argument FALSE.
+Classic PE:6a70b91c:0270a000, caption 0x83ecc0:
+  call 0x83ef1b -> terrain 0xe782a0, final growth argument FALSE.
+The original native call sequences are movement-terrain-field.asm and the
+machine-readable ownership is native-consumers.tsv. The whole returned
+std::string is appended once, before the independent direction/media group.
+Climb/hold/dismount/release/shoot-tile/throw-at-tile use this same terrain
+formatter; their action-specific production grammar remains in
+data/extracted/adventure-action-menu/.
+
+Actual Ghidra C output
+----------------------
+Both editions were imported separately into the installed Ghidra 12.1.4 and
+decompiled by tools/DecompileAdventureActionTerrain.java. The role C files
+and edition-ghidra-decompiled.c are ACTUAL Ghidra output, not hand-written
+pseudocode. Each image has eight complete bodies: terrain, material-noun,
+material-decode, material-lookup, construction-material, grass-event-lookup,
+plant-parts, and construction-capitalization.
+
+The terrain code ends before its tables (reference 0xe834fd, classic
+0xe7e46d). Construction-capitalization likewise ends at the single RET
+(reference exclusive 0x52d5fe, classic 0x52b01e); its following bytes are
+tables, not additional machine instructions. Source extraction preserves
+all decoded table rows separately, including defaults, aliases and masks.
+
+Ghidra's "Switch is manually overridden" comments mean each actual indirect
+branch was given its decoded native destinations. Synthetic C case values
+are not a replacement for actual selector values: native-switches.tsv holds
+the selector, byte remap, mapped index, destination and out-of-range edge.
+"Globals ... overlap smaller symbols" reflects mixed-width native storage.
+Original instruction streams and operands remain beside the actual C.
+
+Each edition's source corpus has 370 RIP-relative text operands, 975 explicit
+jump instructions and 4,327 decoded selector/default route rows: terrain
+3,835; material-decode 234; plant-parts 221; capitalization 37. These are
+source counts, not translation completion or test-pass counts. The terrain
+main switch covers all 694 bounded tiletype selectors. The original 697
+structural tile enum entries, including early-wall routing and out-of-range
+defaults, are retained in terrain-captions/native-tile-types.tsv.
+
+Terrain field families
+-----------------------
+native-productions.tsv describes the finite branch families; the complete
+literal/jump/switch tables preserve the per-instruction evidence. The main
+routes include all walls/pillars/fortifications/clusters, tree parts and
+named plants, grass variants, every flat/upward/downward track connection,
+floor variants, boulders/pebbles, stairs, slopes, rivers, pools, lava/magma,
+ice, special pits/gates, Open Space and the explicit Unknown fallback.
+Warm/Damp apply to the earlier wall-family route. Muddy, Snow-covered,
+Mossy, quality marks, Dead/Dry/Sparse/Dense, Unusable and Shoddy remain
+independent native conditions rather than a guessed list of screenshots.
+
+For the action caption the final growth=false gate omits the trailing
+repeated ', '+growth list. It DOES NOT omit the generated plant name+
+', ' prefix. The shared function's growth=true code is retained in C as
+part of the original complete function but is not claimed reachable from
+this particular movest call.
+
+Material/construction field boundaries
+--------------------------------------
+Natural tiles use material-decode followed by material-noun. The noun can
+contain a generated historical-figure possessive, NAME_PREFIX, and a
+STATE_NAME; it optionally uses STATE_ADJ according to the caller argument.
+Missing material emits the literal 'unknown material'. No-index flag paths
+emit plant/yarn/wood or wooden/cloth/silk/bone/leather/shell/soap/ivory-tooth/
+horn/pearl. RAW names such as rock/peat/granite are dynamic source fields.
+
+Construction lookup failure appends nothing. Item type 4 emits 'rough ';
+the reinforcement flag independently emits optional other material+'-',
+then 'Reinforced '. Both reinforcing and base materials have independent
+owner, RAW prefix, adjective and unknown-material branches. Item type 2/4
+adds ' block', type 5 adds ' log', all others omit the item-type suffix.
+The completed descriptor then calls construction-capitalization:
+reference 0x52d3c0, classic 0x52ade0. It uppercases eligible word starts and
+the native CP437 equivalents while respecting bracket nesting. Therefore
+the literal ' block' becomes displayed ' Block'. The runtime rules already
+match ASCII literals without case sensitivity; a capitalized Block is not
+by itself evidence that a second dictionary alias is missing.
+
+The screenshot's 'rock Block Downward Stairway' is the construction material
+field plus the stair shape. Its translations belong to complete ::tiles
+grammar, with ::materials::state and adjective data supplying rock. An
+action reader must pass the complete terrain field into that grammar;
+translating rock alone leaves the construction and shape tail unclaimed.
+
+Plants and names
+----------------
+Grass-event lookup requires a positive amount at x/y, chooses the actual
+plant RAW, and uses plural NAME or the adjective field. Density <=33 emits
+Sparse, >=67 Dense, otherwise neither. Missing event/RAW selects generic
+Grass/Grassy fallbacks. Plant-parts supports roots, trunk, thick branches,
+branches, smooth branches, twigs and cap, each with RAW-specific override
+and a plural-NAME fallback. Trees, saplings and shrubs each have explicit
+missing-plant fallbacks and optional generated-name prefixes.
+
+Procedural names and arbitrary modded RAW strings cannot be enumerated as
+a finite set of output sentences. Their typed suppliers and all finite
+native selection/text branches are retained here. Terrain itself does not
+call the building-name virtual: BUILDING is a separate field in other
+action owners and is documented by adventure-action-menu/native-owners.tsv.
+
+Reproduction
+------------
+Offline source extraction:
+  & 'C:/Users/WIN11/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe' 'D:/workspace/dfcn/tools/extract_adventure_action_terrain_sources.py'
+Headless uses the installed Ghidra and JDK paths documented in
+terrain-captions' sibling extraction notes and each edition's configured
+image, with -noanalysis -scriptPath D:/workspace/dfcn/tools -postScript
+DecompileAdventureActionTerrain.java D:/workspace/dfcn/data/extracted/adventure-action-terrain EDITION.
+Its temporary project/settings/cache are outside the repository. Neither
+tool runs a resource generator, translation implementation, build or game.

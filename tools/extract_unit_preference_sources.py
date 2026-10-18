@@ -43,6 +43,10 @@ def dump_supplier(image, start, role, edition, owners, literals, calls, branches
         # This one logical leaf has three contiguous unwind records. The final
         # return is at +b9; retain all validity/lookup paths, excluding padding.
         image.functions[start] = start + 0xBA
+    elif role == "textbox-flush-token":
+        # MSVC splits this logical text reflow body at callee-saved-register
+        # transitions. Include its complete loop, sole return and failure tail.
+        image.functions[start] = start + 0x3c2
     elif stored_end is None:
         leaf = list(image.instructions(start, start + 256))
         end = next(address + 1 for address, instruction in leaf if instruction.startswith("ret"))
@@ -108,6 +112,78 @@ def containing_owner(image, address):
     return None
 
 
+def page_sources(image, edition, owners, literals, calls, branches):
+    """Resolve the current PE's sheet -> raw paragraph -> rows -> draw path."""
+    signature = bytes.fromhex("48 8b 84 24 60 b2 00 00 48 05 a8 1a 00 00")
+    site = next(image.address(at) for at in occurrences(image.raw, signature)
+                if image.raw[at-0x230] == 0xe8 and image.raw[at+0x20d] == 0xe8)
+    # The distinctive sheet-field load is inside the native row drawing loop.
+    # Keep the entire page-specific width/reflow/scroll/draw region, rather than
+    # an instruction snippet that could miss its incoming branches.
+    start, end = site - 0x3e0, site + 0x337
+    image.functions[start] = end
+    role = "personality-page-flow"
+    assembly = dump(image, start, role, edition, literals, calls, branches)
+    (DEST / f"{edition}-{role}.asm").write_text(assembly, encoding="utf-8")
+    owners.append((edition,image.identity,str(image.path),role,hex(start-image.base),hex(end-image.base)))
+    del image.functions[start]
+    instructions = dict(image.instructions(start,end))
+    for offset, role in ((-0x230,"textbox-wrap"),(-0x292,"textbox-clear"),(0x20d,"colored-row-draw")):
+        operand = instructions[site+offset]
+        callee = int(re.fullmatch(r"call\s+0x([0-9a-f]+)",operand)[1],16)
+        supplier=dump_supplier(image,callee,role,edition,owners,literals,calls,branches)
+        if role=="textbox-wrap":
+            for relative,label in ((0x105,"textbox-flush-token"),(0x111,"textbox-flush-row")):
+                token_operand=dict(supplier)[callee+relative]
+                token_target=int(re.fullmatch(r"call\s+0x([0-9a-f]+)",token_operand)[1],16)
+                dump_supplier(image,token_target,label,edition,owners,literals,calls,branches)
+    # Input processing independently reflows the same raw paragraphs on width
+    # change. Find that native caller from its unique pair of sheet-field LEAs.
+    pattern = bytes.fromhex("49 8d 8d 90 1a 00 00")
+    for at in occurrences(image.raw,pattern):
+        pc=image.address(at)
+        ins=list(image.instructions(pc-7,pc+0x200))
+        selected=next(((a,i) for a,i in ins if re.fullmatch(r"call\s+0x[0-9a-f]+",i) and
+                       int(i.split()[-1],16)==int(instructions[site-0x230].split()[-1],16)),None)
+        if selected:
+            begin,finish=pc-0x1f,selected[0]+0x51
+            image.functions[begin]=finish
+            role="personality-input-reflow"
+            (DEST/f"{edition}-{role}.asm").write_text(
+                dump(image,begin,role,edition,literals,calls,branches),encoding="utf-8")
+            owners.append((edition,image.identity,str(image.path),role,hex(begin-image.base),hex(finish-image.base)))
+            del image.functions[begin]
+            break
+
+
+def decompiler_inputs(owners, switches):
+    """Feed exact original instruction boundaries into offline Ghidra."""
+    functions=[]
+    table_sites={}
+    for edition,identity,path,role,start,end in owners:
+        filename=f"{edition}-{int(start,16):x}.asm" if role.startswith("preference-producer:") else f"{edition}-{role}.asm"
+        lines=(DEST/filename).read_text(encoding="utf-8").splitlines()
+        code_end=re.search(r"\.\.(0x[0-9a-f]+)",lines[0])[1]
+        label="preference-producer" if role.startswith("preference-producer:") else role
+        # These page regions are slices of a much larger viewscreen function.
+        # They remain full ASM source; making them fake C functions would invent
+        # a calling convention and hide the source's real stack ownership.
+        if role not in ("personality-page-flow","personality-input-reflow"):
+            functions.append((edition,identity,label,start,code_end,filename))
+        pending=None
+        for line in lines[1:]:
+            pc,ins=line.split(": ",1)
+            table=re.search(r"\*4\+(0x[0-9a-f]+)\]",ins)
+            if table: pending=table[1]
+            if pending and re.match(r"jmp\s+(?:r[a-z0-9]+)$",ins):
+                table_sites[edition,pending]=pc
+                pending=None
+    write_tsv("ghidra-functions.tsv",("edition","image_identity","role","start_rva","code_end_rva","assembly_file"),functions)
+    write_tsv("ghidra-switches.tsv",("edition","selector","dispatch_rva","value","target_rva"),
+        ((edition,selector,table_sites[edition,table],value,target)
+         for edition,selector,table,value,remap,target in switches if (edition,table) in table_sites))
+
+
 def caller_operands(image, target, edition):
     rows = []
     contexts = []
@@ -124,7 +200,13 @@ def caller_operands(image, target, edition):
             if owner is None:
                 continue
             rows.append((edition,hex(owner-image.base),hex(address-image.base),hex(target-image.base)))
-            contexts.append("\n".join(f"{a-image.base:#010x}: {ins}" for a,ins in image.instructions(max(owner,address-0x120),address+0x90)))
+            # Decode from the original unwind entry, then select surrounding
+            # instructions. Starting at CALL-0x120 can land inside an x86
+            # instruction and invent a misleading incoming branch stream.
+            instructions=list(image.instructions(owner,image.functions[owner]))
+            index=next(i for i,(pc,_) in enumerate(instructions) if pc==address)
+            contexts.append("\n".join(f"{a-image.base:#010x}: {ins}"
+                for a,ins in instructions[max(0,index-60):index+41]))
     (DEST/f"{edition}-producer-callers.asm").write_text("\n\n".join(contexts)+"\n",encoding="utf-8")
     return rows
 
@@ -151,6 +233,10 @@ def main():
             image.functions[start] = unwind_end
             delta = start - image.base - 0x47f680
             callers.extend(caller_operands(image,start,edition))
+            table=0x481e14+delta
+            for kind in range(30):
+                target=struct.unpack_from("<I",image.raw,image.offset(image.base+table+kind*4))[0]
+                switches.append((edition,"shared-needs-kind",hex(table),str(kind),"",hex(target)))
             table = 0x481e8c + delta
             for kind in range(12):
                 target = struct.unpack_from("<I", image.raw, image.offset(image.base+table+kind*4))[0]
@@ -245,6 +331,7 @@ def main():
                     at = int(row[4],16)
                     scope = "Preferences/selector=2" if 0x4800b2+delta <= at < 0x481583+delta else "shared-other-selector"
                     scoped.append((edition, scope, row[4], row[8]))
+        page_sources(image,edition,owners,literals,calls,branches)
     write_tsv("native-owners.tsv", ("edition", "image_identity", "image_path", "role", "start_rva", "end_rva"), owners)
     write_tsv("native-literals.tsv", ("edition", "image_identity", "role", "function_rva", "instruction_rva", "encoding", "literal_rva", "operand_role", "source"), literals)
     write_tsv("native-calls.tsv", ("edition", "image_identity", "role", "function_rva", "instruction_rva", "callee_rva", "instruction"), calls)
@@ -254,6 +341,7 @@ def main():
     write_tsv("native-producer-callers.tsv", ("edition", "caller_owner_rva", "call_rva", "callee_rva"), callers)
     write_tsv("native-field-suppliers.tsv", ("edition", "caller_role", "caller_rva",
               "call_rva", "supplier_role", "supplier_rva"), suppliers)
+    decompiler_inputs(owners,switches)
 
 
 if __name__ == "__main__":

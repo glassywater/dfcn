@@ -789,6 +789,38 @@ steam	journal-agreement-title-and-orders	0xe0e3a	test   al,al
 steam	journal-agreement-title-and-orders	0xe0e46	cmp    rax,rbx
 steam	journal-agreement-title-and-orders	0xe0e58	test   cl,cl
 steam	journal-agreement-title-and-orders	0xe0e66	cmp    DWORD PTR [rdx+0x88],ecx
+steam	journal-agreement-entity-name	0xb92932	test   rax,0xfffffffffffffff8
+steam	journal-agreement-entity-name	0xb9293a	cmp    r8d,0xffffffff
+steam	journal-agreement-entity-name	0xb92956	test   rdi,rdi
+steam	journal-agreement-entity-name	0xb929d1	cmp    QWORD PTR [rsp+0x38],0xf
+steam	journal-agreement-entity-name	0xb929ea	test   esi,esi
+steam	journal-agreement-entity-name	0xb92a09	cmp    rdx,0xf
+steam	journal-agreement-entity-name	0xb92a1a	cmp    rdx,0x1000
+steam	journal-agreement-entity-name	0xb92a32	cmp    rax,0x1f
+steam	journal-agreement-artifact-name	0xb9443c	test   r9d,r9d
+steam	journal-agreement-artifact-name	0xb94441	cmp    r8d,0xffffffff
+steam	journal-agreement-artifact-name	0xb9445d	cmp    DWORD PTR [rbx],r8d
+steam	journal-agreement-artifact-name	0xb94472	cmp    edx,eax
+steam	journal-agreement-artifact-name	0xb94478	test   rbx,rbx
+steam	journal-agreement-artifact-name	0xb94496	cmp    ax,0x59
+steam	journal-agreement-artifact-name	0xb944ad	test   al,al
+steam	journal-agreement-artifact-name	0xb944b9	cmp    ax,0x57
+steam	journal-agreement-artifact-name	0xb94535	cmp    QWORD PTR [rsp+0x30],0x0
+steam	journal-agreement-artifact-name	0xb94549	cmp    ax,0x59
+steam	journal-agreement-artifact-name	0xb94560	test   al,al
+steam	journal-agreement-artifact-name	0xb9456c	cmp    ax,0x57
+steam	journal-agreement-artifact-name	0xb94592	cmp    rbx,0x8
+steam	journal-agreement-artifact-name	0xb9459d	cmp    rbx,0xf
+steam	journal-agreement-artifact-name	0xb945dc	cmp    rbx,rax
+steam	journal-agreement-artifact-name	0xb945ea	cmp    rax,rdi
+steam	journal-agreement-artifact-name	0xb9461c	cmp    rbx,0xf
+steam	journal-agreement-artifact-name	0xb9462e	cmp    rdx,0x1000
+steam	journal-agreement-artifact-name	0xb94646	cmp    rax,0x1f
+steam	journal-agreement-artifact-name	0xb94662	cmp    QWORD PTR [rsp+0x38],0xf
+steam	journal-agreement-artifact-name	0xb9467b	test   r14d,r14d
+steam	journal-agreement-artifact-name	0xb9469b	cmp    rdx,0xf
+steam	journal-agreement-artifact-name	0xb946ac	cmp    rdx,0x1000
+steam	journal-agreement-artifact-name	0xb946c4	cmp    rax,0x1f
 steam	journal-card-border	0xdec7e	cmp    edx,r8d
 steam	journal-card-border	0xdecc3	cmp    r13d,r14d
 steam	journal-card-border	0xdecd0	cmp    edi,r13d
@@ -1613,6 +1645,38 @@ classic	journal-agreement-title-and-orders	0xe0dca	test   al,al
 classic	journal-agreement-title-and-orders	0xe0dd6	cmp    rax,rbx
 classic	journal-agreement-title-and-orders	0xe0de8	test   cl,cl
 classic	journal-agreement-title-and-orders	0xe0df6	cmp    DWORD PTR [rdx+0x88],ecx
+classic	journal-agreement-entity-name	0xb8f972	test   rax,0xfffffffffffffff8
+classic	journal-agreement-entity-name	0xb8f97a	cmp    r8d,0xffffffff
+classic	journal-agreement-entity-name	0xb8f996	test   rdi,rdi
+classic	journal-agreement-entity-name	0xb8fa11	cmp    QWORD PTR [rsp+0x38],0xf
+classic	journal-agreement-entity-name	0xb8fa2a	test   esi,esi
+classic	journal-agreement-entity-name	0xb8fa49	cmp    rdx,0xf
+classic	journal-agreement-entity-name	0xb8fa5a	cmp    rdx,0x1000
+classic	journal-agreement-entity-name	0xb8fa72	cmp    rax,0x1f
+classic	journal-agreement-artifact-name	0xb9147c	test   r9d,r9d
+classic	journal-agreement-artifact-name	0xb91481	cmp    r8d,0xffffffff
+classic	journal-agreement-artifact-name	0xb9149d	cmp    DWORD PTR [rbx],r8d
+classic	journal-agreement-artifact-name	0xb914b2	cmp    edx,eax
+classic	journal-agreement-artifact-name	0xb914b8	test   rbx,rbx
+classic	journal-agreement-artifact-name	0xb914d6	cmp    ax,0x59
+classic	journal-agreement-artifact-name	0xb914ed	test   al,al
+classic	journal-agreement-artifact-name	0xb914f9	cmp    ax,0x57
+classic	journal-agreement-artifact-name	0xb91575	cmp    QWORD PTR [rsp+0x30],0x0
+classic	journal-agreement-artifact-name	0xb91589	cmp    ax,0x59
+classic	journal-agreement-artifact-name	0xb915a0	test   al,al
+classic	journal-agreement-artifact-name	0xb915ac	cmp    ax,0x57
+classic	journal-agreement-artifact-name	0xb915d2	cmp    rbx,0x8
+classic	journal-agreement-artifact-name	0xb915dd	cmp    rbx,0xf
+classic	journal-agreement-artifact-name	0xb9161c	cmp    rbx,rax
+classic	journal-agreement-artifact-name	0xb9162a	cmp    rax,rdi
+classic	journal-agreement-artifact-name	0xb9165c	cmp    rbx,0xf
+classic	journal-agreement-artifact-name	0xb9166e	cmp    rdx,0x1000
+classic	journal-agreement-artifact-name	0xb91686	cmp    rax,0x1f
+classic	journal-agreement-artifact-name	0xb916a2	cmp    QWORD PTR [rsp+0x38],0xf
+classic	journal-agreement-artifact-name	0xb916bb	test   r14d,r14d
+classic	journal-agreement-artifact-name	0xb916db	cmp    rdx,0xf
+classic	journal-agreement-artifact-name	0xb916ec	cmp    rdx,0x1000
+classic	journal-agreement-artifact-name	0xb91704	cmp    rax,0x1f
 classic	journal-card-border	0xdec0e	cmp    edx,r8d
 classic	journal-card-border	0xdec53	cmp    r13d,r14d
 classic	journal-card-border	0xdec60	cmp    edi,r13d

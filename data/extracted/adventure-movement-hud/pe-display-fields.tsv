@@ -1,0 +1,9 @@
+edition	call_rva	return_rva	source
+reference	0xafab92	0xafab97	Climb or Move or world.raws.gait_name[gait.type]; native truncation at 20 bytes
+reference	0xafad3c	0xafad41	climb speed; three decimal places with native trailing-zero policy
+reference	0xafb162	0xafb167	current/max speed when unequal; each decimal if integer part is one digit
+reference	0xafb2de	0xafb2e3	single speed when current=max; native three-decimal formatting
+classic	0xaf7bd2	0xaf7bd7	Climb or Move or world.raws.gait_name[gait.type]; native truncation at 20 bytes
+classic	0xaf7d7c	0xaf7d81	climb speed; three decimal places with native trailing-zero policy
+classic	0xaf81a2	0xaf81a7	current/max speed when unequal; each decimal if integer part is one digit
+classic	0xaf831e	0xaf8323	single speed when current=max; native three-decimal formatting

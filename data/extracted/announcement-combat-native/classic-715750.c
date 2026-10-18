@@ -401,7 +401,7 @@ LAB_140715e4c:
               if (sVar5 == -1) {
                 if (sVar18 == -1) {
                   uStack_2c8 = 2;
-                  FUN_14132f540(uStack_2a8,&pppuStack_98,sVar25);
+                  combat_source_body_part_name_132f540(uStack_2a8,&pppuStack_98,sVar25);
                 }
                 else {
                   if (sVar25 < 0) {

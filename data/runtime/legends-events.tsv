@@ -889,12 +889,16 @@ plants	植物	term
 a performance	表演	title
 the performance	表演	title
 the story of {e}	{e}的故事	title
+# b8c2b0 preserves its story prefix when the referenced event emits no title.
+the story of	历史故事	title
 a procession	游行	title
 a ceremony	仪式	title
 a telling of the story of the ascension of {n} to the position of {s} of {p} in {d}	讲述{n}于{d}年就任{p}{s}的故事	clause
 a telling of the story of the ascension of {n} to the position of {s} of {p}	讲述{n}就任{p}{s}的故事	clause
 a recital of {b}	《{b}》的朗诵	title
 a performance of {b}	《{b}》的表演	title
+# b8c2b0's failed named-dance lookup follows the already-emitted prefix.
+a performance of a dance	舞蹈表演	title
 a poetry recital	诗歌朗诵	title
 storytelling	讲故事	term
 banners	旗帜	term
@@ -1161,6 +1165,11 @@ After enduring an interrogation, {a} was released	忍受审讯后，{a}被释放
 attempted to frame {a} for {s}	试图诬陷{a}犯有{s}	action
 the failed attempt by {a} to frame {a} for {s}	{a1}试图诬陷{a2}犯有{s}却未得逞	title
 the failed attempt by {a} at the behest of {a} to frame {a} for {s}	{a1}受{a2}指使，试图诬陷{a3}犯有{s}却未得逞	title
+# b7d740 preserves for when the crime selector has no noun. Its trailing
+# in belongs to the shared date, rather than a fabricated-evidence place.
+the failed attempt by {a} to frame {a} for	{a1}试图诬陷{a2}却未得逞	title
+the failed attempt by {a} at the behest of {a} to frame {a} for	{a1}受{a2}指使，试图诬陷{a3}却未得逞	title
+{e} by fooling {a} with fabricated evidence	通过利用伪造证据欺骗{a}而进行的{e}	title
 {e} by fooling {a} with fabricated evidence in {p}	在{p}利用伪造的证据欺骗{a}而进行的{e}	title
 
 # Agreements, justice and collective religious actions.
@@ -1309,6 +1318,10 @@ the body of {n} was {s} by {a}	{n}的尸体被{a}{s}	event
 The body of {n} was {s} by {a}	{n}的尸体被{a}{s}	event
 the bodies of {a} were {s} by {a}	{a1}的尸体被{a2}{s}	event
 The bodies of {a} were {s} by {a}	{a1}的尸体被{a2}{s}	event
+the body of {n} was animated by {a} in {p}	{n}的尸体在{p}被{a}复活了	event
+the bodies of {a} were animated by {a} in {p}	{a1}的尸体在{p}被{a2}复活了	event
+the body of {a} was animated in {p}	{a}的尸体在{p}被复活了	event
+the bodies of {a} were animated in {p}	{a}的尸体在{p}被复活了	event
 added to a grisly mound	堆成了可怖的尸丘	term
 added to a grotesque pillar	堆成了怪诞的尸柱	term
 added to a gruesome sculpture	拼成了骇人的雕塑	term
@@ -1503,6 +1516,9 @@ in order to have an agent in {p}	，想在{p}安插代理人	clause
 in order to secure embezzled funds in {p}	，想拿到{p}被挪用的资金	clause
 toward the fulfillment of plots and schemes in {p}	，以促成在{p}策划的阴谋	clause
 the corruption of {a}	对{a}的拉拢	title
+# PE 2aae00 (classic 2a89c0) is the failed-corruption +0xd8 title,
+# independent of failed framing and its optional instigator/crime fields.
+the failed attempt by {a} to corrupt {a}	{a1}试图拉拢{a2}却未得逞	title
 
 # The meeting is a new sentence in the same record. The optional neutral
 # interjection must not swallow either of the independently colored people.
@@ -1619,6 +1635,8 @@ destruction of {p}	{p}的毁灭	title
 the attack on {a}	对{a}的攻击	title
 the attack by {a}	{a}发起的攻击	title
 the attack of {a}	{a}发起的攻击	title
+the attack on {a} at {p} by {a}	{a2}在{p}攻击了{a1}	title
+the attack of {a} on {a} at {p}	{a1}在{p}攻击了{a2}	title
 the infiltration of {p}	对{p}的渗透	title
 the defeat of {a}	「{a}」战败	title
 # Keep the victor, defeated force, its civilization and the captured site in
@@ -1723,6 +1741,8 @@ raiding of {p}	对{p}的袭击	title
 pillaging of {p}	对{p}的劫掠	title
 the reclamation of {p}	收复{p}	title
 the devouring of {a}	{a}被吞噬	title
+# PE b6ae90 retains the article if both victim HF and RAW creature name fail.
+the devouring of a	某个生物被吞噬的事件	title
 the crushing of the insurrection against {p}	镇压反抗{p}的起义	title
 the questionable judgment of {a}	{a}的判断失常	title
 the end of the insurrection in {p}	{p}起义的结束	title
@@ -1733,6 +1753,8 @@ the insurrection in {p}	{p}起义	title
 concluded with the local government overthrown	以当地政府被推翻告终	clause
 concluded with {p} overthrown	以{p}被推翻告终	clause
 the insurrection against {p}	反抗{p}的起义	title
+# b6a550 appends " against" without a trailing space before the entity.
+the insurrection against{p}	反抗{p}的起义	title
 the insurrection	起义	title
 
 # Buildings, visits and oppressive laws.
@@ -1756,6 +1778,9 @@ the completion of {p}	{p}的完工	title
 the enactment of a series of oppressive laws	颁布一系列苛法	title
 the lifting of numerous oppressive laws from {p}	废除施加于{p}的众多苛法	title
 the repeal of numerous oppressive laws	废除众多苛法	title
+# b68e80 tests enact/repeal independently and appends no separator.
+the enactment of a series of oppressive lawsthe repeal of numerous oppressive laws	颁布一系列苛法并废除众多苛法	title
+the proclamation of a series of oppressive edicts upon the lifting of numerous oppressive laws from {p}	对{p}颁布一系列苛政并废除施加于其的众多苛法	title
 the proclamation of a series of oppressive edicts upon {p}	对{p}颁布一系列苛政	title
 the incorporation of {p} into {p}	将{p1}并入{p2}	title
 the incorporation of {p}	{p}的并入	title
@@ -1788,6 +1813,8 @@ but	但	clause
 
 # Journeys, climbing, torture and obsession with mortality.
 the escape from {p}	逃出{p}	title
+# Native travel b6c210's escape branch names the travelers after "from".
+the escape from {a} to {p}	{a}逃往{p}	title
 the journey of {a}	{a}的旅程	title
 the return of {a}	{a}的归来	title
 the climbing of {p}	攀登{p}	title
@@ -1807,6 +1834,8 @@ slashing out	割除	term
 tearing out	撕掉	term
 slashing off	砍断	term
 the {s} of {n}'s {t}	{n}的{t}遭到{s}的事件	title
+# PE b6b540's unknown wound-action selector omits only its action noun.
+the of {n}'s {t}	{n}的{t}受伤的事件	title
 {s} of {n}'s {t}	{n}的{t}遭到{s}的事件	title
 became obsessed with his own mortality and sought to extend his life by any means	开始执着于自身终将死亡的命运，并不择手段地寻求延寿	mortality-action
 became obsessed with her own mortality and sought to extend her life by any means	开始执着于自身终将死亡的命运，并不择手段地寻求延寿	mortality-action
@@ -1969,6 +1998,10 @@ the return of {a} from the dead as {s}	{a}复生为{s}	title
 the return of {a} from the dead as a {s}	{a}复生为{s}	title
 the return of {a} from the dead, once more, as {s}	{a}再次复生为{s}	title
 the return of {a} from the dead, once more, as a {s}	{a}再次复生为{s}	title
+# Revival b732f0 can retain once-more or an empty ghost-kind suffix.
+the return of {a} from the dead, once more,	{a}再次死而复生	title
+the return of {a} from the dead as	{a}死而复生	title
+the return of {a} from the dead, once more, as	{a}再次死而复生	title
 the abduction of {a}	{a}遭绑架	title
 the discarding of {a}	{a}遗体的弃置	title
 the raising of {a}	{a}的复活	title
@@ -2010,6 +2043,9 @@ the initial discovery of {s}	{s}的首次发现	title
 the independent discovery of {s}	{s}的独立发现	title
 the initial discovery of {s} by {a}	{a}首次发现{s}	title
 the independent discovery of {s} by {a}	{a}独立发现{s}	title
+# b72460 category>=14 leaves its topic empty after the discovery connector.
+the initial discovery of	首次发现	title
+the independent discovery of	独立发现	title
 the learning of {s} by {a} from the teaching of {a}	{a1}在{a2}的教导下学会{s}	title
 the learning of {s} by {a} from {b}	{a}从{b}中学会{s}	title
 the learning of {s} by {a} from {i}	{a}从{i}中学会{s}	title
@@ -2046,6 +2082,8 @@ the new dream of {a} to create a great work of art	{a}创作伟大艺术品的�
 the new dream of {a} to make a great discovery	{a}作出伟大发现的新梦想	title
 the new desire of {a} to rule the world	{a}统治世界的新欲望	title
 the new desire of {a} to bathe the world in chaos	{a}让世界陷入混乱的新欲望	title
+# b72ee0 selects the default dream prefix for goal14, before the chaos tail.
+the new dream of {a} to bathe the world in chaos	{a}让世界陷入混乱的新梦想	title
 the new obsession of {a} with an inscrutable goal	{a}对难以理解的目标产生的新执念	title
 the new obsession of {a} with extending his own life	{a}延长自己生命的新执念	title
 the new obsession of {a} with extending her own life	{a}延长自己生命的新执念	title
@@ -2085,10 +2123,20 @@ the mercenary operation of {a}	{a}的佣兵活动	title
 the baby-snatching of {a}	{a}的劫婴活动	title
 the wandering of {a}	{a}的游荡	title
 the studies of {a}	{a}的求学	title
-the settling of {a}	{a}的定居	title
+the settling of {a}	{a}安顿下来	title
 the visit of {a}	{a}的造访	title
 the exile of {a}	{a}的流放	title
 the flight of {a}	{a}的逃亡	title
+the settling of {a} in {p}	{a}在{p}安顿下来	title
+the wandering of {a} around {p}	{a}在{p}一带游荡	title
+the wandering of {a} in {p}	{a}在{p}游荡	title
+the studies of {a} in {p}	{a}在{p}求学	title
+the studies of {a} around {p}	{a}在{p}一带求学	title
+the visit of {a} to {p}	{a}造访了{p}	title
+the flight of {a} to {p}	{a}逃往{p}	title
+the flight of {a} into {p}	{a}逃入{p}	title
+the flight of {a} into the area around {p}	{a}逃入{p}周边地区	title
+the exile of {a} to {p}	{a}被流放到{p}	title
 
 # Offices and organizations. Profession/weapon vocabulary is taken from the
 # existing rulesets, with the weapon sense of pike kept separate from fish.
@@ -2115,6 +2163,10 @@ no longer imprisoned {a}	不再囚禁{a}	action
 imprisoned {a}	囚禁了{a}	action
 the dissolution of {p}	{p}的解散	title
 the bestowal of the title of {s}	{s}头衔的授予	title
+# b7a9f0's title and owning entity are conditional, but the recipient is not.
+the bestowal of the title of {s} in {p} upon {a}	{p}向{a}授予{s}头衔	title
+the bestowal of the title of upon {a}	向{a}授予头衔	title
+the bestowal of the title of in {p} upon {a}	{p}向{a}授予头衔	title
 , which was given to all new members	，该头衔授予每一位新成员	clause
 for slaying an enemy	因为杀死了一名敌人	clause
 for slaying {c} enemies	因为杀死了{c}名敌人	clause
@@ -2262,6 +2314,12 @@ the popularly-supported creation of the position of {s}	在民众拥护下设立
 the collaborative creation of the position of {s}	共同设立{s}一职	title
 the forcible creation of the position of {s}	强行设立{s}一职	title
 the audacious creation of the position of {s}	大胆设立{s}一职	title
+# b796d0 preserves the chosen creation noun when the office lookup is absent.
+the creation of the position of	设立职位	title
+the popularly-supported creation of the position of	在民众拥护下设立职位	title
+the collaborative creation of the position of	共同设立职位	title
+the forcible creation of the position of	强行设立职位	title
+the audacious creation of the position of	大胆设立职位	title
 members of {p}	{p}的成员	participant
 formed a friendship	结为朋友	action
 formed a false friendship where each used the other for information	假意结交，彼此利用以获取情报	action
@@ -2276,6 +2334,9 @@ the sabotage of the activities of {p}	对{p}活动的破坏	title
 the ransom of {a}	{a}的赎回	title
 the sale of {a}	{a}的出售	title
 the alliance between {p} and {p}	{p1}与{p2}之间的联盟	title
+# b7c5e0 emits and even for an empty ally vector and abbreviates >2 allies.
+the alliance between {p} and	{p}的联盟	title
+the alliance between {p} and several groups	{p}与若干团体之间的联盟	title
 the breach of {p}	{p}被攻破	title
 the persecution of {a}	对{a}的迫害	title
 the sermon of {a}	{a}的布道	title
@@ -2315,11 +2376,16 @@ the addition of a feast hall to {p}	为{p}增建宴会厅	title
 the addition of a gated courtyard to {p}	为{p}增建有门的庭院	title
 the addition of a dungeon to {p}	为{p}增建地牢	title
 the addition of improved fortifications to {p}	对{p}防御工事的改善	title
+# b7b0e0's unsupported building/feature selectors retain the destination.
+the addition of to {p}	对{p}的增建	title
 the inheritance of {p}	{p}的继承	title
 the conviction of {a}	{a}被定罪	title
 the wrongful conviction of {a}	{a}被错判有罪	title
 the conviction of {a} for {s}	{a}被判犯有{s}	title
 the wrongful conviction of {a} for {s}	{a}被错判犯有{s}	title
+# b7e640's default crime selector retains its for connector.
+the conviction of {a} for	{a}被定罪	title
+the wrongful conviction of {a} for	{a}被错判有罪	title
 
 # Complete native reputation-level catalogue, Dwarf Fortress.exe file offsets
 # 0x15ea720-0x15eb3c0. Scoped labels also serve historical reputation events.
@@ -2880,6 +2946,8 @@ the status of {a} as a {s} in the eyes of {p}	{p}眼中{a}的{s}身份	title
 the status of {a} as a {s}	{a}的{s}身份	title
 the status of {a}	{a}的身份	title
 the recruitment of {a}	对{a}的招募	title
+# b80160 recruits a typed unit-role caption, not a historical person's name.
+the recruitment of {s} into {p} by {a}	{a}为{p}招募{s}	title
 the appointment of {a} to the position of {s} of {p}	{a}被任命为「{p}」的{s}	title
 the appointment of {a} to the position of {s} of {p} in {d}	第{d}年，{a}被任命为「{p}」的{s}	title
 # Adventurer log event headings use possessive summaries of the same events.
@@ -3004,9 +3072,13 @@ the rejection of an offer of peace from {p}	拒绝{p}的和平提议	title
 the acceptance of {s}	接受{s}	title
 the making of {s}	提出{s}	title
 the dispute between {a} and {a} over {s}	{a1}与{a2}关于{s}的争端	title
+# b834b0 leaves the over connector when the dispute selector is unknown.
+the dispute between {a} and {a} over	{a1}与{a2}关于未明事项的争端	title
 became embroiled in a dispute over {s}	卷入了关于{s}的争端	action
 corrupt dealings	腐败交易	term
 the conclusion of {s}	{s}的结束	title
+# b82a20 can resolve an agreement whose subtype supplies no label.
+the conclusion of	一项协议的结束	title
 after a joyous reunion	在欢喜地重聚后	history-adjunct
 after an adoption	在被收养后	history-adjunct
 an agreement to retrieve {p}	找回{p}的协议	title
@@ -3061,6 +3133,9 @@ a dance competition	舞蹈比赛	title
 a poetry competition	诗歌比赛	title
 a flying race	飞行比赛	title
 a foot race	赛跑	title
+# b8d5f0 keeps the category when its RAW race/item caption is empty.
+a race	赛跑	title
+a throwing competition	投掷比赛	title
 a {i} throwing competition	{i}投掷比赛	title
 an {i} throwing competition	{i}投掷比赛	title
 a competition involving {b}	以《{b}》为内容的比赛	title
@@ -3084,6 +3159,15 @@ the creation of {b}	《{b}》的创作	title
 the creation of {b} in {p}	在{p}创作《{b}》	title
 the creation of {b} by {a}	{a}创作《{b}》	title
 the creation of {b} in {p} by {a}	{a}在{p}创作《{b}》	title
+# Missing form records retain a native category noun, not a work title.
+# PE +0xd8 roots b88c70/b89120/b89640 append the creator unconditionally;
+# keep that complete branch ahead of the generic book-title creation rule.
+the creation of a poetic form	一种诗歌形式的创作	title
+the creation of a musical form	一种音乐形式的创作	title
+the creation of a dance form	一种舞蹈形式的创作	title
+the creation of a poetic form by {a}	{a}创作了一种诗歌形式	title
+the creation of a musical form by {a}	{a}创作了一种音乐形式	title
+the creation of a dance form by {a}	{a}创作了一种舞蹈形式	title
 {p} was looted	{p}被劫走了	event
 {p} was confiscated	{p}被没收了	event
 {p} was confiscated by {a}	{a}没收了{p}	event
@@ -3275,6 +3359,8 @@ the {e}	{e}	title
 {e} to the position of {s} of {p}	{e}，就任{p}的{s}	title
 {e} from the position of {s} of {p}	{e}，离开{p}的{s}职位	title
 {e} as part of {e}	作为{e2}一部分的{e1}	title
+# Performance/competition/procession/ceremony retain an empty occasion name.
+{e} as part of	{e}（作为庆典的一部分）	title
 {e} as a means of torture	作为酷刑实施的{e}	title
 # Native summary continuations: 0x140b68b60, 0x140b69120,
 # 0x140b660c0 and 0x140b678f0. Clause rows alone cannot enter an {e} capture.
@@ -3339,7 +3425,12 @@ the body of {a}	{a}的尸体	participant
 the bodies of {a}	{a}的尸体	participant
 impalement on {i} of {a}	将{a}刺穿在{i}上	title
 display on {p} of the skins of {a}	将{a}的皮陈列在{p}上	title
-hanging from a {s} on {i} {a}	将{a}以{i}悬挂在{s}上	title
+# PE b84480 case3 shares the item formatter's literal " of" before bodies.
+hanging from a {s} on {i} of {a}	将{a}以{i}悬挂在{s}上	title
+# An out-of-range abuse selector retains the original leading "the" and
+# body/bodies identity while omitting the action noun (b8488c continuation).
+the the body of {a}	涉及{a}尸体的事件	title
+the the bodies of {a}	涉及{a}尸体的事件	title
 the body of {a} was impaled on {i} by {a}	{a2}将{a1}的尸体刺穿在{i}上	event
 the bodies of {a} were impaled on {i} by {a}	{a2}将{a1}的尸体刺穿在{i}上	event
 the body of {a} was hung from a {s} on {i} by {a}	{a2}用{i}将{a1}的尸体悬挂在{s}上	event
@@ -3384,6 +3475,8 @@ a competition	比赛	title
 # race and mercenary/order variants. Skills/items keep their shared terms.
 was a {s} group from {p}	曾是来自{p}的{s}势力	action
 was a group from {p}	曾是来自{p}的势力	action
+was a guild from {p}	曾是来自{p}的行会	action
+was a craft guild from {p}	曾是来自{p}的工艺行会	action
 was a {s} order from {p}	曾是来自{p}的{s}团体	action
 was a {s} guild from {p}	曾是来自{p}的{s}行会	action
 was a {s} craft guild from {p}	曾是来自{p}的{s}工艺行会	action
@@ -3408,6 +3501,8 @@ was a shadowy military company from {p}	曾是来自{p}的隐秘的军事队伍	
 was a shadowy military order from {p}	曾是来自{p}的隐秘的军事团体	action
 known for their use of the {i}	以运用{i}的技艺闻名	clause
 known for their use of {i}	以运用{i}的技艺闻名	clause
+known for	以……闻名	clause
+dedicated to the mastery of	致力于精通……	clause
 dedicated to the mastery of the {i}	致力于精通{i}	clause
 dedicated to the mastery of their use of the {i}	致力于精通{i}的使用	clause
 their use of the {i}	他们运用{i}的技艺	clause
@@ -3918,6 +4013,9 @@ and	并	clause
 {n}'s {s}	{n}的{s}	participant
 unknown material	未知材料	term
 recruited from {p}	从{p}进行了招募	action
+recruited into {p}	为{p}进行了招募	action
+recruited {s} into {p}	为{p}招募了{s}	action
+Native artifact claim without action: {p} by {a}	{p}，由{a}	event
 {p} was confiscated from {p} by {a}	{a}从{p2}没收了{p1}	event
 {p} was looted from {p} by {a}	{a}从{p2}掠走了{p1}	event
 {p} was recovered from {p} by {a}	{a}从{p2}找回了{p1}	event
@@ -4118,6 +4216,9 @@ the promise by {a} to {a} to give a position in {p}	{a1}向{a2}许诺授予{p}�
 the passing of corruptly-obtained funds by {a}	{a}转交贪腐所得资金	title
 the embezzlement of {a}	{a}挪用资金	title
 the bribery of {a}	{a}受贿	title
+# 2ad7f0 case5 omits the separator before its party for subtypes247/248.
+the embezzlement of{a}	{a}挪用资金	title
+the bribery of{a}	{a}受贿	title
 {e} as the {s} of {p}	担任{p}的{s}期间发生的{e}	title
 {e} as a {s} of {p}	担任{p}的{s}期间发生的{e}	title
 {e} under the influence of {a}	在{a}影响下发生的{e}	title
@@ -4175,6 +4276,12 @@ the making of {p} into a symbol of a {s} of {p}	将{p1}定为{p2}的{s}职位的
 the making of {p} into a symbol of the {s} of {p}	将{p1}定为{p2}的{s}职位的象征	title
 the making of {p} into a symbol of a {s}	将{p}定为{s}职位的象征	title
 the making of {p} into a symbol of the {s}	将{p}定为{s}职位的象征	title
+# Artifact-claim b88790 retains "a symbol of" when the owning entity,
+# assignment or office record is missing; an empty RAW name can leave its
+# selected a/the article. Do not manufacture an office-name capture.
+the making of {p} into a symbol of	将{p}定为职位的象征	title
+the making of {p} into a symbol of a	将{p}定为职位的象征	title
+the making of {p} into a symbol of the	将{p}定为职位的象征	title
 # Preaching and career summaries: 0x140b7b6a0 and 0x140b75c00.
 {e} urging love between {p} and {p}	{e}，劝导{p1}与{p2}相互关爱	title
 {e} setting {p} against {p}	{e}，挑拨{p1}与{p2}对立	title
@@ -4240,6 +4347,7 @@ the plot of {a} to frame for by fooling	{a}欺诈陷害他人的阴谋	title
 # Empty occasion names leave a native separator without a title. Scope
 # their handling to the observed artwork/occasion/activity spellings.
 {e} during	在活动期间，{e}	title
+during	在活动期间	clause
 The Occasion of	庆典	title
 Occasion of	庆典	title
 Performance of	表演	title
@@ -4317,6 +4425,10 @@ the profaning of {p}	对{p}的亵渎	title
 the disturbing of {p}	对{p}的惊扰	title
 the prayer inside of {p}	在{p}内的祈祷	title
 the of {p} in {p} by {a}	{a}在{p2}涉及{p1}的历史事件	title
+# Body-state b76340 and suspicion b76ba0 can omit only their action noun.
+the of {a}	涉及{a}的历史事件	title
+# b767c0's unsupported relationship selector retains both figures.
+the of {a} {a}	涉及{a1}与{a2}关系的历史事件	title
 the {p} in {p} by {a}	{a}在{p2}涉及{p1}的历史事件	title
 the {p} in {p} in {p} by {a}	{a}在{p3}的{p2}涉及{p1}的历史事件	title
 # Invalid season selectors keep the selected phase and year, rather than
@@ -4344,6 +4456,24 @@ the election of {a} to the position of of {p}	{a}当选{p}的职位	title
 the selection of {a} to the position of of {p}	{a}被选任{p}的职位	title
 the claim of {a} to the position of of {p}	{a}宣称担任{p}的职位	title
 the status of {a} as a of {p}	{a}在{p}的任职身份	title
+
+# Native site-link titles b7fa40/b7fc80 append their preposition directly
+# to the site when no building is present; these are fixed literal joins.
+the working of {a} at{p}	{a}在{p}工作	title
+the seat of power of {a} at{p}	{a}以{p}为统治中心	title
+the hanging-out of {a} at{p}	{a}在{p}消磨时光	title
+the residence of {a} in{p}	{a}居住在{p}	title
+the lair of {a} in{p}	{a}在{p}筑巢	title
+the imprisonment of {a} in{p}	{a}被囚禁在{p}	title
+the cease of occupation of {a} at{p}	{a}不再占领{p}	title
+the stoppage of hanging-out of {a} at{p}	{a}不再到{p}消磨时光	title
+the removal of the seat of power of {a} from{p}	{a}不再以{p}为统治中心	title
+the moving out of {a} from{p}	{a}从{p}迁出	title
+the escape of {a} from{p}	{a}逃离{p}	title
+
+# Missing occasion records repeat the same fallback identity after an ordinal.
+The Occasion of The Occasion	庆典	title
+Occasion of The Occasion	庆典	title
 
 # Native Linux entity-position titles: guild, company and martial offices.
 # Complete office fields share singular/plural meanings; these scoped terms
@@ -4389,3 +4519,4 @@ Native history office: priest	祭司	term
 Native history office: priests	祭司	term
 Native history office: militia-dwarf	民兵	term
 Native history office: militia-dwarves	民兵	term
+out of {p}	从{p}	clause

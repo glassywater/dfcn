@@ -3,6 +3,7 @@
 // unrelated boxes with different fonts and leftover native English glyphs.
 void Overlay::append_character_kill_rows(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y) const {
+    if (!native_character_translation_active(gps_)) return;
     if (!gps_ || gps_->dimx <= 0 || gps_->dimy <= 0 ||
         rows.size() != static_cast<size_t>(gps_->dimy)) return;
     std::vector<std::string> context(gps_->dimy);
@@ -85,7 +86,7 @@ void Overlay::append_character_kill_rows(std::vector<std::string> &rows,
         const SDL_Rect panel{panel_left, body_top,
             panel_right - panel_left, panel_bottom - body_top};
         const auto scrollbars = native_vertical_scrollbar_spans(*gps_, panel);
-        const auto draws = captured_native_drawn_text_rows();
+        const auto draws = captured_native_drawn_text_view();
         const auto captions = captured_clipped_captions();
         // DF already submits each kill record as one addst string. In
         // classic mode the surrounding grid also contains CP437 controls;
@@ -151,7 +152,7 @@ void Overlay::append_character_kill_rows(std::vector<std::string> &rows,
             }
         };
         append_draws(draws);
-        append_draws(captured_native_drawn_text_rows(true));
+        append_draws(captured_native_drawn_text_view(true));
         if (!frame) return;
         for (int y = body_top; y < frame->bottom; ++y) {
             int right = frame->right;
@@ -206,6 +207,7 @@ void Overlay::append_character_kill_rows(std::vector<std::string> &rows,
 }
 
 void Overlay::layout_character_kill_rows(SDL_Renderer *renderer) {
+    if (!native_character_translation_active(gps_)) return;
     if (!renderer || !face_ || !gps_ || gps_->tile_pixel_x <= 0 ||
         gps_->tile_pixel_y <= 0) return;
     std::vector<std::vector<Match *>> rows;

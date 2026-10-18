@@ -1,0 +1,122 @@
+; classic PE:6a70b91c:0270a000; history_event_merchantst; RVA 0xb84820..0xb84a0a
+0xb84820: mov    QWORD PTR [rsp+0x8],rbx
+0xb84825: mov    QWORD PTR [rsp+0x10],rsi
+0xb8482a: mov    QWORD PTR [rsp+0x18],rdi
+0xb8482f: push   r14
+0xb84831: sub    rsp,0x20
+0xb84835: mov    rdi,rdx
+0xb84838: mov    r14,r8
+0xb8483b: mov    rsi,rcx
+0xb8483e: lea    rdx,[rip+0xa5f5ef]        # 0x1415e3e34 ; cstring='the '
+0xb84845: mov    rcx,rdi
+0xb84848: mov    r8d,0x4
+0xb8484e: call   0x14006f9a0
+0xb84853: cmp    DWORD PTR [rsi+0x40],0x0
+0xb84857: lea    rbx,[rsi+0x38]
+0xb8485b: jle    0x140b848ea
+0xb84861: mov    rax,QWORD PTR [rbx]
+0xb84864: test   BYTE PTR [rax],0x1
+0xb84867: je     0x140b8487b
+0xb84869: mov    r8d,0xa
+0xb8486f: lea    rdx,[rip+0xb54f02]        # 0x1416d9778 ; cstring='ill-fated '
+0xb84876: jmp    0x140b8491c
+0xb8487b: test   BYTE PTR [rax],0x2
+0xb8487e: je     0x140b84899
+0xb84880: mov    r8d,0x7
+0xb84886: lea    rdx,[rip+0xb54ee3]        # 0x1416d9770 ; cstring='tragic '
+0xb8488d: mov    rcx,rdi
+0xb84890: call   0x14006f9a0
+0xb84895: lea    rbx,[rsi+0x38]
+0xb84899: cmp    DWORD PTR [rbx+0x8],0x0
+0xb8489d: jle    0x140b848ea
+0xb8489f: mov    rax,QWORD PTR [rbx]
+0xb848a2: test   BYTE PTR [rax],0x4
+0xb848a5: je     0x140b848be
+0xb848a7: mov    r8d,0x9
+0xb848ad: lea    rdx,[rip+0xb54edc]        # 0x1416d9790 ; cstring='terrible '
+0xb848b4: mov    rcx,rdi
+0xb848b7: call   0x14006f9a0
+0xb848bc: jmp    0x140b848dc
+0xb848be: test   BYTE PTR [rax],0x8
+0xb848c1: je     0x140b848dc
+0xb848c3: mov    r8d,0xc
+0xb848c9: lea    rdx,[rip+0xb54660]        # 0x1416d8f30 ; cstring='unfortunate '
+0xb848d0: mov    rcx,rdi
+0xb848d3: call   0x14006f9a0
+0xb848d8: lea    rbx,[rsi+0x38]
+0xb848dc: cmp    DWORD PTR [rbx+0x8],0x0
+0xb848e0: jle    0x140b848ea
+0xb848e2: mov    rax,QWORD PTR [rbx]
+0xb848e5: test   BYTE PTR [rax],0x20
+0xb848e8: jne    0x140b84924
+0xb848ea: mov    eax,DWORD PTR [rsi+0x48]
+0xb848ed: mov    ecx,DWORD PTR [rsi+0x4c]
+0xb848f0: cmp    eax,ecx
+0xb848f2: jle    0x140b84903
+0xb848f4: mov    r8d,0x7
+0xb848fa: lea    rdx,[rip+0xb54e87]        # 0x1416d9788 ; cstring='costly '
+0xb84901: jmp    0x140b8491c
+0xb84903: lea    eax,[rax+rax*2]
+0xb84906: cdq
+0xb84907: sub    eax,edx
+0xb84909: sar    eax,1
+0xb8490b: cmp    ecx,eax
+0xb8490d: jl     0x140b84924
+0xb8490f: mov    r8d,0xb
+0xb84915: lea    rdx,[rip+0xb54e1c]        # 0x1416d9738 ; cstring='profitable '
+0xb8491c: mov    rcx,rdi
+0xb8491f: call   0x14006f9a0
+0xb84924: cmp    DWORD PTR [rbx+0x8],0x0
+0xb84928: jle    0x140b84936
+0xb8492a: mov    rax,QWORD PTR [rbx]
+0xb8492d: test   BYTE PTR [rax],0x20
+0xb84930: je     0x140b84936
+0xb84932: mov    al,0x1
+0xb84934: jmp    0x140b84938
+0xb84936: xor    al,al
+0xb84938: movzx  r8d,al
+0xb8493c: lea    rcx,[rip+0xb54e15]        # 0x1416d9758 ; cstring='visit of merchants'
+0xb84943: xor    r8,0x1
+0xb84947: lea    rdx,[rip+0xb54dd2]        # 0x1416d9720 ; cstring='tribute delivery'
+0xb8494e: test   al,al
+0xb84950: cmove  rdx,rcx
+0xb84954: mov    rcx,rdi
+0xb84957: lea    r8,[r8*2+0x10]
+0xb8495f: call   0x14006f9a0
+0xb84964: mov    r8d,0x6
+0xb8496a: lea    rdx,[rip+0xa64013]        # 0x1415e8984 ; cstring=' from '
+0xb84971: mov    rcx,rdi
+0xb84974: call   0x14006f9a0
+0xb84979: mov    r9d,DWORD PTR [r14]
+0xb8497c: mov    rdx,rdi
+0xb8497f: mov    r8d,DWORD PTR [rsi+0x28]
+0xb84983: call   0x140b8f940
+0xb84988: mov    r8d,0x4
+0xb8498e: lea    rdx,[rip+0xa63b8f]        # 0x1415e8524 ; cstring=' to '
+0xb84995: mov    rcx,rdi
+0xb84998: call   0x14006f9a0
+0xb8499d: mov    r9d,DWORD PTR [r14]
+0xb849a0: mov    rdx,rdi
+0xb849a3: mov    r8d,DWORD PTR [rsi+0x2c]
+0xb849a7: call   0x140b8f940
+0xb849ac: mov    r8d,0x4
+0xb849b2: lea    rdx,[rip+0xa78773]        # 0x1415fd12c ; cstring=' at '
+0xb849b9: mov    rcx,rdi
+0xb849bc: call   0x14006f9a0
+0xb849c1: mov    r9d,DWORD PTR [r14]
+0xb849c4: mov    rdx,rdi
+0xb849c7: mov    r8d,DWORD PTR [rsi+0x30]
+0xb849cb: call   0x140b90970
+0xb849d0: mov    r8d,0x4
+0xb849d6: lea    rdx,[rip+0xa6354f]        # 0x1415e7f2c ; cstring=' in '
+0xb849dd: mov    rcx,rdi
+0xb849e0: call   0x14006f9a0
+0xb849e5: mov    r9d,DWORD PTR [rsi+0xc]
+0xb849e9: mov    rdx,rdi
+0xb849ec: mov    r8d,DWORD PTR [rsi+0x8]
+0xb849f0: mov    rbx,QWORD PTR [rsp+0x30]
+0xb849f5: mov    rsi,QWORD PTR [rsp+0x38]
+0xb849fa: mov    rdi,QWORD PTR [rsp+0x40]
+0xb849ff: add    rsp,0x20
+0xb84a03: pop    r14
+0xb84a05: jmp    0x140b8f680

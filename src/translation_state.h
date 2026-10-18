@@ -2,11 +2,15 @@
 
 #include <atomic>
 #include <chrono>
+#include <cstddef>
 #include <cstdint>
 #include <functional>
+#include <memory>
 #include <mutex>
 #include <source_location>
+#include <stdexcept>
 #include <thread>
+#include <unordered_map>
 
 namespace dfcn {
 
@@ -17,6 +21,48 @@ namespace dfcn {
 // Acquire this before any native capture/snapshot mutex, never while waiting
 // for the game to process input or render another frame.
 inline std::recursive_mutex translation_state_mutex;
+
+// Each isolated translator owns its lock and its formerly function-static
+// mutable caches. Only a non-owning pointer is kept in TLS, so worker exits
+// and core unload do not depend on thread-local object destructors.
+class TranslationStateDomain {
+    struct CacheKey {
+        const void *tag;
+        const void *type;
+        bool operator==(const CacheKey &) const = default;
+    };
+    struct CacheKeyHash {
+        size_t operator()(const CacheKey &key) const noexcept {
+            const auto a = std::hash<const void *>{}(key.tag);
+            const auto b = std::hash<const void *>{}(key.type);
+            return a ^ (b + 0x9e3779b9U + (a << 6) + (a >> 2));
+        }
+    };
+    template<typename T> inline static const unsigned char cache_type_tag_ = 0;
+    std::recursive_mutex owned_mutex_;
+    std::recursive_mutex *mutex_;
+    std::unordered_map<CacheKey, std::shared_ptr<void>, CacheKeyHash> caches_;
+public:
+    TranslationStateDomain() : mutex_(&owned_mutex_) {}
+    explicit TranslationStateDomain(std::recursive_mutex &mutex) : mutex_(&mutex) {}
+    TranslationStateDomain(const TranslationStateDomain &) = delete;
+    TranslationStateDomain &operator=(const TranslationStateDomain &) = delete;
+
+    std::recursive_mutex &mutex() noexcept { return *mutex_; }
+
+    template<typename T> T &cache(const void *stable_tag) {
+        std::lock_guard<std::recursive_mutex> lock(*mutex_);
+        const CacheKey key{stable_tag, &cache_type_tag_<T>};
+        if (const auto found = caches_.find(key); found != caches_.end())
+            return *static_cast<T *>(found->second.get());
+        auto object = std::make_shared<T>();
+        auto *value = object.get();
+        caches_.emplace(key, std::move(object));
+        return *value;
+    }
+};
+
+inline TranslationStateDomain translation_state_default_domain{translation_state_mutex};
 
 struct TranslationStateLocation {
     const char *file_name = "";
@@ -50,6 +96,8 @@ inline std::uint64_t translation_state_thread_id() noexcept {
 namespace translation_state_detail {
 inline thread_local unsigned depth = 0;
 inline thread_local bool notifying = false;
+inline thread_local TranslationStateDomain *selected_domain = nullptr;
+inline thread_local TranslationStateDomain *locked_domain = nullptr;
 
 // Waiters cannot acquire the mutex to inspect its owner. Every shared field
 // is atomic, and the sequence protects a coherent snapshot of the location.
@@ -96,15 +144,51 @@ inline void sample_owner(TranslationStateTiming &timing) noexcept {
 }
 } // namespace translation_state_detail
 
+inline TranslationStateDomain &current_translation_state_domain() noexcept {
+    return translation_state_detail::selected_domain
+        ? *translation_state_detail::selected_domain : translation_state_default_domain;
+}
+
+inline bool translation_state_domain_is_private() noexcept {
+    return &current_translation_state_domain() != &translation_state_default_domain;
+}
+
+// Bind at an owned worker boundary, before entering translation. A domain
+// cannot be changed beneath an active operation: its nested callbacks must
+// keep protecting the same mutable state with the same mutex.
+class TranslationStateDomainScope {
+    TranslationStateDomain *previous_;
+public:
+    explicit TranslationStateDomainScope(TranslationStateDomain &domain)
+        : previous_(translation_state_detail::selected_domain) {
+        if (translation_state_detail::depth && translation_state_detail::locked_domain != &domain)
+            throw std::logic_error("Cannot switch translation domains inside an active translation");
+        translation_state_detail::selected_domain = &domain;
+    }
+    ~TranslationStateDomainScope() noexcept { translation_state_detail::selected_domain = previous_; }
+    TranslationStateDomainScope(const TranslationStateDomainScope &) = delete;
+    TranslationStateDomainScope &operator=(const TranslationStateDomainScope &) = delete;
+};
+
+// The caller retains its normal TranslationStateScope while using the
+// returned mutable object. This short internal lock only serializes creation.
+template<typename T> T &domain_cache(const void *stable_tag) {
+    return current_translation_state_domain().template cache<T>(stable_tag);
+}
+
 class TranslationStateScope {
     using Clock = std::chrono::steady_clock;
     bool tracing_ = false;
     Clock::time_point acquired_{};
     TranslationStateTiming timing_;
+    TranslationStateDomain *domain_ = nullptr;
 public:
     explicit TranslationStateScope(
             const std::source_location caller = std::source_location::current()) {
-        tracing_ = translation_state_detail::depth == 0 &&
+        domain_ = &current_translation_state_domain();
+        if (translation_state_detail::depth && translation_state_detail::locked_domain != domain_)
+            throw std::logic_error("An active translation still owns a different domain");
+        tracing_ = domain_ == &translation_state_default_domain && translation_state_detail::depth == 0 &&
             translation_state_trace_enabled.load(std::memory_order_relaxed) &&
             !translation_state_detail::notifying;
         Clock::time_point started{};
@@ -117,7 +201,10 @@ public:
         // Nested translation callbacks already own this thread's lock. Keep
         // it until the last scope leaves, including non-LIFO scope cleanup,
         // rather than entering the OS mutex again for every glyph/resolver.
-        if (translation_state_detail::depth == 0) translation_state_mutex.lock();
+        if (translation_state_detail::depth == 0) {
+            domain_->mutex().lock();
+            translation_state_detail::locked_domain = domain_;
+        }
         ++translation_state_detail::depth;
         if (tracing_) {
             acquired_ = Clock::now();
@@ -133,7 +220,11 @@ public:
             translation_state_detail::clear_owner();
         }
         // Diagnostics must never lengthen the translation critical section.
-        if (--translation_state_detail::depth == 0) translation_state_mutex.unlock();
+        if (--translation_state_detail::depth == 0) {
+            auto *locked = translation_state_detail::locked_domain;
+            translation_state_detail::locked_domain = nullptr;
+            locked->mutex().unlock();
+        }
         if (!tracing_ || (timing_.wait_ms < 500.0 && timing_.hold_ms < 500.0)) return;
         const auto observer = translation_state_observer.load(std::memory_order_acquire);
         if (!observer) return;

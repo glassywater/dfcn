@@ -1,0 +1,13 @@
+edition	image_identity	role	start_rva	code_end_rva	source_extent_end_rva	image_path
+reference	PE:6a70a6d9:02711000	fill-item	0x8360a0	0x83690c	0x83690c	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+reference	PE:6a70a6d9:02711000	heat-liquid	0x836b20	0x837145	0x837145	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+reference	PE:6a70a6d9:02711000	fill-liquid	0x837150	0x837e97	0x837e97	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+reference	PE:6a70a6d9:02711000	empty-item	0x894b00	0x8951ab	0x8951ab	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+reference	PE:6a70a6d9:02711000	remove-empty-item	0x8956d0	0x895f15	0x895f15	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+reference	PE:6a70a6d9:02711000	consume	0x895fd0	0x897525	0x897525	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	fill-item	0x833920	0x83418c	0x83418c	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	heat-liquid	0x8343a0	0x8349c5	0x8349c5	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	fill-liquid	0x8349d0	0x835717	0x835717	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	empty-item	0x892380	0x892a2b	0x892a2b	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	remove-empty-item	0x892f50	0x893795	0x893795	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	consume	0x893850	0x894da5	0x894da5	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe

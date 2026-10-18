@@ -73,6 +73,11 @@ std::optional<std::string> Overlay::translate_conversation_choice(
         }
         return std::nullopt;
     }
+    // Every remaining authored talk-choice production has its own typed
+    // participant, office, item, artifact and location fields. Keep conflict
+    // and emotion constructors above on their complete native grammars.
+    if (const auto target = translate_announcement_combat(raw_source, "conversation-choice");
+            complete_native(target)) return target;
     if (const auto target = translate_creature_label(source); complete_native(target)) return target;
     if (const auto target = translate_item_description_term(source); complete_native(target)) return target;
     if (const auto target = translate_legends_event(source); complete_native(target)) return target;
@@ -227,8 +232,14 @@ std::optional<std::string> Overlay::translate_adventure_action_choice(
             return uniform_colors((simulate ? "模仿" : "演奏") + *target +
                 (simulate ? "的演奏" : ""));
         }
-        case 9: // STORY_HF, with any visible assumed identity preserved.
-            return uniform_colors(translate_ui_message_capture(source, true));
+        case 9: { // STORY_HF, with any visible assumed identity preserved.
+            auto target = translate_ui_message_capture(source, true);
+            // The bound historical-figure entry also proves a bare name.
+            // Named animals can display only an English surname, without a
+            // native given word or caste prefix for the unit-label grammar.
+            if (!target) target = translate_legends_name(source, true);
+            return uniform_colors(std::move(target));
+        }
         case 25: // SERMON_HFID is the historical figure's own name.
             return uniform_colors(translate_legends_name(source, true));
         case 8: case 10: case 11: // STORY_SITE / ENTITY / SUBREGION.
@@ -237,8 +248,24 @@ std::optional<std::string> Overlay::translate_adventure_action_choice(
             return uniform_colors(translate_legends_name(source, false));
         case 14: case 16: case 19: case 39: // Memorized written compositions.
             return uniform_colors(translate_legends_book(source));
-        case 12: // STORY_EVENT is the complete native history-event caption.
-            return uniform_colors(translate_legends_text(source, false, false));
+        case 12: { // STORY_EVENT is the complete native history-event caption.
+            if (native_choice->story_event) {
+                if (const auto pieces = translate_history_event(*native_choice->story_event, false)) {
+                    std::string target;
+                    for (const auto &piece : *pieces) target += piece.target;
+                    if (!target.empty()) return uniform_colors(std::move(target));
+                }
+            }
+            // The chooser capitalizes virtual +d8's title and keeps its
+            // unshortened value in list_name. Its participant/location/date
+            // fields need the complete title parser's typed backtracking;
+            // paragraph scanning cannot establish those field boundaries.
+            // Display and Chinese search share this same bound enum/ID.
+            // A native nickname is authored text; keep its exact spacing.
+            return uniform_colors(translate_legends_event(
+                source.find('`') == std::string_view::npos
+                    ? std::string_view(normalized) : trim_view(source), 0, false));
+        }
         case 37: { // WRITE_TARGET: the actual writable item's designation.
             auto target = translate_item_description_term(source);
             if (!target) target = translate_inventory_item_name(source, -1, -1);
@@ -250,6 +277,19 @@ std::optional<std::string> Overlay::translate_adventure_action_choice(
     }
     if (const auto target = exact_literal_translation("Adventure action: " + normalized))
         return uniform_colors(target);
+    // Native option captions own typed unit, tile, building, item, material
+    // and direction fields. Resolve them before the general UI compositor:
+    // its item-name fallback may retain English inside a terrain description.
+    if (const auto target = translate_adventure_item_action(normalized))
+        return uniform_colors(target);
+    if (!native_choice) {
+        if (const auto target = translate_adventure_deposit_caption(normalized))
+            return uniform_colors(target);
+        // Shoot/throw with no verb return the entire TILE field; their bare
+        // terrain must keep the same namespace as the prefixed constructors.
+        if (const auto target = RULESETS.translate_tile_description(native_text_to_utf8(normalized)))
+            return uniform_colors(target);
+    }
     // Complete fixed menu captions precede the permissive personal-name
     // fallback. Their authored predicates must never become invented names.
     std::vector<int> complete_colors;
@@ -265,14 +305,6 @@ std::optional<std::string> Overlay::translate_adventure_action_choice(
     auto target = native_unit_identity_source_target(source);
     if (!target && !native_choice && normalized == "A")
         target = exact_literal_translation("Adventure vermin: A");
-    if (!target) target = translate_adventure_item_action(normalized);
-    if (!target) {
-        // View-contaminant's native caption has no verb. Its complete
-        // material/amount and body-part suffix still form one typed choice.
-        std::vector<size_t> origins;
-        target = RULESETS.translate_with_origins(native_text_to_utf8(normalized),
-            "::health::contaminant::inventory", origins);
-    }
     if (!target && !native_choice) {
         // Virtual slot +8 also returns bare inventory designations and RAW
         // creature labels. Resolve their complete typed grammar before names.
@@ -280,7 +312,6 @@ std::optional<std::string> Overlay::translate_adventure_action_choice(
         if (!target) target = translate_inventory_location(normalized, -1, -1);
         if (!target) target = translate_creature_descriptor(normalized, true);
         if (!target) target = translate_creature_label(normalized);
-        if (!target) target = RULESETS.translate_tile_description(native_text_to_utf8(normalized));
     }
     // Name fields preserve the player's nickname spelling, including spaces.
     // Only action lookup above uses the normalized caption.
@@ -305,6 +336,7 @@ bool Overlay::translated_adventure_action_matches(std::string_view source,
         std::string key = std::to_string(native_choice->type) + '\x1f' +
             std::to_string(native_choice->id);
         key.push_back(native_choice->unnamed ? '\1' : '\0');
+        key.push_back(native_choice->story_event ? '\1' : '\0');
         key.append(native_choice->source).push_back('\0');
         key.append(native_choice->species).push_back('\0');
         key.append(source);
@@ -394,10 +426,12 @@ std::optional<std::string> Overlay::translate_conversation_keywords(
     const std::string cache_key = selected_caption.empty()
         ? source : source + '\n' + selected_caption;
     std::shared_ptr<const ConversationChoices> snapshot;
+    std::shared_ptr<const ConversationChoices> artifact_names;
     std::shared_ptr<const ConversationKeywordLexicon> lexicon;
     {
         std::lock_guard<std::mutex> lock(conversation_choices_mutex_);
         snapshot = conversation_choices_;
+        artifact_names = conversation_artifact_names_;
         lexicon = conversation_keyword_lexicon_;
         if (const auto found = conversation_keyword_cache_.find(cache_key);
                 found != conversation_keyword_cache_.end() &&
@@ -409,7 +443,8 @@ std::optional<std::string> Overlay::translate_conversation_keywords(
         std::lock_guard<std::mutex> lock(conversation_choices_mutex_);
         // No grammar runs under this mutex, and an older menu/dictionary
         // calculation must not fill the replacement snapshot's cache.
-        if (conversation_choices_ != snapshot || conversation_keyword_lexicon_ != lexicon)
+        if (conversation_choices_ != snapshot || conversation_artifact_names_ != artifact_names ||
+                conversation_keyword_lexicon_ != lexicon)
             return target;
         if (conversation_keyword_cache_.size() >= 4096) conversation_keyword_cache_.clear();
         conversation_keyword_cache_.insert_or_assign(cache_key,
@@ -458,6 +493,55 @@ std::optional<std::string> Overlay::translate_conversation_keywords(
     if (const auto target = exact_literal_translation("Conversation keyword: " + source);
             complete_target(target)) return remember(target);
 
+    // SPREAD_RUMOR's artifact branches first append artifact plus their
+    // location/absence/destroyed word and the two native name spellings.
+    // A missing holder/site/region can leave the caption vector empty. Read
+    // that complete
+    // bound artifact identity: the globally deduplicated keyword stream
+    // cannot recover repeated title words or words equal to the fixed heads.
+    // Both PE control flows and formatter calls are retained in the chooser
+    // extraction. No title or participant is inferred from a clipped row.
+    const std::array<std::string_view, 3> artifact_heads{
+        "artifact location", "artifact absence", "artifact destroyed"};
+    const auto artifact_head = std::find_if(artifact_heads.begin(), artifact_heads.end(),
+        [&](std::string_view head) {
+            return source == head || (source.starts_with(head) && source[head.size()] == ' ');
+        });
+    if (artifact_names && artifact_head != artifact_heads.end()) {
+        std::optional<std::string> artifact_target;
+        bool ambiguous = false;
+        for (const auto &[native_keywords, identity] : *artifact_names) {
+            if (lower(normalize_utterance(native_keywords)) != source || identity.empty()) continue;
+            const std::string_view kind = artifact_head->substr(9);
+            std::unordered_set<std::string_view> seen{"artifact", kind};
+            std::string expected(*artifact_head);
+            const std::string folded = ConversationKeywordLexicon::search_spelling(identity);
+            for (size_t at = 0; at < folded.size();) {
+                const size_t space = folded.find(' ', at);
+                const size_t end = space == std::string::npos ? folded.size() : space;
+                const std::string_view word(folded.data() + at, end - at);
+                if (seen.emplace(word).second) {
+                    expected.push_back(' ');
+                    expected += word;
+                }
+                at = end == folded.size() ? end : end + 1;
+            }
+            if (expected != source) continue;
+            const auto name = translate_legends_artifact_identity(identity);
+            if (!complete_name_target(name, identity)) continue;
+            const auto artifact = exact_literal_translation("Conversation keyword: artifact");
+            const auto relation = exact_literal_translation("Conversation keyword: " + std::string(kind));
+            if (!complete_target(artifact) || !complete_target(relation)) continue;
+            const std::string target = *artifact + " " + *relation + " " + *name;
+            if (artifact_target && *artifact_target != target) ambiguous = true;
+            else if (!artifact_target) artifact_target = target;
+        }
+        if (artifact_target) {
+            live_caption = true;
+            return remember(ambiguous ? std::nullopt : std::move(artifact_target));
+        }
+    }
+
     if (!lexicon) {
         auto built = std::make_shared<ConversationKeywordLexicon>();
         constexpr std::string_view prefix = "conversation keyword: ";
@@ -492,7 +576,8 @@ std::optional<std::string> Overlay::translate_conversation_keywords(
             const Rule &rule = rules_[static_cast<size_t>(index)];
             if (rule.template_literals.empty() ||
                 std::none_of(rule.template_kinds.begin(), rule.template_kinds.end(),
-                    [](char kind) { return kind == 'p' || kind == 'e' || kind == 'n'; })) continue;
+                    [](char kind) { return kind == 'p' || kind == 'e' || kind == 'n' ||
+                        kind == 'b' || kind == 'i' || kind == 'r'; })) continue;
             std::string anchor;
             for (const auto &literal : rule.template_literals) {
                 auto compact = ConversationKeywordLexicon::compact_literal(literal);
@@ -735,20 +820,29 @@ std::optional<std::string> Overlay::translate_conversation_keywords(
                 if (!complete_target(slot->second)) return;
             }
             // The complete authored template supplies the name type. Resolve
-            // that exact field once through the existing p/e/n semantics;
+            // that exact field once through the existing typed semantics;
             // never infer an unknown name from the keyword stream itself.
             for (size_t i = 0; i < captures.size(); ++i) {
                 const char kind = rule.template_kinds[i];
-                if (kind != 'p' && kind != 'e' && kind != 'n') continue;
+                if (kind != 'p' && kind != 'e' && kind != 'n' &&
+                        kind != 'b' && kind != 'i' && kind != 'r') continue;
                 const std::string slot_key = std::string(1, kind) + captures[i];
                 auto [slot, inserted] = caption_slots.try_emplace(slot_key);
                 if (inserted) {
                     if (kind == 'p') slot->second = translate_legends_name(captures[i], true);
                     else if (kind == 'e') slot->second = translate_legends_name(captures[i], false);
+                    else if (kind == 'b') {
+                        slot->second = translate_legends_artifact_identity(captures[i]);
+                        if (!slot->second) slot->second = translate_legends_book(captures[i]);
+                    } else if (kind == 'i') slot->second = translate_announcement_items(captures[i]);
+                    else if (kind == 'r') slot->second = translate_deity_spheres(captures[i]);
                     else slot->second = translate_ui_message_capture(captures[i], true);
                 }
                 if (!complete_name_target(slot->second, captures[i])) continue;
                 add_caption_name(captures[i], slot->second, true);
+                // A complete book, item or sphere is one semantic field.
+                // Its component nouns cannot acquire personal-name rules.
+                if (kind == 'b' || kind == 'i' || kind == 'r') continue;
                 // Global native deduplication can remove a repeated given
                 // name from a later field. Its surviving components remain
                 // proven only by this successfully translated whole slot.

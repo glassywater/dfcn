@@ -5,8 +5,8 @@
         const NativePanelBorders borders(*gps_);
         const bool possible_items = native_item_anchors_in(*gps_, {0, 0, gps_->dimx, gps_->dimy});
         const auto location_captures = captured_clipped_captions();
-        const auto location_draws = captured_native_drawn_text_rows();
-        const auto top_location_draws = captured_native_drawn_text_rows(true);
+        const auto location_draws = captured_native_drawn_text_view();
+        const auto top_location_draws = captured_native_drawn_text_view(true);
         // activity_event_readst owns an item description in the activity
         // detail window. Unlike an inventory sheet it has no picture, Weight
         // heading or forbid/dump/melt strip. Its complete Read caption and
@@ -426,7 +426,7 @@
             // a wrap capture. Accept complete visible rows and a fully resolved
             // description, using their occupied width rather than a guessed frame.
             for (bool top_layer : {false, true}) {
-                const auto draws = captured_native_drawn_text_rows(top_layer);
+                const auto draws = captured_native_drawn_text_view(top_layer);
                 std::map<std::pair<int, int>, const NativeDrawnTextRow *> positions;
                 for (const auto &draw : draws) positions[{draw.x, draw.y}] = &draw;
                 for (const auto &first : draws) {

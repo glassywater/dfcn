@@ -467,6 +467,16 @@ reference	PE:6a70a6d9:02711000	generated-art-form-name	0xa946e0	0xa94d62	rip-rel
 reference	PE:6a70a6d9:02711000	generated-art-form-name	0xa946e0	0xa94e09	rip-relative	0x15e873c	separator	 
 reference	PE:6a70a6d9:02711000	generated-art-form-name	0xa946e0	0xa94e18	rip-relative	0x16ced90	finite-text-operand-or-substring	of 
 reference	PE:6a70a6d9:02711000	generated-art-form-name	0xa946e0	0xa94e1f	rip-relative	0x16cee1c	finite-text-operand-or-substring	Of 
+reference	PE:6a70a6d9:02711000	textbox-wrap	0x858550	0x858a0a	rip-relative	0x16b1efc	finite-text-operand-or-substring	CHAR
+reference	PE:6a70a6d9:02711000	textbox-wrap	0x858550	0x858d5b	rip-relative	0x16ad32c	finite-text-operand-or-substring	C
+reference	PE:6a70a6d9:02711000	textbox-wrap	0x858550	0x85968c	rip-relative	0x16b1fdc	finite-text-operand-or-substring	P
+reference	PE:6a70a6d9:02711000	textbox-wrap	0x858550	0x8596b2	rip-relative	0x16b1fd8	finite-text-operand-or-substring	R
+reference	PE:6a70a6d9:02711000	textbox-wrap	0x858550	0x8596dc	rip-relative	0x16b1fe8	finite-text-operand-or-substring	B
+reference	PE:6a70a6d9:02711000	textbox-wrap	0x858550	0x85972d	rip-relative	0x16b1fe8	finite-text-operand-or-substring	B
+reference	PE:6a70a6d9:02711000	textbox-wrap	0x858550	0x8597a0	rip-relative	0x16b1fdc	finite-text-operand-or-substring	P
+reference	PE:6a70a6d9:02711000	textbox-wrap	0x858550	0x8597b4	rip-relative	0x16b1fe0	separator	    
+reference	PE:6a70a6d9:02711000	textbox-flush-token	0x8599f0	0x859b10	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	textbox-flush-token	0x8599f0	0x859cfa	rip-relative	0x15e873c	separator	 
 classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d3bb	rip-relative	0x15fd470	finite-text-operand-or-substring	[C:2:0:1]
 classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d3c9	rip-relative	0x163b600	finite-text-operand-or-substring	[C:2:0:0]
 classic	PE:6a70b91c:0270a000	preference-producer: absolutely detests ; for their ; likes ; prefers to consume ;When possible, 	0x47d240	0x47d3d6	rip-relative	0x15fd1f8	finite-text-operand-or-substring	[C:7:0:1]
@@ -935,3 +945,13 @@ classic	PE:6a70b91c:0270a000	generated-art-form-name	0xa91760	0xa91de2	rip-relat
 classic	PE:6a70b91c:0270a000	generated-art-form-name	0xa91760	0xa91e89	rip-relative	0x15e3720	separator	 
 classic	PE:6a70b91c:0270a000	generated-art-form-name	0xa91760	0xa91e98	rip-relative	0x16cb220	finite-text-operand-or-substring	of 
 classic	PE:6a70b91c:0270a000	generated-art-form-name	0xa91760	0xa91e9f	rip-relative	0x16cb2ac	finite-text-operand-or-substring	Of 
+classic	PE:6a70b91c:0270a000	textbox-wrap	0x855dd0	0x85628a	rip-relative	0x16ac56c	finite-text-operand-or-substring	CHAR
+classic	PE:6a70b91c:0270a000	textbox-wrap	0x855dd0	0x8565db	rip-relative	0x16a8210	finite-text-operand-or-substring	C
+classic	PE:6a70b91c:0270a000	textbox-wrap	0x855dd0	0x856f0c	rip-relative	0x16ac504	finite-text-operand-or-substring	P
+classic	PE:6a70b91c:0270a000	textbox-wrap	0x855dd0	0x856f32	rip-relative	0x16ac500	finite-text-operand-or-substring	R
+classic	PE:6a70b91c:0270a000	textbox-wrap	0x855dd0	0x856f5c	rip-relative	0x16ac510	finite-text-operand-or-substring	B
+classic	PE:6a70b91c:0270a000	textbox-wrap	0x855dd0	0x856fad	rip-relative	0x16ac510	finite-text-operand-or-substring	B
+classic	PE:6a70b91c:0270a000	textbox-wrap	0x855dd0	0x857020	rip-relative	0x16ac504	finite-text-operand-or-substring	P
+classic	PE:6a70b91c:0270a000	textbox-wrap	0x855dd0	0x857034	rip-relative	0x16ac508	separator	    
+classic	PE:6a70b91c:0270a000	textbox-flush-token	0x857270	0x857390	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	textbox-flush-token	0x857270	0x85757a	rip-relative	0x15e3720	separator	 

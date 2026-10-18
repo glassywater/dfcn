@@ -3,6 +3,7 @@
 // Borrowed addresses are used only while the original event formatter runs;
 // the public snapshot contains owned strings and WORD identities only.
 static bool native_history_copy_bytes(uintptr_t address, void *destination, size_t size) {
+    if (g_native_announcement_log_worker_active) dfhack_require_world_read();
     if (!address || size > UINTPTR_MAX - address) return false;
 #ifdef _WIN32
     SIZE_T copied = 0;
@@ -678,8 +679,10 @@ static bool capture_native_history_entity_name_context(uintptr_t base, uintptr_t
     name.parent_word_pos = -1;
     int16_t type = -1;
     int32_t id = -1;
+    // The native entity formatter resolves identity by ID for every signed
+    // kind. Unknown kinds still have their name and the default group text.
     if (!entity || !native_history_copy(native_history_object_field(
-            entity, "historical_entity", 0, sizeof(type)), type) || type < 0 ||
+            entity, "historical_entity", 0, sizeof(type)), type) ||
             !native_history_copy(native_history_object_field(
                 entity, "historical_entity", 4, sizeof(id)), id) || id < 0 ||
             (!identity_validated &&

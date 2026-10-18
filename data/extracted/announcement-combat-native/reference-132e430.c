@@ -356,7 +356,7 @@ LAB_14132f6e3:
 LAB_14132f715:
           if (_DAT_14189c298 == 1) {
             if (*(longlong *)(param_1 + 0x13f8) == 0) {
-              combat_source_creature_appearance_717d30(param_1);
+              FUN_140717d30(param_1);
             }
             plVar23 = (longlong *)(param_1 + 0x13e8);
             lVar13 = *(longlong *)(param_1 + 0x13f8);
@@ -662,7 +662,7 @@ LAB_14132e712:
         if (*piVar15 != *(int *)(param_1 + 0xc30)) goto code_r0x00014132e71c;
         if ((int)((longlong)piVar15 - (longlong)_DAT_142649620 >> 2) != -1) {
           for (puVar24 = _DAT_142649608; puVar24 < puVar12; puVar24 = puVar24 + 1) {
-            lVar13 = FUN_1413cc4d0(&DAT_1423e50b0,*puVar24);
+            lVar13 = FUN_1413cc4d0(0x1423e50b0,*puVar24);
             if (((lVar13 != 0) && (*(int *)(lVar13 + 0x3d0) == iVar11)) &&
                (bVar30 = bVar3, iVar10 == *(int *)(lVar13 + 0x130))) {
               bVar3 = true;

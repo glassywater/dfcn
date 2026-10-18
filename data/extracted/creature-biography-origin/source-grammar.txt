@@ -1,0 +1,223 @@
+Generated creature biography / origin source
+===========================================
+
+This directory retains the original source of the complete procedurally
+generated DESCRIPTION read by the native historical-figure biography producer.
+It preserves source code, native decompilation, literals and conditions; it does
+not contain generated example biographies, tests or game-display observations.
+
+The current screenshot's chooser is the adventure performance/story chooser.
+Its renderer is reference RVA 0x870260; selected entry kinds 9 and 25 delegate
+through 0xb8eeb0 to the historical-figure producer 0xc2b870. These callers own
+the complete biography, not separate word or status labels. The existing
+actual Ghidra C for the producer is retained here as
+reference-native-biography-description.c and classic-native-biography-description.c,
+along with their original instruction bodies. The original C comes from
+tools/DecompileDeityIntroduction.java; its current PE identity and source RVA
+are in the retained C header and source-manifest.tsv.
+
+Native DESCRIPTION consumption
+-----------------------------
+
+The generated-description branch is reference RVA 0xc2ca3e..0xc2ccee, classic
+0xc29a7e..0xc29d2e. It applies to a non-deity with a valid race/caste when at
+least one caste flag 132, 134, 143 or 131 is set. Caste vectors are creature
++0x178..+0x180. The producer appends the complete stored caste string +0x220,
+length +0x230, storage discriminator +0x238, then two spaces. It does not build
+the physical clauses or the experiment origin from native English literals.
+All adjacent identity, birth, parents, destiny and sphere branches remain in
+the complete retained Ghidra C; none is inferred from this one screenshot.
+
+Installed original generators
+-----------------------------
+
+source-manifest.tsv identifies both configured installations and every retained
+original path. Original bytes of all three required creature scripts are kept:
+  {edition}-creatures.lua
+  {edition}-shared-info.lua
+  {edition}-physical-profiles.lua
+The first requires the other two. Complete source retains the constructors for
+forgotten beasts, titans, demons, night trolls, bogeymen, nightmares, werebeasts,
+six experiment types and three angel types, their body options and callbacks.
+
+lua-source-lines.tsv retains every original line with edition/path/line/owner.
+lua-source-literals.tsv retains every quoted and long Lua string token outside
+comments, including every finite description alternative. Its quoted values
+are source spelling, not strings evaluated by Lua. lua-source-conditions.tsv
+indexes original condition/function/loop lines; multiline conditions and full
+control-flow nesting are retained in the original complete source. An index
+row is not a claim of an extra visible paragraph or a Cartesian product.
+Focused source excerpts retain line numbers for origin, generated species names,
+experiment options, angel origin, physical constructor, appendages/surface,
+materials and behavior/attack paths. Complete files remain authoritative where
+an excerpt refers to an earlier provider.
+
+Complete physical DESCRIPTION production
+---------------------------------------
+
+shared_info.lua:6994 build_procgen_creature calls build_body_from_rcp first,
+then build_description at line 6438, then graphics construction. Description
+source is built once into [DESCRIPTION:...]; the biography later copies it.
+
+The physical constructor emits, in native source order:
+  A + size + btc2 adjective + btc adjective + physical-profile noun
+  + optional normal/twisted humanoid form + optional with-description
+  + optional post-material adjective + period
+  + optional has-description appendage
+  + optional default/good/evil/custom behavior
+  + optional glowing eye(s) and descriptor color
+  + optional surface descriptor color and texture
+  + period + optional end phrase OR attack warning.
+
+Size branches: >=6000000 randomly picks great/gigantic/towering/n enormous/huge;
+>=400000 very large; >=80000 large; <=30000 very small; <=60000 small;
+60001..79999 contributes no size. The leading source is literally A, with n
+added by the enormous size branch. The original files are preserved without
+silently correcting source quirks; stored save descriptions can use A or An.
+
+The two independent body-tweak adjectives precede the profile noun. Form_desc
+comes only from btc and chooses twisted_desc for evil. with_desc comes from
+btc2. All physical-profile nouns and eligibility conditions are in the complete
+physical-profiles source, not a list of names inferred from spelling.
+
+The appendage provider covers wings/flightless wings, one/two/three tails with
+six tail adjectives, proboscis, six trunk types, six shells, six antenna types,
+one/two/three/four horns with six horn adjectives, and large mandibles. NO_EYES,
+ONE_EYE and THREE_EYES supply eyeless/one-eyed/three-eyed. The source also keeps
+beakless, noseless, lidless eyes and all limb/form/body tweak alternatives.
+Wings are supplied recursively by the surface provider; the original visible
+labels include thin wings of stretched skin, feathered wings, wings, lacy wings.
+
+If no_extra_description is true, no default/custom behavior is appended.
+Otherwise a has-description can join behavior with ' and '; without it a
+space and capitalization start the behavior. A custom behavior callback takes
+priority. Otherwise is_good selects good_desc_adds, then is_evil selects evil,
+otherwise default. Each provider's actual eligibility guards remain in source.
+Night troll/strength/agility custom behavior and all 130 angel sphere-flavor
+cases are in creatures.lua; bogeyman/nightmare/werebeast callbacks are retained.
+
+eye_clp adds '. Its eyes glow {color}' if eye_count>1, else eye glows. clp plus
+a surface color_desc appends hair, feathers, scales, skin or exoskeleton prose.
+Hair has seven textures; feathers six; scales six shapes and three arrangements;
+skin/exoskeleton each have six textures. Every literal and branch is retained.
+native-color-values.tsv records all installed descriptor NAME values including
+multiword colors such as midnight blue; these are one typed color field.
+
+Material providers retain dynamic inorganic solid/powder adjective fields and
+fixed composed-of forms. Materials, colors, profile nouns and generated names
+are dynamic operand data, not extra conditional branches in build_description.
+An active end_phrase takes priority over attack_tweak; the full attack table
+retains sting/fire/webs/vapors/gas/dust/spittle/secretions/blood/bite/warm-blood
+warnings. Night creatures use 'Now you will know why you fear the night.';
+experiments and angels use the typed origin constructors below.
+
+Experiment origin: every actual branch
+-------------------------------------
+
+creatures.lua:1315 experiment_description returns an empty string when no
+experimenter_hf exists. Otherwise it emits the following complete structure:
+  ' This night creature was first created '
+  + optional 'accidentally ' when failed_experiment
+  + 'by the ' + creator kind/status + ' ' + creator translated name
+  + optional ' of ' + creator capital translated name
+  + method/power + optional victim + optional creation site
+  + ' in the year ' + world.year + '.'.
+
+Creator kind/status:
+  when interaction_profile exists and its uwss_display_name_sing is nonempty,
+    experimenter_race_adj concatenated with that stored display-status label;
+  otherwise experimenter_race_name.
+The source concatenation of race_adj and status has no extra joining space;
+the actual operand may already carry its spacing. It is a typed species/status
+identity plus a person name, rather than an unrestricted plain person field.
+
+experimenter_sphere_info at 1301 returns false,false unless the experimenter's
+caste has UNIQUE_DEMON and the figure's profile/mpp/spheres exists. It then
+returns CHAOS and DEFORMITY. Method precedence and literal strings are:
+  both true:     ' through the fiend\'s terrifying power'
+  deformity only:' through the fiend\'s twisted power'
+  chaos only:    ' through the fiend\'s chaotic power'
+  neither:       ' after horrible experiments'
+    + ' gone wrong' only for a failed experiment.
+The accidentally prefix is independent of the power branch and remains when
+a failed experiment is created by fiend power.
+
+Victim is omitted only if both source_hfid and source_race equal -1. Otherwise
+the connector is ' unleashed upon ' when CHAOS or DEFORMITY, else ' on '.
+  amalgam_experiment takes priority: 'multitudes'
+  else a source_hfid exists: 'the ' followed by
+    if experiment_hf exists: interaction-profile race adjective + space +
+      stored status if profile exists, else race name; then space + translated
+      person name. Unlike creator, this profile branch does not test status
+      string nonempty before using it.
+    if experiment_hf is absent: 'an unknown creature'
+      (the complete original emitted text includes 'the an unknown creature').
+  else source_race exists: source race plural.
+The known-individual branch has priority over race plural. No source is silently
+invented for the omitted victim path. Creation site adds ' in {translated name}'
+when experimenter_create_st exists; its site is distinct from creator capital.
+Year is mandatory whenever creator exists and is the creation world's year,
+not the historical figure's birth year. There is no tense toggle in this Lua.
+
+Experiment species/name, not personal identity
+---------------------------------------------
+
+creatures.lua:1426 experiment_name_token produces both NAME and CASTE_NAME.
+Owner can derive from experimenter name, creation-site name or capital-site name,
+preferring a first name or an epithet branch under the exact random conditions
+in source. Source-level unqualified epithet variables are retained verbatim;
+this reconstruction does not rewrite or presume a value for them.
+If no owner resolves or random fallback applies, the literal owners are horror
+(CHAOS+DEFORMITY), misfortune (DEFORMITY), chaos (CHAOS), otherwise night.
+The full label randomly uses {owner}'s {noun} or {noun} of {owner}; singular,
+plural and adjective fields retain their own original noun forms.
+The six finite noun groups are:
+  humanoid: hand/hands, demon/demons, warrior/warriors, soldier/soldiers,
+            fist/fists, eye/eyes
+  humanoid_giant: giant/giants, hulk/hulks, tower/towers, mountain/mountains
+  beast_small: dog/dogs, hound/hounds, wolf/wolves
+  beast_large: beast/beasts, monster/monsters, creature/creatures
+  failed_small: mistake/mistakes, folly/follies, experiment/experiments
+  failed_large: nightmare/nightmares, catastrophe/catastrophes, disaster/disasters.
+Thus night's warrior is a generated species/caste label with semantic pieces,
+not a personal name requiring one indivisible phonetic translation.
+
+Angel origin
+------------
+
+creatures.lua:1929 begins ' It was created by '. A known creator adds 'the ',
+source race adjective, then goddess when hf.gender==1, god when ==0, otherwise
+deity, then translated name. This is the actual source ordering/discriminator
+even though it differs from a conventional sex-enum assumption. An absent
+creator emits 'an unknown deity'. A positive truthy sphere count adds
+' and is of a part with ' and each world.spheres[k].definite_name separated
+with comma/and. The original emission loop iterates pairs(options.spheres)
+without repeating the truthy filter; original source is preserved as written.
+A period closes both branches.
+
+Translation implications and limits of the evidence
+-------------------------------------------------
+
+The source bodies demonstrate the full DESCRIPTION value belongs inside the
+historical biography alongside is/was, birth and parentage. The same physical
+grammar can be used through a typed {s} capture as well as standalone clauses;
+the raw copy cannot be treated as a person's name or forwarded as resolved
+English. Recursive overview/appendage/material nouns, multiword colors, complete
+behavior clauses, generated status nouns and complete origins must keep their
+typed operands when this whole paragraph is translated.
+
+Current authored legends-creature-descriptions.tsv already contains finite
+physical constructors, status/size variants, behavior and surface vocabularies,
+attack endings, four experiment frames, normal/failed method, three powers and
+victim variants. tools/legends_grammar.py composes the origin's optional subject
+and creation-site while retaining creator capital separately. The screenshot
+does not establish an extra new fixed English branch absent from the current
+installed source. Remaining practical failure points are whether recursive
+physical {s} actually calls that grammar, whether a typed creator/status+name
+resolves, and whether the chooser hands over the entire original paragraph.
+Those are implementation ownership questions, not missing producer strings.
+
+Original Lua data can be modified by installed mods and stored save data can
+contain pre-existing descriptions. This extraction inventories the configured
+installed original sources and dynamic field paths; it does not pretend to
+enumerate arbitrary new user-authored RAW English as a finite native branch.

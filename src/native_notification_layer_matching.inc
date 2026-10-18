@@ -8,11 +8,17 @@ std::vector<Match> Overlay::find_native_notification_matches() const {
     constexpr int only_y = -1;
     const unsigned char *screen_override = nullptr;
     std::vector<std::string> screen_rows(gps_->dimy, std::string(gps_->dimx, ' '));
-    for (int y = 0; y < gps_->dimy; ++y)
-        for (int x = 0; x < gps_->dimx; ++x) {
-            const auto ch = visible_char_at(x, y);
-            if (ch) screen_rows[y][x] = static_cast<char>(ch);
-        }
+    // The private grid owns these rectangles only. Sampling the rest of the
+    // screen cannot contribute a notification and multiplied cell lookups by
+    // the whole display area whenever a list changed.
+    for (const auto &frame : g_native_notification_layer.frames)
+        for (int y = std::max(0, frame.y);
+                y < std::min(gps_->dimy, frame.y + frame.h); ++y)
+            for (int x = std::max(0, frame.x);
+                    x < std::min(gps_->dimx, frame.x + frame.w); ++x) {
+                const auto ch = visible_char_at(x, y);
+                if (ch) screen_rows[y][x] = static_cast<char>(ch);
+            }
     std::vector<Match> untranslated_help_rows;
 
     // These existing readers use the live popup's markup or each alert's

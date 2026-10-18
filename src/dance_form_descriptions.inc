@@ -66,29 +66,17 @@ TranslationResult Overlay::translate_dance_form_paragraph_result(
         return result;
     };
     auto number_value = [](std::string_view raw) -> std::optional<int> {
-        const std::string value = lower(trim(std::string(raw)));
-        if (!value.empty() && std::all_of(
-                value.begin(), value.end(), [](unsigned char ch) {
-                    return ch >= '0' && ch <= '9';
-                })) {
-            return parse_int(value, -1);
+        std::string value = lower(trim(std::string(raw)));
+        bool negative = false;
+        if (value.starts_with("negative ")) {
+            negative = true;
+            value.erase(0, 9);
         }
-        static constexpr auto numbers = std::to_array<std::pair<
-            std::string_view, int>>({
-            {"zero", 0}, {"one", 1}, {"two", 2}, {"three", 3},
-            {"four", 4}, {"five", 5}, {"six", 6}, {"seven", 7},
-            {"eight", 8}, {"nine", 9}, {"ten", 10}, {"eleven", 11},
-            {"twelve", 12}, {"thirteen", 13}, {"fourteen", 14},
-            {"fifteen", 15}, {"sixteen", 16}, {"seventeen", 17},
-            {"eighteen", 18}, {"nineteen", 19}, {"twenty", 20},
-            {"twenty-one", 21}, {"twenty-two", 22},
-            {"twenty-three", 23}, {"twenty-four", 24},
-            {"thirty", 30}, {"thirty-two", 32},
-        });
-        for (const auto &[english, number] : numbers) {
-            if (value == english) return number;
-        }
-        return std::nullopt;
+        // 52e360/52bd80 use the complete recursive int32 cardinal grammar,
+        // including hyphenated tens, hundreds, thousands, millions and billions.
+        const auto number = adventure_location_count(value);
+        if (!number) return std::nullopt;
+        return static_cast<int>(negative ? -*number : *number);
     };
     auto chinese_number = [](int value) {
         static constexpr std::array<std::string_view, 10> digits = {
@@ -304,6 +292,9 @@ TranslationResult Overlay::translate_dance_form_paragraph_result(
         else if (value.starts_with("an ")) value.erase(0, 3);
         else if (value.starts_with("the ")) value.erase(0, 4);
         value = trim(std::move(value));
+        // An unknown native move selector can leave only its article behind.
+        if (value.empty() || value == "a" || value == "an")
+            return std::string("未注明的动作");
 
         const size_t with_at = value.find(" with ");
         std::string nested;
@@ -432,7 +423,14 @@ TranslationResult Overlay::translate_dance_form_paragraph_result(
                     0, value.size() - suffix.size());
             }
         }
-        if (!core) return std::nullopt;
+        if (!core) {
+            // Style and action are separate selector slots in 4e99f0.
+            // Keep a known style when the action selector emits no noun.
+            const auto traits = translate_style_sequence(value);
+            if (!traits || traits->empty()) return std::nullopt;
+            return "动作（" + join_chinese(*traits) + "）" + actor +
+                   transformation + nested;
+        }
         std::string direction;
         std::string repetition;
         std::string angle;
@@ -772,66 +770,94 @@ TranslationResult Overlay::translate_dance_form_paragraph_result(
             return "舞者按这一舞蹈形式即兴表演";
         }
 
-        if (sentence.starts_with("The dance is accompanied by ")) {
+        // 4eac30..4eaefe can append two independent acted-out subjects:
+        // one from the accompanying music and one from the dance itself.
+        // The dance subject also exists without an accompaniment sentence.
+        constexpr std::string_view accompaniment_prefix =
+            "The dance is accompanied by";
+        if (sentence.starts_with(accompaniment_prefix) ||
+            sentence.starts_with("as the dancer acts out") ||
+            sentence.starts_with("as the dancers act out")) {
+            static constexpr auto actors = std::to_array<std::pair<
+                std::string_view, std::string_view>>({
+                {"as the dancer acts out", "舞者"},
+                {"as the dancers act out", "舞者们"},
+            });
+            auto next_actor = [&](std::string_view value) {
+                size_t next = std::string_view::npos;
+                for (const auto &[marker, actor] : actors) {
+                    if (value.starts_with(marker)) return size_t{0};
+                    const size_t at = value.find(" " + std::string(marker));
+                    if (at != std::string_view::npos &&
+                        (next == std::string_view::npos || at < next)) next = at;
+                }
+                return next;
+            };
+            constexpr std::string_view composition_prefix = "a composition of";
             std::string_view tail(sentence);
-            tail.remove_prefix(std::string_view(
-                "The dance is accompanied by ").size());
-            std::string_view acted;
-            std::string_view actor;
-            for (const auto &[marker, chinese_actor] : std::array<std::pair<
-                     std::string_view, std::string_view>, 2>{{
-                     {" as the dancer acts out ", "舞者"},
-                     {" as the dancers act out ", "舞者们"},
-                 }}) {
-                const size_t at = tail.find(marker);
-                if (at == std::string_view::npos) continue;
-                acted = tail.substr(at + marker.size());
-                actor = chinese_actor;
-                tail = tail.substr(0, at);
-                break;
+            std::vector<std::string> clauses;
+            if (tail.starts_with(accompaniment_prefix)) {
+                tail = trim_view(tail.substr(accompaniment_prefix.size()));
+                const size_t actor_at = next_actor(tail);
+                const std::string_view raw_music = trim_view(tail.substr(0, actor_at));
+                std::string_view music = raw_music;
+                std::string accompaniment;
+                bool composition = false;
+                bool any_composition = false;
+                if (music.starts_with(composition_prefix)) {
+                    composition = true;
+                    music = trim_view(music.substr(composition_prefix.size()));
+                } else if (music.starts_with("any composition of")) {
+                    composition = any_composition = true;
+                    music = trim_view(music.substr(18));
+                }
+                if (music.empty()) {
+                    accompaniment = composition ? "体式未注明的乐曲" : "题名未注明的乐曲";
+                } else {
+                    const auto translated = translate_reference(music);
+                    if (!translated) return std::nullopt;
+                    accompaniment = composition
+                        ? "按“" + *translated + "”曲式谱写的" +
+                            (any_composition ? "任意乐曲" : "乐曲")
+                        : "“" + *translated + "”";
+                }
+                clauses.push_back("以" + accompaniment + "伴舞");
+                tail = actor_at == std::string_view::npos
+                    ? std::string_view{} : trim_view(tail.substr(actor_at));
             }
-            std::string accompaniment;
-            constexpr std::string_view composition_prefix =
-                "a composition of ";
-            constexpr std::string_view any_composition_prefix =
-                "any composition of ";
-            if (tail.starts_with(composition_prefix)) {
-                const auto music = translate_reference(
-                    tail.substr(composition_prefix.size()));
-                if (!music) return std::nullopt;
-                accompaniment = "按“" + *music + "”曲式谱写的乐曲";
-            } else if (tail.starts_with(any_composition_prefix)) {
-                const auto music = translate_reference(
-                    tail.substr(any_composition_prefix.size()));
-                if (!music) return std::nullopt;
-                accompaniment = "按“" + *music + "”曲式谱写的任意乐曲";
-            } else {
-                const auto music = translate_reference(tail);
-                if (!music) return std::nullopt;
-                accompaniment = "“" + *music + "”";
-            }
-            std::string result = "以" + accompaniment + "伴舞";
-            if (!acted.empty()) {
-                std::string enacted;
-                constexpr std::string_view story_prefix = "the story of ";
-                if (acted.starts_with(story_prefix)) {
-                    const auto story = translate_reference(
-                        acted.substr(story_prefix.size()));
-                    if (!story) return std::nullopt;
-                    enacted = "“" + *story + "”的故事";
+            while (!tail.empty()) {
+                std::string_view actor;
+                for (const auto &[marker, chinese] : actors) {
+                    if (!tail.starts_with(marker)) continue;
+                    actor = chinese;
+                    tail = trim_view(tail.substr(marker.size()));
+                    break;
+                }
+                if (actor.empty()) return std::nullopt;
+                const size_t next = next_actor(tail);
+                std::string_view acted = trim_view(tail.substr(0, next));
+                tail = next == std::string_view::npos
+                    ? std::string_view{} : trim_view(tail.substr(next));
+                std::string kind;
+                if (acted.starts_with("the story of")) {
+                    acted = trim_view(acted.substr(12));
+                    kind = "的故事";
                 } else if (acted.starts_with(composition_prefix)) {
-                    const auto work = translate_reference(
-                        acted.substr(composition_prefix.size()));
-                    if (!work) return std::nullopt;
-                    enacted = "“" + *work + "”的作品";
+                    acted = trim_view(acted.substr(composition_prefix.size()));
+                    kind = "的作品";
+                }
+                std::string enacted;
+                if (acted.empty()) {
+                    enacted = "未注明的内容";
                 } else {
                     const auto work = translate_reference(acted);
                     if (!work) return std::nullopt;
-                    enacted = "“" + *work + "”";
+                    enacted = "“" + *work + "”" + kind;
                 }
-                result += "，" + std::string(actor) + "用动作演绎" + enacted;
+                clauses.push_back(std::string(actor) + "用动作演绎" + enacted);
             }
-            return result;
+            if (clauses.empty()) return std::nullopt;
+            return join_chinese(clauses, "，");
         }
 
         auto translate_performance = [&](std::string_view raw,
@@ -1044,9 +1070,6 @@ TranslationResult Overlay::translate_dance_form_paragraph_result(
                 tail.remove_prefix(throughout_dance.size());
             std::string result = "舞蹈中会更换舞伴";
             if (tail.empty()) return result;
-            constexpr std::string_view lead_prefix = " with the lead ";
-            if (!tail.starts_with(lead_prefix)) return std::nullopt;
-            tail.remove_prefix(lead_prefix.size());
             static constexpr auto changes = std::to_array<std::pair<
                 std::string_view, std::string_view>>({
                 {"advancing against the main line of motion", "逆着队伍的主要行进方向移动"},
@@ -1054,10 +1077,33 @@ TranslationResult Overlay::translate_dance_form_paragraph_result(
                 {"turning out counterclockwise", "逆时针转出"},
                 {"turning out clockwise", "顺时针转出"},
             });
-            for (const auto &[english, chinese] : changes) {
-                if (tail == english) return result + "，领舞者" + std::string(chinese);
+            // Each qualifying entry in the native vector emits its own
+            // `with the lead` prefix, joined by comma or `and`. The comma
+            // branch supplies no following space (4eb55c/4ed42f).
+            std::vector<std::string> movements;
+            while (!(tail = trim_view(tail)).empty()) {
+                constexpr std::string_view lead_prefix = "with the lead ";
+                if (!tail.starts_with(lead_prefix)) return std::nullopt;
+                tail.remove_prefix(lead_prefix.size());
+                bool matched = false;
+                for (const auto &[english, chinese] : changes) {
+                    if (!tail.starts_with(english)) continue;
+                    const auto rest = trim_view(tail.substr(english.size()));
+                    if (!rest.empty() && !rest.starts_with(',') &&
+                        !rest.starts_with("and ")) continue;
+                    movements.emplace_back(chinese);
+                    tail = rest;
+                    matched = true;
+                    break;
+                }
+                if (!matched) return std::nullopt;
+                if (tail.empty()) break;
+                if (tail.starts_with(',')) tail.remove_prefix(1);
+                tail = trim_view(tail);
+                if (tail.starts_with("and ")) tail.remove_prefix(4);
             }
-            return std::nullopt;
+            if (movements.empty()) return std::nullopt;
+            return result + "，领舞者" + join_chinese(movements, "，并");
         }
 
         if (sentence.starts_with(
@@ -1083,16 +1129,23 @@ TranslationResult Overlay::translate_dance_form_paragraph_result(
                 const std::string_view item = tail.substr(
                     cursor, (and_at == std::string_view::npos
                                  ? tail.size() : and_at) - cursor);
-                const size_t space = item.find(' ');
-                if (space == std::string_view::npos) return std::nullopt;
-                const auto count = translate_count(item.substr(0, space));
-                if (!count) return std::nullopt;
-                const std::string_view kind = item.substr(space + 1);
-                if (kind == "special position" || kind == "special positions")
-                    requirements.push_back(*count + "种特有舞姿");
-                else if (kind == "specific move" || kind == "specific moves")
-                    requirements.push_back(*count + "种特定舞步");
-                else return std::nullopt;
+                bool matched = false;
+                for (const auto &[suffix, chinese] : std::array<std::pair<
+                         std::string_view, std::string_view>, 4>{{
+                         {" special position", "种特有舞姿"},
+                         {" special positions", "种特有舞姿"},
+                         {" specific move", "种特定舞步"},
+                         {" specific moves", "种特定舞步"},
+                     }}) {
+                    if (!item.ends_with(suffix)) continue;
+                    const auto count = translate_count(
+                        item.substr(0, item.size() - suffix.size()));
+                    if (!count) return std::nullopt;
+                    requirements.push_back(*count + std::string(chinese));
+                    matched = true;
+                    break;
+                }
+                if (!matched) return std::nullopt;
                 if (and_at == std::string_view::npos) break;
                 cursor = and_at + 5;
             }
@@ -1100,6 +1153,10 @@ TranslationResult Overlay::translate_dance_form_paragraph_result(
                    join_chinese(requirements);
         }
 
+        if (sentence == "The entire dance has a basic movement called the")
+            return "整支舞的基本动作尚未命名";
+        if (sentence == "There is a basic movement called the")
+            return "其中的基本动作尚未命名";
         for (const auto &[prefix, rendered] : std::array<std::pair<
                  std::string_view, std::string_view>, 4>{{
                  {"The entire dance has a basic movement called the ",
@@ -1115,7 +1172,9 @@ TranslationResult Overlay::translate_dance_form_paragraph_result(
             std::string_view raw_name =
                 std::string_view(sentence).substr(prefix.size());
             if (raw_name.starts_with("the ")) raw_name.remove_prefix(4);
-            const auto name = translate_reference(raw_name);
+            const auto name = raw_name.empty()
+                ? std::optional<std::string>("未命名")
+                : translate_reference(raw_name);
             if (!name) return std::nullopt;
             return std::string(rendered) + *name + "”";
         }
@@ -1161,9 +1220,13 @@ TranslationResult Overlay::translate_dance_form_paragraph_result(
              }}) {
             if (!sentence.starts_with("The ") || !sentence.ends_with(suffix))
                 continue;
-            const std::string_view raw_name = std::string_view(sentence).substr(
-                4, sentence.size() - 4 - suffix.size());
-            const auto name = translate_reference(raw_name);
+            const size_t suffix_at = sentence.size() - suffix.size();
+            const std::string_view raw_name = suffix_at <= 4
+                ? std::string_view{}
+                : std::string_view(sentence).substr(4, suffix_at - 4);
+            const auto name = raw_name.empty()
+                ? std::optional<std::string>("未命名")
+                : translate_reference(raw_name);
             if (!name) return std::nullopt;
             return "“" + *name + "”是" + std::string(noun);
         }
@@ -1255,6 +1318,7 @@ TranslationResult Overlay::translate_dance_form_paragraph_result(
         source.find("fundamental dance") != std::string::npos ||
         source.find(" section is ") != std::string::npos ||
         source.starts_with("There are partner changes") ||
+        source.starts_with("as the dancer") ||
         source.starts_with("There is a basic movement");
     if (!looks_dance) return display
         ? preserve_form_description(raw_paragraph, "dance") : TranslationResult{};

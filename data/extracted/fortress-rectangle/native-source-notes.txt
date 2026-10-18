@@ -1,0 +1,70 @@
+原生矩形房间选择器：反编译来源说明
+
+材料性质
+本目录中的 native-text-productions.tsv 是从原生渲染器控制流整理的完整文本产生式与翻译映射，属于来源材料。source 列保留游戏实际产生的完整英文文本；多个 draw 组成的提示按可见顺序合并。数字变化使用现有词表语法 {d}，目标中的同一捕获写为 {d1}，不枚举具体数字、不移除数字。runtime_flags 来自当前运行词表，不是原生程序标志。
+
+来源与窗口范围
+ELF: data/extracted/fortress-build-placement/elf-placement-renderer.c，矩形弹窗主体 13703–14283 行；邻接涂画提示与控制为 14289–14545 行。
+PE reference: reference-alert-hover-renderer.asm 以及本目录 pe-reference-rectangle-panel-slice.asm。矩形主体 RVA 0x3ec7aa–0x3ed669；邻接涂画模式从 0x3ed66e 开始。
+本目录 classic renderer 对应指令 RVA = reference RVA - 0x2440。TSV 中 reference_rva_path / classic_rva_path 记录字符串加载、数字追加及首字母处理的指令来源链；分号分隔同文案的不同绘制位置，+ 分隔一次产生式的拼接步骤。各地址与本目录两版 PE 提取材料相对应。
+
+状态名称
+multi 对应 ELF DAT_026f64b5 / reference PE 0x1418a181d。
+type 对应 ELF DAT_026f64bc / reference PE 0x1418a1824。
+created_total 对应原生创建列表的长度，reference PE 列表对象位于 0x1418a1848。
+rejected_in_use 对应 ELF DAT_026f64f8 / reference PE 0x1418a1860。
+rejected_not_enclosed 对应 ELF DAT_026f64fc / reference PE 0x1418a1864。
+edit_existing 对应 ELF DAT_026f6500 / reference PE 0x1418a1868。
+initial_state 表示 created_total == 0 且 rejected_in_use == 0 且 rejected_not_enclosed == 0。
+
+实际可达类型与原生输入写入链
+Multi/Paint 按钮显示入口仅允许 type 0x50（餐厅）、0x5c（卧室）、0x5d（办公室）、0x61（墓地）。ELF 14459–14460 行使用 type-0x50 范围与 0x23001 掩码；reference PE RVA 0x3ed9a0–0x3ed9d6 展开为同样四值。仅凭按钮显示条件不足以证明切换区域类型会重置 Multi；因此另外提取了两版原始 PE 的完整 .text 状态引用和实际输入赋值链，而没有把该限制单独当作不可达证据。
+Reference 原生输入 owner 0x311c10（本目录 pe-state-reference-owner-311c10.asm）中，区域类型图标命中后先在 0x34c654 清选中区域指针，在 0x34c670 将 Multi 清 0，并在 0x34c67e–0x34c694 清创建列表和两个拒绝计数；然后才在 0x34c6d3 跳入类型分派。类型赋值分支覆盖 0x52/0x55/0x5b/0x53/0x58/0x56/0x54/0x59/0x57/0x5a/0x5c/0x50/0x5d/0x5e/0x5f/0x4f/0x60/0x61。只有卧室、餐厅、办公室、墓地四个分支再从持久偏好字节 0x18a181e 复制 Multi，赋值位置分别为 0x34c77c/0x34c795/0x34c7ae/0x34c7f7。其他类型保持前置清零，因此通过区域图标切换进入非房间区域不会保留上次 Multi。
+输入处理也独立限制切换 Multi：0x34cea9–0x34cf0b 先排除 edit_existing 并判断上述四个 type，命中有效按钮后才在 0x34cfb5 将 Multi 置 1，同时在 0x34cfbc 保存偏好。涂画切换在 0x34ca24/0x34ca2b 同时清 Multi 和偏好。已有区域进入编辑的入口为 0x34b3af–0x34b3ca：mode=4、type=-1、Multi=0、edit_existing=1。故编辑占位 type=-1 也不会进入 Multi 结果分支。Classic 对应原生输入 owner 为 0x30f7d0，上述输入指令 RVA 均为 Reference -0x2440；其原始来源保留在 pe-state-classic-owner-30f7d0.asm，而不是用地址差替代提取。
+整体状态重置同样有原始指令来源：Reference 0x33cddd 将 RCX 设为 0x18a1818 后调用 frameless helper 0x310b80（pe-state-reference-owner-310b80.asm）；Classic 0x33a99d 将 RCX 设为 0x189b7e8 后调用 0x30e740（pe-state-classic-owner-30e740.asm）。Helper 的 mov DWORD PTR [rcx+2],0x10000 覆盖到 Multi 偏移 +5，并将该字节清 0；mov DWORD PTR [rcx+0xc],0xffffffff 重置 type。原始结构的宽写不能漏算为“没有 Multi 写入”；解析后的字节覆盖记录在 pe-state-indirect-refs.tsv。
+本次来源链中的正常输入、类型切换、编辑和整体重置路径均不能让非房间 type 与 Multi=1 一同进入矩形结果渲染器。Renderer 对未知 type 的缺省分支只是省略名词，不代表正常可达的另一种结果文本；不将初始化或编辑占位 type=-1 单独枚举成可达反馈。邻接普通涂画模式支持其他区域，但不会因此增加此矩形结果窗的房间名分支。
+
+两版状态来源与邻接引用范围
+状态提取从 data/runtime/native-pe-images.json 当前配置读取原始 EXE：Reference 为 D:/program/steam/steamapps/common/Dwarf Fortress/Dwarf Fortress.exe，PE:6a70a6d9:02711000；Classic 为 C:/Users/WIN11/Downloads/df_53_16_win/Dwarf Fortress.exe，PE:6a70b91c:0270a000。pe-state-functions.tsv 保留完整路径、原始文件 SHA256、原生 unwind owner 与来源 asm。两版数据字段实际 operand 为 Reference Multi/type 0x18a181d/0x18a1824，Classic 0x189b7ed/0x189b7f4，数据段差为 0x6030，不混用代码 RVA 差。
+tools/extract_fortress_rectangle_state_sources.py 使用固定 Windows Python 和固定 w64devkit objdump 对两版完整 .text 做来源提取；固定 Python 中 pefile/capstone 不可用，因此未依赖或安装这些模块。pe-state-refs.tsv 记录字段 ±0x80 的 RIP 引用，并按内存 operand 字节宽度记录是否覆盖 Multi/type；同时保存相邻地址 LEA 所属函数，追踪上面的间接整体重置。
+直接写入 Multi/type 的 RIP 指令都位于 Reference 0x311c10 / Classic 0x30f7d0 输入 owner。其余原始引用 owner 的作用分别是：Reference 0x1aa060 / Classic 0x1a9ff0，以及 Reference 0x399990 / Classic 0x397550，选择已有区域指针并进入 mode=3；Reference 0x3bc550 / Classic 0x3ba110 清理失效选中对象及相邻状态；Reference 0x3d6950 / Classic 0x3d4510 渲染时读取 Multi/type；Reference 0x8b3170 / Classic 0x8b09f0、Reference 0x8b91c0 / Classic 0x8b6a40、Reference 0x8d4370 / Classic 0x8d1bf0 操作相邻选择状态。这些邻接 owner 没有直接写入 Multi/type；原始指令均随 pe-state-*.asm 保存，不能把仅写相邻字段误算成 Multi/type 重置。
+
+结果产生式与零输出
+成功反馈共有餐厅、卧室、办公室、墓地、公共宿舍五类。前三者与墓地由所选 type 决定；仅卧室模式遍历创建列表，条目 +0x150 == 0x4f 计入公共宿舍，created_regular = created_total - created_dormitory。因此卧室成功与公共宿舍成功可以同时显示，分别计数；某类计数为 0 时不画其反馈行。
+两种拒绝原因是 already in use. 和 not enclosed.，对应独立计数，能够同时显示；每种按当前 type 选择 table/bed/chair/coffin。没有第三种拒绝原因、None、No creation、重复区域或无房间的专用反馈文案。创建列表空且两种拒绝计数全零时直接回到初始指导。计数为零的结果行不会被输出，不应新增“0 个已创建/未选用”文本。
+附近的 None（ELF 13654 行）及 Warning: stockpile has no type.（13687 行）位于前面的 stockpile 分支，排除在这个窗口的来源范围之外。
+
+单复数与大小写
+成功数或对应拒绝数 == 1 时不添加数字。大于 1 时添加十进制数字与一个空格，然后添加小写名词及复数后缀。普通房间与家具使用 s；公共宿舍由 dormitor + y / ies 组成。拼接完整反馈后调用原生首字母处理（reference PE 0x3ed319、0x3ed407、0x3ed526、0x3ed63e）。单数显示 Dining hall/Bedroom/Office/Tomb/Dormitory 或 Table/Bed/Chair/Coffin；复数以数字开头，该处理不会越过数字将后面的名词大写，实际为 {d} dining halls 等小写形式。TSV 因而保留复数英文的实际大小写。
+
+提示与控制
+初始提示有四种家具/房间组合；卧室另有 Rooms with multiple beds will be made into dormitories. 说明。结果状态显示 Done/Undo 和 Select another rectangle to continue.。邻接涂画提示为 Click in the play area to paint the zone.，与 Cancel/Accept/Multi/Paint 控制一并列出。Accept 的可用性只改变颜色与绘制属性，不产生额外文案。
+Multi 与 Paint 是实际原生标签；运行时通过 Zone drawing: Multi / Zone drawing: Paint 上下文键译为“多区域”/“涂画”。因此 TSV source 列写原生字符串，notes 列保留上下文键说明。Done 在当前词表有相同目标的 hq 与 w 条目，runtime_flags 列用 | 保留两者。
+
+数量模板
+成功复数按现有词表写为“已创建{d1}间……”；墓地使用“处”。拒绝复数保留家具数量：床、桌子用“张”，椅子用“把”，棺材用“具”。拒绝原因与家具数量属于同一完整产生式，避免将名词、复数 s、created. 或 rejected 尾部当成全局碎片译文。
+
+本次两版 PE 的实际完整函数反编译
+tools/extract_fortress_rectangle_sources.py 离线读取 data/runtime/native-pe-images.json 指定的两份原始 PE，以该映像的异常展开表及 CHAININFO 恢复完整所属函数。reference 原生 owner 为 RVA 0x3d6950–0x3fd60d，classic 为 0x3d4510–0x3fb1cd。末尾原生跳转表不作为指令反编译；实际执行区分别截止 0x3fca34 / 0x3fa5f4。映像路径、原生标识与 SHA256 保存在 pe-functions.tsv；原始展开片段保存在 pe-unwind-fragments.tsv。
+
+pe-{edition}-placement-renderer-owner.asm 保存完整执行区原生指令。pe-{edition}-rectangle-panel-slice.asm 只是便于阅读的原始指令切片，reference 范围 0x3ec7aa–0x3edbc2、classic 范围 0x3ea36a–0x3eb782。该切片继承所属函数的寄存器与栈局部变量，不是独立原生函数。本次没有将切片伪装成函数入口：真正送入 Ghidra 的是 pe-ghidra-functions.tsv 所列完整原生 owner，原函数字节没有修改。
+
+tools/DecompileFortressRectanglePE.java 已分别在两个实际 PE 上执行完成，使用 Ghidra 12.1.4 的默认 decompile 简化模式；两次 decompileFunction 均在 600 秒上限内成功返回，未切换 normalize。真实输出分别为 pe-reference-placement-renderer-owner.c、pe-classic-placement-renderer-owner.c；pe-reference-ghidra-decompiled.c、pe-classic-ghidra-decompiled.c 是同一实际函数 C 的汇总文件。函数名 rectangle_placement_renderer_owner 与 rectangle_supplier_* 是提取工具按用途及地址赋予的分析名称，不表示原程序携带的符号名。
+
+两版完整 C 的相关行号一致：13821–14034 为邻接涂画提示、Accept 及受四类房间限制的 Multi/Paint 控制；14901–15212 为矩形结果状态，包括创建列表为空的判断、Done/Undo、继续提示、普通房间与公共宿舍计数、两种独立拒绝原因、单复数及首字母处理；15214–15454 为初始四种家具与房间指导、卧室公共宿舍说明及 Cancel/Multi/Paint。C 中保留的原生返回地址可与 pe-{edition}-rectangle-panel-slice.asm 和 pe-branches.tsv / pe-conditions.tsv 对照，不能把反编译器重排后的 C 行号当作原生指令地址。
+
+Ghidra 警告的含义
+两版 C 顶部均保留三个 Switch with 1 destination removed 警告，reference 对应 RVA 0x3d80a9、0x3d9243、0x3d92b9，classic 为相应地址减 0x2440；这些位置在矩形面板之前，原表的别名与目的地仍保存在 pe-switches.tsv。Switch is manually overridden 表示工具按实际 PE 跳转表恢复 Ghidra 的间接跳转目标，原始表项和选择器别名保留在同一 TSV 中；不是把缺失分支替换为手写 C。Globals starting with '_' overlap smaller symbols 是同一原生存储区按不同宽度访问形成的符号提示。矩形面板相关 C 已保留上述全部文本状态、数量判断与家具/房间四值分支；这一区域没有未恢复跳转表的 C 警告。原始 ASM、literal、条件及分支表同时保留，供来源追溯，不表示已观察到游戏内显示效果。
+
+实际离线提取与 headless 调用方式
+固定 Python 为 C:/Users/WIN11/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe，固定 objdump 为 C:/Users/WIN11/AppData/Local/Programs/dfcn-toolchains/w64devkit-2.9.1/w64devkit/bin/objdump.exe。先执行：
+  & 'C:/Users/WIN11/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe' 'D:/workspace/dfcn/tools/extract_fortress_rectangle_sources.py'
+
+本次 Ghidra 路径固定为 C:/Users/WIN11/AppData/Local/Programs/dfcn-analysis-tools/ghidra_12.1.4_PUBLIC，JDK 路径固定为 C:/Users/WIN11/AppData/Local/Programs/dfcn-analysis-tools/jdk-25.0.4.1+1。两版各用独立的临时 project、settings 与 cache；命令中的 EDITION 分别实际取 reference / classic，IMAGE 实际取 pe-functions.tsv 中该版 source_path。PowerShell 调用参数为：
+  $env:JAVA_HOME = 'C:/Users/WIN11/AppData/Local/Programs/dfcn-analysis-tools/jdk-25.0.4.1+1'
+  $env:GHIDRA_HEADLESS_JAVA_OPTIONS = '-Dapplication.settingsdir=C:/Users/WIN11/AppData/Local/Temp/dfcn-rectangle-EDITION-settings -Dapplication.cachedir=C:/Users/WIN11/AppData/Local/Temp/dfcn-rectangle-EDITION-cache'
+  New-Item -ItemType Directory -Force -Path 'C:/Users/WIN11/AppData/Local/Temp/dfcn-rectangle-EDITION-project' | Out-Null
+  & 'C:/Users/WIN11/AppData/Local/Programs/dfcn-analysis-tools/ghidra_12.1.4_PUBLIC/support/analyzeHeadless.bat' 'C:/Users/WIN11/AppData/Local/Temp/dfcn-rectangle-EDITION-project' 'rectangle-EDITION' -import 'IMAGE' -noanalysis -scriptPath 'D:/workspace/dfcn/tools' -postScript DecompileFortressRectanglePE.java 'D:/workspace/dfcn/data/extracted/fortress-rectangle' 'EDITION' -deleteProject
+
+这里仅保存本次明确要求的反编译来源材料。没有新增或运行测试、专项检查、运行数据生成器或编译部署，也没有操作游戏窗口或读取游戏加载状态。
+

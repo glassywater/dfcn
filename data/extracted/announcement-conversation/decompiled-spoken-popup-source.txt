@@ -5,6 +5,65 @@ The executable images include the configured Linux Steam ELF and the retained
 Steam and official Windows PE source inventories.
 No game process, window, translator, or translation check executes here.
 
+Current Windows source expansion
+-------------------------------
+The Windows reference and classic manifests now each retain 118 complete
+source owners. In addition to the complete 254-topic dispatcher and speech
+builders, these include the SPEAKER/AUDIENCE, historical figure, HF_LINK,
+entity, place, building, race, definite-sphere, TEXT_SET selection and token
+replacement suppliers. The current expansion also retains delegated quest
+monster/group/bandit/invasion descriptions, companion feedback, agreement
+descriptions, spoken argument reactions, numeric and seasonal-date formatters,
+birth multiplicities, item/material/gem text, travel directions, site types,
+skill names and both full/short knowledge-topic selectors.
+The speaker chain retains anonymous/professional/animal captions, race and
+caste names, position titles, the complete profession selector, body-size
+adjectives, appearance and body-part words. The actual popup render, input and
+word-wrap owners are separate retained sources. Original calls locate the
+corresponding official-edition suppliers; no single edition-wide address delta
+is assumed.
+The C exports are <edition>-<role>.c and <edition>-decompiled.c; the complete
+original instructions, switches, aliases and text operands remain alongside
+them. The C switch destination overrides use those original table bytes.
+Each edition retains all 254 topic slots, 8,368 native switch-selector rows,
+20,768 conditional/unconditional control-flow rows, and 7,321 literal operands.
+These are source inventories, not a count of game-display observations.
+
+pe-text-sets.tsv retains every installed TEXT_SET alternative from both Windows
+RAW trees. pe-text-set-source-files.tsv also retains every entire text_*.txt
+file, its original CP437 text, flags, directives and source path. The older
+pe-greeting-text-sets.tsv is the focused greeting inventory. Native parameter
+defaults include nameless, something,
+the wilds, creature and some vague concept. These are distinct from a truly
+empty language_name, empty RACE output or empty TEXT_SET result: the complete
+parent production must retain the native separators and terminal punctuation
+for those empty branches. Runtime speech scopes keep FIRST_NAME phonetics,
+complete translated personal names, places and spheres separate. The slain
+foe source appends its comma before requesting SLAIN_SPEECH, so an empty
+result legitimately produces the complete source suffix ", !".
+
+The current installed RAW sources contain 64 text_*.txt files and 340 actual
+TEXT_SET alternatives in each Windows edition. Entire files are retained as
+source text as well as the individual alternatives, so flags and nested
+parameter directives are not lost by collecting displayed greeting examples.
+
+The supplied battle-recollection popup has three independent native suppliers:
+elapsed-time (Steam 0x140675670), battle-account (0x140675910), and the selected
+memory judgment (dialogue-10226b0 at 0x140673bc0). The latter's selector 2 emits
+"It was inevitable."; its complete 0..61 switch and default remain in the
+source rather than being reduced to that observed judgment. The dispatcher
+contains two additional direct uses of the same sentence at 0x1404a5432 and
+0x1404aef68, both retained independently.
+
+The speaker caption "Thin human stonecutter" is generated description text.
+The anonymous speaker formatter 0x14132e430 obtains a cached physical adjective
+through appearance-caption 0x140717d30 and body-size-adjective 0x140716b70,
+omits the native "average" adjective, then composes the race/profession fields.
+The race-profession caption 0x14132e0c0 delegates the complete native profession
+selector to 0x14132cc10. This chain retains all physique, profession, caste,
+custom-title, deceased/ghost, prisoner/slave and identity branches. It is not a
+personal-name production inferred from the spelling of the visible words.
+
 Full source ownership
 ---------------------
 The current Linux extraction also retains two complete bottom-level functions:
@@ -29,7 +88,7 @@ the "true ... of ..." claim as profession plus entity, and the family greeting
 as FAMILY_RELATIONSHIP. The legendary reaction retains the actual enclosing
 brackets at 104c9bd..104ca32 instead of matching only its inner sentence.
 
-native-role-correspondence.tsv pairs every one of the 42 complete ELF
+native-role-correspondence.tsv pairs every one of the 44 complete ELF
 decompiled source owners with its current decoded PE source. It retains the
 ELF C path, both PE ranges and both original instruction bodies. The literal
 co-reference evidence is in reference-source-mapping.tsv and its classic
@@ -48,10 +107,12 @@ branches remain in the corresponding switches/branches/instruction sources.
 The speech wrapper is Steam 0x140684a10..0x1406858fc and official
 0x140682430..0x14068331c. It is the same complete production for every topic,
 rather than a prefix inferred from the screenshot. Its ELF C source is
-elf-speech-wrapper.c. The complete 42-owner C reconstruction remains available
-as elf-<role>.c. The full PE inventory contains decoded instructions and manual
-source productions; the focused current-PE Ghidra C exports for the
-mental-picture formatter and element supplier are listed in the final section.
+elf-speech-wrapper.c. The complete 44-owner Linux C reconstruction remains
+available as elf-<role>.c. The current PE inventory retains actual Ghidra C
+exports for each manifest owner, together with decoded instructions, branch
+edges, literal operands, switch destinations and native source regions. The
+mental-picture formatter and element supplier are also described in the final
+section.
 
 Normalized wrapper production (storage/allocation mechanics are omitted;
 all native branches remain in its full source bodies):
@@ -99,6 +160,13 @@ race/caste uses the original body; native visibility/distance can retain the
 speech record while omitting report submission. Complete wrapper sources retain
 the extra "stops and pays attention to you." announcement and type/category
 routing, so these do not become fabricated speech sentences.
+The colon append at Steam 0x1406852ce has no body-nonempty guard: a named speaker
+with an empty body still produces the visible normalized form "You:" (or the
+corresponding speaker caption plus colon). Recipient lookup success at
+0x140685006 is also independent of the caption's length: a real recipient unit
+whose caption resolves empty still retains the literal " (to )". A missing
+recipient unit and an existing recipient with empty display text are distinct
+native branches.
 
 Speech transform is Steam 0x14067b6c0..0x14067bc4d, called at wrapper
 0x140685380. It replaces S/s through temporary ([LIP])/([lip]) markers, then

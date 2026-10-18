@@ -4,6 +4,7 @@
 void Overlay::append_character_room_fields(const std::vector<std::string> &context,
         std::vector<std::string> &rows, std::vector<Match> &matches,
         int tabs_y, int only_y) const {
+    if (!native_character_translation_active(gps_)) return;
     if (!gps_ || tabs_y < 0 || tabs_y >= gps_->dimy ||
             context.size() != static_cast<size_t>(gps_->dimy) ||
             rows.size() != context.size()) return;
@@ -62,8 +63,8 @@ void Overlay::append_character_room_fields(const std::vector<std::string> &conte
     const uintptr_t empty_writer = native_reference_address(base, 0x170529);
     if (!name_writer || !grade_writer || !needs_writer ||
             !required_grade_writer || !empty_writer) { fallback(); return; }
-    const std::array batches{captured_native_drawn_text_rows(false),
-        captured_native_drawn_text_rows(true)};
+    const std::array batches{captured_native_drawn_text_view(false),
+        captured_native_drawn_text_view(true)};
     bool captured_fields = false;
     constexpr uint32_t upper = 1u << 3, lower = 1u << 4;
     for (const auto &batch : batches) for (const auto &draw : batch) {
@@ -215,6 +216,7 @@ void Overlay::append_character_room_fields(const std::vector<std::string> &conte
 // left-align empty rooms while an occupied room's action breaks its frame
 // lookup and leaves that grade centered inside its English source width.
 void Overlay::layout_character_room_rows(SDL_Renderer *renderer) {
+    if (!native_character_translation_active(gps_)) return;
     if (!gps_ || !renderer || !face_ || gps_->tile_pixel_x <= 0 ||
         gps_->tile_pixel_y <= 0) return;
 

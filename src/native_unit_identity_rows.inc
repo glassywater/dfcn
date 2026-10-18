@@ -3,7 +3,7 @@
 // particular unit/string owner drawn here, not a same-spelled global key.
 std::set<std::pair<int, int>> native_unit_header_captions;
 for (bool top_layer : {false, true}) {
-    for (const auto &draw : captured_native_drawn_text_rows(top_layer)) {
+    for (const auto &draw : captured_native_drawn_text_view(top_layer)) {
         if (map_hover && std::any_of(map_hover->rows.begin(), map_hover->rows.end(),
                 [&](const NativeTextCardRow &row) {
                     return row.x == draw.x && row.y == draw.y &&

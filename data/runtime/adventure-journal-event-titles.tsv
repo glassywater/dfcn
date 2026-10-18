@@ -176,3 +176,119 @@ journal-event-title	The absence of {s} from {s}	{s1}从{s2}消失	journal-event-
 # Other native collection names continue through the shared Legends parser.
 journal-event-title	The death of	某个生物的死亡		ELF 0x17c0c60; empty caste formatter result
 journal-event-title	The destruction of	某件物品被毁坏		ELF 0x17c10af; absent artifact name
+# A found native object may still have an empty language_name/work title.
+# Suppliers append that value verbatim: the caller's fixed connective remains.
+# Explicit empty-field productions below keep every capture nonempty and typed;
+# they do not make empty names legal in any global name or prose grammar.
+journal-event-title	's	某人的事件		ELF 0x17c0d00..0x17c0e4b; empty named crime owner and absent crime/subtype
+journal-event-title	A 's	某个生物的事件		ELF 0x17c0d00 -> 0xa0d5f0; empty RAW caste and absent crime/subtype
+journal-event-title	A 's {s}	某个生物{s1}	journal-incident-event	ELF 0x17c0d00/0x17c0730/0x17c12c0/0x17c0e50; empty RAW caste owner
+journal-event-title	Your reunion with	你与某人的重逢		ELF 0x17c14a0; other HF exists with an empty English name
+journal-event-actor	A	某个生物		ELF 0x17c1638 -> 0xa0d5f0; empty RAW caste victim after native article
+journal-person-event	presence in	的出现		ELF 0x17c308d -> 0xa27cd0/0xa0ffc0; referenced place has an empty English name
+journal-incident-event	self-identification to	自报身份		ELF 0x17c0950 -> 0xa278f0; recipient entity has an empty English name
+journal-incident-event	refusal to identify to	拒绝透露身份		ELF 0x17c0af8 -> 0xa278f0; recipient entity has an empty English name
+journal-event-title	self-identification to	有人自报身份		ELF 0x17c0950; empty participant vector and empty recipient name
+journal-event-title	refusal to identify to	有人拒绝透露身份		ELF 0x17c0af8; empty participant vector and empty recipient name
+# Transfer core: each object and recipient is independently empty or complete.
+# The complete/complete forms above plus these three missing-field forms cover
+# the four combinations for giving/refusal. Location composition remains shared.
+journal-transfer-core	possession of	持有某件物品		ELF 0x17c1a5a/0x17c34f0; empty artifact caption
+journal-transfer-core	lack of possession of	已不再持有某件物品		ELF 0x17c26e2/0x17c3ed6; empty artifact caption
+journal-transfer-core	placement of	放置某件物品		ELF 0x17c1a24/0x17c20a0; empty artifact caption or written_content.name
+journal-transfer-core	gaining of	获得某件物品		ELF 0x17c1a09; empty artifact caption
+journal-transfer-core	giving of to {s}	将某件物品交给{s1}	journal-event-actor	ELF 0x17c1956/0x17c11c9; empty object, complete recipient
+journal-transfer-core	giving of {s} to	将{s1}交给某人	journal-event-object	ELF 0x17c1956/0x17c11c9; complete object, empty recipient HF name
+journal-transfer-core	giving of to	将某件物品交给某人		ELF 0x17c1956/0x17c11c9; empty object and recipient
+journal-transfer-core	refusal to give to {s}	拒绝将某件物品交给{s1}	journal-event-actor	ELF 0x17c1a3f; empty object, complete recipient
+journal-transfer-core	refusal to give {s} to	拒绝将{s1}交给某人	journal-event-object	ELF 0x17c1a3f; complete object, empty recipient HF name
+journal-transfer-core	refusal to give to	拒绝将某件物品交给某人		ELF 0x17c1a3f; empty object and recipient
+# A transfer can append one place, or building then site. The core is always
+# nonempty; these missing-place forms complete both the one- and two-place sets.
+journal-transfer-event	{s} in	{s1}	journal-transfer-core	ELF 0x17c1235/0x17c199b; one referenced place has an empty name
+journal-transfer-event	{s} in in {s}	在{s2}{s1}	journal-transfer-core,journal-event-place	ELF 0x17c19ce..0x17c1a04; empty building, complete site
+journal-transfer-event	{s} in {s} in	在{s2}{s1}	journal-transfer-core,journal-event-place	ELF 0x17c19ce..0x17c1a04; complete building, empty site
+journal-transfer-event	{s} in in	{s1}	journal-transfer-core	ELF 0x17c19ce..0x17c1a04; empty building and site
+# The work/form/reference suppliers can also return an empty complete field.
+journal-performance-core	Your telling of the story of	你讲述一个故事		ELF 0x1021370; present history event with an empty rendered subject
+journal-performance-core	The telling of the story of	讲述一个故事		ELF 0x1021370; present history event with an empty rendered subject
+journal-performance-core	Your recitation of	你朗诵一首诗		ELF 0x1020b80; present form/work with an empty title
+journal-performance-core	The recitation of	一场诗歌朗诵		ELF 0x1020b80; present form/work with an empty title
+journal-performance-core	The performance of	一场表演		ELF 0x1020d00/0x1020f00; present form/composition/work with an empty title
+journal-performance-core	Your {s} of	你进行{s1}	journal-performance-role	ELF 0x1020d00/0x1020f00; adventurer role with an empty work/form title
+journal-performance-core	Your dancing of	你跳舞		ELF 0x1020f00; dance role3 with an empty work/form title
+# Historical entity predicates retain their native connective even when the
+# referenced site/region/entity name is empty. Absent IDs use the bare forms.
+journal-entity-event	march toward	的行军		ELF 0x17c3320; present site ID with an empty English name
+journal-entity-event	march to reclaim	的收复远征		ELF 0x17c2cb8; present site ID with an empty English name
+journal-entity-event	march to found a site in	的建城远征		ELF 0x17c2bf0; present region ID with an empty English name
+journal-entity-event	presence in	的出现		ELF 0x17c2f10; present site ID with an empty English name
+journal-entity-event	harassment of	的骚扰		ELF 0x17c2ee0; present site ID with an empty English name
+journal-entity-event	flight from	的逃亡		ELF 0x17c2ea0; present site ID with an empty English name
+journal-entity-event	abandonment of	的弃守		ELF 0x17c2e70; present site ID with an empty English name
+journal-entity-event	reclamation of	的收复行动		ELF 0x17c2dd8; present site ID with an empty English name
+journal-entity-event	foundation of	的建城行动		ELF 0x17c2d20; present site ID with an empty English name
+journal-entity-event	withdrawal from of	的撤离		ELF 0x17c2b90 -> 0x17c2bb1; empty site retains both connectives
+journal-entity-event	claim on	的主权宣称		ELF 0x17c3780; present site ID with an empty English name
+journal-entity-event	acceptance of 's offer of tribute	接受进贡提议		ELF 0x17c36d0; subordinate entity exists with an empty English name
+journal-entity-event	refusal of 's offer of tribute	拒绝进贡提议		ELF 0x17c32c0; subordinate entity exists with an empty English name
+journal-entity-event	acceptance of 's demand for tribute	接受进贡要求		ELF 0x17c3260; subordinate entity exists with an empty English name
+journal-entity-event	refusal of 's demand for tribute	拒绝进贡要求		ELF 0x17c3160; subordinate entity exists with an empty English name
+journal-entity-event	acceptance of 's offer of peace	接受和平提议		ELF 0x17c3130; subordinate entity exists with an empty English name
+journal-entity-event	refusal of 's offer of peace	拒绝和平提议		ELF 0x17c2a90; subordinate entity exists with an empty English name
+journal-entity-event	cessation of tribute to	停止进贡		ELF 0x17c2a30; recipient entity exists with an empty English name
+# Occupation has an unconditional site field and an independently optional
+# occupant branch. Complete fields above plus the following omitted values
+# cover every site/name combination without discarding the occupation noun.
+journal-event-title	The occupation of	某地被占领		ELF 0x17c2520; empty site, absent occupant branch
+journal-event-title	The occupation of by {s}	{s1}占领某地	journal-event-entity	ELF 0x17c2520; empty site, complete occupant
+journal-event-title	The occupation of {s} by	{s1}被占领	journal-event-place	ELF 0x17c2520; complete site, empty occupant
+journal-event-title	The occupation of by	某地被占领		ELF 0x17c2520; empty site and occupant names
+# Insurrection/outcome: IDs can omit either connective; present objects with
+# empty names retain it. For each two-field constructor these five entries,
+# the complete pair, the two single-ID forms and the bare form cover all states.
+journal-event-title	The insurrection in against {s}	某地发生的反抗{s1}的起义	journal-event-entity	ELF 0x17c2b00; empty site, complete entity
+journal-event-title	The insurrection in {s} against	{s1}的起义	journal-event-place	ELF 0x17c2b00; complete site, empty entity
+journal-event-title	The insurrection in against	起义		ELF 0x17c2b00; empty site and entity names
+journal-event-title	The insurrection in	某地的起义		ELF 0x17c2b00; empty site, entity ID=-1
+journal-event-title	The insurrection against	起义		ELF 0x17c2b00; site ID=-1, empty entity
+journal-event-title	The overthrow of in {s}	{s1}的政权被推翻	journal-event-place	ELF 0x17c3a48; outcome0, empty entity and complete site
+journal-event-title	The overthrow of {s} in	推翻{s1}	journal-event-entity	ELF 0x17c3a48; outcome0, complete entity and empty site
+journal-event-title	The overthrow of in	政权被推翻		ELF 0x17c3a48; outcome0, empty entity and site
+journal-event-title	The overthrow of	政权被推翻		ELF 0x17c3a48; outcome0, empty entity and absent site ID
+journal-event-title	The overthrow in	某地的政权被推翻		ELF 0x17c3a48; outcome0, absent entity ID and empty site
+journal-event-title	The failed insurrection against in {s}	{s1}的起义失败	journal-event-place	ELF 0x17c3e5a; outcome1, empty entity and complete site
+journal-event-title	The failed insurrection against {s} in	反抗{s1}的起义失败	journal-event-entity	ELF 0x17c3e5a; outcome1, complete entity and empty site
+journal-event-title	The failed insurrection against in	起义失败		ELF 0x17c3e5a; outcome1, empty entity and site
+journal-event-title	The failed insurrection against	起义失败		ELF 0x17c3e5a; outcome1, empty entity and absent site ID
+journal-event-title	The failed insurrection in	某地的起义失败		ELF 0x17c3e5a; outcome1, absent entity ID and empty site
+journal-event-title	The insurrection crushed by in {s}	{s1}的起义遭到镇压	journal-event-place	ELF 0x17c3e31; outcome2, empty entity and complete site
+journal-event-title	The insurrection crushed by {s} in	{s1}镇压了起义	journal-event-entity	ELF 0x17c3e31; outcome2, complete entity and empty site
+journal-event-title	The insurrection crushed by in	起义遭到镇压		ELF 0x17c3e31; outcome2, empty entity and site
+journal-event-title	The insurrection crushed by	起义遭到镇压		ELF 0x17c3e31; outcome2, empty entity and absent site ID
+journal-event-title	The insurrection crushed in	某地的起义遭到镇压		ELF 0x17c3e31; outcome2, absent entity ID and empty site
+# Artifact presence: the two-field constructor has four value combinations;
+# the three-field constructor has eight. Existing full productions plus all
+# missing-field subsets below cover object/site/building independently.
+journal-event-title	The presence of in {s}	某件物品出现在{s1}	journal-event-place	ELF 0x17c2898/0x17c35c8; empty object, complete site
+journal-event-title	The presence of {s} in	{s1}的出现	journal-event-object	ELF 0x17c2898/0x17c35c8; complete object, empty site
+journal-event-title	The presence of in	某件物品的出现		ELF 0x17c2898/0x17c35c8; empty object and site
+journal-event-title	The presence of in {s} in {s}	某件物品出现在{s1}的{s2}	journal-event-place,journal-event-place	ELF 0x17c2938; empty object, complete site and building
+journal-event-title	The presence of {s} in in {s}	{s1}出现在{s2}	journal-event-object,journal-event-place	ELF 0x17c2938; empty site, complete object and building
+journal-event-title	The presence of {s} in {s} in	{s1}出现在{s2}	journal-event-object,journal-event-place	ELF 0x17c2938; empty building, complete object and site
+journal-event-title	The presence of in in {s}	某件物品出现在{s1}	journal-event-place	ELF 0x17c2938; empty object/site, complete building
+journal-event-title	The presence of in {s} in	某件物品出现在{s1}	journal-event-place	ELF 0x17c2938; empty object/building, complete site
+journal-event-title	The presence of {s} in in	{s1}的出现	journal-event-object	ELF 0x17c2938; complete object, empty site/building
+journal-event-title	The presence of in in	某件物品的出现		ELF 0x17c2938; empty object/site/building
+# Artifact absence uses the same independent fields; the three-field form
+# keeps the native site's possessive before its separately supplied building.
+journal-event-title	The absence of from {s}	某件物品从{s1}消失	journal-event-place	ELF 0x17c3660/0x17c2830/0x17c2710; empty object, complete site
+journal-event-title	The absence of {s} from	{s1}的消失	journal-event-object	ELF 0x17c3660/0x17c2830/0x17c2710; complete object, empty site
+journal-event-title	The absence of from	某件物品的消失		ELF 0x17c3660/0x17c2830/0x17c2710; empty object and site
+journal-event-title	The absence of from {s}'s {s}	某件物品从{s1}的{s2}消失	journal-event-place,journal-event-place	ELF 0x17c3660 -> 0x17c29e3; empty object, complete site/building
+journal-event-title	The absence of {s} from 's {s}	{s1}从{s2}消失	journal-event-object,journal-event-place	ELF 0x17c3660 -> 0x17c29e3; empty site, complete object/building
+journal-event-title	The absence of {s} from {s}'s	{s1}从{s2}消失	journal-event-object,journal-event-place	ELF 0x17c3660 -> 0x17c29e3; empty building, complete object/site
+journal-event-title	The absence of from 's {s}	某件物品从{s1}消失	journal-event-place	ELF 0x17c3660 -> 0x17c29e3; empty object/site, complete building
+journal-event-title	The absence of from {s}'s	某件物品从{s1}消失	journal-event-place	ELF 0x17c3660 -> 0x17c29e3; empty object/building, complete site
+journal-event-title	The absence of {s} from 's	{s1}的消失	journal-event-object	ELF 0x17c3660 -> 0x17c29e3; complete object, empty site/building
+journal-event-title	The absence of from 's	某件物品的消失		ELF 0x17c3660 -> 0x17c29e3; empty object/site/building

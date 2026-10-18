@@ -1,0 +1,6 @@
+# Transient Ghidra settings/cache from offline native-source decompilation.
+/ghidra-cache-*/
+/ghidra-settings-*/
+/ghidra-temp-*/
+/choice-*-work.gpr
+/choice-*-work.rep/

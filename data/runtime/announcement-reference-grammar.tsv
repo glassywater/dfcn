@@ -134,3 +134,60 @@ reference-building	the	类型和名称未注明的建筑		0x140eed445+0x140eed47
 reference-building	a	类型未注明的建筑		0x140eed44c+0x140eed471 -> 0x140eed590; unnamed building and type selector default
 work-reference	the	类型和名称未注明的对象		0x140ef17dc+0x140ef183b+0x140ef18c9; named site/figure with empty kind and formatted name
 work-reference	a	类型未注明的对象		0x140ef17e3+0x140ef183b or 0x140ef4c3e+0x140ef4c9b or 0x140ef4e41+0x140ef4e9c; empty site/creature/item type field
+
+# Speech parameter ARCH_ELEMENT has twelve selectors and an explicit default.
+# These are bounded architectural terms, not unrestricted prose/name captures.
+speech-architecture-element	paved outdoor areas	铺砌的室外区域		PE 685d00 ARCH_ELEMENT selector 0; inline literal 68685c
+speech-architecture-element	uneven pillars	高低不一的柱子		PE 685d00 ARCH_ELEMENT selector 1
+speech-architecture-element	square of pillars	方形柱阵		PE 685d00 ARCH_ELEMENT selector 2
+speech-architecture-element	pillars on the perimeter	沿边界排列的柱子		PE 685d00 ARCH_ELEMENT selector 3
+speech-architecture-element	upper floors	上层楼面		PE 685d00 ARCH_ELEMENT selector 4
+speech-architecture-element	lower floors	下层楼面		PE 685d00 ARCH_ELEMENT selector 5
+speech-architecture-element	water pool	水池		PE 685d00 ARCH_ELEMENT selector 6
+speech-architecture-element	lava pool	熔岩池		PE 685d00 ARCH_ELEMENT selector 7
+speech-architecture-element	stagnant pool	死水池		PE 685d00 ARCH_ELEMENT selector 8
+speech-architecture-element	open structure	开放式结构		PE 685d00 ARCH_ELEMENT selector 9
+speech-architecture-element	paved indoor areas	铺砌的室内区域		PE 685d00 ARCH_ELEMENT selector 10
+speech-architecture-element	detailed surfaces	精雕细刻的表面		PE 685d00 ARCH_ELEMENT selector 11
+speech-architecture-element	no architectural element	无建筑构件		PE 686a41; ARCH_ELEMENT unsigned selector above 11
+speech-architecture-justification	can be thought of as the antithesis of	与以下概念形成对立：		PE 686b08 TEXT_SET 25; JUSTIFICATION selector 0
+speech-architecture-justification	can allow one to experience	能让人感受到		PE 686b08 TEXT_SET 26; JUSTIFICATION selector 1
+speech-architecture-justification	can bring one near to	能让人接近		PE 686b08 TEXT_SET 27; JUSTIFICATION selector 2
+speech-architecture-justification	can remind one of	能让人联想到		PE 686b08 TEXT_SET 28; JUSTIFICATION selector 3
+speech-architecture-justification	can be thought of as a representation of	象征着		PE 686b08 TEXT_SET 29; JUSTIFICATION selector 4
+spoken-sentence	It is said that the {s} of {s} can be thought of as the antithesis of {s} for the glory of {s}.	据说，{s2}的{s1}可被视为{s3}的对立面，以彰显{s4}的荣耀。	speech-architecture-element,speech-place,speech-sphere,speech-person	ARCH_INFO_JUSTIFICATION; PE 685d00 typed ARCH_ELEMENT/building/DEF_SPHERE/HF; JUSTIFICATION selector 0
+spoken-sentence	It is said that the {s} of {s} can allow one to experience {s} for the glory of {s}.	据说，{s2}的{s1}能让人感受到{s3}，以彰显{s4}的荣耀。	speech-architecture-element,speech-place,speech-sphere,speech-person	ARCH_INFO_JUSTIFICATION; PE 685d00 JUSTIFICATION selector 1
+spoken-sentence	It is said that the {s} of {s} can bring one near to {s} for the glory of {s}.	据说，{s2}的{s1}能让人接近{s3}，以彰显{s4}的荣耀。	speech-architecture-element,speech-place,speech-sphere,speech-person	ARCH_INFO_JUSTIFICATION; PE 685d00 JUSTIFICATION selector 2
+spoken-sentence	It is said that the {s} of {s} can remind one of {s} for the glory of {s}.	据说，{s2}的{s1}能让人联想到{s3}，以彰显{s4}的荣耀。	speech-architecture-element,speech-place,speech-sphere,speech-person	ARCH_INFO_JUSTIFICATION; PE 685d00 JUSTIFICATION selector 3
+spoken-sentence	It is said that the {s} of {s} can be thought of as a representation of {s} for the glory of {s}.	据说，{s2}的{s1}可被视为{s3}的体现，以彰显{s4}的荣耀。	speech-architecture-element,speech-place,speech-sphere,speech-person	ARCH_INFO_JUSTIFICATION; PE 685d00 JUSTIFICATION selector 4
+spoken-sentence	It is said that the {s} of {s} {s} for the glory of {s}.	据说，{s2}的{s1}与{s3}有关，以彰显{s4}的荣耀。	speech-architecture-element,speech-place,speech-sphere,speech-person	PE 685d00 JUSTIFICATION default/empty TEXT_SET; native separators retained
+spoken-sentence	It is said that the {s} of {s} {s} for the glory of {s}.	据说，{s2}的{s1}{s3}未注明的概念，以彰显{s4}的荣耀。	speech-architecture-element,speech-place,speech-architecture-justification,speech-person	PE 756500->756690 unknown sphere emits empty; native separators retained
+spoken-sentence	It is said that the {s} of {s} for the glory of {s}.	据说，{s2}的{s1}用于彰显{s3}的荣耀。	speech-architecture-element,speech-place,speech-person	PE 685d00 empty JUSTIFICATION and DEF_SPHERE; native separators retained
+
+# Trait humor chooses two RAW creature names independently of the told-joke topic.
+spoken-sentence	Did you hear the one about the {s} and the {s}?	你听过那个关于{s1}和{s2}的笑话吗？	speech-race,speech-race	PE topic-reaction 666ff6..6671a6; raw name[0]/name[1], two distinct creature selectors
+spoken-sentence	Did you hear the one about the and the {s}?	你听过那个关于某种生物和{s1}的笑话吗？	speech-race	PE topic-reaction first creature selector invalid/empty RAW name
+spoken-sentence	Did you hear the one about the {s} and the ?	你听过那个关于{s1}和某种生物的笑话吗？	speech-race	PE topic-reaction second creature selector invalid/empty RAW name
+spoken-sentence	Did you hear the one about the and the ?	你听过那个关于两种生物的笑话吗？		PE topic-reaction both RAW creature names empty; literal articles and question mark retained
+
+# Building-room descriptions have a finite room-type remap and all eight bearings.
+speech-room	the throne room	王座厅		PE 65e930 room-type remap selector 0
+speech-room	the treasury	金库		PE 65e930 room-type remap selector 1
+speech-room	the library	图书馆		PE 65e930 room-type remap selector 2
+speech-room	the counting house	账房		PE 65e930 room-type remap selector 3
+speech-room	the guildhall	行会大厅		PE 65e930 room-type remap selector 4
+speech-room	the tower	塔楼		PE 65e930 room-type remap selector 5
+speech-room	the dormitory	宿舍		PE 65e930 room-type remap selector 6
+speech-room	the dining hall	餐厅		PE 65e930 room-type remap selector 7
+speech-room-bearing	north	北面		PE 65e930 coordinate branch
+speech-room-bearing	south	南面		PE 65e930 coordinate branch
+speech-room-bearing	east	东面		PE 65e930 coordinate branch
+speech-room-bearing	west	西面		PE 65e930 coordinate branch
+speech-room-bearing	northeast	东北面		PE 65e930 coordinate branch
+speech-room-bearing	northwest	西北面		PE 65e930 coordinate branch
+speech-room-bearing	southeast	东南面		PE 65e930 coordinate branch
+speech-room-bearing	southwest	西南面		PE 65e930 coordinate branch
+speech-room-bearing	right around here	这附近		PE 65ed48..65ee09; empty computed direction
+spoken-sentence	This is {s}.	这里是{s1}。	speech-room	PE 65ea5b..65eae5; speaker inside selected room
+spoken-sentence	{s} is {s}.	{s1}在{s2}。	speech-room,speech-room-bearing	PE 65eb34..65ee19; speaker outside selected room
+spoken-sentence	is {s}.	那个房间在{s1}。	speech-room-bearing	PE 65eb34 default room remap emits no label before is and complete bearing

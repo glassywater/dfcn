@@ -1,0 +1,1451 @@
+edition	source_file	encoding	raw_source
+reference	data/vanilla/vanilla_text/objects/text_ab_specific_hf_seeker.txt	cp437	"text_ab_specific_hf_seeker
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:AB_SPECIFIC_HF_SEEKER]
+
+seek out [CONTEXT:HIST_FIG:TRANS_NAME] at [CONTEXT:ABSTRACT_BUILDING:TRANS_NAME] over in [CONTEXT:SITE:TRANS_NAME]"
+reference	data/vanilla/vanilla_text/objects/text_animal_slayer.txt	cp437	"text_animal_slayer
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:ANIMAL_SLAYER]
+
+I have taken down [CONTEXT:NUMBER] [CONTEXT:RACE:NUMBERED_NAME] while stalking [CONTEXT:PLACE:TRANS_NAME]."
+reference	data/vanilla/vanilla_text/objects/text_arch_info_justification.txt	cp437	"text_arch_info_justification
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:ARCH_INFO_JUSTIFICATION]
+
+It is said that the [CONTEXT:ARCH_ELEMENT] of [CONTEXT:ABSTRACT_BUILDING:TRANS_NAME] [CONTEXT:JUSTIFICATION] [CONTEXT:DEF_SPHERE] for the glory of [CONTEXT:HIST_FIG:TRANS_NAME]."
+reference	data/vanilla/vanilla_text/objects/text_book_art.txt	cp437	"text_book_art
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:BOOK_ART]
+
+[NAME]
+[PHRASE]
+[ADJ] [NO_ART_NAME]
+The [ADJ] [NO_ART_NAME]
+[NAME] [ADJ]
+[NAME] and the [NOUN]
+[NAME] and the [ADJ] [NOUN]
+The [NOUN] and [NAME]
+The [ADJ] [NOUN] and [NAME]
+[NAME]: [PHRASE]
+It Must Have Been [NAME]
+My Friend [NAME]
+The Birth of [NAME]
+The Sun Sets on [NAME]
+We See [NAME]
+[NAME] Ever Onward
+[NAME] and Nothing More
+And [ANY_PRONOUN] Sang '[NAME]!'"
+reference	data/vanilla/vanilla_text/objects/text_book_instruction.txt	cp437	"text_book_instruction
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:BOOK_INSTRUCTION]
+
+[NAME]
+A Course on [NAME]
+A Humble Offering to [NAME]
+A Meditation on [NAME]
+A Record of [NAME]
+A Treatise on [NAME]
+A World of [NAME]
+About [NAME]
+After [NAME]
+Against [NAME]
+An Exploration of [NAME]
+An Introduction to [NAME]
+An Offering to [NAME]
+At One With [NAME]
+Before [NAME]
+Better [NO_ART_NAME]
+Beyond [NAME]
+Book of [NAME]
+Captivated by [NAME]
+Choose [NAME]
+Classic [NO_ART_NAME]
+Commentary on [NAME]
+Common Sense [NO_ART_NAME]
+Concerning [NAME]
+Discourse on [NAME]
+Discovering [NAME]
+Doubts About [NAME]
+Dreams of [NAME]
+Elements of [NAME]
+Errors In [NAME]
+Exploring [NAME]
+Explorations of [NAME]
+Factual [NO_ART_NAME]
+For the Love of [NAME]
+Foundations of [NAME]
+Give Me [NAME]
+Great [NO_ART_NAME]
+In Pursuit of [NAME]
+Inquiries on [NAME]
+Interpretations of [NAME]
+Introduction to [NAME]
+It All Begins With [NAME]
+It Is [NAME]
+Journey to [NAME]
+Life With [NAME]
+Master of [NAME]
+Mastering [NAME]
+Meditations on [NAME]
+Misconceptions About [NAME]
+More [NO_ART_NAME]
+Musings on [NAME]
+My Thoughts on [NAME]
+Mysteries of [NAME]
+Never Underestimate [NAME]
+New [NO_ART_NAME]
+Of [NAME]
+On [NAME]
+Pathways to [NAME]
+Principles of [NAME]
+Question [NAME]
+Questions About [NAME]
+Records of [NAME]
+Reflections on [NAME]
+Secret [NO_ART_NAME]
+Start Your Day With [NAME]
+Strange [NO_ART_NAME]
+The Art of [NAME]
+The Book of [NAME]
+The Future of [NAME]
+The Great [NO_ART_NAME]
+The Hidden Meaning of [NAME]
+The History of [NAME]
+The Interpretation of [NAME]
+The Journey into [NAME]
+The Knowledge of [NAME]
+The Meaning of [NAME]
+The Mysteries of [NAME]
+The Mystery of [NAME]
+The Nuanced [NO_ART_NAME]
+The Possibilities of [NAME]
+The Pursuit of [NAME]
+The Secret of [NAME]
+The Student's [NO_ART_NAME]
+The Study of [NAME]
+The True [NO_ART_NAME]
+The Truth About [NAME]
+The Unabridged [NO_ART_NAME]
+The Way With [NAME]
+The Wizard's Guide to [NAME]
+The World of [NAME]
+The World Without [NAME]
+Thoughts on [NAME]
+Time Spent With [NAME]
+Traditional [NO_ART_NAME]
+Treatise on [NAME]
+True [NO_ART_NAME]
+Uncanny [NO_ART_NAME]
+Uncovering [NAME]
+Understanding [NAME]
+Unknown [NO_ART_NAME]
+Unusual [NO_ART_NAME]
+Useful [NO_ART_NAME]
+Victory By [NAME]
+[NAME] After The End
+[NAME] and Beyond
+[NAME] and More
+[NAME] and Other Topics
+[NAME] and Other Travesties
+[NAME] and The Coming Troubles
+[NAME] and The Universe
+[NAME] Came Full Circle
+[NAME] Explained
+[NAME] Exposed
+[NAME] For Everyone
+[NAME] For Students
+[NAME] For The Beginning Practitioner
+[NAME] In Practice
+[NAME] In The Modern Era
+[NAME] In The Time of My Ancestors
+[NAME] In Theory
+[NAME] In [ANY_AGE]
+[NAME] Interpreted
+[NAME] Might Help
+[NAME] Questioned
+[NAME] The Easy Way
+[NAME] Uncovered
+[NAME] Understood
+[NAME] When It Counts
+[NAME] Within Reason
+[NAME] Without Limits
+[NAME], Abridged
+[NAME], My Life
+[NAME], My Love
+[NAME]: A Brief History
+[NAME]: A Brief Introduction
+[NAME]: A New Approach
+[NAME]: A Quandary
+[NAME]: Before and After
+[NAME]: Common Practice
+[NAME]: Fact or Fiction?
+[NAME]: Further Musings
+[NAME]: My Only Mistake
+[NAME]: Natural or Supernatural?
+[NAME]: Principles and Practice
+[NAME]: Problems And Solutions
+[NAME]: The Definitive Guide
+[NAME]: The Truth
+Can [NAME] Save The World?
+Could It Be [NAME]?
+Did [NAME] Falter?
+Do We Understand [NAME]?
+Do You Know [NAME]?
+First [NAME], Then The World!
+The [NO_ART_NAME] Book
+To [NAME] and Glory!"
+reference	data/vanilla/vanilla_text/objects/text_child_age_proclamation.txt	cp437	"text_child_age_proclamation
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:CHILD_AGE_PROCLAMATION]
+
+I'm [CONTEXT:NUMBER]!"
+reference	data/vanilla/vanilla_text/objects/text_current_profession_no_year.txt	cp437	"text_current_profession_no_year
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:CURRENT_PROFESSION_NO_YEAR]
+
+I am a [CONTEXT:UNIT_NAME]."
+reference	data/vanilla/vanilla_text/objects/text_current_profession_year.txt	cp437	"text_current_profession_year
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:CURRENT_PROFESSION_YEAR]
+
+This is my [CONTEXT:ORDINAL] year as a [CONTEXT:UNIT_NAME]."
+reference	data/vanilla/vanilla_text/objects/text_curse.txt	cp437	"text_curse
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:CURSE]
+
+Who dares to enter my house?  I curse you!"
+reference	data/vanilla/vanilla_text/objects/text_family_relationship_additional.txt	cp437	"text_family_relationship_additional
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:FAMILY_RELATIONSHIP_ADDITIONAL]
+
+[CONTEXT:HIST_FIG:PRO_SUB] is also my [CONTEXT:FAMILY_RELATIONSHIP]"
+reference	data/vanilla/vanilla_text/objects/text_family_relationship_additional_dead.txt	cp437	"text_family_relationship_additional_dead
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:FAMILY_RELATIONSHIP_ADDITIONAL_DEAD]
+
+[CONTEXT:HIST_FIG:PRO_SUB] was also my [CONTEXT:FAMILY_RELATIONSHIP]"
+reference	data/vanilla/vanilla_text/objects/text_family_relationship_no_spec.txt	cp437	"text_family_relationship_no_spec
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:FAMILY_RELATIONSHIP_NO_SPEC]
+
+I have [CONTEXT:INDEF_FAMILY_RELATIONSHIP] named [CONTEXT:HIST_FIG:TRANS_NAME]"
+reference	data/vanilla/vanilla_text/objects/text_family_relationship_no_spec_dead.txt	cp437	"text_family_relationship_no_spec_dead
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:FAMILY_RELATIONSHIP_NO_SPEC_DEAD]
+
+I had [CONTEXT:INDEF_FAMILY_RELATIONSHIP] named [CONTEXT:HIST_FIG:TRANS_NAME]"
+reference	data/vanilla/vanilla_text/objects/text_family_relationship_spec.txt	cp437	"text_family_relationship_spec
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:FAMILY_RELATIONSHIP_SPEC]
+
+my [CONTEXT:FAMILY_RELATIONSHIP] is named [CONTEXT:HIST_FIG:TRANS_NAME]"
+reference	data/vanilla/vanilla_text/objects/text_family_relationship_spec_dead.txt	cp437	"text_family_relationship_spec_dead
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:FAMILY_RELATIONSHIP_SPEC_DEAD]
+
+my [CONTEXT:FAMILY_RELATIONSHIP] was named [CONTEXT:HIST_FIG:TRANS_NAME]"
+reference	data/vanilla/vanilla_text/objects/text_general.txt	cp437	"text_general
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:GENERAL]
+
+whose cries for mercy went unheeded by my wrath
+whose insignificant name I struggle to recall
+a spineless slug who was crushed under my might
+whom I buried alive under a mountain of hatred
+who lies dead, now only an embarrassing memory
+who sought my praise, only to be rejected in death
+once revered by those who didn't know any better
+"
+reference	data/vanilla/vanilla_text/objects/text_goodbye_worship_1.txt	cp437	"text_goodbye_worship_1
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:GOODBYE_WORSHIP_1]
+
+upon arising in the mornings,
+when going on a long journey,
+before retiring in the evening,
+as sure as I am here now,
+and lo,
+it cannot be said enough;
+these are dangerous times, so
+I say again
+yes,
+before every meal,
+whenever the tide turns,
+when you return to this place,
+when you arrive at your destination,
+at this juncture in your life,"
+reference	data/vanilla/vanilla_text/objects/text_goodbye_worship_2.txt	cp437	"text_goodbye_worship_2
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:GOODBYE_WORSHIP_2]
+
+don't forget to
+always remember to
+it would be wise to
+you should
+you must
+prudence demands that you
+even for a moment
+follow my advice and
+heed my words and
+remember to
+show devotion and"
+reference	data/vanilla/vanilla_text/objects/text_goodbye_worship_3.txt	cp437	"text_goodbye_worship_3
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:GOODBYE_WORSHIP_3]
+
+speak the praises of [SPEAKER:HF_LINK:DEITY:TRANS_NAME]
+speak the praises of [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE]
+go with [SPEAKER:HF_LINK:DEITY:TRANS_NAME]
+go with [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE]
+put your faith in [SPEAKER:HF_LINK:DEITY:TRANS_NAME]
+put your faith in [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE]
+experience [SPEAKER:HF_LINK:DEITY:TRANS_NAME]
+experience [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE]
+consider [SPEAKER:HF_LINK:DEITY:TRANS_NAME]
+consider [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE]
+give yourself to [SPEAKER:HF_LINK:DEITY:TRANS_NAME]
+give yourself to [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE]"
+reference	data/vanilla/vanilla_text/objects/text_greet.txt	cp437	"text_greet
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:GREET]
+
+Greetings.  My name is [SPEAKER:TRANS_NAME]."
+reference	data/vanilla/vanilla_text/objects/text_greet_baby.txt	cp437	"text_greet_baby
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:GREET_BABY]
+
+Hellooo!
+Look at you!
+A baby!  How adorable!"
+reference	data/vanilla/vanilla_text/objects/text_greet_reply.txt	cp437	"text_greet_reply
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:GREET_REPLY]
+
+Ah, hello.  I'm [SPEAKER:TRANS_NAME]."
+reference	data/vanilla/vanilla_text/objects/text_greet_reply_after_hero.txt	cp437	"text_greet_reply_after_hero
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:GREET_REPLY_AFTER_HERO]
+
+I am [SPEAKER:TRANS_NAME].  Can I be of some help?
+I am [SPEAKER:TRANS_NAME].  How can I be of service?"
+reference	data/vanilla/vanilla_text/objects/text_greet_reply_diff_language.txt	cp437	"text_greet_reply_diff_language
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:GREET_REPLY_DIFF_LANGUAGE]
+
+Hello, [AUDIENCE:RACE].  I am [SPEAKER:TRANS_NAME]."
+reference	data/vanilla/vanilla_text/objects/text_greet_reply_unusual_first.txt	cp437	"text_greet_reply_unusual_first
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:GREET_REPLY_UNUSUAL_FIRST]
+
+[AUDIENCE:FIRST_NAME]...  your parents must have been interesting!
+You know, you don't meet many people with the name [AUDIENCE:FIRST_NAME].
+So, [AUDIENCE:FIRST_NAME]...   [AUDIENCE:FIRST_NAME], was it?
+[AUDIENCE:FIRST_NAME].  Does that mean something?
+[AUDIENCE:FIRST_NAME].  I can't say I've heard that before."
+reference	data/vanilla/vanilla_text/objects/text_greet_worship.txt	cp437	"text_greet_worship
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:GREET_WORSHIP]
+
+Praise be to [SPEAKER:HF_LINK:DEITY:TRANS_NAME].
+Praise [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE].
+Life is, in a word, [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE].
+This servant of [SPEAKER:HF_LINK:DEITY:TRANS_NAME] greets you.
+This servant of [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE] greets you."
+reference	data/vanilla/vanilla_text/objects/text_guard_profession.txt	cp437	"text_guard_profession
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:GUARD_PROFESSION]
+
+I am a guard."
+reference	data/vanilla/vanilla_text/objects/text_guard_warning.txt	cp437	"text_guard_warning
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:GUARD_WARNING]
+
+Don't start any trouble."
+reference	data/vanilla/vanilla_text/objects/text_hist_fig_slayer.txt	cp437	"text_hist_fig_slayer
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:HIST_FIG_SLAYER]
+
+It is I that felled [CONTEXT:HIST_FIG:TRANS_NAME] the [CONTEXT:HIST_FIG:RACE]."
+reference	data/vanilla/vanilla_text/objects/text_hunting_profession.txt	cp437	"text_hunting_profession
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:HUNTING_PROFESSION]
+
+I hunt great beasts in [CONTEXT:PLACE:TRANS_NAME]."
+reference	data/vanilla/vanilla_text/objects/text_hunting_profession_year.txt	cp437	"text_hunting_profession_year
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:HUNTING_PROFESSION_YEAR]
+
+I have hunted great beasts in [CONTEXT:PLACE:TRANS_NAME] for [CONTEXT:NUMBER] of my years."
+reference	data/vanilla/vanilla_text/objects/text_justification_antithetical.txt	cp437	"text_justification_antithetical
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:JUSTIFICATION_ANTITHETICAL]
+
+can be thought of as the antithesis of"
+reference	data/vanilla/vanilla_text/objects/text_justification_experience.txt	cp437	"text_justification_experience
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:JUSTIFICATION_EXPERIENCE]
+
+can allow one to experience"
+reference	data/vanilla/vanilla_text/objects/text_justification_proximity.txt	cp437	"text_justification_proximity
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:JUSTIFICATION_PROXIMITY]
+
+can bring one near to"
+reference	data/vanilla/vanilla_text/objects/text_justification_reminder.txt	cp437	"text_justification_reminder
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:JUSTIFICATION_REMINDER]
+
+can remind one of"
+reference	data/vanilla/vanilla_text/objects/text_justification_representation.txt	cp437	"text_justificatoin_representation
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:JUSTIFICATION_REPRESENTATION]
+
+can be thought of as a representation of"
+reference	data/vanilla/vanilla_text/objects/text_mercenary_profession.txt	cp437	"text_mercenary_profession
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:MERCENARY_PROFESSION]
+
+I seek fortune and glory by offering my skill at arms in [CONTEXT:PLACE:TRANS_NAME]."
+reference	data/vanilla/vanilla_text/objects/text_mercenary_profession_year.txt	cp437	"text_mercenary_profession_year
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:MERCENARY_PROFESSION_YEAR]
+
+I have sought fortune and glory by offering my skill at arms in [CONTEXT:PLACE:TRANS_NAME] for [CONTEXT:NUMBER] of my years."
+reference	data/vanilla/vanilla_text/objects/text_no_family.txt	cp437	"text_no_family
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:NO_FAMILY]
+
+I have no family to speak of"
+reference	data/vanilla/vanilla_text/objects/text_past_hunting_profession.txt	cp437	"text_past_hunting_profession
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:PAST_HUNTING_PROFESSION]
+
+In the past, I hunted great beasts.
+I was a hunter of mighty beasts for [CONTEXT:NUMBER] of my years."
+reference	data/vanilla/vanilla_text/objects/text_past_mercenary_profession.txt	cp437	"text_past_mercenary_profession
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:PAST_MERCENARY_PROFESSION]
+
+In the past, I sought fortune and glory by offering my skill at arms.
+I sought fortune and glory by offering my skill at arms for [CONTEXT:NUMBER] of my years."
+reference	data/vanilla/vanilla_text/objects/text_past_profession_no_year.txt	cp437	"text_past_profession_no_year
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:PAST_PROFESSION_NO_YEAR]
+
+I was once a [CONTEXT:UNIT_NAME]."
+reference	data/vanilla/vanilla_text/objects/text_past_profession_year.txt	cp437	"text_past_profession_year
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:PAST_PROFESSION_YEAR]
+
+I was a [CONTEXT:UNIT_NAME] for [CONTEXT:NUMBER] of the years of my life."
+reference	data/vanilla/vanilla_text/objects/text_past_snatcher_profession.txt	cp437	"text_past_snatcher_profession
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:PAST_SNATCHER_PROFESSION]
+
+Once it was my calling to rescue lost children.
+For [CONTEXT:NUMBER] of my years, I rescued lost children."
+reference	data/vanilla/vanilla_text/objects/text_past_thief_profession.txt	cp437	"text_past_thief_profession
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:PAST_THIEF_PROFESSION]
+
+I once sought great treasures.
+I sought great treasures for [CONTEXT:NUMBER] of my years."
+reference	data/vanilla/vanilla_text/objects/text_past_wandering_profession.txt	cp437	"text_past_wandering_profession
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:PAST_WANDERING_PROFESSION]
+
+I once wandered the wilds.
+For [CONTEXT:NUMBER] of my years, I wandered the wilds."
+reference	data/vanilla/vanilla_text/objects/text_positive.txt	cp437	"text_positive
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:POSITIVE]
+
+fantastic!
+wonderful!
+I'm thrilled to hear that.
+I'm pleased to hear that.
+that is good news.
+that is wonderful news.
+this is encouraging.
+very good.
+I'm proud of you.
+that is a good turn of affairs."
+reference	data/vanilla/vanilla_text/objects/text_same_site_ab_specific_hf_seeker.txt	cp437	"text_same_site_ab_specific_hf_seeker
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:SAME_SITE_AB_SPECIFIC_HF_SEEKER]
+
+seek out [CONTEXT:HIST_FIG:TRANS_NAME] here in [CONTEXT:SITE:TRANS_NAME] at [CONTEXT:ABSTRACT_BUILDING:TRANS_NAME]"
+reference	data/vanilla/vanilla_text/objects/text_same_site_specific_hf_seeker.txt	cp437	"text_same_site_specific_hf_seeker
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:SAME_SITE_SPECIFIC_HF_SEEKER]
+
+seek out [CONTEXT:HIST_FIG:TRANS_NAME] here in [CONTEXT:SITE:TRANS_NAME]"
+reference	data/vanilla/vanilla_text/objects/text_secret_death.txt	cp437	"text_secret_death
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:SECRET_DEATH]
+
+Annihilation
+Bereavement
+Death
+Demise
+Departure
+Doom
+Dying
+Eternal Rest
+Expiration
+Extinction
+Mortality
+Immortality
+Loss
+Oblivion
+Parting
+Ruin
+Ruination
+Sleep
+the Afterlife
+the End
+the Grave"
+reference	data/vanilla/vanilla_text/objects/text_site_specific_hf_seeker.txt	cp437	"text_site_specific_hf_seeker
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:SITE_SPECIFIC_HF_SEEKER]
+
+seek out [CONTEXT:HIST_FIG:TRANS_NAME] over in [CONTEXT:SITE:TRANS_NAME]"
+reference	data/vanilla/vanilla_text/objects/text_slayer.txt	cp437	"text_slayer
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:SLAYER]
+
+bane
+conqueror
+death
+foe
+killer
+lord
+master
+nemesis
+slayer
+vanquisher
+murderer
+crusher
+extinguisher
+strangler"
+reference	data/vanilla/vanilla_text/objects/text_snatcher_profession.txt	cp437	"text_snatcher_profession
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:SNATCHER_PROFESSION]
+
+I rescue lost children and bring them back to [CONTEXT:PLACE:TRANS_NAME]."
+reference	data/vanilla/vanilla_text/objects/text_snatcher_profession_year.txt	cp437	"text_snatcher_profession_year
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:SNATCHER_PROFESSION_YEAR]
+
+For [CONTEXT:NUMBER] of my years, I have been rescuing lost children and bringing them back to [CONTEXT:PLACE:TRANS_NAME]."
+reference	data/vanilla/vanilla_text/objects/text_soldier_profession.txt	cp437	"text_soldier_profession
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:SOLDIER_PROFESSION]
+
+I am a soldier."
+reference	data/vanilla/vanilla_text/objects/text_task_recommendation.txt	cp437	"text_task_recommendation
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:TASK_RECOMMENDATION]
+
+[CONTEXT:ANY:TRANS_NAME] might have a task for you"
+reference	data/vanilla/vanilla_text/objects/text_temple_already_member.txt	cp437	"text_temple_already_member
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:TEMPLE_ALREADY_MEMBER]
+
+simply
+it is enough to
+your task is simple;
+just
+all you need is to"
+reference	data/vanilla/vanilla_text/objects/text_temple_become_member.txt	cp437	"text_temple_become_member
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:TEMPLE_BECOME_MEMBER]
+
+Welcome to [CONTEXT:ENTITY:TRANS_NAME].  Praise be to [CONTEXT:ENTITY:WORSHIP_HF:TRANS_NAME]!
+Welcome to [CONTEXT:ENTITY:TRANS_NAME].  Praise be to [CONTEXT:ENTITY:WORSHIP_HF:RANDOM_DEF_SPHERE]!
+As a member of [CONTEXT:ENTITY:TRANS_NAME], you can now seek the higher mysteries of [CONTEXT:ENTITY:WORSHIP_HF:TRANS_NAME].
+As a member of [CONTEXT:ENTITY:TRANS_NAME], you can now seek the higher mysteries of [CONTEXT:ENTITY:WORSHIP_HF:RANDOM_DEF_SPHERE]."
+reference	data/vanilla/vanilla_text/objects/text_thief_profession.txt	cp437	"text_thief_profession
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:THIEF_PROFESSION]
+
+I seek treasures and bring them back to [CONTEXT:PLACE:TRANS_NAME]."
+reference	data/vanilla/vanilla_text/objects/text_thief_profession_year.txt	cp437	"text_thief_profession_year
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:THIEF_PROFESSION_YEAR]
+
+I seek treasures and bring them back to [CONTEXT:PLACE:TRANS_NAME] and have done so for [CONTEXT:NUMBER] of the years of my life."
+reference	data/vanilla/vanilla_text/objects/text_threat.txt	cp437	"text_threat
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:THREAT]
+
+Prepare to die!"
+reference	data/vanilla/vanilla_text/objects/text_unknown_hf_seeker.txt	cp437	"text_unknown_hf_seeker
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:UNKNOWN_HF_SEEKER]
+
+seek out [CONTEXT:HIST_FIG:TRANS_NAME], wherever [CONTEXT:HIST_FIG:PRO_SUB] might be"
+reference	data/vanilla/vanilla_text/objects/text_wandering_profession.txt	cp437	"text_wandering_profession
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:WANDERING_PROFESSION]
+
+I wander [CONTEXT:PLACE:TRANS_NAME]."
+reference	data/vanilla/vanilla_text/objects/text_wandering_profession_year.txt	cp437	"text_wandering_profession_year
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:WANDERING_PROFESSION_YEAR]
+
+I have wandered [CONTEXT:PLACE:TRANS_NAME] for [CONTEXT:NUMBER] of my years."
+classic	data/vanilla/vanilla_text/objects/text_ab_specific_hf_seeker.txt	cp437	"text_ab_specific_hf_seeker
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:AB_SPECIFIC_HF_SEEKER]
+
+seek out [CONTEXT:HIST_FIG:TRANS_NAME] at [CONTEXT:ABSTRACT_BUILDING:TRANS_NAME] over in [CONTEXT:SITE:TRANS_NAME]"
+classic	data/vanilla/vanilla_text/objects/text_animal_slayer.txt	cp437	"text_animal_slayer
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:ANIMAL_SLAYER]
+
+I have taken down [CONTEXT:NUMBER] [CONTEXT:RACE:NUMBERED_NAME] while stalking [CONTEXT:PLACE:TRANS_NAME]."
+classic	data/vanilla/vanilla_text/objects/text_arch_info_justification.txt	cp437	"text_arch_info_justification
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:ARCH_INFO_JUSTIFICATION]
+
+It is said that the [CONTEXT:ARCH_ELEMENT] of [CONTEXT:ABSTRACT_BUILDING:TRANS_NAME] [CONTEXT:JUSTIFICATION] [CONTEXT:DEF_SPHERE] for the glory of [CONTEXT:HIST_FIG:TRANS_NAME]."
+classic	data/vanilla/vanilla_text/objects/text_book_art.txt	cp437	"text_book_art
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:BOOK_ART]
+
+[NAME]
+[PHRASE]
+[ADJ] [NO_ART_NAME]
+The [ADJ] [NO_ART_NAME]
+[NAME] [ADJ]
+[NAME] and the [NOUN]
+[NAME] and the [ADJ] [NOUN]
+The [NOUN] and [NAME]
+The [ADJ] [NOUN] and [NAME]
+[NAME]: [PHRASE]
+It Must Have Been [NAME]
+My Friend [NAME]
+The Birth of [NAME]
+The Sun Sets on [NAME]
+We See [NAME]
+[NAME] Ever Onward
+[NAME] and Nothing More
+And [ANY_PRONOUN] Sang '[NAME]!'"
+classic	data/vanilla/vanilla_text/objects/text_book_instruction.txt	cp437	"text_book_instruction
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:BOOK_INSTRUCTION]
+
+[NAME]
+A Course on [NAME]
+A Humble Offering to [NAME]
+A Meditation on [NAME]
+A Record of [NAME]
+A Treatise on [NAME]
+A World of [NAME]
+About [NAME]
+After [NAME]
+Against [NAME]
+An Exploration of [NAME]
+An Introduction to [NAME]
+An Offering to [NAME]
+At One With [NAME]
+Before [NAME]
+Better [NO_ART_NAME]
+Beyond [NAME]
+Book of [NAME]
+Captivated by [NAME]
+Choose [NAME]
+Classic [NO_ART_NAME]
+Commentary on [NAME]
+Common Sense [NO_ART_NAME]
+Concerning [NAME]
+Discourse on [NAME]
+Discovering [NAME]
+Doubts About [NAME]
+Dreams of [NAME]
+Elements of [NAME]
+Errors In [NAME]
+Exploring [NAME]
+Explorations of [NAME]
+Factual [NO_ART_NAME]
+For the Love of [NAME]
+Foundations of [NAME]
+Give Me [NAME]
+Great [NO_ART_NAME]
+In Pursuit of [NAME]
+Inquiries on [NAME]
+Interpretations of [NAME]
+Introduction to [NAME]
+It All Begins With [NAME]
+It Is [NAME]
+Journey to [NAME]
+Life With [NAME]
+Master of [NAME]
+Mastering [NAME]
+Meditations on [NAME]
+Misconceptions About [NAME]
+More [NO_ART_NAME]
+Musings on [NAME]
+My Thoughts on [NAME]
+Mysteries of [NAME]
+Never Underestimate [NAME]
+New [NO_ART_NAME]
+Of [NAME]
+On [NAME]
+Pathways to [NAME]
+Principles of [NAME]
+Question [NAME]
+Questions About [NAME]
+Records of [NAME]
+Reflections on [NAME]
+Secret [NO_ART_NAME]
+Start Your Day With [NAME]
+Strange [NO_ART_NAME]
+The Art of [NAME]
+The Book of [NAME]
+The Future of [NAME]
+The Great [NO_ART_NAME]
+The Hidden Meaning of [NAME]
+The History of [NAME]
+The Interpretation of [NAME]
+The Journey into [NAME]
+The Knowledge of [NAME]
+The Meaning of [NAME]
+The Mysteries of [NAME]
+The Mystery of [NAME]
+The Nuanced [NO_ART_NAME]
+The Possibilities of [NAME]
+The Pursuit of [NAME]
+The Secret of [NAME]
+The Student's [NO_ART_NAME]
+The Study of [NAME]
+The True [NO_ART_NAME]
+The Truth About [NAME]
+The Unabridged [NO_ART_NAME]
+The Way With [NAME]
+The Wizard's Guide to [NAME]
+The World of [NAME]
+The World Without [NAME]
+Thoughts on [NAME]
+Time Spent With [NAME]
+Traditional [NO_ART_NAME]
+Treatise on [NAME]
+True [NO_ART_NAME]
+Uncanny [NO_ART_NAME]
+Uncovering [NAME]
+Understanding [NAME]
+Unknown [NO_ART_NAME]
+Unusual [NO_ART_NAME]
+Useful [NO_ART_NAME]
+Victory By [NAME]
+[NAME] After The End
+[NAME] and Beyond
+[NAME] and More
+[NAME] and Other Topics
+[NAME] and Other Travesties
+[NAME] and The Coming Troubles
+[NAME] and The Universe
+[NAME] Came Full Circle
+[NAME] Explained
+[NAME] Exposed
+[NAME] For Everyone
+[NAME] For Students
+[NAME] For The Beginning Practitioner
+[NAME] In Practice
+[NAME] In The Modern Era
+[NAME] In The Time of My Ancestors
+[NAME] In Theory
+[NAME] In [ANY_AGE]
+[NAME] Interpreted
+[NAME] Might Help
+[NAME] Questioned
+[NAME] The Easy Way
+[NAME] Uncovered
+[NAME] Understood
+[NAME] When It Counts
+[NAME] Within Reason
+[NAME] Without Limits
+[NAME], Abridged
+[NAME], My Life
+[NAME], My Love
+[NAME]: A Brief History
+[NAME]: A Brief Introduction
+[NAME]: A New Approach
+[NAME]: A Quandary
+[NAME]: Before and After
+[NAME]: Common Practice
+[NAME]: Fact or Fiction?
+[NAME]: Further Musings
+[NAME]: My Only Mistake
+[NAME]: Natural or Supernatural?
+[NAME]: Principles and Practice
+[NAME]: Problems And Solutions
+[NAME]: The Definitive Guide
+[NAME]: The Truth
+Can [NAME] Save The World?
+Could It Be [NAME]?
+Did [NAME] Falter?
+Do We Understand [NAME]?
+Do You Know [NAME]?
+First [NAME], Then The World!
+The [NO_ART_NAME] Book
+To [NAME] and Glory!"
+classic	data/vanilla/vanilla_text/objects/text_child_age_proclamation.txt	cp437	"text_child_age_proclamation
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:CHILD_AGE_PROCLAMATION]
+
+I'm [CONTEXT:NUMBER]!"
+classic	data/vanilla/vanilla_text/objects/text_current_profession_no_year.txt	cp437	"text_current_profession_no_year
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:CURRENT_PROFESSION_NO_YEAR]
+
+I am a [CONTEXT:UNIT_NAME]."
+classic	data/vanilla/vanilla_text/objects/text_current_profession_year.txt	cp437	"text_current_profession_year
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:CURRENT_PROFESSION_YEAR]
+
+This is my [CONTEXT:ORDINAL] year as a [CONTEXT:UNIT_NAME]."
+classic	data/vanilla/vanilla_text/objects/text_curse.txt	cp437	"text_curse
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:CURSE]
+
+Who dares to enter my house?  I curse you!"
+classic	data/vanilla/vanilla_text/objects/text_family_relationship_additional.txt	cp437	"text_family_relationship_additional
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:FAMILY_RELATIONSHIP_ADDITIONAL]
+
+[CONTEXT:HIST_FIG:PRO_SUB] is also my [CONTEXT:FAMILY_RELATIONSHIP]"
+classic	data/vanilla/vanilla_text/objects/text_family_relationship_additional_dead.txt	cp437	"text_family_relationship_additional_dead
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:FAMILY_RELATIONSHIP_ADDITIONAL_DEAD]
+
+[CONTEXT:HIST_FIG:PRO_SUB] was also my [CONTEXT:FAMILY_RELATIONSHIP]"
+classic	data/vanilla/vanilla_text/objects/text_family_relationship_no_spec.txt	cp437	"text_family_relationship_no_spec
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:FAMILY_RELATIONSHIP_NO_SPEC]
+
+I have [CONTEXT:INDEF_FAMILY_RELATIONSHIP] named [CONTEXT:HIST_FIG:TRANS_NAME]"
+classic	data/vanilla/vanilla_text/objects/text_family_relationship_no_spec_dead.txt	cp437	"text_family_relationship_no_spec_dead
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:FAMILY_RELATIONSHIP_NO_SPEC_DEAD]
+
+I had [CONTEXT:INDEF_FAMILY_RELATIONSHIP] named [CONTEXT:HIST_FIG:TRANS_NAME]"
+classic	data/vanilla/vanilla_text/objects/text_family_relationship_spec.txt	cp437	"text_family_relationship_spec
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:FAMILY_RELATIONSHIP_SPEC]
+
+my [CONTEXT:FAMILY_RELATIONSHIP] is named [CONTEXT:HIST_FIG:TRANS_NAME]"
+classic	data/vanilla/vanilla_text/objects/text_family_relationship_spec_dead.txt	cp437	"text_family_relationship_spec_dead
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:FAMILY_RELATIONSHIP_SPEC_DEAD]
+
+my [CONTEXT:FAMILY_RELATIONSHIP] was named [CONTEXT:HIST_FIG:TRANS_NAME]"
+classic	data/vanilla/vanilla_text/objects/text_general.txt	cp437	"text_general
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:GENERAL]
+
+whose cries for mercy went unheeded by my wrath
+whose insignificant name I struggle to recall
+a spineless slug who was crushed under my might
+whom I buried alive under a mountain of hatred
+who lies dead, now only an embarrassing memory
+who sought my praise, only to be rejected in death
+once revered by those who didn't know any better
+"
+classic	data/vanilla/vanilla_text/objects/text_goodbye_worship_1.txt	cp437	"text_goodbye_worship_1
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:GOODBYE_WORSHIP_1]
+
+upon arising in the mornings,
+when going on a long journey,
+before retiring in the evening,
+as sure as I am here now,
+and lo,
+it cannot be said enough;
+these are dangerous times, so
+I say again
+yes,
+before every meal,
+whenever the tide turns,
+when you return to this place,
+when you arrive at your destination,
+at this juncture in your life,"
+classic	data/vanilla/vanilla_text/objects/text_goodbye_worship_2.txt	cp437	"text_goodbye_worship_2
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:GOODBYE_WORSHIP_2]
+
+don't forget to
+always remember to
+it would be wise to
+you should
+you must
+prudence demands that you
+even for a moment
+follow my advice and
+heed my words and
+remember to
+show devotion and"
+classic	data/vanilla/vanilla_text/objects/text_goodbye_worship_3.txt	cp437	"text_goodbye_worship_3
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:GOODBYE_WORSHIP_3]
+
+speak the praises of [SPEAKER:HF_LINK:DEITY:TRANS_NAME]
+speak the praises of [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE]
+go with [SPEAKER:HF_LINK:DEITY:TRANS_NAME]
+go with [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE]
+put your faith in [SPEAKER:HF_LINK:DEITY:TRANS_NAME]
+put your faith in [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE]
+experience [SPEAKER:HF_LINK:DEITY:TRANS_NAME]
+experience [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE]
+consider [SPEAKER:HF_LINK:DEITY:TRANS_NAME]
+consider [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE]
+give yourself to [SPEAKER:HF_LINK:DEITY:TRANS_NAME]
+give yourself to [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE]"
+classic	data/vanilla/vanilla_text/objects/text_greet.txt	cp437	"text_greet
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:GREET]
+
+Greetings.  My name is [SPEAKER:TRANS_NAME]."
+classic	data/vanilla/vanilla_text/objects/text_greet_baby.txt	cp437	"text_greet_baby
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:GREET_BABY]
+
+Hellooo!
+Look at you!
+A baby!  How adorable!"
+classic	data/vanilla/vanilla_text/objects/text_greet_reply.txt	cp437	"text_greet_reply
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:GREET_REPLY]
+
+Ah, hello.  I'm [SPEAKER:TRANS_NAME]."
+classic	data/vanilla/vanilla_text/objects/text_greet_reply_after_hero.txt	cp437	"text_greet_reply_after_hero
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:GREET_REPLY_AFTER_HERO]
+
+I am [SPEAKER:TRANS_NAME].  Can I be of some help?
+I am [SPEAKER:TRANS_NAME].  How can I be of service?"
+classic	data/vanilla/vanilla_text/objects/text_greet_reply_diff_language.txt	cp437	"text_greet_reply_diff_language
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:GREET_REPLY_DIFF_LANGUAGE]
+
+Hello, [AUDIENCE:RACE].  I am [SPEAKER:TRANS_NAME]."
+classic	data/vanilla/vanilla_text/objects/text_greet_reply_unusual_first.txt	cp437	"text_greet_reply_unusual_first
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:GREET_REPLY_UNUSUAL_FIRST]
+
+[AUDIENCE:FIRST_NAME]...  your parents must have been interesting!
+You know, you don't meet many people with the name [AUDIENCE:FIRST_NAME].
+So, [AUDIENCE:FIRST_NAME]...   [AUDIENCE:FIRST_NAME], was it?
+[AUDIENCE:FIRST_NAME].  Does that mean something?
+[AUDIENCE:FIRST_NAME].  I can't say I've heard that before."
+classic	data/vanilla/vanilla_text/objects/text_greet_worship.txt	cp437	"text_greet_worship
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:GREET_WORSHIP]
+
+Praise be to [SPEAKER:HF_LINK:DEITY:TRANS_NAME].
+Praise [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE].
+Life is, in a word, [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE].
+This servant of [SPEAKER:HF_LINK:DEITY:TRANS_NAME] greets you.
+This servant of [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE] greets you."
+classic	data/vanilla/vanilla_text/objects/text_guard_profession.txt	cp437	"text_guard_profession
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:GUARD_PROFESSION]
+
+I am a guard."
+classic	data/vanilla/vanilla_text/objects/text_guard_warning.txt	cp437	"text_guard_warning
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:GUARD_WARNING]
+
+Don't start any trouble."
+classic	data/vanilla/vanilla_text/objects/text_hist_fig_slayer.txt	cp437	"text_hist_fig_slayer
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:HIST_FIG_SLAYER]
+
+It is I that felled [CONTEXT:HIST_FIG:TRANS_NAME] the [CONTEXT:HIST_FIG:RACE]."
+classic	data/vanilla/vanilla_text/objects/text_hunting_profession.txt	cp437	"text_hunting_profession
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:HUNTING_PROFESSION]
+
+I hunt great beasts in [CONTEXT:PLACE:TRANS_NAME]."
+classic	data/vanilla/vanilla_text/objects/text_hunting_profession_year.txt	cp437	"text_hunting_profession_year
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:HUNTING_PROFESSION_YEAR]
+
+I have hunted great beasts in [CONTEXT:PLACE:TRANS_NAME] for [CONTEXT:NUMBER] of my years."
+classic	data/vanilla/vanilla_text/objects/text_justification_antithetical.txt	cp437	"text_justification_antithetical
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:JUSTIFICATION_ANTITHETICAL]
+
+can be thought of as the antithesis of"
+classic	data/vanilla/vanilla_text/objects/text_justification_experience.txt	cp437	"text_justification_experience
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:JUSTIFICATION_EXPERIENCE]
+
+can allow one to experience"
+classic	data/vanilla/vanilla_text/objects/text_justification_proximity.txt	cp437	"text_justification_proximity
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:JUSTIFICATION_PROXIMITY]
+
+can bring one near to"
+classic	data/vanilla/vanilla_text/objects/text_justification_reminder.txt	cp437	"text_justification_reminder
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:JUSTIFICATION_REMINDER]
+
+can remind one of"
+classic	data/vanilla/vanilla_text/objects/text_justification_representation.txt	cp437	"text_justificatoin_representation
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:JUSTIFICATION_REPRESENTATION]
+
+can be thought of as a representation of"
+classic	data/vanilla/vanilla_text/objects/text_mercenary_profession.txt	cp437	"text_mercenary_profession
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:MERCENARY_PROFESSION]
+
+I seek fortune and glory by offering my skill at arms in [CONTEXT:PLACE:TRANS_NAME]."
+classic	data/vanilla/vanilla_text/objects/text_mercenary_profession_year.txt	cp437	"text_mercenary_profession_year
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:MERCENARY_PROFESSION_YEAR]
+
+I have sought fortune and glory by offering my skill at arms in [CONTEXT:PLACE:TRANS_NAME] for [CONTEXT:NUMBER] of my years."
+classic	data/vanilla/vanilla_text/objects/text_no_family.txt	cp437	"text_no_family
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:NO_FAMILY]
+
+I have no family to speak of"
+classic	data/vanilla/vanilla_text/objects/text_past_hunting_profession.txt	cp437	"text_past_hunting_profession
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:PAST_HUNTING_PROFESSION]
+
+In the past, I hunted great beasts.
+I was a hunter of mighty beasts for [CONTEXT:NUMBER] of my years."
+classic	data/vanilla/vanilla_text/objects/text_past_mercenary_profession.txt	cp437	"text_past_mercenary_profession
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:PAST_MERCENARY_PROFESSION]
+
+In the past, I sought fortune and glory by offering my skill at arms.
+I sought fortune and glory by offering my skill at arms for [CONTEXT:NUMBER] of my years."
+classic	data/vanilla/vanilla_text/objects/text_past_profession_no_year.txt	cp437	"text_past_profession_no_year
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:PAST_PROFESSION_NO_YEAR]
+
+I was once a [CONTEXT:UNIT_NAME]."
+classic	data/vanilla/vanilla_text/objects/text_past_profession_year.txt	cp437	"text_past_profession_year
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:PAST_PROFESSION_YEAR]
+
+I was a [CONTEXT:UNIT_NAME] for [CONTEXT:NUMBER] of the years of my life."
+classic	data/vanilla/vanilla_text/objects/text_past_snatcher_profession.txt	cp437	"text_past_snatcher_profession
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:PAST_SNATCHER_PROFESSION]
+
+Once it was my calling to rescue lost children.
+For [CONTEXT:NUMBER] of my years, I rescued lost children."
+classic	data/vanilla/vanilla_text/objects/text_past_thief_profession.txt	cp437	"text_past_thief_profession
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:PAST_THIEF_PROFESSION]
+
+I once sought great treasures.
+I sought great treasures for [CONTEXT:NUMBER] of my years."
+classic	data/vanilla/vanilla_text/objects/text_past_wandering_profession.txt	cp437	"text_past_wandering_profession
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:PAST_WANDERING_PROFESSION]
+
+I once wandered the wilds.
+For [CONTEXT:NUMBER] of my years, I wandered the wilds."
+classic	data/vanilla/vanilla_text/objects/text_positive.txt	cp437	"text_positive
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:POSITIVE]
+
+fantastic!
+wonderful!
+I'm thrilled to hear that.
+I'm pleased to hear that.
+that is good news.
+that is wonderful news.
+this is encouraging.
+very good.
+I'm proud of you.
+that is a good turn of affairs."
+classic	data/vanilla/vanilla_text/objects/text_same_site_ab_specific_hf_seeker.txt	cp437	"text_same_site_ab_specific_hf_seeker
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:SAME_SITE_AB_SPECIFIC_HF_SEEKER]
+
+seek out [CONTEXT:HIST_FIG:TRANS_NAME] here in [CONTEXT:SITE:TRANS_NAME] at [CONTEXT:ABSTRACT_BUILDING:TRANS_NAME]"
+classic	data/vanilla/vanilla_text/objects/text_same_site_specific_hf_seeker.txt	cp437	"text_same_site_specific_hf_seeker
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:SAME_SITE_SPECIFIC_HF_SEEKER]
+
+seek out [CONTEXT:HIST_FIG:TRANS_NAME] here in [CONTEXT:SITE:TRANS_NAME]"
+classic	data/vanilla/vanilla_text/objects/text_secret_death.txt	cp437	"text_secret_death
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:SECRET_DEATH]
+
+Annihilation
+Bereavement
+Death
+Demise
+Departure
+Doom
+Dying
+Eternal Rest
+Expiration
+Extinction
+Mortality
+Immortality
+Loss
+Oblivion
+Parting
+Ruin
+Ruination
+Sleep
+the Afterlife
+the End
+the Grave"
+classic	data/vanilla/vanilla_text/objects/text_site_specific_hf_seeker.txt	cp437	"text_site_specific_hf_seeker
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:SITE_SPECIFIC_HF_SEEKER]
+
+seek out [CONTEXT:HIST_FIG:TRANS_NAME] over in [CONTEXT:SITE:TRANS_NAME]"
+classic	data/vanilla/vanilla_text/objects/text_slayer.txt	cp437	"text_slayer
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:SLAYER]
+
+bane
+conqueror
+death
+foe
+killer
+lord
+master
+nemesis
+slayer
+vanquisher
+murderer
+crusher
+extinguisher
+strangler"
+classic	data/vanilla/vanilla_text/objects/text_snatcher_profession.txt	cp437	"text_snatcher_profession
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:SNATCHER_PROFESSION]
+
+I rescue lost children and bring them back to [CONTEXT:PLACE:TRANS_NAME]."
+classic	data/vanilla/vanilla_text/objects/text_snatcher_profession_year.txt	cp437	"text_snatcher_profession_year
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:SNATCHER_PROFESSION_YEAR]
+
+For [CONTEXT:NUMBER] of my years, I have been rescuing lost children and bringing them back to [CONTEXT:PLACE:TRANS_NAME]."
+classic	data/vanilla/vanilla_text/objects/text_soldier_profession.txt	cp437	"text_soldier_profession
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:SOLDIER_PROFESSION]
+
+I am a soldier."
+classic	data/vanilla/vanilla_text/objects/text_task_recommendation.txt	cp437	"text_task_recommendation
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:TASK_RECOMMENDATION]
+
+[CONTEXT:ANY:TRANS_NAME] might have a task for you"
+classic	data/vanilla/vanilla_text/objects/text_temple_already_member.txt	cp437	"text_temple_already_member
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:TEMPLE_ALREADY_MEMBER]
+
+simply
+it is enough to
+your task is simple;
+just
+all you need is to"
+classic	data/vanilla/vanilla_text/objects/text_temple_become_member.txt	cp437	"text_temple_become_member
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:TEMPLE_BECOME_MEMBER]
+
+Welcome to [CONTEXT:ENTITY:TRANS_NAME].  Praise be to [CONTEXT:ENTITY:WORSHIP_HF:TRANS_NAME]!
+Welcome to [CONTEXT:ENTITY:TRANS_NAME].  Praise be to [CONTEXT:ENTITY:WORSHIP_HF:RANDOM_DEF_SPHERE]!
+As a member of [CONTEXT:ENTITY:TRANS_NAME], you can now seek the higher mysteries of [CONTEXT:ENTITY:WORSHIP_HF:TRANS_NAME].
+As a member of [CONTEXT:ENTITY:TRANS_NAME], you can now seek the higher mysteries of [CONTEXT:ENTITY:WORSHIP_HF:RANDOM_DEF_SPHERE]."
+classic	data/vanilla/vanilla_text/objects/text_thief_profession.txt	cp437	"text_thief_profession
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:THIEF_PROFESSION]
+
+I seek treasures and bring them back to [CONTEXT:PLACE:TRANS_NAME]."
+classic	data/vanilla/vanilla_text/objects/text_thief_profession_year.txt	cp437	"text_thief_profession_year
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:THIEF_PROFESSION_YEAR]
+
+I seek treasures and bring them back to [CONTEXT:PLACE:TRANS_NAME] and have done so for [CONTEXT:NUMBER] of the years of my life."
+classic	data/vanilla/vanilla_text/objects/text_threat.txt	cp437	"text_threat
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:THREAT]
+
+Prepare to die!"
+classic	data/vanilla/vanilla_text/objects/text_unknown_hf_seeker.txt	cp437	"text_unknown_hf_seeker
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:UNKNOWN_HF_SEEKER]
+
+seek out [CONTEXT:HIST_FIG:TRANS_NAME], wherever [CONTEXT:HIST_FIG:PRO_SUB] might be"
+classic	data/vanilla/vanilla_text/objects/text_wandering_profession.txt	cp437	"text_wandering_profession
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:WANDERING_PROFESSION]
+
+I wander [CONTEXT:PLACE:TRANS_NAME]."
+classic	data/vanilla/vanilla_text/objects/text_wandering_profession_year.txt	cp437	"text_wandering_profession_year
+
+[OBJECT:TEXT_SET]
+
+[TEXT_SET:WANDERING_PROFESSION_YEAR]
+
+I have wandered [CONTEXT:PLACE:TRANS_NAME] for [CONTEXT:NUMBER] of my years."

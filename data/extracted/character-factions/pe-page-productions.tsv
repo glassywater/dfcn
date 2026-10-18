@@ -1,0 +1,257 @@
+edition	family	selector	branch_rva	minimum_score	maximum_score	literal_instruction_rva	text_or_dynamic_origin
+reference	entity-kind	0	0x179503			0x179503	Civilization
+reference	entity-kind	1	0x17951d			0x17951d	Site government
+reference	entity-kind	2	0x179537			0x179537	Vessel crew
+reference	entity-kind	3	0x179551			0x179551	Migrating group
+reference	entity-kind	4	0x17956b			0x17956b	Nomadic group
+reference	entity-kind	5	0x179585			0x179585	Religion
+reference	entity-kind	6	0x17959f			0x17959f	Military organization
+reference	entity-kind	7	0x1795b9			0x1795b9	Outcast
+reference	entity-kind	8	0x1795d3			0x1795d3	Performance troupe
+reference	entity-kind	9	0x1795ed			0x1795ed	Merchant company
+reference	entity-kind	10	0x179607			0x1797c1	craft
+reference	entity-kind	10	0x179607			0x1797d6	 guild
+reference	reputation	0	0x17997c	100		0x179986	Legendary hero
+reference	reputation	0	0x17997c	75	99	0x1799a7	Famous hero
+reference	reputation	0	0x17997c	50	74	0x1799c8	Hero
+reference	reputation	0	0x17997c	25	49	0x1799e9	Greatly respected for heroic acts
+reference	reputation	0	0x17997c		24	0x179a00	Respected for heroic acts
+reference	reputation	1	0x17a3f5				dynamic or empty; full native branch retained
+reference	reputation	2	0x179c92	100		0x179c9c	Legendary brawler
+reference	reputation	2	0x179c92	75	99	0x179cbd	Famous brawler
+reference	reputation	2	0x179c92	50	74	0x179cde	Moted brawler
+reference	reputation	2	0x179c92	25	49	0x179cff	Certainly considered a brawler
+reference	reputation	2	0x179c92		24	0x179d16	Considered a brawler
+reference	reputation	3	0x179d30	100		0x179d3a	Legendary villain
+reference	reputation	3	0x179d30	75	99	0x179d5b	Infamous villain
+reference	reputation	3	0x179d30	50	74	0x179d7c	Noted villain
+reference	reputation	3	0x179d30	25	49	0x179d9d	Greatly feared as a villain
+reference	reputation	3	0x179d30		24	0x179db4	Feared as a villain
+reference	reputation	4	0x17a3f5				dynamic or empty; full native branch retained
+reference	reputation	5	0x17a3f5				dynamic or empty; full native branch retained
+reference	reputation	6	0x179e6c	100		0x179e76	Legendary killer
+reference	reputation	6	0x179e6c	75	99	0x179e97	Infamous killer
+reference	reputation	6	0x179e6c	50	74	0x179eb8	Noted killer
+reference	reputation	6	0x179e6c	25	49	0x179ed9	Greatly feared as a killer
+reference	reputation	6	0x179e6c		24	0x179ef0	Feared as a killer
+reference	reputation	7	0x179f0a	100		0x179f14	Legendary murderer
+reference	reputation	7	0x179f0a	75	99	0x179f35	Infamous murderer
+reference	reputation	7	0x179f0a	50	74	0x179f56	Noted murderer
+reference	reputation	7	0x179f0a	25	49	0x179f77	Greatly feared as a murderer
+reference	reputation	7	0x179f0a		24	0x179f8e	Feared as a murderer
+reference	reputation	8	0x17a3f5				dynamic or empty; full native branch retained
+reference	reputation	9	0x17a3f5				dynamic or empty; full native branch retained
+reference	reputation	10	0x17a3f5				dynamic or empty; full native branch retained
+reference	reputation	11	0x179fa8	100		0x179fb2	Legendary enemy fighter
+reference	reputation	11	0x179fa8	75	99	0x179fd3	Infamous enemy fighter
+reference	reputation	11	0x179fa8	50	74	0x179ff4	Noted enemy fighter
+reference	reputation	11	0x179fa8	25	49	0x17a015	Greatly feared for violent oppositoin
+reference	reputation	11	0x179fa8		24	0x17a02c	Feared for violent opposition
+reference	reputation	12	0x17a046	100		0x17a050	Legendary fighter
+reference	reputation	12	0x17a046	75	99	0x17a071	Famous fighter
+reference	reputation	12	0x17a046	50	74	0x17a092	Noted fighter
+reference	reputation	12	0x17a046	25	49	0x17a0b3	Greatly respected for fighter
+reference	reputation	12	0x17a046		24	0x17a0ca	Respected for fighter
+reference	reputation	13	0x179bf4	100		0x179bfe	Legendary bully
+reference	reputation	13	0x179bf4	75	99	0x179c1f	Infamous bully
+reference	reputation	13	0x179bf4	50	74	0x179c40	Noted bully
+reference	reputation	13	0x179bf4	25	49	0x179c61	Certainly considered a bully
+reference	reputation	13	0x179bf4		24	0x179c78	Considered a bully
+reference	reputation	14	0x179b56	100		0x179b60	Legendary brigand
+reference	reputation	14	0x179b56	75	99	0x179b81	Infamous brigand
+reference	reputation	14	0x179b56	50	74	0x179ba2	Noted brigand
+reference	reputation	14	0x179b56	25	49	0x179bc3	Certainly feared as a brigand
+reference	reputation	14	0x179b56		24	0x179bda	Feared as a brigand
+reference	reputation	15	0x17a0e4	100		0x17a0ee	Legendary loyal soldier
+reference	reputation	15	0x17a0e4	75	99	0x17a10f	Famous loyal soldier
+reference	reputation	15	0x17a0e4	50	74	0x17a130	Noted loyal soldier
+reference	reputation	15	0x17a0e4	25	49	0x17a151	Greatly respected for loyalty
+reference	reputation	15	0x17a0e4		24	0x17a168	Respected for loyalty
+reference	reputation	16	0x179ab8	100		0x179ac2	Legendary monster
+reference	reputation	16	0x179ab8	75	99	0x179ae3	Infamous monster
+reference	reputation	16	0x179ab8	50	74	0x179b04	Noted monster
+reference	reputation	16	0x179ab8	25	49	0x179b25	Certainly feared as a monster
+reference	reputation	16	0x179ab8		24	0x179b3c	Feared as a monster
+reference	reputation	17	0x17a3f5				dynamic or empty; full native branch retained
+reference	reputation	18	0x17a3f5				dynamic or empty; full native branch retained
+reference	reputation	19	0x17a3f5				dynamic or empty; full native branch retained
+reference	reputation	20	0x17a3f5				dynamic or empty; full native branch retained
+reference	reputation	21	0x17a3f5				dynamic or empty; full native branch retained
+reference	reputation	22	0x17a3f5				dynamic or empty; full native branch retained
+reference	reputation	23	0x179dce	100		0x179dd8	Legendary hunter
+reference	reputation	23	0x179dce	75	99	0x179df9	Great hunter
+reference	reputation	23	0x179dce	50	74	0x179e1a	Talented hunter
+reference	reputation	23	0x179dce	25	49	0x179e3b	Skilled hunter
+reference	reputation	23	0x179dce		24	0x179e52	Respected as a hunter
+reference	reputation	24	0x17a182	100		0x17a18c	Legendary protector of the weak
+reference	reputation	24	0x17a182	75	99	0x17a1ad	Famous protector of the weak
+reference	reputation	24	0x17a182	50	74	0x17a1ce	Noted protector of the weak
+reference	reputation	24	0x17a182	25	49	0x17a1ef	Greatly respected for protecting the weak
+reference	reputation	24	0x17a182		24	0x17a206	Respected for protecting the weak
+reference	reputation	25	0x17a2be	100		0x17a2c8	Legendary treasure hunter
+reference	reputation	25	0x17a2be	75	99	0x17a2e9	Famous treasure hunter
+reference	reputation	25	0x17a2be	50	74	0x17a30a	Noted treasure hunter
+reference	reputation	25	0x17a2be	25	49	0x17a32b	Greatly respected for hunting treasure
+reference	reputation	25	0x17a2be		24	0x17a342	Respected for hunting treasure
+reference	reputation	26	0x17a35c	100		0x17a366	Legendary thief
+reference	reputation	26	0x17a35c	75	99	0x17a387	Infamous thief
+reference	reputation	26	0x17a35c	50	74	0x17a3a8	Noted thief
+reference	reputation	26	0x17a35c	25	49	0x17a3c9	Certainly considered a thief
+reference	reputation	26	0x17a35c		24	0x17a3e0	Considered a thief
+reference	reputation	27	0x17a3f5				dynamic or empty; full native branch retained
+reference	reputation	28	0x17a220	100		0x17a22a	Legendary preserver of the knowledge
+reference	reputation	28	0x17a220	75	99	0x17a24b	Famous preserver of the knowledge
+reference	reputation	28	0x17a220	50	74	0x17a26c	Noted preserver of the knowledge
+reference	reputation	28	0x17a220	25	49	0x17a28d	Greatly respected for preserving the knowledge
+reference	reputation	28	0x17a220		24	0x17a2a4	Respected for preserving the knowledge
+reference	reputation	29	0x179a1a	100		0x179a24	Legendary intruder
+reference	reputation	29	0x179a1a	75	99	0x179a45	Infamous intruder
+reference	reputation	29	0x179a1a	50	74	0x179a66	Noted intruder according
+reference	reputation	29	0x179a1a	25	49	0x179a87	Certainly considered an intruder
+reference	reputation	29	0x179a1a		24	0x179a9e	Considered an intruder
+reference	relationship	0	0x17a96d			0x17a97c	Citizen
+reference	relationship	0	0x17a96d			0x17a993	Member
+reference	relationship	1	0x17a9ad			0x17a9ad	Former member
+reference	relationship	2	0x17a905			0x17a905	Mercenary
+reference	relationship	3	0x17a91f			0x17a91f	Former mercenary
+reference	relationship	4	0x17a9c7			0x17a9c7	Slave
+reference	relationship	5	0x17a9de			0x17a9de	Former slave
+reference	relationship	6	0x17a9f5			0x17a9f5	Prisoner
+reference	relationship	7	0x17aa0c			0x17aa0c	Former prisoner
+reference	relationship	8	0x17a939			0x17a939	Enemy
+reference	relationship	9	0x17a953			0x17a953	Criminal
+reference	relationship	10	0x17a45a				dynamic or empty; full native branch retained
+reference	relationship	11	0x17a602			0x17a6cd	Former 
+reference	relationship	12	0x17aa4f				dynamic or empty; full native branch retained
+reference	relationship	13	0x17a7bf				dynamic or empty; full native branch retained
+reference	relationship	14	0x17a858			0x17a8c1	Former 
+reference	relationship	15	0x17aa23			0x17aa23	Worker
+reference	relationship	16	0x17aa3a			0x17aa3a	Former worker
+classic	entity-kind	0	0x179493			0x179493	Civilization
+classic	entity-kind	1	0x1794ad			0x1794ad	Site government
+classic	entity-kind	2	0x1794c7			0x1794c7	Vessel crew
+classic	entity-kind	3	0x1794e1			0x1794e1	Migrating group
+classic	entity-kind	4	0x1794fb			0x1794fb	Nomadic group
+classic	entity-kind	5	0x179515			0x179515	Religion
+classic	entity-kind	6	0x17952f			0x17952f	Military organization
+classic	entity-kind	7	0x179549			0x179549	Outcast
+classic	entity-kind	8	0x179563			0x179563	Performance troupe
+classic	entity-kind	9	0x17957d			0x17957d	Merchant company
+classic	entity-kind	10	0x179597			0x179751	craft
+classic	entity-kind	10	0x179597			0x179766	 guild
+classic	reputation	0	0x17990c	100		0x179916	Legendary hero
+classic	reputation	0	0x17990c	75	99	0x179937	Famous hero
+classic	reputation	0	0x17990c	50	74	0x179958	Hero
+classic	reputation	0	0x17990c	25	49	0x179979	Greatly respected for heroic acts
+classic	reputation	0	0x17990c		24	0x179990	Respected for heroic acts
+classic	reputation	1	0x17a385				dynamic or empty; full native branch retained
+classic	reputation	2	0x179c22	100		0x179c2c	Legendary brawler
+classic	reputation	2	0x179c22	75	99	0x179c4d	Famous brawler
+classic	reputation	2	0x179c22	50	74	0x179c6e	Moted brawler
+classic	reputation	2	0x179c22	25	49	0x179c8f	Certainly considered a brawler
+classic	reputation	2	0x179c22		24	0x179ca6	Considered a brawler
+classic	reputation	3	0x179cc0	100		0x179cca	Legendary villain
+classic	reputation	3	0x179cc0	75	99	0x179ceb	Infamous villain
+classic	reputation	3	0x179cc0	50	74	0x179d0c	Noted villain
+classic	reputation	3	0x179cc0	25	49	0x179d2d	Greatly feared as a villain
+classic	reputation	3	0x179cc0		24	0x179d44	Feared as a villain
+classic	reputation	4	0x17a385				dynamic or empty; full native branch retained
+classic	reputation	5	0x17a385				dynamic or empty; full native branch retained
+classic	reputation	6	0x179dfc	100		0x179e06	Legendary killer
+classic	reputation	6	0x179dfc	75	99	0x179e27	Infamous killer
+classic	reputation	6	0x179dfc	50	74	0x179e48	Noted killer
+classic	reputation	6	0x179dfc	25	49	0x179e69	Greatly feared as a killer
+classic	reputation	6	0x179dfc		24	0x179e80	Feared as a killer
+classic	reputation	7	0x179e9a	100		0x179ea4	Legendary murderer
+classic	reputation	7	0x179e9a	75	99	0x179ec5	Infamous murderer
+classic	reputation	7	0x179e9a	50	74	0x179ee6	Noted murderer
+classic	reputation	7	0x179e9a	25	49	0x179f07	Greatly feared as a murderer
+classic	reputation	7	0x179e9a		24	0x179f1e	Feared as a murderer
+classic	reputation	8	0x17a385				dynamic or empty; full native branch retained
+classic	reputation	9	0x17a385				dynamic or empty; full native branch retained
+classic	reputation	10	0x17a385				dynamic or empty; full native branch retained
+classic	reputation	11	0x179f38	100		0x179f42	Legendary enemy fighter
+classic	reputation	11	0x179f38	75	99	0x179f63	Infamous enemy fighter
+classic	reputation	11	0x179f38	50	74	0x179f84	Noted enemy fighter
+classic	reputation	11	0x179f38	25	49	0x179fa5	Greatly feared for violent oppositoin
+classic	reputation	11	0x179f38		24	0x179fbc	Feared for violent opposition
+classic	reputation	12	0x179fd6	100		0x179fe0	Legendary fighter
+classic	reputation	12	0x179fd6	75	99	0x17a001	Famous fighter
+classic	reputation	12	0x179fd6	50	74	0x17a022	Noted fighter
+classic	reputation	12	0x179fd6	25	49	0x17a043	Greatly respected for fighter
+classic	reputation	12	0x179fd6		24	0x17a05a	Respected for fighter
+classic	reputation	13	0x179b84	100		0x179b8e	Legendary bully
+classic	reputation	13	0x179b84	75	99	0x179baf	Infamous bully
+classic	reputation	13	0x179b84	50	74	0x179bd0	Noted bully
+classic	reputation	13	0x179b84	25	49	0x179bf1	Certainly considered a bully
+classic	reputation	13	0x179b84		24	0x179c08	Considered a bully
+classic	reputation	14	0x179ae6	100		0x179af0	Legendary brigand
+classic	reputation	14	0x179ae6	75	99	0x179b11	Infamous brigand
+classic	reputation	14	0x179ae6	50	74	0x179b32	Noted brigand
+classic	reputation	14	0x179ae6	25	49	0x179b53	Certainly feared as a brigand
+classic	reputation	14	0x179ae6		24	0x179b6a	Feared as a brigand
+classic	reputation	15	0x17a074	100		0x17a07e	Legendary loyal soldier
+classic	reputation	15	0x17a074	75	99	0x17a09f	Famous loyal soldier
+classic	reputation	15	0x17a074	50	74	0x17a0c0	Noted loyal soldier
+classic	reputation	15	0x17a074	25	49	0x17a0e1	Greatly respected for loyalty
+classic	reputation	15	0x17a074		24	0x17a0f8	Respected for loyalty
+classic	reputation	16	0x179a48	100		0x179a52	Legendary monster
+classic	reputation	16	0x179a48	75	99	0x179a73	Infamous monster
+classic	reputation	16	0x179a48	50	74	0x179a94	Noted monster
+classic	reputation	16	0x179a48	25	49	0x179ab5	Certainly feared as a monster
+classic	reputation	16	0x179a48		24	0x179acc	Feared as a monster
+classic	reputation	17	0x17a385				dynamic or empty; full native branch retained
+classic	reputation	18	0x17a385				dynamic or empty; full native branch retained
+classic	reputation	19	0x17a385				dynamic or empty; full native branch retained
+classic	reputation	20	0x17a385				dynamic or empty; full native branch retained
+classic	reputation	21	0x17a385				dynamic or empty; full native branch retained
+classic	reputation	22	0x17a385				dynamic or empty; full native branch retained
+classic	reputation	23	0x179d5e	100		0x179d68	Legendary hunter
+classic	reputation	23	0x179d5e	75	99	0x179d89	Great hunter
+classic	reputation	23	0x179d5e	50	74	0x179daa	Talented hunter
+classic	reputation	23	0x179d5e	25	49	0x179dcb	Skilled hunter
+classic	reputation	23	0x179d5e		24	0x179de2	Respected as a hunter
+classic	reputation	24	0x17a112	100		0x17a11c	Legendary protector of the weak
+classic	reputation	24	0x17a112	75	99	0x17a13d	Famous protector of the weak
+classic	reputation	24	0x17a112	50	74	0x17a15e	Noted protector of the weak
+classic	reputation	24	0x17a112	25	49	0x17a17f	Greatly respected for protecting the weak
+classic	reputation	24	0x17a112		24	0x17a196	Respected for protecting the weak
+classic	reputation	25	0x17a24e	100		0x17a258	Legendary treasure hunter
+classic	reputation	25	0x17a24e	75	99	0x17a279	Famous treasure hunter
+classic	reputation	25	0x17a24e	50	74	0x17a29a	Noted treasure hunter
+classic	reputation	25	0x17a24e	25	49	0x17a2bb	Greatly respected for hunting treasure
+classic	reputation	25	0x17a24e		24	0x17a2d2	Respected for hunting treasure
+classic	reputation	26	0x17a2ec	100		0x17a2f6	Legendary thief
+classic	reputation	26	0x17a2ec	75	99	0x17a317	Infamous thief
+classic	reputation	26	0x17a2ec	50	74	0x17a338	Noted thief
+classic	reputation	26	0x17a2ec	25	49	0x17a359	Certainly considered a thief
+classic	reputation	26	0x17a2ec		24	0x17a370	Considered a thief
+classic	reputation	27	0x17a385				dynamic or empty; full native branch retained
+classic	reputation	28	0x17a1b0	100		0x17a1ba	Legendary preserver of the knowledge
+classic	reputation	28	0x17a1b0	75	99	0x17a1db	Famous preserver of the knowledge
+classic	reputation	28	0x17a1b0	50	74	0x17a1fc	Noted preserver of the knowledge
+classic	reputation	28	0x17a1b0	25	49	0x17a21d	Greatly respected for preserving the knowledge
+classic	reputation	28	0x17a1b0		24	0x17a234	Respected for preserving the knowledge
+classic	reputation	29	0x1799aa	100		0x1799b4	Legendary intruder
+classic	reputation	29	0x1799aa	75	99	0x1799d5	Infamous intruder
+classic	reputation	29	0x1799aa	50	74	0x1799f6	Noted intruder according
+classic	reputation	29	0x1799aa	25	49	0x179a17	Certainly considered an intruder
+classic	reputation	29	0x1799aa		24	0x179a2e	Considered an intruder
+classic	relationship	0	0x17a8fd			0x17a90c	Citizen
+classic	relationship	0	0x17a8fd			0x17a923	Member
+classic	relationship	1	0x17a93d			0x17a93d	Former member
+classic	relationship	2	0x17a895			0x17a895	Mercenary
+classic	relationship	3	0x17a8af			0x17a8af	Former mercenary
+classic	relationship	4	0x17a957			0x17a957	Slave
+classic	relationship	5	0x17a96e			0x17a96e	Former slave
+classic	relationship	6	0x17a985			0x17a985	Prisoner
+classic	relationship	7	0x17a99c			0x17a99c	Former prisoner
+classic	relationship	8	0x17a8c9			0x17a8c9	Enemy
+classic	relationship	9	0x17a8e3			0x17a8e3	Criminal
+classic	relationship	10	0x17a3ea				dynamic or empty; full native branch retained
+classic	relationship	11	0x17a592			0x17a65d	Former 
+classic	relationship	12	0x17a9df				dynamic or empty; full native branch retained
+classic	relationship	13	0x17a74f				dynamic or empty; full native branch retained
+classic	relationship	14	0x17a7e8			0x17a851	Former 
+classic	relationship	15	0x17a9b3			0x17a9b3	Worker
+classic	relationship	16	0x17a9ca			0x17a9ca	Former worker

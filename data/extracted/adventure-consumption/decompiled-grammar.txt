@@ -1,0 +1,143 @@
+Configured Windows PE consumption and container announcement source
+================================================================
+
+These are offline executable sources, not translation examples or test output.
+reference/classic-consumption-native-ROLE.c contain actual Ghidra 12.1.4 C.
+Their original instructions, conditional branches, direct calls and literal
+operands are retained in the matching .asm files and consumption-native-*.tsv.
+The two images are the configured native-pe-images.json sources:
+  reference PE:6a70a6d9:02711000
+  classic   PE:6a70b91c:0270a000
+
+Complete source owners
+----------------------
+role                 reference RVA       classic RVA
+fill-item            8360a0..83690c       833920..83418c
+heat-liquid          836b20..837145       8343a0..8349c5
+fill-liquid          837150..837e97       8349d0..835717
+empty-item           894b00..8951ab       892380..892a2b
+remove-empty-item    8956d0..895f15       892f50..893795
+consume              895fd0..897525       893850..894da5
+
+Each owner's full unwind extent is retained, including ordinary C++ string
+capacity/allocator/error branches. These six owners contain conditional direct
+edges but no bounded indirect selector tables; the switches manifest therefore
+has a header and no rows. A native branch is not equivalent to another message:
+the complete emitted text productions are in native-productions.tsv.
+
+consume
+-------
+The item parameter is passed to c65450(item, string, 0, -1). The producer appends
+its final period after the whole caption and submits the result to e3c20:
+  You eat the ITEM.
+  You drink the ITEM.
+  You lick the ITEM.
+The condition branches additionally emit:
+  The ITEM is too salty.
+  The ITEM is too hot.
+  The ITEM is too cold.
+  No.  That's disgusting.
+  You just can't fit any more.
+  It's too much!  You feel even more sick.
+  It's too much!  You might not be able to keep it down.
+  You feel really full.
+  You are starting to feel full.
+
+The rejection threshold reads unit+0x994 (>=250000). Successful eating or
+drinking sets a common full-state branch at >=200000 and a starting-full branch
+at >=100000. The prior fullness and sickness field select the two complete
+overfull sentences, or the two ordinary fullness sentences. Actual condition
+edges and flag-mask branches remain in consumption-native-branches.tsv.
+Null item and disabled-announcement branches emit no corresponding text.
+The compound overfull messages contain native double spaces after '!'. Existing
+normalization of ordinary prose whitespace owns those doubles; no new wording
+is inferred from independently extracted vector chunks.
+
+fill-item / fill-liquid
+-----------------------
+  You fill your CONTAINER with CONTENTS.
+  Your CONTAINER is already full.
+  It won't fit in your CONTAINER.
+  CONTENTS is empty.                   [fill-item only]
+
+The fill-item branch moves or splits actual contained items and gives the two
+complete c65450 captions to the common constructor. The empty/full/no-capacity
+branches have independent native predicates and complete messages.
+
+The fill-liquid CONTENTS field is the complete native material state name.
+It may prepend deposited contaminants (including a material owner's personal
+name and possessive), and independently adds "stagnant " and "salt " for water.
+The material describer also has its real "unknown material" branch. Preserve
+all of this field through $announcement-substance; do not split it into words.
+
+heat-liquid
+-----------
+  The CONTENTS is hot enough already.
+  You heat the CONTENTS.
+  You heat the CONTENTS to no effect.
+
+empty-item / remove-empty-item
+------------------------------
+  You empty ITEM.
+  You drop ITEM.
+  You empty the ITEM.
+  You take out the ITEM.
+  You take off ITEM.
+
+Fish inventory caption provenance
+--------------------------------
+The existing actual Ghidra source in
+  ../announcement-combat-native/reference-a82c10.c
+contains the common native item-type constructor for this same configured PE.
+case 0x31 (FISH) and case 0x32 (FISH_RAW) are complete sources. They select:
+  optional "rotten "
+  "raw " for FISH_RAW
+  generic "fish" when race is absent, otherwise caste-name with RAW-name fallback
+  sex==0: ", " + byte 0x0c (female)
+  sex==1: ", " + byte 0x0b (male)
+  other sex: no suffix
+  quantity >1: " [" + decimal quantity + "]"
+The exact sex append instructions are reference a870d5..a870fa; the shared
+quantity append instructions are a88077..a880a1. The count belongs to the item
+caption, before the consume producer's final '.', not to the report's repeat
+field. The c65450 caller additionally retains the complete item's designation,
+quality and wear marks. Its actual C is retained alongside a82c10 above.
+
+Translation path and the screenshot's missing fish
+-------------------------------------------------
+$announcement-item -> translate_item_caption_grammar -> native_text_to_utf8
+ -> ::items -> %item_designation:with_number -> fish/fish_raw plus $number.
+fish.toml and fish_raw.toml already contain caste-only, F/M and Unicode sex
+productions; their caste namespace already supplies sole -> 鳎鱼.
+item_number_suffix preserves the native numeric suffix. item_designation.h
+preserves native 0x0b/0x0c while unwrapping marked items. Inventory's native
+fish parser likewise owns sex/count together, so no fish-specific word rule or
+bare-article consumption variant is needed.
+
+The announcement display-source normalizer had used C isspace() for its rich
+text append step. C treats the native sex bytes as vertical-tab/form-feed, so
+this step changed the complete fish item into "sole, [9]" before the typed
+parser saw it. The shared normalizer now uses native_prose_space(), preserving
+both sex glyphs while still folding space/tab/CR/LF. The common fix applies to
+all item species, sexes, counts and designation wrappers in these records.
+
+Data ownership
+--------------
+All existing native productions continue to use their existing typed rules.
+The consumption source manifest also retains the complete literal
+  You just can't fit any more. -> 你实在吃喝不下更多了。
+The adventure catalog uses the exact existing ui-messages.tsv translation,
+with its source address in adventure-announcement-sources.tsv. No image-derived English production was
+added to the grammar. No game process, desktop, tests or deployment were run
+by this extraction work; game display after the shared change is unobserved.
+
+Reproduction
+------------
+Use the workspace's fixed Python to run tools/extract_adventure_consumption_sources.py.
+Import each configured PE into a separate Ghidra temporary project with
+-noanalysis -scriptPath D:/workspace/dfcn/tools and post-script
+DecompileAdventureConsumption.java SOURCE_DIRECTORY reference|classic.
+The script consumes the retained function extents, instruction boundaries,
+supplier entries, branches and literals without launching the game.
+An independent application.settingsdir avoids the machine's existing OSGi
+cache startup problem. Generated analysis caches are not source material.

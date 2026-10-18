@@ -46,7 +46,8 @@ void Overlay::append_fortress_location_matches(std::vector<std::string> &rows,
     };
     const auto detail_identity = [&](const std::string &source) -> std::optional<std::string> {
         if (contains_cjk_utf8(source)) return native_text_to_utf8(source);
-        auto target = translate_legends_name(source, true);
+        auto target = translate_religion_reference(source);
+        if (!target) target = translate_legends_name(source, true);
         if (!target) target = translate_legends_name(source, false);
         if (!target) target = translate_procedural_fragment(source, false, false, {},
             ProceduralFragmentContext::generated_name);
@@ -352,7 +353,8 @@ void Overlay::append_fortress_location_matches(std::vector<std::string> &rows,
         if (contains_cjk_utf8(source)) return native_text_to_utf8(source);
         // Deities can be English generated titles or native figure names.
         // Keep the complete identity, including its article and epithet.
-        auto name = translate_legends_name(source, true);
+        auto name = translate_religion_reference(source);
+        if (!name) name = translate_legends_name(source, true);
         if (!name) name = translate_legends_name(source, false);
         if (!name) name = translate_procedural_fragment(source, false, false, {},
             ProceduralFragmentContext::generated_name);

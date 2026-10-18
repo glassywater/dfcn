@@ -1,0 +1,227 @@
+# Native +d8 source productions reconstructed from the actual reference Ghidra C and native-switches.tsv; not translated output or a game-display result.
+# Function RVAs below are reference image RVAs. Corresponding classic roots are bound by native-rtti-dispatch.tsv/native-rtti.tsv; both editions' C and switches retain the same productions.
+# HEAD/TAIL and named uppercase fields are source grammar nonterminals. Rows marked append are appended in native order; independent optional rows compose, rather than replacing preceding rows.
+# DATE is the shared history-date helper (year +08, tick +0c), including all season/default paths. REASONS is the shared ordered primary reason/circumstance helper; its complete branches remain in reference-history-reason.c/native-switches.tsv.
+# Figure/entity/site/artifact/region/underground/building leaves retain their native helper's missing-object and name provenance behavior. Empty or invalid IDs do not authorize a guessed proper name.
+type	function	condition	source_production	typed_fields
+95	0xb88790	HEAD; claim +38 == 0 or 1	the making of {ARTIFACT}	ARTIFACT=artifact +28 via history-artifact
+95	0xb88790	HEAD; claim +38 == 2	the claiming of {ARTIFACT}	ARTIFACT=artifact +28
+95	0xb88790	HEAD; claim +38 == 3	the sanctification of {ARTIFACT}	ARTIFACT=artifact +28
+95	0xb88790	HEAD; claim +38 outside 0..3	{ARTIFACT}	ARTIFACT=artifact +28; no action noun
+95	0xb88790	append; claim==0 and assignment +34 == -1	 into an official symbol	assignment=-1
+95	0xb88790	append; claim==0 and assignment!=-1 and entity/assignment/office lookup missing	 into a symbol of 	entity +30; assignment +34; native keeps incomplete connector
+95	0xb88790	append; claim==0; position present; position.count +2d8 == 1	 into a symbol of the {OFFICE}{OFFICE_SITE}	OFFICE=position.name +98; OFFICE_SITE follows religious-office helper
+95	0xb88790	append; claim==0; position present; position.count !=1	 into a symbol of a {OFFICE}{OFFICE_SITE}	OFFICE may be empty; OFFICE_SITE independent
+95	0xb88790	OFFICE_SITE; position.land_holder +2c8 >0 and first matching assignment-site link resolves	 of {SITE}	SITE=first entity.site_link flags&0x200 and assignment matches; no later match after missing site
+95	0xb88790	OFFICE_SITE; land_holder<=0 or link/site missing		no site suffix
+95	0xb88790	append; claim==1	 into a family heirloom	literal
+95	0xb88790	append owner; histfig +2c != -1	 by {HF}{HF}	HF=histfig +2c; same descriptor twice with no separator; native duplicate
+95	0xb88790	append owner; histfig==-1 and entity +30 !=-1	 by {ENTITY}{UNKNOWN_HF}	ENTITY=entity +30; unconditional history-figure(-1) appends invalid duplicate tail
+95	0xb88790	append owner; histfig==-1 and entity==-1	{UNKNOWN_HF}	history-figure(-1) unconditionally; no by connector
+95	0xb88790	append all paths	{REASONS} in {DATE}	REASONS=reason +44/data +48 then circumstance +3c/data +40
+96	0xb88300	HEAD; transfer_flags +4c bit1 clear	the offering of {ARTIFACT}	ARTIFACT +28
+96	0xb88300	HEAD; transfer_flags bit1 set	the inheritance of {ARTIFACT}	ARTIFACT +28
+96	0xb88300	append giver; giver_hf +2c!=-1; inheritance/offering respectively	 from {HF_GIVER}{GIVER_ENTITY} |  by {HF_GIVER}{GIVER_ENTITY}	HF_GIVER +2c; GIVER_ENTITY=' of '+entity +30 iff entity!=-1
+96	0xb88300	append giver; giver_hf==-1 and giver_entity +30!=-1	 from {ENTITY_GIVER} |  by {ENTITY_GIVER}	first arm inheritance; second offering
+96	0xb88300	append giver; both giver IDs==-1		no giver field/connector
+96	0xb88300	append receiver; receiver_hf +34!=-1	 by {HF_RECEIVER}{RECEIVER_ENTITY} |  to {HF_RECEIVER}{RECEIVER_ENTITY}	first inheritance; second offering; RECEIVER_ENTITY=' of '+entity +38 iff entity!=-1
+96	0xb88300	append receiver; receiver_hf==-1 and receiver_entity +38!=-1	 by {ENTITY_RECEIVER} |  to {ENTITY_RECEIVER}	first inheritance; second offering
+96	0xb88300	append receiver; both receiver IDs==-1		no receiver field/connector
+96	0xb88300	append all paths	{REASONS} in {DATE}	reason +44/data +48; circumstance +3c/data +40
+97	0xb6a250	action +28==0	the viewing of {ARTIFACT}{BUILDING} in {SITE} by {HF} in {DATE}	ARTIFACT +2c; HF +30; SITE +34; BUILDING=' in '+building +38 iff!=-1
+97	0xb6a250	action +28==1	the inquiry after {ARTIFACT}{BUILDING} in {SITE} by {HF} in {DATE}	same typed fields as action0
+97	0xb6a250	action +28 outside0..1	the  {ARTIFACT}{BUILDING} in {SITE} by {HF} in {DATE}	empty action; native two spaces; all references retained
+98	0xb80160	HEAD all	the recruitment of {UNIT_PREFIX}{UNIT_TYPE} into {ENTITY} by {HF} in {LOCATION} in {DATE}	UNIT_TYPE=battle-description(unit_type +30); ENTITY +28; HF +2c; UNIT_PREFIX=prefix+' ' iff prefix nonempty
+98	0xb80160	LOCATION; site +34!=-1 and region +38==-1 and layer +3c==-1	{SITE}	SITE +34
+98	0xb80160	LOCATION; site!=-1 and region!=-1 and layer==-1	{SITE}{REGION}	two independent helper outputs; no separator
+98	0xb80160	LOCATION; site!=-1 and layer!=-1	{SITE}{UNDERGROUND}	UNDERGROUND=layer +3c with region +38 context; no separator
+98	0xb80160	LOCATION; site==-1 and region!=-1 and layer==-1	{REGION}	REGION +38
+98	0xb80160	LOCATION; site==-1 and layer!=-1	{UNDERGROUND}	UNDERGROUND +3c; region may be -1
+98	0xb80160	LOCATION; all three IDs==-1	the wilds	literal
+99	0xb7feb0	HEAD; relationship +38==relationship +3c (any equal enum, not only27)	the false friendship of {HF1} and {HF2} in {LOCATION} in {DATE}	HF1 +28; HF2 +30; identity IDs +2c/+34 unused by +d8
+99	0xb7feb0	HEAD; relationship values differ and first +38==27	the false friendship of {HF1} and {HF2} in {LOCATION} in {DATE}	same HF fields
+99	0xb7feb0	HEAD; relationship values differ and first +38!=27	the friendship of {HF1} and {HF2} in {LOCATION} in {DATE}	same HF fields
+99	0xb7feb0	LOCATION; site +40!=-1; regional selector independently active	{SITE}{AREA}	SITE +40; AREA=REGION +44 if layer +48==-1 and region!=-1; otherwise UNDERGROUND +48 if!=-1; no separator
+99	0xb7feb0	LOCATION; site==-1 and regional selector active	{AREA}	AREA uses same region/layer priority
+99	0xb7feb0	LOCATION; site!=-1 and region==-1 and layer==-1	{SITE}	SITE +40
+99	0xb7feb0	LOCATION; site==region==layer==-1	the wilds	literal
+100	0xb8a150	copy_flags +44 bit1 clear	the acquisition of a copy of {ARTIFACT} from {SOURCE_BUILDING} in {SOURCE_SITE} of {SOURCE_ENTITY} by {DEST_ENTITY} for {DEST_BUILDING} in {DEST_SITE} in {DATE}	ARTIFACT +28; source_entity +30/site +38/building +40; destination_entity +2c/site +34/building +3c; no field is conditionally skipped
+100	0xb8a150	copy_flags +44 bit1 set	the acquisition of a copy of the original {ARTIFACT} from {SOURCE_BUILDING} in {SOURCE_SITE} of {SOURCE_ENTITY} by {DEST_ENTITY} for {DEST_BUILDING} in {DEST_SITE} in {DATE}	same fields; unknown objects remain helper leaves
+101	0xb65ae0	all	the infiltration of {SITE} by {ENTITY} in {DATE}	SITE +34; attacker_entity +28
+102	0xb67b00	all	the detection of the forces of {LEAVER_ENTITY} leaving {SITE} by {SPOTTER} of {SITE_ENTITY} in {DATE}	SPOTTER +28; leaver_entity +2c; site_entity +30; SITE +34
+103	0xb65940	all	the search of {SITE} by the forces of {ENTITY} in {DATE}	ENTITY +28; SITE +2c; result enum unused by title
+104	0xb66710	rescued vector +40/+48 count0	the freeing of somebody{SOURCE} by {RESCUER} in {DATE}	SOURCE=' from '+SITE +38 iff!=-1
+104	0xb66710	rescued count1	the freeing of {HF1}{SOURCE} by {RESCUER} in {DATE}	HF1=rescued[0]
+104	0xb66710	rescued count2	the freeing of {HF1} and {HF2}{SOURCE} by {RESCUER} in {DATE}	rescued[0..1]
+104	0xb66710	rescued count>2	the freeing of {HF1} and others{SOURCE} by {RESCUER} in {DATE}	only rescued[0] printed; count suffix not all names
+104	0xb66710	RESCUER; freeing_hf +2c!=-1; freeing_civ +28==-1	{FREEING_HF}	HF helper
+104	0xb66710	RESCUER; freeing_hf!=-1 and freeing_civ!=-1	{FREEING_HF} and the forces of {FREEING_ENTITY}	entity helper
+104	0xb66710	RESCUER; freeing_hf==-1 and freeing_civ!=-1	the forces of {FREEING_ENTITY}	entity helper
+104	0xb66710	RESCUER; both freeing IDs==-1		by connector still remains
+105	0xb6e1e0	histfig vector +28/+30 empty		immediate return; no head/location/date
+105	0xb6e1e0	HEAD; action +40==0	the carousal of	literal
+105	0xb6e1e0	HEAD; action1..5	the purchased of {QUALITY} equipment by	QUALITY 1=well-crafted;2=finely-crafted;3=superior quality;4=exceptional;5=masterwork
+105	0xb6e1e0	HEAD; action6	the horrible experiments of	literal
+105	0xb6e1e0	HEAD; action7 or8	the failed diplomacy of	native-switches 0xb6e272 has selectors7 and8 both target0xb6e274; C omits case8 alias
+105	0xb6e1e0	HEAD; unsigned action>8		no action text
+105	0xb6e1e0	MAIN; nonempty histfig vector	{HEAD} {PARTICIPANTS}{LOCATION} in {DATE}	PARTICIPANTS selection and LOCATION rows below
+105	0xb6e1e0	PARTICIPANTS; context.histfig_id +20 occurs in vector; count1	{CONTEXT_HF}	context figure first
+105	0xb6e1e0	PARTICIPANTS; context figure occurs; count2	{CONTEXT_HF} and {OTHER_HF}	OTHER_HF=vector[0] unless it is context figure, then vector[1]
+105	0xb6e1e0	PARTICIPANTS; context figure occurs; count>2	{CONTEXT_HF} and others	remaining members abbreviated
+105	0xb6e1e0	PARTICIPANTS; context figure absent or context ID==-1	{HF_LIST}	all vector elements; separators ', ' before final ' and '; no Oxford comma
+105	0xb6e1e0	LOCATION; site +48!=-1 or region +50!=-1 or layer +54!=-1; action<=8	 in {PLACE}	PLACE: site if present, with BUILDING +4c+' in ' prefix iff!=-1; else underground if layer present, else region
+105	0xb6e1e0	LOCATION; same presence condition; unsigned action>8	  {PLACE}	two native spaces; no 'in' predicate
+105	0xb6e1e0	LOCATION; site==region==layer==-1		location omitted; inner unknown-lands branch unreachable under outer guard
+106	0xb65680	all	the rampage of the forces of {ENTITY} throughout {SITE} in {DATE}	ENTITY +28; SITE +2c
+107	0xb657d0	all	the fleeing of {ENTITY} from {SITE} in {DATE}	ENTITY +28; SITE +2c
+108	0xb6cb80	HEAD; both tacticians +28/+2c==-1	a tactical situation	no actor
+108	0xb6cb80	HEAD; exactly one tactician!=-1	the tactics of {HF}	choose available +28 or +2c
+108	0xb6cb80	HEAD; both tacticians!=-1	the tactical contest between {HF1} and {HF2}	HF1 +28; HF2 +2c
+108	0xb6cb80	append all	 in {PLACE} in {DATE}	PLACE=site +3c, with optional building +40+' in '; otherwise layer +48 if present, region +44 if present, otherwise 'unknown lands'
+109	0xb6d700	all	the clash between {SIDE1} and {SIDE2} in {PLACE} in {DATE}	PLACE=site +98 with building +9c+' in ' iff present; else layer +a4, region +a0, or 'unknown lands'
+109	0xb6d700	SIDE1; squad +48!=-1; histfig vector +30/+38 count>=2; squad found	{SQUAD_NAME}	English language_name at squad+8; not squad.alias
+109	0xb6d700	SIDE1; same squad/count condition; squad missing		no fallback to first HF/creature
+109	0xb6d700	SIDE1; squad==-1 or count<2; histfig vector nonempty	{HF1}	only vector[0]
+109	0xb6d700	SIDE1; squad==-1 or vector count<2; histfig vector empty; number +58==1	a lone {ANIMATED}{CREATURE}	ANIMATED='animated ' iff interaction +50/effect +54 resolves virtual type0; CREATURE=race +4c singular
+109	0xb6d700	SIDE1; same empty vector condition; number!=1	{NUMBER} {ANIMATED}{CREATURE}	NUMBER=52e360(number +58); creature plural iff number>1
+109	0xb6d700	SIDE2; squad +80!=-1; histfig vector +68/+70 count>=2; squad found	{SQUAD_NAME}	English language_name at squad+8; not squad.alias
+109	0xb6d700	SIDE2; same squad/count condition; squad missing		no replacement side
+109	0xb6d700	SIDE2; squad==-1 or count<2; histfig vector nonempty	{HF1}	only vector[0]
+109	0xb6d700	SIDE2; squad==-1 or vector count<2; empty vector; number +90==1	a single {ANIMATED}{CREATURE}	ANIMATED from interaction +88/effect +8c; CREATURE=race +84 singular
+109	0xb6d700	SIDE2; same empty vector condition; number!=1	{NUMBER} {ANIMATED}{CREATURE}	NUMBER=52e360(number +90); creature plural iff number>1
+110	0xb676f0	site_civ +30 == defender_civ +2c	the surrender of {SITE} by {DEFENDER} to {ATTACKER} in {DATE}	SITE +34; DEFENDER +2c; ATTACKER +28
+110	0xb676f0	site_civ != defender_civ	the surrender of {SITE} by {DEFENDER} of {SITE_ENTITY} to {ATTACKER} in {DATE}	SITE_ENTITY +30
+111	0xb80080	site +30!=-1	the expulsion of {HF} from {SITE} by {ENTITY} in {DATE}	HF +2c; ENTITY +28
+111	0xb80080	site==-1	the expulsion of {HF} by {ENTITY} in {DATE}	no location
+112	0xb85360	MAIN all	the {APPRAISAL}trading of {COMMODITY} from {SOURCE_SITE} to {DEST_SITE} by {HF}{ENTITY} in {DATE}	COMMODITY=production_zone +38/allotment +3c/index +40 helper; HF +28; ENTITY=' of '+entity +2c iff!=-1; sites +30/+34
+112	0xb85360	APPRAISAL; account_shift +44<=-5000	disastrous 	literal with trailing space
+112	0xb85360	APPRAISAL; -4999..-1000	unfavorable 	literal
+112	0xb85360	APPRAISAL; -999..999		no adjective
+112	0xb85360	APPRAISAL; 1000..4999	favorable 	literal
+112	0xb85360	APPRAISAL; >=5000	masterful 	literal
+113	0xb67530	added_flags +30==0x10000	the declaration that {SITE} is a holy city by {ENTITY} in {DATE}	SITE +2c; ENTITY +28
+113	0xb67530	added_flags!=0x10000	 by {ENTITY} in {DATE}	no declaration/site text; exact comparison, not bit test
+114	0xb85030	MAIN all	the {APPRAISAL}gambling of {HF}{LOCATION} in {DATE}	HF +28; LOCATION=' in '+SITE +2c iff!=-1, then ' at '+BUILDING +30 iff!=-1
+114	0xb85030	APPRAISAL; account_after +38 minus account_before +34 <=-5000	disastrous 	signed native subtraction
+114	0xb85030	APPRAISAL; delta -4999..-1000	unfortunate 	literal
+114	0xb85030	APPRAISAL; delta -999..999		no adjective
+114	0xb85030	APPRAISAL; delta 1000..4999	skillful 	literal
+114	0xb85030	APPRAISAL; delta>=5000	masterful 	literal
+114	0xb85030	LOCATION; site==-1		building not printed even if building ID present
+115	0xb7a9f0	entity/honor lookup resolves	the bestowal of the title of {HONOR} in {ENTITY} upon {HF} in {DATE}	HONOR=entity.honor.name +08; entity ID +28; honor ID +30; HF +2c; HONOR may be empty
+115	0xb7a9f0	entity/honor lookup missing	the bestowal of the title of  upon {HF} in {DATE}	title/entity omitted together; surrounding literal connectors remain
+116	0xb7abe0	all	the dissolution of {ENTITY}{REASONS} in {DATE}	ENTITY +28; reason +34/data +38; circumstance +2c/data +30
+117	0xb7ae50	MAIN all	the purchase of {QUALITY} equipment by {ENTITY} in {DATE}	ENTITY +28; QUALITY enum +2c
+117	0xb7ae50	QUALITY0	standard	literal
+117	0xb7ae50	QUALITY1	well-crafted	literal
+117	0xb7ae50	QUALITY2	finely-crafted	literal
+117	0xb7ae50	QUALITY3	superior quality	literal
+117	0xb7ae50	QUALITY4	exceptional	literal
+117	0xb7ae50	QUALITY5	masterwork	literal
+117	0xb7ae50	QUALITY6	artifact	literal
+117	0xb7ae50	QUALITY unsigned outside0..6		two native surrounding spaces remain
+118	0xb7b0e0	MAIN all	the addition of {FEATURE} to {BUILDING} in {SITE} by {HF} in {DATE}	BUILDING +2c with SITE +28; HF +30; building kind +34; feature +38
+118	0xb7b0e0	FEATURE; kind +34==12 and feature +38==1	a dungeon	literal
+118	0xb7b0e0	FEATURE; kind==12 and feature==2	improved fortifications	literal
+118	0xb7b0e0	FEATURE; kind==12 and feature==4	a gated courtyard	literal
+118	0xb7b0e0	FEATURE; kind==12 and feature==8	a feast hall	literal
+118	0xb7b0e0	FEATURE; kind!=12 or feature outside1/2/4/8		retains 'the addition of  to'; no invented feature
+119	0xb7b400	MAIN all	the {ACTION} of {ABSTRACT_BUILDING} in {SITE} by {OWNER} in {DATE}	ABSTRACT_BUILDING +2c; SITE +28; OWNER=HF +30 if!=-1 else ENTITY +34
+119	0xb7b400	ACTION +38==0	purchase	literal
+119	0xb7b400	ACTION==1	inheritance	literal
+119	0xb7b400	ACTION==2	rebuilding	literal
+119	0xb7b400	ACTION outside0..2		retains 'the  of'; all object fields remain
+120	0xb7b6a0	HEAD all	the sermon of {HF} at {SITE} in {DATE} 	HF +28; SITE +2c; literal trailing space before optional action
+120	0xb7b6a0	append; action SHORT +30==11	setting {ENTITY1} against {ENTITY2}	entity references supplied by event; native action follows date
+120	0xb7b6a0	append; action==12	urging love between {ENTITY1} and {ENTITY2}	same entity fields
+120	0xb7b6a0	append; action outside11/12		no action/entity tail
+121	0xb7bfb0	HEAD all	the persecution of {TARGET_ENTITY}{PERSECUTOR} in {SITE} in {DATE}	TARGET_ENTITY +30; SITE +34
+121	0xb7bfb0	PERSECUTOR; HF +28!=-1	 by {HF} of {ENTITY}	ENTITY +2c always called even if -1; missing-entity output preserved
+121	0xb7bfb0	PERSECUTOR; HF==-1 and entity!=-1	 by {ENTITY}	entity only
+121	0xb7bfb0	PERSECUTOR; both IDs==-1		no by connector
+122	0xb7c1d0	entity parent +30==-1	the breach of {UNDERGROUND} by {ENTITY} at {SITE} in {DATE}	UNDERGROUND layer field; ENTITY; SITE; native helpers retain unknown fallback
+122	0xb7c1d0	entity parent +30!=-1	the breach of {UNDERGROUND} by {ENTITY} of {PARENT_ENTITY} at {SITE} in {DATE}	PARENT_ENTITY +30
+123	0xb7c5e0	ally vector +30/+38 count0	the alliance between {ENTITY} and  in {DATE}	ENTITY +28; empty second arm, connector retained
+123	0xb7c5e0	ally count1	the alliance between {ENTITY} and {ALLY1} in {DATE}	ALLY1=vector[0]
+123	0xb7c5e0	ally count2	the alliance between {ENTITY} and {ALLY1} and {ALLY2} in {DATE}	vector[0..1]; no commas
+123	0xb7c5e0	ally count>2	the alliance between {ENTITY} and several groups in {DATE}	allies abbreviated by literal, no ally names
+124	0xb7c8b0	MAIN all	the ransom of {RANSOMED}{PAYER} by {RANSOMER} in {DATE}	RANSOMED +28; RANSOMER +2c
+124	0xb7c8b0	PAYER; payer_hf +34!=-1; payer_entity +30==-1	 to {HF}	HF +34
+124	0xb7c8b0	PAYER; both payer IDs!=-1	 to {HF} of {ENTITY}	ENTITY +30
+124	0xb7c8b0	PAYER; payer_hf==-1 and payer_entity!=-1	 to {ENTITY}	entity helper
+124	0xb7c8b0	PAYER; both IDs==-1		no to connector
+125	0xb7cb20	all	the sale of {ENSLAVED} to {ENTITY} in {SITE} by {SELLER} in {DATE}	ENSLAVED +28; SELLER +2c; ENTITY +30; SITE +34
+126	0xb7cd50	MAIN all	the sabotage of the activities of {TARGET}{SITE} by {SABOTEUR} in {DATE}	SABOTEUR +28; TARGET=HF +2c if!=-1 else entity +30 if!=-1 else empty; SITE=' at '+site +34 iff!=-1
+126	0xb7cd50	TARGET; both target IDs==-1		fixed 'activities of ' remains; actor not invented
+127	0xb79fb0	all	the overthrow of {ENTITY} by {HF} in {DATE}	ENTITY +34; HF +2c (successor field), not narrative instigator +30; no conspirator/outcome tail
+128	0x2aa590	HEAD all	the corruption of {TARGET} by {CORRUPTOR} in {LOCATION} in {DATE}	TARGET +30; CORRUPTOR +28; identity/support/intrigue data unused by +d8
+128	0x2aa590	LOCATION; site +40!=-1 and region +44==-1 and layer +48==-1	{SITE}	SITE +40
+128	0x2aa590	LOCATION; site!=-1 and region!=-1 and layer==-1	{SITE}{REGION}	independent helpers; no separator
+128	0x2aa590	LOCATION; site!=-1 and layer!=-1	{SITE}{UNDERGROUND}	layer +48 with region +44; no separator
+128	0x2aa590	LOCATION; site==-1 and region!=-1 and layer==-1	{REGION}	region helper
+128	0x2aa590	LOCATION; site==-1 and layer!=-1	{UNDERGROUND}	layer helper
+128	0x2aa590	LOCATION; all three IDs==-1	the wilds	literal
+129	0x2aae00	HEAD all	the failed attempt by {CORRUPTOR} to corrupt {TARGET} in {LOCATION} in {DATE}	CORRUPTOR +28; TARGET +30; identity/employer/intrigue/support unused
+129	0x2aae00	LOCATION; site +38!=-1 and region +3c==-1 and layer +40==-1	{SITE}	site helper
+129	0x2aae00	LOCATION; site!=-1 and region!=-1 and layer==-1	{SITE}{REGION}	independent helpers; no separator
+129	0x2aae00	LOCATION; site!=-1 and layer!=-1	{SITE}{UNDERGROUND}	layer +40 with region +3c; no separator
+129	0x2aae00	LOCATION; site==-1 and region!=-1 and layer==-1	{REGION}	region helper
+129	0x2aae00	LOCATION; site==-1 and layer!=-1	{UNDERGROUND}	layer helper
+129	0x2aae00	LOCATION; all three IDs==-1	the wilds	literal
+130	0xb7e640	HEAD; plot_flags +7c bit1 clear	the conviction of {HF} for {CRIME}	HF +28; CRIME enum +6c
+130	0xb7e640	HEAD; plot_flags bit1 set	the wrongful conviction of {HF} for {CRIME}	same actor/crime
+130	0xb7e640	CRIME0	production order violation	literal
+130	0xb7e640	CRIME1	export prohibition violation	literal
+130	0xb7e640	CRIME2	job order violation	literal
+130	0xb7e640	CRIME3	conspiracy to slow labor	literal
+130	0xb7e640	CRIME4	murder	literal
+130	0xb7e640	CRIME5	disorderly conduct	literal
+130	0xb7e640	CRIME6	building destruction	literal
+130	0xb7e640	CRIME7	vandalism	literal
+130	0xb7e640	CRIME8	theft	literal
+130	0xb7e640	CRIME9	robbery	literal
+130	0xb7e640	CRIME10	blood-drinking	literal
+130	0xb7e640	CRIME11	embezzlement	literal
+130	0xb7e640	CRIME12	attempted murder	literal
+130	0xb7e640	CRIME13	kidnapping	literal
+130	0xb7e640	CRIME14	attempted kidnapping	literal
+130	0xb7e640	CRIME15	attempted theft	literal
+130	0xb7e640	CRIME16	treason	literal
+130	0xb7e640	CRIME17	espionage	literal
+130	0xb7e640	CRIME18	bribery	literal
+130	0xb7e640	CRIME outside0..18		' for ' remains, no crime noun
+130	0xb7e640	append; convicter +2c!=-1	 by {ENTITY}	ENTITY +2c
+130	0xb7e640	append; corrupt +50!=-1; entity present	 and the corrupt {HF}	HF +50
+130	0xb7e640	append; corrupt!=-1; entity absent	 by the corrupt {HF}	HF +50
+130	0xb7e640	append; fooled +58!=-1 and framer +5c!=-1	 after {FRAMER} fooled {FOOLED} with fabricated evidence	independent of corrupt/convicter
+130	0xb7e640	append; behest +54!=-1 and differs from framer +5c and corrupt +50; framer!=-1	 at the behest of {HF}	HF +54
+130	0xb7e640	append; same behest distinctness; framer==-1	 through the machinations of {HF}	HF +54
+130	0xb7e640	append all paths	 in {DATE}	no punishment/contact/coconspirator details in +d8
+131	0xb7d740	HEAD; behest +30==-1 or equals framer +38	the failed attempt by {FRAMER} to frame {TARGET} for {CRIME}	FRAMER +38; TARGET +28; CRIME enum +3c
+131	0xb7d740	HEAD; behest!=-1 and differs from framer	the failed attempt by {FRAMER} at the behest of {BEHEST} to frame {TARGET} for {CRIME}	BEHEST +30
+131	0xb7d740	CRIME0	production order violation	native-switches selector0
+131	0xb7d740	CRIME1	export prohibition violation	selector1
+131	0xb7d740	CRIME2	job order violation	selector2
+131	0xb7d740	CRIME3	conspiracy to slow labor	selector3
+131	0xb7d740	CRIME4	murder	selector4
+131	0xb7d740	CRIME5	disorderly conduct	selector5
+131	0xb7d740	CRIME6	building destruction	selector6
+131	0xb7d740	CRIME7	vandalism	selector7
+131	0xb7d740	CRIME8	theft	selector8
+131	0xb7d740	CRIME9	robbery	selector9
+131	0xb7d740	CRIME10	blood-drinking	selector10
+131	0xb7d740	CRIME11	embezzlement	selector11
+131	0xb7d740	CRIME12	attempted murder	selector12
+131	0xb7d740	CRIME13	kidnapping	selector13
+131	0xb7d740	CRIME14	attempted kidnapping	selector14
+131	0xb7d740	CRIME15	attempted theft	selector15
+131	0xb7d740	CRIME16	treason	selector16
+131	0xb7d740	CRIME17	espionage	selector17
+131	0xb7d740	CRIME18	bribery	selector18
+131	0xb7d740	CRIME unsigned outside0..18		' for ' remains before by-fooling tail
+131	0xb7d740	append all paths	 by fooling {FOOLED}{ENTITY} with fabricated evidence in {DATE}	FOOLED +34 even -1; ENTITY=' and '+entity +2c iff!=-1
+132	0xb7d2f0	HEAD all	the arrest and interrogation of {HF}	HF +28
+132	0xb7d2f0	append; arresting_entity +2c!=-1	 by {ENTITY}	ENTITY +2c
+132	0xb7d2f0	append; interrogator +30!=-1; arresting entity present	 and {INTERROGATOR}	HF +30
+132	0xb7d2f0	append; interrogator!=-1; arresting entity absent	 by {INTERROGATOR}	HF +30
+132	0xb7d2f0	append all paths	 in {DATE}	no implicated/released/emotion/punishment words in +d8

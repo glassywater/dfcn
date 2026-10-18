@@ -55,8 +55,8 @@ void Overlay::append_native_rendered_paragraphs(std::vector<std::string> &screen
     std::stable_sort(paragraphs.begin(), paragraphs.end(), [](const auto &a, const auto &b) {
         return a.sequence > b.sequence;
     });
-    const std::array batches{captured_native_drawn_text_rows(false),
-        captured_native_drawn_text_rows(true)};
+    const std::array batches{captured_native_drawn_text_view(false),
+        captured_native_drawn_text_view(true)};
     for (const auto &paragraph : paragraphs) {
         if (!paragraph.render || paragraph.source.empty() || paragraph.wrapped_lines.empty()) continue;
         const auto &render = *paragraph.render;

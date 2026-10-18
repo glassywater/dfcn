@@ -1,5 +1,8 @@
 // The performance chooser's enum owns each caption's semantic kind. Borrow
 // the original list_name before print_name is shortened for the native view.
+static bool capture_native_history_subject_title_fields(const void *event,
+    const void *context, NativeHistoryEventData &title);
+
 static std::optional<NativePerformanceChoice> capture_native_performance_choice(
         uintptr_t caption_address) {
     const uintptr_t base = native_history_profile_base();
@@ -34,6 +37,45 @@ static std::optional<NativePerformanceChoice> capture_native_performance_choice(
             !native_history_copy_string(entry + 0x28, result.source) ||
             result.type < 0 || result.type > 39 || result.source.empty())
         return std::nullopt;
+    if (result.type == 12) {
+        // The actual menu event ID establishes title fields and selectors,
+        // without splitting their generated names at prose connectors.
+        try {
+            uintptr_t address = 0;
+            int32_t native_type = -1;
+            if (result.id >= 0 &&
+                    native_history_find_structure_id(native_history_global(0x24f9cb8),
+                        0x20, result.id, address) && address &&
+                    capture_native_history_event_identity(reinterpret_cast<void *>(address), native_type)) {
+                alignas(16) std::array<unsigned char, 0xc8> context{};
+                initialize_native_history_context(context.data());
+                // The performance constructor supplies a neutral context,
+                // unlike Legends' English-gloss flag in the same ABI.
+                std::fill_n(context.begin(), sizeof(uint32_t), 0);
+                auto snapshot = snapshot_native_history_event_header(
+                    reinterpret_cast<void *>(address), context.data());
+                if (snapshot && !capture_native_history_subject_title_fields(
+                        reinterpret_cast<void *>(address), context.data(), *snapshot))
+                    snapshot.reset();
+                if (snapshot && snapshot->id == result.id &&
+                        !snapshot->fields.contains("snapshot.incomplete")) {
+                    if (populate_native_history_subjects(*snapshot) &&
+                            capture_native_history_subject_item_labels(*snapshot) &&
+                            native_history_tree_within_limits(*snapshot)) {
+                        auto document = std::make_shared<NativeHistoryDocument>();
+                        document->owner = entry;
+                        document->event = std::move(*snapshot);
+                        document->native_source = result.source;
+                        result.story_event = std::move(document);
+                    }
+                }
+            }
+        } catch (...) {
+            // Optional typed capture never changes the native caption. The
+            // existing complete-title parser remains available on failure.
+        }
+        return result;
+    }
     // STORY_SITE, STORY_HF, STORY_ENTITY and STORY_SUBREGION use separate
     // native enum values despite sharing the same display placeholder.
     if (result.type != 9 || result.source != "Unknown") return result;

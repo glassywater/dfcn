@@ -1,0 +1,145 @@
+Adventure story chooser: historical entity introduction, native source grammar
+
+Source images are the offline PE files configured by data/runtime/native-pe-images.json:
+  reference PE:6a70a6d9:02711000
+  classic   PE:6a70b91c:0270a000
+Actual C output is produced by Ghidra 12.1.4. The accompanying .asm files retain
+original native instructions, and the TSVs retain call operands, literal
+addresses, conditional branches and actual indexed jump destinations. These
+are extracted source material, not game observations or regression artifacts.
+
+Entry and display consumer
+  reference chooser 0x870260; classic 0x86dae0.
+  The entity branch initializes a native history context with all focus IDs -1,
+  copies the selected option's +0x68 entity ID to context +0x1c, and calls
+  history::describe(global history, context, brief=true, output string).
+  reference call 0x8712c8; consumer 0x8712e4 -> 0x858550.
+  Output begins with [C:6:0:1]. history::describe builds the introduction,
+  confidence paragraph, and [B], then returns before the event/relation loops
+  because brief=true. The complete nonbrief function is retained as source,
+  including its other focus types, military history and relationship prose.
+  reference history::describe 0xb8eeb0..0xb9241c (native extent 0xb92634).
+  classic   history::describe 0xb8bef0..0xb8f45c (native extent 0xb8f674).
+
+Entity introduction, in native output order
+  1. Entity-name helper, then literal " was a".
+     If entity flags +0x9c bit 0x400 is clear, append " " and singular species
+     using entity +0x98 WORD, r9b=1, caste=-1, plural=false.
+     Invalid race IDs produce "creature"; otherwise RAW adjective selection
+     uses caste-specific +0x60 with fallback to creature RAW +0x60.
+  2. Entity type +0 WORD:
+       0:  " civilization of "
+       5:  " religion of "
+       4:  " bandit gang from "
+       6:  " " + military adjective + " " + military noun + " from "
+       8:  " performance troupe from "
+       7:  " collection of outcasts from "
+       9:  " merchant company from "
+      10:  " " + guild profession + " guild from "
+      all other values: " group from "
+  3. World language-name formatter, mode 2.
+  4. Military religion and specialization clauses, or religion deity/force
+     clauses, as below.
+  5. ".  " + knowledge confidence paragraph + "[B]".
+
+Military adjective and noun, type 6
+  entity +0xd30 <= 10: "mercenary".
+  Otherwise +0xd6c > 10: "versatile mercenary".
+  Otherwise: "shadowy military".
+  Nonempty pointer vector +0x1330..+0x1338: "order".
+  Otherwise +0xd6c <= 10: "band"; otherwise "company".
+
+Military religious clause
+  Require entity flags +0x9c bit 0x2000000 and nonempty deity ID vector
+  +0xfc8..+0xfd0 (DWORD elements).
+  Scan entity-link pointer vector +0xb8..+0xc0 from the beginning. A link
+  type +0 WORD == 2 whose +4 entity ID resolves to entity type 5 supplies
+  " linked to " plus that religion's name, if its entity +4 ID is not -1.
+  If no such usable religion supplies text:
+    deity count > 1: " devoted to worship".
+    deity count == 1: " devoted to the worship of " + historical figure name.
+  Remember whether this clause was produced to prefix specialization by " and".
+
+Military specialization
+  Require weapon WORD vector +0x148..+0x150 length <= 3, nonempty skill WORD
+  vector +0x1c50..+0x1c58, and (+0xd70 > 10 or +0xd40 > 10).
+  +0xd70 > 10: " dedicated to the mastery of "; else " known for ".
+  Empty weapon vector uses the first skill:
+    99 "wrestling"; 100 "biting"; 101 "striking"; 102 "kicking".
+    Other values add no skill token after the clause prefix.
+  Nonempty weapon vector:
+    if +0xd70 <= 10, prefix "their use of ".
+    Each token is "the " + item_weapon RAW name at +0x68 (singular).
+    Original separators are ", ", " and ", and ", and ".
+
+Guild profession, type 10
+  Scan pointer vector +0xa0..+0xa8 from the beginning for the first record
+  with +0 DWORD == 0. Its +4 WORD is the profession ID.
+  No such record or ID -1: "craft".
+  Otherwise call native profession-title(out1, out2, profession,
+  current-player-race WORD, &scratch, caste=-1, plural=true, capitalize=false),
+  then append out1 only. This is a language RAW output boundary, not a
+  civilization name, squad alias, or a text inferred from spelling.
+  Native profession IDs 0..134 use the full switch retained in profession-title.c.
+  profession 98/99 write "hunting"/"war" to out2 and keep out1 unchanged.
+  profession 102 has no title assignment but follows the generic suffix path,
+  therefore plural=true appends only the literal "s" to its initially empty out1.
+  Other branches include irregular plural forms and child/baby RAW names.
+  Profession 103 CHILD and 104 BABY, with no PROFESSION_NAME override and
+  caste=-1: nonempty creature +0xc0/+0x80 singular names select creature
+  +0xe0/+0xa0 plural names respectively; those selected plural names may be
+  empty. Without a usable singular name the finite fallback is "children" or
+  "babies". This differs from a helper rejecting an empty string.
+  Custom PROFESSION_NAME availability and singular/plural selection are retained
+  separately as profession-raw-title-available.c, profession-raw-title-selection.c
+  and the latter's final creature selector profession-raw-creature-title.c.
+  A permitted explicitly empty output remains empty. Do not replace a selected
+  empty RAW plural by a guessed English fallback.
+
+Religion clauses, type 5
+  Deity count zero: no worship clause.
+  Deity count > 1: " centered around the worship of various beings".
+  Exactly one: resolve historical figure. A failed lookup adds no clause.
+  A resolved figure adds " centered around the worship of " + figure name.
+  Figure flag 2 (bit query at figure +0xc8) adds ", a ", optional RAW species
+  for figure race +2/caste +4 when race != -1, a space, then sex +6:
+    0 "goddess"; 1 "god"; all other values "deity".
+  Nonempty deity sphere WORD vector adds " of " and all sphere names in
+  reverse native order, separated by ", " and final " and ".
+  sphere-name supplies the conditional "the " article and sphere-token supplies
+  the complete 130-entry enum switch (0..129), both retained as actual C.
+  Figure flag 3 adds ", a force" independently of flag 2.
+  force-is-known scans world region pointer vector +0x238..+0x240 backward,
+  finding the last region whose forces DWORD vector +0x250 contains figure
+  +0xe0 ID. The lookup returns an optional index, accepted unless it is -1;
+  this is a membership search, not a stored association value.
+  No matching region: no region suffix.
+  Found region: " which was said to permeate " in global game mode 3;
+  otherwise " which permeates ", followed by region language-name mode 1.
+
+Knowledge/confidence
+  entity-historical-knowledge-tier counts history events whose virtual +0xc0
+  predicate matches entity +4, event +0x18 is positive, and the first byte of
+  event +0x10 data has mask 0x1 set. Tiers by count:
+    0 -> 0, 1..4 -> 1, 5..9 -> 2, 10..49 -> 3, 50..99 -> 4, >=100 -> 5.
+  knowledge-confidence-paragraph:
+    0/other: no text.
+    1: "A few issues still trouble scholars, but the picture is fairly clear.  "
+    2: "Many facts are still unclear to historians.  "
+    3: "It is still shrouded in mystery.  "
+    4: "Its nature is still an intriguing puzzle to the learned.  "
+    5: "Only the barest fragments of this amazing story have been uncovered.  It is one of the great untold tales of our times.  "
+
+Unknown names and dynamic fields
+  Entity-name helper uses entity +0x20 language-name, mode 1; flags bit 2 may
+  add [LPAGE:ENT:id]...[/LPAGE]. Missing entity: "an unknown civilization".
+  Historical-figure-name helper uses the supplied native history context,
+  figure name, identity/speaker references, species and pronoun cases. Its
+  full actual function is retained. Missing figure: "an unknown creature".
+  Plain chooser entity context has zero speaker/identity payload pointers and
+  all figure focus IDs -1, so the normal named figure path applies here.
+  World/region/entity/figure names, adjective RAW strings, weapon RAW strings,
+  and custom profession RAW strings are dynamic native data. Their complete
+  finite formatting branches are in the C; the user's current generated names
+  cannot be enumerated from the PE alone.
+  No custom squad.alias is translated or reinterpreted by this source grammar.

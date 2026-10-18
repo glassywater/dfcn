@@ -113,6 +113,8 @@ struct NativeMissionReturnParty {
     std::string history_prefix;
     bool history_ambiguous = false;
 };
+static std::shared_ptr<const NativeMissionReturnParty>
+native_announcement_log_worker_mission_return(std::string_view complete_source);
 static std::mutex g_native_mission_return_mutex;
 static std::unordered_map<uintptr_t, NativeMissionReturnParty> g_native_mission_return_generated;
 static std::unordered_map<uintptr_t, std::shared_ptr<const NativeHistoryDocument>>
@@ -314,8 +316,24 @@ static void remember_native_mission_return_submission(uintptr_t owner,
     g_native_mission_return_revision.fetch_add(1, std::memory_order_release);
 }
 
+// Freeze exactly the already published report binding. An absent entry is a
+// proved absence; workers must never recover one from a same-text live owner.
+static std::shared_ptr<const NativeMissionReturnParty>
+capture_native_announcement_log_mission_return(std::string_view complete_source) {
+    const std::string key = normalize_utterance(complete_source);
+    std::lock_guard<std::mutex> lock(g_native_mission_return_mutex);
+    const auto found = g_native_mission_return_records.find(key);
+    return found == g_native_mission_return_records.end() ? nullptr
+        : std::make_shared<const NativeMissionReturnParty>(found->second);
+}
+
 static std::optional<NativeMissionReturnParty> native_mission_return_party(
         std::string_view complete_source) {
+    if (native_announcement_log_worker_running()) {
+        const auto party = native_announcement_log_worker_mission_return(complete_source);
+        return !party || party->kind == NativeMissionReturnKind::Ambiguous ? std::nullopt
+            : std::optional<NativeMissionReturnParty>(*party);
+    }
     const std::string key = normalize_utterance(complete_source);
     std::lock_guard<std::mutex> lock(g_native_mission_return_mutex);
     const auto found = g_native_mission_return_records.find(key);
@@ -328,6 +346,14 @@ static std::shared_ptr<const NativeHistoryDocument> native_mission_return_histor
         std::string_view complete_source, std::string_view body_source) {
     const std::string key = normalize_utterance(complete_source);
     const std::string body = normalize_utterance(body_source);
+    if (native_announcement_log_worker_running()) {
+        const auto party = native_announcement_log_worker_mission_return(complete_source);
+        if (!party || party->history_ambiguous || !party->history ||
+                normalize_utterance(party->history->native_source) != body ||
+                normalize_utterance(party->history_prefix + party->history->native_source) != key)
+            return {};
+        return party->history;
+    }
     std::lock_guard<std::mutex> lock(g_native_mission_return_mutex);
     const auto found = g_native_mission_return_records.find(key);
     if (found == g_native_mission_return_records.end()) return {};

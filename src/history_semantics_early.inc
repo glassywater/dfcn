@@ -1012,6 +1012,8 @@ case 43: { // masterpiece_lost includes the complete typed creation title.
     const auto value = [&](const char *key) { return number(prefix + key); };
     std::optional<Pieces> work;
     if (type == -1 && title_mode) work = apply("a masterpiece", {});
+    else if (title_mode && (type < 37 || type > 42))
+        work = story(number("creation_event"));
     else {
         auto maker = subject(NativeHistoryObjectKind::Figure, value("maker"));
         if (!maker) return std::nullopt;

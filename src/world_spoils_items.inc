@@ -12,8 +12,8 @@ void Overlay::append_world_spoils_items(std::vector<std::string> &rows,
     // get_number + creature description at aa3bd0, then one complete draw.
     const uintptr_t item_writer = native_pe_address(base, 0x1d0957);
     const uintptr_t animal_writer = native_pe_address(base, 0x1d0a6c);
-    const std::array batches{captured_native_drawn_text_rows(false),
-        captured_native_drawn_text_rows(true)};
+    const std::array batches{captured_native_drawn_text_view(false),
+        captured_native_drawn_text_view(true)};
     const NativePanelBorders borders(*gps_);
     constexpr uint32_t upper = 1u << 3, lower_half = 1u << 4;
     for (const auto &batch : batches) for (const auto &draw : batch) {

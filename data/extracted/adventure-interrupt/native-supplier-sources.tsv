@@ -1,0 +1,5 @@
+edition	field	source_manifest	source_role	decompiled_source	meaning
+steam	terrain-name	data/extracted/adventure-action-terrain/native-functions.tsv	terrain	data/extracted/adventure-action-terrain/reference-ghidra-decompiled.c	Complete native terrain/material suppliers retained in existing real Ghidra extraction
+steam	direction-name	data/extracted/adventure-action-menu/pe-ghidra-functions.tsv	direction-helper	data/extracted/adventure-action-menu/pe-steam-ghidra-decompiled.c	Complete native direction helper retained in existing real Ghidra extraction
+classic	terrain-name	data/extracted/adventure-action-terrain/native-functions.tsv	terrain	data/extracted/adventure-action-terrain/classic-ghidra-decompiled.c	Complete native terrain/material suppliers retained in existing real Ghidra extraction
+classic	direction-name	data/extracted/adventure-action-menu/pe-ghidra-functions.tsv	direction-helper	data/extracted/adventure-action-menu/pe-classic-ghidra-decompiled.c	Complete native direction helper retained in existing real Ghidra extraction

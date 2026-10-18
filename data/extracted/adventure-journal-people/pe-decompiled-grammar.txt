@@ -1,0 +1,209 @@
+Adventure journal / People, native Windows Steam + Classic 53.16
+
+Sources: the original files configured as reference and classic in
+data/runtime/native-pe-images.json. No running process is attached.
+Steam image PE:6a70a6d9:02711000
+  SHA256 205770918fd54c96cbbcf89223ebd449e2e113c7c873ed81177c4511a3450db7
+Classic image PE:6a70b91c:0270a000
+  SHA256 f35bbaf37aa96f93f95f8a35a9341e6649da46bc29a8650316bfdc2dfc57f3e4
+
+The .c files are actual Ghidra 12.1.4 decompiler output, produced with the
+existing DecompileJournalAgreementsPE.java generic PE-manifest interface.
+Its agreement_ prefix is only a script symbol label. The assembly, literal
+operands, conditional edges and native switch targets are the original PE
+source. Embedded trailing jump tables are retained as selectors, not decoded
+as executable instructions. This text reconstructs the source grammar and
+labels inferred object fields; it is neither inferred C nor a game display
+observation. Native unwind extents, image paths and digests are in
+pe-functions.tsv; executable extents are in pe-ghidra-functions.tsv.
+
+Complete owner and leaf correspondence, Steam / Classic RVA
+  c2110 / c20a0   complete journal renderer and card field consumers
+  d1ef0 / d1e80   complete person card description producer
+  b92900 / b8f940 generated entity name and unknown civilization fallback
+  9bdfb0 / 9bb7e0 religious office owner suffix
+  a946e0 / a91760 complete generated person/entity name supplier
+  aa3bd0 / aa0c50 creature/caste label, including invalid and fallback paths
+  aa4850 / aa18d0 gender possessive (her/his/its)
+  75a580 / 757fa0 complete kinship vocabulary and native selector aliases
+  bb2f30 / baff70 kinship selector computed for the two historical figures
+  bc0f20 / bbdf60 social assessment; computes the reputation scores
+  bc360 / bc2f0   complete 31-family reputation caption producer
+  8e7310 / 8e4b80 one paragraph -> wrapped string-pointer vector
+  8e7440 / 8e4cb0 paragraph vector -> wrapped string-pointer vector
+  99a3c0..99a4d3 / 997bf0..997d03 complete gendered office-name leaf
+  675670..675907 / 673090..673327 complete relative-time leaf
+
+Card caching and field consumption
+  Journal mode selector is 2 (People); the renderer's mode dispatch is
+  c2fec/c2f7c. The People vector is journal+0x590, containing PersonCard*.
+  Selected card index: journal+0x250. Selected paragraph scroll: +0x260.
+  First visible card index: journal+0x2b4. The native expanded-card flag is
+  journal+0x278. These remain distinct from Events' fields.
+
+  PersonCard+0x00: historical figure pointer
+  PersonCard+0x08: unshortened generated title string
+  PersonCard+0x48: native shortened display title string
+  PersonCard+0x58: title length
+  PersonCard+0x68: vector<string*> wrapped description rows begin
+  PersonCard+0x70: wrapped description rows end
+  PersonCard+0x78: wrapped description rows capacity
+  PersonCard+0x80: optional knowledge record used for race/deity/force type
+
+  d1ef0 is called for visible cards each render, but d1f4d returns immediately
+  when the +0x68 vector already has rows. It is a cached source. If the title
+  length is zero the producer copies the +0x08 name and shortens the display
+  title with width 58. Each independently emitted description paragraph adds an
+  empty string row first when preceding rows exist, then uses width 58.
+
+  Title addst return c8a0d/c899d reads card+0x48.
+  Counter addst return c8ab3/c8a43 is one-based index / total.
+  Paragraph addst return c8b77/c8b07 reads +0x68[scroll+line].
+  The paragraph line cursor is set at c8b52/c8ae2. For the selected card the
+  first source row is +0x260; for other cards it is zero. The cursor y begins
+  at card_y+1, or card_y+2 for a one-line description, then subtracts scroll
+  and adds the source line index. pe-display-fields.tsv preserves the sites.
+
+Ordered paragraph production and omitted branches
+  1. If historical figure death_year(+0x30) != -1:
+       Died in the year {signed-year}
+     The source has no terminal period. The year uses the native signed
+     integer formatter. -1 is omitted, not displayed.
+
+  2. Known creature/type label. If the optional card+0x80 knowledge record
+     has a race, use that race/caste label and capitalize it. Otherwise its
+     historical figure ID is resolved: deity flag -> {creature-label} deity;
+     force flag -> Force; missing record/unsupported flags -> no type row.
+     Without a knowledge record, use the card figure's own deity/force/race
+     branches. The creature supplier can return an empty label on invalid
+     race data. The appended deity suffix can therefore be the entire row.
+
+  3. Historical figure entity-link loop (all matching links, not one choice):
+     Link type 13 resolves the linked military assignment's entity and
+     position. Any missing link, entity, assignment or position omits that
+     whole paragraph. Otherwise:
+       This person is one of the {plural-position} of {entity}{suffix}.
+     plural-position is the position string at +0x218, appended even when
+     empty. suffix is selected in this priority order:
+       linked assignment == adventurer commander assignment:
+         " and your military subordinate"
+       else linked assignment == adventurer own military assignment:
+         " alongside you"
+       else empty.
+     The native string therefore permits "one of the  of ": this is a real
+     empty dynamic position, not a different untranslated fixed message.
+
+     Link type 10 resolves entity, assignment and position; absent source
+     records omit the paragraph. Otherwise:
+       This person is {gendered-position} of {owner}{suffix}.
+     gendered-position comes from leaf 99a3c0(position,person.sex,0,0).
+     It uses female/male strings when available, otherwise the base string.
+     The journal does not add an English article; the returned string may
+     be empty. The leaf also retains the unused-by-this-call adjective and
+     plural branches, and all their native fallback paths.
+
+     owner is usually the generated entity name. If position+0x2c8 > 0,
+     9bdfb0 searches entity deity links: flags&0x200 and matching assignment
+     position ID. A resolved deity historical figure appends " of " plus
+     its generated figure name and returns true. False falls back to the
+     entity supplier. Consequently this producer always has " of "; the
+     religious success path supplies it itself. The owner may be empty if
+     the generated name is empty. The entity supplier's unresolved-ID
+     fallback is "an unknown civilization". Journal calls pass flags zero,
+     so the supplier's optional LPAGE markup is not used by this producer.
+
+     suffix is " and your military commander" only if the linked assignment
+     commander is not -1 and equals the adventurer's military assignment;
+     otherwise empty. The terminal period is always appended. Empty title
+     and/or owner values retain their native surrounding spaces and period.
+
+  4. Adventurer knowledge of the figure's birth:
+       You have known this person your entire life.
+       You have known this person since {her|his|its} birth.
+       You have known each other your entire lives.
+     These are mutually exclusive birth-year comparisons after the known
+     figure/source record lookup succeeds. Missing records omit the group.
+
+  5. If the last-conversation record resolves and its year != -1:
+       You last spoke {relative-time}.
+     The complete 22 native alternatives are preserved in the relative-time
+     leaf and pe-literals.tsv: time-before-time, future, just-now, all elapsed
+     minute/hour/day/week/month/year thresholds, and long/long-long-ago.
+
+  6. If the adventurer guide recommendation lookup succeeds:
+       You have heard this name suggested as a potential guide to faraway places.
+
+  7. Adventurer direct relationship loop. Enum 4..15 maps to the twelve
+     retained jump-table targets in pe-switches.tsv, in this order:
+       4  You worship this figure.
+       5  This is your lover.
+       6  This is your prisoner.
+       7  This is your jailor.
+       8  This is your master.
+       9  This is your apprentice.
+       10 This is your traveling companion.
+       11 This is your former master.
+       12 This is your former apprentice.
+       13 This is your owner.
+       14 This is your former spouse.
+       15 This is your deceased spouse.
+     Other enum values, unmatched figure IDs and absent links emit no row.
+     Worship can append exactly one suffix to the SAME paragraph, with two
+     separating spaces, if the adventurer's divine-link state permits it:
+       >=100 "  You are beloved."
+       >=75  "  You are held in high regard."
+       >=50  "  You are held in some esteem."
+       >=25  "  You have been favorably noticed."
+       >0    "  You have attracted some positive interest."
+       <=0 or missing qualifying source record: no suffix.
+
+  8. If bb2f30 resolves a family relation rather than -1:
+       This is your {kinship}
+     75a580 supplies the complete kinship enum and default. The producer
+     wraps the string BEFORE appending its period to the temporary string;
+     the actual paragraph has no terminal period. Both forms are covered by
+     the shared grammar because other consumers can supply the period.
+
+  9. In adventure game type 1, when the native adventurer eligibility flags
+     allow social assessment, bc0f20 calculates the 31 reputation scores
+     and bc360 appends their captions. This supplier emits no caption when
+     all scores are <=0. Otherwise it inserts an empty row, "Reputation:",
+     another empty row, then iterates selectors 0..30 in enum order. Each
+     positive score emits a single capitalized label chosen by thresholds
+     >=100, >=75, >=50, >=25, >0. It does not put blank rows between labels.
+     The 155 exact resulting labels, selector numbers, thresholds and
+     literal instruction sites are in pe-reputation-productions.tsv.
+
+Runtime source correspondence
+  data/runtime/adventure-journal-grammar.tsv journal-person owns complete
+  position/membership paragraphs, nullable fields, military suffixes,
+  birth/last-conversation/family forms and exact fixed message composition.
+  journal-person-kind owns Force and deity/creature forms.
+  Native complete paragraphs must be recovered from +0x68 cached rows before
+  grammar translation, since names or position words can cross wrapped rows.
+  Separate source paragraphs remain separated by the native empty rows.
+
+  Relative times reuse all rumor-time branches. Kinship reuses the complete
+  dialogue-family vocabulary. Fixed relationships, guide recommendations,
+  lifelong familiarity, worship and all five regard sentences reuse
+  data/runtime/ui-messages.tsv adventure.log entries through $message.
+  Generated entity/person names reuse their typed existing name translation.
+  Dynamic empty position strings receive a neutral membership translation,
+  rather than requiring a nonexistent English position label.
+
+  Reputation uses all 155 existing data/runtime/legends-events.tsv entries
+  with the reputation category and the existing "Adventurer log reputation: "
+  translation key. Its rows remain separate caption entries, rather than
+  being concatenated into one fixed-prose paragraph. No custom squad.alias
+  spelling is used to infer that a name should be translated.
+
+Reproduction
+  Run tools/extract_adventure_journal_people_pe.py with the fixed Windows
+  Python interpreter. It reads the two configured original PEs through the
+  fixed objdump.exe and emits only this offline extraction directory.
+  The saved PE manifests are consumed by DecompileJournalAgreementsPE.java
+  with arguments: this directory, then steam or classic. The local native
+  Ghidra installation is dfcn-analysis-tools/ghidra_12.1.4_PUBLIC and its
+  configured JDK is dfcn-analysis-tools/jdk-25.0.4.1+1. Separate temporary
+  application.settingsdir and application.cachedir avoid shared Felix state.
+  These are reverse-engineering outputs, not build inputs or display claims.

@@ -1,0 +1,151 @@
+Adventure bottom movement HUD: native text and branch reconstruction
+
+This is original-image source material, not an executed display or a test.
+The configured Steam/reference and official/classic PE identities, paths,
+SHA-256 values and function boundaries are retained in pe-functions.tsv.
+The complete renderer is retained as ASM, branch/condition/call/operand TSV,
+and separately as the actual Ghidra C decompilation. The focused HUD slice
+is pe-{edition}-movement-hud.asm. This is a different owner from the movement
+modal at reference RVA 0x874800.
+
+Address convention
+  renderer reference 0xAF1190..0xB0390E (code; unwind ends at 0xB03C40)
+           classic   0xAEE1D0..0xB0094E (code; unwind ends at 0xB00C80)
+  HUD reference 0xAFA863..0xAFB3DF; classic subtracts 0x2FC0.
+  swimming predicate reference 0x7E0610..0x7E069B;
+                     classic   0x7DDE90..0x7DDF1B.
+  effective speed reference 0x1334C10..0x13356BA;
+                  classic   0x132FB80..0x133062A.
+  The predicate and speed supplier have multiple chained .pdata chunks;
+  retaining only their first unwind records would omit real return paths.
+
+HUD eligibility and effective actor (0xAFA863..0xAFA941)
+  actor = global adventure player, reference global RVA 0x23E5110.
+  No box if actor is null, or renderer's player+0x110 bit0x2 flag is set.
+  If actor+0x110 bit0x200 is set, look up actor+0x3DC using unit lookup
+  reference 0x73B70 / classic 0x73B00. Use the returned mount when non-null;
+  otherwise retain actor. All gait/speed fields below use this effective actor.
+
+  if int16(actor+0x4CC) != -30000 or int32(actor+0x4D4) != -1:
+      category = 4
+  elif actor+0x114 bit0x1 or actor+0x118 bit0x40000:
+      category = 2
+  elif actor+0x110 bit0x8000:
+      category = 3
+  elif swimming_gait_predicate(actor):
+      category = 1
+  else:
+      category = 0
+
+  selected = int32(actor+0xDE8 + 4*category)
+  vector = actor.raw_at_0x5F8.gaits_at_0xE8 + 0x18*category
+  No box when selected < 0 or selected >= vector.size().
+  A bad name index does not suppress the box; it selects the Move fallback.
+
+  swimming_gait_predicate(actor):
+      require int32(actor+0x1280) > 2
+      require byte(*(actor+0x1278)+2) bit0x8
+      require int16(actor+0xC42) > (int16(actor+0xC40) >> 1)
+              or int16(actor+0xC40) == 0
+      require int16(actor+0x800) <= 0
+      require int16(actor+0x804) < 10
+      require int32(actor+0x978) < 100
+      return true; any failed requirement returns false
+  Native synchronization helper 0x1385B10 is retained at its original calls.
+
+Every title source (0xAFA94E..0xAFA9CC)
+  if int16(actor+0x4CC) != -30000:
+      title = "Climb"                 # reference literal RVA 0x167D254
+  else:
+      gait = vector[selected]
+      nameIndex = int32(gait+0)
+      if nameIndex >= 0 and nameIndex < world.gait_names.size():
+          title = world.gait_names[nameIndex]
+      else:
+          title = "Move"              # reference literal RVA 0x16AE908
+  reference gait-name vector RVA 0x24ECAB8; classic RVA 0x24E69A8.
+  classic literal RVAs are Climb 0x167798C and Move 0x16A9B88.
+
+  The names are dynamic GAIT raw data, not a native Walk/Run/Sprint switch.
+  All 37 vanilla names and their creature/caste/variation provenance are in
+  ../adventure-movement/raw-gait-sources.tsv and raw-gait-applications.tsv.
+  The scope Adventure movement already supplies all 37 names plus Climb/Move.
+  Mod-provided names can add arbitrary strings through the same native vector.
+
+Native long-name branch (0xAFA9CC..0xAFAA2E)
+  if title.length() >= 20:
+      title.resize(19)
+      title[16] = title[17] = title[18] = '.'
+  The only vanilla name reaching this branch is Maximum Flight Speed, which
+  becomes "Maximum Flight S..." before the name draw.
+  The original complete string is available before native resize. Translating
+  the truncated spelling alone loses the full-name source and misses this case.
+
+  Native title draw call reference RVA 0xAFAB92, return 0xAFAB97;
+                         classic   RVA 0xAF7BD2, return 0xAF7BD7.
+  This field is the screenshot's cyan name above the green speed.
+  Its native draw is separate from every number and direction glyph below.
+  Title color uses actor+0x110 bit0x40000; it adds no new wording.
+
+All numeric productions
+  speed(unit, current) is the native effective-speed supplier, called with
+  second argument 0 and current in the third argument. Preserve its result.
+  value(unit,current) = signed_trunc(1000000 / (speed(unit,current) + 100)).
+  No branch below contains additional English text. Punctuation is '.', '/'
+  and decimal digit/zero-padding strings.
+
+  1. Climbing target exists (0xAFAB97..0xAFAECC):
+     If int16(actor+0x4CC) != -30000:
+         draw full_decimal(value(actor, true)) at call 0xAFAD3C.
+     Color uses fatigue actor+0x984 (<2000, 2000..3999, >=4000).
+
+  2. Normal speed differs from the current speed (0xAFAED1..0xAFB179):
+     v0 = value(actor, false); v1 = value(actor, true).
+     If v0 != v1:
+         draw ratio_component(v1) + "/" + ratio_component(v0)
+         at call 0xAFB162.
+     This is the screenshot's 1.8/4.0 production.
+
+  3. Normal and current speed are equal (0xAFB179..0xAFB305):
+     If v0 == v1:
+         draw full_decimal(v1) at call 0xAFB2DE.
+
+  full_decimal(value):
+      q = signed_trunc(value / 1000)
+      result = decimal(q) + "."
+      remainder = decimal(value - q*1000)
+      if remainder.length <= 2: result += "0"
+      if remainder.length == 1: result += "0"
+      result += remainder
+      Native code then trims the temporary remainder when length >= 4 and
+      its last two characters are zero. The remainder was already appended
+      by value; that cleanup does not trim the rendered result.
+
+  ratio_component(value):
+      q = signed_trunc(value / 1000)
+      result = decimal(q)
+      if result.length == 1:
+          result += "." + decimal(signed_trunc((value-q*1000) / 100))
+      return result
+
+Every direction glyph branch
+  Climbing builds bits by comparing target int16 +0x4CC/+0x4CE/+0x4D0
+  with position +0xA8/+0xAA/+0xAC. Normal movement uses byte actor+0x4C4.
+  Direction bits: y< 1, y> 2, x> 4, x< 8, z> 0x10, z< 0x20.
+  Dispatch input is (bits & 15)-1; inputs outside 0..9 emit no planar glyph.
+  Reference dispatch/table pairs:
+      climb  0xAFAE37 / 0xB03B18 (default 0xAFAE62)
+      normal 0xAFB342 / 0xB03B40 (default 0xAFB36D)
+  Both have every selector alias retained in pe-switches.tsv and are supplied
+  to Ghidra as JumpTable overrides, including selectors that emit no glyph.
+
+      bits & 15 = 1: '^'; 2: 'v'; 3: none; 4: '>'; 5: tile byte 0xBF;
+                  6: tile byte 0xD9; 7: none; 8: '<'; 9: tile byte 0xDA;
+                  10: tile byte 0xC0; 0 or 11..15: none.
+  Independent bit0x10 emits tile byte0x18; independent bit0x20 emits byte0x19.
+  These remain native glyph draws and are not additional words for translation.
+
+Native raw speed processing, including its numeric and state branches, remains
+in the complete effective-movement-speed source and Ghidra C. The translation
+only needs the title production; numeric, fatigue-color and direction paths
+remain native and preserve all their original branch results.

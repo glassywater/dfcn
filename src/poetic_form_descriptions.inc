@@ -94,7 +94,9 @@ static bool form_description_fixed_start(std::string_view text, std::string_view
             "It is always written ", "Use of ", "A form of parallelism ",
             "Forms of parallelism ", "Linguistic skill is required ",
             "The poem ", "The rhyme", "The rhyme scheme ", "Each line ",
+            "The ending ", "The refrain ", "As a rule throughout the poem, ",
             "Every line of the poem ", "Certain lines ", "In the ", "It ",
+            "is always written from the perspective of",
         });
         for (auto prefix : starts) if (text.starts_with(prefix)) return true;
         if (text.starts_with("The ")) {
@@ -108,7 +110,20 @@ static bool form_description_fixed_start(std::string_view text, std::string_view
             for (auto ordinal : ordinals) {
                 if (!rest.starts_with(ordinal)) continue;
                 const auto tail = rest.substr(ordinal.size());
-                if (tail.starts_with(" part ") || tail.starts_with(" line ")) return true;
+                if (tail.starts_with(" part ") || tail.starts_with(" line ") ||
+                    tail.starts_with(" refrain ")) return true;
+            }
+            // 52eb70 spells ordinals only through nineteen, then emits
+            // decimal digits plus st/nd/rd/th (20th, 21st, ...).
+            const size_t digits = rest.find_first_not_of("0123456789");
+            if (digits != 0 && digits != std::string_view::npos) {
+                const auto tail = rest.substr(digits);
+                if (tail.size() > 2 && (tail.starts_with("st") || tail.starts_with("nd") ||
+                    tail.starts_with("rd") || tail.starts_with("th"))) {
+                    const auto unit = tail.substr(2);
+                    if (unit.starts_with(" part ") || unit.starts_with(" line ") ||
+                        unit.starts_with(" refrain ")) return true;
+                }
             }
         }
     }
@@ -435,7 +450,8 @@ std::optional<std::string> Overlay::translate_poetic_form_description_unit(
         return items;
     };
 
-    auto number_value = [](std::string_view raw) -> std::optional<int> {
+    std::function<std::optional<int>(std::string_view)> number_value;
+    number_value = [&](std::string_view raw) -> std::optional<int> {
         static constexpr std::array<std::pair<std::string_view, int>, 28> words = {{
             {"zero", 0}, {"one", 1}, {"two", 2}, {"three", 3},
             {"four", 4}, {"five", 5}, {"six", 6}, {"seven", 7},
@@ -448,8 +464,35 @@ std::optional<std::string> Overlay::translate_poetic_form_description_unit(
             {"ninety", 90},
         }};
         const std::string text = lower(trim(std::string(raw)));
+        if (!text.empty() && std::all_of(text.begin(), text.end(), [](unsigned char ch) {
+                return ch >= '0' && ch <= '9';
+            })) {
+            const int value = parse_int(text, -1);
+            return value >= 0 ? std::optional<int>(value) : std::nullopt;
+        }
+        if (text.starts_with("negative ")) {
+            const auto value = number_value(std::string_view(text).substr(9));
+            return value ? std::optional<int>(-*value) : std::nullopt;
+        }
         for (const auto &[word, value] : words) {
             if (text == word) return value;
+        }
+        // The native cardinal helper recursively joins these scales with
+        // spaces, without an English `and` (52e5e2..52e98f).
+        for (const auto &[word, scale] : std::array<std::pair<std::string_view, int>, 4>{{
+                 {"billion", 1000000000}, {"million", 1000000},
+                 {"thousand", 1000}, {"hundred", 100},
+             }}) {
+            const std::string marker = " " + std::string(word);
+            const size_t at = text.find(marker);
+            if (at == std::string::npos) continue;
+            const auto high = number_value(std::string_view(text).substr(0, at));
+            const auto tail = trim_view(std::string_view(text).substr(at + marker.size()));
+            const auto low = tail.empty() ? std::optional<int>(0) : number_value(tail);
+            if (!high || !low || *high <= 0 || *low < 0 || *low >= scale)
+                return std::nullopt;
+            const int64_t value = int64_t(*high) * scale + *low;
+            return value <= 2147483647 ? std::optional<int>(static_cast<int>(value)) : std::nullopt;
         }
         const size_t hyphen = text.find('-');
         if (hyphen != std::string::npos) {
@@ -477,12 +520,19 @@ std::optional<std::string> Overlay::translate_poetic_form_description_unit(
         for (const auto &[word, value] : words) {
             if (text == word) return value;
         }
+        if (text.size() > 2 && (text.ends_with("st") || text.ends_with("nd") ||
+                text.ends_with("rd") || text.ends_with("th"))) {
+            const auto digits = std::string_view(text).substr(0, text.size() - 2);
+            if (!digits.empty() && std::all_of(digits.begin(), digits.end(), [](unsigned char ch) {
+                    return ch >= '0' && ch <= '9';
+                })) return number_value(digits);
+        }
         const size_t hyphen = text.find('-');
         if (hyphen != std::string::npos) {
-            static constexpr std::array<std::pair<std::string_view, int>, 8>
+            static constexpr std::array<std::pair<std::string_view, int>, 9>
                 endings = {{{"first", 1}, {"second", 2}, {"third", 3},
                             {"fourth", 4}, {"fifth", 5}, {"sixth", 6},
-                            {"seventh", 7}, {"eighth", 8}}};
+                            {"seventh", 7}, {"eighth", 8}, {"ninth", 9}}};
             const auto high = number_value(std::string_view(text).substr(0, hyphen));
             for (const auto &[word, value] : endings) {
                 if (std::string_view(text).substr(hyphen + 1) == word && high)
@@ -495,6 +545,7 @@ std::optional<std::string> Overlay::translate_poetic_form_description_unit(
         static constexpr std::array<std::string_view, 10> digit = {
             "零", "一", "二", "三", "四", "五", "六", "七", "八", "九",
         };
+        if (value < 0) return std::string("负") + std::to_string(-int64_t(value));
         if (value == 2 && use_liang) return std::string("两");
         if (value < 10) return std::string(digit[static_cast<size_t>(value)]);
         if (value < 20)
@@ -696,13 +747,15 @@ std::optional<std::string> Overlay::translate_poetic_form_description_unit(
     auto translate_persona = [&](std::string_view raw)
             -> std::optional<std::string> {
         const std::string_view text = trim_view(raw);
+        if (text.empty()) return std::string("未指定的叙述者");
         static constexpr std::array<std::pair<std::string_view,
-                                               std::string_view>, 7> personas = {{
+                                               std::string_view>, 9> personas = {{
             {"the author", "作者本人"}, {"a soldier", "一名士兵"},
             {"a traveler", "一名旅人"}, {"a traveller", "一名旅人"},
             {"a relative of the author", "作者的一位亲属"},
             {"a party to a debate", "辩论中的一方"},
             {"a fictional poet", "一位虚构诗人"},
+            {"a historical figure", "某位历史人物"}, {"an animal", "某种动物"},
         }};
         for (const auto &[english, chinese] : personas) {
             if (text == english) return std::string(chinese);
@@ -744,6 +797,12 @@ std::optional<std::string> Overlay::translate_poetic_form_description_unit(
             } else if (prefix == "brief") {
                 prefix = "a";
                 suffix = "段短诗";
+            } else if (prefix.ends_with(" long")) {
+                prefix.remove_suffix(5);
+                suffix = "段长诗";
+            } else if (prefix == "long") {
+                prefix = "a";
+                suffix = "段长诗";
             } else if (prefix.ends_with(" lengthy")) {
                 prefix.remove_suffix(8);
                 suffix = "段长诗";
@@ -1013,7 +1072,9 @@ std::optional<std::string> Overlay::translate_poetic_form_description_unit(
             -> std::optional<std::string> {
         std::vector<std::string> translated;
         for (const std::string_view item : split_english_list(raw)) {
-            const auto term = translate_term(item);
+            // e77c5d/e79b07 add `even` before the last path-reading feature
+            // when more than one visual feature is present.
+            const auto term = translate_term(item.starts_with("even ") ? item.substr(5) : item);
             if (!term) return std::nullopt;
             translated.push_back(*term);
         }
@@ -1087,6 +1148,7 @@ std::optional<std::string> Overlay::translate_poetic_form_description_unit(
     auto unit_reference = [&](std::string_view raw, bool each)
             -> std::optional<std::string> {
         const std::string_view text = trim_view(raw);
+        if (text.empty()) return std::string(each ? "每个部分" : "该部分");
         static constexpr auto units = std::to_array<std::pair<std::string_view,
                                                                std::string_view>>({
             {"couplet", "组双行诗"}, {"tercet", "节三行诗"},
@@ -1136,6 +1198,11 @@ std::optional<std::string> Overlay::translate_poetic_form_description_unit(
         }
         if (text == "Certain lines" || text == "certain lines")
             return PoeticScope{"某些诗行", PoeticScopeKind::Lines};
+        if (text.starts_with("Certain lines of ") || text.starts_with("certain lines of ")) {
+            const auto part = translate_scope(text.substr(17));
+            if (!part || part->kind != PoeticScopeKind::Part) return std::nullopt;
+            return PoeticScope{part->chinese + "中的某些诗行", PoeticScopeKind::Lines};
+        }
         if (text == "It" || text == "it") return last_scope;
 
         if (text.starts_with("In the ")) {
@@ -1231,16 +1298,20 @@ std::optional<std::string> Overlay::translate_poetic_form_description_unit(
         std::string_view text = trim_view(raw);
         std::string system;
         bool quantitative = false;
-        if (strip_prefix(text, "qualitative ")) system = "重音划分";
+        if (text == "qualitative") { system = "重音划分"; text = {}; }
+        else if (text == "quantitative") {
+            system = "音长划分"; text = {}; quantitative = true;
+        }
+        else if (strip_prefix(text, "qualitative ")) system = "重音划分";
         else if (strip_prefix(text, "quantitative ")) {
             system = "音长划分";
             quantitative = true;
         }
         else return std::nullopt;
         const size_t split = text.find(' ');
-        if (split == std::string_view::npos) return std::nullopt;
         const std::string_view foot = text.substr(0, split);
-        const std::string_view length = text.substr(split + 1);
+        const std::string_view length = split == std::string_view::npos
+            ? std::string_view{} : text.substr(split + 1);
         struct FootName {
             std::string_view english;
             std::string_view stress;
@@ -1271,10 +1342,20 @@ std::optional<std::string> Overlay::translate_poetic_form_description_unit(
             [&](const FootName &entry) { return entry.english == foot; });
         const auto length_it = std::find_if(lengths.begin(), lengths.end(),
             [&](const auto &entry) { return entry.first == length; });
-        if (foot_it == feet.end() || length_it == lengths.end())
-            return std::nullopt;
-        return std::string(quantitative ? foot_it->weight : foot_it->stress) +
-               std::string(length_it->second) + "，按" + system;
+        // Both selector defaults append no label. Feet outside 1..8 also
+        // leave the length empty; retain the known components of that native
+        // production instead of rejecting the entire form document.
+        if (foot_it == feet.end() && !foot.empty()) {
+            const auto length_only = std::find_if(lengths.begin(), lengths.end(),
+                [&](const auto &entry) { return entry.first == foot; });
+            if (length_only == lengths.end() || !length.empty()) return std::nullopt;
+            return std::string(length_only->second) + "，按" + system + "，格律未指定";
+        }
+        if (length_it == lengths.end() && !length.empty()) return std::nullopt;
+        std::string result = foot_it == feet.end() ? "格律未指定" :
+            std::string(quantitative ? foot_it->weight : foot_it->stress);
+        if (length_it != lengths.end()) result += length_it->second;
+        return result + "，按" + system;
     };
 
     auto translate_measure = [&](std::string_view raw,
@@ -1284,7 +1365,9 @@ std::optional<std::string> Overlay::translate_poetic_form_description_unit(
         if (lines_with) {
             if (!strip_prefix(text, "lines with ")) return std::nullopt;
         }
-        if (text.ends_with(" in each line")) {
+        if (text.empty()) return std::string("的韵律未指定");
+        const bool each_line = text.ends_with(" in each line");
+        if (each_line) {
             text.remove_suffix(std::string_view(" in each line").size());
             text = trim_view(text);
         }
@@ -1298,7 +1381,7 @@ std::optional<std::string> Overlay::translate_poetic_form_description_unit(
             if (text == std::string(english) + " in each line")
                 return "各行均" + std::string(chinese);
             if (text == english)
-                return std::string(chinese);
+                return (each_line ? "各行均" : "") + std::string(chinese);
         }
 
         if (text.ends_with(" syllables")) {
@@ -1357,8 +1440,12 @@ std::optional<std::string> Overlay::translate_poetic_form_description_unit(
             pattern_text = remainder.substr(0, parenthesis);
             meter_text = remainder.substr(parenthesis + 2,
                                           remainder.size() - parenthesis - 3);
+        } else if (remainder.starts_with('(') && remainder.ends_with(')')) {
+            pattern_text = {};
+            meter_text = remainder.substr(1, remainder.size() - 2);
         }
-        const auto pattern = translate_pattern(pattern_text);
+        const auto pattern = pattern_text.empty() ? std::optional<std::string>("未指定") :
+            translate_pattern(pattern_text);
         if (!pattern) return std::nullopt;
         result += "，" + std::string(matched->chinese) + "为“" + *pattern + "”";
         if (!meter_text.empty()) {
@@ -1371,6 +1458,17 @@ std::optional<std::string> Overlay::translate_poetic_form_description_unit(
 
     auto translate_relation_sentence = [&](std::string_view sentence)
             -> std::optional<std::string> {
+        // e7b073..e7b11d joins both line-reading predicates in the same
+        // sentence; neither is a new subject or a sentence boundary.
+        for (const auto marker : {
+                 std::string_view(" has different readings depending on word breaks"),
+                 std::string_view(" can be read backwards as well as forwards")}) {
+            const size_t at = sentence.find(marker);
+            if (at == std::string_view::npos) continue;
+            const auto subject = translate_scope(sentence.substr(0, at));
+            const auto terms = translate_term_list(sentence.substr(at + 1));
+            if (subject && terms) return subject->chinese + *terms;
+        }
         for (const auto &[suffix, chinese] : std::array<std::pair<
                  std::string_view, std::string_view>, 2>{{
                  {" has different readings depending on word breaks",
@@ -1424,6 +1522,121 @@ std::optional<std::string> Overlay::translate_poetic_form_description_unit(
 
     auto translate_rhyme_sentence = [&](std::string_view sentence)
             -> std::optional<std::string> {
+        auto soft_rhyme = [&](std::string_view raw) -> std::optional<std::string> {
+            std::string_view ordinals;
+            bool sections = false;
+            constexpr std::string_view section_prefix =
+                ", though rhymes at the end of lines in the ";
+            if (raw.starts_with(section_prefix)) {
+                ordinals = raw.substr(section_prefix.size());
+                sections = true;
+            } else {
+                if (raw.starts_with(", though the rhyme"))
+                    raw.remove_prefix(std::string_view(", though the rhyme").size());
+                else if (raw.starts_with("The rhyme"))
+                    raw.remove_prefix(std::string_view("The rhyme").size());
+                else return std::nullopt;
+                if (raw.starts_with('s')) raw.remove_prefix(1);
+                constexpr std::string_view at_end = " at the end of the ";
+                if (!strip_prefix(raw, at_end)) return std::nullopt;
+                ordinals = raw;
+            }
+            bool suffix_found = false;
+            for (auto suffix : {std::string_view(" sections don't need to match perfectly"),
+                    std::string_view(" section don't need to match perfectly"),
+                    std::string_view(" lines don't need to match perfectly"),
+                    std::string_view(" line doesn't need to match perfectly")}) {
+                if (!ordinals.ends_with(suffix) ||
+                    sections != suffix.starts_with(" section")) continue;
+                ordinals.remove_suffix(suffix.size());
+                suffix_found = true;
+                break;
+            }
+            if (!suffix_found) return std::nullopt;
+            std::vector<std::string> numbers;
+            for (auto item : split_english_list(ordinals)) {
+                const auto ordinal = ordinal_value(item);
+                if (!ordinal) return std::nullopt;
+                numbers.push_back(chinese_number(*ordinal, false));
+            }
+            if (numbers.empty()) return std::nullopt;
+            return "第" + join_chinese(numbers) +
+                (sections ? "部分各行可以押近似韵" : "行可以押近似韵");
+        };
+        if (auto soft = soft_rhyme(sentence)) return soft;
+
+        // e78684/e7c0fd produce the same finite predicate with either the
+        // whole poem, an explicit ordinal part, or `this part` as its scope.
+        constexpr std::string_view ending_prefix = "The ending of each line";
+        constexpr std::string_view same_rhyme = " shares the same rhyme";
+        if (sentence.starts_with(ending_prefix)) {
+            const size_t marker = sentence.find(same_rhyme, ending_prefix.size());
+            if (marker != std::string_view::npos) {
+                auto qualifier = trim_view(sentence.substr(ending_prefix.size(),
+                    marker - ending_prefix.size()));
+                std::string scope;
+                if (qualifier.empty()) scope = "各行";
+                else if (qualifier == "of this part") scope = "这一部分各行";
+                else if (strip_prefix(qualifier, "of ")) {
+                    const auto part = translate_scope(qualifier);
+                    if (!part) return std::nullopt;
+                    scope = part->chinese + "各行";
+                } else return std::nullopt;
+                const auto tail = sentence.substr(marker + same_rhyme.size());
+                if (tail.empty()) return scope + "押同一韵脚";
+                if (tail == ", though the rhyming doesn't have to be perfect")
+                    return scope + "押同一韵脚，也可押近似韵";
+                if (auto soft = soft_rhyme(tail))
+                    return scope + "押同一韵脚，但" + *soft;
+                return std::nullopt;
+            }
+        }
+
+        // e7bd10..e7c0a7 has unnamed, one numbered, and two separately
+        // numbered refrain productions, with an optional ordinal part scope.
+        if (sentence.starts_with("The ") && sentence.find("refrain occurs as line") !=
+                std::string_view::npos) {
+            std::string scope;
+            const size_t of_part = sentence.rfind(" of the ");
+            if (of_part != std::string_view::npos) {
+                const auto part = translate_scope(sentence.substr(of_part + 4));
+                if (!part || part->kind != PoeticScopeKind::Part) return std::nullopt;
+                scope = part->chinese + "中，";
+                sentence = sentence.substr(0, of_part);
+            }
+            std::vector<std::string> refrains;
+            while (!sentence.empty()) {
+                const size_t conjunction = sentence.find(" and the ");
+                const auto clause = sentence.substr(0, conjunction);
+                constexpr std::string_view marker = "refrain occurs as line";
+                const size_t at = clause.find(marker);
+                if (at == std::string_view::npos) return std::nullopt;
+                auto title = clause.substr(0, at);
+                if (!strip_prefix(title, "The ") && !strip_prefix(title, "the "))
+                    return std::nullopt;
+                title = trim_view(title);
+                std::string refrain = "叠句";
+                if (!title.empty()) {
+                    const auto number = ordinal_value(title);
+                    if (!number) return std::nullopt;
+                    refrain = "第" + chinese_number(*number, false) + "组叠句";
+                }
+                auto positions = clause.substr(at + marker.size());
+                if (positions.starts_with('s')) positions.remove_prefix(1);
+                positions = trim_view(positions);
+                std::vector<std::string> numbers;
+                for (auto item : split_english_list(positions)) {
+                    const auto number = number_value(item);
+                    if (!number) return std::nullopt;
+                    numbers.push_back(chinese_number(*number, false));
+                }
+                if (numbers.empty()) return std::nullopt;
+                refrains.push_back(refrain + "出现在第" + join_chinese(numbers) + "行");
+                if (conjunction == std::string_view::npos) break;
+                sentence.remove_prefix(conjunction + 5);
+            }
+            if (!refrains.empty()) return scope + join_chinese(refrains, "；");
+        }
         struct RhymePrefix { std::string_view source; std::string_view chinese; };
         static constexpr auto rhyme_prefixes = std::to_array<RhymePrefix>({
             {"The ending of every line of the poem rhymes with every other",
@@ -1519,6 +1732,9 @@ std::optional<std::string> Overlay::translate_poetic_form_description_unit(
                            (ch >= '0' && ch <= '9');
                 });
             if (!valid_scheme) return std::nullopt;
+            constexpr std::string_view global_qualifier = " respecting the full poem";
+            const bool global_part = qualifier.ends_with(global_qualifier);
+            if (global_part) qualifier.remove_suffix(global_qualifier.size());
             std::string result;
             if (qualifier == "of the poem") result = "全诗的韵式为 ";
             else if (qualifier.empty()) result = "韵式为 ";
@@ -1553,7 +1769,14 @@ std::optional<std::string> Overlay::translate_poetic_form_description_unit(
             }
             else if (qualifier == "within this stanza")
                 result = "本节诗采用韵式 ";
+            else if (qualifier.starts_with("of ") || qualifier.starts_with("within ")) {
+                const bool within = qualifier.starts_with("within ");
+                const auto scope = translate_scope(qualifier.substr(within ? 7 : 3));
+                if (!scope) return std::nullopt;
+                result = scope->chinese + (within ? "内部的韵式为 " : "的韵式为 ");
+            }
             else return std::nullopt;
+            if (global_part) result = "按全诗统一标记韵脚时，" + result;
             result += scheme;
             if (numbered_refrain) result += "，其中数字代表叠句";
             return result;
@@ -1635,9 +1858,19 @@ std::optional<std::string> Overlay::translate_poetic_form_description_unit(
     auto translate_scoped_sentence = [&](std::string_view sentence)
             -> std::optional<std::string> {
         if (sentence.starts_with("Certain lines ")) {
-            const auto clauses = translate_parallel_predicates(sentence);
+            auto description = sentence.substr(14);
+            std::string scope = "某些诗行";
+            if (description.starts_with("of the ")) {
+                const size_t end = description.find(" part ");
+                if (end == std::string_view::npos) return std::nullopt;
+                const auto part = translate_scope(description.substr(3, end + 5 - 3));
+                if (!part || part->kind != PoeticScopeKind::Part) return std::nullopt;
+                scope = part->chinese + "中的某些诗行";
+                description.remove_prefix(end + 6);
+            }
+            const auto clauses = translate_parallel_predicates(description);
             if (!clauses) return std::nullopt;
-            return "某些诗行" + *clauses;
+            return scope + *clauses;
         }
 
         struct Marker {
@@ -1664,16 +1897,24 @@ std::optional<std::string> Overlay::translate_poetic_form_description_unit(
         });
         const Marker *matched = nullptr;
         size_t marker_at = std::string_view::npos;
+        size_t matched_size = 0;
         for (const Marker &marker : markers) {
-            const size_t at = sentence.find(marker.source);
+            auto marker_source = marker.source;
+            size_t at = sentence.find(marker_source);
+            if (at == std::string_view::npos && marker_source.ends_with(' ') &&
+                    sentence.ends_with(marker_source.substr(0, marker_source.size() - 1))) {
+                marker_source.remove_suffix(1);
+                at = sentence.size() - marker_source.size();
+            }
             if (at == std::string_view::npos) continue;
-            const size_t end = at + marker.source.size();
-            if (!marker.source.ends_with(' ') && end < sentence.size() &&
+            const size_t end = at + marker_source.size();
+            if (!marker_source.ends_with(' ') && end < sentence.size() &&
                 sentence[end] != ' ') continue;
             if (!matched || at < marker_at ||
                 (at == marker_at && marker.source.size() > matched->source.size())) {
                 matched = &marker;
                 marker_at = at;
+                matched_size = marker_source.size();
             }
         }
         if (!matched) return std::nullopt;
@@ -1686,7 +1927,7 @@ std::optional<std::string> Overlay::translate_poetic_form_description_unit(
         if (scope->kind != PoeticScopeKind::Lines)
             last_scope = *scope;
         std::string_view value = trim_view(
-            sentence.substr(marker_at + matched->source.size()));
+            sentence.substr(marker_at + matched_size));
         std::string result = scope->chinese;
         if (matched->unspecified_mood) {
             const auto mood = exact_literal_translation("Art form: unspecified mood");
@@ -1736,9 +1977,12 @@ std::optional<std::string> Overlay::translate_poetic_form_description_unit(
             break;
         }
         case 6: {
-            const auto structure = translate_structure_list(value);
-            if (!structure) return std::nullopt;
-            result += "包括" + *structure;
+            // Native `includes` describes a part's visual reading features,
+            // while structure counts use the independent opening grammar.
+            auto features = translate_term_list(value);
+            if (!features) features = translate_structure_list(value);
+            if (!features) return std::nullopt;
+            result += "包括" + *features;
             break;
         }
         case 7: {
@@ -1761,6 +2005,15 @@ std::optional<std::string> Overlay::translate_poetic_form_description_unit(
                 return std::nullopt;
             result += styles[static_cast<size_t>(style_index)];
             if (!value.empty()) {
+                if (value == "and concerns" || value.starts_with("and concerns ")) {
+                    value = trim_view(value.substr(std::string_view("and concerns").size()));
+                    const auto topic = value.empty()
+                        ? exact_literal_translation("Art form: unspecified subject")
+                        : translate_topic(value);
+                    if (!topic) return std::nullopt;
+                    result += value.empty() ? "，" + *topic : "，描写" + *topic;
+                    break;
+                }
                 // The generator emits both `is light and is intended ...`
                 // and `is light and intended ...` depending on the section
                 // template.  They carry the same meaning and must remain one
@@ -1968,6 +2221,11 @@ std::optional<std::string> Overlay::translate_poetic_form_description_unit(
             const auto persona = translate_persona(sentence.substr(
                 std::string_view("It is always written from the perspective of ").size()));
             if (persona) part = "作品始终从" + *persona + "的视角展开";
+        } else if (source_form_title.empty() && sentence.starts_with(
+                       "is always written from the perspective of")) {
+            const auto persona = translate_persona(trim_view(sentence.substr(
+                std::string_view("is always written from the perspective of").size())));
+            if (persona) part = "作品始终从" + *persona + "的视角展开";
         } else if (sentence.starts_with("Use of ") &&
                    sentence.ends_with(" is characteristic of the form")) {
             const std::string_view list = sentence.substr(
@@ -1985,9 +2243,21 @@ std::optional<std::string> Overlay::translate_poetic_form_description_unit(
             if (clauses) part = "全诗常用句式上的呼应与对照：有些诗行" + *clauses;
         } else if (sentence.starts_with(
                        "Linguistic skill is required in the visual presentation as well, as ")) {
-            const auto terms = translate_term_list(sentence.substr(
+            auto features = sentence.substr(
                 std::string_view(
-                    "Linguistic skill is required in the visual presentation as well, as ").size()));
+                    "Linguistic skill is required in the visual presentation as well, as ").size());
+            // e77bbb calls a946e0 again here, followed by ` must feature `.
+            // This is a generated name field, not part of the feature list.
+            constexpr std::string_view feature_marker = " must feature ";
+            const size_t marker_at = features.find(feature_marker);
+            if (marker_at != std::string_view::npos) {
+                const auto subject = trim_view(features.substr(0, marker_at));
+                if (subject != source_form_title) return std::nullopt;
+                features.remove_prefix(marker_at + feature_marker.size());
+            } else if (features.starts_with("must feature ") && source_form_title.empty()) {
+                features.remove_prefix(std::string_view("must feature ").size());
+            }
+            const auto terms = translate_term_list(features);
             if (terms) part = "诗篇还讲究文字的排列方式，包含" + *terms;
         }
         if (!part) part = translate_structure_sentence(sentence);

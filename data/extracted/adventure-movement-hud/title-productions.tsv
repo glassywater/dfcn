@@ -1,0 +1,79 @@
+edition	branch	source	native_visible	source_file	line	raw_type	variation	creature	caste
+reference	climb-target-present	Climb	Climb	pe-literals.tsv					
+reference	invalid-gait-name-index	Move	Move	pe-literals.tsv					
+classic	climb-target-present	Climb	Climb	pe-literals.tsv					
+classic	invalid-gait-name-index	Move	Move	pe-literals.tsv					
+classic	valid-gait-name-index	Canter	Canter	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	695	WALK	STANDARD_QUADRUPED_GAITS		
+classic	valid-gait-name-index	Climb	Climb	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	713	CLIMB	STANDARD_CLIMBING_GAITS		
+classic	valid-gait-name-index	Crawl	Crawl	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	729	CRAWL	STANDARD_CRAWLING_GAITS		
+classic	valid-gait-name-index	Creep	Creep	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	691	WALK	STANDARD_BIPED_GAITS		
+classic	valid-gait-name-index	Creeping Swim	Creeping Swim	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	723	SWIM	STANDARD_SWIMMING_GAITS		
+classic	valid-gait-name-index	Fast Climb	Fast Climb	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	712	CLIMB	STANDARD_CLIMBING_GAITS		
+classic	valid-gait-name-index	Fast Crawl	Fast Crawl	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	728	CRAWL	STANDARD_CRAWLING_GAITS		
+classic	valid-gait-name-index	Fast Flight	Fast Flight	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	736	FLY	STANDARD_FLYING_GAITS		
+classic	valid-gait-name-index	Fast Swim	Fast Swim	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	720	SWIM	STANDARD_SWIMMING_GAITS		
+classic	valid-gait-name-index	Fast Walk	Fast Walk	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	704	WALK	STANDARD_WALKING_GAITS		
+classic	valid-gait-name-index	Faster Climb	Faster Climb	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	711	CLIMB	STANDARD_CLIMBING_GAITS		
+classic	valid-gait-name-index	Faster Crawl	Faster Crawl	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	727	CRAWL	STANDARD_CRAWLING_GAITS		
+classic	valid-gait-name-index	Faster Flight	Faster Flight	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	735	FLY	STANDARD_FLYING_GAITS		
+classic	valid-gait-name-index	Faster Swim	Faster Swim	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	719	SWIM	STANDARD_SWIMMING_GAITS		
+classic	valid-gait-name-index	Faster Walk	Faster Walk	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	703	WALK	STANDARD_WALKING_GAITS		
+classic	valid-gait-name-index	Fastest Walk	Fastest Walk	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	702	WALK	STANDARD_WALKING_GAITS		
+classic	valid-gait-name-index	Fly	Fly	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	737	FLY	STANDARD_FLYING_GAITS		
+classic	valid-gait-name-index	Gallop	Gallop	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	694	WALK	STANDARD_QUADRUPED_GAITS		
+classic	valid-gait-name-index	Hover	Hover	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	739	FLY	STANDARD_FLYING_GAITS		
+classic	valid-gait-name-index	Jog	Jog	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	688	WALK	STANDARD_BIPED_GAITS		
+classic	valid-gait-name-index	Maximum Flight Speed	Maximum Flight S...	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	734	FLY	STANDARD_FLYING_GAITS		
+classic	valid-gait-name-index	Maximum Swim Speed	Maximum Swim Speed	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	718	SWIM	STANDARD_SWIMMING_GAITS		
+classic	valid-gait-name-index	Run	Run	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	687	WALK	STANDARD_BIPED_GAITS		
+classic	valid-gait-name-index	Scramble	Scramble	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	710	CLIMB	STANDARD_CLIMBING_GAITS		
+classic	valid-gait-name-index	Slow Climb	Slow Climb	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	714	CLIMB	STANDARD_CLIMBING_GAITS		
+classic	valid-gait-name-index	Slow Crawl	Slow Crawl	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	730	CRAWL	STANDARD_CRAWLING_GAITS		
+classic	valid-gait-name-index	Slow Flight	Slow Flight	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	738	FLY	STANDARD_FLYING_GAITS		
+classic	valid-gait-name-index	Slow Swim	Slow Swim	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	722	SWIM	STANDARD_SWIMMING_GAITS		
+classic	valid-gait-name-index	Slow Walk	Slow Walk	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	706	WALK	STANDARD_WALKING_GAITS		
+classic	valid-gait-name-index	Slowest Walk	Slowest Walk	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	707	WALK	STANDARD_WALKING_GAITS		
+classic	valid-gait-name-index	Sprint	Sprint	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	686	WALK	STANDARD_BIPED_GAITS		
+classic	valid-gait-name-index	Stroll	Stroll	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	690	WALK	STANDARD_BIPED_GAITS		
+classic	valid-gait-name-index	Stumble Bumble	Stumble Bumble	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_creatures\objects\creature_other.txt	287	WALK		WAMBLER_FLUFFY	
+classic	valid-gait-name-index	Swim	Swim	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	721	SWIM	STANDARD_SWIMMING_GAITS		
+classic	valid-gait-name-index	Trot	Trot	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	696	WALK	STANDARD_QUADRUPED_GAITS		
+classic	valid-gait-name-index	Walk	Walk	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	689	WALK	STANDARD_BIPED_GAITS		
+classic	valid-gait-name-index	Wamble	Wamble	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_creatures\objects\creature_other.txt	288	WALK		WAMBLER_FLUFFY	
+reference	valid-gait-name-index	Canter	Canter	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	695	WALK	STANDARD_QUADRUPED_GAITS		
+reference	valid-gait-name-index	Climb	Climb	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	713	CLIMB	STANDARD_CLIMBING_GAITS		
+reference	valid-gait-name-index	Crawl	Crawl	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	729	CRAWL	STANDARD_CRAWLING_GAITS		
+reference	valid-gait-name-index	Creep	Creep	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	691	WALK	STANDARD_BIPED_GAITS		
+reference	valid-gait-name-index	Creeping Swim	Creeping Swim	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	723	SWIM	STANDARD_SWIMMING_GAITS		
+reference	valid-gait-name-index	Fast Climb	Fast Climb	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	712	CLIMB	STANDARD_CLIMBING_GAITS		
+reference	valid-gait-name-index	Fast Crawl	Fast Crawl	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	728	CRAWL	STANDARD_CRAWLING_GAITS		
+reference	valid-gait-name-index	Fast Flight	Fast Flight	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	736	FLY	STANDARD_FLYING_GAITS		
+reference	valid-gait-name-index	Fast Swim	Fast Swim	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	720	SWIM	STANDARD_SWIMMING_GAITS		
+reference	valid-gait-name-index	Fast Walk	Fast Walk	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	704	WALK	STANDARD_WALKING_GAITS		
+reference	valid-gait-name-index	Faster Climb	Faster Climb	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	711	CLIMB	STANDARD_CLIMBING_GAITS		
+reference	valid-gait-name-index	Faster Crawl	Faster Crawl	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	727	CRAWL	STANDARD_CRAWLING_GAITS		
+reference	valid-gait-name-index	Faster Flight	Faster Flight	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	735	FLY	STANDARD_FLYING_GAITS		
+reference	valid-gait-name-index	Faster Swim	Faster Swim	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	719	SWIM	STANDARD_SWIMMING_GAITS		
+reference	valid-gait-name-index	Faster Walk	Faster Walk	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	703	WALK	STANDARD_WALKING_GAITS		
+reference	valid-gait-name-index	Fastest Walk	Fastest Walk	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	702	WALK	STANDARD_WALKING_GAITS		
+reference	valid-gait-name-index	Fly	Fly	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	737	FLY	STANDARD_FLYING_GAITS		
+reference	valid-gait-name-index	Gallop	Gallop	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	694	WALK	STANDARD_QUADRUPED_GAITS		
+reference	valid-gait-name-index	Hover	Hover	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	739	FLY	STANDARD_FLYING_GAITS		
+reference	valid-gait-name-index	Jog	Jog	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	688	WALK	STANDARD_BIPED_GAITS		
+reference	valid-gait-name-index	Maximum Flight Speed	Maximum Flight S...	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	734	FLY	STANDARD_FLYING_GAITS		
+reference	valid-gait-name-index	Maximum Swim Speed	Maximum Swim Speed	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	718	SWIM	STANDARD_SWIMMING_GAITS		
+reference	valid-gait-name-index	Run	Run	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	687	WALK	STANDARD_BIPED_GAITS		
+reference	valid-gait-name-index	Scramble	Scramble	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	710	CLIMB	STANDARD_CLIMBING_GAITS		
+reference	valid-gait-name-index	Slow Climb	Slow Climb	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	714	CLIMB	STANDARD_CLIMBING_GAITS		
+reference	valid-gait-name-index	Slow Crawl	Slow Crawl	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	730	CRAWL	STANDARD_CRAWLING_GAITS		
+reference	valid-gait-name-index	Slow Flight	Slow Flight	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	738	FLY	STANDARD_FLYING_GAITS		
+reference	valid-gait-name-index	Slow Swim	Slow Swim	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	722	SWIM	STANDARD_SWIMMING_GAITS		
+reference	valid-gait-name-index	Slow Walk	Slow Walk	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	706	WALK	STANDARD_WALKING_GAITS		
+reference	valid-gait-name-index	Slowest Walk	Slowest Walk	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	707	WALK	STANDARD_WALKING_GAITS		
+reference	valid-gait-name-index	Sprint	Sprint	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	686	WALK	STANDARD_BIPED_GAITS		
+reference	valid-gait-name-index	Stroll	Stroll	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	690	WALK	STANDARD_BIPED_GAITS		
+reference	valid-gait-name-index	Stumble Bumble	Stumble Bumble	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_creatures\objects\creature_other.txt	287	WALK		WAMBLER_FLUFFY	
+reference	valid-gait-name-index	Swim	Swim	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	721	SWIM	STANDARD_SWIMMING_GAITS		
+reference	valid-gait-name-index	Trot	Trot	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	696	WALK	STANDARD_QUADRUPED_GAITS		
+reference	valid-gait-name-index	Walk	Walk	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_creatures\objects\c_variation_default.txt	689	WALK	STANDARD_BIPED_GAITS		
+reference	valid-gait-name-index	Wamble	Wamble	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_creatures\objects\creature_other.txt	288	WALK		WAMBLER_FLUFFY	

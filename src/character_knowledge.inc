@@ -4,6 +4,7 @@
 void Overlay::append_character_knowledge_matches(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y,
         const unsigned char *screen_override) const {
+    if (!native_character_translation_active(gps_)) return;
     if (!gps_ || gps_->dimx <= 0 || gps_->dimy <= 0 ||
         rows.size() != static_cast<size_t>(gps_->dimy)) return;
 

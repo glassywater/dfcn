@@ -165,7 +165,8 @@ std::optional<std::string> Overlay::translate_instrument_description(
     const std::string cache_key = std::string(complete_source ? "R:" : "P:") +
         (instrument_context ? "I:" : "A:") + source;
     if (const auto cached = instrument_description_cache_.find(cache_key);
-        cached != instrument_description_cache_.end()) return cached->second;
+        !translation_work_exhausted() && cached != instrument_description_cache_.end())
+        return cached->second;
 
     std::unordered_map<std::string, std::optional<std::string>> memo;
     // Native names are admissible only inside the reviewed instrument
@@ -352,6 +353,8 @@ std::optional<std::string> Overlay::translate_instrument_description(
     std::optional<std::string> result;
     if (complete) {
         result = std::move(translated);
+    }
+    if (complete && !translation_work_exhausted()) {
         bool new_identity = false;
         for (const auto &[name, target] : described_items) {
             const auto known = described_instrument_items_.find(name);
@@ -363,7 +366,9 @@ std::optional<std::string> Overlay::translate_instrument_description(
         // RAW description established that it denotes an instrument item.
         if (new_identity) workshop_recipe_translation_cache_.clear();
     }
-    if (instrument_description_cache_.size() >= 1024) instrument_description_cache_.clear();
-    instrument_description_cache_[cache_key] = result;
+    if (!translation_work_exhausted()) {
+        if (instrument_description_cache_.size() >= 1024) instrument_description_cache_.clear();
+        instrument_description_cache_[cache_key] = result;
+    }
     return result;
 }

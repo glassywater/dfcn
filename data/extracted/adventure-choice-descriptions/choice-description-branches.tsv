@@ -1,0 +1,81 @@
+edition	choice_id	native_branch_rva	choice_role	native_payload	actual_c_role_or_source	native_text_construction
+reference	0	outside indexed switch	no description branch		chooser-description-producer	falls through without constructing description text
+reference	1	outside indexed switch	no description branch		chooser-description-producer	falls through without constructing description text
+reference	2	outside indexed switch	no description branch		chooser-description-producer	falls through without constructing description text
+reference	3	outside indexed switch	no description branch		chooser-description-producer	falls through without constructing description text
+reference	4	outside indexed switch	no description branch		chooser-description-producer	falls through without constructing description text
+reference	5	outside indexed switch	no description branch		chooser-description-producer	falls through without constructing description text
+reference	6	outside indexed switch	no description branch		chooser-description-producer	falls through without constructing description text
+reference	7	outside indexed switch	no description branch		chooser-description-producer	falls through without constructing description text
+reference	8	0x871085	site	context+0x28 = option+0x68	history-describe-complete	site-name + was a + optional dark + site-type + confidence
+reference	9	0x8711dc	historical figure	context+0x20 = option+0x68	figure-description	complete figure biography + confidence
+reference	10	0x871335	entity	context+0x1c = option+0x68	history-describe-complete	complete entity introduction + confidence
+reference	11	0x87148e	subregion	context+0x2c = option+0x68	history-describe-complete	region-name + could be found within + world-name + confidence
+reference	12	0x8715e7	historical event	event ID = option+0x68	../adventure-story-narrative/native-ghidra-functions.tsv	event virtual +0xd0 complete paragraph; context initialized; brief argument true
+reference	13	0x871698	poetic form	form ID = option+0x68	knowledge-poetic-form	complete poetic-form description
+reference	14	0x8717ac	poem	work ID = option+0x68	written-work-content;knowledge-poetic-form	title is an example of form-name, or poetry if no form; complete work content; complete form when found
+reference	15	0x8719af	musical form	form ID = option+0x68	knowledge-musical-form	complete musical-form description
+reference	16	0x871adf	musical composition	work ID = option+0x68	written-work-content;knowledge-musical-form	title is an example of form-name, or musical composition if no form; complete work content; complete form when found
+reference	17	0x871cf3	musical performer role	role index = option+0x68; parent menu+0x64 kind 15 or 16	chooser-description-producer;instrument-stored-description-writer;instrument-helper-*.c	instrument raw description +0x278 when role instrument ID is valid and description length +0x288 is nonzero; otherwise no card text
+reference	18	0x871dc5	dance form	form ID = option+0x68	knowledge-dance-form	complete dance-form description
+reference	19	0x871ec5	choreography	work ID = option+0x68	written-work-content;knowledge-dance-form	title is an example of form-name, or choreography if no form; complete work content; complete form when found
+reference	20	0x872949	no description branch		chooser-description-producer	falls through without constructing description text
+reference	21	0x872949	no description branch		chooser-description-producer	falls through without constructing description text
+reference	22	0x872949	no description branch		chooser-description-producer	falls through without constructing description text
+reference	23	0x872949	no description branch		chooser-description-producer	falls through without constructing description text
+reference	24	0x872949	no description branch		chooser-description-producer	falls through without constructing description text
+reference	25	0x870f66	deity or object of worship	context+0x20 = option+0x68	figure-description	same complete figure biography path as ID9; deity/force/other predicates use actual figure data
+reference	26	0x872949	no description branch		chooser-description-producer	falls through without constructing description text
+reference	27	0x872949	no description branch		chooser-description-producer	falls through without constructing description text
+reference	28	0x872949	no description branch		chooser-description-producer	falls through without constructing description text
+reference	29	0x872949	no description branch		chooser-description-producer	falls through without constructing description text
+reference	30	0x872949	no description branch		chooser-description-producer	falls through without constructing description text
+reference	31	0x87219b	compose poetic form	form = menu+0xd8[option+0x68]	knowledge-poetic-form	complete poetic-form description
+reference	32	0x872949	no description branch		chooser-description-producer	falls through without constructing description text
+reference	33	0x87225c	compose musical form	form = menu+0xf0[option+0x68]	knowledge-musical-form	complete musical-form description
+reference	34	0x872949	no description branch		chooser-description-producer	falls through without constructing description text
+reference	35	0x8722e3	choreograph dance form	form = menu+0x108[option+0x68]	knowledge-dance-form	complete dance-form description
+reference	36	0x872949	no description branch		chooser-description-producer	falls through without constructing description text
+reference	37	0x872949	no description branch		chooser-description-producer	falls through without constructing description text
+reference	38	0x872949	no description branch		chooser-description-producer	falls through without constructing description text
+reference	39	0x8723a4	memorized written content	work = menu+0x160[option+0x68]	chooser-description-producer;written-work-content	titled a/an or untitled genre; optional author; optional example-of form; complete content and form
+classic	0	outside indexed switch	no description branch		chooser-description-producer	falls through without constructing description text
+classic	1	outside indexed switch	no description branch		chooser-description-producer	falls through without constructing description text
+classic	2	outside indexed switch	no description branch		chooser-description-producer	falls through without constructing description text
+classic	3	outside indexed switch	no description branch		chooser-description-producer	falls through without constructing description text
+classic	4	outside indexed switch	no description branch		chooser-description-producer	falls through without constructing description text
+classic	5	outside indexed switch	no description branch		chooser-description-producer	falls through without constructing description text
+classic	6	outside indexed switch	no description branch		chooser-description-producer	falls through without constructing description text
+classic	7	outside indexed switch	no description branch		chooser-description-producer	falls through without constructing description text
+classic	8	0x86e905	site	context+0x28 = option+0x68	history-describe-complete	site-name + was a + optional dark + site-type + confidence
+classic	9	0x86ea5c	historical figure	context+0x20 = option+0x68	figure-description	complete figure biography + confidence
+classic	10	0x86ebb5	entity	context+0x1c = option+0x68	history-describe-complete	complete entity introduction + confidence
+classic	11	0x86ed0e	subregion	context+0x2c = option+0x68	history-describe-complete	region-name + could be found within + world-name + confidence
+classic	12	0x86ee67	historical event	event ID = option+0x68	../adventure-story-narrative/native-ghidra-functions.tsv	event virtual +0xd0 complete paragraph; context initialized; brief argument true
+classic	13	0x86ef18	poetic form	form ID = option+0x68	knowledge-poetic-form	complete poetic-form description
+classic	14	0x86f02c	poem	work ID = option+0x68	written-work-content;knowledge-poetic-form	title is an example of form-name, or poetry if no form; complete work content; complete form when found
+classic	15	0x86f22f	musical form	form ID = option+0x68	knowledge-musical-form	complete musical-form description
+classic	16	0x86f35f	musical composition	work ID = option+0x68	written-work-content;knowledge-musical-form	title is an example of form-name, or musical composition if no form; complete work content; complete form when found
+classic	17	0x86f573	musical performer role	role index = option+0x68; parent menu+0x64 kind 15 or 16	chooser-description-producer;instrument-stored-description-writer;instrument-helper-*.c	instrument raw description +0x278 when role instrument ID is valid and description length +0x288 is nonzero; otherwise no card text
+classic	18	0x86f645	dance form	form ID = option+0x68	knowledge-dance-form	complete dance-form description
+classic	19	0x86f745	choreography	work ID = option+0x68	written-work-content;knowledge-dance-form	title is an example of form-name, or choreography if no form; complete work content; complete form when found
+classic	20	0x8701c9	no description branch		chooser-description-producer	falls through without constructing description text
+classic	21	0x8701c9	no description branch		chooser-description-producer	falls through without constructing description text
+classic	22	0x8701c9	no description branch		chooser-description-producer	falls through without constructing description text
+classic	23	0x8701c9	no description branch		chooser-description-producer	falls through without constructing description text
+classic	24	0x8701c9	no description branch		chooser-description-producer	falls through without constructing description text
+classic	25	0x86e7e6	deity or object of worship	context+0x20 = option+0x68	figure-description	same complete figure biography path as ID9; deity/force/other predicates use actual figure data
+classic	26	0x8701c9	no description branch		chooser-description-producer	falls through without constructing description text
+classic	27	0x8701c9	no description branch		chooser-description-producer	falls through without constructing description text
+classic	28	0x8701c9	no description branch		chooser-description-producer	falls through without constructing description text
+classic	29	0x8701c9	no description branch		chooser-description-producer	falls through without constructing description text
+classic	30	0x8701c9	no description branch		chooser-description-producer	falls through without constructing description text
+classic	31	0x86fa1b	compose poetic form	form = menu+0xd8[option+0x68]	knowledge-poetic-form	complete poetic-form description
+classic	32	0x8701c9	no description branch		chooser-description-producer	falls through without constructing description text
+classic	33	0x86fadc	compose musical form	form = menu+0xf0[option+0x68]	knowledge-musical-form	complete musical-form description
+classic	34	0x8701c9	no description branch		chooser-description-producer	falls through without constructing description text
+classic	35	0x86fb63	choreograph dance form	form = menu+0x108[option+0x68]	knowledge-dance-form	complete dance-form description
+classic	36	0x8701c9	no description branch		chooser-description-producer	falls through without constructing description text
+classic	37	0x8701c9	no description branch		chooser-description-producer	falls through without constructing description text
+classic	38	0x8701c9	no description branch		chooser-description-producer	falls through without constructing description text
+classic	39	0x86fc24	memorized written content	work = menu+0x160[option+0x68]	chooser-description-producer;written-work-content	titled a/an or untitled genre; optional author; optional example-of form; complete content and form

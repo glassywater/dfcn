@@ -1,4 +1,4 @@
-# classic PE:6a70b91c:0270a000; adventure_optionst+8; RVA 0x721e0..0x721e3
+# classic PE:6a70b91c:0270a000; adventure_environment_ingest_from_containerst+0x118;adventure_environment_ingest_materialst+0x118;adventure_environment_pick_up_building_item_contentsst+0x118;adventure_environment_pick_up_building_itemst+0x118;adventure_environment_pick_up_environmentst+0x118;adventure_environment_pick_up_ground_itemst+0x118;adventure_environment_pick_vegetationst+0x118;adventure_environment_pickup_chop_treest+0x118;adventure_environment_pickup_ignite_vegst+0x118;adventure_environment_pickup_make_campfirest+0x118;adventure_environment_pickup_vermin_eventst+0x118;adventure_environment_place_in_bld_containerst+0x118;adventure_environment_place_in_it_containerst+0x118;adventure_environment_place_on_pack_animalst+0x118;adventure_environment_take_from_pack_animalst+0x118;adventure_environment_take_item_from_containerst+0x118;adventure_environment_unit_suck_bloodst+0x118;adventure_item_interact_fill_from_containerst+0x118;adventure_item_interact_fill_with_materialst+0x118;adventure_item_interact_give_namest+0x118;adventure_item_interact_heat_from_tilest+0x118;adventure_item_interact_load_ranged_weaponst+0x118;adventure_item_interact_pull_outst+0x118;adventure_item_interact_readst+0x118;adventure_item_interact_roll_allst+0x118;adventure_item_interact_rollst+0x118;adventure_item_interact_strugglest+0x118;adventure_item_interact_unnockst+0x118;adventure_movement_attack_creaturest+0x118;adventure_movement_building_interact_bash_down_doorst+0x118;adventure_movement_building_interact_break_in_hatchst+0x118;adventure_movement_building_interact_lower_well_bucketst+0x118;adventure_movement_building_interact_pick_door_lockst+0x118;adventure_movement_building_interact_pick_hatch_lockst+0x118;adventure_movement_building_interact_pull_leverst+0x118;adventure_movement_building_interact_raise_well_bucketst+0x118;adventure_movement_building_interact_topple_statuest+0x118;adventure_movement_claim_petst+0x118;adventure_movement_climbst+0x118;adventure_movement_combat_menu_creaturest+0x118;adventure_movement_dismountst+0x118;adventure_movement_hold_itemst+0x118;adventure_movement_hold_tilest+0x118;adventure_movement_item_interact_guidest+0x118;adventure_movement_item_interact_pushst+0x118;adventure_movement_item_interact_ridest+0x118;adventure_movement_jumpst+0x118;adventure_movement_lead_animalst+0x118;adventure_movement_mountst+0x118;adventure_movement_movest+0x118;adventure_movement_pathst+0x118;adventure_movement_release_hold_itemst+0x118;adventure_movement_release_hold_tilest+0x118;adventure_movement_shoot_tilest+0x118;adventure_movement_stop_lead_animalst+0x118;adventure_movement_throw_item_at_tilest+0x118;adventure_option_assume_identityst+0x118;adventure_option_drop_itemst+0x118;adventure_option_eat_drink_itemst+0x118;adventure_option_eat_item_contaminantst+0x118;adventure_option_eat_unit_contaminantst+0x118;adventure_option_interact_with_itemst+0x118;adventure_option_inventory_itemst+0x118;adventure_option_put_itemst+0x118;adventure_option_remove_itemst+0x118;adventure_option_start_shoutingst+0x118;adventure_option_talk_existing_conversationst+0x118;adventure_option_talk_new_conversationst+0x118;adventure_option_throw_itemst+0x118;adventure_option_view_contaminantst+0x118;adventure_option_view_event_detailst+0x118;adventure_option_view_itemst+0x118;adventure_option_view_unitst+0x118;adventure_option_wear_itemst+0x118;adventure_optionst+0x118;adventure_optionst+0x8; RVA 0x721e0..0x721e3
 0x000721e0: ret    0x0
 
 # classic PE:6a70b91c:0270a000; unit-contaminant-field; RVA 0x6559b0..0x655dec
@@ -278,7 +278,7 @@
 0x00655dea: pop    rbp
 0x00655deb: ret
 
-# classic PE:6a70b91c:0270a000; adventure_option_talk_existing_conversationst+8; RVA 0x6b4aa0..0x6b4d34
+# classic PE:6a70b91c:0270a000; adventure_option_talk_existing_conversationst+0x8; RVA 0x6b4aa0..0x6b4d34
 0x006b4aa0: mov    QWORD PTR [rsp+0x8],rbx
 0x006b4aa5: mov    QWORD PTR [rsp+0x18],rbp
 0x006b4aaa: push   rsi
@@ -435,7 +435,7 @@
 0x006b4d32: pop    rsi
 0x006b4d33: ret
 
-# classic PE:6a70b91c:0270a000; adventure_option_view_unitst+8; RVA 0x6b4d40..0x6b4fb5
+# classic PE:6a70b91c:0270a000; adventure_option_view_unitst+0x8; RVA 0x6b4d40..0x6b4fb5
 0x006b4d40: mov    QWORD PTR [rsp+0x8],rbx
 0x006b4d45: mov    QWORD PTR [rsp+0x18],rbp
 0x006b4d4a: mov    QWORD PTR [rsp+0x20],rsi
@@ -592,7 +592,7 @@
 0x006b4fb3: pop    rdi
 0x006b4fb4: ret
 
-# classic PE:6a70b91c:0270a000; adventure_option_talk_new_conversationst+8; RVA 0x6b4fc0..0x6b5205
+# classic PE:6a70b91c:0270a000; adventure_option_talk_new_conversationst+0x8; RVA 0x6b4fc0..0x6b5205
 0x006b4fc0: mov    QWORD PTR [rsp+0x8],rbx
 0x006b4fc5: mov    QWORD PTR [rsp+0x18],rbp
 0x006b4fca: mov    QWORD PTR [rsp+0x20],rsi
@@ -738,13 +738,13 @@
 0x006b5203: pop    rdi
 0x006b5204: ret
 
-# classic PE:6a70b91c:0270a000; adventure_option_start_shoutingst+8; RVA 0x6b53b0..0x6b53c5
+# classic PE:6a70b91c:0270a000; adventure_option_start_shoutingst+0x8; RVA 0x6b53b0..0x6b53c5
 0x006b53b0: mov    rcx,rdx
 0x006b53b3: mov    r8d,0x16
 0x006b53b9: lea    rdx,[rip+0xfc0b58]        # 0x141675f18 ; literal="Shout out to everybody"
 0x006b53c0: jmp    0x14006f860
 
-# classic PE:6a70b91c:0270a000; adventure_option_assume_identityst+8; RVA 0x6b53d0..0x6b53e5
+# classic PE:6a70b91c:0270a000; adventure_option_assume_identityst+0x8; RVA 0x6b53d0..0x6b53e5
 0x006b53d0: mov    rcx,rdx
 0x006b53d3: mov    r8d,0x12
 0x006b53d9: lea    rdx,[rip+0xfc0b00]        # 0x141675ee0 ; literal="Assume an identity"
@@ -843,7 +843,7 @@
 0x0074cdc6: pop    r12
 0x0074cdc8: ret
 
-# classic PE:6a70b91c:0270a000; adventure_environment_ingest_from_containerst+16;adventure_environment_ingest_materialst+16;adventure_environment_pick_up_building_item_contentsst+16;adventure_environment_pick_up_building_itemst+16;adventure_environment_pick_up_environmentst+16;adventure_environment_pick_up_ground_itemst+16;adventure_environment_pick_vegetationst+16;adventure_environment_pickup_chop_treest+16;adventure_environment_pickup_ignite_vegst+16;adventure_environment_pickup_make_campfirest+16;adventure_environment_pickup_vermin_eventst+16;adventure_environment_place_in_bld_containerst+16;adventure_environment_place_in_it_containerst+16;adventure_environment_place_on_pack_animalst+16;adventure_environment_take_from_pack_animalst+16;adventure_environment_take_item_from_containerst+16;adventure_environment_unit_suck_bloodst+16;adventure_item_interact_fill_from_containerst+16;adventure_item_interact_fill_with_materialst+16;adventure_item_interact_give_namest+16;adventure_item_interact_heat_from_tilest+16;adventure_item_interact_load_ranged_weaponst+16;adventure_item_interact_pull_outst+16;adventure_item_interact_readst+16;adventure_item_interact_roll_allst+16;adventure_item_interact_rollst+16;adventure_item_interact_strugglest+16;adventure_item_interact_unnockst+16;adventure_movement_attack_creaturest+16;adventure_movement_building_interact_bash_down_doorst+16;adventure_movement_building_interact_break_in_hatchst+16;adventure_movement_building_interact_lower_well_bucketst+16;adventure_movement_building_interact_pick_door_lockst+16;adventure_movement_building_interact_pick_hatch_lockst+16;adventure_movement_building_interact_pull_leverst+16;adventure_movement_building_interact_raise_well_bucketst+16;adventure_movement_building_interact_topple_statuest+16;adventure_movement_claim_petst+16;adventure_movement_climbst+16;adventure_movement_combat_menu_creaturest+16;adventure_movement_dismountst+16;adventure_movement_hold_itemst+16;adventure_movement_hold_tilest+16;adventure_movement_item_interact_guidest+16;adventure_movement_item_interact_pushst+16;adventure_movement_item_interact_ridest+16;adventure_movement_jumpst+16;adventure_movement_lead_animalst+16;adventure_movement_mountst+16;adventure_movement_movest+16;adventure_movement_pathst+16;adventure_movement_release_hold_itemst+16;adventure_movement_release_hold_tilest+16;adventure_movement_shoot_creaturest+16;adventure_movement_shoot_tilest+16;adventure_movement_stop_lead_animalst+16;adventure_movement_throw_item_at_creaturest+16;adventure_movement_throw_item_at_tilest+16;adventure_option_assume_identityst+16;adventure_option_eat_item_contaminantst+16;adventure_option_eat_unit_contaminantst+16;adventure_option_interact_with_itemst+16;adventure_option_inventory_itemst+16;adventure_option_start_shoutingst+16;adventure_option_talk_existing_conversationst+16;adventure_option_talk_new_conversationst+16;adventure_option_view_contaminantst+16;adventure_option_view_unitst+16;adventure_optionst+16; RVA 0x7deab0..0x7deac6
+# classic PE:6a70b91c:0270a000; adventure_environment_ingest_from_containerst+0x10;adventure_environment_ingest_materialst+0x10;adventure_environment_pick_up_building_item_contentsst+0x10;adventure_environment_pick_up_building_itemst+0x10;adventure_environment_pick_up_environmentst+0x10;adventure_environment_pick_up_ground_itemst+0x10;adventure_environment_pick_vegetationst+0x10;adventure_environment_pickup_chop_treest+0x10;adventure_environment_pickup_ignite_vegst+0x10;adventure_environment_pickup_make_campfirest+0x10;adventure_environment_pickup_vermin_eventst+0x10;adventure_environment_place_in_bld_containerst+0x10;adventure_environment_place_in_it_containerst+0x10;adventure_environment_place_on_pack_animalst+0x10;adventure_environment_take_from_pack_animalst+0x10;adventure_environment_take_item_from_containerst+0x10;adventure_environment_unit_suck_bloodst+0x10;adventure_item_interact_fill_from_containerst+0x10;adventure_item_interact_fill_with_materialst+0x10;adventure_item_interact_give_namest+0x10;adventure_item_interact_heat_from_tilest+0x10;adventure_item_interact_load_ranged_weaponst+0x10;adventure_item_interact_pull_outst+0x10;adventure_item_interact_readst+0x10;adventure_item_interact_roll_allst+0x10;adventure_item_interact_rollst+0x10;adventure_item_interact_strugglest+0x10;adventure_item_interact_unnockst+0x10;adventure_movement_attack_creaturest+0x10;adventure_movement_building_interact_bash_down_doorst+0x10;adventure_movement_building_interact_break_in_hatchst+0x10;adventure_movement_building_interact_lower_well_bucketst+0x10;adventure_movement_building_interact_pick_door_lockst+0x10;adventure_movement_building_interact_pick_hatch_lockst+0x10;adventure_movement_building_interact_pull_leverst+0x10;adventure_movement_building_interact_raise_well_bucketst+0x10;adventure_movement_building_interact_topple_statuest+0x10;adventure_movement_claim_petst+0x10;adventure_movement_climbst+0x10;adventure_movement_combat_menu_creaturest+0x10;adventure_movement_dismountst+0x10;adventure_movement_hold_itemst+0x10;adventure_movement_hold_tilest+0x10;adventure_movement_item_interact_guidest+0x10;adventure_movement_item_interact_pushst+0x10;adventure_movement_item_interact_ridest+0x10;adventure_movement_jumpst+0x10;adventure_movement_lead_animalst+0x10;adventure_movement_mountst+0x10;adventure_movement_movest+0x10;adventure_movement_pathst+0x10;adventure_movement_release_hold_itemst+0x10;adventure_movement_release_hold_tilest+0x10;adventure_movement_shoot_creaturest+0x10;adventure_movement_shoot_tilest+0x10;adventure_movement_stop_lead_animalst+0x10;adventure_movement_throw_item_at_creaturest+0x10;adventure_movement_throw_item_at_tilest+0x10;adventure_option_assume_identityst+0x10;adventure_option_eat_item_contaminantst+0x10;adventure_option_eat_unit_contaminantst+0x10;adventure_option_interact_with_itemst+0x10;adventure_option_inventory_itemst+0x10;adventure_option_start_shoutingst+0x10;adventure_option_talk_existing_conversationst+0x10;adventure_option_talk_new_conversationst+0x10;adventure_option_view_contaminantst+0x10;adventure_option_view_unitst+0x10;adventure_optionst+0x10; RVA 0x7deab0..0x7deac6
 0x007deab0: mov    rax,QWORD PTR [rcx]
 0x007deab3: rex.W jmp QWORD PTR [rax+0x8]
 0x007deab7: int3
@@ -858,43 +858,389 @@
 0x007deac0: mov    eax,0xffff8ad0
 0x007deac5: ret
 
-# classic PE:6a70b91c:0270a000; adventure_item_interact_strugglest+8; RVA 0x7deb60..0x7deb75
+# classic PE:6a70b91c:0270a000; adventure_item_interact_strugglest+0x8; RVA 0x7deb60..0x7deb75
 0x007deb60: mov    rcx,rdx
 0x007deb63: mov    r8d,0xf
 0x007deb69: lea    rdx,[rip+0xec9b88]        # 0x1416a86f8 ; literal="Gain possession"
 0x007deb70: jmp    0x14006f860
 
-# classic PE:6a70b91c:0270a000; adventure_item_interact_pull_outst+8; RVA 0x7deba0..0x7debb5
+# classic PE:6a70b91c:0270a000; adventure_item_interact_pull_outst+0x8; RVA 0x7deba0..0x7debb5
 0x007deba0: mov    rcx,rdx
 0x007deba3: mov    r8d,0xb
 0x007deba9: lea    rdx,[rip+0xec9b38]        # 0x1416a86e8 ; literal="Pull it out"
 0x007debb0: jmp    0x14006f860
 
-# classic PE:6a70b91c:0270a000; adventure_item_interact_unnockst+8; RVA 0x7debc0..0x7debd5
+# classic PE:6a70b91c:0270a000; adventure_item_interact_unnockst+0x8; RVA 0x7debc0..0x7debd5
 0x007debc0: mov    rcx,rdx
 0x007debc3: mov    r8d,0xd
 0x007debc9: lea    rdx,[rip+0xec9b40]        # 0x1416a8710 ; literal="Cease nocking"
 0x007debd0: jmp    0x14006f860
 
-# classic PE:6a70b91c:0270a000; adventure_item_interact_readst+8; RVA 0x7dec50..0x7dec65
+# classic PE:6a70b91c:0270a000; adventure_item_interact_readst+0x8; RVA 0x7dec50..0x7dec65
 0x007dec50: mov    rcx,rdx
 0x007dec53: mov    r8d,0x4
 0x007dec59: lea    rdx,[rip+0xe0497c]        # 0x1415e35dc ; literal="Read"
 0x007dec60: jmp    0x14006f860
 
-# classic PE:6a70b91c:0270a000; adventure_item_interact_rollst+8; RVA 0x7dec70..0x7dec85
+# classic PE:6a70b91c:0270a000; adventure_item_interact_rollst+0x8; RVA 0x7dec70..0x7dec85
 0x007dec70: mov    rcx,rdx
 0x007dec73: mov    r8d,0x4
 0x007dec79: lea    rdx,[rip+0xec9a88]        # 0x1416a8708 ; literal="Roll"
 0x007dec80: jmp    0x14006f860
 
-# classic PE:6a70b91c:0270a000; adventure_item_interact_roll_allst+8; RVA 0x7dec90..0x7deca5
+# classic PE:6a70b91c:0270a000; adventure_item_interact_roll_allst+0x8; RVA 0x7dec90..0x7deca5
 0x007dec90: mov    rcx,rdx
 0x007dec93: mov    r8d,0x8
 0x007dec99: lea    rdx,[rip+0xec98e0]        # 0x1416a8580 ; literal="Roll all"
 0x007deca0: jmp    0x14006f860
 
-# classic PE:6a70b91c:0270a000; adventure_item_interact_load_ranged_weaponst+8; RVA 0x8325d0..0x83272d
+# classic PE:6a70b91c:0270a000; conflict-prefix-renderer; RVA 0x7e20e0..0x7e26f4
+0x007e20e0: mov    QWORD PTR [rsp+0x10],rbx
+0x007e20e5: mov    QWORD PTR [rsp+0x18],rsi
+0x007e20ea: mov    QWORD PTR [rsp+0x20],rdi
+0x007e20ef: push   rbp
+0x007e20f0: push   r12
+0x007e20f2: push   r13
+0x007e20f4: push   r14
+0x007e20f6: push   r15
+0x007e20f8: lea    rbp,[rsp-0x37]
+0x007e20fd: sub    rsp,0xd0
+0x007e2104: mov    rax,QWORD PTR [rip+0x10b3f35]        # 0x141896040
+0x007e210b: xor    rax,rsp
+0x007e210e: mov    QWORD PTR [rbp+0x27],rax
+0x007e2112: mov    QWORD PTR [rbp-0x59],rcx
+0x007e2116: mov    rdx,QWORD PTR [rip+0x1bfcee3]        # 0x1423df000
+0x007e211d: cmp    rcx,rdx
+0x007e2120: je     0x1407e26c4
+0x007e2126: mov    r8,rcx
+0x007e2129: call   0x1414ddf80
+0x007e212e: movsxd r13,eax
+0x007e2131: cmp    r13d,0xffffffff
+0x007e2135: je     0x1407e2432
+0x007e213b: cmp    r13d,0x6
+0x007e213f: ja     0x1407e23f8
+0x007e2145: lea    rdx,[rip+0xffffffffff81deb4]        # 0x140000000
+0x007e214c: mov    ecx,DWORD PTR [rdx+r13*4+0x7e26f4]
+0x007e2154: add    rcx,rdx
+0x007e2157: jmp    rcx
+0x007e2159: mov    DWORD PTR [rip+0x1e62209],0x1000007        # 0x14264436c
+0x007e2163: xorps  xmm0,xmm0
+0x007e2166: movups XMMWORD PTR [rbp+0x7],xmm0
+0x007e216a: movdqa xmm1,XMMWORD PTR [rip+0xfa393e]        # 0x141785ab0
+0x007e2172: movdqu XMMWORD PTR [rbp+0x17],xmm1
+0x007e2177: movsd  xmm0,QWORD PTR [rip+0xe48ab1]        # 0x14162ac30 ; literal="Encounter"
+0x007e217f: movsd  QWORD PTR [rbp+0x7],xmm0
+0x007e2184: movzx  eax,BYTE PTR [rip+0xe48aad]        # 0x14162ac38 ; literal="r"
+0x007e218b: mov    BYTE PTR [rbp+0xf],al
+0x007e218e: mov    BYTE PTR [rbp+0x10],0x0
+0x007e2192: xor    r9d,r9d
+0x007e2195: lea    rdx,[rbp+0x7]
+0x007e2199: lea    rcx,[rip+0x1e62140]        # 0x1426442e0
+0x007e21a0: call   0x140ad69a0
+0x007e21a5: nop
+0x007e21a6: lea    rcx,[rbp+0x7]
+0x007e21aa: call   0x14006f7e0
+0x007e21af: jmp    0x1407e23f8
+0x007e21b4: mov    DWORD PTR [rip+0x1e621ae],0x1010002        # 0x14264436c
+0x007e21be: xorps  xmm0,xmm0
+0x007e21c1: movups XMMWORD PTR [rbp+0x7],xmm0
+0x007e21c5: movdqa xmm1,XMMWORD PTR [rip+0xfa38e3]        # 0x141785ab0
+0x007e21cd: movdqu XMMWORD PTR [rbp+0x17],xmm1
+0x007e21d2: movsd  xmm0,QWORD PTR [rip+0xe48a66]        # 0x14162ac40 ; literal="Horseplay"
+0x007e21da: movsd  QWORD PTR [rbp+0x7],xmm0
+0x007e21df: movzx  eax,BYTE PTR [rip+0xe48a62]        # 0x14162ac48 ; literal="y"
+0x007e21e6: mov    BYTE PTR [rbp+0xf],al
+0x007e21e9: mov    BYTE PTR [rbp+0x10],0x0
+0x007e21ed: xor    r9d,r9d
+0x007e21f0: lea    rdx,[rbp+0x7]
+0x007e21f4: lea    rcx,[rip+0x1e620e5]        # 0x1426442e0
+0x007e21fb: call   0x140ad69a0
+0x007e2200: nop
+0x007e2201: lea    rcx,[rbp+0x7]
+0x007e2205: call   0x14006f7e0
+0x007e220a: jmp    0x1407e23f8
+0x007e220f: mov    DWORD PTR [rip+0x1e62153],0x1010007        # 0x14264436c
+0x007e2219: xorps  xmm0,xmm0
+0x007e221c: movups XMMWORD PTR [rbp+0x7],xmm0
+0x007e2220: movdqa xmm1,XMMWORD PTR [rip+0xfa3878]        # 0x141785aa0
+0x007e2228: movdqu XMMWORD PTR [rbp+0x17],xmm1
+0x007e222d: movabs rax,0x676e696e69617254 ; inline="Training"
+0x007e2237: mov    QWORD PTR [rbp+0x7],rax
+0x007e223b: mov    BYTE PTR [rbp+0xf],0x0
+0x007e223f: xor    r9d,r9d
+0x007e2242: lea    rdx,[rbp+0x7]
+0x007e2246: lea    rcx,[rip+0x1e62093]        # 0x1426442e0
+0x007e224d: call   0x140ad69a0
+0x007e2252: nop
+0x007e2253: lea    rcx,[rbp+0x7]
+0x007e2257: call   0x14006f7e0
+0x007e225c: jmp    0x1407e23f8
+0x007e2261: mov    DWORD PTR [rip+0x1e62101],0x1010003        # 0x14264436c
+0x007e226b: xorps  xmm0,xmm0
+0x007e226e: movups XMMWORD PTR [rbp+0x7],xmm0
+0x007e2272: movdqa xmm1,XMMWORD PTR [rip+0xfa37f6]        # 0x141785a70
+0x007e227a: movdqu XMMWORD PTR [rbp+0x17],xmm1
+0x007e227f: mov    eax,DWORD PTR [rip+0xe48a0f]        # 0x14162ac94 ; literal="Brawl"
+0x007e2285: mov    DWORD PTR [rbp+0x7],eax
+0x007e2288: movzx  eax,BYTE PTR [rip+0xe48a09]        # 0x14162ac98 ; literal="l"
+0x007e228f: mov    BYTE PTR [rbp+0xb],al
+0x007e2292: mov    BYTE PTR [rbp+0xc],0x0
+0x007e2296: xor    r9d,r9d
+0x007e2299: lea    rdx,[rbp+0x7]
+0x007e229d: lea    rcx,[rip+0x1e6203c]        # 0x1426442e0
+0x007e22a4: call   0x140ad69a0
+0x007e22a9: nop
+0x007e22aa: lea    rcx,[rbp+0x7]
+0x007e22ae: call   0x14006f7e0
+0x007e22b3: jmp    0x1407e23f8
+0x007e22b8: mov    DWORD PTR [rip+0x1e620aa],0x1010006        # 0x14264436c
+0x007e22c2: xorps  xmm0,xmm0
+0x007e22c5: movups XMMWORD PTR [rbp+0x7],xmm0
+0x007e22c9: movdqa xmm1,XMMWORD PTR [rip+0xfa37ef]        # 0x141785ac0
+0x007e22d1: movdqu XMMWORD PTR [rbp+0x17],xmm1
+0x007e22d6: movsd  xmm0,QWORD PTR [rip+0xe48992]        # 0x14162ac70 ; literal="Non-lethal"
+0x007e22de: movsd  QWORD PTR [rbp+0x7],xmm0
+0x007e22e3: movzx  eax,WORD PTR [rip+0xe4898e]        # 0x14162ac78 ; literal="al"
+0x007e22ea: mov    WORD PTR [rbp+0xf],ax
+0x007e22ee: mov    BYTE PTR [rbp+0x11],0x0
+0x007e22f2: xor    r9d,r9d
+0x007e22f5: lea    rdx,[rbp+0x7]
+0x007e22f9: lea    rcx,[rip+0x1e61fe0]        # 0x1426442e0
+0x007e2300: call   0x140ad69a0
+0x007e2305: nop
+0x007e2306: lea    rcx,[rbp+0x7]
+0x007e230a: call   0x14006f7e0
+0x007e230f: jmp    0x1407e23f8
+0x007e2314: mov    DWORD PTR [rip+0x1e6204e],0x1010004        # 0x14264436c
+0x007e231e: xorps  xmm0,xmm0
+0x007e2321: movups XMMWORD PTR [rbp+0x7],xmm0
+0x007e2325: movdqa xmm1,XMMWORD PTR [rip+0xfa3753]        # 0x141785a80
+0x007e232d: movdqu XMMWORD PTR [rbp+0x17],xmm1
+0x007e2332: mov    eax,DWORD PTR [rip+0xe48944]        # 0x14162ac7c ; literal="Lethal"
+0x007e2338: mov    DWORD PTR [rbp+0x7],eax
+0x007e233b: movzx  eax,WORD PTR [rip+0xe4893e]        # 0x14162ac80 ; literal="al"
+0x007e2342: mov    WORD PTR [rbp+0xb],ax
+0x007e2346: mov    BYTE PTR [rbp+0xd],0x0
+0x007e234a: xor    r9d,r9d
+0x007e234d: lea    rdx,[rbp+0x7]
+0x007e2351: lea    rcx,[rip+0x1e61f88]        # 0x1426442e0
+0x007e2358: call   0x140ad69a0
+0x007e235d: nop
+0x007e235e: lea    rcx,[rbp+0x7]
+0x007e2362: call   0x14006f7e0
+0x007e2367: jmp    0x1407e23f8
+0x007e236c: mov    DWORD PTR [rip+0x1e61ff6],0x1010005        # 0x14264436c
+0x007e2376: xorps  xmm0,xmm0
+0x007e2379: movups XMMWORD PTR [rbp+0x7],xmm0
+0x007e237d: movdqa xmm1,XMMWORD PTR [rip+0xfa373b]        # 0x141785ac0
+0x007e2385: movdqu XMMWORD PTR [rbp+0x17],xmm1
+0x007e238a: movsd  xmm0,QWORD PTR [rip+0xe4883e]        # 0x14162abd0 ; literal="No Quarter"
+0x007e2392: movsd  QWORD PTR [rbp+0x7],xmm0
+0x007e2397: movzx  eax,WORD PTR [rip+0xe4883a]        # 0x14162abd8 ; literal="er"
+0x007e239e: mov    WORD PTR [rbp+0xf],ax
+0x007e23a2: mov    BYTE PTR [rbp+0x11],0x0
+0x007e23a6: xor    r9d,r9d
+0x007e23a9: lea    rdx,[rbp+0x7]
+0x007e23ad: lea    rcx,[rip+0x1e61f2c]        # 0x1426442e0
+0x007e23b4: call   0x140ad69a0
+0x007e23b9: nop
+0x007e23ba: mov    rdx,QWORD PTR [rbp+0x1f]
+0x007e23be: cmp    rdx,0xf
+0x007e23c2: jbe    0x1407e23f8
+0x007e23c4: inc    rdx
+0x007e23c7: mov    rcx,QWORD PTR [rbp+0x7]
+0x007e23cb: mov    rax,rcx
+0x007e23ce: cmp    rdx,0x1000
+0x007e23d5: jb     0x1407e23f3
+0x007e23d7: add    rdx,0x27
+0x007e23db: mov    rcx,QWORD PTR [rcx-0x8]
+0x007e23df: sub    rax,rcx
+0x007e23e2: add    rax,0xfffffffffffffff8
+0x007e23e6: cmp    rax,0x1f
+0x007e23ea: jbe    0x1407e23f3
+0x007e23ec: call   QWORD PTR [rip+0xdfe6ae]        # 0x1415e0aa0
+0x007e23f2: int3
+0x007e23f3: call   0x1415345f0
+0x007e23f8: xorps  xmm0,xmm0
+0x007e23fb: movups XMMWORD PTR [rbp+0x7],xmm0
+0x007e23ff: movdqa xmm1,XMMWORD PTR [rip+0xfa3639]        # 0x141785a40
+0x007e2407: movdqu XMMWORD PTR [rbp+0x17],xmm1
+0x007e240c: mov    eax,0x203a
+0x007e2411: mov    WORD PTR [rbp+0x7],ax
+0x007e2415: mov    BYTE PTR [rbp+0x9],0x0
+0x007e2419: xor    r9d,r9d
+0x007e241c: lea    rdx,[rbp+0x7]
+0x007e2420: lea    rcx,[rip+0x1e61eb9]        # 0x1426442e0
+0x007e2427: call   0x140ad69a0
+0x007e242c: nop
+0x007e242d: jmp    0x1407e26bb
+0x007e2432: mov    r12,QWORD PTR [rip+0x1bfcbc7]        # 0x1423df000
+0x007e2439: mov    r15,QWORD PTR [r12+0x300]
+0x007e2441: mov    r12,QWORD PTR [r12+0x308]
+0x007e2449: mov    QWORD PTR [rbp-0x41],r12
+0x007e244d: mov    r11,QWORD PTR [rip+0x1cfb2bc]        # 0x1424dd710
+0x007e2454: cmp    r15,r12
+0x007e2457: jae    0x1407e266b
+0x007e245d: mov    r10d,DWORD PTR [r15]
+0x007e2460: mov    r9,QWORD PTR [rip+0x1cfb2b1]        # 0x1424dd718
+0x007e2467: sub    r9,r11
+0x007e246a: sar    r9,0x3
+0x007e246e: test   r9,r9
+0x007e2471: je     0x1407e2662
+0x007e2477: cmp    r10d,0xffffffff
+0x007e247b: je     0x1407e2662
+0x007e2481: xor    edx,edx
+0x007e2483: sub    r9d,0x1
+0x007e2487: js     0x1407e24b6
+0x007e2489: nop    DWORD PTR [rax+0x0]
+0x007e2490: lea    ecx,[rdx+r9*1]
+0x007e2494: sar    ecx,1
+0x007e2496: movsxd rax,ecx
+0x007e2499: mov    r14,QWORD PTR [r11+rax*8]
+0x007e249d: cmp    DWORD PTR [r14],r10d
+0x007e24a0: je     0x1407e24b9
+0x007e24a2: lea    eax,[rcx+0x1]
+0x007e24a5: cmovle edx,eax
+0x007e24a8: lea    eax,[rcx-0x1]
+0x007e24ab: cmovle eax,r9d
+0x007e24af: mov    r9d,eax
+0x007e24b2: cmp    edx,eax
+0x007e24b4: jle    0x1407e2490
+0x007e24b6: xor    r14d,r14d
+0x007e24b9: test   r14,r14
+0x007e24bc: je     0x1407e2662
+0x007e24c2: cmp    WORD PTR [r14+0x4],0x2
+0x007e24c8: jne    0x1407e2662
+0x007e24ce: mov    rsi,QWORD PTR [r14+0x8]
+0x007e24d2: mov    r14,QWORD PTR [r14+0x10]
+0x007e24d6: mov    QWORD PTR [rbp-0x49],r14
+0x007e24da: nop    WORD PTR [rax+rax*1+0x0]
+0x007e24e0: cmp    rsi,r14
+0x007e24e3: jae    0x1407e2657
+0x007e24e9: mov    rcx,QWORD PTR [rsi]
+0x007e24ec: mov    rax,QWORD PTR [rcx]
+0x007e24ef: call   QWORD PTR [rax]
+0x007e24f1: cmp    ax,0x8
+0x007e24f5: jne    0x1407e264e
+0x007e24fb: mov    rdi,QWORD PTR [rsi]
+0x007e24fe: test   BYTE PTR [rdi+0x14],0x1
+0x007e2502: jne    0x1407e264e
+0x007e2508: mov    rbx,QWORD PTR [rdi+0x48]
+0x007e250c: mov    rdi,QWORD PTR [rdi+0x50]
+0x007e2510: mov    r12,QWORD PTR [rip+0x1bfcae9]        # 0x1423df000
+0x007e2517: mov    r14,QWORD PTR [rbp-0x59]
+0x007e251b: nop    DWORD PTR [rax+rax*1+0x0]
+0x007e2520: cmp    rbx,rdi
+0x007e2523: jae    0x1407e264a
+0x007e2529: mov    rax,QWORD PTR [rbx]
+0x007e252c: add    rax,0x8
+0x007e2530: mov    QWORD PTR [rbp-0x51],rax
+0x007e2534: mov    r8d,DWORD PTR [r12+0xc30]
+0x007e253c: mov    rdx,rax
+0x007e253f: lea    rcx,[rbp-0x39]
+0x007e2543: call   0x1400bab70
+0x007e2548: mov    DWORD PTR [rbp-0x79],0xffffffff
+0x007e254f: mov    DWORD PTR [rbp-0x75],0x0
+0x007e2556: mov    rax,QWORD PTR [rbp-0x79]
+0x007e255a: cmp    BYTE PTR [rbp-0x31],0x0
+0x007e255e: cmovne rax,QWORD PTR [rbp-0x39]
+0x007e2563: cmp    eax,0xffffffff
+0x007e2566: jne    0x1407e25a4
+0x007e2568: mov    rdx,QWORD PTR [rbx]
+0x007e256b: add    rdx,0x20
+0x007e256f: mov    r8d,DWORD PTR [r12+0x130]
+0x007e2577: lea    rcx,[rbp-0x29]
+0x007e257b: call   0x1400bab70
+0x007e2580: mov    DWORD PTR [rbp-0x71],0xffffffff
+0x007e2587: mov    DWORD PTR [rbp-0x6d],0x0
+0x007e258e: mov    rax,QWORD PTR [rbp-0x71]
+0x007e2592: cmp    BYTE PTR [rbp-0x21],0x0
+0x007e2596: cmovne rax,QWORD PTR [rbp-0x29]
+0x007e259b: cmp    eax,0xffffffff
+0x007e259e: je     0x1407e2641
+0x007e25a4: mov    r8d,DWORD PTR [r14+0xc30]
+0x007e25ab: mov    rdx,QWORD PTR [rbp-0x51]
+0x007e25af: lea    rcx,[rbp-0x19]
+0x007e25b3: call   0x1400bab70
+0x007e25b8: mov    DWORD PTR [rbp-0x69],0xffffffff
+0x007e25bf: mov    DWORD PTR [rbp-0x65],0x0
+0x007e25c6: mov    rax,QWORD PTR [rbp-0x69]
+0x007e25ca: cmp    BYTE PTR [rbp-0x11],0x0
+0x007e25ce: cmovne rax,QWORD PTR [rbp-0x19]
+0x007e25d3: cmp    eax,0xffffffff
+0x007e25d6: jne    0x1407e260f
+0x007e25d8: mov    rdx,QWORD PTR [rbx]
+0x007e25db: add    rdx,0x20
+0x007e25df: mov    r8d,DWORD PTR [r14+0x130]
+0x007e25e6: lea    rcx,[rbp-0x9]
+0x007e25ea: call   0x1400bab70
+0x007e25ef: mov    DWORD PTR [rbp-0x61],0xffffffff
+0x007e25f6: mov    DWORD PTR [rbp-0x5d],0x0
+0x007e25fd: mov    rax,QWORD PTR [rbp-0x61]
+0x007e2601: cmp    BYTE PTR [rbp-0x1],0x0
+0x007e2605: cmovne rax,QWORD PTR [rbp-0x9]
+0x007e260a: cmp    eax,0xffffffff
+0x007e260d: je     0x1407e2641
+0x007e260f: mov    rcx,QWORD PTR [rbx]
+0x007e2612: mov    rax,QWORD PTR [rcx+0x38]
+0x007e2616: mov    rcx,QWORD PTR [rcx+0x40]
+0x007e261a: nop    WORD PTR [rax+rax*1+0x0]
+0x007e2620: cmp    rax,rcx
+0x007e2623: jae    0x1407e2641
+0x007e2625: cmp    r13d,0xffffffff
+0x007e2629: je     0x1407e2634
+0x007e262b: mov    rdx,QWORD PTR [rax]
+0x007e262e: cmp    DWORD PTR [rdx+0x4],r13d
+0x007e2632: jle    0x1407e263b
+0x007e2634: mov    r13,QWORD PTR [rax]
+0x007e2637: mov    r13d,DWORD PTR [r13+0x4]
+0x007e263b: add    rax,0x8
+0x007e263f: jmp    0x1407e2620
+0x007e2641: add    rbx,0x8
+0x007e2645: jmp    0x1407e2520
+0x007e264a: mov    r14,QWORD PTR [rbp-0x49]
+0x007e264e: add    rsi,0x8
+0x007e2652: jmp    0x1407e24e0
+0x007e2657: mov    r11,QWORD PTR [rip+0x1cfb0b2]        # 0x1424dd710
+0x007e265e: mov    r12,QWORD PTR [rbp-0x41]
+0x007e2662: add    r15,0x4
+0x007e2666: jmp    0x1407e2454
+0x007e266b: cmp    r13d,0xffffffff
+0x007e266f: je     0x1407e26c4
+0x007e2671: mov    DWORD PTR [rip+0x1e61cf1],0x1010001        # 0x14264436c
+0x007e267b: xorps  xmm0,xmm0
+0x007e267e: movups XMMWORD PTR [rbp+0x7],xmm0
+0x007e2682: movdqa xmm1,XMMWORD PTR [rip+0xfa33f6]        # 0x141785a80
+0x007e268a: movdqu XMMWORD PTR [rbp+0x17],xmm1
+0x007e268f: mov    eax,DWORD PTR [rip+0xec5fbb]        # 0x1416a8650 ; literal="Ally: "
+0x007e2695: mov    DWORD PTR [rbp+0x7],eax
+0x007e2698: movzx  eax,WORD PTR [rip+0xec5fb5]        # 0x1416a8654 ; literal=": "
+0x007e269f: mov    WORD PTR [rbp+0xb],ax
+0x007e26a3: mov    BYTE PTR [rbp+0xd],0x0
+0x007e26a7: xor    r9d,r9d
+0x007e26aa: lea    rdx,[rbp+0x7]
+0x007e26ae: lea    rcx,[rip+0x1e61c2b]        # 0x1426442e0
+0x007e26b5: call   0x140ad69a0
+0x007e26ba: nop
+0x007e26bb: lea    rcx,[rbp+0x7]
+0x007e26bf: call   0x14006f7e0
+0x007e26c4: mov    rcx,QWORD PTR [rbp+0x27]
+0x007e26c8: xor    rcx,rsp
+0x007e26cb: call   0x1415345d0
+0x007e26d0: lea    r11,[rsp+0xd0]
+0x007e26d8: mov    rbx,QWORD PTR [r11+0x38]
+0x007e26dc: mov    rsi,QWORD PTR [r11+0x40]
+0x007e26e0: mov    rdi,QWORD PTR [r11+0x48]
+0x007e26e4: mov    rsp,r11
+0x007e26e7: pop    r15
+0x007e26e9: pop    r14
+0x007e26eb: pop    r13
+0x007e26ed: pop    r12
+0x007e26ef: pop    rbp
+0x007e26f0: ret
+0x007e26f1: nop    DWORD PTR [rax]
+
+# classic PE:6a70b91c:0270a000; adventure_item_interact_load_ranged_weaponst+0x8; RVA 0x8325d0..0x83272d
 0x008325d0: mov    QWORD PTR [rsp+0x18],rbx
 0x008325d5: push   rdi
 0x008325d6: sub    rsp,0x50
@@ -978,7 +1324,7 @@
 0x0083272b: pop    rdi
 0x0083272c: ret
 
-# classic PE:6a70b91c:0270a000; adventure_item_interact_fill_from_containerst+8; RVA 0x832ae0..0x832ce0
+# classic PE:6a70b91c:0270a000; adventure_item_interact_fill_from_containerst+0x8; RVA 0x832ae0..0x832ce0
 0x00832ae0: mov    QWORD PTR [rsp+0x18],rbx
 0x00832ae5: mov    QWORD PTR [rsp+0x20],rdi
 0x00832aea: push   rbp
@@ -1098,7 +1444,7 @@
 0x00832cde: pop    rbp
 0x00832cdf: ret
 
-# classic PE:6a70b91c:0270a000; adventure_item_interact_fill_with_materialst+8; RVA 0x832ce0..0x8335ca
+# classic PE:6a70b91c:0270a000; adventure_item_interact_fill_with_materialst+0x8; RVA 0x832ce0..0x8335ca
 0x00832ce0: mov    QWORD PTR [rsp+0x18],rbx
 0x00832ce5: push   rbp
 0x00832ce6: push   rsi
@@ -1652,7 +1998,7 @@
 0x008335c8: pop    rbp
 0x008335c9: ret
 
-# classic PE:6a70b91c:0270a000; adventure_item_interact_give_namest+8; RVA 0x8335d0..0x8336b1
+# classic PE:6a70b91c:0270a000; adventure_item_interact_give_namest+0x8; RVA 0x8335d0..0x8336b1
 0x008335d0: mov    QWORD PTR [rsp+0x18],rbx
 0x008335d5: push   rdi
 0x008335d6: sub    rsp,0x50
@@ -1707,7 +2053,7 @@
 0x008336af: pop    rdi
 0x008336b0: ret
 
-# classic PE:6a70b91c:0270a000; adventure_item_interact_heat_from_tilest+8; RVA 0x8336c0..0x83391c
+# classic PE:6a70b91c:0270a000; adventure_item_interact_heat_from_tilest+0x8; RVA 0x8336c0..0x8338f4
 0x008336c0: mov    QWORD PTR [rsp+0x18],rbx
 0x008336c5: mov    QWORD PTR [rsp+0x20],rsi
 0x008336ca: push   rdi
@@ -1835,24 +2181,8 @@
 0x008338ef: pop    rdi
 0x008338f0: ret
 0x008338f1: nop    DWORD PTR [rax]
-0x008338f4: sbb    DWORD PTR [rax],edi
-0x008338f6: add    DWORD PTR [rax],0x2e
-0x008338f9: cmp    BYTE PTR [rbx-0x7cc7d200],al
-0x008338ff: add    BYTE PTR [rdx],cl
-0x00833901: cmp    BYTE PTR [rbx-0x7cc83200],al
-0x00833907: add    ch,bl
-0x00833909: (bad)
-0x0083390a: add    DWORD PTR [rax],0xffffffec
-0x0083390d: (bad)
-0x0083390e: add    DWORD PTR [rax],0xfffffffb
-0x00833911: (bad)
-0x00833912: add    DWORD PTR [rax],0xfffffffb
-0x00833915: (bad)
-0x00833916: add    DWORD PTR [rax],0xfffffffb
-0x00833919: (bad)
-0x0083391a: .byte 0x83
 
-# classic PE:6a70b91c:0270a000; adventure_environment_place_on_pack_animalst+8; RVA 0x835720..0x835861
+# classic PE:6a70b91c:0270a000; adventure_environment_place_on_pack_animalst+0x8; RVA 0x835720..0x835861
 0x00835720: mov    QWORD PTR [rsp+0x18],rbx
 0x00835725: push   rdi
 0x00835726: sub    rsp,0x70
@@ -1927,7 +2257,7 @@
 0x0083585f: pop    rdi
 0x00835860: ret
 
-# classic PE:6a70b91c:0270a000; adventure_environment_place_in_bld_containerst+8; RVA 0x835870..0x835a1b
+# classic PE:6a70b91c:0270a000; adventure_environment_place_in_bld_containerst+0x8; RVA 0x835870..0x835a1b
 0x00835870: mov    QWORD PTR [rsp+0x18],rbx
 0x00835875: push   rdi
 0x00835876: sub    rsp,0x70
@@ -2025,7 +2355,7 @@
 0x00835a19: pop    rdi
 0x00835a1a: ret
 
-# classic PE:6a70b91c:0270a000; adventure_environment_place_in_it_containerst+8; RVA 0x835a20..0x835b67
+# classic PE:6a70b91c:0270a000; adventure_environment_place_in_it_containerst+0x8; RVA 0x835a20..0x835b67
 0x00835a20: mov    QWORD PTR [rsp+0x18],rbx
 0x00835a25: push   rdi
 0x00835a26: sub    rsp,0x70
@@ -2101,7 +2431,7 @@
 0x00835b65: pop    rdi
 0x00835b66: ret
 
-# classic PE:6a70b91c:0270a000; adventure_environment_unit_suck_bloodst+8; RVA 0x835b70..0x836044
+# classic PE:6a70b91c:0270a000; adventure_environment_unit_suck_bloodst+0x8; RVA 0x835b70..0x836044
 0x00835b70: mov    QWORD PTR [rsp+0x8],rbx
 0x00835b75: mov    QWORD PTR [rsp+0x18],rsi
 0x00835b7a: mov    QWORD PTR [rsp+0x20],rdi
@@ -2413,7 +2743,7 @@
 0x00836042: pop    rbp
 0x00836043: ret
 
-# classic PE:6a70b91c:0270a000; adventure_environment_ingest_from_containerst+8; RVA 0x836050..0x836270
+# classic PE:6a70b91c:0270a000; adventure_environment_ingest_from_containerst+0x8; RVA 0x836050..0x836270
 0x00836050: mov    QWORD PTR [rsp+0x18],rbx
 0x00836055: mov    QWORD PTR [rsp+0x20],rdi
 0x0083605a: push   rbp
@@ -2540,7 +2870,7 @@
 0x0083626e: pop    rbp
 0x0083626f: ret
 
-# classic PE:6a70b91c:0270a000; adventure_environment_ingest_materialst+8; RVA 0x836270..0x836b1a
+# classic PE:6a70b91c:0270a000; adventure_environment_ingest_materialst+0x8; RVA 0x836270..0x836b1a
 0x00836270: mov    QWORD PTR [rsp+0x18],rbx
 0x00836275: push   rbp
 0x00836276: push   rsi
@@ -3082,7 +3412,7 @@
 0x00836b18: pop    rbp
 0x00836b19: ret
 
-# classic PE:6a70b91c:0270a000; adventure_option_view_contaminantst+8; RVA 0x836b20..0x836ef1
+# classic PE:6a70b91c:0270a000; adventure_option_view_contaminantst+0x8; RVA 0x836b20..0x836ef1
 0x00836b20: mov    QWORD PTR [rsp+0x18],rbx
 0x00836b25: mov    QWORD PTR [rsp+0x20],rsi
 0x00836b2a: push   rbp
@@ -3323,7 +3653,7 @@
 0x00836eeb: call   0x140065820
 0x00836ef0: nop
 
-# classic PE:6a70b91c:0270a000; adventure_option_eat_unit_contaminantst+8; RVA 0x8370d0..0x837515
+# classic PE:6a70b91c:0270a000; adventure_option_eat_unit_contaminantst+0x8; RVA 0x8370d0..0x837515
 0x008370d0: mov    QWORD PTR [rsp+0x18],rbx
 0x008370d5: mov    QWORD PTR [rsp+0x20],rsi
 0x008370da: push   rbp
@@ -3593,7 +3923,7 @@
 0x0083750f: call   0x140065820
 0x00837514: nop
 
-# classic PE:6a70b91c:0270a000; adventure_option_eat_item_contaminantst+8; RVA 0x837520..0x8376ba
+# classic PE:6a70b91c:0270a000; adventure_option_eat_item_contaminantst+0x8; RVA 0x837520..0x8376ba
 0x00837520: mov    QWORD PTR [rsp+0x18],rbx
 0x00837525: push   rdi
 0x00837526: sub    rsp,0x50
@@ -3690,7 +4020,7 @@
 0x008376b8: pop    rdi
 0x008376b9: ret
 
-# classic PE:6a70b91c:0270a000; adventure_environment_pickup_vermin_eventst+8; RVA 0x8376c0..0x837955
+# classic PE:6a70b91c:0270a000; adventure_environment_pickup_vermin_eventst+0x8; RVA 0x8376c0..0x837955
 0x008376c0: mov    QWORD PTR [rsp+0x18],rbx
 0x008376c5: push   rbp
 0x008376c6: push   rsi
@@ -3855,7 +4185,7 @@
 0x0083794f: call   0x140065820
 0x00837954: nop
 
-# classic PE:6a70b91c:0270a000; adventure_environment_pickup_ignite_vegst+8; RVA 0x837960..0x837bb0
+# classic PE:6a70b91c:0270a000; adventure_environment_pickup_ignite_vegst+0x8; RVA 0x837960..0x837bb0
 0x00837960: mov    QWORD PTR [rsp+0x18],rbx
 0x00837965: mov    QWORD PTR [rsp+0x20],rbp
 0x0083796a: push   rsi
@@ -3999,7 +4329,7 @@
 0x00837baa: call   0x140065820
 0x00837baf: nop
 
-# classic PE:6a70b91c:0270a000; adventure_environment_pickup_make_campfirest+8; RVA 0x837bb0..0x837c43
+# classic PE:6a70b91c:0270a000; adventure_environment_pickup_make_campfirest+0x8; RVA 0x837bb0..0x837c43
 0x00837bb0: mov    QWORD PTR [rsp+0x8],rbx
 0x00837bb5: push   rdi
 0x00837bb6: sub    rsp,0x40
@@ -4035,7 +4365,7 @@
 0x00837c41: pop    rdi
 0x00837c42: ret
 
-# classic PE:6a70b91c:0270a000; adventure_environment_pickup_chop_treest+8; RVA 0x837c50..0x837d54
+# classic PE:6a70b91c:0270a000; adventure_environment_pickup_chop_treest+0x8; RVA 0x837c50..0x837d54
 0x00837c50: mov    QWORD PTR [rsp+0x8],rbx
 0x00837c55: push   rdi
 0x00837c56: sub    rsp,0x40
@@ -4100,7 +4430,7 @@
 0x00837d52: pop    rdi
 0x00837d53: ret
 
-# classic PE:6a70b91c:0270a000; adventure_movement_attack_creaturest+8; RVA 0x83d680..0x83d8a7
+# classic PE:6a70b91c:0270a000; adventure_movement_attack_creaturest+0x8; RVA 0x83d680..0x83d8a7
 0x0083d680: mov    QWORD PTR [rsp+0x8],rbx
 0x0083d685: mov    QWORD PTR [rsp+0x18],rsi
 0x0083d68a: push   rdi
@@ -4232,7 +4562,7 @@
 0x0083d8a5: pop    rdi
 0x0083d8a6: ret
 
-# classic PE:6a70b91c:0270a000; adventure_movement_combat_menu_creaturest+8; RVA 0x83d8b0..0x83da9a
+# classic PE:6a70b91c:0270a000; adventure_movement_combat_menu_creaturest+0x8; RVA 0x83d8b0..0x83da9a
 0x0083d8b0: mov    QWORD PTR [rsp+0x8],rbx
 0x0083d8b5: mov    QWORD PTR [rsp+0x18],rsi
 0x0083d8ba: push   rdi
@@ -4351,7 +4681,7 @@
 0x0083da98: pop    rdi
 0x0083da99: ret
 
-# classic PE:6a70b91c:0270a000; adventure_movement_item_interact_pushst+8; RVA 0x83daa0..0x83dc5b
+# classic PE:6a70b91c:0270a000; adventure_movement_item_interact_pushst+0x8; RVA 0x83daa0..0x83dc5b
 0x0083daa0: mov    QWORD PTR [rsp+0x8],rbx
 0x0083daa5: mov    QWORD PTR [rsp+0x18],rsi
 0x0083daaa: push   rdi
@@ -4460,7 +4790,7 @@
 0x0083dc59: pop    rdi
 0x0083dc5a: ret
 
-# classic PE:6a70b91c:0270a000; adventure_movement_item_interact_ridest+8; RVA 0x83dc60..0x83de1b
+# classic PE:6a70b91c:0270a000; adventure_movement_item_interact_ridest+0x8; RVA 0x83dc60..0x83de1b
 0x0083dc60: mov    QWORD PTR [rsp+0x8],rbx
 0x0083dc65: mov    QWORD PTR [rsp+0x18],rsi
 0x0083dc6a: push   rdi
@@ -4569,7 +4899,7 @@
 0x0083de19: pop    rdi
 0x0083de1a: ret
 
-# classic PE:6a70b91c:0270a000; adventure_movement_item_interact_guidest+8; RVA 0x83de20..0x83dfdb
+# classic PE:6a70b91c:0270a000; adventure_movement_item_interact_guidest+0x8; RVA 0x83de20..0x83dfdb
 0x0083de20: mov    QWORD PTR [rsp+0x8],rbx
 0x0083de25: mov    QWORD PTR [rsp+0x18],rsi
 0x0083de2a: push   rdi
@@ -4678,7 +5008,7 @@
 0x0083dfd9: pop    rdi
 0x0083dfda: ret
 
-# classic PE:6a70b91c:0270a000; adventure_movement_building_interact_raise_well_bucketst+8; RVA 0x83dfe0..0x83e1c0
+# classic PE:6a70b91c:0270a000; adventure_movement_building_interact_raise_well_bucketst+0x8; RVA 0x83dfe0..0x83e1c0
 0x0083dfe0: mov    QWORD PTR [rsp+0x8],rbx
 0x0083dfe5: mov    QWORD PTR [rsp+0x18],rsi
 0x0083dfea: push   rdi
@@ -4794,7 +5124,7 @@
 0x0083e1be: pop    rdi
 0x0083e1bf: ret
 
-# classic PE:6a70b91c:0270a000; adventure_movement_building_interact_lower_well_bucketst+8; RVA 0x83e1c0..0x83e3a0
+# classic PE:6a70b91c:0270a000; adventure_movement_building_interact_lower_well_bucketst+0x8; RVA 0x83e1c0..0x83e3a0
 0x0083e1c0: mov    QWORD PTR [rsp+0x8],rbx
 0x0083e1c5: mov    QWORD PTR [rsp+0x18],rsi
 0x0083e1ca: push   rdi
@@ -4910,7 +5240,7 @@
 0x0083e39e: pop    rdi
 0x0083e39f: ret
 
-# classic PE:6a70b91c:0270a000; adventure_movement_building_interact_pull_leverst+8; RVA 0x83e3a0..0x83e56b
+# classic PE:6a70b91c:0270a000; adventure_movement_building_interact_pull_leverst+0x8; RVA 0x83e3a0..0x83e56b
 0x0083e3a0: mov    QWORD PTR [rsp+0x8],rbx
 0x0083e3a5: mov    QWORD PTR [rsp+0x18],rsi
 0x0083e3aa: push   rdi
@@ -5022,7 +5352,7 @@
 0x0083e569: pop    rdi
 0x0083e56a: ret
 
-# classic PE:6a70b91c:0270a000; adventure_movement_building_interact_break_in_hatchst+8; RVA 0x83e570..0x83e73b
+# classic PE:6a70b91c:0270a000; adventure_movement_building_interact_break_in_hatchst+0x8; RVA 0x83e570..0x83e73b
 0x0083e570: mov    QWORD PTR [rsp+0x8],rbx
 0x0083e575: mov    QWORD PTR [rsp+0x18],rsi
 0x0083e57a: push   rdi
@@ -5134,7 +5464,7 @@
 0x0083e739: pop    rdi
 0x0083e73a: ret
 
-# classic PE:6a70b91c:0270a000; adventure_movement_building_interact_pick_door_lockst+8;adventure_movement_building_interact_pick_hatch_lockst+8; RVA 0x83e740..0x83e920
+# classic PE:6a70b91c:0270a000; adventure_movement_building_interact_pick_door_lockst+0x8;adventure_movement_building_interact_pick_hatch_lockst+0x8; RVA 0x83e740..0x83e920
 0x0083e740: mov    QWORD PTR [rsp+0x8],rbx
 0x0083e745: mov    QWORD PTR [rsp+0x18],rsi
 0x0083e74a: push   rdi
@@ -5250,7 +5580,7 @@
 0x0083e91e: pop    rdi
 0x0083e91f: ret
 
-# classic PE:6a70b91c:0270a000; adventure_movement_building_interact_bash_down_doorst+8; RVA 0x83e920..0x83eaeb
+# classic PE:6a70b91c:0270a000; adventure_movement_building_interact_bash_down_doorst+0x8; RVA 0x83e920..0x83eaeb
 0x0083e920: mov    QWORD PTR [rsp+0x8],rbx
 0x0083e925: mov    QWORD PTR [rsp+0x18],rsi
 0x0083e92a: push   rdi
@@ -5362,7 +5692,7 @@
 0x0083eae9: pop    rdi
 0x0083eaea: ret
 
-# classic PE:6a70b91c:0270a000; adventure_movement_building_interact_topple_statuest+8; RVA 0x83eaf0..0x83ecbb
+# classic PE:6a70b91c:0270a000; adventure_movement_building_interact_topple_statuest+0x8; RVA 0x83eaf0..0x83ecbb
 0x0083eaf0: mov    QWORD PTR [rsp+0x8],rbx
 0x0083eaf5: mov    QWORD PTR [rsp+0x18],rsi
 0x0083eafa: push   rdi
@@ -5474,7 +5804,7 @@
 0x0083ecb9: pop    rdi
 0x0083ecba: ret
 
-# classic PE:6a70b91c:0270a000; adventure_movement_movest+8; RVA 0x83ecc0..0x83f17d
+# classic PE:6a70b91c:0270a000; adventure_movement_movest+0x8; RVA 0x83ecc0..0x83f17d
 0x0083ecc0: mov    QWORD PTR [rsp+0x18],rbx
 0x0083ecc5: push   rbp
 0x0083ecc6: push   rsi
@@ -5772,7 +6102,7 @@
 0x0083f17b: pop    rbp
 0x0083f17c: ret
 
-# classic PE:6a70b91c:0270a000; adventure_movement_climbst+8; RVA 0x83f180..0x83f466
+# classic PE:6a70b91c:0270a000; adventure_movement_climbst+0x8; RVA 0x83f180..0x83f466
 0x0083f180: mov    QWORD PTR [rsp+0x18],rbx
 0x0083f185: mov    QWORD PTR [rsp+0x20],rsi
 0x0083f18a: push   rdi
@@ -5941,7 +6271,7 @@
 0x0083f464: pop    rdi
 0x0083f465: ret
 
-# classic PE:6a70b91c:0270a000; adventure_movement_hold_tilest+8; RVA 0x83f470..0x83f777
+# classic PE:6a70b91c:0270a000; adventure_movement_hold_tilest+0x8; RVA 0x83f470..0x83f777
 0x0083f470: mov    QWORD PTR [rsp+0x18],rbx
 0x0083f475: mov    QWORD PTR [rsp+0x20],rdi
 0x0083f47a: push   r14
@@ -6118,7 +6448,7 @@
 0x0083f774: pop    r14
 0x0083f776: ret
 
-# classic PE:6a70b91c:0270a000; adventure_movement_mountst+8; RVA 0x83f780..0x83f8c1
+# classic PE:6a70b91c:0270a000; adventure_movement_mountst+0x8; RVA 0x83f780..0x83f8c1
 0x0083f780: mov    QWORD PTR [rsp+0x18],rbx
 0x0083f785: push   rdi
 0x0083f786: sub    rsp,0x70
@@ -6193,7 +6523,7 @@
 0x0083f8bf: pop    rdi
 0x0083f8c0: ret
 
-# classic PE:6a70b91c:0270a000; adventure_movement_dismountst+8; RVA 0x83f8d0..0x83fa29
+# classic PE:6a70b91c:0270a000; adventure_movement_dismountst+0x8; RVA 0x83f8d0..0x83fa29
 0x0083f8d0: mov    QWORD PTR [rsp+0x18],rbx
 0x0083f8d5: push   rdi
 0x0083f8d6: sub    rsp,0x70
@@ -6272,7 +6602,7 @@
 0x0083fa27: pop    rdi
 0x0083fa28: ret
 
-# classic PE:6a70b91c:0270a000; adventure_movement_release_hold_tilest+8; RVA 0x83fa30..0x83fb26
+# classic PE:6a70b91c:0270a000; adventure_movement_release_hold_tilest+0x8; RVA 0x83fa30..0x83fb26
 0x0083fa30: mov    QWORD PTR [rsp+0x18],rbx
 0x0083fa35: push   rdi
 0x0083fa36: sub    rsp,0x60
@@ -6330,7 +6660,7 @@
 0x0083fb24: pop    rdi
 0x0083fb25: ret
 
-# classic PE:6a70b91c:0270a000; adventure_movement_hold_itemst+8; RVA 0x83fb30..0x83fe24
+# classic PE:6a70b91c:0270a000; adventure_movement_hold_itemst+0x8; RVA 0x83fb30..0x83fe24
 0x0083fb30: mov    QWORD PTR [rsp+0x18],rbx
 0x0083fb35: mov    QWORD PTR [rsp+0x20],rsi
 0x0083fb3a: push   rdi
@@ -6509,7 +6839,7 @@
 0x0083fe22: pop    rdi
 0x0083fe23: ret
 
-# classic PE:6a70b91c:0270a000; adventure_movement_claim_petst+8; RVA 0x83fe30..0x83ff86
+# classic PE:6a70b91c:0270a000; adventure_movement_claim_petst+0x8; RVA 0x83fe30..0x83ff86
 0x0083fe30: mov    QWORD PTR [rsp+0x18],rbx
 0x0083fe35: push   rdi
 0x0083fe36: sub    rsp,0x70
@@ -6588,7 +6918,7 @@
 0x0083ff84: pop    rdi
 0x0083ff85: ret
 
-# classic PE:6a70b91c:0270a000; adventure_movement_lead_animalst+8; RVA 0x83ff90..0x8400d1
+# classic PE:6a70b91c:0270a000; adventure_movement_lead_animalst+0x8; RVA 0x83ff90..0x8400d1
 0x0083ff90: mov    QWORD PTR [rsp+0x18],rbx
 0x0083ff95: push   rdi
 0x0083ff96: sub    rsp,0x70
@@ -6663,7 +6993,7 @@
 0x008400cf: pop    rdi
 0x008400d0: ret
 
-# classic PE:6a70b91c:0270a000; adventure_movement_stop_lead_animalst+8; RVA 0x8400e0..0x8401bb
+# classic PE:6a70b91c:0270a000; adventure_movement_stop_lead_animalst+0x8; RVA 0x8400e0..0x8401bb
 0x008400e0: mov    QWORD PTR [rsp+0x18],rbx
 0x008400e5: push   rdi
 0x008400e6: sub    rsp,0x50
@@ -6717,7 +7047,7 @@
 0x008401b9: pop    rdi
 0x008401ba: ret
 
-# classic PE:6a70b91c:0270a000; adventure_movement_release_hold_itemst+8; RVA 0x8401c0..0x840323
+# classic PE:6a70b91c:0270a000; adventure_movement_release_hold_itemst+0x8; RVA 0x8401c0..0x840323
 0x008401c0: mov    QWORD PTR [rsp+0x8],rbx
 0x008401c5: push   rdi
 0x008401c6: sub    rsp,0x50
@@ -6805,7 +7135,7 @@
 0x00840321: pop    rdi
 0x00840322: ret
 
-# classic PE:6a70b91c:0270a000; adventure_movement_pathst+8; RVA 0x840330..0x84044c
+# classic PE:6a70b91c:0270a000; adventure_movement_pathst+0x8; RVA 0x840330..0x84044c
 0x00840330: mov    QWORD PTR [rsp+0x8],rbx
 0x00840335: push   rdi
 0x00840336: sub    rsp,0x20
@@ -6876,7 +7206,7 @@
 0x0084044a: pop    rdi
 0x0084044b: ret
 
-# classic PE:6a70b91c:0270a000; chooser-renderer; RVA 0x881ce0..0x882fe8
+# classic PE:6a70b91c:0270a000; chooser-renderer; RVA 0x881ce0..0x882fc8
 0x00881ce0: rex push rbp
 0x00881ce2: push   rbx
 0x00881ce3: push   rsi
@@ -8032,21 +8362,8 @@
 0x00882fc3: pop    rbp
 0x00882fc4: ret
 0x00882fc5: nop    DWORD PTR [rax]
-0x00882fc8: adc    DWORD PTR [rcx],ebp
-0x00882fca: mov    BYTE PTR [rax],al
-0x00882fcc: imul   BYTE PTR [rdx]
-0x00882fce: mov    BYTE PTR [rax],al
-0x00882fd0: imul   BYTE PTR [rdx]
-0x00882fd2: mov    BYTE PTR [rax],al
-0x00882fd4: adc    DWORD PTR [rcx],ebp
-0x00882fd6: mov    BYTE PTR [rax],al
-0x00882fd8: (bad)
-0x00882fdd: sub    DWORD PTR [rax-0x77d6ef00],ecx
-0x00882fe3: add    BYTE PTR [rcx],dl
-0x00882fe5: .byte 0x29
-0x00882fe6: mov    BYTE PTR [rax],al
 
-# classic PE:6a70b91c:0270a000; adventure_environment_take_from_pack_animalst+8; RVA 0x890b40..0x890e70
+# classic PE:6a70b91c:0270a000; adventure_environment_take_from_pack_animalst+0x8; RVA 0x890b40..0x890e70
 0x00890b40: mov    QWORD PTR [rsp+0x18],rbx
 0x00890b45: mov    QWORD PTR [rsp+0x20],rsi
 0x00890b4a: push   rbp
@@ -8252,7 +8569,7 @@
 0x00890e6e: pop    rbp
 0x00890e6f: ret
 
-# classic PE:6a70b91c:0270a000; adventure_environment_pick_up_environmentst+8;adventure_environment_pick_up_ground_itemst+8; RVA 0x890e70..0x8910e7
+# classic PE:6a70b91c:0270a000; adventure_environment_pick_up_environmentst+0x8;adventure_environment_pick_up_ground_itemst+0x8; RVA 0x890e70..0x8910e7
 0x00890e70: mov    QWORD PTR [rsp+0x18],rbx
 0x00890e75: push   rbp
 0x00890e76: push   rsi
@@ -8416,7 +8733,7 @@
 0x008910e5: pop    rbp
 0x008910e6: ret
 
-# classic PE:6a70b91c:0270a000; adventure_environment_pick_up_building_itemst+8; RVA 0x8910f0..0x891421
+# classic PE:6a70b91c:0270a000; adventure_environment_pick_up_building_itemst+0x8; RVA 0x8910f0..0x891421
 0x008910f0: mov    QWORD PTR [rsp+0x18],rbx
 0x008910f5: mov    QWORD PTR [rsp+0x20],rsi
 0x008910fa: push   rbp
@@ -8622,7 +8939,7 @@
 0x0089141f: pop    rbp
 0x00891420: ret
 
-# classic PE:6a70b91c:0270a000; adventure_environment_pick_up_building_item_contentsst+8;adventure_environment_take_item_from_containerst+8; RVA 0x891430..0x891766
+# classic PE:6a70b91c:0270a000; adventure_environment_pick_up_building_item_contentsst+0x8;adventure_environment_take_item_from_containerst+0x8; RVA 0x891430..0x891766
 0x00891430: mov    QWORD PTR [rsp+0x18],rbx
 0x00891435: mov    QWORD PTR [rsp+0x20],rsi
 0x0089143a: push   rbp
@@ -8829,7 +9146,7 @@
 0x00891764: pop    rbp
 0x00891765: ret
 
-# classic PE:6a70b91c:0270a000; adventure_environment_pick_vegetationst+8; RVA 0x891770..0x8919fd
+# classic PE:6a70b91c:0270a000; adventure_environment_pick_vegetationst+0x8; RVA 0x891770..0x8919fd
 0x00891770: mov    QWORD PTR [rsp+0x18],rbx
 0x00891775: push   rbp
 0x00891776: push   rsi
@@ -8997,7 +9314,7 @@
 0x008919fb: pop    rbp
 0x008919fc: ret
 
-# classic PE:6a70b91c:0270a000; adventure_option_drop_itemst+8;adventure_option_eat_drink_itemst+8;adventure_option_interact_with_itemst+8;adventure_option_inventory_itemst+8;adventure_option_put_itemst+8;adventure_option_remove_itemst+8;adventure_option_throw_itemst+8;adventure_option_view_itemst+8;adventure_option_wear_itemst+8; RVA 0x891a00..0x891ac0
+# classic PE:6a70b91c:0270a000; adventure_option_drop_itemst+0x8;adventure_option_eat_drink_itemst+0x8;adventure_option_interact_with_itemst+0x8;adventure_option_inventory_itemst+0x8;adventure_option_put_itemst+0x8;adventure_option_remove_itemst+0x8;adventure_option_throw_itemst+0x8;adventure_option_view_itemst+0x8;adventure_option_wear_itemst+0x8; RVA 0x891a00..0x891ac0
 0x00891a00: rex push rbx
 0x00891a02: sub    rsp,0x50
 0x00891a06: mov    rax,QWORD PTR [rip+0x1004633]        # 0x141896040
@@ -9045,19 +9362,19 @@
 0x00891abe: pop    rbx
 0x00891abf: ret
 
-# classic PE:6a70b91c:0270a000; adventure_option_view_event_detailst+8; RVA 0x891ac0..0x891ad5
+# classic PE:6a70b91c:0270a000; adventure_option_view_event_detailst+0x8; RVA 0x891ac0..0x891ad5
 0x00891ac0: mov    rcx,rdx
 0x00891ac3: mov    r8d,0x9
 0x00891ac9: lea    rdx,[rip+0xd66f18]        # 0x1415f89e8 ; literal="engraving"
 0x00891ad0: jmp    0x14006f9a0
 
-# classic PE:6a70b91c:0270a000; adventure_option_view_event_detailst+16; RVA 0x891ae0..0x891af5
+# classic PE:6a70b91c:0270a000; adventure_option_view_event_detailst+0x10; RVA 0x891ae0..0x891af5
 0x00891ae0: mov    rcx,rdx
 0x00891ae3: mov    r8d,0xe
 0x00891ae9: lea    rdx,[rip+0xe1dac8]        # 0x1416af5b8 ; literal="View engraving"
 0x00891af0: jmp    0x14006f9a0
 
-# classic PE:6a70b91c:0270a000; adventure_option_view_itemst+16; RVA 0x891b00..0x891be1
+# classic PE:6a70b91c:0270a000; adventure_option_view_itemst+0x10; RVA 0x891b00..0x891be1
 0x00891b00: mov    QWORD PTR [rsp+0x18],rbx
 0x00891b05: push   rdi
 0x00891b06: sub    rsp,0x50
@@ -9112,7 +9429,7 @@
 0x00891bdf: pop    rdi
 0x00891be0: ret
 
-# classic PE:6a70b91c:0270a000; adventure_option_drop_itemst+16; RVA 0x891bf0..0x891cd1
+# classic PE:6a70b91c:0270a000; adventure_option_drop_itemst+0x10; RVA 0x891bf0..0x891cd1
 0x00891bf0: mov    QWORD PTR [rsp+0x18],rbx
 0x00891bf5: push   rdi
 0x00891bf6: sub    rsp,0x50
@@ -9167,7 +9484,7 @@
 0x00891ccf: pop    rdi
 0x00891cd0: ret
 
-# classic PE:6a70b91c:0270a000; adventure_option_throw_itemst+16; RVA 0x891ce0..0x891dc1
+# classic PE:6a70b91c:0270a000; adventure_option_throw_itemst+0x10; RVA 0x891ce0..0x891dc1
 0x00891ce0: mov    QWORD PTR [rsp+0x18],rbx
 0x00891ce5: push   rdi
 0x00891ce6: sub    rsp,0x50
@@ -9222,7 +9539,7 @@
 0x00891dbf: pop    rdi
 0x00891dc0: ret
 
-# classic PE:6a70b91c:0270a000; adventure_option_wear_itemst+16; RVA 0x891dd0..0x891eb1
+# classic PE:6a70b91c:0270a000; adventure_option_wear_itemst+0x10; RVA 0x891dd0..0x891eb1
 0x00891dd0: mov    QWORD PTR [rsp+0x18],rbx
 0x00891dd5: push   rdi
 0x00891dd6: sub    rsp,0x50
@@ -9277,7 +9594,7 @@
 0x00891eaf: pop    rdi
 0x00891eb0: ret
 
-# classic PE:6a70b91c:0270a000; adventure_option_remove_itemst+16; RVA 0x891ec0..0x891fa1
+# classic PE:6a70b91c:0270a000; adventure_option_remove_itemst+0x10; RVA 0x891ec0..0x891fa1
 0x00891ec0: mov    QWORD PTR [rsp+0x18],rbx
 0x00891ec5: push   rdi
 0x00891ec6: sub    rsp,0x50
@@ -9332,7 +9649,7 @@
 0x00891f9f: pop    rdi
 0x00891fa0: ret
 
-# classic PE:6a70b91c:0270a000; adventure_option_put_itemst+16; RVA 0x891fb0..0x892091
+# classic PE:6a70b91c:0270a000; adventure_option_put_itemst+0x10; RVA 0x891fb0..0x892091
 0x00891fb0: mov    QWORD PTR [rsp+0x18],rbx
 0x00891fb5: push   rdi
 0x00891fb6: sub    rsp,0x50
@@ -9387,7 +9704,7 @@
 0x0089208f: pop    rdi
 0x00892090: ret
 
-# classic PE:6a70b91c:0270a000; adventure_option_eat_drink_itemst+16; RVA 0x8920a0..0x8921a4
+# classic PE:6a70b91c:0270a000; adventure_option_eat_drink_itemst+0x10; RVA 0x8920a0..0x8921a4
 0x008920a0: mov    QWORD PTR [rsp+0x18],rbx
 0x008920a5: push   rdi
 0x008920a6: sub    rsp,0x50
@@ -9450,7 +9767,7 @@
 0x008921a2: pop    rdi
 0x008921a3: ret
 
-# classic PE:6a70b91c:0270a000; adventure_movement_jumpst+8; RVA 0x8a1f50..0x8a1fb4
+# classic PE:6a70b91c:0270a000; adventure_movement_jumpst+0x8; RVA 0x8a1f50..0x8a1fb4
 0x008a1f50: mov    QWORD PTR [rsp+0x8],rbx
 0x008a1f55: push   rdi
 0x008a1f56: sub    rsp,0x40
@@ -9477,7 +9794,7 @@
 0x008a1fb2: pop    rdi
 0x008a1fb3: ret
 
-# classic PE:6a70b91c:0270a000; adventure_movement_shoot_creaturest+8; RVA 0x8a2110..0x8a227f
+# classic PE:6a70b91c:0270a000; adventure_movement_shoot_creaturest+0x8; RVA 0x8a2110..0x8a227f
 0x008a2110: mov    QWORD PTR [rsp+0x8],rbx
 0x008a2115: mov    QWORD PTR [rsp+0x18],rsi
 0x008a211a: push   rdi
@@ -9571,7 +9888,41 @@
 0x008a227d: pop    rdi
 0x008a227e: ret
 
-# classic PE:6a70b91c:0270a000; adventure_movement_shoot_tilest+8; RVA 0x8a2dc0..0x8a2ebc
+# classic PE:6a70b91c:0270a000; adventure_movement_shoot_creaturest+0x118;adventure_movement_throw_item_at_creaturest+0x118; RVA 0x8a2d50..0x8a2dbb
+0x008a2d50: mov    r9,QWORD PTR [rip+0x1b3c251]        # 0x1423defa8
+0x008a2d57: mov    r11,QWORD PTR [rip+0x1b3c242]        # 0x1423defa0
+0x008a2d5e: mov    r10d,DWORD PTR [rcx+0x24]
+0x008a2d62: sub    r9,r11
+0x008a2d65: sar    r9,0x3
+0x008a2d69: test   r9d,r9d
+0x008a2d6c: je     0x1408a2dba
+0x008a2d6e: cmp    r10d,0xffffffff
+0x008a2d72: je     0x1408a2dba
+0x008a2d74: xor    edx,edx
+0x008a2d76: sub    r9d,0x1
+0x008a2d7a: js     0x1408a2daf
+0x008a2d7c: nop    DWORD PTR [rax+0x0]
+0x008a2d80: lea    eax,[rdx+r9*1]
+0x008a2d84: sar    eax,1
+0x008a2d86: movsxd rcx,eax
+0x008a2d89: mov    rcx,QWORD PTR [r11+rcx*8]
+0x008a2d8d: mov    r8d,DWORD PTR [rcx+0x130]
+0x008a2d94: cmp    r8d,r10d
+0x008a2d97: je     0x1408a2db1
+0x008a2d99: lea    ecx,[rax+0x1]
+0x008a2d9c: cmovle edx,ecx
+0x008a2d9f: dec    eax
+0x008a2da1: cmp    r8d,r10d
+0x008a2da4: cmovle eax,r9d
+0x008a2da8: mov    r9d,eax
+0x008a2dab: cmp    edx,eax
+0x008a2dad: jle    0x1408a2d80
+0x008a2daf: xor    ecx,ecx
+0x008a2db1: test   rcx,rcx
+0x008a2db4: jne    0x1407e20e0
+0x008a2dba: ret
+
+# classic PE:6a70b91c:0270a000; adventure_movement_shoot_tilest+0x8; RVA 0x8a2dc0..0x8a2ebc
 0x008a2dc0: mov    QWORD PTR [rsp+0x18],rbx
 0x008a2dc5: push   rdi
 0x008a2dc6: sub    rsp,0x60
@@ -9631,7 +9982,7 @@
 0x008a2eba: pop    rdi
 0x008a2ebb: ret
 
-# classic PE:6a70b91c:0270a000; adventure_movement_throw_item_at_creaturest+8; RVA 0x8a36f0..0x8a385f
+# classic PE:6a70b91c:0270a000; adventure_movement_throw_item_at_creaturest+0x8; RVA 0x8a36f0..0x8a385f
 0x008a36f0: mov    QWORD PTR [rsp+0x8],rbx
 0x008a36f5: mov    QWORD PTR [rsp+0x18],rsi
 0x008a36fa: push   rdi
@@ -9725,7 +10076,7 @@
 0x008a385d: pop    rdi
 0x008a385e: ret
 
-# classic PE:6a70b91c:0270a000; adventure_movement_throw_item_at_tilest+8; RVA 0x8a3d50..0x8a3e4c
+# classic PE:6a70b91c:0270a000; adventure_movement_throw_item_at_tilest+0x8; RVA 0x8a3d50..0x8a3e4c
 0x008a3d50: mov    QWORD PTR [rsp+0x18],rbx
 0x008a3d55: push   rdi
 0x008a3d56: sub    rsp,0x60
@@ -9784,3 +10135,194 @@
 0x008a3e46: add    rsp,0x60
 0x008a3e4a: pop    rdi
 0x008a3e4b: ret
+
+# classic PE:6a70b91c:0270a000; conflict-level-selection; RVA 0x14ddf80..0x14de2bc
+0x014ddf80: mov    QWORD PTR [rsp+0x18],r8
+0x014ddf85: mov    QWORD PTR [rsp+0x10],rdx
+0x014ddf8a: mov    QWORD PTR [rsp+0x8],rcx
+0x014ddf8f: push   rbx
+0x014ddf90: push   rbp
+0x014ddf91: push   rsi
+0x014ddf92: push   rdi
+0x014ddf93: push   r12
+0x014ddf95: push   r13
+0x014ddf97: push   r14
+0x014ddf99: push   r15
+0x014ddf9b: sub    rsp,0xa8
+0x014ddfa2: mov    r11,QWORD PTR [rip+0xfff767]        # 0x1424dd710
+0x014ddfa9: mov    rax,rdx
+0x014ddfac: xor    edx,edx
+0x014ddfae: mov    QWORD PTR [rsp+0x30],rdx
+0x014ddfb3: mov    r12d,edx
+0x014ddfb6: mov    QWORD PTR [rsp+0x108],rdx
+0x014ddfbe: mov    ebx,edx
+0x014ddfc0: mov    r14,QWORD PTR [rax+0x300]
+0x014ddfc7: mov    r15,QWORD PTR [rax+0x308]
+0x014ddfce: mov    QWORD PTR [rsp+0x20],rdx
+0x014ddfd3: cmp    r14,r15
+0x014ddfd6: jae    0x1414de2a3
+0x014ddfdc: mov    r9,QWORD PTR [rip+0xfff735]        # 0x1424dd718
+0x014ddfe3: mov    r10d,DWORD PTR [r14]
+0x014ddfe6: sub    r9,r11
+0x014ddfe9: sar    r9,0x3
+0x014ddfed: test   r9,r9
+0x014ddff0: je     0x1414de295
+0x014ddff6: cmp    r10d,0xffffffff
+0x014ddffa: je     0x1414de295
+0x014de000: sub    r9d,0x1
+0x014de004: js     0x1414de03b
+0x014de006: data16 nop WORD PTR [rax+rax*1+0x0]
+0x014de010: lea    ecx,[rdx+r9*1]
+0x014de014: sar    ecx,1
+0x014de016: movsxd rax,ecx
+0x014de019: mov    r13,QWORD PTR [r11+rax*8]
+0x014de01d: cmp    DWORD PTR [r13+0x0],r10d
+0x014de021: je     0x1414de1f0
+0x014de027: lea    eax,[rcx+0x1]
+0x014de02a: cmovle edx,eax
+0x014de02d: lea    eax,[rcx-0x1]
+0x014de030: cmovle eax,r9d
+0x014de034: mov    r9d,eax
+0x014de037: cmp    edx,eax
+0x014de039: jle    0x1414de010
+0x014de03b: xor    edx,edx
+0x014de03d: mov    r13d,edx
+0x014de040: test   r13,r13
+0x014de043: je     0x1414de295
+0x014de049: cmp    WORD PTR [r13+0x4],0x2
+0x014de04f: jne    0x1414de295
+0x014de055: mov    rsi,QWORD PTR [r13+0x8]
+0x014de059: mov    rbp,QWORD PTR [r13+0x10]
+0x014de05d: nop    DWORD PTR [rax]
+0x014de060: cmp    rsi,rbp
+0x014de063: je     0x1414de273
+0x014de069: jae    0x1414de26b
+0x014de06f: mov    rcx,QWORD PTR [rsi]
+0x014de072: mov    rax,QWORD PTR [rcx]
+0x014de075: call   QWORD PTR [rax]
+0x014de077: cmp    ax,0x8
+0x014de07b: jne    0x1414de25a
+0x014de081: mov    rdi,QWORD PTR [rsi]
+0x014de084: test   BYTE PTR [rdi+0x14],0x1
+0x014de088: jne    0x1414de25a
+0x014de08e: mov    rbx,QWORD PTR [rdi+0x48]
+0x014de092: mov    rdi,QWORD PTR [rdi+0x50]
+0x014de096: mov    QWORD PTR [rsp+0x28],r13
+0x014de09b: nop    DWORD PTR [rax+rax*1+0x0]
+0x014de0a0: cmp    rbx,rdi
+0x014de0a3: jae    0x1414de237
+0x014de0a9: mov    rcx,QWORD PTR [rsp+0xf8]
+0x014de0b1: xor    r12b,r12b
+0x014de0b4: mov    r13,QWORD PTR [rbx]
+0x014de0b7: mov    BYTE PTR [rsp+0xf0],0x0
+0x014de0bf: mov    r8d,DWORD PTR [rcx+0xc30]
+0x014de0c6: lea    rcx,[rsp+0x58]
+0x014de0cb: lea    rdx,[r13+0x8]
+0x014de0cf: call   0x1400bab70
+0x014de0d4: cmp    BYTE PTR [rsp+0x60],r12b
+0x014de0d9: mov    DWORD PTR [rsp+0x38],0xffffffff
+0x014de0e1: mov    DWORD PTR [rsp+0x3c],0x0
+0x014de0e9: mov    rax,QWORD PTR [rsp+0x38]
+0x014de0ee: cmovne rax,QWORD PTR [rsp+0x58]
+0x014de0f4: cmp    eax,0xffffffff
+0x014de0f7: jne    0x1414de13b
+0x014de0f9: mov    rax,QWORD PTR [rsp+0xf8]
+0x014de101: lea    rdx,[r13+0x20]
+0x014de105: lea    rcx,[rsp+0x68]
+0x014de10a: mov    r8d,DWORD PTR [rax+0x130]
+0x014de111: call   0x1400bab70
+0x014de116: cmp    BYTE PTR [rsp+0x70],r12b
+0x014de11b: mov    DWORD PTR [rsp+0x40],0xffffffff
+0x014de123: mov    DWORD PTR [rsp+0x44],0x0
+0x014de12b: mov    rax,QWORD PTR [rsp+0x40]
+0x014de130: cmovne rax,QWORD PTR [rsp+0x68]
+0x014de136: cmp    eax,0xffffffff
+0x014de139: je     0x1414de143
+0x014de13b: mov    BYTE PTR [rsp+0xf0],0x1
+0x014de143: mov    rax,QWORD PTR [rsp+0x100]
+0x014de14b: lea    rdx,[r13+0x8]
+0x014de14f: lea    rcx,[rsp+0x78]
+0x014de154: mov    r8d,DWORD PTR [rax+0xc30]
+0x014de15b: call   0x1400bab70
+0x014de160: xor    edx,edx
+0x014de162: mov    DWORD PTR [rsp+0x48],0xffffffff
+0x014de16a: cmp    BYTE PTR [rsp+0x80],dl
+0x014de171: mov    DWORD PTR [rsp+0x4c],edx
+0x014de175: mov    rax,QWORD PTR [rsp+0x48]
+0x014de17a: cmovne rax,QWORD PTR [rsp+0x78]
+0x014de180: cmp    eax,0xffffffff
+0x014de183: jne    0x1414de1cd
+0x014de185: mov    rax,QWORD PTR [rsp+0x100]
+0x014de18d: lea    rdx,[r13+0x20]
+0x014de191: lea    rcx,[rsp+0x88]
+0x014de199: mov    r8d,DWORD PTR [rax+0x130]
+0x014de1a0: call   0x1400bab70
+0x014de1a5: xor    edx,edx
+0x014de1a7: mov    DWORD PTR [rsp+0x50],0xffffffff
+0x014de1af: cmp    BYTE PTR [rsp+0x90],dl
+0x014de1b6: mov    DWORD PTR [rsp+0x54],edx
+0x014de1ba: mov    rax,QWORD PTR [rsp+0x50]
+0x014de1bf: cmovne rax,QWORD PTR [rsp+0x88]
+0x014de1c8: cmp    eax,0xffffffff
+0x014de1cb: je     0x1414de1d0
+0x014de1cd: mov    r12b,0x1
+0x014de1d0: cmp    BYTE PTR [rsp+0xf0],0x0
+0x014de1d8: je     0x1414de1f7
+0x014de1da: test   r12b,r12b
+0x014de1dd: jne    0x1414de211
+0x014de1df: mov    QWORD PTR [rsp+0x108],r13
+0x014de1e7: add    rbx,0x8
+0x014de1eb: jmp    0x1414de0a0
+0x014de1f0: xor    edx,edx
+0x014de1f2: jmp    0x1414de040
+0x014de1f7: mov    rax,QWORD PTR [rsp+0x20]
+0x014de1fc: test   r12b,r12b
+0x014de1ff: cmovne rax,r13
+0x014de203: add    rbx,0x8
+0x014de207: mov    QWORD PTR [rsp+0x20],rax
+0x014de20c: jmp    0x1414de0a0
+0x014de211: mov    QWORD PTR [rsp+0x30],rdx
+0x014de216: mov    r12,rdx
+0x014de219: mov    QWORD PTR [rsp+0x108],rdx
+0x014de221: mov    rbx,rdx
+0x014de224: mov    QWORD PTR [rsp+0x20],rdx
+0x014de229: mov    r13,QWORD PTR [rsp+0x28]
+0x014de22e: add    rsi,0x8
+0x014de232: jmp    0x1414de060
+0x014de237: mov    r12,QWORD PTR [rsp+0x108]
+0x014de23f: mov    rbx,QWORD PTR [rsp+0x20]
+0x014de244: test   r12,r12
+0x014de247: je     0x1414de229
+0x014de249: test   rbx,rbx
+0x014de24c: je     0x1414de229
+0x014de24e: mov    rcx,QWORD PTR [rsp+0x28]
+0x014de253: mov    QWORD PTR [rsp+0x30],rcx
+0x014de258: jmp    0x1414de27b
+0x014de25a: mov    r12,QWORD PTR [rsp+0x108]
+0x014de262: add    rsi,0x8
+0x014de266: jmp    0x1414de060
+0x014de26b: mov    r12,QWORD PTR [rsp+0x108]
+0x014de273: cmp    QWORD PTR [rsp+0x30],0x0
+0x014de279: je     0x1414de28c
+0x014de27b: mov    ecx,DWORD PTR [rbx]
+0x014de27d: lea    rdx,[r12+0x38]
+0x014de282: call   0x1400b9d50
+0x014de287: test   rax,rax
+0x014de28a: jne    0x1414de29e
+0x014de28c: mov    r11,QWORD PTR [rip+0xfff47d]        # 0x1424dd710
+0x014de293: xor    edx,edx
+0x014de295: add    r14,0x4
+0x014de299: jmp    0x1414ddfd3
+0x014de29e: mov    eax,DWORD PTR [rax+0x4]
+0x014de2a1: jmp    0x1414de2a8
+0x014de2a3: mov    eax,0xffffffff
+0x014de2a8: add    rsp,0xa8
+0x014de2af: pop    r15
+0x014de2b1: pop    r14
+0x014de2b3: pop    r13
+0x014de2b5: pop    r12
+0x014de2b7: pop    rdi
+0x014de2b8: pop    rsi
+0x014de2b9: pop    rbp
+0x014de2ba: pop    rbx
+0x014de2bb: ret

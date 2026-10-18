@@ -104,22 +104,30 @@ if (document.page) {
         });
         if (figure != event.subjects.end() && !figure->name.has_name) actor = term("This nameless being");
         if (!actor) return std::nullopt;
+        // Older retained documents predate this discriminator and keep
+        // their original Legends wording until a new native snapshot exists.
+        const bool legends_mode = !event.fields.contains("legends_mode") || number("legends_mode") != 0;
+        const std::string copula = legends_mode ? " was" : " is";
         const int32_t identity = number("identity");
         auto species = translate_creature_descriptor(text("species"));
         std::optional<Pieces> identity_sentence;
         if (identity == 1 && event.entity_id >= 0) {
             auto entity = subject(NativeHistoryObjectKind::Entity, event.entity_id, false);
             if (!entity) return std::nullopt;
-            identity_sentence = apply("{n} was a deity that occurs in the myths of {p}", {*actor, *entity});
-            if (identity_sentence) identity_sentence->push_back(piece("。", neutral));
+            identity_sentence = apply(legends_mode
+                ? "{n} was a deity that occurs in the myths of {p}"
+                : "{n} is a deity of {p}.", {*actor, *entity});
+            if (identity_sentence && legends_mode) identity_sentence->push_back(piece("。", neutral));
         } else if (identity == 2 && number("force_region") >= 0) {
             auto region = subject(NativeHistoryObjectKind::Region, number("force_region"), false);
             if (!region) return std::nullopt;
-            identity_sentence = apply("{n} was a force which was said to permeate {p}.", {*actor, *region});
+            identity_sentence = apply(legends_mode
+                ? "{n} was a force which was said to permeate {p}."
+                : "{n} is a force which permeates {p}.", {*actor, *region});
         } else if (identity == 1 || identity == 2) {
             auto kind = term(identity == 1 ? "deity" : "force");
             if (!kind) return std::nullopt;
-            identity_sentence = apply("{n} was a {s}.", {*actor, *kind});
+            identity_sentence = apply("{n}" + copula + " a {s}.", {*actor, *kind});
         } else if (identity == 3) {
             std::optional<Pieces> original;
             if (number("animated_id") >= 0)
@@ -129,13 +137,13 @@ if (document.page) {
                 if (label) original = Pieces{piece(*label, neutral)};
             }
             if (!original) return std::nullopt;
-            identity_sentence = apply("{n} was {s}, animated by unknown forces.", {*actor, *original});
+            identity_sentence = apply("{n}" + copula + " {s}, animated by unknown forces.", {*actor, *original});
         } else {
             if (!species) return std::nullopt;
             const Pieces kind{piece(*species, neutral)};
             identity_sentence = event.year >= 1
-                ? apply("{n} was a {s} born in {d}.", {*actor, kind, Pieces{piece(std::to_string(event.year), neutral)}})
-                : apply("{n} was a {s}.", {*actor, kind});
+                ? apply("{n}" + copula + " a {s} born in {d}.", {*actor, kind, Pieces{piece(std::to_string(event.year), neutral)}})
+                : apply("{n}" + copula + " a {s}.", {*actor, kind});
         }
         if (!identity_sentence) return std::nullopt;
         Pieces result = *identity_sentence;
@@ -143,7 +151,7 @@ if (document.page) {
         const std::string pronoun = sex == 1 ? "He" : sex == 0 ? "She" : "It";
         const std::string possessive = sex == 1 ? "his" : sex == 0 ? "her" : "its";
         if (number("unknown_parentage")) {
-            auto parentage = term(pronoun + " was of unknown parentage.");
+            auto parentage = term(pronoun + copula + " of unknown parentage.");
             if (!parentage) return std::nullopt;
             join(result, *parentage);
         } else if (!numbers("parents").empty()) {
@@ -156,7 +164,7 @@ if (document.page) {
             }
             auto relationship = term(child_key(number("child_relation")));
             if (!relationship) return std::nullopt;
-            auto parentage = apply(pronoun + " was the {s} of {n}.", {*relationship, parents});
+            auto parentage = apply(pronoun + copula + " the {s} of {n}.", {*relationship, parents});
             if (!parentage) return std::nullopt;
             join(result, *parentage);
             if (number("missing_parent") >= 0) {
@@ -172,19 +180,22 @@ if (document.page) {
                 " the first of ", " one of the first of ", " the only one of ", " one of the only ones of "};
             const int32_t first = number("first_kind");
             if (first > 3) return std::nullopt;
-            auto original = term(pronoun + " was" + firsts[first] + possessive + " kind.");
+            auto original = term(pronoun + copula + firsts[first] + possessive + " kind.");
             if (!original) return std::nullopt;
             join(result, *original);
         }
         if (number("fate") >= 0) {
-            auto qualifier = term("Although accounts vary, it is universally agreed that");
-            static constexpr const char *fates[] = {"{n} was guided by forces unknown.",
-                "{n} was possessed of an unusual destiny.", "{n} was chosen by fate as the vanguard of destiny."};
+            static constexpr const char *fates[] = {" guided by forces unknown.",
+                " possessed of an unusual destiny.", " chosen by fate as the vanguard of destiny."};
             const int32_t fate = number("fate");
-            if (fate > 2 || !qualifier) return std::nullopt;
-            auto chosen = apply(fates[fate], {*actor});
+            if (fate > 2) return std::nullopt;
+            auto chosen = apply("{n}" + copula + fates[fate], {*actor});
             if (!chosen) return std::nullopt;
-            join(result, *qualifier);
+            if (legends_mode) {
+                auto qualifier = term("Although accounts vary, it is universally agreed that");
+                if (!qualifier) return std::nullopt;
+                join(result, *qualifier);
+            }
             join(result, *chosen);
         }
         if (const auto description = event.texts.find("description");
@@ -203,13 +214,17 @@ if (document.page) {
             auto form = translate_legends_term(text("form"));
             if (!form) return std::nullopt;
             std::vector<Pieces> fields{*actor, Pieces{piece(*form, neutral)}};
-            std::string key = "{n} was most often depicted as a {s}";
-            if (!spheres.empty()) { key += " and was associated with {r}"; fields.push_back(spheres); }
+            std::string key = legends_mode ? "{n} was most often depicted as a {s}"
+                : "{n} most often takes the form of a {s}";
+            if (!spheres.empty()) {
+                key += " and" + copula + " associated with {r}";
+                fields.push_back(spheres);
+            }
             auto depiction = apply(key + ".", fields);
             if (!depiction) return std::nullopt;
             join(result, *depiction);
         } else if (!spheres.empty()) {
-            auto association = apply("{n} was associated with {r}.", {*actor, spheres});
+            auto association = apply("{n}" + copula + " associated with {r}.", {*actor, spheres});
             if (!association) return std::nullopt;
             join(result, *association);
         }

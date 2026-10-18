@@ -122,7 +122,7 @@ std::vector<SDL_Rect> Overlay::preserve_mod_workshop_names(
     std::vector<const NativeDrawnTextRow *> draws;
     for (const auto *layer : draw_layers)
         for (const auto &draw : *layer) draws.push_back(&draw);
-    const uint64_t epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
+    const uint64_t epoch = captured_native_drawn_text_epoch();
     for (const auto *draw_source : draws) {
         const auto &draw = *draw_source;
         if (draw.draw_epoch != epoch || draw.draw_dimx != gps_->dimx ||

@@ -143,6 +143,56 @@ case 94: { // change_hf_mood
 case 95: { // artifact_claim_formed
     auto artifact = subject(NativeHistoryObjectKind::Artifact, number("artifact"));
     if (!artifact) return std::nullopt;
+    if (event.fields.contains("native_story_title")) {
+        // +d8 b88790 has one owner choice, then erroneously appends the
+        // same HF again without a delimiter. Its typed ID owns one actor;
+        // the failed F(-1) append after an entity is not another participant.
+        std::string title_key;
+        std::vector<Pieces> title_fields{*artifact};
+        switch (number("claim")) {
+        case 0:
+            if (number("assignment") == -1)
+                title_key = "the making of {p} into an official symbol";
+            else if (!number("title_present"))
+                title_key = "the making of {p} into a symbol of";
+            else {
+                title_key = number("title_count") == 1 ?
+                    "the making of {p} into a symbol of the {s}" :
+                    "the making of {p} into a symbol of a {s}";
+                auto title = text("position_title").empty()
+                    ? std::optional<Pieces>{Pieces{piece("", neutral)}}
+                    : office(text("position_title"));
+                if (!title) return std::nullopt;
+                title_fields.push_back(*title);
+                if (number("title_site") != -1) {
+                    auto site = subject(NativeHistoryObjectKind::Site, number("title_site"));
+                    if (!site) return std::nullopt;
+                    title_key += " of {p}";
+                    title_fields.push_back(*site);
+                }
+            }
+            break;
+        case 1: title_key = "the making of {p} into a family heirloom"; break;
+        case 2: title_key = "the claiming of {p}"; break;
+        case 3: title_key = "the sanctification of {p}"; break;
+        default: break; // Native keeps the artifact but supplies no action noun.
+        }
+        std::optional<Pieces> title = title_key.empty()
+            ? std::optional<Pieces>{*artifact} : apply(title_key, title_fields);
+        auto owner = number("histfig") != -1
+            ? subject(NativeHistoryObjectKind::Figure, number("histfig"))
+            : number("entity") != -1
+                ? subject(NativeHistoryObjectKind::Entity, number("entity"))
+                : subject(NativeHistoryObjectKind::Figure, -1);
+        if (!title || !owner) return std::nullopt;
+        title = apply("{e} by {a}", {*title, *owner});
+        const auto clauses = event_clauses();
+        if (!title || !clauses) return std::nullopt;
+        join(result, *title);
+        append_clause(result, clauses->first);
+        append_clause(result, clauses->second);
+        return result;
+    }
     std::vector<Pieces> values{*artifact};
     std::string key;
     switch (number("claim")) {
@@ -165,19 +215,22 @@ case 95: { // artifact_claim_formed
     case 1: key = "{p} was made a family heirloom"; break;
     case 2: key = "{p} was claimed"; break;
     case 3: key = "{p} was sanctified"; break;
-    default: return std::nullopt;
+    // +d0 b886dc still emits the artifact, optional owner and context when
+    // claim has no native action arm. Do not invent a claim predicate.
+    default: break;
     }
     if (number("histfig") != -1 || number("entity") != -1) {
         auto actor = number("histfig") != -1 ? subject(NativeHistoryObjectKind::Figure, number("histfig")) :
             subject(NativeHistoryObjectKind::Entity, number("entity"));
         if (!actor) return std::nullopt;
-        key += " by {a}";
+        if (key.empty()) key = "Native artifact claim without action: {p} by {a}";
+        else key += " by {a}";
         values.push_back(*actor);
     }
     const bool distant_claim = number("claim") == 2 && event.circumstance == 251;
     // Remoteness modifies the claim itself, before the Chinese predicate.
     if (distant_claim) key += " from afar";
-    auto action = apply(key, values);
+    auto action = key.empty() ? std::optional<Pieces>{*artifact} : apply(key, values);
     auto clauses = event_clauses();
     if (!action || !clauses) return std::nullopt;
     join(result, *action);
@@ -260,8 +313,47 @@ case 98: { // hf_recruited_unit_type_for_entity
     auto actor = subject(NativeHistoryObjectKind::Figure, number("histfig"));
     auto entity = subject(NativeHistoryObjectKind::Entity, number("entity"));
     if (!actor || !entity) return std::nullopt;
+    if (event.fields.contains("native_story_title")) {
+        // +d8 b80160 names the recruited unit type, not a historical actor.
+        // PEASANT deliberately leaves that type caption empty in this call.
+        Pieces profession;
+        if (!text("profession").empty()) {
+            const auto role = translate_unit_profession(text("profession"), true);
+            if (role) profession.push_back(piece(*role, neutral));
+            else {
+                const auto label = term(text("profession"));
+                if (!label) return std::nullopt;
+                profession = *label;
+            }
+        }
+        auto title = apply("the recruitment of {s} into {p} by {a}",
+            {profession, *entity, *actor});
+        if (!title) return std::nullopt;
+        std::optional<Pieces> location;
+        if (number("site") != -1) {
+            location = subject(NativeHistoryObjectKind::Site, number("site"));
+            if (!location) return std::nullopt;
+        }
+        if (number("region") != -1 || number("layer") != -1) {
+            auto area = number("layer") != -1
+                ? subject(NativeHistoryObjectKind::Underground, number("layer"))
+                : subject(NativeHistoryObjectKind::Region, number("region"));
+            if (!area) return std::nullopt;
+            location = location ? apply("{p} of {p}", {*location, *area}) : area;
+            if (!location) return std::nullopt;
+        }
+        if (!location) location = term("the wilds");
+        auto place = location ? apply("in {p}", {*location}) : std::nullopt;
+        if (!place) return std::nullopt;
+        join(result, *place);
+        result.push_back(piece("，", neutral));
+        join(result, *title);
+        return result;
+    }
     std::optional<Pieces> action;
-    if (text("profession").empty()) action = apply("recruited from {p}", {*entity});
+    // Native +d0 b7a150 appends "into" before this entity. The entity is
+    // the organization receiving recruits, not the source of recruits.
+    if (text("profession").empty()) action = apply("recruited into {p}", {*entity});
     else {
         auto profession = term(text("profession"));
         if (!profession) {
@@ -269,9 +361,7 @@ case 98: { // hf_recruited_unit_type_for_entity
             if (exact) profession = Pieces{piece(*exact, neutral)};
         }
         if (!profession) return std::nullopt;
-        auto recruits = apply("{a} from {p}", {*profession, *entity});
-        if (!recruits) return std::nullopt;
-        action = apply("recruited {a}", {*recruits});
+        action = apply("recruited {s} into {p}", {*profession, *entity});
     }
     if (!action) return std::nullopt;
     const int32_t site_id = number("site"), region_id = number("region"), layer_id = number("layer");
@@ -298,6 +388,38 @@ case 98: { // hf_recruited_unit_type_for_entity
     break;
 }
 case 99: { // hfs_formed_reputation_relationship
+    if (event.fields.contains("native_story_title")) {
+        auto first = subject(NativeHistoryObjectKind::Figure, number("corruptor"));
+        auto second = subject(NativeHistoryObjectKind::Figure, number("target"));
+        if (!first || !second) return std::nullopt;
+        // +d8 b7feb0 selects false friendship for any equal relationship
+        // enums, or first==27 when they differ. +d0 uses different wording.
+        const bool false_friendship = number("first_relationship") == number("second_relationship") ||
+            number("first_relationship") == 27;
+        auto title = apply(false_friendship ?
+            "the false friendship of {a} and {a}" : "the friendship of {a} and {a}", {*first, *second});
+        if (!title) return std::nullopt;
+        std::optional<Pieces> location;
+        if (number("site") != -1) {
+            location = subject(NativeHistoryObjectKind::Site, number("site"));
+            if (!location) return std::nullopt;
+        }
+        if (number("region") != -1 || number("layer") != -1) {
+            auto area = number("layer") != -1
+                ? subject(NativeHistoryObjectKind::Underground, number("layer"))
+                : subject(NativeHistoryObjectKind::Region, number("region"));
+            if (!area) return std::nullopt;
+            location = location ? apply("{p} of {p}", {*location, *area}) : area;
+            if (!location) return std::nullopt;
+        }
+        if (!location) location = term("the wilds");
+        auto place = location ? apply("in {p}", {*location}) : std::nullopt;
+        if (!place) return std::nullopt;
+        join(result, *place);
+        result.push_back(piece("，", neutral));
+        join(result, *title);
+        return result;
+    }
     const auto participant = [&](const char *person_key, const char *identity_key) -> std::optional<Pieces> {
         auto person = subject(NativeHistoryObjectKind::Figure, number(person_key));
         if (!person) return std::nullopt;
@@ -442,6 +564,50 @@ case 105: { // hfs_act_on_site
         auto others = apply("{a} and others", {people});
         if (!others) return std::nullopt;
         people = std::move(*others);
+    }
+    if (event.fields.contains("native_story_title")) {
+        // +d8 b6e1e0's complete title uses only the action enum and list.
+        // Both diplomatic-failure enums share the same title; its +d0
+        // target/outcome explanations must not enter the story chooser.
+        const int32_t kind = number("action");
+        std::optional<Pieces> title;
+        if (kind == 0) title = apply("the carousal of {a}", {people});
+        else if (kind >= 1 && kind <= 5) {
+            static constexpr const char *quality[] = {"", "well-crafted", "finely-crafted",
+                "superior quality", "exceptional", "masterwork"};
+            auto label = term(quality[kind]);
+            if (label) title = apply("the purchased of {s} equipment by {a}", {*label, people});
+        } else if (kind == 6) title = apply("the horrible experiments of {a}", {people});
+        else if (kind == 7 || kind == 8) title = apply("the failed diplomacy of {a}", {people});
+        else title = people; // The default supplies no action, just its people.
+        if (!title) return std::nullopt;
+        if (number("site") != -1 || number("region") != -1 || number("layer") != -1) {
+            std::optional<Pieces> location;
+            if (number("site") != -1) {
+                location = subject(NativeHistoryObjectKind::Site, number("site"));
+                if (!location) return std::nullopt;
+                if (number("structure") != -1) {
+                    auto building = structure(number("site"), number("structure"));
+                    location = building ? apply("{p} of {p}", {*building, *location}) : std::nullopt;
+                }
+            } else location = number("layer") != -1
+                ? subject(NativeHistoryObjectKind::Underground, number("layer"))
+                : subject(NativeHistoryObjectKind::Region, number("region"));
+            if (!location) return std::nullopt;
+            // Valid actions emit 'in'; the out-of-range default prints the
+            // same typed location with only spaces. Keep that missing relation.
+            if (kind >= 0 && kind <= 8) {
+                auto place = apply("in {p}", {*location});
+                if (!place) return std::nullopt;
+                join(result, *place);
+                result.push_back(piece("，", neutral));
+                join(result, *title);
+            } else {
+                join(result, *title);
+                append_clause(result, *location);
+            }
+        } else join(result, *title);
+        return result;
     }
     std::optional<Pieces> action;
     const int32_t kind = number("action");
@@ -1167,6 +1333,43 @@ case 127: { // entity_overthrown
 }
 case 128: // hfs_formed_intrigue_relationship
 case 129: { // failed_intrigue_corruption
+    if (event.fields.contains("native_story_title")) {
+        // +d8 2aa590/2aae00 use only these two HF fields and location. Their
+        // identities, employer, intrigue and support belong to +d0 prose.
+        auto corruptor = subject(NativeHistoryObjectKind::Figure, number("corruptor"));
+        auto target = subject(NativeHistoryObjectKind::Figure, number("target"));
+        if (!corruptor || !target) return std::nullopt;
+        auto title = event.native_type == 129
+            ? apply("the failed attempt by {a} to corrupt {a}", {*corruptor, *target})
+            : apply("the corruption of {a}", {*target});
+        if (event.native_type == 128 && title)
+            title = apply("{e} by {a}", {*title, *corruptor});
+        if (!title) return std::nullopt;
+        std::optional<Pieces> location;
+        if (number("site") != -1) {
+            location = subject(NativeHistoryObjectKind::Site, number("site"));
+            if (!location) return std::nullopt;
+        }
+        // The native formatter appends this separately even with a site.
+        // Keep its source roles and compose an ordinary geographic owner
+        // relationship instead of treating the concatenation as one name.
+        if (number("region") != -1 || number("layer") != -1) {
+            auto area = number("layer") != -1
+                ? subject(NativeHistoryObjectKind::Underground, number("layer"))
+                : subject(NativeHistoryObjectKind::Region, number("region"));
+            if (!area) return std::nullopt;
+            location = location ? apply("{p} of {p}", {*location, *area}) : area;
+            if (!location) return std::nullopt;
+        }
+        if (!location) location = term("the wilds");
+        if (!location) return std::nullopt;
+        auto place = apply("in {p}", {*location});
+        if (!place) return std::nullopt;
+        join(result, *place);
+        result.push_back(piece("，", neutral));
+        join(result, *title);
+        return result;
+    }
     const bool supported = number("support.present") != 0;
     const bool has_intrigue = number("intrigue.present") != 0;
     const auto participant = [&](const char *person_key, const char *identity_key) -> std::optional<Pieces> {

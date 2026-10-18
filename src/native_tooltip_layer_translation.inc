@@ -55,8 +55,6 @@ void Overlay::render_native_tooltip_layer(SDL_Renderer *renderer) {
     } view(*this, layer.foreground.graphics());
     NativeInfoCapturedTextScope captions(g_native_tooltip_text);
     NativeUiReadScope component(gps_, nullptr);
-    NativePanelReadScope panels(gps_);
-    CellReadCacheScope cells(*this);
 
     struct TooltipText {
         size_t frame = 0;
@@ -71,36 +69,66 @@ void Overlay::render_native_tooltip_layer(SDL_Renderer *renderer) {
         if (box.x < 0 || box.y < 0 || box.w <= 0 || box.h <= 0 ||
                 box.x > gps_->dimx - box.w || box.y > gps_->dimy - box.h ||
                 frame.rows.size() != static_cast<size_t>(box.h)) continue;
-        std::vector<std::string> rows(gps_->dimy, std::string(gps_->dimx, ' '));
-        for (int y = 0; y < box.h; ++y) {
-            const auto &row = frame.rows[static_cast<size_t>(y)];
-            const size_t length = std::min(row.size(), static_cast<size_t>(box.w));
-            rows[box.y + y].replace(static_cast<size_t>(box.x),
-                length, row, 0, length);
+        auto visible = frame;
+        bool visible_text = false;
+        for (size_t y = 0; y < visible.rows.size(); ++y) {
+            auto &row = visible.rows[y];
+            if (row.size() != static_cast<size_t>(box.w)) { row.assign(box.w, ' '); continue; }
+            for (size_t x = 0; x < row.size(); ++x) {
+                if (row[x] == ' ') continue;
+                const int column = box.x + static_cast<int>(x);
+                const int line = box.y + static_cast<int>(y);
+                bool covered = std::any_of(frame.occlusions.begin(), frame.occlusions.end(),
+                    [&](const SDL_Rect &clip) {
+                        return column >= clip.x && column < clip.x + clip.w &&
+                            line >= clip.y && line < clip.y + clip.h;
+                    });
+                for (size_t higher = index + 1; !covered && higher < layer.frames.size(); ++higher) {
+                    const auto &front = layer.frames[higher];
+                    if (column >= front.x && column < front.x + front.w &&
+                            line >= front.y && line < front.y + front.h) { covered = true; break; }
+                }
+                const auto ch = static_cast<unsigned char>(row[x]);
+                if (covered || !native_tooltip_source_cell(*gps_, column, line, ch))
+                    row[x] = ' ';
+                else visible_text = true;
+            }
         }
-        // This producer's document is the sole source. The tooltip matcher
-        // cannot rediscover the page behind it or enter full-screen matching.
-        g_native_tooltip_widget_frame = frame;
-        g_native_toolbar_tooltip.reset();
+        // Translation is entered only here, for text this producer actually
+        // submitted and which remains visible. No screen-sized text grid,
+        // background snapshot or catalogue discovery participates in this pass.
+        if (!visible_text) continue;
+        const auto visible_draw = [&](const NativeDrawnTextRow &draw, bool top_layer) {
+            if (draw.source.empty() || draw.draw_grid !=
+                    (top_layer ? gps_->screen_top : gps_->screen) ||
+                    draw.draw_dimx != gps_->dimx || draw.draw_dimy != gps_->dimy ||
+                    draw.x < box.x || draw.x >= box.x + box.w ||
+                    draw.y < box.y || draw.y >= box.y + box.h ||
+                    draw.source.size() > static_cast<size_t>(box.x + box.w - draw.x)) return false;
+            return visible.rows[static_cast<size_t>(draw.y - box.y)].compare(
+                static_cast<size_t>(draw.x - box.x), draw.source.size(), draw.source) == 0;
+        };
+        bool authored = false;
+        for (bool top_layer : {false, true})
+            for (const auto &draw : captured_native_drawn_text_view(top_layer))
+                if (draw.squad_alias_target && visible_draw(draw, top_layer)) authored = true;
         prepared_matches_.clear();
-        append_toolbar_tooltip_matches(rows, prepared_matches_, -1, false);
+        // A proven authored field cannot become catalogue prose. Its actual
+        // visible bytes retain their original spelling and UTF-8 display.
+        append_toolbar_tooltip_matches(visible, prepared_matches_, authored);
         layout_toolbar_tooltip(renderer);
         for (bool top_layer : {false, true})
-            for (const auto &draw : captured_native_drawn_text_rows(top_layer)) {
-                if (!draw.unit_identity_target || draw.unit_identity_ready ||
-                        draw.squad_alias_target || draw.editable_text || draw.source.empty() ||
-                        draw.draw_grid != (top_layer ? gps_->screen_top : gps_->screen) ||
-                        draw.draw_dimx != gps_->dimx || draw.draw_dimy != gps_->dimy ||
-                        draw.x < box.x || draw.x >= box.x + box.w ||
-                        draw.y < box.y || draw.y >= box.y + box.h ||
-                        draw.source.size() > static_cast<size_t>(box.x + box.w - draw.x)) continue;
+            for (const auto &draw : captured_native_drawn_text_view(top_layer)) {
+                if ((!draw.squad_alias_target &&
+                        (!draw.unit_identity_target || draw.unit_identity_ready)) ||
+                        draw.editable_text || !visible_draw(draw, top_layer)) continue;
                 const auto *screen = top_layer ? gps_->screen_top : gps_->screen;
                 if (!screen) continue;
                 bool same_source = true;
                 for (size_t offset = 0; same_source && offset < draw.source.size(); ++offset)
-                    same_source = screen[(static_cast<size_t>(draw.x) + offset) *
-                        gps_->dimy * 8 + static_cast<size_t>(draw.y) * 8] ==
-                        static_cast<unsigned char>(draw.source[offset]);
+                    same_source = native_tooltip_glyph_at(*gps_,
+                        draw.x + static_cast<int>(offset), draw.y,
+                        static_cast<unsigned char>(draw.source[offset]), top_layer);
                 if (!same_source) continue;
                 const int right = draw.x + static_cast<int>(draw.source.size());
                 std::erase_if(prepared_matches_, [&](const Match &match) {
@@ -109,8 +137,21 @@ void Overlay::render_native_tooltip_layer(SDL_Renderer *renderer) {
                 });
                 // A formatter-owned tooltip identity waits without submitting
                 // its native glyphs. Unknown tooltip text is unaffected.
-                prepared_matches_.push_back({draw.x, draw.y,
-                    static_cast<int>(draw.source.size()), kCreatureNameRule, {}, draw.source});
+                Match identity{draw.x, draw.y, static_cast<int>(draw.source.size()),
+                    draw.squad_alias_target ? kFortressSquadRowRule : kCreatureNameRule,
+                    draw.squad_alias_target ? *draw.squad_alias_target : std::string{}, draw.source};
+                if (draw.squad_alias_target) {
+                    identity.layout_left = true;
+                    identity.layout_x = draw.x;
+                    identity.layout_length = identity.length;
+                    identity.layout_clip_right = draw.x + identity.length;
+                    auto result = TranslationResult::translated(draw.source,
+                        *draw.squad_alias_target, "squad.alias");
+                    result.status = TranslationStatus::PreservedAuthored;
+                    result.fragments.front().status = result.status;
+                    identity.translation_result = std::make_shared<TranslationResult>(std::move(result));
+                }
+                prepared_matches_.push_back(std::move(identity));
             }
         for (auto &match : prepared_matches_) {
             match.graphical_clear_width = match.graphical_clear_height = 0;
@@ -128,9 +169,9 @@ void Overlay::render_native_tooltip_layer(SDL_Renderer *renderer) {
     for (auto &document : text) {
         g_native_toolbar_tooltip = std::move(document.card);
         g_native_tooltip_widget_frame = g_native_tooltip_frames[document.frame];
-        std::vector<SDL_Rect> higher_frames;
-        for (size_t index = document.frame + 1; index < g_native_tooltip_frames.size(); ++index)
-            higher_frames.push_back(g_native_tooltip_frames[index].bounds);
+        auto higher_frames = g_native_tooltip_frames[document.frame].occlusions;
+        for (size_t index = document.frame + 1; index < layer.frames.size(); ++index)
+            higher_frames.push_back(layer.frames[index]);
         const auto occluders = std::make_shared<const std::vector<SDL_Rect>>(
             std::move(higher_frames));
         for (const auto &match : document.matches) {

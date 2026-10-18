@@ -3,15 +3,20 @@
 // draw addresses establish identity; inferred panel artwork only improves
 // the layout bounds and must not decide whether the report is translated.
     {
-        auto paragraphs = native_adventure_announcement_paragraphs();
-        auto log_paragraphs = native_announcement_log_paragraphs();
-        auto alert_paragraphs = native_fortress_alert_paragraphs();
-        paragraphs.insert(paragraphs.end(),
-            std::make_move_iterator(log_paragraphs.begin()),
-            std::make_move_iterator(log_paragraphs.end()));
-        paragraphs.insert(paragraphs.end(),
-            std::make_move_iterator(alert_paragraphs.begin()),
-            std::make_move_iterator(alert_paragraphs.end()));
+        const bool notification = gps_ == g_native_notification_layer.foreground.graphics();
+        const bool notification_background = g_native_notification_layer.ready &&
+            native_map_background_view(gps_);
+        auto paragraphs = notification ? g_native_notification_paragraphs
+            : native_adventure_announcement_paragraphs();
+        // The completed private layer owns alert rows even when a live
+        // parent changed before source capture. The map HUD cannot borrow
+        // those parents or retry their global history discovery.
+        if (!notification && !notification_background) {
+            auto alert_paragraphs = native_fortress_alert_paragraphs();
+            paragraphs.insert(paragraphs.end(),
+                std::make_move_iterator(alert_paragraphs.begin()),
+                std::make_move_iterator(alert_paragraphs.end()));
+        }
         auto draws = paragraphs.empty() ? std::vector<NativeDrawnTextRow>{}
             : captured_native_drawn_text_rows();
         if (!paragraphs.empty()) {
@@ -161,8 +166,20 @@
                     for (unsigned char ch : *target)
                         if ((ch & 0xc0) != 0x80) colors.push_back(foreground);
             } else {
-                target = translate_complete_announcement(source,
-                    std::vector<int>(source.size(), foreground), colors);
+                if (notification && paragraph.parent) {
+                    // The producer owns the native report snapshot. A cold or
+                    // pending service result keeps this complete source below;
+                    // SDL never retries its grammar under the display lock.
+                    if (const auto translated = native_announcement_log_translation_request(
+                            paragraph.report_document, foreground, true);
+                            translated && !translated->needs_owned_dependency) {
+                        target = translated->target;
+                        colors = translated->colors;
+                    }
+                } else {
+                    target = translate_complete_announcement(source,
+                        std::vector<int>(source.size(), foreground), colors);
+                }
                 if (target && paragraph.repeats > 0) {
                     const int32_t count = static_cast<int32_t>(
                         static_cast<uint32_t>(paragraph.repeats) + uint32_t{1});

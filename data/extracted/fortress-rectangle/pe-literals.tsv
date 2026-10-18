@@ -1,0 +1,1053 @@
+edition	role	instruction_rva	operand	kind	text
+reference	placement-renderer-owner	0x3d6d96	0x14162eef8	cstring	DIPLOMACY
+reference	placement-renderer-owner	0x3d6f86	0x14162eee0	cstring	PETITIONS
+reference	placement-renderer-owner	0x3d7158	0x14162eeec	cstring	SIEGE
+reference	placement-renderer-owner	0x3d727e	0x14162ee90	cstring	ALERT
+reference	placement-renderer-owner	0x3d751c	0x14162ee98	cstring	 x
+reference	placement-renderer-owner	0x3d81db	0x14162ee60	cstring	Placing creatures
+reference	placement-renderer-owner	0x3d8221	0x14162ee78	cstring	Right click when done
+reference	placement-renderer-owner	0x3d8257	0x14162eec0	cstring	Placing trees
+reference	placement-renderer-owner	0x3d829d	0x14162ee78	cstring	Right click when done
+reference	placement-renderer-owner	0x3d82d3	0x14162eed0	cstring	Adding water
+reference	placement-renderer-owner	0x3d8309	0x14162eea0	cstring	Adding magma
+reference	placement-renderer-owner	0x3d833f	0x14162eeb0	cstring	Adding snow
+reference	placement-renderer-owner	0x3d8372	0x14162edc0	cstring	Adding mud
+reference	placement-renderer-owner	0x3d83a5	0x14162edd0	cstring	Removing fluids and spatter
+reference	placement-renderer-owner	0x3d9710	0x14162ed78	cstring	Automated vein and gem mining blueprint
+reference	placement-renderer-owner	0x3d974b	0x14162eda0	cstring	Vein and gem mining blueprint
+reference	placement-renderer-owner	0x3d9786	0x14162ee28	cstring	Gem mining blueprint
+reference	placement-renderer-owner	0x3d97bc	0x14162ee40	cstring	Regular mining blueprint
+reference	placement-renderer-owner	0x3d97f7	0x14162edf0	cstring	Automated vein and gem mining
+reference	placement-renderer-owner	0x3d9832	0x14162ee10	cstring	Vein and gem mining
+reference	placement-renderer-owner	0x3d986d	0x14162ed00	cstring	Gem mining
+reference	placement-renderer-owner	0x3d98a3	0x14162ed10	cstring	Regular mining
+reference	placement-renderer-owner	0x3d98d9	0x14162ecc0	cstring	Removing stairs/ramp/constructions
+reference	placement-renderer-owner	0x3d9918	0x14162ece8	cstring	Stair mining blueprint
+reference	placement-renderer-owner	0x3d994e	0x14162ed50	cstring	Stair mining
+reference	placement-renderer-owner	0x3d998d	0x14162ed60	cstring	Ramp mining blueprint
+reference	placement-renderer-owner	0x3d99c3	0x14162ed20	cstring	Ramp mining
+reference	placement-renderer-owner	0x3d9a02	0x14162ed30	cstring	Channel mining blueprint
+reference	placement-renderer-owner	0x3d9a38	0x14162f270	cstring	Channel mining
+reference	placement-renderer-owner	0x3d9a6b	0x14162f280	cstring	Converting mining blueprint to regular
+reference	placement-renderer-owner	0x3d9a9e	0x14162f230	cstring	Converting mining to blueprint
+reference	placement-renderer-owner	0x3d9b17	0x14162f250	cstring	Must span multiple elevations
+reference	placement-renderer-owner	0x3d9c52	0x14162f2d8	cstring	Converting to chopping blueprint
+reference	placement-renderer-owner	0x3d9c88	0x14162f2a8	cstring	Converting chopping blueprint to regular
+reference	placement-renderer-owner	0x3d9cc7	0x14162f300	cstring	Chopping trees blueprint
+reference	placement-renderer-owner	0x3d9cfd	0x14162f320	cstring	Chopping trees
+reference	placement-renderer-owner	0x3d9e32	0x14162f140	cstring	Converting to gathering blueprint
+reference	placement-renderer-owner	0x3d9e68	0x14162f110	cstring	Converting gathering blueprint to regular
+reference	placement-renderer-owner	0x3d9ea7	0x14162f168	cstring	Gathering fruit and leaves blueprint
+reference	placement-renderer-owner	0x3d9edd	0x14162f190	cstring	Gathering fruit and leaves
+reference	placement-renderer-owner	0x3da02c	0x14162f1f0	cstring	Smoothing blueprint
+reference	placement-renderer-owner	0x3da062	0x14162f208	cstring	Smoothing rough floors and walls
+reference	placement-renderer-owner	0x3da0a1	0x14162f1b0	cstring	Engraving blueprint
+reference	placement-renderer-owner	0x3da0d7	0x14162f1c8	cstring	Engraving smoothed floors and walls
+reference	placement-renderer-owner	0x3da116	0x14162f040	cstring	Track carving blueprint
+reference	placement-renderer-owner	0x3da14c	0x14162f058	cstring	Carving tracks in floor
+reference	placement-renderer-owner	0x3da18b	0x14162eff8	cstring	Fortification carving blueprint
+reference	placement-renderer-owner	0x3da1c1	0x14162f018	cstring	Carving fortifications through walls
+reference	placement-renderer-owner	0x3da1f7	0x14162f0b8	cstring	Converting smoothing blueprint to regular
+reference	placement-renderer-owner	0x3da22d	0x14162f0e8	cstring	Converting to smoothing blueprint
+reference	placement-renderer-owner	0x3da36a	0x14162f070	cstring	Claiming forbidden items and buildings
+reference	placement-renderer-owner	0x3da3a0	0x14162f098	cstring	Forbidding items and buildings
+reference	placement-renderer-owner	0x3da3d6	0x14162ef48	cstring	Designating items for melting
+reference	placement-renderer-owner	0x3da40c	0x14162ef68	cstring	Removing melting designations
+reference	placement-renderer-owner	0x3da442	0x14162ef08	cstring	Designating items for dumping
+reference	placement-renderer-owner	0x3da478	0x14162ef28	cstring	Removing dumping designations
+reference	placement-renderer-owner	0x3da4ae	0x14162efc8	cstring	Hiding items from view
+reference	placement-renderer-owner	0x3da4e4	0x14162efe0	cstring	Revealing hidden items
+reference	placement-renderer-owner	0x3da62b	0x14162f610	cstring	Designating restricted traffic area
+reference	placement-renderer-owner	0x3da661	0x14162efa8	cstring	Designating low traffic area
+reference	placement-renderer-owner	0x3da697	0x14162f5f0	cstring	Removing traffic designations
+reference	placement-renderer-owner	0x3da6cd	0x14162ef88	cstring	Designating high traffic area
+reference	placement-renderer-owner	0x3da7f2	0x14162f588	cstring	Removing mining/chopping/gathering/smoothing orders
+reference	placement-renderer-owner	0x3ddc13	0x1415ec82c	cstring	_
+reference	placement-renderer-owner	0x3dfae9	0x14162f5c0	cstring	A catapult's orientation cannot be changed
+reference	placement-renderer-owner	0x3dfb30	0x14162f698	cstring	once it is placed.
+reference	placement-renderer-owner	0x3dfb9c	0x14162f6b0	cstring	A ballista's orientation cannot be changed
+reference	placement-renderer-owner	0x3dfbe3	0x14162f698	cstring	once it is placed.
+reference	placement-renderer-owner	0x3dfc48	0x14162f638	cstring	A bolt thrower can be freely turned by the
+reference	placement-renderer-owner	0x3dfc8f	0x14162f668	cstring	operator.  Choose a resting orientation.
+reference	placement-renderer-owner	0x3dfe7f	0x14162f4a8	cstring	Horizontal axles can vary in length.
+reference	placement-renderer-owner	0x3dfec6	0x14162f4d0	cstring	Set the orientation below.
+reference	placement-renderer-owner	0x3e037a	0x14162f468	cstring	Water wheels are 1x3 or 3x1.
+reference	placement-renderer-owner	0x3e03c0	0x14162f488	cstring	The long side should align
+reference	placement-renderer-owner	0x3e0406	0x14162f548	cstring	with the water's flow.
+reference	placement-renderer-owner	0x3e08b1	0x14162f560	cstring	Set the liquid flow direction below.
+reference	placement-renderer-owner	0x3e08f8	0x14162f4f0	cstring	Water flows from the adjacent input tile
+reference	placement-renderer-owner	0x3e093f	0x14162f520	cstring	and from the tile below the input tile.
+reference	placement-renderer-owner	0x3e1231	0x14162f3d8	cstring	Minecart rollers can vary in length.
+reference	placement-renderer-owner	0x3e1278	0x14162f400	cstring	Set the orientation and speed below.
+reference	placement-renderer-owner	0x3e2058	0x14162f3bc	cstring	Resets
+reference	placement-renderer-owner	0x3e2164	0x14162f3c8	cstring	One use only
+reference	placement-renderer-owner	0x3e2261	0x14162f458	cstring	Water
+reference	placement-renderer-owner	0x3e22c7	0x14162f460	cstring	Depth
+reference	placement-renderer-owner	0x3e24c9	0x14162f428	cstring	Water does not trigger
+reference	placement-renderer-owner	0x3e25d1	0x1415f73a4	cstring	Magma
+reference	placement-renderer-owner	0x3e2637	0x14162f460	cstring	Depth
+reference	placement-renderer-owner	0x3e2839	0x14162f440	cstring	Magma does not trigger
+reference	placement-renderer-owner	0x3e2946	0x14162f354	cstring	Cart
+reference	placement-renderer-owner	0x3e29ab	0x14162f35c	cstring	Weight
+reference	placement-renderer-owner	0x3e2b99	0x1415ec5a8	cstring	to
+reference	placement-renderer-owner	0x3e2c5a	0x14162f330	cstring	Any
+reference	placement-renderer-owner	0x3e2d71	0x14162f338	cstring	Minecarts do not trigger
+reference	placement-renderer-owner	0x3e2e73	0x14162f388	cstring	Creature trigger settings
+reference	placement-renderer-owner	0x3e2f69	0x14162f3a8	cstring	Citizens trigger
+reference	placement-renderer-owner	0x3e2fa0	0x14162f368	cstring	Citizens do not trigger
+reference	placement-renderer-owner	0x3e2ff1	0x1416160a8	cstring	Range: 
+reference	placement-renderer-owner	0x3e3045	0x14162f380	cstring	(
+reference	placement-renderer-owner	0x3e3075	0x141615580	cstring	)
+reference	placement-renderer-owner	0x3e30d1	0x1415ed5b4	cstring	 to 
+reference	placement-renderer-owner	0x3e3145	0x14162f380	cstring	(
+reference	placement-renderer-owner	0x3e3175	0x141615580	cstring	)
+reference	placement-renderer-owner	0x3e334c	0x14162f380	cstring	(
+reference	placement-renderer-owner	0x3e337c	0x141615580	cstring	)
+reference	placement-renderer-owner	0x3e3482	0x14162f8f8	cstring	Creatures do not trigger
+reference	placement-renderer-owner	0x3e3510	0x14162f918	cstring	Set the friction and auto-dump direction.
+reference	placement-renderer-owner	0x3e355e	0x14162f8b8	cstring	Auto-dumping is not required.
+reference	placement-renderer-owner	0x3e4548	0x14162f8d8	cstring	Set the draw direction below.
+reference	placement-renderer-owner	0x3e4597	0x14162f998	cstring	Then select the corners of the bridge.
+reference	placement-renderer-owner	0x3e53ba	0x14162f9c0	cstring	Click a tile to place the 
+reference	placement-renderer-owner	0x3e53fe	0x14162f948	cstring	Click a tile to be one end of the 
+reference	placement-renderer-owner	0x3e5446	0x14162ca98	cstring	Stairs
+reference	placement-renderer-owner	0x3e5470	0x14162f970	cstring	Click a tile to be a corner of the 
+reference	placement-renderer-owner	0x3e5479	0x14162cca4	cstring	Track
+reference	placement-renderer-owner	0x3e54bf	0x1415e85b4	cstring	.
+reference	placement-renderer-owner	0x3e5544	0x14162f850	cstring	(spans 
+reference	placement-renderer-owner	0x3e557d	0x14162f858	cstring	 levels)
+reference	placement-renderer-owner	0x3e5689	0x14162f818	cstring	Select material after placement
+reference	placement-renderer-owner	0x3e5787	0x14162f838	cstring	Use closest material
+reference	placement-renderer-owner	0x3e5892	0x14162f880	cstring	Use last material
+reference	placement-renderer-owner	0x3e5a54	0x14162f898	cstring	Keep building after placement
+reference	placement-renderer-owner	0x3e5b4b	0x14162f250	cstring	Must span multiple elevations
+reference	placement-renderer-owner	0x3e6199	0x1415ec82c	cstring	_
+reference	placement-renderer-owner	0x3e70ea	0x1415f7150	cstring	All
+reference	placement-renderer-owner	0x3e7150	0x14162a0d8	cstring	Ammo
+reference	placement-renderer-owner	0x3e7187	0x14162a160	cstring	Animals
+reference	placement-renderer-owner	0x3e71c1	0x14162a038	cstring	Armor
+reference	placement-renderer-owner	0x3e720e	0x14162f868	cstring	Bars and
+reference	placement-renderer-owner	0x3e725d	0x14162f874	cstring	Blocks
+reference	placement-renderer-owner	0x3e7297	0x14162a01c	cstring	Cloth
+reference	placement-renderer-owner	0x3e72d1	0x14162a0d0	cstring	Coins
+reference	placement-renderer-owner	0x3e730b	0x14162a0a0	cstring	Corpses
+reference	placement-renderer-owner	0x3e7358	0x14162f770	cstring	Finished
+reference	placement-renderer-owner	0x3e73a7	0x14162f77c	cstring	Goods
+reference	placement-renderer-owner	0x3e73e1	0x14162a158	cstring	Food
+reference	placement-renderer-owner	0x3e741b	0x14162ca20	cstring	Furniture
+reference	placement-renderer-owner	0x3e7455	0x14162a458	cstring	Gem
+reference	placement-renderer-owner	0x3e748f	0x141629cc8	cstring	Leather
+reference	placement-renderer-owner	0x3e74c9	0x14162a0c8	cstring	Refuse
+reference	placement-renderer-owner	0x3e7503	0x14162f760	cstring	Sheets
+reference	placement-renderer-owner	0x3e753d	0x14162a0c0	cstring	Stone
+reference	placement-renderer-owner	0x3e7577	0x14162a430	cstring	Weapons
+reference	placement-renderer-owner	0x3e75b1	0x141629d20	cstring	Wood
+reference	placement-renderer-owner	0x3e75eb	0x1415ff764	cstring	None
+reference	placement-renderer-owner	0x3e7657	0x14162f768	cstring	Custom
+reference	placement-renderer-owner	0x3e76d7	0x14162f7d0	cstring	Click an icon to set stockpile type.
+reference	placement-renderer-owner	0x3e7752	0x14162f7f8	cstring	Warning: stockpile has no type.
+reference	placement-renderer-owner	0x3e78c0	0x14162f788	cstring	Click an existing stockpile to select it.
+reference	placement-renderer-owner	0x3e7a38	0x14162f7b8	cstring	Click in the play area
+reference	placement-renderer-owner	0x3e7a87	0x14162f700	cstring	to paint the stockpile.
+reference	placement-renderer-owner	0x3e7c07	0x14162f718	cstring	Accept
+reference	placement-renderer-owner	0x3e82d4	0x1416017e8	cstring	Unnamed water source
+reference	placement-renderer-owner	0x3e830e	0x1416017d8	cstring	Unnamed dump
+reference	placement-renderer-owner	0x3e8348	0x1416017b8	cstring	Unnamed sand collection area
+reference	placement-renderer-owner	0x3e8382	0x1416017a0	cstring	Unnamed fishing area
+reference	placement-renderer-owner	0x3e83bc	0x141601788	cstring	Unnamed pit/pond
+reference	placement-renderer-owner	0x3e84dd	0x141601770	cstring	Unnamed memorial hall
+reference	placement-renderer-owner	0x3e852b	0x141601750	cstring	Unnamed sculpture garden
+reference	placement-renderer-owner	0x3e8574	0x141601740	cstring	Unnamed zoo
+reference	placement-renderer-owner	0x3e85bc	0x141601a40	cstring	Unnamed museum
+reference	placement-renderer-owner	0x3e8600	0x141601a28	cstring	Unnamed meeting hall
+reference	placement-renderer-owner	0x3e8644	0x141601a10	cstring	Unnamed pen/pasture
+reference	placement-renderer-owner	0x3e867e	0x1416019f0	cstring	Unnamed clay collection area
+reference	placement-renderer-owner	0x3e86b8	0x1416019d0	cstring	Unnamed animal training area
+reference	placement-renderer-owner	0x3e86f2	0x1416019b0	cstring	Unnamed plant gathering area
+reference	placement-renderer-owner	0x3e872c	0x1416019a0	cstring	Unnamed bedroom
+reference	placement-renderer-owner	0x3e8766	0x141601990	cstring	Unnamed office
+reference	placement-renderer-owner	0x3e87a0	0x141601978	cstring	Unnamed archery range
+reference	placement-renderer-owner	0x3e87da	0x141601960	cstring	Unnamed barracks
+reference	placement-renderer-owner	0x3e8814	0x141601950	cstring	Unnamed dungeon
+reference	placement-renderer-owner	0x3e884e	0x141601938	cstring	Unnamed dormitory
+reference	placement-renderer-owner	0x3e8888	0x141601920	cstring	Unnamed dining hall
+reference	placement-renderer-owner	0x3e88c2	0x141601910	cstring	Unnamed tomb
+reference	placement-renderer-owner	0x3e88fc	0x141601900	cstring	Unnamed zone
+reference	placement-renderer-owner	0x3e8962	0x1415ec82c	cstring	_
+reference	placement-renderer-owner	0x3e9379	0x14162f6e0	cstring	Overlapping
+reference	placement-renderer-owner	0x3e93f0	0x14162f6f0	cstring	Water Source
+reference	placement-renderer-owner	0x3e942a	0x14162ba20	cstring	Fishing
+reference	placement-renderer-owner	0x3e9464	0x14162f740	cstring	Gather Fruit
+reference	placement-renderer-owner	0x3e949e	0x14162f750	cstring	Garbage Dump
+reference	placement-renderer-owner	0x3e94d8	0x14162f720	cstring	Pen/Pasture
+reference	placement-renderer-owner	0x3e9512	0x14162f730	cstring	Pit/Pond
+reference	placement-renderer-owner	0x3e954c	0x14162b8a0	cstring	Sand
+reference	placement-renderer-owner	0x3e9586	0x14162a4f4	cstring	Clay
+reference	placement-renderer-owner	0x3e97f3	0x14162c1b0	cstring	No particular deity
+reference	placement-renderer-owner	0x3e991a	0x14162bce0	cstring	 meeting place
+reference	placement-renderer-owner	0x3e9937	0x14162bd18	cstring	 guildhall
+reference	placement-renderer-owner	0x3e9954	0x14162bd00	cstring	 grand guildhall
+reference	placement-renderer-owner	0x3e9a1b	0x14162b7c8	cstring	Tavern
+reference	placement-renderer-owner	0x3e9a90	0x14162b7c0	cstring	Library
+reference	placement-renderer-owner	0x3e9b05	0x14162bd38	cstring	Hospital
+reference	placement-renderer-owner	0x3e9b4c	0x14162fb60	cstring	Meeting Area
+reference	placement-renderer-owner	0x3e9b86	0x14162fb70	cstring	Animal Training
+reference	placement-renderer-owner	0x3e9bc0	0x14162b8a8	cstring	Bedroom
+reference	placement-renderer-owner	0x3e9bfa	0x14162fb40	cstring	Dining Hall
+reference	placement-renderer-owner	0x3e9c34	0x14162b7e0	cstring	Office
+reference	placement-renderer-owner	0x3e9c6e	0x14162fb50	cstring	Archery Range
+reference	placement-renderer-owner	0x3e9ca8	0x14162b7f8	cstring	Barracks
+reference	placement-renderer-owner	0x3e9ce2	0x14162b820	cstring	Dormitory
+reference	placement-renderer-owner	0x3e9d19	0x14162b818	cstring	Dungeon
+reference	placement-renderer-owner	0x3e9d50	0x14162b844	cstring	Tomb
+reference	placement-renderer-owner	0x3e9ddf	0x14162b788	cstring	 squads assigned
+reference	placement-renderer-owner	0x3eaf23	0x141601c30	cstring	Deceased
+reference	placement-renderer-owner	0x3ebbc8	0x14162fbc0	cstring	Click an existing zone to select it.
+reference	placement-renderer-owner	0x3ebc16	0x14162fbe8	cstring	Select a type below to add a zone.
+reference	placement-renderer-owner	0x3ebc5a	0x14162fbe8	cstring	Select a type below to add a zone.
+reference	placement-renderer-owner	0x3ebdc7	0x14162fb80	cstring	Click an icon to add a new zone.
+reference	placement-renderer-owner	0x3ec23e	0x14162f6f0	cstring	Water Source
+reference	placement-renderer-owner	0x3ec28d	0x14162ba20	cstring	Fishing
+reference	placement-renderer-owner	0x3ec2c4	0x14162f740	cstring	Gather Fruit
+reference	placement-renderer-owner	0x3ec2fe	0x14162f750	cstring	Garbage Dump
+reference	placement-renderer-owner	0x3ec338	0x14162f720	cstring	Pen/Pasture
+reference	placement-renderer-owner	0x3ec372	0x14162f730	cstring	Pit/Pond
+reference	placement-renderer-owner	0x3ec3ac	0x14162b8a0	cstring	Sand
+reference	placement-renderer-owner	0x3ec3e6	0x14162a4f4	cstring	Clay
+reference	placement-renderer-owner	0x3ec420	0x14162fb60	cstring	Meeting Area
+reference	placement-renderer-owner	0x3ec45a	0x14162fb70	cstring	Animal Training
+reference	placement-renderer-owner	0x3ec494	0x14162b8a8	cstring	Bedroom
+reference	placement-renderer-owner	0x3ec4ce	0x14162fb40	cstring	Dining Hall
+reference	placement-renderer-owner	0x3ec508	0x14162b7e0	cstring	Office
+reference	placement-renderer-owner	0x3ec542	0x14162fb50	cstring	Archery Range
+reference	placement-renderer-owner	0x3ec57c	0x14162b7f8	cstring	Barracks
+reference	placement-renderer-owner	0x3ec5b6	0x14162b820	cstring	Dormitory
+reference	placement-renderer-owner	0x3ec5f0	0x14162b818	cstring	Dungeon
+reference	placement-renderer-owner	0x3ec649	0x14162b844	cstring	Tomb
+reference	placement-renderer-owner	0x3ec810	0x14162fba8	cstring	Select a rectangle
+reference	placement-renderer-owner	0x3ec85f	0x14162fae8	cstring	which contains 
+reference	placement-renderer-owner	0x3ec8bb	0x14162fb20	cstring	coffins
+reference	placement-renderer-owner	0x3ec8f5	0x14162fae0	cstring	chairs
+reference	placement-renderer-owner	0x3ec92c	0x14162faf8	cstring	beds
+reference	placement-renderer-owner	0x3ec963	0x14162fad8	cstring	tables
+reference	placement-renderer-owner	0x3ec9b2	0x14162fb28	cstring	in order to form
+reference	placement-renderer-owner	0x3eca23	0x14162faa8	cstring	tombs.
+reference	placement-renderer-owner	0x3eca5d	0x14162fa90	cstring	throne rooms/studies.
+reference	placement-renderer-owner	0x3eca94	0x14162fb00	cstring	bedrooms.
+reference	placement-renderer-owner	0x3ecacb	0x14162fb10	cstring	dining halls.
+reference	placement-renderer-owner	0x3ecb27	0x14162fa58	cstring	Rooms with multiple beds
+reference	placement-renderer-owner	0x3ecb76	0x14162fa78	cstring	will be made into
+reference	placement-renderer-owner	0x3ecbc5	0x14162fac0	cstring	dormitories.
+reference	placement-renderer-owner	0x3ecca7	0x1415fe724	cstring	Cancel
+reference	placement-renderer-owner	0x3ecd85	0x14162fad0	cstring	Multi
+reference	placement-renderer-owner	0x3ece60	0x14162fab0	cstring	Paint
+reference	placement-renderer-owner	0x3ecf45	0x1416044c0	cstring	Done
+reference	placement-renderer-owner	0x3ed020	0x14162fab8	cstring	Undo
+reference	placement-renderer-owner	0x3ed089	0x14162f9f8	cstring	Select another rectangle
+reference	placement-renderer-owner	0x3ed0d8	0x14162fa18	cstring	to continue.
+reference	placement-renderer-owner	0x3ed25f	0x1415e873c	cstring	 
+reference	placement-renderer-owner	0x3ed28c	0x14162fa4c	cstring	tomb
+reference	placement-renderer-owner	0x3ed2b4	0x14162fa44	cstring	office
+reference	placement-renderer-owner	0x3ed2bd	0x14162f9e0	cstring	bedroom
+reference	placement-renderer-owner	0x3ed2c6	0x14162f9e8	cstring	dining hall
+reference	placement-renderer-owner	0x3ed2ec	0x1415e9298	cstring	s
+reference	placement-renderer-owner	0x3ed2ff	0x14162fa28	cstring	 created.
+reference	placement-renderer-owner	0x3ed398	0x1415e873c	cstring	 
+reference	placement-renderer-owner	0x3ed3ab	0x14162fa38	cstring	dormitor
+reference	placement-renderer-owner	0x3ed3be	0x14162fdbc	cstring	ies
+reference	placement-renderer-owner	0x3ed3c7	0x14162fa38	cstring	dormitor
+reference	placement-renderer-owner	0x3ed3da	0x14162fdc0	cstring	y
+reference	placement-renderer-owner	0x3ed3ed	0x14162fa28	cstring	 created.
+reference	placement-renderer-owner	0x3ed495	0x1415e873c	cstring	 
+reference	placement-renderer-owner	0x3ed4c2	0x14162fe0c	cstring	coffin
+reference	placement-renderer-owner	0x3ed4cb	0x14162fe04	cstring	chair
+reference	placement-renderer-owner	0x3ed4d4	0x14162fdb0	cstring	bed
+reference	placement-renderer-owner	0x3ed4dd	0x14162fdb4	cstring	table
+reference	placement-renderer-owner	0x3ed4f9	0x1415e9298	cstring	s
+reference	placement-renderer-owner	0x3ed50c	0x14162fdc8	cstring	 rejected (already in use.)
+reference	placement-renderer-owner	0x3ed5ad	0x1415e873c	cstring	 
+reference	placement-renderer-owner	0x3ed5da	0x14162fe0c	cstring	coffin
+reference	placement-renderer-owner	0x3ed5e3	0x14162fe04	cstring	chair
+reference	placement-renderer-owner	0x3ed5ec	0x14162fdb0	cstring	bed
+reference	placement-renderer-owner	0x3ed5f5	0x14162fdb4	cstring	table
+reference	placement-renderer-owner	0x3ed611	0x1415e9298	cstring	s
+reference	placement-renderer-owner	0x3ed624	0x14162fde8	cstring	 rejected (not enclosed.)
+reference	placement-renderer-owner	0x3ed69a	0x14162f7b8	cstring	Click in the play area
+reference	placement-renderer-owner	0x3ed6e9	0x14162fd40	cstring	to paint the zone.
+reference	placement-renderer-owner	0x3ed7df	0x1415fe724	cstring	Cancel
+reference	placement-renderer-owner	0x3ed966	0x14162f718	cstring	Accept
+reference	placement-renderer-owner	0x3eda96	0x14162fad0	cstring	Multi
+reference	placement-renderer-owner	0x3edb7f	0x14162fab0	cstring	Paint
+reference	placement-renderer-owner	0x3ee84b	0x14162f6f0	cstring	Water Source
+reference	placement-renderer-owner	0x3ee885	0x14162ba20	cstring	Fishing
+reference	placement-renderer-owner	0x3ee8bf	0x14162f740	cstring	Gather Fruit
+reference	placement-renderer-owner	0x3ee8f9	0x14162f750	cstring	Garbage Dump
+reference	placement-renderer-owner	0x3ee933	0x14162f720	cstring	Pen/Pasture
+reference	placement-renderer-owner	0x3ee96d	0x14162f730	cstring	Pit/Pond
+reference	placement-renderer-owner	0x3ee9a7	0x14162b8a0	cstring	Sand
+reference	placement-renderer-owner	0x3ee9e1	0x14162a4f4	cstring	Clay
+reference	placement-renderer-owner	0x3eea1b	0x14162fb60	cstring	Meeting Area
+reference	placement-renderer-owner	0x3eea55	0x14162fb70	cstring	Animal Training
+reference	placement-renderer-owner	0x3eea8f	0x14162b8a8	cstring	Bedroom
+reference	placement-renderer-owner	0x3eeac9	0x14162fb40	cstring	Dining Hall
+reference	placement-renderer-owner	0x3eeb03	0x14162b7e0	cstring	Office
+reference	placement-renderer-owner	0x3eeb3d	0x14162fb50	cstring	Archery Range
+reference	placement-renderer-owner	0x3eeb77	0x14162b7f8	cstring	Barracks
+reference	placement-renderer-owner	0x3eebb1	0x14162b820	cstring	Dormitory
+reference	placement-renderer-owner	0x3eebe8	0x14162b818	cstring	Dungeon
+reference	placement-renderer-owner	0x3eec1f	0x14162b844	cstring	Tomb
+reference	placement-renderer-owner	0x3eeca7	0x14162fd54	cstring	 + 
+reference	placement-renderer-owner	0x3eecdd	0x14162fd54	cstring	 + 
+reference	placement-renderer-owner	0x3eed13	0x14162fd54	cstring	 + 
+reference	placement-renderer-owner	0x3eed4c	0x14162fd54	cstring	 + 
+reference	placement-renderer-owner	0x3eed82	0x14162fd54	cstring	 + 
+reference	placement-renderer-owner	0x3eedb7	0x14162fd54	cstring	 + 
+reference	placement-renderer-owner	0x3eedec	0x14162fd54	cstring	 + 
+reference	placement-renderer-owner	0x3eee1f	0x14162fd54	cstring	 + 
+reference	placement-renderer-owner	0x3eee51	0x14162fd54	cstring	 + 
+reference	placement-renderer-owner	0x3eee75	0x141603460	cstring	: 
+reference	placement-renderer-owner	0x3eeeeb	0x1415e873c	cstring	 
+reference	placement-renderer-owner	0x3eef40	0x1415f738c	cstring	Hot
+reference	placement-renderer-owner	0x3eef96	0x1415f7420	cstring	Cold
+reference	placement-renderer-owner	0x3ef5d7	0x14162fd00	cstring	Assigned residents will only
+reference	placement-renderer-owner	0x3ef626	0x14162fd20	cstring	perform tasks in any of their
+reference	placement-renderer-owner	0x3ef675	0x14162fd80	cstring	active assigned burrows.
+reference	placement-renderer-owner	0x3ef754	0x14162fda0	cstring	Add new burrow
+reference	placement-renderer-owner	0x3efb55	0x1415ec82c	cstring	_
+reference	placement-renderer-owner	0x3efb7a	0x14162be20	cstring	Burrow 
+reference	placement-renderer-owner	0x3efeff	0x14162b778	cstring	 assigned
+reference	placement-renderer-owner	0x3eff17	0x14162fd58	cstring	Nobody assigned
+reference	placement-renderer-owner	0x3f04a3	0x14162f7b8	cstring	Click in the play area
+reference	placement-renderer-owner	0x3f04f2	0x14162fd68	cstring	to paint the burrow.
+reference	placement-renderer-owner	0x3f0691	0x14162f718	cstring	Accept
+reference	placement-renderer-owner	0x3f0c4c	0x14162fc80	cstring	Click a tile to position the stop.
+reference	placement-renderer-owner	0x3f0cb2	0x14162fca8	cstring	Building track stops is recommended!
+reference	placement-renderer-owner	0x3f0d8f	0x14162fc68	cstring	Add new route
+reference	placement-renderer-owner	0x3f0ec5	0x1415ec82c	cstring	_
+reference	placement-renderer-owner	0x3f0ee8	0x141629b74	cstring	Route 
+reference	placement-renderer-owner	0x3f13d0	0x1415ec82c	cstring	_
+reference	placement-renderer-owner	0x3f13f6	0x14162fc78	cstring	Stop 
+reference	placement-renderer-owner	0x3f1a18	0x141601f38	cstring	%
+reference	placement-renderer-owner	0x3f2bb9	0x14162fcd8	cstring	Indep
+reference	placement-renderer-owner	0x3f2cce	0x1415fe1e0	cstring	#
+reference	placement-renderer-owner	0x3f2e13	0x14162fce0	cstring	Create a creature to begin.
+reference	placement-renderer-owner	0x3f3566	0x14162fcd0	cstring	Pop
+reference	placement-renderer-owner	0x3f38df	0x14162fcd4	cstring	++
+reference	placement-renderer-owner	0x3f39e2	0x14162a158	cstring	Food
+reference	placement-renderer-owner	0x3f3a42	0x1415ff764	cstring	None
+reference	placement-renderer-owner	0x3f3ada	0x14162fc1c	cstring	Drink
+reference	placement-renderer-owner	0x3f3b3a	0x1415ff764	cstring	None
+reference	placement-renderer-owner	0x3f3bd2	0x14162a350	cstring	Seeds
+reference	placement-renderer-owner	0x3f3c32	0x1415ff764	cstring	None
+reference	placement-renderer-owner	0x3f3cc9	0x141601d8c	cstring	Meat
+reference	placement-renderer-owner	0x3f3d29	0x1415ff764	cstring	None
+reference	placement-renderer-owner	0x3f3dc0	0x141601d84	cstring	Fish
+reference	placement-renderer-owner	0x3f3e20	0x1415ff764	cstring	None
+reference	placement-renderer-owner	0x3f3eb8	0x1416156e0	cstring	Plant
+reference	placement-renderer-owner	0x3f3f18	0x1415ff764	cstring	None
+reference	placement-renderer-owner	0x3f3fb0	0x14161664c	cstring	Other
+reference	placement-renderer-owner	0x3f4010	0x1415ff764	cstring	None
+reference	placement-renderer-owner	0x3f4088	0x14162a8fc	cstring	~
+reference	placement-renderer-owner	0x3f4130	0x14160b464	cstring	Stocks
+reference	placement-renderer-owner	0x3f4263	0x1415ec698	cstring	st
+reference	placement-renderer-owner	0x3f426f	0x1415ec69c	cstring	nd
+reference	placement-renderer-owner	0x3f427b	0x1415ec690	cstring	rd
+reference	placement-renderer-owner	0x3f4287	0x1415ec694	cstring	th
+reference	placement-renderer-owner	0x3f429a	0x1415e873c	cstring	 
+reference	placement-renderer-owner	0x3f4333	0x14162fc24	cstring	Early 
+reference	placement-renderer-owner	0x3f4344	0x14162fc0c	cstring	Mid-
+reference	placement-renderer-owner	0x3f4351	0x14162fc14	cstring	Late 
+reference	placement-renderer-owner	0x3f438b	0x1415fd2b4	cstring	Winter
+reference	placement-renderer-owner	0x3f4397	0x1415fd2ac	cstring	Autumn
+reference	placement-renderer-owner	0x3f43a3	0x1415fd2a4	cstring	Summer
+reference	placement-renderer-owner	0x3f43af	0x1415fd29c	cstring	Spring
+reference	placement-renderer-owner	0x3f43f2	0x14162fc4c	cstring	Year 
+reference	placement-renderer-owner	0x3f5707	0x14162fc58	cstring	Elevation 
+reference	placement-renderer-owner	0x3f5cdf	0x14162fc30	cstring	Conflict Level
+reference	placement-renderer-owner	0x3f5d68	0x14162fc40	cstring	Encounter
+reference	placement-renderer-owner	0x3f5db9	0x141630080	cstring	Horseplay
+reference	placement-renderer-owner	0x3f5e0a	0x141630090	cstring	Training
+reference	placement-renderer-owner	0x3f5e5b	0x141630068	cstring	Brawl
+reference	placement-renderer-owner	0x3f5eac	0x141630070	cstring	Non-lethal
+reference	placement-renderer-owner	0x3f5efd	0x1416300b4	cstring	Lethal
+reference	placement-renderer-owner	0x3f5f4b	0x1416300c0	cstring	No Quarter
+reference	placement-renderer-owner	0x3f601f	0x1416300a0	cstring	Morale/Fear 
+reference	placement-renderer-owner	0x3f6066	0x1416300b0	cstring	On
+reference	placement-renderer-owner	0x3f60a0	0x1416164b4	cstring	Off
+reference	placement-renderer-owner	0x3f643e	0x14162ee98	cstring	 x
+reference	placement-renderer-owner	0x3f65b5	0x1415ed568	cstring	Somebody
+reference	placement-renderer-owner	0x3f65e8	0x1415f71e4	cstring	 is 
+reference	placement-renderer-owner	0x3f6624	0x1415f71d0	cstring	hunting.
+reference	placement-renderer-owner	0x3f6630	0x1415f7198	cstring	sparring.
+reference	placement-renderer-owner	0x3f663c	0x1415f71c0	cstring	fighting!
+reference	placement-renderer-owner	0x3f6d44	0x141630008	cstring	Created Wealth:
+reference	placement-renderer-owner	0x3f6dcb	0x141630018	cstring	Weapons:
+reference	placement-renderer-owner	0x3f6e3a	0x1415ff764	cstring	None
+reference	placement-renderer-owner	0x3f6f59	0x14162ffe8	cstring	Armor and Garb:
+reference	placement-renderer-owner	0x3f6fc6	0x1415ff764	cstring	None
+reference	placement-renderer-owner	0x3f70e9	0x14162fff8	cstring	Furniture:
+reference	placement-renderer-owner	0x3f7158	0x1415ff764	cstring	None
+reference	placement-renderer-owner	0x3f7269	0x141630048	cstring	Other Objects:
+reference	placement-renderer-owner	0x3f72da	0x1415ff764	cstring	None
+reference	placement-renderer-owner	0x3f73eb	0x141630058	cstring	Architecture:
+reference	placement-renderer-owner	0x3f745c	0x1415ff764	cstring	None
+reference	placement-renderer-owner	0x3f7571	0x141630028	cstring	Displayed:
+reference	placement-renderer-owner	0x3f75e2	0x1415ff764	cstring	None
+reference	placement-renderer-owner	0x3f76fa	0x141630038	cstring	Held/Worn:
+reference	placement-renderer-owner	0x3f776b	0x1415ff764	cstring	None
+reference	placement-renderer-owner	0x3f788b	0x1415ff764	cstring	None
+reference	placement-renderer-owner	0x3f794b	0x14162ffb8	cstring	Imported Wealth:
+reference	placement-renderer-owner	0x3f79b9	0x1415ff764	cstring	None
+reference	placement-renderer-owner	0x3f7a71	0x14162ffd0	cstring	Exported Wealth:
+reference	placement-renderer-owner	0x3f7ae1	0x1415ff764	cstring	None
+reference	placement-renderer-owner	0x3f7b99	0x14162ff58	cstring	You need a broker with
+reference	placement-renderer-owner	0x3f7be7	0x14162ff70	cstring	the appraisal skill.
+reference	placement-renderer-owner	0x3f7c35	0x14162ff30	cstring	A bookkeeper helps
+reference	placement-renderer-owner	0x3f7c83	0x14162ff48	cstring	with accuracy.
+reference	placement-renderer-owner	0x3f7ce8	0x14162ff88	cstring	Trade Information:
+reference	placement-renderer-owner	0x3f7d4d	0x14162ff58	cstring	You need a broker with
+reference	placement-renderer-owner	0x3f7d9b	0x14162ff70	cstring	the appraisal skill.
+reference	placement-renderer-owner	0x3f7fa6	0x14162ffa0	cstring	Accepted petition:
+reference	placement-renderer-owner	0x3f8051	0x1416305c8	cstring	Build a guildhall
+reference	placement-renderer-owner	0x3f8081	0x141630590	cstring	Build a grand guildhall
+reference	placement-renderer-owner	0x3f8148	0x1415ec714	cstring	for
+reference	placement-renderer-owner	0x3f8200	0x1416305a8	cstring	 guild.
+reference	placement-renderer-owner	0x3f82c7	0x14162fe18	cstring	The associated zones must have enough value. (
+reference	placement-renderer-owner	0x3f8347	0x141615580	cstring	)
+reference	placement-renderer-owner	0x3f8596	0x141630628	cstring	Current top guildhall location:
+reference	placement-renderer-owner	0x3f85d0	0x141630648	cstring	Current guildhall location:
+reference	placement-renderer-owner	0x3f8653	0x1415e90d8	cstring	, 
+reference	placement-renderer-owner	0x3f86d2	0x1416305e0	cstring	No guildhall location currently assigned to a zone.
+reference	placement-renderer-owner	0x3f874d	0x1416305b0	cstring	Agreement date: 
+reference	placement-renderer-owner	0x3f8797	0x1415ec698	cstring	st
+reference	placement-renderer-owner	0x3f87a3	0x1415ec69c	cstring	nd
+reference	placement-renderer-owner	0x3f87af	0x1415ec690	cstring	rd
+reference	placement-renderer-owner	0x3f87bb	0x1415ec694	cstring	th
+reference	placement-renderer-owner	0x3f87ce	0x1415e873c	cstring	 
+reference	placement-renderer-owner	0x3f8810	0x1415e90d8	cstring	, 
+reference	placement-renderer-owner	0x3f895d	0x14162fe68	cstring	Build a temple
+reference	placement-renderer-owner	0x3f898d	0x14162fe78	cstring	Build a temple complex
+reference	placement-renderer-owner	0x3f8a54	0x1415ec714	cstring	for
+reference	placement-renderer-owner	0x3f8add	0x1415e85b4	cstring	.
+reference	placement-renderer-owner	0x3f8ba4	0x14162fe18	cstring	The associated zones must have enough value. (
+reference	placement-renderer-owner	0x3f8c24	0x141615580	cstring	)
+reference	placement-renderer-owner	0x3f8ca3	0x14162fe48	cstring	A priest must then be elevated.
+reference	placement-renderer-owner	0x3f8cfa	0x14162fee8	cstring	A high priest must then be elevated.
+reference	placement-renderer-owner	0x3f8f76	0x14162ff10	cstring	Current top temple location:
+reference	placement-renderer-owner	0x3f8fb0	0x14162fe90	cstring	Current temple location:
+reference	placement-renderer-owner	0x3f9046	0x1415e90d8	cstring	, 
+reference	placement-renderer-owner	0x3f90c9	0x14162feb0	cstring	No temple location currently assigned to a zone.
+reference	placement-renderer-owner	0x3f9144	0x1416305b0	cstring	Agreement date: 
+reference	placement-renderer-owner	0x3f918e	0x1415ec698	cstring	st
+reference	placement-renderer-owner	0x3f919a	0x1415ec69c	cstring	nd
+reference	placement-renderer-owner	0x3f91a6	0x1415ec690	cstring	rd
+reference	placement-renderer-owner	0x3f91b2	0x1415ec694	cstring	th
+reference	placement-renderer-owner	0x3f91c5	0x1415e873c	cstring	 
+reference	placement-renderer-owner	0x3f9207	0x1415e90d8	cstring	, 
+reference	placement-renderer-owner	0x3f9ad4	0x141630530	cstring	Build guildhall
+reference	placement-renderer-owner	0x3f9b03	0x1416304b8	cstring	Build grand guildhall
+reference	placement-renderer-owner	0x3f9c44	0x141600284	cstring	 guild
+reference	placement-renderer-owner	0x3f9d7c	0x1415ec698	cstring	st
+reference	placement-renderer-owner	0x3f9d88	0x1415ec69c	cstring	nd
+reference	placement-renderer-owner	0x3f9d94	0x1415ec690	cstring	rd
+reference	placement-renderer-owner	0x3f9da0	0x1415ec694	cstring	th
+reference	placement-renderer-owner	0x3f9db3	0x1415e873c	cstring	 
+reference	placement-renderer-owner	0x3f9df5	0x1415e90d8	cstring	, 
+reference	placement-renderer-owner	0x3f9f66	0x141630618	cstring	Build temple
+reference	placement-renderer-owner	0x3f9f95	0x141630518	cstring	Build temple complex
+reference	placement-renderer-owner	0x3fa1ca	0x1415ec698	cstring	st
+reference	placement-renderer-owner	0x3fa1d6	0x1415ec69c	cstring	nd
+reference	placement-renderer-owner	0x3fa1e2	0x1415ec690	cstring	rd
+reference	placement-renderer-owner	0x3fa1ee	0x1415ec694	cstring	th
+reference	placement-renderer-owner	0x3fa201	0x1415e873c	cstring	 
+reference	placement-renderer-owner	0x3fa243	0x1415e90d8	cstring	, 
+reference	placement-renderer-owner	0x3fab2b	0x1416304d0	cstring	Left click for recenter and expand options.  Right click to dismiss.
+reference	placement-renderer-owner	0x3fae1b	0x1416304d0	cstring	Left click for recenter and expand options.  Right click to dismiss.
+reference	placement-renderer-owner	0x3fb39e	0x141604528	cstring	Hotkey: 
+reference	placement-renderer-owner	0x3fb721	0x141630578	cstring	Following 
+reference	placement-renderer-owner	0x3fbaa5	0x141630578	cstring	Following 
+reference	placement-renderer-owner	0x3fc6ee	0x1415e873c	cstring	 
+reference	placement-renderer-owner	0x3fc710	0x141616288	cstring	 x 
+reference	placement-renderer-owner	0x3fc736	0x141616288	cstring	 x 
+reference	placement-renderer-owner	0x3fc757	0x1415e873c	cstring	 
+reference	placement-renderer-owner	0x3fc942	0x141630588	cstring	Tooltip
+reference	rectangle-panel-slice	0x3ec810	0x14162fba8	cstring	Select a rectangle
+reference	rectangle-panel-slice	0x3ec85f	0x14162fae8	cstring	which contains 
+reference	rectangle-panel-slice	0x3ec8bb	0x14162fb20	cstring	coffins
+reference	rectangle-panel-slice	0x3ec8f5	0x14162fae0	cstring	chairs
+reference	rectangle-panel-slice	0x3ec92c	0x14162faf8	cstring	beds
+reference	rectangle-panel-slice	0x3ec963	0x14162fad8	cstring	tables
+reference	rectangle-panel-slice	0x3ec9b2	0x14162fb28	cstring	in order to form
+reference	rectangle-panel-slice	0x3eca23	0x14162faa8	cstring	tombs.
+reference	rectangle-panel-slice	0x3eca5d	0x14162fa90	cstring	throne rooms/studies.
+reference	rectangle-panel-slice	0x3eca94	0x14162fb00	cstring	bedrooms.
+reference	rectangle-panel-slice	0x3ecacb	0x14162fb10	cstring	dining halls.
+reference	rectangle-panel-slice	0x3ecb27	0x14162fa58	cstring	Rooms with multiple beds
+reference	rectangle-panel-slice	0x3ecb76	0x14162fa78	cstring	will be made into
+reference	rectangle-panel-slice	0x3ecbc5	0x14162fac0	cstring	dormitories.
+reference	rectangle-panel-slice	0x3ecca7	0x1415fe724	cstring	Cancel
+reference	rectangle-panel-slice	0x3ecd85	0x14162fad0	cstring	Multi
+reference	rectangle-panel-slice	0x3ece60	0x14162fab0	cstring	Paint
+reference	rectangle-panel-slice	0x3ecf45	0x1416044c0	cstring	Done
+reference	rectangle-panel-slice	0x3ed020	0x14162fab8	cstring	Undo
+reference	rectangle-panel-slice	0x3ed089	0x14162f9f8	cstring	Select another rectangle
+reference	rectangle-panel-slice	0x3ed0d8	0x14162fa18	cstring	to continue.
+reference	rectangle-panel-slice	0x3ed25f	0x1415e873c	cstring	 
+reference	rectangle-panel-slice	0x3ed28c	0x14162fa4c	cstring	tomb
+reference	rectangle-panel-slice	0x3ed2b4	0x14162fa44	cstring	office
+reference	rectangle-panel-slice	0x3ed2bd	0x14162f9e0	cstring	bedroom
+reference	rectangle-panel-slice	0x3ed2c6	0x14162f9e8	cstring	dining hall
+reference	rectangle-panel-slice	0x3ed2ec	0x1415e9298	cstring	s
+reference	rectangle-panel-slice	0x3ed2ff	0x14162fa28	cstring	 created.
+reference	rectangle-panel-slice	0x3ed398	0x1415e873c	cstring	 
+reference	rectangle-panel-slice	0x3ed3ab	0x14162fa38	cstring	dormitor
+reference	rectangle-panel-slice	0x3ed3be	0x14162fdbc	cstring	ies
+reference	rectangle-panel-slice	0x3ed3c7	0x14162fa38	cstring	dormitor
+reference	rectangle-panel-slice	0x3ed3da	0x14162fdc0	cstring	y
+reference	rectangle-panel-slice	0x3ed3ed	0x14162fa28	cstring	 created.
+reference	rectangle-panel-slice	0x3ed495	0x1415e873c	cstring	 
+reference	rectangle-panel-slice	0x3ed4c2	0x14162fe0c	cstring	coffin
+reference	rectangle-panel-slice	0x3ed4cb	0x14162fe04	cstring	chair
+reference	rectangle-panel-slice	0x3ed4d4	0x14162fdb0	cstring	bed
+reference	rectangle-panel-slice	0x3ed4dd	0x14162fdb4	cstring	table
+reference	rectangle-panel-slice	0x3ed4f9	0x1415e9298	cstring	s
+reference	rectangle-panel-slice	0x3ed50c	0x14162fdc8	cstring	 rejected (already in use.)
+reference	rectangle-panel-slice	0x3ed5ad	0x1415e873c	cstring	 
+reference	rectangle-panel-slice	0x3ed5da	0x14162fe0c	cstring	coffin
+reference	rectangle-panel-slice	0x3ed5e3	0x14162fe04	cstring	chair
+reference	rectangle-panel-slice	0x3ed5ec	0x14162fdb0	cstring	bed
+reference	rectangle-panel-slice	0x3ed5f5	0x14162fdb4	cstring	table
+reference	rectangle-panel-slice	0x3ed611	0x1415e9298	cstring	s
+reference	rectangle-panel-slice	0x3ed624	0x14162fde8	cstring	 rejected (not enclosed.)
+reference	rectangle-panel-slice	0x3ed69a	0x14162f7b8	cstring	Click in the play area
+reference	rectangle-panel-slice	0x3ed6e9	0x14162fd40	cstring	to paint the zone.
+reference	rectangle-panel-slice	0x3ed7df	0x1415fe724	cstring	Cancel
+reference	rectangle-panel-slice	0x3ed966	0x14162f718	cstring	Accept
+reference	rectangle-panel-slice	0x3eda96	0x14162fad0	cstring	Multi
+reference	rectangle-panel-slice	0x3edb7f	0x14162fab0	cstring	Paint
+classic	placement-renderer-owner	0x3d4956	0x141629bb0	cstring	DIPLOMACY
+classic	placement-renderer-owner	0x3d4b46	0x141629bc0	cstring	PETITIONS
+classic	placement-renderer-owner	0x3d4d18	0x141629ba0	cstring	SIEGE
+classic	placement-renderer-owner	0x3d4e3e	0x141629ba8	cstring	ALERT
+classic	placement-renderer-owner	0x3d50dc	0x141629bf8	cstring	 x
+classic	placement-renderer-owner	0x3d5d9b	0x141629c00	cstring	Placing creatures
+classic	placement-renderer-owner	0x3d5de1	0x141629bd0	cstring	Right click when done
+classic	placement-renderer-owner	0x3d5e17	0x141629be8	cstring	Placing trees
+classic	placement-renderer-owner	0x3d5e5d	0x141629bd0	cstring	Right click when done
+classic	placement-renderer-owner	0x3d5e93	0x141629f00	cstring	Adding water
+classic	placement-renderer-owner	0x3d5ec9	0x141629f10	cstring	Adding magma
+classic	placement-renderer-owner	0x3d5eff	0x141629ee0	cstring	Adding snow
+classic	placement-renderer-owner	0x3d5f32	0x141629ef0	cstring	Adding mud
+classic	placement-renderer-owner	0x3d5f65	0x141629f58	cstring	Removing fluids and spatter
+classic	placement-renderer-owner	0x3d72d0	0x141629f78	cstring	Automated vein and gem mining blueprint
+classic	placement-renderer-owner	0x3d730b	0x141629f20	cstring	Vein and gem mining blueprint
+classic	placement-renderer-owner	0x3d7346	0x141629f40	cstring	Gem mining blueprint
+classic	placement-renderer-owner	0x3d737c	0x141629e40	cstring	Regular mining blueprint
+classic	placement-renderer-owner	0x3d73b7	0x141629e60	cstring	Automated vein and gem mining
+classic	placement-renderer-owner	0x3d73f2	0x141629e18	cstring	Vein and gem mining
+classic	placement-renderer-owner	0x3d742d	0x141629e30	cstring	Gem mining
+classic	placement-renderer-owner	0x3d7463	0x141629ea8	cstring	Regular mining
+classic	placement-renderer-owner	0x3d7499	0x141629eb8	cstring	Removing stairs/ramp/constructions
+classic	placement-renderer-owner	0x3d74d8	0x141629e80	cstring	Stair mining blueprint
+classic	placement-renderer-owner	0x3d750e	0x141629e98	cstring	Stair mining
+classic	placement-renderer-owner	0x3d754d	0x141629d68	cstring	Ramp mining blueprint
+classic	placement-renderer-owner	0x3d7583	0x141629d80	cstring	Ramp mining
+classic	placement-renderer-owner	0x3d75c2	0x141629d38	cstring	Channel mining blueprint
+classic	placement-renderer-owner	0x3d75f8	0x141629d58	cstring	Channel mining
+classic	placement-renderer-owner	0x3d762b	0x141629dd0	cstring	Converting mining blueprint to regular
+classic	placement-renderer-owner	0x3d765e	0x141629df8	cstring	Converting mining to blueprint
+classic	placement-renderer-owner	0x3d76d7	0x141629d90	cstring	Must span multiple elevations
+classic	placement-renderer-owner	0x3d7812	0x141629c18	cstring	Converting to chopping blueprint
+classic	placement-renderer-owner	0x3d7848	0x141629c78	cstring	Converting chopping blueprint to regular
+classic	placement-renderer-owner	0x3d7887	0x141629db0	cstring	Chopping trees blueprint
+classic	placement-renderer-owner	0x3d78bd	0x141629c68	cstring	Chopping trees
+classic	placement-renderer-owner	0x3d79f2	0x141629ca8	cstring	Converting to gathering blueprint
+classic	placement-renderer-owner	0x3d7a28	0x141629d08	cstring	Converting gathering blueprint to regular
+classic	placement-renderer-owner	0x3d7a67	0x141629c40	cstring	Gathering fruit and leaves blueprint
+classic	placement-renderer-owner	0x3d7a9d	0x141629ce8	cstring	Gathering fruit and leaves
+classic	placement-renderer-owner	0x3d7bec	0x141629cd0	cstring	Smoothing blueprint
+classic	placement-renderer-owner	0x3d7c22	0x14162a338	cstring	Smoothing rough floors and walls
+classic	placement-renderer-owner	0x3d7c61	0x14162a360	cstring	Engraving blueprint
+classic	placement-renderer-owner	0x3d7c97	0x14162a2f8	cstring	Engraving smoothed floors and walls
+classic	placement-renderer-owner	0x3d7cd6	0x14162a320	cstring	Track carving blueprint
+classic	placement-renderer-owner	0x3d7d0c	0x14162a3d0	cstring	Carving tracks in floor
+classic	placement-renderer-owner	0x3d7d4b	0x14162a3e8	cstring	Fortification carving blueprint
+classic	placement-renderer-owner	0x3d7d81	0x14162a378	cstring	Carving fortifications through walls
+classic	placement-renderer-owner	0x3d7db7	0x14162a3a0	cstring	Converting smoothing blueprint to regular
+classic	placement-renderer-owner	0x3d7ded	0x14162a230	cstring	Converting to smoothing blueprint
+classic	placement-renderer-owner	0x3d7f2a	0x14162a258	cstring	Claiming forbidden items and buildings
+classic	placement-renderer-owner	0x3d7f60	0x14162a1f0	cstring	Forbidding items and buildings
+classic	placement-renderer-owner	0x3d7f96	0x14162a210	cstring	Designating items for melting
+classic	placement-renderer-owner	0x3d7fcc	0x14162a2b8	cstring	Removing melting designations
+classic	placement-renderer-owner	0x3d8002	0x14162a2d8	cstring	Designating items for dumping
+classic	placement-renderer-owner	0x3d8038	0x14162a280	cstring	Removing dumping designations
+classic	placement-renderer-owner	0x3d806e	0x14162a2a0	cstring	Hiding items from view
+classic	placement-renderer-owner	0x3d80a4	0x14162a110	cstring	Revealing hidden items
+classic	placement-renderer-owner	0x3d81eb	0x14162a190	cstring	Designating restricted traffic area
+classic	placement-renderer-owner	0x3d8221	0x14162a0d0	cstring	Designating low traffic area
+classic	placement-renderer-owner	0x3d8257	0x14162a0f0	cstring	Removing traffic designations
+classic	placement-renderer-owner	0x3d828d	0x14162a128	cstring	Designating high traffic area
+classic	placement-renderer-owner	0x3d83b2	0x14162a1b8	cstring	Removing mining/chopping/gathering/smoothing orders
+classic	placement-renderer-owner	0x3db7d3	0x1415e783c	cstring	_
+classic	placement-renderer-owner	0x3dd6a9	0x14162a148	cstring	A catapult's orientation cannot be changed
+classic	placement-renderer-owner	0x3dd6f0	0x14162a178	cstring	once it is placed.
+classic	placement-renderer-owner	0x3dd75c	0x141629ff8	cstring	A ballista's orientation cannot be changed
+classic	placement-renderer-owner	0x3dd7a3	0x14162a178	cstring	once it is placed.
+classic	placement-renderer-owner	0x3dd808	0x14162a028	cstring	A bolt thrower can be freely turned by the
+classic	placement-renderer-owner	0x3dd84f	0x141629fa0	cstring	operator.  Choose a resting orientation.
+classic	placement-renderer-owner	0x3dda3f	0x141629fd0	cstring	Horizontal axles can vary in length.
+classic	placement-renderer-owner	0x3dda86	0x14162a090	cstring	Set the orientation below.
+classic	placement-renderer-owner	0x3ddf3a	0x14162a0b0	cstring	Water wheels are 1x3 or 3x1.
+classic	placement-renderer-owner	0x3ddf80	0x14162a058	cstring	The long side should align
+classic	placement-renderer-owner	0x3ddfc6	0x14162a078	cstring	with the water's flow.
+classic	placement-renderer-owner	0x3de471	0x14162a6a8	cstring	Set the liquid flow direction below.
+classic	placement-renderer-owner	0x3de4b8	0x14162a6d0	cstring	Water flows from the adjacent input tile
+classic	placement-renderer-owner	0x3de4ff	0x14162a658	cstring	and from the tile below the input tile.
+classic	placement-renderer-owner	0x3dedf1	0x14162a680	cstring	Minecart rollers can vary in length.
+classic	placement-renderer-owner	0x3dee38	0x14162a718	cstring	Set the orientation and speed below.
+classic	placement-renderer-owner	0x3dfc18	0x14162a740	cstring	Resets
+classic	placement-renderer-owner	0x3dfd24	0x14162a700	cstring	One use only
+classic	placement-renderer-owner	0x3dfe21	0x14162a710	cstring	Water
+classic	placement-renderer-owner	0x3dfe87	0x14162a5f0	cstring	Depth
+classic	placement-renderer-owner	0x3e0089	0x14162a5f8	cstring	Water does not trigger
+classic	placement-renderer-owner	0x3e0191	0x1415f234c	cstring	Magma
+classic	placement-renderer-owner	0x3e01f7	0x14162a5f0	cstring	Depth
+classic	placement-renderer-owner	0x3e03f9	0x14162a5d0	cstring	Magma does not trigger
+classic	placement-renderer-owner	0x3e0506	0x14162a5e8	cstring	Cart
+classic	placement-renderer-owner	0x3e056b	0x14162a64c	cstring	Weight
+classic	placement-renderer-owner	0x3e0759	0x1415e74f8	cstring	to
+classic	placement-renderer-owner	0x3e081a	0x14162a654	cstring	Any
+classic	placement-renderer-owner	0x3e0931	0x14162a610	cstring	Minecarts do not trigger
+classic	placement-renderer-owner	0x3e0a33	0x14162a630	cstring	Creature trigger settings
+classic	placement-renderer-owner	0x3e0b29	0x14162a508	cstring	Citizens trigger
+classic	placement-renderer-owner	0x3e0b60	0x14162a520	cstring	Citizens do not trigger
+classic	placement-renderer-owner	0x3e0bb1	0x141611108	cstring	Range: 
+classic	placement-renderer-owner	0x3e0c05	0x14162a4e0	cstring	(
+classic	placement-renderer-owner	0x3e0c35	0x1416102d8	cstring	)
+classic	placement-renderer-owner	0x3e0c91	0x1415e8524	cstring	 to 
+classic	placement-renderer-owner	0x3e0d05	0x14162a4e0	cstring	(
+classic	placement-renderer-owner	0x3e0d35	0x1416102d8	cstring	)
+classic	placement-renderer-owner	0x3e0f0c	0x14162a4e0	cstring	(
+classic	placement-renderer-owner	0x3e0f3c	0x1416102d8	cstring	)
+classic	placement-renderer-owner	0x3e1042	0x14162a4e8	cstring	Creatures do not trigger
+classic	placement-renderer-owner	0x3e10d0	0x14162a580	cstring	Set the friction and auto-dump direction.
+classic	placement-renderer-owner	0x3e111e	0x14162a5b0	cstring	Auto-dumping is not required.
+classic	placement-renderer-owner	0x3e2108	0x14162a538	cstring	Set the draw direction below.
+classic	placement-renderer-owner	0x3e2157	0x14162a558	cstring	Then select the corners of the bridge.
+classic	placement-renderer-owner	0x3e2f7a	0x14162a438	cstring	Click a tile to place the 
+classic	placement-renderer-owner	0x3e2fbe	0x14162a458	cstring	Click a tile to be one end of the 
+classic	placement-renderer-owner	0x3e3006	0x1416280c4	cstring	Stairs
+classic	placement-renderer-owner	0x3e3030	0x14162a408	cstring	Click a tile to be a corner of the 
+classic	placement-renderer-owner	0x3e3039	0x1416280a4	cstring	Track
+classic	placement-renderer-owner	0x3e307f	0x1415e3574	cstring	.
+classic	placement-renderer-owner	0x3e3104	0x14162a430	cstring	(spans 
+classic	placement-renderer-owner	0x3e313d	0x14162a4b0	cstring	 levels)
+classic	placement-renderer-owner	0x3e3249	0x14162a4c0	cstring	Select material after placement
+classic	placement-renderer-owner	0x3e3347	0x14162a480	cstring	Use closest material
+classic	placement-renderer-owner	0x3e3452	0x14162a498	cstring	Use last material
+classic	placement-renderer-owner	0x3e3614	0x14162a948	cstring	Keep building after placement
+classic	placement-renderer-owner	0x3e370b	0x141629d90	cstring	Must span multiple elevations
+classic	placement-renderer-owner	0x3e3d59	0x1415e783c	cstring	_
+classic	placement-renderer-owner	0x3e4caa	0x1415f2144	cstring	All
+classic	placement-renderer-owner	0x3e4d10	0x141625808	cstring	Ammo
+classic	placement-renderer-owner	0x3e4d47	0x1416257c0	cstring	Animals
+classic	placement-renderer-owner	0x3e4d81	0x1416257b4	cstring	Armor
+classic	placement-renderer-owner	0x3e4dce	0x14162a968	cstring	Bars and
+classic	placement-renderer-owner	0x3e4e1d	0x14162a92c	cstring	Blocks
+classic	placement-renderer-owner	0x3e4e57	0x1416257a4	cstring	Cloth
+classic	placement-renderer-owner	0x3e4e91	0x14162576c	cstring	Coins
+classic	placement-renderer-owner	0x3e4ecb	0x141625800	cstring	Corpses
+classic	placement-renderer-owner	0x3e4f18	0x14162a938	cstring	Finished
+classic	placement-renderer-owner	0x3e4f67	0x14162a9a8	cstring	Goods
+classic	placement-renderer-owner	0x3e4fa1	0x1416257f0	cstring	Food
+classic	placement-renderer-owner	0x3e4fdb	0x141627d10	cstring	Furniture
+classic	placement-renderer-owner	0x3e5015	0x141625b7c	cstring	Gem
+classic	placement-renderer-owner	0x3e504f	0x141625018	cstring	Leather
+classic	placement-renderer-owner	0x3e5089	0x1416257f8	cstring	Refuse
+classic	placement-renderer-owner	0x3e50c3	0x14162a9b0	cstring	Sheets
+classic	placement-renderer-owner	0x3e50fd	0x141625810	cstring	Stone
+classic	placement-renderer-owner	0x3e5137	0x141625a80	cstring	Weapons
+classic	placement-renderer-owner	0x3e5171	0x1416250bc	cstring	Wood
+classic	placement-renderer-owner	0x3e51ab	0x1415fa7dc	cstring	None
+classic	placement-renderer-owner	0x3e5217	0x14162a974	cstring	Custom
+classic	placement-renderer-owner	0x3e5297	0x14162a980	cstring	Click an icon to set stockpile type.
+classic	placement-renderer-owner	0x3e5312	0x14162a8a8	cstring	Warning: stockpile has no type.
+classic	placement-renderer-owner	0x3e5480	0x14162a8c8	cstring	Click an existing stockpile to select it.
+classic	placement-renderer-owner	0x3e55f8	0x14162a878	cstring	Click in the play area
+classic	placement-renderer-owner	0x3e5647	0x14162a890	cstring	to paint the stockpile.
+classic	placement-renderer-owner	0x3e57c7	0x14162a918	cstring	Accept
+classic	placement-renderer-owner	0x3e5e94	0x1415fc8e8	cstring	Unnamed water source
+classic	placement-renderer-owner	0x3e5ece	0x1415fc8d8	cstring	Unnamed dump
+classic	placement-renderer-owner	0x3e5f08	0x1415fc8b8	cstring	Unnamed sand collection area
+classic	placement-renderer-owner	0x3e5f42	0x1415fc8a0	cstring	Unnamed fishing area
+classic	placement-renderer-owner	0x3e5f7c	0x1415fc888	cstring	Unnamed pit/pond
+classic	placement-renderer-owner	0x3e609d	0x1415fc870	cstring	Unnamed memorial hall
+classic	placement-renderer-owner	0x3e60eb	0x1415fc850	cstring	Unnamed sculpture garden
+classic	placement-renderer-owner	0x3e6134	0x1415fc840	cstring	Unnamed zoo
+classic	placement-renderer-owner	0x3e617c	0x1415fc830	cstring	Unnamed museum
+classic	placement-renderer-owner	0x3e61c0	0x1415fc818	cstring	Unnamed meeting hall
+classic	placement-renderer-owner	0x3e6204	0x1415fc800	cstring	Unnamed pen/pasture
+classic	placement-renderer-owner	0x3e623e	0x1415fc7e0	cstring	Unnamed clay collection area
+classic	placement-renderer-owner	0x3e6278	0x1415fc7c0	cstring	Unnamed animal training area
+classic	placement-renderer-owner	0x3e62b2	0x1415fc7a0	cstring	Unnamed plant gathering area
+classic	placement-renderer-owner	0x3e62ec	0x1415fcaa0	cstring	Unnamed bedroom
+classic	placement-renderer-owner	0x3e6326	0x1415fca90	cstring	Unnamed office
+classic	placement-renderer-owner	0x3e6360	0x1415fca78	cstring	Unnamed archery range
+classic	placement-renderer-owner	0x3e639a	0x1415fca60	cstring	Unnamed barracks
+classic	placement-renderer-owner	0x3e63d4	0x1415fca50	cstring	Unnamed dungeon
+classic	placement-renderer-owner	0x3e640e	0x1415fca38	cstring	Unnamed dormitory
+classic	placement-renderer-owner	0x3e6448	0x1415fca20	cstring	Unnamed dining hall
+classic	placement-renderer-owner	0x3e6482	0x1415fca10	cstring	Unnamed tomb
+classic	placement-renderer-owner	0x3e64bc	0x1415fca00	cstring	Unnamed zone
+classic	placement-renderer-owner	0x3e6522	0x1415e783c	cstring	_
+classic	placement-renderer-owner	0x3e6f39	0x14162a920	cstring	Overlapping
+classic	placement-renderer-owner	0x3e6fb0	0x14162a8f8	cstring	Water Source
+classic	placement-renderer-owner	0x3e6fea	0x141626ad8	cstring	Fishing
+classic	placement-renderer-owner	0x3e7024	0x14162a908	cstring	Gather Fruit
+classic	placement-renderer-owner	0x3e705e	0x14162a800	cstring	Garbage Dump
+classic	placement-renderer-owner	0x3e7098	0x14162a810	cstring	Pen/Pasture
+classic	placement-renderer-owner	0x3e70d2	0x14162a7e0	cstring	Pit/Pond
+classic	placement-renderer-owner	0x3e710c	0x141626b00	cstring	Sand
+classic	placement-renderer-owner	0x3e7146	0x141625884	cstring	Clay
+classic	placement-renderer-owner	0x3e73b3	0x141627480	cstring	No particular deity
+classic	placement-renderer-owner	0x3e74da	0x141626f50	cstring	 meeting place
+classic	placement-renderer-owner	0x3e74f7	0x141626f40	cstring	 guildhall
+classic	placement-renderer-owner	0x3e7514	0x141626f70	cstring	 grand guildhall
+classic	placement-renderer-owner	0x3e75db	0x141626fe4	cstring	Tavern
+classic	placement-renderer-owner	0x3e7650	0x141626f20	cstring	Library
+classic	placement-renderer-owner	0x3e76c5	0x141626f60	cstring	Hospital
+classic	placement-renderer-owner	0x3e770c	0x14162a7f0	cstring	Meeting Area
+classic	placement-renderer-owner	0x3e7746	0x14162a858	cstring	Animal Training
+classic	placement-renderer-owner	0x3e7780	0x141627030	cstring	Bedroom
+classic	placement-renderer-owner	0x3e77ba	0x14162a868	cstring	Dining Hall
+classic	placement-renderer-owner	0x3e77f4	0x141627048	cstring	Office
+classic	placement-renderer-owner	0x3e782e	0x14162a820	cstring	Archery Range
+classic	placement-renderer-owner	0x3e7868	0x141627060	cstring	Barracks
+classic	placement-renderer-owner	0x3e78a2	0x141627050	cstring	Dormitory
+classic	placement-renderer-owner	0x3e78d9	0x141626f90	cstring	Dungeon
+classic	placement-renderer-owner	0x3e7910	0x141626f84	cstring	Tomb
+classic	placement-renderer-owner	0x3e799f	0x141626f98	cstring	 squads assigned
+classic	placement-renderer-owner	0x3e8ae3	0x1415fcd18	cstring	Deceased
+classic	placement-renderer-owner	0x3e9788	0x14162a830	cstring	Click an existing zone to select it.
+classic	placement-renderer-owner	0x3e97d6	0x14162a770	cstring	Select a type below to add a zone.
+classic	placement-renderer-owner	0x3e981a	0x14162a770	cstring	Select a type below to add a zone.
+classic	placement-renderer-owner	0x3e9987	0x14162a798	cstring	Click an icon to add a new zone.
+classic	placement-renderer-owner	0x3e9dfe	0x14162a8f8	cstring	Water Source
+classic	placement-renderer-owner	0x3e9e4d	0x141626ad8	cstring	Fishing
+classic	placement-renderer-owner	0x3e9e84	0x14162a908	cstring	Gather Fruit
+classic	placement-renderer-owner	0x3e9ebe	0x14162a800	cstring	Garbage Dump
+classic	placement-renderer-owner	0x3e9ef8	0x14162a810	cstring	Pen/Pasture
+classic	placement-renderer-owner	0x3e9f32	0x14162a7e0	cstring	Pit/Pond
+classic	placement-renderer-owner	0x3e9f6c	0x141626b00	cstring	Sand
+classic	placement-renderer-owner	0x3e9fa6	0x141625884	cstring	Clay
+classic	placement-renderer-owner	0x3e9fe0	0x14162a7f0	cstring	Meeting Area
+classic	placement-renderer-owner	0x3ea01a	0x14162a858	cstring	Animal Training
+classic	placement-renderer-owner	0x3ea054	0x141627030	cstring	Bedroom
+classic	placement-renderer-owner	0x3ea08e	0x14162a868	cstring	Dining Hall
+classic	placement-renderer-owner	0x3ea0c8	0x141627048	cstring	Office
+classic	placement-renderer-owner	0x3ea102	0x14162a820	cstring	Archery Range
+classic	placement-renderer-owner	0x3ea13c	0x141627060	cstring	Barracks
+classic	placement-renderer-owner	0x3ea176	0x141627050	cstring	Dormitory
+classic	placement-renderer-owner	0x3ea1b0	0x141626f90	cstring	Dungeon
+classic	placement-renderer-owner	0x3ea209	0x141626f84	cstring	Tomb
+classic	placement-renderer-owner	0x3ea3d0	0x14162a748	cstring	Select a rectangle
+classic	placement-renderer-owner	0x3ea41f	0x14162a760	cstring	which contains 
+classic	placement-renderer-owner	0x3ea47b	0x14162a7c8	cstring	coffins
+classic	placement-renderer-owner	0x3ea4b5	0x14162a7bc	cstring	chairs
+classic	placement-renderer-owner	0x3ea4ec	0x14162a7d0	cstring	beds
+classic	placement-renderer-owner	0x3ea523	0x14162a7d8	cstring	tables
+classic	placement-renderer-owner	0x3ea572	0x14162ab48	cstring	in order to form
+classic	placement-renderer-owner	0x3ea5e3	0x14162ab98	cstring	tombs.
+classic	placement-renderer-owner	0x3ea61d	0x14162ab30	cstring	throne rooms/studies.
+classic	placement-renderer-owner	0x3ea654	0x14162ab60	cstring	bedrooms.
+classic	placement-renderer-owner	0x3ea68b	0x14162ab20	cstring	dining halls.
+classic	placement-renderer-owner	0x3ea6e7	0x14162aba0	cstring	Rooms with multiple beds
+classic	placement-renderer-owner	0x3ea736	0x14162ab70	cstring	will be made into
+classic	placement-renderer-owner	0x3ea785	0x14162ab88	cstring	dormitories.
+classic	placement-renderer-owner	0x3ea867	0x1415f959c	cstring	Cancel
+classic	placement-renderer-owner	0x3ea945	0x14162aadc	cstring	Multi
+classic	placement-renderer-owner	0x3eaa20	0x14162aae4	cstring	Paint
+classic	placement-renderer-owner	0x3eab05	0x1415ff490	cstring	Done
+classic	placement-renderer-owner	0x3eabe0	0x14162aab4	cstring	Undo
+classic	placement-renderer-owner	0x3eac49	0x14162aac0	cstring	Select another rectangle
+classic	placement-renderer-owner	0x3eac98	0x14162ab08	cstring	to continue.
+classic	placement-renderer-owner	0x3eae1f	0x1415e3720	cstring	 
+classic	placement-renderer-owner	0x3eae4c	0x14162aa88	cstring	tomb
+classic	placement-renderer-owner	0x3eae74	0x14162aafc	cstring	office
+classic	placement-renderer-owner	0x3eae7d	0x14162ab18	cstring	bedroom
+classic	placement-renderer-owner	0x3eae86	0x14162aaf0	cstring	dining hall
+classic	placement-renderer-owner	0x3eaeac	0x1415e4220	cstring	s
+classic	placement-renderer-owner	0x3eaebf	0x14162aa90	cstring	 created.
+classic	placement-renderer-owner	0x3eaf58	0x1415e3720	cstring	 
+classic	placement-renderer-owner	0x3eaf6b	0x14162aa78	cstring	dormitor
+classic	placement-renderer-owner	0x3eaf7e	0x14162aa84	cstring	ies
+classic	placement-renderer-owner	0x3eaf87	0x14162aa78	cstring	dormitor
+classic	placement-renderer-owner	0x3eaf9a	0x14162aaac	cstring	y
+classic	placement-renderer-owner	0x3eafad	0x14162aa90	cstring	 created.
+classic	placement-renderer-owner	0x3eb055	0x1415e3720	cstring	 
+classic	placement-renderer-owner	0x3eb082	0x14162a9ec	cstring	coffin
+classic	placement-renderer-owner	0x3eb08b	0x14162aaa4	cstring	chair
+classic	placement-renderer-owner	0x3eb094	0x14162aab0	cstring	bed
+classic	placement-renderer-owner	0x3eb09d	0x14162aa9c	cstring	table
+classic	placement-renderer-owner	0x3eb0b9	0x1415e4220	cstring	s
+classic	placement-renderer-owner	0x3eb0cc	0x14162a9f8	cstring	 rejected (already in use.)
+classic	placement-renderer-owner	0x3eb16d	0x1415e3720	cstring	 
+classic	placement-renderer-owner	0x3eb19a	0x14162a9ec	cstring	coffin
+classic	placement-renderer-owner	0x3eb1a3	0x14162aaa4	cstring	chair
+classic	placement-renderer-owner	0x3eb1ac	0x14162aab0	cstring	bed
+classic	placement-renderer-owner	0x3eb1b5	0x14162aa9c	cstring	table
+classic	placement-renderer-owner	0x3eb1d1	0x1415e4220	cstring	s
+classic	placement-renderer-owner	0x3eb1e4	0x14162a9b8	cstring	 rejected (not enclosed.)
+classic	placement-renderer-owner	0x3eb25a	0x14162a878	cstring	Click in the play area
+classic	placement-renderer-owner	0x3eb2a9	0x14162a9d8	cstring	to paint the zone.
+classic	placement-renderer-owner	0x3eb39f	0x1415f959c	cstring	Cancel
+classic	placement-renderer-owner	0x3eb526	0x14162a918	cstring	Accept
+classic	placement-renderer-owner	0x3eb656	0x14162aadc	cstring	Multi
+classic	placement-renderer-owner	0x3eb73f	0x14162aae4	cstring	Paint
+classic	placement-renderer-owner	0x3ec40b	0x14162a8f8	cstring	Water Source
+classic	placement-renderer-owner	0x3ec445	0x141626ad8	cstring	Fishing
+classic	placement-renderer-owner	0x3ec47f	0x14162a908	cstring	Gather Fruit
+classic	placement-renderer-owner	0x3ec4b9	0x14162a800	cstring	Garbage Dump
+classic	placement-renderer-owner	0x3ec4f3	0x14162a810	cstring	Pen/Pasture
+classic	placement-renderer-owner	0x3ec52d	0x14162a7e0	cstring	Pit/Pond
+classic	placement-renderer-owner	0x3ec567	0x141626b00	cstring	Sand
+classic	placement-renderer-owner	0x3ec5a1	0x141625884	cstring	Clay
+classic	placement-renderer-owner	0x3ec5db	0x14162a7f0	cstring	Meeting Area
+classic	placement-renderer-owner	0x3ec615	0x14162a858	cstring	Animal Training
+classic	placement-renderer-owner	0x3ec64f	0x141627030	cstring	Bedroom
+classic	placement-renderer-owner	0x3ec689	0x14162a868	cstring	Dining Hall
+classic	placement-renderer-owner	0x3ec6c3	0x141627048	cstring	Office
+classic	placement-renderer-owner	0x3ec6fd	0x14162a820	cstring	Archery Range
+classic	placement-renderer-owner	0x3ec737	0x141627060	cstring	Barracks
+classic	placement-renderer-owner	0x3ec771	0x141627050	cstring	Dormitory
+classic	placement-renderer-owner	0x3ec7a8	0x141626f90	cstring	Dungeon
+classic	placement-renderer-owner	0x3ec7df	0x141626f84	cstring	Tomb
+classic	placement-renderer-owner	0x3ec867	0x14162aa54	cstring	 + 
+classic	placement-renderer-owner	0x3ec89d	0x14162aa54	cstring	 + 
+classic	placement-renderer-owner	0x3ec8d3	0x14162aa54	cstring	 + 
+classic	placement-renderer-owner	0x3ec90c	0x14162aa54	cstring	 + 
+classic	placement-renderer-owner	0x3ec942	0x14162aa54	cstring	 + 
+classic	placement-renderer-owner	0x3ec977	0x14162aa54	cstring	 + 
+classic	placement-renderer-owner	0x3ec9ac	0x14162aa54	cstring	 + 
+classic	placement-renderer-owner	0x3ec9df	0x14162aa54	cstring	 + 
+classic	placement-renderer-owner	0x3eca11	0x14162aa54	cstring	 + 
+classic	placement-renderer-owner	0x3eca35	0x1415fe430	cstring	: 
+classic	placement-renderer-owner	0x3ecaab	0x1415e3720	cstring	 
+classic	placement-renderer-owner	0x3ecb00	0x1415f23e0	cstring	Hot
+classic	placement-renderer-owner	0x3ecb56	0x1415f23d0	cstring	Cold
+classic	placement-renderer-owner	0x3ed197	0x14162aa58	cstring	Assigned residents will only
+classic	placement-renderer-owner	0x3ed1e6	0x14162aa18	cstring	perform tasks in any of their
+classic	placement-renderer-owner	0x3ed235	0x14162aa38	cstring	active assigned burrows.
+classic	placement-renderer-owner	0x3ed314	0x14162ad28	cstring	Add new burrow
+classic	placement-renderer-owner	0x3ed715	0x1415e783c	cstring	_
+classic	placement-renderer-owner	0x3ed73a	0x141627498	cstring	Burrow 
+classic	placement-renderer-owner	0x3edabf	0x141626fd8	cstring	 assigned
+classic	placement-renderer-owner	0x3edad7	0x14162ad38	cstring	Nobody assigned
+classic	placement-renderer-owner	0x3ee063	0x14162a878	cstring	Click in the play area
+classic	placement-renderer-owner	0x3ee0b2	0x14162ace8	cstring	to paint the burrow.
+classic	placement-renderer-owner	0x3ee251	0x14162a918	cstring	Accept
+classic	placement-renderer-owner	0x3ee80c	0x14162ad00	cstring	Click a tile to position the stop.
+classic	placement-renderer-owner	0x3ee872	0x14162ad58	cstring	Building track stops is recommended!
+classic	placement-renderer-owner	0x3ee94f	0x14162ad80	cstring	Add new route
+classic	placement-renderer-owner	0x3eea85	0x1415e783c	cstring	_
+classic	placement-renderer-owner	0x3eeaa8	0x141624fd8	cstring	Route 
+classic	placement-renderer-owner	0x3eef90	0x1415e783c	cstring	_
+classic	placement-renderer-owner	0x3eefb6	0x14162ad48	cstring	Stop 
+classic	placement-renderer-owner	0x3ef5d8	0x1415fcfd8	cstring	%
+classic	placement-renderer-owner	0x3f0779	0x14162ad50	cstring	Indep
+classic	placement-renderer-owner	0x3f088e	0x1415f92c0	cstring	#
+classic	placement-renderer-owner	0x3f09d3	0x14162aca8	cstring	Create a creature to begin.
+classic	placement-renderer-owner	0x3f1126	0x14162acc4	cstring	Pop
+classic	placement-renderer-owner	0x3f149f	0x14162ac9c	cstring	++
+classic	placement-renderer-owner	0x3f15a2	0x1416257f0	cstring	Food
+classic	placement-renderer-owner	0x3f1602	0x1415fa7dc	cstring	None
+classic	placement-renderer-owner	0x3f169a	0x14162aca0	cstring	Drink
+classic	placement-renderer-owner	0x3f16fa	0x1415fa7dc	cstring	None
+classic	placement-renderer-owner	0x3f1792	0x14162597c	cstring	Seeds
+classic	placement-renderer-owner	0x3f17f2	0x1415fa7dc	cstring	None
+classic	placement-renderer-owner	0x3f1889	0x1415fce64	cstring	Meat
+classic	placement-renderer-owner	0x3f18e9	0x1415fa7dc	cstring	None
+classic	placement-renderer-owner	0x3f1980	0x1415fce5c	cstring	Fish
+classic	placement-renderer-owner	0x3f19e0	0x1415fa7dc	cstring	None
+classic	placement-renderer-owner	0x3f1a78	0x141610410	cstring	Plant
+classic	placement-renderer-owner	0x3f1ad8	0x1415fa7dc	cstring	None
+classic	placement-renderer-owner	0x3f1b70	0x1416115f4	cstring	Other
+classic	placement-renderer-owner	0x3f1bd0	0x1415fa7dc	cstring	None
+classic	placement-renderer-owner	0x3f1c48	0x141625a78	cstring	~
+classic	placement-renderer-owner	0x3f1cf0	0x141606464	cstring	Stocks
+classic	placement-renderer-owner	0x3f1e23	0x1415e7614	cstring	st
+classic	placement-renderer-owner	0x3f1e2f	0x1415e7618	cstring	nd
+classic	placement-renderer-owner	0x3f1e3b	0x1415e767c	cstring	rd
+classic	placement-renderer-owner	0x3f1e47	0x1415e7680	cstring	th
+classic	placement-renderer-owner	0x3f1e5a	0x1415e3720	cstring	 
+classic	placement-renderer-owner	0x3f1ef3	0x14162acd8	cstring	Early 
+classic	placement-renderer-owner	0x3f1f04	0x14162ace0	cstring	Mid-
+classic	placement-renderer-owner	0x3f1f11	0x14162acc8	cstring	Late 
+classic	placement-renderer-owner	0x3f1f4b	0x1415f8024	cstring	Winter
+classic	placement-renderer-owner	0x3f1f57	0x1415f801c	cstring	Autumn
+classic	placement-renderer-owner	0x3f1f63	0x1415f8014	cstring	Summer
+classic	placement-renderer-owner	0x3f1f6f	0x1415f800c	cstring	Spring
+classic	placement-renderer-owner	0x3f1fb2	0x14162acd0	cstring	Year 
+classic	placement-renderer-owner	0x3f32c7	0x14162ac50	cstring	Elevation 
+classic	placement-renderer-owner	0x3f389f	0x14162ac60	cstring	Conflict Level
+classic	placement-renderer-owner	0x3f3928	0x14162ac30	cstring	Encounter
+classic	placement-renderer-owner	0x3f3979	0x14162ac40	cstring	Horseplay
+classic	placement-renderer-owner	0x3f39ca	0x14162ac88	cstring	Training
+classic	placement-renderer-owner	0x3f3a1b	0x14162ac94	cstring	Brawl
+classic	placement-renderer-owner	0x3f3a6c	0x14162ac70	cstring	Non-lethal
+classic	placement-renderer-owner	0x3f3abd	0x14162ac7c	cstring	Lethal
+classic	placement-renderer-owner	0x3f3b0b	0x14162abd0	cstring	No Quarter
+classic	placement-renderer-owner	0x3f3bdf	0x14162abe0	cstring	Morale/Fear 
+classic	placement-renderer-owner	0x3f3c26	0x14162abbc	cstring	On
+classic	placement-renderer-owner	0x3f3c60	0x141611214	cstring	Off
+classic	placement-renderer-owner	0x3f3ffe	0x141629bf8	cstring	 x
+classic	placement-renderer-owner	0x3f4175	0x1415e84b8	cstring	Somebody
+classic	placement-renderer-owner	0x3f41a8	0x1415f2120	cstring	 is 
+classic	placement-renderer-owner	0x3f41e4	0x1415f2198	cstring	hunting.
+classic	placement-renderer-owner	0x3f41f0	0x1415f21a8	cstring	sparring.
+classic	placement-renderer-owner	0x3f41fc	0x1415f2128	cstring	fighting!
+classic	placement-renderer-owner	0x3f4904	0x14162abc0	cstring	Created Wealth:
+classic	placement-renderer-owner	0x3f498b	0x14162ac10	cstring	Weapons:
+classic	placement-renderer-owner	0x3f49fa	0x1415fa7dc	cstring	None
+classic	placement-renderer-owner	0x3f4b19	0x14162ac20	cstring	Armor and Garb:
+classic	placement-renderer-owner	0x3f4b86	0x1415fa7dc	cstring	None
+classic	placement-renderer-owner	0x3f4ca9	0x14162abf0	cstring	Furniture:
+classic	placement-renderer-owner	0x3f4d18	0x1415fa7dc	cstring	None
+classic	placement-renderer-owner	0x3f4e29	0x14162ac00	cstring	Other Objects:
+classic	placement-renderer-owner	0x3f4e9a	0x1415fa7dc	cstring	None
+classic	placement-renderer-owner	0x3f4fab	0x14162b088	cstring	Architecture:
+classic	placement-renderer-owner	0x3f501c	0x1415fa7dc	cstring	None
+classic	placement-renderer-owner	0x3f5131	0x14162b098	cstring	Displayed:
+classic	placement-renderer-owner	0x3f51a2	0x1415fa7dc	cstring	None
+classic	placement-renderer-owner	0x3f52ba	0x14162b060	cstring	Held/Worn:
+classic	placement-renderer-owner	0x3f532b	0x1415fa7dc	cstring	None
+classic	placement-renderer-owner	0x3f544b	0x1415fa7dc	cstring	None
+classic	placement-renderer-owner	0x3f550b	0x14162b0b8	cstring	Imported Wealth:
+classic	placement-renderer-owner	0x3f5579	0x1415fa7dc	cstring	None
+classic	placement-renderer-owner	0x3f5631	0x14162afa0	cstring	Exported Wealth:
+classic	placement-renderer-owner	0x3f56a1	0x1415fa7dc	cstring	None
+classic	placement-renderer-owner	0x3f5759	0x14162b070	cstring	You need a broker with
+classic	placement-renderer-owner	0x3f57a7	0x14162b0d0	cstring	the appraisal skill.
+classic	placement-renderer-owner	0x3f57f5	0x14162b0e8	cstring	A bookkeeper helps
+classic	placement-renderer-owner	0x3f5843	0x14162b0a8	cstring	with accuracy.
+classic	placement-renderer-owner	0x3f58a8	0x14162afb8	cstring	Trade Information:
+classic	placement-renderer-owner	0x3f590d	0x14162b070	cstring	You need a broker with
+classic	placement-renderer-owner	0x3f595b	0x14162b0d0	cstring	the appraisal skill.
+classic	placement-renderer-owner	0x3f5b66	0x14162af78	cstring	Accepted petition:
+classic	placement-renderer-owner	0x3f5c11	0x14162af48	cstring	Build a guildhall
+classic	placement-renderer-owner	0x3f5c41	0x14162af60	cstring	Build a grand guildhall
+classic	placement-renderer-owner	0x3f5d08	0x1415e768c	cstring	for
+classic	placement-renderer-owner	0x3f5dc0	0x14162af20	cstring	 guild.
+classic	placement-renderer-owner	0x3f5e87	0x14162b030	cstring	The associated zones must have enough value. (
+classic	placement-renderer-owner	0x3f5f07	0x1416102d8	cstring	)
+classic	placement-renderer-owner	0x3f6156	0x14162af28	cstring	Current top guildhall location:
+classic	placement-renderer-owner	0x3f6190	0x14162adb8	cstring	Current guildhall location:
+classic	placement-renderer-owner	0x3f6213	0x1415e40c4	cstring	, 
+classic	placement-renderer-owner	0x3f6292	0x14162add8	cstring	No guildhall location currently assigned to a zone.
+classic	placement-renderer-owner	0x3f630d	0x14162aec8	cstring	Agreement date: 
+classic	placement-renderer-owner	0x3f6357	0x1415e7614	cstring	st
+classic	placement-renderer-owner	0x3f6363	0x1415e7618	cstring	nd
+classic	placement-renderer-owner	0x3f636f	0x1415e767c	cstring	rd
+classic	placement-renderer-owner	0x3f637b	0x1415e7680	cstring	th
+classic	placement-renderer-owner	0x3f638e	0x1415e3720	cstring	 
+classic	placement-renderer-owner	0x3f63d0	0x1415e40c4	cstring	, 
+classic	placement-renderer-owner	0x3f651d	0x14162af90	cstring	Build a temple
+classic	placement-renderer-owner	0x3f654d	0x14162b018	cstring	Build a temple complex
+classic	placement-renderer-owner	0x3f6614	0x1415e768c	cstring	for
+classic	placement-renderer-owner	0x3f669d	0x1415e3574	cstring	.
+classic	placement-renderer-owner	0x3f6764	0x14162b030	cstring	The associated zones must have enough value. (
+classic	placement-renderer-owner	0x3f67e4	0x1416102d8	cstring	)
+classic	placement-renderer-owner	0x3f6863	0x14162afd0	cstring	A priest must then be elevated.
+classic	placement-renderer-owner	0x3f68ba	0x14162aff0	cstring	A high priest must then be elevated.
+classic	placement-renderer-owner	0x3f6b36	0x14162aee0	cstring	Current top temple location:
+classic	placement-renderer-owner	0x3f6b70	0x14162af00	cstring	Current temple location:
+classic	placement-renderer-owner	0x3f6c06	0x1415e40c4	cstring	, 
+classic	placement-renderer-owner	0x3f6c89	0x14162ae90	cstring	No temple location currently assigned to a zone.
+classic	placement-renderer-owner	0x3f6d04	0x14162aec8	cstring	Agreement date: 
+classic	placement-renderer-owner	0x3f6d4e	0x1415e7614	cstring	st
+classic	placement-renderer-owner	0x3f6d5a	0x1415e7618	cstring	nd
+classic	placement-renderer-owner	0x3f6d66	0x1415e767c	cstring	rd
+classic	placement-renderer-owner	0x3f6d72	0x1415e7680	cstring	th
+classic	placement-renderer-owner	0x3f6d85	0x1415e3720	cstring	 
+classic	placement-renderer-owner	0x3f6dc7	0x1415e40c4	cstring	, 
+classic	placement-renderer-owner	0x3f7694	0x14162ae68	cstring	Build guildhall
+classic	placement-renderer-owner	0x3f76c3	0x14162ae78	cstring	Build grand guildhall
+classic	placement-renderer-owner	0x3f7804	0x1415fb358	cstring	 guild
+classic	placement-renderer-owner	0x3f793c	0x1415e7614	cstring	st
+classic	placement-renderer-owner	0x3f7948	0x1415e7618	cstring	nd
+classic	placement-renderer-owner	0x3f7954	0x1415e767c	cstring	rd
+classic	placement-renderer-owner	0x3f7960	0x1415e7680	cstring	th
+classic	placement-renderer-owner	0x3f7973	0x1415e3720	cstring	 
+classic	placement-renderer-owner	0x3f79b5	0x1415e40c4	cstring	, 
+classic	placement-renderer-owner	0x3f7b26	0x14162ad90	cstring	Build temple
+classic	placement-renderer-owner	0x3f7b55	0x14162ada0	cstring	Build temple complex
+classic	placement-renderer-owner	0x3f7d8a	0x1415e7614	cstring	st
+classic	placement-renderer-owner	0x3f7d96	0x1415e7618	cstring	nd
+classic	placement-renderer-owner	0x3f7da2	0x1415e767c	cstring	rd
+classic	placement-renderer-owner	0x3f7dae	0x1415e7680	cstring	th
+classic	placement-renderer-owner	0x3f7dc1	0x1415e3720	cstring	 
+classic	placement-renderer-owner	0x3f7e03	0x1415e40c4	cstring	, 
+classic	placement-renderer-owner	0x3f86eb	0x14162ae10	cstring	Left click for recenter and expand options.  Right click to dismiss.
+classic	placement-renderer-owner	0x3f89db	0x14162ae10	cstring	Left click for recenter and expand options.  Right click to dismiss.
+classic	placement-renderer-owner	0x3f8f5e	0x1415ff4f8	cstring	Hotkey: 
+classic	placement-renderer-owner	0x3f92e1	0x14162ae58	cstring	Following 
+classic	placement-renderer-owner	0x3f9665	0x14162ae58	cstring	Following 
+classic	placement-renderer-owner	0x3fa2ae	0x1415e3720	cstring	 
+classic	placement-renderer-owner	0x3fa2d0	0x141611040	cstring	 x 
+classic	placement-renderer-owner	0x3fa2f6	0x141611040	cstring	 x 
+classic	placement-renderer-owner	0x3fa317	0x1415e3720	cstring	 
+classic	placement-renderer-owner	0x3fa502	0x14162b5e0	cstring	Tooltip
+classic	rectangle-panel-slice	0x3ea3d0	0x14162a748	cstring	Select a rectangle
+classic	rectangle-panel-slice	0x3ea41f	0x14162a760	cstring	which contains 
+classic	rectangle-panel-slice	0x3ea47b	0x14162a7c8	cstring	coffins
+classic	rectangle-panel-slice	0x3ea4b5	0x14162a7bc	cstring	chairs
+classic	rectangle-panel-slice	0x3ea4ec	0x14162a7d0	cstring	beds
+classic	rectangle-panel-slice	0x3ea523	0x14162a7d8	cstring	tables
+classic	rectangle-panel-slice	0x3ea572	0x14162ab48	cstring	in order to form
+classic	rectangle-panel-slice	0x3ea5e3	0x14162ab98	cstring	tombs.
+classic	rectangle-panel-slice	0x3ea61d	0x14162ab30	cstring	throne rooms/studies.
+classic	rectangle-panel-slice	0x3ea654	0x14162ab60	cstring	bedrooms.
+classic	rectangle-panel-slice	0x3ea68b	0x14162ab20	cstring	dining halls.
+classic	rectangle-panel-slice	0x3ea6e7	0x14162aba0	cstring	Rooms with multiple beds
+classic	rectangle-panel-slice	0x3ea736	0x14162ab70	cstring	will be made into
+classic	rectangle-panel-slice	0x3ea785	0x14162ab88	cstring	dormitories.
+classic	rectangle-panel-slice	0x3ea867	0x1415f959c	cstring	Cancel
+classic	rectangle-panel-slice	0x3ea945	0x14162aadc	cstring	Multi
+classic	rectangle-panel-slice	0x3eaa20	0x14162aae4	cstring	Paint
+classic	rectangle-panel-slice	0x3eab05	0x1415ff490	cstring	Done
+classic	rectangle-panel-slice	0x3eabe0	0x14162aab4	cstring	Undo
+classic	rectangle-panel-slice	0x3eac49	0x14162aac0	cstring	Select another rectangle
+classic	rectangle-panel-slice	0x3eac98	0x14162ab08	cstring	to continue.
+classic	rectangle-panel-slice	0x3eae1f	0x1415e3720	cstring	 
+classic	rectangle-panel-slice	0x3eae4c	0x14162aa88	cstring	tomb
+classic	rectangle-panel-slice	0x3eae74	0x14162aafc	cstring	office
+classic	rectangle-panel-slice	0x3eae7d	0x14162ab18	cstring	bedroom
+classic	rectangle-panel-slice	0x3eae86	0x14162aaf0	cstring	dining hall
+classic	rectangle-panel-slice	0x3eaeac	0x1415e4220	cstring	s
+classic	rectangle-panel-slice	0x3eaebf	0x14162aa90	cstring	 created.
+classic	rectangle-panel-slice	0x3eaf58	0x1415e3720	cstring	 
+classic	rectangle-panel-slice	0x3eaf6b	0x14162aa78	cstring	dormitor
+classic	rectangle-panel-slice	0x3eaf7e	0x14162aa84	cstring	ies
+classic	rectangle-panel-slice	0x3eaf87	0x14162aa78	cstring	dormitor
+classic	rectangle-panel-slice	0x3eaf9a	0x14162aaac	cstring	y
+classic	rectangle-panel-slice	0x3eafad	0x14162aa90	cstring	 created.
+classic	rectangle-panel-slice	0x3eb055	0x1415e3720	cstring	 
+classic	rectangle-panel-slice	0x3eb082	0x14162a9ec	cstring	coffin
+classic	rectangle-panel-slice	0x3eb08b	0x14162aaa4	cstring	chair
+classic	rectangle-panel-slice	0x3eb094	0x14162aab0	cstring	bed
+classic	rectangle-panel-slice	0x3eb09d	0x14162aa9c	cstring	table
+classic	rectangle-panel-slice	0x3eb0b9	0x1415e4220	cstring	s
+classic	rectangle-panel-slice	0x3eb0cc	0x14162a9f8	cstring	 rejected (already in use.)
+classic	rectangle-panel-slice	0x3eb16d	0x1415e3720	cstring	 
+classic	rectangle-panel-slice	0x3eb19a	0x14162a9ec	cstring	coffin
+classic	rectangle-panel-slice	0x3eb1a3	0x14162aaa4	cstring	chair
+classic	rectangle-panel-slice	0x3eb1ac	0x14162aab0	cstring	bed
+classic	rectangle-panel-slice	0x3eb1b5	0x14162aa9c	cstring	table
+classic	rectangle-panel-slice	0x3eb1d1	0x1415e4220	cstring	s
+classic	rectangle-panel-slice	0x3eb1e4	0x14162a9b8	cstring	 rejected (not enclosed.)
+classic	rectangle-panel-slice	0x3eb25a	0x14162a878	cstring	Click in the play area
+classic	rectangle-panel-slice	0x3eb2a9	0x14162a9d8	cstring	to paint the zone.
+classic	rectangle-panel-slice	0x3eb39f	0x1415f959c	cstring	Cancel
+classic	rectangle-panel-slice	0x3eb526	0x14162a918	cstring	Accept
+classic	rectangle-panel-slice	0x3eb656	0x14162aadc	cstring	Multi
+classic	rectangle-panel-slice	0x3eb73f	0x14162aae4	cstring	Paint

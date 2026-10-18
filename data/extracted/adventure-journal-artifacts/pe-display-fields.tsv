@@ -1,0 +1,7 @@
+edition	instruction_rva	return_site_rva	source_kind	native_origin
+steam	0xc8618	0xc861d	Title	screen+0x5a8 artifact-card+0x48; full title at card+0x8; clipped to 58 source bytes
+steam	0xc86be	0xc86c3	Counter	one-based artifact index / total artifact cards
+steam	0xc8782	0xc8787	Paragraph	artifact-card+0x68 native wrapped rows[screen+0x274 scroll + row]; full item document followed by optional location paragraph
+classic	0xc85a8	0xc85ad	Title	screen+0x5a8 artifact-card+0x48; full title at card+0x8; clipped to 58 source bytes
+classic	0xc864e	0xc8653	Counter	one-based artifact index / total artifact cards
+classic	0xc8712	0xc8717	Paragraph	artifact-card+0x68 native wrapped rows[screen+0x274 scroll + row]; full item document followed by optional location paragraph

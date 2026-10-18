@@ -14,6 +14,7 @@ import re
 import struct
 
 from native_caption_image import CaptionImage
+from extract_adventure_journal_agreements_pe import native_switches
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -33,7 +34,7 @@ def rtti_owners(image):
     raw, base = image.raw, image.base
     labels = {image.address(match.start()) - 16 - base:
               match[1].decode("ascii") for match in
-              re.finditer(rb"\.\?AV(adventure_[A-Za-z_]+st|adventure_optionst)@@\0", raw)}
+              re.finditer(rb"\.\?AV(adventure_[A-Za-z_0-9]+st|adventure_optionst)@@\0", raw)}
     base_id = next(key for key, value in labels.items() if value == "adventure_optionst")
     for type_id, label in labels.items():
         for hit in occurrences(raw, struct.pack("<I", type_id)):
@@ -63,8 +64,8 @@ def rtti_owners(image):
                 continue
 
 
-def dump(image, start, label, edition, literal_rows, call_rows, branch_rows=None):
-    end = image.functions.get(start, start + 256)
+def dump(image, start, label, edition, literal_rows, call_rows, branch_rows=None, end_override=None):
+    end = end_override or image.functions.get(start, start + 256)
     instructions = list(image.instructions(start, end))
     if start not in image.functions:
         for index, (_, instruction) in enumerate(instructions):
@@ -149,20 +150,19 @@ def main():
     DEST.mkdir(parents=True, exist_ok=True)
     config = json.loads((ROOT / "data/runtime/native-pe-images.json").read_text(encoding="utf-8"))
     owner_rows, literal_rows, call_rows, branch_rows = [], [], [], []
+    function_rows, condition_rows, switch_rows, slot_rows, field_rows = [], [], [], [], []
     for edition, key in (("steam", "reference"), ("classic", "classic")):
         image = CaptionImage(Path(config[key]), OBJDUMP)
         owners = sorted(set(rtti_owners(image)))
         roots = {}
         for label, table, caption, detail, hierarchy in owners:
             owner_rows.append((edition, image.identity, label, hex(table - image.base), hex(caption - image.base), hex(detail - image.base), hex(hierarchy)))
-            roots.setdefault(caption, []).append(label + "+8")
-            roots.setdefault(detail, []).append(label + "+16")
-        if edition == "steam":
-            # The renderer invokes this virtual method at its text pen before
-            # building the string; retain it as the native font/layout source.
-            for label, table, _, _, _ in owners:
-                target = image.uint64(table + 0x118)
-                roots.setdefault(target, []).append(label + "+0x118")
+        # Both editions invoke this virtual method before the caption. Retain
+        # it even when empty; ranged choices can write a separate prefix here.
+        for label, table, caption, detail, _ in owners:
+            for slot, target in ((8, caption), (16, detail), (0x118, image.uint64(table + 0x118))):
+                slot_rows.append((edition, image.identity, label, hex(table-image.base), hex(slot), hex(target-image.base)))
+                roots.setdefault(target, []).append(label + "+" + hex(slot))
         roots[chooser_renderer(image)] = ["chooser-renderer"]
         if edition == "steam":
             # Called semantic fields retained independently from finite verbs.
@@ -193,15 +193,101 @@ def main():
                     calls = [int(m[1], 16) for _, ins in image.instructions(caption)
                              if (m := re.match(r"call\s+0x([0-9a-f]+)$", ins))]
                     roots[calls[0]] = ["unit-contaminant-field"]
+        # The nonempty prelude slot is a complete unit-id resolver. Its
+        # conditional external tail jump owns the finite conflict prefix.
+        for start, labels in list(roots.items()):
+            if not any(label.endswith("+0x118") for label in labels):
+                continue
+            end = image.functions.get(start,start+256)
+            for _, instruction in image.instructions(start,end):
+                found = re.fullmatch(r"j\w+\s+0x([0-9a-f]+)", instruction)
+                if found and int(found[1], 16) in image.functions and not start <= int(found[1],16) < end:
+                    roots.setdefault(int(found[1],16), []).append("conflict-prefix-renderer")
+                if instruction.startswith("ret"):
+                    break
+        for start, labels in list(roots.items()):
+            if "conflict-prefix-renderer" not in labels:
+                continue
+            target = next(int(match[1],16) for _, instruction in image.instructions(start)
+                          if (match := re.fullmatch(r"call\s+0x([0-9a-f]+)",instruction)))
+            roots.setdefault(target, []).append("conflict-level-selection")
+        # All caption semantic operands stay typed. Their complete supplier
+        # sources live in the dedicated item/unit/terrain extraction sets.
+        suppliers = {
+            "steam": {0xc65450:"ITEM", 0x1330c30:"UNIT", 0x132e430:"UNIT", 0x1331500:"TALK_TARGET", 0xa946e0:"HISTORICAL_FIGURE", 0xe7d330:"TILE", 0x657f90:"DEPOSIT", 0x74f220:"DIR"},
+            "classic": {0xc62490:"ITEM", 0x132bba0:"UNIT", 0x13293a0:"UNIT", 0x132c470:"TALK_TARGET", 0xa91760:"HISTORICAL_FIGURE", 0xe782a0:"TILE", 0x6559b0:"DEPOSIT", 0x74cc40:"DIR"},
+        }[edition]
         asm = []
         for start, labels in sorted(roots.items()):
-            asm.append(dump(image, start, ";".join(labels), edition, literal_rows, call_rows, branch_rows))
+            role = "function-" + hex(start-image.base)[2:]
+            # First delimit the actual leaf/unwind owner, then recover the
+            # tables and exclude their raw bytes from executable manifests.
+            source = dump(image, start, ";".join(sorted(set(labels))), edition, [], [], [])
+            end = int(re.search(r"RVA 0x[0-9a-f]+\.\.(0x[0-9a-f]+)", source)[1],16) + image.base
+            body = list(image.instructions(start,end))
+            switches = native_switches(image, body, edition, role)
+            switch_rows.extend(switches)
+            tables = [image.base+int(row[3],16) for row in switches]
+            tables.extend(image.base+int(row[4],16) for row in switches if row[4])
+            code_end = min([end, *(table for table in tables if start < table < end)])
+            source = dump(image,start,";".join(sorted(set(labels))),edition,
+                          literal_rows,call_rows,branch_rows,code_end)
+            asm.append(source)
+            filename = f"pe-{edition}-{role}.asm"
+            (DEST / filename).write_text("\n".join(line for line in source.splitlines()
+                if not line.startswith("0x") or int(line.split(":",1)[0],16) < code_end-image.base)+"\n", encoding="utf-8")
+            function_rows.append((edition,image.identity,role,hex(start-image.base),hex(code_end-image.base),filename,";".join(sorted(set(labels))),str(image.path)))
+            for pc, instruction in body:
+                if pc >= code_end:
+                    break
+                if re.match(r"(?:cmp|test|bt)\s", instruction):
+                    condition_rows.append((edition,role,hex(pc-image.base),instruction))
+                call = re.fullmatch(r"call\s+0x([0-9a-f]+)",instruction)
+                if call and (target := int(call[1],16)-image.base) in suppliers:
+                    field_rows.append((edition,role,hex(pc-image.base),hex(target),suppliers[target],"complete native supplier result; caller predicates and arguments in original assembly and Ghidra C"))
         (DEST / f"{edition}-captions.asm").write_text("\n".join(asm), encoding="utf-8")
         print(f"{edition}: {image.identity}; {len(owners)} RTTI owners; {len(roots)} caption/helper/renderer bodies")
     write_tsv("native-owners.tsv", ("edition", "image_identity", "type", "vtable_rva", "caption_rva", "detail_caption_rva", "hierarchy_rva"), owner_rows)
     write_tsv("native-literals.tsv", ("edition", "image_identity", "owners", "function_rva", "instruction_rva", "encoding", "literal_rva", "operand_role", "source"), literal_rows)
     write_tsv("native-calls.tsv", ("edition", "image_identity", "owners", "function_rva", "instruction_rva", "callee_rva", "instruction"), call_rows)
     write_tsv("native-branches.tsv", ("edition", "image_identity", "owners", "function_rva", "instruction_rva", "branch", "target_rva", "fallthrough_rva"), branch_rows)
+    write_tsv("pe-ghidra-functions.tsv", ("edition","image","role","start_rva","code_end_rva","assembly_file","owners","source_path"), function_rows)
+    write_tsv("pe-slot-owners.tsv", ("edition","image","owner","vtable_rva","slot","supplier_rva"),slot_rows)
+    write_tsv("pe-conditions.tsv", ("edition","role","instruction_rva","condition"),condition_rows)
+    write_tsv("pe-switches.tsv", ("edition","role","dispatch_rva","table_rva","remap_rva","input","slot","target_rva"),switch_rows)
+    write_tsv("pe-semantic-fields.tsv", ("edition","role","call_rva","supplier_rva","field","meaning"),field_rows)
+    # Preserve the established full semantic grammar against each actual PE
+    # class and slot. A shared detail method forwards to virtual +8, rather
+    # than yielding an empty caption; expand those owners to their real +8.
+    reference = {row[2]:row for row in owner_rows if row[0]=="steam"}
+    productions = list(csv.DictReader((DEST/"text-productions.tsv").open(encoding="utf-8"),delimiter="\t"))
+    mapped = []
+    for edition,identity,label,table,caption,detail,_ in owner_rows:
+        original = reference[label]
+        for slot,target,reference_target in (("0x8",caption,original[4]),("0x10",detail,original[5])):
+            forwarding = reference_target == "0x7e1230"
+            semantic_target = original[4] if forwarding else reference_target
+            for row in productions:
+                if row["steam_function_rva"] != semantic_target:
+                    continue
+                mapped.append((edition,identity,label,slot,target,"virtual+8" if forwarding else "direct",
+                               row["role"],row["production"],row["dynamic_fields"],row["branch"]))
+    for edition,start in (("steam","0x884460"),("classic","0x881ce0")):
+        for row in productions:
+            if row["steam_function_rva"]=="0x884460":
+                mapped.append((edition,"", "chooser-renderer","",start,"direct",row["role"],
+                               row["production"],row["dynamic_fields"],row["branch"]))
+        prefix = "0x7e4860" if edition=="steam" else "0x7e20e0"
+        for text,branch in (("Encounter: ","conflict=0"),("Horseplay: ","conflict=1"),
+                            ("Training: ","conflict=2"),("Brawl: ","conflict=3"),
+                            ("Non-lethal: ","conflict=4"),("Lethal: ","conflict=5"),
+                            ("No Quarter: ","conflict=6"),(": ","direct conflict outside0..6 and not -1"),
+                            ("Ally: ","direct conflict=-1; eligible shared activity level exists"),
+                            ("","self target or no eligible conflict/relationship")):
+            mapped.append((edition,"","ranged-prelude","0x118",prefix,"conditional-tail",
+                           "conflict-prefix",text,"",branch))
+    write_tsv("pe-text-productions.tsv",("edition","image","owner","slot","provider_rva","dispatch", 
+              "role","production","dynamic_fields","native_branch"),mapped)
 
 
 if __name__ == "__main__":

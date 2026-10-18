@@ -602,6 +602,36 @@
                     }
                 }
                 if (best_rule < 0) continue;
+                // A short UI message such as `Show` can also prefix a complete
+                // tab caption (`Show linked buildings` / `Show items`). Leave
+                // that caption to its longer literal rule and native half-font
+                // layout instead of reflowing only the prefix as a paragraph.
+                if (caption_text_end && best_rows.size() == 1) {
+                    const auto complete_literal_caption = [&](const std::vector<TrieNode> &trie,
+                            bool fold_case) {
+                        int node = 0;
+                        for (int pos = start_x; pos < *caption_text_end; ++pos) {
+                            if (!visible_layer(pos, start_y)) break;
+                            unsigned char ch = static_cast<unsigned char>(first[pos]);
+                            if (fold_case && ch >= 'A' && ch <= 'Z') ch += 'a' - 'A';
+                            const auto next = trie[node].next.find(ch);
+                            if (next == trie[node].next.end()) break;
+                            node = next->second;
+                            if (trie[node].rule < 0 ||
+                                    pos + 1 <= start_x + best_rows.front().length) continue;
+                            const Rule &literal = rules_[static_cast<size_t>(trie[node].rule)];
+                            const size_t end = static_cast<size_t>(pos + 1);
+                            if (literal.word_follows && !native_text_word_at(first, end)) continue;
+                            if (literal.word_boundary && !has_word_boundaries(first, start_x, end) &&
+                                    !is_ascii_tab_caption(first, start_x, end)) continue;
+                            if (trim_view(std::string_view(first).substr(end,
+                                    *caption_text_end - end)).empty()) return true;
+                        }
+                        return false;
+                    };
+                    if (complete_literal_caption(trie_, false) ||
+                            complete_literal_caption(trie_ci_, true)) continue;
+                }
                 const Rule &rule = rules_[static_cast<size_t>(best_rule)];
                 std::vector<int> colors;
                 if (!rule.help_target_palettes.empty()) {
