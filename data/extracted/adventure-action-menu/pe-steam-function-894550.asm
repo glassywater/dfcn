@@ -1,0 +1,54 @@
+# steam PE:6a70a6d9:02711000; adventure_option_wear_itemst+0x10; RVA 0x894550..0x894631
+0x00894550: mov    QWORD PTR [rsp+0x18],rbx
+0x00894555: push   rdi
+0x00894556: sub    rsp,0x50
+0x0089455a: mov    rax,QWORD PTR [rip+0x1007adf]        # 0x14189c040
+0x00894561: xor    rax,rsp
+0x00894564: mov    QWORD PTR [rsp+0x40],rax
+0x00894569: mov    rdi,rdx
+0x0089456c: mov    rbx,rcx
+0x0089456f: mov    r8d,0x5
+0x00894575: lea    rdx,[rip+0xe1fddc]        # 0x1416b4358 ; literal="Wear "
+0x0089457c: mov    rcx,rdi
+0x0089457f: call   0x14006fa10
+0x00894584: xorps  xmm0,xmm0
+0x00894587: movups XMMWORD PTR [rsp+0x20],xmm0
+0x0089458c: mov    QWORD PTR [rsp+0x30],0x0
+0x00894595: mov    QWORD PTR [rsp+0x38],0xf
+0x0089459e: mov    BYTE PTR [rsp+0x20],0x0
+0x008945a3: mov    r9d,0x1
+0x008945a9: xor    r8d,r8d
+0x008945ac: lea    rdx,[rsp+0x20]
+0x008945b1: mov    rcx,QWORD PTR [rbx+0x10]
+0x008945b5: call   0x140c65450
+0x008945ba: lea    rdx,[rsp+0x20]
+0x008945bf: cmp    QWORD PTR [rsp+0x38],0xf
+0x008945c5: cmova  rdx,QWORD PTR [rsp+0x20]
+0x008945cb: mov    r8,QWORD PTR [rsp+0x30]
+0x008945d0: mov    rcx,rdi
+0x008945d3: call   0x14006fa10
+0x008945d8: nop
+0x008945d9: mov    rdx,QWORD PTR [rsp+0x38]
+0x008945de: cmp    rdx,0xf
+0x008945e2: jbe    0x140894619
+0x008945e4: inc    rdx
+0x008945e7: mov    rcx,QWORD PTR [rsp+0x20]
+0x008945ec: mov    rax,rcx
+0x008945ef: cmp    rdx,0x1000
+0x008945f6: jb     0x140894614
+0x008945f8: add    rdx,0x27
+0x008945fc: mov    rcx,QWORD PTR [rcx-0x8]
+0x00894600: sub    rax,rcx
+0x00894603: add    rax,0xfffffffffffffff8
+0x00894607: cmp    rax,0x1f
+0x0089460b: jbe    0x140894614
+0x0089460d: call   QWORD PTR [rip+0xd51515]        # 0x1415e5b28
+0x00894613: int3
+0x00894614: call   0x141539680
+0x00894619: mov    rcx,QWORD PTR [rsp+0x40]
+0x0089461e: xor    rcx,rsp
+0x00894621: call   0x141539660
+0x00894626: mov    rbx,QWORD PTR [rsp+0x70]
+0x0089462b: add    rsp,0x50
+0x0089462f: pop    rdi
+0x00894630: ret

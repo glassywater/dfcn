@@ -277,6 +277,19 @@ std::optional<std::string> Overlay::translate_adventure_action_choice(
     }
     if (const auto target = exact_literal_translation("Adventure action: " + normalized))
         return uniform_colors(target);
+    // Native option captions own typed unit, tile, building, item, material
+    // and direction fields. Resolve them before the general UI compositor:
+    // its item-name fallback may retain English inside a terrain description.
+    if (const auto target = translate_adventure_item_action(normalized))
+        return uniform_colors(target);
+    if (!native_choice) {
+        if (const auto target = translate_adventure_deposit_caption(normalized))
+            return uniform_colors(target);
+        // Shoot/throw with no verb return the entire TILE field; their bare
+        // terrain must keep the same namespace as the prefixed constructors.
+        if (const auto target = RULESETS.translate_tile_description(native_text_to_utf8(normalized)))
+            return uniform_colors(target);
+    }
     // Complete fixed menu captions precede the permissive personal-name
     // fallback. Their authored predicates must never become invented names.
     std::vector<int> complete_colors;
@@ -292,14 +305,6 @@ std::optional<std::string> Overlay::translate_adventure_action_choice(
     auto target = native_unit_identity_source_target(source);
     if (!target && !native_choice && normalized == "A")
         target = exact_literal_translation("Adventure vermin: A");
-    if (!target) target = translate_adventure_item_action(normalized);
-    if (!target) {
-        // View-contaminant's native caption has no verb. Its complete
-        // material/amount and body-part suffix still form one typed choice.
-        std::vector<size_t> origins;
-        target = RULESETS.translate_with_origins(native_text_to_utf8(normalized),
-            "::health::contaminant::inventory", origins);
-    }
     if (!target && !native_choice) {
         // Virtual slot +8 also returns bare inventory designations and RAW
         // creature labels. Resolve their complete typed grammar before names.
@@ -307,7 +312,6 @@ std::optional<std::string> Overlay::translate_adventure_action_choice(
         if (!target) target = translate_inventory_location(normalized, -1, -1);
         if (!target) target = translate_creature_descriptor(normalized, true);
         if (!target) target = translate_creature_label(normalized);
-        if (!target) target = RULESETS.translate_tile_description(native_text_to_utf8(normalized));
     }
     // Name fields preserve the player's nickname spelling, including spaces.
     // Only action lookup above uses the normalized caption.

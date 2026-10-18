@@ -5603,6 +5603,8 @@ private:
     std::vector<Rule> adventure_item_action_rules_;
     std::optional<std::string> translate_adventure_environment_material(
         std::string_view source) const;
+    std::optional<std::string> translate_adventure_deposit_caption(
+        std::string_view source, int y = -1, int x = -1) const;
     std::optional<std::string> translate_adventure_item_action(
         const std::string &source, int y = -1, int x = -1) const;
     std::vector<Match> capture_adventure_item_modal(
@@ -6015,6 +6017,19 @@ static std::string preserve_native_language_original(
     std::string_view source_utf8, std::string original_utf8);
 static void clear_native_language_originals();
 static bool item_term_contains_sentence_punctuation(std::string_view source);
+
+static size_t adventure_ranged_action_offset(std::string_view source) {
+    for (const std::string_view prefix : {"Encounter: ", "Horseplay: ", "Training: ",
+            "Brawl: ", "Non-lethal: ", "Lethal: ", "No Quarter: ", "Ally: ", ": "}) {
+        if (!source.starts_with(prefix)) continue;
+        const auto action = source.substr(prefix.size());
+        if (action.starts_with("Quickly shoot ") ||
+                action.starts_with("Aim carefully and shoot ") ||
+                action.starts_with("Quickly throw at ") ||
+                action.starts_with("Aim carefully and throw at ")) return prefix.size();
+    }
+    return 0;
+}
 
 #include "display_language.inc"
 
@@ -19927,14 +19942,30 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                 if (translation_source.ends_with("...")) {
                     std::vector<size_t> origins;
                     const std::string joined = normalize_utterance(choice.source, &origins);
+                    const size_t ranged_at = adventure_ranged_action_offset(joined);
+                    const int ranged_x = ranged_at
+                        ? first + static_cast<int>(origins[ranged_at]) : first;
+                    const auto recover_field = [&](int field_x, std::string_view visible,
+                                                   std::string_view complete)
+                            -> std::optional<std::string> {
+                        const auto normalized = normalize_utterance(visible);
+                        if (field_x == first && normalized == joined)
+                            return normalize_utterance(complete);
+                        // The conflict prelude advances the native pen before
+                        // the action's own resize capture. Bind that suffix to
+                        // its exact current origin and retain the whole prelude.
+                        if (ranged_at && field_x == ranged_x &&
+                                normalized == std::string_view(joined).substr(ranged_at))
+                            return joined.substr(0, ranged_at) + normalize_utterance(complete);
+                        return std::nullopt;
+                    };
                     std::optional<std::string> captured;
                     bool ambiguous = false;
                     for (const auto &caption : clipped_captions) {
-                        if (caption.x != first ||
-                            (caption.y != y && (!companion || caption.y != companion_y)) ||
-                            normalize_utterance(caption.visible) != joined) continue;
-                        const std::string complete = normalize_utterance(caption.complete);
-                        if (captured && *captured != complete) { ambiguous = true; break; }
+                        if (caption.y != y && (!companion || caption.y != companion_y)) continue;
+                        const auto complete = recover_field(caption.x, caption.visible, caption.complete);
+                        if (!complete) continue;
+                        if (captured && *captured != *complete) { ambiguous = true; break; }
                         captured = complete;
                     }
                     // The draw retains the pre-resize caption with its
@@ -19944,16 +19975,17 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                     // evidence for a hidden direction or item-name suffix.
                     for (const auto &draws : {&action_draws, &top_action_draws}) {
                         for (const auto &draw : *draws) {
-                            if (draw.x != first || draw.complete_source.empty() ||
+                            if ((draw.x != first && draw.x != ranged_x) || draw.complete_source.empty() ||
                                 (draw.y != y && (!companion || draw.y != companion_y)) ||
-                                draw.source.size() > static_cast<size_t>(visible_right - first) ||
-                                context[draw.y].compare(first, draw.source.size(), draw.source) != 0 ||
-                                normalize_utterance(draw.source) != joined) continue;
+                                draw.x >= visible_right ||
+                                draw.source.size() > static_cast<size_t>(visible_right - draw.x) ||
+                                context[draw.y].compare(draw.x, draw.source.size(), draw.source) != 0) continue;
                             bool top = false;
-                            cell_at(first, draw.y, &top);
+                            cell_at(draw.x, draw.y, &top);
                             if (top != (draws == &top_action_draws)) continue;
-                            const std::string complete = normalize_utterance(draw.complete_source);
-                            if (captured && *captured != complete) { ambiguous = true; break; }
+                            const auto complete = recover_field(draw.x, draw.source, draw.complete_source);
+                            if (!complete) continue;
+                            if (captured && *captured != *complete) { ambiguous = true; break; }
                             captured = complete;
                         }
                         if (ambiguous) break;

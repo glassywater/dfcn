@@ -1,0 +1,17 @@
+edition	image_identity	role	start_rva	code_end_rva	assembly	image_path
+reference	PE:6a70a6d9:02711000	terrain	0xe7d330	0xe834fd	reference-terrain.asm	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+reference	PE:6a70a6d9:02711000	material-noun	0x14d1920	0x14d1d79	reference-material-noun.asm	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+reference	PE:6a70a6d9:02711000	grass-event-lookup	0x14d1330	0x14d143b	reference-grass-event-lookup.asm	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+reference	PE:6a70a6d9:02711000	construction-material	0xa46f20	0xa47607	reference-construction-material.asm	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+reference	PE:6a70a6d9:02711000	plant-parts	0x13ffd20	0x1400239	reference-plant-parts.asm	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+reference	PE:6a70a6d9:02711000	material-decode	0x14d0c70	0x14d112f	reference-material-decode.asm	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+reference	PE:6a70a6d9:02711000	material-lookup	0x14add70	0x14ade9f	reference-material-lookup.asm	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+reference	PE:6a70a6d9:02711000	construction-capitalization	0x52d3c0	0x52d5fe	reference-construction-capitalization.asm	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	terrain	0xe782a0	0xe7e46d	classic-terrain.asm	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	material-noun	0x14cc890	0x14ccce9	classic-material-noun.asm	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	grass-event-lookup	0x14cc2a0	0x14cc3ab	classic-grass-event-lookup.asm	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	construction-material	0xa44750	0xa44e37	classic-construction-material.asm	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	plant-parts	0x13fac90	0x13fb1a9	classic-plant-parts.asm	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	material-decode	0x14cbbe0	0x14cc09f	classic-material-decode.asm	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	material-lookup	0x14a8ce0	0x14a8e0f	classic-material-lookup.asm	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	construction-capitalization	0x52ade0	0x52b01e	classic-construction-capitalization.asm	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe

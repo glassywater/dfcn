@@ -1,10 +1,17 @@
 Native Adventure action chooser source grammar, DF 53.16
 
 Sources: native-owners.tsv, native-literals.tsv, native-calls.tsv, native-branches.tsv,
-steam-captions.asm, classic-captions.asm, and text-productions.tsv. The 77 primary vtables per
+steam-captions.asm, classic-captions.asm, and text-productions.tsv. Actual Ghidra 12.1.4
+C output for both configured PEs is pe-steam-ghidra-decompiled.c and
+pe-classic-ghidra-decompiled.c. pe-ghidra-functions.tsv retains every exact input
+body; pe-slot-owners.tsv records all three slots; pe-conditions.tsv and
+pe-switches.tsv retain the original predicates and complete selector aliases.
+pe-text-productions.tsv expands the full grammar by actual edition, class and slot.
+The 77 primary vtables per
 edition were rediscovered through MSVC RTTI class-hierarchy arrays containing
 adventure_optionst. None of these files is a runtime observation or a test.
-The text below is a manual semantic reconstruction of the native instructions.
+The text below is the semantic reconstruction of those original instructions
+and the actual C output; it is not itself machine-generated decompiled C.
 RVAs below are Steam; native-owners.tsv provides the actual classic mapping by
 class and slot. Steam PE:6a70a6d9:02711000; classic PE:6a70b91c:0270a000.
 
@@ -212,7 +219,10 @@ ORDINARY CAPTION SLOT +0x8
 0x8a64d0 Throw at TILE | TILE
 
 DETAIL CAPTION SLOT +0x10
-0x7e1230 Empty inherited detail caption for ordinary types.
+0x7e1230 Inherited detail forwards to option virtual+8 (ordinary caption).
+         This is an indirect virtual tail call, not an empty detail string.
+         Classic entry is 0x7deab0. The finite sentence and dynamic fields
+         therefore come from the actual class's ordinary caption above.
 0x894260 View engraving
 0x894280 View ITEM
 0x894370 Drop ITEM
@@ -244,8 +254,31 @@ single arbitrary picture-grid y. Native key label is option index offset+0x52.
 
 At0x885521..0x885528 the option virtual+0x118 is invoked before caption.
 75/77 types inherit empty leaf0x72250; only shoot/throw-creature use0x8a54d0,
-which resolves the target unit and tail-jumps0x7e4860 to draw its symbol.
-It does not change the caption font or produce caption text.
+which resolves target unit ID option+0x24 and conditionally tail-jumps0x7e4860.
+Classic uses 0x8a2d50 -> 0x7e20e0. This draws a separate conflict prefix at
+the current text pen; it is not merely a unit symbol or font selection.
+The actual renderer and conflict supplier0x14e3010 (classic0x14ddf80) are
+included in this extraction, not inferred solely from the older ELF build.
+
+The prefix renderer suppresses all output for the player target. Otherwise
+the direct conflict level selects exactly seven finite prefixes:
+  0 Encounter:   (color7, normal)
+  1 Horseplay:   (color2, bright)
+  2 Training:    (color7, bright)
+  3 Brawl:       (color3, bright)
+  4 Non-lethal:  (color6, bright)
+  5 Lethal:      (color4, bright)
+  6 No Quarter:  (color5, bright)
+The colon and space are drawn independently after the selected word. A
+direct level other than -1 and outside0..6 draws only ': ', without a label.
+Direct level-1 walks the player's activity IDs, resolves activity type2,
+eligible event virtual type8 with flag bit0 clear, and matching participants
+by historical-figure or unit ID. An eligible shared conflict level produces
+'Ally: ' (color1, bright); absence of one leaves the whole prefix empty.
+The prefix and the ordinary caption are independent native draw operations.
+Each of these ten prefix forms can precede the quick/careful Shoot/Throw
+unit captions, yielding forty sentence combinations. A missing target unit
+produces neither the prefix nor the unit action caption.
 
 Caption construction precedes native truncation0x885589..0x885615. Native
 length is compared with frame width, resized to right-(left+1)-13, and if that
@@ -276,3 +309,27 @@ as "$" in a length/capacity vector are numeric metadata; they are not labels.
 Substrings from compiler block-copy loads are operands, not separate runtime
 templates. The division-by3 magic 0x55555556 is not inventoried as ASCII.
 Complete sentences and typed clauses are the productions above.
+
+Actual PE extraction on Windows
+The configured native-pe-images.json reference/classic executables were read
+with the fixed objdump and Python paths. tools/extract_adventure_action_menu_sources.py
+rediscovered all77 RTTI owners in each PE and retained81 distinct executable
+bodies per edition: captions, inherited virtual forwarding, detail captions,
+preludes, chooser renderer, direction, deposit, conflict prefix and level.
+Jump-table bytes are retained in pe-switches.tsv and excluded from decoded
+instruction bodies, preventing their data from becoming spurious branches.
+The actual Ghidra C preserves one 'Could not recover jumptable' notice at the
+inherited detail tail call. Its original instruction is jmp [vtable+8], not
+a finite enum switch; every actual class's +8 target is in pe-slot-owners.tsv.
+'Switch is manually overridden' marks recovery of actual PE jump-table
+targets. All selector aliases remain in pe-switches.tsv. Global overlap
+warnings reflect native access widths, not missing caption text.
+
+Ghidra used C:/Users/WIN11/AppData/Local/Programs/dfcn-analysis-tools/ghidra_12.1.4_PUBLIC
+and JAVA_HOME C:/Users/WIN11/AppData/Local/Programs/dfcn-analysis-tools/jdk-25.0.4.1+1,
+with analyzeHeadless.bat -import the configured PE -noanalysis -scriptPath
+D:/workspace/dfcn/tools -postScript DecompileAdventureActionMenuPE.java
+D:/workspace/dfcn/data/extracted/adventure-action-menu steam|classic -deleteProject.
+Each edition had an independent temporary project, settings and cache.
+These are requested offline source materials. No game process, desktop,
+window or load state was accessed, and no test or display check was run.

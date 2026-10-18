@@ -11480,6 +11480,23 @@ Adventure movement medium: Air	空气	h
 Adventure movement medium: Water	水	h
 Adventure movement medium: Lava	熔岩	h
 Adventure movement medium: Magma	岩浆	h
+
+# Native chooser option+0x118: conflict prelude, separate from its ranged action.
+# Seven direct levels, the shared-conflict Ally branch, and an unnamed colon
+# are retained by the typed action compositor; an absent prelude stays absent.
+Adventure ranged prefix: Encounter	遭遇战	h
+Adventure ranged prefix: Horseplay	打闹	h
+Adventure ranged prefix: Training	训练	h
+Adventure ranged prefix: Brawl	斗殴	h
+Adventure ranged prefix: Non-lethal	非致命	h
+Adventure ranged prefix: Lethal	致命	h
+Adventure ranged prefix: No Quarter	不留活口	h
+Adventure ranged prefix: Ally	盟友	h
+
+# A valid Get-source pointer can return an empty name. Preserve the action
+# without inventing a source name; the independent direction remains typed.
+Adventure item action: Get {s} from	拿取{s}	h
+Adventure item action: Get {s} from ({p})	拿取{s}（{p}）	h
 Adventure action target: creature	生物	h
 Adventure action target: creatures	生物	h
 Adventure action target: item	物品	h

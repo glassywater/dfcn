@@ -1,0 +1,92 @@
+# classic PE:6a70b91c:0270a000; direction-helper; RVA 0x74cc40..0x74cdc9
+0x0074cc40: mov    QWORD PTR [rsp+0x8],rbx
+0x0074cc45: mov    QWORD PTR [rsp+0x10],rbp
+0x0074cc4a: mov    QWORD PTR [rsp+0x18],rdi
+0x0074cc4f: push   r12
+0x0074cc51: push   r14
+0x0074cc53: push   r15
+0x0074cc55: sub    rsp,0x20
+0x0074cc59: mov    rdi,QWORD PTR [rsp+0x70]
+0x0074cc5e: movzx  r15d,r9w
+0x0074cc62: movzx  r14d,WORD PTR [rsp+0x68]
+0x0074cc68: movzx  ebp,r8w
+0x0074cc6c: movzx  ebx,dx
+0x0074cc6f: movzx  r12d,cx
+0x0074cc73: cmp    r9w,cx
+0x0074cc77: jge    0x14074ccca
+0x0074cc79: mov    rcx,rdi
+0x0074cc7c: cmp    WORD PTR [rsp+0x60],dx
+0x0074cc81: jge    0x14074cc9a
+0x0074cc83: mov    r8d,0x2
+0x0074cc89: lea    rdx,[rip+0xf4d9cc]        # 0x14169a65c ; literal="NW"
+0x0074cc90: call   0x14006f9a0
+0x0074cc95: jmp    0x14074cd89
+0x0074cc9a: jle    0x14074ccb3
+0x0074cc9c: mov    r8d,0x2
+0x0074cca2: lea    rdx,[rip+0xf4d9bb]        # 0x14169a664 ; literal="SW"
+0x0074cca9: call   0x14006f9a0
+0x0074ccae: jmp    0x14074cd89
+0x0074ccb3: mov    r8d,0x4
+0x0074ccb9: lea    rdx,[rip+0xf4d9ac]        # 0x14169a66c ; literal="West"
+0x0074ccc0: call   0x14006f9a0
+0x0074ccc5: jmp    0x14074cd89
+0x0074ccca: jle    0x14074cd1a
+0x0074cccc: mov    rcx,rdi
+0x0074cccf: cmp    WORD PTR [rsp+0x60],bx
+0x0074ccd4: jge    0x14074cced
+0x0074ccd6: mov    r8d,0x2
+0x0074ccdc: lea    rdx,[rip+0xf4d97d]        # 0x14169a660 ; literal="NE"
+0x0074cce3: call   0x14006f9a0
+0x0074cce8: jmp    0x14074cd89
+0x0074cced: jle    0x14074cd06
+0x0074ccef: mov    r8d,0x2
+0x0074ccf5: lea    rdx,[rip+0xf4d96c]        # 0x14169a668 ; literal="SE"
+0x0074ccfc: call   0x14006f9a0
+0x0074cd01: jmp    0x14074cd89
+0x0074cd06: mov    r8d,0x4
+0x0074cd0c: lea    rdx,[rip+0xf4d961]        # 0x14169a674 ; literal="East"
+0x0074cd13: call   0x14006f9a0
+0x0074cd18: jmp    0x14074cd89
+0x0074cd1a: cmp    WORD PTR [rsp+0x60],bx
+0x0074cd1f: jge    0x14074cd30
+0x0074cd21: lea    rdx,[rip+0xf4d954]        # 0x14169a67c ; literal="North"
+0x0074cd28: mov    r8d,0x5
+0x0074cd2e: jmp    0x14074cd74
+0x0074cd30: jle    0x14074cd41
+0x0074cd32: lea    rdx,[rip+0xf4d94b]        # 0x14169a684 ; literal="South"
+0x0074cd39: mov    r8d,0x5
+0x0074cd3f: jmp    0x14074cd74
+0x0074cd41: cmp    r14w,bp
+0x0074cd45: jge    0x14074cd56
+0x0074cd47: lea    rdx,[rip+0xf4d93e]        # 0x14169a68c ; literal="Below"
+0x0074cd4e: mov    r8d,0x5
+0x0074cd54: jmp    0x14074cd74
+0x0074cd56: jle    0x14074cd67
+0x0074cd58: lea    rdx,[rip+0xf4d935]        # 0x14169a694 ; literal="Above"
+0x0074cd5f: mov    r8d,0x5
+0x0074cd65: jmp    0x14074cd74
+0x0074cd67: lea    rdx,[rip+0xf4d92e]        # 0x14169a69c ; literal="Here"
+0x0074cd6e: mov    r8d,0x4
+0x0074cd74: mov    rcx,rdi
+0x0074cd77: call   0x14006f9a0
+0x0074cd7c: cmp    r15w,r12w
+0x0074cd80: jne    0x14074cd89
+0x0074cd82: cmp    WORD PTR [rsp+0x60],bx
+0x0074cd87: je     0x14074cdaf
+0x0074cd89: cmp    r14w,bp
+0x0074cd8d: jge    0x14074cd98
+0x0074cd8f: lea    rdx,[rip+0xf4d90e]        # 0x14169a6a4 ; literal="/Below"
+0x0074cd96: jmp    0x14074cda1
+0x0074cd98: jle    0x14074cdaf
+0x0074cd9a: lea    rdx,[rip+0xf4d767]        # 0x14169a508 ; literal="/Above"
+0x0074cda1: mov    r8d,0x6
+0x0074cda7: mov    rcx,rdi
+0x0074cdaa: call   0x14006f9a0
+0x0074cdaf: mov    rbx,QWORD PTR [rsp+0x40]
+0x0074cdb4: mov    rbp,QWORD PTR [rsp+0x48]
+0x0074cdb9: mov    rdi,QWORD PTR [rsp+0x50]
+0x0074cdbe: add    rsp,0x20
+0x0074cdc2: pop    r15
+0x0074cdc4: pop    r14
+0x0074cdc6: pop    r12
+0x0074cdc8: ret

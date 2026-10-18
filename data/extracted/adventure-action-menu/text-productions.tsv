@@ -1,6 +1,6 @@
 steam_function_rva	role	production	dynamic_fields	branch
 0x72250	empty-base			empty primary caption
-0x7e1230	empty-detail			inherited detail slot
+0x7e1230	inherited-detail	{primary-caption}	primary-caption=actual option virtual+8	indirect virtual tail call; no extra finite prose
 0x6b7080	conversation	Continue shouting		conversation flag bit1
 0x6b7080	conversation	Continue conversation with {participants}	participants=unit/HF name list	ignore player; join comma and final and; unresolved ids skipped
 0x6b7320	view	View yourself		player id

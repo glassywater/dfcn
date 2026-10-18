@@ -1,0 +1,593 @@
+edition	image	owner	slot	provider_rva	dispatch	role	production	dynamic_fields	native_branch
+steam	PE:6a70a6d9:02711000	adventure_environment_ingest_from_containerst	0x8	0x8387d0	direct	ingest	Eat {item} from {container}[ ({direction})]	item/container=whole item; direction=DIR	consumed virtual+2b0=0
+steam	PE:6a70a6d9:02711000	adventure_environment_ingest_from_containerst	0x8	0x8387d0	direct	ingest	Drink {item} from {container}[ ({direction})]	item/container=whole item; direction=DIR	consumed virtual+2b0!=0
+steam	PE:6a70a6d9:02711000	adventure_environment_ingest_from_containerst	0x10	0x7e1230	virtual+8	ingest	Eat {item} from {container}[ ({direction})]	item/container=whole item; direction=DIR	consumed virtual+2b0=0
+steam	PE:6a70a6d9:02711000	adventure_environment_ingest_from_containerst	0x10	0x7e1230	virtual+8	ingest	Drink {item} from {container}[ ({direction})]	item/container=whole item; direction=DIR	consumed virtual+2b0!=0
+steam	PE:6a70a6d9:02711000	adventure_environment_ingest_materialst	0x8	0x8389f0	direct	ingest	Eat {material}[ ({direction})]	material=RAW/identity/stagnant/salt/adjectives; direction=DIR	phase selects eat
+steam	PE:6a70a6d9:02711000	adventure_environment_ingest_materialst	0x8	0x8389f0	direct	ingest	Drink {material}[ ({direction})]	material=RAW/identity/stagnant/salt/adjectives; direction=DIR	phase selects drink
+steam	PE:6a70a6d9:02711000	adventure_environment_ingest_materialst	0x10	0x7e1230	virtual+8	ingest	Eat {material}[ ({direction})]	material=RAW/identity/stagnant/salt/adjectives; direction=DIR	phase selects eat
+steam	PE:6a70a6d9:02711000	adventure_environment_ingest_materialst	0x10	0x7e1230	virtual+8	ingest	Drink {material}[ ({direction})]	material=RAW/identity/stagnant/salt/adjectives; direction=DIR	phase selects drink
+steam	PE:6a70a6d9:02711000	adventure_environment_pick_up_building_item_contentsst	0x8	0x893bb0	direct	get	Get {item} from {container} ({direction})	item=option+20 whole item mode-1; container=option+28 whole item mode-1; direction=DIR	shared container/building item contents; item nonnull; option+8=0 and container nonnull; known item origin differs from player
+steam	PE:6a70a6d9:02711000	adventure_environment_pick_up_building_item_contentsst	0x8	0x893bb0	direct	get	Get {item} from {container}	item=option+20 whole item mode-1; container=option+28 whole item mode-1	shared container/building item contents; item nonnull; option+8=0 and container nonnull; unknown item origin or origin equals player
+steam	PE:6a70a6d9:02711000	adventure_environment_pick_up_building_item_contentsst	0x8	0x893bb0	direct	get	Get {item} ({direction})	item=option+20 whole item mode-1; direction=DIR	item nonnull; option+8!=0 or container null; known item origin differs from player; complete source clause omitted
+steam	PE:6a70a6d9:02711000	adventure_environment_pick_up_building_item_contentsst	0x8	0x893bb0	direct	get	Get {item}	item=option+20 whole item mode-1	item nonnull; option+8!=0 or container null; unknown item origin or origin equals player; complete source clause omitted
+steam	PE:6a70a6d9:02711000	adventure_environment_pick_up_building_item_contentsst	0x8	0x893bb0	direct	get-empty			option+20 item null; no Get/source/location text is appended
+steam	PE:6a70a6d9:02711000	adventure_environment_pick_up_building_item_contentsst	0x10	0x7e1230	virtual+8	get	Get {item} from {container} ({direction})	item=option+20 whole item mode-1; container=option+28 whole item mode-1; direction=DIR	shared container/building item contents; item nonnull; option+8=0 and container nonnull; known item origin differs from player
+steam	PE:6a70a6d9:02711000	adventure_environment_pick_up_building_item_contentsst	0x10	0x7e1230	virtual+8	get	Get {item} from {container}	item=option+20 whole item mode-1; container=option+28 whole item mode-1	shared container/building item contents; item nonnull; option+8=0 and container nonnull; unknown item origin or origin equals player
+steam	PE:6a70a6d9:02711000	adventure_environment_pick_up_building_item_contentsst	0x10	0x7e1230	virtual+8	get	Get {item} ({direction})	item=option+20 whole item mode-1; direction=DIR	item nonnull; option+8!=0 or container null; known item origin differs from player; complete source clause omitted
+steam	PE:6a70a6d9:02711000	adventure_environment_pick_up_building_item_contentsst	0x10	0x7e1230	virtual+8	get	Get {item}	item=option+20 whole item mode-1	item nonnull; option+8!=0 or container null; unknown item origin or origin equals player; complete source clause omitted
+steam	PE:6a70a6d9:02711000	adventure_environment_pick_up_building_item_contentsst	0x10	0x7e1230	virtual+8	get-empty			option+20 item null; no Get/source/location text is appended
+steam	PE:6a70a6d9:02711000	adventure_environment_pick_up_building_itemst	0x8	0x893870	direct	get	Get {item} from {building} ({direction})	item=option+20 whole item mode-1; building=option+28 virtual+188 result; direction=DIR	item nonnull; option+8=0 and building nonnull; known item origin differs from player; no building fallback
+steam	PE:6a70a6d9:02711000	adventure_environment_pick_up_building_itemst	0x8	0x893870	direct	get	Get {item} from {building}	item=option+20 whole item mode-1; building=option+28 virtual+188 result	item nonnull; option+8=0 and building nonnull; unknown item origin or origin equals player; no building fallback
+steam	PE:6a70a6d9:02711000	adventure_environment_pick_up_building_itemst	0x8	0x893870	direct	get	Get {item} ({direction})	item=option+20 whole item mode-1; direction=DIR	item nonnull; option+8!=0 or building null; known item origin differs from player; complete source clause omitted
+steam	PE:6a70a6d9:02711000	adventure_environment_pick_up_building_itemst	0x8	0x893870	direct	get	Get {item}	item=option+20 whole item mode-1	item nonnull; option+8!=0 or building null; unknown item origin or origin equals player; complete source clause omitted
+steam	PE:6a70a6d9:02711000	adventure_environment_pick_up_building_itemst	0x8	0x893870	direct	get-empty			option+20 item null; no Get/source/location text is appended
+steam	PE:6a70a6d9:02711000	adventure_environment_pick_up_building_itemst	0x10	0x7e1230	virtual+8	get	Get {item} from {building} ({direction})	item=option+20 whole item mode-1; building=option+28 virtual+188 result; direction=DIR	item nonnull; option+8=0 and building nonnull; known item origin differs from player; no building fallback
+steam	PE:6a70a6d9:02711000	adventure_environment_pick_up_building_itemst	0x10	0x7e1230	virtual+8	get	Get {item} from {building}	item=option+20 whole item mode-1; building=option+28 virtual+188 result	item nonnull; option+8=0 and building nonnull; unknown item origin or origin equals player; no building fallback
+steam	PE:6a70a6d9:02711000	adventure_environment_pick_up_building_itemst	0x10	0x7e1230	virtual+8	get	Get {item} ({direction})	item=option+20 whole item mode-1; direction=DIR	item nonnull; option+8!=0 or building null; known item origin differs from player; complete source clause omitted
+steam	PE:6a70a6d9:02711000	adventure_environment_pick_up_building_itemst	0x10	0x7e1230	virtual+8	get	Get {item}	item=option+20 whole item mode-1	item nonnull; option+8!=0 or building null; unknown item origin or origin equals player; complete source clause omitted
+steam	PE:6a70a6d9:02711000	adventure_environment_pick_up_building_itemst	0x10	0x7e1230	virtual+8	get-empty			option+20 item null; no Get/source/location text is appended
+steam	PE:6a70a6d9:02711000	adventure_environment_pick_up_environmentst	0x8	0x8935f0	direct	get	Get {item} ({direction})	item=option+20 whole item mode-1; direction=DIR	shared environment/ground item; item nonnull; known item origin differs from player; no source clause
+steam	PE:6a70a6d9:02711000	adventure_environment_pick_up_environmentst	0x8	0x8935f0	direct	get	Get {item}	item=option+20 whole item mode-1	shared environment/ground item; item nonnull; unknown item origin or origin equals player; no source clause
+steam	PE:6a70a6d9:02711000	adventure_environment_pick_up_environmentst	0x8	0x8935f0	direct	get-empty			option+20 item null; no Get/location text is appended
+steam	PE:6a70a6d9:02711000	adventure_environment_pick_up_environmentst	0x10	0x7e1230	virtual+8	get	Get {item} ({direction})	item=option+20 whole item mode-1; direction=DIR	shared environment/ground item; item nonnull; known item origin differs from player; no source clause
+steam	PE:6a70a6d9:02711000	adventure_environment_pick_up_environmentst	0x10	0x7e1230	virtual+8	get	Get {item}	item=option+20 whole item mode-1	shared environment/ground item; item nonnull; unknown item origin or origin equals player; no source clause
+steam	PE:6a70a6d9:02711000	adventure_environment_pick_up_environmentst	0x10	0x7e1230	virtual+8	get-empty			option+20 item null; no Get/location text is appended
+steam	PE:6a70a6d9:02711000	adventure_environment_pick_up_ground_itemst	0x8	0x8935f0	direct	get	Get {item} ({direction})	item=option+20 whole item mode-1; direction=DIR	shared environment/ground item; item nonnull; known item origin differs from player; no source clause
+steam	PE:6a70a6d9:02711000	adventure_environment_pick_up_ground_itemst	0x8	0x8935f0	direct	get	Get {item}	item=option+20 whole item mode-1	shared environment/ground item; item nonnull; unknown item origin or origin equals player; no source clause
+steam	PE:6a70a6d9:02711000	adventure_environment_pick_up_ground_itemst	0x8	0x8935f0	direct	get-empty			option+20 item null; no Get/location text is appended
+steam	PE:6a70a6d9:02711000	adventure_environment_pick_up_ground_itemst	0x10	0x7e1230	virtual+8	get	Get {item} ({direction})	item=option+20 whole item mode-1; direction=DIR	shared environment/ground item; item nonnull; known item origin differs from player; no source clause
+steam	PE:6a70a6d9:02711000	adventure_environment_pick_up_ground_itemst	0x10	0x7e1230	virtual+8	get	Get {item}	item=option+20 whole item mode-1	shared environment/ground item; item nonnull; unknown item origin or origin equals player; no source clause
+steam	PE:6a70a6d9:02711000	adventure_environment_pick_up_ground_itemst	0x10	0x7e1230	virtual+8	get-empty			option+20 item null; no Get/location text is appended
+steam	PE:6a70a6d9:02711000	adventure_environment_pick_vegetationst	0x8	0x893ef0	direct	vegetation	Pick {item}[ ({direction})]	item=whole growth/item; direction=DIR	type!=0x5b
+steam	PE:6a70a6d9:02711000	adventure_environment_pick_vegetationst	0x8	0x893ef0	direct	vegetation	Pull {item}[ ({direction})]	item=whole growth/item; direction=DIR	type0x5b
+steam	PE:6a70a6d9:02711000	adventure_environment_pick_vegetationst	0x10	0x7e1230	virtual+8	vegetation	Pick {item}[ ({direction})]	item=whole growth/item; direction=DIR	type!=0x5b
+steam	PE:6a70a6d9:02711000	adventure_environment_pick_vegetationst	0x10	0x7e1230	virtual+8	vegetation	Pull {item}[ ({direction})]	item=whole growth/item; direction=DIR	type0x5b
+steam	PE:6a70a6d9:02711000	adventure_environment_pickup_chop_treest	0x8	0x83a3d0	direct	fell	Fell {tree}[ ({direction})]	tree=RAW plant singular or tree; direction=DIR	location optional
+steam	PE:6a70a6d9:02711000	adventure_environment_pickup_chop_treest	0x10	0x7e1230	virtual+8	fell	Fell {tree}[ ({direction})]	tree=RAW plant singular or tree; direction=DIR	location optional
+steam	PE:6a70a6d9:02711000	adventure_environment_pickup_ignite_vegst	0x8	0x83a0e0	direct	ignite	Ignite {tile} ({direction})	tile=terrain grammar; direction=DIR	known origin
+steam	PE:6a70a6d9:02711000	adventure_environment_pickup_ignite_vegst	0x8	0x83a0e0	direct	ignite	Ignite 		origin sentinel suppresses name and direction
+steam	PE:6a70a6d9:02711000	adventure_environment_pickup_ignite_vegst	0x10	0x7e1230	virtual+8	ignite	Ignite {tile} ({direction})	tile=terrain grammar; direction=DIR	known origin
+steam	PE:6a70a6d9:02711000	adventure_environment_pickup_ignite_vegst	0x10	0x7e1230	virtual+8	ignite	Ignite 		origin sentinel suppresses name and direction
+steam	PE:6a70a6d9:02711000	adventure_environment_pickup_make_campfirest	0x8	0x83a330	direct	campfire	Make Campfire[ ({direction})]	direction=DIR	location optional
+steam	PE:6a70a6d9:02711000	adventure_environment_pickup_make_campfirest	0x10	0x7e1230	virtual+8	campfire	Make Campfire[ ({direction})]	direction=DIR	location optional
+steam	PE:6a70a6d9:02711000	adventure_environment_pickup_vermin_eventst	0x8	0x839e40	direct	vermin	A {vermin} ({direction})	vermin=RAW singular; direction=DIR	known origin
+steam	PE:6a70a6d9:02711000	adventure_environment_pickup_vermin_eventst	0x8	0x839e40	direct	vermin	A  ({direction})	direction=DIR	invalid RAW; known origin
+steam	PE:6a70a6d9:02711000	adventure_environment_pickup_vermin_eventst	0x8	0x839e40	direct	vermin	A 		origin sentinel suppresses name and direction
+steam	PE:6a70a6d9:02711000	adventure_environment_pickup_vermin_eventst	0x10	0x7e1230	virtual+8	vermin	A {vermin} ({direction})	vermin=RAW singular; direction=DIR	known origin
+steam	PE:6a70a6d9:02711000	adventure_environment_pickup_vermin_eventst	0x10	0x7e1230	virtual+8	vermin	A  ({direction})	direction=DIR	invalid RAW; known origin
+steam	PE:6a70a6d9:02711000	adventure_environment_pickup_vermin_eventst	0x10	0x7e1230	virtual+8	vermin	A 		origin sentinel suppresses name and direction
+steam	PE:6a70a6d9:02711000	adventure_environment_place_in_bld_containerst	0x8	0x837ff0	direct	placement	Put in {building}[ ({direction})]	building=virtual+188 name; direction=DIR	container building
+steam	PE:6a70a6d9:02711000	adventure_environment_place_in_bld_containerst	0x8	0x837ff0	direct	placement	Put on {building}[ ({direction})]	building=virtual+188 name; direction=DIR	building surface
+steam	PE:6a70a6d9:02711000	adventure_environment_place_in_bld_containerst	0x8	0x837ff0	direct	placement	Set on {building}[ ({direction})]	building=virtual+188 name; direction=DIR	set-on surface
+steam	PE:6a70a6d9:02711000	adventure_environment_place_in_bld_containerst	0x10	0x7e1230	virtual+8	placement	Put in {building}[ ({direction})]	building=virtual+188 name; direction=DIR	container building
+steam	PE:6a70a6d9:02711000	adventure_environment_place_in_bld_containerst	0x10	0x7e1230	virtual+8	placement	Put on {building}[ ({direction})]	building=virtual+188 name; direction=DIR	building surface
+steam	PE:6a70a6d9:02711000	adventure_environment_place_in_bld_containerst	0x10	0x7e1230	virtual+8	placement	Set on {building}[ ({direction})]	building=virtual+188 name; direction=DIR	set-on surface
+steam	PE:6a70a6d9:02711000	adventure_environment_place_in_it_containerst	0x8	0x8381a0	direct	placement	Put in {item}[ ({direction})]	item=whole item; direction=DIR	location optional
+steam	PE:6a70a6d9:02711000	adventure_environment_place_in_it_containerst	0x10	0x7e1230	virtual+8	placement	Put in {item}[ ({direction})]	item=whole item; direction=DIR	location optional
+steam	PE:6a70a6d9:02711000	adventure_environment_place_on_pack_animalst	0x8	0x837ea0	direct	placement	Put on {unit}[ ({direction})]	unit=whole unit designation; direction=DIR	location optional
+steam	PE:6a70a6d9:02711000	adventure_environment_place_on_pack_animalst	0x10	0x7e1230	virtual+8	placement	Put on {unit}[ ({direction})]	unit=whole unit designation; direction=DIR	location optional
+steam	PE:6a70a6d9:02711000	adventure_environment_take_from_pack_animalst	0x8	0x8932c0	direct	get	Get {item} from {unit} ({direction})	item=option+28 whole item mode-1; unit=option+20 whole 1330c30 result; direction=DIR	item nonnull; option+8=0 and unit nonnull; known item origin differs from player
+steam	PE:6a70a6d9:02711000	adventure_environment_take_from_pack_animalst	0x8	0x8932c0	direct	get	Get {item} from {unit}	item=option+28 whole item mode-1; unit=option+20 whole 1330c30 result	item nonnull; option+8=0 and unit nonnull; unknown item origin or origin equals player
+steam	PE:6a70a6d9:02711000	adventure_environment_take_from_pack_animalst	0x8	0x8932c0	direct	get	Get {item} ({direction})	item=option+28 whole item mode-1; direction=DIR	item nonnull; option+8!=0 or unit null; known item origin differs from player; complete source clause omitted
+steam	PE:6a70a6d9:02711000	adventure_environment_take_from_pack_animalst	0x8	0x8932c0	direct	get	Get {item}	item=option+28 whole item mode-1	item nonnull; option+8!=0 or unit null; unknown item origin or origin equals player; complete source clause omitted
+steam	PE:6a70a6d9:02711000	adventure_environment_take_from_pack_animalst	0x8	0x8932c0	direct	get-empty			option+28 item null; no Get/source/location text is appended
+steam	PE:6a70a6d9:02711000	adventure_environment_take_from_pack_animalst	0x10	0x7e1230	virtual+8	get	Get {item} from {unit} ({direction})	item=option+28 whole item mode-1; unit=option+20 whole 1330c30 result; direction=DIR	item nonnull; option+8=0 and unit nonnull; known item origin differs from player
+steam	PE:6a70a6d9:02711000	adventure_environment_take_from_pack_animalst	0x10	0x7e1230	virtual+8	get	Get {item} from {unit}	item=option+28 whole item mode-1; unit=option+20 whole 1330c30 result	item nonnull; option+8=0 and unit nonnull; unknown item origin or origin equals player
+steam	PE:6a70a6d9:02711000	adventure_environment_take_from_pack_animalst	0x10	0x7e1230	virtual+8	get	Get {item} ({direction})	item=option+28 whole item mode-1; direction=DIR	item nonnull; option+8!=0 or unit null; known item origin differs from player; complete source clause omitted
+steam	PE:6a70a6d9:02711000	adventure_environment_take_from_pack_animalst	0x10	0x7e1230	virtual+8	get	Get {item}	item=option+28 whole item mode-1	item nonnull; option+8!=0 or unit null; unknown item origin or origin equals player; complete source clause omitted
+steam	PE:6a70a6d9:02711000	adventure_environment_take_from_pack_animalst	0x10	0x7e1230	virtual+8	get-empty			option+28 item null; no Get/source/location text is appended
+steam	PE:6a70a6d9:02711000	adventure_environment_take_item_from_containerst	0x8	0x893bb0	direct	get	Get {item} from {container} ({direction})	item=option+20 whole item mode-1; container=option+28 whole item mode-1; direction=DIR	shared container/building item contents; item nonnull; option+8=0 and container nonnull; known item origin differs from player
+steam	PE:6a70a6d9:02711000	adventure_environment_take_item_from_containerst	0x8	0x893bb0	direct	get	Get {item} from {container}	item=option+20 whole item mode-1; container=option+28 whole item mode-1	shared container/building item contents; item nonnull; option+8=0 and container nonnull; unknown item origin or origin equals player
+steam	PE:6a70a6d9:02711000	adventure_environment_take_item_from_containerst	0x8	0x893bb0	direct	get	Get {item} ({direction})	item=option+20 whole item mode-1; direction=DIR	item nonnull; option+8!=0 or container null; known item origin differs from player; complete source clause omitted
+steam	PE:6a70a6d9:02711000	adventure_environment_take_item_from_containerst	0x8	0x893bb0	direct	get	Get {item}	item=option+20 whole item mode-1	item nonnull; option+8!=0 or container null; unknown item origin or origin equals player; complete source clause omitted
+steam	PE:6a70a6d9:02711000	adventure_environment_take_item_from_containerst	0x8	0x893bb0	direct	get-empty			option+20 item null; no Get/source/location text is appended
+steam	PE:6a70a6d9:02711000	adventure_environment_take_item_from_containerst	0x10	0x7e1230	virtual+8	get	Get {item} from {container} ({direction})	item=option+20 whole item mode-1; container=option+28 whole item mode-1; direction=DIR	shared container/building item contents; item nonnull; option+8=0 and container nonnull; known item origin differs from player
+steam	PE:6a70a6d9:02711000	adventure_environment_take_item_from_containerst	0x10	0x7e1230	virtual+8	get	Get {item} from {container}	item=option+20 whole item mode-1; container=option+28 whole item mode-1	shared container/building item contents; item nonnull; option+8=0 and container nonnull; unknown item origin or origin equals player
+steam	PE:6a70a6d9:02711000	adventure_environment_take_item_from_containerst	0x10	0x7e1230	virtual+8	get	Get {item} ({direction})	item=option+20 whole item mode-1; direction=DIR	item nonnull; option+8!=0 or container null; known item origin differs from player; complete source clause omitted
+steam	PE:6a70a6d9:02711000	adventure_environment_take_item_from_containerst	0x10	0x7e1230	virtual+8	get	Get {item}	item=option+20 whole item mode-1	item nonnull; option+8!=0 or container null; unknown item origin or origin equals player; complete source clause omitted
+steam	PE:6a70a6d9:02711000	adventure_environment_take_item_from_containerst	0x10	0x7e1230	virtual+8	get-empty			option+20 item null; no Get/source/location text is appended
+steam	PE:6a70a6d9:02711000	adventure_environment_unit_suck_bloodst	0x8	0x8382f0	direct	material-suck	Suck {unit}'s {material}	unit=whole unit; material=RAW/state/identity	no location
+steam	PE:6a70a6d9:02711000	adventure_environment_unit_suck_bloodst	0x10	0x7e1230	virtual+8	material-suck	Suck {unit}'s {material}	unit=whole unit; material=RAW/state/identity	no location
+steam	PE:6a70a6d9:02711000	adventure_item_interact_fill_from_containerst	0x8	0x835260	direct	item-fill	Fill {item} from {container}[ ({direction})]	item/container=whole item designation; direction=27-output DIR	location optional
+steam	PE:6a70a6d9:02711000	adventure_item_interact_fill_from_containerst	0x10	0x7e1230	virtual+8	item-fill	Fill {item} from {container}[ ({direction})]	item/container=whole item designation; direction=27-output DIR	location optional
+steam	PE:6a70a6d9:02711000	adventure_item_interact_fill_with_materialst	0x8	0x835460	direct	material-fill	Fill {item} with {material}[ ({direction})]	item=whole item; material=RAW/identity/stagnant/salt/adjectives; direction=DIR	location optional
+steam	PE:6a70a6d9:02711000	adventure_item_interact_fill_with_materialst	0x10	0x7e1230	virtual+8	material-fill	Fill {item} with {material}[ ({direction})]	item=whole item; material=RAW/identity/stagnant/salt/adjectives; direction=DIR	location optional
+steam	PE:6a70a6d9:02711000	adventure_item_interact_give_namest	0x8	0x835d50	direct	item-name	Name the {item}	item=whole item designation	mode-1
+steam	PE:6a70a6d9:02711000	adventure_item_interact_give_namest	0x10	0x7e1230	virtual+8	item-name	Name the {item}	item=whole item designation	mode-1
+steam	PE:6a70a6d9:02711000	adventure_item_interact_heat_from_tilest	0x8	0x835e40	direct	item-heat	Heat {item}[ ({direction})]	item=whole item; direction=DIR	unmatched source; location optional
+steam	PE:6a70a6d9:02711000	adventure_item_interact_heat_from_tilest	0x8	0x835e40	direct	item-heat	Heat {item} near magma[ ({direction})]	item=whole item; direction=DIR	magma
+steam	PE:6a70a6d9:02711000	adventure_item_interact_heat_from_tilest	0x8	0x835e40	direct	item-heat	Heat {item} near lava[ ({direction})]	item=whole item; direction=DIR	lava
+steam	PE:6a70a6d9:02711000	adventure_item_interact_heat_from_tilest	0x8	0x835e40	direct	item-heat	Heat {item} near burning trunk[ ({direction})]	item=whole item; direction=DIR	burning trunk tile
+steam	PE:6a70a6d9:02711000	adventure_item_interact_heat_from_tilest	0x8	0x835e40	direct	item-heat	Heat {item} near burning branches[ ({direction})]	item=whole item; direction=DIR	burning branches tile
+steam	PE:6a70a6d9:02711000	adventure_item_interact_heat_from_tilest	0x8	0x835e40	direct	item-heat	Heat {item} near burning twigs[ ({direction})]	item=whole item; direction=DIR	burning twigs tile
+steam	PE:6a70a6d9:02711000	adventure_item_interact_heat_from_tilest	0x8	0x835e40	direct	item-heat	Heat {item} near burning cap[ ({direction})]	item=whole item; direction=DIR	burning cap tile
+steam	PE:6a70a6d9:02711000	adventure_item_interact_heat_from_tilest	0x8	0x835e40	direct	item-heat	Heat {item} near fire[ ({direction})]	item=whole item; direction=DIR	fire tile
+steam	PE:6a70a6d9:02711000	adventure_item_interact_heat_from_tilest	0x8	0x835e40	direct	item-heat	Heat {item} near campfire[ ({direction})]	item=whole item; direction=DIR	campfire tile
+steam	PE:6a70a6d9:02711000	adventure_item_interact_heat_from_tilest	0x10	0x7e1230	virtual+8	item-heat	Heat {item}[ ({direction})]	item=whole item; direction=DIR	unmatched source; location optional
+steam	PE:6a70a6d9:02711000	adventure_item_interact_heat_from_tilest	0x10	0x7e1230	virtual+8	item-heat	Heat {item} near magma[ ({direction})]	item=whole item; direction=DIR	magma
+steam	PE:6a70a6d9:02711000	adventure_item_interact_heat_from_tilest	0x10	0x7e1230	virtual+8	item-heat	Heat {item} near lava[ ({direction})]	item=whole item; direction=DIR	lava
+steam	PE:6a70a6d9:02711000	adventure_item_interact_heat_from_tilest	0x10	0x7e1230	virtual+8	item-heat	Heat {item} near burning trunk[ ({direction})]	item=whole item; direction=DIR	burning trunk tile
+steam	PE:6a70a6d9:02711000	adventure_item_interact_heat_from_tilest	0x10	0x7e1230	virtual+8	item-heat	Heat {item} near burning branches[ ({direction})]	item=whole item; direction=DIR	burning branches tile
+steam	PE:6a70a6d9:02711000	adventure_item_interact_heat_from_tilest	0x10	0x7e1230	virtual+8	item-heat	Heat {item} near burning twigs[ ({direction})]	item=whole item; direction=DIR	burning twigs tile
+steam	PE:6a70a6d9:02711000	adventure_item_interact_heat_from_tilest	0x10	0x7e1230	virtual+8	item-heat	Heat {item} near burning cap[ ({direction})]	item=whole item; direction=DIR	burning cap tile
+steam	PE:6a70a6d9:02711000	adventure_item_interact_heat_from_tilest	0x10	0x7e1230	virtual+8	item-heat	Heat {item} near fire[ ({direction})]	item=whole item; direction=DIR	fire tile
+steam	PE:6a70a6d9:02711000	adventure_item_interact_heat_from_tilest	0x10	0x7e1230	virtual+8	item-heat	Heat {item} near campfire[ ({direction})]	item=whole item; direction=DIR	campfire tile
+steam	PE:6a70a6d9:02711000	adventure_item_interact_load_ranged_weaponst	0x8	0x834d50	direct	item-load	Nock in {item}	item=whole item designation	type0x18 subtype1cc=0
+steam	PE:6a70a6d9:02711000	adventure_item_interact_load_ranged_weaponst	0x8	0x834d50	direct	item-load	Load into {item}	item=whole item designation	other weapon
+steam	PE:6a70a6d9:02711000	adventure_item_interact_load_ranged_weaponst	0x8	0x834d50	direct	item-load	Nock in		item absent
+steam	PE:6a70a6d9:02711000	adventure_item_interact_load_ranged_weaponst	0x8	0x834d50	direct	item-load	Load into		item absent
+steam	PE:6a70a6d9:02711000	adventure_item_interact_load_ranged_weaponst	0x10	0x7e1230	virtual+8	item-load	Nock in {item}	item=whole item designation	type0x18 subtype1cc=0
+steam	PE:6a70a6d9:02711000	adventure_item_interact_load_ranged_weaponst	0x10	0x7e1230	virtual+8	item-load	Load into {item}	item=whole item designation	other weapon
+steam	PE:6a70a6d9:02711000	adventure_item_interact_load_ranged_weaponst	0x10	0x7e1230	virtual+8	item-load	Nock in		item absent
+steam	PE:6a70a6d9:02711000	adventure_item_interact_load_ranged_weaponst	0x10	0x7e1230	virtual+8	item-load	Load into		item absent
+steam	PE:6a70a6d9:02711000	adventure_item_interact_pull_outst	0x8	0x7e1320	direct	item-pull	Pull it out		fixed
+steam	PE:6a70a6d9:02711000	adventure_item_interact_pull_outst	0x10	0x7e1230	virtual+8	item-pull	Pull it out		fixed
+steam	PE:6a70a6d9:02711000	adventure_item_interact_readst	0x8	0x7e13d0	direct	item-read	Read		fixed
+steam	PE:6a70a6d9:02711000	adventure_item_interact_readst	0x10	0x7e1230	virtual+8	item-read	Read		fixed
+steam	PE:6a70a6d9:02711000	adventure_item_interact_roll_allst	0x8	0x7e1410	direct	item-dice	Roll all		fixed
+steam	PE:6a70a6d9:02711000	adventure_item_interact_roll_allst	0x10	0x7e1230	virtual+8	item-dice	Roll all		fixed
+steam	PE:6a70a6d9:02711000	adventure_item_interact_rollst	0x8	0x7e13f0	direct	item-dice	Roll		fixed
+steam	PE:6a70a6d9:02711000	adventure_item_interact_rollst	0x10	0x7e1230	virtual+8	item-dice	Roll		fixed
+steam	PE:6a70a6d9:02711000	adventure_item_interact_strugglest	0x8	0x7e12e0	direct	item-possession	Gain possession		fixed
+steam	PE:6a70a6d9:02711000	adventure_item_interact_strugglest	0x10	0x7e1230	virtual+8	item-possession	Gain possession		fixed
+steam	PE:6a70a6d9:02711000	adventure_item_interact_unnockst	0x8	0x7e1340	direct	item-nocking	Cease nocking		fixed
+steam	PE:6a70a6d9:02711000	adventure_item_interact_unnockst	0x10	0x7e1230	virtual+8	item-nocking	Cease nocking		fixed
+steam	PE:6a70a6d9:02711000	adventure_movement_attack_creaturest	0x8	0x83fe00	direct	attack	Attack error		empty target vector
+steam	PE:6a70a6d9:02711000	adventure_movement_attack_creaturest	0x8	0x83fe00	direct	attack	Attack {unit}[ ({direction})]	unit=whole unit; direction=DIR	one valid target
+steam	PE:6a70a6d9:02711000	adventure_movement_attack_creaturest	0x8	0x83fe00	direct	attack	Attack creature[ ({direction})]	direction=DIR	one missing target
+steam	PE:6a70a6d9:02711000	adventure_movement_attack_creaturest	0x8	0x83fe00	direct	attack	Attack creatures[ ({direction})]	direction=DIR	multiple targets
+steam	PE:6a70a6d9:02711000	adventure_movement_attack_creaturest	0x10	0x7e1230	virtual+8	attack	Attack error		empty target vector
+steam	PE:6a70a6d9:02711000	adventure_movement_attack_creaturest	0x10	0x7e1230	virtual+8	attack	Attack {unit}[ ({direction})]	unit=whole unit; direction=DIR	one valid target
+steam	PE:6a70a6d9:02711000	adventure_movement_attack_creaturest	0x10	0x7e1230	virtual+8	attack	Attack creature[ ({direction})]	direction=DIR	one missing target
+steam	PE:6a70a6d9:02711000	adventure_movement_attack_creaturest	0x10	0x7e1230	virtual+8	attack	Attack creatures[ ({direction})]	direction=DIR	multiple targets
+steam	PE:6a70a6d9:02711000	adventure_movement_building_interact_bash_down_doorst	0x8	0x8410a0	direct	building	Bash down {building}[ ({direction})]	building=whole name or building; direction=DIR	location optional
+steam	PE:6a70a6d9:02711000	adventure_movement_building_interact_bash_down_doorst	0x10	0x7e1230	virtual+8	building	Bash down {building}[ ({direction})]	building=whole name or building; direction=DIR	location optional
+steam	PE:6a70a6d9:02711000	adventure_movement_building_interact_break_in_hatchst	0x8	0x840cf0	direct	building	Break in {building}[ ({direction})]	building=whole name or building; direction=DIR	location optional
+steam	PE:6a70a6d9:02711000	adventure_movement_building_interact_break_in_hatchst	0x10	0x7e1230	virtual+8	building	Break in {building}[ ({direction})]	building=whole name or building; direction=DIR	location optional
+steam	PE:6a70a6d9:02711000	adventure_movement_building_interact_lower_well_bucketst	0x8	0x840940	direct	building	Lower {building} bucket[ ({direction})]	building=whole name or building; direction=DIR	location optional
+steam	PE:6a70a6d9:02711000	adventure_movement_building_interact_lower_well_bucketst	0x10	0x7e1230	virtual+8	building	Lower {building} bucket[ ({direction})]	building=whole name or building; direction=DIR	location optional
+steam	PE:6a70a6d9:02711000	adventure_movement_building_interact_pick_door_lockst	0x8	0x840ec0	direct	building	Pick {building} lock[ ({direction})]	building=whole name or building; direction=DIR	shared door/hatch
+steam	PE:6a70a6d9:02711000	adventure_movement_building_interact_pick_door_lockst	0x10	0x7e1230	virtual+8	building	Pick {building} lock[ ({direction})]	building=whole name or building; direction=DIR	shared door/hatch
+steam	PE:6a70a6d9:02711000	adventure_movement_building_interact_pick_hatch_lockst	0x8	0x840ec0	direct	building	Pick {building} lock[ ({direction})]	building=whole name or building; direction=DIR	shared door/hatch
+steam	PE:6a70a6d9:02711000	adventure_movement_building_interact_pick_hatch_lockst	0x10	0x7e1230	virtual+8	building	Pick {building} lock[ ({direction})]	building=whole name or building; direction=DIR	shared door/hatch
+steam	PE:6a70a6d9:02711000	adventure_movement_building_interact_pull_leverst	0x8	0x840b20	direct	building	Pull {building}[ ({direction})]	building=whole name or building; direction=DIR	location optional
+steam	PE:6a70a6d9:02711000	adventure_movement_building_interact_pull_leverst	0x10	0x7e1230	virtual+8	building	Pull {building}[ ({direction})]	building=whole name or building; direction=DIR	location optional
+steam	PE:6a70a6d9:02711000	adventure_movement_building_interact_raise_well_bucketst	0x8	0x840760	direct	building	Raise {building} bucket[ ({direction})]	building=whole name or building; direction=DIR	location optional
+steam	PE:6a70a6d9:02711000	adventure_movement_building_interact_raise_well_bucketst	0x10	0x7e1230	virtual+8	building	Raise {building} bucket[ ({direction})]	building=whole name or building; direction=DIR	location optional
+steam	PE:6a70a6d9:02711000	adventure_movement_building_interact_topple_statuest	0x8	0x841270	direct	building	Topple {building}[ ({direction})]	building=whole name or building; direction=DIR	location optional
+steam	PE:6a70a6d9:02711000	adventure_movement_building_interact_topple_statuest	0x10	0x7e1230	virtual+8	building	Topple {building}[ ({direction})]	building=whole name or building; direction=DIR	location optional
+steam	PE:6a70a6d9:02711000	adventure_movement_claim_petst	0x8	0x8425b0	direct	pet	Claim {unit}[ ({direction})] as pet	unit=whole unit; direction=DIR	location optional
+steam	PE:6a70a6d9:02711000	adventure_movement_claim_petst	0x10	0x7e1230	virtual+8	pet	Claim {unit}[ ({direction})] as pet	unit=whole unit; direction=DIR	location optional
+steam	PE:6a70a6d9:02711000	adventure_movement_climbst	0x8	0x841900	direct	climbing	Climb to {tile}[ ({direction} holding {held_direction}{media})]	tile=terrain grammar; direction/held_direction=DIR; media=MEDIA	full suffix optional
+steam	PE:6a70a6d9:02711000	adventure_movement_climbst	0x8	0x841900	direct	climbing	Climb to {tile}[ ({direction} releasing hold{media})]	tile=terrain grammar; direction=DIR; media=MEDIA	full suffix optional
+steam	PE:6a70a6d9:02711000	adventure_movement_climbst	0x10	0x7e1230	virtual+8	climbing	Climb to {tile}[ ({direction} holding {held_direction}{media})]	tile=terrain grammar; direction/held_direction=DIR; media=MEDIA	full suffix optional
+steam	PE:6a70a6d9:02711000	adventure_movement_climbst	0x10	0x7e1230	virtual+8	climbing	Climb to {tile}[ ({direction} releasing hold{media})]	tile=terrain grammar; direction=DIR; media=MEDIA	full suffix optional
+steam	PE:6a70a6d9:02711000	adventure_movement_combat_menu_creaturest	0x8	0x840030	direct	combat	Combat error		target id-1
+steam	PE:6a70a6d9:02711000	adventure_movement_combat_menu_creaturest	0x8	0x840030	direct	combat	Combat {unit}[ ({direction})]	unit=whole unit; direction=DIR	valid target
+steam	PE:6a70a6d9:02711000	adventure_movement_combat_menu_creaturest	0x8	0x840030	direct	combat	Combat creature[ ({direction})]	direction=DIR	missing nonnegative id
+steam	PE:6a70a6d9:02711000	adventure_movement_combat_menu_creaturest	0x10	0x7e1230	virtual+8	combat	Combat error		target id-1
+steam	PE:6a70a6d9:02711000	adventure_movement_combat_menu_creaturest	0x10	0x7e1230	virtual+8	combat	Combat {unit}[ ({direction})]	unit=whole unit; direction=DIR	valid target
+steam	PE:6a70a6d9:02711000	adventure_movement_combat_menu_creaturest	0x10	0x7e1230	virtual+8	combat	Combat creature[ ({direction})]	direction=DIR	missing nonnegative id
+steam	PE:6a70a6d9:02711000	adventure_movement_dismountst	0x8	0x842050	direct	dismount	Dismount to {tile}[ ({direction})]	tile=terrain grammar; direction=DIR	location optional
+steam	PE:6a70a6d9:02711000	adventure_movement_dismountst	0x10	0x7e1230	virtual+8	dismount	Dismount to {tile}[ ({direction})]	tile=terrain grammar; direction=DIR	location optional
+steam	PE:6a70a6d9:02711000	adventure_movement_hold_itemst	0x8	0x8422b0	direct	climbing	Climb[ {item}][ ({direction}{media})]	item=whole item; direction=DIR; media=MEDIA	item and suffix independently optional
+steam	PE:6a70a6d9:02711000	adventure_movement_hold_itemst	0x10	0x7e1230	virtual+8	climbing	Climb[ {item}][ ({direction}{media})]	item=whole item; direction=DIR; media=MEDIA	item and suffix independently optional
+steam	PE:6a70a6d9:02711000	adventure_movement_hold_tilest	0x8	0x841bf0	direct	holding	Hold {tile}[ ({direction}[ from {origin_direction}]{media})]	tile=terrain grammar; direction/origin_direction=DIR; media=MEDIA	full suffix optional
+steam	PE:6a70a6d9:02711000	adventure_movement_hold_tilest	0x8	0x841bf0	direct	holding	Hang from {tile}[ ({direction}[ from {origin_direction}]{media})]	tile=terrain grammar; direction/origin_direction=DIR; media=MEDIA	full suffix optional
+steam	PE:6a70a6d9:02711000	adventure_movement_hold_tilest	0x10	0x7e1230	virtual+8	holding	Hold {tile}[ ({direction}[ from {origin_direction}]{media})]	tile=terrain grammar; direction/origin_direction=DIR; media=MEDIA	full suffix optional
+steam	PE:6a70a6d9:02711000	adventure_movement_hold_tilest	0x10	0x7e1230	virtual+8	holding	Hang from {tile}[ ({direction}[ from {origin_direction}]{media})]	tile=terrain grammar; direction/origin_direction=DIR; media=MEDIA	full suffix optional
+steam	PE:6a70a6d9:02711000	adventure_movement_item_interact_guidest	0x8	0x8405a0	direct	object-movement	Guide {item}[ to {direction}]	item=whole item or finite item; direction=DIR	location optional
+steam	PE:6a70a6d9:02711000	adventure_movement_item_interact_guidest	0x10	0x7e1230	virtual+8	object-movement	Guide {item}[ to {direction}]	item=whole item or finite item; direction=DIR	location optional
+steam	PE:6a70a6d9:02711000	adventure_movement_item_interact_pushst	0x8	0x840220	direct	object-movement	Push {item}[ to {direction}]	item=whole item or finite item; direction=DIR	location optional
+steam	PE:6a70a6d9:02711000	adventure_movement_item_interact_pushst	0x10	0x7e1230	virtual+8	object-movement	Push {item}[ to {direction}]	item=whole item or finite item; direction=DIR	location optional
+steam	PE:6a70a6d9:02711000	adventure_movement_item_interact_ridest	0x8	0x8403e0	direct	object-movement	Ride {item}[, push off toward {direction}]	item=whole item or finite item; direction=DIR	location optional
+steam	PE:6a70a6d9:02711000	adventure_movement_item_interact_ridest	0x10	0x7e1230	virtual+8	object-movement	Ride {item}[, push off toward {direction}]	item=whole item or finite item; direction=DIR	location optional
+steam	PE:6a70a6d9:02711000	adventure_movement_jumpst	0x8	0x8a46d0	direct	jump	Jump to the {direction}	direction=DIR	prefix flag nonzero
+steam	PE:6a70a6d9:02711000	adventure_movement_jumpst	0x8	0x8a46d0	direct	jump	{direction}	direction=DIR	prefix flag zero
+steam	PE:6a70a6d9:02711000	adventure_movement_jumpst	0x10	0x7e1230	virtual+8	jump	Jump to the {direction}	direction=DIR	prefix flag nonzero
+steam	PE:6a70a6d9:02711000	adventure_movement_jumpst	0x10	0x7e1230	virtual+8	jump	{direction}	direction=DIR	prefix flag zero
+steam	PE:6a70a6d9:02711000	adventure_movement_lead_animalst	0x8	0x842710	direct	pet	Lead {unit}[ ({direction})]	unit=whole unit; direction=DIR	location optional
+steam	PE:6a70a6d9:02711000	adventure_movement_lead_animalst	0x10	0x7e1230	virtual+8	pet	Lead {unit}[ ({direction})]	unit=whole unit; direction=DIR	location optional
+steam	PE:6a70a6d9:02711000	adventure_movement_mountst	0x8	0x841f00	direct	mount	Mount {unit}[ ({direction})]	unit=whole unit; direction=DIR	location optional
+steam	PE:6a70a6d9:02711000	adventure_movement_mountst	0x10	0x7e1230	virtual+8	mount	Mount {unit}[ ({direction})]	unit=whole unit; direction=DIR	location optional
+steam	PE:6a70a6d9:02711000	adventure_movement_movest	0x8	0x841440	direct	movement	Move to {target}[ ({direction}{media})]	target=terrain grammar or whole unit; direction=DIR; media=MEDIA	bit0=0; full suffix optional
+steam	PE:6a70a6d9:02711000	adventure_movement_movest	0x8	0x841440	direct	movement	Charge {target}[ ({direction}{media})]	target=terrain grammar or whole unit; direction=DIR; media=MEDIA	bit0=1; full suffix optional
+steam	PE:6a70a6d9:02711000	adventure_movement_movest	0x10	0x7e1230	virtual+8	movement	Move to {target}[ ({direction}{media})]	target=terrain grammar or whole unit; direction=DIR; media=MEDIA	bit0=0; full suffix optional
+steam	PE:6a70a6d9:02711000	adventure_movement_movest	0x10	0x7e1230	virtual+8	movement	Charge {target}[ ({direction}{media})]	target=terrain grammar or whole unit; direction=DIR; media=MEDIA	bit0=1; full suffix optional
+steam	PE:6a70a6d9:02711000	adventure_movement_pathst	0x8	0x842ab0	direct	path	Path to here[ (no climbing/jumping)][ ({depth} level[s] up)]	depth=positive decimal	up; s iff depth>1
+steam	PE:6a70a6d9:02711000	adventure_movement_pathst	0x8	0x842ab0	direct	path	Path to here[ (no climbing/jumping)][ ({depth} level[s] down)]	depth=positive decimal	down; s iff depth>1
+steam	PE:6a70a6d9:02711000	adventure_movement_pathst	0x8	0x842ab0	direct	path	Go below hatch[ (no climbing/jumping)][ ({depth} level[s] up)]	depth=positive decimal	up; s iff depth>1
+steam	PE:6a70a6d9:02711000	adventure_movement_pathst	0x8	0x842ab0	direct	path	Go below hatch[ (no climbing/jumping)][ ({depth} level[s] down)]	depth=positive decimal	down; s iff depth>1
+steam	PE:6a70a6d9:02711000	adventure_movement_pathst	0x10	0x7e1230	virtual+8	path	Path to here[ (no climbing/jumping)][ ({depth} level[s] up)]	depth=positive decimal	up; s iff depth>1
+steam	PE:6a70a6d9:02711000	adventure_movement_pathst	0x10	0x7e1230	virtual+8	path	Path to here[ (no climbing/jumping)][ ({depth} level[s] down)]	depth=positive decimal	down; s iff depth>1
+steam	PE:6a70a6d9:02711000	adventure_movement_pathst	0x10	0x7e1230	virtual+8	path	Go below hatch[ (no climbing/jumping)][ ({depth} level[s] up)]	depth=positive decimal	up; s iff depth>1
+steam	PE:6a70a6d9:02711000	adventure_movement_pathst	0x10	0x7e1230	virtual+8	path	Go below hatch[ (no climbing/jumping)][ ({depth} level[s] down)]	depth=positive decimal	down; s iff depth>1
+steam	PE:6a70a6d9:02711000	adventure_movement_release_hold_itemst	0x8	0x842940	direct	climbing	Climb down[ from {item}]	item=whole item	player held-item id lookup
+steam	PE:6a70a6d9:02711000	adventure_movement_release_hold_itemst	0x10	0x7e1230	virtual+8	climbing	Climb down[ from {item}]	item=whole item	player held-item id lookup
+steam	PE:6a70a6d9:02711000	adventure_movement_release_hold_tilest	0x8	0x8421b0	direct	holding	Release hold on {tile}	tile=terrain grammar	no direction suffix
+steam	PE:6a70a6d9:02711000	adventure_movement_release_hold_tilest	0x10	0x7e1230	virtual+8	holding	Release hold on {tile}	tile=terrain grammar	no direction suffix
+steam	PE:6a70a6d9:02711000	adventure_movement_shoot_creaturest	0x8	0x8a4890	direct	shoot	Quickly shoot {unit}	unit=whole unit	quick; missing unit empty
+steam	PE:6a70a6d9:02711000	adventure_movement_shoot_creaturest	0x8	0x8a4890	direct	shoot	Aim carefully and shoot {unit}	unit=whole unit	careful; no direction/range/weapon suffix
+steam	PE:6a70a6d9:02711000	adventure_movement_shoot_creaturest	0x10	0x7e1230	virtual+8	shoot	Quickly shoot {unit}	unit=whole unit	quick; missing unit empty
+steam	PE:6a70a6d9:02711000	adventure_movement_shoot_creaturest	0x10	0x7e1230	virtual+8	shoot	Aim carefully and shoot {unit}	unit=whole unit	careful; no direction/range/weapon suffix
+steam	PE:6a70a6d9:02711000	adventure_movement_shoot_tilest	0x8	0x8a5540	direct	shoot	Shoot {tile}	tile=terrain grammar	prefix flag nonzero
+steam	PE:6a70a6d9:02711000	adventure_movement_shoot_tilest	0x8	0x8a5540	direct	shoot	{tile}	tile=terrain grammar	prefix flag zero
+steam	PE:6a70a6d9:02711000	adventure_movement_shoot_tilest	0x10	0x7e1230	virtual+8	shoot	Shoot {tile}	tile=terrain grammar	prefix flag nonzero
+steam	PE:6a70a6d9:02711000	adventure_movement_shoot_tilest	0x10	0x7e1230	virtual+8	shoot	{tile}	tile=terrain grammar	prefix flag zero
+steam	PE:6a70a6d9:02711000	adventure_movement_stop_lead_animalst	0x8	0x842860	direct	pet	Stop leading {unit}	unit=whole unit	no location
+steam	PE:6a70a6d9:02711000	adventure_movement_stop_lead_animalst	0x10	0x7e1230	virtual+8	pet	Stop leading {unit}	unit=whole unit	no location
+steam	PE:6a70a6d9:02711000	adventure_movement_throw_item_at_creaturest	0x8	0x8a5e70	direct	throw	Quickly throw at {unit}	unit=whole unit	quick; missing unit empty
+steam	PE:6a70a6d9:02711000	adventure_movement_throw_item_at_creaturest	0x8	0x8a5e70	direct	throw	Aim carefully and throw at {unit}	unit=whole unit	careful; no direction/range/weapon suffix
+steam	PE:6a70a6d9:02711000	adventure_movement_throw_item_at_creaturest	0x10	0x7e1230	virtual+8	throw	Quickly throw at {unit}	unit=whole unit	quick; missing unit empty
+steam	PE:6a70a6d9:02711000	adventure_movement_throw_item_at_creaturest	0x10	0x7e1230	virtual+8	throw	Aim carefully and throw at {unit}	unit=whole unit	careful; no direction/range/weapon suffix
+steam	PE:6a70a6d9:02711000	adventure_movement_throw_item_at_tilest	0x8	0x8a64d0	direct	throw	Throw at {tile}	tile=terrain grammar	prefix flag nonzero
+steam	PE:6a70a6d9:02711000	adventure_movement_throw_item_at_tilest	0x8	0x8a64d0	direct	throw	{tile}	tile=terrain grammar	prefix flag zero
+steam	PE:6a70a6d9:02711000	adventure_movement_throw_item_at_tilest	0x10	0x7e1230	virtual+8	throw	Throw at {tile}	tile=terrain grammar	prefix flag nonzero
+steam	PE:6a70a6d9:02711000	adventure_movement_throw_item_at_tilest	0x10	0x7e1230	virtual+8	throw	{tile}	tile=terrain grammar	prefix flag zero
+steam	PE:6a70a6d9:02711000	adventure_option_assume_identityst	0x8	0x6b79b0	direct	identity	Assume an identity		fixed
+steam	PE:6a70a6d9:02711000	adventure_option_assume_identityst	0x10	0x7e1230	virtual+8	identity	Assume an identity		fixed
+steam	PE:6a70a6d9:02711000	adventure_option_drop_itemst	0x8	0x894180	direct	inventory	{item}	item=whole item designation	shared item caption mode1
+steam	PE:6a70a6d9:02711000	adventure_option_drop_itemst	0x10	0x894370	direct	item-detail	Drop {item}	item=whole item	no location
+steam	PE:6a70a6d9:02711000	adventure_option_eat_drink_itemst	0x8	0x894180	direct	inventory	{item}	item=whole item designation	shared item caption mode1
+steam	PE:6a70a6d9:02711000	adventure_option_eat_drink_itemst	0x10	0x894820	direct	item-detail	Eat {item}	item=whole item	virtual+2b0=0
+steam	PE:6a70a6d9:02711000	adventure_option_eat_drink_itemst	0x10	0x894820	direct	item-detail	Drink {item}	item=whole item	virtual+2b0!=0
+steam	PE:6a70a6d9:02711000	adventure_option_eat_item_contaminantst	0x8	0x839ca0	direct	deposit-ingest	Eat {deposit} ({item})	deposit=quantity/material grammar; item=whole item	solid
+steam	PE:6a70a6d9:02711000	adventure_option_eat_item_contaminantst	0x8	0x839ca0	direct	deposit-ingest	Drink {deposit} ({item})	deposit=quantity/material grammar; item=whole item	phase1 or phase0/type73
+steam	PE:6a70a6d9:02711000	adventure_option_eat_item_contaminantst	0x10	0x7e1230	virtual+8	deposit-ingest	Eat {deposit} ({item})	deposit=quantity/material grammar; item=whole item	solid
+steam	PE:6a70a6d9:02711000	adventure_option_eat_item_contaminantst	0x10	0x7e1230	virtual+8	deposit-ingest	Drink {deposit} ({item})	deposit=quantity/material grammar; item=whole item	phase1 or phase0/type73
+steam	PE:6a70a6d9:02711000	adventure_option_eat_unit_contaminantst	0x8	0x839850	direct	deposit-ingest	Eat {deposit} ({body_part})	deposit=quantity/material grammar; body_part=RAW singular/plural	solid
+steam	PE:6a70a6d9:02711000	adventure_option_eat_unit_contaminantst	0x8	0x839850	direct	deposit-ingest	Drink {deposit} ({body_part})	deposit=quantity/material grammar; body_part=RAW singular/plural	phase1 or phase0/type73
+steam	PE:6a70a6d9:02711000	adventure_option_eat_unit_contaminantst	0x10	0x7e1230	virtual+8	deposit-ingest	Eat {deposit} ({body_part})	deposit=quantity/material grammar; body_part=RAW singular/plural	solid
+steam	PE:6a70a6d9:02711000	adventure_option_eat_unit_contaminantst	0x10	0x7e1230	virtual+8	deposit-ingest	Drink {deposit} ({body_part})	deposit=quantity/material grammar; body_part=RAW singular/plural	phase1 or phase0/type73
+steam	PE:6a70a6d9:02711000	adventure_option_interact_with_itemst	0x8	0x894180	direct	inventory	{item}	item=whole item designation	shared item caption mode1
+steam	PE:6a70a6d9:02711000	adventure_option_interact_with_itemst	0x10	0x7e1230	virtual+8	inventory	{item}	item=whole item designation	shared item caption mode1
+steam	PE:6a70a6d9:02711000	adventure_option_inventory_itemst	0x8	0x894180	direct	inventory	{item}	item=whole item designation	shared item caption mode1
+steam	PE:6a70a6d9:02711000	adventure_option_inventory_itemst	0x10	0x7e1230	virtual+8	inventory	{item}	item=whole item designation	shared item caption mode1
+steam	PE:6a70a6d9:02711000	adventure_option_put_itemst	0x8	0x894180	direct	inventory	{item}	item=whole item designation	shared item caption mode1
+steam	PE:6a70a6d9:02711000	adventure_option_put_itemst	0x10	0x894730	direct	item-detail	Put or place {item}	item=whole item	no location
+steam	PE:6a70a6d9:02711000	adventure_option_remove_itemst	0x8	0x894180	direct	inventory	{item}	item=whole item designation	shared item caption mode1
+steam	PE:6a70a6d9:02711000	adventure_option_remove_itemst	0x10	0x894640	direct	item-detail	Remove {item}	item=whole item	no location
+steam	PE:6a70a6d9:02711000	adventure_option_start_shoutingst	0x8	0x6b7990	direct	conversation	Shout out to everybody		fixed
+steam	PE:6a70a6d9:02711000	adventure_option_start_shoutingst	0x10	0x7e1230	virtual+8	conversation	Shout out to everybody		fixed
+steam	PE:6a70a6d9:02711000	adventure_option_talk_existing_conversationst	0x8	0x6b7080	direct	conversation	Continue shouting		conversation flag bit1
+steam	PE:6a70a6d9:02711000	adventure_option_talk_existing_conversationst	0x8	0x6b7080	direct	conversation	Continue conversation with {participants}	participants=unit/HF name list	ignore player; join comma and final and; unresolved ids skipped
+steam	PE:6a70a6d9:02711000	adventure_option_talk_existing_conversationst	0x10	0x7e1230	virtual+8	conversation	Continue shouting		conversation flag bit1
+steam	PE:6a70a6d9:02711000	adventure_option_talk_existing_conversationst	0x10	0x7e1230	virtual+8	conversation	Continue conversation with {participants}	participants=unit/HF name list	ignore player; join comma and final and; unresolved ids skipped
+steam	PE:6a70a6d9:02711000	adventure_option_talk_new_conversationst	0x8	0x6b75a0	direct	conversation	Start new conversation with {target}	target=unit/HF name	resolved name
+steam	PE:6a70a6d9:02711000	adventure_option_talk_new_conversationst	0x8	0x6b75a0	direct	conversation	Start new conversation with the Void		missing unit/HF/name
+steam	PE:6a70a6d9:02711000	adventure_option_talk_new_conversationst	0x10	0x7e1230	virtual+8	conversation	Start new conversation with {target}	target=unit/HF name	resolved name
+steam	PE:6a70a6d9:02711000	adventure_option_talk_new_conversationst	0x10	0x7e1230	virtual+8	conversation	Start new conversation with the Void		missing unit/HF/name
+steam	PE:6a70a6d9:02711000	adventure_option_throw_itemst	0x8	0x894180	direct	inventory	{item}	item=whole item designation	shared item caption mode1
+steam	PE:6a70a6d9:02711000	adventure_option_throw_itemst	0x10	0x894460	direct	item-detail	Throw {item}	item=whole item	no location
+steam	PE:6a70a6d9:02711000	adventure_option_view_contaminantst	0x8	0x8392a0	direct	deposit-view	{deposit} ({body_part})	deposit=quantity/material grammar; body_part=RAW singular/plural	missing deposit or owner empty
+steam	PE:6a70a6d9:02711000	adventure_option_view_contaminantst	0x10	0x7e1230	virtual+8	deposit-view	{deposit} ({body_part})	deposit=quantity/material grammar; body_part=RAW singular/plural	missing deposit or owner empty
+steam	PE:6a70a6d9:02711000	adventure_option_view_event_detailst	0x8	0x894240	direct	engraving	engraving		primary caption
+steam	PE:6a70a6d9:02711000	adventure_option_view_event_detailst	0x10	0x894260	direct	engraving-detail	View engraving		fixed
+steam	PE:6a70a6d9:02711000	adventure_option_view_itemst	0x8	0x894180	direct	inventory	{item}	item=whole item designation	shared item caption mode1
+steam	PE:6a70a6d9:02711000	adventure_option_view_itemst	0x10	0x894280	direct	item-detail	View {item}	item=whole item	no location
+steam	PE:6a70a6d9:02711000	adventure_option_view_unitst	0x8	0x6b7320	direct	view	View yourself		player id
+steam	PE:6a70a6d9:02711000	adventure_option_view_unitst	0x8	0x6b7320	direct	view	View {target}	target=unit/HF name	resolved name
+steam	PE:6a70a6d9:02711000	adventure_option_view_unitst	0x8	0x6b7320	direct	view	View the Void		missing unit/HF/name
+steam	PE:6a70a6d9:02711000	adventure_option_view_unitst	0x10	0x7e1230	virtual+8	view	View yourself		player id
+steam	PE:6a70a6d9:02711000	adventure_option_view_unitst	0x10	0x7e1230	virtual+8	view	View {target}	target=unit/HF name	resolved name
+steam	PE:6a70a6d9:02711000	adventure_option_view_unitst	0x10	0x7e1230	virtual+8	view	View the Void		missing unit/HF/name
+steam	PE:6a70a6d9:02711000	adventure_option_wear_itemst	0x8	0x894180	direct	inventory	{item}	item=whole item designation	shared item caption mode1
+steam	PE:6a70a6d9:02711000	adventure_option_wear_itemst	0x10	0x894550	direct	item-detail	Wear {item}	item=whole item	no location
+steam	PE:6a70a6d9:02711000	adventure_optionst	0x8	0x72250	direct	empty-base			empty primary caption
+steam	PE:6a70a6d9:02711000	adventure_optionst	0x10	0x7e1230	virtual+8	empty-base			empty primary caption
+classic	PE:6a70b91c:0270a000	adventure_environment_ingest_from_containerst	0x8	0x836050	direct	ingest	Eat {item} from {container}[ ({direction})]	item/container=whole item; direction=DIR	consumed virtual+2b0=0
+classic	PE:6a70b91c:0270a000	adventure_environment_ingest_from_containerst	0x8	0x836050	direct	ingest	Drink {item} from {container}[ ({direction})]	item/container=whole item; direction=DIR	consumed virtual+2b0!=0
+classic	PE:6a70b91c:0270a000	adventure_environment_ingest_from_containerst	0x10	0x7deab0	virtual+8	ingest	Eat {item} from {container}[ ({direction})]	item/container=whole item; direction=DIR	consumed virtual+2b0=0
+classic	PE:6a70b91c:0270a000	adventure_environment_ingest_from_containerst	0x10	0x7deab0	virtual+8	ingest	Drink {item} from {container}[ ({direction})]	item/container=whole item; direction=DIR	consumed virtual+2b0!=0
+classic	PE:6a70b91c:0270a000	adventure_environment_ingest_materialst	0x8	0x836270	direct	ingest	Eat {material}[ ({direction})]	material=RAW/identity/stagnant/salt/adjectives; direction=DIR	phase selects eat
+classic	PE:6a70b91c:0270a000	adventure_environment_ingest_materialst	0x8	0x836270	direct	ingest	Drink {material}[ ({direction})]	material=RAW/identity/stagnant/salt/adjectives; direction=DIR	phase selects drink
+classic	PE:6a70b91c:0270a000	adventure_environment_ingest_materialst	0x10	0x7deab0	virtual+8	ingest	Eat {material}[ ({direction})]	material=RAW/identity/stagnant/salt/adjectives; direction=DIR	phase selects eat
+classic	PE:6a70b91c:0270a000	adventure_environment_ingest_materialst	0x10	0x7deab0	virtual+8	ingest	Drink {material}[ ({direction})]	material=RAW/identity/stagnant/salt/adjectives; direction=DIR	phase selects drink
+classic	PE:6a70b91c:0270a000	adventure_environment_pick_up_building_item_contentsst	0x8	0x891430	direct	get	Get {item} from {container} ({direction})	item=option+20 whole item mode-1; container=option+28 whole item mode-1; direction=DIR	shared container/building item contents; item nonnull; option+8=0 and container nonnull; known item origin differs from player
+classic	PE:6a70b91c:0270a000	adventure_environment_pick_up_building_item_contentsst	0x8	0x891430	direct	get	Get {item} from {container}	item=option+20 whole item mode-1; container=option+28 whole item mode-1	shared container/building item contents; item nonnull; option+8=0 and container nonnull; unknown item origin or origin equals player
+classic	PE:6a70b91c:0270a000	adventure_environment_pick_up_building_item_contentsst	0x8	0x891430	direct	get	Get {item} ({direction})	item=option+20 whole item mode-1; direction=DIR	item nonnull; option+8!=0 or container null; known item origin differs from player; complete source clause omitted
+classic	PE:6a70b91c:0270a000	adventure_environment_pick_up_building_item_contentsst	0x8	0x891430	direct	get	Get {item}	item=option+20 whole item mode-1	item nonnull; option+8!=0 or container null; unknown item origin or origin equals player; complete source clause omitted
+classic	PE:6a70b91c:0270a000	adventure_environment_pick_up_building_item_contentsst	0x8	0x891430	direct	get-empty			option+20 item null; no Get/source/location text is appended
+classic	PE:6a70b91c:0270a000	adventure_environment_pick_up_building_item_contentsst	0x10	0x7deab0	virtual+8	get	Get {item} from {container} ({direction})	item=option+20 whole item mode-1; container=option+28 whole item mode-1; direction=DIR	shared container/building item contents; item nonnull; option+8=0 and container nonnull; known item origin differs from player
+classic	PE:6a70b91c:0270a000	adventure_environment_pick_up_building_item_contentsst	0x10	0x7deab0	virtual+8	get	Get {item} from {container}	item=option+20 whole item mode-1; container=option+28 whole item mode-1	shared container/building item contents; item nonnull; option+8=0 and container nonnull; unknown item origin or origin equals player
+classic	PE:6a70b91c:0270a000	adventure_environment_pick_up_building_item_contentsst	0x10	0x7deab0	virtual+8	get	Get {item} ({direction})	item=option+20 whole item mode-1; direction=DIR	item nonnull; option+8!=0 or container null; known item origin differs from player; complete source clause omitted
+classic	PE:6a70b91c:0270a000	adventure_environment_pick_up_building_item_contentsst	0x10	0x7deab0	virtual+8	get	Get {item}	item=option+20 whole item mode-1	item nonnull; option+8!=0 or container null; unknown item origin or origin equals player; complete source clause omitted
+classic	PE:6a70b91c:0270a000	adventure_environment_pick_up_building_item_contentsst	0x10	0x7deab0	virtual+8	get-empty			option+20 item null; no Get/source/location text is appended
+classic	PE:6a70b91c:0270a000	adventure_environment_pick_up_building_itemst	0x8	0x8910f0	direct	get	Get {item} from {building} ({direction})	item=option+20 whole item mode-1; building=option+28 virtual+188 result; direction=DIR	item nonnull; option+8=0 and building nonnull; known item origin differs from player; no building fallback
+classic	PE:6a70b91c:0270a000	adventure_environment_pick_up_building_itemst	0x8	0x8910f0	direct	get	Get {item} from {building}	item=option+20 whole item mode-1; building=option+28 virtual+188 result	item nonnull; option+8=0 and building nonnull; unknown item origin or origin equals player; no building fallback
+classic	PE:6a70b91c:0270a000	adventure_environment_pick_up_building_itemst	0x8	0x8910f0	direct	get	Get {item} ({direction})	item=option+20 whole item mode-1; direction=DIR	item nonnull; option+8!=0 or building null; known item origin differs from player; complete source clause omitted
+classic	PE:6a70b91c:0270a000	adventure_environment_pick_up_building_itemst	0x8	0x8910f0	direct	get	Get {item}	item=option+20 whole item mode-1	item nonnull; option+8!=0 or building null; unknown item origin or origin equals player; complete source clause omitted
+classic	PE:6a70b91c:0270a000	adventure_environment_pick_up_building_itemst	0x8	0x8910f0	direct	get-empty			option+20 item null; no Get/source/location text is appended
+classic	PE:6a70b91c:0270a000	adventure_environment_pick_up_building_itemst	0x10	0x7deab0	virtual+8	get	Get {item} from {building} ({direction})	item=option+20 whole item mode-1; building=option+28 virtual+188 result; direction=DIR	item nonnull; option+8=0 and building nonnull; known item origin differs from player; no building fallback
+classic	PE:6a70b91c:0270a000	adventure_environment_pick_up_building_itemst	0x10	0x7deab0	virtual+8	get	Get {item} from {building}	item=option+20 whole item mode-1; building=option+28 virtual+188 result	item nonnull; option+8=0 and building nonnull; unknown item origin or origin equals player; no building fallback
+classic	PE:6a70b91c:0270a000	adventure_environment_pick_up_building_itemst	0x10	0x7deab0	virtual+8	get	Get {item} ({direction})	item=option+20 whole item mode-1; direction=DIR	item nonnull; option+8!=0 or building null; known item origin differs from player; complete source clause omitted
+classic	PE:6a70b91c:0270a000	adventure_environment_pick_up_building_itemst	0x10	0x7deab0	virtual+8	get	Get {item}	item=option+20 whole item mode-1	item nonnull; option+8!=0 or building null; unknown item origin or origin equals player; complete source clause omitted
+classic	PE:6a70b91c:0270a000	adventure_environment_pick_up_building_itemst	0x10	0x7deab0	virtual+8	get-empty			option+20 item null; no Get/source/location text is appended
+classic	PE:6a70b91c:0270a000	adventure_environment_pick_up_environmentst	0x8	0x890e70	direct	get	Get {item} ({direction})	item=option+20 whole item mode-1; direction=DIR	shared environment/ground item; item nonnull; known item origin differs from player; no source clause
+classic	PE:6a70b91c:0270a000	adventure_environment_pick_up_environmentst	0x8	0x890e70	direct	get	Get {item}	item=option+20 whole item mode-1	shared environment/ground item; item nonnull; unknown item origin or origin equals player; no source clause
+classic	PE:6a70b91c:0270a000	adventure_environment_pick_up_environmentst	0x8	0x890e70	direct	get-empty			option+20 item null; no Get/location text is appended
+classic	PE:6a70b91c:0270a000	adventure_environment_pick_up_environmentst	0x10	0x7deab0	virtual+8	get	Get {item} ({direction})	item=option+20 whole item mode-1; direction=DIR	shared environment/ground item; item nonnull; known item origin differs from player; no source clause
+classic	PE:6a70b91c:0270a000	adventure_environment_pick_up_environmentst	0x10	0x7deab0	virtual+8	get	Get {item}	item=option+20 whole item mode-1	shared environment/ground item; item nonnull; unknown item origin or origin equals player; no source clause
+classic	PE:6a70b91c:0270a000	adventure_environment_pick_up_environmentst	0x10	0x7deab0	virtual+8	get-empty			option+20 item null; no Get/location text is appended
+classic	PE:6a70b91c:0270a000	adventure_environment_pick_up_ground_itemst	0x8	0x890e70	direct	get	Get {item} ({direction})	item=option+20 whole item mode-1; direction=DIR	shared environment/ground item; item nonnull; known item origin differs from player; no source clause
+classic	PE:6a70b91c:0270a000	adventure_environment_pick_up_ground_itemst	0x8	0x890e70	direct	get	Get {item}	item=option+20 whole item mode-1	shared environment/ground item; item nonnull; unknown item origin or origin equals player; no source clause
+classic	PE:6a70b91c:0270a000	adventure_environment_pick_up_ground_itemst	0x8	0x890e70	direct	get-empty			option+20 item null; no Get/location text is appended
+classic	PE:6a70b91c:0270a000	adventure_environment_pick_up_ground_itemst	0x10	0x7deab0	virtual+8	get	Get {item} ({direction})	item=option+20 whole item mode-1; direction=DIR	shared environment/ground item; item nonnull; known item origin differs from player; no source clause
+classic	PE:6a70b91c:0270a000	adventure_environment_pick_up_ground_itemst	0x10	0x7deab0	virtual+8	get	Get {item}	item=option+20 whole item mode-1	shared environment/ground item; item nonnull; unknown item origin or origin equals player; no source clause
+classic	PE:6a70b91c:0270a000	adventure_environment_pick_up_ground_itemst	0x10	0x7deab0	virtual+8	get-empty			option+20 item null; no Get/location text is appended
+classic	PE:6a70b91c:0270a000	adventure_environment_pick_vegetationst	0x8	0x891770	direct	vegetation	Pick {item}[ ({direction})]	item=whole growth/item; direction=DIR	type!=0x5b
+classic	PE:6a70b91c:0270a000	adventure_environment_pick_vegetationst	0x8	0x891770	direct	vegetation	Pull {item}[ ({direction})]	item=whole growth/item; direction=DIR	type0x5b
+classic	PE:6a70b91c:0270a000	adventure_environment_pick_vegetationst	0x10	0x7deab0	virtual+8	vegetation	Pick {item}[ ({direction})]	item=whole growth/item; direction=DIR	type!=0x5b
+classic	PE:6a70b91c:0270a000	adventure_environment_pick_vegetationst	0x10	0x7deab0	virtual+8	vegetation	Pull {item}[ ({direction})]	item=whole growth/item; direction=DIR	type0x5b
+classic	PE:6a70b91c:0270a000	adventure_environment_pickup_chop_treest	0x8	0x837c50	direct	fell	Fell {tree}[ ({direction})]	tree=RAW plant singular or tree; direction=DIR	location optional
+classic	PE:6a70b91c:0270a000	adventure_environment_pickup_chop_treest	0x10	0x7deab0	virtual+8	fell	Fell {tree}[ ({direction})]	tree=RAW plant singular or tree; direction=DIR	location optional
+classic	PE:6a70b91c:0270a000	adventure_environment_pickup_ignite_vegst	0x8	0x837960	direct	ignite	Ignite {tile} ({direction})	tile=terrain grammar; direction=DIR	known origin
+classic	PE:6a70b91c:0270a000	adventure_environment_pickup_ignite_vegst	0x8	0x837960	direct	ignite	Ignite 		origin sentinel suppresses name and direction
+classic	PE:6a70b91c:0270a000	adventure_environment_pickup_ignite_vegst	0x10	0x7deab0	virtual+8	ignite	Ignite {tile} ({direction})	tile=terrain grammar; direction=DIR	known origin
+classic	PE:6a70b91c:0270a000	adventure_environment_pickup_ignite_vegst	0x10	0x7deab0	virtual+8	ignite	Ignite 		origin sentinel suppresses name and direction
+classic	PE:6a70b91c:0270a000	adventure_environment_pickup_make_campfirest	0x8	0x837bb0	direct	campfire	Make Campfire[ ({direction})]	direction=DIR	location optional
+classic	PE:6a70b91c:0270a000	adventure_environment_pickup_make_campfirest	0x10	0x7deab0	virtual+8	campfire	Make Campfire[ ({direction})]	direction=DIR	location optional
+classic	PE:6a70b91c:0270a000	adventure_environment_pickup_vermin_eventst	0x8	0x8376c0	direct	vermin	A {vermin} ({direction})	vermin=RAW singular; direction=DIR	known origin
+classic	PE:6a70b91c:0270a000	adventure_environment_pickup_vermin_eventst	0x8	0x8376c0	direct	vermin	A  ({direction})	direction=DIR	invalid RAW; known origin
+classic	PE:6a70b91c:0270a000	adventure_environment_pickup_vermin_eventst	0x8	0x8376c0	direct	vermin	A 		origin sentinel suppresses name and direction
+classic	PE:6a70b91c:0270a000	adventure_environment_pickup_vermin_eventst	0x10	0x7deab0	virtual+8	vermin	A {vermin} ({direction})	vermin=RAW singular; direction=DIR	known origin
+classic	PE:6a70b91c:0270a000	adventure_environment_pickup_vermin_eventst	0x10	0x7deab0	virtual+8	vermin	A  ({direction})	direction=DIR	invalid RAW; known origin
+classic	PE:6a70b91c:0270a000	adventure_environment_pickup_vermin_eventst	0x10	0x7deab0	virtual+8	vermin	A 		origin sentinel suppresses name and direction
+classic	PE:6a70b91c:0270a000	adventure_environment_place_in_bld_containerst	0x8	0x835870	direct	placement	Put in {building}[ ({direction})]	building=virtual+188 name; direction=DIR	container building
+classic	PE:6a70b91c:0270a000	adventure_environment_place_in_bld_containerst	0x8	0x835870	direct	placement	Put on {building}[ ({direction})]	building=virtual+188 name; direction=DIR	building surface
+classic	PE:6a70b91c:0270a000	adventure_environment_place_in_bld_containerst	0x8	0x835870	direct	placement	Set on {building}[ ({direction})]	building=virtual+188 name; direction=DIR	set-on surface
+classic	PE:6a70b91c:0270a000	adventure_environment_place_in_bld_containerst	0x10	0x7deab0	virtual+8	placement	Put in {building}[ ({direction})]	building=virtual+188 name; direction=DIR	container building
+classic	PE:6a70b91c:0270a000	adventure_environment_place_in_bld_containerst	0x10	0x7deab0	virtual+8	placement	Put on {building}[ ({direction})]	building=virtual+188 name; direction=DIR	building surface
+classic	PE:6a70b91c:0270a000	adventure_environment_place_in_bld_containerst	0x10	0x7deab0	virtual+8	placement	Set on {building}[ ({direction})]	building=virtual+188 name; direction=DIR	set-on surface
+classic	PE:6a70b91c:0270a000	adventure_environment_place_in_it_containerst	0x8	0x835a20	direct	placement	Put in {item}[ ({direction})]	item=whole item; direction=DIR	location optional
+classic	PE:6a70b91c:0270a000	adventure_environment_place_in_it_containerst	0x10	0x7deab0	virtual+8	placement	Put in {item}[ ({direction})]	item=whole item; direction=DIR	location optional
+classic	PE:6a70b91c:0270a000	adventure_environment_place_on_pack_animalst	0x8	0x835720	direct	placement	Put on {unit}[ ({direction})]	unit=whole unit designation; direction=DIR	location optional
+classic	PE:6a70b91c:0270a000	adventure_environment_place_on_pack_animalst	0x10	0x7deab0	virtual+8	placement	Put on {unit}[ ({direction})]	unit=whole unit designation; direction=DIR	location optional
+classic	PE:6a70b91c:0270a000	adventure_environment_take_from_pack_animalst	0x8	0x890b40	direct	get	Get {item} from {unit} ({direction})	item=option+28 whole item mode-1; unit=option+20 whole 1330c30 result; direction=DIR	item nonnull; option+8=0 and unit nonnull; known item origin differs from player
+classic	PE:6a70b91c:0270a000	adventure_environment_take_from_pack_animalst	0x8	0x890b40	direct	get	Get {item} from {unit}	item=option+28 whole item mode-1; unit=option+20 whole 1330c30 result	item nonnull; option+8=0 and unit nonnull; unknown item origin or origin equals player
+classic	PE:6a70b91c:0270a000	adventure_environment_take_from_pack_animalst	0x8	0x890b40	direct	get	Get {item} ({direction})	item=option+28 whole item mode-1; direction=DIR	item nonnull; option+8!=0 or unit null; known item origin differs from player; complete source clause omitted
+classic	PE:6a70b91c:0270a000	adventure_environment_take_from_pack_animalst	0x8	0x890b40	direct	get	Get {item}	item=option+28 whole item mode-1	item nonnull; option+8!=0 or unit null; unknown item origin or origin equals player; complete source clause omitted
+classic	PE:6a70b91c:0270a000	adventure_environment_take_from_pack_animalst	0x8	0x890b40	direct	get-empty			option+28 item null; no Get/source/location text is appended
+classic	PE:6a70b91c:0270a000	adventure_environment_take_from_pack_animalst	0x10	0x7deab0	virtual+8	get	Get {item} from {unit} ({direction})	item=option+28 whole item mode-1; unit=option+20 whole 1330c30 result; direction=DIR	item nonnull; option+8=0 and unit nonnull; known item origin differs from player
+classic	PE:6a70b91c:0270a000	adventure_environment_take_from_pack_animalst	0x10	0x7deab0	virtual+8	get	Get {item} from {unit}	item=option+28 whole item mode-1; unit=option+20 whole 1330c30 result	item nonnull; option+8=0 and unit nonnull; unknown item origin or origin equals player
+classic	PE:6a70b91c:0270a000	adventure_environment_take_from_pack_animalst	0x10	0x7deab0	virtual+8	get	Get {item} ({direction})	item=option+28 whole item mode-1; direction=DIR	item nonnull; option+8!=0 or unit null; known item origin differs from player; complete source clause omitted
+classic	PE:6a70b91c:0270a000	adventure_environment_take_from_pack_animalst	0x10	0x7deab0	virtual+8	get	Get {item}	item=option+28 whole item mode-1	item nonnull; option+8!=0 or unit null; unknown item origin or origin equals player; complete source clause omitted
+classic	PE:6a70b91c:0270a000	adventure_environment_take_from_pack_animalst	0x10	0x7deab0	virtual+8	get-empty			option+28 item null; no Get/source/location text is appended
+classic	PE:6a70b91c:0270a000	adventure_environment_take_item_from_containerst	0x8	0x891430	direct	get	Get {item} from {container} ({direction})	item=option+20 whole item mode-1; container=option+28 whole item mode-1; direction=DIR	shared container/building item contents; item nonnull; option+8=0 and container nonnull; known item origin differs from player
+classic	PE:6a70b91c:0270a000	adventure_environment_take_item_from_containerst	0x8	0x891430	direct	get	Get {item} from {container}	item=option+20 whole item mode-1; container=option+28 whole item mode-1	shared container/building item contents; item nonnull; option+8=0 and container nonnull; unknown item origin or origin equals player
+classic	PE:6a70b91c:0270a000	adventure_environment_take_item_from_containerst	0x8	0x891430	direct	get	Get {item} ({direction})	item=option+20 whole item mode-1; direction=DIR	item nonnull; option+8!=0 or container null; known item origin differs from player; complete source clause omitted
+classic	PE:6a70b91c:0270a000	adventure_environment_take_item_from_containerst	0x8	0x891430	direct	get	Get {item}	item=option+20 whole item mode-1	item nonnull; option+8!=0 or container null; unknown item origin or origin equals player; complete source clause omitted
+classic	PE:6a70b91c:0270a000	adventure_environment_take_item_from_containerst	0x8	0x891430	direct	get-empty			option+20 item null; no Get/source/location text is appended
+classic	PE:6a70b91c:0270a000	adventure_environment_take_item_from_containerst	0x10	0x7deab0	virtual+8	get	Get {item} from {container} ({direction})	item=option+20 whole item mode-1; container=option+28 whole item mode-1; direction=DIR	shared container/building item contents; item nonnull; option+8=0 and container nonnull; known item origin differs from player
+classic	PE:6a70b91c:0270a000	adventure_environment_take_item_from_containerst	0x10	0x7deab0	virtual+8	get	Get {item} from {container}	item=option+20 whole item mode-1; container=option+28 whole item mode-1	shared container/building item contents; item nonnull; option+8=0 and container nonnull; unknown item origin or origin equals player
+classic	PE:6a70b91c:0270a000	adventure_environment_take_item_from_containerst	0x10	0x7deab0	virtual+8	get	Get {item} ({direction})	item=option+20 whole item mode-1; direction=DIR	item nonnull; option+8!=0 or container null; known item origin differs from player; complete source clause omitted
+classic	PE:6a70b91c:0270a000	adventure_environment_take_item_from_containerst	0x10	0x7deab0	virtual+8	get	Get {item}	item=option+20 whole item mode-1	item nonnull; option+8!=0 or container null; unknown item origin or origin equals player; complete source clause omitted
+classic	PE:6a70b91c:0270a000	adventure_environment_take_item_from_containerst	0x10	0x7deab0	virtual+8	get-empty			option+20 item null; no Get/source/location text is appended
+classic	PE:6a70b91c:0270a000	adventure_environment_unit_suck_bloodst	0x8	0x835b70	direct	material-suck	Suck {unit}'s {material}	unit=whole unit; material=RAW/state/identity	no location
+classic	PE:6a70b91c:0270a000	adventure_environment_unit_suck_bloodst	0x10	0x7deab0	virtual+8	material-suck	Suck {unit}'s {material}	unit=whole unit; material=RAW/state/identity	no location
+classic	PE:6a70b91c:0270a000	adventure_item_interact_fill_from_containerst	0x8	0x832ae0	direct	item-fill	Fill {item} from {container}[ ({direction})]	item/container=whole item designation; direction=27-output DIR	location optional
+classic	PE:6a70b91c:0270a000	adventure_item_interact_fill_from_containerst	0x10	0x7deab0	virtual+8	item-fill	Fill {item} from {container}[ ({direction})]	item/container=whole item designation; direction=27-output DIR	location optional
+classic	PE:6a70b91c:0270a000	adventure_item_interact_fill_with_materialst	0x8	0x832ce0	direct	material-fill	Fill {item} with {material}[ ({direction})]	item=whole item; material=RAW/identity/stagnant/salt/adjectives; direction=DIR	location optional
+classic	PE:6a70b91c:0270a000	adventure_item_interact_fill_with_materialst	0x10	0x7deab0	virtual+8	material-fill	Fill {item} with {material}[ ({direction})]	item=whole item; material=RAW/identity/stagnant/salt/adjectives; direction=DIR	location optional
+classic	PE:6a70b91c:0270a000	adventure_item_interact_give_namest	0x8	0x8335d0	direct	item-name	Name the {item}	item=whole item designation	mode-1
+classic	PE:6a70b91c:0270a000	adventure_item_interact_give_namest	0x10	0x7deab0	virtual+8	item-name	Name the {item}	item=whole item designation	mode-1
+classic	PE:6a70b91c:0270a000	adventure_item_interact_heat_from_tilest	0x8	0x8336c0	direct	item-heat	Heat {item}[ ({direction})]	item=whole item; direction=DIR	unmatched source; location optional
+classic	PE:6a70b91c:0270a000	adventure_item_interact_heat_from_tilest	0x8	0x8336c0	direct	item-heat	Heat {item} near magma[ ({direction})]	item=whole item; direction=DIR	magma
+classic	PE:6a70b91c:0270a000	adventure_item_interact_heat_from_tilest	0x8	0x8336c0	direct	item-heat	Heat {item} near lava[ ({direction})]	item=whole item; direction=DIR	lava
+classic	PE:6a70b91c:0270a000	adventure_item_interact_heat_from_tilest	0x8	0x8336c0	direct	item-heat	Heat {item} near burning trunk[ ({direction})]	item=whole item; direction=DIR	burning trunk tile
+classic	PE:6a70b91c:0270a000	adventure_item_interact_heat_from_tilest	0x8	0x8336c0	direct	item-heat	Heat {item} near burning branches[ ({direction})]	item=whole item; direction=DIR	burning branches tile
+classic	PE:6a70b91c:0270a000	adventure_item_interact_heat_from_tilest	0x8	0x8336c0	direct	item-heat	Heat {item} near burning twigs[ ({direction})]	item=whole item; direction=DIR	burning twigs tile
+classic	PE:6a70b91c:0270a000	adventure_item_interact_heat_from_tilest	0x8	0x8336c0	direct	item-heat	Heat {item} near burning cap[ ({direction})]	item=whole item; direction=DIR	burning cap tile
+classic	PE:6a70b91c:0270a000	adventure_item_interact_heat_from_tilest	0x8	0x8336c0	direct	item-heat	Heat {item} near fire[ ({direction})]	item=whole item; direction=DIR	fire tile
+classic	PE:6a70b91c:0270a000	adventure_item_interact_heat_from_tilest	0x8	0x8336c0	direct	item-heat	Heat {item} near campfire[ ({direction})]	item=whole item; direction=DIR	campfire tile
+classic	PE:6a70b91c:0270a000	adventure_item_interact_heat_from_tilest	0x10	0x7deab0	virtual+8	item-heat	Heat {item}[ ({direction})]	item=whole item; direction=DIR	unmatched source; location optional
+classic	PE:6a70b91c:0270a000	adventure_item_interact_heat_from_tilest	0x10	0x7deab0	virtual+8	item-heat	Heat {item} near magma[ ({direction})]	item=whole item; direction=DIR	magma
+classic	PE:6a70b91c:0270a000	adventure_item_interact_heat_from_tilest	0x10	0x7deab0	virtual+8	item-heat	Heat {item} near lava[ ({direction})]	item=whole item; direction=DIR	lava
+classic	PE:6a70b91c:0270a000	adventure_item_interact_heat_from_tilest	0x10	0x7deab0	virtual+8	item-heat	Heat {item} near burning trunk[ ({direction})]	item=whole item; direction=DIR	burning trunk tile
+classic	PE:6a70b91c:0270a000	adventure_item_interact_heat_from_tilest	0x10	0x7deab0	virtual+8	item-heat	Heat {item} near burning branches[ ({direction})]	item=whole item; direction=DIR	burning branches tile
+classic	PE:6a70b91c:0270a000	adventure_item_interact_heat_from_tilest	0x10	0x7deab0	virtual+8	item-heat	Heat {item} near burning twigs[ ({direction})]	item=whole item; direction=DIR	burning twigs tile
+classic	PE:6a70b91c:0270a000	adventure_item_interact_heat_from_tilest	0x10	0x7deab0	virtual+8	item-heat	Heat {item} near burning cap[ ({direction})]	item=whole item; direction=DIR	burning cap tile
+classic	PE:6a70b91c:0270a000	adventure_item_interact_heat_from_tilest	0x10	0x7deab0	virtual+8	item-heat	Heat {item} near fire[ ({direction})]	item=whole item; direction=DIR	fire tile
+classic	PE:6a70b91c:0270a000	adventure_item_interact_heat_from_tilest	0x10	0x7deab0	virtual+8	item-heat	Heat {item} near campfire[ ({direction})]	item=whole item; direction=DIR	campfire tile
+classic	PE:6a70b91c:0270a000	adventure_item_interact_load_ranged_weaponst	0x8	0x8325d0	direct	item-load	Nock in {item}	item=whole item designation	type0x18 subtype1cc=0
+classic	PE:6a70b91c:0270a000	adventure_item_interact_load_ranged_weaponst	0x8	0x8325d0	direct	item-load	Load into {item}	item=whole item designation	other weapon
+classic	PE:6a70b91c:0270a000	adventure_item_interact_load_ranged_weaponst	0x8	0x8325d0	direct	item-load	Nock in		item absent
+classic	PE:6a70b91c:0270a000	adventure_item_interact_load_ranged_weaponst	0x8	0x8325d0	direct	item-load	Load into		item absent
+classic	PE:6a70b91c:0270a000	adventure_item_interact_load_ranged_weaponst	0x10	0x7deab0	virtual+8	item-load	Nock in {item}	item=whole item designation	type0x18 subtype1cc=0
+classic	PE:6a70b91c:0270a000	adventure_item_interact_load_ranged_weaponst	0x10	0x7deab0	virtual+8	item-load	Load into {item}	item=whole item designation	other weapon
+classic	PE:6a70b91c:0270a000	adventure_item_interact_load_ranged_weaponst	0x10	0x7deab0	virtual+8	item-load	Nock in		item absent
+classic	PE:6a70b91c:0270a000	adventure_item_interact_load_ranged_weaponst	0x10	0x7deab0	virtual+8	item-load	Load into		item absent
+classic	PE:6a70b91c:0270a000	adventure_item_interact_pull_outst	0x8	0x7deba0	direct	item-pull	Pull it out		fixed
+classic	PE:6a70b91c:0270a000	adventure_item_interact_pull_outst	0x10	0x7deab0	virtual+8	item-pull	Pull it out		fixed
+classic	PE:6a70b91c:0270a000	adventure_item_interact_readst	0x8	0x7dec50	direct	item-read	Read		fixed
+classic	PE:6a70b91c:0270a000	adventure_item_interact_readst	0x10	0x7deab0	virtual+8	item-read	Read		fixed
+classic	PE:6a70b91c:0270a000	adventure_item_interact_roll_allst	0x8	0x7dec90	direct	item-dice	Roll all		fixed
+classic	PE:6a70b91c:0270a000	adventure_item_interact_roll_allst	0x10	0x7deab0	virtual+8	item-dice	Roll all		fixed
+classic	PE:6a70b91c:0270a000	adventure_item_interact_rollst	0x8	0x7dec70	direct	item-dice	Roll		fixed
+classic	PE:6a70b91c:0270a000	adventure_item_interact_rollst	0x10	0x7deab0	virtual+8	item-dice	Roll		fixed
+classic	PE:6a70b91c:0270a000	adventure_item_interact_strugglest	0x8	0x7deb60	direct	item-possession	Gain possession		fixed
+classic	PE:6a70b91c:0270a000	adventure_item_interact_strugglest	0x10	0x7deab0	virtual+8	item-possession	Gain possession		fixed
+classic	PE:6a70b91c:0270a000	adventure_item_interact_unnockst	0x8	0x7debc0	direct	item-nocking	Cease nocking		fixed
+classic	PE:6a70b91c:0270a000	adventure_item_interact_unnockst	0x10	0x7deab0	virtual+8	item-nocking	Cease nocking		fixed
+classic	PE:6a70b91c:0270a000	adventure_movement_attack_creaturest	0x8	0x83d680	direct	attack	Attack error		empty target vector
+classic	PE:6a70b91c:0270a000	adventure_movement_attack_creaturest	0x8	0x83d680	direct	attack	Attack {unit}[ ({direction})]	unit=whole unit; direction=DIR	one valid target
+classic	PE:6a70b91c:0270a000	adventure_movement_attack_creaturest	0x8	0x83d680	direct	attack	Attack creature[ ({direction})]	direction=DIR	one missing target
+classic	PE:6a70b91c:0270a000	adventure_movement_attack_creaturest	0x8	0x83d680	direct	attack	Attack creatures[ ({direction})]	direction=DIR	multiple targets
+classic	PE:6a70b91c:0270a000	adventure_movement_attack_creaturest	0x10	0x7deab0	virtual+8	attack	Attack error		empty target vector
+classic	PE:6a70b91c:0270a000	adventure_movement_attack_creaturest	0x10	0x7deab0	virtual+8	attack	Attack {unit}[ ({direction})]	unit=whole unit; direction=DIR	one valid target
+classic	PE:6a70b91c:0270a000	adventure_movement_attack_creaturest	0x10	0x7deab0	virtual+8	attack	Attack creature[ ({direction})]	direction=DIR	one missing target
+classic	PE:6a70b91c:0270a000	adventure_movement_attack_creaturest	0x10	0x7deab0	virtual+8	attack	Attack creatures[ ({direction})]	direction=DIR	multiple targets
+classic	PE:6a70b91c:0270a000	adventure_movement_building_interact_bash_down_doorst	0x8	0x83e920	direct	building	Bash down {building}[ ({direction})]	building=whole name or building; direction=DIR	location optional
+classic	PE:6a70b91c:0270a000	adventure_movement_building_interact_bash_down_doorst	0x10	0x7deab0	virtual+8	building	Bash down {building}[ ({direction})]	building=whole name or building; direction=DIR	location optional
+classic	PE:6a70b91c:0270a000	adventure_movement_building_interact_break_in_hatchst	0x8	0x83e570	direct	building	Break in {building}[ ({direction})]	building=whole name or building; direction=DIR	location optional
+classic	PE:6a70b91c:0270a000	adventure_movement_building_interact_break_in_hatchst	0x10	0x7deab0	virtual+8	building	Break in {building}[ ({direction})]	building=whole name or building; direction=DIR	location optional
+classic	PE:6a70b91c:0270a000	adventure_movement_building_interact_lower_well_bucketst	0x8	0x83e1c0	direct	building	Lower {building} bucket[ ({direction})]	building=whole name or building; direction=DIR	location optional
+classic	PE:6a70b91c:0270a000	adventure_movement_building_interact_lower_well_bucketst	0x10	0x7deab0	virtual+8	building	Lower {building} bucket[ ({direction})]	building=whole name or building; direction=DIR	location optional
+classic	PE:6a70b91c:0270a000	adventure_movement_building_interact_pick_door_lockst	0x8	0x83e740	direct	building	Pick {building} lock[ ({direction})]	building=whole name or building; direction=DIR	shared door/hatch
+classic	PE:6a70b91c:0270a000	adventure_movement_building_interact_pick_door_lockst	0x10	0x7deab0	virtual+8	building	Pick {building} lock[ ({direction})]	building=whole name or building; direction=DIR	shared door/hatch
+classic	PE:6a70b91c:0270a000	adventure_movement_building_interact_pick_hatch_lockst	0x8	0x83e740	direct	building	Pick {building} lock[ ({direction})]	building=whole name or building; direction=DIR	shared door/hatch
+classic	PE:6a70b91c:0270a000	adventure_movement_building_interact_pick_hatch_lockst	0x10	0x7deab0	virtual+8	building	Pick {building} lock[ ({direction})]	building=whole name or building; direction=DIR	shared door/hatch
+classic	PE:6a70b91c:0270a000	adventure_movement_building_interact_pull_leverst	0x8	0x83e3a0	direct	building	Pull {building}[ ({direction})]	building=whole name or building; direction=DIR	location optional
+classic	PE:6a70b91c:0270a000	adventure_movement_building_interact_pull_leverst	0x10	0x7deab0	virtual+8	building	Pull {building}[ ({direction})]	building=whole name or building; direction=DIR	location optional
+classic	PE:6a70b91c:0270a000	adventure_movement_building_interact_raise_well_bucketst	0x8	0x83dfe0	direct	building	Raise {building} bucket[ ({direction})]	building=whole name or building; direction=DIR	location optional
+classic	PE:6a70b91c:0270a000	adventure_movement_building_interact_raise_well_bucketst	0x10	0x7deab0	virtual+8	building	Raise {building} bucket[ ({direction})]	building=whole name or building; direction=DIR	location optional
+classic	PE:6a70b91c:0270a000	adventure_movement_building_interact_topple_statuest	0x8	0x83eaf0	direct	building	Topple {building}[ ({direction})]	building=whole name or building; direction=DIR	location optional
+classic	PE:6a70b91c:0270a000	adventure_movement_building_interact_topple_statuest	0x10	0x7deab0	virtual+8	building	Topple {building}[ ({direction})]	building=whole name or building; direction=DIR	location optional
+classic	PE:6a70b91c:0270a000	adventure_movement_claim_petst	0x8	0x83fe30	direct	pet	Claim {unit}[ ({direction})] as pet	unit=whole unit; direction=DIR	location optional
+classic	PE:6a70b91c:0270a000	adventure_movement_claim_petst	0x10	0x7deab0	virtual+8	pet	Claim {unit}[ ({direction})] as pet	unit=whole unit; direction=DIR	location optional
+classic	PE:6a70b91c:0270a000	adventure_movement_climbst	0x8	0x83f180	direct	climbing	Climb to {tile}[ ({direction} holding {held_direction}{media})]	tile=terrain grammar; direction/held_direction=DIR; media=MEDIA	full suffix optional
+classic	PE:6a70b91c:0270a000	adventure_movement_climbst	0x8	0x83f180	direct	climbing	Climb to {tile}[ ({direction} releasing hold{media})]	tile=terrain grammar; direction=DIR; media=MEDIA	full suffix optional
+classic	PE:6a70b91c:0270a000	adventure_movement_climbst	0x10	0x7deab0	virtual+8	climbing	Climb to {tile}[ ({direction} holding {held_direction}{media})]	tile=terrain grammar; direction/held_direction=DIR; media=MEDIA	full suffix optional
+classic	PE:6a70b91c:0270a000	adventure_movement_climbst	0x10	0x7deab0	virtual+8	climbing	Climb to {tile}[ ({direction} releasing hold{media})]	tile=terrain grammar; direction=DIR; media=MEDIA	full suffix optional
+classic	PE:6a70b91c:0270a000	adventure_movement_combat_menu_creaturest	0x8	0x83d8b0	direct	combat	Combat error		target id-1
+classic	PE:6a70b91c:0270a000	adventure_movement_combat_menu_creaturest	0x8	0x83d8b0	direct	combat	Combat {unit}[ ({direction})]	unit=whole unit; direction=DIR	valid target
+classic	PE:6a70b91c:0270a000	adventure_movement_combat_menu_creaturest	0x8	0x83d8b0	direct	combat	Combat creature[ ({direction})]	direction=DIR	missing nonnegative id
+classic	PE:6a70b91c:0270a000	adventure_movement_combat_menu_creaturest	0x10	0x7deab0	virtual+8	combat	Combat error		target id-1
+classic	PE:6a70b91c:0270a000	adventure_movement_combat_menu_creaturest	0x10	0x7deab0	virtual+8	combat	Combat {unit}[ ({direction})]	unit=whole unit; direction=DIR	valid target
+classic	PE:6a70b91c:0270a000	adventure_movement_combat_menu_creaturest	0x10	0x7deab0	virtual+8	combat	Combat creature[ ({direction})]	direction=DIR	missing nonnegative id
+classic	PE:6a70b91c:0270a000	adventure_movement_dismountst	0x8	0x83f8d0	direct	dismount	Dismount to {tile}[ ({direction})]	tile=terrain grammar; direction=DIR	location optional
+classic	PE:6a70b91c:0270a000	adventure_movement_dismountst	0x10	0x7deab0	virtual+8	dismount	Dismount to {tile}[ ({direction})]	tile=terrain grammar; direction=DIR	location optional
+classic	PE:6a70b91c:0270a000	adventure_movement_hold_itemst	0x8	0x83fb30	direct	climbing	Climb[ {item}][ ({direction}{media})]	item=whole item; direction=DIR; media=MEDIA	item and suffix independently optional
+classic	PE:6a70b91c:0270a000	adventure_movement_hold_itemst	0x10	0x7deab0	virtual+8	climbing	Climb[ {item}][ ({direction}{media})]	item=whole item; direction=DIR; media=MEDIA	item and suffix independently optional
+classic	PE:6a70b91c:0270a000	adventure_movement_hold_tilest	0x8	0x83f470	direct	holding	Hold {tile}[ ({direction}[ from {origin_direction}]{media})]	tile=terrain grammar; direction/origin_direction=DIR; media=MEDIA	full suffix optional
+classic	PE:6a70b91c:0270a000	adventure_movement_hold_tilest	0x8	0x83f470	direct	holding	Hang from {tile}[ ({direction}[ from {origin_direction}]{media})]	tile=terrain grammar; direction/origin_direction=DIR; media=MEDIA	full suffix optional
+classic	PE:6a70b91c:0270a000	adventure_movement_hold_tilest	0x10	0x7deab0	virtual+8	holding	Hold {tile}[ ({direction}[ from {origin_direction}]{media})]	tile=terrain grammar; direction/origin_direction=DIR; media=MEDIA	full suffix optional
+classic	PE:6a70b91c:0270a000	adventure_movement_hold_tilest	0x10	0x7deab0	virtual+8	holding	Hang from {tile}[ ({direction}[ from {origin_direction}]{media})]	tile=terrain grammar; direction/origin_direction=DIR; media=MEDIA	full suffix optional
+classic	PE:6a70b91c:0270a000	adventure_movement_item_interact_guidest	0x8	0x83de20	direct	object-movement	Guide {item}[ to {direction}]	item=whole item or finite item; direction=DIR	location optional
+classic	PE:6a70b91c:0270a000	adventure_movement_item_interact_guidest	0x10	0x7deab0	virtual+8	object-movement	Guide {item}[ to {direction}]	item=whole item or finite item; direction=DIR	location optional
+classic	PE:6a70b91c:0270a000	adventure_movement_item_interact_pushst	0x8	0x83daa0	direct	object-movement	Push {item}[ to {direction}]	item=whole item or finite item; direction=DIR	location optional
+classic	PE:6a70b91c:0270a000	adventure_movement_item_interact_pushst	0x10	0x7deab0	virtual+8	object-movement	Push {item}[ to {direction}]	item=whole item or finite item; direction=DIR	location optional
+classic	PE:6a70b91c:0270a000	adventure_movement_item_interact_ridest	0x8	0x83dc60	direct	object-movement	Ride {item}[, push off toward {direction}]	item=whole item or finite item; direction=DIR	location optional
+classic	PE:6a70b91c:0270a000	adventure_movement_item_interact_ridest	0x10	0x7deab0	virtual+8	object-movement	Ride {item}[, push off toward {direction}]	item=whole item or finite item; direction=DIR	location optional
+classic	PE:6a70b91c:0270a000	adventure_movement_jumpst	0x8	0x8a1f50	direct	jump	Jump to the {direction}	direction=DIR	prefix flag nonzero
+classic	PE:6a70b91c:0270a000	adventure_movement_jumpst	0x8	0x8a1f50	direct	jump	{direction}	direction=DIR	prefix flag zero
+classic	PE:6a70b91c:0270a000	adventure_movement_jumpst	0x10	0x7deab0	virtual+8	jump	Jump to the {direction}	direction=DIR	prefix flag nonzero
+classic	PE:6a70b91c:0270a000	adventure_movement_jumpst	0x10	0x7deab0	virtual+8	jump	{direction}	direction=DIR	prefix flag zero
+classic	PE:6a70b91c:0270a000	adventure_movement_lead_animalst	0x8	0x83ff90	direct	pet	Lead {unit}[ ({direction})]	unit=whole unit; direction=DIR	location optional
+classic	PE:6a70b91c:0270a000	adventure_movement_lead_animalst	0x10	0x7deab0	virtual+8	pet	Lead {unit}[ ({direction})]	unit=whole unit; direction=DIR	location optional
+classic	PE:6a70b91c:0270a000	adventure_movement_mountst	0x8	0x83f780	direct	mount	Mount {unit}[ ({direction})]	unit=whole unit; direction=DIR	location optional
+classic	PE:6a70b91c:0270a000	adventure_movement_mountst	0x10	0x7deab0	virtual+8	mount	Mount {unit}[ ({direction})]	unit=whole unit; direction=DIR	location optional
+classic	PE:6a70b91c:0270a000	adventure_movement_movest	0x8	0x83ecc0	direct	movement	Move to {target}[ ({direction}{media})]	target=terrain grammar or whole unit; direction=DIR; media=MEDIA	bit0=0; full suffix optional
+classic	PE:6a70b91c:0270a000	adventure_movement_movest	0x8	0x83ecc0	direct	movement	Charge {target}[ ({direction}{media})]	target=terrain grammar or whole unit; direction=DIR; media=MEDIA	bit0=1; full suffix optional
+classic	PE:6a70b91c:0270a000	adventure_movement_movest	0x10	0x7deab0	virtual+8	movement	Move to {target}[ ({direction}{media})]	target=terrain grammar or whole unit; direction=DIR; media=MEDIA	bit0=0; full suffix optional
+classic	PE:6a70b91c:0270a000	adventure_movement_movest	0x10	0x7deab0	virtual+8	movement	Charge {target}[ ({direction}{media})]	target=terrain grammar or whole unit; direction=DIR; media=MEDIA	bit0=1; full suffix optional
+classic	PE:6a70b91c:0270a000	adventure_movement_pathst	0x8	0x840330	direct	path	Path to here[ (no climbing/jumping)][ ({depth} level[s] up)]	depth=positive decimal	up; s iff depth>1
+classic	PE:6a70b91c:0270a000	adventure_movement_pathst	0x8	0x840330	direct	path	Path to here[ (no climbing/jumping)][ ({depth} level[s] down)]	depth=positive decimal	down; s iff depth>1
+classic	PE:6a70b91c:0270a000	adventure_movement_pathst	0x8	0x840330	direct	path	Go below hatch[ (no climbing/jumping)][ ({depth} level[s] up)]	depth=positive decimal	up; s iff depth>1
+classic	PE:6a70b91c:0270a000	adventure_movement_pathst	0x8	0x840330	direct	path	Go below hatch[ (no climbing/jumping)][ ({depth} level[s] down)]	depth=positive decimal	down; s iff depth>1
+classic	PE:6a70b91c:0270a000	adventure_movement_pathst	0x10	0x7deab0	virtual+8	path	Path to here[ (no climbing/jumping)][ ({depth} level[s] up)]	depth=positive decimal	up; s iff depth>1
+classic	PE:6a70b91c:0270a000	adventure_movement_pathst	0x10	0x7deab0	virtual+8	path	Path to here[ (no climbing/jumping)][ ({depth} level[s] down)]	depth=positive decimal	down; s iff depth>1
+classic	PE:6a70b91c:0270a000	adventure_movement_pathst	0x10	0x7deab0	virtual+8	path	Go below hatch[ (no climbing/jumping)][ ({depth} level[s] up)]	depth=positive decimal	up; s iff depth>1
+classic	PE:6a70b91c:0270a000	adventure_movement_pathst	0x10	0x7deab0	virtual+8	path	Go below hatch[ (no climbing/jumping)][ ({depth} level[s] down)]	depth=positive decimal	down; s iff depth>1
+classic	PE:6a70b91c:0270a000	adventure_movement_release_hold_itemst	0x8	0x8401c0	direct	climbing	Climb down[ from {item}]	item=whole item	player held-item id lookup
+classic	PE:6a70b91c:0270a000	adventure_movement_release_hold_itemst	0x10	0x7deab0	virtual+8	climbing	Climb down[ from {item}]	item=whole item	player held-item id lookup
+classic	PE:6a70b91c:0270a000	adventure_movement_release_hold_tilest	0x8	0x83fa30	direct	holding	Release hold on {tile}	tile=terrain grammar	no direction suffix
+classic	PE:6a70b91c:0270a000	adventure_movement_release_hold_tilest	0x10	0x7deab0	virtual+8	holding	Release hold on {tile}	tile=terrain grammar	no direction suffix
+classic	PE:6a70b91c:0270a000	adventure_movement_shoot_creaturest	0x8	0x8a2110	direct	shoot	Quickly shoot {unit}	unit=whole unit	quick; missing unit empty
+classic	PE:6a70b91c:0270a000	adventure_movement_shoot_creaturest	0x8	0x8a2110	direct	shoot	Aim carefully and shoot {unit}	unit=whole unit	careful; no direction/range/weapon suffix
+classic	PE:6a70b91c:0270a000	adventure_movement_shoot_creaturest	0x10	0x7deab0	virtual+8	shoot	Quickly shoot {unit}	unit=whole unit	quick; missing unit empty
+classic	PE:6a70b91c:0270a000	adventure_movement_shoot_creaturest	0x10	0x7deab0	virtual+8	shoot	Aim carefully and shoot {unit}	unit=whole unit	careful; no direction/range/weapon suffix
+classic	PE:6a70b91c:0270a000	adventure_movement_shoot_tilest	0x8	0x8a2dc0	direct	shoot	Shoot {tile}	tile=terrain grammar	prefix flag nonzero
+classic	PE:6a70b91c:0270a000	adventure_movement_shoot_tilest	0x8	0x8a2dc0	direct	shoot	{tile}	tile=terrain grammar	prefix flag zero
+classic	PE:6a70b91c:0270a000	adventure_movement_shoot_tilest	0x10	0x7deab0	virtual+8	shoot	Shoot {tile}	tile=terrain grammar	prefix flag nonzero
+classic	PE:6a70b91c:0270a000	adventure_movement_shoot_tilest	0x10	0x7deab0	virtual+8	shoot	{tile}	tile=terrain grammar	prefix flag zero
+classic	PE:6a70b91c:0270a000	adventure_movement_stop_lead_animalst	0x8	0x8400e0	direct	pet	Stop leading {unit}	unit=whole unit	no location
+classic	PE:6a70b91c:0270a000	adventure_movement_stop_lead_animalst	0x10	0x7deab0	virtual+8	pet	Stop leading {unit}	unit=whole unit	no location
+classic	PE:6a70b91c:0270a000	adventure_movement_throw_item_at_creaturest	0x8	0x8a36f0	direct	throw	Quickly throw at {unit}	unit=whole unit	quick; missing unit empty
+classic	PE:6a70b91c:0270a000	adventure_movement_throw_item_at_creaturest	0x8	0x8a36f0	direct	throw	Aim carefully and throw at {unit}	unit=whole unit	careful; no direction/range/weapon suffix
+classic	PE:6a70b91c:0270a000	adventure_movement_throw_item_at_creaturest	0x10	0x7deab0	virtual+8	throw	Quickly throw at {unit}	unit=whole unit	quick; missing unit empty
+classic	PE:6a70b91c:0270a000	adventure_movement_throw_item_at_creaturest	0x10	0x7deab0	virtual+8	throw	Aim carefully and throw at {unit}	unit=whole unit	careful; no direction/range/weapon suffix
+classic	PE:6a70b91c:0270a000	adventure_movement_throw_item_at_tilest	0x8	0x8a3d50	direct	throw	Throw at {tile}	tile=terrain grammar	prefix flag nonzero
+classic	PE:6a70b91c:0270a000	adventure_movement_throw_item_at_tilest	0x8	0x8a3d50	direct	throw	{tile}	tile=terrain grammar	prefix flag zero
+classic	PE:6a70b91c:0270a000	adventure_movement_throw_item_at_tilest	0x10	0x7deab0	virtual+8	throw	Throw at {tile}	tile=terrain grammar	prefix flag nonzero
+classic	PE:6a70b91c:0270a000	adventure_movement_throw_item_at_tilest	0x10	0x7deab0	virtual+8	throw	{tile}	tile=terrain grammar	prefix flag zero
+classic	PE:6a70b91c:0270a000	adventure_option_assume_identityst	0x8	0x6b53d0	direct	identity	Assume an identity		fixed
+classic	PE:6a70b91c:0270a000	adventure_option_assume_identityst	0x10	0x7deab0	virtual+8	identity	Assume an identity		fixed
+classic	PE:6a70b91c:0270a000	adventure_option_drop_itemst	0x8	0x891a00	direct	inventory	{item}	item=whole item designation	shared item caption mode1
+classic	PE:6a70b91c:0270a000	adventure_option_drop_itemst	0x10	0x891bf0	direct	item-detail	Drop {item}	item=whole item	no location
+classic	PE:6a70b91c:0270a000	adventure_option_eat_drink_itemst	0x8	0x891a00	direct	inventory	{item}	item=whole item designation	shared item caption mode1
+classic	PE:6a70b91c:0270a000	adventure_option_eat_drink_itemst	0x10	0x8920a0	direct	item-detail	Eat {item}	item=whole item	virtual+2b0=0
+classic	PE:6a70b91c:0270a000	adventure_option_eat_drink_itemst	0x10	0x8920a0	direct	item-detail	Drink {item}	item=whole item	virtual+2b0!=0
+classic	PE:6a70b91c:0270a000	adventure_option_eat_item_contaminantst	0x8	0x837520	direct	deposit-ingest	Eat {deposit} ({item})	deposit=quantity/material grammar; item=whole item	solid
+classic	PE:6a70b91c:0270a000	adventure_option_eat_item_contaminantst	0x8	0x837520	direct	deposit-ingest	Drink {deposit} ({item})	deposit=quantity/material grammar; item=whole item	phase1 or phase0/type73
+classic	PE:6a70b91c:0270a000	adventure_option_eat_item_contaminantst	0x10	0x7deab0	virtual+8	deposit-ingest	Eat {deposit} ({item})	deposit=quantity/material grammar; item=whole item	solid
+classic	PE:6a70b91c:0270a000	adventure_option_eat_item_contaminantst	0x10	0x7deab0	virtual+8	deposit-ingest	Drink {deposit} ({item})	deposit=quantity/material grammar; item=whole item	phase1 or phase0/type73
+classic	PE:6a70b91c:0270a000	adventure_option_eat_unit_contaminantst	0x8	0x8370d0	direct	deposit-ingest	Eat {deposit} ({body_part})	deposit=quantity/material grammar; body_part=RAW singular/plural	solid
+classic	PE:6a70b91c:0270a000	adventure_option_eat_unit_contaminantst	0x8	0x8370d0	direct	deposit-ingest	Drink {deposit} ({body_part})	deposit=quantity/material grammar; body_part=RAW singular/plural	phase1 or phase0/type73
+classic	PE:6a70b91c:0270a000	adventure_option_eat_unit_contaminantst	0x10	0x7deab0	virtual+8	deposit-ingest	Eat {deposit} ({body_part})	deposit=quantity/material grammar; body_part=RAW singular/plural	solid
+classic	PE:6a70b91c:0270a000	adventure_option_eat_unit_contaminantst	0x10	0x7deab0	virtual+8	deposit-ingest	Drink {deposit} ({body_part})	deposit=quantity/material grammar; body_part=RAW singular/plural	phase1 or phase0/type73
+classic	PE:6a70b91c:0270a000	adventure_option_interact_with_itemst	0x8	0x891a00	direct	inventory	{item}	item=whole item designation	shared item caption mode1
+classic	PE:6a70b91c:0270a000	adventure_option_interact_with_itemst	0x10	0x7deab0	virtual+8	inventory	{item}	item=whole item designation	shared item caption mode1
+classic	PE:6a70b91c:0270a000	adventure_option_inventory_itemst	0x8	0x891a00	direct	inventory	{item}	item=whole item designation	shared item caption mode1
+classic	PE:6a70b91c:0270a000	adventure_option_inventory_itemst	0x10	0x7deab0	virtual+8	inventory	{item}	item=whole item designation	shared item caption mode1
+classic	PE:6a70b91c:0270a000	adventure_option_put_itemst	0x8	0x891a00	direct	inventory	{item}	item=whole item designation	shared item caption mode1
+classic	PE:6a70b91c:0270a000	adventure_option_put_itemst	0x10	0x891fb0	direct	item-detail	Put or place {item}	item=whole item	no location
+classic	PE:6a70b91c:0270a000	adventure_option_remove_itemst	0x8	0x891a00	direct	inventory	{item}	item=whole item designation	shared item caption mode1
+classic	PE:6a70b91c:0270a000	adventure_option_remove_itemst	0x10	0x891ec0	direct	item-detail	Remove {item}	item=whole item	no location
+classic	PE:6a70b91c:0270a000	adventure_option_start_shoutingst	0x8	0x6b53b0	direct	conversation	Shout out to everybody		fixed
+classic	PE:6a70b91c:0270a000	adventure_option_start_shoutingst	0x10	0x7deab0	virtual+8	conversation	Shout out to everybody		fixed
+classic	PE:6a70b91c:0270a000	adventure_option_talk_existing_conversationst	0x8	0x6b4aa0	direct	conversation	Continue shouting		conversation flag bit1
+classic	PE:6a70b91c:0270a000	adventure_option_talk_existing_conversationst	0x8	0x6b4aa0	direct	conversation	Continue conversation with {participants}	participants=unit/HF name list	ignore player; join comma and final and; unresolved ids skipped
+classic	PE:6a70b91c:0270a000	adventure_option_talk_existing_conversationst	0x10	0x7deab0	virtual+8	conversation	Continue shouting		conversation flag bit1
+classic	PE:6a70b91c:0270a000	adventure_option_talk_existing_conversationst	0x10	0x7deab0	virtual+8	conversation	Continue conversation with {participants}	participants=unit/HF name list	ignore player; join comma and final and; unresolved ids skipped
+classic	PE:6a70b91c:0270a000	adventure_option_talk_new_conversationst	0x8	0x6b4fc0	direct	conversation	Start new conversation with {target}	target=unit/HF name	resolved name
+classic	PE:6a70b91c:0270a000	adventure_option_talk_new_conversationst	0x8	0x6b4fc0	direct	conversation	Start new conversation with the Void		missing unit/HF/name
+classic	PE:6a70b91c:0270a000	adventure_option_talk_new_conversationst	0x10	0x7deab0	virtual+8	conversation	Start new conversation with {target}	target=unit/HF name	resolved name
+classic	PE:6a70b91c:0270a000	adventure_option_talk_new_conversationst	0x10	0x7deab0	virtual+8	conversation	Start new conversation with the Void		missing unit/HF/name
+classic	PE:6a70b91c:0270a000	adventure_option_throw_itemst	0x8	0x891a00	direct	inventory	{item}	item=whole item designation	shared item caption mode1
+classic	PE:6a70b91c:0270a000	adventure_option_throw_itemst	0x10	0x891ce0	direct	item-detail	Throw {item}	item=whole item	no location
+classic	PE:6a70b91c:0270a000	adventure_option_view_contaminantst	0x8	0x836b20	direct	deposit-view	{deposit} ({body_part})	deposit=quantity/material grammar; body_part=RAW singular/plural	missing deposit or owner empty
+classic	PE:6a70b91c:0270a000	adventure_option_view_contaminantst	0x10	0x7deab0	virtual+8	deposit-view	{deposit} ({body_part})	deposit=quantity/material grammar; body_part=RAW singular/plural	missing deposit or owner empty
+classic	PE:6a70b91c:0270a000	adventure_option_view_event_detailst	0x8	0x891ac0	direct	engraving	engraving		primary caption
+classic	PE:6a70b91c:0270a000	adventure_option_view_event_detailst	0x10	0x891ae0	direct	engraving-detail	View engraving		fixed
+classic	PE:6a70b91c:0270a000	adventure_option_view_itemst	0x8	0x891a00	direct	inventory	{item}	item=whole item designation	shared item caption mode1
+classic	PE:6a70b91c:0270a000	adventure_option_view_itemst	0x10	0x891b00	direct	item-detail	View {item}	item=whole item	no location
+classic	PE:6a70b91c:0270a000	adventure_option_view_unitst	0x8	0x6b4d40	direct	view	View yourself		player id
+classic	PE:6a70b91c:0270a000	adventure_option_view_unitst	0x8	0x6b4d40	direct	view	View {target}	target=unit/HF name	resolved name
+classic	PE:6a70b91c:0270a000	adventure_option_view_unitst	0x8	0x6b4d40	direct	view	View the Void		missing unit/HF/name
+classic	PE:6a70b91c:0270a000	adventure_option_view_unitst	0x10	0x7deab0	virtual+8	view	View yourself		player id
+classic	PE:6a70b91c:0270a000	adventure_option_view_unitst	0x10	0x7deab0	virtual+8	view	View {target}	target=unit/HF name	resolved name
+classic	PE:6a70b91c:0270a000	adventure_option_view_unitst	0x10	0x7deab0	virtual+8	view	View the Void		missing unit/HF/name
+classic	PE:6a70b91c:0270a000	adventure_option_wear_itemst	0x8	0x891a00	direct	inventory	{item}	item=whole item designation	shared item caption mode1
+classic	PE:6a70b91c:0270a000	adventure_option_wear_itemst	0x10	0x891dd0	direct	item-detail	Wear {item}	item=whole item	no location
+classic	PE:6a70b91c:0270a000	adventure_optionst	0x8	0x721e0	direct	empty-base			empty primary caption
+classic	PE:6a70b91c:0270a000	adventure_optionst	0x10	0x7deab0	virtual+8	empty-base			empty primary caption
+steam		chooser-renderer		0x884460	direct	chooser-title	What do you want to do?		categories0/3/5/6/7
+steam		chooser-renderer		0x884460	direct	chooser-title	Where would you like to move?		categories1/2
+steam		chooser-renderer		0x884460	direct	chooser-title	Who or what would you like to shoot?		category4/shoot flag
+steam		chooser-renderer		0x884460	direct	chooser-title	At whom or what would you like to throw?		category4/throw flag
+steam		chooser-renderer		0x884460	direct	quantity-title	{item}	item=whole item	selected option+90; mode-1
+steam		chooser-renderer		0x884460	direct	quantity-prompt	Pick up how many? (0-{maximum})	maximum=nonnegative decimal state+40	quantity flag state+38
+steam		chooser-renderer		0x884460	direct	quantity-input	{input}[_]	input=state+50 text or state+44 decimal	input-active state+48; underscore blink
+steam		chooser-renderer		0x884460	direct	button	Okay		quantity popup
+steam		chooser-renderer		0x884460	direct	button	Cancel		popup or chooser
+steam		ranged-prelude	0x118	0x7e4860	conditional-tail	conflict-prefix	Encounter: 		conflict=0
+steam		ranged-prelude	0x118	0x7e4860	conditional-tail	conflict-prefix	Horseplay: 		conflict=1
+steam		ranged-prelude	0x118	0x7e4860	conditional-tail	conflict-prefix	Training: 		conflict=2
+steam		ranged-prelude	0x118	0x7e4860	conditional-tail	conflict-prefix	Brawl: 		conflict=3
+steam		ranged-prelude	0x118	0x7e4860	conditional-tail	conflict-prefix	Non-lethal: 		conflict=4
+steam		ranged-prelude	0x118	0x7e4860	conditional-tail	conflict-prefix	Lethal: 		conflict=5
+steam		ranged-prelude	0x118	0x7e4860	conditional-tail	conflict-prefix	No Quarter: 		conflict=6
+steam		ranged-prelude	0x118	0x7e4860	conditional-tail	conflict-prefix	: 		direct conflict outside0..6 and not -1
+steam		ranged-prelude	0x118	0x7e4860	conditional-tail	conflict-prefix	Ally: 		direct conflict=-1; eligible shared activity level exists
+steam		ranged-prelude	0x118	0x7e4860	conditional-tail	conflict-prefix			self target or no eligible conflict/relationship
+classic		chooser-renderer		0x881ce0	direct	chooser-title	What do you want to do?		categories0/3/5/6/7
+classic		chooser-renderer		0x881ce0	direct	chooser-title	Where would you like to move?		categories1/2
+classic		chooser-renderer		0x881ce0	direct	chooser-title	Who or what would you like to shoot?		category4/shoot flag
+classic		chooser-renderer		0x881ce0	direct	chooser-title	At whom or what would you like to throw?		category4/throw flag
+classic		chooser-renderer		0x881ce0	direct	quantity-title	{item}	item=whole item	selected option+90; mode-1
+classic		chooser-renderer		0x881ce0	direct	quantity-prompt	Pick up how many? (0-{maximum})	maximum=nonnegative decimal state+40	quantity flag state+38
+classic		chooser-renderer		0x881ce0	direct	quantity-input	{input}[_]	input=state+50 text or state+44 decimal	input-active state+48; underscore blink
+classic		chooser-renderer		0x881ce0	direct	button	Okay		quantity popup
+classic		chooser-renderer		0x881ce0	direct	button	Cancel		popup or chooser
+classic		ranged-prelude	0x118	0x7e20e0	conditional-tail	conflict-prefix	Encounter: 		conflict=0
+classic		ranged-prelude	0x118	0x7e20e0	conditional-tail	conflict-prefix	Horseplay: 		conflict=1
+classic		ranged-prelude	0x118	0x7e20e0	conditional-tail	conflict-prefix	Training: 		conflict=2
+classic		ranged-prelude	0x118	0x7e20e0	conditional-tail	conflict-prefix	Brawl: 		conflict=3
+classic		ranged-prelude	0x118	0x7e20e0	conditional-tail	conflict-prefix	Non-lethal: 		conflict=4
+classic		ranged-prelude	0x118	0x7e20e0	conditional-tail	conflict-prefix	Lethal: 		conflict=5
+classic		ranged-prelude	0x118	0x7e20e0	conditional-tail	conflict-prefix	No Quarter: 		conflict=6
+classic		ranged-prelude	0x118	0x7e20e0	conditional-tail	conflict-prefix	: 		direct conflict outside0..6 and not -1
+classic		ranged-prelude	0x118	0x7e20e0	conditional-tail	conflict-prefix	Ally: 		direct conflict=-1; eligible shared activity level exists
+classic		ranged-prelude	0x118	0x7e20e0	conditional-tail	conflict-prefix			self target or no eligible conflict/relationship

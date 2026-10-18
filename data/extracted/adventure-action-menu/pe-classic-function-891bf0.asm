@@ -1,0 +1,54 @@
+# classic PE:6a70b91c:0270a000; adventure_option_drop_itemst+0x10; RVA 0x891bf0..0x891cd1
+0x00891bf0: mov    QWORD PTR [rsp+0x18],rbx
+0x00891bf5: push   rdi
+0x00891bf6: sub    rsp,0x50
+0x00891bfa: mov    rax,QWORD PTR [rip+0x100443f]        # 0x141896040
+0x00891c01: xor    rax,rsp
+0x00891c04: mov    QWORD PTR [rsp+0x40],rax
+0x00891c09: mov    rdi,rdx
+0x00891c0c: mov    rbx,rcx
+0x00891c0f: mov    r8d,0x5
+0x00891c15: lea    rdx,[rip+0xdaed18]        # 0x141640934 ; literal="Drop "
+0x00891c1c: mov    rcx,rdi
+0x00891c1f: call   0x14006f9a0
+0x00891c24: xorps  xmm0,xmm0
+0x00891c27: movups XMMWORD PTR [rsp+0x20],xmm0
+0x00891c2c: mov    QWORD PTR [rsp+0x30],0x0
+0x00891c35: mov    QWORD PTR [rsp+0x38],0xf
+0x00891c3e: mov    BYTE PTR [rsp+0x20],0x0
+0x00891c43: mov    r9d,0x1
+0x00891c49: xor    r8d,r8d
+0x00891c4c: lea    rdx,[rsp+0x20]
+0x00891c51: mov    rcx,QWORD PTR [rbx+0x10]
+0x00891c55: call   0x140c62490
+0x00891c5a: lea    rdx,[rsp+0x20]
+0x00891c5f: cmp    QWORD PTR [rsp+0x38],0xf
+0x00891c65: cmova  rdx,QWORD PTR [rsp+0x20]
+0x00891c6b: mov    r8,QWORD PTR [rsp+0x30]
+0x00891c70: mov    rcx,rdi
+0x00891c73: call   0x14006f9a0
+0x00891c78: nop
+0x00891c79: mov    rdx,QWORD PTR [rsp+0x38]
+0x00891c7e: cmp    rdx,0xf
+0x00891c82: jbe    0x140891cb9
+0x00891c84: inc    rdx
+0x00891c87: mov    rcx,QWORD PTR [rsp+0x20]
+0x00891c8c: mov    rax,rcx
+0x00891c8f: cmp    rdx,0x1000
+0x00891c96: jb     0x140891cb4
+0x00891c98: add    rdx,0x27
+0x00891c9c: mov    rcx,QWORD PTR [rcx-0x8]
+0x00891ca0: sub    rax,rcx
+0x00891ca3: add    rax,0xfffffffffffffff8
+0x00891ca7: cmp    rax,0x1f
+0x00891cab: jbe    0x140891cb4
+0x00891cad: call   QWORD PTR [rip+0xd4eded]        # 0x1415e0aa0
+0x00891cb3: int3
+0x00891cb4: call   0x1415345f0
+0x00891cb9: mov    rcx,QWORD PTR [rsp+0x40]
+0x00891cbe: xor    rcx,rsp
+0x00891cc1: call   0x1415345d0
+0x00891cc6: mov    rbx,QWORD PTR [rsp+0x70]
+0x00891ccb: add    rsp,0x50
+0x00891ccf: pop    rdi
+0x00891cd0: ret

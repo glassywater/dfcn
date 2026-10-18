@@ -117,11 +117,47 @@ std::optional<std::string> Overlay::translate_inventory_location(
 
 #include "adventure_environment_material.inc"
 
+// The contaminant option owns one complete deposit, optionally followed by
+// its anatomical or containing-item location. Both chooser renderers use
+// the same native field; an item wrapper must not become part of a material.
+std::optional<std::string> Overlay::translate_adventure_deposit_caption(
+        std::string_view source, int y, int x) const {
+    source = trim_view(source);
+    std::vector<size_t> origins;
+    auto target = RULESETS.translate_with_origins(native_text_to_utf8(source),
+        "::health::contaminant::inventory", origins);
+    if (target || !source.ends_with(')')) return target;
+    for (size_t at = source.find(" ("); at != std::string_view::npos;
+            at = source.find(" (", at + 2)) {
+        const auto deposit = RULESETS.translate_with_origins(
+            native_text_to_utf8(source.substr(0, at)),
+            "::health::contaminant", origins);
+        if (!deposit) continue;
+        const auto location = translate_inventory_location(
+            source.substr(at + 2, source.size() - at - 3), y, x);
+        if (location) return *deposit + "（" + *location + "）";
+    }
+    return std::nullopt;
+}
+
 // Both the item modal and the map context chooser use these complete action
 // constructors. Keep item designations and directions typed in both places,
 // including native search candidates that have no screen coordinates.
 std::optional<std::string> Overlay::translate_adventure_item_action(
         const std::string &source, int y, int x) const {
+    // option+0x118 draws a conflict prelude before the shoot/throw caption.
+    // The two fields share one row, although they are separate native draws.
+    // Only these four ranged constructors accept the finite prelude grammar.
+    if (const size_t at = adventure_ranged_action_offset(source)) {
+        const std::string_view prefix = std::string_view(source).substr(0, at);
+        const std::string_view action = std::string_view(source).substr(at);
+        const auto target = translate_adventure_item_action(std::string(action), y, x);
+        if (!target) return std::nullopt;
+        if (prefix == ": ") return "：" + *target;
+        const auto level = exact_literal_translation("Adventure ranged prefix: " +
+            std::string(prefix.substr(0, prefix.size() - 2)));
+        return level ? std::optional<std::string>(*level + "：" + *target) : std::nullopt;
+    }
     const auto complete_term = [](const std::optional<std::string> &target) {
         return target && !target->empty() && target->find("[C:") == std::string::npos &&
             target->find_first_of("\r\n") == std::string::npos &&
@@ -251,6 +287,16 @@ std::optional<std::string> Overlay::translate_adventure_item_action(
                 const char kind = rule.template_kinds[slot];
                 if (kind == 'n') {
                     target = exact_literal_translation("Adventure action target: " + value);
+                    // Move/Charge selects either a unit or a complete tile.
+                    // Preserve a proven authored identity, then resolve the
+                    // terrain supplier before a permissive unit/item parser
+                    // can retain part of a stair, track or construction name.
+                    if (!target && (rule.source.starts_with("Move to ") ||
+                            rule.source.starts_with("Charge "))) {
+                        target = native_unit_identity_source_target(value);
+                        if (!target) target = RULESETS.translate_tile_description(
+                            native_text_to_utf8(value));
+                    }
                     if (!target) target = translate_ui_message_capture(value, true);
                 } else if (kind == 'p') target = location(value, rule);
                 else if (kind == 'd') {
@@ -282,9 +328,6 @@ std::optional<std::string> Overlay::translate_adventure_item_action(
                         (slot == 0 && (rule.source.starts_with("Eat {s}") ||
                                       rule.source.starts_with("Drink {s}")) &&
                             rule.source.find(" from ") == std::string::npos);
-                    if (environment_material)
-                        target = translate_adventure_environment_material(value);
-                    if (!target) target = exact_literal_translation("Adventure action target: " + value);
                     const bool terrain = rule.source.starts_with("Move to ") ||
                         rule.source.starts_with("Charge ") ||
                         rule.source.starts_with("Climb to ") || rule.source.starts_with("Hold ") ||
@@ -292,14 +335,32 @@ std::optional<std::string> Overlay::translate_adventure_item_action(
                         rule.source.starts_with("Release hold on ") || rule.source.starts_with("Fell ") ||
                         rule.source.starts_with("Ignite ") || rule.source.starts_with("Shoot ") ||
                         rule.source.starts_with("Throw at ");
+                    const bool building = rule.source.starts_with("Raise ") ||
+                        rule.source.starts_with("Lower ") || rule.source.starts_with("Break in ") ||
+                        rule.source.starts_with("Bash down ") || rule.source.starts_with("Topple ") ||
+                        rule.source.starts_with("Set on ") || rule.source.starts_with("Put on ") ||
+                        (rule.source.starts_with("Pick ") && rule.source.find(" lock") != std::string::npos);
+                    const bool building_or_item = rule.source.starts_with("Pull ") ||
+                        rule.source.starts_with("Put in ") ||
+                        (slot == 1 && rule.source.starts_with("Get {s} from "));
+                    const bool environment_only = environment_material &&
+                        (rule.source.starts_with("Fill ") || rule.source.starts_with("Suck "));
+                    target = exact_literal_translation("Adventure action target: " + value);
+                    if (!target && environment_material)
+                        target = translate_adventure_environment_material(value);
                     if (!target && terrain)
                         target = RULESETS.translate_tile_description(native_text_to_utf8(value));
-                    std::vector<size_t> origins;
-                    if (!target) target = RULESETS.translate_with_origins(
-                        native_text_to_utf8(value), "::health::contaminant::inventory", origins);
-                    if (!target) target = translate_inventory_item_name(value, y, x);
-                    if (!target) target = translate_inventory_location(value, y, x);
-                    if (!target) target = translate_ui_message_capture(value, false);
+                    if (!target && (building || building_or_item))
+                        target = translate_info_panel_title(NativeInfoTitleKind::Building, value);
+                    // Tile, environment material and building-only fields
+                    // have native suppliers of their own. A failed complete
+                    // supplier cannot be rescued by a partial item/name match.
+                    if (!target && !terrain && !environment_only && !building) {
+                        target = translate_adventure_deposit_caption(value, y, x);
+                        if (!target) target = translate_inventory_item_name(value, y, x);
+                        if (!target) target = translate_inventory_location(value, y, x);
+                        if (!target) target = translate_ui_message_capture(value, false);
+                    }
                 }
                 if (!target || target->empty()) continue;
                 captures.push_back(value);
@@ -665,27 +726,9 @@ std::vector<Match> Overlay::capture_adventure_item_modal(
                                 (heading == destination_heading || !picture_record)))
                             target = translate_adventure_item_action(complete, row_y, left);
                         action_caption = action_role || target.has_value();
-                        std::vector<size_t> origins;
                         const bool deposit_allowed = deposit_role || (untyped && !picture_record);
-                        if (!target && deposit_allowed) target = RULESETS.translate_with_origins(
-                            native_text_to_utf8(complete), "::health::contaminant::inventory", origins);
-                        // View-contaminant captions can wrap a complete
-                        // containing-item designation instead of anatomy.
-                        // Both typed fields must resolve before composition.
-                        if (!target && deposit_allowed && complete.ends_with(')')) {
-                            for (size_t at = complete.find(" ("); at != std::string::npos;
-                                 at = complete.find(" (", at + 2)) {
-                                const auto deposit = RULESETS.translate_with_origins(
-                                    native_text_to_utf8(std::string_view(complete).substr(0, at)),
-                                    "::health::contaminant::inventory", origins);
-                                const auto location = translate_inventory_location(
-                                    std::string_view(complete).substr(at + 2,
-                                        complete.size() - at - 3), row_y, left);
-                                if (!deposit || !location) continue;
-                                target = *deposit + "（" + *location + "）";
-                                break;
-                            }
-                        }
+                        if (!target && deposit_allowed)
+                            target = translate_adventure_deposit_caption(complete, row_y, left);
                         if (!target && !action_role && !deposit_role)
                             target = translate_inventory_item_name(complete, row_y, left);
                         // The native ingestion vector also contains pictured
