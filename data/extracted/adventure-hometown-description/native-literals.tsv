@@ -1,0 +1,193 @@
+edition	image	role	function_rva	instruction_rva	encoding	literal_rva	operand_role	source
+reference	PE:6a70a6d9:02711000	owner	0x63dd90	0x63de2b	rip-relative	0x1649b7c	finite-text-operand-or-substring	 is a 
+reference	PE:6a70a6d9:02711000	owner	0x63dd90	0x63df17	rip-relative	0x16a1220	finite-text-operand-or-substring	dark
+reference	PE:6a70a6d9:02711000	owner	0x63dd90	0x63df62	rip-relative	0x16a1220	finite-text-operand-or-substring	dark
+reference	PE:6a70a6d9:02711000	owner	0x63dd90	0x63dfd0	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	owner	0x63dd90	0x63e20a	rip-relative	0x15fd968	finite-text-operand-or-substring	.  
+reference	PE:6a70a6d9:02711000	owner	0x63dd90	0x63e266	rip-relative	0x1661f58	finite-text-operand-or-substring	Nobody lives there
+reference	PE:6a70a6d9:02711000	owner	0x63dd90	0x63e27e	rip-relative	0x1661f70	finite-text-operand-or-substring	Few live there
+reference	PE:6a70a6d9:02711000	owner	0x63dd90	0x63e296	rip-relative	0x1661f80	finite-text-operand-or-substring	A few dozen or less live there
+reference	PE:6a70a6d9:02711000	owner	0x63dd90	0x63e2ae	rip-relative	0x1661ec8	finite-text-operand-or-substring	Some dozens live there
+reference	PE:6a70a6d9:02711000	owner	0x63dd90	0x63e2c6	rip-relative	0x1661ee0	finite-text-operand-or-substring	Roughly a hundred live there
+reference	PE:6a70a6d9:02711000	owner	0x63dd90	0x63e2e1	rip-relative	0x1661f00	finite-text-operand-or-substring	Well over a hundred live there
+reference	PE:6a70a6d9:02711000	owner	0x63dd90	0x63e2f9	rip-relative	0x1661f20	finite-text-operand-or-substring	A few hundred live there
+reference	PE:6a70a6d9:02711000	owner	0x63dd90	0x63e311	rip-relative	0x1661e58	finite-text-operand-or-substring	Several hundred live there
+reference	PE:6a70a6d9:02711000	owner	0x63dd90	0x63e329	rip-relative	0x1661e78	finite-text-operand-or-substring	A thousand live there
+reference	PE:6a70a6d9:02711000	owner	0x63dd90	0x63e341	rip-relative	0x1661e90	finite-text-operand-or-substring	A few thousand live there
+reference	PE:6a70a6d9:02711000	owner	0x63dd90	0x63e350	rip-relative	0x1661eb0	finite-text-operand-or-substring	Thousands live there
+reference	PE:6a70a6d9:02711000	owner	0x63dd90	0x63e37c	rip-relative	0x1662098	finite-text-operand-or-substring	 and it is controlled by 
+reference	PE:6a70a6d9:02711000	owner	0x63dd90	0x63e3a2	rip-relative	0x15e85b4	finite-text-operand-or-substring	.
+reference	PE:6a70a6d9:02711000	owner	0x63dd90	0x63e46d	rip-relative	0x16620b8	finite-text-operand-or-substring	 is a religion
+reference	PE:6a70a6d9:02711000	owner	0x63dd90	0x63e560	rip-relative	0x16620c8	finite-text-operand-or-substring	 whose adherents worship 
+reference	PE:6a70a6d9:02711000	owner	0x63dd90	0x63e665	rip-relative	0x1662050	finite-text-operand-or-substring	 is the force
+reference	PE:6a70a6d9:02711000	owner	0x63dd90	0x63e66c	rip-relative	0x1661fb0	finite-text-operand-or-substring	, the force
+reference	PE:6a70a6d9:02711000	owner	0x63dd90	0x63e6a4	rip-relative	0x1661fc0	finite-text-operand-or-substring	 which permeates 
+reference	PE:6a70a6d9:02711000	owner	0x63dd90	0x63e74e	rip-relative	0x16620e8	finite-text-operand-or-substring	 is the 
+reference	PE:6a70a6d9:02711000	owner	0x63dd90	0x63e755	rip-relative	0x1662438	finite-text-operand-or-substring	, the 
+reference	PE:6a70a6d9:02711000	owner	0x63dd90	0x63e7c1	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	owner	0x63dd90	0x63e7e3	rip-relative	0x1662440	finite-text-operand-or-substring	goddess
+reference	PE:6a70a6d9:02711000	owner	0x63dd90	0x63e7f6	rip-relative	0x1661fa0	finite-text-operand-or-substring	god
+reference	PE:6a70a6d9:02711000	owner	0x63dd90	0x63e805	rip-relative	0x1661fa4	finite-text-operand-or-substring	deity
+reference	PE:6a70a6d9:02711000	owner	0x63dd90	0x63e849	rip-relative	0x15eb518	finite-text-operand-or-substring	 of 
+reference	PE:6a70a6d9:02711000	owner	0x63dd90	0x63e8d1	rip-relative	0x15e90d8	separator	, 
+reference	PE:6a70a6d9:02711000	owner	0x63dd90	0x63e901	rip-relative	0x15e9110	separator	 and 
+reference	PE:6a70a6d9:02711000	owner	0x63dd90	0x63e92b	rip-relative	0x15fd470	finite-text-operand-or-substring	, a 
+reference	PE:6a70a6d9:02711000	owner	0x63dd90	0x63e932	rip-relative	0x1649b7c	finite-text-operand-or-substring	 is a 
+reference	PE:6a70a6d9:02711000	owner	0x63dd90	0x63ea9b	rip-relative	0x15e85b4	finite-text-operand-or-substring	.
+reference	PE:6a70a6d9:02711000	owner	0x63dd90	0x63ed15	rip-relative	0x1662060	finite-text-operand-or-substring	They worship at 
+reference	PE:6a70a6d9:02711000	owner	0x63dd90	0x63ed71	rip-relative	0x1662060	finite-text-operand-or-substring	They worship at 
+reference	PE:6a70a6d9:02711000	owner	0x63dd90	0x63eddf	rip-relative	0x15e85b4	finite-text-operand-or-substring	.
+reference	PE:6a70a6d9:02711000	owner	0x63dd90	0x63ef7b	rip-relative	0x1662078	finite-text-operand-or-substring	Their temple 
+reference	PE:6a70a6d9:02711000	owner	0x63dd90	0x63efd8	rip-relative	0x1662078	finite-text-operand-or-substring	Their temple 
+reference	PE:6a70a6d9:02711000	owner	0x63dd90	0x63efe4	rip-relative	0x1662080	finite-text-operand-or-substring	mple 
+reference	PE:6a70a6d9:02711000	owner	0x63dd90	0x63efed	rip-relative	0x1662084	separator	 
+reference	PE:6a70a6d9:02711000	owner	0x63dd90	0x63f05f	rip-relative	0x1662088	finite-text-operand-or-substring	 is ruined.
+reference	PE:6a70a6d9:02711000	entity-field	0xb92900	0xb9296a	rip-relative	0x165e438	finite-text-operand-or-substring	[LPAGE:ENT:
+reference	PE:6a70a6d9:02711000	entity-field	0xb92900	0xb9298a	rip-relative	0x15fd690	finite-text-operand-or-substring	]
+reference	PE:6a70a6d9:02711000	entity-field	0xb92900	0xb929f4	rip-relative	0x15fda88	finite-text-operand-or-substring	[/LPAGE]
+reference	PE:6a70a6d9:02711000	entity-field	0xb92900	0xb92a4c	rip-relative	0x16df940	finite-text-operand-or-substring	an unknown civilization
+reference	PE:6a70a6d9:02711000	language-name	0xa946e0	0xa948a3	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	language-name	0xa946e0	0xa9495e	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	language-name	0xa946e0	0xa94a3b	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	language-name	0xa946e0	0xa94a5d	rip-relative	0x15ed9bc	finite-text-operand-or-substring	The 
+reference	PE:6a70a6d9:02711000	language-name	0xa946e0	0xa94a78	rip-relative	0x15e8e48	finite-text-operand-or-substring	the 
+reference	PE:6a70a6d9:02711000	language-name	0xa946e0	0xa94af2	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	language-name	0xa946e0	0xa94b11	rip-relative	0x15ed9bc	finite-text-operand-or-substring	The 
+reference	PE:6a70a6d9:02711000	language-name	0xa946e0	0xa94b1a	rip-relative	0x15e8e48	finite-text-operand-or-substring	the 
+reference	PE:6a70a6d9:02711000	language-name	0xa946e0	0xa94b9a	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	language-name	0xa946e0	0xa94bb9	rip-relative	0x15ed9bc	finite-text-operand-or-substring	The 
+reference	PE:6a70a6d9:02711000	language-name	0xa946e0	0xa94bc2	rip-relative	0x15e8e48	finite-text-operand-or-substring	the 
+reference	PE:6a70a6d9:02711000	language-name	0xa946e0	0xa94d1f	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	language-name	0xa946e0	0xa94d4b	rip-relative	0x15ed9bc	finite-text-operand-or-substring	The 
+reference	PE:6a70a6d9:02711000	language-name	0xa946e0	0xa94d62	rip-relative	0x15e8e48	finite-text-operand-or-substring	the 
+reference	PE:6a70a6d9:02711000	language-name	0xa946e0	0xa94e09	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	language-name	0xa946e0	0xa94e18	rip-relative	0x16ced90	finite-text-operand-or-substring	of 
+reference	PE:6a70a6d9:02711000	language-name	0xa946e0	0xa94e1f	rip-relative	0x16cee1c	finite-text-operand-or-substring	Of 
+reference	PE:6a70a6d9:02711000	cache-lines-wrap	0x8e7440	0x8e7567	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	site-type-field	0x10cbe50	0x10cbea5	rip-relative	0x164c400	finite-text-operand-or-substring	fortress
+reference	PE:6a70a6d9:02711000	site-type-field	0x10cbe50	0x10cbebc	rip-relative	0x1749898	finite-text-operand-or-substring	mountain halls
+reference	PE:6a70a6d9:02711000	site-type-field	0x10cbe50	0x10cbed1	rip-relative	0x17498a8	finite-text-operand-or-substring	hillocks
+reference	PE:6a70a6d9:02711000	site-type-field	0x10cbe50	0x10cbf03	rip-relative	0x17498b4	finite-text-operand-or-substring	pits
+reference	PE:6a70a6d9:02711000	site-type-field	0x10cbe50	0x10cbf0d	rip-relative	0x164c400	finite-text-operand-or-substring	fortress
+reference	PE:6a70a6d9:02711000	site-type-field	0x10cbe50	0x10cbf28	rip-relative	0x164c3ac	finite-text-operand-or-substring	cave
+reference	PE:6a70a6d9:02711000	site-type-field	0x10cbe50	0x10cbf3d	rip-relative	0x17498c0	finite-text-operand-or-substring	forest retreat
+reference	PE:6a70a6d9:02711000	site-type-field	0x10cbe50	0x10cbf6f	rip-relative	0x17498d0	finite-text-operand-or-substring	hamlet
+reference	PE:6a70a6d9:02711000	site-type-field	0x10cbe50	0x10cbf79	rip-relative	0x1646c04	finite-text-operand-or-substring	town
+reference	PE:6a70a6d9:02711000	site-type-field	0x10cbe50	0x10cbfbb	rip-relative	0x162c6ec	finite-text-operand-or-substring	shrine
+reference	PE:6a70a6d9:02711000	site-type-field	0x10cbe50	0x10cbfd0	rip-relative	0x17498d8	finite-text-operand-or-substring	labyrinth
+reference	PE:6a70a6d9:02711000	site-type-field	0x10cbe50	0x10cbfe5	rip-relative	0x16761e0	finite-text-operand-or-substring	lair
+reference	PE:6a70a6d9:02711000	site-type-field	0x10cbe50	0x10cc01c	rip-relative	0x1749a3c	finite-text-operand-or-substring	castle
+reference	PE:6a70a6d9:02711000	site-type-field	0x10cbe50	0x10cc031	rip-relative	0x1619950	finite-text-operand-or-substring	fort
+reference	PE:6a70a6d9:02711000	site-type-field	0x10cbe50	0x10cc046	rip-relative	0x1749a30	finite-text-operand-or-substring	monastery
+reference	PE:6a70a6d9:02711000	site-type-field	0x10cbe50	0x10cc05b	rip-relative	0x1712194	finite-text-operand-or-substring	tower
+reference	PE:6a70a6d9:02711000	site-type-field	0x10cbe50	0x10cc09d	rip-relative	0x1749a48	finite-text-operand-or-substring	mysterious palace
+reference	PE:6a70a6d9:02711000	site-type-field	0x10cbe50	0x10cc0b7	rip-relative	0x1749a60	finite-text-operand-or-substring	mysterious dungeon
+reference	PE:6a70a6d9:02711000	site-type-field	0x10cbe50	0x10cc0cc	rip-relative	0x1749a78	finite-text-operand-or-substring	mysterious lair
+reference	PE:6a70a6d9:02711000	site-type-field	0x10cbe50	0x10cc0e1	rip-relative	0x1747938	finite-text-operand-or-substring	vault
+reference	PE:6a70a6d9:02711000	site-type-field	0x10cbe50	0x10cc0f6	rip-relative	0x162fa4c	finite-text-operand-or-substring	tomb
+reference	PE:6a70a6d9:02711000	site-type-field	0x10cbe50	0x10cc111	rip-relative	0x1749a88	finite-text-operand-or-substring	monument
+reference	PE:6a70a6d9:02711000	site-type-field	0x10cbe50	0x10cc120	rip-relative	0x1749a94	finite-text-operand-or-substring	camp
+reference	PE:6a70a6d9:02711000	site-type-field	0x10cbe50	0x10cc135	rip-relative	0x1749aa0	finite-text-operand-or-substring	important location
+reference	PE:6a70a6d9:02711000	site-type-field	0x10cbe50	0x10cc14a	rip-relative	0x1675868	finite-text-operand-or-substring	site
+reference	PE:6a70a6d9:02711000	cached-tooltip-render-region	0x62d323	0x62d4fd	rip-relative	0x1660eb0	finite-text-operand-or-substring	 with temple
+reference	PE:6a70a6d9:02711000	cached-tooltip-render-region	0x62d323	0x62d51e	rip-relative	0x1660ec0	finite-text-operand-or-substring	 with ruined temple
+reference	PE:6a70a6d9:02711000	cached-tooltip-render-region	0x62d323	0x62d571	rip-relative	0x1600144	finite-text-operand-or-substring	Deity
+reference	PE:6a70a6d9:02711000	cached-tooltip-render-region	0x62d323	0x62d5a8	rip-relative	0x15ed068	finite-text-operand-or-substring	Force
+reference	PE:6a70a6d9:02711000	cached-tooltip-render-region	0x62d323	0x62d5c0	rip-relative	0x1600130	finite-text-operand-or-substring	Object of worship
+reference	PE:6a70a6d9:02711000	cached-tooltip-render-region	0x62d323	0x62d5d8	rip-relative	0x1600130	finite-text-operand-or-substring	Object of worship
+classic	PE:6a70b91c:0270a000	owner	0x63b7b0	0x63b84b	rip-relative	0x16445f4	finite-text-operand-or-substring	 is a 
+classic	PE:6a70b91c:0270a000	owner	0x63b7b0	0x63b937	rip-relative	0x169c118	finite-text-operand-or-substring	dark
+classic	PE:6a70b91c:0270a000	owner	0x63b7b0	0x63b982	rip-relative	0x169c118	finite-text-operand-or-substring	dark
+classic	PE:6a70b91c:0270a000	owner	0x63b7b0	0x63b9f0	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	owner	0x63b7b0	0x63bc2a	rip-relative	0x15f8850	finite-text-operand-or-substring	.  
+classic	PE:6a70b91c:0270a000	owner	0x63b7b0	0x63bc86	rip-relative	0x165d4a8	finite-text-operand-or-substring	Nobody lives there
+classic	PE:6a70b91c:0270a000	owner	0x63b7b0	0x63bc9e	rip-relative	0x165d4c0	finite-text-operand-or-substring	Few live there
+classic	PE:6a70b91c:0270a000	owner	0x63b7b0	0x63bcb6	rip-relative	0x165d4d0	finite-text-operand-or-substring	A few dozen or less live there
+classic	PE:6a70b91c:0270a000	owner	0x63b7b0	0x63bcce	rip-relative	0x165d4f0	finite-text-operand-or-substring	Some dozens live there
+classic	PE:6a70b91c:0270a000	owner	0x63b7b0	0x63bce6	rip-relative	0x165d428	finite-text-operand-or-substring	Roughly a hundred live there
+classic	PE:6a70b91c:0270a000	owner	0x63b7b0	0x63bd01	rip-relative	0x165d448	finite-text-operand-or-substring	Well over a hundred live there
+classic	PE:6a70b91c:0270a000	owner	0x63b7b0	0x63bd19	rip-relative	0x165d468	finite-text-operand-or-substring	A few hundred live there
+classic	PE:6a70b91c:0270a000	owner	0x63b7b0	0x63bd31	rip-relative	0x165d488	finite-text-operand-or-substring	Several hundred live there
+classic	PE:6a70b91c:0270a000	owner	0x63b7b0	0x63bd49	rip-relative	0x165d068	finite-text-operand-or-substring	A thousand live there
+classic	PE:6a70b91c:0270a000	owner	0x63b7b0	0x63bd61	rip-relative	0x165d080	finite-text-operand-or-substring	A few thousand live there
+classic	PE:6a70b91c:0270a000	owner	0x63b7b0	0x63bd70	rip-relative	0x165d0a0	finite-text-operand-or-substring	Thousands live there
+classic	PE:6a70b91c:0270a000	owner	0x63b7b0	0x63bd9c	rip-relative	0x165d0b8	finite-text-operand-or-substring	 and it is controlled by 
+classic	PE:6a70b91c:0270a000	owner	0x63b7b0	0x63bdc2	rip-relative	0x15e3574	finite-text-operand-or-substring	.
+classic	PE:6a70b91c:0270a000	owner	0x63b7b0	0x63be8d	rip-relative	0x165d018	finite-text-operand-or-substring	 is a religion
+classic	PE:6a70b91c:0270a000	owner	0x63b7b0	0x63bf80	rip-relative	0x165d028	finite-text-operand-or-substring	 whose adherents worship 
+classic	PE:6a70b91c:0270a000	owner	0x63b7b0	0x63c085	rip-relative	0x165d058	finite-text-operand-or-substring	 is the force
+classic	PE:6a70b91c:0270a000	owner	0x63b7b0	0x63c08c	rip-relative	0x165d510	finite-text-operand-or-substring	, the force
+classic	PE:6a70b91c:0270a000	owner	0x63b7b0	0x63c0c4	rip-relative	0x165d520	finite-text-operand-or-substring	 which permeates 
+classic	PE:6a70b91c:0270a000	owner	0x63b7b0	0x63c16e	rip-relative	0x165d048	finite-text-operand-or-substring	 is the 
+classic	PE:6a70b91c:0270a000	owner	0x63b7b0	0x63c175	rip-relative	0x165d560	finite-text-operand-or-substring	, the 
+classic	PE:6a70b91c:0270a000	owner	0x63b7b0	0x63c1e1	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	owner	0x63b7b0	0x63c203	rip-relative	0x165d568	finite-text-operand-or-substring	goddess
+classic	PE:6a70b91c:0270a000	owner	0x63b7b0	0x63c216	rip-relative	0x165d570	finite-text-operand-or-substring	god
+classic	PE:6a70b91c:0270a000	owner	0x63b7b0	0x63c225	rip-relative	0x165d508	finite-text-operand-or-substring	deity
+classic	PE:6a70b91c:0270a000	owner	0x63b7b0	0x63c269	rip-relative	0x15e64d0	finite-text-operand-or-substring	 of 
+classic	PE:6a70b91c:0270a000	owner	0x63b7b0	0x63c2f1	rip-relative	0x15e40c4	separator	, 
+classic	PE:6a70b91c:0270a000	owner	0x63b7b0	0x63c321	rip-relative	0x15e40bc	separator	 and 
+classic	PE:6a70b91c:0270a000	owner	0x63b7b0	0x63c34b	rip-relative	0x15f8228	finite-text-operand-or-substring	, a 
+classic	PE:6a70b91c:0270a000	owner	0x63b7b0	0x63c352	rip-relative	0x16445f4	finite-text-operand-or-substring	 is a 
+classic	PE:6a70b91c:0270a000	owner	0x63b7b0	0x63c4bb	rip-relative	0x15e3574	finite-text-operand-or-substring	.
+classic	PE:6a70b91c:0270a000	owner	0x63b7b0	0x63c735	rip-relative	0x165cfd0	finite-text-operand-or-substring	They worship at 
+classic	PE:6a70b91c:0270a000	owner	0x63b7b0	0x63c791	rip-relative	0x165cfd0	finite-text-operand-or-substring	They worship at 
+classic	PE:6a70b91c:0270a000	owner	0x63b7b0	0x63c7ff	rip-relative	0x15e3574	finite-text-operand-or-substring	.
+classic	PE:6a70b91c:0270a000	owner	0x63b7b0	0x63c99b	rip-relative	0x165cfe8	finite-text-operand-or-substring	Their temple 
+classic	PE:6a70b91c:0270a000	owner	0x63b7b0	0x63c9f8	rip-relative	0x165cfe8	finite-text-operand-or-substring	Their temple 
+classic	PE:6a70b91c:0270a000	owner	0x63b7b0	0x63ca04	rip-relative	0x165cff0	finite-text-operand-or-substring	mple 
+classic	PE:6a70b91c:0270a000	owner	0x63b7b0	0x63ca0d	rip-relative	0x165cff4	separator	 
+classic	PE:6a70b91c:0270a000	owner	0x63b7b0	0x63ca7f	rip-relative	0x165cff8	finite-text-operand-or-substring	 is ruined.
+classic	PE:6a70b91c:0270a000	entity-field	0xb8f940	0xb8f9aa	rip-relative	0x16592f8	finite-text-operand-or-substring	[LPAGE:ENT:
+classic	PE:6a70b91c:0270a000	entity-field	0xb8f940	0xb8f9ca	rip-relative	0x15f8664	finite-text-operand-or-substring	]
+classic	PE:6a70b91c:0270a000	entity-field	0xb8f940	0xb8fa34	rip-relative	0x15f8b50	finite-text-operand-or-substring	[/LPAGE]
+classic	PE:6a70b91c:0270a000	entity-field	0xb8f940	0xb8fa8c	rip-relative	0x16da720	finite-text-operand-or-substring	an unknown civilization
+classic	PE:6a70b91c:0270a000	language-name	0xa91760	0xa91923	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	language-name	0xa91760	0xa919de	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	language-name	0xa91760	0xa91abb	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	language-name	0xa91760	0xa91add	rip-relative	0x15e89c4	finite-text-operand-or-substring	The 
+classic	PE:6a70b91c:0270a000	language-name	0xa91760	0xa91af8	rip-relative	0x15e3e34	finite-text-operand-or-substring	the 
+classic	PE:6a70b91c:0270a000	language-name	0xa91760	0xa91b72	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	language-name	0xa91760	0xa91b91	rip-relative	0x15e89c4	finite-text-operand-or-substring	The 
+classic	PE:6a70b91c:0270a000	language-name	0xa91760	0xa91b9a	rip-relative	0x15e3e34	finite-text-operand-or-substring	the 
+classic	PE:6a70b91c:0270a000	language-name	0xa91760	0xa91c1a	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	language-name	0xa91760	0xa91c39	rip-relative	0x15e89c4	finite-text-operand-or-substring	The 
+classic	PE:6a70b91c:0270a000	language-name	0xa91760	0xa91c42	rip-relative	0x15e3e34	finite-text-operand-or-substring	the 
+classic	PE:6a70b91c:0270a000	language-name	0xa91760	0xa91d9f	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	language-name	0xa91760	0xa91dcb	rip-relative	0x15e89c4	finite-text-operand-or-substring	The 
+classic	PE:6a70b91c:0270a000	language-name	0xa91760	0xa91de2	rip-relative	0x15e3e34	finite-text-operand-or-substring	the 
+classic	PE:6a70b91c:0270a000	language-name	0xa91760	0xa91e89	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	language-name	0xa91760	0xa91e98	rip-relative	0x16cb220	finite-text-operand-or-substring	of 
+classic	PE:6a70b91c:0270a000	language-name	0xa91760	0xa91e9f	rip-relative	0x16cb2ac	finite-text-operand-or-substring	Of 
+classic	PE:6a70b91c:0270a000	cache-lines-wrap	0x8e4cb0	0x8e4dd7	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	site-type-field	0x10c6dc0	0x10c6e15	rip-relative	0x1647468	finite-text-operand-or-substring	fortress
+classic	PE:6a70b91c:0270a000	site-type-field	0x10c6dc0	0x10c6e2c	rip-relative	0x17441c0	finite-text-operand-or-substring	mountain halls
+classic	PE:6a70b91c:0270a000	site-type-field	0x10c6dc0	0x10c6e41	rip-relative	0x1744308	finite-text-operand-or-substring	hillocks
+classic	PE:6a70b91c:0270a000	site-type-field	0x10c6dc0	0x10c6e73	rip-relative	0x1744300	finite-text-operand-or-substring	pits
+classic	PE:6a70b91c:0270a000	site-type-field	0x10c6dc0	0x10c6e7d	rip-relative	0x1647468	finite-text-operand-or-substring	fortress
+classic	PE:6a70b91c:0270a000	site-type-field	0x10c6dc0	0x10c6e98	rip-relative	0x1647414	finite-text-operand-or-substring	cave
+classic	PE:6a70b91c:0270a000	site-type-field	0x10c6dc0	0x10c6ead	rip-relative	0x17442f0	finite-text-operand-or-substring	forest retreat
+classic	PE:6a70b91c:0270a000	site-type-field	0x10c6dc0	0x10c6edf	rip-relative	0x17442e4	finite-text-operand-or-substring	hamlet
+classic	PE:6a70b91c:0270a000	site-type-field	0x10c6dc0	0x10c6ee9	rip-relative	0x1641918	finite-text-operand-or-substring	town
+classic	PE:6a70b91c:0270a000	site-type-field	0x10c6dc0	0x10c6f2b	rip-relative	0x1627ebc	finite-text-operand-or-substring	shrine
+classic	PE:6a70b91c:0270a000	site-type-field	0x10c6dc0	0x10c6f40	rip-relative	0x17442d8	finite-text-operand-or-substring	labyrinth
+classic	PE:6a70b91c:0270a000	site-type-field	0x10c6dc0	0x10c6f55	rip-relative	0x1671674	finite-text-operand-or-substring	lair
+classic	PE:6a70b91c:0270a000	site-type-field	0x10c6dc0	0x10c6f8c	rip-relative	0x17442bc	finite-text-operand-or-substring	castle
+classic	PE:6a70b91c:0270a000	site-type-field	0x10c6dc0	0x10c6fa1	rip-relative	0x16148bc	finite-text-operand-or-substring	fort
+classic	PE:6a70b91c:0270a000	site-type-field	0x10c6dc0	0x10c6fb6	rip-relative	0x17442c8	finite-text-operand-or-substring	monastery
+classic	PE:6a70b91c:0270a000	site-type-field	0x10c6dc0	0x10c6fcb	rip-relative	0x170d454	finite-text-operand-or-substring	tower
+classic	PE:6a70b91c:0270a000	site-type-field	0x10c6dc0	0x10c700d	rip-relative	0x17442a8	finite-text-operand-or-substring	mysterious palace
+classic	PE:6a70b91c:0270a000	site-type-field	0x10c6dc0	0x10c7027	rip-relative	0x17443c0	finite-text-operand-or-substring	mysterious dungeon
+classic	PE:6a70b91c:0270a000	site-type-field	0x10c6dc0	0x10c703c	rip-relative	0x17443b0	finite-text-operand-or-substring	mysterious lair
+classic	PE:6a70b91c:0270a000	site-type-field	0x10c6dc0	0x10c7051	rip-relative	0x1742290	finite-text-operand-or-substring	vault
+classic	PE:6a70b91c:0270a000	site-type-field	0x10c6dc0	0x10c7066	rip-relative	0x162aa88	finite-text-operand-or-substring	tomb
+classic	PE:6a70b91c:0270a000	site-type-field	0x10c6dc0	0x10c7081	rip-relative	0x17443a0	finite-text-operand-or-substring	monument
+classic	PE:6a70b91c:0270a000	site-type-field	0x10c6dc0	0x10c7090	rip-relative	0x1744394	finite-text-operand-or-substring	camp
+classic	PE:6a70b91c:0270a000	site-type-field	0x10c6dc0	0x10c70a5	rip-relative	0x1744380	finite-text-operand-or-substring	important location
+classic	PE:6a70b91c:0270a000	site-type-field	0x10c6dc0	0x10c70ba	rip-relative	0x1670168	finite-text-operand-or-substring	site
+classic	PE:6a70b91c:0270a000	cached-tooltip-render-region	0x62ad43	0x62af1d	rip-relative	0x165c798	finite-text-operand-or-substring	 with temple
+classic	PE:6a70b91c:0270a000	cached-tooltip-render-region	0x62ad43	0x62af3e	rip-relative	0x165c678	finite-text-operand-or-substring	 with ruined temple
+classic	PE:6a70b91c:0270a000	cached-tooltip-render-region	0x62ad43	0x62af91	rip-relative	0x15faf9c	finite-text-operand-or-substring	Deity
+classic	PE:6a70b91c:0270a000	cached-tooltip-render-region	0x62ad43	0x62afc8	rip-relative	0x15e7fc0	finite-text-operand-or-substring	Force
+classic	PE:6a70b91c:0270a000	cached-tooltip-render-region	0x62ad43	0x62afe0	rip-relative	0x15faf88	finite-text-operand-or-substring	Object of worship
+classic	PE:6a70b91c:0270a000	cached-tooltip-render-region	0x62ad43	0x62aff8	rip-relative	0x15faf88	finite-text-operand-or-substring	Object of worship

@@ -62,6 +62,7 @@
 #include "native_performance_choice.h"
 #include "native_adventure_crafting.h"
 #include "native_adventure_belief_source.h"
+#include "native_adventure_home_source.h"
 #include "native_unit_identity.h"
 #include "native_justice_organizations.h"
 #include "native_justice_plots.h"
@@ -5479,6 +5480,8 @@ private:
         std::string_view source) const;
     std::optional<std::string> translate_adventure_belief_source(
         std::string_view source) const;
+    std::optional<std::string> translate_adventure_home_source(
+        std::string_view source, const NativeAdventureHomeCache &home) const;
     std::optional<std::string> translate_deity_spheres(
         std::string_view source) const;
     std::optional<std::string> translate_legends_name(
@@ -13411,7 +13414,9 @@ std::optional<std::string> Overlay::translate_adventure_background_source(
             // its intrinsic type and parent context select the name rules.
             auto translated = site ? translate_site_reference(value, true)
                 : translate_civilization_reference(value, false, true);
-            if (!translated) translated = native_text_to_utf8(value);
+            if (!translated && government && value == "an unknown civilization")
+                translated = translate_legends_term(value, false);
+            if (!translated && site) translated = native_text_to_utf8(value);
             if (translated && !translated->empty() && !complete(translated) &&
                     std::find(retained_names.begin(), retained_names.end(),
                         *translated) == retained_names.end())
@@ -21118,7 +21123,8 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     // the generic word matcher can turn them into mixed English/Chinese.
     std::vector<std::string> background_rows = screen_rows;
     const auto adventure_belief_cache = native_adventure_belief_cache();
-    if (screen_override || adventure_belief_cache) {
+    const auto adventure_home_cache = native_adventure_home_cache();
+    if (screen_override || adventure_belief_cache || adventure_home_cache) {
         // Immediate glyph suppression sees one layer at a time. The retained
         // faith cache also proves a live background page, whose earlier
         // phrase matches can have erased its labels from screen_rows. Use
@@ -43861,6 +43867,7 @@ static void native_settings_menu_release();
 #include "native_settings_menu.inc"
 #include "civilization_names.inc"
 #include "site_references.inc"
+#include "adventure_home_translation.inc"
 #include "native_save_names.inc"
 #include "native_graphics_toggle.inc"
 

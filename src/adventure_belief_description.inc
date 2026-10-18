@@ -1,6 +1,5 @@
-// A retained background tooltip can redraw its cached rows without another
-// paragraph call. Its own native row writer and a complete current frame
-// recover every deity/religion production without rebuilding the game's cache.
+// Home and Beliefs share the retained description row writer. Each cache
+// owns its complete source, including rows below the native screen clip.
         const auto belief_base = native_history_profile_base();
         const auto belief_writer = native_reference_address(belief_base,
 #ifdef _WIN32
@@ -11,15 +10,15 @@
             0xd1a7cb
 #endif
         );
-        const auto &belief_cache = adventure_belief_cache;
-        const auto belief_draws = belief_cache ? captured_native_drawn_text_view()
-            : NativeDrawnTextView{};
+        const auto append_background_cache = [&](const auto &belief_cache,
+                auto &&translate_source) {
+        if (!belief_cache || !belief_writer) return;
+        const auto belief_draws = captured_native_drawn_text_view();
         const NativePanelBorders belief_borders(*gps_);
         std::vector<SDL_Rect> belief_panels;
         const auto belief_cache_row = [&](const NativeDrawnTextRow &draw) {
-            return belief_cache ? std::find_if(belief_cache->rows.begin(), belief_cache->rows.end(),
-                [&](const auto &row) { return row.address == draw.address && row.source == draw.source; })
-                : std::vector<NativeAdventureBeliefCacheRow>::const_iterator{};
+            return std::find_if(belief_cache->rows.begin(), belief_cache->rows.end(),
+                [&](const auto &row) { return row.address == draw.address && row.source == draw.source; });
         };
         const auto belief_draw_is_current = [&](const NativeDrawnTextRow &draw) {
             if (!belief_cache || !belief_writer || draw.native_caller != belief_writer ||
@@ -163,7 +162,7 @@
                 // The selected character sheet owns the complete cache,
                 // including rows clipped by the screen's native bottom.
                 // Its dedicated grammar accounts for every cached word.
-                const auto translated = translate_adventure_belief_source(paragraph);
+                const auto translated = translate_source(paragraph);
                 if (!translated) { intact = false; break; }
                 if (!target.empty()) target += "\n\n";
                 target += *translated;
@@ -205,3 +204,10 @@
             for (const auto &row : card->rows)
                 std::fill_n(owned[row.y].begin() + row.x, row.source.size(), true);
         }
+        };
+        append_background_cache(adventure_belief_cache, [&](std::string_view paragraph) {
+            return translate_adventure_belief_source(paragraph);
+        });
+        append_background_cache(adventure_home_cache, [&](std::string_view paragraph) {
+            return translate_adventure_home_source(paragraph, *adventure_home_cache);
+        });

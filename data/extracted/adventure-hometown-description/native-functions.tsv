@@ -1,0 +1,17 @@
+edition	image	role	start_rva	code_end_rva	assembly_file
+reference	PE:6a70a6d9:02711000	owner	0x63dd90	0x63f0c8	reference-owner.asm
+reference	PE:6a70a6d9:02711000	entity-field	0xb92900	0xb92a78	reference-entity-field.asm
+reference	PE:6a70a6d9:02711000	language-name	0xa946e0	0xa94ea2	reference-language-name.asm
+reference	PE:6a70a6d9:02711000	cache-wrap	0x8e7310	0x8e7431	reference-cache-wrap.asm
+reference	PE:6a70a6d9:02711000	cache-lines-wrap	0x8e7440	0x8e7716	reference-cache-lines-wrap.asm
+reference	PE:6a70a6d9:02711000	site-controller-field	0x9b4e70	0x9b4ecd	reference-site-controller-field.asm
+reference	PE:6a70a6d9:02711000	site-type-field	0x10cbe50	0x10cc160	reference-site-type-field.asm
+reference	PE:6a70a6d9:02711000	controller-entity-raw	0x93ce30	0x93cee7	reference-controller-entity-raw.asm
+classic	PE:6a70b91c:0270a000	owner	0x63b7b0	0x63cae8	classic-owner.asm
+classic	PE:6a70b91c:0270a000	entity-field	0xb8f940	0xb8fab8	classic-entity-field.asm
+classic	PE:6a70b91c:0270a000	language-name	0xa91760	0xa91f22	classic-language-name.asm
+classic	PE:6a70b91c:0270a000	cache-wrap	0x8e4b80	0x8e4ca1	classic-cache-wrap.asm
+classic	PE:6a70b91c:0270a000	cache-lines-wrap	0x8e4cb0	0x8e4f86	classic-cache-lines-wrap.asm
+classic	PE:6a70b91c:0270a000	site-controller-field	0x9b26a0	0x9b26fd	classic-site-controller-field.asm
+classic	PE:6a70b91c:0270a000	site-type-field	0x10c6dc0	0x10c70d0	classic-site-type-field.asm
+classic	PE:6a70b91c:0270a000	controller-entity-raw	0x93a660	0x93a717	classic-controller-entity-raw.asm

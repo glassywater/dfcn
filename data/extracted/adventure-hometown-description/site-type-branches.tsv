@@ -1,0 +1,53 @@
+edition	branch	guard	source_rva	text
+reference	0,3/fortress	type in {0,3}; site+0x348 == 0; site+0x34c > 0	0x10cbea5	fortress
+reference	0,3/mountain-halls	type in {0,3}; site+0x348 > 0	0x10cbebc	mountain halls
+reference	0,3/hillocks	type in {0,3}; site+0x348 < 0 or (+0x348 == 0 and +0x34c <= 0)	0x10cbed1	hillocks
+reference	1/fortress	type == 1; site+0x2a8 > 0; **(site+0x2a0) byte & 8	0x10cbf0d	fortress
+reference	1/pits	type == 1; site+0x2a8 <= 0 or **(site+0x2a0) byte & 8 == 0	0x10cbf03	pits
+reference	2	type == 2	0x10cbf28	cave
+reference	4	type == 4	0x10cbf3d	forest retreat
+reference	5/town	type == 5; site+0x2a8 > 0; **(site+0x2a0) byte & 8	0x10cbf79	town
+reference	5/hamlet	type == 5; site+0x2a8 <= 0 or **(site+0x2a0) byte & 8 == 0	0x10cbf6f	hamlet
+reference	6	type == 6	0x10cc135	important location
+reference	7/labyrinth	type == 7; subtype ptr site+0x310 nonnull; short subtype+4 == 2	0x10cbfd0	labyrinth
+reference	7/shrine	type == 7; subtype ptr nonnull; short subtype+4 == 3	0x10cbfbb	shrine
+reference	7/lair	type == 7; subtype ptr null or short subtype+4 not in {2,3}	0x10cbfe5	lair
+reference	8/missing-subtype	type == 8; subtype ptr null	0x10cbea5	fortress
+reference	8/tower	type == 8; subtype ptr nonnull; short subtype+0 == 1	0x10cc05b	tower
+reference	8/monastery	type == 8; subtype ptr nonnull; short subtype+0 == 2	0x10cc046	monastery
+reference	8/fort	type == 8; subtype ptr nonnull; short subtype+0 == 3	0x10cc031	fort
+reference	8/castle	type == 8; subtype ptr nonnull; short subtype+0 not in {1,2,3}	0x10cc01c	castle
+reference	9	type == 9	0x10cc120	camp
+reference	10/tomb	type == 10; subtype ptr nonnull; short subtype+2 == 0	0x10cc0f6	tomb
+reference	10/vault	type == 10; subtype ptr nonnull; short subtype+2 == 1	0x10cc0e1	vault
+reference	10/palace	type == 10; subtype ptr nonnull; short subtype+2 == 2; site+0x228 >= 100	0x10cc09d	mysterious palace
+reference	10/dungeon	type == 10; subtype ptr nonnull; short subtype+2 == 2; 15 <= site+0x228 < 100	0x10cc0b7	mysterious dungeon
+reference	10/lair	type == 10; subtype ptr nonnull; short subtype+2 == 2; site+0x228 < 15	0x10cc0cc	mysterious lair
+reference	10/monument	type == 10; subtype ptr null or short subtype+2 not in {0,1,2}	0x10cc111	monument
+reference	default	unsigned site.type > 10, including negative enum values	0x10cc14a	site
+classic	0,3/fortress	type in {0,3}; site+0x348 == 0; site+0x34c > 0	0x10c6e15	fortress
+classic	0,3/mountain-halls	type in {0,3}; site+0x348 > 0	0x10c6e2c	mountain halls
+classic	0,3/hillocks	type in {0,3}; site+0x348 < 0 or (+0x348 == 0 and +0x34c <= 0)	0x10c6e41	hillocks
+classic	1/fortress	type == 1; site+0x2a8 > 0; **(site+0x2a0) byte & 8	0x10c6e7d	fortress
+classic	1/pits	type == 1; site+0x2a8 <= 0 or **(site+0x2a0) byte & 8 == 0	0x10c6e73	pits
+classic	2	type == 2	0x10c6e98	cave
+classic	4	type == 4	0x10c6ead	forest retreat
+classic	5/town	type == 5; site+0x2a8 > 0; **(site+0x2a0) byte & 8	0x10c6ee9	town
+classic	5/hamlet	type == 5; site+0x2a8 <= 0 or **(site+0x2a0) byte & 8 == 0	0x10c6edf	hamlet
+classic	6	type == 6	0x10c70a5	important location
+classic	7/labyrinth	type == 7; subtype ptr site+0x310 nonnull; short subtype+4 == 2	0x10c6f40	labyrinth
+classic	7/shrine	type == 7; subtype ptr nonnull; short subtype+4 == 3	0x10c6f2b	shrine
+classic	7/lair	type == 7; subtype ptr null or short subtype+4 not in {2,3}	0x10c6f55	lair
+classic	8/missing-subtype	type == 8; subtype ptr null	0x10c6e15	fortress
+classic	8/tower	type == 8; subtype ptr nonnull; short subtype+0 == 1	0x10c6fcb	tower
+classic	8/monastery	type == 8; subtype ptr nonnull; short subtype+0 == 2	0x10c6fb6	monastery
+classic	8/fort	type == 8; subtype ptr nonnull; short subtype+0 == 3	0x10c6fa1	fort
+classic	8/castle	type == 8; subtype ptr nonnull; short subtype+0 not in {1,2,3}	0x10c6f8c	castle
+classic	9	type == 9	0x10c7090	camp
+classic	10/tomb	type == 10; subtype ptr nonnull; short subtype+2 == 0	0x10c7066	tomb
+classic	10/vault	type == 10; subtype ptr nonnull; short subtype+2 == 1	0x10c7051	vault
+classic	10/palace	type == 10; subtype ptr nonnull; short subtype+2 == 2; site+0x228 >= 100	0x10c700d	mysterious palace
+classic	10/dungeon	type == 10; subtype ptr nonnull; short subtype+2 == 2; 15 <= site+0x228 < 100	0x10c7027	mysterious dungeon
+classic	10/lair	type == 10; subtype ptr nonnull; short subtype+2 == 2; site+0x228 < 15	0x10c703c	mysterious lair
+classic	10/monument	type == 10; subtype ptr null or short subtype+2 not in {0,1,2}	0x10c7081	monument
+classic	default	unsigned site.type > 10, including negative enum values	0x10c70ba	site
