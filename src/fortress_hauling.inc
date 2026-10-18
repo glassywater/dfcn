@@ -158,9 +158,7 @@ void Overlay::layout_fortress_hauling(SDL_Renderer *renderer) {
             match.layout_left = match.layout_right = false;
             match.layout_box_pixel_x = -1;
             match.layout_box_pixel_width = 0;
-            match.layout_font_pixels = pixels;
-            match.layout_lock_font_pixels = true;
-            match.layout_visual_height_pixels = 0;
+            match.layout_prepared = true;
             match.layout_line_height_pixels = gps_->tile_pixel_y;
         }
     }

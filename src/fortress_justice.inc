@@ -1097,9 +1097,7 @@ void Overlay::layout_fortress_justice(SDL_Renderer *renderer) {
                 layout_fortress_text_rows(renderer, {{&match}}, button->x,
                     button->x + button->w, true, true);
             } else {
-                match.layout_font_pixels = unified_font_pixels();
-                match.layout_lock_font_pixels = true;
-                match.layout_visual_height_pixels = 0;
+                match.layout_prepared = true;
                 match.layout_line_height_pixels = gps_->tile_pixel_y;
             }
             continue;
@@ -1256,9 +1254,7 @@ void Overlay::layout_fortress_justice(SDL_Renderer *renderer) {
         } else {
             match.layout_x = match.x;
             match.layout_left = true;
-            match.layout_font_pixels = unified_font_pixels();
-            match.layout_lock_font_pixels = true;
-            match.layout_visual_height_pixels = 0;
+            match.layout_prepared = true;
             match.layout_line_height_pixels = gps_->tile_pixel_y;
         }
     }

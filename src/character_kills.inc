@@ -222,15 +222,12 @@ void Overlay::layout_character_kill_rows(SDL_Renderer *renderer) {
     // Headings, identities, dates and aggregate counts share one measured
     // font and left margin. Native source rows still own glyph suppression,
     // the scroll position, title colors and the half-font baseline.
-    int pixels = gps_->tile_pixel_y;
     for (const auto &row : rows) {
         if (row.front()->layout_clip_right <= left) return;
         layout_fortress_text_rows(renderer, {row}, left,
             row.front()->layout_clip_right, true);
-        pixels = std::min(pixels, row.front()->layout_font_pixels);
     }
     // A short heading's captured width must not truncate a longer victim
     // record when the outer frame is unavailable. Keep each row's bounds
     // while sharing the smallest measured font across the list.
-    for (const auto &row : rows) row.front()->layout_font_pixels = pixels;
 }

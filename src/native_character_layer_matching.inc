@@ -1547,8 +1547,7 @@ std::vector<Match> Overlay::find_native_character_matches() const {
                         visible.layout_native_clip = prose_clip;
                         visible.layout_length = paragraph_width;
                         visible.layout_left = true;
-                        visible.layout_font_pixels = font_pixels;
-                        visible.layout_lock_font_pixels = true;
+                        visible.layout_prepared = true;
                         poetic_description_visible_lines.push_back(
                             std::move(visible));
                     }
@@ -2206,8 +2205,7 @@ std::vector<Match> Overlay::find_native_character_matches() const {
             visible.layout_fixed_baseline = true;
             visible.layout_length = paragraph_width;
             visible.layout_left = true;
-            visible.layout_font_pixels = font_pixels;
-            visible.layout_lock_font_pixels = true;
+            visible.layout_prepared = true;
             musical_visible_lines.push_back(std::move(visible));
         }
         if (musical_visible_lines.size() > first_visible_line) {
@@ -2285,7 +2283,7 @@ std::vector<Match> Overlay::find_native_character_matches() const {
                     notation.layout_length = std::max(
                         8, notation_right - notation_left);
                     notation.layout_left = true;
-                    notation.layout_font_pixels = notation_font_pixels;
+                    notation.layout_prepared = true;
                     musical_visible_lines.push_back(std::move(notation));
                     musical_layout_blocks.push_back({
                         y, first_line, 1, true,
@@ -2714,8 +2712,7 @@ std::vector<Match> Overlay::find_native_character_matches() const {
                         match.layout_length = width;
                         match.layout_clip_right = character_description_bounds->right;
                         match.layout_left = true;
-                        match.layout_font_pixels = font_pixels;
-                        match.layout_lock_font_pixels = true;
+                        match.layout_prepared = true;
                         match.layout_line_height_pixels = line_height;
                         for (int color : layout.line_foregrounds[i]) {
                             const int palette = color < 0 ? 7 : (color & 7) + ((color & 64) ? 8 : 0);
@@ -3087,7 +3084,7 @@ std::vector<Match> Overlay::find_native_character_matches() const {
                 visible.layout_fixed_baseline = true;
                 visible.layout_length = paragraph_width;
                 visible.layout_left = true;
-                visible.layout_font_pixels = font_pixels;
+                visible.layout_prepared = true;
                 personality_visible_lines.push_back(std::move(visible));
                 remaining_units -= consumed;
             }
@@ -3144,4 +3141,3 @@ std::vector<Match> Overlay::find_native_character_matches() const {
     }
     return finish_matches();
 }
-

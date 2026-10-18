@@ -298,12 +298,10 @@ void Overlay::layout_health_history_rows(SDL_Renderer *renderer) {
         left = std::min(left, match.layout_x);
     }
     if (records.empty()) return;
-    int pixels = gps_->tile_pixel_y;
     for (const auto &record : records) {
         if (record.front()->layout_clip_right <= left) return;
         layout_fortress_text_rows(renderer, {record}, left,
             record.front()->layout_clip_right, true);
-        pixels = std::min(pixels, record.front()->layout_font_pixels);
     }
-    for (const auto &record : records) record.front()->layout_font_pixels = pixels;
+    for (const auto &record : records) record.front()->layout_prepared = true;
 }

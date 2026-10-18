@@ -220,9 +220,7 @@ void Overlay::append_character_relation_rows(std::vector<std::string> &rows,
                 bool top = false;
                 const auto *cell = cell_at(field.start, source_y, &top);
                 if (cell) match.layout_foreground_rgb = (cell[1] << 16) | (cell[2] << 8) | cell[3];
-                match.layout_font_pixels = std::clamp(
-                    static_cast<int>(gps_->tile_pixel_y * config_.font_scale), 1, gps_->tile_pixel_y);
-                match.layout_lock_font_pixels = true;
+                match.layout_prepared = true;
                 match.layout_line_height_pixels = gps_->tile_pixel_y;
                 if (rows[source_y].compare(field.start, field.text.size(), field.text) != 0) continue;
                 std::fill_n(rows[source_y].begin() + field.start, field.text.size(), ' ');
@@ -237,7 +235,6 @@ void Overlay::layout_character_relation_rows(SDL_Renderer *renderer) {
     if (!native_character_translation_active(gps_)) return;
     if (!renderer || !face_ || !gps_ || gps_->tile_pixel_y <= 0 || gps_->tile_pixel_x <= 0) return;
     std::vector<Match *> fields;
-    int pixels = gps_->tile_pixel_y;
     const auto same_box = [](const Match &a, const Match &b) {
         if (!a.native_picture_caption_box || !b.native_picture_caption_box) return false;
         const auto &left = *a.native_picture_caption_box;
@@ -259,11 +256,10 @@ void Overlay::layout_character_relation_rows(SDL_Renderer *renderer) {
         match.layout_pixel_y = named ? (box.h - 2) * gps_->tile_pixel_y / 2 : 0;
         match.layout_fixed_baseline = true;
         layout_fortress_text_rows(renderer, {{&match}}, match.layout_x, match.layout_clip_right);
-        pixels = std::min(pixels, match.layout_font_pixels);
         fields.push_back(&match);
     }
     for (Match *field : fields) {
-        field->layout_font_pixels = pixels;
+        field->layout_prepared = true;
         const auto &box = *field->native_picture_caption_box;
         if (!native_ui_classic().value_or(false) || field->y != box.y + 2) continue;
         std::array<int32_t, 9> skin{};

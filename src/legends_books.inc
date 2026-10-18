@@ -279,8 +279,7 @@ bool Overlay::append_legends_typed_list_matches(std::vector<std::string> &rows,
             match.layout_y = y;
             match.layout_length = match.length;
             match.layout_left = true;
-            match.layout_font_pixels = std::max(config_.min_font_pixels,
-                static_cast<int>(gps_->tile_pixel_y * config_.font_scale));
+            match.layout_prepared = true;
             std::fill_n(row.begin() + x, match.length, ' ');
             if (only_y < 0 || only_y == y) matches.push_back(std::move(match));
             return true;
@@ -441,8 +440,7 @@ void Overlay::layout_legends_typed_lists(SDL_Renderer *renderer) {
                 width, tile_h};
             match->layout_left = true;
             match->layout_ellipsize = true;
-            match->layout_font_pixels = pixels;
-            match->layout_lock_font_pixels = true;
+            match->layout_prepared = true;
             match->layout_line_height_pixels = tile_h;
         }
     };

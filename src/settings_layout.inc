@@ -296,12 +296,10 @@ void Overlay::layout_settings_panels(SDL_Renderer *renderer) {
             match.layout_x = std::clamp(x, 0, std::max(0, gps_->dimx - 1));
             match.layout_length = std::max(1, std::min(width, gps_->dimx - match.layout_x));
             match.layout_left = true;
-            match.layout_font_pixels = settings_font_pixels;
+            match.layout_prepared = true;
             // Lock the actual visible height, not merely the nominal FreeType
             // point size. Otherwise values such as "100" are several pixels
             // shorter than adjacent Chinese labels despite sharing one size.
-            match.layout_visual_height_pixels = std::min(
-                gps_->tile_pixel_y, settings_font_pixels + 1);
         };
 
         // Identify the active settings page from semantic structures when
@@ -434,7 +432,7 @@ void Overlay::layout_settings_panels(SDL_Renderer *renderer) {
                 representative.layout_x = left;
                 representative.layout_length = std::max(1, right - left);
                 representative.layout_left = false;
-                representative.layout_font_pixels = settings_font_pixels;
+                representative.layout_prepared = true;
                 // Vertical placement and duplicate ownership come from the
                 // native half-font flags. Unflagged/ASCII captions stay on
                 // their actual row instead of being guessed into a two-row tab.
@@ -763,9 +761,7 @@ void Overlay::layout_settings_panels(SDL_Renderer *renderer) {
                     match.layout_x = sidebar_x;
                     match.layout_length = sidebar_width;
                     match.layout_left = false;
-                    match.layout_font_pixels = settings_font_pixels;
-                    match.layout_visual_height_pixels = std::min(
-                        gps_->tile_pixel_y, settings_font_pixels + 1);
+                    match.layout_prepared = true;
                 }
             }
 
@@ -798,9 +794,7 @@ void Overlay::layout_settings_panels(SDL_Renderer *renderer) {
                     match.layout_box_pixel_width = button->w;
                 }
                 match.layout_left = false;
-                match.layout_font_pixels = settings_font_pixels;
-                match.layout_visual_height_pixels = std::min(
-                    gps_->tile_pixel_y, settings_font_pixels + 1);
+                match.layout_prepared = true;
             }
         }
 
@@ -1121,9 +1115,7 @@ void Overlay::layout_settings_panels(SDL_Renderer *renderer) {
                 match.layout_length = std::max(
                     1, std::min(span_length, gps_->dimx - match.layout_x));
                 match.layout_left = false;
-                match.layout_font_pixels = settings_font_pixels;
-                match.layout_visual_height_pixels = std::min(
-                    gps_->tile_pixel_y, settings_font_pixels + 1);
+                match.layout_prepared = true;
             }
         }
 
@@ -1143,9 +1135,7 @@ void Overlay::layout_settings_panels(SDL_Renderer *renderer) {
                 header.layout_length = std::max(
                     1, std::min(span_length, gps_->dimx - header.layout_x));
                 header.layout_left = false;
-                header.layout_font_pixels = settings_font_pixels;
-                header.layout_visual_height_pixels = std::min(
-                    gps_->tile_pixel_y, settings_font_pixels + 1);
+                header.layout_prepared = true;
             };
             for (size_t index : announcement_control_headers) {
                 Match &header = prepared_matches_[index];

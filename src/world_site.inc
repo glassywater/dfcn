@@ -2020,8 +2020,7 @@ void Overlay::append_world_civilization_trade_summary(const NativeTextCard &deta
             match.layout_clip_right = column_right;
             match.layout_left = true;
             match.layout_ellipsize = true;
-            match.layout_font_pixels = unified_font_pixels();
-            match.layout_lock_font_pixels = true;
+            match.layout_prepared = true;
             match.layout_line_height_pixels = gps_->tile_pixel_y;
             match.layout_foreground_rgb = colors.front();
             match.layout_glyph_foreground_rgb = std::move(translated_colors);
@@ -2295,9 +2294,7 @@ void Overlay::append_world_civilization_officials(const NativeTextCard &details,
                 match.layout_clip_right = column_right;
                 match.layout_left = true;
                 match.layout_foreground_rgb = row.foregrounds[field.start];
-                match.layout_font_pixels = std::clamp(
-                    static_cast<int>(gps_->tile_pixel_y * config_.font_scale), 1, gps_->tile_pixel_y);
-                match.layout_lock_font_pixels = true;
+                match.layout_prepared = true;
                 match.layout_line_height_pixels = gps_->tile_pixel_y;
                 std::erase_if(matches, [&](const Match &other) {
                     return other.y == match.y && other.x < match.x + match.length &&

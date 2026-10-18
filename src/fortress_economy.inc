@@ -158,8 +158,7 @@ void Overlay::layout_fortress_economy(SDL_Renderer *renderer) {
         else {
             // Missing native geometry is resolved by the common renderer;
             // a source string length must not become a replacement frame.
-            field->layout_font_pixels = unified_font_pixels();
-            field->layout_lock_font_pixels = true;
+            field->layout_prepared = true;
         }
     }
 }

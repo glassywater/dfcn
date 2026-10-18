@@ -719,11 +719,8 @@ struct Match {
     // review, independent of the current wrapping width.
     bool native_help_source_only = false;
     std::string native_help_review_source{};
-    // A reflowed paragraph uses one shared FreeType pixel size on every line.
-    // Zero keeps the normal per-label auto-sizing path.
-    int layout_font_pixels = 0;
-    // Labels measured as a group must not shrink independently at draw time.
-    bool layout_lock_font_pixels = false;
+    // Set when a page pass has already assigned a stable text box.
+    bool layout_prepared = false;
     // Long-form reading can use a taller line box than a native grid row.
     // Source suppression still belongs to x/y/length, not this pixel box.
     int layout_line_height_pixels = 0;
@@ -738,9 +735,6 @@ struct Match {
     std::shared_ptr<LegendsTextFlow> legends_flow{};
     bool legends_flow_owner = false;
     bool native_history_event_row = false;
-    // Optional common reference height for a structured table. It is based
-    // on the font's stable line metrics, not each value's changing ink box.
-    int layout_visual_height_pixels = 0;
     // Some graphical widgets keep their captions in the logical grid only as
     // metadata, then redraw the complete native caption through an unrelated
     // SDL copy site. The final-composite matcher therefore cannot see those
@@ -1246,7 +1240,7 @@ struct GlyphTexture {
     int line_offset_y = 0;
     std::list<std::string>::iterator use;
 
-    SDL_Rect destination(const SDL_Rect &line, bool left, bool /*locked*/) const {
+    SDL_Rect destination(const SDL_Rect &line, bool left) const {
         // The full glyph run owns its drawing area. Font size and bitmap
         // dimensions never depend on the English caption's allocation.
         return {left ? line.x : line.x + (line.w - width) / 2,
@@ -3909,13 +3903,13 @@ private:
     void clear_fallback_fonts();
     int unified_font_pixels() const;
     int knowledge_text_row_height() const;
-    bool set_font_pixel_size(int pixels) const;
-    std::optional<FontLineMetrics> font_line_metrics(int pixels) const;
+    bool sync_font_pixel_size() const;
+    std::optional<FontLineMetrics> font_line_metrics() const;
     std::optional<FontSizeMetrics> font_size_metrics(int pixels) const;
-    FontGlyph resolve_font_glyph(uint32_t codepoint, int pixels) const;
+    FontGlyph resolve_font_glyph(uint32_t codepoint) const;
     FontGlyph resolve_font_glyph_at_size(uint32_t codepoint, int pixels) const;
     std::shared_ptr<const FontGlyphBitmap> font_glyph_bitmap(
-        const FontGlyph &glyph, int pixels) const;
+        const FontGlyph &glyph) const;
     std::shared_ptr<const FontGlyphBitmap> font_glyph_bitmap_at_size(
         const FontGlyph &glyph, int pixels) const;
     std::string active_font_path_;
@@ -5649,15 +5643,11 @@ private:
     const unsigned char *cell_at(int x, int y, bool *top) const;
     unsigned char visible_char_at(int x, int y) const;
     GlyphTexture *get_glyph_texture(SDL_Renderer *renderer, const std::string &text,
-                                    int max_width, int tile_height,
-                                    int forced_pixel_size = 0,
-                                    int target_visual_height = 0,
-                                    bool lock_pixel_size = false,
+                                    int max_width,
                                     const std::vector<int> &foregrounds = {},
                                     int wrap_width = 0);
     GlyphTexture rasterize(SDL_Renderer *renderer, const std::string &text,
-                           int max_width, int tile_height, int forced_pixel_size,
-                           int target_visual_height, bool lock_pixel_size,
+                           int max_width,
                            const std::vector<int> &foregrounds, int wrap_width);
     std::vector<ColoredText> colored_match_text(const Match &match, int foreground) const;
     std::vector<int> colored_match_foregrounds(const Match &match, int foreground) const;
@@ -6359,24 +6349,22 @@ int Overlay::unified_font_pixels() const {
     return pixels;
 }
 
-bool Overlay::set_font_pixel_size(int pixels) const {
-    // Legacy page fitters may request different sizes. Measurement and
-    // rendering must both use the global size, regardless of that request.
-    pixels = unified_font_pixels();
+bool Overlay::sync_font_pixel_size() const {
+    const int pixels = unified_font_pixels();
     if (!face_ || FT_Set_Pixel_Sizes(face_, 0, pixels) != 0) return false;
     for (FT_Face face : fallback_fonts_)
         if (FT_Set_Pixel_Sizes(face, 0, pixels) != 0) return false;
     return true;
 }
 
-std::optional<Overlay::FontLineMetrics> Overlay::font_line_metrics(int /*pixels*/) const {
+std::optional<Overlay::FontLineMetrics> Overlay::font_line_metrics() const {
     const auto metrics = font_size_metrics(unified_font_pixels());
     return metrics ? std::optional<FontLineMetrics>(metrics->line) : std::nullopt;
 }
 
 int Overlay::knowledge_text_row_height() const {
     const int native_height = native_text_row_height(gps_);
-    const auto metrics = font_line_metrics(unified_font_pixels());
+    const auto metrics = font_line_metrics();
     // A reading document allocates its own wrapped lines. The shared font
     // can be taller than DF's grid after UI scaling; advancing only one
     // grid row then draws consecutive prose lines through one another.
@@ -6419,7 +6407,7 @@ std::optional<Overlay::FontSizeMetrics> Overlay::font_size_metrics(int pixels) c
     return metrics;
 }
 
-Overlay::FontGlyph Overlay::resolve_font_glyph(uint32_t codepoint, int /*pixels*/) const {
+Overlay::FontGlyph Overlay::resolve_font_glyph(uint32_t codepoint) const {
     return resolve_font_glyph_at_size(codepoint, unified_font_pixels());
 }
 
@@ -6455,7 +6443,7 @@ Overlay::FontGlyph Overlay::resolve_font_glyph_at_size(uint32_t codepoint, int p
 }
 
 std::shared_ptr<const Overlay::FontGlyphBitmap> Overlay::font_glyph_bitmap(
-        const FontGlyph &glyph, int /*pixels*/) const {
+        const FontGlyph &glyph) const {
     return font_glyph_bitmap_at_size(glyph, unified_font_pixels());
 }
 
@@ -16638,16 +16626,16 @@ const NativeKnowledgeLayout &Overlay::prepare_native_knowledge_layout(
             for (uint32_t cp : cps) glyphs.try_emplace(cp);
         }
         bool font_ready = false;
-        if (!targets.empty() && set_font_pixel_size(next.font_pixels)) {
+        if (!targets.empty() && sync_font_pixel_size()) {
             int ink_top = INT32_MAX;
             int ink_bottom = INT32_MIN;
             int widest_glyph = 0;
             for (auto &[cp, metrics] : glyphs) {
                 metrics = {};
-                const FontGlyph glyph = resolve_font_glyph(cp, next.font_pixels);
+                const FontGlyph glyph = resolve_font_glyph(cp);
                 metrics.face = glyph.face;
                 metrics.index = glyph.index;
-                const auto bitmap = font_glyph_bitmap(glyph, next.font_pixels);
+                const auto bitmap = font_glyph_bitmap(glyph);
                 if (!bitmap) continue;
                 metrics.advance = bitmap->advance;
                 if (bitmap->width > 0 && bitmap->rows > 0) {
@@ -17223,7 +17211,7 @@ std::vector<Match> Overlay::resolve_native_knowledge_matches(
         match.layout_y = y;
         match.layout_length = width;
         match.layout_left = true;
-        match.layout_font_pixels = layout.font_pixels;
+        match.layout_prepared = true;
         match.layout_line_height_pixels = layout.line_height_pixels;
         match.layout_fixed_baseline = true;
         match.layout_native_clip = document_clip;
@@ -18275,9 +18263,8 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
             header.layout_length = mod_list->header_right - header.x;
             header.layout_clip_right = mod_list->header_right;
             header.layout_left = true;
-            header.layout_font_pixels = unified_font_pixels();
+            header.layout_prepared = true;
             header.layout_line_height_pixels = gps_->tile_pixel_y;
-            header.layout_lock_font_pixels = true;
             header.layout_ellipsize = true;
             std::fill_n(row.begin() + header.x, header.length, ' ');
             mod_list_headers.push_back(std::move(header));
@@ -19056,8 +19043,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                 match.layout_left = true;
                 match.layout_right = false;
                 match.layout_ellipsize = true;
-                match.layout_font_pixels = unified_font_pixels();
-                match.layout_lock_font_pixels = true;
+                match.layout_prepared = true;
             }
         }
         return std::move(result);
@@ -20383,8 +20369,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
             match.layout_length = match.length;
             match.layout_left = true;
             match.layout_clip_right = std::min(right, gps_->dimx);
-            match.layout_font_pixels = std::max(config_.min_font_pixels,
-                static_cast<int>(gps_->tile_pixel_y * config_.font_scale));
+            match.layout_prepared = true;
             result.push_back(std::move(match));
         };
         for (const auto &draw : draws) {
@@ -20414,8 +20399,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                         match.layout_left = true;
                         match.layout_clip_right = right;
                         match.layout_foreground_rgb = draw.foreground_rgb;
-                        match.layout_font_pixels = std::max(config_.min_font_pixels,
-                            static_cast<int>(gps_->tile_pixel_y * config_.font_scale));
+                        match.layout_prepared = true;
                         result.push_back(std::move(match));
                     }
                     continue;
@@ -20507,8 +20491,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                 match.layout_y = y;
                 match.layout_length = length;
                 match.layout_left = true;
-                match.layout_font_pixels = std::max(config_.min_font_pixels,
-                    static_cast<int>(gps_->tile_pixel_y * config_.font_scale));
+                match.layout_prepared = true;
                 result.push_back(std::move(match));
                 begin = end;
                 break;
@@ -25377,8 +25360,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                         visible.layout_native_clip = prose_clip;
                         visible.layout_length = paragraph_width;
                         visible.layout_left = true;
-                        visible.layout_font_pixels = font_pixels;
-                        visible.layout_lock_font_pixels = true;
+                        visible.layout_prepared = true;
                         poetic_description_visible_lines.push_back(
                             std::move(visible));
                     }
@@ -26041,8 +26023,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
             visible.layout_fixed_baseline = true;
             visible.layout_length = paragraph_width;
             visible.layout_left = true;
-            visible.layout_font_pixels = font_pixels;
-            visible.layout_lock_font_pixels = true;
+            visible.layout_prepared = true;
             musical_visible_lines.push_back(std::move(visible));
         }
         if (musical_visible_lines.size() > first_visible_line) {
@@ -26120,7 +26101,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                     notation.layout_length = std::max(
                         8, notation_right - notation_left);
                     notation.layout_left = true;
-                    notation.layout_font_pixels = notation_font_pixels;
+                    notation.layout_prepared = true;
                     musical_visible_lines.push_back(std::move(notation));
                     musical_layout_blocks.push_back({
                         y, first_line, 1, true,
@@ -26541,8 +26522,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                         match.layout_length = width;
                         match.layout_clip_right = character_description_bounds->right;
                         match.layout_left = true;
-                        match.layout_font_pixels = font_pixels;
-                        match.layout_lock_font_pixels = true;
+                        match.layout_prepared = true;
                         match.layout_line_height_pixels = line_height;
                         for (int color : layout.line_foregrounds[i]) {
                             const int palette = color < 0 ? 7 : (color & 7) + ((color & 64) ? 8 : 0);
@@ -26905,7 +26885,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                 visible.layout_fixed_baseline = true;
                 visible.layout_length = paragraph_width;
                 visible.layout_left = true;
-                visible.layout_font_pixels = font_pixels;
+                visible.layout_prepared = true;
                 personality_visible_lines.push_back(std::move(visible));
                 remaining_units -= consumed;
             }
@@ -27463,15 +27443,13 @@ static void preserve_keybinding_code(Match &match) {
 static void lock_keybinding_code_style(Match &match, int font_pixels,
                                        int tile_pixel_y) {
     preserve_keybinding_code(match);
-    match.layout_font_pixels = font_pixels;
+    match.layout_prepared = true;
     (void)tile_pixel_y;
     // Key identifiers are Latin labels, not mixed-script UI captions. Their
     // nominal font size must be the invariant. Asking rasterize() to normalize
     // the complete ink box makes strings containing descenders (Numpad/Page)
     // stop growing earlier than digits or capitals, producing several visible
-    // sizes despite one requested font. Zero disables that per-string optical
-    // enlargement while layout_font_pixels remains fixed for every key code.
-    match.layout_visual_height_pixels = 0;
+    // sizes despite one requested font.
 }
 
 static constexpr int kKeybindingCodeSpanColumns = 32;
@@ -28047,9 +28025,7 @@ void Overlay::layout_embark_item_category_rows(SDL_Renderer *renderer,
             label.layout_ellipsize = true;
         }
         label.layout_line_height_pixels = tile_h;
-        label.layout_font_pixels = pixels;
-        label.layout_visual_height_pixels = 0;
-        label.layout_lock_font_pixels = true;
+        label.layout_prepared = true;
     }
 }
 
@@ -28489,8 +28465,7 @@ int Overlay::layout_embark_named_item_rows(std::vector<Match> &matches,
             representative.layout_x = name_left;
             representative.layout_length = std::max(1, cost.x - name_left - 2);
             representative.layout_left = true;
-            representative.layout_font_pixels = font_pixels;
-            representative.layout_visual_height_pixels = visual_height;
+            representative.layout_prepared = true;
             // Keep the original spans for glyph suppression, including the
             // separate count. No graphical clear/readback is needed.
             for (size_t index : name_parts) {
@@ -28767,16 +28742,14 @@ static int layout_embark_item_cost_rows(std::vector<Match> &matches,
             name.layout_x = name_x;
             name.layout_length = name_width;
             name.layout_left = true;
-            name.layout_font_pixels = font_pixels;
-            name.layout_visual_height_pixels = visual_height;
+            name.layout_prepared = true;
 
             Match &cost = matches[row.cost];
             cost.layout_x = cost_x;
             cost.layout_length = cost_width;
             cost.layout_left = false;
             cost.layout_right = true;
-            cost.layout_font_pixels = font_pixels;
-            cost.layout_visual_height_pixels = visual_height;
+            cost.layout_prepared = true;
             ++laid_out;
         }
     }
@@ -28893,8 +28866,7 @@ static int layout_animal_picker_rows(std::vector<Match> &matches,
             name.layout_left = true;
             name.layout_right = false;
             name.layout_clip_right = cost_x - 2;
-            name.layout_font_pixels = font_pixels;
-            name.layout_visual_height_pixels = visual_height;
+            name.layout_prepared = true;
 
             Match &cost = matches[row.cost];
             cost.native_animal_picker_row = true;
@@ -28905,8 +28877,7 @@ static int layout_animal_picker_rows(std::vector<Match> &matches,
             cost.layout_left = false;
             cost.layout_right = true;
             cost.layout_clip_right = cost_right;
-            cost.layout_font_pixels = font_pixels;
-            cost.layout_visual_height_pixels = visual_height;
+            cost.layout_prepared = true;
             ++laid_out;
         }
     }
@@ -33295,8 +33266,7 @@ static bool layout_arena_equipment_list(std::vector<Match> &matches,
         category.layout_x = category_x;
         category.layout_length = category_span;
         category.layout_left = false;
-        category.layout_font_pixels = font_pixels;
-        category.layout_visual_height_pixels = category_visual_height;
+        category.layout_prepared = true;
     }
 
     // The item name is drawn as several independently centred native runs.
@@ -33457,8 +33427,7 @@ static bool layout_arena_equipment_list(std::vector<Match> &matches,
         primary.layout_x = common_x;
         primary.layout_length = common_width;
         primary.layout_left = true;
-        primary.layout_font_pixels = font_pixels;
-        primary.layout_visual_height_pixels = visual_height;
+        primary.layout_prepared = true;
         for (size_t position = 1; position < indices.size(); ++position) {
             matches[indices[position]].target.clear();
         }
@@ -33605,8 +33574,7 @@ static bool layout_arena_creature_list(std::vector<Match> &matches,
         match.layout_x = common_x;
         match.layout_length = common_width;
         match.layout_left = true;
-        match.layout_font_pixels = font_pixels;
-        match.layout_visual_height_pixels = visual_height;
+        match.layout_prepared = true;
     }
     return true;
 }
@@ -33686,8 +33654,7 @@ static bool layout_arena_tree_list(std::vector<Match> &matches,
             match.x, 0, std::max(0, screen_columns - 1));
         match.layout_length = std::max(1, screen_columns - match.layout_x - 4);
         match.layout_left = true;
-        match.layout_font_pixels = font_pixels;
-        match.layout_visual_height_pixels = visual_height;
+        match.layout_prepared = true;
         positioned = true;
     }
     return positioned;
@@ -33795,8 +33762,7 @@ static bool layout_arena_environment_panel(std::vector<Match> &matches,
             match.layout_box_pixel_x = -1;
             match.layout_box_pixel_width = 0;
             match.layout_left = true;
-            match.layout_font_pixels = font_pixels;
-            match.layout_visual_height_pixels = visual_height;
+            match.layout_prepared = true;
         }
     }
     return true;
@@ -33918,8 +33884,7 @@ static bool layout_arena_creature_conditions(std::vector<Match> &matches,
         match.layout_x = common_x;
         match.layout_length = common_width;
         match.layout_left = true;
-        match.layout_font_pixels = font_pixels;
-        match.layout_visual_height_pixels = visual_height;
+        match.layout_prepared = true;
     }
     return true;
 }
@@ -34526,10 +34491,7 @@ void Overlay::recover_embark_knowledge_list() {
         match.layout_y = match.y;
         match.layout_length = std::max(1, gps_->dimx - 4 - column);
         match.layout_left = true;
-        match.layout_font_pixels = std::max(config_.min_font_pixels,
-            static_cast<int>(gps_->tile_pixel_y * config_.font_scale));
-        match.layout_visual_height_pixels = std::min(
-            gps_->tile_pixel_y, match.layout_font_pixels + 1);
+        match.layout_prepared = true;
         remember_colour(match, nullptr);
     }
     if (!paused) {
@@ -35147,9 +35109,7 @@ void Overlay::prepare_frame() {
                     synthetic.layout_length = 16;
                     synthetic.layout_left = false;
                     synthetic.layout_pixel_y = std::max(1, gps_->tile_pixel_y / 4);
-                    synthetic.layout_font_pixels = std::max(
-                        config_.min_font_pixels,
-                        static_cast<int>(gps_->tile_pixel_y * config_.font_scale));
+                    synthetic.layout_prepared = true;
                     synthetic.graphical_clear_x = synthetic.x - 1;
                     synthetic.graphical_clear_y = 2;
                     synthetic.graphical_clear_width = source_length + 1;
@@ -36809,8 +36769,7 @@ static bool layout_embark_skill_rows(std::vector<Match> &matches,
         match.layout_x = common_x;
         match.layout_length = common_width;
         match.layout_left = true;
-        match.layout_font_pixels = font_pixels;
-        match.layout_visual_height_pixels = visual_height;
+        match.layout_prepared = true;
     }
     return true;
 }
@@ -36819,11 +36778,8 @@ static bool layout_embark_skill_rows(std::vector<Match> &matches,
 
 
 // Fixed font size does not grant a caption any additional control space.
-static void preserve_fixed_font_text_box(Match &match, const GlyphTexture *,
-        int pixels, const graphicst &, int) {
-    match.layout_font_pixels = pixels;
-    match.layout_lock_font_pixels = true;
-    match.layout_visual_height_pixels = 0;
+static void preserve_fixed_font_text_box(Match &match) {
+    match.layout_prepared = true;
 }
 bool Overlay::layout_symbol_candidate_list(SDL_Renderer *renderer) {
     if (!gps_ || !face_ || !renderer ||
@@ -36851,10 +36807,8 @@ bool Overlay::layout_symbol_candidate_list(SDL_Renderer *renderer) {
         label->layout_length = right - left;
         label->layout_clip_right = right;
         label->layout_left = true;
-        label->layout_font_pixels = pixels;
-        label->layout_lock_font_pixels = true;
-        preserve_fixed_font_text_box(*label, get_glyph_texture(renderer, label->target,
-            width, tile_h, pixels, 0, true), pixels, *gps_, config_.horizontal_padding);
+        label->layout_prepared = true;
+        preserve_fixed_font_text_box(*label);
     }
     static std::array<bool, 8> logged_symbol_layout{};
     const bool shapes = std::any_of(labels.begin(), labels.end(), [](const Match *label) {
@@ -36936,10 +36890,8 @@ bool Overlay::layout_symbol_exit_confirmation(SDL_Renderer *renderer) {
         label.layout_x = left[i / 2];
         label.layout_length = right[i / 2] - left[i / 2];
         label.layout_left = true;
-        label.layout_font_pixels = pixels;
-        label.layout_lock_font_pixels = true;
-        preserve_fixed_font_text_box(label, get_glyph_texture(renderer, label.target,
-            widths[i / 2], tile_h, pixels, 0, true), pixels, *gps_, config_.horizontal_padding);
+        label.layout_prepared = true;
+        preserve_fixed_font_text_box(label);
     }
     static bool logged = false;
     if (!logged) {
@@ -37056,7 +37008,7 @@ bool Overlay::layout_adventure_setup_selection(SDL_Renderer *renderer) {
         match.layout_x = match.x;
         match.layout_length = match.length;
         match.layout_left = false;
-        match.layout_font_pixels = font_pixels;
+        match.layout_prepared = true;
         if (rect && rect->w > 0) {
             match.layout_box_pixel_x = rect->x;
             match.layout_box_pixel_width = rect->w;
@@ -37098,8 +37050,7 @@ bool Overlay::layout_adventure_setup_selection(SDL_Renderer *renderer) {
             origin->layout_box_pixel_width = 0;
             origin->layout_clip_right = right;
             origin->layout_left = true;
-            origin->layout_font_pixels = font_pixels;
-            origin->layout_lock_font_pixels = true;
+            origin->layout_prepared = true;
         }
         // The two card paragraphs already own their captured source rows and
         // map-clipped reflow boxes. Do not merge them with list captions.
@@ -37176,9 +37127,7 @@ bool Overlay::layout_adventure_setup_selection(SDL_Renderer *renderer) {
             race->layout_length = right - left;
             race->layout_clip_right = right;
             race->layout_left = true;
-            preserve_fixed_font_text_box(*race, get_glyph_texture(renderer, race->target,
-                available_pixels, tile_h, font_pixels, 0, true),
-                font_pixels, *gps_, config_.horizontal_padding);
+            preserve_fixed_font_text_box(*race);
         }
     }
 
@@ -37189,7 +37138,7 @@ bool Overlay::layout_adventure_setup_selection(SDL_Renderer *renderer) {
         location.layout_x = location.x;
         location.layout_length = location.length;
         location.layout_left = true;
-        location.layout_font_pixels = font_pixels;
+        location.layout_prepared = true;
         // Distribution and the species' description are distinct paragraphs,
         // not fragments to concatenate/rebalance into a single prose block.
         for (Match &description : matches) {
@@ -37205,7 +37154,7 @@ bool Overlay::layout_adventure_setup_selection(SDL_Renderer *renderer) {
             description.layout_length = std::max(location.length,
                 description.x + description.length - location.x);
             description.layout_left = true;
-            description.layout_font_pixels = font_pixels;
+            description.layout_prepared = true;
         }
     }
     static std::array<bool, 2> logged_species_layout{};
@@ -37327,11 +37276,8 @@ void Overlay::layout_adventure_occupation_list(SDL_Renderer *renderer) {
         label->layout_length = right - left;
         label->layout_clip_right = right;
         label->layout_left = true;
-        label->layout_font_pixels = shared_pixels;
-        label->layout_lock_font_pixels = true;
-        preserve_fixed_font_text_box(*label, get_glyph_texture(renderer, label->target,
-            max_width, tile_h, shared_pixels, 0, true),
-            shared_pixels, *gps_, config_.horizontal_padding);
+        label->layout_prepared = true;
+        preserve_fixed_font_text_box(*label);
     }
 }
 
@@ -37416,12 +37362,7 @@ bool Overlay::layout_adventure_identity_professions(SDL_Renderer *renderer) {
         layout_fortress_text_rows(renderer, rows, text_left, text_right, true);
 
     // Keep the question at the panel's native inset and Cancel in its own
-    // button. Both use the list's fixed font, without merging the question
-    // into a neighbouring row or retaining per-English-span font fitting.
-    const int pixels = !rows.empty() && rows.front().front()->layout_font_pixels > 0
-        ? rows.front().front()->layout_font_pixels
-        : std::clamp(static_cast<int>(gps_->tile_pixel_y * config_.font_scale),
-            1, gps_->tile_pixel_y);
+    // button without merging the question into a neighbouring row.
     int heading_right = right;
     for (Match &match : prepared_matches_) {
         if (match.source != "Cancel" || match.target.empty() ||
@@ -37435,17 +37376,13 @@ bool Overlay::layout_adventure_identity_professions(SDL_Renderer *renderer) {
         match.layout_x = button->first;
         match.layout_length = button->second - button->first;
         match.layout_left = false;
-        match.layout_font_pixels = pixels;
-        match.layout_lock_font_pixels = true;
-        match.layout_visual_height_pixels = 0;
+        match.layout_prepared = true;
         match.layout_line_height_pixels = gps_->tile_pixel_y;
     }
     heading->layout_x = heading->x;
     heading->layout_length = heading_right - heading->x;
     heading->layout_left = true;
-    heading->layout_font_pixels = pixels;
-    heading->layout_lock_font_pixels = true;
-    heading->layout_visual_height_pixels = 0;
+    heading->layout_prepared = true;
     heading->layout_line_height_pixels = gps_->tile_pixel_y;
     heading->layout_clip_right = heading_right;
     return true;
@@ -37509,7 +37446,7 @@ void Overlay::layout_adventure_identity_fields(SDL_Renderer *renderer) {
                 match.layout_y = match.y;
                 match.layout_length = match.length;
                 match.layout_left = true;
-                match.layout_font_pixels = pixels;
+                match.layout_prepared = true;
             }
             if (row_left == right) continue;
             // A translated suffix is not a complete field. Start coverage at
@@ -37550,8 +37487,7 @@ void Overlay::layout_adventure_journal_tabs(SDL_Renderer *renderer) {
     for (Match *label : labels) {
         const int width = std::max(1,
             label->layout_length * tile_w - 2 * config_.horizontal_padding);
-        preserve_fixed_font_text_box(*label, get_glyph_texture(renderer, label->target,
-            width, tile_h, pixels, 0, true), pixels, *gps_, config_.horizontal_padding);
+        preserve_fixed_font_text_box(*label);
     }
 }
 
@@ -37654,9 +37590,7 @@ void Overlay::layout_calendar_headers(SDL_Renderer *renderer) {
         header.layout_box_pixel_width = 0;
         header.layout_pixel_y = 0;
         header.layout_left = true;
-        header.layout_font_pixels = shared_pixels;
-        header.layout_lock_font_pixels = true;
-        header.layout_visual_height_pixels = 0;
+        header.layout_prepared = true;
         header.layout_line_height_pixels = tile_height;
     }
 }
@@ -37710,9 +37644,7 @@ void Overlay::layout_fortress_header(SDL_Renderer *renderer) {
                 label->layout_left = true;
                 label->layout_clip_right = label->layout_clip_right < 0
                     ? right : std::min(right, label->layout_clip_right);
-                label->layout_font_pixels = pixels;
-                label->layout_visual_height_pixels = 0;
-                label->layout_lock_font_pixels = true;
+                label->layout_prepared = true;
                 label->layout_line_height_pixels = tile_h;
                 // Only change the translated text box. Source x/y/length
                 // still own native glyph suppression, color and click areas.
@@ -37903,9 +37835,7 @@ void Overlay::layout_character_panels(SDL_Renderer *renderer) {
                     match.layout_box_pixel_x = -1;
                     match.layout_box_pixel_width = 0;
                     match.layout_left = false;
-                    match.layout_font_pixels = arena_font_pixels;
-                    match.layout_visual_height_pixels = std::min(
-                        gps_->tile_pixel_y, arena_font_pixels + 1);
+                    match.layout_prepared = true;
                 }
             }
         }
@@ -38109,14 +38039,10 @@ void Overlay::layout_character_panels(SDL_Renderer *renderer) {
                 match.layout_length = field.right - field.left;
                 match.layout_clip_right = field.right;
                 match.layout_left = true;
-                match.layout_font_pixels = pixels;
-                match.layout_visual_height_pixels = 0;
-                match.layout_lock_font_pixels = true;
+                match.layout_prepared = true;
                 const int width = std::max(1, (field.right - field.left) *
                     gps_->tile_pixel_x - 2 * config_.horizontal_padding);
-                preserve_fixed_font_text_box(match, get_glyph_texture(renderer,
-                    match.target, width, gps_->tile_pixel_y, pixels, 0, true),
-                    pixels, *gps_, config_.horizontal_padding);
+                preserve_fixed_font_text_box(match);
                 expanded_fields.push_back(&match);
                 // Keep source x/y/length, row colours, portrait backgrounds
                 // and native click targets unchanged. A layout_x also keeps
@@ -38416,9 +38342,7 @@ void Overlay::layout_character_panels(SDL_Renderer *renderer) {
                     match.layout_clip_right = row_right(row);
                     const int width = std::max(1, match.layout_length *
                         gps_->tile_pixel_x - 2 * config_.horizontal_padding);
-                    preserve_fixed_font_text_box(match, get_glyph_texture(renderer,
-                        match.target, width, gps_->tile_pixel_y, pixels, 0, true),
-                        pixels, *gps_, config_.horizontal_padding);
+                    preserve_fixed_font_text_box(match);
                     expanded_fields.push_back(&match);
                 }
             }
@@ -38526,8 +38450,7 @@ void Overlay::layout_character_panels(SDL_Renderer *renderer) {
             const int right = column == 0 ? panel_divider : panel_right - 2;
             match.layout_length = std::max(1, right - match.layout_x);
             match.layout_left = true;
-            match.layout_font_pixels = arena_font_pixels;
-            match.layout_visual_height_pixels = visual_height;
+            match.layout_prepared = true;
         }
         }
     }
@@ -38608,9 +38531,7 @@ void Overlay::layout_character_panels(SDL_Renderer *renderer) {
                 match.layout_x = common_x;
                 match.layout_length = common_width;
                 match.layout_left = true;
-                preserve_fixed_font_text_box(match, get_glyph_texture(renderer, match.target,
-                    pixel_width, gps_->tile_pixel_y, font_pixels, 0, true),
-                    font_pixels, *gps_, config_.horizontal_padding);
+                preserve_fixed_font_text_box(match);
             }
         }
     }
@@ -38654,8 +38575,7 @@ void Overlay::layout_character_panels(SDL_Renderer *renderer) {
                 ? std::min(content_width, match.layout_clip_right - knowledge_content_x)
                 : content_width;
             match.layout_left = true;
-            match.layout_font_pixels = arena_font_pixels;
-            match.layout_visual_height_pixels = visual_height;
+            match.layout_prepared = true;
         }
     }
 
@@ -38694,8 +38614,7 @@ void Overlay::layout_character_panels(SDL_Renderer *renderer) {
                 match.y <= wounds_tab_y) {
                 continue;
             }
-            match.layout_font_pixels = arena_font_pixels;
-            match.layout_visual_height_pixels = health_visual_height;
+            match.layout_prepared = true;
         }
 
         auto is_wound_heading = [](const Match &match) {
@@ -38735,8 +38654,7 @@ void Overlay::layout_character_panels(SDL_Renderer *renderer) {
         // Keep every detail in the shared one-level indent established above.
         for (Match &match : prepared_matches_) {
             if (!is_wound_detail(match) || match.y <= wounds_tab_y) continue;
-            match.layout_font_pixels = arena_font_pixels;
-            match.layout_visual_height_pixels = health_visual_height;
+            match.layout_prepared = true;
         }
 
         static constexpr std::array<std::string_view, 34> health_statuses = {{
@@ -38775,8 +38693,7 @@ void Overlay::layout_character_panels(SDL_Renderer *renderer) {
                 match.layout_x = common_x;
                 match.layout_length = common_width;
                 match.layout_left = true;
-                match.layout_font_pixels = arena_font_pixels;
-                match.layout_visual_height_pixels = visual_height;
+                match.layout_prepared = true;
             }
         }
     }
@@ -38857,7 +38774,7 @@ void Overlay::layout_character_panels(SDL_Renderer *renderer) {
                 match.layout_y = match.y;
                 match.layout_length = paragraph_width;
                 match.layout_left = true;
-                match.layout_font_pixels = font_pixels;
+                match.layout_prepared = true;
             }
         }
     }
@@ -38968,12 +38885,9 @@ void Overlay::layout_structured_panels(SDL_Renderer *renderer) {
                 type->layout_length = list_right - type_left;
                 type->layout_clip_right = list_right;
                 type->layout_left = true;
-                type->layout_font_pixels = pixels;
-                type->layout_lock_font_pixels = true;
+                type->layout_prepared = true;
                 type->layout_line_height_pixels = tile_h;
-                preserve_fixed_font_text_box(*type, get_glyph_texture(renderer,
-                    type->target, width, tile_h, pixels, 0, true),
-                    pixels, *gps_, config_.horizontal_padding);
+                preserve_fixed_font_text_box(*type);
             }
         }
         for (const Match *record : figure_records) {
@@ -38992,9 +38906,9 @@ void Overlay::layout_structured_panels(SDL_Renderer *renderer) {
             for (Match *column : columns) {
                 int column_left = column->layout_x >= 0 ? column->layout_x : column->x;
                 if (is_figure_year(*column) && column_right > figure_left + 1) {
-                    const GlyphTexture *glyph = get_glyph_texture(renderer,
-                        column->target, std::max(1, (list_right - figure_left) * tile_w),
-                        tile_h, arena_font_pixels, 0, true);
+                    const GlyphTexture *glyph = get_glyph_texture(
+                        renderer, column->target,
+                        std::max(1, (list_right - figure_left) * tile_w));
                     if (glyph && glyph->texture) {
                         const int needed_columns = (glyph->width +
                             2 * config_.horizontal_padding + tile_w - 1) / tile_w;
@@ -39010,9 +38924,7 @@ void Overlay::layout_structured_panels(SDL_Renderer *renderer) {
                         column->layout_length = column_right - column_left;
                         column->layout_clip_right = column_right;
                         column->layout_left = true;
-                        column->layout_font_pixels = arena_font_pixels;
-                        column->layout_lock_font_pixels = true;
-                        column->layout_visual_height_pixels = 0;
+                        column->layout_prepared = true;
                         column->layout_line_height_pixels = tile_h;
                     }
                 }
@@ -39029,7 +38941,7 @@ void Overlay::layout_structured_panels(SDL_Renderer *renderer) {
                 record->layout_length = std::max(0, record_right - figure_left);
                 record->layout_clip_right = record_right;
                 record->layout_left = true;
-                record->layout_font_pixels = arena_font_pixels;
+                record->layout_prepared = true;
             }
         }
     }
@@ -39065,7 +38977,7 @@ void Overlay::layout_structured_panels(SDL_Renderer *renderer) {
                 label->layout_x = left;
                 label->layout_length = right - left;
                 label->layout_left = true;
-                label->layout_font_pixels = arena_font_pixels;
+                label->layout_prepared = true;
             }
 
             // These two sentences are centered headings, not left-aligned
@@ -39091,7 +39003,7 @@ void Overlay::layout_structured_panels(SDL_Renderer *renderer) {
                 match.layout_left = false;
                 // Exclude both headings and category labels from subsequent
                 // prose regrouping, including the punctuated Codices caption.
-                match.layout_font_pixels = arena_font_pixels;
+                match.layout_prepared = true;
             }
             return;
         }
@@ -39157,7 +39069,7 @@ void Overlay::layout_structured_panels(SDL_Renderer *renderer) {
                 label->layout_length = std::max(1, right - label->x);
                 label->layout_clip_right = right;
                 label->layout_left = true;
-                label->layout_font_pixels = shared_font;
+                label->layout_prepared = true;
             }
         }
     }
@@ -39184,7 +39096,7 @@ void Overlay::layout_structured_panels(SDL_Renderer *renderer) {
             match.layout_x = match.x;
             match.layout_length = match.length;
             match.layout_left = false;
-            match.layout_font_pixels = arena_font_pixels;
+            match.layout_prepared = true;
         }
 
         // The difficulty summary is a table, not three independent labels.
@@ -39221,7 +39133,7 @@ void Overlay::layout_structured_panels(SDL_Renderer *renderer) {
                 row->layout_x = left;
                 row->layout_length = right - left;
                 row->layout_left = true;
-                row->layout_font_pixels = arena_font_pixels;
+                row->layout_prepared = true;
             }
             // The selected difficulty is repeated immediately above the
             // points. Centre that heading in this card, not the shorter
@@ -39393,9 +39305,7 @@ void Overlay::layout_structured_panels(SDL_Renderer *renderer) {
         for (Match *label : *group) {
             const int width = std::max(1, label->layout_length * gps_->tile_pixel_x -
                 2 * config_.horizontal_padding);
-            preserve_fixed_font_text_box(*label, get_glyph_texture(renderer, label->target,
-                width, gps_->tile_pixel_y, pixels, 0, true),
-                pixels, *gps_, config_.horizontal_padding);
+            preserve_fixed_font_text_box(*label);
             embark_expanded_fields.push_back(label);
         }
     }
@@ -39429,7 +39339,7 @@ void Overlay::layout_structured_panels(SDL_Renderer *renderer) {
             match.layout_x = span_x;
             match.layout_length = span_length;
             match.layout_left = false;
-            match.layout_font_pixels = common_font_pixels;
+            match.layout_prepared = true;
         }
     }
 
@@ -39512,7 +39422,7 @@ void Overlay::layout_structured_panels(SDL_Renderer *renderer) {
                 ++positioned_from_copy_rect;
             }
             match.layout_left = false;
-            match.layout_font_pixels = arena_font_pixels;
+            match.layout_prepared = true;
             ++positioned;
         }
         if (!arena_geometry_logged_) {
@@ -39716,8 +39626,7 @@ void Overlay::layout_structured_panels(SDL_Renderer *renderer) {
                 match.layout_length = std::max(
                     1, std::min(width, gps_->dimx - match.layout_x));
                 match.layout_left = true;
-                match.layout_font_pixels = font_pixels;
-                match.layout_visual_height_pixels = visual_height;
+                match.layout_prepared = true;
             };
             for (size_t index : custom_labels) {
                 place_custom_left(prepared_matches_[index], label_x, label_width);
@@ -40065,8 +39974,7 @@ void Overlay::layout_multiline_matches() {
                 layout_rows, output, -1, right, right, {}, false, left)) return false;
         for (size_t line = 0; line < output.size(); ++line) {
             output[line].layout_left = align_left;
-            output[line].layout_font_pixels = unified_font_pixels();
-            output[line].layout_lock_font_pixels = true;
+            output[line].layout_prepared = true;
             if (line < slots.size()) {
                 prepared_matches_[slots[line]] = std::move(output[line]);
             } else {
@@ -40093,7 +40001,7 @@ void Overlay::layout_multiline_matches() {
         // whatever rows happen to be visible after each scroll event.
         if (!independent_fields[i] && !prepared_matches_[i].target.empty() &&
             !prepared_matches_[i].native_split_text &&
-            prepared_matches_[i].layout_font_pixels <= 0) {
+            !prepared_matches_[i].layout_prepared) {
             row_order.push_back(i);
         }
     }
@@ -40166,7 +40074,7 @@ void Overlay::layout_multiline_matches() {
             prepared_matches_[i].y >= game_type_description_top;
         if (!independent_fields[i] && !prepared_matches_[i].target.empty() &&
             !prepared_matches_[i].native_split_text &&
-            prepared_matches_[i].layout_font_pixels <= 0 &&
+            !prepared_matches_[i].layout_prepared &&
             (looks_like_prose(prepared_matches_[i]) || explicitly_left(prepared_matches_[i]) ||
              game_type_description)) {
             candidates.push_back(i);
@@ -40415,10 +40323,8 @@ void Overlay::layout_multiline_matches() {
                     paragraph += text;
                 }
                 reflow_paragraph(dialog_prose, paragraph, body_x, body_right, true);
-                prepared_matches_[static_cast<size_t>(heading_index)].layout_font_pixels =
-                    common_font_pixels;
-                prepared_matches_[static_cast<size_t>(okay_index)].layout_font_pixels =
-                    common_font_pixels;
+                prepared_matches_[static_cast<size_t>(heading_index)].layout_prepared = true;
+                prepared_matches_[static_cast<size_t>(okay_index)].layout_prepared = true;
             }
         }
     }
@@ -40612,15 +40518,9 @@ int Overlay::intercept_glyph_copy(SDL_Renderer *renderer, SDL_Texture *texture,
 }
 
 static std::string texture_key(const std::string &text, int max_width, int tile_height,
-                               int forced_pixel_size, int target_visual_height,
-                               bool lock_pixel_size, const std::vector<int> &foregrounds) {
-    // A locked font never uses the column width to select its raster size.
-    // Measurement and drawing can therefore share the same texture even
-    // when layout reserves a narrower column after measuring a list value.
-    if (lock_pixel_size) max_width = 0;
-    std::string key = text + '\0' + std::to_string(max_width) + ':' + std::to_string(tile_height) + ':' +
-           std::to_string(forced_pixel_size) + ':' + std::to_string(target_visual_height) +
-           ':' + std::to_string(lock_pixel_size);
+                               int font_pixels, const std::vector<int> &foregrounds) {
+    std::string key = text + '\0' + std::to_string(max_width) + ':' +
+           std::to_string(tile_height) + ':' + std::to_string(font_pixels);
     if (!foregrounds.empty()) {
         key.push_back('\0');
         for (int rgb : foregrounds) {
@@ -40644,7 +40544,7 @@ std::optional<Overlay::EllipsizedText> Overlay::ellipsize_text(
         found != ellipsized_text_cache_.end()) return found->second;
     std::vector<uint32_t> codepoints;
     if (!face_ || max_width <= 0 || !decode_utf8(text, codepoints) ||
-        !set_font_pixel_size(pixels)) return std::nullopt;
+        !sync_font_pixel_size()) return std::nullopt;
 
     // Match rasterize()'s hinted ink bounds, advances, kerning and two pixels
     // of transparent padding. Prefix trials reuse CPU glyph bitmaps; only the
@@ -40671,8 +40571,8 @@ std::optional<Overlay::EllipsizedText> Overlay::ellipsize_text(
         bounds.pen += bitmap.advance;
         bounds.previous = glyph;
     };
-    const FontGlyph ellipsis = resolve_font_glyph(0x2026, pixels);
-    const auto ellipsis_bitmap = font_glyph_bitmap(ellipsis, pixels);
+    const FontGlyph ellipsis = resolve_font_glyph(0x2026);
+    const auto ellipsis_bitmap = font_glyph_bitmap(ellipsis);
     if (!ellipsis_bitmap) return std::nullopt;
     Bounds full;
     std::optional<size_t> keep;
@@ -40685,8 +40585,8 @@ std::optional<Overlay::EllipsizedText> Overlay::ellipsize_text(
         // Explicit field ownership also prevents embedded paragraph breaks
         // from introducing another row into a fixed-height native control.
         if (cp == '\n' || cp == '\r') break;
-        const FontGlyph glyph = resolve_font_glyph(cp, pixels);
-        const auto bitmap = font_glyph_bitmap(glyph, pixels);
+        const FontGlyph glyph = resolve_font_glyph(cp);
+        const auto bitmap = font_glyph_bitmap(glyph);
         if (!bitmap) return std::nullopt;
         append(full, glyph, *bitmap);
     }
@@ -40713,10 +40613,7 @@ std::optional<Overlay::EllipsizedText> Overlay::ellipsize_text(
 }
 
 GlyphTexture *Overlay::get_glyph_texture(SDL_Renderer *renderer, const std::string &input_text,
-                                         int max_width, int tile_height,
-                                         int forced_pixel_size,
-                                         int target_visual_height,
-                                         bool lock_pixel_size,
+                                         int max_width,
                                          const std::vector<int> &input_foregrounds, int wrap_width) {
     const auto converted = config_.language == "zh-Hant" && !g_display_language_converted
         ? std::optional<ConvertedText>(localize_display(input_text)) : std::nullopt;
@@ -40724,17 +40621,13 @@ GlyphTexture *Overlay::get_glyph_texture(SDL_Renderer *renderer, const std::stri
     const auto converted_foregrounds = converted
         ? remap_display_colors(input_text, *converted, input_foregrounds) : std::vector<int>{};
     const auto &foregrounds = converted ? converted_foregrounds : input_foregrounds;
-    if (!face_ || max_width <= 0 || tile_height <= 0 || text.empty()) return nullptr;
-    // All callers share one immutable size; available area affects layout,
-    // never font metrics or glyph bitmaps.
-    forced_pixel_size = unified_font_pixels();
-    // Wrapped textures also depend on native row advance, even when two UI
-    // zoom levels quantize to the same calibrated outline size.
-    tile_height = gps_ && gps_->tile_pixel_y > 0 ? gps_->tile_pixel_y : 16;
-    target_visual_height = 0;
-    lock_pixel_size = true;
-    const std::string key = texture_key(text, max_width, tile_height, forced_pixel_size,
-        target_visual_height, lock_pixel_size, foregrounds) + ':' +
+    if (!face_ || max_width <= 0 || text.empty()) return nullptr;
+    // The UI box controls wrapping and placement. Font metrics and glyph
+    // bitmaps always come from one global size.
+    const int tile_height = native_text_row_height(gps_);
+    const int font_pixels = unified_font_pixels();
+    const std::string key = texture_key(text, max_width, tile_height, font_pixels,
+        foregrounds) + ':' +
         std::to_string(wrap_width);
     auto it = texture_cache_.find(key);
     if (it != texture_cache_.end()) {
@@ -40761,8 +40654,7 @@ GlyphTexture *Overlay::get_glyph_texture(SDL_Renderer *renderer, const std::stri
         }
         texture_use_order_.pop_front();
     }
-    GlyphTexture made = rasterize(renderer, text, max_width, tile_height, forced_pixel_size,
-                                  target_visual_height, lock_pixel_size, foregrounds, wrap_width);
+    GlyphTexture made = rasterize(renderer, text, max_width, foregrounds, wrap_width);
     // Device loss can make allocation fail temporarily. Do not cache that
     // failure: the same text must retry after recovery.
     if (!made.texture) return nullptr;
@@ -40832,7 +40724,7 @@ void Overlay::render_ime_popup(SDL_Renderer *renderer) {
     int content_height = 0;
     for (PopupLine &line : lines) {
         line.glyph = get_glyph_texture(
-            renderer, line.text, max_text_width, row_height - 4, 0, 0, true, {}, max_text_width);
+            renderer, line.text, max_text_width, {}, max_text_width);
         if (line.glyph) content_width = std::max(content_width, line.glyph->width);
         line.pixel_height = line.glyph
             ? std::max(row_height, std::max(line.glyph->height, line.glyph->line_height) + 4)
@@ -40892,7 +40784,7 @@ void Overlay::render_ime_popup(SDL_Renderer *renderer) {
         const Uint8 text_color = line.selected ? 255 : 20;
         const SDL_Rect text_box{box_x + padding, row_y + 2,
             box_width - padding * 2, line.pixel_height - 4};
-        const SDL_Rect destination = line.glyph->destination(text_box, true, false);
+        const SDL_Rect destination = line.glyph->destination(text_box, true);
         line.glyph->draw(renderer, destination, text_color, text_color, text_color);
     }
     g_drawing_overlay = old_drawing_overlay;
@@ -40907,14 +40799,13 @@ void Overlay::render_ime_popup(SDL_Renderer *renderer) {
 }
 
 GlyphTexture Overlay::rasterize(SDL_Renderer *renderer, const std::string &text,
-                                int max_width, int tile_height, int /*forced_pixel_size*/,
-                                int /*target_visual_height*/, bool /*lock_pixel_size*/,
+                                int max_width,
                                 const std::vector<int> &foregrounds, int wrap_width) {
     RenderTimingScope raster_timing(render_timings_, config_.trace_render_timing,
         RenderTimingStage::Rasterize);
     GlyphTexture result;
     result.renderer = renderer;
-    if (!face_ || max_width <= 0 || tile_height <= 0 || text.empty()) return result;
+    if (!face_ || max_width <= 0 || text.empty()) return result;
     std::vector<uint32_t> codepoints;
     if (!decode_utf8(text, codepoints) || codepoints.empty()) return result;
     if (!foregrounds.empty() && foregrounds.size() != codepoints.size()) return result;
@@ -40928,7 +40819,7 @@ GlyphTexture Overlay::rasterize(SDL_Renderer *renderer, const std::string &text,
     };
     std::vector<PositionedGlyph> positioned;
     positioned.reserve(codepoints.size());
-    const int chosen_size = unified_font_pixels();
+    const int font_pixels = unified_font_pixels();
     int measured_width = 0;
     int ink_min_x = INT32_MAX;
     int ink_max_x = INT32_MIN;
@@ -40942,10 +40833,10 @@ GlyphTexture Overlay::rasterize(SDL_Renderer *renderer, const std::string &text,
     int reference_height = 0;
     int total_line_height = 0;
 
-    auto layout = [&](int pixel_size) -> bool {
+    auto layout = [&]() -> bool {
         positioned.clear();
-        if (!set_font_pixel_size(pixel_size)) return false;
-        const auto reference = font_line_metrics(pixel_size);
+        if (!sync_font_pixel_size()) return false;
+        const auto reference = font_line_metrics();
         if (!reference) return false;
         line_metrics = *reference;
         reference_height = line_metrics.bottom - line_metrics.top;
@@ -40972,8 +40863,8 @@ GlyphTexture Overlay::rasterize(SDL_Renderer *renderer, const std::string &text,
                 if (cp == '\n') new_line();
                 continue;
             }
-            const FontGlyph glyph = resolve_font_glyph(cp, pixel_size);
-            const auto bitmap = font_glyph_bitmap(glyph, pixel_size);
+            const FontGlyph glyph = resolve_font_glyph(cp);
+            const auto bitmap = font_glyph_bitmap(glyph);
             int kerning = 0;
             if (config_.font_pixel_grid == 0 && previous_face == glyph.face &&
                     FT_HAS_KERNING(glyph.face) && previous && glyph.index) {
@@ -41024,7 +40915,7 @@ GlyphTexture Overlay::rasterize(SDL_Renderer *renderer, const std::string &text,
         return raster_width > 0 && raster_height > 0;
     };
 
-    if (!layout(chosen_size)) return result;
+    if (!layout()) return result;
     SDL_RendererInfo renderer_info{};
     SDL_GetRendererInfo(renderer, &renderer_info);
     const int texture_width_limit = renderer_info.max_texture_width > 0
@@ -41128,7 +41019,7 @@ GlyphTexture Overlay::rasterize(SDL_Renderer *renderer, const std::string &text,
     }
     result.width = raster_width;
     result.height = raster_height;
-    result.pixel_size = chosen_size;
+    result.pixel_size = font_pixels;
     result.line_height = total_line_height;
     result.font_reference_height = total_line_height - native_text_row_height(gps_) + reference_height;
     result.line_offset_y = ink_min_y - line_metrics.top - 1;
@@ -41519,8 +41410,7 @@ void Overlay::draw_match(SDL_Renderer *renderer, const Match &match) {
         part.layout_glyph_foreground_rgb.clear();
         part.source.clear();
         part.length = 1;
-        part.layout_font_pixels = flow.font_pixels;
-        part.layout_lock_font_pixels = true;
+        part.layout_prepared = true;
         for (const auto &piece : flow.display_pieces) {
             part.target = piece.target;
             // A clipped semantic fragment can have no visible native link.
@@ -41966,10 +41856,6 @@ void Overlay::draw_match(SDL_Renderer *renderer, const Match &match) {
     const int span_width = std::max(1,
         (exact_pixel_box ? match.layout_box_pixel_width : text_length * tile_w) -
             2 * config_.horizontal_padding);
-    // Shared-size labels and native knowledge have already been measured.
-    // Neither rasterize() nor SDL may refit their individual rows.
-    const bool lock_pixel_size = match.layout_ellipsize || match.layout_lock_font_pixels ||
-        match.rule == kNativeKnowledgeDocumentRule;
     const int line_height = match.layout_line_height_pixels > 0
         ? match.layout_line_height_pixels : tile_h;
 
@@ -42030,8 +41916,7 @@ void Overlay::draw_match(SDL_Renderer *renderer, const Match &match) {
         std::vector<int> widths;
         int total_width = 0;
         for (const auto &part : justified_parts) {
-            const auto *glyph = get_glyph_texture(renderer, part, span_width, line_height,
-                match.layout_font_pixels, match.layout_visual_height_pixels, true);
+            const auto *glyph = get_glyph_texture(renderer, part, span_width);
             if (!glyph || !glyph->texture) break;
             widths.push_back(glyph->width);
             total_width += glyph->width;
@@ -42040,15 +41925,14 @@ void Overlay::draw_match(SDL_Renderer *renderer, const Match &match) {
             const int free_width = span_width - total_width;
             int preceding_width = 0;
             for (size_t index = 0; index < widths.size(); ++index) {
-                auto *glyph = get_glyph_texture(renderer, justified_parts[index],
-                    span_width, line_height, match.layout_font_pixels,
-                    match.layout_visual_height_pixels, true);
+                auto *glyph = get_glyph_texture(
+                    renderer, justified_parts[index], span_width);
                 if (!glyph || !glyph->texture) continue;
                 const int x = span_x + preceding_width + static_cast<int>(
                     static_cast<int64_t>(free_width) * index / (widths.size() - 1));
                 const SDL_Rect dst = glyph->destination(
                     {x, origin_y + text_y * tile_h + pixel_y, widths[index], line_height},
-                    true, true);
+                    true);
                 glyph->draw(renderer, dst, fg_r, fg_g, fg_b);
                 note_graphical_clear_write(renderer, dst);
                 preceding_width += widths[index];
@@ -42056,9 +41940,8 @@ void Overlay::draw_match(SDL_Renderer *renderer, const Match &match) {
             justified = true;
         }
     }
-    GlyphTexture *glyph = justified ? nullptr : get_glyph_texture(renderer, *display_text,
-        span_width, line_height, match.layout_font_pixels, match.layout_visual_height_pixels,
-        lock_pixel_size, foregrounds);
+    GlyphTexture *glyph = justified ? nullptr : get_glyph_texture(
+        renderer, *display_text, span_width, foregrounds);
     texture_timing.checkpoint(RenderTimingStage::DrawCopy);
     if (glyph && glyph->texture) {
         const bool left_align = match.layout_x >= 0 ? match.layout_left :
@@ -42068,7 +41951,7 @@ void Overlay::draw_match(SDL_Renderer *renderer, const Match &match) {
         // the screen edge or move neighbouring rows to reveal its suffix.
         SDL_Rect dst = glyph->destination(
             {span_x, origin_y + text_y * tile_h + pixel_y, span_width, line_height},
-            left_align, lock_pixel_size);
+            left_align);
         if (match.layout_right) dst.x = span_x + span_width - dst.w;
         glyph->draw(renderer, dst, foregrounds.empty() ? fg_r : 255,
             foregrounds.empty() ? fg_g : 255, foregrounds.empty() ? fg_b : 255);
@@ -44408,12 +44291,10 @@ DFCN_EXPORT int dfcn_template_self_test() {
     key_code.source = "Left";
     key_code.target = "左";
     dfcn::lock_keybinding_code_style(key_code, 23, 32);
-    if (key_code.target != "Left" || key_code.layout_font_pixels != 23 ||
-        key_code.layout_visual_height_pixels != 0) {
+    if (key_code.target != "Left") {
         return 11;
     }
     dfcn::lock_keybinding_code_style(key_code, 23, 18);
-    if (key_code.layout_visual_height_pixels != 0) return 20;
 
     dfcn::Match short_key;
     short_key.source = "Z";
@@ -44428,9 +44309,6 @@ DFCN_EXPORT int dfcn_template_self_test() {
     if (short_key.target != "Z" || long_key.target != "Shift+Numpad Enter" ||
         short_key.layout_x != long_key.layout_x ||
         short_key.layout_length != long_key.layout_length ||
-        short_key.layout_font_pixels != long_key.layout_font_pixels ||
-        short_key.layout_visual_height_pixels !=
-            long_key.layout_visual_height_pixels ||
         short_key.layout_left || long_key.layout_left ||
         short_key.layout_x * 2 + short_key.layout_length != 161) {
         return 29;
@@ -44560,13 +44438,12 @@ DFCN_EXPORT int dfcn_template_self_test() {
         }
         if (match.layout_x != creature_x ||
             match.layout_length != creature_width || !match.layout_left ||
-            match.layout_font_pixels != 23 ||
-            match.layout_visual_height_pixels != 24) {
+            !match.layout_prepared) {
             return 64;
         }
     }
     if (arena_tab_matches.back().layout_x >= 0 ||
-        arena_tab_matches.back().layout_font_pixels != 0 ||
+        arena_tab_matches.back().layout_prepared ||
         arena_tab_matches.back().layout_left) {
         return 65;
     }
@@ -44620,13 +44497,12 @@ DFCN_EXPORT int dfcn_template_self_test() {
         if (single_row_creature_x < 0) single_row_creature_x = match.layout_x;
         if (match.layout_x != single_row_creature_x ||
             match.layout_length <= 0 || !match.layout_left ||
-            match.layout_font_pixels != 23 ||
-            match.layout_visual_height_pixels != 24) {
+            !match.layout_prepared) {
             return 67;
         }
     }
     if (single_row_arena_matches.back().layout_x >= 0 ||
-        single_row_arena_matches.back().layout_font_pixels != 0 ||
+        single_row_arena_matches.back().layout_prepared ||
         single_row_arena_matches.back().layout_left) {
         return 68;
     }
@@ -44740,8 +44616,7 @@ DFCN_EXPORT int dfcn_template_self_test() {
             : match.y == 13 ? "锌质锯齿状头盔" : "镍质头盔";
         if (match.target != expected || match.layout_x != 80 ||
             match.layout_length != 155 || !match.layout_left ||
-            match.layout_font_pixels != 23 ||
-            match.layout_visual_height_pixels != 24) {
+            !match.layout_prepared) {
             return 71;
         }
     }
@@ -44759,8 +44634,7 @@ DFCN_EXPORT int dfcn_template_self_test() {
             : match.y == 17 ? "橡胶木质长鞭" : "可可木质钉头锤";
         if (match.target != expected || match.layout_x != 80 ||
             match.layout_length != 155 || !match.layout_left ||
-            match.layout_font_pixels != 23 ||
-            match.layout_visual_height_pixels != 24) {
+            !match.layout_prepared) {
             return 77;
         }
     }
@@ -44771,8 +44645,7 @@ DFCN_EXPORT int dfcn_template_self_test() {
         ++leather_rows;
         if (match.target != "蜻蜓皮革质小型盔甲" ||
             match.layout_x != 80 || match.layout_length != 155 ||
-            !match.layout_left || match.layout_font_pixels != 23 ||
-            match.layout_visual_height_pixels != 24) {
+            !match.layout_left || !match.layout_prepared) {
             return 79;
         }
     }
@@ -44789,8 +44662,7 @@ DFCN_EXPORT int dfcn_template_self_test() {
         }
         ++scrolled_rows;
         if (match.layout_x != 80 || match.layout_length != 155 ||
-            !match.layout_left || match.layout_font_pixels != 23 ||
-            match.layout_visual_height_pixels != 24) {
+            !match.layout_left || !match.layout_prepared) {
             return 74;
         }
     }
@@ -44842,9 +44714,7 @@ DFCN_EXPORT int dfcn_template_self_test() {
             translated->target.find(expected_noun) == std::string::npos ||
             translated->layout_x != 80 ||
             translated->layout_length != 155 ||
-            !translated->layout_left ||
-            translated->layout_font_pixels != 23 ||
-            translated->layout_visual_height_pixels != 24) {
+            !translated->layout_left || !translated->layout_prepared) {
             return 82;
         }
     }
@@ -44914,8 +44784,7 @@ DFCN_EXPORT int dfcn_template_self_test() {
             : row == 13 ? "金质小盾" : "银质高挑盾牌";
         if (translated_runs != 1 || !translated ||
             translated->target != expected || !translated->layout_left ||
-            translated->layout_font_pixels != 23 ||
-            translated->layout_visual_height_pixels != 24) {
+            !translated->layout_prepared) {
             return 195;
         }
     }

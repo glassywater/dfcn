@@ -548,9 +548,7 @@ void Overlay::layout_toolbar_tooltip(SDL_Renderer *renderer) {
                 origin_y + (card.top + 1) * tile_h,
                 (card.text_right - left) * tile_w, (card.bottom - card.top - 1) * tile_h};
             match.layout_fixed_baseline = true;
-            match.layout_font_pixels = unified_font_pixels();
-            match.layout_lock_font_pixels = true;
-            match.layout_visual_height_pixels = 0;
+            match.layout_prepared = true;
             match.layout_line_height_pixels = native_text_row_height(gps_);
             match.native_split_text = match.native_split_duplicate = false;
             match.native_split_top_y = -1;
@@ -641,7 +639,7 @@ void Overlay::layout_toolbar_tooltip(SDL_Renderer *renderer) {
         {
             lines.clear();
             key_widths.clear();
-            if (!set_font_pixel_size(pixels)) return;
+            if (!sync_font_pixel_size()) return;
             // Wrapping needs measurements, not a texture for every growing
             // prefix. Use the same hinted bitmap bounds and advances as
             // rasterize(), loading each distinct glyph once at this size.
@@ -765,9 +763,7 @@ void Overlay::layout_toolbar_tooltip(SDL_Renderer *renderer) {
         match.layout_native_clip = SDL_Rect{box_x, origin_y + card.text_y * tile_h,
             box_width, available_rows * tile_h};
         match.layout_left = true;
-        match.layout_font_pixels = pixels;
-        match.layout_lock_font_pixels = true;
-        match.layout_visual_height_pixels = 0;
+        match.layout_prepared = true;
         match.layout_line_height_pixels = line_height;
     };
     // Source spans only own native glyph suppression. Output rows can use any of the

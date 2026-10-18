@@ -224,8 +224,7 @@
                                 heading.layout_x = left;
                                 heading.layout_length = warning_wrap_width;
                                 heading.layout_left = true;
-                                heading.layout_font_pixels = unified_font_pixels();
-                                heading.layout_lock_font_pixels = true;
+                                heading.layout_prepared = true;
                                 std::fill_n(screen_rows[title_y].begin() + left, title.size(), ' ');
                                 if (only_y < 0 || title_y == only_y) result.push_back(std::move(heading));
                             }

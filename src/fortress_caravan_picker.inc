@@ -83,10 +83,7 @@ void Overlay::append_fortress_caravan_picker_fields(std::vector<std::string> &ro
                 match.layout_length = clip_right - x;
                 match.layout_clip_right = clip_right;
                 match.layout_left = true;
-                match.layout_font_pixels = std::clamp(
-                    static_cast<int>(gps_->tile_pixel_y * config_.font_scale),
-                    1, gps_->tile_pixel_y);
-                match.layout_lock_font_pixels = true;
+                match.layout_prepared = true;
                 match.layout_line_height_pixels = gps_->tile_pixel_y;
                 matches.push_back(std::move(match));
             }

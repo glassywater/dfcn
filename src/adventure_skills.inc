@@ -453,8 +453,7 @@ bool Overlay::layout_adventure_skills(SDL_Renderer *renderer) {
         label.layout_left = !box.centered;
         if (box.bounded && label.layout_box_pixel_width <= 0)
             label.layout_clip_right = box.right;
-        label.layout_font_pixels = pixels;
-        label.layout_lock_font_pixels = true;
+        label.layout_prepared = true;
     }
     for (const LabelBox &box : labels) {
         if (!box.bounded) continue;

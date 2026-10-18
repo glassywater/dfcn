@@ -2393,9 +2393,7 @@ void Overlay::append_legends_detail_matches(std::vector<std::string> &rows,
             tab.layout_y = tab_y;
             tab.layout_length = end - start;
             tab.layout_clip_right = end;
-            tab.layout_font_pixels = std::max(config_.min_font_pixels,
-                static_cast<int>(gps_->tile_pixel_y * config_.font_scale));
-            tab.layout_lock_font_pixels = true;
+            tab.layout_prepared = true;
             tab.layout_line_height_pixels = gps_->tile_pixel_y;
             std::fill(tabs.begin() + start, tabs.begin() + end, ' ');
             if (only_y < 0 || only_y == tab_y) matches.push_back(std::move(tab));
@@ -2435,8 +2433,7 @@ void Overlay::append_legends_detail_matches(std::vector<std::string> &rows,
                     match.layout_y = y;
                     match.layout_length = length;
                     match.layout_left = true;
-                    match.layout_font_pixels = std::max(config_.min_font_pixels,
-                        static_cast<int>(gps_->tile_pixel_y * config_.font_scale));
+                    match.layout_prepared = true;
                     std::fill_n(row.begin() + field.start, length, ' ');
                     if (only_y < 0 || only_y == y) matches.push_back(std::move(match));
                 }
@@ -2479,9 +2476,7 @@ void Overlay::append_legends_detail_matches(std::vector<std::string> &rows,
         match.layout_y = y;
         match.layout_length = gps_->dimx - 4;
         match.layout_clip_right = gps_->dimx - 2;
-        match.layout_font_pixels = std::max(config_.min_font_pixels,
-            static_cast<int>(gps_->tile_pixel_y * config_.font_scale));
-        match.layout_lock_font_pixels = true;
+        match.layout_prepared = true;
         match.layout_line_height_pixels = gps_->tile_pixel_y;
         std::fill(row.begin() + start, row.begin() + end, ' ');
         if (only_y < 0 || only_y == y) matches.push_back(std::move(match));
@@ -2612,8 +2607,7 @@ void Overlay::append_legends_detail_matches(std::vector<std::string> &rows,
         for (Run &run : runs) {
             for (Match &slot : run.slots) {
                 slot.target = run.slots.size() == 1 ? run.target : cp437_to_utf8(slot.source);
-                slot.layout_font_pixels = pixels;
-                slot.layout_lock_font_pixels = true;
+                slot.layout_prepared = true;
                 slot.layout_line_height_pixels = gps_->tile_pixel_y;
                 std::fill_n(rows[static_cast<size_t>(slot.y)].begin() + slot.x, slot.length, ' ');
                 if (only_y < 0 || only_y == slot.y) matches.push_back(std::move(slot));
@@ -2622,7 +2616,7 @@ void Overlay::append_legends_detail_matches(std::vector<std::string> &rows,
         return;
     }
     {
-        if (!set_font_pixel_size(pixels)) return;
+        if (!sync_font_pixel_size()) return;
         struct Metric { int advance = 0, left = 0, right = 0; FT_UInt index = 0; };
         std::unordered_map<uint32_t, Metric> metrics;
         auto metric = [&](uint32_t cp) -> const Metric & {
@@ -2698,8 +2692,7 @@ void Overlay::append_legends_detail_matches(std::vector<std::string> &rows,
         for (size_t i = 0; i < run.slots.size(); ++i) {
             Match &slot = run.slots[i];
             slot.target = run.lines[i];
-            slot.layout_font_pixels = pixels;
-            slot.layout_lock_font_pixels = true;
+            slot.layout_prepared = true;
             slot.layout_line_height_pixels = gps_->tile_pixel_y;
             std::fill_n(rows[static_cast<size_t>(slot.y)].begin() + slot.x, slot.length, ' ');
             if (only_y < 0 || only_y == slot.y) matches.push_back(std::move(slot));
@@ -3857,7 +3850,7 @@ void Overlay::layout_legends_details(SDL_Renderer *renderer) {
                     auto measure = [&](size_t end) {
                         return get_glyph_texture(renderer,
                             text.substr(offsets[begin], offsets[end] - offsets[begin]),
-                            std::max(1, available), tile_h, pixels, 0, true);
+                            std::max(1, available));
                     };
                     auto fits = [&](const GlyphTexture *glyph) {
                         // Font size remains fixed; horizontal space determines
@@ -3972,8 +3965,8 @@ void Overlay::layout_legends_details(SDL_Renderer *renderer) {
                     if (match->legends_flow) continue;
                     int measured = 0;
                     if (!match->target.empty()) {
-                        const auto *glyph = get_glyph_texture(renderer, match->target,
-                            std::max(1, width), tile_h, pixels, 0, true);
+                        const auto *glyph = get_glyph_texture(
+                            renderer, match->target, std::max(1, width));
                         if (!glyph || !glyph->texture) failed_rows.insert(y);
                         else {
                             measured = glyph->width + 2 * padding;
@@ -4041,10 +4034,9 @@ void Overlay::layout_legends_details(SDL_Renderer *renderer) {
                 match->target = cp437_to_utf8(match->source);
                 match->layout_box_pixel_x = origin_x + match->x * tile_w;
                 match->layout_box_pixel_width = match->length * tile_w;
-                match->layout_font_pixels = pixels;
+                match->layout_prepared = true;
                 // Suppression already ran for these spans. Restore each
                 // complete original run inside its own native rectangle.
-                match->layout_lock_font_pixels = false;
                 match->layout_clip_right = text_right;
             }
         }
@@ -4155,8 +4147,7 @@ void Overlay::layout_legends_details(SDL_Renderer *renderer) {
                 const int measured = widths[&match];
                 match.layout_box_pixel_x = hit_row.visible.x + used;
                 match.layout_box_pixel_width = measured;
-                match.layout_font_pixels = pixels;
-                match.layout_lock_font_pixels = true;
+                match.layout_prepared = true;
                 match.layout_clip_right = text_right;
                 if (measured > 0) {
                     hit_row.spans.push_back({
@@ -4222,9 +4213,7 @@ void Overlay::layout_legends_details(SDL_Renderer *renderer) {
             match.layout_clip_right = gps_->dimx - 2;
             match.layout_left = false;
             // A long event must not shrink the pinned title or navigation.
-            match.layout_font_pixels = std::max(config_.min_font_pixels,
-                static_cast<int>(tile_h * config_.font_scale));
-            match.layout_lock_font_pixels = true;
+            match.layout_prepared = true;
             match.layout_line_height_pixels = tile_h;
         }
     }

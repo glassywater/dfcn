@@ -1246,9 +1246,7 @@ void Overlay::append_native_map_hover_phrases(std::vector<std::string> &rows,
                 match.layout_length = right - x;
                 match.layout_clip_right = right;
                 match.layout_left = true;
-                match.layout_font_pixels = std::clamp(
-                    static_cast<int>(gps_->tile_pixel_y * config_.font_scale), 1, gps_->tile_pixel_y);
-                match.layout_lock_font_pixels = true;
+                match.layout_prepared = true;
             }
         }
     };
@@ -1273,7 +1271,7 @@ void Overlay::layout_map_hover(SDL_Renderer *renderer) {
         log_line("INFO", "Activated whole map hover layout: columns=" +
             std::to_string(left) + ".." + std::to_string(right) + "; rows=" +
             std::to_string(rows.size()) + "; fixed font=" +
-            std::to_string(rows.front().front()->layout_font_pixels) + "px");
+            std::to_string(unified_font_pixels()) + "px");
         logged = true;
     }
 }

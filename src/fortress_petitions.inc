@@ -209,8 +209,7 @@ void Overlay::append_fortress_petition_site_names(std::vector<std::string> &rows
                             match.layout_length = right - left;
                             match.layout_clip_right = right;
                             match.layout_left = true;
-                            match.layout_font_pixels = unified_font_pixels();
-                            match.layout_lock_font_pixels = true;
+                            match.layout_prepared = true;
                             matches.push_back(std::move(match));
                         }
                         break;

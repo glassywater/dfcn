@@ -30,8 +30,7 @@
             match.layout_clip_right = clip_right;
             match.layout_left = true;
             match.layout_ellipsize = true;
-            match.layout_font_pixels = unified_font_pixels();
-            match.layout_lock_font_pixels = true;
+            match.layout_prepared = true;
             match.layout_native_clip = auxiliary_pixels({x, y, clip_right - x, 1});
             dfhack_auxiliary_matches.push_back(std::move(match));
         };

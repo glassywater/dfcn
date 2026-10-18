@@ -132,7 +132,7 @@ bool Overlay::measure_paragraph_layout(std::string_view input_target, int width,
         // Counting nominal ems is not enough to lock the font: one tall
         // or overhanging glyph used to shrink just its own row at draw
         // time, while punctuation left usable width unnecessarily blank.
-        if (!set_font_pixel_size(font_pixels)) return false;
+        if (!sync_font_pixel_size()) return false;
         using SetupGlyph = ParagraphGlyphMetrics;
         std::unordered_map<uint32_t, SetupGlyph> glyphs;
         bool has_ink = false;
@@ -148,8 +148,8 @@ bool Overlay::measure_paragraph_layout(std::string_view input_target, int width,
                 // Use the same resolved face and bitmap as final drawing.
                 // A symbol missing from the primary Chinese font must not
                 // reject the whole paragraph before fallback can render it.
-                const FontGlyph glyph = resolve_font_glyph(cp, font_pixels);
-                const auto bitmap = font_glyph_bitmap(glyph, font_pixels);
+                const FontGlyph glyph = resolve_font_glyph(cp);
+                const auto bitmap = font_glyph_bitmap(glyph);
                 if (!bitmap) return false;
                 metrics.face = glyph.face;
                 metrics.index = glyph.index;
@@ -457,8 +457,7 @@ bool Overlay::append_bounded_paragraph(std::vector<Match> rows,
         row.layout_reflowed_paragraph = true;
         row.layout_length = width;
         row.layout_left = true;
-        row.layout_font_pixels = font_pixels;
-        row.layout_lock_font_pixels = true;
+        row.layout_prepared = true;
         if (only_y < 0 || row.y == only_y) matches.push_back(std::move(row));
     }
     return true;

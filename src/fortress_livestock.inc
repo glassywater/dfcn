@@ -207,8 +207,7 @@ void Overlay::append_fortress_creature_activities(std::vector<std::string> &rows
         match.layout_length = field_right - field_left;
         match.layout_clip_right = field_right;
         match.layout_left = true;
-        match.layout_font_pixels = unified_font_pixels();
-        match.layout_lock_font_pixels = true;
+        match.layout_prepared = true;
         match.layout_line_height_pixels = gps_->tile_pixel_y;
         bool top = false;
         const auto *cell = cell_at(match.x, match.y, &top);
@@ -933,8 +932,7 @@ void Overlay::layout_fortress_training_knowledge(SDL_Renderer *renderer, int tab
                 ? "Animal training knowledge: Expert" : std::string(level));
             if (!target) return;
             const auto *glyph = get_glyph_texture(renderer, *target,
-                (anchor.right - anchor.left) * gps_->tile_pixel_x,
-                gps_->tile_pixel_y, pixels, 0, true);
+                (anchor.right - anchor.left) * gps_->tile_pixel_x);
             if (!glyph || !glyph->texture) return;
             level_width = std::max(level_width, glyph->width);
         }

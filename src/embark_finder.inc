@@ -40,8 +40,7 @@ void Overlay::append_embark_finder_fields(std::vector<std::string> &rows,
         match.layout_x = left;
         match.layout_length = end - left;
         match.layout_left = left_align;
-        match.layout_font_pixels = pixels;
-        match.layout_visual_height_pixels = std::min(gps_->tile_pixel_y, pixels + 1);
+        match.layout_prepared = true;
         match.layout_clip_right = end;
         if (button) {
             // A disabled native action uses black ink on the dark button.

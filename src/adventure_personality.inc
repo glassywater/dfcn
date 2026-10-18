@@ -37,8 +37,7 @@ void Overlay::append_adventure_personality_matches(std::vector<std::string> &row
             match.layout_left = !centered;
             match.layout_ellipsize = true;
             match.layout_clip_right = right;
-            match.layout_font_pixels = pixels;
-            match.layout_lock_font_pixels = true;
+            match.layout_prepared = true;
             match.layout_line_height_pixels = tile_h;
             matches.push_back(std::move(match));
         }
@@ -279,8 +278,7 @@ void Overlay::layout_adventure_personality_actions(SDL_Renderer *renderer) {
         match.layout_native_clip = boxes[index];
         match.layout_ellipsize = true;
         match.layout_left = false;
-        match.layout_font_pixels = pixels;
-        match.layout_lock_font_pixels = true;
+        match.layout_prepared = true;
         match.layout_line_height_pixels = tile_h;
     }
 }

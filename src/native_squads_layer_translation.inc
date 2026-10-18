@@ -182,8 +182,7 @@ void Overlay::render_native_squads_layer(SDL_Renderer *renderer,
                 text.layout_clip_right = right;
                 text.layout_native_clip = footer_pixels;
                 text.layout_reflowed_paragraph = true;
-                text.layout_font_pixels = font_pixels;
-                text.layout_lock_font_pixels = true;
+                text.layout_prepared = true;
                 text.layout_line_height_pixels = line_height;
                 text.layout_foreground_rgb = foreground;
                 text.layout_glyph_foreground_rgb.clear();

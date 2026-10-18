@@ -59,8 +59,7 @@
                 match.layout_length = 20;
                 match.layout_clip_right = list_left + 20;
                 match.layout_left = true;
-                match.layout_font_pixels = unified_font_pixels();
-                match.layout_lock_font_pixels = true;
+                match.layout_prepared = true;
                 dfhack_auxiliary_matches.push_back(std::move(match));
             }
             auxiliary_literal(list_left + 22, setting.y, setting.state,

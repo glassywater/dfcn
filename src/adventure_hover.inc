@@ -113,8 +113,6 @@ void Overlay::draw_help_clipped_match(SDL_Renderer *renderer, const Match &match
             const int text_length = match.layout_length > 0 ? match.layout_length : match.length;
             const bool exact_box = match.layout_box_pixel_x >= 0 &&
                 match.layout_box_pixel_width > 0;
-            const bool locked = match.layout_ellipsize || match.layout_lock_font_pixels ||
-                match.rule == kNativeKnowledgeDocumentRule;
             const SDL_Rect text{
                 (exact_box ? match.layout_box_pixel_x : origin_x + text_x * tile_w) +
                     config_.horizontal_padding,
@@ -151,12 +149,12 @@ void Overlay::draw_help_clipped_match(SDL_Renderer *renderer, const Match &match
                     }
                 }
             }
-            const auto *glyph = get_glyph_texture(renderer, *display_text, text.w, text.h,
-                match.layout_font_pixels, match.layout_visual_height_pixels, locked, foregrounds);
+            const auto *glyph = get_glyph_texture(
+                renderer, *display_text, text.w, foregrounds);
             if (glyph && glyph->texture) {
                 const bool left = match.layout_x >= 0 ? match.layout_left
                     : match.rule >= 0 && rules_[static_cast<size_t>(match.rule)].left_align;
-                SDL_Rect drawn = glyph->destination(text, left, locked);
+                SDL_Rect drawn = glyph->destination(text, left);
                 if (match.layout_right) drawn.x = text.x + text.w - drawn.w;
                 SDL_Rect visible{};
                 const SDL_Rect region = native_text_draw_region(match);
@@ -268,8 +266,6 @@ void Overlay::draw_hover_clipped_match(SDL_Renderer *renderer, const Match &matc
             const int text_length = match.layout_length > 0 ? match.layout_length : match.length;
             const bool exact_box = match.layout_box_pixel_x >= 0 &&
                 match.layout_box_pixel_width > 0;
-            const bool locked = match.layout_ellipsize || match.layout_lock_font_pixels ||
-                match.rule == kNativeKnowledgeDocumentRule;
             SDL_Rect text{
                 (exact_box ? match.layout_box_pixel_x : origin_x + text_x * tile_w) +
                     config_.horizontal_padding,
@@ -292,14 +288,13 @@ void Overlay::draw_hover_clipped_match(SDL_Renderer *renderer, const Match &matc
                 if (const auto fitted = ellipsize_text(match.target, text.w))
                     ellipsized = fitted->text;
             }
-            const auto *glyph = get_glyph_texture(renderer, *display_text,
-                std::max(1, text.w), text.h, match.layout_font_pixels,
-                match.layout_visual_height_pixels, locked);
+            const auto *glyph = get_glyph_texture(
+                renderer, *display_text, std::max(1, text.w));
             if (glyph && glyph->texture) {
                 const bool left_align = match.layout_x >= 0 ? match.layout_left
                     : match.rule >= 0 && static_cast<size_t>(match.rule) < rules_.size() &&
                         rules_[static_cast<size_t>(match.rule)].left_align;
-                SDL_Rect drawn = glyph->destination(text, left_align, locked);
+                SDL_Rect drawn = glyph->destination(text, left_align);
                 if (match.layout_right) drawn.x = text.x + text.w - drawn.w;
                 include_text(drawn);
             }

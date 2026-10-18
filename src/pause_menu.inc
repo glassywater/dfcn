@@ -195,9 +195,7 @@ bool Overlay::layout_pause_menu(SDL_Renderer *renderer) {
         match.layout_pixel_y = field.offset;
         match.layout_fixed_baseline = true;
         match.layout_left = field.left_align;
-        match.layout_font_pixels = pixels;
-        match.layout_lock_font_pixels = true;
-        match.layout_visual_height_pixels = 0;
+        match.layout_prepared = true;
         match.layout_line_height_pixels = tile_h;
         match.layout_native_clip = field.clip ? field.clip : std::optional<SDL_Rect>{
             SDL_Rect{field.left, origin_y + field.y * tile_h + field.offset,

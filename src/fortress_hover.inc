@@ -285,9 +285,7 @@ void Overlay::compose_fortress_hover_rows(const NativeFortressHoverCard &card,
         line.layout_left = true;
         line.layout_clip_right = card.interior.x + card.interior.w;
         line.layout_foreground_rgb = row.foregrounds.front();
-        line.layout_font_pixels = std::clamp(
-            static_cast<int>(gps_->tile_pixel_y * config_.font_scale), 1, gps_->tile_pixel_y);
-        line.layout_lock_font_pixels = true;
+        line.layout_prepared = true;
         line.layout_line_height_pixels = gps_->tile_pixel_y;
         composed.push_back(std::move(line));
     }
@@ -318,7 +316,7 @@ void Overlay::layout_fortress_hover(SDL_Renderer *renderer) {
         log_line("INFO", "Activated whole fortress hover layout: columns=" +
             std::to_string(left) + ".." + std::to_string(right) + "; rows=" +
             std::to_string(rows.size()) + "; fixed font=" +
-            std::to_string(rows.front().front()->layout_font_pixels) + "px");
+            std::to_string(unified_font_pixels()) + "px");
         logged = true;
     }
 }

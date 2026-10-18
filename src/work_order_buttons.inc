@@ -67,8 +67,8 @@ void Overlay::draw_work_order_buttons(SDL_Renderer *renderer) {
                 if (had_clip && !SDL_IntersectRect(&inner, &saved_clip, &clip)) continue;
                 const int text_width = std::max(1,
                     inner.w - 2 * config_.horizontal_padding);
-                const GlyphTexture *glyph = get_glyph_texture(renderer, *targets[index],
-                    text_width, tile_h, font_pixels);
+                const GlyphTexture *glyph = get_glyph_texture(
+                    renderer, *targets[index], text_width);
                 if (!glyph || !glyph->texture) continue;
                 buttons.push_back({x, y, index, inner, clip});
                 x += 3;
@@ -171,7 +171,7 @@ void Overlay::draw_work_order_buttons(SDL_Renderer *renderer) {
         caption.layout_box_pixel_x = inner.x;
         caption.layout_box_pixel_width = inner.w;
         caption.layout_native_clip = inner;
-        caption.layout_font_pixels = font_pixels;
+        caption.layout_prepared = true;
         caption.layout_foreground_rgb = static_cast<int>(button.foreground);
         draw_match(renderer, caption);
     }

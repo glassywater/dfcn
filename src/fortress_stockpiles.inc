@@ -388,8 +388,7 @@ void Overlay::append_fortress_stockpile_types(std::vector<std::string> &rows,
                         origin_x + left * tile_w, origin_y + (y - 1) * tile_h,
                         (right - left) * tile_w, 3 * tile_h};
                     match.layout_fixed_baseline = true;
-                    match.layout_font_pixels = pixels;
-                    match.layout_lock_font_pixels = true;
+                    match.layout_prepared = true;
                     match.layout_line_height_pixels = gps_->tile_pixel_y;
                     matches.push_back(std::move(match));
                     std::fill_n(rows[source.y].begin() + source.x, length, ' ');

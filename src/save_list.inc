@@ -248,9 +248,7 @@ std::vector<Match> Overlay::layout_save_confirmation(SDL_Renderer *renderer) {
         match.layout_pixel_y = field.top % tile_h;
         match.layout_fixed_baseline = true;
         match.layout_left = !field.centered;
-        match.layout_font_pixels = pixels;
-        match.layout_lock_font_pixels = true;
-        match.layout_visual_height_pixels = 0;
+        match.layout_prepared = true;
         match.layout_line_height_pixels = tile_h;
         if (field.index == matches.size()) result.push_back(std::move(match));
         else result[static_cast<size_t>(std::find(owned.begin(), owned.end(), field.index) -
@@ -928,9 +926,7 @@ bool Overlay::layout_save_list(SDL_Renderer *renderer) {
         match.layout_right = field.right_aligned;
         match.layout_ellipsize = true;
         match.layout_native_clip = field.native_clip;
-        match.layout_font_pixels = pixels;
-        match.layout_lock_font_pixels = true;
-        match.layout_visual_height_pixels = 0;
+        match.layout_prepared = true;
         match.layout_line_height_pixels = field.line_height;
         for (size_t j = 1; j < field.parts.size(); ++j) {
             matches[field.parts[j]].target.clear();

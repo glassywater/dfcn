@@ -155,9 +155,7 @@ void Overlay::layout_work_order_fields(SDL_Renderer *renderer) {
             // The final draw can still recover its native owning region.
             match.layout_x = match.x;
             match.layout_left = true;
-            match.layout_font_pixels = unified_font_pixels();
-            match.layout_lock_font_pixels = true;
-            match.layout_visual_height_pixels = 0;
+            match.layout_prepared = true;
             match.layout_line_height_pixels = gps_->tile_pixel_y;
         }
     }
@@ -778,9 +776,7 @@ void Overlay::append_fortress_task_rows(std::vector<std::string> &rows,
         match.layout_length = rights[field.column] - match.layout_x;
         match.layout_left = true;
         match.layout_clip_right = rights[field.column];
-        match.layout_font_pixels = std::clamp(
-            static_cast<int>(gps_->tile_pixel_y * config_.font_scale), 1, gps_->tile_pixel_y);
-        match.layout_lock_font_pixels = true;
+        match.layout_prepared = true;
         match.layout_line_height_pixels = gps_->tile_pixel_y;
         matches.push_back(std::move(match));
         std::fill(rows[field.y].begin() + field.left, rows[field.y].begin() + field.end, ' ');

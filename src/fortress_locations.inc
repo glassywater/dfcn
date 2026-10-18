@@ -520,9 +520,7 @@ void Overlay::layout_fortress_location(SDL_Renderer *renderer) {
             // a short English title must not become the Chinese text budget.
             match.layout_x = match.x;
             match.layout_left = true;
-            match.layout_font_pixels = unified_font_pixels();
-            match.layout_lock_font_pixels = true;
-            match.layout_visual_height_pixels = 0;
+            match.layout_prepared = true;
             match.layout_line_height_pixels = gps_->tile_pixel_y;
         }
     };
@@ -562,8 +560,8 @@ void Overlay::layout_fortress_location(SDL_Renderer *renderer) {
             Match *label = labels[i];
             label_rows.push_back({label});
             right = std::max(right, label->x + label->length);
-            const auto *glyph = get_glyph_texture(renderer, label->target,
-                gps_->screen_pixel_x, gps_->tile_pixel_y, pixels, 0, true);
+            const auto *glyph = get_glyph_texture(
+                renderer, label->target, gps_->screen_pixel_x);
             if (!glyph || !glyph->texture) return;
             label_width = std::max(label_width,
                 (label->x - left) * gps_->tile_pixel_x + glyph->width);
@@ -612,16 +610,12 @@ void Overlay::layout_fortress_location(SDL_Renderer *renderer) {
             // unframed facts. Share the value column without pulling those
             // captions back onto the left border. Measure each actual inset,
             // then keep the smallest fitted font common to the whole column.
-            int label_pixels = pixels;
             for (const auto &row : label_rows) {
                 layout_fortress_text_rows(renderer, {row}, row.front()->x,
                     value_left - 1, true, false, moving);
-                if (row.front()->layout_font_pixels > 0)
-                    label_pixels = std::min(label_pixels, row.front()->layout_font_pixels);
             }
             for (const auto &row : label_rows)
-                if (row.front()->layout_font_pixels > 0)
-                    row.front()->layout_font_pixels = label_pixels;
+                row.front()->layout_prepared = true;
             layout_fortress_text_rows(renderer, value_rows, value_left, right, true, false, moving);
         } else {
             for (const auto &row : label_rows)

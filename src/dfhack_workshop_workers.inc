@@ -8,8 +8,7 @@
         auxiliary_literal(x, y, source, right, false, scope);
         if (dfhack_auxiliary_matches.size() == before) return;
         auto &match = dfhack_auxiliary_matches.back();
-        match.layout_font_pixels = unified_font_pixels();
-        match.layout_lock_font_pixels = true;
+        match.layout_prepared = true;
     };
     // HotkeyLabel supplies the actual key text, including user bindings.
     // CycleHotkeyLabel joins two keys (CV/ER); only its caption is translated.
