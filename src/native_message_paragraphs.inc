@@ -6,6 +6,85 @@ static bool is_visitor_overview_paragraph(std::string_view source) {
         source.starts_with("This visitor has come ");
 }
 
+// Overview cells end in crossing/T separators rather than closed panel
+// corners. Their already-proven row cards own the column and each physical
+// source span even when no constructor-time paragraph capture is retained.
+void Overlay::append_visitor_overview_paragraphs(const std::vector<NativeTextCard> &cards,
+        std::vector<std::string> &screen_rows, std::vector<Match> &result,
+        std::vector<Match> &untranslated_help_rows, int only_y) const {
+    for (const auto &first : cards) {
+        if (first.rows.size() != 1) continue;
+        const auto &opening = first.rows.front();
+        if (!opening.source.starts_with("You can learn more about") &&
+                !opening.source.starts_with("This visitor ")) continue;
+        std::string source;
+        std::vector<int> source_colors;
+        std::vector<Match> rows;
+        const NativeTextCardRow *previous = nullptr;
+        const NativeTextCard *card = &first;
+        while (card && card->rows.size() == 1) {
+            const auto &row = card->rows.front();
+            if (row.x != opening.x || row.y != card->interior.y ||
+                    row.foregrounds.size() != row.source.size() ||
+                    screen_rows[row.y].compare(row.x, row.source.size(), row.source) != 0)
+                break;
+            // Native half-font pairs repeat the same bytes on two physical
+            // rows. Translate those bytes once while retaining both masks.
+            bool duplicate = previous && previous->source == row.source &&
+                previous->y + 1 == row.y;
+            for (size_t at = 0; duplicate && at < row.source.size(); ++at) {
+                if (row.source[at] == ' ') continue;
+                bool upper_layer = false, lower_layer = false;
+                cell_at(row.x + static_cast<int>(at), previous->y, &upper_layer);
+                cell_at(row.x + static_cast<int>(at), row.y, &lower_layer);
+                const auto *flags = upper_layer
+                    ? gps_->screentexpos_top_flag : gps_->screentexpos_flag;
+                const size_t tile = static_cast<size_t>(row.x + at) * gps_->dimy;
+                duplicate = flags && upper_layer == lower_layer &&
+                    (flags[tile + previous->y] & ((1u << 3) | (1u << 4))) == (1u << 3) &&
+                    (flags[tile + row.y] & ((1u << 3) | (1u << 4))) == (1u << 4);
+            }
+            if (!duplicate) {
+                if (!source.empty()) {
+                    source.push_back(' ');
+                    source_colors.push_back(source_colors.back());
+                }
+                source += row.source;
+                source_colors.insert(source_colors.end(),
+                    row.foregrounds.begin(), row.foregrounds.end());
+            }
+            rows.push_back({row.x, row.y, static_cast<int>(row.source.size()),
+                kUiMessageRule, {}, row.source});
+            previous = &row;
+            const int next_y = row.y + 1;
+            const auto next = std::find_if(cards.begin(), cards.end(), [&](const NativeTextCard &candidate) {
+                return candidate.interior.x == first.interior.x &&
+                    candidate.interior.w == first.interior.w && candidate.interior.y == next_y;
+            });
+            card = next == cards.end() ? nullptr : &*next;
+        }
+        // A missing row or separator ends this allocation. Only a complete
+        // visitor production may claim it; unknown text keeps its native ink.
+        if (rows.empty() || !is_visitor_overview_paragraph(normalize_utterance(source))) continue;
+        std::vector<int> target_colors;
+        const auto target = translate_help_paragraph(source, source_colors, target_colors, true);
+        if (!target) continue;
+        const int tile_w = gps_->tile_pixel_x, tile_h = gps_->tile_pixel_y;
+        const int origin_x = (gps_->screen_pixel_x - gps_->dimx * tile_w) / 2;
+        const int origin_y = (gps_->screen_pixel_y - gps_->dimy * tile_h) / 2;
+        const int right = first.interior.x + first.interior.w;
+        const SDL_Rect clip{origin_x + opening.x * tile_w, origin_y + opening.y * tile_h,
+            (right - opening.x) * tile_w, (rows.back().y + 1 - opening.y) * tile_h};
+        for (auto &row : rows) row.layout_native_clip = clip;
+        const size_t first_match = result.size();
+        if (append_ui_message_paragraph(screen_rows, result, untranslated_help_rows, only_y,
+                std::move(rows), right, *target, target_colors, std::nullopt,
+                source, opening.x, false, 0))
+            for (size_t at = first_match; at < result.size(); ++at)
+                result[at].native_overview_paragraph = true;
+    }
+}
+
 std::shared_ptr<const TranslationResult> Overlay::announcement_result_metadata(std::string_view source) const {
     const auto prefix = std::to_string(native_identity_translation_context()) + '\x1f';
     const auto original = announcement_translation_cache_.find(prefix + std::string(source));

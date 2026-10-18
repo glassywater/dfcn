@@ -688,6 +688,7 @@ struct Match {
     // A summary row reconstructed from ordered native draws already owns
     // its complete column; physical tail spans only suppress surviving ink.
     bool native_overview_complete_row = false;
+    bool native_overview_paragraph = false;
     // Tall adventure target cards own their name and status column together.
     bool native_adventure_target_row = false;
     // Animal picker records retain their complete name/count/sex field and
@@ -5397,6 +5398,9 @@ private:
     void append_native_message_paragraphs(std::vector<std::string> &screen_rows,
         std::vector<Match> &result, std::vector<Match> &untranslated_help_rows,
         int only_y, const unsigned char *screen_override, bool announcements_only) const;
+    void append_visitor_overview_paragraphs(const std::vector<NativeTextCard> &cards,
+        std::vector<std::string> &screen_rows, std::vector<Match> &result,
+        std::vector<Match> &untranslated_help_rows, int only_y) const;
     void append_character_knowledge_matches(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y,
         const unsigned char *screen_override) const;
@@ -18809,6 +18813,8 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
         ? capture_character_overview_rows() : std::vector<NativeTextCard>{};
     const auto character_group_rows = character_page
         ? capture_character_group_rows() : std::vector<NativeTextCard>{};
+    append_visitor_overview_paragraphs(character_overview_rows, screen_rows,
+        result, untranslated_help_rows, only_y);
     std::optional<NativeTextCard> worldgen_summary;
     const auto finish_matches = [&]() {
         if (worldgen_summary) compose_native_text_rows(
@@ -27614,11 +27620,11 @@ void Overlay::normalize_native_split_text() {
                 match.rule == kFortressWorkshopActivityRule) &&
                 match.layout_fixed_baseline &&
                 !match.native_split_text) continue;
-        // The overview document has already folded native text halves while
+        // Overview documents and visitor paragraphs already fold text halves while
         // retaining both physical suppression spans. Its translated rows
         // have independent measured baselines and must not become captions
         // whose lower half is discarded here.
-        if (match.rule == kCharacterOverviewQuoteRule) continue;
+        if (match.rule == kCharacterOverviewQuoteRule || match.native_overview_paragraph) continue;
         // Retain the native source spans of duplicates for suppression, but
         // never let a later page-specific layout resurrect their translations
         // or erase pixels after the surviving caption has been drawn.

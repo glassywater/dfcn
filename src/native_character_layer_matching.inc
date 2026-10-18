@@ -325,6 +325,8 @@ std::vector<Match> Overlay::find_native_character_matches() const {
         character_footer_tabs_y, only_y, screen_override != nullptr);
     // Footer ownership needs the intact age/context row first. Summary
     // composition then reserves each column before generic field matching.
+    append_visitor_overview_paragraphs(character_overview_rows, screen_rows,
+        result, untranslated_help_rows, only_y);
     append_character_overview_identities(character_overview_rows, screen_rows, result, only_y);
     auto is_contaminant_marker = [](std::string_view source) {
         return source == "spatter" || source == "covering" ||
