@@ -1,5 +1,7 @@
 // Display-only field composition. Strict item/recipe parsers keep their old
 // contracts; this path is entered only by an owner of a complete native field.
+#include "native_announcement_log_item_fields.inc"
+
 static std::string item_translation_cache_prefix() {
     return std::to_string(RULESETS.resource_revision()) + ":" +
         std::to_string(native_identity_translation_context()) + ":";

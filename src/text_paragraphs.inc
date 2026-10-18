@@ -274,8 +274,10 @@ bool Overlay::append_bounded_paragraph(std::vector<Match> rows,
         const std::vector<int> &foregrounds, bool clipped_start, int box_left,
         std::optional<NativeParagraphViewport> viewport,
         const std::vector<std::pair<size_t, size_t>> &word_ranges,
-        int complete_layout_rows) const {
-    if (NativeDfhackForegroundScope::active)
+        int complete_layout_rows, const ParagraphLayoutCacheEntry *prepared_layout) const {
+    const bool announcement_log = native_announcement_log_foreground_view(gps_);
+    if (!announcement_log) prepared_layout = nullptr;
+    if (!announcement_log && NativeDfhackForegroundScope::active)
         for (auto &row : rows) row.native_dfhack_foreground = true;
     if (!face_ || !gps_ || gps_->tile_pixel_x <= 0 || gps_->tile_pixel_y <= 0 ||
         rows.empty()) return false;
@@ -326,36 +328,71 @@ bool Overlay::append_bounded_paragraph(std::vector<Match> rows,
     std::vector<std::vector<int>> line_foregrounds;
     int font_pixels = 0;
     auto metadata = rows.front().translation_result;
-    std::string joined_source;
-    const auto joined_rows = [&]() -> const std::string & {
-        if (!joined_source.empty()) return joined_source;
-        for (const auto &row : rows) {
-            if (!joined_source.empty()) joined_source.push_back(' ');
-            joined_source += row.source;
+    if (prepared_layout) {
+        if (prepared_layout->lines.empty() || prepared_layout->font_pixels <= 0) return false;
+        font_pixels = prepared_layout->font_pixels;
+    } else {
+        std::string joined_source;
+        const auto joined_rows = [&]() -> const std::string & {
+            if (!joined_source.empty()) return joined_source;
+            for (const auto &row : rows) {
+                if (!joined_source.empty()) joined_source.push_back(' ');
+                joined_source += row.source;
+            }
+            return joined_source;
+        };
+        // The log producer already supplies its complete parent and viewport.
+        // Never recover a different component's paragraph by scanning registries.
+        auto complete_source = announcement_log
+            ? std::optional<std::string>(rows.front().native_help_review_source)
+            : native_source_for_rows(rows, clip_right);
+        if (complete_source && complete_source->empty()) complete_source.reset();
+        if (!complete_source) complete_source = joined_rows();
+        if (!announcement_log && !metadata && (rows.front().rule == kUiMessageRule ||
+                rows.front().rule == kAnnouncementListRule)) {
+            metadata = announcement_result_metadata(*complete_source);
+            if (!metadata) metadata = announcement_result_metadata(joined_rows());
         }
-        return joined_source;
-    };
-    auto complete_source = native_source_for_rows(rows, clip_right);
-    if (!complete_source) complete_source = joined_rows();
-    if (!metadata && (rows.front().rule == kUiMessageRule ||
-            rows.front().rule == kAnnouncementListRule)) {
-        metadata = announcement_result_metadata(*complete_source);
-        if (!metadata) metadata = announcement_result_metadata(joined_rows());
+        Match display_source = rows.front();
+        display_source.source = metadata && !metadata->source.empty()
+            ? metadata->source : *complete_source;
+        display_source.native_source.reset();
+        display_source.target = target;
+        display_source.translation_result = metadata;
+        const DisplayLanguageScope source_scope(&display_source);
+        if (!measure_paragraph_layout(target, width, foregrounds, word_ranges,
+                lines, line_foregrounds, font_pixels)) return false;
     }
-    Match display_source = rows.front();
-    display_source.source = metadata && !metadata->source.empty()
-        ? metadata->source : *complete_source;
-    display_source.native_source.reset();
-    display_source.target = target;
-    display_source.translation_result = metadata;
-    const DisplayLanguageScope source_scope(&display_source);
-    if (!measure_paragraph_layout(target, width, foregrounds, word_ranges,
-            lines, line_foregrounds, font_pixels)) return false;
     // Native row spacing belongs to the widget. A taller font bitmap can
     // extend around its baseline without creating additional layout rows.
     const int line_height = native_text_row_height(gps_);
 
-    if (scrollable) {
+    if (prepared_layout) {
+        // A retained complete log layout is independent of scroll position.
+        // Select its visible slice before copying any strings or colors.
+        const auto &complete = prepared_layout->lines;
+        const auto &colors = prepared_layout->foregrounds;
+        const size_t visible_lines = static_cast<size_t>(scrollable
+            ? std::max(1, native_region.h / line_height)
+            : std::max(1, (native_region.y + native_region.h - (origin_y + first_y * tile_h) +
+                line_height - 1) / line_height));
+        size_t first = 0;
+        if (scrollable) {
+            const size_t native_range = static_cast<size_t>(viewport->total_lines) - rows.size();
+            const size_t target_range = complete.size() > visible_lines
+                ? complete.size() - visible_lines : 0;
+            first = static_cast<size_t>(
+                (static_cast<uint64_t>(viewport->first_line) * target_range + native_range / 2) /
+                    native_range);
+        }
+        first = std::min(first, complete.size());
+        const size_t end = first + std::min(visible_lines, complete.size() - first);
+        lines.assign(complete.begin() + first, complete.begin() + end);
+        if (!colors.empty()) {
+            if (colors.size() != complete.size()) return false;
+            line_foregrounds.assign(colors.begin() + first, colors.begin() + end);
+        }
+    } else if (scrollable) {
         // Map the native scroll positions to the translated layout while
         // retaining the actual height of its native text viewport.
         const size_t native_range = static_cast<size_t>(viewport->total_lines) - rows.size();

@@ -167,7 +167,7 @@ class NativeUiLayerFrameCache {
 public:
     void clear() { *this = {}; }
     void invalidate() noexcept { valid_ = false; }
-    bool matches(const NativeUiLayerStorage &layer, SDL_Renderer *renderer,
+    bool matches_dependencies(const NativeUiLayerStorage &layer, SDL_Renderer *renderer,
             int width, int height, DrawLayer draw_layer,
             const std::string &context, bool owned_frames = false) const noexcept {
         const auto &grid = layer.foreground;
@@ -176,12 +176,84 @@ public:
                 draw_layer_ != draw_layer || width_ != width || height_ != height ||
                 dimx_ != grid.dimx || dimy_ != grid.dimy || top_in_use_ != gps.top_in_use ||
                 owned_frames_ != owned_frames || context_ != context || !same_metadata(layer)) return false;
-        if (!same_header(grid)) return false;
+        return same_header(grid);
+    }
+    bool matches(const NativeUiLayerStorage &layer, SDL_Renderer *renderer,
+            int width, int height, DrawLayer draw_layer,
+            const std::string &context, bool owned_frames = false) const noexcept {
+        if (!matches_dependencies(layer, renderer, width, height, draw_layer,
+                context, owned_frames)) return false;
+        const auto &grid = layer.foreground;
         if (owned_frames_)
             return same_owned_plane(planes_[0], grid.planes[0]) &&
                 (!top_in_use_ || same_owned_plane(planes_[1], grid.planes[1]));
         return same_plane(planes_[0], grid.planes[0]) &&
             (!top_in_use_ || same_plane(planes_[1], grid.planes[1]));
+    }
+    std::optional<std::vector<SDL_Rect>> changed_owned_rows(
+            const NativeUiLayerStorage &layer) const {
+        const auto &grid = layer.foreground;
+        if (!valid_ || !owned_frames_ || dimx_ != grid.dimx || dimy_ != grid.dimy ||
+                top_in_use_ != graphics(grid).top_in_use || !same_metadata(layer))
+            return std::nullopt;
+        size_t count = 0;
+        if (!owned_tile_count(grid, frames_, count)) return std::nullopt;
+        const size_t full_count = static_cast<size_t>(grid.dimx) * grid.dimy;
+        if (full_count > static_cast<size_t>(-1) / 8) return std::nullopt;
+        const size_t plane_count = top_in_use_ ? planes_.size() : size_t{1};
+        for (size_t plane = 0; plane < plane_count; ++plane) {
+            const auto &packed = planes_[plane];
+            const auto &source = grid.planes[plane];
+            if (packed.screen.size() != count * 8 || packed.flags.size() != count ||
+                    source.screen.size() < full_count * 8 || source.flags.size() < full_count)
+                return std::nullopt;
+            for (size_t slot = 0; slot < packed.textures.size(); ++slot)
+                if (packed.textures[slot].size() != count ||
+                        source.textures[slot].size() < full_count) return std::nullopt;
+        }
+        try {
+            std::vector<SDL_Rect> changed;
+            std::vector<unsigned char> rows;
+            size_t frame_at = 0;
+            for (const auto &frame : frames_) {
+                if (!frame.w || !frame.h) continue;
+                // Native edge tiles can emit extra ink outside their cell;
+                // only complete repainting preserves those edge operations.
+                if (int64_t(frame.x) + frame.w >= dimx_ ||
+                        int64_t(frame.y) + frame.h >= dimy_) return std::nullopt;
+                rows.assign(static_cast<size_t>(frame.h), 0);
+                for (size_t plane = 0; plane < plane_count; ++plane) {
+                    const auto &packed = planes_[plane];
+                    const auto &source = grid.planes[plane];
+                    size_t at = frame_at;
+                    for (int x = frame.x; x < frame.x + frame.w; ++x)
+                        for (int row = 0; row < frame.h; ++row, ++at) {
+                            const size_t tile = static_cast<size_t>(x) * dimy_ + frame.y + row;
+                            bool different = packed.flags[at] != source.flags[tile] ||
+                                std::memcmp(packed.screen.data() + at * 8,
+                                    source.screen.data() + tile * 8, 8) != 0;
+                            for (size_t slot = 0; slot < packed.textures.size(); ++slot) {
+                                const auto old_texture = packed.textures[slot][at];
+                                const auto new_texture = source.textures[slot][tile];
+                                // Lower and anchored pictures can overlap other
+                                // rows. Retained row painting is only valid for
+                                // ordinary cell-local pictures and glyphs.
+                                if (slot && (old_texture || new_texture)) return std::nullopt;
+                                different = different || old_texture != new_texture;
+                            }
+                            if (different) rows[static_cast<size_t>(row)] = 1;
+                        }
+                }
+                for (int row = 0; row < frame.h;) {
+                    if (!rows[static_cast<size_t>(row)]) { ++row; continue; }
+                    const int first = row++;
+                    while (row < frame.h && rows[static_cast<size_t>(row)]) ++row;
+                    changed.push_back({frame.x, frame.y + first, frame.w, row - first});
+                }
+                frame_at += static_cast<size_t>(frame.w) * frame.h;
+            }
+            return changed;
+        } catch (...) { return std::nullopt; }
     }
     void capture(const NativeUiLayerStorage &layer, SDL_Renderer *renderer,
             int width, int height, DrawLayer draw_layer, const std::string &context,

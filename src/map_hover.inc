@@ -58,7 +58,7 @@ class NativeMapCardSources {
     const graphicst &gps_;
     // These snapshots live only for this card capture. Read a document source
     // only after a current row has an actual, matching native draw.
-    std::array<std::optional<std::vector<NativeAnnouncementParagraph>>, 3> announcements_;
+    std::array<std::optional<std::vector<NativeAnnouncementParagraph>>, 2> announcements_;
     std::optional<std::vector<NativeKnowledgeDraw>> rich_;
     std::vector<NativeKnowledgeDraw> previous_rich_;
 
@@ -114,10 +114,8 @@ class NativeMapCardSources {
         };
         if (!announcements_[0]) announcements_[0] = native_adventure_announcement_paragraphs();
         if (own_announcement(*announcements_[0])) return true;
-        if (!announcements_[1]) announcements_[1] = native_announcement_log_paragraphs();
+        if (!announcements_[1]) announcements_[1] = native_fortress_alert_paragraphs();
         if (own_announcement(*announcements_[1])) return true;
-        if (!announcements_[2]) announcements_[2] = native_fortress_alert_paragraphs();
-        if (own_announcement(*announcements_[2])) return true;
         if (origin_top) return false;
         if (!rich_) {
             bool current = false, previous_current = false;

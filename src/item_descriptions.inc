@@ -384,8 +384,10 @@ std::optional<std::string> Overlay::translate_item_description_term(
         std::string_view raw_source, bool predicate) const {
     const std::string source = normalize_art_utterance(raw_source);
     const std::string key = item_translation_cache_prefix() + (predicate ? "V:" : "T:") + source;
+    const auto parse = [&]() -> std::optional<std::string> {
     if (const auto found = item_description_cache_.find(key);
-        found != item_description_cache_.end()) return found->second;
+        !native_announcement_log_item_field_active() && found != item_description_cache_.end())
+        return found->second;
     std::unordered_map<std::string, std::optional<std::string>> memo;
     auto translate = [&](auto &&self, std::string_view value, bool predicate, unsigned depth)
             -> std::optional<std::string> {
@@ -608,10 +610,15 @@ std::optional<std::string> Overlay::translate_item_description_term(
         return target;
     };
     auto target = translate(translate, source, predicate, 0);
-    if (!item_translation_cache_context_current(key)) return target;
+    if (native_announcement_log_item_field_active() || !item_translation_cache_context_current(key))
+        return target;
     if (item_description_cache_.size() >= 2048) item_description_cache_.clear();
     item_description_cache_.emplace(key, target);
     return target;
+    };
+    if (native_announcement_log_item_field_active())
+        return translation_work_memo("closed-item-term:" + key, parse);
+    return parse();
 }
 
 bool Overlay::item_description_sentence_start(std::string_view source) const {
@@ -652,7 +659,8 @@ std::optional<std::string> Overlay::translate_item_description_source(
     // only inside an identified item description or its typed inscription.
     const std::string key = item_translation_cache_prefix() + (item_context ? "P:I:" : "P:A:") + source;
     if (const auto found = item_description_cache_.find(key);
-        found != item_description_cache_.end()) return found->second;
+        !native_announcement_log_item_field_active() && found != item_description_cache_.end())
+        return found->second;
     if (!item_context) {
         // This reviewed sentence is stored with Legends event rules so its
         // subject keeps the shared {e} semantics, but still anchors item prose.
@@ -697,9 +705,10 @@ std::optional<std::string> Overlay::translate_item_description_source(
             }
         }
         if (!item_opening) {
-            if (item_description_cache_.size() >= 2048) item_description_cache_.clear();
-            if (item_translation_cache_context_current(key))
+            if (!native_announcement_log_item_field_active() && item_translation_cache_context_current(key)) {
+                if (item_description_cache_.size() >= 2048) item_description_cache_.clear();
                 item_description_cache_.emplace(key, std::nullopt);
+            }
             return std::nullopt;
         }
     }
@@ -961,7 +970,7 @@ std::optional<std::string> Overlay::translate_item_description_source(
         if (complete && translated_any && !quoted &&
             !output.empty() && ending.empty()) target = trim(std::move(output));
     }
-    if (item_translation_cache_context_current(key)) {
+    if (!native_announcement_log_item_field_active() && item_translation_cache_context_current(key)) {
         if (item_description_cache_.size() >= 2048) item_description_cache_.clear();
         item_description_cache_.emplace(key, target);
     }

@@ -74,6 +74,17 @@ public:
 
     const std::string &error() const { return error_; }
 
+    // Detached translators own pronunciation resources and their inference
+    // cache. A mutex or a callback into the renderer is never borrowed.
+    void copy_resources_from(const EnglishNameTransliterator &source) {
+        if (this == &source) return;
+        std::scoped_lock lock(g2p_cache_mutex_, source.g2p_cache_mutex_);
+        dictionary_ = source.dictionary_;
+        uk_g2p_ = source.uk_g2p_;
+        error_ = source.error_;
+        g2p_cache_.clear();
+    }
+
     std::string word(std::string_view source, int16_t pos = -1) const {
         source = trim(source);
         if (source.empty()) return {};

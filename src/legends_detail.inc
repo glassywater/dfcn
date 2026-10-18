@@ -865,7 +865,8 @@ std::optional<std::string> Overlay::translate_legends_description_term(
         source.find_first_of(".;:!?()\"") != std::string::npos)
         return std::nullopt;
     if (const auto it = legends_description_cache_.find(source);
-        it != legends_description_cache_.end()) return it->second;
+        !native_announcement_log_item_field_active() && it != legends_description_cache_.end())
+        return it->second;
     std::map<std::string, std::optional<std::string>> memo;
     auto resolve = [&](auto &&self, const std::string &value, unsigned depth)
             -> std::optional<std::string> {
@@ -932,7 +933,7 @@ std::optional<std::string> Overlay::translate_legends_description_term(
         return result;
     };
     auto result = resolve(resolve, source, 0);
-    if (!translation_work_exhausted()) {
+    if (!translation_work_exhausted() && !native_announcement_log_item_field_active()) {
         if (legends_description_cache_.size() >= 4096) legends_description_cache_.clear();
         legends_description_cache_.emplace(source, result);
     }

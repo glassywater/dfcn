@@ -80,7 +80,14 @@ static void refresh_native_generated_creature_names() {
     g_native_unit_identity_revision.fetch_add(1, std::memory_order_release);
 }
 
+static std::shared_ptr<const DfhackRawCreatureLabels>
+native_announcement_log_worker_raw_creature_labels();
+static std::shared_ptr<const DfhackRawCreatureLabels>
+native_announcement_log_worker_raw_creature_adjectives();
+
 static std::shared_ptr<const DfhackRawCreatureLabels> native_dfhack_raw_creature_labels() {
+    if (native_announcement_log_worker_running())
+        return native_announcement_log_worker_raw_creature_labels();
     static std::mutex mutex;
     static std::array<uintptr_t, 5> stamp{};
     static std::shared_ptr<const DfhackRawCreatureLabels> cached;
@@ -123,6 +130,8 @@ static std::shared_ptr<const DfhackRawCreatureLabels> native_dfhack_raw_creature
 // Resolve both elements through that array field, rather than assuming an
 // edition-specific object offset. This owned map is captured on the render side.
 static std::shared_ptr<const DfhackRawCreatureLabels> native_dfhack_raw_creature_adjectives() {
+    if (native_announcement_log_worker_running())
+        return native_announcement_log_worker_raw_creature_adjectives();
     static std::mutex mutex;
     static std::array<uintptr_t, 5> stamp{};
     static std::shared_ptr<const DfhackRawCreatureLabels> cached;

@@ -75,10 +75,19 @@ std::optional<std::string> Overlay::translate_native_justice_organization_initia
 }
 
 static bool native_unit_identity_requires_world(const NativeUnitIdentity &unit) {
+    const auto live_name = [](const NativeHistoryName &name) {
+        // These names can recapture a renamed site/entity or its current
+        // government/parent in the shared history renderer. Their spelling
+        // and IDs alone are not a complete immutable naming dependency.
+        return name.site_id >= 0 || name.entity_id >= 0 || name.entity_type >= 0 ||
+            name.entity_name_current;
+    };
+    if (live_name(unit.name)) return true;
     if (unit.form == NativeUnitIdentityForm::Reference)
         return std::any_of(unit.reference_parts.begin(), unit.reference_parts.end(),
-            [](const NativeUnitReferencePart &part) {
-                return part.kind == NativeUnitReferencePartKind::Title || part.entity_present;
+            [&](const NativeUnitReferencePart &part) {
+                return part.kind == NativeUnitReferencePartKind::Title || part.entity_present ||
+                    live_name(part.name) || live_name(part.entity_name);
             });
     if (unit.form == NativeUnitIdentityForm::NameOnly ||
             (unit.form == NativeUnitIdentityForm::Name && !unit.native_name.empty()) ||
@@ -165,41 +174,65 @@ static std::string native_unit_identity_cache_key(const NativeUnitIdentity &unit
     return key;
 }
 
+static std::optional<std::string> native_announcement_log_worker_unit_target(
+    const NativeUnitIdentity &unit);
+
 std::optional<std::string> Overlay::translate_native_unit_identity(
         const NativeUnitIdentity &unit) const {
     NativeUnitIdentityRenderScope rendering;
-    // Live government/title references still resolve under the shared lock.
-    // Complete owned snapshots can reuse this thread's exact result before
-    // waiting for an unrelated SDL translation pass.
-    const bool live_entity = native_unit_identity_requires_world(unit);
-    const std::string key = live_entity ? std::string{} : native_unit_identity_cache_key(unit);
-    struct ThreadCache {
-        const Overlay *owner = nullptr;
-        uint64_t catalog = 0;
-        std::unordered_map<std::string, std::optional<std::string>> results;
-        std::deque<std::string> order;
-    };
-    ThreadCache *thread_cache = nullptr;
-    if (!live_entity && key.size() <= 8192) {
-        thread_cache = &reloadable_thread_state<ThreadCache,
-            struct NativeUnitIdentityThreadCacheTag>();
-        const uint64_t catalog = identity_translation_catalog_generation_.load(std::memory_order_acquire);
-        if (thread_cache->owner != this || thread_cache->catalog != catalog) {
-            thread_cache->results.clear();
-            thread_cache->order.clear();
-            thread_cache->owner = this;
-            thread_cache->catalog = catalog;
-        }
-        const uint64_t context = native_identity_translation_context();
-        const std::string memo_key = std::to_string(context) + '\x1f' + key;
-        if (const auto found = thread_cache->results.find(memo_key);
-                found != thread_cache->results.end()) {
-            auto target = found->second;
-            if (catalog == identity_translation_catalog_generation_.load(std::memory_order_acquire) &&
-                    context == native_identity_translation_context()) return target;
-        }
-    }
     TranslationStateScope translation_scope;
+    // A complete owned identity does not depend on the report which contains
+    // it, or on other formatter publications in that frame. Share its result
+    // between SDL and owned-input workers under the actual vocabulary/config
+    // generation instead of the enclosing announcement's identity context.
+    // Live government/title references keep their existing live policy.
+    const bool live_entity = native_unit_identity_requires_world(unit);
+    if (g_native_announcement_log_worker_active && live_entity)
+        return native_announcement_log_worker_unit_target(unit);
+    const std::string key = live_entity ? std::string{} : native_unit_identity_cache_key(unit);
+    struct OwnedCache {
+        struct Entry {
+            std::optional<std::string> target;
+            std::list<std::string>::iterator use;
+            size_t bytes = 0;
+        };
+        const Overlay *owner = nullptr;
+        std::string generation;
+        std::unordered_map<std::string, Entry> results;
+        std::list<std::string> order;
+        size_t bytes = 0;
+    };
+    static const unsigned char owned_identity_cache_tag = 0;
+    auto &owned_cache = domain_cache<OwnedCache>(&owned_identity_cache_tag);
+    const auto owned_generation = [&] {
+        std::string generation;
+        const auto value = [&](const auto &input) {
+            generation.append(reinterpret_cast<const char *>(&input), sizeof(input));
+        };
+        const auto catalog = identity_translation_catalog_generation_.load(std::memory_order_acquire);
+        const auto resources = RULESETS.resource_revision();
+        // GENERATED RAW labels are a separately published vocabulary. Their
+        // contents can change without changing the ordinary rule catalogue.
+        const auto generated = g_native_generated_creature_context.load(std::memory_order_acquire);
+        value(catalog); value(resources); value(generated);
+        value(config_.native_language_original); value(config_.compositional_rules);
+        generation.append(config_.language);
+        return generation;
+    };
+    bool memoize_owned = !live_entity && key.size() <= 8192;
+    std::string generation;
+    if (memoize_owned) try {
+        generation = owned_generation();
+        if (owned_cache.owner != this || owned_cache.generation != generation) {
+            owned_cache.results.clear(); owned_cache.order.clear(); owned_cache.bytes = 0;
+            owned_cache.owner = this; owned_cache.generation = generation;
+        }
+        if (const auto found = owned_cache.results.find(key);
+                found != owned_cache.results.end()) {
+            owned_cache.order.splice(owned_cache.order.end(), owned_cache.order, found->second.use);
+            return found->second.target;
+        }
+    } catch (const std::bad_alloc &) { memoize_owned = false; }
     const auto translate = [&]() -> std::optional<std::string> {
         const auto field_text = [&](std::string_view source) {
             if (auto target = translate_creature_descriptor(source, true)) return *target;
@@ -536,33 +569,34 @@ std::optional<std::string> Overlay::translate_native_unit_identity(
     // nested NameOnly translations can still use this cache independently.
     if (live_entity) return translate();
     if (key.size() > 8192) return translate();
-    // Reuse the bounded, semantic-context-aware identity cache. The existing
-    // dictionary/TOML/name-resource reload paths clear it together, so stale
-    // translations cannot outlive their catalog after an in-place reload.
-    const uint64_t catalog = identity_translation_catalog_generation_.load(std::memory_order_acquire);
-    const uint64_t context = native_identity_translation_context();
-    auto target = memoize_identity_translation('U', key, translate);
-    // Recursive NameOnly translations may update this same thread's memo.
-    // Keep no iterator across translation, and publish only a settled context.
-    if (thread_cache && catalog == identity_translation_catalog_generation_.load(std::memory_order_acquire) &&
-            context == native_identity_translation_context()) {
-        if (thread_cache->owner != this || thread_cache->catalog != catalog) {
-            thread_cache->results.clear();
-            thread_cache->order.clear();
-            thread_cache->owner = this;
-            thread_cache->catalog = catalog;
-        }
-        std::string memo_key = std::to_string(context) + '\x1f' + key;
-        if (!thread_cache->results.contains(memo_key)) {
-            constexpr size_t maximum = 512;
-            if (thread_cache->results.size() >= maximum && !thread_cache->order.empty()) {
-                thread_cache->results.erase(thread_cache->order.front());
-                thread_cache->order.pop_front();
+    const auto cycle_revision = active_translation_work ? active_translation_work->cycle_revision : 0;
+    auto target = translate();
+    // Recursive NameOnly fields can populate this same cache. Retain no
+    // iterator across rendering, and never publish an interrupted/cyclic
+    // attempt or a result whose owned vocabulary changed during translation.
+    if (memoize_owned && !translation_work_exhausted() &&
+            (!active_translation_work || active_translation_work->cycle_revision == cycle_revision)) try {
+        if (owned_cache.owner == this && owned_cache.generation == generation &&
+                generation == owned_generation() && !owned_cache.results.contains(key)) {
+            constexpr size_t maximum_entries = 4096, maximum_bytes = 16 * 1024 * 1024;
+            const size_t bytes = sizeof(OwnedCache::Entry) + 2 * key.capacity() +
+                sizeof(std::string) + 5 * sizeof(void *) + (target ? target->capacity() : 0);
+            if (bytes <= maximum_bytes) {
+                while (!owned_cache.order.empty() &&
+                        (owned_cache.results.size() >= maximum_entries ||
+                         owned_cache.bytes > maximum_bytes - bytes)) {
+                    const auto oldest = owned_cache.results.find(owned_cache.order.front());
+                    owned_cache.bytes -= oldest->second.bytes;
+                    owned_cache.results.erase(oldest); owned_cache.order.pop_front();
+                }
+                owned_cache.order.push_back(key);
+                try {
+                    owned_cache.results.emplace(key, OwnedCache::Entry{
+                        target, std::prev(owned_cache.order.end()), bytes});
+                } catch (...) { owned_cache.order.pop_back(); throw; }
+                owned_cache.bytes += bytes;
             }
-            const auto inserted = thread_cache->results.emplace(memo_key, target);
-            try { thread_cache->order.push_back(std::move(memo_key)); }
-            catch (...) { thread_cache->results.erase(inserted.first); throw; }
         }
-    }
+    } catch (const std::bad_alloc &) { /* The complete current identity still draws. */ }
     return target;
 }

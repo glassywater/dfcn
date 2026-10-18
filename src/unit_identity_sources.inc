@@ -3,6 +3,9 @@
 // whether a field is a nickname, profession, or species.
 static std::string native_text_to_utf8(std::string_view input);
 static uint64_t current_native_identity_translation_catalog() noexcept;
+static bool native_announcement_log_worker_running() noexcept;
+static std::optional<std::string> native_announcement_log_worker_identity_source(
+    std::string_view source, uintptr_t owner);
 struct NativeUnitIdentitySource {
     std::string source, target;
     uintptr_t unit_owner = 0;
@@ -77,8 +80,40 @@ static bool &native_unit_identity_rendering() {
     return reloadable_thread_state<bool, struct NativeUnitIdentityRenderingTag>();
 }
 static uint64_t native_mission_return_context();
+// A complete announcement-log owner supplies its immutable report/world
+// identity before any nested grammar callback. Keep this scalar available
+// before announcement_capture.inc declares the richer report TLS scope.
+static thread_local uint64_t g_native_announcement_log_identity_context = 0;
+// A proved announcement item field may reuse a closed parse independently of
+// its enclosing report. Only its explicitly owned bindings are visible; a
+// live registry binding is a reason to retain the ordinary compatibility path.
+struct NativeAnnouncementLogItemFieldBindings {
+    std::map<std::string, std::string> owned;
+    std::unordered_set<std::string> unbound_queries;
+    uint64_t context = 0;
+    bool external_dependency = false;
+};
+static thread_local NativeAnnouncementLogItemFieldBindings *
+    g_native_announcement_log_item_field_bindings = nullptr;
+static bool native_announcement_log_item_field_active() {
+    return g_native_announcement_log_item_field_bindings != nullptr;
+}
+static void native_announcement_log_item_field_needs_world() {
+    if (auto *field = g_native_announcement_log_item_field_bindings)
+        field->external_dependency = true;
+    throw DfhackTranslationNeedsWorld{};
+}
 static uint64_t native_identity_translation_context() {
     constexpr uint64_t formatter_scope = 0x9e3779b97f4a7c15ULL;
+    if (g_native_announcement_log_item_field_bindings)
+        return g_native_announcement_log_item_field_bindings->context ^
+            (native_unit_identity_rendering() ? formatter_scope : 0);
+    if (g_native_announcement_log_identity_context)
+        return g_native_announcement_log_identity_context ^
+            native_announcement_unit_body_context() ^
+            (native_unit_identity_rendering() ? formatter_scope : 0);
+    if (native_announcement_log_worker_running())
+        return native_unit_identity_rendering() ? formatter_scope : 1;
     return g_native_unit_identity_context.load(std::memory_order_acquire) ^
         g_native_announcement_unit_context.load(std::memory_order_acquire) ^
         g_native_generated_creature_context.load(std::memory_order_acquire) ^
@@ -279,6 +314,10 @@ static void rebind_native_unit_identity_capitalization(uintptr_t owner,
 static std::optional<NativeUnitIdentitySource> native_unit_identity_source_binding(
         std::string_view source, uintptr_t owner, std::string_view semantic_key = {}) {
     if (!owner || native_unit_identity_rendering()) return std::nullopt;
+    if (native_announcement_log_worker_running()) {
+        (void)native_announcement_log_worker_identity_source(source, owner);
+        return std::nullopt;
+    }
     std::lock_guard<std::mutex> lock(g_native_unit_identity_mutex);
     const auto found = g_native_unit_identity_owners.find(owner);
     if (found == g_native_unit_identity_owners.end() || found->second.source != source ||
@@ -296,6 +335,26 @@ static std::optional<NativeUnitIdentitySource> prepare_native_unit_identity_sour
 static std::optional<std::string> native_unit_identity_source_target(
         std::string_view source, uintptr_t owner = 0) {
     if (native_unit_identity_rendering()) return std::nullopt;
+    if (auto *field = g_native_announcement_log_item_field_bindings) {
+        if (owner) native_announcement_log_item_field_needs_world();
+        const std::string key(source);
+        if (const auto found = field->owned.find(key); found != field->owned.end())
+            return found->second;
+        if (native_announcement_log_worker_running()) {
+            if (native_announcement_log_worker_identity_source(source, 0))
+                native_announcement_log_item_field_needs_world();
+            field->unbound_queries.insert(key);
+            return std::nullopt;
+        }
+        std::lock_guard<std::mutex> lock(g_native_unit_identity_mutex);
+        // Even an ambiguous entry is live semantic input, rather than proof
+        // that this spelling belongs to the saved field's native identity.
+        if (g_native_unit_identity_sources.contains(key)) native_announcement_log_item_field_needs_world();
+        field->unbound_queries.insert(key);
+        return std::nullopt;
+    }
+    if (native_announcement_log_worker_running())
+        return native_announcement_log_worker_identity_source(source, owner);
     if (owner) {
         if (const auto binding = native_unit_identity_source_binding(source, owner))
             return binding->ready ? std::optional<std::string>(binding->target) : std::nullopt;

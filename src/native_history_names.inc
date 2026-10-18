@@ -3,6 +3,7 @@
 // Borrowed addresses are used only while the original event formatter runs;
 // the public snapshot contains owned strings and WORD identities only.
 static bool native_history_copy_bytes(uintptr_t address, void *destination, size_t size) {
+    if (g_native_announcement_log_worker_active) dfhack_require_world_read();
     if (!address || size > UINTPTR_MAX - address) return false;
 #ifdef _WIN32
     SIZE_T copied = 0;

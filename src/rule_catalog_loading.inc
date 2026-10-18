@@ -358,6 +358,7 @@ bool Overlay::load_rules() {
         candidate->build_trie(&catalog_publication);
         candidate->rebuild_announcement_combat_rules();
         candidate->template_anchors_.finalize();
+        candidate->help_template_anchors_.finalize();
         candidate->ui_message_anchors_.finalize();
         candidate->legends_event_anchors_.finalize();
         for (auto &[scope, syntax] : candidate->announcement_combat_syntax_) {
@@ -394,6 +395,7 @@ bool Overlay::load_rules() {
     commit(toolbar_template_rules_, candidate->toolbar_template_rules_);
     commit(help_trie_, candidate->help_trie_);
     commit(help_template_rules_, candidate->help_template_rules_);
+    commit(help_template_anchors_, candidate->help_template_anchors_);
     commit(help_objective_rules_, candidate->help_objective_rules_);
     commit(ui_message_trie_, candidate->ui_message_trie_);
     commit(ui_message_template_rules_, candidate->ui_message_template_rules_);
@@ -562,6 +564,7 @@ void Overlay::build_trie(std::function<void()>* catalog_publication) {
     help_trie_.clear();
     help_trie_.emplace_back();
     help_template_rules_.clear();
+    help_template_anchors_.clear();
     help_objective_rules_.clear();
     ui_message_trie_.assign(1, TrieNode{});
     ui_message_template_rules_.clear();
@@ -808,6 +811,13 @@ void Overlay::build_trie(std::function<void()>* catalog_publication) {
                         static_cast<int>(ui_message_template_probes_.size()));
                     ui_message_start_filter_.add(probe.prefix);
                     ui_message_template_probes_.push_back(std::move(probe));
+                } else {
+                    std::string anchor;
+                    for (const auto &literal : material_rule.template_literals) {
+                        auto compact = compact_ui_message_literal(literal);
+                        if (compact.size() > anchor.size()) anchor = std::move(compact);
+                    }
+                    help_template_anchors_.add(anchor, static_cast<int>(rule_index));
                 }
                 continue;
             }

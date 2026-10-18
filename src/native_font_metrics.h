@@ -6,6 +6,7 @@
 #include <cstdint>
 #include <cstring>
 #include <fstream>
+#include <string>
 #include <string_view>
 #include <utility>
 
@@ -266,24 +267,60 @@ inline EnglishInkRows load_english_ink_rows() {
 class NativeBitmapFontTextures {
 #ifdef _WIN32
     std::array<std::array<int32_t, 256>, 9> tables_{};
+    std::array<uintptr_t, 3> resource_pool_{};
+    uint8_t fullscreen_ = 0, basic_text_ = 0, graphics_ = 0;
+    int32_t filter_mode_ = 0;
+    bool native_context_ready_ = false;
 #endif
 public:
-    explicit NativeBitmapFontTextures(bool needed) noexcept {
+    explicit NativeBitmapFontTextures(bool needed, bool capture_native_context = false) noexcept {
 #ifdef _WIN32
         if (!needed) return;
         const auto executable = reinterpret_cast<uintptr_t>(GetModuleHandleW(nullptr));
         const auto settings = native_pe_address(executable, 0x023cd770);
-        if (!settings) return;
+        const auto enabler = native_pe_address(executable, 0x02390290);
+        if (!settings || !enabler) return;
+        native_context_ready_ = capture_native_context;
         constexpr std::array<size_t, 9> offsets{{
             0xd8, 0x4d8, 0x8d8, 0x18d8, 0x1cd8, 0x20d8,
             0x24d8, 0x28d8, 0x2cd8
         }};
         for (size_t i = 0; i < offsets.size(); ++i)
             if (!native_font_metrics_detail::copy_native_font_memory(
-                    settings + offsets[i], tables_[i].data(), sizeof(tables_[i])))
+                    settings + offsets[i], tables_[i].data(), sizeof(tables_[i]))) {
                 tables_[i].fill(0);
+                native_context_ready_ = false;
+            }
+        if (!capture_native_context) return;
+        // These are precisely the non-cell selections read by PE describe
+        // 8dcdb0/8dcf60 and update_tile: BASIC_TEXT, fullscreen font, and
+        // init.display.flag[USE_GRAPHICS]. Keep only their relevant bits,
+        // rather than render/MAXFPS bits that change native bookkeeping.
+        uintptr_t display_flags = 0;
+        int32_t display_flag_count = 0;
+        uint32_t enabler_flags = 0;
+        uint8_t display = 0;
+        using native_font_metrics_detail::copy_native_font_value;
+        if (!copy_native_font_value(enabler + 0x8, fullscreen_) ||
+                !copy_native_font_value(enabler + 0x338, enabler_flags) ||
+                !copy_native_font_value(settings, display_flags) ||
+                !copy_native_font_value(settings + 0x8, display_flag_count) ||
+                (display_flag_count > 0 &&
+                    !copy_native_font_value(display_flags, display)) ||
+                // Texture getter 8dd2ee reads init.display.filter_mode.
+                !copy_native_font_value(settings + 0x50, filter_mode_) ||
+                // Texture getter 8dd177..8dd1a0 indexes this raw-surface
+                // vector. Its identity supplements the nine atlas-ID tables.
+                !copy_native_font_value(enabler + 0x348, resource_pool_) ||
+                resource_pool_[1] < resource_pool_[0] ||
+                resource_pool_[2] < resource_pool_[1] ||
+                (resource_pool_[1] - resource_pool_[0]) % sizeof(SDL_Surface *))
+            native_context_ready_ = false;
+        fullscreen_ &= 0x1;
+        basic_text_ = static_cast<uint8_t>(enabler_flags & 0x4);
+        graphics_ = display_flag_count > 0 ? display & 0x1 : 0;
 #else
-        (void)needed;
+        (void)needed; (void)capture_native_context;
 #endif
     }
     bool contains(int32_t texture, unsigned char character) const noexcept {
@@ -296,6 +333,24 @@ public:
         (void)character;
 #endif
         return false;
+    }
+    bool append_native_context(std::string &key) const {
+#ifdef _WIN32
+        if (!native_context_ready_) return false;
+        key.append(reinterpret_cast<const char *>(tables_.data()), sizeof(tables_));
+        key.append(reinterpret_cast<const char *>(resource_pool_.data()), sizeof(resource_pool_));
+        key.append(reinterpret_cast<const char *>(&fullscreen_), sizeof(fullscreen_));
+        key.append(reinterpret_cast<const char *>(&basic_text_), sizeof(basic_text_));
+        key.append(reinterpret_cast<const char *>(&graphics_), sizeof(graphics_));
+        key.append(reinterpret_cast<const char *>(&filter_mode_), sizeof(filter_mode_));
+        // Resource identity only: no whole-pool scan or pixel readback is
+        // performed. An in-place edit retaining every ID and pool allocation
+        // must invalidate the overlay's native render generation separately.
+        return true;
+#else
+        (void)key;
+        return false;
+#endif
     }
 };
 

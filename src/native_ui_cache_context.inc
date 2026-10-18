@@ -680,7 +680,6 @@ public:
         }
         {
             std::lock_guard<std::mutex> lock(g_native_announcement_mutex);
-            value(g_native_announcement_log_owner); value(g_native_announcement_log_epoch == epoch);
             range(g_native_announcement_sources, [&](const auto &source) {
                 value(source.type); text(source.source);
             });
@@ -712,6 +711,9 @@ static std::optional<std::string> native_ui_layer_cache_context(
         });
         return key.finish();
     }
+    // The announcement log owns only its submitted document. Its private
+    // renderer must not inspect other interface sources to build a cache key.
+    if (&layer == &g_native_announcement_log_layer) return std::nullopt;
     if (&layer == &g_native_map_layer) return std::nullopt;
     // These already-translated Match graphs keep the ordinary path. Avoid
     // constructing a semantic key only to reject it after all serialization.

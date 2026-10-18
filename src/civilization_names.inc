@@ -156,6 +156,15 @@ std::optional<std::string> Overlay::translate_religion_reference(std::string_vie
 std::optional<std::string> Overlay::translate_entity_reference(
         std::string_view source, bool polity_role, bool government_field,
         int16_t entity_type) const {
+    if (g_native_announcement_log_worker_active) {
+        NativeAnnouncementLogReferenceRequest request;
+        request.kind = NativeAnnouncementLogReferenceRequest::Kind::Entity;
+        request.source.assign(source);
+        request.polity_role = polity_role;
+        request.government_field = government_field;
+        request.entity_type = entity_type;
+        return native_announcement_log_worker_entity_target(request);
+    }
     dfhack_require_world_read();
     source = trim_view(source);
     if (source.empty() || source.size() > 4096 || source.ends_with("..."))
@@ -421,6 +430,15 @@ uint64_t Overlay::history_parent_context_revision() const {
 
 std::optional<std::string> Overlay::translate_history_entity_name(
         const NativeHistoryName &name, int32_t id) const {
+    if (g_native_announcement_log_worker_active) {
+        NativeAnnouncementLogReferenceRequest request;
+        request.kind = NativeAnnouncementLogReferenceRequest::Kind::EntityId;
+        request.entity_id = id;
+        return native_announcement_log_worker_entity_target(request);
+    }
+    // A retained per-draw result still depends on live entity naming state.
+    // Closed announcement item proofs cannot inherit it before a world read.
+    if (native_announcement_log_item_field_active()) native_announcement_log_item_field_needs_world();
     // Every native entity reference reads historical_entity.name, including
     // dated events. DF does not supply a different old language_name here.
     // Use the same complete naming identity as the catalog and page heading;

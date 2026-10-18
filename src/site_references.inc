@@ -8,6 +8,25 @@ struct SiteReferenceIdentity {
     NativeHistoryName name;
     std::string native, english;
 };
+static std::string native_announcement_log_site_identity_context(const SiteReferenceIdentity &identity) {
+    std::string key;
+    const auto value = [&](const auto &input) {
+        key.append(reinterpret_cast<const char *>(&input), sizeof(input));
+    };
+    const auto text = [&](std::string_view input) { value(input.size()); key.append(input); };
+    value(identity.id); text(identity.native); text(identity.english);
+    const auto &name = identity.name;
+    text(name.first_name); text(name.nickname); value(name.language);
+    value(name.nickname_mode); value(name.type); value(name.has_name);
+    value(name.entity_type); value(name.entity_id); value(name.entity_name_current);
+    text(name.parent_word_id); value(name.parent_word_pos);
+    value(name.site_id); value(name.site_type); value(name.site_subtype);
+    text(name.site_label); text(name.native_name);
+    for (const auto &word : name.words) {
+        text(word.id); value(word.part_of_speech); value(word.has_form); text(word.english_form);
+    }
+    return key;
+}
 
 struct SiteReferenceCache {
     uintptr_t world_data = 0;
@@ -99,6 +118,13 @@ template<typename Aliases>
 static std::optional<SiteReferenceIdentity> resolve_site_reference_identity(
         std::string_view source, uint64_t epoch, Aliases &&aliases,
         bool english_field = false) {
+    if (g_native_announcement_log_worker_active) {
+        NativeAnnouncementLogReferenceRequest request;
+        request.kind = NativeAnnouncementLogReferenceRequest::Kind::Site;
+        request.source.assign(source); request.english_field = english_field;
+        const auto identity = native_announcement_log_worker_site_identity(request);
+        return identity ? std::optional<SiteReferenceIdentity>(*identity) : std::nullopt;
+    }
     dfhack_require_world_read();
     source = trim_view(source);
     if (source.empty() || source.size() > 4096 || source.ends_with("..."))
@@ -236,6 +262,17 @@ static std::optional<SiteReferenceIdentity> resolve_site_reference_identity(
     }
     if (changed) index_site_reference_sources(cache);
     return ambiguous ? std::nullopt : selected;
+}
+
+std::shared_ptr<const SiteReferenceIdentity> Overlay::native_announcement_log_capture_site_reference(
+        std::string_view source, bool english_field) const {
+    auto identity = resolve_site_reference_identity(source, draw_epoch_,
+        [&](const NativeHistoryName &name) { return site_name_search_aliases(name); }, english_field);
+    if (!identity) return {};
+    // The worker owns all name/WORD fields; the live cache's refresh pointer
+    // and its draw epoch have no meaning in that immutable publication.
+    identity->site = 0; identity->refreshed_epoch = 0;
+    return std::make_shared<const SiteReferenceIdentity>(std::move(*identity));
 }
 
 std::optional<NativeHistoryName> Overlay::resolve_site_reference_name(std::string_view source) const {

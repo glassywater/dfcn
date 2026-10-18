@@ -4,11 +4,7 @@
 // the layout bounds and must not decide whether the report is translated.
     {
         auto paragraphs = native_adventure_announcement_paragraphs();
-        auto log_paragraphs = native_announcement_log_paragraphs();
         auto alert_paragraphs = native_fortress_alert_paragraphs();
-        paragraphs.insert(paragraphs.end(),
-            std::make_move_iterator(log_paragraphs.begin()),
-            std::make_move_iterator(log_paragraphs.end()));
         paragraphs.insert(paragraphs.end(),
             std::make_move_iterator(alert_paragraphs.begin()),
             std::make_move_iterator(alert_paragraphs.end()));

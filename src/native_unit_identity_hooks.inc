@@ -573,7 +573,7 @@ static std::optional<std::string> finish_native_unit_reference_call(
             if (call.publish)
                 translated = publish_native_unit_identity_snapshot(snapshot,
                     reinterpret_cast<uintptr_t>(output), original, call.unit, false);
-            else translated = g_overlay.translate_native_unit_identity(snapshot);
+            else if (!captured) translated = g_overlay.translate_native_unit_identity(snapshot);
         }
         if (translated && translated->empty()) translated.reset();
         if (call.publish) {
@@ -701,6 +701,86 @@ static void capture_native_unit_movement_reference(void *unit, NativeString *out
         callback.call_native([&] { original(unit, output, article, capitalize, use_custom); });
     }
     finish_native_unit_reference_call(call, output);
+}
+
+static std::optional<NativeAnnouncementLogSpeechHeader> native_announcement_log_speech_header(
+        const NativeAnnouncementLogDocument &document) {
+#ifndef _WIN32
+    // This replay's five-argument speech call is proved by the PE wrapper.
+    // ELF keeps its existing complete speech translation until that call's
+    // ABI and arguments have their own retained native evidence.
+    (void)document;
+    return std::nullopt;
+#else
+    const auto &report = document.report;
+    if ((report.type != 163 && report.type != 177) || report.identity[4] < 0 ||
+            report.source.empty() || !document.world) return std::nullopt;
+    uintptr_t world = 0, unit = 0;
+    if (!native_history_copy(native_history_global(0x24ebb58), world) ||
+            world != document.world) return std::nullopt;
+    size_t id_offset = SIZE_MAX;
+    for (const auto &field : native_history_layout::f_unit_fields)
+        if (std::string_view(field.name) == "id") { id_offset = field.native; break; }
+    if (id_offset == SIZE_MAX || !native_history_material_find_id(
+            native_history_page_address(NativeHistoryPageSymbol::Units), id_offset,
+            report.identity[4], unit) || !unit) return std::nullopt;
+
+    const auto body_offset = [&](std::string_view caption) -> std::optional<size_t> {
+        if (caption.empty() || report.source.size() < caption.size() + 1 ||
+                std::string_view(report.source).substr(0, caption.size()) != caption ||
+                report.source[caption.size()] != ':') return std::nullopt;
+        const size_t after = caption.size() + 1;
+        if (after == report.source.size()) return after;
+        if (report.source[after] != ' ') return std::nullopt;
+        return after + 1;
+    };
+    // 684f0e..685000 replaces this exact player's native caption with You.
+    // The report's speaker ID and complete literal prefix must both agree;
+    // a named unit whose authored caption happens to be You is not a pronoun.
+    uintptr_t player = 0;
+    if (native_history_copy(native_history_global(0x23e5110), player) && player == unit)
+        if (const auto offset = body_offset("You"))
+            return NativeAnnouncementLogSpeechHeader{*offset, {}, true};
+
+    // A saved caption may precede a later rename. Prefix equality alone
+    // cannot distinguish old "A: B: body" from current caption "A".
+    // Admit only a unique ASCII delimiter in the complete old NPC report;
+    // colon-bearing captions/bodies keep the existing complete grammar.
+    const size_t colon = report.source.find(':');
+    if (colon == std::string::npos || report.source.find(':', colon + 1) != std::string::npos)
+        return std::nullopt;
+
+    const auto &hooks = g_native_unit_identity_hooks;
+    if (!hooks.entries[6].installed || !hooks.entries[6].original || !hooks.destroy)
+        return std::nullopt;
+    NativeInputCallbackScope callback;
+    NativeSearchString output(hooks.destroy);
+    NativeUnitIdentityCall call;
+    call.unit = unit;
+    call.publish = false;
+    call.reference_output = &output.value;
+    call.reference_use_custom = true;
+    {
+        NativeUnitIdentityActiveScope scope(call);
+        capture_native_unit_reference_selected_name(unit + 8);
+        const auto original = reinterpret_cast<NativeUnitMovementReferenceFn>(hooks.entries[6].original);
+        // The speech wrapper's 684b0e..684b23 arguments are exactly
+        // (unit, output, -1, true, true). Replaying only this formatter does
+        // not dispatch a topic, append a turn or submit another report.
+        callback.call_native([&] {
+            original(reinterpret_cast<void *>(unit), &output.value, -1, true, true);
+        });
+    }
+    std::string_view caption;
+    if (!native_string_view(&output.value, &caption, SIZE_MAX)) return std::nullopt;
+    const auto offset = body_offset(caption);
+    if (!offset) return std::nullopt;
+    std::optional<NativeUnitIdentity> identity;
+    finish_native_unit_reference_call(call, &output.value, &identity);
+    translation_work_step(0);
+    if (!identity) return std::nullopt;
+    return NativeAnnouncementLogSpeechHeader{*offset, std::move(identity), false};
+#endif
 }
 
 static void capture_native_unit_movement_direct_name(const void *name, NativeString *output) {

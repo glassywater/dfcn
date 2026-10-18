@@ -246,10 +246,9 @@ std::optional<std::string> Overlay::translate_help_paragraph_uncached(
         } else if (ui_message) {
             for (int index : ui_message_anchors_.candidates(compact_ui_message_literal(source)))
                 candidate_templates.push_back(ui_message_template_probes_[index].index);
-        }
+        } else candidate_templates = help_template_anchors_.candidates(compact_ui_message_literal(source));
     }
-    const auto &paragraph_templates = ui_message || required_rule >= 0
-        ? candidate_templates : templates;
+    const auto &paragraph_templates = candidate_templates;
     // Typed captures can consult the current draw's authored squad alias or
     // world/site bindings, which the unit-identity context does not cover.
     // Cache literal-only parses and misses without any typed candidates.
@@ -262,6 +261,10 @@ std::optional<std::string> Overlay::translate_help_paragraph_uncached(
     // cannot admit a shorter span. A complete match wins the existing longest
     // span ordering; all candidates still compete by literal bytes and their
     // original order, with unchanged typed captures and foreground handling.
+    // Only a suffix with a complete path can terminate a production. Keep
+    // these endpoints in the same descending order as the old byte loop,
+    // rather than rediscovering mostly unreachable bytes for every rule.
+    std::vector<size_t> reachable_ends{source.size()};
     for (size_t scan = path.front().end == SIZE_MAX ? source.size() + 1 : 0; scan-- > 0;) {
         const bool whole_source = scan == source.size();
         const size_t at = whole_source ? 0 : scan;
@@ -271,7 +274,10 @@ std::optional<std::string> Overlay::translate_help_paragraph_uncached(
         // announcements whose native line boundaries must remain intact.
         if (required_rule >= 0 && at != 0) continue;
         if (source[at] == ' ') {
-            if (path[at + 1].end != SIZE_MAX) path[at].end = at + 1;
+            if (path[at + 1].end != SIZE_MAX) {
+                path[at].end = at + 1;
+                reachable_ends.push_back(at);
+            }
             continue;
         }
         int node = 0;
@@ -300,7 +306,8 @@ std::optional<std::string> Overlay::translate_help_paragraph_uncached(
             for (const auto &literal : rule.template_literals)
                 literal_bytes += std::count_if(literal.begin(), literal.end(),
                     [](unsigned char ch) { return !native_prose_space(ch); });
-            for (size_t end = source.size(); end > *prefix; --end) {
+            for (const size_t end : reachable_ends) {
+                if (end <= *prefix) break;
                 if (!boundary(end) || path[end].end == SIZE_MAX ||
                     (path[at].end != SIZE_MAX && (path[at].end > end ||
                         (path[at].end == end && path[at].literal_bytes >= literal_bytes)))) continue;
@@ -497,13 +504,17 @@ std::optional<std::string> Overlay::translate_help_paragraph_uncached(
             // resume the original suffix DP, including its raw delimiters.
             continue;
         }
-        if (path[at].end != SIZE_MAX) continue;
+        if (path[at].end != SIZE_MAX) {
+            reachable_ends.push_back(at);
+            continue;
+        }
         // Quotes around divine speech and brackets around keys remain native.
         // A delimiter never makes an uncovered remainder successful.
         if ((source[at] == '[' || source[at] == ']' || source[at] == '"') &&
             path[at + 1].end != SIZE_MAX) {
             path[at].end = at + 1;
             path[at].raw = true;
+            reachable_ends.push_back(at);
             continue;
         }
     }
@@ -630,6 +641,7 @@ std::optional<std::string> Overlay::translate_help_paragraph(
         bool literal_only) const {
     target_foregrounds.clear();
     if (raw_source.empty() || raw_source.size() != raw_foregrounds.size()) return std::nullopt;
+    dfcn::TranslationWorkScope work;
     refresh_native_display_translation_context();
     const auto context = native_identity_translation_context();
     std::string cache_key = std::to_string(context) + '\x1f' +
@@ -646,6 +658,36 @@ std::optional<std::string> Overlay::translate_help_paragraph(
         target_foregrounds = found->second.target_colors;
         return found->second.result.strict_target();
     }
+    // Typed paragraph results cannot outlive their native owner, but all
+    // callers resolving this one complete record share the same fields.
+    // Keep their completed attempts (including misses) in that work only,
+    // rather than rerunning the suffix matcher from speech, announcement
+    // and display fallbacks for the identical span and palette.
+    struct WorkColors {
+        std::unordered_map<std::string, std::vector<int>> entries;
+    };
+    static const unsigned char work_colors_tag = 0;
+    auto *state = dfcn::active_translation_work;
+    auto &saved_colors = state->parser_sessions[&work_colors_tag];
+    if (!saved_colors) saved_colors = std::make_shared<WorkColors>();
+    const auto colors = std::static_pointer_cast<WorkColors>(saved_colors);
+    std::string work_key = "help-paragraph\x1f";
+    const auto owner = reinterpret_cast<uintptr_t>(this);
+    const auto revision = RULESETS.resource_revision();
+    const auto source_size = raw_source.size();
+    work_key.append(reinterpret_cast<const char *>(&owner), sizeof(owner));
+    work_key.append(reinterpret_cast<const char *>(&revision), sizeof(revision));
+    work_key.append(reinterpret_cast<const char *>(&source_size), sizeof(source_size));
+    work_key.append(cache_key);
+    work_key.append(reinterpret_cast<const char *>(raw_foregrounds.data()),
+        raw_foregrounds.size() * sizeof(int));
+    if (const auto completed = state->memo.find(work_key); completed != state->memo.end()) {
+        dfcn::translation_work_step();
+        if (const auto found = colors->entries.find(work_key); found != colors->entries.end())
+            target_foregrounds = found->second;
+        return completed->second;
+    }
+    return dfcn::translation_work_memo(work_key, [&]() -> std::optional<std::string> {
     bool cacheable = false;
     const auto target = translate_help_paragraph_uncached(raw_source, raw_foregrounds,
         target_foregrounds, ui_message, required_rule, literal_only, cacheable);
@@ -662,7 +704,9 @@ std::optional<std::string> Overlay::translate_help_paragraph(
             native_display_translation_cache_bytes_, cache_key, raw_foregrounds,
             target_foregrounds, std::move(result));
     }
+    colors->entries.insert_or_assign(work_key, target_foregrounds);
     return target;
+    });
 }
 
 dfcn::TranslationResult Overlay::translate_help_paragraph_result(
@@ -720,7 +764,6 @@ dfcn::TranslationResult Overlay::translate_help_paragraph_result(
     std::vector<size_t> origins;
     const auto source = normalize_utterance(raw_source, &origins);
     if (source.empty() || source.size() != origins.size()) return {};
-    const auto &templates = ui_message ? ui_message_template_rules_ : help_template_rules_;
     // Display fallback has the same mandatory catalog literals as strict
     // matching. Partial typed fields cannot make an absent literal match.
     std::vector<int> candidate_templates;
@@ -730,9 +773,8 @@ dfcn::TranslationResult Overlay::translate_help_paragraph_result(
     } else if (ui_message) {
         for (int index : ui_message_anchors_.candidates(compact_ui_message_literal(source)))
             candidate_templates.push_back(ui_message_template_probes_[index].index);
-    }
-    const auto &display_templates = ui_message || required_rule >= 0
-        ? candidate_templates : templates;
+    } else candidate_templates = help_template_anchors_.candidates(compact_ui_message_literal(source));
+    const auto &display_templates = candidate_templates;
     std::optional<dfcn::TranslationResult> best;
     const Rule *best_rule = nullptr;
     std::vector<std::pair<size_t, size_t>> best_ranges;

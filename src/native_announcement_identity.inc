@@ -42,6 +42,27 @@ static uint64_t g_native_announcement_unit_sequence = 0, g_native_announcement_u
 static std::map<std::string, NativeAnnouncementUnitRecord> g_native_announcement_unit_records;
 static std::map<std::string, NativeAnnouncementUnitAttempt> g_native_announcement_unit_attempts;
 static std::set<NativeAnnouncementKey> g_native_announcement_unit_parents;
+struct NativeAnnouncementLogUnitRecordCache {
+    struct Entry {
+        std::shared_ptr<const NativeAnnouncementUnitRecord> record;
+        uint64_t source_sequence = 0;
+        uint64_t source_fingerprint = 0, source_revision = 0, source_catalog = 0;
+        std::list<std::string>::iterator use;
+        size_t bytes = 0;
+    };
+    std::mutex mutex;
+    std::unordered_map<std::string, Entry> records;
+    std::list<std::string> order;
+    size_t bytes = 0;
+    uint64_t generation = 0;
+};
+static NativeAnnouncementLogUnitRecordCache g_native_announcement_log_unit_records;
+static void clear_native_announcement_log_unit_records() {
+    auto &cache = g_native_announcement_log_unit_records;
+    std::lock_guard<std::mutex> lock(cache.mutex);
+    cache.records.clear(); cache.order.clear(); cache.bytes = 0;
+    ++cache.generation;
+}
 static std::pair<std::string, std::string> &native_announcement_unit_body_state() {
     return reloadable_thread_state<std::pair<std::string, std::string>,
         struct NativeAnnouncementUnitBodyStateTag>();
@@ -53,6 +74,7 @@ static uint64_t native_announcement_unit_body_context() {
 
 static void clear_native_announcement_unit_identities() {
     std::lock_guard<std::mutex> lock(g_native_announcement_unit_mutex);
+    clear_native_announcement_log_unit_records();
     g_native_announcement_unit_records.clear();
     g_native_announcement_unit_attempts.clear();
     g_native_announcement_unit_parents.clear();
@@ -69,6 +91,7 @@ static bool native_announcement_unit_world_state(uintptr_t &world, int32_t &next
             !native_history_copy(native_history_global(0x23d14f0 + 0x1123ec), next)) return false;
     std::lock_guard<std::mutex> lock(g_native_announcement_unit_mutex);
     if (world != g_native_announcement_unit_world || next < g_native_announcement_unit_next_id) {
+        clear_native_announcement_log_unit_records();
         g_native_announcement_unit_records.clear();
         g_native_announcement_unit_attempts.clear();
         g_native_announcement_unit_parents.clear();
@@ -81,6 +104,7 @@ static bool native_announcement_unit_world_state(uintptr_t &world, int32_t &next
 }
 static void remember_native_announcement_unit_reference(std::string_view source,
         const NativeUnitIdentity *identity) {
+    if (g_native_announcement_log_translation_report) return;
     uintptr_t world = 0;
     if (!native_history_copy(native_history_global(0x24ebb58), world) || !world) return;
     auto &stage = native_announcement_unit_stage();
@@ -100,6 +124,7 @@ static void remember_native_announcement_unit_reference(std::string_view source,
 }
 static void remember_native_announcement_pet_name(std::string_view source,
         const NativeUnitIdentity *identity) {
+    if (g_native_announcement_log_translation_report) return;
     uintptr_t world = 0;
     if (!native_history_copy(native_history_global(0x24ebb58), world) || !world) return;
     auto &stage = native_announcement_unit_stage();
@@ -190,13 +215,16 @@ static std::optional<NativeAnnouncementUnitField> native_announcement_pet_field(
     return field;
 }
 static void native_announcement_unit_render(NativeAnnouncementUnitRecord &record) {
+    dfcn::translation_work_step();
     record.catalog = g_overlay.native_identity_translation_catalog_generation();
     record.revision = RULESETS.resource_revision();
     uint64_t fingerprint = native_identity_source_fingerprint(record.source, std::nullopt);
     for (auto &field : record.fields) {
+        dfcn::translation_work_step();
         std::optional<std::string> agreed;
         bool ambiguous = field.ambiguous;
         for (const auto &option : field.options) {
+            dfcn::translation_work_step();
             const auto &identity = option.identity;
             const bool authored = identity.form == NativeUnitIdentityForm::NameOnly &&
                 identity.name.language < 0 && std::all_of(identity.name.words.begin(), identity.name.words.end(),
@@ -213,10 +241,12 @@ static void native_announcement_unit_render(NativeAnnouncementUnitRecord &record
             if (agreed && *agreed != *target) ambiguous = true;
             else if (!agreed) agreed = std::move(target);
         }
+        dfcn::translation_work_step();
         field.target = ambiguous || !agreed ? native_text_to_utf8(field.source) : *agreed;
         fingerprint ^= native_identity_source_fingerprint(
             std::to_string(field.offset) + ":" + field.source, field.target);
     }
+    dfcn::translation_work_step();
     record.fingerprint = fingerprint;
     if (record.catalog != g_overlay.native_identity_translation_catalog_generation()) {
         record.catalog = 0;
@@ -261,6 +291,7 @@ static void queue_native_announcement_unit_record_translation(
 
 static void remember_native_announcement_unit_record(NativeAnnouncementUnitRecord record,
         bool defer_translation = false) {
+    if (g_native_announcement_log_translation_report) return;
     const auto epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
     // Render outside the registry lock; the common field renderer can use its
     // own dictionary and semantic source caches.
@@ -351,38 +382,43 @@ static void remember_native_announcement_unit_record(NativeAnnouncementUnitRecor
         queue_native_announcement_unit_record_translation(std::move(pending), epoch);
     }
 }
-static void remember_native_announcement_unit_submission(int type, std::string_view source) {
+static std::shared_ptr<const NativeAnnouncementUnitRecord>
+remember_native_announcement_unit_submission(int type, std::string_view source) {
     auto &stage = native_announcement_unit_stage();
     auto references = std::move(stage.references);
     auto pet = std::move(stage.pet);
     stage.references.clear();
     stage.pet.reset();
-    if (type != 321 && type != 163) return;
+    if (type != 321 && type != 163) return {};
     uintptr_t world = 0;
     int32_t next = -1;
     if (!native_announcement_unit_world_state(world, next) || stage.world != world ||
-            stage.epoch != g_embark_item_capture_epoch.load(std::memory_order_acquire)) return;
+            stage.epoch != g_embark_item_capture_epoch.load(std::memory_order_acquire)) return {};
     NativeAnnouncementUnitRecord record;
     record.source = native_announcement_display_source(source);
     record.type = type;
     record.world = world;
     if (type == 163) {
-        if (!pet || !pet->identity) return;
+        if (!pet || !pet->identity) return {};
         const auto field = native_announcement_pet_field(record.source, pet->source, *pet->identity);
-        if (!field) return;
+        if (!field) return {};
         record.fields.push_back(*field);
+        auto captured = std::make_shared<const NativeAnnouncementUnitRecord>(record);
         remember_native_announcement_unit_record(std::move(record), true);
-        return;
+        return captured;
     }
-    if (references.size() != 2) return;
+    if (references.size() != 2) return {};
     const auto pair = native_announcement_unit_pair(record.source,
         references[0].source, references[0].identity ? &*references[0].identity : nullptr,
         references[1].source, references[1].identity ? &*references[1].identity : nullptr);
-    if (!pair) return;
+    if (!pair) return {};
     record.fields = *pair;
+    auto captured = std::make_shared<const NativeAnnouncementUnitRecord>(record);
     remember_native_announcement_unit_record(std::move(record), true);
+    return captured;
 }
 static void remember_native_announcement_unit_parent(uintptr_t parent) {
+    if (g_native_announcement_log_translation_report) return;
     NativeAnnouncementHistoryRow row;
     uintptr_t world = 0;
     int32_t next = -1;
@@ -428,8 +464,221 @@ static bool capture_native_announcement_pet_unit_name(uintptr_t unit,
     return true;
 }
 
-static void prepare_native_announcement_unit_identities(std::string_view raw_source) {
+// The log already owns a frozen report. Formatter tickets retain its complete
+// typed fields, so replay may refresh those values without searching any live
+// units, report groups or historical records for a matching spelling.
+static std::string native_announcement_log_unit_record_key(const NativeAnnouncementHistoryRow &report) {
+    std::string key;
+    const auto scalar = [&](const auto &value) {
+        key.append(reinterpret_cast<const char *>(&value), sizeof(value));
+    };
+    scalar(g_native_announcement_log_translation_world);
+    scalar(report.type); scalar(report.id); scalar(report.continued);
+    for (const auto identity : report.identity) scalar(identity);
+    scalar(report.pool); scalar(report.source.size());
+    key.append(report.source);
+    return key;
+}
+static std::shared_ptr<const NativeAnnouncementUnitRecord> prepare_native_announcement_log_unit_record(
+        const NativeAnnouncementHistoryRow &report) {
+    if ((report.type != 321 && report.type != 163) ||
+            !g_native_announcement_log_translation_world) return {};
+    if (g_native_announcement_log_worker_active) {
+        const auto *inputs = g_native_announcement_log_worker_inputs;
+        if (!inputs) throw NativeAnnouncementLogNeedsDependency{};
+        const auto &record = inputs->unit_record;
+        if (!record) return {};
+        if (record->world != g_native_announcement_log_translation_world || record->type != report.type ||
+                record->source != native_announcement_display_source(report.source))
+            throw NativeAnnouncementLogNeedsDependency{};
+        const auto revision = RULESETS.resource_revision();
+        const auto catalog = g_overlay.native_identity_translation_catalog_generation();
+        if (record->revision == revision && record->catalog == catalog) return record;
+        for (const auto &field : record->fields)
+            for (const auto &option : field.options)
+                if (native_unit_identity_requires_world(option.identity)) {
+                    auto identity = option.identity;
+                    if (identity.form == NativeUnitIdentityForm::NameOnly && identity.name.language >= 0)
+                        identity.english_name = false;
+                    (void)native_announcement_log_worker_unit_target(identity);
+                }
+        struct OwnedRender {
+            const NativeAnnouncementUnitRecord *source = nullptr;
+            std::shared_ptr<NativeAnnouncementUnitRecord> record;
+        };
+        static const unsigned char tag = 0;
+        std::shared_ptr<OwnedRender> retained;
+        if (active_translation_work) {
+            auto &slot = active_translation_work->parser_sessions[&tag];
+            if (!slot) slot = std::make_shared<OwnedRender>();
+            retained = std::static_pointer_cast<OwnedRender>(slot);
+        } else retained = std::make_shared<OwnedRender>();
+        if (retained->source != record.get() || !retained->record ||
+                retained->record->revision != revision || retained->record->catalog != catalog) {
+            auto made = std::make_shared<NativeAnnouncementUnitRecord>(*record);
+            native_announcement_unit_render(*made);
+            translation_work_step(0);
+            retained->source = record.get(); retained->record = std::move(made);
+        }
+        return retained->record;
+    }
+    const auto source = native_announcement_display_source(report.source);
+    const auto revision = RULESETS.resource_revision();
+    const auto catalog = g_overlay.native_identity_translation_catalog_generation();
+    const auto key = native_announcement_log_unit_record_key(report);
+    auto &cache = g_native_announcement_log_unit_records;
+    std::shared_ptr<const NativeAnnouncementUnitRecord> retained;
+    uint64_t source_sequence = 0, generation = 0;
+    uint64_t source_fingerprint = 0, source_revision = 0, source_catalog = 0;
+    {
+        std::lock_guard<std::mutex> lock(cache.mutex);
+        generation = cache.generation;
+        const auto found = cache.records.find(key);
+        if (found != cache.records.end()) {
+            retained = found->second.record;
+            source_sequence = found->second.source_sequence;
+            source_fingerprint = found->second.source_fingerprint;
+            source_revision = found->second.source_revision;
+            source_catalog = found->second.source_catalog;
+            cache.order.splice(cache.order.end(), cache.order, found->second.use);
+        }
+    }
+    std::shared_ptr<NativeAnnouncementUnitRecord> made;
+    {
+        std::lock_guard<std::mutex> lock(g_native_announcement_unit_mutex);
+        const auto found = g_native_announcement_unit_records.find(source);
+        if (found != g_native_announcement_unit_records.end() &&
+                found->second.type == report.type &&
+                found->second.world == g_native_announcement_log_translation_world &&
+                (!retained || source_sequence != found->second.sequence ||
+                 source_fingerprint != found->second.fingerprint ||
+                 source_revision != found->second.revision || source_catalog != found->second.catalog)) {
+            made = std::make_shared<NativeAnnouncementUnitRecord>(found->second);
+            source_sequence = found->second.sequence;
+            source_fingerprint = found->second.fingerprint;
+            source_revision = found->second.revision;
+            source_catalog = found->second.catalog;
+        }
+    }
+    if (!made) {
+        if (!retained) return {};
+        if (retained->revision == revision && retained->catalog == catalog) {
+            std::lock_guard<std::mutex> lock(cache.mutex);
+            return generation == cache.generation ? retained : nullptr;
+        }
+        made = std::make_shared<NativeAnnouncementUnitRecord>(*retained);
+    }
+    // Refresh only the private copy. A log translation must never publish a
+    // new global identity fingerprint or invalidate another component's cache.
+    if (made->revision != revision || made->catalog != catalog)
+        native_announcement_unit_render(*made);
+    if (made->revision != revision || made->catalog != catalog ||
+            catalog != g_overlay.native_identity_translation_catalog_generation()) return {};
+    size_t bytes = sizeof(NativeAnnouncementLogUnitRecordCache::Entry) +
+        sizeof(NativeAnnouncementUnitRecord) + 2 * key.size() + made->source.capacity() +
+        made->fields.capacity() * sizeof(NativeAnnouncementUnitField);
+    for (const auto &field : made->fields) {
+        bytes += field.source.capacity() + field.target.capacity() +
+            field.options.capacity() * sizeof(NativeAnnouncementUnitOption);
+        // The complete option key serializes all owned identity strings and
+        // vectors. Account for the key and the corresponding copied fields.
+        for (const auto &option : field.options) bytes += option.key.capacity() + option.key.size();
+    }
+    constexpr size_t maximum_entries = 128, maximum_bytes = 8 * 1024 * 1024;
+    std::lock_guard<std::mutex> lock(cache.mutex);
+    if (generation != cache.generation) return {};
+    if (bytes > maximum_bytes) return made;
+    if (const auto found = cache.records.find(key); found != cache.records.end()) {
+        cache.bytes -= found->second.bytes;
+        cache.order.erase(found->second.use);
+        cache.records.erase(found);
+    }
+    while (!cache.order.empty() && (cache.records.size() >= maximum_entries ||
+            cache.bytes > maximum_bytes - bytes)) {
+        const auto oldest = cache.records.find(cache.order.front());
+        if (oldest != cache.records.end()) {
+            cache.bytes -= oldest->second.bytes;
+            cache.records.erase(oldest);
+        }
+        cache.order.pop_front();
+    }
+    cache.order.push_back(key);
     try {
+        NativeAnnouncementLogUnitRecordCache::Entry entry{
+            made, source_sequence, source_fingerprint, source_revision, source_catalog,
+            std::prev(cache.order.end()), bytes};
+        cache.records.emplace(key, std::move(entry));
+        cache.bytes += bytes;
+    } catch (...) { cache.order.pop_back(); throw; }
+    return made;
+}
+
+static std::string native_announcement_log_unit_dependency(
+        const NativeAnnouncementHistoryRow &report) {
+    if (g_native_announcement_log_worker_active) {
+        if (!g_native_announcement_log_worker_inputs) throw NativeAnnouncementLogNeedsDependency{};
+        return g_native_announcement_log_worker_inputs->context;
+    }
+    if ((report.type != 321 && report.type != 163) ||
+            !g_native_announcement_log_translation_world) return {};
+    // Source/frame cache queries must never enter unit grammar. Inspect only
+    // this exact report's already-published raw ticket and private fields;
+    // the translator owns preparation, recovery and any deferred rendering.
+    const auto source = native_announcement_display_source(report.source);
+    const auto key = native_announcement_log_unit_record_key(report);
+    const auto revision = RULESETS.resource_revision();
+    const auto catalog = g_overlay.native_identity_translation_catalog_generation();
+    std::string dependency;
+    const auto scalar = [&](const auto &value) {
+        dependency.append(reinterpret_cast<const char *>(&value), sizeof(value));
+    };
+    const auto text = [&](std::string_view value) {
+        scalar(value.size());
+        dependency.append(value);
+    };
+    const auto fields = [&](const NativeAnnouncementUnitRecord &record) {
+        scalar(record.type); scalar(record.world); text(record.source);
+        const bool ready = record.revision == revision && record.catalog == catalog;
+        scalar(ready);
+        // Pending merged fingerprints include a global publication sequence.
+        // Their actual fields/options below fully describe their content.
+        if (ready) scalar(record.fingerprint);
+        scalar(record.fields.size());
+        for (const auto &field : record.fields) {
+            scalar(field.offset);
+            text(field.source); text(field.target);
+            scalar(field.ambiguous); scalar(field.options.size());
+            for (const auto &option : field.options) text(option.key);
+        }
+    };
+    auto &cache = g_native_announcement_log_unit_records;
+    // Match the registry->private-cache order used by clearing, and keep the
+    // two already-owned publications in one small read-only snapshot.
+    std::lock_guard<std::mutex> source_lock(g_native_announcement_unit_mutex);
+    std::lock_guard<std::mutex> retained_lock(cache.mutex);
+    const auto raw = g_native_announcement_unit_records.find(source);
+    const bool have_raw = raw != g_native_announcement_unit_records.end() &&
+        raw->second.type == report.type && raw->second.world == g_native_announcement_log_translation_world;
+    scalar(have_raw);
+    if (have_raw) fields(raw->second);
+    const auto held = cache.records.find(key);
+    const bool have_private = held != cache.records.end() && held->second.record &&
+        held->second.record->type == report.type &&
+        held->second.record->world == g_native_announcement_log_translation_world &&
+        held->second.record->source == source && held->second.record->revision == revision &&
+        held->second.record->catalog == catalog;
+    scalar(have_private);
+    if (have_private) fields(*held->second.record);
+    return dependency;
+}
+
+static void prepare_native_announcement_unit_identities(std::string_view raw_source) {
+    if (native_announcement_log_item_field_active()) native_announcement_log_item_field_needs_world();
+    try {
+        if (g_native_announcement_log_translation_report) {
+            prepare_native_announcement_log_unit_record(*g_native_announcement_log_translation_report);
+            return;
+        }
         // This only filters potential producers. No field boundary or name
         // classification is inferred from the literal phrase.
         auto source = native_announcement_display_source(raw_source);
@@ -533,33 +782,43 @@ static void prepare_native_announcement_unit_identities(std::string_view raw_sou
 }
 static std::optional<std::string> native_announcement_unit_identity_target(
         std::string_view report_source, std::string_view field_source, bool *bound) {
+    if (native_announcement_log_item_field_active()) native_announcement_log_item_field_needs_world();
     if (bound) *bound = false;
     auto report = native_announcement_display_source(report_source);
     const auto &body = native_announcement_unit_body_state();
     const bool in_body = !body.first.empty() && report == body.second;
     if (!body.first.empty() && report == body.second) report = body.first;
-    prepare_native_announcement_unit_identities(report);
+    const auto *log_report = g_native_announcement_log_translation_report;
     const auto field = native_announcement_display_source(field_source);
+    const auto resolve = [&](const NativeAnnouncementUnitRecord &record) -> std::optional<std::string> {
+        std::optional<std::string> agreed;
+        for (const auto &value : record.fields) {
+            if (value.source != field) continue;
+            // A pet caption belongs only to the spoken body. An identically
+            // spelled speaker/author field in its header keeps its identity.
+            if (record.type == 163 && !in_body && value.offset != 0) continue;
+            // Only this exact owned field proves a native person. A missing
+            // ticket leaves the existing typed source grammar available.
+            if (bound) *bound = true;
+            if (agreed && *agreed != value.target) return native_text_to_utf8(field_source);
+            agreed = value.target;
+        }
+        return agreed;
+    };
+    if (log_report) {
+        const auto retained = prepare_native_announcement_log_unit_record(*log_report);
+        if (retained) return resolve(*retained);
+        return std::nullopt;
+    }
+    prepare_native_announcement_unit_identities(report);
     std::lock_guard<std::mutex> lock(g_native_announcement_unit_mutex);
     const auto found = g_native_announcement_unit_records.find(report);
-    if (found == g_native_announcement_unit_records.end()) return std::nullopt;
-    std::optional<std::string> agreed;
-    for (const auto &value : found->second.fields) {
-        if (value.source != field) continue;
-        // A pet caption belongs only to the spoken body. An identically
-        // spelled speaker/author field in its header keeps its own identity.
-        if (found->second.type == 163 && !in_body && value.offset != 0) continue;
-        // Only this exact owned field proves a native person. A missing
-        // ticket leaves the existing typed source grammar available.
-        if (bound) *bound = true;
-        if (agreed && *agreed != value.target) return native_text_to_utf8(field_source);
-        agreed = value.target;
-    }
-    return agreed;
+    return found == g_native_announcement_unit_records.end() ? std::nullopt : resolve(found->second);
 }
 
 NativeAnnouncementUnitBodyScope::NativeAnnouncementUnitBodyScope(
         std::string_view report, std::string_view body) {
+    if (native_announcement_log_item_field_active()) native_announcement_log_item_field_needs_world();
     auto &state = native_announcement_unit_body_state();
     previous = state;
     auto full = native_announcement_display_source(report);
@@ -568,6 +827,18 @@ NativeAnnouncementUnitBodyScope::NativeAnnouncementUnitBodyScope(
     if (text.empty() || !full.ends_with(text)) return;
     const auto prefix = std::string_view(full).substr(0, full.size() - text.size());
     if (!prefix.empty() && !prefix.ends_with(": ")) return;
+    if (g_native_announcement_log_translation_report) {
+        const auto retained = prepare_native_announcement_log_unit_record(
+            *g_native_announcement_log_translation_report);
+        if (!retained || retained->source != full || retained->type != 163 ||
+                !text.ends_with(kNativeAnnouncementPetSuffix)) return;
+        const size_t begin = full.size() - text.size();
+        if (std::none_of(retained->fields.begin(), retained->fields.end(), [&](const auto &field) {
+                return field.offset == begin && text == field.source + std::string(kNativeAnnouncementPetSuffix);
+            })) return;
+        state = {std::move(full), text};
+        return;
+    }
     prepare_native_announcement_unit_identities(full);
     std::lock_guard<std::mutex> lock(g_native_announcement_unit_mutex);
     const auto found = g_native_announcement_unit_records.find(full);

@@ -89,6 +89,7 @@ static void native_help_reset_frame(void *renderer) {
     native_map_begin_frame();
     native_tooltip_begin_frame();
     native_notification_begin_frame();
+    native_announcement_log_begin_frame();
     auto &layer = g_native_help_layer;
     layer.ready = false;
     native_info_begin_frame();
@@ -134,6 +135,8 @@ static void native_help_begin_frame(void *renderer) {
     g_native_help_frame_renderer = renderer;
 #else
     native_help_reset_frame(renderer);
+    try { native_announcement_log_preheat(4, false); }
+    catch (...) {}
     native_settings_menu_prepare();
 #endif
 }
@@ -150,6 +153,8 @@ static void native_help_produce_frame() {
     // an empty frame when the native component closes.
     native_help_reset_frame(g_native_help_frame_renderer);
     callback.call_native([&] { original(); });
+    try { native_announcement_log_preheat(4, false); }
+    catch (...) {}
     native_settings_menu_prepare();
 }
 #endif
@@ -303,18 +308,71 @@ struct NativeUiLayerTarget {
 };
 static NativeUiLayerTarget g_native_help_target;
 
+#include "native_announcement_log_space_cache.inc"
+#include "native_announcement_log_native_raster.inc"
+
 static void native_ui_paint_grid(NativeUiLayerStorage &layer, SDL_Renderer *renderer,
         const std::vector<Match> &matches, const SDL_Rect *opaque_frame) {
     if (!layer.ready || layer.renderer != renderer || !layer.native_renderer) return;
     auto *gps = layer.foreground.graphics();
-    const NativeBitmapFontTextures fonts(!matches.empty());
+    const bool log_layer = opaque_frame && &layer == &g_native_announcement_log_layer;
+    std::optional<NativeBitmapFontTextures> local_fonts;
+    if (!log_layer || !g_native_announcement_log_fonts)
+        local_fonts.emplace(!matches.empty() || log_layer, log_layer);
+    const auto &fonts = log_layer && g_native_announcement_log_fonts
+        ? *g_native_announcement_log_fonts : *local_fonts;
+    struct CaptionInk {
+        const NativeDrawnTextRow *writer;
+        const NativeAnnouncementLogCaptionBackdrop *backdrop;
+    };
+    std::vector<std::vector<CaptionInk>> caption_ink;
+    if (log_layer) {
+        caption_ink.resize(gps->dimy);
+        for (const auto &plane : g_native_announcement_log_text.rows)
+            for (const auto &draw : plane) {
+                if (draw.y < 0 || draw.y >= gps->dimy) continue;
+                const NativeAnnouncementLogCaptionBackdrop *backdrop = nullptr;
+                for (const auto &before : g_native_announcement_log_caption_backdrops)
+                    if (before.sequence == draw.sequence && before.address == draw.address &&
+                            before.top_layer == draw.top_layer && before.x == draw.x &&
+                            before.y == draw.y && before.source == draw.source) {
+                        backdrop = &before;
+                        break;
+                    }
+                caption_ink[draw.y].push_back({&draw, backdrop});
+            }
+    }
     struct SourceMask {
         using Texture = std::remove_pointer_t<decltype(graphicst::screentexpos)>;
+        using Cell = NativeAnnouncementLogCaptionBackdrop::Cell;
+        struct SavedCell {
+            NativeUiLayerGrid::Plane *plane;
+            size_t at;
+            Cell value;
+        };
         std::vector<std::pair<unsigned char *, unsigned char>> saved;
         std::vector<std::pair<Texture *, Texture>> saved_textures;
+        std::vector<SavedCell> saved_cells;
         ~SourceMask() {
             for (const auto &[slot, value] : saved) *slot = value;
             for (const auto &[slot, value] : saved_textures) *slot = value;
+            for (auto at = saved_cells.rbegin(); at != saved_cells.rend(); ++at)
+                write(*at->plane, at->at, at->value);
+        }
+        static void write(NativeUiLayerGrid::Plane &plane, size_t at, const Cell &value) {
+            std::memcpy(plane.screen.data() + at * 8, value.screen.data(), value.screen.size());
+            plane.flags[at] = value.flags;
+            for (size_t slot = 0; slot < value.textures.size(); ++slot)
+                plane.textures[slot][at] = value.textures[slot];
+        }
+        void remember(NativeUiLayerGrid::Plane &plane, size_t at) {
+            SavedCell original{&plane, at, {}};
+            std::memcpy(original.value.screen.data(), plane.screen.data() + at * 8,
+                original.value.screen.size());
+            original.value.flags = plane.flags[at];
+            for (size_t slot = 0; slot < original.value.textures.size(); ++slot)
+                original.value.textures[slot] = plane.textures[slot][at];
+            saved_cells.push_back(std::move(original));
         }
         void hide(unsigned char *slot, unsigned char expected) {
             if (!slot || !expected || expected == ' ' || *slot != expected) return;
@@ -324,6 +382,13 @@ static void native_ui_paint_grid(NativeUiLayerStorage &layer, SDL_Renderer *rend
             saved_textures.emplace_back(slot, *slot); *slot = 0;
         }
     } mask;
+    if (log_layer) {
+        size_t cells = 0;
+        for (const auto &match : matches)
+            if (!match.native_help_source_only)
+                cells += static_cast<size_t>(std::clamp(native_match_source_length(match), 0, gps->dimx));
+        mask.saved_cells.reserve(cells * (gps->top_in_use ? 2 : 1));
+    }
     for (const auto &match : matches) {
         if (match.native_help_source_only) continue;
         const int source_length = native_match_source_length(match);
@@ -338,11 +403,49 @@ static void native_ui_paint_grid(NativeUiLayerStorage &layer, SDL_Renderer *rend
                 const size_t cell = static_cast<size_t>(x) * gps->dimy + y;
                 const size_t at = cell * 8;
                 const auto expected = static_cast<unsigned char>(source[i]);
+                const NativeAnnouncementLogCaptionBackdrop *backdrop = nullptr;
+                if (log_layer) {
+                    const CaptionInk *latest = nullptr;
+                    for (const auto &ink : caption_ink[y]) {
+                        const auto &draw = *ink.writer;
+                        if (x < draw.x || static_cast<size_t>(x - draw.x) >= draw.source.size()) continue;
+                        if (!latest || latest->writer->sequence < draw.sequence) latest = &ink;
+                    }
+                    // A missing optional backdrop on the latest writer must
+                    // never expose an earlier writer's skin at this position.
+                    if (latest && latest->backdrop &&
+                            static_cast<unsigned char>(latest->writer->source[x - latest->writer->x]) == expected) {
+                        const auto *before = latest->backdrop;
+                        const size_t plane = before->top_layer ? 1 : 0;
+                        if (before->planes[plane].size() == before->source.size()) backdrop = before;
+                    }
+                }
                 for (size_t index = 0; index < layer.foreground.planes.size(); ++index) {
                     if (index && !gps->top_in_use) continue;
+                    if (backdrop && index != (backdrop->top_layer ? 1u : 0u)) continue;
                     auto &plane = layer.foreground.planes[index];
                     const auto character = plane.screen[at];
                     if (character != expected && character != 0 && character != ' ') continue;
+                    if (log_layer) {
+                        mask.remember(plane, cell);
+                        if (backdrop) {
+                            // Restore the exact native skin before English
+                            // overwrote it, including its own color/primary
+                            // picture. English length and RGB no longer make
+                            // the retained background change while scrolling.
+                            SourceMask::write(plane, cell,
+                                backdrop->planes[index][static_cast<size_t>(x - backdrop->x)]);
+                        } else {
+                            // Optional backdrop allocation can fail. Keep the
+                            // previous exact-font masking fallback drawable.
+                            for (size_t slot : {size_t{0}, size_t{1}, size_t{2}})
+                                if (fonts.contains(plane.textures[slot][cell], expected))
+                                    plane.textures[slot][cell] = 0;
+                            if (expected && expected != ' ' && character == expected)
+                                plane.screen[at] = ' ';
+                        }
+                        continue;
+                    }
                     // Font glyphs can occupy any drawable texture slot.
                     // Exact atlas membership keeps non-font artwork intact.
                     for (size_t slot : {size_t{0}, size_t{1}, size_t{2}}) {
@@ -353,19 +456,30 @@ static void native_ui_paint_grid(NativeUiLayerStorage &layer, SDL_Renderer *rend
                 }
             }
     }
+    const auto paint_tiles = [&] {
     NativeUiGridBinding grid(native_graphics(), *gps, layer.native_renderer);
     void **methods = nullptr;
     std::memcpy(&methods, layer.native_renderer, sizeof(methods));
     using TileFn = void (*)(void *, int, int);
     std::vector<SDL_Point> anchored_cells;
+    std::vector<int> space_until;
+    bool cache_spaces = opaque_frame && &layer == &g_native_announcement_log_layer &&
+        g_native_announcement_log_space_cache.prepare(renderer, layer.native_renderer, *gps);
+    if (cache_spaces) {
+        try { space_until.resize(gps->dimy); }
+        catch (...) { cache_spaces = false; }
+    }
     for (size_t plane = 0; plane < layer.foreground.planes.size(); ++plane) {
         if (plane && !gps->top_in_use) continue;
         anchored_cells.clear();
         const auto draw = reinterpret_cast<TileFn>(methods[plane * 2]);
         const auto &source = layer.foreground.planes[plane];
-        for (const auto &frame : layer.frames)
+        for (const auto &frame : layer.frames) {
+            if (cache_spaces)
+                std::fill_n(space_until.begin() + frame.y, frame.h, frame.x);
             for (int x = frame.x; x < frame.x + frame.w; ++x)
                 for (int y = frame.y; y < frame.y + frame.h; ++y) {
+                    if (cache_spaces && x < space_until[y]) continue;
                     const size_t at = static_cast<size_t>(x) * gps->dimy + y;
                     // Anchored pictures must stay after every ordinary tile
                     // in this plane. Collect only their occupied coordinates
@@ -387,12 +501,23 @@ static void native_ui_paint_grid(NativeUiLayerStorage &layer, SDL_Renderer *rend
                                 std::all_of(source.textures.begin(), source.textures.end(),
                                     [at](const auto &texture) { return !texture[at]; })) continue;
                     }
+                    if (cache_spaces) {
+                        const int end = g_native_announcement_log_space_cache.paint(renderer,
+                            layer.native_renderer, *gps, source, *opaque_frame, x, y,
+                            frame.x + frame.w, draw, plane != 0);
+                        if (end > x) { space_until[y] = end; continue; }
+                    }
                     draw(layer.native_renderer, x, y);
                 }
+        }
         const auto draw_anchored = reinterpret_cast<TileFn>(methods[plane * 2 + 1]);
         for (const auto &cell : anchored_cells)
             draw_anchored(layer.native_renderer, cell.x, cell.y);
     }
+    };
+    if (log_layer &&
+            g_native_announcement_log_native_raster.paint(layer, renderer, fonts, paint_tiles)) return;
+    paint_tiles();
 }
 
 static void native_ui_present_layer(NativeUiLayerStorage &layer, NativeUiLayerTarget &target,

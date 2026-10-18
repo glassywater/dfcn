@@ -25,13 +25,116 @@ int Overlay::native_report_layout_rows(std::string_view source, int width,
     return static_cast<int>(lines.size());
 }
 
+std::optional<std::string> Overlay::translate_native_announcement_log_record(
+        const NativeAnnouncementLogDocument &document, std::string_view source, int foreground,
+        std::vector<int> &target_colors) const {
+    TranslationStateScope translation_scope;
+    target_colors.clear();
+    if (source.empty()) return std::nullopt;
+    const auto &report = document.report;
+    const NativeAnnouncementLogTranslationScope owner_scope(report, document.world);
+    const NativeAnnouncementLogDocumentScope document_scope(document);
+    struct SemanticEntry {
+        std::optional<std::string> target;
+        std::vector<int> colors;
+        size_t bytes = 0;
+        std::list<std::string>::iterator use;
+    };
+    struct SemanticCache {
+        const Overlay *owner = nullptr;
+        std::string generation;
+        std::unordered_map<std::string, SemanticEntry> entries;
+        std::list<std::string> order;
+        size_t bytes = 0;
+    };
+    // Native report identity and its frozen fields own the prose. Neither
+    // native wrap allocation nor another layer's identity context is a new
+    // record. The palette remains relevant to catalogue color productions.
+    static const unsigned char semantic_cache_tag = 0;
+    auto &cache = domain_cache<SemanticCache>(&semantic_cache_tag);
+    bool cache_enabled = document.world != 0;
+    std::string key;
+    const auto semantic_key = [&] {
+        std::string result = native_announcement_log_document_key(document);
+        result.append(reinterpret_cast<const char *>(&foreground), sizeof(foreground));
+        return result;
+    };
+    try {
+        std::string generation;
+        const auto value = [&](const auto &input) {
+            generation.append(reinterpret_cast<const char *>(&input), sizeof(input));
+        };
+        value(document.world); value(native_announcement_log_semantic_generation_value());
+        const auto resources = RULESETS.resource_revision();
+        const auto catalog = native_identity_translation_catalog_generation();
+        value(resources); value(catalog);
+        value(config_.native_language_original);
+        generation.append(config_.language);
+        if (cache.owner != this || cache.generation != generation) {
+            cache.entries.clear(); cache.order.clear(); cache.bytes = 0;
+            cache.owner = this; cache.generation = std::move(generation);
+        }
+        if (cache_enabled) {
+            key = semantic_key();
+            const auto identity = g_native_announcement_log_identity_context ^
+                native_identity_source_fingerprint(cache.generation, std::nullopt) ^
+                native_identity_source_fingerprint(key, std::nullopt);
+            g_native_announcement_log_identity_context = identity ? identity : 1;
+            if (const auto found = cache.entries.find(key); found != cache.entries.end()) {
+                cache.order.splice(cache.order.end(), cache.order, found->second.use);
+                target_colors = found->second.colors;
+                return found->second.target;
+            }
+        }
+    } catch (const std::bad_alloc &) { cache_enabled = false; }
+    dfcn::TranslationWorkScope work;
+    auto target = compose_native_announcement_log_record(document, source,
+        foreground, target_colors);
+    // Older text-only reports have no complete native field snapshot. Keep
+    // their existing complete translation coverage while captured productions
+    // compose directly, and retain that result under the same report ID.
+    if (!target) target = translate_complete_announcement(source,
+        std::vector<int>(source.size(), foreground), target_colors, false, report.type);
+    translation_work_step(0);
+    if (cache_enabled && !work.exhausted()) try {
+        SemanticEntry entry{target, target_colors};
+        entry.bytes = sizeof(SemanticEntry) + 2 * key.capacity() +
+            sizeof(std::string) + 5 * sizeof(void *) +
+            (entry.target ? entry.target->capacity() : 0) +
+            entry.colors.capacity() * sizeof(int);
+        constexpr size_t maximum_entries = 32768, maximum_bytes = 64 * 1024 * 1024;
+        if (entry.bytes <= maximum_bytes) {
+            if (const auto previous = cache.entries.find(key); previous != cache.entries.end()) {
+                cache.bytes -= previous->second.bytes;
+                cache.order.erase(previous->second.use); cache.entries.erase(previous);
+            }
+            while (!cache.order.empty() && (cache.entries.size() >= maximum_entries ||
+                    cache.bytes > maximum_bytes - entry.bytes)) {
+                const auto oldest = cache.entries.find(cache.order.front());
+                cache.bytes -= oldest->second.bytes; cache.entries.erase(oldest);
+                cache.order.pop_front();
+            }
+            cache.order.push_back(key);
+            entry.use = std::prev(cache.order.end());
+            const auto bytes = entry.bytes;
+            try { cache.entries.emplace(key, std::move(entry)); }
+            catch (...) { cache.order.pop_back(); throw; }
+            cache.bytes += bytes;
+        }
+    } catch (const std::bad_alloc &) { /* The complete current result still draws. */ }
+    return target;
+}
+
 std::optional<std::string> Overlay::translate_complete_announcement(
         std::string_view source, const std::vector<int> &source_colors,
-        std::vector<int> &target_colors, bool barter_reply) const {
+        std::vector<int> &target_colors, bool barter_reply, int native_type,
+        dfcn::TranslationResult *owned_result) const {
+    if (owned_result) *owned_result = {};
     refresh_native_display_translation_context();
     // A stored reveal report no longer owns this frame's temporary formatter
     // strings. Recover its two proven unit fields before choosing a cache key.
     prepare_native_announcement_unit_identities(source);
+    dfcn::translation_work_step();
     // Resolve native relationship fields before consulting the text cache.
     // Two people called "cousin" can have different proven family paths.
     // Re-enter with their private typed keys so both cache identity and
@@ -44,11 +147,15 @@ std::optional<std::string> Overlay::translate_complete_announcement(
         native_colors.reserve(native->size());
         for (const size_t origin : kinship_origins)
             native_colors.push_back(source_colors[std::min(origin, source.size() - 1)]);
-        return translate_complete_announcement(*native, native_colors, target_colors, barter_reply);
+        return translate_complete_announcement(*native, native_colors, target_colors,
+            barter_reply, native_type, owned_result);
     }
     const auto context = native_identity_translation_context();
-    const std::string key = std::to_string(context) + '\x1f' + std::string(source);
+    const std::string key = std::to_string(context) + '\x1f' +
+        (native_type >= 0 ? "\x1e" + std::to_string(native_type) + '\x1f' : std::string{}) +
+        std::string(source);
     if (const auto found = announcement_translation_cache_.find(key);
+            !g_native_announcement_log_translation_report &&
             found != announcement_translation_cache_.end() &&
             found->second.result.resource_revision == RULESETS.resource_revision() &&
             (!barter_reply || found->second.result.owner == "native-adventure-barter-record") &&
@@ -56,15 +163,61 @@ std::optional<std::string> Overlay::translate_complete_announcement(
         announcement_translation_order_.splice(announcement_translation_order_.end(),
             announcement_translation_order_, found->second.use);
         target_colors = found->second.target_colors;
+        if (owned_result) *owned_result = found->second.result;
         return found->second.target;
+    }
+    struct CompleteLogEntry {
+        std::optional<std::string> target;
+        std::vector<int> colors;
+        dfcn::TranslationResult result;
+    };
+    struct CompleteLogMemo {
+        std::unordered_map<std::string, CompleteLogEntry> entries;
+        size_t bytes = 0;
+    };
+    std::shared_ptr<CompleteLogMemo> log_memo;
+    std::string log_key;
+    const size_t log_cycle = dfcn::active_translation_work
+        ? dfcn::active_translation_work->cycle_revision : 0;
+    if (g_native_announcement_log_translation_report && dfcn::active_translation_work) {
+        static const unsigned char complete_log_tag = 0;
+        auto &slot = dfcn::active_translation_work->parser_sessions[&complete_log_tag];
+        if (!slot) slot = std::make_shared<CompleteLogMemo>();
+        log_memo = std::static_pointer_cast<CompleteLogMemo>(slot);
+        log_key = key;
+        log_key.push_back(barter_reply ? '\1' : '\0');
+        if (!source_colors.empty()) log_key.append(
+            reinterpret_cast<const char *>(source_colors.data()), source_colors.size() * sizeof(int));
+        if (const auto found = log_memo->entries.find(log_key); found != log_memo->entries.end()) {
+            target_colors = found->second.colors;
+            if (owned_result) *owned_result = found->second.result;
+            return found->second.target;
+        }
     }
     target_colors.clear();
     if (source.empty() || source_colors.size() != source.size()) return std::nullopt;
     dfcn::TranslationWorkScope budget;
+    // A frozen announcement kind selects its semantic owner just as a
+    // Legends event kind does. Failed owners still retain the complete
+    // fallback policy, but no cold record repeats the same parse twice.
+    // IDs are announcement_type in df.g_src.basics.xml.
+    std::string_view native_scope;
+    if (native_type >= 6 && native_type <= 48) native_scope = "sentence";
+    else if (native_type == 104) native_scope = "fortress-announcement";
+    else if (native_type == 233 || native_type == 234 || native_type == 258)
+        native_scope = "read-announcement";
+    else if (native_type >= 0)
+        native_scope = "adventure-announcement";
     const auto translate_block = [&](std::string_view block, const std::vector<int> &colors,
-            std::vector<int> &translated_colors,
-            dfcn::TranslationResult *owned_result = nullptr) -> std::optional<std::string> {
+            std::vector<int> &translated_colors) -> std::optional<std::string> {
         translated_colors.clear();
+        // A reviewed complete message owns its entire native record before
+        // recursive grammar or display composition can split it into fields.
+        // Probe only literal catalogue rules here, retaining the shared
+        // catalogue's whitespace normalization and source palette handling.
+        auto translated = translate_help_paragraph(block, colors, translated_colors,
+            true, -1, true);
+        if (translated) return translated;
         if (!colors.empty() && std::all_of(colors.begin(), colors.end(),
                 [&](int color) { return color == colors.front(); })) {
             if (const auto siren = translate_dfhack_siren_announcement(block)) {
@@ -78,7 +231,8 @@ std::optional<std::string> Overlay::translate_complete_announcement(
         }
         if (const auto original = native_original_speech_source(block)) {
             const std::vector<int> original_colors(original->size(), colors.front());
-            auto translated = translate_complete_announcement(*original, original_colors, translated_colors);
+            auto translated = translate_complete_announcement(*original, original_colors,
+                translated_colors, false, native_type);
             const auto voice = exact_literal_translation("Announcement speech: lisp");
             if (!translated || !voice) return std::nullopt;
             *translated += *voice;
@@ -90,7 +244,7 @@ std::optional<std::string> Overlay::translate_complete_announcement(
         // appearance/caste/occupation captions. Resolve the complete spoken
         // body before generic catalogue templates can treat its elapsed-time
         // prefix or the addressee's occupation as a generated personal name.
-        if (const auto speech = translate_announcement_dialogue(block)) {
+        if (const auto speech = translate_announcement_dialogue(block, native_type)) {
             for (unsigned char ch : *speech)
                 if ((ch & 0xc0) != 0x80) translated_colors.push_back(colors.front());
             return speech;
@@ -100,8 +254,15 @@ std::optional<std::string> Overlay::translate_complete_announcement(
         // "You: <elapsed time> I" as a unit and swallow the following reaction
         // into the other participant, producing a partly translated record.
         // Other native constructors still precede the generic prose catalogue.
+        if (!native_scope.empty())
+            if (const auto native = translate_announcement_combat(block, native_scope)) {
+                for (unsigned char ch : *native)
+                    if ((ch & 0xc0) != 0x80) translated_colors.push_back(colors.front());
+                return native;
+            }
         for (const std::string_view scope : {
                 "read-announcement", "adventure-announcement", "fortress-attack", "fortress-arrival", "fortress-announcement", "fortress-embark", "historical-event-paragraph"}) {
+            if (scope == native_scope) continue;
             // The attack producer joins commander, warning and reinforcement
             // paragraphs with native [B] controls. Match their visible whole
             // record, using the same control normalization as report capture.
@@ -118,28 +279,11 @@ std::optional<std::string> Overlay::translate_complete_announcement(
         // fallback or generic {n} suffix. "ACTOR attacks TARGET but She
         // jumps away!" owns two clauses; the complete prefix is not the
         // subject of the separate charge-result "UNIT jumps away!".
-        if (const auto native = translate_announcement_combat(block)) {
-            for (unsigned char ch : *native)
-                if ((ch & 0xc0) != 0x80) translated_colors.push_back(colors.front());
-            return native;
-        }
-        // Unknown typed fields retain their native action and field
-        // boundaries after complete combat productions have had first choice.
-        // Only the full record admits partial display composition; sentence
-        // partitioning below continues to require strict translations.
-        if (owned_result) {
-            for (const std::string_view scope : {"sentence", "adventure-announcement"}) {
-                auto native = translate_announcement_combat_result(block, scope);
-                if (native.usable()) {
-                    for (size_t at = 0; at < native.target.size(); ++at) {
-                        if ((static_cast<unsigned char>(native.target[at]) & 0xc0) == 0x80) continue;
-                        const size_t origin = at < native.origins.size()
-                            ? native.origins[at] : std::string::npos;
-                        translated_colors.push_back(colors[origin < colors.size() ? origin : 0]);
-                    }
-                    *owned_result = std::move(native);
-                    return owned_result->target;
-                }
+        if (native_scope != "sentence") {
+            if (const auto native = translate_announcement_combat(block)) {
+                for (unsigned char ch : *native)
+                    if ((ch & 0xc0) != 0x80) translated_colors.push_back(colors.front());
+                return native;
             }
         }
         // The native growth constructor has a single typed result field.
@@ -165,14 +309,6 @@ std::optional<std::string> Overlay::translate_complete_announcement(
             }
             return std::string(body);
         }
-        // A reviewed complete message is stronger evidence than a recursive
-        // grammar with generated-name slots. Otherwise "The weather has
-        // cleared." matches the rumor "{person} has {book}." before its
-        // existing catalog translation can be considered. Keep catalog
-        // whitespace normalization and palette handling in the shared parser.
-        auto translated = translate_help_paragraph(block, colors, translated_colors,
-            true, -1, true);
-        if (translated) return translated;
         // ad0710 submits the crafted masterpiece as this complete native
         // actor/item production. Resolve its existing UI rule before the
         // unrelated help-document suffix DP; the shared matcher still owns
@@ -253,7 +389,7 @@ std::optional<std::string> Overlay::translate_complete_announcement(
                     if ((ch & 0xc0) != 0x80) target_colors.push_back(source_colors.front());
             }
         }
-        if (!target) target = translate_block(source, source_colors, target_colors, &document_result);
+        if (!target) target = translate_block(source, source_colors, target_colors);
     }
     catch (const dfcn::TranslationWorkLimit &) {
         if (!budget.owns_budget()) throw;
@@ -283,6 +419,7 @@ std::optional<std::string> Overlay::translate_complete_announcement(
         struct CompleteSuffix {
             std::string text;
             std::vector<int> colors;
+            size_t next = SIZE_MAX;
         };
         std::vector<std::optional<CompleteSuffix>> resolved(starts.size());
         resolved.back() = CompleteSuffix{};
@@ -303,16 +440,23 @@ std::optional<std::string> Overlay::translate_complete_announcement(
                     break;
                 }
                 if (!translated) continue;
-                CompleteSuffix suffix{*translated + resolved[next]->text, std::move(translated_colors)};
-                suffix.colors.insert(suffix.colors.end(), resolved[next]->colors.begin(), resolved[next]->colors.end());
-                resolved[part] = std::move(suffix);
+                resolved[part] = CompleteSuffix{std::move(*translated),
+                    std::move(translated_colors), next};
                 break;
             }
             if (work_limited) break;
         }
         if (resolved.front()) {
-            target = std::move(resolved.front()->text);
-            target_colors = std::move(resolved.front()->colors);
+            // Keep only the selected edge at each suffix. Materialize the
+            // winning chain once, rather than copying every translated tail
+            // and its complete color array for each preceding sentence.
+            target.emplace();
+            target_colors.clear();
+            for (size_t at = 0; at + 1 < resolved.size(); at = resolved[at]->next) {
+                *target += resolved[at]->text;
+                target_colors.insert(target_colors.end(),
+                    resolved[at]->colors.begin(), resolved[at]->colors.end());
+            }
         }
     }
     const auto colors_for_result = [&](const dfcn::TranslationResult &result,
@@ -325,29 +469,55 @@ std::optional<std::string> Overlay::translate_complete_announcement(
         }
     };
     if (!target && !work_limited) {
-        // Try the complete display productions before partial sentence work.
-        // Missing fields stay in the exact native constructor's capture; the
-        // general strict combat/dialogue APIs above keep their old contract.
+        // Complete native, catalogue, memory and Legends translations, plus
+        // complete sentence combinations, have all had first choice. Only
+        // now may a display production preserve unresolved typed fields.
         try {
-        auto best = translate_help_paragraph_result(source, source_colors, target_colors, true);
-        work_limited = best.status == dfcn::TranslationStatus::WorkLimited;
+        dfcn::TranslationResult best;
+        std::vector<int> best_colors;
+        const auto display_rank = [](const dfcn::TranslationResult &result) {
+            if (result.status == dfcn::TranslationStatus::Translated ||
+                    result.status == dfcn::TranslationStatus::PreservedAuthored) return 2;
+            return result.status == dfcn::TranslationStatus::Partial ? 1 : 0;
+        };
+        std::vector<std::string_view> display_scopes;
+        const auto add_display_scope = [&](std::string_view scope) {
+            if (!scope.empty() && std::find(display_scopes.begin(), display_scopes.end(), scope) ==
+                    display_scopes.end()) display_scopes.push_back(scope);
+        };
+        add_display_scope(native_scope);
         for (const std::string_view scope : {
-                "read-announcement", "fortress-arrival", "fortress-announcement", "historical-event-paragraph", "sentence"}) {
-            if (work_limited) break;
+                "sentence", "adventure-announcement", "read-announcement", "fortress-arrival",
+                "fortress-announcement", "historical-event-paragraph"}) add_display_scope(scope);
+        for (const std::string_view scope : display_scopes) {
             const auto candidate = translate_announcement_combat_result(source, scope);
-            if (!candidate.usable()) continue;
-            if (!best.usable() || candidate.status == dfcn::TranslationStatus::Translated ||
-                    (best.status == dfcn::TranslationStatus::Untranslated && candidate.has_untranslated() &&
-                        candidate.status == dfcn::TranslationStatus::Partial)) {
-                best = candidate;
-                colors_for_result(best, 0, target_colors);
-            }
             work_limited = candidate.status == dfcn::TranslationStatus::WorkLimited;
+            if (work_limited) break;
+            if (!candidate.usable()) continue;
+            // Equal coverage retains the earlier native owner. A complete
+            // result always outranks a partial result from another owner.
+            if (!best.usable() || display_rank(candidate) > display_rank(best)) {
+                best = candidate;
+                colors_for_result(best, 0, best_colors);
+            }
+            if (display_rank(best) == 2) break;
+        }
+        if (!work_limited && display_rank(best) < 2) {
+            std::vector<int> catalogue_colors;
+            auto catalogue = translate_help_paragraph_result(source, source_colors, catalogue_colors, true);
+            work_limited = catalogue.status == dfcn::TranslationStatus::WorkLimited;
+            // Reviewed complete catalogue composition still wins. At the
+            // same partial coverage, retain the native production's fields.
+            if (catalogue.usable() && (!best.usable() || display_rank(catalogue) > display_rank(best))) {
+                best = std::move(catalogue);
+                best_colors = std::move(catalogue_colors);
+            }
         }
         if (best.usable() && std::any_of(best.fragments.begin(), best.fragments.end(),
                 [](const auto &fragment) { return fragment.status == dfcn::TranslationStatus::Translated; })) {
             document_result = std::move(best);
             target = document_result.target;
+            target_colors = std::move(best_colors);
         }
         } catch (const dfcn::TranslationWorkLimit &) {
             if (!budget.owns_budget()) throw;
@@ -449,6 +619,29 @@ std::optional<std::string> Overlay::translate_complete_announcement(
     document_result.owner = barter_reply
         ? "native-adventure-barter-record" : "native-announcement-record";
     document_result.resource_revision = RULESETS.resource_revision();
+    if (owned_result) *owned_result = document_result;
+    // A proved native header and the compatibility dispatcher can ask for
+    // the same complete body. Keep completed subrecords within this one
+    // immutable report operation, without entering the HUD's text cache.
+    if (g_native_announcement_log_translation_report) {
+        if (log_memo && !budget.exhausted() &&
+                dfcn::active_translation_work->cycle_revision == log_cycle &&
+                context == native_identity_translation_context()) {
+            const size_t bytes = 2 * log_key.size() + sizeof(CompleteLogEntry) +
+                source.size() + document_result.target.size() +
+                (target ? target->size() : 0) + target_colors.size() * sizeof(int) +
+                document_result.origins.size() * sizeof(size_t) +
+                document_result.fragments.size() * sizeof(dfcn::TranslationFragment);
+            constexpr size_t maximum_bytes = 8 * 1024 * 1024;
+            if (log_memo->entries.size() < 4096 && bytes <= maximum_bytes &&
+                    log_memo->bytes <= maximum_bytes - bytes) {
+                if (log_memo->entries.emplace(log_key,
+                        CompleteLogEntry{target, target_colors, document_result}).second)
+                    log_memo->bytes += bytes;
+            }
+        }
+        return target;
+    }
     // Scroll through long histories without periodically discarding every
     // visible record. Retain failures too; repeated unsupported prose must
     // not restart its complete grammar search on each frame. Coordinates

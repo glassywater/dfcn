@@ -470,10 +470,18 @@ struct MagicalMaterial {
 static std::unordered_map<std::string, MagicalMaterial> g_magical_materials;
 static size_t g_magical_material_max_bytes = 0;
 static std::unordered_set<std::string> g_magical_material_qualifiers;
+struct AnnouncementMaterialVocabulary {
+    decltype(g_magical_materials) materials;
+    decltype(g_magical_material_qualifiers) qualifiers;
+    size_t max_bytes = 0;
+};
+static thread_local const AnnouncementMaterialVocabulary *g_announcement_material_vocabulary = nullptr;
 
 static const MagicalMaterial *magical_material(std::string_view source) {
-    const auto found = g_magical_materials.find(lower(trim(std::string(source))));
-    return found == g_magical_materials.end() ? nullptr : &found->second;
+    const auto &materials = g_announcement_material_vocabulary
+        ? g_announcement_material_vocabulary->materials : g_magical_materials;
+    const auto found = materials.find(lower(trim(std::string(source))));
+    return found == materials.end() ? nullptr : &found->second;
 }
 
 struct MagicalMaterialMatch {
@@ -484,18 +492,22 @@ struct MagicalMaterialMatch {
 
 static MagicalMaterialMatch find_magical_material(std::string_view source) {
     MagicalMaterialMatch best;
-    if (g_magical_materials.empty()) return best;
+    const auto &materials = g_announcement_material_vocabulary
+        ? g_announcement_material_vocabulary->materials : g_magical_materials;
+    const size_t max_bytes = g_announcement_material_vocabulary
+        ? g_announcement_material_vocabulary->max_bytes : g_magical_material_max_bytes;
+    if (materials.empty()) return best;
     // Scan complete word-bounded phrases, longest first at each position.
     // A phase-qualified name must win over the same liquid without its phase.
     for (size_t begin = 0; begin < source.size();) {
-        size_t limit = std::min(source.size(), begin + g_magical_material_max_bytes);
+        size_t limit = std::min(source.size(), begin + max_bytes);
         if (limit < source.size() && source[limit] != ' ') {
             limit = source.rfind(' ', limit);
             if (limit == std::string_view::npos || limit < begin) limit = begin;
         }
         for (size_t end = limit; end > begin;) {
-            const auto found = g_magical_materials.find(std::string(source.substr(begin, end - begin)));
-            if (found != g_magical_materials.end() && end - begin > best.length) {
+            const auto found = materials.find(std::string(source.substr(begin, end - begin)));
+            if (found != materials.end() && end - begin > best.length) {
                 best = {&found->second, begin, end - begin};
                 break;
             }
@@ -511,7 +523,9 @@ static MagicalMaterialMatch find_magical_material(std::string_view source) {
 }
 
 static bool is_magical_material_qualifier(std::string_view text) {
-    return g_magical_material_qualifiers.contains(std::string(text));
+    const auto &qualifiers = g_announcement_material_vocabulary
+        ? g_announcement_material_vocabulary->qualifiers : g_magical_material_qualifiers;
+    return qualifiers.contains(std::string(text));
 }
 
 struct TrieNode {
@@ -2454,6 +2468,7 @@ static bool native_character_background_copy_hidden(SDL_Renderer *, const SDL_Re
 static thread_local const graphicst *g_native_stocks_write_graphics = nullptr;
 static thread_local const graphicst *g_native_squads_write_graphics = nullptr;
 static thread_local const graphicst *g_native_reports_write_graphics = nullptr;
+static thread_local const graphicst *g_native_announcement_log_write_graphics = nullptr;
 static thread_local const graphicst *g_native_notification_write_graphics = nullptr;
 static thread_local const graphicst *g_native_pause_write_graphics = nullptr;
 static thread_local const graphicst *g_native_worldgen_write_graphics = nullptr;
@@ -2463,7 +2478,8 @@ static bool native_worldgen_output_active(const graphicst *) noexcept;
 static bool native_worldgen_consume_frame_submission() noexcept;
 static bool native_notification_write_active(const graphicst *gps) noexcept {
     return gps && (gps == g_native_notification_write_graphics ||
-        gps == g_native_reports_write_graphics);
+        gps == g_native_reports_write_graphics ||
+        gps == g_native_announcement_log_write_graphics);
 }
 static thread_local bool g_native_info_foreground = false;
 static bool native_info_background_cell_hidden(const graphicst *, int, int) noexcept;
@@ -2695,6 +2711,7 @@ static void native_notification_end_draw();
 static void native_notification_restore_output();
 static void native_notification_begin_frame();
 static void native_notification_release_layer();
+static void native_announcement_log_release_layer();
 static void reset_native_announcement_notification_capture();
 static std::optional<NativeTooltipWidgetFrame> g_native_tooltip_widget_frame;
 static std::optional<NativeTooltipWidgetFrame> captured_native_tooltip_widget(const graphicst &gps) {
@@ -3550,6 +3567,18 @@ static std::string compact_translated_search_text(std::string_view text) {
 
 class Overlay {
 public:
+    NativeAnnouncementLogTranslator make_native_announcement_log_translator() const;
+    void publish_native_announcement_log_translation_catalog() const;
+    bool native_announcement_log_viewport_complete();
+    std::optional<std::string> native_announcement_log_capture_entity_reference(
+        const NativeAnnouncementLogReferenceRequest &request) const {
+        if (request.kind == NativeAnnouncementLogReferenceRequest::Kind::EntityId)
+            return translate_history_entity_name(NativeHistoryName{}, request.entity_id);
+        return translate_entity_reference(request.source, request.polity_role,
+            request.government_field, request.entity_type);
+    }
+    std::shared_ptr<const SiteReferenceIdentity> native_announcement_log_capture_site_reference(
+        std::string_view source, bool english_field) const;
     bool initialize();
     void shutdown();
     void request_dfhack_translation_stop();
@@ -3577,7 +3606,9 @@ public:
     void render_native_pause_layer(SDL_Renderer *renderer);
     void render_native_worldgen_layer(SDL_Renderer *renderer);
     void render_native_reports_layer(SDL_Renderer *renderer);
-    void render_native_announcement_layer(SDL_Renderer *renderer, bool reports);
+    void render_native_announcement_log_layer(SDL_Renderer *renderer);
+    std::string native_announcement_log_style_key() const;
+    void render_native_announcement_layer(SDL_Renderer *renderer, bool reports, bool log = false);
     void render_native_info_layer(SDL_Renderer *renderer);
     void render_native_character_layer(SDL_Renderer *renderer);
     void release_native_character_resources();
@@ -3693,8 +3724,11 @@ public:
         bool personality = false, bool health = false, bool thoughts = false) const;
 
 private:
+    std::vector<Match> announcement_log_prepared_matches_;
+    uint64_t announcement_log_prepared_submission_ = 0;
     std::vector<Match> find_native_info_matches() const;
     std::vector<Match> find_native_notification_matches() const;
+    std::vector<Match> find_native_announcement_log_matches() const;
     std::vector<Match> find_native_pause_matches() const;
     std::vector<Match> find_native_stocks_matches() const;
     std::vector<Match> find_native_squads_matches() const;
@@ -3793,6 +3827,7 @@ private:
         bool has_ink = false;
     };
     Config config_;
+    bool translation_cpu_only_ = false;
     ChineseConversion chinese_conversion_;
     // Component drawers borrow the main converter and its authored-name context.
     const Overlay *display_language_source_ = nullptr;
@@ -4092,6 +4127,8 @@ private:
         std::string_view raw_source) const;
     std::optional<std::string> translate_overview_quote(
         std::string_view source, std::vector<size_t> *origins = nullptr) const;
+    std::optional<std::string> translate_overview_quote_uncached(
+        std::string_view source, std::vector<size_t> *origins) const;
     std::optional<NativeOverviewQuoteDraw> current_character_overview_quote() const;
     std::optional<int> character_overview_display_bottom(
         int left, int top, int width, int source_height) const;
@@ -4202,12 +4239,13 @@ private:
         std::string key(1, mode);
         key += std::to_string(source_context) + '\x1f';
         key.append(source);
+        const bool persistent = !native_announcement_log_item_field_active();
         if (const auto cached = identity_record_translation_cache_.find(key);
-                cached != identity_record_translation_cache_.end()) return cached->second;
+                persistent && cached != identity_record_translation_cache_.end()) return cached->second;
         auto translated = translate();
         // Recursive profession/name parsing shares this cache. Publish only
         // complete results, and never keep an iterator across a nested parse.
-        if (source_context == native_identity_translation_context() &&
+        if (persistent && source_context == native_identity_translation_context() &&
                 !identity_record_translation_cache_.contains(key)) {
             constexpr size_t maximum = 4096;
             if (identity_record_translation_cache_.size() >= maximum &&
@@ -4239,17 +4277,19 @@ private:
     template <typename Translate>
     std::optional<std::string> memoize_search_translation(char mode,
             std::string_view source, Translate &&translate, bool contextual = false) const {
+        contextual = contextual || native_announcement_log_item_field_active();
         const uint64_t source_context = contextual ? native_identity_translation_context() : 0;
         std::string key(1, mode);
         if (contextual) key += std::to_string(source_context) + '\x1f';
         key.append(source);
+        const bool persistent = !native_announcement_log_item_field_active();
         if (const auto found = search_translation_cache_.find(key);
-                found != search_translation_cache_.end()) return found->second;
+                persistent && found != search_translation_cache_.end()) return found->second;
         auto target = translate();
         const size_t cost = sizeof(std::string) + sizeof(target) + key.capacity() +
             (target ? target->capacity() : 0) + 4 * sizeof(void *);
         constexpr size_t maximum_bytes = 32u * 1024u * 1024u;
-        if (search_translation_bytes_ + cost <= maximum_bytes &&
+        if (persistent && search_translation_bytes_ + cost <= maximum_bytes &&
                 (!contextual || source_context == native_identity_translation_context())) {
             if (search_translation_cache_.emplace(std::move(key), target).second)
                 search_translation_bytes_ += cost;
@@ -4782,7 +4822,8 @@ private:
         int box_left = -1,
         std::optional<NativeParagraphViewport> viewport = std::nullopt,
         const std::vector<std::pair<size_t, size_t>> &word_ranges = {},
-        int complete_layout_rows = 0) const;
+        int complete_layout_rows = 0,
+        const ParagraphLayoutCacheEntry *prepared_layout = nullptr) const;
     std::optional<NativeTextCard> capture_world_site_card(
         std::vector<NativeTextCard> &action_cards) const;
     std::optional<NativeTextCard> capture_world_action_card(
@@ -5052,6 +5093,7 @@ private:
     void layout_fortress_help(SDL_Renderer *renderer);
     std::vector<TrieNode> help_trie_;
     std::vector<int> help_template_rules_;
+    LiteralAnchorIndex help_template_anchors_;
     std::vector<int> help_objective_rules_;
     std::vector<TrieNode> ui_message_trie_;
     std::vector<int> ui_message_template_rules_;
@@ -5117,14 +5159,16 @@ private:
     mutable size_t native_display_translation_cache_bytes_ = 0;
     mutable uint64_t native_display_translation_context_ = 0;
     void refresh_native_display_translation_context() const {
+        // A log report has its own bounded semantic cache and TLS identity.
+        // Its nested speech/body scopes must not retire another UI's caches.
+        if (g_native_announcement_log_identity_context) return;
         const auto context = native_identity_translation_context();
         if (context == native_display_translation_context_) return;
         native_display_translation_context_ = context;
         native_display_translation_cache_.clear();
         native_display_translation_cache_bytes_ = 0;
-        announcement_translation_cache_.clear();
-        announcement_translation_order_.clear();
-        announcement_translation_bytes_ = 0;
+        // Announcement keys already own their identity context and validate
+        // resources/colors. Their bounded LRU can retain other contexts.
         tooltip_translation_cache_valid_ = false;
     }
     mutable std::list<std::string> announcement_translation_order_;
@@ -5387,13 +5431,21 @@ private:
     std::optional<std::string> translate_announcement_music_passages(std::string_view source) const;
     std::optional<std::string> translate_announcement_number(std::string_view source) const;
     std::optional<std::string> translate_announcement_date(std::string_view source) const;
-    std::optional<std::string> translate_announcement_dialogue(std::string_view source) const;
+    std::optional<std::string> translate_announcement_dialogue(std::string_view source,
+        int native_type = -1) const;
     std::optional<std::string> translate_spoken_dialogue_body(std::string_view source) const;
     std::optional<std::string> translate_announcement_items(std::string_view source) const;
     TranslationResult translate_adventure_barter_artifact_report_result(std::string_view source) const;
     std::optional<std::string> translate_complete_announcement(std::string_view source,
         const std::vector<int> &source_colors, std::vector<int> &target_colors,
-        bool barter_reply = false) const;
+        bool barter_reply = false, int native_type = -1,
+        dfcn::TranslationResult *owned_result = nullptr) const;
+    std::optional<std::string> translate_native_announcement_log_record(const NativeAnnouncementLogDocument &document,
+        std::string_view source, int foreground, std::vector<int> &target_colors) const;
+    std::optional<std::string> compose_native_announcement_log_record(const NativeAnnouncementLogDocument &document,
+        std::string_view source, int foreground, std::vector<int> &target_colors) const;
+    std::optional<std::string> compose_native_announcement_log_speech(const NativeAnnouncementLogDocument &document,
+        std::string_view source, int foreground, std::vector<int> &target_colors) const;
     std::shared_ptr<const TranslationResult> announcement_result_metadata(std::string_view source) const;
     std::optional<std::string> translate_adventure_travel_status(std::string_view source,
         const std::vector<int> &source_colors, std::vector<int> &target_colors) const;
@@ -6540,7 +6592,7 @@ bool Overlay::load_compositional_rules() {
     compositional_cache_order_.clear();
     item_translation_cache_.clear();
     item_translation_cache_order_.clear();
-    clear_embark_craft_translation_cache();
+    if (!translation_cpu_only_) clear_embark_craft_translation_cache();
     settings_tab_geometry_valid_ = false;
     settings_active_page_ = -1;
     settings_game_control_x_ = -1;
@@ -6555,7 +6607,7 @@ bool Overlay::load_compositional_rules() {
     settings_announcement_columns_valid_ = false;
     settings_announcement_column_centres_twice_.fill(0);
     RULESETS.set_native_language_original(config_.native_language_original);
-    const bool loaded = RULESETS.init();
+    const bool loaded = translation_cpu_only_ || RULESETS.init();
     if (loaded) {
         RULESETS.set_context_revision_provider([] {
             return native_identity_translation_context();
@@ -6725,7 +6777,10 @@ bool Overlay::load_compositional_rules() {
                     : "Cannot load compositional TOML translation rules: " + RULESETS.last_load_error());
     if (!config_.compositional_rules)
         log_line("INFO", "General composition disabled; typed species vocabulary remains available");
-    publish_dfhack_caption_snapshot();
+    if (!translation_cpu_only_) {
+        publish_dfhack_caption_snapshot();
+        publish_native_announcement_log_translation_catalog();
+    }
     return loaded;
 }
 
@@ -7755,6 +7810,8 @@ void Overlay::set_translation_enabled(bool enabled) {
 
 void Overlay::shutdown() {
     // Join before taking the translation lock or releasing fonts/catalogs.
+    native_announcement_log_translation_stop();
+    clear_native_announcement_log_preheat();
     g_render_workers.shutdown();
     stop_dfhack_translation_worker();
     clear_legends_search_cache();
@@ -8639,7 +8696,9 @@ std::optional<std::string> Overlay::translate_material_name(
     // Keep those typed results separate in the shared, reloadable cache.
     std::string key(1, adjective ? '\1' : '\0');
     key.append(source);
-    if (const auto cached = material_name_cache_.find(key);
+    const bool cache_material = !native_announcement_log_item_field_active() &&
+        !translation_work_exhausted();
+    if (const auto cached = material_name_cache_.find(key); cache_material &&
         cached != material_name_cache_.end()) return cached->second;
     // General material selectors need a noun. An incorporated building
     // component or a task selector proved to list wood uses the material's
@@ -8693,7 +8752,7 @@ std::optional<std::string> Overlay::translate_material_name(
     constexpr size_t maximum_records = 65536;
     constexpr size_t maximum_bytes = 16 * 1024 * 1024;
     const size_t bytes = 2 * key.size() + (target ? target->size() : 0);
-    if (bytes <= maximum_bytes) {
+    if (cache_material && !translation_work_exhausted() && bytes <= maximum_bytes) {
         while (!material_name_cache_order_.empty() &&
                 (material_name_cache_.size() >= maximum_records ||
                  material_name_cache_bytes_ + bytes > maximum_bytes)) {
@@ -9224,6 +9283,42 @@ static bool is_arena_condition(std::string_view source) {
 }
 
 std::optional<std::string> Overlay::translate_overview_quote(
+        std::string_view raw_source, std::vector<size_t> *origins) const {
+    if (origins) origins->clear();
+    dfcn::TranslationWorkScope work;
+    struct QuoteOrigins {
+        std::unordered_map<std::string, std::vector<size_t>> entries;
+    };
+    static const unsigned char quote_origins_tag = 0;
+    auto *state = dfcn::active_translation_work;
+    auto &saved = state->parser_sessions[&quote_origins_tag];
+    if (!saved) saved = std::make_shared<QuoteOrigins>();
+    const auto mapped = std::static_pointer_cast<QuoteOrigins>(saved);
+    std::string key = "overview-quote\x1f";
+    const auto scalar = [&](const auto &value) {
+        key.append(reinterpret_cast<const char *>(&value), sizeof(value));
+    };
+    const auto owner = reinterpret_cast<uintptr_t>(this);
+    const auto revision = RULESETS.resource_revision();
+    const auto context = native_identity_translation_context();
+    scalar(owner); scalar(revision); scalar(context); key.append(raw_source);
+    const auto target = dfcn::translation_work_memo(key, [&]() {
+        // Speech and announcement dispatchers ask for the same memory body
+        // with different color needs. Retain the complete source-byte map
+        // on the first attempt so both use one semantic parse.
+        std::vector<size_t> source_origins;
+        auto result = translate_overview_quote_uncached(raw_source, &source_origins);
+        mapped->entries.insert_or_assign(key, std::move(source_origins));
+        return result;
+    });
+    if (origins && target) {
+        if (const auto found = mapped->entries.find(key); found != mapped->entries.end())
+            *origins = found->second;
+    }
+    return target;
+}
+
+std::optional<std::string> Overlay::translate_overview_quote_uncached(
         std::string_view raw_source, std::vector<size_t> *origins) const {
     if (origins) origins->clear();
     std::vector<size_t> normalized_origins;
@@ -12252,6 +12347,42 @@ bool Overlay::match_catalog_template(const Rule &rule, std::string_view source,
     const bool divine_guidance = adventure_divine_guidance_template(rule);
     std::unordered_map<std::string, bool> divine_fields;
     std::unordered_map<std::string, bool> barter_speakers;
+    // A field can end only where its following literal actually occurs.
+    // Compute those locations once per field, retaining longest-first order
+    // and the original whitespace/case policy. Revisited DP states then do
+    // not scan every byte and recompare the same delimiter over and over.
+    using CatalogDelimiter = std::pair<size_t, size_t>;
+    std::vector<std::optional<std::vector<CatalogDelimiter>>> delimiter_positions(
+        rule.template_kinds.size());
+    const auto positions = [&](size_t index) -> const std::vector<CatalogDelimiter> & {
+        auto &saved = delimiter_positions[index];
+        if (!saved) {
+            saved.emplace();
+            const auto &literal = rule.template_literals[index + 1];
+            if (index + 1 == rule.template_kinds.size()) {
+                // The last field's suffix must end the complete source.
+                // Count its nonspace bytes backward once; an empty suffix
+                // therefore has the single end boundary, not N candidates.
+                size_t remaining = static_cast<size_t>(std::count_if(literal.begin(), literal.end(),
+                    [](unsigned char ch) { return !native_prose_space(ch); }));
+                size_t end = source.size();
+                while (end && remaining) {
+                    --end;
+                    if (!native_prose_space(static_cast<unsigned char>(source[end]))) --remaining;
+                }
+                while (end && native_prose_space(static_cast<unsigned char>(source[end - 1]))) --end;
+                if (!remaining && end)
+                    if (const auto next = catalog_literal_end(source, end, literal, rule.case_insensitive);
+                            next && trim_view(source.substr(*next)).empty())
+                        saved->emplace_back(end, *next);
+                return *saved;
+            }
+            for (size_t end = source.size(); end > 0; --end)
+                if (const auto next = catalog_literal_end(source, end, literal, rule.case_insensitive))
+                    saved->emplace_back(end, *next);
+        }
+        return *saved;
+    };
     const auto match_capture = [&](auto &&self, size_t index, size_t at) -> bool {
         if (index == rule.template_kinds.size())
             return trim_view(source.substr(at)).empty();
@@ -12267,14 +12398,13 @@ bool Overlay::match_catalog_template(const Rule &rule, std::string_view source,
         while (at < source.size() && native_prose_space(static_cast<unsigned char>(source[at]))) ++at;
         const size_t state = index * (source.size() + 1) + at;
         if (failed.contains(state)) return false;
-        for (size_t end = source.size(); end > at; --end) {
+        const auto &ends = positions(index);
+        for (const auto &[end, next] : ends) {
+            if (end <= at) break;
             if (native_prose_space(static_cast<unsigned char>(source[end - 1]))) continue;
             if (kind != 'k' && !suffix.empty() &&
                 native_prose_space(static_cast<unsigned char>(suffix.front())) &&
                 splits_word(end)) continue;
-            const auto next = catalog_literal_end(source, end, suffix,
-                rule.case_insensitive);
-            if (!next) continue;
             const std::string_view value = source.substr(at, end - at);
             if (adventure_barter_speaker_capture(rule, index)) {
                 // Titles and authored roles may contain additional colons.
@@ -12328,10 +12458,8 @@ bool Overlay::match_catalog_template(const Rule &rule, std::string_view source,
                     if (!display_fields) continue;
                     // Vocabulary can rank boundaries; a unique fixed suffix
                     // can establish one without any vocabulary result.
-                    size_t possible = 0;
-                    for (size_t boundary = at + 1; boundary <= source.size(); ++boundary)
-                        if (catalog_literal_end(source, boundary, suffix, rule.case_insensitive))
-                            ++possible;
+                    const size_t possible = static_cast<size_t>(std::count_if(
+                        ends.begin(), ends.end(), [&](const auto &entry) { return entry.first > at; }));
                     if (suffix.empty() || possible != 1) continue;
                 }
             }
@@ -12352,18 +12480,18 @@ bool Overlay::match_catalog_template(const Rule &rule, std::string_view source,
                             (*foregrounds)[key] != (*foregrounds)[at]) key_run = false;
                     if (!key_run) continue;
                     size_t suffix_start = end;
-                    while (suffix_start < *next &&
+                    while (suffix_start < next &&
                         native_prose_space(static_cast<unsigned char>(source[suffix_start]))) ++suffix_start;
                     // A punctuation key may equal the first suffix glyph.
                     // That glyph belongs to prose only after the KEY color
                     // run ends (for example Shift+. followed by a period).
-                    if (suffix_start < *next &&
+                    if (suffix_start < next &&
                         (*foregrounds)[suffix_start] == (*foregrounds)[at]) continue;
                 }
             }
             captures.emplace_back(value);
             ranges.emplace_back(at, end);
-            if (self(self, index + 1, *next)) return true;
+            if (self(self, index + 1, next)) return true;
             captures.pop_back();
             ranges.pop_back();
         }
@@ -17054,6 +17182,7 @@ std::vector<Match> Overlay::resolve_native_knowledge_matches(
 #include "native_stocks_layers.inc"
 #include "native_tooltip_layers.inc"
 #include "native_notification_layers.inc"
+#include "native_announcement_log_layers.inc"
 #include "native_reports_layers.inc"
 #include "native_squads_layers.inc"
 #include "native_pause_layers.inc"
@@ -17207,6 +17336,8 @@ static NativeKeybindingScope capture_native_keybinding_scope(const graphicst &gp
 #include "announcement_dialogue.inc"
 #include "announcement_combat.inc"
 #include "adventure_barter_reply.inc"
+#include "native_announcement_log_speech_composition.inc"
+#include "native_announcement_log_composition.inc"
 #include "announcement_translation.inc"
 #include "fortress_item_captions.inc"
 #include "fortress_written_content.inc"
@@ -17593,6 +17724,7 @@ static void native_ui_paint_grid(NativeUiLayerStorage &layer, SDL_Renderer *rend
 #include "native_character_layer_matching.inc"
 #include "fortress_map_matching.inc"
 #include "native_notification_layer_matching.inc"
+#include "native_announcement_log_layer_matching.inc"
 #include "native_pause_layer_matching.inc"
 #include "native_stocks_layer_translation.inc"
 #include "native_squads_layer_matching.inc"
@@ -42340,6 +42472,7 @@ SDL_Rect Overlay::native_text_draw_region(const Match &match, bool *owner_bounds
     // shared viewport. Complete multiline controls also move their captions
     // off the source rows, while retaining the writer's horizontal limits.
     if (!match.native_dfhack_foreground && !match.native_squads_foreground &&
+            !native_announcement_log_foreground_view(gps_) &&
             !native_character_foreground_view(gps_) &&
             !match.layout_reflowed_paragraph) {
         if (const auto draw_clip = native_captured_text_clip(*gps_, match)) {
@@ -43357,7 +43490,14 @@ void Overlay::render(SDL_Renderer *renderer) {
     frame_prepared_ = false;
 }
 
-static Overlay g_overlay;
+static Overlay g_overlay_instance;
+static thread_local Overlay *g_announcement_translation_overlay = nullptr;
+static Overlay &active_translation_overlay() {
+    return g_announcement_translation_overlay ? *g_announcement_translation_overlay : g_overlay_instance;
+}
+#define g_overlay active_translation_overlay()
+#include "native_announcement_log_translation_service.inc"
+#include "native_announcement_log_translation_resources.inc"
 // The character component retains its own mutable drawing/paragraph/GPU
 // state. The common algorithms borrow the main immutable rule catalog and
 // primary font only while this state is bound to their renderer view.
@@ -43563,6 +43703,8 @@ static void native_tooltip_present_layer(SDL_Renderer *renderer,
     void (*draw_tooltips)(SDL_Renderer *));
 static void native_notification_present_layer(SDL_Renderer *renderer,
     void (*draw_notifications)(SDL_Renderer *));
+static void native_announcement_log_present_layer(SDL_Renderer *renderer,
+    void (*draw_log)(SDL_Renderer *));
 static void native_pause_present_layer(SDL_Renderer *renderer,
     void (*draw_pause)(SDL_Renderer *));
 static void native_resolution_present_layer(SDL_Renderer *renderer,
@@ -43638,6 +43780,9 @@ extern "C" void dfcn_render_present(SDL_Renderer *renderer) {
             });
             native_notification_present_layer(renderer, [](SDL_Renderer *notification_renderer) {
                 g_overlay.render_native_notification_layer(notification_renderer);
+            });
+            native_announcement_log_present_layer(renderer, [](SDL_Renderer *log_renderer) {
+                g_overlay.render_native_announcement_log_layer(log_renderer);
             });
             // The Fortress renderer submits Escape after its notification hovers.
             // Preserve that modal ownership when compositing the private outputs.

@@ -23,6 +23,45 @@ struct NativeAnnouncementHistoryRow {
     std::string source;
 };
 
+// Complete log translations inherit only this immutable report's ownership.
+// Nested grammar/name callbacks must not recover same-text records by scanning
+// unrelated world history or publish their temporary fields to other layers.
+static thread_local const NativeAnnouncementHistoryRow *
+    g_native_announcement_log_translation_report = nullptr;
+static thread_local uintptr_t g_native_announcement_log_translation_world = 0;
+static uint64_t g_native_announcement_log_semantic_generation = 0;
+struct NativeAnnouncementLogTranslationScope {
+    const NativeAnnouncementHistoryRow *previous_report =
+        g_native_announcement_log_translation_report;
+    uintptr_t previous_world = g_native_announcement_log_translation_world;
+    uint64_t previous_context = g_native_announcement_log_identity_context;
+    NativeAnnouncementLogTranslationScope(const NativeAnnouncementHistoryRow &report,
+            uintptr_t world) {
+        g_native_announcement_log_translation_report = &report;
+        g_native_announcement_log_translation_world = world;
+        uint64_t context = 14695981039346656037ULL;
+        const auto bytes = [&](const void *data, size_t size) {
+            const auto *source = static_cast<const unsigned char *>(data);
+            for (size_t at = 0; at < size; ++at) {
+                context ^= source[at]; context *= 1099511628211ULL;
+            }
+        };
+        bytes(&world, sizeof(world)); bytes(&report.type, sizeof(report.type));
+        bytes(&report.id, sizeof(report.id)); bytes(report.identity.data(), sizeof(report.identity));
+        bytes(&report.pool, sizeof(report.pool)); bytes(report.source.data(), report.source.size());
+        g_native_announcement_log_identity_context = context ? context : 1;
+    }
+    ~NativeAnnouncementLogTranslationScope() {
+        g_native_announcement_log_translation_report = previous_report;
+        g_native_announcement_log_translation_world = previous_world;
+        g_native_announcement_log_identity_context = previous_context;
+    }
+    NativeAnnouncementLogTranslationScope(const NativeAnnouncementLogTranslationScope &) = delete;
+    NativeAnnouncementLogTranslationScope &operator=(const NativeAnnouncementLogTranslationScope &) = delete;
+};
+static std::string native_announcement_log_unit_dependency(const NativeAnnouncementHistoryRow &report);
+static std::string native_announcement_log_kinship_dependency(const NativeAnnouncementHistoryRow &report);
+
 struct NativeAnnouncementDisplayRow {
     uintptr_t address = 0;
     std::string source;
@@ -41,8 +80,237 @@ struct NativeAnnouncementParagraph {
     int16_t category = -1;
     std::string name_source;
 };
+// These are real report fields, not an inferred action/item payload. A report
+// ID names the report table and never implies a Legends history-event ID.
+struct NativeAnnouncementLogNativeFields {
+    int16_t color = -1;
+    uint8_t bright = 0, flags = 0;
+    int32_t zoom_type = -1, zoom_type2 = -1;
+    std::array<int16_t, 3> position{}, position2{};
+    bool operator==(const NativeAnnouncementLogNativeFields &) const = default;
+};
+struct NativeAnnouncementLogActivity {
+    uintptr_t activity = 0, event = 0;
+    int16_t activity_type = -1;
+    int32_t event_type = -1, event_id = -1, activity_id = -1;
+};
+enum class NativeAnnouncementLogFragmentKind { UnitReference, Name };
+struct NativeAnnouncementLogFragment {
+    NativeAnnouncementLogFragmentKind kind = NativeAnnouncementLogFragmentKind::UnitReference;
+    size_t offset = 0, length = 0;
+    std::string source;
+    std::optional<std::string> target;
+    std::vector<NativeUnitIdentity> units;
+    bool ambiguous = false;
+};
+struct NativeAnnouncementLogOwnedFields {
+    uintptr_t world = 0;
+    int type = -1;
+    int32_t report_id = -1;
+    std::string normalized_source, lookup_key, context;
+    std::string native_context;
+    std::vector<NativeAnnouncementLogFragment> fragments;
+    uint64_t resource_revision = 0, catalog_generation = 0;
+    uint64_t generation = 0;
+    size_t bytes = 0;
+};
+struct NativeAnnouncementLogSpeechToken {
+    std::string token, source;
+    size_t template_offset = 0, template_length = 0, offset = 0, length = 0;
+};
+struct NativeAnnouncementLogSpeech {
+    int32_t choice = -1, incident_id = -1, year = -1, ticks = -1, rumor_type = -1;
+    std::array<int32_t, 2> speaker_ref{-1, -1}, recipient_ref{-1, -1};
+    std::array<int32_t, 4> variables{};
+    std::array<int32_t, 9> rumor_data{};
+    std::map<std::string, int64_t> parameters;
+    std::optional<NativeUnitIdentity> speaker_identity, recipient_identity;
+    std::string original_body, expanded_body, rendered_body, header_source, source, context;
+    std::vector<NativeAnnouncementLogSpeechToken> tokens;
+    bool tokens_complete = false;
+    size_t bytes = 0;
+};
+struct NativeAnnouncementLogSpeechHeader {
+    size_t body_offset = 0;
+    std::optional<NativeUnitIdentity> speaker;
+    bool player = false;
+};
+struct NativeAnnouncementUnitRecord;
+struct NativeAnnouncementKinshipRecord;
+struct NativeMissionReturnParty;
+struct SiteReferenceIdentity;
+struct NativeAnnouncementLogReferenceRequest {
+    enum class Kind : uint8_t { Entity, Site, Unit, EntityId };
+    Kind kind = Kind::Entity;
+    std::string source;
+    bool polity_role = false, government_field = false, english_field = false;
+    int16_t entity_type = -1;
+    int32_t entity_id = -1;
+    std::shared_ptr<const NativeUnitIdentity> unit;
+    std::string unit_key;
+    std::string key() const {
+        std::string result;
+        const auto append = [&](const auto &value) {
+            result.append(reinterpret_cast<const char *>(&value), sizeof(value));
+        };
+        append(kind); append(source.size()); result.append(source);
+        append(polity_role); append(government_field); append(english_field); append(entity_type);
+        append(entity_id);
+        append(unit_key.size()); result.append(unit_key);
+        return result;
+    }
+};
+struct NativeAnnouncementLogWorkerInputs {
+    uint64_t semantic_generation = 0;
+    std::string context;
+    std::shared_ptr<const std::unordered_map<std::string, std::optional<std::string>>> identity_sources;
+    bool identity_sources_complete = false;
+    bool kinship_complete = false;
+    std::optional<std::string> original_speech;
+    bool original_speech_complete = false;
+    std::string original_speech_body_source;
+    std::optional<std::string> original_speech_body;
+    std::string mission_return_source;
+    std::shared_ptr<const NativeMissionReturnParty> mission_return;
+    bool mission_return_complete = false;
+    std::shared_ptr<const std::unordered_map<std::string, std::string>>
+        raw_creature_adjectives, raw_creature_labels;
+    bool raw_creatures_complete = false;
+    std::shared_ptr<const std::unordered_map<std::string, std::string>> instrument_names;
+    std::shared_ptr<const NativeAnnouncementUnitRecord> unit_record;
+    std::shared_ptr<const NativeAnnouncementKinshipRecord> kinship_record;
+    std::map<std::string, std::optional<std::string>> unit_targets;
+    std::map<std::string, std::optional<std::string>> entity_targets;
+    std::map<std::string, std::shared_ptr<const SiteReferenceIdentity>> site_identities;
+    uint64_t unit_targets_resources = 0, unit_targets_catalog = 0;
+};
+static thread_local bool *g_native_announcement_log_dependency_attempt = nullptr;
+static thread_local std::vector<NativeAnnouncementLogReferenceRequest> *
+    g_native_announcement_log_reference_requests = nullptr;
+struct NativeAnnouncementLogNeedsDependency {
+    NativeAnnouncementLogNeedsDependency() noexcept {
+        dfcn::translation_work_require_dependency();
+        if (g_native_announcement_log_dependency_attempt)
+            *g_native_announcement_log_dependency_attempt = true;
+    }
+};
+static thread_local const NativeAnnouncementLogWorkerInputs *g_native_announcement_log_worker_inputs = nullptr;
+static thread_local bool g_native_announcement_log_worker_active = false;
+static uint64_t native_announcement_log_semantic_generation_value() {
+    if (!g_native_announcement_log_worker_active) return g_native_announcement_log_semantic_generation;
+    if (!g_native_announcement_log_worker_inputs) throw NativeAnnouncementLogNeedsDependency{};
+    return g_native_announcement_log_worker_inputs->semantic_generation;
+}
+struct NativeAnnouncementLogWorkerInputScope {
+    const NativeAnnouncementLogWorkerInputs *previous = g_native_announcement_log_worker_inputs;
+    bool previous_active = g_native_announcement_log_worker_active;
+    explicit NativeAnnouncementLogWorkerInputScope(const NativeAnnouncementLogWorkerInputs *inputs) {
+        g_native_announcement_log_worker_inputs = inputs;
+        g_native_announcement_log_worker_active = true;
+    }
+    ~NativeAnnouncementLogWorkerInputScope() {
+        g_native_announcement_log_worker_inputs = previous;
+        g_native_announcement_log_worker_active = previous_active;
+    }
+};
+// A retained log document owns the complete report semantics and only the
+// native wrap's extent. Current submissions freeze their visible rows below.
+struct NativeAnnouncementLogDocument {
+    uint64_t sequence = 0;
+    uintptr_t parent = 0, world = 0;
+    NativeAnnouncementHistoryRow report;
+    NativeAnnouncementLogNativeFields native_fields;
+    NativeAnnouncementLogActivity activity;
+    std::shared_ptr<const NativeAnnouncementLogOwnedFields> owned_fields;
+    std::shared_ptr<const NativeHistoryDocument> history_event;
+    std::shared_ptr<const NativeAnnouncementLogSpeech> speech;
+    std::optional<NativeAnnouncementLogSpeechHeader> speech_header;
+    std::shared_ptr<const NativeAnnouncementLogWorkerInputs> worker_inputs;
+    uint64_t history_event_publication = 0;
+    std::string record_key;
+    size_t native_first_index = 0, native_line_count = 0;
+};
+struct NativeAnnouncementLogTranslationResult {
+    std::optional<std::string> target;
+    std::vector<int> colors;
+    bool needs_owned_dependency = false;
+    std::vector<NativeAnnouncementLogReferenceRequest> reference_requests;
+};
+struct NativeAnnouncementLogDependency {
+    std::shared_ptr<const NativeAnnouncementLogDocument> document;
+    std::vector<NativeAnnouncementLogReferenceRequest> references;
+};
+using NativeAnnouncementLogTranslator = std::function<NativeAnnouncementLogTranslationResult(
+    const NativeAnnouncementLogDocument &, int)>;
+static bool native_announcement_log_translation_start();
+static void native_announcement_log_translation_stop();
+static void native_announcement_log_translation_publish_catalog(
+    std::vector<NativeAnnouncementLogTranslator> translators, uint64_t generation);
+static std::shared_ptr<const NativeAnnouncementLogTranslationResult>
+    native_announcement_log_translation_request(
+        std::shared_ptr<const NativeAnnouncementLogDocument> document, int foreground, bool urgent);
+static uint64_t native_announcement_log_translation_revision() noexcept;
+static void native_announcement_log_translation_reset(uintptr_t world, uint64_t session);
+static void native_announcement_log_translation_begin_viewport();
+static void native_announcement_log_translation_end_viewport();
+static void native_announcement_log_translation_forget(
+    std::shared_ptr<const NativeAnnouncementLogDocument> document);
+static std::vector<NativeAnnouncementLogDependency>
+    native_announcement_log_translation_dependencies(size_t maximum);
+static std::optional<NativeAnnouncementLogDependency>
+    native_announcement_log_translation_visible_dependency(
+        std::shared_ptr<const NativeAnnouncementLogDocument> document);
+static size_t native_announcement_log_preheat_capacity(size_t maximum_pending);
+static bool g_native_announcement_log_translation_viewport_ready = false;
+static std::shared_ptr<const NativeAnnouncementLogWorkerInputs>
+    native_announcement_log_freeze_worker_inputs(const NativeAnnouncementLogDocument &document);
+static void native_announcement_log_preheat(size_t budget, bool urgent_new);
+static void native_announcement_log_preheat_submission(int type, std::string_view source);
+static void native_announcement_log_prepare_dependencies();
+static void clear_native_announcement_log_preheat();
+static std::optional<std::string> native_announcement_log_worker_original_speech(
+    std::string_view rendered);
+static std::optional<std::string> native_announcement_log_worker_unit_target(
+    const NativeUnitIdentity &unit);
+static std::optional<std::string> native_announcement_log_worker_entity_target(
+    const NativeAnnouncementLogReferenceRequest &request);
+static std::shared_ptr<const SiteReferenceIdentity> native_announcement_log_worker_site_identity(
+    const NativeAnnouncementLogReferenceRequest &request);
+static thread_local const NativeAnnouncementLogDocument *
+    g_native_announcement_log_translation_document = nullptr;
+struct NativeAnnouncementLogDocumentScope {
+    const NativeAnnouncementLogDocument *previous = g_native_announcement_log_translation_document;
+    explicit NativeAnnouncementLogDocumentScope(const NativeAnnouncementLogDocument &document) {
+        g_native_announcement_log_translation_document = &document;
+    }
+    ~NativeAnnouncementLogDocumentScope() { g_native_announcement_log_translation_document = previous; }
+};
+static std::optional<NativeAnnouncementLogSpeechHeader> native_announcement_log_speech_header(
+    const NativeAnnouncementLogDocument &document);
+static const std::string &native_announcement_log_document_key(
+        const NativeAnnouncementLogDocument &document) {
+    return document.record_key;
+}
+static std::shared_ptr<const NativeAnnouncementLogOwnedFields> native_announcement_log_owned_fields(
+    const NativeAnnouncementHistoryRow &report, uintptr_t world,
+    const std::shared_ptr<const NativeAnnouncementLogOwnedFields> &previous);
+static std::shared_ptr<const NativeHistoryDocument> native_announcement_log_history_event(
+    const NativeAnnouncementHistoryRow &report, uintptr_t world, uint64_t *publication);
+static size_t native_announcement_log_history_event_bytes(const NativeHistoryDocument &document);
+static std::shared_ptr<const NativeAnnouncementLogSpeech> native_announcement_log_speech_record(
+    const NativeAnnouncementHistoryRow &report, uintptr_t world);
+static bool native_history_page_getter(uintptr_t object, size_t slot, int32_t &value);
+static bool native_history_material_find_id(uintptr_t vector, size_t offset,
+    int32_t id, uintptr_t &result);
+struct NativeAnnouncementLogVisibleRecord {
+    std::shared_ptr<const NativeAnnouncementLogDocument> document;
+    std::vector<size_t> lines;
+    std::vector<NativeAnnouncementDisplayRow> rows;
+};
 static std::vector<NativeAnnouncementParagraph> native_adventure_announcement_paragraphs();
-static std::vector<NativeAnnouncementParagraph> native_announcement_log_paragraphs();
+static std::vector<NativeAnnouncementLogVisibleRecord> native_announcement_log_paragraphs(
+    uintptr_t owner, size_t first, size_t end);
+static void clear_native_announcement_log_documents();
 static std::vector<NativeAnnouncementParagraph> native_fortress_alert_paragraphs();
 static std::optional<std::string> native_fortress_alert_unit_name(uintptr_t unit);
 static std::optional<std::string> translate_native_unit_identity_reference(
@@ -78,7 +346,9 @@ static std::optional<NativeJournalArtifactCardSource> native_journal_artifact_ca
     size_t one_based_index, size_t total);
 static bool native_announcement_history_index(std::vector<uintptr_t> &records,
     int32_t &next_id, uintptr_t &world);
-static bool native_announcement_history_row(uintptr_t record, NativeAnnouncementHistoryRow &row);
+static bool native_announcement_current_world(uintptr_t &world);
+static bool native_announcement_history_row(uintptr_t record, NativeAnnouncementHistoryRow &row,
+    NativeAnnouncementLogNativeFields *native_fields = nullptr);
 static bool native_announcement_display_tail(std::vector<uintptr_t> &records);
 static std::vector<uintptr_t> g_native_announcement_history_index;
 static int32_t g_native_announcement_history_next_id = -1;
@@ -340,10 +610,6 @@ static void native_announcement_group_change(NativeAnnouncementSnapshot &snapsho
 
 static std::mutex g_native_announcement_mutex;
 static std::deque<NativeAnnouncementSource> g_native_announcement_sources;
-// The compact renderer owns this borrowed native vector for the current
-// frame. No game pointer is retained beyond its draw epoch or core shutdown.
-static uintptr_t g_native_announcement_log_owner = 0;
-static uint64_t g_native_announcement_log_epoch = 0;
 struct NativeSpeechSource { std::string rendered, original; };
 // Announcement kinship fields are bound to the actual speaker and relatives
 // in native memory. The adapter reuses the character sheet's relation policy
@@ -353,13 +619,6 @@ static std::optional<std::string> native_announcement_kinship_source(
 static std::optional<std::string> native_announcement_kinship_target(std::string_view key);
 static void remember_native_announcement_kinship_parent(uintptr_t parent);
 static std::deque<NativeSpeechSource> g_native_speech_sources;
-
-static void remember_native_announcement_log_owner(uintptr_t owner) {
-    std::lock_guard<std::mutex> lock(g_native_announcement_mutex);
-    g_native_announcement_log_owner = owner;
-    g_native_announcement_log_epoch = owner
-        ? g_embark_item_capture_epoch.load(std::memory_order_acquire) : 0;
-}
 
 static void remember_native_speech_source(std::string_view original, std::string_view rendered) {
     if (original.empty() || rendered.empty() || original == rendered) return;
@@ -374,6 +633,8 @@ static void remember_native_speech_source(std::string_view original, std::string
 }
 
 static std::optional<std::string> native_original_speech_source(std::string_view rendered) {
+    if (g_native_announcement_log_worker_active)
+        return native_announcement_log_worker_original_speech(rendered);
     const auto key = native_announcement_display_source(rendered);
     std::lock_guard<std::mutex> lock(g_native_announcement_mutex);
     for (auto entry = g_native_speech_sources.rbegin(); entry != g_native_speech_sources.rend(); ++entry)
@@ -632,10 +893,9 @@ static std::shared_ptr<const NativeAnnouncementSnapshot> native_announcement_sou
 
 static void clear_native_announcement_sources() {
     std::lock_guard<std::mutex> lock(g_native_announcement_mutex);
+    ++g_native_announcement_log_semantic_generation;
     g_native_announcement_sources.clear();
     g_native_speech_sources.clear();
-    g_native_announcement_log_owner = 0;
-    g_native_announcement_log_epoch = 0;
     g_native_announcement_history_index.clear();
     g_native_announcement_history_next_id = -1;
     g_native_announcement_history_world = 0;
