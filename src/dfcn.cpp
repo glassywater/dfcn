@@ -5402,6 +5402,7 @@ private:
     std::atomic_uint64_t dfhack_translation_consumed_identity_context_{0};
     std::atomic_uintptr_t dfhack_translation_consumed_catalog_{0};
     std::atomic<std::shared_ptr<const NativeDfhackTranslatedFrame>> dfhack_translation_completed_frame_;
+    std::atomic<std::shared_ptr<const NativeDfhackTranslatedFrame>> dfhack_translation_world_frame_;
     std::vector<std::shared_ptr<const NativeDfhackTranslatedFrame>> dfhack_translation_cache_;
     std::vector<uint64_t> dfhack_translation_blocked_keys_;
     bool append_ui_message_paragraph(std::vector<std::string> &screen_rows,
@@ -7773,6 +7774,7 @@ void Overlay::toggle_display_language() {
     {
         std::lock_guard<std::mutex> lock(dfhack_translation_mutex_);
         dfhack_translation_completed_frame_.store({}, std::memory_order_release);
+        dfhack_translation_world_frame_.store({}, std::memory_order_release);
         dfhack_translation_cache_.clear();
         dfhack_translation_blocked_keys_.clear();
     }
@@ -7939,6 +7941,7 @@ void Overlay::toggle_native_language() {
     {
         std::lock_guard<std::mutex> lock(dfhack_translation_mutex_);
         dfhack_translation_completed_frame_.store({}, std::memory_order_release);
+        dfhack_translation_world_frame_.store({}, std::memory_order_release);
         dfhack_translation_cache_.clear();
         dfhack_translation_blocked_keys_.clear();
     }
