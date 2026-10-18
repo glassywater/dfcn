@@ -175,9 +175,9 @@ def compile_events(path: Path) -> list[tuple[str, str, str]]:
         # which could silently lose a participant or interchange two links.
         target, _ = indexed(source, target)
         entry = (source, target, ("ht" if FIELD.search(source) else "h") + namespace)
-        # Clipped fragments, identities and event titles must retain their
-        # own meaning when an ordinary action has the same native spelling.
-        scope = next((flag for flag in ("C", "N", "E") if flag in namespace), "")
+        # Clipped fragments, identities, event titles and participants must
+        # retain their own meaning beside same-spelled ordinary terms.
+        scope = next((flag for flag in ("C", "N", "E", "u") if flag in namespace), "")
         key = (source, scope)
         if priority < priorities.get(key, 0):
             return

@@ -28,7 +28,7 @@ private:
     RendererState render_state_;
     std::string context_;
     bool source_captured_ = false, valid_ = false;
-    using FpsRows = std::array<std::optional<std::pair<size_t, size_t>>, 2>;
+    using FpsRows = std::vector<std::optional<std::pair<size_t, size_t>>>;
     std::array<FpsRows, 2> fps_rows_;
     std::array<std::vector<size_t>, 2> fps_cells_;
 
@@ -54,16 +54,18 @@ private:
             source.screentexpos_top_anchored != nullptr, source.screentexpos_top_anchored_x != nullptr,
             source.screentexpos_top_anchored_y != nullptr, source.screentexpos_top_flag != nullptr}};
     }
-    static FpsRows fps_rows(const unsigned char *screen, int width, int height) noexcept {
-        FpsRows spans;
+    static FpsRows fps_rows(const unsigned char *screen, int width, int height) {
+        FpsRows spans(static_cast<size_t>(height));
         if (!screen) return spans;
         std::array<char, 1000> row;
-        for (int half = 0; half < std::min(2, height); ++half) {
-            const int y = height - 1 - half;
+        // Adventure places its live counter above the bottom toolbar. Match
+        // the complete native counter wherever that HUD actually draws it,
+        // instead of assuming it shares the fortress footer's last two rows.
+        for (int y = 0; y < height; ++y) {
             for (int x = 0; x < width; ++x)
                 row[static_cast<size_t>(x)] = static_cast<char>(
                     screen[(static_cast<size_t>(x) * height + y) * 8]);
-            spans[static_cast<size_t>(half)] = native_fps_counter_span(
+            spans[static_cast<size_t>(y)] = native_fps_counter_span(
                 std::string_view(row.data(), static_cast<size_t>(width)));
         }
         return spans;
@@ -149,7 +151,7 @@ private:
 
 public:
     bool matches_source(const graphicst &source, SDL_Renderer *renderer,
-            const std::string &context) const noexcept {
+            const std::string &context) const {
         if (!valid_ || !renderer || renderer != renderer_ || context != context_ ||
                 source.dimx != original.dimx || source.dimy != original.dimy ||
                 pointer_presence(source) != pointer_presence_) return false;
@@ -191,8 +193,8 @@ public:
             if (i && !source.top_in_use) continue;
             fps_rows_[i] = fps_rows(inputs[i].screen, source.dimx, source.dimy);
             for (int x = 0; x < source.dimx; ++x)
-                for (int y = std::max(0, source.dimy - 2); y < source.dimy; ++y) {
-                    const auto &span = fps_rows_[i][static_cast<size_t>(source.dimy - 1 - y)];
+                for (int y = 0; y < source.dimy; ++y) {
+                    const auto &span = fps_rows_[i][static_cast<size_t>(y)];
                     if (span && static_cast<size_t>(x) >= span->first &&
                             static_cast<size_t>(x) < span->second)
                         fps_cells_[i].push_back(static_cast<size_t>(x) * source.dimy + y);

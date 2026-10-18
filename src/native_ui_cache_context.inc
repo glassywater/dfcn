@@ -10,6 +10,7 @@ class NativeUiCacheContextWriter {
     std::unordered_map<const NativeKnowledgeDocument *, size_t> knowledge_documents_;
     std::unordered_map<const NativeHistoryDocument *, size_t> history_documents_;
     std::unordered_map<const NativeDrawnTextRow *, NativeDrawnTextRow> resolved_rows_;
+    std::unordered_map<size_t, std::optional<std::pair<size_t, size_t>>> fps_spans_;
     bool character_ = false;
     static void order_ranks(std::vector<uint64_t> &values) {
         std::sort(values.begin(), values.end());
@@ -32,19 +33,37 @@ class NativeUiCacheContextWriter {
             return std::nullopt;
         return active == 1;
     }
-    bool fps_counter_row(const NativeDrawnTextRow &input) const {
+    bool fps_counter_row(const NativeDrawnTextRow &input) {
         if (!graphics_ || graphics_->dimx <= 0 || graphics_->dimx > 1000 ||
                 graphics_->dimy <= 0 || graphics_->dimy > 1000 ||
                 input.draw_dimx != graphics_->dimx || input.draw_dimy != graphics_->dimy ||
                 !input.draw_grid ||
                 (input.draw_grid != graphics_->screen && input.draw_grid != graphics_->screen_top) ||
-                input.y < std::max(0, graphics_->dimy - 2) || input.y >= graphics_->dimy ||
+                input.y < 0 || input.y >= graphics_->dimy ||
                 input.x < 0 || input.x >= graphics_->dimx ||
+                input.source.empty() ||
                 input.source.size() > static_cast<size_t>(graphics_->dimx - input.x) ||
                 (!input.complete_source.empty() && input.complete_source != input.source))
             return false;
-        const auto span = native_fps_counter_span(input.source);
-        if (!span || span->first != 0 || span->second != input.source.size()) return false;
+        // Native can justify the label and numbers through separate addst
+        // calls. Every accepted run must fit inside a complete counter in
+        // this live grid; a numeric spelling alone is never FPS evidence.
+        if (input.source.find_first_not_of("FPS: ()0123456789") != std::string::npos)
+            return false;
+        const size_t row_key = static_cast<size_t>(input.y) +
+            (input.draw_grid == graphics_->screen_top ? static_cast<size_t>(graphics_->dimy) : 0);
+        auto found = fps_spans_.find(row_key);
+        if (found == fps_spans_.end()) {
+            std::array<char, 1000> row;
+            for (int x = 0; x < graphics_->dimx; ++x)
+                row[static_cast<size_t>(x)] = static_cast<char>(input.draw_grid[
+                    (static_cast<size_t>(x) * graphics_->dimy + input.y) * 8]);
+            found = fps_spans_.emplace(row_key, native_fps_counter_span(
+                std::string_view(row.data(), static_cast<size_t>(graphics_->dimx)))).first;
+        }
+        const auto &span = found->second;
+        if (!span || static_cast<size_t>(input.x) < span->first ||
+                static_cast<size_t>(input.x) + input.source.size() > span->second) return false;
         for (size_t offset = 0; offset < input.source.size(); ++offset) {
             const size_t tile = (static_cast<size_t>(input.x) + offset) * graphics_->dimy + input.y;
             if (input.draw_grid[tile * 8] != static_cast<unsigned char>(input.source[offset]))
@@ -89,7 +108,7 @@ class NativeUiCacheContextWriter {
 public:
     NativeUiCacheContextWriter() { key_.reserve(4096); }
     bool complete = true;
-    void graphics(const graphicst *input) { graphics_ = input; }
+    void graphics(const graphicst *input) { graphics_ = input; fps_spans_.clear(); }
     template<typename T> void value(T input) {
         if (!complete) return;
         if (key_.size() > 1024 * 1024 - 8) { complete = false; return; }
@@ -186,9 +205,10 @@ public:
                 input.fortress_zone_caption) {
             complete = false; return;
         }
-        // The native footer counter remains on the game's renderer. Ignore
-        // only a complete, byte-proven counter in its actual bottom-row grid;
-        // adjacent footer text and split/partially clipped strings stay exact.
+        // The native counter remains on the game's renderer, including the
+        // adventure HUD above its toolbar. Each complete or separately drawn
+        // run must agree with a complete counter in its actual native grid;
+        // adjacent text and divergent shortened sources stay exact.
         const bool fps = fps_counter_row(input);
         constexpr std::string_view fps_marker = "native FPS counter";
         value(input.x); value(input.y); value(fps);
@@ -530,34 +550,15 @@ public:
         });
     }
     void announcement_snapshot(const NativeAnnouncementSnapshot &snapshot) {
-        // The caller holds g_native_announcement_mutex. A globally unique
-        // content ID changes before every records mutation, including a
-        // rebuild or allocator address reuse. Cache bytes, not the snapshot:
-        // holding another shared_ptr would force a full copy on every append.
-        struct SerializedSnapshot {
-            uint64_t revision = 0;
-            std::optional<std::string> bytes;
-        };
-        static SerializedSnapshot cached;
+        // This process-wide ID changes before every records/references
+        // mutation and is never reset on world changes. Identical copies
+        // retain the ID until their first write, so it identifies the whole
+        // immutable snapshot without serializing the complete report history
+        // into every UI key. The retained paragraph registry has its own
+        // exact comparison and must not lose its cache merely because these
+        // two independent histories exceed the combined key's byte limit.
         if (snapshot.content_revision == UINT64_MAX) { complete = false; return; }
-        if (cached.revision != snapshot.content_revision) {
-            NativeUiCacheContextWriter serialized;
-            serialized.range(snapshot.records, [&](const auto &record) {
-                serialized.text(record.source); serialized.value(record.original_length);
-                serialized.value(record.order.first); serialized.value(record.order.second);
-                serialized.range(record.references, [&](const auto &reference) {
-                    serialized.value(reference.first.first); serialized.value(reference.first.second);
-                    serialized.value(reference.second);
-                });
-                serialized.range(record.lengths, [&](const auto &length) {
-                    serialized.value(length.first); serialized.value(length.second);
-                });
-            });
-            cached.bytes = serialized.finish();
-            cached.revision = snapshot.content_revision;
-        }
-        if (!cached.bytes) { complete = false; return; }
-        text(*cached.bytes);
+        value(snapshot.content_revision);
     }
     void other_sources() {
         if (!complete) return;

@@ -13522,7 +13522,7 @@ std::optional<std::string> Overlay::translate_adventure_background_source(
 
 #include "adventure_belief_translation.inc"
 
-// The native footer may justify the FPS label and values separately. Keep
+// The native counter may justify the FPS label and values separately. Keep
 // the complete counter on the game's renderer, including any padded gap;
 // its changing numbers are neither list types nor item quantities.
 static std::optional<std::pair<size_t, size_t>> native_fps_counter_span(
@@ -13554,16 +13554,51 @@ static std::optional<std::pair<size_t, size_t>> native_fps_counter_span(
 }
 
 static bool native_fps_counter_cell(const graphicst &gps, int x, int y,
-        bool top_layer) {
-    if (x < 0 || x >= gps.dimx || y < 0 || y >= gps.dimy || y < gps.dimy - 2)
+        bool top_layer, uint64_t draw_epoch) {
+    if (gps.dimx <= 0 || gps.dimx > 1000 || gps.dimy <= 0 || gps.dimy > 1000 ||
+            x < 0 || x >= gps.dimx || y < 0 || y >= gps.dimy)
         return false;
     const auto *screen = top_layer ? gps.screen_top : gps.screen;
     if (!screen) return false;
-    std::string row(static_cast<size_t>(gps.dimx), ' ');
-    for (int column = 0; column < gps.dimx; ++column)
-        row[static_cast<size_t>(column)] = static_cast<char>(
-            screen[(static_cast<size_t>(column) * gps.dimy + y) * 8]);
-    const auto span = native_fps_counter_span(row);
+    struct Row {
+        bool ready = false;
+        std::optional<std::pair<size_t, size_t>> span;
+    };
+    struct Cache {
+        const graphicst *graphics = nullptr;
+        std::array<const unsigned char *, 2> planes{};
+        int dimx = 0, dimy = 0;
+        uint64_t draw_epoch = 0, read_revision = 0;
+        std::array<std::vector<Row>, 2> rows;
+        std::string text;
+    };
+    auto &cache = reloadable_thread_state<Cache, struct NativeFpsCounterRowsTag>();
+    const std::array<const unsigned char *, 2> planes{gps.screen, gps.screen_top};
+    const auto revision = NativeUiReadScope::read_revision;
+    if (cache.graphics != &gps || cache.planes != planes ||
+            cache.dimx != gps.dimx || cache.dimy != gps.dimy ||
+            cache.draw_epoch != draw_epoch || cache.read_revision != revision) {
+        cache.graphics = &gps;
+        cache.planes = planes;
+        cache.dimx = gps.dimx;
+        cache.dimy = gps.dimy;
+        cache.draw_epoch = draw_epoch;
+        cache.read_revision = revision;
+        for (auto &rows : cache.rows) rows.assign(static_cast<size_t>(gps.dimy), Row{});
+    }
+    // The FPS counter sits above the toolbar in adventure mode. Read every
+    // requested native row, but parse it only once in this raster view rather
+    // than allocating and scanning the row again for each glyph and copy.
+    auto &row = cache.rows[top_layer ? 1 : 0][static_cast<size_t>(y)];
+    if (!row.ready) {
+        cache.text.resize(static_cast<size_t>(gps.dimx));
+        for (int column = 0; column < gps.dimx; ++column)
+            cache.text[static_cast<size_t>(column)] = static_cast<char>(
+                screen[(static_cast<size_t>(column) * gps.dimy + y) * 8]);
+        row.span = native_fps_counter_span(cache.text);
+        row.ready = true;
+    }
+    const auto &span = row.span;
     return span && static_cast<size_t>(x) >= span->first &&
         static_cast<size_t>(x) < span->second;
 }
@@ -17943,14 +17978,13 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
             if (row_y >= box.y && row_y < box.y + box.h)
                 rendered.replace(box.x, box.w, tooltip_widget->rows[row_y - box.y]);
         }
-        // Exclude both possible physical footer halves before any semantic
-        // owner sees them. Legends' two-column fallback otherwise treats a
+        // Exclude the exact native counter before any semantic owner sees
+        // its values. Legends' two-column fallback otherwise treats a
         // padded FPS value as a material and moves every type to its X.
         // Only this matching copy changes; native glyphs and values stay live.
-        if (row_y >= gps_->dimy - 2)
-            if (const auto fps = native_fps_counter_span(rendered))
-                std::fill(rendered.begin() + fps->first,
-                    rendered.begin() + fps->second, ' ');
+        if (const auto fps = native_fps_counter_span(rendered))
+            std::fill(rendered.begin() + fps->first,
+                rendered.begin() + fps->second, ' ');
         return rendered;
     };
     auto text_bounds = [](const std::string &rendered) {
@@ -26920,11 +26954,12 @@ bool Overlay::prepare_immediate_row(bool top_layer, int y) {
     // The matcher excludes the native FPS counter. Its continually changing
     // digits must not invalidate nearby translation masks and trigger another
     // complete layer scan. Keep separate proofs for the raw and composed rows.
-    std::array<std::optional<std::pair<size_t, size_t>>, 2> raw_fps{}, base_fps{}, composed_fps{};
-    std::array<bool, 2> fps_read{};
+    using FpsSpans = std::vector<std::optional<std::pair<size_t, size_t>>>;
+    FpsSpans raw_fps(gps_->dimy), base_fps(gps_->dimy), composed_fps(gps_->dimy);
+    std::vector<uint8_t> fps_read(gps_->dimy, 0);
     const auto grid_row_digest = [&](int context_y) {
-        if (context_y >= gps_->dimy - 2) {
-            const size_t slot = static_cast<size_t>(gps_->dimy - 1 - context_y);
+        {
+            const size_t slot = static_cast<size_t>(context_y);
             if (!fps_read[slot]) {
                 std::string raw_row(gps_->dimx, ' '), base_row(gps_->dimx, ' ');
                 std::string composed_row(gps_->dimx, ' ');
@@ -26948,8 +26983,7 @@ bool Overlay::prepare_immediate_row(bool top_layer, int y) {
             digest *= 1099511628211ULL;
         };
         const auto counter_cell = [&](const auto &spans, int x) {
-            if (context_y < gps_->dimy - 2) return false;
-            const auto &span = spans[static_cast<size_t>(gps_->dimy - 1 - context_y)];
+            const auto &span = spans[static_cast<size_t>(context_y)];
             return span && static_cast<size_t>(x) >= span->first &&
                 static_cast<size_t>(x) < span->second;
         };
@@ -35021,7 +35055,7 @@ void Overlay::note_graphic_copy(SDL_Renderer *renderer, SDL_Texture *texture,
             copy_right <= grid_right && copy_bottom <= grid_bottom) {
         const int x = relative_x / tile_w, y = relative_y / tile_h;
         const size_t tile = static_cast<size_t>(x) * gps_->dimy + y;
-        if (native_fps_counter_cell(*gps_, x, y, native_ui_top_layer_at(*gps_, tile)))
+        if (native_fps_counter_cell(*gps_, x, y, native_ui_top_layer_at(*gps_, tile), draw_epoch_))
             return;
     }
     native_frame_drawn_ = true;
@@ -40227,7 +40261,7 @@ int Overlay::intercept_glyph_copy(SDL_Renderer *renderer, SDL_Texture *texture,
         return real_copy(renderer, texture, source, dest);
     // The native footer updates independently of the page. Its copies do
     // not retire the retained composite/occlusion evidence for other cells.
-    if (native_fps_counter_cell(*gps_, x, y, top_layer))
+    if (native_fps_counter_cell(*gps_, x, y, top_layer, draw_epoch_))
         return real_copy(renderer, texture, source, dest);
     native_frame_drawn_ = true;
     const size_t observed_cells =
