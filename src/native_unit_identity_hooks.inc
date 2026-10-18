@@ -284,6 +284,36 @@ static void capture_native_companion_english_name(const void *name,
     } catch (...) {}
 }
 
+// Groups formats historical_entity.name directly, rather than a unit name.
+// This verified supplier owns the entity at name-0x20, including signed kinds
+// handled by the page's default branch. Keep that actual
+// identity instead of resolving the displayed spelling against every entity.
+static void capture_native_character_group_english_name(const void *name,
+        NativeString *output, bool first, bool second) {
+    NativeInputCallbackScope callback;
+    callback.call_native([&] {
+        g_native_unit_identity_hooks.english_name(name, output, first, second);
+    });
+    try {
+        std::string_view source;
+        const uintptr_t address = reinterpret_cast<uintptr_t>(name);
+        const uintptr_t base = g_native_unit_identity_hooks.base;
+        if (!g_overlay.translation_enabled() || address < 0x20 ||
+                !native_string_view(output, &source, 262144) || source.empty()) return;
+        NativeUnitIdentity snapshot;
+        if (!capture_native_history_name(base, address, snapshot.name) ||
+                !capture_native_history_entity_name_context(base, address - 0x20,
+                    snapshot.name, true, nullptr, true)) return;
+        snapshot.native_name.assign(source);
+        snapshot.form = NativeUnitIdentityForm::NameOnly;
+        snapshot.english_name = true;
+        // Entity naming can read current world relationships. The existing
+        // publisher retains this owned snapshot for SDL's deferred replay.
+        publish_native_unit_identity_snapshot(std::move(snapshot),
+            reinterpret_cast<uintptr_t>(output), std::string(source), 0, true);
+    } catch (...) {}
+}
+
 // Only the verified pet naming response calls this wrapper. Its English
 // formatter still supplies a typed language_name, including authored names.
 static void capture_native_announcement_pet_english_name(const void *name,
@@ -635,7 +665,7 @@ static void capture_native_unit_reference(void *unit, NativeString *output) {
     finish_native_unit_reference_call(call, output);
 }
 
-static void capture_native_conversation_portrait_capitalization(NativeString *output) {
+static void capture_native_identity_capitalization(NativeString *output) {
     NativeInputCallbackScope callback;
     std::optional<NativeUnitIdentitySource> identity;
     try {
@@ -649,11 +679,15 @@ static void capture_native_conversation_portrait_capitalization(NativeString *ou
     try {
         std::string_view source;
         if (!native_string_view(output, &source, 262144) || source.empty()) return;
-        // This exact caller capitalizes 1331500's same NativeString before
-        // drawing it. Keep its typed identity even when no info rows follow.
+        // These verified callers capitalize the same captured NativeString
+        // before drawing it. Only its bytes change, not the typed identity.
         rebind_native_unit_identity_capitalization(
             reinterpret_cast<uintptr_t>(output), *identity, source);
     } catch (...) {}
+}
+
+static void capture_native_conversation_portrait_capitalization(NativeString *output) {
+    capture_native_identity_capitalization(output);
 }
 
 // 132e430 has five native arguments. Its fifth stack argument decides whether
@@ -1111,6 +1145,13 @@ static bool install_native_unit_identity_hooks() {
     // and sheet header. Call sites leave other consumers' entry signatures
     // intact and preserve disguised/linked identity selection by the game.
     std::vector<NativeCall> names{
+        // Groups: historical_entity+0x20, then capitalization of that
+        // same output before the native clipping and draw (Classic 179312 /
+        // 17931f). The name is an entity field, never a squad.alias.
+        {0x179382, 0xa946e0,
+            reinterpret_cast<const void *>(&capture_native_character_group_english_name)},
+        {0x17938f, 0x52d650,
+            reinterpret_cast<const void *>(&capture_native_identity_capitalization)},
         // Pet naming response: the producer formats the actual language_name
         // before appending its fixed conversation suffix (Classic 0x1ff07a).
         {0x1ff0ea, 0xa946e0,

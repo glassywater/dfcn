@@ -240,7 +240,7 @@ std::optional<std::string> Overlay::translate_native_unit_identity(
             return native_text_to_utf8(source);
         };
         const auto entity_name = [&](const NativeHistoryName &name) -> std::optional<std::string> {
-            if (name.entity_type >= 0 && name.entity_id >= 0)
+            if (name.entity_id >= 0)
                 return translate_history_entity_name(name, name.entity_id);
             // Match the old NameOnly wrapper's authored-field policy while keeping
             // entity qualifiers outside the character-name translator.
@@ -250,6 +250,11 @@ std::optional<std::string> Overlay::translate_native_unit_identity(
                 return native_text_to_utf8(name.first_name);
             return translate_history_name(name);
         };
+        // The Groups supplier captures historical_entity.name itself. Its
+        // selected ID owns the full generated name even for default signed
+        // entity kinds; the English string is not a person's surname/title.
+        if (unit.form == NativeUnitIdentityForm::NameOnly && unit.name.entity_id >= 0)
+            return entity_name(unit.name);
         if (unit.form == NativeUnitIdentityForm::Reference) {
             std::string result;
             const auto reference_role = [&](auto &&self, std::string_view raw) -> std::string {

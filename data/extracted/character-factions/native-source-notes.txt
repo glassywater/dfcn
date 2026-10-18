@@ -1,0 +1,53 @@
+人物“势力 / Groups”页的原生文本来源
+
+本目录由 tools/extract_character_factions_pe.py 从当前配置的两份原始 Windows PE 离线读取。没有执行、附加或操作游戏。这里保存用户明确要求的反编译来源资料，不是测试、运行检查或游戏内效果记录。
+
+原生范围
+Reference/Steam: PE:6a70a6d9:02711000；完整人物 renderer 的 unwind owner 为 RVA 0x14ef90..0x1a01c4，实际执行区截止 0x19e16c；后段是原生跳转表。Groups 页是这个 owner 的 0x178f51..0x17ac57 指令切片，继承完整栈局部变量，不是独立函数。
+Classic: PE:6a70b91c:0270a000；完整 owner 为 0x14ef20..0x1a0154，执行区截止 0x19e0fc；Groups 切片为 0x178ee1..0x17abe7。上述两份映像分别实际读取，函数、表项、代码、字符串、SHA256 和来源路径记录在 pe-functions.tsv。
+
+资料结构
+pe-reference-character-renderer-owner.asm 与 pe-classic-character-renderer-owner.asm 是完整所属执行区。pe-*-groups-page-slice.asm 是便于阅读的页内切片。
+pe-ghidra-functions.tsv 仅把完整原生 owner 和完整供应函数交给 Ghidra，不把切片伪装成独立原生入口。pe-switches.tsv 保留完整 owner 与供应函数的原始 selector 别名；pe-page-switches.tsv 另保留该页三张表。
+pe-literals.tsv、pe-calls.tsv、pe-conditions.tsv 和 pe-branches.tsv 分别保留原始字符串操作数、直接调用、判断指令和条件边。pe-page-productions.tsv 按实际 selector 索引页内文本操作数与空分支；动态字段不能把这个操作数表当成完整封闭词表。
+
+空页和行结构
+列表 ui+0x1990 的长度为 0 时画 No groups。每个有实体的记录从 entity+0x20 取得英文 language_name，首字母大写后画左侧名称，右侧是实体类别，下一行是声望或关系。找不到 entity 的条目直接跳过。右侧类别和下一行角色在原生程序里可以为空，空串不是缺少一个固定翻译。
+名称 draw call/return: Reference 0x1794b5/0x1794ba；类别 0x179865/0x17986a；角色 0x17ab47/0x17ab4c。Classic 各地址减 0x70。这些字段属于本页的完整原生 draw 关系，不依赖可见面板边框是否被截图裁切。
+
+实体类别
+selector 0..10: Civilization、Site government、Vessel crew、Migrating group、Nomadic group、Religion、Military organization、Outcast、Performance troupe、Merchant company，以及动态职业名 + " guild"。
+Guild 分支遍历 entity+0xa0 的 focus，取第一个 focus.type==0 的 profession（+4）；没有则用 craft。职业 helper 是 Reference 0x132cc10 / Classic 0x1327b80。本页传入当前种族、caste=-1、plural=true、capitalize=false：Win64 第7参数 caller[RSP+0x30]=1，对应 helper prologue 后 [RSP+0xa0] 的 R14；第8参数 caller[RSP+0x38]=0，对应 [RSP+0xa8] 的 R13。普通名词追加 s，特殊分支使用 craftsmen、babies 等实际复数，RAW 覆盖也选择复数字段。拼接 " guild" 后才调用首字母处理，所以是 Miners guild、Woodworkers guild 等完整形态；fallback 完整可见原文为 Craft guild。未知实体类型不追加类别文本。
+职业 helper 保留完整 0..134 表；RAW 职业覆盖优先于内置职业。RAW 可用性与选择函数的实际反编译已保存在 ../legends-entity-introduction/{reference,classic}-profession-raw-title-{available,selection}.c，调用与完整源索引见 ../adventure-choice-descriptions/native-functions.tsv。它们读取 creature/caste profession_name，不应凭截图只枚举某一工会。
+
+声望优先级
+ui+0x1a10[record] != -1 时，先从 ui+0x1a28[record] 取声望数值并进入 reputation selector 表，完全跳过普通关系表，即使该声望分支不产文字也不会退回普通关系。
+表覆盖 selector 0..29。实际产文案的 17 个值为 0、2、3、6、7、11、12、13、14、15、16、23、24、25、26、28、29，每个有 >=100、75..99、50..74、25..49、<25 五档；最后一档没有原生下界判断。
+1、4、5、8、9、10、17、18、19、20、21、22、27 以及表外值走空文案合流。不能把“30 种 enum”推成“150 条可见句子”。全部 85 条实际文案保留在 pe-page-productions.tsv。
+原版文字错误也保留为来源：Moted brawler；Greatly feared for violent oppositoin；Noted intruder according；Greatly respected for fighter；Respected for fighter。此处没有另接 according 的对象或尾句。
+
+普通关系
+仅当声望 selector 为 -1 才读 ui+0x19a8[record]。这是一份界面内部 selector，不可直接套用仓库其他版本的 histfig_entity_link_type enum 名称。
+0: entity.kind==0 时 Citizen，否则 Member；1: Former member；2: Mercenary；3: Former mercenary；4: Slave；5: Former slave；6: Prisoner；7: Former prisoner；8: Enemy；9: Criminal。
+10: 动态职位称谓；11: "Former " + 动态职位称谓；12: 空；13: 动态职位 squad[0]（如 soldier）；14: "Former " + squad[0]；15: Worker；16: Former worker。表外值为空。10、11、13、14 查不到职位时也为空，Former 仅在查到职位后追加。
+职位从 entity+0x10c0 的 positions 按 ui+0x19c0[record] id 查找；10、11 同时从 entity+0x1110 的 assignment 按 ui+0x19d8[record] id 查找。gendered-office-name 的实际完整 leaf 是 Reference 0x99a3c0..0x99a4d3 / Classic 0x997bf0..0x997d03，保留性别、普通职位/配偶职位、单复数与缺失性别名回退分支。调用方 R8B=0 表示单数，R9B 来自 ui+0x19f0[record]，非零选择配偶职位组。13、14 直接取 position+0x98+12*0x20=0x218，即 squad[0]（其前是 name/name_female/name_male/spouse/spouse_female/spouse_male 六组各两个字符串），不再调用该 leaf。这是 RAW 的兵种称谓，绝不读取或翻译 squad.alias。
+
+领地后缀：纠正既有提取资料的旧角色名
+本目录使用准确角色名 territory-office-suffix。兄弟 journal 来源工具中同一地址的旧角色名 religious-office-suffix 不准确，它实际是 land_holder/site 后缀，不能按名字把它解释为 deity 或宗教。
+Reference 0x9bdfb0..0x9be0f8 / Classic 0x9bb7e0..0x9bb928：调用方要求 assignment 存在且 position.land_holder（+0x2c8）>0；helper 遍历 entity.site_links（+0xd0），找 link.flags（+0x1c）含 0x200 且 link+0xc 等于 assignment.id 的条目，用 link+0 的 site_id 经 world_data（Reference global 0x24ebb58）的 0x7db20 lookup 取得 world_site。site 的 language_name 位于对象起始处。
+找到 site 后先追加 " of "，再以同一个英文 language_name helper 生成 site 的完整英文名。没找到 link/site 时不追加任何字符。最终形态是 office + " of " + site 或 "Former " + office + " of " + site；关系13、14的 squad[0] 分支没有这个后缀。
+
+动态名称
+名称 supplier call: Reference 0x179382，return 0x179387；Classic 0x179312，return 0x179317。RCX=entity+0x20、RDX=当前 string、R8B=1、R9D=0；供应函数为 Reference 0xa946e0 / Classic 0xa91760，完整 C/ASM 保留 language_name 的 WORD、POS、冠词、昵称和连接结构。其输出随后在 Reference 0x17938f 首字母处理，再可能原生截断。自定义 squad.alias 并不是这个实体名称入口，不能凭英文拼写将 squad alias 翻译。
+Name resize call/return 为 Reference 0x179434/0x179439，role resize 为 0x17aab9/0x17aabe；Classic 均减 0x70。两者都在原长度 >= 字段宽度-2 时，若宽度-3 非负就 resize 到宽度-3；新长度 >3 时把末三字节改成 ...。角色在截断后才首字母大写；类别没有这个截断步骤。
+所以动态完整名与职位必须沿原生供应、同一 string 对象及 draw 来源保留，不能用截断后的英文片段反猜 WORD/POS 或关联别的实体。
+
+本机离线提取方式
+固定 Python: C:/Users/WIN11/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe；调用 tools/extract_character_factions_pe.py。objdump 固定为现有 w64devkit-2.9.1/w64devkit/bin/objdump.exe。
+Ghidra: C:/Users/WIN11/AppData/Local/Programs/dfcn-analysis-tools/ghidra_12.1.4_PUBLIC；JDK: 同目录 jdk-25.0.4.1+1。两个 edition 使用独立临时 project/settings/cache，以 -import IMAGE -noanalysis -scriptPath D:/workspace/dfcn/tools -postScript DecompileCharacterFactionsPE.java D:/workspace/dfcn/data/extracted/character-factions EDITION -deleteProject 执行；没有修改原函数字节或将手写重建冒充反编译器输出。
+
+实际 C 反编译结果
+2026-10-18，两版 Ghidra decompileFunction 均在每个 owner 的 600 秒上限内实际完成。每版完整 renderer 和六个 helper 的独立 C 为 pe-EDITION-ROLE.c，同一结果的汇总为 pe-EDITION-ghidra-decompiled.c。完整 renderer 的 Groups 分支约为 reference 15188..16315 行（Classic 相应区域约提前22行）：No groups 分别位于 reference 15212 / Classic 15190 行，Civilization 分别位于 15347 / 15325 行，Legendary hero 分别位于 15758 / 15736 行。末尾还保留独立滚动条条件。
+角色和函数名 faction_* 是本次提取工具按用途赋予的分析名称，不是原游戏调试符号；territory-office-suffix 已统一为准确角色名。原始 byte、分支、表项和文字来自各版实际映像；未改动这些字节。返回地址常数可与对应 ASM、pe-calls.tsv、pe-branches.tsv 互相追溯。
+完整 renderer 顶部仅有 Globals starting with '_' overlap smaller symbols at the same address 提示。Switch is manually overridden 注释说明输入的原生绝对 RVA 表项被恢复为跳转目标；完整 selector 别名和空目标仍保存在 pe-switches.tsv/pe-page-switches.tsv，不因 Ghidra 折叠重复 case 而丢失。Ghidra 的调用原型尚未全部恢复，部分 stack 参数在 C 中作为明确栈赋值显示，实际参数应结合完整 ASM 的 Windows x64 位置读取，例如 Guild 的 plural/capitalize 两个布尔值。
+这些是实际原生反编译结果，不代表观察到了游戏内最终显示效果。

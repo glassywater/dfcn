@@ -21733,6 +21733,7 @@ Announcement combat work-reference []: the fiery bowels of the earth	大地的�
 Announcement combat work-reference [reference-value]: nuances of {s}	{s1}的微妙之处	l
 Announcement combat work-reference-list [work-reference-list]: , {s}	未注明的主题、{s1}	l
 Announcement music passage: a recapitulation of the previous passage	前一乐段再现部	w
+Character group role: Greatly respected for preserving the knowledge	因保存知识而备受尊敬	h
 Conversation prompt: How will you respond to the demand for tribute?	你将如何回应索要贡品的要求？	l
 DFHack help: "(un)protect <type>[,<type>...] <burrow>[,<burrow>...]"	"（取消）保护<类型>[，<类型>...] <活动区>[，<活动区>...]"	l
 DFHack help: "--beliefs [ <belief> <level> [<belief> <level> ...] ]"	"--beliefs [ <belief> <level> [<belief> <level> ...] ]"	l
@@ -24514,6 +24515,7 @@ Book title phrase: Suddenly The Wind Will Tell In The Beginning	起初，突然�
 Book title phrase: Suddenly The Wise Will Tell In The Beginning	起初，突然，智者会揭晓	hi
 Book title phrase: Surely The Future Foretells In The Beginning	起初，未来必定预言	hi
 Book title phrase: Surely The Future Will Tell In The Beginning	起初，未来必定会揭晓	hi
+Character group role: Greatly respected for protecting the weak	因保护弱者而备受尊敬	h
 Click "Embark" to place your fortress. Right click to zoom out.	点击“出发”确定要塞位置。右键点击缩小地图。	hP
 Conversation prompt: Choose a musical form for the composition.	为这次创作选择一种音乐形式。	l
 Conversation prompt: What will you say about tribute agreement?	关于进贡协议，你想说些什么？	l
@@ -26672,6 +26674,8 @@ Book title phrase: Then The Night Will Tell In The Beginning	起初，随后，�
 Book title phrase: Then The Sands Will Tell In The Beginning	起初，随后，沙粒会揭晓	hi
 Capture and train small animals here. Requires animal traps.	在这里捕捉和训练小动物。需要动物陷阱。	hj
 Certain Zones like Bedrooms can be placed several at a time.	[C:3:0:0]卧室[C:7:0:0]等某些[C:3:0:0]区域[C:7:0:0]可以一次划定多个。	hq
+Character group role: Greatly respected for hunting treasure	因寻宝而备受尊敬	h
+Character group role: Respected for preserving the knowledge	因保存知识而受人尊敬	h
 Conversation prompt: How will you respond to the accusation?	你将如何回应指控？	l
 Conversation prompt: How will you respond to the invocation?	你将如何回应召唤？	l
 Conversation prompt: How will you respond to this dismissal?	你将如何回应这番打发？	l
@@ -27503,6 +27507,7 @@ Book title phrase: Then The Wind Will Tell In The Beginning	起初，随后，�
 Book title phrase: Then The Wise Will Tell In The Beginning	起初，随后，智者会揭晓	hi
 Can your parameters achieve elevations between 100 and 299?	这些参数能否产生 100 至 299 的海拔？	l
 Can your parameters achieve elevations between 300 and 400?	这些参数能否产生 300 至 400 的海拔？	l
+Character group role: Greatly feared for violent oppositoin	因暴力对抗而令人十分畏惧	h
 Choose a stockpile from which the workshop will take items.	选择此工坊要从其取货的储物堆。	hj
 Conversation keyword: hold withdraw occupation insurrection	控制 撤离 占领 起义	l
 Conversation prompt: How will you respond to this flattery?	你将如何回应这番奉承？	l
@@ -28418,6 +28423,7 @@ Book title phrase: Then The Sands Can Say In The Beginning	起初，随后，沙
 Book title phrase: Then The Sea Foretells In The Beginning	起初，随后，大海预言	hi
 Book title phrase: Then The Sea Will Tell In The Beginning	起初，随后，大海会揭晓	hi
 Book title phrase: Then The Wise Foretell In The Beginning	起初，随后，智者预言	hi
+Character group role: Legendary preserver of the knowledge	传奇知识守护者	h
 Conversation keyword: exchange barter give take show offer	交换 以物易物 赠送 拿取 展示 提议	l
 Conversation prompt: What will you say about the conflict?	关于这场冲突，你想说些什么？	l
 Conversation prompt: What will you say about the incident?	关于这件事件，你想说些什么？	l
@@ -31467,6 +31473,9 @@ Book title phrase: Then The Wise Laugh In The Beginning	起初，随后，智者
 Book title phrase: Then The Wise Mourn In The Beginning	起初，随后，智者哀悼	hi
 Book title phrase: Then Time Foretells In The Beginning	起初，随后，时间预言	hi
 Book title phrase: Then Time Will Tell In The Beginning	起初，随后，时间会揭晓	hi
+Character group role: Famous preserver of the knowledge	名声显赫的知识守护者	h
+Character group role: Greatly respected for heroic acts	因英雄之举而备受尊敬	h
+Character group role: Respected for protecting the weak	因保护弱者而受人尊敬	h
 Click on category headings to collapse and expand them.	点击分类标题可折叠或展开。	hq
 Commendable! Your loyalty and bravery cannot be denied.	好样的！你的忠诚和勇气，谁也没法否认。	hPD
 Conversation prompt: What will you say about the beast?	关于这头野兽，你想说些什么？	l
@@ -32538,6 +32547,8 @@ Book title phrase: Then The Sea Weeps In The Beginning	起初，随后，大海�
 Book title phrase: Then The Wise Know In The Beginning	起初，随后，智者知晓	hi
 Book title phrase: Then The Wise Weep In The Beginning	起初，随后，智者哭泣	hi
 Change the number of times the task will be performed.	修改此任务的执行次数。	hj
+Character group role: Certainly considered an intruder	被明确视为入侵者	h
+Character group role: Noted preserver of the knowledge	著名的知识守护者	h
 Citizens, especially soldiers, will rarely name items.	市民，尤其是士兵，偶尔会为物品命名。	hP
 Conversation keyword: trade barter deal debts buy sell	交易 以物易物 成交 债务 买入 卖出	l
 Conversation prompt: What will you say about services?	关于服务，你想说些什么？	l
@@ -33682,6 +33693,7 @@ Book title phrase: Then The Wise Will Tell In The End	最终，随后，智者�
 Book title phrase: Then Time Can Say In The Beginning	起初，随后，时间能够诉说	hi
 Bring up {e}'s acceptance of {e}'s demand for tribute	谈起{e1}接受{e2}的进贡要求这件事	hPt
 Change the frequency that the conditions are checked.	修改条件检查频率。	hj
+Character group role: Legendary protector of the weak	传奇庇护者	h
 Check for culled historical figures {d}/{d} completed	检查已清理的历史人物：已完成 {d1}/{d2}	wt
 Click to contact/raid this site (creates new mission)	点击联系或突袭此地点（创建新任务）。	hP
 Cook meals here. You can also render fat into tallow.	在这里烹饪饭菜，也可将脂肪熬制成脂油。	hj
@@ -34919,6 +34931,8 @@ Book title phrase: Then The Wise Foretell In The End	最终，随后，智者预
 Book title phrase: Then The Wise Will Tell Afterward	此后，随后，智者会揭晓	hi
 Book title phrase: Then Time Laughs In The Beginning	起初，随后，时间欢笑	hi
 Book title phrase: Then Time Mourns In The Beginning	起初，随后，时间哀悼	hi
+Character group role: Certainly considered a brawler	被明确视为斗殴者	h
+Character group role: Respected for hunting treasure	因寻宝而受人尊敬	h
 Copyright(C){d}-{d} Firelight Technologies Pty, Ltd.	版权所有（C）{d}-{d} Firelight Technologies Pty, Ltd.	wtl
 DFHack GUI Autodump: Dump to tile under mouse cursor	倾倒至鼠标所在格	l
 DFHack GUI Control tool: agitation-rebalance.monitor	自然躁动监控（agitation-rebalance.monitor）	l
@@ -36196,6 +36210,11 @@ Book title phrase: Then The Wise Foretell Afterward	此后，随后，智者预�
 Book title phrase: Then Time Knows In The Beginning	起初，随后，时间知晓	hi
 Book title phrase: Then Time Weeps In The Beginning	起初，随后，时间哭泣	hi
 Bring up {e}'s acceptance of {e}'s offer of tribute	谈起{e1}接受{e2}的进贡提议这件事	hPt
+Character group role: Certainly feared as a brigand	令人十分畏惧的强盗	h
+Character group role: Certainly feared as a monster	令人十分畏惧的怪物	h
+Character group role: Feared for violent opposition	因暴力对抗而令人畏惧	h
+Character group role: Greatly respected for fighter	因战斗本领而备受尊敬	h
+Character group role: Greatly respected for loyalty	因忠诚而备受尊敬	h
 Conversation keyword: crime of attempted kidnapping	绑架未遂罪	l
 DFHack GUI Control tool: idle-crafting.idlecrafting	休闲制作开关（idle-crafting.idlecrafting）	l
 DFHack GUI Notification settings: mandates_expiring	生产命令即将到期	l
@@ -37501,6 +37520,10 @@ Book title phrase: Time Foretells In The Beginning	起初，时间预言	hi
 Book title phrase: Time Will Tell In The Beginning	起初，时间会揭晓	hi
 Bring up {e}'s refusal of {e}'s demand for tribute	谈起{e1}拒绝{e2}的进贡要求这件事	hPt
 Cancel an order. Does not affect scheduled orders.	取消命令，不影响日程命令。	hj
+Character group role: Certainly considered a bully	被明确视为恶霸	h
+Character group role: Certainly considered a thief	被明确视为盗贼	h
+Character group role: Famous protector of the weak	声名显赫的庇护者	h
+Character group role: Greatly feared as a murderer	令人十分畏惧的杀人犯	h
 Click it now, and this tutorial will be concluded.	现在点击它，本教程便告结束。	hq
 Conversation keyword: export prohibition violation	违反出口禁令	l
 DFHack GUI Autodump: Include items claimed by jobs	包含任务占用的物品	l
@@ -38881,6 +38904,8 @@ Book title phrase: Then The Wise Mourn In The End	最终，随后，智者哀悼
 Book title phrase: Then Time Foretells In The End	最终，随后，时间预言	hi
 Book title phrase: Then Time Will Tell In The End	最终，随后，时间会揭晓	hi
 Bring up {e}'s acceptance of {e}'s offer of peace	谈起{e1}接受{e2}的和平提议这件事	hPt
+Character group role: Greatly feared as a villain	令人十分畏惧的恶棍	h
+Character group role: Noted protector of the weak	著名的庇护者	h
 Click on the map to embark! Right click to abort.	点击地图出发！右键点击取消。	hP
 Copyright (C) {d}-{d} by Tarn Adams, Bay 12 Games	版权所有 (C) {d}-{d} Tarn Adams，Bay 12 Games	wtl
 Creating Elathu Inala, \\"The Domain of Portents\\"	创建埃拉苏·伊纳拉,"预兆之域\\"	w
@@ -40320,6 +40345,7 @@ Book title phrase: Time Can Say In The Beginning	起初，时间能够诉说	hi
 Book title subject: Evaporation and Condensation	蒸发与凝结	hi
 Bring up the failed insurrection {e} against {e}	谈起{e1}反抗{e2}的起义失败这件事	hPt
 Bring up {e}'s refusal of {e}'s offer of tribute	谈起{e1}拒绝{e2}的进贡提议这件事	hPt
+Character group role: Greatly feared as a killer	令人十分畏惧的杀手	h
 Claim this site for yourself (group naming menu)	宣布此地归你所有（势力命名菜单）	hP
 Click Publish to upload a mod to Steam Workshop.	点击“发布”，将模组上传至 Steam 创意工坊。	hP
 Click a target or move the cursor and press {k}.	点击一个目标，或移动光标后按 {k1}。	hPt
@@ -41821,6 +41847,8 @@ Book title phrase: Then Time Can Say In The End	最终，随后，时间能够�
 Book title phrase: Time Laughs In The Beginning	起初，时间欢笑	hi
 Book title phrase: Time Mourns In The Beginning	起初，时间哀悼	hi
 Book title subject: the Greatest Common Divisor	最大公约数	hi
+Character group role: Legendary treasure hunter	传奇寻宝者	h
+Character group role: Respected for heroic acts	因英雄之举而受人尊敬	h
 Choose your own skills, equipment, and animals.	自行选择技能、装备和动物。	l
 Click two corners of a rectangle somewhere safe	在安全地点点击矩形的两个对角，	hq
 Conversation keyword: crime of attempted murder	谋杀未遂罪	l
@@ -43317,6 +43345,7 @@ Book title subject: Examination of the Patient	病患检查	hi
 Bring up specific incident or rumor (new menu)	谈起某件事件或传闻（新菜单）	hP
 Bring up {e}'s refusal of {e}'s offer of peace	谈起{e1}拒绝{e2}的和平提议这件事	hPt
 Change the material of the item being checked.	修改要检查的物品材料。	hj
+Character group role: Noted intruder according	著名的入侵者	h
 Click in the play area to paint the stockpile.	在游戏区域中点击，涂画储物堆。	hP
 Click in the play area to paint the stockpile.	点击游玩区域来划定储物区.	w
 Click to set this task to repeat indefinitely.	点击将此任务设为无限重复。	hj
@@ -44892,6 +44921,8 @@ Book title phrase: Then Time Weeps In The End	最终，随后，时间哭泣	hi
 Book title subject: the Straight-Beam Balance	直梁天平	hi
 Bring up {p}'s placement of {e} to {p} in {e}	谈起{p1}在{e2}将作品{e1}交由{p2}保管这件事	hPt
 Cannot embark entirely on water or mountains.	出发区域不能完全位于水域或山脉之中。
+Character group role: Legendary enemy fighter	传奇敌对斗士	h
+Character group role: Legendary loyal soldier	传奇的忠诚军人	h
 Conversation keyword: crime of blood-drinking	吸血罪	l
 Conversation keyword: diagnostician join work	诊断医师 加入 工作	l
 Conversation keyword: express feeling emotion	表达 感受 情绪	l
@@ -46494,6 +46525,9 @@ Bring up {p}'s crime of attempted kidnapping	谈起{p1}犯下绑架未遂罪这�
 Bring up {p}'s demand of submission from {p}	谈起{p1}要求{p2}臣服这件事	hPt
 Change tab or highlight selection, secondary	更改选项卡或高亮选择,次要	w
 Change the amount of the item being checked.	修改要检查的物品数量。	hj
+Character group role: Considered an intruder	被视为入侵者	h
+Character group role: Famous treasure hunter	名声显赫的宝物猎人	h
+Character group role: Infamous enemy fighter	臭名昭著的敌对斗士	h
 Choose a smaller area if you experience lag.	如果出现卡顿，请选择更小的区域。	l
 Choose default attack according to opponent.	根据对手选择默认攻击方式。	hj
 Click a creature to start a new conversation	点击一个生物，开始新的交谈。	hP
@@ -48134,6 +48168,11 @@ Bring up {e}'s march to found a site in {e}	谈起{e1}进军{e2}建立新据点�
 Bring up {p}'s export prohibition violation	谈起{p1}违反出口禁令这件事	hPt
 CONTINUE until you give me another warning.	继续生成，直到再次出现警告。	hP
 CONTINUE until you give me another warning.	继续生成，直到再次出现警告。	l
+Character group role: Noted treasure hunter	著名的宝物猎人	h
+Character group role: Respected as a hunter	受人尊敬的猎人	h
+Character group role: Respected for fighter	因战斗本领而受人尊敬	h
+Character group role: Respected for loyalty	因忠诚而受人尊敬	h
+Character group type: Military organization	军事组织	h
 Choose which squads will use this barracks.	选择使用此兵营的小队。	hj
 Click in the play area to paint the burrow.	在游戏区域中点击，涂画活动区。	hP
 Climb to {s} ({s} releasing hold/Air/Magma)	攀向{s1}（{s2}，松开抓住的手／空气／岩浆）	hPt
@@ -49859,6 +49898,9 @@ Cannot appoint until commander is selected	必须先选定指挥官，才能进�
 Cavern dweller scale (increase per attack)	洞穴居民规模增量（每次来袭）
 Change the type of the item being checked.	修改要检查的物品类型。	hj
 Change the weather, temperature, and time.	修改天气、温度和时间。	hj
+Character group role: Considered a brawler	被视为斗殴者	h
+Character group role: Famous loyal soldier	名声显赫的忠诚军人	h
+Character group role: Feared as a murderer	令人畏惧的杀人犯	h
 Choose a musical form for the composition.	为这次创作选择一种音乐形式。	hP
 Citizen/resident dig speed (more = faster)	公民/居民挖掘速度（越高越快）
 Climb to {s} ({s} releasing hold/Air/Lava)	攀向{s1}（{s2}，松开抓住的手／空气／熔岩）	hPt
@@ -51752,6 +51794,11 @@ Bring up {p}'s refusal to identify to {p}	谈起{p1}拒绝向{p2}表明身份这
 Bring up {p}'s self-identification to {p}	谈起{p1}向{p2}表明身份这件事	hPt
 Change blueprints to standard selections.	将蓝图转为普通指定区域。	hj
 Change standard selections to blueprints.	将普通指定区域转为蓝图。	hj
+Character group role: Feared as a brigand	令人畏惧的强盗	h
+Character group role: Feared as a monster	令人畏惧的怪物	h
+Character group role: Feared as a villain	令人畏惧的恶棍	h
+Character group role: Noted enemy fighter	著名的敌对斗士	h
+Character group role: Noted loyal soldier	著名的忠诚士兵	h
 Choose a dance form for the choreography.	为这次编舞选择一种舞蹈形式。	hP
 Choose a poetic form for the composition.	为这次创作选择一种诗歌形式。	hP
 Choose a uniform for the selected squads.	为所选小队选择一套制式服装。	hP
@@ -53609,6 +53656,12 @@ Bring up {p}'s crime of attempted murder	谈起{p1}犯下谋杀未遂罪这件�
 Bring up {p}'s lack of possession of {i}	谈起{p1}未持有{i1}这件事	hPt
 Can you tell me where I can find myself?	能告诉我到哪里能找到我自己吗？	hPD
 Cancel this position's scheduled orders.	取消此职位的日程命令。	hj
+Character group role: Considered a bully	被视为恶霸	h
+Character group role: Considered a thief	被视为盗贼	h
+Character group role: Feared as a killer	令人畏惧的杀手	h
+Character group role: Legendary intruder	传奇入侵者	h
+Character group role: Legendary murderer	传奇杀人犯	h
+Character group type: Performance troupe	表演团	h
 Charge attack: move toward your opponent	冲锋攻击：朝对手移动。	hP
 Climb to {s} ({s} holding {s}/Air/Magma)	攀向{s1}（{s2}，抓着{s3}／空气／岩浆）	hPt
 Climb to {s} ({s} holding {s}/Air/Water)	攀向{s1}（{s2}，抓着{s3}／空气／水）	hPt
@@ -55492,6 +55545,13 @@ Bring up {p}'s conspiracy to slow labor	谈起{p1}合谋怠工这件事	hPt
 Bring up {p}'s crime of attempted theft	谈起{p1}犯下盗窃未遂罪这件事	hPt
 Calcite/limestone/chalk/marble boulders	方解石/石灰岩/白垩岩/大理石岩块	wi
 Change the inequality of the condition.	修改此条件的数量比较方式。	hj
+Character group role: Infamous intruder	臭名昭著的入侵者	h
+Character group role: Infamous murderer	臭名昭著的杀人犯	h
+Character group role: Legendary brawler	传奇斗殴者	h
+Character group role: Legendary brigand	传奇强盗	h
+Character group role: Legendary fighter	传奇斗士	h
+Character group role: Legendary monster	传奇怪物	h
+Character group role: Legendary villain	传奇恶棍	h
 Click a tile to be a corner of the {s}.	点击一个地格，作为{s1}的一个角。	hPt
 Click a tile to be a corner of the {s}.	点击地格选择{s}的一个角。	wtli
 Climb to {s} ({s} holding {s}/Air/Lava)	攀向{s1}（{s2}，抓着{s3}／空气／熔岩）	hPt
@@ -57477,6 +57537,13 @@ Bring up {p}'s ascension to {s} of {e}	谈起{p1}就任{e1}的{s1}这件事	hPt
 Bring up {p}'s crime of blood-drinking	谈起{p1}犯下吸血罪这件事	hPt
 Bring up {p}'s escalated attack on {p}	谈起{p1}对{p2}加剧攻击这件事	hPt
 Bring up {p}'s placement of {i} to {p}	谈起{p1}将{i1}交由{p2}保管这件事	hPt
+Character group role: Former mercenary	前佣兵	h
+Character group role: Infamous brigand	臭名昭著的强盗	h
+Character group role: Infamous monster	臭名昭著的怪物	h
+Character group role: Infamous villain	臭名昭著的恶棍	h
+Character group role: Legendary hunter	传奇猎人	h
+Character group role: Legendary killer	传奇杀手	h
+Character group type: Merchant company	商行	h
 Claiming forbidden items and buildings	解除物品和建筑的禁用状态	wo
 Click a tile to be one end of the {s}.	点击一个地格，作为{s1}的一端。	hPt
 Click a tile to be one end of the {s}.	点击地格选择{s}的一端。	wtli
@@ -59643,6 +59710,13 @@ Book title subject: the Straight Road	直道	hi
 Book title subject: the World's Shape	世界的形状	hi
 Bring up the occupation of {e} by {e}	谈起{e1}被{e2}占领这件事	hPt
 Can you tell me where I can find you?	能告诉我到哪里能找到你吗？	hPD
+Character group role: Former prisoner	前囚犯	h
+Character group role: Infamous killer	臭名昭著的杀手	h
+Character group role: Legendary bully	传奇恶霸	h
+Character group role: Legendary thief	传奇盗贼	h
+Character group role: Talented hunter	天才猎人	h
+Character group type: Migrating group	迁徙势力	h
+Character group type: Site government	地区政府	h
 Choose a uniform for the {s}'s squad.	为{s1}的小队选择一套制式服装。	hPt
 Citizens and long-term residents only	仅限公民和长期居民。	hP
 Click now to open to this mod folder.	单击即可打开此模组的文件夹。	l
@@ -61789,6 +61863,13 @@ Brook: Tacticrazors the Chip of S...	溪流:战术剃刀芯片...	w
 Brook: Wretchedmartyred the Delig...	溪流:悲惨殉道的神圣...	w
 Building track stops is recommended!	建议建造轨道停靠点！	hP
 Carving fortifications through walls	在墙壁上开凿城防垛口	wo
+Character group role: Famous brawler	名声显赫的斗殴者	h
+Character group role: Famous fighter	名声显赫的战士	h
+Character group role: Infamous bully	臭名昭著的恶霸	h
+Character group role: Infamous thief	臭名昭著的盗贼	h
+Character group role: Legendary hero	传奇英雄	h
+Character group role: Noted murderer	著名的杀人犯	h
+Character group role: Skilled hunter	技巧高超的猎人	h
 Claim this site for yourself and {e}	宣布此地归你和{e1}所有	hPt
 Clear this recenter hotkey location.	清除此重新居中热键的位置。	hj
 Clear this recenter hotkey location.	清除此重新居中热键的位置。	wl
@@ -64008,6 +64089,14 @@ Bring up {e}'s march to reclaim {e}	谈起{e1}进军收复{e2}这件事	hPt
 Bring up {p}'s building destruction	谈起{p1}毁坏建筑这件事	hPt
 Bring up {p}'s giving of {i} to {p}	谈起{p1}将{i1}交给{p2}这件事	hPt
 Cannot order mission without leader	没有领袖，无法下达任务。	hP
+Character group role: Former member	前成员	h
+Character group role: Former worker	前工人	h
+Character group role: Moted brawler	著名的斗殴者	h
+Character group role: Noted brigand	著名的强盗	h
+Character group role: Noted fighter	著名的战士	h
+Character group role: Noted monster	著名的怪物	h
+Character group role: Noted villain	著名的恶棍	h
+Character group type: Nomadic group	游牧势力	h
 Click here and make sure you have a	点击这里，确保你已安排了	hq
 Climb to {s} ({s} holding {s}/Lava)	攀向{s1}（{s2}，抓着{s3}／熔岩）	hPt
 Come see me in the market sometime.	有空到市场来找我。	hPD
@@ -66314,6 +66403,10 @@ Bring up {p}'s job order violation	谈起{p1}违反工作命令这件事	hPt
 Bring up {p}'s refusal to give {i}	谈起{p1}拒绝交出{i1}这件事	hPt
 Build placement: Track/Ramp (NSEW)	坡道轨道（北南东西）	wi
 Cannot make request without leader	没有领袖，无法提出请求。	hP
+Character group role: Former slave	前奴隶	h
+Character group role: Great hunter	伟大的猎人	h
+Character group role: Noted killer	著名的杀手	h
+Character group type: Civilization	政权	h
 Click a tile to position the stop.	点击格子设置停靠点的位置。	hP
 Click a tile to position the stop.	点击地格放置轨道站点。	wli
 Climb to {s} ({s} holding {s}/Air)	攀向{s1}（{s2}，抓着{s3}／空气）	hPt
@@ -68682,6 +68775,11 @@ Build placement: Track/Ramp (NSE)	坡道轨道（北南东）	wi
 Build placement: Track/Ramp (NSW)	坡道轨道（北南西）	wi
 Build placement: Track/Ramp (SEW)	坡道轨道（南东西）	wi
 Change tab or highlight selection	更改选项卡或高亮选择	w
+Character group role: Famous hero	名声显赫的英雄	h
+Character group role: Noted bully	著名的恶霸	h
+Character group role: Noted thief	著名的盗贼	h
+Character group type: Craft guild	工艺行会	hi
+Character group type: Vessel crew	船员	h
 Character room grade: Dining Room	餐厅	l
 Click for assignments and details	点击查看人员分配和详细信息。	hP
 Click to view all news and rumors	点击查看所有消息和传闻。	hP
@@ -73178,6 +73276,7 @@ Can you tell me the way to {e}?	你能告诉我去{e1}的路吗？	hPtD
 Change dream/goal (if possible)	更改梦想/目标（如果可以）
 Change to standard gather mode.	切换到普通采集模式。	hj
 Change to standard orders mode.	切换到普通命令模式。	hj
+Character group role: Mercenary	佣兵	h
 Checking directory structure...	正在检查文件夹结构……	w
 Choose a symbol for the burrow.	为活动区选择一个符号。	hP
 Choose a symbol for the detail.	为劳动分组选择一个符号。	hP
@@ -75673,6 +75772,9 @@ Carve wooden helve from branch	用树枝雕刻木制斧柄	hP
 Certainly considered a brawler	被肯定地看做是一名斗士	w
 Chair rejected (not enclosed.)	椅子未被选用（房间未封闭）	hP
 Change to blueprint-only mode.	切换到仅绘制蓝图模式。	hj
+Character group role: Criminal	罪犯	h
+Character group role: Prisoner	囚犯	h
+Character group type: Religion	宗教	h
 Character overview: Unmet need	未满足的需求	l
 Character room grade: Quarters	卧室	l
 Choose a symbol for the squad.	为小队选择一个符号。	hP
@@ -78205,6 +78307,8 @@ Certainly feared as a brigand	害怕被当作盗贼	w
 Certainly feared as a monster	害怕被当作怪物	w
 Change the subject (new menu)	换个话题（新菜单）	hP
 Change to standard chop mode.	切换到普通砍伐模式。	hj
+Character group role: Citizen	居民	h
+Character group type: Outcast	流亡者	h
 Character overview: Flatterer	爱说好话	li
 Cheerless <-> Easily cheerful	郁郁寡欢 ↔ 容易开心	wl
 Citizen overwhelmed by stress	居民被压力压垮	w
@@ -80569,6 +80673,8 @@ Cancel this scheduled order.	取消此日程命令。	hj
 Certainly considered a bully	被肯定地看做是一名恶霸	w
 Certainly considered a thief	被肯定地看做是一名盗贼	w
 Change to standard dig mode.	切换到普通挖掘模式。	hj
+Character group role: Member	成员	h
+Character group role: Worker	工人	h
 Character overview: Children	子女	l
 Claim toppled building items	解除被推倒建筑的物品禁用	wi
 Click the map to add points.	点击地图添加路线点。	hP
@@ -82916,6 +83022,8 @@ Build placement: Track (SE)	轨道（南东）	wi
 Build placement: Track (SW)	轨道（南西）	wi
 Build placement: {s}'s Shop	{s}工坊	wtlx
 Building link rejected: {s}	无法连接到{s}	l
+Character group role: Enemy	敌人	h
+Character group role: Slave	奴隶	h
 Character overview: Healthy	健康	l
 Character overview: Musical	有乐感	l
 Character room grade: Study	书房	l
@@ -85269,6 +85377,7 @@ Cannot assign work details	无法分配劳动分组	wi
 Cannot expel or send away:	无法驱逐或派走：	hP
 Cannot travel through site	无法穿过地点旅行	w
 Change the squad's symbol.	修改小队标志。	hj
+Character group role: Hero	英雄	h
 Character overview: Spouse	伴侣	l
 Characterizing raw data...	正在整理原始数据……	w
 Charge {n} ({s}/Air/Magma)	冲锋攻击{n1}（{s1}／空气／岩浆）	hPt

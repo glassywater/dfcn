@@ -1898,6 +1898,90 @@ static void remember_native_clipped_resize(NativeString *source, size_t width, c
     }
 }
 
+#ifdef _WIN32
+static void capitalize_native_character_group_role(std::string &text) {
+    // 52d650 changes the first eligible byte, skipping bracket controls and
+    // the same leading spaces/quotes. Preserve its CP437 case pairs too.
+    int brackets = 0;
+    bool first = true;
+    for (size_t i = 0; i < text.size(); ++i) {
+        const auto ch = static_cast<unsigned char>(text[i]);
+        if (ch == '[') { ++brackets; continue; }
+        if (ch == ']') { --brackets; continue; }
+        if (brackets > 0) continue;
+        const bool eligible = first || (i > 0 &&
+            (text[i - 1] == ' ' || text[i - 1] == '"' ||
+             (text[i - 1] == '\'' && i >= 2 &&
+              (text[i - 2] == ' ' || text[i - 2] == ','))));
+        if (!eligible) continue;
+        if (ch >= 'a' && ch <= 'z') {
+            text[i] = static_cast<char>(ch - 'a' + 'A');
+            return;
+        }
+        unsigned char upper = ch;
+        switch (ch) {
+        case 0x81: upper = 0x9a; break;
+        case 0x82: upper = 0x90; break;
+        case 0x84: upper = 0x8e; break;
+        case 0x86: upper = 0x8f; break;
+        case 0x87: upper = 0x80; break;
+        case 0x91: upper = 0x92; break;
+        case 0x94: upper = 0x99; break;
+        case 0xa4: upper = 0xa5; break;
+        default: break;
+        }
+        if (upper != ch) { text[i] = static_cast<char>(upper); return; }
+        if (ch != ' ' && ch != '"') return;
+        first = false;
+    }
+}
+
+static bool remember_native_character_group_resize(NativeString *source,
+        size_t width, char fill, uintptr_t caller) {
+    const auto *graphics = native_graphics();
+    if (!g_native_character_write_graphics ||
+            graphics != g_native_character_write_graphics) return false;
+    const uintptr_t base = native_history_profile_base();
+    // Groups shortens only its entity-name and relationship fields here.
+    // The following native stores replace the final three bytes iff the
+    // retained length exceeds three; smaller lengths stay plain prefixes.
+    // These exact return addresses cover both supported PE editions.
+    if (!base || (caller != native_reference_address(base, 0x179439) &&
+            caller != native_reference_address(base, 0x17aabe))) return false;
+    auto &state = native_character_clipped_pending();
+    if (state.busy) return true;
+    struct CaptureScope {
+        bool &busy;
+        explicit CaptureScope(bool &value) : busy(value) { busy = true; }
+        ~CaptureScope() { busy = false; }
+    } scope(state.busy);
+    try {
+        const auto epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
+        if (state.epoch != epoch) { state.fields.clear(); state.epoch = epoch; }
+        state.fields.erase(source);
+        std::string_view text;
+        if (width <= 1024 && fill == 0 &&
+                native_string_view(source, &text, 4096) && text.size() > width &&
+                text.find_first_of("\r\n") == std::string_view::npos &&
+                text.find('\0') == std::string_view::npos) {
+            PendingNativeField pending;
+            capture_native_field_resize(pending, source, width);
+            if (caller == native_reference_address(base, 0x17aabe)) {
+                // Role capitalization follows the dot stores at 17ab2d;
+                // entity-name capitalization already preceded its resize.
+                capitalize_native_character_group_role(pending.visible);
+                capitalize_native_character_group_role(pending.complete);
+            }
+            // The private Character draw consumes this only for the same
+            // owner, epoch and exact bytes after the native dot stores.
+            if (!pending.complete.empty() && state.fields.size() < 512)
+                state.fields.emplace(source, std::move(pending));
+        }
+    } catch (...) {}
+    return true;
+}
+#endif
+
 static void capture_native_clipped_resize(NativeString *source, size_t width, char fill) {
     if (g_native_announcement_log_write_graphics &&
             native_graphics() == g_native_announcement_log_write_graphics) {
@@ -1907,8 +1991,13 @@ static void capture_native_clipped_resize(NativeString *source, size_t width, ch
     }
     bool zone_plain_prefix = false;
 #ifdef _WIN32
+    const auto caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
+    if (remember_native_character_group_resize(source, width, fill, caller)) {
+        if (g_native_clipped_caption_hooks.resize)
+            g_native_clipped_caption_hooks.resize(source, width, fill);
+        return;
+    }
     if (width > 0 && width <= 3) {
-        const auto caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
         const auto base = native_history_profile_base();
         // The Places zone/location column only adds dots when its retained
         // width exceeds three bytes. Narrower nonempty captions are plain
