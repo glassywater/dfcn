@@ -10,8 +10,8 @@
     "Chinese"
   ],
   "visibility": 0,
-  "changelog": "DFCN v53.16-20261018.3 · 2026-10-18 · Windows x64\n\n- 修复“交易”等界面标签的中文显示与排版异常。\n- 修复 Windows 版要塞模式紧凑工具栏提示的汉化显示，完善说明正文及快捷键提示的翻译。\n",
-  "release_tag": "v53.16-20261018.3",
-  "release_url": "https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261018.3",
+  "changelog": "DFCN v53.16-20261019 · 2026-10-19 · Windows x64\n\n- 修复冒险模式信仰名称与说明翻译，正确处理神祇、自然之灵、宗教、崇拜对象及神殿状态。\n- 改善冒险模式“家乡”“信仰”悬停说明的中文显示与排版，减少重复翻译与绘制开销。\n- 补齐小队“无目标”状态，修复单目标击杀命令中目标姓名、职务和状态的翻译。\n- 修复带 Item Tagger 标签的木材及原木名称，正确翻译用途标签并保留完整树种译名。\n- 修复 DFHack 与汉化人物信息页的兼容问题，恢复对“概览”等页面标签的识别。\n",
+  "release_tag": "v53.16-20261019",
+  "release_url": "https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261019",
   "github_url": "https://github.com/pokemonchw/dfcn"
 }
