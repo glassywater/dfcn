@@ -1099,6 +1099,7 @@ struct NativeTextCard {
     bool character_group_civilization = false;
     std::optional<std::pair<int, int>> civilization_official_columns{};
     bool workshop_task_detail = false;
+    bool workshop_decoration_type = false;
     bool workshop_task_queue = false;
     bool trade_request_commodity = false;
 };

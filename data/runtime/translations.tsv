@@ -55969,6 +55969,7 @@ What have you done? This is horrifying!	你都做了什么？太可怕了！	hPD
 What will you say about the occupation?	关于占领行动，你想说些什么？	hP
 What would you like to name this manual	你想将这个手动存档命名为什么？	w
 With them come {s} from the {s} of {e}!	随军而来的还有{s1}，来自{e1}的{s2}！	hPt
+Workshop decoration type: Hanging rings	挂环	l
 Workshop recipe: bulk noun paper-slurry	纸浆	l
 Workshop recipe: folded sheet protector	书壳	l
 Workshop recipe: kind building material	建筑材料	l
@@ -69406,6 +69407,7 @@ What will you say about services?	关于服务，你想说些什么？	hP
 What will you say about the army?	关于这支军队，你想说些什么？	hP
 What will you say about the gang?	关于这个帮派，你想说些什么？	hP
 What will you say about the site?	关于这个地点，你想说些什么？	hP
+Workshop decoration type: Covered	覆盖层	l
 Workshop recipe: format available	可用：{d}	l
 Workshop recipe: format kind noun	{s1}类{s2}	l
 Workshop recipe: leaves and fruit	叶和果实	l
@@ -71673,6 +71675,7 @@ Verbally struggle against terror	说出你与恐惧的抗争	hP
 Whom does your identity worship?	你所采用的身份崇拜谁？	wl
 Will do available tasks anywhere	完成可执行的所有工作	wi
 Work order condition button: Adj	属性	w
+Workshop decoration type: Spikes	尖刺	l
 Workshop recipe: [requires fuel]	[需要燃料]	l
 Workshop recipe: body noun pearl	珍珠	l
 Workshop recipe: body noun shell	壳	l
@@ -73962,6 +73965,8 @@ Verbally struggle against grief	说出你与悲伤的抗争	hP
 Verbally struggle against shock	说出你与震惊的抗争	hP
 Warning: stockpile has no type.	注意：储物堆尚未设置类型。	hP
 We shall bring {n} home safely.	我们一定会把{n1}平安带回家。	hPtD
+Workshop decoration type: Bands	镶条	l
+Workshop decoration type: Image	图像	l
 Workshop recipe: [requires ore]	[需要矿石]	l
 Workshop recipe: body noun bone	骨头	l
 Workshop recipe: body noun horn	角／蹄	l
@@ -131940,6 +131945,7 @@ Save Profile	保存配置
 Saving world	保存世界	w
 Scaling mode	缩放模式	w
 Select item.	选择物品。	hP
+Setting type	设置类型	wli
 Shallow Clay	浅粘土	w
 Shallow Sand	浅沙	w
 Sharp blades	锋利刀刃	wi
@@ -131956,7 +131962,9 @@ Slow to hate	不易憎恨	w
 Slow to love	不易动情	w
 Smooth floor	打磨地板	wi
 Spearmasters	持矛主宰	wi
+Specify horn	指定角	wli
 Specify size	指定尺寸	wli
+Specify type	指定类型	wli
 Stair mining	挖掘楼梯	wo
 Stayed Alive	活了下来	w
 Stone Blocks	石块

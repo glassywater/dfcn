@@ -42,10 +42,11 @@ void Overlay::append_workshop_material_translations(
     // fields, not stock-material nouns. Own their whole source before generic
     // matches can independently center a title or a piece of its heading.
     for (const auto &field : fields) {
-        if (!field.workshop_task_detail && field.button_box) continue;
+        if (!field.workshop_task_detail && !field.workshop_decoration_type && field.button_box) continue;
         for (const auto &row : field.rows) {
             const std::string source(row_source(row));
-            const auto exact = exact_literal_translation(source);
+            const auto exact = exact_literal_translation(field.workshop_decoration_type
+                ? "Workshop decoration type: " + source : source);
             auto result = exact ? TranslationResult::translated(source, *exact, "workshop-heading")
                 : !field.button_box ? translate_fortress_activity_display(source)
                 : preserved_item_field(source, "workshop-heading");
@@ -70,7 +71,7 @@ void Overlay::append_workshop_material_translations(
     };
     bool wood_task = false, all_wood = true, unambiguous_wood = false;
     for (const auto &field : fields) {
-        if (field.workshop_task_detail) continue;
+        if (field.workshop_task_detail || field.workshop_decoration_type) continue;
         for (const auto &row : field.rows) {
             const auto source = row_source(row);
             if (field.button_box) {
@@ -99,7 +100,7 @@ void Overlay::append_workshop_material_translations(
     const bool wood_context = !plant_context &&
         (wood_task || (all_wood && unambiguous_wood));
     for (const auto &field : fields) {
-        if (field.workshop_task_detail) continue;
+        if (field.workshop_task_detail || field.workshop_decoration_type) continue;
         if (!field.button_box) continue; // Complete selector headings were owned above.
         for (const auto &row : field.rows) {
             const auto source = row_source(row);

@@ -1412,28 +1412,34 @@ std::vector<NativeTextCard> Overlay::capture_workshop_material_fields(
         });
     };
     // This task-detail sheet has no search control or workshop tabs. Its
-    // complete glass/plant buttons and their shared closed native frame
-    // establish the fields; the job title is not an English allowlist.
+    // complete Specify buttons and their shared closed native frame establish
+    // the fields; decoration jobs use horn/type instead of glass/plant.
     if (task_detail_only) {
+        const auto task_control = [&](std::string_view text) {
+            return text.starts_with("Specify ") && text != "Specify a new image" &&
+                exact_literal_translation(std::string(text)).has_value();
+        };
         for (int y = 0; y < gps_->dimy; ++y) {
             for (const auto &anchor : split_text_fields(rows[y])) {
-                if (anchor.text != "Specify glass") continue;
+                if (!task_control(anchor.text)) continue;
                 const auto panel = native_panel_interior(
                     borders, *gps_, anchor.start, anchor.end, y);
                 if (!panel) continue;
                 const int right = panel->x + panel->w, bottom = panel->y + panel->h;
-                std::array<std::optional<NativeTextCard>, 2> controls;
+                std::vector<NativeTextCard> controls;
                 for (int row_y = panel->y; row_y < bottom; ++row_y) {
                     for (const auto &caption : split_text_fields(rows[row_y])) {
-                        const int kind = caption.text == "Specify glass" ? 0
-                            : caption.text == "Specify plant" ? 1 : -1;
-                        if (kind < 0 || controls[kind] || caption.start != anchor.start ||
+                        if (!task_control(caption.text) || caption.start != anchor.start ||
                             caption.end > right) continue;
                         const auto button = native_button_text_rect(*gps_, caption.start,
                             caption.end, row_y, false, nullptr, false, true);
                         if (!button || button->x - 1 < panel->x ||
                             button->x + button->w > right || button->y < panel->y ||
                             button->y + button->h > bottom) continue;
+                        if (std::any_of(controls.begin(), controls.end(),
+                                [&](const NativeTextCard &seen) {
+                                    return seen.interior.y == button->y;
+                                })) continue;
                         const SDL_Rect source{caption.start,
                             button->y + (classic ? 1 : 0), caption.end - caption.start,
                             classic ? 1 : button->h};
@@ -1448,13 +1454,11 @@ std::vector<NativeTextCard> Overlay::capture_workshop_material_fields(
                         control->button_box = SDL_Rect{button->x - 1, button->y,
                             button->w + 2, button->h};
                         control->workshop_task_detail = true;
-                        controls[kind] = std::move(control);
+                        controls.push_back(std::move(*control));
                     }
                 }
-                if (!controls[0] || !controls[1] ||
-                    controls[0]->interior.y + controls[0]->interior.h >
-                        controls[1]->interior.y) continue;
-                const int title_bottom = controls[0]->interior.y;
+                if (controls.empty()) continue;
+                const int title_bottom = controls.front().interior.y;
                 if (title_bottom <= panel->y) continue;
                 auto title = capture_panel_text_card(
                     {panel->x, panel->y, panel->w, title_bottom - panel->y}, true);
@@ -1471,7 +1475,7 @@ std::vector<NativeTextCard> Overlay::capture_workshop_material_fields(
                     right - anchor.start, static_cast<int>(title->rows.size())};
                 title->workshop_task_detail = true;
                 fields.push_back(std::move(*title));
-                for (auto &control : controls) fields.push_back(std::move(*control));
+                for (auto &control : controls) fields.push_back(std::move(control));
                 return fields;
             }
         }
@@ -1486,17 +1490,60 @@ std::vector<NativeTextCard> Overlay::capture_workshop_material_fields(
     };
     for (int heading_y = 0; heading_y < gps_->dimy; ++heading_y) {
         for (const auto &heading : split_text_fields(rows[heading_y])) {
-            // Plant and glass selectors use this same search-and-button
-            // layout. Match the complete caption, with grid edge padding
-            // already removed by split_text_fields, before assigning the
-            // title, heading and stock names the search field's text inset.
+            // Match complete selector headings before assigning their title
+            // and choices the native text inset. Decoration styles omit the
+            // search control used by material, plant and glass selectors.
             const std::string caption = lower(heading.text);
             if (caption != "setting material" && caption != "setting plant" &&
-                caption != "setting glass") continue;
+                caption != "setting glass" && caption != "setting type") continue;
             const auto panel = native_panel_interior(
                 borders, *gps_, heading.start, heading.end, heading_y);
             if (!panel) continue;
             const int right = panel->x + panel->w, bottom = panel->y + panel->h;
+            // Decoration styles have no search box or stock-count column.
+            // Their complete native buttons own each phrase, so Hanging
+            // rings cannot become an unrelated Hanging plus a jewelry noun.
+            if (caption == "setting type") {
+                std::vector<NativeTextCard> choices;
+                for (int y = heading_y + 1; y < bottom; ++y) {
+                    for (const auto &part : split_text_fields(rows[y])) {
+                        if (part.start < panel->x || part.end > right) continue;
+                        const auto button = native_button_text_rect(*gps_, part.start,
+                            part.end, y, false, nullptr, false, true);
+                        if (!button || button->x - 1 < panel->x ||
+                            button->x + button->w > right || button->y <= heading_y ||
+                            button->y + button->h > bottom ||
+                            std::any_of(choices.begin(), choices.end(),
+                                [&](const NativeTextCard &seen) {
+                                    return seen.button_box->x == button->x - 1 &&
+                                        seen.button_box->y == button->y;
+                                })) continue;
+                        auto choice = capture_panel_text_card(
+                            {button->x - 1, button->y + (classic ? 1 : 0),
+                                button->w + 1, classic ? 1 : button->h}, true);
+                        if (!choice || !current(*choice)) continue;
+                        choice->interior = {heading.start, button->y,
+                            button->x + button->w - heading.start, button->h};
+                        if (choice->interior.w <= 0) continue;
+                        choice->button_box = SDL_Rect{button->x - 1, button->y,
+                            button->w + 2, button->h};
+                        choice->workshop_decoration_type = true;
+                        choices.push_back(std::move(*choice));
+                    }
+                }
+                if (choices.empty()) continue;
+                auto header = capture_panel_text_card({panel->x, panel->y, panel->w,
+                    choices.front().interior.y - panel->y});
+                if (!header || !current(*header)) continue;
+                for (const auto &row : header->rows) {
+                    NativeTextCard line;
+                    line.interior = {heading.start, row.y, right - heading.start, 1};
+                    line.rows.push_back(row);
+                    fields.push_back(std::move(line));
+                }
+                for (auto &choice : choices) fields.push_back(std::move(choice));
+                return fields;
+            }
             std::optional<SDL_Rect> search;
             for (int y = heading_y + 1; y + 3 <= bottom && !search; ++y) {
                 for (int x = panel->x; x < right; ++x) {

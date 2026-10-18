@@ -10201,11 +10201,21 @@ Must set colors	必须指定颜色	wl
 Setting material	设置材料	wli
 Setting plant	设置植物	wli
 Setting glass	设置玻璃	wli
+Setting type	设置类型	wli
 # Task detail material controls retain the complete native button caption.
 Specify glass	指定玻璃	wli
 Specify plant	指定植物	wli
 Specify leather	指定皮革	wli
 Specify size	指定尺寸	wli
+Specify horn	指定角	wli
+Specify type	指定类型	wli
+# Decoration options use item-improvement meanings within their native chooser.
+# Scoped lookup keeps image/name words and Hanging/rings from splitting them.
+Workshop decoration type: Image	图像	l
+Workshop decoration type: Bands	镶条	l
+Workshop decoration type: Covered	覆盖层	l
+Workshop decoration type: Hanging rings	挂环	l
+Workshop decoration type: Spikes	尖刺	l
 # Leather armor task labels use the complete item and sizing meanings.
 Make leather armor	制造皮甲	wli
 size	尺寸	wi
