@@ -532,7 +532,8 @@ static void prepare_native_announcement_unit_identities(std::string_view raw_sou
     } catch (...) {}
 }
 static std::optional<std::string> native_announcement_unit_identity_target(
-        std::string_view report_source, std::string_view field_source) {
+        std::string_view report_source, std::string_view field_source, bool *bound) {
+    if (bound) *bound = false;
     auto report = native_announcement_display_source(report_source);
     const auto &body = native_announcement_unit_body_state();
     const bool in_body = !body.first.empty() && report == body.second;
@@ -548,6 +549,9 @@ static std::optional<std::string> native_announcement_unit_identity_target(
         // A pet caption belongs only to the spoken body. An identically
         // spelled speaker/author field in its header keeps its own identity.
         if (found->second.type == 163 && !in_body && value.offset != 0) continue;
+        // Only this exact owned field proves a native person. A missing
+        // ticket leaves the existing typed source grammar available.
+        if (bound) *bound = true;
         if (agreed && *agreed != value.target) return native_text_to_utf8(field_source);
         agreed = value.target;
     }

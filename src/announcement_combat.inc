@@ -133,6 +133,15 @@ static bool spoken_identity_has_prose_boundary(std::string_view value,
     return false;
 }
 
+static bool announcement_combat_person_scope(std::string_view scope) {
+    return scope == "unit" || scope == "$unit" ||
+        scope == "person" || scope == "$person" ||
+        scope == "speech-person" || scope == "$speech-person" ||
+        scope == "speech-first-name" || scope == "$speech-first-name" ||
+        scope == "memory-person" || scope == "historical-actor" ||
+        scope == "$historical-actor";
+}
+
 std::optional<std::string> Overlay::translate_announcement_combat(
         std::string_view raw_source, std::string_view initial_scope) const {
     TranslationWorkScope budget;
@@ -322,13 +331,18 @@ std::optional<std::string> Overlay::translate_announcement_combat(
                 ? std::move(result) : std::nullopt);
         }
         if (scope == "$unit") {
-            auto result = native_announcement_unit_identity_target(raw_source, input);
+            bool bound = false;
+            auto result = native_announcement_unit_identity_target(raw_source, input, &bound);
+            // A frozen typed report can retain an unbound field verbatim.
+            // That display fallback does not prove a person: continue through
+            // the complete name grammar, rather than swallowing a reaction.
+            if (!bound) result.reset();
             if (!result) result = native_unit_identity_source_target(input);
             // b6ca30/132e430 can copy the complete animated corpse/body-part
             // label into a proved unit field. Resolve its owner and native
             // body suffix together before treating it as a bare person name.
             if (!result) result = translate_native_animation_label(input);
-            if (!result && spoken_scope && spoken_identity_has_prose_boundary(input))
+            if (!result && spoken_identity_has_prose_boundary(input))
                 return finish(std::nullopt);
             if (!result) result = translate_ui_message_capture(input, true);
             // The complete native production establishes this unit slot in
@@ -363,7 +377,7 @@ std::optional<std::string> Overlay::translate_announcement_combat(
             // live unit's profession caption or a bare generated name.
             if (const auto identity = native_unit_identity_source_target(input))
                 return finish(identity);
-            if (spoken_scope && spoken_identity_has_prose_boundary(input))
+            if (spoken_identity_has_prose_boundary(input))
                 return finish(std::nullopt);
             auto result = translate_legends_actor(input, 0, true);
             if (translation_complete_with_native_nicknames(result, input))
@@ -677,8 +691,11 @@ std::optional<std::string> Overlay::translate_announcement_combat(
         }
         if (scope == "$term") return finish(translate_ui_message_capture(input, false));
         if (scope == "$person") {
-            auto result = native_announcement_unit_identity_target(raw_source, input);
-            if (!result && spoken_scope && spoken_identity_has_prose_boundary(input))
+            bool bound = false;
+            auto result = native_announcement_unit_identity_target(raw_source, input, &bound);
+            if (!bound) result.reset();
+            if (!result) result = native_unit_identity_source_target(input);
+            if (!result && spoken_identity_has_prose_boundary(input))
                 return finish(std::nullopt);
             if (!result) result = translate_legends_name(input, true);
             if (!result && spoken_scope)
@@ -691,10 +708,13 @@ std::optional<std::string> Overlay::translate_announcement_combat(
             // without a native WORD mask; TRANS_NAME can pair that same
             // given name with a complete English surname/title. Keep this
             // proof scoped to speech rather than widening ordinary names.
-            auto result = native_announcement_unit_identity_target(raw_source, input);
+            bool bound = false;
+            auto result = native_announcement_unit_identity_target(raw_source, input, &bound);
+            if (!bound) result.reset();
             if (!result) result = native_unit_identity_source_target(input);
-            if (translation_complete_with_native_nicknames(result, input))
-                return finish(std::move(result));
+            if (result) return finish(std::move(result));
+            if (spoken_identity_has_prose_boundary(input))
+                return finish(std::nullopt);
             // Report captures own native CP437 bytes, while paragraph callers
             // can supply the same field as UTF-8. Invert only a complete UTF-8
             // representation before handing it to the native name renderer;
@@ -1088,14 +1108,22 @@ dfcn::TranslationResult Overlay::translate_announcement_combat_result(
         const size_t last = normalized_origins[end - 1] + 1;
         const auto native = raw_source.substr(first, last - first);
         const auto scope = candidate.scopes[field];
+        const bool personal = announcement_combat_person_scope(scope);
+        bool bound = false;
         std::optional<std::string> translated;
         if (!work_limited) {
             try {
                 // The complete report owns formatter-captured authored
                 // names. Keep that source binding when a display candidate
                 // resolves its unit field through an independent leaf call.
-                if (scope == "unit" || scope == "$unit")
-                    translated = native_announcement_unit_identity_target(raw_source, native);
+                if (personal) {
+                    translated = native_announcement_unit_identity_target(raw_source, native, &bound);
+                    if (!bound) translated.reset();
+                    if (!translated) {
+                        translated = native_unit_identity_source_target(native);
+                        bound = translated.has_value();
+                    }
+                }
                 if (!translated) translated = translate_announcement_combat(native, scope);
             }
             catch (const dfcn::TranslationWorkLimit &) {
@@ -1107,11 +1135,13 @@ dfcn::TranslationResult Overlay::translate_announcement_combat_result(
         // missing numeral/date/relationship is not an unknown noun/name.
         if (!translated && (scope == "$digits" || scope == "$number" ||
                 scope == "$date" || scope == "$kinship")) return finish(no_match);
-        // A missing name may remain visible inside its native field. A
-        // complete failed prose clause cannot instead prove the subject of
-        // a different extension message (e.g. tissue Guts -> ability Guts).
-        if (!translated && scope == "unit" &&
-                spoken_identity_has_prose_boundary(native, true)) return finish(no_match);
+        // A typed report's raw fallback does not own a person boundary.
+        // In particular memory-person must not preserve both a historical
+        // name and the next complete event/reaction as one opaque name.
+        // Genuine formatter bindings still own authored punctuation; the
+        // boundary helper likewise leaves nicknames and quoted names intact.
+        if (personal && !bound && spoken_identity_has_prose_boundary(native,
+                scope == "unit" || scope == "$unit")) return finish(no_match);
         auto result = translated ? dfcn::TranslationResult::translated(native, *translated, scope) :
             dfcn::TranslationResult{};
         if (!result.usable() && !work_limited && !scope.starts_with('$') && native.size() < raw_source.size())

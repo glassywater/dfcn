@@ -48,7 +48,8 @@ static void remember_native_announcement_pet_name(std::string_view source,
     const NativeUnitIdentity *identity);
 static void prepare_native_announcement_unit_identities(std::string_view source);
 static std::optional<std::string> native_announcement_unit_identity_target(
-    std::string_view report_source, std::string_view field_source);
+    std::string_view report_source, std::string_view field_source,
+    bool *bound = nullptr);
 static uint64_t native_announcement_unit_body_context();
 struct NativeAnnouncementUnitBodyScope {
     std::pair<std::string, std::string> previous;

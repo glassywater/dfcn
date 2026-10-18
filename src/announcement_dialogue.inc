@@ -171,6 +171,15 @@ std::optional<std::string> Overlay::translate_spoken_dialogue_body(
         }
         return std::nullopt;
     };
+    // EmotionalOutburstMinor/Major append a complete memory event, two
+    // spaces, then an independently selected emotion (reference 4d3091..
+    // 4d3130). Reuse the overview's complete event/reaction partitioner
+    // before an event's personal field can absorb that following sentence.
+    // Its reviewed glossary already owns every emotion/intensity variant.
+    if (const auto memory = translate_overview_quote("\"" + std::string(source) + "\"");
+            memory && memory->starts_with("“") && memory->ends_with("”") &&
+            memory->size() > 6)
+        return memory->substr(3, memory->size() - 6);
     if (auto complete = sentence(source)) return complete;
 
     // Native speech appends independently complete sentences. A split is valid
