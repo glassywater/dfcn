@@ -829,6 +829,7 @@ std::vector<WorkshopTaskCard> Overlay::capture_workshop_task_rows(
                 std::string_view(rows[row.y]).substr(row.x, row.source.size()) == row.source;
         });
     };
+    const auto drawn = captured_native_drawn_text_view();
     const auto capture_button = [&](const SDL_Rect &box) {
         SDL_Rect source = box;
         if (classic) {
@@ -846,11 +847,68 @@ std::vector<WorkshopTaskCard> Overlay::capture_workshop_task_rows(
         if (card) {
             card->interior = box;
             card->button_box = box;
+            // The native chooser can write a complete requirement beyond
+            // its button's right edge. Recover the submitted noun before
+            // translating the cropped card row, and own every still-visible
+            // source byte, including the second half of a half-font draw.
+            for (auto &row : card->rows) {
+                if (!std::string_view(row.source).starts_with("[Requires ")) continue;
+                for (const auto &draw : drawn) {
+                    const std::string &complete = draw.complete_source.empty()
+                        ? draw.source : draw.complete_source;
+                    if (draw.editable_text || draw.x != row.x ||
+                        (draw.y != row.y && draw.y + 1 != row.y) ||
+                        !std::string_view(complete).starts_with("[Requires ") ||
+                        !complete.ends_with(']') ||
+                        !std::string_view(draw.source).starts_with(row.source)) continue;
+                    int source_right = gps_->dimx;
+                    if (draw.draw_clip) {
+                        if (row.x < draw.draw_clip->x) continue;
+                        source_right = std::min(source_right,
+                            draw.draw_clip->x + draw.draw_clip->w);
+                    }
+                    if (source_right <= row.x) continue;
+                    const size_t length = std::min(draw.source.size(),
+                        static_cast<size_t>(source_right - row.x));
+                    if (length < row.source.size()) continue;
+                    const auto visible = std::string_view(draw.source).substr(0, length);
+                    if (!current(row.x, row.y, visible) ||
+                        std::string_view(rows[row.y]).substr(row.x, length) != visible) continue;
+                    if (draw.y != row.y) {
+                        constexpr uint32_t upper = 1u << 3, lower = 1u << 4;
+                        bool paired = true;
+                        for (size_t i = 0; i < length && paired; ++i) {
+                            if (visible[i] == ' ') continue;
+                            bool a_top = false, b_top = false;
+                            const int x = row.x + static_cast<int>(i);
+                            const auto *a = cell_at(x, draw.y, &a_top);
+                            const auto *b = cell_at(x, row.y, &b_top);
+                            const auto *flags = a_top ? gps_->screentexpos_top_flag
+                                : gps_->screentexpos_flag;
+                            const size_t at = static_cast<size_t>(x) * gps_->dimy + draw.y;
+                            paired = a && b && a_top == b_top && flags &&
+                                a[0] == static_cast<unsigned char>(visible[i]) &&
+                                (flags[at] & (upper | lower)) == upper &&
+                                (flags[at + 1] & (upper | lower)) == lower;
+                        }
+                        if (!paired) continue;
+                    }
+                    row.complete_source = complete;
+                    for (size_t i = row.source.size(); i < length; ++i) {
+                        bool top = false;
+                        const auto *cell = cell_at(row.x + static_cast<int>(i), row.y, &top);
+                        row.foregrounds.push_back(cell
+                            ? (cell[1] << 16) | (cell[2] << 8) | cell[3]
+                            : row.foregrounds.front());
+                    }
+                    row.source.assign(visible);
+                    break;
+                }
+            }
         }
         return card;
     };
     const auto clipped = captured_clipped_captions();
-    const auto drawn = captured_native_drawn_text_view();
     const uintptr_t native_base = native_history_profile_base();
     const auto task_choice_draw = [&](const NativeDrawnTextRow &draw) {
 #ifndef _WIN32

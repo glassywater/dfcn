@@ -179,55 +179,62 @@ std::optional<std::string> Overlay::translate_workshop_recipe_source(
                 const std::string remainder = lower(std::string(value.substr(noun_at)));
                 if (RULESETS.is_item_material(remainder)) break;
                 bool consumed = false;
-                for (size_t end = value.rfind(' '); end != std::string_view::npos && end > noun_at;
-                     end = value.rfind(' ', end - 1)) {
-                    const std::string part(value.substr(noun_at, end - noun_at));
-                    Modifier modifier{lower(part), scoped("state ", part),
-                        scoped("material ", part), scoped("kind ", part)};
-                    const auto reaction_class = raw_restriction("reaction class ", part);
-                    if (reaction_class) {
-                        modifier.state = format("state reaction class", {{"{s}", *reaction_class}});
-                        modifier.material.reset();
-                        modifier.kind.reset();
-                    }
-                    if (!reaction_class)
-                        if (auto category = scoped("material category ", part); complete(category)) {
-                            modifier.material = std::move(category);
-                            modifier.material_category = true;
+                // Native flag prefixes are independent constraints. Resolve
+                // the reviewed prefixes before dynamic suffixes so e.g.
+                // "non-pressed oil-bearing" cannot turn the oil itself into
+                // a non-pressed material inside one -bearing modifier.
+                for (const bool allow_dynamic : {false, true}) {
+                    for (size_t end = value.rfind(' '); end != std::string_view::npos && end > noun_at;
+                         end = value.rfind(' ', end - 1)) {
+                        const std::string part(value.substr(noun_at, end - noun_at));
+                        Modifier modifier{lower(part), scoped("state ", part),
+                            scoped("material ", part), scoped("kind ", part)};
+                        const auto reaction_class = raw_restriction("reaction class ", part);
+                        if (reaction_class) {
+                            modifier.state = format("state reaction class", {{"{s}", *reaction_class}});
+                            modifier.material.reset();
+                            modifier.kind.reset();
                         }
-                    // Runtime reaction classes/products and CONTAINS are
-                    // distinct RAW fields. A class fallback has no suffix;
-                    // product tokens use -producing, and CONTAINS names the
-                    // referenced reagent rather than its material filter.
-                    if (!complete(modifier.state) && !complete(modifier.material) &&
-                        !complete(modifier.kind)) {
-                        for (std::string_view suffix : {"-bearing", "-producing", "-containing"}) {
-                            if (complete(modifier.state)) break;
-                            if (!modifier.source.ends_with(suffix) || part.size() <= suffix.size()) continue;
-                            const auto field = std::string_view(part).substr(0, part.size() - suffix.size());
-                            auto label = suffix == "-producing"
-                                ? raw_restriction("reaction product ", field)
-                                : suffix == "-containing"
-                                    ? raw_restriction("reagent ", field)
-                                    : self(self, field, depth + 1);
-                            // An established noun can spell a reagent NAME
-                            // (water, milk of lime). Typed authored names win;
-                            // unknown RAW class/product tokens never acquire
-                            // a coincidentally spelled material/item meaning.
-                            if (!label && suffix == "-containing") label = self(self, field, depth + 1);
-                            if (label) modifier.state = format("state " + std::string(suffix),
-                                {{"{s}", *label}});
-                            break;
+                        if (!reaction_class)
+                            if (auto category = scoped("material category ", part); complete(category)) {
+                                modifier.material = std::move(category);
+                                modifier.material_category = true;
+                            }
+                        // Runtime reaction classes/products and CONTAINS are
+                        // distinct RAW fields. A class fallback has no suffix;
+                        // product tokens use -producing, and CONTAINS names the
+                        // referenced reagent rather than its material filter.
+                        if (allow_dynamic && !complete(modifier.state) && !complete(modifier.material) &&
+                            !complete(modifier.kind)) {
+                            for (std::string_view suffix : {"-bearing", "-producing", "-containing"}) {
+                                if (complete(modifier.state)) break;
+                                if (!modifier.source.ends_with(suffix) || part.size() <= suffix.size()) continue;
+                                const auto field = std::string_view(part).substr(0, part.size() - suffix.size());
+                                auto label = suffix == "-producing"
+                                    ? raw_restriction("reaction product ", field)
+                                    : suffix == "-containing"
+                                        ? raw_restriction("reagent ", field)
+                                        : self(self, field, depth + 1);
+                                // An established noun can spell a reagent NAME
+                                // (water, milk of lime). Typed authored names win;
+                                // unknown RAW class/product tokens never acquire
+                                // a coincidentally spelled material/item meaning.
+                                if (!label && suffix == "-containing") label = self(self, field, depth + 1);
+                                if (label) modifier.state = format("state " + std::string(suffix),
+                                    {{"{s}", *label}});
+                                break;
+                            }
+                            if (!modifier.state && modifier.source.starts_with("color "))
+                                modifier.state = translate_legends_color(std::string_view(part).substr(6));
                         }
-                        if (!modifier.state && modifier.source.starts_with("color "))
-                            modifier.state = translate_legends_color(std::string_view(part).substr(6));
+                        if (!complete(modifier.state) && !complete(modifier.material) &&
+                            !complete(modifier.kind)) continue;
+                        modifiers.push_back(std::move(modifier));
+                        noun_at = end + 1;
+                        consumed = true;
+                        break;
                     }
-                    if (!complete(modifier.state) && !complete(modifier.material) &&
-                        !complete(modifier.kind)) continue;
-                    modifiers.push_back(std::move(modifier));
-                    noun_at = end + 1;
-                    consumed = true;
-                    break;
+                    if (consumed) break;
                 }
                 if (!consumed) break;
             }
